@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phác đồ Quản lý & Điều trị Xơ gan</title>
+<style>
+    :root {
+        --primary-color: #0056b3;
+        --secondary-color: #f1f3f5;
+        --accent-color: #0dcaf0;
+        --danger-color: #dc3545;
+        --warning-color: #ffc107;
+        --success-color: #198754;
+        --text-main: #333;
+        --bg-color: #e9ecef;
+        --border-color: #dee2e6;
+        --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+    }
+
+    /* Layout Header & App Container */
+    .app-container {
+        max-width: 900px;
+        margin: 20px auto;
+        background: var(--white);
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+
+    .app-header {
+        background: var(--primary-color);
+        color: var(--white);
+        padding: 20px;
+        text-align: center;
+    }
+
+    .app-header h1 { font-size: 22px; margin-bottom: 5px; }
+    .app-header p { font-size: 14px; opacity: 0.9; }
+
+    /* Tab Navigation */
+    .tab-nav {
+        display: flex;
+        background: #f8f9fa;
+        border-bottom: 2px solid var(--border-color);
+    }
+
+    .tab-btn {
+        flex: 1;
+        background: none;
+        border: none;
+        padding: 15px 10px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #555;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-bottom: 3px solid transparent;
+    }
+
+    .tab-btn:hover { background: #e2e6ea; }
+    
+    .tab-btn.active {
+        color: var(--primary-color);
+        border-bottom: 3px solid var(--primary-color);
+        background: var(--white);
+    }
+
+    /* Tab Content Area */
+    .tab-content {
+        display: none;
+        padding: 20px;
+        animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .tab-content.active { display: block; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+    h2.section-title {
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 8px;
+        margin-bottom: 20px;
+        font-size: 18px;
+    }
+
+    /* Accordion Styles (Dùng chung cho tất cả các tab) */
+    .accordion-item {
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        margin-bottom: 10px;
+        overflow: hidden;
+    }
+
+    .accordion-header {
+        background-color: var(--secondary-color);
+        padding: 15px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background 0.3s;
+    }
+
+    .accordion-header:hover { background-color: #e2e6ea; }
+
+    .accordion-content {
+        padding: 0 15px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out, padding 0.3s ease;
+        background: var(--white);
+    }
+
+    .accordion-item.active .accordion-content {
+        padding: 15px;
+        max-height: 2000px;
+    }
+
+    .accordion-item.active .accordion-header {
+        background-color: var(--primary-color);
+        color: var(--white);
+    }
+
+    /* Alerts / Cảnh báo lâm sàng */
+    .alert { padding: 10px 15px; border-radius: 4px; margin-bottom: 12px; font-size: 14px; }
+    .alert-danger { background-color: #f8d7da; color: #842029; border: 1px solid #f5c2c7; }
+    .alert-warning { background-color: #fff3cd; color: #664d03; border: 1px solid #ffecb5; }
+    .alert-info { background-color: #cff4fc; color: #055160; border: 1px solid #b6effb; }
+    .alert-success { background-color: #d1e7dd; color: #0f5132; border: 1px solid #badbcc; }
+
+    /* Calculators */
+    .calculator-box {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 6px;
+        border: 1px solid #ced4da;
+        margin: 15px 0;
+    }
+    .calc-row { display: flex; justify-content: space-between; margin-bottom: 10px; align-items: center; }
+    .calc-row label { font-weight: bold; font-size: 14px; flex: 1;}
+    .calc-row input, .calc-row select { width: 120px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+    .btn-calc {
+        width: 100%; background: var(--primary-color); color: var(--white);
+        border: none; padding: 10px; font-size: 15px; border-radius: 4px;
+        cursor: pointer; font-weight: bold; margin-top: 10px; transition: background 0.3s;
+    }
+    .btn-calc:hover { background: #004494; }
+    .calc-result { font-weight: bold; font-size: 15px; margin-top: 15px; display: block; text-align: center; padding: 10px; border-radius: 4px;}
+
+    /* List & Checkbox */
+    ul { padding-left: 20px; margin-bottom: 10px; }
+    li { margin-bottom: 6px; font-size: 14px; }
+    .checklist label { display: flex; align-items: flex-start; margin-bottom: 8px; cursor: pointer; font-size: 14px; background: #f8f9fa; padding: 8px; border-radius: 4px; }
+    .checklist input { margin-top: 4px; margin-right: 10px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; margin-bottom: 10px;}
+    th, td { border: 1px solid var(--border-color); padding: 8px; text-align: left; font-size: 14px; }
+    th { background-color: var(--secondary-color); }
+
+    /* Mobile Responsive */
+    @media (max-width: 600px) {
+        .tab-nav { flex-direction: column; }
+        .tab-btn { border-bottom: 1px solid #ddd; }
+        .tab-btn.active { border-left: 4px solid var(--primary-color); border-bottom: none; }
+        .calc-row { flex-direction: column; align-items: flex-start; }
+        .calc-row input, .calc-row select { width: 100%; margin-top: 5px; }
+    }
+</style>
+</head>
+<body>
+
+<div class="app-container">
+    <header class="app-header">
+        <h1>PHÁC ĐỒ CHẨN ĐOÁN & QUẢN LÝ XƠ GAN</h1>
+        <p>Tích hợp tiêu chuẩn EASL, AASLD & Baveno VII (Dành cho Bác sĩ lâm sàng)</p>
+    </header>
+
+    <nav class="tab-nav">
+        <button class="tab-btn active" onclick="openTab(event, 'tab1')">1. TỔNG QUAN</button>
+        <button class="tab-btn" onclick="openTab(event, 'tab2')">2. CẤP CỨU</button>
+        <button class="tab-btn" onclick="openTab(event, 'tab3')">3. NGOẠI TRÚ</button>
+        <button class="tab-btn" onclick="openTab(event, 'tab4')">4. CÔNG CỤ ĐÁNH GIÁ</button>
+    </nav>
+
+    <main>
+
+        <div id="tab1" class="tab-content active">
+            <h2 class="section-title">Tổng quan, Chẩn đoán & Căn nguyên</h2>
+            
+            <div class="accordion-item active">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>📋 1. Smart Workup Checklist (Xét nghiệm lần đầu)</span>
+                    <span>-</span>
+                </div>
+                <div class="accordion-content">
+                    <p style="font-size: 14px; margin-bottom: 10px;">Checklist các chỉ định cận lâm sàng không thể bỏ sót khi tiếp nhận bệnh nhân nghi ngờ xơ gan hoặc viêm gan mạn:</p>
+                    
+                    <strong style="color: var(--primary-color);">1. Thường quy & Đánh giá chức năng:</strong>
+                    <div class="checklist">
+                        <label><input type="checkbox"> Công thức máu (Chú ý: Tiểu cầu)</label>
+                        <label><input type="checkbox"> Sinh hóa: AST, ALT, GGT, Bilirubin (TP/TT), Albumin, Creatinine, Na+, K+</label>
+                        <label><input type="checkbox"> Đông máu: PT, INR</label>
+                        <label><input type="checkbox"> Chẩn đoán hình ảnh: Siêu âm bụng, Đo độ cứng gan (FibroScan)</label>
+                    </div>
+
+                    <strong style="color: var(--primary-color); margin-top: 10px; display: block;">2. Tầm soát nguyên nhân phổ biến:</strong>
+                    <div class="checklist">
+                        <label><input type="checkbox"> Virus (Bắt buộc): HBsAg, Anti-HCV</label>
+                        <label><input type="checkbox"> Chuyển hóa/Mỡ máu: HbA1c, Cholesterol, Triglyceride, HDL-c, LDL-c</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🕵️ 2. Nhận diện "Xơ gan ẩn" (Red Flags)</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="alert alert-warning">
+                        <strong>Lưu ý lâm sàng:</strong> Bệnh nhân xơ gan giai đoạn sớm thường KHÔNG có triệu chứng và <strong>men gan (AST/ALT) có thể hoàn toàn bình thường</strong>. Hãy chú ý các dấu hiệu tinh tế sau:
+                    </div>
+                    <ul>
+                        <li><strong>Tỷ lệ AST > ALT:</strong> Ở người bình thường hoặc viêm gan nhẹ, ALT thường > AST. Khi xơ gan, tỷ lệ này đảo ngược (Đặc biệt gợi ý xơ gan do rượu hoặc xơ hóa tiến triển).</li>
+                        <li><strong>Tiểu cầu giảm nhẹ:</strong> Dưới < 150.000/mm³ (thường gặp 110.000 - 140.000) mà không có nguyên nhân huyết học rõ ràng (Gợi ý lách to do tăng áp cửa).</li>
+                        <li><strong>GGT hoặc ALP tăng:</strong> Tăng dai dẳng không giải thích được.</li>
+                        <li><strong>Siêu âm:</strong> Nhu mô gan chưa thô nhưng tĩnh mạch cửa giãn (> 13mm) hoặc lách to (> 12cm).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🧬 3. Sổ tay Căn nguyên Hiếm (Cryptogenic)</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <p style="font-size: 14px; margin-bottom: 10px;">Khi Virus (B, C), Rượu và Béo phì đều âm tính, hãy chỉ định các xét nghiệm sau để tìm nguyên nhân hiếm:</p>
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tr style="background: #f1f3f5;">
+                            <th style="padding: 8px; border: 1px solid #ccc;">Nghi ngờ Bệnh lý</th>
+                            <th style="padding: 8px; border: 1px solid #ccc;">Xét nghiệm cần chỉ định</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ccc;"><strong>Viêm gan tự miễn (AIH)</strong></td>
+                            <td style="padding: 8px; border: 1px solid #ccc;">ANA, ASMA, Anti-LKM1, Định lượng IgG</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ccc;"><strong>Viêm đường mật nguyên phát (PBC)</strong></td>
+                            <td style="padding: 8px; border: 1px solid #ccc;">AMA (Kháng thể kháng ty thể), ALP, GGT</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ccc;"><strong>Ứ sắt (Hemochromatosis)</strong></td>
+                            <td style="padding: 8px; border: 1px solid #ccc;">Ferritin, Độ bão hòa Transferrin (> 45% là nguy cơ cao)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ccc;"><strong>Bệnh Wilson (Ứ đồng)</strong></td>
+                            <td style="padding: 8px; border: 1px solid #ccc;">Ceruloplasmin máu, Đồng niệu 24h</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🚦 4. Tiêu chuẩn Chuyển tuyến (Referral)</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <p style="font-size: 14px; margin-bottom: 10px;">Đánh giá mức độ an toàn để quyết định giữ bệnh nhân lại tuyến cơ sở hay chuyển khám Chuyên khoa/Ghép gan:</p>
+                    
+                    <div class="alert alert-success" style="border-left: 5px solid #198754;">
+                        <strong>🟢 XANH - Quản lý ngoại trú tại tuyến cơ sở:</strong><br>
+                        Xơ gan còn bù (Child-Pugh A), MELD-Na < 10, chưa từng có biến chứng mất bù (chưa từng báng bụng, XHTH hay não gan).
+                    </div>
+                    
+                    <div class="alert alert-warning" style="border-left: 5px solid #ffc107;">
+                        <strong>🟡 VÀNG - Cần hội chẩn / Khám chuyên khoa định kỳ:</strong><br>
+                        Tiểu cầu < 100.000/mm³, bắt đầu có báng bụng (nhưng đáp ứng tốt với lợi tiểu), có giãn tĩnh mạch thực quản cần can thiệp thắt (EVL).
+                    </div>
+                    
+                    <div class="alert alert-danger" style="border-left: 5px solid #dc3545;">
+                        <strong>🔴 ĐỎ - Chuyển Cấp cứu / Đơn vị Ghép gan BẮT BUỘC:</strong><br>
+                        Điểm MELD-Na &ge; 15, Báng bụng kháng trị, xuất hiện đợt Não gan đầu tiên, Vàng da tiến triển, hoặc Siêu âm phát hiện khối u (nghi ngờ HCC).
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab2" class="tab-content">
+            <h2 class="section-title">Dự phòng & Quản lý Biến chứng cấp</h2>
+            
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🩸 1. Xuất huyết tiêu hóa do vỡ giãn tĩnh mạch</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="alert alert-danger"><strong>Cấp cứu (Ngay lập tức):</strong> Bắt đầu thuốc vận mạch ngay khi nghi ngờ.</div>
+                    <div class="checklist">
+                        <label><input type="checkbox"> Duy trì đường truyền lớn / Hồi sức dịch / Truyền máu (Mục tiêu Hb: 7 - 8 g/dL)</label>
+                        <label><input type="checkbox"> Kháng sinh dự phòng: Ceftriaxone 1g/ngày IV</label>
+                        <label><input type="checkbox"> Hội chẩn Nội soi can thiệp (trong vòng 12 giờ)</label>
+                    </div>
+                    <table>
+                        <tr><th>Thuốc vận mạch</th><th>Liều lượng</th></tr>
+                        <tr><td>Terlipressin</td><td>2mg IV mỗi 4h (Khởi đầu) -> 1mg mỗi 4h (Duy trì 2-5 ngày)</td></tr>
+                        <tr><td>Octreotide</td><td>Bolus 50mcg IV -> Duy trì 50mcg/h (Trong 2-5 ngày)</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🧠 2. Bệnh lý não gan (HE)</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="alert alert-warning"><strong>Checklist tìm yếu tố thúc đẩy:</strong> Nhiễm trùng? XHTH? Hạ Kali/Natri? Táo bón? Thuốc an thần?</div>
+                    <ul>
+                        <li><strong>Lactulose:</strong> 15-30ml x 2-3 lần/ngày. Mục tiêu: 2-3 lần tiêu phân mềm/ngày.</li>
+                        <li><strong>Rifaximin:</strong> 400mg x 3 lần/ngày hoặc 550mg x 2 lần/ngày.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>💧 3. Báng bụng & Tính liều Albumin</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="alert alert-info"><strong>Chẩn đoán SBP:</strong> PMN &ge; 250 tế bào/mm³. Kháng sinh: Cefotaxime/Ceftriaxone IV.</div>
+                    
+                    <div class="calculator-box">
+                        <h4 style="margin-bottom: 10px;">🧮 Máy tính bù Human Albumin (Khi chọc tháo)</h4>
+                        <div class="calc-row">
+                            <label>Lượng dịch chọc tháo (Lít): </label>
+                            <input type="number" id="ascitesVolume" placeholder="VD: 6" step="0.5" min="0">
+                        </div>
+                        <button class="btn-calc" onclick="calculateAlbumin()">Tính Toán Liều Albumin</button>
+                        <div id="calc-result" class="calc-result"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🩸 4. Tổn thương thận cấp (AKI & HRS)</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="alert alert-danger"><strong>Bước 1:</strong> Ngưng lợi tiểu, chẹn beta, NSAIDs. Bù Human Albumin 1g/kg/ngày.</div>
+                    <ul>
+                        <li><strong>Tiêu chuẩn AKI:</strong> Cre tăng &ge; 0.3 mg/dL trong 48h hoặc tăng &ge; 50%.</li>
+                        <li><strong>HRS-AKI:</strong> Terlipressin + Albumin. Cân nhắc Lọc máu (CRRT) chờ ghép gan.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🚨 5. Suy gan cấp trên nền mạn (ACLF)</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Suy đa tạng trên nền xơ gan/viêm gan mạn, tỷ lệ tử vong cao. Chuyển ngay ICU. Bắt đầu kháng virus NUCs ngay nếu là HBV-ACLF. Liên hệ trung tâm Ghép gan sớm.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab3" class="tab-content">
+            <h2 class="section-title">Quản lý Ngoại trú, Dinh dưỡng & Tầm soát</h2>
+            
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🥗 1. Chiến lược Dinh dưỡng</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="alert alert-danger"><strong>QUAN TRỌNG:</strong> Tuyệt đối <strong>KHÔNG</strong> hạn chế Protein.</div>
+                    <div class="checklist">
+                        <label><input type="checkbox"> <strong>Năng lượng & Đạm:</strong> 35-40 kcal/kg/ngày; 1.2-1.5 g protein/kg/ngày.</label>
+                        <label><input type="checkbox"> <strong>Bữa ăn nhẹ ban đêm (LES):</strong> Ăn nhẹ lúc 21h-22h để ngăn dị hóa cơ.</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>💊 2. Quản lý Thuốc & Tầm soát HCC</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="alert alert-warning">
+                        <strong>Chống chỉ định:</strong> NSAIDs (Ibuprofen, Diclofenac...), Thuốc an thần (Benzodiazepines).
+                    </div>
+                    <ul>
+                        <li><strong>Tầm soát HCC:</strong> Siêu âm bụng + AFP mỗi <strong>6 tháng</strong>.</li>
+                        <li><strong>Tiêm chủng:</strong> Cúm (hàng năm), Phế cầu, Viêm gan A & B.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🏥 3. Đánh giá Ghép gan (MELD-Na)</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="alert alert-info">Chuyển tuyến ghép gan khi có biến chứng mất bù nặng hoặc <strong>MELD-Na &ge; 15</strong>.</div>
+                    <div class="calculator-box">
+                        <h4 style="text-align:center; margin-top:0;">🧮 Máy tính MELD-Na (UNOS)</h4>
+                        <div class="calc-row"><label>Bilirubin (mg/dL):</label><input type="number" id="meld-bili"></div>
+                        <div class="calc-row"><label>INR:</label><input type="number" id="meld-inr"></div>
+                        <div class="calc-row"><label>Creatinine (mg/dL):</label><input type="number" id="meld-crea"></div>
+                        <div class="calc-row"><label>Natri (mEq/L):</label><input type="number" id="meld-na"></div>
+                        <button class="btn-calc" onclick="calculateMELD()">TÍNH ĐIỂM MELD-Na</button>
+                        <div id="meld-result" class="calc-result"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab4" class="tab-content">
+            <h2 class="section-title">Đánh giá Không xâm lấn & Tiên lượng</h2>
+            
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🎯 1. Điều trị Nguyên nhân (Recompensation)</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong>Viêm gan B:</strong> Điều trị NUCs (Tenofovir/Entecavir) <strong>SUỐT ĐỜI</strong>.</li>
+                        <li><strong>Viêm gan C:</strong> Phác đồ DAAs (Tỷ lệ khỏi > 95%).</li>
+                        <li><strong>ALD:</strong> Kiêng rượu bia tuyệt đối.</li>
+                        <li><strong>MASLD:</strong> Giảm 5-10% cân nặng, kiểm soát đường/mỡ máu.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>📊 2. Đánh giá Xơ hóa (FIB-4 & FibroScan)</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="alert alert-info"><strong>Quy tắc Baveno VII (Miễn nội soi):</strong> Độ cứng gan (LSM) < 20 kPa VÀ Tiểu cầu > 150.000/mm³ &rarr; Bỏ qua nội soi.</div>
+                    
+                    <div class="calculator-box">
+                        <h4 style="text-align:center; margin-top:0;">🧮 Máy tính Chỉ số FIB-4</h4>
+                        <div class="calc-row"><label>Tuổi:</label><input type="number" id="fib-age"></div>
+                        <div class="calc-row"><label>AST (U/L):</label><input type="number" id="fib-ast"></div>
+                        <div class="calc-row"><label>ALT (U/L):</label><input type="number" id="fib-alt"></div>
+                        <div class="calc-row"><label>Tiểu cầu (10^9/L):</label><input type="number" id="fib-plt"></div>
+                        <button class="btn-calc" onclick="calculateFIB4()">TÍNH ĐIỂM FIB-4</button>
+                        <div id="fib4-result" class="calc-result"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>📈 3. Phân loại Child-Pugh</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="calculator-box">
+                        <h4 style="text-align:center; margin-top:0;">🧮 Đánh giá Child-Pugh</h4>
+                        <div class="calc-row"><label>Bệnh lý não gan:</label>
+                            <select id="cp-he"><option value="0">-- Chọn --</option><option value="1">Không có</option><option value="2">Độ 1 - 2</option><option value="3">Độ 3 - 4</option></select>
+                        </div>
+                        <div class="calc-row"><label>Báng bụng:</label>
+                            <select id="cp-ascites"><option value="0">-- Chọn --</option><option value="1">Không có</option><option value="2">Nhẹ - Vừa</option><option value="3">Nặng (Kháng trị)</option></select>
+                        </div>
+                        <div class="calc-row"><label>Bilirubin toàn phần:</label>
+                            <select id="cp-bili"><option value="0">-- Chọn --</option><option value="1">< 2 mg/dL</option><option value="2">2 - 3 mg/dL</option><option value="3">> 3 mg/dL</option></select>
+                        </div>
+                        <div class="calc-row"><label>Albumin máu:</label>
+                            <select id="cp-alb"><option value="0">-- Chọn --</option><option value="1">> 3.5 g/dL</option><option value="2">2.8 - 3.5 g/dL</option><option value="3">< 2.8 g/dL</option></select>
+                        </div>
+                        <div class="calc-row"><label>INR:</label>
+                            <select id="cp-inr"><option value="0">-- Chọn --</option><option value="1">< 1.7</option><option value="2">1.7 - 2.2</option><option value="3">> 2.2</option></select>
+                        </div>
+                        <button class="btn-calc" onclick="calculateChildPugh()">XẾP LOẠI CHILD-PUGH</button>
+                        <div id="cp-result" class="calc-result"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<script>
+    // 1. Logic chuyển Tab Navigation
+    function openTab(evt, tabId) {
+        // Ẩn tất cả các tab-content
+        let tabContents = document.getElementsByClassName("tab-content");
+        for (let i = 0; i < tabContents.length; i++) {
+            tabContents[i].style.display = "none";
+            tabContents[i].classList.remove("active");
+        }
+
+        // Bỏ class "active" ở tất cả các nút Tab
+        let tabBtns = document.getElementsByClassName("tab-btn");
+        for (let i = 0; i < tabBtns.length; i++) {
+            tabBtns[i].className = tabBtns[i].className.replace(" active", "");
+        }
+
+        // Hiện Tab được click và thêm class active
+        document.getElementById(tabId).style.display = "block";
+        document.getElementById(tabId).classList.add("active");
+        evt.currentTarget.className += " active";
+    }
+
+    // Đảm bảo tab đầu tiên hiển thị khi load
+    document.getElementById("tab1").style.display = "block";
+
+    // 2. Logic Accordion (Cho phép mở/đóng từng thẻ)
+    function toggleAccordion(element) {
+        const item = element.parentElement;
+        const isActive = item.classList.contains('active');
+        
+        // Chỉ đóng các accordion khác TRONG CÙNG 1 TAB (tùy chọn)
+        const parentTab = item.closest('.tab-content');
+        const allItems = parentTab.querySelectorAll('.accordion-item');
+        
+        allItems.forEach(i => {
+            i.classList.remove('active');
+            i.querySelector('.accordion-header span:last-child').innerText = '+';
+        });
+
+        if (!isActive) {
+            item.classList.add('active');
+            element.querySelector('span:last-child').innerText = '-';
+        }
+    }
+
+    // 3. Máy tính Albumin (Tab 2)
+    function calculateAlbumin() {
+        const volume = parseFloat(document.getElementById('ascitesVolume').value);
+        const resultText = document.getElementById('calc-result');
+
+        if (isNaN(volume) || volume <= 0) {
+            resultText.innerText = "Vui lòng nhập lượng dịch hợp lệ.";
+            resultText.style.background = "#f8d7da"; resultText.style.color = "#842029";
+            return;
+        }
+
+        if (volume <= 5) {
+            resultText.innerText = `💡 Chọc ${volume} Lít (≤ 5 Lít): Bù dung dịch thay thế hoặc Albumin theo lâm sàng.`;
+            resultText.style.background = "#cff4fc"; resultText.style.color = "#055160";
+        } else {
+            const albuminNeed = volume * 8;
+            const bottles = Math.ceil(albuminNeed / 10);
+            resultText.innerHTML = `⚠️ Chọc > 5 Lít. Cần bù: <strong>${albuminNeed} g Albumin</strong>.<br> (~ <strong>${bottles} chai</strong> loại 50ml nồng độ 20%).`;
+            resultText.style.background = "#fff3cd"; resultText.style.color = "#664d03";
+        }
+    }
+
+    // 4. Máy tính MELD-Na (Tab 3)
+    function calculateMELD() {
+        let bili = parseFloat(document.getElementById('meld-bili').value);
+        let inr = parseFloat(document.getElementById('meld-inr').value);
+        let crea = parseFloat(document.getElementById('meld-crea').value);
+        let na = parseFloat(document.getElementById('meld-na').value);
+        const resultDiv = document.getElementById('meld-result');
+
+        if(isNaN(bili) || isNaN(inr) || isNaN(crea) || isNaN(na)) {
+            resultDiv.innerHTML = "Vui lòng nhập đủ chỉ số!";
+            resultDiv.style.background = "#f8d7da"; resultDiv.style.color = "#842029"; return;
+        }
+
+        bili = Math.max(bili, 1.0); inr = Math.max(inr, 1.0);
+        crea = Math.max(Math.min(crea, 4.0), 1.0); na = Math.max(Math.min(na, 137), 125);
+
+        let meldI = 10 * (0.957 * Math.log(crea) + 0.378 * Math.log(bili) + 1.120 * Math.log(inr)) + 6.43;
+        meldI = Math.round(meldI);
+
+        let meldNa = meldI;
+        if (meldI > 11) meldNa = meldI + 1.32 * (137 - na) - (0.033 * meldI * (137 - na));
+        meldNa = Math.round(meldNa);
+
+        if (meldNa >= 15) {
+            resultDiv.innerHTML = `MELD-Na = ${meldNa}<br>⚠️ CẢNH BÁO: Xem xét chuyển tuyến Ghép Gan!`;
+            resultDiv.style.background = "#f8d7da"; resultDiv.style.color = "#842029";
+        } else {
+            resultDiv.innerHTML = `MELD-Na = ${meldNa}<br>💡 Tiếp tục theo dõi ngoại trú.`;
+            resultDiv.style.background = "#d1e7dd"; resultDiv.style.color = "#0f5132";
+        }
+    }
+
+    // 5. Máy tính FIB-4 (Tab 4)
+    function calculateFIB4() {
+        const age = parseFloat(document.getElementById('fib-age').value);
+        const ast = parseFloat(document.getElementById('fib-ast').value);
+        const alt = parseFloat(document.getElementById('fib-alt').value);
+        const plt = parseFloat(document.getElementById('fib-plt').value);
+        const resultDiv = document.getElementById('fib4-result');
+
+        if(isNaN(age) || isNaN(ast) || isNaN(alt) || isNaN(plt) || alt<=0 || plt<=0) {
+            resultDiv.innerHTML = "Nhập liệu không hợp lệ!";
+            resultDiv.style.background = "#f8d7da"; resultDiv.style.color = "#842029"; return;
+        }
+
+        const fib4 = (age * ast) / (plt * Math.sqrt(alt));
+        const fib4Rounded = fib4.toFixed(2);
+        const lowCutoff = age > 65 ? 2.0 : 1.30;
+
+        if (fib4 < lowCutoff) {
+            resultDiv.innerHTML = `FIB-4 = ${fib4Rounded} (Nguy cơ xơ hóa Thấp)`;
+            resultDiv.style.background = "#d1e7dd"; resultDiv.style.color = "#0f5132";
+        } else if (fib4 > 2.67) {
+            resultDiv.innerHTML = `FIB-4 = ${fib4Rounded} (Nguy cơ CAO - Cần FibroScan/Nội soi)`;
+            resultDiv.style.background = "#f8d7da"; resultDiv.style.color = "#842029";
+        } else {
+            resultDiv.innerHTML = `FIB-4 = ${fib4Rounded} (Vùng trung gian)`;
+            resultDiv.style.background = "#fff3cd"; resultDiv.style.color = "#664d03";
+        }
+    }
+
+    // 6. Máy tính Child-Pugh (Tab 4)
+    function calculateChildPugh() {
+        const he = parseInt(document.getElementById('cp-he').value);
+        const ascites = parseInt(document.getElementById('cp-ascites').value);
+        const bili = parseInt(document.getElementById('cp-bili').value);
+        const alb = parseInt(document.getElementById('cp-alb').value);
+        const inr = parseInt(document.getElementById('cp-inr').value);
+        const resultDiv = document.getElementById('cp-result');
+
+        if(he===0 || ascites===0 || bili===0 || alb===0 || inr===0) {
+            resultDiv.innerHTML = "Chọn đầy đủ 5 tiêu chí!";
+            resultDiv.style.background = "#f8d7da"; resultDiv.style.color = "#842029"; return;
+        }
+
+        const total = he + ascites + bili + alb + inr;
+        if (total <= 6) {
+            resultDiv.innerHTML = `Tổng: ${total} điểm - CHILD-PUGH A (Còn bù)`;
+            resultDiv.style.background = "#d1e7dd"; resultDiv.style.color = "#0f5132";
+        } else if (total <= 9) {
+            resultDiv.innerHTML = `Tổng: ${total} điểm - CHILD-PUGH B`;
+            resultDiv.style.background = "#fff3cd"; resultDiv.style.color = "#664d03";
+        } else {
+            resultDiv.innerHTML = `Tổng: ${total} điểm - CHILD-PUGH C (Mất bù nặng)`;
+            resultDiv.style.background = "#f8d7da"; resultDiv.style.color = "#842029";
+        }
+    }
+</script>
+
+</body>
+</html>

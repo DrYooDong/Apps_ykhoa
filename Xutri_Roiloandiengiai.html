@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#2563eb">
+    <title>Electrolyte Master - Pro Version</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f1f5f9; }
+        input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+        .sticky-header { position: sticky; top: 0; z-index: 50; }
+        .tab-content { display: none; animation: fadeIn 0.3s ease-in-out; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        .red-flag { border: 2px solid #ef4444; background-color: #fef2f2; }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+    </style>
+</head>
+<body class="text-gray-800 pb-24">
+
+    <div class="bg-blue-700 text-white p-4 shadow-md sticky-header">
+        <h1 class="text-xl font-bold flex items-center justify-between">
+            <span>💧 Electrolyte Master <span class="text-sm font-normal text-blue-200">PRO</span></span>
+            <span class="text-xs bg-red-600 px-2 py-1 rounded shadow">ICU / ER</span>
+        </h1>
+        <p class="text-xs text-blue-100 mt-1">Hỗ trợ ra y lệnh & Tiếp cận nguyên nhân lâm sàng</p>
+    </div>
+
+    <div class="m-4 p-4 bg-white rounded-lg shadow border-l-4 border-blue-500">
+        <h2 class="font-bold text-gray-700 mb-3 border-b pb-2">1. Thông số Bệnh nhân</h2>
+        <div class="grid grid-cols-2 gap-3">
+            <div>
+                <label class="block text-xs font-semibold text-gray-500 mb-1">Cân nặng (kg)</label>
+                <input type="number" id="ptWeight" class="w-full p-2 border rounded bg-gray-50 text-lg focus:ring-2 focus:ring-blue-400 outline-none" value="50" oninput="calculateAll()">
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-gray-500 mb-1">Tuổi</label>
+                <input type="number" id="ptAge" class="w-full p-2 border rounded bg-gray-50 text-lg focus:ring-2 focus:ring-blue-400 outline-none" value="60" oninput="calculateAll()">
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-gray-500 mb-1">Giới tính</label>
+                <select id="ptSex" class="w-full p-2 border rounded bg-gray-50 text-lg focus:ring-2 focus:ring-blue-400 outline-none" onchange="calculateAll()">
+                    <option value="male">Nam</option>
+                    <option value="female">Nữ</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-gray-500 mb-1">Đường huyết (mmol/L)</label>
+                <input type="number" id="ptGlucose" class="w-full p-2 border rounded bg-gray-50 text-lg focus:ring-2 focus:ring-blue-400 outline-none" placeholder="VD: 5.5" oninput="calculateAll()">
+            </div>
+        </div>
+    </div>
+
+    <div class="flex border-b border-gray-300 bg-white sticky top-[72px] z-40 shadow-sm">
+        <button class="flex-1 py-3 text-center font-bold text-blue-600 border-b-2 border-blue-600 transition-colors" id="tabBtn1" onclick="switchTab(1)">Na+ & K+</button>
+        <button class="flex-1 py-3 text-center font-semibold text-gray-500 border-b-2 border-transparent transition-colors" id="tabBtn2" onclick="switchTab(2)">Ca, Mg, PO4</button>
+    </div>
+
+    <div id="tab1" class="tab-content active m-4 space-y-4">
+        
+        <div class="bg-white rounded-lg shadow border border-gray-200 overflow-hidden">
+            <div class="bg-blue-50 p-3 border-b flex justify-between items-center">
+                <h3 class="font-bold text-blue-800">RỐI LOẠN NATRI (Na+)</h3>
+                <span class="text-xs text-gray-500 font-medium bg-blue-100 px-2 py-1 rounded">BT: 135-145</span>
+            </div>
+            <div class="p-4 space-y-4">
+                <div class="flex flex-col space-y-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600 mb-1">Na+ máu đo được (mmol/L)</label>
+                        <input type="number" id="valNa" class="w-full p-3 border rounded-lg bg-gray-50 text-xl font-bold text-blue-700 focus:ring-2 focus:ring-blue-400 outline-none" placeholder="VD: 120" oninput="calculateAll()">
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded border border-gray-200 space-y-2">
+                        <div class="flex items-center space-x-2">
+                            <input type="checkbox" id="naSymptoms" class="w-5 h-5 text-red-600 rounded" onchange="calculateAll()">
+                            <label for="naSymptoms" class="text-sm font-semibold text-red-700 cursor-pointer">Triệu chứng THẦN KINH nặng (Co giật, Hôn mê, Nôn ói nhiều)</label>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 mb-1 mt-2">Đánh giá Thể tích dịch ngoại bào (Lâm sàng):</label>
+                            <select id="naVolume" class="w-full p-2 border rounded bg-white text-sm focus:ring-2 focus:ring-blue-400 outline-none" onchange="calculateAll()">
+                                <option value="unknown">Chưa rõ / Đang đánh giá</option>
+                                <option value="hypo">Giảm thể tích (Khô, dấu véo da +, tụt HA)</option>
+                                <option value="eu">Đẳng thể tích (Bình thường)</option>
+                                <option value="hyper">Tăng thể tích (Phù, báng bụng, tĩnh mạch cổ nổi)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="naResultBox" class="hidden p-3 rounded-lg bg-gray-100 text-sm border-l-4 border-blue-400">
+                    <p id="naStatus" class="font-bold text-gray-800"></p>
+                    <p id="naCorrected" class="text-gray-600 mt-1"></p>
+                    <p id="naDeficit" class="text-gray-600 font-medium"></p>
+                    <p id="naWarning" class="text-red-600 font-bold mt-2 text-xs border-t border-gray-300 pt-2"></p>
+                </div>
+
+                <div class="relative">
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">Y Lệnh Đề Xuất (Tham khảo):</label>
+                    <textarea id="orderNa" class="w-full p-3 border rounded bg-yellow-50 text-sm h-32 font-mono focus:outline-none" readonly></textarea>
+                    <button onclick="copyOrder('orderNa')" class="absolute bottom-2 right-2 bg-blue-600 text-white px-3 py-1 rounded text-xs shadow hover:bg-blue-700 transition">Copy</button>
+                </div>
+
+                <details class="bg-blue-50 rounded-lg border border-blue-200">
+                    <summary class="font-semibold text-sm text-blue-800 cursor-pointer p-3 flex justify-between items-center">
+                        🔍 Xem gợi ý nguyên nhân (Chẩn đoán phân biệt)
+                        <span class="text-blue-500">▼</span>
+                    </summary>
+                    <div class="p-3 pt-0 text-sm text-gray-700 border-t border-blue-200 bg-white" id="naCauses">
+                        Vui lòng nhập giá trị Natri và chọn Thể tích dịch để xem nguyên nhân gợi ý.
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow border border-gray-200 overflow-hidden">
+            <div class="bg-orange-50 p-3 border-b flex justify-between items-center">
+                <h3 class="font-bold text-orange-800">RỐI LOẠN KALI (K+)</h3>
+                <span class="text-xs text-gray-500 font-medium bg-orange-100 px-2 py-1 rounded">BT: 3.5-5.0</span>
+            </div>
+            <div class="p-4 space-y-4">
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600 mb-1">K+ máu (mmol/L)</label>
+                        <input type="number" id="valK" class="w-full p-3 border rounded-lg bg-gray-50 text-xl font-bold text-orange-700 focus:ring-2 focus:ring-orange-400 outline-none" placeholder="VD: 2.5" oninput="calculateAll()">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600 mb-1">Đường truyền sẵn có</label>
+                        <select id="lineAccess" class="w-full p-3 border rounded-lg bg-gray-50 text-sm font-medium focus:ring-2 focus:ring-orange-400 outline-none" onchange="calculateAll()">
+                            <option value="peripheral">Ngoại vi (Ven tay)</option>
+                            <option value="central">Trung tâm (CVP)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-2 bg-red-50 p-3 rounded border border-red-200">
+                    <input type="checkbox" id="ecgChanges" class="w-5 h-5 text-red-600 rounded" onchange="calculateAll()">
+                    <label for="ecgChanges" class="text-sm font-semibold text-red-700 cursor-pointer">Có biến đổi ECG (T nhọn, U, QT kéo dài, QRS giãn)</label>
+                </div>
+
+                <div id="kResultBox" class="hidden p-3 rounded-lg bg-gray-100 text-sm border-l-4 border-orange-400">
+                    <p id="kStatus" class="font-bold text-gray-800"></p>
+                    <p id="kDeficit" class="text-gray-600 mt-1"></p>
+                    <p id="kWarning" class="text-red-600 font-bold mt-2 text-xs border-t border-gray-300 pt-2"></p>
+                </div>
+
+                <div class="relative">
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">Y Lệnh Đề Xuất (Tham khảo):</label>
+                    <textarea id="orderK" class="w-full p-3 border rounded bg-yellow-50 text-sm h-36 font-mono focus:outline-none" readonly></textarea>
+                    <button onclick="copyOrder('orderK')" class="absolute bottom-2 right-2 bg-orange-600 text-white px-3 py-1 rounded text-xs shadow hover:bg-orange-700 transition">Copy</button>
+                </div>
+
+                <details class="bg-orange-50 rounded-lg border border-orange-200">
+                    <summary class="font-semibold text-sm text-orange-800 cursor-pointer p-3 flex justify-between items-center">
+                        🔍 Xem gợi ý nguyên nhân
+                        <span class="text-orange-500">▼</span>
+                    </summary>
+                    <div class="p-3 pt-0 text-sm text-gray-700 border-t border-orange-200 bg-white" id="kCauses">
+                        Vui lòng nhập giá trị Kali để xem nguyên nhân gợi ý.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </div>
+
+    <div id="tab2" class="tab-content m-4 space-y-4">
+        
+        <div class="bg-white rounded-lg shadow border border-gray-200 overflow-hidden">
+            <div class="bg-teal-50 p-3 border-b flex justify-between items-center">
+                <h3 class="font-bold text-teal-800">CANXI (Ca) & ALBUMIN</h3>
+                <span class="text-xs text-gray-500 font-medium bg-teal-100 px-2 py-1 rounded">BT: 2.1-2.6</span>
+            </div>
+            <div class="p-4 space-y-3">
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600 mb-1">Ca toàn phần (mmol/L)</label>
+                        <input type="number" id="valCa" class="w-full p-2 border rounded bg-gray-50 text-lg focus:ring-2 focus:ring-teal-400 outline-none" placeholder="VD: 1.8" oninput="calculateAll()">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600 mb-1">Albumin máu (g/L)</label>
+                        <input type="number" id="valAlb" class="w-full p-2 border rounded bg-gray-50 text-lg focus:ring-2 focus:ring-teal-400 outline-none" value="40" oninput="calculateAll()">
+                    </div>
+                </div>
+
+                <div id="caResultBox" class="hidden p-3 rounded-lg bg-teal-50 border-l-4 border-teal-400 text-sm">
+                    <p id="caCorrected" class="font-bold text-teal-800"></p>
+                </div>
+
+                <div class="relative">
+                    <textarea id="orderCa" class="w-full p-3 border rounded bg-yellow-50 text-sm h-28 font-mono focus:outline-none" readonly placeholder="Nhập Canxi để tạo y lệnh..."></textarea>
+                    <button onclick="copyOrder('orderCa')" class="absolute bottom-2 right-2 bg-teal-600 text-white px-3 py-1 rounded text-xs shadow hover:bg-teal-700 transition">Copy</button>
+                </div>
+                
+                <details class="bg-teal-50 rounded-lg border border-teal-200">
+                    <summary class="font-semibold text-sm text-teal-800 cursor-pointer p-2 flex justify-between items-center">🔍 Nguyên nhân gợi ý <span class="text-teal-500">▼</span></summary>
+                    <div class="p-3 pt-0 text-sm text-gray-700 bg-white border-t" id="caCauses">Nhập giá trị Canxi...</div>
+                </details>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow border border-gray-200 overflow-hidden">
+            <div class="bg-purple-50 p-3 border-b flex justify-between items-center">
+                <h3 class="font-bold text-purple-800">MAGIE (Mg2+)</h3>
+                <span class="text-xs text-gray-500 font-medium bg-purple-100 px-2 py-1 rounded">BT: 0.7-1.0</span>
+            </div>
+            <div class="p-4 space-y-3">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">Mg2+ máu (mmol/L)</label>
+                    <input type="number" id="valMg" class="w-full p-2 border rounded bg-gray-50 text-lg focus:ring-2 focus:ring-purple-400 outline-none" placeholder="VD: 0.5" oninput="calculateAll()">
+                </div>
+                <div class="relative">
+                    <textarea id="orderMg" class="w-full p-3 border rounded bg-yellow-50 text-sm h-24 font-mono focus:outline-none" readonly></textarea>
+                    <button onclick="copyOrder('orderMg')" class="absolute bottom-2 right-2 bg-purple-600 text-white px-3 py-1 rounded text-xs shadow hover:bg-purple-700 transition">Copy</button>
+                </div>
+                <details class="bg-purple-50 rounded-lg border border-purple-200">
+                    <summary class="font-semibold text-sm text-purple-800 cursor-pointer p-2 flex justify-between items-center">🔍 Nguyên nhân gợi ý <span class="text-purple-500">▼</span></summary>
+                    <div class="p-3 pt-0 text-sm text-gray-700 bg-white border-t" id="mgCauses">Nhập giá trị Magie...</div>
+                </details>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow border border-gray-200 overflow-hidden">
+            <div class="bg-pink-50 p-3 border-b flex justify-between items-center">
+                <h3 class="font-bold text-pink-800">PHOTPHO (PO4)</h3>
+                <span class="text-xs text-gray-500 font-medium bg-pink-100 px-2 py-1 rounded">BT: 0.8-1.45</span>
+            </div>
+            <div class="p-4 space-y-3">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">PO4 máu (mmol/L)</label>
+                    <input type="number" id="valPo4" class="w-full p-2 border rounded bg-gray-50 text-lg focus:ring-2 focus:ring-pink-400 outline-none" placeholder="VD: 0.4" oninput="calculateAll()">
+                </div>
+                <div class="relative">
+                    <textarea id="orderPo4" class="w-full p-3 border rounded bg-yellow-50 text-sm h-28 font-mono focus:outline-none" readonly></textarea>
+                    <button onclick="copyOrder('orderPo4')" class="absolute bottom-2 right-2 bg-pink-600 text-white px-3 py-1 rounded text-xs shadow hover:bg-pink-700 transition">Copy</button>
+                </div>
+                <details class="bg-pink-50 rounded-lg border border-pink-200">
+                    <summary class="font-semibold text-sm text-pink-800 cursor-pointer p-2 flex justify-between items-center">🔍 Nguyên nhân gợi ý <span class="text-pink-500">▼</span></summary>
+                    <div class="p-3 pt-0 text-sm text-gray-700 bg-white border-t" id="po4Causes">Nhập giá trị Photpho...</div>
+                </details>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="toast" class="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-4 py-2 rounded-full shadow-lg transition-opacity duration-300 opacity-0 pointer-events-none z-50">
+        Đã copy y lệnh!
+    </div>
+
+    <script>
+        function switchTab(tabIndex) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.getElementById('tab' + tabIndex).classList.add('active');
+            
+            if(tabIndex === 1) {
+                document.getElementById('tabBtn1').className = "flex-1 py-3 text-center font-bold text-blue-600 border-b-2 border-blue-600 transition-colors";
+                document.getElementById('tabBtn2').className = "flex-1 py-3 text-center font-semibold text-gray-500 border-b-2 border-transparent transition-colors hover:text-gray-700";
+            } else {
+                document.getElementById('tabBtn2').className = "flex-1 py-3 text-center font-bold text-blue-600 border-b-2 border-blue-600 transition-colors";
+                document.getElementById('tabBtn1').className = "flex-1 py-3 text-center font-semibold text-gray-500 border-b-2 border-transparent transition-colors hover:text-gray-700";
+            }
+        }
+
+        function calculateAll() {
+            let weight = parseFloat(document.getElementById('ptWeight').value) || 50;
+            let age = parseFloat(document.getElementById('ptAge').value) || 60;
+            let sex = document.getElementById('ptSex').value;
+            let glu = parseFloat(document.getElementById('ptGlucose').value);
+            
+            let tbwFactor = sex === 'male' ? (age > 65 ? 0.5 : 0.6) : (age > 65 ? 0.45 : 0.5);
+            let tbw = weight * tbwFactor;
+
+            // ==================== NATRI ====================
+            let na = parseFloat(document.getElementById('valNa').value);
+            let naBox = document.getElementById('naResultBox');
+            let naSymptoms = document.getElementById('naSymptoms').checked;
+            let naVolume = document.getElementById('naVolume').value;
+            let orderNaText = "";
+            let naCausesText = "";
+
+            if (!isNaN(na)) {
+                naBox.classList.remove('hidden');
+                let naCorr = na;
+                
+                if (!isNaN(glu) && glu > 5.6) {
+                    naCorr = na + 0.3 * (glu - 5.6);
+                    document.getElementById('naCorrected').textContent = `(Na hiệu chỉnh theo Glucose: ${naCorr.toFixed(1)} mmol/L)`;
+                    document.getElementById('naCorrected').style.display = 'block';
+                } else {
+                    document.getElementById('naCorrected').style.display = 'none';
+                }
+
+                if (naCorr < 135) {
+                    document.getElementById('naStatus').textContent = "↓ HẠ NATRI MÁU";
+                    document.getElementById('naStatus').className = "font-bold text-blue-600";
+                    let deficit = tbw * (140 - naCorr);
+                    document.getElementById('naDeficit').textContent = `Thiếu hụt Na+ ước tính: ${deficit.toFixed(0)} mmol.`;
+                    document.getElementById('naWarning').innerHTML = `⚠️ CẢNH BÁO: Nguy cơ hủy myelin thẩm thấu (ODS).<br>- KHÔNG tăng Na quá 8 mmol/L trong 24h đầu.<br>- KHÔNG tăng quá 18 mmol/L trong 48h.`;
+                    
+                    if(naSymptoms) {
+                        orderNaText = `[CẤP CỨU] Hạ Natri máu CÓ TRIỆU CHỨNG THẦN KINH\n- Bolus 150ml NaCl 3% TTM qua bơm tiêm điện trong 20 phút.\n- Theo dõi lâm sàng và lặp lại x2 lần (mỗi 20p) nếu triệu chứng chưa cải thiện.\n- Ngừng NaCl 3% khi hết triệu chứng hoặc Na tăng đủ 5 mmol/L.\n- Thử lại Ion đồ mỗi 2-4 giờ.`;
+                        naBox.classList.add('red-flag');
+                    } else {
+                        if (naVolume === 'hypo') {
+                            orderNaText = `[ĐIỀU TRỊ] Hạ Natri máu - Giảm thể tích\n- Truyền NaCl 0.9% 500-1000ml TTM để bù dịch nền.\n- Ngừng các thuốc lợi tiểu.\n- Xét nghiệm lại Ion đồ sau 6-12h.`;
+                        } else if (naVolume === 'hyper') {
+                            orderNaText = `[ĐIỀU TRỊ] Hạ Natri máu - Tăng thể tích (Phù)\n- Hạn chế nước (< 1 Lít/ngày).\n- Sử dụng lợi tiểu quai (Furosemide) nếu có chỉ định.\n- Điều trị bệnh lý nền (Suy tim, Xơ gan, Thận hư).`;
+                        } else {
+                            orderNaText = `[ĐIỀU TRỊ] Hạ Natri máu - Không triệu chứng\n- Hạn chế nước dịch.\n- Tìm nguyên nhân SIADH, suy giáp, suy thượng thận.\n- Không có chỉ định dùng NaCl 3% lúc này.`;
+                        }
+                        naBox.classList.remove('red-flag');
+                    }
+
+                    // Gợi ý nguyên nhân Hạ Natri
+                    naCausesText = "<strong>Theo Thể tích ngoại bào:</strong><br>";
+                    if (naVolume === 'hypo' || naVolume === 'unknown') naCausesText += "- <em>Giảm thể tích:</em> Nôn ói, tiêu chảy nhiều, dùng lợi tiểu, mất muối qua thận, bỏng.<br>";
+                    if (naVolume === 'eu' || naVolume === 'unknown') naCausesText += "- <em>Đẳng thể tích:</em> Hội chứng SIADH, suy giáp, suy thượng thận nguyên phát, do thuốc (SSRI, chống động kinh).<br>";
+                    if (naVolume === 'hyper' || naVolume === 'unknown') naCausesText += "- <em>Tăng thể tích:</em> Suy tim sung huyết, xơ gan mất bù, hội chứng thận hư, suy thận mạn.";
+
+                } else if (naCorr > 145) {
+                    document.getElementById('naStatus').textContent = "↑ TĂNG NATRI MÁU";
+                    document.getElementById('naStatus').className = "font-bold text-red-600";
+                    let waterDeficit = tbw * ((naCorr / 140) - 1);
+                    document.getElementById('naDeficit').textContent = `Nước tự do thiếu hụt: ${waterDeficit.toFixed(1)} Lít.`;
+                    document.getElementById('naWarning').innerHTML = `⚠️ CẢNH BÁO: Hạ Na quá nhanh gây Phù não.<br>- Chỉ bù 50% lượng nước thiếu hụt trong 24h đầu.<br>- Tốc độ giảm Na không quá 10 mmol/L/24h.`;
+                    
+                    if (naSymptoms) {
+                        orderNaText = `[CẤP CỨU] Tăng Natri máu CÓ TRIỆU CHỨNG/Cấp tính\n- Truyền Dextrose 5% TTM hoặc uống nước trong (qua sonde).\n- Bù nước tích cực có kiểm soát.\n- Theo dõi Ion đồ mỗi 2-4h.`;
+                        naBox.classList.add('red-flag');
+                    } else {
+                        orderNaText = `[ĐIỀU TRỊ] Tăng Natri máu (${naCorr.toFixed(1)} mmol/L)\n- Bù nước qua đường uống/Sonde dạ dày (Ưu tiên).\n- Nếu cần truyền: Dextrose 5% hoặc NaCl 0.45% TTM.\n- Đích: Giảm Na không quá 10 mmol/L trong 24h đầu.`;
+                        naBox.classList.remove('red-flag');
+                    }
+                    
+                    naCausesText = "<strong>Nguyên nhân thường gặp:</strong><br>- Mất nước không cảm nhận (sốt cao, thở máy).<br>- Đái tháo nhạt (Trung ương hoặc do thận).<br>- Lợi tiểu thẩm thấu (Glucose niệu cao).<br>- Đưa quá nhiều muối (Truyền NaHCO3, NaCl 3%).";
+                } else {
+                    document.getElementById('naStatus').textContent = "✓ Natri máu bình thường";
+                    document.getElementById('naStatus').className = "font-bold text-green-600";
+                    document.getElementById('naDeficit').textContent = "";
+                    document.getElementById('naWarning').textContent = "";
+                    orderNaText = "Natri máu bình thường. Đánh giá lại sau 24h nếu có nguy cơ.";
+                    naBox.classList.remove('red-flag');
+                    naCausesText = "Bệnh nhân hiện không bị rối loạn Natri máu.";
+                }
+                document.getElementById('naCauses').innerHTML = naCausesText;
+            } else {
+                naBox.classList.add('hidden');
+                document.getElementById('naCauses').innerHTML = "Vui lòng nhập giá trị Natri.";
+            }
+            document.getElementById('orderNa').value = orderNaText;
+
+
+            // ==================== KALI ====================
+            let k = parseFloat(document.getElementById('valK').value);
+            let ecg = document.getElementById('ecgChanges').checked;
+            let lineAccess = document.getElementById('lineAccess').value;
+            let kBox = document.getElementById('kResultBox');
+            let orderKText = "";
+            let kCausesText = "";
+
+            if (!isNaN(k)) {
+                kBox.classList.remove('hidden');
+                if (k < 3.5) {
+                    document.getElementById('kStatus').textContent = "↓ HẠ KALI MÁU";
+                    document.getElementById('kStatus').className = "font-bold text-blue-600";
+                    let kDeficit = (4.0 - k) * weight * 0.4; 
+                    document.getElementById('kDeficit').textContent = `Thiếu hụt K+ ước tính: ~ ${kDeficit.toFixed(0)} mmol.`;
+                    document.getElementById('kWarning').innerHTML = `⚠️ LUÔN XÉT NGHIỆM VÀ BÙ MAGIE KÈM THEO.<br>Không bù đủ Mg2+ thì bù K+ sẽ thất bại.`;
+                    
+                    if (k < 2.5 || ecg) {
+                        if (lineAccess === 'central') {
+                            orderKText = `[CẤP CỨU] Hạ Kali máu nặng (${k} mmol/L) - ĐƯỜNG TRUNG TÂM\n- Pha 2 ống KCl 10% (10ml/ống) vào 100ml NaCl 0.9%.\n- Truyền TM qua Bơm tiêm điện: Tốc độ 15-20 mmol/h.\n- Gắn Monitor theo dõi liên tục. Thử lại K+ sau 2-4h.`;
+                        } else {
+                            orderKText = `[CẤP CỨU] Hạ Kali máu nặng (${k} mmol/L) - ĐƯỜNG NGOẠI VI\n*CẢNH BÁO: Tốc độ truyền ngoại vi tối đa 10 mmol/h, nồng độ tối đa 40 mmol/L để tránh hoại tử mạch.\n- Pha 1 ống KCl 10% (10ml) vào 250ml NaCl 0.9%.\n- Truyền TM tốc độ chậm <= 10 mmol/h.\n- Khẩn trương lập đường truyền trung tâm.`;
+                        }
+                        kBox.classList.add('red-flag');
+                    } else {
+                        orderKText = `[ĐIỀU TRỊ] Hạ Kali máu nhẹ/vừa (${k} mmol/L)\n- Bù đường uống (An toàn nhất): Kaleorid 600mg (2 viên) Uống, chia 2 lần.\n- HOẶC pha 1 ống KCl 10% (10ml) vào 500ml dịch truyền nền TTM 40 giọt/phút.`;
+                        kBox.classList.remove('red-flag');
+                    }
+                    kCausesText = "- <em>Mất qua tiêu hóa:</em> Tiêu chảy, nôn ói, dẫn lưu dạ dày.<br>- <em>Mất qua thận:</em> Dùng lợi tiểu Quai/Thiazide, cường Aldosterone, hội chứng Cushing, toan ống thận.<br>- <em>K+ dịch chuyển vào tế bào:</em> Kiềm chuyển hóa, dùng Insulin, kích thích Beta-2 (Salbutamol).";
+
+                } else if (k > 5.0) {
+                    document.getElementById('kStatus').textContent = "↑ TĂNG KALI MÁU";
+                    document.getElementById('kStatus').className = "font-bold text-red-600";
+                    document.getElementById('kDeficit').textContent = "Lập tức ngừng các nguồn cung cấp Kali (Dịch truyền, thức ăn).";
+                    document.getElementById('kWarning').innerHTML = `⚠️ CẢNH BÁO: Tăng K+ đe dọa ngừng tim đột ngột.<br>Chỉ định đo ECG ngay lập tức.`;
+                    
+                    if (k >= 6.5 || ecg) {
+                        orderKText = `[CẤP CỨU] TĂNG KALI ĐE DỌA TÍNH MẠNG (${k} mmol/L)\n1. ĐỔI ECG (+): Calcium Gluconate 10% (1 ống) TMC 3-5 phút (Bảo vệ cơ tim. Lặp lại sau 5p nếu chưa hết đổi ECG).\n2. Dextrose 20% 50ml + Actrapid 10 UI TMC.\n3. Phun khí dung Salbutamol (10-20mg).\n4. Mời hội chẩn Lọc máu cấp cứu (HD) nếu suy thận vô niệu.`;
+                        kBox.classList.add('red-flag');
+                    } else {
+                        orderKText = `[ĐIỀU TRỊ] Tăng Kali máu vừa (${k} mmol/L)\n- Furosemide 20mg (1 ống) TMC (Lợi tiểu bài xuất K+).\n- Kalimate/Resonium 5-10g (Uống hoặc Thụt tháo).\n- Rà soát và ngừng các thuốc giữ Kali (UCMC, UCTT, Lợi tiểu kháng Aldosterone).`;
+                        kBox.classList.remove('red-flag');
+                    }
+                    kCausesText = "- <em>Giảm bài xuất:</em> Suy thận cấp/mạn, suy thượng thận (Addison), thuốc (UCMC, UCTT, Spironolactone, NSAIDs).<br>- <em>Giải phóng từ nội bào:</em> Tiêu cơ vân, tán huyết, hội chứng ly giải u, toan máu.<br>- <em>Lỗi xét nghiệm (Giả tăng):</em> Garo tay quá lâu, mẫu máu bị vỡ hồng cầu.";
+                } else {
+                    document.getElementById('kStatus').textContent = "✓ Kali máu bình thường";
+                    document.getElementById('kStatus').className = "font-bold text-green-600";
+                    document.getElementById('kDeficit').textContent = "";
+                    document.getElementById('kWarning').textContent = "";
+                    orderKText = "Kali máu trong giới hạn bình thường.";
+                    kBox.classList.remove('red-flag');
+                    kCausesText = "Bình thường.";
+                }
+                document.getElementById('kCauses').innerHTML = kCausesText;
+            } else {
+                kBox.classList.add('hidden');
+                document.getElementById('kCauses').innerHTML = "Nhập giá trị Kali.";
+            }
+            document.getElementById('orderK').value = orderKText;
+
+
+            // ==================== CANXI ====================
+            let ca = parseFloat(document.getElementById('valCa').value);
+            let alb = parseFloat(document.getElementById('valAlb').value) || 40;
+            let caBox = document.getElementById('caResultBox');
+            let orderCaText = "";
+            let caCausesText = "";
+
+            if (!isNaN(ca)) {
+                caBox.classList.remove('hidden');
+                let caCorr = ca + 0.02 * (40 - alb);
+                document.getElementById('caCorrected').textContent = `Canxi hiệu chỉnh: ${caCorr.toFixed(2)} mmol/L`;
+                
+                if (caCorr < 2.1) {
+                    orderCaText = `[ĐIỀU TRỊ] Hạ Canxi máu (${caCorr.toFixed(2)} mmol/L)\n- Có triệu chứng (Tê môi, Trousseau +): Calcium Gluconate 10% 1-2 ống pha 50ml NaCl 0.9% TTM trong 20 phút.\n- Không triệu chứng: Bù Calcium Sandoz 500mg Uống. Cần bổ sung Vitamin D.`;
+                    caCausesText = "- Suy tuyến cận giáp (sau phẫu thuật tuyến giáp).<br>- Thiếu hụt Vitamin D, hội chứng kém hấp thu.<br>- Suy thận mạn (giảm tổng hợp vit D hoạt tính).<br>- Viêm tụy cấp, truyền máu khối lượng lớn (nhiễm độc Citrate).";
+                } else if (caCorr > 2.6) {
+                    orderCaText = `[ĐIỀU TRỊ] Tăng Canxi máu (${caCorr.toFixed(2)} mmol/L)\n- Truyền NaCl 0.9% tích cực (200-300 ml/h) để pha loãng và tăng bài niệu.\n- Tiêm TM Furosemide SAU KHI đã bù đủ dịch.\n- Hội chẩn xem xét dùng Calcitonin hoặc Bisphosphonates nếu do ác tính.`;
+                    caCausesText = "- Cường cận giáp nguyên phát (Adenoma).<br>- Bệnh lý ác tính (Di căn xương, đa u tủy, tiết PTHrP).<br>- Quá liều Vitamin D.<br>- Nằm bất động lâu ngày.";
+                } else {
+                    orderCaText = "Canxi hiệu chỉnh bình thường.";
+                    caCausesText = "Bình thường.";
+                }
+                document.getElementById('caCauses').innerHTML = caCausesText;
+            } else {
+                caBox.classList.add('hidden');
+            }
+            document.getElementById('orderCa').value = orderCaText;
+
+
+            // ==================== MAGIE & PO4 ====================
+            let mg = parseFloat(document.getElementById('valMg').value);
+            let orderMgText = "";
+            let mgCausesText = "";
+            if (!isNaN(mg)) {
+                if (mg < 0.7) {
+                    orderMgText = `[ĐIỀU TRỊ] Hạ Magie máu (${mg} mmol/L)\n- Magnesium Sulfate 15% 1.5g (1 ống) pha 100ml NaCl 0.9% TTM chậm trong 30-60 phút.\n*Thiếu Mg sẽ làm hạ K và Ca kháng trị.`;
+                    mgCausesText = "- Nghiện rượu mạn tính.<br>- Kém hấp thu tiêu hóa, tiêu chảy kéo dài.<br>- Do thuốc: Lợi tiểu, PPIs (Omeprazole dùng kéo dài), Aminoglycoside.";
+                } else if (mg > 1.0) {
+                    orderMgText = `[ĐIỀU TRỊ] Tăng Magie máu (${mg} mmol/L)\n- Dừng các thuốc chứa Magie. Lợi tiểu Furosemide bài niệu.\n- Nếu suy hô hấp/Tụt HA: Calcium Gluconate 10% TMC (Chất đối kháng).`;
+                    mgCausesText = "- Suy thận cấp/mạn (nguyên nhân phổ biến nhất).<br>- Bổ sung quá mức (Điều trị tiền sản giật, thuốc nhuận tràng/kháng axit chứa Mg).";
+                } else {
+                    orderMgText = "Magie máu bình thường.";
+                    mgCausesText = "Bình thường.";
+                }
+                document.getElementById('mgCauses').innerHTML = mgCausesText;
+            }
+            document.getElementById('orderMg').value = orderMgText;
+
+            let po4 = parseFloat(document.getElementById('valPo4').value);
+            let orderPo4Text = "";
+            let po4CausesText = "";
+            if (!isNaN(po4)) {
+                if (po4 < 0.8) {
+                    if (po4 < 0.32) {
+                        orderPo4Text = `[CẤP CỨU] Hạ PO4 nặng (< 0.32 mmol/L)\n- Truyền TM Sodium/Potassium Phosphate 0.08 - 0.16 mmol/kg trong 2-6 giờ.\n- Theo dõi nguy cơ hạ Canxi do tủa PO4.`;
+                    } else {
+                        orderPo4Text = `[ĐIỀU TRỊ] Hạ PO4 máu nhẹ/vừa (${po4} mmol/L)\n- Ưu tiên bù đường uống (Sữa, chế phẩm bổ sung).`;
+                    }
+                    po4CausesText = "- Hội chứng nuôi ăn lại (Refeeding syndrome).<br>- Suy dinh dưỡng, nghiện rượu.<br>- Cường cận giáp, thiếu Vitamin D.<br>- Sử dụng thuốc gắn PO4 (Antacid nhôm/magie).";
+                } else if (po4 > 1.45) {
+                    orderPo4Text = `[ĐIỀU TRỊ] Tăng PO4 máu (${po4} mmol/L)\n- Ăn kiêng giảm PO4.\n- Thuốc gắn Photpho tại ruột uống cùng bữa ăn (Sevelamer, Calcium Carbonate).`;
+                    po4CausesText = "- Suy thận mạn (Phổ biến nhất).<br>- Suy tuyến cận giáp.<br>- Hội chứng ly giải u, tiêu cơ vân (giải phóng từ tế bào).";
+                } else {
+                    orderPo4Text = "Photpho máu bình thường.";
+                    po4CausesText = "Bình thường.";
+                }
+                document.getElementById('po4Causes').innerHTML = po4CausesText;
+            }
+            document.getElementById('orderPo4').value = orderPo4Text;
+        }
+
+        function copyOrder(elementId) {
+            let copyText = document.getElementById(elementId);
+            if(!copyText.value) return;
+            
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(copyText.value).then(() => {
+                let toast = document.getElementById("toast");
+                toast.classList.remove("opacity-0");
+                setTimeout(function(){ toast.classList.add("opacity-0"); }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
