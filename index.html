@@ -128,18 +128,14 @@
         ];
         let currentCategory = 'All';
 
-        // --- 2. LOGIC LỌC & RENDER GIAO DIỆN ---
         function setFilter(category, btnElement) {
             currentCategory = category;
-            
-            // Đổi màu nút filter
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.classList.remove('bg-blue-600', 'text-white');
                 btn.classList.add('bg-gray-200', 'text-gray-700');
             });
             btnElement.classList.remove('bg-gray-200', 'text-gray-700');
             btnElement.classList.add('bg-blue-600', 'text-white');
-
             renderApps();
         }
 
@@ -152,14 +148,11 @@
             let hasResults = false;
 
             apps.forEach(app => {
-                // Lọc theo Category và Search
                 const matchCategory = currentCategory === 'All' || app.category === currentCategory;
                 const matchSearch = app.title.toLowerCase().includes(searchQuery) || app.desc.toLowerCase().includes(searchQuery);
 
                 if (matchCategory && matchSearch) {
                     hasResults = true;
-                    
-                    // Tạo thẻ Card
                     const card = document.createElement('div');
                     card.className = `app-card bg-white rounded-xl border border-gray-200 p-5 flex flex-col justify-between h-full border-t-4 border-t-${app.color}-500`;
                     
@@ -189,7 +182,6 @@
             }
         }
 
-        // Render lần đầu khi load trang
         renderApps();
     </script>
 </body>
