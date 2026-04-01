@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical Nutrition Optimizer V2.0</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; }
+        .card { background: white; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); border: 1px solid #e2e8f0; }
+        input[type="number"], select { border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px; width: 100%; focus: border-emerald-500; outline: none; transition: all 0.2s; }
+        label { font-size: 0.75rem; font-weight: 700; color: #475569; margin-bottom: 4px; display: block; text-transform: uppercase; }
+        .alert-flash { animation: flashRed 1s infinite alternate; }
+        @keyframes flashRed { from { background-color: #fee2e2; border-color: #ef4444; } to { background-color: #fef2f2; border-color: #fca5a5; } }
+    </style>
+</head>
+<body class="pb-12 text-gray-800">
+
+    <header class="bg-emerald-700 text-white p-4 shadow-md sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <h1 class="font-bold text-lg flex items-center">
+                <span class="mr-2 text-2xl">⚖️</span> NUTRITION OPTIMIZER
+            </h1>
+            <span class="text-[10px] font-bold bg-emerald-900 px-2 py-1 rounded shadow-inner">V2.0 PRO</span>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto p-4 space-y-5 mt-2">
+        
+        <div class="card p-4 border-t-4 border-t-blue-500">
+            <h2 class="text-blue-800 font-bold border-b pb-2 mb-4 flex items-center">
+                <span class="mr-2">👤</span> 1. Nhân trắc học & Yếu tố nguy cơ
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                <div>
+                    <label>Giới tính</label>
+                    <select id="gender" onchange="calculateAll()">
+                        <option value="male">Nam</option>
+                        <option value="female">Nữ</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Chiều cao (cm)</label>
+                    <input type="number" id="height" value="165" oninput="calculateAll()">
+                </div>
+                <div>
+                    <label>Cân nặng thực tế (kg)</label>
+                    <input type="number" id="actualWeight" value="65" oninput="calculateAll()">
+                </div>
+                <div class="flex items-end pb-1">
+                    <label class="flex items-center space-x-2 cursor-pointer bg-gray-50 p-2 rounded border w-full hover:bg-gray-100">
+                        <input type="checkbox" id="edema" class="w-4 h-4 text-blue-600 rounded" onchange="calculateAll()">
+                        <span class="text-xs font-bold text-gray-700">Có Phù/Báng bụng</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="bg-blue-50 p-3 rounded-lg border border-blue-100 flex flex-col md:flex-row justify-between items-center gap-2">
+                <div class="text-sm">
+                    BMI: <span id="bmiVal" class="font-bold">--</span> | 
+                    CN Lý tưởng (IBW): <span id="ibwVal" class="font-bold">--</span> kg
+                </div>
+                <div class="bg-white px-3 py-1.5 rounded shadow-sm text-sm border border-blue-200">
+                    Cân nặng dùng tính toán: <span id="calcWeightText" class="font-black text-blue-700 text-lg">--</span> kg
+                    <span id="weightNote" class="block text-[10px] text-gray-500 mt-0.5"></span>
+                </div>
+            </div>
+
+            <div class="mt-4 pt-4 border-t border-dashed border-gray-200">
+                <label class="flex items-start space-x-2 cursor-pointer bg-red-50 p-3 rounded-lg border border-red-200 hover:bg-red-100 transition">
+                    <input type="checkbox" id="refeeding" class="w-5 h-5 mt-0.5 text-red-600 rounded" onchange="calculateAll()">
+                    <div>
+                        <span class="text-sm font-bold text-red-800 block">Nguy cơ Hội chứng nuôi ăn lại (Refeeding Syndrome)</span>
+                        <span class="text-[11px] text-red-600 font-normal">Nhịn ăn > 5 ngày, sụt > 10% trọng lượng, hoặc suy kiệt nặng. Kích hoạt sẽ khóa Kcal ở mức an toàn (15 kcal/kg/ngày).</span>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <div class="card p-4 border-t-4 border-t-emerald-500">
+            <h2 class="text-emerald-800 font-bold border-b pb-2 mb-4 flex items-center">
+                <span class="mr-2">📊</span> 2. Nhu cầu Năng lượng & Dịch
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                <div>
+                    <label>Hệ số Bệnh lý</label>
+                    <select id="stressFactor" onchange="calculateAll()">
+                        <option value="25">Ổn định (25 kcal/kg)</option>
+                        <option value="30">Nhiễm trùng/NK (30 kcal/kg)</option>
+                        <option value="35">Bỏng/Đa chấn thương (35 kcal/kg)</option>
+                        <option value="20">Suy thận chưa lọc (20 kcal/kg)</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Mức độ sốt (&deg;C)</label>
+                    <input type="number" id="temp" value="37" step="0.1" oninput="calculateAll()">
+                </div>
+                <div>
+                    <label>Dịch mất khác (ml)</label>
+                    <input type="number" id="otherLoss" value="0" placeholder="Dẫn lưu, nôn..." oninput="calculateAll()">
+                </div>
+                <div>
+                    <label>Lượng nước uống tối đa</label>
+                    <input type="number" id="fluidRestriction" placeholder="Chỉ nhập nếu hạn chế..." class="bg-yellow-50" oninput="calculateAll()">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-100 text-center relative">
+                    <p class="text-[10px] text-emerald-600 font-bold uppercase tracking-wider">Tổng năng lượng</p>
+                    <p class="text-2xl font-black text-emerald-700"><span id="resKcal">0</span> <small class="text-xs font-semibold text-emerald-600">kcal/ngày</small></p>
+                    <span id="kcalAlert" class="absolute top-2 right-2 text-red-500 hidden" title="Bị khóa do Refeeding">⚠️</span>
+                </div>
+                <div id="fluidBox" class="bg-blue-50 p-3 rounded-xl border border-blue-100 text-center transition-all duration-300">
+                    <p class="text-[10px] text-blue-600 font-bold uppercase tracking-wider">Tổng nhu cầu Dịch</p>
+                    <p class="text-2xl font-black text-blue-700"><span id="resWater">0</span> <small class="text-xs font-semibold text-blue-600">ml/ngày</small></p>
+                    <p id="fluidWarningText" class="text-[10px] text-red-600 font-bold hidden mt-1">Vượt quá lượng hạn chế!</p>
+                </div>
+                <div class="bg-orange-50 p-3 rounded-xl border border-orange-100 text-center">
+                    <p class="text-[10px] text-orange-600 font-bold uppercase tracking-wider">Nhu cầu Protein</p>
+                    <p class="text-2xl font-black text-orange-700"><span id="resPro">0</span> <small class="text-xs font-semibold text-orange-600">g/ngày</small></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <div class="card p-4">
+                <h2 class="text-gray-800 font-bold border-b pb-2 mb-4">🥗 3. Chỉ định Chế độ ăn</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label>Loại bệnh lý (Mã chuẩn)</label>
+                        <select id="dietSelect" onchange="calculateAll()" class="bg-white border-gray-300 font-bold text-gray-700">
+                            <optgroup label="Hồi sức & Chung">
+                                <option value="BT">Bình thường (BT01)</option>
+                                <option value="NK">Nhiễm khuẩn / Cấp tính (NK01)</option>
+                            </optgroup>
+                            <optgroup label="Nội tiết & Chuyển hóa">
+                                <option value="DTD">Đái tháo đường (ĐTĐ01)</option>
+                                <option value="GOUT">Bệnh Gout / Tăng Acid Uric (GOUT01)</option>
+                            </optgroup>
+                            <optgroup label="Tim mạch & Hô hấp">
+                                <option value="THA">Tăng huyết áp / Suy tim (THA01)</option>
+                                <option value="COPD">Phổi tắc nghẽn mạn tính (HH01)</option>
+                            </optgroup>
+                            <optgroup label="Tiêu hóa & Gan mật">
+                                <option value="DD">Dạ dày - Tá tràng (DD01)</option>
+                                <option value="GM">Bệnh lý Gan mật (GM01)</option>
+                                <option value="TC">Tiêu chảy / Viêm ruột (TC01)</option>
+                            </optgroup>
+                            <optgroup label="Thận - Tiết niệu">
+                                <option value="ST">Suy thận CHƯA lọc máu (ST01)</option>
+                                <option value="STLM">Suy thận ĐÃ LỌC máu (ST02)</option>
+                            </optgroup>
+                            <optgroup label="Ngoại khoa">
+                                <option value="NT">Ngoại khoa / Hậu phẫu (NKP01)</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Hình thức nuôi ăn</label>
+                        <select id="dForm" onchange="calculateAll()" class="bg-gray-50 border-gray-300 font-bold text-gray-700">
+                            <option value="Cơm">Ăn Cơm</option>
+                            <option value="Cháo">Ăn Cháo</option>
+                            <option value="Súp">Ăn Súp</option>
+                            <option value="Sonde">Bơm qua Sonde dạ dày (EN)</option>
+                        </select>
+                    </div>
+
+                    <div id="sondeModule" class="hidden bg-indigo-50 p-3 rounded-lg border border-indigo-200 mt-2">
+                        <label class="text-indigo-800 border-b border-indigo-200 pb-1 mb-2">Tốc độ nhỏ giọt / Bơm tiêm điện (Sonde)</label>
+                        <div class="grid grid-cols-2 gap-2 mb-2">
+                            <div>
+                                <label class="text-[10px]">Đậm độ Sữa</label>
+                                <select id="formulaDensity" onchange="calculateAll()" class="text-xs p-1">
+                                    <option value="1.0">Sữa chuẩn (1.0 kcal/ml)</option>
+                                    <option value="1.5">Sữa cao NL (1.5 kcal/ml)</option>
+                                    <option value="2.0">Sữa thận (2.0 kcal/ml)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="text-[10px]">TG truyền (giờ)</label>
+                                <input type="number" id="infusionHours" value="16" class="text-xs p-1" oninput="calculateAll()">
+                            </div>
+                        </div>
+                        <div class="text-xs bg-white p-2 rounded text-indigo-900 font-semibold text-center border border-indigo-100">
+                            Tốc độ cài máy: <span id="pumpRate" class="text-lg font-black text-indigo-600">--</span> ml/giờ
+                            <br><span class="text-[10px] font-normal text-gray-500">(Tổng thể tích sữa: <span id="formulaVol">--</span> ml)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card p-4 bg-white">
+                <div id="dietCodeDisplay" class="text-xl font-black text-emerald-700 mb-2 border-b pb-2">--</div>
+                <div class="space-y-3 mt-3">
+                    <div class="flex items-start bg-green-50 p-2 rounded border border-green-100">
+                        <span class="mr-2">👍</span>
+                        <div><p class="text-[10px] font-bold text-green-700 uppercase">Nên ăn</p><p id="adviceYes" class="text-xs text-gray-700 leading-tight"></p></div>
+                    </div>
+                    <div class="flex items-start bg-red-50 p-2 rounded border border-red-100">
+                        <span class="mr-2">🚫</span>
+                        <div><p class="text-[10px] font-bold text-red-700 uppercase">Kiêng/Hạn chế</p><p id="adviceNo" class="text-xs text-gray-700 leading-tight"></p></div>
+                    </div>
+                    <div class="flex items-start bg-yellow-50 p-2 rounded border border-yellow-100">
+                        <span class="mr-2">💡</span>
+                        <div><p class="text-[10px] font-bold text-yellow-700 uppercase">Lưu ý chuyên môn</p><p id="adviceNote" class="text-xs text-gray-700 leading-tight"></p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card p-4 relative border-t-4 border-t-gray-800">
+            <h2 class="text-gray-800 font-bold mb-3 flex justify-between items-center text-sm">
+                Y LỆNH LÂM SÀNG TỔNG HỢP
+                <button onclick="copyToClipboard()" class="bg-gray-800 text-white px-4 py-1.5 rounded text-xs font-bold hover:bg-gray-700 transition shadow">Copy Y Lệnh</button>
+            </h2>
+            <div id="finalOrder" class="bg-gray-50 p-4 rounded-lg border border-gray-200 font-mono text-sm text-gray-800 whitespace-pre-wrap leading-relaxed min-h-[150px]"></div>
+            <div id="toast" class="absolute bottom-4 right-4 bg-emerald-500 text-white text-xs font-bold px-3 py-2 rounded shadow-lg opacity-0 transition-opacity duration-300">Đã sao chép Y lệnh!</div>
+        </div>
+
+    </main>
+
+    <footer class="max-w-4xl mx-auto px-4 pb-6 text-center">
+        <p class="text-[10px] text-gray-400 border-t pt-4">
+            <strong>⚠️ MIỄN TRỪ TRÁCH NHIỆM Y KHOA:</strong> Công cụ này được thiết kế để hỗ trợ ra quyết định lâm sàng cho nhân viên y tế. Các phép tính toán (Kcal, IBW, EN Rate) mang tính tham khảo và KHÔNG thay thế cho việc đánh giá trực tiếp tình trạng người bệnh của Bác sĩ điều trị. 
+        </p>
+    </footer>
+
+    <script>
+        // --- DATABASE DÙNG CHUNG TRONG FILE ---
+        const dietDatabase = {
+            // 1. NHÓM CHUNG & HỒI SỨC
+            "BT": { code: "BT01", name: "Chế độ ăn Bình thường", yes: "Đa dạng các nhóm thực phẩm, ăn chín uống sôi.", no: "Thực phẩm không rõ nguồn gốc, rượu bia quá mức.", pro: 1.0, note: "Dành cho bệnh nhân ổn định, không có bệnh lý nền cần ăn kiêng." },
+            "NK": { code: "NK01", name: "Nhiễm khuẩn / Cấp tính", yes: "Thịt nạc, trứng, cá, sữa cao năng lượng, súp dinh dưỡng.", no: "Đồ sống, thực phẩm nhiều mỡ, khó tiêu, nước có gas.", pro: 1.5, note: "Bù nước đủ nếu có sốt. Cần giàu đạm để tăng miễn dịch." },
+            
+            // 2. NHÓM BỆNH NỘI TIẾT & CHUYỂN HÓA
+            "DTD": { code: "ĐTĐ01", name: "Đái tháo đường", yes: "Gạo lứt, ngũ cốc nguyên cám, cá, rau nhiều chất xơ, quả ít ngọt.", no: "Đường kính, bánh ngọt, hoa quả chín ngọt (xoài, sầu riêng), nước ép trái cây.", pro: 1.2, note: "Ăn đúng giờ để phối hợp phác đồ Insulin. Chia nhỏ bữa ăn nếu cần." },
+            "GOUT": { code: "GOUT01", name: "Bệnh Gout / Tăng Acid Uric", yes: "Sữa tách béo, trứng, rau quả tươi, đậu phụ, uống nhiều nước.", no: "Nội tạng động vật, hải sản (tôm, cua), thịt chó, nước luộc thịt, nấm, măng.", pro: 0.8, note: "Hạn chế đạm có nhiều Purin. Khuyến khích uống nhiều nước kiềm." },
+            
+            // 3. NHÓM TIM MẠCH & HÔ HẤP
+            "THA": { code: "THA01", name: "Tăng huyết áp / Suy tim", yes: "Rau xanh, trái cây, các loại hạt, thực phẩm ít béo, thịt trắng.", no: "Dưa cà muối, đồ hộp, cá khô, thịt xông khói, mì tôm, mỡ động vật.", pro: 1.0, note: "Ăn nhạt hoàn toàn (Muối < 2g/ngày). Theo dõi sát cân nặng và tình trạng phù." },
+            "COPD": { code: "HH01", name: "Bệnh Phổi tắc nghẽn (COPD)", yes: "Thực phẩm giàu chất béo tốt (dầu oliu, cá hồi), thịt đạm dễ tiêu.", no: "Thực phẩm sinh nhiều hơi (bắp cải sống, hành), ăn quá nhiều cơm/tinh bột.", pro: 1.3, note: "Giảm Tinh bột (Carbohydrate) để giảm sinh khí CO2, giảm công hô hấp." },
+
+            // 4. NHÓM TIÊU HÓA & GAN MẬT
+            "DD": { code: "DD01", name: "Bệnh lý Dạ dày - Tá tràng", yes: "Thức ăn mềm, tinh bột bọc niêm mạc (bánh mì, khoai tây, nếp), thịt nạc.", no: "Đồ chua, cay nóng (tiêu, ớt), đồ muối chua, cà phê, nước có gas, sụn/gân cứng.", pro: 1.0, note: "Không để quá đói hoặc ăn quá no. Chia làm 5-6 bữa nhỏ/ngày." },
+            "GM": { code: "GM01", name: "Bệnh lý Gan mật", yes: "Đạm dễ tiêu (ức gà, cá, đậu phụ), nhiều hoa quả tươi, rau xanh để tăng vitamin.", no: "Mỡ động vật, đồ chiên xào nhiều dầu, nội tạng, tuyệt đối kiêng rượu bia.", pro: 1.2, note: "Tăng đường, giảm béo. (Lưu ý: Nếu có Hôn mê gan phải giảm đạm đột ngột)." },
+            "TC": { code: "TC01", name: "Tiêu chảy / Viêm ruột", yes: "Cháo muối, nước hồ gạo, khoai tây nghiền, chuối, táo, thịt nạc luộc.", no: "Sữa có Lactose, đồ ngọt nhiều đường, rau nhiều chất xơ dạng sợi, hải sản.", pro: 1.0, note: "Quan trọng nhất là bù nước và điện giải (Oresol)." },
+
+            // 5. NHÓM SUY THẬN (Phân biệt rõ Có lọc và Chưa lọc máu)
+            "ST": { code: "ST01", name: "Suy thận chưa lọc máu", yes: "Bột sắn, miến dong, đạm sinh học cao (trứng, sữa thận chuyên dụng loại ít đạm).", no: "Thực phẩm giàu Kali (chuối, rau lá đậm), đồ kho mặn.", pro: 0.6, note: "Hạn chế đạm để giảm Ure máu. Kiểm soát chặt lượng nước nạp vào." },
+            "STLM": { code: "ST02", name: "Suy thận có lọc máu (Chu kỳ)", yes: "Thịt bò, cá, thịt lợn nạc, sữa thận chuyên dụng loại giàu đạm.", no: "Nước dùng xương, quả khế, đồ muối mặn, hạn chế tối đa thực phẩm giàu Phospho.", pro: 1.3, note: "CẦN ĂN NHIỀU ĐẠM để bù lượng đạm mất qua màng lọc. Hạn chế dịch giữa các kỳ lọc." },
+            
+            // 6. NHÓM NGOẠI KHOA
+            "NT": { code: "NKP01", name: "Hậu phẫu / Can thiệp", yes: "Thức ăn lỏng, mềm, dễ tiêu (cháo, súp), đạm tái tạo mô, thực phẩm giàu Vitamin C.", no: "Đồ cay nóng, bia rượu, thực phẩm gây đầy hơi, lên men.", pro: 1.3, note: "Ăn tăng dần số lượng theo sự lưu thông ruột (sau khi có trung tiện)." }
+        };
+
+        // --- CORE LOGIC TÍNH TOÁN ---
+        function calculateAll() {
+            // 1. Lấy dữ liệu Nhân trắc
+            let gender = document.getElementById('gender').value;
+            let h = parseFloat(document.getElementById('height').value) || 165;
+            let actualW = parseFloat(document.getElementById('actualWeight').value) || 60;
+            let isEdema = document.getElementById('edema').checked;
+            let isRefeeding = document.getElementById('refeeding').checked;
+
+            // Tính IBW (Devine formula)
+            let hInches = h / 2.54;
+            let ibw = 0;
+            if (gender === 'male') ibw = 50 + 2.3 * (hInches - 60);
+            else ibw = 45.5 + 2.3 * (hInches - 60);
+            if (ibw < 30) ibw = actualW; // Fail-safe cho chiều cao quá thấp
+
+            // Tính BMI
+            let heightM = h / 100;
+            let bmi = actualW / (heightM * heightM);
+            document.getElementById('bmiVal').innerText = bmi.toFixed(1);
+            document.getElementById('ibwVal').innerText = ibw.toFixed(1);
+
+            // Xác định Cân nặng tính toán (CalcWeight)
+            let calcW = actualW;
+            let noteStr = "Sử dụng Cân nặng thực tế";
+            
+            if (bmi >= 25 || isEdema) {
+                // Sử dụng ABW nếu béo phì hoặc phù
+                calcW = ibw + 0.4 * (actualW - ibw);
+                noteStr = isEdema ? "Đã dùng ABW (Do có Phù/Báng bụng)" : "Đã dùng ABW (Do Béo phì BMI ≥ 25)";
+                document.getElementById('calcWeightText').classList.replace('text-blue-700', 'text-red-600');
+            } else {
+                document.getElementById('calcWeightText').classList.replace('text-red-600', 'text-blue-700');
+            }
+            
+            document.getElementById('calcWeightText').innerText = calcW.toFixed(1);
+            document.getElementById('weightNote').innerText = noteStr;
+
+            // 2. Tính Năng lượng & Nước
+            let stressSelect = document.getElementById('stressFactor');
+            let baseMultiplier = parseFloat(stressSelect.value);
+            
+            // Xử lý Refeeding
+            if (isRefeeding) {
+                baseMultiplier = 15; // Khóa ở 15 kcal/kg
+                document.getElementById('kcalAlert').classList.remove('hidden');
+                stressSelect.disabled = true;
+                stressSelect.classList.add('bg-gray-100', 'text-gray-400');
+            } else {
+                document.getElementById('kcalAlert').classList.add('hidden');
+                stressSelect.disabled = false;
+                stressSelect.classList.remove('bg-gray-100', 'text-gray-400');
+            }
+
+            let totalKcal = calcW * baseMultiplier;
+            document.getElementById('resKcal').innerText = Math.round(totalKcal);
+
+            // Tính Nước (35ml/kg + sốt + dịch mất)
+            let temp = parseFloat(document.getElementById('temp').value) || 37;
+            let loss = parseFloat(document.getElementById('otherLoss').value) || 0;
+            let restriction = parseFloat(document.getElementById('fluidRestriction').value) || null;
+
+            let baseWater = calcW * 35;
+            let feverWater = (temp > 37) ? (baseWater * 0.1 * (temp - 37)) : 0;
+            let totalWater = baseWater + feverWater + loss;
+
+            // Xử lý cảnh báo Dịch
+            let fluidBox = document.getElementById('fluidBox');
+            let fWarnText = document.getElementById('fluidWarningText');
+            let dietType = document.getElementById('dietSelect').value;
+
+            if (restriction !== null && totalWater > restriction) {
+                totalWater = restriction; // Ép về giới hạn
+                fluidBox.className = "bg-red-50 p-3 rounded-xl border-2 border-red-500 text-center alert-flash";
+                fWarnText.classList.remove('hidden');
+            } else if (dietType === 'ST' && totalWater > 1500 && restriction === null) {
+                // Cảnh báo ẩn cho bệnh nhân Suy thận nếu không đặt giới hạn
+                fluidBox.className = "bg-yellow-50 p-3 rounded-xl border border-yellow-400 text-center";
+                fWarnText.innerText = "Suy thận: Cân nhắc hạn chế dịch!";
+                fWarnText.classList.remove('hidden', 'text-red-600');
+                fWarnText.classList.add('text-yellow-700');
+            } else {
+                fluidBox.className = "bg-blue-50 p-3 rounded-xl border border-blue-100 text-center transition-all duration-300";
+                fWarnText.classList.add('hidden');
+            }
+
+            document.getElementById('resWater').innerText = Math.round(totalWater);
+
+            // 3. Xử lý Chế độ ăn & Protein
+            let form = document.getElementById('dForm').value;
+            let dietData = dietDatabase[dietType];
+            
+            let protein = calcW * dietData.pro;
+            document.getElementById('resPro').innerText = protein.toFixed(1);
+
+            document.getElementById('dietCodeDisplay').innerText = `MÃ: ${dietData.code} - ${form.toUpperCase()}`;
+            document.getElementById('adviceYes').innerText = dietData.yes;
+            document.getElementById('adviceNo').innerText = dietData.no;
+            document.getElementById('adviceNote').innerText = dietData.note;
+
+            // Xử lý Module Sonde
+            let sondeMod = document.getElementById('sondeModule');
+            let pumpRateText = "--";
+            let formulaVolStr = "--";
+
+            if (form === "Sonde") {
+                sondeMod.classList.remove('hidden');
+                let density = parseFloat(document.getElementById('formulaDensity').value);
+                let hrs = parseFloat(document.getElementById('infusionHours').value) || 24;
+                
+                let formulaVol = totalKcal / density; // Thể tích sữa cần = Kcal / Đậm độ
+                let rate = formulaVol / hrs;
+                
+                formulaVolStr = Math.round(formulaVol);
+                pumpRateText = rate.toFixed(1);
+                
+                document.getElementById('formulaVol').innerText = formulaVolStr;
+                document.getElementById('pumpRate').innerText = pumpRateText;
+            } else {
+                sondeMod.classList.add('hidden');
+            }
+
+            // 4. Sinh Y Lệnh (Smart Order)
+            let timeStr = new Date().toLocaleTimeString('vi-VN', {hour:'2-digit', minute:'2-digit'});
+            let orderText = `--- Y LỆNH DINH DƯỠNG LÂM SÀNG (${timeStr}) ---\n`;
+            
+            if (isRefeeding) {
+                orderText += `[CẢNH BÁO ĐỎ]: Bệnh nhân có nguy cơ REFEEDING SYNDROME.\n`;
+                orderText += `-> Khởi đầu năng lượng thấp (15 kcal/kg).\n`;
+                orderText += `-> Y lệnh bổ sung: Truyền/Uống Thiamine (Vitamin B1) 100-200mg/ngày TRƯỚC KHI nuôi ăn.\n`;
+                orderText += `-> Theo dõi sát điện giải: Kali, Magie, Phospho mỗi 24h.\n\n`;
+            }
+
+            orderText += `1. Mã chế độ ăn: ${dietData.code} - ${form}\n`;
+            orderText += `2. Mục tiêu Calo: ${Math.round(totalKcal)} Kcal/ngày (Tính trên CN: ${calcW.toFixed(1)} kg)\n`;
+            orderText += `3. Nhu cầu Đạm: ${protein.toFixed(1)} g/ngày\n`;
+            orderText += `4. Giới hạn Dịch: ${Math.round(totalWater)} ml/ngày (Bao gồm dịch truyền & uống)\n`;
+            
+            if (form === "Sonde") {
+                orderText += `\n[Y LỆNH BƠM SONDE DẠ DÀY]\n`;
+                orderText += `- Sữa chỉ định: Đậm độ ${document.getElementById('formulaDensity').value} Kcal/ml.\n`;
+                orderText += `- Tổng thể tích sữa: ${formulaVolStr} ml/ngày.\n`;
+                orderText += `- Tốc độ nhỏ giọt/Bơm tiêm: ${pumpRateText} ml/giờ (Truyền trong ${document.getElementById('infusionHours').value} giờ).\n`;
+                orderText += `- Kiểm tra dịch tồn dư dạ dày (GRV) mỗi 4-6 giờ.\n`;
+            } else {
+                orderText += `\n[TƯ VẤN THỰC PHẨM]\n`;
+                orderText += `- Khuyến khích: ${dietData.yes}\n`;
+                orderText += `- Cần kiêng: ${dietData.no}\n`;
+                orderText += `- Ghi chú: ${dietData.note}\n`;
+            }
+
+            document.getElementById('finalOrder').innerText = orderText;
+        }
+
+        function copyToClipboard() {
+            const content = document.getElementById('finalOrder').innerText;
+            navigator.clipboard.writeText(content).then(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.remove('opacity-0');
+                setTimeout(() => toast.classList.add('opacity-0'), 2000);
+            });
+        }
+
+        // Khởi chạy khi load trang
+        calculateAll();
+    </script>
+</body>
+</html>
