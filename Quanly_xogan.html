@@ -510,69 +510,94 @@
         </div>
 
         <div id="tab4" class="tab-content">
-            <h2 class="section-title">Đánh giá Không xâm lấn & Tiên lượng</h2>
-            
+            <h2 class="section-title">Quản lý Nội trú, Đánh giá Chuyên sâu & NITs</h2>
+
+            <div class="accordion-item active">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>📋 1. Bản kiểm Theo dõi Nội trú hàng ngày</span>
+                    <span>-</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="alert alert-info">Mục tiêu: Theo dõi sát tiến triển báng bụng và ngăn ngừa biến chứng bệnh viện.</div>
+                    <div class="checklist">
+                        <label><input type="checkbox"> <strong>Cân nặng & Vòng bụng:</strong> Đo cùng một thời điểm mỗi sáng sau đi tiểu.</label>
+                        <label><input type="checkbox"> <strong>Bảng theo dõi Xuất - Nhập:</strong> Tổng lượng dịch vào (uống/truyền) và dịch ra (nước tiểu).</label>
+                        <label><input type="checkbox"> <strong>Tri giác (HE):</strong> Test kết nối số hoặc vẽ hình sao hàng ngày để phát hiện não gan sớm.</label>
+                        <label><input type="checkbox"> <strong>Vận động:</strong> Khuyến khích vận động tại giường, tránh nằm bất động gây teo cơ và huyết khối.</label>
+                    </div>
+                </div>
+            </div>
+
             <div class="accordion-item">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <span>🎯 1. Điều trị Nguyên nhân (Recompensation)</span>
+                    <span>📊 2. Máy tính FIB-4 & Siêu âm đàn hồi (NITs)</span>
                     <span>+</span>
                 </div>
                 <div class="accordion-content">
-                    <ul>
-                        <li><strong>Viêm gan B:</strong> Điều trị NUCs (Tenofovir/Entecavir) <strong>SUỐT ĐỜI</strong>.</li>
-                        <li><strong>Viêm gan C:</strong> Phác đồ DAAs (Tỷ lệ khỏi > 95%).</li>
-                        <li><strong>ALD:</strong> Kiêng rượu bia tuyệt đối.</li>
-                        <li><strong>MASLD:</strong> Giảm 5-10% cân nặng, kiểm soát đường/mỡ máu.</li>
+                    <div class="calculator-box">
+                        <h4 style="text-align:center; color: var(--primary-color);">🧮 Tính điểm FIB-4</h4>
+                        <div class="calc-row"><label>Tuổi:</label><input type="number" id="fib-age"></div>
+                        <div class="calc-row"><label>AST (U/L):</label><input type="number" id="fib-ast"></div>
+                        <div class="calc-row"><label>ALT (U/L):</label><input type="number" id="fib-alt"></div>
+                        <div class="calc-row"><label>Tiểu cầu (10^9/L):</label><input type="number" id="fib-plt"></div>
+                        <button class="btn-calc" onclick="calculateFIB4()">TÍNH FIB-4</button>
+                        <div id="fib4-result" class="calc-result"></div>
+                    </div>
+                    <div class="alert alert-warning">
+                        <strong>Liên kết dự phòng:</strong> Nếu <strong>LSM (Fibroscan) > 25 kPa</strong> &rarr; CSPH (Tăng áp cửa nặng). <button onclick="document.querySelector('[onclick*=\'tab2\']').click()" style="background:none; border:none; color:blue; text-decoration:underline; cursor:pointer;">Xem phác đồ NSBBs ở Tab 2</button>.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>📈 3. Child-Pugh & MELD-Na (Tiên lượng tử vong)</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="calculator-box">
+                        <h4 style="text-align:center; color: var(--primary-color);">🧮 Xếp loại Child-Pugh</h4>
+                        <div class="calc-row"><label>Não gan:</label><select id="cp-he"><option value="0">--</option><option value="1">K có</option><option value="2">Độ 1-2</option><option value="3">Độ 3-4</option></select></div>
+                        <div class="calc-row"><label>Báng bụng:</label><select id="cp-ascites"><option value="0">--</option><option value="1">K có</option><option value="2">Nhẹ-Vừa</option><option value="3">Nặng</option></select></div>
+                        <div class="calc-row"><label>Bili:</label><select id="cp-bili"><option value="0">--</option><option value="1"><2</option><option value="2">2-3</option><option value="3">>3</option></select></div>
+                        <div class="calc-row"><label>Alb:</label><select id="cp-alb"><option value="0">--</option><option value="1">>3.5</option><option value="2">2.8-3.5</option><option value="3"><2.8</option></select></div>
+                        <div class="calc-row"><label>INR:</label><select id="cp-inr"><option value="0">--</option><option value="1"><1.7</option><option value="2">1.7-2.2</option><option value="3">>2.2</option></select></div>
+                        <button class="btn-calc" onclick="calculateChildPugh()">TÍNH CHILD-PUGH</button>
+                        <div id="cp-result" class="calc-result"></div>
+                    </div>
+                    <div class="alert alert-danger" id="transplant-link" style="display:none;">
+                        <strong>⚠️ Điểm cao:</strong> Cần hội chẩn ghép gan. <button onclick="document.querySelector('[onclick*=\'tab3\']').click()" style="background:none; border:none; color:maroon; text-decoration:underline; cursor:pointer;">Xem tiêu chuẩn Ghép gan tại Tab 3</button>.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🦴 4. Đánh giá Suy mòn & Frailty (Chuyên sâu)</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <p style="font-size: 14px; margin-bottom: 10px;">Sử dụng thang điểm <strong>Clinical Frailty Scale (CFS)</strong> để cá thể hóa điều trị:</p>
+                    <ul style="font-size: 14px;">
+                        <li><strong>CFS 1-3 (Khỏe - Rất khỏe):</strong> Ưu tiên can thiệp điều trị triệt để (TIPS, Phẫu thuật, Ghép gan).</li>
+                        <li><strong>CFS 4-6 (Bắt đầu yếu - Yếu):</strong> Tăng cường dinh dưỡng tích cực (Tab 3) và tập vật lý trị liệu nhẹ.</li>
+                        <li><strong>CFS 7-9 (Yếu nặng - Rất nặng):</strong> Cân nhắc chăm sóc giảm nhẹ, hạn chế can thiệp xâm lấn quá mức.</li>
                     </ul>
                 </div>
             </div>
 
             <div class="accordion-item">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <span>📊 2. Đánh giá Xơ hóa (FIB-4 & FibroScan)</span>
+                    <span>🔪 5. Nguy cơ Phẫu thuật ngoài gan (EASL 2025)</span>
                     <span>+</span>
                 </div>
                 <div class="accordion-content">
-                    <div class="alert alert-info"><strong>Quy tắc Baveno VII (Miễn nội soi):</strong> Độ cứng gan (LSM) < 20 kPa VÀ Tiểu cầu > 150.000/mm³ &rarr; Bỏ qua nội soi.</div>
-                    
-                    <div class="calculator-box">
-                        <h4 style="text-align:center; margin-top:0;">🧮 Máy tính Chỉ số FIB-4</h4>
-                        <div class="calc-row"><label>Tuổi:</label><input type="number" id="fib-age"></div>
-                        <div class="calc-row"><label>AST (U/L):</label><input type="number" id="fib-ast"></div>
-                        <div class="calc-row"><label>ALT (U/L):</label><input type="number" id="fib-alt"></div>
-                        <div class="calc-row"><label>Tiểu cầu (10^9/L):</label><input type="number" id="fib-plt"></div>
-                        <button class="btn-calc" onclick="calculateFIB4()">TÍNH ĐIỂM FIB-4</button>
-                        <div id="fib4-result" class="calc-result"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <span>📈 3. Phân loại Child-Pugh</span>
-                    <span>+</span>
-                </div>
-                <div class="accordion-content">
-                    <div class="calculator-box">
-                        <h4 style="text-align:center; margin-top:0;">🧮 Đánh giá Child-Pugh</h4>
-                        <div class="calc-row"><label>Bệnh lý não gan:</label>
-                            <select id="cp-he"><option value="0">-- Chọn --</option><option value="1">Không có</option><option value="2">Độ 1 - 2</option><option value="3">Độ 3 - 4</option></select>
-                        </div>
-                        <div class="calc-row"><label>Báng bụng:</label>
-                            <select id="cp-ascites"><option value="0">-- Chọn --</option><option value="1">Không có</option><option value="2">Nhẹ - Vừa</option><option value="3">Nặng (Kháng trị)</option></select>
-                        </div>
-                        <div class="calc-row"><label>Bilirubin toàn phần:</label>
-                            <select id="cp-bili"><option value="0">-- Chọn --</option><option value="1">< 2 mg/dL</option><option value="2">2 - 3 mg/dL</option><option value="3">> 3 mg/dL</option></select>
-                        </div>
-                        <div class="calc-row"><label>Albumin máu:</label>
-                            <select id="cp-alb"><option value="0">-- Chọn --</option><option value="1">> 3.5 g/dL</option><option value="2">2.8 - 3.5 g/dL</option><option value="3">< 2.8 g/dL</option></select>
-                        </div>
-                        <div class="calc-row"><label>INR:</label>
-                            <select id="cp-inr"><option value="0">-- Chọn --</option><option value="1">< 1.7</option><option value="2">1.7 - 2.2</option><option value="3">> 2.2</option></select>
-                        </div>
-                        <button class="btn-calc" onclick="calculateChildPugh()">XẾP LOẠI CHILD-PUGH</button>
-                        <div id="cp-result" class="calc-result"></div>
-                    </div>
+                    <table style="width: 100%; font-size: 13px; border-collapse: collapse;">
+                        <tr style="background:#eee;"><th>Child-Pugh</th><th>Tử vong phẫu thuật</th><th>Khuyến cáo</th></tr>
+                        <tr><td><strong>Lớp A</strong></td><td>~ 10%</td><td>Phẫu thuật tương đối an toàn.</td></tr>
+                        <tr><td><strong>Lớp B</strong></td><td>~ 30%</td><td>Hội chẩn đa chuyên khoa, chuẩn bị Albumin.</td></tr>
+                        <tr><td><strong>Lớp C</strong></td><td>> 80%</td><td>Tránh phẫu thuật trừ khi tối khẩn cấp.</td></tr>
+                    </table>
                 </div>
             </div>
         </div>
@@ -762,6 +787,11 @@
             resultDiv.innerHTML = `Tổng: ${total} điểm - CHILD-PUGH C (Mất bù nặng)`;
             resultDiv.style.background = "#f8d7da"; resultDiv.style.color = "#842029";
         }
+    }
+        if (totalScore >= 10) {
+        document.getElementById('transplant-link').style.display = 'block';
+    } else {
+        document.getElementById('transplant-link').style.display = 'none';
     }
 </script>
 
