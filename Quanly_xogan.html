@@ -300,83 +300,158 @@
         </div>
 
         <div id="tab2" class="tab-content">
-            <h2 class="section-title">Dự phòng & Quản lý Biến chứng cấp</h2>
+            <h2 class="section-title">Hồi sức Cấp cứu & Quản lý Biến chứng</h2>
             
-            <div class="accordion-item">
+            <div class="accordion-item active">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <span>🩸 1. Xuất huyết tiêu hóa do vỡ giãn tĩnh mạch</span>
-                    <span>+</span>
+                    <span>🩸 1. Xuất huyết vỡ giãn tĩnh mạch (Timeline 72h)</span>
+                    <span>-</span>
                 </div>
                 <div class="accordion-content">
-                    <div class="alert alert-danger"><strong>Cấp cứu (Ngay lập tức):</strong> Bắt đầu thuốc vận mạch ngay khi nghi ngờ.</div>
-                    <div class="checklist">
-                        <label><input type="checkbox"> Duy trì đường truyền lớn / Hồi sức dịch / Truyền máu (Mục tiêu Hb: 7 - 8 g/dL)</label>
-                        <label><input type="checkbox"> Kháng sinh dự phòng: Ceftriaxone 1g/ngày IV</label>
-                        <label><input type="checkbox"> Hội chẩn Nội soi can thiệp (trong vòng 12 giờ)</label>
+                    
+                    <div style="border-left: 3px solid var(--danger-color); padding-left: 15px; margin-top: 10px;">
+                        <h4 style="color: var(--danger-color);">⏱️ Mốc 0 Giờ (Ngay khi tiếp nhận)</h4>
+                        <ul style="list-style-type: square;">
+                            <li>Lập 2 đường truyền tĩnh mạch lớn. Hồi sức dịch (Ưu tiên Ringer/Albumin, tránh NaCl 0.9% lượng lớn).</li>
+                            <li>Truyền máu chế phẩm: Mục tiêu Hb duy trì <strong>7 - 8 g/dL</strong>.</li>
+                            <li><strong>Bắt đầu ngay thuốc vận mạch:</strong> Terlipressin (2mg/4h IV) hoặc Octreotide (Bolus 50mcg -> duy trì 50mcg/h).</li>
+                        </ul>
+
+                        <h4 style="color: var(--primary-color); margin-top: 15px;">⏱️ Mốc < 12 Giờ</h4>
+                        <ul style="list-style-type: square;">
+                            <li><strong>Kháng sinh dự phòng (Bắt buộc):</strong> Ceftriaxone 1g/ngày IV (Tối đa 7 ngày).</li>
+                            <li>Hội chẩn Nội soi can thiệp: Thắt tĩnh mạch thực quản (EVL) hoặc tiêm Cyanoacrylate (GTM dạ dày).</li>
+                        </ul>
+
+                        <h4 style="color: var(--warning-color); margin-top: 15px;">⏱️ Mốc 24 - 72 Giờ</h4>
+                        <ul style="list-style-type: square;">
+                            <li>Duy trì thuốc vận mạch đủ 2-5 ngày.</li>
+                            <li>Đánh giá <strong>Rescue TIPS (TIPS cứu vãn)</strong> nếu: Child-Pugh C (<14đ) hoặc Child-Pugh B có chảy máu rỉ rả khi đang nội soi.</li>
+                        </ul>
                     </div>
-                    <table>
-                        <tr><th>Thuốc vận mạch</th><th>Liều lượng</th></tr>
-                        <tr><td>Terlipressin</td><td>2mg IV mỗi 4h (Khởi đầu) -> 1mg mỗi 4h (Duy trì 2-5 ngày)</td></tr>
-                        <tr><td>Octreotide</td><td>Bolus 50mcg IV -> Duy trì 50mcg/h (Trong 2-5 ngày)</td></tr>
-                    </table>
                 </div>
             </div>
 
             <div class="accordion-item">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <span>🧠 2. Bệnh lý não gan (HE)</span>
+                    <span>🧠 2. Bệnh lý Não gan (Đánh giá West Haven)</span>
                     <span>+</span>
                 </div>
                 <div class="accordion-content">
-                    <div class="alert alert-warning"><strong>Checklist tìm yếu tố thúc đẩy:</strong> Nhiễm trùng? XHTH? Hạ Kali/Natri? Táo bón? Thuốc an thần?</div>
-                    <ul>
-                        <li><strong>Lactulose:</strong> 15-30ml x 2-3 lần/ngày. Mục tiêu: 2-3 lần tiêu phân mềm/ngày.</li>
-                        <li><strong>Rifaximin:</strong> 400mg x 3 lần/ngày hoặc 550mg x 2 lần/ngày.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <span>💧 3. Báng bụng & Tính liều Albumin</span>
-                    <span>+</span>
-                </div>
-                <div class="accordion-content">
-                    <div class="alert alert-info"><strong>Chẩn đoán SBP:</strong> PMN &ge; 250 tế bào/mm³. Kháng sinh: Cefotaxime/Ceftriaxone IV.</div>
+                    
+                    <div class="alert alert-warning">
+                        <strong>Checklist yếu tố thúc đẩy:</strong> Nhiễm trùng? Xuất huyết? Hạ Kali/Natri? Táo bón? Dùng thuốc an thần?
+                    </div>
                     
                     <div class="calculator-box">
-                        <h4 style="margin-bottom: 10px;">🧮 Máy tính bù Human Albumin (Khi chọc tháo)</h4>
+                        <h4 style="margin-top:0; text-align:center; color: var(--primary-color);">Phân độ West Haven & Hướng xử trí</h4>
+                        <div class="calc-row">
+                            <label>Triệu chứng lâm sàng:</label>
+                            <select id="he-grade" onchange="assessHE()" style="width: 60%;">
+                                <option value="0">-- Chọn triệu chứng --</option>
+                                <option value="1">Độ 1: Rối loạn giấc ngủ, giảm tập trung, hưng phấn/lo âu nhẹ</option>
+                                <option value="2">Độ 2: Ngủ lịm, mất định hướng thời gian, thay đổi tính cách rõ</option>
+                                <option value="3">Độ 3: Ngủ gà nhưng còn gọi hỏi được, lú lẫn nặng, nói nhảm</option>
+                                <option value="4">Độ 4: Hôn mê, không đáp ứng với kích thích đau</option>
+                            </select>
+                        </div>
+                        <div id="he-result" class="calc-result" style="display:none;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>💧 3. Báng bụng: Step-up Lợi tiểu & Albumin</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    
+                    <h4 style="color: var(--primary-color);">Phác đồ Tăng liều Lợi tiểu (Tỷ lệ vàng 100:40)</h4>
+                    <p style="font-size: 13px;">Mục tiêu giảm cân: 0.5 kg/ngày (không phù) hoặc 1 kg/ngày (có phù chân).</p>
+                    <table>
+                        <tr><th>Bước (Step)</th><th>Spironolactone</th><th>Furosemide</th></tr>
+                        <tr><td><strong>Step 1</strong> (Khởi đầu)</td><td>100 mg/ngày</td><td>40 mg/ngày</td></tr>
+                        <tr><td><strong>Step 2</strong></td><td>200 mg/ngày</td><td>80 mg/ngày</td></tr>
+                        <tr><td><strong>Step 3</strong></td><td>300 mg/ngày</td><td>120 mg/ngày</td></tr>
+                        <tr><td><strong>Step 4</strong> (Tối đa)</td><td>400 mg/ngày</td><td>160 mg/ngày</td></tr>
+                    </table>
+
+                    <div class="alert alert-danger" style="margin-top: 10px;">
+                        <strong>🚨 NGƯNG LỢI TIỂU NGAY LẬP TỨC NẾU CÓ:</strong>
+                        <ul style="margin-bottom: 0;">
+                            <li>Tổn thương thận cấp (AKI) / Cre tăng.</li>
+                            <li>Hạ Natri máu nặng (< 125 mEq/L).</li>
+                            <li>Kali máu rối loạn nặng (< 3.0 hoặc > 6.0 mEq/L).</li>
+                            <li>Bệnh lý não gan tiến triển.</li>
+                            <li>Chuột rút cơ bắp dữ dội.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="alert alert-warning">
+                        <strong>Báng bụng kháng trị:</strong> Khi đã dùng Step 4 hoặc không thể tăng liều do tác dụng phụ. Xử trí: Chọc tháo dịch lượng lớn (LVP) định kỳ kết hợp truyền Albumin. Cân nhắc TIPS.
+                    </div>
+
+                    <div class="calculator-box" style="margin-top: 15px;">
+                        <h4 style="margin-top:0; margin-bottom: 10px;">🧮 Máy tính bù Human Albumin (Khi chọc tháo)</h4>
                         <div class="calc-row">
                             <label>Lượng dịch chọc tháo (Lít): </label>
                             <input type="number" id="ascitesVolume" placeholder="VD: 6" step="0.5" min="0">
                         </div>
-                        <button class="btn-calc" onclick="calculateAlbumin()">Tính Toán Liều Albumin</button>
-                        <div id="calc-result" class="calc-result"></div>
+                        <button class="btn-calc" onclick="calculateAlbumin()">TÍNH LIỀU ALBUMIN</button>
+                        <div id="calc-result" class="calc-result" style="display:none;"></div>
                     </div>
                 </div>
             </div>
 
             <div class="accordion-item">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <span>🩸 4. Tổn thương thận cấp (AKI & HRS)</span>
+                    <span>🩸 4. Tổn thương thận cấp (Phân biệt AKI & HRS)</span>
                     <span>+</span>
                 </div>
                 <div class="accordion-content">
-                    <div class="alert alert-danger"><strong>Bước 1:</strong> Ngưng lợi tiểu, chẹn beta, NSAIDs. Bù Human Albumin 1g/kg/ngày.</div>
-                    <ul>
-                        <li><strong>Tiêu chuẩn AKI:</strong> Cre tăng &ge; 0.3 mg/dL trong 48h hoặc tăng &ge; 50%.</li>
-                        <li><strong>HRS-AKI:</strong> Terlipressin + Albumin. Cân nhắc Lọc máu (CRRT) chờ ghép gan.</li>
+                    
+                    <div class="alert alert-info">
+                        <strong>Tiêu chuẩn AKI:</strong> Creatinine tăng &ge; 0.3 mg/dL trong 48h hoặc tăng &ge; 50% so với nền.
+                    </div>
+                    <ul style="list-style-type: decimal; font-weight: bold; color: var(--text-main);">
+                        <li>Bước 1: Loại trừ & Bảo vệ thận
+                            <p style="font-weight: normal; font-size: 14px; margin-top: 5px;">Ngưng ngay lợi tiểu, chẹn beta, NSAIDs. Sàng lọc và điều trị nhiễm trùng.</p>
+                        </li>
+                        <li>Bước 2: Thử thách dịch (Trong 48h)
+                            <p style="font-weight: normal; font-size: 14px; margin-top: 5px;">Truyền Human Albumin liều <strong>1g/kg/ngày</strong> (Tối đa 100g/ngày).</p>
+                        </li>
+                        <li>Bước 3: Đánh giá Hội chứng gan thận (HRS-AKI)
+                            <p style="font-weight: normal; font-size: 14px; margin-top: 5px;">Nếu Cre không cải thiện sau 48h bù Albumin và không có shock/bệnh thận thực thể &rarr; Chẩn đoán HRS-AKI. <br><span style="color: var(--danger-color);">Xử trí: Bắt đầu Terlipressin + Albumin dài ngày. Cân nhắc CRRT.</span></p>
+                        </li>
                     </ul>
                 </div>
             </div>
-            
+
             <div class="accordion-item">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <span>🚨 5. Suy gan cấp trên nền mạn (ACLF)</span>
+                    <span>🚨 5. Nhiễm trùng & Suy gan cấp trên nền mạn (ACLF)</span>
                     <span>+</span>
                 </div>
                 <div class="accordion-content">
-                    <p>Suy đa tạng trên nền xơ gan/viêm gan mạn, tỷ lệ tử vong cao. Chuyển ngay ICU. Bắt đầu kháng virus NUCs ngay nếu là HBV-ACLF. Liên hệ trung tâm Ghép gan sớm.</p>
+                    <h4>Viêm phúc mạc nhiễm khuẩn (SBP)</h4>
+                    <p style="font-size: 14px;">Chẩn đoán khi PMN dịch báng &ge; 250/mm³. Kháng sinh kinh nghiệm:</p>
+                    <ul style="font-size: 14px;">
+                        <li><strong>SBP Cộng đồng:</strong> Ceftriaxone 2g/ngày IV.</li>
+                        <li><strong>SBP Bệnh viện:</strong> Piperacillin-Tazobactam hoặc Meropenem.</li>
+                    </ul>
+                    <hr>
+                    <h4 style="color: var(--danger-color);">Nhận diện ACLF (Suy gan cấp trên nền mạn)</h4>
+                    <p style="font-size: 14px;">Cảnh báo tỷ lệ tử vong ngắn hạn > 30%. Đánh giá Suy đa tạng (Tiêu chuẩn CLIF-C):</p>
+                    <div class="checklist">
+                        <label><input type="checkbox"> <strong>Tuần hoàn:</strong> Cần dùng thuốc vận mạch duy trì HA.</label>
+                        <label><input type="checkbox"> <strong>Hô hấp:</strong> Cần thở máy hoặc SpO2/PaO2 giảm nặng.</label>
+                        <label><input type="checkbox"> <strong>Thận:</strong> Creatinine tăng nhanh (AKI) cần lọc máu.</label>
+                        <label><input type="checkbox"> <strong>Não:</strong> Bệnh lý não gan độ 3 - 4.</label>
+                    </div>
+                    <div class="alert alert-danger" style="margin-top: 10px;">
+                        Nếu bệnh nhân có <strong>&ge; 2 tạng suy</strong>: Yêu cầu chuyển ngay ICU, hội chẩn dùng Kháng virus (nếu do HBV), cân nhắc Thay huyết tương (TPE) và liên hệ Trung tâm Ghép gan.
+                    </div>
                 </div>
             </div>
         </div>
@@ -550,25 +625,54 @@
         }
     }
 
-    // 3. Máy tính Albumin (Tab 2)
+    // LOGIC TAB 2: MÁY TÍNH ALBUMIN (Đã tinh chỉnh hiển thị)
+    // ----------------------------------------------------
     function calculateAlbumin() {
         const volume = parseFloat(document.getElementById('ascitesVolume').value);
         const resultText = document.getElementById('calc-result');
 
         if (isNaN(volume) || volume <= 0) {
+            resultText.style.display = "block";
             resultText.innerText = "Vui lòng nhập lượng dịch hợp lệ.";
             resultText.style.background = "#f8d7da"; resultText.style.color = "#842029";
             return;
         }
 
+        resultText.style.display = "block";
+
         if (volume <= 5) {
-            resultText.innerText = `💡 Chọc ${volume} Lít (≤ 5 Lít): Bù dung dịch thay thế hoặc Albumin theo lâm sàng.`;
+            resultText.innerText = `💡 Chọc ${volume} Lít (≤ 5 Lít): Có thể bù bằng dung dịch thay thế (Macromolecules) hoặc Albumin theo đánh giá lâm sàng.`;
             resultText.style.background = "#cff4fc"; resultText.style.color = "#055160";
         } else {
             const albuminNeed = volume * 8;
             const bottles = Math.ceil(albuminNeed / 10);
-            resultText.innerHTML = `⚠️ Chọc > 5 Lít. Cần bù: <strong>${albuminNeed} g Albumin</strong>.<br> (~ <strong>${bottles} chai</strong> loại 50ml nồng độ 20%).`;
+            resultText.innerHTML = `⚠️ Chọc tháo > 5 Lít. Cần bù bắt buộc 8g Albumin/1 Lít.<br>
+            => Y lệnh: <strong>${albuminNeed} g Human Albumin</strong>.<br> 
+            (~ <strong>${bottles} chai</strong> loại 50ml nồng độ 20%).`;
             resultText.style.background = "#fff3cd"; resultText.style.color = "#664d03";
+        }
+    }
+    // LOGIC TAB 2: ĐÁNH GIÁ NÃO GAN (WEST HAVEN)
+    // ----------------------------------------------------
+    function assessHE() {
+        const grade = document.getElementById('he-grade').value;
+        const resultDiv = document.getElementById('he-result');
+        
+        if (grade === "0") {
+            resultDiv.style.display = "none";
+            return;
+        }
+
+        resultDiv.style.display = "block";
+
+        if (grade === "1" || grade === "2") {
+            resultDiv.innerHTML = `<strong>Não gan Độ ${grade}:</strong><br>💡 Hành động: Sử dụng Lactulose uống/thụt tháo. Có thể thêm Rifaximin. Theo dõi sát tri giác.`;
+            resultDiv.style.background = "#fff3cd"; 
+            resultDiv.style.color = "#664d03";
+        } else if (grade === "3" || grade === "4") {
+            resultDiv.innerHTML = `<strong>Não gan Độ ${grade} (NẶNG):</strong><br>⚠️ CẢNH BÁO ĐỎ: Nguy cơ hít sặc cao. Xem xét đặt Nội khí quản bảo vệ đường thở. Chuyển Hồi sức tích cực (ICU). Thụt tháo Lactulose.`;
+            resultDiv.style.background = "#f8d7da"; 
+            resultDiv.style.color = "#842029";
         }
     }
 
