@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#b91c1c">
+    <title>ALS Master 2025 (ERC)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f8fafc; }
+        .flash-red { animation: flashRed 1s infinite; }
+        @keyframes flashRed { 0%, 100% { background-color: #fee2e2; color: #b91c1c; } 50% { background-color: #b91c1c; color: #ffffff; } }
+        .hidden-smooth { display: none; opacity: 0; transition: opacity 0.3s; }
+        .visible-smooth { display: block; opacity: 1; animation: fadeIn 0.4s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        /* Tùy chỉnh thanh cuộn cho gọn */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    </style>
+</head>
+<body class="text-gray-800 pb-10">
+
+    <div class="bg-red-700 text-white p-3 shadow-md sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <h1 class="font-bold text-lg flex items-center">
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                ALS Master 2025 (ERC)
+            </h1>
+            <button onclick="resetAll()" class="bg-black/20 hover:bg-black/40 text-xs px-3 py-1.5 rounded font-bold transition">TẠO CA MỚI</button>
+        </div>
+    </div>
+
+    <div class="max-w-5xl mx-auto mt-4 px-3 space-y-4">
+
+        <div class="flex flex-col md:flex-row gap-4">
+            
+            <div class="w-full md:w-1/3 bg-gray-900 text-white p-5 rounded-2xl shadow-lg flex flex-col items-center justify-center border-4 border-gray-800 relative">
+                <span class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Chu kỳ CPR (Đổi người ép)</span>
+                <div id="cprTimerDisplay" class="text-7xl font-black mb-4 tabular-nums tracking-tighter">02:00</div>
+                <div class="flex space-x-2 w-full">
+                    <button onclick="toggleCprTimer()" id="cprBtn" class="flex-1 bg-red-600 hover:bg-red-500 py-3 rounded-xl font-bold text-lg transition shadow-[0_4px_0_#991b1b] active:shadow-none active:translate-y-1">BẮT ĐẦU</button>
+                    <button onclick="resetCprTimer()" class="bg-gray-700 hover:bg-gray-600 px-4 py-3 rounded-xl font-bold transition"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg></button>
+                </div>
+            </div>
+
+            <div class="w-full md:w-2/3 bg-white p-4 rounded-2xl shadow-sm border border-gray-200">
+                <h2 class="font-bold text-gray-800 border-b pb-2 mb-3">ĐÁNH GIÁ NHỊP TẠI MONITOR</h2>
+                <div class="grid grid-cols-2 gap-3 h-32">
+                    <button onclick="selectRhythm('shockable')" id="btnShockable" class="flex flex-col items-center justify-center rounded-xl border-2 border-orange-200 bg-orange-50 text-orange-800 hover:bg-orange-100 transition">
+                        <span class="text-3xl mb-1">⚡</span>
+                        <span class="font-black text-lg uppercase">Sốc được</span>
+                        <span class="text-xs font-semibold">(VF / pVT)</span>
+                    </button>
+                    <button onclick="selectRhythm('non-shockable')" id="btnNonShockable" class="flex flex-col items-center justify-center rounded-xl border-2 border-blue-200 bg-blue-50 text-blue-800 hover:bg-blue-100 transition">
+                        <span class="text-3xl mb-1">📉</span>
+                        <span class="font-black text-lg uppercase">Không sốc</span>
+                        <span class="text-xs font-semibold">(PEA / Asystole)</span>
+                    </button>
+                </div>
+                <div id="actionHint" class="mt-3 text-center text-sm font-bold text-gray-500 bg-gray-100 p-2 rounded">
+                    Vui lòng chọn loại nhịp để xem hướng dẫn thuốc & can thiệp...
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-4">
+            
+            <div class="w-full md:w-7/12 bg-white rounded-2xl shadow-sm border border-red-200 overflow-hidden">
+                <div class="bg-red-50 px-4 py-3 border-b border-red-200 flex justify-between items-center">
+                    <h2 class="font-bold text-red-800 flex items-center"><span class="mr-2">💉</span> Y Lệnh Thuốc & Đường Truyền</h2>
+                </div>
+                
+                <div class="p-4 space-y-4">
+                    <div class="bg-amber-50 border border-amber-200 p-3 rounded-lg flex items-start">
+                        <svg class="w-5 h-5 text-amber-600 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <div>
+                            <span class="block text-xs font-bold text-amber-800">ƯU TIÊN VASCULAR ACCESS (ERC 2025)</span>
+                            <span class="text-[11px] text-amber-700">Thử Tĩnh mạch (IV) trước. Chỉ dùng đường Trong xương (IO) nếu IV thất bại sau 2 lần thử hoặc không khả thi.</span>
+                        </div>
+                    </div>
+
+                    <div class="border-l-4 border-red-500 pl-3">
+                        <div class="flex justify-between items-end mb-1">
+                            <h3 class="font-black text-gray-800 text-sm">ADRENALINE 1mg (Mỗi 3 - 5 phút)</h3>
+                            <span id="adrLogicText" class="text-[10px] font-bold text-red-600 bg-red-100 px-2 py-0.5 rounded">Chờ chọn nhịp...</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button onclick="logAdrenaline()" class="bg-red-100 hover:bg-red-200 text-red-700 font-bold px-4 py-2 rounded-lg border border-red-300 transition text-sm flex items-center shadow-sm">
+                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg> ĐÃ TIÊM
+                            </button>
+                            <div class="flex-1 bg-gray-100 rounded-lg h-10 flex items-center justify-between px-3">
+                                <span class="text-xs font-semibold text-gray-500">Liều tiếp theo sau:</span>
+                                <span id="adrTimerDisplay" class="font-mono font-bold text-lg text-gray-800">00:00</span>
+                            </div>
+                        </div>
+                        <p class="text-[10px] text-gray-500 italic mt-1">* Nếu có Huyết áp ĐM xâm lấn: Cân nhắc liều nhỏ 50-100mcg thay vì 1mg.</p>
+                    </div>
+
+                    <div id="amiodaroneBox" class="border-l-4 border-gray-300 pl-3 opacity-50 transition-all">
+                        <h3 class="font-black text-gray-800 text-sm mb-1">AMIODARONE (Chỉ định cho Sốc được)</h3>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button id="amio1Btn" onclick="toggleAmio(1)" class="bg-gray-100 text-gray-600 font-semibold py-2 rounded-lg border border-gray-300 transition text-xs text-left px-3">
+                                <span class="block text-[10px] uppercase opacity-70">Sau Sốc lần 3</span>
+                                <span class="text-sm">300 mg</span>
+                            </button>
+                            <button id="amio2Btn" onclick="toggleAmio(2)" class="bg-gray-100 text-gray-600 font-semibold py-2 rounded-lg border border-gray-300 transition text-xs text-left px-3">
+                                <span class="block text-[10px] uppercase opacity-70">Sau Sốc lần 5</span>
+                                <span class="text-sm">150 mg</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full md:w-5/12 bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                <div class="bg-gray-800 px-4 py-3 border-b border-gray-700">
+                    <h2 class="font-bold text-white flex items-center text-sm"><span class="mr-2">🔍</span> Tìm nguyên nhân (4H - 4T)</h2>
+                </div>
+                <div class="p-3 grid grid-cols-2 gap-4">
+                    <div class="space-y-2">
+                        <h3 class="font-black text-blue-800 border-b border-blue-100 pb-1 text-xs">4Hs</h3>
+                        <label class="flex items-center space-x-2 cursor-pointer group"><input type="checkbox" class="w-4 h-4 text-blue-600 rounded border-gray-300"><span class="text-xs font-semibold text-gray-700 group-hover:text-blue-600">Hypoxia (Thiếu O2)</span></label>
+                        <label class="flex items-center space-x-2 cursor-pointer group"><input type="checkbox" class="w-4 h-4 text-blue-600 rounded border-gray-300"><span class="text-xs font-semibold text-gray-700 group-hover:text-blue-600">Hypovolaemia (Thiếu V)</span></label>
+                        <label class="flex items-center space-x-2 cursor-pointer group"><input type="checkbox" class="w-4 h-4 text-blue-600 rounded border-gray-300"><span class="text-xs font-semibold text-gray-700 group-hover:text-blue-600">Hypo/Hyperkalaemia</span></label>
+                        <label class="flex items-center space-x-2 cursor-pointer group"><input type="checkbox" class="w-4 h-4 text-blue-600 rounded border-gray-300"><span class="text-xs font-semibold text-gray-700 group-hover:text-blue-600">Hypo/Hyperthermia</span></label>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="font-black text-red-800 border-b border-red-100 pb-1 text-xs">4Ts</h3>
+                        <label class="flex items-center space-x-2 cursor-pointer group"><input type="checkbox" class="w-4 h-4 text-red-600 rounded border-gray-300"><span class="text-xs font-semibold text-gray-700 group-hover:text-red-600">Thrombosis (Huyết khối)</span></label>
+                        <label class="flex items-center space-x-2 cursor-pointer group"><input type="checkbox" class="w-4 h-4 text-red-600 rounded border-gray-300"><span class="text-xs font-semibold text-gray-700 group-hover:text-red-600">Tension Pneumo. (TKMP)</span></label>
+                        <label class="flex items-center space-x-2 cursor-pointer group"><input type="checkbox" class="w-4 h-4 text-red-600 rounded border-gray-300"><span class="text-xs font-semibold text-gray-700 group-hover:text-red-600">Tamponade (Chèn ép tim)</span></label>
+                        <label class="flex items-center space-x-2 cursor-pointer group"><input type="checkbox" class="w-4 h-4 text-red-600 rounded border-gray-300"><span class="text-xs font-semibold text-gray-700 group-hover:text-red-600">Toxins (Ngộ độc)</span></label>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-2 text-[10px] text-gray-500 border-t border-gray-100 text-center italic">
+                    Siêu âm POCUS giúp loại trừ nhanh Tamponade / Hypovolaemia.
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full">
+            <button onclick="toggleRosc()" id="btnRosc" class="w-full bg-green-600 hover:bg-green-500 text-white font-black text-xl py-4 rounded-2xl shadow-lg border-b-4 border-green-800 transition active:border-b-0 active:translate-y-1">
+                🌟 ĐÃ CÓ MẠCH TRỞ LẠI (ROSC)
+            </button>
+
+            <div id="roscPanel" class="hidden-smooth mt-4 bg-green-50 rounded-2xl border-2 border-green-500 shadow-xl overflow-hidden">
+                <div class="bg-green-600 text-white p-3 font-bold text-center uppercase tracking-widest text-sm">
+                    Mục tiêu Chăm sóc sau ROSC (ABCDE)
+                </div>
+                <div class="p-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-white p-3 rounded-xl border border-green-200 shadow-sm text-center">
+                        <span class="block text-xs font-bold text-gray-500 uppercase mb-1">Hô hấp (A-B)</span>
+                        <div class="text-xl font-black text-green-700">SpO2: 94 - 98%</div>
+                        <div class="text-[11px] font-semibold text-gray-600 mt-1">PaCO2 mức bình thường. Tránh tăng thông khí.</div>
+                    </div>
+                    <div class="bg-white p-3 rounded-xl border border-green-200 shadow-sm text-center">
+                        <span class="block text-xs font-bold text-gray-500 uppercase mb-1">Tuần hoàn (C)</span>
+                        <div class="text-xl font-black text-green-700">SBP > 100 mmHg</div>
+                        <div class="text-[11px] font-semibold text-gray-600 mt-1">Ghi ECG 12 chuyển đạo. Giải quyết nguyên nhân.</div>
+                    </div>
+                    <div class="bg-white p-3 rounded-xl border border-green-200 shadow-sm text-center">
+                        <span class="block text-xs font-bold text-gray-500 uppercase mb-1">Thần kinh & Khác (D-E)</span>
+                        <div class="text-lg font-black text-green-700">Kiểm soát Nhiệt độ</div>
+                        <div class="text-[11px] font-semibold text-gray-600 mt-1">Ngăn ngừa sốt. Đánh giá tri giác & đồng tử.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // --- LOGIC CPR TIMER ---
+        let cprTimeLeft = 120; // 2 minutes
+        let cprTimer = null;
+        let cprIsRunning = false;
+
+        function updateCprDisplay() {
+            let m = Math.floor(cprTimeLeft / 60);
+            let s = cprTimeLeft % 60;
+            let display = document.getElementById('cprTimerDisplay');
+            display.textContent = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+            
+            if (cprTimeLeft <= 0) {
+                display.classList.add('flash-red');
+            } else {
+                display.classList.remove('flash-red');
+            }
+        }
+
+        function toggleCprTimer() {
+            let btn = document.getElementById('cprBtn');
+            if (cprIsRunning) {
+                clearInterval(cprTimer);
+                cprIsRunning = false;
+                btn.textContent = "TIẾP TỤC";
+                btn.className = "flex-1 bg-yellow-500 hover:bg-yellow-400 py-3 rounded-xl font-bold text-lg transition shadow-[0_4px_0_#a16207]";
+            } else {
+                if (cprTimeLeft <= 0) cprTimeLeft = 120; // Auto reset if started after 0
+                cprIsRunning = true;
+                btn.textContent = "TẠM DỪNG";
+                btn.className = "flex-1 bg-gray-600 hover:bg-gray-500 py-3 rounded-xl font-bold text-lg transition shadow-[0_4px_0_#3f3f46]";
+                cprTimer = setInterval(() => {
+                    cprTimeLeft--;
+                    updateCprDisplay();
+                    if (cprTimeLeft <= 0) {
+                        clearInterval(cprTimer);
+                        cprIsRunning = false;
+                        btn.textContent = "BẮT ĐẦU CHU KỲ MỚI";
+                        btn.className = "flex-1 bg-red-600 hover:bg-red-500 py-3 rounded-xl font-bold text-lg transition shadow-[0_4px_0_#991b1b]";
+                    }
+                }, 1000);
+            }
+        }
+
+        function resetCprTimer() {
+            clearInterval(cprTimer);
+            cprIsRunning = false;
+            cprTimeLeft = 120;
+            updateCprDisplay();
+            let btn = document.getElementById('cprBtn');
+            btn.textContent = "BẮT ĐẦU";
+            btn.className = "flex-1 bg-red-600 hover:bg-red-500 py-3 rounded-xl font-bold text-lg transition shadow-[0_4px_0_#991b1b]";
+        }
+
+        // --- LOGIC NHỊP & THUỐC ---
+        let currentRhythm = null;
+
+        function selectRhythm(type) {
+            currentRhythm = type;
+            let btnShock = document.getElementById('btnShockable');
+            let btnNonShock = document.getElementById('btnNonShockable');
+            let hint = document.getElementById('actionHint');
+            let adrLogicText = document.getElementById('adrLogicText');
+            let amioBox = document.getElementById('amiodaroneBox');
+
+            if (type === 'shockable') {
+                btnShock.className = "flex flex-col items-center justify-center rounded-xl border-4 border-orange-500 bg-orange-100 text-orange-900 shadow-inner scale-95 transition";
+                btnNonShock.className = "flex flex-col items-center justify-center rounded-xl border-2 border-gray-200 bg-white text-gray-400 opacity-50 transition";
+                
+                hint.className = "mt-3 text-center text-sm font-bold text-orange-800 bg-orange-100 p-2 rounded";
+                hint.innerHTML = "⚡ SỐC ĐIỆN NGAY LẬP TỨC -> Ép tim tiếp 2 phút không dừng.";
+                
+                adrLogicText.textContent = "Tiêm sau Cú sốc thứ 3";
+                adrLogicText.className = "text-[10px] font-bold text-orange-700 bg-orange-100 px-2 py-0.5 rounded";
+                
+                // Mở khóa Amiodarone
+                amioBox.classList.remove('opacity-50', 'border-gray-300');
+                amioBox.classList.add('border-blue-500');
+                document.getElementById('amio1Btn').classList.replace('bg-gray-100', 'bg-blue-50');
+                document.getElementById('amio1Btn').classList.replace('text-gray-600', 'text-blue-800');
+                document.getElementById('amio1Btn').classList.replace('border-gray-300', 'border-blue-300');
+                document.getElementById('amio2Btn').classList.replace('bg-gray-100', 'bg-blue-50');
+                document.getElementById('amio2Btn').classList.replace('text-gray-600', 'text-blue-800');
+                document.getElementById('amio2Btn').classList.replace('border-gray-300', 'border-blue-300');
+
+            } else {
+                btnNonShock.className = "flex flex-col items-center justify-center rounded-xl border-4 border-blue-500 bg-blue-100 text-blue-900 shadow-inner scale-95 transition";
+                btnShock.className = "flex flex-col items-center justify-center rounded-xl border-2 border-gray-200 bg-white text-gray-400 opacity-50 transition";
+                
+                hint.className = "mt-3 text-center text-sm font-bold text-blue-800 bg-blue-100 p-2 rounded";
+                hint.innerHTML = "Tiếp tục CPR. Tìm nguyên nhân (4H-4T). KHÔNG SỐC.";
+                
+                adrLogicText.textContent = "Tiêm NGAY LẬP TỨC";
+                adrLogicText.className = "text-[10px] font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded flash-red";
+                
+                // Khóa Amiodarone
+                amioBox.classList.add('opacity-50', 'border-gray-300');
+                amioBox.classList.remove('border-blue-500');
+                document.getElementById('amio1Btn').className = "bg-gray-100 text-gray-600 font-semibold py-2 rounded-lg border border-gray-300 transition text-xs text-left px-3";
+                document.getElementById('amio2Btn').className = "bg-gray-100 text-gray-600 font-semibold py-2 rounded-lg border border-gray-300 transition text-xs text-left px-3";
+            }
+        }
+
+        // --- LOGIC ADRENALINE TIMER (3 Phút) ---
+        let adrTimeLeft = 0;
+        let adrTimer = null;
+
+        function logAdrenaline() {
+            clearInterval(adrTimer);
+            adrTimeLeft = 180; // 3 phút = 180 giây
+            let display = document.getElementById('adrTimerDisplay');
+            display.classList.remove('text-red-600');
+            display.classList.add('text-green-600');
+            
+            adrTimer = setInterval(() => {
+                adrTimeLeft--;
+                let m = Math.floor(adrTimeLeft / 60);
+                let s = adrTimeLeft % 60;
+                display.textContent = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+                
+                if (adrTimeLeft <= 0) {
+                    clearInterval(adrTimer);
+                    display.textContent = "ĐẾN GIỜ!";
+                    display.classList.replace('text-green-600', 'text-red-600');
+                    display.classList.add('flash-red');
+                } else if (adrTimeLeft <= 30) {
+                    display.classList.replace('text-green-600', 'text-orange-500');
+                }
+            }, 1000);
+        }
+
+        // Toggle Amiodarone Buttons
+        function toggleAmio(dose) {
+            if (currentRhythm !== 'shockable') return;
+            let btn = document.getElementById(`amio${dose}Btn`);
+            if (btn.classList.contains('bg-blue-600')) {
+                // Revert
+                btn.classList.replace('bg-blue-600', 'bg-blue-50');
+                btn.classList.replace('text-white', 'text-blue-800');
+            } else {
+                // Done
+                btn.classList.replace('bg-blue-50', 'bg-blue-600');
+                btn.classList.replace('text-blue-800', 'text-white');
+            }
+        }
+
+        // --- LOGIC ROSC ---
+        function toggleRosc() {
+            let panel = document.getElementById('roscPanel');
+            let btn = document.getElementById('btnRosc');
+            if (panel.classList.contains('hidden-smooth')) {
+                panel.classList.replace('hidden-smooth', 'visible-smooth');
+                btn.classList.replace('bg-green-600', 'bg-gray-800');
+                btn.classList.replace('border-green-800', 'border-gray-900');
+                btn.innerHTML = "X ẨN BẢNG POST-ROSC";
+                // Dừng bộ đếm ép tim khi có mạch
+                if (cprIsRunning) toggleCprTimer();
+            } else {
+                panel.classList.replace('visible-smooth', 'hidden-smooth');
+                btn.classList.replace('bg-gray-800', 'bg-green-600');
+                btn.classList.replace('border-gray-900', 'border-green-800');
+                btn.innerHTML = "🌟 ĐÃ CÓ MẠCH TRỞ LẠI (ROSC)";
+            }
+        }
+
+        function resetAll() {
+            if(confirm("Tạo ca cấp cứu mới? Toàn bộ đồng hồ và check-list sẽ bị xóa.")) {
+                location.reload();
+            }
+        }
+    </script>
+</body>
+</html>
