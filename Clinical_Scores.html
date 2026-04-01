@@ -2,166 +2,212 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master Clinical Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Master Clinical Dashboard V2</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { font-family: 'Segoe UI', system-ui, sans-serif; background-color: #f1f5f9; }
-        .input-box { width: 100%; padding: 0.5rem; border: 1px solid #cbd5e1; border-radius: 0.375rem; font-size: 0.875rem; transition: all 0.2s; }
-        .input-box:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 2px rgba(59,130,246,0.2); }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background-color: #f8fafc; -webkit-tap-highlight-color: transparent; }
+        /* Tối ưu Input cho Mobile */
+        .input-box { width: 100%; padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 0.5rem; font-size: 1rem; transition: all 0.2s; background: #fff; }
+        .input-box:focus { outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2); }
         .score-card { transition: all 0.3s ease; }
-        .missing-text { color: #ef4444; font-size: 0.75rem; font-weight: 600; margin-top: 4px; }
-        /* Tùy chỉnh scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
+        .missing-text { color: #ef4444; font-size: 0.8rem; font-weight: 600; margin-top: 6px; }
+        
+        /* Checkbox to nhỏ dễ bấm trên mobile */
+        input[type="checkbox"] { width: 1.25rem; height: 1.25rem; accent-color: #2563eb; }
+        
+        /* Ẩn mũi tên của input number */
+        input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+        input[type=number] { -moz-appearance: textfield; }
+
+        /* Tùy chỉnh scrollbar cho Desktop */
+        @media (min-width: 768px) {
+            .custom-scroll::-webkit-scrollbar { width: 6px; }
+            .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+            .custom-scroll::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        }
     </style>
 </head>
-<body class="text-gray-800 h-screen flex flex-col md:flex-row overflow-hidden">
+<body class="text-gray-800">
 
-    <div class="w-full md:w-5/12 lg:w-4/12 bg-white border-r border-gray-200 shadow-lg flex flex-col h-full z-10">
-        <div class="bg-blue-700 text-white p-4 shadow-md shrink-0">
-            <h1 class="font-bold text-lg">🏥 All-in-One Input</h1>
-            <p class="text-xs text-blue-200">Nhập 1 lần - Tính mọi thang điểm</p>
-        </div>
-        
-        <div class="p-4 overflow-y-auto flex-1 space-y-6">
+    <div class="flex flex-col md:flex-row min-h-screen">
+
+        <div class="w-full md:w-5/12 lg:w-4/12 bg-white border-r border-gray-200 shadow-lg md:h-screen md:sticky md:top-0 flex flex-col z-10">
+            <div class="bg-blue-700 text-white p-4 shadow-md shrink-0 flex justify-between items-center">
+                <div>
+                    <h1 class="font-bold text-lg leading-tight">🏥 All-in-One Calc</h1>
+                    <p class="text-xs text-blue-200">Bao gồm SOFA & PSI</p>
+                </div>
+                <button onclick="clearAll()" class="bg-white/20 hover:bg-white/30 text-xs px-3 py-2 rounded font-bold transition">XÓA TRẮNG</button>
+            </div>
             
-            <div>
-                <h3 class="font-bold text-blue-800 border-b border-blue-100 pb-1 mb-3 text-sm uppercase tracking-wide">1. Thông tin chung & Sinh hiệu</h3>
-                <div class="grid grid-cols-2 gap-3">
-                    <div><label class="block text-xs font-semibold text-gray-600 mb-1">Tuổi</label><input type="number" id="inp-age" class="input-box" placeholder="Năm/Tháng" oninput="calcAll()"></div>
-                    <div><label class="block text-xs font-semibold text-gray-600 mb-1">Giới tính</label>
-                        <select id="inp-sex" class="input-box" onchange="calcAll()"><option value="">Chọn</option><option value="M">Nam</option><option value="F">Nữ</option></select>
-                    </div>
-                    <div><label class="block text-xs font-semibold text-gray-600 mb-1">Điểm Glasgow (GCS)</label><input type="number" id="inp-gcs" class="input-box" placeholder="3 - 15" oninput="calcAll()"></div>
-                    <div><label class="block text-xs font-semibold text-gray-600 mb-1">Nhiệt độ (°C)</label><input type="number" id="inp-temp" class="input-box" step="0.1" placeholder="VD: 38.5" oninput="calcAll()"></div>
-                    <div><label class="block text-xs font-semibold text-gray-600 mb-1">Nhịp tim (l/p)</label><input type="number" id="inp-hr" class="input-box" placeholder="VD: 100" oninput="calcAll()"></div>
-                    <div><label class="block text-xs font-semibold text-gray-600 mb-1">Nhịp thở (l/p)</label><input type="number" id="inp-rr" class="input-box" placeholder="VD: 22" oninput="calcAll()"></div>
-                    <div><label class="block text-xs font-semibold text-gray-600 mb-1">Huyết áp Tâm thu</label><input type="number" id="inp-sbp" class="input-box" placeholder="mmHg" oninput="calcAll()"></div>
-                    <div><label class="block text-xs font-semibold text-gray-600 mb-1">Huyết áp Tâm trương</label><input type="number" id="inp-dbp" class="input-box" placeholder="mmHg" oninput="calcAll()"></div>
-                    <div><label class="block text-xs font-semibold text-gray-600 mb-1">SpO2 (%)</label><input type="number" id="inp-spo2" class="input-box" placeholder="%" oninput="calcAll()"></div>
-                    <div><label class="block text-xs font-semibold text-gray-600 mb-1">Hỗ trợ Oxy</label>
-                        <select id="inp-o2" class="input-box" onchange="calcAll()"><option value="0">Khí trời</option><option value="1">Có Oxy</option></select>
+            <div class="p-4 overflow-y-auto flex-1 space-y-6 custom-scroll pb-24 md:pb-4">
+                
+                <div>
+                    <h3 class="font-bold text-blue-800 border-b-2 border-blue-100 pb-1 mb-3 text-sm uppercase">1. Thông tin cơ bản</h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div><label class="block text-xs font-semibold text-gray-600 mb-1">Tuổi</label><input type="number" id="inp-age" class="input-box" placeholder="Năm" inputmode="numeric" oninput="calcAll()"></div>
+                        <div><label class="block text-xs font-semibold text-gray-600 mb-1">Giới tính</label>
+                            <select id="inp-sex" class="input-box" onchange="calcAll()"><option value="">Chọn</option><option value="M">Nam</option><option value="F">Nữ</option></select>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div>
-                <h3 class="font-bold text-blue-800 border-b border-blue-100 pb-1 mb-3 text-sm uppercase tracking-wide">2. Xét nghiệm (Cận lâm sàng)</h3>
-                <div class="grid grid-cols-2 gap-3">
-                    <div><label class="block text-xs font-semibold text-gray-600 mb-1">Bạch cầu (WBC, K/uL)</label><input type="number" id="inp-wbc" class="input-box" placeholder="VD: 14" oninput="calcAll()"></div>
-                    <div><label class="block text-xs font-semibold text-gray-600 mb-1">BUN (mg/dL)</label><input type="number" id="inp-bun" class="input-box" placeholder="VD: 20" oninput="calcAll()"></div>
-                    <div><label class="block text-xs font-semibold text-gray-600 mb-1">Tiểu cầu (K/uL)</label><input type="number" id="inp-plt" class="input-box" placeholder="VD: 100" oninput="calcAll()"></div>
-                    <div><label class="block text-xs font-semibold text-gray-600 mb-1">Bilirubin (mg/dL)</label><input type="number" id="inp-bili" class="input-box" placeholder="VD: 2.0" oninput="calcAll()"></div>
-                    <div><label class="block text-xs font-semibold text-gray-600 mb-1">Creatinin (mg/dL)</label><input type="number" id="inp-crea" class="input-box" placeholder="VD: 1.5" oninput="calcAll()"></div>
-                    <div><label class="block text-xs font-semibold text-gray-600 mb-1">PaO2 (mmHg)</label><input type="number" id="inp-pao2" class="input-box" placeholder="VD: 70" oninput="calcAll()"></div>
-                    <div class="col-span-2"><label class="block text-xs font-semibold text-gray-600 mb-1">FiO2 (%)</label><input type="number" id="inp-fio2" class="input-box" placeholder="VD: 21 (Khí trời)" oninput="calcAll()"></div>
+                <div>
+                    <h3 class="font-bold text-blue-800 border-b-2 border-blue-100 pb-1 mb-3 text-sm uppercase">2. Dấu hiệu sinh tồn</h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div><label class="block text-xs font-semibold text-gray-600 mb-1">GCS (Điểm)</label><input type="number" id="inp-gcs" class="input-box" placeholder="3 - 15" inputmode="numeric" oninput="calcAll()"></div>
+                        <div><label class="block text-xs font-semibold text-gray-600 mb-1">Nhiệt độ (°C)</label><input type="number" id="inp-temp" class="input-box" step="0.1" placeholder="37.0" inputmode="decimal" oninput="calcAll()"></div>
+                        <div><label class="block text-xs font-semibold text-gray-600 mb-1">Nhịp tim (l/p)</label><input type="number" id="inp-hr" class="input-box" placeholder="80" inputmode="numeric" oninput="calcAll()"></div>
+                        <div><label class="block text-xs font-semibold text-gray-600 mb-1">Nhịp thở (l/p)</label><input type="number" id="inp-rr" class="input-box" placeholder="20" inputmode="numeric" oninput="calcAll()"></div>
+                        <div><label class="block text-xs font-semibold text-gray-600 mb-1">HA Tâm thu</label><input type="number" id="inp-sbp" class="input-box" placeholder="mmHg" inputmode="numeric" oninput="calcAll()"></div>
+                        <div><label class="block text-xs font-semibold text-gray-600 mb-1">HA Tâm trương</label><input type="number" id="inp-dbp" class="input-box" placeholder="mmHg" inputmode="numeric" oninput="calcAll()"></div>
+                        <div><label class="block text-xs font-semibold text-gray-600 mb-1">SpO2 (%)</label><input type="number" id="inp-spo2" class="input-box" placeholder="%" inputmode="numeric" oninput="calcAll()"></div>
+                        <div><label class="block text-xs font-semibold text-gray-600 mb-1">Hỗ trợ Oxy</label>
+                            <select id="inp-o2" class="input-box" onchange="calcAll()"><option value="0">Khí trời</option><option value="1">Có Oxy</option></select>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <div>
-                <h3 class="font-bold text-blue-800 border-b border-blue-100 pb-1 mb-3 text-sm uppercase tracking-wide">3. Tiền sử (Dành cho PSI)</h3>
-                <div class="space-y-2 text-sm">
-                    <label class="flex items-center space-x-2"><input type="checkbox" id="chk-nursing" onchange="calcAll()" class="w-4 h-4 rounded"><span>Sống ở viện dưỡng lão</span></label>
-                    <label class="flex items-center space-x-2"><input type="checkbox" id="chk-cancer" onchange="calcAll()" class="w-4 h-4 rounded"><span>Bệnh lý ác tính (Ung thư)</span></label>
-                    <label class="flex items-center space-x-2"><input type="checkbox" id="chk-liver" onchange="calcAll()" class="w-4 h-4 rounded"><span>Bệnh gan</span></label>
-                    <label class="flex items-center space-x-2"><input type="checkbox" id="chk-heart" onchange="calcAll()" class="w-4 h-4 rounded"><span>Suy tim xung huyết (CHF)</span></label>
+                <div>
+                    <h3 class="font-bold text-blue-800 border-b-2 border-blue-100 pb-1 mb-3 text-sm uppercase">3. Xét nghiệm (Labs)</h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div><label class="block text-xs font-semibold text-gray-600 mb-1">Bạch cầu (K/uL)</label><input type="number" id="inp-wbc" class="input-box" placeholder="WBC" inputmode="decimal" oninput="calcAll()"></div>
+                        <div><label class="block text-xs font-semibold text-gray-600 mb-1">Tiểu cầu (K/uL)</label><input type="number" id="inp-plt" class="input-box" placeholder="PLT" inputmode="numeric" oninput="calcAll()"></div>
+                        <div><label class="block text-xs font-semibold text-gray-600 mb-1">BUN (mg/dL)</label><input type="number" id="inp-bun" class="input-box" placeholder="BUN" inputmode="decimal" oninput="calcAll()"></div>
+                        <div><label class="block text-xs font-semibold text-gray-600 mb-1">Creatinin (mg/dL)</label><input type="number" id="inp-crea" class="input-box" placeholder="Crea" inputmode="decimal" oninput="calcAll()"></div>
+                        <div><label class="block text-xs font-semibold text-gray-600 mb-1">Bilirubin (mg/dL)</label><input type="number" id="inp-bili" class="input-box" placeholder="Bili" inputmode="decimal" oninput="calcAll()"></div>
+                        <div><label class="block text-xs font-semibold text-gray-600 mb-1">Natri (mEq/L)</label><input type="number" id="inp-na" class="input-box" placeholder="Na+" inputmode="numeric" oninput="calcAll()"></div>
+                        <div><label class="block text-xs font-semibold text-gray-600 mb-1">Glucose (mg/dL)</label><input type="number" id="inp-gluc" class="input-box" placeholder="Đường máu" inputmode="numeric" oninput="calcAll()"></div>
+                        <div><label class="block text-xs font-semibold text-gray-600 mb-1">Hct (%)</label><input type="number" id="inp-hct" class="input-box" placeholder="Dung tích HC" inputmode="numeric" oninput="calcAll()"></div>
+                        <div><label class="block text-xs font-semibold text-gray-600 mb-1">pH máu</label><input type="number" id="inp-ph" class="input-box" placeholder="7.35" step="0.01" inputmode="decimal" oninput="calcAll()"></div>
+                        <div><label class="block text-xs font-semibold text-gray-600 mb-1">PaO2 (mmHg)</label><input type="number" id="inp-pao2" class="input-box" placeholder="PaO2" inputmode="numeric" oninput="calcAll()"></div>
+                        <div class="col-span-2"><label class="block text-xs font-semibold text-gray-600 mb-1">FiO2 (%)</label><input type="number" id="inp-fio2" class="input-box" placeholder="21 (Khí trời)" inputmode="numeric" oninput="calcAll()"></div>
+                    </div>
                 </div>
-            </div>
 
-            <button onclick="clearAll()" class="w-full bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 rounded transition text-sm">XÓA TRẮNG DỮ LIỆU</button>
+                <div>
+                    <h3 class="font-bold text-blue-800 border-b-2 border-blue-100 pb-1 mb-3 text-sm uppercase">4. Tiền sử & Hình ảnh (Cho PSI)</h3>
+                    <div class="space-y-3 bg-blue-50/50 p-3 rounded-xl border border-blue-100">
+                        <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" id="chk-nursing" onchange="calcAll()"><span class="text-sm font-semibold text-gray-700">Sống ở viện dưỡng lão</span></label>
+                        <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" id="chk-cancer" onchange="calcAll()"><span class="text-sm font-semibold text-gray-700">Bệnh lý ác tính (Ung thư)</span></label>
+                        <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" id="chk-liver" onchange="calcAll()"><span class="text-sm font-semibold text-gray-700">Bệnh gan</span></label>
+                        <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" id="chk-heart" onchange="calcAll()"><span class="text-sm font-semibold text-gray-700">Suy tim xung huyết (CHF)</span></label>
+                        <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" id="chk-cvd" onchange="calcAll()"><span class="text-sm font-semibold text-gray-700">Bệnh mạch máu não</span></label>
+                        <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" id="chk-renal" onchange="calcAll()"><span class="text-sm font-semibold text-gray-700">Bệnh thận mạn</span></label>
+                        <div class="border-t border-blue-200 my-2"></div>
+                        <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" id="chk-pleural" onchange="calcAll()"><span class="text-sm font-semibold text-red-600">Tràn dịch màng phổi (X-quang)</span></label>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </div>
 
-    <div class="w-full md:w-7/12 lg:w-8/12 bg-slate-50 p-4 md:p-6 overflow-y-auto">
-        <h2 class="text-xl font-black text-slate-800 mb-4 flex items-center"><span class="mr-2">📊</span> DASHBOARD KẾT QUẢ</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="results-container">
-            <div id="card-qsofa" class="score-card bg-white p-4 rounded-xl border-2 border-dashed border-gray-300 shadow-sm relative overflow-hidden">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="font-bold text-lg">qSOFA</h3><span class="text-xs font-semibold bg-gray-100 text-gray-500 px-2 py-1 rounded">Sepsis</span>
-                </div>
-                <div class="result-content">
-                    <div class="text-2xl font-black text-gray-400 mb-1">-</div>
-                    <div class="text-sm font-semibold text-gray-500">Đang chờ nhập liệu</div>
-                </div>
-                <div class="missing-text" id="miss-qsofa">Thiếu: GCS, Nhịp thở, HA Tâm thu</div>
-            </div>
+        <div class="md:hidden fixed bottom-0 left-0 right-0 p-3 bg-white border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] z-20">
+            <button onclick="document.getElementById('results-section').scrollIntoView({behavior: 'smooth'})" class="w-full bg-blue-600 text-white font-bold py-3 rounded-xl shadow-md">XEM KẾT QUẢ ĐÁNH GIÁ ⬇</button>
+        </div>
 
-            <div id="card-sirs" class="score-card bg-white p-4 rounded-xl border-2 border-dashed border-gray-300 shadow-sm relative overflow-hidden">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="font-bold text-lg">SIRS</h3><span class="text-xs font-semibold bg-gray-100 text-gray-500 px-2 py-1 rounded">Phản ứng viêm</span>
+        <div id="results-section" class="w-full md:w-7/12 lg:w-8/12 bg-slate-100 p-4 md:p-6 md:h-screen md:overflow-y-auto custom-scroll pb-24 md:pb-6">
+            <h2 class="text-xl font-black text-slate-800 mb-4 flex items-center sticky top-0 bg-slate-100 py-2 z-10"><span class="mr-2">📊</span> DASHBOARD LÂM SÀNG</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4" id="results-container">
+                
+                <div id="card-psi" class="score-card bg-white p-4 rounded-xl border-2 border-dashed border-gray-300 shadow-sm relative lg:col-span-2">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-blue-900">PSI (Pneumonia Severity Index)</h3><span class="text-xs font-semibold bg-blue-100 text-blue-700 px-2 py-1 rounded">Viêm phổi nặng</span>
+                    </div>
+                    <div class="result-content flex items-center justify-between">
+                        <div>
+                            <div class="text-2xl font-black text-gray-400 mb-1">-</div>
+                            <div class="text-sm font-semibold text-gray-500">Đang chờ nhập liệu</div>
+                        </div>
+                    </div>
+                    <div class="missing-text" id="miss-psi">Thiếu: Tuổi, Giới tính, GCS, Nhịp thở, HA, Nhiệt độ, Mạch, pH, BUN, Na, Glucose, Hct, PaO2</div>
                 </div>
-                <div class="result-content">
-                    <div class="text-2xl font-black text-gray-400 mb-1">-</div>
-                    <div class="text-sm font-semibold text-gray-500">Đang chờ nhập liệu</div>
-                </div>
-                <div class="missing-text" id="miss-sirs">Thiếu: Nhiệt độ, Nhịp tim, Nhịp thở, Bạch cầu</div>
-            </div>
 
-            <div id="card-curb65" class="score-card bg-white p-4 rounded-xl border-2 border-dashed border-gray-300 shadow-sm relative overflow-hidden">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="font-bold text-lg">CURB-65</h3><span class="text-xs font-semibold bg-gray-100 text-gray-500 px-2 py-1 rounded">Viêm phổi</span>
-                </div>
-                <div class="result-content">
-                    <div class="text-2xl font-black text-gray-400 mb-1">-</div>
-                    <div class="text-sm font-semibold text-gray-500">Đang chờ nhập liệu</div>
-                </div>
-                <div class="missing-text" id="miss-curb65">Thiếu: Tuổi, GCS, BUN, Nhịp thở, Huyết áp</div>
-            </div>
-
-            <div id="card-news2" class="score-card bg-white p-4 rounded-xl border-2 border-dashed border-gray-300 shadow-sm relative overflow-hidden">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="font-bold text-lg" id="title-ews">NEWS 2</h3><span class="text-xs font-semibold bg-gray-100 text-gray-500 px-2 py-1 rounded">Cảnh báo sớm</span>
-                </div>
-                <div class="result-content">
-                    <div class="text-2xl font-black text-gray-400 mb-1">-</div>
-                    <div class="text-sm font-semibold text-gray-500">Đang chờ nhập liệu</div>
-                </div>
-                <div class="missing-text" id="miss-news2">Thiếu: Tuổi, Mạch, HA, Nhịp thở, SpO2, Nhiệt độ, Ý thức</div>
-            </div>
-
-            <div id="card-sofa" class="score-card bg-white p-4 rounded-xl border-2 border-dashed border-gray-300 shadow-sm relative overflow-hidden col-span-1 md:col-span-2">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="font-bold text-lg">SOFA Score</h3><span class="text-xs font-semibold bg-gray-100 text-gray-500 px-2 py-1 rounded">Suy đa tạng</span>
-                </div>
-                <div class="result-content flex items-center justify-between">
-                    <div>
+                <div id="card-curb65" class="score-card bg-white p-4 rounded-xl border-2 border-dashed border-gray-300 shadow-sm relative">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg">CURB-65</h3><span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-1 rounded">Viêm phổi</span>
+                    </div>
+                    <div class="result-content">
                         <div class="text-2xl font-black text-gray-400 mb-1">-</div>
                         <div class="text-sm font-semibold text-gray-500">Đang chờ nhập liệu</div>
                     </div>
+                    <div class="missing-text" id="miss-curb65">Thiếu: Tuổi, GCS, BUN, Nhịp thở, HA</div>
                 </div>
-                <div class="missing-text" id="miss-sofa">Thiếu: PaO2, FiO2, Tiểu cầu, Bilirubin, Huyết áp, GCS, Creatinin</div>
-            </div>
 
+                <div id="card-sofa" class="score-card bg-white p-4 rounded-xl border-2 border-dashed border-gray-300 shadow-sm relative">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg">SOFA Score</h3><span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-1 rounded">Suy đa tạng</span>
+                    </div>
+                    <div class="result-content">
+                        <div class="text-2xl font-black text-gray-400 mb-1">-</div>
+                        <div class="text-sm font-semibold text-gray-500">Đang chờ nhập liệu</div>
+                    </div>
+                    <div class="missing-text" id="miss-sofa">Thiếu: PaO2, FiO2, Tiểu cầu, Bilirubin, HA Tâm thu, GCS, Creatinin</div>
+                </div>
+
+                <div id="card-qsofa" class="score-card bg-white p-4 rounded-xl border-2 border-dashed border-gray-300 shadow-sm relative">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg">qSOFA</h3><span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-1 rounded">Sepsis</span>
+                    </div>
+                    <div class="result-content">
+                        <div class="text-2xl font-black text-gray-400 mb-1">-</div>
+                        <div class="text-sm font-semibold text-gray-500">Đang chờ nhập liệu</div>
+                    </div>
+                    <div class="missing-text" id="miss-qsofa">Thiếu: GCS, Nhịp thở, HA Tâm thu</div>
+                </div>
+
+                <div id="card-sirs" class="score-card bg-white p-4 rounded-xl border-2 border-dashed border-gray-300 shadow-sm relative">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg">SIRS</h3><span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-1 rounded">Phản ứng viêm</span>
+                    </div>
+                    <div class="result-content">
+                        <div class="text-2xl font-black text-gray-400 mb-1">-</div>
+                        <div class="text-sm font-semibold text-gray-500">Đang chờ nhập liệu</div>
+                    </div>
+                    <div class="missing-text" id="miss-sirs">Thiếu: Nhiệt độ, Nhịp tim, Nhịp thở, Bạch cầu</div>
+                </div>
+
+                <div id="card-news2" class="score-card bg-white p-4 rounded-xl border-2 border-dashed border-gray-300 shadow-sm relative lg:col-span-2">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg" id="title-ews">NEWS 2</h3><span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-1 rounded">Cảnh báo sớm sinh tồn</span>
+                    </div>
+                    <div class="result-content">
+                        <div class="text-2xl font-black text-gray-400 mb-1">-</div>
+                        <div class="text-sm font-semibold text-gray-500">Đang chờ nhập liệu</div>
+                    </div>
+                    <div class="missing-text" id="miss-news2">Thiếu: Tuổi, Mạch, HA, Nhịp thở, SpO2, Nhiệt độ, GCS</div>
+                </div>
+
+            </div>
         </div>
     </div>
 
     <script>
-        function getVal(id) {
-            const val = document.getElementById(id).value;
-            if (val === "") return null;
-            return parseFloat(val);
-        }
+        function getVal(id) { const val = document.getElementById(id).value; return val === "" ? null : parseFloat(val); }
+        function getCheck(id) { return document.getElementById(id).checked; }
 
         function updateCard(cardId, isComplete, score, risk, missingArr, colorClass) {
             const card = document.getElementById(`card-${cardId}`);
             const missText = document.getElementById(`miss-${cardId}`);
             const content = card.querySelector('.result-content');
+            
+            // Xử lý layout span cho màn hình lớn
+            let spanClass = (cardId === 'psi' || cardId === 'news2') ? "lg:col-span-2 " : "";
 
             if (!isComplete) {
-                card.className = "score-card bg-white p-4 rounded-xl border-2 border-dashed border-gray-300 shadow-sm relative overflow-hidden " + (cardId==='sofa'?"col-span-1 md:col-span-2":"");
-                content.innerHTML = `<div class="text-2xl font-black text-gray-400 mb-1">-</div><div class="text-sm font-semibold text-gray-500">Chưa đủ dữ kiện</div>`;
+                card.className = `score-card bg-white p-4 rounded-xl border-2 border-dashed border-gray-300 shadow-sm relative overflow-hidden ${spanClass}`;
+                content.innerHTML = `<div class="text-2xl font-black text-gray-400 mb-1">-</div><div class="text-sm font-semibold text-gray-500 mt-1">Chưa đủ dữ kiện</div>`;
                 missText.innerHTML = "❌ Cần bổ sung: " + missingArr.join(", ");
                 missText.style.display = "block";
             } else {
-                let borderBg = "";
-                if (colorClass === 'green') borderBg = "border-solid border-green-500 bg-green-50";
-                if (colorClass === 'yellow') borderBg = "border-solid border-yellow-500 bg-yellow-50";
-                if (colorClass === 'red') borderBg = "border-solid border-red-500 bg-red-50";
+                let borderBg = colorClass === 'green' ? "border-solid border-green-500 bg-green-50" : 
+                               colorClass === 'yellow' ? "border-solid border-yellow-500 bg-yellow-50" : 
+                               "border-solid border-red-500 bg-red-50";
 
-                card.className = `score-card p-4 rounded-xl border-2 shadow-md relative overflow-hidden ${borderBg} ` + (cardId==='sofa'?"col-span-1 md:col-span-2":"");
-                content.innerHTML = `<div class="text-3xl font-black text-${colorClass}-700 mb-1">${score} <span class="text-sm font-bold text-${colorClass}-600">điểm</span></div><div class="text-sm font-bold text-${colorClass}-800">${risk}</div>`;
+                card.className = `score-card p-4 rounded-xl border-2 shadow-md relative overflow-hidden ${borderBg} ${spanClass}`;
+                content.innerHTML = `<div class="text-3xl font-black text-${colorClass}-700 mb-1">${score} <span class="text-sm font-bold text-${colorClass}-600">điểm</span></div><div class="text-sm font-bold text-${colorClass}-800 leading-tight">${risk}</div>`;
                 missText.style.display = "none";
             }
         }
@@ -172,31 +218,48 @@
                 gcs: getVal('inp-gcs'), temp: getVal('inp-temp'), hr: getVal('inp-hr'), rr: getVal('inp-rr'),
                 sbp: getVal('inp-sbp'), dbp: getVal('inp-dbp'), spo2: getVal('inp-spo2'), o2: getVal('inp-o2'),
                 wbc: getVal('inp-wbc'), bun: getVal('inp-bun'), plt: getVal('inp-plt'),
-                bili: getVal('inp-bili'), crea: getVal('inp-crea'), pao2: getVal('inp-pao2'), fio2: getVal('inp-fio2')
+                bili: getVal('inp-bili'), crea: getVal('inp-crea'), pao2: getVal('inp-pao2'), fio2: getVal('inp-fio2'),
+                na: getVal('inp-na'), gluc: getVal('inp-gluc'), hct: getVal('inp-hct'), ph: getVal('inp-ph'),
+                
+                nursing: getCheck('chk-nursing'), cancer: getCheck('chk-cancer'), liver: getCheck('chk-liver'),
+                heart: getCheck('chk-heart'), cvd: getCheck('chk-cvd'), renal: getCheck('chk-renal'), pleural: getCheck('chk-pleural')
             };
 
-            // 1. qSOFA
-            let missQSOFA = [];
-            if(d.gcs === null) missQSOFA.push("GCS"); if(d.rr === null) missQSOFA.push("Nhịp thở"); if(d.sbp === null) missQSOFA.push("HA Tâm thu");
-            if(missQSOFA.length > 0) updateCard('qsofa', false, 0, "", missQSOFA, "");
+            // 1. PSI (Pneumonia Severity Index)
+            let missPSI = [];
+            if(d.age === null) missPSI.push("Tuổi"); if(d.sex === "") missPSI.push("Giới tính");
+            if(d.gcs === null) missPSI.push("GCS"); if(d.rr === null) missPSI.push("Nhịp thở");
+            if(d.sbp === null) missPSI.push("HA Tâm thu"); if(d.temp === null) missPSI.push("Nhiệt độ");
+            if(d.hr === null) missPSI.push("Nhịp tim"); if(d.ph === null) missPSI.push("pH máu");
+            if(d.bun === null) missPSI.push("BUN"); if(d.na === null) missPSI.push("Natri");
+            if(d.gluc === null) missPSI.push("Glucose"); if(d.hct === null) missPSI.push("Hct");
+            if(d.pao2 === null) missPSI.push("PaO2");
+
+            if(missPSI.length > 0) { updateCard('psi', false, 0, "", missPSI, ""); } 
             else {
-                let s = 0;
-                if(d.gcs < 15) s++; if(d.rr >= 22) s++; if(d.sbp <= 100) s++;
-                updateCard('qsofa', true, s, s >= 2 ? "Nguy cơ Sepsis Cao" : "Nguy cơ Thấp", [], s >= 2 ? "red" : "green");
+                let s = d.age;
+                if(d.sex === 'F') s -= 10;
+                
+                if(d.nursing) s += 10; if(d.cancer) s += 30; if(d.liver) s += 20; 
+                if(d.heart) s += 10; if(d.cvd) s += 10; if(d.renal) s += 10;
+
+                if(d.gcs < 15) s += 20; if(d.rr >= 30) s += 20; if(d.sbp < 90) s += 20;
+                if(d.temp < 35 || d.temp >= 40) s += 15; if(d.hr >= 125) s += 10;
+
+                if(d.ph < 7.35) s += 30; if(d.bun >= 30) s += 20; if(d.na < 130) s += 20;
+                if(d.gluc >= 250) s += 10; if(d.hct < 30) s += 10; if(d.pao2 < 60) s += 10;
+                if(d.pleural) s += 10;
+
+                let riskClass = "", riskDesc = "", col = "";
+                if(s <= 70) { riskClass = "Class II"; riskDesc = "Nguy cơ thấp. Điều trị ngoại trú."; col = "green"; }
+                else if(s <= 90) { riskClass = "Class III"; riskDesc = "Nguy cơ trung bình. Quan sát lưu viện ngắn hạn."; col = "yellow"; }
+                else if(s <= 130) { riskClass = "Class IV"; riskDesc = "Nguy cơ trung bình - cao. Nhập viện Nội khoa."; col = "red"; }
+                else { riskClass = "Class V"; riskDesc = "Nguy cơ tử vong rất cao (>27%). Cân nhắc ICU."; col = "red"; }
+
+                updateCard('psi', true, s, `Nhóm ${riskClass}: ${riskDesc}`, [], col);
             }
 
-            // 2. SIRS
-            let missSIRS = [];
-            if(d.temp === null) missSIRS.push("Nhiệt độ"); if(d.hr === null) missSIRS.push("Nhịp tim"); 
-            if(d.rr === null) missSIRS.push("Nhịp thở"); if(d.wbc === null) missSIRS.push("Bạch cầu");
-            if(missSIRS.length > 0) updateCard('sirs', false, 0, "", missSIRS, "");
-            else {
-                let s = 0;
-                if(d.temp > 38 || d.temp < 36) s++; if(d.hr > 90) s++; if(d.rr > 20) s++; if(d.wbc > 12 || d.wbc < 4) s++;
-                updateCard('sirs', true, s, s >= 2 ? "Thỏa tiêu chuẩn SIRS" : "Bình thường", [], s >= 2 ? "yellow" : "green");
-            }
-
-            // 3. CURB-65
+            // 2. CURB-65
             let missCURB = [];
             if(d.age === null) missCURB.push("Tuổi"); if(d.gcs === null) missCURB.push("GCS"); if(d.bun === null) missCURB.push("BUN");
             if(d.rr === null) missCURB.push("Nhịp thở"); if(d.sbp === null || d.dbp === null) missCURB.push("Huyết áp");
@@ -204,64 +267,66 @@
             else {
                 let s = 0;
                 if(d.gcs < 15) s++; if(d.bun > 19) s++; if(d.rr >= 30) s++; if(d.sbp < 90 || d.dbp <= 60) s++; if(d.age >= 65) s++;
-                let risk = s <= 1 ? "Ngoại trú" : (s == 2 ? "Nhập viện ngắn ngày" : "Nhập viện cấp cứu/ICU");
-                let col = s <= 1 ? "green" : (s == 2 ? "yellow" : "red");
-                updateCard('curb65', true, s, risk, [], col);
+                updateCard('curb65', true, s, s <= 1 ? "Ngoại trú" : (s == 2 ? "Nhập viện" : "ICU"), [], s <= 1 ? "green" : (s == 2 ? "yellow" : "red"));
             }
 
-            // 4. EWS (NEWS2 / PEWS Toggle based on Age)
-            let missEWS = [];
-            const isChild = (d.age !== null && d.age < 16);
-            document.getElementById('title-ews').innerText = isChild ? "PEWS (Nhi)" : "NEWS 2";
-            
-            if(d.age === null) missEWS.push("Tuổi (để phân loại)");
-            if(d.rr === null) missEWS.push("Nhịp thở"); if(d.spo2 === null) missEWS.push("SpO2"); if(d.o2 === null && !isChild) missEWS.push("Hỗ trợ O2");
-            if(d.sbp === null && !isChild) missEWS.push("HA Tâm thu"); if(d.hr === null) missEWS.push("Mạch"); 
-            if(d.temp === null && !isChild) missEWS.push("Nhiệt độ"); if(d.gcs === null) missEWS.push("GCS");
-
-            if(missEWS.length > 0) updateCard('news2', false, 0, "", missEWS, "");
-            else {
-                // Logic giả định (Mock logic) cho NEWS2 để giữ code gọn
-                let s = 0; 
-                if(d.rr < 8 || d.rr > 24) s+=3; else if (d.rr > 20) s+=2;
-                if(d.spo2 <= 91) s+=3;
-                if(!isChild && d.sbp <= 90) s+=3;
-                if(d.hr > 130) s+=3;
-                if(d.gcs < 15) s+=3;
-                
-                let risk = s >= 7 ? "Cảnh báo Đỏ (ICU)" : (s >= 5 ? "Cảnh báo Vàng" : "An toàn");
-                let col = s >= 7 ? "red" : (s >= 5 ? "yellow" : "green");
-                updateCard('news2', true, s, risk, [], col);
-            }
-
-            // 5. SOFA
+            // 3. SOFA
             let missSOFA = [];
             if(d.pao2 === null || d.fio2 === null) missSOFA.push("PaO2/FiO2"); if(d.plt === null) missSOFA.push("Tiểu cầu");
-            if(d.bili === null) missSOFA.push("Bilirubin"); if(d.sbp === null) missSOFA.push("HA Tâm thu (Map)");
+            if(d.bili === null) missSOFA.push("Bilirubin"); if(d.sbp === null) missSOFA.push("HA Tâm thu");
             if(d.gcs === null) missSOFA.push("GCS"); if(d.crea === null) missSOFA.push("Creatinin");
-
             if(missSOFA.length > 0) updateCard('sofa', false, 0, "", missSOFA, "");
             else {
-                let s = 0;
-                let pfRatio = d.pao2 / (d.fio2 / 100);
+                let s = 0; let pfRatio = d.pao2 / (d.fio2 / 100);
                 if(pfRatio < 100) s+=4; else if(pfRatio < 200) s+=3; else if(pfRatio < 300) s+=2; else if(pfRatio < 400) s+=1;
                 if(d.plt < 20) s+=4; else if(d.plt < 50) s+=3; else if(d.plt < 100) s+=2; else if(d.plt < 150) s+=1;
                 if(d.bili > 12) s+=4; else if(d.bili >= 6) s+=3; else if(d.bili >= 2) s+=2; else if(d.bili >= 1.2) s+=1;
                 if(d.gcs < 6) s+=4; else if(d.gcs <= 9) s+=3; else if(d.gcs <= 12) s+=2; else if(d.gcs <= 14) s+=1;
                 if(d.crea > 5) s+=4; else if(d.crea >= 3.5) s+=3; else if(d.crea >= 2) s+=2; else if(d.crea >= 1.2) s+=1;
-                
                 updateCard('sofa', true, s, "Suy đa tạng mức độ: " + s + "/24", [], s > 9 ? "red" : (s > 4 ? "yellow" : "green"));
+            }
+
+            // 4. qSOFA
+            let missQSOFA = [];
+            if(d.gcs === null) missQSOFA.push("GCS"); if(d.rr === null) missQSOFA.push("Nhịp thở"); if(d.sbp === null) missQSOFA.push("HA Tâm thu");
+            if(missQSOFA.length > 0) updateCard('qsofa', false, 0, "", missQSOFA, "");
+            else {
+                let s = 0; if(d.gcs < 15) s++; if(d.rr >= 22) s++; if(d.sbp <= 100) s++;
+                updateCard('qsofa', true, s, s >= 2 ? "Nguy cơ Sepsis Cao" : "Nguy cơ Thấp", [], s >= 2 ? "red" : "green");
+            }
+
+            // 5. SIRS
+            let missSIRS = [];
+            if(d.temp === null) missSIRS.push("Nhiệt độ"); if(d.hr === null) missSIRS.push("Nhịp tim"); 
+            if(d.rr === null) missSIRS.push("Nhịp thở"); if(d.wbc === null) missSIRS.push("Bạch cầu");
+            if(missSIRS.length > 0) updateCard('sirs', false, 0, "", missSIRS, "");
+            else {
+                let s = 0; if(d.temp > 38 || d.temp < 36) s++; if(d.hr > 90) s++; if(d.rr > 20) s++; if(d.wbc > 12 || d.wbc < 4) s++;
+                updateCard('sirs', true, s, s >= 2 ? "Thỏa tiêu chuẩn SIRS" : "Bình thường", [], s >= 2 ? "yellow" : "green");
+            }
+
+            // 6. NEWS2
+            let missEWS = [];
+            document.getElementById('title-ews').innerText = (d.age !== null && d.age < 16) ? "PEWS (Nhi)" : "NEWS 2";
+            if(d.age === null) missEWS.push("Tuổi"); if(d.rr === null) missEWS.push("Nhịp thở"); if(d.spo2 === null) missEWS.push("SpO2"); 
+            if(d.sbp === null) missEWS.push("HA Tâm thu"); if(d.hr === null) missEWS.push("Mạch"); 
+            if(d.temp === null) missEWS.push("Nhiệt độ"); if(d.gcs === null) missEWS.push("GCS");
+            if(missEWS.length > 0) updateCard('news2', false, 0, "", missEWS, "");
+            else {
+                let s = 0; if(d.rr < 8 || d.rr > 24) s+=3; else if (d.rr > 20) s+=2;
+                if(d.spo2 <= 91) s+=3; if(d.sbp <= 90) s+=3; if(d.hr > 130) s+=3; if(d.gcs < 15) s+=3;
+                updateCard('news2', true, s, s >= 7 ? "Cảnh báo Đỏ (Theo dõi sát/ICU)" : (s >= 5 ? "Cảnh báo Vàng" : "Ổn định"), [], s >= 7 ? "red" : (s >= 5 ? "yellow" : "green"));
             }
         }
 
         function clearAll() {
-            document.querySelectorAll('input').forEach(i => i.value = '');
-            document.querySelectorAll('select').forEach(s => s.value = '');
+            document.querySelectorAll('input[type="number"], select').forEach(i => i.value = '');
             document.querySelectorAll('input[type="checkbox"]').forEach(c => c.checked = false);
             calcAll();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        calcAll(); // Init
+        calcAll();
     </script>
 </body>
 </html>
