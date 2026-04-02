@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phác đồ Xử trí Đột quỵ Thiếu máu não cấp</title>
+<style>
+    :root {
+        /* Đổi tone màu sang Đỏ thẫm/Cam để thể hiện tính khẩn cấp của Đột quỵ */
+        --primary-color: #b22222; 
+        --secondary-color: #f8d7da;
+        --accent-color: #ff8c00;
+        --danger-color: #dc3545;
+        --warning-color: #ffc107;
+        --success-color: #198754;
+        --text-main: #333;
+        --bg-color: #e9ecef;
+        --border-color: #dee2e6;
+        --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+    }
+
+    /* Layout Header & App Container */
+    .app-container {
+        max-width: 900px;
+        margin: 20px auto;
+        background: var(--white);
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+
+    .app-header {
+        background: var(--primary-color);
+        color: var(--white);
+        padding: 20px;
+        text-align: center;
+    }
+
+    .app-header h1 { font-size: 22px; margin-bottom: 5px; }
+    .app-header p { font-size: 14px; opacity: 0.9; }
+
+    /* Tab Navigation */
+    .tab-nav {
+        display: flex;
+        background: #f8f9fa;
+        border-bottom: 2px solid var(--border-color);
+    }
+
+    .tab-btn {
+        flex: 1;
+        background: none;
+        border: none;
+        padding: 15px 10px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #555;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-bottom: 3px solid transparent;
+    }
+
+    .tab-btn:hover { background: #e2e6ea; }
+    
+    .tab-btn.active {
+        color: var(--primary-color);
+        border-bottom: 3px solid var(--primary-color);
+        background: var(--white);
+    }
+
+    /* Tab Content Area */
+    .tab-content {
+        display: none;
+        padding: 20px;
+        animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .tab-content.active { display: block; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+    h2.section-title {
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 8px;
+        margin-bottom: 20px;
+        font-size: 18px;
+    }
+
+    /* Accordion Styles */
+    .accordion-item {
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        margin-bottom: 10px;
+        overflow: hidden;
+    }
+
+    .accordion-header {
+        background-color: #f1f3f5;
+        padding: 15px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background 0.3s;
+    }
+
+    .accordion-header:hover { background-color: #e2e6ea; }
+
+    .accordion-content {
+        padding: 0 15px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out, padding 0.3s ease;
+        background: var(--white);
+    }
+
+    .accordion-item.active .accordion-content {
+        padding: 15px;
+        max-height: 2500px; /* Tăng độ cao mở rộng */
+    }
+
+    .accordion-item.active .accordion-header {
+        background-color: var(--primary-color);
+        color: var(--white);
+    }
+
+    /* Alerts */
+    .alert { padding: 10px 15px; border-radius: 4px; margin-bottom: 12px; font-size: 14px; }
+    .alert-danger { background-color: #f8d7da; color: #842029; border: 1px solid #f5c2c7; }
+    .alert-warning { background-color: #fff3cd; color: #664d03; border: 1px solid #ffecb5; }
+    .alert-info { background-color: #cff4fc; color: #055160; border: 1px solid #b6effb; }
+    .alert-success { background-color: #d1e7dd; color: #0f5132; border: 1px solid #badbcc; }
+
+    /* Calculators */
+    .calculator-box {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 6px;
+        border: 1px solid #ced4da;
+        margin: 15px 0;
+    }
+    .calc-row { display: flex; justify-content: space-between; margin-bottom: 10px; align-items: center; }
+    .calc-row label { font-weight: bold; font-size: 14px; flex: 1;}
+    .calc-row input, .calc-row select { width: 140px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+    .btn-calc {
+        width: 100%; background: var(--primary-color); color: var(--white);
+        border: none; padding: 10px; font-size: 15px; border-radius: 4px;
+        cursor: pointer; font-weight: bold; margin-top: 10px; transition: background 0.3s;
+    }
+    .btn-calc:hover { background: #8b0000; }
+    .calc-result { font-weight: bold; font-size: 15px; margin-top: 15px; display: block; text-align: center; padding: 10px; border-radius: 4px;}
+
+    /* List & Checkbox */
+    ul { padding-left: 20px; margin-bottom: 10px; }
+    li { margin-bottom: 6px; font-size: 14px; }
+    .checklist label { display: flex; align-items: flex-start; margin-bottom: 8px; cursor: pointer; font-size: 14px; background: #f8f9fa; padding: 8px; border-radius: 4px; border-left: 3px solid #ccc;}
+    .checklist input { margin-top: 4px; margin-right: 10px; }
+    .checklist label:hover { background: #e9ecef; border-left-color: var(--primary-color); }
+    
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; margin-bottom: 10px;}
+    th, td { border: 1px solid var(--border-color); padding: 8px; text-align: left; font-size: 14px; }
+    th { background-color: var(--secondary-color); color: var(--primary-color); }
+
+    /* Mobile Responsive */
+    @media (max-width: 600px) {
+        .tab-nav { flex-direction: column; }
+        .tab-btn { border-bottom: 1px solid #ddd; }
+        .tab-btn.active { border-left: 4px solid var(--primary-color); border-bottom: none; }
+        .calc-row { flex-direction: column; align-items: flex-start; }
+        .calc-row input, .calc-row select { width: 100%; margin-top: 5px; }
+    }
+</style>
+</head>
+<body>
+
+<div class="app-container">
+    <header class="app-header">
+        <h1>PHÁC ĐỒ XỬ TRÍ ĐỘT QUỴ NÃO CẤP</h1>
+        <p>Cập nhật tiêu chuẩn AHA/ASA (Dành cho Bác sĩ lâm sàng)</p>
+    </header>
+
+    <nav class="tab-nav">
+        <button class="tab-btn active" onclick="openTab(event, 'tab1')">1. TỔNG QUAN & NHẬN DIỆN</button>
+        <button class="tab-btn" onclick="openTab(event, 'tab2')">2. CẤP CỨU & TSH</button>
+        <button class="tab-btn" onclick="openTab(event, 'tab3')">3. CAN THIỆP & NỘI TRÚ</button>
+        <button class="tab-btn" onclick="openTab(event, 'tab4')">4. CÔNG CỤ TÍNH</button>
+    </nav>
+
+    <main>
+
+        <div id="tab1" class="tab-content active">
+            <h2 class="section-title">Nhận diện Sớm & Mục tiêu "Thời gian là Não"</h2>
+            
+            <div class="accordion-item active">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>⏱️ 1. Mục tiêu Thời gian Vàng (Time Goals)</span>
+                    <span>-</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="alert alert-danger" style="text-align: center; font-size: 16px;">
+                        <strong>TIME IS BRAIN!</strong> Mỗi phút trôi qua mất đi ~1.9 triệu neuron thần kinh.
+                    </div>
+                    <ul style="list-style-type: square; font-weight: bold; color: var(--text-main);">
+                        <li>Door to Doctor (Khám ban đầu): < 10 phút</li>
+                        <li>Door to Stroke Team (Gọi đội đột quỵ): < 15 phút</li>
+                        <li>Door to CT/MRI (Chụp hình ảnh): < 20 - 25 phút</li>
+                        <li>Door to Needle (Tiêm tiêu sợi huyết): < 45 - 60 phút</li>
+                        <li>Door to Puncture (Can thiệp chọc mạch): < 90 - 120 phút</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🚨 2. Sàng lọc BE-FAST</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <p style="font-size: 14px; margin-bottom: 10px;">Dấu hiệu nghi ngờ đột quỵ khi có bất kỳ 1 trong các triệu chứng khởi phát đột ngột sau:</p>
+                    <table style="width: 100%;">
+                        <tr><td style="width: 30px; font-weight:bold; color:var(--primary-color);">B</td><td><strong>Balance:</strong> Chóng mặt, mất thăng bằng đột ngột.</td></tr>
+                        <tr><td style="font-weight:bold; color:var(--primary-color);">E</td><td><strong>Eyes:</strong> Mờ mắt, mất thị lực 1 hoặc 2 mắt.</td></tr>
+                        <tr><td style="font-weight:bold; color:var(--primary-color);">F</td><td><strong>Face:</strong> Méo miệng, lệch nhân trung, rủ mặt 1 bên.</td></tr>
+                        <tr><td style="font-weight:bold; color:var(--primary-color);">A</td><td><strong>Arms:</strong> Yếu, liệt hoặc tê bì tay chân 1 bên.</td></tr>
+                        <tr><td style="font-weight:bold; color:var(--primary-color);">S</td><td><strong>Speech:</strong> Nói ngọng, nói khó, hoặc không hiểu lời nói.</td></tr>
+                        <tr><td style="font-weight:bold; color:var(--primary-color);">T</td><td><strong>Time:</strong> Ghi nhận chính xác <em>Thời điểm cuối cùng bình thường (Last Known Well)</em>.</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>📋 3. Xét nghiệm Cận lâm sàng (CLS) khẩn cấp</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="alert alert-warning">
+                        <strong>LƯU Ý:</strong> Chụp CT sọ não không cản quang là <b>ưu tiên số 1</b>. Chỉ chờ kết quả <strong>đường huyết mao mạch</strong> trước khi dùng thuốc tiêu sợi huyết (trừ khi đang dùng thuốc chống đông).
+                    </div>
+                    <div class="checklist">
+                        <label><input type="checkbox" checked disabled> <strong>Bắt buộc ngay</strong>: Đường huyết mao mạch tại giường.</label>
+                        <label><input type="checkbox" checked disabled> <strong>Hình ảnh học</strong>: CT sọ não không cản quang (Loại trừ xuất huyết).</label>
+                        <label><input type="checkbox"> <strong>Xét nghiệm máu (Không chờ kết quả để trì hoãn tPA)</strong>: CTM, PT, INR, APTT, Sinh hóa (Ure, Cre, Điện giải), Troponin.</label>
+                        <label><input type="checkbox"> <strong>Tim mạch</strong>: ECG 12 chuyển đạo (Tầm soát rung nhĩ/NMCT).</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab2" class="tab-content">
+            <h2 class="section-title">Tiêu sợi huyết (IV tPA / TNK) & Xử trí cấp cứu</h2>
+
+            <div class="accordion-item active">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🚦 1. Quản lý huyết áp cấp cứu</span>
+                    <span>-</span>
+                </div>
+                <div class="accordion-content">
+                    <table style="width: 100%; font-size: 13.5px;">
+                        <tr><th>Tình huống</th><th>Mục tiêu HA<br>(mmHg)</th><th>Khuyến cáo xử trí</th></tr>
+                        <tr>
+                            <td><strong>Chuẩn bị dùng TSH</strong></td>
+                            <td style="color:var(--danger-color); font-weight:bold;">≤ 185 / 110 </td>
+                            <td>Dùng Nicardipine hoặc Labetalol IV. Nếu không hạ được, CHỐNG CHỈ ĐỊNH dùng TSH.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Trong & Sau dùng TSH</strong></td>
+                            <td style="color:#0f5132; font-weight:bold;">≤ 180 / 105</td>
+                            <td>Duy trì 24h đầu. Theo dõi HA mỗi 15p trong 2h đầu.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Không can thiệp TSH/EVT</strong></td>
+                            <td>≤ 220 / 120</td>
+                            <td>Chỉ hạ HA khi quá ngưỡng 220/120. Mục tiêu hạ 15% trong 24h đầu.</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🚫 2. Bảng kiểm Chống chỉ định (CCĐ) Tiêu sợi huyết</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <p style="font-size: 14px;"><strong>Cửa sổ thời gian:</strong> < 4.5 giờ từ lúc khởi phát.</p>
+                    <div class="alert alert-danger">
+                        <strong>CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI (Tuyệt đối không dùng nếu có 1 yếu tố):</strong>
+                    </div>
+                    <div class="checklist">
+                        <label><input type="checkbox"> CT có xuất huyết não, xuất huyết dưới nhện.</label>
+                        <label><input type="checkbox"> Nhồi máu não diện rộng (>1/3 bán cầu hoặc ASPECT < 7).</label>
+                        <label><input type="checkbox"> Khởi phát đột quỵ không rõ thời gian hoặc > 4.5 giờ.</label>
+                        <label><input type="checkbox"> Tiền sử xuất huyết não, u não, dị dạng mạch máu não (AVM).</label>
+                        <label><input type="checkbox"> Đột quỵ thiếu máu não hoặc chấn thương sọ não nặng trong 3 tháng qua.</label>
+                        <label><input type="checkbox"> Đang dùng DOAC (Rivaroxaban, Dabigatran...) trong 48h (Trừ khi có thuốc đối kháng).</label>
+                        <label><input type="checkbox"> Tiểu cầu < 100.000, INR > 1.7, hoặc APTT kéo dài.</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>💊 3. Khuyến cáo Thuốc Tiêu sợi huyết</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="alert alert-success">
+                        <strong>Cập nhật AHA/ASA:</strong> Tenecteplase (TNK) hiện được ưu tiên (Class IIa) nhờ tính an toàn, dễ sử dụng (tiêm bolus 1 lần) và tái thông tốt hơn Alteplase.
+                    </div>
+                    <ul style="font-size: 14px;">
+                        <li><strong>Tenecteplase (TNK):</strong> Liều 0.25 mg/kg. Tối đa 25 mg. Tiêm tĩnh mạch chậm trong 5-10 giây.</li>
+                        <li><strong>Alteplase (rtPA):</strong> Liều 0.9 mg/kg. Tối đa 90 mg. Tiêm bolus 10% trong 1 phút, 90% còn lại truyền tĩnh mạch liên tục trong 1 giờ.</li>
+                    </ul>
+                    <p style="text-align: center; margin-top: 10px;"><em>👉 Sử dụng Máy tính liều thuốc ở <strong>Tab 4</strong></em></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab3" class="tab-content">
+            <h2 class="section-title">Can thiệp Mạch (EVT) & Chăm sóc Nội trú</h2>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🧠 1. Chỉ định Lấy huyết khối cơ học (EVT)</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="alert alert-info">
+                        <strong>Tắc mạch máu lớn (LVO):</strong> Động mạch cảnh trong (ICA) hoặc đoạn M1 của Động mạch não giữa (MCA). Cần chụp CT Mạch máu (CTA) để xác định.
+                    </div>
+                    <ul style="font-size: 14px;">
+                        <li><strong>Cửa sổ 0 - 6 giờ:</strong> Chỉ định mức độ I nếu điểm mRS trước đột quỵ 0-1, ASPECT ≥ 6, NIHSS ≥ 6.</li>
+                        <li><strong>Cửa sổ 6 - 24 giờ:</strong> Chỉ định dựa trên phần mềm phân tích hình ảnh (như RAPID) cho thấy có sự "bất tương xứng" giữa lõi nhồi máu (nhỏ) và vùng tranh tối tranh sáng (lớn) - Tiêu chuẩn DAWN hoặc DEFUSE-3.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🛏️ 2. Chăm sóc Nội trú 24-48h đầu</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="checklist">
+                        <label><input type="checkbox"> <strong>Tư thế</strong>: Nằm đầu cao 15-30 độ (nếu không có nguy cơ giảm tưới máu) để giảm áp lực nội sọ.</label>
+                        <label><input type="checkbox"> <strong>Kiểm soát Đường huyết</strong>: Mục tiêu 140 - 180 mg/dL. Tránh hạ đường huyết quá mức.</label>
+                        <label><input type="checkbox"> <strong>Nhiệt độ</strong>: Duy trì thân nhiệt < 38°C (Dùng Paracetamol nếu sốt, tìm ổ nhiễm trùng).</label>
+                        <label><input type="checkbox"> <strong>Sàng lọc Nuốt</strong>: BẮT BUỘC test nuốt (ví dụ GUSS) trước khi cho ăn/uống thuốc đường miệng để phòng viêm phổi hít.</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🛡️ 3. Dự phòng Thứ phát</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <ul style="font-size: 14px;">
+                        <li><strong>Thuốc kháng kết tập tiểu cầu</strong>: Aspirin 160-300mg nên được dùng trong 24-48h sau đột quỵ. (<strong>Lưu ý:</strong> Trì hoãn 24h sau khi dùng thuốc Tiêu sợi huyết).</li>
+                        <li><strong>Liệu pháp DAPT (Kháng tiểu cầu kép)</strong>: Aspirin + Clopidogrel trong 21 ngày cho bệnh nhân đột quỵ nhẹ (NIHSS ≤ 3) hoặc TIA nguy cơ cao.</li>
+                        <li><strong>Kiểm soát Lipid máu</strong>: Statin cường độ cao (Atorvastatin 40-80mg hoặc Rosuvastatin 20-40mg) bất kể mức nền LDL, mục tiêu LDL < 70 mg/dL.</li>
+                        <li><strong>Rung nhĩ</strong>: Bắt đầu dùng thuốc chống đông máu (DOAC hoặc kháng Vitamin K) sau 4-14 ngày tùy mức độ nhồi máu.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab4" class="tab-content">
+            <h2 class="section-title">Máy tính Lâm sàng & Thang điểm</h2>
+
+            <div class="accordion-item active">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>💉 1. Máy tính Liều Tiêu sợi huyết (TNK / tPA)</span>
+                    <span>-</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="calculator-box">
+                        <h4 style="margin-top:0; text-align:center; color: var(--primary-color);">🧮 Tính liều Tenecteplase (TNK)</h4>
+                        <p style="font-size: 13px; text-align:center; color: #555;">Liều: 0.25 mg/kg (Tối đa 25 mg)</p>
+                        <div class="calc-row">
+                            <label>Cân nặng bệnh nhân (kg):</label>
+                            <input type="number" id="tnk-weight" placeholder="VD: 60" min="0">
+                        </div>
+                        <button class="btn-calc" onclick="calculateTNK()">TÍNH LIỀU TNK</button>
+                        <div id="tnk-result" class="calc-result" style="display:none;"></div>
+                    </div>
+
+                    <div class="calculator-box">
+                        <h4 style="margin-top:0; text-align:center; color: var(--primary-color);">🧮 Tính liều Alteplase (rtPA)</h4>
+                        <p style="font-size: 13px; text-align:center; color: #555;">Liều: 0.9 mg/kg (Tối đa 90 mg)</p>
+                        <div class="calc-row">
+                            <label>Cân nặng bệnh nhân (kg):</label>
+                            <input type="number" id="tpa-weight" placeholder="VD: 60" min="0">
+                        </div>
+                        <button class="btn-calc" onclick="calculateTPA()">TÍNH LIỀU ALTEPLASE</button>
+                        <div id="tpa-result" class="calc-result" style="display:none;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>📊 2. Phân độ Lâm sàng (NIHSS)</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="alert alert-info">
+                        <strong>Thang điểm NIHSS (0 - 42 điểm):</strong> Đánh giá mức độ khiếm khuyết thần kinh. Tham khảo Form đánh giá chi tiết 11 mục.
+                    </div>
+                    <div class="calculator-box">
+                        <h4 style="margin-top:0; text-align:center;">Phân loại mức độ đột quỵ</h4>
+                        <div class="calc-row">
+                            <label>Nhập tổng điểm NIHSS:</label>
+                            <input type="number" id="nihss-score" placeholder="0 - 42" min="0" max="42">
+                        </div>
+                        <button class="btn-calc" onclick="evaluateNIHSS()" style="background-color: #0dcaf0; color:#000;">ĐÁNH GIÁ</button>
+                        <div id="nihss-result" class="calc-result" style="display:none;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🧠 3. Thang điểm ASPECTS (Đánh giá CT sọ não)</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="alert alert-info" style="font-size: 13px;">
+                        <strong>Quy tắc:</strong> Điểm khởi đầu là 10. Trừ 1 điểm cho mỗi vùng có dấu hiệu thiếu máu sớm trên CT không cản quang (Áp dụng cho vùng cấp máu của ĐM não giữa MCA).
+                    </div>
+                    <div class="calculator-box">
+                        <h4 style="margin-top:0; margin-bottom:10px; font-size: 15px;">Chọn các vùng CÓ TỔN THƯƠNG:</h4>
+                        <div class="checklist" id="aspects-checklist" style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
+                            <label><input type="checkbox" value="1"> C: Nhân đuôi (Caudate)</label>
+                            <label><input type="checkbox" value="1"> I: Thùy đảo (Insula)</label>
+                            <label><input type="checkbox" value="1"> L: Bèo sẫm (Lentiform)</label>
+                            <label><input type="checkbox" value="1"> IC: Bao trong (Int. Capsule)</label>
+                            <label><input type="checkbox" value="1"> M1 (Vỏ não MCA trước)</label>
+                            <label><input type="checkbox" value="1"> M4 (M1 phía trên)</label>
+                            <label><input type="checkbox" value="1"> M2 (Vỏ não MCA bên)</label>
+                            <label><input type="checkbox" value="1"> M5 (M2 phía trên)</label>
+                            <label><input type="checkbox" value="1"> M3 (Vỏ não MCA sau)</label>
+                            <label><input type="checkbox" value="1"> M6 (M3 phía trên)</label>
+                        </div>
+                        <button class="btn-calc" onclick="calculateASPECTS()">TÍNH ĐIỂM ASPECTS</button>
+                        <div id="aspects-result" class="calc-result" style="display:none;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🚶 4. Thang điểm mRS (Mức độ tàn phế)</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="calculator-box">
+                        <h4 style="margin-top:0; font-size: 15px; margin-bottom: 10px;">Đánh giá trước / sau đột quỵ:</h4>
+                        <div class="calc-row" style="flex-direction: column; align-items: stretch;">
+                            <select id="mrs-score" style="width: 100%; padding: 10px; border-radius: 4px; font-size: 14px;" onchange="evaluateMRS()">
+                                <option value="-1">-- Chọn mức độ hoạt động --</option>
+                                <option value="0">0 - Hoàn toàn không có triệu chứng</option>
+                                <option value="1">1 - Có triệu chứng, nhưng không tàn phế (tự làm mọi việc)</option>
+                                <option value="2">2 - Tàn phế nhẹ (tự chăm sóc, không làm được việc trước đây)</option>
+                                <option value="3">3 - Tàn phế vừa (cần giúp đỡ 1 phần, tự đi lại được)</option>
+                                <option value="4">4 - Tàn phế nặng vừa (không tự đi lại, cần giúp vệ sinh cá nhân)</option>
+                                <option value="5">5 - Tàn phế nặng (nằm liệt giường, đại tiểu tiện không tự chủ)</option>
+                                <option value="6">6 - Tử vong</option>
+                            </select>
+                        </div>
+                        <div id="mrs-result" class="calc-result" style="display:none;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>❤️ 5. Điểm CHA2DS2-VASc (Dự phòng Rung nhĩ)</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="calculator-box">
+                        <h4 style="margin-top:0; font-size: 15px; margin-bottom:10px;">Đánh giá nguy cơ tắc mạch:</h4>
+                        <div class="checklist" id="chads-checklist">
+                            <label><input type="checkbox" value="1"> (C) Suy tim sung huyết / LVEF ≤ 40% (+1)</label>
+                            <label><input type="checkbox" value="1"> (H) Tăng huyết áp (+1)</label>
+                            <label><input type="checkbox" value="2" id="age-75" onchange="checkAge('75')"> (A2) Tuổi ≥ 75 (+2)</label>
+                            <label><input type="checkbox" value="1"> (D) Đái tháo đường (+1)</label>
+                            <label style="background-color: #f8d7da;"><input type="checkbox" value="2" checked> (S2) Tiền sử Đột quỵ / TIA / Huyết khối (+2) - <em>Mặc định</em></label>
+                            <label><input type="checkbox" value="1"> (V) Bệnh lý mạch máu (NMCT, xơ vữa, PAD) (+1)</label>
+                            <label><input type="checkbox" value="1" id="age-65" onchange="checkAge('65')"> (A) Tuổi 65 - 74 (+1)</label>
+                            <label><input type="checkbox" value="1"> (Sc) Nữ giới (+1)</label>
+                        </div>
+                        <button class="btn-calc" onclick="calculateCHADS()">TÍNH ĐIỂM CHA2DS2-VASc</button>
+                        <div id="chads-result" class="calc-result" style="display:none;"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+</div>
+
+<script>
+    // 1. Logic chuyển Tab Navigation
+    function openTab(evt, tabId) {
+        let tabContents = document.getElementsByClassName("tab-content");
+        for (let i = 0; i < tabContents.length; i++) {
+            tabContents[i].style.display = "none";
+            tabContents[i].classList.remove("active");
+        }
+
+        let tabBtns = document.getElementsByClassName("tab-btn");
+        for (let i = 0; i < tabBtns.length; i++) {
+            tabBtns[i].className = tabBtns[i].className.replace(" active", "");
+        }
+
+        document.getElementById(tabId).style.display = "block";
+        document.getElementById(tabId).classList.add("active");
+        evt.currentTarget.className += " active";
+    }
+
+    // Đảm bảo tab đầu tiên hiển thị khi load
+    document.getElementById("tab1").style.display = "block";
+
+    // 2. Logic Accordion
+    function toggleAccordion(element) {
+        const item = element.parentElement;
+        const isActive = item.classList.contains('active');
+        
+        const parentTab = item.closest('.tab-content');
+        const allItems = parentTab.querySelectorAll('.accordion-item');
+        
+        allItems.forEach(i => {
+            i.classList.remove('active');
+            i.querySelector('.accordion-header span:last-child').innerText = '+';
+        });
+
+        if (!isActive) {
+            item.classList.add('active');
+            element.querySelector('span:last-child').innerText = '-';
+        }
+    }
+
+    // 3. Logic Tính liều Tenecteplase (TNK)
+    function calculateTNK() {
+        const weight = parseFloat(document.getElementById('tnk-weight').value);
+        const resultDiv = document.getElementById('tnk-result');
+
+        if (isNaN(weight) || weight <= 0) {
+            resultDiv.style.display = "block";
+            resultDiv.innerText = "Vui lòng nhập cân nặng hợp lệ (>0 kg)!";
+            resultDiv.style.background = "#f8d7da"; resultDiv.style.color = "#842029";
+            return;
+        }
+
+        let dose = weight * 0.25;
+        let warning = "";
+        
+        if (dose >= 25) {
+            dose = 25;
+            warning = "<br><span style='color:red;'>* Đã đạt liều tối đa (25 mg)</span>";
+        }
+
+        resultDiv.style.display = "block";
+        resultDiv.style.background = "#d1e7dd"; resultDiv.style.color = "#0f5132";
+        resultDiv.innerHTML = `
+            Tổng liều Tenecteplase: <strong style='font-size:18px;'>${dose.toFixed(2)} mg</strong> ${warning} <br>
+            <hr style="margin:5px 0; border-color:#badbcc;">
+            <em>Cách dùng: Tiêm tĩnh mạch chậm (Bolus) trong vòng 5-10 giây.</em>
+        `;
+    }
+
+    // 4. Logic Tính liều Alteplase (rtPA)
+    function calculateTPA() {
+        const weight = parseFloat(document.getElementById('tpa-weight').value);
+        const resultDiv = document.getElementById('tpa-result');
+
+        if (isNaN(weight) || weight <= 0) {
+            resultDiv.style.display = "block";
+            resultDiv.innerText = "Vui lòng nhập cân nặng hợp lệ (>0 kg)!";
+            resultDiv.style.background = "#f8d7da"; resultDiv.style.color = "#842029";
+            return;
+        }
+
+        let totalDose = weight * 0.9;
+        let warning = "";
+
+        if (totalDose >= 90) {
+            totalDose = 90;
+            warning = "<span style='color:red;'>* Đã đạt liều tối đa (90 mg)</span>";
+        }
+
+        let bolus = totalDose * 0.1;
+        let infusion = totalDose * 0.9;
+
+        resultDiv.style.display = "block";
+        resultDiv.style.background = "#fff3cd"; resultDiv.style.color = "#664d03";
+        resultDiv.innerHTML = `
+            Tổng liều Alteplase: <strong style='font-size:18px;'>${totalDose.toFixed(2)} mg</strong> <br> ${warning}
+            <hr style="margin:5px 0; border-color:#ffecb5;">
+            1. <strong>${bolus.toFixed(2)} mg</strong> (10%): Tiêm Bolus tĩnh mạch trong 1 phút.<br>
+            2. <strong>${infusion.toFixed(2)} mg</strong> (90%): Truyền tĩnh mạch liên tục trong 1 giờ.
+        `;
+    }
+
+    // 5. Logic Đánh giá NIHSS
+    function evaluateNIHSS() {
+        const score = parseInt(document.getElementById('nihss-score').value);
+        const resultDiv = document.getElementById('nihss-result');
+
+        if (isNaN(score) || score < 0 || score > 42) {
+            resultDiv.style.display = "block";
+            resultDiv.innerText = "Vui lòng nhập điểm từ 0 đến 42!";
+            resultDiv.style.background = "#f8d7da"; resultDiv.style.color = "#842029";
+            return;
+        }
+
+        resultDiv.style.display = "block";
+
+        if (score === 0) {
+            resultDiv.innerHTML = `Điểm: ${score} - Không có triệu chứng đột quỵ`;
+            resultDiv.style.background = "#d1e7dd"; resultDiv.style.color = "#0f5132";
+        } else if (score >= 1 && score <= 4) {
+            resultDiv.innerHTML = `Điểm: ${score} - Đột quỵ <strong>NHẸ</strong>`;
+            resultDiv.style.background = "#cff4fc"; resultDiv.style.color = "#055160";
+        } else if (score >= 5 && score <= 15) {
+            resultDiv.innerHTML = `Điểm: ${score} - Đột quỵ <strong>TRUNG BÌNH</strong>`;
+            resultDiv.style.background = "#fff3cd"; resultDiv.style.color = "#664d03";
+        } else if (score >= 16 && score <= 20) {
+            resultDiv.innerHTML = `Điểm: ${score} - Đột quỵ <strong>NẶNG</strong>`;
+            resultDiv.style.background = "#f8d7da"; resultDiv.style.color = "#842029";
+        } else {
+            resultDiv.innerHTML = `Điểm: ${score} - Đột quỵ <strong>RẤT NẶNG</strong>`;
+            resultDiv.style.background = "#b22222"; resultDiv.style.color = "white";
+        }
+    }
+    // --- CÁC HÀM BỔ SUNG CHO TAB 4 ---
+
+    // Logic Tính điểm ASPECTS
+    function calculateASPECTS() {
+        let score = 10;
+        const checkboxes = document.querySelectorAll('#aspects-checklist input[type="checkbox"]');
+        checkboxes.forEach(cb => {
+            if (cb.checked) score -= parseInt(cb.value);
+        });
+        
+        const resultDiv = document.getElementById('aspects-result');
+        resultDiv.style.display = "block";
+        
+        if (score >= 6) {
+            resultDiv.innerHTML = `Điểm ASPECTS: <span style='font-size:20px;'>${score} / 10</span> <br>✅ Hình ảnh thuận lợi. Ủng hộ can thiệp Lấy huyết khối cơ học (EVT) nếu trong cửa sổ thời gian.`;
+            resultDiv.style.background = "#d1e7dd"; resultDiv.style.color = "#0f5132";
+        } else {
+            resultDiv.innerHTML = `Điểm ASPECTS: <span style='font-size:20px;'>${score} / 10</span> <br>⚠️ Lõi nhồi máu diện rộng (ASPECTS < 6). Nguy cơ xuất huyết cao. Cần hội chẩn cẩn thận trước khi can thiệp.`;
+            resultDiv.style.background = "#f8d7da"; resultDiv.style.color = "#842029";
+        }
+    }
+
+    // Logic Đánh giá mRS
+    function evaluateMRS() {
+        const score = parseInt(document.getElementById('mrs-score').value);
+        const resultDiv = document.getElementById('mrs-result');
+        
+        if (score === -1) {
+            resultDiv.style.display = "none";
+            return;
+        }
+        
+        resultDiv.style.display = "block";
+        
+        if (score <= 2) {
+            resultDiv.innerHTML = `mRS = ${score} <br>🟢 Tiên lượng chức năng Độc lập (Favorable Outcome). Thích hợp chỉ định tái thông mạch máu.`;
+            resultDiv.style.background = "#d1e7dd"; resultDiv.style.color = "#0f5132";
+        } else if (score <= 5) {
+            resultDiv.innerHTML = `mRS = ${score} <br>🟡 Phụ thuộc chức năng. Cần cân nhắc kỹ hiệu quả của các can thiệp tích cực.`;
+            resultDiv.style.background = "#fff3cd"; resultDiv.style.color = "#664d03";
+        } else {
+            resultDiv.innerHTML = `mRS = 6 <br>⚫ Tử vong.`;
+            resultDiv.style.background = "#f8d7da"; resultDiv.style.color = "#842029";
+        }
+    }
+
+    // Logic kiểm soát Tick chọn Tuổi của CHA2DS2-VASc
+    function checkAge(ageType) {
+        if (ageType === '75' && document.getElementById('age-75').checked) {
+            document.getElementById('age-65').checked = false;
+        } else if (ageType === '65' && document.getElementById('age-65').checked) {
+            document.getElementById('age-75').checked = false;
+        }
+    }
+
+    // Logic Tính điểm CHA2DS2-VASc
+    function calculateCHADS() {
+        let score = 0;
+        const checkboxes = document.querySelectorAll('#chads-checklist input[type="checkbox"]');
+        checkboxes.forEach(cb => {
+            if (cb.checked) score += parseInt(cb.value);
+        });
+        
+        const resultDiv = document.getElementById('chads-result');
+        resultDiv.style.display = "block";
+        
+        // Bệnh nhân đột quỵ mặc định S2 = 2 điểm, nên tổng điểm chắc chắn >= 2
+        if (score >= 2) {
+            resultDiv.innerHTML = `Tổng điểm CHA2DS2-VASc: <span style='font-size:20px;'>${score}</span> <br>🩸 BẮT BUỘC chỉ định dùng Thuốc chống đông (DOAC hoặc VKA) dài hạn để dự phòng thứ phát ở bệnh nhân Rung nhĩ.`;
+            resultDiv.style.background = "#f8d7da"; resultDiv.style.color = "#842029";
+        } else {
+            // Trường hợp user cố tình bỏ tick ô Đột quỵ
+            resultDiv.innerHTML = `Tổng điểm: ${score} <br>Nguy cơ thấp. (Lưu ý: Bệnh nhân đã có đột quỵ nên có ít nhất 2 điểm).`;
+            resultDiv.style.background = "#cff4fc"; resultDiv.style.color = "#055160";
+        }
+    }
+</script>
+
+</body>
+</html>
