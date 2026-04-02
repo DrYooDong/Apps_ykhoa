@@ -413,54 +413,113 @@
 
             <div class="accordion-item">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <span>📊 2. Phân độ Lâm sàng (NIHSS)</span>
-                    <span>+</span>
-                </div>
-                <div class="accordion-content">
-                    <div class="alert alert-info">
-                        <strong>Thang điểm NIHSS (0 - 42 điểm):</strong> Đánh giá mức độ khiếm khuyết thần kinh. Tham khảo Form đánh giá chi tiết 11 mục.
-                    </div>
-                    <div class="calculator-box">
-                        <h4 style="margin-top:0; text-align:center;">Phân loại mức độ đột quỵ</h4>
-                        <div class="calc-row">
-                            <label>Nhập tổng điểm NIHSS:</label>
-                            <input type="number" id="nihss-score" placeholder="0 - 42" min="0" max="42">
-                        </div>
-                        <button class="btn-calc" onclick="evaluateNIHSS()" style="background-color: #0dcaf0; color:#000;">ĐÁNH GIÁ</button>
-                        <div id="nihss-result" class="calc-result" style="display:none;"></div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <span>🧠 3. Thang điểm ASPECTS (Đánh giá CT sọ não)</span>
+                    <span>📊 2. Thang điểm Đột quỵ NIHSS (Bản đầy đủ)</span>
                     <span>+</span>
                 </div>
                 <div class="accordion-content">
                     <div class="alert alert-info" style="font-size: 13px;">
-                        <strong>Quy tắc:</strong> Điểm khởi đầu là 10. Trừ 1 điểm cho mỗi vùng có dấu hiệu thiếu máu sớm trên CT không cản quang (Áp dụng cho vùng cấp máu của ĐM não giữa MCA).
+                        <strong>Mục tiêu:</strong> Đánh giá chi tiết 11 hạng mục lâm sàng (Tổng điểm 0-42). Đánh giá nhanh từ trên xuống dưới.
+                    </div>
+                    <div class="calculator-box" style="font-size: 14px;">
+                        
+                        <div class="calc-row"><label>1a. Mức độ nhận thức:</label>
+                            <select class="nihss-item" style="width: 50%;"><option value="0">0 - Tỉnh táo</option><option value="1">1 - Lơ mơ, gọi hỏi đáp ứng</option><option value="2">2 - Lờ đờ, kích thích đau đáp ứng</option><option value="3">3 - Hôn mê</option></select>
+                        </div>
+                        <div class="calc-row"><label>1b. Hỏi tháng & tuổi:</label>
+                            <select class="nihss-item" style="width: 50%;"><option value="0">0 - Trả lời đúng cả 2</option><option value="1">1 - Trả lời đúng 1</option><option value="2">2 - Trả lời sai cả 2 / Không nói được</option></select>
+                        </div>
+                        <div class="calc-row"><label>1c. Lệnh (nhắm mắt, nắm tay):</label>
+                            <select class="nihss-item" style="width: 50%;"><option value="0">0 - Làm đúng cả 2</option><option value="1">1 - Làm đúng 1</option><option value="2">2 - Sai cả 2</option></select>
+                        </div>
+                        <div class="calc-row"><label>2. Vận động nhãn cầu (nhìn ngang):</label>
+                            <select class="nihss-item" style="width: 50%;"><option value="0">0 - Bình thường</option><option value="1">1 - Liệt liếc 1 phần</option><option value="2">2 - Liệt liếc hoàn toàn</option></select>
+                        </div>
+                        <div class="calc-row"><label>3. Thị trường:</label>
+                            <select class="nihss-item" style="width: 50%;"><option value="0">0 - Bình thường</option><option value="1">1 - Bán manh 1 phần</option><option value="2">2 - Bán manh hoàn toàn</option><option value="3">3 - Mù / Bán manh 2 bên</option></select>
+                        </div>
+                        <div class="calc-row"><label>4. Liệt mặt:</label>
+                            <select class="nihss-item" style="width: 50%;"><option value="0">0 - Bình thường</option><option value="1">1 - Liệt nhẹ (mờ rãnh mũi má)</option><option value="2">2 - Liệt rõ (nửa mặt dưới)</option><option value="3">3 - Liệt hoàn toàn 1 hoặc 2 bên</option></select>
+                        </div>
+                        
+                        <hr style="margin: 10px 0; border: 0; border-top: 1px solid #ddd;">
+                        
+                        <div class="calc-row"><label>5a. Vận động tay TRÁI:</label>
+                            <select class="nihss-item" style="width: 50%;"><option value="0">0 - Giữ 10s không rơi</option><option value="1">1 - Rơi trước 10s</option><option value="2">2 - Không chống được trọng lực</option><option value="3">3 - Rơi tự do, có co cơ</option><option value="4">4 - Liệt hoàn toàn</option></select>
+                        </div>
+                        <div class="calc-row"><label>5b. Vận động tay PHẢI:</label>
+                            <select class="nihss-item" style="width: 50%;"><option value="0">0 - Giữ 10s không rơi</option><option value="1">1 - Rơi trước 10s</option><option value="2">2 - Không chống được trọng lực</option><option value="3">3 - Rơi tự do, có co cơ</option><option value="4">4 - Liệt hoàn toàn</option></select>
+                        </div>
+                        <div class="calc-row"><label>6a. Vận động chân TRÁI:</label>
+                            <select class="nihss-item" style="width: 50%;"><option value="0">0 - Giữ 5s không rơi</option><option value="1">1 - Rơi trước 5s</option><option value="2">2 - Không chống được trọng lực</option><option value="3">3 - Rơi tự do, có co cơ</option><option value="4">4 - Liệt hoàn toàn</option></select>
+                        </div>
+                        <div class="calc-row"><label>6b. Vận động chân PHẢI:</label>
+                            <select class="nihss-item" style="width: 50%;"><option value="0">0 - Giữ 5s không rơi</option><option value="1">1 - Rơi trước 5s</option><option value="2">2 - Không chống được trọng lực</option><option value="3">3 - Rơi tự do, có co cơ</option><option value="4">4 - Liệt hoàn toàn</option></select>
+                        </div>
+
+                        <hr style="margin: 10px 0; border: 0; border-top: 1px solid #ddd;">
+
+                        <div class="calc-row"><label>7. Thất điều chi (Ngón tay-Mũi, Gót-Gối):</label>
+                            <select class="nihss-item" style="width: 50%;"><option value="0">0 - Không có</option><option value="1">1 - Có ở 1 chi</option><option value="2">2 - Có ở 2 chi</option></select>
+                        </div>
+                        <div class="calc-row"><label>8. Cảm giác:</label>
+                            <select class="nihss-item" style="width: 50%;"><option value="0">0 - Bình thường</option><option value="1">1 - Giảm 1 phần</option><option value="2">2 - Mất cảm giác hoàn toàn</option></select>
+                        </div>
+                        <div class="calc-row"><label>9. Ngôn ngữ (Thất ngôn):</label>
+                            <select class="nihss-item" style="width: 50%;"><option value="0">0 - Bình thường</option><option value="1">1 - Thất ngôn nhẹ - vừa</option><option value="2">2 - Thất ngôn nặng</option><option value="3">3 - Câm / Mất ngôn ngữ toàn bộ</option></select>
+                        </div>
+                        <div class="calc-row"><label>10. Nói ngọng (Loạn vận ngôn):</label>
+                            <select class="nihss-item" style="width: 50%;"><option value="0">0 - Bình thường</option><option value="1">1 - Ngọng nhẹ - vừa</option><option value="2">2 - Ngọng nặng / Không nói được</option></select>
+                        </div>
+                        <div class="calc-row"><label>11. Bỏ quên (Neglect):</label>
+                            <select class="nihss-item" style="width: 50%;"><option value="0">0 - Không có</option><option value="1">1 - Bỏ quên 1 giác quan</option><option value="2">2 - Bỏ quên toàn bộ 1 nửa không gian</option></select>
+                        </div>
+
+                        <button class="btn-calc" onclick="calculateFullNIHSS()">TỔNG ĐIỂM NIHSS</button>
+                        <div id="full-nihss-result" class="calc-result" style="display:none; text-align: center;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🧠 3. Thang điểm ASPECTS (CT Sọ não không cản quang)</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="alert alert-warning" style="font-size: 13px;">
+                        <strong>Quy tắc:</strong> Khởi điểm 10 điểm. <strong>Trừ 1 điểm</strong> cho mỗi vùng có dấu hiệu nhồi máu sớm (mất ranh giới chất xám/trắng, xóa mờ rãnh cuộn não, giảm đậm độ). Chỉ áp dụng cho vùng ĐM Não giữa (MCA).
                     </div>
                     <div class="calculator-box">
-                        <h4 style="margin-top:0; margin-bottom:10px; font-size: 15px;">Chọn các vùng CÓ TỔN THƯƠNG:</h4>
-                        <div class="checklist" id="aspects-checklist" style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
-                            <label><input type="checkbox" value="1"> C: Nhân đuôi (Caudate)</label>
-                            <label><input type="checkbox" value="1"> I: Thùy đảo (Insula)</label>
-                            <label><input type="checkbox" value="1"> L: Bèo sẫm (Lentiform)</label>
-                            <label><input type="checkbox" value="1"> IC: Bao trong (Int. Capsule)</label>
-                            <label><input type="checkbox" value="1"> M1 (Vỏ não MCA trước)</label>
-                            <label><input type="checkbox" value="1"> M4 (M1 phía trên)</label>
-                            <label><input type="checkbox" value="1"> M2 (Vỏ não MCA bên)</label>
-                            <label><input type="checkbox" value="1"> M5 (M2 phía trên)</label>
-                            <label><input type="checkbox" value="1"> M3 (Vỏ não MCA sau)</label>
-                            <label><input type="checkbox" value="1"> M6 (M3 phía trên)</label>
+                        <h4 style="margin-top:0; margin-bottom:10px; font-size: 15px; text-align: center; color: var(--primary-color);">Chọn các vùng CÓ TỔN THƯƠNG:</h4>
+                        
+                        <div style="display: flex; gap: 10px;">
+                            <div style="flex: 1; background: #fff; padding: 10px; border-radius: 4px; border: 1px solid #dee2e6;">
+                                <strong style="display:block; border-bottom: 1px solid #ccc; margin-bottom: 5px;">Mức Hạch nền</strong>
+                                <div class="checklist" id="aspects-ganglia">
+                                    <label><input type="checkbox" value="1"> C: Nhân đuôi</label>
+                                    <label><input type="checkbox" value="1"> I: Thùy đảo</label>
+                                    <label><input type="checkbox" value="1"> L: Nhân bèo</label>
+                                    <label><input type="checkbox" value="1"> IC: Bao trong</label>
+                                    <label><input type="checkbox" value="1"> M1: Vỏ não MCA trước</label>
+                                    <label><input type="checkbox" value="1"> M2: Vỏ não MCA bên</label>
+                                    <label><input type="checkbox" value="1"> M3: Vỏ não MCA sau</label>
+                                </div>
+                            </div>
+                            <div style="flex: 1; background: #fff; padding: 10px; border-radius: 4px; border: 1px solid #dee2e6;">
+                                <strong style="display:block; border-bottom: 1px solid #ccc; margin-bottom: 5px;">Mức Thất bên (Trên Hạch nền)</strong>
+                                <div class="checklist" id="aspects-ventricle">
+                                    <label><input type="checkbox" value="1"> M4: M1 phía trên</label>
+                                    <label><input type="checkbox" value="1"> M5: M2 phía trên</label>
+                                    <label><input type="checkbox" value="1"> M6: M3 phía trên</label>
+                                </div>
+                            </div>
                         </div>
+
                         <button class="btn-calc" onclick="calculateASPECTS()">TÍNH ĐIỂM ASPECTS</button>
                         <div id="aspects-result" class="calc-result" style="display:none;"></div>
                     </div>
                 </div>
             </div>
-
             <div class="accordion-item">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
                     <span>🚶 4. Thang điểm mRS (Mức độ tàn phế)</span>
@@ -618,43 +677,47 @@
         `;
     }
 
-    // 5. Logic Đánh giá NIHSS
-    function evaluateNIHSS() {
-        const score = parseInt(document.getElementById('nihss-score').value);
-        const resultDiv = document.getElementById('nihss-result');
+// Logic tính điểm NIHSS Bản đầy đủ (11 hạng mục)
+    function calculateFullNIHSS() {
+        let score = 0;
+        const selects = document.querySelectorAll('.nihss-item');
+        selects.forEach(select => {
+            score += parseInt(select.value);
+        });
 
-        if (isNaN(score) || score < 0 || score > 42) {
-            resultDiv.style.display = "block";
-            resultDiv.innerText = "Vui lòng nhập điểm từ 0 đến 42!";
-            resultDiv.style.background = "#f8d7da"; resultDiv.style.color = "#842029";
-            return;
-        }
-
+        const resultDiv = document.getElementById('full-nihss-result');
         resultDiv.style.display = "block";
 
-        if (score === 0) {
-            resultDiv.innerHTML = `Điểm: ${score} - Không có triệu chứng đột quỵ`;
-            resultDiv.style.background = "#d1e7dd"; resultDiv.style.color = "#0f5132";
-        } else if (score >= 1 && score <= 4) {
-            resultDiv.innerHTML = `Điểm: ${score} - Đột quỵ <strong>NHẸ</strong>`;
-            resultDiv.style.background = "#cff4fc"; resultDiv.style.color = "#055160";
-        } else if (score >= 5 && score <= 15) {
-            resultDiv.innerHTML = `Điểm: ${score} - Đột quỵ <strong>TRUNG BÌNH</strong>`;
-            resultDiv.style.background = "#fff3cd"; resultDiv.style.color = "#664d03";
-        } else if (score >= 16 && score <= 20) {
-            resultDiv.innerHTML = `Điểm: ${score} - Đột quỵ <strong>NẶNG</strong>`;
-            resultDiv.style.background = "#f8d7da"; resultDiv.style.color = "#842029";
-        } else {
-            resultDiv.innerHTML = `Điểm: ${score} - Đột quỵ <strong>RẤT NẶNG</strong>`;
-            resultDiv.style.background = "#b22222"; resultDiv.style.color = "white";
-        }
-    }
-    // --- CÁC HÀM BỔ SUNG CHO TAB 4 ---
+        let severity = "";
+        let bgColor = "";
+        let textColor = "";
 
-    // Logic Tính điểm ASPECTS
+        if (score === 0) {
+            severity = "Bình thường"; bgColor = "#d1e7dd"; textColor = "#0f5132";
+        } else if (score >= 1 && score <= 4) {
+            severity = "Đột quỵ NHẸ"; bgColor = "#cff4fc"; textColor = "#055160";
+        } else if (score >= 5 && score <= 15) {
+            severity = "Đột quỵ TRUNG BÌNH"; bgColor = "#fff3cd"; textColor = "#664d03";
+        } else if (score >= 16 && score <= 20) {
+            severity = "Đột quỵ NẶNG"; bgColor = "#f8d7da"; textColor = "#842029";
+        } else {
+            severity = "Đột quỵ RẤT NẶNG"; bgColor = "#b22222"; textColor = "white";
+        }
+
+        resultDiv.style.background = bgColor;
+        resultDiv.style.color = textColor;
+        resultDiv.innerHTML = `
+            <div style="font-size: 24px; font-weight: bold; margin-bottom: 5px;">${score} Điểm</div>
+            <div>Phân loại: <strong>${severity}</strong></div>
+        `;
+    }
+
+    // Logic tính điểm ASPECTS
     function calculateASPECTS() {
         let score = 10;
-        const checkboxes = document.querySelectorAll('#aspects-checklist input[type="checkbox"]');
+        // Gom tất cả checkbox từ cả 2 vùng (Hạch nền & Trên hạch nền)
+        const checkboxes = document.querySelectorAll('#aspects-ganglia input[type="checkbox"], #aspects-ventricle input[type="checkbox"]');
+        
         checkboxes.forEach(cb => {
             if (cb.checked) score -= parseInt(cb.value);
         });
@@ -663,10 +726,16 @@
         resultDiv.style.display = "block";
         
         if (score >= 6) {
-            resultDiv.innerHTML = `Điểm ASPECTS: <span style='font-size:20px;'>${score} / 10</span> <br>✅ Hình ảnh thuận lợi. Ủng hộ can thiệp Lấy huyết khối cơ học (EVT) nếu trong cửa sổ thời gian.`;
+            resultDiv.innerHTML = `
+                <div style="font-size: 24px; font-weight: bold; margin-bottom: 5px;">${score} / 10</div>
+                <div style="font-size: 14px;">✅ Tổn thương nhỏ (Favorable). Ủng hộ can thiệp tái thông mạch máu (EVT/tPA) nếu nằm trong cửa sổ thời gian.</div>
+            `;
             resultDiv.style.background = "#d1e7dd"; resultDiv.style.color = "#0f5132";
         } else {
-            resultDiv.innerHTML = `Điểm ASPECTS: <span style='font-size:20px;'>${score} / 10</span> <br>⚠️ Lõi nhồi máu diện rộng (ASPECTS < 6). Nguy cơ xuất huyết cao. Cần hội chẩn cẩn thận trước khi can thiệp.`;
+            resultDiv.innerHTML = `
+                <div style="font-size: 24px; font-weight: bold; margin-bottom: 5px;">${score} / 10</div>
+                <div style="font-size: 14px;">⚠️ Tổn thương diện rộng (> 1/3 bán cầu). Nguy cơ xuất huyết não thứ phát rất cao. Thận trọng khi ra quyết định can thiệp.</div>
+            `;
             resultDiv.style.background = "#f8d7da"; resultDiv.style.color = "#842029";
         }
     }
