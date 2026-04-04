@@ -503,7 +503,37 @@ function printReport() {
     printWindow.document.close();
     printWindow.print();
 }
-renderData();
+renderData()
+async function refreshDataFromSheets() {
+    try {
+        const response = await fetch(GOOGLE_SCRIPT_URL); // Gọi hàm doGet trong Apps Script
+        const dataFromSheets = await response.json();
+        
+        // Chuyển đổi dữ liệu từ hàng/cột của Sheets thành mảng patients
+        patients = dataFromSheets.map(row => ({
+            id: row[0],
+            name: row[2],
+            yob: row[3],
+            room: row[4],
+            priority: row[5],
+            diagnosis: row[6],
+            types: JSON.parse(row[7]),
+            s: row[8],
+            b: row[9],
+            a: row[10],
+            r: row[11],
+            isFlagged: row[12],
+            timestamp: row[1]
+        }));
+        
+        // Lưu lại vào máy để dùng offline nếu cần
+        localStorage.setItem('sbar_patients', JSON.stringify(patients));
+        renderData();
+        alert("Đã đồng bộ dữ liệu mới nhất từ Google Sheets!");
+    } catch (e) {
+        console.error("Không thể đồng bộ:", e);
+    }
+}
 </script>
 </body>
 </html>
