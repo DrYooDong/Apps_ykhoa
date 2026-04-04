@@ -2,7 +2,7 @@
 <html lang="vi" data-theme="light">
 <head>
   <meta charset="UTF-8">
-  <title>Ngộ độc cấp – Bảng điều khiển lâm sàng</title>
+  <title>Ngộ độc cấp – Toxic Dashboard V3</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Font -->
@@ -12,26 +12,38 @@
 
   <style>
     :root {
-      --bg: #f3f4f6;
-      --bg-soft: #e5e7eb;
-      --surface: #ffffff;
-      --surface-soft: #f9fafb;
-      --border: #d1d5db;
-      --border-soft: #e5e7eb;
-      --text: #111827;
-      --text-muted: #6b7280;
-      --primary: #0f766e;
-      --primary-soft: #ccfbf1;
-      --danger: #b91c1c;
-      --danger-soft: #fee2e2;
-      --warn: #d97706;
-      --warn-soft: #fef3c7;
-      --ok: #15803d;
-      --ok-soft: #dcfce7;
+      --bg: #0f172a;
+      --bg-soft: #020617;
+      --bg-gradient-top: #0f172a;
+      --bg-gradient-mid: #020617;
+      --bg-gradient-bottom: #111827;
 
-      --radius-sm: 0.375rem;
-      --radius-md: 0.5rem;
-      --radius-lg: 0.75rem;
+      --surface: rgba(15,23,42,0.95);
+      --surface-soft: rgba(30,64,175,0.18);
+      --surface-strong: rgba(15,118,110,0.14);
+      --surface-border: rgba(148,163,184,0.5);
+
+      --border: rgba(148,163,184,0.5);
+      --border-soft: rgba(51,65,85,0.7);
+
+      --text: #e5e7eb;
+      --text-muted: #9ca3af;
+      --text-soft: #6b7280;
+      --primary: #0ea5e9;
+      --primary-soft: rgba(56,189,248,0.16);
+      --primary-strong: #22c55e;
+
+      --danger: #f97373;
+      --danger-soft: rgba(248,113,113,0.2);
+      --warn: #fbbf24;
+      --warn-soft: rgba(251,191,36,0.18);
+      --ok: #4ade80;
+      --ok-soft: rgba(74,222,128,0.18);
+
+      --radius-xs: 0.35rem;
+      --radius-sm: 0.6rem;
+      --radius-md: 0.9rem;
+      --radius-lg: 1.4rem;
       --radius-pill: 999px;
 
       --s1: 0.25rem;
@@ -42,17 +54,18 @@
       --s6: 1.5rem;
       --s8: 2rem;
 
-      --t-xs: 0.75rem;
-      --t-sm: 0.875rem;
-      --t-base: 1rem;
-      --t-lg: 1.125rem;
-      --t-xl: 1.5rem;
+      --t-xs: 0.7rem;
+      --t-sm: 0.8rem;
+      --t-base: 0.95rem;
+      --t-lg: 1.15rem;
+      --t-xl: 1.45rem;
 
-      --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
-      --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+      --shadow-soft: 0 18px 45px rgba(15,23,42,0.45);
+      --shadow-sm: 0 10px 25px rgba(15,23,42,0.35);
 
       --content-width: 1200px;
-      --transition: 170ms cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-med: 220ms cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -60,22 +73,51 @@
     body {
       min-height: 100vh;
       font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at top, #e5f4ff 0, #f3f4f6 45%, #e5e7eb 100%);
+      background: radial-gradient(circle at top, #0f172a 0, #020617 38%, #020617 62%, #020617 100%);
       color: var(--text);
       line-height: 1.5;
-      padding: var(--s4);
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 4.5rem;
+    }
+
+    .bg-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(59,130,246,0.09) 0, transparent 40%),
+        radial-gradient(circle at 90% 0%, rgba(14,165,233,0.16) 0, transparent 45%),
+        radial-gradient(circle at 50% 110%, rgba(16,185,129,0.16) 0, transparent 42%);
+      mix-blend-mode: screen;
+      opacity: 0.9;
+      z-index: -1;
     }
 
     .shell {
       max-width: var(--content-width);
       margin: 0 auto;
+      padding: var(--s4) var(--s3) 0;
     }
 
-    header {
+    /* HEADER */
+
+    .app-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(15,23,42,0.9), rgba(15,23,42,0.76), transparent);
+      border-bottom: 1px solid rgba(51,65,85,0.8);
+      margin-bottom: var(--s3);
+    }
+
+    .app-header-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-bottom: var(--s4);
+      justify-content: space-between;
+      padding: var(--s3) var(--s3) var(--s3);
       gap: var(--s3);
     }
 
@@ -88,32 +130,38 @@
     .brand-icon {
       width: 42px;
       height: 42px;
-      border-radius: 12px;
-      background: conic-gradient(from 200deg, #0f766e, #22c55e, #f97316, #0f766e);
+      border-radius: 28%;
+      background:
+        radial-gradient(circle at 20% 0%, #38bdf8 0, #0369a1 40%, transparent 70%),
+        radial-gradient(circle at 80% 100%, #22c55e 0, #16a34a 35%, transparent 70%);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
+      color: #e5e7eb;
       font-weight: 700;
       font-size: 18px;
-      box-shadow: var(--shadow-md);
+      box-shadow: 0 0 0 1px rgba(94,234,212,0.25), var(--shadow-sm);
     }
 
     .brand-text-title {
       font-size: var(--t-xl);
       font-weight: 600;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #e5e7eb;
     }
 
     .brand-text-sub {
-      font-size: var(--t-sm);
-      color: var(--text-muted);
+      font-size: var(--t-xs);
+      color: var(--text-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
     }
 
     .header-actions {
       display: flex;
-      gap: var(--s2);
       align-items: center;
+      gap: var(--s2);
     }
 
     button {
@@ -123,63 +171,99 @@
 
     .btn {
       border-radius: var(--radius-pill);
-      padding: 0.35rem 0.9rem;
-      font-size: var(--t-sm);
+      padding: 0.3rem 0.9rem;
+      font-size: var(--t-xs);
       border: 1px solid transparent;
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      transition: background var(--transition), color var(--transition), border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+      gap: 0.45rem;
       background: transparent;
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: white;
-      border-color: transparent;
-      box-shadow: var(--shadow-sm);
-    }
-    .btn-primary:hover {
-      background: #0d615b;
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .btn-ghost {
-      background: rgba(255,255,255,0.7);
-      border-color: var(--border);
       color: var(--text-muted);
+      transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
     }
-    .btn-ghost:hover {
-      background: var(--surface);
+
+    .btn span.icon-dot {
+      width: 0.38rem;
+      height: 0.38rem;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 3px rgba(34,197,94,0.35);
+    }
+
+    .btn-outline {
+      border-color: rgba(148,163,184,0.7);
+      background: linear-gradient(to bottom right, rgba(15,23,42,0.9), rgba(15,23,42,0.92));
       color: var(--text);
+    }
+    .btn-outline:hover {
+      border-color: rgba(96,165,250,0.9);
+      box-shadow: 0 0 0 1px rgba(37,99,235,0.35);
+      color: #e5e7eb;
+      transform: translateY(-0.5px);
+    }
+
+    .btn-soft {
+      background: rgba(15,23,42,0.6);
+      border-color: rgba(30,64,175,0.66);
+      color: #bfdbfe;
+    }
+
+    .btn-soft:hover {
+      background: rgba(30,64,175,0.9);
+      box-shadow: 0 0 0 1px rgba(59,130,246,0.55);
+      transform: translateY(-0.5px);
     }
 
     /* SUMMARY STRIP */
 
-    .summary-strip {
-      background: rgba(15, 23, 42, 0.03);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-soft);
-      padding: var(--s3);
-      margin-bottom: var(--s3);
+    .summary-shell {
       display: grid;
-      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
+      grid-template-columns: minmax(0, 1.8fr) minmax(0, 1.2fr);
       gap: var(--s3);
-      backdrop-filter: blur(8px);
+      margin-bottom: var(--s3);
     }
 
-    .summary-left {
+    .summary-panel {
+      position: relative;
+      border-radius: var(--radius-lg);
+      padding: var(--s3);
+      background:
+        linear-gradient(135deg, rgba(15,23,42,0.95), rgba(2,6,23,0.9)),
+        radial-gradient(circle at top left, rgba(56,189,248,0.18), transparent 55%);
+      border: 1px solid rgba(51,65,85,0.9);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .summary-panel::before {
+      content: "";
+      position: absolute;
+      inset: -50%;
+      background:
+        conic-gradient(from 200deg, rgba(56,189,248,0.08), transparent 40%, rgba(45,212,191,0.12), transparent 70%);
+      opacity: 0.6;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .summary-inner {
+      position: relative;
       display: flex;
       flex-direction: column;
-      gap: 0.3rem;
+      gap: 0.35rem;
+      z-index: 1;
     }
 
     .summary-right {
+      position: relative;
+      border-radius: var(--radius-lg);
+      padding: var(--s3);
+      border: 1px solid rgba(31,41,55,0.9);
+      background: linear-gradient(145deg, rgba(15,23,42,0.96), rgba(15,23,42,0.9));
+      box-shadow: var(--shadow-sm);
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
-      gap: 0.25rem;
+      gap: 0.4rem;
     }
 
     .risk-pill {
@@ -187,104 +271,133 @@
       align-items: center;
       gap: 0.35rem;
       border-radius: var(--radius-pill);
-      padding: 0.15rem 0.7rem;
+      padding: 0.18rem 0.7rem;
       font-size: var(--t-xs);
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
+      border: 1px solid transparent;
+      background: rgba(15,23,42,0.9);
     }
 
     .risk-dot {
-      width: 9px;
-      height: 9px;
+      width: 0.5rem;
+      height: 0.5rem;
       border-radius: 999px;
+      box-shadow: 0 0 0 4px rgba(15,23,42,0.9);
     }
 
     .risk-low {
-      background: var(--ok-soft);
-      color: var(--ok);
+      border-color: rgba(52,211,153,0.6);
+      background: linear-gradient(90deg, rgba(22,163,74,0.22), rgba(22,163,74,0.05));
+      color: #bbf7d0;
     }
-    .risk-low .risk-dot { background: var(--ok); }
+    .risk-low .risk-dot { background: #22c55e; }
 
     .risk-med {
-      background: var(--warn-soft);
-      color: var(--warn);
+      border-color: rgba(250,204,21,0.7);
+      background: linear-gradient(90deg, rgba(245,158,11,0.28), rgba(15,23,42,0.9));
+      color: #fef9c3;
     }
-    .risk-med .risk-dot { background: var(--warn); }
+    .risk-med .risk-dot { background: #facc15; }
 
     .risk-high {
-      background: var(--danger-soft);
-      color: var(--danger);
+      border-color: rgba(248,113,113,0.9);
+      background: linear-gradient(90deg, rgba(239,68,68,0.42), rgba(15,23,42,0.9));
+      color: #fee2e2;
     }
-    .risk-high .risk-dot { background: var(--danger); }
+    .risk-high .risk-dot { background: #f97373; }
 
     .summary-headline {
       font-size: var(--t-lg);
       font-weight: 600;
+      letter-spacing: 0.02em;
     }
 
     .summary-sub {
       font-size: var(--t-sm);
-      color: var(--text-muted);
+      color: var(--text-soft);
+      max-width: 42rem;
+    }
+
+    .summary-next-step {
+      font-size: var(--t-sm);
+      color: #d1fae5;
     }
 
     .summary-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.35rem;
-      justify-content: flex-end;
+      gap: 0.25rem;
     }
 
     .chip {
       border-radius: var(--radius-pill);
-      border: 1px solid var(--border-soft);
-      padding: 0.15rem 0.6rem;
+      border: 1px solid rgba(148,163,184,0.65);
+      padding: 0.16rem 0.6rem;
       font-size: var(--t-xs);
-      background: rgba(255,255,255,0.7);
-      color: var(--text-muted);
-    }
-
-    .summary-next-step {
-      font-size: var(--t-sm);
-      text-align: right;
+      color: var(--text-soft);
+      background: rgba(15,23,42,0.9);
     }
 
     /* TABS */
 
     .tabs {
-      background: linear-gradient(to bottom, rgba(255,255,255,0.98), rgba(249,250,251,0.98));
       border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(30,64,175,0.9);
+      background: linear-gradient(to bottom right, rgba(15,23,42,0.98), rgba(15,23,42,0.98));
+      box-shadow: var(--shadow-soft);
       overflow: hidden;
     }
 
     .tab-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.25rem;
+      gap: 0.35rem;
       padding: var(--s2) var(--s3);
-      border-bottom: 1px solid var(--border);
-      background: var(--surface-soft);
+      border-bottom: 1px solid rgba(30,64,175,0.8);
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.15), rgba(15,23,42,0.98));
     }
 
     .tab-btn {
       border-radius: var(--radius-pill);
-      border: none;
-      padding: 0.4rem 0.9rem;
-      font-size: var(--t-sm);
-      color: var(--text-muted);
-      background: transparent;
-      white-space: nowrap;
+      border: 1px solid transparent;
+      padding: 0.35rem 0.85rem;
+      font-size: var(--t-xs);
+      color: var(--text-soft);
+      background: rgba(15,23,42,0.8);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
     }
+
+    .tab-btn::before {
+      content: "";
+      width: 0.35rem;
+      height: 0.35rem;
+      border-radius: 999px;
+      background: rgba(148,163,184,0.7);
+    }
+
     .tab-btn:hover {
-      background: rgba(15, 118, 110, 0.06);
-      color: var(--primary);
+      border-color: rgba(56,189,248,0.7);
+      color: #bfdbfe;
+      transform: translateY(-0.5px);
     }
+
     .tab-btn.active {
-      background: var(--primary);
-      color: white;
-      box-shadow: var(--shadow-sm);
+      background: linear-gradient(120deg, rgba(14,165,233,0.2), rgba(34,197,94,0.28));
+      color: #ecfeff;
+      border-color: rgba(56,189,248,0.9);
+      box-shadow: 0 0 0 1px rgba(15,23,42,0.7);
+    }
+
+    .tab-btn.active::before {
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(16,185,129,0.3);
     }
 
     .tab-panels {
@@ -317,28 +430,50 @@
     }
 
     .card {
-      background: var(--surface);
+      position: relative;
+      background: radial-gradient(circle at top, rgba(15,23,42,0.98), rgba(15,23,42,0.94));
       border-radius: var(--radius-md);
-      border: 1px solid var(--border-soft);
+      border: 1px solid rgba(51,65,85,0.9);
       padding: var(--s3);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.12), transparent 60%);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .card-inner {
+      position: relative;
+      z-index: 1;
     }
 
     .card-header {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.5rem;
+      align-items: baseline;
+      margin-bottom: 0.55rem;
       gap: var(--s2);
     }
 
     .card-title {
       font-size: var(--t-sm);
       font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #e5e7eb;
     }
 
     .card-sub {
       font-size: var(--t-xs);
-      color: var(--text-muted);
+      color: var(--text-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
 
     /* INPUTS & CHOICES */
@@ -352,21 +487,37 @@
       justify-content: space-between;
       font-size: var(--t-xs);
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-      margin-bottom: 0.25rem;
+      letter-spacing: 0.1em;
+      color: var(--text-soft);
+      margin-bottom: 0.18rem;
     }
 
     input[type="number"],
     select,
     textarea {
       width: 100%;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border);
-      padding: 0.35rem 0.55rem;
+      border-radius: var(--radius-xs);
+      border: 1px solid rgba(55,65,81,0.9);
+      padding: 0.34rem 0.55rem;
       font-size: var(--t-sm);
-      background: var(--surface);
+      background: rgba(15,23,42,0.96);
       color: var(--text);
+      outline: none;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(148,163,184,0.7);
+      font-size: var(--t-xs);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: rgba(56,189,248,0.9);
+      box-shadow: 0 0 0 1px rgba(56,189,248,0.4);
+      transform: translateY(-0.5px);
     }
 
     textarea {
@@ -382,81 +533,82 @@
 
     .choice-pill {
       border-radius: var(--radius-pill);
-      border: 1px solid var(--border-soft);
-      padding: 0.2rem 0.6rem;
+      border: 1px solid rgba(51,65,85,0.9);
+      padding: 0.22rem 0.7rem;
       font-size: var(--t-xs);
-      color: var(--text-muted);
-      background: var(--surface-soft);
+      color: var(--text-soft);
+      background: rgba(15,23,42,0.96);
       cursor: pointer;
       user-select: none;
-      transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+      transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
     }
 
     .choice-pill.selected {
-      background: var(--primary-soft);
-      border-color: var(--primary);
-      color: var(--primary);
+      background: linear-gradient(135deg, rgba(56,189,248,0.2), rgba(34,197,94,0.3));
+      border-color: rgba(56,189,248,0.95);
+      color: #f9fafb;
       font-weight: 500;
+      box-shadow: 0 0 0 1px rgba(15,23,42,0.8);
       transform: translateY(-1px);
     }
 
     .note {
       font-size: var(--t-xs);
-      color: var(--text-muted);
-      margin-top: 0.35rem;
+      color: var(--text-soft);
+      margin-top: 0.3rem;
     }
 
     .tag-soft {
       border-radius: var(--radius-pill);
-      border: 1px dashed var(--border-soft);
-      padding: 0.15rem 0.6rem;
+      border: 1px dashed rgba(148,163,184,0.7);
+      padding: 0.14rem 0.6rem;
       font-size: var(--t-xs);
-      color: var(--text-muted);
-      background: var(--surface-soft);
+      color: var(--text-soft);
+      background: rgba(15,23,42,0.9);
     }
 
     .badge-red {
       border-radius: var(--radius-pill);
-      padding: 0.1rem 0.5rem;
+      padding: 0.12rem 0.6rem;
       font-size: var(--t-xs);
       background: var(--danger-soft);
       color: var(--danger);
-      border: 1px solid rgba(185, 28, 28, 0.4);
+      border: 1px solid rgba(248,113,113,0.7);
     }
 
     .badge-yellow {
       border-radius: var(--radius-pill);
-      padding: 0.1rem 0.5rem;
+      padding: 0.12rem 0.6rem;
       font-size: var(--t-xs);
       background: var(--warn-soft);
       color: var(--warn);
-      border: 1px solid rgba(217, 119, 6, 0.4);
+      border: 1px solid rgba(251,191,36,0.7);
     }
 
     .badge-green {
       border-radius: var(--radius-pill);
-      padding: 0.1rem 0.5rem;
+      padding: 0.12rem 0.6rem;
       font-size: var(--t-xs);
       background: var(--ok-soft);
       color: var(--ok);
-      border: 1px solid rgba(22, 163, 74, 0.4);
+      border: 1px solid rgba(74,222,128,0.7);
     }
 
-    /* TABLE-LIKE LISTS */
+    /* CAUSE LIST */
 
     .cause-list {
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
-      margin-top: 0.5rem;
+      gap: 0.45rem;
+      margin-top: 0.4rem;
+      font-size: var(--t-xs);
     }
 
     .cause-row {
       display: grid;
-      grid-template-columns: 0.6fr 1.1fr 0.7fr;
+      grid-template-columns: 0.7fr 1.2fr 0.7fr;
       gap: 0.4rem;
       align-items: center;
-      font-size: var(--t-xs);
     }
 
     .cause-name {
@@ -468,25 +620,24 @@
       width: 100%;
       height: 5px;
       border-radius: 999px;
-      background: var(--bg-soft);
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(51,65,85,0.9);
       overflow: hidden;
     }
 
     .cause-match-fill {
       position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 0%;
-      border-radius: inherit;
-      background: linear-gradient(to right, var(--primary), #22c55e);
-      transition: width var(--transition);
+      inset: 0;
+      transform-origin: left;
+      transform: scaleX(0);
+      background: linear-gradient(90deg, #38bdf8, #22c55e);
+      transition: transform var(--transition-med);
     }
 
     .cause-score-text {
       text-align: right;
       font-size: var(--t-xs);
-      color: var(--text-muted);
+      color: var(--text-soft);
     }
 
     .treatment-list {
@@ -509,37 +660,113 @@
 
     .tx-actions {
       display: flex;
-      gap: 0.35rem;
+      gap: 0.3rem;
       flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .tx-tag {
       border-radius: var(--radius-pill);
-      padding: 0.1rem 0.55rem;
+      padding: 0.12rem 0.6rem;
       font-size: var(--t-xs);
-      border: 1px solid var(--border-soft);
-      background: var(--surface-soft);
-      color: var(--text-muted);
+      border: 1px solid rgba(51,65,85,0.9);
+      background: rgba(15,23,42,0.96);
+      color: var(--text-soft);
+    }
+
+    /* MOBILE BOTTOM DOCK */
+
+    .bottom-dock {
+      position: fixed;
+      inset-inline: 0;
+      bottom: 0;
+      z-index: 50;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 0.35rem 0.9rem 0.5rem;
+      background: linear-gradient(to top, rgba(15,23,42,0.98), rgba(15,23,42,0.8), transparent);
+      border-top: 1px solid rgba(30,64,175,0.9);
+      backdrop-filter: blur(16px);
+    }
+
+    .bottom-dock-inner {
+      max-width: 480px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0,1fr));
+      gap: 0.25rem;
+    }
+
+    .dock-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(51,65,85,0.9);
+      background: rgba(15,23,42,0.96);
+      padding: 0.28rem 0.15rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      color: var(--text-soft);
+      gap: 0.1rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .dock-btn span.icon {
+      width: 1.15rem;
+      height: 1.15rem;
+      border-radius: 999px;
+      border: 1px solid rgba(51,65,85,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+    }
+
+    .dock-btn.active {
+      background: linear-gradient(135deg, rgba(56,189,248,0.35), rgba(34,197,94,0.35));
+      border-color: rgba(56,189,248,0.95);
+      color: #ecfeff;
+      box-shadow: 0 0 0 1px rgba(15,23,42,0.8);
+      transform: translateY(-1px);
+    }
+
+    .dock-btn.active span.icon {
+      border-color: rgba(191,219,254,0.9);
+      background: rgba(15,23,42,0.96);
     }
 
     /* RESPONSIVE */
 
     @media (max-width: 900px) {
-      body { padding: var(--s3); }
-      header { flex-direction: column; align-items: flex-start; }
-      .summary-strip {
+      .summary-shell {
         grid-template-columns: 1fr;
       }
-      .summary-right { align-items: flex-start; }
-      .summary-next-step { text-align: left; }
-      .summary-tags { justify-content: flex-start; }
-      .grid-2 { grid-template-columns: 1fr; }
-      .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .cause-row {
-        grid-template-columns: 0.7fr 1.1fr;
-        grid-template-rows: auto auto;
+      .summary-panel {
+        order: 1;
       }
-      .cause-score-text { grid-column: 1 / -1; text-align: left; }
+      .summary-right {
+        order: 2;
+      }
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .app-header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      body {
+        padding-bottom: 4.4rem;
+      }
+      .bottom-dock {
+        display: flex;
+      }
     }
 
     @media (max-width: 640px) {
@@ -548,37 +775,50 @@
   </style>
 </head>
 <body>
-<div class="shell">
-  <header>
+<div class="bg-overlay"></div>
+
+<header class="app-header">
+  <div class="app-header-inner">
     <div class="brand">
       <div class="brand-icon" aria-hidden="true">Tx</div>
       <div>
-        <div class="brand-text-title">Ngộ độc cấp – Dashboard</div>
-        <div class="brand-text-sub">Treat the person, not the poison</div>
+        <div class="brand-text-title">Toxic Dashboard</div>
+        <div class="brand-text-sub">Acute poisoning · ABCDE · Risk · Antidote</div>
       </div>
     </div>
     <div class="header-actions">
-      <button class="btn btn-ghost" id="btn-clear">Ca mới</button>
+      <button class="btn btn-soft" id="btn-clear">
+        <span class="icon-dot"></span>
+        Ca mới
+      </button>
+      <button class="btn btn-outline">
+        Chế độ ban đêm
+      </button>
     </div>
-  </header>
+  </div>
+</header>
 
+<main class="shell">
   <!-- SUMMARY -->
-  <section class="summary-strip" id="summary-strip">
-    <div class="summary-left">
-      <div class="risk-pill risk-low" id="risk-pill">
-        <div class="risk-dot"></div>
-        <span id="risk-pill-text">Nguy cơ thấp</span>
-      </div>
-      <div class="summary-headline" id="summary-headline">
-        Chưa ghi nhận dấu hiệu đe dọa tính mạng ngay lập tức
-      </div>
-      <div class="summary-sub" id="summary-sub">
-        Nhập nhanh tri giác, hô hấp, huyết áp, thời gian phơi nhiễm và vài dấu hiệu key – hệ thống sẽ gợi ý nguyên nhân, antidote và ICU.
+  <section class="summary-shell" id="summary-strip">
+    <div class="summary-panel">
+      <div class="summary-inner">
+        <div class="risk-pill risk-low" id="risk-pill">
+          <div class="risk-dot"></div>
+          <span id="risk-pill-text">Nguy cơ thấp</span>
+        </div>
+        <div class="summary-headline" id="summary-headline">
+          Chưa ghi nhận dấu hiệu đe dọa tính mạng ngay lập tức.
+        </div>
+        <div class="summary-sub" id="summary-sub">
+          Nhập nhanh tri giác, hô hấp, huyết áp, thời gian phơi nhiễm và vài dấu hiệu key – hệ thống sẽ gợi ý nguyên nhân, antidote và ICU.
+        </div>
       </div>
     </div>
+
     <div class="summary-right">
       <div class="summary-next-step" id="summary-next">
-        Gợi ý: rà ABCDE, sau đó mở tab <strong>Nguyên nhân</strong> và <strong>Cận lâm sàng</strong>.
+        Gợi ý: rà <strong>ABCDE</strong>, sau đó mở tab <strong>Nguyên nhân</strong> và <strong>Cận lâm sàng</strong>.
       </div>
       <div class="summary-tags" id="summary-tags">
         <span class="chip">Chưa rõ độc chất</span>
@@ -602,90 +842,94 @@
       <div class="tab-panel active" id="tab-overview">
         <div class="grid-2">
           <div class="card">
-            <div class="card-header">
-              <div class="card-title">Thông tin ca</div>
-              <div class="card-sub">Điền tối thiểu</div>
-            </div>
-            <div class="field">
-              <div class="field-label"><span>Tuổi</span><span></span></div>
-              <input id="age" type="number" min="0" max="120" placeholder="Ví dụ: 35">
-            </div>
-            <div class="field">
-              <div class="field-label"><span>Giờ từ phơi nhiễm</span><span></span></div>
-              <input id="timeHours" type="number" min="0" step="0.5" placeholder="Ví dụ: 2">
-            </div>
-            <div class="field">
-              <div class="field-label"><span>Gợi ý tác nhân</span><span></span></div>
-              <select id="agentHint">
-                <option value="">Chưa rõ / hỗn hợp</option>
-                <option value="opioid">Opioid</option>
-                <option value="sedative">An thần / gây ngủ</option>
-                <option value="cholinergic">Cholinergic (phospho hữu cơ, carbamate)</option>
-                <option value="anticholinergic">Anticholinergic</option>
-                <option value="sympathomimetic">Giao cảm (amphetamines, cocaine)</option>
-                <option value="tca">TCA / Na-blocker</option>
-                <option value="ccb">CCB / Beta-blocker</option>
-                <option value="paracetamol">Paracetamol</option>
-                <option value="salicylate">Salicylate</option>
-                <option value="caustic">Ăn mòn</option>
-              </select>
-            </div>
-            <div class="field">
-              <div class="field-label"><span>Bối cảnh</span><span></span></div>
-              <textarea id="context" placeholder="VD: Nông dân phun thuốc, thanh niên dùng heroin, uống 20 viên amlodipine..."></textarea>
+            <div class="card-inner">
+              <div class="card-header">
+                <div class="card-title">Thông tin ca</div>
+                <div class="card-sub">Điền tối thiểu</div>
+              </div>
+              <div class="field">
+                <div class="field-label"><span>Tuổi</span></div>
+                <input id="age" type="number" min="0" max="120" placeholder="Ví dụ: 35">
+              </div>
+              <div class="field">
+                <div class="field-label"><span>Giờ từ phơi nhiễm</span></div>
+                <input id="timeHours" type="number" min="0" step="0.5" placeholder="Ví dụ: 2">
+              </div>
+              <div class="field">
+                <div class="field-label"><span>Gợi ý tác nhân</span></div>
+                <select id="agentHint">
+                  <option value="">Chưa rõ / hỗn hợp</option>
+                  <option value="opioid">Opioid</option>
+                  <option value="sedative">An thần / gây ngủ</option>
+                  <option value="cholinergic">Cholinergic (phospho hữu cơ, carbamate)</option>
+                  <option value="anticholinergic">Anticholinergic</option>
+                  <option value="sympathomimetic">Giao cảm (amphetamines, cocaine)</option>
+                  <option value="tca">TCA / Na-blocker</option>
+                  <option value="ccb">CCB / Beta-blocker</option>
+                  <option value="paracetamol">Paracetamol</option>
+                  <option value="salicylate">Salicylate</option>
+                  <option value="caustic">Ăn mòn</option>
+                </select>
+              </div>
+              <div class="field">
+                <div class="field-label"><span>Bối cảnh</span></div>
+                <textarea id="context" placeholder="VD: Nông dân phun thuốc, thanh niên dùng heroin, uống 20 viên amlodipine..."></textarea>
+              </div>
             </div>
           </div>
 
           <div class="card">
-            <div class="card-header">
-              <div class="card-title">Sinh hiệu & tri giác</div>
-              <div class="card-sub">Chỉ lấy vài số</div>
-            </div>
-            <div class="grid-3">
+            <div class="card-inner">
+              <div class="card-header">
+                <div class="card-title">Sinh hiệu & tri giác</div>
+                <div class="card-sub">Chỉ lấy vài số</div>
+              </div>
+              <div class="grid-3">
+                <div class="field">
+                  <div class="field-label"><span>SBP</span><span>mmHg</span></div>
+                  <input id="sbp" type="number" min="0" max="300" placeholder="80">
+                </div>
+                <div class="field">
+                  <div class="field-label"><span>Nhịp tim</span><span>/ph</span></div>
+                  <input id="hr" type="number" min="0" max="250" placeholder="120">
+                </div>
+                <div class="field">
+                  <div class="field-label"><span>Nhiệt</span><span>°C</span></div>
+                  <input id="temp" type="number" step="0.1" min="30" max="43" placeholder="38.9">
+                </div>
+              </div>
+
               <div class="field">
-                <div class="field-label"><span>SBP</span><span>mmHg</span></div>
-                <input id="sbp" type="number" min="0" max="300" placeholder="80">
+                <div class="field-label"><span>Tri giác</span></div>
+                <div class="choice-row" data-field="consciousness">
+                  <div class="choice-pill" data-value="tinh">Tỉnh</div>
+                  <div class="choice-pill" data-value="kích động">Kích động</div>
+                  <div class="choice-pill" data-value="lơ mơ">Lơ mơ</div>
+                  <div class="choice-pill" data-value="hôn mê">Hôn mê</div>
+                </div>
               </div>
+
               <div class="field">
-                <div class="field-label"><span>Nhịp tim</span><span>/ph</span></div>
-                <input id="hr" type="number" min="0" max="250" placeholder="120">
+                <div class="field-label"><span>Hô hấp</span></div>
+                <div class="choice-row" data-field="resp">
+                  <div class="choice-pill" data-value="ổn">Ổn</div>
+                  <div class="choice-pill" data-value="nhanh">Thở nhanh</div>
+                  <div class="choice-pill" data-value="chậm">Thở chậm</div>
+                  <div class="choice-pill" data-value="suy">Suy hô hấp</div>
+                </div>
               </div>
+
               <div class="field">
-                <div class="field-label"><span>Nhiệt</span><span>°C</span></div>
-                <input id="temp" type="number" step="0.1" min="30" max="43" placeholder="38.9">
+                <div class="field-label"><span>Co giật</span></div>
+                <div class="choice-row" data-field="seizure">
+                  <div class="choice-pill" data-value="không">Không</div>
+                  <div class="choice-pill" data-value="có">Có / gần đây</div>
+                </div>
               </div>
-            </div>
 
-            <div class="field">
-              <div class="field-label"><span>Tri giác</span><span></span></div>
-              <div class="choice-row" data-field="consciousness">
-                <div class="choice-pill" data-value="tinh">Tỉnh</div>
-                <div class="choice-pill" data-value="kích động">Kích động</div>
-                <div class="choice-pill" data-value="lơ mơ">Lơ mơ</div>
-                <div class="choice-pill" data-value="hôn mê">Hôn mê</div>
+              <div class="note">
+                Nguy cơ cao nếu: hôn mê, suy hô hấp, co giật, SBP &lt; 90, nhiệt ≥ 39.5 hoặc có sốc.
               </div>
-            </div>
-
-            <div class="field">
-              <div class="field-label"><span>Hô hấp</span><span></span></div>
-              <div class="choice-row" data-field="resp">
-                <div class="choice-pill" data-value="ổn">Ổn</div>
-                <div class="choice-pill" data-value="nhanh">Thở nhanh</div>
-                <div class="choice-pill" data-value="chậm">Thở chậm</div>
-                <div class="choice-pill" data-value="suy">Suy hô hấp</div>
-              </div>
-            </div>
-
-            <div class="field">
-              <div class="field-label"><span>Co giật</span><span></span></div>
-              <div class="choice-row" data-field="seizure">
-                <div class="choice-pill" data-value="không">Không</div>
-                <div class="choice-pill" data-value="có">Có / gần đây</div>
-              </div>
-            </div>
-
-            <div class="note">
-              Nguy cơ cao nếu: hôn mê, suy hô hấp, co giật, SBP &lt; 90, nhiệt ≥ 39.5.
             </div>
           </div>
         </div>
@@ -695,109 +939,119 @@
       <div class="tab-panel" id="tab-abcde">
         <div class="grid-2">
           <div class="card">
-            <div class="card-header">
-              <div class="card-title">A – Airway</div>
-              <div class="card-sub">Đường thở</div>
-            </div>
-            <div class="field">
-              <div class="field-label"><span>Đường thở</span></div>
-              <div class="choice-row" data-field="airway">
-                <div class="choice-pill" data-value="ổn">Tự bảo vệ</div>
-                <div class="choice-pill" data-value="nguy cơ">Nguy cơ (nôn, lưỡi tụt...)</div>
-                <div class="choice-pill" data-value="mất">Mất bảo vệ</div>
+            <div class="card-inner">
+              <div class="card-header">
+                <div class="card-title">A – Airway</div>
+                <div class="card-sub">Đường thở</div>
               </div>
-            </div>
-            <div class="note">
-              <span class="badge-red">Mất bảo vệ</span> → chuẩn bị NKQ sớm, đặc biệt nếu hôn mê / ăn mòn.
+              <div class="field">
+                <div class="field-label"><span>Đường thở</span></div>
+                <div class="choice-row" data-field="airway">
+                  <div class="choice-pill" data-value="ổn">Tự bảo vệ</div>
+                  <div class="choice-pill" data-value="nguy cơ">Nguy cơ (nôn, lưỡi tụt...)</div>
+                  <div class="choice-pill" data-value="mất">Mất bảo vệ</div>
+                </div>
+              </div>
+              <div class="note">
+                <span class="badge-red">Mất bảo vệ</span> → chuẩn bị NKQ sớm, đặc biệt nếu hôn mê / ăn mòn.
+              </div>
             </div>
           </div>
 
           <div class="card">
-            <div class="card-header">
-              <div class="card-title">B – Breathing</div>
-              <div class="card-sub">Hô hấp</div>
-            </div>
-            <div class="field">
-              <div class="field-label"><span>Hỗ trợ</span></div>
-              <div class="choice-row" data-field="breathSupport">
-                <div class="choice-pill" data-value="không">Chưa cần</div>
-                <div class="choice-pill" data-value="oxy">Oxy mặt nạ</div>
-                <div class="choice-pill" data-value="bvm">Bóp bóng</div>
-                <div class="choice-pill" data-value="thở máy">Thở máy</div>
+            <div class="card-inner">
+              <div class="card-header">
+                <div class="card-title">B – Breathing</div>
+                <div class="card-sub">Hô hấp</div>
               </div>
-            </div>
-            <div class="note">
-              Ngộ độc opioid: suy hô hấp + co đồng tử → ưu tiên naloxone trước khi NKQ nếu có thể.
+              <div class="field">
+                <div class="field-label"><span>Hỗ trợ</span></div>
+                <div class="choice-row" data-field="breathSupport">
+                  <div class="choice-pill" data-value="không">Chưa cần</div>
+                  <div class="choice-pill" data-value="oxy">Oxy mặt nạ</div>
+                  <div class="choice-pill" data-value="bvm">Bóp bóng</div>
+                  <div class="choice-pill" data-value="thở máy">Thở máy</div>
+                </div>
+              </div>
+              <div class="note">
+                Ngộ độc opioid: suy hô hấp + co đồng tử → ưu tiên naloxone trước khi NKQ nếu an toàn.
+              </div>
             </div>
           </div>
 
           <div class="card">
-            <div class="card-header">
-              <div class="card-title">C – Circulation</div>
-              <div class="card-sub">Tuần hoàn</div>
-            </div>
-            <div class="field">
-              <div class="field-label"><span>Sốc / HA thấp</span></div>
-              <div class="choice-row" data-field="shock">
-                <div class="choice-pill" data-value="không">Không</div>
-                <div class="choice-pill" data-value="có">Có / nghi sốc</div>
+            <div class="card-inner">
+              <div class="card-header">
+                <div class="card-title">C – Circulation</div>
+                <div class="card-sub">Tuần hoàn</div>
               </div>
-            </div>
-            <div class="field">
-              <div class="field-label"><span>Loạn nhịp nặng</span></div>
-              <div class="choice-row" data-field="dysrhythmia">
-                <div class="choice-pill" data-value="không">Không</div>
-                <div class="choice-pill" data-value="có">Có</div>
+              <div class="field">
+                <div class="field-label"><span>Sốc / HA thấp</span></div>
+                <div class="choice-row" data-field="shock">
+                  <div class="choice-pill" data-value="không">Không</div>
+                  <div class="choice-pill" data-value="có">Có / nghi sốc</div>
+                </div>
               </div>
-            </div>
-            <div class="note">
-              Sốc + QRS rộng / QT dài → nghĩ TCA / Na-blocker hoặc độc tim nặng.
+              <div class="field">
+                <div class="field-label"><span>Loạn nhịp nặng</span></div>
+                <div class="choice-row" data-field="dysrhythmia">
+                  <div class="choice-pill" data-value="không">Không</div>
+                  <div class="choice-pill" data-value="có">Có</div>
+                </div>
+              </div>
+              <div class="note">
+                Sốc + QRS rộng / QT dài → nghĩ TCA / Na-blocker hoặc độc tim nặng.
+              </div>
             </div>
           </div>
 
           <div class="card">
-            <div class="card-header">
-              <div class="card-title">D – Disability</div>
-              <div class="card-sub">Đường huyết – co giật – nhiệt</div>
-            </div>
-            <div class="field">
-              <div class="field-label"><span>Đã đo glucose?</span></div>
-              <div class="choice-row" data-field="bglDone">
-                <div class="choice-pill" data-value="chưa">Chưa</div>
-                <div class="choice-pill" data-value="bình thường">Bình thường</div>
-                <div class="choice-pill" data-value="thấp">Thấp</div>
+            <div class="card-inner">
+              <div class="card-header">
+                <div class="card-title">D – Disability</div>
+                <div class="card-sub">Đường huyết – co giật – nhiệt</div>
               </div>
-            </div>
-            <div class="field">
-              <div class="field-label"><span>Nhiệt</span></div>
-              <div class="choice-row" data-field="tempFlag">
-                <div class="choice-pill" data-value="bt">BT / &lt; 38.5</div>
-                <div class="choice-pill" data-value="sốt">≥ 38.5</div>
-                <div class="choice-pill" data-value="sốt cao">≥ 39.5</div>
+              <div class="field">
+                <div class="field-label"><span>Đã đo glucose?</span></div>
+                <div class="choice-row" data-field="bglDone">
+                  <div class="choice-pill" data-value="chưa">Chưa</div>
+                  <div class="choice-pill" data-value="bình thường">Bình thường</div>
+                  <div class="choice-pill" data-value="thấp">Thấp</div>
+                </div>
               </div>
-            </div>
-            <div class="note">
-              Hạ đường huyết, co giật, sốt cao → luôn nâng mức nguy cơ và cân nhắc ICU.
+              <div class="field">
+                <div class="field-label"><span>Nhiệt</span></div>
+                <div class="choice-row" data-field="tempFlag">
+                  <div class="choice-pill" data-value="bt">BT / &lt; 38.5</div>
+                  <div class="choice-pill" data-value="sốt">≥ 38.5</div>
+                  <div class="choice-pill" data-value="sốt cao">≥ 39.5</div>
+                </div>
+              </div>
+              <div class="note">
+                Hạ đường huyết, co giật, sốt cao → luôn nâng mức nguy cơ và cân nhắc ICU.
+              </div>
             </div>
           </div>
 
           <div class="card">
-            <div class="card-header">
-              <div class="card-title">E – Emergency antidote / khử nhiễm</div>
-              <div class="card-sub">Song song ABCD</div>
-            </div>
-            <div class="field">
-              <div class="field-label"><span>Đã dùng antidote?</span></div>
-              <div class="choice-row" data-field="antidoteGiven">
-                <div class="choice-pill" data-value="chưa">Chưa</div>
-                <div class="choice-pill" data-value="naloxone">Naloxone</div>
-                <div class="choice-pill" data-value="atropine">Atropine</div>
-                <div class="choice-pill" data-value="nac">NAC</div>
-                <div class="choice-pill" data-value="bicarb">NaHCO3</div>
+            <div class="card-inner">
+              <div class="card-header">
+                <div class="card-title">E – Antidote / khử nhiễm</div>
+                <div class="card-sub">Song song ABCD</div>
               </div>
-            </div>
-            <div class="note">
-              Khử nhiễm tiêu hoá: chỉ khi an toàn đường thở và lợi ích vượt trội nguy cơ.
+              <div class="field">
+                <div class="field-label"><span>Đã dùng antidote?</span></div>
+                <div class="choice-row" data-field="antidoteGiven">
+                  <div class="choice-pill" data-value="chưa">Chưa</div>
+                  <div class="choice-pill" data-value="naloxone">Naloxone</div>
+                  <div class="choice-pill" data-value="atropine">Atropine</div>
+                  <div class="choice-pill" data-value="nac">NAC</div>
+                  <div class="choice-pill" data-value="bicarb">NaHCO3</div>
+                </div>
+              </div>
+              <div class="note">
+                Khử nhiễm tiêu hoá: chỉ khi an toàn đường thở và lợi ích vượt trội nguy cơ.
+              </div>
             </div>
           </div>
         </div>
@@ -807,64 +1061,68 @@
       <div class="tab-panel" id="tab-cause">
         <div class="grid-2">
           <div class="card">
-            <div class="card-header">
-              <div class="card-title">Dấu hiệu key</div>
-              <div class="card-sub">Tick nhanh</div>
-            </div>
-            <div class="field">
-              <div class="field-label"><span>Đồng tử</span></div>
-              <div class="choice-row" data-field="pupil">
-                <div class="choice-pill" data-value="bt">BT / không rõ</div>
-                <div class="choice-pill" data-value="co">Co nhỏ</div>
-                <div class="choice-pill" data-value="giãn">Giãn</div>
+            <div class="card-inner">
+              <div class="card-header">
+                <div class="card-title">Dấu hiệu key / toxidrome</div>
+                <div class="card-sub">Tick nhanh</div>
               </div>
-            </div>
-            <div class="field">
-              <div class="field-label"><span>Da – niêm</span></div>
-              <div class="choice-row" data-field="skin">
-                <div class="choice-pill" data-value="bt">BT</div>
-                <div class="choice-pill" data-value="ướt">Âm ướt / mồ hôi</div>
-                <div class="choice-pill" data-value="khô">Khô nóng</div>
+              <div class="field">
+                <div class="field-label"><span>Đồng tử</span></div>
+                <div class="choice-row" data-field="pupil">
+                  <div class="choice-pill" data-value="bt">BT / không rõ</div>
+                  <div class="choice-pill" data-value="co">Co nhỏ</div>
+                  <div class="choice-pill" data-value="giãn">Giãn</div>
+                </div>
               </div>
-            </div>
-            <div class="field">
-              <div class="field-label"><span>Tiết dịch / nhu động</span></div>
-              <div class="choice-row" data-field="secretions">
-                <div class="choice-pill" data-value="bt">BT</div>
-                <div class="choice-pill" data-value="tăng">Tăng tiết / tiêu chảy</div>
-                <div class="choice-pill" data-value="giảm">Bí tiểu / giảm nhu động</div>
+              <div class="field">
+                <div class="field-label"><span>Da – niêm</span></div>
+                <div class="choice-row" data-field="skin">
+                  <div class="choice-pill" data-value="bt">BT</div>
+                  <div class="choice-pill" data-value="ướt">Âm ướt / vã mồ hôi</div>
+                  <div class="choice-pill" data-value="khô">Khô nóng</div>
+                </div>
               </div>
-            </div>
-            <div class="field">
-              <div class="field-label"><span>Tim mạch</span></div>
-              <div class="choice-row" data-field="heart">
-                <div class="choice-pill" data-value="bt">BT</div>
-                <div class="choice-pill" data-value="nhanh">Nhịp nhanh / tăng HA</div>
-                <div class="choice-pill" data-value="chậm">Nhịp chậm / HA thấp</div>
+              <div class="field">
+                <div class="field-label"><span>Tiết dịch / nhu động</span></div>
+                <div class="choice-row" data-field="secretions">
+                  <div class="choice-pill" data-value="bt">BT</div>
+                  <div class="choice-pill" data-value="tăng">Tăng tiết / tiêu chảy</div>
+                  <div class="choice-pill" data-value="giảm">Bí tiểu / giảm nhu động</div>
+                </div>
               </div>
-            </div>
-            <div class="field">
-              <div class="field-label"><span>Thần kinh</span></div>
-              <div class="choice-row" data-field="neuro">
-                <div class="choice-pill" data-value="bt">BT</div>
-                <div class="choice-pill" data-value="ức chế">Ức chế</div>
-                <div class="choice-pill" data-value="kích thích">Kích thích / ảo giác</div>
-                <div class="choice-pill" data-value="co giật">Co giật</div>
+              <div class="field">
+                <div class="field-label"><span>Tim mạch</span></div>
+                <div class="choice-row" data-field="heart">
+                  <div class="choice-pill" data-value="bt">BT</div>
+                  <div class="choice-pill" data-value="nhanh">Nhịp nhanh / tăng HA</div>
+                  <div class="choice-pill" data-value="chậm">Nhịp chậm / HA thấp</div>
+                </div>
               </div>
-            </div>
-            <div class="note">
-              Mỗi tick sẽ cập nhật bảng nguyên nhân gợi ý ở bên phải.
+              <div class="field">
+                <div class="field-label"><span>Thần kinh</span></div>
+                <div class="choice-row" data-field="neuro">
+                  <div class="choice-pill" data-value="bt">BT</div>
+                  <div class="choice-pill" data-value="ức chế">Ức chế</div>
+                  <div class="choice-pill" data-value="kích thích">Kích thích / ảo giác</div>
+                  <div class="choice-pill" data-value="co giật">Co giật</div>
+                </div>
+              </div>
+              <div class="note">
+                Mỗi tick sẽ cập nhật bảng nguyên nhân gợi ý và kế hoạch antidote / ICU.
+              </div>
             </div>
           </div>
 
           <div class="card">
-            <div class="card-header">
-              <div class="card-title">Nguyên nhân gợi ý (top 3)</div>
-              <div class="card-sub">Pattern → hành động</div>
-            </div>
-            <div id="cause-output">
-              <div class="note">
-                Nhập thêm dấu hiệu để hệ thống chấm điểm nguyên nhân (opioid, cholinergic, anticholinergic, giao cảm, an thần, TCA/Na-blocker, CCB/BB, paracetamol, salicylate, ăn mòn...).
+            <div class="card-inner">
+              <div class="card-header">
+                <div class="card-title">Nguyên nhân gợi ý (top 3)</div>
+                <div class="card-sub">Pattern → hành động</div>
+              </div>
+              <div id="cause-output">
+                <div class="note">
+                  Nhập thêm dấu hiệu để hệ thống chấm điểm nguyên nhân (opioid, cholinergic, anticholinergic, giao cảm, an thần, TCA/Na-blocker, CCB/BB, paracetamol, salicylate, ăn mòn...).
+                </div>
               </div>
             </div>
           </div>
@@ -875,48 +1133,52 @@
       <div class="tab-panel" id="tab-labs">
         <div class="grid-2">
           <div class="card">
-            <div class="card-header">
-              <div class="card-title">Screening tests</div>
-              <div class="card-sub">ECG – BGL – paracetamol</div>
-            </div>
-            <div class="grid-3">
-              <div class="field">
-                <div class="field-label"><span>QRS</span><span>ms</span></div>
-                <input id="qrs" type="number" min="40" max="300" placeholder="Ví dụ: 120">
+            <div class="card-inner">
+              <div class="card-header">
+                <div class="card-title">Screening tests</div>
+                <div class="card-sub">ECG – BGL – paracetamol</div>
               </div>
-              <div class="field">
-                <div class="field-label"><span>QTc</span><span>ms</span></div>
-                <input id="qtc" type="number" min="300" max="700" placeholder="Ví dụ: 520">
-              </div>
-              <div class="field">
-                <div class="field-label"><span>Paracetamol máu</span></div>
-                <div class="choice-row" data-field="apapLevel">
-                  <div class="choice-pill" data-value="chưa">Chưa làm</div>
-                  <div class="choice-pill" data-value="âm">Âm tính</div>
-                  <div class="choice-pill" data-value="dương">Dương / cao</div>
+              <div class="grid-3">
+                <div class="field">
+                  <div class="field-label"><span>QRS</span><span>ms</span></div>
+                  <input id="qrs" type="number" min="40" max="300" placeholder="Ví dụ: 120">
+                </div>
+                <div class="field">
+                  <div class="field-label"><span>QTc</span><span>ms</span></div>
+                  <input id="qtc" type="number" min="300" max="700" placeholder="Ví dụ: 520">
+                </div>
+                <div class="field">
+                  <div class="field-label"><span>Paracetamol máu</span></div>
+                  <div class="choice-row" data-field="apapLevel">
+                    <div class="choice-pill" data-value="chưa">Chưa làm</div>
+                    <div class="choice-pill" data-value="âm">Âm tính</div>
+                    <div class="choice-pill" data-value="dương">Dương / cao</div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="field">
-              <div class="field-label"><span>Toan chuyển hóa</span></div>
-              <div class="choice-row" data-field="acidosis">
-                <div class="choice-pill" data-value="không">Không / nhẹ</div>
-                <div class="choice-pill" data-value="có">Có / đáng kể</div>
+              <div class="field">
+                <div class="field-label"><span>Toan chuyển hóa</span></div>
+                <div class="choice-row" data-field="acidosis">
+                  <div class="choice-pill" data-value="không">Không / nhẹ</div>
+                  <div class="choice-pill" data-value="có">Có / đáng kể</div>
+                </div>
               </div>
-            </div>
-            <div class="note">
-              QRS ≥ 100 ms, QTc dài, toan chuyển hóa, lactate cao → luôn nâng mức nguy cơ và gợi ý độc chất nguy hiểm trên tim / đa cơ quan.
+              <div class="note">
+                QRS ≥ 100 ms, QTc dài, toan chuyển hóa, lactate cao → luôn nâng mức nguy cơ và gợi ý độc chất nguy hiểm trên tim / đa cơ quan.
+              </div>
             </div>
           </div>
 
           <div class="card">
-            <div class="card-header">
-              <div class="card-title">Red flag ECG / sinh hoá</div>
-              <div class="card-sub">Tự động cập nhật</div>
-            </div>
-            <div id="lab-flags" class="treatment-list">
-              <div class="note">
-                Nhập QRS, QTc, paracetamol, trạng thái toan kiềm – hệ thống sẽ nêu các red flag và liên kết với nguyên nhân / antidote.
+            <div class="card-inner">
+              <div class="card-header">
+                <div class="card-title">Red flag ECG / sinh hoá</div>
+                <div class="card-sub">Tự động cập nhật</div>
+              </div>
+              <div id="lab-flags" class="treatment-list">
+                <div class="note">
+                  Nhập QRS, QTc, paracetamol, trạng thái toan kiềm – hệ thống sẽ nêu các red flag và liên kết với nguyên nhân / antidote.
+                </div>
               </div>
             </div>
           </div>
@@ -927,25 +1189,29 @@
       <div class="tab-panel" id="tab-tx">
         <div class="grid-2">
           <div class="card">
-            <div class="card-header">
-              <div class="card-title">Antidote / xử trí đặc hiệu</div>
-              <div class="card-sub">Theo pattern hiện tại</div>
-            </div>
-            <div id="tx-antidote" class="treatment-list">
-              <div class="note">
-                Khi đã có nguyên nhân gợi ý + red flag Cận lâm sàng, đây sẽ là danh sách ngắn gọn: “pattern → thuốc / can thiệp cụ thể”.
+            <div class="card-inner">
+              <div class="card-header">
+                <div class="card-title">Antidote / xử trí đặc hiệu</div>
+                <div class="card-sub">Theo pattern hiện tại</div>
+              </div>
+              <div id="tx-antidote" class="treatment-list">
+                <div class="note">
+                  Khi đã có nguyên nhân gợi ý + red flag Cận lâm sàng, đây sẽ là danh sách ngắn gọn: “pattern → thuốc / can thiệp cụ thể”.
+                </div>
               </div>
             </div>
           </div>
 
           <div class="card">
-            <div class="card-header">
-              <div class="card-title">ICU / theo dõi / xuất viện</div>
-              <div class="card-sub">Disposition</div>
-            </div>
-            <div id="tx-disposition" class="treatment-list">
-              <div class="note">
-                Dựa trên nguy cơ, nhu cầu kiểm soát đường thở, vận mạch, lọc máu, diễn tiến trong 1–2 giờ đầu..., hệ thống sẽ gợi ý ICU, nội trú theo dõi hay có thể xuất viện kèm lời nhắc.
+            <div class="card-inner">
+              <div class="card-header">
+                <div class="card-title">ICU / theo dõi / xuất viện</div>
+                <div class="card-sub">Disposition</div>
+              </div>
+              <div id="tx-disposition" class="treatment-list">
+                <div class="note">
+                  Dựa trên nguy cơ, nhu cầu kiểm soát đường thở, vận mạch, lọc máu, diễn tiến trong 1–2 giờ đầu..., hệ thống sẽ gợi ý ICU, nội trú theo dõi hay có thể xuất viện kèm lời nhắc.
+                </div>
               </div>
             </div>
           </div>
@@ -954,7 +1220,33 @@
 
     </div>
   </section>
-</div>
+</main>
+
+<!-- MOBILE BOTTOM DOCK -->
+<nav class="bottom-dock">
+  <div class="bottom-dock-inner">
+    <button class="dock-btn active" data-jump="overview">
+      <span class="icon">Ov</span>
+      Tổng
+    </button>
+    <button class="dock-btn" data-jump="abcde">
+      <span class="icon">AB</span>
+      ABCDE
+    </button>
+    <button class="dock-btn" data-jump="cause">
+      <span class="icon">Tx</span>
+      Nguyên
+    </button>
+    <button class="dock-btn" data-jump="labs">
+      <span class="icon">Lb</span>
+      CLS
+    </button>
+    <button class="dock-btn" data-jump="tx">
+      <span class="icon">Rx</span>
+      Rx/ICU
+    </button>
+  </div>
+</nav>
 
 <script>
   // --- GLOBAL STATE ---
@@ -986,7 +1278,7 @@
     acidosis: null
   };
 
-  // --- TAB LOGIC ---
+  // --- TABS ---
   const tabBtns = document.querySelectorAll('.tab-btn');
   const panels = document.querySelectorAll('.tab-panel');
 
@@ -996,8 +1288,27 @@
       tabBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       panels.forEach(p => p.classList.toggle('active', p.id === 'tab-' + tab));
+      syncDockWithTab(tab);
     });
   });
+
+  // --- MOBILE DOCK ---
+  const dockBtns = document.querySelectorAll('.dock-btn');
+  dockBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.getAttribute('data-jump');
+      tabBtns.forEach(b => {
+        if (b.getAttribute('data-tab') === tab) b.click();
+      });
+      syncDockWithTab(tab);
+    });
+  });
+
+  function syncDockWithTab(tab) {
+    dockBtns.forEach(b => {
+      b.classList.toggle('active', b.getAttribute('data-jump') === tab);
+    });
+  }
 
   // --- CHOICE PILL LOGIC ---
   document.querySelectorAll('.choice-row').forEach(row => {
@@ -1057,7 +1368,7 @@
 
   // --- RISK ENGINE ---
   function updateRisk() {
-    const { sbp, hr, temp, consciousness, resp, seizure, shock, dysrhythmia, tempFlag, bglDone, acidosis } = caseState;
+    const { sbp, hr, temp, consciousness, resp, seizure, shock, dysrhythmia, tempFlag, acidosis } = caseState;
     let level = 'low';
 
     const hypotension = sbp !== null && sbp < 90;
@@ -1106,16 +1417,16 @@
     tags.innerHTML = '';
 
     if (level === 'high') {
-      headline.textContent = 'Nguy cơ cao – ưu tiên hồi sức & ICU';
+      headline.textContent = 'Nguy cơ cao – ưu tiên hồi sức & ICU.';
       sub.textContent = 'Có dấu hiệu đe dọa tính mạng (đường thở, hô hấp, tuần hoàn, co giật, sốc hoặc rối loạn toan chuyển hóa). Tập trung ABCDE, ICU và điều trị đặc hiệu.';
-      next.innerHTML = 'Gợi ý: ABCDE ngay, làm <strong>ECG – BGL – khí máu – paracetamol</strong>, sau đó mở tab <strong>Nguyên nhân</strong> và <strong>Điều trị</strong>.';
+      next.innerHTML = 'Gợi ý: <strong>ABCDE ngay</strong>, làm <strong>ECG – BGL – khí máu – paracetamol</strong>, sau đó mở tab <strong>Nguyên nhân</strong> và <strong>Điều trị</strong>.';
       addTag(tags, 'Đang ở mức nguy cơ cao');
       if (hypotension || shock === 'có') addTag(tags, 'Sốc / HA thấp');
       if (resp === 'suy') addTag(tags, 'Nguy cơ cần kiểm soát đường thở');
       if (seizure === 'có') addTag(tags, 'Có / gần đây co giật');
       if (acidosis === 'có') addTag(tags, 'Toan chuyển hóa');
     } else if (level === 'med') {
-      headline.textContent = 'Nguy cơ trung bình – cần theo dõi sát';
+      headline.textContent = 'Nguy cơ trung bình – cần theo dõi sát.';
       sub.textContent = 'Có bất thường sinh hiệu hoặc tri giác nhưng chưa đủ tiêu chuẩn sốc / suy đa cơ quan. Cần hoàn thiện screening tests và theo dõi diễn tiến 1–2 giờ đầu.';
       next.innerHTML = 'Gợi ý: rà <strong>ABCDE</strong>, hoàn thành <strong>ECG – BGL – paracetamol</strong>, xem tab <strong>Nguyên nhân</strong> để tìm pattern.';
       addTag(tags, 'Nguy cơ trung bình');
@@ -1123,7 +1434,7 @@
       if (brady) addTag(tags, 'Nhịp chậm');
       if (tempFlag === 'sốt') addTag(tags, 'Sốt ≥ 38.5');
     } else {
-      headline.textContent = 'Nguy cơ thấp / ổn định tạm thời';
+      headline.textContent = 'Nguy cơ thấp / ổn định tạm thời.';
       sub.textContent = 'Chưa ghi nhận dấu hiệu đe dọa tính mạng ngay. Tuy vậy ngộ độc là bệnh động học – cần tiếp tục sàng lọc, tìm nguyên nhân và theo dõi diễn tiến.';
       next.innerHTML = 'Gợi ý: hoàn thành <strong>ECG – BGL – paracetamol</strong>, sau đó dùng tab <strong>Nguyên nhân</strong> để định hướng, và tab <strong>Điều trị</strong> để lên kế hoạch.';
       addTag(tags, 'Nguy cơ thấp tạm thời');
@@ -1162,7 +1473,7 @@
       scores[s.agentHint] += 3;
     }
 
-    // Opioid pattern
+    // Opioid
     if (s.pupil === 'co') scores.opioid += 2;
     if (s.resp === 'chậm' || s.resp === 'suy') scores.opioid += 2;
     if (s.consciousness === 'lơ mơ' || s.consciousness === 'hôn mê') scores.opioid += 1;
@@ -1221,7 +1532,7 @@
     if (!causeList.length) {
       const note = document.createElement('div');
       note.className = 'note';
-      note.textContent = 'Chưa đủ dữ kiện để xếp hạng nguyên nhân. Bổ sung thêm dấu hiệu (đồng tử, da-niêm, tim mạch, thần kinh) và ECG / paracetamol.';
+      note.textContent = 'Chưa đủ dữ kiện để xếp hạng nguyên nhân. Bổ sung thêm toxidrome (đồng tử, da-niêm, tim mạch, thần kinh) và ECG / paracetamol.';
       container.appendChild(note);
       return scores;
     }
@@ -1240,16 +1551,12 @@
       name.className = 'cause-name';
       name.textContent = meta.name;
 
-      const pattern = document.createElement('div');
-      pattern.className = 'tag-soft';
-      pattern.textContent = patternText(key);
-
       const barWrap = document.createElement('div');
       barWrap.className = 'cause-match-bar';
       const barFill = document.createElement('div');
       barFill.className = 'cause-match-fill';
-      const pct = Math.round((score / maxScore) * 100);
-      barFill.style.width = pct + '%';
+      const ratio = score / maxScore;
+      barFill.style.transform = 'scaleX(' + ratio.toFixed(2) + ')';
       barWrap.appendChild(barFill);
 
       const scoreText = document.createElement('div');
@@ -1260,11 +1567,10 @@
       row.appendChild(barWrap);
       row.appendChild(scoreText);
 
-      // Pattern row below
       const patternRow = document.createElement('div');
       patternRow.style.gridColumn = '1 / -1';
       patternRow.style.fontSize = '0.7rem';
-      patternRow.style.color = '#6b7280';
+      patternRow.style.color = '#9ca3af';
       patternRow.textContent = patternText(key);
 
       wrapper.appendChild(row);
@@ -1292,7 +1598,7 @@
       case 'ccb':
         return 'Nhịp chậm, tụt HA, shock, có thể khởi phát muộn.';
       case 'paracetamol':
-        return 'Uống liều cao, paracetamol máu cao, có nguy cơ suy gan muộn.';
+        return 'Uống liều cao, paracetamol máu cao, nguy cơ suy gan muộn.';
       case 'salicylate':
         return 'Thở nhanh, toan chuyển hóa, có thể tăng thân nhiệt.';
       case 'caustic':
@@ -1403,7 +1709,6 @@
       });
     }
 
-    // Disposition
     const dispRows = dispositionRows(s);
     dispRows.forEach(r => {
       const row = document.createElement('div');

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1e3a8a">
+    <title>ACS Master - Trợ lý HCMVC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f1f5f9; }
+        input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+        .tab-content { display: none; animation: fadeIn 0.3s ease-in-out; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        .btn-ecg.active-stemi { background-color: #fef2f2; border-color: #ef4444; box-shadow: 0 0 0 2px #ef4444; }
+        .btn-ecg.active-nste { background-color: #fff7ed; border-color: #f97316; box-shadow: 0 0 0 2px #f97316; }
+        /* Hiệu ứng chớp nháy nhẹ khi y lệnh cập nhật */
+        @keyframes highlight { 0% { background-color: #4b5563; } 100% { background-color: #1f2937; } }
+        .updated-order { animation: highlight 0.5s ease-out; }
+    </style>
+</head>
+<body class="text-gray-800 pb-24">
+
+    <div class="bg-blue-900 text-white p-4 shadow-md sticky top-0 z-50">
+        <h1 class="text-lg font-bold flex items-center justify-between">
+            <span>🫀 ACS Master V1.1</span>
+            <span id="timeStatus" class="text-xs px-2 py-1 bg-green-500 rounded-full font-medium">Sẵn sàng</span>
+        </h1>
+        <p class="text-[10px] opacity-80 mt-1">Giao diện Cấp cứu liên tục (One-flow)</p>
+    </div>
+
+    <div class="flex border-b bg-white sticky top-[68px] z-40 shadow-sm overflow-x-auto whitespace-nowrap">
+        <button class="flex-1 py-3 text-sm font-semibold text-blue-700 border-b-2 border-blue-700 focus:outline-none" onclick="switchTab('tab1', this)">1. Cấp Cứu</button>
+        <button class="flex-1 py-3 text-sm font-semibold text-gray-500 hover:text-blue-700 focus:outline-none" onclick="switchTab('tab2', this)">2. Ra Viện</button>
+        <button class="flex-1 py-3 text-sm font-semibold text-gray-500 hover:text-blue-700 focus:outline-none" onclick="switchTab('tab3', this)">3. Tiện Ích</button>
+    </div>
+
+    <div class="p-4 space-y-4">
+
+        <div id="tab1" class="tab-content active space-y-4">
+            
+            <div class="bg-blue-50 border border-blue-200 rounded-xl p-3 mb-2">
+                <div class="text-xs font-bold text-blue-800 uppercase mb-2">A. Đánh giá ban đầu</div>
+                
+                <div class="grid grid-cols-2 gap-3 mb-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600">Cân nặng (kg)</label>
+                        <input type="number" id="weight" class="w-full p-2 border rounded-md bg-white" placeholder="VD: 65" oninput="updateAll()">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600">eGFR (ml/phút)</label>
+                        <input type="number" id="egfr" class="w-full p-2 border rounded-md bg-white" placeholder="VD: 45" oninput="updateAll()">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 mb-3">
+                    <button id="btnSTEMI" onclick="setECG('STEMI')" class="btn-ecg p-3 bg-white border rounded-lg text-left transition-all">
+                        <div class="text-sm font-bold text-red-600">STEMI</div>
+                        <div class="text-[10px] text-gray-500 mt-1">ST chênh lên / LBBB mới</div>
+                    </button>
+                    <button id="btnNSTE" onclick="setECG('NSTE')" class="btn-ecg p-3 bg-white border rounded-lg text-left transition-all">
+                        <div class="text-sm font-bold text-orange-600">NSTE-ACS</div>
+                        <div class="text-[10px] text-gray-500 mt-1">ST chênh xuống, T âm, BT</div>
+                    </button>
+                </div>
+
+                <div id="timeSection" class="hidden bg-white p-3 rounded-lg border border-red-200 shadow-sm">
+                    <label class="block text-xs font-bold text-red-700 mb-1">Thời gian dự kiến đến phòng Cathlab:</label>
+                    <select id="fmcTime" class="w-full p-2 border rounded text-sm bg-gray-50" onchange="updateAll()">
+                        <option value="<120">Dưới 120 phút (PCI thì đầu)</option>
+                        <option value=">120">Trên 120 phút (Chuyển viện/Chờ đợi)</option>
+                    </select>
+                </div>
+
+                <div id="tropSection" class="hidden space-y-3">
+                    <div class="bg-white p-3 rounded-lg border border-orange-200 shadow-sm">
+                        <label class="flex items-start cursor-pointer">
+                            <input type="checkbox" id="nsteHighRisk" class="mt-1 h-4 w-4 text-orange-600 rounded" onchange="updateAll()">
+                            <span class="ml-2 text-xs font-semibold text-orange-800">CÓ DẤU HIỆU NGUY CƠ RẤT CAO<br>
+                                <span class="font-normal text-[10px] text-gray-500">(Sốc tim, đau ngực kháng trị, rối loạn nhịp nguy hiểm, biến chứng cơ học)</span>
+                            </span>
+                        </label>
+                    </div>
+                    
+                    <div class="bg-white p-3 rounded-lg border border-blue-200 shadow-sm">
+                        <div class="text-xs font-bold text-blue-800 mb-2">Phác đồ hs-cTnT (0h/1h) Roche</div>
+                        <div class="flex gap-2">
+                            <input type="number" id="trop0" class="w-1/2 p-2 border rounded text-sm" placeholder="0h (ng/L)" oninput="calculateTroponin()">
+                            <input type="number" id="trop1" class="w-1/2 p-2 border rounded text-sm" placeholder="1h (ng/L)" oninput="calculateTroponin()">
+                        </div>
+                        <div id="tropResult" class="mt-2 p-2 rounded text-xs font-bold hidden border"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-3 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="font-bold text-gray-700 text-xs flex items-center mb-2"><span class="mr-2">⚖️</span> Điểm xuất huyết (ARC-HBR)</h3>
+                <div class="grid grid-cols-1 gap-2">
+                    <label class="flex items-center p-2 bg-gray-50 rounded border cursor-pointer">
+                        <input type="checkbox" id="hbr1" class="h-4 w-4 text-blue-600 rounded" onchange="updateAll()">
+                        <span class="ml-2 text-xs">Tuổi ≥ 75 hoặc eGFR < 30</span>
+                    </label>
+                    <label class="flex items-center p-2 bg-gray-50 rounded border cursor-pointer">
+                        <input type="checkbox" id="hbr_other" class="h-4 w-4 text-blue-600 rounded" onchange="updateAll()">
+                        <span class="ml-2 text-xs">Đang dùng chống đông (OAC) hoặc Tiền sử XH tiêu hóa/Não</span>
+                    </label>
+                </div>
+            </div>
+
+            <hr class="my-4 border-gray-300 border-dashed">
+
+            <div class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2 text-center">👇 Kết Quả & Y Lệnh Tự Động 👇</div>
+
+            <div id="reperfusionStrategy" class="p-3 rounded-lg text-sm font-bold border hidden shadow-sm transition-colors duration-300">
+                </div>
+
+            <div id="contrastSafety" class="p-3 bg-slate-100 border-l-4 border-slate-500 rounded text-xs text-slate-700 hidden">
+                <span class="font-bold block mb-1">☢️ Giới hạn Thuốc cản quang:</span>
+                <span id="contrastVolume"></span>
+            </div>
+
+            <div id="orderContainer" class="bg-gray-800 rounded-xl p-4 shadow-lg text-green-400 font-mono text-xs md:text-sm">
+                <div class="flex justify-between items-center border-b border-gray-600 pb-2 mb-3">
+                    <span class="font-bold text-white">Y LỆNH XỬ TRÍ</span>
+                    <button class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-500 text-xs transition-colors shadow" onclick="alert('Đã copy y lệnh!')">Copy</button>
+                </div>
+                <div id="orderOutput" class="whitespace-pre-line leading-relaxed">
+                    Đang chờ dữ liệu lâm sàng...
+                </div>
+            </div>
+
+        </div>
+
+        <div id="tab2" class="tab-content">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 mb-4">
+                <h3 class="font-bold text-gray-700 mb-3 text-sm flex items-center"><span class="mr-2">🫀</span> Chức năng Tim & Bệnh kèm</h3>
+                <div class="grid grid-cols-2 gap-3 mb-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-500">LVEF Siêu âm (%)</label>
+                        <input type="number" id="lvef" class="w-full p-2 border rounded-md bg-gray-50" placeholder="VD: 45" oninput="updateDischarge()">
+                    </div>
+                    <div class="flex flex-col justify-center space-y-2 mt-4">
+                        <label class="flex items-center cursor-pointer">
+                            <input type="checkbox" id="hasDM" class="h-4 w-4 text-blue-600 rounded" onchange="updateDischarge()">
+                            <span class="ml-2 text-xs font-semibold">Có Đái tháo đường</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 mb-4">
+                <h3 class="font-bold text-gray-700 mb-3 text-sm flex items-center"><span class="mr-2">💊</span> Thời gian DAPT</h3>
+                <select id="daptDuration" class="w-full p-2 border rounded-md bg-gray-50 text-sm" onchange="updateDischarge()">
+                    <option value="12">Mặc định: 12 tháng</option>
+                    <option value="1">Xuống thang: 1 tháng (HBR)</option>
+                    <option value="3">Xuống thang: 3-6 tháng</option>
+                </select>
+            </div>
+
+            <div class="bg-blue-900 rounded-xl p-4 shadow-lg text-blue-100 font-mono text-xs md:text-sm">
+                <div class="flex justify-between items-center border-b border-blue-700 pb-2 mb-3">
+                    <span class="font-bold text-white">ĐƠN THUỐC RA VIỆN</span>
+                </div>
+                <div id="dischargeOrder" class="whitespace-pre-line leading-relaxed">
+                    Vui lòng nhập LVEF...
+                </div>
+            </div>
+        </div>
+
+        <div id="tab3" class="tab-content">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 mb-4">
+                <h3 class="font-bold text-gray-700 mb-2 text-sm flex items-center"><span class="mr-2">🧪</span> Thang điểm Mehran (CIN Risk)</h3>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <label class="flex items-center p-2 bg-gray-50 rounded border"><input type="checkbox" id="m_age" class="mr-2" onchange="calcMehran()"> Tuổi > 75 (+4đ)</label>
+                    <label class="flex items-center p-2 bg-gray-50 rounded border"><input type="checkbox" id="m_anaemia" class="mr-2" onchange="calcMehran()"> Thiếu máu (+3đ)</label>
+                    <label class="flex items-center p-2 bg-gray-50 rounded border"><input type="checkbox" id="m_dm" class="mr-2" onchange="calcMehran()"> ĐTĐ (+3đ)</label>
+                    <label class="flex items-center p-2 bg-gray-50 rounded border"><input type="checkbox" id="m_chf" class="mr-2" onchange="calcMehran()"> Suy tim (+5đ)</label>
+                    <label class="flex items-center p-2 bg-gray-50 rounded border"><input type="checkbox" id="m_hypo" class="mr-2" onchange="calcMehran()"> Tụt HA (+5đ)</label>
+                    <label class="flex items-center p-2 bg-gray-50 rounded border"><input type="checkbox" id="m_iabp" class="mr-2" onchange="calcMehran()"> Dùng IABP (+11đ)</label>
+                </div>
+                <div class="mt-3">
+                    <label class="block text-xs font-semibold text-gray-500">Thể tích cản quang (ml)</label>
+                    <input type="number" id="m_vol" class="w-full p-2 border rounded mt-1" placeholder="Mỗi 100ml = 1đ" oninput="calcMehran()">
+                </div>
+                <div id="mehranResult" class="mt-4 p-3 bg-slate-100 rounded text-sm font-bold text-center border">
+                    Điểm Mehran: 0
+                </div>
+            </div>
+
+            <div class="bg-orange-50 p-4 rounded-xl shadow-sm border border-orange-200">
+                <h3 class="font-bold text-orange-800 mb-2 text-sm">🗣️ Kịch bản Giải thích</h3>
+                <button onclick="generateTalk()" class="w-full bg-orange-500 text-white font-bold py-2 rounded shadow hover:bg-orange-600 transition">Tạo mẫu giải thích</button>
+                <div id="talkScript" class="mt-3 text-xs text-gray-700 leading-relaxed italic hidden p-3 bg-white rounded border border-orange-100"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let currentECG = null;
+
+        // Chuyển Tab
+        function switchTab(tabId, btn) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            
+            let buttons = btn.parentElement.children;
+            for(let i=0; i<buttons.length; i++){
+                buttons[i].classList.remove('text-blue-700', 'border-b-2', 'border-blue-700');
+                buttons[i].classList.add('text-gray-500');
+            }
+            btn.classList.remove('text-gray-500');
+            btn.classList.add('text-blue-700', 'border-b-2', 'border-blue-700');
+        }
+
+        // Chọn ECG
+        function setECG(type) {
+            currentECG = type;
+            document.getElementById('btnSTEMI').classList.remove('active-stemi');
+            document.getElementById('btnNSTE').classList.remove('active-nste');
+            
+            if (type === 'STEMI') {
+                document.getElementById('btnSTEMI').classList.add('active-stemi');
+                document.getElementById('timeSection').classList.remove('hidden');
+                document.getElementById('tropSection').classList.add('hidden');
+                document.getElementById('timeStatus').className = "text-xs px-2 py-1 bg-red-600 rounded-full font-bold animate-pulse";
+                document.getElementById('timeStatus').innerText = "CẤP CỨU STEMI";
+            } else {
+                document.getElementById('btnNSTE').classList.add('active-nste');
+                document.getElementById('timeSection').classList.add('hidden');
+                document.getElementById('tropSection').classList.remove('hidden');
+                document.getElementById('timeStatus').className = "text-xs px-2 py-1 bg-orange-500 rounded-full font-bold";
+                document.getElementById('timeStatus').innerText = "NSTE-ACS";
+            }
+            updateAll();
+        }
+
+        // Tính Troponin (Phác đồ Roche)
+        function calculateTroponin() {
+            let t0 = parseFloat(document.getElementById('trop0').value);
+            let t1 = parseFloat(document.getElementById('trop1').value);
+            let resBox = document.getElementById('tropResult');
+            
+            if (isNaN(t0) || isNaN(t1)) { resBox.classList.add('hidden'); updateAll(); return; }
+            
+            let delta = Math.abs(t1 - t0);
+            resBox.classList.remove('hidden', 'bg-green-100', 'bg-red-100', 'bg-yellow-100', 'text-green-800', 'text-red-800', 'text-yellow-800', 'border-green-300', 'border-red-300', 'border-yellow-300');
+            
+            if (t0 < 12 && delta < 3) {
+                resBox.innerHTML = "✅ RULE-OUT (Loại trừ)";
+                resBox.classList.add('bg-green-100', 'text-green-800', 'border-green-300');
+            } else if (t0 >= 52 || delta >= 5) {
+                resBox.innerHTML = "🚨 RULE-IN (Xác định NMCT)";
+                resBox.classList.add('bg-red-100', 'text-red-800', 'border-red-300');
+            } else {
+                resBox.innerHTML = "⚠️ OBSERVE (Theo dõi thêm)";
+                resBox.classList.add('bg-yellow-100', 'text-yellow-800', 'border-yellow-300');
+            }
+            updateAll(); // Cập nhật lại chiến lược dựa trên Troponin
+        }
+
+        // Tạo hiệu ứng chớp nháy cho Y Lệnh khi cập nhật
+        function triggerOrderHighlight() {
+            let container = document.getElementById('orderContainer');
+            container.classList.remove('updated-order');
+            void container.offsetWidth; // trigger reflow
+            container.classList.add('updated-order');
+        }
+
+        // Logic Sinh Y Lệnh & Chiến lược
+        function updateAll() {
+            if (!currentECG) return;
+
+            let weight = parseFloat(document.getElementById('weight').value) || 0;
+            let egfr = parseFloat(document.getElementById('egfr').value) || 100;
+            let fmcTime = document.getElementById('fmcTime').value;
+            
+            let isHBR = document.getElementById('hbr1').checked || document.getElementById('hbr_other').checked;
+            let isNsteHighRisk = document.getElementById('nsteHighRisk').checked;
+            
+            let orderText = "";
+            let strategyBox = document.getElementById('reperfusionStrategy');
+            let contrastBox = document.getElementById('contrastSafety');
+            
+            triggerOrderHighlight(); // Tạo hiệu ứng thị giác
+
+            // 1. CHIẾN LƯỢC TÁI TƯỚI MÁU
+            strategyBox.classList.remove('hidden', 'bg-red-100', 'text-red-800', 'border-red-300', 'bg-orange-100', 'text-orange-800', 'border-orange-300', 'bg-blue-100', 'text-blue-800', 'border-blue-300');
+            
+            if (currentECG === 'STEMI') {
+                if (fmcTime === '<120') {
+                    strategyBox.innerHTML = "🚀 <b>CHIẾN LƯỢC: PCI THÌ ĐẦU (Tái tưới máu < 120 phút).</b><br>Kích hoạt ngay phòng Cathlab. Không dùng tiêu sợi huyết.";
+                    strategyBox.classList.add('bg-red-100', 'text-red-800', 'border-red-300');
+                } else {
+                    strategyBox.innerHTML = "💉 <b>CHIẾN LƯỢC: TIÊU SỢI HUYẾT TRONG VÒNG 10 PHÚT.</b><br>Do thời gian chuyển viện > 120 phút. Xem xét tiêu sợi huyết tiêu sợi huyết trước khi chuyển.";
+                    strategyBox.classList.add('bg-orange-100', 'text-orange-800', 'border-orange-300');
+                }
+            } else {
+                if (isNsteHighRisk) {
+                    strategyBox.innerHTML = "🚨 <b>CHIẾN LƯỢC NSTE-ACS NGUY CƠ RẤT CAO.</b><br>Chụp mạch vành xâm lấn NGAY LẬP TỨC (< 2 giờ).";
+                    strategyBox.classList.add('bg-red-100', 'text-red-800', 'border-red-300');
+                } else {
+                    strategyBox.innerHTML = "🔍 <b>CHIẾN LƯỢC NSTE-ACS.</b><br>Nếu Rule-In Troponin / GRACE >140 -> Chụp ĐMV sớm (< 24h).";
+                    strategyBox.classList.add('bg-blue-100', 'text-blue-800', 'border-blue-300');
+                }
+            }
+
+            // Tính cản quang an toàn: Cực kỳ đơn giản: 3 * eGFR (ml)
+            if (document.getElementById('egfr').value !== "") {
+                contrastBox.classList.remove('hidden');
+                document.getElementById('contrastVolume').innerHTML = `~ <b>${Math.floor(egfr * 3)} ml</b> (Quy tắc 3 x eGFR để tránh tổn thương thận cấp).`;
+            } else {
+                contrastBox.classList.add('hidden');
+            }
+
+            // 2. SINH Y LỆNH LIÊN TỤC
+            orderText += `[CHẨN ĐOÁN]: ${currentECG}\n\n`;
+            
+            orderText += `[THUỐC CHỐNG HUYẾT KHỐI]\n`;
+            orderText += `1. Aspirin 81mg x 04 viên (Nhai ngay)\n`;
+            
+            if (isHBR) {
+                orderText += `2. Clopidogrel 75mg x 08 viên (Uống) -> BN Nguy cơ chảy máu cao.\n`;
+            } else {
+                orderText += `2. Ticagrelor 90mg x 02 viên (Uống) -> Ưu tiên theo ESC.\n`;
+            }
+
+            if (weight > 0) {
+                if (egfr < 30) {
+                    let enoxDose = Math.round(weight * 1);
+                    orderText += `3. Enoxaparin ${enoxDose}mg - Tiêm dưới da (1mg/kg/24h do Suy thận)\n`;
+                } else {
+                    let enoxDose = Math.round(weight * 1);
+                    if (currentECG === 'NSTE' && !isHBR && !isNsteHighRisk) {
+                        orderText += `3. Fondaparinux 2.5mg x 01 bơm - Tiêm dưới da.\n`;
+                    } else {
+                        orderText += `3. Enoxaparin ${enoxDose}mg - Tiêm dưới da mỗi 12h.\n`;
+                    }
+                }
+            } else {
+                orderText += `3. [Nhập cân nặng để tính liều Kháng đông]\n`;
+            }
+
+            orderText += `\n[HẠ LIPID MÁU]\n`;
+            orderText += `4. Atorvastatin 40mg x 01 viên (Uống)\n`;
+
+            document.getElementById('orderOutput').innerText = orderText;
+        }
+
+        // Logic Tab Ra Viện (Nguyên bản)
+        function updateDischarge() {
+            let lvef = parseFloat(document.getElementById('lvef').value) || 0;
+            let hasDM = document.getElementById('hasDM').checked;
+            let dapt = document.getElementById('daptDuration').value;
+            let isHBR = document.getElementById('hbr1')?.checked || document.getElementById('hbr_other')?.checked;
+
+            let rx = `[ĐƠN THUỐC DỰ PHÒNG THỨ PHÁT]\n\n`;
+            
+            rx += `1. Kháng tiểu cầu kép (Duy trì ${dapt} tháng):\n`;
+            rx += `   - Aspirin 81mg x 01 viên\n`;
+            if(dapt === "1" || isHBR) {
+                rx += `   - Clopidogrel 75mg x 01 viên (Nguy cơ chảy máu cao)\n`;
+            } else {
+                rx += `   - Ticagrelor 90mg x 02 viên (Sáng 1 - Tối 1)\n`;
+            }
+
+            rx += `\n2. Quản lý Lipid:\n`;
+            rx += `   - Rosuvastatin 20mg x 01 viên (Uống tối)\n`;
+
+            if (lvef > 0 && lvef <= 40) {
+                rx += `\n3. Thuốc suy tim (HREF <= 40%):\n`;
+                rx += `   - Bisoprolol 1.25 - 2.5mg x 01 viên\n`;
+                rx += `   - Perindopril 5mg x 01 viên\n`;
+                rx += `   - Spironolactone 25mg x 01 viên\n`;
+            }
+
+            if (hasDM || (lvef > 0 && lvef <= 40)) {
+                rx += `\n4. Thuốc bảo vệ thận / Suy tim:\n`;
+                rx += `   - Dapagliflozin 10mg x 01 viên\n`;
+            }
+
+            document.getElementById('dischargeOrder').innerText = rx;
+        }
+
+        // Logic Tính điểm Mehran (Nguyên bản)
+        function calcMehran() {
+            let score = 0;
+            if (document.getElementById('m_age').checked) score += 4;
+            if (document.getElementById('m_anaemia').checked) score += 3;
+            if (document.getElementById('m_dm').checked) score += 3;
+            if (document.getElementById('m_chf').checked) score += 5;
+            if (document.getElementById('m_hypo').checked) score += 5;
+            if (document.getElementById('m_iabp').checked) score += 11;
+            
+            let vol = parseFloat(document.getElementById('m_vol').value) || 0;
+            score += Math.floor(vol / 100); 
+
+            let risk = ""; let color = "";
+            if (score <= 5) { risk = "Thấp (7.5%)"; color = "text-green-600"; }
+            else if (score <= 10) { risk = "Trung bình (14%)"; color = "text-yellow-600"; }
+            else if (score <= 15) { risk = "Cao (26%)"; color = "text-orange-600"; }
+            else { risk = "Rất Cao (57%)"; color = "text-red-600"; }
+
+            document.getElementById('mehranResult').innerHTML = `Tổng điểm: <span class="text-xl">${score}</span><br>Nguy cơ CIN: <span class="${color}">${risk}</span>`;
+        }
+
+        // Logic Sinh Kịch Bản
+        function generateTalk() {
+            let scriptBox = document.getElementById('talkScript');
+            scriptBox.classList.remove('hidden');
+            let diag = currentECG === 'STEMI' ? "nhồi máu cơ tim cấp (mạch vành tắc hoàn toàn)" : "Hội chứng vành cấp (mạch vành bị hẹp nặng)";
+            scriptBox.innerHTML = `"Chào anh/chị. Hiện tại bệnh nhân đang bị <b>${diag}</b>. Tình trạng này rất nguy hiểm vì máu không nuôi được tim... Chúng tôi cần đưa bệnh nhân lên phòng Can thiệp ngay để chụp xem mạch máu tắc ở đâu, và sẽ tiến hành nong, đặt 1 giá đỡ (stent) để thông lại mạch máu."`;
+        }
+    </script>
+</body>
+</html>
