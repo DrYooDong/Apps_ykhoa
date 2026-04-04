@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBAR Handover Tool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f8fafc; }
+        /* Ẩn scrollbar cho giao diện sạch hơn */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 4px; }
+    </style>
+</head>
+<body class="text-slate-800 h-screen flex flex-col">
+
+    <header class="bg-emerald-700 text-white p-4 shadow-md flex justify-between items-center shrink-0">
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="hover:bg-emerald-600 p-2 rounded transition" title="Trở về trang chủ">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            </a>
+            <div>
+                <h1 class="text-xl font-bold">SBAR Handover</h1>
+                <p class="text-emerald-200 text-xs">Công cụ Bàn giao & Báo cáo Giao ban</p>
+            </div>
+        </div>
+        <div class="text-sm font-medium bg-emerald-800 px-3 py-1 rounded-full">
+            Ca trực: Đêm nay
+        </div>
+    </header>
+
+    <div class="bg-white border-b border-slate-200 px-4 md:px-8 shrink-0">
+        <div class="max-w-5xl mx-auto flex space-x-1 overflow-x-auto">
+            <button onclick="switchTab('tab-1')" id="btn-tab-1" class="tab-btn active px-4 py-3 text-sm font-semibold border-b-2 border-emerald-600 text-emerald-600 whitespace-nowrap transition-colors">
+                📋 Danh sách Bàn giao
+            </button>
+            <button onclick="switchTab('tab-2')" id="btn-tab-2" class="tab-btn px-4 py-3 text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-700 whitespace-nowrap transition-colors">
+                ✍️ Cập nhật Diễn tiến
+            </button>
+            <button onclick="switchTab('tab-3')" id="btn-tab-3" class="tab-btn px-4 py-3 text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-700 whitespace-nowrap transition-colors">
+                📊 Tổng hợp Giao ban
+            </button>
+        </div>
+    </div>
+
+    <main class="flex-1 overflow-y-auto p-4 md:p-8 max-w-5xl mx-auto w-full">
+<!-- Tab 1: Danh sách Bàn giao -->
+<div id="tab-1" class="tab-content block">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-bold text-slate-800">Các ca cần theo dõi đêm nay</h2>
+                <div class="flex gap-2">
+                    <span class="bg-red-100 text-red-700 text-xs px-2 py-1 rounded font-bold">1 Nguy cơ</span>
+                    <span class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded font-bold">2 Theo dõi</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="col-span-1 md:col-span-2 flex flex-col items-center justify-center p-12 bg-slate-50 rounded-xl border-2 border-dashed border-slate-300 text-slate-500">
+                    <span class="text-5xl mb-4">🛌</span>
+                    <p class="text-lg font-bold text-slate-700">Chưa có ca bệnh nào cần bàn giao</p>
+                    <p class="text-sm mt-1">Các ca được thêm từ "Cập nhật diễn tiến" sẽ xuất hiện tại đây.</p>
+                </div>
+            </div>
+        </div>
+<!-- Tab 2: Cập nhật Diễn tiến -->
+<div id="tab-2" class="tab-content hidden">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <span>➕</span> Ghi nhận diễn tiến mới (SBAR)
+                </h2>
+                
+                <form class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-2">
+                    <div class="md:col-span-4">
+                        <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Tên Bệnh Nhân</label>
+                        <input type="text" id="input-name" placeholder="VD: NGUYỄN VĂN A" class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none text-sm">
+                    </div>
+                    
+                    <div class="md:col-span-2">
+                        <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Năm sinh</label>
+                        <input type="number" id="input-yob" placeholder="19xx" class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none text-sm text-center">
+                    </div>
+                   <div class="md:col-span-3">
+                        <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Phòng / Giường</label>
+                        <select id="input-room" class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white text-slate-700 text-sm">
+                            <option value="" disabled selected>Chọn phòng</option>
+                                <option value="Phòng 104">Phòng 104</option>
+                                <option value="Phòng 105">Phòng 105</option>
+                                <option value="Phòng 106">Phòng 106</option>
+                                <option value="Phòng 107">Phòng 107</option>
+                                <option value="Phòng 108">Phòng 108</option>
+                                <option value="Phòng 109">Phòng 109</option>
+                                <option value="Phòng 211">Phòng 211</option>
+                                <option value="Phòng 212">Phòng 212</option>
+                                <option value="Phòng 213">Phòng 213</option>
+                                <option value="Phòng 214">Phòng 214</option>
+                                <option value="Phòng 215">Phòng 215</option>
+                                <option value="Phòng 216">Phòng 216</option>
+                                <option value="Phòng 217">Phòng 217</option>
+                                <option value="Phòng 218">Phòng 218</option>
+                        </select>
+                    </div>
+                    </div>
+                    <div class="md:col-span-3">
+                        <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Ưu tiên</label>
+                        <select id="input-priority" class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none text-sm">
+                            <option>🟢 Bình thường</option>
+                            <option>🟡 Theo dõi sát</option>
+                            <option>🔴 Cấp cứu</option>
+                        </select>
+                    </div>
+                    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-4 bg-slate-50 p-3 rounded-lg border border-slate-200 items-center">
+        <div class="md:col-span-3">
+            <label class="block text-xs font-semibold text-slate-500 uppercase mb-2">Phân loại báo cáo (Có thể chọn nhiều)</label>
+            <div class="flex flex-wrap gap-4">
+                <label class="flex items-center gap-2 text-sm font-medium cursor-pointer">
+                    <input type="checkbox" name="type" value="Bệnh mới" class="w-4 h-4 text-emerald-600 rounded"> Bệnh mới
+                </label>
+                <label class="flex items-center gap-2 text-sm font-medium cursor-pointer">
+                    <input type="checkbox" name="type" value="Bệnh diễn tiến" class="w-4 h-4 text-emerald-600 rounded"> Bệnh diễn tiến
+                </label>
+                <label class="flex items-center gap-2 text-sm font-medium cursor-pointer">
+                    <input type="checkbox" name="type" value="Chuyển khoa" class="w-4 h-4 text-emerald-600 rounded"> Chuyển khoa
+                </label>
+                <label class="flex items-center gap-2 text-sm font-medium cursor-pointer">
+                    <input type="checkbox" name="type" value="Khoa chuyển" class="w-4 h-4 text-emerald-600 rounded"> Khoa chuyển
+                </label>
+            </div>
+        </div>
+        <div class="md:col-span-2 border-t md:border-t-0 md:border-l border-slate-300 pt-3 md:pt-0 md:pl-4 flex justify-end">
+            <label for="flag-morning" class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" id="flag-morning" class="w-5 h-5 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500" checked>
+                <span class="text-sm font-bold text-orange-600">🚩 Đưa vào DS Giao ban sáng</span>
+            </label>
+        </div>
+    </div>
+
+    <div class="space-y-3">
+        <div>
+            <label class="block text-sm font-bold text-slate-700 mb-1">S - Situation (Tình trạng hiện tại)</label>
+            <textarea id="input-s" rows="2" placeholder="Lý do đánh giá bệnh nhân..." class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none text-sm"></textarea>
+        </div>
+        <div>
+            <label class="block text-sm font-bold text-slate-700 mb-1">B - Background (Bối cảnh / Tiền sử)</label>
+            <textarea id="input-b" rows="2" placeholder="Chẩn đoán chính, các can thiệp gần đây..." class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none text-sm"></textarea>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <label class="block text-sm font-bold text-slate-700 mb-1">A - Assessment (Đánh giá lúc trực)</label>
+                <textarea id="input-a" rows="2" placeholder="Mạch, HA, SpO2, triệu chứng mới..." class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none text-sm"></textarea>
+            </div>
+            <div>
+                <label class="block text-sm font-bold text-slate-700 mb-1">Chẩn đoán (CĐ)</label>
+                <textarea id="input-diagnosis" rows="2" placeholder="VD: K vú (T2N1M0) - Hậu phẫu ngày 1" class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none text-sm"></textarea>
+            </div>
+        </div>
+
+        <div>
+            <label class="block text-sm font-bold text-slate-700 mb-1">R - Recommendation (Xử trí / Y lệnh)</label>
+            <textarea id="input-r" rows="2" placeholder="Y lệnh đã cho, lời dặn cho ca sau..." class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none text-sm"></textarea>
+        </div>
+    </div>
+
+    <div class="flex gap-2">
+            <button id="btn-save" type="button" onclick="saveHandover()" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-lg transition-colors shadow-sm">
+                Lưu Diễn Tiến
+            </button>
+            <button id="btn-cancel-edit" type="button" onclick="cancelEdit()" class="hidden flex-1 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-3 rounded-lg transition-colors">
+                Hủy Chỉnh Sửa
+            </button>
+        </div>
+        <input type="hidden" id="editing-id" value="">
+        </form>
+        </div>
+            </div>
+<!-- Tab 3: Báo Cáo Trực Đêm -->
+<div id="tab-3" class="tab-content hidden">
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-800">Báo Cáo Trực Đêm</h2>
+                    <p class="text-sm text-slate-500">Tổng hợp lúc 06:30 AM</p>
+                </div>
+                <button onclick="printReport()" class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded-lg flex items-center gap-2 transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                    In Biên Bản Giao Ban
+                </button>
+                <button class="bg-slate-800 hover:bg-slate-900 text-white text-sm font-bold py-2 px-4 rounded-lg flex items-center gap-2 transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    Copy Báo Cáo Zalo
+                </button>
+            </div>
+
+            <div class="grid grid-cols-4 gap-4 mb-6">
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 text-center">
+                    <p class="text-xs text-slate-500 font-bold uppercase">Nhập viện mới</p>
+                    <p class="text-2xl font-bold text-emerald-600">0</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 text-center">
+                    <p class="text-xs text-slate-500 font-bold uppercase">Ca nặng / Cấp cứu</p>
+                    <p class="text-2xl font-bold text-red-600">0</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 text-center">
+                    <p class="text-xs text-slate-500 font-bold uppercase">Chuyển khoa/viện</p>
+                    <p class="text-2xl font-bold text-orange-500">0</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 text-center">
+                    <p class="text-xs text-slate-500 font-bold uppercase">Tử vong</p>
+                    <p class="text-2xl font-bold text-slate-800">0</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="bg-slate-50 px-4 py-2 border-b border-slate-200 font-bold text-slate-700 text-sm">
+                    🚩 CÁC CA DIỄN TIẾN NỔI BẬT CẦN BÁO CÁO
+                </div>
+                <div class="divide-y divide-slate-100" id="report-container">
+                    
+                    <div class="p-12 text-center text-slate-400">
+                        <span class="text-4xl mb-3 block">📊</span>
+                        <p class="text-sm font-medium">Chưa có diễn tiến nổi bật nào được ghi nhận trong đêm.</p>
+                        <p class="text-xs mt-1">Các ca được gắn cờ 🚩 ở Tab 2 sẽ tự động xuất hiện tại đây.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+<script>
+let patients = JSON.parse(localStorage.getItem('sbar_patients')) || [];
+let isEditing = false;
+
+// Thêm element Chẩn đoán vào object form
+const formElements = {
+    name: document.getElementById('input-name'),
+    yob: document.getElementById('input-yob'),
+    room: document.getElementById('input-room'),
+    priority: document.getElementById('input-priority'),
+    diagnosis: document.getElementById('input-diagnosis'),
+    s: document.getElementById('input-s'),
+    b: document.getElementById('input-b'),
+    a: document.getElementById('input-a'),
+    r: document.getElementById('input-r'),
+    isFlagged: document.getElementById('flag-morning'),
+    editingId: document.getElementById('editing-id')
+};
+
+function switchTab(tabId) {
+    document.querySelectorAll('.tab-content').forEach(el => { el.classList.add('hidden'); el.classList.remove('block'); });
+    document.querySelectorAll('.tab-btn').forEach(el => {
+        el.classList.remove('border-emerald-600', 'text-emerald-600');
+        el.classList.add('border-transparent', 'text-slate-500');
+    });
+    document.getElementById(tabId).classList.replace('hidden', 'block');
+    document.getElementById('btn-' + tabId).classList.add('border-emerald-600', 'text-emerald-600');
+    renderData();
+}
+
+function saveHandover() {
+    const selectedTypes = Array.from(document.querySelectorAll('input[name="type"]:checked')).map(cb => cb.value);
+    
+    if(!formElements.name.value || !formElements.room.value || !formElements.diagnosis.value) {
+        alert("Vui lòng nhập Tên, Phòng và Chẩn đoán!"); return;
+    }
+
+    const patientData = {
+        id: isEditing ? parseInt(formElements.editingId.value) : Date.now(),
+        name: formElements.name.value,
+        room: formElements.room.value,
+        priority: formElements.priority.value,
+        diagnosis: formElements.diagnosis.value, // Lưu Chẩn đoán
+        types: selectedTypes,
+        s: formElements.s.value,
+        b: formElements.b.value,
+        a: formElements.a.value,
+        r: formElements.r.value,
+        isFlagged: formElements.isFlagged.checked,
+        timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+    };
+
+    if (isEditing) {
+        const index = patients.findIndex(p => p.id === patientData.id);
+        patients[index] = patientData;
+    } else {
+        patients.push(patientData);
+    }
+
+    localStorage.setItem('sbar_patients', JSON.stringify(patients));
+    cancelEdit();
+    switchTab('tab-1');
+}
+
+function renderData() {
+    const tab1Container = document.querySelector('#tab-1 .grid');
+    const tab3Container = document.getElementById('report-container');
+    const stats = document.querySelectorAll('#tab-3 .text-2xl');
+
+    tab1Container.innerHTML = '';
+    tab3Container.innerHTML = '';
+
+    const reportGroups = { "Bệnh mới": [], "Bệnh diễn tiến": [], "Chuyển khoa / Khoa chuyển": [] };
+
+    patients.forEach(p => {
+        // Tab 1: Hiển thị tên, phòng và chẩn đoán tóm tắt
+        const borderCol = p.priority.includes('🔴') ? 'border-l-red-500' : (p.priority.includes('🟡') ? 'border-l-yellow-500' : 'border-l-emerald-500');
+        tab1Container.innerHTML += `
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-l-4 ${borderCol}">
+                <div class="flex justify-between mb-1">
+                    <h3 class="font-bold text-slate-900">${p.name.toUpperCase()} - ${p.room}</h3>
+                    <div class="flex gap-1">
+                        <button onclick="editPatient(${p.id})" class="p-1 text-blue-600">✏️</button>
+                        <button onclick="deletePatient(${p.id})" class="p-1 text-red-600">🗑️</button>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-500 mb-2 font-medium">CĐ: ${p.diagnosis}</p>
+                <p class="text-sm font-bold text-emerald-700 border-t pt-2 italic">R: ${p.r}</p>
+            </div>
+        `;
+
+        if (p.isFlagged) {
+            if (p.types.includes("Bệnh mới")) reportGroups["Bệnh mới"].push(p);
+            if (p.types.includes("Bệnh diễn tiến")) reportGroups["Bệnh diễn tiến"].push(p);
+            if (p.types.includes("Chuyển khoa") || p.types.includes("Khoa chuyển")) reportGroups["Chuyển khoa / Khoa chuyển"].push(p);
+        }
+    });
+
+    //Tab 3:
+    let reportHTML = `<div class="p-4 space-y-6 text-sm">`;
+
+    // 1. Nhóm Bệnh mới: Hiển thị đúng định dạng Tên (CĐ)
+    reportHTML += `<div class="font-bold text-slate-800 text-base">* Bệnh mới:</div><ol class="list-decimal ml-6 space-y-1">`;
+    if (reportGroups["Bệnh mới"].length) {
+        reportGroups["Bệnh mới"].forEach(p => {
+           reportHTML += `<li><strong>${p.name.toUpperCase()}</strong> (${p.room}). CĐ: ${p.diagnosis}</li>`;
+        });
+    } else { reportHTML += `<li class="text-slate-400 font-normal">Không có</li>`; }
+    reportHTML += `</ol>`;
+
+    // 2. Nhóm Diễn tiến: Đưa Chẩn đoán vào phần A trong SBAR
+    reportHTML += `<div class="font-bold text-slate-800 text-base mt-4">* Bệnh diễn tiến:</div>`;
+    if (reportGroups["Bệnh diễn tiến"].length) {
+        reportGroups["Bệnh diễn tiến"].forEach(p => {
+            reportHTML += `
+            <div class="ml-2 mt-2 p-3 bg-slate-50 rounded border-l-2 border-emerald-500">
+                <p><strong>BN: ${p.name.toUpperCase()} (${p.room})</strong></p>
+                <p class="mt-1 font-medium text-slate-700">S: ${p.s}</p>
+                <p class="font-medium text-slate-700">B: ${p.b}</p>
+                <p class="font-medium text-slate-900 bg-emerald-50 px-1 italic">A: CĐ: ${p.diagnosis}. ${p.a}</p>
+                <p class="font-bold text-emerald-700">R: ${p.r}</p>
+            </div>`;
+        });
+    } else { reportHTML += `<p class="ml-6 text-slate-400">Không có</p>`; }
+
+    // 3. Chuyển khoa (Giữ nguyên)
+    reportHTML += `<div class="font-bold text-slate-800 text-base mt-4">* Chuyển khoa / Khoa chuyển:</div><ul class="list-disc ml-6">`;
+    if (reportGroups["Chuyển khoa / Khoa chuyển"].length) {
+        reportGroups["Chuyển khoa / Khoa chuyển"].forEach(p => {
+            reportHTML += `<li>${p.name} (${p.room}) - ${p.types.filter(t => t.includes('khoa')).join(', ')}</li>`;
+        });
+    } else { reportHTML += `<li class="text-slate-400 font-normal">Không có</li>`; }
+    reportHTML += `</ul></div>`;
+
+    tab3Container.innerHTML = reportHTML;
+    stats[0].innerText = reportGroups["Bệnh mới"].length;
+    stats[1].innerText = patients.filter(p => p.priority.includes('🔴')).length;
+}
+// Hàm editPatient cần cập nhật để đổ dữ liệu Chẩn đoán vào lại form
+function editPatient(id) {
+    const p = patients.find(p => p.id === id);
+    if (!p) return;
+    formElements.name.value = p.name;
+    formElements.room.value = p.room;
+    formElements.priority.value = p.priority;
+    formElements.diagnosis.value = p.diagnosis; // Đổ lại chẩn đoán
+    formElements.s.value = p.s;
+    formElements.b.value = p.b;
+    formElements.a.value = p.a;
+    formElements.r.value = p.r;
+    formElements.isFlagged.checked = p.isFlagged;
+    formElements.editingId.value = p.id;
+    document.querySelectorAll('input[name="type"]').forEach(cb => cb.checked = p.types.includes(cb.value));
+    isEditing = true;
+    document.getElementById('btn-save').innerText = "Cập Nhật Thay Đổi";
+    document.getElementById('btn-cancel-edit').classList.remove('hidden');
+    switchTab('tab-2');
+}
+
+function deletePatient(id) {
+    if (confirm("Xóa ca này?")) { patients = patients.filter(p => p.id !== id); localStorage.setItem('sbar_patients', JSON.stringify(patients)); renderData(); }
+}
+
+function cancelEdit() {
+    isEditing = false;
+    document.querySelector('form').reset();
+    document.querySelectorAll('input[name="type"]').forEach(cb => cb.checked = false);
+    document.getElementById('btn-save').innerText = "Lưu Diễn Tiến";
+    document.getElementById('btn-cancel-edit').classList.add('hidden');
+}
+function printReport() {
+    // 1. Tính toán số liệu cho bảng thống kê
+    const vao = patients.filter(p => p.types.includes("Bệnh mới")).length;
+    const chuyen = patients.filter(p => p.types.includes("Chuyển khoa") || p.types.includes("Khoa chuyển")).length;
+
+    // 2. Lọc danh sách bệnh theo nhóm
+    const benhMoi = patients.filter(p => p.isFlagged && p.types.includes("Bệnh mới"));
+    const dienTien = patients.filter(p => p.isFlagged && p.types.includes("Bệnh diễn tiến"));
+
+    // 3. Tạo nội dung HTML để in
+    let printContents = `
+        <div style="font-family: 'Times New Roman', serif; padding: 40px; color: black; line-height: 1.5;">
+            <div style="text-align: center; font-weight: bold; font-size: 18pt; margin-bottom: 5px;">Khoa Nhiễm</div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                <div style="font-weight: bold;">TRỰC (Ngày trực: ${new Date().toLocaleDateString('vi-VN')})</div>
+                <div style="font-weight: bold;">GIAO BAN (Ngày: ${new Date(Date.now() + 86400000).toLocaleDateString('vi-VN')})</div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                
+                <div style="width: 40%;">
+                    <div style="margin-bottom: 15px;">
+                        <b style="text-decoration: underline;">A. HÀNH CHÍNH</b><br>
+                        - Chủ tọa: BS. LÊ VĂN CHƯƠNG<br>
+                        - Thư ký: ĐD. <br>
+                    </div>
+                    <div>
+                        <b style="text-decoration: underline;">B. NỘI DUNG</b><br>
+                        - Báo cáo trực chuyên môn<br>
+                        - Báo cáo trực lãnh đạo<br>
+                        - Báo cáo trực hành chính - bảo vệ<br>
+                    </div>
+                </div>
+
+                <div style="width: 40%;">
+                    <b style="text-decoration: underline;">C. TÌNH HÌNH CHUNG</b><br>
+                    - Thành phần trực:<br>
+                        &nbsp;&nbsp;BS: <br>
+                        &nbsp;&nbsp;ĐD: <br> <br>
+                    - Thành phần giao ban:<br>
+                        &nbsp;&nbsp;BS: Chương, Trưởng, <br>
+                        &nbsp;&nbsp;ĐD: Luân, Thủy, <br>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <table border="1" style="width: 100%; border-collapse: collapse; text-align: center;">
+                    <tr>
+                        <th style="padding: 5px;">Bệnh cũ</th>
+                        <th style="padding: 5px;">Vào</th>
+                        <th style="padding: 5px;">Ra</th>
+                        <th style="padding: 5px;">Khoa chuyển / chuyển khoa</th>
+                        <th style="padding: 5px;">Hiện diện</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;">...</td>
+                        <td>${vao}</td>
+                        <td>...</td>
+                        <td>${chuyen}</td>
+                        <td>...</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <b style="font-style: italic;">*Bệnh mới:</b><br>
+                ${benhMoi.map((p, i) => `${i+1}/ ${p.name.toUpperCase()} (${p.room}). CĐ: ${p.diagnosis}`).join('<br>')}
+                ${benhMoi.length === 0 ? '...' : ''}
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <b style="font-style: italic;">*Bệnh diễn tiến:</b><br>
+                ${dienTien.map(p => `
+                    <div style="margin-top: 10px;">
+                        <b>- BN: ${p.name.toUpperCase()} (${p.room})</b><br>
+                        S: ${p.s}<br>
+                        B: ${p.b}<br>
+                        A: CĐ: ${p.diagnosis}. ${p.a}<br>
+                        R: ${p.r}
+                    </div>
+                `).join('')}
+                ${dienTien.length === 0 ? '...' : ''}
+            </div>
+
+            <div style="margin-bottom: 40px;">
+                <b style="font-style: italic;">*Vấn đề khác:</b><br>
+                ..................................................................................................................................................................
+            </div>
+
+            <div style="display: flex; justify-content: space-between; margin-top: 20px; font-weight: bold;">
+                <div style="text-align: center; width: 200px;">Thư ký<br><br><br><br>(Ký tên)</div>
+                <div style="text-align: center; width: 200px;">Chủ tọa<br><br><br><br>(Ký tên)</div>
+            </div>
+        </div>
+    `;
+
+    // 4. Mở cửa sổ in
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write('<html><head><title>Biên Bản Giao Ban</title></head><body>');
+    printWindow.document.write(printContents);
+    printWindow.document.write('</body></html>');
+    printWindow.document.close();
+    printWindow.print();
+}
+renderData();
+</script>
+</body>
+</html>
