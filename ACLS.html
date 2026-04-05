@@ -100,6 +100,14 @@
                 <div id="actionHint" class="mt-3 text-center text-sm font-bold text-gray-500 bg-gray-100 p-2 rounded">
                     Vui lòng chọn loại nhịp để xem hướng dẫn thuốc & can thiệp...
                 </div>
+                <div id="shockEnergyBox" class="hidden mt-3 p-3 bg-orange-50 border border-orange-200 rounded-xl">
+                    <h3 class="font-bold text-orange-900 text-xs mb-1.5 border-b border-orange-200 pb-1">⚡ MỨC NĂNG LƯỢNG SỐC (ERC 2025)</h3>
+                    <ul class="text-[11px] text-orange-800 space-y-1 list-disc pl-4">
+                        <li><strong class="font-bold">Biphasic:</strong> Nhát 1 ≥ 150J. Các nhát sau: Tăng dần (VD: 200J ➔ 300J ➔ 360J).</li>
+                        <li><strong class="font-bold">Pulsed biphasic:</strong> Nhát 1 từ 130-150J.</li>
+                        <li><strong class="font-bold">Không rõ loại máy:</strong> Sốc ở mức năng lượng tối đa của máy.</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -133,7 +141,19 @@
                                 <span id="adrTimerDisplay" class="font-mono font-bold text-lg text-gray-800">00:00</span>
                             </div>
                         </div>
-                        <p class="text-[10px] text-gray-500 italic mt-1">* Nếu có Huyết áp ĐM xâm lấn: Cân nhắc liều nhỏ 50-100mcg thay vì 1mg.</p>
+                        <div class="border-l-4 border-red-500 pl-3">
+                        <div class="flex items-center gap-3">
+                        </div>
+                        
+                        <div class="mt-2 bg-gray-50 border border-gray-200 rounded p-2">
+                            <div class="text-[11px] font-bold text-gray-700 mb-1">Cài đặt Liều (ERC 2025):</div>
+                            <ul class="text-[10px] text-gray-600 space-y-1 list-disc pl-3">
+                                <li><span class="font-bold text-red-600">Tiêu chuẩn:</span> 1 mg IV/IO tiêm nhanh.</li>
+                                <li><span class="font-bold text-indigo-600">Có HA xâm lấn (Arterial line):</span> Bắt đầu bằng liều nhỏ <strong>50 - 100 mcg</strong> (tránh tăng HA quá mức sau ROSC).</li>
+                                <li><span class="font-bold text-blue-600">Mục tiêu sinh lý:</span> Duy trì HA tâm trương ≥ 30 mmHg & ETCO2 ≥ 25 mmHg.</li>
+                            </ul>
+                        </div>
+                        </div>
                     </div>
 
                     <div id="antiArrhythmicBox" class="opacity-50 transition-all border-l-4 border-gray-300 pl-3">
@@ -222,22 +242,28 @@
                 <div class="p-4 grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div class="bg-white p-3 rounded-xl border border-green-200 shadow-sm text-center">
                         <span class="block text-xs font-bold text-gray-500 uppercase mb-1">Hô hấp (A-B)</span>
-                        <div class="text-xl font-black text-green-700">Spo2 90% – 98% (Pao2 60 – 105 mmHg)</div>
-                        <div class="text-xl font-black text-green-700">Paco2 35 – 45 mmHg (khi không có tình trạng nhiễm toan)</div>
-                        <div class="text-[11px] font-semibold text-gray-600 mt-1">Duy trì 100% Fio2 cho tới khi có thể đo được Spo2 (hoặc Pao2) một cách đáng tin cậy</div>
+                        <div class="text-xl font-black text-green-700">SpO2 90% – 98% </div>
+                        <div class="text-[11px] font-semibold text-gray-600 mt-1">(PaO2 60 – 105 mmHg)</div>
+                        <div class="text-xl font-black text-green-700">PaCO2 35 – 45 mmHg</div>
+                        <div class="text-[11px] font-semibold text-gray-600 mt-1">(khi không có nhiễm toan nặng)</div>
+                        <div class="text-xl font-black text-green-700">Duy trì 100% FiO2</div>
+                        <div class="text-[11px] font-semibold text-gray-600 mt-1">Đến khi có thể đo được SpO2 (hoặc PaO2) một cách đáng tin cậy</div>
                     </div>
                     <div class="bg-white p-3 rounded-xl border border-green-200 shadow-sm text-center">
                         <span class="block text-xs font-bold text-gray-500 uppercase mb-1">Tuần hoàn (C)</span>
-                        <div class="text-xl font-black text-green-700">SBP > 100 mmHg (hoặc: MAP ≥ 65 mmHg)</div>
-                        <div class="text-[11px] font-semibold text-gray-600 mt-1">Ghi ECG 12 CĐ. Cân nhắc: chụp CT và/hoặc siêu âm.</div>
+                        <div class="text-xl font-black text-green-700">SBP > 100 mmHg</div>
+                        <div class="text-[11px] font-semibold text-gray-600 mt-1">hoặc</div>
+                        <div class="text-xl font-black text-green-700">MAP ≥ 65 mmHg</div>
+                        <div class="text-[11px] font-semibold text-gray-600 mt-1">Ghi ECG 12 CĐ + Cân nhắc chụp CT và/hoặc siêu âm.</div>
                         <div class="text-[11px] font-semibold text-gray-600 mt-1">Điều trị nguyên nhân và biến chứng ngừng tim.</div>
                     </div>
                     <div class="bg-white p-3 rounded-xl border border-green-200 shadow-sm text-center">
                         <span class="block text-xs font-bold text-gray-500 uppercase mb-1">Thần kinh & Khác (D-E)</span>
                         <div class="text-lg font-black text-green-700">Kiểm soát Nhiệt độ</div>
-                        <div class="text-[11px] font-semibold text-gray-600 mt-1">Đánh giá bệnh nhân sau khi thuốc gây mê và thuốc giãn cơ hết tác dụng</div>
-                        <div class="text-[11px] font-semibold text-gray-600 mt-1">Ngăn ngừa sốt. Đánh giá tri giác & đồng tử.</div>
-                        <div class="text-[11px] font-semibold text-gray-600 mt-1">Có thể làm theo các mệnh lệnh?</div>
+                        <div class="text-[11px] font-semibold text-gray-600 mt-1">Đánh giá lại BN sau khi hết tác dụng thuốc gây mê & giãn cơ</div>
+                        <div class="text-[11px] font-semibold text-gray-600 mt-1">Đánh giá tri giác & đồng tử.</div>
+                        <div class="text-[11px] font-semibold text-gray-600 mt-1">Ngăn ngừa sốt.</div>
+                        <div class="text-lg font-black text-red-700">Có thực hiện được các mệnh lệnh?</div>
                     </div>
                 </div>
             </div>
@@ -302,41 +328,50 @@
         // --- LOGIC NHỊP & THUỐC ---
         let currentRhythm = null;
 
-    function selectRhythm(type) {   
-    currentRhythm = type;
-    let btnShock = document.getElementById('btnShockable');
-    let btnNonShock = document.getElementById('btnNonShockable');
-    let hint = document.getElementById('actionHint');
-    let adrLogicText = document.getElementById('adrLogicText');
-    let antiBox = document.getElementById('antiArrhythmicBox');
+        function selectRhythm(type) {   
+        currentRhythm = type;
+        let btnShock = document.getElementById('btnShockable');
+        let btnNonShock = document.getElementById('btnNonShockable');
+        let hint = document.getElementById('actionHint');
+        let adrLogicText = document.getElementById('adrLogicText');
+        let antiBox = document.getElementById('antiArrhythmicBox');
+        let shockEnergyBox = document.getElementById('shockEnergyBox'); // Lấy element mới
 
-    if (type === 'shockable') {
-        btnShock.className = "flex flex-col items-center justify-center rounded-xl border-4 border-orange-500 bg-orange-100 text-orange-900 shadow-inner scale-95 transition";
-        btnNonShock.className = "flex flex-col items-center justify-center rounded-xl border-2 border-gray-200 bg-white text-gray-400 opacity-50 transition";
-        hint.className = "mt-3 text-center text-sm font-bold text-orange-800 bg-orange-100 p-2 rounded";
-        hint.innerHTML = "⚡ SỐC ĐIỆN NGAY LẬP TỨC -> Ép tim tiếp 2 phút không dừng.";
-        adrLogicText.textContent = "Tiêm sau Cú sốc thứ 3";
-        adrLogicText.className = "text-[10px] font-bold text-orange-700 bg-orange-100 px-2 py-0.5 rounded";
-        
-        // Mở khóa cụm thuốc chống loạn nhịp
-        antiBox.classList.remove('opacity-50', 'border-gray-300');
-        antiBox.classList.add('border-blue-500');
-    } else {
-        btnNonShock.className = "flex flex-col items-center justify-center rounded-xl border-4 border-blue-500 bg-blue-100 text-blue-900 shadow-inner scale-95 transition";
-        btnShock.className = "flex flex-col items-center justify-center rounded-xl border-2 border-gray-200 bg-white text-gray-400 opacity-50 transition";
-        hint.className = "mt-3 text-center text-sm font-bold text-blue-800 bg-blue-100 p-2 rounded";
-        hint.innerHTML = "Tiếp tục CPR. Tìm nguyên nhân (4H-4T). KHÔNG SỐC.";
-        adrLogicText.textContent = "Tiêm NGAY LẬP TỨC";
-        adrLogicText.className = "text-[10px] font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded flash-red";
-        
-        // Khóa cụm thuốc chống loạn nhịp
-        antiBox.classList.add('opacity-50', 'border-gray-300');
-        antiBox.classList.remove('border-blue-500');
-        // Reset màu các nút bên trong về mặc định
-        const meds = antiBox.querySelectorAll('button');
-        meds.forEach(m => m.className = "bg-gray-100 text-gray-600 font-semibold py-2 rounded-lg border border-gray-300 transition text-xs text-left px-3");
+        if (type === 'shockable') {
+            btnShock.className = "flex flex-col items-center justify-center rounded-xl border-4 border-orange-500 bg-orange-100 text-orange-900 shadow-inner scale-95 transition";
+            btnNonShock.className = "flex flex-col items-center justify-center rounded-xl border-2 border-gray-200 bg-white text-gray-400 opacity-50 transition";
+            hint.className = "mt-3 text-center text-sm font-bold text-orange-800 bg-orange-100 p-2 rounded";
+            hint.innerHTML = "⚡ SỐC ĐIỆN NGAY LẬP TỨC -> Ép tim tiếp 2 phút không dừng.";
+            adrLogicText.textContent = "Tiêm sau Cú sốc thứ 3";
+            adrLogicText.className = "text-[10px] font-bold text-orange-700 bg-orange-100 px-2 py-0.5 rounded";
+            
+            // Hiển thị hộp thông tin mức năng lượng
+            shockEnergyBox.classList.remove('hidden');
+            shockEnergyBox.classList.add('visible-smooth');
+            
+            // Mở khóa cụm thuốc chống loạn nhịp
+            antiBox.classList.remove('opacity-50', 'border-gray-300');
+            antiBox.classList.add('border-blue-500');
+        } else {
+            btnNonShock.className = "flex flex-col items-center justify-center rounded-xl border-4 border-blue-500 bg-blue-100 text-blue-900 shadow-inner scale-95 transition";
+            btnShock.className = "flex flex-col items-center justify-center rounded-xl border-2 border-gray-200 bg-white text-gray-400 opacity-50 transition";
+            hint.className = "mt-3 text-center text-sm font-bold text-blue-800 bg-blue-100 p-2 rounded";
+            hint.innerHTML = "Tiếp tục CPR. Tìm nguyên nhân (4H-4T). KHÔNG SỐC.";
+            adrLogicText.textContent = "Tiêm NGAY LẬP TỨC";
+            adrLogicText.className = "text-[10px] font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded flash-red";
+            
+            // Ẩn hộp thông tin mức năng lượng
+            shockEnergyBox.classList.add('hidden');
+            shockEnergyBox.classList.remove('visible-smooth');
+            
+            // Khóa cụm thuốc chống loạn nhịp
+            antiBox.classList.add('opacity-50', 'border-gray-300');
+            antiBox.classList.remove('border-blue-500');
+            // Reset màu các nút bên trong về mặc định
+            const meds = antiBox.querySelectorAll('button');
+            meds.forEach(m => m.className = "bg-gray-100 text-gray-600 font-semibold py-2 rounded-lg border border-gray-300 transition text-xs text-left px-3");
+        }
     }
-}
         // --- LOGIC ADRENALINE TIMER (3 Phút) ---
         let adrTimeLeft = 0;
         let adrTimer = null;
@@ -459,6 +494,33 @@
             
             // Cuộn mượt mà tới phần chọn nhịp
             monitorSection.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+        function showHint(title, content) {
+            const box = document.getElementById('causeSupportBox');
+            const titleEl = document.getElementById('hintTitle');
+            const contentEl = document.getElementById('hintContent');
+
+            titleEl.innerText = "HỖ TRỢ: " + title;
+            contentEl.innerText = content;
+
+            // Hiệu ứng hiển thị
+            box.classList.remove('hidden');
+            box.classList.add('visible-smooth');
+            
+            // Đổi màu box dựa trên H hay T
+            if (title.startsWith('T')) {
+                box.className = "p-3 bg-red-50 border-t border-red-100 visible-smooth";
+                titleEl.className = "font-bold text-xs text-red-900 uppercase";
+                contentEl.className = "text-[11px] text-red-800 leading-relaxed italic";
+            } else {
+                box.className = "p-3 bg-blue-50 border-t border-blue-100 visible-smooth";
+                titleEl.className = "font-bold text-xs text-blue-900 uppercase";
+                contentEl.className = "text-[11px] text-blue-800 leading-relaxed italic";
+            }
+        }
+
+        function closeHint() {
+            document.getElementById('causeSupportBox').classList.add('hidden');
         }
     </script>
 </body>
