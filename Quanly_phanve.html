@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Phản Vệ Pro - Clinical Logic</title>
+    <style>
+        :root {
+            --primary-blue: #026aa7; --header-bg: #026aa7; --bg-light: #f4f5f7;
+            --card-bg: #ffffff; --text-dark: #172b4d; --text-muted: #5e6c84;
+            --danger: #eb5a46; --success: #61bd4f; --border: #dfe1e6;
+        }
+        [data-theme="dark"] { --bg-light: #121212; --card-bg: #1c1c1c; --text-dark: #e0e0e0; --border: #333; }
+
+        body { font-family: -apple-system, system-ui, sans-serif; background-color: var(--bg-light); color: var(--text-dark); margin: 0; padding: 0; font-size: 13px; }
+        .app-bar { background: var(--header-bg); color: white; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .app-bar h1 { margin: 0; font-size: 15px; font-weight: 600; }
+        .btn-ghost { background: rgba(255,255,255,0.2); border: none; color: white; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 11px; }
+
+        .container { padding: 8px; max-width: 600px; margin: 0 auto; }
+        .main-card { background: var(--card-bg); border-radius: 8px; border: 1px solid var(--border); margin-bottom: 10px; overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+        .card-header { background: #f8f9fa; padding: 6px 12px; border-bottom: 1px solid var(--border); color: var(--primary-blue); font-weight: bold; font-size: 11px; text-transform: uppercase; }
+        .card-body { padding: 10px; }
+
+        .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+        label { display: block; font-size: 10px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px; font-weight: 700; }
+        input { width: 100%; padding: 6px; border: 1px solid var(--border); border-radius: 4px; font-size: 14px; font-weight: bold; text-align: center; }
+
+        /* Bố cục 2 cột triệu chứng */
+        .symptom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .sym-column { display: flex; flex-direction: column; gap: 8px; }
+        .chip-grid { display: flex; flex-direction: column; gap: 4px; }
+        .chip { background: white; border: 1px solid var(--border); padding: 7px 4px; border-radius: 4px; cursor: pointer; font-size: 11px; text-align: center; line-height: 1.2; }
+        .chip.active { background: #e4f0f6; border-color: var(--primary-blue); color: var(--primary-blue); font-weight: 600; }
+        .chip.active.lv2 { background: #fff4e5; border-color: var(--warning-color); color: #856404; }
+        .chip.active.lv3 { background: #faeceb; border-color: var(--danger); color: var(--danger); }
+
+        /* Kết quả */
+        .result-item { background: var(--bg-light); border-radius: 6px; padding: 10px; margin-bottom: 6px; border-left: 4px solid var(--primary-blue); }
+        .result-item.critical { border-left-color: var(--danger); background: #fffcfc; }
+        .res-label { font-size: 11px; color: var(--text-muted); font-weight: 600; }
+        .res-value { font-size: 14px; font-weight: bold; color: var(--text-dark); margin: 2px 0; }
+        .res-formula { font-size: 10px; color: #d32f2f; font-style: italic; font-weight: 600; }
+
+        .timer-btn { width: 100%; background: var(--danger); color: white; border: none; padding: 12px; border-radius: 6px; font-weight: bold; margin-top: 8px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="app-bar">
+    <h1>PHẢN VỆ PRO</h1>
+    <div style="display: flex; gap: 6px;">
+        <button class="btn-ghost" onclick="toggleTheme()">🌓 Tối</button>
+        <button class="btn-ghost" onclick="location.reload()">↺ Reset</button>
+    </div>
+</div>
+
+<div class="container">
+    <div class="main-card">
+        <div class="card-header">1. THÔNG TIN BỆNH NHÂN</div>
+        <div class="card-body">
+            <div class="input-row">
+                <div onclick="setAge('adult')" id="age-a" class="chip active">Người lớn (≥10t)</div>
+                <div onclick="setAge('child')" id="age-c" class="chip">Trẻ em (<10t)</div>
+            </div>
+            <div class="input-row">
+                <div>
+                    <label>Cân nặng (kg)</label>
+                    <input type="number" id="weight" value="50" oninput="calculate()">
+                </div>
+                <div style="display: flex; align-items: flex-end;">
+                    <div id="btn-beta" onclick="toggleBeta()" class="chip" style="width: 100%;">Dùng chẹn Beta</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-card">
+        <div class="card-header">2. TRIỆU CHỨNG LÂM SÀNG</div>
+        <div class="card-body">
+            <div class="symptom-grid">
+                <div class="sym-column">
+                    <div>
+                        <label>Da & Niêm mạc (Độ I)</label>
+                        <div class="chip-grid">
+                            <div class="chip s-skin" onclick="toggleSym(this, 1)">Mày đay / Ngứa</div>
+                            <div class="chip s-skin" onclick="toggleSym(this, 1)">Phù mạch</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 8px;">
+                        <label>Hô hấp</label>
+                        <div class="chip-grid">
+                            <div class="chip s-resp" onclick="toggleSym(this, 2)">Khó thở / Khò khè (II)</div>
+                            <div class="chip s-resp" onclick="toggleSym(this, 3)">Thở rít / Tím tái (III)</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sym-column">
+                    <div>
+                        <label>Tuần hoàn / Thần kinh</label>
+                        <div class="chip-grid">
+                            <div class="chip s-cv" onclick="toggleSym(this, 2)">Mạch nhanh / Nhỏ (II)</div>
+                            <div class="chip s-cv" onclick="toggleSym(this, 3)">Tụt HA / Ngất (III)</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 8px;">
+                        <label>Tiêu hóa (Độ II)</label>
+                        <div class="chip-grid">
+                            <div class="chip s-gi" onclick="toggleSym(this, 2)">Đau bụng quặn</div>
+                            <div class="chip s-gi" onclick="toggleSym(this, 2)">Nôn mửa</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="res-card" class="main-card" style="display: none;">
+        <div class="card-header" id="res-header" style="background: #fff0f0; color: #c00;"></div>
+        <div class="card-body" id="res-body"></div>
+    </div>
+</div>
+
+<script>
+    let isAdult = true, isBeta = false, timer;
+
+    function toggleTheme() { document.body.toggleAttribute('data-theme'); }
+    function setAge(a) { 
+        isAdult = (a === 'adult');
+        document.getElementById('age-a').classList.toggle('active', isAdult);
+        document.getElementById('age-c').classList.toggle('active', !isAdult);
+        document.getElementById('weight').value = isAdult ? 50 : 15;
+        calculate();
+    }
+    function toggleBeta() { isBeta = !isBeta; document.getElementById('btn-beta').classList.toggle('active'); calculate(); }
+    
+    function toggleSym(e, level) { 
+        e.classList.toggle('active');
+        if(e.classList.contains('active')) {
+            if(level === 2) e.classList.add('lv2');
+            if(level === 3) e.classList.add('lv3');
+        } else {
+            e.classList.remove('lv2', 'lv3');
+        }
+        calculate(); 
+    }
+
+    function calculate() {
+        let w = parseFloat(document.getElementById('weight').value) || 0;
+        let skin = document.querySelectorAll('.s-skin.active').length > 0;
+        let resp2 = document.querySelectorAll('.s-resp.active.lv2').length > 0;
+        let resp3 = document.querySelectorAll('.s-resp.active.lv3').length > 0;
+        let cv2 = document.querySelectorAll('.s-cv.active.lv2').length > 0;
+        let cv3 = document.querySelectorAll('.s-cv.active.lv3').length > 0;
+        let gi = document.querySelectorAll('.s-gi.active').length > 0;
+        
+        let resCard = document.getElementById('res-card');
+        let resBody = document.getElementById('res-body');
+        let resHead = document.getElementById('res-header');
+
+        // Logic Phân độ TT51
+        let grade = 0;
+        let sysCount = (skin?1:0) + ((resp2||resp3)?1:0) + ((cv2||cv3)?1:0) + (gi?1:0);
+
+        if(resp3 || cv3) grade = 3;
+        else if(sysCount >= 2 || resp2 || cv2 || gi) grade = 2;
+        else if(skin) grade = 1;
+
+        if(grade === 0) { resCard.style.display = 'none'; return; }
+        resCard.style.display = 'block';
+        resHead.innerText = "CHẨN ĐOÁN: PHẢN VỆ ĐỘ " + (grade === 1 ? 'I (NHẸ)' : grade === 2 ? 'II (NẶNG)' : 'III (NGUY KỊCH)');
+
+        let html = '';
+        if(grade === 1) {
+            html += item("Xử trí", "Theo dõi sát", "Không dùng Adrenaline. Chống dị ứng.");
+            html += item("Methylprednisolon", (w*1).toFixed(0) + " - " + (w*2).toFixed(0) + " mg", "Liều: 1-2 mg/kg. Tiêm TM.");
+            html += item("Diphenhydramin", (w*1).toFixed(0) + " mg", "Liều: 1 mg/kg. Tiêm bắp.");
+        } else {
+            let im = 0.5, amp = "1/2 ống";
+            if(!isAdult) {
+                if(w <= 10) { im = 0.2; amp = "1/5 ống"; }
+                else if(w <= 15) { im = 0.25; amp = "1/4 ống"; }
+                else if(w <= 25) { im = 0.3; amp = "1/3 ống"; }
+                else if(w <= 30) { im = 0.5; amp = "1/2 ống"; }
+            }
+            html += item("1. ADRENALINE TIÊM BẮP", `<span style="color:var(--danger); font-size:16px;">${im} ml (${amp})</span>`, "Liều: 0.01 mg/kg. Mặt trước bên đùi.", true);
+            html += item("2. THỞ OXY & TƯ THẾ", "Mask túi 15L/phút", "Nằm đầu thấp. Nghiêng trái nếu có thai.");
+            html += item("3. DỊCH TRUYỀN (NaCl 0.9%)", isAdult ? "1000 - 2000 ml" : (w*20).toFixed(0) + " ml", `Liều: ${isAdult?'1-2L':'20ml/kg'}. Truyền nhanh.`);
+            
+            html += `<button class="timer-btn" id="t-btn" onclick="startT()">ĐÃ TIÊM ADRENALINE (ĐẾM NGƯỢC 3P)</button>`;
+
+            html += `<div style="margin-top:10px; border-top: 1px dashed #ccc; padding-top:10px;">`;
+            if(isAdult) html += item("ADRENALINE IV CHẬM", "0.5 - 1 ml (Pha loãng 1/10.000)", "Chỉ dùng nếu IM 2 lần không đáp ứng.", true);
+            let rate = Math.round(w/2);
+            html += item("ADRENALINE TRUYỀN TM", `BTĐ: ${rate*3} ml/h | Giọt: ${rate} g/p`, "Liều: 0.1 µg/kg/p. Pha 2 ống + 500ml NaCl.", true);
+            html += `</div>`;
+        }
+        resBody.innerHTML = html;
+    }
+
+    function item(label, val, formula, crit=false) {
+        return `<div class="result-item ${crit?'critical':''}">
+            <div class="res-label">${label}</div>
+            <div class="res-value">${val}</div>
+            <div class="res-formula">${formula}</div>
+        </div>`;
+    }
+
+    function startT() {
+        let b = document.getElementById('t-btn'), s = 180;
+        clearInterval(timer);
+        b.style.background = "#555";
+        timer = setInterval(() => {
+            s--;
+            let m = Math.floor(s/60), sec = s%60;
+            b.innerText = `ĐÁNH GIÁ LẠI SAU: ${m}:${sec<10?'0':''}${sec}`;
+            if(s<=0) { clearInterval(timer); b.style.background = "#eb5a46"; b.innerText = "HẾT 3 PHÚT! ĐÁNH GIÁ & TIÊM LIỀU 2"; }
+        }, 1000);
+    }
+</script>
+</body>
+</html>

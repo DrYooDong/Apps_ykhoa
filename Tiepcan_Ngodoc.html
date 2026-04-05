@@ -1,309 +1,505 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOXICARE VN v2 • Cẩm nang ngộ độc cấp</title>
+    <title>Tox-ER: Hỗ Trợ Xử Trí Ngộ Độc Cấp</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = { darkMode: 'class', }
+    </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
-        body { font-family: 'Inter', system-ui, sans-serif; }
+        body { transition: background-color 0.3s, color 0.3s; font-family: system-ui, -apple-system, sans-serif; }
         .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        .medical-card { transition: all 0.3s; }
-        .header-gradient { background: linear-gradient(90deg, #007BFF, #00A3E0); }
-        .live-banner { background: #f0f9ff; border: 2px solid #007BFF; }
+        .tab-content.active { display: block; animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .btn-cause { transition: all 0.2s; }
+        .btn-cause:hover { transform: scale(1.02); }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        .dark ::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
     </style>
 </head>
-<body class="bg-slate-50">
+<body class="min-h-screen flex flex-col bg-slate-50 text-slate-900 dark:bg-[#0f172a] dark:text-[#f8fafc]">
 
-<!-- HEADER -->
-<div class="header-gradient text-white py-4 shadow-lg">
-    <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-white rounded-2xl flex items-center justify-center text-3xl">🛡️</div>
-            <h1 class="text-3xl font-bold">TOXICARE VN <span class="text-sm font-normal opacity-90">v2</span></h1>
-        </div>
-        <div class="flex items-center gap-4 text-sm">
-            <button onclick="exportPDF()" class="flex items-center gap-2 bg-white text-blue-700 px-6 py-3 rounded-3xl font-medium hover:shadow">
-                <i class="fa-solid fa-file-export"></i> Xuất y lệnh PDF
-            </button>
-            <div class="px-4 py-2 bg-white/20 rounded-3xl">BS. Đông • HCMC</div>
-        </div>
-    </div>
-</div>
-
-<div class="max-w-7xl mx-auto px-6 py-6 flex gap-6">
-
-<!-- SIDEBAR -->
-<div class="w-72 bg-white rounded-3xl shadow-2xl p-5 h-fit sticky top-6">
-    <div onclick="switchTab(0)" id="tab-0" class="tab-btn flex items-center gap-3 px-6 py-4 rounded-2xl mb-2 cursor-pointer hover:bg-blue-50"> <i class="fa-solid fa-user"></i> <span>1. Thông tin BN</span> </div>
-    <div onclick="switchTab(1)" id="tab-1" class="tab-btn flex items-center gap-3 px-6 py-4 rounded-2xl mb-2 cursor-pointer hover:bg-blue-50"> <i class="fa-solid fa-chart-bar"></i> <span>2. Đánh giá nguy cơ</span> </div>
-    <div onclick="switchTab(2)" id="tab-2" class="tab-btn flex items-center gap-3 px-6 py-4 rounded-2xl mb-2 cursor-pointer hover:bg-blue-50"> <i class="fa-solid fa-heart-pulse"></i> <span>3. Hồi sức ABCDE</span> </div>
-    <div onclick="switchTab(3)" id="tab-3" class="tab-btn flex items-center gap-3 px-6 py-4 rounded-2xl mb-2 cursor-pointer hover:bg-blue-50"> <i class="fa-solid fa-vial"></i> <span>4. Xét nghiệm & Calculator</span> </div>
-    <div onclick="switchTab(4)" id="tab-4" class="tab-btn flex items-center gap-3 px-6 py-4 rounded-2xl mb-2 cursor-pointer hover:bg-blue-50"> <i class="fa-solid fa-syringe"></i> <span>5. Y lệnh xử trí</span> </div>
-    <div onclick="switchTab(5)" id="tab-5" class="tab-btn flex items-center gap-3 px-6 py-4 rounded-2xl mb-2 cursor-pointer hover:bg-blue-50"> <i class="fa-solid fa-bed"></i> <span>6. Theo dõi & ICU</span> </div>
-    <div onclick="switchTab(6)" id="tab-6" class="tab-btn flex items-center gap-3 px-6 py-4 rounded-2xl cursor-pointer hover:bg-blue-50"> <i class="fa-solid fa-book"></i> <span>7. Tài liệu gốc</span> </div>
-    
-    <div class="mt-10 text-xs text-slate-500 border-t pt-6">
-        Dữ liệu đồng bộ thời gian thực • Offline • Bám sát BS. Chương (I-III) & ThS.BS Nguyễn Ngọc Tú
-    </div>
-</div>
-
-<!-- MAIN -->
-<div class="flex-1">
-
-    <!-- LIVE BANNER -->
-    <div id="live-banner" class="live-banner rounded-3xl px-6 py-4 mb-6 flex items-center gap-4 text-sm font-medium">
-        <i class="fa-solid fa-circle-info"></i>
-        <span id="banner-text">Chưa có dữ liệu bệnh nhân • Nhập ở Tab 1 để đồng bộ</span>
-    </div>
-
-    <!-- TAB 1: THÔNG TIN BN -->
-    <div id="content-0" class="tab-content active">
-        <div class="bg-white rounded-3xl shadow-xl p-8">
-            <h2 class="text-2xl font-semibold mb-6">Thông tin bệnh nhân (không cần tên)</h2>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <div>Tuổi <input id="age" type="text" class="w-full border rounded-2xl px-4 py-3 mt-1" placeholder="35" onchange="updateLive()"></div>
-                <div>Cân nặng (kg) <input id="weight" type="text" class="w-full border rounded-2xl px-4 py-3 mt-1" placeholder="65" onchange="updateLive()"></div>
-                <div>Thời gian ngộ độc <input id="time" type="text" class="w-full border rounded-2xl px-4 py-3 mt-1" placeholder="6 giờ trước" onchange="updateLive()"></div>
-                <div>Tác nhân + liều <textarea id="toxin" rows="2" class="w-full border rounded-3xl px-4 py-3 mt-1" placeholder="20 viên amlodipine 10mg" onchange="updateLive()"></textarea></div>
+    <header class="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-3xl mx-auto p-4">
+            <div class="flex justify-between items-center mb-4">
+                <h1 class="text-2xl font-bold text-rose-600 dark:text-rose-500">TOX-ER PROTOCOL</h1>
+                <button onclick="toggleTheme()" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition">
+                    <svg id="theme-icon-dark" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    <svg id="theme-icon-light" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                </button>
             </div>
-            <div class="mt-8">
-                <p class="font-medium mb-3">Triệu chứng (chọn nhiều)</p>
-                <div id="symptoms" class="flex flex-wrap gap-3"></div>
-            </div>
-            <button onclick="applyAll()" class="mt-8 bg-blue-600 text-white px-8 py-4 rounded-3xl w-full font-medium">Áp dụng toàn bộ &amp; Đồng bộ tất cả tab</button>
-        </div>
-    </div>
-
-    <!-- TAB 2: ĐÁNH GIÁ NGUY CƠ (Phần III) -->
-    <div id="content-1" class="tab-content">
-        <div class="bg-white rounded-3xl shadow-xl p-8">
-            <h2 class="text-2xl font-semibold mb-6">Đánh giá nguy cơ (Risk Assessment – BS. Chương Phần III)</h2>
-            <div id="risk-box" class="p-8 rounded-3xl text-center text-2xl font-bold"></div>
-            <button onclick="calculateRisk()" class="mt-6 bg-blue-600 text-white px-10 py-4 rounded-3xl">Tính nguy cơ ngay (tình huống xấu nhất)</button>
-            <div class="mt-8 text-xs leading-relaxed">
-                Tác nhân • Liều • Thời gian • Lâm sàng • Yếu tố tùy hành<br>
-                <strong>Nguồn:</strong> “Tout est poison, rien n’est poison, c’est la dose qui fait le poison”
+            <div class="flex space-x-2 overflow-x-auto pb-2">
+                <button onclick="switchTab('tab-dinh-huong', this)" class="tab-btn flex-1 bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg whitespace-nowrap shadow-md">Định Hướng</button>
+                <button onclick="switchTab('tab-checklist', this)" class="tab-btn flex-1 bg-slate-200 text-slate-700 hover:bg-slate-300 dark:bg-slate-700 dark:text-white dark:hover:bg-slate-600 font-semibold py-2 px-4 rounded-lg whitespace-nowrap">Checklist</button>
+                <button onclick="switchTab('tab-tools', this)" class="tab-btn flex-1 bg-slate-200 text-slate-700 hover:bg-slate-300 dark:bg-slate-700 dark:text-white dark:hover:bg-slate-600 font-semibold py-2 px-4 rounded-lg whitespace-nowrap">Tính Liều</button>
             </div>
         </div>
-    </div>
+    </header>
 
-    <!-- TAB 3: HỒI SỨC ABCDE -->
-    <div id="content-2" class="tab-content">
-        <div class="bg-white rounded-3xl shadow-xl p-8 space-y-8">
-            <h2 class="text-2xl font-semibold">Hồi sức ABCDE trong ngộ độc (Phần II)</h2>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="medical-card bg-emerald-50 p-6 rounded-3xl"><strong>A – Đường thở</strong><br>GCS &lt;12 hoặc ăn mòn → Đặt NKQ sớm, chuẩn bị MKQ ngoại khoa</div>
-                <div class="medical-card bg-sky-50 p-6 rounded-3xl"><strong>B – Hô hấp</strong><br>Salicylate: duy trì tăng thông khí + NaHCO₃ 1-2 mmol/kg<br>Opioid: Naloxone 0.4 mg IV lặp</div>
-                <div class="medical-card bg-amber-50 p-6 rounded-3xl"><strong>C – Tuần hoàn</strong><br>CCB/TCA: Insulin-glucose + lipid emulsion nếu sốc</div>
+    <main class="flex-1 max-w-3xl mx-auto w-full p-4">
+
+        <div id="tab-dinh-huong" class="tab-content active">
+            
+            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-xl border border-indigo-200 dark:border-indigo-800 mb-5 shadow-sm">
+                <h2 class="text-sm font-bold text-indigo-700 dark:text-indigo-400 mb-2 uppercase tracking-wide">Tìm Nhanh Phác Đồ Theo Chất Độc</h2>
+                <div class="flex flex-col sm:flex-row gap-2">
+                    <select id="quick-poison-select" class="flex-1 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg p-3 text-slate-900 dark:text-white font-medium">
+                        <option value="">-- Chọn chất ngộ độc (Nếu đã biết) --</option>
+                        <option value="Paracetamol">Paracetamol (Acetaminophen)</option>
+                        <option value="PhosphoHuuCo">Thuốc trừ sâu Phospho hữu cơ / Carbamate</option>
+                        <option value="TCA">Thuốc chống trầm cảm 3 vòng (TCA)</option>
+                        <option value="Opioid">Heroin / Morphine / Fentanyl (Opioid)</option>
+                        <option value="Methanol">Cồn công nghiệp (Methanol)</option>
+                        <option value="Amphetamine">Ma túy đá (Meth) / Cocaine</option>
+                    </select>
+                    <button onclick="quickSearchPoison()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg shadow transition whitespace-nowrap">Xem Ngay</button>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <!-- TAB 4: XÉT NGHIỆM -->
-    <div id="content-3" class="tab-content">
-        <div class="bg-white rounded-3xl shadow-xl p-8">
-            <h2 class="text-2xl font-semibold mb-6">Screening tests &amp; Calculator</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- Osmolar gap -->
-                <div>
-                    <h3 class="font-semibold mb-4">Khoảng trống áp lực thẩm thấu máu (Osmolar gap)</h3>
-                    <div class="space-y-4">
-                        <input id="na" placeholder="Na (mmol/L)" class="w-full px-4 py-3 border rounded-2xl">
-                        <input id="urea" placeholder="Urea (mmol/L)" class="w-full px-4 py-3 border rounded-2xl">
-                        <input id="glu" placeholder="Glucose (mmol/L)" class="w-full px-4 py-3 border rounded-2xl">
-                        <input id="eth" placeholder="Ethanol (mmol/L)" class="w-full px-4 py-3 border rounded-2xl">
-                        <button onclick="calcOsm()" class="w-full bg-blue-600 text-white py-4 rounded-3xl">Tính ngay</button>
-                        <div id="osm-result" class="text-center font-bold text-xl"></div>
+            <div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 mb-5 overflow-hidden shadow-sm">
+                <h2 class="text-sm font-bold bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300 p-3 border-b border-slate-200 dark:border-slate-700 text-center uppercase">
+                    Bảng Tra Cứu Nhanh Hội Chứng (Toxidromes)
+                </h2>
+                <div class="w-full">
+                    <table class="w-full text-[10px] sm:text-xs text-left whitespace-normal break-words table-fixed">
+                        <thead class="bg-slate-50 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border-b border-slate-200 dark:border-slate-700">
+                            <tr>
+                                <th class="p-1 sm:p-2 w-2/12">Hội chứng</th>
+                                <th class="p-1 sm:p-2 w-1/12 text-center">Đồng tử</th>
+                                <th class="p-1 sm:p-2 w-1/12 text-center">Nhịp tim</th>
+                                <th class="p-1 sm:p-2 w-2/12">Da/Niêm</th>
+                                <th class="p-1 sm:p-2 w-6/12">Tri giác / Đặc trưng khác</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 dark:divide-slate-700">
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                                <td class="p-1 sm:p-2 font-bold text-green-600 dark:text-green-400">Cholinergic</td>
+                                <td class="p-1 sm:p-2 text-center">Co ↓</td>
+                                <td class="p-1 sm:p-2 text-center">↓ / ↑</td>
+                                <td class="p-1 sm:p-2">Vã mồ hôi</td>
+                                <td class="p-1 sm:p-2">DUMBELS, Tăng tiết đờm dãi, Tiêu chảy</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                                <td class="p-1 sm:p-2 font-bold text-red-600 dark:text-red-400">Anti-cholin</td>
+                                <td class="p-1 sm:p-2 text-center">Giãn ↑</td>
+                                <td class="p-1 sm:p-2 text-center">↑↑</td>
+                                <td class="p-1 sm:p-2">Khô, Đỏ</td>
+                                <td class="p-1 sm:p-2">Sảng, ảo giác, Bí tiểu, Sốt cao</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                                <td class="p-1 sm:p-2 font-bold text-yellow-600 dark:text-yellow-400">Cường Giao Cảm</td>
+                                <td class="p-1 sm:p-2 text-center">Giãn ↑</td>
+                                <td class="p-1 sm:p-2 text-center">↑↑</td>
+                                <td class="p-1 sm:p-2">Vã mồ hôi</td>
+                                <td class="p-1 sm:p-2">Kích động mạnh, HA tăng vọt</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                                <td class="p-1 sm:p-2 font-bold text-purple-600 dark:text-purple-400">Opioid</td>
+                                <td class="p-1 sm:p-2 text-center font-bold">Đinh ghim</td>
+                                <td class="p-1 sm:p-2 text-center">Chậm ↓</td>
+                                <td class="p-1 sm:p-2">Lạnh, Tím</td>
+                                <td class="p-1 sm:p-2 text-red-500 font-bold">Suy hô hấp (Nhịp thở ↓↓), Hôn mê</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="step-symptoms" class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 mb-4 shadow-sm">
+                <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mb-4 border-b border-slate-200 dark:border-slate-600 pb-2">Định Hướng Từ Lâm Sàng (Chưa rõ chất)</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm text-slate-600 dark:text-slate-400 mb-1">Đồng tử</label>
+                        <select id="sym-pupils" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded p-2 text-slate-900 dark:text-white">
+                            <option value="">-- Chọn --</option>
+                            <option value="co">Co nhỏ</option>
+                            <option value="gian">Giãn to</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm text-slate-600 dark:text-slate-400 mb-1">Nhịp tim</label>
+                        <select id="sym-hr" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded p-2 text-slate-900 dark:text-white">
+                            <option value="">-- Chọn --</option>
+                            <option value="nhanh">Nhanh</option>
+                            <option value="cham">Chậm</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm text-slate-600 dark:text-slate-400 mb-1">Hô hấp</label>
+                        <select id="sym-rr" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded p-2 text-slate-900 dark:text-white">
+                            <option value="">-- Chọn --</option>
+                            <option value="nhanh">Thở nhanh</option>
+                            <option value="cham">Thở chậm/Ngừng</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm text-slate-600 dark:text-slate-400 mb-1">Da/Niêm</label>
+                        <select id="sym-skin" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded p-2 text-slate-900 dark:text-white">
+                            <option value="">-- Chọn --</option>
+                            <option value="kho">Khô đỏ</option>
+                            <option value="am">Vã mồ hôi</option>
+                        </select>
+                    </div>
+                    <div class="col-span-2">
+                        <label class="block text-sm text-slate-600 dark:text-slate-400 mb-1">Tri giác / Thần kinh</label>
+                        <select id="sym-mental" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded p-2 text-slate-900 dark:text-white">
+                            <option value="">-- Chọn --</option>
+                            <option value="kichdong">Kích động / Co giật</option>
+                            <option value="honme">Lơ mơ / Hôn mê</option>
+                        </select>
                     </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold mb-4">ECG quan trọng</h3>
-                    <ul class="text-sm space-y-3">
-                        <li>• TCA: QRS rộng, R wave aVR nổi bật</li>
-                        <li>• QT dài: Methadone, antipsychotics, fluoroquinolones</li>
-                        <li>• Digoxin: ST chén đĩa</li>
-                        <li>• Dominant R in aVR → nghi paracetamol co-ingestion</li>
-                    </ul>
+                <button onclick="analyzeToxidrome()" class="w-full mt-5 bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 rounded-lg shadow-md transition">Lọc Hội Chứng</button>
+            </div>
+
+            <div id="step-syndrome" class="hidden bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 mb-4 shadow-sm">
+                <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-600 pb-2 mb-4">
+                    <h2 class="text-xl font-bold text-emerald-600 dark:text-emerald-400">Kết Quả Định Hướng</h2>
+                    <button onclick="resetAnalysis()" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">Khám lại</button>
+                </div>
+                <div id="syndrome-result" class="mb-5"></div>
+                <h3 class="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-3 uppercase tracking-wide">Chọn thủ phạm nghi ngờ nhất:</h3>
+                <div id="causes-list" class="flex flex-col space-y-3"></div>
+            </div>
+
+            <div id="step-protocol" class="hidden bg-white dark:bg-slate-800 p-5 rounded-xl border-2 border-blue-500 mb-4 shadow-lg">
+                <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-600 pb-2 mb-4">
+                    <h2 class="text-xl font-bold text-blue-600 dark:text-blue-400">Phác Đồ Xử Trí Nhanh</h2>
+                    <button onclick="resetAnalysis()" class="text-sm bg-slate-200 dark:bg-slate-700 px-3 py-1 rounded text-slate-700 dark:text-slate-300 hover:bg-slate-300">Đóng ✕</button>
+                </div>
+                <div id="protocol-content" class="space-y-4"></div>
+                
+                <div class="grid grid-cols-2 gap-2 mt-6">
+                    <button onclick="document.querySelectorAll('.tab-btn')[2].click()" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 rounded-lg flex justify-center items-center shadow transition text-sm">
+                        Tính Liều Thuốc
+                    </button>
+                    <button onclick="document.querySelectorAll('.tab-btn')[1].click()" class="bg-slate-800 dark:bg-slate-700 text-white font-bold py-3 rounded-lg flex justify-center items-center shadow transition text-sm">
+                        Bật Checklist
+                    </button>
                 </div>
             </div>
+
         </div>
-    </div>
 
-    <!-- TAB 5: Y LỆNH XỬ TRÍ -->
-    <div id="content-4" class="tab-content">
-        <div class="bg-white rounded-3xl shadow-xl p-8">
-            <h2 class="text-2xl font-semibold mb-6">Y lệnh xử trí từng bước cụ thể</h2>
-            <select id="protocol-select" onchange="loadProtocol()" class="w-full text-lg px-6 py-4 border rounded-3xl mb-8">
-                <option value="">Chọn độc chất để xem y lệnh chi tiết</option>
-                <option value="opioid">Opioid</option>
-                <option value="tca">Tricyclic antidepressant (TCA)</option>
-                <option value="ccb">Calcium channel blocker (Amlodipine…)</option>
-                <option value="salicylate">Salicylate</option>
-                <option value="paraquat">Paraquat</option>
-                <option value="organophosphate">Phospho hữu cơ</option>
-            </select>
-            <div id="protocol-detail" class="prose text-sm"></div>
+        <div id="tab-checklist" class="tab-content">
+            <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                <h2 class="text-xl font-bold text-slate-800 dark:text-white border-b border-slate-200 dark:border-slate-600 pb-2 mb-4">Bảng Kiểm Theo Dõi</h2>
+                <details class="group mb-4" open>
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none bg-red-100 dark:bg-red-900/40 border border-red-300 dark:border-red-700 p-3 rounded-lg text-red-800 dark:text-red-200">
+                        <span class="font-bold">Giai đoạn 0 - 60 Phút (Tối Khẩn)</span>
+                        <span class="transition group-open:rotate-180">▼</span>
+                    </summary>
+                    <div class="p-4 bg-slate-50 dark:bg-slate-900 border-x border-b border-slate-200 dark:border-slate-700 rounded-b-lg -mt-2 pt-4">
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-start"><input type="checkbox" class="mt-1 mr-3 w-4 h-4 accent-red-600"> <span><b>A-B-C-D-E:</b> NKQ nếu GCS < 8. Lập 2 đường truyền lớn.</span></li>
+                            <li class="flex items-start"><input type="checkbox" class="mt-1 mr-3 w-4 h-4 accent-red-600"> <span><b>Monitor:</b> ECG, SpO2, Huyết áp liên tục.</span></li>
+                            <li class="flex items-start"><input type="checkbox" class="mt-1 mr-3 w-4 h-4 accent-red-600"> <span><b>Đường huyết mao mạch:</b> Test ngay lập tức.</span></li>
+                            <li class="flex items-start"><input type="checkbox" class="mt-1 mr-3 w-4 h-4 accent-red-600"> <span><b>Lấy mẫu:</b> Máu, nước tiểu, dịch dạ dày. Khí máu ĐM.</span></li>
+                            <li class="flex items-start"><input type="checkbox" class="mt-1 mr-3 w-4 h-4 accent-red-600"> <span><b>Tẩy độc:</b> Rửa dạ dày (<1h) và Than hoạt đơn liều 1g/kg.</span></li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
         </div>
-    </div>
 
-    <!-- TAB 6: THEO DÕI & ICU -->
-    <div id="content-5" class="tab-content">
-        <div class="bg-white rounded-3xl shadow-xl p-8">
-            <h2 class="text-2xl font-semibold mb-6">Theo dõi tại cấp cứu vs Tiêu chuẩn nhập ICU</h2>
-            <table class="w-full text-left border-collapse">
-                <tr class="border-b"><td class="py-5 font-medium">Theo dõi cấp cứu</td><td>Không diễn tiến nặng • An thần đủ • Điều trị hỗ trợ</td></tr>
-                <tr class="border-b"><td class="py-5 font-medium">Nhập ICU</td><td>Cần kiểm soát đường thở • Thở máy • Huyết động xâm lấn • Lọc máu</td></tr>
-            </table>
+        <div id="tab-tools" class="tab-content">
+            <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 mb-4 shadow-sm">
+                <h2 class="text-xl font-bold text-teal-600 dark:text-teal-400 border-b border-slate-200 dark:border-slate-600 pb-2 mb-4">Máy Tính Liều Lượng Antidote</h2>
+                
+                <div class="space-y-4 mb-5">
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">Cân nặng bệnh nhân (kg):</label>
+                        <input type="number" id="calc-weight" class="w-full text-lg bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg p-3 text-slate-900 dark:text-white text-center font-bold focus:ring-2 focus:ring-teal-500" placeholder="VD: 50" value="50">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">Chọn phác đồ / Thuốc giải:</label>
+                        <select id="calc-drug" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg p-3 text-slate-900 dark:text-white">
+                            <option value="NAC">N-Acetylcysteine tĩnh mạch (Phác đồ 21 giờ) - Ngộ độc Paracetamol</option>
+                            <option value="PAM">Pralidoxime (PAM) tĩnh mạch - Ngộ độc Phospho hữu cơ</option>
+                            <option value="NaHCO3">Sodium Bicarbonate (NaHCO3 8.4%) - Kiềm hóa / Ổn định màng</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button onclick="calculateDose()" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 rounded-lg shadow-md transition text-lg">Tính Liều Chính Xác</button>
+                
+                <div id="dose-result" class="hidden mt-5">
+                    </div>
+            </div>
         </div>
-    </div>
 
-    <!-- TAB 7: TÀI LIỆU -->
-    <div id="content-6" class="tab-content">
-        <div class="bg-white rounded-3xl shadow-xl p-8 prose">
-            <h2 class="text-2xl font-semibold mb-6">Tài liệu gốc</h2>
-            <p><strong>BS. Chương</strong> – Phần I: Toxicokinetics &amp; Nguyên tắc chung</p>
-            <p><strong>BS. Chương</strong> – Phần II: ABCDE + xử trí đặc biệt</p>
-            <p><strong>BS. Chương</strong> – Phần III: Risk Assessment, Screening, Antidote</p>
-            <p><strong>ThS.BS Nguyễn Ngọc Tú</strong> – Tiếp cận tổng quát &amp; giai đoạn ngộ độc</p>
-        </div>
-    </div>
-</div>
-</div>
+    </main>
 
-<script>
-// ================== GLOBAL DATA ==================
-let patient = { age: "", weight: "", time: "", toxin: "", symptoms: [] }
+    <script>
+        // --- QUẢN LÝ THEME ---
+        function initTheme() {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) || !('theme' in localStorage)) {
+                document.documentElement.classList.add('dark');
+                document.getElementById('theme-icon-light').classList.add('hidden');
+                document.getElementById('theme-icon-dark').classList.remove('hidden');
+            } else {
+                document.documentElement.classList.remove('dark');
+                document.getElementById('theme-icon-dark').classList.add('hidden');
+                document.getElementById('theme-icon-light').classList.remove('hidden');
+            }
+        }
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+                document.getElementById('theme-icon-dark').classList.add('hidden');
+                document.getElementById('theme-icon-light').classList.remove('hidden');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+                document.getElementById('theme-icon-light').classList.add('hidden');
+                document.getElementById('theme-icon-dark').classList.remove('hidden');
+            }
+        }
+        initTheme();
 
-// ================== RENDER SYMPTOMS ==================
-const symptomList = ["Hôn mê","Suy hô hấp","Co giật","Tụt huyết áp","Nhịp tim bất thường","Đồng tử co/giãn","Tiêu hóa","Tăng thân nhiệt","QT dài ECG"];
-function renderSymptoms() {
-    const container = document.getElementById("symptoms");
-    container.innerHTML = symptomList.map(s => `
-        <label class="cursor-pointer flex items-center px-5 py-3 bg-white border rounded-3xl text-sm hover:border-blue-500" onclick="this.classList.toggle('bg-blue-100')">
-            <input type="checkbox" class="mr-2"> ${s}
-        </label>
-    `).join('');
-}
+        // --- CƠ SỞ DỮ LIỆU PHÁC ĐỒ (Thêm Paracetamol) ---
+        const protocolsDB = {
+            'Paracetamol': {
+                name: 'Ngộ độc Paracetamol (Acetaminophen)',
+                antidote: `
+                    <p><b>N-Acetylcysteine (NAC) tĩnh mạch - Phác đồ 21 giờ:</b></p>
+                    <ul class="list-disc ml-5 mt-1">
+                        <li><b>Liều 1 (Tải):</b> 150 mg/kg truyền tĩnh mạch trong 15 - 60 phút.</li>
+                        <li><b>Liều 2:</b> 50 mg/kg truyền tĩnh mạch trong 4 giờ tiếp theo.</li>
+                        <li><b>Liều 3:</b> 100 mg/kg truyền tĩnh mạch trong 16 giờ tiếp theo.</li>
+                    </ul>
+                    <p class="mt-2 italic text-sm text-blue-500">→ Chuyển sang Tab "Tính Liều" để máy tự tính số mg và cách pha dịch theo cân nặng thực tế.</p>
+                `,
+                procedures: 'Rửa dạ dày, Than hoạt đơn liều (nếu đến sớm < 2h). Lấy máu xét nghiệm nồng độ Paracetamol, AST, ALT, PT/INR.',
+                warning: 'Xác định chỉ định dùng NAC dựa trên toán đồ Rumack-Matthew (nếu biết rõ giờ uống).'
+            },
+            'PhosphoHuuCo': {
+                name: 'Thuốc trừ sâu Phospho hữu cơ / Carbamate',
+                antidote: `
+                    <p><b>1. Atropin:</b> Liều thử 2mg (TM). Gấp đôi mỗi 5-15p đến khi ngấm Atropin (Hết ran phổi, mạch >80 l/p, đồng tử giãn). Duy trì bằng Bơm tiêm điện.</p>
+                    <p class="mt-2"><b>2. Pralidoxime (PAM):</b> Chỉ dùng cho Phospho hữu cơ. Liều tải: 30mg/kg. Duy trì: 8mg/kg/giờ.</p>
+                `,
+                procedures: 'Rửa dạ dày, Than hoạt đa liều. Tắm rửa sạch xà phòng nếu nhiễm qua da.',
+                warning: 'CẢNH BÁO: Đeo găng cao su y tế dày (không dùng găng nilon mỏng) khi tiếp xúc chất tiết.'
+            },
+            'TCA': {
+                name: 'Thuốc chống trầm cảm 3 vòng (TCA)',
+                antidote: `
+                    <p><b>Sodium Bicarbonate (NaHCO3 8.4%):</b> <br>Chỉ định: QRS > 100ms hoặc loạn nhịp thất.<br>Liều: 1-2 mEq/kg (TM chậm), nhắc lại nếu cần. Mục tiêu pH 7.45 - 7.55.</p>
+                    <p class="mt-2"><b>Kiểm soát co giật:</b> Benzodiazepine (Seduxen).</p>
+                `,
+                procedures: 'Than hoạt đơn liều. KHÔNG dùng Flumazenil.',
+                warning: 'Nguy cơ loạn nhịp thất tử vong (Torsades de pointes). Sẵn sàng máy sốc điện.'
+            },
+            'Opioid': {
+                name: 'Heroin / Morphine / Fentanyl',
+                antidote: `
+                    <p><b>Naloxone:</b> Liều 0.04 - 0.4 mg (TM/TB). Nghi ngờ Fentanyl/suy hô hấp nặng: dùng 2mg. Lặp lại mỗi 2-3 phút.</p>
+                `,
+                procedures: 'Bóp bóng / Đặt NKQ là ưu tiên số 1, trước khi tiêm Naloxone.',
+                warning: 'Thời gian tác dụng Naloxone ngắn (30-60p), theo dõi sát nguy cơ tái ngưng thở.'
+            },
+            'Methanol': {
+                name: 'Cồn công nghiệp (Methanol)',
+                antidote: `
+                    <p><b>1. Fomepizole:</b> 15 mg/kg (TM). Duy trì 10 mg/kg mỗi 12h.</p>
+                    <p class="mt-2"><b>2. Ethanol:</b> Truyền tĩnh mạch hoặc uống qua sonde. Mục tiêu nồng độ cồn máu 100-150 mg/dL.</p>
+                `,
+                procedures: '<b>Lọc máu (HD):</b> Chỉ định khi: Rối loạn thị giác, pH < 7.25, Methanol > 50 mg/dL.',
+                warning: 'Gợi ý mạnh khi Toan chuyển hóa tăng khoảng trống Anion và ALTT.'
+            },
+            'Amphetamine': {
+                name: 'Ma túy đá (Meth) / Cocaine',
+                antidote: `<p>Không có thuốc giải đặc hiệu.<br><b>Kích động/Co giật/Tăng HA:</b> Dùng Diazepam liều cao (TM).</p>`,
+                procedures: 'Hạ nhiệt độ cơ thể tích cực, bù dịch.',
+                warning: 'CHỐNG CHỈ ĐỊNH chẹn Beta (Propranolol) đơn thuần trong ngộ độc Cocaine.'
+            }
+        };
 
-// ================== UPDATE LIVE BANNER ==================
-function updateLive() {
-    patient.age = document.getElementById("age").value || "-";
-    patient.weight = document.getElementById("weight").value || "-";
-    patient.time = document.getElementById("time").value || "-";
-    patient.toxin = document.getElementById("toxin").value || "Chưa nhập";
+        // --- ĐIỀU HƯỚNG TAB ---
+        function switchTab(tabId, btnElement) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn flex-1 bg-slate-200 text-slate-700 hover:bg-slate-300 dark:bg-slate-700 dark:text-white dark:hover:bg-slate-600 font-semibold py-2 px-4 rounded-lg whitespace-nowrap";
+            });
+            btnElement.className = "tab-btn flex-1 bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg whitespace-nowrap shadow-md";
+        }
 
-    const banner = document.getElementById("banner-text");
-    banner.innerHTML = `BN: ${patient.age} tuổi – ${patient.weight} kg – Ngộ độc ${patient.toxin} – ${patient.time}`;
-}
+        // --- GỢI Ý NHANH (MỚI) ---
+        function quickSearchPoison() {
+            const poisonVal = document.getElementById('quick-poison-select').value;
+            if(!poisonVal) {
+                alert("Vui lòng chọn một chất ngộ độc từ danh sách.");
+                return;
+            }
+            showProtocol(poisonVal);
+        }
 
-// ================== ÁP DỤNG TOÀN BỘ ==================
-function applyAll() {
-    updateLive();
-    alert("✅ Dữ liệu đã đồng bộ toàn bộ tab!");
-}
+        // --- LỌC TỪ LÂM SÀNG ---
+        function analyzeToxidrome() {
+            const pupils = document.getElementById('sym-pupils').value;
+            const hr = document.getElementById('sym-hr').value;
+            const rr = document.getElementById('sym-rr').value;
+            const skin = document.getElementById('sym-skin').value;
+            const mental = document.getElementById('sym-mental').value;
 
-// ================== TAB SWITCH ==================
-function switchTab(n) {
-    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-    document.getElementById('content-'+n).classList.add('active');
-    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('bg-blue-100','text-blue-600'));
-    document.getElementById('tab-'+n).classList.add('bg-blue-100','text-blue-600');
-    if (n === 1) calculateRisk();   // tự động refresh risk khi vào tab
-}
+            if(!pupils && !hr && !rr && !skin && !mental) {
+                alert("Vui lòng chọn ít nhất một triệu chứng.");
+                return;
+            }
 
-// ================== RISK ASSESSMENT (Phần III) ==================
-function calculateRisk() {
-    const t = (patient.toxin || "").toLowerCase();
-    let html = "";
-    if (t.includes("amlodipine") || t.includes("ccb")) {
-        html = `<span class="text-orange-600">NGUY CƠ CAO</span><br>CCB dạng phóng thích chậm → triệu chứng muộn 6-12 giờ<br>Chuẩn bị insulin-glucose + lipid emulsion`;
-    } else if (t.includes("tca")) {
-        html = `<span class="text-red-600">NGUY CƠ RẤT CAO</span><br>TCA: diễn tiến nặng trong 2 giờ, QRS rộng, co giật`;
-    } else if (t.includes("paraquat")) {
-        html = `<span class="text-red-600">TỬ VONG CAO</span><br>1 ngụm đủ tử vong`;
-    } else {
-        html = `<span class="text-slate-600">Đánh giá theo “tình huống xấu nhất”</span><br>Nhập thêm chi tiết lâm sàng để tính chính xác hơn`;
-    }
-    document.getElementById("risk-box").innerHTML = html;
-}
+            let resultTitle = "ĐA ĐỘC CHẤT / KHÔNG ĐIỂN HÌNH";
+            let resultDesc = "Cần làm Khí máu, Điện giải đồ và liên hệ hội chẩn.";
+            let causesHTML = "";
 
-// ================== OSMOLAR GAP ==================
-function calcOsm() {
-    const na = parseFloat(document.getElementById("na").value) || 0;
-    const urea = parseFloat(document.getElementById("urea").value) || 0;
-    const glu = parseFloat(document.getElementById("glu").value) || 0;
-    const eth = parseFloat(document.getElementById("eth").value) || 0;
-    const calc = 2*na + urea + glu + eth;
-    document.getElementById("osm-result").innerHTML = `Osmolar gap = <strong>${calc.toFixed(1)}</strong> mOsm/L<br><span class="text-xs">(Bình thường &lt;10)</span>`;
-}
+            if (pupils === 'co' && rr === 'cham') {
+                resultTitle = "HỘI CHỨNG OPIOID";
+                causesHTML = `<button onclick="showProtocol('Opioid')" class="btn-cause w-full text-left bg-slate-100 dark:bg-slate-700 p-4 rounded border-l-4 border-purple-500 font-bold">1. Heroin / Morphine / Fentanyl</button>`;
+            } 
+            else if (pupils === 'co' && skin === 'am') {
+                resultTitle = "HỘI CHỨNG CHOLINERGIC";
+                causesHTML = `<button onclick="showProtocol('PhosphoHuuCo')" class="btn-cause w-full text-left bg-slate-100 dark:bg-slate-700 p-4 rounded border-l-4 border-green-500 font-bold">1. Phospho hữu cơ / Carbamate</button>`;
+            }
+            else if (pupils === 'gian' && skin === 'kho') {
+                resultTitle = "HỘI CHỨNG ANTICHOLINERGIC";
+                causesHTML = `<button onclick="showProtocol('TCA')" class="btn-cause w-full text-left bg-slate-100 dark:bg-slate-700 p-4 rounded border-l-4 border-red-500 font-bold">1. Thuốc chống trầm cảm 3 vòng (TCA)</button>`;
+            }
+            else if (pupils === 'gian' && skin === 'am') {
+                resultTitle = "HỘI CHỨNG CƯỜNG GIAO CẢM";
+                causesHTML = `<button onclick="showProtocol('Amphetamine')" class="btn-cause w-full text-left bg-slate-100 dark:bg-slate-700 p-4 rounded border-l-4 border-yellow-500 font-bold">1. Ma túy đá / Cocaine</button>`;
+            }
+            else if (rr === 'nhanh' && mental === 'honme') {
+                resultTitle = "NGHI NGỜ TOAN CHUYỂN HÓA NẶNG";
+                causesHTML = `<button onclick="showProtocol('Methanol')" class="btn-cause w-full text-left bg-slate-100 dark:bg-slate-700 p-4 rounded border-l-4 border-blue-500 font-bold">1. Cồn công nghiệp (Methanol)</button>`;
+            }
 
-// ================== PROTOCOLS (Y LỆNH TỪNG BƯỚC) ==================
-function loadProtocol() {
-    const val = document.getElementById("protocol-select").value;
-    const box = document.getElementById("protocol-detail");
-    let str = "";
+            document.getElementById('syndrome-result').innerHTML = `
+                <div class="bg-emerald-50 dark:bg-slate-900 p-4 rounded-lg border border-emerald-200 dark:border-emerald-800">
+                    <h3 class="font-bold text-lg text-emerald-700 dark:text-emerald-400">${resultTitle}</h3>
+                    <p class="text-sm text-slate-700 dark:text-slate-300 mt-1">${resultDesc}</p>
+                </div>
+            `;
+            document.getElementById('causes-list').innerHTML = causesHTML;
+            document.getElementById('step-symptoms').classList.add('hidden');
+            document.getElementById('step-syndrome').classList.remove('hidden');
+        }
 
-    if (val === "opioid") {
-        str = `<h3 class="font-bold">Ngộ độc Opioid – Y lệnh từng bước</h3>
-        <ol class="list-decimal pl-6 space-y-3 mt-4 text-sm">
-            <li>Nâng cằm + bóp bóng nếu suy hô hấp</li>
-            <li>Naloxone 0.4 mg IV bolus → lặp 0.4–2 mg mỗi 2-3 phút đến khi thở lại (tối đa 10 mg)</li>
-            <li>Theo dõi ≥ 2 giờ sau liều cuối</li>
-        </ol>`;
-    } else if (val === "tca") {
-        str = `<h3 class="font-bold">Ngộ độc TCA – Y lệnh từng bước</h3>
-        <ol class="list-decimal pl-6 space-y-3 mt-4 text-sm">
-            <li>GCS &lt;12 → Đặt NKQ NGAY</li>
-            <li>NaHCO₃ 1–2 mEq/kg IV bolus nếu QRS &gt;100 ms</li>
-            <li>Benzodiazepine kiểm soát co giật</li>
-            <li>Lipid emulsion 1.5 mL/kg nếu sốc</li>
-        </ol>`;
-    } else if (val === "ccb") {
-        str = `<h3 class="font-bold">Ngộ độc CCB (Amlodipine…) – Y lệnh từng bước</h3>
-        <ol class="list-decimal pl-6 space-y-3 mt-4 text-sm">
-            <li>Calcium gluconate 10% 10–20 mL IV</li>
-            <li>Insulin 1 IU/kg + Glucose 25 g IV</li>
-            <li>Lipid emulsion 1.5 mL/kg nếu tụt HA nặng</li>
-            <li>Theo dõi 12–16 giờ</li>
-        </ol>`;
-    } else if (val === "salicylate") {
-        str = `<h3 class="font-bold">Ngộ độc Salicylate – Y lệnh từng bước</h3>
-        <ol class="list-decimal pl-6 space-y-3 mt-4 text-sm">
-            <li>NaHCO₃ bolus 1–2 mmol/kg + duy trì pH 7.45–7.55</li>
-            <li>Không giảm thông khí khi đặt NKQ</li>
-            <li>Lọc máu nếu pH &lt;7.2</li>
-        </ol>`;
-    } else if (val === "paraquat") {
-        str = `<h3 class="font-bold">Ngộ độc Paraquat – Y lệnh từng bước</h3>
-        <ol class="list-decimal pl-6 space-y-3 mt-4 text-sm">
-            <li>Tránh oxygen hỗ trợ</li>
-            <li>Than hoạt 1 g/kg + Fuller's earth</li>
-            <li>Lọc máu sớm</li>
-        </ol>`;
-    } else if (val === "organophosphate") {
-        str = `<h3 class="font-bold">Phospho hữu cơ – Y lệnh từng bước</h3>
-        <ol class="list-decimal pl-6 space-y-3 mt-4 text-sm">
-            <li>Atropine chuỗi gấp đôi liều (0.02 → 0.04 → 0.08 mg/kg) đến khô đàm nhớt</li>
-            <li>Pralidoxime 30 mg/kg IV</li>
-        </ol>`;
-    }
-    box.innerHTML = str;
-}
+        function resetAnalysis() {
+            document.getElementById('step-symptoms').classList.remove('hidden');
+            document.getElementById('step-syndrome').classList.add('hidden');
+            document.getElementById('step-protocol').classList.add('hidden');
+            document.getElementById('quick-poison-select').value = ""; // Reset dropdown
+        }
 
-// ================== EXPORT PDF (demo) ==================
-function exportPDF() {
-    alert("📄 Y lệnh đã được xuất (trong phiên bản đầy đủ sẽ tạo file PDF đẹp với chữ ký bác sĩ). Dữ liệu hiện tại:\n" + JSON.stringify(patient, null, 2));
-}
+        function showProtocol(causeKey) {
+            const data = protocolsDB[causeKey];
+            if(!data) return;
 
-// ================== INIT ==================
-window.onload = () => {
-    renderSymptoms();
-    console.log("%c🚀 TOXICARE VN v2 – Đã đồng bộ hoàn chỉnh & chi tiết hơn!", "color:#007BFF;font-weight:bold;font-size:18px");
-};
-</script>
+            document.getElementById('protocol-content').innerHTML = `
+                <h3 class="text-xl font-bold text-slate-800 dark:text-white border-b border-slate-200 dark:border-slate-600 pb-2">${data.name}</h3>
+                <div class="mt-4">
+                    <span class="inline-block bg-rose-100 text-rose-700 dark:bg-rose-900/50 dark:text-rose-200 text-xs px-2 py-1 rounded mb-2 font-bold uppercase">Thuốc Giải (Antidote)</span>
+                    <div class="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg text-sm text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">${data.antidote}</div>
+                </div>
+                <div class="mt-4">
+                    <span class="inline-block bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-200 text-xs px-2 py-1 rounded mb-2 font-bold uppercase">Thủ Thuật / Tẩy Độc</span>
+                    <div class="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg text-sm text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">${data.procedures}</div>
+                </div>
+                <div class="mt-4 bg-amber-50 dark:bg-amber-900/30 border border-amber-300 dark:border-amber-700 p-4 rounded-lg">
+                    <p class="text-sm text-amber-800 dark:text-amber-300 font-semibold">⚠️ ${data.warning}</p>
+                </div>
+            `;
+            document.getElementById('step-symptoms').classList.add('hidden');
+            document.getElementById('step-syndrome').classList.add('hidden');
+            document.getElementById('step-protocol').classList.remove('hidden');
+        }
+
+        // --- TÍNH LIỀU THUỐC MỚI (TAB 3) ---
+        function calculateDose() {
+            const weight = parseFloat(document.getElementById('calc-weight').value);
+            const drug = document.getElementById('calc-drug').value;
+            const resDiv = document.getElementById('dose-result');
+            
+            if (!weight || weight <= 0) {
+                alert("Vui lòng nhập cân nặng hợp lệ.");
+                return;
+            }
+
+            let resultHTML = "";
+
+            if (drug === 'NAC') {
+                const dose1 = weight * 150;
+                const dose2 = weight * 50;
+                const dose3 = weight * 100;
+                
+                resultHTML = `
+                    <div class="bg-indigo-50 dark:bg-slate-900 border-2 border-indigo-200 dark:border-indigo-700 rounded-lg p-4">
+                        <h3 class="font-bold text-lg text-indigo-700 dark:text-indigo-400 border-b border-indigo-200 dark:border-indigo-700 pb-2 mb-3">Phác đồ N-Acetylcysteine (21 giờ) cho ${weight} kg</h3>
+                        
+                        <div class="mb-3">
+                            <span class="font-bold text-rose-600 dark:text-rose-400">Liều 1 (Giờ 1):</span> Tải 150 mg/kg
+                            <p class="text-sm bg-white dark:bg-slate-800 p-2 rounded border border-slate-200 dark:border-slate-700 mt-1">Lấy <b>${dose1.toLocaleString('en-US')} mg</b> NAC pha trong 200ml Glucose 5%. Truyền TM trong <b>60 phút</b>.</p>
+                        </div>
+
+                        <div class="mb-3">
+                            <span class="font-bold text-amber-600 dark:text-amber-400">Liều 2 (Giờ 2-5):</span> 50 mg/kg
+                            <p class="text-sm bg-white dark:bg-slate-800 p-2 rounded border border-slate-200 dark:border-slate-700 mt-1">Lấy <b>${dose2.toLocaleString('en-US')} mg</b> NAC pha trong 500ml Glucose 5%. Truyền TM trong <b>4 giờ</b>.</p>
+                        </div>
+
+                        <div>
+                            <span class="font-bold text-emerald-600 dark:text-emerald-400">Liều 3 (Giờ 6-21):</span> 100 mg/kg
+                            <p class="text-sm bg-white dark:bg-slate-800 p-2 rounded border border-slate-200 dark:border-slate-700 mt-1">Lấy <b>${dose3.toLocaleString('en-US')} mg</b> NAC pha trong 1000ml Glucose 5%. Truyền TM trong <b>16 giờ</b>.</p>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-3">*Lưu ý: Nếu bệnh nhân có phản ứng phản vệ, làm chậm tốc độ truyền hoặc tạm ngưng, xử trí kháng Histamin rồi truyền lại.</p>
+                    </div>
+                `;
+            } 
+            else if (drug === 'PAM') {
+                const load = weight * 30;
+                const maint = weight * 8;
+                
+                resultHTML = `
+                    <div class="bg-green-50 dark:bg-slate-900 border-2 border-green-200 dark:border-green-700 rounded-lg p-4">
+                        <h3 class="font-bold text-lg text-green-700 dark:text-green-400 border-b border-green-200 dark:border-green-700 pb-2 mb-3">Pralidoxime (PAM) cho ${weight} kg</h3>
+                        
+                        <div class="mb-3">
+                            <span class="font-bold text-rose-600 dark:text-rose-400">Liều tải (Bolus):</span> 30 mg/kg
+                            <p class="text-sm bg-white dark:bg-slate-800 p-2 rounded border border-slate-200 dark:border-slate-700 mt-1">Pha <b>${load.toLocaleString('en-US')} mg</b> PAM vào 100ml NaCl 0.9%. Truyền TM trong <b>15 - 30 phút</b>.</p>
+                        </div>
+
+                        <div>
+                            <span class="font-bold text-emerald-600 dark:text-emerald-400">Liều duy trì:</span> 8 mg/kg/giờ
+                            <p class="text-sm bg-white dark:bg-slate-800 p-2 rounded border border-slate-200 dark:border-slate-700 mt-1">Pha qua Bơm tiêm điện hoặc truyền nhỏ giọt tốc độ <b>${maint.toLocaleString('en-US')} mg/giờ</b>.</p>
+                        </div>
+                    </div>
+                `;
+            }
+            else if (drug === 'NaHCO3') {
+                const minVol = weight * 1;
+                const maxVol = weight * 2;
+                
+                resultHTML = `
+                    <div class="bg-blue-50 dark:bg-slate-900 border-2 border-blue-200 dark:border-blue-700 rounded-lg p-4">
+                        <h3 class="font-bold text-lg text-blue-700 dark:text-blue-400 border-b border-blue-200 dark:border-blue-700 pb-2 mb-3">Sodium Bicarbonate 8.4% cho ${weight} kg</h3>
+                        
+                        <div class="mb-3">
+                            <span class="font-bold text-rose-600 dark:text-rose-400">Liều tiêm (1 - 2 mEq/kg):</span>
+                            <p class="text-sm bg-white dark:bg-slate-800 p-2 rounded border border-slate-200 dark:border-slate-700 mt-1 text-lg">Tiêm TM chậm: <b>${minVol} ml - ${maxVol} ml</b> (NaHCO3 8.4%)</p>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-2">*Ghi chú: Dung dịch NaHCO3 8.4% (1ml = 1mEq). Theo dõi QRS trên monitor và pH máu. Có thể lặp lại nếu QRS chưa thu hẹp.</p>
+                    </div>
+                `;
+            }
+
+            resDiv.innerHTML = resultHTML;
+            resDiv.classList.remove('hidden');
+        }
+    </script>
 </body>
 </html>
