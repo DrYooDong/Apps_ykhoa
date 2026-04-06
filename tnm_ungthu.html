@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJCC v9 Cervix Staging Tool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f8fafc; }
+        .option-btn.active { border-color: #1e40af; background-color: #eff6ff; font-weight: bold; color: #1e40af; }
+    </style>
+</head>
+<body class="text-slate-800 h-screen flex flex-col">
+
+    <header class="bg-blue-900 text-white p-4 shadow-md flex justify-between items-center shrink-0">
+        <div class="flex items-center gap-3">
+            <div class="bg-blue-700 p-2 rounded-lg">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+            </div>
+            <div>
+                <h1 class="text-xl font-bold">TNM Cervix v9</h1>
+                <p class="text-blue-300 text-xs">AJCC Version 9 (Update 2021)</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto p-4 md:p-8 max-w-5xl mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="md:col-span-2 space-y-6">
+            
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                <h3 class="font-bold text-blue-900 mb-4 flex items-center gap-2">
+                    <span class="bg-blue-100 px-2 py-0.5 rounded text-sm">T</span> Khối u nguyên phát
+                </h3>
+                <div class="space-y-2 text-sm" id="t-options">
+                    <button onclick="setT('T1a1', 'Xâm lấn mô đệm ≤ 3 mm')" class="option-btn w-full text-left p-3 border rounded-lg hover:bg-slate-50 transition">T1a1: Xâm lấn ≤ 3 mm</button>
+                    <button onclick="setT('T1a2', 'Xâm lấn mô đệm > 3 mm và ≤ 5 mm')" class="option-btn w-full text-left p-3 border rounded-lg hover:bg-slate-50 transition">T1a2: Xâm lấn > 3 mm và ≤ 5 mm</button>
+                    <button onclick="setT('T1b1', 'Xâm lấn > 5 mm và kích thước ≤ 2 cm')" class="option-btn w-full text-left p-3 border rounded-lg hover:bg-slate-50 transition">T1b1: > 5 mm và ≤ 2 cm</button>
+                    <button onclick="setT('T1b2', 'Kích thước > 2 cm và ≤ 4 cm')" class="option-btn w-full text-left p-3 border rounded-lg hover:bg-slate-50 transition">T1b2: > 2 cm và ≤ 4 cm</button>
+                    <button onclick="setT('T1b3', 'Kích thước > 4 cm')" class="option-btn w-full text-left p-3 border rounded-lg hover:bg-slate-50 transition">T1b3: > 4 cm</button>
+                    <button onclick="setT('T2', 'Xâm lấn quá tử cung nhưng chưa tới 1/3 dưới âm đạo/thành chậu')" class="option-btn w-full text-left p-3 border rounded-lg hover:bg-slate-50 transition">T2: Xâm lấn ngoài tử cung</button>
+                    <button onclick="setT('T3', 'Xâm lấn 1/3 dưới âm đạo hoặc thành chậu/thận ứ nước')" class="option-btn w-full text-left p-3 border rounded-lg hover:bg-slate-50 transition">T3: Xâm lấn âm đạo thấp/thành chậu</button>
+                    <button onclick="setT('T4', 'Xâm lấn niêm mạc bàng quang hoặc trực tràng')" class="option-btn w-full text-left p-3 border rounded-lg hover:bg-slate-50 transition">T4: Xâm lấn cơ quan lân cận</button>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                <h3 class="font-bold text-blue-900 mb-4 flex items-center gap-2">
+                    <span class="bg-blue-100 px-2 py-0.5 rounded text-sm">N</span> Hạch vùng (Hạch chậu & Cạnh ĐMC)
+                </h3>
+                <div class="grid grid-cols-1 gap-2 text-sm">
+                    <button onclick="setN('N0', 'Không di căn hạch')" class="option-btn w-full text-left p-3 border rounded-lg hover:bg-slate-50 transition">N0: Không di căn hạch</button>
+                    <button onclick="setN('N1', 'Di căn hạch chậu duy nhất')" class="option-btn w-full text-left p-3 border rounded-lg hover:bg-slate-50 transition">N1: Di căn hạch chậu (Pelvic)</button>
+                    <button onclick="setN('N2', 'Di căn hạch cạnh Động mạch chủ')" class="option-btn w-full text-left p-3 border rounded-lg hover:bg-slate-50 transition">N2: Di căn hạch cạnh ĐMC (Para-aortic)</button>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                <h3 class="font-bold text-blue-900 mb-4 flex items-center gap-2">
+                    <span class="bg-blue-100 px-2 py-0.5 rounded text-sm">M</span> Di căn xa
+                </h3>
+                <div class="flex gap-2 text-sm">
+                    <button onclick="setM('M0', 'Không di căn xa')" class="option-btn flex-1 p-3 border rounded-lg hover:bg-slate-50 transition">M0: Không</button>
+                    <button onclick="setM('M1', 'Có di căn xa (phổi, gan, xương...)')" class="option-btn flex-1 p-3 border rounded-lg hover:bg-slate-50 transition">M1: Có di căn</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="md:col-span-1">
+            <div class="bg-slate-900 text-white p-6 rounded-2xl shadow-xl sticky top-8 border-t-4 border-yellow-500">
+                <h2 class="text-xs font-bold uppercase text-slate-400 mb-4 tracking-widest">Phân độ giai đoạn</h2>
+                
+                <div class="mb-6">
+                    <p class="text-sm opacity-70">TNM hiện tại:</p>
+                    <p id="display-tnm" class="text-2xl font-mono font-bold text-yellow-400">-- -- --</p>
+                </div>
+
+                <div class="mb-6 bg-slate-800 p-4 rounded-xl">
+                    <p class="text-sm opacity-70 mb-1">GIAI ĐOẠN (STAGE):</p>
+                    <p id="display-stage" class="text-5xl font-black">--</p>
+                    <p id="display-figo" class="text-xs text-blue-300 mt-2 italic">Tương đương FIGO: --</p>
+                </div>
+
+                <div class="space-y-3">
+                    <button onclick="copyResult()" class="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-xl font-bold transition">Sao chép kết quả</button>
+                    <button onclick="resetAll()" class="w-full bg-slate-700 hover:bg-slate-600 py-2 rounded-xl text-sm transition">Làm mới</button>
+                </div>
+
+                <div class="mt-6 pt-6 border-t border-slate-700 text-[10px] text-slate-500">
+                    Nguồn: AJCC Version 9 Cervical Cancer[cite: 3]. Hình ảnh và kết quả phẫu thuật được phép sử dụng để xếp độ[cite: 175, 176].
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let currentT = '', currentN = '', currentM = '';
+
+        function setT(val, desc) { currentT = val; updateUI('t-options', val); calculate(); }
+        function setN(val, desc) { currentN = val; updateUI(null, val); calculate(); }
+        function setM(val, desc) { currentM = val; updateUI(null, val); calculate(); }
+
+        function updateUI(containerId, val) {
+            const btns = document.querySelectorAll('button');
+            btns.forEach(b => {
+                if(b.innerText.startsWith(val + ':') || b.innerText === val || b.innerText.includes(val)) {
+                    // Xử lý active class
+                }
+            });
+            // Logic đơn giản để đổi màu nút
+            event.currentTarget.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+        }
+
+        function calculate() {
+            if (!currentT || !currentN || !currentM) return;
+            
+            document.getElementById('display-tnm').innerText = `${currentT} ${currentN} ${currentM}`;
+            let stage = '--';
+            let figo = '--';
+
+            // Logic tính Stage dựa trên Table 10 AJCC v9 [cite: 323]
+            if (currentM === 'M1') { stage = 'IVB'; figo = 'IVB'; }
+            else if (currentN === 'N2') { stage = 'IIIC2'; figo = 'IIIC2'; }
+            else if (currentN === 'N1') { stage = 'IIIC1'; figo = 'IIIC1'; }
+            else if (currentT === 'T4') { stage = 'IVA'; figo = 'IVA'; }
+            else if (currentT === 'T3') { stage = 'III'; figo = 'III'; } // Tùy sub-stage
+            else if (currentT === 'T2') { stage = 'II'; figo = 'II'; }
+            else if (currentT.startsWith('T1')) {
+                if (currentT === 'T1a1') { stage = 'IA1'; figo = 'IA1'; }
+                else if (currentT === 'T1a2') { stage = 'IA2'; figo = 'IA2'; }
+                else if (currentT === 'T1b1') { stage = 'IB1'; figo = 'IB1'; }
+                else if (currentT === 'T1b2') { stage = 'IB2'; figo = 'IB2'; }
+                else if (currentT === 'T1b3') { stage = 'IB3'; figo = 'IB3'; }
+            }
+
+            document.getElementById('display-stage').innerText = stage;
+            document.getElementById('display-figo').innerText = `Tương đương FIGO: ${figo}`;
+        }
+
+        function resetAll() {
+            location.reload();
+        }
+
+        function copyResult() {
+            const text = `Chẩn đoán TNM (AJCC v9): ${currentT}${currentN}${currentM} - Giai đoạn: ${document.getElementById('display-stage').innerText}`;
+            navigator.clipboard.writeText(text);
+            alert("Đã sao chép!");
+        }
+    </script>
+</body>
+</html>
