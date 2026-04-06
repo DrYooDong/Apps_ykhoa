@@ -46,6 +46,8 @@
             <button onclick="setFilter('Thần kinh', this)" class="filter-btn px-4 py-1.5 rounded-full text-sm font-bold bg-gray-200 text-gray-700 hover:bg-gray-300 transition">Thần kinh</button>
             <button onclick="setFilter('Ngoại khoa', this)" class="filter-btn px-4 py-1.5 rounded-full text-sm font-bold bg-gray-200 text-gray-700 hover:bg-gray-300 transition">Ngoại khoa</button>
             <button onclick="setFilter('Sản phụ khoa', this)" class="filter-btn px-4 py-1.5 rounded-full text-sm font-bold bg-gray-200 text-gray-700 hover:bg-gray-300 transition">Sản phụ khoa</button>
+            <button onclick="setFilter('Ung thư', this)" class="filter-btn px-4 py-1.5 rounded-full text-sm font-bold bg-gray-200 text-gray-700 hover:bg-gray-300 transition">Ung thư
+            </button>
         </div>
 
         <div id="appGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -235,6 +237,14 @@
                 file: "Quanly_hoichungvanhcap.html",
                 category: "Tim mạch",
                 color: "orange"
+            },
+            { 
+                title: "Phân loại TNM trong ung thư", 
+                desc: "Phân loại TNM trong ung thư.", 
+                icon: "🫀", 
+                file: "tnm_ungthu.html",
+                category: "Ung thư",
+                color: "blue"
             }
         ];
         let currentCategory = 'All';
