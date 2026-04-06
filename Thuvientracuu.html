@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedScale Pro - Thư viện Tra cứu Thang điểm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .card-transition { transition: all 0.2s ease-out; }
+        .card-transition:hover { transform: translateY(-3px); box-shadow: 0 12px 20px -5px rgb(0 0 0 / 0.05); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body>
+
+<div id="app" class="min-h-screen pb-20">
+    <nav class="bg-white shadow-sm sticky top-0 z-40 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-blue-100">M</div>
+                <h1 class="text-2xl font-black text-slate-800 tracking-tighter">MedScale<span class="text-blue-600">.</span></h1>
+            </div>
+            
+            <div class="relative flex-1 max-w-md w-full">
+                <input 
+                    v-model="searchQuery"
+                    type="text" 
+                    placeholder="Tìm nhanh thang điểm..." 
+                    class="w-full pl-10 pr-4 py-3 bg-slate-100 border-none rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none text-slate-700 font-medium transition-all"
+                >
+                <span class="absolute left-3 top-3.5 text-slate-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 mt-8">
+        <div class="flex flex-wrap gap-2 mb-10 overflow-x-auto pb-2 no-scrollbar">
+            <button 
+                @click="selectedCategory = 'Tất cả'"
+                :class="selectedCategory === 'Tất cả' ? 'bg-blue-600 text-white shadow-md shadow-blue-100' : 'bg-white text-slate-600 hover:bg-slate-50'"
+                class="px-5 py-2.5 rounded-2xl text-xs font-bold border border-slate-200 transition-all whitespace-nowrap uppercase tracking-wider">
+                Tất cả
+            </button>
+            <button 
+                v-for="cat in categories" 
+                @click="selectedCategory = cat"
+                :class="selectedCategory === cat ? 'bg-blue-600 text-white shadow-md shadow-blue-100' : 'bg-white text-slate-600 hover:bg-slate-50'"
+                class="px-5 py-2.5 rounded-2xl text-xs font-bold border border-slate-200 transition-all whitespace-nowrap uppercase tracking-wider">
+                {{ cat }}
+            </button>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            <div 
+                v-for="scale in filteredScales" 
+                :key="scale.id"
+                @click="openDetail(scale)"
+                class="bg-white rounded-[2rem] border border-slate-200 p-6 flex flex-col justify-between cursor-pointer card-transition shadow-sm group"
+            >
+                <div>
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-[10px] font-black uppercase tracking-widest text-blue-600 bg-blue-50 px-2.5 py-1 rounded-lg">
+                            {{ scale.category }}
+                        </span>
+                        <span class="text-slate-200 group-hover:text-blue-200 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </div>
+                    <h2 class="text-lg font-extrabold text-slate-800 group-hover:text-blue-600 transition-colors">{{ scale.name }}</h2>
+                    <p class="text-xs text-slate-500 mt-2 leading-relaxed line-clamp-3">
+                        {{ scale.description }}
+                    </p>
+                </div>
+                <div class="mt-6 flex items-center text-[11px] font-bold text-blue-600 uppercase tracking-tighter">
+                    Chi tiết
+                </div>
+            </div>
+        </div>
+
+        <div v-if="filteredScales.length === 0" class="text-center py-32">
+            <p class="text-slate-400 font-medium">Không tìm thấy thang điểm phù hợp.</p>
+        </div>
+    </main>
+
+    <div v-if="isModalOpen" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-md" @click.self="closeModal">
+        <div class="bg-white rounded-[2.5rem] shadow-2xl max-w-2xl w-full max-h-[85vh] overflow-hidden flex flex-col animate-in fade-in zoom-in duration-200">
+            <div class="p-8 border-b border-slate-100 flex justify-between items-start bg-gradient-to-br from-white to-blue-50/30">
+                <div>
+                    <span class="text-[10px] font-black uppercase text-blue-600 tracking-widest px-3 py-1 bg-blue-100 rounded-full">{{ selectedScale.category }}</span>
+                    <h2 class="text-3xl font-black text-slate-800 mt-3 tracking-tight">{{ selectedScale.name }}</h2>
+                    <p class="text-sm text-slate-500 mt-1 font-medium">{{ selectedScale.description }}</p>
+                </div>
+                <button @click="closeModal" class="p-2 hover:bg-white rounded-2xl text-slate-400 hover:text-red-500 transition-all bg-slate-50 shadow-inner">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="p-8 overflow-y-auto no-scrollbar">
+                <section class="mb-10">
+                    <h4 class="text-xs font-black text-slate-400 mb-4 uppercase tracking-[0.2em]">Hướng dẫn lý thuyết</h4>
+                    <div class="text-slate-700 leading-7 whitespace-pre-line text-[15px] font-medium bg-slate-50 p-6 rounded-[2rem] border border-slate-100">
+                        {{ selectedScale.detail || 'Nội dung đang được cập nhật...' }}
+                    </div>
+                </section>
+
+                <section>
+                    <h4 class="text-xs font-black text-slate-400 mb-4 uppercase tracking-[0.2em]">Bảng diễn giải kết quả</h4>
+                    <div class="overflow-hidden border border-slate-100 rounded-[2rem]">
+                        <table class="w-full text-sm text-left">
+                            <thead class="bg-slate-50 text-slate-400 font-black uppercase text-[10px] tracking-wider">
+                                <tr>
+                                    <th class="px-6 py-4">Mức điểm</th>
+                                    <th class="px-6 py-4">Phân tầng & Xử trí</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-50 font-semibold">
+                                <tr v-for="res in selectedScale.interpretation" :class="getRiskClass(res.level)" class="bg-opacity-5">
+                                    <td class="px-6 py-5 font-bold">{{ res.score }}</td>
+                                    <td class="px-6 py-5">{{ selectedScale.name.includes('GCS') ? res.status : res.action }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+
+            <div class="px-8 py-6 bg-white border-t border-slate-50 text-center">
+                <button @click="closeModal" class="w-full py-4 bg-slate-900 text-white font-bold rounded-2xl hover:bg-blue-600 transition-colors shadow-lg shadow-slate-200">Đã hiểu</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const { createApp, ref, computed } = Vue;
+
+    createApp({
+        setup() {
+            const searchQuery = ref('');
+            const selectedCategory = ref('Tất cả');
+            const selectedScale = ref(null);
+            const isModalOpen = ref(false);
+
+            const clinicalScales = ref([
+                {
+                    id: 1,
+                    category: 'Hô hấp',
+                    name: 'CURB-65',
+                    description: 'Tiên lượng tử vong và quyết định nơi điều trị cho viêm phổi cộng đồng.',
+                    detail: "Mỗi tiêu chí sau đây tương ứng 1 điểm:\n- C (Confusion): Lú lẫn, mất định hướng mới xuất hiện.\n- U (Urea): Urea máu > 7 mmol/L (hoặc BUN > 19 mg/dL).\n- R (Respiratory Rate): Nhịp thở ≥ 30 lần/phút.\n- B (Blood Pressure): Huyết áp tâm thu < 90 mmHg hoặc tâm trương ≤ 60 mmHg.\n- 65: Tuổi bệnh nhân ≥ 65.",
+                    interpretation: [
+                        { score: '0-1 điểm', action: 'Nguy cơ thấp, điều trị ngoại trú.', level: 'low' },
+                        { score: '2 điểm', action: 'Nguy cơ trung bình, nhập viện điều trị.', level: 'mid' },
+                        { score: '3-5 điểm', action: 'Nguy cơ cao, điều trị tại ICU.', level: 'high' }
+                    ]
+                },
+                {
+                    id: 2,
+                    category: 'Thần kinh',
+                    name: 'GCS (Glasgow)',
+                    description: 'Đánh giá mức độ suy giảm ý thức và hôn mê sau chấn thương hoặc bệnh lý.',
+                    detail: "Cấu trúc 3 thành phần (3 - 15 điểm):\n\n1. Mở mắt (E):\n- 4: Tự nhiên\n- 3: Khi gọi\n- 2: Khi đau\n- 1: Không mở\n\n2. Lời nói (V):\n- 5: Định hướng đúng\n- 4: Nhầm lẫn\n- 3: Từ ngữ bất thường\n- 2: Âm vô nghĩa\n- 1: Không đáp ứng\n\n3. Vận động (M):\n- 6: Theo lệnh\n- 5: Khu trú đau\n- 4: Co rút đau\n- 3: Gồng cứng mất vỏ\n- 2: Duỗi cứng mất não\n- 1: Không đáp ứng",
+                    interpretation: [
+                        { score: '13-15 điểm', status: 'Chấn thương sọ não nhẹ / Tỉnh.', level: 'low' },
+                        { score: '9-12 điểm', status: 'Chấn thương sọ não trung bình.', level: 'mid' },
+                        { score: '3-8 điểm', status: 'Chấn thương sọ não nặng / Hôn mê.', level: 'high' }
+                    ]
+                },
+                {
+                    id: 3,
+                    category: 'Tim mạch',
+                    name: 'CHA2DS2-VASc',
+                    description: 'Dự báo nguy cơ đột quỵ do thuyên tắc mạch ở bệnh nhân rung nhĩ không do van tim.',
+                    detail: "- C (Congestive Heart Failure): Suy tim (1đ)\n- H (Hypertension): Tăng huyết áp (1đ)\n- A2 (Age): Tuổi ≥ 75 (2đ)\n- D (Diabetes): Tiểu đường (1đ)\n- S2 (Stroke): Đột quỵ/TIA/Thuyên tắc mạch (2đ)\n- V (Vascular Disease): Bệnh mạch máu ngoại biên/NMCT (1đ)\n- A (Age): Tuổi 65-74 (1đ)\n- Sc (Sex Category): Nữ giới (1đ)",
+                    interpretation: [
+                        { score: '0 (Nam), 1 (Nữ)', action: 'Nguy cơ thấp, không cần kháng đông.', level: 'low' },
+                        { score: '1 (Nam)', action: 'Cân nhắc dùng kháng đông đường uống (OAC).', level: 'mid' },
+                        { score: '≥ 2 điểm', action: 'Chỉ định bắt buộc dùng kháng đông đường uống.', level: 'high' }
+                    ]
+                },
+                {
+                    id: 4,
+                    category: 'Cấp cứu/ICU',
+                    name: 'NEWS2',
+                    description: 'Hệ thống cảnh báo sớm quốc gia để đánh giá mức độ bệnh cấp tính và suy sụp lâm sàng.',
+                    detail: "Đánh giá dựa trên 7 thông số:\n1. Nhịp thở\n2. Độ bão hòa oxy (2 thang đo SpO2)\n3. Oxy hỗ trợ (Có/Không)\n4. Huyết áp tâm thu\n5. Nhịp tim\n6. Ý thức (ACVPU)\n7. Nhiệt độ\n\n*Điểm mỗi thông số từ 0 đến 3 tùy mức độ lệch khỏi bình thường.",
+                    interpretation: [
+                        { score: '0-4 điểm', action: 'Nguy cơ thấp - Theo dõi định kỳ.', level: 'low' },
+                        { score: '5-6 điểm', action: 'Nguy cơ trung bình - Báo cáo bác sĩ trực.', level: 'mid' },
+                        { score: '≥ 7 điểm', action: 'Nguy cơ cao - Cấp cứu nội viện (MET).', level: 'high' }
+                    ]
+                },
+                {
+                    id: 5,
+                    category: 'Tiêu hóa/Gan',
+                    name: 'MELD Score',
+                    description: 'Đánh giá mức độ nghiêm trọng của bệnh gan cuối và dự báo tử vong 3 tháng.',
+                    detail: "Công thức tính dựa trên 4 chỉ số xét nghiệm:\n1. Bilirubin (mg/dL)\n2. INR\n3. Creatinine (mg/dL)\n4. Sodium (Natri) máu\n\n*MELD giúp ưu tiên danh sách ghép gan.",
+                    interpretation: [
+                        { score: '≤ 9', action: 'Tử vong 3 tháng: 1.9%', level: 'low' },
+                        { score: '20 - 29', action: 'Tử vong 3 tháng: 19.6%', level: 'mid' },
+                        { score: '≥ 40', action: 'Tử vong 3 tháng: 71.3%', level: 'high' }
+                    ]
+                },
+                {
+                    id: 6,
+                    category: 'Hệ thận',
+                    name: 'KDIGO (AKI)',
+                    description: 'Chẩn đoán và phân độ mức độ nặng của tổn thương thận cấp.',
+                    detail: "Giai đoạn 1:\n- Creatinine tăng 1.5–1.9 lần nền trong 7 ngày HOẶC tăng ≥ 0.3 mg/dL trong 48h.\n- Nước tiểu < 0.5 mL/kg/h trong 6–12h.\n\nGiai đoạn 2:\n- Creatinine tăng 2.0–2.9 lần nền.\n- Nước tiểu < 0.5 mL/kg/h trong ≥ 12h.\n\nGiai đoạn 3:\n- Creatinine tăng ≥ 3.0 lần nền HOẶC ≥ 4.0 mg/dL HOẶC bắt đầu lọc máu.\n- Nước tiểu < 0.3 mL/kg/h trong ≥ 24h HOẶC vô niệu ≥ 12h.",
+                    interpretation: [
+                        { score: 'Giai đoạn 1', action: 'Nhẹ - Theo dõi, tránh thuốc độc thận.', level: 'low' },
+                        { score: 'Giai đoạn 2', action: 'Trung bình - Kiểm soát dịch, xem xét can thiệp.', level: 'mid' },
+                        { score: 'Giai đoạn 3', action: 'Nặng - Cân nhắc lọc máu cấp cứu.', level: 'high' }
+                    ]
+                }
+            ]);
+
+            const categories = computed(() => {
+                const cats = clinicalScales.value.map(s => s.category);
+                return [...new Set(cats)];
+            });
+
+            const filteredScales = computed(() => {
+                return clinicalScales.value.filter(scale => {
+                    const query = searchQuery.value.toLowerCase();
+                    const matchesSearch = scale.name.toLowerCase().includes(query) || 
+                                        scale.category.toLowerCase().includes(query);
+                    const matchesCat = selectedCategory.value === 'Tất cả' || scale.category === selectedCategory.value;
+                    return matchesSearch && matchesCat;
+                });
+            });
+
+            const openDetail = (scale) => {
+                selectedScale.value = scale;
+                isModalOpen.value = true;
+                document.body.style.overflow = 'hidden';
+            };
+
+            const closeModal = () => {
+                isModalOpen.value = false;
+                document.body.style.overflow = 'auto';
+            };
+
+            const getRiskClass = (level) => {
+                if (level === 'low') return 'bg-emerald-500 text-emerald-700';
+                if (level === 'mid') return 'bg-amber-500 text-amber-700';
+                if (level === 'high') return 'bg-rose-500 text-rose-700';
+                return 'bg-slate-500 text-slate-700';
+            };
+
+            return {
+                searchQuery,
+                selectedCategory,
+                clinicalScales,
+                categories,
+                filteredScales,
+                selectedScale,
+                isModalOpen,
+                openDetail,
+                closeModal,
+                getRiskClass
+            };
+        }
+    }).mount('#app');
+</script>
+
+</body>
+</html>
