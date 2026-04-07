@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wellington ICU Antibiotic Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f1f5f9; }
+        .abx-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .abx-card:hover { transform: translateY(-5px); box-shadow: 0 12px 24px -8px rgba(0,0,0,0.1); }
+        .filter-btn.active { background-color: #1e293b; color: white; border-color: #1e293b; }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h1 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <span class="p-2 bg-blue-600 rounded-lg text-white"><i class="fa-solid fa-pills"></i></span>
+                        Wellington ICU Antibiotics
+                    </h1>
+                    <p class="text-[10px] text-slate-500 font-medium uppercase tracking-widest mt-1">Drug Manual - Appendix 5</p>
+                </div>
+                
+                <div class="relative group">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-slate-400 group-focus-within:text-blue-500 transition-colors"></i>
+                    <input type="text" id="searchInput" onkeyup="renderApp()" 
+                        placeholder="Tìm kháng sinh hoặc vi khuẩn..." 
+                        class="w-full md:w-[400px] pl-12 pr-4 py-3 bg-slate-100 border-transparent rounded-2xl focus:bg-white focus:ring-4 focus:ring-blue-100 focus:border-blue-400 outline-none transition-all shadow-inner">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <div class="flex flex-wrap gap-2 mb-8" id="filterContainer">
+            </div>
+
+        <div id="abxGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            </div>
+
+        <section class="mt-16 border-t border-slate-200 pt-10">
+            <h2 class="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2">
+                <i class="fa-solid fa-clipboard-list text-blue-600"></i>
+                Clinical Guidance & Definitions
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                <div class="bg-white p-5 rounded-2xl border border-slate-200">
+                    <h4 class="font-bold text-slate-700 mb-2 underline decoration-blue-500">ESCHAPPM² Organisms</h4>
+                    <p class="text-slate-500 leading-relaxed">Enterobacter, Serratia, Citrobacter freundii, Hafnia, Acinetobacter/Aeromonas, Proteus (not mirabilis), Providencia & Morganella morganii.</p>
+                </div>
+                <div class="bg-amber-50 p-5 rounded-2xl border border-amber-100">
+                    <h4 class="font-bold text-amber-800 mb-2 underline">ESBL Rules</h4>
+                    <p class="text-amber-700 leading-relaxed">ESBL-producing organisms are resistant to most beta-lactams. Carbapenems are the agent of choice.</p>
+                </div>
+                <div class="bg-blue-50 p-5 rounded-2xl border border-blue-100 text-blue-800">
+                    <h4 class="font-bold mb-2 underline">C. difficile Protocol</h4>
+                    <p class="leading-relaxed">C. difficile should ONLY be treated with Metronidazole or Vancomycin (Oral).</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Full Data from Wellington ICU Summary [cite: 17-78]
+        const antibioticData = [
+            // PENICILLINS 
+            { name: "Penicillin", class: "PENICILLINS", gramPos: ["Streptococcus"], gramNeg: ["Neisseria"], anaerobes: ["Peptostreptococcus", "Fusobacterium"], notes: ["Phổ hẹp cho cầu khuẩn dương."] },
+            { name: "Amoxicillin", class: "PENICILLINS", gramPos: ["Streptococcus", "Enterococcus faecalis"], gramNeg: ["Neisseria", "Haemophilus influenzae"], anaerobes: ["Peptostreptococcus", "Fusobacterium"], notes: ["Không hiệu quả với Clostridium."] },
+            { name: "Amoxicillin-clavulanate", class: "PENICILLINS", gramPos: ["Streptococcus", "MSSA", "Enterococcus faecalis"], gramNeg: ["Neisseria", "Haemophilus", "Moraxella", "E.coli", "Klebsiella", "Proteus mirabilis"], anaerobes: ["Hầu hết (gồm Clostridium)"], notes: ["Phổ rộng cộng đồng."] },
+            { name: "Flucloxacillin", class: "PENICILLINS", gramPos: ["MSSA"], gramNeg: [], anaerobes: [], notes: ["Đặc hiệu cho tụ cầu nhạy methicillin."] },
+            { name: "Piperacillin-tazobactam", class: "PENICILLINS", gramPos: ["Streptococcus", "MSSA", "Enterococcus faecalis"], gramNeg: ["E.coli", "Klebsiella", "Proteus", "Pseudomonas", "ESCHAPPM²"], anaerobes: ["Hầu hết"], notes: ["Kháng sinh ICU chủ lực."] },
+            { name: "Ticarcillin-clavulanate", class: "PENICILLINS", gramPos: ["Streptococcus", "MSSA"], gramNeg: ["E.coli", "Klebsiella", "Pseudomonas", "ESCHAPPM²"], anaerobes: ["Hầu hết"], notes: ["Bao phủ trực khuẩn mủ xanh."] },
+
+            // CEPHALOSPORINS 
+            { name: "Cephazolin", class: "CEPHALOSPORINS", gramPos: ["Streptococcus", "MSSA"], gramNeg: ["E.coli", "Klebsiella", "Proteus mirabilis"], anaerobes: [], notes: ["Dự phòng phẫu thuật phổ biến."] },
+            { name: "Cefuroxime", class: "CEPHALOSPORINS", gramPos: ["Streptococcus", "MSSA"], gramNeg: ["Neisseria", "Haemophilus", "E.coli", "Klebsiella"], anaerobes: [], notes: ["Không khuyên dùng cho Moraxella do MIC tăng[cite: 77]."] },
+            { name: "Ceftriaxone", class: "CEPHALOSPORINS", gramPos: ["Streptococcus", "MSSA"], gramNeg: ["Neisseria", "Haemophilus", "E.coli", "Klebsiella", "Proteus mirabilis"], anaerobes: [], notes: ["Thế hệ 3, xâm nhập thần kinh tốt."] },
+            { name: "Ceftazidime", class: "CEPHALOSPORINS", gramPos: [], gramNeg: ["Pseudomonas"], anaerobes: [], notes: ["CHỈ nên dùng cho Pseudomonas."] },
+            { name: "Cefepime", class: "CEPHALOSPORINS", gramPos: ["Streptococcus", "MSSA"], gramNeg: ["E.coli", "Klebsiella", "Proteus", "Pseudomonas", "ESCHAPPM²"], anaerobes: [], notes: ["Thế hệ 4, phổ Gram âm rất rộng."] },
+
+            // CARBAPENEMS 
+            { name: "Meropenem", class: "CARBAPENEMS", gramPos: ["Streptococcus", "MSSA"], gramNeg: ["Tất cả Gram âm"], anaerobes: ["Tất cả kỵ khí"], notes: ["Lựa chọn cho vi khuẩn sinh ESBL."] },
+            { name: "Imipenem", class: "CARBAPENEMS", gramPos: ["Streptococcus", "MSSA", "Enterococcus faecalis"], gramNeg: ["Tất cả Gram âm"], anaerobes: ["Tất cả kỵ khí"], notes: ["Phổ tương tự Meropenem."] },
+            { name: "Ertapenem", class: "CARBAPENEMS", gramPos: ["Streptococcus", "MSSA"], gramNeg: ["E.coli", "Klebsiella", "ESCHAPPM²"], anaerobes: ["Hầu hết"], notes: ["KHÔNG bao phủ Pseudomonas."] },
+
+            // GLYCOPEPTIDES & OTHERS 
+            { name: "Vancomycin", class: "GLYCOPEPTIDES", gramPos: ["MRSA", "MSSA", "Streptococcus", "Enterococcus", "S. epidermidis"], gramNeg: [], anaerobes: ["C. difficile"], notes: ["Lựa chọn đầu tay cho MRSA."] },
+            { name: "Teicoplanin", class: "GLYCOPEPTIDES", gramPos: ["MRSA", "MSSA", "Streptococcus", "Enterococcus (không Faecium)"], gramNeg: [], anaerobes: [], notes: ["Không hiệu quả cho E. faecium."] },
+            { name: "Linezolid", class: "OXAZOLIDINONES", gramPos: ["MRSA", "VRE", "Tất cả Gram dương"], gramNeg: [], anaerobes: [], notes: ["Dành cho Gram dương đa kháng."] },
+            { name: "Daptomycin", class: "LIPOPEPTIDES", gramPos: ["MRSA", "VRE", "Tất cả Gram dương"], gramNeg: [], anaerobes: [], notes: ["Không dùng cho viêm phổi."] },
+
+            // AMINOGLYCOSIDES 
+            { name: "Gentamicin", class: "AMINOGLYCOSIDES", gramPos: ["S. aureus (Synergy)"], gramNeg: ["E.coli", "Klebsiella", "Pseudomonas", "ESCHAPPM²"], anaerobes: [], notes: ["Chỉ dùng phối hợp cho S. aureus, không đơn trị."] },
+            { name: "Tobramycin", class: "AMINOGLYCOSIDES", gramPos: [], gramNeg: ["Pseudomonas", "Gram âm trực khuẩn"], anaerobes: [], notes: ["Mạnh trên Pseudomonas."] },
+
+            // FLUOROQUINOLONES 
+            { name: "Ciprofloxacin", class: "FLUOROQUINOLONES", gramPos: [], gramNeg: ["Pseudomonas", "Haemophilus", "E.coli", "Klebsiella"], anaerobes: [], notes: ["Kháng sinh đường uống mạnh cho Gram âm."] },
+            { name: "Moxifloxacin", class: "FLUOROQUINOLONES", gramPos: ["Streptococcus", "MSSA"], gramNeg: ["Haemophilus", "Moraxella", "E.coli"], anaerobes: ["Bacteroides", "Fusobacterium"], notes: ["Bao phủ kỵ khí trừ Clostridium."] },
+
+            // MACROLIDES & LINCOSAMIDES [cite: 23-28]
+            { name: "Clindamycin", class: "LINCOSAMIDE", gramPos: ["Streptococcus", "MSSA", "S. epidermidis"], gramNeg: [], anaerobes: ["Bacteroides", "Fusobacterium", "Peptostreptococcus"], notes: ["Không hiệu quả với Clostridium."] },
+            { name: "Azithromycin", class: "MACROLIDES", gramPos: ["Streptococcus"], gramNeg: ["Haemophilus", "Legionella"], anaerobes: [], notes: ["Dùng cho vi khuẩn không điển hình."] },
+
+            // SPECIALS [cite: 29-32, 51-55]
+            { name: "Metronidazole", class: "NITROIMIDAZOLE", gramPos: [], gramNeg: [], anaerobes: ["Bacteroides", "Fusobacterium", "Clostridium"], notes: ["Không hiệu quả với Peptostreptococcus."] },
+            { name: "Co-trimoxazole", class: "SULFONAMIDES", gramPos: ["MRSA", "MSSA"], gramNeg: ["Haemophilus", "E.coli", "Klebsiella"], anaerobes: [], notes: ["Dùng cho Stenotrophomonas."] },
+            { name: "Tigecycline", class: "GLYCYLCYCLINE", gramPos: ["Tất cả Gram dương"], gramNeg: ["E.coli", "Klebsiella", "ESCHAPPM²"], anaerobes: ["Hầu hết"], notes: ["Không bao phủ Pseudomonas & Proteus."] },
+            { name: "Fusidic Acid", class: "RIFAMYCIN", gramPos: ["MSSA", "MRSA"], gramNeg: [], anaerobes: [], notes: ["Thường phối hợp cho tụ cầu."] }
+        ];
+
+        let activeFilter = 'Tất cả';
+
+        function renderApp() {
+            const grid = document.getElementById('abxGrid');
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            grid.innerHTML = '';
+
+            const filtered = antibioticData.filter(item => {
+                const matchesSearch = item.name.toLowerCase().includes(search) || 
+                                     item.gramNeg.some(g => g.toLowerCase().includes(search)) ||
+                                     item.gramPos.some(p => p.toLowerCase().includes(search));
+                const matchesFilter = activeFilter === 'Tất cả' || item.class === activeFilter;
+                return matchesSearch && matchesFilter;
+            });
+
+            filtered.forEach(abx => {
+                const card = `
+                    <div class="bg-white rounded-3xl border border-slate-200 p-6 abx-card flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-[9px] font-bold px-2.5 py-1 bg-slate-100 text-slate-500 rounded-full uppercase tracking-widest">${abx.class}</span>
+                                <span class="h-2 w-2 rounded-full ${abx.gramNeg.length > 5 ? 'bg-red-500' : 'bg-green-500'}"></span>
+                            </div>
+                            <h3 class="text-xl font-extrabold text-slate-800 mb-5">${abx.name}</h3>
+                            
+                            <div class="space-y-4">
+                                ${renderList("Gram Dương", abx.gramPos, "blue")}
+                                ${renderList("Gram Âm", abx.gramNeg, "rose")}
+                                ${renderList("Kỵ Khí", abx.anaerobes, "emerald")}
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-4 border-t border-slate-50">
+                            ${abx.notes.map(n => `<p class="text-[11px] text-slate-500 leading-relaxed italic"><i class="fa-solid fa-circle-exclamation text-amber-400 mr-1.5"></i>${n}</p>`).join('')}
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += card;
+            });
+        }
+
+        function renderList(label, items, color) {
+            if (items.length === 0) return '';
+            const colorMap = {
+                blue: "bg-blue-50 text-blue-600",
+                rose: "bg-rose-50 text-rose-600",
+                emerald: "bg-emerald-50 text-emerald-600"
+            };
+            return `
+                <div>
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">${label}</span>
+                    <div class="flex flex-wrap gap-1.5 mt-2">
+                        ${items.map(i => `<span class="px-2.5 py-1 rounded-lg text-[10px] font-semibold ${colorMap[color]}">${i}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function initFilters() {
+            const container = document.getElementById('filterContainer');
+            const classes = ['Tất cả', ...new Set(antibioticData.map(a => a.class))];
+            
+            container.innerHTML = classes.map(c => `
+                <button onclick="setFilter('${c}')" id="btn-${c}" 
+                    class="filter-btn px-5 py-2 rounded-2xl border border-slate-200 bg-white text-slate-600 text-xs font-bold transition-all hover:border-slate-400">
+                    ${c}
+                </button>
+            `).join('');
+            document.getElementById('btn-Tất cả').classList.add('active');
+        }
+
+        function setFilter(c) {
+            activeFilter = c;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(`btn-${c}`).classList.add('active');
+            renderApp();
+        }
+
+        initFilters();
+        renderApp();
+    </script>
+</body>
+</html>
