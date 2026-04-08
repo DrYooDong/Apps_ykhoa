@@ -3,199 +3,282 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SBAR Pro - Handoff & Tracking</title>
+    <title>SBAR Pro V2.3 Master</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            darkMode: 'class',
-        }
+        tailwind.config = { darkMode: 'class' }
     </script>
     <style>
-        body { font-family: 'Segoe UI', system-ui, sans-serif; transition: background-color 0.3s; }
+        body { font-family: 'Inter', sans-serif; transition: all 0.3s; }
         .custom-scrollbar::-webkit-scrollbar { width: 4px; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-        select { appearance: none; } /* Xóa mũi tên mặc định để đồng bộ UI */
+        .emergency-pulse { animation: pulse-red 2s infinite; }
+        @keyframes pulse-red { 0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); } 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); } }
+        
+        /* Chế độ bảo vệ mắt ban đêm (Night Shift) */
+        .night-shift { filter: sepia(0.4) saturate(0.9) contrast(0.9); }
     </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 pb-20">
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 pb-20 overflow-x-hidden">
 
-    <div class="bg-white dark:bg-slate-800 shadow-md sticky top-0 z-50 transition-colors">
-        <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
-            <h1 class="font-bold text-xl flex items-center gap-2">
+    <div class="bg-white dark:bg-slate-800 shadow-sm sticky top-0 z-50 transition-colors">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="font-extrabold text-xl flex items-center gap-2 text-blue-600">
                 <span class="bg-blue-600 text-white px-2 py-0.5 rounded text-sm">SBAR</span>
-                <span class="hidden sm:inline">Quản Lý Ca Trực</span>
+                V2.3 MASTER
             </h1>
-            <div class="flex items-center gap-3">
-                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition">
-                    <svg id="sun-icon" class="w-5 h-5 hidden dark:block text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path></svg>
-                    <svg id="moon-icon" class="w-5 h-5 dark:hidden text-slate-600" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+            <div class="flex items-center gap-1 sm:gap-3">
+                <button onclick="toggleNightShift()" id="eye-btn" class="p-2 rounded-full hover:bg-orange-100 text-slate-500 transition-all" title="Chế độ bảo vệ mắt">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                 </button>
-                <input type="date" id="duty-date" class="bg-slate-100 dark:bg-slate-700 border-none rounded-lg px-2 py-1 text-sm focus:ring-2 ring-blue-500 text-slate-800 dark:text-white">
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700">
+                    <svg class="w-5 h-5 dark:hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg class="w-5 h-5 hidden dark:block text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0z"></path></svg>
+                </button>
+                <input type="date" id="duty-date" class="bg-slate-100 dark:bg-slate-700 border-none rounded-lg px-2 py-1 text-xs font-bold">
             </div>
         </div>
     </div>
 
-    <main class="max-w-5xl mx-auto px-4 mt-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <main class="max-w-6xl mx-auto px-4 mt-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
         
-        <div class="lg:col-span-1 space-y-4">
-            <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
-                <h2 class="font-bold mb-4 flex items-center gap-2 text-slate-800 dark:text-white">
-                    <span class="w-2 h-5 bg-blue-500 rounded-full"></span>
-                    Thêm BN Theo Dõi
+        <div class="lg:col-span-4 space-y-4">
+            <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 sticky top-20">
+                <h2 id="form-title" class="font-bold mb-4 flex items-center gap-2 uppercase text-sm tracking-widest text-slate-500">
+                    <span class="w-1.5 h-4 bg-blue-500 rounded-full"></span> Thêm BN Theo Dõi
                 </h2>
+                
                 <div class="space-y-3">
                     <div class="grid grid-cols-2 gap-2">
-                        <input type="text" id="p_name" placeholder="Tên BN" class="w-full bg-slate-50 dark:bg-slate-900 border-none rounded-xl p-3 text-sm focus:ring-2 ring-blue-500 text-slate-800 dark:text-white">
-                        
-                        <div class="relative">
-                            <select id="p_bed" class="w-full bg-slate-50 dark:bg-slate-900 border-none rounded-xl p-3 text-sm focus:ring-2 ring-blue-500 text-slate-800 dark:text-white appearance-none cursor-pointer">
-                                <option value="" disabled selected>Chọn giường</option>
-                                <option value="4">Giường 4</option>
-                                <option value="5">Giường 5</option>
-                                <option value="6">Giường 6</option>
-                                <option value="7">Giường 7</option>
-                                <option value="8">Giường 8</option>
-                                <option value="9">Giường 9</option>
-                                <option value="11">Giường 11</option>
-                                <option value="13">Giường 13</option>
-                                <option value="14">Giường 14</option>
-                                <option value="15">Giường 15</option>
-                                <option value="16">Giường 16</option>
-                                <option value="17">Giường 17</option>
-                                <option value="18">Giường 18</option>
-                            </select>
-                            <div class="absolute inset-y-0 right-3 flex items-center pointer-events-none opacity-50">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
-                            </div>
+                        <input type="text" id="p_name" placeholder="Tên BN" class="w-full bg-slate-50 dark:bg-slate-900 rounded-xl p-3 text-sm focus:ring-2 ring-blue-500 outline-none font-semibold uppercase">
+                        <select id="p_room" class="w-full bg-slate-50 dark:bg-slate-900 rounded-xl p-3 text-sm focus:ring-2 ring-blue-500 outline-none appearance-none cursor-pointer">
+                            <option value="" disabled selected>Chọn Phòng</option>
+                            <option value="4">Phòng 4</option><option value="5">Phòng 5</option>
+                            <option value="6">Phòng 6</option><option value="7">Phòng 7</option>
+                            <option value="8">Phòng 8</option><option value="9">Phòng 9</option>
+                            <option value="11">Phòng 11</option><option value="13">Phòng 13</option>
+                            <option value="14">Phòng 14</option><option value="15">Phòng 15</option>
+                            <option value="16">Phòng 16</option><option value="17">Phòng 17</option>
+                            <option value="18">Phòng 18</option>
+                        </select>
+                    </div>
+
+                    <div class="flex gap-2">
+                        <button onclick="setPriority('low')" id="btn-low" class="flex-1 py-1.5 text-[10px] font-bold border-2 border-green-500 text-green-500 rounded-lg">ỔN ĐỊNH</button>
+                        <button onclick="setPriority('med')" id="btn-med" class="flex-1 py-1.5 text-[10px] font-bold border-2 border-orange-500 text-orange-500 rounded-lg">THEO DÕI</button>
+                        <button onclick="setPriority('high')" id="btn-high" class="flex-1 py-1.5 text-[10px] font-bold border-2 border-red-500 text-red-500 rounded-lg">CẤP CỨU</button>
+                    </div>
+
+                    <input type="text" id="p_dx" placeholder="Chẩn đoán" class="w-full bg-slate-50 dark:bg-slate-900 rounded-xl p-3 text-sm focus:ring-2 ring-blue-500 outline-none font-medium">
+                    
+                    <textarea id="sbar_content" rows="6" class="w-full bg-slate-50 dark:bg-slate-900 rounded-xl p-3 text-sm focus:ring-2 ring-blue-500 outline-none custom-scrollbar" placeholder="S: Tình trạng hiện tại...&#10;B: Tiền sử / Bệnh sử...&#10;A: Đánh giá lâm sàng...&#10;R: Đề nghị / Xử trí..."></textarea>
+
+                    <div class="bg-slate-50 dark:bg-slate-900 p-3 rounded-xl border border-dashed border-slate-300 dark:border-slate-700">
+                        <p class="text-[9px] font-bold text-slate-400 mb-2 uppercase tracking-tighter">Việc cần làm trong ca trực</p>
+                        <div id="todo-list" class="space-y-2 mb-2"></div>
+                        <div class="flex gap-2">
+                            <input type="text" id="todo-input" placeholder="Tên công việc..." class="flex-1 bg-white dark:bg-slate-800 rounded-lg p-2 text-xs outline-none">
+                            <button onclick="addTodo()" class="bg-blue-600 text-white px-3 rounded-lg shadow-md hover:bg-blue-700 transition-colors">+</button>
                         </div>
                     </div>
 
-                    <input type="text" id="p_dx" placeholder="Chẩn đoán" class="w-full bg-slate-50 dark:bg-slate-900 border-none rounded-xl p-3 text-sm focus:ring-2 ring-blue-500 text-slate-800 dark:text-white">
-                    
-                    <div class="space-y-2 pt-2">
-                        <label class="text-[10px] font-bold uppercase text-slate-400">Nội dung SBAR</label>
-                        <textarea id="sbar_content" rows="6" class="w-full bg-slate-50 dark:bg-slate-900 border-none rounded-xl p-3 text-sm focus:ring-2 ring-blue-500 custom-scrollbar text-slate-800 dark:text-white" placeholder="S: ...&#10;B: ...&#10;A: ...&#10;R: ..."></textarea>
+                    <div class="flex gap-2 pt-2">
+                        <button id="save-btn" onclick="savePatient()" class="flex-[2] bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl shadow-lg transition-all active:scale-95 text-sm uppercase">Lưu Thông Tin</button>
+                        <button id="cancel-edit-btn" onclick="cancelEdit()" class="hidden flex-1 bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 font-bold py-3 rounded-xl text-xs">HỦY</button>
                     </div>
-
-                    <button onclick="savePatient()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl shadow-lg shadow-blue-500/30 transition-all active:scale-95">
-                        LƯU VÀO DANH SÁCH
-                    </button>
                 </div>
             </div>
         </div>
 
-        <div class="lg:col-span-2 space-y-4">
+        <div class="lg:col-span-8 space-y-4">
             <div class="flex justify-between items-center px-1">
-                <h2 class="font-bold text-lg text-slate-800 dark:text-white">Danh sách ca trực (<span id="count">0</span>)</h2>
-                <button onclick="clearShift()" class="text-xs text-red-500 hover:underline transition-colors">Xóa sạch ca trực</button>
+                <h2 class="font-bold text-lg">Danh sách theo dõi (<span id="count">0</span>)</h2>
+                <div class="flex gap-2 bg-white dark:bg-slate-800 p-1 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+                    <button onclick="filterPriority('all')" class="text-[9px] px-3 py-1.5 rounded-lg font-bold transition-all filter-btn active-filter" data-filter="all">Tất cả</button>
+                    <button onclick="filterPriority('high')" class="text-[9px] px-3 py-1.5 rounded-lg font-bold transition-all filter-btn" data-filter="high">Cấp cứu</button>
+                </div>
             </div>
 
-            <div id="patient-list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                </div>
-
-            <div id="empty-state" class="text-center py-20 opacity-30 text-slate-500 dark:text-slate-400">
-                <svg class="w-16 h-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
-                <p>Chưa có bệnh nhân nào trong danh sách</p>
+            <div id="patient-list" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+            
+            <div id="empty-state" class="text-center py-32 opacity-10">
+                <svg class="w-16 h-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                <p class="font-bold">Trống</p>
             </div>
         </div>
     </main>
 
     <div id="detail-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] hidden flex items-center justify-center p-4">
-        <div class="bg-white dark:bg-slate-800 w-full max-w-lg rounded-3xl p-6 shadow-2xl transition-colors">
-            <div class="flex justify-between items-start mb-4">
-                <div>
-                    <h3 id="m-name" class="font-black text-xl text-blue-600 dark:text-blue-400">--</h3>
-                    <p id="m-dx" class="text-xs text-slate-500 dark:text-slate-400 italic">--</p>
-                </div>
-                <button onclick="closeModal()" class="p-2 bg-slate-100 dark:bg-slate-700 rounded-full hover:bg-slate-200 dark:hover:bg-slate-600 transition">&times;</button>
+        <div class="bg-white dark:bg-slate-800 w-full max-w-lg rounded-3xl p-6 shadow-2xl relative overflow-hidden transition-colors">
+            <div id="modal-header-color" class="h-2 w-full absolute top-0 left-0"></div>
+            <div class="flex justify-between items-start mb-4 mt-2">
+                <div id="m-priority-tag"></div>
+                <button onclick="closeModal()" class="w-8 h-8 flex items-center justify-center bg-slate-100 dark:bg-slate-700 rounded-full text-xl hover:bg-red-500 hover:text-white transition-all">&times;</button>
             </div>
-            <div id="m-content" class="text-sm leading-relaxed whitespace-pre-wrap bg-slate-50 dark:bg-slate-900 p-4 rounded-2xl border border-slate-100 dark:border-slate-700 max-h-[60vh] overflow-y-auto custom-scrollbar text-slate-800 dark:text-white"></div>
-            <div class="grid grid-cols-2 gap-3 mt-6">
-                <button onclick="copyCurrentModal()" class="bg-slate-800 dark:bg-blue-600 text-white font-bold py-3 rounded-xl text-sm active:scale-95 transition-transform">COPY SBAR</button>
-                <button onclick="deleteCurrentPatient()" class="bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 font-bold py-3 rounded-xl text-sm active:scale-95 transition-transform">XÓA CA NÀY</button>
+            <h3 id="m-name" class="font-black text-2xl uppercase"></h3>
+            <p id="m-dx" class="text-xs text-slate-500 mb-4 font-bold"></p>
+            <div id="m-content" class="text-sm leading-relaxed bg-slate-50 dark:bg-slate-900 p-4 rounded-2xl mb-4 max-h-60 overflow-y-auto whitespace-pre-wrap custom-scrollbar border border-slate-100 dark:border-slate-700"></div>
+            <div id="m-todos" class="mb-6 space-y-2 text-sm"></div>
+            <div class="grid grid-cols-3 gap-2">
+                <button onclick="copyCurrentModal()" class="col-span-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl shadow-lg active:scale-95 transition-all text-sm uppercase">Copy Bàn Giao</button>
+                <button onclick="deleteCurrentPatient()" class="bg-red-50 dark:bg-red-900/20 text-red-600 font-bold py-3 rounded-xl active:scale-95 transition-all text-sm">XÓA</button>
             </div>
         </div>
     </div>
 
     <script>
         let patients = [];
+        let currentPriority = 'low';
+        let currentTodos = [];
         let currentEditingId = null;
 
-        window.onload = () => {
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('duty-date').value = today;
-            
-            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                document.documentElement.classList.add('dark');
-            }
-            
-            loadData();
-            document.getElementById('duty-date').addEventListener('change', loadData);
-        };
-
-        function toggleDarkMode() {
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
-                localStorage.theme = 'light';
+        function toggleDarkMode() { document.documentElement.classList.toggle('dark'); localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'; }
+        
+        // Tính năng mới: Bảo vệ mắt (Night Shift)
+        function toggleNightShift() {
+            document.body.classList.toggle('night-shift');
+            const btn = document.getElementById('eye-btn');
+            if (document.body.classList.contains('night-shift')) {
+                btn.classList.replace('text-slate-500', 'text-orange-600');
+                btn.classList.add('bg-orange-100');
             } else {
-                document.documentElement.classList.add('dark');
-                localStorage.theme = 'dark';
+                btn.classList.replace('text-orange-600', 'text-slate-500');
+                btn.classList.remove('bg-orange-100');
             }
         }
+
+        function setPriority(p) {
+            currentPriority = p;
+            const colors = { low: 'border-green-500 text-green-500', med: 'border-orange-500 text-orange-500', high: 'border-red-500 text-red-500' };
+            const bgColors = { low: 'bg-green-500 text-white', med: 'bg-orange-500 text-white', high: 'bg-red-500 text-white' };
+            ['low', 'med', 'high'].forEach(id => {
+                const el = document.getElementById('btn-' + id);
+                el.className = `flex-1 py-1.5 px-2 text-[10px] font-bold border-2 rounded-lg transition-all ${p === id ? bgColors[id] : colors[id]}`;
+            });
+        }
+
+        function addTodo() {
+            const input = document.getElementById('todo-input');
+            if (input.value.trim()) {
+                currentTodos.push({ text: input.value, done: false });
+                input.value = '';
+                renderTodos();
+            }
+        }
+
+        function renderTodos() {
+            const list = document.getElementById('todo-list');
+            list.innerHTML = currentTodos.map((t, i) => `
+                <div class="flex items-center justify-between bg-white dark:bg-slate-800 p-2 rounded-lg text-[11px] shadow-sm border border-slate-100 dark:border-slate-700">
+                    <span class="${t.done ? 'line-through opacity-40' : 'font-medium'}">${t.text}</span>
+                    <button onclick="removeTodo(${i})" class="text-red-400 font-bold px-1 text-lg leading-none">×</button>
+                </div>
+            `).join('');
+        }
+
+        function removeTodo(i) { currentTodos.splice(i, 1); renderTodos(); }
 
         function savePatient() {
             const name = document.getElementById('p_name').value.trim();
-            const bed = document.getElementById('p_bed').value;
+            const room = document.getElementById('p_room').value;
             const dx = document.getElementById('p_dx').value.trim();
             const content = document.getElementById('sbar_content').value.trim();
 
-            if (!name || !content) return alert("Vui lòng nhập ít nhất Tên và nội dung SBAR");
+            if (!name || !content) return alert("Vui lòng điền đủ Tên và nội dung SBAR");
 
-            const newPatient = {
-                id: Date.now(),
-                name, bed, dx, content,
-                time: new Date().toLocaleTimeString('vi-VN', {hour: '2-digit', minute:'2-digit'})
-            };
-
-            patients.push(newPatient);
-            saveToLocal();
-            renderPatients();
-            
-            // Reset form
-            document.getElementById('p_name').value = '';
-            document.getElementById('p_bed').value = ''; // Reset select về mặc định
-            document.getElementById('p_dx').value = '';
-            document.getElementById('sbar_content').value = '';
+            if (currentEditingId) {
+                const index = patients.findIndex(p => p.id === currentEditingId);
+                patients[index] = { ...patients[index], name, room, dx, content, priority: currentPriority, todos: [...currentTodos] };
+                cancelEdit();
+            } else {
+                patients.push({ id: Date.now(), name, room, dx, content, priority: currentPriority, todos: [...currentTodos], time: new Date().toLocaleTimeString('vi-VN', {hour: '2-digit', minute:'2-digit'}) });
+            }
+            saveToLocal(); renderPatients(); resetForm();
         }
 
-        function renderPatients() {
-            const list = document.getElementById('patient-list');
-            const empty = document.getElementById('empty-state');
-            list.innerHTML = '';
-            
-            if (patients.length === 0) {
-                empty.classList.remove('hidden');
-                document.getElementById('count').textContent = '0';
-                return;
-            }
-            
-            empty.classList.add('hidden');
-            document.getElementById('count').textContent = patients.length;
+        function startEdit(id, e) {
+            e.stopPropagation();
+            const p = patients.find(x => x.id === id);
+            currentEditingId = id;
+            document.getElementById('p_name').value = p.name;
+            document.getElementById('p_room').value = p.room;
+            document.getElementById('p_dx').value = p.dx;
+            document.getElementById('sbar_content').value = p.content;
+            currentTodos = [...p.todos]; renderTodos(); setPriority(p.priority);
+            document.getElementById('form-title').innerHTML = `<span class="w-1.5 h-4 bg-orange-500 rounded-full animate-pulse"></span> CHỈNH SỬA CA BỆNH`;
+            document.getElementById('save-btn').textContent = "CẬP NHẬT";
+            document.getElementById('save-btn').classList.replace('bg-blue-600', 'bg-orange-600');
+            document.getElementById('cancel-edit-btn').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-            patients.forEach(p => {
+        function cancelEdit() {
+            currentEditingId = null; resetForm();
+            document.getElementById('form-title').innerHTML = `<span class="w-1.5 h-4 bg-blue-500 rounded-full"></span> Thêm BN Theo Dõi`;
+            document.getElementById('save-btn').textContent = "Lưu Thông Tin";
+            document.getElementById('save-btn').classList.replace('bg-orange-600', 'bg-blue-600');
+            document.getElementById('cancel-edit-btn').classList.add('hidden');
+        }
+
+        function resetForm() {
+            ['p_name', 'p_room', 'p_dx', 'sbar_content'].forEach(id => document.getElementById(id).value = '');
+            currentTodos = []; renderTodos(); setPriority('low');
+        }
+
+        function renderPatients(filter = 'all') {
+            const list = document.getElementById('patient-list');
+            list.innerHTML = '';
+            const filtered = filter === 'all' ? patients : patients.filter(p => p.priority === filter);
+            document.getElementById('count').textContent = filtered.length;
+            document.getElementById('empty-state').classList.toggle('hidden', filtered.length > 0);
+
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.toggle('active-filter', btn.dataset.filter === filter);
+                btn.classList.toggle('bg-blue-600', btn.dataset.filter === filter);
+                btn.classList.toggle('text-white', btn.dataset.filter === filter);
+            });
+
+            filtered.forEach(p => {
+                const cardColors = { low: 'border-green-500', med: 'border-orange-500', high: 'border-red-500' };
+                const badge = { low: 'bg-green-500', med: 'bg-orange-500 text-white', high: 'bg-red-500' };
+                
                 const card = document.createElement('div');
-                card.className = "bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 hover:border-blue-400 dark:hover:border-blue-500 transition-all cursor-pointer group";
+                card.className = `bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-sm border-l-4 ${cardColors[p.priority]} cursor-pointer hover:shadow-lg transition-all group relative ${p.priority === 'high' ? 'emergency-pulse' : ''}`;
                 card.onclick = () => showDetail(p.id);
+                
+                let todoHtml = p.todos && p.todos.length > 0 ? `
+                    <div class="mt-3 pt-3 border-t border-slate-100 dark:border-slate-700">
+                        <div class="text-[9px] font-bold text-slate-400 uppercase mb-2">Việc cần xử lý:</div>
+                        <div class="space-y-1.5">
+                            ${p.todos.map(t => `
+                                <div class="flex items-center gap-2 text-[11px] ${t.done ? 'opacity-30' : 'text-slate-600 dark:text-slate-400 font-semibold'}">
+                                    <div class="w-3 h-3 rounded border ${t.done ? 'bg-blue-500 border-blue-500' : 'border-slate-300 dark:border-slate-500'} flex-shrink-0 flex items-center justify-center">
+                                        ${t.done ? '<svg class="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>' : ''}
+                                    </div>
+                                    <span class="truncate ${t.done ? 'line-through' : ''}">${t.text}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                ` : '';
+
                 card.innerHTML = `
                     <div class="flex justify-between items-start mb-2">
-                        <span class="bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300 text-[10px] font-bold px-2 py-0.5 rounded-md">G${p.bed || '??'}</span>
-                        <span class="text-[10px] text-slate-400">${p.time}</span>
+                        <span class="${badge[p.priority]} text-white text-[9px] font-black px-2 py-0.5 rounded uppercase">
+                            ${p.priority === 'high' ? '🚨 Cấp cứu' : p.priority === 'med' ? 'Theo dõi' : 'Ổn định'}
+                        </span>
+                        <div class="flex items-center gap-2">
+                            <button onclick="startEdit(${p.id}, event)" class="p-1.5 bg-slate-100 dark:bg-slate-700 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
+                                <svg class="w-3 h-3 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                            </button>
+                            <span class="text-[10px] opacity-50 font-black text-blue-600 dark:text-blue-400 uppercase">Phòng ${p.room || '??'}</span>
+                        </div>
                     </div>
-                    <h3 class="font-bold text-slate-800 dark:text-white truncate uppercase">${p.name}</h3>
-                    <p class="text-[11px] text-slate-500 dark:text-slate-400 truncate mb-3">${p.dx || '...'}</p>
-                    <div class="text-[11px] text-slate-400 dark:text-slate-500 line-clamp-2 bg-slate-50 dark:bg-slate-900/50 p-2 rounded-lg italic">
-                        ${p.content}
-                    </div>
+                    <h3 class="font-extrabold truncate uppercase text-slate-800 dark:text-white leading-tight">${p.name}</h3>
+                    <p class="text-[10px] text-slate-500 dark:text-slate-400 truncate mt-0.5 font-bold uppercase italic tracking-tighter">Δ: ${p.dx || '---'}</p>
+                    ${todoHtml}
+                    <div class="mt-2 text-right opacity-30 text-[9px] font-bold italic">${p.time}</div>
                 `;
                 list.appendChild(card);
             });
@@ -204,52 +287,46 @@
         function showDetail(id) {
             const p = patients.find(x => x.id === id);
             currentEditingId = id;
-            document.getElementById('m-name').textContent = p.name + (p.bed ? ` (Giường ${p.bed})` : '');
-            document.getElementById('m-dx').textContent = p.dx;
+            const colors = { low: 'bg-green-500', med: 'bg-orange-500', high: 'bg-red-500' };
+            document.getElementById('modal-header-color').className = `h-2 w-full absolute top-0 left-0 ${colors[p.priority]}`;
+            document.getElementById('m-name').textContent = p.name;
+            // Thay đổi Δ: trong Modal
+            document.getElementById('m-dx').textContent = `PHÒNG ${p.room} • Δ: ${p.dx.toUpperCase()}`;
             document.getElementById('m-content').textContent = p.content;
+            document.getElementById('m-todos').innerHTML = p.todos.length ? '<p class="font-black text-[9px] text-slate-400 uppercase mb-3 tracking-widest">Việc cần làm:</p>' + p.todos.map((t, i) => `
+                <div class="flex items-center gap-3 bg-slate-100 dark:bg-slate-900/60 p-3 rounded-xl">
+                    <input type="checkbox" class="w-5 h-5 rounded border-slate-300 text-blue-600" ${t.done ? 'checked' : ''} onchange="toggleTodoDone(${i})">
+                    <span class="text-sm ${t.done ? 'line-through opacity-40 italic' : 'font-semibold'}">${t.text}</span>
+                </div>
+            `).join('') : '';
             document.getElementById('detail-modal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
         }
 
-        function closeModal() {
-            document.getElementById('detail-modal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
+        function toggleTodoDone(i) {
+            const p = patients.find(x => x.id === currentEditingId);
+            p.todos[i].done = !p.todos[i].done;
+            saveToLocal(); showDetail(currentEditingId); renderPatients();
         }
 
         function copyCurrentModal() {
             const p = patients.find(x => x.id === currentEditingId);
-            const text = `[SBAR HANDOFF]\nBN: ${p.name.toUpperCase()} | G: ${p.bed}\nCD: ${p.dx}\n----------\n${p.content}\n----------\nThời gian: ${p.time}`;
-            navigator.clipboard.writeText(text).then(() => alert("Đã copy nội dung!"));
+            const emoji = p.priority === 'high' ? '🚨' : p.priority === 'med' ? '⚠️' : '✅';
+            let text = `${emoji} [BÀN GIAO SBAR - PHÒNG ${p.room}]\nBN: ${p.name.toUpperCase()}\nΔ: ${p.dx.toUpperCase()}\n----------\n${p.content}\n----------\n📝 VIỆC CẦN LÀM:\n${p.todos.map(t => (t.done ? '✅ ' : '⬜ ') + t.text).join('\n') || '- Trống'}\n----------\n⏰ ${p.time}`;
+            navigator.clipboard.writeText(text).then(() => alert("Đã copy nội dung bàn giao!"));
         }
 
-        function deleteCurrentPatient() {
-            if(confirm("Xóa ca này?")) {
-                patients = patients.filter(x => x.id !== currentEditingId);
-                saveToLocal();
-                renderPatients();
-                closeModal();
-            }
-        }
+        function saveToLocal() { localStorage.setItem(`shift_${document.getElementById('duty-date').value}`, JSON.stringify(patients)); }
+        function loadData() { patients = JSON.parse(localStorage.getItem(`shift_${document.getElementById('duty-date').value}`) || '[]'); renderPatients(); }
+        function closeModal() { document.getElementById('detail-modal').classList.add('hidden'); }
+        function filterPriority(p) { renderPatients(p); }
+        function deleteCurrentPatient() { if(confirm("Xóa ca này?")) { patients = patients.filter(x => x.id !== currentEditingId); saveToLocal(); renderPatients(); closeModal(); } }
 
-        function clearShift() {
-            if(confirm("Xóa sạch danh sách ca trực này?")) {
-                patients = [];
-                saveToLocal();
-                renderPatients();
-            }
-        }
-
-        function saveToLocal() {
-            const date = document.getElementById('duty-date').value;
-            localStorage.setItem(`shift_${date}`, JSON.stringify(patients));
-        }
-
-        function loadData() {
-            const date = document.getElementById('duty-date').value;
-            const data = localStorage.getItem(`shift_${date}`);
-            patients = data ? JSON.parse(data) : [];
-            renderPatients();
-        }
+        window.onload = () => {
+            const di = document.getElementById('duty-date');
+            if(!di.value) di.value = new Date().toISOString().split('T')[0];
+            if (localStorage.theme === 'dark') document.documentElement.classList.add('dark');
+            loadData(); di.onchange = loadData; setPriority('low');
+        };
     </script>
 </body>
 </html>
