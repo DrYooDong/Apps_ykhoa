@@ -155,7 +155,7 @@
     </div>
 
     <script>
-        let supabase = null;
+        let db = null; // Đã đổi tên biến thành 'db' để tránh xung đột
         let patients = [];
         let currentEditingId = null; 
         let currentViewingId = null; 
@@ -166,16 +166,24 @@
             const url = document.getElementById('sb-url').value;
             const key = document.getElementById('sb-key').value;
             if(!url || !key) return alert("Vui lòng nhập đủ URL và Key!");
+            
+            // Lưu cấu hình
             localStorage.setItem('sb_url', url);
             localStorage.setItem('sb_key', key);
-            location.reload();
+            
+            // Ẩn form đi và thử kết nối ngay lập tức
+            document.getElementById('config-modal').classList.add('hidden');
+            if(initSupabase()) {
+                loadPatients();
+            }
         }
 
         function initSupabase() {
             const url = localStorage.getItem('sb_url');
             const key = localStorage.getItem('sb_key');
             if(url && key) {
-                supabase = supabase.createClient(url, key);
+                // Gọi đúng thư viện gốc window.supabase
+                db = window.supabase.createClient(url, key); 
                 document.getElementById('sync-status').innerText = "☁️ Cloud Connected";
                 document.getElementById('sync-status').className = "text-[9px] font-bold text-emerald-500 uppercase";
                 return true;
@@ -186,24 +194,24 @@
 
         // --- CORE ACTIONS ---
         async function loadPatients() {
-            if(!supabase) return;
+            if(!db) return;
             const date = document.getElementById('duty-date').value;
             document.getElementById('display-date').innerText = date.split('-').reverse().slice(0,2).join('/');
             
-            const { data, error } = await supabase
+            const { data, error } = await db
                 .from('patients')
                 .select('*')
                 .eq('duty_date', date)
                 .order('created_at', { ascending: false });
 
-            if(error) return console.error(error);
-            patients = data;
+            if(error) return console.error("Lỗi tải dữ liệu:", error.message);
+            patients = data || [];
             renderPatients();
             updateDashboard();
         }
 
         async function saveToCloud() {
-            if(!supabase) return alert("Chưa kết nối Cloud!");
+            if(!db) return alert("Chưa kết nối Cloud!");
             const name = document.getElementById('name').value;
             if(!name) return alert("Tên bệnh nhân không được để trống!");
 
@@ -220,9 +228,9 @@
 
             let res;
             if(currentEditingId) {
-                res = await supabase.from('patients').update(payload).eq('id', currentEditingId);
+                res = await db.from('patients').update(payload).eq('id', currentEditingId);
             } else {
-                res = await supabase.from('patients').insert([payload]);
+                res = await db.from('patients').insert([payload]);
             }
 
             if(res.error) alert("Lỗi khi lưu: " + res.error.message);
@@ -235,7 +243,7 @@
 
         async function deleteFromCloud() {
             if(!confirm("Xác nhận xóa vĩnh viễn ca này trên Cloud?")) return;
-            const { error } = await supabase.from('patients').delete().eq('id', currentViewingId);
+            const { error } = await db.from('patients').delete().eq('id', currentViewingId);
             if(error) alert(error.message);
             else {
                 closeModal();
@@ -259,10 +267,10 @@
                 div.innerHTML = `
                     <div class="flex justify-between items-start mb-2">
                         <span class="text-[10px] font-black px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded uppercase">P. ${p.room || '??'}</span>
-                        <div class="flex gap-1">${p.todos.filter(t => t.done).map(() => '<div class="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>').join('')}</div>
+                        <div class="flex gap-1">${(p.todos||[]).filter(t => t.done).map(() => '<div class="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>').join('')}</div>
                     </div>
                     <h3 class="font-black text-lg truncate">${p.name.toUpperCase()}</h3>
-                    <p class="text-xs text-blue-600 font-bold truncate mb-3">${p.dx.toUpperCase() || 'CHƯA CÓ CHẨN ĐOÁN'}</p>
+                    <p class="text-xs text-blue-600 font-bold truncate mb-3">${(p.dx || 'CHƯA CÓ CHẨN ĐOÁN').toUpperCase()}</p>
                     <div class="flex flex-wrap">${tagsHtml}</div>
                     <div class="mt-3 pt-3 border-t dark:border-slate-800 flex justify-end">
                         <button onclick="event.stopPropagation(); startEdit('${p.id}')" class="text-[10px] font-bold text-slate-400 hover:text-blue-600">CHỈNH SỬA</button>
@@ -301,7 +309,7 @@
             const p = patients.find(x => x.id === currentViewingId);
             document.getElementById('m-todo-list').innerHTML = (p.todos || []).map((t, i) => `
                 <div class="flex items-center gap-3 p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border dark:border-slate-700">
-                    <input type="checkbox" ${t.done ? 'checked' : ''} onchange="toggleTodo(${i})" class="w-5 h-5 rounded-full border-2">
+                    <input type="checkbox" ${t.done ? 'checked' : ''} onchange="toggleTodo(${i})" class="w-5 h-5 rounded-full border-2 cursor-pointer">
                     <span class="text-sm ${t.done ? 'line-through text-slate-400' : 'font-bold'}">${t.text}</span>
                 </div>
             `).join('');
@@ -310,7 +318,7 @@
         async function toggleTodo(i) {
             const p = patients.find(x => x.id === currentViewingId);
             p.todos[i].done = !p.todos[i].done;
-            await supabase.from('patients').update({ todos: p.todos }).eq('id', currentViewingId);
+            await db.from('patients').update({ todos: p.todos }).eq('id', currentViewingId);
             renderTodos(); renderPatients();
         }
 
@@ -318,8 +326,9 @@
             const input = document.getElementById('new-todo');
             if(!input.value) return;
             const p = patients.find(x => x.id === currentViewingId);
+            if(!p.todos) p.todos = [];
             p.todos.push({ text: input.value, done: false });
-            await supabase.from('patients').update({ todos: p.todos }).eq('id', currentViewingId);
+            await db.from('patients').update({ todos: p.todos }).eq('id', currentViewingId);
             input.value = ''; renderTodos(); renderPatients();
         }
 
@@ -358,6 +367,7 @@
                 e.target.value = ''; renderFormTags();
             }
         });
+        
         function renderFormTags() {
             document.getElementById('tag-container').innerHTML = currentTags.map(t => `
                 <span class="tag-item bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
@@ -371,7 +381,7 @@
         function copySBAR() {
             const p = patients.find(x => x.id === currentViewingId);
             const status = p.priority === 'high' ? '🚨 CẤP CỨU' : p.priority === 'med' ? '⚠️ THEO DÕI' : '✅ ỔN ĐỊNH';
-            const text = `${status}\n[PHÒNG ${p.room}] ${p.name.toUpperCase()}\nChẩn đoán: ${p.dx}\n---\n${p.content}\n---\nViệc cần làm:\n${p.todos.map(t => (t.done ? '[x] ' : '[ ] ') + t.text).join('\n') || '- Không có'}`;
+            const text = `${status}\n[PHÒNG ${p.room || '--'}] ${p.name.toUpperCase()}\nChẩn đoán: ${p.dx || '--'}\n---\n${p.content}\n---\nViệc cần làm:\n${(p.todos||[]).map(t => (t.done ? '[x] ' : '[ ] ') + t.text).join('\n') || '- Không có'}`;
             navigator.clipboard.writeText(text).then(() => alert("Đã copy nội dung bàn giao!"));
         }
 
