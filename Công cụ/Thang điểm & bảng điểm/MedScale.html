@@ -73,7 +73,7 @@
 
         <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <div v-if="filteredScales.length === 0" class="col-span-full text-center py-10 text-slate-400 font-medium">
-                Không tìm thấy thang điểm nào.
+                Không tìm thấy thang điểm nào. Hãy vào "Quản lý" để thêm mới.
             </div>
             <div v-for="scale in filteredScales" :key="scale.id" @click="openDetail(scale)" class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-5 cursor-pointer hover:-translate-y-1 hover:border-blue-500 hover:shadow-lg transition-all">
                 <span class="text-[10px] font-black uppercase text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-2 py-1 rounded-md mb-3 inline-block">{{ scale.category }}</span>
@@ -235,33 +235,28 @@
 </div>
 
 <script>
-    // --- 1. ĐIỀN THÔNG TIN SUPABASE CỦA BẠN VÀO ĐÂY ---
+    // --- KẾT NỐI SUPABASE ---
     const SUPABASE_URL = 'https://csghhgzdaeernwickxii.supabase.co';
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNzZ2hoZ3pkYWVlcm53aWNreGlpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3NzI2ODIsImV4cCI6MjA5MTM0ODY4Mn0.ibU38G4JKnD-m0OWF-JcNUSNjcn_vT2FXrTBRqgULto';
-    // ---------------------------------------------------
-
     const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    
     const { createApp, ref, computed, onMounted } = Vue;
 
     createApp({
         setup() {
-            // UI State
             const currentView = ref('home');
             const isLoading = ref(true);
             const isSaving = ref(false);
             const toast = ref({ show: false, message: '' });
             const isDarkMode = ref(false);
 
-            // Data State
             const clinicalScales = ref([]);
             const selectedScale = ref(null);
             
-            // Search & Filter
             const searchQuery = ref('');
             const selectedCategory = ref('Tất cả');
             const manageSearch = ref('');
 
-            // Form State
             const isEditing = ref(false);
             const editingId = ref(null);
             const presetCategories = ['Cấp cứu/ICU', 'Hô hấp', 'Hệ thận', 'Khác', 'Nhi khoa', 'Nội tiết', 'Sản phụ khoa', 'Tiêu hóa/Gan', 'Tim mạch', 'Thần kinh'];
@@ -280,14 +275,13 @@
             };
             const interpTemplate = '[\n  {"score": "0-1", "action": "Xử trí A", "level": "low"}\n]';
 
-            // --- DATABASE FETCHING ---
             const fetchScales = async () => {
                 isLoading.value = true;
                 const { data, error } = await _supabase.from('scales').select('*').order('id', { ascending: false });
                 
                 if (error) {
-                    console.error("Lỗi tải dữ liệu:", error);
-                    showToast("Lỗi kết nối máy chủ!");
+                    console.error("Lỗi kết nối Supabase:", error);
+                    alert("LỖI KẾT NỐI DB: " + error.message);
                 } else if (data) {
                     clinicalScales.value = data;
                 }
@@ -300,10 +294,9 @@
                     document.documentElement.classList.add('dark');
                 }
                 resetForm();
-                fetchScales(); // Tự động kéo data khi mở web
+                fetchScales(); 
             });
 
-            // --- COMPUTED PROPERTIES ---
             const activeCategories = computed(() => {
                 return [...new Set(clinicalScales.value.map(s => s.category))].sort();
             });
@@ -319,7 +312,6 @@
                 return clinicalScales.value.filter(s => s.name.toLowerCase().includes(manageSearch.value.toLowerCase()));
             });
 
-            // --- ACTIONS ---
             const showToast = (msg) => {
                 toast.value = { show: true, message: msg };
                 setTimeout(() => { toast.value.show = false; }, 3000);
@@ -341,6 +333,7 @@
                 };
             };
 
+            // ---- NÂNG CẤP BÁO LỖI LƯU BẰNG TAY ----
             const saveScale = async () => {
                 if (!form.value.name || !form.value.category) {
                     alert("Vui lòng điền Tên và Chuyên khoa."); return;
@@ -348,29 +341,43 @@
 
                 isSaving.value = true;
                 try {
+                    // Kiểm tra cú pháp JSON trước khi gửi
+                    let parsedTableData, parsedInterp;
+                    try {
+                        parsedTableData = JSON.parse(form.value.tableDataStr);
+                        parsedInterp = JSON.parse(form.value.interpretationStr);
+                    } catch(jsonErr) {
+                        alert("Lỗi cú pháp JSON! Kiểm tra lại dấu ngoặc {}, ngoặc vuông [] hoặc dấu phẩy ,");
+                        isSaving.value = false;
+                        return;
+                    }
+
                     const payload = {
                         name: form.value.name,
                         category: form.value.category,
                         description: form.value.description || form.value.name,
                         detail: form.value.detail,
                         table_layout: form.value.tableLayout,
-                        table_data: JSON.parse(form.value.tableDataStr),
-                        interpretation: JSON.parse(form.value.interpretationStr)
+                        table_data: parsedTableData,
+                        interpretation: parsedInterp
                     };
 
-                    if (isEditing.value) payload.id = editingId.value; // Nếu sửa thì đính kèm ID
+                    if (isEditing.value) payload.id = editingId.value;
 
+                    // Gửi lên Supabase
                     const { error } = await _supabase.from('scales').upsert([payload]);
 
+                    // Báo lỗi cụ thể từ Server
                     if (error) throw error;
 
                     showToast(isEditing.value ? "Cập nhật thẻ thành công!" : "Đã lưu lên Đám mây!");
                     resetForm();
-                    await fetchScales(); // Cập nhật lại danh sách
+                    await fetchScales(); 
 
                 } catch (e) {
-                    alert('Lỗi: Kiểm tra lại dấu ngoặc JSON hoặc kết nối mạng.');
-                    console.error(e);
+                    console.error("LỖI SUPABASE:", e);
+                    // Hiển thị lỗi gốc để người dùng biết cách sửa
+                    alert("Supabase từ chối lưu dữ liệu!\nChi tiết: " + (e.message || e.details || "Không rõ nguyên nhân"));
                 } finally {
                     isSaving.value = false;
                 }
@@ -394,20 +401,28 @@
                     if (!error) {
                         showToast("Đã xóa thẻ.");
                         fetchScales();
+                    } else {
+                        alert("Lỗi xóa: " + error.message);
                     }
                 }
             };
 
-            // IMPORT JSON mẫu lên Database
+            // ---- NÂNG CẤP BÁO LỖI IMPORT ----
             const triggerImport = () => document.getElementById('fileIn').click();
             const importData = (e) => {
                 const file = e.target.files[0];
                 if(!file) return;
                 const reader = new FileReader();
                 reader.onload = async (ev) => {
+                    let imported;
                     try {
-                        const imported = JSON.parse(ev.target.result);
-                        // Cấu trúc lại để map với Cột trong Database
+                        imported = JSON.parse(ev.target.result);
+                    } catch(jsonErr) {
+                        alert("File upload không phải chuẩn JSON hoặc bị lỗi cú pháp.");
+                        return;
+                    }
+
+                    try {
                         const dbData = imported.map(item => ({
                             name: item.name,
                             category: item.category,
@@ -424,14 +439,14 @@
                         showToast("Đã Import lên máy chủ!");
                         fetchScales();
                     } catch(err) {
-                        alert("Lỗi cấu trúc File JSON.");
+                        console.error("LỖI IMPORT SUPABASE:", err);
+                        alert("Supabase từ chối nhận file Import!\nChi tiết: " + (err.message || err.details || "Có thể sai tên cột hoặc bị khóa RLS"));
                     }
                 };
                 reader.readAsText(file);
                 e.target.value = '';
             };
 
-            // --- UTILS ---
             const toggleDarkMode = () => {
                 isDarkMode.value = !isDarkMode.value;
                 document.documentElement.classList.toggle('dark');
