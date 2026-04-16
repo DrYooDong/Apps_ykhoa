@@ -91,7 +91,15 @@
                     <h2 class="text-2xl sm:text-3xl font-black text-slate-800 dark:text-white mt-2">{{ selectedScale.name }}</h2>
                     <p class="text-sm text-slate-500 dark:text-slate-400 mt-1 font-medium">{{ selectedScale.description }}</p>
                 </div>
-                <button @click="downloadImage" class="px-4 py-2 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl text-xs font-bold shadow-sm hover:text-blue-600 transition-colors">📸 Tải ảnh</button>
+                
+                <div class="flex items-center gap-2">
+                    <button @click="editFromDetail" class="px-4 py-2 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-800 rounded-xl text-xs font-bold shadow-sm hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors">
+                        ✏️ Sửa
+                    </button>
+                    <button @click="downloadImage" class="px-4 py-2 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl text-xs font-bold shadow-sm hover:text-blue-600 transition-colors">
+                        📸 Tải ảnh
+                    </button>
+                </div>
             </div>
 
             <div class="p-6 sm:p-8 space-y-8">
@@ -471,13 +479,21 @@
                 a.href = canvas.toDataURL();
                 a.click();
             };
-
+            // Hàm xử lý khi bấm nút "Sửa" từ màn hình chi tiết
+            const editFromDetail = () => {
+                const scaleToEdit = selectedScale.value;
+                goToManage(); // Chuyển view sang màn hình quản lý
+                // Dùng setTimeout nhỏ để đảm bảo DOM của view manage đã render trước khi scroll/focus
+                setTimeout(() => {
+                    editScale(scaleToEdit); 
+                }, 50);
+            };
             return {
                 currentView, isLoading, isSaving, toast, isDarkMode, clinicalScales, selectedScale,
                 searchQuery, selectedCategory, manageSearch, activeCategories, filteredScales, filteredManageScales,
                 form, layouts, isEditing, presetCategories,
                 loadTemplate, resetForm, saveScale, editScale, deleteScale,
-                toggleDarkMode, goToHome, goToManage, openDetail, getRiskClass, downloadImage, triggerImport, importData
+                toggleDarkMode, goToHome, goToManage, openDetail, getRiskClass, downloadImage, triggerImport, importData, editFromDetail
             };
         }
     }).mount('#app');
