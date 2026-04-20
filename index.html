@@ -7,85 +7,76 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
-        .sticky-nav { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border-bottom: 1px solid #e2e8f0; }
-        .app-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid #e2e8f0; display: flex; flex-direction: column; height: 100%; }
-        .app-card:hover { transform: translateY(-4px); box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.1); border-color: #3b82f6; }
-        .filter-scroll::-webkit-scrollbar { display: none; }
-        .active-filter { background-color: #1e40af !important; color: white !important; }
-        .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        body { font-family: 'Inter', sans-serif; background-color: #f1f5f9; }
+        .sidebar-link.active { background-color: #1e40af; color: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        .app-card { transition: all 0.2s ease; }
+        .app-card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        /* Ẩn scrollbar cho sidebar trên mobile */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="text-slate-800 pb-12">
+<body class="text-slate-800">
 
-    <header class="bg-slate-900 text-white pt-10 pb-24">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-10">
-                <div>
-                    <h1 class="text-3xl font-bold tracking-tight flex items-center">
-                        <span class="text-blue-400 mr-3">⚕️</span> Clinical Assistant Hub
-                    </h1>
-                    <p class="text-slate-400 mt-2 text-sm">Hệ thống hỗ trợ ra quyết định lâm sàng dành cho nhân viên y tế</p>
-                </div>
-                <div class="bg-slate-800 px-4 py-2 rounded-lg border border-slate-700">
-                    <span class="text-xs font-mono text-blue-300">v2.1.0-Stable</span>
-                </div>
+    <header class="bg-slate-900 text-white py-4 px-6 sticky top-0 z-50 shadow-lg">
+        <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">⚕️</span>
+                <h1 class="text-xl font-bold tracking-tight">Clinical Assistant Hub</h1>
+                <span class="hidden md:inline bg-slate-700 px-2 py-0.5 rounded text-[10px] font-mono text-blue-300 border border-slate-600">v2.2.0</span>
             </div>
             
-            <div class="relative max-w-2xl">
-                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                    <svg class="h-5 w-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            <div class="flex items-center gap-4 w-full md:w-auto">
+                <div class="relative flex-grow md:w-96">
+                    <input type="text" id="searchInput" placeholder="Tìm kiếm nhanh..." 
+                        class="w-full pl-10 pr-4 py-2 rounded-lg bg-slate-800 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm transition-all" 
+                        oninput="renderApps()">
+                    <svg class="absolute left-3 top-2.5 h-4 w-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </div>
-                <input type="text" id="searchInput" placeholder="Tìm tên bệnh, chuyên khoa hoặc từ khóa..." 
-                    class="w-full pl-12 pr-4 py-4 rounded-xl text-slate-900 focus:outline-none focus:ring-4 focus:ring-blue-500/30 shadow-2xl transition-all" 
-                    oninput="renderApps()">
+                <div class="flex bg-slate-800 p-1 rounded-lg border border-slate-700">
+                    <button onclick="setView('grid')" id="btnGrid" class="p-1.5 rounded transition-all text-blue-400 bg-slate-700 shadow-inner">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                    </button>
+                    <button onclick="setView('list')" id="btnList" class="p-1.5 rounded transition-all text-slate-400 hover:text-white">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
 
-    <nav class="sticky-nav mb-8">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="flex items-center gap-2 overflow-x-auto py-4 filter-scroll" id="categoryFilter">
-                <button onclick="setFilter('All', this)" class="filter-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-semibold bg-white text-slate-600 border border-slate-200 hover:border-blue-400 active-filter transition-all">Tất cả</button>
-                <button onclick="setFilter('Chung', this)" class="filter-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-semibold bg-white text-slate-600 border border-slate-200 hover:border-blue-400 transition-all">Chung</button>
-                <button onclick="setFilter('Hồi Sức', this)" class="filter-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-semibold bg-white text-slate-600 border border-slate-200 hover:border-blue-400 transition-all">Hồi Sức</button>
-                <button onclick="setFilter('Truyền Nhiễm', this)" class="filter-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-semibold bg-white text-slate-600 border border-slate-200 hover:border-blue-400 transition-all">Truyền Nhiễm</button>
-                <button onclick="setFilter('Nội Tiết', this)" class="filter-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-semibold bg-white text-slate-600 border border-slate-200 hover:border-blue-400 transition-all">Nội Tiết</button>
-                <button onclick="setFilter('Tim mạch', this)" class="filter-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-semibold bg-white text-slate-600 border border-slate-200 hover:border-blue-400 transition-all">Tim mạch</button>
-                <button onclick="setFilter('Tiêu Hóa', this)" class="filter-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-semibold bg-white text-slate-600 border border-slate-200 hover:border-blue-400 transition-all">Tiêu Hóa</button>
-                <button onclick="setFilter('Thận & Tiết niệu', this)" class="filter-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-semibold bg-white text-slate-600 border border-slate-200 hover:border-blue-400 transition-all">Thận & Tiết niệu</button>
-                <button onclick="setFilter('Hô hấp', this)" class="filter-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-semibold bg-white text-slate-600 border border-slate-200 hover:border-blue-400 transition-all">Hô hấp</button>
-                <button onclick="setFilter('Thần kinh', this)" class="filter-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-semibold bg-white text-slate-600 border border-slate-200 hover:border-blue-400 transition-all">Thần kinh</button>
-                <button onclick="setFilter('Ngoại khoa', this)" class="filter-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-semibold bg-white text-slate-600 border border-slate-200 hover:border-blue-400 transition-all">Ngoại khoa</button>
-                <button onclick="setFilter('Sản phụ khoa', this)" class="filter-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-semibold bg-white text-slate-600 border border-slate-200 hover:border-blue-400 transition-all">Sản phụ khoa</button>
-                <button onclick="setFilter('Ung thư', this)" class="filter-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-semibold bg-white text-slate-600 border border-slate-200 hover:border-blue-400 transition-all">Ung thư</button>
+    <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row min-h-screen">
+        
+        <aside class="w-full md:w-64 bg-white md:bg-transparent p-4 md:pt-8 sticky top-16 md:h-[calc(100vh-64px)] overflow-y-auto no-scrollbar z-40 border-b md:border-none border-slate-200">
+            <h2 class="hidden md:block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-4 px-4">Chuyên khoa</h2>
+            <nav class="flex md:flex-col gap-1 overflow-x-auto no-scrollbar" id="categorySidebar">
+                </nav>
+        </aside>
+
+        <main class="flex-grow p-4 md:p-8">
+            <div id="favSection" class="hidden mb-10">
+                <div class="flex items-center gap-2 mb-4">
+                    <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    <h2 class="font-bold text-slate-700">Công cụ hay dùng</h2>
+                </div>
+                <div id="favGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+                <div class="h-px bg-slate-200 my-8"></div>
             </div>
-        </div>
-    </nav>
 
-    <main class="max-w-6xl mx-auto px-6">
-        <div id="favSection" class="hidden mb-12">
-            <h2 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4 flex items-center">
-                <svg class="w-4 h-4 mr-2 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                Công cụ hay dùng
-            </h2>
-            <div id="favGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-            <div class="h-px bg-slate-200 mt-10"></div>
-        </div>
+            <div id="appContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
 
-        <div id="appGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4"></div>
-
-        <div id="noResults" class="hidden text-center py-20 bg-white rounded-3xl border-2 border-dashed border-slate-200">
-            <p class="text-slate-400 text-lg">Không tìm thấy công cụ phù hợp với từ khóa này.</p>
-        </div>
-    </main>
+            <div id="noResults" class="hidden text-center py-20 bg-white rounded-2xl border-2 border-dashed border-slate-200">
+                <p class="text-slate-400">Không tìm thấy công cụ phù hợp.</p>
+            </div>
+        </main>
+    </div>
 
     <script>
-        // DANH SÁCH 23 ỨNG DỤNG ĐẦY ĐỦ TỪ FILE GỐC
         const apps = [
-            { title: "Sàng lọc bệnh tại Cấp Cứu", desc: "Sàng lọc phân loại bệnh nhân tại khoa Cấp Cứu.", icon: "🔍", file: "/Công cụ/Sanglocbenh.html", category: "Chung", color: "blue" },
-            { title: "Clinical Scores", desc: "Đánh giá nhanh các thang điểm lâm sàng phổ biến.", icon: "🔎", file: "/Công cụ/Clinical_Scores.html", category: "Chung", color: "slate" },
+            { title: "Quản lý Checklists", desc: "Tạo và chỉnh sửa các bảng kiểm lâm sàng theo phác đồ.", icon: "📋", file: "/Công cụ/checklists.html", category: "Chung", color: "blue" },
+            { title: "Quản lý Bệnh án", desc: "Quản lý bệnh án và hồ sơ bệnh nhân.", icon: "📋", file: "/Công cụ/Sotaylamsang.html", category: "Chung", color: "blue" },           
             { title: "SBAR Handover", desc: "Báo cáo truyền đạt thông tin y tế theo chuẩn SBAR.", icon: "📝", file: "/Công cụ/SBAR_Handover.html", category: "Chung", color: "neutral" },
+            { title: "Thư viện tra cứu", desc: "Thư viện tra cứu các công cụ y khoa.", icon: "📚", file: "/Công cụ/Thang điểm & bảng điểm/MedScale.html", category: "Chung", color: "slate" },
             { title: "Dinh dưỡng nội trú", desc: "Tư vấn chế độ dinh dưỡng cho bệnh nhân nằm viện.", icon: "🍚", file: "/Công cụ/Dinhduong_noivien.html", category: "Chung", color: "gray" },
             { title: "Rối Loạn Điện Giải", desc: "Xử trí Hạ/Tăng Na+, K+, Ca2+... Tính bù dịch & y lệnh.", icon: "💧", file: "/Công cụ/Xutri_Roiloandiengiai.html", category: "Hồi Sức", color: "blue" },
             { title: "Hồi sinh tim phổi", desc: "Hỗ trợ phản ứng nhanh ngưng tuần hoàn - ACLS 2025.", icon: "🚑", file: "/Công cụ/ACLS.html", category: "Hồi Sức", color: "red" },
@@ -107,22 +98,42 @@
             { title: "Thuốc Tim Mạch", desc: "Quản lý thuốc THA, suy tim, hội chứng vành mạn.", icon: "💊", file: "/Thuốc/Quanly_thuoc_timmach.html", category: "Tim mạch", color: "red" },
             { title: "Hội chứng vành cấp", desc: "Quản lý và theo dõi STEMI/NSTEMI/ACS.", icon: "🫀", file: "/Bệnh lý/Quanly_hoichungvanhcap.html", category: "Tim mạch", color: "orange" },
             { title: "Phân loại TNM Ung thư", desc: "Tra cứu phân độ giai đoạn TNM trong ung thư.", icon: "🎗️", file: "/Công cụ/tnm_ungthu.html", category: "Ung thư", color: "blue" },
-            { title: "Thư viện tra cứu", desc: "Thư viện tra cứu các công cụ y khoa.", icon: "📚", file: "/Công cụ/Thang điểm & bảng điểm/MedScale.html", category: "Chung", color: "slate" },
-            { title: "Quản lý Checklists", desc: "Tạo và chỉnh sửa các bảng kiểm lâm sàng theo phác đồ.", icon: "📋", file: "/Công cụ/checklists.html", category: "Chung", color: "blue" }
-            { title: "Quản lý Bệnh án", desc: "Quản lý bệnh án và hồ sơ bệnh nhân.", icon: "📋", file: "/Công cụ/benh_an.html", category: "Chung", color: "blue"}
+            { title: "Sàng lọc bệnh tại Cấp Cứu", desc: "Sàng lọc phân loại bệnh nhân tại khoa Cấp Cứu.", icon: "🔍", file: "/Công cụ/Sanglocbenh.html", category: "Chung", color: "blue" },
+            { title: "Clinical Scores", desc: "Đánh giá nhanh các thang điểm lâm sàng phổ biến.", icon: "🔎", file: "/Công cụ/Clinical_Scores.html", category: "Chung", color: "slate" },
         ];
 
+        const categories = ["All", "Chung", "Hồi Sức", "Truyền Nhiễm", "Nội Tiết", "Tim mạch", "Tiêu Hóa", "Thận & Tiết niệu", "Hô hấp", "Thần kinh", "Ngoại khoa", "Sản phụ khoa", "Ung thư"];
+        
         let currentCategory = 'All';
+        let currentView = localStorage.getItem('viewMode') || 'grid';
         let pinnedApps = JSON.parse(localStorage.getItem('medPinned')) || [];
 
-        function setFilter(category, btn) {
-            currentCategory = category;
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active-filter'));
-            btn.classList.add('active-filter');
+        function setView(mode) {
+            currentView = mode;
+            localStorage.setItem('viewMode', mode);
+            document.getElementById('btnGrid').className = mode === 'grid' ? 'p-1.5 rounded transition-all text-blue-400 bg-slate-700 shadow-inner' : 'p-1.5 rounded transition-all text-slate-400 hover:text-white';
+            document.getElementById('btnList').className = mode === 'list' ? 'p-1.5 rounded transition-all text-blue-400 bg-slate-700 shadow-inner' : 'p-1.5 rounded transition-all text-slate-400 hover:text-white';
             renderApps();
         }
 
-        function togglePin(title) {
+        function renderCategories() {
+            const nav = document.getElementById('categorySidebar');
+            nav.innerHTML = categories.map(cat => `
+                <button onclick="setFilter('${cat}', this)" class="sidebar-link whitespace-nowrap px-4 py-2.5 rounded-xl text-sm font-semibold transition-all text-slate-600 hover:bg-slate-200 ${cat === currentCategory ? 'active' : ''}">
+                    ${cat === 'All' ? '🏠 Tất cả' : cat}
+                </button>
+            `).join('');
+        }
+
+        function setFilter(category, btn) {
+            currentCategory = category;
+            document.querySelectorAll('.sidebar-link').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderApps();
+        }
+
+        function togglePin(title, e) {
+            e.preventDefault(); e.stopPropagation();
             if (pinnedApps.includes(title)) {
                 pinnedApps = pinnedApps.filter(t => t !== title);
             } else {
@@ -133,13 +144,22 @@
         }
 
         function renderApps() {
-            const grid = document.getElementById('appGrid');
+            const container = document.getElementById('appContainer');
             const favGrid = document.getElementById('favGrid');
             const favSection = document.getElementById('favSection');
             const noResults = document.getElementById('noResults');
             const query = document.getElementById('searchInput').value.toLowerCase();
             
-            grid.innerHTML = '';
+            // Adjust grid layout based on view mode
+            if (currentView === 'list') {
+                container.className = "flex flex-col gap-2";
+                favGrid.className = "flex flex-col gap-2";
+            } else {
+                container.className = "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4";
+                favGrid.className = "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4";
+            }
+
+            container.innerHTML = '';
             favGrid.innerHTML = '';
             let count = 0;
             let favCount = 0;
@@ -147,34 +167,44 @@
             apps.forEach(app => {
                 const isPinned = pinnedApps.includes(app.title);
                 const matchCat = currentCategory === 'All' || app.category === currentCategory;
-                const matchSearch = app.title.toLowerCase().includes(query) || app.desc.toLowerCase().includes(query) || app.category.toLowerCase().includes(query);
-
-                const cardHtml = `
-                    <div class="app-card bg-white rounded-2xl p-5 border-t-4 border-t-${app.color}-500 relative group">
-                        <button onclick="togglePin('${app.title}')" class="absolute top-4 right-4 ${isPinned ? 'text-yellow-500' : 'text-slate-300'} hover:scale-110 transition-transform">
-                            <svg class="w-6 h-6" fill="${isPinned ? 'currentColor' : 'none'}" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.382-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
-                        </button>
-                        <div class="flex-grow">
-                            <div class="flex items-center gap-3 mb-3">
-                                <span class="text-3xl">${app.icon}</span>
-                                <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-slate-500 px-2 py-1 rounded">${app.category}</span>
-                            </div>
-                            <h3 class="text-lg font-bold text-slate-800 mb-1 group-hover:text-blue-600 transition-colors">${app.title}</h3>
-                            <p class="text-sm text-slate-500 line-clamp-2">${app.desc}</p>
-                        </div>
-                        <a href="./${app.file}" class="mt-6 block w-full text-center py-2.5 bg-slate-50 hover:bg-blue-600 hover:text-white text-blue-700 font-bold rounded-xl transition-all border border-slate-200 hover:border-blue-600 shadow-sm">
-                            Mở ứng dụng
-                        </a>
-                    </div>
-                `;
+                const matchSearch = app.title.toLowerCase().includes(query) || app.desc.toLowerCase().includes(query);
 
                 if (matchSearch) {
+                    const cardHtml = currentView === 'grid' ? `
+                        <div class="app-card bg-white rounded-2xl p-5 border border-slate-200 relative group flex flex-col h-full cursor-pointer" onclick="window.location.href='./${app.file}'">
+                            <button onclick="togglePin('${app.title}', event)" class="absolute top-4 right-4 ${isPinned ? 'text-yellow-500' : 'text-slate-300'} hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6" fill="${isPinned ? 'currentColor' : 'none'}" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.382-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                            </button>
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="text-3xl">${app.icon}</span>
+                                <span class="text-[10px] font-bold uppercase tracking-wider bg-${app.color}-50 text-${app.color}-600 px-2 py-1 rounded border border-${app.color}-100">${app.category}</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-800 mb-1 group-hover:text-blue-600 transition-colors">${app.title}</h3>
+                            <p class="text-xs text-slate-500 line-clamp-2 mb-4 flex-grow">${app.desc}</p>
+                            <div class="text-blue-600 font-semibold text-sm flex items-center gap-1">
+                                Mở ứng dụng <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg>
+                            </div>
+                        </div>
+                    ` : `
+                        <div class="app-card bg-white rounded-xl p-3 border border-slate-200 flex items-center gap-4 group cursor-pointer" onclick="window.location.href='./${app.file}'">
+                            <span class="text-2xl">${app.icon}</span>
+                            <div class="flex-grow">
+                                <h3 class="font-bold text-slate-800 text-sm group-hover:text-blue-600 transition-colors">${app.title}</h3>
+                                <p class="text-[11px] text-slate-500">${app.desc}</p>
+                            </div>
+                            <span class="text-[9px] font-bold uppercase bg-slate-100 px-2 py-1 rounded text-slate-400">${app.category}</span>
+                            <button onclick="togglePin('${app.title}', event)" class="${isPinned ? 'text-yellow-500' : 'text-slate-300'} p-2">
+                                <svg class="w-5 h-5" fill="${isPinned ? 'currentColor' : 'none'}" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.382-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                            </button>
+                        </div>
+                    `;
+
                     if (isPinned && query === "" && currentCategory === 'All') {
                         favGrid.innerHTML += cardHtml;
                         favCount++;
                     }
                     if (matchCat) {
-                        grid.innerHTML += cardHtml;
+                        container.innerHTML += cardHtml;
                         count++;
                     }
                 }
@@ -184,7 +214,9 @@
             noResults.style.display = (count === 0 && favCount === 0) ? 'block' : 'none';
         }
 
-        renderApps();
+        // Initialize
+        renderCategories();
+        setView(currentView);
     </script>
 </body>
 </html>
