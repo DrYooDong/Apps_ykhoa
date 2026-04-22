@@ -21,7 +21,12 @@
     <div class="w-full md:w-80 bg-white border-r border-slate-200 flex flex-col h-[30vh] md:h-full">
         <div class="p-4 border-b border-slate-200 bg-slate-50 flex justify-between items-center">
             <h1 class="font-bold text-lg text-blue-700">📋 Checklists</h1>
-            <button onclick="createNewChecklist()" class="bg-blue-600 text-white w-8 h-8 rounded-full hover:bg-blue-700 flex items-center justify-center font-bold shadow-sm" title="Thêm mới">+</button>
+            <div class="flex gap-2 items-center">
+                <button onclick="document.getElementById('importJsonInput').click()" class="bg-emerald-600 text-white px-3 h-8 rounded-lg hover:bg-emerald-700 flex items-center justify-center font-medium shadow-sm text-sm" title="Nhập từ file JSON">📥 Nhập</button>
+                <input type="file" id="importJsonInput" accept=".json" class="hidden" onchange="importJSON(event)">
+                
+                <button onclick="createNewChecklist()" class="bg-blue-600 text-white w-8 h-8 rounded-full hover:bg-blue-700 flex items-center justify-center font-bold shadow-sm" title="Thêm mới">+</button>
+            </div>
         </div>
         
         <div class="p-3">
@@ -278,6 +283,49 @@
             } catch (err) {
                 alert("Lỗi khi xóa: " + err.message);
             }
+        }
+        // --- 10. NHẬP FILE JSON ---
+        async function importJSON(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = async function(e) {
+                try {
+                    const jsonData = JSON.parse(e.target.result);
+                    
+                    // Kiểm tra xem dữ liệu có phải là mảng không
+                    if (!Array.isArray(jsonData)) {
+                        alert("Lỗi: Định dạng file JSON không hợp lệ. Phải là một mảng các checklist.");
+                        return;
+                    }
+
+                    // Hỏi xác nhận trước khi nhập
+                    if (!confirm(`Phát hiện ${jsonData.length} checklist trong file. Bạn có chắc chắn muốn nhập lên hệ thống không?`)) {
+                        return;
+                    }
+
+                    // Đổi text nút đang import (tùy chọn)
+                    document.getElementById('checklistSidebar').innerHTML = `<div class="p-4 text-center text-emerald-600 text-sm font-bold">⏳ Đang nhập dữ liệu...</div>`;
+
+                    // Đẩy mảng dữ liệu thẳng lên Supabase
+                    const { error } = await supabaseClient.from('checklists').insert(jsonData);
+                    
+                    if (error) throw error;
+
+                    alert(`Đã nhập thành công ${jsonData.length} checklist!`);
+                    fetchChecklists(); // Tải lại danh sách
+                    
+                } catch (err) {
+                    alert("Có lỗi xảy ra khi nhập file JSON: " + err.message);
+                    fetchChecklists(); // Tải lại danh sách nếu lỗi
+                } finally {
+                    // Reset lại input file để có thể chọn lại cùng 1 file nếu cần
+                    event.target.value = '';
+                }
+            };
+            
+            reader.readAsText(file);
         }
 
         // --- KHỞI ĐỘNG ỨNG DỤNG ---

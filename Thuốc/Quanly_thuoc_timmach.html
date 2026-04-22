@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#be123c">
-    <title>Inpatient Cardio Master V2.0</title>
+    <title>Inpatient Cardio Master V3.0</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f8fafc; }
@@ -25,7 +25,7 @@
                 <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                 <span id="headerTitle">Bệnh Cảnh & Mục Tiêu</span>
             </h1>
-            <span class="bg-black/20 text-xs px-2 py-1 rounded">V2.0 Guidelines</span>
+            <span class="bg-black/20 text-xs px-2 py-1 rounded">V3.0 Beta</span>
         </div>
     </div>
 
@@ -93,7 +93,7 @@
                         <div class="space-y-2 mt-2 border-t pt-3">
                             <label class="flex items-start space-x-2 cursor-pointer p-2 bg-indigo-50 rounded border border-indigo-100 hover:border-indigo-300 transition-colors">
                                 <input type="checkbox" id="cond_hf" class="w-4 h-4 mt-0.5 text-indigo-600 rounded" onchange="calcCardio()">
-                                <div class="text-xs text-indigo-900"><span class="font-bold">Suy tim mạn (HF)</span><br><span class="text-[10px]">Tự động phân loại theo EF</span></div>
+                                <div class="text-xs text-indigo-900"><span class="font-bold">Suy tim (HF)</span></div>
                             </label>
                             <label class="flex items-start space-x-2 cursor-pointer p-2 bg-gray-50 rounded border border-gray-200 hover:bg-gray-100 transition-colors">
                                 <input type="checkbox" id="cond_htn" class="w-4 h-4 mt-0.5 text-gray-600 rounded" onchange="calcCardio()">
@@ -101,7 +101,20 @@
                             </label>
                             <label class="flex items-start space-x-2 cursor-pointer p-2 bg-rose-50 rounded border border-rose-200 hover:bg-rose-100 transition-colors">
                                 <input type="checkbox" id="cond_acs" class="w-4 h-4 mt-0.5 text-rose-600 rounded" onchange="calcCardio()">
-                                <div class="text-xs text-rose-900"><span class="font-bold">Hội chứng Vành cấp / Mạn (ACS/CCS)</span></div>
+                                <div class="text-xs text-rose-900"><span class="font-bold">Hội chứng Vành (ACS/CCS)</span></div>
+                            </label>
+                            
+                            <label class="flex items-start space-x-2 cursor-pointer p-2 bg-purple-50 rounded border border-purple-100 hover:border-purple-300 transition-colors">
+                                <input type="checkbox" id="cond_afib" class="w-4 h-4 mt-0.5 text-purple-600 rounded" onchange="calcCardio()">
+                                <span class="text-xs font-bold text-purple-900 mt-0.5">Rung nhĩ (AFib)</span>
+                            </label>
+                            <label class="flex items-start space-x-2 cursor-pointer p-2 bg-teal-50 rounded border border-teal-100 hover:border-teal-300 transition-colors">
+                                <input type="checkbox" id="cond_valve" class="w-4 h-4 mt-0.5 text-teal-600 rounded" onchange="calcCardio()">
+                                <div class="text-xs text-teal-900"><span class="font-bold">Van cơ học / Hẹp 2 lá do thấp</span><br><span class="text-[10px]">Chỉ định VKA bắt buộc</span></div>
+                            </label>
+                            <label class="flex items-start space-x-2 cursor-pointer p-2 bg-orange-50 rounded border border-orange-100 hover:border-orange-300 transition-colors">
+                                <input type="checkbox" id="cond_pad" class="w-4 h-4 mt-0.5 text-orange-600 rounded" onchange="calcCardio()">
+                                <span class="text-xs font-bold text-orange-900 mt-0.5">Bệnh Động mạch ngoại biên (PAD)</span>
                             </label>
                         </div>
                     </div>
@@ -114,19 +127,19 @@
                             <span id="crclValue" class="text-4xl font-black text-blue-600">--</span>
                             <span class="text-sm font-bold text-gray-400">mL/min</span>
                         </div>
-                        <p id="crclStatus" class="text-xs text-gray-500 text-center px-4">Nhập Tuổi, Cân nặng và Creatinine để tính độ thanh thải (Cockcroft-Gault).</p>
+                        <p id="crclStatus" class="text-xs text-gray-500 text-center px-4">Nhập Tuổi, Cân nặng và Creatinine để tính độ thanh thải.</p>
                     </div>
 
                     <div class="grid grid-cols-2 gap-3">
                         <div class="bg-rose-50 border border-rose-200 p-4 rounded-xl text-center">
                             <span class="block text-xs font-bold text-rose-500 uppercase mb-2">Đích Huyết Áp</span>
                             <span id="targetBP" class="text-xl font-bold text-rose-800">130 / 80</span>
-                            <span class="block text-[10px] text-gray-500 mt-1">mmHg (VNRAS 2024)</span>
+                            <span class="block text-[10px] text-gray-500 mt-1">mmHg</span>
                         </div>
                         <div class="bg-yellow-50 border border-yellow-200 p-4 rounded-xl text-center">
                             <span class="block text-xs font-bold text-yellow-600 uppercase mb-2">Đích LDL-C</span>
                             <span id="targetLDL" class="text-xl font-bold text-yellow-800">< 70</span>
-                            <span class="block text-[10px] text-gray-500 mt-1">mg/dL (Tùy nguy cơ)</span>
+                            <span class="block text-[10px] text-gray-500 mt-1">mg/dL</span>
                         </div>
                     </div>
 
@@ -146,6 +159,7 @@
                     </div>
                     <div id="guidelineSteps" class="p-4 mt-3 bg-blue-50 rounded-xl border border-blue-200 text-sm text-blue-900 hidden shadow-sm">
                     </div>   
+                    
                     <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200">
                         <div class="flex justify-between items-center mb-2 border-b pb-2">
                             <h2 class="font-bold text-gray-800 text-sm">1. Thuốc tác động hệ RAAS</h2>
@@ -191,7 +205,7 @@
                         </div>
                     </div>
 
-                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200" id="vascularBox">
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200">
                         <h2 class="font-bold text-gray-800 text-sm mb-3 border-b pb-2">4. Lipid máu & Chống huyết khối</h2>
                         <div class="space-y-3">
                             <div class="flex flex-col">
@@ -203,12 +217,46 @@
                                 </select>
                             </div>
                             <div class="flex flex-col">
-                                <span class="text-xs font-semibold text-gray-700 mb-1">Kháng tiểu cầu / Kháng đông</span>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-xs font-semibold text-gray-700">Kháng tiểu cầu / Kháng đông</span>
+                                    <span id="anticoagLock" class="text-[9px] bg-green-100 text-green-700 px-1.5 rounded hidden"></span>
+                                </div>
                                 <select id="rx_antiplatelet" class="w-full bg-gray-50 border border-gray-300 rounded p-1.5 text-xs" onchange="calcPrescription()">
                                     <option value="none">Không dùng</option>
-                                    <option value="aspirin">Aspirin 81-100mg (SAPT)</option>
-                                    <option value="dapt">DAPT (Aspirin + Clopidogrel)</option>
-                                    <option value="rivaroxaban">Rivaroxaban 2.5mg x2 + Aspirin (COMPASS)</option>
+                                    <optgroup label="Kháng tiểu cầu">
+                                        <option value="aspirin">Aspirin 81-100mg (SAPT)</option>
+                                        <option value="dapt">DAPT (Aspirin + Clopidogrel)</option>
+                                    </optgroup>
+                                    <optgroup label="Kháng đông">
+                                        <option value="rivaroxaban" id="opt_riva">Rivaroxaban 2.5mg x2 + Aspirin</option>
+                                        <option value="apixaban" id="opt_apix">NOAC: Apixaban 5mg x2 (Rung nhĩ)</option>
+                                        <option value="sintrom" id="opt_sintrom">VKA: Sintrom 1mg (Van tim/Rung nhĩ)</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 mb-6">
+                        <div class="flex justify-between items-center mb-2 border-b pb-2">
+                            <h2 class="font-bold text-gray-800 text-sm">5. Nhịp & Mạch ngoại biên</h2>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex flex-col">
+                                <span class="text-xs font-semibold text-gray-700 mb-1">Kiểm soát nhịp / Tần số</span>
+                                <select id="rx_antiarrhythmic" class="w-full bg-gray-50 border border-gray-300 rounded p-1.5 text-xs" onchange="calcPrescription()">
+                                    <option value="none">Không dùng</option>
+                                    <option value="amiodarone">Amiodarone 200mg</option>
+                                </select>
+                            </div>
+                            <div class="flex flex-col">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-xs font-semibold text-gray-700">Thuốc Mạch ngoại biên (PAD)</span>
+                                    <span id="cilostazolLock" class="text-[9px] bg-green-100 text-green-700 px-1.5 rounded">OK</span>
+                                </div>
+                                <select id="rx_pad" class="w-full bg-gray-50 border border-gray-300 rounded p-1.5 text-xs" onchange="calcPrescription()">
+                                    <option value="none">Không dùng</option>
+                                    <option value="cilostazol">Cilostazol 100mg</option>
                                 </select>
                             </div>
                         </div>
@@ -250,45 +298,15 @@
             <div class="p-6 bg-white rounded-xl shadow-sm border border-gray-200">
                 <div class="mb-6 border-b-2 border-rose-100 pb-3 text-center md:text-left">
                     <h2 class="text-xl font-bold text-rose-700 uppercase tracking-wide">Nguyên Tắc Chỉnh Liều & Đổi Thuốc</h2>
-                    <p class="text-gray-500 text-sm mt-1">Hướng dẫn thực hành lâm sàng tăng liều, hạ liều và chuyển đổi thuốc tim mạch.</p>
                 </div>
-
                 <div class="space-y-4">
                     <div class="bg-orange-50 p-4 rounded-md border-l-4 border-orange-500">
                         <h3 class="font-bold text-orange-800 text-sm">1. Chuyển đổi ACEi sang ARNI (Entresto)</h3>
-                        <p class="text-sm text-orange-900 mt-1">
-                            • <strong>BẮT BUỘC:</strong> Phải có khoảng nghỉ (washout period) <strong>36 tiếng</strong> tính từ liều uống ACEi cuối cùng trước khi uống liều ARNI đầu tiên để tránh nguy cơ phù mạch cấp bách.<br>
-                            • <strong>Từ ARB sang ARNI:</strong> Không cần khoảng nghỉ 36h, có thể uống ngay liều tiếp theo bằng ARNI.
-                        </p>
+                        <p class="text-sm text-orange-900 mt-1">BẮT BUỘC: Phải có khoảng nghỉ 36 tiếng tính từ liều uống ACEi cuối cùng trước khi uống liều ARNI đầu tiên để tránh nguy cơ phù mạch cấp bách.</p>
                     </div>
-
                     <div class="bg-blue-50 p-4 rounded-md border-l-4 border-blue-500">
-                        <h3 class="font-bold text-blue-800 text-sm">2. Nguyên tắc dò liều Chẹn Beta trong Suy tim</h3>
-                        <p class="text-sm text-blue-900 mt-1">
-                            • <strong>Start low, go slow:</strong> Luôn khởi trị bằng liều rất thấp (VD: Bisoprolol 1.25mg/ngày).<br>
-                            • Tăng gấp đôi liều mỗi <strong>2 - 4 tuần</strong> nếu bệnh nhân dung nạp được.<br>
-                            • <strong>Đích:</strong> Nhịp tim nghỉ đạt 55 - 60 lần/phút.<br>
-                            • <strong>Lưu ý:</strong> KHÔNG tăng liều hoặc khởi trị nếu bệnh nhân đang suy tim mất bù cấp (sung huyết, tĩnh mạch cổ nổi, rales phổi). Tạm giảm liều/ngưng nếu có biểu hiện giảm tưới máu.
-                        </p>
-                    </div>
-
-                    <div class="bg-green-50 p-4 rounded-md border-l-4 border-green-500">
-                        <h3 class="font-bold text-green-800 text-sm">3. Xử trí khi chức năng thận giảm / Tăng Kali do RAAS</h3>
-                        <p class="text-sm text-green-900 mt-1">
-                            • <strong>Creatinine tăng:</strong> Cho phép Creatinine tăng nhẹ (đến 30% hoặc < 3 mg/dL) so với nền khi mới bắt đầu ACEi/ARB/ARNI. Nếu tăng > 50% hoặc > 3.5 mg/dL: Bắt buộc giảm nửa liều hoặc ngưng thuốc.<br>
-                            • <strong>Kali máu (K+):</strong><br>
-                            &nbsp;&nbsp;- K+ = 5.0 - 5.5 mmol/L: Giảm 50% liều ACEi/ARB/MRA. Theo dõi điện giải sát.<br>
-                            &nbsp;&nbsp;- K+ > 5.5 mmol/L: <strong>Ngưng hoàn toàn</strong> các thuốc giữ Kali.
-                        </p>
-                    </div>
-
-                    <div class="bg-purple-50 p-4 rounded-md border-l-4 border-purple-500">
-                        <h3 class="font-bold text-purple-800 text-sm">4. Chuyển đổi Lợi tiểu quai (Tiêm tĩnh mạch sang Uống)</h3>
-                        <p class="text-sm text-purple-900 mt-1">
-                            • Sinh khả dụng của Furosemide đường uống chỉ bằng ~50% so với đường tiêm.<br>
-                            • <strong>Tỷ lệ quy đổi:</strong> 40mg PO (Uống) = 20mg IV (Tiêm TMC).<br>
-                            • Khi bệnh nhân hết sung huyết, chuyển từ tiêm sang uống, liều uống cần <strong>nhân đôi</strong> so với tổng liều tiêm hiện tại trong 24h để duy trì hiệu quả.
-                        </p>
+                        <h3 class="font-bold text-blue-800 text-sm">2. Kháng đông trong bệnh Van tim cơ học</h3>
+                        <p class="text-sm text-blue-900 mt-1">CHỐNG CHỈ ĐỊNH tuyệt đối dùng nhóm NOAC (Apixaban, Rivaroxaban, Dabigatran) cho bệnh nhân mang van tim cơ học hoặc hẹp van 2 lá vừa-nặng do thấp. Phải dùng thuốc kháng Vitamin K (VKA).</p>
                     </div>
                 </div>
             </div>
@@ -337,129 +355,40 @@
             });
         }
 
-        // --- CƠ SỞ DỮ LIỆU THUỐC (GUIDELINES: VNHA 2022, VNRAS 2024, CCS 2024) ---
-// --- CƠ SỞ DỮ LIỆU THUỐC (Đã chuẩn hóa định dạng Y lệnh HIS) ---
+        // --- CƠ SỞ DỮ LIỆU THUỐC ---
         const dbDrugs = {
-            'arni': {
-                name: 'ARNI (Sacubitril/Valsartan)',
-                y_lenh: 'Sacubitril/Valsartan (Entresto) 50mg 1 viên x 2 lần (u) (8h - 20h)',
-                adr: 'Hạ huyết áp triệu chứng, phù mạch, ho khan, suy giảm chức năng thận.',
-                int: 'CHỐNG CHỈ ĐỊNH dùng chung với ACEi. Phải có khoảng nghỉ (washout) 36 tiếng nếu đổi từ ACEi sang ARNI để tránh phù mạch cấp.',
-                mon: 'Đo HA tư thế. XN: Kali máu, Ure, Creatinine sau 1-2 tuần khởi trị/tăng liều.'
-            },
-            'acei': {
-                name: 'ACEi (Ưc chế men chuyển)',
-                y_lenh: 'Perindopril (Coveram) 5mg 1 viên x 1 lần (u) (8h)',
-                adr: 'Ho khan (gặp nhiều ở người Châu Á), phù mạch, tăng Kali máu.',
-                int: 'NSAIDs làm giảm tác dụng hạ áp và tăng nguy cơ suy thận cấp. Không kết hợp chung với ARB.',
-                mon: 'Chức năng thận (CrCl) và Kali máu (mục tiêu K+ < 5.0 mmol/L).'
-            },
-            'arb': {
-                name: 'ARB (Chẹn thụ thể Angiotensin)',
-                y_lenh: 'Telmisartan (Micardis) 40mg 1 viên x 1 lần (u) (8h)',
-                adr: 'Tương tự ACEi nhưng tỷ lệ ho khan và phù mạch cực kỳ thấp.',
-                int: 'Tránh dùng chung NSAIDs, thuốc lợi tiểu tiết kiệm Kali.',
-                mon: 'Điện giải đồ (Kali) và Creatinine máu định kỳ.'
-            },
-            'bisoprolol': {
-                name: 'Bisoprolol (Chẹn Beta chọn lọc)',
-                y_lenh: 'Bisoprolol (Concor) 2.5mg 1 viên x 1 lần (u) (8h)',
-                adr: 'Nhịp tim chậm, mệt mỏi, rối loạn cương dương, co thắt phế quản (thận trọng COPD/Hen).',
-                int: 'Tuyệt đối tránh kết hợp với CCB nhóm Non-DHP (Diltiazem/Verapamil) đường tĩnh mạch do nguy cơ blốc nhĩ thất.',
-                mon: 'Mục tiêu nhịp tim lúc nghỉ: 55-60 l/p. Đo ECG theo dõi khoảng PR.'
-            },
-            'metoprolol': {
-                name: 'Metoprolol Succinate',
-                y_lenh: 'Metoprolol Succinate (Betaloc ZOK) 25mg 1 viên x 1 lần (u) (8h)',
-                adr: 'Nhịp chậm, suy nhược, có thể che lấp triệu chứng hạ đường huyết ở bệnh nhân ĐTĐ.',
-                int: 'Các thuốc ức chế CYP2D6 (Amiodarone) có thể làm tăng nồng độ thuốc.',
-                mon: 'Nhịp tim và Huyết áp tư thế đứng.'
-            },
-            'carvedilol': {
-                name: 'Carvedilol (Chẹn Alpha & Beta)',
-                y_lenh: 'Carvedilol (Dilatrend) 6.25mg 1 viên x 2 lần (u) (8h - 20h)',
-                adr: 'Hạ HA tư thế nhiều hơn nhóm chọn lọc do có tính chẹn Alpha, chóng mặt.',
-                int: 'Tăng nồng độ Digoxin trong máu lên khoảng 15%.',
-                mon: 'Hướng dẫn bệnh nhân thay đổi tư thế chậm từ nằm sang ngồi/đứng.'
-            },
-            'other': {
-                name: 'Chẹn Beta Khác (Nebivolol/Atenolol)',
-                y_lenh: 'Nebivolol (Nebilet) 5mg 1 viên x 1 lần (u) (8h)',
-                adr: 'Nhịp chậm. Nebivolol có thêm tác dụng giãn mạch qua NO nên ít gây rối loạn cương dương hơn.',
-                int: 'Thận trọng khi dùng cùng Amiodarone.',
-                mon: 'Theo dõi nhịp tim.'
-            },
-            'spiro': {
-                name: 'Kháng Aldosterone (MRA)',
-                y_lenh: 'Spironolactone (Verospiron) 25mg 1 viên x 1 lần (u) (8h, sau ăn)',
-                adr: 'Tăng Kali máu, chứng vú to ở nam giới (gynecomastia) và đau vú.',
-                int: 'Tăng nguy cơ tăng Kali máu nghiêm trọng khi dùng chung với ACEi/ARB/ARNI. Thận trọng với NSAIDs.',
-                mon: 'Chống chỉ định nếu K+ > 5.0 mmol/L hoặc eGFR < 30 mL/phút. XN Kali sau 3 ngày và 1 tuần.'
-            },
-            'dapa': {
-                name: 'Ức chế SGLT2 (SGLT2i)',
-                y_lenh: 'Dapagliflozin (Forxiga) 10mg 1 viên x 1 lần (u) (8h)',
-                adr: 'Nhiễm nấm sinh dục, nhiễm trùng tiểu, nguy cơ nhiễm toan ceton đái tháo đường (DKA) thể đẳng đường.',
-                int: 'Làm tăng tác dụng giảm thể tích của thuốc lợi tiểu quai, có thể gây mất nước/tụt HA.',
-                mon: 'Không cần dò liều. Khuyên bệnh nhân uống nhiều nước và giữ vệ sinh vùng kín.'
-            },
-            'dhp': {
-                name: 'CCB Nhóm DHP (Amlodipine)',
-                y_lenh: 'Amlodipine (Amlor) 5mg 1 viên x 1 lần (u) (8h)',
-                adr: 'Phù mắt cá chân (phụ thuộc liều), đỏ bừng mặt, đau đầu, nhịp tim nhanh phản xạ.',
-                int: 'Dùng chung với Simvastatin liều >20mg/ngày làm tăng nguy cơ tiêu cơ vân.',
-                mon: 'Theo dõi tình trạng phù ngoại vi. Có thể giảm phù khi phối hợp với ACEi/ARB.'
-            },
-            'nondhp': {
-                name: 'CCB Nhóm Non-DHP (Diltiazem/Verapamil)',
-                y_lenh: 'Diltiazem (Tildiem) 60mg 1 viên x 1 lần (u) (8h)',
-                adr: 'Táo bón (đặc biệt Verapamil), nhịp tim chậm, blốc nhĩ thất.',
-                int: 'CHỐNG CHỈ ĐỊNH trên bệnh nhân Suy tim phân suất tống máu giảm (HFrEF) do tác động ức chế co bóp cơ tim âm tính.',
-                mon: 'Điện tâm đồ (PR interval), chức năng thất trái.'
-            },
-            'ator': {
-                name: 'Statin cường độ cao',
-                y_lenh: 'Atorvastatin (Lipitor) 40mg 1 viên x 1 lần (u) (20h)',
-                adr: 'Đau cơ, yếu cơ, tăng men gan (ALT/AST).',
-                int: 'Tương tác mạnh với các thuốc ức chế CYP3A4 (Clarithromycin, Itraconazole) gây nguy cơ tiêu cơ vân.',
-                mon: 'Làm lipid máu định kỳ (Mục tiêu LDL-C < 55 hoặc 70 mg/dL). Theo dõi men gan, CK nếu có đau cơ.'
-            },
-            'rosu': {
-                name: 'Statin cường độ cao',
-                y_lenh: 'Rosuvastatin (Crestor) 20mg 1 viên x 1 lần (u) (20h)',
-                adr: 'Tương tự Atorvastatin, có thể gây tiểu protein.',
-                int: 'Ít tương tác qua CYP450 hơn Atorvastatin.',
-                mon: 'Theo dõi chức năng thận và gan.'
-            },
-            'aspirin': {
-                name: 'Chống kết tập tiểu cầu đơn (SAPT)',
-                y_lenh: 'Aspirin (Aspirin pH8) 81mg 1 viên x 1 lần (u) (8h, sau ăn no)',
-                adr: 'Viêm loét dạ dày tá tràng, xuất huyết tiêu hóa, dị ứng (co thắt phế quản).',
-                int: 'Tăng nguy cơ chảy máu khi dùng cùng NSAIDs, thuốc kháng đông khác.',
-                mon: 'Theo dõi dấu hiệu phân đen, chảy máu chân răng. Cân nhắc dùng kèm PPI nếu nguy cơ XH tiêu hóa cao.'
-            },
-            'dapt': {
-                name: 'Kháng tiểu cầu kép (DAPT)',
-                y_lenh: 'Aspirin 81mg 1 viên x 1 lần (u) (8h, sau ăn no)\nClopidogrel (Plavix) 75mg 1 viên x 1 lần (u) (8h)',
-                adr: 'Nguy cơ xuất huyết cao hơn đơn trị liệu. Tụ máu mảng bầm da.',
-                int: 'Tránh dùng Clopidogrel chung với Omeprazole/Esomeprazole do ức chế cạnh tranh CYP2C19 làm giảm tác dụng Plavix.',
-                mon: 'Công thức máu (Tiểu cầu, Hct). Đánh giá thang điểm chảy máu (HAS-BLED/PRECISE-DAPT).'
-            },
-            'rivaroxaban': {
-                name: 'Kháng đông NOAC liều thấp (COMPASS)',
-                y_lenh: 'Rivaroxaban (Xarelto) 2.5mg 1 viên x 2 lần (u) (8h - 20h)\nAspirin 81mg 1 viên x 1 lần (u) (8h)',
-                adr: 'Chảy máu nhẹ đến nặng. Không có thuốc giải độc đặc hiệu phổ biến tại VN.',
-                int: 'Ức chế CYP3A4 và P-gp. Cần theo dõi khi dùng kèm Ketoconazol, Amiodaron.',
-                mon: 'Chỉnh liều hoặc ngưng theo eGFR. Không cần xét nghiệm INR định kỳ.'
-            }
+            'arni': { name: 'ARNI (Sacubitril/Valsartan)', y_lenh: 'Sacubitril/Valsartan (Entresto) 50mg 1 viên x 2 lần (u) (8h - 20h)', adr: 'Hạ huyết áp triệu chứng, phù mạch, suy thận.', int: 'CHỐNG CHỈ ĐỊNH dùng chung với ACEi. Phải nghỉ 36h nếu đổi từ ACEi sang ARNI.', mon: 'Đo HA. XN: Kali, Ure, Creatinine.' },
+            'acei': { name: 'ACEi (Ưc chế men chuyển)', y_lenh: 'Perindopril (Coveram) 5mg 1 viên x 1 lần (u) (8h)', adr: 'Ho khan, phù mạch, tăng Kali máu.', int: 'NSAIDs làm giảm tác dụng.', mon: 'Chức năng thận và Kali máu.' },
+            'arb': { name: 'ARB (Chẹn thụ thể)', y_lenh: 'Telmisartan (Micardis) 40mg 1 viên x 1 lần (u) (8h)', adr: 'Giống ACEi nhưng tỷ lệ ho khan thấp.', int: 'Tránh dùng chung NSAIDs.', mon: 'Điện giải đồ, Creatinine.' },
+            'bisoprolol': { name: 'Bisoprolol', y_lenh: 'Bisoprolol (Concor) 2.5mg 1 viên x 1 lần (u) (8h)', adr: 'Nhịp chậm, co thắt phế quản.', int: 'Tuyệt đối tránh kết hợp với CCB Non-DHP tĩnh mạch.', mon: 'Nhịp tim lúc nghỉ: 55-60 l/p.' },
+            'metoprolol': { name: 'Metoprolol Succinate', y_lenh: 'Metoprolol (Betaloc ZOK) 25mg 1 viên x 1 lần (u) (8h)', adr: 'Nhịp chậm.', int: 'Ức chế CYP2D6.', mon: 'Nhịp tim và Huyết áp tư thế.' },
+            'carvedilol': { name: 'Carvedilol', y_lenh: 'Carvedilol (Dilatrend) 6.25mg 1 viên x 2 lần (u) (8h-20h)', adr: 'Hạ HA tư thế nhiều do chẹn Alpha.', int: 'Tăng nồng độ Digoxin.', mon: 'Hướng dẫn thay đổi tư thế chậm.' },
+            'other': { name: 'Nebivolol/Atenolol', y_lenh: 'Nebivolol (Nebilet) 5mg 1 viên x 1 lần (u) (8h)', adr: 'Nhịp chậm.', int: 'Thận trọng với Amiodarone.', mon: 'Theo dõi nhịp tim.' },
+            'spiro': { name: 'Kháng Aldosterone (MRA)', y_lenh: 'Spironolactone (Verospiron) 25mg 1 viên x 1 lần (u) (8h, sau ăn)', adr: 'Tăng Kali máu, vú to nam giới.', int: 'Nguy cơ tăng Kali máu nghiêm trọng khi dùng ACEi/ARB.', mon: 'Chống chỉ định K+ > 5.0. XN Kali sau 3-7 ngày.' },
+            'dapa': { name: 'Ức chế SGLT2 (SGLT2i)', y_lenh: 'Dapagliflozin (Forxiga) 10mg 1 viên x 1 lần (u) (8h)', adr: 'Nhiễm nấm sinh dục, nhiễm toan ceton (DKA).', int: 'Tăng tác dụng lợi tiểu quai.', mon: 'Khuyên bệnh nhân uống nhiều nước.' },
+            'dhp': { name: 'CCB DHP (Amlodipine)', y_lenh: 'Amlodipine (Amlor) 5mg 1 viên x 1 lần (u) (8h)', adr: 'Phù mắt cá, nhịp nhanh phản xạ.', int: 'Cẩn thận với Simvastatin.', mon: 'Theo dõi phù ngoại vi.' },
+            'nondhp': { name: 'CCB Non-DHP (Diltiazem)', y_lenh: 'Diltiazem (Tildiem) 60mg 1 viên x 1 lần (u) (8h)', adr: 'Táo bón, blốc nhĩ thất.', int: 'CHỐNG CHỈ ĐỊNH trên bệnh nhân HFrEF.', mon: 'Đo ECG.' },
+            'ator': { name: 'Atorvastatin', y_lenh: 'Atorvastatin (Lipitor) 40mg 1 viên x 1 lần (u) (20h)', adr: 'Đau cơ, tăng men gan.', int: 'Tương tác CYP3A4.', mon: 'Men gan, CK, LDL-C.' },
+            'rosu': { name: 'Rosuvastatin', y_lenh: 'Rosuvastatin (Crestor) 20mg 1 viên x 1 lần (u) (20h)', adr: 'Tiểu protein.', int: 'Ít tương tác hơn Atorvastatin.', mon: 'Chức năng thận, gan.' },
+            'aspirin': { name: 'SAPT (Aspirin)', y_lenh: 'Aspirin (Aspirin pH8) 81mg 1 viên x 1 lần (u) (8h, sau ăn)', adr: 'Xuất huyết tiêu hóa.', int: 'Tăng nguy cơ chảy máu khi dùng NSAIDs.', mon: 'Theo dõi dấu hiệu chảy máu.' },
+            'dapt': { name: 'Kháng tiểu cầu kép (DAPT)', y_lenh: 'Aspirin 81mg 1 viên x 1 lần (u) (8h, sau ăn)\nClopidogrel (Plavix) 75mg 1 viên x 1 lần (u) (8h)', adr: 'Nguy cơ xuất huyết cao.', int: 'Tránh dùng chung Omeprazole.', mon: 'Công thức máu.' },
+            'rivaroxaban': { name: 'NOAC (Rivaroxaban liều mạch vành)', y_lenh: 'Rivaroxaban (Xarelto) 2.5mg 1 viên x 2 lần (u) (8h - 20h)\nAspirin 81mg 1 viên x 1 lần (u) (8h)', adr: 'Chảy máu.', int: 'Ức chế CYP3A4.', mon: 'Chỉnh liều theo eGFR.' },
+            
+            // THUỐC MỚI BỔ SUNG
+            'amiodarone': { name: 'Amiodarone (Chống loạn nhịp)', y_lenh: 'Amiodarone (Cordarone) 200mg 1 viên x 1 lần (u) (8h)', adr: 'Rối loạn tuyến giáp, xơ phổi, kéo dài QT.', int: 'Làm tăng nồng độ Digoxin, Warfarin, Statin (cần giảm liều các thuốc này).', mon: 'Đo ECG (QTc), chức năng tuyến giáp.' },
+            'sintrom': { name: 'Kháng Vitamin K (VKA)', y_lenh: 'Acenocoumarol (Sintrom) 1mg 1 viên x 1 lần (u) (18h)', adr: 'Cửa sổ điều trị hẹp, nguy cơ xuất huyết cao.', int: 'Tương tác mạnh với thức ăn nhiều Vitamin K (rau xanh) và nhiều thuốc qua gan.', mon: 'BẮT BUỘC theo dõi INR (Mục tiêu 2.0 - 3.0).' },
+            'apixaban': { name: 'NOAC / DOAC (Apixaban)', y_lenh: 'Apixaban (Eliquis) 5mg 1 viên x 2 lần (u) (8h - 20h)', adr: 'Chảy máu nhẹ đến nặng.', int: 'Tránh dùng với thuốc ức chế P-gp / CYP3A4 mạnh.', mon: 'Giảm liều còn 2.5mg x2 nếu có 2/3 yếu tố: Tuổi ≥ 80, Nặng ≤ 60kg, Cr ≥ 1.5 mg/dL.' },
+            'cilostazol': { name: 'Cilostazol (Giãn mạch ngoại biên)', y_lenh: 'Cilostazol (Pletaal) 100mg 1 viên x 2 lần (u) (8h - 20h)', adr: 'Đau đầu, tiêu chảy, đánh trống ngực.', int: 'Tăng tác dụng khi dùng với Diltiazem, Omeprazole.', mon: 'CHỐNG CHỈ ĐỊNH tuyệt đối trên bệnh nhân Suy tim mọi mức độ.' }
         };
-        // --- GLOBAL VARIABLES LƯU TRỮ TÌNH TRẠNG LÂM SÀNG ---
+
+        // --- GLOBAL VARIABLES ---
         let patientData = {
             crcl: null, isHFrEF: false, isHF: false, isHTN: false, isACS: false,
+            isAFib: false, isValve: false, isPAD: false,
             hr: 0, sbp: 0, k: 0
         };
 
-        // --- LOGIC TAB 1: TÍNH TOÁN SINH HIỆU & MỤC TIÊU ---
+        // --- TÍNH TOÁN TAB 1 ---
         function calcCardio() {
             const age = parseFloat(document.getElementById('age').value);
             const weight = parseFloat(document.getElementById('weight').value);
@@ -474,6 +403,11 @@
             patientData.isHF = document.getElementById('cond_hf').checked;
             patientData.isHTN = document.getElementById('cond_htn').checked;
             patientData.isACS = document.getElementById('cond_acs').checked;
+            
+            // Cập nhật biến bệnh lý mới
+            patientData.isAFib = document.getElementById('cond_afib').checked;
+            patientData.isValve = document.getElementById('cond_valve').checked;
+            patientData.isPAD = document.getElementById('cond_pad').checked;
 
             // 1. Tính CrCl (Cockcroft-Gault)
             let crclUI = document.getElementById('crclValue');
@@ -500,7 +434,7 @@
                 patientData.crcl = null;
                 crclUI.textContent = "--";
                 crclUI.className = "text-4xl font-black text-blue-600";
-                crclStatus.textContent = "Nhập Tuổi, Cân nặng và Creatinine để tính độ thanh thải (Cockcroft-Gault).";
+                crclStatus.textContent = "Nhập Tuổi, Cân nặng và Creatinine để tính độ thanh thải.";
             }
 
             // 2. Xác định Loại Suy tim (HFrEF <= 40%)
@@ -512,63 +446,31 @@
                 patientData.isHFrEF = false;
             }
 
-            // 3. Hiển thị Đích Điều trị
+            // 3. Đích Điều trị
             let targetBP = document.getElementById('targetBP');
             if (age >= 80 || (patientData.crcl !== null && patientData.crcl < 30)) {
-                targetBP.innerHTML = "130-139 / <80 <br><span class='text-[10px] text-gray-500 font-normal'>Người già/suy thận (VNRAS 2024)</span>";
+                targetBP.innerHTML = "130-139 / <80";
             } else {
-                targetBP.innerHTML = "120-129 / <80 <br><span class='text-[10px] text-gray-500 font-normal'>Mục tiêu chung (VNRAS 2024)</span>";
+                targetBP.innerHTML = "120-129 / <80";
             }
 
             let targetLDL = document.getElementById('targetLDL');
-            if (patientData.isACS) {
-                targetLDL.innerHTML = "< 55 <br><span class='text-[10px] text-gray-500 font-normal'>Nguy cơ Rất cao (Mạch vành)</span>";
-            } else if (patientData.isHF || patientData.isHTN) {
-                targetLDL.innerHTML = "< 70 <br><span class='text-[10px] text-gray-500 font-normal'>Nguy cơ Cao</span>";
+            if (patientData.isACS || patientData.isPAD) {
+                targetLDL.innerHTML = "< 55";
+            } else if (patientData.isHF || patientData.isHTN || patientData.isAFib) {
+                targetLDL.innerHTML = "< 70";
             } else {
-                targetLDL.innerHTML = "< 116 <br><span class='text-[10px] text-gray-500 font-normal'>Nguy cơ Thấp</span>";
+                targetLDL.innerHTML = "< 116";
             }
 
             updateTab2UI();
             calcPrescription();
         }
 
-        // --- LOGIC TAB 2: KHÓA / MỞ KHÓA THUỐC VÀ CẢNH BÁO ---
-        function updateTab2UI() {
-        // Xử lý hiển thị Banner chiến lược và Phác đồ tóm tắt
-            let banner = document.getElementById('gdmtStatusBanner');
-            let guidelineSteps = document.getElementById('guidelineSteps');
-            guidelineSteps.classList.remove('hidden');
-
-            if (patientData.isACS && patientData.isHFrEF) {
-                banner.className = "p-3 bg-purple-100 rounded-lg text-sm text-center font-bold text-purple-800 border border-purple-300";
-                banner.innerHTML = "🔴 SUY TIM SAU NHỒI MÁU: Dò liều tứ trụ Suy tim + Phối hợp Kháng tiểu cầu & Statin.";
-                guidelineSteps.innerHTML = "<strong>🌟 PHÁC ĐỒ KẾT HỢP (ACS + HFrEF):</strong><br>1. DAPT (Aspirin + Clopidogrel) 6-12 tháng.<br>2. Statin cường độ cao (Atorvastatin 40-80mg).<br>3. Khởi trị sớm tứ trụ suy tim (ARNI/ACEi + Chẹn Beta + MRA + SGLT2i) khi huyết động ổn định.";
-            
-            } else if (patientData.isHFrEF) {
-                banner.className = "p-3 bg-indigo-100 rounded-lg text-sm text-center font-bold text-indigo-800 border border-indigo-300";
-                banner.innerHTML = "🔴 SUY TIM (HFrEF): Mục tiêu là DÒ LIỀU ĐÍCH TỐI ĐA 4 trụ cột (VNHA 2022).";
-                guidelineSteps.innerHTML = "<strong>🌟 PHÁC ĐỒ SUY TIM HFrEF:</strong><br>Khởi trị đồng thời hoặc tuần tự nhanh 4 trụ cột ở liều thấp:<br>1. ARNI hoặc ACEi/ARB<br>2. Chẹn Beta (VD: Bisoprolol/Metoprolol)<br>3. Lợi tiểu kháng Aldosterone (MRA)<br>4. Ức chế SGLT2 (Dapagliflozin/Empagliflozin)";
-            
-            } else if (patientData.isACS) {
-                banner.className = "p-3 bg-rose-100 rounded-lg text-sm text-center font-bold text-rose-800 border border-rose-300";
-                banner.innerHTML = "🟡 MẠCH VÀNH (ACS/CCS): Ưu tiên chống huyết khối và kiểm soát Lipid máu.";
-                guidelineSteps.innerHTML = "<strong>🌟 PHÁC ĐỒ MẠCH VÀNH:</strong><br>1. Chống huyết khối: DAPT (sau ACS) hoặc SAPT (CCS).<br>2. Ổn định mảng xơ vữa: Statin cường độ cao (đích LDL-C < 55).<br>3. Chống đau thắt ngực: Chẹn Beta hoặc CCB nhóm Non-DHP.<br>4. ACEi/ARB: Bắt buộc nếu có THA, ĐTĐ hoặc Suy thận.";
-            
-            } else if (patientData.isHTN) {
-                banner.className = "p-3 bg-yellow-100 rounded-lg text-sm text-center font-bold text-yellow-800 border border-yellow-300";
-                banner.innerHTML = "🟢 TĂNG HUYẾT ÁP: Khuyến cáo dùng viên phối hợp (SPC) ngay từ bước 1.";
-                guidelineSteps.innerHTML = "<strong>🌟 PHÁC ĐỒ TĂNG HUYẾT ÁP (VNRAS 2024):</strong><br>Bắt đầu bằng viên phối hợp liều thấp:<br>• Bước 1: ACEi/ARB + CCB hoặc ACEi/ARB + Lợi tiểu Thiazide.<br>• Bước 2: Tăng liều tối đa viên phối hợp.<br>• Bước 3: Phối hợp 3 thuốc (ACEi/ARB + CCB + Lợi tiểu).";
-            
-            } else {
-                banner.className = "p-3 bg-gray-100 rounded-lg text-sm text-center font-bold text-gray-600 border border-gray-300";
-                banner.innerHTML = "Chưa có bệnh lý nào được chọn. Vui lòng quay lại Tab 1.";
-                guidelineSteps.classList.add('hidden');
-            }
-        }
         function lockElement(badge, selectEl, reason, disable) {
             badge.textContent = disable ? `C.C.Định (${reason})` : `Thận trọng (${reason})`;
             badge.className = disable ? "text-[9px] bg-red-100 text-red-700 px-1.5 rounded font-bold" : "text-[9px] bg-yellow-100 text-yellow-700 px-1.5 rounded font-bold";
+            badge.classList.remove("hidden");
             if(disable) {
                 selectEl.value = "none";
                 selectEl.disabled = true;
@@ -578,8 +480,77 @@
         function unlockElement(badge, selectEl) {
             badge.textContent = "An toàn";
             badge.className = "text-[9px] bg-green-100 text-green-700 px-1.5 rounded font-bold";
+            badge.classList.remove("hidden");
             selectEl.disabled = false;
             selectEl.classList.remove("opacity-50");
+        }
+
+        // --- CẬP NHẬT UI & RULES TAB 2 ---
+        function updateTab2UI() {
+            let banner = document.getElementById('gdmtStatusBanner');
+            let guidelineSteps = document.getElementById('guidelineSteps');
+            guidelineSteps.classList.remove('hidden');
+
+            // Cập nhật Banner hướng dẫn (Ưu tiên bệnh lý nguy hiểm nhất)
+            if (patientData.isValve) {
+                banner.className = "p-3 bg-teal-100 rounded-lg text-sm text-center font-bold text-teal-800 border border-teal-300";
+                banner.innerHTML = "🫀 BỆNH VAN TIM: Bắt buộc dùng VKA (Sintrom). Chống chỉ định NOAC.";
+                guidelineSteps.innerHTML = "<strong>🌟 QUẢN LÝ VAN TIM:</strong><br>1. Xét nghiệm INR nền.<br>2. Khởi trị Sintrom liều thấp, chỉnh liều theo INR.<br>3. Tuyệt đối không dùng Apixaban/Rivaroxaban.";
+            } else if (patientData.isAFib && patientData.isHF) {
+                banner.className = "p-3 bg-purple-100 rounded-lg text-sm text-center font-bold text-purple-800 border border-purple-300";
+                banner.innerHTML = "🔴 SUY TIM KÈM RUNG NHĨ: Kiểm soát tần số + Kháng đông NOAC.";
+                guidelineSteps.innerHTML = "<strong>🌟 PHÁC ĐỒ:</strong><br>1. Đánh giá CHA2DS2-VASc để chỉ định NOAC (Apixaban).<br>2. Dùng Chẹn Beta hoặc Amiodarone/Digoxin để kiểm soát nhịp tim.<br>3. Tối ưu tứ trụ suy tim.";
+            } else if (patientData.isACS && patientData.isHFrEF) {
+                banner.className = "p-3 bg-rose-100 rounded-lg text-sm text-center font-bold text-rose-800 border border-rose-300";
+                banner.innerHTML = "🔴 SUY TIM SAU NHỒI MÁU: Dò liều tứ trụ Suy tim + Phối hợp Kháng tiểu cầu & Statin.";
+                guidelineSteps.innerHTML = "<strong>🌟 PHÁC ĐỒ KẾT HỢP:</strong><br>1. DAPT (Aspirin + Clopidogrel).<br>2. Statin cường độ cao.<br>3. Khởi trị sớm tứ trụ suy tim.";
+            } else if (patientData.isHFrEF) {
+                banner.className = "p-3 bg-indigo-100 rounded-lg text-sm text-center font-bold text-indigo-800 border border-indigo-300";
+                banner.innerHTML = "🔵 SUY TIM (HFrEF): Mục tiêu là DÒ LIỀU ĐÍCH TỐI ĐA 4 trụ cột.";
+                guidelineSteps.innerHTML = "<strong>🌟 PHÁC ĐỒ SUY TIM HFrEF:</strong><br>Khởi trị đồng thời 4 trụ cột:<br>1. ARNI/ACEi/ARB<br>2. Chẹn Beta<br>3. MRA<br>4. SGLT2i";
+            } else if (patientData.isAFib) {
+                banner.className = "p-3 bg-purple-100 rounded-lg text-sm text-center font-bold text-purple-800 border border-purple-300";
+                banner.innerHTML = "🟣 RUNG NHĨ: Ưu tiên Kháng đông NOAC để dự phòng đột quỵ.";
+                guidelineSteps.innerHTML = "<strong>🌟 PHÁC ĐỒ RUNG NHĨ:</strong><br>1. Kháng đông: NOAC (Apixaban/Rivaroxaban) an toàn hơn VKA.<br>2. Kiểm soát tần số thất < 110 l/p (Chẹn beta/Amiodarone).";
+            } else if (patientData.isPAD) {
+                banner.className = "p-3 bg-orange-100 rounded-lg text-sm text-center font-bold text-orange-800 border border-orange-300";
+                banner.innerHTML = "🟠 BỆNH MẠCH NGOẠI BIÊN (PAD): Giãn mạch và chống huyết khối.";
+                guidelineSteps.innerHTML = "<strong>🌟 PHÁC ĐỒ PAD:</strong><br>1. Cilostazol cải thiện triệu chứng khập khiễng cách hồi.<br>2. Statin tích cực (LDL < 55).<br>3. Kháng tiểu cầu (SAPT).";
+            } else {
+                banner.className = "p-3 bg-gray-100 rounded-lg text-sm text-center font-bold text-gray-600 border border-gray-300";
+                banner.innerHTML = "Nhập bệnh cảnh ở Tab 1 để xem phác đồ chi tiết.";
+                guidelineSteps.classList.add('hidden');
+            }
+
+            // RULE 1: Khóa Cilostazol nếu có Suy tim
+            const padSelect = document.getElementById('rx_pad');
+            const padLock = document.getElementById('cilostazolLock');
+            if (patientData.isHF) {
+                lockElement(padLock, padSelect, 'Suy tim', true);
+            } else {
+                unlockElement(padLock, padSelect);
+            }
+
+            // RULE 2: Khóa NOAC nếu có Van cơ học
+            const antiplateletSelect = document.getElementById('rx_antiplatelet');
+            const anticoagLock = document.getElementById('anticoagLock');
+            const optRiva = document.getElementById('opt_riva');
+            const optApix = document.getElementById('opt_apix');
+            
+            if (patientData.isValve) {
+                optRiva.disabled = true;
+                optApix.disabled = true;
+                if (antiplateletSelect.value === 'rivaroxaban' || antiplateletSelect.value === 'apixaban') {
+                    antiplateletSelect.value = 'sintrom'; // Tự động nhảy sang VKA
+                }
+                lockElement(anticoagLock, antiplateletSelect, 'Van tim', false);
+                anticoagLock.textContent = "Khóa NOAC";
+                anticoagLock.className = "text-[9px] bg-red-100 text-red-700 px-1.5 rounded font-bold";
+            } else {
+                optRiva.disabled = false;
+                optApix.disabled = false;
+                anticoagLock.classList.add("hidden");
+            }
         }
 
         // --- GENERATE Y LỆNH & THÔNG TIN THEO DÕI ---
@@ -587,7 +558,7 @@
             let orderArr = [];
             let infoHTML = "";
 
-            // Thu thập các thuốc được chọn
+            // Lấy thêm thuốc từ các dropdown mới
             const selectedDrugs = [
                 document.getElementById('rx_raas').value,
                 document.getElementById('rx_bb').value,
@@ -595,7 +566,9 @@
                 document.getElementById('rx_sglt2').value,
                 document.getElementById('rx_ccb').value,
                 document.getElementById('rx_statin').value,
-                document.getElementById('rx_antiplatelet').value
+                document.getElementById('rx_antiplatelet').value,
+                document.getElementById('rx_antiarrhythmic').value,
+                document.getElementById('rx_pad').value
             ].filter(val => val !== 'none');
 
             if (selectedDrugs.length === 0) {
@@ -604,42 +577,37 @@
                 return;
             }
 
-            // Xử lý từng thuốc
             let idx = 1;
             selectedDrugs.forEach(key => {
                 let drug = dbDrugs[key];
                 if(drug) {
-                    // Thêm vào Y Lệnh
                     orderArr.push(`${idx}. ${drug.y_lenh}`);
                     idx++;
-
-                    // Thêm vào Box Thông tin An toàn
                     infoHTML += `
                     <div class="bg-white border border-gray-200 rounded-lg p-3 shadow-sm mb-3">
                         <h3 class="font-bold text-rose-700 text-sm border-b pb-1 mb-2">${drug.name}</h3>
                         <div class="space-y-1.5 text-xs text-gray-700">
-                            <p><span class="font-bold text-red-600">🔴 Tác dụng phụ (ADR):</span> ${drug.adr}</p>
-                            <p><span class="font-bold text-orange-600">⚠️ Tương tác thuốc:</span> ${drug.int}</p>
-                            <p><span class="font-bold text-blue-600">👁️ Theo dõi (Monitor):</span> ${drug.mon}</p>
+                            <p><span class="font-bold text-red-600">🔴 Tác dụng phụ:</span> ${drug.adr}</p>
+                            <p><span class="font-bold text-orange-600">⚠️ Tương tác:</span> ${drug.int}</p>
+                            <p><span class="font-bold text-blue-600">👁️ Theo dõi:</span> ${drug.mon}</p>
                         </div>
                     </div>`;
                 }
             });
 
-            // Ghi ra màn hình
-            let finalOrder = "[Y LỆNH NỘI KHOA]\n------------------------\n" + orderArr.join("\n\n");
+            let finalOrder = "[Y LỆNH NỘI KHOA - V3.0]\n------------------------\n" + orderArr.join("\n\n");
             document.getElementById('orderOutput').textContent = finalOrder;
             document.getElementById('clinicalWarnings').innerHTML = infoHTML;
         }
 
-        // Copy CPOE to clipboard
         function copyOrder() {
             const text = document.getElementById('orderOutput').textContent;
             navigator.clipboard.writeText(text).then(() => {
                 alert("Đã copy y lệnh vào bộ nhớ tạm!");
             });
         }
-        // Initialize empty state
+
+        // Initialize state on load
         updateTab2UI();
     </script>
 </body>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1e3a8a">
+    <title>VasoMaster ICU 2026 - Final</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f1f5f9; }
+        input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+        .sticky-header { position: sticky; top: 0; z-index: 50; }
+        .tab-content { display: none; animation: fadeIn 0.2s ease-in-out; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Tùy chỉnh thanh trượt (slider) */
+        input[type=range] { -webkit-appearance: none; width: 100%; height: 6px; border-radius: 5px; outline: none; margin-top: 10px; margin-bottom: 15px;}
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; border-radius: 50%; cursor: pointer; }
+        
+        /* Màu Slider */
+        .slider-red::-webkit-slider-thumb { background: #dc2626; }
+        .slider-red { background: #fca5a5; }
+        .slider-orange::-webkit-slider-thumb { background: #ea580c; }
+        .slider-orange { background: #fdba74; }
+        .slider-teal::-webkit-slider-thumb { background: #0d9488; }
+        .slider-teal { background: #5eead4; }
+
+        /* Toast thông báo */
+        #toast { visibility: hidden; min-width: 250px; background-color: #333; color: #fff; text-align: center; border-radius: 8px; padding: 12px; position: fixed; z-index: 100; left: 50%; bottom: 80px; transform: translateX(-50%); font-size: 14px; box-shadow: 0px 4px 6px rgba(0,0,0,0.3); }
+        #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
+        @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 80px; opacity: 1; } }
+        @keyframes fadeout { from { bottom: 80px; opacity: 1; } to { bottom: 0; opacity: 0; } }
+
+        /* Thêm vào phần Màu Slider trong thẻ <style> */
+        .slider-blue::-webkit-slider-thumb { background: #2563eb; }
+        .slider-blue { background: #bfdbfe; }
+        .slider-purple::-webkit-slider-thumb { background: #9333ea; }
+        .slider-purple { background: #e9d5ff; }
+    </style>
+</head>
+<body class="text-gray-800 pb-24">
+
+    <div class="bg-blue-900 text-white p-4 shadow-md sticky-header flex justify-between items-center">
+        <div>
+            <h1 class="text-xl font-bold tracking-tight">VasoMaster ICU</h1>
+            <p class="text-xs text-blue-200">Công cụ Hỗ trợ Huyết động</p>
+        </div>
+        <div id="nee_badge" class="bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded shadow hidden">
+            NEE: <span id="nee_val">0.00</span>
+        </div>
+    </div>
+
+    <div class="p-4 max-w-md mx-auto">
+
+        <div id="tab1" class="tab-content active">
+            
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-blue-100 mb-3 flex items-center justify-between">
+                <label class="font-bold text-gray-700">Cân nặng (kg)</label>
+                <input type="number" id="weight" value="50" class="w-24 text-2xl font-bold text-center border-b-2 border-blue-500 bg-blue-50 rounded p-1 text-blue-800 focus:outline-none" oninput="calculateAll()">
+            </div>
+
+            <div class="mb-4">
+                <p class="text-xs font-bold text-gray-500 mb-2 uppercase tracking-wide">Gợi ý phác đồ nhanh:</p>
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="applyFilter('septic')" class="px-3 py-1.5 bg-red-100 text-red-800 text-xs font-bold rounded-full border border-red-200 hover:bg-red-200 transition shadow-sm">Sốc Nhiễm Khuẩn</button>
+                    <button onclick="applyFilter('cardio')" class="px-3 py-1.5 bg-teal-100 text-teal-800 text-xs font-bold rounded-full border border-teal-200 hover:bg-teal-200 transition shadow-sm">Sốc Tim / Suy Bơm</button>
+                    <button onclick="applyFilter('anaphylaxis')" class="px-3 py-1.5 bg-orange-100 text-orange-800 text-xs font-bold rounded-full border border-orange-200 hover:bg-orange-200 transition shadow-sm">Sốc Phản Vệ</button>
+                    <button onclick="applyFilter('clear')" class="px-3 py-1.5 bg-gray-200 text-gray-700 text-xs font-bold rounded-full border border-gray-300 hover:bg-gray-300 transition shadow-sm">↺ Xóa trắng</button>
+                </div>
+            </div>
+
+            <div id="drug_workspace">
+                </div>
+
+            <div class="mt-2 flex space-x-2">
+                <select id="manual_drug_select" class="flex-1 bg-white border border-gray-300 rounded-lg p-3 text-sm font-semibold text-gray-700 focus:outline-none">
+                    <option value="" disabled selected>-- Chọn thuốc để thêm --</option>
+                </select>
+                <button onclick="addManualDrug()" class="bg-blue-600 text-white px-4 py-2 rounded-lg font-bold shadow hover:bg-blue-700 transition">Thêm</button>
+            </div>
+        </div>
+
+        <div id="tab2" class="tab-content">
+            <h2 class="text-xl font-bold text-blue-900 mb-4">Đánh giá Huyết động Nhanh</h2>
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-200 mb-4">
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1">HA Tâm thu</label>
+                        <input type="number" id="sbp" placeholder="mmHg" class="w-full border bg-gray-50 rounded-lg p-3 text-center font-bold text-lg focus:outline-none" oninput="calcHemodynamics()">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1">HA Tâm trương</label>
+                        <input type="number" id="dbp" placeholder="mmHg" class="w-full border bg-gray-50 rounded-lg p-3 text-center font-bold text-lg focus:outline-none" oninput="calcHemodynamics()">
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">Nhịp tim (L/phút)</label>
+                    <input type="number" id="hr" placeholder="Lần/phút" class="w-full border bg-gray-50 rounded-lg p-3 text-center font-bold text-lg focus:outline-none" oninput="calcHemodynamics()">
+                </div>
+                <hr class="my-4 border-gray-200">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-blue-50 p-3 rounded-lg text-center border border-blue-100">
+                        <span class="block text-xs text-gray-500 font-bold mb-1">MAP</span>
+                        <span id="map_result" class="text-3xl font-bold text-blue-700">--</span>
+                        <span class="block text-xs text-gray-500 mt-1">Mục tiêu ≥ 65</span>
+                    </div>
+                    <div class="bg-red-50 p-3 rounded-lg text-center border border-red-100">
+                        <span class="block text-xs text-gray-500 font-bold mb-1">Shock Index</span>
+                        <span id="si_result" class="text-3xl font-bold text-red-700">--</span>
+                        <span class="block text-xs text-gray-500 mt-1">Bình thường < 0.7</span>
+                    </div>
+                </div>
+                <div id="hemo_alert" class="mt-4 p-3 bg-yellow-50 border-l-4 border-yellow-500 text-yellow-800 text-sm font-medium hidden"></div>
+            </div>
+        </div>
+
+        <div id="tab3" class="tab-content">
+            <h2 class="text-xl font-bold text-blue-900 mb-4">Module An Toàn</h2>
+
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 mb-4">
+                <h3 class="font-bold text-gray-800 mb-3 border-b pb-2">✅ Checklist Lâm sàng</h3>
+                <label class="flex items-center space-x-3 mb-2"><input type="checkbox" class="w-5 h-5 text-blue-600 rounded"><span class="text-sm text-gray-700">Bệnh nhân đã được bù đủ dịch</span></label>
+                <label class="flex items-center space-x-3 mb-2"><input type="checkbox" class="w-5 h-5 text-blue-600 rounded"><span class="text-sm text-gray-700">Đã thiết lập đường truyền Tĩnh mạch Trung tâm</span></label>
+                <label class="flex items-center space-x-3"><input type="checkbox" class="w-5 h-5 text-blue-600 rounded"><span class="text-sm text-gray-700">Đã kiểm tra Toan kiềm (Khí máu động mạch)</span></label>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 mb-4">
+                <h3 class="font-bold text-gray-800 mb-2">🧪 Cảnh báo Toan máu (pH máu)</h3>
+                <p class="text-xs text-gray-500 mb-3">Hiệu quả của thuốc vận mạch giảm mạnh trong môi trường toan.</p>
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm font-bold text-gray-700">pH hiện tại:</span>
+                    <input type="number" id="ph_val" value="7.40" step="0.01" class="w-20 font-bold text-center border-b border-gray-300 focus:outline-none text-red-600 text-lg" oninput="checkPH()">
+                </div>
+                <div id="ph_alert" class="mt-2 p-2 bg-green-50 text-green-700 text-sm rounded border border-green-200">pH ổn định. Thụ thể Adrenergic hoạt động tốt.</div>
+            </div>
+
+            <div class="bg-red-50 p-4 rounded-xl shadow-sm border border-red-200 mb-4">
+                <h3 class="font-bold text-red-800 mb-2">🚨 Xử trí Thoát mạch (Extravasation)</h3>
+                <ul class="text-sm text-red-900 list-disc pl-5 space-y-1">
+                    <li>Dừng truyền ngay lập tức, <b>không</b> rút kim.</li>
+                    <li>Hút phần thuốc còn lại ra khỏi kim.</li>
+                    <li>Tiêm phong bế <b>Phentolamine</b> (5-10mg) xung quanh vùng hoại tử.</li>
+                    <li>Hoặc dùng mỡ <b>Nitroglycerin 2%</b> bôi tại chỗ.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="tab4" class="tab-content">
+            <h2 class="text-xl font-bold text-blue-900 mb-4">Sinh Y Lệnh Bệnh Án</h2>
+            <p class="text-sm text-gray-600 mb-4">Hệ thống tự động tạo văn bản y lệnh dựa trên liều lượng bạn đã cài đặt ở Tab Tính Liều.</p>
+            
+            <div class="bg-yellow-50 p-4 rounded-xl shadow-sm border border-yellow-200 mb-4 relative">
+                <button onclick="copyOrderText()" class="absolute top-2 right-2 bg-blue-600 text-white text-xs px-3 py-1 rounded shadow hover:bg-blue-700 transition">📋 Copy</button>
+                <pre id="order_text" class="text-sm text-gray-800 whitespace-pre-wrap font-sans mt-4 border-t border-yellow-300 pt-3">(Chưa có y lệnh vận mạch nào được tạo. Vui lòng quay lại Tab Tính liều để cài đặt thuốc...)</pre>
+            </div>
+            
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="font-bold text-gray-800 text-sm mb-2">📌 Y lệnh Điều dưỡng đi kèm:</h3>
+                <ul class="text-sm text-gray-600 list-disc pl-5 space-y-1">
+                    <li>Theo dõi Huyết áp (động mạch xâm lấn) mỗi 15 - 30 phút.</li>
+                    <li>Theo dõi nhịp tim trên Monitor liên tục.</li>
+                    <li>Theo dõi màu sắc, tưới máu đầu chi (CRT).</li>
+                    <li>Báo BS ngay nếu MAP < 65 mmHg hoặc Nhịp tim > 120 l/p.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-[0_-2px_10px_rgba(0,0,0,0.05)] flex justify-around text-xs font-semibold text-gray-500 z-50">
+        <button onclick="switchTab('tab1', this)" class="tab-btn text-blue-700 flex-1 py-3 flex flex-col items-center"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>Tính Liều</button>
+        <button onclick="switchTab('tab2', this)" class="tab-btn flex-1 py-3 flex flex-col items-center hover:text-blue-700 transition"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>Huyết Động</button>
+        <button onclick="switchTab('tab3', this)" class="tab-btn flex-1 py-3 flex flex-col items-center hover:text-blue-700 transition"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>An Toàn</button>
+        <button onclick="switchTab('tab4', this)" class="tab-btn flex-1 py-3 flex flex-col items-center hover:text-blue-700 transition"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>Y Lệnh</button>
+    </div>
+
+    <div id="toast">Đã copy Y lệnh vào bộ nhớ tạm!</div>
+
+    <script>
+        // 1. DATABASE THUỐC (Đã xóa trùng lặp Nitroglycerin)
+        const drugDatabase = [
+            { id: 'ne', name: 'Norepinephrine', group: 'Vasopressor', theme: { border: 'border-l-red-600', text: 'text-red-800', badgeBg: 'bg-red-100', slider: 'slider-red', bgLight: 'bg-red-50', borderLight: 'border-red-100' }, calcType: 'mcg', amtLabel: 'mg', amtOptions: [{ value: 4, text: '4 mg' }, { value: 8, text: '8 mg', selected: true }, { value: 16, text: '16 mg' }], doseLabel: 'Liều (µg/kg/phút)', doseStep: 0.01, sliderMax: 1, neeFactor: 1, topNote: '', bottomNote: '' },
+            { id: 'epi', name: 'Adrenaline', group: 'Ino-Vasopressor', theme: { border: 'border-l-red-600', text: 'text-red-800', badgeBg: 'bg-red-100', slider: 'slider-red', bgLight: 'bg-red-50', borderLight: 'border-red-100' }, calcType: 'mcg', amtLabel: 'mg', amtOptions: [{ value: 1, text: '1 mg' }, { value: 4, text: '4 mg', selected: true }], doseLabel: 'Liều (µg/kg/phút)', doseStep: 0.01, sliderMax: 1, neeFactor: 1, topNote: '', bottomNote: '' },
+            { id: 'vaso', name: 'Vasopressin', group: 'V2 Receptor', theme: { border: 'border-l-orange-500', text: 'text-orange-700', badgeBg: 'bg-orange-100', slider: 'slider-orange', bgLight: 'bg-orange-50', borderLight: 'border-orange-100' }, calcType: 'units', amtLabel: 'Units', amtOptions: [{ value: 20, text: '20 Units', selected: true }, { value: 40, text: '40 Units' }], doseLabel: 'Liều (Units/phút)', doseStep: 0.01, sliderMax: 0.06, neeFactor: 2.5, topNote: '* Thuốc tính liều theo Đơn vị/phút (Không nhân cân nặng).', bottomNote: '' },
+            { id: 'dobu', name: 'Dobutamine', group: 'Inotrope', theme: { border: 'border-l-teal-500', text: 'text-teal-800', badgeBg: 'bg-teal-100', slider: 'slider-teal', bgLight: 'bg-teal-50', borderLight: 'border-teal-100' }, calcType: 'mcg', amtLabel: 'mg', amtOptions: [{ value: 250, text: '250 mg', selected: true }], doseLabel: 'Liều (µg/kg/phút)', doseStep: 0.5, sliderMax: 20, neeFactor: 0, topNote: '', bottomNote: '' },
+            { id: 'milri', name: 'Milrinone', group: 'Inodilator', theme: { border: 'border-l-teal-500', text: 'text-teal-800', badgeBg: 'bg-teal-100', slider: 'slider-teal', bgLight: 'bg-teal-50', borderLight: 'border-teal-100' }, calcType: 'mcg', amtLabel: 'mg', amtOptions: [{ value: 10, text: '10 mg', selected: true }], doseLabel: 'Duy trì (µg/kg/phút)', doseStep: 0.05, sliderMax: 0.75, neeFactor: 0, topNote: '', bottomNote: '💡 Gợi ý Bolus: 50 µg/kg tiêm chậm trong 10 phút.' },
+            { id: 'dopa', name: 'Dopamine', group: 'Ino-Vasopressor', theme: { border: 'border-l-teal-600', text: 'text-teal-800', badgeBg: 'bg-teal-100', slider: 'slider-teal', bgLight: 'bg-teal-50', borderLight: 'border-teal-100' }, calcType: 'mcg', amtLabel: 'mg', amtOptions: [{ value: 200, text: '200 mg', selected: true }, { value: 400, text: '400 mg' }], doseLabel: 'Liều (µg/kg/phút)', doseStep: 1, sliderMax: 20, neeFactor: 0.01, topNote: '', bottomNote: '⚠️ Liều > 10 µg/kg/p chủ yếu gây co mạch (Alpha-1).' },
+            { id: 'nitro', name: 'Nitroglycerin', group: 'Vasodilator', theme: { border: 'border-l-blue-500', text: 'text-blue-800', badgeBg: 'bg-blue-100', slider: 'slider-blue', bgLight: 'bg-blue-50', borderLight: 'border-blue-100' }, calcType: 'mcg_min', amtLabel: 'mg', amtOptions: [{ value: 10, text: '10 mg', selected: true }, { value: 50, text: '50 mg' }], doseLabel: 'Liều (µg/phút)', doseStep: 5, sliderMax: 200, neeFactor: 0, topNote: '* Tính theo µg/phút. Chú ý nguy cơ tụt HA nhanh.', bottomNote: '' },
+            { id: 'nicar', name: 'Nicardipine', group: 'Vasodilator', theme: { border: 'border-l-blue-600', text: 'text-blue-900', badgeBg: 'bg-blue-200', slider: 'slider-blue', bgLight: 'bg-blue-50', borderLight: 'border-blue-200' }, calcType: 'mg_h', amtLabel: 'mg', amtOptions: [{ value: 10, text: '10 mg', selected: true }, { value: 20, text: '20 mg' }], doseLabel: 'Liều (mg/giờ)', doseStep: 0.5, sliderMax: 15, neeFactor: 0, topNote: '* Tính theo mg/giờ. Đổi đường truyền mỗi 12h để tránh viêm TM.', bottomNote: 'Khởi đầu 5 mg/h, tăng 2.5 mg/h mỗi 5-15p.' },
+            { id: 'amio', name: 'Amiodarone', group: 'Antiarrhythmic', theme: { border: 'border-l-purple-500', text: 'text-purple-800', badgeBg: 'bg-purple-100', slider: 'slider-purple', bgLight: 'bg-purple-50', borderLight: 'border-purple-100' }, calcType: 'mg_min', amtLabel: 'mg', amtOptions: [{ value: 600, text: '600 mg', selected: true }, { value: 900, text: '900 mg' }], doseLabel: 'Duy trì (mg/phút)', doseStep: 0.1, sliderMax: 1.5, neeFactor: 0, topNote: 'Pha với Glucose 5%. KHÔNG pha NaCl 0.9%.', bottomNote: '💡 Gợi ý: 1 mg/phút trong 6h đầu, sau đó 0.5 mg/phút.' }
+        ];
+
+        // 2. HÀM TẠO GIAO DIỆN ĐỘNG (Render HTML từ Database)
+        function renderDrugCards() {
+            const workspace = document.getElementById('drug_workspace');
+            const selectBox = document.getElementById('manual_drug_select');
+            
+            let cardsHTML = '';
+            let optionsHTML = '<option value="" disabled selected>-- Chọn thuốc để thêm --</option>';
+
+            drugDatabase.forEach(drug => {
+                let amtOptionsHTML = drug.amtOptions.map(opt => `<option value="${opt.value}" ${opt.selected ? 'selected' : ''}>${opt.text}</option>`).join('');
+
+                cardsHTML += `
+                <div id="card_${drug.id}" class="drug-card hidden bg-white p-4 rounded-xl shadow-sm border-l-4 ${drug.theme.border} border-gray-200 mb-4 relative">
+                    <button onclick="toggleCard('card_${drug.id}', false)" class="absolute top-2 right-2 text-gray-400 hover:text-red-500 font-bold text-lg">✕</button>
+                    <div class="flex justify-between items-center mb-1">
+                        <h3 class="text-lg font-bold ${drug.theme.text}">${drug.name}</h3>
+                        <span class="${drug.theme.badgeBg} ${drug.theme.text} text-[10px] px-2 py-1 rounded font-semibold uppercase">${drug.group}</span>
+                    </div>
+                    ${drug.topNote ? `<p class="text-[10px] text-gray-500 mb-3 italic">${drug.topNote}</p>` : '<div class="mb-3"></div>'}
+                    <div class="grid grid-cols-2 gap-3 mb-3">
+                        <div><select id="${drug.id}_amt" class="w-full border bg-gray-50 rounded-lg p-2 text-center font-bold text-sm" onchange="calculateAll()">${amtOptionsHTML}</select></div>
+                        <div><select id="${drug.id}_ml" class="w-full border bg-gray-50 rounded-lg p-2 text-center font-bold text-sm" onchange="calculateAll()"><option value="50" selected>Đủ 50 mL</option></select></div>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <label class="block text-xs font-semibold text-gray-500">${drug.doseLabel}</label>
+                        <input type="number" id="${drug.id}_dose_input" value="0.00" step="${drug.doseStep}" class="w-20 font-bold text-right border-b border-gray-300 focus:outline-none ${drug.theme.text} text-lg" oninput="syncSlider('${drug.id}'); calculateAll()">
+                    </div>
+                    <input type="range" id="${drug.id}_dose_slider" min="0" max="${drug.sliderMax}" step="${drug.doseStep}" value="0.00" class="${drug.theme.slider}" oninput="syncInput('${drug.id}'); calculateAll()">
+                    <div class="${drug.theme.bgLight} p-2 rounded-lg flex justify-between items-center border ${drug.theme.borderLight} ${drug.bottomNote ? 'mb-2' : ''}">
+                        <span class="text-xs font-medium text-gray-600">Tốc độ BTĐ:</span>
+                        <span class="text-2xl font-bold ${drug.theme.text}"><span id="${drug.id}_rate">0.0</span> <span class="text-sm font-normal text-gray-500">mL/h</span></span>
+                    </div>
+                    ${drug.bottomNote ? `<p class="text-[11px] ${drug.theme.text} ${drug.theme.badgeBg} p-1 rounded text-center">${drug.bottomNote}</p>` : ''}
+                </div>`;
+                optionsHTML += `<option value="card_${drug.id}">${drug.name}</option>`;
+            });
+
+            workspace.innerHTML = cardsHTML;
+            selectBox.innerHTML = optionsHTML;
+        }
+
+        // 3. CÁC HÀM TIỆN ÍCH & CHUYỂN TAB
+        function switchTab(tabId, element) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('text-blue-700'));
+            element.classList.add('text-blue-700');
+            if(tabId === 'tab4') generateOrderText();
+        }
+
+        function toggleCard(cardId, show) {
+            let card = document.getElementById(cardId);
+            if (!card) return;
+            if(show) { card.classList.remove('hidden'); } 
+            else {
+                card.classList.add('hidden');
+                let prefix = cardId.replace('card_', '');
+                if(document.getElementById(prefix + '_dose_input')) {
+                    document.getElementById(prefix + '_dose_input').value = 0;
+                    document.getElementById(prefix + '_dose_slider').value = 0;
+                }
+            }
+            calculateAll();
+        }
+
+        function applyFilter(type) {
+            drugDatabase.forEach(d => toggleCard('card_' + d.id, false)); // Ẩn hết
+            if(type === 'septic') { toggleCard('card_ne', true); toggleCard('card_vaso', true); }
+            else if (type === 'cardio') { toggleCard('card_dobu', true); toggleCard('card_milri', true); }
+            else if (type === 'anaphylaxis') { toggleCard('card_epi', true); }
+        }
+
+        function addManualDrug() {
+            let select = document.getElementById('manual_drug_select');
+            if(select.value) { toggleCard(select.value, true); select.value = ""; }
+        }
+
+        function syncSlider(prefix) { document.getElementById(prefix + '_dose_slider').value = document.getElementById(prefix + '_dose_input').value; }
+        function syncInput(prefix) { document.getElementById(prefix + '_dose_input').value = document.getElementById(prefix + '_dose_slider').value; }
+
+        // 4. HÀM TÍNH TOÁN CHÍNH (Đã quy hoạch lại gọn gàng)
+        function calculateAll() {
+            let w = parseFloat(document.getElementById('weight').value) || 0;
+            let nee = 0;
+
+            drugDatabase.forEach(drug => {
+                let card = document.getElementById('card_' + drug.id);
+                if (card && !card.classList.contains('hidden')) {
+                    let dose = parseFloat(document.getElementById(drug.id + '_dose_input').value) || 0;
+                    let amt = parseFloat(document.getElementById(drug.id + '_amt').value) || 0;
+                    let ml = parseFloat(document.getElementById(drug.id + '_ml').value) || 0;
+                    
+                    let rate = 0;
+                    if (drug.calcType === 'mcg') rate = (dose == 0 || w == 0) ? 0 : (dose * w * 60 * ml) / (amt * 1000);
+                    else if (drug.calcType === 'units') rate = (dose == 0) ? 0 : (dose * 60 * ml) / amt;
+                    else if (drug.calcType === 'mcg_min') rate = (dose == 0) ? 0 : (dose * 60 * ml) / (amt * 1000);
+                    else if (drug.calcType === 'mg_h') rate = (dose == 0) ? 0 : (dose * ml) / amt;
+                    else if (drug.calcType === 'mg_min') rate = (dose == 0) ? 0 : (dose * 60 * ml) / amt;
+
+                    document.getElementById(drug.id + '_rate').innerText = rate.toFixed(1);
+                    if (drug.neeFactor > 0) nee += (dose * drug.neeFactor);
+                }
+            });
+
+            // Xử lý Huy hiệu NEE
+            let badge = document.getElementById('nee_badge');
+            if(nee > 0) {
+                badge.classList.remove('hidden');
+                document.getElementById('nee_val').innerText = nee.toFixed(2);
+                if(nee >= 0.5) badge.className = "text-white text-xs font-bold px-2 py-1 rounded shadow bg-red-600";
+                else if (nee >= 0.2) badge.className = "text-white text-xs font-bold px-2 py-1 rounded shadow bg-orange-500";
+                else badge.className = "text-white text-xs font-bold px-2 py-1 rounded shadow bg-blue-600";
+            } else { badge.classList.add('hidden'); }
+            
+            generateOrderText();
+        }
+
+        // 5. CÁC MODULE KHÁC
+        function calcHemodynamics() {
+            let sbp = parseFloat(document.getElementById('sbp').value);
+            let dbp = parseFloat(document.getElementById('dbp').value);
+            let hr = parseFloat(document.getElementById('hr').value);
+            let alertBox = document.getElementById('hemo_alert');
+            let messages = [];
+
+            if(sbp > 0 && dbp > 0) {
+                let map = (sbp + 2 * dbp) / 3;
+                document.getElementById('map_result').innerText = map.toFixed(0);
+                if(map < 65) messages.push("⚠️ MAP < 65 mmHg: Bệnh nhân đang tụt huyết áp. Đánh giá bù dịch hoặc khởi động vận mạch.");
+            } else { document.getElementById('map_result').innerText = '--'; }
+
+            if(hr > 0 && sbp > 0) {
+                let si = hr / sbp;
+                document.getElementById('si_result').innerText = si.toFixed(2);
+                if(si > 1.0) messages.push("🚨 Shock Index > 1.0: Tình trạng huyết động không ổn định (nguy cơ sốc nặng/mất máu).");
+                else if(si > 0.8) messages.push("⚠️ Shock Index tăng: Cần theo dõi sát.");
+            } else { document.getElementById('si_result').innerText = '--'; }
+
+            if(messages.length > 0) { alertBox.innerHTML = messages.join('<br><br>'); alertBox.classList.remove('hidden'); } 
+            else { alertBox.classList.add('hidden'); }
+        }
+
+        function checkPH() {
+            let ph = parseFloat(document.getElementById('ph_val').value);
+            let alertBox = document.getElementById('ph_alert');
+            if (ph < 7.15) {
+                alertBox.className = "mt-2 p-2 bg-red-50 text-red-700 text-sm rounded border border-red-300 font-bold";
+                alertBox.innerHTML = "⚠️ TOAN MÁU NẶNG (pH < 7.15).<br>Đáp ứng với vận mạch sẽ giảm rất mạnh. Đề nghị xem xét bù Bicarbonate hoặc lọc máu liên tục (CRRT).";
+            } else if (ph < 7.35) {
+                alertBox.className = "mt-2 p-2 bg-yellow-50 text-yellow-700 text-sm rounded border border-yellow-300";
+                alertBox.innerHTML = "Toan máu nhẹ. Theo dõi sát xu hướng khí máu tiếp theo.";
+            } else {
+                alertBox.className = "mt-2 p-2 bg-green-50 text-green-700 text-sm rounded border border-green-200";
+                alertBox.innerHTML = "pH ổn định. Thụ thể Adrenergic hoạt động tốt.";
+            }
+        }
+
+        // 6. SINH Y LỆNH (Đã update để quét tự động từ Database)
+        function generateOrderText() {
+            let text = `--- Y LỆNH VẬN MẠCH/CO BÓP (${new Date().toLocaleTimeString('vi-VN', {hour:'2-digit', minute:'2-digit'})}) ---\n\n`;
+            let hasOrder = false;
+            let count = 1;
+
+            drugDatabase.forEach(drug => {
+                let card = document.getElementById('card_' + drug.id);
+                if(card && !card.classList.contains('hidden')) {
+                    let dose = parseFloat(document.getElementById(drug.id + '_dose_input').value) || 0;
+                    if(dose > 0) {
+                        let amt = document.getElementById(drug.id + '_amt').value;
+                        let rate = document.getElementById(drug.id + '_rate').innerText;
+                        
+                        let unitDisplay = drug.calcType === 'units' ? 'Units' : 'mg';
+                        let doseUnit = drug.calcType === 'units' ? 'Units/phút' : (drug.calcType.includes('min') ? 'µg/phút' : (drug.calcType === 'mg_h' ? 'mg/h' : 'µg/kg/phút'));
+                        
+                        // Đổi chữ "pha NaCl" cho Amiodarone vì nó yêu cầu Glucose
+                        let solvent = drug.id === 'amio' ? 'Glucose 5%' : 'NaCl 0.9%';
+
+                        text += `${count}. ${drug.name} ${amt}${unitDisplay} pha ${solvent} đủ 50ml.\n`;
+                        text += `   -> Truyền BTĐ liều: ${dose} ${doseUnit} (Tốc độ: ${rate} ml/h).\n\n`;
+                        hasOrder = true;
+                        count++;
+                    }
+                }
+            });
+
+            if(!hasOrder) { text = "(Chưa có y lệnh vận mạch nào được tạo. Vui lòng quay lại Tab Tính liều để cài đặt thuốc...)"; } 
+            else {
+                text += `[MỤC TIÊU HUYẾT ĐỘNG]\n- Duy trì MAP >= 65 mmHg.\n- Báo Bác sĩ nếu nhịp tim > 120 l/p.\n`;
+            }
+            
+            document.getElementById('order_text').innerText = text;
+        }
+
+        function copyOrderText() {
+            let text = document.getElementById('order_text').innerText;
+            if(text.includes("(Chưa có y lệnh")) return;
+            navigator.clipboard.writeText(text).then(() => {
+                let toast = document.getElementById("toast");
+                toast.className = "show";
+                setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+            });
+        }
+
+        // 7. KHỞI TẠO ỨNG DỤNG
+        window.onload = function() {
+            renderDrugCards();  // Quan trọng: Phải sinh HTML trước
+            applyFilter('septic'); // Bật phác đồ Sốc nhiễm khuẩn
+            calculateAll(); // Chạy tính toán lần đầu
+        };
+    </script>
+</body>
+</html>
