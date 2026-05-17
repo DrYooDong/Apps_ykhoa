@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#b91c1c">
     <title>ALS Master 2025 (ERC)</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../assets/js/main.js"></script>
     <style>
-        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f8fafc; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--neutral-50); }
         .flash-red { animation: flashRed 1s infinite; }
         @keyframes flashRed { 0%, 100% { background-color: #fee2e2; color: #b91c1c; } 50% { background-color: #b91c1c; color: #ffffff; } }
         .hidden-smooth { display: none; opacity: 0; transition: opacity 0.3s; }
         .visible-smooth { display: block; opacity: 1; animation: fadeIn 0.4s; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-        /* Tùy chỉnh thanh cuộn cho gọn */
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
         .highlight-pulse { animation: highlightBorder 1.5s ease-out; }
         @keyframes highlightBorder { 
             0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.7); border-color: #4f46e5; } 
@@ -24,19 +23,30 @@
         }
     </style>
 </head>
-<body class="text-gray-800 pb-10">
+<body data-app-shell="subpage" class="app-shell text-slate-800">
 
-    <div class="bg-red-700 text-white p-3 shadow-md sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto flex justify-between items-center">
-            <h1 class="font-bold text-lg flex items-center">
-                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-                ALS Master 2025 (ERC)
-            </h1>
-            <button onclick="resetAll()" class="bg-black/20 hover:bg-black/40 text-xs px-3 py-1.5 rounded font-bold transition">TẠO CA MỚI</button>
+    <!-- Header -->
+    <header class="header" style="background: linear-gradient(135deg, #b91c1c 0%, #dc2626 100%);">
+        <div class="header-content">
+            <div class="header-title">
+                <a href="../index.html" class="brand-logo" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);">
+                    <div class="brand-icon" style="width: 24px; height: 24px; font-size: 12px;">PD</div>
+                </a>
+                <span style="margin-left: 3rem;">🚑</span>
+                <span>ALS Master 2025 (ERC)</span>
+            </div>
+            <div class="header-nav">
+                <a href="../index.html" class="back-home-btn">
+                    <span>←</span>
+                    <span>Về trang chủ</span>
+                </a>
+                <button onclick="resetAll()" class="btn btn-danger btn-sm">TẠO CA MỚI</button>
+            </div>
         </div>
-    </div>
+    </header>
 
-    <div class="max-w-5xl mx-auto mt-4 px-3 space-y-4">
+    <!-- Main Container -->
+    <div class="main-container">
         <div class="bg-white rounded-2xl shadow-sm border border-indigo-200 overflow-hidden">
             <div class="bg-indigo-600 hover:bg-indigo-700 px-4 py-3 flex justify-between items-center cursor-pointer transition" onclick="toggleBLS()">
                 <h2 class="font-bold text-white flex items-center text-sm md:text-base">
@@ -523,6 +533,22 @@
         function closeHint() {
             document.getElementById('causeSupportBox').classList.add('hidden');
         }
+
     </script>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-title">Podcast DrDong - Clinical Assistant Hub</div>
+            <div class="footer-text">
+                Công cụ hỗ trợ Hồi sinh tim phổi theo chuẩn ERC 2025<br>
+                Medical science over a cup of tea<br>
+                © 2026 Podcast DrDong - Phiên bản 2.0.0
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>

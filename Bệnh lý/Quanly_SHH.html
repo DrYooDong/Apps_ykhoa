@@ -4,22 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Công cụ Xử trí Suy hô hấp cấp</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: { colors: { medical: { 500: '#0ea5e9', 700: '#0369a1', 900: '#0c4a6e' } } }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="../assets/js/main.js"></script>
 </head>
-<body class="bg-gray-100 text-gray-800 font-sans p-4 md:p-8">
+<body data-app-shell="subpage" class="app-shell text-slate-800">
 
-    <div class="max-w-5xl mx-auto space-y-6">
-        <header class="bg-medical-900 text-white p-4 rounded-lg shadow flex justify-between items-center">
-            <h1 class="text-xl font-bold">LƯU ĐỒ TIẾP CẬN SUY HÔ HẤP CẤP</h1>
-            <span class="text-sm bg-red-500 px-2 py-1 rounded">Hồi sức cấp cứu nội</span>
-        </header>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="header-title">
+                <a href="../index.html" class="brand-logo" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);">
+                    <div class="brand-icon" style="width: 24px; height: 24px; font-size: 12px;">PD</div>
+                </a>
+                <span style="margin-left: 3rem;">🫁</span>
+                <span>LƯU ĐỒ TIẾP CẬN SUY HÔ HẤP CẤP</span>
+            </div>
+            <div class="header-nav">
+                <a href="../index.html" class="back-home-btn">
+                    <span>←</span>
+                    <span>Về trang chủ</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
 
         <section class="bg-white p-6 rounded-lg shadow border-l-4 border-medical-500">
             <h2 class="text-lg font-bold text-medical-900 mb-4 uppercase">Bước 1: Nhập thông số Bệnh nhân & Khí máu (KMĐM)</h2>
@@ -262,6 +274,22 @@
                 desc.innerHTML = "Vui lòng kiểm tra lại sự chính xác của số liệu nhập vào (PaO2 >= 60 và PaCO2 <= 45).";
             }
         }
+
     </script>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-title">Khoa Nhiễm - Clinical Assistant Hub</div>
+            <div class="footer-text">
+                Công cụ hỗ trợ chẩn đoán và điều trị Suy hô hấp cấp<br>
+                Phát triển dựa trên phác đồ y khoa cập nhật nhất<br>
+                © 2026 Clinical Assistant Hub - Phiên bản 1.0.0
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>

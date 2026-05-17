@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MedScale Pro - Hệ thống Quản lý Thang điểm</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../../assets/js/main.js"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
         }
     </script>
@@ -23,7 +24,7 @@
         [v-cloak] { display: none; }
     </style>
 </head>
-<body>
+<body data-app-shell="subpage" class="app-shell">
 
 <div id="app" v-cloak class="min-h-screen flex flex-col relative">
     
@@ -46,9 +47,6 @@
             </div>
 
             <div class="flex items-center gap-2">
-                <button @click="toggleDarkMode" class="p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
-                    {{ isDarkMode ? '☀️' : '🌙' }}
-                </button>
                 <button v-if="currentView !== 'manage'" @click="goToManage" class="px-3 py-2 bg-slate-900 dark:bg-blue-600 text-white rounded-xl text-xs font-bold hover:opacity-90 transition-all">
                     ⚙️ Quản lý
                 </button>
@@ -305,8 +303,6 @@
             const isLoading = ref(true);
             const isSaving = ref(false);
             const toast = ref({ show: false, message: '' });
-            const isDarkMode = ref(false);
-
             const clinicalScales = ref([]);
             const selectedScale = ref(null);
             
@@ -352,10 +348,6 @@
             };
 
             onMounted(() => {
-                if (localStorage.theme === 'dark') {
-                    isDarkMode.value = true;
-                    document.documentElement.classList.add('dark');
-                }
                 resetForm();
                 fetchScales(); 
             });
@@ -510,12 +502,6 @@
                 e.target.value = '';
             };
 
-            const toggleDarkMode = () => {
-                isDarkMode.value = !isDarkMode.value;
-                document.documentElement.classList.toggle('dark');
-                localStorage.theme = isDarkMode.value ? 'dark' : 'light';
-            };
-
             const goToHome = () => { currentView.value = 'home'; resetForm(); };
             const goToManage = () => { currentView.value = 'manage'; };
             const openDetail = (s) => { 
@@ -542,7 +528,7 @@
 
             const downloadImage = async () => {
                 const el = document.getElementById('export-area');
-                const canvas = await html2canvas(el, { scale: 2, backgroundColor: isDarkMode.value ? '#1e293b' : '#ffffff' });
+                const canvas = await html2canvas(el, { scale: 2, backgroundColor: '#ffffff' });
                 const a = document.createElement('a');
                 a.download = `MedScale_${selectedScale.value.name}.png`;
                 a.href = canvas.toDataURL();
@@ -558,11 +544,11 @@
                 }, 50);
             };
             return {
-                currentView, isLoading, isSaving, toast, isDarkMode, clinicalScales, selectedScale,
+                currentView, isLoading, isSaving, toast, clinicalScales, selectedScale,
                 searchQuery, selectedCategory, manageSearch, activeCategories, filteredScales, filteredManageScales,
                 form, layouts, isEditing, presetCategories,
                 loadTemplate, resetForm, saveScale, editScale, deleteScale,
-                toggleDarkMode, goToHome, goToManage, openDetail, getRiskClass, downloadImage, triggerImport, importData, editFromDetail,
+                goToHome, goToManage, openDetail, getRiskClass, downloadImage, triggerImport, importData, editFromDetail,
                 activeMatrixFilter, calcData
             };
         }

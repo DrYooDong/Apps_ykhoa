@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý Checklist Lâm Sàng</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="../assets/js/main.js"></script>
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--neutral-50); }
         /* Tùy chỉnh thanh cuộn cho đẹp */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
@@ -16,11 +18,34 @@
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     </style>
 </head>
-<body class="h-screen flex flex-col md:flex-row overflow-hidden text-slate-800">
+<body data-app-shell="subpage" class="app-shell text-slate-800">
 
-    <div class="w-full md:w-80 bg-white border-r border-slate-200 flex flex-col h-[30vh] md:h-full">
-        <div class="p-4 border-b border-slate-200 bg-slate-50 flex justify-between items-center">
-            <h1 class="font-bold text-lg text-blue-700">📋 Checklists</h1>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="header-title">
+                <span>📋</span>
+                <span>Quản lý Checklist Lâm Sàng</span>
+            </div>
+            <div class="header-nav">
+                <a href="../index.html" class="back-home-btn">
+                    <span>←</span>
+                    <span>Về trang chủ</span>
+                </a>
+                <div class="flex gap-2">
+                    <button onclick="document.getElementById('importJsonInput').click()" class="btn btn-success btn-sm" title="Nhập từ file JSON">📥 Nhập</button>
+                    <input type="file" id="importJsonInput" accept=".json" class="hidden" onchange="importJSON(event)">
+                    <button onclick="createNewChecklist()" class="btn btn-primary btn-sm" title="Thêm mới">+</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <div class="w-full md:w-80 bg-white border-r border-slate-200 flex flex-col h-[30vh] md:h-full">
+            <div class="p-4 border-b border-slate-200 bg-slate-50 flex justify-between items-center">
+                <h1 class="font-bold text-lg text-blue-700">📋 Checklists</h1>
             <div class="flex gap-2 items-center">
                 <button onclick="document.getElementById('importJsonInput').click()" class="bg-emerald-600 text-white px-3 h-8 rounded-lg hover:bg-emerald-700 flex items-center justify-center font-medium shadow-sm text-sm" title="Nhập từ file JSON">📥 Nhập</button>
                 <input type="file" id="importJsonInput" accept=".json" class="hidden" onchange="importJSON(event)">
@@ -331,5 +356,20 @@
         // --- KHỞI ĐỘNG ỨNG DỤNG ---
         fetchChecklists();
     </script>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-title">Khoa Nhiễm - Clinical Assistant Hub</div>
+            <div class="footer-text">
+                Công cụ quản lý checklist lâm sàng theo phác đồ y khoa<br>
+                Phát triển dựa trên phác đồ y khoa cập nhật nhất<br>
+                © 2026 Clinical Assistant Hub - Phiên bản 1.0.0
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>

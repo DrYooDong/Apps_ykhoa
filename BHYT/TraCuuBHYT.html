@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="vi" data-theme="light">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tra cứu BHYT</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="../assets/js/main.js"></script>
     <style>
     /* ===================== DESIGN TOKENS ===================== */
-    :root, [data-theme="light"] {
+    :root {
       --color-bg:             #f7f6f2;
       --color-surface:        #ffffff;
       --color-surface-2:      #f9f8f5;
@@ -43,32 +43,6 @@
       --text-lg:   clamp(1.125rem, 1rem    + 0.5vw,  1.375rem);
       --transition: 160ms cubic-bezier(0.16, 1, 0.3, 1);
     }
-    [data-theme="dark"] {
-      --color-bg:#131210; --color-surface:#1a1917; --color-surface-2:#1f1e1c;
-      --color-surface-offset:#252421; --color-divider:#2e2c2a; --color-border:#3a3835;
-      --color-text:#e8e6e2; --color-text-muted:#8a8884; --color-text-faint:#5a5957;
-      --color-primary:#2ea8a8; --color-primary-hover:#1d8888; --color-primary-tint:#1a3535;
-      --color-blue:#5a9fd4; --color-blue-tint:#1a2d3d;
-      --color-amber:#e09a30; --color-amber-tint:#2e2010;
-      --color-purple:#9b6fe0; --color-purple-tint:#261a38;
-      --color-success:#5aaa36; --color-success-tint:#1a2e10;
-      --color-error:#e05a4a; --color-error-tint:#2e1510;
-      --shadow-sm:0 1px 3px rgba(0,0,0,0.3); --shadow-md:0 4px 14px rgba(0,0,0,0.45);
-    }
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme]) {
-        --color-bg:#131210; --color-surface:#1a1917; --color-surface-2:#1f1e1c;
-        --color-surface-offset:#252421; --color-divider:#2e2c2a; --color-border:#3a3835;
-        --color-text:#e8e6e2; --color-text-muted:#8a8884; --color-text-faint:#5a5957;
-        --color-primary:#2ea8a8; --color-primary-hover:#1d8888; --color-primary-tint:#1a3535;
-        --color-blue:#5a9fd4; --color-blue-tint:#1a2d3d;
-        --color-amber:#e09a30; --color-amber-tint:#2e2010;
-        --color-purple:#9b6fe0; --color-purple-tint:#261a38;
-        --color-success:#5aaa36; --color-success-tint:#1a2e10;
-        --color-error:#e05a4a; --color-error-tint:#2e1510;
-        --shadow-sm:0 1px 3px rgba(0,0,0,0.3); --shadow-md:0 4px 14px rgba(0,0,0,0.45);
-      }
-    }
 
     /* ===================== BASE ===================== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -97,14 +71,6 @@
     .logo-text { display: flex; flex-direction: column; line-height: 1.2; }
     .logo-title { font-size: var(--text-sm); font-weight: 700; color: var(--color-primary); letter-spacing: -0.01em; }
     .logo-sub { font-size: var(--text-xs); color: var(--color-text-muted); }
-    .theme-toggle {
-      width: 36px; height: 36px; border-radius: var(--radius-full);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--color-text-muted); background: var(--color-surface-offset);
-      flex-shrink: 0;
-    }
-    .theme-toggle:hover { color: var(--color-text); background: var(--color-divider); }
-
     /* ===================== TABS ===================== */
     .nav-tabs {
       display: flex; overflow-x: auto; scrollbar-width: none;
@@ -229,35 +195,35 @@
     ::-webkit-scrollbar-thumb:hover { background: var(--color-border); }
     </style>
 </head>
-<body>
+<body data-app-shell="subpage" class="app-shell text-slate-800">
 
-<!-- HEADER -->
-<header class="app-header">
-  <div class="header-top">
-    <a class="logo-wrap" href="#">
-      <svg class="logo-icon" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Logo BHYT">
-        <rect width="34" height="34" rx="9" fill="var(--color-primary)"/>
-        <path d="M17 8v18M8 17h18" stroke="white" stroke-width="3" stroke-linecap="round"/>
-        <circle cx="17" cy="17" r="6" stroke="white" stroke-width="1.5" stroke-dasharray="3 2" fill="none" opacity="0.55"/>
-      </svg>
-      <div class="logo-text">
-        <span class="logo-title">Giám định BHYT</span>
-        <span class="logo-sub">Hệ thống tra cứu chuyên nghiệp</span>
-      </div>
-    </a>
-    <button class="theme-toggle" data-theme-toggle aria-label="Chuyển chế độ tối/sáng">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </button>
-  </div>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="header-title">
+                <span>🔍</span>
+                <span>Tra cứu BHYT</span>
+            </div>
+            <div class="header-nav">
+                <a href="../index.html" class="back-home-btn">
+                    <span>←</span>
+                    <span>Về trang chủ</span>
+                </a>
+            </div>
+        </div>
+    </header>
 
-  <nav class="nav-tabs" role="tablist">
-    <button class="tab-btn active" data-tab="thuoc" role="tab" aria-selected="true" onclick="switchTab('thuoc', this)">
-      💊 Thuốc
-    </button>
-    <button class="tab-btn" data-tab="xetnghiem" role="tab" aria-selected="false" onclick="switchTab('xetnghiem', this)">
-      🧪 Xét nghiệm
-    </button>
-    <button class="tab-btn" data-tab="dvkt" role="tab" aria-selected="false" onclick="switchTab('dvkt', this)">
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Navigation Tabs -->
+        <div class="nav-tabs" role="tablist">
+            <button class="tab-btn active" data-tab="thuoc" role="tab" aria-selected="true" onclick="switchTab('thuoc', this)">
+                💊 Thuốc
+            </button>
+            <button class="tab-btn" data-tab="xetnghiem" role="tab" aria-selected="false" onclick="switchTab('xetnghiem', this)">
+                🧪 Xét nghiệm
+            </button>
+            <button class="tab-btn" data-tab="dvkt" role="tab" aria-selected="false" onclick="switchTab('dvkt', this)">
       🩺 Dịch vụ kỹ thuật
     </button>
   </nav>
@@ -303,18 +269,6 @@
 <script>
 // ── Theme toggle ───────────────────────────────────────────────
 (function(){
-  const btn = document.querySelector('[data-theme-toggle]');
-  const root = document.documentElement;
-  let dark = matchMedia('(prefers-color-scheme: dark)').matches;
-  function apply() {
-    root.setAttribute('data-theme', dark ? 'dark' : 'light');
-    btn.innerHTML = dark
-      ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
-      : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-    btn.setAttribute('aria-label', dark ? 'Chuyển sang chế độ sáng' : 'Chuyển sang chế độ tối');
-  }
-  apply();
-  btn.addEventListener('click', () => { dark = !dark; apply(); });
 })();
 
 // ── Helpers ────────────────────────────────────────────────────
@@ -388,5 +342,20 @@ window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('search-dvkt').addEventListener('input', renderDVKT);
 });
 </script>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-title">Khoa Nhiễm - Clinical Assistant Hub</div>
+            <div class="footer-text">
+                Công cụ tra cứu Bảo hiểm Y tế chuyên nghiệp<br>
+                Phát triển dựa trên quy định BHYT cập nhật nhất<br>
+                © 2026 Clinical Assistant Hub - Phiên bản 1.0.0
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>

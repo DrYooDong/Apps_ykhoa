@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#ea580c">
     <title>SSC 2026 Sepsis Master App V2.1</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="../assets/js/main.js"></script>
     <style>
-        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f8fafc; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--neutral-50); }
         input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
         .sticky-header { position: sticky; top: 0; z-index: 50; }
         .tab-content { display: none; animation: fadeIn 0.3s ease-in-out; }
@@ -15,19 +18,27 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body class="text-gray-800 pb-24">
+<body data-app-shell="subpage" class="app-shell text-slate-800">
 
-    <div id="mainHeader" class="bg-red-700 text-white p-4 shadow-md sticky-header transition-colors duration-300">
-        <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <h1 class="font-bold text-lg flex items-center">
-                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                <span id="headerTitle">Sàng Lọc (NEWS2 + SIRS + SOFA)</span>
-            </h1>
-            <span class="bg-black/20 text-xs px-2 py-1 rounded">V2.1 Master</span>
+    <!-- Header -->
+    <header class="header" style="background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);">
+        <div class="header-content">
+            <div class="header-title">
+                <span>🚨</span>
+                <span>Sepsis SSC 2026</span>
+            </div>
+            <div class="header-nav">
+                <a href="../index.html" class="back-home-btn">
+                    <span>←</span>
+                    <span>Về trang chủ</span>
+                </a>
+                <span class="bg-black/20 text-xs px-2 py-1 rounded">V2.1 Master</span>
+            </div>
         </div>
-    </div>
+    </header>
 
-    <div class="max-w-4xl mx-auto mt-4 px-4">
+    <!-- Main Container -->
+    <div class="main-container">
         <div id="tab-sangloc" class="tab-content active">
             <div class="flex flex-col md:flex-row gap-4">
                 <div class="w-full md:w-5/12 space-y-4">
@@ -867,5 +878,20 @@
             });
         }
     </script>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-title">Khoa Nhiễm - Clinical Assistant Hub</div>
+            <div class="footer-text">
+                Quản lý nhiễm khuẩn huyết theo Surviving Sepsis 2026<br>
+                Phát triển dựa trên phác đồ y khoa cập nhật nhất<br>
+                © 2026 Clinical Assistant Hub - Phiên bản 1.0.0
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>

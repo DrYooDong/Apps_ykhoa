@@ -3,41 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clinical Assistant Hub | Professional</title>
+    <title>Clinical Assistant Hub | Podcast DrDong</title>
+    <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="assets/js/main.js"></script>
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f1f5f9; }
-        .sidebar-link.active { background-color: #1e40af; color: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
-        .app-card { transition: all 0.2s ease; }
-        .app-card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .sidebar-link.active { 
+            background-color: var(--medical-blue-600); 
+            color: white; 
+            box-shadow: var(--shadow-md); 
+        }
+        .app-card { 
+            transition: all 0.2s ease; 
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-card);
+        }
+        .app-card:hover { 
+            transform: translateY(-3px); 
+            box-shadow: var(--shadow-lg); 
+        }
         /* Ẩn scrollbar cho sidebar trên mobile */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Custom styles for brand */
+        .brand-section {
+            background: linear-gradient(135deg, var(--medical-blue-600), var(--medical-blue-500));
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* SPA Module Styles */
+        .app-module {
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeUp 0.18s ease;
+        }
+        
+        /* Medical theme colors */
+        :root {
+            --medical-blue-500: #3b82f6;
+            --medical-blue-600: #2563eb;
+            --medical-blue-700: #1d4ed8;
+            --medical-blue-900: #1e3a8a;
+        }
+        
+        /* Responsive adjustments for mobile */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 1rem;
+            }
+            
+            .nav-tabs {
+                overflow-x: auto;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+            
+            .nav-tabs::-webkit-scrollbar {
+                display: none;
+            }
+        }
     </style>
 </head>
-<body class="text-slate-800">
+<body class="app-shell text-slate-800">
 
-    <header class="bg-slate-900 text-white py-4 px-6 sticky top-0 z-50 shadow-lg">
-        <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+    <header class="header">
+        <div class="header-content">
             <div class="flex items-center gap-3">
-                <span class="text-2xl">⚕️</span>
-                <h1 class="text-xl font-bold tracking-tight">Clinical Assistant Hub</h1>
-                <span class="hidden md:inline bg-slate-700 px-2 py-0.5 rounded text-[10px] font-mono text-blue-300 border border-slate-600">v2.2.0</span>
+                <a href="#" class="brand-logo">
+                    <div class="brand-icon">PD</div>
+                    <div>
+                        <div class="brand-name">Podcast DrDong</div>
+                        <div class="brand-slogan">Medical science over a cup of tea</div>
+                    </div>
+                </a>
+                <span class="hidden md:inline bg-white/20 px-2 py-0.5 rounded text-[10px] font-mono text-blue-100 border border-white/30">v2.0.0</span>
             </div>
             
             <div class="flex items-center gap-4 w-full md:w-auto">
                 <div class="relative flex-grow md:w-96">
                     <input type="text" id="searchInput" placeholder="Tìm kiếm nhanh..." 
-                        class="w-full pl-10 pr-4 py-2 rounded-lg bg-slate-800 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm transition-all" 
+                        class="w-full pl-10 pr-4 py-2 rounded-lg bg-white/10 border border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm transition-all text-white placeholder-white/60" 
                         oninput="renderApps()">
-                    <svg class="absolute left-3 top-2.5 h-4 w-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    <svg class="absolute left-3 top-2.5 h-4 w-4 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </div>
-                <div class="flex bg-slate-800 p-1 rounded-lg border border-slate-700">
-                    <button onclick="setView('grid')" id="btnGrid" class="p-1.5 rounded transition-all text-blue-400 bg-slate-700 shadow-inner">
+                
+                <div class="flex bg-white/10 p-1 rounded-lg border border-white/20">
+                    <button onclick="setView('grid')" id="btnGrid" class="p-1.5 rounded transition-all text-blue-300 bg-white/20 shadow-inner">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
                     </button>
-                    <button onclick="setView('list')" id="btnList" class="p-1.5 rounded transition-all text-slate-400 hover:text-white">
+                    <button onclick="setView('list')" id="btnList" class="p-1.5 rounded transition-all text-white/60 hover:text-white">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
                     </button>
                 </div>
@@ -45,31 +128,331 @@
         </div>
     </header>
 
+    <!-- Brand Section -->
+    <div class="max-w-[1440px] mx-auto px-6 py-8">
+        <div class="brand-section">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div>
+                    <h2 class="text-2xl font-bold mb-2">Clinical Assistant Hub</h2>
+                    <p class="text-blue-100 text-lg">Hệ thống công cụ hỗ trợ chẩn đoán và điều trị y khoa chuyên nghiệp</p>
+                    <p class="text-blue-200 text-sm mt-1">Phát triển bởi Podcast DrDong • Medical science over a cup of tea</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold" id="appCount">30+</div>
+                        <div class="text-sm text-blue-200">Công cụ y khoa</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold">24/7</div>
+                        <div class="text-sm text-blue-200">Hỗ trợ trực đêm</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row min-h-screen">
         
-        <aside class="w-full md:w-64 bg-white md:bg-transparent p-4 md:pt-8 sticky top-16 md:h-[calc(100vh-64px)] overflow-y-auto no-scrollbar z-40 border-b md:border-none border-slate-200">
+        <!-- Desktop Sidebar -->
+        <aside class="hidden md:block w-64 bg-white md:bg-transparent p-4 md:pt-8 sticky top-16 md:h-[calc(100vh-64px)] overflow-y-auto no-scrollbar z-40 border-b md:border-none border-slate-200">
             <h2 class="hidden md:block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-4 px-4">Chuyên khoa</h2>
             <nav class="flex md:flex-col gap-1 overflow-x-auto no-scrollbar" id="categorySidebar">
-                </nav>
+                <button onclick="showHomePage()" class="sidebar-link whitespace-nowrap px-4 py-2.5 rounded-xl text-sm font-semibold transition-all text-slate-600 hover:bg-slate-200">
+                    🏠 Trang chủ
+                </button>
+                <button onclick="showModule('module-quanly-shh')" class="sidebar-link whitespace-nowrap px-4 py-2.5 rounded-xl text-sm font-semibold transition-all text-slate-600 hover:bg-slate-200">
+                    🫁 Suy hô hấp
+                </button>
+                <button onclick="showModule('module-acls')" class="sidebar-link whitespace-nowrap px-4 py-2.5 rounded-xl text-sm font-semibold transition-all text-slate-600 hover:bg-slate-200">
+                    🫀 Hồi sinh tim phổi
+                </button>
+                <button onclick="showModule('module-bhyt')" class="sidebar-link whitespace-nowrap px-4 py-2.5 rounded-xl text-sm font-semibold transition-all text-slate-600 hover:bg-slate-200">
+                    🔍 Tra cứu BHYT
+                </button>
+            </nav>
         </aside>
 
         <main class="flex-grow p-4 md:p-8">
-            <div id="favSection" class="hidden mb-10">
-                <div class="flex items-center gap-2 mb-4">
-                    <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                    <h2 class="font-bold text-slate-700">Công cụ hay dùng</h2>
+            <!-- SPA Module Container -->
+            <div id="spaModules" class="hidden">
+                <!-- Module Quản lý Suy Hô Hấp -->
+                <div id="module-quanly-shh" class="app-module hidden">
+                    <div class="main-container">
+                        <section class="bg-white p-6 rounded-lg shadow border-l-4 border-medical-500">
+                            <h2 class="text-lg font-bold text-medical-900 mb-4 uppercase">Bước 1: Nhập thông số Bệnh nhân & Khí máu (KMĐM)</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                                <div>
+                                    <label class="block text-sm font-semibold mb-1">Tuổi</label>
+                                    <input type="number" id="shh-age" class="w-full border p-2 rounded focus:ring-2 focus:ring-medical-500" placeholder="VD: 60">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold mb-1">FiO2 (%)</label>
+                                    <input type="number" id="shh-fio2" class="w-full border p-2 rounded focus:ring-2 focus:ring-medical-500" placeholder="VD: 21">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold mb-1">PaO2 (mmHg)</label>
+                                    <input type="number" id="shh-pao2" class="w-full border p-2 rounded focus:ring-2 focus:ring-medical-500" placeholder="VD: 55">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold mb-1">PaCO2 (mmHg)</label>
+                                    <input type="number" id="shh-paco2" class="w-full border p-2 rounded focus:ring-2 focus:ring-medical-500" placeholder="VD: 35">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold mb-1">pH máu</label>
+                                    <input type="number" id="shh-ph" step="0.01" class="w-full border p-2 rounded focus:ring-2 focus:ring-medical-500" placeholder="VD: 7.30">
+                                </div>
+                                <div class="md:col-span-5 mt-2">
+                                    <label class="block text-sm font-semibold mb-1">Dấu hiệu đe dọa tính mạng (Chọn nếu có):</label>
+                                    <div class="flex gap-4">
+                                        <label class="flex items-center"><input type="checkbox" id="shh-coma" class="mr-2"> Hôn mê / Rối loạn tri giác</label>
+                                        <label class="flex items-center"><input type="checkbox" id="shh-shock" class="mr-2"> Tụt huyết áp / Sốc</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <button onclick="analyzeSHHData()" class="mt-4 bg-medical-700 hover:bg-medical-900 text-white font-bold py-2 px-6 rounded transition">Phân tích Phác đồ</button>
+                        </section>
+
+                        <div id="shh-results-area" class="hidden space-y-6">
+                            
+                            <section class="bg-white p-6 rounded-lg shadow border-l-4" id="shh-classification-card">
+                                <h2 class="text-lg font-bold uppercase mb-2" id="shh-type-title">Bước 2: Phân loại cơ chế sinh bệnh</h2>
+                                
+                                <div id="shh-aado2-box" class="mb-4 inline-block px-4 py-2 rounded font-semibold text-sm border"></div>
+
+                                <p id="shh-type-desc" class="text-sm text-gray-700 mb-4"></p>
+                                
+                                <div class="bg-gray-50 p-4 rounded border">
+                                    <h3 class="font-bold text-gray-800 mb-2 border-b pb-1">Cơ chế bệnh sinh & Nhóm nguyên nhân:</h3>
+                                    <div id="shh-cause-list" class="space-y-3 text-sm text-gray-800"></div>
+                                </div>
+                            </section>
+
+                            <section class="bg-white p-6 rounded-lg shadow border-l-4 border-yellow-500">
+                                <h2 class="text-lg font-bold text-yellow-700 mb-4 uppercase">Bước 3: Cận lâm sàng đề nghị định hướng</h2>
+                                <div class="grid md:grid-cols-2 gap-4 text-sm">
+                                    <div>
+                                        <h4 class="font-semibold border-b pb-1 mb-2">Thường quy (Tại giường):</h4>
+                                        <ul class="list-disc pl-5">
+                                            <li>X-quang ngực thẳng (Tại giường).</li>
+                                            <li>ECG 12 chuyển đạo.</li>
+                                            <li>Siêu âm tại giường (Blue protocol, Siêu âm tim, tĩnh mạch chi dưới).</li>
+                                            <li>Lactate máu, Công thức máu, Sinh hóa cơ bản.</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold border-b pb-1 mb-2">Chuyên sâu (Theo cơ chế):</h4>
+                                        <ul id="shh-lab-list" class="list-disc pl-5 font-medium text-red-600"></ul>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="bg-white p-6 rounded-lg shadow border-l-4 border-red-500">
+                                <h2 class="text-lg font-bold text-red-700 mb-4 uppercase">Bước 4: Quản lý & Điều trị đặc hiệu</h2>
+                                
+                                <div id="shh-emergency-alert" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4 font-bold">
+                                    ⚠️ CẢNH BÁO: CHỈ ĐỊNH ĐẶT NỘI KHÍ QUẢN / THỞ MÁY XÂM LẤN NGAY (Có dấu hiệu đe dọa: rối loạn huyết động, tri giác lơ mơ hoặc toan hô hấp nặng).
+                                </div>
+
+                                <div class="space-y-4 text-sm">
+                                    <div class="bg-blue-50 p-3 rounded border border-blue-200">
+                                        <h4 class="font-bold text-blue-800 mb-1">1. Quản lý Hô hấp (Oxy / Thông khí):</h4>
+                                        <p id="shh-resp-support" class="mb-1"></p>
+                                    </div>
+                                    
+                                    <div class="bg-green-50 p-3 rounded border border-green-200">
+                                        <h4 class="font-bold text-green-800 mb-1">2. Xử trí căn nguyên (Dựa trên chẩn đoán xác định):</h4>
+                                        <ul id="shh-med-list" class="list-disc pl-5 space-y-1"></ul>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
                 </div>
-                <div id="favGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
-                <div class="h-px bg-slate-200 my-8"></div>
+
+                <!-- Module Tra cứu BHYT -->
+                <div id="module-bhyt" class="app-module hidden">
+                    <div class="main-container">
+                        <!-- Navigation Tabs -->
+                        <div class="nav-tabs" role="tablist" style="display: flex; overflow-x: auto; scrollbar-width: none; border-top: 1px solid var(--color-divider, #e2e8f0);">
+                            <button class="tab-btn active" data-tab="thuoc" role="tab" aria-selected="true" onclick="switchBHYTTab('thuoc', this)" style="flex-shrink: 0; display: flex; align-items: center; gap: 0.4rem; padding: 0.65rem 1.1rem; font-size: var(--text-sm, 0.875rem); font-weight: 500; color: var(--color-text-muted, #64748b); border-bottom: 2px solid transparent; white-space: nowrap; position: relative; top: 1px;">
+                                💊 Thuốc
+                            </button>
+                            <button class="tab-btn" data-tab="xetnghiem" role="tab" aria-selected="false" onclick="switchBHYTTab('xetnghiem', this)" style="flex-shrink: 0; display: flex; align-items: center; gap: 0.4rem; padding: 0.65rem 1.1rem; font-size: var(--text-sm, 0.875rem); font-weight: 500; color: var(--color-text-muted, #64748b); border-bottom: 2px solid transparent; white-space: nowrap; position: relative; top: 1px;">
+                                🧪 Xét nghiệm
+                            </button>
+                            <button class="tab-btn" data-tab="dvkt" role="tab" aria-selected="false" onclick="switchBHYTTab('dvkt', this)" style="flex-shrink: 0; display: flex; align-items: center; gap: 0.4rem; padding: 0.65rem 1.1rem; font-size: var(--text-sm, 0.875rem); font-weight: 500; color: var(--color-text-muted, #64748b); border-bottom: 2px solid transparent; white-space: nowrap; position: relative; top: 1px;">
+                                🩺 Dịch vụ kỹ thuật
+                            </button>
+                        </div>
+
+                        <!-- Main Content -->
+                        <div style="max-width: 880px; margin: 0 auto; padding: clamp(1rem, 3vw, 1.75rem) clamp(1rem, 4vw, 1.5rem) 5rem;">
+                            <!-- TAB: THUỐC -->
+                            <div id="bhyt-tab-thuoc" class="tab-content active" data-tab="thuoc" role="tabpanel" style="display: block; animation: fadeUp 0.18s ease;">
+                                <div class="search-wrap" style="position: relative; margin-bottom: 1.1rem;">
+                                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="position: absolute; left: 0.875rem; top: 50%; transform: translateY(-50%); color: var(--color-text-faint, #94a3b8); pointer-events: none; width: 17px; height: 17px;">
+                                        <circle cx="11" cy="11" r="8"/>
+                                        <path d="m21 21-4.35-4.35"/>
+                                    </svg>
+                                    <input type="text" id="bhyt-search-thuoc" class="search-input" placeholder="Tìm tên thuốc, hoạt chất, mã ICD..." autocomplete="off" spellcheck="false" style="width: 100%; padding: 0.75rem 1rem 0.75rem 2.6rem; border: 1.5px solid var(--color-border, #e2e8f0); border-radius: var(--radius-md, 0.5rem); font-size: var(--text-base, 1rem); background: var(--color-surface, #f8fafc); outline: none; box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.1));">
+                                </div>
+                                <div class="result-meta" id="bhyt-meta-thuoc" style="font-size: var(--text-xs, 0.75rem); color: var(--color-text-muted, #64748b); margin-bottom: 0.75rem; padding-left: 0.2rem;"></div>
+                                <div id="bhyt-result-thuoc"></div>
+                            </div>
+
+                            <!-- TAB: XÉT NGHIỆM -->
+                            <div id="bhyt-tab-xetnghiem" class="tab-content" data-tab="xetnghiem" role="tabpanel" style="display: none;">
+                                <div class="search-wrap" style="position: relative; margin-bottom: 1.1rem;">
+                                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="position: absolute; left: 0.875rem; top: 50%; transform: translateY(-50%); color: var(--color-text-faint, #94a3b8); pointer-events: none; width: 17px; height: 17px;">
+                                        <circle cx="11" cy="11" r="8"/>
+                                        <path d="m21 21-4.35-4.35"/>
+                                    </svg>
+                                    <input type="text" id="bhyt-search-xetnghiem" class="search-input" placeholder="Tìm tên xét nghiệm, mã ICD..." autocomplete="off" spellcheck="false" style="width: 100%; padding: 0.75rem 1rem 0.75rem 2.6rem; border: 1.5px solid var(--color-border, #e2e8f0); border-radius: var(--radius-md, 0.5rem); font-size: var(--text-base, 1rem); background: var(--color-surface, #f8fafc); outline: none; box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.1));">
+                                </div>
+                                <div class="result-meta" id="bhyt-meta-xetnghiem" style="font-size: var(--text-xs, 0.75rem); color: var(--color-text-muted, #64748b); margin-bottom: 0.75rem; padding-left: 0.2rem;"></div>
+                                <div id="bhyt-result-xetnghiem"></div>
+                            </div>
+
+                            <!-- TAB: DVKT -->
+                            <div id="bhyt-tab-dvkt" class="tab-content" data-tab="dvkt" role="tabpanel" style="display: none;">
+                                <div class="search-wrap" style="position: relative; margin-bottom: 1.1rem;">
+                                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="position: absolute; left: 0.875rem; top: 50%; transform: translateY(-50%); color: var(--color-text-faint, #94a3b8); pointer-events: none; width: 17px; height: 17px;">
+                                        <circle cx="11" cy="11" r="8"/>
+                                        <path d="m21 21-4.35-4.35"/>
+                                    </svg>
+                                    <input type="text" id="bhyt-search-dvkt" class="search-input" placeholder="Tìm tên dịch vụ kỹ thuật, mã ICD..." autocomplete="off" spellcheck="false" style="width: 100%; padding: 0.75rem 1rem 0.75rem 2.6rem; border: 1.5px solid var(--color-border, #e2e8f0); border-radius: var(--radius-md, 0.5rem); font-size: var(--text-base, 1rem); background: var(--color-surface, #f8fafc); outline: none; box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.1));">
+                                </div>
+                                <div class="result-meta" id="bhyt-meta-dvkt" style="font-size: var(--text-xs, 0.75rem); color: var(--color-text-muted, #64748b); margin-bottom: 0.75rem; padding-left: 0.2rem;"></div>
+                                <div id="bhyt-result-dvkt"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module ACLS -->
+                <div id="module-acls" class="app-module hidden">
+                    <div class="main-container">
+                        <div class="bg-white rounded-2xl shadow-sm border border-indigo-200 overflow-hidden">
+                            <div class="bg-indigo-600 hover:bg-indigo-700 px-4 py-3 flex justify-between items-center cursor-pointer transition" onclick="toggleBLS()">
+                                <h2 class="font-bold text-white flex items-center text-sm md:text-base">
+                                    <span class="mr-2">🫀</span> BLS - HỒI SINH TIM PHỔI CƠ BẢN
+                                </h2>
+                                <span id="blsIcon" class="text-white transform transition-transform duration-300 font-bold">▼</span>
+                            </div>
+                            <div id="blsContent" class="p-4 grid grid-cols-1 md:grid-cols-4 gap-3">
+                                <button onclick="toggleBlsItem(this)" class="bls-item relative flex flex-col items-center justify-center p-3 rounded-xl border-2 border-gray-200 bg-gray-50 text-gray-600 hover:bg-gray-100 transition text-center h-full">
+                                    <span class="text-2xl mb-1">🚨</span>
+                                    <span class="font-bold text-sm text-gray-800">An toàn & Gọi hỗ trợ</span>
+                                    <span class="text-[11px] leading-tight mt-1">Đảm bảo an toàn + Gọi Code Blue + Lấy AED + Xe cấp cứu</span>
+                                </button>
+                                
+                                <button onclick="toggleBlsItem(this); startCprFromBls()" class="bls-item relative flex flex-col items-center justify-center p-3 rounded-xl border-2 border-gray-200 bg-gray-50 text-gray-600 hover:bg-gray-100 transition text-center h-full group overflow-hidden">
+                                    <span class="text-2xl mb-1">👐</span>
+                                    <span class="font-bold text-sm text-gray-800">Ép tim (C)</span>
+                                    <span class="text-[11px] leading-tight mt-1">30:2 | Sâu 5-6cm | 100-120 l/p | Trải bục cứng | PetCO2 >= 10 mmHg</span>
+                                    <span class="text-[11px] leading-tight mt-1"><1t (nhũ nhi): ≥ 1/3 d lồng ngực, #4 cm | 1–10t: ≥ 1/3 d lồng ngực, #5 cm | >55 kg ~ người lớn (5–6 cm)</span>
+                                    <div class="absolute bottom-0 left-0 w-full bg-red-100 text-red-700 text-[10px] font-bold py-0.5 opacity-0 group-hover:opacity-100 transition translate-y-full group-hover:translate-y-0">Click để chạy đồng hồ CPR</div>
+                                </button>
+                                
+                                <button onclick="toggleBlsItem(this)" class="bls-item relative flex flex-col items-center justify-center p-3 rounded-xl border-2 border-gray-200 bg-gray-50 text-gray-600 hover:bg-gray-100 transition text-center h-full">
+                                    <span class="text-2xl mb-1">🫁</span>
+                                    <span class="font-bold text-sm text-gray-800">Đường thở & thông khí (A-B)</span>
+                                    <span class="text-[11px] leading-tight mt-1">Thổi ngạt & mask túi: 10-12 lần/phút (mỗi 6s) / NKQ: 6-10 lần/phút, độc lập với nhấn tim</span>
+                                </button>
+                                
+                                <button onclick="toggleBlsItem(this); highlightMonitor()" class="bls-item relative flex flex-col items-center justify-center p-3 rounded-xl border-2 border-gray-200 bg-gray-50 text-gray-600 hover:bg-gray-100 transition text-center h-full group overflow-hidden">
+                                    <span class="text-2xl mb-1">📺</span>
+                                    <span class="font-bold text-sm text-gray-800">Mắc Monitor/AED</span>
+                                    <span class="text-[11px] leading-tight mt-1">Gắn bản cực, chuẩn bị đánh giá nhịp tim</span>
+                                    <div class="absolute bottom-0 left-0 w-full bg-blue-100 text-blue-700 text-[10px] font-bold py-0.5 opacity-0 group-hover:opacity-100 transition translate-y-full group-hover:translate-y-0">Click để chuyển sang ALS</div>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row gap-4">
+                            
+                            <div class="w-full md:w-1/3 bg-gray-900 text-white p-5 rounded-2xl shadow-lg flex flex-col items-center justify-center border-4 border-gray-800 relative">
+                                <span class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Chu kỳ CPR (Đổi người ép)</span>
+                                <div id="cprTimerDisplay" class="text-7xl font-black mb-4 tabular-nums tracking-tighter">02:00</div>
+                                <div class="flex space-x-2 w-full">
+                                    <button onclick="toggleCprTimer()" id="cprBtn" class="flex-1 bg-red-600 hover:bg-red-500 py-3 rounded-xl font-bold text-lg transition shadow-[0_4px_0_#991b1b] active:shadow-none active:translate-y-1">BẮT ĐẦU</button>
+                                    <button onclick="resetCprTimer()" class="bg-gray-700 hover:bg-gray-600 px-4 py-3 rounded-xl font-bold transition"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg></button>
+                                </div>
+                            </div>
+
+                            <div class="w-full md:w-2/3 bg-white p-4 rounded-2xl shadow-sm border border-gray-200">
+                                <h2 class="font-bold text-gray-800 border-b pb-2 mb-3">ĐÁNH GIÁ NHỊP TẠI MONITOR</h2>
+                                <div class="grid grid-cols-2 gap-3 h-32">
+                                    <button onclick="selectRhythm('shockable')" id="btnShockable" class="flex flex-col items-center justify-center rounded-xl border-2 border-orange-200 bg-orange-50 text-orange-800 hover:bg-orange-100 transition">
+                                        <span class="text-3xl mb-1">⚡</span>
+                                        <span class="font-black text-lg uppercase">Sốc được</span>
+                                        <span class="text-xs font-semibold">(VF / pVT)</span>
+                                    </button>
+                                    <button onclick="selectRhythm('non-shockable')" id="btnNonShockable" class="flex flex-col items-center justify-center rounded-xl border-2 border-blue-200 bg-blue-50 text-blue-800 hover:bg-blue-100 transition">
+                                        <span class="text-3xl mb-1">📉</span>
+                                        <span class="font-black text-lg uppercase">Không sốc</span>
+                                        <span class="text-xs font-semibold">(PEA / Asystole)</span>
+                                    </button>
+                                </div>
+                                <div id="actionHint" class="mt-3 text-center text-sm font-bold text-gray-500 bg-gray-100 p-2 rounded">
+                                    Vui lòng chọn loại nhịp để xem hướng dẫn thuốc & can thiệp...
+                                </div>
+                                <div id="shockEnergyBox" class="hidden mt-3 p-3 bg-orange-50 border border-orange-200 rounded-xl">
+                                    <h3 class="font-bold text-orange-900 text-xs mb-1.5 border-b border-orange-200 pb-1">⚡ MỨC NĂNG LƯỢNG SỐC (ERC 2025)</h3>
+                                    <ul class="text-[11px] text-orange-800 space-y-1 list-disc pl-4">
+                                        <li><strong class="font-bold">Biphasic:</strong> Nhát 1 ≥ 150J. Các nhát sau: Tăng dần (VD: 200J ➔ 300J ➔ 360J).</li>
+                                        <li><strong class="font-bold">Pulsed biphasic:</strong> Nhát 1 từ 130-150J.</li>
+                                        <li><strong class="font-bold">Không rõ loại máy:</strong> Sốc ở mức năng lượng tối đa của máy.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div id="appContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+            <!-- Original App Grid (Hidden by default) -->
+            <div id="originalAppGrid">
+                <div id="favSection" class="hidden mb-10">
+                    <div class="flex items-center gap-2 mb-4">
+                        <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <h2 class="font-bold text-slate-700">Công cụ hay dùng</h2>
+                    </div>
+                    <div id="favGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+                    <div class="h-px bg-slate-200 my-8"></div>
+                </div>
 
-            <div id="noResults" class="hidden text-center py-20 bg-white rounded-2xl border-2 border-dashed border-slate-200">
-                <p class="text-slate-400">Không tìm thấy công cụ phù hợp.</p>
+                <div id="appContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+
+                <div id="noResults" class="hidden text-center py-20 bg-white rounded-2xl border-2 border-dashed border-slate-200">
+                    <p class="text-slate-400">Không tìm thấy công cụ phù hợp.</p>
+                </div>
             </div>
         </main>
     </div>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 z-50 px-4 py-2">
+        <div class="flex justify-around items-center">
+            <button onclick="showHomePage()" class="flex flex-col items-center gap-1 p-2 rounded-lg text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1h3a1 1 0 001-1v-10m-6 0a1 1 0 00-1 1v4a1 1 0 001 1h2a1 1 0 011-1V7a1 1 0 00-1-1H6a1 1 0 00-1 1v4a1 1 0 001 1h2a1 1 0 011-1V7a1 1 0 00-1-1z"></path>
+                </svg>
+                <span class="text-xs font-medium">Trang chủ</span>
+            </button>
+            <button onclick="showModule('module-quanly-shh')" class="flex flex-col items-center gap-1 p-2 rounded-lg text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all">
+                <span class="text-2xl">🫁</span>
+                <span class="text-xs font-medium">Suy hô hấp</span>
+            </button>
+            <button onclick="showModule('module-acls')" class="flex flex-col items-center gap-1 p-2 rounded-lg text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all">
+                <span class="text-2xl">🫀</span>
+                <span class="text-xs font-medium">Hồi sinh</span>
+            </button>
+            <button onclick="showModule('module-bhyt')" class="flex flex-col items-center gap-1 p-2 rounded-lg text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all">
+                <span class="text-2xl">🔍</span>
+                <span class="text-xs font-medium">BHYT</span>
+            </button>
+        </div>
+    </nav>
 
     <script>
         const apps = [
@@ -216,6 +599,355 @@
             noResults.style.display = (count === 0 && favCount === 0) ? 'block' : 'none';
         }
 
+        // SPA Navigation Functions
+        function showModule(moduleId) {
+            // Hide all modules
+            document.querySelectorAll('.app-module').forEach(module => {
+                module.classList.add('hidden');
+            });
+            
+            // Hide original app grid
+            document.getElementById('originalAppGrid').classList.add('hidden');
+            
+            // Show selected module
+            const selectedModule = document.getElementById(moduleId);
+            if (selectedModule) {
+                selectedModule.classList.remove('hidden');
+                selectedModule.style.opacity = '0';
+                selectedModule.style.transform = 'translateY(20px)';
+                
+                // Force reflow
+                selectedModule.offsetHeight;
+                
+                // Fade in animation
+                selectedModule.style.transition = 'all 0.3s ease';
+                selectedModule.style.opacity = '1';
+                selectedModule.style.transform = 'translateY(0)';
+                
+                // Auto-focus first input
+                const firstInput = selectedModule.querySelector('input[type="number"], input[type="text"]');
+                if (firstInput) {
+                    setTimeout(() => firstInput.focus(), 300);
+                }
+            }
+            
+            // Show SPA modules container
+            document.getElementById('spaModules').classList.remove('hidden');
+        }
+        
+        function showHomePage() {
+            // Hide all modules
+            document.querySelectorAll('.app-module').forEach(module => {
+                module.classList.add('hidden');
+            });
+            
+            // Show original app grid
+            document.getElementById('originalAppGrid').classList.remove('hidden');
+            document.getElementById('spaModules').classList.add('hidden');
+        }
+        
+        // SHH Analysis Function
+        function analyzeSHHData() {
+            const age = parseFloat(document.getElementById('shh-age').value);
+            const fio2Input = parseFloat(document.getElementById('shh-fio2').value);
+            const pao2 = parseFloat(document.getElementById('shh-pao2').value);
+            const paco2 = parseFloat(document.getElementById('shh-paco2').value);
+            const ph = parseFloat(document.getElementById('shh-ph').value);
+            const hasEmergency = document.getElementById('shh-coma').checked || document.getElementById('shh-shock').checked;
+
+            if (!pao2 || !paco2 || !age || !fio2Input) {
+                alert("Bác sĩ vui lòng nhập đầy đủ Tuổi, FiO2, PaO2 và PaCO2.");
+                return;
+            }
+
+            // Tính toán A-aDO2
+            const fio2Decimal = fio2Input / 100;
+            const pAO2 = (713 * fio2Decimal) - (paco2 / 0.8); // Áp suất khí quyển chuẩn
+            const aado2Measured = Math.max(0, pAO2 - pao2).toFixed(1);
+            const aado2Expected = (2.5 + 0.21 * age).toFixed(1); // Hoặc Age/4 + 4
+            const isAaDO2High = parseFloat(aado2Measured) > parseFloat(aado2Expected);
+
+            document.getElementById('shh-results-area').classList.remove('hidden');
+
+            // Phân loại Type SHH
+            let type = 0; 
+            if (pao2 < 60 && paco2 <= 45) type = 1;
+            else if (paco2 > 45 && pao2 >= 60) type = 2;
+            else if (pao2 < 60 && paco2 > 45) type = 3;
+
+            // DOM Elements
+            const cardClass = document.getElementById('shh-classification-card');
+            const title = document.getElementById('shh-type-title');
+            const desc = document.getElementById('shh-type-desc');
+            const causes = document.getElementById('shh-cause-list');
+            const labs = document.getElementById('shh-lab-list');
+            const resp = document.getElementById('shh-resp-support');
+            const meds = document.getElementById('shh-med-list');
+            const alertBox = document.getElementById('shh-emergency-alert');
+            const aado2Box = document.getElementById('shh-aado2-box');
+
+            // Render A-aDO2 Box
+            aado2Box.innerHTML = `Chỉ số A-aDO2 đo được: <span class="text-red-600">${aado2Measured} mmHg</span> (Dự đoán theo tuổi: ${aado2Expected} mmHg)`;
+            aado2Box.className = isAaDO2High 
+                ? "mb-4 inline-block px-4 py-2 rounded font-semibold text-sm border bg-red-50 border-red-200 text-red-800"
+                : "mb-4 inline-block px-4 py-2 rounded font-semibold text-sm border bg-green-50 border-green-200 text-green-800";
+
+            causes.innerHTML = ""; labs.innerHTML = ""; meds.innerHTML = "";
+            
+            // Xử lý cảnh báo NKQ
+            if (hasEmergency || (ph && ph < 7.25 && paco2 > 60)) {
+                alertBox.classList.remove('hidden');
+            } else {
+                alertBox.classList.add('hidden');
+            }
+
+            if (type === 1) {
+                cardClass.className = "bg-white p-6 rounded-lg shadow border-l-4 border-blue-500";
+                title.innerHTML = "Phân loại: SUY HÔ HẤP TYPE 1 (Giảm Oxy máu / Suy phổi)";
+                title.className = "text-lg font-bold uppercase mb-2 text-blue-700";
+                desc.innerHTML = "<strong>Đặc trưng:</strong> Tổn thương tại đơn vị trao đổi khí (màng phế nang - mao mạch) hoặc đường thở nhỏ làm cản trở quá trình oxy hóa máu.";
+                
+                if (isAaDO2High) {
+                    causes.innerHTML = `
+                        <div><strong class="text-blue-800">1. Bất xứng V/Q (Tưới máu > Thông khí):</strong> Thường cải thiện rõ khi cho thở Oxy. Nguyên nhân: Đợt cấp Hen, COPD, Viêm phổi khu trú, Thuyên tắc phổi (PE).</div>
+                        <div class="mt-2"><strong class="text-blue-800">2. Shunt phải-trái (Lấp đầy phế nang/Xẹp phổi):</strong> Không đáp ứng hoặc đáp ứng rất kém với Oxy liều cao. Nguyên nhân: ARDS, Phù phổi cấp do tim, Xẹp phổi diện rộng, Xuất huyết phế nang.</div>
+                        <div class="mt-2"><strong class="text-blue-800">3. Rối loạn khuếch tán:</strong> Tổn thương màng phế nang mao mạch. Nguyên nhân: Bệnh phổi kẽ (ILD), Xơ phổi.</div>
+                    `;
+                } else {
+                    causes.innerHTML = `
+                        <div><strong class="text-blue-800">Giảm FiO2 hoặc áp suất khí quyển:</strong> A-aDO2 bình thường cho thấy màng phế nang bình thường. Gặp ở vùng núi cao, ngạt khí.</div>
+                    `;
+                }
+
+                labs.innerHTML = `
+                    <li>CTPA động mạch phổi (Nếu nghi ngờ Thuyên tắc phổi).</li>
+                    <li>BNP/NT-proBNP, Troponin, Siêu âm tim (Phân biệt OAP huyết động vs ARDS).</li>
+                    <li>Procalcitonin, CRP, Cấy đàm/máu (Nghi ngờ nhiễm trùng hô hấp dưới).</li>`;
+                
+                resp.innerHTML = "<strong>Mục tiêu:</strong> SpO2 92-96%. Bắt đầu với Canula mũi -> Mask đơn giản -> Mask túi dự trữ. Nếu do Shunt (kém đáp ứng Oxy), cần xem xét HFNC hoặc Thông khí không xâm lấn (NIV) với PEEP để huy động phế nang.";
+                
+                meds.innerHTML = `
+                    <li><strong>Phù phổi cấp:</strong> Lợi tiểu quai (Furosemide tĩnh mạch), Dãn mạch (Nitroglycerin).</li>
+                    <li><strong>Viêm phổi/Sốc nhiễm trùng:</strong> Kháng sinh phổ rộng theo kinh nghiệm sớm trong giờ đầu.</li>
+                    <li><strong>Thuyên tắc phổi (PE):</strong> Kháng đông (Heparin LMWH/UFH), tiêu sợi huyết nếu có tụt huyết áp.</li>
+                    <li><strong>Hen/COPD:</strong> Phun khí dung SABA/SAMA, Corticoid toàn thân.</li>`;
+
+            } else if (type === 2) {
+                cardClass.className = "bg-white p-6 rounded-lg shadow border-l-4 border-yellow-500";
+                title.innerHTML = "Phân loại: SUY HÔ HẤP TYPE 2 (Tăng CO2 máu / Suy bơm)";
+                title.className = "text-lg font-bold uppercase mb-2 text-yellow-700";
+                desc.innerHTML = "<strong>Đặc trưng:</strong> Giảm thông khí phế nang do suy giảm động lực bơm hô hấp. Khí CO2 sinh ra không được đào thải đủ.";
+                
+                causes.innerHTML = `
+                    <div><strong class="text-yellow-800">1. Tổn thương trung tâm điều khiển (Hành não):</strong> Ngộ độc thuốc ức chế thần kinh (Opioids, Benzodiazepine, Barbiturate), Đột quỵ, Viêm não, Chấn thương sọ não.</div>
+                    <div class="mt-2"><strong class="text-yellow-800">2. Rối loạn dẫn truyền Thần kinh - Cơ:</strong> Tổn thương tủy cổ (C3-C5), Hội chứng Guillain-Barré, Nhược cơ (Myasthenia Gravis), Hạ Kali máu nặng.</div>
+                    <div class="mt-2"><strong class="text-yellow-800">3. Bất thường cơ học thành ngực/Màng phổi:</strong> Mảng sườn di động, Gù vẹo cột sống nghiêm trọng, Béo phì (OHS), Tràn khí màng phổi áp lực.</div>
+                `;
+                
+                labs.innerHTML = `
+                    <li>Test độc chất (Toxicology screen) trong máu và nước tiểu.</li>
+                    <li>CT sọ não / MRI tủy cổ (Nếu có dấu thần kinh khu trú, chấn thương).</li>
+                    <li>Ion đồ (Chú ý Kali, Magie, Phospho).</li>
+                    <li>Đo NIF (Negative Inspiratory Force) hoặc VC tại giường (Đánh giá sức cơ hô hấp).</li>`;
+                
+                resp.innerHTML = "<strong>Lưu ý quan trọng:</strong> Tránh dùng Oxy lưu lượng cao vì làm mất xung động hô hấp (Mục tiêu SpO2 chỉ 88-92% nếu có COPD). <strong>Thông khí không xâm lấn (NIV)</strong> là lựa chọn hàng đầu để hỗ trợ cơ hô hấp thải CO2.";
+                
+                meds.innerHTML = `
+                    <li><strong>Ngộ độc:</strong> Dùng chất đối kháng đặc hiệu (Naloxone cho Opioids, Flumazenil cho Benzodiazepine).</li>
+                    <li><strong>Thần kinh cơ:</strong> Lọc huyết tương (PLEX) hoặc truyền IVIG cho Guillain-Barré/Nhược cơ. Tránh thuốc dãn cơ.</li>
+                    <li><strong>Tràn khí/Dịch:</strong> Dẫn lưu khoang màng phổi cấp cứu.</li>`;
+
+            } else if (type === 3) {
+                cardClass.className = "bg-white p-6 rounded-lg shadow border-l-4 border-purple-500";
+                title.innerHTML = "Phân loại: SUY HÔ HẤP TYPE 3 (Hỗn hợp: Tổn thương phổi + Suy bơm)";
+                title.className = "text-lg font-bold uppercase mb-2 text-purple-700";
+                desc.innerHTML = "<strong>Đặc trưng:</strong> Sự kết hợp của cả giảm trao đổi khí (Type 1) và giảm thông khí phế nang (Type 2). Thường là giai đoạn mất bù tồi tệ nhất.";
+                
+                causes.innerHTML = `
+                    <div class="p-3 bg-white rounded border border-purple-200">
+                        <strong class="text-purple-800 block mb-1">Cơ chế chồng lấp (Overlapping Mechanisms):</strong>
+                        <ul class="list-disc pl-5">
+                            <li><strong>Phần Type 1 (Nhu mô phổi):</strong> Tình trạng viêm, phù nề, co thắt phế quản làm tăng kháng lực đường thở và tăng gánh nặng công thở (VD: Viêm phổi diện rộng, Đợt cấp COPD/Hen cực nặng).</li>
+                            <li><strong>Phần Type 2 (Suy cơ hô hấp):</strong> Quá trình gắng sức kéo dài chống lại kháng lực cao dẫn đến <em>kiệt sức cơ hô hấp (Respiratory muscle fatigue)</em>, cuối cùng không thể duy trì thông khí để thải CO2.</li>
+                        </ul>
+                    </div>
+                    <div class="mt-3">
+                        <strong class="text-gray-800">Nguyên nhân lâm sàng thường gặp:</strong>
+                        <ul class="list-disc pl-5">
+                            <li>Giai đoạn cuối của Đợt cấp COPD hoặc Cơn hen phế quản ác tính.</li>
+                            <li>Suy hô hấp chu phẫu (Type 3 cổ điển): Bệnh nhân đau sau mổ bụng/ngực hạn chế cử động hô hấp (Type 2) kết hợp xẹp phổi vùng đáy (Type 1).</li>
+                            <li>Bệnh nhân sốc (Giảm tưới máu toàn thân gây toan chuyển hóa, cơ hô hấp hoạt động quá mức dẫn đến suy kiệt).</li>
+                        </ul>
+                    </div>
+                `;
+                
+                labs.innerHTML = `
+                    <li>Lactate máu động mạch (Theo dõi mức độ thiếu máu mô/sốc).</li>
+                    <li>Các Marker viêm/Nhiễm khuẩn (CRP, PCT) & Nuôi cấy.</li>
+                    <li>X-Quang ngực tìm tổn thương xẹp phổi hoặc ARDS đi kèm.</li>`;
+                
+                resp.innerHTML = "<strong>Chỉ định khẩn:</strong> Tiên lượng cao cần <strong>Đặt nội khí quản thở máy xâm lấn</strong> để đảm nhận hoàn toàn công thở và bảo vệ não bộ khỏi tình trạng tăng CO2 và giảm O2 nặng. Có thể thử NIV nghiệm pháp ngắn nếu bệnh nhân còn tỉnh táo hoàn toàn (trong COPD).";
+                
+                meds.innerHTML = `
+                    <li><strong>COPD/Hen ác tính:</strong> Tối ưu hóa phác đồ dãn phế quản tĩnh mạch/khí dung, Corticosteroid IV, cân nhắc Magnesium Sulfate tĩnh mạch.</li>
+                    <li><strong>Chu phẫu:</strong> Giảm đau vùng (Tê ngoài màng cứng) thay vì dùng Opioids toàn thân, vật lý trị liệu hô hấp tích cực.</li>
+                    <li><strong>Tình trạng sốc:</strong> Hồi sức dịch tối ưu, sử dụng thuốc vận mạch (Norepinephrine) để đảm bảo tưới máu cơ hô hấp và đa tạng.</li>`;
+            } else {
+                title.innerHTML = "Thông số khí máu động mạch chưa thỏa tiêu chuẩn Suy Hô Hấp.";
+                desc.innerHTML = "Vui lòng kiểm tra lại sự chính xác của số liệu nhập vào (PaO2 >= 60 và PaCO2 <= 45).";
+            }
+        }
+        
+        // ACLS Functions (simplified versions)
+        function toggleBLS() {
+            const content = document.getElementById('blsContent');
+            const icon = document.getElementById('blsIcon');
+            if (content.style.display === 'none') {
+                content.style.display = 'grid';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.style.display = 'none';
+                icon.style.transform = 'rotate(-90deg)';
+            }
+        }
+        
+        function toggleBlsItem(btn) {
+            btn.classList.toggle('bg-green-100');
+            btn.classList.toggle('border-green-500');
+            btn.classList.toggle('text-green-800');
+        }
+        
+        function selectRhythm(type) {
+            const shockable = document.getElementById('btnShockable');
+            const nonShockable = document.getElementById('btnNonShockable');
+            const hint = document.getElementById('actionHint');
+            const energyBox = document.getElementById('shockEnergyBox');
+            
+            if (type === 'shockable') {
+                shockable.classList.add('ring-4', 'ring-orange-400');
+                nonShockable.classList.remove('ring-4', 'ring-blue-400');
+                hint.innerHTML = '<strong class="text-orange-600">HÀNH ĐỘNG:</strong> Sốc ngay lập tức → CPR 2 phút → Thuốc → Chu kỳ';
+                energyBox.classList.remove('hidden');
+            } else {
+                nonShockable.classList.add('ring-4', 'ring-blue-400');
+                shockable.classList.remove('ring-4', 'ring-orange-400');
+                hint.innerHTML = '<strong class="text-blue-600">HÀNH ĐỘNG:</strong> CPR liên tục → Thuốc mỗi 3-5 phút → Kiểm tra nguyên nhân';
+                energyBox.classList.add('hidden');
+            }
+        }
+        
+        // CPR Timer Functions
+        let cprTimeLeft = 120;
+        let cprTimer = null;
+        let cprIsRunning = false;
+        
+        function updateCprDisplay() {
+            let m = Math.floor(cprTimeLeft / 60);
+            let s = cprTimeLeft % 60;
+            let display = document.getElementById('cprTimerDisplay');
+            display.textContent = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+            
+            if (cprTimeLeft <= 0) {
+                display.classList.add('text-red-600');
+            } else {
+                display.classList.remove('text-red-600');
+            }
+        }
+        
+        function toggleCprTimer() {
+            let btn = document.getElementById('cprBtn');
+            if (cprIsRunning) {
+                clearInterval(cprTimer);
+                cprIsRunning = false;
+                btn.textContent = "TIẾP TỤC";
+                btn.className = "flex-1 bg-yellow-500 hover:bg-yellow-400 py-3 rounded-xl font-bold text-lg transition";
+            } else {
+                if (cprTimeLeft <= 0) cprTimeLeft = 120;
+                cprIsRunning = true;
+                btn.textContent = "TẠM DỪNG";
+                btn.className = "flex-1 bg-gray-600 hover:bg-gray-500 py-3 rounded-xl font-bold text-lg transition";
+                cprTimer = setInterval(() => {
+                    cprTimeLeft--;
+                    updateCprDisplay();
+                    if (cprTimeLeft <= 0) {
+                        clearInterval(cprTimer);
+                        cprIsRunning = false;
+                        btn.textContent = "BẮT ĐẦU CHU KỲ MỚI";
+                        btn.className = "flex-1 bg-red-600 hover:bg-red-500 py-3 rounded-xl font-bold text-lg transition";
+                    }
+                }, 1000);
+            }
+        }
+        
+        function resetCprTimer() {
+            clearInterval(cprTimer);
+            cprIsRunning = false;
+            cprTimeLeft = 120;
+            updateCprDisplay();
+            let btn = document.getElementById('cprBtn');
+            btn.textContent = "BẮT ĐẦU";
+            btn.className = "flex-1 bg-red-600 hover:bg-red-500 py-3 rounded-xl font-bold text-lg transition";
+        }
+        
+        function startCprFromBls() {
+            showModule('module-acls');
+            setTimeout(() => toggleCprTimer(), 500);
+        }
+        
+        function highlightMonitor() {
+            const shockable = document.getElementById('btnShockable');
+            const nonShockable = document.getElementById('btnNonShockable');
+            shockable.classList.add('ring-4', 'ring-orange-400');
+            nonShockable.classList.add('ring-4', 'ring-blue-400');
+        }
+        
+        // BHYT Tab Switching Function
+        function switchBHYTTab(tabName, btn) {
+            // Hide all tabs
+            document.querySelectorAll('[id^="bhyt-tab-"]').forEach(tab => {
+                tab.style.display = 'none';
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('[onclick^="switchBHYTTab"]').forEach(button => {
+                button.classList.remove('active');
+                button.setAttribute('aria-selected', 'false');
+            });
+            
+            // Show selected tab
+            const selectedTab = document.getElementById(`bhyt-tab-${tabName}`);
+            if (selectedTab) {
+                selectedTab.style.display = 'block';
+                selectedTab.style.animation = 'fadeUp 0.18s ease';
+            }
+            
+            // Add active class to selected button
+            btn.classList.add('active');
+            btn.setAttribute('aria-selected', 'true');
+            
+            // Update button styles
+            document.querySelectorAll('[onclick^="switchBHYTTab"]').forEach(button => {
+                const tab = button.getAttribute('data-tab');
+                if (tab === tabName) {
+                    button.style.color = 'var(--color-primary, #2ea8a8)';
+                    button.style.borderBottomColor = 'var(--color-primary, #2ea8a8)';
+                    button.style.fontWeight = '600';
+                } else {
+                    button.style.color = 'var(--color-text-muted, #64748b)';
+                    button.style.borderBottomColor = 'transparent';
+                    button.style.fontWeight = '500';
+                }
+            });
+            
+            // Focus on search input
+            setTimeout(() => {
+                const searchInput = document.getElementById(`bhyt-search-${tabName}`);
+                if (searchInput) {
+                    searchInput.focus();
+                }
+            }, 100);
+        }
+        
         // Initialize
         renderCategories();
         setView(currentView);

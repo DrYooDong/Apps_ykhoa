@@ -4,19 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>QUẢN LÝ PHẢN VỆ</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="../assets/js/main.js"></script>
     <style>
-        :root {
-            --primary-blue: #026aa7; --header-bg: #026aa7; --bg-light: #f4f5f7;
-            --card-bg: #ffffff; --text-dark: #172b4d; --text-muted: #5e6c84;
-            --danger: #eb5a46; --success: #61bd4f; --border: #dfe1e6;
-        }
-        [data-theme="dark"] { --bg-light: #121212; --card-bg: #1c1c1c; --text-dark: #e0e0e0; --border: #333; }
-
-        body { font-family: -apple-system, system-ui, sans-serif; background-color: var(--bg-light); color: var(--text-dark); margin: 0; padding: 0; font-size: 13px; }
-        .app-bar { background: var(--header-bg); color: white; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
-        .app-bar h1 { margin: 0; font-size: 15px; font-weight: 600; }
-        .btn-ghost { background: rgba(255,255,255,0.2); border: none; color: white; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 11px; }
-
+        body { font-family: 'Inter', sans-serif; background-color: var(--neutral-50); color: var(--neutral-800); margin: 0; padding: 0; font-size: 13px; }
         .container { padding: 8px; max-width: 600px; margin: 0 auto; }
         .main-card { background: var(--card-bg); border-radius: 8px; border: 1px solid var(--border); margin-bottom: 10px; overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
         .card-header { background: #f8f9fa; padding: 6px 12px; border-bottom: 1px solid var(--border); color: var(--primary-blue); font-weight: bold; font-size: 11px; text-transform: uppercase; }
@@ -45,17 +37,30 @@
         .timer-btn { width: 100%; background: var(--danger); color: white; border: none; padding: 12px; border-radius: 6px; font-weight: bold; margin-top: 8px; cursor: pointer; }
     </style>
 </head>
-<body>
+<body data-app-shell="subpage" class="app-shell text-slate-800">
 
-<div class="app-bar">
-    <h1>QUẢN LÝ PHẢN VỆ</h1>
-    <div style="display: flex; gap: 6px;">
-        <button class="btn-ghost" onclick="toggleTheme()">🌓 Tối</button>
-        <button class="btn-ghost" onclick="location.reload()">↺ Reset</button>
-    </div>
-</div>
+    <!-- Header -->
+    <header class="header" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+        <div class="header-content">
+            <div class="header-title">
+                <span>📋</span>
+                <span>Quản lý Phản vệ</span>
+            </div>
+            <div class="header-nav">
+                <a href="../index.html" class="back-home-btn">
+                    <span>←</span>
+                    <span>Về trang chủ</span>
+                </a>
+                <div style="display: flex; gap: 6px;">
+                    <button class="btn btn-secondary btn-sm" onclick="location.reload()">↺ Reset</button>
+                </div>
+            </div>
+        </div>
+    </header>
 
-<div class="container">
+    <!-- Main Container -->
+    <div class="main-container">
+        <div class="container">
     <div class="main-card">
         <div class="card-header">1. THÔNG TIN BỆNH NHÂN</div>
         <div class="card-body">
@@ -125,7 +130,6 @@
 <script>
     let isAdult = true, isBeta = false, timer;
 
-    function toggleTheme() { document.body.toggleAttribute('data-theme'); }
     function setAge(a) { 
         isAdult = (a === 'adult');
         document.getElementById('age-a').classList.toggle('active', isAdult);
@@ -219,5 +223,21 @@
         }, 1000);
     }
 </script>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-title">Khoa Nhiễm - Clinical Assistant Hub</div>
+            <div class="footer-text">
+                Phác đồ xử trí phản vệ theo hướng dẫn mới nhất<br>
+                Phát triển dựa trên phác đồ y khoa cập nhật nhất<br>
+                © 2026 Clinical Assistant Hub - Phiên bản 1.0.0
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
