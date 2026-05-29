@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ứng dụng Lâm sàng - Dịch truyền</title>
+    <style>
+        :root {
+            /* True Dark Mode Palette for Clinical Settings */
+            --bg-base: #0f1115;
+            --bg-surface: #1e2128;
+            --bg-card: #2a2e37;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-blue: #38bdf8;
+            --accent-green: #34d399;
+            --accent-orange: #fbbf24;
+            --accent-red: #f87171;
+            --border-color: #334155;
+            --radius-lg: 16px;
+            --radius-md: 10px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 480px; /* Mobile App dimensions */
+            background-color: var(--bg-surface);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 20px 15px;
+            background-color: var(--bg-surface);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        header h1 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 4px;
+        }
+
+        header p {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* Segmented Control / Tabs */
+        .tab-container {
+            display: flex;
+            padding: 10px 20px;
+            background-color: var(--bg-surface);
+            gap: 8px;
+            overflow-x: auto;
+            scrollbar-width: none; /* Firefox */
+        }
+        .tab-container::-webkit-scrollbar {
+            display: none; /* Safari/Chrome */
+        }
+
+        .tab-btn {
+            background-color: var(--bg-base);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            padding: 10px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background-color: var(--accent-blue);
+            color: #000;
+            border-color: var(--accent-blue);
+        }
+
+        /* Content Area */
+        .content-area {
+            flex: 1;
+            padding: 16px 20px 100px; /* Padding bottom for floating result */
+            overflow-y: auto;
+        }
+
+        .module-section {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .module-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Input Controls */
+        .input-group {
+            background-color: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 16px;
+            margin-bottom: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        select {
+            width: 100%;
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 14px;
+            border-radius: var(--radius-md);
+            font-size: 15px;
+            appearance: none;
+            outline: none;
+        }
+
+        .number-control {
+            display: flex;
+            align-items: center;
+            background-color: var(--bg-base);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+
+        .number-control button {
+            background-color: transparent;
+            color: var(--accent-blue);
+            border: none;
+            width: 48px;
+            height: 48px;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .number-control button:active {
+            background-color: var(--bg-surface);
+        }
+
+        .number-control input {
+            flex: 1;
+            background-color: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            width: 100%;
+            outline: none;
+            -moz-appearance: textfield;
+        }
+        
+        .number-control input::-webkit-outer-spin-button,
+        .number-control input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .quick-chips {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .chip {
+            background-color: var(--bg-base);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .chip:active {
+            background-color: var(--accent-blue);
+            color: #000;
+        }
+
+        /* Floating Result Card */
+        .result-floating {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            max-width: 440px;
+            background-color: var(--accent-blue);
+            color: #0f1115;
+            padding: 16px 20px;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.2);
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .result-floating.module3-active {
+            position: static;
+            transform: none;
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            box-shadow: none;
+        }
+
+        .result-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.8;
+            margin-bottom: 4px;
+        }
+
+        .result-value {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .result-sub {
+            font-size: 13px;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background-color: rgba(248, 113, 113, 0.1);
+            border-left: 4px solid var(--accent-red);
+            padding: 12px 16px;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            margin-bottom: 16px;
+            display: none;
+        }
+        
+        .warning-box p {
+            color: var(--accent-red);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .row-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <header style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+            <h1>Dịch Truyền & Bơm Tiêm</h1>
+            <p>Tính toán liều lượng chuẩn xác</p>
+        </div>
+        <button onclick="window.location.href='../index.html'" style="background-color: var(--bg-card); color: var(--text-secondary); border: 1px solid var(--border-color); padding: 8px 12px; border-radius: var(--radius-md); font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            Trang chủ
+        </button>
+    </header>
+
+    <div class="tab-container">
+        <button class="tab-btn active" onclick="switchTab('module2')">Bơm tiêm điện</button>
+        <button class="tab-btn" onclick="switchTab('module1')">Truyền cơ học</button>
+        <button class="tab-btn" onclick="switchTab('module3')">Quy đổi nhanh</button>
+    </div>
+
+    <div class="content-area">
+        
+        <!-- MODULE 2: BƠM TIÊM ĐIỆN (Ưu tiên hiển thị trước vì hay dùng cấp cứu) -->
+        <section id="module2" class="module-section active">
+            
+            <div class="input-group">
+                <label>Trọng lượng bệnh nhân (kilogram)</label>
+                <div class="number-control">
+                    <button onclick="adjustVal('m2-weight', -1, false)">-</button>
+                    <input type="number" id="m2-weight" value="60" oninput="calcM2()">
+                    <button onclick="adjustVal('m2-weight', 1, false)">+</button>
+                </div>
+                <div class="quick-chips">
+                    <div class="chip" onclick="setVal('m2-weight', 40)">40 kg</div>
+                    <div class="chip" onclick="setVal('m2-weight', 50)">50 kg</div>
+                    <div class="chip" onclick="setVal('m2-weight', 60)">60 kg</div>
+                    <div class="chip" onclick="setVal('m2-weight', 70)">70 kg</div>
+                </div>
+            </div>
+
+            <div class="row-grid">
+                <div class="input-group" style="margin-bottom: 0;">
+                    <label>Hàm lượng gốc</label>
+                    <div class="number-control">
+                        <input type="number" id="m2-drug" value="4" step="any" oninput="calcM2()">
+                    </div>
+                </div>
+                <div class="input-group" style="margin-bottom: 0;">
+                    <label>Đơn vị gốc</label>
+                    <select id="m2-drug-unit" onchange="calcM2()">
+                        <option value="miligram">miligram</option>
+                        <option value="microgram">microgram</option>
+                        <option value="donvi">đơn vị</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group" style="margin-top: 16px;">
+                <label>Thể tích dung dịch sau pha (mililit)</label>
+                <div class="number-control">
+                    <button onclick="adjustVal('m2-vol', -5, false)">-</button>
+                    <input type="number" id="m2-vol" value="50" oninput="calcM2()">
+                    <button onclick="adjustVal('m2-vol', 5, false)">+</button>
+                </div>
+                <div class="quick-chips">
+                    <div class="chip" onclick="setVal('m2-vol', 50)">50 mililit</div>
+                    <div class="chip" onclick="setVal('m2-vol', 100)">100 mililit</div>
+                    <div class="chip" onclick="setVal('m2-vol', 250)">250 mililit</div>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Liều lượng chỉ định</label>
+                <select id="m2-dose-unit" style="margin-bottom: 12px;" onchange="syncUnits()">
+                    <option value="mcg_kg_min">microgram / kilogram / phút</option>
+                    <option value="mcg_min">microgram / phút</option>
+                    <option value="mg_hr">miligram / giờ</option>
+                    <option value="u_hr">đơn vị / giờ</option>
+                </select>
+                <div class="number-control">
+                    <button onclick="adjustVal('m2-dose', -0.05, true)">-</button>
+                    <input type="number" id="m2-dose" value="0.1" step="any" oninput="calcM2()">
+                    <button onclick="adjustVal('m2-dose', 0.05, true)">+</button>
+                </div>
+                <div class="quick-chips">
+                    <div class="chip" onclick="adjustVal('m2-dose', 0.01, true)">+0.01</div>
+                    <div class="chip" onclick="adjustVal('m2-dose', 0.05, true)">+0.05</div>
+                    <div class="chip" onclick="adjustVal('m2-dose', 0.1, true)">+0.1</div>
+                </div>
+            </div>
+
+            <div class="warning-box" id="m2-warn">
+                <p><strong>Cảnh báo:</strong> Liều lượng đang cài đặt ở mức cao. Cần theo dõi huyết áp liên tục và đảm bảo đường truyền tĩnh mạch trung tâm.</p>
+            </div>
+        </section>
+
+        <!-- MODULE 1: TRUYỀN CƠ HỌC -->
+        <section id="module1" class="module-section">
+            
+            <div class="input-group">
+                <label>Mục tiêu tính toán</label>
+                <select id="m1-target" onchange="renderM1()">
+                    <option value="rate">Tính tốc độ nhỏ giọt (giọt/phút)</option>
+                    <option value="time">Tính thời gian truyền</option>
+                    <option value="vol">Tính thể tích dịch truyền</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Hệ số dây truyền</label>
+                <select id="m1-drop" onchange="calcM1()">
+                    <option value="20">Dây người lớn (20 giọt / mililit)</option>
+                    <option value="60">Dây nhi khoa (60 giọt / mililit)</option>
+                    <option value="15">Dây truyền máu (15 giọt / mililit)</option>
+                </select>
+            </div>
+
+            <div id="m1-dynamic-fields"></div>
+
+        </section>
+
+        <!-- MODULE 3: QUY ĐỔI -->
+        <section id="module3" class="module-section">
+            <div class="input-group">
+                <label style="color: var(--accent-blue); margin-bottom: 16px;">Quy đổi Tốc độ (Dây 20 giọt/mililit)</label>
+                <div class="row-grid">
+                    <div>
+                        <label>giọt / phút</label>
+                        <div class="number-control">
+                            <input type="number" id="m3-drop" value="20" oninput="convSpeed('drop')">
+                        </div>
+                    </div>
+                    <div>
+                        <label>mililit / giờ</label>
+                        <div class="number-control">
+                            <input type="number" id="m3-ml" value="60" oninput="convSpeed('ml')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label style="color: var(--accent-blue); margin-bottom: 16px;">Quy đổi Khối lượng</label>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <div>
+                        <label>gram</label>
+                        <div class="number-control">
+                            <input type="number" id="m3-g" value="0.001" oninput="convMass('g')">
+                        </div>
+                    </div>
+                    <div>
+                        <label>miligram</label>
+                        <div class="number-control">
+                            <input type="number" id="m3-mg" value="1" oninput="convMass('mg')">
+                        </div>
+                    </div>
+                    <div>
+                        <label>microgram</label>
+                        <div class="number-control">
+                            <input type="number" id="m3-mcg" value="1000" oninput="convMass('mcg')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Floating Result Block -->
+    <div class="result-floating" id="global-result">
+        <div class="result-label" id="res-label">Tốc độ máy truyền</div>
+        <div class="result-value" id="res-val">0 mililit / giờ</div>
+        <div class="result-sub" id="res-sub">Nồng độ pha: 0 miligram/mililit</div>
+    </div>
+
+</div>
+
+<script>
+    let currentModule = 'module2';
+
+    function switchTab(modId) {
+        currentModule = modId;
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.module-section').forEach(s => s.classList.remove('active'));
+        
+        event.target.classList.add('active');
+        document.getElementById(modId).classList.add('active');
+        
+        const floatRes = document.getElementById('global-result');
+        if(modId === 'module3') {
+            floatRes.style.display = 'none';
+        } else {
+            floatRes.style.display = 'flex';
+            if(modId === 'module1') calcM1();
+            if(modId === 'module2') calcM2();
+        }
+    }
+
+    function adjustVal(id, step, isFloat) {
+        let el = document.getElementById(id);
+        let v = parseFloat(el.value) || 0;
+        v += step;
+        if(v < 0) v = 0;
+        
+        // Làm tròn fix lỗi floating point JS
+        if(isFloat) {
+            el.value = parseFloat(v.toFixed(3)); 
+        } else {
+            el.value = Math.round(v);
+        }
+        triggerCalc(id);
+    }
+
+    function setVal(id, val) {
+        document.getElementById(id).value = val;
+        triggerCalc(id);
+    }
+
+    function triggerCalc(id) {
+        if(id.startsWith('m1')) calcM1();
+        if(id.startsWith('m2')) calcM2();
+    }
+
+    // -- MODULE 2 LOGIC --
+    function syncUnits() {
+        const dU = document.getElementById('m2-dose-unit').value;
+        const mU = document.getElementById('m2-drug-unit');
+        if(dU === 'u_hr') mU.value = 'donvi';
+        else if (dU === 'mg_hr' && mU.value === 'donvi') mU.value = 'miligram';
+        else if ((dU === 'mcg_kg_min' || dU === 'mcg_min') && mU.value === 'donvi') mU.value = 'miligram';
+        calcM2();
+    }
+
+    function calcM2() {
+        const w = parseFloat(document.getElementById('m2-weight').value) || 0;
+        const vol = parseFloat(document.getElementById('m2-vol').value) || 0;
+        const mass = parseFloat(document.getElementById('m2-drug').value) || 0;
+        const massU = document.getElementById('m2-drug-unit').value;
+        const dose = parseFloat(document.getElementById('m2-dose').value) || 0;
+        const doseU = document.getElementById('m2-dose-unit').value;
+
+        const rL = document.getElementById('res-label');
+        const rV = document.getElementById('res-val');
+        const rS = document.getElementById('res-sub');
+        const warn = document.getElementById('m2-warn');
+
+        if(vol === 0 || mass === 0) {
+            rV.innerText = "0 mililit / giờ";
+            rS.innerText = "Thông số chưa đầy đủ";
+            warn.style.display = 'none';
+            return;
+        }
+
+        let massMcg = mass;
+        if(massU === 'miligram') massMcg = mass * 1000;
+
+        const conc = massMcg / vol; // mcg/ml or u/ml
+        let rate = 0;
+
+        if(doseU === 'mcg_kg_min') rate = (dose * w * 60) / conc;
+        else if(doseU === 'mcg_min') rate = (dose * 60) / conc;
+        else if(doseU === 'mg_hr') rate = (dose * 1000) / conc;
+        else if(doseU === 'u_hr') rate = dose / conc;
+
+        rL.innerText = "Tốc độ máy truyền (Bơm tiêm điện)";
+        rV.innerText = rate.toFixed(1) + " mililit / giờ";
+        
+        let unitStr = massU === 'donvi' ? 'đơn vị' : 'miligram';
+        let displayConc = massU === 'donvi' ? conc : conc / 1000;
+        rS.innerText = `Nồng độ pha: ${displayConc.toFixed(2)} ${unitStr} / mililit`;
+
+        if(doseU === 'mcg_kg_min' && dose > 1.0) warn.style.display = 'block';
+        else warn.style.display = 'none';
+    }
+
+    // -- MODULE 1 LOGIC --
+    function renderM1() {
+        const t = document.getElementById('m1-target').value;
+        const box = document.getElementById('m1-dynamic-fields');
+        let html = '';
+
+        if(t === 'rate') {
+            html = `
+            <div class="input-group">
+                <label>Thể tích dịch chỉ định (mililit)</label>
+                <div class="number-control">
+                    <button onclick="adjustVal('m1-vol', -50, false)">-</button>
+                    <input type="number" id="m1-vol" value="500" oninput="calcM1()">
+                    <button onclick="adjustVal('m1-vol', 50, false)">+</button>
+                </div>
+            </div>
+            <div class="row-grid">
+                <div class="input-group" style="margin-bottom:0">
+                    <label>Số giờ</label>
+                    <div class="number-control"><input type="number" id="m1-h" value="4" oninput="calcM1()"></div>
+                </div>
+                <div class="input-group" style="margin-bottom:0">
+                    <label>Số phút lẻ</label>
+                    <div class="number-control"><input type="number" id="m1-m" value="0" oninput="calcM1()"></div>
+                </div>
+            </div>`;
+        } else if (t === 'time') {
+            html = `
+            <div class="input-group">
+                <label>Thể tích dịch chỉ định (mililit)</label>
+                <div class="number-control"><input type="number" id="m1-vol" value="500" oninput="calcM1()"></div>
+            </div>
+            <div class="input-group">
+                <label>Tốc độ thực tế (giọt / phút)</label>
+                <div class="number-control"><input type="number" id="m1-r" value="20" oninput="calcM1()"></div>
+            </div>`;
+        } else {
+            html = `
+            <div class="input-group">
+                <label>Tốc độ chỉ định (giọt / phút)</label>
+                <div class="number-control"><input type="number" id="m1-r" value="20" oninput="calcM1()"></div>
+            </div>
+            <div class="row-grid">
+                <div class="input-group" style="margin-bottom:0">
+                    <label>Số giờ</label>
+                    <div class="number-control"><input type="number" id="m1-h" value="4" oninput="calcM1()"></div>
+                </div>
+                <div class="input-group" style="margin-bottom:0">
+                    <label>Số phút lẻ</label>
+                    <div class="number-control"><input type="number" id="m1-m" value="0" oninput="calcM1()"></div>
+                </div>
+            </div>`;
+        }
+        box.innerHTML = html;
+        calcM1();
+    }
+
+    function calcM1() {
+        if(currentModule !== 'module1') return;
+        const t = document.getElementById('m1-target').value;
+        const f = parseFloat(document.getElementById('m1-drop').value);
+        
+        const rL = document.getElementById('res-label');
+        const rV = document.getElementById('res-val');
+        const rS = document.getElementById('res-sub');
+
+        if(t === 'rate') {
+            const v = parseFloat(document.getElementById('m1-vol')?.value) || 0;
+            const h = parseFloat(document.getElementById('m1-h')?.value) || 0;
+            const m = parseFloat(document.getElementById('m1-m')?.value) || 0;
+            const totalM = (h * 60) + m;
+            if(totalM > 0) {
+                const rate = (v * f) / totalM;
+                rL.innerText = "Tốc độ nhỏ giọt cần thiết";
+                rV.innerText = Math.round(rate) + " giọt / phút";
+                
+                let now = new Date();
+                now.setMinutes(now.getMinutes() + totalM);
+                let timeStr = String(now.getHours()).padStart(2,'0') + ":" + String(now.getMinutes()).padStart(2,'0');
+                rS.innerText = `Dự kiến truyền xong vào: ${timeStr}`;
+            } else {
+                rV.innerText = "0 giọt / phút"; rS.innerText = "-";
+            }
+        } else if (t === 'time') {
+            const v = parseFloat(document.getElementById('m1-vol')?.value) || 0;
+            const r = parseFloat(document.getElementById('m1-r')?.value) || 0;
+            if(r > 0) {
+                const totalM = (v * f) / r;
+                const hh = Math.floor(totalM / 60);
+                const mm = Math.round(totalM % 60);
+                rL.innerText = "Thời gian truyền dịch";
+                rV.innerText = `${hh} giờ ${mm} phút`;
+                
+                let now = new Date();
+                now.setMinutes(now.getMinutes() + totalM);
+                let timeStr = String(now.getHours()).padStart(2,'0') + ":" + String(now.getMinutes()).padStart(2,'0');
+                rS.innerText = `Dự kiến truyền xong vào: ${timeStr}`;
+            } else {
+                rV.innerText = "0 giờ 0 phút"; rS.innerText = "-";
+            }
+        } else {
+            const r = parseFloat(document.getElementById('m1-r')?.value) || 0;
+            const h = parseFloat(document.getElementById('m1-h')?.value) || 0;
+            const m = parseFloat(document.getElementById('m1-m')?.value) || 0;
+            const totalM = (h * 60) + m;
+            const v = (r * totalM) / f;
+            rL.innerText = "Tổng thể tích dịch";
+            rV.innerText = Math.round(v) + " mililit";
+            rS.innerText = "Lượng dịch sẽ được truyền vào cơ thể";
+        }
+    }
+
+    // -- MODULE 3 LOGIC --
+    function convSpeed(src) {
+        if(src === 'drop') {
+            let d = parseFloat(document.getElementById('m3-drop').value) || 0;
+            document.getElementById('m3-ml').value = (d * 3).toFixed(1).replace('.0','');
+        } else {
+            let m = parseFloat(document.getElementById('m3-ml').value) || 0;
+            document.getElementById('m3-drop').value = (m / 3).toFixed(1).replace('.0','');
+        }
+    }
+
+    function convMass(src) {
+        let g = document.getElementById('m3-g'), mg = document.getElementById('m3-mg'), mcg = document.getElementById('m3-mcg');
+        if(src === 'g') {
+            let v = parseFloat(g.value) || 0;
+            mg.value = v * 1000; mcg.value = v * 1000000;
+        } else if(src === 'mg') {
+            let v = parseFloat(mg.value) || 0;
+            g.value = v / 1000; mcg.value = v * 1000;
+        } else {
+            let v = parseFloat(mcg.value) || 0;
+            g.value = v / 1000000; mg.value = v / 1000;
+        }
+    }
+
+    // Init
+    window.onload = () => {
+        renderM1();
+        calcM2();
+    };
+
+</script>
+</body>
+</html>
