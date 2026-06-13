@@ -1,0 +1,504 @@
+/* ==========================================================================
+   1. HỆ THỐNG BIẾN MÀU SẮC ĐA GIAO DIỆN (THEMING TOKENS)
+   ========================================================================== */
+:root {
+    /* PHỐI MÀU 1: NORDIC HOSPITAL (LIGHT MODE) */
+    --primary-color: #0284c7;       /* Xanh Sky Blue chuẩn y tế chuyên nghiệp */
+    --primary-hover: #0369a1;
+    --bg-light: #f1f5f9;            /* Nền xám ánh xanh dịu mát, làm nổi bật Card */
+    --card-bg: #ffffff;             /* Card trắng tinh tế */
+    --text-main: #1e293b;           /* Chữ chính độ tương phản cao */
+    --text-muted: #64748b;          /* Chữ phụ, chú thích */
+    --border-color: #e2e8f0;        /* Viền mảnh phẳng hiện đại thay cho đổ bóng đậm */
+    
+    /* Thiết lập Sidebar tối trong cấu trúc Light Mode (Tạo điểm nhấn mạnh mẽ) */
+    --sidebar-bg: #0f172a;          /* Slate Dark sâu thẳm */
+    --sidebar-text: #94a3b8;
+    --sidebar-text-active: #38bdf8;
+    --sidebar-item-hover: #1e293b;
+    --sidebar-border: #1e293b;
+
+    /* Cảnh báo ngữ nghĩa lâm sàng (Semantic Colors) */
+    --danger-color: #ef4444;        /* Đỏ nguy cơ cao / Sepsis */
+    --warning-color: #f59e0b;       /* Vàng theo dõi / Chú ý */
+    --success-color: #10b981;       /* Xanh an toàn / Bình thường */
+    
+    /* Khối yêu thích */
+    --fav-bg: #fef3c7;
+    --fav-text: #92400e;
+    --fav-border: #fde68a;
+
+    /* Cấu trúc & Hiệu ứng */
+    --header-height: 70px;
+    --sidebar-width: 260px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] {
+    /* PHỐI MÀU 2: MIDNIGHT DUTY (DARK MODE TIÊU CHUẨN TRỰC ĐÊM) */
+    --primary-color: #38bdf8;       /* Cyan Neon nổi bật trên nền tối */
+    --primary-hover: #0ea5e9;
+    --bg-light: #0b0f19;            /* Deep Navy sâu thẳm, triệt tiêu ánh sáng xanh */
+    --card-bg: #1e293b;             /* Slate Midnight cho Card và Header */
+    --text-main: #f8fafc;           /* Chữ trắng nhạt tránh lóa mắt */
+    --text-muted: #94a3b8;
+    --border-color: #334155;
+    
+    /* Thiết lập Sidebar đồng bộ trong cấu trúc Dark Mode */
+    --sidebar-bg: #1e293b;
+    --sidebar-text: #94a3b8;
+    --sidebar-text-active: #38bdf8;
+    --sidebar-item-hover: #0b0f19;
+    --sidebar-border: #334155;
+
+    /* Khối yêu thích trong Dark Mode */
+    --fav-bg: #2d2618;
+    --fav-text: #f59e0b;
+    --fav-border: #4d3d1e;
+}
+
+/* ==========================================================================
+   2. RESET TỔNG THỂ & THIẾT LẬP NỀN TẢNG
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button, input {
+    font-family: inherit;
+    font-size: inherit;
+    outline: none;
+}
+
+/* ==========================================================================
+   3. GLOBAL HEADER (THANH CÔNG CỤ TRÊN CÙNG)
+   ========================================================================== */
+.global-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.25rem;
+    z-index: 1000;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.mobile-menu-btn {
+    background: none;
+    border: none;
+    font-size: 1.35rem;
+    color: var(--text-main);
+    cursor: pointer;
+    padding: 0.25rem;
+    display: block;
+}
+
+.logo-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.header-search-bar {
+    flex: 1;
+    max-width: 450px;
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 0.2rem 0.6rem;
+    margin: 0 0.75rem;
+    transition: border-color var(--transition);
+}
+
+.header-search-bar:focus-within {
+    border-color: var(--primary-color);
+}
+
+.header-search-bar input {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0.4rem;
+    color: var(--text-main);
+}
+
+.header-search-bar input::placeholder {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.search-submit-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.header-actions button {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-main);
+    transition: var(--transition);
+}
+
+.header-actions button:hover {
+    background-color: var(--border-color);
+}
+
+/* ==========================================================================
+   4. CẤU TRÚC LAYOUT & SIDEBAR KHÔNG GIAN LÂM SÀNG
+   ========================================================================== */
+.app-container {
+    display: flex;
+    margin-top: var(--header-height);
+    min-height: calc(100vh - var(--header-height));
+}
+
+.app-sidebar {
+    position: fixed;
+    top: var(--header-height);
+    left: -100%;
+    bottom: 0;
+    width: var(--sidebar-width);
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--sidebar-border);
+    padding: 1.25rem 0.75rem;
+    z-index: 999;
+    transition: left var(--transition), background-color 0.3s ease;
+}
+
+.app-sidebar.active {
+    left: 0;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.7rem 1rem;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--sidebar-text);
+    transition: var(--transition);
+}
+
+.sidebar-nav a:hover {
+    background-color: var(--sidebar-item-hover);
+    color: #ffffff;
+}
+
+.sidebar-nav a.active {
+    background-color: var(--sidebar-item-hover);
+    color: var(--sidebar-text-active);
+    font-weight: 600;
+}
+
+.main-wrapper {
+    flex: 1;
+    width: 100%;
+    padding: 1rem;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   5. HERO SECTION: DASHBOARD TIỆN ÍCH VUỐT NGANG (MOBILE OPTIMIZED)
+   ========================================================================== */
+.hero-dashboard {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease;
+}
+
+.hero-intro h1 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+}
+
+.hero-intro p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.25rem;
+}
+
+.block-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--text-muted);
+    margin-bottom: 0.6rem;
+}
+
+.hero-favorites, .hero-quick-nav {
+    margin-bottom: 1rem;
+}
+
+/* Hỗ trợ cơ chế vuốt ngang mượt mà trên màn hình cảm ứng điện thoại */
+.favorites-list, .quick-tags-container {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.4rem;
+    -webkit-overflow-scrolling: touch;
+}
+
+.favorites-list::-webkit-scrollbar, 
+.quick-tags-container::-webkit-scrollbar {
+    display: none; /* Ẩn thanh cuộn để tối ưu thẩm mỹ phẳng */
+}
+
+.fav-tag {
+    background-color: var(--fav-bg);
+    color: var(--fav-text);
+    border: 1px solid var(--fav-border);
+    padding: 0.45rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+}
+
+.quick-tag-btn {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 0.45rem 0.8rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: var(--transition);
+}
+
+.quick-tag-btn:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border-color: var(--primary-color);
+}
+
+/* ==========================================================================
+   6. MAIN CONTENT: MÔ HÌNH LƯỚI ĐÁP ỨNG ĐA TẦNG (RESPONSIVE GRID)
+   ========================================================================== */
+.main-content-grid {
+    margin-bottom: 2rem;
+}
+
+.section-heading {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.category-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.category-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    transition: var(--transition);
+}
+
+.category-card:hover {
+    border-color: var(--primary-color);
+}
+
+.card-header-icon {
+    font-size: 1.75rem;
+    background-color: var(--bg-light);
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.card-content h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.35rem;
+    font-weight: 600;
+}
+
+.card-content p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+}
+
+.card-action-link {
+    display: inline-block;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* ==========================================================================
+   7. GLOBAL FOOTER (CHÂN TRANG KHÁI QUÁT)
+   ========================================================================== */
+.global-footer {
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    padding: 2rem 1.25rem 1.25rem;
+    margin-top: auto;
+}
+
+.footer-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.footer-info h4, .footer-links h4, .footer-meta h4 {
+    font-size: 0.95rem;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+}
+
+.footer-info p, .links-group a {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.links-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.links-group a:hover {
+    color: var(--primary-color);
+}
+
+.footer-copyright {
+    text-align: center;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   8. MEDIA QUERIES: ĐIỀU CHỈNH GIAO DIỆN MÀN HÌNH LỚN (DESKTOP > 768px)
+   ========================================================================== */
+@media (min-width: 768px) {
+    .mobile-menu-btn {
+        display: none; /* Ẩn nút Hamburger trên PC */
+    }
+
+    .header-search-bar {
+        margin: 0 2rem; /* Giãn rộng thanh tìm kiếm trung tâm */
+    }
+
+    /* Đưa Sidebar cố định bên trái màn hình */
+    .app-sidebar {
+        left: 0;
+        position: sticky;
+        height: calc(100vh - var(--header-height));
+    }
+
+    .main-wrapper {
+        padding: 1.75rem;
+        max-width: calc(100% - var(--sidebar-width));
+    }
+
+    .hero-dashboard {
+        padding: 1.75rem;
+    }
+
+    .hero-intro h1 {
+        font-size: 1.75rem;
+    }
+
+    /* Kích hoạt lưới 2 cột cho danh mục chính */
+    .category-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+    }
+
+    /* Chuyển Footer thành dạng hàng ngang nhiều cột */
+    .footer-sections {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .footer-info {
+        flex: 2;
+    }
+    
+    .footer-links, .footer-meta {
+        flex: 1;
+    }
+}

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dược lý & Kháng sinh - CliniPortal</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <header class="global-header">
+        <div class="header-left">
+            <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
+            <div class="logo-brand">
+                <span class="logo-icon">🩺</span>
+                <span class="logo-text">CliniPortal</span>
+            </div>
+        </div>
+        
+        <div class="header-search-bar">
+            <input type="search" placeholder="Tìm nhanh công cụ, phác đồ, liều thuốc...">
+            <button type="button" class="search-submit-btn">🔍</button>
+        </div>
+        
+        <div class="header-actions">
+            <button id="theme-toggle-btn" title="Chuyển đổi Sáng/Tối" aria-label="Toggle Theme">🌓</button>
+            <button id="sync-settings-btn" title="Cài đặt & Đồng bộ" aria-label="Settings and Sync">⚙️</button>
+        </div>
+    </header>
+
+    <div class="app-container">
+
+        <aside class="app-sidebar" id="appSidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="../index.html"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+                    <li><a href="../Công cụ/cong-cu.html"><span class="nav-icon">🧮</span><span class="nav-text">Công cụ lâm sàng</span></a></li>
+                    <li><a href="../Tiếp cận/tiep-can.html"><span class="nav-icon">📋</span><span class="nav-text">Tiếp cận lâm sàng</span></a></li>
+                    <li><a href="../Phác đồ/phac-do.html"><span class="nav-icon">📄</span><span class="nav-text">Phác đồ điều trị</span></a></li>
+                    <li><a href="duoc-ly.html" class="active"><span class="nav-icon">💊</span><span class="nav-text">Dược lý & Kháng sinh</span></a></li>
+                    <li><a href="../Y học chứng cứ/y-hoc-chung-cu.html"><span class="nav-icon">📚</span><span class="nav-text">Y học chứng cứ</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <div class="main-wrapper">
+            
+            <section class="hero-dashboard">
+                <div class="hero-intro">
+                    <h1>Dược lý Lâm sàng & Quản lý Kháng sinh (AMS)</h1>
+                    <p>Tra cứu nhanh thông tin thuốc, tối ưu hóa cá thể hóa liều lượng dựa trên dược động học/dược lực học (PK/PD) và hiệu chỉnh liều an toàn trên bệnh nhân suy tạng.</p>
+                </div>
+            </section>
+
+            <main class="main-content-grid">
+                <h2 class="section-heading">Công cụ và Hướng dẫn Dược lý</h2>
+                
+                <div class="category-grid">
+                    
+                    <div class="category-card">
+                        <div class="card-header-icon">🧪</div>
+                        <div class="card-content">
+                            <h3>Tối ưu hóa PK/PD Kháng sinh</h3>
+                            <p>Chiến lược tối ưu hóa liều kháng sinh phụ thuộc thời gian ($T > MIC$) hoặc phụ thuộc nồng độ ($C_{max}/MIC$). Hướng dẫn truyền kéo dài Beta-lactam và cá thể hóa liều Aminoglycoside/Vancomycin.</p>
+                            <a href="#" class="card-action-link">Vào ứng dụng tra cứu &rarr;</a>
+                        </div>
+                    </div>
+
+                    <div class="category-card">
+                        <div class="card-height-icon card-header-icon">💧</div>
+                        <div class="card-content">
+                            <h3>Hiệu chỉnh liều theo Suy thận (Renal Dosing)</h3>
+                            <p>Bảng tra cứu và hướng dẫn hiệu chỉnh liều lượng, khoảng cách dùng thuốc dựa trên độ thanh thải Creatinine (CrCl) đối với các nhóm thuốc có độc tính cao hoặc thải trừ chủ yếu qua thận.</p>
+                            <a href="#" class="card-action-link">Vào ứng dụng tra cứu &rarr;</a>
+                        </div>
+                    </div>
+
+                    <div class="category-card">
+                        <div class="card-header-icon">⚠️</div>
+                        <div class="card-content">
+                            <h3>Tra cứu Tương tác & Độc tính Thuốc</h3>
+                            <p>Nhận diện và xử trí các tương tác thuốc bất lợi nghiêm trọng tại phòng cấp cứu và ICU: Hội chứng Serotonin, kéo dài khoảng QT nguy cơ gây xoắn đỉnh, và tương tác đa thuốc trên bệnh nhân lớn tuổi.</p>
+                            <a href="#" class="card-action-link">Vào ứng dụng tra cứu &rarr;</a>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+            
+        </div>
+    </div>
+
+    <footer class="global-footer">
+        <div class="footer-copyright">
+            <p>CliniPortal © 2026. Giao diện tối ưu hóa hiển thị linh hoạt trên Mobile và Desktop.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggleBtn = document.getElementById('theme-toggle-btn');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const appSidebar = document.getElementById('appSidebar');
+
+            // Khôi phục giao diện theo cấu hình đã lưu trong hệ thống
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+
+            // Xử lý sự kiện click chuyển giao diện Sáng/Tối
+            themeToggleBtn.addEventListener('click', () => {
+                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                if (isDark) {
+                    document.documentElement.removeAttribute('data-theme');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
+
+            // Xử lý menu vuốt/đóng mở trên di động
+            if (mobileMenuBtn && appSidebar) {
+                mobileMenuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    appSidebar.classList.toggle('active');
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (!appSidebar.contains(e.target) && e.target !== mobileMenuBtn) {
+                        appSidebar.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

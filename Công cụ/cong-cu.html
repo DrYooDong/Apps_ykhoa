@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công cụ lâm sàng - CliniPortal</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <header class="global-header">
+        <div class="header-left">
+            <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
+            <div class="logo-brand">
+                <span class="logo-icon">🩺</span>
+                <span class="logo-text">CliniPortal</span>
+            </div>
+        </div>
+        
+        <div class="header-search-bar">
+            <input type="search" placeholder="Tìm nhanh công cụ, phác đồ, liều thuốc...">
+            <button type="button" class="search-submit-btn">🔍</button>
+        </div>
+        
+        <div class="header-actions">
+            <button id="theme-toggle-btn" title="Chuyển đổi Sáng/Tối" aria-label="Toggle Theme">🌓</button>
+            <button id="sync-settings-btn" title="Cài đặt & Đồng bộ" aria-label="Settings and Sync">⚙️</button>
+        </div>
+    </header>
+
+    <div class="app-container">
+
+        <aside class="app-sidebar" id="appSidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="../index.html"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+                    <li><a href="cong-cu.html" class="active"><span class="nav-icon">🧮</span><span class="nav-text">Công cụ lâm sàng</span></a></li>
+                    <li><a href="../Tiếp cận/tiep-can.html"><span class="nav-icon">📋</span><span class="nav-text">Tiếp cận lâm sàng</span></a></li>
+                    <li><a href="../Phác đồ/phac-do.html"><span class="nav-icon">📄</span><span class="nav-text">Phác đồ điều trị</span></a></li>
+                    <li><a href="../Dược lý/duoc-ly.html"><span class="nav-icon">💊</span><span class="nav-text">Dược lý & Kháng sinh</span></a></li>
+                    <li><a href="../Y học chứng cứ/y-hoc-chung-cu.html"><span class="nav-icon">📚</span><span class="nav-text">Y học chứng cứ</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <div class="main-wrapper">
+            
+            <section class="hero-dashboard">
+                <div class="hero-intro">
+                    <h1>Tính toán & Thang điểm Lâm sàng</h1>
+                    <p>Hệ thống công cụ số hóa giúp chuẩn hóa tiêu chuẩn chẩn đoán, phân độ nặng và tiên lượng bệnh nhân tại giường bệnh.</p>
+                </div>
+            </section>
+
+            <main class="main-content-grid">
+                <h2 class="section-heading">Danh mục ứng dụng sẵn có</h2>
+                
+                <div class="category-grid">
+                    
+                    <div class="category-card">
+                        <div class="card-header-icon">🦠</div>
+                        <div class="card-content">
+                            <h3>Sàng lọc Nhiễm trùng & Sepsis</h3>
+                            <p>Hỗ trợ tính điểm qSOFA nhanh, tra cứu chi tiết mức độ suy cơ quan thông qua thang điểm SOFA và ước tính tỷ lệ tử vong nội viện nhanh chóng.</p>
+                            <a href="infection-assessment.html" class="card-action-link">Truy cập ứng dụng &rarr;</a>
+                        </div>
+                    </div>
+
+                    <div class="category-card">
+                        <div class="card-header-icon">🧮</div>
+                        <div class="card-content">
+                            <h3>Ước tính Chức năng Thận (GFR)</h3>
+                            <p>Tính toán độ thanh thải Creatinine và mức lọc cầu thận ước tính nhanh chóng theo các phương trình lâm sàng thông dụng: CKD-EPI, Cockcroft-Gault.</p>
+                            <a href="#" class="card-action-link">Truy cập ứng dụng &rarr;</a>
+                        </div>
+                    </div>
+
+                    <div class="category-card">
+                        <div class="card-header-icon">🫁</div>
+                        <div class="card-content">
+                            <h3>Đánh giá Viêm phổi Cộng đồng (CURB-65)</h3>
+                            <p>Thang điểm đánh giá độ nặng, phân tầng nguy cơ tử vong và định hướng nơi điều trị (Nội trú, Ngoại trú, ICU) cho bệnh nhân viêm phổi.</p>
+                            <a href="#" class="card-action-link">Truy cập ứng dụng &rarr;</a>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+            
+        </div>
+    </div>
+
+    <footer class="global-footer">
+        <div class="footer-copyright">
+            <p>CliniPortal © 2026. Giao diện tối ưu hóa hiển thị linh hoạt trên Mobile và Desktop.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggleBtn = document.getElementById('theme-toggle-btn');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const appSidebar = document.getElementById('appSidebar');
+
+            // Khôi phục giao diện theo cấu hình đã lưu trong hệ thống
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+
+            // Xử lý sự kiện click chuyển giao diện Sáng/Tối
+            themeToggleBtn.addEventListener('click', () => {
+                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                if (isDark) {
+                    document.documentElement.removeAttribute('data-theme');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
+
+            // Xử lý menu vuốt/đóng mở trên di động
+            if (mobileMenuBtn && appSidebar) {
+                mobileMenuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    appSidebar.classList.toggle('active');
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (!appSidebar.contains(e.target) && e.target !== mobileMenuBtn) {
+                        appSidebar.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

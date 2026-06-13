@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đánh giá Nhiễm trùng & Sepsis Tích hợp - CliniPortal</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .assessment-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .input-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        .panel {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: background-color 0.3s ease;
+        }
+        .panel-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .form-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        .form-grid-3 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .input-group label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+        .input-subtext {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: -0.2rem;
+        }
+        input[type="number"], select {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            font-size: 0.95rem;
+            transition: border-color var(--transition);
+        }
+        input[type="number"]:focus, select:focus {
+            border-color: var(--primary-color);
+        }
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-top: 0.5rem;
+        }
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            cursor: pointer;
+            font-size: 0.92rem;
+        }
+        .checkbox-item input[type="checkbox"] {
+            margin-top: 0.2rem;
+            width: 16px;
+            height: 16px;
+            accent-color: var(--primary-color);
+        }
+        .results-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        .sticky-card {
+            position: static;
+        }
+        .score-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px dashed var(--border-color);
+        }
+        .score-row:last-of-type {
+            border-bottom: none;
+        }
+        .score-lbl {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .score-badge {
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            min-width: 60px;
+            text-align: center;
+        }
+        /* Phối màu tình trạng nguy cơ y khoa */
+        .badge-none { background-color: #e2e8f0; color: #475569; }
+        .badge-normal { background-color: #d1fae5; color: #065f46; }
+        .badge-mild { background-color: #fef3c7; color: #92400e; }
+        .badge-severe { background-color: #ffedd5; color: #9a3412; }
+        .badge-critical { background-color: #fee2e2; color: #991b1b; }
+
+        .diagnostic-box {
+            background-color: var(--bg-light);
+            border-left: 4px solid var(--border-color);
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        .diagnostic-box.alert-active {
+            border-left-color: #ef4444;
+            background-color: rgba(239, 68, 68, 0.05);
+        }
+        .diagnostic-box h4 {
+            margin-bottom: 0.35rem;
+            font-weight: 700;
+        }
+        .diagnostic-box ul {
+            padding-left: 1.2rem;
+            margin-top: 0.25rem;
+        }
+        .reset-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            color: var(--text-main);
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 0.5rem;
+        }
+        .reset-btn:hover {
+            background-color: var(--border-color);
+        }
+        .ref-box {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        .ref-box ul {
+            padding-left: 1.2rem;
+            margin-top: 0.4rem;
+        }
+
+        @media (min-width: 768px) {
+            .assessment-grid {
+                grid-template-columns: 2fr 1fr;
+            }
+            .form-grid-2 { grid-template-columns: repeat(2, 1fr); }
+            .form-grid-3 { grid-template-columns: repeat(3, 1fr); }
+            .sticky-card {
+                position: sticky;
+                top: calc(var(--header-height) + 1.25rem);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER TOÀN CỤC -->
+    <header class="global-header">
+        <div class="header-left">
+            <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
+            <div class="logo-brand">
+                <span class="logo-icon">🩺</span>
+                <span class="logo-text">CliniPortal</span>
+            </div>
+        </div>
+        <div class="header-search-bar">
+            <input type="search" placeholder="Tìm nhanh công cụ, phác đồ...">
+            <button type="button" class="search-submit-btn">🔍</button>
+        </div>
+        <div class="header-actions">
+            <button id="theme-toggle-btn" title="Chuyển đổi Sáng/Tối">🌓</button>
+            <button id="sync-settings-btn" title="Cài đặt & Đồng bộ">⚙️</button>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <!-- SIDEBAR ĐIỀU HƯỚNG ĐỒNG BỘ -->
+        <aside class="app-sidebar" id="appSidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="../index.html"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+                    <li><a href="cong-cu.html" class="active"><span class="nav-icon">🧮</span><span class="nav-text">Công cụ lâm sàng</span></a></li>
+                    <li><a href="../Tiếp cận/tiep-can.html"><span class="nav-icon">📋</span><span class="nav-text">Tiếp cận lâm sàng</span></a></li>
+                    <li><a href="../Phác đồ/phac-do.html"><span class="nav-icon">📄</span><span class="nav-text">Phác đồ điều trị</span></a></li>
+                    <li><a href="../Dược lý/duoc-ly.html"><span class="nav-icon">💊</span><span class="nav-text">Dược lý & Kháng sinh</span></a></li>
+                    <li><a href="../Y học chứng cứ/y-hoc-chung-cu.html"><span class="nav-icon">📚</span><span class="nav-text">Y học chứng cứ</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- KHỐI NỘI DUNG CHÍNH -->
+        <div class="main-wrapper">
+            <section class="hero-dashboard">
+                <div class="hero-intro">
+                    <h1>Sàng lọc Nhiễm trùng & Đánh giá Sepsis Toàn diện</h1>
+                    <p>Hệ thống tích hợp đa thang điểm (NEWS2, SOFA, SIRS, qSOFA, MEDS) dựa thuần túy trên các thông số lâm sàng và cận lâm sàng khách quan tại giường bệnh.</p>
+                </div>
+            </section>
+
+            <div class="assessment-grid">
+                <!-- CỘT PHẢI: KHỐI NHẬP LIỆU -->
+                <div class="input-column">
+                    
+                    <!-- 1. SINH HIỆU LÂM SÀNG -->
+                    <div class="panel">
+                        <div class="panel-title"><span>📊 1. Sinh hiệu Lâm sàng (NEWS2, SIRS, qSOFA, Shock Index)</span></div>
+                        <div class="form-grid-3" style="margin-bottom: 1rem;">
+                            <div class="input-group">
+                                <label for="vit-hr">Nhịp tim (lần/phút)</label>
+                                <input type="number" id="vit-hr" value="80" min="20" max="250">
+                            </div>
+                            <div class="input-group">
+                                <label for="vit-sbp">HA tâm thu (mmHg)</label>
+                                <input type="number" id="vit-sbp" value="120" min="40" max="260">
+                            </div>
+                            <div class="input-group">
+                                <label for="vit-rr">Tần số thở (lần/phút)</label>
+                                <input type="number" id="vit-rr" value="16" min="4" max="70">
+                            </div>
+                        </div>
+                        <div class="form-grid-3" style="margin-bottom: 1rem;">
+                            <div class="input-group">
+                                <label for="vit-temp">Nhiệt độ (°C)</label>
+                                <input type="number" id="vit-temp" value="37.0" step="0.1" min="30" max="45">
+                            </div>
+                            <div class="input-group">
+                                <label for="vit-spo2">Chỉ số SpO₂ (%)</label>
+                                <input type="number" id="vit-spo2" value="98" min="40" max="100">
+                            </div>
+                            <div class="input-group">
+                                <label for="vit-spo2-scale">Phân loại đích SpO₂</label>
+                                <select id="vit-spo2-scale">
+                                    <option value="1">Thang 1 (Bình thường)</option>
+                                    <option value="2">Thang 2 (Suy hô hấp tăng CO₂ nền/COPD)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-grid-2">
+                            <div class="input-group">
+                                <label for="vit-oxygen">Liệu pháp Oxy hỗ trợ</label>
+                                <select id="vit-oxygen">
+                                    <option value="0">Khí trời (Room Air)</option>
+                                    <option value="2">Có thở Oxy hỗ trợ (Khí bao gồm cannula, mask, HFNC...)</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="vit-acvpu">Trạng thái Tri giác (ACVPU)</label>
+                                <select id="vit-acvpu">
+                                    <option value="0">A - Tỉnh táo bình thường (Alert)</option>
+                                    <option value="3">C/V/P/U - Mới xuất hiện lú lẫn, ngủ gà hoặc hôn mê</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. CẬN LÂM SÀNG & SUY CƠ QUAN -->
+                    <div class="panel">
+                        <div class="panel-title"><span>🧪 2. Cận lâm sàng & Suy cơ quan (Hệ thống điểm SOFA)</span></div>
+                        <div class="form-grid-2" style="margin-bottom: 1rem;">
+                            <div class="input-group">
+                                <label for="sofa-resp">Hô hấp: PaO₂/FiO₂ (mmHg)</label>
+                                <select id="sofa-resp">
+                                    <option value="0">&ge; 400 (Bình thường)</option>
+                                    <option value="1">&lt; 400</option>
+                                    <option value="2">&lt; 300</option>
+                                    <option value="3">&lt; 200 (Và có hỗ trợ thông khí cơ học)</option>
+                                    <option value="4">&lt; 100 (Và có hỗ trợ thông khí cơ học)</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="sofa-coag">Đông máu: Tiểu cầu (x10³/μL)</label>
+                                <select id="sofa-coag">
+                                    <option value="0">&ge; 150 (Bình thường)</option>
+                                    <option value="1">&lt; 150</option>
+                                    <option value="2">&lt; 100</option>
+                                    <option value="3">&lt; 50</option>
+                                    <option value="4">&lt; 20 (Sửa đổi chuẩn y khoa)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-grid-2" style="margin-bottom: 1rem;">
+                            <div class="input-group">
+                                <label for="sofa-liver">Gan: Bilirubin toàn phần (mg/dL)</label>
+                                <select id="sofa-liver">
+                                    <option value="0">&lt; 1.2 (Bình thường)</option>
+                                    <option value="1">1.2 – 1.9</option>
+                                    <option value="2">2.0 – 5.9</option>
+                                    <option value="3">6.0 – 11.9</option>
+                                    <option value="4">&ge; 12.0</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="sofa-cardio">Tim mạch: Huyết động & Vận mạch</label>
+                                <select id="sofa-cardio">
+                                    <option value="0">MAP &ge; 70 mmHg (Bình thường)</option>
+                                    <option value="1">MAP &lt; 70 mmHg</option>
+                                    <option value="2">Dopamine &le; 5 mcg/kg/phút hoặc Dobutamine (bất kỳ liều)</option>
+                                    <option value="3">Dopamine &gt; 5 hoặc Norad/Adren &le; 0.1 mcg/kg/phút</option>
+                                    <option value="4">Dopamine &gt; 15 hoặc Norad/Adren &gt; 0.1 mcg/kg/phút</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-grid-2">
+                            <div class="input-group">
+                                <label for="sofa-cns">Thần kinh: Thang điểm Glasgow (GCS)</label>
+                                <select id="sofa-cns">
+                                    <option value="0">GCS 15 (Bình thường)</option>
+                                    <option value="1">GCS 13 – 14</option>
+                                    <option value="2">GCS 10 – 12</option>
+                                    <option value="3">GCS 6 – 9</option>
+                                    <option value="4">GCS &lt; 6</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="sofa-renal">Thận: Creatinine (mg/dL) hoặc Thể tích nước tiểu</label>
+                                <select id="sofa-renal">
+                                    <option value="0">&lt; 1.2 (Bình thường)</option>
+                                    <option value="1">1.2 – 1.9</option>
+                                    <option value="2">2.0 – 3.4</option>
+                                    <option value="3">3.5 – 4.9 hoặc Nước tiểu &lt; 500 mL/ngày</option>
+                                    <option value="4">&ge; 5.0 hoặc Nước tiểu &lt; 200 mL/ngày</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. YẾU TỐ BỆNH NỀN & TIÊU CHUẨN XÁC ĐỊNH MỞ RỘNG -->
+                    <div class="panel">
+                        <div class="panel-title"><span>⚠️ 3. Yếu tố Cấp cứu & Bệnh nền mở rộng (MEDS Score & Sepsis-3)</span></div>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="meds-terminal">
+                                <span><strong>Bệnh lý ác tính tiến triển / Giai đoạn cuối (Terminal Illness):</strong> Ung thư di căn diện rộng hoặc suy tạng giai đoạn cuối nguy cơ tử vong gần (MEDS +6đ)</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="meds-age65">
+                                <span><strong>Tuổi cao:</strong> Bệnh nhân từ 65 tuổi trở lên (MEDS +3đ)</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="meds-lri">
+                                <span><strong>Nguồn nhiễm trùng hô hấp dưới:</strong> Nghi ngờ hoặc xác định viêm phổi (MEDS +2đ)</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="meds-nursing">
+                                <span><strong>Cư trú tại viện dưỡng lão / Cơ sở y tế dài hạn</strong> (MEDS +2đ)</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="meds-bands">
+                                <span><strong>Bạch cầu chuyển trái:</strong> Tỷ lệ bạch cầu đũa (Bands) &ge; 5% trên công thức máu (MEDS +3đ, SIRS +1đ)</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="sirs-wbc-abn">
+                                <span><strong>Bạch cầu bất thường:</strong> WBC &lt; 4k hoặc &gt; 12k/muL (SIRS +1đ)</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="sepsis3-lactate">
+                                <span><strong>Định lượng Lactate máu tăng cao:</strong> Kết quả Lactate mạch máu thực tế &gt; 2.0 mmol/L (Tiêu chuẩn Sốc nhiễm khuẩn Sepsis-3)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- CỘT PHÁI: BẢNG KẾT QUẢ TẬP TRUNG -->
+                <div class="results-sidebar">
+                    <div class="panel sticky-card">
+                        <div class="panel-title" style="border-bottom-color: var(--primary-color);">📊 Tổng hợp Tiêu chuẩn</div>
+                        
+                        <div class="score-row">
+                            <span class="score-lbl">Điểm NEWS2</span>
+                            <span id="score-news2" class="score-badge badge-normal">0</span>
+                        </div>
+                        <div class="score-row">
+                            <span class="score-lbl">Điểm SIRS</span>
+                            <span id="score-sirs" class="score-badge badge-normal">0/4</span>
+                        </div>
+                        <div class="score-row">
+                            <span class="score-lbl">Điểm qSOFA</span>
+                            <span id="score-qsofa" class="score-badge badge-normal">0/3</span>
+                        </div>
+                        <div class="score-row">
+                            <span class="score-lbl">Điểm SOFA tổng</span>
+                            <span id="score-sofa" class="score-badge badge-normal">0</span>
+                        </div>
+                        <div class="score-row">
+                            <span class="score-lbl">Điểm MEDS (Cấp cứu)</span>
+                            <span id="score-meds" class="score-badge badge-normal">0</span>
+                        </div>
+                        <div class="score-row">
+                            <span class="score-lbl">Chỉ số sốc (Shock Index)</span>
+                            <span id="val-shock-index" style="font-weight: 700; font-size: 1.05rem;">0.67</span>
+                        </div>
+
+                        <!-- KHỐI TRẠNG THÁI CHẨN ĐOÁN LÂM SÀNG -->
+                        <div id="diagnostic-alert" class="diagnostic-box">
+                            <h4>Định vị Lâm sàng:</h4>
+                            <ul id="diagnostic-list">
+                                <li>Chưa ghi nhận bất thường sinh lý đáng kể.</li>
+                            </ul>
+                        </div>
+
+                        <div class="score-row" style="margin-top: 0.5rem; border: none; background-color: var(--bg-light); padding: 0.75rem; border-radius: var(--radius-sm);">
+                            <div>
+                                <div style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted);">Tử vong nội viện ước lượng:</div>
+                                <div id="val-mortality" style="font-size: 1.6rem; font-weight: 800; color: var(--primary-color);">Thấp (&lt; 1%)</div>
+                            </div>
+                        </div>
+
+                        <button type="button" id="btn-clear-all" class="reset-btn">🔄 Xóa dữ liệu (Reset Form)</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Y HỌC CHỨNG CỨ / TÀI LIỆU THAM KHẢO KHÁCH QUAN -->
+            <div class="panel" style="margin-top: 1.5rem;">
+                <div class="ref-box">
+                    <strong style="color: var(--text-main); font-size: 0.9rem;">📚 Cơ sở dữ liệu và Tài liệu Tham khảo đối chiếu:</strong>
+                    <ul>
+                        <li><strong>NEWS2 Standard:</strong> Royal College of Physicians. National Early Warning Score (NEWS) 2: Standardising the assessment of acute-illness severity in the NHS. London: RCP, 2017.</li>
+                        <li><strong>Sepsis-3 Đồng thuận:</strong> Singer M, et al. The Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). <em>JAMA</em>. 2016;315(8):801–810.</li>
+                        <li><strong>MEDS Score Gốc:</strong> Shapiro NI, et al. Mortality in Emergency Department Sepsis (MEDS) score: a prospectively derived and validated clinical prediction rule. <em>Critical Care Medicine</em>. 2003;31(3):670-675.</li>
+                        <li><strong>Surviving Sepsis Campaign:</strong> International Guidelines for Management of Sepsis and Septic Shock 2021/2026. <em>Intensive Care Medicine</em>.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SCRIPT TỰ ĐỘNG TÍNH TOÁN VÀ ĐỒNG BỘ THEME -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // DOM Elements - Vitals
+            const inHr = document.getElementById('vit-hr');
+            const inSbp = document.getElementById('vit-sbp');
+            const inRr = document.getElementById('vit-rr');
+            const inTemp = document.getElementById('vit-temp');
+            const inSpo2 = document.getElementById('vit-spo2');
+            const inSpo2Scale = document.getElementById('vit-spo2-scale');
+            const inOxygen = document.getElementById('vit-oxygen');
+            const inAcvpu = document.getElementById('vit-acvpu');
+
+            // DOM Elements - SOFA Selects
+            const selResp = document.getElementById('sofa-resp');
+            const selCoag = document.getElementById('sofa-coag');
+            const selLiver = document.getElementById('sofa-liver');
+            const selCardio = document.getElementById('sofa-cardio');
+            const selCns = document.getElementById('sofa-cns');
+            const selRenal = document.getElementById('sofa-renal');
+
+            // DOM Elements - Checkboxes
+            const chkTerminal = document.getElementById('meds-terminal');
+            const chkAge65 = document.getElementById('meds-age65');
+            const chkLri = document.getElementById('meds-lri');
+            const chkNursing = document.getElementById('meds-nursing');
+            const chkBands = document.getElementById('meds-bands');
+            const chkWbcAbn = document.getElementById('sirs-wbc-abn');
+            const chkLactate = document.getElementById('sepsis3-lactate');
+
+            // DOM Elements - Displays
+            const outNews2 = document.getElementById('score-news2');
+            const outSirs = document.getElementById('score-sirs');
+            const outQsofa = document.getElementById('score-qsofa');
+            const outSofa = document.getElementById('score-sofa');
+            const outMeds = document.getElementById('score-meds');
+            const outShockIndex = document.getElementById('val-shock-index');
+            const outMortality = document.getElementById('val-mortality');
+            const boxAlert = document.getElementById('diagnostic-alert');
+            const listDiagnostic = document.getElementById('diagnostic-list');
+
+            // HÀM TÍNH TOÁN CHÍNH XUYÊN SUỐT
+            function calculateAll() {
+                // Đọc dữ liệu sinh hiệu thực tế
+                const hr = parseFloat(inHr.value) || 0;
+                const sbp = parseFloat(inSbp.value) || 0;
+                const rr = parseFloat(inRr.value) || 0;
+                const temp = parseFloat(inTemp.value) || 0;
+                const spo2 = parseFloat(inSpo2.value) || 0;
+                const scaleType = parseInt(inSpo2Scale.value);
+                const oxValue = parseInt(inOxygen.value);
+                const acvpuValue = parseInt(inAcvpu.value);
+
+                // Tự động kiểm soát một số checkbox dựa trên sinh hiệu nhập vào để giảm thao tác
+                if (sbp > 0 && sbp < 65) {
+                    // Tự động gợi ý sốc nếu huyết áp tụt quá sâu
+                }
+                
+                // 1. CHẤM ĐIỂM NEWS2
+                let news2 = 0;
+                // Tần số thở
+                if (rr <= 8) news2 += 3;
+                else if (rr >= 9 && rr <= 11) news2 += 1;
+                else if (rr >= 12 && rr <= 20) news2 += 0;
+                else if (rr >= 21 && rr <= 24) news2 += 2;
+                else if (rr >= 25) news2 += 3;
+
+                // Liệu pháp oxy
+                news2 += oxValue;
+
+                // SpO2 dựa trên Thang 1 hoặc Thang 2
+                if (scaleType === 1) {
+                    if (spo2 >= 96) news2 += 0;
+                    else if (spo2 === 94 || spo2 === 95) news2 += 1;
+                    else if (spo2 === 92 || spo2 === 93) news2 += 2;
+                    else if (spo2 <= 91) news2 += 3;
+                } else { // Thang 2 (COPD đích 88-92%)
+                    if (oxValue === 2) { // Có thở oxy hỗ trợ
+                        if (spo2 >= 97) news2 += 3;
+                        else if (spo2 === 95 || spo2 === 96) news2 += 2;
+                        else if (spo2 === 93 || spo2 === 94) news2 += 1;
+                        else if (spo2 >= 88 && spo2 <= 92) news2 += 0;
+                        else if (spo2 === 86 || spo2 === 87) news2 += 1;
+                        else if (spo2 === 84 || spo2 === 85) news2 += 2;
+                        else if (spo2 <= 83) news2 += 3;
+                    } else { // Thở khí trời
+                        if (spo2 >= 93) news2 += 0;
+                        else if (spo2 >= 88 && spo2 <= 92) news2 += 0;
+                        else if (spo2 === 86 || spo2 === 87) news2 += 1;
+                        else if (spo2 === 84 || spo2 === 85) news2 += 2;
+                        else if (spo2 <= 83) news2 += 3;
+                    }
+                }
+
+                // Huyết áp tâm thu
+                if (sbp <= 90) news2 += 3;
+                else if (sbp >= 91 && sbp <= 100) news2 += 2;
+                else if (sbp >= 101 && sbp <= 110) news2 += 1;
+                else if (sbp >= 111 && sbp <= 219) news2 += 0;
+                else if (sbp >= 220) news2 += 3;
+
+                // Nhịp tim
+                if (hr <= 40) news2 += 3;
+                else if (hr >= 41 && hr <= 50) news2 += 1;
+                else if (hr >= 51 && hr <= 90) news2 += 0;
+                else if (hr >= 91 && hr <= 110) news2 += 1;
+                else if (hr >= 111 && hr <= 130) news2 += 2;
+                else if (hr >= 131) news2 += 3;
+
+                // Tri giác
+                news2 += acvpuValue;
+
+                // Nhiệt độ
+                if (temp <= 35.0) news2 += 3;
+                else if (temp >= 35.1 && temp <= 36.0) news2 += 1;
+                else if (temp >= 36.1 && temp <= 38.0) news2 += 0;
+                else if (temp >= 38.1 && temp <= 39.1) news2 += 1;
+                else if (temp >= 39.2) news2 += 3;
+
+                outNews2.textContent = news2;
+                outNews2.className = 'score-badge ' + (news2 >= 7 ? 'critical' : news2 >= 5 ? 'severe' : news2 >= 1 ? 'mild' : 'normal');
+
+                // 2. CHẤM ĐIỂM SIRS
+                let sirs = 0;
+                if (temp < 36.0 || temp > 38.0) sirs++;
+                if (hr > 90) sirs++;
+                if (rr > 20) sirs++;
+                if (chkWbcAbn.checked || chkBands.checked) sirs++;
+                outSirs.textContent = `${sirs}/4`;
+                outSirs.className = 'score-badge ' + (sirs >= 2 ? 'severe' : 'normal');
+
+                // 3. CHẤM ĐIỂM qSOFA
+                let qsofa = 0;
+                if (rr >= 22) qsofa++;
+                if (sbp > 0 && sbp <= 100) qsofa++;
+                if (acvpuValue === 3) qsofa++;
+                outQsofa.textContent = `${qsofa}/3`;
+                outQsofa.className = 'score-badge ' + (qsofa >= 2 ? 'critical' : qsofa === 1 ? 'mild' : 'normal');
+
+                // 4. TÍNH ĐIỂM SOFA TỔNG
+                let sofa = 0;
+                sofa += parseInt(selResp.value);
+                sofa += parseInt(selCoag.value);
+                sofa += parseInt(selLiver.value);
+                sofa += parseInt(selCardio.value);
+                sofa += parseInt(selCns.value);
+                sofa += parseInt(selRenal.value);
+                outSofa.textContent = sofa;
+                outSofa.className = 'score-badge ' + (sofa >= 10 ? 'critical' : sofa >= 5 ? 'severe' : sofa >= 2 ? 'mild' : 'normal');
+
+                // 5. TÍNH ĐIỂM MEDS SCORE
+                let meds = 0;
+                if (chkTerminal.checked) meds += 6;
+                if (chkAge65.checked) meds += 3;
+                if (rr > 20 || (scaleType === 1 && spo2 < 90)) meds += 3;
+                if (parseInt(selCardio.value) >= 3) meds += 3; // Sốc nhiễm khuẩn trên SOFA
+                if (parseInt(selCoag.value) >= 1) meds += 3;   // Giảm tiểu cầu < 150k
+                if (chkBands.checked) meds += 3;               // Chuyển trái >= 5%
+                if (chkNursing.checked) meds += 2;
+                if (chkLri.checked) meds += 2;
+                if (acvpuValue === 3 || parseInt(selCns.value) >= 1) meds += 2; // Tri giác thay đổi
+                outMeds.textContent = meds;
+                outMeds.className = 'score-badge ' + (meds >= 15 ? 'critical' : meds >= 8 ? 'severe' : meds >= 5 ? 'mild' : 'normal');
+
+                // 6. TÍNH TOÁN SHOCK INDEX
+                let si = 0;
+                if (sbp > 0) si = hr / sbp;
+                outShockIndex.textContent = si.toFixed(2);
+                outShockIndex.style.color = si > 1.0 ? '#ef4444' : 'inherit';
+
+                // HOÀN THÀNH LOGIC ĐỊNH VỊ LÂM SÀNG & TIÊN LƯỢNG (DỮ LIỆU CHUẨN ĐỒNG THUẬN)
+                const alerts = [];
+                let isCritical = false;
+
+                // Kiểm tra tiêu chuẩn Sốc nhiễm khuẩn (Septic Shock) theo Sepsis-3
+                if (parseInt(selCardio.value) >= 3 && chkLactate.checked) {
+                    alerts.push("<strong>🚨 SỐC NHIỄM KHUẨN (Septic Shock):</strong> Thỏa tiêu chuẩn đồng thuận Sepsis-3 (Phụ thuộc vận mạch và Lactate máu &gt; 2.0 mmol/L).");
+                    isCritical = true;
+                } else if (sofa >= 2) {
+                    alerts.push(`<strong>🦠 NHIỄM TRÙNG HUYẾT (Sepsis):</strong> Điểm SOFA = ${sofa} (&ge; 2 điểm), gợi ý có tình trạng suy tạng cấp do nhiễm trùng.`);
+                    if (sofa >= 5) isCritical = true;
+                }
+
+                if (news2 >= 7) {
+                    alerts.push(`<strong>🔴 Cảnh báo tối cấp (NEWS2 = ${news2}):</strong> Suy sụp sinh hiệu nặng, cần theo dõi sát chức năng sống.`);
+                    isCritical = true;
+                } else if (news2 >= 5) {
+                    alerts.push(`<strong>🟡 Nguy cơ trung bình (NEWS2 = ${news2}):</strong> Đạt ngưỡng kích hoạt đánh giá khẩn cấp.`);
+                }
+
+                if (qsofa >= 2) {
+                    alerts.push(`<strong>📋 qSOFA = ${qsofa}/3:</strong> Nguy cơ diễn tiến xấu hoặc tử vong nội viện cao.`);
+                }
+                if (sirs >= 2) {
+                    alerts.push(`<strong>🔥 Hội chứng SIRS positive (${sirs}/4):</strong> Có đáp ứng viêm hệ thống.`);
+                }
+
+                if (alerts.length === 0) {
+                    alerts.push("Chưa ghi nhận bất thường sinh lý đáng kể. Tiếp tục theo dõi sát lâm sàng.");
+                    boxAlert.className = 'diagnostic-box';
+                } else {
+                    boxAlert.className = 'diagnostic-box' + (isCritical ? ' alert-active' : '');
+                }
+                listDiagnostic.innerHTML = alerts.map(a => `<li>${a}</li>`).join('');
+
+                // Tiên lượng tử vong dựa theo tầng MEDS và SOFA phối hợp
+                let mortalityText = "Thấp (< 1%)";
+                if (meds > 15 || sofa >= 10) mortalityText = "Rất cao (≥ 50%)";
+                else if (meds >= 13 || sofa >= 6) mortalityText = "Cao (~ 20% - 30%)";
+                else if (meds >= 8 || sofa >= 3) mortalityText = "Trung bình (~ 8%)";
+                else if (meds >= 5 || sofa >= 1) mortalityText = "Nhẹ (~ 2%)";
+                outMortality.textContent = mortalityText;
+            }
+
+            // Gắn bộ lắng nghe sự kiện tự động cập nhật thời gian thực
+            const inputs = [inHr, inSbp, inRr, inTemp, inSpo2, inSpo2Scale, inOxygen, inAcvpu, 
+                            selResp, selCoag, selLiver, selCardio, selCns, selRenal,
+                            chkTerminal, chkAge65, chkLri, chkNursing, chkBands, chkWbcAbn, chkLactate];
+            
+            inputs.forEach(el => {
+                if (el) el.addEventListener('input', calculateAll);
+                if (el && el.tagName === 'SELECT') el.addEventListener('change', calculateAll);
+            });
+
+            // Xử lý nút bấm xóa dữ liệu (Reset Form)
+            document.getElementById('btn-clear-all').addEventListener('click', () => {
+                inHr.value = "80";
+                inSbp.value = "120";
+                inRr.value = "16";
+                inTemp.value = "37.0";
+                inSpo2.value = "98";
+                inSpo2Scale.value = "1";
+                inOxygen.value = "0";
+                inAcvpu.value = "0";
+                
+                const selects = [selResp, selCoag, selLiver, selCardio, selCns, selRenal];
+                selects.forEach(s => s.value = "0");
+
+                const checkoboxes = [chkTerminal, chkAge65, chkLri, chkNursing, chkBands, chkWbcAbn, chkLactate];
+                checkoboxes.forEach(c => c.checked = false);
+
+                calculateAll();
+            });
+
+            // Chạy tính toán khởi tạo ban đầu
+            calculateAll();
+
+            // ĐỒNG BỘ THEME TỐI/SÁNG TOÀN HỆ THỐNG
+            const themeToggleBtn = document.getElementById('theme-toggle-btn');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const appSidebar = document.getElementById('appSidebar');
+
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+
+            themeToggleBtn.addEventListener('click', () => {
+                if (document.documentElement.getAttribute('data-theme') === 'dark') {
+                    document.documentElement.removeAttribute('data-theme');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
+
+            if (mobileMenuBtn && appSidebar) {
+                mobileMenuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    appSidebar.classList.toggle('active');
+                });
+                document.addEventListener('click', (e) => {
+                    if (!appSidebar.contains(e.target) && e.target !== mobileMenuBtn) {
+                        appSidebar.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
