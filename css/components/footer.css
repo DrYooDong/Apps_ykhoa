@@ -1,0 +1,61 @@
+/* ==========================================================================
+   GLOBAL FOOTER (CHÂN TRANG KHÁI QUÁT)
+   ========================================================================== */
+.global-footer {
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    padding: 2rem 1.25rem 1.25rem;
+    margin-top: auto;
+}
+
+.footer-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.footer-info h4, .footer-links h4, .footer-meta h4 {
+    font-size: 0.95rem;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+}
+
+.footer-info p, .links-group a {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.links-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.links-group a:hover {
+    color: var(--primary-color);
+}
+
+.footer-copyright {
+    text-align: center;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* --- Responsive thiết lập cho Footer --- */
+@media (min-width: 768px) {
+    .footer-sections {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .footer-info {
+        flex: 2;
+    }
+    
+    .footer-links, .footer-meta {
+        flex: 1;
+    }
+}

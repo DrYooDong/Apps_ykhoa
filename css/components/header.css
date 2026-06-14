@@ -1,0 +1,115 @@
+/* ==========================================================================
+   GLOBAL HEADER (THANH CÔNG CỤ TRÊN CÙNG)
+   ========================================================================== */
+.global-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.25rem;
+    z-index: 1000;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.mobile-menu-btn {
+    background: none;
+    border: none;
+    font-size: 1.35rem;
+    color: var(--text-main);
+    cursor: pointer;
+    padding: 0.25rem;
+    display: block;
+}
+
+.logo-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.header-search-bar {
+    flex: 1;
+    max-width: 450px;
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 0.2rem 0.6rem;
+    margin: 0 0.75rem;
+    transition: border-color var(--transition);
+}
+
+.header-search-bar:focus-within {
+    border-color: var(--primary-color);
+}
+
+.header-search-bar input {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0.4rem;
+    color: var(--text-main);
+}
+
+.header-search-bar input::placeholder {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.search-submit-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.header-actions button {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-main);
+    transition: var(--transition);
+}
+
+.header-actions button:hover {
+    background-color: var(--border-color);
+}
+
+/* --- Responsive thiết lập cho Header --- */
+@media (min-width: 768px) {
+    .mobile-menu-btn {
+        display: none; /* Ẩn nút Hamburger trên PC */
+    }
+
+    .header-search-bar {
+        margin: 0 2rem; /* Giãn rộng thanh tìm kiếm trung tâm */
+    }
+}

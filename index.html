@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CliniPortal - Hệ sinh thái Công cụ Lâm sàng</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/main.js" defer></script>
 </head>
 <body>
-
     <header class="global-header">
         <div class="header-left">
             <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
@@ -34,11 +34,11 @@
             <nav class="sidebar-nav">
                 <ul>
                     <li><a href="index.html" class="active"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
-                    <li><a href="Công cụ/cong-cu.html"><span class="nav-icon">🧮</span><span class="nav-text">Công cụ lâm sàng</span></a></li>
-                    <li><a href="Tiếp cận/tiep-can.html"><span class="nav-icon">📋</span><span class="nav-text">Tiếp cận lâm sàng</span></a></li>
-                    <li><a href="Phác đồ/phac-do.html"><span class="nav-icon">📄</span><span class="nav-text">Phác đồ điều trị</span></a></li>
-                    <li><a href="Dược lý/duoc-ly.html"><span class="nav-icon">💊</span><span class="nav-text">Dược lý & Kháng sinh</span></a></li>
-                    <li><a href="Y học chứng cứ/y-hoc-chung-cu.html"><span class="nav-icon">📚</span><span class="nav-text">Y học chứng cứ</span></a></li>
+                    <li><a href="pages/Công cụ/cong-cu.html"><span class="nav-icon">🧮</span><span class="nav-text">Công cụ lâm sàng</span></a></li>
+                    <li><a href="pages/Tiếp cận/tiep-can.html"><span class="nav-icon">📋</span><span class="nav-text">Tiếp cận lâm sàng</span></a></li>
+                    <li><a href="pages/Phác đồ/phac-do.html"><span class="nav-icon">📄</span><span class="nav-text">Phác đồ điều trị</span></a></li>
+                    <li><a href="pages/Dược lý/duoc-ly.html"><span class="nav-icon">💊</span><span class="nav-text">Dược lý & Kháng sinh</span></a></li>
+                    <li><a href="pages/Y học chứng cứ/y-hoc-chung-cu.html"><span class="nav-icon">📚</span><span class="nav-text">Y học chứng cứ</span></a></li>
                 </ul>
             </nav>
         </aside>
@@ -82,7 +82,7 @@
                         <div class="card-content">
                             <h3>Công cụ lâm sàng</h3>
                             <p>Tính toán các thang điểm nặng, tiên lượng và hỗ trợ chẩn đoán chính xác.</p>
-                            <a href="Công cụ/cong-cu.html" class="card-action-link">Truy cập ứng dụng &rarr;</a>
+                            <a href="pages/Công cụ/cong-cu.html" class="card-action-link">Truy cập ứng dụng &rarr;</a>
                         </div>
                     </div>
 
@@ -91,7 +91,7 @@
                         <div class="card-content">
                             <h3>Tiếp cận lâm sàng</h3>
                             <p>Phác đồ từng bước xử trí các hội chứng, triệu chứng cấp cứu và thường gặp.</p>
-                            <a href="tiep-can.html" class="card-action-link">Truy cập ứng dụng &rarr;</a>
+                            <a href="pages/Tiếp cận/tiep-can.html" class="card-action-link">Truy cập ứng dụng &rarr;</a>
                         </div>
                     </div>
 
@@ -100,7 +100,7 @@
                         <div class="card-content">
                             <h3>Phác đồ điều trị</h3>
                             <p>Tra cứu hướng dẫn điều trị chuẩn hóa từ Bộ Y tế và các Hiệp hội chuyên khoa.</p>
-                            <a href="phac-do.html" class="card-action-link">Truy cập ứng dụng &rarr;</a>
+                            <a href="pages/Phác đồ/phac-do.html" class="card-action-link">Truy cập ứng dụng &rarr;</a>
                         </div>
                     </div>
 
@@ -109,7 +109,7 @@
                         <div class="card-content">
                             <h3>Dược lý & Kháng sinh</h3>
                             <p>Chỉnh liều theo chức năng thận, tương tác thuốc và tối ưu hóa PK/PD kháng sinh.</p>
-                            <a href="duoc-ly.html" class="card-action-link">Truy cập ứng dụng &rarr;</a>
+                            <a href="pages/Dược lý/duoc-ly.html" class="card-action-link">Truy cập ứng dụng &rarr;</a>
                         </div>
                     </div>
                 </div>
@@ -123,50 +123,5 @@
             <p>CliniPortal © 2026. Giao diện tối ưu hóa hiển thị linh hoạt trên Mobile và Desktop.</p>
         </div>
     </footer>
-<script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const themeToggleBtn = document.getElementById('theme-toggle-btn');
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const appSidebar = document.getElementById('appSidebar');
-
-            // 1. XỬ LÝ DARK MODE
-            // Kiểm tra tùy chọn đã lưu từ trước trong LocalStorage (nếu có)
-            const savedTheme = localStorage.getItem('theme');
-            
-            if (savedTheme === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'dark');
-            } else {
-                document.documentElement.removeAttribute('data-theme');
-            }
-
-            // Sự kiện Click chuyển đổi giao diện Sáng/Tối
-            themeToggleBtn.addEventListener('click', () => {
-                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-                
-                if (isDark) {
-                    document.documentElement.removeAttribute('data-theme');
-                    localStorage.setItem('theme', 'light');
-                } else {
-                    document.documentElement.setAttribute('data-theme', 'dark');
-                    localStorage.setItem('theme', 'dark');
-                }
-            });
-
-            // 2. XỬ LÝ MENU SIDEBAR TRÊN MOBILE (Khuyến mãi thêm để chạy mượt cấu trúc cũ)
-            if (mobileMenuBtn && appSidebar) {
-                mobileMenuBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    appSidebar.classList.toggle('active');
-                });
-
-                // Click ra ngoài vùng sidebar sẽ tự động đóng menu (Tối ưu trải nghiệm mobile)
-                document.addEventListener('click', (e) => {
-                    if (!appSidebar.contains(e.target) && e.target !== mobileMenuBtn) {
-                        appSidebar.classList.remove('active');
-                    }
-                });
-            }
-        });
-    </script>
 </body>
 </html>
