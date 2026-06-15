@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trợ lý Dinh dưỡng Lâm sàng - CliniPortal</title>
     <link rel="stylesheet" href="../../../css/main.css">
+    
     <style>
         .workspace-container { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1rem; align-items: start; }
         @media (min-width: 1024px) { .workspace-container { grid-template-columns: 380px 1fr; } }
@@ -59,8 +60,8 @@
             <div class="logo-brand"><span class="logo-icon">🩺</span><span class="logo-text">CliniPortal</span></div>
         </div>
         <div class="header-actions">
-            <button id="theme-toggle-btn" title="Chuyển đổi Sáng/Tối">🌓</button>
-            <button id="sync-settings-btn" title="Cài đặt & Đồng bộ">⚙️</button>
+            <button id="theme-toggle-btn" title="Chuyển đổi Sáng/Tối" aria-label="Toggle Theme">🌓</button>
+            <button id="sync-settings-btn" title="Cài đặt & Đồng bộ" aria-label="Settings and Sync">⚙️</button>
         </div>
     </header>
 
@@ -290,6 +291,22 @@
 
             // Kích hoạt chạy thử khi load trang
             calculateNutrition();
+            
+            // Dark Mode
+            const themeToggleBtn = document.getElementById('theme-toggle-btn');
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', () => {
+                    if (document.documentElement.getAttribute('data-theme') === 'dark') {
+                        document.documentElement.removeAttribute('data-theme');
+                        localStorage.setItem('theme', 'light');
+                    } else {
+                        document.documentElement.setAttribute('data-theme', 'dark');
+                        localStorage.setItem('theme', 'dark');
+                    }
+                });
+            }
         });
     </script>
 </body>
