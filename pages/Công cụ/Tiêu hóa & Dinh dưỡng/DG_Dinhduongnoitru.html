@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trợ lý Dinh dưỡng Lâm sàng - CliniPortal</title>
+    <link rel="stylesheet" href="../../../css/main.css">
+    <style>
+        .workspace-container { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1rem; align-items: start; }
+        @media (min-width: 1024px) { .workspace-container { grid-template-columns: 380px 1fr; } }
+
+        .input-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 1.25rem; }
+        .card-zone-badge { display: inline-block; font-size: 0.75rem; font-weight: 700; padding: 0.3rem 0.7rem; border-radius: 4px; text-transform: uppercase; margin-bottom: 1rem; letter-spacing: 0.05em; }
+        .badge-blue { background-color: rgba(2, 132, 199, 0.12); color: var(--primary-color); }
+        .badge-orange { background-color: rgba(245, 158, 11, 0.12); color: var(--warning-color); }
+        .badge-green { background-color: rgba(16, 185, 129, 0.12); color: var(--success-color); }
+
+        .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.25rem; }
+        .form-group label { font-size: 0.9rem; font-weight: 600; color: var(--text-main); }
+        .form-group input, .form-group select { padding: 0.75rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm); background-color: var(--bg-light); color: var(--text-main); font-size: 0.95rem; font-weight: 500; transition: var(--transition); }
+        .form-group input:focus, .form-group select:focus { border-color: var(--primary-color); background-color: var(--card-bg); outline: none; }
+
+        .target-dashboard { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+        .target-card { background-color: var(--card-bg); border: 2px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-align: center; display: flex; flex-direction: column; justify-content: center; }
+        .target-card.highlight { border-color: var(--primary-color); background-color: rgba(2, 132, 199, 0.03); }
+        .target-title { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.5rem; }
+        .target-value { font-size: 1.75rem; font-weight: 800; color: var(--text-main); }
+        .target-unit { font-size: 0.9rem; font-weight: 500; color: var(--text-muted); }
+
+        .result-box { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 1.5rem; }
+        .result-title { font-size: 1.1rem; font-weight: 700; color: var(--primary-color); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
+        
+        .macro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background-color: var(--bg-light); padding: 1rem; border-radius: var(--radius-sm); }
+        .macro-item { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed var(--border-color); padding-bottom: 0.5rem; }
+        .macro-label { font-weight: 600; font-size: 0.9rem; color: var(--text-main); }
+        .macro-val { font-weight: 700; font-size: 1rem; color: var(--primary-color); }
+
+        .clinical-advice-box { background-color: var(--bg-light); border-left: 4px solid var(--primary-color); padding: 1.25rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 0.92rem; line-height: 1.6; margin-bottom: 1rem; }
+        
+        /* Bảng tư vấn thực phẩm bệnh lý */
+        .diet-advice-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1rem;}
+        @media (min-width: 640px) { .diet-advice-grid { grid-template-columns: 1fr 1fr; } }
+        .diet-box { padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); font-size: 0.9rem; line-height: 1.5; background-color: var(--card-bg); }
+        .diet-good { border-top: 4px solid var(--success-color); }
+        .diet-bad { border-top: 4px solid var(--danger-color); }
+        .diet-box h4 { margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .diet-box ul { margin-left: 1.25rem; color: var(--text-muted); }
+        .diet-box li { margin-bottom: 0.35rem; }
+
+        .alert-panel { padding: 1.25rem; border-radius: var(--radius-md); border-left: 5px solid var(--danger-color); background-color: rgba(239, 68, 68, 0.08); color: var(--text-main); margin-bottom: 1.5rem; display: none; }
+        .reference-section { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; padding: 1rem; background-color: var(--bg-light); border-radius: var(--radius-sm); }
+    </style>
+</head>
+<body>
+
+    <header class="global-header">
+        <div class="header-left">
+            <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
+            <div class="logo-brand"><span class="logo-icon">🩺</span><span class="logo-text">CliniPortal</span></div>
+        </div>
+        <div class="header-actions">
+            <button id="theme-toggle-btn" title="Chuyển đổi Sáng/Tối">🌓</button>
+            <button id="sync-settings-btn" title="Cài đặt & Đồng bộ">⚙️</button>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <aside class="app-sidebar" id="appSidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="../../../index.html"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+                    <li><a href="../cong-cu.html" class="active"><span class="nav-icon">🧮</span><span class="nav-text">Công cụ lâm sàng</span></a></li>
+                    <li><a href="../../Tiếp cận/tiep-can.html"><span class="nav-icon">📋</span><span class="nav-text">Tiếp cận lâm sàng</span></a></li>
+                    <li><a href="../../Phác đồ/phac-do.html"><span class="nav-icon">📄</span><span class="nav-text">Phác đồ điều trị</span></a></li>
+                    <li><a href="../../Dược lý/duoc-ly.html"><span class="nav-icon">💊</span><span class="nav-text">Dược lý & Kháng sinh</span></a></li>
+                    <li><a href="../../Y học chứng cứ/y-hoc-chung-cu.html"><span class="nav-icon">📚</span><span class="nav-text">Y học chứng cứ</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <div class="main-wrapper">
+            <section class="hero-dashboard">
+                <div class="hero-intro">
+                    <h1>MỤC TIÊU & DINH DƯỠNG NỘI TRÚ</h1>
+                    <p>Chuẩn hóa tính toán năng lượng, đại chất và hướng dẫn chọn lựa thực phẩm trực quan cho bệnh nhân nội trú theo hướng dẫn của Bộ Y tế.</p>
+                </div>
+            </section>
+
+            <div id="refeedingAlertPanel" class="alert-panel">
+                <h3 style="font-weight:700; color:var(--danger-color); margin-bottom:0.5rem; display:flex; align-items:center; gap:0.5rem;">⚠️ CẢNH BÁO: HỘI CHỨNG NUÔI ĂN LẠI (REFEEDING)</h3>
+                <p>Bệnh nhân suy mòn hoặc nhịn đói kéo dài. <strong>Bắt buộc:</strong> Khởi động nuôi ăn ở mức rất thấp (10-15 kcal/kg/ngày). Bổ sung ngay Thiamine (B1) 200-300mg IV và bù chủ động Kali, Magie, Phospho trước khi cấp năng lượng.</p>
+            </div>
+
+            <div class="workspace-container">
+                <div class="input-side">
+                    <div class="input-card">
+                        <span class="card-zone-badge badge-blue">1. Hồ sơ bệnh nhân</span>
+                        <div class="form-group">
+                            <label for="patientWeight">Cân nặng hiện tại (kg):</label>
+                            <input type="number" id="patientWeight" value="55" min="20" max="200" placeholder="Bắt buộc">
+                        </div>
+                        <div class="form-group">
+                            <label for="clinicalProfile">Bệnh cảnh nội khoa chủ đạo:</label>
+                            <select id="clinicalProfile">
+                                <option value="sepsis">Nhiễm khuẩn / Sepsis / ICU (Giai đoạn cấp)</option>
+                                <option value="diabetes">Đái tháo đường nội trú</option>
+                                <option value="cvd">Bệnh Tim mạch / Suy tim / Tăng huyết áp</option>
+                                <option value="ckd_predialysis">Bệnh thận mạn (CKD) - Chưa lọc máu</option>
+                                <option value="ckd_dialysis">Bệnh thận mạn (CKD) - Có lọc máu chu kỳ</option>
+                                <option value="liver_failure">Xơ gan / Bệnh gan mạn tính</option>
+                                <option value="gi_tract">Bệnh Dạ dày - Tá tràng / Tiêu hóa</option>
+                                <option value="polymorbid">Người bệnh Đa lý / Cao tuổi (>65t)</option>
+                                <option value="surgery">Hậu phẫu / Ngoại khoa chung</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="margin-bottom:0;">
+                            <label for="starvationDuration">Tình trạng suy mòn / Ăn uống gần đây:</label>
+                            <select id="starvationDuration">
+                                <option value="none">Bình thường hoặc ăn kém &lt; 5 ngày</option>
+                                <option value="severe">Nhịn đói/Ăn cực kém &gt; 5 ngày (Nguy cơ Refeeding)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="output-side">
+                    <span class="card-zone-badge badge-orange" style="margin-bottom:0.5rem;">2. Nhu cầu Đích cần đạt (24h)</span>
+                    <div class="target-dashboard">
+                        <div class="target-card highlight">
+                            <div class="target-title">Năng lượng</div>
+                            <div class="target-value" id="resCalories">--</div>
+                            <div class="target-unit">Kcal/ngày</div>
+                        </div>
+                        <div class="target-card highlight">
+                            <div class="target-title">Đạm (Protein)</div>
+                            <div class="target-value" id="resProtein">--</div>
+                            <div class="target-unit">Gram/ngày</div>
+                        </div>
+                        <div class="target-card">
+                            <div class="target-title">Dịch tối đa</div>
+                            <div class="target-value" id="resFluid">--</div>
+                            <div class="target-unit">mL/ngày</div>
+                        </div>
+                    </div>
+
+                    <div class="result-box">
+                        <div class="result-title"><span>🍽️</span> THỰC ĐƠN & TƯ VẤN NGƯỜI BỆNH</div>
+                        
+                        <div class="macro-grid" style="margin-bottom:1rem;">
+                            <div class="macro-item"><span class="macro-label">Carbohydrate (Đường bột)</span><span class="macro-val" id="resCarb">-- g</span></div>
+                            <div class="macro-item"><span class="macro-label">Lipid (Chất béo)</span><span class="macro-val" id="resLipid">-- g</span></div>
+                        </div>
+
+                        <div id="medicalAdvice" class="clinical-advice-box"></div>
+
+                        <span class="card-zone-badge badge-green" style="margin-top:0.5rem;">Hướng dẫn chọn thực phẩm cụ thể</span>
+                        <div class="diet-advice-grid">
+                            <div class="diet-box diet-good">
+                                <h4 style="color:var(--success-color);">✅ THỰC PHẨM NÊN DÙNG</h4>
+                                <ul id="dietGoodList"></ul>
+                            </div>
+                            <div class="diet-box diet-bad">
+                                <h4 style="color:var(--danger-color);">❌ THỰC PHẨM CẦN TRÁNH</h4>
+                                <ul id="dietBadList"></ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reference-section">
+                        <strong>📚 Căn cứ Y học chứng cứ (EBM):</strong> Hướng dẫn chế độ ăn bệnh viện - Bộ Y tế (QĐ 2879/QĐ-BYT) và Hướng dẫn Dinh dưỡng Lâm sàng Viện Dinh Dưỡng.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const inputs = document.querySelectorAll('#patientWeight, #clinicalProfile, #starvationDuration');
+            inputs.forEach(input => {
+                input.addEventListener('input', calculateNutrition);
+                input.addEventListener('change', calculateNutrition);
+            });
+
+            function calculateNutrition() {
+                const weight = parseFloat(document.getElementById('patientWeight').value);
+                const profile = document.getElementById('clinicalProfile').value;
+                const starvation = document.getElementById('starvationDuration').value;
+
+                if (!weight || weight <= 0) return;
+
+                let kcalPerKg = 25, proteinPerKg = 1.0, fluidPerKg = 30;
+                let medAdvice = "", goodFoods = "", badFoods = "";
+
+                if (starvation === 'severe') {
+                    document.getElementById('refeedingAlertPanel').style.display = 'block';
+                    kcalPerKg = 12; 
+                } else {
+                    document.getElementById('refeedingAlertPanel').style.display = 'none';
+                }
+
+                // LOGIC PHÂN BỔ THEO BỆNH LÝ & TƯ VẤN THỰC ĐƠN
+                switch (profile) {
+                    case 'sepsis':
+                        if (starvation !== 'severe') kcalPerKg = 25; 
+                        proteinPerKg = 1.3; 
+                        medAdvice = `<strong>Mục tiêu:</strong> Tránh overfeeding pha cấp, tăng đạm để chống dị hóa cơ. Nuôi ăn đường tiêu hóa (EN) sớm. Nếu bệnh nhân ăn kém, cần bổ sung sữa cao đạm (Ví dụ: Peptamen, Fresubin HP).`;
+                        goodFoods = `<li>Thức ăn lỏng, nhừ, dễ tiêu: Cháo súp xay, phở mềm.</li><li>Thịt nạc băm, cá xé, trứng (nguồn đạm giá trị sinh học cao).</li><li>Trái cây mềm, nước ép chanh/cam để tăng Vitamin C.</li>`;
+                        badFoods = `<li>Thực phẩm cứng, dai, khó tiêu hóa (nhiều xơ sụn).</li><li>Đồ chiên xào nhiều dầu mỡ (gây đầy bụng, khó thở).</li>`;
+                        break;
+
+                    case 'diabetes':
+                        if (starvation !== 'severe') kcalPerKg = 25;
+                        proteinPerKg = 1.0;
+                        medAdvice = `<strong>Mục tiêu:</strong> Kiểm soát đường huyết nội viện, tránh hạ đường huyết do thuốc/Insulin. Sữa bổ sung nên dùng loại có chỉ số GI thấp (Ví dụ: Glucerna, Diabest).`;
+                        goodFoods = `<li>Ngũ cốc nguyên cám: Gạo lứt, khoai lang, yến mạch.</li><li><strong>Mẹo ăn:</strong> Ăn rau xanh trước, sau đó mới ăn cơm và thức ăn để làm chậm hấp thu đường.</li><li>Cá, đậu phụ, dầu thực vật.</li>`;
+                        badFoods = `<li>Các loại đường hấp thu nhanh: Mật ong, bánh kẹo, nước ngọt.</li><li>Trái cây sấy khô, mứt tết.</li><li>Nước ép trái cây (nên ăn trái cây nguyên múi để lấy chất xơ).</li>`;
+                        break;
+
+                    case 'cvd':
+                        if (starvation !== 'severe') kcalPerKg = 25;
+                        proteinPerKg = 1.0; fluidPerKg = 25; // Giảm dịch
+                        medAdvice = `<strong>Mục tiêu:</strong> Giảm tải tuần hoàn cho tim, giảm áp lực thẩm thấu. Yêu cầu chế độ ăn nhạt (Natri < 2000mg/ngày).`;
+                        goodFoods = `<li>Rau xanh nhiều Kali (nếu thận bình thường): Cải xoăn, súp lơ, cà chua.</li><li>Thịt trắng: Cá, lợn nạc, gia cầm (bỏ da).</li><li>Dùng các gia vị tự nhiên (tiêu, hành, tỏi, chanh) để bù vị nhạt của muối.</li>`;
+                        badFoods = `<li><strong>Tuyệt đối tránh đồ muối:</strong> Dưa cà muối, mắm tôm, tương bần.</li><li>Thực phẩm chế biến sẵn: Xúc xích, giò lụa, thịt xông khói, mì tôm.</li><li>Mỡ động vật, nội tạng động vật.</li>`;
+                        break;
+
+                    case 'ckd_predialysis':
+                        if (starvation !== 'severe') kcalPerKg = 30; // Cần năng lượng cao
+                        proteinPerKg = 0.8; fluidPerKg = 20;
+                        medAdvice = `<strong>Mục tiêu:</strong> Hạn chế đạm để giảm ure máu, nhưng phải TĂNG năng lượng từ tinh bột/béo để chống teo cơ. Dùng sữa chuyên biệt (Ví dụ: Nepro 1).`;
+                        goodFoods = `<li><strong>Thực phẩm giàu Calo, KHÔNG có Đạm:</strong> Miến dong, bột sắn dây, khoai lang, bún.</li><li>Dầu thực vật (dầu đậu nành, oliu) để tăng calo.</li><li>Ăn nhạt nếu có phù.</li>`;
+                        badFoods = `<li>Rau quả giàu Kali: Chuối tiêu, đu đủ, rau ngót, rau dền (nguy cơ ngừng tim).</li><li>Thực phẩm giàu Phospho: Nước hầm xương, nội tạng, lòng đỏ trứng, phô mai.</li>`;
+                        break;
+
+                    case 'ckd_dialysis':
+                        if (starvation !== 'severe') kcalPerKg = 30;
+                        proteinPerKg = 1.2; fluidPerKg = 10; // Hạn chế dịch ngặt
+                        medAdvice = `<strong>Mục tiêu:</strong> Bù đạm mất qua màng lọc. Hạn chế dịch cực kỳ nghiêm ngặt giữa các kỳ lọc (Sữa: Nepro 2).`;
+                        goodFoods = `<li>Bổ sung nhiều thịt nạc, lòng trắng trứng, cá để bù đạm.</li><li>Chia thành nhiều bữa nhỏ, ít canh.</li>`;
+                        badFoods = `<li>Uống nhiều nước, ăn nhiều canh lẩu (gây phù phổi cấp).</li><li>Rau quả giàu Kali (Chuối, cam, mít).</li>`;
+                        break;
+
+                    case 'liver_failure':
+                        if (starvation !== 'severe') kcalPerKg = 30;
+                        proteinPerKg = 1.2;
+                        medAdvice = `<strong>Mục tiêu:</strong> Chống suy mòn và hạ đường huyết đêm. Không kiêng đạm (trừ hôn mê gan). Cần bữa ăn phụ buổi tối muộn.`;
+                        goodFoods = `<li><strong>Bắt buộc:</strong> Ăn một bữa nhẹ (sữa, cháo, bánh quy) lúc 21h-22h đêm trước khi ngủ.</li><li>Chia nhỏ 5-6 bữa ăn trong ngày.</li><li>Ưu tiên đạm thực vật (đậu hũ, sữa đậu nành).</li>`;
+                        badFoods = `<li>Ăn no dồn vào 1-2 bữa lớn.</li><li>Nội tạng động vật, mỡ động vật.</li><li>Hạn chế muối nếu có báng bụng (cổ trướng).</li>`;
+                        break;
+                    
+                    case 'gi_tract':
+                        if (starvation !== 'severe') kcalPerKg = 25;
+                        proteinPerKg = 1.0;
+                        medAdvice = `<strong>Mục tiêu:</strong> Giảm co bóp, giảm bài tiết dịch vị/dịch tụy, bảo vệ niêm mạc. Chuyển từ nhịn ăn sang ăn lỏng.`;
+                        goodFoods = `<li>Thức ăn mềm, nhừ: Cháo, súp, bánh mì mềm, khoai tây nghiền.</li><li>Ăn chậm, nhai kỹ, thức ăn ấm (không quá nóng/quá lạnh).</li>`;
+                        badFoods = `<li>Thực phẩm chua, cay, sinh hơi: Dưa muối, ớt, tiêu, hành tỏi sống, nước có ga.</li><li>Cà phê, trà đặc, rượu bia.</li>`;
+                        break;
+
+                    case 'polymorbid':
+                    case 'surgery':
+                        if (starvation !== 'severe') kcalPerKg = 28;
+                        proteinPerKg = 1.3;
+                        medAdvice = `<strong>Mục tiêu:</strong> Đảm bảo năng lượng chống teo cơ ở người già hoặc mau lành vết thương sau mổ.`;
+                        goodFoods = `<li>Đa dạng thực phẩm, thịt cá, trứng, sữa.</li><li>Bổ sung các cữ sữa phụ giữa các bữa ăn (ONS).</li>`;
+                        badFoods = `<li>Tránh các món ăn quá dai cứng hoặc nguy cơ sặc ở người già.</li>`;
+                        break;
+                }
+
+                // TÍNH TOÁN KẾT QUẢ ĐẦU RA
+                const totalCalories = Math.round(weight * kcalPerKg);
+                const totalProtein = (weight * proteinPerKg).toFixed(1);
+                const proteinCalories = totalProtein * 4;
+                const remainingCalories = totalCalories - proteinCalories;
+                const totalCarb = Math.round((remainingCalories * 0.6) / 4);
+                const totalLipid = Math.round((remainingCalories * 0.4) / 9);
+                const totalFluid = Math.round(weight * fluidPerKg);
+
+                // RENDER VÀO GIAO DIỆN
+                document.getElementById('resCalories').innerText = totalCalories;
+                document.getElementById('resProtein').innerText = totalProtein;
+                document.getElementById('resFluid').innerText = totalFluid;
+                document.getElementById('resCarb').innerText = totalCarb + " g";
+                document.getElementById('resLipid').innerText = totalLipid + " g";
+                
+                document.getElementById('medicalAdvice').innerHTML = medAdvice;
+                document.getElementById('dietGoodList').innerHTML = goodFoods;
+                document.getElementById('dietBadList').innerHTML = badFoods;
+            }
+
+            // Kích hoạt chạy thử khi load trang
+            calculateNutrition();
+        });
+    </script>
+</body>
+</html>

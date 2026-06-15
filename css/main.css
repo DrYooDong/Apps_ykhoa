@@ -307,3 +307,44 @@
         gap: 1.25rem;
     }
 }
+
+/* AKI Staging Colors */
+.aki-stage-1 { 
+    color: #f59e0b; 
+    border-color: #f59e0b !important;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), transparent) !important;
+}
+.aki-stage-2 { 
+    color: #f97316; 
+    border-color: #f97316 !important;
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), transparent) !important;
+}
+.aki-stage-3 { 
+    color: #dc2626; 
+    border-color: #dc2626 !important;
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.15), transparent) !important;
+}
+.aki-no-aki {
+    color: #10b981;
+    border-color: #10b981 !important;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), transparent) !important;
+}
+
+/* ==========================================================================
+9. TÙY CHỈNH KHOẢNG CÁCH GIỮA CÁC SECTION LỚN
+========================================================================== */
+
+/* Tăng khoảng cách giữa các khối Section chính (ví dụ: Nhiễm trùng vs Thận) */
+.main-content-grid > div {
+    margin-bottom: 1.25rem;
+}
+
+/* Loại bỏ margin ở phần tử cuối cùng để tránh dư thừa ở cuối trang */
+.main-content-grid > div:last-child {
+    margin-bottom: 0;
+}
+
+/* Tăng khoảng cách giữa các card trong cùng 1 nhóm (lưới danh mục) */
+.category-grid {
+    gap: 1rem;
+}

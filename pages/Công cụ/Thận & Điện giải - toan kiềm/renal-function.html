@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ĐÁNH GIÁ CHỨC NĂNG THẬN - CliniPortal</title>
+    <link rel="stylesheet" href="../../../css/main.css">
+    <style>
+        .renal-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .panel {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+        .panel-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin-bottom: 1rem;
+        }
+        .input-group label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+        input[type="number"], select {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            font-size: 1rem;
+        }
+        .grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        
+        /* Hiển thị kết quả */
+        .result-box {
+            margin-bottom: 1.25rem;
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            background-color: var(--bg-light);
+            border-left: 4px solid var(--primary-color);
+        }
+        .result-box h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
+            display: flex;
+            justify-content: space-between;
+        }
+        .big-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+        .sub-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            line-height: 1.4;
+        }
+        
+        /* Bảng KDIGO Risk */
+        .kdigo-risk {
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            text-align: center;
+            margin-top: 0.5rem;
+            border: 1px solid transparent;
+        }
+        .risk-low { background-color: #d1fae5; color: #065f46; border-color: #34d399; }
+        .risk-mod { background-color: #fef3c7; color: #92400e; border-color: #fbbf24; }
+        .risk-high { background-color: #ffedd5; color: #9a3412; border-color: #fb923c; }
+        .risk-vhigh { background-color: #fee2e2; color: #991b1b; border-color: #f87171; }
+        
+        /* Cảnh báo thuốc */
+        .med-alert-box {
+            background-color: rgba(239, 68, 68, 0.05);
+            border-left: 4px solid #ef4444;
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            margin-top: 1rem;
+        }
+        .med-alert-box h4 { color: #b91c1c; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.95rem; }
+        .med-alert-box ul { padding-left: 1.2rem; font-size: 0.9rem; line-height: 1.6; }
+        
+        .reset-btn {
+            width: 100%; padding: 0.75rem; background-color: var(--bg-light);
+            border: 1px solid var(--border-color); border-radius: var(--radius-sm);
+            color: var(--text-main); font-weight: 700; cursor: pointer; margin-top: 1rem;
+        }
+        .reset-btn:hover { background-color: var(--border-color); }
+
+        @media (min-width: 768px) {
+            .renal-grid { grid-template-columns: 1fr 1.5fr; }
+            .sticky-panel { position: sticky; top: calc(var(--header-height) + 1.25rem); }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="global-header">
+        <div class="header-left">
+            <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
+            <div class="logo-brand">
+                <span class="logo-icon">🩺</span><span class="logo-text">CliniPortal</span>
+            </div>
+        </div>
+        <div class="header-actions">
+            <button id="theme-toggle-btn" title="Chuyển đổi Sáng/Tối">🌓</button>
+            <button id="sync-settings-btn" title="Cài đặt & Đồng bộ" aria-label="Settings and Sync">⚙️</button>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <aside class="app-sidebar" id="appSidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="../../../index.html"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+                    <li><a href="../../../pages/Công cụ/cong-cu.html" class="active"><span class="nav-icon">🧮</span><span class="nav-text">Công cụ lâm sàng</span></a></li>
+                    <li><a href="../../../pages/Tiếp cận/tiep-can.html"><span class="nav-icon">📋</span><span class="nav-text">Tiếp cận lâm sàng</span></a></li>
+                    <li><a href="../../../pages/Phác đồ/phac-do.html"><span class="nav-icon">📄</span><span class="nav-text">Phác đồ điều trị</span></a></li>
+                    <li><a href="../../../pages/Dược lý/duoc-ly.html"><span class="nav-icon">💊</span><span class="nav-text">Dược lý & Kháng sinh</span></a></li>
+                    <li><a href="../../../pages/Y học chứng cứ/y-hoc-chung-cu.html"><span class="nav-icon">📚</span><span class="nav-text">Y học chứng cứ</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <div class="main-wrapper">
+            <section class="hero-dashboard">
+                <div class="hero-intro">
+                    <h1>ĐÁNH GIÁ CHỨC NĂNG THẬN TOÀN DIỆN</h1>
+                    <p>Tự động lựa chọn cân nặng tính CrCl, khử chỉ số hóa BSA để chỉnh liều thuốc, và phân tầng rủi ro CKD theo ma trận KDIGO 2024.</p>
+                </div>
+            </section>
+
+            <div class="renal-grid">
+                
+                <div class="panel">
+                    <div class="panel-title"><span>📝 Thông số Bệnh nhân</span></div>
+                    
+                    <div class="grid-2-col">
+                        <div class="input-group">
+                            <label>Tuổi</label>
+                            <input type="number" id="ren-age" value="65" min="18" max="120">
+                        </div>
+                        <div class="input-group">
+                            <label>Giới tính</label>
+                            <select id="ren-gender">
+                                <option value="male">Nam</option>
+                                <option value="female">Nữ</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid-2-col">
+                        <div class="input-group">
+                            <label>Chiều cao (cm)</label>
+                            <input type="number" id="ren-height" value="165" min="100" max="250">
+                        </div>
+                        <div class="input-group">
+                            <label>Cân nặng (kg)</label>
+                            <input type="number" id="ren-weight" value="70" min="30" max="200">
+                        </div>
+                    </div>
+
+                    <div class="input-group" style="margin-top: 0.5rem; padding-top: 1rem; border-top: 1px dashed var(--border-color);">
+                        <label>Creatinine huyết thanh</label>
+                        <div style="display: flex; gap: 0.5rem; align-items: center;">
+                            <input type="number" id="ren-cr" value="1.5" step="0.01" style="flex: 3; min-width: 120px">
+                            <select id="ren-cr-unit" style="flex: 1; min-width: 75px; max-width: 90px; padding: 0.4rem; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-input); color: var(--text);">
+                                <option value="mgdL">mg/dL</option>
+                                <option value="umolL">μmol/L</option>
+                            </select>
+                        </div>
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">* 1 mg/dL = 88.4 μmol/L</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Albumin niệu (ACR) - Theo KDIGO</label>
+                        <select id="ren-acr">
+                            <option value="A1">A1: Bình thường / Tăng nhẹ (< 30 mg/g)</option>
+                            <option value="A2">A2: Tăng trung bình (30 - 300 mg/g)</option>
+                            <option value="A3">A3: Tăng nặng (> 300 mg/g)</option>
+                        </select>
+                    </div>
+                    <!-- Section AKI Input -->
+                    <div class="input-group" style="margin-top: 1rem; padding-top: 1rem; border-top: 2px solid var(--accent);">
+                        <label style="font-weight: 600; color: var(--accent);">🚨 Đánh giá Tổn thương Thận cấp (AKI)</label>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.5rem;">
+                            <div>
+                                <label style="font-size: 0.85rem;">Creatinine nền (Baseline)</label>
+                                <input type="number" id="aki-baseline" value="1.0" step="0.01" placeholder="mg/dL hoặc μmol/L">
+                            </div>
+                            <div>
+                                <label style="font-size: 0.85rem;">Đơn vị Baseline</label>
+                                <select id="aki-baseline-unit" style="width: 100%; padding: 0.5rem; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-input); color: var(--text);">
+                                    <option value="mgdL">mg/dL</option>
+                                    <option value="umolL">μmol/L</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 0.5rem;">
+                            <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; cursor: pointer;">
+                                <input type="checkbox" id="aki-48h" style="width: 18px; height: 18px; cursor: pointer;">
+                                <span>Tăng Creatinine trong vòng 48 giờ</span>
+                            </label>
+                        </div>
+                        
+                        <div style="margin-top: 0.5rem;">
+                            <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; cursor: pointer;">
+                                <input type="checkbox" id="aki-rRT" style="width: 18px; height: 18px; cursor: pointer;">
+                                <span>Bệnh nhân đang lọc máu (RRT)</span>
+                            </label>
+                        </div>
+                        
+                        <span style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-top: 0.3rem;">
+                            * Baseline là giá trị Creatinine ổn định trước đó (thường là giá trị thấp nhất trong 7 ngày trước)
+                        </span>
+                    </div>
+                    <button type="button" id="btn-reset" class="reset-btn">🔄 Làm mới dữ liệu</button>
+                </div>
+
+                <div class="panel sticky-panel">
+                    <div class="panel-title"><span>📊 Kết quả Tính toán & Phân tầng</span></div>
+                    
+                    <div class="result-box">
+                        <h4>
+                            <span>Độ thanh thải Creatinine (Cockcroft-Gault)</span>
+                            <span id="out-cg-val" class="big-number">-</span>
+                        </h4>
+                        <div class="sub-text">
+                            <strong>Trọng lượng áp dụng:</strong> <span id="out-weight-type">-</span> (<span id="out-weight-val">-</span> kg)<br>
+                            <span id="out-weight-reason" style="color: #059669;">-</span>
+                        </div>
+                    </div>
+
+                    <div class="result-box" style="border-left-color: #8b5cf6;">
+                        <h4>
+                            <span>Mức lọc cầu thận (CKD-EPI 2021)</span>
+                            <span id="out-epi-val" class="big-number" style="color: #8b5cf6;">-</span>
+                        </h4>
+                        <div class="sub-text">
+                            Đơn vị chuẩn: mL/min/1.73m² (Dùng để phân độ CKD).<br>
+                            <strong>eGFR tuyệt đối (Khử BSA):</strong> <span id="out-epi-abs" style="font-weight: 700; color: var(--text-main);">-</span> mL/min. <br>
+                            <em>*Khuyến cáo dùng eGFR tuyệt đối hoặc CrCl để chỉnh liều thuốc ở bệnh nhân có thể trạng bất thường (BSA = <span id="out-bsa">-</span> m²).</em>
+                        </div>
+                    </div>
+
+                    <div class="panel-title" style="margin-top: 1.5rem; font-size: 1rem;"><span>⚠️ Phân tầng & Cảnh báo Lâm sàng</span></div>
+                    
+                    <div id="out-kdigo-box" class="kdigo-risk risk-low">
+                        Đang phân tích rủi ro CKD...
+                    </div>
+                    <!-- AKI Staging Result -->
+                    <div id="aki-result-box" class="aki-result" style="display: none; margin: 1rem 0; padding: 1rem; border-radius: 8px; border: 2px solid var(--border-color); background: var(--bg-card);">
+                        <h3 style="margin: 0 0 0.5rem 0; font-size: 1.1rem;">🚨 Phân độ AKI theo KDIGO</h3>
+                        <div id="aki-stage" style="font-size: 1.5rem; font-weight: 700; margin: 0.5rem 0;"></div>
+                        <div id="aki-criteria" style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem;"></div>
+                        <div id="aki-recommendation" style="margin-top: 1rem; padding: 0.75rem; background: var(--bg-input); border-radius: 4px; font-size: 0.9rem;"></div>
+                    </div>
+                    <div id="med-alerts" class="med-alert-box" style="display: none;">
+                        <h4>⛔ Cảnh báo Chỉnh liều Thuốc:</h4>
+                        <ul id="med-alerts-list">
+                            </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Khai báo các element
+            const inAge = document.getElementById('ren-age');
+            const inGender = document.getElementById('ren-gender');
+            const inHeight = document.getElementById('ren-height');
+            const inWeight = document.getElementById('ren-weight');
+            const inCr = document.getElementById('ren-cr');
+            const inCrUnit = document.getElementById('ren-cr-unit'); // Thêm ô chọn đơn vị
+            const inAcr = document.getElementById('ren-acr');
+
+            const outCgVal = document.getElementById('out-cg-val');
+            const outWeightType = document.getElementById('out-weight-type');
+            const outWeightVal = document.getElementById('out-weight-val');
+            const outWeightReason = document.getElementById('out-weight-reason');
+            
+            const outEpiVal = document.getElementById('out-epi-val');
+            const outEpiAbs = document.getElementById('out-epi-abs');
+            const outBsa = document.getElementById('out-bsa');
+            
+            const boxKdigo = document.getElementById('out-kdigo-box');
+            const boxMedAlerts = document.getElementById('med-alerts');
+            const listMedAlerts = document.getElementById('med-alerts-list');
+
+            // 2. Hàm tính toán chính
+            function calculateRenal() {
+                const age = parseFloat(inAge.value) || 0;
+                const gender = inGender.value;
+                const height = parseFloat(inHeight.value) || 0;
+                const weight = parseFloat(inWeight.value) || 0;
+                const acr = inAcr.value;
+
+                // --- FIX LỖI NGHIÊM TRỌNG: QUY ĐỔI CREATININE VỀ mg/dL ---
+                let cr = parseFloat(inCr.value) || 0;
+                if (inCrUnit.value === 'umolL') {
+                    cr = cr / 88.4; // Luôn chuẩn hóa về mg/dL trước khi tính toán
+                }
+                // ---------------------------------------------------------
+
+                if (!age || !height || !weight || !cr) return;
+
+                // 2.1. TÍNH TOÁN CÂN NẶNG & LOGIC CHỌN CÂN NẶNG
+                const bmi = weight / Math.pow(height / 100, 2);
+                let ibw = gender === 'male' ? 50 + 0.9 * (height - 152.4) : 45.5 + 0.9 * (height - 152.4);
+                let adjBw = ibw + 0.4 * (weight - ibw);
+
+                let calcWeight = weight;
+                let weightType = "";
+                let weightReason = "";
+
+                if (weight < ibw) {
+                    calcWeight = weight;
+                    weightType = "Cân nặng thực tế (Actual BW)";
+                    weightReason = "Bệnh nhân có cân nặng < IBW, hệ thống tự động chọn cân nặng thực tế để tránh đánh giá quá mức (overestimate) chức năng thận.";
+                } else if (weight > 1.2 * ibw || bmi >= 25) {
+                    calcWeight = adjBw;
+                    weightType = "Cân nặng hiệu chỉnh (AdjBW)";
+                    weightReason = `Bệnh nhân thừa cân/béo phì (BMI = ${bmi.toFixed(1)}), hệ thống sử dụng AdjBW để tránh sai số giả tạo chức năng thận.`;
+                } else {
+                    calcWeight = ibw;
+                    weightType = "Cân nặng lý tưởng (IBW)";
+                    weightReason = "Bệnh nhân có thể trạng bình thường, sử dụng IBW theo thực hành lâm sàng chuẩn.";
+                }
+
+                // 2.2. COCKCROFT-GAULT
+                let crcl = ((140 - age) * calcWeight) / (72 * cr);
+                if (gender === 'female') crcl *= 0.85;
+
+                outCgVal.textContent = `${crcl.toFixed(1)} mL/min`;
+                outWeightType.textContent = weightType;
+                outWeightVal.textContent = calcWeight.toFixed(1);
+                outWeightReason.textContent = weightReason;
+
+                // 2.3. CKD-EPI 2021 (Đã sửa lại công thức cho gọn và chuẩn toán học)
+                const k = gender === 'female' ? 0.7 : 0.9;
+                const a = gender === 'female' ? -0.241 : -0.302;
+                
+                // Không cần if (cr / k > 1) nữa, vì Math.min(..., 1) sẽ tự bằng 1 nếu cr/k > 1
+                let epi = 142 * Math.pow(Math.min(cr / k, 1), a) 
+                            * Math.pow(Math.max(cr / k, 1), -1.200) 
+                            * Math.pow(0.9938, age);
+                if (gender === 'female') epi *= 1.012;
+
+                outEpiVal.textContent = epi.toFixed(1);
+
+                // 2.4. DIỆN TÍCH BỀ MẶT CƠ THỂ (DuBois) & KHỬ CHỈ SỐ HÓA BSA
+                const bsa = 0.007184 * Math.pow(height, 0.725) * Math.pow(weight, 0.425);
+                const epiAbsolute = epi * (bsa / 1.73);
+
+                outBsa.textContent = bsa.toFixed(2);
+                outEpiAbs.textContent = epiAbsolute.toFixed(1);
+
+                // 2.5. PHÂN TẦNG KDIGO 2024
+                let gStage = "";
+                if (epi >= 90) gStage = "G1";
+                else if (epi >= 60) gStage = "G2";
+                else if (epi >= 45) gStage = "G3a";
+                else if (epi >= 30) gStage = "G3b";
+                else if (epi >= 15) gStage = "G4";
+                else gStage = "G5";
+
+                let riskLevel = "low";
+                let riskText = "Nguy cơ THẤP";
+
+                if (gStage === "G1" || gStage === "G2") {
+                    if (acr === "A1") { riskLevel = "low"; riskText = "Nguy cơ THẤP (Theo dõi hàng năm)"; }
+                    if (acr === "A2") { riskLevel = "mod"; riskText = "Nguy cơ TRUNG BÌNH (Theo dõi mỗi 1 năm)"; }
+                    if (acr === "A3") { riskLevel = "high"; riskText = "Nguy cơ CAO (Theo dõi mỗi 6 tháng)"; }
+                } else if (gStage === "G3a") {
+                    if (acr === "A1") { riskLevel = "mod"; riskText = "Nguy cơ TRUNG BÌNH (Theo dõi mỗi 1 năm)"; }
+                    if (acr === "A2") { riskLevel = "high"; riskText = "Nguy cơ CAO (Theo dõi mỗi 6 tháng)"; }
+                    if (acr === "A3") { riskLevel = "vhigh"; riskText = "Nguy cơ RẤT CAO (Theo dõi mỗi 3-4 tháng & Hội chẩn CK Thận)"; }
+                } else if (gStage === "G3b") {
+                    if (acr === "A1") { riskLevel = "high"; riskText = "Nguy cơ CAO (Theo dõi mỗi 6 tháng)"; }
+                    else { riskLevel = "vhigh"; riskText = "Nguy cơ RẤT CAO (Hội chẩn Chuyên khoa Thận)"; }
+                } else {
+                    riskLevel = "vhigh"; riskText = "Nguy cơ RẤT CAO (Chuẩn bị điều trị thay thế thận)";
+                }
+
+                boxKdigo.className = `kdigo-risk risk-${riskLevel}`;
+                boxKdigo.innerHTML = `CKD Giai đoạn: ${gStage}${acr.replace('A','-A')} <br> ${riskText}`;
+
+                // 2.6. CẢNH BÁO MỐC CHỐNG CHỈ ĐỊNH THUỐC
+                let alerts = [];
+                let refValue = Math.min(crcl, epiAbsolute); 
+
+                if (refValue < 60) {
+                    alerts.push("<strong>DOACs (Kháng đông uống mới):</strong> Cần chỉnh giảm liều Rivaroxaban, Apixaban, Dabigatran theo eGFR tuyệt đối.");
+                }
+                if (refValue < 45) {
+                    alerts.push("<strong>SGLT2i:</strong> Không khuyến cáo khởi trị mới với mục đích kiểm soát đường huyết (có thể duy trì để bảo vệ thận tùy guideline).");
+                    alerts.push("<strong>Metformin:</strong> Giảm nửa liều (Tối đa 1000 mg/ngày).");
+                }
+                if (refValue < 30) {
+                    alerts.push("<strong>⛔ CHỐNG CHỈ ĐỊNH Metformin:</strong> Nguy cơ toan Lactic cao.");
+                    alerts.push("<strong>⛔ CHỐNG CHỈ ĐỊNH:</strong> Spironolactone, LMWH liều điều trị (Enoxaparin). Chuyển sang Heparin không phân đoạn nếu cần kháng đông.");
+                }
+                if (refValue < 15) {
+                    alerts.push("<strong>Thuốc giảm đau:</strong> Tránh tuyệt đối NSAIDs. Cẩn trọng với hình tích lũy độc tính của Morphine/Codein.");
+                }
+
+                if (alerts.length > 0) {
+                    boxMedAlerts.style.display = "block";
+                    listMedAlerts.innerHTML = alerts.map(a => `<li>${a}</li>`).join('');
+                } else {
+                    boxMedAlerts.style.display = "none";
+                }
+                calculateAKI(cr);
+            }
+
+            // 3. Sự kiện khi thay đổi ĐƠN VỊ Creatinine (Chỉ cập nhật giao diện)
+            inCrUnit.addEventListener('change', function () {
+                const currentVal = parseFloat(inCr.value);
+                if (isNaN(currentVal) || currentVal === 0) return;
+
+                if (this.value === 'umolL') {
+                    inCr.value = (currentVal * 88.4).toFixed(1);
+                    inCr.step = '0.1';
+                } else {
+                    inCr.value = (currentVal / 88.4).toFixed(2);
+                    inCr.step = '0.01';
+                }
+                // Gọi lại hàm tính toán vì giá trị ô input đã bị thay đổi bởi script
+                calculateRenal(); 
+            });
+
+            // 4. Gán sự kiện input/change cho tất cả các ô khác (Trừ ô select đơn vị để tránh chạy 2 lần)
+            document.querySelectorAll('input, select').forEach(el => {
+                if (el.id !== 'ren-cr-unit') {
+                    el.addEventListener('input', calculateRenal);
+                    el.addEventListener('change', calculateRenal);
+                }
+            });
+
+            // 5. Xử lý nút Reset
+            const btnReset = document.getElementById('btn-reset');
+            if (btnReset) {
+                btnReset.addEventListener('click', () => {
+                    inAge.value = "65"; inGender.selectedIndex = 0;
+                    inHeight.value = "165"; inWeight.value = "70"; 
+                    inCr.value = "1.5"; inCrUnit.value = "mgdL"; // Reset về mg/dL
+                    inAcr.selectedIndex = 0;
+                    calculateRenal();
+                    document.getElementById('aki-baseline').value = "1.0";
+                    document.getElementById('aki-baseline-unit').value = "mgdL";
+                    document.getElementById('aki-48h').checked = false;
+                    document.getElementById('aki-rRT').checked = false;
+                });
+            }
+
+            // Chạy lần đầu khi load trang
+            calculateRenal();
+
+                    // 7. PHÂN ĐỘ AKI THEO KDIGO (Đã sửa lỗi quy đổi đơn vị)
+            function calculateAKI(currentCrMgDL) {
+                const baselineInput = parseFloat(document.getElementById('aki-baseline').value);
+                const baselineUnit = document.getElementById('aki-baseline-unit').value;
+                const is48h = document.getElementById('aki-48h').checked;
+                const isRRT = document.getElementById('aki-rRT').checked;
+                
+                const akiBox = document.getElementById('aki-result-box');
+                const akiStage = document.getElementById('aki-stage');
+                const akiCriteria = document.getElementById('aki-criteria');
+                const akiRecommendation = document.getElementById('aki-recommendation');
+                
+                if (!baselineInput || baselineInput <= 0 || !currentCrMgDL || currentCrMgDL <= 0) {
+                    akiBox.style.display = 'none';
+                    return;
+                }
+                
+                // Quy đổi baseline về mg/dL (currentCrMgDL đã là mg/dL từ hàm calculateRenal truyền vào)
+                let baselineMgDL = baselineUnit === 'umolL' ? baselineInput / 88.4 : baselineInput;
+                let currentMgDL = currentCrMgDL; 
+                
+                const ratio = currentMgDL / baselineMgDL;
+                const absoluteIncrease = currentMgDL - baselineMgDL;
+                
+                let stage = '';
+                let stageClass = '';
+                let criteria = '';
+                let recommendation = '';
+                
+                if (isRRT) {
+                    stage = 'Giai đoạn 3';
+                    stageClass = 'aki-stage-3';
+                    criteria = 'Bệnh nhân đang được lọc máu (RRT)';
+                    recommendation = '<strong>🚨 AKI Giai đoạn 3:</strong> Cần hội chẩn Chuyên khoa Thận ngay. Đánh giá chỉ định lọc máu, điều trị nguyên nhân, theo dõi sát điện giải và cân bằng dịch.';
+                } else if ((currentMgDL >= 4.0 && (absoluteIncrease >= 0.5 || ratio >= 1.5)) || ratio >= 3.0) { 
+                    stage = 'Giai đoạn 3';
+                    stageClass = 'aki-stage-3';
+                    criteria = currentMgDL >= 4.0 
+                        ? `Creatinine ≥ 4.0 mg/dL (${(currentMgDL * 88.4).toFixed(1)} μmol/L)` 
+                        : `Tăng ≥ 3.0 lần so với baseline (${ratio.toFixed(2)}x)`;
+                    recommendation = '<strong> AKI Giai đoạn 3:</strong> Nguy cơ cao. Hội chẩn Thận khẩn cấp. Ngừng tất cả thuốc độc thận. Đánh giá chỉ định lọc máu. Theo dõi sát mỗi 4-6 giờ.';
+                } else if (ratio >= 2.0) {
+                    stage = 'Giai đoạn 2';
+                    stageClass = 'aki-stage-2';
+                    criteria = `Tăng ${ratio.toFixed(2)} lần so với baseline (tiêu chuẩn: ≥ 2.0-2.9 lần)`;
+                    recommendation = '<strong>⚠️ AKI Giai đoạn 2:</strong> Cần nhập viện hoặc theo dõi sát. Đánh giá nguyên nhân (giảm thể tích, tắc nghẽn, độc thận). Chỉnh liều thuốc theo chức năng thận. Theo dõi Creatinine mỗi 12-24 giờ.';
+                } else if ((is48h && absoluteIncrease >= 0.3) || ratio >= 1.5) {
+                    stage = 'Giai đoạn 1';
+                    stageClass = 'aki-stage-1';
+                    if (is48h && absoluteIncrease >= 0.3) {
+                        criteria = `Tăng tuyệt đối ${absoluteIncrease.toFixed(2)} mg/dL trong 48h (tiêu chuẩn: ≥ 0.3 mg/dL)`;
+                    } else {
+                        criteria = `Tăng ${ratio.toFixed(2)} lần so với baseline (tiêu chuẩn: ≥ 1.5-1.9 lần)`;
+                    }
+                    recommendation = '<strong>⚡ AKI Giai đoạn 1:</strong> Theo dõi sát. Đánh giá nguyên nhân (prerenal, renal, postrenal). Đảm bảo đủ dịch, tránh thuốc độc thận. Kiểm tra lại Creatinine trong 24-48 giờ.';
+                } else {
+                    stage = 'Không có AKI';
+                    stageClass = 'aki-no-aki';
+                    criteria = `Tỷ lệ ${ratio.toFixed(2)}x (dưới ngưỡng AKI)`;
+                    recommendation = '<strong>✅ Không có AKI:</strong> Chức năng thận ổn định. Tiếp tục theo dõi định kỳ.';
+                }
+                
+                akiBox.style.display = 'block';
+                akiBox.className = `aki-result ${stageClass}`;
+                akiStage.textContent = stage;
+                akiStage.className = stageClass;
+                akiCriteria.textContent = criteria;
+                akiRecommendation.innerHTML = recommendation;
+            }
+
+            // Thêm event listener cho các input AKI
+            document.getElementById('aki-baseline').addEventListener('input', () => calculateRenal());
+            document.getElementById('aki-baseline-unit').addEventListener('change', function() {
+                const baselineInput = document.getElementById('aki-baseline');
+                const currentVal = parseFloat(baselineInput.value);
+                if (isNaN(currentVal) || currentVal === 0) return;
+                
+                if (this.value === 'umolL') {
+                    baselineInput.value = (currentVal * 88.4).toFixed(1);
+                } else {
+                    baselineInput.value = (currentVal / 88.4).toFixed(2);
+                }
+                calculateRenal();
+            });
+            document.getElementById('aki-48h').addEventListener('change', () => calculateRenal());
+            document.getElementById('aki-rRT').addEventListener('change', () => calculateRenal());
+
+            // 7. Dark Mode
+            const themeToggleBtn = document.getElementById('theme-toggle-btn');
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', () => {
+                    if (document.documentElement.getAttribute('data-theme') === 'dark') {
+                        document.documentElement.removeAttribute('data-theme');
+                        localStorage.setItem('theme', 'light');
+                    } else {
+                        document.documentElement.setAttribute('data-theme', 'dark');
+                        localStorage.setItem('theme', 'dark');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
