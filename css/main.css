@@ -1,350 +1,352 @@
 /* ==========================================================================
-   LIÊN KẾT CÁC MODULES CON (BẮT BUỘC ĐẶT TRÊN CÙNG FILE)
-   ========================================================================== */
+   CLINIPORTAL - CLINICAL DASHBOARD UI
+========================================================================== */
+
 @import "reset.css";
 @import "components/header.css";
 @import "components/footer.css";
 
 /* ==========================================================================
-   1. HỆ THỐNG BIẾN MÀU SẮC ĐA GIAO DIỆN (THEMING TOKENS)
-   ========================================================================== */
-:root {
-    /* PHỐI MÀU 1: NORDIC HOSPITAL (LIGHT MODE) */
-    --primary-color: #0284c7;       /* Xanh Sky Blue chuẩn y tế chuyên nghiệp */
-    --primary-hover: #0369a1;
-    --bg-light: #f1f5f9;            /* Nền xám ánh xanh dịu mát, làm nổi bật Card */
-    --card-bg: #ffffff;             /* Card trắng tinh tế */
-    --text-main: #1e293b;           /* Chữ chính độ tương phản cao */
-    --text-muted: #64748b;          /* Chữ phụ, chú thích */
-    --border-color: #e2e8f0;        /* Viền mảnh phẳng hiện đại thay cho đổ bóng đậm */
-    
-    /* Thiết lập Sidebar tối trong cấu trúc Light Mode (Tạo điểm nhấn mạnh mẽ) */
-    --sidebar-bg: #0f172a;          /* Slate Dark sâu thẳm */
-    --sidebar-text: #94a3b8;
-    --sidebar-text-active: #38bdf8;
-    --sidebar-item-hover: #1e293b;
-    --sidebar-border: #1e293b;
+   LOCAL FONTS EMBED (INTER VARIABLE FONT)
+   Điều chỉnh đường dẫn trỏ vào thư mục assets/fonts và dùng định dạng ttf
+========================================================================== */
 
-    /* Cảnh báo ngữ nghĩa lâm sàng (Semantic Colors) */
-    --danger-color: #ef4444;        /* Đỏ nguy cơ cao / Sepsis */
-    --warning-color: #f59e0b;       /* Vàng theo dõi / Chú ý */
-    --success-color: #10b981;       /* Xanh an toàn / Bình thường */
-    
-    /* Khối yêu thích */
-    --fav-bg: #fef3c7;
-    --fav-text: #92400e;
-    --fav-border: #fde68a;
-
-    /* Cấu trúc & Hiệu ứng */
-    --header-height: 70px;
-    --sidebar-width: 260px;
-    --radius-md: 12px;
-    --radius-sm: 8px;
-    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+@font-face {
+  font-family: 'Inter';
+  src: url('../assets/fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+  font-weight: 100 900; /* Font biến thể hỗ trợ dải weight từ 100 đến 900 */
+  font-style: normal;
+  font-display: swap;
 }
 
-[data-theme="dark"] {
-    /* PHỐI MÀU 2: MIDNIGHT DUTY (DARK MODE TIÊU CHUẨN TRỰC ĐÊM) */
-    --primary-color: #38bdf8;       /* Cyan Neon nổi bật trên nền tối */
-    --primary-hover: #0ea5e9;
-    --bg-light: #0b0f19;            /* Deep Navy sâu thẳm, triệt tiêu ánh sáng xanh */
-    --card-bg: #1e293b;             /* Slate Midnight cho Card và Header */
-    --text-main: #f8fafc;           /* Chữ trắng nhạt tránh lóa mắt */
-    --text-muted: #94a3b8;
-    --border-color: #334155;
-    
-    /* Thiết lập Sidebar đồng bộ trong cấu trúc Dark Mode */
-    --sidebar-bg: #1e293b;
-    --sidebar-text: #94a3b8;
-    --sidebar-text-active: #38bdf8;
-    --sidebar-item-hover: #0b0f19;
-    --sidebar-border: #334155;
-
-    /* Khối yêu thích trong Dark Mode */
-    --fav-bg: #2d2618;
-    --fav-text: #f59e0b;
-    --fav-border: #4d3d1e;
+@font-face {
+  font-family: 'Inter';
+  src: url('../assets/fonts/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
 }
 
 /* ==========================================================================
-   4. CẤU TRÚC LAYOUT & SIDEBAR KHÔNG GIAN LÂM SÀNG
-   ========================================================================== */
-.app-container {
-    display: flex;
-    margin-top: var(--header-height);
-    min-height: calc(100vh - var(--header-height));
+   COLOR SYSTEM & VARIABLES
+========================================================================== */
+
+:root {
+  --primary-color: #0284c7;
+  --primary-hover: #0369a1;
+  --bg-light: #f1f5f9;
+  --card-bg: #ffffff;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+
+  --sidebar-bg: #0f172a;
+  --sidebar-text: #94a3b8;
+  --sidebar-text-active: #38bdf8;
+  --sidebar-item-hover: #1e293b;
+
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --danger-color: #ef4444;
+
+  --header-height: 70px;
+  --sidebar-width: 260px;
+  --radius-md: 18px;
+  --radius-sm: 10px;
+  --transition: all 0.25s ease;
 }
 
+/* DARK MODE */
+[data-theme="dark"] {
+  --primary-color: #38bdf8;
+  --bg-light: #0b0f19;
+  --card-bg: #1e293b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-color: #334155;
+  --sidebar-bg: #020617;
+}
+
+/* ==========================================================================
+   GLOBAL STYLES
+========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-light);
+  color: var(--text-main);
+  font-family: 'Inter', Segoe UI, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================================================
+   LAYOUT STRUCTURE
+========================================================================== */
+
+.app-container {
+  display: flex;
+  margin-top: var(--header-height);
+  min-height: calc(100vh - var(--header-height));
+}
+
+/* ==========================================================================
+   SIDEBAR NAVIGATION
+========================================================================== */
+
 .app-sidebar {
-    position: fixed;
-    top: var(--header-height);
-    left: -100%;
-    bottom: 0;
-    width: var(--sidebar-width);
-    background-color: var(--sidebar-bg);
-    border-right: 1px solid var(--sidebar-border);
-    padding: 1.25rem 0.75rem;
-    z-index: 999;
-    transition: left var(--transition), background-color 0.3s ease;
+  position: fixed;
+  top: var(--header-height);
+  bottom: 0;
+  left: -100%;
+  width: var(--sidebar-width);
+  background: var(--sidebar-bg);
+  padding: 1rem;
+  transition: var(--transition);
+  z-index: 999;
 }
 
 .app-sidebar.active {
-    left: 0;
+  left: 0;
 }
 
 .sidebar-nav ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
 .sidebar-nav a {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.7rem 1rem;
-    border-radius: var(--radius-sm);
-    font-weight: 500;
-    font-size: 0.95rem;
-    color: var(--sidebar-text);
-    transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.8rem 1rem;
+  border-radius: var(--radius-sm);
+  color: var(--sidebar-text);
+  text-decoration: none;
+  transition: var(--transition);
 }
 
-.sidebar-nav a:hover {
-    background-color: var(--sidebar-item-hover);
-    color: #ffffff;
-}
-
+.sidebar-nav a:hover,
 .sidebar-nav a.active {
-    background-color: var(--sidebar-item-hover);
-    color: var(--sidebar-text-active);
-    font-weight: 600;
+  background: var(--sidebar-item-hover);
+  color: var(--sidebar-text-active);
 }
 
-.main-wrapper {
-    flex: 1;
-    width: 100%;
-    padding: 1rem;
-    overflow-x: hidden;
+/* Sidebar SVG Icons Customization */
+.menu-icon {
+  width: 18px;
+  height: 18px;
+  opacity: 0.8;
+  transition: var(--transition);
+}
+
+.sidebar-nav a:hover .menu-icon,
+.sidebar-nav a.active .menu-icon {
+  opacity: 1;
 }
 
 /* ==========================================================================
-   5. HERO SECTION: DASHBOARD TIỆN ÍCH VUỐT NGANG (MOBILE OPTIMIZED)
-   ========================================================================== */
+   MAIN CONTENT AREA
+========================================================================== */
+
+.main-wrapper {
+  flex: 1;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.main-content-grid {
+  max-width: 1400px;
+  margin: auto;
+}
+
+/* HERO SECTION */
 .hero-dashboard {
-    background-color: var(--card-bg);
-    border-radius: var(--radius-md);
-    padding: 1.25rem;
-    margin-bottom: 1.5rem;
-    border: 1px solid var(--border-color);
-    transition: background-color 0.3s ease;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .hero-intro h1 {
-    font-size: 1.35rem;
-    font-weight: 700;
-    margin-bottom: 0.35rem;
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin: 0 0 0.4rem 0;
 }
 
 .hero-intro p {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-bottom: 1.25rem;
+  color: var(--text-muted);
+  margin: 0;
 }
 
-.block-title {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    color: var(--text-muted);
-    margin-bottom: 0.6rem;
-}
-
-.hero-favorites, .hero-quick-nav {
-    margin-bottom: 1rem;
-}
-
-/* Hỗ trợ cơ chế vuốt ngang mượt mà trên màn hình cảm ứng điện thoại */
-.favorites-list, .quick-tags-container {
-    display: flex;
-    gap: 0.5rem;
-    overflow-x: auto;
-    padding-bottom: 0.4rem;
-    -webkit-overflow-scrolling: touch;
-}
-
-.favorites-list::-webkit-scrollbar, 
-.quick-tags-container::-webkit-scrollbar {
-    display: none; /* Ẩn thanh cuộn để tối ưu thẩm mỹ phẳng */
-}
-
-.fav-tag {
-    background-color: var(--fav-bg);
-    color: var(--fav-text);
-    border: 1px solid var(--fav-border);
-    padding: 0.45rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    white-space: nowrap;
-    display: inline-flex;
-    align-items: center;
-}
-
-.quick-tag-btn {
-    background-color: var(--bg-light);
-    border: 1px solid var(--border-color);
-    color: var(--text-main);
-    padding: 0.45rem 0.8rem;
-    border-radius: var(--radius-sm);
-    font-size: 0.85rem;
-    font-weight: 500;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: var(--transition);
-}
-
-.quick-tag-btn:hover {
-    background-color: var(--primary-color);
-    color: #ffffff;
-    border-color: var(--primary-color);
-}
-
-/* ==========================================================================
-   6. MAIN CONTENT: MÔ HÌNH LƯỚI ĐÁP ỨNG ĐA TẦNG (RESPONSIVE GRID)
-   ========================================================================== */
-.main-content-grid {
-    margin-bottom: 2rem;
-}
-
+/* SECTION CARD GROUPS */
 .section-heading {
-    font-size: 1.15rem;
-    margin-bottom: 1rem;
-    font-weight: 700;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
 }
 
-.category-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 0.85rem;
+.group-container {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 22px;
+  padding: 1.4rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
 }
 
-.category-card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    padding: 1.25rem;
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-    transition: var(--transition);
-}
-
-.category-card:hover {
-    border-color: var(--primary-color);
-}
-
-.card-header-icon {
-    font-size: 1.75rem;
-    background-color: var(--bg-light);
-    width: 52px;
-    height: 52px;
-    border-radius: var(--radius-sm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
-.card-content h3 {
-    font-size: 1.05rem;
-    margin-bottom: 0.35rem;
-    font-weight: 600;
-}
-
-.card-content p {
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    margin-bottom: 0.75rem;
-}
-
-.card-action-link {
-    display: inline-block;
-    font-size: 0.88rem;
-    font-weight: 600;
-    color: var(--primary-color);
+.group-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin: 0 0 1.2rem 0;
 }
 
 /* ==========================================================================
-   8. MEDIA QUERIES: ĐIỀU CHỈNH GIAO DIỆN MÀN HÌNH LỚN (DESKTOP > 768px)
-   ========================================================================== */
-@media (min-width: 768px) {
-    /* Đưa Sidebar cố định bên trái màn hình */
-    .app-sidebar {
-        left: 0;
-        position: sticky;
-        height: calc(100vh - var(--header-height));
-    }
-
-    .main-wrapper {
-        padding: 1.75rem;
-        max-width: calc(100% - var(--sidebar-width));
-    }
-
-    .hero-dashboard {
-        padding: 1.75rem;
-    }
-
-    .hero-intro h1 {
-        font-size: 1.75rem;
-    }
-
-    /* Kích hoạt lưới 2 cột cho danh mục chính */
-    .category-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.25rem;
-    }
-}
-
-/* AKI Staging Colors */
-.aki-stage-1 { 
-    color: #f59e0b; 
-    border-color: #f59e0b !important;
-    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), transparent) !important;
-}
-.aki-stage-2 { 
-    color: #f97316; 
-    border-color: #f97316 !important;
-    background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), transparent) !important;
-}
-.aki-stage-3 { 
-    color: #dc2626; 
-    border-color: #dc2626 !important;
-    background: linear-gradient(135deg, rgba(220, 38, 38, 0.15), transparent) !important;
-}
-.aki-no-aki {
-    color: #10b981;
-    border-color: #10b981 !important;
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), transparent) !important;
-}
-
-/* ==========================================================================
-9. TÙY CHỈNH KHOẢNG CÁCH GIỮA CÁC SECTION LỚN
+   CLINICAL TOOL CARDS GRID
 ========================================================================== */
 
-/* Tăng khoảng cách giữa các khối Section chính (ví dụ: Nhiễm trùng vs Thận) */
-.main-content-grid > div {
-    margin-bottom: 1.25rem;
-}
-
-/* Loại bỏ margin ở phần tử cuối cùng để tránh dư thừa ở cuối trang */
-.main-content-grid > div:last-child {
-    margin-bottom: 0;
-}
-
-/* Tăng khoảng cách giữa các card trong cùng 1 nhóm (lưới danh mục) */
 .category-grid {
-    gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.tool-card {
+  display: flex;
+  gap: 1rem;
+  padding: 1.15rem;
+  background: linear-gradient(145deg, var(--card-bg), var(--bg-light));
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  transition: var(--transition);
+}
+
+.tool-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary-color);
+  box-shadow: 0 12px 30px rgba(2, 132, 199, 0.12);
+}
+
+.tool-icon {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  background: var(--bg-light);
+  border-radius: 16px;
+}
+
+.tool-content {
+  flex: 1;
+}
+
+.tool-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.tool-content h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.tool-content p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0.5rem 0 0.8rem;
+}
+
+/* TOOL BADGE STATUS */
+.tool-status {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 30px;
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+.tool-status.active {
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--success-color);
+}
+
+.tool-status.dev {
+  background: rgba(245, 158, 11, 0.12);
+  color: var(--warning-color);
+}
+
+/* TOOL CARD FOOTER */
+.tool-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tool-category {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.tool-footer a {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.tool-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   RESPONSIVE LAYOUT (MEDIA QUERIES)
+========================================================================== */
+
+@media (min-width: 768px) {
+  .app-sidebar {
+    left: 0;
+    position: sticky;
+    height: calc(100vh - var(--header-height));
+  }
+
+  .main-wrapper {
+    max-width: calc(100% - var(--sidebar-width));
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tool-card {
+    padding: 1rem;
+  }
+
+  .hero-intro h1 {
+    font-size: 1.3rem;
+  }
 }

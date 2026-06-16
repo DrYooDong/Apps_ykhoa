@@ -163,8 +163,8 @@
                     
                     <div class="grid-2-col">
                         <div class="input-group">
-                            <label>Tuổi</label>
-                            <input type="number" id="ren-age" value="65" min="18" max="120">
+                            <label>Tuổi (hoặc năm sinh)</label>
+                            <input type="number" id="ren-age" value="65" min="1" max="2050" placeholder="VD: 65 hoặc 1961">
                         </div>
                         <div class="input-group">
                             <label>Giới tính</label>
@@ -320,13 +320,19 @@
 
             // 2. Hàm tính toán chính
             function calculateRenal() {
-                const age = parseFloat(inAge.value) || 0;
+                let age = parseFloat(inAge.value) || 0;
+                // Tự động nhận diện năm sinh
+                if (age >= 1900 && age <= new Date().getFullYear()) {
+                        age = new Date().getFullYear() - age;
+                }
                 const gender = inGender.value;
                 const height = parseFloat(inHeight.value) || 0;
                 const weight = parseFloat(inWeight.value) || 0;
                 const acr = inAcr.value;
+                
+                
 
-                // --- FIX LỖI NGHIÊM TRỌNG: QUY ĐỔI CREATININE VỀ mg/dL ---
+                // QUY ĐỔI CREATININE VỀ mg/dL ---
                 let cr = parseFloat(inCr.value) || 0;
                 if (inCrUnit.value === 'umolL') {
                     cr = cr / 88.4; // Luôn chuẩn hóa về mg/dL trước khi tính toán
@@ -487,7 +493,7 @@
             // Chạy lần đầu khi load trang
             calculateRenal();
 
-                    // 7. PHÂN ĐỘ AKI THEO KDIGO (Đã sửa lỗi quy đổi đơn vị)
+            // 6. PHÂN ĐỘ AKI THEO KDIGO (Đã sửa lỗi quy đổi đơn vị)
             function calculateAKI(currentCrMgDL) {
                 const baselineInput = parseFloat(document.getElementById('aki-baseline').value);
                 const baselineUnit = document.getElementById('aki-baseline-unit').value;
@@ -590,6 +596,23 @@
                 });
             }
         });
+        // 4. Gán sự kiện input/change cho tất cả các ô khác (Nằm trọn vẹn bên trong DOMContentLoaded)
+            document.querySelectorAll('input, select').forEach(el => {
+                if (el.id !== 'ren-cr-unit') {
+                    el.addEventListener('input', () => {
+                        const ageVal = parseInt(inAge.value) || 0;
+                        // Nếu đang gõ dở năm sinh (lớn hơn 120), không gọi hàm tính toán để tránh nhảy số âm
+                        if (ageVal > 120) return;
+                        calculateRenal();
+                    });
+
+                    el.addEventListener('change', () => {
+                        const ageVal = parseInt(inAge.value) || 0;
+                        if (ageVal > 120) return;
+                        calculateRenal();
+                    });
+                }
+            });
     </script>
 </body>
 </html>
