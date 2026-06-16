@@ -40,10 +40,11 @@
   --text-muted: #64748b;
   --border-color: #e2e8f0;
 
-  --sidebar-bg: #0f172a;
-  --sidebar-text: #94a3b8;
-  --sidebar-text-active: #38bdf8;
-  --sidebar-item-hover: #1e293b;
+  --sidebar-bg: #ffffff;
+  --sidebar-text: #475569;
+  --sidebar-text-active: #0284c7;
+  --sidebar-item-hover: #f1f5f9;
+  --sidebar-border: #e2e8f0;
 
   --success-color: #10b981;
   --warning-color: #f59e0b;
@@ -64,7 +65,11 @@
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   --border-color: #334155;
-  --sidebar-bg: #020617;
+  --sidebar-bg: #1e293b;
+  --sidebar-text: #94a3b8;
+  --sidebar-text-active: #38bdf8;
+  --sidebar-item-hover: #334155;
+  --sidebar-border: #334155;
 }
 
 /* ==========================================================================
@@ -107,6 +112,7 @@ body {
   padding: 1rem;
   transition: var(--transition);
   z-index: 999;
+  border-right: 1px solid var(--sidebar-border);
 }
 
 .app-sidebar.active {
