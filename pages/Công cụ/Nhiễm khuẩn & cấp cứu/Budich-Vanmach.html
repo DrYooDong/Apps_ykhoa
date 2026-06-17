@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CDSS Sốc & Vận mạch Chuyên sâu - CliniPortal</title>
+    <link rel="stylesheet" href="./../../css/reset.css">
     <link rel="stylesheet" href="../../../css/main.css">
     <style>
         .workspace-container { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1rem; align-items: start; }
@@ -51,7 +52,11 @@
         <div class="header-left">
             <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
             <div class="logo-brand"><span class="logo-icon">🩺</span><span class="logo-text">CliniPortal</span></div>
+            <button class="btn-back" onclick="goBack()">
+            <span class="icon">&larr;</span> Quay lại
+        </button>
         </div>
+        
         <div class="header-actions">
             <button id="theme-toggle-btn" title="Chuyển đổi Sáng/Tối" aria-label="Toggle Theme">🌓</button>
             <button id="sync-settings-btn" title="Cài đặt & Đồng bộ" aria-label="Settings and Sync">⚙️</button>
@@ -62,12 +67,12 @@
         <aside class="app-sidebar" id="appSidebar">
             <nav class="sidebar-nav">
                 <ul>
-                    <li><a href="../../../index.html"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
-                    <li><a href="../cong-cu.html" class="active"><span class="nav-icon">🧮</span><span class="nav-text">Công cụ lâm sàng</span></a></li>
-                    <li><a href="../../Tiếp cận/tiep-can.html"><span class="nav-icon">📋</span><span class="nav-text">Tiếp cận lâm sàng</span></a></li>
-                    <li><a href="../../Phác đồ/phac-do.html"><span class="nav-icon">📄</span><span class="nav-text">Phác đồ điều trị</span></a></li>
-                    <li><a href="../../Dược lý/duoc-ly.html"><span class="nav-icon">💊</span><span class="nav-text">Dược lý & Kháng sinh</span></a></li>
-                    <li><a href="../../Y học chứng cứ/y-hoc-chung-cu.html"><span class="nav-icon">📚</span><span class="nav-text">Y học chứng cứ</span></a></li>
+                    <li><a href="../../../index.html"><img src="../../../assets/icons/ic-trang-chu.svg" alt="Trang chủ" class="menu-icon"> Trang chủ</a></li>
+                    <li><a href="../../cong-cu.html" class="active"><img src="../../../assets/icons/ic-cong-cu.svg" alt="Công cụ" class="menu-icon"> Công cụ lâm sàng</a></li>
+                    <li><a href="../../Tiếp cận/tiep-can.html"><img src="../../../assets/icons/ic-tiep-can.svg" alt="Tiếp cận" class="menu-icon"> Tiếp cận lâm sàng</a></li>
+                    <li><a href="../../Phác đồ/phac-do.html"><img src="../../../assets/icons/ic-phac-do.svg" alt="Phác đồ" class="menu-icon"> Phác đồ điều trị</a></li>
+                    <li><a href="../../Dược lý/duoc-ly.html"><img src="../../../assets/icons/ic-duoc-ly.svg" alt="Dược lý" class="menu-icon"> Dược lý & Kháng sinh</a></li>
+                    <li><a href="../../Y học chứng cứ/y-hoc-chung-cu.html"><img src="../../../assets/icons/ic-y-hoc.svg" alt="Y học chứng cứ" class="menu-icon"> Y học chứng cứ</a></li>
                 </ul>
             </nav>
         </aside>
@@ -75,7 +80,7 @@
         <div class="main-wrapper">
             <section class="hero-dashboard">
                 <div class="hero-intro">
-                    <h1>Phác đồ Sốc & Bơm tiêm Vận mạch</h1>
+                    <h1>BÙ DỊCH VÀ VẬN MẠCH</h1>
                     <p>Hướng dẫn y lệnh chi tiết: Loại dịch, cách pha thuốc, liều khởi đầu, tốc độ BTĐ và lưu đồ xử trí khi thất bại theo SSC 2026 & ESICM 2025.</p>
                 </div>
             </section>
@@ -180,6 +185,9 @@
     </div>
 
     <script>
+        function goBack() {
+            window.history.back();
+        }
         document.addEventListener('DOMContentLoaded', () => {
             const inputs = document.querySelectorAll('input, select');
             inputs.forEach(input => {
@@ -295,7 +303,8 @@
                     }
                 });
             }
-        });
+        
+            });
     </script>
 </body>
 </html>

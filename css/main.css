@@ -151,11 +151,69 @@ body {
   height: 18px;
   opacity: 0.8;
   transition: var(--transition);
+  
+  /* MẶC ĐỊNH (LIGHT MODE): Ép icon về màu xám đậm #475569 phù hợp với --sidebar-text */
+  filter: invert(33%) sepia(13%) saturate(1006%) fraction(0%) hue-rotate(178deg) brightness(95%) contrast(88%);
 }
 
+/* KHI HOVER HOẶC THẺ ACTIVE TRONG LIGHT MODE: Đổi icon sang màu xanh #0284c7 */
 .sidebar-nav a:hover .menu-icon,
 .sidebar-nav a.active .menu-icon {
   opacity: 1;
+  filter: invert(39%) sepia(86%) saturate(1836%) hue-rotate(174deg) brightness(93%) contrast(98%);
+}
+
+/* CẤU HÌNH ICON KHI CHUYỂN SANG DARK MODE */
+[data-theme="dark"] .menu-icon {
+  /* Ép icon về màu xám sáng #94a3b8 để khớp với chữ trong Dark mode */
+  filter: invert(72%) sepia(10%) saturate(618%) hue-rotate(174deg) brightness(91%) contrast(87%);
+}
+
+[data-theme="dark"] .sidebar-nav a:hover .menu-icon,
+[data-theme="dark"] .sidebar-nav a.active .menu-icon {
+  /* Đổi icon sang màu xanh sáng #38bdf8 khi active ở giao diện tối */
+  filter: invert(68%) sepia(74%) saturate(1915%) hue-rotate(171deg) brightness(102%) contrast(97%);
+}
+
+
+/* BACK BUTTON COMPONENT*/
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; /* Tạo khoảng cách thông thoáng giữa nút menu, logo và nút quay lại */
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  
+  /* Khử margin bottom cũ khi còn ở khối hero */
+  margin-bottom: 0; 
+}
+
+/* Hiệu ứng khi di chuột (Hover) */
+.btn-back:hover {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  background-color: var(--bg-light);
+  transform: translateX(-2px); /* Nhích nhẹ sang trái tạo cảm giác điều hướng ngược về */
+}
+
+.btn-back .icon {
+  font-size: 1rem;
+  transition: var(--transition);
 }
 
 /* ==========================================================================

@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Công cụ lâm sàng - CliniPortal</title>
+  <link rel="stylesheet" href="../../css/reset.css">
   <link rel="stylesheet" href="../../css/main.css">
 </head>
 
@@ -17,6 +18,10 @@
         <span class="logo-icon">🩺</span>
         <span class="logo-text">CliniPortal</span>
       </div>
+
+      <button class="btn-back" onclick="goBack()">
+        <span class="icon">&larr;</span> Quay lại
+      </button>
     </div>
 
     <div class="header-search-bar">
@@ -34,12 +39,12 @@
     <aside class="app-sidebar" id="appSidebar">
       <nav class="sidebar-nav">
         <ul>
-          <li><a href="../../index.html">🏠 Trang chủ</a></li>
-          <li><a class="active" href="cong-cu.html">🧮 Công cụ lâm sàng</a></li>
-          <li><a href="../../pages/Tiếp cận/tiep-can.html">📋 Tiếp cận lâm sàng</a></li>
-          <li><a href="../../pages/Phác đồ/phac-do.html">📄 Phác đồ điều trị</a></li>
-          <li><a href="../../pages/Dược lý/duoc-ly.html">💊 Dược lý</a></li>
-          <li><a href="../../pages/Y học chứng cứ/y-hoc-chung-cu.html">📚 Y học chứng cứ</a></li>
+          <li><a href="../../index.html"><img src="../../assets/icons/ic-trang-chu.svg" alt="Trang chủ" class="menu-icon"> Trang chủ</a></li>
+          <li><a href="../../pages/Công cụ/cong-cu.html" class="active"><img src="../../assets/icons/ic-cong-cu.svg" alt="Công cụ" class="menu-icon"> Công cụ lâm sàng</a></li>
+          <li><a href="../../pages/Tiếp cận/tiep-can.html"><img src="../../assets/icons/ic-tiep-can.svg" alt="Tiếp cận" class="menu-icon"> Tiếp cận lâm sàng</a></li>
+          <li><a href="../../pages/Phác đồ/phac-do.html"><img src="../../assets/icons/ic-phac-do.svg" alt="Phác đồ" class="menu-icon"> Phác đồ điều trị</a></li>
+          <li><a href="../../pages/Dược lý/duoc-ly.html"><img src="../../assets/icons/ic-duoc-ly.svg" alt="Dược lý" class="menu-icon"> Dược lý & Kháng sinh</a></li>
+          <li><a href="../../pages/Y học chứng cứ/y-hoc-chung-cu.html"><img src="../../assets/icons/ic-y-hoc.svg" alt="Y học chứng cứ" class="menu-icon"> Y học chứng cứ</a></li>
         </ul>
       </nav>
     </aside>
@@ -79,7 +84,20 @@
                 </div>
                 <p>CAP, HAP, VAP, phân tầng nguy cơ nặng.</p>
                 <div class="tool-footer">
-                  <a href="../Công cụ/Nhiễm khuẩn & cấp cứu/ĐG_Viêm-phổi.html">Mở công cụ →</a>
+                  <a href="../Công cụ/Nhiễm khuẩn & cấp cứu/DG_Viem-phoi.html">Mở công cụ →</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="tool-card"> 
+              <div class="tool-icon">🫁</div>
+              <div class="tool-content">
+                <div class="tool-title-row">
+                  <h3>BÙ DỊCH & VẬN MẠCH</h3>
+                </div>
+                <p>Đánh giá và điều chỉnh thể tích, huyết áp, tuần hoàn.</p>
+                <div class="tool-footer">
+                  <a href="../Công cụ/Nhiễm khuẩn & cấp cứu/Budich-Vanmach.html">Mở công cụ →</a>
                 </div>
               </div>
             </div>
@@ -209,7 +227,18 @@
         localStorage.setItem("theme", "dark");
       }
     };
+    function goBack() {
+      // Kiểm tra xem có lịch sử duyệt web của trang trước đó không
+      if (document.referrer && document.referrer.includes(window.location.hostname)) {
+        window.history.back();
+      } else {
+        // Nếu không có lịch sử (mở trực tiếp), tự động quay về trang chủ
+        window.location.href = "../../index.html"; 
+      }
+    }
   </script>
 
+</body>
+</html>
 </body>
 </html>

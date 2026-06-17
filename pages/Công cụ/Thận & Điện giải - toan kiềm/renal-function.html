@@ -127,6 +127,9 @@
             <div class="logo-brand">
                 <span class="logo-icon">🩺</span><span class="logo-text">CliniPortal</span>
             </div>
+            <button class="btn-back" onclick="goBack()">
+                <span class="icon">&larr;</span> Quay lại
+            </button>
         </div>
         <div class="header-actions">
             <button id="theme-toggle-btn" title="Chuyển đổi Sáng/Tối" aria-label="Toggle Theme">🌓</button>
@@ -138,12 +141,12 @@
         <aside class="app-sidebar" id="appSidebar">
             <nav class="sidebar-nav">
                 <ul>
-                    <li><a href="../../../index.html"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
-                    <li><a href="../../../pages/Công cụ/cong-cu.html" class="active"><span class="nav-icon">🧮</span><span class="nav-text">Công cụ lâm sàng</span></a></li>
-                    <li><a href="../../../pages/Tiếp cận/tiep-can.html"><span class="nav-icon">📋</span><span class="nav-text">Tiếp cận lâm sàng</span></a></li>
-                    <li><a href="../../../pages/Phác đồ/phac-do.html"><span class="nav-icon">📄</span><span class="nav-text">Phác đồ điều trị</span></a></li>
-                    <li><a href="../../../pages/Dược lý/duoc-ly.html"><span class="nav-icon">💊</span><span class="nav-text">Dược lý & Kháng sinh</span></a></li>
-                    <li><a href="../../../pages/Y học chứng cứ/y-hoc-chung-cu.html"><span class="nav-icon">📚</span><span class="nav-text">Y học chứng cứ</span></a></li>
+                    <li><a href="../../../index.html"><img src="../../../assets/icons/ic-trang-chu.svg" alt="Trang chủ" class="menu-icon"> Trang chủ</a></li>
+                    <li><a href="../cong-cu.html" class="active"><img src="../../../assets/icons/ic-cong-cu.svg" alt="Công cụ" class="menu-icon"> Công cụ lâm sàng</a></li>
+                    <li><a href="../../Tiếp cận/tiep-can.html"><img src="../../../assets/icons/ic-tiep-can.svg" alt="Tiếp cận" class="menu-icon"> Tiếp cận lâm sàng</a></li>
+                    <li><a href="../../Phác đồ/phac-do.html"><img src="../../../assets/icons/ic-phac-do.svg" alt="Phác đồ" class="menu-icon"> Phác đồ điều trị</a></li>
+                    <li><a href="../../Dược lý/duoc-ly.html"><img src="../../../assets/icons/ic-duoc-ly.svg" alt="Dược lý" class="menu-icon"> Dược lý & Kháng sinh</a></li>
+                    <li><a href="../../Y học chứng cứ/y-hoc-chung-cu.html"><img src="../../../assets/icons/ic-y-hoc.svg" alt="Y học chứng cứ" class="menu-icon"> Y học chứng cứ</a></li>
                 </ul>
             </nav>
         </aside>
@@ -295,6 +298,9 @@
         </div>
     </div>
     <script>
+        function goBack() {
+            window.history.back();
+        }
         document.addEventListener('DOMContentLoaded', () => {
             // 1. Khai báo các element
             const inAge = document.getElementById('ren-age');
@@ -613,6 +619,7 @@
                     });
                 }
             });
+            
     </script>
 </body>
 </html>
