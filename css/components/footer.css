@@ -1,61 +1,58 @@
 /* ==========================================================================
-   GLOBAL FOOTER (CHÂN TRANG KHÁI QUÁT)
+   GLOBAL FOOTER (TEAL & SLATE MODERN THEME)
    ========================================================================== */
+
+:root {
+    --footer-bg: #f8fafc;                  /* Xám Slate nhẹ dịu, tạo chiều sâu cho đáy trang */
+    --footer-border: #e2e8f0;              /* Đường viền mảnh đồng bộ với Header */
+    --footer-text: #64748b;                /* Màu chữ xám tinh tế, giảm mỏi mắt */
+    --footer-text-focus: #334155;          /* Màu chữ khi cần nhấn mạnh */
+    --brand-accent: #0ea5e9;               /* Xanh Teal điểm xuyết nhẹ nhàng */
+}
+
 .global-footer {
-    background-color: var(--card-bg);
-    border-top: 1px solid var(--border-color);
-    padding: 2rem 1.25rem 1.25rem;
-    margin-top: auto;
-}
-
-.footer-sections {
+    background-color: var(--footer-bg);
+    border-top: 1px solid var(--footer-border);
+    padding: 1.5rem 1.25rem;
+    margin-top: 4rem;                      /* Khoảng cách an toàn, thông thoáng với nội dung phía trên */
     display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.footer-info h4, .footer-links h4, .footer-meta h4 {
-    font-size: 0.95rem;
-    margin-bottom: 0.6rem;
-    font-weight: 600;
-}
-
-.footer-info p, .links-group a {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-}
-
-.links-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-}
-
-.links-group a:hover {
-    color: var(--primary-color);
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
 }
 
 .footer-copyright {
+    width: 100%;
+    max-width: 1200px;                     /* Giới hạn độ rộng hiển thị đẹp mắt */
     text-align: center;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--border-color);
-    font-size: 0.8rem;
-    color: var(--text-muted);
 }
 
-/* --- Responsive thiết lập cho Footer --- */
+.footer-copyright p {
+    font-size: 0.875rem;                   /* Cỡ chữ ~14px thanh mảnh, chuyên nghiệp */
+    line-height: 1.6;
+    color: var(--footer-text);
+    margin: 0;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    word-break: break-word;
+}
+
+/* Hiệu ứng tinh tế: Highlight nhẹ năm hoặc chữ quan trọng */
+.footer-copyright p::selection {
+    background-color: rgba(14, 165, 233, 0.15);
+    color: var(--brand-accent);
+}
+
+/* --- Responsive cho Footer --- */
 @media (min-width: 768px) {
-    .footer-sections {
-        flex-direction: row;
-        justify-content: space-between;
+    .global-footer {
+        padding: 1.75rem 2.5rem;
     }
     
-    .footer-info {
-        flex: 2;
-    }
-    
-    .footer-links, .footer-meta {
-        flex: 1;
+    .footer-copyright {
+        display: flex;
+        justify-content: space-between;    /* Sẵn sàng tách đôi sang 2 bên nếu bạn thêm link */
+        align-items: center;
+        text-align: left;
     }
 }
