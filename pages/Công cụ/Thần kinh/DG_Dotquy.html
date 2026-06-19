@@ -11,113 +11,452 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Lucide icons -->
-  <script src="js/main.js" defer></script>
   <link rel="stylesheet" href="../../../css/reset.css">
-  <link rel="stylesheet" href="../../../css/main.css">  
-    <style>
-        .workspace-container { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1rem; align-items: start; }
-        @media (min-width: 1280px) { .workspace-container { grid-template-columns: 520px 1fr; } }
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
 
-        .input-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.25rem; }
-        .card-zone-badge { display: inline-block; font-size: 0.75rem; font-weight: 700; padding: 0.3rem 0.7rem; border-radius: 4px; text-transform: uppercase; margin-bottom: 1rem; letter-spacing: 0.05em; }
-        .badge-blue { background-color: rgba(2, 132, 199, 0.12); color: var(--primary-color); }
-        .badge-orange { background-color: rgba(245, 158, 11, 0.12); color: var(--warning-color); }
-        .badge-red { background-color: rgba(239, 68, 68, 0.12); color: var(--danger-color); }
-        .badge-purple { background-color: rgba(139, 92, 246, 0.12); color: #7c3aed; }
+  <script src="../../../pages/header.js"></script> 
+<style>
+        /* === BIẾN MÀU SẮC & CẤU HÌNH HỆ THỐNG GIAO DIỆN === */
+        :root {
+            --primary: #0d6efd;
+            --primary-light: #e7f1ff;
+            --success: #198754;
+            --success-light: #d1e7dd;
+            --warning: #ffc107;
+            --warning-light: #fff3cd;
+            --danger: #dc3545;
+            --danger-light: #f8d7da;
+            --gray-100: #f8f9fa;
+            --gray-200: #e9ecef;
+            --gray-300: #dee2e6;
+            --gray-600: #6c757d;
+            --dark: #212529;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --radius: 8px;
 
-        .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
-        .form-group label { font-size: 0.88rem; font-weight: 600; color: var(--text-main); }
-        .form-group input, .form-group select { padding: 0.65rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm); background-color: var(--bg-light); color: var(--text-main); font-size: 0.9rem; transition: var(--transition); width: 100%; box-sizing: border-box;}
-        
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-        .checkbox-group { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.65rem; font-size: 0.88rem; color: var(--text-main); font-weight: 500; }
-
-        .result-box { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-        .result-title { font-size: 1.05rem; font-weight: 700; color: var(--primary-color); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 0.5rem;}
-        
-        .score-display { display: flex; align-items: center; justify-content: space-between; background: var(--bg-light); padding: 1.25rem; border-radius: var(--radius-md); border-left: 5px solid var(--primary-color); margin-bottom: 1rem; }
-        .score-value { font-size: 2.5rem; font-weight: 900; color: var(--primary-color); line-height: 1; text-align: center; min-width: 70px;}
-        .score-text { flex-grow: 1; padding-left: 1.25rem; }
-        .score-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.25rem; color: var(--text-main); }
-        .score-interpretation { font-size: 0.92rem; color: var(--text-muted); line-height: 1.4; }
-
-        .clinical-action { background-color: rgba(239, 68, 68, 0.04); border: 1px dashed var(--danger-color); padding: 1rem; border-radius: var(--radius-sm); font-size: 0.9rem; margin-top: 1rem; }
-        .clinical-action ul { margin-left: 1.25rem; margin-top: 0.5rem; color: var(--text-main); line-height: 1.5;}
-        .clinical-action li { margin-bottom: 0.35rem; }
-
-        /* KỸ THUẬT ĐỊNH DẠNG BIỂU MẪU NIHSS PHẲNG CHỐNG NHẦM LẪN */
-        .nihss-container { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.5rem; }
-        .nihss-row { display: grid; grid-template-columns: 1fr; background-color: var(--bg-light); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 0.5rem 0.75rem; align-items: center; gap: 0.5rem; }
-        
-        @media (min-width: 640px) {
-            .nihss-row { grid-template-columns: 1.3fr 1fr; gap: 1rem; } /* Tách đôi nhãn bên trái, cấu trúc select bên phải */
+            /* Đồng bộ biến CSS động với mã xử lý JavaScript Engine */
+            --primary-color: #0d6efd;
+            --text-main: #212529;
+            --card-bg: #ffffff;
+            --danger-color: #dc3545;
+            --success-color: #198754;
+            --warning-color: #ffc107;
         }
-        
-        /* Đổi màu xen kẽ giữa các dòng để chống lóa mắt */
-        .nihss-row:nth-child(even) { background-color: rgba(2, 132, 199, 0.02); }
-        
-        .nihss-label { font-size: 0.85rem; font-weight: 600; color: var(--text-main); display: flex; align-items: center; gap: 0.4rem; line-height: 1.3; }
-        .nihss-badge { background-color: var(--text-muted); color: white; font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.4rem; border-radius: 3px; white-space: nowrap; }
-        .nihss-row:hover { border-color: var(--primary-color); }
-        .nihss-row:hover .nihss-badge { background-color: var(--primary-color); }
 
-        .nihss-select { padding: 0.45rem 0.5rem; font-size: 0.85rem; font-weight: 500; border-radius: 4px; border: 1px solid var(--border-color); background-color: var(--card-bg); color: var(--text-main); width: 100%; box-sizing: border-box; cursor: pointer; }
-        .nihss-select:focus { border-color: var(--primary-color); outline: none; }
+        [data-theme="dark"] {
+            --primary: #3b82f6;
+            --primary-light: #1e3a8a;
+            --success: #10b981;
+            --success-light: #064e3b;
+            --warning: #f59e0b;
+            --warning-light: #78350f;
+            --danger: #ef4444;
+            --danger-light: #7f1d1d;
+            --gray-100: #111827;
+            --gray-200: #1f2937;
+            --gray-300: #374151;
+            --gray-600: #9ca3af;
+            --dark: #f9fafb;
+            
+            --primary-color: #3b82f6;
+            --text-main: #f9fafb;
+            --card-bg: #1f2937;
+            --danger-color: #ef4444;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+        }
 
-        .reference-section { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; padding: 1rem; background-color: var(--bg-light); border-radius: var(--radius-sm); margin-top: 1.5rem; }
+        /* === THIẾT LẬP CHỦ ĐẠO (LAYOUT) === */
+        body {
+            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--gray-100);
+            color: var(--text-main);
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+            font-size: 15px;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .main-wrapper {
+            flex: 1;
+            padding: 24px;
+            overflow-x: hidden;
+            background-color: var(--gray-100);
+        }
+
+        /* === BẢNG ĐIỀU KHIỂN HERO DASHBOARD === */
+        .hero-dashboard {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 24px;
+            border-left: 5px solid var(--primary);
+        }
+        .hero-intro h1 {
+            margin: 0 0 8px 0;
+            color: var(--primary);
+            font-size: 1.55rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+        }
+        .hero-intro p {
+            margin: 0;
+            color: var(--gray-600);
+            font-size: 0.93rem;
+        }
+
+        /* === KHÔNG GIAN LÀM VIỆC HAI CỘT KHÁM LÂM SÀNG === */
+        .workspace-container {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        /* === THÀNH PHẦN INPUT & OUTPUT CARD === */
+        .input-card, .result-box {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid var(--gray-200);
+        }
+
+        .result-box {
+            border-top: 4px solid var(--primary);
+        }
+
+        /* Huy hiệu vùng phân loại lâm sàng (Badges) */
+        .card-zone-badge {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .badge-blue { background-color: var(--primary-light); color: var(--primary); }
+        .badge-orange { background-color: var(--warning-light); color: #b45309; }
+        .badge-purple { background-color: #f3e8ff; color: #6b21a8; }
+        .badge-red { background-color: var(--danger-light); color: var(--danger); }
+
+        /* === PHÂN CHIA FORM DỮ LIỆU === */
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        .form-row:last-child { margin-bottom: 0; }
         
-        .dynamic-module { display: none; animation: fadeIn 0.3s ease-in-out; }
-        .dynamic-module.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group label {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--gray-600);
+            margin-bottom: 6px;
+            white-space: nowrap;
+        }
+        .form-group input, .form-group select {
+            padding: 10px 12px;
+            border: 1px solid var(--gray-300);
+            border-radius: 6px;
+            font-size: 0.93rem;
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            transition: border-color 0.15s ease, box-shadow 0.15s ease;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+        }
+
+        /* Thiết lập các khối Đột quỵ giả (Stroke Mimics) */
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 11px 14px;
+            background: var(--gray-100);
+            border-radius: 6px;
+            margin-bottom: 10px;
+            border: 1px solid var(--gray-200);
+        }
+        .checkbox-group:last-child { margin-bottom: 0; }
+        .checkbox-group input[type="checkbox"] {
+            margin-top: 3px;
+            cursor: pointer;
+            transform: scale(1.05);
+        }
+        .checkbox-group label {
+            font-size: 0.9rem;
+            color: var(--text-main);
+            cursor: pointer;
+            line-height: 1.4;
+        }
+
+        /* === ĐIỀU KHIỂN HIỂN THỊ MÔ-ĐUN LÂM SÀNG ĐỘNG === */
+        .dynamic-module {
+            display: none;
+        }
+        .dynamic-module.active {
+            display: block;
+        }
+
+        /* === BẢNG ĐIỂM NIHSS CHUẨN HÓA BỘ Y TẾ === */
+        .nihss-container {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .nihss-row {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            align-items: center;
+            gap: 16px;
+            padding: 12px;
+            background-color: var(--gray-100);
+            border: 1px solid var(--gray-200);
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+        .nihss-row:hover {
+            border-color: var(--primary);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .nihss-label {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nihss-badge {
+            background: var(--primary);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 7px;
+            border-radius: 4px;
+            min-width: 24px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(13, 110, 253, 0.2);
+        }
+        .nihss-select {
+            width: 100%;
+            padding: 9px 12px;
+            border: 1px solid var(--gray-300);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            cursor: pointer;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* === KHỐI HIỂN THỊ KẾT QUẢ VÀ ĐIỂM SỐ CHẨN ĐOÁN === */
+        .result-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px dashed var(--gray-200);
+            padding-bottom: 8px;
+        }
+
+        .score-display {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+        .score-text { flex: 1; }
+        .score-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .score-interpretation {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-top: 4px;
+        }
+        .score-value {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        /* Khối chỉ định y lệnh do JavaScript tạo động */
+        .prescription-block {
+            padding: 16px;
+            border-radius: var(--radius);
+            background-color: var(--gray-100);
+            border-left: 4px solid var(--gray-300);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+        .prescription-title {
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .prescription-detail {
+            color: var(--text-main);
+        }
+
+        /* Điểm nhấn cấu trúc y lệnh */
+        .highlight-red { color: var(--danger); font-weight: 700; }
+        .highlight-blue { color: var(--primary); font-weight: 700; }
+
+        /* === KHU VỰC TÀI LIỆU THAM KHẢO === */
+        .reference-section {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+            padding-top: 16px;
+            border-top: 1px dashed var(--gray-300);
+            margin-top: 8px;
+        }
+        .reference-section strong {
+            color: var(--text-main);
+        }
+
+        /* === ĐÁP ỨNG THIẾT BỊ DI ĐỘNG (RESPONSIVE) === */
+        @media (max-width: 992px) {
+            .workspace-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        /* Tối ưu chuyên biệt cho Mobile (Fix triệt để lỗi ép cột trong image_3be87d.png) */
+        @media (max-width: 600px) {
+            .main-wrapper { 
+                padding: 12px; 
+            }
+            .hero-dashboard { 
+                padding: 16px; 
+                margin-bottom: 16px;
+            }
+            .hero-intro h1 { 
+                font-size: 1.25rem; 
+            }
+            
+            /* Hạ tỉ lệ đệm trong card để tăng diện tích hiển thị text */
+            .input-card, .result-box { 
+                padding: 14px; 
+                margin-bottom: 14px;
+            }
+
+            /* Ép 1 cột tuyệt đối cho form nhập liệu và NIHSS - Chống cắt cụt chữ */
+            .form-row {
+                grid-template-columns: 1fr !important;
+                gap: 12px;
+                margin-bottom: 12px;
+            }
+            
+            /* Tái định dạng bảng NIHSS trên mobile: Tiêu đề nằm TRÊN, hộp chọn rộng 100% nằm DƯỚI */
+            .nihss-row {
+                grid-template-columns: 1fr !important;
+                gap: 8px;
+                padding: 10px;
+            }
+            .nihss-select {
+                white-space: normal; /* Cho phép text dài trong option xuống dòng mượt mà */
+                font-size: 0.88rem;
+            }
+
+            .score-display {
+                flex-direction: column-reverse;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            .score-value { 
+                font-size: 2.4rem; 
+            }
+        }
     </style>
 </head>
 <body>
-    <!--HEADER-->
-    <header class="global-header">
-        <div class="header-left">
-            <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
-            <div class="logo-brand"><span class="logo-icon">🩺</span><span class="logo-text">CliniPortal</span></div>
-            
-            <!--BACK BUTTON-->
-            <button class="btn-back" onclick="goBack()">
-            <span class="icon">&larr;</span> Quay lại
-        </button>
-        </div>
-        
-        <!-- SEARCH BAR --> 
-        <div class="search-bar-container">
-        <div class="search-container">
-        <input class="input" type="text">
-        <svg viewBox="0 0 24 24" class="search__icon">
-            <g>
-            <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
-            </path>
-            </g>
+    <!-- Placeholder nạp header.html — đường dẫn tính từ vị trí cong-cu.html -->
+  <div id="header-placeholder" data-header-path="../../header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ===================== APP CONTAINER ===================== -->
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5"
+          fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
-        </div>
-        </div>
-        <div class="header-actions">
-            <button id="theme-toggle-btn" title="Chuyển đổi Sáng/Tối" aria-label="Toggle Theme">🌓</button>
-            <button id="sync-settings-btn" title="Cài đặt & Đồng bộ" aria-label="Settings and Sync">⚙️</button>
-        </div>
-    </header>
+      </button>
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../cong-cu.html" class="nav-item active" aria-current="page" title="Công cụ lâm sàng">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Phác đồ/phac-do.html" class="nav-item" title="Phác đồ Y khoa">
+              <span class="nav-icon">📋</span>
+              <span class="nav-text">Phác đồ điều trị</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý & Kháng sinh</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận triệu chứng">
+              <span class="nav-icon">🩻</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
 
     <!--MAIN CONTENT-->
-    <div class="app-container">
-        <aside class="app-sidebar" id="appSidebar">
-            <nav class="sidebar-nav">
-                <ul>
-                    <li><a href="../../../index.html"><img src="../../../assets/icons/ic-trang-chu.svg" alt="Trang chủ" class="menu-icon"> Trang chủ</a></li>
-                    <li><a href="../cong-cu.html" class="active"><img src="../../../assets/icons/ic-cong-cu.svg" alt="Công cụ" class="menu-icon"> Công cụ lâm sàng</a></li>
-                    <li><a href="../../Tiếp cận/tiep-can.html"><img src="../../../assets/icons/ic-tiep-can.svg" alt="Tiếp cận" class="menu-icon"> Tiếp cận lâm sàng</a></li>
-                    <li><a href="../../Phác đồ/phac-do.html"><img src="../../../assets/icons/ic-phac-do.svg" alt="Phác đồ" class="menu-icon"> Phác đồ điều trị</a></li>
-                    <li><a href="../../Dược lý/duoc-ly.html"><img src="../../../assets/icons/ic-duoc-ly.svg" alt="Dược lý" class="menu-icon"> Dược lý & Kháng sinh</a></li>
-                    <li><a href="../../Y học chứng cứ/y-hoc-chung-cu.html"><img src="../../../assets/icons/ic-y-hoc.svg" alt="Y học chứng cứ" class="menu-icon"> Y học chứng cứ</a></li>
-                </ul>
-            </nav>
-        </aside>
-
         <div class="main-wrapper">
             <section class="hero-dashboard">
                 <div class="hero-intro">

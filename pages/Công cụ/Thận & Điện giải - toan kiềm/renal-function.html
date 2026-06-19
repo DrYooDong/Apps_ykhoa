@@ -11,170 +11,364 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Lucide icons -->
-  <script src="js/main.js" defer></script>
   <link rel="stylesheet" href="../../../css/reset.css">
-  <link rel="stylesheet" href="../../../css/main.css">  
-    <style>
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+
+  <script src="../../../pages/header.js"></script> >  
+<style>
+        /* === BIẾN MÀU SẮC HỆ THỐNG & GIAO DIỆN CHUYỂN ĐỔI CHUẨN === */
+        :root {
+            --primary: #0d6efd;
+            --primary-light: #e7f1ff;
+            --success: #198754;
+            --success-light: #d1e7dd;
+            --warning: #ffc107;
+            --warning-light: #fff3cd;
+            --danger: #dc3545;
+            --danger-light: #f8d7da;
+            --gray-100: #f8f9fa;
+            --gray-200: #e9ecef;
+            --gray-300: #dee2e6;
+            --gray-600: #6c757d;
+            --dark: #212529;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --radius: 8px;
+
+            /* Đồng bộ biến CSS gốc của CliniPortal */
+            --primary-color: #0d6efd;
+            --text-main: #212529;
+            --card-bg: #ffffff;
+            --border-color: #e9ecef;
+            --bg-light: #f8f9fa;
+            --text-muted: #6c757d;
+            --accent: #e11d48;
+        }
+
+        [data-theme="dark"] {
+            --primary: #3b82f6;
+            --primary-light: #1e3a8a;
+            --success: #10b981;
+            --success-light: #064e3b;
+            --warning: #f59e0b;
+            --warning-light: #78350f;
+            --danger: #ef4444;
+            --danger-light: #7f1d1d;
+            --gray-100: #111827;
+            --gray-200: #1f2937;
+            --gray-300: #374151;
+            --gray-600: #9ca3af;
+            --dark: #f9fafb;
+
+            --primary-color: #3b82f6;
+            --text-main: #f9fafb;
+            --card-bg: #1f2937;
+            --border-color: #374151;
+            --bg-light: #111827;
+            --text-muted: #9ca3af;
+            --accent: #fb7185;
+        }
+
+        /* === PHÂN CHIA HỆ THỐNG LƯỚI KHÔNG GIAN LÀM VIỆC === */
         .renal-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 1.5rem;
-            margin-top: 1rem;
+            gap: 24px;
+            margin-top: 20px;
         }
+
         .panel {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 1.5rem;
-            box-shadow: var(--shadow-sm);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            height: fit-content;
         }
+
         .panel-title {
             font-size: 1.1rem;
             font-weight: 700;
             color: var(--primary-color);
-            margin-bottom: 1.25rem;
-            padding-bottom: 0.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
             border-bottom: 2px solid var(--border-color);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 8px;
         }
+
+        /* === KHỐI FORM NHẬP LIỆU CHUẨN HÓA === */
         .input-group {
             display: flex;
             flex-direction: column;
-            gap: 0.4rem;
-            margin-bottom: 1rem;
+            gap: 6px;
+            margin-bottom: 16px;
         }
         .input-group label {
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             font-weight: 600;
             color: var(--text-main);
         }
+
         input[type="number"], select {
             width: 100%;
-            padding: 0.6rem;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-sm);
-            background-color: var(--bg-light);
+            padding: 10px 12px;
+            border: 1px solid var(--gray-300);
+            border-radius: 6px;
+            background-color: var(--card-bg);
             color: var(--text-main);
-            font-size: 1rem;
+            font-size: 0.95rem;
+            box-sizing: border-box;
+            transition: border-color 0.15s ease, box-shadow 0.15s ease;
         }
-        .grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        
-        /* Hiển thị kết quả */
+        input[type="number"]:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+        }
+
+        .grid-2-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        /* === KHỐI KẾT QUẢ TÍNH TOÁN LÂM SÀNG === */
         .result-box {
-            margin-bottom: 1.25rem;
-            padding: 1.25rem;
-            border-radius: var(--radius-sm);
+            margin-bottom: 20px;
+            padding: 16px;
+            border-radius: var(--radius);
             background-color: var(--bg-light);
-            border-left: 4px solid var(--primary-color);
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--primary-color);
         }
         .result-box h4 {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 700;
-            margin-bottom: 0.75rem;
+            margin: 0 0 10px 0;
             color: var(--text-main);
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
         }
         .big-number {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 800;
             color: var(--primary-color);
+            line-height: 1;
         }
         .sub-text {
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             color: var(--text-muted);
-            margin-top: 0.5rem;
-            line-height: 1.4;
+            line-height: 1.5;
+        }
+        .block-note {
+            display: block;
+            margin-top: 6px;
+        }
+
+        /* === THÀNH PHẦN HIỂN THỊ TRẠNG THÁI (FIX LỖI ĐỘ TƯƠNG PHẢN) === */
+        .kdigo-risk, .aki-result {
+            padding: 16px;
+            border-radius: var(--radius);
+            border: 1px solid transparent;
+            border-left-width: 5px;
+            margin-top: 12px;
+            transition: all 0.2s ease;
         }
         
-        /* Bảng KDIGO Risk */
         .kdigo-risk {
-            padding: 1rem;
-            border-radius: var(--radius-sm);
             font-weight: 700;
             text-align: center;
-            margin-top: 0.5rem;
-            border: 1px solid transparent;
+            font-size: 0.95rem;
+            line-height: 1.5;
         }
-        .risk-low { background-color: #d1fae5; color: #065f46; border-color: #34d399; }
-        .risk-mod { background-color: #fef3c7; color: #92400e; border-color: #fbbf24; }
-        .risk-high { background-color: #ffedd5; color: #9a3412; border-color: #fb923c; }
-        .risk-vhigh { background-color: #fee2e2; color: #991b1b; border-color: #f87171; }
-        
-        /* Cảnh báo thuốc */
+
+        .aki-result h3 {
+            margin: 0 0 6px 0;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+        #aki-stage {
+            font-size: 1.45rem;
+            font-weight: 800;
+            margin: 6px 0;
+            line-height: 1.1;
+        }
+        #aki-criteria {
+            font-size: 0.88rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        #aki-recommendation {
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--text-main) !important;
+            background-color: rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        /* --- Phối màu cho LIGHT MODE --- */
+        .risk-low, .aki-no-aki { background-color: #e8f5e9; color: #1b5e20; border-color: #81c784; border-left-color: #2e7d32; }
+        .risk-mod, .aki-stage-1 { background-color: #fffde7; color: #f57f17; border-color: #fff176; border-left-color: #fbc02d; }
+        .risk-high, .aki-stage-2 { background-color: #fff3e0; color: #e65100; border-color: #ffb74d; border-left-color: #ef6c00; }
+        .risk-vhigh, .aki-stage-3 { background-color: #ffebee; color: #b71c1c; border-color: #ef5350; border-left-color: #c62828; }
+
+        /* --- Phối màu phản hồi cao cấp cho DARK MODE --- */
+        [data-theme="dark"] #aki-recommendation {
+            background-color: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        [data-theme="dark"] .risk-low, [data-theme="dark"] .aki-no-aki { 
+            background-color: rgba(16, 185, 129, 0.12); color: #a7f3d0; border-color: rgba(16, 185, 129, 0.3); border-left-color: #10b981; 
+        }
+        [data-theme="dark"] .risk-mod, [data-theme="dark"] .aki-stage-1 { 
+            background-color: rgba(245, 158, 11, 0.12); color: #fde68a; border-color: rgba(245, 158, 11, 0.3); border-left-color: #f59e0b; 
+        }
+        [data-theme="dark"] .risk-high, [data-theme="dark"] .aki-stage-2 { 
+            background-color: rgba(249, 115, 22, 0.12); color: #fed7aa; border-color: rgba(249, 115, 22, 0.3); border-left-color: #f97316; 
+        }
+        [data-theme="dark"] .risk-vhigh, [data-theme="dark"] .aki-stage-3 { 
+            background-color: rgba(239, 68, 68, 0.15); color: #fecaca; border-color: rgba(239, 68, 68, 0.3); border-left-color: #ef4444; 
+        }
+
+        /* === ĐỊNH DẠNG KHỐI ĐẦU VÀO AKI CHUẨN === */
+        .aki-input-section {
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 2px dashed var(--border-color);
+        }
+        .aki-section-title {
+            font-weight: 700 !important;
+            color: var(--accent) !important;
+            font-size: 0.95rem !important;
+            display: block;
+            margin-bottom: 12px;
+        }
+        .checkbox-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            cursor: pointer;
+            user-select: none;
+        }
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        /* === CẢNH BÁO THUỐC ĐỘC THẬN === */
         .med-alert-box {
-            background-color: rgba(239, 68, 68, 0.05);
-            border-left: 4px solid #ef4444;
-            padding: 1rem;
-            border-radius: var(--radius-sm);
-            margin-top: 1rem;
+            background-color: rgba(239, 68, 68, 0.04);
+            border: 1px solid var(--danger-light);
+            border-left: 5px solid var(--danger);
+            padding: 16px;
+            border-radius: var(--radius);
+            margin-top: 20px;
         }
-        .med-alert-box h4 { color: #b91c1c; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.95rem; }
-        .med-alert-box ul { padding-left: 1.2rem; font-size: 0.9rem; line-height: 1.6; }
+        .med-alert-box h4 { color: var(--danger); font-weight: 700; margin: 0 0 10px 0; font-size: 0.95rem; }
+        .med-alert-box ul { padding-left: 20px; margin: 0; font-size: 0.9rem; line-height: 1.6; }
         
         .reset-btn {
-            width: 100%; padding: 0.75rem; background-color: var(--bg-light);
-            border: 1px solid var(--border-color); border-radius: var(--radius-sm);
-            color: var(--text-main); font-weight: 700; cursor: pointer; margin-top: 1rem;
+            width: 100%;
+            padding: 11px;
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-main);
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 16px;
+            font-size: 0.95rem;
+            transition: background-color 0.15s ease;
         }
         .reset-btn:hover { background-color: var(--border-color); }
 
-        @media (min-width: 768px) {
-            .renal-grid { grid-template-columns: 1fr 1.5fr; }
-            .sticky-panel { position: sticky; top: calc(var(--header-height) + 1.25rem); }
+        /* === ĐÁP ỨNG TRÊN ĐA GIAO DIỆN MÀN HÌNH (RESPONSIVE) === */
+        @media (min-width: 992px) {
+            .renal-grid { grid-template-columns: 1fr 1.3fr; }
+            .sticky-panel { position: sticky; top: 24px; }
+        }
+        @media (max-width: 768px) {
+            .grid-2-col { grid-template-columns: 1fr !important; gap: 12px; }
+        }
+        @media (max-width: 576px) {
+            .main-wrapper { padding: 12px; }
+            .panel { padding: 16px; }
+            .big-number { font-size: 1.4rem; }
         }
     </style>
 </head>
+
 <body>
+  <!-- Placeholder nạp header.html — đường dẫn tính từ vị trí cong-cu.html -->
+  <div id="header-placeholder" data-header-path="../../header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-    <header class="global-header">
-        <div class="header-left">
-            <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
-            <div class="logo-brand">
-                <span class="logo-icon">🩺</span><span class="logo-text">CliniPortal</span>
-            </div>
-            <!--BACK BUTTON-->
-            <button class="btn-back" onclick="goBack()">
-                <span class="icon">&larr;</span> Quay lại
-            </button>
-        </div>
+  <!-- ===================== APP CONTAINER ===================== -->
+  <div class="app-container">
 
-        <!-- SEARCH BAR --> 
-        <div class="search-bar-container">
-        <div class="search-container">
-        <input class="input" type="text">
-        <svg viewBox="0 0 24 24" class="search__icon">
-            <g>
-            <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
-            </path>
-            </g>
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5"
+          fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
-        </div>
-        </div>
-        <div class="header-actions">
-            <button id="theme-toggle-btn" title="Chuyển đổi Sáng/Tối" aria-label="Toggle Theme">🌓</button>
-            <button id="sync-settings-btn" title="Cài đặt & Đồng bộ" aria-label="Settings and Sync">⚙️</button>
-        </div>
-    </header>
+      </button>
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../cong-cu.html" class="nav-item active" aria-current="page" title="Công cụ lâm sàng">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Phác đồ/phac-do.html" class="nav-item" title="Phác đồ Y khoa">
+              <span class="nav-icon">📋</span>
+              <span class="nav-text">Phác đồ điều trị</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý & Kháng sinh</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận triệu chứng">
+              <span class="nav-icon">🩻</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
 
     <!--MAIN CONTENT-->
-    <div class="app-container">
-        <aside class="app-sidebar" id="appSidebar">
-            <nav class="sidebar-nav">
-                <ul>
-                    <li><a href="../../../index.html"><img src="../../../assets/icons/ic-trang-chu.svg" alt="Trang chủ" class="menu-icon"> Trang chủ</a></li>
-                    <li><a href="../cong-cu.html" class="active"><img src="../../../assets/icons/ic-cong-cu.svg" alt="Công cụ" class="menu-icon"> Công cụ lâm sàng</a></li>
-                    <li><a href="../../Tiếp cận/tiep-can.html"><img src="../../../assets/icons/ic-tiep-can.svg" alt="Tiếp cận" class="menu-icon"> Tiếp cận lâm sàng</a></li>
-                    <li><a href="../../Phác đồ/phac-do.html"><img src="../../../assets/icons/ic-phac-do.svg" alt="Phác đồ" class="menu-icon"> Phác đồ điều trị</a></li>
-                    <li><a href="../../Dược lý/duoc-ly.html"><img src="../../../assets/icons/ic-duoc-ly.svg" alt="Dược lý" class="menu-icon"> Dược lý & Kháng sinh</a></li>
-                    <li><a href="../../Y học chứng cứ/y-hoc-chung-cu.html"><img src="../../../assets/icons/ic-y-hoc.svg" alt="Y học chứng cứ" class="menu-icon"> Y học chứng cứ</a></li>
-                </ul>
-            </nav>
-        </aside>
-
         <div class="main-wrapper">
             <section class="hero-dashboard">
                 <div class="hero-intro">
@@ -233,40 +427,38 @@
                             <option value="A3">A3: Tăng nặng (> 300 mg/g)</option>
                         </select>
                     </div>
-                    <!-- Section AKI Input -->
-                    <div class="input-group" style="margin-top: 1rem; padding-top: 1rem; border-top: 2px solid var(--accent);">
-                        <label style="font-weight: 600; color: var(--accent);">🚨 Đánh giá Tổn thương Thận cấp (AKI)</label>
+
+                    <!--AKI-->
+                    <div class="aki-input-section">
+                        <label class="aki-section-title">🚨 Đánh giá Tổn thương Thận cấp (AKI)</label>
                         
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.5rem;">
-                            <div>
-                                <label style="font-size: 0.85rem;">Creatinine nền (Baseline)</label>
-                                <input type="number" id="aki-baseline" value="1.0" step="0.01" placeholder="mg/dL hoặc μmol/L">
+                        <div class="grid-2-col">
+                            <div class="input-group">
+                                <label>Creatinine nền (Baseline)</label>
+                                <input type="number" id="aki-baseline" value="1.0" step="0.01" placeholder="mg/dL">
                             </div>
-                            <div>
-                                <label style="font-size: 0.85rem;">Đơn vị Baseline</label>
-                                <select id="aki-baseline-unit" style="width: 100%; padding: 0.5rem; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-input); color: var(--text);">
+                            <div class="input-group">
+                                <label>Đơn vị Baseline</label>
+                                <select id="aki-baseline-unit">
                                     <option value="mgdL">mg/dL</option>
                                     <option value="umolL">μmol/L</option>
                                 </select>
                             </div>
                         </div>
                         
-                        <div style="margin-top: 0.5rem;">
-                            <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; cursor: pointer;">
-                                <input type="checkbox" id="aki-48h" style="width: 18px; height: 18px; cursor: pointer;">
-                                <span>Tăng Creatinine trong vòng 48 giờ</span>
+                        <div class="checkbox-wrapper">
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="aki-48h">
+                                <span>Tăng Creatinine cấp tính trong vòng 48 giờ</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="aki-rRT">
+                                <span>Bệnh nhân đang có chỉ định lọc máu cấp (RRT)</span>
                             </label>
                         </div>
                         
-                        <div style="margin-top: 0.5rem;">
-                            <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; cursor: pointer;">
-                                <input type="checkbox" id="aki-rRT" style="width: 18px; height: 18px; cursor: pointer;">
-                                <span>Bệnh nhân đang lọc máu (RRT)</span>
-                            </label>
-                        </div>
-                        
-                        <span style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-top: 0.3rem;">
-                            * Baseline là giá trị Creatinine ổn định trước đó (thường là giá trị thấp nhất trong 7 ngày trước)
+                        <span class="sub-text block-note">
+                            * Baseline là giá trị Creatinine huyết thanh ổn định trước đó của bệnh nhân (thường là giá trị thấp nhất trong vòng 7 ngày qua).
                         </span>
                     </div>
                     <button type="button" id="btn-reset" class="reset-btn">🔄 Làm mới dữ liệu</button>
@@ -303,12 +495,13 @@
                     <div id="out-kdigo-box" class="kdigo-risk risk-low">
                         Đang phân tích rủi ro CKD...
                     </div>
+                    
                     <!-- AKI Staging Result -->
-                    <div id="aki-result-box" class="aki-result" style="display: none; margin: 1rem 0; padding: 1rem; border-radius: 8px; border: 2px solid var(--border-color); background: var(--bg-card);">
-                        <h3 style="margin: 0 0 0.5rem 0; font-size: 1.1rem;">🚨 Phân độ AKI theo KDIGO</h3>
-                        <div id="aki-stage" style="font-size: 1.5rem; font-weight: 700; margin: 0.5rem 0;"></div>
-                        <div id="aki-criteria" style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem;"></div>
-                        <div id="aki-recommendation" style="margin-top: 1rem; padding: 0.75rem; background: var(--bg-input); border-radius: 4px; font-size: 0.9rem;"></div>
+                    <div id="aki-result-box" class="aki-result" style="display: none;">
+                        <h3>🚨 Kết quả Phân độ AKI (KDIGO)</h3>
+                        <div id="aki-stage"></div>
+                        <div id="aki-criteria"></div>
+                        <div id="aki-recommendation"></div>
                     </div>
                     <div id="med-alerts" class="med-alert-box" style="display: none;">
                         <h4>⛔ Cảnh báo Chỉnh liều Thuốc:</h4>

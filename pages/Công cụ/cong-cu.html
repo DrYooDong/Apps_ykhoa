@@ -17,6 +17,122 @@
   <link rel="stylesheet" href="../../css/components/footer.css">
 
   <script src="../../pages/header.js"></script>
+
+  <style>
+  /* ============================================================
+     LAYOUT PHÂN NHÓM CHUYỂN ĐỔI LINH HOẠT (ACCORDION TABS)
+     Đồng bộ hoàn toàn với hệ thống Design Tokens CliniPortal
+  ============================================================ */
+
+  /* Lưới chứa các Nhóm xếp nằm ngang */
+  .groups-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  /* Khung thẻ của từng NHÓM */
+  .group-container {
+    flex: 1 1 calc(33.333% - 1.25rem);
+    min-width: 300px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-divider);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--tr);
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Khi nhóm được kích hoạt: Bung rộng 100% hàng để hiện lưới card con */
+  .group-container.active {
+    flex: 1 1 100%;
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Thanh tiêu đề Nhóm (Vùng click) */
+  .group-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    padding: 0.25rem 0;
+  }
+
+  .group-heading h3 {
+    font-size: var(--text-md);
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-text);
+  }
+
+  /* Mũi tên chỉ báo trạng thái đóng/mở */
+  .toggle-indicator {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--tr);
+    color: var(--color-text-muted);
+  }
+
+  .toggle-indicator::after {
+    content: '▼';
+    font-size: 0.75rem;
+  }
+
+  .group-container.active .toggle-indicator {
+    transform: rotate(180deg);
+    color: var(--color-primary);
+  }
+
+  /* Kỹ thuật CSS Grid fr giúp tạo hiệu ứng trượt mở mượt mà không bị khựng */
+  .category-grid-wrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows var(--tr), margin var(--tr), padding var(--tr);
+  }
+
+  .group-container.active .category-grid-wrapper {
+    grid-template-rows: 1fr;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px dashed var(--color-divider);
+  }
+
+  .category-grid {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  /* Lưới hiển thị các công cụ con bên trong khi mở rộng */
+  @media (min-width: 768px) {
+    .category-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .category-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* Điểm nhấn đường viền nhận diện màu sắc theo từng nhóm chuyên khoa */
+  .group-container.g-red.active { border-left: 4px solid var(--color-rose); }
+  .group-container.g-green.active { border-left: 4px solid var(--color-success); }
+  .group-container.g-blue.active { border-left: 4px solid var(--color-primary); }
+  .group-container.g-purple.active { border-left: 4px solid #a855f7; }
+  .group-container.g-amber.active { border-left: 4px solid var(--color-warning); }
+  .group-container.g-teal.active { border-left: 4px solid #14b8a6; }
+  </style>
 </head>
 
 <body>
@@ -75,7 +191,6 @@
     <!-- MAIN CONTENT -->
     <div class="main-wrapper" id="mainContent">
 
-      <!-- HERO -->
       <section class="hero-dashboard" aria-labelledby="hero-title">
         <div class="hero-intro">
           <h1 id="hero-title">🧮 CÔNG CỤ LÂM SÀNG</h1>
@@ -83,187 +198,260 @@
         </div>
       </section>
 
-      <!-- TOOL GRID -->
       <div class="main-content-grid">
         <h2 class="section-heading">Danh mục công cụ</h2>
 
-        <!-- NHÓM 1: Nhiễm trùng & Cấp cứu -->
-        <div class="group-container g-red">
-          <h3 class="group-heading"><span class="g-icon">🚨</span> Nhiễm trùng &amp; Cấp cứu</h3>
-          <div class="category-grid">
+        <div class="groups-wrapper">
 
-            <div class="tool-card card-rose">
-              <div class="card-top">
-                <div class="tool-icon">🦠</div>
-                <span class="tool-status active">Hoạt động</span>
-              </div>
-              <div class="tool-content">
-                <div class="tool-title-row"><h3>Sàng lọc Nhiễm khuẩn</h3></div>
-                <p>NEWS2, SOFA, qSOFA, SIRS, MEDS đánh giá nguy cơ nhiễm trùng huyết.</p>
-              </div>
-              <div class="tool-footer">
-                <span class="tool-category">Cấp cứu</span>
-                <a href="Nhiễm khuẩn & cấp cứu/SL_Nhiem-khuan.html">Mở công cụ</a>
+          <div class="group-container g-red">
+            <div class="group-heading">
+              <h3><span class="g-icon">🚨</span> Nhiễm trùng &amp; Cấp cứu</h3>
+              <span class="toggle-indicator"></span>
+            </div>
+            <div class="category-grid-wrapper">
+              <div class="category-grid">
+                <div class="tool-card card-rose">
+                  <div class="card-top">
+                    <div class="tool-icon">🦠</div>
+                    <span class="tool-status active">Hoạt động</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row"><h3>Sàng lọc Nhiễm khuẩn</h3></div>
+                    <p>NEWS2, SOFA, qSOFA, SIRS, MEDS đánh giá nguy cơ nhiễm trùng huyết.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Cấp cứu</span>
+                    <a href="Nhiễm khuẩn & cấp cứu/SL_Nhiem-khuan.html">Mở công cụ</a>
+                  </div>
+                </div>
+
+                <div class="tool-card card-rose">
+                  <div class="card-top">
+                    <div class="tool-icon">🫁</div>
+                    <span class="tool-status active">Hoạt động</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row"><h3>Đánh giá Viêm phổi</h3></div>
+                    <p>CAP, HAP, VAP — phân tầng nguy cơ nặng và chỉ định nhập viện.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Hô hấp</span>
+                    <a href="Nhiễm khuẩn & cấp cứu/DG_Viem-phoi.html">Mở công cụ</a>
+                  </div>
+                </div>
+
+                <div class="tool-card card-rose">
+                  <div class="card-top">
+                    <div class="tool-icon">💧</div>
+                    <span class="tool-status dev">Đang xây</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row"><h3>Bù dịch &amp; Vận mạch</h3></div>
+                    <p>Đánh giá và điều chỉnh thể tích, huyết áp, tuần hoàn.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Cấp cứu</span>
+                    <a href="Nhiễm khuẩn & cấp cứu/Budich-Vanmach.html">Mở công cụ</a>
+                  </div>
+                </div>
               </div>
             </div>
-
-            <div class="tool-card card-rose">
-              <div class="card-top">
-                <div class="tool-icon">🫁</div>
-                <span class="tool-status active">Hoạt động</span>
-              </div>
-              <div class="tool-content">
-                <div class="tool-title-row"><h3>Đánh giá Viêm phổi</h3></div>
-                <p>CAP, HAP, VAP — phân tầng nguy cơ nặng và chỉ định nhập viện.</p>
-              </div>
-              <div class="tool-footer">
-                <span class="tool-category">Hô hấp</span>
-                <a href="Nhiễm khuẩn & cấp cứu/DG_Viem-phoi.html">Mở công cụ</a>
-              </div>
-            </div>
-
-            <div class="tool-card card-rose">
-              <div class="card-top">
-                <div class="tool-icon">💧</div>
-                <span class="tool-status dev">Đang xây</span>
-              </div>
-              <div class="tool-content">
-                <div class="tool-title-row"><h3>Bù dịch &amp; Vận mạch</h3></div>
-                <p>Đánh giá và điều chỉnh thể tích, huyết áp, tuần hoàn.</p>
-              </div>
-              <div class="tool-footer">
-                <span class="tool-category">Cấp cứu</span>
-                <a href="Nhiễm khuẩn & cấp cứu/Budich-Vanmach.html">Mở công cụ</a>
-              </div>
-            </div>
-
           </div>
-        </div>
 
-        <!-- NHÓM 2: Tiêu hóa & Dinh dưỡng -->
-        <div class="group-container g-green">
-          <h3 class="group-heading"><span class="g-icon">🥗</span> Tiêu hóa &amp; Dinh dưỡng</h3>
-          <div class="category-grid">
-
-            <div class="tool-card card-green">
-              <div class="card-top">
-                <div class="tool-icon">🍽️</div>
-                <span class="tool-status active">Hoạt động</span>
-              </div>
-              <div class="tool-content">
-                <div class="tool-title-row"><h3>Đánh giá Dinh dưỡng nội viện</h3></div>
-                <p>Đánh giá dinh dưỡng, chỉ số BMI, phân loại suy dinh dưỡng.</p>
-              </div>
-              <div class="tool-footer">
-                <span class="tool-category">Dinh dưỡng</span>
-                <a href="Tiêu hóa & Dinh dưỡng/DG_Dinhduongnoitru.html">Mở công cụ</a>
+          <div class="group-container g-green">
+            <div class="group-heading">
+              <h3><span class="g-icon">🥗</span> Tiêu hóa &amp; Dinh dưỡng</h3>
+              <span class="toggle-indicator"></span>
+            </div>
+            <div class="category-grid-wrapper">
+              <div class="category-grid">
+                <div class="tool-card card-green">
+                  <div class="card-top">
+                    <div class="tool-icon">🍽️</div>
+                    <span class="tool-status active">Hoạt động</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row"><h3>Đánh giá Dinh dưỡng nội viện</h3></div>
+                    <p>Đánh giá dinh dưỡng, chỉ số BMI, phân loại suy dinh dưỡng.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Dinh dưỡng</span>
+                    <a href="Tiêu hóa & Dinh dưỡng/DG_Dinhduongnoitru.html">Mở công cụ</a>
+                  </div>
+                </div>
               </div>
             </div>
-
           </div>
-        </div>
 
-        <!-- NHÓM 3: Thận & Điện giải -->
-        <div class="group-container g-blue">
-          <h3 class="group-heading"><span class="g-icon">🫘</span> Thận &amp; Điện giải</h3>
-          <div class="category-grid">
+          <div class="group-container g-blue">
+            <div class="group-heading">
+              <h3><span class="g-icon">🫘</span> Thận &amp; Điện giải</h3>
+              <span class="toggle-indicator"></span>
+            </div>
+            <div class="category-grid-wrapper">
+              <div class="category-grid">
+                <div class="tool-card card-blue">
+                  <div class="card-top">
+                    <div class="tool-icon">🔬</div>
+                    <span class="tool-status active">Hoạt động</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row"><h3>Chức năng thận</h3></div>
+                    <p>Cockcroft-Gault, CKD-EPI 2021, hiệu chỉnh liều thuốc.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Thận</span>
+                    <a href="Thận & Điện giải - toan kiềm/renal-function.html">Mở công cụ</a>
+                  </div>
+                </div>
 
-            <div class="tool-card card-blue">
-              <div class="card-top">
-                <div class="tool-icon">🔬</div>
-                <span class="tool-status active">Hoạt động</span>
-              </div>
-              <div class="tool-content">
-                <div class="tool-title-row"><h3>Chức năng thận</h3></div>
-                <p>Cockcroft-Gault, CKD-EPI 2021, hiệu chỉnh liều thuốc.</p>
-              </div>
-              <div class="tool-footer">
-                <span class="tool-category">Thận</span>
-                <a href="Thận & Điện giải - toan kiềm/renal-function.html">Mở công cụ</a>
+                <div class="tool-card card-green">
+                  <div class="card-top">
+                    <div class="tool-icon">🔬</div>
+                    <span class="tool-status active">Hoạt động</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row"><h3>Phân tích khí máu động mạch</h3></div>
+                    <p>Dựa trên các chỉ số pH, pCO2, HCO3- và pO2, công cụ giúp xác định các rối loạn hô hấp, chuyển hóa và đánh giá mức độ bù trừ của cơ thể.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Toan kiềm</span>
+                    <a href="Thận & Điện giải - toan kiềm/DG_ABG.html">Mở công cụ</a>
+                  </div>
+                </div>
+
+                <div class="tool-card card-rose">
+                  <div class="card-top">
+                    <div class="tool-icon">🔬</div>
+                    <span class="tool-status active">Hoạt động</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row"><h3>Xử trí rối loạn kali/canxi máu</h3></div>
+                    <p></p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Điện giải</span>
+                    <a href="Thận & Điện giải - toan kiềm/DG_Kali-Canxi.html">Mở công cụ</a>
+                  </div>
+                </div>
+
+                <div class="tool-card card-rose">
+                  <div class="card-top">
+                    <div class="tool-icon">🔬</div>
+                    <span class="tool-status active">Hoạt động</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row"><h3>Xử trí rối loạn natri máu & dịch</h3></div>
+                    <p></p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Điện giải</span>
+                    <a href="Thận & Điện giải - toan kiềm/DG_Natri-Dich.html">Mở công cụ</a>
+                  </div>
+                </div>
+
               </div>
             </div>
-
           </div>
-        </div>
 
-        <!-- NHÓM 4: Tim mạch & Huyết khối -->
-        <div class="group-container g-purple">
-          <h3 class="group-heading"><span class="g-icon">❤️</span> Tim mạch &amp; Huyết khối</h3>
-          <div class="category-grid">
-
-            <div class="tool-card card-purple">
-              <div class="card-top">
-                <div class="tool-icon">📊</div>
-                <span class="tool-status dev">Đang xây</span>
-              </div>
-              <div class="tool-content">
-                <div class="tool-title-row"><h3>Rung nhĩ</h3></div>
-                <p>CHA₂DS₂-VASc, HAS-BLED — nguy cơ đột quỵ và chảy máu.</p>
-              </div>
-              <div class="tool-footer">
-                <span class="tool-category">Tim mạch</span>
-                <a href="#">Mở công cụ</a>
+          <div class="group-container g-purple">
+            <div class="group-heading">
+              <h3><span class="g-icon">❤️</span> Tim mạch &amp; Huyết khối</h3>
+              <span class="toggle-indicator"></span>
+            </div>
+            <div class="category-grid-wrapper">
+              <div class="category-grid">
+                <div class="tool-card card-purple">
+                  <div class="card-top">
+                    <div class="tool-icon">📊</div>
+                    <span class="tool-status dev">Đang xây</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row"><h3>Rung nhĩ</h3></div>
+                    <p>CHA₂DS₂-VASc, HAS-BLED — nguy cơ đột quỵ và chảy máu.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Tim mạch</span>
+                    <a href="#">Mở công cụ</a>
+                  </div>
+                </div>
               </div>
             </div>
-
           </div>
-        </div>
 
-        <!-- NHÓM 5: Nội tiết & Chuyển hóa -->
-        <div class="group-container g-amber">
-          <h3 class="group-heading"><span class="g-icon">🧠</span> Nội tiết &amp; Chuyển hóa</h3>
-          <div class="category-grid">
-
-            <div class="tool-card card-amber">
-              <div class="card-top">
-                <div class="tool-icon">💉</div>
-                <span class="tool-status active">Hoạt động</span>
-              </div>
-              <div class="tool-content">
-                <div class="tool-title-row"><h3>Chỉnh liều Insulin nội trú</h3></div>
-                <p>Phác đồ kiểm soát đường huyết bệnh nhân nội trú, tính liều insulin nền – bolus.</p>
-              </div>
-              <div class="tool-footer">
-                <span class="tool-category">Nội tiết</span>
-                <a href="Nội tiết & Chuyển hóa/DG_Insulin-ĐTĐ.html">Mở công cụ</a>
+          <div class="group-container g-amber">
+            <div class="group-heading">
+              <h3><span class="g-icon">🧠</span> Nội tiết &amp; Chuyển hóa</h3>
+              <span class="toggle-indicator"></span>
+            </div>
+            <div class="category-grid-wrapper">
+              <div class="category-grid">
+                <div class="tool-card card-amber">
+                  <div class="card-top">
+                    <div class="tool-icon">💉</div>
+                    <span class="tool-status active">Hoạt động</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row"><h3>Chỉnh liều Insulin nội trú</h3></div>
+                    <p>Phác đồ kiểm soát đường huyết bệnh nhân nội trú, tính liều insulin nền – bolus.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Nội tiết</span>
+                    <a href="Nội tiết & Chuyển hóa/DG_Insulin-ĐTĐ.html">Mở công cụ</a>
+                  </div>
+                </div>
               </div>
             </div>
-
           </div>
-        </div>
 
-        <!-- NHÓM 6: Thần kinh -->
-        <div class="group-container g-teal">
-          <h3 class="group-heading"><span class="g-icon">🧩</span> Thần kinh</h3>
-          <div class="category-grid">
-
-            <div class="tool-card card-teal">
-              <div class="card-top">
-                <div class="tool-icon">🫀</div>
-                <span class="tool-status dev">Đang xây</span>
-              </div>
-              <div class="tool-content">
-                <div class="tool-title-row"><h3>Sàng lọc &amp; Phân tầng Đột quỵ cấp</h3></div>
-                <p>Thang điểm NIHSS, ASPECTS, tiêu chí can thiệp tái thông mạch máu não.</p>
-              </div>
-              <div class="tool-footer">
-                <span class="tool-category">Thần kinh</span>
-                <a href="Thần kinh/DG_Dotquy.html">Mở công cụ</a>
+          <div class="group-container g-teal">
+            <div class="group-heading">
+              <h3><span class="g-icon">🧩</span> Thần kinh</h3>
+              <span class="toggle-indicator"></span>
+            </div>
+            <div class="category-grid-wrapper">
+              <div class="category-grid">
+                <div class="tool-card card-teal">
+                  <div class="card-top">
+                    <div class="tool-icon">🫀</div>
+                    <span class="tool-status dev">Đang xây</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row"><h3>Sàng lọc &amp; Phân tầng Đột quỵ cấp</h3></div>
+                    <p>Thang điểm NIHSS, ASPECTS, tiêu chí can thiệp tái thông mạch máu não.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Thần kinh</span>
+                    <a href="Thần kinh/DG_Dotquy.html">Mở công cụ</a>
+                  </div>
+                </div>
               </div>
             </div>
-
           </div>
-        </div>
 
-      </div><!-- /main-content-grid -->
-    </div><!-- /main-wrapper -->
-
-  </div><!-- /app-container -->
+        </div> 
+    </div>
+  </div>
+</div>
 
   <footer class="global-footer">
     <div class="footer-copyright">
       <p>CliniPortal &copy; 2026 · Công cụ lâm sàng · Chỉ mang tính hỗ trợ, không thay thế phán xét y khoa.</p>
     </div>
-  </footer> 
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const groupHeadings = document.querySelectorAll('.group-heading');
+      
+      groupHeadings.forEach(heading => {
+        heading.addEventListener('click', () => {
+          const container = heading.closest('.group-container');
+          container.classList.toggle('active');
+        });
+      });
+    });
+  </script>
+
 </body>
 </html>

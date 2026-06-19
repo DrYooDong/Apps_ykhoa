@@ -11,416 +11,609 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Lucide icons -->
-  <script src="js/main.js" defer></script>
   <link rel="stylesheet" href="../../../css/reset.css">
-  <link rel="stylesheet" href="../../../css/main.css">  
-    <style>
-        .na-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-        .panel {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 1.5rem;
-            box-shadow: var(--shadow-sm);
-        }
-        .panel-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 1.25rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-            margin-bottom: 1rem;
-        }
-        .input-group label {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-main);
-        }
-        input[type="number"], select {
-            width: 100%;
-            padding: 0.6rem;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-sm);
-            background-color: var(--bg-light);
-            color: var(--text-main);
-            font-size: 1rem;
-        }
-        .grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        
-        /* Hiển thị kết quả từng bước */
-        .step-box {
-            margin-bottom: 1rem;
-            padding: 1rem;
-            border-radius: var(--radius-sm);
-            background-color: var(--bg-light);
-            border-left: 4px solid var(--border-color);
-        }
-        .step-box h4 {
-            font-size: 0.95rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--text-main);
-        }
-        .step-box p {
-            font-size: 0.9rem;
-            margin-bottom: 0.2rem;
-            line-height: 1.5;
-        }
-        
-        .status-valid { border-left-color: #10b981; }
-        .status-invalid { border-left-color: #ef4444; background-color: rgba(239, 68, 68, 0.05); }
-        .status-primary { border-left-color: var(--primary-color); }
-        .status-warning { border-left-color: #f59e0b; background-color: rgba(245, 158, 11, 0.05); }
-        
-        .conclusion-box {
-            background-color: rgba(16, 185, 129, 0.1);
-            border: 1px solid #10b981;
-            padding: 1.25rem;
-            border-radius: var(--radius-md);
-            margin-top: 1.5rem;
-        }
-        .conclusion-box.alert {
-            background-color: rgba(239, 68, 68, 0.1);
-            border-color: #ef4444;
-        }
-        .conclusion-box h3 {
-            color: #047857;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-        .conclusion-box.alert h3 { color: #b91c1c; }
-        
-        .reset-btn {
-            width: 100%; padding: 0.75rem; background-color: var(--bg-light);
-            border: 1px solid var(--border-color); border-radius: var(--radius-sm);
-            color: var(--text-main); font-weight: 700; cursor: pointer; margin-top: 1rem;
-        }
-        .reset-btn:hover { background-color: var(--border-color); }
-        
-        .ref-text { font-size: 0.8rem; color: var(--text-muted); margin-top: 1.5rem; line-height: 1.4; border-top: 1px dashed var(--border-color); padding-top: 1rem; }
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
 
-        @media (min-width: 768px) {
-            .na-grid { grid-template-columns: 1fr 1.5fr; }
-            .sticky-panel { position: sticky; top: calc(var(--header-height) + 1.25rem); }
-        }
-    </style>
+  <script src="../../../pages/header.js"></script>  
+<style>
+  /* ============================================================
+     PAGE-SPECIFIC STYLES: RỐI LOẠN NATRI & ĐỘNG HỌC DỊCH TRUYỀN
+     Đã quy hoạch 100% về Design Tokens chuẩn của CliniPortal
+  ============================================================ */
+
+  /* ── 1. BỐ CỤC LƯỚI CHÍNH (GRID SYSTEM) ── */
+  .na-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  /* Khung Panel chứa cấu trúc dữ liệu và kết quả */
+  .panel {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-divider);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: background-color var(--tr), border-color var(--tr), box-shadow var(--tr);
+  }
+
+  .panel-title {
+    font-size: var(--text-md);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-divider);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* ── 2. CẤU TRÚC ĐIỀU KHIỂN FORM ── */
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .input-group label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  input[type="number"], 
+  select {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface-offset);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    transition: border-color var(--tr), box-shadow var(--tr);
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  input[type="number"]:focus, 
+  select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-hl);
+  }
+
+  .grid-2-col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  /* ── 3. KHỐI HIỂN THỊ KẾT QUẢ TỪNG BƯỚC ── */
+  .step-box {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface-offset);
+    border-left: 4px solid var(--color-border);
+    transition: border-color var(--tr), background-color var(--tr);
+  }
+
+  .step-box h4 {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: var(--color-text);
+  }
+
+  .step-box p {
+    font-size: var(--text-sm);
+    margin: 0;
+    line-height: 1.5;
+    color: var(--color-text);
+  }
+
+  /* Trạng thái viền chỉ báo động học lâm sàng */
+  .status-valid { border-left-color: var(--color-success); }
+  .status-invalid { 
+    border-left-color: var(--color-rose); 
+    background-color: var(--color-rose-hl); 
+  }
+  .status-primary { border-left-color: var(--color-primary); }
+  .status-warning { 
+    border-left-color: var(--color-warning); 
+    background-color: var(--color-warning-hl); 
+  }
+
+  /* ── 4. KHỐI KẾT LUẬN CHẨN ĐOÁN & PHÁC ĐỒ TRUYỀN ── */
+  .conclusion-box {
+    background-color: var(--color-success-hl);
+    border: 1px solid var(--color-success);
+    padding: 1.25rem;
+    border-radius: var(--radius-md);
+    margin-top: 1.5rem;
+    transition: background-color var(--tr), border-color var(--tr);
+  }
+
+  .conclusion-box.alert {
+    background-color: var(--color-rose-hl);
+    border-color: var(--color-rose);
+  }
+
+  .conclusion-box h3 {
+    color: var(--color-success);
+    margin: 0 0 0.5rem 0;
+    font-size: var(--text-md);
+    font-weight: 700;
+  }
+
+  .conclusion-box.alert h3 {
+    color: var(--color-rose);
+  }
+
+  .conclusion-box p {
+    margin: 0;
+    font-size: var(--text-sm);
+    color: var(--color-text);
+    line-height: 1.6;
+  }
+
+  /* Nút đặt lại dữ liệu */
+  .reset-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--color-surface-offset);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color var(--tr), border-color var(--tr);
+    margin-top: 1rem;
+  }
+
+  .reset-btn:hover {
+    background-color: var(--color-divider);
+    border-color: var(--color-primary);
+  }
+
+  /* Tài liệu tham khảo y khoa */
+  .ref-text {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    margin-top: 1.5rem;
+    line-height: 1.5;
+    border-top: 1px dashed var(--color-divider);
+    padding-top: 1rem;
+  }
+
+  /* ── 5. XỬ LÝ RESPONSIVE TRÊN MÀN HÌNH LỚN (PC/TABLET ĐỨNG) ── */
+  @media (min-width: 768px) {
+    .na-grid {
+      grid-template-columns: 1fr 1.5fr;
+    }
+    .sticky-panel {
+      position: sticky;
+      top: calc(var(--header-height, 60px) + 1.25rem);
+      height: fit-content;
+    }
+  }
+
+  #ods-risk-group {
+  display: none;
+  margin-top: 0.75rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-offset);
+}
+
+    #ods-risk-group > label:first-child {
+    display: block;
+    margin-bottom: 0.75rem;
+    line-height: 1.45;
+    }
+
+    #ods-risk-group .checkbox-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.35rem 0.5rem;
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    transition: background-color var(--tr), border-color var(--tr), transform var(--tr);
+    }
+
+    #ods-risk-group .checkbox-item:hover {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: var(--color-divider);
+    }
+
+    #ods-risk-group .checkbox-item input[type="checkbox"] {
+    margin-top: 0.2rem;
+    flex: 0 0 auto;
+    }
+
+    #ods-risk-group .checkbox-item {
+    width: 100%;
+    }
+
+    #ods-risk-group {
+    display: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem 0.75rem;
+    }
+
+    #ods-risk-group > label:first-child {
+    grid-column: 1 / -1;
+    }
+
+    @media (min-width: 768px) {
+    #ods-risk-group {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    }
+</style>
 </head>
+
 <body>
-    <!--HEADER-->
-    <header class="global-header">
-        <div class="header-left">
-            <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
-            <div class="logo-brand">
-                <span class="logo-icon">🩺</span><span class="logo-text">CliniPortal</span>
-            </div>
-            <!--BACK BUTTON-->
-            <button class="btn-back" onclick="goBack()">
-                <span class="icon">&larr;</span> Quay lại
-            </button>
-        </div>
+  <!-- Placeholder nạp header.html — đường dẫn tính từ vị trí cong-cu.html -->
+  <div id="header-placeholder" data-header-path="../../header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-        <!-- SEARCH BAR --> 
-        <div class="search-bar-container">
-        <div class="search-container">
-        <input class="input" type="text">
-        <svg viewBox="0 0 24 24" class="search__icon">
-            <g>
-            <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
-            </path>
-            </g>
+  <!-- ===================== APP CONTAINER ===================== -->
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5"
+          fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
-        </div>
-        </div>
-        <div class="header-actions">
-            <button id="theme-toggle-btn" title="Chuyển đổi Sáng/Tối" aria-label="Toggle Theme">🌓</button>
-            <button id="sync-settings-btn" title="Cài đặt & Đồng bộ" aria-label="Settings and Sync">⚙️</button>
-        </div>
-    </header>
-    
+      </button>
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../cong-cu.html" class="nav-item active" aria-current="page" title="Công cụ lâm sàng">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Phác đồ/phac-do.html" class="nav-item" title="Phác đồ Y khoa">
+              <span class="nav-icon">📋</span>
+              <span class="nav-text">Phác đồ điều trị</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý & Kháng sinh</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận triệu chứng">
+              <span class="nav-icon">🩻</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
     <!--MAIN CONTENT-->
-    <div class="app-container">
-        <aside class="app-sidebar" id="appSidebar">
-            <nav class="sidebar-nav">
-                <ul>
-                    <li><a href="../../../index.html"><img src="../../../assets/icons/ic-trang-chu.svg" alt="Trang chủ" class="menu-icon"> Trang chủ</a></li>
-                    <li><a href="../cong-cu.html" class="active"><img src="../../../assets/icons/ic-cong-cu.svg" alt="Công cụ" class="menu-icon"> Công cụ lâm sàng</a></li>
-                    <li><a href="../../Tiếp cận/tiep-can.html"><img src="../../../assets/icons/ic-tiep-can.svg" alt="Tiếp cận" class="menu-icon"> Tiếp cận lâm sàng</a></li>
-                    <li><a href="../../Phác đồ/phac-do.html"><img src="../../../assets/icons/ic-phac-do.svg" alt="Phác đồ" class="menu-icon"> Phác đồ điều trị</a></li>
-                    <li><a href="../../Dược lý/duoc-ly.html"><img src="../../../assets/icons/ic-duoc-ly.svg" alt="Dược lý" class="menu-icon"> Dược lý & Kháng sinh</a></li>
-                    <li><a href="../../Y học chứng cứ/y-hoc-chung-cu.html"><img src="../../../assets/icons/ic-y-hoc.svg" alt="Y học chứng cứ" class="menu-icon"> Y học chứng cứ</a></li>
-                </ul>
-            </nav>
-        </aside>
-
-        <div class="main-wrapper">
-            <section class="hero-dashboard">
-                <div class="hero-intro">
-                    <h1>CÁC RỐI LOẠN NATRI & ĐỘNG HỌC DỊCH TRUYỀN</h1>
-                    <p>Ứng dụng tính toán lượng nước thiếu hụt và dự đoán thay đổi Natri huyết thanh bằng phương trình Adrogue-Madias, kết hợp giới hạn an toàn truyền dịch.</p>
-                </div>
-            </section>
-
-            <div class="na-grid">
-                
-                <div class="panel">
-                    <div class="panel-title"><span>📝 Thông số Bệnh nhân & Chỉ định</span></div>
-                    
-                    <div class="grid-2-col">
-                        <div class="input-group">
-                            <label>Cân nặng (kg)</label>
-                            <input type="number" id="na-weight" value="60" min="20" max="200">
-                        </div>
-                        <div class="input-group">
-                            <label>Tuổi</label>
-                            <input type="number" id="na-age" value="50" min="1" max="120">
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <label>Giới tính</label>
-                        <select id="na-gender">
-                            <option value="male">Nam</option>
-                            <option value="female">Nữ</option>
-                        </select>
-                    </div>
-
-                    <div class="grid-2-col" style="margin-top: 1rem; border-top: 1px dashed var(--border-color); padding-top: 1rem;">
-                        <div class="input-group">
-                            <label>Na⁺ hiện tại (mmol/L)</label>
-                            <input type="number" id="na-current" value="118" step="1">
-                        </div>
-                        <div class="input-group">
-                            <label>Na⁺ mục tiêu (mmol/L)</label>
-                            <input type="number" id="na-target" value="124" step="1">
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <label>Chọn Dịch truyền (Infusate)</label>
-                        <select id="na-fluid">
-                            <option value="513">NaCl 3% (Natri 513 mmol/L)</option>
-                            <option value="154">NaCl 0.9% (Natri 154 mmol/L)</option>
-                            <option value="130">Ringer Lactate (Natri 130 mmol/L)</option>
-                            <option value="77">NaCl 0.45% (Natri 77 mmol/L)</option>
-                            <option value="0">Dextrose 5% / Nước cất (Natri 0 mmol/L)</option>
-                        </select>
-                    </div>
-
-                    <button type="button" id="btn-reset" class="reset-btn">🔄 Làm mới dữ liệu</button>
-                </div>
-
-                <div class="panel sticky-panel">
-                    <div class="panel-title"><span>🧠 Phân tích & Tính toán</span></div>
-                    
-                    <div id="step1-tbw" class="step-box status-primary">
-                        <h4>Bước 1: Nước tổng cơ thể (TBW)</h4>
-                        <p id="out-tbw">-</p>
-                    </div>
-
-                    <div id="step2-adrogue" class="step-box status-primary">
-                        <h4>Bước 2: Phương trình Adrogue-Madias</h4>
-                        <p id="out-adrogue">-</p>
-                    </div>
-
-                    <div id="step3-deficit" class="step-box status-warning" style="display: none;">
-                        <h4>Khoảng trống Nước thiếu (Water Deficit)</h4>
-                        <p id="out-deficit">-</p>
-                    </div>
-
-                    <div class="conclusion-box" id="box-conclusion">
-                        <h3 id="concl-title">Phác đồ Truyền dịch:</h3>
-                        <p id="out-conclusion" style="font-size: 0.95rem; line-height: 1.6;">Vui lòng nhập thông số để hệ thống tính toán.</p>
-                    </div>
-
-                    <div class="ref-text">
-                        <strong>*Tài liệu tham khảo:</strong><br>
-                        1. Adrogué HJ, Madias NE. Hyponatremia & Hypernatremia. <i>N Engl J Med. 2000</i>.<br>
-                        2. European Clinical Practice Guideline on diagnosis and treatment of hyponatraemia. <i>Eur J Endocrinol. 2014</i>. (Giới hạn tăng Na+ không quá 8-10 mmol/L/24h để phòng ODS).
-                    </div>
-                </div>
-
-            </div>
+    <div class="main-wrapper" id="mainContent">
+      
+      <section class="hero-dashboard" aria-labelledby="hero-title">
+        <div class="hero-intro">
+          <h1 id="hero-title">CÁC RỐI LOẠN NATRI & ĐỘNG HỌC DỊCH TRUYỀN</h1>
+          <p>Mô hình hóa động học dịch truyền bằng phương trình Adrogue-Madias, tích hợp tầng lọc nguy cơ não cấp tính theo European Guidelines & Tomkins.</p>
         </div>
+      </section>
+
+      <div class="na-grid">
+        
+        <div class="panel">
+          <div class="panel-title"><span>📝</span> Thông số Bệnh nhân & Lâm sàng</div>
+          
+          <div class="grid-2-col">
+            <div class="input-group">
+              <label for="na-weight">Cân nặng (kg)</label>
+              <input type="number" id="na-weight" value="60" min="20" max="200">
+            </div>
+            <div class="input-group">
+              <label for="na-age">Tuổi</label>
+              <input type="number" id="na-age" value="50" min="1" max="120">
+            </div>
+          </div>
+
+          <div class="grid-2-col">
+            <div class="input-group">
+              <label for="na-gender">Giới tính</label>
+              <select id="na-gender">
+                <option value="male">Nam</option>
+                <option value="female">Nữ</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label for="na-symptoms">Triệu chứng thần kinh</label>
+              <select id="na-symptoms">
+                <option value="mild">Không / Nhẹ (Đau đầu, buồn nôn nhẹ)</option>
+                <option value="severe">Nặng (Co giật, lơ mơ, hôn mê, suy hô hấp)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="checkbox-group" id="ods-risk-group" style="display: none;">
+            <label style="font-size: var(--text-sm); font-weight: 600; color: var(--color-rose);">Yếu tố nguy cơ cao bị hủy Myelin não (ODS Risk):</label>
+            <label class="checkbox-item">
+              <input type="checkbox" class="ods-risk" value="alcohol"> Nghiện rượu mạn tính
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" class="ods-risk" value="malnutrition"> Suy dinh dưỡng nặng / Suy mòn cơ thể
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" class="ods-risk" value="hypokalemia"> Hạ Kali máu phối hợp nặng (K⁺ &lt; 3.0 mmol/L)
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" class="ods-risk" value="liver"> Xơ gan hoặc suy gan tiến triển
+            </label>
+          </div>
+
+          <div class="grid-2-col" style="margin-top: 1rem; border-top: 1px dashed var(--color-divider); padding-top: 1rem;">
+            <div class="input-group">
+              <label for="na-current">Na⁺ hiện tại (mmol/L)</label>
+              <input type="number" id="na-current" value="118" step="1">
+            </div>
+            <div class="input-group">
+              <label for="na-target">Na⁺ mục tiêu (mmol/L)</label>
+              <input type="number" id="na-target" value="124" step="1">
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="na-fluid">Chọn Dịch truyền (Infusate)</label>
+            <select id="na-fluid">
+              <option value="513">NaCl 3% (Natri 513 mmol/L)</option>
+              <option value="154">NaCl 0.9% (Natri 154 mmol/L)</option>
+              <option value="130">Ringer Lactate (Natri 130 mmol/L)</option>
+              <option value="77">NaCl 0.45% (Natri 77 mmol/L)</option>
+              <option value="0">Dextrose 5% / Nước cất (Natri 0 mmol/L)</option>
+            </select>
+          </div>
+
+          <button type="button" id="btn-reset" class="reset-btn">🔄 Làm mới dữ liệu</button>
+        </div>
+
+        <div class="panel sticky-panel">
+          <div class="panel-title"><span>🧠</span> Phân tích &amp; Tính toán Lâm sàng</div>
+          
+          <div id="step1-tbw" class="step-box status-primary">
+            <h4>Bước 1: Nước tổng cơ thể (TBW)</h4>
+            <p id="out-tbw">-</p>
+          </div>
+
+          <div id="step2-adrogue" class="step-box status-primary">
+            <h4>Bước 2: Dự kiến biến thiên Adrogue-Madias</h4>
+            <p id="out-adrogue">-</p>
+          </div>
+
+          <div id="step3-deficit" class="step-box status-warning" style="display: none;">
+            <h4>Khoảng trống Nước thiếu (Water Deficit)</h4>
+            <p id="out-deficit">-</p>
+          </div>
+
+          <div id="emergency-bolus-box" class="failure-protocol alert-critical" style="display: none; margin-bottom: 1rem;">
+            </div>
+
+          <div class="conclusion-box" id="box-conclusion">
+            <h3 id="concl-title">Phác đồ Điều trị:</h3>
+            <p id="out-conclusion">Vui lòng nhập thông số lâm sàng để hệ thống tính toán điện giải đồ.</p>
+          </div>
+
+          <div class="ref-text">
+            <strong>📋 Tài liệu tham khảo y khoa gốc:</strong><br>
+            1. European Society of Endocrinology Clinical Practice Guideline on diagnosis and treatment of hyponatraemia.<br>
+            2. Tomkins M, Sherlock M, et al. Diagnosis and treatment of hypernatremia.<br>
+            3. Adrogué HJ, Madias NE. Assessing acid-base and electrolyte disorders.
+          </div>
+        </div>
+
+      </div>
     </div>
 
     <script>
-        function goBack() {
-            window.history.back();
+      document.addEventListener('DOMContentLoaded', () => {
+        // Thu thập các thành phần DOM
+        const inWeight = document.getElementById('na-weight');
+        const inAge = document.getElementById('na-age');
+        const inGender = document.getElementById('na-gender');
+        const inSymptoms = document.getElementById('na-symptoms');
+        const inCurrent = document.getElementById('na-current');
+        const inTarget = document.getElementById('na-target');
+        const inFluid = document.getElementById('na-fluid');
+
+        const outTbw = document.getElementById('out-tbw');
+        const outAdrogue = document.getElementById('out-adrogue');
+        const boxDeficit = document.getElementById('step3-deficit');
+        const outDeficit = document.getElementById('out-deficit');
+        const boxEmergency = document.getElementById('emergency-bolus-box');
+        const boxConclusion = document.getElementById('box-conclusion');
+        const conclTitle = document.getElementById('concl-title');
+        const outConclusion = document.getElementById('out-conclusion');
+        const odsGroup = document.getElementById('ods-risk-group');
+
+        function calculateSodium() {
+          const weight = parseFloat(inWeight.value) || 0;
+          const age = parseInt(inAge.value) || 0;
+          const gender = inGender.value;
+          const symptoms = inSymptoms.value;
+          const currentNa = parseFloat(inCurrent.value) || 0;
+          const targetNa = parseFloat(inTarget.value) || 0;
+          const fluidNa = parseFloat(inFluid.value);
+          const fluidName = inFluid.options[inFluid.selectedIndex].text.split(' (')[0];
+
+          if (!weight || !currentNa || !targetNa) return;
+
+          // 1. CHẨN ĐOÁN VÀ ĐIỀU CHỈNH GIAO DIỆN THEO RỐI LOẠN NATRI
+          const isHyponatremia = currentNa < 135;
+          const isHypernatremia = currentNa > 145;
+
+          // Hiện/Ẩn bảng kiểm chọn nguy cơ ODS
+          if (isHyponatremia) {
+            odsGroup.style.display = "flex";
+          } else {
+            odsGroup.style.display = "none";
+          }
+
+          // 2. TÍNH NƯỚC TỔNG CƠ THỂ (TBW) THEO TUỔI VÀ GIỚI
+          let tbwFactor = 0;
+          if (gender === 'male') {
+            tbwFactor = age >= 65 ? 0.5 : 0.6;
+          } else {
+            tbwFactor = age >= 65 ? 0.45 : 0.5;
+          }
+          const tbw = weight * tbwFactor;
+          
+          outTbw.innerHTML = `Hệ số ước tính thể trạng: <strong>${tbwFactor}</strong> <br>
+                              Thể tích nước tổng cơ thể (TBW): <strong>${tbw.toFixed(1)} Lít</strong>`;
+
+          // 3. PHƯƠNG TRÌNH ADROGUE-MADIAS (Động học trên 1 Lít dịch bất kỳ)
+          const deltaNa1L = (fluidNa - currentNa) / (tbw + 1);
+          
+          outAdrogue.innerHTML = `Công thức: (Na_dịch - Na_máu) / (TBW + 1)<br>
+                                  Nếu truyền 1 Lít <strong>${fluidName}</strong>, nồng độ Na⁺ huyết thanh sẽ 
+                                  <strong>${deltaNa1L > 0 ? 'TĂNG' : 'GIẢM'} ${Math.abs(deltaNa1L).toFixed(2)} mmol/L</strong>.`;
+
+          // 4. PROTOCOL BÙ BOLUS NaCl 3% KHẨN CẤP (Cho hạ Natri nặng có triệu chứng)
+          if (isHyponatremia && symptoms === 'severe' && currentNa < 130) {
+            boxEmergency.style.display = "block";
+            boxEmergency.innerHTML = `
+              <span class="failure-protocol-title text-rose">🚨 Y LỆNH KHẨN CẤP (EMERGENCY INFUSION - PROTOCOL KHÔNG TRÌ HOÃN):</span>
+              <ul>
+                <li>Bệnh nhân hạ Natri máu kèm triệu chứng thần kinh nguy kịch. Y lệnh: <strong>Truyền tĩnh mạch nhanh 100 - 150 mL dung dịch NaCl 3% trong 20 phút</strong>.</li>
+                <li>Có thể lặp lại tối đa 2 lần nữa (mỗi lần cách 20 phút) nếu lâm sàng chưa cải thiện hoặc cho đến khi Na⁺ tăng thêm 5 mmol/L.</li>
+                <li><strong>Theo dõi:</strong> Xét nghiệm lại điện giải đồ mỗi 2-4 giờ. Khi triệu chứng thần kinh đã ổn định, dừng bolus và áp dụng phác đồ duy trì chậm bên dưới.</li>
+              </ul>
+            `;
+          } else {
+            boxEmergency.style.display = "none";
+          }
+
+          // 5. TÍNH KHOẢNG TRỐNG NƯỚC THIẾU HỤT (FREE WATER DEFICIT - Cho tăng Natri máu)
+          if (isHypernatremia) {
+            boxDeficit.style.display = "block";
+            const waterDeficit = tbw * ((currentNa / 140) - 1);
+            outDeficit.innerHTML = `Lượng nước tự do thiếu hụt: <strong>${waterDeficit.toFixed(2)} Lít</strong>.<br>
+                                    <em>(Khuyến cáo bù rải đều trong 48-72 giờ qua đường uống nước chín hoặc truyền tĩnh mạch Dextrose 5% để bảo vệ tế bào thần kinh)</em>.`;
+          } else {
+            boxDeficit.style.display = "none";
+          }
+
+          // 6. KIỂM TRA TÍNH HỢP LÝ VÀ GIỚI HẠN AN TOÀN TRUYỀN DUY TRÌ LONG-TERM
+          const requiredChange = targetNa - currentNa;
+          
+          if (requiredChange === 0) {
+            boxConclusion.className = "conclusion-box";
+            conclTitle.textContent = "Hoàn thành mục tiêu";
+            outConclusion.textContent = "Natri máu đã ở mức mong muốn. Không cần can thiệp dịch truyền để điều hòa.";
+            return;
+          }
+
+          // Cảnh báo chọn sai hướng tác động của dịch truyền
+          if ((requiredChange > 0 && deltaNa1L <= 0) || (requiredChange < 0 && deltaNa1L >= 0)) {
+            boxConclusion.className = "conclusion-box alert";
+            conclTitle.textContent = "⚠️ Cảnh báo sai loại dịch!";
+            outConclusion.innerHTML = `Dịch truyền <strong>${fluidName}</strong> sẽ làm Na⁺ biến thiên ngược lại với mục tiêu điều trị (Na⁺ sẽ ${deltaNa1L > 0 ? 'tăng' : 'giảm'} thay vì ${requiredChange > 0 ? 'tăng' : 'giảm'}). Vui lòng cấu hình loại dịch khác.`;
+            return;
+          }
+
+          const requiredVolumeLiters = requiredChange / deltaNa1L;
+          const requiredVolumeMl = requiredVolumeLiters * 1000;
+
+          // Thiết lập vận tốc điều chỉnh an toàn trong 24 giờ đầu
+          let maxRatePer24h = 10; 
+          let isCritical = false;
+          let warningText = "";
+
+          if (requiredChange > 0) { // Tình huống nâng Natri
+            let hasOdsRisk = false;
+            const checkedOds = document.querySelectorAll('.ods-risk:checked');
+            if (checkedOds.length > 0) {
+              hasOdsRisk = true;
+              maxRatePer24h = 6; // Siết chặt giới hạn xuống 4-6 mmol/L/24h nếu có nguy cơ hủy myelin não
+            }
+
+            if (requiredChange > maxRatePer24h) {
+              isCritical = true;
+              if (hasOdsRisk) {
+                warningText = `🚨 <strong>NGUY CƠ HỦY MYELIN NÃO CỰC CAO (ODS RISK):</strong> Bệnh nhân có yếu tố nguy cơ cao phối hợp. Tốc độ nâng tuyệt đối không vượt quá 4-6 mmol/L trong 24 giờ đầu để tránh di chứng tàn phế vĩnh viễn.`;
+              } else {
+                warningText = `⚠️ <strong>Vượt giới hạn an toàn:</strong> Tốc độ nâng Natri mạn tính khuyến cáo tối đa là 10 mmol/L trong 24 giờ đầu để phòng ngừa ODS.`;
+              }
+            }
+          } else { // Tình huống hạ Natri (Tăng Natri máu mạn)
+            maxRatePer24h = 10; // Giới hạn hạ tối đa 10 mmol/L/24h tránh phù não cấp
+            if (Math.abs(requiredChange) > maxRatePer24h) {
+              isCritical = true;
+              warningText = `⚠️ <strong>Cảnh báo tốc độ hạ Natri quá nhanh:</strong> Nguy cơ kéo nước vào nội bào gây phù não cấp, co giật và hôn mê. Giới hạn an toàn là hạ không quá 10 mmol/L/24 giờ.`;
+            }
+          }
+
+          const safeTimeHours = (Math.abs(requiredChange) / maxRatePer24h) * 24;
+          const infusionRateMlHr = requiredVolumeMl / Math.max(safeTimeHours, 24);
+
+          boxConclusion.className = "conclusion-box" + (isCritical ? " alert" : "");
+          conclTitle.textContent = "Phác đồ Duy trì / Điều chỉnh Đề xuất:";
+          
+          let conclHTML = `Để điều chỉnh nồng độ Na⁺ từ <strong>${currentNa}</strong> về <strong>${targetNa}</strong> (Δ = ${requiredChange > 0 ? '+' : ''}${requiredChange} mmol/L), y lệnh duy trì chuẩn là:<br><br>`;
+          conclHTML += `📌 <strong>Tổng thể tích dịch cần:</strong> ${Math.abs(requiredVolumeLiters).toFixed(2)} Lít (~<strong>${Math.round(Math.abs(requiredVolumeMl))} mL</strong>) dung dịch <strong>${fluidName}</strong>.<br>`;
+          
+          if (isCritical) {
+            conclHTML += `<br>${warningText}<br><br>`;
+            conclHTML += `⏱️ <strong>Thời gian truyền an toàn tối thiểu:</strong> Kéo dài và rải đều lượng dịch trên trong ít nhất <strong>${Math.ceil(safeTimeHours)} giờ</strong>.<br>`;
+            conclHTML += `💧 <strong>Cài đặt tốc độ máy bơm tiêm điện (BTĐ):</strong> ~<strong>${Math.round(Math.abs(requiredVolumeMl) / safeTimeHours)} mL/giờ</strong>.`;
+          } else {
+            conclHTML += `💧 <strong>Tốc độ truyền (nếu phân bổ đều 24h):</strong> ~<strong>${Math.round(Math.abs(infusionRateMlHr))} mL/giờ</strong>.<br>`;
+          }
+          
+          conclHTML += `<br><br><span style="font-size:0.85rem; color:var(--color-text-muted);">*Cảnh báo giường bệnh: Phương trình Adrogue-Madias chỉ ước tính trong hệ đóng tĩnh. Trên thực tế lâm sàng, bắt buộc phải cộng thêm lượng dịch mất tiếp diễn (nước tiểu, sốt, dịch dẫn lưu) và xét nghiệm kiểm tra lại Natri máu mỗi 4-6 giờ một lần để điều chỉnh kịp thời.</span>`;
+
+          outConclusion.innerHTML = conclHTML;
         }
-        document.addEventListener('DOMContentLoaded', () => {
-            // Lấy các DOM elements
-            const inWeight = document.getElementById('na-weight');
-            const inAge = document.getElementById('na-age');
-            const inGender = document.getElementById('na-gender');
-            const inCurrent = document.getElementById('na-current');
-            const inTarget = document.getElementById('na-target');
-            const inFluid = document.getElementById('na-fluid');
 
-            const outTbw = document.getElementById('out-tbw');
-            const outAdrogue = document.getElementById('out-adrogue');
-            const boxDeficit = document.getElementById('step3-deficit');
-            const outDeficit = document.getElementById('out-deficit');
-            const boxConclusion = document.getElementById('box-conclusion');
-            const conclTitle = document.getElementById('concl-title');
-            const outConclusion = document.getElementById('out-conclusion');
-
-            function calculateSodium() {
-                const weight = parseFloat(inWeight.value) || 0;
-                const age = parseInt(inAge.value) || 0;
-                const gender = inGender.value;
-                const currentNa = parseFloat(inCurrent.value) || 0;
-                const targetNa = parseFloat(inTarget.value) || 0;
-                const fluidNa = parseFloat(inFluid.value);
-                const fluidName = inFluid.options[inFluid.selectedIndex].text.split(' (')[0];
-
-                if (!weight || !currentNa || !targetNa) return;
-
-                // 1. TÍNH TBW (Total Body Water)
-                let tbwFactor = 0;
-                if (gender === 'male') {
-                    tbwFactor = age >= 65 ? 0.5 : 0.6;
-                } else {
-                    tbwFactor = age >= 65 ? 0.45 : 0.5;
-                }
-                const tbw = weight * tbwFactor;
-                
-                outTbw.innerHTML = `Hệ số ước tính: <strong>${tbwFactor}</strong> <br>
-                                    Thể tích nước tổng cơ thể: <strong>${tbw.toFixed(1)} Lít</strong>`;
-
-                // XÁC ĐỊNH LOẠI RỐI LOẠN
-                const isHyponatremia = currentNa < 135;
-                const isHypernatremia = currentNa > 145;
-
-                // 2. PHƯƠNG TRÌNH ADROGUE-MADIAS (Dự đoán thay đổi khi truyền 1 Lít dịch)
-                const deltaNa1L = (fluidNa - currentNa) / (tbw + 1);
-                
-                outAdrogue.innerHTML = `Công thức: (Na_{dịch} - Na_{máu}) / (TBW + 1)<br>
-                                        Nếu truyền 1 Lít <strong>${fluidName}</strong>, Na⁺ máu sẽ 
-                                        <strong>${deltaNa1L > 0 ? 'TĂNG' : 'GIẢM'} ${Math.abs(deltaNa1L).toFixed(2)} mmol/L</strong>.`;
-
-                // 3. TÍNH TOÁN LƯỢNG NƯỚC THIẾU HỤT (Cho Tăng Natri)
-                if (isHypernatremia) {
-                    boxDeficit.style.display = "block";
-                    // Water deficit = TBW * ((Current Na / 140) - 1)
-                    const waterDeficit = tbw * ((currentNa / 140) - 1);
-                    outDeficit.innerHTML = `Lượng nước tự do thiếu hụt: <strong>${waterDeficit.toFixed(2)} Lít</strong>.<br>
-                                            <em>(Khuyến cáo bù từ từ trong 48-72 giờ).</em>`;
-                } else {
-                    boxDeficit.style.display = "none";
-                }
-
-                // 4. KIỂM TRA TÍNH HỢP LÝ CỦA DỊCH TRUYỀN VÀ TÍNH TỐC ĐỘ
-                const requiredChange = targetNa - currentNa;
-                
-                if (requiredChange === 0) {
-                    boxConclusion.className = "conclusion-box";
-                    conclTitle.textContent = "Hoàn thành mục tiêu";
-                    outConclusion.textContent = "Natri máu đã đạt mục tiêu. Không cần can thiệp truyền dịch để điều chỉnh Natri.";
-                    return;
-                }
-
-                // Kiểm tra xem dịch truyền có đẩy Natri đi sai hướng không?
-                if ((requiredChange > 0 && deltaNa1L <= 0) || (requiredChange < 0 && deltaNa1L >= 0)) {
-                    boxConclusion.className = "conclusion-box alert";
-                    conclTitle.textContent = "⚠️ Cảnh báo lâm sàng!";
-                    outConclusion.innerHTML = `Sử dụng <strong>${fluidName}</strong> sẽ làm Na⁺ máu đi ngược lại mục tiêu điều trị (Na⁺ sẽ ${deltaNa1L > 0 ? 'tăng' : 'giảm'} thay vì ${requiredChange > 0 ? 'tăng' : 'giảm'}). Vui lòng chọn loại dịch khác.`;
-                    return;
-                }
-
-                // Tính thể tích dịch cần thiết
-                const requiredVolumeLiters = requiredChange / deltaNa1L;
-                const requiredVolumeMl = requiredVolumeLiters * 1000;
-
-                // TÍNH TOÁN AN TOÀN (Safety Limits)
-                let safeTimeHours = 0;
-                let warningText = "";
-                let isCritical = false;
-
-                if (requiredChange > 0) { // Nâng Natri
-                    const maxRatePer24h = 8; // Guideline Châu Âu 2014
-                    if (requiredChange > maxRatePer24h) {
-                        isCritical = true;
-                        warningText = `⚠️ <strong>Nguy cơ ODS (Hủy myelin trung tâm):</strong> Bạn đang cố nâng Na⁺ lên quá ${maxRatePer24h} mmol/L. Khuyến cáo không nâng quá 8 mmol/L trong 24 giờ đầu để bảo vệ não.`;
-                    }
-                    safeTimeHours = (requiredChange / maxRatePer24h) * 24;
-                } else { // Hạ Natri
-                    const maxRatePer24h = 10;
-                    if (Math.abs(requiredChange) > maxRatePer24h) {
-                        isCritical = true;
-                        warningText = `⚠️ <strong>Nguy cơ Phù não:</strong> Bạn đang cố hạ Na⁺ quá nhanh. Khuyến cáo không hạ quá 10 mmol/L trong 24 giờ.`;
-                    }
-                    safeTimeHours = (Math.abs(requiredChange) / maxRatePer24h) * 24;
-                }
-
-                // Nếu thời gian thay đổi dưới 24h, ta giả định truyền trong 24h để xem tốc độ có hợp lý không
-                const infusionRateMlHr = requiredVolumeMl / Math.max(safeTimeHours, 24);
-
-                boxConclusion.className = "conclusion-box" + (isCritical ? " alert" : "");
-                conclTitle.textContent = "Phác đồ Truyền dịch đề xuất:";
-                
-                let conclHTML = `Để đưa Na⁺ từ <strong>${currentNa}</strong> lên <strong>${targetNa}</strong> (Δ = ${requiredChange > 0 ? '+' : ''}${requiredChange} mmol/L), bạn cần truyền:<br><br>`;
-                conclHTML += `📌 <strong>Tổng thể tích:</strong> ${requiredVolumeLiters.toFixed(2)} Lít (${Math.round(requiredVolumeMl)} mL) <strong>${fluidName}</strong>.<br>`;
-                
-                if (isCritical) {
-                    conclHTML += `<br>${warningText}<br>`;
-                    conclHTML += `⏱️ <strong>Khuyến cáo:</strong> Trải đều lượng dịch này trong ít nhất <strong>${Math.ceil(safeTimeHours)} giờ</strong>.<br>`;
-                    conclHTML += `💧 Tốc độ truyền tối đa an toàn: <strong>~${Math.round(requiredVolumeMl / safeTimeHours)} mL/giờ</strong>.`;
-                } else {
-                    conclHTML += `💧 <strong>Tốc độ truyền (nếu rải đều 24h):</strong> ~${Math.round(infusionRateMlHr)} mL/giờ.<br>`;
-                    conclHTML += `<br><em>*Lưu ý: Adrogue-Madias là mô hình khép kín. Trên lâm sàng cần bù trừ thêm các mất mát đang tiếp diễn (nước tiểu, dịch dạ dày, sốt) và xét nghiệm lại Na⁺ mỗi 4-6 giờ.</em>`;
-                }
-
-                outConclusion.innerHTML = conclHTML;
-            }
-
-            // Lắng nghe sự kiện
-            document.querySelectorAll('input, select').forEach(el => {
-                el.addEventListener('input', calculateSodium);
-                el.addEventListener('change', calculateSodium);
-            });
-
-            document.getElementById('btn-reset').addEventListener('click', () => {
-                inWeight.value = "60"; inAge.value = "50"; inGender.selectedIndex = 0;
-                inCurrent.value = "118"; inTarget.value = "124"; inFluid.selectedIndex = 0;
-                calculateSodium();
-            });
-
-            // Chạy lần đầu
-            calculateSodium();
-
-            // Dark Mode
-            const themeToggleBtn = document.getElementById('theme-toggle-btn');
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
-            if (themeToggleBtn) {
-                themeToggleBtn.addEventListener('click', () => {
-                    if (document.documentElement.getAttribute('data-theme') === 'dark') {
-                        document.documentElement.removeAttribute('data-theme');
-                        localStorage.setItem('theme', 'light');
-                    } else {
-                        document.documentElement.setAttribute('data-theme', 'dark');
-                        localStorage.setItem('theme', 'dark');
-                    }
-                });
-            }
+        // Đăng ký sự kiện lắng nghe tự động cập nhật kết quả Realtime
+        document.querySelectorAll('input, select').forEach(el => {
+          el.addEventListener('input', calculateSodium);
+          el.addEventListener('change', calculateSodium);
         });
-            
+
+        document.getElementById('btn-reset').addEventListener('click', () => {
+          inWeight.value = "60"; inAge.value = "50"; inGender.selectedIndex = 0;
+          inSymptoms.selectedIndex = 0;
+          inCurrent.value = "118"; inTarget.value = "124"; inFluid.selectedIndex = 0;
+          document.querySelectorAll('.ods-risk').forEach(cb => cb.checked = false);
+          calculateSodium();
+        });
+
+        // Khởi chạy tính toán mặc định ngay khi load trang
+        calculateSodium();
+      });
     </script>
 </body>
 </html>

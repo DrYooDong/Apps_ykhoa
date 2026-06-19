@@ -11,600 +11,562 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Lucide icons -->
-  <script src="js/main.js" defer></script>
   <link rel="stylesheet" href="../../../css/reset.css">
-  <link rel="stylesheet" href="../../../css/main.css">  
-    <style>
-        /* Kiến trúc Layout phân vùng chống nhầm lẫn nâng cao */
-        .workspace-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            margin-top: 1rem;
-            align-items: start;
-        }
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
 
-        @media (min-width: 1024px) {
-            .workspace-container {
-                grid-template-columns: 1fr 1fr; /* Chia đôi màn hình Desktop cân đối: Trái (Nhập liệu) - Phải (Kết quả) */
-            }
-        }
+  <script src="../../../pages/header.js"></script>
+  
+  <style>
+  /* ============================================================
+     PAGE-SPECIFIC STYLES: WORKSPACE CHUẨN ĐỒNG BỘ CLINIPORTAL
+     Hỗ trợ linh hoạt: Bù dịch, Vận mạch & Insulin Nội viện
+  ============================================================ */
 
-        /* Phân khối chức năng bằng các Card riêng biệt */
-        .input-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
+  /* ── 1. BỐ CỤC CHÍNH WORKSPACE (GRID SYSTEM) ── */
+  .workspace-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
 
-        /* Khối tiêu đề phân tầng thị giác trực quan */
-        .card-zone-badge {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 0.25rem 0.6rem;
-            border-radius: 4px;
-            text-transform: uppercase;
-            margin-bottom: 0.75rem;
-            letter-spacing: 0.05em;
-        }
-        .badge-blue { background-color: rgba(2, 132, 199, 0.12); color: var(--primary-color); }
-        .badge-orange { background-color: rgba(245, 158, 11, 0.12); color: var(--warning-color); }
+  .input-side, 
+  .output-side {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
 
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        @media (min-width: 640px) {
-            .form-row.two-cols { grid-template-columns: 1fr 1fr; }
-        }
+  /* Khung Panel chứa dữ liệu đầu vào và kết quả */
+  .input-card, 
+  .result-box {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-divider);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: background-color var(--tr), border-color var(--tr), box-shadow var(--tr);
+  }
 
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-        }
-        .form-group label {
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: var(--text-main);
-        }
-        .form-group input, .form-group select {
-            padding: 0.65rem;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-sm);
-            background-color: var(--bg-light);
-            color: var(--text-main);
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-        .form-group input:focus, .form-group select:focus {
-            border-color: var(--primary-color);
-            background-color: var(--card-bg);
-            outline: none;
-        }
+  /* Tiêu đề phân vùng kết quả */
+  .result-title {
+    font-size: var(--text-md);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-divider);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
 
-        /* Khung highlight nhập số liệu đường huyết tránh lóa mắt */
-        .glucose-input-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.85rem;
-            background-color: var(--bg-light);
-            padding: 1rem;
-            border-radius: var(--radius-sm);
-            border: 1px dashed var(--border-color);
-        }
+  /* Badges phân vùng chức năng */
+  .card-zone-badge {
+    display: inline-block;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radius-full);
+    margin-bottom: 1.25rem;
+    width: fit-content;
+  }
+  .badge-blue {
+    background-color: var(--color-primary-hl);
+    color: var(--color-primary);
+  }
+  .badge-red {
+    background-color: var(--color-rose-hl);
+    color: var(--color-rose);
+  }
 
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
 
-        .alert-panel {
-            padding: 1.25rem;
-            border-radius: var(--radius-md);
-            border-left: 5px solid;
-            margin-bottom: 1.5rem;
-            display: none;
-            animation: fadeIn 0.3s ease-in-out;
-        }
-        .alert-danger {
-            background-color: rgba(239, 68, 68, 0.08);
-            border-left-color: var(--danger-color);
-            color: var(--text-main);
-        }
+  /* ── 2. CẤU TRÚC ĐIỀU KHIỂN FORM (INPUTS & SELECTS) ── */
+  .form-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  
+  .form-group label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text);
+  }
 
-        .result-box {
-            background-color: var(--card-bg);
-            border-radius: var(--radius-md);
-            padding: 1.5rem;
-            border: 1px solid var(--border-color);
-            margin-bottom: 1.5rem;
-        }
-        .result-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.5rem;
-        }
+  /* Định dạng trường nhập liệu và hộp chọn */
+  input[type="number"],
+  select {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface-offset);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    transition: border-color var(--tr), box-shadow var(--tr);
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  
+  input[type="number"]:focus,
+  select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-hl);
+  }
 
-        .matrix-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 0.75rem;
-            font-size: 0.88rem;
-        }
-        .matrix-table th, .matrix-table td {
-            border: 1px solid var(--border-color);
-            padding: 0.6rem;
-            text-align: center;
-        }
-        .matrix-table th {
-            background-color: var(--bg-light);
-            font-weight: 600;
-            color: var(--text-main);
-        }
+  /* Cấu trúc Checkbox lựa chọn nguy cơ bổ sung */
+  .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px dashed var(--color-divider);
+  }
+  
+  .checkbox-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: var(--text-sm);
+    color: var(--color-text);
+    line-height: 1.5;
+  }
+  
+  .checkbox-item input[type="checkbox"] {
+    margin-top: 0.2rem;
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    accent-color: var(--color-primary);
+  }
 
-        .reference-section {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-            padding: 1rem;
-            background-color: var(--bg-light);
-            border-radius: var(--radius-sm);
-        }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+  /* ── 3. KHỐI THÀNH PHẨM Y LỆNH & CÔNG THỨC PHA THUỐC ── */
+  .prescription-block {
+    background-color: var(--color-surface-offset);
+    border-left: 4px solid var(--color-primary);
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 1rem;
+  }
+  
+  .prescription-block.border-rose {
+    border-left-color: var(--color-rose);
+  }
+  
+  .prescription-title {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+  }
+  
+  .prescription-detail {
+    font-size: var(--text-sm);
+    color: var(--color-text);
+    line-height: 1.6;
+  }
+
+  /* Vùng hiển thị hướng dẫn pha chế thuốc / nồng độ */
+  .pump-recipe {
+    font-size: var(--text-sm);
+    color: var(--color-text);
+    line-height: 1.6;
+    background-color: var(--color-surface-2);
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    border: 1px dashed var(--color-border);
+    margin-bottom: 1rem;
+  }
+
+
+  /* ── 4. MÀN HÌNH ĐIỆN TỬ HIỂN THỊ TỐC ĐỘ BƠM TIÊM ĐIỆN ── */
+  .pump-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-primary-hl);
+    border: 1px solid var(--color-primary);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    margin: 1.25rem 0;
+  }
+  
+  .pump-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-text);
+    text-transform: uppercase;
+  }
+  
+  .pump-subtitle {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-top: 0.25rem;
+  }
+  
+  .pump-value-group {
+    text-align: right;
+  }
+  
+  .pump-rate {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    line-height: 1;
+  }
+  
+  .pump-unit {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text);
+    margin-left: 0.25rem;
+  }
+
+
+  /* ── 5. KHỐI LƯU ĐỒ XỬ TRÍ THẤT BẠI / KHÁNG TRỊ ── */
+  .failure-protocol {
+    background-color: var(--color-surface-offset);
+    border-left: 4px solid var(--color-warning);
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+  }
+  
+  .failure-protocol.alert-critical {
+    border-left-color: var(--color-rose);
+    background-color: var(--color-rose-hl);
+  }
+  
+  .failure-protocol-title {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .failure-protocol-title.text-warning { color: var(--color-warning); }
+  .failure-protocol-title.text-rose { color: var(--color-rose); }
+  
+  .failure-protocol ul {
+    padding-left: 1.2rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    color: var(--color-text-muted);
+  }
+
+
+  /* ── 6. ĐIỂM NHẤN ĐỒNG BỘ & TRỰC QUAN KHÁC ── */
+  .highlight-blue { color: var(--color-primary); font-weight: 700; }
+  .highlight-red  { color: var(--color-rose); font-weight: 700; }
+
+  /* Nút reset tổng thể (nếu sử dụng) */
+  .reset-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--color-surface-offset);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color var(--tr), border-color var(--tr);
+    margin-top: 0.75rem;
+  }
+  .reset-btn:hover {
+    background-color: var(--color-divider);
+    border-color: var(--color-primary);
+  }
+
+
+  /* ── 7. XỬ LÝ RESPONSIVE TRÊN MÀN HÌNH LỚN (PC/TABLET ĐỨNG) ── */
+  @media (min-width: 992px) {
+    .workspace-container {
+      grid-template-columns: 1fr 1fr; /* Chia đôi không gian màn hình cân xứng 50-50 */
+    }
+    
+    .output-side {
+      position: sticky;
+      /* Trượt dọc thông minh theo màn hình bác sĩ, tránh cuộn trang dài */
+      top: calc(var(--header-height, 60px) + 1.25rem);
+      height: fit-content;
+    }
+  }
+</style>
 </head>
+
 <body>
-    <!--HEADER-->
-    <header class="global-header">
-        <div class="header-left">
-            <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
-            <div class="logo-brand">
-                <span class="logo-icon">🩺</span>
-                <span class="logo-text">CliniPortal</span>
-            </div>
-            <button class="btn-back" onclick="goBack()">
-                <span class="icon">&larr;</span> Quay lại
-            </button>
-        </div>
+    <!-- Placeholder nạp header.html — đường dẫn tính từ vị trí cong-cu.html -->
+  <div id="header-placeholder" data-header-path="../../header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-        <!-- SEARCH BAR --> 
-        <div class="search-bar-container">
-        <div class="search-container">
-        <input class="input" type="text">
-        <svg viewBox="0 0 24 24" class="search__icon">
-            <g>
-            <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
-            </path>
-            </g>
+  <!-- ===================== APP CONTAINER ===================== -->
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5"
+          fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
-        </div>
-        </div>
-        <div class="header-actions">
-            <button id="theme-toggle-btn" title="Chuyển đổi Sáng/Tối" aria-label="Toggle Theme">🌓</button>
-            <button id="sync-settings-btn" title="Cài đặt & Đồng bộ" aria-label="Settings and Sync">⚙️</button>
-        </div>
-    </header>
+      </button>
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../cong-cu.html" class="nav-item active" aria-current="page" title="Công cụ lâm sàng">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Phác đồ/phac-do.html" class="nav-item" title="Phác đồ Y khoa">
+              <span class="nav-icon">📋</span>
+              <span class="nav-text">Phác đồ điều trị</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý & Kháng sinh</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận triệu chứng">
+              <span class="nav-icon">🩻</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
 
-    <!--MAIN CONTENT-->
-    <div class="app-container">
-        <aside class="app-sidebar" id="appSidebar">
-            <nav class="sidebar-nav">
-                <ul>
-                    <li><a href="../../../index.html"><img src="../../../assets/icons/ic-trang-chu.svg" alt="Trang chủ" class="menu-icon"> Trang chủ</a></li>
-                    <li><a href="../cong-cu.html" class="active"><img src="../../../assets/icons/ic-cong-cu.svg" alt="Công cụ" class="menu-icon"> Công cụ lâm sàng</a></li>
-                    <li><a href="../../Tiếp cận/tiep-can.html"><img src="../../../assets/icons/ic-tiep-can.svg" alt="Tiếp cận" class="menu-icon"> Tiếp cận lâm sàng</a></li>
-                    <li><a href="../../Phác đồ/phac-do.html"><img src="../../../assets/icons/ic-phac-do.svg" alt="Phác đồ" class="menu-icon"> Phác đồ điều trị</a></li>
-                    <li><a href="../../Dược lý/duoc-ly.html"><img src="../../../assets/icons/ic-duoc-ly.svg" alt="Dược lý" class="menu-icon"> Dược lý & Kháng sinh</a></li>
-                    <li><a href="../../Y học chứng cứ/y-hoc-chung-cu.html"><img src="../../../assets/icons/ic-y-hoc.svg" alt="Y học chứng cứ" class="menu-icon"> Y học chứng cứ</a></li>
-                </ul>
-            </nav>
-        </aside>
+    <!-- MAIN CONTENT -->
+    <div class="main-wrapper" id="mainContent">
 
-        <div class="main-wrapper">
-            <section class="hero-dashboard">
-                <div class="hero-intro">
-                    <h1>CÔNG CỤ ĐIỀU CHỈNH LIỀU INSULIN NỘI VIỆN</h1>
-                    <p>Hệ thống tự động tính toán động lực học theo thời gian thực (Real-time CDSS) giúp triệt tiêu thao tác thừa và hạn chế tối đa sai sót nhập liệu tại giường bệnh.</p>
-                </div>
-            </section>
+      <section class="hero-dashboard" aria-labelledby="hero-title">
+        <div class="hero-intro">
+          <h1 id="hero-title">PHÁC ĐỒ INSULIN NỘI VIỆN</h1>
+          <p>Tính toán liều Insulin truyền tĩnh mạch (ICU) và Phác đồ Basal-Bolus tiêm dưới da (Non-ICU) dựa trên ADA 2026 & SCCM.</p>
+        </div>
+      </section>
 
-            <div id="hypoAlertPanel" class="alert-panel alert-danger">
-                <h3 style="font-weight:700; color:var(--danger-color); margin-bottom:0.5rem; display:flex; align-items:center; gap:0.5rem;">🚨 CẤP CỨU HẠ ĐƯỜNG HUYẾT (GLUCOSE &lt; 70 mg/dL)</h3>
-                <div id="hypoProtocolContent"></div>
+      <div class="workspace-container">
+        
+        <div class="input-side">
+          
+          <div class="input-card">
+            <span class="card-zone-badge badge-blue">1. Đánh giá Lâm sàng</span>
+            
+            <div class="form-group" style="margin-bottom: 1rem;">
+              <label for="clinicalSetting">Bối cảnh lâm sàng (Setting):</label>
+              <select id="clinicalSetting">
+                <option value="non_icu">Bệnh phòng (Non-ICU) - Tiêm dưới da</option>
+                <option value="icu">Hồi sức tích cực (ICU) - Truyền tĩnh mạch</option>
+              </select>
             </div>
 
-            <div class="workspace-container">
-                
-                <div class="input-side">
-                    
-                    <div class="input-card">
-                        <span class="card-zone-badge badge-blue">Khu vực 1: Đặc điểm & Dinh dưỡng</span>
-                        
-                        <div class="form-row two-cols">
-                            <div class="form-group">
-                                <label for="patientWeight">Cân nặng bệnh nhân (kg):</label>
-                                <input type="number" id="patientWeight" value="60" min="30" max="200" placeholder="Bắt buộc">
-                            </div>
-                            <div class="form-group">
-                                <label for="insulinType">Loại Insulin sử dụng:</label>
-                                <select id="insulinType">
-                                    <option value="analog">Insulin Analog (Novorapid, Glargine...) [Quy tắc 1800]</option>
-                                    <option value="human">Insulin Người (Actrapid, NPH...) [Quy tắc 1500]</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="nutritionStatus">Trạng thái dinh dưỡng hiện tại:</label>
-                                <select id="nutritionStatus">
-                                    <option value="normal">Ăn uống bình thường (3 bữa chính)</option>
-                                    <option value="npo">Nhịn ăn hoàn toàn (NPO / Chuẩn bị mổ / Thủ thuật)</option>
-                                    <option value="tube">Nuôi ăn qua ống thông (Sonde) liên tục 24 giờ</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="corticoidUse">
-                            <label for="corticoidUse">Bệnh nhân đang sử dụng Glucocorticoid (Corticoid)</label>
-                        </div>
-
-                        <div class="form-group" id="corticoidTypeContainer" style="display:none; margin-top:0.75rem; padding-left:1rem; border-left:3px solid var(--primary-color);">
-                            <label for="corticoidType">Thời điểm & Loại Corticoid sử dụng:</label>
-                            <select id="corticoidType">
-                                <option value="mid_morning">Methylprednisolone / Prednisolone (Dùng buổi sáng)</option>
-                                <option value="long_dexa">Dexamethasone (Tác dụng kéo dài toàn vẹn 24h)</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="input-card">
-                        <span class="card-zone-badge badge-orange">Khu vực 2: Nhật ký Đường huyết 24h</span>
-                        <div class="glucose-input-grid">
-                            <div class="form-group">
-                                <label for="glSáng">🌅 1. Sáng đói:</label>
-                                <input type="number" id="glSáng" placeholder="mg/dL" value="150">
-                            </div>
-                            <div class="form-group">
-                                <label for="glTrưa">☀️ 2. Trước ăn trưa:</label>
-                                <input type="number" id="glTrưa" placeholder="mg/dL" value="160">
-                            </div>
-                            <div class="form-group">
-                                <label for="glChiều">🌆 3. Trước ăn chiều:</label>
-                                <input type="number" id="glChiều" placeholder="mg/dL" value="195">
-                            </div>
-                            <div class="form-group">
-                                <label for="glTối">🌙 4. Trước ngủ:</label>
-                                <input type="number" id="glTối" placeholder="mg/dL" value="155">
-                            </div>
-                        </div>
-
-                        <div class="form-group" style="margin-top: 1.25rem;">
-                            <label for="currentTDD">Tổng liều Insulin hiện tại của ngày cũ (TDD) - nếu có (UI):</label>
-                            <input type="number" id="currentTDD" value="30" min="0">
-                            <small style="color:var(--text-muted); margin-top:0.2rem; display:block;">Hệ thống sẽ tự động ước tính liều ban đầu an toàn nếu thông số này bằng 0.</small>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="output-side">
-                    
-                    <div class="result-box">
-                        <div class="result-title"><span>📋</span> PHÁC ĐỒ NỀN KHUYẾN CÁO</div>
-                        <div id="baselineRecommendation" style="line-height: 1.6; font-size:0.95rem;">
-                            </div>
-                    </div>
-
-                    <div class="result-box">
-                        <div class="result-title"><span>🎯</span> MA TRẬN LIỀU HIỆU CHỈNH ĐỘNG (CORRECTION MATRIX)</div>
-                        <div id="correctionMatrixContainer">
-                            </div>
-                    </div>
-
-                    <div class="reference-section">
-                        <strong>📚 Căn cứ Y học chứng cứ (EBM):</strong> Thang liều tuân thủ nghiêm ngặt theo **ADA Guidelines 2026** (Hospital Care), **AACE 2026** và hướng dẫn chỉnh liều theo xu hướng của **Bộ Y tế Việt Nam (QĐ 3510/QĐ-BYT)**.
-                    </div>
-
-                </div>
-
+            <div class="form-row">
+              <div class="form-group">
+                <label for="patientWeight">Cân nặng (kg):</label>
+                <input type="number" id="patientWeight" value="60" min="30">
+              </div>
+              <div class="form-group">
+                <label for="currentBG">Đường huyết hiện tại (mg/dL):</label>
+                <input type="number" id="currentBG" value="250" min="40">
+              </div>
             </div>
+
+            <div class="checkbox-group" id="riskFactorsGroup">
+              <label style="font-size: var(--text-sm); font-weight: 600;">Yếu tố nguy cơ / Đề kháng Insulin:</label>
+              <label class="checkbox-item">
+                <input type="checkbox" id="riskHypo"> Suy thận (eGFR &lt; 30) / Cao tuổi / Nguy cơ hạ ĐH cao
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" id="riskResist"> Đang dùng Corticoid liều cao / Béo phì (BMI &gt; 30)
+              </label>
+            </div>
+          </div>
+
+          <div class="input-card" id="nutritionCard">
+            <span class="card-zone-badge badge-red">2. Tình trạng Dinh dưỡng</span>
+            <div class="form-group">
+              <label for="nutritionStatus">Khả năng ăn uống:</label>
+              <select id="nutritionStatus">
+                <option value="eating">Ăn uống bình thường / Đủ bữa</option>
+                <option value="npo">Nhịn ăn (NPO) / Nuôi dưỡng tĩnh mạch</option>
+                <option value="enteral">Nuôi ăn qua sonde liên tục</option>
+              </select>
+            </div>
+          </div>
         </div>
+
+        <div class="output-side">
+          
+          <div class="result-box" id="resultNonICU">
+            <div class="result-title"><span>💉</span> PHÁC ĐỒ NỀN - PHÓNG (BASAL-BOLUS)</div>
+            
+            <div class="prescription-block">
+              <div class="prescription-title">🎯 Tổng liều Insulin dự kiến (TDD): <span id="resTDD" class="highlight-blue">-- ĐV/ngày</span></div>
+              <div class="prescription-detail" style="margin-top: 0.5rem;">
+                <strong>1. Insulin Nền (Basal):</strong> Tiêm <span id="resBasal" class="highlight-blue">-- ĐV</span> (Glargine/Detemir) 1 lần/ngày. <br>
+                <strong>2. Insulin Bữa ăn (Prandial):</strong> Tiêm <span id="resBolus" class="highlight-blue">-- ĐV</span> (Aspart/Lispro/Actrapid) x 3 lần/ngày (Trước ba bữa ăn chính).
+              </div>
+            </div>
+
+            <div class="failure-protocol alert-critical" id="npoAlert" style="display: none; margin-bottom: 1rem;">
+              <span class="failure-protocol-title text-rose">⚠️ Bệnh nhân nhịn ăn (NPO):</span>
+              <ul>
+                <li>Giữ nguyên hoặc giảm 20-30% Insulin nền.</li>
+                <li><strong>NGỪNG hoàn toàn</strong> Insulin theo bữa ăn (Prandial). Chỉ dùng liều hiệu chỉnh (Correction) mỗi 4-6 giờ.</li>
+              </ul>
+            </div>
+
+            <div class="pump-recipe">
+              <strong>Mục tiêu đường huyết:</strong> 140 - 180 mg/dL (7.8 - 10.0 mmol/L). Không khuyến cáo dùng đơn độc phác đồ Sliding Scale.
+            </div>
+          </div>
+
+          <div class="result-box" id="resultICU" style="display: none;">
+            <div class="result-title"><span>💧</span> PHÁC ĐỒ TRUYỀN TĨNH MẠCH (CII)</div>
+            
+            <div class="pump-recipe">
+              <strong>CÁCH PHA CHUẨN:</strong> Pha 50 Đơn vị Insulin Regular (Actrapid) + 50 mL NaCl 0.9%. <br>
+              <span style="color:var(--text-muted); font-size:0.85rem;">Nồng độ đạt được: 1 Đơn vị / 1 mL.</span>
+            </div>
+
+            <div class="pump-display">
+              <div>
+                <div class="pump-title">Tốc độ Bơm tiêm điện khởi đầu:</div>
+                <div class="pump-subtitle">Theo cân nặng (<span id="icuMultiplier">0.1</span> ĐV/kg/giờ)</div>
+              </div>
+              <div class="pump-value-group">
+                <span class="pump-rate" id="pumpRateIV">--</span>
+                <span class="pump-unit">mL/giờ</span>
+              </div>
+            </div>
+
+            <div class="failure-protocol">
+              <span class="failure-protocol-title text-warning">📌 Theo dõi & Điều chỉnh:</span>
+              <ul>
+                <li>Đo đường huyết mao mạch mỗi 1 giờ cho đến khi ĐH ổn định trong vùng mục tiêu (140-180 mg/dL).</li>
+                <li>Nếu ĐH &lt; 70 mg/dL (3.9 mmol/L): <strong>Ngừng truyền Insulin ngay lập tức</strong> và tiêm TM 25-50 mL Dextrose 20-50%.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
     </div>
 
+    <!-- FOOTER -->
     <footer class="global-footer">
-        <div class="footer-copyright">
-            <p>CliniPortal © 2026. Giao diện tự động đáp ứng tối ưu cho xử trí lâm sàng tại giường bệnh.</p>
-        </div>
-    </footer>
+    <div class="footer-copyright">
+      <p>&copy; 2026 CliniPortal. Dành cho mục đích hỗ trợ lâm sàng.</p>
+    </div>
+  </footer>
 
     <script>
-        function goBack() {
-            window.history.back();
-        }
-        document.addEventListener('DOMContentLoaded', () => {
-            // Khôi phục giao diện theo cấu hình hệ thống
-            const themeToggleBtn = document.getElementById('theme-toggle-btn');
-            if (themeToggleBtn) {
-                themeToggleBtn.addEventListener('click', () => {
-                    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-                    if (isDark) {
-                        document.documentElement.removeAttribute('data-theme');
-                        localStorage.setItem('theme', 'light');
-                    } else {
-                        document.documentElement.setAttribute('data-theme', 'dark');
-                        localStorage.setItem('theme', 'dark');
-                    }
-                });
-            }
-
-            // Lắng nghe sự kiện đổi trạng thái Checkbox Corticoid
-            const corticoidUseCheck = document.getElementById('corticoidUse');
-            const corticoidTypeContainer = document.getElementById('corticoidTypeContainer');
-            corticoidUseCheck.addEventListener('change', () => {
-                corticoidTypeContainer.style.display = corticoidUseCheck.checked ? 'block' : 'none';
-                calculateInsulinRealTime(); // Tính toán lại ngay khi đổi cấu hình thuốc phối hợp
-            });
-
-            // LẤY TẤT CẢ CÁC Ô NHẬP LIỆU ĐỂ GẮN SỰ KIỆN TỰ ĐỘNG KHÔNG CẦN NÚT BẤM
-            const activeInputs = document.querySelectorAll('#patientWeight, #insulinType, #nutritionStatus, #corticoidType, #glSáng, #glTrưa, #glChiều, #glTối, #currentTDD');
-            activeInputs.forEach(input => {
-                input.addEventListener('input', calculateInsulinRealTime);
-                input.addEventListener('change', calculateInsulinRealTime);
-            });
-
-            // HÀM TÍNH TOÁN REAL-TIME TỰ ĐỘNG
-            function calculateInsulinRealTime() {
-                const weight = parseFloat(document.getElementById('patientWeight').value);
-                
-                // ĐIỀU KIỆN TỐI THIỂU: Nếu cân nặng chưa nhập hoặc không hợp lệ, tạm dừng tính toán để tránh chia cho 0
-                if (!weight || weight <= 0) {
-                    document.getElementById('baselineRecommendation').innerHTML = `
-                        <div style="color:var(--text-muted); text-align:center; padding: 1rem 0;">
-                            ❌ <strong>Thiếu thông tin tối thiểu:</strong> Vui lòng điền đúng <strong>Cân nặng bệnh nhân</strong> để kích hoạt Trợ lý tính toán tự động.
-                        </div>`;
-                    document.getElementById('correctionMatrixContainer').innerHTML = `
-                        <p style="color:var(--text-muted); text-align:center; font-size:0.9rem;">Đang đợi thông tin cân nặng...</p>`;
-                    return;
-                }
-
-                const insulinType = document.getElementById('insulinType').value;
-                const nutritionStatus = document.getElementById('nutritionStatus').value;
-                const isCorticoid = corticoidUseCheck.checked;
-                const corticoidType = document.getElementById('corticoidType').value;
-                
-                const glSang = parseFloat(document.getElementById('glSáng').value) || 0;
-                const glTrua = parseFloat(document.getElementById('glTrưa').value) || 0;
-                const glChieu = parseFloat(document.getElementById('glChiều').value) || 0;
-                const glToi = parseFloat(document.getElementById('glTối').value) || 0;
-                
-                let currentTDD = parseFloat(document.getElementById('currentTDD').value) || 0;
-
-                // MODULE 2.5: LƯỚI KHÓA AN TOÀN HẠ ĐƯỜNG HUYẾT
-                const glucoseArray = [glSang, glTrua, glChieu, glToi];
-                const hasHypo = glucoseArray.some(gl => gl > 0 && gl < 70);
-
-                if (hasHypo) {
-                    const hypoAlertPanel = document.getElementById('hypoAlertPanel');
-                    hypoAlertPanel.style.display = 'block';
-                    
-                    const g20Vol = Math.round(1.5 * weight);
-                    const g30Vol = Math.round(1.0 * weight);
-
-                    hypoAlertPanel.querySelector('#hypoProtocolContent').innerHTML = `
-                        <p style="margin-bottom:0.4rem;"><strong>Phát hiện đường huyết tại giường rơi vào ngưỡng nguy hiểm (&lt; 70 mg/dL):</strong></p>
-                        <ul style="margin-left: 1.25rem; font-size:0.9rem; list-style-type: disc;">
-                            <li><strong>Nếu bệnh nhân hôn mê/rối loạn nuốt:</strong> Tiêm tĩnh mạch chậm (IV Bolus) ngay <strong>${g20Vol} mL Glucose 20%</strong> (hoặc <strong>${g30Vol} mL Glucose 30%</strong>).</li>
-                            <li><strong>Nếu bệnh nhân tỉnh táo:</strong> Cho ăn/uống 15g đường nhanh (150ml sữa ngọt/nước hoa quả). Kiểm tra lại đường huyết sau 15 phút.</li>
-                        </ul>
-                        <p style="margin-top:0.4rem; font-weight:700; color:var(--danger-color);">⚠️ KHÓA AN TOÀN: Bắt buộc giảm 25% tổng liều (TDD) cho chu kỳ tiếp theo để phòng ngừa biến cố tử vong do hạ đường huyết.</p>
-                    `;
-                    
-                    if (currentTDD > 0) {
-                        const safeTDD = Math.round(currentTDD * 0.75);
-                        document.getElementById('baselineRecommendation').innerHTML = `
-                            <p style="color:var(--danger-color); font-weight:bold;">⚠️ ĐÃ KÍCH HOẠT PHÁC ĐỒ GIẢM LIỀU AN TOÀN</p>
-                            <p>Tổng liều TDD ngày mới hạ xuống còn: <strong>${safeTDD} UI</strong> (Giảm 25% từ mức cũ ${currentTDD} UI).</p>
-                        `;
-                    }
-                    generateCorrectionMatrixTable(currentTDD || 20, insulinType);
-                    return;
-                } else {
-                    document.getElementById('hypoAlertPanel').style.display = 'none';
-                }
-
-                // Thiết lập liều ban đầu tự động nếu chưa có TDD cũ
-                let isInitialSetup = false;
-                if (currentTDD === 0) {
-                    isInitialSetup = true;
-                    if (nutritionStatus === 'npo') currentTDD = Math.round(0.2 * weight);
-                    else if (isCorticoid) currentTDD = Math.round(0.5 * weight);
-                    else currentTDD = Math.round(0.3 * weight); // Mức khởi trị 0.3 UI/kg chuẩn an toàn nội trú
-                }
-
-                // MODULE 2.3 & 2.4: ĐIỀU CHỈNH THEO TRẠNG THÁI DINH DƯỠNG & CORTICOID
-                let basalRatio = 0.5;
-                let bolusRatio = 0.5;
-                let specialNotes = "";
-
-                if (nutritionStatus === 'npo') {
-                    basalRatio = 1.0;
-                    bolusRatio = 0.0;
-                    currentTDD = Math.round(currentTDD * 0.75); // Giảm liều nền khi nhịn ăn
-                    specialNotes += `<li><strong>Lưu ý bệnh nhân đang nhịn ăn (NPO):</strong> Cắt hoàn toàn các mũi tiêm theo bữa ăn (Bolus). Chỉ tiêm liều Insulin nền (Basal) đơn độc.</li>`;
-                } else if (nutritionStatus === 'tube') {
-                    specialNotes += `<li><strong>Lưu ý nuôi ăn qua Sonde liên tục 24h:</strong> Không chia liều theo 3 bữa ăn thông thường. Khuyến cáo chia phần Insulin nhanh (Bolus) thành 4 mũi tiêm bằng nhau tiêm mỗi 6 giờ (mỗi 6 tiếng/lần) để bao phủ lượng dịch nhỏ giọt liên tục.</li>`;
-                }
-
-                if (isCorticoid && nutritionStatus === 'normal') {
-                    if (corticoidType === 'mid_morning') {
-                        basalRatio = 0.3;
-                        bolusRatio = 0.7; // Tăng liều bolus gánh đỉnh tăng đường huyết do Corticoid sáng
-                        specialNotes += `<li><strong>Phối hợp Corticoid sáng:</strong> Tỷ lệ liều tự động cấu trúc lại thành 30% Basal / 70% Bolus để đối phó với đỉnh tăng đường huyết từ trưa đến tối.</li>`;
-                    } else {
-                        currentTDD = Math.round(currentTDD * 1.25);
-                        specialNotes += `<li><strong>Phối hợp Dexamethasone:</strong> Tự động tăng tổng liều 25% do hiện tượng đề kháng insulin mạnh kéo dài trọn vẹn 24h.</li>`;
-                    }
-                }
-
-                // MODULE 2.1: HIỆU CHỈNH THEO PATTERN XU HƯỚNG XUẤT HIỆN TĂNG ĐƯỜNG HUYẾT
-                let titrationAdvice = "";
-                if (!isInitialSetup && nutritionStatus === 'normal') {
-                    let dBasal = 0, dSang = 0, dTrua = 0, dChieu = 0;
-
-                    if (glSang > 180) dBasal = Math.round(currentTDD * 0.1) || 2;
-                    if (glTrua > 180) dSang = 2;
-                    if (glChieu > 180) dTrua = 2;
-                    if (glToi > 180) dChieu = 2;
-
-                    if (dBasal > 0 || dSang > 0 || dTrua > 0 || dChieu > 0) {
-                        titrationAdvice = `<p style="color:var(--warning-color); font-weight:bold; margin-top:0.4rem;">Gợi ý điều chỉnh liều theo xu hướng 24h qua:</p><ul style="margin-left:1.25rem; font-size:0.9rem;">`;
-                        if (dBasal > 0) { titrationAdvice += `<li>Đường huyết đói cao (${glSang} mg/dL) → Tăng thêm <strong>+${dBasal} UI</strong> vào mũi nền (Basal) tối.</li>`; currentTDD += dBasal; }
-                        if (dSang > 0) titrationAdvice += `<li>Trước trưa cao (${glTrua} mg/dL) → Tăng thêm <strong>+${dSang} UI</strong> vào mũi Bolus Sáng.</li>`;
-                        if (dTrua > 0) titrationAdvice += `<li>Trước chiều cao (${glChieu} mg/dL) → Tăng thêm <strong>+${dTrua} UI</strong> vào mũi Bolus Trưa.</li>`;
-                        if (dChieu > 0) titrationAdvice += `<li>Trước ngủ cao (${glToi} mg/dL) → Tăng thêm <strong>+${dChieu} UI</strong> vào mũi Bolus Chiều.</li>`;
-                        titrationAdvice += `</ul>`;
-                    } else {
-                        titrationAdvice = `<p style="color:var(--success-color); font-weight:bold; margin-top:0.4rem;">✓ Đường huyết trong 24h qua đạt mục tiêu nội trú (140 - 180 mg/dL). Tiếp tục duy trì phác đồ cũ.</p>`;
-                    }
-                }
-
-                // Tính toán phân bổ liều chi tiết
-                const totalBasal = Math.round(currentTDD * basalRatio);
-                const totalBolus = currentTDD - totalBasal;
-
-                let mainResultHtml = "";
-                if (isInitialSetup) {
-                    mainResultHtml += `<p style="color:var(--primary-color); font-weight:700;">★ PHÁC ĐỒ KHỞI TRỊ BAN ĐẦU DỰ KIẾN:</p>`;
-                } else {
-                    mainResultHtml += `<p style="color:var(--primary-color); font-weight:700;">★ PHÁC ĐỒ DUY TRÌ & HIỆU CHỈNH TỰ ĐỘNG:</p>`;
-                }
-
-                mainResultHtml += `<p>Tổng liều Insulin TDD điều trị: <strong>${currentTDD} UI/ngày</strong> (~${(currentTDD/weight).toFixed(2)} UI/kg).</p>`;
-
-                if (nutritionStatus === 'normal') {
-                    const bSáng = Math.round(totalBolus * (isCorticoid && corticoidType === 'mid_morning' ? 0.2 : 0.33));
-                    const bChiều = Math.round(totalBolus * (isCorticoid && corticoidType === 'mid_morning' ? 0.4 : 0.33));
-                    const bTrưa = totalBolus - bSáng - bChiều;
-
-                    mainResultHtml += `
-                        <div style="margin-top:0.6rem; padding:0.6rem; background:var(--bg-light); border-radius:var(--radius-sm); border:1px solid var(--border-color);">
-                            💉 <strong>Insulin Nền (Basal - Glargine/NPH):</strong> Tiêm <strong>${totalBasal} UI</strong> lúc 21h-22h đêm.<br>
-                            🍽 <strong>Insulin Bữa ăn (Bolus - Nhanh):</strong> Tổng <strong>${totalBolus} UI</strong> chia theo bữa ăn:
-                            <br>&nbsp;&nbsp;&nbsp;&nbsp;• Trước ăn Sáng: <strong>${bSáng} UI</strong>
-                            <br>&nbsp;&nbsp;&nbsp;&nbsp;• Trước ăn Trưa: <strong>${bTrưa} UI</strong>
-                            <br>&nbsp;&nbsp;&nbsp;&nbsp;• Trước ăn Chiều: <strong>${bChiều} UI</strong>
-                        </div>
-                    `;
-                } else if (nutritionStatus === 'npo') {
-                    mainResultHtml += `
-                        <div style="margin-top:0.6rem; padding:0.6rem; background:var(--bg-light); border-radius:var(--radius-sm); border:1px solid var(--border-color);">
-                            💉 <strong>Insulin Nền đơn độc (Basal):</strong> Tiêm <strong>${totalBasal} UI</strong> lúc 22h đêm.<br>
-                            ❌ <strong>Insulin Bữa ăn (Bolus):</strong> <strong>0 UI</strong> (Ngừng tiêm hoàn toàn do bệnh nhân đang NPO).
-                        </div>
-                    `;
-                } else if (nutritionStatus === 'tube') {
-                    const q6hDose = Math.round(totalBolus / 4);
-                    mainResultHtml += `
-                        <div style="margin-top:0.6rem; padding:0.6rem; background:var(--bg-light); border-radius:var(--radius-sm); border:1px solid var(--border-color);">
-                            💉 <strong>Insulin Nền (Basal):</strong> Tiêm <strong>${totalBasal} UI</strong> lúc 22h đêm.<br>
-                            🧪 <strong>Insulin Nhanh qua Sonde liên tục:</strong> Tiêm <strong>${q6hDose} UI mỗi 6 tiếng</strong> (Cố định: 06h - 12h - 18h - 24h).
-                        </div>
-                    `;
-                }
-
-                if (titrationAdvice || specialNotes) {
-                    mainResultHtml += `<div style="margin-top:0.5rem;">${titrationAdvice}</div>`;
-                    mainResultHtml += `<ul style="margin-left:1.25rem; font-size:0.85rem; color:var(--text-muted); margin-top:0.4rem;">${specialNotes}</ul>`;
-                }
-
-                document.getElementById('baselineRecommendation').innerHTML = mainResultHtml;
-
-                // MODULE 2.2: TÍNH TOÁN MA TRẬN HIỆU CHỈNH THEO ĐỘ NHẠY INSULIN (ISF) ĐỘNG
-                generateCorrectionMatrixTable(currentTDD, insulinType);
-            }
-
-            function generateCorrectionMatrixTable(tdd, type) {
-                const constant = (type === 'analog') ? 1800 : 1500;
-                const isf = Math.round(constant / tdd);
-
-                let matrixHtml = `
-                    <table class="matrix-table">
-                        <thead>
-                            <tr>
-                                <th>Đường huyết đo trước ăn (mg/dL)</th>
-                                <th>Liều hiệu chỉnh tiêm thêm (UI)</th>
-                                <th>Khuyến cáo lâm sàng</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>&lt; 140 mg/dL</td>
-                                <td style="color:var(--success-color); font-weight:700;">0 UI</td>
-                                <td>Đường huyết đạt mục tiêu.</td>
-                            </tr>
-                            <tr>
-                                <td>141 - 180 mg/dL</td>
-                                <td>+ ${Math.max(1, Math.round(20 / isf))} UI</td>
-                                <td>Tăng nhẹ, theo dõi sát lượng ăn.</td>
-                            </tr>
-                            <tr>
-                                <td>181 - 220 mg/dL</td>
-                                <td style="font-weight:700; color:var(--warning-color);">+ ${Math.max(2, Math.round(60 / isf))} UI</td>
-                                <td>Bắt buộc tiêm kèm liều bữa ăn.</td>
-                            </tr>
-                            <tr>
-                                <td>221 - 260 mg/dL</td>
-                                <td style="font-weight:700; color:var(--warning-color);">+ ${Math.round(100 / isf)} UI</td>
-                                <td>Đường huyết tăng cao nội trú.</td>
-                            </tr>
-                            <tr>
-                                <td>261 - 300 mg/dL</td>
-                                <td style="font-weight:700; color:var(--danger-color);">+ ${Math.round(140 / isf)} UI</td>
-                                <td>Kiểm tra gập/tắc dây truyền/kim tiêm.</td>
-                            </tr>
-                            <tr>
-                                <td>&gt; 300 mg/dL</td>
-                                <td style="font-weight:700; color:var(--danger-color);">+ ${Math.round(180 / isf)} UI</td>
-                                <td><strong>Xét nghiệm ngay Ceton máu/niệu tầm soát biến chứng DKA/HHS.</strong></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p style="font-size:0.75rem; color:var(--text-muted); margin-top:0.5rem; text-align:right;">
-                        *Độ nhạy cá thể hóa thực tế (ISF): 1 UI Insulin làm hạ ~<strong>${isf} mg/dL</strong> Glucose máu.
-                    </p>
-                `;
-                document.getElementById('correctionMatrixContainer').innerHTML = matrixHtml;
-            }
-            
-            // KÍCH HOẠT CHẠY LẦN ĐẦU KHI TRANG LOAD (Đã điền sẵn các thông số mẫu)
-            calculateInsulinRealTime();
+      document.addEventListener('DOMContentLoaded', () => {
+        const inputs = document.querySelectorAll('input, select');
+        
+        // Các DOM Elements
+        const settingSelect = document.getElementById('clinicalSetting');
+        const nutritionCard = document.getElementById('nutritionCard');
+        const resultNonICU = document.getElementById('resultNonICU');
+        const resultICU = document.getElementById('resultICU');
+        const npoAlert = document.getElementById('npoAlert');
+        
+        inputs.forEach(input => {
+          input.addEventListener('input', calculateInsulin);
+          input.addEventListener('change', calculateInsulin);
         });
-    
+
+        function calculateInsulin() {
+          // Lấy dữ liệu input
+          const setting = settingSelect.value;
+          const weight = parseFloat(document.getElementById('patientWeight').value) || 0;
+          const bg = parseFloat(document.getElementById('currentBG').value) || 0;
+          const isHypoRisk = document.getElementById('riskHypo').checked;
+          const isResistant = document.getElementById('riskResist').checked;
+          const nutrition = document.getElementById('nutritionStatus').value;
+
+          if (!weight || weight <= 0) return;
+
+          // Toggle Giao diện theo Bối cảnh lâm sàng
+          if (setting === 'icu') {
+            nutritionCard.style.display = 'none';
+            resultNonICU.style.display = 'none';
+            resultICU.style.display = 'block';
+            
+            // TÍNH TOÁN ICU (Truyền TM)
+            // Khởi đầu thường 0.1 U/kg/h. Giảm xuống 0.05 nếu có nguy cơ hạ ĐH (suy thận).
+            let ivMultiplier = 0.1;
+            if (isHypoRisk) ivMultiplier = 0.05;
+            
+            const ivRate = weight * ivMultiplier;
+            
+            document.getElementById('icuMultiplier').innerText = ivMultiplier;
+            document.getElementById('pumpRateIV').innerText = ivRate.toFixed(1);
+
+          } else {
+            nutritionCard.style.display = 'block';
+            resultNonICU.style.display = 'block';
+            resultICU.style.display = 'none';
+
+            // TÍNH TOÁN NON-ICU (Basal-Bolus)
+            // TDD multiplier theo ADA 2026 (0.2 - 0.5 U/kg)
+            let tddMultiplier = 0.4; // Mặc định
+            if (isHypoRisk) tddMultiplier = 0.25; 
+            if (isResistant) tddMultiplier = 0.5;
+            if (isHypoRisk && isResistant) tddMultiplier = 0.3; // Ưu tiên an toàn
+
+            const TDD = weight * tddMultiplier;
+            
+            let basal = TDD * 0.5;
+            let bolusTotal = TDD * 0.5;
+            let bolusPerMeal = bolusTotal / 3;
+
+            // Xử lý cảnh báo NPO (Nhịn ăn)
+            if (nutrition === 'npo') {
+              npoAlert.style.display = 'block';
+              bolusPerMeal = 0; // Ngừng tiêm bolus bữa ăn
+            } else {
+              npoAlert.style.display = 'none';
+            }
+
+            document.getElementById('resTDD').innerText = TDD.toFixed(0);
+            document.getElementById('resBasal').innerText = basal.toFixed(0);
+            document.getElementById('resBolus').innerText = bolusPerMeal.toFixed(0);
+          }
+        }
+
+        // Khởi chạy lần đầu
+        calculateInsulin();
+      });
     </script>
 </body>
 </html>

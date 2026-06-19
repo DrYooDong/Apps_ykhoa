@@ -31,25 +31,17 @@ function initHeader() {
   const arrowBtn       = document.getElementById('sidebar-toggle-arrow');
   const footer         = document.querySelector('.global-footer');
 
-  // ── Theme ────────────────────────────────────────────────
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'dark') {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    if (themeToggleBtn) themeToggleBtn.textContent = '☀️';
-  }
+  // --- Theme toggle ---
+      const html = document.documentElement;
+      const themeBtn = document.getElementById('theme-toggle-btn');
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      html.setAttribute('data-theme', theme);
 
-  themeToggleBtn?.addEventListener('click', () => {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if (isDark) {
-      document.documentElement.removeAttribute('data-theme');
-      localStorage.setItem('theme', 'light');
-      themeToggleBtn.textContent = '🌓';
-    } else {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark');
-      themeToggleBtn.textContent = '☀️';
-    }
-  });
+      themeBtn.addEventListener('click', () => {
+        theme = theme === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', theme);
+        themeBtn.textContent = theme === 'dark' ? '☀️' : '🌓';
+      });
 
   // ── Sidebar helpers ──────────────────────────────────────
   const isMobile = () => window.innerWidth < 768;

@@ -11,174 +11,266 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Lucide icons -->
-  <script src="js/main.js" defer></script>
   <link rel="stylesheet" href="../../../css/reset.css">
-  <link rel="stylesheet" href="../../../css/main.css">  
-    <style>
-        .urgent-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-        .panel {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 1.5rem;
-            box-shadow: var(--shadow-sm);
-        }
-        .panel-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 1.25rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-            margin-bottom: 1rem;
-        }
-        .input-group label {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-main);
-        }
-        input[type="number"], select {
-            width: 100%;
-            padding: 0.6rem;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-sm);
-            background-color: var(--bg-light);
-            color: var(--text-main);
-            font-size: 1rem;
-        }
-        
-        .module-switcher {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-        .btn-switch {
-            flex: 1;
-            padding: 0.6rem;
-            border: 1px solid var(--border-color);
-            background-color: var(--bg-light);
-            color: var(--text-main);
-            border-radius: var(--radius-sm);
-            font-weight: 700;
-            cursor: pointer;
-            text-align: center;
-            transition: all 0.2s;
-        }
-        .btn-switch.active {
-            background-color: var(--primary-color);
-            color: #fff;
-            border-color: var(--primary-color);
-        }
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
 
-        .hidden { display: none !important; }
+  <script src="../../../pages/header.js"></script> 
+<style>
+  /* ============================================================
+     PAGE-SPECIFIC STYLES: CẤP CỨU RỐI LOẠN ĐIỆN GIẢI (K, Ca)
+     Đã đồng bộ hóa 100% với Design Tokens hệ thống CliniPortal
+  ============================================================ */
 
-        .action-box {
-            margin-bottom: 1rem;
-            padding: 1rem;
-            border-radius: var(--radius-sm);
-            background-color: var(--bg-light);
-            border-left: 5px solid var(--border-color);
-        }
-        .action-box h4 {
-            font-size: 0.95rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .action-box ul {
-            padding-left: 1.2rem;
-            margin-top: 0.25rem;
-            font-size: 0.92rem;
-            line-height: 1.6;
-        }
-        .action-box li { margin-bottom: 0.4rem; }
+  /* ── 1. BỐ CỤC LƯỚI CHÍNH (GRID SYSTEM) ── */
+  .urgent-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
 
-        .priority-1 { border-left-color: #ef4444; background-color: rgba(239, 68, 68, 0.05); } 
-        .priority-2 { border-left-color: #f59e0b; } 
-        .priority-3 { border-left-color: #3b82f6; } 
-        .priority-ok { border-left-color: #10b981; } 
+  /* Khung Panel chứa dữ liệu nhập liệu và y lệnh */
+  .panel {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-divider);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: background-color var(--tr), border-color var(--tr), box-shadow var(--tr);
+  }
 
-        .alert-text { color: #ef4444; font-weight: bold; }
-        .dose-highlight { background-color: #fef08a; color: #854d0e; padding: 0.1rem 0.3rem; border-radius: 4px; font-family: monospace; font-size: 0.95rem; font-weight: bold;}
+  .panel-title {
+    font-size: var(--text-md);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-divider);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
 
-        @media (min-width: 768px) {
-            .urgent-grid { grid-template-columns: 1fr 1.5fr; }
-            .sticky-panel { position: sticky; top: calc(var(--header-height) + 1.25rem); }
-        }
-    </style>
+  /* ── 2. CẤU TRÚC ĐIỀU KHIỂN FORM & MODULE SWITCHER ── */
+  .module-switcher {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-switch {
+    flex: 1;
+    padding: 0.65rem;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-surface-offset);
+    color: var(--color-text);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    transition: all var(--tr);
+  }
+
+  .btn-switch:hover {
+    background-color: var(--color-divider);
+  }
+
+  .btn-switch.active {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    border-color: var(--color-primary);
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .input-group label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  input[type="number"], 
+  select {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface-offset);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    transition: border-color var(--tr), box-shadow var(--tr);
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  input[type="number"]:focus, 
+  select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-hl);
+  }
+
+  /* ── 3. KHỐI HIỂN THỊ HÀNH ĐỘNG VÀ HƯỚNG XỬ TRÍ ── */
+  .action-box {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface-offset);
+    border-left: 5px solid var(--color-border);
+    transition: border-color var(--tr), background-color var(--tr);
+  }
+
+  .action-box h4 {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .action-box ul {
+    padding-left: 1.2rem;
+    margin: 0.25rem 0 0 0;
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    color: var(--color-text);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  /* Phân cấp độ ưu tiên xử trí lâm sàng */
+  .priority-1 { 
+    border-left-color: var(--color-rose); 
+    background-color: var(--color-rose-hl); 
+  } 
+  .priority-2 { 
+    border-left-color: var(--color-warning); 
+    background-color: var(--color-warning-hl);
+  } 
+  .priority-3 { 
+    border-left-color: var(--color-primary); 
+    background-color: var(--color-primary-hl);
+  } 
+  .priority-ok { 
+    border-left-color: var(--color-success); 
+    background-color: var(--color-success-hl);
+  } 
+
+  /* ── 4. ĐIỂM NHẤN TRỰC QUAN & HIGHLIGHT LIỀU LƯỢNG ── */
+  .alert-text { 
+    color: var(--color-rose); 
+    font-weight: 700; 
+  }
+
+  .dose-highlight { 
+    background-color: #fef08a; 
+    color: #854d0e; 
+    padding: 0.15rem 0.35rem; 
+    border-radius: var(--radius-sm); 
+    font-family: monospace; 
+    font-size: 0.95rem; 
+    font-weight: 700;
+    display: inline-block;
+  }
+
+  /* Tối ưu hóa màu sắc highlight liều lượng cho Dark Mode */
+  [data-theme="dark"] .dose-highlight {
+    background-color: rgba(254, 240, 138, 0.2);
+    color: #fef08a;
+    border: 1px solid rgba(254, 240, 138, 0.3);
+  }
+
+  .hidden { 
+    display: none !important; 
+  }
+
+  /* ── 5. XỬ LÝ RESPONSIVE TRÊN MÀN HÌNH LỚN ── */
+  @media (min-width: 768px) {
+    .urgent-grid { 
+      grid-template-columns: 1fr 1.5fr; 
+    }
+    .sticky-panel { 
+      position: sticky; 
+      top: calc(var(--header-height, 60px) + 1.25rem); 
+      height: fit-content;
+    }
+  }
+</style>
 </head>
+
 <body>
-    <!--HEADER-->
-    <header class="global-header">
-        <div class="header-left">
-            <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
-            <div class="logo-brand">
-                <span class="logo-icon">🩺</span><span class="logo-text">CliniPortal</span>
-            </div>
+  <!-- Placeholder nạp header.html — đường dẫn tính từ vị trí cong-cu.html -->
+  <div id="header-placeholder" data-header-path="../../header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-            <!--BACK BUTTON-->
-            <button class="btn-back" onclick="goBack()">
-                <span class="icon">&larr;</span> Quay lại
-            </button>
-        </div>
+  <!-- ===================== APP CONTAINER ===================== -->
+  <div class="app-container">
 
-        <!-- SEARCH BAR --> 
-        <div class="search-bar-container">
-        <div class="search-container">
-        <input class="input" type="text">
-        <svg viewBox="0 0 24 24" class="search__icon">
-            <g>
-            <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
-            </path>
-            </g>
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5"
+          fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
-        </div>
-        </div>
-        <div class="header-actions">
-            <button id="theme-toggle-btn" title="Chuyển đổi Sáng/Tối" aria-label="Toggle Theme">🌓</button>
-            <button id="sync-settings-btn" title="Cài đặt & Đồng bộ" aria-label="Settings and Sync">⚙️</button>
-        </div>
-    </header>
-    
-    <!--MAIN CONTENT-->
-    <div class="app-container">
-        <aside class="app-sidebar" id="appSidebar">
-            <nav class="sidebar-nav">
-                <ul>
-                    <li><a href="../../../index.html"><img src="../../../assets/icons/ic-trang-chu.svg" alt="Trang chủ" class="menu-icon"> Trang chủ</a></li>
-                    <li><a href="../cong-cu.html" class="active"><img src="../../../assets/icons/ic-cong-cu.svg" alt="Công cụ" class="menu-icon"> Công cụ lâm sàng</a></li>
-                    <li><a href="../../Tiếp cận/tiep-can.html"><img src="../../../assets/icons/ic-tiep-can.svg" alt="Tiếp cận" class="menu-icon"> Tiếp cận lâm sàng</a></li>
-                    <li><a href="../../Phác đồ/phac-do.html"><img src="../../../assets/icons/ic-phac-do.svg" alt="Phác đồ" class="menu-icon"> Phác đồ điều trị</a></li>
-                    <li><a href="../../Dược lý/duoc-ly.html"><img src="../../../assets/icons/ic-duoc-ly.svg" alt="Dược lý" class="menu-icon"> Dược lý & Kháng sinh</a></li>
-                    <li><a href="../../Y học chứng cứ/y-hoc-chung-cu.html"><img src="../../../assets/icons/ic-y-hoc.svg" alt="Y học chứng cứ" class="menu-icon"> Y học chứng cứ</a></li>
-                </ul>
-            </nav>
-        </aside>
+      </button>
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../cong-cu.html" class="nav-item active" aria-current="page" title="Công cụ lâm sàng">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Phác đồ/phac-do.html" class="nav-item" title="Phác đồ Y khoa">
+              <span class="nav-icon">📋</span>
+              <span class="nav-text">Phác đồ điều trị</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý & Kháng sinh</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận triệu chứng">
+              <span class="nav-icon">🩻</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
 
-        <div class="main-wrapper">
-            <section class="hero-dashboard">
-                <div class="hero-intro">
-                    <h1>Cấp cứu Rối loạn Điện giải (K, Ca)</h1>
-                    <p>Phác đồ y lệnh chi tiết liều lượng và cách pha truyền theo UKKA 2023 và Society for Endocrinology.</p>
-                </div>
-            </section>
+    <!--MAIN CONTENT-->
+    <div class="main-wrapper">
+        <section class="hero-dashboard">
+            <div class="hero-intro">
+                <h1>Cấp cứu Rối loạn Điện giải (K, Ca)</h1>
+                <p>Phác đồ y lệnh chi tiết liều lượng và cách pha truyền theo UKKA 2023 và Society for Endocrinology.</p>
+            </div>
+        </section>
 
             <div class="urgent-grid">
                 <div class="panel">

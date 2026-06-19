@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="../../../css/components/header.css">
   <link rel="stylesheet" href="../../../css/components/sidebar.css">
   <link rel="stylesheet" href="../../../css/components/footer.css">
+
+  <script src="../../../pages/header.js"></script>
 <style>
   /* ============================================================
      PAGE-SPECIFIC STYLES — SL_Nhiem-khuan
@@ -252,80 +254,60 @@
   }
 </style>
 </head>
+
 <body>
-  <!-- HEADER -->
-  <header class="global-header">
-    <div class="header-left">
-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">☰</button>
-      <a href="../../../index.html" class="logo-brand">
-        <span class="logo-icon">🩺</span>
-        <span class="logo-text">CliniPortal</span>
-      </a>
-      <button class="btn-back" onclick="goBack()">
-        <span>&larr;</span> <span>Quay lại</span>
-      </button>
-    </div>
-
-    <div class="search-bar-container">
-      <div class="search-container">
-        <input class="input" type="text" placeholder="Tìm kiếm...">
-        <svg viewBox="0 0 24 24" class="search__icon">
-          <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"/>
-        </svg>
-      </div>
-    </div>
-
-    <div class="header-actions">
-      <button id="theme-toggle-btn" title="Chuyển đổi Sáng/Tối" aria-label="Toggle Theme">🌓</button>
-      <button id="sync-settings-btn" title="Cài đặt & Đồng bộ" aria-label="Settings and Sync">⚙️</button>
-    </div>
-  </header>
-
-  <!-- Overlay cho mobile sidebar -->
+  <!-- Placeholder nạp header.html — đường dẫn tính từ vị trí cong-cu.html -->
+  <div id="header-placeholder" data-header-path="../../header.html"></div>
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-  <!-- MAIN CONTENT -->
+  <!-- ===================== APP CONTAINER ===================== -->
   <div class="app-container">
 
     <!-- SIDEBAR -->
     <aside class="app-sidebar" id="appSidebar">
-      <nav class="sidebar-nav">
-        <ul class="nav-list">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5"
+          fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
           <li>
-            <a href="../../../index.html" class="nav-item">
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
               <span class="nav-icon">🏠</span>
               <span class="nav-text">Trang chủ</span>
             </a>
           </li>
           <li>
-            <a href="../cong-cu.html" class="nav-item active">
-              <span class="nav-icon">🔧</span>
+            <a href="../cong-cu.html" class="nav-item active" aria-current="page" title="Công cụ lâm sàng">
+              <span class="nav-icon">⚙️</span>
               <span class="nav-text">Công cụ lâm sàng</span>
             </a>
           </li>
           <li>
-            <a href="../../Tiếp cận/tiep-can.html" class="nav-item">
-              <span class="nav-icon">🩻</span>
-              <span class="nav-text">Tiếp cận lâm sàng</span>
-            </a>
-          </li>
-          <li>
-            <a href="../../Phác đồ/phac-do.html" class="nav-item">
+            <a href="../../Phác đồ/phac-do.html" class="nav-item" title="Phác đồ Y khoa">
               <span class="nav-icon">📋</span>
               <span class="nav-text">Phác đồ điều trị</span>
             </a>
           </li>
           <li>
-            <a href="../../Dược lý/duoc-ly.html" class="nav-item">
+            <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
               <span class="nav-icon">💊</span>
               <span class="nav-text">Dược lý & Kháng sinh</span>
             </a>
-        </li>
+          </li>
+          <li>
+            <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận triệu chứng">
+              <span class="nav-icon">🩻</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
         </ul>
       </nav>
     </aside>
 
-    <!-- KHỐI NỘI DUNG CHÍNH -->
+    <!-- MAIN CONTENT -->
     <div class="main-wrapper">
       <section class="hero-dashboard">
         <div class="hero-intro">
@@ -542,7 +524,7 @@
                 <div id="val-mortality" style="font-size:1.6rem;font-weight:800;color:var(--color-primary)">Thấp (&lt; 1%)</div>
               </div>
             </div>
-
+ 
             <button type="button" id="btn-clear-all" class="reset-btn">🔄 Xóa dữ liệu (Reset Form)</button>
           </div>
         </div>
@@ -573,23 +555,7 @@
   </footer>
 
   <script>
-    function goBack() { window.history.back(); }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      
-        // --- Theme toggle ---
-        const html = document.documentElement;
-        const themeBtn = document.getElementById('theme-toggle-btn');
-        let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        html.setAttribute('data-theme', theme);
-
-        // Cơ chế chuyển đổi giao diện Sáng/Tối
-        themeBtn.addEventListener('click', () => {
-            theme = theme === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-theme', theme);
-            themeBtn.textContent = theme === 'dark' ? '☀️' : '🌓';
-        });
-
+  document.addEventListener('DOMContentLoaded', () => {
       // ── MOBILE SIDEBAR DRAWER ──────────────────────────────
       const mobileMenuBtn = document.getElementById('mobileMenuBtn');
       const appSidebar    = document.getElementById('appSidebar');
@@ -831,8 +797,9 @@
         calculateAll();
       });
 
-      calculateAll();
-    });
+  // Chạy lần đầu tiên khi tải trang
+    calculateAll();
+  });
   </script>
 </body>
 </html>
