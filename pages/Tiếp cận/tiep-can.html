@@ -1,69 +1,86 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tiếp cận lâm sàng - CliniPortal</title>
-    <link rel="stylesheet" href="../../css/main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CliniPortal - Hệ sinh thái công cụ hỗ trợ lâm sàng dành cho bác sĩ nội khoa">
+  <title>CliniPortal - Hệ sinh thái Công cụ Lâm sàng</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/components/header.css">
+  <link rel="stylesheet" href="../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../css/components/footer.css">
+
+  <script src="../../pages/header.js"></script>
 </head>
+
 <body>
-    <!--HEADER-->
-    <header class="global-header">
-        <div class="header-left">
-            <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
-            <div class="logo-brand">
-                <span class="logo-icon">🩺</span>
-                <span class="logo-text">CliniPortal</span>
-            </div>
-            <button class="btn-back" onclick="goBack()">
-                <span class="icon">&larr;</span> Quay lại
-            </button>
-        </div>
-        
-        <!-- SEARCH BAR --> 
-        <div class="search-bar-container">
-        <div class="search-container">
-        <input class="input" type="text">
-        <svg viewBox="0 0 24 24" class="search__icon">
-            <g>
-            <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
-            </path>
-            </g>
-        </svg>
-        </div>
-        </div>
-        
-        <div class="header-actions">
-            <button id="theme-toggle-btn" title="Chuyển đổi Sáng/Tối" aria-label="Toggle Theme">🌓</button>
-            <button id="sync-settings-btn" title="Cài đặt & Đồng bộ" aria-label="Settings and Sync">⚙️</button>
-        </div>
-    </header>
+  <!-- Placeholder nạp header.html — đường dẫn tính từ vị trí cong-cu.html -->
+  <div id="header-placeholder" data-header-path="../header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-    <!--MAIN CONTENT-->
-    <div class="app-container">
+  <!-- ===================== APP CONTAINER ===================== -->
+  <div class="app-container">
 
-        <aside class="app-sidebar" id="appSidebar">
-            <nav class="sidebar-nav">
-                <ul>
-                    <li><a href="../../index.html"><img src="../../assets/icons/ic-trang-chu.svg" alt="Trang chủ" class="menu-icon"> Trang chủ</a></li>
-                    <li><a href="../../pages/Công cụ/cong-cu.html"><img src="../../assets/icons/ic-cong-cu.svg" alt="Công cụ" class="menu-icon"> Công cụ lâm sàng</a></li>
-                    <li><a href="tiep-can.html" class="active"><img src="../../assets/icons/ic-tiep-can.svg" alt="Tiếp cận" class="menu-icon"> Tiếp cận lâm sàng</a></li>
-                    <li><a href="../../pages/Phác đồ/phac-do.html"><img src="../../assets/icons/ic-phac-do.svg" alt="Phác đồ" class="menu-icon"> Phác đồ điều trị</a></li>
-                    <li><a href="../../pages/Dược lý/duoc-ly.html"><img src="../../assets/icons/ic-duoc-ly.svg" alt="Dược lý" class="menu-icon"> Dược lý & Kháng sinh</a></li>
-                    <li><a href="../../pages/Y học chứng cứ/y-hoc-chung-cu.html"><img src="../../assets/icons/ic-y-hoc.svg" alt="Y học chứng cứ" class="menu-icon"> Y học chứng cứ</a></li>
-                </ul>
-            </nav>
-        </aside>
+      <!-- SIDEBAR -->
+      <aside class="app-sidebar" id="appSidebar">
+        <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+          <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <nav class="sidebar-nav" aria-label="Điều hướng chính">
+          <ul class="nav-list" role="list">
+            <li>
+              <a href="../../index.html" class="nav-item" title="Trang chủ">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">Trang chủ</span>
+              </a>
+            </li>
+            <li>
+              <a href="../Công cụ/cong-cu.html" class="nav-item" title="Công cụ lâm sàng">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Công cụ lâm sàng</span>
+              </a>
+            </li>
+            <li>
+              <a href="../Phác đồ/phac-do.html" class="nav-item" title="Phác đồ Y khoa">
+                <span class="nav-icon">📄</span>
+                <span class="nav-text">Phác đồ Y khoa</span>
+              </a>
+            </li>
+            <li>
+              <a href="../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+                <span class="nav-icon">💊</span>
+                <span class="nav-text">Dược lý & Kháng sinh</span>
+              </a>
+            </li>
+            <li>
+              <a href="../Tiếp cận/tiep-can.html" class="nav-item active" aria-current="page" title="Tiếp cận triệu chứng">
+                <span class="nav-icon">🤒</span>
+                <span class="nav-text">Tiếp cận lâm sàng</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
 
-        <div class="main-wrapper">
-            
-            <section class="hero-dashboard">
-                <div class="hero-intro">
-                    <h1>Tiếp cận Lâm sàng theo Hội chứng & Triệu chứng</h1>
-                    <p>Sơ đồ tư duy, lưu trình thuật toán xử trí ban đầu và định hướng chẩn đoán từng bước hệ thống ngay tại phòng cấp cứu và buồng bệnh.</p>
-                </div>
-            </section>
+      <!-- MAIN CONTENT -->
+      <div class="main-wrapper" id="mainContent">
 
+        <!-- HERO -->
+        <section class="hero-dashboard" aria-labelledby="hero-title">
+          <div class="hero-intro">
+            <h1 id="hero-title"> TIẾP CẬN LÂM SÀNG</h1>
+            <p>Sơ đồ tư duy, lưu trình thuật toán xử trí ban đầu và định hướng chẩn đoán từng bước hệ thống ngay tại phòng cấp cứu và buồng bệnh.</p>
+          </div>
+        </section>
+  
             <main class="main-content-grid">
                 <h2 class="section-heading">Lưu đồ & Thuật toán xử trí</h2>
                 
@@ -97,8 +114,6 @@
                     </div>
 
                 </div>
-            </main>
-            
         </div>
     </div>
 
@@ -107,54 +122,5 @@
             <p>CliniPortal © 2026. Giao diện tối ưu hóa hiển thị linh hoạt trên Mobile và Desktop.</p>
         </div>
     </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const themeToggleBtn = document.getElementById('theme-toggle-btn');
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const appSidebar = document.getElementById('appSidebar');
-
-            // Đọc cấu hình giao diện từ LocalStorage
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'dark');
-            }
-
-            // Cơ chế chuyển đổi giao diện Sáng/Tối
-            themeToggleBtn.addEventListener('click', () => {
-                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-                if (isDark) {
-                    document.documentElement.removeAttribute('data-theme');
-                    localStorage.setItem('theme', 'light');
-                } else {
-                    document.documentElement.setAttribute('data-theme', 'dark');
-                    localStorage.setItem('theme', 'dark');
-                }
-            });
-
-            // Điều khiển đóng/mở Sidebar trên điện thoại di động
-            if (mobileMenuBtn && appSidebar) {
-                mobileMenuBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    appSidebar.classList.toggle('active');
-                });
-
-                document.addEventListener('click', (e) => {
-                    if (!appSidebar.contains(e.target) && e.target !== mobileMenuBtn) {
-                        appSidebar.classList.remove('active');
-                    }
-                });
-            }
-        });
-         function goBack() {
-        // Kiểm tra xem có lịch sử duyệt web của trang trước đó không
-        if (document.referrer && document.referrer.includes(window.location.hostname)) {
-            window.history.back();
-        } else {
-            // Nếu không có lịch sử (mở trực tiếp), tự động quay về trang chủ
-            window.location.href = "../../index.html"; 
-        }
-        }
-    </script>
 </body>
 </html>
