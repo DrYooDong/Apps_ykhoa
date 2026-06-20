@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="vi" data-theme="light">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="CliniPortal – Hệ thống hỗ trợ quyết định lâm sàng dành cho bác sĩ nội khoa tại Việt Nam" />
+  <meta name="description"
+    content="CliniPortal – Hệ thống hỗ trợ quyết định lâm sàng dành cho bác sĩ nội khoa tại Việt Nam" />
   <title>CliniPortal – Hỗ trợ Lâm sàng</title>
 
   <!-- Preconnect fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
 
   <link rel="stylesheet" href="../../../css/reset.css">
   <link rel="stylesheet" href="../../../css/main.css">
@@ -18,168 +22,179 @@
   <link rel="stylesheet" href="../../../css/components/footer.css">
 
   <script src="../../../pages/header.js"></script>
-<style>
-  /* ============================================================
+  <style>
+    /* ============================================================
      PAGE-SPECIFIC STYLES: PHÂN TÍCH KHÍ MÁU ĐỘNG MẠCH (ABG)
      Đã quy hoạch 100% về Design Tokens chuẩn của CliniPortal
   ============================================================ */
 
-  /* Bố cục lưới hai bên (Input bên trái, Phân tích bên phải trên PC) */
-  .abg-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-top: 1rem;
-  }
-
-  /* Khung Panel chứa dữ liệu và kết quả */
-  .panel {
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-divider);
-    border-radius: var(--radius-md);
-    padding: 1.5rem;
-    box-shadow: var(--shadow-sm);
-    transition: background-color var(--tr), border-color var(--tr);
-  }
-
-  .panel-title {
-    font-size: var(--text-md);
-    font-weight: 700;
-    color: var(--color-primary);
-    margin-bottom: 1.25rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--color-divider);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  /* Cấu trúc các nhóm nhập liệu */
-  .input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    margin-bottom: 1rem;
-  }
-
-  .input-group label {
-    font-size: var(--text-sm);
-    font-weight: 600;
-    color: var(--color-text);
-  }
-
-  input[type="number"] {
-    width: 100%;
-    padding: 0.6rem 0.75rem;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    background-color: var(--color-surface-offset);
-    color: var(--color-text);
-    font-family: var(--font-body);
-    font-size: var(--text-sm);
-    transition: border-color var(--tr), box-shadow var(--tr);
-  }
-
-  input[type="number"]:focus {
-    outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px var(--color-primary-hl);
-  }
-
-  .grid-2-col {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-
-  /* Hộp hiển thị kết quả các bước phân tích logic */
-  .step-box {
-    margin-bottom: 1rem;
-    padding: 1rem;
-    border-radius: var(--radius-sm);
-    background-color: var(--color-surface-offset);
-    border-left: 4px solid var(--color-border);
-    transition: border-color var(--tr), background-color var(--tr);
-  }
-
-  .step-box h4 {
-    font-size: var(--text-sm);
-    font-weight: 700;
-    margin-bottom: 0.4rem;
-    color: var(--color-text);
-  }
-
-  .step-box p {
-    font-size: var(--text-sm);
-    margin: 0;
-    line-height: 1.5;
-    color: var(--color-text);
-  }
-
-  /* Trạng thái đường viền linh hoạt cho các bước phân tích */
-  .status-valid { border-left-color: var(--color-success); }
-  .status-invalid { 
-    border-left-color: var(--color-rose); 
-    background-color: var(--color-rose-hl); 
-  }
-  .status-primary { border-left-color: var(--color-primary); }
-  .status-warning { border-left-color: var(--color-warning); }
-
-  /* Khối kết luận chẩn đoán cuối cùng */
-  .conclusion-box {
-    background-color: var(--color-success-hl);
-    border: 1px solid var(--color-success);
-    padding: 1.25rem;
-    border-radius: var(--radius-md);
-    margin-top: 1.5rem;
-  }
-
-  .conclusion-box h3 {
-    color: var(--color-success);
-    margin: 0 0 0.5rem 0;
-    font-size: var(--text-md);
-    font-weight: 700;
-  }
-
-  .conclusion-box p {
-    margin: 0;
-    font-size: var(--text-sm);
-    color: var(--color-text);
-    line-height: 1.5;
-  }
-
-  /* Nút đặt lại dữ liệu */
-  .reset-btn {
-    width: 100%;
-    padding: 0.75rem;
-    background-color: var(--color-surface-offset);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    color: var(--color-text);
-    font-family: var(--font-body);
-    font-weight: 700;
-    cursor: pointer;
-    transition: background-color var(--tr), border-color var(--tr);
-    margin-top: 1rem;
-  }
-
-  .reset-btn:hover {
-    background-color: var(--color-divider);
-    border-color: var(--color-primary);
-  }
-
-  /* ── Xử lý Responsive trên thiết bị màn hình lớn ── */
-  @media (min-width: 992px) {
+    /* Bố cục lưới hai bên (Input bên trái, Phân tích bên phải trên PC) */
     .abg-grid {
-      grid-template-columns: 1fr 1fr; /* Chia đôi hai cột cân xứng */
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 1rem;
     }
-    .sticky-panel {
-      position: sticky;
-      top: calc(var(--header-height, 60px) + 1.25rem);
-      height: fit-content;
+
+    /* Khung Panel chứa dữ liệu và kết quả */
+    .panel {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: background-color var(--tr), border-color var(--tr);
     }
-  }
-</style>
+
+    .panel-title {
+      font-size: var(--text-md);
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--color-divider);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Cấu trúc các nhóm nhập liệu */
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .input-group label {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      background-color: var(--color-surface-offset);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      transition: border-color var(--tr), box-shadow var(--tr);
+    }
+
+    input[type="number"]:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px var(--color-primary-hl);
+    }
+
+    .grid-2-col {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    /* Hộp hiển thị kết quả các bước phân tích logic */
+    .step-box {
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      background-color: var(--color-surface-offset);
+      border-left: 4px solid var(--color-border);
+      transition: border-color var(--tr), background-color var(--tr);
+    }
+
+    .step-box h4 {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--color-text);
+    }
+
+    .step-box p {
+      font-size: var(--text-sm);
+      margin: 0;
+      line-height: 1.5;
+      color: var(--color-text);
+    }
+
+    /* Trạng thái đường viền linh hoạt cho các bước phân tích */
+    .status-valid {
+      border-left-color: var(--color-success);
+    }
+
+    .status-invalid {
+      border-left-color: var(--color-rose);
+      background-color: var(--color-rose-hl);
+    }
+
+    .status-primary {
+      border-left-color: var(--color-primary);
+    }
+
+    .status-warning {
+      border-left-color: var(--color-warning);
+    }
+
+    /* Khối kết luận chẩn đoán cuối cùng */
+    .conclusion-box {
+      background-color: var(--color-success-hl);
+      border: 1px solid var(--color-success);
+      padding: 1.25rem;
+      border-radius: var(--radius-md);
+      margin-top: 1.5rem;
+    }
+
+    .conclusion-box h3 {
+      color: var(--color-success);
+      margin: 0 0 0.5rem 0;
+      font-size: var(--text-md);
+      font-weight: 700;
+    }
+
+    .conclusion-box p {
+      margin: 0;
+      font-size: var(--text-sm);
+      color: var(--color-text);
+      line-height: 1.5;
+    }
+
+    /* Nút đặt lại dữ liệu */
+    .reset-btn {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: var(--color-surface-offset);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color var(--tr), border-color var(--tr);
+      margin-top: 1rem;
+    }
+
+    .reset-btn:hover {
+      background-color: var(--color-divider);
+      border-color: var(--color-primary);
+    }
+
+    /* ── Xử lý Responsive trên thiết bị màn hình lớn ── */
+    @media (min-width: 992px) {
+      .abg-grid {
+        grid-template-columns: 1fr 1fr;
+        /* Chia đôi hai cột cân xứng */
+      }
+
+      .sticky-panel {
+        position: sticky;
+        top: calc(var(--header-height, 60px) + 1.25rem);
+        height: fit-content;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -193,8 +208,8 @@
     <!-- SIDEBAR -->
     <aside class="app-sidebar" id="appSidebar">
       <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
-        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5"
-          fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
           <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
       </button>
@@ -213,9 +228,9 @@
             </a>
           </li>
           <li>
-            <a href="../../Phác đồ/phac-do.html" class="nav-item" title="Phác đồ Y khoa">
-              <span class="nav-icon">📋</span>
-              <span class="nav-text">Phác đồ điều trị</span>
+            <a href="../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+              <span class="nav-icon">📄</span>
+              <span class="nav-text">Y học chứng cứ</span>
             </a>
           </li>
           <li>
@@ -233,18 +248,19 @@
         </ul>
       </nav>
     </aside>
-    
+
     <!--MAIN CONTENT-->
     <div class="main-wrapper" id="mainContent">
-      
+
       <section class="hero-dashboard" aria-labelledby="hero-title">
         <div class="hero-intro">
           <h1 id="hero-title">PHÂN TÍCH KHÍ MÁU ĐỘNG MẠCH (ABG)</h1>
-          <p>Hệ thống tự động kiểm định kết quả, đánh giá rối loạn toan kiềm hỗn hợp và tính toán Delta Ratio theo phương pháp Henderson-Hasselbalch.</p>
+          <p>Hệ thống tự động kiểm định kết quả, đánh giá rối loạn toan kiềm hỗn hợp và tính toán Delta Ratio theo
+            phương pháp Henderson-Hasselbalch.</p>
         </div>
       </section>
 
-       <!--BREADCRUMB-->
+      <!--BREADCRUMB-->
       <nav aria-label="Breadcrumb" class="breadcrumb-container">
         <ol class="breadcrumb-list">
           <li class="breadcrumb-item">
@@ -252,31 +268,28 @@
               <span class="home-icon">🏠</span> Home
             </a>
           </li>
-          
-          <li class="breadcrumb-item"
-            aria-current="page"> Công cụ</a>
+
+          <li class="breadcrumb-item" aria-current="page"> Công cụ</a>
           </li>
 
-          <li class="breadcrumb-item"
-            aria-current="page"> Thận & điện giải, toan kiềm</a>
+          <li class="breadcrumb-item" aria-current="page"> Thận & điện giải, toan kiềm</a>
           </li>
-          
-          <li class="breadcrumb-item active" 
-            aria-current="page"> ABG
+
+          <li class="breadcrumb-item active" aria-current="page"> ABG
           </li>
         </ol>
       </nav>
 
       <div class="abg-grid">
-        
+
         <div class="panel">
           <div class="panel-title"><span>🩸</span> Thông số Khí máu & Điện giải</div>
-          
+
           <div class="input-group">
             <label for="abg-ph">pH máu</label>
             <input type="number" id="abg-ph" value="7.25" step="0.01">
           </div>
-          
+
           <div class="grid-2-col">
             <div class="input-group">
               <label for="abg-pco2">pCO₂ (mmHg)</label>
@@ -300,7 +313,9 @@
           </div>
 
           <div class="input-group">
-            <label for="abg-alb">Albumin (g/dL) <span style="font-weight: normal; font-size: 0.85rem; color: var(--color-text-muted);">(Dùng để hiệu chỉnh AG)</span></label>
+            <label for="abg-alb">Albumin (g/dL) <span
+                style="font-weight: normal; font-size: 0.85rem; color: var(--color-text-muted);">(Dùng để hiệu chỉnh
+                AG)</span></label>
             <input type="number" id="abg-alb" value="4.0" step="0.1">
           </div>
 
@@ -309,7 +324,7 @@
 
         <div class="panel sticky-panel">
           <div class="panel-title"><span>🧠</span> Phân tích Logic Lâm sàng</div>
-          
+
           <div id="step1-validation" class="step-box">
             <h4>Bước 1: Kiểm định mẫu (Henderson-Hasselbalch)</h4>
             <p id="out-validation">Đang chờ dữ liệu...</p>
@@ -345,185 +360,186 @@
     </div>
 
     <script>
-        function goBack() {
-            window.history.back();
-        }
-        document.addEventListener('DOMContentLoaded', () => {
-            // Lấy các DOM elements
-            const inPh = document.getElementById('abg-ph');
-            const inPco2 = document.getElementById('abg-pco2');
-            const inHco3 = document.getElementById('abg-hco3');
-            const inNa = document.getElementById('abg-na');
-            const inCl = document.getElementById('abg-cl');
-            const inAlb = document.getElementById('abg-alb');
+      function goBack() {
+        window.history.back();
+      }
+      document.addEventListener('DOMContentLoaded', () => {
+        // Lấy các DOM elements
+        const inPh = document.getElementById('abg-ph');
+        const inPco2 = document.getElementById('abg-pco2');
+        const inHco3 = document.getElementById('abg-hco3');
+        const inNa = document.getElementById('abg-na');
+        const inCl = document.getElementById('abg-cl');
+        const inAlb = document.getElementById('abg-alb');
 
-            const domVal = document.getElementById('out-validation');
-            const boxVal = document.getElementById('step1-validation');
-            const domPri = document.getElementById('out-primary');
-            const boxPri = document.getElementById('step2-primary');
-            const domComp = document.getElementById('out-compensation');
-            const domAg = document.getElementById('out-ag');
-            const boxAg = document.getElementById('step4-aniongap');
-            const boxDelta = document.getElementById('step5-delta');
-            const domDelta = document.getElementById('out-delta');
-            const domConcl = document.getElementById('out-conclusion');
+        const domVal = document.getElementById('out-validation');
+        const boxVal = document.getElementById('step1-validation');
+        const domPri = document.getElementById('out-primary');
+        const boxPri = document.getElementById('step2-primary');
+        const domComp = document.getElementById('out-compensation');
+        const domAg = document.getElementById('out-ag');
+        const boxAg = document.getElementById('step4-aniongap');
+        const boxDelta = document.getElementById('step5-delta');
+        const domDelta = document.getElementById('out-delta');
+        const domConcl = document.getElementById('out-conclusion');
 
-            function analyzeABG() {
-                const ph = parseFloat(inPh.value);
-                const pco2 = parseFloat(inPco2.value);
-                const hco3 = parseFloat(inHco3.value);
-                const na = parseFloat(inNa.value) || 140;
-                const cl = parseFloat(inCl.value) || 100;
-                const alb = parseFloat(inAlb.value) || 4.0;
+        function analyzeABG() {
+          const ph = parseFloat(inPh.value);
+          const pco2 = parseFloat(inPco2.value);
+          const hco3 = parseFloat(inHco3.value);
+          const na = parseFloat(inNa.value) || 140;
+          const cl = parseFloat(inCl.value) || 100;
+          const alb = parseFloat(inAlb.value) || 4.0;
 
-                if (!ph || !pco2 || !hco3) return;
+          if (!ph || !pco2 || !hco3) return;
 
-                let conclusions = [];
+          let conclusions = [];
 
-                // BƯỚC 1: KIỂM ĐỊNH MẪU
-                // Tính [H+] theo Henderson equation: [H+] = 24 * (pCO2 / HCO3)
-                const hCalc = 24 * (pco2 / hco3);
-                // Tính [H+] từ pH: [H+] = 10^(9-pH) (công thức nhẩm nhanh lâm sàng)
-                const hActual = Math.pow(10, 9 - ph);
-                
-                const errorMargin = Math.abs(hCalc - hActual) / hActual;
-                
-                if (errorMargin > 0.15) {
-                    boxVal.className = "step-box status-invalid";
-                    domVal.innerHTML = `[H⁺] tính toán: ${hCalc.toFixed(1)} nEq/L &ne; [H⁺] thực tế: ${hActual.toFixed(1)} nEq/L.<br><strong>Cảnh báo:</strong> Mẫu máu không hợp lệ hoặc có sai số đo lường.`;
-                    domConcl.textContent = "Không thể kết luận do mẫu khí máu không hợp lệ.";
-                    domPri.textContent = "-"; domComp.textContent = "-"; domAg.textContent = "-"; boxDelta.style.display = "none";
-                    return;
-                } else {
-                    boxVal.className = "step-box status-valid";
-                    domVal.innerHTML = `Mẫu hợp lệ. [H⁺] dự kiến khớp với pH đo được (~${hCalc.toFixed(1)} nEq/L).`;
-                }
+          // BƯỚC 1: KIỂM ĐỊNH MẪU
+          // Tính [H+] theo Henderson equation: [H+] = 24 * (pCO2 / HCO3)
+          const hCalc = 24 * (pco2 / hco3);
+          // Tính [H+] từ pH: [H+] = 10^(9-pH) (công thức nhẩm nhanh lâm sàng)
+          const hActual = Math.pow(10, 9 - ph);
 
-                // BƯỚC 2: RỐI LOẠN NGUYÊN PHÁT
-                let primary = "";
-                let isAcidemia = ph < 7.35;
-                let isAlkalemia = ph > 7.45;
+          const errorMargin = Math.abs(hCalc - hActual) / hActual;
 
-                if (isAcidemia) {
-                    if (hco3 < 22 && pco2 <= 45) primary = "Toan chuyển hóa";
-                    else if (pco2 > 45 && hco3 >= 22) primary = "Toan hô hấp";
-                    else primary = "Toan hỗn hợp (Hô hấp & Chuyển hóa)";
-                } else if (isAlkalemia) {
-                    if (hco3 > 26 && pco2 >= 35) primary = "Kiềm chuyển hóa";
-                    else if (pco2 < 35 && hco3 <= 26) primary = "Kiềm hô hấp";
-                    else primary = "Kiềm hỗn hợp (Hô hấp & Chuyển hóa)";
-                } else {
-                    // pH bình thường nhưng pCO2 hoặc HCO3 bất thường -> Hỗn hợp bù trừ hoàn toàn
-                    if (pco2 > 45 && hco3 > 26) primary = "Toan hô hấp & Kiềm chuyển hóa bù trừ";
-                    else if (pco2 < 35 && hco3 < 22) primary = "Kiềm hô hấp & Toan chuyển hóa bù trừ";
-                    else primary = "Khí máu hoàn toàn bình thường";
-                }
-                
-                boxPri.className = "step-box status-primary";
-                domPri.innerHTML = `<strong>${primary}</strong> (Dựa trên pH = ${ph})`;
-                conclusions.push(primary);
+          if (errorMargin > 0.15) {
+            boxVal.className = "step-box status-invalid";
+            domVal.innerHTML = `[H⁺] tính toán: ${hCalc.toFixed(1)} nEq/L &ne; [H⁺] thực tế: ${hActual.toFixed(1)} nEq/L.<br><strong>Cảnh báo:</strong> Mẫu máu không hợp lệ hoặc có sai số đo lường.`;
+            domConcl.textContent = "Không thể kết luận do mẫu khí máu không hợp lệ.";
+            domPri.textContent = "-"; domComp.textContent = "-"; domAg.textContent = "-"; boxDelta.style.display = "none";
+            return;
+          } else {
+            boxVal.className = "step-box status-valid";
+            domVal.innerHTML = `Mẫu hợp lệ. [H⁺] dự kiến khớp với pH đo được (~${hCalc.toFixed(1)} nEq/L).`;
+          }
 
-                // BƯỚC 3: ĐÁP ỨNG BÙ TRỪ
-                let compText = "Không có rối loạn nguyên phát rõ rệt để tính bù trừ.";
-                let expectedPco2 = 0;
-                let expectedHco3 = 0;
+          // BƯỚC 2: RỐI LOẠN NGUYÊN PHÁT
+          let primary = "";
+          let isAcidemia = ph < 7.35;
+          let isAlkalemia = ph > 7.45;
 
-                if (primary === "Toan chuyển hóa") {
-                    expectedPco2 = (1.5 * hco3) + 8;
-                    compText = `pCO₂ kỳ vọng (Công thức Winters): ${expectedPco2.toFixed(1)} ± 2 mmHg.<br>`;
-                    if (pco2 > expectedPco2 + 2) { compText += "➔ <strong>Kèm Toan hô hấp.</strong>"; conclusions.push("Toan hô hấp phối hợp"); }
-                    else if (pco2 < expectedPco2 - 2) { compText += "➔ <strong>Kèm Kiềm hô hấp.</strong>"; conclusions.push("Kiềm hô hấp phối hợp"); }
-                    else compText += "➔ Bù trừ hô hấp phù hợp.";
-                } 
-                else if (primary === "Kiềm chuyển hóa") {
-                    expectedPco2 = (0.7 * (hco3 - 24)) + 40;
-                    compText = `pCO₂ kỳ vọng: ${expectedPco2.toFixed(1)} ± 1.5 mmHg.<br>`;
-                    if (pco2 > expectedPco2 + 1.5) { compText += "➔ <strong>Kèm Toan hô hấp.</strong>"; conclusions.push("Toan hô hấp phối hợp"); }
-                    else if (pco2 < expectedPco2 - 1.5) { compText += "➔ <strong>Kèm Kiềm hô hấp.</strong>"; conclusions.push("Kiềm hô hấp phối hợp"); }
-                    else compText += "➔ Bù trừ hô hấp phù hợp.";
-                }
-                // Toan/Kiềm hô hấp cần phân biệt cấp/mạn, ở đây tính giản lược để tham khảo
-                else if (primary.includes("hô hấp")) {
-                    compText = "Đối với rối loạn hô hấp, cần lâm sàng để phân định Cấp tính (thay đổi HCO3 1-2 mEq cho mỗi 10mmHg pCO2) hay Mạn tính (thay đổi 4-5 mEq).";
-                }
-                domComp.innerHTML = compText;
+          if (isAcidemia) {
+            if (hco3 < 22 && pco2 <= 45) primary = "Toan chuyển hóa";
+            else if (pco2 > 45 && hco3 >= 22) primary = "Toan hô hấp";
+            else primary = "Toan hỗn hợp (Hô hấp & Chuyển hóa)";
+          } else if (isAlkalemia) {
+            if (hco3 > 26 && pco2 >= 35) primary = "Kiềm chuyển hóa";
+            else if (pco2 < 35 && hco3 <= 26) primary = "Kiềm hô hấp";
+            else primary = "Kiềm hỗn hợp (Hô hấp & Chuyển hóa)";
+          } else {
+            // pH bình thường nhưng pCO2 hoặc HCO3 bất thường -> Hỗn hợp bù trừ hoàn toàn
+            if (pco2 > 45 && hco3 > 26) primary = "Toan hô hấp & Kiềm chuyển hóa bù trừ";
+            else if (pco2 < 35 && hco3 < 22) primary = "Kiềm hô hấp & Toan chuyển hóa bù trừ";
+            else primary = "Khí máu hoàn toàn bình thường";
+          }
 
-                // BƯỚC 4: ANION GAP VÀ HIỆU CHỈNH
-                const ag = na - cl - hco3;
-                const agCorr = ag + 2.5 * (4.0 - alb);
-                let hasHighAG = agCorr > 14;
+          boxPri.className = "step-box status-primary";
+          domPri.innerHTML = `<strong>${primary}</strong> (Dựa trên pH = ${ph})`;
+          conclusions.push(primary);
 
-                boxAg.className = "step-box " + (hasHighAG ? "status-warning" : "status-primary");
-                domAg.innerHTML = `AG thực tế = ${ag.toFixed(1)}<br>
+          // BƯỚC 3: ĐÁP ỨNG BÙ TRỪ
+          let compText = "Không có rối loạn nguyên phát rõ rệt để tính bù trừ.";
+          let expectedPco2 = 0;
+          let expectedHco3 = 0;
+
+          if (primary === "Toan chuyển hóa") {
+            expectedPco2 = (1.5 * hco3) + 8;
+            compText = `pCO₂ kỳ vọng (Công thức Winters): ${expectedPco2.toFixed(1)} ± 2 mmHg.<br>`;
+            if (pco2 > expectedPco2 + 2) { compText += "➔ <strong>Kèm Toan hô hấp.</strong>"; conclusions.push("Toan hô hấp phối hợp"); }
+            else if (pco2 < expectedPco2 - 2) { compText += "➔ <strong>Kèm Kiềm hô hấp.</strong>"; conclusions.push("Kiềm hô hấp phối hợp"); }
+            else compText += "➔ Bù trừ hô hấp phù hợp.";
+          }
+          else if (primary === "Kiềm chuyển hóa") {
+            expectedPco2 = (0.7 * (hco3 - 24)) + 40;
+            compText = `pCO₂ kỳ vọng: ${expectedPco2.toFixed(1)} ± 1.5 mmHg.<br>`;
+            if (pco2 > expectedPco2 + 1.5) { compText += "➔ <strong>Kèm Toan hô hấp.</strong>"; conclusions.push("Toan hô hấp phối hợp"); }
+            else if (pco2 < expectedPco2 - 1.5) { compText += "➔ <strong>Kèm Kiềm hô hấp.</strong>"; conclusions.push("Kiềm hô hấp phối hợp"); }
+            else compText += "➔ Bù trừ hô hấp phù hợp.";
+          }
+          // Toan/Kiềm hô hấp cần phân biệt cấp/mạn, ở đây tính giản lược để tham khảo
+          else if (primary.includes("hô hấp")) {
+            compText = "Đối với rối loạn hô hấp, cần lâm sàng để phân định Cấp tính (thay đổi HCO3 1-2 mEq cho mỗi 10mmHg pCO2) hay Mạn tính (thay đổi 4-5 mEq).";
+          }
+          domComp.innerHTML = compText;
+
+          // BƯỚC 4: ANION GAP VÀ HIỆU CHỈNH
+          const ag = na - cl - hco3;
+          const agCorr = ag + 2.5 * (4.0 - alb);
+          let hasHighAG = agCorr > 14;
+
+          boxAg.className = "step-box " + (hasHighAG ? "status-warning" : "status-primary");
+          domAg.innerHTML = `AG thực tế = ${ag.toFixed(1)}<br>
                                    AG hiệu chỉnh Albumin = <strong>${agCorr.toFixed(1)}</strong> (BT: 12 ± 2)<br>
                                    ${hasHighAG ? '➔ <strong>Có Toan chuyển hóa tăng AG</strong>' : '➔ AG bình thường'}`;
 
-                if (hasHighAG && !conclusions.join("").includes("Toan chuyển hóa tăng AG")) {
-                    conclusions.push("Toan chuyển hóa tăng AG");
-                }
+          if (hasHighAG && !conclusions.join("").includes("Toan chuyển hóa tăng AG")) {
+            conclusions.push("Toan chuyển hóa tăng AG");
+          }
 
-                // BƯỚC 5: DELTA RATIO
-                if (hasHighAG) {
-                    boxDelta.style.display = "block";
-                    const deltaGap = agCorr - 12;
-                    const deltaHco3 = 24 - hco3;
-                    const deltaRatio = deltaGap / deltaHco3;
+          // BƯỚC 5: DELTA RATIO
+          if (hasHighAG) {
+            boxDelta.style.display = "block";
+            const deltaGap = agCorr - 12;
+            const deltaHco3 = 24 - hco3;
+            const deltaRatio = deltaGap / deltaHco3;
 
-                    let dText = `ΔGap (${deltaGap.toFixed(1)}) / ΔHCO₃⁻ (${deltaHco3.toFixed(1)}) = <strong>${deltaRatio.toFixed(2)}</strong><br>`;
-                    
-                    if (deltaRatio < 0.4) {
-                        dText += "➔ Toan chuyển hóa tăng AG + Toan chuyển hóa AG bình thường (Hyperchloremic).";
-                        conclusions.push("Toan chuyển hóa AG bình thường đi kèm");
-                    } else if (deltaRatio >= 0.4 && deltaRatio <= 0.8) {
-                        dText += "➔ Hỗn hợp Toan tăng AG & Toan AG bình thường.";
-                    } else if (deltaRatio > 0.8 && deltaRatio <= 2.0) {
-                        dText += "➔ Toan chuyển hóa tăng AG đơn thuần.";
-                    } else {
-                        dText += "➔ Toan chuyển hóa tăng AG + Kiềm chuyển hóa đi kèm.";
-                        if (!conclusions.join("").includes("Kiềm chuyển hóa")) conclusions.push("Kiềm chuyển hóa đi kèm");
-                    }
-                    domDelta.innerHTML = dText;
-                } else {
-                    boxDelta.style.display = "none";
-                }
+            let dText = `ΔGap (${deltaGap.toFixed(1)}) / ΔHCO₃⁻ (${deltaHco3.toFixed(1)}) = <strong>${deltaRatio.toFixed(2)}</strong><br>`;
 
-                // TỔNG HỢP KẾT LUẬN
-                // Lọc trùng lặp
-                let uniqueConclusions = [...new Set(conclusions)];
-                domConcl.innerHTML = uniqueConclusions.join("<br>+ ");
+            if (deltaRatio < 0.4) {
+              dText += "➔ Toan chuyển hóa tăng AG + Toan chuyển hóa AG bình thường (Hyperchloremic).";
+              conclusions.push("Toan chuyển hóa AG bình thường đi kèm");
+            } else if (deltaRatio >= 0.4 && deltaRatio <= 0.8) {
+              dText += "➔ Hỗn hợp Toan tăng AG & Toan AG bình thường.";
+            } else if (deltaRatio > 0.8 && deltaRatio <= 2.0) {
+              dText += "➔ Toan chuyển hóa tăng AG đơn thuần.";
+            } else {
+              dText += "➔ Toan chuyển hóa tăng AG + Kiềm chuyển hóa đi kèm.";
+              if (!conclusions.join("").includes("Kiềm chuyển hóa")) conclusions.push("Kiềm chuyển hóa đi kèm");
             }
+            domDelta.innerHTML = dText;
+          } else {
+            boxDelta.style.display = "none";
+          }
 
-            // Lắng nghe sự kiện thay đổi input
-            document.querySelectorAll('input').forEach(input => {
-                input.addEventListener('input', analyzeABG);
-            });
+          // TỔNG HỢP KẾT LUẬN
+          // Lọc trùng lặp
+          let uniqueConclusions = [...new Set(conclusions)];
+          domConcl.innerHTML = uniqueConclusions.join("<br>+ ");
+        }
 
-            document.getElementById('btn-reset').addEventListener('click', () => {
-                inPh.value = "7.40"; inPco2.value = "40"; inHco3.value = "24";
-                inNa.value = "140"; inCl.value = "104"; inAlb.value = "4.0";
-                analyzeABG();
-            });
+        // Lắng nghe sự kiện thay đổi input
+        document.querySelectorAll('input').forEach(input => {
+          input.addEventListener('input', analyzeABG);
+        });
 
-            // Gọi hàm lần đầu
-            analyzeABG();
+        document.getElementById('btn-reset').addEventListener('click', () => {
+          inPh.value = "7.40"; inPco2.value = "40"; inHco3.value = "24";
+          inNa.value = "140"; inCl.value = "104"; inAlb.value = "4.0";
+          analyzeABG();
+        });
 
-            // Xử lý Dark Mode
-            const themeToggleBtn = document.getElementById('theme-toggle-btn');
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
-            
-            if (themeToggleBtn) {
-                themeToggleBtn.addEventListener('click', () => {
-                    if (document.documentElement.getAttribute('data-theme') === 'dark') {
-                        document.documentElement.removeAttribute('data-theme');
-                        localStorage.setItem('theme', 'light');
-                    } else {
-                        document.documentElement.setAttribute('data-theme', 'dark');
-                        localStorage.setItem('theme', 'dark');
-                    }
-                });
+        // Gọi hàm lần đầu
+        analyzeABG();
+
+        // Xử lý Dark Mode
+        const themeToggleBtn = document.getElementById('theme-toggle-btn');
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+
+        if (themeToggleBtn) {
+          themeToggleBtn.addEventListener('click', () => {
+            if (document.documentElement.getAttribute('data-theme') === 'dark') {
+              document.documentElement.removeAttribute('data-theme');
+              localStorage.setItem('theme', 'light');
+            } else {
+              document.documentElement.setAttribute('data-theme', 'dark');
+              localStorage.setItem('theme', 'dark');
             }
-            });
+          });
+        }
+      });
     </script>
 </body>
+
 </html>

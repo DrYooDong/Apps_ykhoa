@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="vi" data-theme="light">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="CliniPortal – Hệ thống hỗ trợ quyết định lâm sàng dành cho bác sĩ nội khoa tại Việt Nam" />
-  <title>CliniPortal – Hỗ trợ Lâm sàng</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="CliniPortal – Hệ thống hỗ trợ quyết định lâm sàng dành cho bác sĩ nội khoa tại Việt Nam" />
+    <title>CliniPortal – Hỗ trợ Lâm sàng</title>
 
-  <!-- Preconnect fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Preconnect fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
 
-  <link rel="stylesheet" href="../../../css/reset.css">
-  <link rel="stylesheet" href="../../../css/main.css">
-  <link rel="stylesheet" href="../../../css/components/header.css">
-  <link rel="stylesheet" href="../../../css/components/sidebar.css">
-  <link rel="stylesheet" href="../../../css/components/footer.css">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../css/components/footer.css">
 
-  <script src="../../../pages/header.js"></script> >  
-<style>
+    <script src="../../../pages/header.js"></script> >
+    <style>
         /* === BIẾN MÀU SẮC HỆ THỐNG & GIAO DIỆN CHUYỂN ĐỔI CHUẨN === */
         :root {
             --primary: #0d6efd;
@@ -107,13 +111,15 @@
             gap: 6px;
             margin-bottom: 16px;
         }
+
         .input-group label {
             font-size: 0.88rem;
             font-weight: 600;
             color: var(--text-main);
         }
 
-        input[type="number"], select {
+        input[type="number"],
+        select {
             width: 100%;
             padding: 10px 12px;
             border: 1px solid var(--gray-300);
@@ -124,7 +130,9 @@
             box-sizing: border-box;
             transition: border-color 0.15s ease, box-shadow 0.15s ease;
         }
-        input[type="number"]:focus, select:focus {
+
+        input[type="number"]:focus,
+        select:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
@@ -145,6 +153,7 @@
             border: 1px solid var(--border-color);
             border-left: 5px solid var(--primary-color);
         }
+
         .result-box h4 {
             font-size: 0.95rem;
             font-weight: 700;
@@ -156,24 +165,28 @@
             flex-wrap: wrap;
             gap: 8px;
         }
+
         .big-number {
             font-size: 1.6rem;
             font-weight: 800;
             color: var(--primary-color);
             line-height: 1;
         }
+
         .sub-text {
             font-size: 0.88rem;
             color: var(--text-muted);
             line-height: 1.5;
         }
+
         .block-note {
             display: block;
             margin-top: 6px;
         }
 
         /* === THÀNH PHẦN HIỂN THỊ TRẠNG THÁI (FIX LỖI ĐỘ TƯƠNG PHẢN) === */
-        .kdigo-risk, .aki-result {
+        .kdigo-risk,
+        .aki-result {
             padding: 16px;
             border-radius: var(--radius);
             border: 1px solid transparent;
@@ -181,7 +194,7 @@
             margin-top: 12px;
             transition: all 0.2s ease;
         }
-        
+
         .kdigo-risk {
             font-weight: 700;
             text-align: center;
@@ -194,17 +207,20 @@
             font-size: 1rem;
             font-weight: 700;
         }
+
         #aki-stage {
             font-size: 1.45rem;
             font-weight: 800;
             margin: 6px 0;
             line-height: 1.1;
         }
+
         #aki-criteria {
             font-size: 0.88rem;
             margin-bottom: 12px;
             font-weight: 600;
         }
+
         #aki-recommendation {
             padding: 12px;
             border-radius: 6px;
@@ -216,27 +232,74 @@
         }
 
         /* --- Phối màu cho LIGHT MODE --- */
-        .risk-low, .aki-no-aki { background-color: #e8f5e9; color: #1b5e20; border-color: #81c784; border-left-color: #2e7d32; }
-        .risk-mod, .aki-stage-1 { background-color: #fffde7; color: #f57f17; border-color: #fff176; border-left-color: #fbc02d; }
-        .risk-high, .aki-stage-2 { background-color: #fff3e0; color: #e65100; border-color: #ffb74d; border-left-color: #ef6c00; }
-        .risk-vhigh, .aki-stage-3 { background-color: #ffebee; color: #b71c1c; border-color: #ef5350; border-left-color: #c62828; }
+        .risk-low,
+        .aki-no-aki {
+            background-color: #e8f5e9;
+            color: #1b5e20;
+            border-color: #81c784;
+            border-left-color: #2e7d32;
+        }
+
+        .risk-mod,
+        .aki-stage-1 {
+            background-color: #fffde7;
+            color: #f57f17;
+            border-color: #fff176;
+            border-left-color: #fbc02d;
+        }
+
+        .risk-high,
+        .aki-stage-2 {
+            background-color: #fff3e0;
+            color: #e65100;
+            border-color: #ffb74d;
+            border-left-color: #ef6c00;
+        }
+
+        .risk-vhigh,
+        .aki-stage-3 {
+            background-color: #ffebee;
+            color: #b71c1c;
+            border-color: #ef5350;
+            border-left-color: #c62828;
+        }
 
         /* --- Phối màu phản hồi cao cấp cho DARK MODE --- */
         [data-theme="dark"] #aki-recommendation {
             background-color: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
-        [data-theme="dark"] .risk-low, [data-theme="dark"] .aki-no-aki { 
-            background-color: rgba(16, 185, 129, 0.12); color: #a7f3d0; border-color: rgba(16, 185, 129, 0.3); border-left-color: #10b981; 
+
+        [data-theme="dark"] .risk-low,
+        [data-theme="dark"] .aki-no-aki {
+            background-color: rgba(16, 185, 129, 0.12);
+            color: #a7f3d0;
+            border-color: rgba(16, 185, 129, 0.3);
+            border-left-color: #10b981;
         }
-        [data-theme="dark"] .risk-mod, [data-theme="dark"] .aki-stage-1 { 
-            background-color: rgba(245, 158, 11, 0.12); color: #fde68a; border-color: rgba(245, 158, 11, 0.3); border-left-color: #f59e0b; 
+
+        [data-theme="dark"] .risk-mod,
+        [data-theme="dark"] .aki-stage-1 {
+            background-color: rgba(245, 158, 11, 0.12);
+            color: #fde68a;
+            border-color: rgba(245, 158, 11, 0.3);
+            border-left-color: #f59e0b;
         }
-        [data-theme="dark"] .risk-high, [data-theme="dark"] .aki-stage-2 { 
-            background-color: rgba(249, 115, 22, 0.12); color: #fed7aa; border-color: rgba(249, 115, 22, 0.3); border-left-color: #f97316; 
+
+        [data-theme="dark"] .risk-high,
+        [data-theme="dark"] .aki-stage-2 {
+            background-color: rgba(249, 115, 22, 0.12);
+            color: #fed7aa;
+            border-color: rgba(249, 115, 22, 0.3);
+            border-left-color: #f97316;
         }
-        [data-theme="dark"] .risk-vhigh, [data-theme="dark"] .aki-stage-3 { 
-            background-color: rgba(239, 68, 68, 0.15); color: #fecaca; border-color: rgba(239, 68, 68, 0.3); border-left-color: #ef4444; 
+
+        [data-theme="dark"] .risk-vhigh,
+        [data-theme="dark"] .aki-stage-3 {
+            background-color: rgba(239, 68, 68, 0.15);
+            color: #fecaca;
+            border-color: rgba(239, 68, 68, 0.3);
+            border-left-color: #ef4444;
         }
 
         /* === ĐỊNH DẠNG KHỐI ĐẦU VÀO AKI CHUẨN === */
@@ -245,6 +308,7 @@
             padding-top: 16px;
             border-top: 2px dashed var(--border-color);
         }
+
         .aki-section-title {
             font-weight: 700 !important;
             color: var(--accent) !important;
@@ -252,12 +316,14 @@
             display: block;
             margin-bottom: 12px;
         }
+
         .checkbox-wrapper {
             display: flex;
             flex-direction: column;
             gap: 10px;
             margin-top: 12px;
         }
+
         .checkbox-item {
             display: flex;
             align-items: center;
@@ -267,6 +333,7 @@
             cursor: pointer;
             user-select: none;
         }
+
         .checkbox-item input[type="checkbox"] {
             width: 18px;
             height: 18px;
@@ -282,9 +349,21 @@
             border-radius: var(--radius);
             margin-top: 20px;
         }
-        .med-alert-box h4 { color: var(--danger); font-weight: 700; margin: 0 0 10px 0; font-size: 0.95rem; }
-        .med-alert-box ul { padding-left: 20px; margin: 0; font-size: 0.9rem; line-height: 1.6; }
-        
+
+        .med-alert-box h4 {
+            color: var(--danger);
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            font-size: 0.95rem;
+        }
+
+        .med-alert-box ul {
+            padding-left: 20px;
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
         .reset-btn {
             width: 100%;
             padding: 11px;
@@ -298,117 +377,138 @@
             font-size: 0.95rem;
             transition: background-color 0.15s ease;
         }
-        .reset-btn:hover { background-color: var(--border-color); }
+
+        .reset-btn:hover {
+            background-color: var(--border-color);
+        }
 
         /* === ĐÁP ỨNG TRÊN ĐA GIAO DIỆN MÀN HÌNH (RESPONSIVE) === */
         @media (min-width: 992px) {
-            .renal-grid { grid-template-columns: 1fr 1.3fr; }
-            .sticky-panel { position: sticky; top: 24px; }
+            .renal-grid {
+                grid-template-columns: 1fr 1.3fr;
+            }
+
+            .sticky-panel {
+                position: sticky;
+                top: 24px;
+            }
         }
+
         @media (max-width: 768px) {
-            .grid-2-col { grid-template-columns: 1fr !important; gap: 12px; }
+            .grid-2-col {
+                grid-template-columns: 1fr !important;
+                gap: 12px;
+            }
         }
+
         @media (max-width: 576px) {
-            .main-wrapper { padding: 12px; }
-            .panel { padding: 16px; }
-            .big-number { font-size: 1.4rem; }
+            .main-wrapper {
+                padding: 12px;
+            }
+
+            .panel {
+                padding: 16px;
+            }
+
+            .big-number {
+                font-size: 1.4rem;
+            }
         }
     </style>
 </head>
 
 <body>
-  <!-- Placeholder nạp header.html — đường dẫn tính từ vị trí cong-cu.html -->
-  <div id="header-placeholder" data-header-path="../../header.html"></div>
-  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <!-- Placeholder nạp header.html — đường dẫn tính từ vị trí cong-cu.html -->
+    <div id="header-placeholder" data-header-path="../../header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-  <!-- ===================== APP CONTAINER ===================== -->
-  <div class="app-container">
+    <!-- ===================== APP CONTAINER ===================== -->
+    <div class="app-container">
 
-    <!-- SIDEBAR -->
-    <aside class="app-sidebar" id="appSidebar">
-      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
-        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5"
-          fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
-          <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
-      </button>
-      <nav class="sidebar-nav" aria-label="Điều hướng chính">
-        <ul class="nav-list" role="list">
-          <li>
-            <a href="../../../index.html" class="nav-item" title="Trang chủ">
-              <span class="nav-icon">🏠</span>
-              <span class="nav-text">Trang chủ</span>
-            </a>
-          </li>
-          <li>
-            <a href="../cong-cu.html" class="nav-item active" aria-current="page" title="Công cụ lâm sàng">
-              <span class="nav-icon">⚙️</span>
-              <span class="nav-text">Công cụ lâm sàng</span>
-            </a>
-          </li>
-          <li>
-            <a href="../../Phác đồ/phac-do.html" class="nav-item" title="Phác đồ Y khoa">
-              <span class="nav-icon">📋</span>
-              <span class="nav-text">Phác đồ điều trị</span>
-            </a>
-          </li>
-          <li>
-            <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
-              <span class="nav-icon">💊</span>
-              <span class="nav-text">Dược lý lâm sàng</span>
-            </a>
-          </li>
-          <li>
-            <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận triệu chứng">
-              <span class="nav-icon">🩻</span>
-              <span class="nav-text">Tiếp cận lâm sàng</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </aside>
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../../../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../cong-cu.html" class="nav-item active" aria-current="page" title="Công cụ lâm sàng">
+                            <span class="nav-icon">⚙️</span>
+                            <span class="nav-text">Công cụ lâm sàng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+                            <span class="nav-icon">📋</span>
+                            <span class="nav-text">Y học chứng cứ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+                            <span class="nav-icon">💊</span>
+                            <span class="nav-text">Dược lý lâm sàng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận triệu chứng">
+                            <span class="nav-icon">🩻</span>
+                            <span class="nav-text">Tiếp cận lâm sàng</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
 
-    <!--MAIN CONTENT-->
+        <!--MAIN CONTENT-->
         <div class="main-wrapper">
             <section class="hero-dashboard">
                 <div class="hero-intro">
                     <h1>ĐÁNH GIÁ CHỨC NĂNG THẬN TOÀN DIỆN</h1>
-                    <p>Tự động lựa chọn cân nặng tính CrCl, khử chỉ số hóa BSA để chỉnh liều thuốc, và phân tầng rủi ro CKD theo ma trận KDIGO 2024.</p>
+                    <p>Tự động lựa chọn cân nặng tính CrCl, khử chỉ số hóa BSA để chỉnh liều thuốc, và phân tầng rủi ro
+                        CKD theo ma trận KDIGO 2024.</p>
                 </div>
             </section>
 
-             <!--BREADCRUMB-->
+            <!--BREADCRUMB-->
             <nav aria-label="Breadcrumb" class="breadcrumb-container">
                 <ol class="breadcrumb-list">
-                <li class="breadcrumb-item">
-                    <a href="../../../index.html" class="breadcrumb-link">
-                    <span class="home-icon">🏠</span> Home
-                    </a>
-                </li>
-                
-                <li class="breadcrumb-item"
-                    aria-current="page"> Công cụ</a>
-                </li>
+                    <li class="breadcrumb-item">
+                        <a href="../../../index.html" class="breadcrumb-link">
+                            <span class="home-icon">🏠</span> Home
+                        </a>
+                    </li>
 
-                <li class="breadcrumb-item"
-                    aria-current="page"> Thận & điện giải, toan kiềm</a>
-                </li>
-                
-                <li class="breadcrumb-item active" 
-                    aria-current="page"> Chức năng thận
-                </li>
+                    <li class="breadcrumb-item" aria-current="page"> Công cụ</a>
+                    </li>
+
+                    <li class="breadcrumb-item" aria-current="page"> Thận & điện giải, toan kiềm</a>
+                    </li>
+
+                    <li class="breadcrumb-item active" aria-current="page"> Chức năng thận
+                    </li>
                 </ol>
             </nav>
 
             <div class="renal-grid">
-                
+
                 <div class="panel">
                     <div class="panel-title"><span>📝 Thông số Bệnh nhân</span></div>
-                    
+
                     <div class="grid-2-col">
                         <div class="input-group">
                             <label>Tuổi (hoặc năm sinh)</label>
-                            <input type="number" id="ren-age" value="65" min="1" max="2050" placeholder="VD: 65 hoặc 1961">
+                            <input type="number" id="ren-age" value="65" min="1" max="2050"
+                                placeholder="VD: 65 hoặc 1961">
                         </div>
                         <div class="input-group">
                             <label>Giới tính</label>
@@ -430,11 +530,13 @@
                         </div>
                     </div>
 
-                    <div class="input-group" style="margin-top: 0.5rem; padding-top: 1rem; border-top: 1px dashed var(--border-color);">
+                    <div class="input-group"
+                        style="margin-top: 0.5rem; padding-top: 1rem; border-top: 1px dashed var(--border-color);">
                         <label>Creatinine huyết thanh</label>
                         <div style="display: flex; gap: 0.5rem; align-items: center;">
                             <input type="number" id="ren-cr" value="1.5" step="0.01" style="flex: 3; min-width: 120px">
-                            <select id="ren-cr-unit" style="flex: 1; min-width: 75px; max-width: 90px; padding: 0.4rem; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-input); color: var(--text);">
+                            <select id="ren-cr-unit"
+                                style="flex: 1; min-width: 75px; max-width: 90px; padding: 0.4rem; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-input); color: var(--text);">
                                 <option value="mgdL">mg/dL</option>
                                 <option value="umolL">μmol/L</option>
                             </select>
@@ -454,7 +556,7 @@
                     <!--AKI-->
                     <div class="aki-input-section">
                         <label class="aki-section-title">🚨 Đánh giá Tổn thương Thận cấp (AKI)</label>
-                        
+
                         <div class="grid-2-col">
                             <div class="input-group">
                                 <label>Creatinine nền (Baseline)</label>
@@ -468,7 +570,7 @@
                                 </select>
                             </div>
                         </div>
-                        
+
                         <div class="checkbox-wrapper">
                             <label class="checkbox-item">
                                 <input type="checkbox" id="aki-48h">
@@ -479,9 +581,10 @@
                                 <span>Bệnh nhân đang có chỉ định lọc máu cấp (RRT)</span>
                             </label>
                         </div>
-                        
+
                         <span class="sub-text block-note">
-                            * Baseline là giá trị Creatinine huyết thanh ổn định trước đó của bệnh nhân (thường là giá trị thấp nhất trong vòng 7 ngày qua).
+                            * Baseline là giá trị Creatinine huyết thanh ổn định trước đó của bệnh nhân (thường là giá
+                            trị thấp nhất trong vòng 7 ngày qua).
                         </span>
                     </div>
                     <button type="button" id="btn-reset" class="reset-btn">🔄 Làm mới dữ liệu</button>
@@ -489,14 +592,15 @@
 
                 <div class="panel sticky-panel">
                     <div class="panel-title"><span>📊 Kết quả Tính toán & Phân tầng</span></div>
-                    
+
                     <div class="result-box">
                         <h4>
                             <span>Độ thanh thải Creatinine (Cockcroft-Gault)</span>
                             <span id="out-cg-val" class="big-number">-</span>
                         </h4>
                         <div class="sub-text">
-                            <strong>Trọng lượng áp dụng:</strong> <span id="out-weight-type">-</span> (<span id="out-weight-val">-</span> kg)<br>
+                            <strong>Trọng lượng áp dụng:</strong> <span id="out-weight-type">-</span> (<span
+                                id="out-weight-val">-</span> kg)<br>
                             <span id="out-weight-reason" style="color: #059669;">-</span>
                         </div>
                     </div>
@@ -508,17 +612,20 @@
                         </h4>
                         <div class="sub-text">
                             Đơn vị chuẩn: mL/min/1.73m² (Dùng để phân độ CKD).<br>
-                            <strong>eGFR tuyệt đối (Khử BSA):</strong> <span id="out-epi-abs" style="font-weight: 700; color: var(--text-main);">-</span> mL/min. <br>
-                            <em>*Khuyến cáo dùng eGFR tuyệt đối hoặc CrCl để chỉnh liều thuốc ở bệnh nhân có thể trạng bất thường (BSA = <span id="out-bsa">-</span> m²).</em>
+                            <strong>eGFR tuyệt đối (Khử BSA):</strong> <span id="out-epi-abs"
+                                style="font-weight: 700; color: var(--text-main);">-</span> mL/min. <br>
+                            <em>*Khuyến cáo dùng eGFR tuyệt đối hoặc CrCl để chỉnh liều thuốc ở bệnh nhân có thể trạng
+                                bất thường (BSA = <span id="out-bsa">-</span> m²).</em>
                         </div>
                     </div>
 
-                    <div class="panel-title" style="margin-top: 1.5rem; font-size: 1rem;"><span>⚠️ Phân tầng & Cảnh báo Lâm sàng</span></div>
-                    
+                    <div class="panel-title" style="margin-top: 1.5rem; font-size: 1rem;"><span>⚠️ Phân tầng & Cảnh báo
+                            Lâm sàng</span></div>
+
                     <div id="out-kdigo-box" class="kdigo-risk risk-low">
                         Đang phân tích rủi ro CKD...
                     </div>
-                    
+
                     <!-- AKI Staging Result -->
                     <div id="aki-result-box" class="aki-result" style="display: none;">
                         <h3>🚨 Kết quả Phân độ AKI (KDIGO)</h3>
@@ -529,7 +636,7 @@
                     <div id="med-alerts" class="med-alert-box" style="display: none;">
                         <h4>⛔ Cảnh báo Chỉnh liều Thuốc:</h4>
                         <ul id="med-alerts-list">
-                            </ul>
+                        </ul>
                     </div>
 
                 </div>
@@ -555,11 +662,11 @@
             const outWeightType = document.getElementById('out-weight-type');
             const outWeightVal = document.getElementById('out-weight-val');
             const outWeightReason = document.getElementById('out-weight-reason');
-            
+
             const outEpiVal = document.getElementById('out-epi-val');
             const outEpiAbs = document.getElementById('out-epi-abs');
             const outBsa = document.getElementById('out-bsa');
-            
+
             const boxKdigo = document.getElementById('out-kdigo-box');
             const boxMedAlerts = document.getElementById('med-alerts');
             const listMedAlerts = document.getElementById('med-alerts-list');
@@ -569,14 +676,14 @@
                 let age = parseFloat(inAge.value) || 0;
                 // Tự động nhận diện năm sinh
                 if (age >= 1900 && age <= new Date().getFullYear()) {
-                        age = new Date().getFullYear() - age;
+                    age = new Date().getFullYear() - age;
                 }
                 const gender = inGender.value;
                 const height = parseFloat(inHeight.value) || 0;
                 const weight = parseFloat(inWeight.value) || 0;
                 const acr = inAcr.value;
-                
-                
+
+
 
                 // QUY ĐỔI CREATININE VỀ mg/dL ---
                 let cr = parseFloat(inCr.value) || 0;
@@ -622,11 +729,11 @@
                 // 2.3. CKD-EPI 2021 (Đã sửa lại công thức cho gọn và chuẩn toán học)
                 const k = gender === 'female' ? 0.7 : 0.9;
                 const a = gender === 'female' ? -0.241 : -0.302;
-                
+
                 // Không cần if (cr / k > 1) nữa, vì Math.min(..., 1) sẽ tự bằng 1 nếu cr/k > 1
-                let epi = 142 * Math.pow(Math.min(cr / k, 1), a) 
-                            * Math.pow(Math.max(cr / k, 1), -1.200) 
-                            * Math.pow(0.9938, age);
+                let epi = 142 * Math.pow(Math.min(cr / k, 1), a)
+                    * Math.pow(Math.max(cr / k, 1), -1.200)
+                    * Math.pow(0.9938, age);
                 if (gender === 'female') epi *= 1.012;
 
                 outEpiVal.textContent = epi.toFixed(1);
@@ -666,11 +773,11 @@
                 }
 
                 boxKdigo.className = `kdigo-risk risk-${riskLevel}`;
-                boxKdigo.innerHTML = `CKD Giai đoạn: ${gStage}${acr.replace('A','-A')} <br> ${riskText}`;
+                boxKdigo.innerHTML = `CKD Giai đoạn: ${gStage}${acr.replace('A', '-A')} <br> ${riskText}`;
 
                 // 2.6. CẢNH BÁO MỐC CHỐNG CHỈ ĐỊNH THUỐC
                 let alerts = [];
-                let refValue = Math.min(crcl, epiAbsolute); 
+                let refValue = Math.min(crcl, epiAbsolute);
 
                 if (refValue < 60) {
                     alerts.push("<strong>DOACs (Kháng đông uống mới):</strong> Cần chỉnh giảm liều Rivaroxaban, Apixaban, Dabigatran theo eGFR tuyệt đối.");
@@ -709,7 +816,7 @@
                     inCr.step = '0.01';
                 }
                 // Gọi lại hàm tính toán vì giá trị ô input đã bị thay đổi bởi script
-                calculateRenal(); 
+                calculateRenal();
             });
 
             // 4. Gán sự kiện input/change cho tất cả các ô khác (Trừ ô select đơn vị để tránh chạy 2 lần)
@@ -725,7 +832,7 @@
             if (btnReset) {
                 btnReset.addEventListener('click', () => {
                     inAge.value = "65"; inGender.selectedIndex = 0;
-                    inHeight.value = "165"; inWeight.value = "70"; 
+                    inHeight.value = "165"; inWeight.value = "70";
                     inCr.value = "1.5"; inCrUnit.value = "mgdL"; // Reset về mg/dL
                     inAcr.selectedIndex = 0;
                     calculateRenal();
@@ -745,39 +852,39 @@
                 const baselineUnit = document.getElementById('aki-baseline-unit').value;
                 const is48h = document.getElementById('aki-48h').checked;
                 const isRRT = document.getElementById('aki-rRT').checked;
-                
+
                 const akiBox = document.getElementById('aki-result-box');
                 const akiStage = document.getElementById('aki-stage');
                 const akiCriteria = document.getElementById('aki-criteria');
                 const akiRecommendation = document.getElementById('aki-recommendation');
-                
+
                 if (!baselineInput || baselineInput <= 0 || !currentCrMgDL || currentCrMgDL <= 0) {
                     akiBox.style.display = 'none';
                     return;
                 }
-                
+
                 // Quy đổi baseline về mg/dL (currentCrMgDL đã là mg/dL từ hàm calculateRenal truyền vào)
                 let baselineMgDL = baselineUnit === 'umolL' ? baselineInput / 88.4 : baselineInput;
-                let currentMgDL = currentCrMgDL; 
-                
+                let currentMgDL = currentCrMgDL;
+
                 const ratio = currentMgDL / baselineMgDL;
                 const absoluteIncrease = currentMgDL - baselineMgDL;
-                
+
                 let stage = '';
                 let stageClass = '';
                 let criteria = '';
                 let recommendation = '';
-                
+
                 if (isRRT) {
                     stage = 'Giai đoạn 3';
                     stageClass = 'aki-stage-3';
                     criteria = 'Bệnh nhân đang được lọc máu (RRT)';
                     recommendation = '<strong>🚨 AKI Giai đoạn 3:</strong> Cần hội chẩn Chuyên khoa Thận ngay. Đánh giá chỉ định lọc máu, điều trị nguyên nhân, theo dõi sát điện giải và cân bằng dịch.';
-                } else if ((currentMgDL >= 4.0 && (absoluteIncrease >= 0.5 || ratio >= 1.5)) || ratio >= 3.0) { 
+                } else if ((currentMgDL >= 4.0 && (absoluteIncrease >= 0.5 || ratio >= 1.5)) || ratio >= 3.0) {
                     stage = 'Giai đoạn 3';
                     stageClass = 'aki-stage-3';
-                    criteria = currentMgDL >= 4.0 
-                        ? `Creatinine ≥ 4.0 mg/dL (${(currentMgDL * 88.4).toFixed(1)} μmol/L)` 
+                    criteria = currentMgDL >= 4.0
+                        ? `Creatinine ≥ 4.0 mg/dL (${(currentMgDL * 88.4).toFixed(1)} μmol/L)`
                         : `Tăng ≥ 3.0 lần so với baseline (${ratio.toFixed(2)}x)`;
                     recommendation = '<strong> AKI Giai đoạn 3:</strong> Nguy cơ cao. Hội chẩn Thận khẩn cấp. Ngừng tất cả thuốc độc thận. Đánh giá chỉ định lọc máu. Theo dõi sát mỗi 4-6 giờ.';
                 } else if (ratio >= 2.0) {
@@ -800,7 +907,7 @@
                     criteria = `Tỷ lệ ${ratio.toFixed(2)}x (dưới ngưỡng AKI)`;
                     recommendation = '<strong>✅ Không có AKI:</strong> Chức năng thận ổn định. Tiếp tục theo dõi định kỳ.';
                 }
-                
+
                 akiBox.style.display = 'block';
                 akiBox.className = `aki-result ${stageClass}`;
                 akiStage.textContent = stage;
@@ -811,11 +918,11 @@
 
             // Thêm event listener cho các input AKI
             document.getElementById('aki-baseline').addEventListener('input', () => calculateRenal());
-            document.getElementById('aki-baseline-unit').addEventListener('change', function() {
+            document.getElementById('aki-baseline-unit').addEventListener('change', function () {
                 const baselineInput = document.getElementById('aki-baseline');
                 const currentVal = parseFloat(baselineInput.value);
                 if (isNaN(currentVal) || currentVal === 0) return;
-                
+
                 if (this.value === 'umolL') {
                     baselineInput.value = (currentVal * 88.4).toFixed(1);
                 } else {
@@ -843,23 +950,24 @@
             }
         });
         // 4. Gán sự kiện input/change cho tất cả các ô khác (Nằm trọn vẹn bên trong DOMContentLoaded)
-            document.querySelectorAll('input, select').forEach(el => {
-                if (el.id !== 'ren-cr-unit') {
-                    el.addEventListener('input', () => {
-                        const ageVal = parseInt(inAge.value) || 0;
-                        // Nếu đang gõ dở năm sinh (lớn hơn 120), không gọi hàm tính toán để tránh nhảy số âm
-                        if (ageVal > 120) return;
-                        calculateRenal();
-                    });
+        document.querySelectorAll('input, select').forEach(el => {
+            if (el.id !== 'ren-cr-unit') {
+                el.addEventListener('input', () => {
+                    const ageVal = parseInt(inAge.value) || 0;
+                    // Nếu đang gõ dở năm sinh (lớn hơn 120), không gọi hàm tính toán để tránh nhảy số âm
+                    if (ageVal > 120) return;
+                    calculateRenal();
+                });
 
-                    el.addEventListener('change', () => {
-                        const ageVal = parseInt(inAge.value) || 0;
-                        if (ageVal > 120) return;
-                        calculateRenal();
-                    });
-                }
-            });
-            
+                el.addEventListener('change', () => {
+                    const ageVal = parseInt(inAge.value) || 0;
+                    if (ageVal > 120) return;
+                    calculateRenal();
+                });
+            }
+        });
+
     </script>
 </body>
+
 </html>

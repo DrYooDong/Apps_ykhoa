@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="CliniPortal - Tổng hợp Hướng dẫn Thực hành Lâm sàng & Nghiên cứu Y học Chứng cứ theo hệ chuyên khoa">
+  <title>CliniPortal - Y Học Chứng Cứ & Guidelines</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/components/header.css">
+  <link rel="stylesheet" href="../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../css/components/footer.css">
+
+  <script src="../../pages/header.js" defer></script>
+
+  <style>
+    /* ============================================================
+       YHCC PAGE — DESIGN TOKENS
+    ============================================================ */
+    :root {
+      --yhcc-accent: #0284c7;
+      --yhcc-accent-light: #e0f2fe;
+      --yhcc-surface: var(--color-surface, #ffffff);
+      --yhcc-surface-2: var(--color-surface-2, #f8fafc);
+      --yhcc-border: var(--color-divider, #e2e8f0);
+      --yhcc-text: var(--color-text, #0f172a);
+      --yhcc-text-muted: var(--color-text-muted, #475569);
+      --yhcc-text-faint: var(--color-text-faint, #94a3b8);
+      --yhcc-radius: 12px;
+      --yhcc-tr: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ============================================================
+       HERO BANNER
+    ============================================================ */
+    .yhcc-hero {
+      background: var(--yhcc-surface);
+      border: 1px solid var(--yhcc-border);
+      border-radius: 20px;
+      padding: 2rem 2.25rem;
+      margin-bottom: 1.75rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+    }
+
+    .yhcc-hero::after {
+      content: '';
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, var(--yhcc-accent-light) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .yhcc-hero h1 {
+      font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+      font-size: clamp(1.3rem, 1.1rem + 0.8vw, 1.7rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--yhcc-text);
+      margin-bottom: 0.35rem;
+    }
+
+    .yhcc-hero p {
+      font-size: clamp(0.82rem, 0.78rem + 0.2vw, 0.9rem);
+      color: var(--yhcc-text-muted);
+      max-width: 62ch;
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       SPECIALTY FILTER TABS
+    ============================================================ */
+    .yhcc-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .yhcc-search {
+      flex: 1;
+      min-width: 220px;
+      max-width: 400px;
+      position: relative;
+    }
+
+    .yhcc-search input {
+      width: 100%;
+      padding: 0.6rem 1rem 0.6rem 2.5rem;
+      border: 1.5px solid var(--yhcc-border);
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-family: var(--font-body, 'Inter', sans-serif);
+      background: var(--yhcc-surface);
+      color: var(--yhcc-text);
+      transition: border-color var(--yhcc-tr), box-shadow var(--yhcc-tr);
+      outline: none;
+    }
+
+    .yhcc-search input:focus {
+      border-color: var(--yhcc-accent);
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.12);
+    }
+
+    .yhcc-search::before {
+      content: '🔍';
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.85rem;
+      pointer-events: none;
+    }
+
+    .yhcc-filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .yhcc-tab {
+      padding: 0.4rem 0.85rem;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border: 1.5px solid var(--yhcc-border);
+      background: var(--yhcc-surface);
+      color: var(--yhcc-text-muted);
+      cursor: pointer;
+      transition: all var(--yhcc-tr);
+      white-space: nowrap;
+    }
+
+    .yhcc-tab:hover {
+      border-color: var(--yhcc-accent);
+      color: var(--yhcc-accent);
+      background: var(--yhcc-accent-light);
+    }
+
+    .yhcc-tab.active {
+      background: var(--yhcc-accent);
+      color: #fff;
+      border-color: var(--yhcc-accent);
+    }
+
+    .yhcc-view-toggle {
+      display: flex;
+      gap: 0.3rem;
+      margin-left: auto;
+    }
+
+    .yhcc-view-btn {
+      padding: 0.4rem 0.65rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      border: 1.5px solid var(--yhcc-border);
+      background: var(--yhcc-surface);
+      color: var(--yhcc-text-muted);
+      cursor: pointer;
+      transition: all var(--yhcc-tr);
+    }
+
+    .yhcc-view-btn.active {
+      background: var(--yhcc-accent);
+      color: #fff;
+      border-color: var(--yhcc-accent);
+    }
+
+    /* ============================================================
+       STATS BAR
+    ============================================================ */
+    .yhcc-stats {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      font-size: 0.8rem;
+      color: var(--yhcc-text-faint);
+    }
+
+    .yhcc-stats strong {
+      color: var(--yhcc-accent);
+      font-weight: 700;
+    }
+
+    /* ============================================================
+       GUIDELINES TABLE
+    ============================================================ */
+    .yhcc-table-wrapper {
+      background: var(--yhcc-surface);
+      border: 1px solid var(--yhcc-border);
+      border-radius: var(--yhcc-radius);
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+      margin-bottom: 2rem;
+    }
+
+    .yhcc-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    .yhcc-table thead {
+      background: var(--yhcc-surface-2);
+      border-bottom: 2px solid var(--yhcc-border);
+    }
+
+    .yhcc-table th {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--yhcc-text-muted);
+      white-space: nowrap;
+    }
+
+    .yhcc-table td {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--yhcc-border);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    .yhcc-table tbody tr {
+      transition: background var(--yhcc-tr);
+    }
+
+    .yhcc-table tbody tr:hover {
+      background: var(--yhcc-accent-light);
+    }
+
+    .yhcc-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Specialty badge */
+    .yhcc-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .badge-cardio {
+      background: #fef2f2;
+      color: #dc2626;
+    }
+
+    .badge-pulmo {
+      background: #eff6ff;
+      color: #2563eb;
+    }
+
+    .badge-gi {
+      background: #fefce8;
+      color: #ca8a04;
+    }
+
+    .badge-endo {
+      background: #faf5ff;
+      color: #7c3aed;
+    }
+
+    .badge-neuro {
+      background: #fdf4ff;
+      color: #c026d3;
+    }
+
+    .badge-infect {
+      background: #f0fdf4;
+      color: #16a34a;
+    }
+
+    .badge-renal {
+      background: #ecfeff;
+      color: #0891b2;
+    }
+
+    .badge-rheum {
+      background: #fff7ed;
+      color: #ea580c;
+    }
+
+    .badge-hema {
+      background: #fdf2f8;
+      color: #db2777;
+    }
+
+    .badge-icu {
+      background: #f1f5f9;
+      color: #475569;
+    }
+
+    /* Source tag */
+    .yhcc-source-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      background: var(--yhcc-surface-2);
+      color: var(--yhcc-text-muted);
+      border: 1px solid var(--yhcc-border);
+    }
+
+    /* Year pill */
+    .yhcc-year {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: var(--yhcc-accent-light);
+      color: var(--yhcc-accent);
+    }
+
+    /* Guideline title styling */
+    .yhcc-gl-title {
+      font-weight: 600;
+      color: var(--yhcc-text);
+      margin-bottom: 2px;
+    }
+
+    .yhcc-gl-summary {
+      font-size: 0.78rem;
+      color: var(--yhcc-text-muted);
+      line-height: 1.5;
+    }
+
+    /* Impact badge */
+    .yhcc-impact {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    .impact-essential {
+      background: #dcfce7;
+      color: #15803d;
+    }
+
+    .impact-recommended {
+      background: #e0f2fe;
+      color: #0369a1;
+    }
+
+    .impact-reference {
+      background: #f1f5f9;
+      color: #64748b;
+    }
+
+    /* ============================================================
+       CARD VIEW (alternative to table)
+    ============================================================ */
+    .yhcc-cards-grid {
+      display: none;
+      grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .yhcc-cards-grid.active {
+      display: grid;
+    }
+
+    .yhcc-gl-card {
+      background: var(--yhcc-surface);
+      border: 1px solid var(--yhcc-border);
+      border-radius: var(--yhcc-radius);
+      padding: 1.25rem;
+      transition: all var(--yhcc-tr);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .yhcc-gl-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--card-specialty-color, var(--yhcc-accent));
+      opacity: 0;
+      transition: opacity var(--yhcc-tr);
+    }
+
+    .yhcc-gl-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(2, 132, 199, 0.12);
+      border-color: var(--yhcc-accent);
+    }
+
+    .yhcc-gl-card:hover::before {
+      opacity: 1;
+    }
+
+    .yhcc-gl-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .yhcc-gl-card-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--yhcc-text);
+      line-height: 1.35;
+    }
+
+    .yhcc-gl-card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .yhcc-gl-card-body {
+      font-size: 0.8rem;
+      color: var(--yhcc-text-muted);
+      line-height: 1.55;
+    }
+
+    /* ============================================================
+       SPECIALTY SECTION CARDS
+    ============================================================ */
+    .yhcc-specialty-heading {
+      font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+      font-size: clamp(1rem, 0.95rem + 0.25vw, 1.1rem);
+      font-weight: 700;
+      color: var(--yhcc-text);
+      margin: 2rem 0 1rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .yhcc-specialty-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .yhcc-spec-card {
+      background: var(--yhcc-surface);
+      border: 1px solid var(--yhcc-border);
+      border-radius: var(--yhcc-radius);
+      padding: 1.25rem;
+      transition: all var(--yhcc-tr);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .yhcc-spec-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      border-radius: var(--yhcc-radius) var(--yhcc-radius) 0 0;
+      background: var(--spec-color, var(--yhcc-accent));
+      opacity: 0;
+      transition: opacity var(--yhcc-tr);
+    }
+
+    .yhcc-spec-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      border-color: var(--spec-color, var(--yhcc-accent));
+    }
+
+    .yhcc-spec-card:hover::before {
+      opacity: 1;
+    }
+
+    .yhcc-spec-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.6rem;
+    }
+
+    .yhcc-spec-icon {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      border-radius: 12px;
+      background: var(--spec-bg, var(--yhcc-accent-light));
+      flex-shrink: 0;
+    }
+
+    .yhcc-spec-count {
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: var(--spec-bg, var(--yhcc-accent-light));
+      color: var(--spec-color, var(--yhcc-accent));
+    }
+
+    .yhcc-spec-card h3 {
+      font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--yhcc-text);
+      margin-bottom: 0.3rem;
+    }
+
+    .yhcc-spec-card p {
+      font-size: 0.78rem;
+      color: var(--yhcc-text-muted);
+      line-height: 1.5;
+    }
+
+    /* ============================================================
+       EMPTY STATE
+    ============================================================ */
+    .yhcc-empty {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--yhcc-text-faint);
+    }
+
+    .yhcc-empty-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .yhcc-empty p {
+      font-size: 0.88rem;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 767px) {
+      .yhcc-hero {
+        padding: 1.25rem;
+      }
+
+      .yhcc-controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .yhcc-search {
+        max-width: none;
+      }
+
+      .yhcc-filter-tabs {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 4px;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .yhcc-table th:nth-child(4),
+      .yhcc-table td:nth-child(4) {
+        display: none;
+      }
+
+      .yhcc-table th:nth-child(5),
+      .yhcc-table td:nth-child(5) {
+        display: none;
+      }
+
+      .yhcc-view-toggle {
+        margin-left: 0;
+      }
+    }
+
+    /* ============================================================
+       DARK MODE OVERRIDES
+    ============================================================ */
+    [data-theme="dark"] .badge-cardio {
+      background: #2a1215;
+      color: #fca5a5;
+    }
+
+    [data-theme="dark"] .badge-pulmo {
+      background: #0f1a2e;
+      color: #93c5fd;
+    }
+
+    [data-theme="dark"] .badge-gi {
+      background: #1a1a0a;
+      color: #fde047;
+    }
+
+    [data-theme="dark"] .badge-endo {
+      background: #1a0e2e;
+      color: #c4b5fd;
+    }
+
+    [data-theme="dark"] .badge-neuro {
+      background: #1f0a2e;
+      color: #e879f9;
+    }
+
+    [data-theme="dark"] .badge-infect {
+      background: #0a1f0f;
+      color: #86efac;
+    }
+
+    [data-theme="dark"] .badge-renal {
+      background: #0a1a1f;
+      color: #67e8f9;
+    }
+
+    [data-theme="dark"] .badge-rheum {
+      background: #1f120a;
+      color: #fdba74;
+    }
+
+    [data-theme="dark"] .badge-hema {
+      background: #1f0a18;
+      color: #f9a8d4;
+    }
+
+    [data-theme="dark"] .badge-icu {
+      background: #1e293b;
+      color: #94a3b8;
+    }
+
+    [data-theme="dark"] .yhcc-table tbody tr:hover {
+      background: rgba(56, 189, 248, 0.06);
+    }
+
+    [data-theme="dark"] .yhcc-gl-card:hover {
+      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.15);
+    }
+
+    [data-theme="dark"] .impact-essential {
+      background: #052e16;
+      color: #86efac;
+    }
+
+    [data-theme="dark"] .impact-recommended {
+      background: #0a2236;
+      color: #7dd3fc;
+    }
+
+    [data-theme="dark"] .impact-reference {
+      background: #1e293b;
+      color: #94a3b8;
+    }
+
+    [data-theme="dark"] .yhcc-year {
+      background: #0a2236;
+      color: #7dd3fc;
+    }
+
+    [data-theme="dark"] .yhcc-source-tag {
+      background: #1e293b;
+      color: #94a3b8;
+      border-color: #334155;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Placeholder nạp header.html -->
+  <div id="header-placeholder" data-header-path="../header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ===================== APP CONTAINER ===================== -->
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Công cụ/cong-cu.html" class="nav-item" title="Công cụ lâm sàng">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Y học chứng cứ/yhcc.html" class="nav-item active" aria-current="page" title="Y học chứng cứ">
+              <span class="nav-icon">📄</span>
+              <span class="nav-text">Y học chứng cứ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý & Kháng sinh</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận triệu chứng">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-wrapper" id="mainContent">
+
+      <!--BREADCRUMB-->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../index.html" class="breadcrumb-link">
+              <span class="home-icon">🏠</span> Home
+            </a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page"> Y học chứng cứ</li>
+        </ol>
+      </nav>
+
+      <!-- HERO -->
+      <section class="yhcc-hero" aria-labelledby="yhcc-hero-title">
+        <h1 id="yhcc-hero-title">📋 Y HỌC CHỨNG CỨ & HƯỚNG DẪN LÂM SÀNG</h1>
+        <p>Tổng hợp các Hướng dẫn thực hành lâm sàng (CPG), Nghiên cứu chủ chốt & Khuyến cáo điều trị từ Bộ Y tế
+          Việt Nam và các Hiệp hội chuyên khoa quốc tế, được sắp xếp theo hệ chuyên khoa nội khoa.</p>
+      </section>
+
+      <!-- SPECIALTY OVERVIEW CARDS -->
+      <h2 class="yhcc-specialty-heading">🏥 Chuyên khoa</h2>
+      <div class="yhcc-specialty-cards" id="yhcc-specialty-cards">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- CONTROLS: SEARCH + FILTERS + VIEW TOGGLE -->
+      <h2 class="yhcc-specialty-heading">📑 Bảng tổng hợp Guidelines</h2>
+      <div class="yhcc-controls">
+        <div class="yhcc-search">
+          <input type="text" id="yhcc-search-input" placeholder="Tìm kiếm guideline, nghiên cứu, thuốc..."
+            aria-label="Tìm kiếm guideline">
+        </div>
+        <div class="yhcc-filter-tabs" id="yhcc-filter-tabs">
+          <!-- Rendered by JS -->
+        </div>
+        <div class="yhcc-view-toggle">
+          <button class="yhcc-view-btn active" id="btn-table-view" title="Xem dạng bảng"
+            onclick="yhccApp.setView('table')">☰</button>
+          <button class="yhcc-view-btn" id="btn-card-view" title="Xem dạng thẻ"
+            onclick="yhccApp.setView('card')">▦</button>
+        </div>
+      </div>
+
+      <!-- STATS -->
+      <div class="yhcc-stats" id="yhcc-stats"></div>
+
+      <!-- TABLE VIEW -->
+      <div class="yhcc-table-wrapper" id="yhcc-table-wrapper">
+        <table class="yhcc-table">
+          <thead>
+            <tr>
+              <th>Guideline / Nghiên cứu</th>
+              <th>Chuyên khoa</th>
+              <th>Nguồn</th>
+              <th>Năm</th>
+              <th>Mức độ</th>
+            </tr>
+          </thead>
+          <tbody id="yhcc-table-body">
+            <!-- Rendered by JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- CARD VIEW (alternative) -->
+      <div class="yhcc-cards-grid" id="yhcc-cards-grid">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- EMPTY STATE -->
+      <div class="yhcc-empty" id="yhcc-empty" style="display: none;">
+        <div class="yhcc-empty-icon">🔍</div>
+        <p>Không tìm thấy kết quả phù hợp. Thử thay đổi từ khóa hoặc bộ lọc.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="global-footer">
+    <div class="footer-copyright">
+      <p>CliniPortal © 2026 · Giao diện tối ưu hóa hiển thị linh hoạt trên Mobile và Desktop · Chỉ mang tính hỗ trợ
+        tham khảo, không thay thế phán xét lâm sàng của bác sĩ y khoa.</p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT — DATA + LOGIC
+  ============================================================ -->
+  <script>
+    // ── SPECIALTY DEFINITIONS ───────────────────────────────────
+    const SPECIALTIES = {
+      cardio: { name: 'Tim mạch', icon: '🫀', badge: 'badge-cardio', color: '#dc2626', bg: '#fef2f2', desc: 'Hướng dẫn chẩn đoán và điều trị các bệnh lý Tim mạch: Suy tim, Tăng huyết áp, Hội chứng vành cấp, Rung nhĩ...' },
+      pulmo: { name: 'Hô hấp', icon: '🫁', badge: 'badge-pulmo', color: '#2563eb', bg: '#eff6ff', desc: 'COPD, Hen phế quản, Viêm phổi cộng đồng, Thuyên tắc phổi, ARDS...' },
+      gi: { name: 'Tiêu hóa', icon: '🟡', badge: 'badge-gi', color: '#ca8a04', bg: '#fefce8', desc: 'Xuất huyết tiêu hóa, Viêm tụy cấp, Xơ gan, Viêm gan virus B/C...' },
+      endo: { name: 'Nội tiết', icon: '💊', badge: 'badge-endo', color: '#7c3aed', bg: '#faf5ff', desc: 'Đái tháo đường type 2, Suy giáp, Cường giáp, Rối loạn lipid máu, Suy thượng thận...' },
+      neuro: { name: 'Thần kinh', icon: '🧠', badge: 'badge-neuro', color: '#c026d3', bg: '#fdf4ff', desc: 'Đột quỵ não, Động kinh, Parkinson, Viêm màng não, Đau đầu...' },
+      infect: { name: 'Nhiễm', icon: '🦠', badge: 'badge-infect', color: '#16a34a', bg: '#f0fdf4', desc: 'Nhiễm khuẩn huyết, Sốc nhiễm khuẩn, HIV/AIDS, Sốt xuất huyết, Kháng sinh...' },
+      renal: { name: 'Thận - Tiết niệu', icon: '🔵', badge: 'badge-renal', color: '#0891b2', bg: '#ecfeff', desc: 'Suy thận cấp (AKI), Bệnh thận mạn (CKD), Lọc máu, Rối loạn điện giải, Toan-kiềm...' },
+      rheum: { name: 'Cơ xương khớp', icon: '🦴', badge: 'badge-rheum', color: '#ea580c', bg: '#fff7ed', desc: 'Viêm khớp dạng thấp, Gout, Lupus ban đỏ hệ thống, Loãng xương...' },
+      hema: { name: 'Huyết học', icon: '🩸', badge: 'badge-hema', color: '#db2777', bg: '#fdf2f8', desc: 'Thiếu máu, Xuất huyết giảm tiểu cầu, DIC, Huyết khối tĩnh mạch sâu (DVT/PE)...' },
+      icu: { name: 'Hồi sức - Cấp cứu', icon: '🏥', badge: 'badge-icu', color: '#475569', bg: '#f1f5f9', desc: 'Sốc, Cấp cứu ngừng tuần hoàn, Thở máy, An thần-giảm đau ICU, Dinh dưỡng ICU...' }
+    };
+
+    // ── GUIDELINES DATABASE ─────────────────────────────────────
+    const GUIDELINES_DB = [
+      // ─── TIM MẠCH ──────────────
+      { title: 'Hướng dẫn chẩn đoán và điều trị Suy tim mạn tính', specialty: 'cardio', source: 'BYT - QĐ 1857/2023', year: 2023, impact: 'essential', summary: 'Phân độ suy tim theo NYHA và EF, điều trị nền tảng "4 trụ cột" (ACEi/ARNI + BB + MRA + SGLT2i), chỉ định device CRT/ICD.' },
+      { title: 'Guideline Quản lý Tăng huyết áp — ESC/ESH', specialty: 'cardio', source: 'ESC/ESH 2023', year: 2023, impact: 'essential', summary: 'Định nghĩa THA ≥140/90 mmHg, phân tầng nguy cơ tim mạch, mục tiêu HA <130/80 cho hầu hết BN, đơn trị vs phối hợp thuốc.' },
+      { title: 'Xử trí Hội chứng vành cấp (ACS) — ESC', specialty: 'cardio', source: 'ESC 2023', year: 2023, impact: 'essential', summary: 'STEMI: Can thiệp mạch vành qua da (PCI) sớm <90p. NSTEMI: Phân tầng nguy cơ GRACE, kháng tiểu cầu kép (DAPT), kháng đông.' },
+      { title: 'Khuyến cáo chẩn đoán và điều trị Rung nhĩ', specialty: 'cardio', source: 'ESC 2024', year: 2024, impact: 'essential', summary: 'Phân loại CC-To-ABC pathway, CHA₂DS₂-VASc, chống đông NOAC ưu tiên, kiểm soát tần số vs nhịp, cắt đốt rung nhĩ.' },
+      { title: 'Điều trị Rối loạn lipid máu — Hướng dẫn BYT', specialty: 'cardio', source: 'BYT 2022', year: 2022, impact: 'recommended', summary: 'Phân tầng nguy cơ SCORE2, mục tiêu LDL-C theo nhóm nguy cơ, Statin liều cao, Ezetimibe, kháng thể PCSK9.' },
+
+      // ─── HÔ HẤP ────────────────
+      { title: 'GOLD 2025 — Quản lý COPD toàn diện', specialty: 'pulmo', source: 'GOLD 2025', year: 2025, impact: 'essential', summary: 'Phân nhóm ABE (thay ABCD), LAMA/LABA ± ICS, ưu tiên Triple therapy nếu Eos ≥300, phòng đợt cấp, phục hồi chức năng phổi.' },
+      { title: 'GINA 2025 — Chiến lược quản lý Hen phế quản', specialty: 'pulmo', source: 'GINA 2025', year: 2025, impact: 'essential', summary: 'Bước 1-5 điều trị hen, ICS-formoterol PRN thay SABA, Biologic therapy (anti-IL5, anti-IL4R), kiểm soát hen và phòng đợt cấp.' },
+      { title: 'Hướng dẫn điều trị Viêm phổi cộng đồng người lớn', specialty: 'pulmo', source: 'BYT - QĐ 4815/2020', year: 2020, impact: 'essential', summary: 'Phân tầng CURB-65/PSI, kháng sinh theo nhóm ngoại trú/nhập viện/ICU, thời gian điều trị 5-7 ngày, xuống thang IV→PO.' },
+      { title: 'Hướng dẫn chẩn đoán và xử trí Thuyên tắc phổi', specialty: 'pulmo', source: 'ESC 2019 (Updated 2024)', year: 2024, impact: 'recommended', summary: 'Phân tầng nguy cơ sPESI, CT-PA, D-dimer, kháng đông NOAC, tiêu sợi huyết nếu PE massive, theo dõi CTEPH.' },
+
+      // ─── TIÊU HÓA ──────────────
+      { title: 'Xử trí Xuất huyết tiêu hóa trên không do giãn TM', specialty: 'gi', source: 'BYT & ACG 2021', year: 2021, impact: 'essential', summary: 'Blatchford score, hồi sức dịch, PPI bolus + truyền liên tục, nội soi sớm <24h, hemostasis, điều trị H. pylori.' },
+      { title: 'Phân loại và điều trị Viêm tụy cấp (Atlanta 2012)', specialty: 'gi', source: 'ACG/IAP (Atlanta)', year: 2012, impact: 'essential', summary: 'Phân độ nặng: nhẹ/trung bình/nặng, Ranson, BISAP, bù dịch tích cực Ringer Lactate, nuôi ăn sớm, không KS dự phòng.' },
+      { title: 'EASL Guideline — Xử trí Xơ gan mất bù', specialty: 'gi', source: 'EASL 2024', year: 2024, impact: 'recommended', summary: 'Cổ trướng: Spironolactone + Furosemide, chọc tháo + Albumin, SBP prophylaxis (Norfloxacin), TIPS, ghép gan.' },
+      { title: 'Hướng dẫn điều trị Viêm gan virus B mạn', specialty: 'gi', source: 'BYT - QĐ 5765/2021', year: 2021, impact: 'essential', summary: 'Chỉ định điều trị HBV DNA + ALT, Tenofovir/Entecavir ưu tiên, theo dõi HBsAg, xơ hóa gan FibroScan, tầm soát HCC.' },
+
+      // ─── NỘI TIẾT ──────────────
+      { title: 'ADA Standards of Care — Đái tháo đường 2025', specialty: 'endo', source: 'ADA 2025', year: 2025, impact: 'essential', summary: 'HbA1c target <7%, Metformin + SGLT2i/GLP-1RA ưu tiên nếu có BTMXV/CKD/HF, insulin cơ sở-bữa ăn, CGM, tự quản lý.' },
+      { title: 'Hướng dẫn chẩn đoán và điều trị bệnh ĐTĐ type 2', specialty: 'endo', source: 'BYT - QĐ 5481/2020', year: 2020, impact: 'essential', summary: 'Tiêu chuẩn chẩn đoán (FPG, OGTT, HbA1c), phác đồ từng bước, phối hợp thuốc, insulin hóa, biến chứng mạn tính.' },
+      { title: 'ESC Guideline — Cardiovascular Disease in Diabetes', specialty: 'endo', source: 'ESC 2023', year: 2023, impact: 'recommended', summary: 'Phân tầng nguy cơ tim mạch ở BN ĐTĐ, SGLT2i + GLP-1RA là trụ cột, kiểm soát HA <130/80, LDL-C <55 nếu nguy cơ rất cao.' },
+      { title: 'ATA Guideline — Quản lý cường giáp Basedow', specialty: 'endo', source: 'ATA 2016', year: 2016, impact: 'recommended', summary: 'Chẩn đoán TSH, FT4/FT3, TRAb, thuốc kháng giáp Methimazole/PTU, I-131, phẫu thuật, cơn bão giáp.' },
+
+      // ─── THẦN KINH ─────────────
+      { title: 'AHA/ASA Guideline — Đột quỵ nhồi máu não cấp', specialty: 'neuro', source: 'AHA/ASA 2019 (Updated 2024)', year: 2024, impact: 'essential', summary: 'Tiêu sợi huyết tPA <4.5h, Thrombectomy cơ học <24h nếu LVO, kiểm soát HA, phòng ngừa thứ phát, phục hồi chức năng.' },
+      { title: 'Hướng dẫn xử trí Xuất huyết não — BYT', specialty: 'neuro', source: 'BYT 2019', year: 2019, impact: 'essential', summary: 'Kiểm soát HA tích cực <140 mmHg, đảo ngược kháng đông nếu có, chỉ định phẫu thuật, phòng biến chứng (co giật, phù não).' },
+      { title: 'Hướng dẫn điều trị Động kinh — ILAE', specialty: 'neuro', source: 'ILAE 2022', year: 2022, impact: 'recommended', summary: 'Phân loại cơn động kinh 2017, thuốc chống động kinh thế hệ mới (Levetiracetam, Lacosamide), ngưng thuốc sau 2 năm hết cơn.' },
+
+      // ─── NHIỄM ──────────────────
+      { title: 'Surviving Sepsis Campaign — Nhiễm khuẩn huyết', specialty: 'infect', source: 'SSC/SCCM 2021', year: 2021, impact: 'essential', summary: 'Bundle giờ 1: Lactate, cấy máu, KS phổ rộng IV <1h, dịch 30ml/kg, Norepinephrine nếu MAP <65, Corticoid nếu sốc kháng trị.' },
+      { title: 'Hướng dẫn sử dụng Kháng sinh — BYT', specialty: 'infect', source: 'BYT - QĐ 708/2015', year: 2015, impact: 'essential', summary: 'Nguyên tắc kê đơn, chọn KS theo căn nguyên, PK/PD, xuống thang, thời gian điều trị, quản lý kháng sinh (ASP).' },
+      { title: 'Hướng dẫn điều trị HIV/AIDS — Bộ Y tế', specialty: 'infect', source: 'BYT - QĐ 5968/2021', year: 2021, impact: 'essential', summary: 'Phác đồ ARV bậc 1 (TDF/3TC/DTG), theo dõi viral load, dự phòng nhiễm trùng cơ hội, PrEP, điều trị dự phòng lao.' },
+      { title: 'Hướng dẫn chẩn đoán và điều trị Sốt xuất huyết', specialty: 'infect', source: 'BYT - QĐ 3705/2019', year: 2019, impact: 'essential', summary: 'Phân độ WHO: SXHD, SXHD cảnh báo, SXHD nặng. Bù dịch theo phác đồ, theo dõi Hct, TC, không dùng NSAIDs/Aspirin.' },
+
+      // ─── THẬN ───────────────────
+      { title: 'KDIGO Guideline — Tổn thương thận cấp (AKI)', specialty: 'renal', source: 'KDIGO 2024', year: 2024, impact: 'essential', summary: 'Phân độ AKI (1-2-3), nguyên nhân trước thận/tại thận/sau thận, bù dịch, chỉ định lọc máu cấp, phòng AKI do thuốc.' },
+      { title: 'KDIGO CKD Guideline — Bệnh thận mạn', specialty: 'renal', source: 'KDIGO 2024', year: 2024, impact: 'essential', summary: 'Phân giai đoạn G1-G5, Albuminuria A1-A3, kiểm soát HA bằng ACEi/ARB, SGLT2i, điều trị thiếu máu, chuẩn bị thay thế thận.' },
+      { title: 'Hướng dẫn xử trí rối loạn điện giải — BYT', specialty: 'renal', source: 'BYT 2022', year: 2022, impact: 'recommended', summary: 'Hạ Na+: Tốc độ bù Na+ <8-10 mEq/24h. Hạ K+: Bù KCl IV/PO. Tăng K+: Calcium gluconate, Insulin + Glucose, Kayexalate.' },
+
+      // ─── CƠ XƯƠNG KHỚP ─────────
+      { title: 'ACR/EULAR Guideline — Viêm khớp dạng thấp', specialty: 'rheum', source: 'ACR/EULAR 2021', year: 2021, impact: 'recommended', summary: 'Methotrexate first-line DMARD, phối hợp Leflunomide/Hydroxychloroquine, bDMARDs (anti-TNF, anti-IL6), treat-to-target DAS28.' },
+      { title: 'ACR Guideline — Quản lý Gout 2020', specialty: 'rheum', source: 'ACR 2020', year: 2020, impact: 'recommended', summary: 'Cơn cấp: Colchicine <36h, NSAIDs, Corticoid. Hạ acid uric: Allopurinol khởi đầu 100mg, target <6mg/dL, Febuxostat.' },
+      { title: 'Hướng dẫn chẩn đoán và điều trị Loãng xương — BYT', specialty: 'rheum', source: 'BYT 2022', year: 2022, impact: 'recommended', summary: 'DXA T-score ≤-2.5, FRAX, Calcium + Vitamin D nền, Bisphosphonate (Alendronate/Zoledronic), Denosumab, Teriparatide.' },
+
+      // ─── HUYẾT HỌC ─────────────
+      { title: 'Hướng dẫn chẩn đoán và xử trí Huyết khối TM sâu', specialty: 'hema', source: 'ASH 2020 & ESC 2024', year: 2024, impact: 'essential', summary: 'Wells score, D-dimer, siêu âm Doppler, NOAC (Rivaroxaban/Apixaban) ưu tiên, thời gian kháng đông 3-6 tháng, Filter TM chủ.' },
+      { title: 'Hướng dẫn điều trị Thiếu máu — BYT', specialty: 'hema', source: 'BYT 2019', year: 2019, impact: 'recommended', summary: 'Phân loại theo MCV: Microcytic (thiếu sắt, Thalassemia), Normocytic (bệnh mạn tính, suy thận), Macrocytic (B12/Folate).' },
+      { title: 'ISTH/SSC DIC Scoring — Đông máu rải rác nội mạch', specialty: 'hema', source: 'ISTH 2023', year: 2023, impact: 'recommended', summary: 'Thang điểm ISTH DIC: TC, D-dimer, PT, Fibrinogen. Điều trị: FFP, Tiểu cầu, Cryoprecipitate, Heparin nếu DIC mạn.' },
+
+      // ─── HỒI SỨC - CẤP CỨU ────
+      { title: 'AHA ACLS Guideline — Cấp cứu Ngừng tuần hoàn', specialty: 'icu', source: 'AHA 2020 (Updated 2025)', year: 2025, impact: 'essential', summary: 'CPR chất lượng cao, Epinephrine 1mg mỗi 3-5p, Amiodarone/Lidocaine nếu VF/pVT, ROSC care, TTM 32-36°C.' },
+      { title: 'Hướng dẫn Thở máy — ARDS Network', specialty: 'icu', source: 'ARDSNet & SCCM', year: 2023, impact: 'essential', summary: 'Lung-protective: Vt 6ml/kg IBW, Pplat <30, PEEP table, Prone position >16h/ngày, NMB 48h nếu P/F <150, ECMO.' },
+      { title: 'Hướng dẫn Bù dịch & Vận mạch trong Sốc', specialty: 'icu', source: 'SSC 2021 & BYT', year: 2021, impact: 'essential', summary: 'Crystalloid ưu tiên (Ringer Lactate), Norepinephrine first-line, Vasopressin add-on, đánh giá đáp ứng dịch (PLR, PPV).' },
+      { title: 'ICU Liberation Bundle (ABCDEF)', specialty: 'icu', source: 'SCCM/PADIS 2018', year: 2018, impact: 'recommended', summary: 'A: Đánh giá đau, B: SAT/SBT, C: Chọn an thần tối ưu, D: Delirium (CAM-ICU), E: Vận động sớm, F: Gia đình tham gia.' }
+    ];
+
+    // ── YHCC APP LOGIC ──────────────────────────────────────────
+    const yhccApp = {
+      currentView: 'table',
+      currentFilter: 'all',
+      searchQuery: '',
+
+      init() {
+        this.renderSpecialtyCards();
+        this.renderFilterTabs();
+        this.renderGuidelines();
+        this.bindSearch();
+      },
+
+      renderSpecialtyCards() {
+        const container = document.getElementById('yhcc-specialty-cards');
+        let html = '';
+        for (const [key, spec] of Object.entries(SPECIALTIES)) {
+          const count = GUIDELINES_DB.filter(g => g.specialty === key).length;
+          html += `
+            <div class="yhcc-spec-card" style="--spec-color:${spec.color}; --spec-bg:${spec.bg}" onclick="yhccApp.filterBySpecialty('${key}')">
+              <div class="yhcc-spec-card-top">
+                <div class="yhcc-spec-icon" style="background:${spec.bg}">${spec.icon}</div>
+                <span class="yhcc-spec-count" style="background:${spec.bg}; color:${spec.color}">${count} guidelines</span>
+              </div>
+              <h3>${spec.name}</h3>
+              <p>${spec.desc}</p>
+            </div>
+          `;
+        }
+        container.innerHTML = html;
+      },
+
+      renderFilterTabs() {
+        const container = document.getElementById('yhcc-filter-tabs');
+        let html = `<button class="yhcc-tab active" onclick="yhccApp.filterBySpecialty('all')">Tất cả</button>`;
+        for (const [key, spec] of Object.entries(SPECIALTIES)) {
+          html += `<button class="yhcc-tab" data-filter="${key}" onclick="yhccApp.filterBySpecialty('${key}')">${spec.icon} ${spec.name}</button>`;
+        }
+        container.innerHTML = html;
+      },
+
+      filterBySpecialty(filter) {
+        this.currentFilter = filter;
+
+        // Update tab active state
+        document.querySelectorAll('.yhcc-tab').forEach(tab => {
+          tab.classList.remove('active');
+          if ((filter === 'all' && !tab.dataset.filter) || tab.dataset.filter === filter) {
+            tab.classList.add('active');
+          }
+        });
+
+        this.renderGuidelines();
+
+        // Scroll to table
+        document.getElementById('yhcc-stats').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      },
+
+      bindSearch() {
+        const input = document.getElementById('yhcc-search-input');
+        let debounceTimer;
+        input.addEventListener('input', (e) => {
+          clearTimeout(debounceTimer);
+          debounceTimer = setTimeout(() => {
+            this.searchQuery = e.target.value.toLowerCase().trim();
+            this.renderGuidelines();
+          }, 200);
+        });
+      },
+
+      getFilteredGuidelines() {
+        return GUIDELINES_DB.filter(g => {
+          const matchFilter = this.currentFilter === 'all' || g.specialty === this.currentFilter;
+          if (!matchFilter) return false;
+          if (!this.searchQuery) return true;
+          const searchable = `${g.title} ${g.summary} ${g.source} ${SPECIALTIES[g.specialty]?.name || ''}`.toLowerCase();
+          return searchable.includes(this.searchQuery);
+        });
+      },
+
+      renderGuidelines() {
+        const filtered = this.getFilteredGuidelines();
+
+        // Stats
+        const statsEl = document.getElementById('yhcc-stats');
+        const filterName = this.currentFilter === 'all' ? 'tất cả chuyên khoa' : SPECIALTIES[this.currentFilter]?.name || '';
+        statsEl.innerHTML = `Hiển thị <strong>${filtered.length}</strong> / ${GUIDELINES_DB.length} guidelines · ${filterName}`;
+
+        // Empty state
+        const emptyEl = document.getElementById('yhcc-empty');
+        const tableWrapper = document.getElementById('yhcc-table-wrapper');
+        const cardGrid = document.getElementById('yhcc-cards-grid');
+
+        if (filtered.length === 0) {
+          emptyEl.style.display = 'block';
+          tableWrapper.style.display = 'none';
+          cardGrid.classList.remove('active');
+          return;
+        }
+
+        emptyEl.style.display = 'none';
+
+        // Table view
+        this.renderTableView(filtered);
+
+        // Card view
+        this.renderCardView(filtered);
+
+        // Show correct view
+        if (this.currentView === 'table') {
+          tableWrapper.style.display = 'block';
+          cardGrid.classList.remove('active');
+        } else {
+          tableWrapper.style.display = 'none';
+          cardGrid.classList.add('active');
+        }
+      },
+
+      renderTableView(guidelines) {
+        const tbody = document.getElementById('yhcc-table-body');
+        tbody.innerHTML = guidelines.map(g => {
+          const spec = SPECIALTIES[g.specialty];
+          const impactLabel = g.impact === 'essential' ? '🟢 Thiết yếu' : g.impact === 'recommended' ? '🔵 Khuyến cáo' : '⚪ Tham khảo';
+          const impactClass = g.impact === 'essential' ? 'impact-essential' : g.impact === 'recommended' ? 'impact-recommended' : 'impact-reference';
+          return `
+            <tr>
+              <td>
+                <div class="yhcc-gl-title">${g.title}</div>
+                <div class="yhcc-gl-summary">${g.summary}</div>
+              </td>
+              <td><span class="yhcc-badge ${spec?.badge || ''}">${spec?.icon || ''} ${spec?.name || ''}</span></td>
+              <td><span class="yhcc-source-tag">${g.source}</span></td>
+              <td><span class="yhcc-year">${g.year}</span></td>
+              <td><span class="yhcc-impact ${impactClass}">${impactLabel}</span></td>
+            </tr>
+          `;
+        }).join('');
+      },
+
+      renderCardView(guidelines) {
+        const container = document.getElementById('yhcc-cards-grid');
+        container.innerHTML = guidelines.map(g => {
+          const spec = SPECIALTIES[g.specialty];
+          const impactLabel = g.impact === 'essential' ? '🟢 Thiết yếu' : g.impact === 'recommended' ? '🔵 Khuyến cáo' : '⚪ Tham khảo';
+          const impactClass = g.impact === 'essential' ? 'impact-essential' : g.impact === 'recommended' ? 'impact-recommended' : 'impact-reference';
+          return `
+            <div class="yhcc-gl-card" style="--card-specialty-color:${spec?.color || '#0284c7'}">
+              <div class="yhcc-gl-card-header">
+                <div class="yhcc-gl-card-title">${g.title}</div>
+                <span class="yhcc-year">${g.year}</span>
+              </div>
+              <div class="yhcc-gl-card-meta">
+                <span class="yhcc-badge ${spec?.badge || ''}">${spec?.icon || ''} ${spec?.name || ''}</span>
+                <span class="yhcc-source-tag">${g.source}</span>
+                <span class="yhcc-impact ${impactClass}">${impactLabel}</span>
+              </div>
+              <div class="yhcc-gl-card-body">${g.summary}</div>
+            </div>
+          `;
+        }).join('');
+      },
+
+      setView(view) {
+        this.currentView = view;
+        document.getElementById('btn-table-view').classList.toggle('active', view === 'table');
+        document.getElementById('btn-card-view').classList.toggle('active', view === 'card');
+        this.renderGuidelines();
+      }
+    };
+
+    // ── INIT ON DOM READY ───────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+      yhccApp.init();
+    });
+  </script>
+</body>
+
+</html>

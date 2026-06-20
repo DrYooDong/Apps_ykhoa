@@ -485,9 +485,9 @@
             </a>
           </li>
           <li>
-            <a href="../../Phác đồ/phac-do.html" class="nav-item" title="Phác đồ Y khoa">
+            <a href="../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
               <span class="nav-icon">📋</span>
-              <span class="nav-text">Phác đồ điều trị</span>
+              <span class="nav-text">Y học chứng cứ</span>
             </a>
           </li>
           <li>
@@ -630,9 +630,6 @@
             </div>
           </div>
 
-          <div class="btn-row">
-            <button class="btn btn-ghost" onclick="resetAll()">↺ Xóa dữ liệu</button>
-          </div>
         </div>
 
         <!-- ===== CỘT PHẢI: KẾT QUẢ ===== -->
@@ -894,14 +891,6 @@
           const cpResult = calcChildPugh();
           const meldScore = calcMELD();
           evalDecomp(cpResult, meldScore);
-        }
-
-        function resetAll() {
-          ['bilirubin', 'albumin', 'inr', 'creatinine', 'sodium'].forEach(id => el(id).value = '');
-          ['ascites', 'encephalopathy', 'dialysis'].forEach(id => el(id).selectedIndex = 0);
-          ['chk_varbleed', 'chk_sbp', 'chk_hrs', 'chk_jaundice', 'chk_fever', 'chk_confusion', 'chk_hypotension']
-            .forEach(id => el(id).checked = false);
-          runAll();
         }
 
         // Gán sự kiện cho tất cả input/select/checkbox

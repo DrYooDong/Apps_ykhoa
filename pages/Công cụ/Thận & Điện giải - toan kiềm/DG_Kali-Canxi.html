@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="vi" data-theme="light">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="CliniPortal – Hệ thống hỗ trợ quyết định lâm sàng dành cho bác sĩ nội khoa tại Việt Nam" />
+  <meta name="description"
+    content="CliniPortal – Hệ thống hỗ trợ quyết định lâm sàng dành cho bác sĩ nội khoa tại Việt Nam" />
   <title>CliniPortal – Hỗ trợ Lâm sàng</title>
 
   <!-- Preconnect fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
 
   <link rel="stylesheet" href="../../../css/reset.css">
   <link rel="stylesheet" href="../../../css/main.css">
@@ -17,198 +21,202 @@
   <link rel="stylesheet" href="../../../css/components/sidebar.css">
   <link rel="stylesheet" href="../../../css/components/footer.css">
 
-  <script src="../../../pages/header.js"></script> 
-<style>
-  /* ============================================================
+  <script src="../../../pages/header.js"></script>
+  <style>
+    /* ============================================================
      PAGE-SPECIFIC STYLES: CẤP CỨU RỐI LOẠN ĐIỆN GIẢI (K, Ca)
      Đã đồng bộ hóa 100% với Design Tokens hệ thống CliniPortal
   ============================================================ */
 
-  /* ── 1. BỐ CỤC LƯỚI CHÍNH (GRID SYSTEM) ── */
-  .urgent-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-top: 1rem;
-  }
-
-  /* Khung Panel chứa dữ liệu nhập liệu và y lệnh */
-  .panel {
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-divider);
-    border-radius: var(--radius-md);
-    padding: 1.5rem;
-    box-shadow: var(--shadow-sm);
-    transition: background-color var(--tr), border-color var(--tr), box-shadow var(--tr);
-  }
-
-  .panel-title {
-    font-size: var(--text-md);
-    font-weight: 700;
-    color: var(--color-primary);
-    margin-bottom: 1.25rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--color-divider);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  /* ── 2. CẤU TRÚC ĐIỀU KHIỂN FORM & MODULE SWITCHER ── */
-  .module-switcher {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .btn-switch {
-    flex: 1;
-    padding: 0.65rem;
-    border: 1px solid var(--color-border);
-    background-color: var(--color-surface-offset);
-    color: var(--color-text);
-    border-radius: var(--radius-sm);
-    font-family: var(--font-body);
-    font-weight: 700;
-    cursor: pointer;
-    text-align: center;
-    transition: all var(--tr);
-  }
-
-  .btn-switch:hover {
-    background-color: var(--color-divider);
-  }
-
-  .btn-switch.active {
-    background-color: var(--color-primary);
-    color: #ffffff;
-    border-color: var(--color-primary);
-  }
-
-  .input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .input-group label {
-    font-size: var(--text-sm);
-    font-weight: 600;
-    color: var(--color-text);
-  }
-
-  input[type="number"], 
-  select {
-    width: 100%;
-    padding: 0.6rem 0.75rem;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    background-color: var(--color-surface-offset);
-    color: var(--color-text);
-    font-family: var(--font-body);
-    font-size: var(--text-sm);
-    transition: border-color var(--tr), box-shadow var(--tr);
-    appearance: none;
-    -webkit-appearance: none;
-  }
-
-  input[type="number"]:focus, 
-  select:focus {
-    outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px var(--color-primary-hl);
-  }
-
-  /* ── 3. KHỐI HIỂN THỊ HÀNH ĐỘNG VÀ HƯỚNG XỬ TRÍ ── */
-  .action-box {
-    margin-bottom: 1rem;
-    padding: 1rem;
-    border-radius: var(--radius-sm);
-    background-color: var(--color-surface-offset);
-    border-left: 5px solid var(--color-border);
-    transition: border-color var(--tr), background-color var(--tr);
-  }
-
-  .action-box h4 {
-    font-size: var(--text-sm);
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    color: var(--color-text);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .action-box ul {
-    padding-left: 1.2rem;
-    margin: 0.25rem 0 0 0;
-    font-size: var(--text-sm);
-    line-height: 1.6;
-    color: var(--color-text);
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-
-  /* Phân cấp độ ưu tiên xử trí lâm sàng */
-  .priority-1 { 
-    border-left-color: var(--color-rose); 
-    background-color: var(--color-rose-hl); 
-  } 
-  .priority-2 { 
-    border-left-color: var(--color-warning); 
-    background-color: var(--color-warning-hl);
-  } 
-  .priority-3 { 
-    border-left-color: var(--color-primary); 
-    background-color: var(--color-primary-hl);
-  } 
-  .priority-ok { 
-    border-left-color: var(--color-success); 
-    background-color: var(--color-success-hl);
-  } 
-
-  /* ── 4. ĐIỂM NHẤN TRỰC QUAN & HIGHLIGHT LIỀU LƯỢNG ── */
-  .alert-text { 
-    color: var(--color-rose); 
-    font-weight: 700; 
-  }
-
-  .dose-highlight { 
-    background-color: #fef08a; 
-    color: #854d0e; 
-    padding: 0.15rem 0.35rem; 
-    border-radius: var(--radius-sm); 
-    font-family: monospace; 
-    font-size: 0.95rem; 
-    font-weight: 700;
-    display: inline-block;
-  }
-
-  /* Tối ưu hóa màu sắc highlight liều lượng cho Dark Mode */
-  [data-theme="dark"] .dose-highlight {
-    background-color: rgba(254, 240, 138, 0.2);
-    color: #fef08a;
-    border: 1px solid rgba(254, 240, 138, 0.3);
-  }
-
-  .hidden { 
-    display: none !important; 
-  }
-
-  /* ── 5. XỬ LÝ RESPONSIVE TRÊN MÀN HÌNH LỚN ── */
-  @media (min-width: 768px) {
-    .urgent-grid { 
-      grid-template-columns: 1fr 1.5fr; 
+    /* ── 1. BỐ CỤC LƯỚI CHÍNH (GRID SYSTEM) ── */
+    .urgent-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 1rem;
     }
-    .sticky-panel { 
-      position: sticky; 
-      top: calc(var(--header-height, 60px) + 1.25rem); 
-      height: fit-content;
+
+    /* Khung Panel chứa dữ liệu nhập liệu và y lệnh */
+    .panel {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: background-color var(--tr), border-color var(--tr), box-shadow var(--tr);
     }
-  }
-</style>
+
+    .panel-title {
+      font-size: var(--text-md);
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--color-divider);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* ── 2. CẤU TRÚC ĐIỀU KHIỂN FORM & MODULE SWITCHER ── */
+    .module-switcher {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-switch {
+      flex: 1;
+      padding: 0.65rem;
+      border: 1px solid var(--color-border);
+      background-color: var(--color-surface-offset);
+      color: var(--color-text);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      transition: all var(--tr);
+    }
+
+    .btn-switch:hover {
+      background-color: var(--color-divider);
+    }
+
+    .btn-switch.active {
+      background-color: var(--color-primary);
+      color: #ffffff;
+      border-color: var(--color-primary);
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .input-group label {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      background-color: var(--color-surface-offset);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      transition: border-color var(--tr), box-shadow var(--tr);
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    input[type="number"]:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px var(--color-primary-hl);
+    }
+
+    /* ── 3. KHỐI HIỂN THỊ HÀNH ĐỘNG VÀ HƯỚNG XỬ TRÍ ── */
+    .action-box {
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      background-color: var(--color-surface-offset);
+      border-left: 5px solid var(--color-border);
+      transition: border-color var(--tr), background-color var(--tr);
+    }
+
+    .action-box h4 {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--color-text);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .action-box ul {
+      padding-left: 1.2rem;
+      margin: 0.25rem 0 0 0;
+      font-size: var(--text-sm);
+      line-height: 1.6;
+      color: var(--color-text);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    /* Phân cấp độ ưu tiên xử trí lâm sàng */
+    .priority-1 {
+      border-left-color: var(--color-rose);
+      background-color: var(--color-rose-hl);
+    }
+
+    .priority-2 {
+      border-left-color: var(--color-warning);
+      background-color: var(--color-warning-hl);
+    }
+
+    .priority-3 {
+      border-left-color: var(--color-primary);
+      background-color: var(--color-primary-hl);
+    }
+
+    .priority-ok {
+      border-left-color: var(--color-success);
+      background-color: var(--color-success-hl);
+    }
+
+    /* ── 4. ĐIỂM NHẤN TRỰC QUAN & HIGHLIGHT LIỀU LƯỢNG ── */
+    .alert-text {
+      color: var(--color-rose);
+      font-weight: 700;
+    }
+
+    .dose-highlight {
+      background-color: #fef08a;
+      color: #854d0e;
+      padding: 0.15rem 0.35rem;
+      border-radius: var(--radius-sm);
+      font-family: monospace;
+      font-size: 0.95rem;
+      font-weight: 700;
+      display: inline-block;
+    }
+
+    /* Tối ưu hóa màu sắc highlight liều lượng cho Dark Mode */
+    [data-theme="dark"] .dose-highlight {
+      background-color: rgba(254, 240, 138, 0.2);
+      color: #fef08a;
+      border: 1px solid rgba(254, 240, 138, 0.3);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* ── 5. XỬ LÝ RESPONSIVE TRÊN MÀN HÌNH LỚN ── */
+    @media (min-width: 768px) {
+      .urgent-grid {
+        grid-template-columns: 1fr 1.5fr;
+      }
+
+      .sticky-panel {
+        position: sticky;
+        top: calc(var(--header-height, 60px) + 1.25rem);
+        height: fit-content;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -222,8 +230,8 @@
     <!-- SIDEBAR -->
     <aside class="app-sidebar" id="appSidebar">
       <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
-        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5"
-          fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
           <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
       </button>
@@ -242,9 +250,9 @@
             </a>
           </li>
           <li>
-            <a href="../../Phác đồ/phac-do.html" class="nav-item" title="Phác đồ Y khoa">
+            <a href="../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
               <span class="nav-icon">📋</span>
-              <span class="nav-text">Phác đồ điều trị</span>
+              <span class="nav-text">Y học chứng cứ</span>
             </a>
           </li>
           <li>
@@ -265,319 +273,320 @@
 
     <!--MAIN CONTENT-->
     <div class="main-wrapper">
-        <section class="hero-dashboard">
-            <div class="hero-intro">
-                <h1>Cấp cứu Rối loạn Điện giải (K, Ca)</h1>
-                <p>Phác đồ y lệnh chi tiết liều lượng và cách pha truyền theo UKKA 2023 và Society for Endocrinology.</p>
-            </div>
-        </section>
-
-         <!--BREADCRUMB-->
-        <nav aria-label="Breadcrumb" class="breadcrumb-container">
-            <ol class="breadcrumb-list">
-            <li class="breadcrumb-item">
-                <a href="../../../index.html" class="breadcrumb-link">
-                <span class="home-icon">🏠</span> Home
-                </a>
-            </li>
-            
-            <li class="breadcrumb-item"
-                aria-current="page"> Công cụ</a>
-            </li>
-
-            <li class="breadcrumb-item"
-                aria-current="page"> Thận & điện giải, toan kiềm</a>
-            </li>
-            
-            <li class="breadcrumb-item active" 
-                aria-current="page"> Kali/Canxi
-            </li>
-            </ol>
-        </nav>
-
-            <div class="urgent-grid">
-                <div class="panel">
-                    <div class="module-switcher">
-                        <button class="btn-switch active" id="btn-potassium">⚡ Kali máu (K⁺)</button>
-                        <button class="btn-switch" id="btn-calcium">🦴 Canxi máu (Ca²⁺)</button>
-                    </div>
-
-                    <div id="module-k">
-                        <div class="input-group">
-                            <label>Kali máu hiện tại (mmol/L)</label>
-                            <input type="number" id="in-k-val" value="6.5" step="0.1">
-                        </div>
-                        <div class="input-group">
-                            <label>Biến đổi Điện tâm đồ (ECG)</label>
-                            <select id="in-k-ecg">
-                                <option value="0">Bình thường / Không có thay đổi</option>
-                                <option value="1">T cao nhọn, đối xứng / PR kéo dài (Nhẹ-Vừa)</option>
-                                <option value="2">Mất sóng P / QRS giãn rộng / Sóng hình sin (Nặng)</option>
-                                <option value="3">Rung thất (VF) / Nhịp nhanh thất (VT) / Vô tâm thu</option>
-                            </select>
-                        </div>
-                        <div class="input-group">
-                            <label>Triệu chứng cơ năng</label>
-                            <select id="in-k-symp">
-                                <option value="0">Không có</option>
-                                <option value="1">Yếu cơ nặng / Liệt / Khó thở</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div id="module-ca" class="hidden">
-                        <div class="input-group">
-                            <label>Canxi toàn phần đo được (mmol/L)</label>
-                            <input type="number" id="in-ca-val" value="2.00" step="0.01">
-                        </div>
-                        <div class="input-group">
-                            <label>Albumin huyết thanh (g/L)</label>
-                            <input type="number" id="in-ca-alb" value="30" step="1">
-                        </div>
-                        <div class="input-group">
-                            <label>Lâm sàng (Triệu chứng / ECG)</label>
-                            <select id="in-ca-symp">
-                                <option value="0">Không triệu chứng</option>
-                                <option value="1">Nhẹ: Tê rần quanh miệng, dị cảm</option>
-                                <option value="2">Nặng: Co giật, Tetany, Chvostek/Trousseau (+), QT kéo dài</option>
-                                <option value="3">Khủng hoảng: Lú lẫn, Hôn mê, Tổn thương thận cấp</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="panel sticky-panel">
-                    <div class="panel-title" id="out-title"><span>🚨 Y lệnh Lâm sàng Đề xuất</span></div>
-                    
-                    <div id="out-assessment" style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--primary-color);">
-                        Đang phân tích dữ liệu...
-                    </div>
-
-                    <div id="action-container">
-                        </div>
-
-                    <div id="ref-note" style="margin-top: 1.5rem; font-size: 0.8rem; color: var(--text-muted); border-top: 1px dashed var(--border-color); padding-top: 1rem;">
-                        <strong>Tham khảo:</strong> UK Kidney Association (UKKA) Guidelines 2023; Emergency Guidance Acute Hypocalcaemia/Hypercalcaemia (Endocrine Connections 2016).
-                    </div>
-                </div>
-
-            </div>
+      <section class="hero-dashboard">
+        <div class="hero-intro">
+          <h1>Cấp cứu Rối loạn Điện giải (K, Ca)</h1>
+          <p>Phác đồ y lệnh chi tiết liều lượng và cách pha truyền theo UKKA 2023 và Society for Endocrinology.</p>
         </div>
+      </section>
+
+      <!--BREADCRUMB-->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../../index.html" class="breadcrumb-link">
+              <span class="home-icon">🏠</span> Home
+            </a>
+          </li>
+
+          <li class="breadcrumb-item" aria-current="page"> Công cụ</a>
+          </li>
+
+          <li class="breadcrumb-item" aria-current="page"> Thận & điện giải, toan kiềm</a>
+          </li>
+
+          <li class="breadcrumb-item active" aria-current="page"> Kali/Canxi
+          </li>
+        </ol>
+      </nav>
+
+      <div class="urgent-grid">
+        <div class="panel">
+          <div class="module-switcher">
+            <button class="btn-switch active" id="btn-potassium">⚡ Kali máu (K⁺)</button>
+            <button class="btn-switch" id="btn-calcium">🦴 Canxi máu (Ca²⁺)</button>
+          </div>
+
+          <div id="module-k">
+            <div class="input-group">
+              <label>Kali máu hiện tại (mmol/L)</label>
+              <input type="number" id="in-k-val" value="6.5" step="0.1">
+            </div>
+            <div class="input-group">
+              <label>Biến đổi Điện tâm đồ (ECG)</label>
+              <select id="in-k-ecg">
+                <option value="0">Bình thường / Không có thay đổi</option>
+                <option value="1">T cao nhọn, đối xứng / PR kéo dài (Nhẹ-Vừa)</option>
+                <option value="2">Mất sóng P / QRS giãn rộng / Sóng hình sin (Nặng)</option>
+                <option value="3">Rung thất (VF) / Nhịp nhanh thất (VT) / Vô tâm thu</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label>Triệu chứng cơ năng</label>
+              <select id="in-k-symp">
+                <option value="0">Không có</option>
+                <option value="1">Yếu cơ nặng / Liệt / Khó thở</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="module-ca" class="hidden">
+            <div class="input-group">
+              <label>Canxi toàn phần đo được (mmol/L)</label>
+              <input type="number" id="in-ca-val" value="2.00" step="0.01">
+            </div>
+            <div class="input-group">
+              <label>Albumin huyết thanh (g/L)</label>
+              <input type="number" id="in-ca-alb" value="30" step="1">
+            </div>
+            <div class="input-group">
+              <label>Lâm sàng (Triệu chứng / ECG)</label>
+              <select id="in-ca-symp">
+                <option value="0">Không triệu chứng</option>
+                <option value="1">Nhẹ: Tê rần quanh miệng, dị cảm</option>
+                <option value="2">Nặng: Co giật, Tetany, Chvostek/Trousseau (+), QT kéo dài</option>
+                <option value="3">Khủng hoảng: Lú lẫn, Hôn mê, Tổn thương thận cấp</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel sticky-panel">
+          <div class="panel-title" id="out-title"><span>🚨 Y lệnh Lâm sàng Đề xuất</span></div>
+
+          <div id="out-assessment"
+            style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--primary-color);">
+            Đang phân tích dữ liệu...
+          </div>
+
+          <div id="action-container">
+          </div>
+
+          <div id="ref-note"
+            style="margin-top: 1.5rem; font-size: 0.8rem; color: var(--text-muted); border-top: 1px dashed var(--border-color); padding-top: 1rem;">
+            <strong>Tham khảo:</strong> UK Kidney Association (UKKA) Guidelines 2023; Emergency Guidance Acute
+            Hypocalcaemia/Hypercalcaemia (Endocrine Connections 2016).
+          </div>
+        </div>
+
+      </div>
     </div>
+  </div>
 
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-        document.addEventListener('DOMContentLoaded', () => {
-            const btnK = document.getElementById('btn-potassium');
-            const btnCa = document.getElementById('btn-calcium');
-            const modK = document.getElementById('module-k');
-            const modCa = document.getElementById('module-ca');
-            
-            const inKval = document.getElementById('in-k-val');
-            const inKecg = document.getElementById('in-k-ecg');
-            const inKsymp = document.getElementById('in-k-symp');
-            
-            const inCaVal = document.getElementById('in-ca-val');
-            const inCaAlb = document.getElementById('in-ca-alb');
-            const inCaSymp = document.getElementById('in-ca-symp');
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const btnK = document.getElementById('btn-potassium');
+      const btnCa = document.getElementById('btn-calcium');
+      const modK = document.getElementById('module-k');
+      const modCa = document.getElementById('module-ca');
 
-            const outTitle = document.getElementById('out-title');
-            const outAssess = document.getElementById('out-assessment');
-            const actionContainer = document.getElementById('action-container');
+      const inKval = document.getElementById('in-k-val');
+      const inKecg = document.getElementById('in-k-ecg');
+      const inKsymp = document.getElementById('in-k-symp');
 
-            let currentModule = 'K'; 
+      const inCaVal = document.getElementById('in-ca-val');
+      const inCaAlb = document.getElementById('in-ca-alb');
+      const inCaSymp = document.getElementById('in-ca-symp');
 
-            btnK.addEventListener('click', () => {
-                currentModule = 'K';
-                btnK.classList.add('active'); btnCa.classList.remove('active');
-                modK.classList.remove('hidden'); modCa.classList.add('hidden');
-                calculateAlgorithm();
-            });
+      const outTitle = document.getElementById('out-title');
+      const outAssess = document.getElementById('out-assessment');
+      const actionContainer = document.getElementById('action-container');
 
-            btnCa.addEventListener('click', () => {
-                currentModule = 'Ca';
-                btnCa.classList.add('active'); btnK.classList.remove('active');
-                modCa.classList.remove('hidden'); modK.classList.add('hidden');
-                calculateAlgorithm();
-            });
+      let currentModule = 'K';
 
-            document.querySelectorAll('input, select').forEach(el => {
-                el.addEventListener('input', calculateAlgorithm);
-                el.addEventListener('change', calculateAlgorithm);
-            });
+      btnK.addEventListener('click', () => {
+        currentModule = 'K';
+        btnK.classList.add('active'); btnCa.classList.remove('active');
+        modK.classList.remove('hidden'); modCa.classList.add('hidden');
+        calculateAlgorithm();
+      });
 
-            function renderAction(priority, icon, title, commands) {
-                let ulList = commands.map(cmd => `<li>${cmd}</li>`).join('');
-                return `
+      btnCa.addEventListener('click', () => {
+        currentModule = 'Ca';
+        btnCa.classList.add('active'); btnK.classList.remove('active');
+        modCa.classList.remove('hidden'); modK.classList.add('hidden');
+        calculateAlgorithm();
+      });
+
+      document.querySelectorAll('input, select').forEach(el => {
+        el.addEventListener('input', calculateAlgorithm);
+        el.addEventListener('change', calculateAlgorithm);
+      });
+
+      function renderAction(priority, icon, title, commands) {
+        let ulList = commands.map(cmd => `<li>${cmd}</li>`).join('');
+        return `
                     <div class="action-box ${priority}">
                         <h4><span>${icon}</span> ${title}</h4>
                         <ul>${ulList}</ul>
                     </div>
                 `;
+      }
+
+      function calculateAlgorithm() {
+        actionContainer.innerHTML = '';
+
+        if (currentModule === 'K') {
+          const k = parseFloat(inKval.value) || 0;
+          const ecg = parseInt(inKecg.value);
+          const symp = parseInt(inKsymp.value);
+          let html = '';
+
+          if (k <= 0 || k > 15) {
+            outAssess.innerHTML = "Vui lòng nhập giá trị Kali hợp lệ.";
+            return;
+          }
+
+          // ====== TĂNG KALI MÁU ======
+          if (k >= 5.5) {
+            let severity = k >= 6.5 ? "NẶNG (≥ 6.5 mmol/L)" : (k >= 6.0 ? "TRUNG BÌNH (6.0 - 6.4 mmol/L)" : "NHẸ (5.5 - 5.9 mmol/L)");
+            outAssess.innerHTML = `TĂNG KALI MÁU ${severity}`;
+            outTitle.innerHTML = `<span>⚡ Y lệnh Tăng Kali máu (UKKA 2023)</span>`;
+
+            if (ecg > 0 || k >= 6.5) {
+              let caDose = "Tiêm tĩnh mạch chậm: <span class='dose-highlight'>30 mL Calcium Gluconate 10%</span> (hoặc 10 mL Calcium Chloride 10%) pha loãng hoặc tiêm trực tiếp trong 10 phút.";
+              if (ecg === 3) caDose = "<span class='alert-text'>CẤP CỨU NGƯNG TIM:</span> Tiêm tĩnh mạch nhanh <span class='dose-highlight'>10 mL Calcium Chloride 10%</span> ngay lập tức!";
+
+              html += renderAction('priority-1', '🛡️', 'Bước 1: Ổn định màng tế bào cơ tim', [
+                caDose,
+                "Mắc monitor theo dõi nhịp tim liên tục.",
+                "Ghi lại ECG 12 chuyển đạo sau 5-10 phút. Nếu vẫn còn biến đổi ECG, <strong>lặp lại liều Canxi lần 2</strong>."
+              ]);
             }
 
-            function calculateAlgorithm() {
-                actionContainer.innerHTML = ''; 
-
-                if (currentModule === 'K') {
-                    const k = parseFloat(inKval.value) || 0;
-                    const ecg = parseInt(inKecg.value);
-                    const symp = parseInt(inKsymp.value);
-                    let html = '';
-
-                    if (k <= 0 || k > 15) {
-                        outAssess.innerHTML = "Vui lòng nhập giá trị Kali hợp lệ.";
-                        return;
-                    }
-
-                    // ====== TĂNG KALI MÁU ======
-                    if (k >= 5.5) {
-                        let severity = k >= 6.5 ? "NẶNG (≥ 6.5 mmol/L)" : (k >= 6.0 ? "TRUNG BÌNH (6.0 - 6.4 mmol/L)" : "NHẸ (5.5 - 5.9 mmol/L)");
-                        outAssess.innerHTML = `TĂNG KALI MÁU ${severity}`;
-                        outTitle.innerHTML = `<span>⚡ Y lệnh Tăng Kali máu (UKKA 2023)</span>`;
-
-                        if (ecg > 0 || k >= 6.5) {
-                            let caDose = "Tiêm tĩnh mạch chậm: <span class='dose-highlight'>30 mL Calcium Gluconate 10%</span> (hoặc 10 mL Calcium Chloride 10%) pha loãng hoặc tiêm trực tiếp trong 10 phút.";
-                            if (ecg === 3) caDose = "<span class='alert-text'>CẤP CỨU NGƯNG TIM:</span> Tiêm tĩnh mạch nhanh <span class='dose-highlight'>10 mL Calcium Chloride 10%</span> ngay lập tức!";
-                            
-                            html += renderAction('priority-1', '🛡️', 'Bước 1: Ổn định màng tế bào cơ tim', [
-                                caDose,
-                                "Mắc monitor theo dõi nhịp tim liên tục.",
-                                "Ghi lại ECG 12 chuyển đạo sau 5-10 phút. Nếu vẫn còn biến đổi ECG, <strong>lặp lại liều Canxi lần 2</strong>."
-                            ]);
-                        }
-
-                        if (k >= 6.0 || ecg > 0) {
-                            html += renderAction('priority-2', '📉', 'Bước 2: Dịch chuyển Kali vào tế bào', [
-                                "<strong>Truyền tĩnh mạch Insulin-Glucose:</strong> Pha <span class='dose-highlight'>10 UI Insulin Actrapid</span> vào <span class='dose-highlight'>125 mL Dextrose 20%</span> (hoặc 50mL Dextrose 50%). Truyền tĩnh mạch qua bơm tiêm điện hoặc nhỏ giọt trong <strong>15 - 30 phút</strong>.",
-                                "Phun khí dung: <span class='dose-highlight'>Salbutamol 10-20 mg</span> (Dùng ống Nebules 2.5mg/2.5ml x 4-8 ống). Tác dụng hiệp đồng với Insulin.",
-                                "<span class='alert-text'>Bắt buộc:</span> Thử đường huyết mao mạch ngay tại các thời điểm: 0, 15, 30, 60, 90 phút và mỗi giờ sau đó trong 6 giờ để chống hạ đường huyết."
-                            ]);
-                        }
-
-                        html += renderAction('priority-3', '🚽', 'Bước 3: Đào thải Kali khỏi cơ thể', [
-                            "Dừng ngay: Ước chế men chuyển, ARB, Lợi tiểu kháng Aldosterone, NSAIDs.",
-                            "Uống: <span class='dose-highlight'>Sodium Zirconium Cyclosilicate (SZC) 10g x 3 lần/ngày</span>. HOẶC <span class='dose-highlight'>Calcium Polystyrene Sulfonate (Kalimate/Resonium) 15g x 3-4 lần/ngày</span>.",
-                            "Tiêm tĩnh mạch: <span class='dose-highlight'>Furosemide 40-80 mg tĩnh mạch chậm</span> (Chỉ dùng nếu bệnh nhân dư dịch, tiểu được).",
-                            (k >= 6.5 || ecg >= 2) ? "<span class='alert-text'>Chỉ định Lọc máu cấp cứu (HD)</span> nếu thiểu/vô niệu hoặc không đáp ứng nội khoa." : ""
-                        ].filter(Boolean));
-                    } 
-                    // ====== HẠ KALI MÁU ======
-                    else if (k < 3.5) {
-                        let severity = k < 2.5 ? "NẶNG (< 2.5 mmol/L)" : (k < 3.0 ? "TRUNG BÌNH (2.5 - 2.9 mmol/L)" : "NHẸ (3.0 - 3.4 mmol/L)");
-                        outAssess.innerHTML = `HẠ KALI MÁU ${severity}`;
-                        outTitle.innerHTML = `<span>⚡ Y lệnh Hạ Kali máu</span>`;
-
-                        if (k < 2.5 || ecg > 0 || symp === 1) {
-                            html += renderAction('priority-1', '🚨', 'Bước 1: Bù Kali tĩnh mạch CẤP CỨU', [
-                                "Đường truyền ngoại vi (Max 40 mmol/L): Pha <span class='dose-highlight'>3 ống KCl 10% (10mL/ống) vào 1 Lít NaCl 0.9%</span>. Tốc độ truyền tối đa: <span class='dose-highlight'>10 - 20 mmol/giờ</span> (Tương đương 250 - 500 mL/giờ của dịch pha trên).",
-                                "Đường truyền trung tâm (CVC): Có thể pha nồng độ cao hơn, nhưng tốc độ truyền tuyệt đối không vượt quá 20 mmol/giờ trừ khi có ngưng tim.",
-                                "Mắc Monitor theo dõi ECG liên tục."
-                            ]);
-                        } else {
-                            html += renderAction('priority-2', '💊', 'Bù Kali Tĩnh mạch chậm / Đường uống', [
-                                "Đường uống (Ưu tiên nếu ruột hoạt động): <span class='dose-highlight'>Kaleorid 600mg (8 mmol K+) 1-2 viên x 2-3 lần/ngày</span>.",
-                                "Truyền TM ngoại vi: Nồng độ tối đa 40 mmol/L (3 ống KCl 10% pha trong 1000 mL NaCl 0.9%). Tốc độ: 10 mmol/giờ."
-                            ]);
-                        }
-
-                        html += renderAction('priority-3', '🔍', 'Bước 2: Tìm và điều trị nguyên nhân', [
-                            "<strong>Bù Magnesium:</strong> Cần tiêm tĩnh mạch <span class='dose-highlight'>2g MgSO4 trong 20 phút</span> nếu Magie máu thấp. Hạ Kali máu sẽ kháng trị nếu không bù đủ Magie."
-                        ]);
-                    } 
-                    else {
-                        outAssess.innerHTML = `KALI MÁU BÌNH THƯỜNG (3.5 - 5.0 mmol/L)`;
-                        html += renderAction('priority-ok', '✅', 'Tình trạng ổn định', ["Không có chỉ định can thiệp y lệnh cấp cứu điện giải."]);
-                    }
-                    actionContainer.innerHTML = html;
-                } 
-                
-                else if (currentModule === 'Ca') {
-                    const ca = parseFloat(inCaVal.value) || 0;
-                    const alb = parseFloat(inCaAlb.value) || 0;
-                    const symp = parseInt(inCaSymp.value);
-                    let html = '';
-
-                    const caCorr = ca + 0.02 * (40 - alb);
-
-                    if (ca <= 0 || alb <= 0) {
-                        outAssess.innerHTML = "Vui lòng nhập giá trị Canxi và Albumin hợp lệ."; return;
-                    }
-
-                    // ====== TĂNG CANXI MÁU ======
-                    if (caCorr > 2.60) {
-                        let severity = caCorr > 3.5 ? "NẶNG (> 3.5 mmol/L)" : (caCorr > 3.0 ? "TRUNG BÌNH (3.0 - 3.5)" : "NHẸ (2.6 - 3.0)");
-                        outAssess.innerHTML = `TĂNG CANXI MÁU ${severity} <br><span style="font-size:0.9rem; font-weight:normal; color:var(--text-main);">Canxi hiệu chỉnh: <strong>${caCorr.toFixed(2)}</strong> mmol/L (Dựa trên Albumin ${alb} g/L)</span>`;
-                        outTitle.innerHTML = `<span>🦴 Y lệnh Tăng Canxi máu</span>`;
-
-                        if (caCorr > 3.5 || symp === 3) {
-                            html += renderAction('priority-1', '🚰', 'Bước 1: Bù dịch Tích cực (Resuscitation)', [
-                                "Truyền tĩnh mạch: <span class='dose-highlight'>NaCl 0.9% 1000 mL trong 2-4 giờ đầu</span>. Tổng liều có thể lên đến 3 - 6 Lít/24h tùy tình trạng tim mạch.",
-                                "Mục tiêu: Đạt lượng nước tiểu > 100 mL/giờ để pha loãng và tăng thải Canxi."
-                            ]);
-                            html += renderAction('priority-2', '💉', 'Bước 2: Thuốc hạ Canxi đặc hiệu', [
-                                "<strong>Bisphosphonates TM:</strong> <span class='dose-highlight'>Zoledronic acid 4 mg pha 50mL NaCl 0.9% truyền TM 15 phút</span> (Hiệu quả tối đa sau 2-4 ngày). Hoặc <span class='dose-highlight'>Pamidronate 30-90 mg pha 500mL NaCl 0.9% truyền TM 2-4 giờ</span>.",
-                                "Cân nhắc Calcitonin: <span class='dose-highlight'>4 IU/kg tiêm bắp / tiêm dưới da mỗi 12 giờ</span> nếu có triệu chứng thần kinh cấp (Lưu ý hiện tượng tachyphylaxis sau 48h).",
-                                "Sử dụng <span class='dose-highlight'>Furosemide 20-40mg tĩnh mạch</span> <strong>CHỈ KHI</strong> bệnh nhân đã được bù đủ dịch để chống quá tải."
-                            ]);
-                        } else {
-                            html += renderAction('priority-2', '💧', 'Xử trí Ban đầu', [
-                                "Khuyến khích uống nhiều nước (3-4 Lít/ngày) hoặc truyền NaCl 0.9% duy trì.",
-                                "Kiểm tra PTH, X-quang phổi, Siêu âm bụng để tìm nguyên nhân."
-                            ]);
-                        }
-                    }
-                    // ====== HẠ CANXI MÁU ======
-                    else if (caCorr < 2.20) {
-                        outAssess.innerHTML = `HẠ CANXI MÁU <br><span style="font-size:0.9rem; font-weight:normal; color:var(--text-main);">Canxi hiệu chỉnh: <strong>${caCorr.toFixed(2)}</strong> mmol/L</span>`;
-                        outTitle.innerHTML = `<span>🦴 Y lệnh Hạ Canxi máu</span>`;
-
-                        if (caCorr < 1.90 || symp === 2) {
-                            html += renderAction('priority-1', '🚨', 'Bước 1: Bù Canxi Tĩnh mạch CẤP CỨU', [
-                                "Liều Bolus: <span class='dose-highlight'>10 - 20 mL Calcium Gluconate 10% pha trong 50-100 mL Glucose 5%</span> (hoặc NaCl 0.9%). Truyền tĩnh mạch chậm <strong>10 - 20 phút</strong> qua bơm tiêm điện.",
-                                "Liều Duy trì: Pha <span class='dose-highlight'>100 mL Calcium Gluconate 10% (10 ống) vào 1 Lít Glucose 5%</span>. Truyền tĩnh mạch liên tục với tốc độ <span class='dose-highlight'>50 - 100 mL/giờ</span>.",
-                                "Chuẩn độ tốc độ truyền dựa trên xét nghiệm Canxi ion hóa mỗi 4-6 giờ."
-                            ]);
-                        } else {
-                            html += renderAction('priority-2', '💊', 'Bù Canxi Đường uống', [
-                                "Đường uống: <span class='dose-highlight'>Calcium Carbonate 1.5 - 2g/ngày</span> (Tính theo canxi nguyên tố), chia làm 2-3 lần sau ăn.",
-                                "Phối hợp: <span class='dose-highlight'>Calcitriol 0.25 - 0.5 mcg/ngày</span> nếu nguyên nhân do suy thận hoặc suy cận giáp."
-                            ]);
-                        }
-
-                        html += renderAction('priority-3', '🔍', 'Bước 2: Yếu tố phối hợp', [
-                            "<strong>Bù Magnesium:</strong> Bắt buộc kiểm tra Mg2+ và truyền <span class='dose-highlight'>2g MgSO4</span> nếu thấp. Cửa ải giải phóng PTH sẽ bị khóa nếu thiếu Magie."
-                        ]);
-                    } 
-                    else {
-                        outAssess.innerHTML = `CANXI MÁU BÌNH THƯỜNG <br><span style="font-size:0.9rem; font-weight:normal; color:var(--text-main);">Canxi hiệu chỉnh: <strong>${caCorr.toFixed(2)}</strong> mmol/L</span>`;
-                        html += renderAction('priority-ok', '✅', 'Tình trạng ổn định', ["Chưa có chỉ định can thiệp y lệnh cấp cứu Canxi máu."]);
-                    }
-                    actionContainer.innerHTML = html;
-                }
+            if (k >= 6.0 || ecg > 0) {
+              html += renderAction('priority-2', '📉', 'Bước 2: Dịch chuyển Kali vào tế bào', [
+                "<strong>Truyền tĩnh mạch Insulin-Glucose:</strong> Pha <span class='dose-highlight'>10 UI Insulin Actrapid</span> vào <span class='dose-highlight'>125 mL Dextrose 20%</span> (hoặc 50mL Dextrose 50%). Truyền tĩnh mạch qua bơm tiêm điện hoặc nhỏ giọt trong <strong>15 - 30 phút</strong>.",
+                "Phun khí dung: <span class='dose-highlight'>Salbutamol 10-20 mg</span> (Dùng ống Nebules 2.5mg/2.5ml x 4-8 ống). Tác dụng hiệp đồng với Insulin.",
+                "<span class='alert-text'>Bắt buộc:</span> Thử đường huyết mao mạch ngay tại các thời điểm: 0, 15, 30, 60, 90 phút và mỗi giờ sau đó trong 6 giờ để chống hạ đường huyết."
+              ]);
             }
 
-            calculateAlgorithm();
+            html += renderAction('priority-3', '🚽', 'Bước 3: Đào thải Kali khỏi cơ thể', [
+              "Dừng ngay: Ước chế men chuyển, ARB, Lợi tiểu kháng Aldosterone, NSAIDs.",
+              "Uống: <span class='dose-highlight'>Sodium Zirconium Cyclosilicate (SZC) 10g x 3 lần/ngày</span>. HOẶC <span class='dose-highlight'>Calcium Polystyrene Sulfonate (Kalimate/Resonium) 15g x 3-4 lần/ngày</span>.",
+              "Tiêm tĩnh mạch: <span class='dose-highlight'>Furosemide 40-80 mg tĩnh mạch chậm</span> (Chỉ dùng nếu bệnh nhân dư dịch, tiểu được).",
+              (k >= 6.5 || ecg >= 2) ? "<span class='alert-text'>Chỉ định Lọc máu cấp cứu (HD)</span> nếu thiểu/vô niệu hoặc không đáp ứng nội khoa." : ""
+            ].filter(Boolean));
+          }
+          // ====== HẠ KALI MÁU ======
+          else if (k < 3.5) {
+            let severity = k < 2.5 ? "NẶNG (< 2.5 mmol/L)" : (k < 3.0 ? "TRUNG BÌNH (2.5 - 2.9 mmol/L)" : "NHẸ (3.0 - 3.4 mmol/L)");
+            outAssess.innerHTML = `HẠ KALI MÁU ${severity}`;
+            outTitle.innerHTML = `<span>⚡ Y lệnh Hạ Kali máu</span>`;
 
-            const themeToggleBtn = document.getElementById('theme-toggle-btn');
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
-            
-            if (themeToggleBtn) {
-                themeToggleBtn.addEventListener('click', () => {
-                    if (document.documentElement.getAttribute('data-theme') === 'dark') {
-                        document.documentElement.removeAttribute('data-theme');
-                        localStorage.setItem('theme', 'light');
-                    } else {
-                        document.documentElement.setAttribute('data-theme', 'dark');
-                        localStorage.setItem('theme', 'dark');
-                    }
-                });
+            if (k < 2.5 || ecg > 0 || symp === 1) {
+              html += renderAction('priority-1', '🚨', 'Bước 1: Bù Kali tĩnh mạch CẤP CỨU', [
+                "Đường truyền ngoại vi (Max 40 mmol/L): Pha <span class='dose-highlight'>3 ống KCl 10% (10mL/ống) vào 1 Lít NaCl 0.9%</span>. Tốc độ truyền tối đa: <span class='dose-highlight'>10 - 20 mmol/giờ</span> (Tương đương 250 - 500 mL/giờ của dịch pha trên).",
+                "Đường truyền trung tâm (CVC): Có thể pha nồng độ cao hơn, nhưng tốc độ truyền tuyệt đối không vượt quá 20 mmol/giờ trừ khi có ngưng tim.",
+                "Mắc Monitor theo dõi ECG liên tục."
+              ]);
+            } else {
+              html += renderAction('priority-2', '💊', 'Bù Kali Tĩnh mạch chậm / Đường uống', [
+                "Đường uống (Ưu tiên nếu ruột hoạt động): <span class='dose-highlight'>Kaleorid 600mg (8 mmol K+) 1-2 viên x 2-3 lần/ngày</span>.",
+                "Truyền TM ngoại vi: Nồng độ tối đa 40 mmol/L (3 ống KCl 10% pha trong 1000 mL NaCl 0.9%). Tốc độ: 10 mmol/giờ."
+              ]);
             }
-            
+
+            html += renderAction('priority-3', '🔍', 'Bước 2: Tìm và điều trị nguyên nhân', [
+              "<strong>Bù Magnesium:</strong> Cần tiêm tĩnh mạch <span class='dose-highlight'>2g MgSO4 trong 20 phút</span> nếu Magie máu thấp. Hạ Kali máu sẽ kháng trị nếu không bù đủ Magie."
+            ]);
+          }
+          else {
+            outAssess.innerHTML = `KALI MÁU BÌNH THƯỜNG (3.5 - 5.0 mmol/L)`;
+            html += renderAction('priority-ok', '✅', 'Tình trạng ổn định', ["Không có chỉ định can thiệp y lệnh cấp cứu điện giải."]);
+          }
+          actionContainer.innerHTML = html;
+        }
+
+        else if (currentModule === 'Ca') {
+          const ca = parseFloat(inCaVal.value) || 0;
+          const alb = parseFloat(inCaAlb.value) || 0;
+          const symp = parseInt(inCaSymp.value);
+          let html = '';
+
+          const caCorr = ca + 0.02 * (40 - alb);
+
+          if (ca <= 0 || alb <= 0) {
+            outAssess.innerHTML = "Vui lòng nhập giá trị Canxi và Albumin hợp lệ."; return;
+          }
+
+          // ====== TĂNG CANXI MÁU ======
+          if (caCorr > 2.60) {
+            let severity = caCorr > 3.5 ? "NẶNG (> 3.5 mmol/L)" : (caCorr > 3.0 ? "TRUNG BÌNH (3.0 - 3.5)" : "NHẸ (2.6 - 3.0)");
+            outAssess.innerHTML = `TĂNG CANXI MÁU ${severity} <br><span style="font-size:0.9rem; font-weight:normal; color:var(--text-main);">Canxi hiệu chỉnh: <strong>${caCorr.toFixed(2)}</strong> mmol/L (Dựa trên Albumin ${alb} g/L)</span>`;
+            outTitle.innerHTML = `<span>🦴 Y lệnh Tăng Canxi máu</span>`;
+
+            if (caCorr > 3.5 || symp === 3) {
+              html += renderAction('priority-1', '🚰', 'Bước 1: Bù dịch Tích cực (Resuscitation)', [
+                "Truyền tĩnh mạch: <span class='dose-highlight'>NaCl 0.9% 1000 mL trong 2-4 giờ đầu</span>. Tổng liều có thể lên đến 3 - 6 Lít/24h tùy tình trạng tim mạch.",
+                "Mục tiêu: Đạt lượng nước tiểu > 100 mL/giờ để pha loãng và tăng thải Canxi."
+              ]);
+              html += renderAction('priority-2', '💉', 'Bước 2: Thuốc hạ Canxi đặc hiệu', [
+                "<strong>Bisphosphonates TM:</strong> <span class='dose-highlight'>Zoledronic acid 4 mg pha 50mL NaCl 0.9% truyền TM 15 phút</span> (Hiệu quả tối đa sau 2-4 ngày). Hoặc <span class='dose-highlight'>Pamidronate 30-90 mg pha 500mL NaCl 0.9% truyền TM 2-4 giờ</span>.",
+                "Cân nhắc Calcitonin: <span class='dose-highlight'>4 IU/kg tiêm bắp / tiêm dưới da mỗi 12 giờ</span> nếu có triệu chứng thần kinh cấp (Lưu ý hiện tượng tachyphylaxis sau 48h).",
+                "Sử dụng <span class='dose-highlight'>Furosemide 20-40mg tĩnh mạch</span> <strong>CHỈ KHI</strong> bệnh nhân đã được bù đủ dịch để chống quá tải."
+              ]);
+            } else {
+              html += renderAction('priority-2', '💧', 'Xử trí Ban đầu', [
+                "Khuyến khích uống nhiều nước (3-4 Lít/ngày) hoặc truyền NaCl 0.9% duy trì.",
+                "Kiểm tra PTH, X-quang phổi, Siêu âm bụng để tìm nguyên nhân."
+              ]);
+            }
+          }
+          // ====== HẠ CANXI MÁU ======
+          else if (caCorr < 2.20) {
+            outAssess.innerHTML = `HẠ CANXI MÁU <br><span style="font-size:0.9rem; font-weight:normal; color:var(--text-main);">Canxi hiệu chỉnh: <strong>${caCorr.toFixed(2)}</strong> mmol/L</span>`;
+            outTitle.innerHTML = `<span>🦴 Y lệnh Hạ Canxi máu</span>`;
+
+            if (caCorr < 1.90 || symp === 2) {
+              html += renderAction('priority-1', '🚨', 'Bước 1: Bù Canxi Tĩnh mạch CẤP CỨU', [
+                "Liều Bolus: <span class='dose-highlight'>10 - 20 mL Calcium Gluconate 10% pha trong 50-100 mL Glucose 5%</span> (hoặc NaCl 0.9%). Truyền tĩnh mạch chậm <strong>10 - 20 phút</strong> qua bơm tiêm điện.",
+                "Liều Duy trì: Pha <span class='dose-highlight'>100 mL Calcium Gluconate 10% (10 ống) vào 1 Lít Glucose 5%</span>. Truyền tĩnh mạch liên tục với tốc độ <span class='dose-highlight'>50 - 100 mL/giờ</span>.",
+                "Chuẩn độ tốc độ truyền dựa trên xét nghiệm Canxi ion hóa mỗi 4-6 giờ."
+              ]);
+            } else {
+              html += renderAction('priority-2', '💊', 'Bù Canxi Đường uống', [
+                "Đường uống: <span class='dose-highlight'>Calcium Carbonate 1.5 - 2g/ngày</span> (Tính theo canxi nguyên tố), chia làm 2-3 lần sau ăn.",
+                "Phối hợp: <span class='dose-highlight'>Calcitriol 0.25 - 0.5 mcg/ngày</span> nếu nguyên nhân do suy thận hoặc suy cận giáp."
+              ]);
+            }
+
+            html += renderAction('priority-3', '🔍', 'Bước 2: Yếu tố phối hợp', [
+              "<strong>Bù Magnesium:</strong> Bắt buộc kiểm tra Mg2+ và truyền <span class='dose-highlight'>2g MgSO4</span> nếu thấp. Cửa ải giải phóng PTH sẽ bị khóa nếu thiếu Magie."
+            ]);
+          }
+          else {
+            outAssess.innerHTML = `CANXI MÁU BÌNH THƯỜNG <br><span style="font-size:0.9rem; font-weight:normal; color:var(--text-main);">Canxi hiệu chỉnh: <strong>${caCorr.toFixed(2)}</strong> mmol/L</span>`;
+            html += renderAction('priority-ok', '✅', 'Tình trạng ổn định', ["Chưa có chỉ định can thiệp y lệnh cấp cứu Canxi máu."]);
+          }
+          actionContainer.innerHTML = html;
+        }
+      }
+
+      calculateAlgorithm();
+
+      const themeToggleBtn = document.getElementById('theme-toggle-btn');
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+
+      if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+          if (document.documentElement.getAttribute('data-theme') === 'dark') {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'light');
+          } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+          }
         });
-    </script>
+      }
+
+    });
+  </script>
 </body>
+
 </html>

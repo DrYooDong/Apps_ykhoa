@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="vi" data-theme="light">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="CliniPortal – Hệ thống hỗ trợ quyết định lâm sàng dành cho bác sĩ nội khoa tại Việt Nam" />
-  <title>CliniPortal – Hỗ trợ Lâm sàng</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="CliniPortal – Hệ thống hỗ trợ quyết định lâm sàng dành cho bác sĩ nội khoa tại Việt Nam" />
+    <title>CliniPortal – Hỗ trợ Lâm sàng</title>
 
-  <!-- Preconnect fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Preconnect fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
 
-  <link rel="stylesheet" href="../../../css/reset.css">
-  <link rel="stylesheet" href="../../../css/main.css">
-  <link rel="stylesheet" href="../../../css/components/header.css">
-  <link rel="stylesheet" href="../../../css/components/sidebar.css">
-  <link rel="stylesheet" href="../../../css/components/footer.css">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../css/components/footer.css">
 
-  <script src="../../../pages/header.js"></script>     
+    <script src="../../../pages/header.js"></script>
     <style>
         /* === BIẾN MÀU SẮC HỆ THỐNG & GIAO DIỆN CHUYỂN ĐỔI CHUẨN === */
         :root {
@@ -30,7 +34,7 @@
             --warning-light: rgba(245, 158, 11, 0.1);
             --danger-color: #ef4444;
             --danger-light: rgba(239, 68, 68, 0.1);
-            
+
             --card-bg: #ffffff;
             --bg-light: #f8fafc;
             --text-main: #1e293b;
@@ -52,7 +56,7 @@
             --warning-light: rgba(251, 191, 36, 0.12);
             --danger-color: #f87171;
             --danger-light: rgba(248, 113, 113, 0.15);
-            
+
             --card-bg: #1e293b;
             --bg-light: #0f172a;
             --text-main: #f8fafc;
@@ -93,6 +97,7 @@
             border: 1px solid var(--border-color);
             border-left-width: 5px;
         }
+
         .hero-intro h1 {
             margin: 0 0 8px 0;
             color: var(--primary-color);
@@ -100,6 +105,7 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 700;
         }
+
         .hero-intro p {
             margin: 0;
             color: var(--text-muted);
@@ -140,9 +146,21 @@
             margin-bottom: 16px;
             letter-spacing: 0.05em;
         }
-        .badge-blue { background-color: var(--primary-light); color: var(--primary-color); }
-        .badge-orange { background-color: var(--warning-light); color: var(--warning-color); }
-        .badge-green { background-color: var(--success-light); color: var(--success-color); }
+
+        .badge-blue {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+        }
+
+        .badge-orange {
+            background-color: var(--warning-light);
+            color: var(--warning-color);
+        }
+
+        .badge-green {
+            background-color: var(--success-light);
+            color: var(--success-color);
+        }
 
         .form-group {
             display: flex;
@@ -150,12 +168,15 @@
             gap: 6px;
             margin-bottom: 16px;
         }
+
         .form-group label {
             font-size: 0.9rem;
             font-weight: 600;
             color: var(--text-main);
         }
-        .form-group input, .form-group select {
+
+        .form-group input,
+        .form-group select {
             padding: 10px 12px;
             border: 1px solid var(--border-color);
             border-radius: var(--radius-sm);
@@ -167,7 +188,9 @@
             width: 100%;
             box-sizing: border-box;
         }
-        .form-group input:focus, .form-group select:focus {
+
+        .form-group input:focus,
+        .form-group select:focus {
             border-color: var(--primary-color);
             background-color: var(--card-bg);
             outline: none;
@@ -181,6 +204,7 @@
             gap: 16px;
             margin-bottom: 24px;
         }
+
         .target-card {
             background-color: var(--card-bg);
             border: 2px solid var(--border-color);
@@ -193,10 +217,12 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
         }
+
         .target-card.highlight {
             border-color: var(--primary-color);
             background-color: var(--primary-light);
         }
+
         .target-title {
             font-size: 0.8rem;
             font-weight: 700;
@@ -205,12 +231,14 @@
             margin-bottom: 6px;
             letter-spacing: 0.02em;
         }
+
         .target-value {
             font-size: 1.65rem;
             font-weight: 800;
             color: var(--text-main);
             line-height: 1.2;
         }
+
         .target-unit {
             font-size: 0.85rem;
             font-weight: 500;
@@ -227,6 +255,7 @@
             box-shadow: var(--shadow);
             margin-bottom: 24px;
         }
+
         .result-title {
             font-size: 1.1rem;
             font-weight: 700;
@@ -238,7 +267,7 @@
             border-bottom: 2px solid var(--border-color);
             padding-bottom: 8px;
         }
-        
+
         .macro-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -248,21 +277,25 @@
             border-radius: var(--radius-sm);
             border: 1px solid var(--border-color);
         }
+
         .macro-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding-bottom: 4px;
         }
+
         .macro-item:not(:last-child) {
             border-right: 1px dashed var(--border-color);
             padding-right: 16px;
         }
+
         .macro-label {
             font-weight: 600;
             font-size: 0.9rem;
             color: var(--text-main);
         }
+
         .macro-val {
             font-weight: 700;
             font-size: 1rem;
@@ -280,7 +313,7 @@
             border: 1px solid var(--border-color);
             border-left-width: 5px;
         }
-        
+
         /* Bảng tư vấn thực phẩm bệnh lý nhịp nhàng */
         .diet-advice-grid {
             display: grid;
@@ -288,11 +321,13 @@
             gap: 16px;
             margin-top: 16px;
         }
+
         @media (min-width: 640px) {
             .diet-advice-grid {
                 grid-template-columns: 1fr 1fr;
             }
         }
+
         .diet-box {
             padding: 16px;
             border-radius: var(--radius-md);
@@ -300,13 +335,26 @@
             font-size: 0.92rem;
             line-height: 1.6;
             background-color: var(--card-bg);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
         }
-        .diet-good { border-top: 4px solid var(--success-color); background-color: rgba(16, 185, 129, 0.02); }
-        .diet-bad { border-top: 4px solid var(--danger-color); background-color: rgba(239, 68, 68, 0.02); }
-        
-        [data-theme="dark"] .diet-good { background-color: rgba(52, 211, 153, 0.04); }
-        [data-theme="dark"] .diet-bad { background-color: rgba(248, 113, 113, 0.04); }
+
+        .diet-good {
+            border-top: 4px solid var(--success-color);
+            background-color: rgba(16, 185, 129, 0.02);
+        }
+
+        .diet-bad {
+            border-top: 4px solid var(--danger-color);
+            background-color: rgba(239, 68, 68, 0.02);
+        }
+
+        [data-theme="dark"] .diet-good {
+            background-color: rgba(52, 211, 153, 0.04);
+        }
+
+        [data-theme="dark"] .diet-bad {
+            background-color: rgba(248, 113, 113, 0.04);
+        }
 
         .diet-box h4 {
             margin-bottom: 12px;
@@ -316,15 +364,18 @@
             font-weight: 700;
             font-size: 0.95rem;
         }
+
         .diet-box ul {
             margin-left: 4px;
             padding-left: 16px;
             color: var(--text-main);
         }
+
         .diet-box li {
             margin-bottom: 8px;
             list-style-type: disc;
         }
+
         .diet-box li strong {
             color: var(--primary-color);
         }
@@ -340,6 +391,7 @@
             margin-bottom: 24px;
             display: none;
         }
+
         [data-theme="dark"] .alert-panel {
             background-color: rgba(248, 113, 113, 0.12);
         }
@@ -360,111 +412,118 @@
                 grid-template-columns: 1fr;
                 gap: 12px;
             }
+
             .macro-grid {
                 grid-template-columns: 1fr;
                 gap: 10px;
             }
+
             .macro-item:not(:last-child) {
                 border-right: none;
                 border-bottom: 1px dashed var(--border-color);
                 padding-right: 0;
                 padding-bottom: 10px;
             }
+
             .main-wrapper {
                 padding: 12px;
             }
+
             .target-value {
                 font-size: 1.45rem;
             }
         }
     </style>
 </head>
+
 <body>
 
-  <div id="header-placeholder" data-header-path="../../header.html"></div>
-  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div id="header-placeholder" data-header-path="../../header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-  <!-- ===================== APP CONTAINER ===================== -->
-  <div class="app-container">
-    <!--SIDEBAR-->
-    <aside class="app-sidebar" id="appSidebar">
-      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
-        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5"
-          fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
-          <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
-      </button>
-      <nav class="sidebar-nav" aria-label="Điều hướng chính">
-        <ul class="nav-list" role="list">
-          <li>
-            <a href="../../../index.html" class="nav-item" title="Trang chủ">
-              <span class="nav-icon">🏠</span>
-              <span class="nav-text">Trang chủ</span>
-            </a>
-          </li>
-          <li>
-            <a href="../cong-cu.html" class="nav-item active" aria-current="page" title="Công cụ lâm sàng">
-              <span class="nav-icon">⚙️</span>
-              <span class="nav-text">Công cụ lâm sàng</span>
-            </a>
-          </li>
-          <li>
-            <a href="../../Phác đồ/phac-do.html" class="nav-item" title="Phác đồ Y khoa">
-              <span class="nav-icon">📋</span>
-              <span class="nav-text">Phác đồ điều trị</span>
-            </a>
-          </li>
-          <li>
-            <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
-              <span class="nav-icon">💊</span>
-              <span class="nav-text">Dược lý lâm sàng</span>
-            </a>
-          </li>
-          <li>
-            <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận triệu chứng">
-              <span class="nav-icon">🩻</span>
-              <span class="nav-text">Tiếp cận lâm sàng</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </aside>
-    
-    <!--MAIN CONTENT-->
-    <div class="main-wrapper">
+    <!-- ===================== APP CONTAINER ===================== -->
+    <div class="app-container">
+        <!--SIDEBAR-->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../../../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../cong-cu.html" class="nav-item active" aria-current="page" title="Công cụ lâm sàng">
+                            <span class="nav-icon">⚙️</span>
+                            <span class="nav-text">Công cụ lâm sàng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+                            <span class="nav-icon">📄</span>
+                            <span class="nav-text">Y học chứng cứ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+                            <span class="nav-icon">💊</span>
+                            <span class="nav-text">Dược lý lâm sàng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận triệu chứng">
+                            <span class="nav-icon">🩻</span>
+                            <span class="nav-text">Tiếp cận lâm sàng</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!--MAIN CONTENT-->
+        <div class="main-wrapper">
             <section class="hero-dashboard">
                 <div class="hero-intro">
                     <h1>MỤC TIÊU & DINH DƯỠNG NỘI TRÚ</h1>
-                    <p>Chuẩn hóa tính toán năng lượng, đại chất và hướng dẫn chọn lựa thực phẩm trực quan cho bệnh nhân nội trú theo quyết định chính thức từ Bộ Y tế.</p>
+                    <p>Chuẩn hóa tính toán năng lượng, đại chất và hướng dẫn chọn lựa thực phẩm trực quan cho bệnh nhân
+                        nội trú theo quyết định chính thức từ Bộ Y tế.</p>
                 </div>
             </section>
 
             <!--BREADCRUMB-->
             <nav aria-label="Breadcrumb" class="breadcrumb-container">
                 <ol class="breadcrumb-list">
-                <li class="breadcrumb-item">
-                    <a href="../../../index.html" class="breadcrumb-link">
-                    <span class="home-icon">🏠</span> Home
-                    </a>
-                </li>
-                
-                <li class="breadcrumb-item"
-                    aria-current="page"> Công cụ</a>
-                </li>
+                    <li class="breadcrumb-item">
+                        <a href="../../../index.html" class="breadcrumb-link">
+                            <span class="home-icon">🏠</span> Home
+                        </a>
+                    </li>
 
-                <li class="breadcrumb-item"
-                    aria-current="page"> Tiêu hóa & dinh dưỡng</a>
-                </li>
-                
-                <li class="breadcrumb-item active" 
-                    aria-current="page"> Dinh dưỡng nội viện
-                </li>
+                    <li class="breadcrumb-item" aria-current="page"> Công cụ</a>
+                    </li>
+
+                    <li class="breadcrumb-item" aria-current="page"> Tiêu hóa & dinh dưỡng</a>
+                    </li>
+
+                    <li class="breadcrumb-item active" aria-current="page"> Dinh dưỡng nội viện
+                    </li>
                 </ol>
             </nav>
 
             <div id="refeedingAlertPanel" class="alert-panel">
-                <h3 style="font-weight:700; color:var(--danger-color); margin-bottom:0.5rem; display:flex; align-items:center; gap:0.5rem;">⚠️ CẢNH BÁO: HỘI CHỨNG NUÔI ĂN LẠI (REFEEDING)</h3>
-                <p>Bệnh nhân có tình trạng suy mòn nghiêm trọng hoặc nhịn đói kéo dài. <strong>Bắt buộc:</strong> Khởi động nuôi ăn ở mức rất thấp (10-15 kcal/kg/ngày). Bổ sung ngay Thiamine (B1) và bù chủ động các điện giải Kali, Magie, Phospho nội bào trước khi tăng dần năng lượng.</p>
+                <h3
+                    style="font-weight:700; color:var(--danger-color); margin-bottom:0.5rem; display:flex; align-items:center; gap:0.5rem;">
+                    ⚠️ CẢNH BÁO: HỘI CHỨNG NUÔI ĂN LẠI (REFEEDING)</h3>
+                <p>Bệnh nhân có tình trạng suy mòn nghiêm trọng hoặc nhịn đói kéo dài. <strong>Bắt buộc:</strong> Khởi
+                    động nuôi ăn ở mức rất thấp (10-15 kcal/kg/ngày). Bổ sung ngay Thiamine (B1) và bù chủ động các điện
+                    giải Kali, Magie, Phospho nội bào trước khi tăng dần năng lượng.</p>
             </div>
 
             <div class="workspace-container">
@@ -473,7 +532,8 @@
                         <span class="card-zone-badge badge-blue">1. Hồ sơ bệnh nhân</span>
                         <div class="form-group">
                             <label for="patientWeight">Cân nặng hiện tại (kg):</label>
-                            <input type="number" id="patientWeight" value="55" min="20" max="200" placeholder="Bắt buộc">
+                            <input type="number" id="patientWeight" value="55" min="20" max="200"
+                                placeholder="Bắt buộc">
                         </div>
                         <div class="form-group">
                             <label for="clinicalProfile">Bệnh cảnh nội khoa chủ đạo:</label>
@@ -500,7 +560,8 @@
                 </div>
 
                 <div class="output-side">
-                    <span class="card-zone-badge badge-orange" style="margin-bottom:0.5rem;">2. Nhu cầu Đích cần đạt (24h)</span>
+                    <span class="card-zone-badge badge-orange" style="margin-bottom:0.5rem;">2. Nhu cầu Đích cần đạt
+                        (24h)</span>
                     <div class="target-dashboard">
                         <div class="target-card highlight">
                             <div class="target-title">Năng lượng</div>
@@ -521,15 +582,18 @@
 
                     <div class="result-box">
                         <div class="result-title"><span>🍽️</span> THỰC ĐƠN & TƯ VẤN NGƯỜI BỆNH</div>
-                        
+
                         <div class="macro-grid" style="margin-bottom:1rem;">
-                            <div class="macro-item"><span class="macro-label">Carbohydrate (Đường bột)</span><span class="macro-val" id="resCarb">-- g</span></div>
-                            <div class="macro-item"><span class="macro-label">Lipid (Chất béo)</span><span class="macro-val" id="resLipid">-- g</span></div>
+                            <div class="macro-item"><span class="macro-label">Carbohydrate (Đường bột)</span><span
+                                    class="macro-val" id="resCarb">-- g</span></div>
+                            <div class="macro-item"><span class="macro-label">Lipid (Chất béo)</span><span
+                                    class="macro-val" id="resLipid">-- g</span></div>
                         </div>
 
                         <div id="medicalAdvice" class="clinical-advice-box"></div>
 
-                        <span class="card-zone-badge badge-green" style="margin-top:0.5rem;">Hướng dẫn chọn thực phẩm cụ thể</span>
+                        <span class="card-zone-badge badge-green" style="margin-top:0.5rem;">Hướng dẫn chọn thực phẩm cụ
+                            thể</span>
                         <div class="diet-advice-grid">
                             <div class="diet-box diet-good">
                                 <h4 style="color:var(--success-color);">✅ THỰC PHẨM NÊN DÙNG</h4>
@@ -543,7 +607,8 @@
                     </div>
 
                     <div class="reference-section">
-                        <strong>📚 Căn cứ Y học chứng cứ (EBM):</strong> Hướng dẫn chế độ ăn bệnh viện - Bộ Y tế (QĐ 2879/QĐ-BYT) và Hướng dẫn Dinh dưỡng Lâm sàng Viện Dinh Dưỡng.
+                        <strong>📚 Căn cứ Y học chứng cứ (EBM):</strong> Hướng dẫn chế độ ăn bệnh viện - Bộ Y tế (QĐ
+                        2879/QĐ-BYT) và Hướng dẫn Dinh dưỡng Lâm sàng Viện Dinh Dưỡng.
                     </div>
                 </div>
             </div>
@@ -573,7 +638,7 @@
 
                 if (starvation === 'severe') {
                     document.getElementById('refeedingAlertPanel').style.display = 'block';
-                    kcalPerKg = 12; 
+                    kcalPerKg = 12;
                 } else {
                     document.getElementById('refeedingAlertPanel').style.display = 'none';
                 }
@@ -581,8 +646,8 @@
                 // LOGIC PHÂN BỔ CHI TIẾT THEO HƯỚNG DẪN LÂM SÀNG BỘ Y TẾ & VIỆN DINH DƯỠNG
                 switch (profile) {
                     case 'sepsis':
-                        if (starvation !== 'severe') kcalPerKg = 25; 
-                        proteinPerKg = 1.3; 
+                        if (starvation !== 'severe') kcalPerKg = 25;
+                        proteinPerKg = 1.3;
                         medAdvice = `<strong>Mục tiêu:</strong> Hạn chế tình trạng quá tải calo (overfeeding) ở pha cấp, tập trung tăng lượng protein cao để chống dị hóa, bảo tồn khối cơ và nâng cao miễn dịch. Ưu tiên thiết lập nuôi ăn đường tiêu hóa (EN) sớm trong 24-48h khi huyết động đã ổn định.`;
                         goodFoods = `
                             <li><strong>Chế biến:</strong> Thức ăn lỏng, mịn, nấu nhừ, dễ tiêu hóa như cháo xay nhuyễn, súp dinh dưỡng phối hợp đa dạng thực phẩm.</li>
@@ -632,7 +697,7 @@
                         break;
 
                     case 'ckd_predialysis':
-                        if (starvation !== 'severe') kcalPerKg = 30; 
+                        if (starvation !== 'severe') kcalPerKg = 30;
                         proteinPerKg = 0.8; fluidPerKg = 20;
                         medAdvice = `<strong>Mục tiêu:</strong> Hạn chế đạm nghiêm ngặt (protein thực tế từ 0.6-0.8g/kg) để làm chậm tiến triển suy thận và giảm ure máu, nhưng bắt buộc tăng calo từ nguồn glucid/lipid sạch để chống teo cơ dị hóa. Áp dụng ăn nhạt khi có phù hoặc tăng huyết áp (Natri < 2000mg/ngày).`;
                         goodFoods = `
@@ -675,7 +740,7 @@
                             <li>Tránh thức ăn lạ dễ gây dị ứng như hải sản, tôm, cua, ốc, sò, hến, đồ ăn sống.</li>
                             <li>Hạn chế muối (ăn nhạt hoàn toàn) khi bệnh nhân có phù hoặc cổ chướng (báng bụng).</li>`;
                         break;
-                    
+
                     case 'gi_tract':
                         if (starvation !== 'severe') kcalPerKg = 25;
                         proteinPerKg = 1.0;
@@ -724,7 +789,7 @@
                 document.getElementById('resFluid').innerText = totalFluid;
                 document.getElementById('resCarb').innerText = totalCarb + " g";
                 document.getElementById('resLipid').innerText = totalLipid + " g";
-                
+
                 document.getElementById('medicalAdvice').innerHTML = medAdvice;
                 document.getElementById('dietGoodList').innerHTML = goodFoods;
                 document.getElementById('dietBadList').innerHTML = badFoods;
@@ -732,7 +797,7 @@
 
             // Kích hoạt chạy thử khi load trang
             calculateNutrition();
-            
+
             // Hệ thống đồng bộ giao diện Dark Mode toàn diện
             const themeToggleBtn = document.getElementById('theme-toggle-btn');
             const savedTheme = localStorage.getItem('theme');
@@ -748,8 +813,9 @@
                     }
                 });
             }
-            
+
         });
     </script>
 </body>
+
 </html>

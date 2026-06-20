@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="vi" data-theme="light">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="CliniPortal – Hệ thống hỗ trợ quyết định lâm sàng dành cho bác sĩ nội khoa tại Việt Nam" />
-  <title>CliniPortal – Hỗ trợ Lâm sàng</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="CliniPortal – Hệ thống hỗ trợ quyết định lâm sàng dành cho bác sĩ nội khoa tại Việt Nam" />
+    <title>CliniPortal – Hỗ trợ Lâm sàng</title>
 
-  <!-- Preconnect fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Preconnect fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
 
-  <link rel="stylesheet" href="../../../css/reset.css">
-  <link rel="stylesheet" href="../../../css/main.css">
-  <link rel="stylesheet" href="../../../css/components/header.css">
-  <link rel="stylesheet" href="../../../css/components/sidebar.css">
-  <link rel="stylesheet" href="../../../css/components/footer.css">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../css/components/footer.css">
 
-  <script src="../../../pages/header.js"></script> 
-<style>
+    <script src="../../../pages/header.js"></script>
+    <style>
         /* === BIẾN MÀU SẮC & CẤU HÌNH HỆ THỐNG GIAO DIỆN === */
         :root {
             --primary: #0d6efd;
@@ -60,7 +64,7 @@
             --gray-300: #374151;
             --gray-600: #9ca3af;
             --dark: #f9fafb;
-            
+
             --primary-color: #3b82f6;
             --text-main: #f9fafb;
             --card-bg: #1f2937;
@@ -101,6 +105,7 @@
             margin-bottom: 24px;
             border-left: 5px solid var(--primary);
         }
+
         .hero-intro h1 {
             margin: 0 0 8px 0;
             color: var(--primary);
@@ -108,6 +113,7 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 700;
         }
+
         .hero-intro p {
             margin: 0;
             color: var(--gray-600);
@@ -123,7 +129,8 @@
         }
 
         /* === THÀNH PHẦN INPUT & OUTPUT CARD === */
-        .input-card, .result-box {
+        .input-card,
+        .result-box {
             background: var(--card-bg);
             border-radius: var(--radius);
             box-shadow: var(--shadow);
@@ -147,10 +154,26 @@
             text-transform: uppercase;
             letter-spacing: 0.03em;
         }
-        .badge-blue { background-color: var(--primary-light); color: var(--primary); }
-        .badge-orange { background-color: var(--warning-light); color: #b45309; }
-        .badge-purple { background-color: #f3e8ff; color: #6b21a8; }
-        .badge-red { background-color: var(--danger-light); color: var(--danger); }
+
+        .badge-blue {
+            background-color: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .badge-orange {
+            background-color: var(--warning-light);
+            color: #b45309;
+        }
+
+        .badge-purple {
+            background-color: #f3e8ff;
+            color: #6b21a8;
+        }
+
+        .badge-red {
+            background-color: var(--danger-light);
+            color: var(--danger);
+        }
 
         /* === PHÂN CHIA FORM DỮ LIỆU === */
         .form-row {
@@ -159,12 +182,16 @@
             gap: 16px;
             margin-bottom: 16px;
         }
-        .form-row:last-child { margin-bottom: 0; }
-        
+
+        .form-row:last-child {
+            margin-bottom: 0;
+        }
+
         .form-group {
             display: flex;
             flex-direction: column;
         }
+
         .form-group label {
             font-size: 0.88rem;
             font-weight: 600;
@@ -172,7 +199,9 @@
             margin-bottom: 6px;
             white-space: nowrap;
         }
-        .form-group input, .form-group select {
+
+        .form-group input,
+        .form-group select {
             padding: 10px 12px;
             border: 1px solid var(--gray-300);
             border-radius: 6px;
@@ -183,7 +212,9 @@
             width: 100%;
             box-sizing: border-box;
         }
-        .form-group input:focus, .form-group select:focus {
+
+        .form-group input:focus,
+        .form-group select:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
@@ -200,12 +231,17 @@
             margin-bottom: 10px;
             border: 1px solid var(--gray-200);
         }
-        .checkbox-group:last-child { margin-bottom: 0; }
+
+        .checkbox-group:last-child {
+            margin-bottom: 0;
+        }
+
         .checkbox-group input[type="checkbox"] {
             margin-top: 3px;
             cursor: pointer;
             transform: scale(1.05);
         }
+
         .checkbox-group label {
             font-size: 0.9rem;
             color: var(--text-main);
@@ -217,6 +253,7 @@
         .dynamic-module {
             display: none;
         }
+
         .dynamic-module.active {
             display: block;
         }
@@ -227,6 +264,7 @@
             flex-direction: column;
             gap: 14px;
         }
+
         .nihss-row {
             display: grid;
             grid-template-columns: 1fr 1.2fr;
@@ -238,10 +276,12 @@
             border-radius: 6px;
             transition: all 0.2s ease;
         }
+
         .nihss-row:hover {
             border-color: var(--primary);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
         }
+
         .nihss-label {
             font-size: 0.92rem;
             font-weight: 600;
@@ -250,6 +290,7 @@
             align-items: center;
             gap: 8px;
         }
+
         .nihss-badge {
             background: var(--primary);
             color: white;
@@ -261,6 +302,7 @@
             text-align: center;
             box-shadow: 0 1px 3px rgba(13, 110, 253, 0.2);
         }
+
         .nihss-select {
             width: 100%;
             padding: 9px 12px;
@@ -293,7 +335,11 @@
             align-items: center;
             gap: 16px;
         }
-        .score-text { flex: 1; }
+
+        .score-text {
+            flex: 1;
+        }
+
         .score-title {
             font-size: 0.8rem;
             font-weight: 700;
@@ -301,12 +347,14 @@
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
+
         .score-interpretation {
             font-size: 1rem;
             font-weight: 600;
             color: var(--text-main);
             margin-top: 4px;
         }
+
         .score-value {
             font-size: 2.8rem;
             font-weight: 800;
@@ -323,17 +371,26 @@
             font-size: 0.92rem;
             line-height: 1.6;
         }
+
         .prescription-title {
             font-weight: 700;
             margin-bottom: 8px;
         }
+
         .prescription-detail {
             color: var(--text-main);
         }
 
         /* Điểm nhấn cấu trúc y lệnh */
-        .highlight-red { color: var(--danger); font-weight: 700; }
-        .highlight-blue { color: var(--primary); font-weight: 700; }
+        .highlight-red {
+            color: var(--danger);
+            font-weight: 700;
+        }
+
+        .highlight-blue {
+            color: var(--primary);
+            font-weight: 700;
+        }
 
         /* === KHU VỰC TÀI LIỆU THAM KHẢO === */
         .reference-section {
@@ -344,6 +401,7 @@
             border-top: 1px dashed var(--gray-300);
             margin-top: 8px;
         }
+
         .reference-section strong {
             color: var(--text-main);
         }
@@ -358,20 +416,23 @@
 
         /* Tối ưu chuyên biệt cho Mobile (Fix triệt để lỗi ép cột trong image_3be87d.png) */
         @media (max-width: 600px) {
-            .main-wrapper { 
-                padding: 12px; 
+            .main-wrapper {
+                padding: 12px;
             }
-            .hero-dashboard { 
-                padding: 16px; 
+
+            .hero-dashboard {
+                padding: 16px;
                 margin-bottom: 16px;
             }
-            .hero-intro h1 { 
-                font-size: 1.25rem; 
+
+            .hero-intro h1 {
+                font-size: 1.25rem;
             }
-            
+
             /* Hạ tỉ lệ đệm trong card để tăng diện tích hiển thị text */
-            .input-card, .result-box { 
-                padding: 14px; 
+            .input-card,
+            .result-box {
+                padding: 14px;
                 margin-bottom: 14px;
             }
 
@@ -381,15 +442,17 @@
                 gap: 12px;
                 margin-bottom: 12px;
             }
-            
+
             /* Tái định dạng bảng NIHSS trên mobile: Tiêu đề nằm TRÊN, hộp chọn rộng 100% nằm DƯỚI */
             .nihss-row {
                 grid-template-columns: 1fr !important;
                 gap: 8px;
                 padding: 10px;
             }
+
             .nihss-select {
-                white-space: normal; /* Cho phép text dài trong option xuống dòng mượt mà */
+                white-space: normal;
+                /* Cho phép text dài trong option xuống dòng mượt mà */
                 font-size: 0.88rem;
             }
 
@@ -398,104 +461,107 @@
                 align-items: flex-start;
                 gap: 12px;
             }
-            .score-value { 
-                font-size: 2.4rem; 
+
+            .score-value {
+                font-size: 2.4rem;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Placeholder nạp header.html — đường dẫn tính từ vị trí cong-cu.html -->
-  <div id="header-placeholder" data-header-path="../../header.html"></div>
-  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div id="header-placeholder" data-header-path="../../header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-  <!-- ===================== APP CONTAINER ===================== -->
-  <div class="app-container">
+    <!-- ===================== APP CONTAINER ===================== -->
+    <div class="app-container">
 
-    <!-- SIDEBAR -->
-    <aside class="app-sidebar" id="appSidebar">
-      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
-        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5"
-          fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
-          <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
-      </button>
-      <nav class="sidebar-nav" aria-label="Điều hướng chính">
-        <ul class="nav-list" role="list">
-          <li>
-            <a href="../../../index.html" class="nav-item" title="Trang chủ">
-              <span class="nav-icon">🏠</span>
-              <span class="nav-text">Trang chủ</span>
-            </a>
-          </li>
-          <li>
-            <a href="../cong-cu.html" class="nav-item active" aria-current="page" title="Công cụ lâm sàng">
-              <span class="nav-icon">⚙️</span>
-              <span class="nav-text">Công cụ lâm sàng</span>
-            </a>
-          </li>
-          <li>
-            <a href="../../Phác đồ/phac-do.html" class="nav-item" title="Phác đồ Y khoa">
-              <span class="nav-icon">📋</span>
-              <span class="nav-text">Phác đồ điều trị</span>
-            </a>
-          </li>
-          <li>
-            <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
-              <span class="nav-icon">💊</span>
-              <span class="nav-text">Dược lý lâm sàng</span>
-            </a>
-          </li>
-          <li>
-            <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận triệu chứng">
-              <span class="nav-icon">🩻</span>
-              <span class="nav-text">Tiếp cận lâm sàng</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </aside>
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../../../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../cong-cu.html" class="nav-item active" aria-current="page" title="Công cụ lâm sàng">
+                            <span class="nav-icon">⚙️</span>
+                            <span class="nav-text">Công cụ lâm sàng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+                            <span class="nav-icon">📄</span>
+                            <span class="nav-text">Y học chứng cứ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+                            <span class="nav-icon">💊</span>
+                            <span class="nav-text">Dược lý lâm sàng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận triệu chứng">
+                            <span class="nav-icon">🩻</span>
+                            <span class="nav-text">Tiếp cận lâm sàng</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
 
-    <!--MAIN CONTENT-->
+        <!--MAIN CONTENT-->
         <div class="main-wrapper">
             <section class="hero-dashboard">
                 <div class="hero-intro">
                     <h1>Trợ lý Phân loại, Chẩn đoán & Tiên lượng Đột quỵ</h1>
-                    <p>Sàng lọc Stroke Mimics, tích hợp toàn diện bảng điểm NIHSS dạng phẳng, phân tích phim CT/MRI và cá thể hóa y lệnh hạ áp chuẩn hóa theo QĐ 3312/QĐ-BYT.</p>
+                    <p>Sàng lọc Stroke Mimics, tích hợp toàn diện bảng điểm NIHSS dạng phẳng, phân tích phim CT/MRI và
+                        cá thể hóa y lệnh hạ áp chuẩn hóa theo QĐ 3312/QĐ-BYT.</p>
                 </div>
             </section>
 
-             <!--BREADCRUMB-->
+            <!--BREADCRUMB-->
             <nav aria-label="Breadcrumb" class="breadcrumb-container">
                 <ol class="breadcrumb-list">
-                <li class="breadcrumb-item">
-                    <a href="../../../index.html" class="breadcrumb-link">
-                    <span class="home-icon">🏠</span> Home
-                    </a>
-                </li>
-                
-                <li class="breadcrumb-item"
-                    aria-current="page"> Công cụ</a>
-                </li>
+                    <li class="breadcrumb-item">
+                        <a href="../../../index.html" class="breadcrumb-link">
+                            <span class="home-icon">🏠</span> Home
+                        </a>
+                    </li>
 
-                <li class="breadcrumb-item"
-                    aria-current="page"> Thần kinh</a>
-                </li>
-                
-                <li class="breadcrumb-item active" 
-                    aria-current="page"> Đột quỵ
-                </li>
+                    <li class="breadcrumb-item" aria-current="page"> Công cụ</a>
+                    </li>
+
+                    <li class="breadcrumb-item" aria-current="page"> Thần kinh</a>
+                    </li>
+
+                    <li class="breadcrumb-item active" aria-current="page"> Đột quỵ
+                    </li>
                 </ol>
             </nav>
 
             <div class="workspace-container">
                 <div class="input-side">
-                    
-                    <div class="input-card" style="border: 2px solid var(--primary-color); background-color: rgba(2, 132, 199, 0.05); padding: 1.1rem;">
-                        <label style="color: var(--primary-color); font-weight: 700; margin-bottom: 0.5rem; display: block; font-size: 0.88rem; letter-spacing: 0.03em;">
+
+                    <div class="input-card"
+                        style="border: 2px solid var(--primary-color); background-color: rgba(2, 132, 199, 0.05); padding: 1.1rem;">
+                        <label
+                            style="color: var(--primary-color); font-weight: 700; margin-bottom: 0.5rem; display: block; font-size: 0.88rem; letter-spacing: 0.03em;">
                             TÌNH HUỐNG LÂM SÀNG CẦN ĐÁNH GIÁ:
                         </label>
-                        <select id="clinicalScenario" style="font-size: 0.92rem; font-weight: 600; padding: 0.65rem; background-color: var(--card-bg); color: var(--text-main); border: 1px solid var(--primary-color); cursor: pointer; width: 100%; box-sizing: border-box;">
+                        <select id="clinicalScenario"
+                            style="font-size: 0.92rem; font-weight: 600; padding: 0.65rem; background-color: var(--card-bg); color: var(--text-main); border: 1px solid var(--primary-color); cursor: pointer; width: 100%; box-sizing: border-box;">
                             <option value="triage">1. Cấp cứu: Nghi ngờ đột quỵ (Tìm LVO / Mimic)</option>
                             <option value="tia">2. Phòng khám: Cơn thiếu máu não thoáng qua (TIA)</option>
                             <option value="ich">3. Hồi sức: Đã có CT xác định Xuất huyết não (ICH)</option>
@@ -505,11 +571,14 @@
                     <div class="input-card">
                         <span class="card-zone-badge badge-blue">Thông số chung & Huyết áp</span>
                         <div class="form-row">
-                            <div class="form-group"><label>HA Tâm thu (mmHg):</label><input type="number" id="bpSystolic" value="190"></div>
-                            <div class="form-group"><label>HA Tâm trương (mmHg):</label><input type="number" id="bpDiastolic" value="105"></div>
+                            <div class="form-group"><label>HA Tâm thu (mmHg):</label><input type="number"
+                                    id="bpSystolic" value="190"></div>
+                            <div class="form-group"><label>HA Tâm trương (mmHg):</label><input type="number"
+                                    id="bpDiastolic" value="105"></div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group"><label>Cân nặng (kg):</label><input type="number" id="patientWeight" value="60"></div>
+                            <div class="form-group"><label>Cân nặng (kg):</label><input type="number" id="patientWeight"
+                                    value="60"></div>
                             <div class="form-group">
                                 <label>Giờ khởi phát (Onset):</label>
                                 <select id="onsetTime">
@@ -524,10 +593,15 @@
                     <div id="moduleTriage" class="dynamic-module active">
                         <div class="input-card">
                             <span class="card-zone-badge badge-blue">Sàng lọc Đột quỵ giả & Thang điểm VAN</span>
-                            <div class="checkbox-group"><input type="checkbox" id="mimicGluc"><label for="mimicGluc">Glucose máu &lt; 50 hoặc &gt; 400 mg/dL (Mimic)</label></div>
-                            <div class="checkbox-group"><input type="checkbox" id="vanV"><label for="vanV"><strong>V</strong>ision: Bán manh / Nhìn đôi / Lệch trục nhãn cầu</label></div>
-                            <div class="checkbox-group"><input type="checkbox" id="vanA"><label for="vanA"><strong>A</strong>phasia: Rối loạn ngôn ngữ nặng</label></div>
-                            <div class="checkbox-group"><input type="checkbox" id="vanN"><label for="vanN"><strong>N</strong>eglect: Hội chứng thờ ơ nửa người</label></div>
+                            <div class="checkbox-group"><input type="checkbox" id="mimicGluc"><label
+                                    for="mimicGluc">Glucose máu &lt; 50 hoặc &gt; 400 mg/dL (Mimic)</label></div>
+                            <div class="checkbox-group"><input type="checkbox" id="vanV"><label
+                                    for="vanV"><strong>V</strong>ision: Bán manh / Nhìn đôi / Lệch trục nhãn cầu</label>
+                            </div>
+                            <div class="checkbox-group"><input type="checkbox" id="vanA"><label
+                                    for="vanA"><strong>A</strong>phasia: Rối loạn ngôn ngữ nặng</label></div>
+                            <div class="checkbox-group"><input type="checkbox" id="vanN"><label
+                                    for="vanN"><strong>N</strong>eglect: Hội chứng thờ ơ nửa người</label></div>
                         </div>
 
                         <div class="input-card">
@@ -544,58 +618,120 @@
                         <div class="input-card">
                             <span class="card-zone-badge badge-purple">Thang điểm NIHSS chính thức (Bộ Y tế)</span>
                             <div class="nihss-container">
-                                
+
                                 <div class="nihss-row">
                                     <div class="nihss-label"><span class="nihss-badge">1a</span> Ý thức chung</div>
-                                    <div><select class="nihss-select"><option value="0">0 - Tỉnh táo hoàn toàn</option><option value="1">1 - Kích thích / Ngủ gà</option><option value="2">2 - Lơ mơ (đau mới đáp ứng)</option><option value="3">3 - Hôn mê sâu</option></select></div>
+                                    <div><select class="nihss-select">
+                                            <option value="0">0 - Tỉnh táo hoàn toàn</option>
+                                            <option value="1">1 - Kích thích / Ngủ gà</option>
+                                            <option value="2">2 - Lơ mơ (đau mới đáp ứng)</option>
+                                            <option value="3">3 - Hôn mê sâu</option>
+                                        </select></div>
                                 </div>
                                 <div class="nihss-row">
                                     <div class="nihss-label"><span class="nihss-badge">1b</span> Câu hỏi ý thức</div>
-                                    <div><select class="nihss-select"><option value="0">0 - Trả lời đúng cả 2 câu</option><option value="1">1 - Trả lời đúng 1 câu</option><option value="2">2 - Trả lời sai cả 2 câu / Ú ớ</option></select></div>
+                                    <div><select class="nihss-select">
+                                            <option value="0">0 - Trả lời đúng cả 2 câu</option>
+                                            <option value="1">1 - Trả lời đúng 1 câu</option>
+                                            <option value="2">2 - Trả lời sai cả 2 câu / Ú ớ</option>
+                                        </select></div>
                                 </div>
                                 <div class="nihss-row">
                                     <div class="nihss-label"><span class="nihss-badge">1c</span> Mệnh lệnh ý thức</div>
-                                    <div><select class="nihss-select"><option value="0">0 - Thực hiện đúng cả 2 lệnh</option><option value="1">1 - Thực hiện đúng 1 lệnh</option><option value="2">2 - Không thực hiện đúng lệnh nào</option></select></div>
+                                    <div><select class="nihss-select">
+                                            <option value="0">0 - Thực hiện đúng cả 2 lệnh</option>
+                                            <option value="1">1 - Thực hiện đúng 1 lệnh</option>
+                                            <option value="2">2 - Không thực hiện đúng lệnh nào</option>
+                                        </select></div>
                                 </div>
                                 <div class="nihss-row">
-                                    <div class="nihss-label"><span class="nihss-badge">2</span> Vận nhãn (Nhìn ngang)</div>
-                                    <div><select class="nihss-select"><option value="0">0 - Bình thường</option><option value="1">1 - Liệt liếc mắt một phần</option><option value="2">2 - Liệt liếc hoàn toàn / Mắt lệch bên</option></select></div>
+                                    <div class="nihss-label"><span class="nihss-badge">2</span> Vận nhãn (Nhìn ngang)
+                                    </div>
+                                    <div><select class="nihss-select">
+                                            <option value="0">0 - Bình thường</option>
+                                            <option value="1">1 - Liệt liếc mắt một phần</option>
+                                            <option value="2">2 - Liệt liếc hoàn toàn / Mắt lệch bên</option>
+                                        </select></div>
                                 </div>
                                 <div class="nihss-row">
                                     <div class="nihss-label"><span class="nihss-badge">3</span> Thị trường</div>
-                                    <div><select class="nihss-select"><option value="0">0 - Bình thường</option><option value="1">1 - Bán manh một phần</option><option value="2">2 - Bán manh hoàn toàn</option><option value="3">3 - Mất thị lực hoàn toàn 2 bên</option></select></div>
+                                    <div><select class="nihss-select">
+                                            <option value="0">0 - Bình thường</option>
+                                            <option value="1">1 - Bán manh một phần</option>
+                                            <option value="2">2 - Bán manh hoàn toàn</option>
+                                            <option value="3">3 - Mất thị lực hoàn toàn 2 bên</option>
+                                        </select></div>
                                 </div>
                                 <div class="nihss-row">
                                     <div class="nihss-label"><span class="nihss-badge">4</span> Liệt mặt</div>
-                                    <div><select class="nihss-select"><option value="0">0 - Cơ mặt vận động cân đối</option><option value="1">1 - Liệt mặt nhẹ (mờ rãnh mũi má)</option><option value="2">2 - Liệt mặt một phần (Liệt TW rõ)</option><option value="3">3 - Liệt mặt hoàn toàn</option></select></div>
+                                    <div><select class="nihss-select">
+                                            <option value="0">0 - Cơ mặt vận động cân đối</option>
+                                            <option value="1">1 - Liệt mặt nhẹ (mờ rãnh mũi má)</option>
+                                            <option value="2">2 - Liệt mặt một phần (Liệt TW rõ)</option>
+                                            <option value="3">3 - Liệt mặt hoàn toàn</option>
+                                        </select></div>
                                 </div>
                                 <div class="nihss-row">
                                     <div class="nihss-label"><span class="nihss-badge">5</span> Vận động Cơ Tay</div>
-                                    <div><select class="nihss-select"><option value="0">0 - Giữ tay thẳng 10 giây</option><option value="1">1 - Tay sa sút nhẹ, không chạm giường</option><option value="2">2 - Tay rơi chạm giường trước 10 giây</option><option value="3">3 - Tay rơi ngay / Không chống được trọng lực</option><option value="4">4 - Liệt hoàn toàn (không có vận động)</option></select></div>
+                                    <div><select class="nihss-select">
+                                            <option value="0">0 - Giữ tay thẳng 10 giây</option>
+                                            <option value="1">1 - Tay sa sút nhẹ, không chạm giường</option>
+                                            <option value="2">2 - Tay rơi chạm giường trước 10 giây</option>
+                                            <option value="3">3 - Tay rơi ngay / Không chống được trọng lực</option>
+                                            <option value="4">4 - Liệt hoàn toàn (không có vận động)</option>
+                                        </select></div>
                                 </div>
                                 <div class="nihss-row">
                                     <div class="nihss-label"><span class="nihss-badge">6</span> Vận động Cơ Chân</div>
-                                    <div><select class="nihss-select"><option value="0">0 - Giữ chân thẳng 5 giây</option><option value="1">1 - Chân sa sút nhẹ trước 5 giây</option><option value="2">2 - Chân rơi chạm giường trước 5 giây</option><option value="3">3 - Chân rơi ngay / Không chống được trọng lực</option><option value="4">4 - Liệt hoàn hoàn chân</option></select></div>
+                                    <div><select class="nihss-select">
+                                            <option value="0">0 - Giữ chân thẳng 5 giây</option>
+                                            <option value="1">1 - Chân sa sút nhẹ trước 5 giây</option>
+                                            <option value="2">2 - Chân rơi chạm giường trước 5 giây</option>
+                                            <option value="3">3 - Chân rơi ngay / Không chống được trọng lực</option>
+                                            <option value="4">4 - Liệt hoàn hoàn chân</option>
+                                        </select></div>
                                 </div>
                                 <div class="nihss-row">
                                     <div class="nihss-label"><span class="nihss-badge">7</span> Thất điều chi</div>
-                                    <div><select class="nihss-select"><option value="0">0 - Không có thất điều</option><option value="1">1 - Có thất điều ở 1 chi</option><option value="2">2 - Thất điều ở từ 2 chi trở lên</option></select></div>
+                                    <div><select class="nihss-select">
+                                            <option value="0">0 - Không có thất điều</option>
+                                            <option value="1">1 - Có thất điều ở 1 chi</option>
+                                            <option value="2">2 - Thất điều ở từ 2 chi trở lên</option>
+                                        </select></div>
                                 </div>
                                 <div class="nihss-row">
                                     <div class="nihss-label"><span class="nihss-badge">8</span> Cảm giác</div>
-                                    <div><select class="nihss-select"><option value="0">0 - Bình thường</option><option value="1">1 - Giảm cảm giác nhẹ/vừa một bên</option><option value="2">2 - Mất cảm giác hoàn toàn một bên</option></select></div>
+                                    <div><select class="nihss-select">
+                                            <option value="0">0 - Bình thường</option>
+                                            <option value="1">1 - Giảm cảm giác nhẹ/vừa một bên</option>
+                                            <option value="2">2 - Mất cảm giác hoàn toàn một bên</option>
+                                        </select></div>
                                 </div>
                                 <div class="nihss-row">
                                     <div class="nihss-label"><span class="nihss-badge">9</span> Ngôn ngữ</div>
-                                    <div><select class="nihss-select"><option value="0">0 - Không có rối loạn ngôn ngữ</option><option value="1">1 - Rối loạn nhẹ đến trung bình</option><option value="2">2 - Rối loạn nặng / Mất hẳn ngôn ngữ</option><option value="3">3 - Câm lặng hoàn toàn / Không hiểu lệnh</option></select></div>
+                                    <div><select class="nihss-select">
+                                            <option value="0">0 - Không có rối loạn ngôn ngữ</option>
+                                            <option value="1">1 - Rối loạn nhẹ đến trung bình</option>
+                                            <option value="2">2 - Rối loạn nặng / Mất hẳn ngôn ngữ</option>
+                                            <option value="3">3 - Câm lặng hoàn toàn / Không hiểu lệnh</option>
+                                        </select></div>
                                 </div>
                                 <div class="nihss-row">
                                     <div class="nihss-label"><span class="nihss-badge">10</span> Phát âm</div>
-                                    <div><select class="nihss-select"><option value="0">0 - Phát âm rõ ràng</option><option value="1">1 - Nói ngọng nhẹ đến vừa</option><option value="2">2 - Nói ngọng rất nặng, không hiểu nổi</option></select></div>
+                                    <div><select class="nihss-select">
+                                            <option value="0">0 - Phát âm rõ ràng</option>
+                                            <option value="1">1 - Nói ngọng nhẹ đến vừa</option>
+                                            <option value="2">2 - Nói ngọng rất nặng, không hiểu nổi</option>
+                                        </select></div>
                                 </div>
                                 <div class="nihss-row">
-                                    <div class="nihss-label"><span class="nihss-badge">11</span> Thờ ơ nửa người (Neglect)</div>
-                                    <div><select class="nihss-select"><option value="0">0 - Không có tình trạng thờ ơ</option><option value="1">1 - Thờ ơ một phần ở một kích thích</option><option value="2">2 - Thờ ơ hoàn toàn nửa người</option></select></div>
+                                    <div class="nihss-label"><span class="nihss-badge">11</span> Thờ ơ nửa người
+                                        (Neglect)</div>
+                                    <div><select class="nihss-select">
+                                            <option value="0">0 - Không có tình trạng thờ ơ</option>
+                                            <option value="1">1 - Thờ ơ một phần ở một kích thích</option>
+                                            <option value="2">2 - Thờ ơ hoàn toàn nửa người</option>
+                                        </select></div>
                                 </div>
 
                             </div>
@@ -607,7 +743,10 @@
                             <span class="card-zone-badge badge-purple">Thang điểm ABCD2</span>
                             <div class="form-group">
                                 <label>Tuổi:</label>
-                                <select id="abcdA"><option value="0">&lt; 60 tuổi</option><option value="1">&ge; 60 tuổi</option></select>
+                                <select id="abcdA">
+                                    <option value="0">&lt; 60 tuổi</option>
+                                    <option value="1">&ge; 60 tuổi</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label>Triệu chứng lâm sàng:</label>
@@ -619,11 +758,18 @@
                             </div>
                             <div class="form-group">
                                 <label>Thời gian kéo dài:</label>
-                                <select id="abcdD1"><option value="0">&lt; 10 phút</option><option value="1">10 - 59 phút</option><option value="2">&ge; 60 phút</option></select>
+                                <select id="abcdD1">
+                                    <option value="0">&lt; 10 phút</option>
+                                    <option value="1">10 - 59 phút</option>
+                                    <option value="2">&ge; 60 phút</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label>Tiền sử Đái tháo đường:</label>
-                                <select id="abcdD2"><option value="0">Không</option><option value="1">Có</option></select>
+                                <select id="abcdD2">
+                                    <option value="0">Không</option>
+                                    <option value="1">Có</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -633,23 +779,39 @@
                             <span class="card-zone-badge badge-red">Mô-đun CT-Scan: Xuất huyết não</span>
                             <div class="form-group">
                                 <label>Thể tích khối máu tụ trên CT-Scan (Tính bằng ABC/2):</label>
-                                <select id="ichVol"><option value="0">&lt; 30 mL</option><option value="1">&ge; 30 mL (Khối máu tụ lớn)</option></select>
+                                <select id="ichVol">
+                                    <option value="0">&lt; 30 mL</option>
+                                    <option value="1">&ge; 30 mL (Khối máu tụ lớn)</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label>Tràn máu hệ thống não thất (IVH):</label>
-                                <select id="ichIVH"><option value="0">Không có tràn máu</option><option value="1">Có tràn máu não thất</option></select>
+                                <select id="ichIVH">
+                                    <option value="0">Không có tràn máu</option>
+                                    <option value="1">Có tràn máu não thất</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label>Vị trí tổn thương xuất huyết:</label>
-                                <select id="ichInfra"><option value="0">Trên lều tiểu não (Bán cầu)</option><option value="1">Dưới lều tiểu não (Thân não / Tiểu não)</option></select>
+                                <select id="ichInfra">
+                                    <option value="0">Trên lều tiểu não (Bán cầu)</option>
+                                    <option value="1">Dưới lều tiểu não (Thân não / Tiểu não)</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label>Thang điểm hôn mê Glasgow (GCS) lúc nhập viện:</label>
-                                <select id="ichGCS"><option value="0">GCS từ 13 - 15</option><option value="1">GCS từ 5 - 12</option><option value="2">GCS từ 3 - 4</option></select>
+                                <select id="ichGCS">
+                                    <option value="0">GCS từ 13 - 15</option>
+                                    <option value="1">GCS từ 5 - 12</option>
+                                    <option value="2">GCS từ 3 - 4</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label>Tuổi bệnh nhân:</label>
-                                <select id="ichAge"><option value="0">&lt; 80 tuổi</option><option value="1">&ge; 80 tuổi</option></select>
+                                <select id="ichAge">
+                                    <option value="0">&lt; 80 tuổi</option>
+                                    <option value="1">&ge; 80 tuổi</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -657,8 +819,9 @@
                 </div>
 
                 <div class="output-side">
-                    
-                    <div id="liveScoreCard" class="result-box" style="display:block; border-color: var(--primary-color);">
+
+                    <div id="liveScoreCard" class="result-box"
+                        style="display:block; border-color: var(--primary-color);">
                         <div class="score-display" style="margin-bottom:0; background-color:transparent; padding:0;">
                             <div class="score-text" style="padding-left:0;">
                                 <div class="score-title" id="liveScoreTitle">TỔNG ĐIỂM LÂM SÀNG CỦA HỆ THỐNG</div>
@@ -680,8 +843,10 @@
 
                     <div class="reference-section">
                         <strong>📚 Tài liệu tham khảo y học chứng cứ (EBM Reference):</strong><br>
-                        • <strong>Quyết định 3312/QĐ-BYT (2024):</strong> Thang điểm NIHSS đầy đủ và tiêu chuẩn hình ảnh học ASPECTS &ge; 6 là điều kiện bắt buộc để chỉ định tái tưới máu.<br>
-                        • <strong>AHA/ASA ICH Guideline:</strong> Thể tích khối máu tụ &ge; 30 mL phối hợp tràn máu não thất (IVH) là các yếu tố lõi trong thang điểm ICH Score để tiên lượng tử vong 30 ngày.
+                        • <strong>Quyết định 3312/QĐ-BYT (2024):</strong> Thang điểm NIHSS đầy đủ và tiêu chuẩn hình ảnh
+                        học ASPECTS &ge; 6 là điều kiện bắt buộc để chỉ định tái tưới máu.<br>
+                        • <strong>AHA/ASA ICH Guideline:</strong> Thể tích khối máu tụ &ge; 30 mL phối hợp tràn máu não
+                        thất (IVH) là các yếu tố lõi trong thang điểm ICH Score để tiên lượng tử vong 30 ngày.
                     </div>
                 </div>
             </div>
@@ -725,16 +890,16 @@
                 // TÌNH HUỐNG 1: CẤP CỨU ĐỘT QUỴ CẤP (NIHSS)
                 if (scenario === 'triage') {
                     document.getElementById('liveScoreCard').style.display = 'block';
-                    
+
                     // Duy trì tính tổng điểm NIHSS thời gian thực dựa vào biểu mẫu checklist mới
                     let totalNihss = 0;
                     document.querySelectorAll('.nihss-select').forEach(select => {
                         totalNihss += parseInt(select.value) || 0;
                     });
-                    
+
                     document.getElementById('liveScoreValue').innerText = totalNihss;
                     document.getElementById('liveScoreTitle').innerText = "TỔNG ĐIỂM LÂM SÀNG NIHSS CẤP CỨU";
-                    
+
                     let nihssLevel = "Nhẹ";
                     if (totalNihss >= 5 && totalNihss <= 15) nihssLevel = "Trung bình";
                     else if (totalNihss >= 16 && totalNihss <= 20) nihssLevel = "Nặng";
@@ -773,7 +938,7 @@
                             let totalRtpa = Math.min(90, weight * 0.9);
                             let bolus = totalRtpa * 0.1;
                             let infusion = totalRtpa * 0.9;
-                            
+
                             txHtml = `
                                 <div class="prescription-block" style="border-left-color:var(--success-color);">
                                     <strong>Y LỆNH TIÊU SỢI HUYẾT TĨNH MẠCH (Alteplase / Actilyse 1mg = 1mL):</strong><br>
@@ -790,7 +955,7 @@
                         txHtml += `</div>`;
                     }
                 }
-                
+
                 // TÌNH HUỐNG 2: PHÒNG KHÁM TIA
                 else if (scenario === 'tia') {
                     document.getElementById('liveScoreCard').style.display = 'block';
@@ -799,11 +964,11 @@
                     const durScore = parseInt(document.getElementById('abcdD1').value);
                     const dmScore = parseInt(document.getElementById('abcdD2').value);
                     let bpScore = (sbp >= 140 || dbp >= 90) ? 1 : 0;
-                    
+
                     let totalABCD2 = ageScore + clinScore + durScore + dmScore + bpScore;
                     document.getElementById('liveScoreValue').innerText = totalABCD2;
                     document.getElementById('liveScoreTitle').innerText = "TỔNG ĐIỂM NGUY CƠ TIẾN TRIỂN ABCD2";
-                    
+
                     let riskStr = "Nguy cơ Thấp", adviceStr = "Quản lý nguy cơ ngoại trú. Chỉ định dùng kháng tiểu cầu đơn (Aspirin).";
                     if (totalABCD2 >= 4 && totalABCD2 <= 5) {
                         riskStr = "Nguy cơ Trung bình";
@@ -816,7 +981,7 @@
                     bpHtml = `<div class="prescription-block">Đích huyết áp ngoại trú dài hạn cần duy trì ổn định &lt; 130/80 mmHg.</div>`;
                     txHtml = `<div class="prescription-block" style="border-left-color:var(--primary-color);"><strong>Y lệnh lâm sàng:</strong> ${adviceStr}</div>`;
                 }
-                
+
                 // TÌNH HUỐNG 3: XUẤT HUYẾT NÃO (ICH)
                 else if (scenario === 'ich') {
                     document.getElementById('liveScoreCard').style.display = 'block';
@@ -825,11 +990,11 @@
                     const ivhS = parseInt(document.getElementById('ichIVH').value);
                     const infraS = parseInt(document.getElementById('ichInfra').value);
                     const ageS = parseInt(document.getElementById('ichAge').value);
-                    
+
                     let totalICHScore = gcsS + volS + ivhS + infraS + ageS;
                     document.getElementById('liveScoreValue').innerText = totalICHScore;
                     document.getElementById('liveScoreTitle').innerText = "TỔNG ĐIỂM TIÊN LƯỢNG ICH SCORE";
-                    
+
                     const mortality = { 0: "0%", 1: "13%", 2: "26%", 3: "72%", 4: "97%", 5: "100%", 6: "100%" };
                     document.getElementById('liveScoreInterp').innerText = `Tỷ lệ tử vong dự đoán trong vòng 30 ngày: [${mortality[totalICHScore] || "100%"}].`;
 
@@ -876,7 +1041,8 @@
                     }
                 });
             }
-            });
+        });
     </script>
 </body>
+
 </html>

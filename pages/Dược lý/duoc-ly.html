@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi" data-theme="light">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +9,10 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
   <link rel="stylesheet" href="../../css/reset.css">
   <link rel="stylesheet" href="../../css/main.css">
   <link rel="stylesheet" href="../../css/components/header.css">
@@ -18,122 +21,260 @@
 
   <script src="../../pages/header.js" defer></script>
   <style>
-  /* ============================================================
+    /* ============================================================
      BREADCRUMB SYSTEM
      ============================================================ */
-  .breadcrumb-container {
-    padding: 0.5rem 0 1.25rem 0;
-  }
-  .breadcrumb-list {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-size: var(--text-sm);
-  }
-  .breadcrumb-item {
-    display: flex;
-    align-items: center;
-    color: var(--color-text-muted);
-  }
-  .breadcrumb-link {
-    color: var(--color-text-muted);
-    transition: color var(--tr);
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-  }
-  .breadcrumb-link:hover {
-    color: var(--color-primary);
-    text-decoration: underline;
-  }
-  .breadcrumb-item:not(:last-child)::after {
-    content: ">";
-    margin-left: 0.5rem;
-    color: var(--color-border);
-    font-size: 0.8rem;
-    pointer-events: none;
-  }
-  .breadcrumb-item.active {
-    color: #008080; /* Màu đặc trưng y khoa lâm sàng */
-    font-weight: 600;
-  }
+    .breadcrumb-container {
+      padding: 0.5rem 0 1.25rem 0;
+    }
 
-  /* ============================================================
+    .breadcrumb-list {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: var(--text-sm);
+    }
+
+    .breadcrumb-item {
+      display: flex;
+      align-items: center;
+      color: var(--color-text-muted);
+    }
+
+    .breadcrumb-link {
+      color: var(--color-text-muted);
+      transition: color var(--tr);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .breadcrumb-link:hover {
+      color: var(--color-primary);
+      text-decoration: underline;
+    }
+
+    .breadcrumb-item:not(:last-child)::after {
+      content: ">";
+      margin-left: 0.5rem;
+      color: var(--color-border);
+      font-size: 0.8rem;
+      pointer-events: none;
+    }
+
+    .breadcrumb-item.active {
+      color: #008080;
+      /* Màu đặc trưng y khoa lâm sàng */
+      font-weight: 600;
+    }
+
+    /* ============================================================
      SPECIALTY PHARMACOLOGY GRID
      ============================================================ */
-  .section-divider {
-    margin: 2.5rem 0 1.5rem 0;
-    border: 0;
-    border-top: 1px dashed var(--color-border);
-  }
-  
-  .specialty-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
-    gap: 1.25rem;
-  }
+    .section-divider {
+      margin: 2.5rem 0 1.5rem 0;
+      border: 0;
+      border-top: 1px dashed var(--color-border);
+    }
 
-  .specialty-card {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    padding: 1.25rem;
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-    transition: transform var(--tr), box-shadow var(--tr), border-color var(--tr);
-    text-decoration: none;
-    color: inherit;
-  }
+    .specialty-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+      gap: 1.25rem;
+    }
 
-  .specialty-card:hover {
-    transform: translateY(-2px);
-    border-color: var(--color-primary);
-    box-shadow: var(--shadow-md);
-  }
+    .specialty-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      transition: transform var(--tr), box-shadow var(--tr), border-color var(--tr);
+      text-decoration: none;
+      color: inherit;
+    }
 
-  .specialty-icon {
-    width: 44px;
-    height: 44px;
-    background: var(--color-surface-offset);
-    border-radius: var(--radius-sm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.3rem;
-    flex-shrink: 0;
-    border: 1px solid var(--color-divider);
-  }
+    .specialty-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--color-primary);
+      box-shadow: var(--shadow-md);
+    }
 
-  .specialty-info {
-    flex: 1;
-    min-width: 0;
-  }
+    .specialty-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--color-surface-offset);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      border: 1px solid var(--color-divider);
+    }
 
-  .specialty-info h3 {
-    font-size: var(--text-base);
-    font-weight: 700;
-    margin-bottom: 0.25rem;
-    color: var(--color-text);
-  }
+    .specialty-info {
+      flex: 1;
+      min-width: 0;
+    }
 
-  .specialty-info p {
-    font-size: var(--text-xs);
-    color: var(--color-text-muted);
-    line-height: 1.5;
-  }
-  
-  .reference-note {
-    font-size: var(--text-xs);
-    color: var(--color-text-faint);
-    margin-top: 2rem;
-    font-style: italic;
-  }
-</style>
+    .specialty-info h3 {
+      font-size: var(--text-base);
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: var(--color-text);
+    }
+
+    .specialty-info p {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+
+    .reference-note {
+      font-size: var(--text-xs);
+      color: var(--color-text-faint);
+      margin-top: 2rem;
+      font-style: italic;
+    }
+
+    /* ============================================================
+     LAYOUT PHÂN NHÓM CHUYỂN ĐỔI LINH HOẠT (ACCORDION TABS)
+     Đồng bộ hoàn toàn với hệ thống Design Tokens CliniPortal
+     ============================================================ */
+
+    /* Lưới chứa các Nhóm xếp nằm ngang */
+    .groups-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    /* Khung thẻ của từng NHÓM */
+    .group-container {
+      flex: 1 1 calc(33.333% - 1.25rem);
+      min-width: 300px;
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--tr);
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Khi nhóm được kích hoạt: Bung rộng 100% hàng để hiện lưới card con */
+    .group-container.active {
+      flex: 1 1 100%;
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Thanh tiêu đề Nhóm (Vùng click) */
+    .group-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      padding: 0.25rem 0;
+    }
+
+    .group-heading h3 {
+      font-size: var(--text-md);
+      font-weight: 700;
+      margin: 0;
+      color: var(--color-text);
+    }
+
+    /* Mũi tên chỉ báo trạng thái đóng/mở */
+    .toggle-indicator {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform var(--tr);
+      color: var(--color-text-muted);
+    }
+
+    .toggle-indicator::after {
+      content: '▼';
+      font-size: 0.75rem;
+    }
+
+    .group-container.active .toggle-indicator {
+      transform: rotate(180deg);
+      color: var(--color-primary);
+    }
+
+    /* Kỹ thuật CSS Grid fr giúp tạo hiệu ứng trượt mở mượt mà không bị khựng */
+    .category-grid-wrapper {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows var(--tr), margin var(--tr), padding var(--tr);
+    }
+
+    .group-container.active .category-grid-wrapper {
+      grid-template-rows: 1fr;
+      margin-top: 1.25rem;
+      padding-top: 1.25rem;
+      border-top: 1px dashed var(--color-divider);
+    }
+
+    .category-grid {
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    /* Lưới hiển thị các công cụ con bên trong khi mở rộng */
+    @media (min-width: 768px) {
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* Điểm nhấn đường viền nhận diện màu sắc theo từng nhóm chuyên khoa */
+    .group-container.g-red.active {
+      border-left: 4px solid var(--color-rose);
+    }
+
+    .group-container.g-green.active {
+      border-left: 4px solid var(--color-success);
+    }
+
+    .group-container.g-blue.active {
+      border-left: 4px solid var(--color-primary);
+    }
+
+    .group-container.g-purple.active {
+      border-left: 4px solid #a855f7;
+    }
+
+    .group-container.g-amber.active {
+      border-left: 4px solid var(--color-warning);
+    }
+
+    .group-container.g-teal.active {
+      border-left: 4px solid #14b8a6;
+    }
+  </style>
 </head>
 
 <body>
@@ -141,87 +282,89 @@
   <div id="header-placeholder" data-header-path="../header.html"></div>
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
   <!-- ===================== APP CONTAINER ===================== -->
-    <div class="app-container">
+  <div class="app-container">
 
-      <!-- SIDEBAR -->
-      <aside class="app-sidebar" id="appSidebar">
-        <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
-          <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
-        </button>
-        <nav class="sidebar-nav" aria-label="Điều hướng chính">
-          <ul class="nav-list" role="list">
-            <li>
-              <a href="../../index.html" class="nav-item" title="Trang chủ">
-                <span class="nav-icon">🏠</span>
-                <span class="nav-text">Trang chủ</span>
-              </a>
-            </li>
-            <li>
-              <a href="../Công cụ/cong-cu.html" class="nav-item" title="Công cụ lâm sàng">
-                <span class="nav-icon">⚙️</span>
-                <span class="nav-text">Công cụ lâm sàng</span>
-              </a>
-            </li>
-            <li>
-              <a href="../Phác đồ/phac-do.html" class="nav-item" title="Phác đồ Y khoa">
-                <span class="nav-icon">📄</span>
-                <span class="nav-text">Phác đồ Y khoa</span>
-              </a>
-            </li>
-            <li>
-              <a href="../Dược lý/duoc-ly.html" class="nav-item active" aria-current="page" title="Dược lý">
-                <span class="nav-icon">💊</span>
-                <span class="nav-text">Dược lý lâm sàng</span>
-              </a>
-            </li>
-            <li>
-              <a href="../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận triệu chứng">
-                <span class="nav-icon">🤒</span>
-                <span class="nav-text">Tiếp cận lâm sàng</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </aside>
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Công cụ/cong-cu.html" class="nav-item" title="Công cụ lâm sàng">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+              <span class="nav-icon">📄</span>
+              <span class="nav-text">Y học chứng cứ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Dược lý/duoc-ly.html" class="nav-item active" aria-current="page" title="Dược lý">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận triệu chứng">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
 
-      <!-- MAIN CONTENT -->
-     <div class="main-wrapper" id="mainContent">
-      
+    <!-- MAIN CONTENT -->
+    <div class="main-wrapper" id="mainContent">
+
       <!--BREADCRUMB-->
-            <nav aria-label="Breadcrumb" class="breadcrumb-container">
-                <ol class="breadcrumb-list">
-                <li class="breadcrumb-item">
-                    <a href="../../index.html" class="breadcrumb-link">
-                    <span class="home-icon">🏠</span> Home
-                    </a>
-                </li>
-                
-                <li class="breadcrumb-item active"
-                    aria-current="page"> Dược lý</a>
-                </li>
-                </ol>
-            </nav>
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../index.html" class="breadcrumb-link">
+              <span class="home-icon">🏠</span> Home
+            </a>
+          </li>
+
+          <li class="breadcrumb-item active" aria-current="page"> Dược lý</a>
+          </li>
+        </ol>
+      </nav>
 
       <section class="hero-dashboard" aria-labelledby="hero-title">
         <div class="hero-intro">
           <h1 id="hero-title">DƯỢC LÝ LÂM SÀNG</h1>
-          <p>Hệ thống hóa nguyên lý dược động học, dược lực học và tối ưu hóa liều lượng thuốc cá thể hóa. Hướng dẫn sử dụng thuốc an toàn, tra cứu tương tác lâm sàng nghiêm ngặt dựa trên bằng chứng.</p>
+          <p>Hệ thống hóa nguyên lý dược động học, dược lực học và tối ưu hóa liều lượng thuốc cá thể hóa. Hướng dẫn sử
+            dụng thuốc an toàn, tra cứu tương tác lâm sàng nghiêm ngặt dựa trên bằng chứng.</p>
         </div>
       </section>
 
       <main class="main-content-grid">
         <!--SECTION 1: DƯỢC LÝ HỌC THEO CHUYÊN KHOA-->
         <section aria-labelledby="specialty-pharma-heading">
-          <h2 id="specialty-pharma-heading" class="section-heading">Dược lý học Chuyên khoa</h2>
+          <h2 id="specialty-pharma-heading" class="section-heading">Tra cứu Tương tác thuốc theo Chuyên khoa</h2>
           <div class="specialty-grid">
-            
+
             <a href="Chuyên khoa/DL_Timmach.html" class="specialty-card">
               <div class="specialty-icon">🫀</div>
               <div class="specialty-info">
                 <h3>Dược lý Tim mạch</h3>
-                <p>Kháng kết tập tiểu cầu (DAPT), thuốc kháng đông đường uống mới (DOACs), hệ RAASi, thuốc hạ lipid máu, và quản lý các thuốc vận mạch/tăng co bóp cơ tim trong suy tim cấp.</p>
+                <p>Kháng kết tập tiểu cầu (DAPT), thuốc kháng đông đường uống mới (DOACs), hệ RAASi, thuốc hạ lipid máu,
+                  và quản lý các thuốc vận mạch/tăng co bóp cơ tim trong suy tim cấp.</p>
               </div>
             </a>
 
@@ -229,7 +372,8 @@
               <div class="specialty-icon">🫁</div>
               <div class="specialty-info">
                 <h3>Dược lý Hô hấp</h3>
-                <p>Chiến lược tối ưu hóa ICS/LABA/LAMA trong Hen/COPD, dược lý thuốc giãn phế quản đường tĩnh mạch và điều trị tăng áp động mạch phổi.</p>
+                <p>Chiến lược tối ưu hóa ICS/LABA/LAMA trong Hen/COPD, dược lý thuốc giãn phế quản đường tĩnh mạch và
+                  điều trị tăng áp động mạch phổi.</p>
               </div>
             </a>
 
@@ -237,110 +381,254 @@
               <div class="specialty-icon">🩸</div>
               <div class="specialty-info">
                 <h3>Dược lý Nội tiết & ĐTĐ</h3>
-                <p>Phác đồ Insulin cá thể hóa tại ICU, tối ưu hóa phối hợp nhóm SGLT2i, GLP-1 RA dựa trên lợi ích tim mạch - thận và quản lý cơn bão giáp.</p>
+                <p>Phác đồ Insulin cá thể hóa tại ICU, tối ưu hóa phối hợp nhóm SGLT2i, GLP-1 RA dựa trên lợi ích tim
+                  mạch - thận và quản lý cơn bão giáp.</p>
               </div>
             </a>
 
           </div>
         </section>
 
-        <hr class="section-divider"> 
+        <hr class="section-divider">
 
-        <!--SECTION 2: CÔNG CỤ DƯỢC LÝ LÂM SÀNG -->
-        <section aria-labelledby="general-pharma-heading">
-          <h2 id="general-pharma-heading" class="section-heading">Công cụ Dược lý Lâm sàng</h2>
-          <div class="category-grid">
-            
-            <div class="tool-card card-blue">
-              <div class="card-top">
-                <div class="tool-icon">🧪</div>
-                <span class="tool-status active">Sẵn sàng</span>
+        <!--SECTION 2: DƯỢC LÝ THEO TRIỆU CHỨNG -->
+        <section aria-labelledby="symptom-pharma-heading">
+          <h2 id="symptom-pharma-heading" class="section-heading">Dược lý theo triệu chứng</h2>
+          <div class="groups-wrapper">
+
+            <!-- TIM MẠCH -->
+            <div class="group-container g-red">
+              <div class="group-heading">
+                <h3><span class="g-icon">🫀</span> Tim mạch &amp; Huyết động</h3>
+                <span class="toggle-indicator"></span>
               </div>
-              <div class="tool-content">
-                <h3>Tối ưu hóa PK/PD Kháng sinh</h3>
-                <p>Chiến lược tối ưu hóa liều kháng sinh phụ thuộc thời gian ($T > \text{MIC}$) hoặc phụ thuộc nồng độ ($C_{\max}/\text{MIC}$). Hướng dẫn truyền kéo dài Beta-lactam và cá thể hóa liều Aminoglycoside/Vancomycin.</p>
-              </div>
-              <div class="tool-footer">
-                <span class="tool-category">PK/PD MODEL</span>
-                <a href="pk-pd-khang-sinh.html">Vào ứng dụng</a>
+              <div class="category-grid-wrapper">
+                <div class="category-grid">
+
+                  <div class="tool-card card-purple">
+                    <div class="card-top">
+                      <div class="tool-icon">🫀</div>
+                      <span class="tool-status active">Sẵn sàng</span>
+                    </div>
+                    <div class="tool-content">
+                      <h3>Đau ngực cấp</h3>
+                      <p>Tổng hợp hướng dẫn sử dụng thuốc điều trị đau ngực cấp từ các hội đồng chuyên môn.</p>
+                    </div>
+                    <div class="tool-footer">
+                      <span class="tool-category">Tim mạch</span>
+                      <a href="Chuyên khoa/DL_Timmach.html">Vào ứng dụng</a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div class="tool-card card-teal">
-              <div class="card-top">
-                <div class="tool-icon">💧</div>
-                <span class="tool-status active">Sẵn sàng</span>
+            <!-- HÔ HẤP -->
+            <div class="group-container g-blue">
+              <div class="group-heading">
+                <h3><span class="g-icon">🫁</span> Hô hấp</h3>
+                <span class="toggle-indicator"></span>
               </div>
-              <div class="tool-content">
-                <h3>Hiệu chỉnh liều theo Suy thận</h3>
-                <p>Bảng tra cứu và công cụ hiệu chỉnh liều lượng, khoảng cách đưa thuốc dựa trên CrCl/eGFR đối với các nhóm thuốc có khoảng điều trị hẹp hoặc độc tính cao trên thận.</p>
-              </div>
-              <div class="tool-footer">
-                <span class="tool-category">RENAL DOSING</span>
-                <a href="hieu-chinh-suy-than.html">Vào ứng dụng</a>
+              <div class="category-grid-wrapper">
+                <div class="category-grid">
+
+                  <div class="tool-card card-blue">
+                    <div class="card-top">
+                      <div class="tool-icon">🫁</div>
+                      <span class="tool-status active">Hoạt động</span>
+                    </div>
+                    <div class="tool-content">
+                      <h3>Ho khan/Ho có đờm cấp tính</h3>
+                      <p>Tổng hợp hướng dẫn điều trị ho khan/ho có đờm cấp tính từ các hội đồng chuyên môn.</p>
+                    </div>
+                    <div class="tool-footer">
+                      <span class="tool-category">Hô hấp</span>
+                      <a href="Triệu chứng/DL_Ho.html">Vào ứng dụng</a>
+                    </div>
+                  </div>
+
+                  <div class="tool-card card-blue">
+                    <div class="card-top">
+                      <div class="tool-icon">🫁</div>
+                      <span class="tool-status active">Hoạt động</span>
+                    </div>
+                    <div class="tool-content">
+                      <h3>Khó thở cấp</h3>
+                      <p>Tổng hợp hướng dẫn điều trị khó thở cấp tính từ các hội đồng chuyên môn.</p>
+                    </div>
+                    <div class="tool-footer">
+                      <span class="tool-category">Hô hấp</span>
+                      <a href="Chuyên khoa/DL_Hohap.html">Vào ứng dụng</a>
+                    </div>
+                  </div>
+
+                </div>
               </div>
             </div>
 
-            <div class="tool-card card-rose">
-              <div class="card-top">
-                <div class="tool-icon">⚠️</div>
-                <span class="tool-status active">Sẵn sàng</span>
+            <!-- TIÊU HÓA & GAN MẬT -->
+            <div class="group-container g-green">
+              <div class="group-heading">
+                <h3><span class="g-icon">🥗</span> Tiêu hóa &amp; Gan mật</h3>
+                <span class="toggle-indicator"></span>
               </div>
-              <div class="tool-content">
-                <h3>Tương tác & Độc tính Thuốc</h3>
-                <p>Nhận diện và xử trí các tương tác thuốc bất lợi nghiêm trọng tại phòng cấp cứu và ICU: Hội chứng Serotonin, kéo dài khoảng QT nguy cơ gây xoắn đỉnh, và tương tác đa thuốc.</p>
-              </div>
-              <div class="tool-footer">
-                <span class="tool-category">DRUG INTERACTIONS</span>
-                <a href="tuong-tac-thuoc.html">Vào ứng dụng</a>
+              <div class="category-grid-wrapper">
+                <div class="category-grid">
+
+                  <div class="tool-card card-green">
+                    <div class="card-top">
+                      <div class="tool-icon">🍹</div>
+                      <span class="tool-status active">Hoạt động</span>
+                    </div>
+                    <div class="tool-content">
+                      <h3>Đau bụng cấp</h3>
+                      <p>Tổng hợp hướng dẫn điều trị đau bụng cấp từ các hội đồng chuyên môn.</p>
+                    </div>
+                    <div class="tool-footer">
+                      <span class="tool-category">Tiêu hóa</span>
+                      <a href="Triệu chứng/DL_Daubungcap.html">Vào ứng dụng</a>
+                    </div>
+                  </div>
+
+                  <div class="tool-card card-green">
+                    <div class="card-top">
+                      <div class="tool-icon">🍹</div>
+                      <span class="tool-status active">Hoạt động</span>
+                    </div>
+                    <div class="tool-content">
+                      <h3>Tiêu chảy cấp</h3>
+                      <p>Tổng hợp hướng dẫn điều trị tiêu chảy cấp từ các hội đồng chuyên môn.</p>
+                    </div>
+                    <div class="tool-footer">
+                      <span class="tool-category">Tiêu hóa</span>
+                      <a href="Chuyên khoa/DL_Tiêuhoá.html">Vào ứng dụng</a>
+                    </div>
+                  </div>
+
+                  <div class="tool-card card-green">
+                    <div class="card-top">
+                      <div class="tool-icon">🍹</div>
+                      <span class="tool-status active">Hoạt động</span>
+                    </div>
+                    <div class="tool-content">
+                      <h3>Táo bón</h3>
+                      <p>Tổng hợp hướng dẫn điều trị táo bón từ các hội đồng chuyên môn.</p>
+                    </div>
+                    <div class="tool-footer">
+                      <span class="tool-category">Tiêu hóa</span>
+                      <a href="Chuyên khoa/DL_Tiêuhoá.html">Vào ứng dụng</a>
+                    </div>
+                  </div>
+
+                  <div class="tool-card card-green">
+                    <div class="card-top">
+                      <div class="tool-icon">🍹</div>
+                      <span class="tool-status active">Hoạt động</span>
+                    </div>
+                    <div class="tool-content">
+                      <h3>Nôn ói cấp</h3>
+                      <p>Tổng hợp hướng dẫn điều trị nôn ói cấp từ các hội đồng chuyên môn.</p>
+                    </div>
+                    <div class="tool-footer">
+                      <span class="tool-category">Tiêu hóa</span>
+                      <a href="Triệu chứng/DL_Nonoi.html">Vào ứng dụng</a>
+                    </div>
+                  </div>
+
+                </div>
               </div>
             </div>
 
+            <!--TOÀN THÂN & NHIỄM TRÙNG-->
+            <div class="group-container g-yellow">
+              <div class="group-heading">
+                <h3><span class="g-icon">💊</span> Toàn thân & Nhiễm trùng</h3>
+                <span class="toggle-indicator"></span>
+              </div>
+              <div class="category-grid-wrapper">
+                <div class="category-grid">
+
+                  <div class="tool-card card-blue">
+                    <div class="card-top">
+                      <div class="tool-icon">💊</div>
+                      <span class="tool-status active">Hoạt động</span>
+                    </div>
+                    <div class="tool-content">
+                      <h3>Sốt ở người lớn</h3>
+                      <p>Tổng hợp hướng dẫn điều trị sốt ở người lớn từ các hội đồng chuyên môn.</p>
+                    </div>
+                    <div class="tool-footer">
+                      <span class="tool-category">Toàn thân & Nhiễm trùng</span>
+                      <a href="Chuyên khoa/DL_Ttoan_than.html">Vào ứng dụng</a>
+                    </div>
+                  </div>
+
+                  <div class="tool-card card-blue">
+                    <div class="card-top">
+                      <div class="tool-icon">💊</div>
+                      <span class="tool-status active">Hoạt động</span>
+                    </div>
+                    <div class="tool-content">
+                      <h3>Đau do ung thư</h3>
+                      <p>Tổng hợp hướng dẫn điều trị đau do ung thư từ các hội đồng chuyên môn.</p>
+                    </div>
+                    <div class="tool-footer">
+                      <span class="tool-category">Toàn thân & Nhiễm trùng</span>
+                      <a href="Chuyên khoa/DL_Ttoan_than.html">Vào ứng dụng</a>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
           </div>
-        </section>
-
-      </main>
     </div>
+    </section>
+
+    </main>
   </div>
+  </div>
+
   <footer class="global-footer">
     <div class="footer-copyright">
-      <p>CliniPortal &copy; 2026 · Công cụ lâm sàng · Chỉ mang tính hỗ trợ tham khảo, không thay thế phán xét lâm sàng của bác sĩ y khoa.</p>
+      <p>CliniPortal &copy; 2026 · Công cụ lâm sàng · Chỉ mang tính hỗ trợ tham khảo, không thay thế phán xét lâm sàng
+        của bác sĩ y khoa.</p>
     </div>
   </footer>
 
   <!--SCRIPT-->
   <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // --- Tự động dựng cấu trúc Breadcrumb dựa theo cấu trúc URL thực tế ---
-    (function initDynamicBreadcrumb() {
-      const container = document.getElementById('breadcrumb-auto');
-      if (!container) return;
+    document.addEventListener("DOMContentLoaded", function () {
+      // --- Tự động dựng cấu trúc Breadcrumb dựa theo cấu trúc URL thực tế ---
+      (function initDynamicBreadcrumb() {
+        const container = document.getElementById('breadcrumb-auto');
+        if (!container) return;
 
-      // Bản đồ định nghĩa từ khóa danh mục y khoa hiển thị đẹp mắt
-      const dictionary = {
-        "duoc-ly.html": "Dược lý lâm sàng",
-        "duoc-ly": "Dược lý lâm sàng",
-        "chuyen-khoa": "Chuyên khoa",
-        "tim-mach.html": "Dược lý Tim mạch",
-        "pk-pd-khang-sinh.html": "Tối ưu hóa PK/PD Kháng sinh",
-        "hieu-chinh-suy-than.html": "Hiệu chỉnh liều theo Suy thận",
-        "tuong-tac-thuoc.html": "Tra cứu Tương tác & Độc tính"
-      };
+        // Bản đồ định nghĩa từ khóa danh mục y khoa hiển thị đẹp mắt
+        const dictionary = {
+          "duoc-ly.html": "Dược lý lâm sàng",
+          "duoc-ly": "Dược lý lâm sàng",
+          "chuyen-khoa": "Chuyên khoa",
+          "tim-mach.html": "Dược lý Tim mạch",
+          "pk-pd-khang-sinh.html": "Tối ưu hóa PK/PD Kháng sinh",
+          "hieu-chinh-suy-than.html": "Hiệu chỉnh liều theo Suy thận",
+          "tuong-tac-thuoc.html": "Tra cứu Tương tác & Độc tính"
+        };
 
-      function parseLabel(segment) {
-        const cleanSegment = segment.toLowerCase();
-        if (dictionary[cleanSegment]) return dictionary[cleanSegment];
-        
-        // Cơ chế dự phòng fallback khi chưa khai báo từ điển: dấu gạch nối -> khoảng trắng
-        return segment.replace('.html', '')
-                      .split('-')
-                      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-                      .join(' ');
-      }
+        function parseLabel(segment) {
+          const cleanSegment = segment.toLowerCase();
+          if (dictionary[cleanSegment]) return dictionary[cleanSegment];
 
-      const pathSegments = window.location.pathname.split('/').filter(s => s !== '' && s !== 'pages');
-      
-      let htmlContent = `
+          // Cơ chế dự phòng fallback khi chưa khai báo từ điển: dấu gạch nối -> khoảng trắng
+          return segment.replace('.html', '')
+            .split('-')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+        }
+
+        const pathSegments = window.location.pathname.split('/').filter(s => s !== '' && s !== 'pages');
+
+        let htmlContent = `
         <nav aria-label="Breadcrumb" class="breadcrumb-container">
           <ol class="breadcrumb-list">
             <li class="breadcrumb-item">
@@ -348,32 +636,42 @@
             </li>
       `;
 
-      let routeTracker = '/pages';
+        let routeTracker = '/pages';
 
-      pathSegments.forEach((segment, index) => {
-        // Bỏ qua các định danh tệp tin gốc lặp lại không đáng có trên URL nếu có
-        if(segment === "index.html" || segment === "") return;
-        
-        routeTracker += '/' + segment;
-        const isCurrentPage = index === pathSegments.length - 1;
-        const displayName = parseLabel(segment);
+        pathSegments.forEach((segment, index) => {
+          // Bỏ qua các định danh tệp tin gốc lặp lại không đáng có trên URL nếu có
+          if (segment === "index.html" || segment === "") return;
 
-        if (isCurrentPage) {
-          htmlContent += `<li class="breadcrumb-item active" aria-current="page">${displayName}</li>`;
-        } else {
-          htmlContent += `
+          routeTracker += '/' + segment;
+          const isCurrentPage = index === pathSegments.length - 1;
+          const displayName = parseLabel(segment);
+
+          if (isCurrentPage) {
+            htmlContent += `<li class="breadcrumb-item active" aria-current="page">${displayName}</li>`;
+          } else {
+            htmlContent += `
             <li class="breadcrumb-item">
               <a href="${routeTracker}" class="breadcrumb-link">${displayName}</a>
             </li>
           `;
-        }
-      });
+          }
+        });
 
-      htmlContent += `</ol></nav>`;
-      container.innerHTML = htmlContent;
-    })();
-  });
-</script>
+        htmlContent += `</ol></nav>`;
+        container.innerHTML = htmlContent;
+      })();
+
+      // --- Xử lý Accordion cho phần Dược lý theo triệu chứng ---
+      const groupHeadings = document.querySelectorAll('.group-heading');
+      groupHeadings.forEach(heading => {
+        heading.addEventListener('click', () => {
+          const container = heading.closest('.group-container');
+          container.classList.toggle('active');
+        });
+      });
+    });
+  </script>
 
 </body>
+
 </html>

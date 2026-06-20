@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="vi" data-theme="light">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="CliniPortal – Hệ thống hỗ trợ quyết định lâm sàng dành cho bác sĩ nội khoa tại Việt Nam" />
+  <meta name="description"
+    content="CliniPortal – Hệ thống hỗ trợ quyết định lâm sàng dành cho bác sĩ nội khoa tại Việt Nam" />
   <title>CliniPortal – Hỗ trợ Lâm sàng</title>
 
   <!-- Preconnect fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
 
   <link rel="stylesheet" href="../../../css/reset.css">
   <link rel="stylesheet" href="../../../css/main.css">
@@ -18,241 +22,308 @@
   <link rel="stylesheet" href="../../../css/components/footer.css">
 
   <script src="../../../pages/header.js"></script>
-<style>
-  /* ============================================================
+  <style>
+    /* ============================================================
      PAGE-SPECIFIC STYLES — SL_Nhiem-khuan
      Dùng đúng design tokens từ main.css
   ============================================================ */
 
-  /* Layout chính: input bên trái, kết quả bên phải */
-  .assessment-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-top: 1rem;
-  }
-  .input-column {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-  }
-  .results-sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-  }
-
-  /* Panel card */
-  .panel {
-    background-color: var(--color-surface);        /* fix: --card-bg */
-    border: 1px solid var(--color-divider);        /* fix: --border-color */
-    border-radius: var(--radius-md);
-    padding: 1.5rem;
-    box-shadow: var(--shadow-sm);
-    transition: background-color var(--tr);        /* fix: --transition */
-  }
-  .panel-title {
-    font-size: var(--text-md);
-    font-weight: 700;
-    color: var(--color-primary);                   /* fix: --primary-color */
-    margin-bottom: 1.25rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--color-divider); /* fix: --border-color */
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  /* Form grids */
-  .form-grid-2 {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  .form-grid-3 {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  /* Input groups */
-  .input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-  .input-group label {
-    font-size: var(--text-sm);
-    font-weight: 600;
-    color: var(--color-text);                      /* fix: --text-main */
-  }
-  .input-subtext {
-    font-size: var(--text-xs);
-    color: var(--color-text-muted);                /* fix: --text-muted */
-    margin-top: -0.2rem;
-  }
-
-  /* Inputs & Selects */
-  input[type="number"],
-  select {
-    width: 100%;
-    padding: 0.6rem 0.75rem;
-    border: 1px solid var(--color-border);         /* fix: --border-color */
-    border-radius: var(--radius-sm);
-    background-color: var(--color-surface-offset); /* fix: --bg-light */
-    color: var(--color-text);                      /* fix: --text-main */
-    font-family: var(--font-body);
-    font-size: var(--text-sm);
-    transition: border-color var(--tr), box-shadow var(--tr); /* fix: --transition */
-    appearance: none;
-    -webkit-appearance: none;
-  }
-  input[type="number"]:focus,
-  select:focus {
-    outline: none;
-    border-color: var(--color-primary);            /* fix: --primary-color */
-    box-shadow: 0 0 0 3px var(--color-primary-hl);
-  }
-
-  /* Checkboxes */
-  .checkbox-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    margin-top: 0.5rem;
-  }
-  .checkbox-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.5rem;
-    cursor: pointer;
-    font-size: var(--text-sm);
-    color: var(--color-text);
-    line-height: 1.5;
-  }
-  .checkbox-item input[type="checkbox"] {
-    margin-top: 0.2rem;
-    width: 16px;
-    height: 16px;
-    flex-shrink: 0;
-    accent-color: var(--color-primary);            /* fix: --primary-color */
-  }
-
-  /* Sticky result card */
-  .sticky-card {
-    position: static;
-  }
-
-  /* Score rows */
-  .score-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.75rem 0;
-    border-bottom: 1px dashed var(--color-divider); /* fix: --border-color */
-  }
-  .score-row:last-of-type {
-    border-bottom: none;
-  }
-  .score-lbl {
-    font-weight: 600;
-    font-size: var(--text-sm);
-    color: var(--color-text);
-  }
-
-  /* Score badges — dùng màu hardcode để đảm bảo tương phản cả light/dark */
-  .score-badge {
-    font-weight: 700;
-    font-size: var(--text-xs);
-    padding: 0.3rem 0.8rem;
-    border-radius: var(--radius-full);
-    min-width: 60px;
-    text-align: center;
-  }
-  .badge-none     { background-color: var(--color-surface-offset); color: var(--color-text-muted); }
-  .badge-normal   { background-color: var(--color-success-hl);     color: var(--color-success); }
-  .badge-mild     { background-color: var(--color-warning-hl);     color: var(--color-warning); }
-  .badge-severe   { background-color: #ffedd5; color: #9a3412; }
-  .badge-critical { background-color: var(--color-rose-hl);        color: var(--color-rose); }
-
-  /* Diagnostic alert box */
-  .diagnostic-box {
-    background-color: var(--color-surface-2);      /* fix: --bg-light */
-    border-left: 4px solid var(--color-divider);   /* fix: --border-color */
-    padding: 1rem;
-    border-radius: var(--radius-sm);
-    font-size: var(--text-sm);
-    margin-top: 0.75rem;
-    transition: border-color var(--tr), background-color var(--tr);
-  }
-  .diagnostic-box.alert-active {
-    border-left-color: var(--color-rose);
-    background-color: var(--color-rose-hl);
-  }
-  .diagnostic-box h4 {
-    margin-bottom: 0.35rem;
-    font-weight: 700;
-    color: var(--color-text);
-  }
-  .diagnostic-box ul {
-    padding-left: 1.2rem;
-    margin-top: 0.25rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    color: var(--color-text-muted);
-  }
-
-  /* Reset button */
-  .reset-btn {
-    width: 100%;
-    padding: 0.75rem;
-    background-color: var(--color-surface-offset); /* fix: --bg-light */
-    border: 1px solid var(--color-border);         /* fix: --border-color */
-    border-radius: var(--radius-sm);
-    color: var(--color-text);                      /* fix: --text-main */
-    font-family: var(--font-body);
-    font-weight: 700;
-    cursor: pointer;
-    transition: background-color var(--tr), border-color var(--tr); /* fix: --transition */
-    margin-top: 0.75rem;
-  }
-  .reset-btn:hover {
-    background-color: var(--color-divider);        /* fix: --border-color */
-    border-color: var(--color-primary);
-  }
-
-  /* Reference box */
-  .ref-box {
-    font-size: var(--text-xs);
-    color: var(--color-text-muted);                /* fix: --text-muted */
-    line-height: 1.7;
-  }
-  .ref-box ul {
-    padding-left: 1.2rem;
-    margin-top: 0.4rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-  }
-
-  /* ── Responsive ── */
-  @media (min-width: 768px) {
-    .assessment-grid      { grid-template-columns: 2fr 1fr; }
-    .form-grid-2          { grid-template-columns: repeat(2, 1fr); }
-    .form-grid-3          { grid-template-columns: repeat(3, 1fr); }
-    .sticky-card {
-      position: sticky;
-      top: calc(var(--header-height) + 1.25rem);
+    /* Layout chính: input bên trái, kết quả bên phải */
+    .assessment-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 1rem;
     }
-  }
 
-  /* Dark mode — badge-severe cần override vì dùng màu hardcode */
-  [data-theme="dark"] .badge-severe {
-    background-color: rgba(251, 113, 133, 0.15);
-    color: #fda4af;
-  }
-</style>
+    .input-column {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .results-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* Panel card */
+    .panel {
+      background-color: var(--color-surface);
+      /* fix: --card-bg */
+      border: 1px solid var(--color-divider);
+      /* fix: --border-color */
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: background-color var(--tr);
+      /* fix: --transition */
+    }
+
+    .panel-title {
+      font-size: var(--text-md);
+      font-weight: 700;
+      color: var(--color-primary);
+      /* fix: --primary-color */
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--color-divider);
+      /* fix: --border-color */
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Form grids */
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .form-grid-3 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    /* Input groups */
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .input-group label {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-text);
+      /* fix: --text-main */
+    }
+
+    .input-subtext {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      /* fix: --text-muted */
+      margin-top: -0.2rem;
+    }
+
+    /* Inputs & Selects */
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--color-border);
+      /* fix: --border-color */
+      border-radius: var(--radius-sm);
+      background-color: var(--color-surface-offset);
+      /* fix: --bg-light */
+      color: var(--color-text);
+      /* fix: --text-main */
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      transition: border-color var(--tr), box-shadow var(--tr);
+      /* fix: --transition */
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    input[type="number"]:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      /* fix: --primary-color */
+      box-shadow: 0 0 0 3px var(--color-primary-hl);
+    }
+
+    /* Checkboxes */
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-top: 0.5rem;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      cursor: pointer;
+      font-size: var(--text-sm);
+      color: var(--color-text);
+      line-height: 1.5;
+    }
+
+    .checkbox-item input[type="checkbox"] {
+      margin-top: 0.2rem;
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      accent-color: var(--color-primary);
+      /* fix: --primary-color */
+    }
+
+    /* Sticky result card */
+    .sticky-card {
+      position: static;
+    }
+
+    /* Score rows */
+    .score-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0;
+      border-bottom: 1px dashed var(--color-divider);
+      /* fix: --border-color */
+    }
+
+    .score-row:last-of-type {
+      border-bottom: none;
+    }
+
+    .score-lbl {
+      font-weight: 600;
+      font-size: var(--text-sm);
+      color: var(--color-text);
+    }
+
+    /* Score badges — dùng màu hardcode để đảm bảo tương phản cả light/dark */
+    .score-badge {
+      font-weight: 700;
+      font-size: var(--text-xs);
+      padding: 0.3rem 0.8rem;
+      border-radius: var(--radius-full);
+      min-width: 60px;
+      text-align: center;
+    }
+
+    .badge-none {
+      background-color: var(--color-surface-offset);
+      color: var(--color-text-muted);
+    }
+
+    .badge-normal {
+      background-color: var(--color-success-hl);
+      color: var(--color-success);
+    }
+
+    .badge-mild {
+      background-color: var(--color-warning-hl);
+      color: var(--color-warning);
+    }
+
+    .badge-severe {
+      background-color: #ffedd5;
+      color: #9a3412;
+    }
+
+    .badge-critical {
+      background-color: var(--color-rose-hl);
+      color: var(--color-rose);
+    }
+
+    /* Diagnostic alert box */
+    .diagnostic-box {
+      background-color: var(--color-surface-2);
+      /* fix: --bg-light */
+      border-left: 4px solid var(--color-divider);
+      /* fix: --border-color */
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      font-size: var(--text-sm);
+      margin-top: 0.75rem;
+      transition: border-color var(--tr), background-color var(--tr);
+    }
+
+    .diagnostic-box.alert-active {
+      border-left-color: var(--color-rose);
+      background-color: var(--color-rose-hl);
+    }
+
+    .diagnostic-box h4 {
+      margin-bottom: 0.35rem;
+      font-weight: 700;
+      color: var(--color-text);
+    }
+
+    .diagnostic-box ul {
+      padding-left: 1.2rem;
+      margin-top: 0.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Reset button */
+    .reset-btn {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: var(--color-surface-offset);
+      /* fix: --bg-light */
+      border: 1px solid var(--color-border);
+      /* fix: --border-color */
+      border-radius: var(--radius-sm);
+      color: var(--color-text);
+      /* fix: --text-main */
+      font-family: var(--font-body);
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color var(--tr), border-color var(--tr);
+      /* fix: --transition */
+      margin-top: 0.75rem;
+    }
+
+    .reset-btn:hover {
+      background-color: var(--color-divider);
+      /* fix: --border-color */
+      border-color: var(--color-primary);
+    }
+
+    /* Reference box */
+    .ref-box {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      /* fix: --text-muted */
+      line-height: 1.7;
+    }
+
+    .ref-box ul {
+      padding-left: 1.2rem;
+      margin-top: 0.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    /* ── Responsive ── */
+    @media (min-width: 768px) {
+      .assessment-grid {
+        grid-template-columns: 2fr 1fr;
+      }
+
+      .form-grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .form-grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .sticky-card {
+        position: sticky;
+        top: calc(var(--header-height) + 1.25rem);
+      }
+    }
+
+    /* Dark mode — badge-severe cần override vì dùng màu hardcode */
+    [data-theme="dark"] .badge-severe {
+      background-color: rgba(251, 113, 133, 0.15);
+      color: #fda4af;
+    }
+  </style>
 </head>
 
 <body>
@@ -266,8 +337,8 @@
     <!-- SIDEBAR -->
     <aside class="app-sidebar" id="appSidebar">
       <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
-        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5"
-          fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
           <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
       </button>
@@ -286,9 +357,9 @@
             </a>
           </li>
           <li>
-            <a href="../../Phác đồ/phac-do.html" class="nav-item" title="Phác đồ Y khoa">
-              <span class="nav-icon">📋</span>
-              <span class="nav-text">Phác đồ điều trị</span>
+            <a href="../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+              <span class="nav-icon">📄</span>
+              <span class="nav-text">Y học chứng cứ</span>
             </a>
           </li>
           <li>
@@ -312,7 +383,8 @@
       <section class="hero-dashboard">
         <div class="hero-intro">
           <h1>SÀNG LỌC NHIỄM KHUẨN TOÀN DIỆN</h1>
-          <p>Hệ thống tích hợp đa thang điểm (NEWS2, SOFA, SIRS, qSOFA, MEDS) dựa thuần túy trên các thông số lâm sàng và cận lâm sàng khách quan tại giường bệnh.</p>
+          <p>Hệ thống tích hợp đa thang điểm (NEWS2, SOFA, SIRS, qSOFA, MEDS) dựa thuần túy trên các thông số lâm sàng
+            và cận lâm sàng khách quan tại giường bệnh.</p>
         </div>
       </section>
 
@@ -324,17 +396,14 @@
               <span class="home-icon">🏠</span> Home
             </a>
           </li>
-          
-          <li class="breadcrumb-item"
-            aria-current="page"> Công cụ</a>
+
+          <li class="breadcrumb-item" aria-current="page"> Công cụ</a>
           </li>
 
-          <li class="breadcrumb-item"
-            aria-current="page"> Nhiễm khuẩn & Cấp cứu</a>
+          <li class="breadcrumb-item" aria-current="page"> Nhiễm khuẩn & Cấp cứu</a>
           </li>
-          
-          <li class="breadcrumb-item active" 
-            aria-current="page"> Sepsis & Shock-Sepsis
+
+          <li class="breadcrumb-item active" aria-current="page"> Sepsis & Shock-Sepsis
           </li>
         </ol>
       </nav>
@@ -473,7 +542,8 @@
             <div class="checkbox-group">
               <label class="checkbox-item">
                 <input type="checkbox" id="meds-terminal">
-                <span><strong>Bệnh giai đoạn cuối / Tiên lượng tử vong trong 30 ngày</strong> (ung thư giai đoạn cuối, suy tạng không hồi phục)</span>
+                <span><strong>Bệnh giai đoạn cuối / Tiên lượng tử vong trong 30 ngày</strong> (ung thư giai đoạn cuối,
+                  suy tạng không hồi phục)</span>
               </label>
               <label class="checkbox-item">
                 <input type="checkbox" id="meds-age65">
@@ -497,7 +567,8 @@
               </label>
               <label class="checkbox-item">
                 <input type="checkbox" id="sepsis3-lactate">
-                <span><strong>Định lượng Lactate máu tăng cao:</strong> Lactate &gt; 2.0 mmol/L (Tiêu chuẩn Sốc nhiễm khuẩn Sepsis-3)</span>
+                <span><strong>Định lượng Lactate máu tăng cao:</strong> Lactate &gt; 2.0 mmol/L (Tiêu chuẩn Sốc nhiễm
+                  khuẩn Sepsis-3)</span>
               </label>
             </div>
           </div>
@@ -541,13 +612,16 @@
               </ul>
             </div>
 
-            <div class="score-row" style="margin-top:0.5rem;border:none;background:var(--color-surface-offset);padding:0.75rem;border-radius:var(--radius-sm)">
+            <div class="score-row"
+              style="margin-top:0.5rem;border:none;background:var(--color-surface-offset);padding:0.75rem;border-radius:var(--radius-sm)">
               <div>
-                <div style="font-size:0.8rem;font-weight:600;color:var(--color-text-muted)">Tử vong nội viện ước lượng:</div>
-                <div id="val-mortality" style="font-size:1.6rem;font-weight:800;color:var(--color-primary)">Thấp (&lt; 1%)</div>
+                <div style="font-size:0.8rem;font-weight:600;color:var(--color-text-muted)">Tử vong nội viện ước lượng:
+                </div>
+                <div id="val-mortality" style="font-size:1.6rem;font-weight:800;color:var(--color-primary)">Thấp (&lt;
+                  1%)</div>
               </div>
             </div>
- 
+
             <button type="button" id="btn-clear-all" class="reset-btn">🔄 Xóa dữ liệu (Reset Form)</button>
           </div>
         </div>
@@ -557,12 +631,17 @@
       <!-- TÀI LIỆU THAM KHẢO -->
       <div class="panel" style="margin-top:1.5rem">
         <div class="ref-box">
-          <strong style="color:var(--color-text);font-size:0.9rem">📚 Cơ sở dữ liệu và Tài liệu Tham khảo đối chiếu:</strong>
+          <strong style="color:var(--color-text);font-size:0.9rem">📚 Cơ sở dữ liệu và Tài liệu Tham khảo đối
+            chiếu:</strong>
           <ul>
-            <li><strong>NEWS2 Standard:</strong> Royal College of Physicians. National Early Warning Score (NEWS) 2. London: RCP, 2017.</li>
-            <li><strong>Sepsis-3 Đồng thuận:</strong> Singer M, et al. The Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). <em>JAMA</em>. 2016;315(8):801–810.</li>
-            <li><strong>MEDS Score Gốc:</strong> Shapiro NI, et al. Mortality in Emergency Department Sepsis (MEDS) score. <em>Critical Care Medicine</em>. 2003;31(3):670-675.</li>
-            <li><strong>Surviving Sepsis Campaign:</strong> International Guidelines for Management of Sepsis and Septic Shock 2021/2026. <em>Intensive Care Medicine</em>.</li>
+            <li><strong>NEWS2 Standard:</strong> Royal College of Physicians. National Early Warning Score (NEWS) 2.
+              London: RCP, 2017.</li>
+            <li><strong>Sepsis-3 Đồng thuận:</strong> Singer M, et al. The Third International Consensus Definitions for
+              Sepsis and Septic Shock (Sepsis-3). <em>JAMA</em>. 2016;315(8):801–810.</li>
+            <li><strong>MEDS Score Gốc:</strong> Shapiro NI, et al. Mortality in Emergency Department Sepsis (MEDS)
+              score. <em>Critical Care Medicine</em>. 2003;31(3):670-675.</li>
+            <li><strong>Surviving Sepsis Campaign:</strong> International Guidelines for Management of Sepsis and Septic
+              Shock 2021/2026. <em>Intensive Care Medicine</em>.</li>
           </ul>
         </div>
       </div>
@@ -578,11 +657,11 @@
   </footer>
 
   <script>
-  document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
       // ── MOBILE SIDEBAR DRAWER ──────────────────────────────
       const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-      const appSidebar    = document.getElementById('appSidebar');
-      const overlay       = document.getElementById('sidebarOverlay');
+      const appSidebar = document.getElementById('appSidebar');
+      const overlay = document.getElementById('sidebarOverlay');
 
       function openSidebar() {
         appSidebar.classList.add('open');
@@ -603,36 +682,36 @@
       document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSidebar(); });
 
       // ── DOM INPUTS ─────────────────────────────────────────
-      const inHr       = document.getElementById('vit-hr');
-      const inSbp      = document.getElementById('vit-sbp');
-      const inRr       = document.getElementById('vit-rr');
-      const inTemp     = document.getElementById('vit-temp');
-      const inSpo2     = document.getElementById('vit-spo2');
-      const inSpo2Scale= document.getElementById('vit-spo2-scale');
-      const inOxygen   = document.getElementById('vit-oxygen');
-      const inAcvpu    = document.getElementById('vit-acvpu');
-      const selResp    = document.getElementById('sofa-resp');
-      const selCoag    = document.getElementById('sofa-coag');
-      const selLiver   = document.getElementById('sofa-liver');
-      const selCardio  = document.getElementById('sofa-cardio');
-      const selCns     = document.getElementById('sofa-cns');
-      const selRenal   = document.getElementById('sofa-renal');
-      const chkTerminal= document.getElementById('meds-terminal');
-      const chkAge65   = document.getElementById('meds-age65');
-      const chkLri     = document.getElementById('meds-lri');
+      const inHr = document.getElementById('vit-hr');
+      const inSbp = document.getElementById('vit-sbp');
+      const inRr = document.getElementById('vit-rr');
+      const inTemp = document.getElementById('vit-temp');
+      const inSpo2 = document.getElementById('vit-spo2');
+      const inSpo2Scale = document.getElementById('vit-spo2-scale');
+      const inOxygen = document.getElementById('vit-oxygen');
+      const inAcvpu = document.getElementById('vit-acvpu');
+      const selResp = document.getElementById('sofa-resp');
+      const selCoag = document.getElementById('sofa-coag');
+      const selLiver = document.getElementById('sofa-liver');
+      const selCardio = document.getElementById('sofa-cardio');
+      const selCns = document.getElementById('sofa-cns');
+      const selRenal = document.getElementById('sofa-renal');
+      const chkTerminal = document.getElementById('meds-terminal');
+      const chkAge65 = document.getElementById('meds-age65');
+      const chkLri = document.getElementById('meds-lri');
       const chkNursing = document.getElementById('meds-nursing');
-      const chkBands   = document.getElementById('meds-bands');
-      const chkWbcAbn  = document.getElementById('sirs-wbc-abn');
+      const chkBands = document.getElementById('meds-bands');
+      const chkWbcAbn = document.getElementById('sirs-wbc-abn');
       const chkLactate = document.getElementById('sepsis3-lactate');
-      const outNews2   = document.getElementById('score-news2');
-      const outSirs    = document.getElementById('score-sirs');
-      const outQsofa   = document.getElementById('score-qsofa');
-      const outSofa    = document.getElementById('score-sofa');
-      const outMeds    = document.getElementById('score-meds');
-      const outShock   = document.getElementById('val-shock-index');
-      const outMort    = document.getElementById('val-mortality');
-      const boxAlert   = document.getElementById('diagnostic-alert');
-      const listDiag   = document.getElementById('diagnostic-list');
+      const outNews2 = document.getElementById('score-news2');
+      const outSirs = document.getElementById('score-sirs');
+      const outQsofa = document.getElementById('score-qsofa');
+      const outSofa = document.getElementById('score-sofa');
+      const outMeds = document.getElementById('score-meds');
+      const outShock = document.getElementById('val-shock-index');
+      const outMort = document.getElementById('val-mortality');
+      const boxAlert = document.getElementById('diagnostic-alert');
+      const listDiag = document.getElementById('diagnostic-list');
 
       // ── HELPER: set badge class ────────────────────────────
       function setBadge(el, score, thresholds) {
@@ -646,72 +725,72 @@
 
       // ── TÍNH TOÁN CHÍNH ────────────────────────────────────
       function calculateAll() {
-        const hr    = parseFloat(inHr.value)    || 0;
-        const sbp   = parseFloat(inSbp.value)   || 0;
-        const rr    = parseFloat(inRr.value)    || 0;
-        const temp  = parseFloat(inTemp.value)  || 0;
-        const spo2  = parseFloat(inSpo2.value)  || 0;
+        const hr = parseFloat(inHr.value) || 0;
+        const sbp = parseFloat(inSbp.value) || 0;
+        const rr = parseFloat(inRr.value) || 0;
+        const temp = parseFloat(inTemp.value) || 0;
+        const spo2 = parseFloat(inSpo2.value) || 0;
         const scale = parseInt(inSpo2Scale.value);
         const oxVal = parseInt(inOxygen.value);
         const acvpu = parseInt(inAcvpu.value);
 
         // NEWS2
         let news2 = 0;
-        if      (rr <= 8)             news2 += 3;
-        else if (rr <= 11)            news2 += 1;
-        else if (rr <= 20)            news2 += 0;
-        else if (rr <= 24)            news2 += 2;
-        else                          news2 += 3;
+        if (rr <= 8) news2 += 3;
+        else if (rr <= 11) news2 += 1;
+        else if (rr <= 20) news2 += 0;
+        else if (rr <= 24) news2 += 2;
+        else news2 += 3;
 
         news2 += oxVal;
 
         if (scale === 1) {
-          if      (spo2 >= 96) news2 += 0;
+          if (spo2 >= 96) news2 += 0;
           else if (spo2 >= 94) news2 += 1;
           else if (spo2 >= 92) news2 += 2;
-          else                 news2 += 3;
+          else news2 += 3;
         } else {
           if (oxVal === 2) {
-            if      (spo2 >= 97) news2 += 3;
+            if (spo2 >= 97) news2 += 3;
             else if (spo2 >= 95) news2 += 2;
             else if (spo2 >= 93) news2 += 1;
             else if (spo2 >= 88) news2 += 0;
             else if (spo2 >= 86) news2 += 1;
             else if (spo2 >= 84) news2 += 2;
-            else                 news2 += 3;
+            else news2 += 3;
           } else {
-            if      (spo2 >= 88) news2 += 0;
+            if (spo2 >= 88) news2 += 0;
             else if (spo2 >= 86) news2 += 1;
             else if (spo2 >= 84) news2 += 2;
-            else                 news2 += 3;
+            else news2 += 3;
           }
         }
 
-        if      (sbp <= 90)  news2 += 3;
+        if (sbp <= 90) news2 += 3;
         else if (sbp <= 100) news2 += 2;
         else if (sbp <= 110) news2 += 1;
         else if (sbp <= 219) news2 += 0;
-        else                 news2 += 3;
+        else news2 += 3;
 
-        if      (temp <= 35.0) news2 += 3;
+        if (temp <= 35.0) news2 += 3;
         else if (temp <= 36.0) news2 += 1;
         else if (temp <= 38.0) news2 += 0;
         else if (temp <= 39.0) news2 += 1;
-        else                   news2 += 2;
+        else news2 += 2;
 
-        if      (hr <= 40)  news2 += 3;
-        else if (hr <= 50)  news2 += 1;
-        else if (hr <= 90)  news2 += 0;
+        if (hr <= 40) news2 += 3;
+        else if (hr <= 50) news2 += 1;
+        else if (hr <= 90) news2 += 0;
         else if (hr <= 110) news2 += 1;
         else if (hr <= 130) news2 += 2;
-        else                news2 += 3;
+        else news2 += 3;
 
         news2 += acvpu;
 
         // SOFA
         const sofa = parseInt(selResp.value) + parseInt(selCoag.value) +
-                     parseInt(selLiver.value) + parseInt(selCardio.value) +
-                     parseInt(selCns.value)   + parseInt(selRenal.value);
+          parseInt(selLiver.value) + parseInt(selCardio.value) +
+          parseInt(selCns.value) + parseInt(selRenal.value);
 
         // SIRS
         let sirs = 0;
@@ -732,42 +811,42 @@
         // MEDS
         let meds = 0;
         if (chkTerminal.checked) meds += 6;
-        if (chkAge65.checked)    meds += 3;
-        if (chkLri.checked)      meds += 2;
-        if (chkNursing.checked)  meds += 2;
-        if (chkBands.checked)    meds += 1;
-        if (acvpu > 0)           meds += 2;
+        if (chkAge65.checked) meds += 3;
+        if (chkLri.checked) meds += 2;
+        if (chkNursing.checked) meds += 2;
+        if (chkBands.checked) meds += 1;
+        if (acvpu > 0) meds += 2;
         if (rr > 20 || spo2 < 90) meds += 3;
 
         // ── Cập nhật UI ──
         outNews2.textContent = news2;
         setBadge(outNews2, news2, [
-          {max:4, cls:'badge-normal'}, {max:6, cls:'badge-mild'},
-          {max:8, cls:'badge-severe'}, {max:999, cls:'badge-critical'}
+          { max: 4, cls: 'badge-normal' }, { max: 6, cls: 'badge-mild' },
+          { max: 8, cls: 'badge-severe' }, { max: 999, cls: 'badge-critical' }
         ]);
 
         outSirs.textContent = `${sirs}/4`;
         setBadge(outSirs, sirs, [
-          {max:1, cls:'badge-normal'}, {max:2, cls:'badge-mild'},
-          {max:3, cls:'badge-severe'}, {max:999, cls:'badge-critical'}
+          { max: 1, cls: 'badge-normal' }, { max: 2, cls: 'badge-mild' },
+          { max: 3, cls: 'badge-severe' }, { max: 999, cls: 'badge-critical' }
         ]);
 
         outQsofa.textContent = `${qsofa}/3`;
         setBadge(outQsofa, qsofa, [
-          {max:1, cls:'badge-normal'}, {max:2, cls:'badge-mild'},
-          {max:999, cls:'badge-critical'}
+          { max: 1, cls: 'badge-normal' }, { max: 2, cls: 'badge-mild' },
+          { max: 999, cls: 'badge-critical' }
         ]);
 
         outSofa.textContent = sofa;
         setBadge(outSofa, sofa, [
-          {max:1, cls:'badge-normal'}, {max:3, cls:'badge-mild'},
-          {max:6, cls:'badge-severe'}, {max:999, cls:'badge-critical'}
+          { max: 1, cls: 'badge-normal' }, { max: 3, cls: 'badge-mild' },
+          { max: 6, cls: 'badge-severe' }, { max: 999, cls: 'badge-critical' }
         ]);
 
         outMeds.textContent = meds;
         setBadge(outMeds, meds, [
-          {max:4, cls:'badge-normal'}, {max:7, cls:'badge-mild'},
-          {max:12, cls:'badge-severe'}, {max:999, cls:'badge-critical'}
+          { max: 4, cls: 'badge-normal' }, { max: 7, cls: 'badge-mild' },
+          { max: 12, cls: 'badge-severe' }, { max: 999, cls: 'badge-critical' }
         ]);
 
         outShock.textContent = shockIdx;
@@ -795,10 +874,10 @@
 
         // ── Tử vong ──
         let mort = 'Thấp (< 1%)';
-        if      (meds > 15 || sofa >= 10) mort = 'Rất cao (≥ 50%)';
-        else if (meds >= 13 || sofa >= 6)  mort = 'Cao (~ 20% – 30%)';
-        else if (meds >= 8  || sofa >= 3)  mort = 'Trung bình (~ 8%)';
-        else if (meds >= 5  || sofa >= 1)  mort = 'Nhẹ (~ 2%)';
+        if (meds > 15 || sofa >= 10) mort = 'Rất cao (≥ 50%)';
+        else if (meds >= 13 || sofa >= 6) mort = 'Cao (~ 20% – 30%)';
+        else if (meds >= 8 || sofa >= 3) mort = 'Trung bình (~ 8%)';
+        else if (meds >= 5 || sofa >= 1) mort = 'Nhẹ (~ 2%)';
         outMort.textContent = mort;
       }
 
@@ -820,9 +899,10 @@
         calculateAll();
       });
 
-  // Chạy lần đầu tiên khi tải trang
-    calculateAll();
-  });
+      // Chạy lần đầu tiên khi tải trang
+      calculateAll();
+    });
   </script>
 </body>
+
 </html>
