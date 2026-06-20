@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="../../../css/components/sidebar.css">
   <link rel="stylesheet" href="../../../css/components/footer.css">
 
-  <script src="../../../pages/header.js"></script> >    
+  <script src="../../../pages/header.js"></script>     
     <style>
         /* === BIẾN MÀU SẮC HỆ THỐNG & GIAO DIỆN CHUYỂN ĐỔI CHUẨN === */
         :root {
@@ -380,11 +380,13 @@
     </style>
 </head>
 <body>
+
   <div id="header-placeholder" data-header-path="../../header.html"></div>
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
+  <!-- ===================== APP CONTAINER ===================== -->
   <div class="app-container">
-
+    <!--SIDEBAR-->
     <aside class="app-sidebar" id="appSidebar">
       <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
         <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5"
@@ -415,7 +417,7 @@
           <li>
             <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
               <span class="nav-icon">💊</span>
-              <span class="nav-text">Dược lý & Kháng sinh</span>
+              <span class="nav-text">Dược lý lâm sàng</span>
             </a>
           </li>
           <li>
@@ -427,7 +429,8 @@
         </ul>
       </nav>
     </aside>
-
+    
+    <!--MAIN CONTENT-->
     <div class="main-wrapper">
             <section class="hero-dashboard">
                 <div class="hero-intro">
@@ -435,6 +438,29 @@
                     <p>Chuẩn hóa tính toán năng lượng, đại chất và hướng dẫn chọn lựa thực phẩm trực quan cho bệnh nhân nội trú theo quyết định chính thức từ Bộ Y tế.</p>
                 </div>
             </section>
+
+            <!--BREADCRUMB-->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container">
+                <ol class="breadcrumb-list">
+                <li class="breadcrumb-item">
+                    <a href="../../../index.html" class="breadcrumb-link">
+                    <span class="home-icon">🏠</span> Home
+                    </a>
+                </li>
+                
+                <li class="breadcrumb-item"
+                    aria-current="page"> Công cụ</a>
+                </li>
+
+                <li class="breadcrumb-item"
+                    aria-current="page"> Tiêu hóa & dinh dưỡng</a>
+                </li>
+                
+                <li class="breadcrumb-item active" 
+                    aria-current="page"> Dinh dưỡng nội viện
+                </li>
+                </ol>
+            </nav>
 
             <div id="refeedingAlertPanel" class="alert-panel">
                 <h3 style="font-weight:700; color:var(--danger-color); margin-bottom:0.5rem; display:flex; align-items:center; gap:0.5rem;">⚠️ CẢNH BÁO: HỘI CHỨNG NUÔI ĂN LẠI (REFEEDING)</h3>

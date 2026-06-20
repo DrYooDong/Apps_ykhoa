@@ -1,7 +1,8 @@
     /* ============================================================
        DESIGN TOKENS
     ============================================================ */
-    :root, [data-theme="light"] {
+    :root, 
+    [data-theme="light"] {
       --color-bg:             #f0f4f8;
       --color-surface:        #ffffff;
       --color-surface-2:      #f8fafc;
@@ -84,30 +85,31 @@
       --shadow-card-hover: 0 8px 28px rgba(56,189,248,0.18);
     }
 
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme]) {
-        --color-bg:             #080e1a;
-        --color-surface:        #101828;
-        --color-surface-2:      #162032;
-        --color-surface-offset: #1a2840;
-        --color-divider:        #1e2d47;
-        --color-border:         #263a57;
-        --color-text:           #e2e8f0;
-        --color-text-muted:     #94a3b8;
-        --color-text-faint:     #4a5d78;
-        --color-primary:        #38bdf8;
-        --color-primary-hl:     #0a2236;
-        --color-success:        #34d399;
-        --color-success-hl:     #062017;
-        --color-warning:        #fbbf24;
-        --color-warning-hl:     #1f1500;
-        --color-purple:         #a78bfa;
-        --color-purple-hl:      #160e30;
-        --color-rose:           #fb7185;
-        --color-rose-hl:        #1f0812;
-        --color-teal:           #2dd4bf;
-        --color-teal-hl:        #062820;
-        --shadow-card-hover: 0 8px 28px rgba(56,189,248,0.18);
+    @media (prefers-color-scheme: light) {
+    :root:not([data-theme]) {
+      --color-bg:             #f0f4f8;
+      --color-surface:        #ffffff;
+      --color-surface-2:      #f8fafc;
+      --color-surface-offset: #f1f5f9;
+      --color-divider:        #e2e8f0;
+      --color-border:         #cbd5e1;
+      --color-text:           #0f172a;
+      --color-text-muted:     #475569;
+      --color-text-faint:     #94a3b8;
+      --color-text-inverse:   #f8fafc;
+      --color-primary:        #0284c7;
+      --color-primary-hover:  #0369a1;
+      --color-primary-hl:     #e0f2fe;
+      --color-success:        #059669;
+      --color-success-hl:     #d1fae5;
+      --color-warning:        #d97706;
+      --color-warning-hl:     #fef3c7;
+      --color-purple:         #7c3aed;
+      --color-purple-hl:      #ede9fe;
+      --color-rose:           #e11d48;
+      --color-rose-hl:        #ffe4e6;
+      --color-teal:           #0d9488;
+      --color-teal-hl:        #ccfbf1;
       }
     }
 
@@ -139,7 +141,6 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     }
-
     
     /* ============================================================
        APP LAYOUT
@@ -438,3 +439,66 @@
     h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.2; text-wrap: balance; }
     :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; border-radius: var(--radius-sm); }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+
+/* ============================================================ 
+  BREADCRUMB
+============================================================ */
+  /* Container chính bọc ngoài */
+  .breadcrumb-container {
+    padding: 1rem 0;
+    font-family: var(--font-body, 'Segoe UI', sans-serif);
+  }
+
+  /* Danh sách các item */
+  .breadcrumb-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem; /* Khoảng cách giữa chữ và dấu mũi tên */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1rem; /* Bạn có thể chỉnh lại size chữ */
+  }
+
+  /* Định dạng chung cho từng item */
+  .breadcrumb-item {
+    display: flex;
+    align-items: center;
+    color: #64748b; /* Màu xám chữ mặc định (Muted) */
+  }
+
+  /* Định dạng cho các thẻ link liên kết */
+  .breadcrumb-link {
+    color: #64748b; 
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem; /* Khoảng cách giữa icon home và chữ */
+    transition: color 0.15s ease;
+  }
+
+  .breadcrumb-link:hover {
+    color: #0284c7; /* Đổi màu xanh nhẹ khi hover */
+    text-decoration: underline;
+  }
+
+  /* Tự động chèn dấu mũi tên ">" vào giữa các mục */
+  .breadcrumb-item:not(:last-child)::after {
+    content: ">";
+    margin-left: 0.5rem;
+    color: #cbd5e1; /* Màu xám nhạt của dấu mũi tên */
+    font-size: 0.8rem;
+    pointer-events: none; /* Tránh người dùng click nhầm vào dấu mũi tên */
+  }
+
+  /* Định dạng riêng cho trang hiện tại (Mục cuối cùng) */
+  .breadcrumb-item.active {
+    color: #008080; /* Màu xanh teal/green giống y hệt trong ảnh của bạn */
+    font-weight: 600; /* Chữ đậm hơn một chút nếu muốn */
+  }
+
+  /* Icon home nhỏ xinh */
+  .home-icon {
+    font-size: 0.95rem;
+  }

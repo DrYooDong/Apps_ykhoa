@@ -2,7 +2,7 @@
       // --- Theme toggle ---
       const html = document.documentElement;
       const themeBtn = document.getElementById('theme-toggle-btn');
-      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      let theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'dark' : 'light';
       html.setAttribute('data-theme', theme);
 
       themeBtn.addEventListener('click', () => {
@@ -76,3 +76,5 @@
         }
       });
     })();
+
+

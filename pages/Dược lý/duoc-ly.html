@@ -17,6 +17,123 @@
   <link rel="stylesheet" href="../../css/components/footer.css">
 
   <script src="../../pages/header.js" defer></script>
+  <style>
+  /* ============================================================
+     BREADCRUMB SYSTEM
+     ============================================================ */
+  .breadcrumb-container {
+    padding: 0.5rem 0 1.25rem 0;
+  }
+  .breadcrumb-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: var(--text-sm);
+  }
+  .breadcrumb-item {
+    display: flex;
+    align-items: center;
+    color: var(--color-text-muted);
+  }
+  .breadcrumb-link {
+    color: var(--color-text-muted);
+    transition: color var(--tr);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .breadcrumb-link:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+  .breadcrumb-item:not(:last-child)::after {
+    content: ">";
+    margin-left: 0.5rem;
+    color: var(--color-border);
+    font-size: 0.8rem;
+    pointer-events: none;
+  }
+  .breadcrumb-item.active {
+    color: #008080; /* Màu đặc trưng y khoa lâm sàng */
+    font-weight: 600;
+  }
+
+  /* ============================================================
+     SPECIALTY PHARMACOLOGY GRID
+     ============================================================ */
+  .section-divider {
+    margin: 2.5rem 0 1.5rem 0;
+    border: 0;
+    border-top: 1px dashed var(--color-border);
+  }
+  
+  .specialty-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+    gap: 1.25rem;
+  }
+
+  .specialty-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    transition: transform var(--tr), box-shadow var(--tr), border-color var(--tr);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .specialty-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-md);
+  }
+
+  .specialty-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--color-surface-offset);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    border: 1px solid var(--color-divider);
+  }
+
+  .specialty-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .specialty-info h3 {
+    font-size: var(--text-base);
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: var(--color-text);
+  }
+
+  .specialty-info p {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+  
+  .reference-note {
+    font-size: var(--text-xs);
+    color: var(--color-text-faint);
+    margin-top: 2rem;
+    font-style: italic;
+  }
+</style>
 </head>
 
 <body>
@@ -56,7 +173,7 @@
             <li>
               <a href="../Dược lý/duoc-ly.html" class="nav-item active" aria-current="page" title="Dược lý">
                 <span class="nav-icon">💊</span>
-                <span class="nav-text">Dược lý & Kháng sinh</span>
+                <span class="nav-text">Dược lý lâm sàng</span>
               </a>
             </li>
             <li>
@@ -70,61 +187,193 @@
       </aside>
 
       <!-- MAIN CONTENT -->
-      <div class="main-wrapper" id="mainContent">
+     <div class="main-wrapper" id="mainContent">
+      
+      <!--BREADCRUMB-->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container">
+                <ol class="breadcrumb-list">
+                <li class="breadcrumb-item">
+                    <a href="../../index.html" class="breadcrumb-link">
+                    <span class="home-icon">🏠</span> Home
+                    </a>
+                </li>
+                
+                <li class="breadcrumb-item active"
+                    aria-current="page"> Dược lý</a>
+                </li>
+                </ol>
+            </nav>
 
-        <!-- HERO -->
-        <section class="hero-dashboard" aria-labelledby="hero-title">
-          <div class="hero-intro">
-                <h1 id="hero-title">DƯỢC LÝ LÂM SÀNG</h1>
-                <p>Chiến lược tối ưu hóa liều kháng sinh phụ thuộc thời gian (T > MIC) hoặc phụ thuộc nồng độ ($C_{max}/MIC$). Hướng dẫn truyền kéo dài Beta-lactam và cá thể hóa liều Aminoglycoside/Vancomycin.</p>
-           </div>
+      <section class="hero-dashboard" aria-labelledby="hero-title">
+        <div class="hero-intro">
+          <h1 id="hero-title">DƯỢC LÝ LÂM SÀNG</h1>
+          <p>Hệ thống hóa nguyên lý dược động học, dược lực học và tối ưu hóa liều lượng thuốc cá thể hóa. Hướng dẫn sử dụng thuốc an toàn, tra cứu tương tác lâm sàng nghiêm ngặt dựa trên bằng chứng.</p>
+        </div>
+      </section>
+
+      <main class="main-content-grid">
+        <!--SECTION 1: DƯỢC LÝ HỌC THEO CHUYÊN KHOA-->
+        <section aria-labelledby="specialty-pharma-heading">
+          <h2 id="specialty-pharma-heading" class="section-heading">Dược lý học Chuyên khoa</h2>
+          <div class="specialty-grid">
+            
+            <a href="Chuyên khoa/DL_Timmach.html" class="specialty-card">
+              <div class="specialty-icon">🫀</div>
+              <div class="specialty-info">
+                <h3>Dược lý Tim mạch</h3>
+                <p>Kháng kết tập tiểu cầu (DAPT), thuốc kháng đông đường uống mới (DOACs), hệ RAASi, thuốc hạ lipid máu, và quản lý các thuốc vận mạch/tăng co bóp cơ tim trong suy tim cấp.</p>
+              </div>
+            </a>
+
+            <a href="#" class="specialty-card" style="opacity: 0.7; cursor: not-allowed;">
+              <div class="specialty-icon">🫁</div>
+              <div class="specialty-info">
+                <h3>Dược lý Hô hấp</h3>
+                <p>Chiến lược tối ưu hóa ICS/LABA/LAMA trong Hen/COPD, dược lý thuốc giãn phế quản đường tĩnh mạch và điều trị tăng áp động mạch phổi.</p>
+              </div>
+            </a>
+
+            <a href="#" class="specialty-card" style="opacity: 0.7; cursor: not-allowed;">
+              <div class="specialty-icon">🩸</div>
+              <div class="specialty-info">
+                <h3>Dược lý Nội tiết & ĐTĐ</h3>
+                <p>Phác đồ Insulin cá thể hóa tại ICU, tối ưu hóa phối hợp nhóm SGLT2i, GLP-1 RA dựa trên lợi ích tim mạch - thận và quản lý cơn bão giáp.</p>
+              </div>
+            </a>
+
+          </div>
         </section>
 
-        <!-- TOOL GRID -->
-        <div class="main-wrapper">
-            <main class="main-content-grid">
-                <h2 class="section-heading">Công cụ và Hướng dẫn Dược lý</h2>
-                
-                <div class="category-grid">
-                    
-                    <div class="category-card">
-                        <div class="card-header-icon">🧪</div>
-                        <div class="card-content">
-                            <h3>Tối ưu hóa PK/PD Kháng sinh</h3>
-                            <p>Chiến lược tối ưu hóa liều kháng sinh phụ thuộc thời gian ($T > MIC$) hoặc phụ thuộc nồng độ ($C_{max}/MIC$). Hướng dẫn truyền kéo dài Beta-lactam và cá thể hóa liều Aminoglycoside/Vancomycin.</p>
-                            <a href="#" class="card-action-link">Vào ứng dụng tra cứu &rarr;</a>
-                        </div>
-                    </div>
+        <hr class="section-divider"> 
 
-                    <div class="category-card">
-                        <div class="card-height-icon card-header-icon">💧</div>
-                        <div class="card-content">
-                            <h3>Hiệu chỉnh liều theo Suy thận (Renal Dosing)</h3>
-                            <p>Bảng tra cứu và hướng dẫn hiệu chỉnh liều lượng, khoảng cách dùng thuốc dựa trên độ thanh thải Creatinine (CrCl) đối với các nhóm thuốc có độc tính cao hoặc thải trừ chủ yếu qua thận.</p>
-                            <a href="#" class="card-action-link">Vào ứng dụng tra cứu &rarr;</a>
-                        </div>
-                    </div>
-
-                    <div class="category-card">
-                        <div class="card-header-icon">⚠️</div>
-                        <div class="card-content">
-                            <h3>Tra cứu Tương tác & Độc tính Thuốc</h3>
-                            <p>Nhận diện và xử trí các tương tác thuốc bất lợi nghiêm trọng tại phòng cấp cứu và ICU: Hội chứng Serotonin, kéo dài khoảng QT nguy cơ gây xoắn đỉnh, và tương tác đa thuốc trên bệnh nhân lớn tuổi.</p>
-                            <a href="#" class="card-action-link">Vào ứng dụng tra cứu &rarr;</a>
-                        </div>
-                    </div>
-                  </div>
+        <!--SECTION 2: CÔNG CỤ DƯỢC LÝ LÂM SÀNG -->
+        <section aria-labelledby="general-pharma-heading">
+          <h2 id="general-pharma-heading" class="section-heading">Công cụ Dược lý Lâm sàng</h2>
+          <div class="category-grid">
+            
+            <div class="tool-card card-blue">
+              <div class="card-top">
+                <div class="tool-icon">🧪</div>
+                <span class="tool-status active">Sẵn sàng</span>
               </div>
+              <div class="tool-content">
+                <h3>Tối ưu hóa PK/PD Kháng sinh</h3>
+                <p>Chiến lược tối ưu hóa liều kháng sinh phụ thuộc thời gian ($T > \text{MIC}$) hoặc phụ thuộc nồng độ ($C_{\max}/\text{MIC}$). Hướng dẫn truyền kéo dài Beta-lactam và cá thể hóa liều Aminoglycoside/Vancomycin.</p>
+              </div>
+              <div class="tool-footer">
+                <span class="tool-category">PK/PD MODEL</span>
+                <a href="pk-pd-khang-sinh.html">Vào ứng dụng</a>
+              </div>
+            </div>
 
-      </div><!-- /main-content-grid -->
-    </div><!-- /main-wrapper -->
+            <div class="tool-card card-teal">
+              <div class="card-top">
+                <div class="tool-icon">💧</div>
+                <span class="tool-status active">Sẵn sàng</span>
+              </div>
+              <div class="tool-content">
+                <h3>Hiệu chỉnh liều theo Suy thận</h3>
+                <p>Bảng tra cứu và công cụ hiệu chỉnh liều lượng, khoảng cách đưa thuốc dựa trên CrCl/eGFR đối với các nhóm thuốc có khoảng điều trị hẹp hoặc độc tính cao trên thận.</p>
+              </div>
+              <div class="tool-footer">
+                <span class="tool-category">RENAL DOSING</span>
+                <a href="hieu-chinh-suy-than.html">Vào ứng dụng</a>
+              </div>
+            </div>
 
-  </div><!-- /app-container -->
+            <div class="tool-card card-rose">
+              <div class="card-top">
+                <div class="tool-icon">⚠️</div>
+                <span class="tool-status active">Sẵn sàng</span>
+              </div>
+              <div class="tool-content">
+                <h3>Tương tác & Độc tính Thuốc</h3>
+                <p>Nhận diện và xử trí các tương tác thuốc bất lợi nghiêm trọng tại phòng cấp cứu và ICU: Hội chứng Serotonin, kéo dài khoảng QT nguy cơ gây xoắn đỉnh, và tương tác đa thuốc.</p>
+              </div>
+              <div class="tool-footer">
+                <span class="tool-category">DRUG INTERACTIONS</span>
+                <a href="tuong-tac-thuoc.html">Vào ứng dụng</a>
+              </div>
+            </div>
 
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
   <footer class="global-footer">
     <div class="footer-copyright">
-      <p>CliniPortal &copy; 2026 · Công cụ lâm sàng · Chỉ mang tính hỗ trợ, không thay thế phán xét y khoa.</p>
+      <p>CliniPortal &copy; 2026 · Công cụ lâm sàng · Chỉ mang tính hỗ trợ tham khảo, không thay thế phán xét lâm sàng của bác sĩ y khoa.</p>
     </div>
-  </footer> 
+  </footer>
+
+  <!--SCRIPT-->
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // --- Tự động dựng cấu trúc Breadcrumb dựa theo cấu trúc URL thực tế ---
+    (function initDynamicBreadcrumb() {
+      const container = document.getElementById('breadcrumb-auto');
+      if (!container) return;
+
+      // Bản đồ định nghĩa từ khóa danh mục y khoa hiển thị đẹp mắt
+      const dictionary = {
+        "duoc-ly.html": "Dược lý lâm sàng",
+        "duoc-ly": "Dược lý lâm sàng",
+        "chuyen-khoa": "Chuyên khoa",
+        "tim-mach.html": "Dược lý Tim mạch",
+        "pk-pd-khang-sinh.html": "Tối ưu hóa PK/PD Kháng sinh",
+        "hieu-chinh-suy-than.html": "Hiệu chỉnh liều theo Suy thận",
+        "tuong-tac-thuoc.html": "Tra cứu Tương tác & Độc tính"
+      };
+
+      function parseLabel(segment) {
+        const cleanSegment = segment.toLowerCase();
+        if (dictionary[cleanSegment]) return dictionary[cleanSegment];
+        
+        // Cơ chế dự phòng fallback khi chưa khai báo từ điển: dấu gạch nối -> khoảng trắng
+        return segment.replace('.html', '')
+                      .split('-')
+                      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                      .join(' ');
+      }
+
+      const pathSegments = window.location.pathname.split('/').filter(s => s !== '' && s !== 'pages');
+      
+      let htmlContent = `
+        <nav aria-label="Breadcrumb" class="breadcrumb-container">
+          <ol class="breadcrumb-list">
+            <li class="breadcrumb-item">
+              <a href="../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Trang chủ</a>
+            </li>
+      `;
+
+      let routeTracker = '/pages';
+
+      pathSegments.forEach((segment, index) => {
+        // Bỏ qua các định danh tệp tin gốc lặp lại không đáng có trên URL nếu có
+        if(segment === "index.html" || segment === "") return;
+        
+        routeTracker += '/' + segment;
+        const isCurrentPage = index === pathSegments.length - 1;
+        const displayName = parseLabel(segment);
+
+        if (isCurrentPage) {
+          htmlContent += `<li class="breadcrumb-item active" aria-current="page">${displayName}</li>`;
+        } else {
+          htmlContent += `
+            <li class="breadcrumb-item">
+              <a href="${routeTracker}" class="breadcrumb-link">${displayName}</a>
+            </li>
+          `;
+        }
+      });
+
+      htmlContent += `</ol></nav>`;
+      container.innerHTML = htmlContent;
+    })();
+  });
+</script>
+
 </body>
 </html>
