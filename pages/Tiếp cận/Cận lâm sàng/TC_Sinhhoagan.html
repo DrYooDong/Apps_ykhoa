@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Lưu đồ tương tác tiếp cận bất thường sinh hóa gan – ALT, AST, ALP, GGT – CliniPortal">
+    <title>Lưu đồ Sinh hóa Gan – CliniPortal</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../css/components/footer.css">
+
+    <script src="../../../pages/header.js"></script>
+    <script src="../../../pages/footer.js"></script>
+
+    <style>
+        /* ══════════════════════════════════════════════
+           DESIGN TOKENS – PAGE-SPECIFIC
+        ══════════════════════════════════════════════ */
+        :root {
+            --c-danger: #dc2626;
+            --c-danger-h: #fef2f2;
+            --c-danger-b: #fecaca;
+            --c-warn: #d97706;
+            --c-warn-h: #fffbeb;
+            --c-warn-b: #fde68a;
+            --c-info: #0284c7;
+            --c-info-h: #f0f9ff;
+            --c-info-b: #bae6fd;
+            --c-ok: #16a34a;
+            --c-ok-h: #f0fdf4;
+            --c-ok-b: #bbf7d0;
+            --c-purple: #7c3aed;
+            --c-purple-h: #f5f3ff;
+            --c-purple-b: #ddd6fe;
+            --c-primary: #3f51b5;
+            --c-primary-h: #e8eaf6;
+            --c-primary-b: #c5cae9;
+            --radius-node: 14px;
+            --shadow-node: 0 4px 16px rgba(0, 0, 0, .10);
+            --shadow-node-hover: 0 8px 28px rgba(0, 0, 0, .18);
+        }
+
+        /* ══ FLOW CANVAS ══ */
+        .flow-page {
+            padding: 0 0 40px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* ── HERO BANNER ── */
+        .flow-hero {
+            background: linear-gradient(135deg, #1e3a5f 0%, #3f51b5 50%, #6366f1 100%);
+            border-radius: 18px;
+            padding: 28px 32px;
+            margin-bottom: 24px;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .flow-hero::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, .06);
+            border-radius: 50%;
+        }
+
+        .flow-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            left: 30%;
+            width: 280px;
+            height: 280px;
+            background: rgba(255, 255, 255, .04);
+            border-radius: 50%;
+        }
+
+        .flow-hero h1 {
+            font-size: clamp(17px, 2.5vw, 24px);
+            font-weight: 700;
+            margin: 0 0 6px 0;
+        }
+
+        .flow-hero p {
+            font-size: 13px;
+            opacity: .82;
+            margin: 0;
+            max-width: 600px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, .15);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, .25);
+            border-radius: 100px;
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        /* ── R-CALCULATOR CARD ── */
+        .r-calc-card {
+            background: var(--bg-surface, #fff);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 22px 24px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-node);
+        }
+
+        .r-calc-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--c-primary);
+            margin: 0 0 14px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .r-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .r-field label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 4px;
+        }
+
+        .r-field input {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all .2s;
+            background: #f8fafc;
+            box-sizing: border-box;
+        }
+
+        .r-field input:focus {
+            outline: none;
+            border-color: var(--c-primary);
+            background: #fff;
+            box-shadow: 0 0 0 3px var(--c-primary-h);
+        }
+
+        .r-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        #r-result {
+            margin-top: 14px;
+            padding: 14px 16px;
+            border-radius: 10px;
+            font-size: 14px;
+            display: none;
+            border-left: 5px solid transparent;
+            animation: fadeSlide .3s ease;
+        }
+
+        .r-value-big {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .r-goto-btn {
+            margin-top: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--c-primary);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 7px 14px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .2s;
+        }
+
+        .r-goto-btn:hover {
+            opacity: .85;
+            transform: translateX(2px);
+        }
+
+        /* ── FLOWCHART TABS ── */
+        .flow-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .flow-tab-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border: 2px solid #e2e8f0;
+            border-radius: 100px;
+            background: #f8fafc;
+            font-size: 13px;
+            font-weight: 600;
+            color: #475569;
+            cursor: pointer;
+            transition: all .25s;
+        }
+
+        .flow-tab-btn .tab-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            transition: all .25s;
+        }
+
+        .flow-tab-btn:hover {
+            border-color: #94a3b8;
+            color: #1e293b;
+        }
+
+        .flow-tab-btn.active {
+            background: #1e3a5f;
+            border-color: #1e3a5f;
+            color: #fff;
+        }
+
+        .flow-tab-btn.active .tab-dot {
+            background: #60a5fa;
+        }
+
+        .flow-tab-btn.tab-danger.active {
+            background: var(--c-danger);
+            border-color: var(--c-danger);
+        }
+
+        .flow-tab-btn.tab-danger.active .tab-dot {
+            background: #fca5a5;
+        }
+
+        .flow-tab-btn.tab-warn.active {
+            background: var(--c-warn);
+            border-color: var(--c-warn);
+        }
+
+        .flow-tab-btn.tab-warn.active .tab-dot {
+            background: #fcd34d;
+        }
+
+        /* ── FLOWCHART CANVAS ── */
+        .flow-canvas-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .flow-pane {
+            display: none;
+            animation: fadeSlide .35s ease;
+            width: 100%;
+        }
+
+        .flow-pane.active {
+            display: block;
+        }
+
+        /* ── NODE SYSTEM ── */
+        .flow-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            width: 100%;
+        }
+
+        .fnode {
+            position: relative;
+            border-radius: var(--radius-node);
+            padding: 14px 18px;
+            width: 100%;
+            max-width: 520px;
+            box-sizing: border-box;
+            border: 2px solid transparent;
+            box-shadow: var(--shadow-node);
+            transition: box-shadow .2s, transform .2s;
+        }
+
+        /* Cho phép node co giãn linh hoạt khi nằm trong nhánh rẽ đại thể */
+        .flow-branch-side .fnode {
+            max-width: 100%;
+        }
+
+        .fnode.clickable {
+            cursor: pointer;
+        }
+
+        .fnode.clickable:hover {
+            box-shadow: var(--shadow-node-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Node color themes */
+        .fnode-start {
+            background: linear-gradient(135deg, #1e3a5f, #3f51b5);
+            color: #fff;
+            border-color: rgba(255, 255, 255, .2);
+        }
+
+        .fnode-danger {
+            background: var(--c-danger-h);
+            border-color: var(--c-danger-b);
+            color: #7f1d1d;
+        }
+
+        .fnode-warn {
+            background: var(--c-warn-h);
+            border-color: var(--c-warn-b);
+            color: #78350f;
+        }
+
+        .fnode-info {
+            background: var(--c-info-h);
+            border-color: var(--c-info-b);
+            color: #0c4a6e;
+        }
+
+        .fnode-ok {
+            background: var(--c-ok-h);
+            border-color: var(--c-ok-b);
+            color: #14532d;
+        }
+
+        .fnode-purple {
+            background: var(--c-purple-h);
+            border-color: var(--c-purple-b);
+            color: #4c1d95;
+        }
+
+        .fnode-neutral {
+            background: #f8fafc;
+            border-color: #e2e8f0;
+            color: #334155;
+        }
+
+        .fnode-question {
+            background: #fff;
+            border-color: #93c5fd;
+            color: #1e3a5f;
+            border-style: dashed;
+        }
+
+        .fnode-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin: 0 0 6px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 7px;
+        }
+
+        .fnode-body {
+            font-size: 13px;
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        .fnode-body ul {
+            margin: 6px 0 0 0;
+            padding-left: 18px;
+        }
+
+        .fnode-body li {
+            margin-bottom: 3px;
+        }
+
+        .fnode-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 100px;
+            background: rgba(0, 0, 0, .08);
+            margin-bottom: 6px;
+        }
+
+        /* ── CONNECTOR (vertical arrow) ── */
+        .flow-connector {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 6px 0;
+            gap: 0;
+            width: 100%;
+        }
+
+        .flow-connector-line {
+            width: 2px;
+            height: 22px;
+            background: linear-gradient(to bottom, #94a3b8, #64748b);
+        }
+
+        .flow-connector-arrow {
+            width: 0;
+            height: 0;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-top: 10px solid #64748b;
+        }
+
+        .flow-connector-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .4px;
+            padding: 2px 9px;
+            border-radius: 100px;
+            color: #fff;
+            margin: 4px 0;
+        }
+
+        .fc-yes {
+            background: var(--c-danger);
+        }
+
+        .fc-no {
+            background: var(--c-ok);
+        }
+
+        .fc-high {
+            background: var(--c-warn);
+        }
+
+        .fc-norm {
+            background: #64748b;
+        }
+
+        .fc-and {
+            background: var(--c-purple);
+        }
+
+        /* ── BRANCH (two paths side by side) ── */
+        .flow-branch {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+            max-width: 1100px;
+            /* Tăng từ 700px lên 1100px để các nhánh lồng nhau có đủ không gian hiển thị */
+        }
+
+        .flow-branch-side {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            width: 100%;
+            min-width: 0;
+            /* Quan trọng: Ngăn chặn hiện tượng sụp đổ chiều rộng/chiều cao do flex/grid item layout */
+        }
+
+        /* ── EXPAND DETAILS PANEL ── */
+        .fnode-details {
+            display: none;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1.5px dashed rgba(0, 0, 0, .12);
+            animation: fadeSlide .25s ease;
+        }
+
+        .fnode-details.open {
+            display: block;
+        }
+
+        .fnode-expand-hint {
+            font-size: 11px;
+            opacity: .65;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .expand-icon {
+            display: inline-block;
+            transition: transform .25s;
+        }
+
+        .fnode.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        /* ── ALERT BOX INSIDE DETAILS ── */
+        .detail-box {
+            background: rgba(255, 255, 255, .7);
+            border-radius: 10px;
+            padding: 12px 14px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            line-height: 1.55;
+        }
+
+        .detail-box:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-box-title {
+            font-weight: 700;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .detail-box ul {
+            padding-left: 18px;
+            margin: 4px 0 0 0;
+        }
+
+        .detail-box li {
+            margin-bottom: 3px;
+        }
+
+        code {
+            background: rgba(0, 0, 0, .07);
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* ── TABLE ── */
+        .flow-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+
+        .flow-table th {
+            background: rgba(0, 0, 0, .07);
+            padding: 7px 10px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        .flow-table td {
+            padding: 7px 10px;
+            border-top: 1px solid rgba(0, 0, 0, .07);
+            vertical-align: top;
+        }
+
+        /* ── BUTTONS ── */
+        .btn-flow {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all .2s;
+        }
+
+        .btn-flow:active {
+            transform: scale(.97);
+        }
+
+        .btn-calc {
+            background: var(--c-primary);
+            color: #fff;
+        }
+
+        .btn-calc:hover {
+            opacity: .88;
+        }
+
+        .btn-reset {
+            background: #f1f5f9;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+        }
+
+        .btn-reset:hover {
+            background: #e2e8f0;
+        }
+
+        .btn-danger {
+            background: var(--c-danger);
+            color: #fff;
+        }
+
+        .btn-danger:hover {
+            opacity: .88;
+        }
+
+        .btn-ok {
+            background: var(--c-ok);
+            color: #fff;
+        }
+
+        .btn-ok:hover {
+            opacity: .88;
+        }
+
+        /* ── LEGEND ── */
+        .flow-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #475569;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        /* ── STEP BADGE ── */
+        .step-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, .12);
+            font-size: 11px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* ── PRIORITY MARKER ── */
+        .priority-ring {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            border: 3px solid;
+        }
+
+        .pr-red {
+            border-color: var(--c-danger);
+            background: var(--c-danger-h);
+        }
+
+        .pr-yellow {
+            border-color: var(--c-warn);
+            background: var(--c-warn-h);
+        }
+
+        .pr-blue {
+            border-color: var(--c-info);
+            background: var(--c-info-h);
+        }
+
+        .pr-green {
+            border-color: var(--c-ok);
+            background: var(--c-ok-h);
+        }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeSlide {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulseRed {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(220, 38, 38, .4);
+            }
+
+            50% {
+                box-shadow: 0 0 0 8px rgba(220, 38, 38, .0);
+            }
+        }
+
+        .pulse-danger {
+            animation: pulseRed 2s ease-in-out infinite;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .flow-branch {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .r-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .flow-hero {
+                padding: 20px 18px;
+            }
+        }
+
+        /* ── DARK MODE adjustments ── */
+        [data-theme="dark"] .r-calc-card,
+        [data-theme="dark"] .fnode-question {
+            background: #1e293b;
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+
+        [data-theme="dark"] .fnode-neutral {
+            background: #1e293b;
+            border-color: #334155;
+            color: #cbd5e1;
+        }
+
+        [data-theme="dark"] .r-field input {
+            background: #0f172a;
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+
+        [data-theme="dark"] .detail-box {
+            background: rgba(255, 255, 255, .05);
+        }
+
+        [data-theme="dark"] .flow-tab-btn {
+            background: #1e293b;
+            border-color: #334155;
+            color: #94a3b8;
+        }
+
+        /* Section separator */
+        .section-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #94a3b8;
+            margin: 24px 0 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e2e8f0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header-placeholder" data-header-path="../../../pages/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../../../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ lâm sàng">
+                            <span class="nav-icon">⚙️</span>
+                            <span class="nav-text">Công cụ lâm sàng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+                            <span class="nav-icon">📄</span>
+                            <span class="nav-text">Y học chứng cứ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+                            <span class="nav-icon">💊</span>
+                            <span class="nav-text">Dược lý lâm sàng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Tiếp cận/tiep-can.html" class="nav-item active" aria-current="page"
+                            title="Tiếp cận triệu chứng">
+                            <span class="nav-icon">🤒</span>
+                            <span class="nav-text">Tiếp cận lâm sàng</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="app-main-container flow-page">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container">
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item">
+                        <a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="../../Tiếp cận/tiep-can.html" class="breadcrumb-link">Tiếp cận</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Sinh hóa Gan</li>
+                </ol>
+            </nav>
+
+            <!-- HERO -->
+            <div class="flow-hero">
+                <div class="hero-badge">🧬 Lưu đồ tương tác • 2026</div>
+                <h1>Tiếp cận Bất thường Sinh hóa Gan</h1>
+                <p>Thuật toán lâm sàng có hướng dẫn từng bước – Nhấn vào từng nút để xem chi tiết chẩn đoán và xử trí
+                </p>
+            </div>
+
+            <!-- LEGEND -->
+            <div class="flow-legend">
+                <div class="legend-item">
+                    <div class="legend-dot" style="background:var(--c-danger)"></div> Khẩn cấp / Nguy hiểm
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background:var(--c-warn)"></div> Quan trọng / Cần làm ngay
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background:var(--c-info)"></div> Thông tin / Hướng dẫn
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background:var(--c-ok)"></div> Kết luận / Ổn định
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background:var(--c-purple)"></div> Hiếm gặp / Bậc 2
+                </div>
+                <div class="legend-item" style="font-style:italic;">💡 Nhấn vào nút màu để xem chi tiết</div>
+            </div>
+
+            <!-- ═══════════════════════════════════════
+                 STEP 0: R-RATIO CALCULATOR
+            ═══════════════════════════════════════ -->
+            <div class="section-label">Bước 0 · Phân loại ban đầu</div>
+
+            <div class="r-calc-card">
+                <p class="r-calc-title">📐 Tính tỷ số R – Định hướng loại tổn thương gan</p>
+                <p style="font-size:13px; color:#64748b; margin: 0 0 14px 0;">
+                    <strong>R = (ALT ÷ ULN<sub>ALT</sub>) ÷ (ALP ÷ ULN<sub>ALP</sub>)</strong> &nbsp;|&nbsp;
+                    R &gt; 5: Hủy tế bào &nbsp;•&nbsp; R &lt; 2: Ứ mật &nbsp;•&nbsp; 2–5: Hỗn hợp
+                </p>
+                <div class="r-grid">
+                    <div class="r-field">
+                        <label>ALT bệnh nhân (IU/L)</label>
+                        <input type="number" id="alt-val" placeholder="VD: 250" min="0">
+                    </div>
+                    <div class="r-field">
+                        <label>ULN của ALT*</label>
+                        <input type="number" id="alt-uln" value="33" title="Nam ~33, Nữ ~25" min="1">
+                    </div>
+                    <div class="r-field">
+                        <label>ALP bệnh nhân (IU/L)</label>
+                        <input type="number" id="alp-val" placeholder="VD: 140" min="0">
+                    </div>
+                    <div class="r-field">
+                        <label>ULN của ALP</label>
+                        <input type="number" id="alp-uln" value="115" min="1">
+                    </div>
+                </div>
+                <div class="r-actions">
+                    <button class="btn-flow btn-calc" id="btn-calc-r" onclick="calcR()">⚡ Tính tỷ số R</button>
+                    <button class="btn-flow btn-reset" onclick="resetR()">↺ Xóa</button>
+                </div>
+                <div id="r-result"></div>
+            </div>
+
+            <!-- ═══════════════════════════════════════
+                 FLOW TABS
+            ═══════════════════════════════════════ -->
+            <div class="section-label">Lưu đồ phân nhánh</div>
+
+            <div class="flow-tabs" role="tablist">
+                <button id="tab-btn-hepa" class="flow-tab-btn tab-danger active" role="tab" aria-selected="true"
+                    onclick="switchPane('hepa')" aria-controls="pane-hepa">
+                    <span class="tab-dot"></span>
+                    🔴 SƠ ĐỒ 1: Hủy tế bào gan (AST/ALT↑)
+                </button>
+                <button id="tab-btn-chole" class="flow-tab-btn tab-warn" role="tab" aria-selected="false"
+                    onclick="switchPane('chole')" aria-controls="pane-chole">
+                    <span class="tab-dot"></span>
+                    🟡 SƠ ĐỒ 2: Ứ mật (ALP/GGT↑)
+                </button>
+            </div>
+
+            <!-- ═══════════════════════════════════════
+                 PANE 1: HEPATOCELLULAR (AST/ALT)
+            ═══════════════════════════════════════ -->
+            <div id="pane-hepa" class="flow-pane active" role="tabpanel" aria-labelledby="tab-btn-hepa">
+                <div class="flow-col">
+
+                    <!-- Node: Start -->
+                    <div class="fnode fnode-start">
+                        <div class="fnode-tag">🔴 Nhánh hủy tế bào gan</div>
+                        <div class="fnode-title">
+                            <span>AST và/hoặc ALT tăng cao</span>
+                        </div>
+                        <p class="fnode-body">Transaminase tăng chủ đạo (R &gt; 5). Bắt đầu sàng lọc khẩn cấp từ câu hỏi
+                            đầu tiên.</p>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="flow-connector">
+                        <div class="flow-connector-line"></div>
+                        <div class="flow-connector-arrow"></div>
+                    </div>
+
+                    <!-- Node Q1: ALF? -->
+                    <div class="fnode fnode-question clickable" id="hepa-q1" onclick="toggleNode(this)">
+                        <div class="fnode-tag">❓ Câu hỏi 1 · Sàng lọc khẩn cấp</div>
+                        <div class="fnode-title">
+                            <span class="step-badge">1</span>
+                            Bệnh nhân có dấu hiệu Suy Gan Cấp (ALF)?
+                        </div>
+                        <p class="fnode-body">
+                            <strong>Bệnh não gan</strong> (lú lẫn, ngủ gà, Flapping tremor) <em>KÈM</em> <strong>INR ≥
+                                1.5</strong> và Bilirubin tăng?
+                        </p>
+                        <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấn để xem tiêu chí đánh giá
+                        </div>
+                        <div class="fnode-details">
+                            <div class="detail-box">
+                                <div class="detail-box-title">🎯 Tiêu chí chẩn đoán ALF (O'Grady 1993)</div>
+                                <ul>
+                                    <li>Bệnh não gan <strong>cấp</strong> (khởi phát &lt; 26 tuần trên nền gan chưa xơ)
+                                    </li>
+                                    <li>INR ≥ 1.5 (không dùng warfarin)</li>
+                                    <li>Tăng Bilirubin toàn phần thường &gt; 3× ULN</li>
+                                    <li><em>Hyperacute:</em> &lt; 7 ngày &nbsp;|&nbsp; <em>Acute:</em> 7–28 ngày
+                                        &nbsp;|&nbsp; <em>Subacute:</em> 28 ngày – 6 tháng</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Branch: ALF yes vs no -->
+                    <div class="flow-connector">
+                        <div class="flow-connector-line"></div>
+                        <div class="flow-connector-arrow"></div>
+                    </div>
+                    <div class="flow-branch">
+                        <!-- LEFT: ALF YES -->
+                        <div class="flow-branch-side">
+                            <div class="flow-connector-label fc-yes">CÓ → Suy gan cấp</div>
+                            <div class="flow-connector" style="margin:4px 0">
+                                <div class="flow-connector-line"></div>
+                                <div class="flow-connector-arrow"></div>
+                            </div>
+                            <div class="fnode fnode-danger pulse-danger clickable" onclick="toggleNode(this)">
+                                <div class="fnode-tag">🚨 BÁO ĐỘNG ĐỎ</div>
+                                <div class="fnode-title">SUY GAN CẤP (ALF) – XỬ TRÍ KHẨN CẤP</div>
+                                <p class="fnode-body">Nguy cơ tử vong rất cao. Ngưng quy trình tìm nguyên nhân thông
+                                    thường.</p>
+                                <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấn xem y lệnh khẩn
+                                </div>
+                                <div class="fnode-details">
+                                    <div class="detail-box">
+                                        <div class="detail-box-title">⚡ Hành động ngay lập tức</div>
+                                        <ul>
+                                            <li>Chuyển ngay vào <strong>ICU / HDU</strong></li>
+                                            <li>Liên hệ <strong>Trung tâm Ghép gan</strong> gần nhất</li>
+                                            <li>Truyền TM ngay: <code>N-Acetylcysteine (NAC)</code> <em>dù chưa rõ
+                                                    nguyên nhân</em> – Liều: 150 mg/kg trong 60 phút → 50 mg/kg trong 4
+                                                giờ → 100 mg/kg trong 16 giờ</li>
+                                            <li>Theo dõi INR, Bilirubin, Creatinine mỗi 4–6h</li>
+                                            <li>Đánh giá tiêu chuẩn ghép gan: <strong>King's College Criteria</strong>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="detail-box">
+                                        <div class="detail-box-title">🔍 Tìm nguyên nhân song song</div>
+                                        <ul>
+                                            <li>Paracetamol/Acetaminophen quá liều → định lượng nồng độ máu</li>
+                                            <li>Viêm gan siêu vi cấp: <code>IgM anti-HAV</code>,
+                                                <code>HBsAg + IgM anti-HBc</code>, <code>Anti-HCV PCR</code>,
+                                                <code>IgM anti-HEV</code>
+                                            </li>
+                                            <li>Wilson bệnh cấp: Ceruloplasmin, ANA</li>
+                                            <li>Thiếu máu/sốc gan: ECHO tim, áp lực tĩnh mạch cổ</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- RIGHT: ALF NO -->
+                        <div class="flow-branch-side">
+                            <div class="flow-connector-label fc-no">KHÔNG → Tiếp tục</div>
+                            <div class="flow-connector" style="margin:4px 0">
+                                <div class="flow-connector-line"></div>
+                                <div class="flow-connector-arrow"></div>
+                            </div>
+                            <div class="fnode fnode-neutral clickable" onclick="toggleNode(this)">
+                                <div class="fnode-tag">⏱️ Câu hỏi 2 · Diễn tiến</div>
+                                <div class="fnode-title">
+                                    <span class="step-badge">2</span>
+                                    Xác định biên độ & mức độ cấp tính
+                                </div>
+                                <p class="fnode-body">Mức tăng men gan và thời gian tồn tại quyết định nhánh tiếp theo.
+                                </p>
+                                <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Xem phân loại</div>
+                                <div class="fnode-details">
+                                    <table class="flow-table">
+                                        <tr>
+                                            <th>Phân loại</th>
+                                            <th>Tiêu chí</th>
+                                        </tr>
+                                        <tr>
+                                            <td>⚡ <strong>Cấp tính nặng</strong></td>
+                                            <td>&gt; 10× ULN, khởi phát &lt; 6 tháng</td>
+                                        </tr>
+                                        <tr>
+                                            <td>🌊 <strong>Cấp tính vừa</strong></td>
+                                            <td>5–10× ULN, &lt; 6 tháng</td>
+                                        </tr>
+                                        <tr>
+                                            <td>🐢 <strong>Mạn tính</strong></td>
+                                            <td>&lt; 5× ULN, &gt; 6 tháng liên tục</td>
+                                        </tr>
+                                        <tr>
+                                            <td>📉 <strong>Nhẹ không triệu chứng</strong></td>
+                                            <td>&lt; 3× ULN, phát hiện tình cờ</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Divider -->
+                    <div class="flow-connector" style="margin-top:12px;">
+                        <div class="flow-connector-line"></div>
+                        <div class="flow-connector-arrow"></div>
+                    </div>
+                    <div class="flow-branch">
+                        <!-- ACUTE BRANCH -->
+                        <div class="flow-branch-side">
+                            <div class="flow-connector-label fc-high">⚡ NHÁNH CẤP TÍNH</div>
+                            <div class="flow-connector" style="margin:4px 0">
+                                <div class="flow-connector-line"></div>
+                                <div class="flow-connector-arrow"></div>
+                            </div>
+                            <div class="fnode fnode-info clickable" onclick="toggleNode(this)">
+                                <div class="fnode-tag">⚡ Cấp tính – &gt; 5× ULN</div>
+                                <div class="fnode-title">3 nhóm nguyên nhân ưu tiên</div>
+                                <p class="fnode-body">Soi theo thứ tự xác suất – nhóm nào khả năng cao nhất?</p>
+                                <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Xem chi tiết</div>
+                                <div class="fnode-details">
+                                    <div class="detail-box">
+                                        <div class="detail-box-title"><span class="priority-ring pr-red"></span> 1.
+                                            Thiếu máu cục bộ / Sốc gan</div>
+                                        <ul>
+                                            <li>AST/ALT thường <strong>&gt; 1000 IU/L</strong>, kèm tăng vọt LDH</li>
+                                            <li>Giảm ≥ 50% trong <strong>48h</strong> sau bù huyết động là gợi ý rất
+                                                mạnh</li>
+                                            <li>Hỏi: tiền sử sốc, suy tim mất bù, thuyên tắc phổi, hạ HA cấp</li>
+                                            <li>XN: ECHO tim, Troponin, siêu âm tĩnh mạch cổ</li>
+                                        </ul>
+                                    </div>
+                                    <div class="detail-box">
+                                        <div class="detail-box-title"><span class="priority-ring pr-red"></span> 2. Độc
+                                            chất & Thuốc (DILI)</div>
+                                        <ul>
+                                            <li>Hỏi kỹ trong vòng 3 tháng: Acetaminophen, thực phẩm chức năng, thuốc nam
+                                            </li>
+                                            <li><em>Thuốc ức chế điểm kiểm soát miễn dịch (ICIs):</em> Anti-PD1/L1,
+                                                CTLA-4</li>
+                                            <li>Dùng thang điểm <strong>RUCAM</strong> để đánh giá quan hệ nhân quả</li>
+                                            <li>XN: Định lượng Acetaminophen huyết thanh, bảng mã ICD DILI</li>
+                                        </ul>
+                                    </div>
+                                    <div class="detail-box">
+                                        <div class="detail-box-title"><span class="priority-ring pr-yellow"></span> 3.
+                                            Siêu vi viêm gan cấp</div>
+                                        <ul>
+                                            <li>Chỉ định khẩn: <code>IgM anti-HAV</code> &nbsp;|&nbsp;
+                                                <code>HBsAg + IgM anti-HBc</code>
+                                            </li>
+                                            <li><code>Anti-HCV + HCV-RNA</code> &nbsp;|&nbsp; <code>IgM anti-HEV</code>
+                                            </li>
+                                            <li>Nếu đi từ vùng dịch tễ: Anti-HEV bắt buộc</li>
+                                            <li>Nếu nghi HSV hepatitis: PCR HSV/EBV/CMV</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CHRONIC BRANCH -->
+                        <div class="flow-branch-side">
+                            <div class="flow-connector-label fc-norm">🐢 NHÁNH MẠN TÍNH</div>
+                            <div class="flow-connector" style="margin:4px 0">
+                                <div class="flow-connector-line"></div>
+                                <div class="flow-connector-arrow"></div>
+                            </div>
+                            <div class="fnode fnode-warn clickable" onclick="toggleNode(this)">
+                                <div class="fnode-tag">🐢 Mạn tính – &lt; 5× ULN · &gt; 6 tháng</div>
+                                <div class="fnode-title">Tầm soát Bậc 1 + Đánh giá xơ hóa</div>
+                                <p class="fnode-body">Thực hiện song song: tìm căn nguyên <em>và</em> định lượng mức xơ
+                                    hóa.</p>
+                                <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Xem chi tiết</div>
+                                <div class="fnode-details">
+                                    <div class="detail-box">
+                                        <div class="detail-box-title">🔬 A. Tầm soát căn nguyên Bậc 1</div>
+                                        <ul>
+                                            <li><strong>HBsAg</strong> – Viêm gan B mạn</li>
+                                            <li><strong>Anti-HCV</strong> – Viêm gan C mạn</li>
+                                            <li>Bệnh gan do rượu (ALD): gợi ý khi <code>AST/ALT &gt; 2</code> (De Ritis
+                                                ratio)</li>
+                                            <li>Bệnh gan nhiễm mỡ chuyển hóa (<strong>MASLD</strong>): BMI, vòng eo,
+                                                HbA1c, Triglyceride</li>
+                                            <li>DILI mạn: tiền sử dùng thuốc &gt; 3 tháng</li>
+                                        </ul>
+                                    </div>
+                                    <div class="detail-box">
+                                        <div class="detail-box-title">📊 B. Đánh giá xơ hóa (Bắt buộc 2026)</div>
+                                        <ul>
+                                            <li><strong>Chỉ số FIB-4</strong> = (Tuổi × AST) ÷ (PLT × √ALT)
+                                                <br>• &lt; 1.30: xơ hóa thấp &nbsp;|&nbsp; 1.30–2.67: vùng xám
+                                                &nbsp;|&nbsp; &gt; 2.67: xơ hóa tiến triển
+                                            </li>
+                                            <li><strong>Đo độ đàn hồi gan (Fibroscan)</strong>: gold standard không xâm
+                                                lấn</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sub arrow -->
+                            <div class="flow-connector" style="margin:6px 0">
+                                <div class="flow-connector-line"></div>
+                                <div class="flow-connector-label fc-and" style="margin:3px 0;">Bậc 1 âm tính → Bậc 2
+                                </div>
+                                <div class="flow-connector-line"></div>
+                                <div class="flow-connector-arrow"></div>
+                            </div>
+
+                            <div class="fnode fnode-purple clickable" onclick="toggleNode(this)">
+                                <div class="fnode-tag">🔬 Tầm soát Bậc 2 – Nguyên nhân hiếm</div>
+                                <div class="fnode-title">4 bệnh lý cần loại trừ</div>
+                                <p class="fnode-body">Khi các căn nguyên phổ biến đã được loại trừ.</p>
+                                <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Xem bảng chi tiết
+                                </div>
+                                <div class="fnode-details">
+                                    <table class="flow-table">
+                                        <tr>
+                                            <th>Bệnh lý</th>
+                                            <th>Xét nghiệm chỉ định</th>
+                                        </tr>
+                                        <tr>
+                                            <td>🧲 <strong>Ứ sắt di truyền (HH)</strong></td>
+                                            <td>Độ bão hòa Transferrin (TSAT) &gt; 45% + Ferritin ↑ →
+                                                <code>HFE gene</code>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>🪙 <strong>Bệnh Wilson</strong> <em>(BN &lt; 40t)</em></td>
+                                            <td>Ceruloplasmin ↓ + Đồng niệu 24h ↑ → Vòng Kayser-Fleischer</td>
+                                        </tr>
+                                        <tr>
+                                            <td>🫧 <strong>Thiếu hụt α1-Antitrypsin</strong></td>
+                                            <td>Định lượng nồng độ α1-AT huyết thanh + phenotype Pi</td>
+                                        </tr>
+                                        <tr>
+                                            <td>🛡️ <strong>Viêm gan tự miễn (AIH)</strong></td>
+                                            <td>ANA, ASMA, Anti-LKM1, IgG toàn phần (IgG &gt; 2× ULN gợi ý mạnh)</td>
+                                        </tr>
+                                    </table>
+                                    <div class="detail-box" style="margin-top:8px; background: rgba(124,58,237,.07);">
+                                        <div class="detail-box-title">⚠️ Quyết định sinh thiết gan</div>
+                                        <ul>
+                                            <li>FIB-4 &gt; 2.67 <em>hoặc</em> Fibroscan &gt; 8.0 kPa → Cân nhắc sinh
+                                                thiết</li>
+                                            <li>Bậc 2 tiếp tục âm tính → Sinh thiết gan để chẩn đoán</li>
+                                            <li>Nghi AIH: Thang điểm IAIHG (simplified criteria) &gt; 6 điểm trước sinh
+                                                thiết</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- end flow-branch -->
+                </div><!-- end flow-col -->
+            </div><!-- end pane-hepa -->
+
+
+            <!-- ═══════════════════════════════════════
+                 PANE 2: CHOLESTATIC (ALP/GGT)
+            ═══════════════════════════════════════ -->
+            <div id="pane-chole" class="flow-pane" role="tabpanel" aria-labelledby="tab-btn-chole">
+                <div class="flow-col">
+
+                    <!-- Node: Start -->
+                    <div class="fnode"
+                        style="background:linear-gradient(135deg,#78350f,#d97706); color:#fff; max-width:520px;">
+                        <div class="fnode-tag">🟡 Nhánh ứ mật</div>
+                        <div class="fnode-title">ALP và/hoặc GGT tăng cao</div>
+                        <p class="fnode-body">Tăng men ứ mật ưu thế (R &lt; 2). Bước đầu tiên: xác nhận nguồn gốc từ
+                            gan.</p>
+                    </div>
+
+                    <div class="flow-connector">
+                        <div class="flow-connector-line"></div>
+                        <div class="flow-connector-arrow"></div>
+                    </div>
+
+                    <!-- Q1: GGT? -->
+                    <div class="fnode fnode-question clickable" onclick="toggleNode(this)">
+                        <div class="fnode-tag">❓ Câu hỏi 1 · Nguồn gốc ALP</div>
+                        <div class="fnode-title">
+                            <span class="step-badge">1</span>
+                            GGT (Gamma-Glutamyltransferase) tăng hay bình thường?
+                        </div>
+                        <p class="fnode-body">GGT là "phép thử nguồn gốc" của ALP. GGT bình thường → ALP <strong>không
+                                từ gan</strong>.</p>
+                        <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Xem lý giải</div>
+                        <div class="fnode-details">
+                            <div class="detail-box">
+                                <div class="detail-box-title">🔬 Nguyên lý GGT trong đánh giá ALP</div>
+                                <ul>
+                                    <li>ALP có ở <strong>gan, xương, ruột, nhau thai</strong> → Không đặc hiệu cho gan
+                                    </li>
+                                    <li>GGT <strong>chỉ có ở gan và thận</strong> → Nếu GGT bình thường, ALP tăng đến từ
+                                        xương/nhau thai</li>
+                                    <li>GGT còn là dấu ấn nhạy của <strong>lạm dụng rượu</strong> (tăng trước các marker
+                                        khác)</li>
+                                    <li>ULN của GGT: Nam ~60 U/L, Nữ ~36 U/L (theo phòng xét nghiệm)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flow-connector">
+                        <div class="flow-connector-line"></div>
+                        <div class="flow-connector-arrow"></div>
+                    </div>
+
+                    <!-- Branch: GGT normal vs high -->
+                    <div class="flow-branch">
+                        <!-- GGT NORMAL -->
+                        <div class="flow-branch-side">
+                            <div class="flow-connector-label fc-norm">GGT bình thường</div>
+                            <div class="flow-connector" style="margin:4px 0">
+                                <div class="flow-connector-line"></div>
+                                <div class="flow-connector-arrow"></div>
+                            </div>
+                            <div class="fnode fnode-ok clickable" onclick="toggleNode(this)">
+                                <div class="fnode-tag">🦴 Kết luận: ALP ngoài gan</div>
+                                <div class="fnode-title">ALP tăng KHÔNG do hệ mật</div>
+                                <p class="fnode-body">Hệ thống dẫn mật vô tội. Nguồn ALP đến từ xương hoặc sinh lý.</p>
+                                <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Xem các nguyên nhân
+                                </div>
+                                <div class="fnode-details">
+                                    <div class="detail-box">
+                                        <div class="detail-box-title">🦴 Nguồn gốc xương</div>
+                                        <ul>
+                                            <li>Bệnh Paget của xương (ALP rất cao, đặc trưng)</li>
+                                            <li>Cường cận giáp (hyperparathyroidism)</li>
+                                            <li>Di căn xương đang hoạt động</li>
+                                            <li>Gãy xương đang lành / Loãng xương nặng</li>
+                                        </ul>
+                                    </div>
+                                    <div class="detail-box">
+                                        <div class="detail-box-title">🤰 Sinh lý / Đặc biệt</div>
+                                        <ul>
+                                            <li>Phụ nữ mang thai (nhau thai bài tiết ALP – tăng tam cá nguyệt 3)</li>
+                                            <li>Trẻ em / Thanh thiếu niên đang phát triển chiều cao</li>
+                                        </ul>
+                                    </div>
+                                    <div class="detail-box">
+                                        <div class="detail-box-title">✅ Hướng xử trí tiếp</div>
+                                        <ul>
+                                            <li>Chỉ định: <code>X-quang xương</code>, <code>PTH máu</code>,
+                                                <code>Xạ hình xương (bone scan)</code>
+                                            </li>
+                                            <li>Hỏi tiền sử gãy xương, đau xương, dùng bisphosphonates</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- GGT HIGH -->
+                        <div class="flow-branch-side">
+                            <div class="flow-connector-label fc-high">GGT tăng cao ↑</div>
+                            <div class="flow-connector" style="margin:4px 0">
+                                <div class="flow-connector-line"></div>
+                                <div class="flow-connector-arrow"></div>
+                            </div>
+                            <div class="fnode fnode-warn clickable" onclick="toggleNode(this)">
+                                <div class="fnode-tag">📡 Câu hỏi 2 · Hình ảnh học</div>
+                                <div class="fnode-title">
+                                    <span class="step-badge">2</span>
+                                    Chỉ định: Siêu âm bụng (± CT/MRCP)
+                                </div>
+                                <p class="fnode-body">ALP tăng có nguồn gốc từ gan/mật. Bước kế tiếp: phân biệt tắc
+                                    nghẽn <em>ngoài gan</em> vs <em>trong gan</em>.</p>
+                                <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Xem hướng dẫn hình ảnh
+                                    học</div>
+                                <div class="fnode-details">
+                                    <div class="detail-box">
+                                        <div class="detail-box-title">📋 Siêu âm bụng – Những điều cần đánh giá</div>
+                                        <ul>
+                                            <li>Kích thước <strong>ống mật chủ</strong> (bình thường &lt; 6mm; &lt; 8mm
+                                                sau cắt túi mật)</li>
+                                            <li>Đường mật trong gan có giãn không?</li>
+                                            <li>Túi mật: sỏi, polyp, thành dày</li>
+                                            <li>Tụy: u đầu tụy, giãn ống Wirsung</li>
+                                            <li>Hạch rốn gan, khối u vùng dưới gan</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sub arrow -->
+                            <div class="flow-connector" style="margin:6px 0">
+                                <div class="flow-connector-line"></div>
+                                <div class="flow-connector-arrow"></div>
+                            </div>
+
+                            <!-- Sub-branch: dilated vs not dilated -->
+                            <div class="flow-branch" style="max-width:100%;">
+                                <div class="flow-branch-side">
+                                    <div class="flow-connector-label fc-yes">Giãn đường mật</div>
+                                    <div class="flow-connector" style="margin:4px 0">
+                                        <div class="flow-connector-line"></div>
+                                        <div class="flow-connector-arrow"></div>
+                                    </div>
+                                    <div class="fnode fnode-danger clickable" onclick="toggleNode(this)">
+                                        <div class="fnode-tag">🚧 Ứ mật ngoài gan</div>
+                                        <div class="fnode-title">TẮC NGHẼN CƠ HỌC đường mật</div>
+                                        <p class="fnode-body">Tắc đại thể. Cần can thiệp giải áp.</p>
+                                        <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Xem chi tiết
+                                        </div>
+                                        <div class="fnode-details">
+                                            <div class="detail-box">
+                                                <div class="detail-box-title">🔍 Các nguyên nhân hàng đầu</div>
+                                                <ul>
+                                                    <li><strong>Sỏi ống mật chủ</strong> (Choledocholithiasis) – Phổ
+                                                        biến nhất</li>
+                                                    <li><strong>U đầu tụy</strong> (thường kèm dấu Courvoisier – túi mật
+                                                        to không đau)</li>
+                                                    <li><strong>U vùng rốn gan (Klatskin tumor)</strong></li>
+                                                    <li>Hẹp đường mật lành tính (sau ERCP, sau phẫu thuật)</li>
+                                                    <li>Viêm tụy mạn, u tá tràng</li>
+                                                </ul>
+                                            </div>
+                                            <div class="detail-box">
+                                                <div class="detail-box-title">🛠️ Bước tiếp theo</div>
+                                                <ul>
+                                                    <li><strong>MRCP</strong> → "Mapping" toàn bộ cây đường mật, không
+                                                        xâm lấn</li>
+                                                    <li><strong>ERCP</strong> → Can thiệp: gắp sỏi, đặt stent, cắt cơ
+                                                        vòng Oddi</li>
+                                                    <li>CA 19-9 nếu nghi u tụy/đường mật</li>
+                                                    <li>Hội chẩn Ngoại/Can thiệp nếu cần Whipple surgery</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flow-branch-side">
+                                    <div class="flow-connector-label fc-norm">Không giãn</div>
+                                    <div class="flow-connector" style="margin:4px 0">
+                                        <div class="flow-connector-line"></div>
+                                        <div class="flow-connector-arrow"></div>
+                                    </div>
+                                    <div class="fnode fnode-info clickable" onclick="toggleNode(this)">
+                                        <div class="fnode-tag">🧪 Câu hỏi 3 · Ứ mật trong gan</div>
+                                        <div class="fnode-title">
+                                            <span class="step-badge">3</span>
+                                            Kiểm tra <strong>AMA</strong> (kháng thể kháng ty thể)
+                                        </div>
+                                        <p class="fnode-body">Ứ mật vi quản, không giãn đường mật lớn. Key test: AMA.
+                                        </p>
+                                        <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Xem chi tiết
+                                        </div>
+                                        <div class="fnode-details">
+                                            <div class="detail-box">
+                                                <div class="detail-box-title">✅ AMA dương tính mạnh (≥ M2)</div>
+                                                <ul>
+                                                    <li>→ <strong>Xơ gan mật nguyên phát (PBC)</strong> – Độ đặc hiệu
+                                                        &gt; 95%</li>
+                                                    <li>Bilan PBC: IgM toàn phần thường ↑↑</li>
+                                                    <li>Điều trị:
+                                                        <code>Ursodeoxycholic acid (UDCA) 13–15 mg/kg/ngày</code>
+                                                    </li>
+                                                    <li>Theo dõi đáp ứng bằng ALP sau 12 tháng (Paris II criteria)</li>
+                                                </ul>
+                                            </div>
+                                            <div class="detail-box">
+                                                <div class="detail-box-title">❌ AMA âm tính → Cần thêm</div>
+                                                <ul>
+                                                    <li>ANA, ASMA → Nghi <strong>Viêm đường mật tự miễn (AIH-PBC
+                                                            overlap)</strong></li>
+                                                    <li><strong>MRCP</strong> → Tìm hình ảnh "hạt trai" đặc trưng của
+                                                        <strong>PSC (Viêm đường mật xơ hóa nguyên phát)</strong>
+                                                    </li>
+                                                    <li>Cân nhắc <strong>sinh thiết gan</strong> nếu MRCP không kết luận
+                                                        được</li>
+                                                </ul>
+                                            </div>
+                                            <div class="detail-box" style="background: rgba(2,132,199,.07);">
+                                                <div class="detail-box-title">🏥 Lưu ý ICU: Sepsis-induced Cholestasis
+                                                </div>
+                                                <ul>
+                                                    <li>Ứ mật không giãn đường mật ở BN sốt nhiễm trùng nặng → Thường do
+                                                        <strong>Cytokine ức chế kênh bơm muối mật</strong> (không phải
+                                                        do tắc cơ học)
+                                                    </li>
+                                                    <li>Xử trí nguyên phát: điều trị nhiễm khuẩn nền</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- end sub-branch -->
+                        </div><!-- end GGT high side -->
+                    </div><!-- end branch GGT -->
+
+                </div><!-- end flow-col -->
+            </div><!-- end pane-chole -->
+
+        </main>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="global-footer">
+        <div class="footer-copyright">
+            <p>CliniPortal © 2026. Giao diện tối ưu hóa hiển thị linh hoạt trên Mobile và Desktop.</p>
+        </div>
+    </footer>
+
+    <script src="../../../js/sidebar.js"></script>
+    <script>
+        // ══════════════════════════════════════════
+        //  1. TAB SWITCHER
+        // ══════════════════════════════════════════
+        function switchPane(id) {
+            document.querySelectorAll('.flow-pane').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.flow-tab-btn').forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-selected', 'false');
+            });
+            document.getElementById('pane-' + id).classList.add('active');
+            const btn = document.getElementById('tab-btn-' + id);
+            btn.classList.add('active');
+            btn.setAttribute('aria-selected', 'true');
+        }
+
+        // ══════════════════════════════════════════
+        //  2. NODE EXPAND / COLLAPSE
+        // ══════════════════════════════════════════
+        function toggleNode(el) {
+            const details = el.querySelector('.fnode-details');
+            if (!details) return;
+            const isOpen = details.classList.contains('open');
+            details.classList.toggle('open', !isOpen);
+            el.classList.toggle('expanded', !isOpen);
+        }
+
+        // ══════════════════════════════════════════
+        //  3. R-RATIO CALCULATOR
+        // ══════════════════════════════════════════
+        function calcR() {
+            const alt = parseFloat(document.getElementById('alt-val').value);
+            const altUln = parseFloat(document.getElementById('alt-uln').value);
+            const alp = parseFloat(document.getElementById('alp-val').value);
+            const alpUln = parseFloat(document.getElementById('alp-uln').value);
+            const box = document.getElementById('r-result');
+
+            if (!alt || !alp || !altUln || !alpUln) {
+                box.style.display = 'block';
+                box.style.background = '#fef2f2';
+                box.style.borderLeftColor = '#dc2626';
+                box.innerHTML = '<strong>⚠️ Vui lòng nhập đủ 4 chỉ số.</strong>';
+                return;
+            }
+
+            const r = (alt / altUln) / (alp / alpUln);
+            let bg, border, label, icon, pane, info;
+
+            if (r > 5) {
+                bg = '#fef2f2'; border = '#dc2626';
+                label = 'TỔN THƯƠNG HỦY TẾ BÀO GAN (Hepatocellular)';
+                icon = '🔴'; pane = 'hepa';
+                info = 'Chuyển sang <strong>Sơ đồ 1</strong> – AST/ALT';
+            } else if (r < 2) {
+                bg = '#fffbeb'; border = '#d97706';
+                label = 'TỔN THƯƠNG Ứ MẬT (Cholestatic)';
+                icon = '🟡'; pane = 'chole';
+                info = 'Chuyển sang <strong>Sơ đồ 2</strong> – ALP/GGT';
+            } else {
+                bg = '#f0f9ff'; border = '#0284c7';
+                label = 'KIỂU HỖN HỢP (Mixed Pattern) – 2 ≤ R ≤ 5';
+                icon = '🔵'; pane = 'hepa';
+                info = 'Đánh giá <strong>cả 2 nhánh</strong>. Ưu tiên soi Transaminase trước.';
+            }
+
+            box.style.display = 'block';
+            box.style.background = bg;
+            box.style.borderLeftColor = border;
+            box.innerHTML = `
+                <div class="r-value-big" style="color:${border}">${icon} R = ${r.toFixed(2)}</div>
+                <div style="font-weight:700; color:${border}; margin-bottom:6px;">${label}</div>
+                <div style="font-size:13px; color:#475569; margin-bottom:10px;">${info}</div>
+                <button class="r-goto-btn" style="background:${border}" onclick="switchPane('${pane}'); this.closest('#r-result').scrollIntoView({behavior:'smooth', block:'end'});">
+                    Mở sơ đồ tương ứng ➔
+                </button>
+            `;
+            box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function resetR() {
+            document.getElementById('alt-val').value = '';
+            document.getElementById('alp-val').value = '';
+            const box = document.getElementById('r-result');
+            box.style.display = 'none';
+            box.innerHTML = '';
+        }
+
+        // ══════════════════════════════════════════
+        //  4. ENTER KEY TRIGGERS CALC
+        // ══════════════════════════════════════════
+        document.querySelectorAll('.r-field input').forEach(inp => {
+            inp.addEventListener('keydown', e => { if (e.key === 'Enter') calcR(); });
+        });
+    </script>
+</body>
+
+</html>

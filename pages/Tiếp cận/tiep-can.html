@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi" data-theme="light">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,213 +9,230 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
   <link rel="stylesheet" href="../../css/reset.css">
   <link rel="stylesheet" href="../../css/main.css">
   <link rel="stylesheet" href="../../css/components/header.css">
   <link rel="stylesheet" href="../../css/components/sidebar.css">
   <link rel="stylesheet" href="../../css/components/footer.css">
-  
+
   <script src="../../pages/header.js"></script>
 
   <style>
-.tc-main {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 2rem 1.5rem 4rem;
-}
+    .tc-main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
 
-.tc-search-wrap {
-  margin-bottom: 2rem;
-}
+    .tc-search-wrap {
+      margin-bottom: 2rem;
+    }
 
-.tc-search-box {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: #ffffff;
-  border: 1.5px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 0.75rem 1.25rem;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
+    .tc-search-box {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 0.75rem 1.25rem;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
 
-.tc-search-box:focus-within {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
-}
+    .tc-search-box:focus-within {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+    }
 
-.tc-search-box svg {
-  color: #94a3b8;
-  flex-shrink: 0;
-}
+    .tc-search-box svg {
+      color: #94a3b8;
+      flex-shrink: 0;
+    }
 
-.tc-search-box input {
-  border: none;
-  outline: none;
-  font-size: 0.95rem;
-  color: #1e293b;
-  width: 100%;
-  background: transparent;
-}
+    .tc-search-box input {
+      border: none;
+      outline: none;
+      font-size: 0.95rem;
+      color: #1e293b;
+      width: 100%;
+      background: transparent;
+    }
 
-.tc-search-box input::placeholder {
-  color: #94a3b8;
-}
+    .tc-search-box input::placeholder {
+      color: #94a3b8;
+    }
 
-.tc-group {
-  margin-bottom: 2rem;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1.5px solid #e2e8f0;
-  background: #f8fafc;
-}
+    .tc-group {
+      margin-bottom: 2rem;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1.5px solid #e2e8f0;
+      background: #f8fafc;
+    }
 
-.tc-group-header {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 1.25rem;
-  background: #ffffff;
-  border: none;
-  cursor: pointer;
-  text-align: left;
-  transition: background 0.15s;
-}
+    .tc-group-header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.25rem;
+      background: #ffffff;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.15s;
+    }
 
-.tc-group-header:hover {
-  background: #f1f5f9;
-}
+    .tc-group-header:hover {
+      background: #f1f5f9;
+    }
 
-.tc-group-icon {
-  font-size: 1.25rem;
-}
+    .tc-group-icon {
+      font-size: 1.25rem;
+    }
 
-.tc-group-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #0f172a;
-  flex: 1;
-}
+    .tc-group-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #0f172a;
+      flex: 1;
+    }
 
-.tc-group-count {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #64748b;
-  background: #f1f5f9;
-  border-radius: 999px;
-  padding: 0.2rem 0.65rem;
-  margin-right: 0.25rem;
-}
+    .tc-group-count {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #64748b;
+      background: #f1f5f9;
+      border-radius: 999px;
+      padding: 0.2rem 0.65rem;
+      margin-right: 0.25rem;
+    }
 
-.tc-chevron {
-  color: #64748b;
-  transition: transform 0.25s ease;
-  flex-shrink: 0;
-}
+    .tc-chevron {
+      color: #64748b;
+      transition: transform 0.25s ease;
+      flex-shrink: 0;
+    }
 
-.tc-group-header[aria-expanded="false"] .tc-chevron {
-  transform: rotate(-90deg);
-}
+    .tc-group-header[aria-expanded="false"] .tc-chevron {
+      transform: rotate(-90deg);
+    }
 
-.tc-card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1rem;
-  padding: 1rem 1rem 1.25rem;
-  max-height: 1200px;
-  overflow: hidden;
-  transition: max-height 0.35s ease, padding 0.3s ease, opacity 0.3s ease;
-  opacity: 1;
-}
+    .tc-card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+      padding: 1rem 1rem 1.25rem;
+      max-height: 1200px;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.3s ease, opacity 0.3s ease;
+      opacity: 1;
+    }
 
-.tc-card-grid:not(.tc-open) {
-  max-height: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  opacity: 0;
-}
+    .tc-card-grid:not(.tc-open) {
+      max-height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      opacity: 0;
+    }
 
-.tc-card {
-  background: #ffffff;
-  border: 1.5px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 1.1rem 1.1rem 0.85rem;
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
-  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-}
+    .tc-card {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.1rem 1.1rem 0.85rem;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
 
-.tc-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.09);
-  border-color: #93c5fd;
-}
+    .tc-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.09);
+      border-color: #93c5fd;
+    }
 
-.tc-card-badge {
-  display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  border-radius: 6px;
-  padding: 0.2rem 0.55rem;
-  width: fit-content;
-}
+    .tc-card-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-radius: 6px;
+      padding: 0.2rem 0.55rem;
+      width: fit-content;
+    }
 
-.badge-red { background: #fee2e2; color: #b91c1c; }
-.badge-orange { background: #ffedd5; color: #c2410c; }
-.badge-blue { background: #dbeafe; color: #1d4ed8; }
-.badge-teal { background: #ccfbf1; color: #0f766e; }
+    .badge-red {
+      background: #fee2e2;
+      color: #b91c1c;
+    }
 
-.tc-card-title {
-  font-size: 0.93rem;
-  font-weight: 700;
-  color: #0f172a;
-  line-height: 1.35;
-}
+    .badge-orange {
+      background: #ffedd5;
+      color: #c2410c;
+    }
 
-.tc-card-desc {
-  font-size: 0.82rem;
-  color: #64748b;
-  line-height: 1.55;
-  flex: 1;
-}
+    .badge-blue {
+      background: #dbeafe;
+      color: #1d4ed8;
+    }
 
-.tc-card-footer {
-  margin-top: 0.25rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #3b82f6;
-}
+    .badge-teal {
+      background: #ccfbf1;
+      color: #0f766e;
+    }
 
-.tc-card.hidden {
-  display: none;
-}
+    .tc-card-title {
+      font-size: 0.93rem;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.35;
+    }
 
-@media (max-width: 640px) {
-  .tc-main {
-    padding: 1.25rem 1rem 3rem;
-  }
+    .tc-card-desc {
+      font-size: 0.82rem;
+      color: #64748b;
+      line-height: 1.55;
+      flex: 1;
+    }
 
-  .tc-card-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
-  }
-}
+    .tc-card-footer {
+      margin-top: 0.25rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #3b82f6;
+    }
 
-@media (max-width: 420px) {
-  .tc-card-grid {
-    grid-template-columns: 1fr;
-  }
-}
-</style>
+    .tc-card.hidden {
+      display: none;
+    }
+
+    @media (max-width: 640px) {
+      .tc-main {
+        padding: 1.25rem 1rem 3rem;
+      }
+
+      .tc-card-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .tc-card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -225,230 +243,301 @@
   <!-- ===================== APP CONTAINER ===================== -->
   <div class="app-container">
 
-      <!-- SIDEBAR -->
-      <aside class="app-sidebar" id="appSidebar">
-        <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
-          <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
-            <polyline points="15 18 9 12 15 6"></polyline>
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Công cụ/cong-cu.html" class="nav-item" title="Công cụ lâm sàng">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Phác đồ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+              <span class="nav-icon">📄</span>
+              <span class="nav-text">Y học chứng cứ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Tiếp cận/tiep-can.html" class="nav-item active" aria-current="page"
+              title="Tiếp cận triệu chứng">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- ===================== MAIN CONTENT ===================== -->
+    <main class="tc-main">
+      <!--BREADCRUMB-->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../index.html" class="breadcrumb-link">
+              <span class="home-icon">🏠</span> Home
+            </a>
+          </li>
+
+          <li class="breadcrumb-item active" aria-current="page"> Tiếp cận</a>
+          </li>
+        </ol>
+      </nav>
+      <div class="tc-search-wrap">
+        <div class="tc-search-box">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <input type="text" id="tc-search" placeholder="Tìm kiếm vấn đề lâm sàng..."
+            oninput="filterCards(this.value)" />
+        </div>
+      </div>
+
+      <!-- SECTION 1: Tiếp cận triệu chứng-->
+      <section class="tc-group" id="group-trieu-chung">
+        <button class="tc-group-header" onclick="toggleGroup(this)" aria-expanded="true">
+          <span class="tc-group-icon">🔍</span>
+          <span class="tc-group-title">Triệu Chứng</span>
+          <span class="tc-group-count">4 vấn đề</span>
+          <svg class="tc-chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9" />
           </svg>
         </button>
-        <nav class="sidebar-nav" aria-label="Điều hướng chính">
-          <ul class="nav-list" role="list">
-            <li>
-              <a href="../../index.html" class="nav-item" title="Trang chủ">
-                <span class="nav-icon">🏠</span>
-                <span class="nav-text">Trang chủ</span>
-              </a>
-            </li>
-            <li>
-              <a href="../Công cụ/cong-cu.html" class="nav-item" title="Công cụ lâm sàng">
-                <span class="nav-icon">⚙️</span>
-                <span class="nav-text">Công cụ lâm sàng</span>
-              </a>
-            </li>
-            <li>
-              <a href="../Phác đồ/yhcc.html" class="nav-item" title="Y học chứng cứ">
-                <span class="nav-icon">📄</span>
-                <span class="nav-text">Y học chứng cứ</span>
-              </a>
-            </li>
-            <li>
-              <a href="../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
-                <span class="nav-icon">💊</span>
-                <span class="nav-text">Dược lý lâm sàng</span>
-              </a>
-            </li>
-            <li>
-              <a href="../Tiếp cận/tiep-can.html" class="nav-item active" aria-current="page" title="Tiếp cận triệu chứng">
-                <span class="nav-icon">🤒</span>
-                <span class="nav-text">Tiếp cận lâm sàng</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </aside>
 
-      <!-- ===================== MAIN CONTENT ===================== -->
-  <main class="tc-main">
-  <!--BREADCRUMB-->
-            <nav aria-label="Breadcrumb" class="breadcrumb-container">
-                <ol class="breadcrumb-list">
-                <li class="breadcrumb-item">
-                    <a href="../../index.html" class="breadcrumb-link">
-                    <span class="home-icon">🏠</span> Home
-                    </a>
-                </li>
-                
-                <li class="breadcrumb-item active"
-                    aria-current="page"> Tiếp cận</a>
-                </li>
-                </ol>
-            </nav>
-  <div class="tc-search-wrap">
-    <div class="tc-search-box">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="11" cy="11" r="8"/>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-      </svg>
-      <input type="text" id="tc-search" placeholder="Tìm kiếm vấn đề lâm sàng..." oninput="filterCards(this.value)" />
-    </div>
-  </div>
+        <div class="tc-card-grid tc-open">
+          <a href="tc-sot.html" class="tc-card">
+            <div class="tc-card-badge badge-orange">Sốt</div>
+            <div class="tc-card-title">Tiếp cận Sốt</div>
+            <div class="tc-card-desc">Phân tầng nguyên nhân, định hướng cận lâm sàng và ngưỡng dùng kháng sinh theo bối
+              cảnh lâm sàng.</div>
+            <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
+          </a>
 
-  <section class="tc-group" id="group-trieu-chung">
-    <button class="tc-group-header" onclick="toggleGroup(this)" aria-expanded="true">
-      <span class="tc-group-icon">🔍</span>
-      <span class="tc-group-title">Triệu Chứng</span>
-      <span class="tc-group-count">4 vấn đề</span>
-      <svg class="tc-chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="6 9 12 15 18 9"/>
-      </svg>
-    </button>
+          <a href="tc-kho-tho.html" class="tc-card">
+            <div class="tc-card-badge badge-blue">Khó thở</div>
+            <div class="tc-card-title">Tiếp cận Khó Thở</div>
+            <div class="tc-card-desc">Thuật toán phân biệt nguyên nhân tim mạch, hô hấp, chuyển hóa; đánh giá mức độ
+              nặng.</div>
+            <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
+          </a>
 
-    <div class="tc-card-grid tc-open">
-      <a href="tc-sot.html" class="tc-card">
-        <div class="tc-card-badge badge-orange">Sốt</div>
-        <div class="tc-card-title">Tiếp cận Sốt</div>
-        <div class="tc-card-desc">Phân tầng nguyên nhân, định hướng cận lâm sàng và ngưỡng dùng kháng sinh theo bối cảnh lâm sàng.</div>
-        <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
-      </a>
+          <a href="tc-dau-nguc.html" class="tc-card">
+            <div class="tc-card-badge badge-red">Đau ngực</div>
+            <div class="tc-card-title">Tiếp cận Đau Ngực</div>
+            <div class="tc-card-desc">Loại trừ ACS, PE, tràn khí màng phổi; chiến lược chẩn đoán theo nguy cơ.</div>
+            <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
+          </a>
 
-      <a href="tc-kho-tho.html" class="tc-card">
-        <div class="tc-card-badge badge-blue">Khó thở</div>
-        <div class="tc-card-title">Tiếp cận Khó Thở</div>
-        <div class="tc-card-desc">Thuật toán phân biệt nguyên nhân tim mạch, hô hấp, chuyển hóa; đánh giá mức độ nặng.</div>
-        <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
-      </a>
-
-      <a href="tc-dau-nguc.html" class="tc-card">
-        <div class="tc-card-badge badge-red">Đau ngực</div>
-        <div class="tc-card-title">Tiếp cận Đau Ngực</div>
-        <div class="tc-card-desc">Loại trừ ACS, PE, tràn khí màng phổi; chiến lược chẩn đoán theo nguy cơ.</div>
-        <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
-      </a>
-
-      <a href="tc-phu.html" class="tc-card">
-        <div class="tc-card-badge badge-teal">Phù</div>
-        <div class="tc-card-title">Tiếp cận Phù</div>
-        <div class="tc-card-desc">Phân biệt phù khu trú và toàn thân; hướng dẫn thăm khám và xét nghiệm định hướng.</div>
-        <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
-      </a>
-    </div>
-  </section>
-
-  <section class="tc-group" id="group-hoi-chung">
-    <button class="tc-group-header" onclick="toggleGroup(this)" aria-expanded="true">
-      <span class="tc-group-icon">⚕️</span>
-      <span class="tc-group-title">Hội Chứng</span>
-      <span class="tc-group-count">4 vấn đề</span>
-      <svg class="tc-chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="6 9 12 15 18 9"/>
-      </svg>
-    </button>
-
-    <div class="tc-card-grid tc-open">
-      <a href="tc-sepsis.html" class="tc-card">
-        <div class="tc-card-badge badge-red">Sepsis</div>
-        <div class="tc-card-title">Xử trí Hội chứng Sepsis & Sốc Nhiễm Khuẩn</div>
-        <div class="tc-card-desc">Quy trình Hour-1 Bundle: nhận diện suy tạng, hồi sức dịch truyền, thời điểm cấy máu và kháng sinh phổ rộng.</div>
-        <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
-      </a>
-
-      <a href="tc-abg.html" class="tc-card">
-        <div class="tc-card-badge badge-blue">ABG</div>
-        <div class="tc-card-title">Tiếp cận Khí Máu Động Mạch</div>
-        <div class="tc-card-desc">Thuật toán 6 bước: rối loạn toan kiềm tiên phát, mức độ bù trừ, Anion Gap và rối loạn hỗn hợp.</div>
-        <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
-      </a>
-
-      <a href="tc-suy-than.html" class="tc-card">
-        <div class="tc-card-badge badge-orange">AKI</div>
-        <div class="tc-card-title">Tiếp cận Tổn Thương Thận Cấp</div>
-        <div class="tc-card-desc">Phân loại trước thận, tại thận, sau thận; tiêu chuẩn KDIGO và chỉ định lọc thận.</div>
-        <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
-      </a>
-
-      <a href="tc-hoi-chung-vang-da.html" class="tc-card">
-        <div class="tc-card-badge badge-teal">Vàng da</div>
-        <div class="tc-card-title">Tiếp cận Hội chứng Vàng Da</div>
-        <div class="tc-card-desc">Phân biệt vàng da trước gan, tại gan, tắc mật; hướng dẫn chẩn đoán phân biệt có hệ thống.</div>
-        <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
-      </a>
-    </div>
-  </section>
-
-  <section class="tc-group" id="group-benh-ly">
-    <button class="tc-group-header" onclick="toggleGroup(this)" aria-expanded="true">
-      <span class="tc-group-icon">📋</span>
-      <span class="tc-group-title">Bệnh Lý</span>
-      <span class="tc-group-count">4 vấn đề</span>
-      <svg class="tc-chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="6 9 12 15 18 9"/>
-      </svg>
-    </button>
-
-    <div class="tc-card-grid tc-open">
-      <a href="tc-viem-gan-b.html" class="tc-card">
-        <div class="tc-card-badge badge-red">HBV</div>
-        <div class="tc-card-title">Tiếp cận Viêm Gan Siêu Vi B</div>
-        <div class="tc-card-desc">Chẩn đoán xác định, phân loại giai đoạn, phân tầng nguy cơ và quản lý điều trị theo mức độ nặng.</div>
-        <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
-      </a>
-
-      <a href="tc-uti.html" class="tc-card">
-        <div class="tc-card-badge badge-teal">UTI</div>
-        <div class="tc-card-title">Tiếp cận Nhiễm Trùng Tiểu</div>
-        <div class="tc-card-desc">Phân biệt UTI trên/dưới, chỉ định cận lâm sàng và chiến lược cấy nước tiểu hợp lý.</div>
-        <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
-      </a>
-
-      <a href="tc-viem-phoi.html" class="tc-card">
-        <div class="tc-card-badge badge-blue">CAP</div>
-        <div class="tc-card-title">Viêm Phổi Cộng Đồng</div>
-        <div class="tc-card-desc">Phân loại PSI/CURB-65, chiến lược kháng sinh theo mức độ nặng và bối cảnh dịch tễ.</div>
-        <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
-      </a>
-
-      <a href="tc-dai-thao-duong.html" class="tc-card">
-        <div class="tc-card-badge badge-orange">ĐTĐ</div>
-        <div class="tc-card-title">Tiếp cận Đái Tháo Đường</div>
-        <div class="tc-card-desc">Chẩn đoán, phân loại, và xử trí các biến chứng cấp như DKA, HHS và biến chứng mạn.</div>
-        <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
-      </a>
-    </div>
-  </section>
-
-</main>
-<!-- ===================== END MAIN CONTENT ===================== -->
-</div>
-    <footer class="global-footer">
-        <div class="footer-copyright">
-            <p>CliniPortal © 2026. Giao diện tối ưu hóa hiển thị linh hoạt trên Mobile và Desktop.</p>
+          <a href="tc-phu.html" class="tc-card">
+            <div class="tc-card-badge badge-teal">Phù</div>
+            <div class="tc-card-title">Tiếp cận Phù</div>
+            <div class="tc-card-desc">Phân biệt phù khu trú và toàn thân; hướng dẫn thăm khám và xét nghiệm định hướng.
+            </div>
+            <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
+          </a>
         </div>
-    </footer>
-<!-- ===================== SCRIPT ===================== -->  
-<script>
-function toggleGroup(btn) {
-  const expanded = btn.getAttribute('aria-expanded') === 'true';
-  btn.setAttribute('aria-expanded', String(!expanded));
-  const grid = btn.nextElementSibling;
-  grid.classList.toggle('tc-open', !expanded);
-}
+      </section>
 
-function filterCards(query) {
-  const q = query.toLowerCase().trim();
+      <!-- SECTION 2: Tiếp cận hội chứng -->
+      <section class="tc-group" id="group-hoi-chung">
+        <button class="tc-group-header" onclick="toggleGroup(this)" aria-expanded="true">
+          <span class="tc-group-icon">⚕️</span>
+          <span class="tc-group-title">Hội Chứng</span>
+          <span class="tc-group-count">4 vấn đề</span>
+          <svg class="tc-chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
 
-  document.querySelectorAll('.tc-card').forEach(card => {
-    const text = card.textContent.toLowerCase();
-    card.classList.toggle('hidden', q.length > 0 && !text.includes(q));
-  });
+        <div class="tc-card-grid tc-open">
+          <a href="tc-sepsis.html" class="tc-card">
+            <div class="tc-card-badge badge-red">Sepsis</div>
+            <div class="tc-card-title">Xử trí Hội chứng Sepsis & Sốc Nhiễm Khuẩn</div>
+            <div class="tc-card-desc">Quy trình Hour-1 Bundle: nhận diện suy tạng, hồi sức dịch truyền, thời điểm cấy
+              máu và kháng sinh phổ rộng.</div>
+            <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
+          </a>
 
-  if (q.length > 0) {
-    document.querySelectorAll('.tc-group-header').forEach(btn => {
-      btn.setAttribute('aria-expanded', 'true');
-      btn.nextElementSibling.classList.add('tc-open');
-    });
-  }
-}
-</script>
+          <a href="tc-abg.html" class="tc-card">
+            <div class="tc-card-badge badge-blue">ABG</div>
+            <div class="tc-card-title">Tiếp cận Khí Máu Động Mạch</div>
+            <div class="tc-card-desc">Thuật toán 6 bước: rối loạn toan kiềm tiên phát, mức độ bù trừ, Anion Gap và rối
+              loạn hỗn hợp.</div>
+            <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
+          </a>
+
+          <a href="tc-suy-than.html" class="tc-card">
+            <div class="tc-card-badge badge-orange">AKI</div>
+            <div class="tc-card-title">Tiếp cận Tổn Thương Thận Cấp</div>
+            <div class="tc-card-desc">Phân loại trước thận, tại thận, sau thận; tiêu chuẩn KDIGO và chỉ định lọc thận.
+            </div>
+            <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
+          </a>
+
+          <a href="tc-hoi-chung-vang-da.html" class="tc-card">
+            <div class="tc-card-badge badge-teal">Vàng da</div>
+            <div class="tc-card-title">Tiếp cận Hội chứng Vàng Da</div>
+            <div class="tc-card-desc">Phân biệt vàng da trước gan, tại gan, tắc mật; hướng dẫn chẩn đoán phân biệt có hệ
+              thống.</div>
+            <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
+          </a>
+        </div>
+      </section>
+
+      <!-- SECTION 3: Tiếp cận bệnh lý -->
+      <section class="tc-group" id="group-benh-ly">
+        <button class="tc-group-header" onclick="toggleGroup(this)" aria-expanded="true">
+          <span class="tc-group-icon">📋</span>
+          <span class="tc-group-title">Bệnh Lý</span>
+          <span class="tc-group-count">4 vấn đề</span>
+          <svg class="tc-chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
+
+        <div class="tc-card-grid tc-open">
+          <a href="Bệnh lý/TC_vgsvB.html" class="tc-card">
+            <div class="tc-card-badge badge-red">HBV</div>
+            <div class="tc-card-title">Tiếp cận Viêm Gan Siêu Vi B</div>
+            <div class="tc-card-desc">Chẩn đoán xác định, phân loại giai đoạn, phân tầng nguy cơ và quản lý điều trị
+              theo mức độ nặng.</div>
+            <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
+          </a>
+
+          <a href="Bệnh lý/TC_SXHD.html" class="tc-card">
+            <div class="tc-card-badge badge-teal">SXHD</div>
+            <div class="tc-card-title">Tiếp cận Sốt xuất huyết Dengue</div>
+            <div class="tc-card-desc">Phân loại mức độ nặng theo WHO, chỉ định xét nghiệm và chiến lược điều trị.</div>
+            <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
+          </a>
+
+          <a href="tc-viem-phoi.html" class="tc-card">
+            <div class="tc-card-badge badge-blue">CAP</div>
+            <div class="tc-card-title">Viêm Phổi Cộng Đồng</div>
+            <div class="tc-card-desc">Phân loại PSI/CURB-65, chiến lược kháng sinh theo mức độ nặng và bối cảnh dịch tễ.
+            </div>
+            <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
+          </a>
+
+          <a href="tc-dai-thao-duong.html" class="tc-card">
+            <div class="tc-card-badge badge-orange">ĐTĐ</div>
+            <div class="tc-card-title">Tiếp cận Đái Tháo Đường</div>
+            <div class="tc-card-desc">Chẩn đoán, phân loại, và xử trí các biến chứng cấp như DKA, HHS và biến chứng mạn.
+            </div>
+            <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
+          </a>
+        </div>
+      </section>
+
+      <!--TIẾP CẬN BẤT THƯỜNG CẬN LÂM SÀNG-->
+      <section class="tc-group" id="group-bat-thuong-clns">
+        <button class="tc-group-header" onclick="toggleGroup(this)" aria-expanded="true">
+          <span class="tc-group-icon">🔬</span>
+          <span class="tc-group-title">Bất thường Cận Lâm Sàng</span>
+          <span class="tc-group-count">5 vấn đề</span>
+          <svg class="tc-chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
+
+        <div class="tc-card-grid tc-open">
+          <a href="Cận lâm sàng/TC_bachcau.html" class="tc-card">
+            <div class="tc-card-badge badge-blue">Bạch cầu</div>
+            <div class="tc-card-title">Tiếp cận Rối loạn Bạch cầu</div>
+            <div class="tc-card-desc">Phân biệt tăng/giảm, hạt trung tính/lymphô, và các hội chứng giảm ba dòng tế
+              bào.</div>
+            <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
+          </a>
+
+          <a href="Cận lâm sàng/TC_monocyte.html" class="tc-card">
+            <div class="tc-card-badge badge-purple">Mono/Eos</div>
+            <div class="tc-card-title">Monocyte, Eosinophil, Basophil</div>
+            <div class="tc-card-desc">Chẩn đoán tăng bạch cầu ái toan, tăng mono và các hội chứng suy tủy.</div>
+            <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
+          </a>
+
+          <a href="Cận lâm sàng/TC_tieu-cau.html" class="tc-card">
+            <div class="tc-card-badge badge-pink">Tiểu cầu</div>
+            <div class="tc-card-title">Tiếp cận Rối loạn Tiểu cầu</div>
+            <div class="tc-card-desc">Hội chứng giảm tiểu cầu (ITP, TTP-HUS, DIC) và tăng tiểu cầu phản ứng/
+              di truyền.</div>
+            <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
+          </a>
+
+          <a href="Cận lâm sàng/TC_hc.html" class="tc-card">
+            <div class="tc-card-badge badge-red">Thiếu máu</div>
+            <div class="tc-card-title">Tiếp cận Thiếu máu</div>
+            <div class="tc-card-desc">Phân loại MCV, MCH, MCHC và các nguyên nhân thiếu máu hồng cầu nhỏ/to/normo.</div>
+            <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
+          </a>
+
+          <a href="Cận lâm sàng/TC_Sinhhoagan.html" class="tc-card">
+            <div class="tc-card-badge badge-teal">Gan</div>
+            <div class="tc-card-title">Tiếp cận Sinh hóa Gan</div>
+            <div class="tc-card-desc">Chẩn đoán tổn thương tế bào gan, tắc mật và suy chức năng gan.</div>
+            <div class="tc-card-footer"><span>Xem tiếp cận →</span></div>
+          </a>
+        </div>
+      </section>
+    </main>
+    <!-- ===================== END MAIN CONTENT ===================== -->
+  </div>
+  <footer class="global-footer">
+    <div class="footer-copyright">
+      <p>CliniPortal © 2026. Giao diện tối ưu hóa hiển thị linh hoạt trên Mobile và Desktop.</p>
+    </div>
+  </footer>
+  <!-- ===================== SCRIPT ===================== -->
+  <script>
+    function toggleGroup(btn) {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      const grid = btn.nextElementSibling;
+      grid.classList.toggle('tc-open', !expanded);
+    }
+
+    function filterCards(query) {
+      const q = query.toLowerCase().trim();
+
+      document.querySelectorAll('.tc-card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.classList.toggle('hidden', q.length > 0 && !text.includes(q));
+      });
+
+      if (q.length > 0) {
+        document.querySelectorAll('.tc-group-header').forEach(btn => {
+          btn.setAttribute('aria-expanded', 'true');
+          btn.nextElementSibling.classList.add('tc-open');
+        });
+      }
+    }
+  </script>
 </body>
+
 </html>

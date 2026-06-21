@@ -1,550 +1,335 @@
 <!DOCTYPE html>
 <html lang="vi" data-theme="light">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CliniPortal - Hệ sinh thái công cụ hỗ trợ lâm sàng dành cho bác sĩ nội khoa">
-    <title>CliniPortal - Hệ sinh thái Công cụ Lâm sàng</title>
-
+    <meta name="description" content="Lưu đồ dược lý tương tác xử trí Ho – CliniPortal">
+    <title>Dược lý Ho – CliniPortal</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../../css/reset.css">
     <link rel="stylesheet" href="../../../css/main.css">
     <link rel="stylesheet" href="../../../css/components/header.css">
     <link rel="stylesheet" href="../../../css/components/sidebar.css">
     <link rel="stylesheet" href="../../../css/components/footer.css">
-
     <script src="../../../pages/header.js" defer></script>
     <style>
-        :root {
-            --primary-color: #0288d1;
-            --primary-light: #e1f5fe;
-            --danger-color: #c62828;
-            --danger-light: #ffebee;
-            --warning-color: #ef6c00;
-            --warning-light: #fff3e0;
-            --success-color: #2e7d32;
-            --text-main: #263238;
-            --text-muted: #607d8b;
-            --bg-card: #ffffff;
-            --border-radius: 8px;
-        }
-
-        main#clinical-cough-app {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            color: var(--text-main);
-            max-width: 1100px;
-            margin: 10px auto;
-            padding: 15px;
-            line-height: 1.5;
-        }
-
-        /* CONTAINER SƠ ĐỒ */
-        .flowchart-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: var(--border-radius);
-            border: 1px solid #cfd8dc;
-            margin-bottom: 20px;
-        }
-
-        .flowchart-row {
-            display: flex;
-            justify-content: space-around;
-            align-items: flex-start;
-            gap: 12px;
-            width: 100%;
-        }
-
-        /* KHỐI SƠ ĐỒ (NODES) */
-        .flow-node {
-            background: var(--bg-card);
-            border: 2px solid #b0bec5;
-            border-radius: var(--border-radius);
-            padding: 12px;
-            text-align: center;
-            font-size: 13.5px;
-            font-weight: 600;
-            cursor: pointer;
-            flex: 1;
-            min-width: 150px;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
-        }
-
-        .flow-node:hover {
-            border-color: var(--primary-color);
-            background: var(--primary-light);
-            transform: translateY(-1px);
-        }
-
-        /* TRẠNG THÁI ACTIVE */
-        .flow-node.active {
-            border-color: var(--primary-color);
-            background: var(--primary-color);
-            color: #ffffff;
-            box-shadow: 0 4px 10px rgba(2, 136, 209, 0.3);
-        }
-
-        .flow-node.node-root {
-            background: #455a64;
-            color: white;
-            border-color: #37474f;
-            max-width: 280px;
-            cursor: default;
-        }
-
-        .flow-node.node-danger {
-            border-color: var(--danger-color);
-            color: var(--danger-color);
-        }
-
-        .flow-node.node-danger.active {
-            background: var(--danger-color);
-            color: white;
-        }
-
-        /* PANEL KHU VỰC PHÁC ĐỒ */
-        .protocol-display-box {
-            background: var(--bg-card);
-            border-radius: var(--border-radius);
-            padding: 20px;
-            border: 2px solid #cfd8dc;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
-
-        .medication-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 12px 0;
-            font-size: 14px;
-        }
-
-        .medication-table th,
-        .medication-table td {
-            border: 1px solid #cfd8dc;
-            padding: 10px;
-            text-align: left;
-        }
-
-        .medication-table th {
-            background-color: var(--primary-light);
-            color: var(--primary-color);
-            font-weight: 700;
-        }
-
-        .alert-box {
-            padding: 12px;
-            border-radius: 6px;
-            margin-top: 8px;
-            font-size: 13.5px;
-        }
-
-        .alert-box.danger {
-            background: var(--danger-light);
-            color: #b71c1c;
-            border-left: 4px solid var(--danger-color);
-        }
-
-        .alert-box.warning {
-            background: var(--warning-light);
-            color: #e65100;
-            border-left: 4px solid var(--warning-color);
-        }
-
-        .alert-box.info {
-            background: #e8f5e9;
-            color: #1b5e20;
-            border-left: 4px solid var(--success-color);
-        }
-
-        .badge-src {
-            display: inline-block;
-            background: #f0f4f8;
-            color: var(--text-muted);
-            font-size: 11px;
-            padding: 2px 6px;
-            border-radius: 4px;
-            margin-top: 6px;
-        }
+        :root{--fc-danger:#dc2626;--fc-danger-h:#fef2f2;--fc-danger-b:#fecaca;--fc-warn:#d97706;--fc-warn-h:#fffbeb;--fc-warn-b:#fde68a;--fc-info:#0284c7;--fc-info-h:#f0f9ff;--fc-info-b:#bae6fd;--fc-ok:#16a34a;--fc-ok-h:#f0fdf4;--fc-ok-b:#bbf7d0;--fc-primary:#3f51b5;--fc-teal:#0d9488;--fc-teal-h:#f0fdfa;--fc-teal-b:#99f6e4;}
+        .flow-page{padding:0 0 40px;}
+        .flow-hero{background:linear-gradient(135deg,#0c4a6e,#0284c7 50%,#0891b2);border-radius:18px;padding:24px 28px;margin-bottom:20px;color:#fff;position:relative;overflow:hidden;}
+        .flow-hero::before{content:'';position:absolute;top:-30px;right:-30px;width:160px;height:160px;background:rgba(255,255,255,.06);border-radius:50%;}
+        .flow-hero h1{font-size:clamp(16px,2.2vw,22px);font-weight:700;margin:0 0 5px;}
+        .flow-hero p{font-size:13px;opacity:.82;margin:0;}
+        .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.15);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.25);border-radius:100px;padding:3px 11px;font-size:11px;font-weight:600;margin-bottom:10px;}
+        .fc-tree{background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:16px;padding:20px 16px;margin-bottom:20px;}
+        .fc-row{display:flex;justify-content:center;align-items:flex-start;gap:12px;width:100%;flex-wrap:wrap;}
+        .fc-arrow-down{display:flex;flex-direction:column;align-items:center;margin:6px 0;}
+        .fc-arrow-line{width:2px;height:20px;background:linear-gradient(to bottom,#94a3b8,#64748b);}
+        .fc-arrow-head{width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:10px solid #64748b;}
+        .fc-sep{width:100%;border:none;border-top:1.5px dashed #e2e8f0;margin:8px 0;}
+        .fc-legend{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;}
+        .fc-legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:#475569;}
+        .fc-legend-dot{width:11px;height:11px;border-radius:3px;}
+        .fc-node{border-radius:13px;padding:13px 16px;cursor:pointer;border:2px solid transparent;box-shadow:0 3px 12px rgba(0,0,0,.08);transition:all .22s;text-align:center;flex:1;min-width:150px;max-width:340px;}
+        .fc-node:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.14);}
+        .fc-node-title{font-size:13.5px;font-weight:700;margin:0 0 4px;line-height:1.3;}
+        .fc-node-sub{font-size:11.5px;opacity:.8;line-height:1.4;}
+        .fc-node-tag{display:inline-flex;align-items:center;font-size:10px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:2px 8px;border-radius:100px;background:rgba(0,0,0,.1);margin-bottom:6px;}
+        .nc-root{background:linear-gradient(135deg,#0c4a6e,#1e3a5f);color:#fff;border-color:rgba(255,255,255,.15);cursor:default;}
+        .nc-danger{background:var(--fc-danger-h);border-color:var(--fc-danger-b);color:#7f1d1d;}
+        .nc-warn{background:var(--fc-warn-h);border-color:var(--fc-warn-b);color:#78350f;}
+        .nc-info{background:var(--fc-info-h);border-color:var(--fc-info-b);color:#0c4a6e;}
+        .nc-teal{background:var(--fc-teal-h);border-color:var(--fc-teal-b);color:#134e4a;}
+        .nc-neutral{background:#fff;border-color:#e2e8f0;color:#334155;}
+        .fc-node.active{transform:translateY(-2px);}
+        .nc-danger.active{background:var(--fc-danger)!important;color:#fff!important;border-color:var(--fc-danger)!important;box-shadow:0 4px 16px rgba(220,38,38,.35)!important;}
+        .nc-warn.active{background:var(--fc-warn)!important;color:#fff!important;border-color:var(--fc-warn)!important;}
+        .nc-info.active,.nc-teal.active,.nc-neutral.active{background:var(--fc-info)!important;color:#fff!important;border-color:var(--fc-info)!important;}
+        .fc-layer-disabled{opacity:.32;pointer-events:none;transition:opacity .3s;}
+        .fc-layer-enabled{opacity:1;pointer-events:auto;transition:opacity .3s;}
+        .proto-panel{background:#fff;border-radius:14px;padding:20px;border:1.5px solid #e2e8f0;box-shadow:0 4px 20px rgba(0,0,0,.08);animation:fadeSlide .3s ease;margin-top:4px;}
+        .proto-panel-title{font-size:15px;font-weight:700;margin:0 0 14px;padding-bottom:10px;border-bottom:2px solid;}
+        .proto-badge{display:inline-flex;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(0,0,0,.07);margin-bottom:10px;}
+        .drug-table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0;}
+        .drug-table th{background:#f8fafc;padding:8px 10px;text-align:left;font-weight:700;font-size:12px;border-top:1px solid #e2e8f0;border-bottom:1.5px solid #e2e8f0;}
+        .drug-table td{padding:8px 10px;border-bottom:1px solid #f1f5f9;vertical-align:top;}
+        .drug-table tr:last-child td{border-bottom:none;}
+        .ab{padding:10px 14px;border-radius:9px;margin-top:8px;font-size:13px;border-left:4px solid;line-height:1.55;}
+        .ab-danger{background:var(--fc-danger-h);border-color:var(--fc-danger);color:#7f1d1d;}
+        .ab-warn{background:var(--fc-warn-h);border-color:var(--fc-warn);color:#78350f;}
+        .ab-info{background:var(--fc-info-h);border-color:var(--fc-info);color:#0c4a6e;}
+        .src-badge{display:inline-block;background:#f1f5f9;color:#64748b;font-size:11px;padding:2px 8px;border-radius:6px;margin-top:10px;}
+        @keyframes pulseRed{0%,100%{box-shadow:0 0 0 0 rgba(220,38,38,.4);}50%{box-shadow:0 0 0 8px rgba(220,38,38,0);}}
+        .pulse-danger{animation:pulseRed 2s ease-in-out infinite;}
+        @keyframes fadeSlide{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+        @media(max-width:560px){.fc-row{flex-direction:column;align-items:center;}.fc-node{max-width:100%;width:100%;}}
     </style>
-
+</head>
 <body>
-    <!-- Placeholder nạp header.html — đường dẫn tính từ vị trí cong-cu.html -->
-    <div id="header-placeholder" data-header-path="../../header.html"></div>
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
-    <!-- ===================== APP CONTAINER ===================== -->
-    <div class="app-container">
-
-        <!-- SIDEBAR -->
-        <aside class="app-sidebar" id="appSidebar">
-            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
-                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
-                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                </svg>
-            </button>
-            <nav class="sidebar-nav" aria-label="Điều hướng chính">
-                <ul class="nav-list" role="list">
-                    <li>
-                        <a href="../../../index.html" class="nav-item" title="Trang chủ">
-                            <span class="nav-icon">🏠</span>
-                            <span class="nav-text">Trang chủ</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="../../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ lâm sàng">
-                            <span class="nav-icon">⚙️</span>
-                            <span class="nav-text">Công cụ lâm sàng</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="../../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
-                            <span class="nav-icon">📄</span>
-                            <span class="nav-text">Y học chứng cứ</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="../../../Dược lý/duoc-ly.html" class="nav-item active" aria-current="page"
-                            title="Dược lý">
-                            <span class="nav-icon">💊</span>
-                            <span class="nav-text">Dược lý lâm sàng</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="../../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận triệu chứng">
-                            <span class="nav-icon">🤒</span>
-                            <span class="nav-text">Tiếp cận lâm sàng</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </aside>
-        <!-- MAIN CONTENT -->
-
-        <main id="clinical-cough-app">
-            <!--BREADCRUMB-->
-            <nav aria-label="Breadcrumb" class="breadcrumb-container">
-                <ol class="breadcrumb-list">
-                    <li class="breadcrumb-item">
-                        <a href="../../../index.html" class="breadcrumb-link">
-                            <span class="home-icon">🏠</span> Home
-                        </a>
-                    </li>
-
-                    <li class="breadcrumb-item">
-                        <a href="../../Dược lý/duoc-ly.html" class="breadcrumb-link" aria-current="page"> Dược lý</a>
-                    </li>
-
-                    <li class="breadcrumb-item" aria-current="page"> Triệu chứng</a>
-                    </li>
-
-                    <li class="breadcrumb-item active" aria-current="page"> Ho</a>
-                    </li>
-                </ol>
-            </nav>
-            <header style="text-align: center; margin-bottom: 16px;">
-                <h2 style="color: var(--primary-color); margin-bottom: 2px;">SƠ ĐỒ TƯƠNG TÁC: DƯỢC LÝ ĐIỀU TRỊ HO NGƯỜI
-                    LỚN</h2>
-                <p style="color: var(--text-muted); font-size: 13px; margin: 0;">Nhấp trực tiếp vào các khối phân loại
-                    của cây phác đồ để tra cứu chỉ định thuốc lâm sàng</p>
-            </header>
-
-            <div class="flowchart-wrapper">
-
-                <div class="flowchart-row">
-                    <div class="flow-node node-root">TIẾP CẬN BỆNH NHÂN HO</div>
-                </div>
-
-                <div class="flowchart-row">
-                    <div class="flow-node node-danger" id="node-cough-severe"
-                        onclick="flowCoughMap.selectPath('SEVERE')">
-                        CÓ BIỂU HIỆN NẶNG / NGUY CƠ CAO<br><small>(Hội chứng xâm nhập, Suy hô hấp, Suy tim, Ho
-                            máu...)</small>
-                    </div>
-                    <div class="flow-node" id="node-cough-mild" onclick="flowCoughMap.selectPath('MILD')">
-                        HO THÔNG THƯỜNG KHÔNG BIẾN CHỨNG<br><small>(Đủ điều kiện phân loại Dược lý nội khoa)</small>
-                    </div>
-                </div>
-
-                <div class="flowchart-row" id="row-cough-types"
-                    style="opacity: 0.3; pointer-events: none; border-top: 1px dashed #b0bec5; padding-top: 12px;">
-                    <div class="flow-node" id="node-type-dry" onclick="flowCoughMap.selectCoughType('DRY')">1. HO KHAN
-                    </div>
-                    <div class="flow-node" id="node-type-productive"
-                        onclick="flowCoughMap.selectCoughType('PRODUCTIVE')">2. HO CÓ ĐỜM</div>
-                </div>
-
-                <div class="flowchart-row" id="row-cough-scenarios"
-                    style="display: none; border-top: 1px dashed #b0bec5; padding-top: 12px;">
-                </div>
-            </div>
-
-            <div id="cough-protocol-panel" class="protocol-display-box" style="display: none;">
-            </div>
-        </main>
-    </div>
-    <footer class="global-footer">
-        <div class="footer-copyright">
-            <p>CliniPortal &copy; 2026 · Công cụ lâm sàng · Chỉ mang tính hỗ trợ tham khảo, không thay thế phán xét
-                lâm sàng
-                của bác sĩ y khoa.</p>
-        </div>
-    </footer>
-
-    <!--SCRIPT-->
-    <script>
-        // CƠ SỞ DỮ LIỆU LÂM SÀNG KHÔNG "CHẾ" - TRÍCH XUẤT CHÍNH XÁC TỪ TÀI LIỆU BỘ Y TẾ VÀ QUYẾT ĐỊNH 2919/QĐ-BYT
-        const COUGH_PROTOCOL_DATABASE = {
-            emergency: {
-                title: "CHỈ ĐỊNH CHUYỂN TUYẾN KHẨN CẤP (Phát hiện Biểu hiện nặng / Nguy cơ cao)",
-                source: "QĐ số 2919/QĐ-BYT (Trang 83, 84, 85)",
-                description: "Bệnh nhân thuộc một trong các kịch bản nguy hiểm lâm sàng sau bắt buộc phải chuyển viện ngay lập tức:",
-                redFlags: [
-                    "Có hội chứng xâm nhập (Sặc dị vật đường thở) -> Thực hiện thủ thuật Heimlich khẩn cấp trước khi chuyển tuyến.",
-                    "Có biểu hiện Suy hô hấp cấp: Khó thở, thở nhanh > 24 lần/phút, có co kéo cơ hô hấp phụ, mạch nhanh > 120 lần/phút.",
-                    "Có biểu hiện kèm Suy tim: Khó thở, phù, gan to, mạch nhanh, phổi nghe có ran ẩm rải rác hai bên.",
-                    "Ho khạc đờm có máu (Nghi ngờ Lao phổi, ung thư phổi, giãn phế quản thể chảy máu hoặc viêm phổi nặng).",
-                    "Bệnh nhân có triệu chứng Ho kéo dài liên tục trên 3 tuần chưa rõ nguyên nhân."
-                ],
-                actionText: "NGUYÊN TẮC DƯỢC LÝ: Không tự ý kê đơn các nhóm thuốc giảm ho trung ương (như Codein, Dextromethorphan) hoặc kháng sinh bừa bãi tại tuyến xã cho các trường hợp này để tránh làm chậm trễ thời gian cấp cứu chuyên sâu."
-            },
-            scenarios: {
-                DRY_ASTHMA: {
-                    title: "Ho khan do Hen phế quản (Tiền sử hen, dị ứng, nghe phổi có ran rít, ran ngáy, cò cử)",
-                    source: "QĐ số 2919/QĐ-BYT (Trang 50, 51, 83)",
-                    drugs: [
-                        { name: "Salbutamol dạng hít/xịt (Ventolin 100mcg)", dose: "Xịt họng 2 nhát liên tiếp khi lên cơn ho co thắt. Sau 20 phút chưa đỡ có thể lặp lại.", duration: "Cắt cơn co thắt phế quản cấp" },
-                        { name: "Corticoid hít (ICS) hoặc phối hợp", dose: "Hít liều tiêu chuẩn theo hướng dẫn kiểm soát dài hạn", duration: "Điều trị nền viêm mạn tính" },
-                        { name: "Salbutamol 4mg viên uống (Chỉ dùng nếu thiếu dạng xịt)", dose: "Uống 1 viên / lần x 2 - 3 lần / ngày", duration: "Theo dõi sát nhịp tim" }
-                    ],
-                    contraindications: "Không dùng thuốc giãn phế quản nhóm cường giao cảm beta-2 dạng uống cho người cường giáp nặng hoặc loạn nhịp tim cấp tính.",
-                    sideEffects: "Gây hồi hộp, đánh trống ngực, run đầu ngón tay (tác dụng phụ đặc trưng của kích thích beta-2).",
-                    interactions: "Tránh phối hợp với các thuốc chẹn beta giao cảm không chọn lọc (như Propranolol) vì gây co thắt phế quản đối kháng, làm mất hoàn toàn hiệu năng của Salbutamol."
-                },
-                DRY_VIRUS: {
-                    title: "Ho khan do Viêm thanh quản / Viêm phế quản cấp do virus (Có khàn tiếng, sốt nhẹ, phổi có thể có ít ran rít ngáy thoáng qua)",
-                    source: "QĐ số 2919/QĐ-BYT (Trang 83, 84)",
-                    drugs: [
-                        { name: "Terpin Codein (Viên phối hợp)", dose: "Uống 2 viên / lần x 2 lần / ngày", duration: "Điều trị triệu chứng ho ngắn ngày" },
-                        { name: "Paracetamol 500mg (Nếu có sốt ≥ 38.5°C)", dose: "Uống 1 viên / lần, cách mỗi 4 - 6 giờ nếu còn sốt cao", duration: "Khi có sốt" }
-                    ],
-                    contraindications: "TUYỆT ĐỐI CHỐNG CHỈ ĐỊNH Terpin Codein cho trẻ em dưới 12 tuổi, phụ nữ đang cho con bú, người có tiền sử suy hô hấp hoặc hen phế quản tiến triển.",
-                    sideEffects: "Codein có thể gây táo bón, buồn ngủ nhẹ, chóng mặt hoặc buồn nôn.",
-                    interactions: "Không dùng chung với các chất ức chế thần kinh trung ương, thuốc an thần hoặc rượu vì làm tăng độc tính suy hô hấp của Codein."
-                },
-                DRY_ALLERGY: {
-                    title: "Ho khan do dị ứng (Ho từng đợt về đêm, liên quan thay đổi thời tiết, phổi sạch không ran)",
-                    source: "QĐ số 2919/QĐ-BYT (Trang 84)",
-                    drugs: [
-                        { name: "Loratadin 10mg (Kháng histamin thế hệ 2)", dose: "Uống 1 viên / ngày trước khi đi ngủ", duration: "Ưu tiên giảm tác dụng phụ buồn ngủ" },
-                        { name: "Chlorpheniramin 4mg (Kháng histamin thế hệ 1)", dose: "Uống 2 viên / lần x 2 lần / ngày", duration: "Lựa chọn thay thế" }
-                    ],
-                    contraindications: "Thận trọng khi dùng Chlorpheniramin cho bệnh nhân phì đại tuyến tiền liệt, glôcôm góc đóng vì có tác dụng kháng cholinergic.",
-                    sideEffects: "Chlorpheniramin gây khô miệng, bí tiểu và đặc biệt là gây buồn ngủ sâu nặng (cấm dùng khi lái xe/vận hành máy). Loratadin ít gây buồn ngủ hơn.",
-                    interactions: "Tăng tác dụng ức chế thần kinh trung ương khi dùng phối hợp kháng histamin thế hệ 1 với các thuốc chống trầm cảm hoặc an thần gây ngủ."
-                },
-                DRY_GERD: {
-                    title: "Ho khan do Trào ngược dạ dày - thực quản / GERD (Kèm rát họng, ợ chua, nóng rát sau xương ức)",
-                    source: "QĐ số 2919/QĐ-BYT (Trang 84)",
-                    drugs: [
-                        { name: "Omeprazol 20mg (Ức chế bơm Proton - PPI)", dose: "Uống 1 viên / ngày (Uống trước bữa ăn sáng 30 phút)", duration: "Dùng liên tục trong 10 ngày" }
-                    ],
-                    contraindications: "Quá mẫn với các thuốc nhóm PPI.",
-                    sideEffects: "Nhức đầu, đầy hơi, rối loạn tiêu hóa nhẹ thoáng qua.",
-                    interactions: "Omeprazol làm tăng nồng độ trong máu của một số thuốc chuyển hóa qua gan như Diazepam, Phenytoin, Warfarin do ức chế enzyme CYP2C19."
-                },
-                DRY_ACEI: {
-                    title: "Ho khan do tác dụng phụ của thuốc Ức chế men chuyển / ACEi (Đang dùng thuốc điều trị tăng huyết áp)",
-                    source: "QĐ số 2919/QĐ-BYT (Trang 84) & Cơ chế dược lý",
-                    drugs: [
-                        { name: "Ngừng ngay thuốc Ức chế men chuyển (ACEi)", dose: "Đình chỉ các biệt dược chứa Enalapril, Perindopril, Captopril...", duration: "Vĩnh viễn" },
-                        { name: "Đổi sang nhóm Chẹn thụ thể Angiotensin II (ARB)", dose: "Chuyển đổi sang các thuốc như Losartan, Valsartan... theo liều huyết áp tương đương", duration: "Duy trì điều trị huyết áp nền" }
-                    ],
-                    contraindications: "Không áp dụng cho người có tiền sử phù mạch do thuốc hạ áp.",
-                    sideEffects: "Ho do ACEi là ho khan dai dẳng do tích tụ Bradykinin tại đường hô hấp, không đáp ứng với các thuốc giảm ho thông thường. Khỏi hoàn toàn sau ngừng thuốc vài tuần.",
-                    interactions: "Phối hợp ACEi hoặc ARB với thuốc lợi tiểu giữ Kali có thể gây rủi ro tăng Kali máu nguy hiểm."
-                },
-                PROD_BACTERIA: {
-                    title: "Ho có đờm đục do Nhiễm khuẩn đường hô hấp trên / Đợt cấp viêm phế quản mạn (Đờm vàng/xanh, có sốt, không bệnh phổi mạn nặng)",
-                    source: "QĐ số 2919/QĐ-BYT (Trang 62, 63, 84)",
-                    drugs: [
-                        { name: "Amoxicillin 500mg", dose: "Uống 2 viên / lần x 3 lần / ngày (Tổng 3g/ngày)", duration: "7 - 10 ngày" },
-                        { name: "Augmentin 625mg (Amoxicillin + Clavulanate)", dose: "Uống 1 viên / lần x 3 lần / ngày (Lựa chọn thay thế kháng thuốc)", duration: "7 ngày" },
-                        { name: "Clarithromycin 500mg (Hoặc Erythromycin 500mg)", dose: "Uống 1 viên x 2 lần / ngày (Erythromycin: uống 2 viên x 2 lần/ngày)", duration: "7 ngày (Dùng nếu dị ứng Penicillin)" },
-                        { name: "Paracetamol 10-15mg/kg/lần", dose: "Uống cách mỗi 4-6 giờ nếu sốt cao từ 38.5°C", duration: "Khi có sốt" }
-                    ],
-                    contraindications: "Chống chỉ định Amoxicillin/Augmentin nếu tiền sử dị ứng nhóm Beta-lactam. Chống chỉ định Clarithromycin nếu mẫn cảm nhóm Macrolide.",
-                    warnings: "BẮT BUỘC ĐÁNH GIÁ LẠI KẾT QUẢ ĐIỀU TRỊ KHÁNG SINH SAU 3 NGÀY. Nếu triệu chứng không thuyên giảm hoặc nặng lên, phải làm thủ tục chuyển viện.",
-                    interactions: "Erythromycin và Clarithromycin là chất ức chế mạnh CYP3A4, chống chỉ định dùng chung với các thuốc hạ mỡ máu nhóm Statin (như Atorvastatin) vì tăng nguy cơ tiêu cơ vân cấp."
-                },
-                PROD_VIRUS: {
-                    title: "Ho có đờm trong do Viêm hô hấp trên do virus hoặc ho dị ứng mới xuất hiện (Đờm trong như nước dãi, bị vài ngày)",
-                    source: "QĐ số 2919/QĐ-BYT (Trang 84)",
-                    drugs: [
-                        { name: "Điều trị triệu chứng / Giữ ấm cổ, súc họng nước muối", dose: "Không lạm dụng kháng sinh", duration: "Theo dõi tiến triển lâm sàng" },
-                        { name: "Phối hợp phác đồ Ho do dị ứng", dose: "Nếu xác định căn nguyên kích ứng thời tiết", duration: "Ngắn ngày" }
-                    ],
-                    contraindications: "KHÔNG CẦN DÙNG KHÁNG SINH cho bệnh nhân nếu hoàn toàn không có nhiễm trùng phối hợp (biểu hiện bằng đờm đục, sốt cao).",
-                    sideEffects: "Lạm dụng kháng sinh bừa bãi gây loạn khuẩn đường ruột và gia tăng tỉ lệ kháng thuốc trong cộng đồng.",
-                    interactions: "Theo dõi sát, nếu đờm chuyển màu đục thì mới luân chuyển sang phác đồ nhiễm khuẩn."
-                }
-            }
-        };
-
-        const flowCoughMap = {
-            selectedPath: null,      // SEVERE hoặc MILD
-            selectedCoughType: null, // DRY hoặc PRODUCTIVE
-
-            resetMap: function () {
-                document.querySelectorAll('.flow-node').forEach(n => {
-                    if (!n.classList.contains('node-root')) n.classList.remove('active');
-                });
-                document.getElementById('row-cough-types').style.opacity = "0.3";
-                document.getElementById('row-cough-types').style.pointerEvents = "none";
-                document.getElementById('row-cough-scenarios').style.display = "none";
-                document.getElementById('cough-protocol-panel').style.display = "none";
-            },
-
-            selectPath: function (path) {
-                this.resetMap();
-                this.selectedPath = path;
-
-                if (path === 'SEVERE') {
-                    document.getElementById('node-cough-severe').classList.add('active');
-                    this.renderSevereEmergencyPanel();
-                } else {
-                    document.getElementById('node-cough-mild').classList.add('active');
-                    // Mở khóa phân loại ho khan / ho đờm
-                    const rowTypes = document.getElementById('row-cough-types');
-                    rowTypes.style.opacity = "1";
-                    rowTypes.style.pointerEvents = "auto";
-                }
-            },
-
-            selectCoughType: function (type) {
-                document.getElementById('node-type-dry').classList.remove('active');
-                document.getElementById('node-type-productive').classList.remove('active');
-                document.getElementById('cough-protocol-panel').style.display = "none";
-
-                this.selectedCoughType = type;
-                document.getElementById(`node-type-${type.toLowerCase()}`).classList.add('active');
-
-                const rowScen = document.getElementById('row-cough-scenarios');
-                rowScen.style.display = "flex";
-
-                let scenariosHTML = "";
-                if (type === 'DRY') {
-                    scenariosHTML = `
-                <div class="flow-node" onclick="flowCoughMap.displayPharmacology('DRY_ASTHMA')">Hen phế quản (Cò cử/Ran rít ngáy)</div>
-                <div class="flow-node" onclick="flowCoughMap.displayPharmacology('DRY_VIRUS')">Viêm phế quản/thanh quản do virus</div>
-                <div class="flow-node" onclick="flowCoughMap.displayPharmacology('DRY_ALLERGY')">Ho do dị ứng thời tiết</div>
-                <div class="flow-node" onclick="flowCoughMap.displayPharmacology('DRY_GERD')">Trào ngược dạ dày thực quản (GERD)</div>
-                <div class="flow-node" onclick="flowCoughMap.displayPharmacology('DRY_ACEI')">Ho do thuốc điều trị Tăng huyết áp (ACEi)</div>
-            `;
-                } else if (type === 'PRODUCTIVE') {
-                    scenariosHTML = `
-                <div class="flow-node" onclick="flowCoughMap.displayPharmacology('PROD_BACTERIA')">Nhiễm khuẩn hô hấp (Sốt + Đờm đục)</div>
-                <div class="flow-node" onclick="flowCoughMap.displayPharmacology('PROD_VIRUS')">Viêm hô hấp do virus (Đờm trong)</div>
-                <div class="flow-node node-danger" onclick="flowCoughMap.displayEmergencyCall('Viêm phổi nặng / Áp xe phổi')">Nghe phổi có ran nổ khu trú + Hội chứng đông đặc</div>
-            `;
-                }
-                rowScen.innerHTML = scenariosHTML;
-
-                // Gắn sự kiện active riêng cho các khối kịch bản mới sinh
-                rowScen.querySelectorAll('.flow-node').forEach(node => {
-                    node.addEventListener('click', function () {
-                        rowScen.querySelectorAll('.flow-node').forEach(n => n.classList.remove('active'));
-                        this.classList.add('active');
-                    });
-                });
-            },
-
-            renderSevereEmergencyPanel: function () {
-                const panel = document.getElementById('cough-protocol-panel');
-                panel.style.display = "block";
-                const data = COUGH_PROTOCOL_DATABASE.emergency;
-
-                let listHTML = data.redFlags.map(flag => `<li style="margin-bottom:6px;">${flag}</li>`).join('');
-
-                panel.innerHTML = `
-            <h3 style="color:var(--danger-color); border-bottom:2px solid var(--danger-color); padding-bottom:6px; margin-top:0;">
-                🚨 QUY TRÌNH TIẾP CẬN CẤP CỨU & CHUYỂN TUYẾN KHẨN CẤP
-            </h3>
-            <p style="font-size:14px; font-weight:700;">${data.title}</p>
-            <p style="font-size:14px; margin-bottom:8px;">${data.description}</p>
-            <ul style="font-size:13.5px; color:#b71c1c; padding-left:20px; font-weight:600;">
-                ${listHTML}
+<div id="header-placeholder" data-header-path="../../header.html"></div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div class="app-container">
+    <aside class="app-sidebar" id="appSidebar">
+        <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <nav class="sidebar-nav" aria-label="Điều hướng chính">
+            <ul class="nav-list" role="list">
+                <li><a href="../../../index.html" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+                <li><a href="../../../pages/Công cụ/cong-cu.html" class="nav-item"><span class="nav-icon">⚙️</span><span class="nav-text">Công cụ lâm sàng</span></a></li>
+                <li><a href="../../../pages/Y học chứng cứ/yhcc.html" class="nav-item"><span class="nav-icon">📄</span><span class="nav-text">Y học chứng cứ</span></a></li>
+                <li><a href="../duoc-ly.html" class="nav-item active" aria-current="page"><span class="nav-icon">💊</span><span class="nav-text">Dược lý lâm sàng</span></a></li>
+                <li><a href="../../../pages/Tiếp cận/tiep-can.html" class="nav-item"><span class="nav-icon">🤒</span><span class="nav-text">Tiếp cận lâm sàng</span></a></li>
             </ul>
-            <div class="alert-box danger" style="font-weight:600;">
-                ${data.actionText}
+        </nav>
+    </aside>
+
+    <main class="app-main-container flow-page">
+        <nav aria-label="Breadcrumb" class="breadcrumb-container">
+            <ol class="breadcrumb-list">
+                <li class="breadcrumb-item"><a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a></li>
+                <li class="breadcrumb-item"><a href="../duoc-ly.html" class="breadcrumb-link">Dược lý</a></li>
+                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Triệu chứng</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Ho</li>
+            </ol>
+        </nav>
+
+        <div class="flow-hero">
+            <div class="hero-badge">💊 Dược lý lâm sàng • 2026</div>
+            <h1>Lưu đồ Dược lý Điều trị Ho Người Lớn</h1>
+            <p>Nhấn vào từng nút lưu đồ để tra cứu phác đồ thuốc theo căn nguyên gây ho</p>
+        </div>
+
+        <div class="fc-legend">
+            <div class="fc-legend-item"><div class="fc-legend-dot" style="background:var(--fc-danger)"></div> Khẩn cấp / Chuyển tuyến</div>
+            <div class="fc-legend-item"><div class="fc-legend-dot" style="background:var(--fc-info)"></div> Ho khan / Ho đờm</div>
+            <div class="fc-legend-item"><div class="fc-legend-dot" style="background:var(--fc-teal)"></div> Phác đồ thuốc</div>
+            <div class="fc-legend-item" style="font-style:italic;">💡 Nhấn nút để xem chi tiết bên dưới</div>
+        </div>
+
+        <div class="fc-tree">
+            <div class="fc-row">
+                <div class="fc-node nc-root" style="max-width:280px;">
+                    <div class="fc-node-tag">🎯 Điểm khởi đầu</div>
+                    <div class="fc-node-title">TIẾP CẬN BỆNH NHÂN HO</div>
+                    <div class="fc-node-sub">Bước 1: Sàng lọc dấu hiệu nặng / nguy cơ cao</div>
+                </div>
             </div>
-            <div style="margin-top:10px;"><span class="badge-src">Nguồn tài liệu gốc: ${data.source}</span></div>
-        `;
-            },
+            <div class="fc-arrow-down"><div class="fc-arrow-line"></div><div class="fc-arrow-head"></div></div>
 
-            displayEmergencyCall: function (conditionName) {
-                const panel = document.getElementById('cough-protocol-panel');
-                panel.style.display = "block";
-                panel.innerHTML = `
-            <div class="alert-box danger" style="margin-top:0;">
-                <h3 style="margin:0 0 6px 0;">⚠️ CẢNH BÁO LÂM SÀNG: CHỈ ĐỊNH CHUYỂN TUYẾN</h3>
-                <p><strong>Tình trạng phát hiện:</strong> ${conditionName}.</p>
-                <p><strong>Hướng xử lý:</strong> Không áp dụng các phác đồ nội khoa thông thường tại trạm y tế xã. Bệnh nhân cần được làm thủ tục chuyển tuyến trên ngay để chụp X-quang phổi tầm soát biến chứng và điều trị kháng sinh đường tiêm tĩnh mạch.</p>
-                <span class="badge-src">Nguồn tham khảo: QĐ số 2919/QĐ-BYT</span>
+            <div class="fc-row">
+                <div class="fc-node nc-danger pulse-danger" id="node-severe" onclick="selectPath('SEVERE')">
+                    <div class="fc-node-tag">🚨 Nguy cơ cao</div>
+                    <div class="fc-node-title">CÓ BIỂU HIỆN NẶNG / NGUY CƠ CAO</div>
+                    <div class="fc-node-sub">Suy hô hấp, suy tim, ho máu, hội chứng xâm nhập...</div>
+                </div>
+                <div class="fc-node nc-info" id="node-mild" onclick="selectPath('MILD')">
+                    <div class="fc-node-tag">✅ Nội khoa</div>
+                    <div class="fc-node-title">HO THÔNG THƯỜNG KHÔNG BIẾN CHỨNG</div>
+                    <div class="fc-node-sub">Phân loại tiếp: Ho khan vs Ho có đờm</div>
+                </div>
             </div>
-        `;
-            },
 
-            displayPharmacology: function (key) {
-                const panel = document.getElementById('cough-protocol-panel');
-                panel.style.display = "block";
-                const data = COUGH_PROTOCOL_DATABASE.scenarios[key];
+            <div id="layer-types" class="fc-layer-disabled">
+                <hr class="fc-sep">
+                <div class="fc-row">
+                    <div class="fc-node nc-neutral" id="node-dry" onclick="selectCoughType('DRY')">
+                        <div class="fc-node-tag">🌵 Ho khan</div>
+                        <div class="fc-node-title">HO KHAN (Không đờm)</div>
+                        <div class="fc-node-sub">Hen phế quản, dị ứng, GERD, ACEi, Virus...</div>
+                    </div>
+                    <div class="fc-node nc-info" id="node-productive" onclick="selectCoughType('PRODUCTIVE')">
+                        <div class="fc-node-tag">💧 Ho đờm</div>
+                        <div class="fc-node-title">HO CÓ ĐỜM</div>
+                        <div class="fc-node-sub">Nhiễm khuẩn (đờm đục) hoặc Virus (đờm trong)</div>
+                    </div>
+                </div>
+            </div>
 
-                let rows = data.drugs.map(d => `
-            <tr>
-                <td><strong>${d.name}</strong></td>
-                <td>${d.dose}</td>
-                <td>${d.duration}</td>
-            </tr>
-        `).join('');
+            <div id="layer-scenarios" style="display:none;">
+                <hr class="fc-sep">
+                <div class="fc-row" id="row-scenarios"></div>
+            </div>
+        </div>
 
-                panel.innerHTML = `
-            <h3 style="color:var(--primary-color); border-bottom:2px solid var(--primary-color); padding-bottom:6px; margin-top:0;">
-                📋 PHÁC ĐỒ ĐIỀU TRỊ DƯỢC LÝ & AN TOÀN SỬ DỤNG THUỐC
-            </h3>
-            <p style="font-size:14px; font-weight:bold; margin-bottom:6px; color:var(--text-main);">${data.title}</p>
-            
-            <table class="medication-table">
-                <thead>
-                    <tr>
-                        <th>Tên Thuốc / Hoạt Chất phối hợp</th>
-                        <th>Liều lượng & Đường dùng lâm sàng</th>
-                        <th>Thời gian sử dụng / Hướng dẫn</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ${rows}
-                </tbody>
-            </table>
+        <div id="proto-panel" style="display:none;"></div>
+    </main>
+</div>
 
-            <div class="alert-box danger"><strong>🚫 Chống chỉ định đặc hiệu:</strong> ${data.contraindications}</div>
-            <div class="alert-box warning"><strong>⚠️ Tác dụng phụ cần lưu ý:</strong> ${data.sideEffects || "Theo dõi kích ứng thuốc thông thường."}</div>
-            <div class="alert-box info"><strong>🔄 Tương tác thuốc cốt lõi:</strong> ${data.interactions}</div>
-            <div style="margin-top:12px;"><span class="badge-src">Tài liệu viện dẫn gốc: ${data.source}</span></div>
-        `;
-            }
-        };
-    </script>
+<footer class="global-footer">
+    <div class="footer-copyright"><p>CliniPortal © 2026 · Chỉ mang tính hỗ trợ tham khảo, không thay thế phán xét lâm sàng.</p></div>
+</footer>
+<script src="../../../js/sidebar.js"></script>
+<script>
+const DB = {
+    emergency:{
+        source:"QĐ số 2919/QĐ-BYT (Trang 83, 84, 85)",
+        flags:[
+            "Hội chứng xâm nhập (Sặc dị vật đường thở) → Thực hiện thủ thuật Heimlich khẩn cấp trước khi chuyển tuyến.",
+            "Suy hô hấp cấp: Khó thở, thở nhanh > 24 lần/phút, co kéo cơ hô hấp phụ, mạch nhanh > 120 lần/phút.",
+            "Kèm Suy tim: Khó thở, phù, gan to, mạch nhanh, phổi có ran ẩm rải rác hai bên.",
+            "Ho khạc đờm có máu (nghi Lao phổi, ung thư phổi, giãn phế quản, viêm phổi nặng).",
+            "Ho kéo dài liên tục trên 3 tuần chưa rõ nguyên nhân."
+        ],
+        action:"NGUYÊN TẮC DƯỢC LÝ: Không tự ý kê đơn thuốc giảm ho trung ương (Codein, Dextromethorphan) hoặc kháng sinh bừa bãi tại tuyến xã cho các trường hợp này để tránh làm chậm trễ thời gian cấp cứu chuyên sâu."
+    },
+    scenarios:{
+        DRY_ASTHMA:{title:"Ho khan do Hen phế quản (Tiền sử hen, dị ứng, ran rít/ngáy, cò cử)",source:"QĐ số 2919/QĐ-BYT (Trang 50, 51, 83)",
+            drugs:[
+                {name:"Salbutamol dạng hít/xịt (Ventolin 100mcg)",dose:"Xịt họng 2 nhát liên tiếp khi lên cơn. Lặp lại sau 20 phút nếu chưa đỡ.",duration:"Cắt cơn co thắt phế quản cấp"},
+                {name:"Corticoid hít (ICS) hoặc phối hợp",dose:"Hít liều tiêu chuẩn theo hướng dẫn kiểm soát dài hạn",duration:"Điều trị nền viêm mạn tính"},
+                {name:"Salbutamol 4mg viên uống (chỉ khi thiếu dạng xịt)",dose:"Uống 1 viên/lần × 2–3 lần/ngày",duration:"Theo dõi sát nhịp tim"}
+            ],
+            ci:"Không dùng cường giao cảm beta-2 dạng uống cho người cường giáp nặng hoặc loạn nhịp tim cấp.",
+            warn:"Hồi hộp, đánh trống ngực, run đầu ngón tay (tác dụng phụ đặc trưng của kích thích beta-2).",
+            ia:"Tránh phối hợp với chẹn beta giao cảm không chọn lọc (Propranolol) → co thắt phế quản đối kháng."
+        },
+        DRY_VIRUS:{title:"Ho khan do Viêm thanh quản / Viêm phế quản cấp do virus (Khàn tiếng, sốt nhẹ)",source:"QĐ số 2919/QĐ-BYT (Trang 83, 84)",
+            drugs:[
+                {name:"Terpin Codein (Viên phối hợp)",dose:"Uống 2 viên/lần × 2 lần/ngày",duration:"Điều trị triệu chứng ngắn ngày"},
+                {name:"Paracetamol 500mg (nếu sốt ≥ 38.5°C)",dose:"Uống 1 viên/lần, cách 4–6 giờ khi còn sốt cao",duration:"Khi có sốt"}
+            ],
+            ci:"TUYỆT ĐỐI CHỐNG CHỈ ĐỊNH Terpin Codein cho trẻ < 12 tuổi, phụ nữ đang cho con bú, người suy hô hấp hoặc hen tiến triển.",
+            warn:"Codein có thể gây táo bón, buồn ngủ nhẹ, chóng mặt hoặc buồn nôn.",
+            ia:"Không dùng chung với chất ức chế TKTW, thuốc an thần hoặc rượu → tăng độc tính suy hô hấp của Codein."
+        },
+        DRY_ALLERGY:{title:"Ho khan do dị ứng (Từng đợt về đêm, liên quan thay đổi thời tiết, phổi sạch)",source:"QĐ số 2919/QĐ-BYT (Trang 84)",
+            drugs:[
+                {name:"Loratadin 10mg (Kháng histamin thế hệ 2)",dose:"Uống 1 viên/ngày trước khi ngủ",duration:"Ưu tiên – ít buồn ngủ"},
+                {name:"Chlorpheniramin 4mg (Kháng histamin thế hệ 1)",dose:"Uống 2 viên/lần × 2 lần/ngày",duration:"Lựa chọn thay thế"}
+            ],
+            ci:"Thận trọng Chlorpheniramin cho bệnh nhân phì đại tiền liệt tuyến, glôcôm góc đóng (tác dụng kháng cholinergic).",
+            warn:"Chlorpheniramin gây khô miệng, bí tiểu, buồn ngủ sâu – CẤM dùng khi lái xe/vận hành máy. Loratadin ít buồn ngủ hơn.",
+            ia:"Tăng ức chế TKTW khi dùng kháng histamin thế hệ 1 + thuốc chống trầm cảm hoặc an thần."
+        },
+        DRY_GERD:{title:"Ho khan do Trào ngược dạ dày – thực quản / GERD (Rát họng, ợ chua, nóng rát sau xương ức)",source:"QĐ số 2919/QĐ-BYT (Trang 84)",
+            drugs:[
+                {name:"Omeprazol 20mg (Ức chế bơm Proton – PPI)",dose:"Uống 1 viên/ngày trước bữa sáng 30 phút",duration:"10 ngày liên tục"}
+            ],
+            ci:"Quá mẫn với nhóm PPI.",
+            warn:"Nhức đầu, đầy hơi, rối loạn tiêu hóa nhẹ thoáng qua.",
+            ia:"Omeprazol tăng nồng độ Diazepam, Phenytoin, Warfarin trong máu (ức chế enzyme CYP2C19)."
+        },
+        DRY_ACEI:{title:"Ho khan do Thuốc Ức chế men chuyển / ACEi (Đang dùng thuốc điều trị tăng huyết áp)",source:"QĐ số 2919/QĐ-BYT (Trang 84) & Cơ chế dược lý",
+            drugs:[
+                {name:"Ngừng ngay thuốc Ức chế men chuyển (ACEi)",dose:"Đình chỉ các biệt dược chứa Enalapril, Perindopril, Captopril...",duration:"Vĩnh viễn"},
+                {name:"Đổi sang nhóm Chẹn thụ thể Angiotensin II (ARB)",dose:"Chuyển sang Losartan, Valsartan... theo liều huyết áp tương đương",duration:"Duy trì điều trị huyết áp nền"}
+            ],
+            ci:"Không áp dụng cho người có tiền sử phù mạch do thuốc hạ áp.",
+            warn:"Ho do ACEi là ho khan dai dẳng do tích tụ Bradykinin, không đáp ứng với thuốc giảm ho thông thường. Khỏi hoàn toàn sau ngừng thuốc vài tuần.",
+            ia:"Phối hợp ACEi hoặc ARB với thuốc lợi tiểu giữ Kali → nguy cơ tăng Kali máu nguy hiểm."
+        },
+        PROD_BACTERIA:{title:"Ho có đờm đục do Nhiễm khuẩn hô hấp / Đợt cấp viêm phế quản mạn (Đờm vàng/xanh, sốt)",source:"QĐ số 2919/QĐ-BYT (Trang 62, 63, 84)",
+            drugs:[
+                {name:"Amoxicillin 500mg",dose:"Uống 2 viên/lần × 3 lần/ngày (Tổng 3g/ngày)",duration:"7–10 ngày"},
+                {name:"Augmentin 625mg (Amoxicillin + Clavulanate)",dose:"Uống 1 viên/lần × 3 lần/ngày",duration:"7 ngày (nếu kháng thuốc)"},
+                {name:"Clarithromycin 500mg (hoặc Erythromycin 500mg)",dose:"Uống 1 viên × 2 lần/ngày (Dị ứng Penicillin)",duration:"7 ngày"},
+                {name:"Paracetamol 10–15mg/kg/lần",dose:"Uống cách 4–6 giờ nếu sốt cao ≥ 38.5°C",duration:"Khi có sốt"}
+            ],
+            ci:"CCI Amoxicillin/Augmentin: dị ứng Beta-lactam. CCI Clarithromycin: mẫn cảm Macrolide.",
+            warn:"BẮT BUỘC đánh giá lại kết quả kháng sinh sau 3 ngày. Nếu không thuyên giảm hoặc nặng lên → Chuyển viện.",
+            ia:"Erythromycin/Clarithromycin ức chế mạnh CYP3A4 – Chống chỉ định dùng chung Statin (Atorvastatin) → tiêu cơ vân cấp."
+        },
+        PROD_VIRUS:{title:"Ho có đờm trong do Viêm hô hấp trên do virus (Đờm trong như nước dãi, bị vài ngày)",source:"QĐ số 2919/QĐ-BYT (Trang 84)",
+            drugs:[
+                {name:"Điều trị triệu chứng / Giữ ấm cổ, súc họng nước muối",dose:"Không lạm dụng kháng sinh",duration:"Theo dõi tiến triển lâm sàng"},
+                {name:"Phối hợp phác đồ Ho do dị ứng",dose:"Nếu xác định căn nguyên kích ứng thời tiết",duration:"Ngắn ngày"}
+            ],
+            ci:"KHÔNG CẦN KHÁNG SINH khi hoàn toàn không có nhiễm trùng phối hợp (đờm đục, sốt cao).",
+            warn:"Lạm dụng kháng sinh bừa bãi gây loạn khuẩn đường ruột và gia tăng tỉ lệ kháng thuốc cộng đồng.",
+            ia:"Theo dõi sát, nếu đờm chuyển màu đục → luân chuyển sang phác đồ nhiễm khuẩn."
+        }
+    }
+};
 
+function resetAll(){
+    document.querySelectorAll('.fc-node:not(.nc-root)').forEach(n=>n.classList.remove('active'));
+    document.getElementById('layer-types').className='fc-layer-disabled';
+    document.getElementById('layer-scenarios').style.display='none';
+    document.getElementById('proto-panel').style.display='none';
+}
+function selectPath(path){
+    resetAll();
+    if(path==='SEVERE'){
+        document.getElementById('node-severe').classList.add('active');
+        renderEmergency();
+    } else {
+        document.getElementById('node-mild').classList.add('active');
+        document.getElementById('layer-types').className='fc-layer-enabled';
+    }
+}
+function selectCoughType(type){
+    ['dry','productive'].forEach(id=>document.getElementById('node-'+id).classList.remove('active'));
+    document.getElementById('proto-panel').style.display='none';
+    document.getElementById('node-'+type.toLowerCase()).classList.add('active');
+    document.getElementById('layer-scenarios').style.display='block';
+    const btn=(key,label,cls='nc-teal')=>`<div class="fc-node ${cls}" onclick="displayProtocol('${key}')"><div class="fc-node-title">${label}</div></div>`;
+    let html='';
+    if(type==='DRY'){
+        html=btn('DRY_ASTHMA','Hen phế quản (Cò cử / Ran rít ngáy)')+
+             btn('DRY_VIRUS','Viêm phế quản / Thanh quản do virus')+
+             btn('DRY_ALLERGY','Ho do dị ứng thời tiết')+
+             btn('DRY_GERD','Trào ngược dạ dày thực quản (GERD)')+
+             btn('DRY_ACEI','Ho do thuốc điều trị Tăng huyết áp (ACEi)');
+    } else {
+        html=btn('PROD_BACTERIA','Nhiễm khuẩn hô hấp (Sốt + Đờm đục)')+
+             btn('PROD_VIRUS','Viêm hô hấp do virus (Đờm trong)')+
+             `<div class="fc-node nc-danger" onclick="showEmergencyReferral('Viêm phổi nặng / Áp xe phổi')"><div class="fc-node-title">🚨 Nghe phổi có ran nổ khu trú + Hội chứng đông đặc</div></div>`;
+    }
+    document.getElementById('row-scenarios').innerHTML=html;
+    document.querySelectorAll('#row-scenarios .fc-node').forEach(n=>n.addEventListener('click',function(){
+        document.querySelectorAll('#row-scenarios .fc-node').forEach(x=>x.classList.remove('active'));
+        this.classList.add('active');
+    }));
+}
+function renderEmergency(){
+    const d=DB.emergency;
+    const flags=d.flags.map(f=>`<li style="margin-bottom:5px;">${f}</li>`).join('');
+    document.getElementById('proto-panel').style.display='block';
+    document.getElementById('proto-panel').innerHTML=`<div class="proto-panel">
+        <div class="proto-badge">🚨 Khẩn cấp – Chuyển tuyến</div>
+        <div class="proto-panel-title" style="color:var(--fc-danger);border-color:var(--fc-danger);">QUY TRÌNH TIẾP CẬN CẤP CỨU & CHUYỂN TUYẾN KHẨN CẤP</div>
+        <p style="font-size:14px;margin-bottom:8px;font-weight:600;">Bệnh nhân ho kèm MỘT trong các dấu hiệu sau → CHUYỂN VIỆN NGAY:</p>
+        <ul style="font-size:13px;color:#7f1d1d;padding-left:18px;font-weight:600;">${flags}</ul>
+        <div class="ab ab-danger"><strong>⚠️ Nguyên tắc dược lý:</strong> ${d.action}</div>
+        <span class="src-badge">📚 ${d.source}</span>
+    </div>`;
+    document.getElementById('proto-panel').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function showEmergencyReferral(name){
+    document.getElementById('proto-panel').style.display='block';
+    document.getElementById('proto-panel').innerHTML=`<div class="proto-panel">
+        <div class="ab ab-danger" style="margin-top:0;">
+            <h3 style="margin:0 0 6px;">⚠️ CẢNH BÁO LÂM SÀNG: CHỈ ĐỊNH CHUYỂN TUYẾN</h3>
+            <p><strong>Tình trạng phát hiện:</strong> ${name}.</p>
+            <p><strong>Hướng xử lý:</strong> Không áp dụng phác đồ nội khoa thông thường tại trạm xã. Chuyển tuyến trên ngay để chụp X-quang phổi và điều trị kháng sinh đường TM.</p>
+            <span class="src-badge">📚 QĐ số 2919/QĐ-BYT</span>
+        </div>
+    </div>`;
+    document.querySelectorAll('#row-scenarios .fc-node').forEach(x=>x.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+    document.getElementById('proto-panel').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function displayProtocol(key){
+    const d=DB.scenarios[key];
+    const rows=d.drugs.map(dr=>`<tr><td><strong>${dr.name}</strong></td><td>${dr.dose}</td><td>${dr.duration}</td></tr>`).join('');
+    document.getElementById('proto-panel').style.display='block';
+    document.getElementById('proto-panel').innerHTML=`<div class="proto-panel">
+        <div class="proto-badge">💊 Phác đồ Dược lý</div>
+        <div class="proto-panel-title" style="color:#0284c7;border-color:#0284c7;">📋 PHÁC ĐỒ ĐIỀU TRỊ DƯỢC LÝ & AN TOÀN SỬ DỤNG THUỐC</div>
+        <p style="font-size:14px;font-weight:700;margin-bottom:10px;">${d.title}</p>
+        <table class="drug-table">
+            <thead><tr><th>Tên Thuốc / Hoạt Chất</th><th>Liều lượng & Đường dùng</th><th>Thời gian</th></tr></thead>
+            <tbody>${rows}</tbody>
+        </table>
+        <div class="ab ab-danger"><strong>🚫 Chống chỉ định:</strong> ${d.ci}</div>
+        <div class="ab ab-warn"><strong>⚠️ Tác dụng phụ:</strong> ${d.warn}</div>
+        <div class="ab ab-info"><strong>🔄 Tương tác thuốc:</strong> ${d.ia}</div>
+        <span class="src-badge">📚 ${d.source}</span>
+    </div>`;
+    document.getElementById('proto-panel').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+</script>
 </body>
-
 </html>
