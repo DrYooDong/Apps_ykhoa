@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="CliniPortal - Hệ sinh thái công cụ hỗ trợ lâm sàng dành cho bác sĩ nội khoa">
-  <title>CliniPortal – Hệ sinh thái Công cụ Lâm sàng</title>
+  <title>CliniPortal – Công cụ Lâm sàng</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,10 +25,7 @@
   <style>
     /* ============================================================
      LAYOUT PHÂN NHÓM CHUYỂN ĐỔI LINH HOẠT (ACCORDION TABS)
-     Đồng bộ hoàn toàn với hệ thống Design Tokens CliniPortal
   ============================================================ */
-
-    /* Lưới chứa các Nhóm xếp nằm ngang */
     .groups-wrapper {
       display: flex;
       flex-wrap: wrap;
@@ -36,35 +33,57 @@
       margin-top: 1.5rem;
     }
 
-    /* Khung thẻ của từng NHÓM */
     .group-container {
       flex: 1 1 calc(33.333% - 1.25rem);
       min-width: 300px;
       background-color: var(--color-surface);
       border: 1px solid var(--color-divider);
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-lg);
       padding: 1.25rem;
       box-shadow: var(--shadow-sm);
-      transition: all var(--tr);
+      transition: all var(--tr-slow);
       height: fit-content;
       display: flex;
       flex-direction: column;
+      position: relative;
+      overflow: hidden;
     }
 
-    /* Khi nhóm được kích hoạt: Bung rộng 100% hàng để hiện lưới card con */
+    .group-container::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.02) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity var(--tr);
+      pointer-events: none;
+    }
+
+    .group-container:hover::before {
+      opacity: 1;
+    }
+
     .group-container.active {
       flex: 1 1 100%;
       box-shadow: var(--shadow-md);
     }
 
-    /* Thanh tiêu đề Nhóm (Vùng click) */
+    .group-container.hidden-by-search {
+      display: none;
+    }
+
     .group-heading {
       display: flex;
       justify-content: space-between;
       align-items: center;
       cursor: pointer;
       user-select: none;
-      padding: 0.25rem 0;
+      padding: 0.35rem 0;
+      transition: color var(--tr);
+    }
+
+    .group-heading:hover {
+      color: var(--color-primary);
     }
 
     .group-heading h3 {
@@ -72,22 +91,40 @@
       font-weight: 700;
       margin: 0;
       color: var(--color-text);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color var(--tr);
     }
 
-    /* Mũi tên chỉ báo trạng thái đóng/mở */
+    .group-heading:hover h3 {
+      color: var(--color-primary);
+    }
+
+    .g-icon {
+      font-size: 1.15rem;
+    }
+
     .toggle-indicator {
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: transform var(--tr);
-      color: var(--color-text-muted);
+      transition: transform var(--tr), background var(--tr), color var(--tr);
+      color: var(--color-text-faint);
+      border-radius: var(--radius-sm);
+      flex-shrink: 0;
     }
 
     .toggle-indicator::after {
       content: '▼';
-      font-size: 0.75rem;
+      font-size: 0.7rem;
+    }
+
+    .group-heading:hover .toggle-indicator {
+      background: var(--color-surface-offset);
+      color: var(--color-primary);
     }
 
     .group-container.active .toggle-indicator {
@@ -95,11 +132,10 @@
       color: var(--color-primary);
     }
 
-    /* Kỹ thuật CSS Grid fr giúp tạo hiệu ứng trượt mở mượt mà không bị khựng */
     .category-grid-wrapper {
       display: grid;
       grid-template-rows: 0fr;
-      transition: grid-template-rows var(--tr), margin var(--tr), padding var(--tr);
+      transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1), margin var(--tr), padding var(--tr);
     }
 
     .group-container.active .category-grid-wrapper {
@@ -116,7 +152,30 @@
       gap: 1.25rem;
     }
 
-    /* Lưới hiển thị các công cụ con bên trong khi mở rộng */
+    .group-container.active .tool-card {
+      animation: fadeInUp 0.4s ease-out backwards;
+    }
+
+    .group-container.active .tool-card:nth-child(1) {
+      animation-delay: 0.05s;
+    }
+
+    .group-container.active .tool-card:nth-child(2) {
+      animation-delay: 0.12s;
+    }
+
+    .group-container.active .tool-card:nth-child(3) {
+      animation-delay: 0.19s;
+    }
+
+    .group-container.active .tool-card:nth-child(4) {
+      animation-delay: 0.26s;
+    }
+
+    .group-container.active .tool-card:nth-child(5) {
+      animation-delay: 0.33s;
+    }
+
     @media (min-width: 768px) {
       .category-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -129,36 +188,518 @@
       }
     }
 
-    /* Điểm nhấn đường viền nhận diện màu sắc theo từng nhóm chuyên khoa */
+    /* Gradient borders */
     .group-container.g-red.active {
-      border-left: 4px solid var(--color-rose);
+      border-left: 4px solid;
+      border-image: linear-gradient(180deg, var(--color-rose), rgba(225, 29, 72, 0.3)) 1;
     }
 
     .group-container.g-green.active {
-      border-left: 4px solid var(--color-success);
+      border-left: 4px solid;
+      border-image: linear-gradient(180deg, var(--color-success), rgba(5, 150, 105, 0.3)) 1;
     }
 
     .group-container.g-blue.active {
-      border-left: 4px solid var(--color-primary);
+      border-left: 4px solid;
+      border-image: linear-gradient(180deg, var(--color-primary), rgba(2, 132, 199, 0.3)) 1;
     }
 
     .group-container.g-purple.active {
-      border-left: 4px solid #a855f7;
+      border-left: 4px solid;
+      border-image: linear-gradient(180deg, #a855f7, rgba(168, 85, 247, 0.3)) 1;
     }
 
     .group-container.g-amber.active {
-      border-left: 4px solid var(--color-warning);
+      border-left: 4px solid;
+      border-image: linear-gradient(180deg, var(--color-warning), rgba(217, 119, 6, 0.3)) 1;
     }
 
     .group-container.g-teal.active {
-      border-left: 4px solid #14b8a6;
+      border-left: 4px solid;
+      border-image: linear-gradient(180deg, #14b8a6, rgba(20, 184, 166, 0.3)) 1;
+    }
+
+    .group-tool-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 22px;
+      height: 22px;
+      padding: 0 6px;
+      border-radius: var(--radius-full);
+      background: var(--color-surface-offset);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--color-text-faint);
+      margin-left: 0.25rem;
+    }
+
+    .group-container.active .group-tool-count {
+      background: var(--color-primary-hl);
+      color: var(--color-primary);
+    }
+
+    /* ============================================================
+       TOOLBAR — Search + Actions
+    ============================================================ */
+    .tools-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 0.25rem;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.4s ease-out 0.1s backwards;
+    }
+
+    /* Search */
+    .toolbar-search {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex: 1;
+      min-width: 200px;
+      height: 38px;
+      padding: 0 0.75rem;
+      background: var(--color-surface-offset);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-full);
+      transition: border-color var(--tr), box-shadow var(--tr), background var(--tr);
+    }
+
+    .toolbar-search:focus-within {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.12);
+      background: var(--color-surface);
+    }
+
+    .toolbar-search svg {
+      width: 15px;
+      height: 15px;
+      fill: var(--color-text-faint);
+      flex-shrink: 0;
+      transition: fill var(--tr);
+    }
+
+    .toolbar-search:focus-within svg {
+      fill: var(--color-primary);
+    }
+
+    .toolbar-search input {
+      flex: 1;
+      background: none;
+      border: none;
+      outline: none;
+      font: inherit;
+      color: var(--color-text);
+      font-size: var(--text-sm);
+    }
+
+    .toolbar-search input::placeholder {
+      color: var(--color-text-faint);
+    }
+
+    .search-count {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--color-text-faint);
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: color var(--tr);
+    }
+
+    .search-count.has-results {
+      color: var(--color-primary);
+    }
+
+    .search-clear-btn {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--color-surface-offset);
+      color: var(--color-text-faint);
+      font-size: 0.7rem;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background var(--tr), color var(--tr);
+      align-items: center;
+      justify-content: center;
+      border: none;
+      padding: 0;
+      line-height: 1;
+    }
+
+    .search-clear-btn.visible {
+      display: flex;
+    }
+
+    .search-clear-btn:hover {
+      background: var(--color-rose-hl);
+      color: var(--color-rose);
+    }
+
+    /* Actions */
+    .toolbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex-shrink: 0;
+    }
+
+    .toolbar-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.4rem 0.75rem;
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--color-text-muted);
+      background: var(--color-surface-offset);
+      border: 1px solid var(--color-divider);
+      cursor: pointer;
+      transition: all var(--tr);
+      white-space: nowrap;
+    }
+
+    .toolbar-btn:hover {
+      color: var(--color-primary);
+      border-color: var(--color-primary);
+      background: var(--color-primary-hl);
+    }
+
+    .toolbar-btn:active {
+      transform: scale(0.96);
+    }
+
+    .toolbar-divider {
+      width: 1px;
+      height: 24px;
+      background: var(--color-divider);
+      flex-shrink: 0;
+    }
+
+    /* View Toggle */
+    .view-toggle {
+      display: flex;
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+
+    .view-toggle-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 30px;
+      font-size: 0.85rem;
+      color: var(--color-text-faint);
+      background: var(--color-surface-offset);
+      border: none;
+      cursor: pointer;
+      transition: all var(--tr);
+    }
+
+    .view-toggle-btn:first-child {
+      border-right: 1px solid var(--color-divider);
+    }
+
+    .view-toggle-btn.active {
+      background: var(--color-primary);
+      color: white;
+    }
+
+    .view-toggle-btn:not(.active):hover {
+      background: var(--color-primary-hl);
+      color: var(--color-primary);
+    }
+
+    /* ============================================================
+       FAVORITES SECTION
+    ============================================================ */
+    .favorites-section {
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.4s ease-out;
+    }
+
+    .favorites-section .section-heading {
+      font-size: var(--text-md);
+      color: var(--color-warning);
+      padding-left: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .favorites-section .section-heading::before {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+    }
+
+    .favorites-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+      gap: 1rem;
+    }
+
+    .favorites-empty {
+      display: none;
+      padding: 1.5rem;
+      text-align: center;
+      color: var(--color-text-faint);
+      font-size: var(--text-sm);
+      background: var(--color-surface);
+      border: 1px dashed var(--color-divider);
+      border-radius: var(--radius-lg);
+    }
+
+    /* Fav button on cards */
+    .card-top-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .fav-btn {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-sm);
+      font-size: 1rem;
+      color: var(--color-text-faint);
+      cursor: pointer;
+      transition: all var(--tr);
+      background: none;
+      border: none;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .fav-btn:hover {
+      color: #f59e0b;
+      background: var(--color-warning-hl);
+      transform: scale(1.15);
+    }
+
+    .fav-btn.is-fav {
+      color: #f59e0b;
+    }
+
+    .fav-btn.is-fav:hover {
+      color: var(--color-text-faint);
+      background: var(--color-surface-offset);
+    }
+
+    /* ============================================================
+       LIST VIEW MODE
+    ============================================================ */
+    .list-view .groups-wrapper {
+      gap: 0.75rem;
+    }
+
+    .list-view .group-container {
+      flex: 1 1 100%;
+      min-width: unset;
+    }
+
+    .list-view .category-grid {
+      grid-template-columns: 1fr !important;
+      gap: 0;
+    }
+
+    .list-view .tool-card {
+      flex-direction: row;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-md);
+      gap: 0.75rem;
+      border-top: none;
+      /* Tránh double border khi xếp chồng */
+    }
+
+    .list-view .tool-card::before {
+      display: none;
+    }
+
+    .list-view .tool-card::after {
+      display: none;
+    }
+
+    .list-view .tool-card:not(:last-child) {
+      border-bottom: 1px solid var(--color-divider);
+      border-radius: 0;
+    }
+
+    .list-view .tool-card:first-child {
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      border-top: 1px solid var(--color-divider);
+    }
+
+    .list-view .tool-card:last-child {
+      border-radius: 0 0 var(--radius-md) var(--radius-md);
+    }
+
+    .list-view .tool-card:only-child {
+      border-radius: var(--radius-md);
+      border-top: 1px solid var(--color-divider);
+    }
+
+    .list-view .card-top {
+      margin-bottom: 0;
+      flex-shrink: 0;
+    }
+
+    .list-view .tool-icon {
+      width: 38px;
+      height: 38px;
+      font-size: 1.2rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .list-view .card-top-actions {
+      display: none;
+    }
+
+    .list-view .tool-content {
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .list-view .tool-content h3 {
+      font-size: var(--text-sm);
+      white-space: nowrap;
+      min-width: 140px;
+    }
+
+    .list-view .tool-content p {
+      margin-bottom: 0;
+      font-size: var(--text-xs);
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .list-view .tool-footer {
+      border-top: none;
+      padding-top: 0;
+      margin-top: 0;
+      flex-shrink: 0;
+      gap: 0.75rem;
+    }
+
+    .list-view .tool-category {
+      display: none;
+    }
+
+    .list-view .tool-footer a {
+      font-size: var(--text-xs);
+      padding: 0.3rem 0.75rem;
+      background: var(--color-primary-hl);
+      border-radius: var(--radius-full);
+      white-space: nowrap;
+    }
+
+    .list-view .tool-footer a::after {
+      display: none;
+    }
+
+    .list-view .favorites-grid {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .list-view .tool-title-row {
+      margin-bottom: 0;
+    }
+
+    /* ============================================================
+       SEARCH HIGHLIGHT & NO RESULTS
+    ============================================================ */
+    .tool-card.hidden-by-search {
+      display: none !important;
+    }
+
+    .search-no-results {
+      display: none;
+      padding: 2rem;
+      text-align: center;
+      color: var(--color-text-faint);
+      font-size: var(--text-sm);
+      grid-column: 1 / -1;
+    }
+
+    .search-no-results.visible {
+      display: block;
+    }
+
+    .search-no-results .no-results-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    mark.search-hl {
+      background: rgba(var(--color-primary-rgb), 0.2);
+      color: var(--color-primary);
+      border-radius: 2px;
+      padding: 0 2px;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 767px) {
+      .tools-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+        padding: 0.6rem 0.75rem;
+      }
+
+      .toolbar-search {
+        min-width: unset;
+      }
+
+      .toolbar-actions {
+        justify-content: space-between;
+      }
+
+      .toolbar-btn span {
+        display: none;
+      }
+
+      .list-view .tool-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+      }
+
+      .list-view .tool-content h3 {
+        min-width: unset;
+      }
+
+      .list-view .tool-content p {
+        display: none;
+      }
+
+      .list-view .tool-footer {
+        display: none;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Placeholder nạp header.html — đường dẫn tính từ vị trí cong-cu.html -->
   <div id="header-placeholder" data-header-path="../header.html"></div>
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
@@ -219,22 +760,62 @@
               <span class="home-icon">🏠</span> Home
             </a>
           </li>
-
-          <li class="breadcrumb-item active" aria-current="page"> Công cụ</a>
-          </li>
+          <li class="breadcrumb-item active" aria-current="page"> Công cụ</li>
         </ol>
       </nav>
 
       <section class="hero-dashboard" aria-labelledby="hero-title">
+        <div class="hero-pattern"></div>
         <div class="hero-intro">
           <h1 id="hero-title">🧮 CÔNG CỤ LÂM SÀNG</h1>
           <p>Hệ thống hỗ trợ quyết định lâm sàng, chuẩn hóa đánh giá bệnh nhân tại giường.</p>
         </div>
       </section>
 
-      <div class="main-content-grid">
+      <div class="main-content-grid" id="mainContentGrid">
 
-        <div class="groups-wrapper">
+        <!-- ===== TOOLBAR ===== -->
+        <div class="tools-toolbar">
+          <div class="toolbar-search">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+              </path>
+            </svg>
+            <input type="search" id="toolSearch" placeholder="Tìm kiếm công cụ..." autocomplete="off">
+            <button class="search-clear-btn" id="searchClearBtn" title="Xóa tìm kiếm">✕</button>
+            <span id="searchCount" class="search-count"></span>
+          </div>
+
+          <div class="toolbar-actions">
+            <button class="toolbar-btn" id="btnExpandAll" title="Mở tất cả nhóm">
+              <span>▼</span> <span>Mở tất cả</span>
+            </button>
+            <button class="toolbar-btn" id="btnCollapseAll" title="Đóng tất cả nhóm">
+              <span>▲</span> <span>Đóng tất cả</span>
+            </button>
+            <div class="toolbar-divider"></div>
+            <div class="view-toggle">
+              <button class="view-toggle-btn active" id="btnGridView" title="Dạng lưới">▦</button>
+              <button class="view-toggle-btn" id="btnListView" title="Dạng danh sách">☰</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== FAVORITES SECTION ===== -->
+        <div id="favoritesSection" class="favorites-section" style="display:none">
+          <h2 class="section-heading">⭐ Công cụ yêu thích</h2>
+          <div id="favoritesGrid" class="category-grid favorites-grid"></div>
+        </div>
+
+        <!-- ===== NO RESULTS ===== -->
+        <div id="searchNoResults" class="search-no-results">
+          <span class="no-results-icon">🔍</span>
+          <div>Không tìm thấy công cụ nào phù hợp.</div>
+          <div style="margin-top:0.25rem;font-size:var(--text-xs)">Thử từ khóa khác hoặc xóa bộ lọc.</div>
+        </div>
+
+        <div class="groups-wrapper" id="groupsWrapper">
 
           <!--TRUYỀN NHIỄM-->
           <div class="group-container g-red">
@@ -244,16 +825,19 @@
             </div>
             <div class="category-grid-wrapper">
               <div class="category-grid">
-                <div class="tool-card card-rose">
+                <div class="tool-card card-rose" data-tool-id="sl-nhiem-khuan">
                   <div class="card-top">
                     <div class="tool-icon">🦠</div>
-                    <span class="tool-status active">Hoạt động</span>
+                    <div class="card-top-actions">
+                      <button class="fav-btn" title="Yêu thích">☆</button>
+                      <span class="tool-status active">Hoạt động</span>
+                    </div>
                   </div>
                   <div class="tool-content">
                     <div class="tool-title-row">
                       <h3>Sàng lọc Nhiễm khuẩn</h3>
                     </div>
-                    <p>NEWS2, SOFA, qSOFA, SIRS, MEDS đánh giá nguy cơ nhiễm trùng huyết.</p>
+                    <p>NEWS2, SOFA, qSOFA, SIRS, MEDS</p>
                   </div>
                   <div class="tool-footer">
                     <span class="tool-category">Nhiễm khuẩn</span>
@@ -323,22 +907,24 @@
           <!--TIÊU HÓA & DINH DƯỠNG-->
           <div class="group-container g-green">
             <div class="group-heading">
-              <h3><span class="g-icon">🥗</span> Tiêu hóa &amp; Dinh dưỡng</h3>
+              <h3><span class="g-icon">🥗</span> Tiêu hóa &amp; Dinh dưỡng <span class="group-tool-count">2</span></h3>
               <span class="toggle-indicator"></span>
             </div>
             <div class="category-grid-wrapper">
               <div class="category-grid">
-
-                <div class="tool-card card-green">
+                <div class="tool-card card-green" data-tool-id="dg-dinhduong">
                   <div class="card-top">
                     <div class="tool-icon">🍽️</div>
-                    <span class="tool-status active">Hoạt động</span>
+                    <div class="card-top-actions">
+                      <button class="fav-btn" title="Yêu thích">☆</button>
+                      <span class="tool-status active">Hoạt động</span>
+                    </div>
                   </div>
                   <div class="tool-content">
                     <div class="tool-title-row">
                       <h3>Đánh giá Dinh dưỡng nội viện</h3>
                     </div>
-                    <p>Đánh giá dinh dưỡng, chỉ số BMI, phân loại suy dinh dưỡng.</p>
+                    <p>Nhu cầu năng lượng, Đạm (Protein), Dịch, Carbohydrate, Lipid</p>
                   </div>
                   <div class="tool-footer">
                     <span class="tool-category">Dinh dưỡng</span>
@@ -346,17 +932,19 @@
                   </div>
                 </div>
 
-                <div class="tool-card card-rose">
+                <div class="tool-card card-rose" data-tool-id="dg-xogan">
                   <div class="card-top">
                     <div class="tool-icon">🫗</div>
-                    <span class="tool-status active">Hoạt động</span>
+                    <div class="card-top-actions">
+                      <button class="fav-btn" title="Yêu thích">☆</button>
+                      <span class="tool-status active">Hoạt động</span>
+                    </div>
                   </div>
                   <div class="tool-content">
                     <div class="tool-title-row">
                       <h3>Đánh giá & Phân độ Xơ gan</h3>
                     </div>
-                    <p>Công cụ đánh giá & phân loại mức độ xơ gan dựa trên thang điểm Child-Pugh và Bảng phân loại MELD.
-                    </p>
+                    <p>Child-Pugh, MELD-Na</p>
                   </div>
                   <div class="tool-footer">
                     <span class="tool-category">Tiêu hóa</span>
@@ -370,21 +958,25 @@
           <!--THẬN & ĐIỆN GIẢI, TOAN KIỀM-->
           <div class="group-container g-blue">
             <div class="group-heading">
-              <h3><span class="g-icon">🫘</span> Thận &amp; Điện giải, Toan Kiềm</h3>
+              <h3><span class="g-icon">🫘</span> Thận &amp; Điện giải, Toan Kiềm <span class="group-tool-count">4</span>
+              </h3>
               <span class="toggle-indicator"></span>
             </div>
             <div class="category-grid-wrapper">
               <div class="category-grid">
-                <div class="tool-card card-blue">
+                <div class="tool-card card-blue" data-tool-id="renal-function">
                   <div class="card-top">
                     <div class="tool-icon">🔬</div>
-                    <span class="tool-status active">Hoạt động</span>
+                    <div class="card-top-actions">
+                      <button class="fav-btn" title="Yêu thích">☆</button>
+                      <span class="tool-status active">Hoạt động</span>
+                    </div>
                   </div>
                   <div class="tool-content">
                     <div class="tool-title-row">
                       <h3>Chức năng thận</h3>
                     </div>
-                    <p>Cockcroft-Gault, CKD-EPI 2021, hiệu chỉnh liều thuốc.</p>
+                    <p>Cockcroft-Gault, CKD-EPI 2021, KDIGO, KDIGO AKI</p>
                   </div>
                   <div class="tool-footer">
                     <span class="tool-category">Thận</span>
@@ -392,17 +984,19 @@
                   </div>
                 </div>
 
-                <div class="tool-card card-green">
+                <div class="tool-card card-green" data-tool-id="dg-abg">
                   <div class="card-top">
                     <div class="tool-icon">🔬</div>
-                    <span class="tool-status active">Hoạt động</span>
+                    <div class="card-top-actions">
+                      <button class="fav-btn" title="Yêu thích">☆</button>
+                      <span class="tool-status active">Hoạt động</span>
+                    </div>
                   </div>
                   <div class="tool-content">
                     <div class="tool-title-row">
                       <h3>Phân tích khí máu động mạch</h3>
                     </div>
-                    <p>Dựa trên các chỉ số pH, pCO2, HCO3- và pO2, công cụ giúp xác định các rối loạn hô hấp, chuyển hóa
-                      và đánh giá mức độ bù trừ của cơ thể.</p>
+                    <p>Henderson-Hasselbalch, Winters, Anion Gap, Delta Ratio</p>
                   </div>
                   <div class="tool-footer">
                     <span class="tool-category">Toan kiềm</span>
@@ -410,17 +1004,19 @@
                   </div>
                 </div>
 
-                <div class="tool-card card-rose">
+                <div class="tool-card card-rose" data-tool-id="dg-kali-canxi">
                   <div class="card-top">
                     <div class="tool-icon">🔬</div>
-                    <span class="tool-status active">Hoạt động</span>
+                    <div class="card-top-actions">
+                      <button class="fav-btn" title="Yêu thích">☆</button>
+                      <span class="tool-status active">Hoạt động</span>
+                    </div>
                   </div>
                   <div class="tool-content">
                     <div class="tool-title-row">
                       <h3>Xử trí rối loạn kali/canxi máu</h3>
                     </div>
-                    <p>Các bước tiếp cận chẩn đoán và điều trị các rối loạn kali và canxi máu dựa trên bằng chứng lâm
-                      sàng và hướng dẫn cập nhật</p>
+                    <p>Canxi hiệu chỉnh (Albumin), Phác đồ UKKA</p>
                   </div>
                   <div class="tool-footer">
                     <span class="tool-category">Điện giải</span>
@@ -428,24 +1024,25 @@
                   </div>
                 </div>
 
-                <div class="tool-card card-rose">
+                <div class="tool-card card-rose" data-tool-id="dg-natri-dich">
                   <div class="card-top">
                     <div class="tool-icon">🔬</div>
-                    <span class="tool-status active">Hoạt động</span>
+                    <div class="card-top-actions">
+                      <button class="fav-btn" title="Yêu thích">☆</button>
+                      <span class="tool-status active">Hoạt động</span>
+                    </div>
                   </div>
                   <div class="tool-content">
                     <div class="tool-title-row">
                       <h3>Xử trí rối loạn natri máu & dịch</h3>
                     </div>
-                    <p>Các bước tiếp cận chẩn đoán và điều trị các rối loạn natri và dịch dựa trên bằng chứng lâm sàng
-                      và hướng dẫn cập nhật</p>
+                    <p>Adrogue-Madias, TBW, Free Water Deficit, ODS Risk</p>
                   </div>
                   <div class="tool-footer">
                     <span class="tool-category">Điện giải</span>
                     <a href="Thận & Điện giải - toan kiềm/DG_Natri-Dich.html">Mở công cụ</a>
                   </div>
                 </div>
-
               </div>
             </div>
           </div>
@@ -453,22 +1050,24 @@
           <!--TIM MẠCH & HUYẾT KHỐI-->
           <div class="group-container g-purple">
             <div class="group-heading">
-              <h3><span class="g-icon">❤️</span> Tim mạch &amp; Huyết khối</h3>
+              <h3><span class="g-icon">❤️</span> Tim mạch &amp; Huyết khối <span class="group-tool-count">1</span></h3>
               <span class="toggle-indicator"></span>
             </div>
             <div class="category-grid-wrapper">
               <div class="category-grid">
-                <div class="tool-card card-purple">
+                <div class="tool-card card-purple" data-tool-id="ptnc-timmach">
                   <div class="card-top">
                     <div class="tool-icon">📊</div>
-                    <span class="tool-status dev">Hoạt động</span>
+                    <div class="card-top-actions">
+                      <button class="fav-btn" title="Yêu thích">☆</button>
+                      <span class="tool-status dev">Hoạt động</span>
+                    </div>
                   </div>
                   <div class="tool-content">
                     <div class="tool-title-row">
-                      <h3>Phần tầng nguy cơ tim mạch toàn bộ</h3>
+                      <h3>Phân tầng nguy cơ tim mạch toàn bộ</h3>
                     </div>
-                    <p>Đánh giá nguy cơ tim mạch toàn bộ bằng các thang điểm SCORE2, SCORE2-OP, SCORE2-Diabetes, PREVENT
-                    </p>
+                    <p>SCORE2, SCORE2-OP, SCORE2-Diabetes, PREVENT</p>
                   </div>
                   <div class="tool-footer">
                     <span class="tool-category">Tim mạch</span>
@@ -482,21 +1081,24 @@
           <!--NỘI TIẾT & CHUYỂN HÓA-->
           <div class="group-container g-amber">
             <div class="group-heading">
-              <h3><span class="g-icon">🧠</span> Nội tiết &amp; Chuyển hóa</h3>
+              <h3><span class="g-icon">🧠</span> Nội tiết &amp; Chuyển hóa <span class="group-tool-count">1</span></h3>
               <span class="toggle-indicator"></span>
             </div>
             <div class="category-grid-wrapper">
               <div class="category-grid">
-                <div class="tool-card card-amber">
+                <div class="tool-card card-amber" data-tool-id="dg-insulin">
                   <div class="card-top">
                     <div class="tool-icon">💉</div>
-                    <span class="tool-status active">Hoạt động</span>
+                    <div class="card-top-actions">
+                      <button class="fav-btn" title="Yêu thích">☆</button>
+                      <span class="tool-status active">Hoạt động</span>
+                    </div>
                   </div>
                   <div class="tool-content">
                     <div class="tool-title-row">
                       <h3>Chỉnh liều Insulin nội trú</h3>
                     </div>
-                    <p>Phác đồ kiểm soát đường huyết bệnh nhân nội trú, tính liều insulin nền – bolus.</p>
+                    <p>Basal-Bolus, CII (ICU)</p>
                   </div>
                   <div class="tool-footer">
                     <span class="tool-category">Nội tiết</span>
@@ -510,21 +1112,24 @@
           <!--THẦN KINH-->
           <div class="group-container g-teal">
             <div class="group-heading">
-              <h3><span class="g-icon">🧩</span> Thần kinh</h3>
+              <h3><span class="g-icon">🧩</span> Thần kinh <span class="group-tool-count">1</span></h3>
               <span class="toggle-indicator"></span>
             </div>
             <div class="category-grid-wrapper">
               <div class="category-grid">
-                <div class="tool-card card-teal">
+                <div class="tool-card card-teal" data-tool-id="dg-dotquy">
                   <div class="card-top">
                     <div class="tool-icon">🫀</div>
-                    <span class="tool-status dev">Đang xây</span>
+                    <div class="card-top-actions">
+                      <button class="fav-btn" title="Yêu thích">☆</button>
+                      <span class="tool-status dev">Đang xây</span>
+                    </div>
                   </div>
                   <div class="tool-content">
                     <div class="tool-title-row">
                       <h3>Sàng lọc &amp; Phân tầng Đột quỵ cấp</h3>
                     </div>
-                    <p>Thang điểm NIHSS, ASPECTS, tiêu chí can thiệp tái thông mạch máu não.</p>
+                    <p>NIHSS, ASPECTS, ABCD2, ICH, VAN</p>
                   </div>
                   <div class="tool-footer">
                     <span class="tool-category">Thần kinh</span>
@@ -535,23 +1140,290 @@
             </div>
           </div>
 
-        </div>
-      </div>
-    </div>
-  </div>
+        </div><!-- /groups-wrapper -->
+      </div><!-- /main-content-grid -->
+    </div><!-- /main-wrapper -->
+  </div><!-- /app-container -->
 
   <!-- Placeholder nạp footer.html -->
   <div id="footer-placeholder" data-footer-path="../footer.html"></div>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const groupHeadings = document.querySelectorAll('.group-heading');
+      // ── DOM refs ──────────────────────────────────────────
+      const searchInput = document.getElementById('toolSearch');
+      const searchCount = document.getElementById('searchCount');
+      const searchClearBtn = document.getElementById('searchClearBtn');
+      const searchNoResults = document.getElementById('searchNoResults');
+      const btnExpandAll = document.getElementById('btnExpandAll');
+      const btnCollapseAll = document.getElementById('btnCollapseAll');
+      const btnGridView = document.getElementById('btnGridView');
+      const btnListView = document.getElementById('btnListView');
+      const mainGrid = document.getElementById('mainContentGrid');
+      const groupsWrapper = document.getElementById('groupsWrapper');
+      const favSection = document.getElementById('favoritesSection');
+      const favGrid = document.getElementById('favoritesGrid');
 
-      groupHeadings.forEach(heading => {
+      const allGroups = groupsWrapper.querySelectorAll('.group-container');
+      const allCards = groupsWrapper.querySelectorAll('.tool-card[data-tool-id]');
+      const totalCards = allCards.length;
+
+      const STORAGE_KEY = 'clini-favorites';
+      const VIEW_KEY = 'clini-view-mode';
+
+      // ── ACCORDION TOGGLE ─────────────────────────────────
+      groupsWrapper.querySelectorAll('.group-heading').forEach(heading => {
         heading.addEventListener('click', () => {
-          const container = heading.closest('.group-container');
-          container.classList.toggle('active');
+          heading.closest('.group-container').classList.toggle('active');
         });
+      });
+
+      // ── 1. SEARCH / FILTER ───────────────────────────────
+      function removeHighlights() {
+        groupsWrapper.querySelectorAll('mark.search-hl').forEach(m => {
+          const parent = m.parentNode;
+          parent.replaceChild(document.createTextNode(m.textContent), m);
+          parent.normalize();
+        });
+      }
+
+      function highlightText(el, keyword) {
+        const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+        const matches = [];
+        while (walker.nextNode()) {
+          const node = walker.currentNode;
+          if (node.parentElement.closest('.fav-btn, .tool-status, .tool-category, .group-tool-count, .toggle-indicator')) continue;
+          const idx = node.textContent.toLowerCase().indexOf(keyword);
+          if (idx >= 0) matches.push({ node, idx });
+        }
+        // Apply in reverse to preserve positions
+        for (let i = matches.length - 1; i >= 0; i--) {
+          const { node, idx } = matches[i];
+          const before = node.textContent.substring(0, idx);
+          const match = node.textContent.substring(idx, idx + keyword.length);
+          const after = node.textContent.substring(idx + keyword.length);
+
+          const mark = document.createElement('mark');
+          mark.className = 'search-hl';
+          mark.textContent = match;
+
+          const frag = document.createDocumentFragment();
+          if (before) frag.appendChild(document.createTextNode(before));
+          frag.appendChild(mark);
+          if (after) frag.appendChild(document.createTextNode(after));
+
+          node.parentNode.replaceChild(frag, node);
+        }
+      }
+
+      function doSearch() {
+        const keyword = searchInput.value.trim().toLowerCase();
+        removeHighlights();
+
+        // Show/hide clear button
+        searchClearBtn.classList.toggle('visible', keyword.length > 0);
+
+        if (!keyword) {
+          // Reset: show everything
+          allCards.forEach(c => c.classList.remove('hidden-by-search'));
+          allGroups.forEach(g => g.classList.remove('hidden-by-search'));
+          searchCount.textContent = '';
+          searchCount.classList.remove('has-results');
+          searchNoResults.classList.remove('visible');
+          favSection.style.display = getFavorites().length > 0 ? '' : 'none';
+          return;
+        }
+
+        // Hide favorites during search
+        favSection.style.display = 'none';
+
+        let visibleCount = 0;
+
+        allGroups.forEach(group => {
+          const cards = group.querySelectorAll('.tool-card[data-tool-id]');
+          let groupHasMatch = false;
+
+          cards.forEach(card => {
+            // Search in title + description + category
+            const title = card.querySelector('.tool-content h3')?.textContent || '';
+            const desc = card.querySelector('.tool-content p')?.textContent || '';
+            const cat = card.querySelector('.tool-category')?.textContent || '';
+            const searchText = (title + ' ' + desc + ' ' + cat).toLowerCase();
+
+            if (searchText.includes(keyword)) {
+              card.classList.remove('hidden-by-search');
+              groupHasMatch = true;
+              visibleCount++;
+              // Highlight
+              const contentEl = card.querySelector('.tool-content');
+              if (contentEl) highlightText(contentEl, keyword);
+            } else {
+              card.classList.add('hidden-by-search');
+            }
+          });
+
+          if (groupHasMatch) {
+            group.classList.remove('hidden-by-search');
+            group.classList.add('active'); // Auto-expand matching groups
+          } else {
+            group.classList.add('hidden-by-search');
+          }
+        });
+
+        // Update counter
+        searchCount.textContent = `${visibleCount}/${totalCards}`;
+        searchCount.classList.toggle('has-results', visibleCount > 0);
+
+        // No results message
+        searchNoResults.classList.toggle('visible', visibleCount === 0);
+      }
+
+      searchInput.addEventListener('input', doSearch);
+
+      searchClearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        doSearch();
+        searchInput.focus();
+      });
+
+      // ── 2. EXPAND / COLLAPSE ALL ─────────────────────────
+      btnExpandAll.addEventListener('click', () => {
+        allGroups.forEach(g => {
+          if (!g.classList.contains('hidden-by-search')) {
+            g.classList.add('active');
+          }
+        });
+      });
+
+      btnCollapseAll.addEventListener('click', () => {
+        allGroups.forEach(g => g.classList.remove('active'));
+      });
+
+      // ── 3. FAVORITES (localStorage) ──────────────────────
+      function getFavorites() {
+        try {
+          return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+        } catch { return []; }
+      }
+
+      function saveFavorites(favs) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(favs));
+      }
+
+      function toggleFavorite(toolId) {
+        let favs = getFavorites();
+        const idx = favs.indexOf(toolId);
+        if (idx >= 0) {
+          favs.splice(idx, 1);
+        } else {
+          favs.push(toolId);
+        }
+        saveFavorites(favs);
+        renderFavorites();
+        syncFavButtons();
+      }
+
+      function syncFavButtons() {
+        const favs = getFavorites();
+        allCards.forEach(card => {
+          const id = card.dataset.toolId;
+          const btn = card.querySelector('.fav-btn');
+          if (!btn) return;
+          const isFav = favs.includes(id);
+          btn.classList.toggle('is-fav', isFav);
+          btn.textContent = isFav ? '★' : '☆';
+          btn.title = isFav ? 'Bỏ yêu thích' : 'Yêu thích';
+        });
+      }
+
+      function renderFavorites() {
+        const favs = getFavorites();
+        favGrid.innerHTML = '';
+
+        if (favs.length === 0) {
+          favSection.style.display = 'none';
+          return;
+        }
+
+        // Only show if not searching
+        if (searchInput.value.trim()) {
+          favSection.style.display = 'none';
+          return;
+        }
+
+        favSection.style.display = '';
+
+        favs.forEach(id => {
+          const original = groupsWrapper.querySelector(`.tool-card[data-tool-id="${id}"]`);
+          if (!original) return;
+
+          const clone = original.cloneNode(true);
+          clone.removeAttribute('style'); // remove any --i
+          clone.classList.remove('hidden-by-search');
+
+          // Re-bind fav button
+          const favBtn = clone.querySelector('.fav-btn');
+          if (favBtn) {
+            favBtn.classList.add('is-fav');
+            favBtn.textContent = '★';
+            favBtn.title = 'Bỏ yêu thích';
+            favBtn.addEventListener('click', (e) => {
+              e.stopPropagation();
+              e.preventDefault();
+              toggleFavorite(id);
+            });
+          }
+
+          favGrid.appendChild(clone);
+        });
+      }
+
+      // Delegate fav button clicks on original cards
+      groupsWrapper.addEventListener('click', (e) => {
+        const favBtn = e.target.closest('.fav-btn');
+        if (!favBtn) return;
+        e.stopPropagation();
+        e.preventDefault();
+        const card = favBtn.closest('.tool-card[data-tool-id]');
+        if (card) toggleFavorite(card.dataset.toolId);
+      });
+
+      // Init favorites
+      syncFavButtons();
+      renderFavorites();
+
+      // ── 4. GRID / LIST VIEW TOGGLE ───────────────────────
+      function setView(mode) {
+        if (mode === 'list') {
+          mainGrid.classList.add('list-view');
+          btnListView.classList.add('active');
+          btnGridView.classList.remove('active');
+        } else {
+          mainGrid.classList.remove('list-view');
+          btnGridView.classList.add('active');
+          btnListView.classList.remove('active');
+        }
+        try { localStorage.setItem(VIEW_KEY, mode); } catch { }
+      }
+
+      btnGridView.addEventListener('click', () => setView('grid'));
+      btnListView.addEventListener('click', () => setView('list'));
+
+      // Restore saved view
+      const savedView = localStorage.getItem(VIEW_KEY);
+      if (savedView === 'list') setView('list');
+
+      // ── Keyboard shortcut: / to focus search ─────────────
+      document.addEventListener('keydown', (e) => {
+        if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+          e.preventDefault();
+          searchInput.focus();
+        }
+        if (e.key === 'Escape' && document.activeElement === searchInput) {
+          searchInput.value = '';
+          doSearch();
+          searchInput.blur();
+        }
       });
     });
   </script>
