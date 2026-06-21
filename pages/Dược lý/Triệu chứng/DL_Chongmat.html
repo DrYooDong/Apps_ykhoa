@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CliniPortal - Hệ sinh thái công cụ hỗ trợ lâm sàng dành cho bác sĩ nội khoa">
+    <title>CliniPortal - Hệ sinh thái Công cụ Lâm sàng</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../css/components/footer.css">
+
+    <script src="../../../pages/header.js" defer></script>
+    <style>
+        :root {
+            --primary-color: #3f51b5;
+            --primary-light: #e8eaf6;
+            --danger-color: #d32f2f;
+            --danger-light: #ffebee;
+            --warning-color: #f57c00;
+            --warning-light: #fff3e0;
+            --success-color: #2e7d32;
+            --text-main: #263238;
+            --text-muted: #546e7a;
+            --bg-card: #ffffff;
+            --border-radius: 8px;
+        }
+
+        main#clinical-vertigo-app {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text-main);
+            max-width: 1100px;
+            margin: 10px auto;
+            padding: 15px;
+            line-height: 1.5;
+        }
+
+        /* CONTAINER LƯU ĐỒ */
+        .flowchart-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            background: #f4f6f7;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            border: 1px solid #cfd8dc;
+            margin-bottom: 20px;
+        }
+
+        .flowchart-row {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            gap: 12px;
+            width: 100%;
+        }
+
+        /* KHỐI LƯU ĐỒ (NODES) */
+        .flow-node {
+            background: var(--bg-card);
+            border: 2px solid #b0bec5;
+            border-radius: var(--border-radius);
+            padding: 12px;
+            text-align: center;
+            font-size: 13.5px;
+            font-weight: 600;
+            cursor: pointer;
+            flex: 1;
+            min-width: 160px;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+        }
+
+        .flow-node:hover {
+            border-color: var(--primary-color);
+            background: var(--primary-light);
+            transform: translateY(-1px);
+        }
+
+        /* TRẠNG THÁI ACTIVE */
+        .flow-node.active {
+            border-color: var(--primary-color);
+            background: var(--primary-color);
+            color: #ffffff;
+            box-shadow: 0 4px 10px rgba(63, 81, 181, 0.3);
+        }
+
+        .flow-node.node-root {
+            background: #455a64;
+            color: white;
+            border-color: #37474f;
+            max-width: 280px;
+            cursor: default;
+        }
+
+        .flow-node.node-danger {
+            border-color: var(--danger-color);
+            color: var(--danger-color);
+        }
+
+        .flow-node.node-danger.active {
+            background: var(--danger-color);
+            color: white;
+        }
+
+        /* KHU VỰC HIỂN THỊ PHÁC ĐỒ CHỈ ĐỊNH */
+        .protocol-display-box {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            border: 2px solid #cfd8dc;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .medication-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 14px;
+        }
+
+        .medication-table th,
+        .medication-table td {
+            border: 1px solid #cfd8dc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .medication-table th {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .alert-box {
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 8px;
+            font-size: 13.5px;
+        }
+
+        .alert-box.danger {
+            background: var(--danger-light);
+            color: #b71c1c;
+            border-left: 4px solid var(--danger-color);
+        }
+
+        .alert-box.warning {
+            background: var(--warning-light);
+            color: #e65100;
+            border-left: 4px solid var(--warning-color);
+        }
+
+        .alert-box.info {
+            background: #e8f5e9;
+            color: #1b5e20;
+            border-left: 4px solid var(--success-color);
+        }
+
+        .badge-src {
+            display: inline-block;
+            background: #f0f4f8;
+            color: var(--text-muted);
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-top: 6px;
+        }
+    </style>
+
+<body>
+
+</body>
+<!-- Placeholder nạp header.html — đường dẫn tính từ vị trí cong-cu.html -->
+<div id="header-placeholder" data-header-path="../../header.html"></div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<!-- ===================== APP CONTAINER ===================== -->
+<div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+        <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+        <nav class="sidebar-nav" aria-label="Điều hướng chính">
+            <ul class="nav-list" role="list">
+                <li>
+                    <a href="../../../index.html" class="nav-item" title="Trang chủ">
+                        <span class="nav-icon">🏠</span>
+                        <span class="nav-text">Trang chủ</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ lâm sàng">
+                        <span class="nav-icon">⚙️</span>
+                        <span class="nav-text">Công cụ lâm sàng</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+                        <span class="nav-icon">📄</span>
+                        <span class="nav-text">Y học chứng cứ</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../../../Dược lý/duoc-ly.html" class="nav-item active" aria-current="page" title="Dược lý">
+                        <span class="nav-icon">💊</span>
+                        <span class="nav-text">Dược lý lâm sàng</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận triệu chứng">
+                        <span class="nav-icon">🤒</span>
+                        <span class="nav-text">Tiếp cận lâm sàng</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    <!-- MAIN CONTENT -->
+    <main id="clinical-vertigo-app">
+        <header style="text-align: center; margin-bottom: 16px;">
+            <h2 style="color: var(--primary-color); margin-bottom: 2px;">SƠ ĐỒ TƯƠNG TÁC: DƯỢC LÝ XỬ TRÍ CHÓNG MẶT</h2>
+            <p style="color: var(--text-muted); font-size: 13px; margin: 0;">Nhấp chuột vào từng khối phân loại lâm sàng
+                trên sơ đồ để kết xuất danh mục thuốc và cảnh báo an toàn</p>
+        </header>
+
+        <div class="flowchart-wrapper">
+
+            <div class="flowchart-row">
+                <div class="flow-node node-root">TIẾP CẬN BỆNH NHÂN CHÓNG MẶT</div>
+            </div>
+
+            <div class="flowchart-row">
+                <div class="flow-node node-danger" id="node-vertigo-severe"
+                    onclick="flowVertigoMap.selectPath('SEVERE')">
+                    CHÓNG MẶT DO NGUYÊN NHÂN TẠI NÃO<br><small>(Có tổn thương thần kinh khu trú, tăng HA ác
+                        tính...)</small>
+                </div>
+                <div class="flow-node" id="node-vertigo-mild" onclick="flowVertigoMap.selectPath('MILD')">
+                    CHÓNG MẶT KHÔNG DO TỔN THƯƠNG NÃO<br><small>(Đủ điều kiện phân loại căn nguyên ngoại biên / tư
+                        thế)</small>
+                </div>
+            </div>
+
+            <div class="flowchart-row" id="row-vertigo-types"
+                style="opacity: 0.3; pointer-events: none; border-top: 1px dashed #b0bec5; padding-top: 12px;">
+                <div class="flow-node" id="node-type-peripheral" onclick="flowVertigoMap.selectCategory('PERIPHERAL')">
+                    1. HỘI CHỨNG TIỀN ĐÌNH NGOẠI BIÊN</div>
+                <div class="flow-node" id="node-type-orthostatic"
+                    onclick="flowVertigoMap.selectCategory('ORTHOSTATIC')">2. HẠ HUYẾT ÁP TƯ THẾ ĐỨNG</div>
+                <div class="flow-node" id="node-type-ototoxicity"
+                    onclick="flowVertigoMap.selectCategory('OTOTOXICITY')">3. DO ĐỘC TÍNH CỦA THUỐC ĐANG DÙNG</div>
+            </div>
+
+            <div class="flowchart-row" id="row-vertigo-scenarios"
+                style="display: none; border-top: 1px dashed #b0bec5; padding-top: 12px;">
+            </div>
+        </div>
+
+        <div id="vertigo-protocol-panel" class="protocol-display-box" style="display: none;">
+        </div>
+    </main>
+    <script>
+        // CƠ SỞ DỮ LIỆU LÂM SÀNG ĐƯỢC ĐỐI CHIẾU NGHIÊM NGẶT TỪ TÀI LIỆU BỘ Y TẾ VÀ HƯỚNG DẪN QUỐC TẾ
+        const VERTIGO_PROTOCOL_DATABASE = {
+            emergency: {
+                title: "QUY TRÌNH CHUYỂN TUYẾN KHẨN CẤP (Chóng mặt do nguyên nhân tại não / Trung ương)",
+                source: "QĐ số 2919/QĐ-BYT (Trang 82) & Harrison's Manual of Medicine",
+                description: "Bệnh nhân chóng mặt xuất hiện kèm một trong các dấu hiệu thần kinh trung ương sau bắt buộc phải chuyển tuyến trên cấp cứu:",
+                redFlags: [
+                    "Có dấu hiệu liệt khu trú, yếu nửa người, méo miệng hoặc nuốt sặc.",
+                    "Có triệu chứng đau đầu nhiều dữ dội mới xuất hiện hoặc đau gáy, cứng gáy (Nghi ngờ xuất huyết dưới nhện, tai biến mạch máu não).",
+                    "Chóng mặt kèm tăng huyết áp ác tính hoặc rung giật nhãn cầu (nystagmus) đa hướng liên tục không đổi khi thay đổi tiêu điểm mắt.",
+                    "Khám thấy có sự chênh lệch huyết áp tâm thu > 20 mmHg giữa hai tay (Cảnh báo hội chứng cướp máu của động mạch dưới đòn - Subclavian Steal Syndrome)."
+                ],
+                actionText: "NGUYÊN TẮC DƯỢC LÝ: Tuyệt đối không trì hoãn bằng cách lạm dụng các thuốc ức chế tiền đình đường uống/tiêm tại trạm y tế. Chuyển ngay bệnh nhân đến cơ sở có khả năng chụp CT/MRI não để xác định tổn thương mạch máu hoặc khối choán chỗ."
+            },
+            scenarios: {
+                PERI_ACUTE: {
+                    title: "Cơn rối loạn tiền đình ngoại biên cấp tính (Chóng mặt xoay tròn rầm rộ, kèm nôn ói dữ dội, BPPV hoặc Viêm thần kinh tiền đình)",
+                    source: "QĐ số 2919/QĐ-BYT (Trang 82) & Harrison's Table 53-2",
+                    drugs: [
+                        { name: "Acetyl-DL-leucine (Tanganil) 500mg", dose: "Uống 2 viên / lần x 2 lần / ngày (Hoặc dùng dạng tiêm tĩnh mạch chậm 1g nếu nôn ói nhiều).", duration: "3 - 5 ngày (Giai đoạn cấp tính)" },
+                        { name: "Meclizine 25mg hoặc Dimenhydrinate 50mg", dose: "Uống 1 viên / lần, dùng từ 1 đến 3 lần mỗi ngày.", duration: "Chỉ dùng ngắn ngày trong pha cấp" },
+                        { name: "Diazepam 5mg (Hoặc Lorazepam)", dose: "Uống 1/2 đến 1 viên trước khi đi ngủ để an thần, an tâm lý.", duration: "1 - 3 ngày đầu tiên" }
+                    ],
+                    contraindications: "Không dùng Meclizine/Dimenhydrinate cho người có bệnh lý Glaucom góc đóng hoặc phì đại tuyến tiền liệt nặng. Chống chỉ định Diazepam cho người suy hô hấp.",
+                    warnings: "LƯU Ý CỐT LÕI: Các thuốc kháng histamin và benzodiazepine (thuốc ức chế tiền đình) chỉ được dùng tối đa 3-5 ngày. Sử dụng kéo dài sẽ làm chậm quá trình bù trừ tiền đình của hệ thần kinh trung ương (delays CNS adaptation).",
+                    interactions: "Diazepam dùng chung với các thuốc kháng histamin thế hệ 1 (Dimenhydrinate) sẽ làm tăng nặng tình trạng ngủ gà, mất thăng bằng cơ thể."
+                },
+                PERI_MENIERE: {
+                    title: "Hội chứng bệnh Ménière (Chóng mặt từng đợt kèm ú dịch nội mê nhĩ, giảm thính lực, ù tai một bên)",
+                    source: "Harrison's Manual of Medicine (Chapter 53 - Vertigo)",
+                    drugs: [
+                        { name: "Betahistine dihydrochloride 16mg", dose: "Uống 1 viên / lần x 3 lần / ngày (hoặc 24mg x 2 lần/ngày) trong bữa ăn.", duration: "Điều trị duy trì dài hạn" },
+                        { name: "Thuốc lợi tiểu: Hydrochlorothiazide 25mg", dose: "Uống 1 viên / ngày (Phối hợp chế độ ăn giảm muối < 1000 mg/ngày).", duration: "Giảm áp lực dịch nội mê nhĩ" }
+                    ],
+                    contraindications: "Chống chỉ định Betahistine cho bệnh nhân có u tủy thượng thận (pheochromocytoma) hoặc đang trong đợt cấp loét dạ dày tá tràng.",
+                    warnings: "Theo dõi sát nồng độ điện giải (đặc biệt là Kali máu) khi sử dụng lợi tiểu thiazide kéo dài.",
+                    interactions: "Tránh dùng đồng thời Betahistine với các thuốc kháng histamin vì chúng có thể triệt tiêu hiệu năng dược lý của nhau thông qua cơ chế đối kháng thụ thể H1."
+                },
+                ORTHO_DRUG: {
+                    title: "Hạ huyết áp tư thế đứng do tương tác thuốc / suy tự chủ (Chóng mặt/choáng váng khi thay đổi tư thế từ nằm/ngồi sang đứng)",
+                    source: "Internal Medicine on Call & Symptoms to Diagnosis",
+                    drugs: [
+                        { name: "Rà soát & Ngừng thuốc gây hạ áp tư thế", dose: "Đình chỉ hoặc giảm liều các thuốc: Thuốc giãn mạch, thuốc chẹn alpha, thuốc lợi tiểu vòng, hoặc thuốc chống trầm cảm 3 vòng (TCA).", duration: "Xử trí nguyên nhân gốc" },
+                        { name: "Fludrocortisone hoặc Midodrine (Tuyến chuyên khoa)", dose: "Dùng theo chỉ định chuyên sâu nếu do suy hệ tự chủ không thể ngừng thuốc nền.", duration: "Theo dõi sát huyết áp tư thế" }
+                    ],
+                    contraindications: "Chống chỉ định bù dịch/muối liều cao cho bệnh nhân có tiền sử suy tim ứ huyết nặng hoặc suy thận giai đoạn cuối.",
+                    warnings: "Tiêu chuẩn chẩn đoán hạ huyết áp tư thế đứng: Huyết áp tâm thu giảm ≥ 20 mmHg hoặc huyết áp tâm lựu giảm ≥ 10 mmHg trong vòng 3 phút sau khi đứng dậy.",
+                    interactions: "Hướng dẫn bệnh nhân nâng cao đầu giường khi ngủ, co duỗi cơ chân trước khi đứng dậy và tuyệt đối không thay đổi tư thế đột ngột."
+                },
+                OTO_TOXICITY: {
+                    title: "Chóng mặt / Mất thăng bằng do độc tính trên tai của thuốc đang sử dụng (Ototoxicity)",
+                    source: "Tài liệu Bộ Y tế - Sử dụng thuốc hợp lý trong điều trị (Phụ lục 9)",
+                    drugs: [
+                        { name: "Đình chỉ ngay lập tức nhóm thuốc gây độc tai", dose: "Ngừng các kháng sinh Aminoglycoside (Streptomycin, Gentamicin, Amikacin) hoặc lợi tiểu quai (Furosemide liều cao).", duration: "Vĩnh viễn" },
+                        { name: "Chuyển đổi phác đồ kháng sinh an toàn", dose: "Thay thế bằng nhóm Beta-lactam hoặc các nhóm không gây độc lên dây thần kinh số VIII.", duration: "Duy trì điều trị nhiễm khuẩn gốc" }
+                    ],
+                    contraindications: "Không cố chấp duy trì Aminoglycoside khi bệnh nhân bắt đầu có triệu chứng ù tai, chóng mặt hoặc giảm thính lực thoáng qua.",
+                    warnings: "Độc tính phá hủy tế bào lông tiền đình của Streptomycin và Gentamicin có thể gây tổn thương không hồi phục, dẫn đến mất thăng bằng vĩnh viễn.",
+                    interactions: "Nguy cơ độc tính trên tai tăng lên gấp nhiều lần nếu phối hợp đồng thời Aminoglycoside với lợi tiểu quai Furosemide."
+                }
+            }
+        };
+
+        const flowVertigoMap = {
+            selectedPath: null,
+            selectedCategory: null,
+
+            resetMap: function () {
+                document.querySelectorAll('.flow-node').forEach(n => {
+                    if (!n.classList.contains('node-root')) n.classList.remove('active');
+                });
+                document.getElementById('row-vertigo-types').style.opacity = "0.3";
+                document.getElementById('row-vertigo-types').style.pointerEvents = "none";
+                document.getElementById('row-vertigo-scenarios').style.display = "none";
+                document.getElementById('vertigo-protocol-panel').style.display = "none";
+            },
+
+            selectPath: function (path) {
+                this.resetMap();
+                this.selectedPath = path;
+
+                if (path === 'SEVERE') {
+                    document.getElementById('node-vertigo-severe').classList.add('active');
+                    this.renderSevereEmergencyPanel();
+                } else {
+                    document.getElementById('node-vertigo-mild').classList.add('active');
+                    // Mở khóa phân loại cấp 3
+                    const rowTypes = document.getElementById('row-vertigo-types');
+                    rowTypes.style.opacity = "1";
+                    rowTypes.style.pointerEvents = "auto";
+                }
+            },
+
+            selectCategory: function (cat) {
+                document.getElementById('node-type-peripheral').classList.remove('active');
+                document.getElementById('node-type-orthostatic').classList.remove('active');
+                document.getElementById('node-type-ototoxicity').classList.remove('active');
+                document.getElementById('vertigo-protocol-panel').style.display = "none";
+
+                this.selectedCategory = cat;
+                document.getElementById(`node-type-${cat.toLowerCase()}`).classList.add('active');
+
+                const rowScen = document.getElementById('row-vertigo-scenarios');
+                rowScen.style.display = "flex";
+
+                let scenariosHTML = "";
+                if (cat === 'PERIPHERAL') {
+                    scenariosHTML = `
+                <div class="flow-node" onclick="flowVertigoMap.displayPharmacology('PERI_ACUTE')">Cơn Tiền Đình Cấp / Chóng mặt tư thế kịch phát (BPPV)</div>
+                <div class="flow-node" onclick="flowVertigoMap.displayPharmacology('PERI_MENIERE')">Bệnh Ménière (Ù tai + Giảm thính lực + Chóng mặt từng đợt)</div>
+            `;
+                } else if (cat === 'ORTHOSTATIC') {
+                    scenariosHTML = `
+                <div class="flow-node" onclick="flowVertigoMap.displayPharmacology('ORTHO_DRUG')">Choáng váng do Hạ huyết áp tư thế đứng (Do thuốc/Suy tự chủ)</div>
+            `;
+                } else if (cat === 'OTOTOXICITY') {
+                    scenariosHTML = `
+                <div class="flow-node" onclick="flowVertigoMap.displayPharmacology('OTO_TOXICITY')">Nhiễm độc tiền đình ốc tai do Thuốc (Aminoglycoside, Lợi tiểu quai)</div>
+            `;
+                }
+                rowScen.innerHTML = scenariosHTML;
+
+                // Kích hoạt cơ chế active class cho hàng kịch bản động
+                rowScen.querySelectorAll('.flow-node').forEach(node => {
+                    node.addEventListener('click', function () {
+                        rowScen.querySelectorAll('.flow-node').forEach(n => n.classList.remove('active'));
+                        this.classList.add('active');
+                    });
+                });
+            },
+
+            renderSevereEmergencyPanel: function () {
+                const panel = document.getElementById('vertigo-protocol-panel');
+                panel.style.display = "block";
+                const data = VERTIGO_PROTOCOL_DATABASE.emergency;
+
+                let flagsHTML = data.redFlags.map(flag => `<li style="margin-bottom:6px;">${flag}</li>`).join('');
+
+                panel.innerHTML = `
+            <h3 style="color:var(--danger-color); border-bottom:2px solid var(--danger-color); padding-bottom:6px; margin-top:0;">
+                🚨 QUY TRÌNH PHÂN TUYẾN CẤP CỨU THẦN KINH TRUNG ƯƠNG
+            </h3>
+            <p style="font-size:14px; font-weight:700;">${data.title}</p>
+            <p style="font-size:14px; margin-bottom:8px;">${data.description}</p>
+            <ul style="font-size:13.5px; color:#b71c1c; padding-left:20px; font-weight:600;">
+                ${flagsHTML}
+            </ul>
+            <div class="alert-box danger" style="font-weight:600;">
+                ${data.actionText}
+            </div>
+            <div style="margin-top:10px;"><span class="badge-src">Nguồn tài liệu gốc: ${data.source}</span></div>
+        `;
+            },
+
+            displayPharmacology: function (key) {
+                const panel = document.getElementById('vertigo-protocol-panel');
+                panel.style.display = "block";
+                const data = VERTIGO_PROTOCOL_DATABASE.scenarios[key];
+
+                let rows = "";
+                if (data.drugs.length > 0) {
+                    rows = data.drugs.map(d => `
+                <tr>
+                    <td><strong>${d.name}</strong></td>
+                    <td>${d.dose}</td>
+                    <td>${d.duration}</td>
+                </tr>
+            `).join('');
+                } else {
+                    rows = `<tr><td colspan="3" style="text-align:center; color:var(--danger-color);">Không có chỉ định dùng thuốc hóa dược - Tập trung đình chỉ thuốc gây hại hoặc can thiệp không dùng thuốc.</td></tr>`;
+                }
+
+                panel.innerHTML = `
+            <h3 style="color:var(--primary-color); border-bottom:2px solid var(--primary-color); padding-bottom:6px; margin-top:0;">
+                📋 PHÁC ĐỒ DƯỢC LÝ & AN TOÀN SỬ DỤNG THUỐC TIỀN ĐÌNH
+            </h3>
+            <p style="font-size:14px; font-weight:bold; margin-bottom:6px; color:var(--text-main);">${data.title}</p>
+            
+            <table class="medication-table">
+                <thead>
+                    <tr>
+                        <th>Thuốc / Biện pháp xử trí can thiệp</th>
+                        <th>Liều lượng & Đường dùng chi tiết</th>
+                        <th>Thời gian áp dụng / Hướng dẫn an toàn</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${rows}
+                </tbody>
+            </table>
+
+            <div class="alert-box danger"><strong>🚫 Chống chỉ định đặc hiệu:</strong> ${data.contraindications}</div>
+            <div class="alert-box warning"><strong>⚠️ Tác dụng phụ & Thao tác bắt buộc:</strong> ${data.warnings}</div>
+            <div class="alert-box info"><strong>🔄 Tương tác thuốc cần kiểm soát:</strong> ${data.interactions}</div>
+            <div style="margin-top:12px;"><span class="badge-src">Tài liệu viện dẫn gốc: ${data.source}</span></div>
+        `;
+            }
+        };
+    </script>
+
+</html>
