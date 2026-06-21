@@ -1,3 +1,45 @@
-The file changes show corrupted/invalid filenames with escape sequences (`C\\303\\264ng`), which appear to be encoding issues rather than actual legitimate files. Since these don't represent real build artifacts, dependencies, or temporary files that should be ignored, and there are no valid file extensions indicating compiled code or other artifacts, no additional ignore rules are needed beyond what might already exist.
+```
+# Compiled and build artifacts
+*.pyc
+__pycache__/
 
-(empty)
+# Dependencies
+node_modules/
+venv/
+.venv/
+.env
+.env.local
+*.env.*
+
+# Logs and temp files
+*.log
+*.tmp
+
+# Editors
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
+
+# Distribution / packaging
+dist/
+build/
+*.tar.gz
+*.whl
+*.egg
+*.egg-info/
+
+# Testing
+.pytest_cache/
+.mypy_cache/
+
+# Original rules preserved
+*.log
+```
