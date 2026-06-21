@@ -21,6 +21,7 @@
 
   <script src="../../pages/header.js"></script>
   <script src="../../pages/footer.js"></script>
+  <script src="../../js/main.js"></script>
 
   <style>
     /* ============================================================
@@ -59,14 +60,18 @@
       pointer-events: none;
     }
 
-    .group-container:hover::before { opacity: 1; }
+    .group-container:hover::before {
+      opacity: 1;
+    }
 
     .group-container.active {
       flex: 1 1 100%;
       box-shadow: var(--shadow-md);
     }
 
-    .group-container.hidden-by-search { display: none; }
+    .group-container.hidden-by-search {
+      display: none;
+    }
 
     .group-heading {
       display: flex;
@@ -78,7 +83,9 @@
       transition: color var(--tr);
     }
 
-    .group-heading:hover { color: var(--color-primary); }
+    .group-heading:hover {
+      color: var(--color-primary);
+    }
 
     .group-heading h3 {
       font-size: var(--text-md);
@@ -91,9 +98,13 @@
       transition: color var(--tr);
     }
 
-    .group-heading:hover h3 { color: var(--color-primary); }
+    .group-heading:hover h3 {
+      color: var(--color-primary);
+    }
 
-    .g-icon { font-size: 1.15rem; }
+    .g-icon {
+      font-size: 1.15rem;
+    }
 
     .toggle-indicator {
       width: 28px;
@@ -146,27 +157,68 @@
       animation: fadeInUp 0.4s ease-out backwards;
     }
 
-    .group-container.active .tool-card:nth-child(1) { animation-delay: 0.05s; }
-    .group-container.active .tool-card:nth-child(2) { animation-delay: 0.12s; }
-    .group-container.active .tool-card:nth-child(3) { animation-delay: 0.19s; }
-    .group-container.active .tool-card:nth-child(4) { animation-delay: 0.26s; }
-    .group-container.active .tool-card:nth-child(5) { animation-delay: 0.33s; }
+    .group-container.active .tool-card:nth-child(1) {
+      animation-delay: 0.05s;
+    }
+
+    .group-container.active .tool-card:nth-child(2) {
+      animation-delay: 0.12s;
+    }
+
+    .group-container.active .tool-card:nth-child(3) {
+      animation-delay: 0.19s;
+    }
+
+    .group-container.active .tool-card:nth-child(4) {
+      animation-delay: 0.26s;
+    }
+
+    .group-container.active .tool-card:nth-child(5) {
+      animation-delay: 0.33s;
+    }
 
     @media (min-width: 768px) {
-      .category-grid { grid-template-columns: repeat(2, 1fr); }
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (min-width: 1200px) {
-      .category-grid { grid-template-columns: repeat(3, 1fr); }
+      .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
 
     /* Gradient borders */
-    .group-container.g-red.active { border-left: 4px solid; border-image: linear-gradient(180deg, var(--color-rose), rgba(225, 29, 72, 0.3)) 1; }
-    .group-container.g-green.active { border-left: 4px solid; border-image: linear-gradient(180deg, var(--color-success), rgba(5, 150, 105, 0.3)) 1; }
-    .group-container.g-blue.active { border-left: 4px solid; border-image: linear-gradient(180deg, var(--color-primary), rgba(2, 132, 199, 0.3)) 1; }
-    .group-container.g-purple.active { border-left: 4px solid; border-image: linear-gradient(180deg, #a855f7, rgba(168, 85, 247, 0.3)) 1; }
-    .group-container.g-amber.active { border-left: 4px solid; border-image: linear-gradient(180deg, var(--color-warning), rgba(217, 119, 6, 0.3)) 1; }
-    .group-container.g-teal.active { border-left: 4px solid; border-image: linear-gradient(180deg, #14b8a6, rgba(20, 184, 166, 0.3)) 1; }
+    .group-container.g-red.active {
+      border-left: 4px solid;
+      border-image: linear-gradient(180deg, var(--color-rose), rgba(225, 29, 72, 0.3)) 1;
+    }
+
+    .group-container.g-green.active {
+      border-left: 4px solid;
+      border-image: linear-gradient(180deg, var(--color-success), rgba(5, 150, 105, 0.3)) 1;
+    }
+
+    .group-container.g-blue.active {
+      border-left: 4px solid;
+      border-image: linear-gradient(180deg, var(--color-primary), rgba(2, 132, 199, 0.3)) 1;
+    }
+
+    .group-container.g-purple.active {
+      border-left: 4px solid;
+      border-image: linear-gradient(180deg, #a855f7, rgba(168, 85, 247, 0.3)) 1;
+    }
+
+    .group-container.g-amber.active {
+      border-left: 4px solid;
+      border-image: linear-gradient(180deg, var(--color-warning), rgba(217, 119, 6, 0.3)) 1;
+    }
+
+    .group-container.g-teal.active {
+      border-left: 4px solid;
+      border-image: linear-gradient(180deg, #14b8a6, rgba(20, 184, 166, 0.3)) 1;
+    }
 
     .group-tool-count {
       display: inline-flex;
@@ -234,7 +286,9 @@
       transition: fill var(--tr);
     }
 
-    .toolbar-search:focus-within svg { fill: var(--color-primary); }
+    .toolbar-search:focus-within svg {
+      fill: var(--color-primary);
+    }
 
     .toolbar-search input {
       flex: 1;
@@ -246,7 +300,9 @@
       font-size: var(--text-sm);
     }
 
-    .toolbar-search input::placeholder { color: var(--color-text-faint); }
+    .toolbar-search input::placeholder {
+      color: var(--color-text-faint);
+    }
 
     .search-count {
       font-size: var(--text-xs);
@@ -257,7 +313,9 @@
       transition: color var(--tr);
     }
 
-    .search-count.has-results { color: var(--color-primary); }
+    .search-count.has-results {
+      color: var(--color-primary);
+    }
 
     .search-clear-btn {
       display: none;
@@ -277,8 +335,14 @@
       line-height: 1;
     }
 
-    .search-clear-btn.visible { display: flex; }
-    .search-clear-btn:hover { background: var(--color-rose-hl); color: var(--color-rose); }
+    .search-clear-btn.visible {
+      display: flex;
+    }
+
+    .search-clear-btn:hover {
+      background: var(--color-rose-hl);
+      color: var(--color-rose);
+    }
 
     /* Actions */
     .toolbar-actions {
@@ -310,7 +374,9 @@
       background: var(--color-primary-hl);
     }
 
-    .toolbar-btn:active { transform: scale(0.96); }
+    .toolbar-btn:active {
+      transform: scale(0.96);
+    }
 
     .toolbar-divider {
       width: 1px;
@@ -341,7 +407,9 @@
       transition: all var(--tr);
     }
 
-    .view-toggle-btn:first-child { border-right: 1px solid var(--color-divider); }
+    .view-toggle-btn:first-child {
+      border-right: 1px solid var(--color-divider);
+    }
 
     .view-toggle-btn.active {
       background: var(--color-primary);
@@ -451,11 +519,17 @@
       padding: 0.75rem 1rem;
       border-radius: var(--radius-md);
       gap: 0.75rem;
-      border-top: none; /* Tránh double border khi xếp chồng */
+      border-top: none;
+      /* Tránh double border khi xếp chồng */
     }
 
-    .list-view .tool-card::before { display: none; }
-    .list-view .tool-card::after { display: none; }
+    .list-view .tool-card::before {
+      display: none;
+    }
+
+    .list-view .tool-card::after {
+      display: none;
+    }
 
     .list-view .tool-card:not(:last-child) {
       border-bottom: 1px solid var(--color-divider);
@@ -488,7 +562,9 @@
       border-radius: var(--radius-sm);
     }
 
-    .list-view .card-top-actions { display: none; }
+    .list-view .card-top-actions {
+      display: none;
+    }
 
     .list-view .tool-content {
       flex-direction: row;
@@ -521,7 +597,9 @@
       gap: 0.75rem;
     }
 
-    .list-view .tool-category { display: none; }
+    .list-view .tool-category {
+      display: none;
+    }
 
     .list-view .tool-footer a {
       font-size: var(--text-xs);
@@ -531,19 +609,25 @@
       white-space: nowrap;
     }
 
-    .list-view .tool-footer a::after { display: none; }
+    .list-view .tool-footer a::after {
+      display: none;
+    }
 
     .list-view .favorites-grid {
       grid-template-columns: 1fr;
       gap: 0;
     }
 
-    .list-view .tool-title-row { margin-bottom: 0; }
+    .list-view .tool-title-row {
+      margin-bottom: 0;
+    }
 
     /* ============================================================
        SEARCH HIGHLIGHT & NO RESULTS
     ============================================================ */
-    .tool-card.hidden-by-search { display: none !important; }
+    .tool-card.hidden-by-search {
+      display: none !important;
+    }
 
     .search-no-results {
       display: none;
@@ -554,7 +638,9 @@
       grid-column: 1 / -1;
     }
 
-    .search-no-results.visible { display: block; }
+    .search-no-results.visible {
+      display: block;
+    }
 
     .search-no-results .no-results-icon {
       font-size: 2.5rem;
@@ -580,13 +666,17 @@
         padding: 0.6rem 0.75rem;
       }
 
-      .toolbar-search { min-width: unset; }
+      .toolbar-search {
+        min-width: unset;
+      }
 
       .toolbar-actions {
         justify-content: space-between;
       }
 
-      .toolbar-btn span { display: none; }
+      .toolbar-btn span {
+        display: none;
+      }
 
       .list-view .tool-content {
         flex-direction: column;
@@ -594,10 +684,17 @@
         gap: 0.25rem;
       }
 
-      .list-view .tool-content h3 { min-width: unset; }
-      .list-view .tool-content p { display: none; }
+      .list-view .tool-content h3 {
+        min-width: unset;
+      }
 
-      .list-view .tool-footer { display: none; }
+      .list-view .tool-content p {
+        display: none;
+      }
+
+      .list-view .tool-footer {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -682,7 +779,9 @@
         <div class="tools-toolbar">
           <div class="toolbar-search">
             <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
+              <path
+                d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+              </path>
             </svg>
             <input type="search" id="toolSearch" placeholder="Tìm kiếm công cụ..." autocomplete="off">
             <button class="search-clear-btn" id="searchClearBtn" title="Xóa tìm kiếm">✕</button>
@@ -717,10 +816,12 @@
           <div style="margin-top:0.25rem;font-size:var(--text-xs)">Thử từ khóa khác hoặc xóa bộ lọc.</div>
         </div>
 
+        <div class="groups-wrapper" id="groupsWrapper">
+
           <!--TRUYỀN NHIỄM-->
           <div class="group-container g-red">
             <div class="group-heading">
-              <h3><span class="g-icon">🦠</span> Truyền Nhiễm</h3>
+              <h3><span class="g-icon">🦠</span> Truyền Nhiễm <span class="group-tool-count">1</span></h3>
               <span class="toggle-indicator"></span>
             </div>
             <div class="category-grid-wrapper">
@@ -734,8 +835,10 @@
                     </div>
                   </div>
                   <div class="tool-content">
-                    <div class="tool-title-row"><h3>Sàng lọc Nhiễm khuẩn</h3></div>
-                    <p>NEWS2, SOFA, qSOFA, SIRS, MEDS đánh giá nguy cơ nhiễm trùng huyết.</p>
+                    <div class="tool-title-row">
+                      <h3>Sàng lọc Nhiễm khuẩn</h3>
+                    </div>
+                    <p>NEWS2, SOFA, qSOFA, SIRS, MEDS</p>
                   </div>
                   <div class="tool-footer">
                     <span class="tool-category">Nhiễm khuẩn</span>
@@ -749,21 +852,24 @@
           <!--CẤP CỨU & HỒI SỨC-->
           <div class="group-container g-red">
             <div class="group-heading">
-              <h3><span class="g-icon">🚨</span> Cấp cứu &amp; Hồi sức</h3>
+              <h3><span class="g-icon">🚨</span> Cấp cứu &amp; Hồi sức <span class="group-tool-count">1</span></h3>
               <span class="toggle-indicator"></span>
             </div>
             <div class="category-grid-wrapper">
               <div class="category-grid">
-                <div class="tool-card card-rose">
+                <div class="tool-card card-rose" data-tool-id="budich-vanmach">
                   <div class="card-top">
                     <div class="tool-icon">💧</div>
-                    <span class="tool-status dev">Đang xây</span>
+                    <div class="card-top-actions">
+                      <button class="fav-btn" title="Yêu thích">☆</button>
+                      <span class="tool-status dev">Đang xây</span>
+                    </div>
                   </div>
                   <div class="tool-content">
                     <div class="tool-title-row">
                       <h3>Bù dịch &amp; Vận mạch</h3>
                     </div>
-                    <p>Đánh giá và điều chỉnh thể tích, huyết áp, tuần hoàn.</p>
+                    <p>Mini-fluid challenge, Norepinephrine, Epinephrine, Vasopressin, Dobutamine</p>
                   </div>
                   <div class="tool-footer">
                     <span class="tool-category">Cấp cứu</span>
@@ -777,21 +883,24 @@
           <!--HÔ HẤP & LAO-->
           <div class="group-container g-red">
             <div class="group-heading">
-              <h3><span class="g-icon">🫁</span> Hô hấp &amp; Lao</h3>
+              <h3><span class="g-icon">🫁</span> Hô hấp &amp; Lao <span class="group-tool-count">1</span></h3>
               <span class="toggle-indicator"></span>
             </div>
             <div class="category-grid-wrapper">
               <div class="category-grid">
-                <div class="tool-card card-rose">
+                <div class="tool-card card-rose" data-tool-id="dg-viem-phoi">
                   <div class="card-top">
                     <div class="tool-icon">🫁</div>
-                    <span class="tool-status active">Hoạt động</span>
+                    <div class="card-top-actions">
+                      <button class="fav-btn" title="Yêu thích">☆</button>
+                      <span class="tool-status active">Hoạt động</span>
+                    </div>
                   </div>
                   <div class="tool-content">
                     <div class="tool-title-row">
                       <h3>Đánh giá Viêm phổi</h3>
                     </div>
-                    <p>CAP, HAP, VAP — phân tầng nguy cơ nặng và chỉ định nhập viện.</p>
+                    <p>CURB-65, PSI, IDSA/ATS, MDR Risk, SARI</p>
                   </div>
                   <div class="tool-footer">
                     <span class="tool-category">Hô hấp</span>
@@ -819,8 +928,10 @@
                     </div>
                   </div>
                   <div class="tool-content">
-                    <div class="tool-title-row"><h3>Đánh giá Dinh dưỡng nội viện</h3></div>
-                    <p>Đánh giá dinh dưỡng, chỉ số BMI, phân loại suy dinh dưỡng.</p>
+                    <div class="tool-title-row">
+                      <h3>Đánh giá Dinh dưỡng nội viện</h3>
+                    </div>
+                    <p>Nhu cầu năng lượng, Đạm (Protein), Dịch, Carbohydrate, Lipid</p>
                   </div>
                   <div class="tool-footer">
                     <span class="tool-category">Dinh dưỡng</span>
@@ -837,8 +948,10 @@
                     </div>
                   </div>
                   <div class="tool-content">
-                    <div class="tool-title-row"><h3>Đánh giá & Phân độ Xơ gan</h3></div>
-                    <p>Công cụ đánh giá & phân loại mức độ xơ gan dựa trên thang điểm Child-Pugh và Bảng phân loại MELD.</p>
+                    <div class="tool-title-row">
+                      <h3>Đánh giá & Phân độ Xơ gan</h3>
+                    </div>
+                    <p>Child-Pugh, MELD-Na</p>
                   </div>
                   <div class="tool-footer">
                     <span class="tool-category">Tiêu hóa</span>
@@ -852,7 +965,8 @@
           <!--THẬN & ĐIỆN GIẢI, TOAN KIỀM-->
           <div class="group-container g-blue">
             <div class="group-heading">
-              <h3><span class="g-icon">🫘</span> Thận &amp; Điện giải, Toan Kiềm <span class="group-tool-count">4</span></h3>
+              <h3><span class="g-icon">🫘</span> Thận &amp; Điện giải, Toan Kiềm <span class="group-tool-count">4</span>
+              </h3>
               <span class="toggle-indicator"></span>
             </div>
             <div class="category-grid-wrapper">
@@ -866,8 +980,10 @@
                     </div>
                   </div>
                   <div class="tool-content">
-                    <div class="tool-title-row"><h3>Chức năng thận</h3></div>
-                    <p>Cockcroft-Gault, CKD-EPI 2021, hiệu chỉnh liều thuốc.</p>
+                    <div class="tool-title-row">
+                      <h3>Chức năng thận</h3>
+                    </div>
+                    <p>Cockcroft-Gault, CKD-EPI 2021, KDIGO, KDIGO AKI</p>
                   </div>
                   <div class="tool-footer">
                     <span class="tool-category">Thận</span>
@@ -884,8 +1000,10 @@
                     </div>
                   </div>
                   <div class="tool-content">
-                    <div class="tool-title-row"><h3>Phân tích khí máu động mạch</h3></div>
-                    <p>Dựa trên các chỉ số pH, pCO2, HCO3- và pO2, công cụ giúp xác định các rối loạn hô hấp, chuyển hóa và đánh giá mức độ bù trừ của cơ thể.</p>
+                    <div class="tool-title-row">
+                      <h3>Phân tích khí máu động mạch</h3>
+                    </div>
+                    <p>Henderson-Hasselbalch, Winters, Anion Gap, Delta Ratio</p>
                   </div>
                   <div class="tool-footer">
                     <span class="tool-category">Toan kiềm</span>
@@ -902,8 +1020,10 @@
                     </div>
                   </div>
                   <div class="tool-content">
-                    <div class="tool-title-row"><h3>Xử trí rối loạn kali/canxi máu</h3></div>
-                    <p>Các bước tiếp cận chẩn đoán và điều trị các rối loạn kali và canxi máu dựa trên bằng chứng lâm sàng và hướng dẫn cập nhật</p>
+                    <div class="tool-title-row">
+                      <h3>Xử trí rối loạn kali/canxi máu</h3>
+                    </div>
+                    <p>Canxi hiệu chỉnh (Albumin), Phác đồ UKKA</p>
                   </div>
                   <div class="tool-footer">
                     <span class="tool-category">Điện giải</span>
@@ -920,8 +1040,10 @@
                     </div>
                   </div>
                   <div class="tool-content">
-                    <div class="tool-title-row"><h3>Xử trí rối loạn natri máu & dịch</h3></div>
-                    <p>Các bước tiếp cận chẩn đoán và điều trị các rối loạn natri và dịch dựa trên bằng chứng lâm sàng và hướng dẫn cập nhật</p>
+                    <div class="tool-title-row">
+                      <h3>Xử trí rối loạn natri máu & dịch</h3>
+                    </div>
+                    <p>Adrogue-Madias, TBW, Free Water Deficit, ODS Risk</p>
                   </div>
                   <div class="tool-footer">
                     <span class="tool-category">Điện giải</span>
@@ -949,8 +1071,10 @@
                     </div>
                   </div>
                   <div class="tool-content">
-                    <div class="tool-title-row"><h3>Phân tầng nguy cơ tim mạch toàn bộ</h3></div>
-                    <p>Đánh giá nguy cơ tim mạch toàn bộ bằng các thang điểm SCORE2, SCORE2-OP, SCORE2-Diabetes, PREVENT</p>
+                    <div class="tool-title-row">
+                      <h3>Phân tầng nguy cơ tim mạch toàn bộ</h3>
+                    </div>
+                    <p>SCORE2, SCORE2-OP, SCORE2-Diabetes, PREVENT</p>
                   </div>
                   <div class="tool-footer">
                     <span class="tool-category">Tim mạch</span>
@@ -978,8 +1102,10 @@
                     </div>
                   </div>
                   <div class="tool-content">
-                    <div class="tool-title-row"><h3>Chỉnh liều Insulin nội trú</h3></div>
-                    <p>Phác đồ kiểm soát đường huyết bệnh nhân nội trú, tính liều insulin nền – bolus.</p>
+                    <div class="tool-title-row">
+                      <h3>Chỉnh liều Insulin nội trú</h3>
+                    </div>
+                    <p>Basal-Bolus, CII (ICU)</p>
                   </div>
                   <div class="tool-footer">
                     <span class="tool-category">Nội tiết</span>
@@ -1007,8 +1133,10 @@
                     </div>
                   </div>
                   <div class="tool-content">
-                    <div class="tool-title-row"><h3>Sàng lọc &amp; Phân tầng Đột quỵ cấp</h3></div>
-                    <p>Thang điểm NIHSS, ASPECTS, tiêu chí can thiệp tái thông mạch máu não.</p>
+                    <div class="tool-title-row">
+                      <h3>Sàng lọc &amp; Phân tầng Đột quỵ cấp</h3>
+                    </div>
+                    <p>NIHSS, ASPECTS, ABCD2, ICH, VAN</p>
                   </div>
                   <div class="tool-footer">
                     <span class="tool-category">Thần kinh</span>
@@ -1030,25 +1158,25 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // ── DOM refs ──────────────────────────────────────────
-      const searchInput     = document.getElementById('toolSearch');
-      const searchCount     = document.getElementById('searchCount');
-      const searchClearBtn  = document.getElementById('searchClearBtn');
+      const searchInput = document.getElementById('toolSearch');
+      const searchCount = document.getElementById('searchCount');
+      const searchClearBtn = document.getElementById('searchClearBtn');
       const searchNoResults = document.getElementById('searchNoResults');
-      const btnExpandAll    = document.getElementById('btnExpandAll');
-      const btnCollapseAll  = document.getElementById('btnCollapseAll');
-      const btnGridView     = document.getElementById('btnGridView');
-      const btnListView     = document.getElementById('btnListView');
-      const mainGrid        = document.getElementById('mainContentGrid');
-      const groupsWrapper   = document.getElementById('groupsWrapper');
-      const favSection      = document.getElementById('favoritesSection');
-      const favGrid         = document.getElementById('favoritesGrid');
+      const btnExpandAll = document.getElementById('btnExpandAll');
+      const btnCollapseAll = document.getElementById('btnCollapseAll');
+      const btnGridView = document.getElementById('btnGridView');
+      const btnListView = document.getElementById('btnListView');
+      const mainGrid = document.getElementById('mainContentGrid');
+      const groupsWrapper = document.getElementById('groupsWrapper');
+      const favSection = document.getElementById('favoritesSection');
+      const favGrid = document.getElementById('favoritesGrid');
 
       const allGroups = groupsWrapper.querySelectorAll('.group-container');
-      const allCards  = groupsWrapper.querySelectorAll('.tool-card[data-tool-id]');
+      const allCards = groupsWrapper.querySelectorAll('.tool-card[data-tool-id]');
       const totalCards = allCards.length;
 
       const STORAGE_KEY = 'clini-favorites';
-      const VIEW_KEY    = 'clini-view-mode';
+      const VIEW_KEY = 'clini-view-mode';
 
       // ── ACCORDION TOGGLE ─────────────────────────────────
       groupsWrapper.querySelectorAll('.group-heading').forEach(heading => {
@@ -1079,8 +1207,8 @@
         for (let i = matches.length - 1; i >= 0; i--) {
           const { node, idx } = matches[i];
           const before = node.textContent.substring(0, idx);
-          const match  = node.textContent.substring(idx, idx + keyword.length);
-          const after  = node.textContent.substring(idx + keyword.length);
+          const match = node.textContent.substring(idx, idx + keyword.length);
+          const after = node.textContent.substring(idx + keyword.length);
 
           const mark = document.createElement('mark');
           mark.className = 'search-hl';
@@ -1125,8 +1253,8 @@
           cards.forEach(card => {
             // Search in title + description + category
             const title = card.querySelector('.tool-content h3')?.textContent || '';
-            const desc  = card.querySelector('.tool-content p')?.textContent || '';
-            const cat   = card.querySelector('.tool-category')?.textContent || '';
+            const desc = card.querySelector('.tool-content p')?.textContent || '';
+            const cat = card.querySelector('.tool-category')?.textContent || '';
             const searchText = (title + ' ' + desc + ' ' + cat).toLowerCase();
 
             if (searchText.includes(keyword)) {
@@ -1282,7 +1410,7 @@
           btnGridView.classList.add('active');
           btnListView.classList.remove('active');
         }
-        try { localStorage.setItem(VIEW_KEY, mode); } catch {}
+        try { localStorage.setItem(VIEW_KEY, mode); } catch { }
       }
 
       btnGridView.addEventListener('click', () => setView('grid'));
