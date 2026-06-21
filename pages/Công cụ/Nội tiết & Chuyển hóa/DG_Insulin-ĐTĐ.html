@@ -18,7 +18,6 @@
   <link rel="stylesheet" href="../../../css/components/footer.css">
 
   <script src="../../../pages/header.js"></script>
-  <script src="../../../pages/footer.js" defer></script>
   
   <style>
   /* ============================================================
@@ -275,26 +274,6 @@
   /* ── 6. ĐIỂM NHẤN ĐỒNG BỘ & TRỰC QUAN KHÁC ── */
   .highlight-blue { color: var(--color-primary); font-weight: 700; }
   .highlight-red  { color: var(--color-rose); font-weight: 700; }
-  .highlight-warning { color: var(--color-warning); font-weight: 700; }
-  
-  /* Highlight box cho các điểm quan trọng trong phác đồ */
-  .protocol-highlight {
-    background-color: var(--color-primary-hl);
-    border-left: 4px solid var(--color-primary);
-    padding: 1rem;
-    border-radius: var(--radius-sm);
-    margin: 1rem 0;
-  }
-  .protocol-highlight.warning {
-    background-color: var(--color-rose-hl);
-    border-left-color: var(--color-rose);
-  }
-  .protocol-highlight strong {
-    color: var(--color-primary);
-  }
-  .protocol-highlight.warning strong {
-    color: var(--color-rose);
-  }
 
   /* Nút reset tổng thể (nếu sử dụng) */
   .reset-btn {
@@ -390,7 +369,7 @@
       <section class="hero-dashboard" aria-labelledby="hero-title">
         <div class="hero-intro">
           <h1 id="hero-title">PHÁC ĐỒ INSULIN NỘI VIỆN</h1>
-          <p>Tính toán liều Insulin truyền tĩnh mạch (ICU) và Phác đồ Basal-Bolus tiêm dưới da (Non-ICU) dựa trên ADA 2026 & SCCM. Hỗ trợ chuyển đổi giữa các phác đồ và tích hợp bảng tra cứu nhanh.</p>
+          <p>Tính toán liều Insulin truyền tĩnh mạch (ICU) và Phác đồ Basal-Bolus tiêm dưới da (Non-ICU) dựa trên ADA 2026 & SCCM.</p>
         </div>
       </section>
 
@@ -466,29 +445,6 @@
               </select>
             </div>
           </div>
-
-          <!-- PHÁC ĐỒ THAM KHẢO -->
-          <div class="input-card" style="margin-top: 1rem;">
-            <span class="card-zone-badge badge-blue" style="background-color: var(--color-primary-hl); color: var(--color-primary);">📚 Phác đồ Tham khảo</span>
-            <div class="prescription-block" style="border-left-color: var(--color-primary);">
-              <div class="prescription-title">🔹 Theo ADA 2026 & SCCM:</div>
-              <ul style="font-size: var(--text-sm); color: var(--color-text); line-height: 1.7; padding-left: 1.2rem; margin: 0.5rem 0;">
-                <li><strong>Mục tiêu ĐH:</strong> 140-180 mg/dL (7.8-10.0 mmol/L)</li>
-                <li><strong>Khởi đầu ICU:</strong> 0.1 U/kg/giờ (giảm 50% nếu suy thận/nguy cơ hạ ĐH)</li>
-                <li><strong>TDD Non-ICU:</strong> 0.2-0.5 U/kg/ngày (tùy đề kháng insulin)</li>
-                <li><strong>Phân chia:</strong> 50% Basal + 50% Prandial (chia 3 bữa)</li>
-              </ul>
-            </div>
-            <div class="prescription-block border-rose" style="margin-top: 1rem;">
-              <div class="prescription-title">⚠️ Lưu ý quan trọng:</div>
-              <ul style="font-size: var(--text-sm); color: var(--color-text); line-height: 1.7; padding-left: 1.2rem; margin: 0.5rem 0;">
-                <li><strong>Hạ ĐH (&lt;70 mg/dL):</strong> Ngừng insulin, tiêm Dextrose 20-50%</li>
-                <li><strong>NPO:</strong> Giữ Basal (giảm 20-30%), ngừng Prandial</li>
-                <li><strong>Corticoid:</strong> Tăng nhu cầu insulin 20-50%</li>
-                <li><strong>Suy thận:</strong> Giảm liều, theo dõi sát (thải trừ insulin giảm)</li>
-              </ul>
-            </div>
-          </div>
         </div>
 
         <div class="output-side">
@@ -499,54 +455,21 @@
             <div class="prescription-block">
               <div class="prescription-title">🎯 Tổng liều Insulin dự kiến (TDD): <span id="resTDD" class="highlight-blue">-- ĐV/ngày</span></div>
               <div class="prescription-detail" style="margin-top: 0.5rem;">
-                <strong>1. Insulin Nền (Basal):</strong> Tiêm <span id="resBasal" class="highlight-blue">-- ĐV</span> (Glargine/Detemir) 1 lần/ngày vào 21h-22h. <br>
-                <strong>2. Insulin Bữa ăn (Prandial):</strong> Tiêm <span id="resBolus" class="highlight-blue">-- ĐV</span> (Aspart/Lispro/Actrapid) x 3 lần/ngày (Trước ba bữa ăn chính 5-10 phút).
+                <strong>1. Insulin Nền (Basal):</strong> Tiêm <span id="resBasal" class="highlight-blue">-- ĐV</span> (Glargine/Detemir) 1 lần/ngày. <br>
+                <strong>2. Insulin Bữa ăn (Prandial):</strong> Tiêm <span id="resBolus" class="highlight-blue">-- ĐV</span> (Aspart/Lispro/Actrapid) x 3 lần/ngày (Trước ba bữa ăn chính).
               </div>
             </div>
 
             <div class="failure-protocol alert-critical" id="npoAlert" style="display: none; margin-bottom: 1rem;">
               <span class="failure-protocol-title text-rose">⚠️ Bệnh nhân nhịn ăn (NPO):</span>
               <ul>
-                <li><strong>Giữ nguyên hoặc giảm 20-30%</strong> Insulin nền (Basal).</li>
-                <li><strong>NGỪNG hoàn toàn</strong> Insulin theo bữa ăn (Prandial).</li>
-                <li>Chỉ dùng liều hiệu chỉnh (Correction) mỗi 4-6 giờ nếu ĐH &gt; 180 mg/dL.</li>
+                <li>Giữ nguyên hoặc giảm 20-30% Insulin nền.</li>
+                <li><strong>NGỪNG hoàn toàn</strong> Insulin theo bữa ăn (Prandial). Chỉ dùng liều hiệu chỉnh (Correction) mỗi 4-6 giờ.</li>
               </ul>
             </div>
 
-            <!-- Bảng tra cứu nhanh Correction Factor -->
-            <div class="pump-recipe" style="margin-top: 1rem;">
-              <strong>📊 Liều hiệu chỉnh (Correction Scale):</strong><br>
-              <span style="font-size: var(--text-sm); color: var(--color-text-muted);">Công thức 1800/TDD = Hệ số nhạy cảm insulin (ISF)</span><br>
-              <table style="width: 100%; margin-top: 0.75rem; font-size: var(--text-sm); border-collapse: collapse;">
-                <thead>
-                  <tr style="border-bottom: 2px solid var(--color-border);">
-                    <th style="padding: 0.5rem; text-align: left;">Đường huyết (mg/dL)</th>
-                    <th style="padding: 0.5rem; text-align: center;">Liều bổ sung (ĐV)</th>
-                  </tr>
-                </thead>
-                <tbody id="correctionTableBody">
-                  <tr style="border-bottom: 1px solid var(--color-divider);">
-                    <td style="padding: 0.5rem;">180-250</td>
-                    <td style="padding: 0.5rem; text-align: center;" id="correctionDose1">+1</td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid var(--color-divider);">
-                    <td style="padding: 0.5rem;">251-300</td>
-                    <td style="padding: 0.5rem; text-align: center;" id="correctionDose2">+2</td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid var(--color-divider);">
-                    <td style="padding: 0.5rem;">301-350</td>
-                    <td style="padding: 0.5rem; text-align: center;" id="correctionDose3">+3</td>
-                  </tr>
-                  <tr>
-                    <td style="padding: 0.5rem;">&gt; 350</td>
-                    <td style="padding: 0.5rem; text-align: center;" id="correctionDose4">+4</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div class="pump-recipe" style="margin-top: 1rem; border-left: 3px solid var(--color-warning);">
-              <strong>💡 Mẹo lâm sàng:</strong> Không khuyến cáo dùng đơn độc phác đồ Sliding Scale. Luôn kết hợp Basal-Bolus để đạt kiểm soát đường huyết tối ưu.
+            <div class="pump-recipe">
+              <strong>Mục tiêu đường huyết:</strong> 140 - 180 mg/dL (7.8 - 10.0 mmol/L). Không khuyến cáo dùng đơn độc phác đồ Sliding Scale.
             </div>
           </div>
 
@@ -569,51 +492,11 @@
               </div>
             </div>
 
-            <!-- Bảng điều chỉnh tốc độ truyền theo đường huyết -->
-            <div class="pump-recipe" style="margin-top: 1rem;">
-              <strong>📋 Bảng điều chỉnh tốc độ truyền (Titration):</strong><br>
-              <table style="width: 100%; margin-top: 0.75rem; font-size: var(--text-sm); border-collapse: collapse;">
-                <thead>
-                  <tr style="border-bottom: 2px solid var(--color-border);">
-                    <th style="padding: 0.5rem; text-align: left;">Đường huyết (mg/dL)</th>
-                    <th style="padding: 0.5rem; text-align: center;">Điều chỉnh</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr style="border-bottom: 1px solid var(--color-divider);">
-                    <td style="padding: 0.5rem;">&lt; 70</td>
-                    <td style="padding: 0.5rem; text-align: center; color: var(--color-rose); font-weight: 700;">Ngừng truyền, tiêm Dextrose</td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid var(--color-divider);">
-                    <td style="padding: 0.5rem;">70-100</td>
-                    <td style="padding: 0.5rem; text-align: center; color: var(--color-warning); font-weight: 600;">Giảm 50% tốc độ</td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid var(--color-divider);">
-                    <td style="padding: 0.5rem;">101-140</td>
-                    <td style="padding: 0.5rem; text-align: center;">Giảm 20% tốc độ</td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid var(--color-divider);">
-                    <td style="padding: 0.5rem;">141-180</td>
-                    <td style="padding: 0.5rem; text-align: center; color: var(--color-primary); font-weight: 600;">Giữ nguyên (Mục tiêu ✓)</td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid var(--color-divider);">
-                    <td style="padding: 0.5rem;">181-250</td>
-                    <td style="padding: 0.5rem; text-align: center;">Tăng 1-2 U/giờ</td>
-                  </tr>
-                  <tr>
-                    <td style="padding: 0.5rem;">&gt; 250</td>
-                    <td style="padding: 0.5rem; text-align: center; color: var(--color-rose); font-weight: 600;">Tăng 2-4 U/giờ</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
             <div class="failure-protocol">
               <span class="failure-protocol-title text-warning">📌 Theo dõi & Điều chỉnh:</span>
               <ul>
-                <li><strong>Theo dõi ĐH:</strong> Mỗi 1 giờ cho đến khi ổn định trong vùng mục tiêu (140-180 mg/dL), sau đó mỗi 2-4 giờ.</li>
-                <li><strong>Hạ ĐH (&lt; 70 mg/dL):</strong> <span style="color: var(--color-rose); font-weight: 700;">Ngừng truyền Insulin ngay lập tức</span> và tiêm TM 25-50 mL Dextrose 20-50%. Lặp lại đo ĐH sau 15 phút.</li>
-                <li><strong>Khi ngừng truyền CII:</strong> Chuyển sang Basal-Bolus, tiêm insulin nền trước khi ngừng truyền 2-4 giờ để tránh rebound hyperglycemia.</li>
+                <li>Đo đường huyết mao mạch mỗi 1 giờ cho đến khi ĐH ổn định trong vùng mục tiêu (140-180 mg/dL).</li>
+                <li>Nếu ĐH &lt; 70 mg/dL (3.9 mmol/L): <strong>Ngừng truyền Insulin ngay lập tức</strong> và tiêm TM 25-50 mL Dextrose 20-50%.</li>
               </ul>
             </div>
           </div>
@@ -623,8 +506,12 @@
     </div>
     </div>
 
-    <!-- FOOTER PLACEHOLDER -->
-    <div id="footer-placeholder"></div>
+    <!-- FOOTER -->
+    <footer class="global-footer">
+    <div class="footer-copyright">
+      <p>&copy; 2026 CliniPortal. Dành cho mục đích hỗ trợ lâm sàng.</p>
+    </div>
+  </footer>
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
@@ -698,28 +585,6 @@
             document.getElementById('resTDD').innerText = TDD.toFixed(0);
             document.getElementById('resBasal').innerText = basal.toFixed(0);
             document.getElementById('resBolus').innerText = bolusPerMeal.toFixed(0);
-
-            // Cập nhật bảng Correction Scale động dựa trên TDD
-            updateCorrectionScale(TDD);
-          }
-        }
-
-        // Hàm cập nhật bảng Correction Scale
-        function updateCorrectionScale(TDD) {
-          // Công thức 1800/TDD = ISF (Insulin Sensitivity Factor)
-          const ISF = TDD > 0 ? Math.round(1800 / TDD) : 90;
-          
-          // Tính liều correction cho từng mức đường huyết
-          // BG mục tiêu = 150 mg/dL
-          const targetBG = 150;
-          const bgLevels = [220, 275, 325, 400]; // Các mốc BG để tính
-          
-          for (let i = 0; i < 4; i++) {
-            const correctionDose = Math.round((bgLevels[i] - targetBG) / ISF) || (i + 1);
-            const doseElement = document.getElementById(`correctionDose${i + 1}`);
-            if (doseElement) {
-              doseElement.innerText = `+${correctionDose}`;
-            }
           }
         }
 
