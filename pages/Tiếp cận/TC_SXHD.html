@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiếp cận Sốt Xuất Huyết Dengue - CliniPortal</title>
+    <!-- Load Font & Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --info-color: #17a2b8;
+            --light-bg: #f8f9fa;
+            --border-color: #dee2e6;
+            --sidebar-width: 250px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+        
+        body { display: flex; flex-direction: column; min-height: 100vh; background-color: #f4f6f9; }
+
+        /* --- Header & Sidebar (Giữ nguyên cấu trúc cũ) --- */
+        header { background: #fff; height: 60px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; padding: 0 20px; position: fixed; width: 100%; top: 0; z-index: 1000; }
+        .logo { font-size: 1.2rem; font-weight: bold; color: var(--primary-color); }
+        .sidebar { position: fixed; left: 0; top: 60px; bottom: 0; width: var(--sidebar-width); background: #343a40; color: #fff; overflow-y: auto; transition: 0.3s; z-index: 900; }
+        .sidebar a { display: block; padding: 12px 20px; color: #cfd8dc; text-decoration: none; border-left: 3px solid transparent; }
+        .sidebar a:hover, .sidebar a.active { background: #495057; color: #fff; border-left-color: var(--primary-color); }
+        .main-content { margin-left: var(--sidebar-width); margin-top: 60px; padding: 20px; transition: 0.3s; flex: 1; }
+        
+        /* Responsive Sidebar */
+        @media (max-width: 768px) {
+            .sidebar { transform: translateX(-100%); }
+            .sidebar.open { transform: translateX(0); }
+            .main-content { margin-left: 0; }
+        }
+
+        /* --- APP CONTAINER --- */
+        .app-container { max-width: 1000px; margin: 0 auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); overflow: hidden; }
+        
+        /* --- TAB NAVIGATION --- */
+        .tab-nav { display: flex; background: #e9ecef; border-bottom: 1px solid var(--border-color); }
+        .tab-btn { flex: 1; padding: 15px; border: none; background: transparent; cursor: pointer; font-size: 1rem; font-weight: 500; color: var(--secondary-color); transition: 0.3s; outline: none; }
+        .tab-btn:hover { background: #dde2e6; }
+        .tab-btn.active { background: #fff; color: var(--primary-color); border-top: 3px solid var(--primary-color); border-bottom: 1px solid #fff; margin-bottom: -1px; }
+        
+        /* --- TAB CONTENT --- */
+        .tab-content { display: none; padding: 25px; animation: fadeIn 0.3s ease-in-out; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* --- DIAGNOSIS SECTION STYLES --- */
+        .diagnosis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+        @media (max-width: 768px) { .diagnosis-grid { grid-template-columns: 1fr; } }
+        
+        .check-group { background: #f8f9fa; padding: 15px; border-radius: 6px; border: 1px solid var(--border-color); }
+        .check-group h4 { margin-bottom: 10px; color: #495057; font-size: 0.95rem; text-transform: uppercase; }
+        .checkbox-item { display: flex; align-items: flex-start; margin-bottom: 8px; cursor: pointer; }
+        .checkbox-item input { margin-top: 4px; margin-right: 10px; transform: scale(1.2); }
+        .checkbox-item label { cursor: pointer; font-size: 0.9rem; line-height: 1.4; }
+
+        .result-box { padding: 20px; border-radius: 8px; text-align: center; margin-top: 20px; border: 2px solid transparent; }
+        .result-box.normal { background: #d4edda; border-color: var(--success-color); color: #155724; }
+        .result-box.warning { background: #fff3cd; border-color: var(--warning-color); color: #856404; }
+        .result-box.severe { background: #f8d7da; border-color: var(--danger-color); color: #721c24; }
+        .result-title { font-size: 1.5rem; font-weight: bold; margin-bottom: 10px; }
+        .result-action { font-size: 0.9rem; margin-top: 5px; font-style: italic; }
+
+        /* --- MANAGEMENT SECTION STYLES --- */
+        .management-tabs { display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+        .m-tab-btn { padding: 8px 16px; border: 1px solid var(--border-color); background: #fff; border-radius: 20px; cursor: pointer; font-size: 0.9rem; transition: 0.2s; }
+        .m-tab-btn.active { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+        
+        .tool-card { background: #f8f9fa; border: 1px solid var(--border-color); border-radius: 6px; padding: 15px; margin-bottom: 15px; }
+        .tool-card h4 { color: var(--primary-color); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .input-row { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; flex-wrap: wrap; }
+        .input-row label { min-width: 100px; font-weight: 500; }
+        .input-row input, .input-row select { padding: 8px; border: 1px solid #ced4da; border-radius: 4px; flex: 1; min-width: 150px; }
+        .calc-btn { background: var(--info-color); color: #fff; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; }
+        .calc-btn:hover { background: #138496; }
+        .calc-result { margin-top: 10px; padding: 10px; background: #e2e6ea; border-radius: 4px; font-weight: bold; color: #343a40; display: none; }
+
+        .protocol-step { border-left: 3px solid var(--primary-color); padding-left: 15px; margin-bottom: 15px; }
+        .protocol-step h5 { color: #343a40; margin-bottom: 5px; }
+        .protocol-step p { font-size: 0.9rem; color: #6c757d; }
+
+        /* Footer */
+        footer { background: #343a40; color: #adb5bd; text-align: center; padding: 15px; margin-top: auto; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo"><i class="fas fa-heartbeat"></i> CliniPortal</div>
+        <button id="menu-toggle" style="background:none; border:none; font-size:1.2rem; cursor:pointer;"><i class="fas fa-bars"></i></button>
+    </header>
+
+    <!-- SIDEBAR -->
+    <nav class="sidebar" id="sidebar">
+        <a href="../index.html"><i class="fas fa-home"></i> Trang chủ</a>
+        <div style="padding: 10px 20px; font-size: 0.8rem; color: #6c757d; text-transform: uppercase;">Tiếp cận</div>
+        <a href="TC_viem-gan-b.html"><i class="fas fa-file-medical"></i> Viêm gan B</a>
+        <a href="TC_SXHD.html" class="active"><i class="fas fa-virus"></i> Sốt xuất huyết</a>
+        <a href="TC_Xogan.html"><i class="fas fa-procedures"></i> Xơ gan</a>
+        <div style="padding: 10px 20px; font-size: 0.8rem; color: #6c757d; text-transform: uppercase;">Công cụ</div>
+        <a href="../tools/Buu-dich.html"><i class="fas fa-tint"></i> Bù dịch</a>
+        <a href="../drug/Van-mach.html"><i class="fas fa-pills"></i> Vận mạch</a>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <!-- Breadcrumb -->
+        <div style="margin-bottom: 15px; color: #6c757d; font-size: 0.9rem;">
+            <a href="../index.html" style="color: inherit; text-decoration: none;">Home</a> / 
+            <a href="#" style="color: inherit; text-decoration: none;">Tiếp cận Bệnh lý</a> / 
+            <span style="color: var(--primary-color); font-weight: bold;">Sốt xuất huyết Dengue</span>
+        </div>
+
+        <div class="app-container">
+            <!-- TAB NAVIGATION -->
+            <div class="tab-nav">
+                <button class="tab-btn active" onclick="switchTab('diagnosis')"><i class="fas fa-stethoscope"></i> CHẨN ĐOÁN</button>
+                <button class="tab-btn" onclick="switchTab('management')"><i class="fas fa-user-md"></i> QUẢN LÝ & ĐIỀU TRỊ</button>
+            </div>
+
+            <!-- TAB 1: CHẨN ĐOÁN -->
+            <div id="diagnosis" class="tab-content active">
+                <h3 style="margin-bottom: 15px; color: #343a40;">Phân loại Lâm sàng (WHO 2009)</h3>
+                <p style="margin-bottom: 20px; font-size: 0.9rem; color: #6c757d;">Chọn các triệu chứng và xét nghiệm phù hợp với bệnh nhân để hệ thống tự động phân loại.</p>
+                
+                <div class="diagnosis-grid">
+                    <!-- Cột Trái: Tiêu chuẩn cơ bản -->
+                    <div class="check-group">
+                        <h4><i class="fas fa-check-circle"></i> Tiêu chuẩn Ca bệnh Dengue</h4>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="feat_fever" onchange="calculateDiagnosis()">
+                            <label for="feat_fever">Sốt cao đột ngột (2-7 ngày)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="feat_pain" onchange="calculateDiagnosis()">
+                            <label for="feat_pain">Đau đầu, đau hố mắt, đau cơ/joint</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="feat_rash" onchange="calculateDiagnosis()">
+                            <label for="feat_rash">Ban xung huyết (ngày 3-6)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="lab_ns1" onchange="calculateDiagnosis()">
+                            <label for="lab_ns1">NS1 (+) hoặc IgM/IgG (+)</label>
+                        </div>
+                    </div>
+
+                    <!-- Cột Phải: Dấu hiệu cảnh báo & Nặng -->
+                    <div class="check-group" style="border-color: #ffc107;">
+                        <h4 style="color: #856404;"><i class="fas fa-exclamation-triangle"></i> Dấu hiệu Cảnh báo (Warning Signs)</h4>
+                        <div class="checkbox-item">
+                            <input type="checkbox" class="warn-check" onchange="calculateDiagnosis()">
+                            <label>Đau bụng nhiều hoặc liên tục</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" class="warn-check" onchange="calculateDiagnosis()">
+                            <label>Nôn ói nhiều (>3 lần/1h)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" class="warn-check" onchange="calculateDiagnosis()">
+                            <label>Gan to > 2cm</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" class="warn-check" onchange="calculateDiagnosis()">
+                            <label>Hematocrit tăng nhanh + Tiểu cầu giảm nhanh</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" class="warn-check" onchange="calculateDiagnosis()">
+                            <label>Vật vã, li bì, tay chân lạnh ẩm</label>
+                        </div>
+                        
+                        <hr style="margin: 10px 0; border: 0; border-top: 1px dashed #ccc;">
+                        <h4 style="color: #721c24;"><i class="fas fa-heartbeat"></i> SXH Dengue Nặng</h4>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="severe_shock" onchange="calculateDiagnosis()">
+                            <label>Sốc (mạch nhanh nhỏ, HA kẹp/hạ)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="severe_bleed" onchange="calculateDiagnosis()">
+                            <label>Xuất huyết nặng (tiêu hóa, não...)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="severe_organ" onchange="calculateDiagnosis()">
+                            <label>Suy tạng (AST/ALT >1000, suy hô hấp...)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KẾT QUẢ TỰ ĐỘNG -->
+                <div id="diag-result" class="result-box normal" style="display: none;">
+                    <div class="result-title" id="res-title">Chưa đủ dữ liệu</div>
+                    <div id="res-desc">Vui lòng chọn các triệu chứng bên trên.</div>
+                    <div class="result-action" id="res-action"></div>
+                </div>
+            </div>
+
+            <!-- TAB 2: QUẢN LÝ & ĐIỀU TRỊ -->
+            <div id="management" class="tab-content">
+                <!-- Sub-tabs for Management -->
+                <div class="management-tabs">
+                    <button class="m-tab-btn active" onclick="switchMgmt('phacdo')">Phác đồ chung</button>
+                    <button class="m-tab-btn" onclick="switchMgmt('fluid')">Tính toán Dịch</button>
+                    <button class="m-tab-btn" onclick="switchMgmt('vaso')">Vận mạch (Cấp cứu)</button>
+                </div>
+
+                <!-- Nội dung: Phác đồ -->
+                <div id="mgmt-phacdo" class="mgmt-panel">
+                    <div class="protocol-step">
+                        <h5>1. Sốt xuất huyết Dengue (Không có dấu hiệu cảnh báo)</h5>
+                        <p>- Điều trị ngoại trú nếu đủ điều kiện.<br>- Hạ sốt Paracetamol (không dùng NSAIDs).<br>- Bù dịch uống (Oresol), theo dõi dấu hiệu trở nặng.</p>
+                    </div>
+                    <div class="protocol-step">
+                        <h5>2. Sốt xuất huyết có Dấu hiệu cảnh báo</h5>
+                        <p>- <strong>Nhập viện.</strong><br>- Truyền dịch tinh thể (Ringer Lactat/NaCl 0.9%): 5-7 ml/kg/giờ trong 4-6 giờ.<br>- Đánh giá lại lâm sàng và Hct sau mỗi 4-6h.<br>- Nếu ổn: giảm liều, duy trì 24-48h.</p>
+                    </div>
+                    <div class="protocol-step" style="border-left-color: var(--danger-color);">
+                        <h5 style="color: var(--danger-color);">3. Sốt xuất huyết Dengue Nặng (Sốc/Dịch thoát nhiều)</h5>
+                        <p>- <strong>Cấp cứu nội trú/Hồi sức.</strong><br>- <strong>Sốc bù được:</strong> Bolus 10-20ml/kg (Ringer Lactat/Natri clorit 0.9%) trong 1 giờ. Đánh giá lại.<br>- <strong>Sốc kháng (Hct cao):</strong> Cân nhắc truyền khối hồng cầu.<br>- <strong>Sốc kháng (Hct thấp):</strong> Nghi ngờ xuất huyết nội -> Truyền máu tươi/khối tiểu cầu.<br>- Vận mạch nếu sốc không đáp ứng dịch (xem tab Vận mạch).</p>
+                    </div>
+                </div>
+
+                <!-- Nội dung: Tính toán Dịch -->
+                <div id="mgmt-fluid" class="mgmt-panel" style="display: none;">
+                    <div class="tool-card">
+                        <h4><i class="fas fa-calculator"></i> Tính tốc độ truyền dịch (Bolus/Duy trì)</h4>
+                        <div class="input-row">
+                            <label>Cân nặng (kg):</label>
+                            <input type="number" id="fluid_weight" placeholder="Ví dụ: 50">
+                        </div>
+                        <div class="input-row">
+                            <label>Loại dịch:</label>
+                            <select id="fluid_type">
+                                <option value="RL">Ringer Lactat</option>
+                                <option value="NS">NaCl 0.9%</option>
+                                <option value="Colloid">Colloid (HES/Gelatin)</option>
+                            </select>
+                        </div>
+                        <div class="input-row">
+                            <label>Mục đích:</label>
+                            <select id="fluid_goal" onchange="toggleFluidInput()">
+                                <option value="bolus">Bù nhanh (Sốc - 10ml/kg)</option>
+                                <option value="maintain">Duy trì (Cảnh báo - 5ml/kg/h)</option>
+                                <option value="custom">Tùy chỉnh (ml/kg/h)</option>
+                            </select>
+                        </div>
+                        <div class="input-row" id="custom_rate_div" style="display: none;">
+                            <label>Tốc độ (ml/kg/h):</label>
+                            <input type="number" id="fluid_custom_rate" placeholder="Nhập số">
+                        </div>
+                        <button class="calc-btn" onclick="calcFluid()">Tính toán</button>
+                        <div id="fluid_result" class="calc-result"></div>
+                    </div>
+                </div>
+
+                <!-- Nội dung: Vận mạch -->
+                <div id="mgmt-vaso" class="mgmt-panel" style="display: none;">
+                    <div class="tool-card" style="border-left: 4px solid var(--danger-color);">
+                        <h4><i class="fas fa-syringe"></i> Tính liều Vận mạch (Dopamine/Adrenaline)</h4>
+                        <p style="font-size: 0.8rem; color: #666; margin-bottom: 10px;">Chỉ dùng khi đã bù đủ dịch nhưng vẫn còn sốc.</p>
+                        
+                        <div class="input-row">
+                            <label>Cân nặng (kg):</label>
+                            <input type="number" id="vaso_weight" placeholder="kg">
+                        </div>
+                        <div class="input-row">
+                            <label>Thuốc:</label>
+                            <select id="vaso_drug">
+                                <option value="dopa">Dopamine</option>
+                                <option value="adren">Adrenaline</option>
+                                <option value="noradren">Noradrenaline</option>
+                            </select>
+                        </div>
+                        <div class="input-row">
+                            <label>Liều chỉ định (mcg/kg/ph):</label>
+                            <input type="number" id="vaso_dose" value="5" step="0.5">
+                        </div>
+                        <div class="input-row">
+                            <label>Cấu hình bơm (mg/ tổng ml):</label>
+                            <input type="number" id="vaso_conc_mg" placeholder="Ví dụ: 200" value="200">
+                            <input type="number" id="vaso_vol_ml" placeholder="Tổng ml" value="50">
+                        </div>
+                        <button class="calc-btn" style="background: var(--danger-color);" onclick="calcVaso()">Tính tốc độ bơm (ml/h)</button>
+                        <div id="vaso_result" class="calc-result" style="border-left: 4px solid var(--danger-color);"></div>
+                    </div>
+                    
+                    <div style="margin-top: 20px;">
+                        <h5>Lưu ý quan trọng:</h5>
+                        <ul style="font-size: 0.9rem; color: #555; padding-left: 20px;">
+                            <li><strong>Dopamine:</strong> Liều thấp (2-5 mcg/kg/p) giãn mạch thận; Liều trung (5-10) tăng co bóp; Liều cao (>10) co mạch.</li>
+                            <li><strong>Adrenaline:</strong> Lựa chọn hàng đầu trong sốc kháng dịch của SXH. Bắt đầu 0.05 - 0.1 mcg/kg/p, chuẩn độ theo HA.</li>
+                            <li>Phải theo dõi sát nhịp tim và HA động mạch xâm lấn nếu có thể.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2024 CliniPortal. Tài liệu nội bộ phục vụ học tập và tham khảo.</p>
+        <p>Cần đối chiếu với phác đồ Bộ Y tế mới nhất.</p>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Toggle Sidebar
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('open');
+        });
+
+        // Switch Main Tabs
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // Switch Management Sub-tabs
+        function switchMgmt(mgmtId) {
+            document.querySelectorAll('.mgmt-panel').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.m-tab-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById('mgmt-' + mgmtId).style.display = 'block';
+            event.currentTarget.classList.add('active');
+        }
+
+        // --- LOGIC CHẨN ĐOÁN ---
+        function calculateDiagnosis() {
+            const hasFever = document.getElementById('feat_fever').checked;
+            const hasPain = document.getElementById('feat_pain').checked;
+            const hasRash = document.getElementById('feat_rash').checked;
+            const hasLab = document.getElementById('lab_ns1').checked;
+            
+            const warnChecks = document.querySelectorAll('.warn-check');
+            let warnCount = 0;
+            warnChecks.forEach(cb => { if(cb.checked) warnCount++; });
+
+            const severeShock = document.getElementById('severe_shock').checked;
+            const severeBleed = document.getElementById('severe_bleed').checked;
+            const severeOrgan = document.getElementById('severe_organ').checked;
+
+            const resultBox = document.getElementById('diag-result');
+            const resTitle = document.getElementById('res-title');
+            const resDesc = document.getElementById('res-desc');
+            const resAction = document.getElementById('res-action');
+
+            // Reset classes
+            resultBox.className = 'result-box';
+            resultBox.style.display = 'block';
+
+            // Logic Tree
+            if (severeShock || severeBleed || severeOrgan) {
+                // NẶNG
+                resultBox.classList.add('severe');
+                resTitle.innerHTML = '<i class="fas fa-exclamation-circle"></i> SXH DENGUE NẶNG';
+                resDesc.innerHTML = 'Có bằng chứng sốc, xuất huyết nặng hoặc suy tạng.';
+                resAction.innerHTML = 'HÀNH ĐỘNG: Nhập viện ngay/Hồi sức tích cực. Thiết lập đường truyền tĩnh mạch lớn. Chuẩn bị dịch cao phân tử/máu. Hội chẩn cấp cứu.';
+            } else if ((hasFever && (hasPain || hasRash || hasLab)) && warnCount > 0) {
+                // CÓ DẤU HIỆU CẢNH BÁO
+                resultBox.classList.add('warning');
+                resTitle.innerHTML = '<i class="fas fa-exclamation-triangle"></i> SXH CÓ DẤU HIỆU CẢNH BÁO';
+                resDesc.innerHTML = 'Đủ tiêu chuẩn ca bệnh Dengue + Có ' + warnCount + ' dấu hiệu cảnh báo.';
+                resAction.innerHTML = 'HÀNH ĐỘNG: Nhập viện theo dõi. Bắt đầu bù dịch tinh thể 5-7ml/kg/h. Xét nghiệm Hct/Tiểu cầu mỗi 4-6h.';
+            } else if (hasFever && (hasPain || hasRash || hasLab)) {
+                // THỂ THÔNG THƯỜNG
+                resultBox.classList.add('normal');
+                resTitle.innerHTML = '<i class="fas fa-check"></i> SXH DENGUE (THỂ NHẸ)';
+                resDesc.innerHTML = 'Đủ tiêu chuẩn ca bệnh, chưa có dấu hiệu cảnh báo hay nặng.';
+                resAction.innerHTML = 'HÀNH ĐỘNG: Có thể điều trị ngoại trú nếu tin cậy. Hướng dẫn tái khám ngay nếu có dấu hiệu trở nặng. Bù dịch uống.';
+            } else {
+                // CHƯA ĐỦ
+                resultBox.classList.add('normal');
+                resultBox.style.background = '#e2e6ea';
+                resultBox.style.borderColor = '#ced4da';
+                resTitle.innerHTML = 'Chưa đủ dữ liệu chẩn đoán';
+                resDesc.innerHTML = 'Cần ít nhất: Sốt + 1 triệu chứng khác hoặc Xét nghiệm dương tính.';
+                resAction.innerHTML = '';
+            }
+        }
+
+        // --- LOGIC TÍNH TOÁN DỊCH ---
+        function toggleFluidInput() {
+            const goal = document.getElementById('fluid_goal').value;
+            document.getElementById('custom_rate_div').style.display = (goal === 'custom') ? 'flex' : 'none';
+        }
+
+        function calcFluid() {
+            const weight = parseFloat(document.getElementById('fluid_weight').value);
+            const goal = document.getElementById('fluid_goal').value;
+            let ratePerKg = 0;
+            let note = "";
+
+            if (!weight) { alert("Vui lòng nhập cân nặng!"); return; }
+
+            if (goal === 'bolus') {
+                ratePerKg = 10; // ml/kg bolus nhanh
+                note = "Truyền nhanh trong 1 giờ. Đánh giá lại mạch/HA/Hct sau khi hết.";
+            } else if (goal === 'maintain') {
+                ratePerKg = 5; // ml/kg/h
+                note = "Duy trì trong 4-6 giờ, sau đó đánh giá lại để giảm liều.";
+            } else {
+                ratePerKg = parseFloat(document.getElementById('fluid_custom_rate').value);
+                if (!ratePerKg) { alert("Nhập tốc độ tùy chỉnh!"); return; }
+                note = "Theo dõi sát dấu hiệu quá tải dịch.";
+            }
+
+            const totalRate = (weight * ratePerKg).toFixed(1);
+            const dropRate = (totalRate * 20 / 60).toFixed(0); // Giả sử bộ dây 20 giọt/ml
+
+            const resDiv = document.getElementById('fluid_result');
+            resDiv.style.display = 'block';
+            resDiv.innerHTML = `
+                <div>Tốc độ truyền: <strong>${totalRate} ml/giờ</strong></div>
+                <div style="font-size:0.85rem; color:#555;">(~ ${dropRate} giọt/phút với dây truyền thường)</div>
+                <div style="margin-top:5px; font-style:italic; color:#007bff;">${note}</div>
+            `;
+        }
+
+        // --- LOGIC TÍNH TOÁN VẬN MẠCH ---
+        function calcVaso() {
+            const weight = parseFloat(document.getElementById('vaso_weight').value);
+            const dose = parseFloat(document.getElementById('vaso_dose').value); // mcg/kg/min
+            const concMg = parseFloat(document.getElementById('vaso_conc_mg').value);
+            const volMl = parseFloat(document.getElementById('vaso_vol_ml').value);
+
+            if (!weight || !dose || !concMg || !volMl) { alert("Vui lòng điền đầy đủ thông số!"); return; }
+
+            // Công thức: (Liều mcg/kg/p * Cân nặng kg * 60 phút) / (Nồng độ mg * 1000 đổi sang mcg) * Tổng thể tích ml
+            // Hoặc đơn giản hơn: Tốc độ (ml/h) = (Liều * Cân nặng * 60) / (Nồng độ mcg/ml)
+            
+            const concMcgPerMl = (concMg * 1000) / volMl;
+            const rateMlPerHour = (dose * weight * 60) / concMcgPerMl;
+
+            const drugName = document.getElementById('vaso_drug').options[document.getElementById('vaso_drug').selectedIndex].text;
+
+            const resDiv = document.getElementById('vaso_result');
+            resDiv.style.display = 'block';
+            resDiv.innerHTML = `
+                <div style="font-size:1.2rem; color:#dc3545;">Tốc độ bơm: ${rateMlPerHour.toFixed(2)} ml/giờ</div>
+                <div style="font-size:0.9rem; margin-top:5px;">
+                    Với: ${drugName} liều ${dose} mcg/kg/phút.<br>
+                    Nồng độ pha: ${concMg}mg / ${volMl}ml = ${concMcgPerMl.toFixed(0)} mcg/ml.
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
