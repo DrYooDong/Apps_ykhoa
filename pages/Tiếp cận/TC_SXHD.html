@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiếp cận Sốt Xuất Huyết Dengue - CliniPortal</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        :root {
+            --primary-color: #e74c3c;
+            --secondary-color: #c0392b;
+            --accent-color: #f39c12;
+            --text-color: #333;
+            --bg-color: #f5f6fa;
+            --card-bg: #ffffff;
+            --border-color: #dcdde1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            background: rgba(0,0,0,0.2);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .sidebar-nav {
+            list-style: none;
+            padding: 20px 0;
+        }
+
+        .sidebar-nav li {
+            margin-bottom: 5px;
+        }
+
+        .sidebar-nav a {
+            display: block;
+            padding: 12px 20px;
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
+            background: rgba(255,255,255,0.1);
+            border-left-color: var(--primary-color);
+        }
+
+        .sidebar-nav .section-title {
+            padding: 15px 20px 10px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #95a5a6;
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: var(--card-bg);
+            padding: 20px 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .content {
+            padding: 30px;
+            flex: 1;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .page-subtitle {
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .tag-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .tag-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        .tag-title {
+            font-size: 1.4rem;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tag-badge {
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .toggle-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-btn:hover {
+            background: var(--secondary-color);
+        }
+
+        .tag-content {
+            display: block;
+        }
+
+        .tag-content.collapsed {
+            display: none;
+        }
+
+        .subsection {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .subsection-title {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-box {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .info-box h4 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .info-box ul {
+            list-style-position: inside;
+            color: #555;
+        }
+
+        .info-box li {
+            margin-bottom: 8px;
+        }
+
+        .alert-box {
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-weight: 500;
+        }
+
+        .alert-warning {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            color: #856404;
+        }
+
+        .alert-danger {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+
+        .alert-info {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>🏥 CliniPortal</h2>
+                <p style="font-size: 0.9rem; opacity: 0.8;">Y học Lâm sàng</p>
+            </div>
+            <ul class="sidebar-nav">
+                <li class="section-title">Tổng quan</li>
+                <li><a href="../../index.html">🏠 Trang chủ</a></li>
+                <li><a href="../tiep-can.html">📋 Tiếp cận Lâm sàng</a></li>
+                
+                <li class="section-title">Tiếp cận Triệu chứng</li>
+                <li><a href="TC_sot.html">Sốt</a></li>
+                <li><a href="TC_kho_tho.html">Khó thở</a></li>
+                <li><a href="TC_dau_nguc.html">Đau ngực</a></li>
+                <li><a href="TC_phu.html">Phù</a></li>
+                
+                <li class="section-title">Tiếp cận Hội chứng</li>
+                <li><a href="TC_sepsis.html">Sepsis</a></li>
+                <li><a href="TC_abg.html">Khí máu động mạch</a></li>
+                <li><a href="TC_aki.html">Suy thận cấp</a></li>
+                <li><a href="TC_vang_da.html">Vàng da</a></li>
+                
+                <li class="section-title">Tiếp cận Bệnh lý</li>
+                <li><a href="TC_viem_gan_b.html">Viêm gan siêu vi B</a></li>
+                <li><a href="TC_SXHD.html" class="active">Sốt xuất huyết Dengue</a></li>
+                <li><a href="tc-nhiem-trung-tieu.html">Nhiễm trùng tiểu</a></li>
+                <li><a href="tc-viem-phoi-cong-dong.html">Viêm phổi cộng đồng</a></li>
+                <li><a href="tc-dai-thao-duong.html">Đái tháo đường</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header>
+                <div class="header-content">
+                    <div class="breadcrumb">
+                        <a href="../../index.html">Trang chủ</a>
+                        <span>→</span>
+                        <a href="../tiep-can.html">Tiếp cận</a>
+                        <span>→</span>
+                        <span>Sốt xuất huyết Dengue</span>
+                    </div>
+                </div>
+            </header>
+
+            <main class="content">
+                <h1 class="page-title">
+                    🔴 Tiếp cận Sốt Xuất Huyết Dengue
+                    <span class="tag-badge">Bệnh lý</span>
+                </h1>
+                <p class="page-subtitle">Hướng dẫn chẩn đoán và quản lý Sốt Xuất Huyết Dengue (SXH-D) theo WHO 2009 & Bộ Y tế Việt Nam</p>
+
+                <!-- TAG 1: CHẨN ĐOÁN -->
+                <section class="tag-section" id="chan-doan">
+                    <div class="tag-header" onclick="toggleSection('chan-doan-content')">
+                        <h2 class="tag-title">🩺 Tag 1: Chẩn đoán</h2>
+                        <button class="toggle-btn" onclick="event.stopPropagation(); toggleSection('chan-doan-content')">Thu gọn</button>
+                    </div>
+                    
+                    <div id="chan-doan-content" class="tag-content">
+                        <!-- 1.1 Chẩn đoán xác định -->
+                        <div class="subsection">
+                            <h3 class="subsection-title">1.1 Chẩn đoán xác định</h3>
+                            
+                            <div class="info-box">
+                                <h4>📌 Định nghĩa ca bệnh</h4>
+                                <ul>
+                                    <li><strong>Ca bệnh nghi ngờ:</strong> Sốt cấp + sống/đến vùng dịch + ≥2 triệu chứng (nhức đầu, đau hố mắt, đau cơ/xương, phát ban, xuất huyết)</li>
+                                    <li><strong>Ca bệnh lâm sàng:</strong> Ca nghi ngờ + giảm bạch cầu và/hoặc giảm tiểu cầu</li>
+                                    <li><strong>Ca bệnh xác định:</strong> Ca lâm sàng + xét nghiệm dương tính (NS1, IgM, PCR, hoặc hiệu giá kháng thể)</li>
+                                </ul>
+                            </div>
+
+                            <div class="info-box">
+                                <h4>🔬 Xét nghiệm chẩn đoán</h4>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Xét nghiệm</th>
+                                            <th>Thời điểm</th>
+                                            <th>Ý nghĩa</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>NS1 Ag</strong></td>
+                                            <td>Ngày 1-5</td>
+                                            <td>Độ nhạy cao trong giai đoạn sốt</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>IgM ELISA</strong></td>
+                                            <td>Từ ngày 5</td>
+                                            <td>Nhiễm cấp gần đây</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>IgG ELISA</strong></td>
+                                            <td>Từ ngày 7-10</td>
+                                            <td>Nhiễm thứ phát hoặc đã từng nhiễm</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>PCR</strong></td>
+                                            <td>Ngày 1-5</td>
+                                            <td>Phát hiện RNA virus, xác định typ</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="alert-box alert-info">
+                                💡 <strong>Lưu ý:</strong> Nhiễm Dengue lần đầu thường IgM(+), IgG(-). Nhiễm thứ phát thường IgM(+/-), IgG(+) với hiệu giá cao gấp 4 lần.
+                            </div>
+                        </div>
+
+                        <!-- 1.2 Phân độ/Phân loại/Phân tầng nguy cơ -->
+                        <div class="subsection">
+                            <h3 class="subsection-title">1.2 Phân loại & Phân tầng nguy cơ</h3>
+                            
+                            <div class="info-box">
+                                <h4>📊 Phân loại theo WHO 2009</h4>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Phân loại</th>
+                                            <th>Tiêu chuẩn</th>
+                                            <th>Nguy cơ</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Dengue không cảnh báo</strong></td>
+                                            <td>Sốt + 2 triệu chứng + không có dấu hiệu cảnh báo</td>
+                                            <td>Thấp</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Dengue có cảnh báo</strong></td>
+                                            <td>Có ≥1 dấu hiệu cảnh báo (xem bên dưới)</td>
+                                            <td>Trung bình</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Dengue nặng</strong></td>
+                                            <td>Xuất huyết nặng, sốc, tổn thương cơ quan</td>
+                                            <td>Cao</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="alert-box alert-warning">
+                                ⚠️ <strong>Dấu hiệu cảnh báo (Warning signs):</strong>
+                                <ul>
+                                    <li>Đau bụng nhiều và liên tục</li>
+                                    <li>Nôn liên tục ≥3 lần/giờ hoặc ≥4 lần trong 6 giờ</li>
+                                    <li>Xuất huyết niêm mạc</li>
+                                    <li>Hạ Hct sau bù dịch hoặc Hct tăng nhanh</li>
+                                    <li>Gan to >2cm dưới bờ sườn</li>
+                                    <li>Li bì, kích thích, vật vã</li>
+                                    <li>Tiểu ít (<0.5 ml/kg/giờ)</li>
+                                    <li>Hct tăng + tiểu cầu giảm nhanh</li>
+                                </ul>
+                            </div>
+
+                            <div class="alert-box alert-danger">
+                                🚨 <strong>Tiêu chuẩn Dengue nặng:</strong>
+                                <ul>
+                                    <li><strong>Xuất huyết nặng:</strong> Nôn ra máu, đi ngoài phân đen, chảy máu âm đạo nhiều, xuất huyết nội sọ</li>
+                                    <li><strong>Sốc Dengue:</strong> Mạch nhanh nhỏ, HA kẹp ≤20 mmHg, chi lạnh, thời gian làm đầy mao mạch >2 giây</li>
+                                    <li><strong>Tổn thương cơ quan:</strong> AST/ALT >1000, suy thận cấp, rối loạn tri giác, viêm cơ tim, suy hô hấp</li>
+                                </ul>
+                            </div>
+
+                            <div class="info-box">
+                                <h4>🎯 Phân tầng nguy cơ nhập viện</h4>
+                                <ul>
+                                    <li><strong>Nguy cơ thấp:</strong> Dengue không cảnh báo, tỉnh táo, uống được, không chảy máu, Hct ổn định → Theo dõi ngoại trú</li>
+                                    <li><strong>Nguy cơ trung bình:</strong> Có dấu hiệu cảnh báo, nôn nhiều, đau bụng, Hct tăng → Nhập viện theo dõi</li>
+                                    <li><strong>Nguy cơ cao:</strong> Dengue nặng, sốc, xuất huyết nặng, suy đa tạng → Hồi sức tích cực</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- 1.3 Chẩn đoán biến chứng -->
+                        <div class="subsection">
+                            <h3 class="subsection-title">1.3 Chẩn đoán biến chứng</h3>
+                            
+                            <div class="info-box">
+                                <h4>🫁 Biến chứng hô hấp</h4>
+                                <ul>
+                                    <li>Tràn dịch màng phổi (thường gặp trong sốc)</li>
+                                    <li>Phù phổi cấp (do bù dịch quá mức)</li>
+                                    <li>ARDS (hiếm gặp nhưng nặng)</li>
+                                </ul>
+                            </div>
+
+                            <div class="info-box">
+                                <h4>🧠 Biến chứng thần kinh</h4>
+                                <ul>
+                                    <li>Viên não Dengue (Dengue encephalitis)</li>
+                                    <li>Viên màng não</li>
+                                    <li>Xuất huyết não</li>
+                                    <li>Hội chứng Guillain-Barré</li>
+                                </ul>
+                            </div>
+
+                            <div class="info-box">
+                                <h4>❤️ Biến chứng tim mạch</h4>
+                                <ul>
+                                    <li>Viêm cơ tim</li>
+                                    <li>Rối loạn nhịp tim</li>
+                                    <li>Suy tim cấp</li>
+                                    <li>Sốc kéo dài (>48 giờ)</li>
+                                </ul>
+                            </div>
+
+                            <div class="info-box">
+                                <h4>🫘 Biến chứng gan thận</h4>
+                                <ul>
+                                    <li>Viêm gan tối cấp (AST/ALT >1000)</li>
+                                    <li>Suy thận cấp (tiểu ít, creatinine tăng)</li>
+                                    <li>Vỡ gan (hiếm nhưng tử vong cao)</li>
+                                </ul>
+                            </div>
+
+                            <div class="info-box">
+                                <h4>🩸 Biến chứng huyết học</h4>
+                                <ul>
+                                    <li>DIC (đông máu nội mạch lan tỏa)</li>
+                                    <li>Xuất huyết tiêu hóa nặng</li>
+                                    <li>Xuất huyết nội sọ</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAG 2: QUẢN LÝ -->
+                <section class="tag-section" id="quan-ly">
+                    <div class="tag-header" onclick="toggleSection('quan-ly-content')">
+                        <h2 class="tag-title">💊 Tag 2: Quản lý</h2>
+                        <button class="toggle-btn" onclick="event.stopPropagation(); toggleSection('quan-ly-content')">Thu gọn</button>
+                    </div>
+                    
+                    <div id="quan-ly-content" class="tag-content">
+                        <!-- 2.1 Quản lý ngoại trú -->
+                        <div class="subsection">
+                            <h3 class="subsection-title">2.1 Quản lý ngoại trú</h3>
+                            
+                            <div class="alert-box alert-info">
+                                ✅ <strong>Chỉ định điều trị ngoại trú:</strong>
+                                <ul>
+                                    <li>Dengue không có dấu hiệu cảnh báo</li>
+                                    <li>Bệnh nhân tỉnh táo, hợp tác</li>
+                                    <li>Uống được, không nôn nhiều</li>
+                                    <li>Không có chảy máu bất thường</li>
+                                    <li>Hct ổn định, tiểu cầu >50 G/L</li>
+                                    <li>Nhà gần cơ sở y tế, có người chăm sóc</li>
+                                </ul>
+                            </div>
+
+                            <div class="info-box">
+                                <h4>💊 Điều trị triệu chứng</h4>
+                                <ul>
+                                    <li><strong>Hạ sốt:</strong> Paracetamol 10-15 mg/kg/lần, cách 4-6 giờ (tối đa 60 mg/kg/ngày)</li>
+                                    <li><strong>❌ KHÔNG dùng:</strong> Aspirin, Ibuprofen, NSAIDs (tăng nguy cơ xuất huyết)</li>
+                                    <li><strong>Bù dịch:</strong> Oresol, nước trái cây, sữa, nước lọc (50-100 ml/kg/ngày)</li>
+                                    <li><strong>Dinh dưỡng:</strong> Ăn lỏng, dễ tiêu, chia nhiều bữa</li>
+                                </ul>
+                            </div>
+
+                            <div class="info-box">
+                                <h4>📅 Lịch tái khám</h4>
+                                <ul>
+                                    <li><strong>Ngày 1-2:</strong> Khám hàng ngày để phát hiện dấu hiệu cảnh báo</li>
+                                    <li><strong>Ngày 3-5:</strong> Giai đoạn nguy hiểm nhất, cần theo dõi sát Hct và tiểu cầu</li>
+                                    <li><strong>Ngày 6-7:</strong> Giai đoạn hồi phục, đánh giá lâm sàng</li>
+                                </ul>
+                            </div>
+
+                            <div class="alert-box alert-warning">
+                                ⚠️ <strong>Dặn bệnh nhân nhập viện ngay khi:</strong>
+                                <ul>
+                                    <li>Đau bụng nhiều, nôn liên tục</li>
+                                    <li>Chảy máu cam, chảy máu chân răng, nôn ra máu</li>
+                                    <li>Li bì, vật vã, tay chân lạnh</li>
+                                    <li>Tiểu ít hoặc không tiểu</li>
+                                    <li>Khô môi, khát nước nhiều</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- 2.2 Quản lý nội trú -->
+                        <div class="subsection">
+                            <h3 class="subsection-title">2.2 Quản lý nội trú</h3>
+                            
+                            <div class="alert-box alert-info">
+                                🏥 <strong>Chỉ định nhập viện:</strong>
+                                <ul>
+                                    <li>Dengue có dấu hiệu cảnh báo</li>
+                                    <li>Nôn nhiều, không uống được</li>
+                                    <li>Đau bụng nhiều</li>
+                                    <li>Hct tăng nhanh, tiểu cầu giảm <50 G/L</li>
+                                    <li>Chảy máu niêm mạc</li>
+                                    <li>Bệnh mãn tính kèm theo (tim, gan, thận, đái tháo đường)</li>
+                                    <li>Phụ nữ mang thai, trẻ nhũ nhi, người cao tuổi</li>
+                                    <li>Nhà xa, không có người chăm sóc</li>
+                                </ul>
+                            </div>
+
+                            <div class="info-box">
+                                <h4>💉 Bù dịch đường tĩnh mạch</h4>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Giai đoạn</th>
+                                            <th>Dịch truyền</th>
+                                            <th>Tốc độ</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Có dấu hiệu cảnh báo</strong></td>
+                                            <td>Ringer Lactate hoặc NaCl 0.9%</td>
+                                            <td>5-7 ml/kg/giờ × 5 giờ<br>sau đó 3 ml/kg/giờ × 3 giờ</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Sốc nhẹ</strong></td>
+                                            <td>Ringer Lactate</td>
+                                            <td>10-20 ml/kg bolus × 1 giờ<br>sau đó đánh giá lại</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Sốc nặng</strong></td>
+                                            <td>Ringer Lactate + Cao phân tử</td>
+                                            <td>20 ml/kg bolus × 1 giờ<br>nếu không cải thiện: đổi dịch cao phân tử</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="info-box">
+                                <h4>📊 Theo dõi trong viện</h4>
+                                <ul>
+                                    <li><strong>Mạch, HA, nhiệt độ:</strong> Mỗi 1-4 giờ tùy tình trạng</li>
+                                    <li><strong>Lượng dịch vào/ra:</strong> Ghi chép chính xác</li>
+                                    <li><strong>Hct, tiểu cầu:</strong> Mỗi 12-24 giờ hoặc khi cần</li>
+                                    <li><strong>Tri giác, đau bụng, xuất huyết:</strong> Liên tục</li>
+                                    <li><strong>Siêu âm ổ bụng:</strong> Đánh giá tràn dịch, gan to</li>
+                                </ul>
+                            </div>
+
+                            <div class="info-box">
+                                <h4>🩸 Truyền máu/khối tiểu cầu</h4>
+                                <ul>
+                                    <li><strong>Khối hồng cầu:</strong> Khi Hct <35% và có xuất huyết</li>
+                                    <li><strong>Khối tiểu cầu:</strong> Khi tiểu cầu <10 G/L không xuất huyết, hoặc <50 G/L có xuất huyết</li>
+                                    <li><strong>Huyết tương tươi:</strong> Khi có rối loạn đông máu, xuất huyết nặng</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- 2.3 Quản lý bệnh khi nặng -->
+                        <div class="subsection">
+                            <h3 class="subsection-title">2.3 Quản lý bệnh khi nặng</h3>
+                            
+                            <div class="alert-box alert-danger">
+                                🚨 <strong>Sốc Dengue - Xử trí khẩn cấp:</strong>
+                            </div>
+
+                            <div class="info-box">
+                                <h4>📋 Phác đồ chống sốc</h4>
+                                <ol>
+                                    <li><strong>Bolus dịch nhanh:</strong> Ringer Lactate 20 ml/kg trong 15-30 phút</li>
+                                    <li><strong>Đánh giá lại:</strong> Nếu hết sốc → giảm tốc độ truyền; Nếu còn sốc → lặp lại bolus</li>
+                                    <li><strong>Nếu vẫn sốc:</strong> Đổi sang dung dịch cao phân tử (Dextran 40 hoặc Gelofusine) 10-20 ml/kg</li>
+                                    <li><strong>Sốc kéo dài:</strong> Vận mạch (Dopamine, Dobutamine, Noradrenaline)</li>
+                                    <li><strong>Xuất huyết nặng:</strong> Truyền khối hồng cầu, tiểu cầu, huyết tương</li>
+                                </ol>
+                            </div>
+
+                            <div class="info-box">
+                                <h4>🫁 Xử trí suy hô hấp</h4>
+                                <ul>
+                                    <li>Oxy liệu pháp: duy trì SpO2 >92%</li>
+                                    <li>CPAP/BiPAP nếu suy hô hấp vừa</li>
+                                    <li>Đặt nội khí quản thở máy nếu suy hô hấp nặng, sốc không hồi phục</li>
+                                    <li>Chọc tháo dịch màng phổi nếu tràn dịch gây khó thở</li>
+                                </ul>
+                            </div>
+
+                            <div class="info-box">
+                                <h4>🧠 Xử trí biến chứng thần kinh</h4>
+                                <ul>
+                                    <li>Chống phù não: Mannitol 20% 0.5-1 g/kg, furosemide</li>
+                                    <li>Chống co giật: Diazepam, Midazolam</li>
+                                    <li>Đảm bảo thông khí, oxy hóa</li>
+                                    <li>CT scan não nếu nghi ngờ xuất huyết não</li>
+                                </ul>
+                            </div>
+
+                            <div class="info-box">
+                                <h4>🫘 Xử trí suy gan thận</h4>
+                                <ul>
+                                    <li>Theo dõi chức năng gan, thận hàng ngày</li>
+                                    <li>Tránh thuốc độc gan, độc thận</li>
+                                    <li>Lọc máu liên tục nếu suy thận nặng, quá tải dịch</li>
+                                    <li>N-acetylcysteine nếu viêm gan tối cấp</li>
+                                </ul>
+                            </div>
+
+                            <div class="info-box">
+                                <h4>🩸 Xử trí DIC</h4>
+                                <ul>
+                                    <li>Điều trị nguyên nhân (chống sốc)</li>
+                                    <li>Truyền huyết tương tươi, khối lạnh, tiểu cầu</li>
+                                    <li>Heparin liều thấp trong một số trường hợp (cân nhắc kỹ)</li>
+                                    <li>Theo dõi PT, aPTT, fibrinogen, D-dimer</li>
+                                </ul>
+                            </div>
+
+                            <div class="alert-box alert-warning">
+                                ⚠️ <strong>Lưu ý quan trọng:</strong>
+                                <ul>
+                                    <li>Tránh bù dịch quá mức → phù phổi</li>
+                                    <li>Theo dõi sát dấu hiệu thoát dịch (ngày 3-5)</li>
+                                    <li>Khi Hct giảm + HA ổn định = giai đoạn hồi phục → giảm dịch truyền</li>
+                                    <li>Không tự ý truyền dịch khi bệnh nhân ăn uống được</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <footer>
+                <p>&copy; 2024 CliniPortal - Tài liệu y khoa cập nhật theo WHO & Bộ Y tế Việt Nam</p>
+                <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">⚠️ Lưu ý: Tài liệu chỉ mang tính chất tham khảo. Luôn tuân thủ phác đồ cơ sở y tế của bạn.</p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        function toggleSection(contentId) {
+            const content = document.getElementById(contentId);
+            const btn = content.previousElementSibling.querySelector('.toggle-btn');
+            
+            if (content.classList.contains('collapsed')) {
+                content.classList.remove('collapsed');
+                btn.textContent = 'Thu gọn';
+            } else {
+                content.classList.add('collapsed');
+                btn.textContent = 'Mở rộng';
+            }
+        }
+
+        // Initialize sections as expanded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add any initialization code here
+        });
+    </script>
+</body>
+</html>
