@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CliniPortal - Tiếp cận Lâm sàng (Flowchart)</title>
+    <style>
+        :root {
+            --primary-color: #007bff;
+            /* Màu chủ đạo CliniPortal */
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --bg-color: #f4f7f6;
+            --node-bg: #ffffff;
+            --line-color: #cbd5e0;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Container chính của Flowchart */
+        .flowchart-container {
+            max-width: 800px;
+            width: 100%;
+            position: relative;
+            padding-bottom: 50px;
+        }
+
+        /* Tiêu đề Module */
+        .module-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .module-header h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .module-header p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Cấu trúc Node (Khối) */
+        .flow-node {
+            background: var(--node-bg);
+            border: 2px solid var(--line-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 0 auto 30px auto;
+            /* Căn giữa và khoảng cách dưới */
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .flow-node:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-color);
+        }
+
+        .flow-node.start-node {
+            border-color: var(--primary-color);
+            background-color: #eef7ff;
+        }
+
+        .flow-node.decision-node {
+            border-left: 5px solid var(--warning-color);
+        }
+
+        .flow-node.action-node {
+            border-left: 5px solid var(--success-color);
+        }
+
+        .flow-node.danger-node {
+            border-left: 5px solid var(--danger-color);
+        }
+
+        .node-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .node-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .node-desc {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Đường nối (Connectors) */
+        .connector-line {
+            position: absolute;
+            left: 50%;
+            bottom: -30px;
+            /* Khoảng cách từ đáy node */
+            width: 2px;
+            height: 30px;
+            background-color: var(--line-color);
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        /* Nhánh rẽ (Branching) - Dùng cho quyết định Có/Không */
+        .branch-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        /* Đường ngang nối các nhánh */
+        .branch-horizontal {
+            position: absolute;
+            top: -15px;
+            /* Nửa chiều cao đường dọc */
+            left: 25%;
+            right: 25%;
+            height: 2px;
+            background-color: var(--line-color);
+        }
+
+        .branch-path {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            max-width: 200px;
+        }
+
+        .branch-label {
+            position: absolute;
+            top: -25px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: #fff;
+        }
+
+        .label-yes {
+            color: var(--success-color);
+        }
+
+        .label-no {
+            color: var(--danger-color);
+        }
+
+        /* Đường dọc từ nhánh xuống node con */
+        .branch-vertical {
+            width: 2px;
+            height: 15px;
+            background-color: var(--line-color);
+            margin-bottom: 0;
+            /* Nối trực tiếp vào node */
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .branch-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .branch-horizontal {
+                display: none;
+                /* Ẩn đường ngang trên mobile */
+            }
+
+            .branch-path {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .branch-vertical {
+                height: 20px;
+            }
+
+            .flow-node {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="flowchart-container">
+
+        <!-- Header -->
+        <header class="module-header">
+            <h1>Tiếp Cận Lâm Sàng</h1>
+            <p>Sơ đồ luồng chẩn đoán: Bệnh nhân đau ngực</p>
+        </header>
+
+        <!-- Step 1: Khởi đầu (Start Node) -->
+        <div class="flow-node start-node" onclick="alert('Mở modal khai thác bệnh sử')">
+            <span class="node-icon">🏥</span>
+            <span class="node-title">Bệnh nhân nhập viện</span>
+            <span class="node-desc">Triệu chứng chính: Đau ngực</span>
+
+            <!-- Đường nối xuống dưới -->
+            <div class="connector-line"></div>
+        </div>
+
+        <!-- Step 2: Quyết định (Decision Node) -->
+        <div class="flow-node decision-node">
+            <span class="node-icon">⚠️</span>
+            <span class="node-title">Đánh giá dấu hiệu sinh tồn & ECG</span>
+            <span class="node-desc">Có dấu hiệu bất ổn huyết động hoặc ST chênh?</span>
+
+            <!-- Đường nối xuống nhánh rẽ -->
+            <div class="connector-line"></div>
+        </div>
+
+        <!-- Khu vực rẽ nhánh (Branching) -->
+        <div class="branch-container">
+            <!-- Đường ngang nối 2 nhánh -->
+            <div class="branch-horizontal"></div>
+
+            <!-- Nhánh Trái: CÓ (Nguy hiểm) -->
+            <div class="branch-path">
+                <span class="branch-label label-yes">CÓ (Nguy kịch)</span>
+                <div class="branch-vertical"></div>
+
+                <div class="flow-node danger-node" onclick="alert('Chuyển hướng: Phác đồ Cấp cứu ACS')">
+                    <span class="node-icon">🚑</span>
+                    <span class="node-title">Kích hoạt Code Blue / CCS</span>
+                    <span class="node-desc">Chuyển ngay phòng thủ thuật/ICU</span>
+                </div>
+            </div>
+
+            <!-- Nhánh Phải: KHÔNG (Ổn định) -->
+            <div class="branch-path">
+                <span class="branch-label label-no">KHÔNG (Ổn định)</span>
+                <div class="branch-vertical"></div>
+
+                <div class="flow-node action-node" onclick="alert('Mở rộng: Xét nghiệm men tim, XQ phổi')">
+                    <span class="node-icon">🔬</span>
+                    <span class="node-title">Tiếp cận từng bước</span>
+                    <span class="node-desc">Khai thác tiền sử, Men tim, XQ phổi</span>
+                    <!-- Tiếp tục luồng -->
+                    <div class="connector-line"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Tiếp tục luồng từ nhánh "Không" (Ví dụ minh họa luồng thẳng) -->
+        <!-- Lưu ý: Trong thực tế, bạn sẽ dùng JS để render động phần này tùy chọn -->
+        <div class="flow-node action-node" style="opacity: 0.7;">
+            <span class="node-icon">📋</span>
+            <span class="node-title">Chẩn đoán phân biệt</span>
+            <span class="node-desc">Trào ngược, Cơ xương khớp, Lo âu...</span>
+        </div>
+
+    </div>
+
+    <script>
+        // Optional: Thêm logic điều hướng thực tế tại đây
+        // Ví dụ: Khi click vào node, load nội dung từ API hoặc chuyển trang
+        document.querySelectorAll('.flow-node').forEach(node => {
+            node.addEventListener('click', function () {
+                // Hiệu ứng visual khi click
+                this.style.borderColor = '#0056b3';
+                setTimeout(() => {
+                    this.style.borderColor = ''; // Reset sau 300ms
+                }, 300);
+            });
+        });
+    </script>
+</body>
+
+</html>

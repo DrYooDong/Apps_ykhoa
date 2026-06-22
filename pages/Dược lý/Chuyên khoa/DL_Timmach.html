@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="vi" data-theme="light">
 
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="CliniPortal – Hệ thống hỗ trợ quyết định lâm sàng dành cho bác sĩ nội khoa tại Việt Nam" />
-  <title>CliniPortal – Hỗ trợ Lâm sàng</title>
+  <meta name="description" content="Hệ thống rà soát đa phác đồ và cảnh báo tương tác thuốc tim mạch chuyên sâu – CliniPortal" />
+  <title>Dược lý & Tương tác thuốc Tim mạch – CliniPortal</title>
 
   <!-- Preconnect fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
 
   <link rel="stylesheet" href="../../../css/reset.css">
   <link rel="stylesheet" href="../../../css/main.css">
@@ -18,377 +20,423 @@
   <link rel="stylesheet" href="../../../css/components/footer.css">
 
   <script src="../../../pages/header.js"></script>
+  <script src="../../../pages/footer.js"></script>
 
-     STYLE HỆ THỐNG DƯỢC LÝ & MA TRẬN TƯƠNG TÁC TIM MẠCH
-     Đồng bộ thiết kế và tối ưu trải nghiệm lâm sàng tại giường
-  ============================================================ */
-<style>
-  /* ============================================================
-     STYLE HỆ THỐNG DƯỢC LÝ & MA TRẬN TƯƠNG TÁC TIM MẠCH
-     Đồng bộ hoàn toàn với hệ thống Design Tokens CliniPortal
-  ============================================================ */
-
-  /* --- HỆ THỐNG ĐIỀU HƯỚNG TAB ĐỘNG (QUICK TABS) --- */
-  .quick-tabs-container {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-    border-bottom: 1px solid var(--color-divider);
-    padding-bottom: 0.5rem;
-  }
-
-  .tab-btn {
-    background: none;
-    border: none;
-    color: var(--color-text-muted);
-    padding: 0.625rem 1.25rem;
-    font-size: var(--text-sm);
-    font-weight: 600;
-    font-family: 'Inter', sans-serif;
-    cursor: pointer;
-    transition: all var(--tr, 0.2s);
-    border-radius: var(--radius-sm, 6px);
-  }
-
-  .tab-btn:hover {
-    color: var(--color-text);
-    background-color: var(--color-divider);
-  }
-
-  .tab-btn.active {
-    background-color: var(--color-divider);
-    color: var(--color-primary);
-  }
-
-  .tab-content-panel {
-    display: none;
-  }
-
-  .tab-content-panel.active {
-    display: block;
-    animation: ddiFadeIn 0.3s ease-in-out;
-  }
-
-  /* --- BỐ CỤC KHÔNG GIAN LÀM VIỆC (WORKSPACE LAYOUT) --- */
-  .pillbox-workspace-layout {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    align-items: start;
-  }
-
-  .pillbox-selection-column {
-    flex: 1 1 calc(55% - 0.75rem);
-    min-width: 360px;
-  }
-
-  .pillbox-output-column {
-    flex: 1 1 calc(45% - 0.75rem);
-    min-width: 320px;
-    position: sticky;
-    top: 1.5rem;
-    height: fit-content;
-  }
-
-  /* --- THẺ THÀNH PHẦN (CARDS) & KHUNG NHẬP LIỆU --- */
-  .form-section-card {
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-divider);
-    border-radius: var(--radius-md, 8px);
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    box-shadow: var(--shadow-sm);
-  }
-
-  .section-card-header {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .step-badge {
-    background-color: var(--color-divider);
-    color: var(--color-text);
-    font-weight: 700;
-    font-size: var(--text-sm);
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .section-instruction {
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    margin-bottom: 1.5rem;
-    line-height: 1.5;
-  }
-
-  /* --- NHÓM PHÂN LOẠI THUỐC & LƯỚI NÚT BẤM (DRUG GRID) --- */
-  .drug-category-group {
-    margin-top: 1.5rem;
-    border-top: 1px dashed var(--color-divider);
-    padding-top: 1.25rem;
-  }
-
-  .drug-category-group:first-of-type {
-    border-top: none;
-    padding-top: 0;
-    margin-top: 0;
-  }
-
-  .drug-category-group h4 {
-    font-size: var(--text-sm);
-    font-weight: 700;
-    color: var(--color-text);
-    margin-bottom: 0.875rem;
-  }
-
-  .drug-buttons-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-    gap: 0.625rem;
-  }
-
-  /* Định dạng nút chọn thuốc chuyên khoa */
-  .drug-select-btn {
-    background-color: var(--color-surface);
-    color: var(--color-text-muted);
-    border: 1px solid var(--color-divider);
-    padding: 0.625rem 0.875rem;
-    font-size: var(--text-xs);
-    font-weight: 500;
-    font-family: 'Inter', sans-serif;
-    border-radius: 6px;
-    cursor: pointer;
-    text-align: left;
-    line-height: 1.4;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
-
-  .drug-select-btn:hover {
-    border-color: var(--color-text-muted);
-    color: var(--color-text);
-    background-color: var(--color-divider);
-  }
-
-  /* Trạng thái hoạt động khi thuốc được nạp vào hộp ảo */
-  .drug-select-btn.selected {
-    background-color: var(--color-surface);
-    border-color: var(--color-primary);
-    color: var(--color-primary);
-    font-weight: 600;
-    box-shadow: 0 0 0 1px var(--color-primary);
-  }
-
-  /* --- HỘP THUỐC ẢO CỦA BỆNH NHÂN (PILLBOX BASKET) --- */
-  .pillbox-basket-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    padding: 0.25rem 0;
-    min-height: 48px;
-    align-items: center;
-  }
-
-  .empty-basket-text {
-    font-size: var(--text-xs);
-    color: var(--color-text-muted);
-    font-style: italic;
-    margin: 0;
-  }
-
-  /* Định dạng Chip thuốc đang chọn */
-  .selected-drug-chip {
-    background-color: var(--color-surface);
-    color: var(--color-text);
-    border: 1px solid var(--color-divider);
-    padding: 0.375rem 0.875rem;
-    border-radius: 999px;
-    font-size: var(--text-xs);
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 0.625rem;
-    box-shadow: var(--shadow-sm);
-    animation: ddiPopIn 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-
-  .chip-name {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 240px;
-  }
-
-  .chip-remove-btn {
-    background: none;
-    border: none;
-    color: var(--color-text-muted);
-    font-size: 1.125rem;
-    font-weight: 400;
-    cursor: pointer;
-    padding: 0;
-    line-height: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: color 0.15s;
-  }
-
-  .chip-remove-btn:hover {
-    color: var(--color-rose);
-  }
-
-  /* --- HỆ THỐNG ĐÈN GIAO THÔNG ALERTS (TRAFFIC LIGHTS) --- */
-  .ddi-status-panel {
-    border-radius: var(--radius-md, 8px);
-    padding: 1.25rem;
-    margin-top: 1.25rem;
-    box-shadow: var(--shadow-md);
-    animation: ddiSlideDown 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  /* Phối màu theo token hệ thống giúp tự động tương thích tốt trên cả Light/Dark Theme */
-  .panel-red {
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-rose);
-    border-left: 5px solid var(--color-rose);
-  }
-
-  .panel-amber {
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-warning);
-    border-left: 5px solid var(--color-warning);
-  }
-
-  .panel-green {
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-success);
-    border-left: 5px solid var(--color-success);
-  }
-
-  .panel-alert-header {
-    font-size: var(--text-xs);
-    font-weight: 800;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.875rem;
-  }
-
-  .panel-red .panel-alert-header { color: var(--color-rose); }
-  .panel-amber .panel-alert-header { color: var(--color-warning); }
-  .panel-green .panel-alert-header { color: var(--color-success); }
-
-  /* Chi tiết từng cặp tương tác bên trong panel */
-  .ddi-item {
-    border-bottom: 1px dashed var(--color-divider);
-    padding: 1rem 0;
-    font-size: var(--text-xs);
-    line-height: 1.5;
-  }
-
-  .ddi-item:first-of-type {
-    padding-top: 0;
-  }
-
-  .ddi-item:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-  }
-
-  .ddi-item-title {
-    font-size: var(--text-sm);
-    font-weight: 700;
-    color: var(--color-text);
-    margin-bottom: 0.375rem;
-  }
-
-  .ddi-item-mechanism {
-    color: var(--color-text-muted);
-    margin-bottom: 0.25rem;
-  }
-
-  .ddi-item-action {
-    margin-top: 0.5rem;
-    padding: 0.5rem 0.75rem;
-    background-color: var(--color-divider);
-    border-radius: 4px;
-    color: var(--color-text);
-  }
-
-  /* --- THƯ VIỆN HỌC THUẬT EBM (KNOWLEDGE BASE) --- */
-  .knowledge-rich-content h4 {
-    font-size: var(--text-md);
-    font-weight: 700;
-    color: var(--color-text);
-    margin-bottom: 0.75rem;
-  }
-
-  .knowledge-rich-content ul {
-    list-style-type: none;
-    padding-left: 0;
-    margin: 0 0 1.5rem 0;
-  }
-
-  .knowledge-rich-content li {
-    font-size: var(--text-sm);
-    color: var(--color-text);
-    line-height: 1.6;
-    margin-bottom: 0.75rem;
-    position: relative;
-    padding-left: 1.25rem;
-  }
-
-  .knowledge-rich-content li::before {
-    content: "•";
-    color: var(--color-primary);
-    font-weight: bold;
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-
-  .knowledge-rich-content strong {
-    color: var(--color-text);
-  }
-
-  /* --- HIỆU ỨNG ANIMATIONS (CHUYỂN ĐỘNG) MƯỢT MÀ --- */
-  @keyframes ddiFadeIn {
-    from { opacity: 0; transform: translateY(4px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes ddiPopIn {
-    from { opacity: 0; transform: scale(0.92); }
-    to { opacity: 1; transform: scale(1); }
-  }
-
-  @keyframes ddiSlideDown {
-    from { opacity: 0; transform: translateY(-8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* --- ĐÁP ỨNG THIẾT BỊ DI ĐỘNG (RESPONSIVENESS) --- */
-  @media (max-width: 1024px) {
-    .pillbox-selection-column, 
-    .pillbox-output-column {
-      flex: 1 1 100%;
+  <style>
+    /* ============================================================
+       STYLE HỆ THỐNG DƯỢC LÝ & MA TRẬN TƯƠNG TÁC TIM MẠCH
+       Đồng bộ hoàn toàn với hệ thống Design Tokens CliniPortal
+    ============================================================ */
+    :root {
+      --radius-node: 14px;
+      --shadow-node: 0 4px 16px rgba(0, 0, 0, .10);
+      --shadow-node-hover: 0 8px 28px rgba(0, 0, 0, .18);
     }
-    .pillbox-output-column {
-      position: static;
+
+    /* --- HỆ THỐNG ĐIỀU HƯỚNG TAB ĐỘNG (QUICK TABS) --- */
+    .quick-tabs-container {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--color-divider);
+      padding-bottom: 0.5rem;
+      flex-wrap: wrap;
     }
-  }
-</style>
+
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--color-text-muted);
+      padding: 0.625rem 1.25rem;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: all var(--tr, 0.2s);
+      border-radius: var(--radius-sm, 6px);
+    }
+
+    .tab-btn:hover {
+      color: var(--color-text);
+      background-color: var(--color-divider);
+    }
+
+    .tab-btn.active {
+      background-color: var(--color-divider);
+      color: var(--color-primary);
+    }
+
+    .tab-content-panel {
+      display: none;
+    }
+
+    .tab-content-panel.active {
+      display: block;
+      animation: ddiFadeIn 0.3s ease-in-out;
+    }
+
+    /* --- BỐ CỤC KHÔNG GIAN LÀM VIỆC (WORKSPACE LAYOUT) --- */
+    .pillbox-workspace-layout {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: start;
+      width: 100%;
+    }
+
+    .pillbox-selection-column {
+      flex: 1 1 calc(55% - 0.75rem);
+      min-width: 360px;
+    }
+
+    .pillbox-output-column {
+      flex: 1 1 calc(45% - 0.75rem);
+      min-width: 320px;
+      position: sticky;
+      top: 1.5rem;
+      height: fit-content;
+    }
+
+    /* --- THẺ THÀNH PHẦN (CARDS) & KHUNG NHẬP LIỆU --- */
+    .form-section-card {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-md, 8px);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .section-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .step-badge {
+      background-color: var(--color-divider);
+      color: var(--color-text);
+      font-weight: 700;
+      font-size: var(--text-sm);
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .section-instruction {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+
+    .r-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .r-field label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #475569;
+      margin-bottom: 4px;
+    }
+
+    .r-field select {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 13px;
+      transition: all .2s;
+      background: #f8fafc;
+      box-sizing: border-box;
+      color: var(--color-text);
+    }
+
+    .r-field select:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      background: #fff;
+      box-shadow: 0 0 0 3px var(--color-primary-hl);
+    }
+
+    /* --- NHÓM PHÂN LOẠI THUỐC & LƯỚI NÚT BẤM (DRUG GRID) --- */
+    .drug-category-group {
+      margin-top: 1.5rem;
+      border-top: 1px dashed var(--color-divider);
+      padding-top: 1.25rem;
+    }
+
+    .drug-category-group:first-of-type {
+      border-top: none;
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    .drug-category-group h4 {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 0.875rem;
+    }
+
+    .drug-buttons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 0.625rem;
+    }
+
+    /* Nút chọn thuốc */
+    .drug-select-btn {
+      background-color: var(--color-surface);
+      color: var(--color-text-muted);
+      border: 1px solid var(--color-divider);
+      padding: 0.625rem 0.875rem;
+      font-size: var(--text-xs);
+      font-weight: 500;
+      font-family: 'Inter', sans-serif;
+      border-radius: 6px;
+      cursor: pointer;
+      text-align: left;
+      line-height: 1.4;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .drug-select-btn:hover {
+      border-color: var(--color-text-muted);
+      color: var(--color-text);
+      background-color: var(--color-surface-offset);
+    }
+
+    .drug-select-btn.selected {
+      background-color: var(--color-primary-hl);
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      font-weight: 600;
+      box-shadow: 0 0 0 1px var(--color-primary);
+    }
+
+    /* --- HỘP THUỐC ẢO (PILLBOX BASKET) --- */
+    .pillbox-basket-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0.25rem 0;
+      min-height: 48px;
+      align-items: center;
+    }
+
+    .empty-basket-text {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      font-style: italic;
+      margin: 0;
+    }
+
+    /* Chip thuốc đang chọn */
+    .selected-drug-chip {
+      background-color: var(--color-surface);
+      color: var(--color-text);
+      border: 1px solid var(--color-divider);
+      padding: 0.375rem 0.875rem;
+      border-radius: 999px;
+      font-size: var(--text-xs);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      box-shadow: var(--shadow-sm);
+      animation: ddiPopIn 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .chip-name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 240px;
+    }
+
+    .chip-remove-btn {
+      background: none;
+      border: none;
+      color: var(--color-text-muted);
+      font-size: 1.125rem;
+      font-weight: 400;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.15s;
+    }
+
+    .chip-remove-btn:hover {
+      color: var(--color-rose);
+    }
+
+    /* --- HỆ THỐNG CẢNH BÁO ALERTS --- */
+    .ddi-status-panel {
+      border-radius: var(--radius-md, 8px);
+      padding: 1.25rem;
+      margin-top: 1.25rem;
+      box-shadow: var(--shadow-md);
+      animation: ddiSlideDown 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .panel-red {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-rose);
+      border-left: 5px solid var(--color-rose);
+    }
+
+    .panel-amber {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-warning);
+      border-left: 5px solid var(--color-warning);
+    }
+
+    .panel-green {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-success);
+      border-left: 5px solid var(--color-success);
+    }
+
+    .panel-purple {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-purple);
+      border-left: 5px solid var(--color-purple);
+    }
+
+    .panel-alert-header {
+      font-size: var(--text-xs);
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.875rem;
+      text-transform: uppercase;
+    }
+
+    .panel-red .panel-alert-header { color: var(--color-rose); }
+    .panel-amber .panel-alert-header { color: var(--color-warning); }
+    .panel-green .panel-alert-header { color: var(--color-success); }
+    .panel-purple .panel-alert-header { color: var(--color-purple); }
+
+    .ddi-item {
+      border-bottom: 1px dashed var(--color-divider);
+      padding: 1rem 0;
+      font-size: var(--text-xs);
+      line-height: 1.5;
+    }
+
+    .ddi-item:first-of-type {
+      padding-top: 0;
+    }
+
+    .ddi-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .ddi-item-title {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 0.375rem;
+    }
+
+    .ddi-item-mechanism {
+      color: var(--color-text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .ddi-item-action {
+      margin-top: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      background-color: var(--color-surface-offset);
+      border-radius: 4px;
+      color: var(--color-text);
+      border-left: 3px solid var(--color-primary);
+    }
+
+    .panel-red .ddi-item-action { border-left-color: var(--color-rose); }
+    .panel-amber .ddi-item-action { border-left-color: var(--color-warning); }
+    .panel-green .ddi-item-action { border-left-color: var(--color-success); }
+    .panel-purple .ddi-item-action { border-left-color: var(--color-purple); }
+
+    /* --- THƯ VIỆN HỌC THUẬT EBM (KNOWLEDGE BASE) --- */
+    .knowledge-rich-content h4 {
+      font-size: var(--text-md);
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 0.75rem;
+    }
+
+    .knowledge-rich-content ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0 0 1.5rem 0;
+    }
+
+    .knowledge-rich-content li {
+      font-size: var(--text-sm);
+      color: var(--color-text);
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+      position: relative;
+      padding-left: 1.25rem;
+    }
+
+    .knowledge-rich-content li::before {
+      content: "•";
+      color: var(--color-primary);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    /* --- ANIMATIONS --- */
+    @keyframes ddiFadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes ddiPopIn {
+      from { opacity: 0; transform: scale(0.92); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes ddiSlideDown {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- RESPONSIVENESS --- */
+    @media (max-width: 1024px) {
+      .pillbox-selection-column,
+      .pillbox-output-column {
+        flex: 1 1 100%;
+      }
+
+      .pillbox-output-column {
+        position: static;
+      }
+    }
+  </style>
 </head>
 
-<div?>
-    <!-- Placeholder nạp header.html — đường dẫn tính từ vị trí cong-cu.html -->
+<body>
   <div id="header-placeholder" data-header-path="../../header.html"></div>
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
@@ -398,8 +446,8 @@
     <!-- SIDEBAR -->
     <aside class="app-sidebar" id="appSidebar">
       <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
-        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5"
-          fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
           <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
       </button>
@@ -412,13 +460,13 @@
             </a>
           </li>
           <li>
-            <a href="../cong-cu.html" class="nav-item" title="Công cụ lâm sàng">
+            <a href="../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ lâm sàng">
               <span class="nav-icon">⚙️</span>
               <span class="nav-text">Công cụ lâm sàng</span>
             </a>
           </li>
           <li>
-            <a href="../../Phác đồ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+            <a href="../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
               <span class="nav-icon">📄</span>
               <span class="nav-text">Y học chứng cứ</span>
             </a>
@@ -431,7 +479,7 @@
           </li>
           <li>
             <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận triệu chứng">
-              <span class="nav-icon">🩻</span>
+              <span class="nav-icon">🤒</span>
               <span class="nav-text">Tiếp cận lâm sàng</span>
             </a>
           </li>
@@ -440,476 +488,673 @@
     </aside>
 
     <!--MAIN CONTENT-->
-    <div class="main-wrapper" id="mainContent">
+    <main class="main-wrapper" id="mainContent">
 
-        <section class="hero-dashboard" aria-labelledby="page-title">
-            <div class="hero-intro">
-            <h1 id="page-title">💊 DƯỢC LÝ & TƯƠNG TÁC THUỐC TIM MẠCH</h1>
-            <p>Hệ thống rà soát đa phác đồ (Polypharmacy), tối ưu hóa điều trị nội khoa theo khuyến cáo GDMT và cảnh báo tương tác thuốc nguy hiểm tại giường bệnh.</p>
-            </div>
-        </section>
-
-  <div class="main-content-grid">
-    <!--BUTTON TAB-->
-    <div class="quick-tabs-container" role="tablist" aria-label="Phân hệ dược lý">
-        <button class="tab-btn active" data-target="tab-cardio" role="tab" aria-selected="true">🎯 1. Thuốc Tim mạch</button>
-        <button class="tab-btn" data-target="tab-multimorbid" role="tab" aria-selected="false">👵 2. Thuốc Đa bệnh lý</button>
-        <button class="tab-btn" data-target="tab-ebm-knowledge" role="tab" aria-selected="false">🧬 3. Thư viện Học thuật</button>
-    </div>
-
-        <!--TAB 1: Tương tác giữa các thuốc tim mạch-->
-        <div id="tab-cardio" class="tab-content-panel active">
-          <div class="form-section-card">
-            <div class="section-card-header">
-              <span class="step-badge">A</span>
-              <h3>Phác đồ Nội khoa Tim mạch</h3>
-            </div>
-            <p class="section-instruction">Chọn các thuốc tim mạch nền tảng của bệnh nhân theo các nhóm phân loại chính thống.</p>
-
-            <div class="drug-category-group">
-              <h4>🛡️ Hạ áp &amp; Suy tim (GDMT)</h4>
-              <div class="drug-buttons-grid">
-                <button type="button" class="drug-select-btn" data-drug="acei">ACEi (Enalapril, Perindopril...)</button>
-                <button type="button" class="drug-select-btn" data-drug="arb">ARB (Valsartan, Losartan...)</button>
-                <button type="button" class="drug-select-btn" data-drug="arni">ARNI (Sacubitril/Valsartan)</button>
-                <button type="button" class="drug-select-btn" data-drug="beta_blocker">Beta-Blocker (Bisoprolol...)</button>
-                <button type="button" class="drug-select-btn" data-drug="dhp_ccb">DHP-CCB (Amlodipine...)</button>
-                <button type="button" class="drug-select-btn" data-drug="non_dhp_ccb">Non-DHP CCB (Verapamil, Diltiazem)</button>
-                <button type="button" class="drug-select-btn" data-drug="mra">MRA (Spironolactone, Eplerenone)</button>
-                <button type="button" class="drug-select-btn" data-drug="sglt2i">SGLT2i (Dapagliflozin, Empagliflozin)</button>
-                <button type="button" class="drug-select-btn" data-drug="loop_diuretic">Lợi tiểu quai (Furosemide)</button>
-              </div>
-            </div>
-
-            <div class="drug-category-group">
-              <h4>⚡ Thuốc chống loạn nhịp (AADs)</h4>
-              <div class="drug-buttons-grid">
-                <button type="button" class="drug-select-btn" data-drug="amiodarone">Amiodarone (Nhóm III)</button>
-                <button type="button" class="drug-select-btn" data-drug="digoxin">Digoxin (Glycoside tim)</button>
-                <button type="button" class="drug-select-btn" data-drug="sotalol">Sotalol (Nhóm II/III)</button>
-                <button type="button" class="drug-select-btn" data-drug="qt_prolong_drug">Thuốc kéo dài QT phi tim mạch</button>
-              </div>
-            </div>
-
-            <div class="drug-category-group">
-              <h4>🧪 Kiểm soát Lipid &amp; Statin</h4>
-              <div class="drug-buttons-grid">
-                <button type="button" class="drug-select-btn" data-drug="statin_cyp3a4">Statin qua CYP3A4 (Ator, Simva)</button>
-                <button type="button" class="drug-select-btn" data-drug="statin_pure">Statin ít tương tác (Rosuva, Prav)</button>
-                <button type="button" class="drug-select-btn" data-drug="gemfibrozil">Gemfibrozil (Fibrate)</button>
-                <button type="button" class="drug-select-btn" data-drug="fenofibrate">Fenofibrate (Fibrate)</button>
-                <button type="button" class="drug-select-btn" data-drug="cyp3a4_inhibitor">Chất ức chế CYP3A4 mạnh</button>
-              </div>
-            </div>
-
-            <div class="drug-category-group">
-              <h4>🩸 Kháng đông &amp; Kháng tiểu cầu</h4>
-              <div class="drug-buttons-grid">
-                <button type="button" class="drug-select-btn" data-drug="aspirin">Aspirin (Kháng tiểu cầu)</button>
-                <button type="button" class="drug-select-btn" data-drug="p2y12_inhibitor">Chẹn P2Y12 (Clopidogrel, Tica)</button>
-                <button type="button" class="drug-select-btn" data-drug="doac">DOACs (Rivaroxaban, Apixaban...)</button>
-                <button type="button" class="drug-select-btn" data-drug="vka">Kháng Vitamin K (Warfarin, Sintrom)</button>
-              </div>
-            </div>
-
-          </div>
+      <section class="hero-dashboard" aria-labelledby="page-title">
+        <div class="hero-intro">
+          <h1 id="page-title">💊 DƯỢC LÝ & TƯƠNG TÁC THUỐC TIM MẠCH</h1>
+          <p>Hệ thống rà soát đa phác đồ (Polypharmacy), tích hợp bối cảnh bệnh đồng mắc và cảnh báo tương tác thuốc nguy hiểm theo khuyến cáo y học chứng cứ.</p>
         </div>
+      </section>
 
-        <!--TAB 2: Tương tác giữa các thuốc tim mạch & ngoài tim mạch-->
-        <div id="tab-multimorbid" class="tab-content-panel">
-          <div class="form-section-card">
-            <div class="section-card-header">
-              <span class="step-badge">B</span>
-              <h3>Thuốc điều trị các Bệnh đồng mắc ngoài Tim mạch</h3>
-            </div>
-            <p class="section-instruction">Bệnh nhân lớn tuổi thường đi kèm nhiều bệnh lý cơ xương khớp, nhiễm trùng hoặc tiêu hóa. Hãy chọn các thuốc đi kèm tại đây.</p>
+      <div class="main-content-grid">
+        <!-- BREADCRUMB -->
+        <nav aria-label="Breadcrumb" class="breadcrumb-container" style="padding-top:0;">
+          <ol class="breadcrumb-list">
+            <li class="breadcrumb-item">
+              <a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="../../Dược lý/duoc-ly.html" class="breadcrumb-link">Dược lý</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Dược lý Tim mạch</li>
+          </ol>
+        </nav>
 
-            <div class="drug-category-group">
-              <h4>🦴 Cơ xương khớp &amp; Gút (Mắc kèm phổ biến)</h4>
-              <div class="drug-buttons-grid">
-                <button type="button" class="drug-select-btn" data-drug="nsaid">NSAIDs truyền thống (Ibuprofen, Naproxen...)</button>
-                <button type="button" class="drug-select-btn" data-drug="cox2_inhibitor">Ức chế chọn lọc COX-2 (Celecoxib...)</button>
-                <button type="button" class="drug-select-btn" data-drug="colchicine">Colchicine (Điều trị gút cấp)</button>
-              </div>
-            </div>
-
-            <div class="drug-category-group">
-              <h4>🫁 Kháng viêm toàn thân (Bệnh phổi/Khớp bùng phát)</h4>
-              <div class="drug-buttons-grid">
-                <button type="button" class="drug-select-btn" data-drug="systemic_corticoid">Corticosteroids đường uống/tiêm</button>
-              </div>
-            </div>
-
-            <div class="drug-category-group">
-              <h4>胃 Thuốc dạ dày (Nhóm Ức chế bơm Proton PPI)</h4>
-              <div class="drug-buttons-grid">
-                <button type="button" class="drug-select-btn" data-drug="omeprazole">Omeprazole (PPI thế hệ cũ)</button>
-                <button type="button" class="drug-select-btn" data-drug="safe_ppi">PPI ít tương tác (Pantoprazole, Rabeprazole)</button>
-              </div>
-            </div>
-
-            <div class="drug-category-group">
-              <h4>🦠 Kháng sinh &amp; Kháng nấm cấp tính</h4>
-              <div class="drug-buttons-grid">
-                <button type="button" class="drug-select-btn" data-drug="macrolide">Kháng sinh Macrolide (Clarithromycin, Erythro)</button>
-                <button type="button" class="drug-select-btn" data-drug="azole_antifungal">Thuốc kháng nấm nhóm Azole (Fluconazole...)</button>
-                <button type="button" class="drug-select-btn" data-drug="qt_prolong_drug">Thuốc kéo dài QT phi tim mạch khác</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!--TAB 3: Lý thuyết về Bản đồ tương tác tim mạch chuyên sâu-->
-        <div id="tab-ebm-knowledge" class="tab-content-panel">
-          <div class="form-section-card">
-            <h3>🧬 Cơ sở sinh học &amp; Bản đồ tương tác tim mạch chuyên sâu</h3>
-            <p class="section-instruction">Tài liệu học thuật được tổng hợp từ các hướng dẫn lâm sàng chính thống của AHA và ESC.</p>
-            
-            <div class="knowledge-rich-content">
-              <h4>1. Ba "Cửa ngõ" Chuyển hóa và Vận chuyển cốt lõi</h4>
-              <ul>
-                <li><strong>Hệ Cytochrome P450 (CYP3A4, CYP2D6):</strong> Là trung tâm chuyển hóa các thuốc hạ áp dòng CCB và nhóm Statins. Việc khóa men này bằng các chất ức chế mạnh sẽ đẩy nồng độ thuốc tim mạch lên ngưỡng độc tính.</li>
-                <li><strong>Bơm trục xuất P-glycoprotein (P-gp):</strong> Màng lọc bảo vệ tại ruột và thận. Các thuốc chống loạn nhịp (Amiodarone, Verapamil) khi chẹn P-gp sẽ làm tích tụ nghiêm trọng nồng độ Digoxin và DOACs trong huyết thanh.</li>
-                <li><strong>Cổng nhập bào tế bào gan (OATP1B1):</strong> Điểm trung chuyển đưa Statins vào gan. Tổ hợp Statin với Gemfibrozil sẽ gây nghẽn cổng này, giải phóng Statin ra hệ tuần hoàn gây hủy hoại mô cơ.</li>
-              </ul>
-
-              <h4 style="margin-top: 1.5rem;">2. Cẩm nang Lão khoa: Nguyên tắc Cai thuốc &amp; Đa bệnh lý</h4>
-              <ul>
-                <li><strong>Thác kê đơn (Prescribing Cascade):</strong> Cần đặc biệt tỉnh táo trước biến chứng phù cổ chân do Amlodipine để điều chỉnh phác đồ hạ áp, tránh việc lạm dụng thêm thuốc lợi tiểu quai Furosemide làm nặng thêm tình trạng mất nước và suy thận cơ năng của người già.</li>
-                <li><strong>Động học thận ở người cao tuổi:</strong> Tránh phụ thuộc hoàn toàn vào eGFR tự động từ máy xét nghiệm do khối cơ sụt giảm ở người già làm Creatinine máu thấp giả tạo. Luôn tính toán độ thanh thải bằng công thức Cockcroft-Gault truyền thức để hiệu chỉnh chính xác liều thuốc kháng đông (DOACs).</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!--KẾT QUẢ-->
-      <div class="pillbox-output-column">
-        
-        <div class="form-section-card">
-          <div class="section-card-header">
-            <span class="step-badge" style="background-color: var(--color-primary); color: #ffffff;">🛒</span>
-            <h3>Hộp thuốc ảo đang rà soát (<span id="selected-count">0</span>)</h3>
-          </div>
-          <div id="virtual-pillbox-basket" class="pillbox-basket-wrapper">
-            <p class="empty-basket-text">Chưa có thuốc nào được chọn. Hãy nhấp chọn thuốc ở các phân hệ bên trái.</p>
-          </div>
-          <button type="button" id="clear-all-basket-btn" class="btn btn-secondary" style="margin-top: 1rem; width: 100%; display: none;">🧹 Xóa toàn bộ hộp thuốc</button>
-        </div>
-
-        <div id="ddi-alert-dashboard" style="display: none;">
+        <!-- WORKSPACE LAYOUT -->
+        <div class="pillbox-workspace-layout">
           
-          <div id="panel-danger" class="ddi-status-panel panel-red" style="display: none;">
-            <div class="panel-alert-header">🚨 CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI / NGUY HIỂM TÍNH MẠNG</div>
-            <div class="panel-alert-content" id="container-danger"></div>
+          <!-- LEFT: SELECTION COLUMN -->
+          <div class="pillbox-selection-column">
+            
+            <!-- Patient Clinical Profile Card -->
+            <div class="form-section-card" style="border-left: 5px solid var(--color-primary);">
+              <div class="section-card-header">
+                <span class="step-badge" style="background-color: var(--color-primary); color: #ffffff;"><i class="fa fa-user-md"></i></span>
+                <h3>Bối cảnh Lâm sàng &amp; Cơ quan đích (Comorbidities)</h3>
+              </div>
+              <p class="section-instruction" style="margin-bottom: 12px;">Thiết lập tình trạng bệnh đồng mắc để hệ thống rà soát chống chỉ định thuốc-bệnh (Drug-Disease Interactions).</p>
+              <div class="r-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
+                <div class="r-field">
+                  <label><i class="fa-solid fa-calculator"></i> Chức năng thận (eGFR)</label>
+                  <select id="patient-egfr" onchange="executeDdiMatrixEngine()">
+                    <option value="normal">Bình thường (eGFR ≥ 50 ml/phút)</option>
+                    <option value="ckd_mod">Suy thận vừa (eGFR 30 - 49 ml/phút)</option>
+                    <option value="ckd_severe">Suy thận nặng (eGFR &lt; 30 ml/phút)</option>
+                  </select>
+                </div>
+                <div class="r-field">
+                  <label><i class="fa-solid fa-droplet"></i> Tiền sử xuất huyết tiêu hóa</label>
+                  <select id="patient-bleed" onchange="executeDdiMatrixEngine()">
+                    <option value="no">Không có nguy cơ cao</option>
+                    <option value="yes">Có tiền sử XHTH / Loét dạ dày tiến triển</option>
+                  </select>
+                </div>
+                <div class="r-field">
+                  <label><i class="fa-solid fa-lungs"></i> Đường hô hấp (Hen / COPD)</label>
+                  <select id="patient-asthma" onchange="executeDdiMatrixEngine()">
+                    <option value="no">Không có co thắt phế quản</option>
+                    <option value="yes">Tiền sử Hen phế quản / COPD nặng</option>
+                  </select>
+                </div>
+                <div class="r-field">
+                  <label><i class="fa-solid fa-hospital-user"></i> Chức năng gan (Child-Pugh)</label>
+                  <select id="patient-liver" onchange="executeDdiMatrixEngine()">
+                    <option value="normal">Bình thường</option>
+                    <option value="dysfunction">Suy gan Child-Pugh B hoặc C</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- BUTTON TABS -->
+            <div class="quick-tabs-container" role="tablist" aria-label="Phân hệ dược lý">
+              <button class="tab-btn active" data-target="tab-cardio" role="tab" aria-selected="true">🎯 1. Thuốc Tim mạch</button>
+              <button class="tab-btn" data-target="tab-multimorbid" role="tab" aria-selected="false">👵 2. Thuốc Đa bệnh lý</button>
+              <button class="tab-btn" data-target="tab-ebm-knowledge" role="tab" aria-selected="false">🧬 3. Thư viện Học thuật</button>
+            </div>
+
+            <!-- TAB 1: CARDIOVASCULAR DRUGS -->
+            <div id="tab-cardio" class="tab-content-panel active">
+              <div class="form-section-card">
+                <div class="section-card-header">
+                  <span class="step-badge">A</span>
+                  <h3>Phác đồ Nội khoa Tim mạch</h3>
+                </div>
+                <p class="section-instruction">Chọn các thuốc tim mạch nền tảng của bệnh nhân theo phân nhóm điều trị.</p>
+
+                <div class="drug-category-group">
+                  <h4>🛡️ Hạ áp &amp; Suy tim (GDMT)</h4>
+                  <div class="drug-buttons-grid">
+                    <button type="button" class="drug-select-btn" data-drug="acei" title="Thuốc ức chế men chuyển">ACEi (Enalapril, Perindopril...)</button>
+                    <button type="button" class="drug-select-btn" data-drug="arb" title="Thuốc chẹn thụ thể Angiotensin">ARB (Valsartan, Losartan...)</button>
+                    <button type="button" class="drug-select-btn" data-drug="arni" title="Thuốc ức chế thụ thể Angiotensin - Neprilysin">ARNI (Sacubitril/Valsartan)</button>
+                    <button type="button" class="drug-select-btn" data-drug="beta_blocker" title="Thuốc chẹn beta giao cảm">Beta-Blocker (Bisoprolol, Carvedilol...)</button>
+                    <button type="button" class="drug-select-btn" data-drug="dhp_ccb" title="Thuốc chẹn kênh canxi nhóm Dihydropyridine">DHP-CCB (Amlodipine, Felodipine...)</button>
+                    <button type="button" class="drug-select-btn" data-drug="non_dhp_ccb" title="Thuốc chẹn kênh canxi nhóm Non-Dihydropyridine">Non-DHP CCB (Verapamil, Diltiazem)</button>
+                    <button type="button" class="drug-select-btn" data-drug="mra" title="Thuốc kháng thụ thể Aldosterone">MRA (Spironolactone, Eplerenone)</button>
+                    <button type="button" class="drug-select-btn" data-drug="sglt2i" title="Thuốc ức chế đồng vận chuyển Natri-Glucose 2">SGLT2i (Dapagliflozin, Empagliflozin)</button>
+                    <button type="button" class="drug-select-btn" data-drug="loop_diuretic" title="Thuốc lợi tiểu quai">Lợi tiểu quai (Furosemide)</button>
+                  </div>
+                </div>
+
+                <div class="drug-category-group">
+                  <h4>⚡ Thuốc chống loạn nhịp (AADs)</h4>
+                  <div class="drug-buttons-grid">
+                    <button type="button" class="drug-select-btn" data-drug="amiodarone" title="Thuốc chống loạn nhịp nhóm III">Amiodarone (Nhóm III)</button>
+                    <button type="button" class="drug-select-btn" data-drug="digoxin" title="Glycoside tim hỗ trợ co bóp và kiểm soát tần số thất">Digoxin (Glycoside tim)</button>
+                    <button type="button" class="drug-select-btn" data-drug="sotalol" title="Thuốc chống loạn nhịp nhóm II/III">Sotalol</button>
+                    <button type="button" class="drug-select-btn" data-drug="qt_prolong_drug" title="Các thuốc khác gây kéo dài khoảng QT trên ECG">Thuốc kéo dài QT phi tim mạch</button>
+                  </div>
+                </div>
+
+                <div class="drug-category-group">
+                  <h4>🧪 Kiểm soát Lipid &amp; Statin</h4>
+                  <div class="drug-buttons-grid">
+                    <button type="button" class="drug-select-btn" data-drug="statin_cyp3a4" title="Statin chuyển hóa qua gan CYP3A4">Statin qua CYP3A4 (Ator, Simva)</button>
+                    <button type="button" class="drug-select-btn" data-drug="statin_pure" title="Statin ít tương tác thuốc qua gan">Statin ít tương tác (Rosuva, Prav)</button>
+                    <button type="button" class="drug-select-btn" data-drug="gemfibrozil" title="Thuốc hạ lipid nhóm Fibrate có nguy cơ cao độc cơ với Statin">Gemfibrozil (Fibrate)</button>
+                    <button type="button" class="drug-select-btn" data-drug="fenofibrate" title="Thuốc hạ lipid nhóm Fibrate an toàn hơn khi phối hợp Statin">Fenofibrate (Fibrate)</button>
+                    <button type="button" class="drug-select-btn" data-drug="cyp3a4_inhibitor" title="Chất ức chế enzyme gan CYP3A4 mạnh">Chất ức chế CYP3A4 mạnh</button>
+                  </div>
+                </div>
+
+                <div class="drug-category-group">
+                  <h4>🩸 Kháng đông &amp; Kháng tiểu cầu</h4>
+                  <div class="drug-buttons-grid">
+                    <button type="button" class="drug-select-btn" data-drug="aspirin" title="Thuốc kháng kết tập tiểu cầu ức chế COX-1">Aspirin (Kháng tiểu cầu)</button>
+                    <button type="button" class="drug-select-btn" data-drug="p2y12_inhibitor" title="Thuốc chẹn thụ thể ADP P2Y12">Chẹn P2Y12 (Clopidogrel, Ticagrelor)</button>
+                    <button type="button" class="drug-select-btn" data-drug="doac" title="Thuốc kháng đông đường uống thế hệ mới">DOACs (Rivaroxaban, Apixaban...)</button>
+                    <button type="button" class="drug-select-btn" data-drug="vka" title="Thuốc kháng Vitamin K chống đông truyền thống">Kháng Vitamin K (Warfarin, Sintrom)</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- TAB 2: MULTI-MORBIDITY / NON-CARDIOVASCULAR DRUGS -->
+            <div id="tab-multimorbid" class="tab-content-panel">
+              <div class="form-section-card">
+                <div class="section-card-header">
+                  <span class="step-badge">B</span>
+                  <h3>Thuốc điều trị Bệnh đồng mắc ngoài Tim mạch</h3>
+                </div>
+                <p class="section-instruction">Bệnh nhân tim mạch lớn tuổi thường sử dụng nhiều nhóm thuốc giảm đau, tiêu hóa, kháng sinh. Hãy chọn tại đây.</p>
+
+                <div class="drug-category-group">
+                  <h4>🦴 Cơ xương khớp &amp; Gút</h4>
+                  <div class="drug-buttons-grid">
+                    <button type="button" class="drug-select-btn" data-drug="nsaid" title="Kháng viêm không steroid truyền thống">NSAIDs (Ibuprofen, Naproxen...)</button>
+                    <button type="button" class="drug-select-btn" data-drug="cox2_inhibitor" title="Kháng viêm không steroid chọn lọc COX-2">Ức chế chọn lọc COX-2 (Celecoxib...)</button>
+                    <button type="button" class="drug-select-btn" data-drug="colchicine" title="Thuốc giảm đau chống viêm đặc hiệu cho bệnh gút">Colchicine (Gút cấp)</button>
+                  </div>
+                </div>
+
+                <div class="drug-category-group">
+                  <h4>🫁 Kháng viêm toàn thân</h4>
+                  <div class="drug-buttons-grid">
+                    <button type="button" class="drug-select-btn" data-drug="systemic_corticoid" title="Corticoid kháng viêm mạnh toàn thân">Corticosteroids đường uống/tiêm</button>
+                  </div>
+                </div>
+
+                <div class="drug-category-group">
+                  <h4>胃 Thuốc dạ dày (Ức chế bơm Proton PPI)</h4>
+                  <div class="drug-buttons-grid">
+                    <button type="button" class="drug-select-btn" data-drug="omeprazole" title="PPI thế hệ cũ gây ức chế mạnh CYP2C19">Omeprazole (PPI thế hệ cũ)</button>
+                    <button type="button" class="drug-select-btn" data-drug="safe_ppi" title="PPI ít tương tác, không ức chế CYP2C19">PPI ít tương tác (Pantoprazole, Rabeprazole)</button>
+                  </div>
+                </div>
+
+                <div class="drug-category-group">
+                  <h4>🦠 Kháng sinh &amp; Kháng nấm cấp tính</h4>
+                  <div class="drug-buttons-grid">
+                    <button type="button" class="drug-select-btn" data-drug="macrolide" title="Kháng sinh nhóm Macrolide gây kéo dài khoảng QT và chẹn CYP3A4">Kháng sinh Macrolide (Clarithromycin...)</button>
+                    <button type="button" class="drug-select-btn" data-drug="azole_antifungal" title="Kháng nấm nhóm Azole gây kéo dài QT và chẹn CYP3A4 cực mạnh">Thuốc kháng nấm nhóm Azole (Fluconazole...)</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 3: ACADEMIC RICH INFO -->
+            <div id="tab-ebm-knowledge" class="tab-content-panel">
+              <div class="form-section-card">
+                <h3>🧬 Cơ sở sinh học &amp; Bản đồ tương tác tim mạch chuyên sâu</h3>
+                <p class="section-instruction">Tài liệu học thuật tổng hợp từ các khuyến cáo lâm sàng chính thống của AHA, ESC và Hội Tim mạch Việt Nam.</p>
+                
+                <div class="knowledge-rich-content">
+                  <h4>1. Ba "Cửa ngõ" Chuyển hóa &amp; Vận chuyển chính</h4>
+                  <ul>
+                    <li><strong>Hệ men gan Cytochrome P450 (CYP3A4, CYP2C19, CYP2C9):</strong> Là trung tâm chuyển hóa các thuốc chẹn kênh canxi, kháng kết tập tiểu cầu Clopidogrel, các Statin. Việc sử dụng kèm các chất ức chế mạnh (Macrolides, Azole Antifungals) hoặc chất cảm ứng men sẽ làm biến đổi nồng độ thuốc một cách nguy hiểm.</li>
+                    <li><strong>Bơm vận chuyển chủ động P-glycoprotein (P-gp):</strong> Màng lọc đào thải thuốc tại ruột và thận. Các thuốc chống loạn nhịp như Amiodarone, Verapamil khi chẹn P-gp sẽ đẩy nồng độ Digoxin và các thuốc kháng đông đường uống mới (DOACs) tăng vọt, gây rủi ro ngộ độc hoặc chảy máu nghiêm trọng.</li>
+                    <li><strong>Protein vận chuyển anion hữu cơ (OATP1B1):</strong> Cánh cổng đưa các Statin vào gan để phát huy tác dụng. Nếu chẹn cổng này (như khi dùng chung Gemfibrozil), Statin sẽ bị ứ đọng lại trong máu, tích lũy độc tính cơ vân gây tiêu cơ và suy thận cấp.</li>
+                  </ul>
+
+                  <h4 style="margin-top: 1.5rem;">2. Cẩm nang Đa bệnh lý &amp; Lão khoa (Geriatrics)</h4>
+                  <ul>
+                    <li><strong>Thác kê đơn (Prescribing Cascade):</strong> Tránh điều trị biến chứng bằng cách thêm thuốc mới. Ví dụ: Phù chân do Amlodipine thường bị chẩn đoán nhầm thành suy tim hoặc bệnh thận, dẫn đến chỉ định lợi tiểu Furosemide không đáng có, gây sụt giảm thể tích và suy thận cấp ở người già.</li>
+                    <li><strong>Suy thận cơ năng do NSAIDs:</strong> Ở bệnh nhân suy tim đang dùng ức chế men chuyển và lợi tiểu, việc dùng thêm NSAIDs để giảm đau xương khớp sẽ làm mất bù trừ co thắt động mạch nhập cầu thận, dẫn tới suy thận cấp (AKI) trong vòng 24-48 giờ.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
           </div>
 
-          <div id="panel-warning" class="ddi-status-panel panel-amber" style="display: none;">
-            <div class="panel-alert-header">⚠️ THẬN TRỌNG LÂM SÀNG / CẦN THEO DÕI LIỀU</div>
-            <div class="panel-alert-content" id="container-warning"></div>
+          <!-- RIGHT: OUTPUT COLUMN -->
+          <div class="pillbox-output-column">
+            <!-- Selected Pills Box -->
+            <div class="form-section-card" style="border-top-color: var(--color-primary);">
+              <div class="section-card-header">
+                <span class="step-badge" style="background-color: var(--color-primary); color: #ffffff;"><i class="fa-solid fa-prescription-bottle-medical"></i></span>
+                <h3>Hộp thuốc ảo đang rà soát (<span id="selected-count">0</span>)</h3>
+              </div>
+              <div id="virtual-pillbox-basket" class="pillbox-basket-wrapper">
+                <p class="empty-basket-text">Chưa có thuốc nào được chọn. Hãy nhấp chọn thuốc ở các phân hệ bên trái.</p>
+              </div>
+              <button type="button" id="clear-all-basket-btn" class="btn-flow btn-reset" style="margin-top: 1rem; width: 100%; display: none; justify-content: center;"><i class="fa-solid fa-trash-can"></i> Xóa toàn bộ hộp thuốc</button>
+            </div>
+
+            <!-- Dynamic Alerts Dashboard -->
+            <div id="ddi-alert-dashboard" style="display: none;">
+              
+              <!-- Red Alert: Absolute Contraindications -->
+              <div id="panel-danger" class="ddi-status-panel panel-red" style="display: none;">
+                <div class="panel-alert-header">🚨 CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI / NGUY HIỂM TÍNH MẠNG</div>
+                <div class="panel-alert-content" id="container-danger"></div>
+              </div>
+
+              <!-- Purple Alert: Comorbidities / Target Organ Issues -->
+              <div id="panel-comorbidity" class="ddi-status-panel panel-purple" style="display: none;">
+                <div class="panel-alert-header">💜 CẢNH BÁO BỆNH ĐỒNG MẮC &amp; CHỨC NĂNG CƠ QUAN</div>
+                <div class="panel-alert-content" id="container-comorbidity"></div>
+              </div>
+
+              <!-- Amber Alert: Warm warnings & Dose adjustments -->
+              <div id="panel-warning" class="ddi-status-panel panel-amber" style="display: none;">
+                <div class="panel-alert-header">⚠️ THẬN TRỌNG LÂM SÀNG / HIỆU CHỈNH LIỀU</div>
+                <div class="panel-alert-content" id="container-warning"></div>
+              </div>
+
+              <!-- Green Alert: Synergy / Preferred combination -->
+              <div id="panel-synergy" class="ddi-status-panel panel-green" style="display: none;">
+                <div class="panel-alert-header">✅ PHỐI HỢP HIỆP ĐỒNG ĐẠT ĐÍCH PHÁC ĐỒ</div>
+                <div class="panel-alert-content" id="container-synergy"></div>
+              </div>
+
+            </div>
           </div>
 
-          <div id="panel-synergy" class="ddi-status-panel panel-green" style="display: none;">
-            <div class="panel-alert-header">✅ PHỐI HỢP HIỆP ĐỒNG ĐẠT ĐÍCH PHÁC ĐỒ</div>
-            <div class="panel-alert-content" id="container-synergy"></div>
-          </div>
+        </div><!-- end pillbox-workspace-layout -->
+      </div><!-- end main-content-grid -->
 
-        </div>
-
-      </div>
-
+    </main>
   </div>
-</div>
-</div>
 
-<!--SCRIPT-->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  // --- DATABASE TOÀN BỘ KHO THUỐC TÍCH HỢP (TIM MẠCH + ĐA BỆNH LÝ) ---
-  const DRUG_DATABASE = {
-    // Thuốc Tim mạch (Tab 1)
-    "acei": { name: "ACEi (Thuốc ức chế men chuyển)", category: "Tim mạch" },
-    "arb": { name: "ARB (Thuốc chẹn thụ thể Angiotensin)", category: "Tim mạch" },
-    "arni": { name: "ARNI (Sacubitril/Valsartan)", category: "Tim mạch" },
-    "beta_blocker": { name: "Beta-Blocker (Chẹn beta)", category: "Tim mạch" },
-    "dhp_ccb": { name: "DHP-CCB (Amlodipine...)", category: "Tim mạch" },
-    "non_dhp_ccb": { name: "Non-DHP CCB (Verapamil, Diltiazem)", category: "Tim mạch" },
-    "mra": { name: "MRA (Spironolactone/Kháng Aldosterone)", category: "Tim mạch" },
-    "sglt2i": { name: "SGLT2i (Dapagliflozin, Empagliflozin)", category: "Tim mạch" },
-    "loop_diuretic": { name: "Lợi tiểu quai (Furosemide)", category: "Tim mạch" },
-    "amiodarone": { name: "Amiodarone", category: "Tim mạch" },
-    "digoxin": { name: "Digoxin", category: "Tim mạch" },
-    "sotalol": { name: "Sotalol", category: "Tim mạch" },
-    "statin_cyp3a4": { name: "Statin chuyển hóa qua CYP3A4 (Ator, Simva)", category: "Tim mạch" },
-    "statin_pure": { name: "Statin ít tương tác (Rosuva, Pravastatin)", category: "Tim mạch" },
-    "aspirin": { name: "Aspirin", category: "Tim mạch" },
-    "p2y12_inhibitor": { name: "Thuốc chẹn P2Y12 (Clopidogrel, Ticagrelor)", category: "Tim mạch" },
-    "doac": { name: "DOACs (Kháng đông đường uống trực tiếp)", category: "Tim mạch" },
-    "vka": { name: "VKA (Thuốc kháng Vitamin K)", category: "Tim mạch" },
-    
-    // Thuốc Đa bệnh lý / Ngoài Tim mạch (Tab 2)
-    "nsaid": { name: "NSAIDs truyền thống (Ibuprofen, Naproxen...)", category: "Đa bệnh lý" },
-    "cox2_inhibitor": { name: "Ức chế chọn lọc COX-2 (Celecoxib...)", category: "Đa bệnh lý" },
-    "colchicine": { name: "Colchicine (Thuốc trị gút cấp)", category: "Đa bệnh lý" },
-    "systemic_corticoid": { name: "Corticosteroids toàn thân (Prednisolone...)", category: "Đa bệnh lý" },
-    "omeprazole": { name: "Omeprazole (PPI thế hệ cũ)", category: "Đa bệnh lý" },
-    "safe_ppi": { name: "PPI ít tương tác (Pantoprazole, Rabeprazole)", category: "Đa bệnh lý" },
-    "macrolide": { name: "Kháng sinh Macrolide (Clarithromycin, Erythro)", category: "Đa bệnh lý" },
-    "azole_antifungal": { name: "Thuốc kháng nấm nhóm Azole (Fluconazole...)", category: "Đa bệnh lý" },
-    "qt_prolong_drug": { name: "Thuốc kéo dài QT phi tim mạch khác", category: "Đa bệnh lý" }
-  };
+  <!-- FOOTER -->
+  <footer class="global-footer">
+    <div class="footer-copyright">
+      <p>CliniPortal © 2026. Giao diện tối ưu hóa hiển thị linh hoạt trên Mobile và Desktop.</p>
+    </div>
+  </footer>
 
-  // --- TẬP QUY TẮC TRA CỨU TƯƠNG TÁC ĐA BỆNH LÝ (EBM-BACKED RULES) ---
-  const INTERACTION_RULES = [
-    // --- TƯƠNG TÁC TIM MẠCH NỘI VIỆN KHUYẾN CÁO (ĐÃ CÓ) ---
-    { drugs: ["arni", "acei"], level: "danger", mechanism: "Tích tụ Bradykinin hiệp đồng gây bùng phát biến chứng phù mạch (Angioedema) nguy hiểm tính mạng.", action: "Chống chỉ định phối hợp tuyệt đối. Yêu cầu khoảng trống trống thuốc (Washout period) tối thiểu 36 giờ khi chuyển đổi qua lại giữa hai nhóm này." },
-    { drugs: ["acei", "arb"], level: "danger", mechanism: "Chẹn kép hệ RAAS không tăng lợi ích lâm sàng nhưng làm tăng vọt rủi ro suy thận cấp và tăng kali máu nặng.", action: "Chống chỉ định phối hợp." },
-    { drugs: ["beta_blocker", "non_dhp_ccb"], level: "danger", mechanism: "Hiệp đồng ức chế mạnh điện thế nút xoang và làm chậm dẫn truyền nhĩ thất cấp độ cao.", action: "Chống chỉ định phối hợp. Nguy cơ block AV độ nặng, nhịp chậm nghiêm trọng hoặc vô tâm thu." },
-    { drugs: ["amiodarone", "digoxin"], level: "warning", mechanism: "Amiodarone ức chế mạnh bơm P-glycoprotein (P-gp), làm tắc nghẽn con đường thải trừ chính của Digoxin tại thận.", action: "Chủ động giảm từ 30% đến 50% liều Digoxin hiện tại ngay khi khởi trị Amiodarone và xét nghiệm lại nồng độ Digoxin huyết thanh sau 7 ngày." },
-    { drugs: ["statin_cyp3a4", "non_dhp_ccb"], level: "warning", mechanism: "Verapamil/Diltiazem là chất ức chế CYP3A4 mức độ vừa, làm tăng sinh khả dụng của Statin.", action: "Khống chế trần liều Simvastatin tối đa 10 mg/ngày hoặc Atorvastatin tối đa 20 mg/ngày để bảo vệ tế bào cơ." },
-    { drugs: ["arni", "beta_blocker"], level: "synergy", mechanism: "Hai trụ cột cốt lõi trong phác đồ suy tim HFrEF giúp hiệp đồng giảm tỷ lệ tử vong và tái nhập viện.", action: "Khuyến cáo phối hợp sớm, dò liều tích cực dựa trên khả năng dung nạp lâm sàng." },
-    { drugs: ["arni", "sglt2i"], level: "synergy", mechanism: "Sự kết hợp hoàn hảo giữa cơ chế thần kinh thể dịch (ARNI) và chuyển hóa muối nước tại ống thận (SGLT2i).", action: "Phối hợp ưu tiên hàng đầu giúp bảo vệ sớm cấu trúc tim và chức năng thận." },
+  <!-- SCRIPT CONTROLLER -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // --- DATABASE TOÀN BỘ KHO THUỐC TÍCH HỢP ---
+      const DRUG_DATABASE = {
+        "acei": { name: "ACEi (Thuốc ức chế men chuyển)", category: "Tim mạch" },
+        "arb": { name: "ARB (Thuốc chẹn thụ thể Angiotensin)", category: "Tim mạch" },
+        "arni": { name: "ARNI (Sacubitril/Valsartan)", category: "Tim mạch" },
+        "beta_blocker": { name: "Beta-Blocker (Chẹn beta)", category: "Tim mạch" },
+        "dhp_ccb": { name: "DHP-CCB (Amlodipine...)", category: "Tim mạch" },
+        "non_dhp_ccb": { name: "Non-DHP CCB (Verapamil, Diltiazem)", category: "Tim mạch" },
+        "mra": { name: "MRA (Spironolactone/Kháng Aldosterone)", category: "Tim mạch" },
+        "sglt2i": { name: "SGLT2i (Dapagliflozin, Empagliflozin)", category: "Tim mạch" },
+        "loop_diuretic": { name: "Lợi tiểu quai (Furosemide)", category: "Tim mạch" },
+        "amiodarone": { name: "Amiodarone", category: "Tim mạch" },
+        "digoxin": { name: "Digoxin", category: "Tim mạch" },
+        "sotalol": { name: "Sotalol", category: "Tim mạch" },
+        "statin_cyp3a4": { name: "Statin qua CYP3A4 (Ator, Simva)", category: "Tim mạch" },
+        "statin_pure": { name: "Statin ít tương tác (Rosuva, Pravastatin)", category: "Tim mạch" },
+        "gemfibrozil": { name: "Gemfibrozil (Fibrate)", category: "Tim mạch" },
+        "fenofibrate": { name: "Fenofibrate (Fibrate)", category: "Tim mạch" },
+        "cyp3a4_inhibitor": { name: "Chất ức chế CYP3A4 mạnh", category: "Tim mạch" },
+        "aspirin": { name: "Aspirin", category: "Tim mạch" },
+        "p2y12_inhibitor": { name: "Chẹn P2Y12 (Clopidogrel, Ticagrelor)", category: "Tim mạch" },
+        "doac": { name: "DOACs (Kháng đông đường uống trực tiếp)", category: "Tim mạch" },
+        "vka": { name: "VKA (Thuốc kháng Vitamin K)", category: "Tim mạch" },
 
-    // --- TƯƠNG TÁC MỞ RỘNG GIỮA THUỐC TIM MẠCH VÀ THUỐC ĐA BỆNH LÝ (MỚI BỔ SUNG) ---
-    {
-      drugs: ["statin_cyp3a4", "macrolide"],
-      level: "danger",
-      mechanism: "Kháng sinh Macrolide (đặc biệt Clarithromycin) ức chế cực mạnh enzyme CYP3A4 tại gan, chặn đứng chuyển hóa của Statin.",
-      action: "Nguy cơ cao gây tiêu cơ vân cấp (Rhabdomyolysis) và suy thận. Bắt buộc tạm ngưng Atorvastatin/Simvastatin trong thời gian chạy kháng sinh, hoặc chuyển sang dùng Statin không phụ thuộc CYP3A4 như Rosuvastatin."
-    },
-    {
-      drugs: ["statin_cyp3a4", "azole_antifungal"],
-      level: "danger",
-      mechanism: "Thuốc kháng nấm nhóm Azole bất hoạt hoàn toàn CYP3A4, làm nồng độ Statin trong máu tích tụ lên gấp nhiều lần.",
-      action: "Chống chỉ định phối hợp hoặc tạm ngưng Statin để tránh độc tính hủy cơ hoại tử ống thận."
-    },
-    {
-      drugs: ["amiodarone", "macrolide"],
-      level: "danger",
-      mechanism: "Hiệp đồng dược động học kéo dài khoảng QT trên điện tâm đồ một cách nghiêm trọng.",
-      action: "Chống chỉ định phối hợp tuyệt đối do rủi ro bùng phát cơn xoắn đỉnh (Torsades de Pointes) gây ngừng tuần hoàn."
-    },
-    {
-      drugs: ["amiodarone", "azole_antifungal"],
-      level: "danger",
-      mechanism: "Hiệp đồng kéo dài khoảng QT và nguy cơ xoắn đỉnh loạn nhịp thất.",
-      action: "Chống chỉ định dùng chung."
-    },
-    {
-      drugs: ["sotalol", "macrolide"],
-      level: "danger",
-      mechanism: "Gia tăng khoảng cách QT hiệp đồng đe dọa tính mạng.",
-      action: "Chống chỉ định phối hợp."
-    },
-    {
-      drugs: ["omeprazole", "p2y12_inhibitor"],
-      level: "warning",
-      mechanism: "Omeprazole ức chế mạnh isoenzyme CYP2C19, làm suy giảm nghiêm trọng quá trình hoạt hóa của Clopidogrel (vốn là một tiền chất - prodrug).",
-      action: "Làm giảm hiệu quả kháng tiểu cầu, tăng nguy cơ tắc Stent mạch vành. Khuyến cáo thay thế Omeprazole bằng Pantoprazole hoặc Rabeprazole để bảo vệ dạ dày an toàn."
-    },
-    {
-      drugs: ["nsaid", "aspirin"],
-      level: "warning",
-      mechanism: "Hiệp đồng gây tổn thương sâu niêm mạc đường tiêu hóa và ức chế kết tập tiểu cầu cơ học.",
-      action: "Tăng vọt rủi ro xuất huyết tiêu hóa. Hạn chế tối đa dùng NSAID ở bệnh nhân mạch vành đang dùng kháng tiểu cầu, cân nhắc chuyển sang giảm đau bằng Paracetamol."
-    },
-    {
-      drugs: ["nsaid", "doac"],
-      level: "warning",
-      mechanism: "Tăng nguy cơ xuất huyết tiêu hóa nghiêm trọng do hiệp đồng dược lý.",
-      action: "Cần giám sát chặt chẽ, bắt buộc phối hợp thuốc PPI để che chở màng niêm mạc dạ dày nếu không thể thay thế NSAID."
-    },
-    {
-      drugs: ["nsaid", "vka"],
-      level: "warning",
-      mechanism: "Hiệp đồng tăng nguy cơ chảy máu nặng.",
-      action: "Hết sức thận trọng, theo dõi chỉ số INR chặt chẽ."
-    },
-    {
-      drugs: ["colchicine", "non_dhp_ccb"],
-      level: "warning",
-      mechanism: "Verapamil/Diltiazem chẹn kênh P-gp và CYP3A4, làm giảm nghiêm trọng tốc độ thanh thải và đào thải của Colchicine.",
-      action: "Tăng rủi ro ngộ độc Colchicine (hủy tủy, yếu cơ cấp). Khuyến cáo chủ động giảm liều Colchicine trị gút xuống tối đa không quá 0.5 - 1 mg/ngày."
-    },
-    {
-      drugs: ["systemic_corticoid", "loop_diuretic"],
-      level: "warning",
-      mechanism: "Cả hai nhóm đều thúc đẩy quá trình bài tiết ion Kali qua nước tiểu tại ống thận.",
-      action: "Nguy cơ hiệp đồng gây hạ Kali máu nặng (Hypokalemia), khởi phát loạn nhịp. Bác sĩ cần theo dõi sát điện giải đồ và bổ sung Kali đường uống chủ động."
-    }
-  ];
+        "nsaid": { name: "NSAIDs truyền thống (Ibuprofen, Naproxen...)", category: "Đa bệnh lý" },
+        "cox2_inhibitor": { name: "Ức chế chọn lọc COX-2 (Celecoxib...)", category: "Đa bệnh lý" },
+        "colchicine": { name: "Colchicine (Thuốc trị gút cấp)", category: "Đa bệnh lý" },
+        "systemic_corticoid": { name: "Corticosteroids toàn thân (Prednisolone...)", category: "Đa bệnh lý" },
+        "omeprazole": { name: "Omeprazole (PPI thế hệ cũ)", category: "Đa bệnh lý" },
+        "safe_ppi": { name: "PPI ít tương tác (Pantoprazole, Rabeprazole)", category: "Đa bệnh lý" },
+        "macrolide": { name: "Kháng sinh Macrolide (Clarithromycin...)", category: "Đa bệnh lý" },
+        "azole_antifungal": { name: "Thuốc kháng nấm nhóm Azole (Fluconazole...)", category: "Đa bệnh lý" }
+      };
 
-  // --- TRẠNG THÁI HỘP THUỐC ẢO TOÀN TRANG (GLOBAL STATE) ---
-  let selectedDrugs = [];
+      // --- TẬP QUY TẮC TRA CỨU TƯƠNG TÁC ĐA CHIỀU (EBM RULES) ---
+      const INTERACTION_RULES = [
+        { drugs: ["arni", "acei"], level: "danger", mechanism: "Tích tụ Bradykinin hiệp đồng gây bùng phát biến chứng phù mạch (Angioedema) nguy hiểm tính mạng.", action: "Chống chỉ định phối hợp tuyệt đối. Yêu cầu khoảng nghỉ dừng thuốc (Washout period) tối thiểu 36 giờ khi chuyển đổi qua lại giữa hai nhóm này." },
+        { drugs: ["acei", "arb"], level: "danger", mechanism: "Chẹn kép hệ RAAS không tăng lợi ích lâm sàng nhưng làm tăng vọt rủi ro suy thận cấp và tăng kali máu nặng.", action: "Chống chỉ định phối hợp." },
+        { drugs: ["acei", "arni"], level: "danger", mechanism: "Trùng lặp cơ chế chẹn men chuyển và neprilysin làm tăng cực mạnh nguy cơ phù mạch dị ứng.", action: "Chống chỉ định phối hợp tuyệt đối." },
+        { drugs: ["arb", "arni"], level: "danger", mechanism: "Phối hợp chẹn kép thụ thể Angiotensin II không cần thiết lâm sàng và làm tăng độc tính thận.", action: "Chống chỉ định phối hợp." },
+        { drugs: ["beta_blocker", "non_dhp_ccb"], level: "danger", mechanism: "Hiệp đồng ức chế mạnh điện thế nút xoang và làm chậm dẫn truyền nhĩ thất cấp độ cao.", action: "Chống chỉ định phối hợp. Nguy cơ block AV độ nặng, nhịp chậm nghiêm trọng hoặc vô tâm thu." },
+        { drugs: ["amiodarone", "digoxin"], level: "warning", mechanism: "Amiodarone ức chế mạnh bơm P-glycoprotein (P-gp), làm tắc nghẽn con đường thải trừ chính của Digoxin tại thận.", action: "Chủ động giảm từ 30% đến 50% liều Digoxin hiện tại ngay khi khởi trị Amiodarone và xét nghiệm lại nồng độ Digoxin huyết thanh sau 7 ngày." },
+        { drugs: ["statin_cyp3a4", "non_dhp_ccb"], level: "warning", mechanism: "Verapamil/Diltiazem là chất ức chế CYP3A4 mức độ vừa, làm tăng sinh khả dụng của Statin lên gấp 2-3 lần.", action: "Khống chế trần liều Simvastatin tối đa 10 mg/ngày hoặc Atorvastatin tối đa 20 mg/ngày để bảo vệ tế bào cơ khỏi nguy cơ hủy hoại cơ vân." },
+        { drugs: ["arni", "beta_blocker"], level: "synergy", mechanism: "Hai trụ cột cốt lõi trong phác đồ suy tim HFrEF giúp hiệp đồng giảm tỷ lệ tử vong và tái nhập viện.", action: "Khuyến cáo phối hợp sớm, dò liều tích cực dựa trên khả năng dung nạp lâm sàng." },
+        { drugs: ["arni", "sglt2i"], level: "synergy", mechanism: "Sự kết hợp hoàn hảo giữa cơ chế thần kinh thể dịch (ARNI) và chuyển hóa muối nước tại ống thận (SGLT2i).", action: "Phối hợp ưu tiên hàng đầu giúp bảo vệ sớm cấu trúc tim và bảo tồn chức năng thận." },
+        { drugs: ["statin_cyp3a4", "macrolide"], level: "danger", mechanism: "Kháng sinh Macrolide (đặc biệt Clarithromycin) ức chế cực mạnh enzyme CYP3A4 tại gan, chặn đứng chuyển hóa của Statin.", action: "Nguy cơ cao gây tiêu cơ vân cấp (Rhabdomyolysis) và suy thận. Bắt buộc tạm ngưng Atorvastatin/Simvastatin trong thời gian chạy kháng sinh, hoặc chuyển sang dùng Statin không phụ thuộc CYP3A4 như Rosuvastatin." },
+        { drugs: ["statin_cyp3a4", "azole_antifungal"], level: "danger", mechanism: "Thuốc kháng nấm nhóm Azole bất hoạt hoàn toàn CYP3A4, làm nồng độ Statin trong máu tích tụ lên gấp nhiều lần.", action: "Chống chỉ định phối hợp hoặc tạm ngưng Statin để tránh độc tính hủy cơ hoại tử ống thận." },
+        { drugs: ["amiodarone", "macrolide"], level: "danger", mechanism: "Hiệp đồng dược động học kéo dài khoảng QT trên điện tâm đồ một cách nghiêm trọng.", action: "Chống chỉ định phối hợp tuyệt đối do rủi ro bùng phát cơn xoắn đỉnh (Torsades de Pointes) gây ngừng tuần hoàn." },
+        { drugs: ["amiodarone", "azole_antifungal"], level: "danger", mechanism: "Hiệp đồng kéo dài khoảng QT và nguy cơ xoắn đỉnh loạn nhịp thất.", action: "Chống chỉ định dùng chung." },
+        { drugs: ["sotalol", "macrolide"], level: "danger", mechanism: "Gia tăng khoảng cách QT hiệp đồng đe dọa tính mạng.", action: "Chống chỉ định phối hợp." },
+        { drugs: ["omeprazole", "p2y12_inhibitor"], level: "warning", mechanism: "Omeprazole ức chế mạnh isoenzyme CYP2C19, làm suy giảm nghiêm trọng quá trình hoạt hóa của Clopidogrel (vốn là một tiền chất - prodrug).", action: "Làm giảm hiệu quả kháng tiểu cầu, tăng nguy cơ tắc Stent mạch vành. Khuyến cáo thay thế Omeprazole bằng Pantoprazole hoặc Rabeprazole để bảo vệ dạ dày an toàn." },
+        { drugs: ["nsaid", "aspirin"], level: "warning", mechanism: "Hiệp đồng gây tổn thương sâu niêm mạc đường tiêu hóa và ức chế kết tập tiểu cầu cơ học.", action: "Tăng vọt rủi ro xuất huyết tiêu hóa. Hạn chế tối đa dùng NSAID ở bệnh nhân mạch vành đang dùng kháng tiểu cầu, cân nhắc chuyển sang giảm đau bằng Paracetamol." },
+        { drugs: ["nsaid", "doac"], level: "warning", mechanism: "Tăng nguy cơ xuất huyết tiêu hóa nghiêm trọng do hiệp đồng dược lý.", action: "Cần giám sát chặt chẽ, bắt buộc phối hợp thuốc PPI để che chở màng niêm mạc dạ dày nếu không thể thay thế NSAID." },
+        { drugs: ["nsaid", "vka"], level: "warning", mechanism: "Hiệp đồng tăng nguy cơ chảy máu nặng.", action: "Hết sức thận trọng, theo dõi chỉ số INR chặt chẽ." },
+        { drugs: ["colchicine", "non_dhp_ccb"], level: "warning", mechanism: "Verapamil/Diltiazem chẹn kênh P-gp và CYP3A4, làm giảm nghiêm trọng tốc độ thanh thải và đào thải của Colchicine.", action: "Tăng rủi ro ngộ độc Colchicine (hủy tủy, yếu cơ cấp). Khuyến cáo chủ động giảm liều Colchicine trị gút xuống tối đa không quá 0.5 - 1 mg/ngày." },
+        { drugs: ["systemic_corticoid", "loop_diuretic"], level: "warning", mechanism: "Cả hai nhóm đều thúc đẩy quá trình bài tiết ion Kali qua nước tiểu tại ống thận.", action: "Nguy cơ hiệp đồng gây hạ Kali máu nặng (Hypokalemia), dễ khởi phát loạn nhịp. Bác sĩ cần theo dõi sát điện giải đồ và bổ sung Kali đường uống chủ động." },
+        { drugs: ["statin_cyp3a4", "gemfibrozil"], level: "danger", mechanism: "Gemfibrozil ức chế mạnh protein vận chuyển OATP1B1 và men CYP2C8, làm giảm bài tiết statin qua gan đột ngột.", action: "Tăng nguy cơ tiêu cơ vân hủy hoại thận gấp 5 lần. Chống chỉ định phối hợp tuyệt đối. Thay thế bằng Fenofibrate hoặc Statin khác." },
+        { drugs: ["nsaid", "systemic_corticoid"], level: "danger", mechanism: "Phối hợp gây tăng rủi ro loét dạ dày và xuất huyết tiêu hóa ồ ạt do hiệp đồng phá hủy hàng rào bảo vệ niêm mạc.", action: "Tránh phối hợp. Nếu bắt buộc sử dụng, cần kê kèm thuốc PPI bảo vệ dạ dày." },
+        { drugs: ["amiodarone", "statin_cyp3a4"], level: "warning", mechanism: "Amiodarone ức chế CYP3A4 nhẹ, làm tích lũy nồng độ Statin chuyển hóa qua men này.", action: "Giới hạn liều Simvastatin tối đa 20mg/ngày, Atorvastatin tối đa 40mg/ngày để phòng ngừa viêm cơ." },
+        { drugs: ["amiodarone", "vka"], level: "warning", mechanism: "Amiodarone ức chế mạnh CYP2C9 (men chuyển hóa chính của Warfarin), làm kéo dài thời gian đông máu bất thường.", action: "Làm tăng đột ngột chỉ số INR trong vòng 1-2 tuần đầu dùng chung. Bắt buộc chủ động giảm 30-50% liều Warfarin và kiểm tra INR mỗi 2-3 ngày." },
+        { drugs: ["loop_diuretic", "digoxin"], level: "warning", mechanism: "Lợi tiểu quai gây hạ Kali máu, gián tiếp làm tăng tính nhạy cảm của thụ thể cơ tim với Digoxin.", action: "Tăng nguy cơ ngộ độc Digoxin gây loạn nhịp thất nguy hiểm. Cần duy trì nồng độ Kali máu ở mức an toàn (> 4.0 mEq/L)." }
+      ];
 
-  const basketContainer = document.getElementById('virtual-pillbox-basket');
-  const ddiDashboard = document.getElementById('ddi-alert-dashboard');
-  const selectedCountSpan = document.getElementById('selected-count');
-  const clearAllBtn = document.getElementById('clear-all-basket-btn');
+      // --- TRẠNG THÁI HỘP THUỐC ẢO (GLOBAL STATE) ---
+      let selectedDrugs = [];
 
-  // --- HÀM XỬ LÝ CLICK CHỌN THUỐC TRÊN LƯỚI ---
-  document.querySelectorAll('.drug-select-btn').forEach(button => {
-    button.addEventListener('click', () => {
-      const drugKey = button.getAttribute('data-drug');
-      
-      if (selectedDrugs.includes(drugKey)) {
-        selectedDrugs = selectedDrugs.filter(k => k !== drugKey);
-        button.classList.remove('selected');
-      } else {
-        selectedDrugs.push(drugKey);
-        button.classList.add('selected');
-      }
-      
-      updatePillboxWorkspace();
-    });
-  });
+      const basketContainer = document.getElementById('virtual-pillbox-basket');
+      const ddiDashboard = document.getElementById('ddi-alert-dashboard');
+      const selectedCountSpan = document.getElementById('selected-count');
+      const clearAllBtn = document.getElementById('clear-all-basket-btn');
 
-  // Xóa toàn bộ hộp thuốc
-  clearAllBtn.addEventListener('click', () => {
-    selectedDrugs = [];
-    document.querySelectorAll('.drug-select-btn').forEach(b => b.classList.remove('selected'));
-    updatePillboxWorkspace();
-  });
+      // --- XỬ LÝ CLICK CHỌN THUỐC ---
+      document.querySelectorAll('.drug-select-btn').forEach(button => {
+        button.addEventListener('click', () => {
+          const drugKey = button.getAttribute('data-drug');
 
-  // --- CẬP NHẬT GIAO DIỆN HỘP THUỐC VÀ KÍCH HOẠT QUÉT TƯƠNG TÁC ---
-  function updatePillboxWorkspace() {
-    selectedCountSpan.textContent = selectedDrugs.length;
-    basketContainer.innerHTML = '';
+          if (selectedDrugs.includes(drugKey)) {
+            selectedDrugs = selectedDrugs.filter(k => k !== drugKey);
+            button.classList.remove('selected');
+          } else {
+            selectedDrugs.push(drugKey);
+            button.classList.add('selected');
+          }
 
-    if (selectedDrugs.length === 0) {
-      basketContainer.innerHTML = '<p class="empty-basket-text">Chưa có thuốc nào được chọn. Hãy nhấp chọn thuốc ở các phân hệ bên trái.</p>';
-      ddiDashboard.style.display = 'none';
-      clearAllBtn.style.display = 'none';
-      return;
-    }
+          updatePillboxWorkspace();
+        });
+      });
 
-    clearAllBtn.style.display = 'block';
-
-    // Tạo các chip thuốc hiển thị trong giỏ
-    selectedDrugs.forEach(drugKey => {
-      const drugInfo = DRUG_DATABASE[drugKey];
-      const chip = document.createElement('div');
-      chip.className = 'selected-drug-chip';
-      chip.innerHTML = `
-        <span class="chip-name">💊 ${drugInfo.name}</span>
-        <button type="button" class="chip-remove-btn" data-key="${drugKey}">&times;</button>
-      `;
-      basketContainer.appendChild(chip);
-
-      // Xử lý nút xóa nhanh trực tiếp trên chip
-      chip.querySelector('.chip-remove-btn').addEventListener('click', () => {
-        selectedDrugs = selectedDrugs.filter(k => k !== drugKey);
-        const gridBtn = document.querySelector(`.drug-select-btn[data-drug="${drugKey}"]`);
-        if (gridBtn) gridBtn.classList.remove('selected');
+      // Xóa toàn bộ hộp thuốc
+      clearAllBtn.addEventListener('click', () => {
+        selectedDrugs = [];
+        document.querySelectorAll('.drug-select-btn').forEach(b => b.classList.remove('selected'));
         updatePillboxWorkspace();
       });
-    });
 
-    executeDdiMatrixEngine();
-  }
+      // --- CẬP NHẬT WORKSPACE ---
+      function updatePillboxWorkspace() {
+        selectedCountSpan.textContent = selectedDrugs.length;
+        basketContainer.innerHTML = '';
 
-  // --- ĐỘNG CƠ KIỂM TRA TƯƠNG TÁC ĐA CHIỀU CHUYÊN SÂU ---
-  function executeDdiMatrixEngine() {
-    const dangerAlerts = [];
-    const warningAlerts = [];
-    const synergyAlerts = [];
+        if (selectedDrugs.length === 0) {
+          basketContainer.innerHTML = '<p class="empty-basket-text">Chưa có thuốc nào được chọn. Hãy nhấp chọn thuốc ở các phân hệ bên trái.</p>';
+          ddiDashboard.style.display = 'none';
+          clearAllBtn.style.display = 'none';
+          return;
+        }
 
-    // ============================================================
-    // THUẬT TOÁN ĐẶC BIỆT: QUÉT TƯƠNG TÁC 3 BÊN (TRIPLE WHAMMY ENGINE)
-    // ============================================================
-    const hasRaas = selectedDrugs.some(k => ['acei', 'arb', 'arni'].includes(k));
-    const hasDiuretic = selectedDrugs.includes('loop_diuretic');
-    const hasNsaid = selectedDrugs.some(k => ['nsaid', 'cox2_inhibitor'].includes(k));
+        clearAllBtn.style.display = 'block';
 
-    if (hasRaas && hasDiuretic && hasNsaid) {
-      dangerAlerts.push(`
-        <div class="ddi-item">
-          <div class="ddi-item-title" style="color: var(--color-rose); font-weight: 800;">⚡ HỘI CHỨNG "TRIPLE WHAMMY" (BỘ BA TỬ THẦN)</div>
-          <div class="ddi-item-mechanism"><strong>Cơ chế:</strong> Sử dụng cùng lúc <strong>[Ức chế hệ RAAS] + [Lợi tiểu quai] + [NSAIDs / COX-2i]</strong>. NSAID gây co động mạch nhập, thuốc chẹn hệ RAAS gây dãn mạnh động mạch xuất, lợi tiểu làm sụt giảm thể tích tuần hoàn. Sự kết hợp này làm triệt tiêu áp lực lọc cầu thận cơ học.</div>
-          <div class="ddi-item-action"><strong>Xử trí lâm sàng (EBM):</strong> Nguy cơ cực kỳ cao gây <strong>Suy thận cấp tính (AKI) nghiêm trọng</strong> ở người lớn tuổi. Chống chỉ định phối hợp bộ ba này. Yêu cầu thay thế NSAID bằng Paracetamol để kiểm soát đau lâm sàng và theo dõi sát chức năng thận (Creatinine).</div>
-        </div>
-      `);
-    }
-
-    // ============================================================
-    // THUẬT TOÁN QUÉT TƯƠNG TÁC CẶP SONG PHƯƠNG (PAIRWISE SCAN)
-    // ============================================================
-    for (let i = 0; i < selectedDrugs.length; i++) {
-      for (let j = i + 1; j < selectedDrugs.length; j++) {
-        const keyA = selectedDrugs[i];
-        const keyB = selectedDrugs[j];
-
-        const matchedRule = INTERACTION_RULES.find(rule => 
-          (rule.drugs[0] === keyA && rule.drugs[1] === keyB) ||
-          (rule.drugs[0] === keyB && rule.drugs[1] === keyA)
-        );
-
-        if (matchedRule) {
-          const drugNameA = DRUG_DATABASE[keyA].name;
-          const drugNameB = DRUG_DATABASE[keyB].name;
-          
-          const alertHtml = `
-            <div class="ddi-item">
-              <div class="ddi-item-title"><strong>${drugNameA}</strong> &harr; <strong>${drugNameB}</strong></div>
-              <div class="ddi-item-mechanism"><strong>Cơ chế:</strong> ${matchedRule.mechanism}</div>
-              <div class="ddi-item-action"><strong>Xử trí lâm sàng (EBM):</strong> ${matchedRule.action}</div>
-            </div>
+        // Tạo chip
+        selectedDrugs.forEach(drugKey => {
+          const drugInfo = DRUG_DATABASE[drugKey];
+          const chip = document.createElement('div');
+          chip.className = 'selected-drug-chip';
+          chip.innerHTML = `
+            <span class="chip-name">💊 ${drugInfo.name}</span>
+            <button type="button" class="chip-remove-btn" data-key="${drugKey}">&times;</button>
           `;
+          basketContainer.appendChild(chip);
 
-          if (matchedRule.level === 'danger') dangerAlerts.push(alertHtml);
-          else if (matchedRule.level === 'warning') warningAlerts.push(alertHtml);
-          else if (matchedRule.level === 'synergy') synergyAlerts.push(alertHtml);
+          // Nút xóa nhanh
+          chip.querySelector('.chip-remove-btn').addEventListener('click', () => {
+            selectedDrugs = selectedDrugs.filter(k => k !== drugKey);
+            const gridBtn = document.querySelector(`.drug-select-btn[data-drug="${drugKey}"]`);
+            if (gridBtn) gridBtn.classList.remove('selected');
+            updatePillboxWorkspace();
+          });
+        });
+
+        executeDdiMatrixEngine();
+      }
+
+      // --- ĐỘNG CƠ RÀ SOÁT TƯƠNG TÁC THUỐC & BỆNH ĐỒNG MẮC ---
+      window.executeDdiMatrixEngine = function() {
+        const dangerAlerts = [];
+        const warningAlerts = [];
+        const synergyAlerts = [];
+        const comorbidityAlerts = [];
+
+        if (selectedDrugs.length === 0) {
+          ddiDashboard.style.display = 'none';
+          return;
+        }
+
+        // ============================================================
+        // 1. HỘI CHỨNG TRIPLE WHAMMY
+        // ============================================================
+        const hasRaas = selectedDrugs.some(k => ['acei', 'arb', 'arni'].includes(k));
+        const hasDiuretic = selectedDrugs.includes('loop_diuretic');
+        const hasNsaid = selectedDrugs.some(k => ['nsaid', 'cox2_inhibitor'].includes(k));
+
+        if (hasRaas && hasDiuretic && hasNsaid) {
+          dangerAlerts.push(`
+            <div class="ddi-item">
+              <div class="ddi-item-title" style="color: var(--color-rose); font-weight: 800;"><i class="fa-solid fa-triangle-exclamation"></i> HỘI CHỨNG "TRIPLE WHAMMY" (BỘ BA TỬ THẦN)</div>
+              <div class="ddi-item-mechanism"><strong>Cơ chế:</strong> Phối hợp cùng lúc <strong>[Ức chế hệ RAAS] + [Lợi tiểu quai] + [NSAIDs / COX-2i]</strong>. NSAID co động mạch nhập, RAASi giãn động mạch xuất, lợi tiểu làm giảm thể tích tuần hoàn -> Gây sụp đổ hoàn toàn áp lực lọc cầu thận.</div>
+              <div class="ddi-item-action"><strong>Xử trí lâm sàng:</strong> Rất dễ bùng phát suy thận cấp tính (AKI) nghiêm trọng ở người cao tuổi. Chống chỉ định phối hợp bộ ba này. Bắt buộc thay thế NSAID bằng Paracetamol để giảm đau an toàn.</div>
+            </div>
+          `);
+        }
+
+        // ============================================================
+        // 2. TƯƠNG TÁC THUỐC - THUỐC CẶP SONG PHƯƠNG (PAIRWISE SCAN)
+        // ============================================================
+        for (let i = 0; i < selectedDrugs.length; i++) {
+          for (let j = i + 1; j < selectedDrugs.length; j++) {
+            const keyA = selectedDrugs[i];
+            const keyB = selectedDrugs[j];
+
+            const matchedRule = INTERACTION_RULES.find(rule =>
+              (rule.drugs[0] === keyA && rule.drugs[1] === keyB) ||
+              (rule.drugs[0] === keyB && rule.drugs[1] === keyA)
+            );
+
+            if (matchedRule) {
+              const drugNameA = DRUG_DATABASE[keyA].name;
+              const drugNameB = DRUG_DATABASE[keyB].name;
+
+              const alertHtml = `
+                <div class="ddi-item">
+                  <div class="ddi-item-title"><strong>${drugNameA}</strong> &harr; <strong>${drugNameB}</strong></div>
+                  <div class="ddi-item-mechanism"><strong>Cơ chế:</strong> ${matchedRule.mechanism}</div>
+                  <div class="ddi-item-action"><strong>Xử trí lâm sàng:</strong> ${matchedRule.action}</div>
+                </div>
+              `;
+
+              if (matchedRule.level === 'danger') dangerAlerts.push(alertHtml);
+              else if (matchedRule.level === 'warning') warningAlerts.push(alertHtml);
+              else if (matchedRule.level === 'synergy') synergyAlerts.push(alertHtml);
+            }
+          }
+        }
+
+        // ============================================================
+        // 3. TƯƠNG TÁC THUỐC - BỆNH ĐỒNG MẮC (DRUG-DISEASE INTERACTIONS)
+        // ============================================================
+        const egfrVal = document.getElementById('patient-egfr').value;
+        const bleedVal = document.getElementById('patient-bleed').value;
+        const asthmaVal = document.getElementById('patient-asthma').value;
+        const liverVal = document.getElementById('patient-liver').value;
+
+        // --- A. Chức năng thận (eGFR) ---
+        if (egfrVal === 'ckd_severe') {
+          if (selectedDrugs.includes('mra')) {
+            dangerAlerts.push(`
+              <div class="ddi-item">
+                <div class="ddi-item-title" style="color: var(--color-rose);"><i class="fa-solid fa-triangle-exclamation"></i> Chống chỉ định: Kháng Aldosterone (MRA) &amp; eGFR &lt; 30</div>
+                <div class="ddi-item-mechanism"><strong>Cơ chế:</strong> Tốc độ lọc cầu thận giảm nặng làm tích tụ nghiêm trọng nồng độ Kali máu.</div>
+                <div class="ddi-item-action"><strong>Xử trí:</strong> Chống chỉ định dùng Spironolactone khi eGFR < 30 ml/phút do nguy cơ loạn nhịp thất đe dọa tính mạng. Ngừng thuốc ngay.</div>
+              </div>
+            `);
+          }
+          if (selectedDrugs.includes('colchicine')) {
+            dangerAlerts.push(`
+              <div class="ddi-item">
+                <div class="ddi-item-title" style="color: var(--color-rose);"><i class="fa-solid fa-triangle-exclamation"></i> Chống chỉ định: Colchicine &amp; eGFR &lt; 30</div>
+                <div class="ddi-item-mechanism"><strong>Cơ chế:</strong> Đào thải qua thận giảm nặng gây tích tụ độc tính Colchicine hệ tuần hoàn.</div>
+                <div class="ddi-item-action"><strong>Xử trí:</strong> Chống chỉ định dùng Colchicine trị gút khi eGFR < 30 ml/phút do nguy cơ suy tủy xương và độc thần kinh cơ.</div>
+              </div>
+            `);
+          }
+          if (selectedDrugs.includes('doac')) {
+            dangerAlerts.push(`
+              <div class="ddi-item">
+                <div class="ddi-item-title" style="color: var(--color-rose);"><i class="fa-solid fa-triangle-exclamation"></i> Nguy cơ cao: DOAC &amp; eGFR &lt; 30</div>
+                <div class="ddi-item-mechanism"><strong>Cơ chế:</strong> Thận giảm bài tiết thuốc kháng đông, đẩy nồng độ DOAC lên ngưỡng chảy máu nguy cấp.</div>
+                <div class="ddi-item-action"><strong>Xử trí:</strong> Dabigatran chống chỉ định hoàn toàn. Các DOAC khác (Rivaroxaban, Apixaban) bắt buộc giảm liều rất sâu, hoặc cân nhắc chuyển sang Warfarin (VKA) dưới sự giám sát INR.</div>
+              </div>
+            `);
+          }
+          if (selectedDrugs.some(k => ['acei', 'arb', 'arni'].includes(k))) {
+            comorbidityAlerts.push(`
+              <div class="ddi-item">
+                <div class="ddi-item-title">⚠️ Thận trọng: Hệ RAASi &amp; eGFR &lt; 30 ml/phút</div>
+                <div class="ddi-item-mechanism"><strong>Cơ chế:</strong> Thuốc ức chế men chuyển/chẹn thụ thể làm giảm áp lực lọc cầu thận khi chức năng thận đã suy giảm nặng.</div>
+                <div class="ddi-item-action"><strong>Xử trí:</strong> Cần theo dõi sát Creatinine máu và Kali trong vòng 1-2 tuần đầu khởi trị. Tạm dừng thuốc nếu Creatinine tăng vọt >30% so với mức nền.</div>
+              </div>
+            `);
+          }
+          if (selectedDrugs.includes('sglt2i')) {
+            comorbidityAlerts.push(`
+              <div class="ddi-item">
+                <div class="ddi-item-title">⚠️ Lưu ý: SGLT2i &amp; eGFR &lt; 30 ml/phút</div>
+                <div class="ddi-item-mechanism"><strong>Cơ chế:</strong> Cơ chế hạ đường huyết phụ thuộc vào quá trình lọc đường tại cầu thận bị suy giảm mạnh.</div>
+                <div class="ddi-item-action"><strong>Xử trí:</strong> Không khởi trị mới SGLT2i cho mục đích kiểm soát đường huyết khi eGFR < 30 ml/phút. Tuy nhiên, nếu đã dùng từ trước để điều trị suy tim/bảo vệ thận thì có thể tiếp tục cho đến khi bắt đầu lọc máu chu kỳ.</div>
+              </div>
+            `);
+          }
+        } else if (egfrVal === 'ckd_mod') {
+          if (selectedDrugs.includes('mra')) {
+            comorbidityAlerts.push(`
+              <div class="ddi-item">
+                <div class="ddi-item-title">⚠️ Giới hạn liều: MRA &amp; eGFR 30 - 49 ml/phút</div>
+                <div class="ddi-item-mechanism"><strong>Cơ chế:</strong> eGFR suy giảm trung bình làm tăng nguy cơ tăng Kali âm thầm.</div>
+                <div class="ddi-item-action"><strong>Xử trí:</strong> Khởi đầu liều thấp Spironolactone tối đa 12.5 mg/ngày, theo dõi sát điện giải đồ.</div>
+              </div>
+            `);
+          }
+          if (selectedDrugs.includes('colchicine')) {
+            comorbidityAlerts.push(`
+              <div class="ddi-item">
+                <div class="ddi-item-title">⚠️ Giới hạn liều: Colchicine &amp; eGFR 30 - 49 ml/phút</div>
+                <div class="ddi-item-mechanism"><strong>Cơ chế:</strong> eGFR suy giảm trung bình tăng nguy cơ độc tính cơ.</div>
+                <div class="ddi-item-action"><strong>Xử trí:</strong> Giảm 50% liều Colchicine dùng hàng ngày và tuyệt đối tránh phối hợp với chất chẹn CYP3A4 mạnh.</div>
+              </div>
+            `);
+          }
+        }
+
+        // --- B. Tiền sử xuất huyết tiêu hóa ---
+        if (bleedVal === 'yes') {
+          if (selectedDrugs.some(k => ['nsaid', 'cox2_inhibitor'].includes(k))) {
+            dangerAlerts.push(`
+              <div class="ddi-item">
+                <div class="ddi-item-title" style="color: var(--color-rose);"><i class="fa-solid fa-triangle-exclamation"></i> Chống chỉ định: NSAID &amp; Tiền sử Xuất huyết tiêu hóa</div>
+                <div class="ddi-item-mechanism"><strong>Cơ chế:</strong> Kháng viêm NSAIDs phá hủy hàng rào chất nhầy bảo vệ niêm mạc tiêu hóa.</div>
+                <div class="ddi-item-action"><strong>Xử trí:</strong> Chống chỉ định tuyệt đối. Nên thay thế bằng Paracetamol hoặc các phương pháp giảm đau không dùng thuốc khác.</div>
+              </div>
+            `);
+          }
+
+          const hasAspirin = selectedDrugs.includes('aspirin');
+          const hasP2y12 = selectedDrugs.includes('p2y12_inhibitor');
+          const hasAnticoag = selectedDrugs.some(k => ['doac', 'vka'].includes(k));
+
+          if (hasAspirin && hasP2y12 && hasAnticoag) {
+            dangerAlerts.push(`
+              <div class="ddi-item">
+                <div class="ddi-item-title" style="color: var(--color-rose);"><i class="fa-solid fa-triangle-exclamation"></i> Nguy cơ cực cao: Liệu pháp Triple Therapy &amp; Xuất huyết tiêu hóa</div>
+                <div class="ddi-item-mechanism"><strong>Cơ chế:</strong> Phối hợp đồng thời [Kháng đông] + [Kháng tiểu cầu kép - DAPT] làm tăng nguy cơ xuất huyết dạ dày lên gấp 10 lần.</div>
+                <div class="ddi-item-action"><strong>Xử trí:</strong> Rút ngắn tối đa thời gian điều trị Triple Therapy (ưu tiên chỉ dùng 1 tuần đến 1 tháng sau PCI), sau đó chuyển sang Double Therapy (Kháng đông + 1 Kháng tiểu cầu đơn) và bắt buộc kê kèm PPI (Pantoprazole/Rabeprazole).</div>
+              </div>
+            `);
+          } else if (hasAspirin && hasP2y12) {
+            comorbidityAlerts.push(`
+              <div class="ddi-item">
+                <div class="ddi-item-title">⚠️ Thận trọng: Kháng tiểu cầu kép (DAPT) &amp; Nguy cơ Xuất huyết</div>
+                <div class="ddi-item-mechanism"><strong>Cơ chế:</strong> DAPT làm suy yếu khả năng cầm máu cơ học tại ổ loét dạ dày cũ.</div>
+                <div class="ddi-item-action"><strong>Xử trí:</strong> Bắt buộc dùng kèm PPI bảo vệ dạ dày. Ưu tiên chọn Pantoprazole hoặc Rabeprazole thay vì Omeprazole để tránh ức chế hoạt hóa Clopidogrel qua CYP2C19.</div>
+              </div>
+            `);
+          } else if ((hasAspirin || hasP2y12) && hasAnticoag) {
+            comorbidityAlerts.push(`
+              <div class="ddi-item">
+                <div class="ddi-item-title">⚠️ Thận trọng: Kháng đông + Kháng tiểu cầu đơn &amp; Nguy cơ Xuất huyết</div>
+                <div class="ddi-item-mechanism"><strong>Cơ chế:</strong> Tăng rủi ro chảy máu dạ dày âm thầm.</div>
+                <div class="ddi-item-action"><strong>Xử trí:</strong> Giám sát chặt chẽ triệu chứng thiếu máu, khuyên dùng phối hợp PPI để dự phòng chảy máu.</div>
+              </div>
+            `);
+          }
+        }
+
+        // --- C. Hen suyễn / COPD (Đường hô hấp) ---
+        if (asthmaVal === 'yes') {
+          if (selectedDrugs.includes('beta_blocker')) {
+            comorbidityAlerts.push(`
+              <div class="ddi-item">
+                <div class="ddi-item-title">⚠️ Thận trọng: Beta-Blockers &amp; Bệnh lý co thắt phế quản</div>
+                <div class="ddi-item-mechanism"><strong>Cơ chế:</strong> Thuốc chẹn beta giao cảm có thể phong bế thụ thể Beta-2 ở phổi, gây co thắt phế quản cấp nguy kịch.</div>
+                <div class="ddi-item-action"><strong>Xử trí:</strong> Tránh dùng chẹn beta không chọn lọc (như Propranolol). Nếu bắt buộc dùng cho suy tim hoặc sau nhồi máu cơ tim, phải ưu tiên chẹn beta chọn lọc tim mạch cao (như Bisoprolol, Metoprolol succinate) ở liều cực thấp và dò liều từ từ.</div>
+              </div>
+            `);
+          }
+        }
+
+        // --- D. Chức năng gan (Child-Pugh B/C) ---
+        if (liverVal === 'dysfunction') {
+          if (selectedDrugs.includes('vka')) {
+            comorbidityAlerts.push(`
+              <div class="ddi-item">
+                <div class="ddi-item-title">⚠️ Thận trọng: Kháng đông VKA &amp; Suy giảm chức năng gan</div>
+                <div class="ddi-item-mechanism"><strong>Cơ chế:</strong> Gan giảm tổng hợp các yếu tố đông máu làm tác dụng của Warfarin trở nên khó dự đoán, tăng rủi ro quá liều chảy máu.</div>
+                <div class="ddi-item-action"><strong>Xử trí:</strong> Theo dõi INR sát sao hơn thường lệ (2-3 ngày/lần trong pha chỉnh liều) và hiệu chỉnh liều rất thận trọng.</div>
+              </div>
+            `);
+          }
+          if (selectedDrugs.some(k => ['statin_cyp3a4', 'gemfibrozil'].includes(k))) {
+            comorbidityAlerts.push(`
+              <div class="ddi-item">
+                <div class="ddi-item-title">⚠️ Thận trọng: Statins / Fibrate &amp; Suy gan</div>
+                <div class="ddi-item-mechanism"><strong>Cơ chế:</strong> Tích lũy nồng độ thuốc do giảm chuyển hóa qua gan, tăng nguy cơ độc tế bào gan trực tiếp.</div>
+                <div class="ddi-item-action"><strong>Xử trí:</strong> Tránh dùng statin liều cao. Kiểm tra định kỳ enzyme gan (AST/ALT). Ngừng thuốc nếu men gan tăng > 3 lần ULN.</div>
+              </div>
+            `);
+          }
+          if (selectedDrugs.includes('amiodarone')) {
+            comorbidityAlerts.push(`
+              <div class="ddi-item">
+                <div class="ddi-item-title">⚠️ Thận trọng: Amiodarone &amp; Suy gan</div>
+                <div class="ddi-item-mechanism"><strong>Cơ chế:</strong> Amiodarone tích lũy lâu dài tại gan và có thể gây xơ gan tiến triển âm thầm.</div>
+                <div class="ddi-item-action"><strong>Xử trí:</strong> Theo dõi men gan mỗi 3 tháng. Ngừng điều trị nếu men gan tăng vọt đáng kể.</div>
+              </div>
+            `);
+          }
+        }
+
+        // Render panels
+        renderAlertPanel('danger', dangerAlerts);
+        renderAlertPanel('warning', warningAlerts);
+        renderAlertPanel('synergy', synergyAlerts);
+        renderAlertPanel('comorbidity', comorbidityAlerts);
+
+        // Toggle container
+        if (dangerAlerts.length > 0 || warningAlerts.length > 0 || synergyAlerts.length > 0 || comorbidityAlerts.length > 0) {
+          ddiDashboard.style.display = 'block';
+        } else {
+          ddiDashboard.style.display = 'none';
         }
       }
-    }
 
-    // Nạp dữ liệu vào bảng hiển thị
-    renderAlertPanel('danger', dangerAlerts);
-    renderAlertPanel('warning', warningAlerts);
-    renderAlertPanel('synergy', synergyAlerts);
+      function renderAlertPanel(level, alertsArray) {
+        const panel = document.getElementById(`panel-${level}`);
+        const container = document.getElementById(`container-${level}`);
 
-    // Bật bảng tổng điều khiển nếu phát hiện có tương tác
-    if (dangerAlerts.length > 0 || warningAlerts.length > 0 || synergyAlerts.length > 0) {
-      ddiDashboard.style.display = 'block';
-    } else {
-      ddiDashboard.style.display = 'none';
-    }
-  }
+        if (alertsArray.length > 0) {
+          panel.style.display = 'block';
+          container.innerHTML = alertsArray.join('');
+        } else {
+          panel.style.display = 'none';
+          container.innerHTML = '';
+        }
+      }
 
-  function renderAlertPanel(level, alertsArray) {
-    const panel = document.getElementById(`panel-${level}`);
-    const container = document.getElementById(`container-${level}`);
-    
-    if (alertsArray.length > 0) {
-      panel.style.display = 'block';
-      container.innerHTML = alertsArray.join('');
-    } else {
-      panel.style.display = 'none';
-      container.innerHTML = '';
-    }
-  }
+      // --- CHUYỂN ĐỔI CÁC PHÂN HỆ TABS MƯỢT MÀ ---
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      const tabPanels = document.querySelectorAll('.tab-content-panel');
 
-  // --- BỘ ĐIỀU KHIỂN CHUYỂN TAB ĐỘNG MƯỢT MÀ ---
-  const tabButtons = document.querySelectorAll('.tab-btn');
-  const tabPanels = document.querySelectorAll('.tab-content-panel');
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const targetId = button.getAttribute('data-target');
 
-  tabButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const targetId = button.getAttribute('data-target');
+          tabButtons.forEach(btn => {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-selected', 'false');
+          });
 
-      tabButtons.forEach(btn => {
-        btn.classList.remove('active');
-        btn.setAttribute('aria-selected', 'false');
+          tabPanels.forEach(panel => panel.classList.remove('active'));
+
+          button.classList.add('active');
+          button.setAttribute('aria-selected', 'true');
+          document.getElementById(targetId).classList.add('active');
+        });
       });
-
-      tabPanels.forEach(panel => panel.classList.remove('active'));
-
-      button.classList.add('active');
-      button.setAttribute('aria-selected', 'true');
-      document.getElementById(targetId).classList.add('active');
     });
-  });
-});
-</script>
+  </script>
 </body>
+
+</html>

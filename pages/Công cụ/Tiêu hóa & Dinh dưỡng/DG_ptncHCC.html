@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Công cụ phân tầng nguy cơ và tầm soát Ung thư biểu mô tế bào gan (HCC) theo hướng dẫn AGA 2026" />
+  <title>Phân tầng nguy cơ & Tầm soát HCC – CliniPortal</title>
+
+  <!-- Preconnect fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+
+  <script src="../../../pages/header.js"></script>
+  <script src="../../../pages/footer.js"></script>
+
+  <style>
+    /* ============================================================
+       STYLE HỆ THỐNG PHÂN TẦNG NGUY CƠ HCC (AGA 2026)
+       Đồng bộ hoàn toàn với hệ thống Design Tokens CliniPortal
+    ============================================================ */
+    :root {
+      --color-emerald: #059669;
+      --color-emerald-hl: #d1fae5;
+      --color-teal: #0d9488;
+      --color-teal-hl: #ccfbf1;
+      --radius-node: 14px;
+      --shadow-node: 0 4px 16px rgba(0, 0, 0, .08);
+      --shadow-node-hover: 0 8px 28px rgba(0, 0, 0, .14);
+    }
+
+    /* --- HỆ THỐNG ĐIỀU HƯỚNG TAB ĐỘNG --- */
+    .quick-tabs-container {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--color-divider);
+      padding-bottom: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--color-text-muted);
+      padding: 0.625rem 1.25rem;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: all var(--tr, 0.2s);
+      border-radius: var(--radius-sm, 6px);
+    }
+
+    .tab-btn:hover {
+      color: var(--color-text);
+      background-color: var(--color-divider);
+    }
+
+    .tab-btn.active {
+      background-color: var(--color-divider);
+      color: var(--color-teal);
+    }
+
+    .tab-content-panel {
+      display: none;
+    }
+
+    .tab-content-panel.active {
+      display: block;
+      animation: hccFadeIn 0.3s ease-in-out;
+    }
+
+    /* --- BỐ CỤC KHÔNG GIAN LÀM VIỆC (WORKSPACE LAYOUT) --- */
+    .hcc-workspace-layout {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: start;
+      width: 100%;
+    }
+
+    .hcc-input-column {
+      flex: 1 1 calc(55% - 0.75rem);
+      min-width: 360px;
+    }
+
+    .hcc-result-column {
+      flex: 1 1 calc(45% - 0.75rem);
+      min-width: 320px;
+      position: sticky;
+      top: 1.5rem;
+      height: fit-content;
+    }
+
+    /* --- THẺ THÀNH PHẦN (CARDS) & KHUNG NHẬP LIỆU --- */
+    .form-section-card {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-md, 8px);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.2s;
+    }
+
+    .form-section-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    .section-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .step-badge {
+      background-color: var(--color-divider);
+      color: var(--color-text);
+      font-weight: 700;
+      font-size: var(--text-sm);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .section-instruction {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      margin-bottom: 1.25rem;
+      line-height: 1.5;
+    }
+
+    /* Form control grids */
+    .r-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .r-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .r-field label {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--color-text-muted);
+    }
+
+    .r-field input[type="number"],
+    .r-field select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-sm, 6px);
+      font-size: var(--text-sm);
+      transition: all .2s;
+      background: var(--color-surface-2);
+      color: var(--color-text);
+      box-sizing: border-box;
+    }
+
+    .r-field input[type="number"]:focus,
+    .r-field select:focus {
+      outline: none;
+      border-color: var(--color-teal);
+      background: var(--color-surface);
+      box-shadow: 0 0 0 3px var(--color-teal-hl);
+    }
+
+    /* Radio buttons / checkboxes styling */
+    .option-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .btn-radio {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      padding: 8px 14px;
+      background: var(--color-surface-2);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-sm, 6px);
+      font-size: var(--text-xs);
+      font-weight: 500;
+      transition: all 0.2s;
+      user-select: none;
+    }
+
+    .btn-radio input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .btn-radio:hover {
+      background: var(--color-surface-offset);
+      border-color: var(--color-text-muted);
+    }
+
+    .btn-radio.checked {
+      background: var(--color-teal-hl);
+      border-color: var(--color-teal);
+      color: var(--color-teal);
+      font-weight: 600;
+    }
+
+    /* --- KẾT QUẢ ĐẦU RA --- */
+    .hcc-result-panel {
+      border-radius: var(--radius-md, 8px);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-md);
+      margin-bottom: 1.25rem;
+      animation: hccSlideDown 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .result-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      letter-spacing: 0.05em;
+    }
+
+    /* Thẻ cảnh báo kết quả */
+    .panel-low {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-success);
+      border-left: 5px solid var(--color-success);
+    }
+    .panel-low .result-badge {
+      background-color: var(--color-success-hl);
+      color: var(--color-success);
+    }
+
+    .panel-medium {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-warning);
+      border-left: 5px solid var(--color-warning);
+    }
+    .panel-medium .result-badge {
+      background-color: var(--color-warning-hl);
+      color: var(--color-warning);
+    }
+
+    .panel-high {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-rose);
+      border-left: 5px solid var(--color-rose);
+    }
+    .panel-high .result-badge {
+      background-color: var(--color-rose-hl);
+      color: var(--color-rose);
+    }
+
+    .panel-neutral {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-left: 5px solid var(--color-text-muted);
+    }
+    .panel-neutral .result-badge {
+      background-color: var(--color-divider);
+      color: var(--color-text-muted);
+    }
+
+    .result-title {
+      font-size: var(--text-md);
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .result-score-display {
+      font-size: var(--text-xl);
+      font-weight: 800;
+      color: var(--color-text);
+      margin-bottom: 12px;
+      font-family: var(--font-display);
+    }
+
+    .result-desc {
+      font-size: var(--text-sm);
+      color: var(--color-text);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .result-action {
+      background-color: var(--color-surface-offset);
+      border-left: 3px solid var(--color-teal);
+      padding: 10px 14px;
+      border-radius: 4px;
+      font-size: var(--text-xs);
+      line-height: 1.5;
+    }
+
+    .panel-low .result-action { border-left-color: var(--color-success); }
+    .panel-medium .result-action { border-left-color: var(--color-warning); }
+    .panel-high .result-action { border-left-color: var(--color-rose); }
+    .panel-neutral .result-action { border-left-color: var(--color-border); }
+
+    /* Progress bar */
+    .hcc-progress-container {
+      background-color: var(--color-divider);
+      border-radius: var(--radius-full);
+      height: 8px;
+      width: 100%;
+      overflow: hidden;
+      margin-top: 8px;
+      margin-bottom: 16px;
+    }
+
+    .hcc-progress-bar {
+      height: 100%;
+      border-radius: var(--radius-full);
+      transition: width 0.4s ease-out;
+      width: 0%;
+    }
+
+    .panel-low .hcc-progress-bar { background-color: var(--color-success); }
+    .panel-medium .hcc-progress-bar { background-color: var(--color-warning); }
+    .panel-high .hcc-progress-bar { background-color: var(--color-rose); }
+
+    /* Decision Triage Cards */
+    .triage-option-card {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: start;
+      gap: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: var(--color-surface);
+      user-select: none;
+    }
+
+    .triage-option-card:hover {
+      border-color: var(--color-teal);
+      background-color: var(--color-surface-2);
+    }
+
+    .triage-option-card.selected {
+      border-color: var(--color-teal);
+      background-color: var(--color-teal-hl);
+      box-shadow: 0 0 0 1px var(--color-teal);
+    }
+
+    .triage-icon {
+      font-size: 1.25rem;
+      color: var(--color-text-muted);
+      transition: color 0.2s;
+    }
+
+    .triage-option-card.selected .triage-icon {
+      color: var(--color-teal);
+    }
+
+    .triage-info h4 {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 4px;
+    }
+
+    .triage-info p {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      line-height: 1.4;
+    }
+
+    /* Sub-panels inside Tab 2 */
+    .sub-score-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .sub-score-card {
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.2s;
+    }
+
+    .sub-score-card.low {
+      border-left: 4px solid var(--color-success);
+    }
+    .sub-score-card.medium {
+      border-left: 4px solid var(--color-warning);
+    }
+    .sub-score-card.high {
+      border-left: 4px solid var(--color-rose);
+    }
+
+    .sub-score-left h4 {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--color-text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sub-score-left p {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      margin-top: 2px;
+    }
+
+    .sub-score-right {
+      text-align: right;
+    }
+
+    .sub-score-value {
+      font-size: var(--text-md);
+      font-weight: 800;
+      color: var(--color-text);
+    }
+
+    .sub-score-risk-label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 999px;
+      margin-top: 4px;
+      display: inline-block;
+    }
+
+    .low .sub-score-risk-label { background: var(--color-success-hl); color: var(--color-success); }
+    .medium .sub-score-risk-label { background: var(--color-warning-hl); color: var(--color-warning); }
+    .high .sub-score-risk-label { background: var(--color-rose-hl); color: var(--color-rose); }
+
+    /* --- THƯ VIỆN HỌC THUẬT --- */
+    .knowledge-rich-content h4 {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--color-text);
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .knowledge-rich-content h4:first-of-type {
+      margin-top: 0;
+    }
+
+    .knowledge-rich-content ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0 0 1.5rem 0;
+    }
+
+    .knowledge-rich-content li {
+      font-size: var(--text-sm);
+      color: var(--color-text);
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+      position: relative;
+      padding-left: 1.25rem;
+    }
+
+    .knowledge-rich-content li::before {
+      content: "•";
+      color: var(--color-teal);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    /* --- ANIMATIONS --- */
+    @keyframes hccFadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes hccSlideDown {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- RESPONSIVENESS --- */
+    @media (max-width: 1024px) {
+      .hcc-input-column,
+      .hcc-result-column {
+        flex: 1 1 100%;
+      }
+
+      .hcc-result-column {
+        position: static;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ===================== APP CONTAINER ===================== -->
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../cong-cu.html" class="nav-item active" aria-current="page" title="Công cụ lâm sàng">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+              <span class="nav-icon">📄</span>
+              <span class="nav-text">Y học chứng cứ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận triệu chứng">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-wrapper" id="mainContent">
+
+      <section class="hero-dashboard" aria-labelledby="page-title">
+        <div class="hero-intro">
+          <h1 id="page-title">🩺 PHÂN TẦNG NGUY CƠ &amp; TẦM SOÁT HCC</h1>
+          <p>Ứng dụng công cụ rà soát chỉ định và tính toán điểm số dự báo Ung thư biểu mô tế bào gan (HCC) theo các mô hình y học chứng cứ và cập nhật mới nhất từ AGA 2026.</p>
+        </div>
+      </section>
+
+      <div class="main-content-grid">
+        <!-- BREADCRUMB -->
+        <nav aria-label="Breadcrumb" class="breadcrumb-container" style="padding-top:0;">
+          <ol class="breadcrumb-list">
+            <li class="breadcrumb-item">
+              <a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="../cong-cu.html" class="breadcrumb-link">Công cụ</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Phân tầng nguy cơ HCC</li>
+          </ol>
+        </nav>
+
+        <!-- QUICK TABS FOR NAVIGATION -->
+        <div class="quick-tabs-container" role="tablist" aria-label="Phân hệ chức năng">
+          <button class="tab-btn active" data-target="tab-triage" role="tab" id="tab-btn-triage" aria-selected="true"><i class="fa-solid fa-list-check"></i> 1. Chỉ định Tầm soát chung</button>
+          <button class="tab-btn" data-target="tab-hbv" role="tab" id="tab-btn-hbv" aria-selected="false"><i class="fa-solid fa-dna"></i> 2. HBV mạn chưa Xơ gan</button>
+          <button class="tab-btn" data-target="tab-cirrhosis" role="tab" id="tab-btn-cirrhosis" aria-selected="false"><i class="fa-solid fa-calculator"></i> 3. Bệnh nhân Xơ gan (aMAP)</button>
+          <button class="tab-btn" data-target="tab-academic" role="tab" id="tab-btn-academic" aria-selected="false"><i class="fa-solid fa-book-open"></i> 4. Thư viện AGA 2026</button>
+        </div>
+
+        <!-- WORKSPACE LAYOUT -->
+        <div class="hcc-workspace-layout">
+
+          <!-- LEFT: INPUT COLUMN -->
+          <div class="hcc-input-column">
+
+            <!-- TAB 1: GENERAL TRIAGE -->
+            <div id="tab-triage" class="tab-content-panel active">
+              <div class="form-section-card">
+                <div class="section-card-header">
+                  <span class="step-badge" style="background-color: var(--color-teal); color: white;"><i class="fa-solid fa-heart-pulse"></i></span>
+                  <h3>Sàng lọc chỉ định Tầm soát HCC</h3>
+                </div>
+                <p class="section-instruction">Rà soát nhanh các yếu tố lâm sàng để xác định bệnh nhân có thuộc nhóm cần tầm soát định kỳ siêu âm + AFP mỗi 6 tháng hay không.</p>
+
+                <!-- Cirrhosis check -->
+                <div style="margin-bottom: 20px;">
+                  <h4 style="font-size: var(--text-sm); font-weight: 700; margin-bottom: 8px;"><i class="fa-solid fa-disease"></i> 1. Tình trạng Xơ gan (Cirrhosis)</h4>
+                  <div class="triage-option-card" id="card-cirr-ab" onclick="toggleTriageCard('cirr-ab')">
+                    <div class="triage-icon"><i class="fa-regular fa-square-check"></i></div>
+                    <div class="triage-info">
+                      <h4>Xơ gan Child-Pugh A hoặc B</h4>
+                      <p>Do bất kỳ nguyên nhân nào (Virus, MASLD, Rượu...)</p>
+                    </div>
+                  </div>
+                  <div class="triage-option-card" id="card-cirr-c-wait" onclick="toggleTriageCard('cirr-c-wait')">
+                    <div class="triage-icon"><i class="fa-regular fa-square-check"></i></div>
+                    <div class="triage-info">
+                      <h4>Xơ gan Child-Pugh C ĐANG nằm trong danh sách chờ ghép gan</h4>
+                      <p>Tầm soát giúp phát hiện u sớm để tăng điểm ưu tiên hoặc tránh vượt quá tiêu chuẩn ghép</p>
+                    </div>
+                  </div>
+                  <div class="triage-option-card" id="card-cirr-c-no" onclick="toggleTriageCard('cirr-c-no')">
+                    <div class="triage-icon"><i class="fa-regular fa-square-check"></i></div>
+                    <div class="triage-info">
+                      <h4>Xơ gan Child-Pugh C KHÔNG phải ứng viên ghép gan</h4>
+                      <p>Hoặc bệnh nhân có kỳ vọng sống dưới 1–2 năm do bệnh đồng mắc nặng</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- HBV check -->
+                <div style="margin-bottom: 20px;">
+                  <h4 style="font-size: var(--text-sm); font-weight: 700; margin-bottom: 8px;"><i class="fa-solid fa-virus"></i> 2. Nhiễm HBV mạn tính chưa Xơ gan</h4>
+                  <p class="section-instruction" style="margin-bottom: 8px;">Chọn các yếu tố nguy cơ nếu bệnh nhân nhiễm HBV mạn tính chưa có xơ gan:</p>
+                  
+                  <div class="triage-option-card" id="card-hbv-risk" onclick="toggleTriageCard('hbv-risk')">
+                    <div class="triage-icon"><i class="fa-regular fa-square-check"></i></div>
+                    <div class="triage-info">
+                      <h4>Có ≥ 1 yếu tố nguy cơ HBV sau:</h4>
+                      <p style="margin-top: 4px; display: block; font-style: normal;">
+                        • Nam giới ≥ 40 tuổi<br>
+                        • Nữ giới ≥ 50 tuổi<br>
+                        • Người gốc Phi trẻ tuổi<br>
+                        • Tiền sử gia đình có người bị HCC<br>
+                        • Điểm số PAGE-B ≥ 10
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Low risk cohorts check -->
+                <div>
+                  <h4 style="font-size: var(--text-sm); font-weight: 700; margin-bottom: 8px;"><i class="fa-solid fa-shield-halved"></i> 3. Các nhóm nguy cơ thấp khác</h4>
+                  <div class="triage-option-card" id="card-f3-lower" onclick="toggleTriageCard('f3-lower')">
+                    <div class="triage-icon"><i class="fa-regular fa-square-check"></i></div>
+                    <div class="triage-info">
+                      <h4>Xơ hóa gan F3 hoặc thấp hơn (F0 - F3)</h4>
+                      <p>Bao gồm cả MASLD và viêm gan C (HCV) đã đạt SVR nhưng chưa xơ gan</p>
+                    </div>
+                  </div>
+                </div>
+
+                <button type="button" class="btn-flow btn-reset" onclick="resetTriage()" style="margin-top: 1rem; width: 100%; display: flex; justify-content: center; gap: 8px;"><i class="fa-solid fa-rotate-left"></i> Thiết lập lại bộ lọc</button>
+              </div>
+            </div>
+
+            <!-- TAB 2: HBV WITHOUT CIRRHOSIS CALCULATOR -->
+            <div id="tab-hbv" class="tab-content-panel">
+              <div class="form-section-card">
+                <div class="section-card-header">
+                  <span class="step-badge" style="background-color: var(--color-teal); color: white;"><i class="fa-solid fa-square-poll-vertical"></i></span>
+                  <h3>Tính toán điểm số cho HBV chưa xơ gan</h3>
+                </div>
+                <p class="section-instruction">Nhập các thông số lâm sàng để tự động tính toán đồng thời 3 điểm số dự báo nguy cơ: PAGE-B, REAL-B và AASL-HCC.</p>
+
+                <div class="r-grid">
+                  <div class="r-field">
+                    <label for="hbv-input-age">Tuổi (năm)</label>
+                    <input type="number" id="hbv-input-age" min="1" max="120" value="45" oninput="calculateHbvScores()">
+                  </div>
+                  <div class="r-field">
+                    <label>Giới tính</label>
+                    <div class="option-group">
+                      <label class="btn-radio checked" id="lbl-gender-m">
+                        <input type="radio" name="hbv-input-gender" value="male" checked onchange="updateGenderRadio('male')"> Nam
+                      </label>
+                      <label class="btn-radio" id="lbl-gender-f">
+                        <input type="radio" name="hbv-input-gender" value="female" onchange="updateGenderRadio('female')"> Nữ
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="r-grid">
+                  <div class="r-field">
+                    <label for="hbv-input-plt">Số lượng Tiểu cầu (x10^9/L hoặc 10^3/µL)</label>
+                    <input type="number" id="hbv-input-plt" min="5" max="1000" value="120" oninput="calculateHbvScores()">
+                  </div>
+                  <div class="r-field">
+                    <label for="hbv-input-albumin">Albumin huyết thanh (g/dL)</label>
+                    <input type="number" id="hbv-input-albumin" min="1.0" max="6.0" step="0.1" value="3.8" oninput="calculateHbvScores()">
+                  </div>
+                </div>
+
+                <div class="r-grid">
+                  <div class="r-field">
+                    <label for="hbv-input-afp">Chỉ số AFP (ng/mL)</label>
+                    <input type="number" id="hbv-input-afp" min="0.1" max="1000" step="0.1" value="12.0" oninput="calculateHbvScores()">
+                  </div>
+                  <div class="r-field">
+                    <label>Bệnh tiểu đường</label>
+                    <div class="option-group">
+                      <label class="btn-radio" id="lbl-diabetes-yes">
+                        <input type="radio" name="hbv-input-diabetes" value="yes" onchange="updateDiabetesRadio('yes')"> Có
+                      </label>
+                      <label class="btn-radio checked" id="lbl-diabetes-no">
+                        <input type="radio" name="hbv-input-diabetes" value="no" checked onchange="updateDiabetesRadio('no')"> Không
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="r-grid" style="grid-template-columns: 1fr;">
+                  <div class="r-field">
+                    <label>Sử dụng rượu nhiều / Lạm dụng rượu</label>
+                    <div class="option-group">
+                      <label class="btn-radio checked" id="lbl-alcohol-no">
+                        <input type="radio" name="hbv-input-alcohol" value="no" checked onchange="updateAlcoholRadio('no')"> Không
+                      </label>
+                      <label class="btn-radio" id="lbl-alcohol-yes">
+                        <input type="radio" name="hbv-input-alcohol" value="yes" onchange="updateAlcoholRadio('yes')"> Có lạm dụng rượu
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Shared link notification -->
+                <p style="font-size: var(--text-xs); color: var(--color-teal); margin-top: 10px; font-style: italic;">
+                  * Gợi ý: Tuổi, Giới tính, Tiểu cầu và Albumin được chia sẻ đồng bộ với Tab 3 (aMAP) để tối ưu hóa nhập liệu.
+                </p>
+              </div>
+            </div>
+
+            <!-- TAB 3: CIRRHOSIS CALCULATOR (aMAP) -->
+            <div id="tab-cirrhosis" class="tab-content-panel">
+              <div class="form-section-card">
+                <div class="section-card-header">
+                  <span class="step-badge" style="background-color: var(--color-teal); color: white;"><i class="fa-solid fa-calculator"></i></span>
+                  <h3>Tính toán điểm số aMAP cho bệnh nhân Xơ gan</h3>
+                </div>
+                <p class="section-instruction">aMAP là mô hình dự báo nguy cơ HCC toàn cầu chuyên biệt cho người bệnh xơ gan, bất kể nguyên nhân bệnh gan nền.</p>
+
+                <div class="r-grid">
+                  <div class="r-field">
+                    <label for="amap-input-age">Tuổi (năm)</label>
+                    <input type="number" id="amap-input-age" min="1" max="120" value="45" oninput="calculateAmapScore()">
+                  </div>
+                  <div class="r-field">
+                    <label>Giới tính</label>
+                    <div class="option-group">
+                      <label class="btn-radio checked" id="lbl-amap-gender-m">
+                        <input type="radio" name="amap-input-gender" value="male" checked onchange="updateAmapGenderRadio('male')"> Nam
+                      </label>
+                      <label class="btn-radio" id="lbl-amap-gender-f">
+                        <input type="radio" name="amap-input-gender" value="female" onchange="updateAmapGenderRadio('female')"> Nữ
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="r-grid">
+                  <div class="r-field">
+                    <label for="amap-input-plt">Số lượng Tiểu cầu (x10^9/L)</label>
+                    <input type="number" id="amap-input-plt" min="5" max="1000" value="120" oninput="calculateAmapScore()">
+                  </div>
+                  <div class="r-field">
+                    <label for="amap-input-albumin">Albumin huyết thanh (g/L)</label>
+                    <input type="number" id="amap-input-albumin" min="10" max="60" value="38" oninput="calculateAmapScore()">
+                  </div>
+                </div>
+
+                <div class="r-grid" style="grid-template-columns: 1fr;">
+                  <div class="r-field">
+                    <label for="amap-input-bilirubin">Bilirubin toàn phần (µmol/L)</label>
+                    <input type="number" id="amap-input-bilirubin" min="1.0" max="800.0" step="0.1" value="20.5" oninput="calculateAmapScore()">
+                  </div>
+                </div>
+
+                <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: 10px;">
+                  * Đơn vị quy đổi tham khảo: Albumin 3.8 g/dL = 38 g/L. Bilirubin 1.2 mg/dL = 20.5 µmol/L (Nhân với 17.1).
+                </p>
+              </div>
+            </div>
+
+            <!-- TAB 4: ACADEMIC REFERENCE -->
+            <div id="tab-academic" class="tab-content-panel">
+              <div class="form-section-card">
+                <div class="section-card-header">
+                  <span class="step-badge" style="background-color: var(--color-teal); color: white;"><i class="fa-solid fa-graduation-cap"></i></span>
+                  <h3>Cơ sở Học thuật &amp; Khuyến nghị Lâm sàng AGA 2026</h3>
+                </div>
+                <p class="section-instruction">Thông tin tổng hợp chính thức từ Hướng dẫn Thực hành Lâm sàng của Hiệp hội Tiêu hóa Hoa Kỳ (AGA) 2026. Nhấp vào các thẻ để xem chi tiết.</p>
+
+                <!-- Search bar for library -->
+                <div class="r-field" style="margin-bottom: 1.5rem;">
+                  <input type="text" id="library-search-input" placeholder="🔍 Tìm kiếm tài liệu, mô hình, khuyến cáo..." oninput="filterLibrary()">
+                </div>
+
+                <div class="knowledge-rich-content">
+                  
+                  <!-- Card 1 -->
+                  <div class="library-card" id="lib-card-1" style="border: 1px solid var(--color-divider); border-radius: 8px; padding: 1.25rem; margin-bottom: 1rem; cursor: pointer; transition: all 0.2s; background: var(--color-surface);" onclick="toggleLibraryCard(1)">
+                    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                      <h4 style="margin: 0; font-size: var(--text-sm); font-weight: 700; color: var(--color-teal); display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-list-check"></i> 1. Phân nhóm chỉ định tầm soát thường quy (AGA 2026)</h4>
+                      <span id="lib-arrow-1" style="font-size: var(--text-xs); color: var(--color-text-muted);"><i class="fa-solid fa-chevron-down"></i></span>
+                    </div>
+                    <div id="lib-content-1" style="display: none; margin-top: 1rem; border-top: 1px dashed var(--color-divider); padding-top: 1rem; font-size: var(--text-sm); line-height: 1.6;">
+                      <ul>
+                        <li style="margin-bottom: 8px;"><strong>Nhóm xơ gan (Bắt buộc tầm soát):</strong> Khuyến cáo tầm soát siêu âm + AFP mỗi 6 tháng cho xơ gan Child-Pugh lớp A hoặc B do bất kỳ nguyên nhân nào (nguy cơ hằng năm > 1.0%). Với Child-Pugh C, chỉ khuyến cáo khi đang nằm trong danh sách chờ ghép gan.</li>
+                        <li style="margin-bottom: 8px;"><strong>Nhóm viêm gan B chưa xơ gan:</strong> Chỉ định tầm soát khi nguy cơ hằng năm vượt quá ngưỡng 0.2% (Nam ≥ 40 tuổi, Nữ ≥ 50 tuổi, tiền sử gia đình bị HCC, người gốc Phi ở độ tuổi trẻ hơn, hoặc điểm số PAGE-B ≥ 10).</li>
+                        <li style="margin-bottom: 8px;"><strong>Không chỉ định tầm soát thường quy:</strong> Bệnh nhân xơ hóa gan F3 trở xuống (bao gồm cả MASLD và HCV đã đạt SVR nhưng chưa xơ gan) do nguy cơ thấp và rủi ro dương tính giả. Bệnh nhân xơ gan Child-Pugh C không có chỉ định ghép gan hoặc kỳ vọng sống &lt; 1-2 năm cũng không khuyến cáo tầm soát (do không cải thiện sống còn).</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <!-- Card 2 -->
+                  <div class="library-card" id="lib-card-2" style="border: 1px solid var(--color-divider); border-radius: 8px; padding: 1.25rem; margin-bottom: 1rem; cursor: pointer; transition: all 0.2s; background: var(--color-surface);" onclick="toggleLibraryCard(2)">
+                    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                      <h4 style="margin: 0; font-size: var(--text-sm); font-weight: 700; color: var(--color-teal); display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-dna"></i> 2. Các mô hình phân tầng nguy cơ HBV chưa xơ gan</h4>
+                      <span id="lib-arrow-2" style="font-size: var(--text-xs); color: var(--color-text-muted);"><i class="fa-solid fa-chevron-down"></i></span>
+                    </div>
+                    <div id="lib-content-2" style="display: none; margin-top: 1rem; border-top: 1px dashed var(--color-divider); padding-top: 1rem; font-size: var(--text-sm); line-height: 1.6;">
+                      <ul>
+                        <li style="margin-bottom: 8px;"><strong>PAGE-B (Platelet, Age, Gender - HBV):</strong> Rất nhạy trong việc loại trừ nguy cơ (NPV ~100% ở điểm số &lt; 10). Nhóm &lt; 10 không cần tầm soát thường quy nếu không có yếu tố nguy cơ khác.</li>
+                        <li style="margin-bottom: 8px;"><strong>REAL-B (Real-world HBV HCC Risk):</strong> Kết hợp 7 thông số lâm sàng (Tuổi, Giới tính, Rượu, Xơ gan, Tiểu đường, Tiểu cầu, AFP), thích hợp cho việc đánh giá chi tiết trong thực tế lâm sàng châu Á.</li>
+                        <li style="margin-bottom: 8px;"><strong>AASL-HCC (Age, Albumin, Sex, Liver Cirrhosis):</strong> Dễ sử dụng, độ chính xác cao và đã được kiểm chứng ngoại kiểm rộng rãi trên nhiều nhóm bệnh nhân.</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <!-- Card 3 -->
+                  <div class="library-card" id="lib-card-3" style="border: 1px solid var(--color-divider); border-radius: 8px; padding: 1.25rem; margin-bottom: 1rem; cursor: pointer; transition: all 0.2s; background: var(--color-surface);" onclick="toggleLibraryCard(3)">
+                    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                      <h4 style="margin: 0; font-size: var(--text-sm); font-weight: 700; color: var(--color-teal); display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-circle-nodes"></i> 3. Vai trò và ngưỡng cắt của thang điểm aMAP trong xơ gan</h4>
+                      <span id="lib-arrow-3" style="font-size: var(--text-xs); color: var(--color-text-muted);"><i class="fa-solid fa-chevron-down"></i></span>
+                    </div>
+                    <div id="lib-content-3" style="display: none; margin-top: 1rem; border-top: 1px dashed var(--color-divider); padding-top: 1rem; font-size: var(--text-sm); line-height: 1.6;">
+                      <ul>
+                        <li style="margin-bottom: 8px;"><strong>Mô hình aMAP:</strong> Được xây dựng trên 5 thông số độc lập, giúp dự báo nguy cơ phát triển ung thư gan bất kể nguyên nhân xơ gan nền.</li>
+                        <li style="margin-bottom: 8px;"><strong>Phân tầng nguy cơ:</strong> 
+                          <br>• aMAP &lt; 50: Nguy cơ thấp. Tỷ lệ biến cố hằng năm chỉ 0.98 / 1000 người-năm.
+                          <br>• aMAP 50 - 59.9: Nguy cơ vừa (Tỷ lệ biến cố hằng năm ~7.05 / 1000 người-năm).
+                          <br>• aMAP &ge; 60: Nguy cơ cao (Tỷ lệ biến cố hằng năm ~29.1 / 1000 người-năm).
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div><!-- end left column -->
+
+          <!-- RIGHT: RESULT COLUMN -->
+          <div class="hcc-result-column">
+
+            <!-- Result Dashboard -->
+            <div class="hcc-result-panel panel-neutral" id="hcc-display-panel">
+              <div class="result-badge" id="result-badge-text">Đang phân tích</div>
+              
+              <!-- Tab 1 Results -->
+              <div id="result-content-triage">
+                <div class="result-title"><i class="fa-solid fa-magnifying-glass-chart"></i> Kết quả chỉ định tầm soát</div>
+                <div class="result-desc" id="triage-result-text">Vui lòng chọn thông tin của bệnh nhân ở cột bên trái để đánh giá chỉ định tầm soát HCC.</div>
+                <div class="result-action" id="triage-action-text">Hệ thống sẽ cập nhật khuyến nghị ngay khi bạn thay đổi các chỉ số.</div>
+              </div>
+
+              <!-- Tab 2 Results -->
+              <div id="result-content-hbv" style="display: none;">
+                <div class="result-title"><i class="fa-solid fa-chart-line"></i> Đánh giá đa mô hình HBV</div>
+                <div class="result-desc">Kết quả tính toán đồng thời 3 mô hình điểm số nguy cơ cho bệnh nhân chưa xơ gan:</div>
+                
+                <div class="sub-score-cards-grid">
+                  <!-- PAGE-B -->
+                  <div class="sub-score-card low" id="card-score-pageb">
+                    <div class="sub-score-left">
+                      <h4>PAGE-B Score</h4>
+                      <p id="desc-score-pageb">Nguy cơ thấp, tỷ lệ HCC 0%</p>
+                    </div>
+                    <div class="sub-score-right">
+                      <div class="sub-score-value" id="val-score-pageb">0 điểm</div>
+                      <span class="sub-score-risk-label" id="lbl-score-pageb">Thấp</span>
+                    </div>
+                  </div>
+
+                  <!-- REAL-B -->
+                  <div class="sub-score-card low" id="card-score-realb">
+                    <div class="sub-score-left">
+                      <h4>REAL-B Score</h4>
+                      <p id="desc-score-realb">Nguy cơ thấp, tỷ lệ HCC <1%</p>
+                    </div>
+                    <div class="sub-score-right">
+                      <div class="sub-score-value" id="val-score-realb">0 điểm</div>
+                      <span class="sub-score-risk-label" id="lbl-score-realb">Thấp</span>
+                    </div>
+                  </div>
+
+                  <!-- AASL-HCC -->
+                  <div class="sub-score-card low" id="card-score-aasl">
+                    <div class="sub-score-left">
+                      <h4>AASL-HCC Score</h4>
+                      <p id="desc-score-aasl">Nguy cơ thấp, tỷ lệ HCC 0%</p>
+                    </div>
+                    <div class="sub-score-right">
+                      <div class="sub-score-value" id="val-score-aasl">0 điểm</div>
+                      <span class="sub-score-risk-label" id="lbl-score-aasl">Thấp</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="result-action" style="margin-top: 15px;" id="hbv-general-recommendation">
+                  <strong>Khuyến nghị lâm sàng:</strong> Bệnh nhân có nguy cơ thấp trên toàn bộ các thang điểm. Xem xét không tầm soát thường quy trừ khi có chỉ định đặc biệt khác.
+                </div>
+              </div>
+
+              <!-- Tab 3 Results -->
+              <div id="result-content-cirrhosis" style="display: none;">
+                <div class="result-title"><i class="fa-solid fa-gauge-high"></i> Điểm số aMAP (Hệ xơ gan)</div>
+                <div class="result-score-display" id="amap-score-val">0.0 điểm</div>
+                
+                <div class="hcc-progress-container">
+                  <div class="hcc-progress-bar" id="amap-progress" style="width: 0%;"></div>
+                </div>
+
+                <div class="result-desc" id="amap-result-desc">Nhập đầy đủ thông tin để tính điểm aMAP (thang điểm 0 - 100).</div>
+                
+                <div class="result-action" id="amap-result-action">
+                  <strong>Ý nghĩa lâm sàng:</strong> Điểm số aMAP phản ánh mức độ nguy cơ phát triển HCC tích lũy hằng năm ở bệnh nhân đã có xơ gan để hỗ trợ đưa ra phác đồ theo dõi tối ưu.
+                </div>
+              </div>
+
+              <!-- Tab 4 Results -->
+              <div id="result-content-academic" style="display: none;">
+                <div class="result-title"><i class="fa-solid fa-circle-info"></i> Khuyến cáo Tầm soát chuẩn</div>
+                <div class="result-desc"><strong>Phương thức tầm soát tiêu chuẩn:</strong> Siêu âm gan kết hợp định lượng nồng độ AFP huyết thanh mỗi 6 tháng.</div>
+                <div class="result-action">
+                  Siêu âm có ưu điểm rẻ tiền, không xâm lấn nhưng nhạy kém ở bệnh nhân béo phì hoặc xơ gan thô nặng. Khi đó, có thể cân nhắc chụp MRI hoặc CT nếu nghi ngờ.
+                </div>
+              </div>
+
+            </div><!-- end result panel -->
+
+          </div><!-- end right column -->
+
+        </div><!-- end workspace layout -->
+      </div><!-- end main-content-grid -->
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="global-footer">
+    <div class="footer-copyright">
+      <p>CliniPortal © 2026. Hướng dẫn phân tầng nguy cơ HCC chuẩn hóa lâm sàng.</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPT CONTROLLER -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // --- TRẠNG THÁI TOÀN CỤC ---
+      let triageState = {
+        'cirr-ab': false,
+        'cirr-c-wait': false,
+        'cirr-c-no': false,
+        'hbv-risk': false,
+        'f3-lower': false
+      };
+
+      // --- CHUYỂN ĐỔI TAB MƯỢT MÀ ---
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      const tabPanels = document.querySelectorAll('.tab-content-panel');
+      let activeTabId = 'tab-triage';
+
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const targetId = button.getAttribute('data-target');
+          activeTabId = targetId;
+
+          tabButtons.forEach(btn => {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-selected', 'false');
+          });
+          tabPanels.forEach(panel => panel.classList.remove('active'));
+
+          button.classList.add('active');
+          button.setAttribute('aria-selected', 'true');
+          document.getElementById(targetId).classList.add('active');
+
+          // Switch result panel contents
+          document.getElementById('result-content-triage').style.display = targetId === 'tab-triage' ? 'block' : 'none';
+          document.getElementById('result-content-hbv').style.display = targetId === 'tab-hbv' ? 'block' : 'none';
+          document.getElementById('result-content-cirrhosis').style.display = targetId === 'tab-cirrhosis' ? 'block' : 'none';
+          document.getElementById('result-content-academic').style.display = targetId === 'tab-academic' ? 'block' : 'none';
+
+          // Update result panel background styling
+          updateResultPanelStyles();
+        });
+      });
+
+      // --- TAB 1: TRIAGE CONTROLLER ---
+      window.toggleTriageCard = function(id) {
+        const card = document.getElementById(`card-${id}`);
+        const checkboxIcon = card.querySelector('.triage-icon i');
+
+        // Toggle state
+        triageState[id] = !triageState[id];
+
+        // Mutual exclusion logic for cirrhosis classifications
+        if (id === 'cirr-ab' && triageState['cirr-ab']) {
+          resetSpecificTriage('cirr-c-wait');
+          resetSpecificTriage('cirr-c-no');
+          resetSpecificTriage('f3-lower');
+        } else if (id === 'cirr-c-wait' && triageState['cirr-c-wait']) {
+          resetSpecificTriage('cirr-ab');
+          resetSpecificTriage('cirr-c-no');
+          resetSpecificTriage('f3-lower');
+        } else if (id === 'cirr-c-no' && triageState['cirr-c-no']) {
+          resetSpecificTriage('cirr-ab');
+          resetSpecificTriage('cirr-c-wait');
+          resetSpecificTriage('f3-lower');
+        } else if (id === 'f3-lower' && triageState['f3-lower']) {
+          resetSpecificTriage('cirr-ab');
+          resetSpecificTriage('cirr-c-wait');
+          resetSpecificTriage('cirr-c-no');
+        }
+
+        if (triageState[id]) {
+          card.classList.add('selected');
+          checkboxIcon.className = 'fa-solid fa-square-check';
+        } else {
+          card.classList.remove('selected');
+          checkboxIcon.className = 'fa-regular fa-square-check';
+        }
+
+        evaluateGeneralTriage();
+      };
+
+      function resetSpecificTriage(id) {
+        triageState[id] = false;
+        const card = document.getElementById(`card-${id}`);
+        if (card) {
+          card.classList.remove('selected');
+          card.querySelector('.triage-icon i').className = 'fa-regular fa-square-check';
+        }
+      }
+
+      window.resetTriage = function() {
+        Object.keys(triageState).forEach(key => {
+          resetSpecificTriage(key);
+        });
+        evaluateGeneralTriage();
+      };
+
+      function evaluateGeneralTriage() {
+        const panel = document.getElementById('hcc-display-panel');
+        const badge = document.getElementById('result-badge-text');
+        const text = document.getElementById('triage-result-text');
+        const action = document.getElementById('triage-action-text');
+
+        // Apply neutral theme reset
+        panel.className = 'hcc-result-panel panel-neutral';
+        badge.textContent = 'Đang phân tích';
+
+        let selectedKeys = Object.keys(triageState).filter(k => triageState[k]);
+
+        if (selectedKeys.length === 0) {
+          text.innerHTML = 'Vui lòng chọn thông tin của bệnh nhân ở cột bên trái để đánh giá chỉ định tầm soát HCC.';
+          action.innerHTML = 'Hệ thống sẽ cập nhật khuyến nghị ngay khi bạn thay đổi các chỉ số.';
+          return;
+        }
+
+        // Triage Logic
+        if (triageState['cirr-ab']) {
+          panel.className = 'hcc-result-panel panel-high';
+          badge.textContent = 'ĐỦ TIÊU CHUẨN';
+          text.innerHTML = `<strong>KHUYẾN CÁO TẦM SOÁT THƯỜNG QUY</strong><br><br>Bệnh nhân xơ gan Child-Pugh lớp A hoặc B có nguy cơ mắc HCC hằng năm > 1.0%, do đó có lợi ích sống còn rõ rệt khi phát hiện sớm khối u.`;
+          action.innerHTML = `<strong>Hành động đề xuất:</strong> Chỉ định siêu âm gan kết hợp định lượng nồng độ AFP huyết thanh mỗi 6 tháng thường quy.`;
+        } 
+        else if (triageState['cirr-c-wait']) {
+          panel.className = 'hcc-result-panel panel-high';
+          badge.textContent = 'ĐỦ TIÊU CHUẨN';
+          text.innerHTML = `<strong>KHUYẾN CÁO TẦM SOÁT THƯỜNG QUY (Chờ ghép gan)</strong><br><br>Bệnh nhân xơ gan Child-Pugh lớp C nằm trong danh sách chờ ghép gan cần được tầm soát tích cực để phát hiện sớm tổn thương u, tối ưu hóa điểm ưu tiên ghép gan (MELD exception) hoặc tránh nguy cơ vượt quá tiêu chuẩn ghép gan.`;
+          action.innerHTML = `<strong>Hành động đề xuất:</strong> Thực hiện siêu âm + AFP mỗi 6 tháng hoặc chụp cắt lớp vi tính (CT)/cộng hưởng từ (MRI) nếu siêu âm gan không đủ độ tin cậy.`;
+        } 
+        else if (triageState['cirr-c-no']) {
+          panel.className = 'hcc-result-panel panel-low';
+          badge.textContent = 'KHÔNG KHUYẾN CÁO';
+          text.innerHTML = `<strong>KHÔNG KHUYẾN CÁO TẦM SOÁT THƯỜNG QUY</strong><br><br>Bệnh nhân xơ gan Child-Pugh lớp C không phải ứng viên ghép gan, hoặc người bệnh có kỳ vọng sống dưới 1-2 năm do bệnh đồng mắc nặng sẽ không cải thiện được thời gian sống còn khi phát hiện khối u gan.`;
+          action.innerHTML = `<strong>Lưu ý lâm sàng:</strong> Không chỉ định tầm soát thường quy. Tập trung vào chăm sóc giảm nhẹ hoặc điều trị triệu chứng liên quan.`;
+        } 
+        else if (triageState['hbv-risk']) {
+          panel.className = 'hcc-result-panel panel-high';
+          badge.textContent = 'ĐỦ TIÊU CHUẨN';
+          text.innerHTML = `<strong>KHUYẾN CÁO TẦM SOÁT THƯỜNG QUY (Nhiễm HBV mạn)</strong><br><br>Bệnh nhân nhiễm HBV mạn tính chưa xơ gan có ít nhất một yếu tố nguy cơ trên có tỷ lệ mắc HCC hằng năm vượt quá ngưỡng 0.2%, do đó đủ điều kiện để tầm soát.`;
+          action.innerHTML = `<strong>Hành động đề xuất:</strong> Chỉ định siêu âm gan + định lượng AFP mỗi 6 tháng.`;
+        } 
+        else if (triageState['f3-lower']) {
+          panel.className = 'hcc-result-panel panel-low';
+          badge.textContent = 'KHÔNG KHUYẾN CÁO';
+          text.innerHTML = `<strong>KHÔNG KHUYẾN CÁO TẦM SOÁT THƯỜNG QUY (F3 hoặc thấp hơn)</strong><br><br>Bệnh nhân có xơ hóa gan từ F3 trở xuống, bao gồm cả nhóm MASLD và HCV đã đạt SVR chưa xơ gan có nguy cơ hằng năm dưới 0.2%, việc tầm soát hàng loạt không mang lại hiệu quả chi phí và tăng nguy cơ dương tính giả.`;
+          action.innerHTML = `<strong>Lưu ý lâm sàng:</strong> Tránh tầm soát thường quy. Tuy nhiên, nếu có yếu tố đi kèm (ví dụ: tiền sử gia đình mạnh) hãy thảo luận cá thể hóa với bệnh nhân.`;
+        }
+      }
+
+      // --- SYNC INPUTS BETWEEN TABS ---
+      const hbvAgeInput = document.getElementById('hbv-input-age');
+      const amapAgeInput = document.getElementById('amap-input-age');
+      const hbvPltInput = document.getElementById('hbv-input-plt');
+      const amapPltInput = document.getElementById('amap-input-plt');
+      const hbvAlbInput = document.getElementById('hbv-input-albumin');
+      const amapAlbInput = document.getElementById('amap-input-albumin');
+
+      // Sync Age
+      hbvAgeInput.addEventListener('input', () => {
+        amapAgeInput.value = hbvAgeInput.value;
+        calculateAmapScore();
+      });
+      amapAgeInput.addEventListener('input', () => {
+        hbvAgeInput.value = amapAgeInput.value;
+        calculateHbvScores();
+      });
+
+      // Sync Platelets
+      hbvPltInput.addEventListener('input', () => {
+        amapPltInput.value = hbvPltInput.value;
+        calculateAmapScore();
+      });
+      amapPltInput.addEventListener('input', () => {
+        hbvPltInput.value = amapPltInput.value;
+        calculateHbvScores();
+      });
+
+      // Sync Albumin (g/dL to g/L conversion)
+      hbvAlbInput.addEventListener('input', () => {
+        const valGdl = parseFloat(hbvAlbInput.value) || 0;
+        amapAlbInput.value = valGdl ? Math.round(valGdl * 10) : '';
+        calculateAmapScore();
+      });
+      amapAlbInput.addEventListener('input', () => {
+        const valGl = parseFloat(amapAlbInput.value) || 0;
+        hbvAlbInput.value = valGl ? (valGl / 10).toFixed(1) : '';
+        calculateHbvScores();
+      });
+
+      // --- RADIO BUTTON STYLING ---
+      let hbvGender = 'male';
+      let hbvDiabetes = 'no';
+      let hbvAlcohol = 'no';
+
+      let amapGender = 'male';
+
+      window.updateGenderRadio = function(val) {
+        hbvGender = val;
+        document.getElementById('lbl-gender-m').className = val === 'male' ? 'btn-radio checked' : 'btn-radio';
+        document.getElementById('lbl-gender-f').className = val === 'female' ? 'btn-radio checked' : 'btn-radio';
+        
+        // Sync to aMAP gender
+        amapGender = val;
+        document.getElementById('lbl-amap-gender-m').className = val === 'male' ? 'btn-radio checked' : 'btn-radio';
+        document.getElementById('lbl-amap-gender-f').className = val === 'female' ? 'btn-radio checked' : 'btn-radio';
+        document.querySelector(`input[name="amap-input-gender"][value="${val}"]`).checked = true;
+
+        calculateHbvScores();
+        calculateAmapScore();
+      };
+
+      window.updateDiabetesRadio = function(val) {
+        hbvDiabetes = val;
+        document.getElementById('lbl-diabetes-yes').className = val === 'yes' ? 'btn-radio checked' : 'btn-radio';
+        document.getElementById('lbl-diabetes-no').className = val === 'no' ? 'btn-radio checked' : 'btn-radio';
+        calculateHbvScores();
+      };
+
+      window.updateAlcoholRadio = function(val) {
+        hbvAlcohol = val;
+        document.getElementById('lbl-alcohol-yes').className = val === 'yes' ? 'btn-radio checked' : 'btn-radio';
+        document.getElementById('lbl-alcohol-no').className = val === 'no' ? 'btn-radio checked' : 'btn-radio';
+        calculateHbvScores();
+      };
+
+      window.updateAmapGenderRadio = function(val) {
+        amapGender = val;
+        document.getElementById('lbl-amap-gender-m').className = val === 'male' ? 'btn-radio checked' : 'btn-radio';
+        document.getElementById('lbl-amap-gender-f').className = val === 'female' ? 'btn-radio checked' : 'btn-radio';
+        
+        // Sync to HBV gender
+        hbvGender = val;
+        document.getElementById('lbl-gender-m').className = val === 'male' ? 'btn-radio checked' : 'btn-radio';
+        document.getElementById('lbl-gender-f').className = val === 'female' ? 'btn-radio checked' : 'btn-radio';
+        document.querySelector(`input[name="hbv-input-gender"][value="${val}"]`).checked = true;
+
+        calculateHbvScores();
+        calculateAmapScore();
+      };
+
+      // --- TAB 2: HBV SCORES CALCULATOR ---
+      window.calculateHbvScores = function() {
+        const age = parseInt(hbvAgeInput.value) || 0;
+        const platelets = parseInt(hbvPltInput.value) || 0;
+        const albumin = parseFloat(hbvAlbInput.value) || 0;
+        const afp = parseFloat(document.getElementById('hbv-input-afp').value) || 0;
+        const isMale = hbvGender === 'male';
+        const hasDiabetes = hbvDiabetes === 'yes';
+        const hasAlcohol = hbvAlcohol === 'yes';
+
+        if (!age || !platelets || !albumin) {
+          updateHbvResultsNull();
+          return;
+        }
+
+        // 1. PAGE-B CALCULATOR
+        let pagebPoints = 0;
+        // Age points
+        if (age >= 16 && age <= 29) pagebPoints += 0;
+        else if (age >= 30 && age <= 39) pagebPoints += 2;
+        else if (age >= 40 && age <= 49) pagebPoints += 4;
+        else if (age >= 50 && age <= 59) pagebPoints += 6;
+        else if (age >= 60 && age <= 69) pagebPoints += 8;
+        else if (age >= 70) pagebPoints += 10;
+        // Gender points
+        if (isMale) pagebPoints += 6;
+        // Platelet points
+        if (platelets >= 200) pagebPoints += 0;
+        else if (platelets >= 100 && platelets < 200) pagebPoints += 6;
+        else if (platelets < 100) pagebPoints += 9;
+
+        let pagebRisk = 'low';
+        let pagebDesc = 'Nguy cơ thấp (Tỷ lệ mắc HCC 0% trong 5 năm)';
+        if (pagebPoints >= 10 && pagebPoints <= 17) {
+          pagebRisk = 'medium';
+          pagebDesc = 'Nguy cơ trung bình (Cần giám sát siêu âm + AFP mỗi 6 tháng)';
+        } else if (pagebPoints >= 18) {
+          pagebRisk = 'high';
+          pagebDesc = 'Nguy cơ cao (Bắt buộc giám sát chặt chẽ mỗi 6 tháng)';
+        }
+
+        // 2. REAL-B CALCULATOR
+        let realbPoints = 0;
+        // Gender points
+        if (isMale) realbPoints += 1;
+        // Age points
+        if (age >= 18 && age <= 29) realbPoints += 0;
+        else if (age >= 30 && age <= 39) realbPoints += 1;
+        else if (age >= 40 && age <= 49) realbPoints += 2;
+        else if (age >= 50 && age <= 59) realbPoints += 3;
+        else if (age >= 60 && age <= 69) realbPoints += 4;
+        else if (age >= 70 && age <= 79) realbPoints += 5;
+        else if (age >= 80) realbPoints += 6;
+        // Alcohol
+        if (hasAlcohol) realbPoints += 1;
+        // Diabetes
+        if (hasDiabetes) realbPoints += 1;
+        // Cirrhosis (defaulted to 0 for non-cirrhotic HBV)
+        realbPoints += 0;
+        // Platelets
+        if (platelets < 150) realbPoints += 1;
+        // AFP
+        if (afp >= 10) realbPoints += 1;
+
+        let realbRisk = 'low';
+        let realbDesc = 'Nguy cơ thấp (Tỷ lệ mắc HCC 3 năm < 1%)';
+        if (realbPoints >= 4 && realbPoints <= 7) {
+          realbRisk = 'medium';
+          realbDesc = 'Nguy cơ trung bình (Tỷ lệ mắc HCC 3 năm 1 - 5%)';
+        } else if (realbPoints >= 8) {
+          realbRisk = 'high';
+          realbDesc = 'Nguy cơ cao (Tỷ lệ mắc HCC 3 năm > 5%)';
+        }
+
+        // 3. AASL-HCC CALCULATOR
+        let aaslPoints = 0;
+        // Age points
+        if (age < 30) aaslPoints += 0;
+        else if (age >= 30 && age <= 39) aaslPoints += 2;
+        else if (age >= 40 && age <= 49) aaslPoints += 4;
+        else if (age >= 50 && age <= 59) aaslPoints += 6;
+        else if (age >= 60 && age <= 69) aaslPoints += 8;
+        else if (age >= 70) aaslPoints += 10;
+        // Cirrhosis
+        aaslPoints += 0; // Defaulted to 0
+        // Albumin
+        if (albumin >= 3.5) aaslPoints += 0;
+        else if (albumin >= 2.8 && albumin < 3.5) aaslPoints += 3;
+        else if (albumin < 2.8) aaslPoints += 5;
+        // Sex
+        if (isMale) aaslPoints += 3;
+
+        let aaslRisk = 'low';
+        let aaslDesc = 'Nguy cơ thấp (Tỷ lệ HCC 5 năm ~0%)';
+        if (aaslPoints >= 6 && aaslPoints <= 19) {
+          aaslRisk = 'medium';
+          aaslDesc = 'Nguy cơ trung bình (Tỷ lệ HCC 5 năm ~4.2%)';
+        } else if (aaslPoints >= 20) {
+          aaslRisk = 'high';
+          aaslDesc = 'Nguy cơ cao (Tỷ lệ HCC 5 năm ~17.6%)';
+        }
+
+        // Update UI
+        updateSubScoreCard('pageb', pagebPoints, pagebRisk, pagebDesc);
+        updateSubScoreCard('realb', realbPoints, realbRisk, realbDesc);
+        updateSubScoreCard('aasl', aaslPoints, aaslRisk, aaslDesc);
+
+        // Overall recommendation
+        const isHighOverall = pagebRisk === 'high' || realbRisk === 'high' || aaslRisk === 'high';
+        const isMediumOverall = pagebRisk === 'medium' || realbRisk === 'medium' || aaslRisk === 'medium';
+        const generalRec = document.getElementById('hbv-general-recommendation');
+        const displayPanel = document.getElementById('hcc-display-panel');
+        const badge = document.getElementById('result-badge-text');
+
+        if (isHighOverall) {
+          displayPanel.className = 'hcc-result-panel panel-high';
+          badge.textContent = 'NGUY CƠ CAO';
+          generalRec.innerHTML = `<strong>Khuyến nghị lâm sàng:</strong> Bệnh nhân có ít nhất 1 mô hình đánh giá nguy cơ cao. <strong>Bắt buộc tầm soát định kỳ siêu âm + AFP mỗi 6 tháng.</strong> Thảo luận với bệnh nhân về việc tuân thủ điều trị thuốc kháng virus.`;
+        } else if (isMediumOverall) {
+          displayPanel.className = 'hcc-result-panel panel-medium';
+          badge.textContent = 'NGUY CƠ TRUNG BÌNH';
+          generalRec.innerHTML = `<strong>Khuyến nghị lâm sàng:</strong> Nguy cơ trung bình. <strong>Khuyến nghị tầm soát siêu âm + AFP mỗi 6 tháng</strong> theo hướng dẫn AGA 2026 do tỷ lệ biến cố tích lũy cao hơn bình thường.`;
+        } else {
+          displayPanel.className = 'hcc-result-panel panel-low';
+          badge.textContent = 'NGUY CƠ THẤP';
+          generalRec.innerHTML = `<strong>Khuyến nghị lâm sàng:</strong> Tất cả các thang điểm đều chỉ ra nguy cơ rất thấp. Tỷ lệ biến cố HCC thực tế sát mốc 0%. Xem xét không tầm soát thường quy nếu không có yếu tố nguy cơ đặc biệt nào khác đi kèm.`;
+        }
+      };
+
+      function updateSubScoreCard(model, points, risk, desc) {
+        const card = document.getElementById(`card-score-${model}`);
+        const valSpan = document.getElementById(`val-score-${model}`);
+        const lblSpan = document.getElementById(`lbl-score-${model}`);
+        const descP = document.getElementById(`desc-score-${model}`);
+
+        card.className = `sub-score-card ${risk}`;
+        valSpan.textContent = `${points} điểm`;
+        lblSpan.textContent = risk === 'low' ? 'Thấp' : (risk === 'medium' ? 'Vừa' : 'Cao');
+        descP.textContent = desc;
+      }
+
+      function updateHbvResultsNull() {
+        const generalRec = document.getElementById('hbv-general-recommendation');
+        generalRec.innerHTML = `<strong>Chưa đủ thông tin:</strong> Vui lòng nhập đầy đủ các thông số ở cột nhập liệu.`;
+      }
+
+      // --- TAB 3: AMAP SCORE CALCULATOR ---
+      window.calculateAmapScore = function() {
+        const age = parseInt(amapAgeInput.value) || 0;
+        const platelets = parseInt(amapPltInput.value) || 0;
+        const albumin = parseFloat(amapAlbInput.value) || 0;
+        const bilirubin = parseFloat(document.getElementById('amap-input-bilirubin').value) || 0;
+        const isMale = amapGender === 'male';
+        const sexVal = isMale ? 1 : 0;
+
+        const displayPanel = document.getElementById('hcc-display-panel');
+        const scoreDisplay = document.getElementById('amap-score-val');
+        const progressBar = document.getElementById('amap-progress');
+        const resultDesc = document.getElementById('amap-result-desc');
+        const resultAction = document.getElementById('amap-result-action');
+        const badge = document.getElementById('result-badge-text');
+
+        if (!age || !platelets || !albumin || !bilirubin) {
+          scoreDisplay.textContent = '0.0 điểm';
+          progressBar.style.width = '0%';
+          resultDesc.textContent = 'Vui lòng nhập đầy đủ các chỉ số của bệnh nhân để tính điểm số aMAP.';
+          resultAction.innerHTML = `<strong>Ý nghĩa lâm sàng:</strong> Thang điểm aMAP phân tầng cụ thể mức độ nguy cơ HCC ở bệnh nhân xơ gan để tối ưu hóa tần suất theo dõi.`;
+          return;
+        }
+
+        // aMAP Formula calculation:
+        // ALBI score = log10(bilirubin) * 0.66 + albumin * -0.085
+        const albi = (Math.log10(bilirubin) * 0.66) + (albumin * -0.085);
+        const rawScore = 0.06 * age + 0.89 * sexVal + 0.48 * albi - 0.01 * platelets + 7.4;
+        const amapScore = (rawScore / 14.77) * 100;
+        const amapScoreRounded = Math.max(0, Math.min(100, parseFloat(amapScore.toFixed(1))));
+
+        scoreDisplay.textContent = `${amapScoreRounded} điểm`;
+        progressBar.style.width = `${amapScoreRounded}%`;
+
+        // Classify risk
+        if (amapScoreRounded < 50.0) {
+          displayPanel.className = 'hcc-result-panel panel-low';
+          badge.textContent = 'NGUY CƠ THẤP';
+          resultDesc.innerHTML = `<strong>aMAP &lt; 50 (Nguy cơ thấp):</strong> Bệnh nhân xơ gan có tỷ lệ biến cố phát triển HCC hằng năm cực thấp (khoảng 0.98 ca trên 1000 người-năm).`;
+          resultAction.innerHTML = `<strong>Hành động đề xuất:</strong> Tiếp tục thực hiện tầm soát siêu âm gan định kỳ kết hợp AFP mỗi 6 tháng. Đây là nhóm có dự hậu tốt nhất.`;
+        } else if (amapScoreRounded >= 50.0 && amapScoreRounded < 60.0) {
+          displayPanel.className = 'hcc-result-panel panel-medium';
+          badge.textContent = 'NGUY CƠ VỪA';
+          resultDesc.innerHTML = `<strong>aMAP 50 - 59.9 (Nguy cơ trung bình):</strong> Tỷ lệ biến cố HCC tăng đáng kể (khoảng 7.05 ca trên 1000 người-năm).`;
+          resultAction.innerHTML = `<strong>Hành động đề xuất:</strong> Giám sát chặt chẽ siêu âm + AFP mỗi 6 tháng. Chú ý tối ưu hóa chất lượng hình ảnh siêu âm, nếu bị hạn chế do thể trạng béo phì hoặc gan xơ hóa thô, cân nhắc thảo luận chụp CT hoặc MRI.`;
+        } else if (amapScoreRounded >= 60.0) {
+          displayPanel.className = 'hcc-result-panel panel-high';
+          badge.textContent = 'NGUY CƠ CAO';
+          resultDesc.innerHTML = `<strong>aMAP &ge; 60 (Nguy cơ cao):</strong> Bệnh nhân xơ gan có nguy cơ cao vượt trội (khoảng 29.1 ca trên 1000 người-năm). Tỷ lệ u phát sinh tích lũy rất cao theo thời gian.`;
+          resultAction.innerHTML = `<strong>Hành động đề xuất:</strong> Chỉ định siêu âm + AFP nghiêm ngặt mỗi 6 tháng. Cân nhắc lựa chọn chụp MRI hoặc CT bụng có cản từ định kỳ thay thế siêu âm nếu phát hiện gan xơ thô thắt nút lớn gây khó quan sát.`;
+        }
+      };
+
+      // --- RESULTS PANEL DYNAMIC BACKGROUND ---
+      function updateResultPanelStyles() {
+        if (activeTabId === 'tab-triage') {
+          evaluateGeneralTriage();
+        } else if (activeTabId === 'tab-hbv') {
+          calculateHbvScores();
+        } else if (activeTabId === 'tab-cirrhosis') {
+          calculateAmapScore();
+        } else if (activeTabId === 'tab-academic') {
+          const displayPanel = document.getElementById('hcc-display-panel');
+          const badge = document.getElementById('result-badge-text');
+          displayPanel.className = 'hcc-result-panel panel-neutral';
+          badge.textContent = 'Khuyến cáo AGA 2026';
+        }
+      }
+
+      // --- TAB 4: INTERACTIVE ACCORDION & SEARCH ---
+      window.toggleLibraryCard = function(id) {
+        const content = document.getElementById(`lib-content-${id}`);
+        const arrow = document.getElementById(`lib-arrow-${id}`);
+        const isCollapsed = content.style.display === 'none';
+
+        if (isCollapsed) {
+          content.style.display = 'block';
+          arrow.innerHTML = '<i class="fa-solid fa-chevron-up"></i>';
+        } else {
+          content.style.display = 'none';
+          arrow.innerHTML = '<i class="fa-solid fa-chevron-down"></i>';
+        }
+      };
+
+      window.filterLibrary = function() {
+        const query = document.getElementById('library-search-input').value.toLowerCase();
+        const cards = document.querySelectorAll('.library-card');
+
+        cards.forEach(card => {
+          const text = card.textContent.toLowerCase();
+          const matches = text.includes(query);
+          card.style.display = matches ? 'block' : 'none';
+          
+          const content = card.querySelector('[id^="lib-content-"]');
+          const arrow = card.querySelector('[id^="lib-arrow-"]');
+          if (query.length > 2 && matches) {
+            content.style.display = 'block';
+            arrow.innerHTML = '<i class="fa-solid fa-chevron-up"></i>';
+          } else if (query.length === 0) {
+            content.style.display = 'none';
+            arrow.innerHTML = '<i class="fa-solid fa-chevron-down"></i>';
+          }
+        });
+      };
+
+      // Initialize Calculations
+      calculateHbvScores();
+      calculateAmapScore();
+    });
+  </script>
+</body>
+
+</html>

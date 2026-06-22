@@ -53,8 +53,7 @@
 
         /* ══ FLOW CANVAS ══ */
         .flow-page {
-            padding: 0 0 40px 0;
-            width: 100%;
+            padding-bottom: 40px;
             box-sizing: border-box;
         }
 
@@ -799,6 +798,74 @@
             height: 1px;
             background: #e2e8f0;
         }
+
+        /* Đường ngang nối các nhánh */
+        .branch-horizontal {
+            position: absolute;
+            top: -15px;
+            /* Nửa chiều cao đường dọc */
+            left: 25%;
+            right: 25%;
+            height: 2px;
+            background-color: var(--line-color);
+        }
+
+        .branch-path {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            max-width: 200px;
+        }
+
+        .branch-label {
+            position: absolute;
+            top: -25px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: #fff;
+        }
+
+        .label-yes {
+            color: var(--success-color);
+        }
+
+        .label-no {
+            color: var(--danger-color);
+        }
+
+        /* Đường dọc từ nhánh xuống node con */
+        .branch-vertical {
+            width: 2px;
+            height: 15px;
+            background-color: var(--line-color);
+            margin-bottom: 0;
+            /* Nối trực tiếp vào node */
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .branch-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .branch-path {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .branch-vertical {
+                height: 20px;
+            }
+
+            .flow-node {
+                width: 90%;
+            }
+        }
     </style>
 </head>
 
@@ -853,7 +920,7 @@
         </aside>
 
         <!-- MAIN -->
-        <main class="app-main-container flow-page">
+        <main class="main-wrapper flow-page">
             <!-- BREADCRUMB -->
             <nav aria-label="Breadcrumb" class="breadcrumb-container">
                 <ol class="breadcrumb-list">
@@ -1004,6 +1071,9 @@
                         <div class="flow-connector-line"></div>
                         <div class="flow-connector-arrow"></div>
                     </div>
+
+                    <!-- Đường ngang nối 2 nhánh -->
+                    <div class="branch-horizontal"></div>
                     <div class="flow-branch">
                         <!-- LEFT: ALF YES -->
                         <div class="flow-branch-side">
