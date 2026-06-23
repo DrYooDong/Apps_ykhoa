@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CliniPortal - Module Sinh lý & Sinh lý bệnh Song song (Physio-Patho Mirror)">
+    <title>Physio-Patho Mirror - Hệ RAAS & Điều hòa Huyết áp</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/components/header.css">
+    <link rel="stylesheet" href="../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../css/components/footer.css">
+
+    <script src="../../pages/header.js" defer></script>
+
+    <style>
+        /* ============================================================
+     BREADCRUMB SYSTEM
+     ============================================================ */
+        .breadcrumb-container {
+            padding: 0.5rem 0 1.25rem 0;
+        }
+
+        .breadcrumb-list {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: var(--text-sm);
+        }
+
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            color: var(--color-text-muted);
+        }
+
+        .breadcrumb-link {
+            color: var(--color-text-muted);
+            transition: color var(--tr);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            text-decoration: none;
+        }
+
+        .breadcrumb-link:hover {
+            color: var(--color-primary);
+            text-decoration: underline;
+        }
+
+        .breadcrumb-item:not(:last-child)::after {
+            content: ">";
+            margin-left: 0.5rem;
+            color: var(--color-border);
+            font-size: 0.8rem;
+            pointer-events: none;
+        }
+
+        .breadcrumb-item.active {
+            color: #008080;
+            /* Màu đặc trưng y khoa lâm sàng */
+            font-weight: 600;
+        }
+
+        /* ============================================================
+     SECTION 1: PHYSIOLOGY FLAT GRID (Lưới phẳng tra cứu nhanh)
+     ============================================================ */
+        .section-divider {
+            margin: 2.5rem 0 1.5rem 0;
+            border: 0;
+            border-top: 1px dashed var(--color-border);
+        }
+
+        .specialty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+            gap: 1.25rem;
+        }
+
+        .specialty-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            transition: transform var(--tr), box-shadow var(--tr), border-color var(--tr), background var(--tr);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .specialty-card:not(.disabled):hover {
+            transform: translateY(-3px);
+            border-color: var(--color-primary);
+            box-shadow: var(--shadow-md);
+        }
+
+        .specialty-card.disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            background: var(--color-surface-offset);
+            border-color: var(--color-divider);
+        }
+
+        .specialty-card.disabled .specialty-icon {
+            filter: grayscale(100%);
+            opacity: 0.7;
+        }
+
+        .specialty-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--color-surface-offset);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            border: 1px solid var(--color-divider);
+            transition: transform var(--tr), background var(--tr), border-color var(--tr);
+        }
+
+        .specialty-card:not(.disabled):hover .specialty-icon {
+            transform: scale(1.05);
+            background: var(--color-primary-hl);
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        /* Grouping Layout for Physiology Section */
+        .physio-group-container {
+            margin-bottom: 2rem;
+        }
+
+        .physio-group-container:last-child {
+            margin-bottom: 0;
+        }
+
+        .physio-group-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--color-divider);
+        }
+
+        .physio-group-header h3 {
+            font-size: var(--text-sm);
+            font-weight: 700;
+            color: var(--color-text-muted);
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .physio-group-icon {
+            font-size: 1.1rem;
+        }
+
+        .specialty-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .specialty-info h3 {
+            font-size: var(--text-base);
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            color: var(--color-text);
+        }
+
+        .specialty-info p {
+            font-size: var(--text-xs);
+            color: var(--color-text-muted);
+            line-height: 1.5;
+        }
+
+        /* ============================================================
+     SECTION 2: PATHOPHYSIOLOGY DYNAMIC ACCORDION (Phân nhóm hội chứng)
+     ============================================================ */
+        .groups-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .group-container {
+            flex: 1 1 calc(50% - 1.25rem);
+            /* Tối ưu hóa chia đôi 2 cột trên desktop khi đóng */
+            min-width: 320px;
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-divider);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--tr);
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Khi nhóm được kích hoạt: Bung rộng 100% hàng để hiện lưới card con */
+        .group-container.active {
+            flex: 1 1 100%;
+            box-shadow: var(--shadow-md);
+        }
+
+        .group-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            padding: 0.25rem 0;
+        }
+
+        .group-heading h3 {
+            font-size: var(--text-md);
+            font-weight: 700;
+            margin: 0;
+            color: var(--color-text);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toggle-indicator {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform var(--tr);
+            color: var(--color-text-muted);
+        }
+
+        .toggle-indicator::after {
+            content: '▼';
+            font-size: 0.75rem;
+        }
+
+        .group-container.active .toggle-indicator {
+            transform: rotate(180deg);
+            color: var(--color-primary);
+        }
+
+        /* Kỹ thuật CSS Grid fr giúp mở rộng mượt mà không khựng */
+        .category-grid-wrapper {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows var(--tr), margin var(--tr), padding var(--tr);
+        }
+
+        .group-container.active .category-grid-wrapper {
+            grid-template-rows: 1fr;
+            margin-top: 1.25rem;
+            padding-top: 1.25rem;
+            border-top: 1px dashed var(--color-divider);
+        }
+
+        .category-grid {
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+        }
+
+        @media (min-width: 768px) {
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .category-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Nhận diện màu sắc đường viền chuyên khoa khi kích hoạt */
+        .group-container.g-red.active {
+            border-left: 4px solid var(--color-rose);
+        }
+
+        .group-container.g-blue.active {
+            border-left: 4px solid var(--color-primary);
+        }
+
+        .group-container.g-amber.active {
+            border-left: 4px solid var(--color-warning);
+        }
+
+        .group-container.g-teal.active {
+            border-left: 4px solid #14b8a6;
+        }
+
+        .group-container.g-green.active {
+            border-left: 4px solid var(--color-success);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header-placeholder" data-header-path="../header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!--SIDEBAR-->
+        <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="Sinhly-sinhlybenh.html" class="nav-item active" aria-current="page" title="Sinh lý & Sinh lý bệnh">
+              <span class="nav-icon">🧬</span>
+              <span class="nav-text">Sinh lý</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Kỹ năng lâm sàng/ky-nang-lam-sang.html" class="nav-item" title="Kỹ năng lâm sàng">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Công cụ/cong-cu.html" class="nav-item" title="Công cụ lâm sàng">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý & Kháng sinh">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+              <span class="nav-icon">📄</span>
+              <span class="nav-text">Y học chứng cứ</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+        <div class="main-wrapper" id="mainContent">
+
+            <nav aria-label="Breadcrumb" class="breadcrumb-container">
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item">
+                        <a href="../../index.html" class="breadcrumb-link">
+                            <span class="home-icon">🏠</span> Home
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Sinh lý & sinh lý bệnh</li>
+                </ol>
+            </nav>
+
+            <section class="hero-dashboard" aria-labelledby="hero-title">
+                <div class="hero-intro">
+                    <h1 id="hero-title">SINH LÝ & SINH LÝ BỆNH HỌC</h1>
+                    <p>Hệ thống hóa kiến thức Sinh lý và Sinh lý bệnh học, cung cấp nền tảng vững chắc để hiểu cơ chế
+                        bệnh sinh và rối loạn chức năng cơ quan.</p>
+                </div>
+            </section>
+
+            <main class="main-content-grid">
+                
+                <!-- PHẦN 1: SINH LÝ TẾ BÀO, THẦN KINH - CƠ VÀ TRUYỀN TÍN HIỆU -->
+                <section aria-labelledby="part1-heading">
+                    <div class="physio-group-container">
+                        <div class="physio-group-header">
+                            <span class="physio-group-icon">🧠</span>
+                            <h3 id="part1-heading">Phần 1: Sinh lý Tế bào, Thần kinh - Cơ và Truyền tín hiệu</h3>
+                        </div>
+                        <div class="specialty-grid">
+                            <a href="Visual Physiology/Phan1/Chuong1_MangTeBao.html" class="specialty-card">
+                                <div class="specialty-icon">🧬</div>
+                                <div class="specialty-info">
+                                    <h3>Chương 1: Màng tế bào &amp; Truyền tín hiệu</h3>
+                                    <p>Sơ đồ Vector Protein màng, dòng chảy 4 con đường truyền tin thứ hai (cAMP, IP3/DAG, TK, Ca2+-CaM).</p>
+                                </div>
+                            </a>
+                            <a href="Visual Physiology/Phan1/Chuong2_DienSinhLy.html" class="specialty-card">
+                                <div class="specialty-icon">⚡</div>
+                                <div class="specialty-info">
+                                    <h3>Chương 2: Điện sinh lý &amp; Synapse</h3>
+                                    <p>Đồ thị điện thế hoạt động, giải phóng chất truyền thần kinh (SNARE), tăng tiềm lực dài hạn (LTP).</p>
+                                </div>
+                            </a>
+                            <a href="Visual Physiology/Phan1/Chuong3_SinhLyCo.html" class="specialty-card">
+                                <div class="specialty-icon">💪</div>
+                                <div class="specialty-info">
+                                    <h3>Chương 3: Sinh lý co cơ</h3>
+                                    <p>Chu kỳ cầu cơ actin-myosin, so sánh cơ chế kích thích-co cơ giữa cơ vân, cơ tim và cơ trơn.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN 2: LƯU BIẾN HỌC, MIỄN DỊCH VÀ CẤP CỨU HỆ MÁU -->
+                <section aria-labelledby="part2-heading">
+                    <div class="physio-group-container">
+                        <div class="physio-group-header">
+                            <span class="physio-group-icon">🩸</span>
+                            <h3 id="part2-heading">Phần 2: Lưu biến học, Miễn dịch và Cấp cứu Hệ máu</h3>
+                        </div>
+                        <div class="specialty-grid">
+                            <a href="Visual Physiology/Phan2/Chuong4_TeBaoMau.html" class="specialty-card">
+                                <div class="specialty-icon">🛡️</div>
+                                <div class="specialty-info">
+                                    <h3>Chương 4: Dòng tế bào máu &amp; Miễn dịch</h3>
+                                    <p>Cây biệt hóa tủy xương, cơ chế thoát mạch của bạch cầu, tương tác APC - T-helper.</p>
+                                </div>
+                            </a>
+                            <a href="Visual Physiology/Phan2/Chuong5_DongCauMau.html" class="specialty-card">
+                                <div class="specialty-icon">🔴</div>
+                                <div class="specialty-info">
+                                    <h3>Chương 5: Đông - Cầm máu &amp; Sinh lý bệnh</h3>
+                                    <p>Thác đông máu hiện đại, hệ thống chống đông tự nhiên, vi tuần hoàn lâm sàng trong Sepsis.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN 3: HUYẾT ĐỘNG HỌC TIM MẠCH VÀ CƠ HỌC HÔ HẤP NÂNG CAO -->
+                <section aria-labelledby="part3-heading">
+                    <div class="physio-group-container">
+                        <div class="physio-group-header">
+                            <span class="physio-group-icon">🫀</span>
+                            <h3 id="part3-heading">Phần 3: Huyết động học Tim mạch và Cơ học Hô hấp</h3>
+                        </div>
+                        <div class="specialty-grid">
+                            <a href="Visual Physiology/Phan3/Chuong6_HuyetDongHoc.html" class="specialty-card">
+                                <div class="specialty-icon">📈</div>
+                                <div class="specialty-info">
+                                    <h3>Chương 6: Huyết động học Tim mạch</h3>
+                                    <p>Chu chuyển tim (Wiggers), Vòng lặp Áp lực - Thể tích (PV Loop), phản hồi Baroreceptor.</p>
+                                </div>
+                            </a>
+                            <a href="Visual Physiology/Phan3/Chuong7_CoHocHoHap.html" class="specialty-card">
+                                <div class="specialty-icon">🫁</div>
+                                <div class="specialty-info">
+                                    <h3>Chương 7: Cơ học Hô hấp &amp; Trao đổi khí</h3>
+                                    <p>Đường cong Barcroft, Đồ thị Campbell, Mô hình bất cân xứng V/Q, Vận chuyển CO2.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN 4: THẬN, ĐIỆN GIẢI VÀ THĂNG BẰNG TOAN KIỀM LÂM SÀNG -->
+                <section aria-labelledby="part4-heading">
+                    <div class="physio-group-container">
+                        <div class="physio-group-header">
+                            <span class="physio-group-icon">💧</span>
+                            <h3 id="part4-heading">Phần 4: Thận, Điện giải và Thăng bằng Toan kiềm</h3>
+                        </div>
+                        <div class="specialty-grid">
+                            <a href="Visual Physiology/Phan4/Chuong8_ChucNangThan.html" class="specialty-card">
+                                <div class="specialty-icon">🔬</div>
+                                <div class="specialty-info">
+                                    <h3>Chương 8: Vận chuyển Ống thận &amp; RAAS</h3>
+                                    <p>Bản đồ các kênh ion dọc Nephron (SGLT2, NKCC2...), Flowchart trục RAAS.</p>
+                                </div>
+                            </a>
+                            <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
+                                <div class="specialty-icon">⚖️</div>
+                                <div class="specialty-info">
+                                    <h3>Chương 9: Thăng bằng Toan kiềm</h3>
+                                    <p>Sơ đồ hệ đệm cơ thể, Đồ thị Davenport, thuật toán tiếp cận toan kiềm lâm sàng.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+
+        </div>
+    </div>
+    <footer class="global-footer">
+        <div class="footer-copyright">
+            <p>CliniPortal &copy; 2026 · Module Physio-Patho Mirror · Dữ liệu chuẩn hóa dựa trên Giáo trình Sinh lý
+                bệnh học chuyên khoa.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            // --- Tự động dựng cấu trúc Breadcrumb dựa theo URL thực tế ---
+            (function initDynamicBreadcrumb() {
+                const container = document.getElementById('breadcrumb-auto');
+                if (!container) return;
+
+                // Bản đồ định nghĩa từ khóa danh mục sinh lý & sinh lý bệnh hiển thị trên Breadcrumb
+                const dictionary = {
+                    "sinh-ly-benh.html": "Sinh lý & Sinh lý bệnh",
+                    "sinh-ly-benh": "Sinh lý & Sinh lý bệnh",
+                    "sinhly": "Sinh lý học",
+                    "sinhlybenh": "Sinh lý bệnh",
+                    "sl_huyetdong.html": "Sinh lý Huyết động & Chu kỳ tim",
+                    "sl_hohap.html": "Sinh lý Hô hấp & Trao đổi khí",
+                    "sl_than.html": "Sinh lý Thận & Nội tiết Thận",
+                    "slb_soc.html": "Cơ chế các trạng thái Sốc",
+                    "slb_suytimcap.html": "Suy tim cấp & Phù phổi cấp",
+                    "slb_ards.html": "Hội chứng Suy hô hấp cấp (ARDS)",
+                    "slb_roiloankhimau.html": "Rối loạn Khí máu & Toan kiềm",
+                    "slb_aki.html": "Tổn thương thận cấp (AKI)",
+                    "slb_toanchuyenhoa.html": "Toan chuyển hóa & Khoảng trống Anion",
+                    "slb_sepsis.html": "Sepsis & Suy đa cơ quan (MODS)",
+                    "slb_cochesot.html": "Cơ chế Sốt & Phản ứng viêm cấp"
+                };
+
+                function parseLabel(segment) {
+                    const cleanSegment = segment.toLowerCase();
+                    if (dictionary[cleanSegment]) return dictionary[cleanSegment];
+
+                    // Cơ chế dự phòng (Fallback) khi chưa khai báo từ điển: dấu gạch nối -> khoảng trắng
+                    return segment.replace('.html', '')
+                        .split('-')
+                        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                        .join(' ');
+                }
+
+                const pathSegments = window.location.pathname.split('/').filter(s => s !== '' && s !== 'pages');
+
+                let htmlContent = `
+          <nav aria-label="Breadcrumb" class="breadcrumb-container">
+            <ol class="breadcrumb-list">
+              <li class="breadcrumb-item">
+                <a href="../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Trang chủ</a>
+              </li>
+        `;
+
+                let routeTracker = '/pages';
+
+                pathSegments.forEach((segment, index) => {
+                    if (segment === "index.html" || segment === "") return;
+
+                    routeTracker += '/' + segment;
+                    const isCurrentPage = index === pathSegments.length - 1;
+                    const displayName = parseLabel(segment);
+
+                    if (isCurrentPage) {
+                        htmlContent += `<li class="breadcrumb-item active" aria-current="page">${displayName}</li>`;
+                    } else {
+                        htmlContent += `
+              <li class="breadcrumb-item">
+                <a href="${routeTracker}" class="breadcrumb-link">${displayName}</a>
+              </li>
+            `;
+                    }
+                });
+
+                htmlContent += `</ol></nav>`;
+                container.innerHTML = htmlContent;
+            })();
+
+            // --- Xử lý đóng/mở Accordion cho Phân hệ Sinh lý bệnh ---
+            const groupHeadings = document.querySelectorAll('.group-heading');
+            groupHeadings.forEach(heading => {
+                heading.addEventListener('click', () => {
+                    const container = heading.closest('.group-container');
+
+                    // Toggle trạng thái của group hiện tại
+                    container.classList.toggle('active');
+                });
+            });
+
+        });
+    </script>
+</body>
+
+</html>

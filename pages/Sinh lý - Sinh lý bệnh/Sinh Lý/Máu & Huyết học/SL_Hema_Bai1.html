@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CliniPortal - Bài 1: Tổng quan về máu và Động học các khoang dịch cơ thể">
+    <title>Bài 1: Tổng quan về máu và Động học các khoang dịch cơ thể - CliniPortal</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+    <script src="../../../../pages/header.js" defer></script>
+
+    <style>
+        :root {
+            --color-hema-accent: #be123c;
+            --color-hema-accent-hover: #9f1239;
+            --color-hema-accent-light: #fff1f2;
+            --color-hema-accent-rgb: 190, 18, 60;
+        }
+
+        .breadcrumb-container {
+            padding: 0.5rem 0 1.25rem 0;
+        }
+
+        .breadcrumb-list {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: var(--text-sm);
+        }
+
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            color: var(--color-text-muted);
+        }
+
+        .breadcrumb-link {
+            color: var(--color-text-muted);
+            transition: color var(--tr);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            text-decoration: none;
+        }
+
+        .breadcrumb-link:hover {
+            color: var(--color-primary);
+            text-decoration: underline;
+        }
+
+        .breadcrumb-item:not(:last-child)::after {
+            content: ">";
+            margin-left: 0.5rem;
+            color: var(--color-border);
+            font-size: 0.8rem;
+            pointer-events: none;
+        }
+
+        .breadcrumb-item.active {
+            color: var(--color-hema-accent);
+            font-weight: 600;
+        }
+
+        .back-link-container {
+            margin-bottom: 1.25rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-hema-accent);
+            font-weight: 600;
+            font-size: var(--text-sm);
+            text-decoration: none;
+            transition: transform var(--tr), color var(--tr);
+        }
+
+        .back-link:hover {
+            color: var(--color-hema-accent-hover);
+            transform: translateX(-4px);
+        }
+
+        .lesson-container {
+            background: var(--color-surface);
+            border: 1px solid var(--color-divider);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .lesson-header-row {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            border-bottom: 2px solid var(--color-divider);
+            padding-bottom: 1.25rem;
+        }
+
+        .lesson-header-row h1 {
+            font-family: var(--font-display);
+            font-size: var(--text-lg);
+            font-weight: 700;
+            color: var(--color-text);
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .lesson-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .lesson-tag {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 3px 10px;
+            border-radius: var(--radius-full);
+            background: var(--color-hema-accent-light);
+            color: var(--color-hema-accent);
+            border: 1px solid rgba(var(--color-hema-accent-rgb), 0.15);
+        }
+
+        .lesson-summary-box {
+            font-size: var(--text-sm);
+            line-height: 1.6;
+            color: var(--color-text);
+            background: var(--color-surface-offset);
+            border-left: 4px solid var(--color-hema-accent);
+            padding: 1.25rem;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+
+        .clinical-section-title {
+            font-family: var(--font-display);
+            font-size: var(--text-md);
+            font-weight: 700;
+            color: var(--color-text);
+            margin: 1.5rem 0 0.75rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .high-yield-card {
+            background: var(--color-surface-2);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .high-yield-list {
+            margin: 0;
+            padding-left: 1.5rem;
+            list-style-type: decimal;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .high-yield-list li {
+            font-size: var(--text-sm);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+        /* Interactive Diagrams with Illustrations */
+        .diagram-section {
+            margin-top: 2.5rem;
+            animation: fadeIn var(--tr-slow) ease-out forwards;
+        }
+
+        .interactive-diagram {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-xl);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.02);
+        }
+
+        .diagram-visual-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .diagram-visual-wrapper {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+        }
+
+        .illustration-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--color-surface-offset);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            border: 1px dashed var(--color-border);
+            min-height: 250px;
+        }
+
+        .diagram-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease;
+        }
+
+        .legend-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .legend-container h3 {
+            font-size: var(--text-md);
+            margin: 0 0 0.5rem 0;
+            color: var(--color-text-strong);
+            font-weight: 700;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-md);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: var(--text-sm);
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .legend-item:hover {
+            background: var(--color-surface-offset);
+            border-color: var(--color-text-muted);
+            transform: translateX(4px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        .diagram-info-box {
+            background: var(--color-surface-2);
+            color: var(--color-text-strong);
+            padding: 1.25rem 1.5rem;
+            border-radius: var(--radius-lg);
+            font-size: var(--text-md);
+            font-weight: 500;
+            line-height: 1.6;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+            border: 1px solid var(--color-border);
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header-placeholder" data-header-path="../../../../pages/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Sinhly-sinhlybenh.html" class="nav-item" title="Sinh lý & Sinh lý bệnh">
+              <span class="nav-icon">🧬</span>
+              <span class="nav-text">Sinh lý</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Kỹ năng lâm sàng/ky-nang-lam-sang.html" class="nav-item" title="Kỹ năng lâm sàng">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ lâm sàng">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý & Kháng sinh">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+              <span class="nav-icon">📄</span>
+              <span class="nav-text">Y học chứng cứ</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container">
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item">
+                        <a href="../../../../index.html" class="breadcrumb-link">
+                            <span class="home-icon">🏠</span> Home
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="../../Sinhly-sinhlybenh.html" class="breadcrumb-link">
+                            Sinh lý &amp; Sinh lý bệnh
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="SL_HeMau&Huyethoc.html" class="breadcrumb-link">
+                            Sinh lý Hệ Máu &amp; Huyết học
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Bài 1</li>
+                </ol>
+            </nav>
+
+            <!-- BACK LINK -->
+            <div class="back-link-container">
+                <a href="SL_HeMau&Huyethoc.html" class="back-link">
+                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    Quay lại Phân kho Huyết học
+                </a>
+            </div>
+
+            <!-- MAIN CONTENT CONTAINER -->
+            <main class="lesson-container">
+                <div class="lesson-header-row">
+                    <h1>Bài 1: Tổng quan về máu và Động học các khoang dịch cơ thể</h1>
+                    <div class="lesson-tags">
+                        <span class="lesson-tag">Dịch thể</span>
+                        <span class="lesson-tag">Ngoại bào</span>
+                        <span class="lesson-tag">Nội bào</span>
+                        <span class="lesson-tag">Starling</span>
+                    </div>
+                </div>
+
+                <div class="lesson-summary-box">
+                    <strong>Tóm tắt lý thuyết:</strong> Khám phá chức năng chung của máu, điều hòa thể tích và thành
+                    phần dịch nội bào - ngoại bào cùng động lực học mao mạch.
+                </div>
+
+                <h2 class="clinical-section-title">💡 Sinh lý học lâm sàng (High-Yield):</h2>
+                <div class="high-yield-card">
+                    <ol class="high-yield-list">
+                        <li><strong>Quy tắc 60-40-20</strong>: Nước chiếm 60% trọng lượng cơ thể (dịch nội bào ICF chiếm
+                            40%, dịch ngoại bào ECF chiếm 20%).</li>
+                        <li><strong>Dịch ngoại bào (ECF) phân tách thành</strong>: Dịch kẽ (15% trọng lượng cơ thể) và
+                            Huyết tương (5% trọng lượng cơ thể).</li>
+                        <li><strong>Động lực học Starling điều hòa dòng dịch mao mạch</strong>: $J_v = K_f \cdot [(P_c -
+                            P_i) - (\pi_c - \pi_i)]$. Sự mất cân bằng giữa áp lực thủy tĩnh ($P$) và áp lực keo ($\pi$)
+                            dẫn đến sự tích tụ dịch ở mô kẽ (Phù).</li>
+                    </ol>
+                </div>
+
+                <div class="diagram-section">
+                    <h2 class="clinical-section-title">📊 1. Sơ đồ phân chia thể tích các khoang dịch cơ thể</h2>
+                    <div class="interactive-diagram" id="fluid-diagram">
+                        <div class="diagram-visual-wrapper">
+                            <div class="illustration-container">
+                                <img src="../../../../assets/images/body_fluid_compartments.png" alt="Sơ đồ phân chia khoang dịch" class="diagram-image">
+                            </div>
+                            <div class="legend-container">
+                                <h3>Chú thích Sơ đồ</h3>
+                                <div class="legend-item" data-info="<strong>Tổng lượng nước cơ thể (TBW)</strong><br/>Chiếm khoảng 60% trọng lượng cơ thể người trưởng thành. Là toàn bộ lượng chất lỏng trong cơ thể.">
+                                    <span class="legend-color" style="background: #3b82f6;"></span> Tổng lượng nước (TBW)
+                                </div>
+                                <div class="legend-item" data-info="<strong>Dịch nội bào (ICF)</strong><br/>Chất lỏng bên trong màng tế bào, chiếm khoảng 40% trọng lượng cơ thể (2/3 TBW). Ion chính: K+, Mg2+, Phosphate.">
+                                    <span class="legend-color" style="background: #10b981;"></span> Dịch nội bào (ICF)
+                                </div>
+                                <div class="legend-item" data-info="<strong>Dịch ngoại bào (ECF)</strong><br/>Chất lỏng bên ngoài tế bào, chiếm khoảng 20% trọng lượng cơ thể (1/3 TBW). Ion chính: Na+, Cl-, HCO3-.">
+                                    <span class="legend-color" style="background: #f59e0b;"></span> Dịch ngoại bào (ECF)
+                                </div>
+                                <div class="legend-item" data-info="<strong>Dịch kẽ (Interstitial Fluid)</strong><br/>Chất lỏng bao quanh các tế bào (nằm ngoài lòng mạch), chiếm khoảng 15% trọng lượng cơ thể (3/4 ECF).">
+                                    <span class="legend-color" style="background: #8b5cf6;"></span> Dịch kẽ
+                                </div>
+                                <div class="legend-item" data-info="<strong>Huyết tương (Plasma)</strong><br/>Phần dịch lỏng của máu, nằm trong lòng mạch, chiếm khoảng 5% trọng lượng cơ thể (1/4 ECF). Chứa nhiều protein.">
+                                    <span class="legend-color" style="background: #e11d48;"></span> Huyết tương
+                                </div>
+                            </div>
+                        </div>
+                        <div class="diagram-info-box" id="fluid-info-box">
+                            ✨ Di chuột vào các chú thích Sơ đồ để xem thông tin chi tiết
+                        </div>
+                    </div>
+                </div>
+
+                <div class="diagram-section">
+                    <h2 class="clinical-section-title">📊 2. Sơ đồ thành phần máu & Điện di Protein</h2>
+                    <div class="interactive-diagram" id="blood-diagram">
+                        <div class="diagram-visual-wrapper">
+                            <div class="illustration-container">
+                                <img src="../../../../assets/images/blood_components.png" alt="Sơ đồ thành phần máu và điện di protein" class="diagram-image">
+                            </div>
+                            <div class="legend-container">
+                                <h3>Chú thích Sơ đồ</h3>
+                                <div class="legend-item" data-info="<strong>Máu toàn phần</strong><br/>Chiếm khoảng 7-8% trọng lượng cơ thể. Là mô liên kết đặc biệt dạng lỏng bao gồm huyết tương và các tế bào máu.">
+                                    <span class="legend-color" style="background: #ef4444;"></span> Máu toàn phần
+                                </div>
+                                <div class="legend-item" data-info="<strong>Huyết tương (55% thể tích máu)</strong><br/>Chứa 90-92% nước, 7% protein (Albumin, Globulin, Fibrinogen), và 1-2% các chất hòa tan khác (ion, dinh dưỡng, khí, hormone).">
+                                    <span class="legend-color" style="background: #fde047;"></span> Huyết tương (55%)
+                                </div>
+                                <div class="legend-item" data-info="<strong>Các tế bào máu (45% thể tích máu)</strong><br/>Thành phần hữu hình, còn được gọi là Hematocrit. Bao gồm Hồng cầu, Bạch cầu và Tiểu cầu.">
+                                    <span class="legend-color" style="background: #991b1b;"></span> Tế bào máu (45%)
+                                </div>
+                                
+                                <h4 style="margin-top: 1rem; margin-bottom: 0.5rem; font-size: var(--text-sm); color: var(--color-text-muted);">Protein Huyết Tương</h4>
+                                <div class="legend-item" data-info="<strong>Albumin (54-60% protein huyết tương)</strong><br/>Tạo áp suất keo (oncotic pressure) chủ yếu, giữ nước trong lòng mạch và vận chuyển nhiều chất (thuốc, bilirubin, hormone).">
+                                    <span class="legend-color" style="background: #93c5fd;"></span> Albumin
+                                </div>
+                                <div class="legend-item" data-info="<strong>Alpha-1 Globulin (~4%)</strong><br/>Chủ yếu là Alpha-1 antitrypsin (ức chế protease), alpha-1 acid glycoprotein.">
+                                    <span class="legend-color" style="background: #c4b5fd;"></span> Alpha-1 Globulin
+                                </div>
+                                <div class="legend-item" data-info="<strong>Alpha-2 Globulin (~8%)</strong><br/>Gồm Haptoglobin (gắn hemoglobin tự do), Ceruloplasmin (vận chuyển đồng), Alpha-2 macroglobulin.">
+                                    <span class="legend-color" style="background: #d8b4fe;"></span> Alpha-2 Globulin
+                                </div>
+                                <div class="legend-item" data-info="<strong>Beta Globulin (~12%)</strong><br/>Gồm Transferrin (vận chuyển sắt), Beta-lipoprotein (LDL), C3 bổ thể.">
+                                    <span class="legend-color" style="background: #f9a8d4;"></span> Beta Globulin
+                                </div>
+                                <div class="legend-item" data-info="<strong>Gamma Globulin (~16%)</strong><br/>Chủ yếu là các kháng thể (Immunoglobulins: IgG, IgA, IgM, IgE, IgD) được sản xuất bởi tương bào (plasma cells).">
+                                    <span class="legend-color" style="background: #fda4af;"></span> Gamma Globulin
+                                </div>
+                            </div>
+                        </div>
+                        <div class="diagram-info-box" id="blood-info-box">
+                            ✨ Di chuột vào các chú thích Sơ đồ để xem thông tin chi tiết
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- STATIC GLOBAL FOOTER -->
+    <footer class="global-footer">
+        <div class="footer-copyright">
+            <p>CliniPortal &copy; 2026 · Phân kho chuyên khoa Sinh lý Hệ Máu · Giáo trình Sinh lý học lâm sàng chuẩn
+                hóa.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const setupInteractiveDiagram = (diagramId, infoBoxId, defaultText) => {
+                const diagram = document.getElementById(diagramId);
+                const infoBox = document.getElementById(infoBoxId);
+                if (!diagram || !infoBox) return;
+
+                diagram.addEventListener('mouseover', (e) => {
+                    const target = e.target.closest('[data-info]');
+                    if (target) {
+                        infoBox.innerHTML = target.getAttribute('data-info');
+                    } else {
+                        infoBox.innerHTML = defaultText;
+                    }
+                });
+
+                diagram.addEventListener('mouseleave', () => {
+                    infoBox.innerHTML = defaultText;
+                });
+            };
+
+            setupInteractiveDiagram('fluid-diagram', 'fluid-info-box', '✨ Di chuột vào các lớp của sơ đồ để xem thông tin chi tiết');
+            setupInteractiveDiagram('blood-diagram', 'blood-info-box', '✨ Di chuột vào các lớp, băng protein hoặc tế bào để xem thông tin chi tiết');
+        });
+    </script>
+</body>
+
+</html>

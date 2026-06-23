@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hướng dẫn khám nội tiết chuẩn Macleod: Khám tuyến giáp (nhìn, sờ từ phía sau, nghe), tìm dấu hiệu Basedow và Cushing.">
+  <title>Khám Hệ Nội Tiết – CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/components/header.css">
+  <link rel="stylesheet" href="../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../css/components/footer.css">
+
+  <script src="../../pages/header.js"></script>
+  <script src="../../pages/footer.js"></script>
+
+  <style>
+    /* ============================================================
+       CLINICAL SKILL DETAIL PAGE STYLES
+    ============================================================ */
+    
+    .skill-hero {
+      background: linear-gradient(135deg, #059669 0%, #047857 50%, #065f46 100%);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-md);
+      animation: fadeInUp 0.4s ease-out;
+    }
+
+    .skill-hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .skill-hero-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .skill-hero-icon {
+      font-size: 2.5rem;
+      background: rgba(255, 255, 255, 0.15);
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-md);
+      backdrop-filter: blur(4px);
+    }
+
+    .skill-hero-title-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .skill-hero h1 {
+      font-size: clamp(1.25rem, 4vw, 1.75rem);
+      font-weight: 800;
+      margin: 0;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+
+    .skill-hero-chapter {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.85;
+      background: rgba(255, 255, 255, 0.12);
+      padding: 0.15rem 0.5rem;
+      border-radius: var(--radius-sm);
+      width: fit-content;
+      margin-top: 0.15rem;
+    }
+
+    .skill-hero p {
+      margin: 0 0 1.5rem 0;
+      font-size: var(--text-sm);
+      opacity: 0.9;
+      line-height: 1.5;
+      max-width: 800px;
+    }
+
+    /* Quick Info Board */
+    .quick-info-board {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      background: rgba(0, 0, 0, 0.15);
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    @media (min-width: 768px) {
+      .quick-info-board {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .info-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .info-label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      opacity: 0.75;
+      letter-spacing: 0.05em;
+    }
+
+    .info-val {
+      font-size: var(--text-sm);
+      font-weight: 600;
+    }
+
+    /* TABS */
+    .skill-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--color-divider);
+      margin-bottom: 1.5rem;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      scrollbar-width: none; /* Firefox */
+    }
+
+    .skill-tabs::-webkit-scrollbar {
+      display: none; /* Safari/Chrome */
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      padding: 0.75rem 1.25rem;
+      font-weight: 700;
+      font-family: inherit;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all var(--tr);
+      white-space: nowrap;
+      font-size: var(--text-sm);
+      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    }
+
+    .tab-btn:hover {
+      color: var(--color-primary);
+      background: var(--color-surface-offset);
+    }
+
+    .tab-btn.active {
+      color: var(--color-primary);
+      border-bottom-color: var(--color-primary);
+    }
+
+    .tab-pane {
+      display: none;
+      animation: fadeIn var(--tr) ease-out;
+    }
+
+    .tab-pane.active {
+      display: block;
+    }
+
+    /* CHECKLISTS & ACCORDIONS inside tabs */
+    .checklist-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .checklist-card h2 {
+      font-size: var(--text-md);
+      font-weight: 700;
+      color: var(--color-text);
+      margin: 0 0 1rem 0;
+      border-bottom: 1px dashed var(--color-divider);
+      padding-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .checklist-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .checklist-item {
+      display: flex;
+      gap: 0.75rem;
+      line-height: 1.5;
+      font-size: var(--text-sm);
+      color: var(--color-text);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .checklist-item input[type="checkbox"] {
+      margin-top: 0.2rem;
+      width: 16px;
+      height: 16px;
+      accent-color: var(--color-primary);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .checklist-item.checked span {
+      text-decoration: line-through;
+      color: var(--color-text-faint);
+    }
+
+    /* TABLE STYLE */
+    .findings-table-wrapper {
+      overflow-x: auto;
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      background: var(--color-surface);
+    }
+
+    .findings-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: var(--text-sm);
+    }
+
+    .findings-table th {
+      background: var(--color-surface-offset);
+      color: var(--color-text);
+      font-weight: 700;
+      padding: 1rem;
+      border-bottom: 1px solid var(--color-divider);
+    }
+
+    .findings-table td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--color-divider);
+      line-height: 1.5;
+    }
+
+    .findings-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .findings-table tr:hover td {
+      background: var(--color-surface-offset);
+    }
+
+    .cell-sign {
+      font-weight: 700;
+      color: var(--color-text);
+      width: 35%;
+    }
+
+    .cell-significance {
+      color: var(--color-text-muted);
+    }
+
+    /* BEDSIDE TIPS */
+    .tips-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .tip-alert-card {
+      display: flex;
+      gap: 1rem;
+      padding: 1.25rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid;
+      background: var(--color-surface);
+    }
+
+    .tip-alert-card.tip-info {
+      border-color: var(--color-primary-b, #bae6fd);
+      background: var(--color-primary-hl, #f0f9ff);
+      color: #0369a1;
+    }
+
+    .tip-alert-card.tip-warning {
+      border-color: #fde68a;
+      background: #fffbeb;
+      color: #b45309;
+    }
+
+    .tip-alert-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .tip-alert-content h3 {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      margin: 0 0 0.25rem 0;
+      color: inherit;
+    }
+
+    .tip-alert-content p {
+      margin: 0;
+      font-size: var(--text-sm);
+      line-height: 1.5;
+      color: var(--color-text-muted);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ===================== APP CONTAINER ===================== -->
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item" title="Sinh lý & Sinh lý bệnh">
+              <span class="nav-icon">🧬</span>
+              <span class="nav-text">Sinh lý</span>
+            </a>
+          </li>
+          <li>
+            <a href="ky-nang-lam-sang.html" class="nav-item" title="Kỹ năng lâm sàng">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Công cụ/cong-cu.html" class="nav-item" title="Công cụ lâm sàng">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý & Kháng sinh">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+              <span class="nav-icon">📄</span>
+              <span class="nav-text">Y học chứng cứ</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- ===================== MAIN CONTENT ===================== -->
+    <div class="main-wrapper" id="mainContent">
+
+      <!--BREADCRUMB-->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../index.html" class="breadcrumb-link">
+              <span class="home-icon">🏠</span> Home
+            </a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="ky-nang-lam-sang.html" class="breadcrumb-link">Kỹ năng lâm sàng</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Khám Hệ Nội Tiết</li>
+        </ol>
+      </nav>
+
+      <!-- HERO BANNER -->
+      <section class="skill-hero">
+        <div class="skill-hero-header">
+          <div class="skill-hero-icon">🦋</div>
+          <div class="skill-hero-title-group">
+            <h1>Khám Hệ Nội Tiết</h1>
+            <span class="skill-hero-chapter">Macleod Ch.10</span>
+          </div>
+        </div>
+        <p>Hướng dẫn khám nội tiết chuẩn Macleod: Khám tuyến giáp (nhìn, sờ từ phía sau, nghe), tìm dấu hiệu Basedow và Cushing.</p>
+        
+        <div class="quick-info-board">
+          <div class="info-item">
+            <span class="info-label">Tư thế bệnh nhân</span>
+            <span class="info-val">Ngồi thẳng trên ghế (bác sĩ tiếp cận cả phía trước và phía sau)</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Thời gian thực hiện</span>
+            <span class="info-val">10 phút</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Dụng cụ tối thiểu</span>
+            <span class="info-val">Đèn pin 🔦, Ly nước uống 🥛</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB CONTROLS -->
+      <div class="skill-tabs">
+        <button class="tab-btn active" data-tab="tab-prep"><i class="fa-solid fa-list-check"></i> Chuẩn bị</button>
+        <button class="tab-btn" data-tab="tab-steps"><i class="fa-solid fa-stethoscope"></i> Quy trình khám</button>
+        <button class="tab-btn" data-tab="tab-findings"><i class="fa-solid fa-magnifying-glass"></i> Triệu chứng & Ý nghĩa</button>
+        <button class="tab-btn" data-tab="tab-tips"><i class="fa-regular fa-lightbulb"></i> Lưu ý Bedside</button>
+      </div>
+
+      <!-- TAB CONTENTS -->
+      <div class="tab-container">
+        
+        <!-- Tab 1: Chuẩn bị -->
+        <div class="tab-pane active" id="tab-prep">
+          <div class="checklist-card">
+            <h2><i class="fa-solid fa-clipboard-list"></i> Các bước chuẩn bị cơ bản</h2>
+            <ul class="checklist-list">
+              <li class="checklist-item"><input type="checkbox"> <span>Chào hỏi bệnh nhân, giải thích quy trình khám tuyến giáp và xin phép thực hiện.</span></li>
+              <li class="checklist-item"><input type="checkbox"> <span>Chuẩn bị một ly nước nhỏ phục vụ nghiệm pháp nuốt.</span></li>
+              <li class="checklist-item"><input type="checkbox"> <span>Sát khuẩn tay nhanh.</span></li>
+              <li class="checklist-item"><input type="checkbox"> <span>Yêu cầu bệnh nhân ngồi thẳng lưng, bộc lộ toàn bộ vùng cổ và ngực trên.</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Tab 2: Quy trình khám -->
+        <div class="tab-pane" id="tab-steps">
+          <div class="checklist-card">
+            <h2><i class="fa-regular fa-circle-dot"></i> 1. Khám Tuyến Giáp (Nhìn & Nghiệm pháp nuốt)</h2>
+            <ul class="checklist-list">
+              <li class="checklist-item"><input type="checkbox"> <span>Nhìn vùng cổ từ phía trước: Quan sát xem vùng tuyến giáp (dưới sụn nhẫn) có phình to, có khối gồ hay sẹo mổ cũ không.</span></li>
+              <li class="checklist-item"><input type="checkbox"> <span>Thực hiện nghiệm pháp nuốt: Cho bệnh nhân uống một ngụm nước và nuốt. Quan sát xem khối gồ vùng cổ có di động lên trên theo nhịp nuốt hay không (tuyến giáp luôn di động theo nhịp nuốt do dính vào sụn giáp).</span></li>
+            </ul>
+          </div>
+
+          <div class="checklist-card">
+            <h2><i class="fa-regular fa-circle-dot"></i> 2. Khám Tuyến Giáp (Sờ từ phía sau)</h2>
+            <ul class="checklist-list">
+              <li class="checklist-item"><input type="checkbox"> <span>Bác sĩ đứng ở phía sau bệnh nhân. Đặt các ngón tay của cả hai tay lên vùng cổ trước của bệnh nhân dưới sụn nhẫn.</span></li>
+              <li class="checklist-item"><input type="checkbox"> <span>Sờ xác định ranh giới eo giáp và hai thùy tuyến giáp. Đánh giá: Kích thước, mật độ (mềm, chắc, cứng), bề mặt (nhẵn, gồ ghề), có đau không, có rung miêu (thrill) không.</span></li>
+              <li class="checklist-item"><input type="checkbox"> <span>Yêu cầu bệnh nhân nuốt lại một lần nữa trong khi sờ để cảm nhận sự di động dưới tay.</span></li>
+            </ul>
+          </div>
+
+          <div class="checklist-card">
+            <h2><i class="fa-regular fa-circle-dot"></i> 3. Khám Tuyến Giáp (Nghe)</h2>
+            <ul class="checklist-list">
+              <li class="checklist-item"><input type="checkbox"> <span>Dùng phần màng của ống nghe để nghe trên hai thùy tuyến giáp. Tìm tiếng thổi tâm thu hoặc liên tục (tiếng thổi bướu) gặp trong bướu giáp mạch.</span></li>
+            </ul>
+          </div>
+
+          <div class="checklist-card">
+            <h2><i class="fa-regular fa-circle-dot"></i> 4. Tìm dấu hiệu Cường giáp & Cushing</h2>
+            <ul class="checklist-list">
+              <li class="checklist-item"><input type="checkbox"> <span>Tìm dấu hiệu mắt: Mắt lồi (exophthalmos), co cơ mi trên (staring look), nghiệm pháp mất đồng vận mắt - mi (lid lag).</span></li>
+              <li class="checklist-item"><input type="checkbox"> <span>Tìm dấu hiệu tay: Run tay tần số cao biên độ nhỏ (yêu cầu duỗi thẳng tay, đặt tờ giấy mỏng lên mu bàn tay), lòng bàn tay ấm ẩm mồ hôi.</span></li>
+              <li class="checklist-item"><input type="checkbox"> <span>Tìm dấu hiệu Cushing: Mặt tròn như mặt trăng (moon face), bướu mỡ trâu ở vùng gáy (buffalo hump), béo phì trung tâm nhưng chi khẳng khiu, rạn da đỏ tía vùng bụng.</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Tab 3: Triệu chứng & Ý nghĩa -->
+        <div class="tab-pane" id="tab-findings">
+          <div class="findings-table-wrapper">
+            <table class="findings-table">
+              <thead>
+                <tr>
+                  <th>Triệu chứng phát hiện</th>
+                  <th>Ý nghĩa lâm sàng / Định hướng chẩn đoán</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="cell-sign">Khối u vùng cổ di động theo nhịp nuốt</td>
+                  <td class="cell-significance">Khối u có nguồn gốc từ tuyến giáp hoặc giáp móng.</td>
+                </tr>
+                <tr>
+                  <td class="cell-sign">Tiếng thổi tâm thu nghe rõ tại vùng tuyến giáp</td>
+                  <td class="cell-significance">Bướu giáp mạch (gặp điển hình trong bệnh Basedow cường giáp).</td>
+                </tr>
+                <tr>
+                  <td class="cell-sign">Tuyến giáp mật độ cứng như đá, gồ ghề, dính</td>
+                  <td class="cell-significance">Nghi ngờ ung thư tuyến giáp hoặc viêm tuyến giáp Riedel.</td>
+                </tr>
+                <tr>
+                  <td class="cell-sign">Mất đồng vận mắt - mi (Lid lag - nhìn xuống dưới mi trên không hạ theo kịp nhãn cầu)</td>
+                  <td class="cell-significance">Cường chức năng tuyến giáp gây tăng hoạt tính giao cảm cơ Muller mi mắt.</td>
+                </tr>
+                <tr>
+                  <td class="cell-sign">Yếu cơ gốc chi (proximal myopathy - khó đứng lên từ tư thế ngồi xổm)</td>
+                  <td class="cell-significance">Cường giáp nặng hoặc hội chứng Cushing (teo cơ do cortisol cao).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tab 4: Lưu ý Bedside -->
+        <div class="tab-pane" id="tab-tips">
+          <div class="tips-container">
+            <div class="tip-alert-card tip-info">
+              <span class="tip-alert-icon">💡</span>
+              <div class="tip-alert-content">
+                <h3>Lời khuyên thực tế</h3>
+                <p>Khi sờ tuyến giáp từ phía sau, hãy hơi nghiêng đầu bệnh nhân về phía bên chuẩn bị sờ để làm chùng cơ ức đòn chũm giúp sờ sâu vào thùy giáp dễ hơn.</p>
+              </div>
+            </div>
+
+            <div class="tip-alert-card tip-warning">
+              <span class="tip-alert-icon">⚠️</span>
+              <div class="tip-alert-content">
+                <h3>Cảnh báo Bedside</h3>
+                <p>Hãy yêu cầu bệnh nhân nín thở khi nghe tuyến giáp để tránh nhầm lẫn tiếng thở của bệnh nhân với tiếng thổi mạch máu.</p>
+              </div>
+            </div>
+
+            <div class="tip-alert-card tip-info">
+              <span class="tip-alert-icon">💡</span>
+              <div class="tip-alert-content">
+                <h3>Lời khuyên thực tế</h3>
+                <p>Phân biệt run tay do cường giáp (run tần số cao, biên độ nhỏ) với run do Parkinson (run tĩnh trạng kiểu vê thuốc lào, tần số chậm hơn).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end tab-container -->
+
+    </div><!-- end main-wrapper -->
+  </div><!-- end app-container -->
+
+  <footer class="global-footer">
+    <div id="footer-placeholder" data-footer-path="../footer.html"></div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // --- TABS TOGGLE FUNCTIONALITY ---
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabPanes = document.querySelectorAll('.tab-pane');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Remove active classes
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabPanes.forEach(p => p.classList.remove('active'));
+
+          // Add active class to clicked button
+          btn.classList.add('active');
+
+          // Show corresponding pane
+          const tabId = btn.dataset.tab;
+          const activePane = document.getElementById(tabId);
+          if (activePane) {
+            activePane.classList.add('active');
+          }
+        });
+      });
+
+      // --- CHECKLIST CLICK TOGGLE ---
+      const checklistItems = document.querySelectorAll('.checklist-item');
+      checklistItems.forEach(item => {
+        const checkbox = item.querySelector('input[type="checkbox"]');
+        
+        // Handle clicking the item text/row
+        item.addEventListener('click', (e) => {
+          if (e.target !== checkbox) {
+            checkbox.checked = !checkbox.checked;
+          }
+          item.classList.toggle('checked', checkbox.checked);
+        });
+
+        // Handle direct checkbox clicks
+        checkbox.addEventListener('change', () => {
+          item.classList.toggle('checked', checkbox.checked);
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

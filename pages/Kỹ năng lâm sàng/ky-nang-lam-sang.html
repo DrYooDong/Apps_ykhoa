@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CliniPortal - Hệ thống hướng dẫn kỹ năng lâm sàng: quy trình khám các cơ quan chi tiết, bảng kiểm bedside và triệu chứng học y khoa dựa trên Macleod's Clinical Examination.">
+  <title>CliniPortal – Kỹ năng Lâm sàng</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/components/header.css">
+  <link rel="stylesheet" href="../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../css/components/footer.css">
+
+  <script src="../../pages/header.js"></script>
+  <script src="../../pages/footer.js"></script>
+
+  <style>
+    /* ============================================================
+       LAYOUT PHÂN NHÓM ACCORDION – KỸ NĂNG LÂM SÀNG
+       Đồng bộ hoàn toàn với Design Tokens CliniPortal
+    ============================================================ */
+
+    /* --- TOOLBAR: Search + Actions --- */
+    .tc-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 0.25rem;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.4s ease-out 0.1s backwards;
+    }
+
+    .tc-toolbar-search {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex: 1;
+      min-width: 200px;
+      height: 38px;
+      padding: 0 0.75rem;
+      background: var(--color-surface-offset);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-full);
+      transition: border-color var(--tr), box-shadow var(--tr), background var(--tr);
+    }
+
+    .tc-toolbar-search:focus-within {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.12);
+      background: var(--color-surface);
+    }
+
+    .tc-toolbar-search i {
+      color: var(--color-text-faint);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      transition: color var(--tr);
+    }
+
+    .tc-toolbar-search:focus-within i {
+      color: var(--color-primary);
+    }
+
+    .tc-toolbar-search input {
+      flex: 1;
+      background: none;
+      border: none;
+      outline: none;
+      font: inherit;
+      color: var(--color-text);
+      font-size: var(--text-sm);
+    }
+
+    .tc-toolbar-search input::placeholder {
+      color: var(--color-text-faint);
+    }
+
+    .tc-search-count {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--color-text-faint);
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: color var(--tr);
+    }
+
+    .tc-search-count.has-results {
+      color: var(--color-primary);
+    }
+
+    .tc-search-clear {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--color-surface-offset);
+      color: var(--color-text-faint);
+      font-size: 0.7rem;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background var(--tr), color var(--tr);
+      align-items: center;
+      justify-content: center;
+      border: none;
+      padding: 0;
+      line-height: 1;
+    }
+
+    .tc-search-clear.visible {
+      display: flex;
+    }
+
+    .tc-search-clear:hover {
+      background: var(--color-rose-hl);
+      color: var(--color-rose);
+    }
+
+    .tc-toolbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex-shrink: 0;
+    }
+
+    .tc-toolbar-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.4rem 0.75rem;
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--color-text-muted);
+      background: var(--color-surface-offset);
+      border: 1px solid var(--color-divider);
+      cursor: pointer;
+      transition: all var(--tr);
+      white-space: nowrap;
+    }
+
+    .tc-toolbar-btn:hover {
+      color: var(--color-primary);
+      border-color: var(--color-primary);
+      background: var(--color-primary-hl);
+    }
+
+    .tc-toolbar-btn:active {
+      transform: scale(0.96);
+    }
+
+    /* --- GROUPS WRAPPER --- */
+    .groups-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .group-container {
+      flex: 1 1 100%;
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--tr-slow, 0.3s);
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .group-container::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.02) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity var(--tr);
+      pointer-events: none;
+    }
+
+    .group-container:hover::before {
+      opacity: 1;
+    }
+
+    .group-container.hidden-by-search {
+      display: none;
+    }
+
+    /* Gradient borders by color group */
+    .group-container.g-teal {
+      border-left: 4px solid;
+      border-image: linear-gradient(180deg, #14b8a6, rgba(20, 184, 166, 0.3)) 1;
+    }
+
+    /* Group heading */
+    .group-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      padding: 0.35rem 0;
+      transition: color var(--tr);
+    }
+
+    .group-heading:hover {
+      color: var(--color-primary);
+    }
+
+    .group-heading h3 {
+      font-size: var(--text-md);
+      font-weight: 700;
+      margin: 0;
+      color: var(--color-text);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color var(--tr);
+    }
+
+    .group-heading:hover h3 {
+      color: var(--color-primary);
+    }
+
+    .g-icon {
+      font-size: 1.15rem;
+    }
+
+    .group-tool-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 22px;
+      height: 22px;
+      padding: 0 6px;
+      border-radius: var(--radius-full);
+      background: var(--color-surface-offset);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--color-text-faint);
+      margin-left: 0.25rem;
+    }
+
+    .group-container.active .group-tool-count {
+      background: var(--color-primary-hl);
+      color: var(--color-primary);
+    }
+
+    .toggle-indicator {
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform var(--tr), background var(--tr), color var(--tr);
+      color: var(--color-text-faint);
+      border-radius: var(--radius-sm);
+      flex-shrink: 0;
+    }
+
+    .toggle-indicator::after {
+      content: '▼';
+      font-size: 0.7rem;
+    }
+
+    .group-heading:hover .toggle-indicator {
+      background: var(--color-surface-offset);
+      color: var(--color-primary);
+    }
+
+    .group-container.active .toggle-indicator {
+      transform: rotate(180deg);
+      color: var(--color-primary);
+    }
+
+    /* Grid animation */
+    .category-grid-wrapper {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1), margin var(--tr), padding var(--tr);
+    }
+
+    .group-container.active .category-grid-wrapper {
+      grid-template-rows: 1fr;
+      margin-top: 1.25rem;
+      padding-top: 1.25rem;
+      border-top: 1px dashed var(--color-divider);
+    }
+
+    .category-grid {
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 768px) {
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* Staggered card entrance animation */
+    .group-container.active .tool-card {
+      animation: fadeInUp 0.4s ease-out backwards;
+    }
+
+    .group-container.active .tool-card:nth-child(1) { animation-delay: 0.05s; }
+    .group-container.active .tool-card:nth-child(2) { animation-delay: 0.10s; }
+    .group-container.active .tool-card:nth-child(3) { animation-delay: 0.15s; }
+    .group-container.active .tool-card:nth-child(4) { animation-delay: 0.20s; }
+    .group-container.active .tool-card:nth-child(5) { animation-delay: 0.25s; }
+    .group-container.active .tool-card:nth-child(6) { animation-delay: 0.30s; }
+    .group-container.active .tool-card:nth-child(7) { animation-delay: 0.35s; }
+    .group-container.active .tool-card:nth-child(8) { animation-delay: 0.40s; }
+    .group-container.active .tool-card:nth-child(9) { animation-delay: 0.45s; }
+    .group-container.active .tool-card:nth-child(10) { animation-delay: 0.50s; }
+    .group-container.active .tool-card:nth-child(11) { animation-delay: 0.55s; }
+
+    /* --- Search hidden states --- */
+    .tool-card.hidden-by-search {
+      display: none !important;
+    }
+
+    .search-no-results {
+      display: none;
+      padding: 2rem;
+      text-align: center;
+      color: var(--color-text-faint);
+      font-size: var(--text-sm);
+      grid-column: 1 / -1;
+    }
+
+    .search-no-results.visible {
+      display: block;
+    }
+
+    .search-no-results .no-results-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    mark.search-hl {
+      background: rgba(var(--color-primary-rgb), 0.2);
+      color: var(--color-primary);
+      border-radius: 2px;
+      padding: 0 2px;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 767px) {
+      .tc-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+        padding: 0.6rem 0.75rem;
+      }
+
+      .tc-toolbar-search {
+        min-width: unset;
+      }
+
+      .tc-toolbar-actions {
+        justify-content: space-between;
+      }
+
+      .tc-toolbar-btn span:last-child {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ===================== APP CONTAINER ===================== -->
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item" title="Sinh lý & Sinh lý bệnh">
+              <span class="nav-icon">🧬</span>
+              <span class="nav-text">Sinh lý</span>
+            </a>
+          </li>
+          <li>
+            <a href="ky-nang-lam-sang.html" class="nav-item active" aria-current="page" title="Kỹ năng lâm sàng">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Công cụ/cong-cu.html" class="nav-item" title="Công cụ lâm sàng">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý & Kháng sinh">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+              <span class="nav-icon">📄</span>
+              <span class="nav-text">Y học chứng cứ</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- ===================== MAIN CONTENT ===================== -->
+    <div class="main-wrapper" id="mainContent">
+
+      <!--BREADCRUMB-->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../index.html" class="breadcrumb-link">
+              <span class="home-icon">🏠</span> Home
+            </a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Kỹ năng lâm sàng</li>
+        </ol>
+      </nav>
+
+      <section class="hero-dashboard" aria-labelledby="hero-title">
+        <div class="hero-pattern"></div>
+        <div class="hero-intro">
+          <h1 id="hero-title">🩺 KỸ NĂNG LÂM SÀNG</h1>
+          <p>Quy trình thăm khám lâm sàng chuẩn xác, bảng kiểm bedside và triệu chứng học y khoa dựa trên tài liệu Macleod's Clinical Examination.</p>
+        </div>
+      </section>
+
+      <div class="main-content-grid" id="mainContentGrid">
+
+        <!-- ===== TOOLBAR ===== -->
+        <div class="tc-toolbar">
+          <div class="tc-toolbar-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" id="tcSearch" placeholder="Tìm kỹ năng hoặc hệ cơ quan..." autocomplete="off">
+            <button class="tc-search-clear" id="searchClearBtn" title="Xóa tìm kiếm">✕</button>
+            <span id="searchCount" class="tc-search-count"></span>
+          </div>
+          <div class="tc-toolbar-actions">
+            <button class="tc-toolbar-btn" id="btnExpandAll" title="Mở tất cả nhóm">
+              <span>▼</span> <span>Mở tất cả</span>
+            </button>
+            <button class="tc-toolbar-btn" id="btnCollapseAll" title="Đóng tất cả nhóm">
+              <span>▲</span> <span>Đóng tất cả</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ===== NO RESULTS ===== -->
+        <div id="searchNoResults" class="search-no-results">
+          <span class="no-results-icon">🔍</span>
+          <div>Không tìm thấy kỹ năng lâm sàng nào phù hợp.</div>
+          <div style="margin-top:0.25rem;font-size:var(--text-xs)">Thử tìm kiếm với từ khóa khác như "tim mạch", "thần kinh"...</div>
+        </div>
+
+        <div class="groups-wrapper" id="groupsWrapper">
+
+          <!-- =========================================
+               SECTION 2: SYSTEM-BASED EXAMINATION
+          ========================================= -->
+          <div class="group-container g-teal active">
+            <div class="group-heading">
+              <h3><span class="g-icon">🩺</span> Khám Lâm Sàng Theo Hệ Cơ Quan <span class="group-tool-count">11</span></h3>
+              <span class="toggle-indicator"></span>
+            </div>
+            <div class="category-grid-wrapper">
+              <div class="category-grid">
+
+                <!-- 1. Hệ tim mạch -->
+                <div class="tool-card card-blue" data-tool-id="kn-tim-mach">
+                  <div class="card-top">
+                    <div class="tool-icon">🫀</div>
+                    <span class="tool-status active">Macleod Ch.4</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row"><h3>Khám Hệ Tim Mạch</h3></div>
+                    <p>Khám tim, tĩnh mạch cổ nổi (JVP), động mạch ngoại biên, chẩn đoán các tiếng tim bất thường và tiếng thổi cơ năng/thực thể.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Tim mạch</span>
+                    <a href="KN_Timmach.html">Xem quy trình</a>
+                  </div>
+                </div>
+
+                <!-- 2. Hệ hô hấp -->
+                <div class="tool-card card-green" data-tool-id="kn-ho-hap">
+                  <div class="card-top">
+                    <div class="tool-icon">🫁</div>
+                    <span class="tool-status active">Macleod Ch.5</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row"><h3>Khám Hệ Hô Hấp</h3></div>
+                    <p>Kiểm tra hình dạng lồng ngực, tần số thở, rung thanh, gõ phổi, nghe rì rào phế nang và phát hiện âm bệnh lý (ran, rales, khò khè).</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Hô hấp</span>
+                    <a href="KN_Hohap.html">Xem quy trình</a>
+                  </div>
+                </div>
+
+                <!-- 3. Hệ tiêu hóa -->
+                <div class="tool-card card-amber" data-tool-id="kn-tieu-hoa">
+                  <div class="card-top">
+                    <div class="tool-icon">🤰</div>
+                    <span class="tool-status active">Macleod Ch.6</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row"><h3>Khám Hệ Tiêu Hóa</h3></div>
+                    <p>Khám bụng 4 bước (nhìn, nghe, gõ, sờ), sờ gan lách, gõ đục vùng thấp, phát hiện cổ trướng và các điểm đau ruột thừa, túi mật.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Tiêu hóa</span>
+                    <a href="KN_Tieuhoa.html">Xem quy trình</a>
+                  </div>
+                </div>
+
+                <!-- 4. Hệ thần kinh -->
+                <div class="tool-card card-purple" data-tool-id="kn-than-kinh">
+                  <div class="card-top">
+                    <div class="tool-icon">🧠</div>
+                    <span class="tool-status active">Macleod Ch.7</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row"><h3>Khám Hệ Thần Kinh</h3></div>
+                    <p>Khám 12 đôi dây thần kinh sọ, đánh giá ý thức (GCS), trương lực cơ, cơ lực, cảm giác nông/sâu, phản xạ và dấu màng não.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Thần kinh</span>
+                    <a href="KN_Thankinh.html">Xem quy trình</a>
+                  </div>
+                </div>
+
+                <!-- 5. Hệ thị giác / Mắt -->
+                <div class="tool-card card-rose" data-tool-id="kn-thi-giac">
+                  <div class="card-top">
+                    <div class="tool-icon">👁️</div>
+                    <span class="tool-status active">Macleod Ch.8</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row"><h3>Khám Mắt & Thị Giác</h3></div>
+                    <p>Kiểm tra thị lực bằng bảng Snellen, kiểm tra thị trường, soi đáy mắt trực tiếp, phản xạ đồng tử và kiểm tra vận nhãn.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Chuyên khoa</span>
+                    <a href="KN_ThiGiac.html">Xem quy trình</a>
+                  </div>
+                </div>
+
+                <!-- 6. Tai mũi họng -->
+                <div class="tool-card card-blue" data-tool-id="kn-tai-mui-hong">
+                  <div class="card-top">
+                    <div class="tool-icon">👂</div>
+                    <span class="tool-status active">Macleod Ch.9</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row"><h3>Khám Tai Mũi Họng</h3></div>
+                    <p>Đánh giá màng nhĩ bằng soi tai, kiểm tra thính lực (test Rinne, Weber), soi mũi, họng và khám hạch vùng cổ quanh hàm.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Chuyên khoa</span>
+                    <a href="KN_TaiMuiHong.html">Xem quy trình</a>
+                  </div>
+                </div>
+
+                <!-- 7. Hệ nội tiết -->
+                <div class="tool-card card-green" data-tool-id="kn-noi-tiet">
+                  <div class="card-top">
+                    <div class="tool-icon">🦋</div>
+                    <span class="tool-status active">Macleod Ch.10</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row"><h3>Khám Hệ Nội Tiết</h3></div>
+                    <p>Khám tuyến giáp (sờ từ phía sau, nghiệm pháp nuốt), tìm các dấu hiệu Basedow (lồi mắt, run tay) và dấu hiệu Cushing.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Nội tiết</span>
+                    <a href="KN_Noitiet.html">Xem quy trình</a>
+                  </div>
+                </div>
+
+                <!-- 8. Hệ sinh dục & sinh sản -->
+                <div class="tool-card card-rose" data-tool-id="kn-sinh-duc">
+                  <div class="card-top">
+                    <div class="tool-icon">⚧️</div>
+                    <span class="tool-status active">Macleod Ch.11</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row"><h3>Khám Hệ Sinh Dục</h3></div>
+                    <p>Thăm khám tuyến vú (tìm khối u, hạch nách), khám cơ quan sinh dục nam/nữ, phát hiện thoát vị bẹn và tràn dịch tinh mạc.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Chuyên khoa</span>
+                    <a href="KN_Sinhduc.html">Xem quy trình</a>
+                  </div>
+                </div>
+
+                <!-- 9. Hệ thận - tiết niệu -->
+                <div class="tool-card card-blue" data-tool-id="kn-than-tiet-nieu">
+                  <div class="card-top">
+                    <div class="tool-icon">🫘</div>
+                    <span class="tool-status active">Macleod Ch.12</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row"><h3>Khám Hệ Thận - Tiết Niệu</h3></div>
+                    <p>Thực hiện chạm thận, bập bềnh thận phát hiện thận to, gõ cầu bàng quang, khám các điểm đau niệu quản và khám phù.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Thận - Niệu</span>
+                    <a href="KN_ThanTietnieu.html">Xem quy trình</a>
+                  </div>
+                </div>
+
+                <!-- 10. Hệ cơ xương khớp -->
+                <div class="tool-card card-amber" data-tool-id="kn-co-xuong-khop">
+                  <div class="card-top">
+                    <div class="tool-icon">🦴</div>
+                    <span class="tool-status active">Macleod Ch.13</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row"><h3>Khám Hệ Cơ Xương Khớp</h3></div>
+                    <p>Tầm soát khớp nhanh GALS (Gait, Arms, Legs, Spine). Khám chi tiết các khớp cột sống, vai, gối, háng và bàn tay.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Cơ xương khớp</span>
+                    <a href="KN_CoXuongKhop.html">Xem quy trình</a>
+                  </div>
+                </div>
+
+                <!-- 11. Da, tóc và móng -->
+                <div class="tool-card card-purple" data-tool-id="kn-da-toc-mong">
+                  <div class="card-top">
+                    <div class="tool-icon">💅</div>
+                    <span class="tool-status active">Macleod Ch.14</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row"><h3>Khám Da, Tóc và Móng</h3></div>
+                    <p>Nhận biết các tổn thương da nguyên phát/thứ phát, phát hiện ngón tay dùi trống, khía móng Schamroth và rụng tóc khu trú/toàn thể.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Da liễu</span>
+                    <a href="KN_DaTocMong.html">Xem quy trình</a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div><!-- end groups-wrapper -->
+      </div><!-- end main-content-grid -->
+
+    </div><!-- end main-wrapper -->
+  </div><!-- end app-container -->
+
+  <footer class="global-footer">
+    <div class="footer-copyright">
+      <p>CliniPortal &copy; 2026 · Kỹ năng lâm sàng · Chỉ mang tính hỗ trợ tham khảo, không thay thế phán xét lâm sàng của bác sĩ y khoa.</p>
+    </div>
+  </footer>
+
+  <!-- ===================== SCRIPT ===================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+      // --- ACCORDION TOGGLE ---
+      const groupHeadings = document.querySelectorAll('.group-heading');
+      groupHeadings.forEach(heading => {
+        heading.addEventListener('click', () => {
+          const container = heading.closest('.group-container');
+          container.classList.toggle('active');
+        });
+      });
+
+      // --- EXPAND ALL / COLLAPSE ALL ---
+      const btnExpandAll = document.getElementById('btnExpandAll');
+      const btnCollapseAll = document.getElementById('btnCollapseAll');
+
+      btnExpandAll.addEventListener('click', () => {
+        document.querySelectorAll('.group-container').forEach(g => {
+          if (!g.classList.contains('hidden-by-search')) g.classList.add('active');
+        });
+      });
+
+      btnCollapseAll.addEventListener('click', () => {
+        document.querySelectorAll('.group-container').forEach(g => g.classList.remove('active'));
+      });
+
+      // --- SEARCH FUNCTIONALITY ---
+      const searchInput = document.getElementById('tcSearch');
+      const clearBtn = document.getElementById('searchClearBtn');
+      const searchCount = document.getElementById('searchCount');
+      const noResults = document.getElementById('searchNoResults');
+      const allCards = document.querySelectorAll('.tool-card');
+      const allGroups = document.querySelectorAll('.group-container');
+
+      // Store original HTML for highlight restoration
+      const originalHTML = new Map();
+      allCards.forEach(card => {
+        const titleEl = card.querySelector('.tool-title-row h3');
+        const descEl = card.querySelector('.tool-content p');
+        if (titleEl) originalHTML.set(titleEl, titleEl.innerHTML);
+        if (descEl) originalHTML.set(descEl, descEl.innerHTML);
+      });
+
+      function performSearch() {
+        const query = searchInput.value.trim().toLowerCase();
+        const hasQuery = query.length > 0;
+
+        clearBtn.classList.toggle('visible', hasQuery);
+
+        // Restore original text first
+        originalHTML.forEach((html, el) => { el.innerHTML = html; });
+
+        let matchCount = 0;
+
+        allCards.forEach(card => {
+          const text = card.textContent.toLowerCase();
+          const isMatch = !hasQuery || text.includes(query);
+          card.classList.toggle('hidden-by-search', !isMatch);
+          if (isMatch && hasQuery) matchCount++;
+        });
+
+        // Highlight matches
+        if (hasQuery && query.length >= 2) {
+          allCards.forEach(card => {
+            if (card.classList.contains('hidden-by-search')) return;
+            const titleEl = card.querySelector('.tool-title-row h3');
+            const descEl = card.querySelector('.tool-content p');
+            [titleEl, descEl].forEach(el => {
+              if (!el) return;
+              const orig = originalHTML.get(el);
+              if (!orig) return;
+              const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+              el.innerHTML = orig.replace(regex, '<mark class="search-hl">$1</mark>');
+            });
+          });
+        }
+
+        // Show/hide groups based on visible cards
+        allGroups.forEach(group => {
+          const visibleCards = group.querySelectorAll('.tool-card:not(.hidden-by-search)');
+          group.classList.toggle('hidden-by-search', hasQuery && visibleCards.length === 0);
+          if (hasQuery && visibleCards.length > 0) {
+            group.classList.add('active');
+          }
+        });
+
+        // Update count
+        if (hasQuery) {
+          searchCount.textContent = matchCount > 0 ? `${matchCount} kết quả` : '';
+          searchCount.classList.toggle('has-results', matchCount > 0);
+        } else {
+          searchCount.textContent = '';
+          searchCount.classList.remove('has-results');
+        }
+
+        // No results
+        const totalVisible = document.querySelectorAll('.tool-card:not(.hidden-by-search)').length;
+        noResults.classList.toggle('visible', hasQuery && totalVisible === 0);
+      }
+
+      searchInput.addEventListener('input', performSearch);
+
+      clearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        performSearch();
+        searchInput.focus();
+      });
+    });
+  </script>
+</body>
+
+</html>
