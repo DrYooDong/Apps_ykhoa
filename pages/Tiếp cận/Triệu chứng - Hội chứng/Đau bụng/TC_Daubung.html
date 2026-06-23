@@ -4,8 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="CliniPortal - Hệ thống tiếp cận lâm sàng: sơ đồ chẩn đoán phân biệt triệu chứng, hội chứng, bệnh lý và bất thường cận lâm sàng">
-  <title>CliniPortal – Tiếp cận Lâm sàng</title>
+  <meta name="description"
+    content="CliniPortal - Sơ đồ tiếp cận chẩn đoán phân biệt đau bụng cấp và đau bụng mạn tính theo đối tượng lâm sàng.">
+  <title>Tiếp cận Đau Bụng – CliniPortal</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,20 +15,74 @@
     rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="../../css/reset.css">
-  <link rel="stylesheet" href="../../css/main.css">
-  <link rel="stylesheet" href="../../css/components/header.css">
-  <link rel="stylesheet" href="../../css/components/sidebar.css">
-  <link rel="stylesheet" href="../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
 
-  <script src="../../pages/header.js"></script>
-  <script src="../../pages/footer.js"></script>
+  <script src="../../../../pages/header.js"></script>
+  <script src="../../../../pages/footer.js"></script>
 
   <style>
     /* ============================================================
-       LAYOUT PHÂN NHÓM ACCORDION – TIẾP CẬN LÂM SÀNG
-       Đồng bộ hoàn toàn với Design Tokens CliniPortal (cong-cu.html)
+       QUICK SUB-NAVIGATION SWITCHER BAR (DUAL-ROW)
     ============================================================ */
+    .tc-sub-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+      padding: 12px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      animation: fadeInUp 0.4s ease-out;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .sub-nav-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+    }
+    .sub-nav-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--color-text-faint);
+      margin-right: 8px;
+      letter-spacing: 0.5px;
+    }
+    .sub-nav-divider {
+      height: 1px;
+      background-color: var(--color-divider);
+      width: 100%;
+    }
+    .sub-nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: all var(--tr);
+    }
+    .sub-nav-link:hover {
+      color: var(--color-primary);
+      background: var(--color-surface-offset);
+    }
+    .sub-nav-link.active {
+      color: var(--color-primary);
+      background: var(--color-primary-hl);
+    }
+
+    
 
     /* --- TOOLBAR: Search + Actions --- */
     .tc-toolbar {
@@ -162,13 +217,6 @@
       transform: scale(0.96);
     }
 
-    .tc-toolbar-divider {
-      width: 1px;
-      height: 24px;
-      background: var(--color-divider);
-      flex-shrink: 0;
-    }
-
     /* --- GROUPS WRAPPER --- */
     .groups-wrapper {
       display: flex;
@@ -178,8 +226,7 @@
     }
 
     .group-container {
-      flex: 1 1 calc(50% - 1.25rem);
-      min-width: 300px;
+      flex: 1 1 100%;
       background-color: var(--color-surface);
       border: 1px solid var(--color-divider);
       border-radius: var(--radius-lg);
@@ -207,34 +254,14 @@
       opacity: 1;
     }
 
-    .group-container.active {
-      flex: 1 1 100%;
-      box-shadow: var(--shadow-md);
-    }
-
     .group-container.hidden-by-search {
       display: none;
     }
 
     /* Gradient borders by color group */
-    .group-container.g-orange.active {
+    .group-container.g-orange {
       border-left: 4px solid;
       border-image: linear-gradient(180deg, #f97316, rgba(249, 115, 22, 0.3)) 1;
-    }
-
-    .group-container.g-purple.active {
-      border-left: 4px solid;
-      border-image: linear-gradient(180deg, #a855f7, rgba(168, 85, 247, 0.3)) 1;
-    }
-
-    .group-container.g-teal.active {
-      border-left: 4px solid;
-      border-image: linear-gradient(180deg, #14b8a6, rgba(20, 184, 166, 0.3)) 1;
-    }
-
-    .group-container.g-blue.active {
-      border-left: 4px solid;
-      border-image: linear-gradient(180deg, var(--color-primary), rgba(2, 132, 199, 0.3)) 1;
     }
 
     /* Group heading */
@@ -356,11 +383,25 @@
       animation: fadeInUp 0.4s ease-out backwards;
     }
 
-    .group-container.active .tool-card:nth-child(1) { animation-delay: 0.05s; }
-    .group-container.active .tool-card:nth-child(2) { animation-delay: 0.12s; }
-    .group-container.active .tool-card:nth-child(3) { animation-delay: 0.19s; }
-    .group-container.active .tool-card:nth-child(4) { animation-delay: 0.26s; }
-    .group-container.active .tool-card:nth-child(5) { animation-delay: 0.33s; }
+    .group-container.active .tool-card:nth-child(1) {
+      animation-delay: 0.05s;
+    }
+
+    .group-container.active .tool-card:nth-child(2) {
+      animation-delay: 0.12s;
+    }
+
+    .group-container.active .tool-card:nth-child(3) {
+      animation-delay: 0.19s;
+    }
+
+    .group-container.active .tool-card:nth-child(4) {
+      animation-delay: 0.26s;
+    }
+
+    .group-container.active .tool-card:nth-child(5) {
+      animation-delay: 0.33s;
+    }
 
     /* --- Search hidden states --- */
     .tool-card.hidden-by-search {
@@ -413,17 +454,12 @@
       .tc-toolbar-btn span:last-child {
         display: none;
       }
-
-      .group-container {
-        flex: 1 1 100%;
-        min-width: unset;
-      }
     }
   </style>
 </head>
 
 <body>
-  <div id="header-placeholder" data-header-path="../header.html"></div>
+  <div id="header-placeholder" data-header-path="../../../header.html"></div>
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
   <!-- ===================== APP CONTAINER ===================== -->
@@ -441,43 +477,43 @@
       <nav class="sidebar-nav" aria-label="Điều hướng chính">
         <ul class="nav-list" role="list">
           <li>
-            <a href="../../index.html" class="nav-item" title="Trang chủ">
+            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
               <span class="nav-icon">🏠</span>
               <span class="nav-text">Trang chủ</span>
             </a>
           </li>
           <li>
-            <a href="../Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item" title="Sinh lý & Sinh lý bệnh">
+            <a href="../../../Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item" title="Sinh lý & Sinh lý bệnh">
               <span class="nav-icon">🧬</span>
               <span class="nav-text">Sinh lý</span>
             </a>
           </li>
           <li>
-            <a href="../Kỹ năng lâm sàng/ky-nang-lam-sang.html" class="nav-item" title="Kỹ năng lâm sàng">
+            <a href="../../../Kỹ năng lâm sàng/ky-nang-lam-sang.html" class="nav-item" title="Kỹ năng lâm sàng">
               <span class="nav-icon">🩺</span>
               <span class="nav-text">Kỹ năng lâm sàng</span>
             </a>
           </li>
           <li>
-            <a href="tiep-can.html" class="nav-item active" aria-current="page" title="Tiếp cận lâm sàng">
+            <a href="../../tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
               <span class="nav-icon">🤒</span>
               <span class="nav-text">Tiếp cận lâm sàng</span>
             </a>
           </li>
           <li>
-            <a href="../Công cụ/cong-cu.html" class="nav-item" title="Công cụ lâm sàng">
+            <a href="../../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ lâm sàng">
               <span class="nav-icon">⚙️</span>
               <span class="nav-text">Công cụ lâm sàng</span>
             </a>
           </li>
           <li>
-            <a href="../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý & Kháng sinh">
+            <a href="../../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý & Kháng sinh">
               <span class="nav-icon">💊</span>
               <span class="nav-text">Dược lý lâm sàng</span>
             </a>
           </li>
           <li>
-            <a href="../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+            <a href="../../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
               <span class="nav-icon">📄</span>
               <span class="nav-text">Y học chứng cứ</span>
             </a>
@@ -493,19 +529,23 @@
       <nav aria-label="Breadcrumb" class="breadcrumb-container">
         <ol class="breadcrumb-list">
           <li class="breadcrumb-item">
-            <a href="../../index.html" class="breadcrumb-link">
+            <a href="../../../../index.html" class="breadcrumb-link">
               <span class="home-icon">🏠</span> Home
             </a>
           </li>
-          <li class="breadcrumb-item active" aria-current="page">Tiếp cận lâm sàng</li>
+          <li class="breadcrumb-item">
+            <a href="../../tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Tiếp cận Đau Bụng</li>
         </ol>
       </nav>
 
       <section class="hero-dashboard" aria-labelledby="hero-title">
         <div class="hero-pattern"></div>
         <div class="hero-intro">
-          <h1 id="hero-title">🩺 TIẾP CẬN LÂM SÀNG</h1>
-          <p>Hệ thống sơ đồ tiếp cận chẩn đoán phân biệt theo triệu chứng, hội chứng, bệnh lý và bất thường cận lâm sàng dựa trên y học chứng cứ.</p>
+          <h1 id="hero-title">🤢 TIẾP CẬN ĐAU BỤNG</h1>
+          <p>Thuật toán tiếp cận chẩn đoán phân biệt, chỉ định xét nghiệm cận lâm sàng và hình ảnh học theo từng đối
+            tượng lâm sàng cụ thể.</p>
         </div>
       </section>
 
@@ -515,7 +555,7 @@
         <div class="tc-toolbar">
           <div class="tc-toolbar-search">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="search" id="tcSearch" placeholder="Tìm kiếm vấn đề lâm sàng..." autocomplete="off">
+            <input type="search" id="tcSearch" placeholder="Tìm kiếm đối tượng hoặc bài tiếp cận..." autocomplete="off">
             <button class="tc-search-clear" id="searchClearBtn" title="Xóa tìm kiếm">✕</button>
             <span id="searchCount" class="tc-search-count"></span>
           </div>
@@ -532,352 +572,276 @@
         <!-- ===== NO RESULTS ===== -->
         <div id="searchNoResults" class="search-no-results">
           <span class="no-results-icon">🔍</span>
-          <div>Không tìm thấy vấn đề lâm sàng nào phù hợp.</div>
-          <div style="margin-top:0.25rem;font-size:var(--text-xs)">Thử từ khóa khác hoặc xóa bộ lọc.</div>
+          <div>Không tìm thấy bài viết tiếp cận đau bụng nào phù hợp.</div>
+          <div style="margin-top:0.25rem;font-size:var(--text-xs)">Thử tìm kiếm với từ khóa khác như "người lớn", "trẻ
+            em", "mạn tính"...</div>
         </div>
 
         <div class="groups-wrapper" id="groupsWrapper">
 
           <!-- =========================================
-               SECTION 1: TRIỆU CHỨNG
+               SECTION: ĐAU BỤNG THEO ĐỐI TƯỢNG LÂM SÀNG
           ========================================= -->
-          <div class="group-container g-orange">
+          <div class="group-container g-orange active">
             <div class="group-heading">
-              <h3><span class="g-icon">🔍</span> Triệu Chứng <span class="group-tool-count">5</span></h3>
+              <h3><span class="g-icon">🤢</span> Phân Loại theo đối tượng <span class="group-tool-count">5</span></h3>
               <span class="toggle-indicator"></span>
             </div>
             <div class="category-grid-wrapper">
               <div class="category-grid">
 
-                <div class="tool-card card-rose" data-tool-id="tc-sot">
+                <!-- 1. Đau bụng cấp ở người lớn -->
+                <div class="tool-card card-blue" data-tool-id="tc-db-adult">
                   <div class="card-top">
-                    <div class="tool-icon">🌡️</div>
-                    <span class="tool-status active">Hoạt động</span>
+                    <div class="tool-icon">👤</div>
+                    <span class="tool-status active">Cấp cứu</span>
                   </div>
                   <div class="tool-content">
-                    <div class="tool-title-row"><h3>Tiếp cận Sốt</h3></div>
-                    <p>Phân tầng nguyên nhân, định hướng cận lâm sàng và ngưỡng dùng kháng sinh theo bối cảnh lâm sàng.</p>
+                    <div class="tool-title-row">
+                      <h3>Đau Bụng Cấp ở Người Lớn</h3>
+                    </div>
+                    <p>Phân loại đau theo góc tư 9 vùng bụng, định hướng ngoại khoa nguy hiểm (viêm ruột thừa, thủng dạ
+                      dày, tắc ruột, viêm tụy cấp).</p>
                   </div>
                   <div class="tool-footer">
-                    <span class="tool-category">Triệu chứng</span>
-                    <a href="tc-sot.html">Xem tiếp cận</a>
+                    <span class="tool-category">Người lớn</span>
+                    <a href="TC_Daubung_Cap_Nguoilon.html">Xem sơ đồ</a>
                   </div>
                 </div>
 
-                <div class="tool-card card-blue" data-tool-id="tc-kho-tho">
+                <!-- 2. Đau bụng cấp ở người lớn tuổi / bệnh nền -->
+                <div class="tool-card card-rose" data-tool-id="tc-db-elderly">
+                  <div class="card-top">
+                    <div class="tool-icon">🧓</div>
+                    <span class="tool-status active">Nguy cơ cao</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row">
+                      <h3>Đau Bụng Cấp ở Người Cao Tuổi</h3>
+                    </div>
+                    <p>Biểu hiện lâm sàng âm thầm, không điển hình. Tiếp cận cảnh giác cao với thiếu máu mạc treo, vỡ
+                      phình động mạch chủ bụng (AAA), viêm túi thừa.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Người cao tuổi</span>
+                    <a href="TC_Daubung_Cap_Nguoilon-tuoi.html">Xem sơ đồ</a>
+                  </div>
+                </div>
+
+                <!-- 3. Đau bụng cấp ở trẻ em -->
+                <div class="tool-card card-green" data-tool-id="tc-db-pediatric">
+                  <div class="card-top">
+                    <div class="tool-icon">👶</div>
+                    <span class="tool-status active">Cấp cứu nhi</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row">
+                      <h3>Đau Bụng Cấp ở Trẻ Em</h3>
+                    </div>
+                    <p>Tiếp cận lâm sàng theo độ tuổi nhi khoa: Lồng ruột (trẻ bú mẹ), viêm ruột thừa, viêm hạch mạc
+                      treo, viêm dạ dày ruột cấp.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Nhi khoa</span>
+                    <a href="TC_Daubung_Cap_Treem.html">Xem sơ đồ</a>
+                  </div>
+                </div>
+
+                <!-- 4. Đau bụng cấp ở phụ nữ tuổi sinh sản -->
+                <div class="tool-card card-purple" data-tool-id="tc-db-women">
+                  <div class="card-top">
+                    <div class="tool-icon">👩‍🦰</div>
+                    <span class="tool-status active">Sản phụ khoa</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row">
+                      <h3>Đau Bụng Cấp ở Phụ Nữ Sinh Sản</h3>
+                    </div>
+                    <p>Định hướng chẩn đoán thai ngoài tử cung vỡ (luôn xét nghiệm Beta-hCG), xoắn buồng trứng, viêm
+                      vùng chậu (PID), vỡ nang hoàng thể.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Phụ khoa</span>
+                    <a href="TC_Daubung_Cap_Phunu.html">Xem sơ đồ</a>
+                  </div>
+                </div>
+
+                <!-- 5. Đau bụng mạn tính -->
+                <div class="tool-card card-amber" data-tool-id="tc-db-chronic">
+                  <div class="card-top">
+                    <div class="tool-icon">🔄</div>
+                    <span class="tool-status active">Nội khoa</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row">
+                      <h3>Đau Bụng Mạn Tính</h3>
+                    </div>
+                    <p>Tiếp cận hệ thống cho đau bụng kéo dài > 3 tháng: Hội chứng ruột kích thích (IBS), viêm tụy mạn,
+                      thiếu máu mạc treo mạn, đau thành bụng.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Mạn tính</span>
+                    <a href="TC_Daubung_Man.html">Xem sơ đồ</a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- =========================================
+               SECTION: ĐAU BỤNG THEO VỊ TRÍ
+          ========================================= -->
+          <div class="group-container g-yellow active">
+            <div class="group-heading">
+              <h3><span class="g-icon">🤢</span> Phân Loại theo vị trí đau <span class="group-tool-count">7</span></h3>
+              <span class="toggle-indicator"></span>
+            </div>
+            <div class="category-grid-wrapper">
+              <div class="category-grid">
+
+                <!-- 1. Đau bụng cấp ở 1/4 trên phải (Hạ sườn phải) -->
+                <div class="tool-card card-blue" data-tool-id="tc-db-adult">
                   <div class="card-top">
                     <div class="tool-icon">🫁</div>
-                    <span class="tool-status active">Hoạt động</span>
+                    <span class="tool-status active">Nguy cơ cao</span>
                   </div>
                   <div class="tool-content">
-                    <div class="tool-title-row"><h3>Tiếp cận Khó Thở</h3></div>
-                    <p>Thuật toán phân biệt nguyên nhân tim mạch, hô hấp, chuyển hóa; đánh giá mức độ nặng.</p>
+                    <div class="tool-title-row">
+                      <h3>Đau Bụng Cấp ở 1/4 trên phải (Hạ sườn phải)</h3>
+                    </div>
+                    <p>Đau bụng vùng hạ sườn phải: Nguyên nhân nội khoa (viêm gan, sỏi mật) và ngoại khoa (viêm túi mật,
+                      áp xe dưới hoành).</p>
                   </div>
                   <div class="tool-footer">
-                    <span class="tool-category">Triệu chứng</span>
-                    <a href="tc-kho-tho.html">Xem tiếp cận</a>
+                    <span class="tool-category">Người lớn</span>
+                    <a href="TC_Daubung_Cap_HSR.html">Xem sơ đồ</a>
                   </div>
                 </div>
 
-                <div class="tool-card card-rose" data-tool-id="tc-dau-nguc">
-                  <div class="card-top">
-                    <div class="tool-icon">💔</div>
-                    <span class="tool-status active">Hoạt động</span>
-                  </div>
-                  <div class="tool-content">
-                    <div class="tool-title-row"><h3>Tiếp cận Đau Ngực</h3></div>
-                    <p>Loại trừ ACS, PE, tràn khí màng phổi; chiến lược chẩn đoán theo nguy cơ.</p>
-                  </div>
-                  <div class="tool-footer">
-                    <span class="tool-category">Triệu chứng</span>
-                    <a href="tc-dau-nguc.html">Xem tiếp cận</a>
-                  </div>
-                </div>
-
-                <div class="tool-card card-green" data-tool-id="tc-phu">
-                  <div class="card-top">
-                    <div class="tool-icon">🦶</div>
-                    <span class="tool-status active">Hoạt động</span>
-                  </div>
-                  <div class="tool-content">
-                    <div class="tool-title-row"><h3>Tiếp cận Phù</h3></div>
-                    <p>Phân biệt phù khu trú và toàn thân; hướng dẫn thăm khám và xét nghiệm định hướng.</p>
-                  </div>
-                  <div class="tool-footer">
-                    <span class="tool-category">Triệu chứng</span>
-                    <a href="tc-phu.html">Xem tiếp cận</a>
-                  </div>
-                </div>
-
-                <div class="tool-card card-amber" data-tool-id="tc-dau-bung">
-                  <div class="card-top">
-                    <div class="tool-icon">🤢</div>
-                    <span class="tool-status active">Hoạt động</span>
-                  </div>
-                  <div class="tool-content">
-                    <div class="tool-title-row"><h3>Tiếp cận Đau Bụng</h3></div>
-                    <p>Phân loại đau bụng cấp ngoại khoa/nội khoa, đỏ cờ lâm sàng cho người lớn, trẻ em, phụ nữ tuổi sinh sản, người cao tuổi và đau bụng mạn tính.</p>
-                  </div>
-                  <div class="tool-footer">
-                    <span class="tool-category">Triệu chứng</span>
-                    <a href="Triệu chứng - Hội chứng/Đau bụng/TC_Daubung.html">Xem tiếp cận</a>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-          <!-- =========================================
-               SECTION 2: HỘI CHỨNG
-          ========================================= -->
-          <div class="group-container g-purple">
-            <div class="group-heading">
-              <h3><span class="g-icon">⚕️</span> Hội Chứng <span class="group-tool-count">4</span></h3>
-              <span class="toggle-indicator"></span>
-            </div>
-            <div class="category-grid-wrapper">
-              <div class="category-grid">
-
-                <div class="tool-card card-rose" data-tool-id="tc-sepsis">
-                  <div class="card-top">
-                    <div class="tool-icon">🦠</div>
-                    <span class="tool-status active">Hoạt động</span>
-                  </div>
-                  <div class="tool-content">
-                    <div class="tool-title-row"><h3>Xử trí Hội chứng Sepsis & Sốc NK</h3></div>
-                    <p>Quy trình Hour-1 Bundle: nhận diện suy tạng, hồi sức dịch truyền, thời điểm cấy máu và kháng sinh phổ rộng.</p>
-                  </div>
-                  <div class="tool-footer">
-                    <span class="tool-category">Hội chứng</span>
-                    <a href="tc-sepsis.html">Xem tiếp cận</a>
-                  </div>
-                </div>
-
-                <div class="tool-card card-blue" data-tool-id="tc-abg">
-                  <div class="card-top">
-                    <div class="tool-icon">🔬</div>
-                    <span class="tool-status active">Hoạt động</span>
-                  </div>
-                  <div class="tool-content">
-                    <div class="tool-title-row"><h3>Tiếp cận Khí Máu Động Mạch</h3></div>
-                    <p>Thuật toán 6 bước: rối loạn toan kiềm tiên phát, mức độ bù trừ, Anion Gap và rối loạn hỗn hợp.</p>
-                  </div>
-                  <div class="tool-footer">
-                    <span class="tool-category">Hội chứng</span>
-                    <a href="tc-abg.html">Xem tiếp cận</a>
-                  </div>
-                </div>
-
-                <div class="tool-card card-rose" data-tool-id="tc-aki">
-                  <div class="card-top">
-                    <div class="tool-icon">🫘</div>
-                    <span class="tool-status active">Hoạt động</span>
-                  </div>
-                  <div class="tool-content">
-                    <div class="tool-title-row"><h3>Tiếp cận Tổn Thương Thận Cấp</h3></div>
-                    <p>Phân loại trước thận, tại thận, sau thận; tiêu chuẩn KDIGO và chỉ định lọc thận.</p>
-                  </div>
-                  <div class="tool-footer">
-                    <span class="tool-category">Hội chứng</span>
-                    <a href="tc-suy-than.html">Xem tiếp cận</a>
-                  </div>
-                </div>
-
-                <div class="tool-card card-green" data-tool-id="tc-vang-da">
-                  <div class="card-top">
-                    <div class="tool-icon">🟡</div>
-                    <span class="tool-status active">Hoạt động</span>
-                  </div>
-                  <div class="tool-content">
-                    <div class="tool-title-row"><h3>Tiếp cận Hội chứng Vàng Da</h3></div>
-                    <p>Phân biệt vàng da trước gan, tại gan, tắc mật; hướng dẫn chẩn đoán phân biệt có hệ thống.</p>
-                  </div>
-                  <div class="tool-footer">
-                    <span class="tool-category">Hội chứng</span>
-                    <a href="tc-hoi-chung-vang-da.html">Xem tiếp cận</a>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-          <!-- =========================================
-               SECTION 3: BỆNH LÝ
-          ========================================= -->
-          <div class="group-container g-teal">
-            <div class="group-heading">
-              <h3><span class="g-icon">📋</span> Bệnh Lý <span class="group-tool-count">4</span></h3>
-              <span class="toggle-indicator"></span>
-            </div>
-            <div class="category-grid-wrapper">
-              <div class="category-grid">
-
-                <div class="tool-card card-rose" data-tool-id="tc-hbv">
-                  <div class="card-top">
-                    <div class="tool-icon">🧬</div>
-                    <span class="tool-status active">Hoạt động</span>
-                  </div>
-                  <div class="tool-content">
-                    <div class="tool-title-row"><h3>Tiếp cận Viêm Gan Siêu Vi B</h3></div>
-                    <p>Chẩn đoán xác định, phân loại giai đoạn, phân tầng nguy cơ và quản lý điều trị theo mức độ nặng.</p>
-                  </div>
-                  <div class="tool-footer">
-                    <span class="tool-category">Bệnh lý</span>
-                    <a href="Bệnh lý/TC_vgsvB.html">Xem tiếp cận</a>
-                  </div>
-                </div>
-
-                <div class="tool-card card-green" data-tool-id="tc-sxhd">
-                  <div class="card-top">
-                    <div class="tool-icon">🦟</div>
-                    <span class="tool-status active">Hoạt động</span>
-                  </div>
-                  <div class="tool-content">
-                    <div class="tool-title-row"><h3>Tiếp cận Sốt xuất huyết Dengue</h3></div>
-                    <p>Phân loại mức độ nặng theo WHO, chỉ định xét nghiệm và chiến lược điều trị.</p>
-                  </div>
-                  <div class="tool-footer">
-                    <span class="tool-category">Bệnh lý</span>
-                    <a href="Bệnh lý/TC_SXHD.html">Xem tiếp cận</a>
-                  </div>
-                </div>
-
-                <div class="tool-card card-blue" data-tool-id="tc-cap">
+                <!-- 2. Đau bụng cấp ở 1/4 trên trái (Hạ sườn trái) -->
+                <div class="tool-card card-green" data-tool-id="tc-db-adult">
                   <div class="card-top">
                     <div class="tool-icon">🫁</div>
-                    <span class="tool-status active">Hoạt động</span>
+                    <span class="tool-status active">Nguy cơ cao</span>
                   </div>
                   <div class="tool-content">
-                    <div class="tool-title-row"><h3>Viêm Phổi Cộng Đồng</h3></div>
-                    <p>Phân loại PSI/CURB-65, chiến lược kháng sinh theo mức độ nặng và bối cảnh dịch tễ.</p>
+                    <div class="tool-title-row">
+                      <h3>Đau Bụng Cấp ở 1/4 trên trái (Hạ sườn trái)</h3>
+                    </div>
+                    <p>Đau bụng vùng hạ sườn trái: Nguyên nhân nội khoa (viêm gan, sỏi mật) và ngoại khoa (viêm túi mật,
+                      áp xe dưới hoành).</p>
                   </div>
                   <div class="tool-footer">
-                    <span class="tool-category">Bệnh lý</span>
-                    <a href="tc-viem-phoi.html">Xem tiếp cận</a>
+                    <span class="tool-category">Người lớn</span>
+                    <a href="TC_Daubung_Cap_HST.html">Xem sơ đồ</a>
                   </div>
                 </div>
 
-                <div class="tool-card card-purple" data-tool-id="tc-dtd">
+                <!-- 3. Đau bụng cấp ở 1/4 dưới phải (Hố chậu phải) -->
+                <div class="tool-card card-purple" data-tool-id="tc-db-adult">
                   <div class="card-top">
-                    <div class="tool-icon">💉</div>
-                    <span class="tool-status active">Hoạt động</span>
+                    <div class="tool-icon">🫁</div>
+                    <span class="tool-status active">Nguy cơ cao</span>
                   </div>
                   <div class="tool-content">
-                    <div class="tool-title-row"><h3>Tiếp cận Đái Tháo Đường</h3></div>
-                    <p>Chẩn đoán, phân loại, và xử trí các biến chứng cấp như DKA, HHS và biến chứng mạn.</p>
+                    <div class="tool-title-row">
+                      <h3>Đau Bụng Cấp ở 1/4 dưới phải (Hố chậu phải)</h3>
+                    </div>
+                    <p>Đau bụng vùng hạ sườn phải: Nguyên nhân nội khoa (viêm gan, sỏi mật) và ngoại khoa (viêm túi mật,
+                      áp xe dưới hoành).</p>
                   </div>
                   <div class="tool-footer">
-                    <span class="tool-category">Bệnh lý</span>
-                    <a href="tc-dai-thao-duong.html">Xem tiếp cận</a>
+                    <span class="tool-category">Người lớn</span>
+                    <a href="TC_Daubung_Cap_HCP.html">Xem sơ đồ</a>
                   </div>
                 </div>
 
+                <!-- 4. Đau bụng cấp ở 1/4 dưới trái (Hố chậu trái) -->
+                <div class="tool-card card-green" data-tool-id="tc-db-adult">
+                  <div class="card-top">
+                    <div class="tool-icon">🫁</div>
+                    <span class="tool-status active">Nguy cơ cao</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row">
+                      <h3>Đau Bụng Cấp ở 1/4 dưới trái (Hố chậu trái)</h3>
+                    </div>
+                    <p>Đau bụng vùng hạ sườn phải: Nguyên nhân nội khoa (viêm gan, sỏi mật) và ngoại khoa (viêm túi mật,
+                      áp xe dưới hoành).</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Người lớn</span>
+                    <a href="TC_Daubung_Cap_HCT.html">Xem sơ đồ</a>
+                  </div>
+                </div>
+
+                <!-- 5. Đau bụng cấp ở vùng thượng vị -->
+                <div class="tool-card card-blue" data-tool-id="tc-db-adult">
+                  <div class="card-top">
+                    <div class="tool-icon">🫁</div>
+                    <span class="tool-status active">Nguy cơ cao</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row">
+                      <h3>Đau Bụng Cấp ở vùng thượng vị</h3>
+                    </div>
+                    <p>Đau bụng vùng hạ sườn phải: Nguyên nhân nội khoa (viêm gan, sỏi mật) và ngoại khoa (viêm túi mật,
+                      áp xe dưới hoành).</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Người lớn</span>
+                    <a href="TC_Daubung_Cap_Thuongvi.html">Xem sơ đồ</a>
+                  </div>
+                </div>
+
+                <!-- 6. Đau bụng cấp vùng quanh rốn -->
+                <div class="tool-card card-green" data-tool-id="tc-db-adult">
+                  <div class="card-top">
+                    <div class="tool-icon">🫁</div>
+                    <span class="tool-status active">Nguy cơ cao</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row">
+                      <h3>Đau Bụng Cấp ở vùng quanh rốn</h3>
+                    </div>
+                    <p>Đau bụng vùng quanh rốn: Nguyên nhân nội khoa (viêm gan, sỏi mật) và ngoại khoa (viêm túi mật,
+                      áp xe dưới hoành).</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Người lớn</span>
+                    <a href="TC_Daubung_Cap_Quanhron.html">Xem sơ đồ</a>
+                  </div>
+                </div>
+
+                <!-- 7. Đau bụng cấp vùng hạ vị -->
+                <div class="tool-card card-purple" data-tool-id="tc-db-adult">
+                  <div class="card-top">
+                    <div class="tool-icon">🫁</div>
+                    <span class="tool-status active">Nguy cơ cao</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row">
+                      <h3>Đau Bụng Cấp ở vùng hạ vị</h3>
+                    </div>
+                    <p>Đau bụng vùng hạ vị: Nguyên nhân nội khoa (viêm gan, sỏi mật) và ngoại khoa (viêm túi mật,
+                      áp xe dưới hoành).</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Người lớn</span>
+                    <a href="TC_Daubung_Cap_HaVi.html">Xem sơ đồ</a>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            </div><!-- end groups-wrapper -->
+          </div><!-- end main-content-grid -->
 
-          <!-- =========================================
-               SECTION 4: BẤT THƯỜNG CẬN LÂM SÀNG
-          ========================================= -->
-          <div class="group-container g-blue">
-            <div class="group-heading">
-              <h3><span class="g-icon">🔬</span> Bất thường Cận Lâm Sàng <span class="group-tool-count">5</span></h3>
-              <span class="toggle-indicator"></span>
-            </div>
-            <div class="category-grid-wrapper">
-              <div class="category-grid">
-
-                <div class="tool-card card-blue" data-tool-id="tc-bach-cau">
-                  <div class="card-top">
-                    <div class="tool-icon">🩸</div>
-                    <span class="tool-status active">Hoạt động</span>
-                  </div>
-                  <div class="tool-content">
-                    <div class="tool-title-row"><h3>Tiếp cận Rối loạn Bạch cầu</h3></div>
-                    <p>Phân biệt tăng/giảm, hạt trung tính/lymphô, và các hội chứng giảm ba dòng tế bào.</p>
-                  </div>
-                  <div class="tool-footer">
-                    <span class="tool-category">Cận lâm sàng</span>
-                    <a href="Cận lâm sàng/TC_bachcau.html">Xem tiếp cận</a>
-                  </div>
-                </div>
-
-                <div class="tool-card card-purple" data-tool-id="tc-mono-eos">
-                  <div class="card-top">
-                    <div class="tool-icon">🩸</div>
-                    <span class="tool-status active">Hoạt động</span>
-                  </div>
-                  <div class="tool-content">
-                    <div class="tool-title-row"><h3>Monocyte, Eosinophil, Basophil</h3></div>
-                    <p>Chẩn đoán tăng bạch cầu ái toan, tăng mono và các hội chứng suy tủy.</p>
-                  </div>
-                  <div class="tool-footer">
-                    <span class="tool-category">Cận lâm sàng</span>
-                    <a href="Cận lâm sàng/TC_monocyte.html">Xem tiếp cận</a>
-                  </div>
-                </div>
-
-                <div class="tool-card card-rose" data-tool-id="tc-tieu-cau">
-                  <div class="card-top">
-                    <div class="tool-icon">🩸</div>
-                    <span class="tool-status active">Hoạt động</span>
-                  </div>
-                  <div class="tool-content">
-                    <div class="tool-title-row"><h3>Tiếp cận Rối loạn Tiểu cầu</h3></div>
-                    <p>Hội chứng giảm tiểu cầu (ITP, TTP-HUS, DIC) và tăng tiểu cầu phản ứng/di truyền.</p>
-                  </div>
-                  <div class="tool-footer">
-                    <span class="tool-category">Cận lâm sàng</span>
-                    <a href="Cận lâm sàng/TC_tieu-cau.html">Xem tiếp cận</a>
-                  </div>
-                </div>
-
-                <div class="tool-card card-rose" data-tool-id="tc-thieu-mau">
-                  <div class="card-top">
-                    <div class="tool-icon">🩸</div>
-                    <span class="tool-status active">Hoạt động</span>
-                  </div>
-                  <div class="tool-content">
-                    <div class="tool-title-row"><h3>Tiếp cận Thiếu máu</h3></div>
-                    <p>Phân loại MCV, MCH, MCHC và các nguyên nhân thiếu máu hồng cầu nhỏ/to/normo.</p>
-                  </div>
-                  <div class="tool-footer">
-                    <span class="tool-category">Cận lâm sàng</span>
-                    <a href="Cận lâm sàng/TC_hc.html">Xem tiếp cận</a>
-                  </div>
-                </div>
-
-                <div class="tool-card card-green" data-tool-id="tc-sinh-hoa-gan">
-                  <div class="card-top">
-                    <div class="tool-icon">🧪</div>
-                    <span class="tool-status active">Hoạt động</span>
-                  </div>
-                  <div class="tool-content">
-                    <div class="tool-title-row"><h3>Tiếp cận Sinh hóa Gan</h3></div>
-                    <p>Chẩn đoán tổn thương tế bào gan, tắc mật và suy chức năng gan.</p>
-                  </div>
-                  <div class="tool-footer">
-                    <span class="tool-category">Cận lâm sàng</span>
-                    <a href="Cận lâm sàng/TC_Sinhhoagan.html">Xem tiếp cận</a>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-        </div><!-- end groups-wrapper -->
-      </div><!-- end main-content-grid -->
-
-    </div><!-- end main-wrapper -->
-  </div><!-- end app-container -->
-
-  <footer class="global-footer">
-    <div class="footer-copyright">
-      <p>CliniPortal &copy; 2026 · Tiếp cận lâm sàng · Chỉ mang tính hỗ trợ tham khảo, không thay thế phán xét lâm sàng của bác sĩ y khoa.</p>
+        </div><!-- end main-wrapper -->
+      </div><!-- end app-container -->
     </div>
+  </div>
+  <footer class="global-footer">
+    <div id="footer-placeholder" data-footer-path="../../../footer.html"></div>
   </footer>
 
   <!-- ===================== SCRIPT ===================== -->
