@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CliniPortal Button Effects Demo</title>
+  <link rel="stylesheet" href="button-effects.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      padding: 2rem;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark {
+      background: #0f172a;
+      color: #f1f5f9;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #0ea5e9;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.75rem 1.5rem;
+      background: #0ea5e9;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      z-index: 1000;
+    }
+
+    .effect-section {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .dark .effect-section {
+      background: #1e293b;
+    }
+
+    .effect-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: #0ea5e9;
+      border-bottom: 2px solid #0ea5e9;
+      padding-bottom: 0.5rem;
+    }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .button-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .button-label {
+      font-size: 0.875rem;
+      color: #64748b;
+      text-align: center;
+    }
+
+    .dark .button-label {
+      color: #94a3b8;
+    }
+
+    code {
+      display: block;
+      background: #1e293b;
+      color: #10b981;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.75rem;
+      overflow-x: auto;
+      margin-top: 0.5rem;
+    }
+
+    .dark code {
+      background: #0f172a;
+    }
+  </style>
+</head>
+<body>
+  <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+
+  <div class="container">
+    <header>
+      <h1>🔘 CliniPortal Button Effects</h1>
+      <p>Thư viện 20+ hiệu ứng nút bấm chuyên nghiệp cho giao diện y khoa</p>
+    </header>
+
+    <!-- Primary Effects -->
+    <section class="effect-section">
+      <h2>✨ Hiệu ứng Cơ bản</h2>
+      <div class="button-grid">
+        <div class="button-wrapper">
+          <button class="btn btn-primary btn-slide-left">Slide Left</button>
+          <span class="button-label">Trượt trái</span>
+          <code>&lt;button class="btn btn-primary btn-slide-left"&gt;</code>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn btn-primary btn-slide-right">Slide Right</button>
+          <span class="button-label">Trượt phải</span>
+          <code>&lt;button class="btn btn-primary btn-slide-right"&gt;</code>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn btn-primary btn-glow">Glow Effect</button>
+          <span class="button-label">Phát sáng</span>
+          <code>&lt;button class="btn btn-primary btn-glow"&gt;</code>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn btn-primary btn-pulse">Pulse</button>
+          <span class="button-label">Nhịp đập</span>
+          <code>&lt;button class="btn btn-primary btn-pulse"&gt;</code>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn btn-primary btn-ripple">Ripple</button>
+          <span class="button-label">Gợn sóng</span>
+          <code>&lt;button class="btn btn-primary btn-ripple"&gt;</code>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn btn-primary btn-3d-push">3D Push</button>
+          <span class="button-label">Đẩy 3D</span>
+          <code>&lt;button class="btn btn-primary btn-3d-push"&gt;</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- Advanced Effects -->
+    <section class="effect-section">
+      <h2>🎨 Hiệu ứng Nâng cao</h2>
+      <div class="button-grid">
+        <div class="button-wrapper">
+          <button class="btn btn-primary btn-fill-up">Fill Up</button>
+          <span class="button-label">Lấp đầy từ dưới</span>
+          <code>&lt;button class="btn btn-primary btn-fill-up"&gt;</code>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn btn-border-expand">Border Expand</button>
+          <span class="button-label">Viền mở rộng</span>
+          <code>&lt;button class="btn btn-border-expand"&gt;</code>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn btn-primary btn-shine">Shine</button>
+          <span class="button-label">Tia sáng</span>
+          <code>&lt;button class="btn btn-primary btn-shine"&gt;</code>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn btn-primary btn-scale-up">Scale Up</button>
+          <span class="button-label">Phóng to</span>
+          <code>&lt;button class="btn btn-primary btn-scale-up"&gt;</code>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn btn-primary btn-rotate-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            Rotate Icon
+          </button>
+          <span class="button-label">Xoay icon</span>
+          <code>&lt;button class="btn btn-primary btn-rotate-icon"&gt;</code>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn btn-underline-slide">Underline Slide</button>
+          <span class="button-label">Gạch chân trượt</span>
+          <code>&lt;button class="btn btn-underline-slide"&gt;</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- Special Effects -->
+    <section class="effect-section">
+      <h2>⚡ Hiệu ứng Đặc biệt</h2>
+      <div class="button-grid">
+        <div class="button-wrapper">
+          <button class="btn btn-neon">Neon Effect</button>
+          <span class="button-label">Đèn neon</span>
+          <code>&lt;button class="btn btn-neon"&gt;</code>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn btn-primary btn-bounce">Bounce</button>
+          <span class="button-label">Nảy</span>
+          <code>&lt;button class="btn btn-primary btn-bounce"&gt;</code>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn btn-primary btn-skew"><span>Skew Effect</span></button>
+          <span class="button-label">Nghiêng</span>
+          <code>&lt;button class="btn btn-primary btn-skew"&gt;&lt;span&gt;</code>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn btn-gradient-shift">Gradient Shift</button>
+          <span class="button-label">Chuyển gradient</span>
+          <code>&lt;button class="btn btn-gradient-shift"&gt;</code>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn btn-primary btn-arrow-slide"><span>Arrow Slide →</span></button>
+          <span class="button-label">Mũi tên trượt</span>
+          <code>&lt;button class="btn btn-primary btn-arrow-slide"&gt;</code>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn btn-primary btn-blur-bg">Blur BG</button>
+          <span class="button-label">Làm mờ nền</span>
+          <code>&lt;button class="btn btn-primary btn-blur-bg"&gt;</code>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn btn-success btn-medical-pulse">Medical Pulse</button>
+          <span class="button-label">Nhịp tim y khoa</span>
+          <code>&lt;button class="btn btn-success btn-medical-pulse"&gt;</code>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn btn-primary btn-liquid">Liquid Fill</button>
+          <span class="button-label">Chất lỏng lấp đầy</span>
+          <code>&lt;button class="btn btn-primary btn-liquid"&gt;</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- Color Variants -->
+    <section class="effect-section">
+      <h2>🎨 Biến thể Màu sắc</h2>
+      <div class="button-grid">
+        <div class="button-wrapper">
+          <button class="btn btn-primary btn-glow">Primary (Blue)</button>
+          <code>btn-primary</code>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn btn-secondary btn-glow">Secondary (Gray)</button>
+          <code>btn-secondary</code>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn btn-success btn-glow">Success (Green)</button>
+          <code>btn-success</code>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn btn-danger btn-glow">Danger (Red)</button>
+          <code>btn-danger</code>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn btn-warning btn-glow">Warning (Orange)</button>
+          <code>btn-warning</code>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      const btn = document.querySelector('.theme-toggle');
+      btn.textContent = document.body.classList.contains('dark') ? '☀️ Light Mode' : '🌙 Dark Mode';
+    }
+  </script>
+</body>
+</html>
