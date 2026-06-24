@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CliniPortal Medical Icons Preview</title>
+  <style>
+    :root {
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-color: #1e293b;
+      --border-color: #e2e8f0;
+      --icon-color: #0ea5e9;
+      --primary: #0ea5e9;
+    }
+
+    body.dark {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --text-color: #f1f5f9;
+      --border-color: #334155;
+      --icon-color: #38bdf8;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0.75rem 1.5rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .icon-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    }
+
+    .icon-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+      border-color: var(--primary);
+    }
+
+    .icon-wrapper {
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .icon-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.05));
+    }
+
+    .icon-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 0.25rem;
+    }
+
+    .icon-filename {
+      font-size: 0.75rem;
+      color: #64748b;
+      font-family: monospace;
+    }
+
+    .dark .icon-filename {
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🔹 CliniPortal SVG Icons</h1>
+      <p>Bộ sưu tập 12 icon SVG y khoa cơ bản</p>
+      <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+    </header>
+
+    <div class="icon-grid" id="iconGrid">
+      <!-- Cards will be populated by JS -->
+    </div>
+  </div>
+
+  <script>
+    const icons = [
+      { name: "Công cụ lâm sàng", file: "ic-cong-cu.svg" },
+      { name: "Dược lý", file: "ic-duoc-ly.svg" },
+      { name: "Nhiễm khuẩn", file: "ic-nhiem-khuan.svg" },
+      { name: "Nội tiết", file: "ic-noi-tiet.svg" },
+      { name: "Phác đồ điều trị", file: "ic-phac-do.svg" },
+      { name: "Thần kinh", file: "ic-than-kinh.svg" },
+      { name: "Thận - Tiết niệu", file: "ic-than.svg" },
+      { name: "Tiếp cận lâm sàng", file: "ic-tiep-can.svg" },
+      { name: "Tiêu hóa", file: "ic-tieu-hoa.svg" },
+      { name: "Tim mạch", file: "ic-tim-mach.svg" },
+      { name: "Trang chủ", file: "ic-trang-chu.svg" },
+      { name: "Y học chứng cứ", file: "ic-y-hoc.svg" }
+    ];
+
+    const grid = document.getElementById('iconGrid');
+    icons.forEach(ico => {
+      const card = document.createElement('div');
+      card.className = 'icon-card';
+      card.onclick = () => copyToClipboard(ico.file);
+      card.innerHTML = `
+        <div class="icon-wrapper">
+          <img src="${ico.file}" alt="${ico.name}">
+        </div>
+        <div class="icon-label">${ico.name}</div>
+        <div class="icon-filename">${ico.file}</div>
+      `;
+      grid.appendChild(card);
+    });
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      const btn = document.querySelector('.theme-toggle');
+      btn.textContent = document.body.classList.contains('dark') ? '☀️ Light Mode' : '🌙 Dark Mode';
+    }
+
+    function copyToClipboard(filename) {
+      const tag = `/assets/icons/${filename}`;
+      navigator.clipboard.writeText(tag).then(() => {
+        alert(`Đã sao chép đường dẫn: ${tag}`);
+      });
+    }
+  </script>
+</body>
+</html>

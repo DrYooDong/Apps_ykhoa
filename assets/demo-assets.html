@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CliniPortal Asset Portal & Dashboard</title>
+  <style>
+    :root {
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-color: #1e293b;
+      --border-color: #e2e8f0;
+      --primary: #0ea5e9;
+      --sidebar-w: 240px;
+    }
+
+    body.dark {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --text-color: #f1f5f9;
+      --border-color: #334155;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      min-height: 100vh;
+      transition: all 0.3s ease;
+    }
+
+    /* Sidebar */
+    aside {
+      width: var(--sidebar-w);
+      background: var(--card-bg);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .brand {
+      font-size: 1.25rem;
+      font-weight: 850;
+      color: var(--primary);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .nav-item {
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .nav-item:hover, .nav-item.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Main Area */
+    main {
+      flex: 1;
+      padding: 2rem;
+      overflow-y: auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .theme-toggle {
+      padding: 0.5rem 1rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .grid-modules {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card-mod {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 1.75rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-mod:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+      border-color: var(--primary);
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-desc {
+      font-size: 0.9rem;
+      color: #64748b;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+
+    .dark .card-desc {
+      color: #94a3b8;
+    }
+
+    .btn-link {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      text-align: center;
+      transition: opacity 0.2s ease;
+    }
+
+    .btn-link:hover {
+      opacity: 0.9;
+    }
+
+    .btn-back-app {
+      background: #64748b;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside>
+    <div class="brand">
+      <span>📦</span> CliniPortal Assets
+    </div>
+    <nav>
+      <ul class="nav-list">
+        <li><a href="../index.html" class="nav-item">🏠 Quay lại ứng dụng</a></li>
+        <li><a href="#" class="nav-item active">🎨 Dashboard</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main>
+    <header>
+      <div>
+        <h1>🎨 CliniPortal Brand Assets Hub</h1>
+        <p style="margin: 0.25rem 0 0 0; color: #64748b;">Khám phá các thư viện tài nguyên giao diện, icons, animation và biểu đồ</p>
+      </div>
+      <button class="theme-toggle" onclick="toggleTheme()">🌙 Toggle Dark Mode</button>
+    </header>
+
+    <div class="grid-modules">
+      <!-- 1. Logos -->
+      <div class="card-mod">
+        <h3 class="card-title">🎨 Logo & Brand Identity</h3>
+        <p class="card-desc">Bộ logo chính thức, module icons, favicons và app icons hỗ trợ Dark/Light Mode tự động.</p>
+        <a href="logos/LOGO_USAGE.md" class="btn-link">Xem quy chuẩn sử dụng</a>
+      </div>
+
+      <!-- 2. Icons -->
+      <div class="card-mod">
+        <h3 class="card-title">🔹 Medical Icons</h3>
+        <p class="card-desc">Hơn 12+ icon SVG chuyên biệt cho các phân khoa y tế (Tim mạch, Tiêu hóa, Thần kinh, Thận...).</p>
+        <a href="icons/demo-icons.html" class="btn-link">Xem danh sách Icons</a>
+      </div>
+
+      <!-- 3. Lottie -->
+      <div class="card-mod">
+        <h3 class="card-title">🎬 Lottie Animations</h3>
+        <p class="card-desc">Hoạt ảnh y khoa trực quan (ECG, nhịp thở phổi, bơm truyền dịch...) tối ưu dung lượng.</p>
+        <a href="lottie/README.md" class="btn-link">Đọc tài liệu tích hợp</a>
+      </div>
+
+      <!-- 4. Buttons -->
+      <div class="card-mod">
+        <h3 class="card-title">🔘 Button Effects</h3>
+        <p class="card-desc">Thư viện 20+ hiệu ứng hover cho nút bấm (slide, glow, pulse, 3D) tối ưu phần cứng GPU.</p>
+        <a href="buttons/demo-buttons.html" class="btn-link">Mở Live Preview</a>
+      </div>
+
+      <!-- 5. Geometry -->
+      <div class="card-mod">
+        <h3 class="card-title">🔷 Geometry & Shapes</h3>
+        <p class="card-desc">Các khối hình học chuyên dụng, dải phân cách phần (wave/slant dividers) và lưới nền.</p>
+        <a href="geometry/demo-geometry.html" class="btn-link">Mở Live Preview</a>
+      </div>
+
+      <!-- 6. Backgrounds -->
+      <div class="card-mod">
+        <h3 class="card-title">🌊 Background Effects</h3>
+        <p class="card-desc">Hình nền Gradients y khoa, chuyển màu động (Animated Mesh) thích ứng chế độ Sáng/Tối.</p>
+        <a href="backgrounds/demo-backgrounds.html" class="btn-link">Mở Live Preview</a>
+      </div>
+
+      <!-- 7. Charts -->
+      <div class="card-mod">
+        <h3 class="card-title">📊 Dynamic Charts</h3>
+        <p class="card-desc">Vẽ biểu đồ diễn tiến sinh hiệu (Nhiệt độ, Mạch, eGFR) bằng SVG không phụ thuộc thư viện ngoài.</p>
+        <a href="charts/demo-charts.html" class="btn-link">Mở Live Preview</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      const btn = document.querySelector('.theme-toggle');
+      btn.textContent = document.body.classList.contains('dark') ? '☀️ Light Mode' : '🌙 Dark Mode';
+    }
+  </script>
+</body>
+</html>

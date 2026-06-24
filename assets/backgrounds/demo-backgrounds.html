@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CliniPortal Background Effects Preview</title>
+  <link rel="stylesheet" href="background-effects.css">
+  <style>
+    :root {
+      --bg-color: #f8fafc;
+      --card-bg: rgba(255, 255, 255, 0.85);
+      --text-color: #1e293b;
+      --border-color: #e2e8f0;
+      --primary: #0ea5e9;
+    }
+
+    body.dark {
+      --bg-color: #0f172a;
+      --card-bg: rgba(30, 41, 59, 0.85);
+      --text-color: #f1f5f9;
+      --border-color: #334155;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.5s ease;
+    }
+
+    .dashboard-panel {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: 1.5rem;
+      padding: 3rem;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      margin: 2rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      color: #64748b;
+      margin-bottom: 2rem;
+    }
+
+    .dark .subtitle {
+      color: #94a3b8;
+    }
+
+    .btn-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .effect-btn {
+      padding: 1rem;
+      border: 1px solid var(--border-color);
+      background: var(--bg-color);
+      color: var(--text-color);
+      font-weight: 600;
+      border-radius: 0.75rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .effect-btn:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .theme-toggle {
+      padding: 0.5rem 1rem;
+      background: none;
+      border: 1px solid var(--border-color);
+      color: var(--text-color);
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body class="bg-mesh">
+  <div class="dashboard-panel">
+    <h1>🌊 Background Effects Showcase</h1>
+    <div class="subtitle">Bấm vào các nút dưới đây để thay đổi và xem thử các hiệu ứng nền động, Mesh Gradients y khoa</div>
+
+    <div class="btn-grid">
+      <button class="effect-btn" onclick="changeBg('bg-mesh')">Mesh Gradient</button>
+      <button class="effect-btn" onclick="changeBg('bg-animated-mesh')">Animated Mesh</button>
+      <button class="effect-btn" onclick="changeBg('bg-cardio')">Cardio Theme</button>
+      <button class="effect-btn" onclick="changeBg('bg-nephro')">Nephro Theme</button>
+      <button class="effect-btn" onclick="changeBg('bg-pharm')">Pharm Theme</button>
+      <button class="effect-btn" onclick="resetBg()">Reset Default</button>
+    </div>
+
+    <button class="theme-toggle" onclick="toggleTheme()">🌙 Toggle Dark Mode</button>
+  </div>
+
+  <script>
+    function changeBg(className) {
+      document.body.className = '';
+      document.body.classList.add(className);
+    }
+
+    function resetBg() {
+      document.body.className = 'bg-mesh';
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      const btn = document.querySelector('.theme-toggle');
+      btn.textContent = document.body.classList.contains('dark') ? '☀️ Toggle Light Mode' : '🌙 Toggle Dark Mode';
+    }
+  </script>
+</body>
+</html>

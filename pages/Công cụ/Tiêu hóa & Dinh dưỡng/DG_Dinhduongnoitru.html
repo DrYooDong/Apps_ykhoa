@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi" data-theme="light">
 
 <head>
@@ -396,6 +396,59 @@
             background-color: rgba(248, 113, 113, 0.12);
         }
 
+        .child-tools-section {
+            margin-bottom: 16px;
+        }
+
+        .child-tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+        }
+
+        .child-tool-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            text-decoration: none;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .child-tool-link:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary-color);
+            background-color: var(--primary-light);
+        }
+
+        .child-tool-icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .child-tool-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .child-tool-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .child-tool-desc {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
         .reference-section {
             font-size: 0.85rem;
             color: var(--text-muted);
@@ -445,60 +498,62 @@
     <div class="app-container">
         <!--SIDEBAR-->
         <aside class="app-sidebar" id="appSidebar">
-      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
-        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
-          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
-          <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
-      </button>
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
 
-      <nav class="sidebar-nav" aria-label="Điều hướng chính">
-        <ul class="nav-list" role="list">
-          <li>
-            <a href="../../../index.html" class="nav-item" title="Trang chủ">
-              <span class="nav-icon">🏠</span>
-              <span class="nav-text">Trang chủ</span>
-            </a>
-          </li>
-          <li>
-            <a href="../../Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item" title="Sinh lý & Sinh lý bệnh">
-              <span class="nav-icon">🧬</span>
-              <span class="nav-text">Sinh lý</span>
-            </a>
-          </li>
-          <li>
-            <a href="../../Kỹ năng lâm sàng/ky-nang-lam-sang.html" class="nav-item" title="Kỹ năng lâm sàng">
-              <span class="nav-icon">🩺</span>
-              <span class="nav-text">Kỹ năng lâm sàng</span>
-            </a>
-          </li>
-          <li>
-            <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
-              <span class="nav-icon">🤒</span>
-              <span class="nav-text">Tiếp cận lâm sàng</span>
-            </a>
-          </li>
-          <li>
-            <a href="../cong-cu.html" class="nav-item" title="Công cụ lâm sàng">
-              <span class="nav-icon">⚙️</span>
-              <span class="nav-text">Công cụ lâm sàng</span>
-            </a>
-          </li>
-          <li>
-            <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý & Kháng sinh">
-              <span class="nav-icon">💊</span>
-              <span class="nav-text">Dược lý lâm sàng</span>
-            </a>
-          </li>
-          <li>
-            <a href="../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
-              <span class="nav-icon">📄</span>
-              <span class="nav-text">Y học chứng cứ</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </aside>
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../../../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item"
+                            title="Sinh lý & Sinh lý bệnh">
+                            <span class="nav-icon">🧬</span>
+                            <span class="nav-text">Sinh lý</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Kỹ năng lâm sàng/ky-nang-lam-sang.html" class="nav-item"
+                            title="Kỹ năng lâm sàng">
+                            <span class="nav-icon">🩺</span>
+                            <span class="nav-text">Kỹ năng lâm sàng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
+                            <span class="nav-icon">🤒</span>
+                            <span class="nav-text">Tiếp cận lâm sàng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../cong-cu.html" class="nav-item" title="Công cụ lâm sàng">
+                            <span class="nav-icon">⚙️</span>
+                            <span class="nav-text">Công cụ lâm sàng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý & Kháng sinh">
+                            <span class="nav-icon">💊</span>
+                            <span class="nav-text">Dược lý lâm sàng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+                            <span class="nav-icon">📄</span>
+                            <span class="nav-text">Y học chứng cứ</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
 
         <!--MAIN CONTENT-->
         <div class="main-wrapper">
@@ -519,13 +574,17 @@
                         </a>
                     </li>
 
-                    <li class="breadcrumb-item" aria-current="page"> Công cụ</a>
+                    <li class="breadcrumb-item">
+                        <a href="../../Công cụ/cong-cu.html" class="breadcrumb-link">
+                            <span class="home"></span> Công cụ
+                        </a>
                     </li>
 
-                    <li class="breadcrumb-item" aria-current="page"> Tiêu hóa & dinh dưỡng</a>
+                    <li class=" breadcrumb-item">
+                        <span class="home"></span> Tiêu hóa & Dinh dưỡng
                     </li>
 
-                    <li class="breadcrumb-item active" aria-current="page"> Dinh dưỡng nội viện
+                    <li class=" breadcrumb-item active" aria-current="page"> Dinh dưỡng nội viện
                     </li>
                 </ol>
             </nav>
@@ -619,6 +678,27 @@
                         </div>
                     </div>
 
+                    <div class="child-tools-section">
+                        <span class="card-zone-badge badge-blue" style="margin-bottom:0.75rem;">Công cụ liên quan</span>
+                        <div class="child-tools-grid">
+                            <a class="child-tool-link" href="./DG_Xogan.html">
+                                <img class="child-tool-icon" src="../../../assets/icons/ic-tieu-hoa.svg"
+                                    alt="Icon tiêu hóa">
+                                <span class="child-tool-text">
+                                    <span class="child-tool-title">Đánh giá xơ gan</span>
+                                    <span class="child-tool-desc">Mở công cụ hỗ trợ đánh giá mức độ xơ gan.</span>
+                                </span>
+                            </a>
+                            <a class="child-tool-link" href="./DG_ptncHCC.html">
+                                <img class="child-tool-icon" src="../../../assets/icons/ic-tieu-hoa.svg"
+                                    alt="Icon tiêu hóa">
+                                <span class="child-tool-text">
+                                    <span class="child-tool-title">Đánh giá nguy cơ HCC</span>
+                                    <span class="child-tool-desc">Mở công cụ phân tầng nguy cơ ung thư biểu mô tế bào gan.</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
                     <div class="reference-section">
                         <strong>📚 Căn cứ Y học chứng cứ (EBM):</strong> Hướng dẫn chế độ ăn bệnh viện - Bộ Y tế (QĐ
                         2879/QĐ-BYT) và Hướng dẫn Dinh dưỡng Lâm sàng Viện Dinh Dưỡng.

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CliniPortal Charts Preview</title>
+  <link rel="stylesheet" href="medical-chart-presets.css">
+  <style>
+    :root {
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-color: #1e293b;
+      --border-color: #e2e8f0;
+      --primary: #0ea5e9;
+    }
+
+    body.dark {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --text-color: #f1f5f9;
+      --border-color: #334155;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0.75rem 1.5rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .charts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .chart-box {
+      height: 250px;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📊 CliniPortal Pure SVG Charts</h1>
+      <p>Thư viện vẽ biểu đồ sinh lý trực quan không phụ thuộc thư viện ngoài</p>
+      <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+    </header>
+
+    <div class="charts-grid">
+      <!-- Temperature line chart -->
+      <div class="chart-container-box">
+        <div class="chart-title">
+          <span>🌡️ Diễn tiến nhiệt độ bệnh nhân (24h)</span>
+          <span style="color: var(--chart-temp)">38.5 °C</span>
+        </div>
+        <div class="chart-box" id="tempChart"></div>
+      </div>
+
+      <!-- Pulse Rate bar chart -->
+      <div class="chart-container-box">
+        <div class="chart-title">
+          <span>🫀 Mạch / Nhịp tim theo giờ</span>
+          <span style="color: var(--chart-pulse)">78 bpm</span>
+        </div>
+        <div class="chart-box" id="pulseChart"></div>
+      </div>
+
+      <!-- Kidney function GFR Gauge -->
+      <div class="chart-container-box">
+        <div class="chart-title">
+          <span>🫘 Chức năng lọc cầu thận (eGFR)</span>
+          <span style="color: var(--chart-gfr-normal)">GĐ 2</span>
+        </div>
+        <div class="chart-box" id="gfrGauge"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="pure-charts.js"></script>
+  <script>
+    function renderAll() {
+      // Line Chart - Temperature
+      PureCharts.renderLine('tempChart', [37.2, 37.8, 38.5, 39.1, 38.2, 37.6], ['08:00', '10:00', '12:00', '14:00', '16:00', '18:00'], {
+        color: '#ef4444'
+      });
+
+      // Bar Chart - Pulse
+      PureCharts.renderBar('pulseChart', [72, 85, 96, 110, 80, 75], ['08:00', '10:00', '12:00', '14:00', '16:00', '18:00'], {
+        color: '#0ea5e9'
+      });
+
+      // Gauge Chart - GFR
+      PureCharts.renderGauge('gfrGauge', 75, 0, 120, {
+        color: '#f97316'
+      });
+    }
+
+    // Run on load
+    window.addEventListener('load', renderAll);
+    window.addEventListener('resize', renderAll);
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      const btn = document.querySelector('.theme-toggle');
+      btn.textContent = document.body.classList.contains('dark') ? '☀️ Light Mode' : '🌙 Dark Mode';
+      renderAll();
+    }
+  </script>
+</body>
+</html>

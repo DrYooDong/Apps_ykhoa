@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiếp cận Thiếu máu - CliniPortal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  <script src="../../../pages/header.js" defer></script>
+  <script src="../../../pages/footer.js" defer></script>
+  <style>
+    .approach-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .step-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-top: 0;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder" data-header-path="../../header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <aside class="app-sidebar" id="appSidebar">
+      <nav class="sidebar-nav">
+        <ul class="nav-list">
+          <li><a href="../../../index.html" class="nav-item">🏠 Trang chủ</a></li>
+          <li><a href="../../Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item">🧬 Sinh lý</a></li>
+          <li><a href="../../Kỹ năng lâm sàng/ky-nang-lam-sang.html" class="nav-item">🩺 Kỹ năng</a></li>
+          <li><a href="../tiep-can.html" class="nav-item active">🤒 Tiếp cận</a></li>
+          <li><a href="../../Công cụ/cong-cu.html" class="nav-item">⚙️ Công cụ</a></li>
+          <li><a href="../../Dược lý/duoc-ly.html" class="nav-item">💊 Dược lý</a></li>
+          <li><a href="../../Y học chứng cứ/yhcc.html" class="nav-item">📄 EBM</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="main-wrapper" id="mainContent">
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../../../index.html" class="breadcrumb-link">Home</a></li>
+          <li class="breadcrumb-item"><a href="../tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Tiếp cận Thiếu máu</li>
+        </ol>
+      </nav>
+
+      <section class="hero-dashboard">
+        <div class="hero-intro">
+          <h1>🩸 TIẾP CẬN BỆNH NHÂN THIẾU MÁU</h1>
+          <p>Thuật toán phân loại thiếu máu dựa trên chỉ số MCV (thể tích trung bình hồng cầu) và hồng cầu lưới.</p>
+        </div>
+      </section>
+
+      <main class="main-content-grid">
+        <div class="approach-card">
+          <h3 class="step-title">Bước 1: Phân nhóm dựa trên MCV</h3>
+          <ul style="line-height: 1.6; padding-left: 1.25rem; margin-bottom: 1rem;">
+            <li><strong>MCV &lt; 80 fL (Hồng cầu nhỏ):</strong> Thường do thiếu máu thiếu sắt (IDA) hoặc bệnh lý dị hợp tử Thalassemia. Cần làm thêm Ferritin huyết thanh và điện di huyết sắc tố.</li>
+            <li><strong>MCV 80 - 100 fL (Hồng cầu bình thường):</strong> Thường do mất máu cấp tính hoặc thiếu máu trong bệnh cảnh viêm mạn tính.</li>
+            <li><strong>MCV &gt; 100 fL (Hồng cầu to):</strong> Nghi ngờ thiếu Vitamin B12, Acid Folic hoặc liên quan đến rượu, suy giáp.</li>
+          </ul>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../header.html"></div>
+</body>
+</html>
