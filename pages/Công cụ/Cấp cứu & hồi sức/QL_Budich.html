@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="vi" data-theme="light">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="CliniPortal – Công cụ tính toán và hướng dẫn bù dịch theo từng bệnh cảnh lâm sàng" />
+  <meta name="description"
+    content="CliniPortal – Công cụ tính toán và hướng dẫn bù dịch theo từng bệnh cảnh lâm sàng" />
   <title>Bù Dịch Lâm Sàng – CliniPortal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="../../../css/reset.css">
   <link rel="stylesheet" href="../../../css/main.css">
   <link rel="stylesheet" href="../../../css/components/header.css">
@@ -16,88 +20,461 @@
   <script src="../../../pages/header.js"></script>
   <style>
     /* ── SHARED TOKENS ── */
-    :root{
-      --bd-blue:#0284c7;--bd-blue-h:#f0f9ff;--bd-blue-b:#bae6fd;
-      --bd-red:#dc2626;--bd-red-h:#fef2f2;--bd-red-b:#fecaca;
-      --bd-amber:#d97706;--bd-amber-h:#fffbeb;--bd-amber-b:#fde68a;
-      --bd-teal:#0d9488;--bd-teal-h:#f0fdfa;--bd-teal-b:#99f6e4;
-      --bd-green:#16a34a;--bd-green-h:#f0fdf4;--bd-green-b:#bbf7d0;
+    :root {
+      --bd-blue: #0284c7;
+      --bd-blue-h: #f0f9ff;
+      --bd-blue-b: #bae6fd;
+      --bd-red: #dc2626;
+      --bd-red-h: #fef2f2;
+      --bd-red-b: #fecaca;
+      --bd-amber: #d97706;
+      --bd-amber-h: #fffbeb;
+      --bd-amber-b: #fde68a;
+      --bd-teal: #0d9488;
+      --bd-teal-h: #f0fdfa;
+      --bd-teal-b: #99f6e4;
+      --bd-green: #16a34a;
+      --bd-green-h: #f0fdf4;
+      --bd-green-b: #bbf7d0;
     }
+
     /* ── LAYOUT ── */
-    .page-bd{padding:0 0 40px;}
-    .hero-bd{background:linear-gradient(135deg,#0c4a6e,#0284c7 55%,#0891b2);border-radius:18px;padding:24px 28px;margin-bottom:20px;color:#fff;position:relative;overflow:hidden;}
-    .hero-bd::before{content:'';position:absolute;top:-30px;right:-30px;width:160px;height:160px;background:rgba(255,255,255,.06);border-radius:50%;}
-    .hero-bd h1{font-size:clamp(17px,2.3vw,23px);font-weight:700;margin:0 0 5px;}
-    .hero-bd p{font-size:13px;opacity:.82;margin:0;}
-    .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.15);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.25);border-radius:100px;padding:3px 11px;font-size:11px;font-weight:600;margin-bottom:10px;}
+    .page-bd {
+      padding: 0 0 40px;
+    }
+
+    .hero-bd {
+      background: linear-gradient(135deg, #0c4a6e, #0284c7 55%, #0891b2);
+      border-radius: 18px;
+      padding: 24px 28px;
+      margin-bottom: 20px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bd::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 160px;
+      height: 160px;
+      background: rgba(255, 255, 255, .06);
+      border-radius: 50%;
+    }
+
+    .hero-bd h1 {
+      font-size: clamp(17px, 2.3vw, 23px);
+      font-weight: 700;
+      margin: 0 0 5px;
+    }
+
+    .hero-bd p {
+      font-size: 13px;
+      opacity: .82;
+      margin: 0;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, .15);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, .25);
+      border-radius: 100px;
+      padding: 3px 11px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
     /* ── SCENARIO PICKER ── */
-    .scenario-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:20px;}
-    .sc-btn{border:2px solid #e2e8f0;border-radius:14px;padding:16px;cursor:pointer;background:#fff;text-align:left;transition:all .2s;position:relative;overflow:hidden;}
-    .sc-btn:hover{border-color:#0284c7;background:#f0f9ff;transform:translateY(-2px);}
-    .sc-btn.active{border-color:#0284c7;background:#0284c7;color:#fff;}
-    .sc-btn.active .sc-tag{background:rgba(255,255,255,.2);color:#fff;}
-    .sc-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:2px 8px;border-radius:100px;background:#f1f5f9;color:#475569;margin-bottom:8px;}
-    .sc-title{font-size:13.5px;font-weight:700;line-height:1.35;margin:0 0 4px;}
-    .sc-sub{font-size:11.5px;opacity:.7;line-height:1.4;margin:0;}
-    .sc-btn.sc-danger{border-color:var(--bd-red-b);background:var(--bd-red-h);}
-    .sc-btn.sc-danger.active{background:var(--bd-red);border-color:var(--bd-red);}
-    .sc-btn.sc-amber{border-color:var(--bd-amber-b);background:var(--bd-amber-h);}
-    .sc-btn.sc-amber.active{background:var(--bd-amber);border-color:var(--bd-amber);}
+    .scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .sc-btn {
+      border: 2px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 16px;
+      cursor: pointer;
+      background: #fff;
+      text-align: left;
+      transition: all .2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sc-btn:hover {
+      border-color: #0284c7;
+      background: #f0f9ff;
+      transform: translateY(-2px);
+    }
+
+    .sc-btn.active {
+      border-color: #0284c7;
+      background: #0284c7;
+      color: #fff;
+    }
+
+    .sc-btn.active .sc-tag {
+      background: rgba(255, 255, 255, .2);
+      color: #fff;
+    }
+
+    .sc-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 100px;
+      background: #f1f5f9;
+      color: #475569;
+      margin-bottom: 8px;
+    }
+
+    .sc-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      line-height: 1.35;
+      margin: 0 0 4px;
+    }
+
+    .sc-sub {
+      font-size: 11.5px;
+      opacity: .7;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .sc-btn.sc-danger {
+      border-color: var(--bd-red-b);
+      background: var(--bd-red-h);
+    }
+
+    .sc-btn.sc-danger.active {
+      background: var(--bd-red);
+      border-color: var(--bd-red);
+    }
+
+    .sc-btn.sc-amber {
+      border-color: var(--bd-amber-b);
+      background: var(--bd-amber-h);
+    }
+
+    .sc-btn.sc-amber.active {
+      background: var(--bd-amber);
+      border-color: var(--bd-amber);
+    }
+
     /* ── INPUT PANEL ── */
-    .input-panel{background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:16px;padding:20px;margin-bottom:16px;}
-    .input-panel-title{font-size:14px;font-weight:700;margin:0 0 14px;display:flex;align-items:center;gap:8px;}
-    .input-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;}
-    .inp-group{display:flex;flex-direction:column;gap:4px;}
-    .inp-group label{font-size:12px;font-weight:600;color:#475569;}
-    .inp-group input,.inp-group select{padding:8px 10px;border:1.5px solid #e2e8f0;border-radius:9px;font-size:13px;background:#fff;color:#1e293b;width:100%;transition:border-color .2s;}
-    .inp-group input:focus,.inp-group select:focus{outline:none;border-color:var(--bd-blue);box-shadow:0 0 0 3px var(--bd-blue-h);}
+    .input-panel {
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+
+    .input-panel-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin: 0 0 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .input-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 12px;
+    }
+
+    .inp-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .inp-group label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #475569;
+    }
+
+    .inp-group input,
+    .inp-group select {
+      padding: 8px 10px;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 9px;
+      font-size: 13px;
+      background: #fff;
+      color: #1e293b;
+      width: 100%;
+      transition: border-color .2s;
+    }
+
+    .inp-group input:focus,
+    .inp-group select:focus {
+      outline: none;
+      border-color: var(--bd-blue);
+      box-shadow: 0 0 0 3px var(--bd-blue-h);
+    }
+
     /* ── RESULT PANEL ── */
-    .result-panel{background:#fff;border:1.5px solid #e2e8f0;border-radius:16px;padding:20px;margin-bottom:16px;box-shadow:0 4px 20px rgba(0,0,0,.07);animation:fadeIn .3s ease;}
-    @keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
-    .result-title{font-size:15px;font-weight:700;margin:0 0 14px;padding-bottom:10px;border-bottom:2px solid;}
+    .result-panel {
+      background: #fff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, .07);
+      animation: fadeIn .3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .result-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 0 0 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid;
+    }
+
     /* ── FLUID ORDER CARD ── */
-    .fluid-card{border-radius:12px;padding:14px 16px;margin-bottom:10px;border:1.5px solid;}
-    .fc-blue{background:var(--bd-blue-h);border-color:var(--bd-blue-b);}
-    .fc-green{background:var(--bd-green-h);border-color:var(--bd-green-b);}
-    .fc-amber{background:var(--bd-amber-h);border-color:var(--bd-amber-b);}
-    .fc-red{background:var(--bd-red-h);border-color:var(--bd-red-b);}
-    .fc-teal{background:var(--bd-teal-h);border-color:var(--bd-teal-b);}
-    .fluid-card-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin:0 0 8px;}
-    .fluid-card-body{font-size:13px;line-height:1.65;}
-    .fluid-card-body strong{font-weight:700;}
+    .fluid-card {
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      border: 1.5px solid;
+    }
+
+    .fc-blue {
+      background: var(--bd-blue-h);
+      border-color: var(--bd-blue-b);
+    }
+
+    .fc-green {
+      background: var(--bd-green-h);
+      border-color: var(--bd-green-b);
+    }
+
+    .fc-amber {
+      background: var(--bd-amber-h);
+      border-color: var(--bd-amber-b);
+    }
+
+    .fc-red {
+      background: var(--bd-red-h);
+      border-color: var(--bd-red-b);
+    }
+
+    .fc-teal {
+      background: var(--bd-teal-h);
+      border-color: var(--bd-teal-b);
+    }
+
+    .fluid-card-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      margin: 0 0 8px;
+    }
+
+    .fluid-card-body {
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .fluid-card-body strong {
+      font-weight: 700;
+    }
+
     /* ── RATE DISPLAY ── */
-    .rate-display{display:flex;align-items:center;justify-content:space-between;background:var(--bd-blue-h);border:1.5px solid var(--bd-blue-b);border-radius:12px;padding:14px 16px;margin:12px 0;}
-    .rate-display.rate-red{background:var(--bd-red-h);border-color:var(--bd-red-b);}
-    .rate-display.rate-amber{background:var(--bd-amber-h);border-color:var(--bd-amber-b);}
-    .rate-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#334155;}
-    .rate-sub{font-size:11.5px;color:#64748b;margin-top:3px;}
-    .rate-val{font-size:2.2rem;font-weight:800;color:var(--bd-blue);line-height:1;}
-    .rate-unit{font-size:13px;font-weight:600;color:#334155;margin-left:4px;}
+    .rate-display {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bd-blue-h);
+      border: 1.5px solid var(--bd-blue-b);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin: 12px 0;
+    }
+
+    .rate-display.rate-red {
+      background: var(--bd-red-h);
+      border-color: var(--bd-red-b);
+    }
+
+    .rate-display.rate-amber {
+      background: var(--bd-amber-h);
+      border-color: var(--bd-amber-b);
+    }
+
+    .rate-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .4px;
+      color: #334155;
+    }
+
+    .rate-sub {
+      font-size: 11.5px;
+      color: #64748b;
+      margin-top: 3px;
+    }
+
+    .rate-val {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--bd-blue);
+      line-height: 1;
+    }
+
+    .rate-unit {
+      font-size: 13px;
+      font-weight: 600;
+      color: #334155;
+      margin-left: 4px;
+    }
+
     /* ── ALERT BOX ── */
-    .ab{padding:10px 14px;border-radius:9px;margin:8px 0;font-size:13px;border-left:4px solid;line-height:1.6;}
-    .ab-danger{background:var(--bd-red-h);border-color:var(--bd-red);color:#7f1d1d;}
-    .ab-warn{background:var(--bd-amber-h);border-color:var(--bd-amber);color:#78350f;}
-    .ab-info{background:var(--bd-blue-h);border-color:var(--bd-blue);color:#0c4a6e;}
-    .ab-ok{background:var(--bd-green-h);border-color:var(--bd-green);color:#14532d;}
+    .ab {
+      padding: 10px 14px;
+      border-radius: 9px;
+      margin: 8px 0;
+      font-size: 13px;
+      border-left: 4px solid;
+      line-height: 1.6;
+    }
+
+    .ab-danger {
+      background: var(--bd-red-h);
+      border-color: var(--bd-red);
+      color: #7f1d1d;
+    }
+
+    .ab-warn {
+      background: var(--bd-amber-h);
+      border-color: var(--bd-amber);
+      color: #78350f;
+    }
+
+    .ab-info {
+      background: var(--bd-blue-h);
+      border-color: var(--bd-blue);
+      color: #0c4a6e;
+    }
+
+    .ab-ok {
+      background: var(--bd-green-h);
+      border-color: var(--bd-green);
+      color: #14532d;
+    }
+
     /* ── STEPBAR ── */
-    .stepbar{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;}
-    .step-btn{padding:6px 14px;border-radius:100px;font-size:12px;font-weight:700;border:1.5px solid #e2e8f0;background:#f8fafc;cursor:pointer;transition:all .2s;}
-    .step-btn.active{background:#0284c7;border-color:#0284c7;color:#fff;}
+    .stepbar {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .step-btn {
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 700;
+      border: 1.5px solid #e2e8f0;
+      background: #f8fafc;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .step-btn.active {
+      background: #0284c7;
+      border-color: #0284c7;
+      color: #fff;
+    }
+
     /* ── TABLE ── */
-    .fluid-table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0;}
-    .fluid-table th{background:#f8fafc;padding:7px 10px;text-align:left;font-weight:700;font-size:11.5px;border-top:1px solid #e2e8f0;border-bottom:1.5px solid #e2e8f0;}
-    .fluid-table td{padding:8px 10px;border-bottom:1px solid #f1f5f9;vertical-align:top;}
-    .fluid-table tr:last-child td{border-bottom:none;}
-    .src-badge{display:inline-block;background:#f1f5f9;color:#64748b;font-size:11px;padding:2px 8px;border-radius:6px;margin-top:10px;}
-    @media(max-width:560px){.input-grid{grid-template-columns:1fr 1fr;}.scenario-grid{grid-template-columns:1fr 1fr;}}
+    .fluid-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin: 10px 0;
+    }
+
+    .fluid-table th {
+      background: #f8fafc;
+      padding: 7px 10px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 11.5px;
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1.5px solid #e2e8f0;
+    }
+
+    .fluid-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid #f1f5f9;
+      vertical-align: top;
+    }
+
+    .fluid-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .src-badge {
+      display: inline-block;
+      background: #f1f5f9;
+      color: #64748b;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 6px;
+      margin-top: 10px;
+    }
+
+    @media(max-width:560px) {
+      .input-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .scenario-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
   </style>
 </head>
+
 <body>
-<div id="header-placeholder" data-header-path="../../header.html"></div>
-<div class="sidebar-overlay" id="sidebarOverlay"></div>
-<div class="app-container">
-  <!-- SIDEBAR -->
-  <aside class="app-sidebar" id="appSidebar">
+  <div id="header-placeholder" data-header-path="../../header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
       <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
         <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
           stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
@@ -114,7 +491,8 @@
             </a>
           </li>
           <li>
-            <a href="../../Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item" title="Sinh lý & Sinh lý bệnh">
+            <a href="../../Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item"
+              title="Sinh lý & Sinh lý bệnh">
               <span class="nav-icon">🧬</span>
               <span class="nav-text">Sinh lý</span>
             </a>
@@ -153,165 +531,168 @@
       </nav>
     </aside>
 
-  <!-- MAIN -->
-  <div class="main-wrapper" id="mainContent">
-    <section class="hero-bd">
-      <div class="hero-badge">⚙️ Công cụ lâm sàng • 2026</div>
-      <h1>Công cụ Hỗ trợ Bù Dịch Lâm Sàng</h1>
-      <p>Tính toán lượng dịch, tốc độ truyền và y lệnh chi tiết theo từng bệnh cảnh lâm sàng cụ thể</p>
-    </section>
+    <!-- MAIN -->
+    <div class="main-wrapper" id="mainContent">
+      <section class="hero-bd">
+        <div class="hero-badge">⚙️ Công cụ lâm sàng • 2026</div>
+        <h1>Công cụ Hỗ trợ Bù Dịch Lâm Sàng</h1>
+        <p>Tính toán lượng dịch, tốc độ truyền và y lệnh chi tiết theo từng bệnh cảnh lâm sàng cụ thể</p>
+      </section>
 
-    <nav aria-label="Breadcrumb" class="breadcrumb-container">
-      <ol class="breadcrumb-list">
-        <li class="breadcrumb-item"><a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a></li>
-        <li class="breadcrumb-item"><a href="../cong-cu.html" class="breadcrumb-link">Công cụ</a></li>
-        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Nhiễm khuẩn &amp; Cấp cứu</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Bù dịch</li>
-      </ol>
-    </nav>
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../../../index.html" class="breadcrumb-link"><span
+                class="home-icon">🏠</span> Home</a></li>
+          <li class="breadcrumb-item"><a href="../cong-cu.html" class="breadcrumb-link">Công cụ</a></li>
+          <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Cấp cứu & hồi sức</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Bù dịch</li>
+        </ol>
+      </nav>
 
-    <!-- BƯỚC 1: CHỌN BỆNH CẢNH -->
-    <div style="margin-bottom:16px;">
-      <div style="font-size:14px;font-weight:700;margin-bottom:10px;">📋 BƯỚC 1 – Chọn bệnh cảnh lâm sàng</div>
-      <div class="scenario-grid">
-        <button class="sc-btn" id="sc-diarrhea" onclick="setScenario('DIARRHEA')">
-          <span class="sc-tag">💧 Tiêu hóa</span>
-          <div class="sc-title">Tiêu chảy cấp / Tả</div>
-          <div class="sc-sub">Mất dịch qua đường tiêu hóa, đánh giá mức độ mất nước</div>
-        </button>
-        <button class="sc-btn sc-amber" id="sc-dhf-warn" onclick="setScenario('DHF_WARN')">
-          <span class="sc-tag">⚠️ SXHD</span>
-          <div class="sc-title">SXH Dengue – Có DHCB</div>
-          <div class="sc-sub">Dấu hiệu cảnh báo, HCT tăng, chỉ định truyền dịch</div>
-        </button>
-        <button class="sc-btn sc-danger" id="sc-dhf-severe" onclick="setScenario('DHF_SEVERE')">
-          <span class="sc-tag">🚨 SXHD Nặng</span>
-          <div class="sc-title">SXH Dengue Nặng / Sốc Dengue</div>
-          <div class="sc-sub">Sốc bù hoặc không bù, thoát huyết tương mạnh</div>
-        </button>
-        <button class="sc-btn sc-danger" id="sc-sepsis" onclick="setScenario('SEPSIS')">
-          <span class="sc-tag">🦠 Sốc NK</span>
-          <div class="sc-title">Sốc Nhiễm khuẩn</div>
-          <div class="sc-sub">MAP &lt; 65, Lactate ≥ 2 mmol/L, cần dịch &amp; vận mạch</div>
-        </button>
-      </div>
-    </div>
-
-    <!-- BƯỚC 2: NHẬP THÔNG SỐ -->
-    <div class="input-panel" id="input-panel">
-      <div class="input-panel-title">📊 BƯỚC 2 – Nhập thông số bệnh nhân</div>
-      <div class="input-grid">
-        <div class="inp-group">
-          <label for="pt-weight">Cân nặng (kg)</label>
-          <input type="number" id="pt-weight" value="60" min="5" step="1" oninput="calculate()">
-        </div>
-        <div class="inp-group" id="group-age" style="display:none;">
-          <label for="pt-age">Tuổi (năm)</label>
-          <input type="number" id="pt-age" value="30" min="1" step="1" oninput="calculate()">
-        </div>
-        <div class="inp-group" id="group-diarrhea-grade" style="display:none;">
-          <label for="diarrhea-grade">Mức độ mất nước</label>
-          <select id="diarrhea-grade" onchange="calculate()">
-            <option value="mild">Nhẹ (< 5%) – Tỉnh, uống được</option>
-            <option value="moderate" selected>Vừa (5–10%) – Mắt trũng, khô môi</option>
-            <option value="severe">Nặng (> 10%) – Vật vã, mạch nhanh</option>
-          </select>
-        </div>
-        <div class="inp-group" id="group-hct" style="display:none;">
-          <label for="pt-hct">HCT hiện tại (%)</label>
-          <input type="number" id="pt-hct" value="45" min="20" max="70" step="0.5" oninput="calculate()">
-        </div>
-        <div class="inp-group" id="group-dhf-type" style="display:none;">
-          <label for="dhf-type">Phân loại sốc Dengue</label>
-          <select id="dhf-type" onchange="calculate()">
-            <option value="compensated">Sốc bù được (Có mạch, HA còn)</option>
-            <option value="decompensated">Sốc không bù (Mạch nhanh nhẹ, kẹt HA)</option>
-          </select>
-        </div>
-        <div class="inp-group" id="group-map" style="display:none;">
-          <label for="pt-map">MAP hiện tại (mmHg)</label>
-          <input type="number" id="pt-map" value="55" min="20" max="120" oninput="calculate()">
-        </div>
-        <div class="inp-group" id="group-lactate" style="display:none;">
-          <label for="pt-lactate">Lactate (mmol/L)</label>
-          <input type="number" id="pt-lactate" value="3.5" min="0" max="20" step="0.1" oninput="calculate()">
+      <!-- BƯỚC 1: CHỌN BỆNH CẢNH -->
+      <div style="margin-bottom:16px;">
+        <div style="font-size:14px;font-weight:700;margin-bottom:10px;">📋 BƯỚC 1 – Chọn bệnh cảnh lâm sàng</div>
+        <div class="scenario-grid">
+          <button class="sc-btn" id="sc-diarrhea" onclick="setScenario('DIARRHEA')">
+            <span class="sc-tag">💧 Tiêu hóa</span>
+            <div class="sc-title">Tiêu chảy cấp / Tả</div>
+            <div class="sc-sub">Mất dịch qua đường tiêu hóa, đánh giá mức độ mất nước</div>
+          </button>
+          <button class="sc-btn sc-amber" id="sc-dhf-warn" onclick="setScenario('DHF_WARN')">
+            <span class="sc-tag">⚠️ SXHD</span>
+            <div class="sc-title">SXH Dengue – Có DHCB</div>
+            <div class="sc-sub">Dấu hiệu cảnh báo, HCT tăng, chỉ định truyền dịch</div>
+          </button>
+          <button class="sc-btn sc-danger" id="sc-dhf-severe" onclick="setScenario('DHF_SEVERE')">
+            <span class="sc-tag">🚨 SXHD Nặng</span>
+            <div class="sc-title">SXH Dengue Nặng / Sốc Dengue</div>
+            <div class="sc-sub">Sốc bù hoặc không bù, thoát huyết tương mạnh</div>
+          </button>
+          <button class="sc-btn sc-danger" id="sc-sepsis" onclick="setScenario('SEPSIS')">
+            <span class="sc-tag">🦠 Sốc NK</span>
+            <div class="sc-title">Sốc Nhiễm khuẩn</div>
+            <div class="sc-sub">MAP &lt; 65, Lactate ≥ 2 mmol/L, cần dịch &amp; vận mạch</div>
+          </button>
         </div>
       </div>
+
+      <!-- BƯỚC 2: NHẬP THÔNG SỐ -->
+      <div class="input-panel" id="input-panel">
+        <div class="input-panel-title">📊 BƯỚC 2 – Nhập thông số bệnh nhân</div>
+        <div class="input-grid">
+          <div class="inp-group">
+            <label for="pt-weight">Cân nặng (kg)</label>
+            <input type="number" id="pt-weight" value="60" min="5" step="1" oninput="calculate()">
+          </div>
+          <div class="inp-group" id="group-age" style="display:none;">
+            <label for="pt-age">Tuổi (năm)</label>
+            <input type="number" id="pt-age" value="30" min="1" step="1" oninput="calculate()">
+          </div>
+          <div class="inp-group" id="group-diarrhea-grade" style="display:none;">
+            <label for="diarrhea-grade">Mức độ mất nước</label>
+            <select id="diarrhea-grade" onchange="calculate()">
+              <option value="mild">Nhẹ (< 5%) – Tỉnh, uống được</option>
+              <option value="moderate" selected>Vừa (5–10%) – Mắt trũng, khô môi</option>
+              <option value="severe">Nặng (> 10%) – Vật vã, mạch nhanh</option>
+            </select>
+          </div>
+          <div class="inp-group" id="group-hct" style="display:none;">
+            <label for="pt-hct">HCT hiện tại (%)</label>
+            <input type="number" id="pt-hct" value="45" min="20" max="70" step="0.5" oninput="calculate()">
+          </div>
+          <div class="inp-group" id="group-dhf-type" style="display:none;">
+            <label for="dhf-type">Phân loại sốc Dengue</label>
+            <select id="dhf-type" onchange="calculate()">
+              <option value="compensated">Sốc bù được (Có mạch, HA còn)</option>
+              <option value="decompensated">Sốc không bù (Mạch nhanh nhẹ, kẹt HA)</option>
+            </select>
+          </div>
+          <div class="inp-group" id="group-map" style="display:none;">
+            <label for="pt-map">MAP hiện tại (mmHg)</label>
+            <input type="number" id="pt-map" value="55" min="20" max="120" oninput="calculate()">
+          </div>
+          <div class="inp-group" id="group-lactate" style="display:none;">
+            <label for="pt-lactate">Lactate (mmol/L)</label>
+            <input type="number" id="pt-lactate" value="3.5" min="0" max="20" step="0.1" oninput="calculate()">
+          </div>
+        </div>
+      </div>
+
+      <!-- KẾT QUẢ -->
+      <div class="result-panel" id="result-panel" style="display:none;">
+        <div class="result-title" id="result-title" style="color:#0284c7;border-color:#0284c7;"></div>
+        <div id="result-body"></div>
+      </div>
+    </div><!-- /main-wrapper -->
+  </div><!-- /app-container -->
+
+  <footer class="global-footer">
+    <div class="footer-copyright">
+      <p>CliniPortal © 2026 · Chỉ mang tính hỗ trợ tham khảo, không thay thế phán xét lâm sàng của bác sĩ.</p>
     </div>
+  </footer>
+  <script src="../../../js/sidebar.js"></script>
+  <script>
+    let currentScenario = null;
 
-    <!-- KẾT QUẢ -->
-    <div class="result-panel" id="result-panel" style="display:none;">
-      <div class="result-title" id="result-title" style="color:#0284c7;border-color:#0284c7;"></div>
-      <div id="result-body"></div>
-    </div>
-  </div><!-- /main-wrapper -->
-</div><!-- /app-container -->
+    function setScenario(sc) {
+      currentScenario = sc;
+      // Reset nút
+      document.querySelectorAll('.sc-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('sc-' + sc.toLowerCase().replace('_', '-')).classList.add('active');
+      // Ẩn/hiện field
+      const showGroup = (id, show) => document.getElementById(id).style.display = show ? '' : 'none';
+      showGroup('group-age', false);
+      showGroup('group-diarrhea-grade', false);
+      showGroup('group-hct', false);
+      showGroup('group-dhf-type', false);
+      showGroup('group-map', false);
+      showGroup('group-lactate', false);
+      if (sc === 'DIARRHEA') { showGroup('group-diarrhea-grade', true); }
+      if (sc === 'DHF_WARN') { showGroup('group-hct', true); }
+      if (sc === 'DHF_SEVERE') { showGroup('group-hct', true); showGroup('group-dhf-type', true); }
+      if (sc === 'SEPSIS') { showGroup('group-map', true); showGroup('group-lactate', true); }
+      calculate();
+    }
 
-<footer class="global-footer">
-  <div class="footer-copyright"><p>CliniPortal © 2026 · Chỉ mang tính hỗ trợ tham khảo, không thay thế phán xét lâm sàng của bác sĩ.</p></div>
-</footer>
-<script src="../../../js/sidebar.js"></script>
-<script>
-let currentScenario = null;
+    // Fix scenario id to html id map
+    function sc2HtmlId(sc) {
+      const m = { 'DIARRHEA': 'sc-diarrhea', 'DHF_WARN': 'sc-dhf-warn', 'DHF_SEVERE': 'sc-dhf-severe', 'SEPSIS': 'sc-sepsis' };
+      return m[sc];
+    }
+    // Override: use correct mapping
+    function setScenario(sc) {
+      currentScenario = sc;
+      document.querySelectorAll('.sc-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(sc2HtmlId(sc)).classList.add('active');
+      const showGroup = (id, show) => document.getElementById(id).style.display = show ? '' : 'none';
+      ['group-age', 'group-diarrhea-grade', 'group-hct', 'group-dhf-type', 'group-map', 'group-lactate'].forEach(id => showGroup(id, false));
+      if (sc === 'DIARRHEA') { showGroup('group-diarrhea-grade', true); }
+      if (sc === 'DHF_WARN') { showGroup('group-hct', true); }
+      if (sc === 'DHF_SEVERE') { showGroup('group-hct', true); showGroup('group-dhf-type', true); }
+      if (sc === 'SEPSIS') { showGroup('group-map', true); showGroup('group-lactate', true); }
+      calculate();
+    }
 
-function setScenario(sc){
-    currentScenario = sc;
-    // Reset nút
-    document.querySelectorAll('.sc-btn').forEach(b=>b.classList.remove('active'));
-    document.getElementById('sc-'+sc.toLowerCase().replace('_','-')).classList.add('active');
-    // Ẩn/hiện field
-    const showGroup=(id,show)=>document.getElementById(id).style.display=show?'':'none';
-    showGroup('group-age',false);
-    showGroup('group-diarrhea-grade',false);
-    showGroup('group-hct',false);
-    showGroup('group-dhf-type',false);
-    showGroup('group-map',false);
-    showGroup('group-lactate',false);
-    if(sc==='DIARRHEA'){showGroup('group-diarrhea-grade',true);}
-    if(sc==='DHF_WARN'){showGroup('group-hct',true);}
-    if(sc==='DHF_SEVERE'){showGroup('group-hct',true);showGroup('group-dhf-type',true);}
-    if(sc==='SEPSIS'){showGroup('group-map',true);showGroup('group-lactate',true);}
-    calculate();
-}
+    function val(id) { return parseFloat(document.getElementById(id).value) || 0; }
+    function sel(id) { const e = document.getElementById(id); return e ? e.value : ''; }
 
-// Fix scenario id to html id map
-function sc2HtmlId(sc){
-    const m={'DIARRHEA':'sc-diarrhea','DHF_WARN':'sc-dhf-warn','DHF_SEVERE':'sc-dhf-severe','SEPSIS':'sc-sepsis'};
-    return m[sc];
-}
-// Override: use correct mapping
-function setScenario(sc){
-    currentScenario=sc;
-    document.querySelectorAll('.sc-btn').forEach(b=>b.classList.remove('active'));
-    document.getElementById(sc2HtmlId(sc)).classList.add('active');
-    const showGroup=(id,show)=>document.getElementById(id).style.display=show?'':'none';
-    ['group-age','group-diarrhea-grade','group-hct','group-dhf-type','group-map','group-lactate'].forEach(id=>showGroup(id,false));
-    if(sc==='DIARRHEA'){showGroup('group-diarrhea-grade',true);}
-    if(sc==='DHF_WARN'){showGroup('group-hct',true);}
-    if(sc==='DHF_SEVERE'){showGroup('group-hct',true);showGroup('group-dhf-type',true);}
-    if(sc==='SEPSIS'){showGroup('group-map',true);showGroup('group-lactate',true);}
-    calculate();
-}
+    function calculate() {
+      if (!currentScenario) return;
+      const weight = val('pt-weight');
+      if (!weight) return;
+      let title = '', html = '';
 
-function val(id){return parseFloat(document.getElementById(id).value)||0;}
-function sel(id){const e=document.getElementById(id);return e?e.value:'';}
-
-function calculate(){
-    if(!currentScenario)return;
-    const weight=val('pt-weight');
-    if(!weight)return;
-    let title='',html='';
-
-    if(currentScenario==='DIARRHEA'){
-        const grade=sel('diarrhea-grade');
-        title='💧 Y LỆNH BÙ DỊCH – TIÊU CHẢY CẤP / TẢ';
-        let deficit=0, plan='', fluidType='', maintenance=weight*40, ors='';
-        if(grade==='mild'){
-            deficit=weight*0.04*1000; // 4% BW in mL
-            plan='Bổ sung qua đường uống (PO). KHÔNG cần truyền TM.';
-            fluidType='Oresol (ORS) uống theo nhu cầu';
-            ors=`ORS: ${Math.round(deficit)}–${Math.round(deficit*1.5)} mL trong 4 giờ đầu + ${Math.round(maintenance)} mL/24h duy trì`;
-            html=`
+      if (currentScenario === 'DIARRHEA') {
+        const grade = sel('diarrhea-grade');
+        title = '💧 Y LỆNH BÙ DỊCH – TIÊU CHẢY CẤP / TẢ';
+        let deficit = 0, plan = '', fluidType = '', maintenance = weight * 40, ors = '';
+        if (grade === 'mild') {
+          deficit = weight * 0.04 * 1000; // 4% BW in mL
+          plan = 'Bổ sung qua đường uống (PO). KHÔNG cần truyền TM.';
+          fluidType = 'Oresol (ORS) uống theo nhu cầu';
+          ors = `ORS: ${Math.round(deficit)}–${Math.round(deficit * 1.5)} mL trong 4 giờ đầu + ${Math.round(maintenance)} mL/24h duy trì`;
+          html = `
             <div class="fluid-card fc-green">
                 <div class="fluid-card-title" style="color:#14532d;">🟢 Mất nước nhẹ (< 5%) – Bù qua đường uống</div>
                 <div class="fluid-card-body">
@@ -323,10 +704,10 @@ function calculate(){
             <div class="ab ab-ok"><strong>✅ Phác đồ A (WHO):</strong> ORS tự do theo nhu cầu. Theo dõi tại nhà nếu không có dấu hiệu cảnh báo. Tái khám nếu tiêu chảy nhiều hơn hoặc không uống được.</div>
             <div class="ab ab-info"><strong>💡 Điều chỉnh ORS:</strong> Sau mỗi lần đi ngoài: Trẻ &lt; 2 tuổi: 50–100mL | Trẻ 2–10 tuổi: 100–200mL | Người lớn: uống tùy thích.</div>
             <span class="src-badge">📚 WHO Oral Rehydration Therapy Guidelines & QĐ 2919/QĐ-BYT</span>`;
-        } else if(grade==='moderate'){
-            deficit=weight*0.075*1000; // 7.5%
-            const rlRate=Math.round(deficit/4);
-            html=`
+        } else if (grade === 'moderate') {
+          deficit = weight * 0.075 * 1000; // 7.5%
+          const rlRate = Math.round(deficit / 4);
+          html = `
             <div class="fluid-card fc-blue">
                 <div class="fluid-card-title" style="color:#0c4a6e;">🔵 Mất nước vừa (5–10%) – Bù qua đường TM + uống</div>
                 <div class="fluid-card-body">
@@ -340,15 +721,15 @@ function calculate(){
             </div>
             <div class="rate-display rate-amber">
                 <div><div class="rate-label">Duy trì (Sau 4 giờ)</div><div class="rate-sub">Chuyển ORS khi uống được</div></div>
-                <div style="text-align:right;"><span class="rate-val" style="color:#d97706;">${Math.round(maintenance/20)}</span><span class="rate-unit">mL/giờ</span></div>
+                <div style="text-align:right;"><span class="rate-val" style="color:#d97706;">${Math.round(maintenance / 20)}</span><span class="rate-unit">mL/giờ</span></div>
             </div>
             <div class="ab ab-warn"><strong>⚠️ Phác đồ B (WHO):</strong> Theo dõi mạch, HA, nước tiểu mỗi 30 phút. Sau 4 giờ đánh giá lại: nếu tốt → chuyển ORS. Nếu xấu hơn → nâng lên Phác đồ C.</div>
             <div class="ab ab-info"><strong>💡 Theo dõi đáp ứng:</strong> Nước tiểu &gt; 0.5 mL/kg/giờ, mạch &lt; 100, hết mắt trũng, lưỡi ẩm.</div>
             <span class="src-badge">📚 WHO, QĐ 2919/QĐ-BYT (Phác đồ B)</span>`;
         } else {
-            const phase1=Math.round(weight*30); // 30mL/kg first 30 min
-            const phase2=Math.round(deficit*0.6-phase1>0?deficit*0.6-phase1:0);
-            html=`
+          const phase1 = Math.round(weight * 30); // 30mL/kg first 30 min
+          const phase2 = Math.round(deficit * 0.6 - phase1 > 0 ? deficit * 0.6 - phase1 : 0);
+          html = `
             <div class="fluid-card fc-red">
                 <div class="fluid-card-title" style="color:#7f1d1d;">🔴 Mất nước nặng (> 10%) – Cấp cứu TM khẩn cấp (Phác đồ C)</div>
                 <div class="fluid-card-body">
@@ -362,78 +743,78 @@ function calculate(){
             </div>
             <div class="rate-display">
                 <div><div class="rate-label">Pha 2 – 2.5 giờ tiếp theo</div><div class="rate-sub">Bù phần còn lại</div></div>
-                <div style="text-align:right;"><span class="rate-val">${Math.round((deficit*0.6)/2.5)}</span><span class="rate-unit">mL/giờ</span></div>
+                <div style="text-align:right;"><span class="rate-val">${Math.round((deficit * 0.6) / 2.5)}</span><span class="rate-unit">mL/giờ</span></div>
             </div>
             <div class="ab ab-danger"><strong>🚨 Sốc mất nước:</strong> Nếu mạch không bắt được, tụt HA → Truyền nhanh 100mL/kg trong 3 giờ đầu. Theo dõi liên tục mỗi 15–30 phút.</div>
             <div class="ab ab-warn"><strong>⚠️ Chú ý Tả:</strong> Nếu nghi ngờ dịch tả (phân nước vo gạo ào ạt) – Bù dịch cực kỳ tích cực. Kháng sinh: Azithromycin 1g liều duy nhất (người lớn).</div>
             <span class="src-badge">📚 WHO Phác đồ C, QĐ 2919/QĐ-BYT</span>`;
         }
-    }
+      }
 
-    else if(currentScenario==='DHF_WARN'){
-        const hct=val('pt-hct');
-        title='🟡 Y LỆNH BÙ DỊCH – SXHD CÓ DẤU HIỆU CẢNH BÁO (DHCB)';
-        const baseRate=6; // 6mL/kg/h start
-        html=`
+      else if (currentScenario === 'DHF_WARN') {
+        const hct = val('pt-hct');
+        title = '🟡 Y LỆNH BÙ DỊCH – SXHD CÓ DẤU HIỆU CẢNH BÁO (DHCB)';
+        const baseRate = 6; // 6mL/kg/h start
+        html = `
         <div class="ab ab-warn"><strong>⚠️ Dấu hiệu cảnh báo (DHCB) theo BYT:</strong> Đau bụng nhiều / cơ hoành, nôn ói liên tục, xuất huyết niêm mạc, li bì/bứt rứt, gan to > 2cm, HCT tăng cao kèm tiểu cầu giảm nhanh.</div>
         <div class="fluid-card fc-amber">
             <div class="fluid-card-title" style="color:#78350f;">Phác đồ Bù dịch SXHD Có DHCB</div>
             <div class="fluid-card-body">
                 <strong>Dịch:</strong> Ringer Lactate (RL) – Lựa chọn ưu tiên<br>
-                <strong>HCT hiện tại:</strong> ${hct}% ${hct>=45?'<span style="color:#dc2626;font-weight:700;">(Tăng – Thoát huyết tương đang xảy ra)</span>':hct<40?'<span style="color:#16a34a;font-weight:700;">(Có thể cải thiện)</span>':'<span style="color:#d97706;font-weight:700;">(Theo dõi sát)</span>'}
+                <strong>HCT hiện tại:</strong> ${hct}% ${hct >= 45 ? '<span style="color:#dc2626;font-weight:700;">(Tăng – Thoát huyết tương đang xảy ra)</span>' : hct < 40 ? '<span style="color:#16a34a;font-weight:700;">(Có thể cải thiện)</span>' : '<span style="color:#d97706;font-weight:700;">(Theo dõi sát)</span>'}
             </div>
         </div>
         <div class="rate-display rate-amber">
             <div><div class="rate-label">Tốc độ khởi đầu (2 giờ đầu)</div><div class="rate-sub">RL truyền nhỏ giọt</div></div>
-            <div style="text-align:right;"><span class="rate-val" style="color:#d97706;">${Math.round(weight*baseRate)}</span><span class="rate-unit">mL/giờ</span></div>
+            <div style="text-align:right;"><span class="rate-val" style="color:#d97706;">${Math.round(weight * baseRate)}</span><span class="rate-unit">mL/giờ</span></div>
         </div>
         <table class="fluid-table">
             <thead><tr><th>Thời điểm</th><th>Tốc độ</th><th>Hành động</th></tr></thead>
             <tbody>
-                <tr><td>0–2 giờ</td><td>${Math.round(weight*6)} mL/giờ (6mL/kg/h)</td><td>Đánh giá lại lâm sàng</td></tr>
-                <tr><td>2–4 giờ</td><td>${Math.round(weight*5)} mL/giờ (5mL/kg/h)</td><td>Kiểm tra HCT</td></tr>
-                <tr><td>4–6 giờ</td><td>${Math.round(weight*3)} mL/giờ (3mL/kg/h)</td><td>Nếu cải thiện → duy trì</td></tr>
-                <tr><td>6–24 giờ</td><td>${Math.round(weight*2.5)} mL/giờ (2.5mL/kg/h)</td><td>Giảm dần theo lâm sàng</td></tr>
+                <tr><td>0–2 giờ</td><td>${Math.round(weight * 6)} mL/giờ (6mL/kg/h)</td><td>Đánh giá lại lâm sàng</td></tr>
+                <tr><td>2–4 giờ</td><td>${Math.round(weight * 5)} mL/giờ (5mL/kg/h)</td><td>Kiểm tra HCT</td></tr>
+                <tr><td>4–6 giờ</td><td>${Math.round(weight * 3)} mL/giờ (3mL/kg/h)</td><td>Nếu cải thiện → duy trì</td></tr>
+                <tr><td>6–24 giờ</td><td>${Math.round(weight * 2.5)} mL/giờ (2.5mL/kg/h)</td><td>Giảm dần theo lâm sàng</td></tr>
             </tbody>
         </table>
         <div class="ab ab-danger"><strong>🚨 Chỉ định chuyển sốc Dengue:</strong> Mạch nhanh nhẹ khó bắt, HA kẹt ≤ 20mmHg, tứ chi lạnh, bứt rứt li bì → Áp dụng ngay phác đồ Sốc Dengue.</div>
         <div class="ab ab-info"><strong>💡 Không dùng Dextrose đơn thuần</strong> để bù dịch trong SXHD – nguy cơ hạ natri máu.</div>
         <span class="src-badge">📚 Hướng dẫn chẩn đoán và điều trị SXHD – BYT 2019</span>`;
-    }
+      }
 
-    else if(currentScenario==='DHF_SEVERE'){
-        const hct=val('pt-hct');
-        const type=sel('dhf-type');
-        title='🔴 Y LỆNH BÙ DỊCH – SXHD NẶNG / SỐC DENGUE';
-        const bolus1=Math.round(weight*10);
-        const bolus2=Math.round(weight*15);
-        const maint=Math.round(weight*5);
-        html=`
+      else if (currentScenario === 'DHF_SEVERE') {
+        const hct = val('pt-hct');
+        const type = sel('dhf-type');
+        title = '🔴 Y LỆNH BÙ DỊCH – SXHD NẶNG / SỐC DENGUE';
+        const bolus1 = Math.round(weight * 10);
+        const bolus2 = Math.round(weight * 15);
+        const maint = Math.round(weight * 5);
+        html = `
         <div class="ab ab-danger"><strong>🚨 Sốc Dengue bù được (Compensated):</strong> Mạch nhanh nhẹ, HA kẹt hoặc HA tâm thu bình thường nhưng chênh lệch HA ≤ 20mmHg. <strong>Sốc không bù:</strong> Mạch nhanh nhẹ khó bắt hoặc không bắt được, hạ HA rõ rệt.</div>
         <div class="fluid-card fc-red">
-            <div class="fluid-card-title" style="color:#7f1d1d;">Phác đồ Bù dịch Sốc Dengue (${type==='compensated'?'SỐC BÙ ĐƯỢC':'SỐC KHÔNG BÙ'})</div>
+            <div class="fluid-card-title" style="color:#7f1d1d;">Phác đồ Bù dịch Sốc Dengue (${type === 'compensated' ? 'SỐC BÙ ĐƯỢC' : 'SỐC KHÔNG BÙ'})</div>
             <div class="fluid-card-body">
                 <strong>Dịch ưu tiên:</strong> Ringer Lactate (RL) – Dịch đầu tay tuyệt đối<br>
                 <strong>HCT:</strong> ${hct}% – Theo dõi mỗi 1–2 giờ trong pha sốc
             </div>
         </div>
-        ${type==='compensated'?`
+        ${type === 'compensated' ? `
         <div class="rate-display rate-red">
             <div><div class="rate-label">Bolus lần 1 – chạy trong 15 phút</div><div class="rate-sub">RL 10mL/kg nhanh</div></div>
             <div style="text-align:right;"><span class="rate-val" style="color:#dc2626;">${bolus1}</span><span class="rate-unit">mL</span></div>
         </div>
         <div class="ab ab-warn"><strong>⚠️ Đánh giá sau 15 phút:</strong><br>
-            ✅ Cải thiện → Giảm xuống ${Math.round(weight*5)}–${Math.round(weight*7)} mL/giờ (5–7mL/kg/h)<br>
+            ✅ Cải thiện → Giảm xuống ${Math.round(weight * 5)}–${Math.round(weight * 7)} mL/giờ (5–7mL/kg/h)<br>
             ❌ Không cải thiện → Lặp lại Bolus ${bolus1} mL RL trong 15 phút (Lần 2)<br>
             ❌ Vẫn không cải thiện → Chuyển sang dung dịch keo (Dextran 40, Hydroxyethyl Starch) + Hội chẩn ICU</div>
-        `:`
+        `: `
         <div class="rate-display rate-red">
             <div><div class="rate-label">Bolus khẩn – chạy trong 10–15 phút</div><div class="rate-sub">RL 15–20mL/kg ngay lập tức</div></div>
             <div style="text-align:right;"><span class="rate-val" style="color:#dc2626;">${bolus2}</span><span class="rate-unit">mL</span></div>
         </div>
         <div class="ab ab-danger"><strong>🚨 Sốc không bù – Hành động khẩn cấp:</strong><br>
             → Bolus ${bolus2} mL RL trong 10–15 phút (20mL/kg)<br>
-            → Nếu vẫn sốc → Dung dịch keo (Dextran 40 6% hoặc Gelatin) ${Math.round(weight*10)}–${Math.round(weight*15)} mL bolus<br>
+            → Nếu vẫn sốc → Dung dịch keo (Dextran 40 6% hoặc Gelatin) ${Math.round(weight * 10)}–${Math.round(weight * 15)} mL bolus<br>
             → Theo dõi liên tục mạch, HA mỗi 5–10 phút<br>
             → Hội chẩn ICU, đặt đường truyền 2 kim lớn, truyền máu nếu HCT &lt; 35%</div>
         `}
@@ -448,18 +829,18 @@ function calculate(){
         </table>
         <div class="ab ab-info"><strong>💡 Tránh truyền quá tải dịch:</strong> Nguy cơ phù phổi cấp, tràn dịch màng phổi sau ra sốc. Khi nước tiểu &gt; 1mL/kg/giờ và HCT giảm về bình thường → Ngừng dịch.</div>
         <span class="src-badge">📚 WHO Dengue Guidelines 2012 & BYT SXHD 2019</span>`;
-    }
+      }
 
-    else if(currentScenario==='SEPSIS'){
-        const map=val('pt-map');
-        const lac=val('pt-lactate');
-        title='🦠 Y LỆNH BÙ DỊCH – SỐC NHIỄM KHUẨN';
-        const bolus=Math.round(weight*30); // 30mL/kg SSC
-        html=`
+      else if (currentScenario === 'SEPSIS') {
+        const map = val('pt-map');
+        const lac = val('pt-lactate');
+        title = '🦠 Y LỆNH BÙ DỊCH – SỐC NHIỄM KHUẨN';
+        const bolus = Math.round(weight * 30); // 30mL/kg SSC
+        html = `
         <div class="fluid-card fc-red">
             <div class="fluid-card-title" style="color:#7f1d1d;">Phác đồ Bù dịch Sốc Nhiễm khuẩn (SSC 2021 / ESICM 2025)</div>
             <div class="fluid-card-body">
-                <strong>Tình trạng hiện tại:</strong> MAP ${map} mmHg ${map<65?'<span style="color:#dc2626;font-weight:700;">(< 65 mmHg – Đang sốc)</span>':''} | Lactate ${lac} mmol/L ${lac>=4?'<span style="color:#dc2626;font-weight:700;">(≥ 4 – Tưới máu kém nặng)</span>':lac>=2?'<span style="color:#d97706;font-weight:700;">(2–4 – Cần hành động)</span>':''}<br>
+                <strong>Tình trạng hiện tại:</strong> MAP ${map} mmHg ${map < 65 ? '<span style="color:#dc2626;font-weight:700;">(< 65 mmHg – Đang sốc)</span>' : ''} | Lactate ${lac} mmol/L ${lac >= 4 ? '<span style="color:#dc2626;font-weight:700;">(≥ 4 – Tưới máu kém nặng)</span>' : lac >= 2 ? '<span style="color:#d97706;font-weight:700;">(2–4 – Cần hành động)</span>' : ''}<br>
                 <strong>Dịch ưu tiên:</strong> Balanced crystalloids – Ringer Lactate hoặc Plasma-Lyte. <span style="color:#dc2626;font-weight:600;">HẠN CHẾ NaCl 0.9%</span> (gây toan tăng Cl máu).
             </div>
         </div>
@@ -483,14 +864,15 @@ function calculate(){
         <div class="ab ab-danger"><strong>🚨 Ngưỡng khởi động vận mạch:</strong> Norepinephrine (Lựa chọn đầu tay) ngay khi MAP &lt; 65 dù đang bù dịch – Không chờ bù đủ dịch mới bắt đầu NE.</div>
         <div class="ab ab-info"><strong>💡 Mục tiêu điều trị 6 giờ (Sepsis Bundle SSC):</strong> Cấy máu → Kháng sinh → Dịch 30mL/kg → Vận mạch → Lactate đo lại → MAP ≥ 65 mmHg → Nước tiểu ≥ 0.5mL/kg/h</div>
         <span class="src-badge">📚 SSC Guidelines 2021 & ESICM 2025 Fluid Therapy</span>`;
-    }
+      }
 
-    const panel=document.getElementById('result-panel');
-    document.getElementById('result-title').textContent=title;
-    document.getElementById('result-body').innerHTML=html;
-    panel.style.display='block';
-    panel.scrollIntoView({behavior:'smooth',block:'nearest'});
-}
-</script>
+      const panel = document.getElementById('result-panel');
+      document.getElementById('result-title').textContent = title;
+      document.getElementById('result-body').innerHTML = html;
+      panel.style.display = 'block';
+      panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  </script>
 </body>
+
 </html>

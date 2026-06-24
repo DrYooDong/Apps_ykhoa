@@ -471,6 +471,7 @@
 
         /* ── BRANCH (two paths side by side) ── */
         .flow-branch {
+            position: relative;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
@@ -757,6 +758,17 @@
             height: 1px;
             background: #e2e8f0;
         }
+
+        /* Đường ngang nối các nhánh */
+        .branch-horizontal {
+            position: absolute;
+            top: -15px;
+            /* Nửa chiều cao đường dọc */
+            left: 25%;
+            right: 25%;
+            height: 2px;
+            background-color: #94a3b8;
+        }
     </style>
 </head>
 
@@ -1040,6 +1052,7 @@
                         <div class="flow-connector-arrow"></div>
                     </div>
                     <div class="flow-branch">
+                        <div class="branch-horizontal"></div>
                         <!-- LEFT: SEVERE YES -->
                         <div class="flow-branch-side">
                             <div class="flow-connector-label fc-yes">CÓ → Dengue Nặng</div>
@@ -1099,145 +1112,149 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <!-- Divider for warning signs branch -->
-                    <div class="flow-connector" style="margin-top:12px;">
-                        <div class="flow-connector-line"></div>
-                        <div class="flow-connector-arrow"></div>
-                    </div>
-
-                    <div class="flow-branch">
-                        <!-- LEFT: WARNING YES -->
-                        <div class="flow-branch-side">
-                            <div class="flow-connector-label fc-yes">CÓ CẢNH BÁO</div>
-                            <div class="flow-connector" style="margin:4px 0">
+                            <!-- Vertical connector from Node Q2 -->
+                            <div class="flow-connector" style="margin-top:12px;">
                                 <div class="flow-connector-line"></div>
                                 <div class="flow-connector-arrow"></div>
                             </div>
-                            <div class="fnode fnode-warn clickable" onclick="toggleNode(this)">
-                                <div class="fnode-tag">🟡 SXH Dengue Có Dấu hiệu Cảnh báo</div>
-                                <div class="fnode-title">NHẬP VIỆN ĐIỀU TRỊ NỘI TRÚ BẮT BUỘC</div>
-                                <p class="fnode-body">Yêu cầu theo dõi sát huyết động và bắt đầu liệu pháp truyền dịch tĩnh mạch chủ động.</p>
-                                <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấn xem phác đồ xử trí dịch truyền</div>
-                                <div class="fnode-details">
-                                    <div class="detail-box">
-                                        <div class="detail-box-title">💧 Nguyên tắc bù dịch Nhóm B</div>
-                                        <ul>
-                                            <li>Truyền dịch tĩnh mạch: Ringer Lactate hoặc NaCl 0.9%.</li>
-                                            <li>Tốc độ truyền ban đầu: <strong>6 ml/kg/giờ</strong> trong 1-2 giờ đầu.</li>
-                                            <li>Nếu lâm sàng cải thiện và Hct giảm: Giảm dần tốc độ xuống 5 ml/kg/h -> 3 ml/kg/h -> 1.5 ml/kg/h.</li>
-                                            <li>Theo dõi sinh hiệu, lượng nước tiểu, Hct mỗi 4-6 giờ.</li>
-                                        </ul>
+
+                            <!-- Second flow branch (nested!) -->
+                            <div class="flow-branch" style="max-width:100%;">
+                                <div class="branch-horizontal"></div>
+                                <!-- LEFT: WARNING YES -->
+                                <div class="flow-branch-side">
+                                    <div class="flow-connector-label fc-yes">CÓ CẢNH BÁO</div>
+                                    <div class="flow-connector" style="margin:4px 0">
+                                        <div class="flow-connector-line"></div>
+                                        <div class="flow-connector-arrow"></div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- RIGHT: WARNING NO -->
-                        <div class="flow-branch-side">
-                            <div class="flow-connector-label fc-no">KHÔNG CẢNH BÁO</div>
-                            <div class="flow-connector" style="margin:4px 0">
-                                <div class="flow-connector-line"></div>
-                                <div class="flow-connector-arrow"></div>
-                            </div>
-                            
-                            <!-- Node Q3: Standard Dengue Criteria? -->
-                            <div class="fnode fnode-question clickable" onclick="toggleNode(this)">
-                                <div class="fnode-tag">❓ Bước 3 · Tiêu chuẩn ca bệnh Dengue</div>
-                                <div class="fnode-title">
-                                    <span class="step-badge">3</span>
-                                    Bệnh nhân đủ tiêu chuẩn ca bệnh nghi ngờ?
-                                </div>
-                                <p class="fnode-body">Sốt cao + ít nhất 2 triệu chứng điển hình (đau đầu, cơ, khớp, ban đỏ, NS1+)?</p>
-                                <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấn xem tiêu chuẩn chẩn đoán ca bệnh</div>
-                                <div class="fnode-details">
-                                    <div class="detail-box">
-                                        <div class="detail-box-title">📋 Tiêu chuẩn ca bệnh nghi ngờ</div>
-                                        <ul>
-                                            <li>Sốt cao đột ngột 2-7 ngày.</li>
-                                            <li>Kèm ít nhất 2 dấu hiệu sau:
+                                    <div class="fnode fnode-warn clickable" onclick="toggleNode(this)">
+                                        <div class="fnode-tag">🟡 SXH Dengue Có Dấu hiệu Cảnh báo</div>
+                                        <div class="fnode-title">NHẬP VIỆN ĐIỀU TRỊ NỘI TRÚ BẮT BUỘC</div>
+                                        <p class="fnode-body">Yêu cầu theo dõi sát huyết động và bắt đầu liệu pháp truyền dịch tĩnh mạch chủ động.</p>
+                                        <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấn xem phác đồ xử trí dịch truyền</div>
+                                        <div class="fnode-details">
+                                            <div class="detail-box">
+                                                <div class="detail-box-title">💧 Nguyên tắc bù dịch Nhóm B</div>
                                                 <ul>
-                                                    <li>Đau cơ, đau khớp.</li>
-                                                    <li>Đau đầu, đau hố mắt.</li>
-                                                    <li>Ban xung huyết, chấm xuất huyết dưới da.</li>
-                                                    <li>Nghiệm pháp dây thắt dương tính.</li>
-                                                    <li>Xét nghiệm: Bạch cầu giảm, Tiểu cầu giảm.</li>
-                                                    <li>Kháng nguyên NS1 dương tính hoặc IgM dương tính.</li>
+                                                    <li>Truyền dịch tĩnh mạch: Ringer Lactate hoặc NaCl 0.9%.</li>
+                                                    <li>Tốc độ truyền ban đầu: <strong>6 ml/kg/giờ</strong> trong 1-2 giờ đầu.</li>
+                                                    <li>Nếu lâm sàng cải thiện và Hct giảm: Giảm dần tốc độ xuống 5 ml/kg/h -> 3 ml/kg/h -> 1.5 ml/kg/h.</li>
+                                                    <li>Theo dõi sinh hiệu, lượng nước tiểu, Hct mỗi 4-6 giờ.</li>
                                                 </ul>
-                                            </li>
-                                        </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Divider for Final decision -->
-                    <div class="flow-connector" style="margin-top:12px;">
-                        <div class="flow-connector-line"></div>
-                        <div class="flow-connector-arrow"></div>
-                    </div>
-
-                    <div class="flow-branch">
-                        <!-- LEFT: DENGUE STANDARD YES -->
-                        <div class="flow-branch-side">
-                            <div class="flow-connector-label fc-yes">ĐỦ TIÊU CHUẨN</div>
-                            <div class="flow-connector" style="margin:4px 0">
-                                <div class="flow-connector-line"></div>
-                                <div class="flow-connector-arrow"></div>
-                            </div>
-                            <div class="fnode fnode-ok clickable" onclick="toggleNode(this)">
-                                <div class="fnode-tag">🟢 SXH Dengue Cổ Điển (Thể Nhẹ)</div>
-                                <div class="fnode-title">THEO DÕI NGOẠI TRÚ (ĐIỀU TRỊ TẠI NHÀ)</div>
-                                <p class="fnode-body">Cho phép điều trị tại nhà dưới sự tự theo dõi chặt chẽ của người nhà.</p>
-                                <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấn xem hướng dẫn theo dõi & điều trị</div>
-                                <div class="fnode-details">
-                                    <div class="detail-box">
-                                        <div class="detail-box-title">🏡 Hướng dẫn điều trị tại nhà</div>
-                                        <ul>
-                                            <li><strong>Bù dịch đường uống tích cực</strong>: Oresol (ORS) pha đúng tỷ lệ, nước trái cây (cam, dừa), nước cháo muối. Uống theo nhu cầu.</li>
-                                            <li><strong>Hạ sốt an toàn</strong>: Chỉ dùng <code>Paracetamol</code> liều 10-15 mg/kg mỗi 4-6 giờ (không quá 4g/ngày).</li>
-                                            <li><strong>🚫 TUYỆT ĐỐI KHÔNG DÙNG</strong>: Aspirin, Ibuprofen hoặc các thuốc nhóm NSAID khác vì tăng nguy cơ chảy máu dạ dày, xuất huyết nặng.</li>
-                                            <li><strong>Tầm soát cảnh báo</strong>: Người nhà đưa bệnh nhân đến viện ngay nếu phát hiện: đau bụng, nôn ói, lừ đừ, chảy máu răng/cam, chân tay lạnh ẩm.</li>
-                                            <li>Lấy máu làm CTM mỗi sáng để theo dõi xu hướng Hct và tiểu cầu.</li>
-                                        </ul>
+                                <!-- RIGHT: WARNING NO -->
+                                <div class="flow-branch-side">
+                                    <div class="flow-connector-label fc-no">KHÔNG CẢNH BÁO</div>
+                                    <div class="flow-connector" style="margin:4px 0">
+                                        <div class="flow-connector-line"></div>
+                                        <div class="flow-connector-arrow"></div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- RIGHT: DENGUE STANDARD NO -->
-                        <div class="flow-branch-side">
-                            <div class="flow-connector-label fc-norm">CHƯA ĐỦ / CHẨN ĐOÁN KHÁC</div>
-                            <div class="flow-connector" style="margin:4px 0">
-                                <div class="flow-connector-line"></div>
-                                <div class="flow-connector-arrow"></div>
-                            </div>
-                            <div class="fnode fnode-neutral clickable" onclick="toggleNode(this)">
-                                <div class="fnode-tag">⚪ Theo dõi diễn tiến & Chẩn đoán phân biệt</div>
-                                <div class="fnode-title">TÌM NGUYÊN NHÂN SỐT KHÁC</div>
-                                <p class="fnode-body">Bệnh nhân chưa đủ tiêu chuẩn chẩn đoán SXH. Theo dõi thêm lâm sàng và kết quả xét nghiệm.</p>
-                                <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấn xem xét nghiệm bổ sung</div>
-                                <div class="fnode-details">
-                                    <div class="detail-box">
-                                        <div class="detail-box-title">🔬 Xét nghiệm & Chẩn đoán phân biệt</div>
-                                        <ul>
-                                            <li>Chỉ định xét nghiệm khẳng định:
+                                    
+                                    <!-- Node Q3: Standard Dengue Criteria? -->
+                                    <div class="fnode fnode-question clickable" onclick="toggleNode(this)">
+                                        <div class="fnode-tag">❓ Bước 3 · Tiêu chuẩn ca bệnh Dengue</div>
+                                        <div class="fnode-title">
+                                            <span class="step-badge">3</span>
+                                            Bệnh nhân đủ tiêu chuẩn ca bệnh nghi ngờ?
+                                        </div>
+                                        <p class="fnode-body">Sốt cao + ít nhất 2 triệu chứng điển hình (đau đầu, cơ, khớp, ban đỏ, NS1+)?</p>
+                                        <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấn xem tiêu chuẩn chẩn đoán ca bệnh</div>
+                                        <div class="fnode-details">
+                                            <div class="detail-box">
+                                                <div class="detail-box-title">📋 Tiêu chuẩn ca bệnh nghi ngờ</div>
                                                 <ul>
-                                                    <li>Từ ngày 1 - 3: <strong>Kháng nguyên NS1</strong> bằng test nhanh.</li>
-                                                    <li>Từ ngày 4 trở đi: <strong>Kháng thể IgM / IgG</strong> Dengue.</li>
+                                                    <li>Sốt cao đột ngột 2-7 ngày.</li>
+                                                    <li>Kèm ít nhất 2 dấu hiệu sau:
+                                                        <ul>
+                                                            <li>Đau cơ, đau khớp.</li>
+                                                            <li>Đau đầu, đau hố mắt.</li>
+                                                            <li>Ban xung huyết, chấm xuất huyết dưới da.</li>
+                                                            <li>Nghiệm pháp dây thắt dương tính.</li>
+                                                            <li>Xét nghiệm: Bạch cầu giảm, Tiểu cầu giảm.</li>
+                                                            <li>Kháng nguyên NS1 dương tính hoặc IgM dương tính.</li>
+                                                        </ul>
+                                                    </li>
                                                 </ul>
-                                            </li>
-                                            <li>Loại trừ chẩn đoán phân biệt: Sốt siêu vi khác, nhiễm trùng tiểu, viêm họng cấp, sốt rét, nhiễm trùng huyết.</li>
-                                            <li>Hẹn tái khám sau 24h nếu sốt tiếp diễn.</li>
-                                        </ul>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+                                    <!-- Vertical connector from Node Q3 -->
+                                    <div class="flow-connector" style="margin-top:12px;">
+                                        <div class="flow-connector-line"></div>
+                                        <div class="flow-connector-arrow"></div>
+                                    </div>
+
+                                    <!-- Third flow branch (nested!) -->
+                                    <div class="flow-branch" style="max-width:100%;">
+                                        <div class="branch-horizontal"></div>
+                                        <!-- LEFT: DENGUE STANDARD YES -->
+                                        <div class="flow-branch-side">
+                                            <div class="flow-connector-label fc-yes">ĐỦ TIÊU CHUẨN</div>
+                                            <div class="flow-connector" style="margin:4px 0">
+                                                <div class="flow-connector-line"></div>
+                                                <div class="flow-connector-arrow"></div>
+                                            </div>
+                                            <div class="fnode fnode-ok clickable" onclick="toggleNode(this)">
+                                                <div class="fnode-tag">🟢 SXH Dengue Cổ Điển (Thể Nhẹ)</div>
+                                                <div class="fnode-title">THEO DÕI NGOẠI TRÚ (ĐIỀU TRỊ TẠI NHÀ)</div>
+                                                <p class="fnode-body">Cho phép điều trị tại nhà dưới sự tự theo dõi chặt chẽ của người nhà.</p>
+                                                <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấn xem hướng dẫn theo dõi & điều trị</div>
+                                                <div class="fnode-details">
+                                                    <div class="detail-box">
+                                                        <div class="detail-box-title">🏡 Hướng dẫn điều trị tại nhà</div>
+                                                        <ul>
+                                                            <li><strong>Bù dịch đường uống tích cực</strong>: Oresol (ORS) pha đúng tỷ lệ, nước trái cây (cam, dừa), nước cháo muối. Uống theo nhu cầu.</li>
+                                                            <li><strong>Hạ sốt an toàn</strong>: Chỉ dùng <code>Paracetamol</code> liều 10-15 mg/kg mỗi 4-6 giờ (không quá 4g/ngày).</li>
+                                                            <li><strong>🚫 TUYỆT ĐỐI KHÔNG DÙNG</strong>: Aspirin, Ibuprofen hoặc các thuốc nhóm NSAID khác vì tăng nguy cơ chảy máu dạ dày, xuất huyết nặng.</li>
+                                                            <li><strong>Tầm soát cảnh báo</strong>: Người nhà đưa bệnh nhân đến viện ngay nếu phát hiện: đau bụng, nôn ói, lừ đừ, chảy máu răng/cam, chân tay lạnh ẩm.</li>
+                                                            <li>Lấy máu làm CTM mỗi sáng để theo dõi xu hướng Hct và tiểu cầu.</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- RIGHT: DENGUE STANDARD NO -->
+                                        <div class="flow-branch-side">
+                                            <div class="flow-connector-label fc-norm">CHƯA ĐỦ / CHẨN ĐOÁN KHÁC</div>
+                                            <div class="flow-connector" style="margin:4px 0">
+                                                <div class="flow-connector-line"></div>
+                                                <div class="flow-connector-arrow"></div>
+                                            </div>
+                                            <div class="fnode fnode-neutral clickable" onclick="toggleNode(this)">
+                                                <div class="fnode-tag">⚪ Theo dõi diễn tiến & Chẩn đoán phân biệt</div>
+                                                <div class="fnode-title">TÌM NGUYÊN NHÂN SỐT KHÁC</div>
+                                                <p class="fnode-body">Bệnh nhân chưa đủ tiêu chuẩn chẩn đoán SXH. Theo dõi thêm lâm sàng và kết quả xét nghiệm.</p>
+                                                <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấn xem xét nghiệm bổ sung</div>
+                                                <div class="fnode-details">
+                                                    <div class="detail-box">
+                                                        <div class="detail-box-title">🔬 Xét nghiệm & Chẩn đoán phân biệt</div>
+                                                        <ul>
+                                                            <li>Chỉ định xét nghiệm khẳng định:
+                                                                <ul>
+                                                                    <li>Từ ngày 1 - 3: <strong>Kháng nguyên NS1</strong> bằng test nhanh.</li>
+                                                                    <li>Từ ngày 4 trở đi: <strong>Kháng thể IgM / IgG</strong> Dengue.</li>
+                                                                </ul>
+                                                            </li>
+                                                            <li>Loại trừ chẩn đoán phân biệt: Sốt siêu vi khác, nhiễm trùng tiểu, viêm họng cấp, sốt rét, nhiễm trùng huyết.</li>
+                                                            <li>Hẹn tái khám sau 24h nếu sốt tiếp diễn.</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end third flow-branch -->
+                                </div> <!-- end RIGHT: WARNING NO side -->
+                            </div> <!-- end second flow-branch -->
+                        </div> <!-- end RIGHT: SEVERE NO side -->
+                    </div> <!-- end first flow-branch -->
 
                 </div><!-- end flow-col -->
             </div><!-- end pane-diag -->
@@ -1285,8 +1302,8 @@
                         <div class="flow-connector-line"></div>
                         <div class="flow-connector-arrow"></div>
                     </div>
-
                     <div class="flow-branch">
+                        <div class="branch-horizontal"></div>
                         <!-- LEFT BRANCH: SHOCK / SEVERE (Group C) -->
                         <div class="flow-branch-side">
                             <div class="flow-connector-label fc-yes">CÓ SỐC (Nhóm C)</div>
@@ -1367,8 +1384,8 @@
                                 <div class="flow-connector-line"></div>
                                 <div class="flow-connector-arrow"></div>
                             </div>
-
                             <div class="flow-branch" style="max-width:100%;">
+                                <div class="branch-horizontal"></div>
                                 <!-- LEFT: Group B Fluid -->
                                 <div class="flow-branch-side">
                                     <div class="flow-connector-label fc-yes">CÓ (Nhóm B)</div>
