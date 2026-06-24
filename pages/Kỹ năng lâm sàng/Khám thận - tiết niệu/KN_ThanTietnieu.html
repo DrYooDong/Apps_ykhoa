@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang='vi' data-theme='light'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta name='description'
+    content='Khám hệ thận - tiết niệu theo Macleod: Hướng dẫn khám chạm thận, bập bềnh thận, khám bàng quang, đánh giá cân bằng nước điện giải và phân tích nước tiểu.'>
+  <title>
+    Khám Hệ Thận - Tiết Niệu - CliniPortal
+  </title>
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+  <link
+    href='https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap'
+    rel='stylesheet'>
+  <link rel='stylesheet' href='../../../css/reset.css'>
+  <link rel='stylesheet' href='../../../css/main.css'>
+  <link rel='stylesheet' href='../../../css/components/header.css'>
+  <link rel='stylesheet' href='../../../css/components/sidebar.css'>
+  <link rel='stylesheet' href='../../../css/components/footer.css'>
+  <script src='../../../pages/header.js'>
+  </script>
+  <script src='../../../pages/footer.js'>
+  </script>
+  <style>
+    :root {
+      --a: #1e3a8a;
+      --b: #3b82f6;
+      --c: #dbeafe;
+    }
+  </style>
+  <link rel='stylesheet' href='../../../css/components/clinical-skill.css'>
+</head>
+
+<body>
+  <div id='header-placeholder' data-header-path='../../header.html'>
+  </div>
+  <div class='sidebar-overlay' id='sidebarOverlay'>
+  </div>
+  <div class='app-container'>
+    <aside class='app-sidebar' id='appSidebar'>
+      <button id='sidebar-toggle-arrow' class='sidebar-toggle-arrow' aria-label='Thu gọn/Mở rộng Sidebar'>
+        <svg viewBox='0 0 24 24' width='14' height='14' stroke='currentColor' stroke-width='2.5' fill='none'
+          stroke-linecap='round' stroke-linejoin='round' class='toggle-arrow-svg'>
+          <polyline points='15 18 9 12 15 6'>
+          </polyline>
+        </svg>
+      </button>
+      <nav class='sidebar-nav' aria-label='Điều hướng chính'>
+        <ul class='nav-list' role='list'>
+          <li>
+            <a href='../../../index.html' class='nav-item'>
+              <span class='nav-icon'>
+                🏠
+              </span>
+              <span class='nav-text'>
+                Trang chủ
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href='../ky-nang-lam-sang.html' class='nav-item'>
+              <span class='nav-icon'>
+                🩺
+              </span>
+              <span class='nav-text'>
+                Kỹ năng lâm sàng
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href='../../Tiếp cận/tiep-can.html' class='nav-item'>
+              <span class='nav-icon'>
+                🤒
+              </span>
+              <span class='nav-text'>
+                Tiếp cận lâm sàng
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href='../../Công cụ/cong-cu.html' class='nav-item'>
+              <span class='nav-icon'>
+                ⚙️
+              </span>
+              <span class='nav-text'>
+                Công cụ lâm sàng
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <div class='main-wrapper' id='mainContent'>
+      <nav aria-label='Breadcrumb' class='breadcrumb-container'>
+        <ol class='breadcrumb-list'>
+          <li class='breadcrumb-item'>
+            <a href='../../../index.html' class='breadcrumb-link'>
+              <span class='home-icon'>
+                🏠
+              </span>
+              Home
+            </a>
+          </li>
+          <li class='breadcrumb-item'>
+            <a href='../ky-nang-lam-sang.html' class='breadcrumb-link'>
+              Kỹ năng lâm sàng
+            </a>
+          </li>
+          <li class='breadcrumb-item active' aria-current='page'>
+            Khám hệ thận tiết niệu
+          </li>
+        </ol>
+      </nav>
+      <section class='hero'>
+        <h1>
+          Khám Hệ Thận - Tiết Niệu
+        </h1>
+        <p>
+          Bài khám hệ Thận - Tiết niệu được biên soạn theo chuẩn Macleod's Clinical Examination. Hướng dẫn chi tiết cách tiếp cận triệu chứng đau hông lưng, sỏi niệu, tổn thương thận cấp (AKI), suy thận mạn (CKD) và thực hiện các nghiệm pháp chạm thận, khám bàng quang và đánh giá thăng bằng dịch ngoại biên.
+        </p>
+        <div class='quick'>
+          <div class='qi'>
+            <b>
+              Tư thế
+            </b>
+            Nằm ngửa thoải mái, bộc lộ vùng bụng từ xương ức đến xương mu
+          </div>
+          <div class='qi'>
+            <b>
+              Điểm nhấn
+            </b>
+            Đánh giá tình trạng dịch (JVP, phù ngoại biên, mất nước), nghiệm pháp chạm thận (ballottement), sờ bàng quang, nghe âm thổi động mạch thận
+          </div>
+          <div class='qi'>
+            <b>
+              Red flags
+            </b>
+            Thiếu niệu/Vô niệu kèm phù phổi cấp, tăng Kali máu đe dọa tính mạng (AKI nặng), sốt lạnh run kèm đau hông lưng (viêm thận bể thận cấp)
+          </div>
+        </div>
+      </section>
+      <div class='tabs'>
+        <button class='tab-btn active' data-tab='core'>
+          Nền tảng
+        </button>
+        <button class='tab-btn' data-tab='hx'>
+          Hỏi bệnh
+        </button>
+        <button class='tab-btn' data-tab='exam'>
+          Khám
+        </button>
+        <button class='tab-btn' data-tab='int'>
+          Biện luận
+        </button>
+        <button class='tab-btn' data-tab='tests'>
+          Cận lâm sàng
+        </button>
+        <button class='tab-btn' data-tab='osce'>
+          OSCE
+        </button>
+      </div>
+
+      <!-- TAB: NỀN TẢNG -->
+      <section class='tab active' id='core'>
+        <div class='card'>
+          <h2>Giải phẫu và Sinh lý học lâm sàng (Anatomy and physiology)</h2>
+          <ul>
+            <li><strong>Thận (Kidneys):</strong> Nằm ở khoang sau phúc mạc, hai bên cột sống ngang mức T12-L3. Chiều dài thận khoảng 11-14 cm. Thận phải nằm thấp hơn thận trái 1.5 cm do gan đè xuống. Cả hai thận di chuyển xuống dưới theo cơ hoành trong nhịp hít vào. Vỏ bao thận và niệu quản được chi phối cảm giác bởi các rễ thần kinh T10-T12/L1, do đó cơn đau quặn thận thường đau lan xuống hố chậu, tinh hoàn (nam) hoặc môi lớn (nữ).</li>
+            <li><strong>Chức năng sinh lý:</strong> Nhận khoảng 25% cung lượng tim. Có khoảng 1 triệu đơn vị chức năng (nephron) ở mỗi thận. Thực hiện vai trò:
+              <ul>
+                <li>Bài tiết các sản phẩm chuyển hóa của nitơ (ure, creatinine).</li>
+                <li>Cân bằng muối, nước, toan kiềm và điện giải.</li>
+                <li>Điều hòa huyết áp thông qua hệ renin-angiotensin-aldosterone (RAAS).</li>
+                <li>Chức năng nội tiết: Kích thích tủy xương tạo hồng cầu (erythropoietin) và hoạt hóa vitamin D (1,25-dihydroxycholecalciferol).</li>
+              </ul>
+            </li>
+            <li><strong>Bàng quang và Niệu đạo:</strong> Bàng quang là hồ chứa dịch. Khi thể tích đạt khoảng 250-350 mL sẽ kích thích receptor căng gây cảm giác mắc tiểu. Khi căng to, bàng quang có hình quả trứng vươn lên trên xương mu hướng về rốn. Cơ vòng trong nằm ở cổ bàng quang (không tự ý, chịu chi phối giao cảm); cơ vòng ngoài bao quanh niệu đạo màng (tự ý, chi phối bởi thần kinh thẹn rễ S2-S4).</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: HỎI BỆNH -->
+      <section class='tab' id='hx'>
+        <div class='card'>
+          <h2>Các triệu chứng cơ năng thường gặp (Common presenting symptoms)</h2>
+          <p>Bệnh lý thận giai đoạn sớm thường diễn tiến âm thầm không triệu chứng. Khai thác kỹ các triệu chứng dưới đây giúp định hướng chẩn đoán:</p>
+          <div style='overflow-x: auto; margin-top: 12px;'>
+            <table class='cmp'>
+              <thead>
+                <tr>
+                  <th>Triệu chứng</th>
+                  <th>Chẩn đoán phân biệt / Gợi ý nguyên nhân</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Tiểu buốt (Dysuria)</strong></td>
+                  <td>Viêm bàng quang (thường kèm tiểu rắt, đau trên xương mu), Viêm thận bể thận cấp (kèm sốt cao &gt;38°C, lạnh run, nôn mửa, đau hông lưng), Viêm niệu đạo, Viêm tuyến tiền liệt cấp.</td>
+                </tr>
+                <tr>
+                  <td><strong>Đau hông lưng (Loin pain)</strong></td>
+                  <td>Cơn đau quặn thận (Renal colic): Đau dữ dội từng cơn, quằn quại, bệnh nhân vật vã tìm tư thế giảm đau, lan xuống bẹn/tinh hoàn/môi lớn do sỏi niệu quản di chuyển. Đau âm ỉ liên tục gặp trong viêm bể thận, u thận hoặc chảy máu bao thận.</td>
+                </tr>
+                <tr>
+                  <td><strong>Tiểu máu (Haematuria)</strong></td>
+                  <td>
+                    * <em>Đại thể (nhìn thấy bằng mắt thường):</em> Gợi ý sỏi niệu, viêm bàng quang cấp, ung thư bàng quang, ung thư thận.<br>
+                    * <em>Vi thể (phát hiện bằng que thử/kính hiển vi):</em> Bệnh lý cầu thận (Bệnh thận IgA - điển hình xuất hiện tiểu máu đại thể/vi thể sau viêm họng vài ngày), viêm mạch máu hệ thống.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Tiểu đạm / nước tiểu bọt (Proteinuria)</strong></td>
+                  <td>Nước tiểu nhiều bọt lâu tan, gợi ý rò rỉ lượng lớn protein qua màng lọc cầu thận (Hội chứng thận hư do đái tháo đường, bệnh cầu thận màng, bệnh thay đổi tối thiểu, Lupus ban đỏ, viêm khớp dạng thấp/Amyloidosis).</td>
+                </tr>
+                <tr>
+                  <td><strong>Triệu chứng tống xuất (Voiding)</strong></td>
+                  <td>Tiểu ngập ngừng, tia nước tiểu yếu, rặn tiểu, tiểu nhỏ giọt cuối bãi. Chỉ điểm tắc nghẽn đường ra (phì đại tuyến tiền liệt, sa sinh dục nữ, hẹp niệu đạo).</td>
+                </tr>
+                <tr>
+                  <td><strong>Triệu chứng chứa đựng (Storage)</strong></td>
+                  <td>Tiểu gấp, tiểu nhiều lần, tiểu đêm, són tiểu không kiểm soát. Do nhiễm trùng, sỏi kích thích bàng quang, bàng quang kích thích hoặc bàng quang thần kinh.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class='card'>
+          <h2>Phân tích các bệnh cảnh lâm sàng chủ chốt</h2>
+          <ul>
+            <li><strong>Tổn thương thận cấp (Acute Kidney Injury - AKI):</strong> Đặc trưng bởi Creatinine máu tăng nhanh đột ngột. Cần phân loại nguyên nhân:
+              <ul>
+                <li><em>Trước thận (Prerenal):</em> Giảm thể tích tuần hoàn hiệu dụng (nôn mửa, tiêu chảy, mất nước, xuất huyết, dùng lợi tiểu quá liều) hoặc giảm tưới máu thận (suy tim mất bù, dùng thuốc NSAIDs gây co động mạch nhập, thuốc ACEi/ARB gây giãn động mạch xuất).</li>
+                <li><em>Tại thận (Intrarenal):</em> Hoại tử ống thận cấp (ATN) do thiếu máu kéo dài hoặc độc chất (tiêu cơ vân, kháng sinh aminoglycoside); Viêm thận kẽ cấp do dị ứng thuốc (kháng sinh dòng Beta-lactam, NSAIDs, PPIs); Viêm cầu thận cấp.</li>
+                <li><em>Sau thận (Postrenal):</em> Tắc nghẽn đường tiểu dưới (phì đại tuyến tiền liệt, u cổ tử cung/buồng trứng chèn ép, sỏi niệu quản 2 bên hoặc sỏi niệu quản ở bệnh nhân chỉ có 1 thận độc nhất).</li>
+              </ul>
+            </li>
+            <li style='margin-top: 10px;'><strong>Bệnh thận mạn (CKD) và Hội chứng Ure máu cao (Uraemia):</strong> Định nghĩa khi eGFR suy giảm hoặc có tiểu đạm kéo dài &gt;3 tháng. Bệnh nhân thường không có triệu chứng cho đến giai đoạn cuối (eGFR &lt;10 mL/phút). Hội chứng ure máu cao biểu hiện bằng: chán ăn, buồn nôn/nôn, ngứa da dữ dội, mệt mỏi, kém tập trung, khó thở do toan chuyển hóa/quá tải dịch, phù ngoại biên.</li>
+          </ul>
+        </div>
+
+        <div class='card'>
+          <h2>Khung câu hỏi gợi ý ("Ask about...")</h2>
+          <ul>
+            <li><strong>Nghi ngờ AKI trước thận:</strong> "Gần đây bạn có bị nôn mửa, tiêu chảy, sốt cao hay uống ít nước không? Bạn có đang dùng thuốc giảm đau kháng viêm NSAIDs hay thuốc hạ huyết áp mới không?".</li>
+            <li><strong>Đau quặn thận:</strong> "Cơn đau xuất hiện đột ngột hay từ từ? Đau có lan xuống vùng bẹn hay bộ phận sinh dục không? Trong cơn đau bạn có nằm yên được không hay phải lăn lộn tìm tư thế giảm đau?".</li>
+            <li><strong>Bệnh nhân ghép thận / Lọc máu:</strong> "Bạn được ghép thận từ năm nào? Hiện tại vị trí thận ghép ở hố chậu có đau, sưng hay sốt không? Cầu tay (fistula) ở tay của bạn sờ vào có còn cảm giác rung liên tục không?".</li>
+          </ul>
+        </div>
+
+        <div class='card'>
+          <h2>Tiền sử bệnh, Dùng thuốc & Gia đình</h2>
+          <ul>
+            <li><strong>Tiền sử bệnh (Past medical history):</strong> Đái tháo đường, tăng huyết áp (hai nguyên nhân hàng đầu gây CKD), lupus ban đỏ, sỏi thận, hoặc các phẫu thuật/can thiệp niệu khoa cũ.</li>
+            <li><strong>Tiền sử dùng thuốc (Drug history):</strong> NSAIDs, Ức chế men chuyển (ACEi), Chẹn thụ thể (ARBs), kháng sinh aminoglycoside, thuốc ức chế miễn dịch (Ciclosporin, Tacrolimus).</li>
+            <li><strong>Tiền sử gia đình:</strong>
+              <ul>
+                <li><em>Bệnh thận đa nang di truyền gen trội (ADPKD):</em> Tiền sử gia đình có người suy thận phải chạy thận, phình mạch não hoặc xuất huyết dưới nhện.</li>
+                <li><em>Hội chứng Alport:</em> Di truyền liên kết nhiễm sắc thể X gây tiểu máu vi thể kèm điếc tiếp nhận sớm ở nam giới.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: KHÁM THỂ CHẤT -->
+      <section class='tab' id='exam'>
+        <div class='grid2'>
+          <div class='card'>
+            <h2>Khám toàn thân & Đánh giá thăng bằng dịch</h2>
+            <p>Đánh giá chính xác trạng thái dịch là cốt lõi trong tiếp cận bệnh nhân thận:</p>
+            <ul>
+              <li><strong>Trạng thái mất dịch (Dehydration):</strong> Mắt trũng, niêm mạc miệng khô, nếp véo da (skin turgor) mất chậm (đánh giá tốt nhất ở da vùng trước xương ức). Mạch nhanh, huyết áp kẹp, hạ huyết áp tư thế đứng.</li>
+              <li><strong>Trạng thái quá tải dịch (Fluid overload):</strong> Tĩnh mạch cổ nổi (JVP nổi ở tư thế 45 độ), nghe phổi có ran ẩm ở đáy, tràn dịch màng phổi. Nhịp tim nhanh, tiếng ngựa phi T3. Phù lõm ngoại biên (symmetrical pitting edema) vùng cổ chân, cẳng chân, hoặc phù vùng cùng cụt ở bệnh nhân nằm lâu. Phù mặt/mi mắt buổi sáng đặc trưng cho Hội chứng thận hư.</li>
+              <li><strong>Dấu hiệu Ure máu cao ngoại biên:</strong> Rung giật cành cây (asterixis) ở bàn tay duỗi thẳng, giật cơ (myoclonus), móng tay Lindsay (Half-and-half nails: nửa gần màu trắng xám, nửa xa màu nâu đỏ), đường Muehrcke (dải trắng ngang trên móng gợi ý giảm albumin máu).</li>
+            </ul>
+          </div>
+
+          <div class='card'>
+            <h2>Quy trình khám bụng và Thận chuyên khoa</h2>
+            <ul class='check' style='margin-top: 12px;'>
+              <li>
+                <input type='checkbox'>
+                <span><strong>1. Nhìn (Inspection):</strong> Quan sát bụng trướng (thận đa nang rất lớn, cổ trướng), tìm sẹo mổ vùng mạn sườn (cắt thận) hay sẹo ở hố chậu kèm khối gồ (thận ghép). Kiểm tra ống thông lọc màng bụng (tenckhoff catheter).</span>
+              </li>
+              <li>
+                <input type='checkbox'>
+                <span><strong>2. Sờ chạm thận (Ballottement):</strong>
+                  <ul>
+                    <li><em>Thận phải:</em> Tay trái luồn dưới lưng bệnh nhân tại góc sườn thắt lưng (đốt ngón trỏ đặt tại xương sườn 12). Tay phải đặt trên bụng ấn sâu xuống. Yêu cầu bệnh nhân hít sâu, đẩy tay trái lên trên để kẹp thận giữa hai tay.</li>
+                    <li><em>Thận trái:</em> Tương tự với tay trái đặt dưới lưng bên trái, tay phải ấn từ thành bụng trước.</li>
+                    <li>Khám thấy thận to hai bên: Gợi ý Bệnh thận đa nang (ADPKD). Sờ thận ghép ở hố chậu tìm điểm ấn đau (thải ghép/nhiễm trùng).</li>
+                  </ul>
+                </span>
+              </li>
+              <li>
+                <input type='checkbox'>
+                <span><strong>3. Sờ bàng quang:</strong> Khám thấy một khối mềm, tròn ở vùng hạ vị trên xương mu, không thể luồn tay xuống dưới bờ dưới khối (cannot get below it). Ấn vào gây đau tức buồn tiểu (cầu bàng quang).</span>
+              </li>
+              <li>
+                <input type='checkbox'>
+                <span><strong>4. Gõ và Nghe:</strong> Gõ đục trên vùng cầu bàng quang căng to (khác với gõ vang của quai ruột). Gõ đục vùng thấp tìm cổ trướng. Nghe âm thổi động mạch thận (renal bruit) ở vùng trên rốn cách đường giữa 2-3 cm sang hai bên (hẹp động mạch thận).</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: BIỆN LUẬN -->
+      <section class='tab' id='int'>
+        <div class='card'>
+          <h2>Tích hợp phát hiện lâm sàng trong suy thận</h2>
+          <ul>
+            <li><strong>AKI trước thận vs Tại thận:</strong> Ở bệnh nhân AKI có tình trạng mất dịch rõ rệt, bù dịch đẳng trương là chỉ định hàng đầu để phục hồi tưới máu thận. Ngược lại, nếu bệnh nhân AKI có tình trạng quá tải dịch rõ (phù phổi, ran ẩm phổi) kèm vô niệu, việc sử dụng lợi tiểu quai liều cao hoặc lọc máu cấp cứu là bắt buộc.</li>
+            <li><strong>Chẩn đoán phân biệt khối u mạn sườn (Thận to vs Lách to):</strong>
+              <ul>
+                <li><em>Thận to:</em> Nghiệm pháp chạm thận (ballottement) dương tính (sờ thấy ở cả tay trước bụng và tay sau lưng). Gõ vang phía trước do có các quai ruột đè lên. Khối u không di chuyển nhiều theo nhịp thở, không có bờ khía răng cưa.</li>
+                <li><em>Lách to:</em> Sờ thấy sát thành bụng trước, không thể luồn tay ra phía sau lưng (không có chạm thận). Gõ đục hoàn toàn. Di chuyển rõ theo nhịp hít vào hướng xuống hố chậu phải, có bờ khía răng cưa đặc trưng.</li>
+              </ul>
+            </li>
+            <li style='margin-top: 10px;'><strong>Tắc nghẽn đường tiểu dưới (AKI sau thận):</strong> Ở bệnh nhân nam lớn tuổi nhập viện vì AKI/vô niệu, sờ thấy cầu bàng quang căng to, ấn đau nhẹ hông lưng hai bên hướng tới tắc nghẽn cấp tính do Phì đại tuyến tiền liệt hoặc U xơ tuyến tiền liệt chèn ép cổ bàng quang. Đặt ống thông tiểu (Foley) giúp giải áp lập tức và phục hồi chức năng thận.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: CẬN LÂM SÀNG -->
+      <section class='tab' id='tests'>
+        <div class='card'>
+          <h2>Cận lâm sàng Thận - Tiết Niệu</h2>
+          <div style='overflow-x: auto; margin-top: 12px;'>
+            <table class='cmp'>
+              <thead>
+                <tr>
+                  <th>Phân loại</th>
+                  <th>Chỉ định / Ý nghĩa lâm sàng</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Tổng phân tích nước tiểu bằng que thử (Dipstick Urinalysis)</strong></td>
+                  <td>
+                    - <strong>Bạch cầu (Leucocyte esterase) & Nitrite:</strong> Dương tính gợi ý nhiễm trùng đường tiết niệu (UTI). Nitrite dương tính chỉ điểm vi khuẩn Gram âm khử Nitrate.<br>
+                    - <strong>Blood (Hồng cầu) & Protein:</strong> Sự xuất hiện đồng thời của hồng cầu ($\ge 1+$) và protein ($\ge 2+$) gợi ý "cặn tiểu hoạt động" (active sediment), chỉ điểm viêm cầu thận cấp hoặc viêm mạch thận.<br>
+                    - <strong>Tỷ trọng (Specific gravity):</strong> Đánh giá khả năng cô đặc nước tiểu của ống thận (giảm trong ATN).
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Sinh hóa máu (Blood chemistry)</strong></td>
+                  <td>
+                    - <strong>Creatinine & Ure:</strong> Đánh giá mức độ suy giảm chức năng thận.<br>
+                    - <strong>eGFR (Mức lọc cầu thận ước tính):</strong> Dùng để phân độ giai đoạn Bệnh thận mạn (CKD) từ giai đoạn 1 đến 5.<br>
+                    - <strong>Kali máu:</strong> Tăng Kali máu là biến chứng đe dọa tính mạng nhất trong suy thận, gây rung thất và ngưng tim.<br>
+                    - <strong>Toan kiềm & Điện giải khác:</strong> Toan chuyển hóa (giảm Bicarbonate), giảm Calci, tăng Phosphate.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Đo tỷ lệ Albumin/Creatinine (ACR) hoặc Protein/Creatinine (PCR)</strong></td>
+                  <td>Mẫu nước tiểu bất kỳ dùng để định lượng chính xác mức độ tiểu đạm. ACR &gt;30 mg/mmol chỉ điểm tiểu đạm vi lượng (microalbuminuria) ở bệnh nhân đái tháo đường; PCR &gt;300 mg/mmol gợi ý tiểu đạm ngưỡng thận hư.</td>
+                </tr>
+                <tr>
+                  <td><strong>Siêu âm hệ niệu (Renal Ultrasound)</strong></td>
+                  <td>Xét nghiệm hình ảnh học đầu tay: Đánh giá kích thước thận (thận teo nhỏ &lt;9cm gợi ý CKD mạn tính; thận to gợi ý ADPKD, thận ứ nước cấp); phát hiện sỏi thận/bàng quang, độ dày vỏ thận, đo lượng nước tiểu tồn lưu sau tiểu (PVR).</td>
+                </tr>
+                <tr>
+                  <td><strong>CT hệ niệu không cản quang (CT KUB)</strong></td>
+                  <td>Tiêu chuẩn vàng để phát hiện sỏi niệu quản (độ nhạy và đặc hiệu &gt;97%).</td>
+                </tr>
+                <tr>
+                  <td><strong>Sinh thiết thận (Renal Biopsy)</strong></td>
+                  <td>Thực hiện dưới hướng dẫn siêu âm để chẩn đoán mô bệnh học các trường hợp hội chứng thận hư người lớn, suy thận tiến triển nhanh không rõ nguyên nhân.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: OSCE -->
+      <section class='tab' id='osce'>
+        <div class='grid2'>
+          <div class='card'>
+            <span class='case'>OSCE 1</span>
+            <h2>Tình huống 1: Hỏi bệnh sử nghi ngờ bệnh lý thận (Renal history)</h2>
+            <p><strong>Yêu cầu:</strong> Bệnh nhân nữ 60 tuổi đến phòng khám vì kết quả xét nghiệm máu bất thường kèm mệt mỏi tiến triển 3 tháng nay. Xét nghiệm: Hb 101 g/L, Kali 5.2 mmol/L, Ure 14.5 mmol/L, Creatinine 163 µmol/L (tăng). Que thử nước tiểu: Blood 3+, Protein 3+. Hãy hỏi bệnh sử thần kinh/tiết niệu.</p>
+            <p style='margin-top: 8px;'><strong>Tóm tắt phát hiện:</strong> Bệnh nhân mệt mỏi, khó thở khi gắng sức nhẹ phù hợp với thiếu máu mức độ trung bình (Hb 101 g/L). Có sưng đau nhẹ các khớp bàn tay, thỉnh thoảng sốt nhẹ về chiều và ban đỏ ở mặt khi ra nắng. Không tiểu buốt rắt, không đau quặn hông lưng. Xét nghiệm nước tiểu có tiểu máu đại thể/vi thể và tiểu protein lượng nhiều (cặn tiểu hoạt động). Không dùng thuốc giảm đau NSAIDs, không có tiền căn đái tháo đường hay tăng huyết áp trước đây.</p>
+            <p style='margin-top: 8px;'><strong>Chẩn đoán sơ bộ:</strong> Bệnh lý cầu thận nguyên phát hoặc thứ phát do bệnh tự miễn hệ thống (như Viêm thận Lupus - Lupus Nephritis hoặc Viêm mạch máu ANCA).</p>
+            <p style='margin-top: 8px;'><strong>Đề xuất xử trí tiếp theo:</strong> Chỉ định siêu âm hệ niệu đánh giá kích thước thận. Xét nghiệm tự miễn: ANA, anti-dsDNA, bổ thể C3, C4, kháng thể ANCA. Đo tỷ lệ PCR nước tiểu. Hội chẩn chuyên khoa thận để chuẩn bị sinh thiết thận xác định chẩn đoán.</p>
+          </div>
+
+          <div class='card'>
+            <span class='case'>OSCE 2</span>
+            <h2>Tình huống 2: Khám Thận - Tiết niệu (Renal examination)</h2>
+            <p><strong>Yêu cầu:</strong> Bệnh nhân nam 45 tuổi, tiền sử tăng huyết áp khó kiểm soát, đến khám định kỳ. Hãy thực hiện khám bụng tập trung vào hệ Thận.</p>
+            <p style='margin-top: 8px;'><strong>Tóm tắt phát hiện:</strong> Bệnh nhân tỉnh táo, da xanh xao nhẹ. Huyết áp đo tại giường 155/98 mmHg. Khám cánh tay trái phát hiện một cầu nối động tĩnh mạch (AV fistula) đang hoạt động với tiếng rung miu (thrill) liên tục, không sưng đỏ. Khám bụng thấy hai khối lớn, ranh giới rõ sờ thấy ở cả hai bên mạn sườn, di động nhẹ theo nhịp thở, nghiệm pháp chạm thận (ballottement) dương tính rõ hai bên. Gõ vang trên cả hai khối u. Không nghe thấy âm thổi động mạch thận. Không có phù chân lõm hay tĩnh mạch cổ nổi.</p>
+            <p style='margin-top: 8px;'><strong>Chẩn đoán sơ bộ:</strong> Bệnh thận đa nang di truyền gen trội (ADPKD) đã biến chứng suy thận mạn tiến triển có đường truyền chạy thận nhân tạo chuẩn bị lọc máu chu kỳ.</p>
+            <p style='margin-top: 8px;'><strong>Đề xuất xử trí tiếp theo:</strong> Chỉ định siêu âm bụng xác định số lượng nang ở cả hai thận và tìm kiếm nang gan đi kèm. Xét nghiệm sinh hóa máu đánh giá eGFR, nồng độ điện giải Kali, Calci, Phosphate và khí máu để kiểm tra biến chứng toan chuyển hóa.</p>
+          </div>
+        </div>
+
+        <div class='card'>
+          <h2>Tài liệu tham khảo (References)</h2>
+          <ol>
+            <li>Innes JA, Dover AR, Fairhurst K. <em>Macleod's Clinical Examination</em>. 14th ed. Edinburgh: Elsevier; 2018.</li>
+          </ol>
+        </div>
+      </section>
+      <section class='links'>
+        <div class='card'>
+          <h2>Các bài cùng chuyên khoa khám lâm sàng</h2>
+          <div class='grid2'>
+            <a class='link-card' href='../Khám cơ xương khớp/KN_CoXuongKhop.html'>
+              <h3>Khám cơ xương khớp</h3>
+              <small>Quy trình khám hệ vận động, nghiệm pháp Schober, nâng chân thẳng (SLR) và khám tràn dịch gối.</small>
+            </a>
+            <a class='link-card' href='../Khám sinh dục/KN_KhamSinhDucNam.html'>
+              <h3>Khám sinh dục nam</h3>
+              <small>Hướng dẫn khám u bìu, tràn dịch tinh mạc và thăm trực tràng (DRE) đánh giá tuyến tiền liệt.</small>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <footer class='global-footer'>
+    <div id='footer-placeholder' data-footer-path='../../footer.html'>
+    </div>
+  </footer>
+  <script src='../../../js/clinical-skill-tabs.js'></script>
+</body>
+
+</html>

@@ -1,643 +1,485 @@
 <!DOCTYPE html>
-<html lang="vi" data-theme="light">
+<html lang='vi' data-theme='light'>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Hướng dẫn khám hô hấp chuẩn Macleod: Đánh giá kiểu thở, sờ rung thanh, gõ phổi và nghe phế nang cùng các âm bệnh lý.">
-  <title>Khám Hệ Hô Hấp – CliniPortal</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta name='description'
+    content='Khám hệ hô hấp theo Macleod: Nhìn, Sờ, Gõ, Nghe phổi, đánh giá khó thở, ho ra máu, ran nổ, rì rào phế nang.'>
+  <title>
+    Khám Hệ Hô Hấp - CliniPortal
+  </title>
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
-  <link rel="stylesheet" href="../../css/reset.css">
-  <link rel="stylesheet" href="../../css/main.css">
-  <link rel="stylesheet" href="../../css/components/header.css">
-  <link rel="stylesheet" href="../../css/components/sidebar.css">
-  <link rel="stylesheet" href="../../css/components/footer.css">
-
-  <script src="../../pages/header.js"></script>
-  <script src="../../pages/footer.js"></script>
-
+    href='https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap'
+    rel='stylesheet'>
+  <link rel='stylesheet' href='../../../css/reset.css'>
+  <link rel='stylesheet' href='../../../css/main.css'>
+  <link rel='stylesheet' href='../../../css/components/header.css'>
+  <link rel='stylesheet' href='../../../css/components/sidebar.css'>
+  <link rel='stylesheet' href='../../../css/components/footer.css'>
+  <script src='../../../pages/header.js'>
+  </script>
+  <script src='../../../pages/footer.js'>
+  </script>
   <style>
-    /* ============================================================
-       CLINICAL SKILL DETAIL PAGE STYLES
-    ============================================================ */
-    
-    .skill-hero {
-      background: linear-gradient(135deg, #0d9488 0%, #0f766e 50%, #115e59 100%);
-      border-radius: var(--radius-lg);
-      padding: 2rem;
-      color: #ffffff;
-      position: relative;
-      overflow: hidden;
-      margin-bottom: 1.5rem;
-      box-shadow: var(--shadow-md);
-      animation: fadeInUp 0.4s ease-out;
-    }
-
-    .skill-hero::before {
-      content: '';
-      position: absolute;
-      top: -20%;
-      right: -10%;
-      width: 300px;
-      height: 300px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    .skill-hero-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .skill-hero-icon {
-      font-size: 2.5rem;
-      background: rgba(255, 255, 255, 0.15);
-      width: 60px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: var(--radius-md);
-      backdrop-filter: blur(4px);
-    }
-
-    .skill-hero-title-group {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .skill-hero h1 {
-      font-size: clamp(1.25rem, 4vw, 1.75rem);
-      font-weight: 800;
-      margin: 0;
-      color: #ffffff;
-      letter-spacing: -0.02em;
-    }
-
-    .skill-hero-chapter {
-      font-size: var(--text-xs);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      opacity: 0.85;
-      background: rgba(255, 255, 255, 0.12);
-      padding: 0.15rem 0.5rem;
-      border-radius: var(--radius-sm);
-      width: fit-content;
-      margin-top: 0.15rem;
-    }
-
-    .skill-hero p {
-      margin: 0 0 1.5rem 0;
-      font-size: var(--text-sm);
-      opacity: 0.9;
-      line-height: 1.5;
-      max-width: 800px;
-    }
-
-    /* Quick Info Board */
-    .quick-info-board {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem;
-      background: rgba(0, 0, 0, 0.15);
-      padding: 1rem;
-      border-radius: var(--radius-md);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    @media (min-width: 768px) {
-      .quick-info-board {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    .info-item {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-    }
-
-    .info-label {
-      font-size: var(--text-xs);
-      font-weight: 700;
-      text-transform: uppercase;
-      opacity: 0.75;
-      letter-spacing: 0.05em;
-    }
-
-    .info-val {
-      font-size: var(--text-sm);
-      font-weight: 600;
-    }
-
-    /* TABS */
-    .skill-tabs {
-      display: flex;
-      border-bottom: 1px solid var(--color-divider);
-      margin-bottom: 1.5rem;
-      gap: 0.5rem;
-      overflow-x: auto;
-      padding-bottom: 2px;
-      scrollbar-width: none; /* Firefox */
-    }
-
-    .skill-tabs::-webkit-scrollbar {
-      display: none; /* Safari/Chrome */
-    }
-
-    .tab-btn {
-      background: none;
-      border: none;
-      padding: 0.75rem 1.25rem;
-      font-weight: 700;
-      font-family: inherit;
-      color: var(--color-text-muted);
-      cursor: pointer;
-      border-bottom: 3px solid transparent;
-      transition: all var(--tr);
-      white-space: nowrap;
-      font-size: var(--text-sm);
-      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-    }
-
-    .tab-btn:hover {
-      color: var(--color-primary);
-      background: var(--color-surface-offset);
-    }
-
-    .tab-btn.active {
-      color: var(--color-primary);
-      border-bottom-color: var(--color-primary);
-    }
-
-    .tab-pane {
-      display: none;
-      animation: fadeIn var(--tr) ease-out;
-    }
-
-    .tab-pane.active {
-      display: block;
-    }
-
-    /* CHECKLISTS & ACCORDIONS inside tabs */
-    .checklist-card {
-      background: var(--color-surface);
-      border: 1px solid var(--color-divider);
-      border-radius: var(--radius-lg);
-      padding: 1.25rem;
-      margin-bottom: 1.25rem;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .checklist-card h2 {
-      font-size: var(--text-md);
-      font-weight: 700;
-      color: var(--color-text);
-      margin: 0 0 1rem 0;
-      border-bottom: 1px dashed var(--color-divider);
-      padding-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .checklist-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .checklist-item {
-      display: flex;
-      gap: 0.75rem;
-      line-height: 1.5;
-      font-size: var(--text-sm);
-      color: var(--color-text);
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .checklist-item input[type="checkbox"] {
-      margin-top: 0.2rem;
-      width: 16px;
-      height: 16px;
-      accent-color: var(--color-primary);
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-
-    .checklist-item.checked span {
-      text-decoration: line-through;
-      color: var(--color-text-faint);
-    }
-
-    /* TABLE STYLE */
-    .findings-table-wrapper {
-      overflow-x: auto;
-      border: 1px solid var(--color-divider);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-sm);
-      background: var(--color-surface);
-    }
-
-    .findings-table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-      font-size: var(--text-sm);
-    }
-
-    .findings-table th {
-      background: var(--color-surface-offset);
-      color: var(--color-text);
-      font-weight: 700;
-      padding: 1rem;
-      border-bottom: 1px solid var(--color-divider);
-    }
-
-    .findings-table td {
-      padding: 1rem;
-      border-bottom: 1px solid var(--color-divider);
-      line-height: 1.5;
-    }
-
-    .findings-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .findings-table tr:hover td {
-      background: var(--color-surface-offset);
-    }
-
-    .cell-sign {
-      font-weight: 700;
-      color: var(--color-text);
-      width: 35%;
-    }
-
-    .cell-significance {
-      color: var(--color-text-muted);
-    }
-
-    /* BEDSIDE TIPS */
-    .tips-container {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .tip-alert-card {
-      display: flex;
-      gap: 1rem;
-      padding: 1.25rem;
-      border-radius: var(--radius-lg);
-      border: 1px solid;
-      background: var(--color-surface);
-    }
-
-    .tip-alert-card.tip-info {
-      border-color: var(--color-primary-b, #bae6fd);
-      background: var(--color-primary-hl, #f0f9ff);
-      color: #0369a1;
-    }
-
-    .tip-alert-card.tip-warning {
-      border-color: #fde68a;
-      background: #fffbeb;
-      color: #b45309;
-    }
-
-    .tip-alert-icon {
-      font-size: 1.5rem;
-      flex-shrink: 0;
-    }
-
-    .tip-alert-content h3 {
-      font-size: var(--text-sm);
-      font-weight: 700;
-      margin: 0 0 0.25rem 0;
-      color: inherit;
-    }
-
-    .tip-alert-content p {
-      margin: 0;
-      font-size: var(--text-sm);
-      line-height: 1.5;
-      color: var(--color-text-muted);
-    }
-
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
+    :root {
+      --a: #047857;
+      --b: #059669;
+      --c: #34d399;
     }
   </style>
+  <link rel='stylesheet' href='../../../css/components/clinical-skill.css'>
 </head>
 
 <body>
-  <div id="header-placeholder" data-header-path="../header.html"></div>
-  <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-  <!-- ===================== APP CONTAINER ===================== -->
-  <div class="app-container">
-
-    <!-- SIDEBAR -->
-    <aside class="app-sidebar" id="appSidebar">
-      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
-        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
-          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
-          <polyline points="15 18 9 12 15 6"></polyline>
+  <div id='header-placeholder' data-header-path='../../header.html'>
+  </div>
+  <div class='sidebar-overlay' id='sidebarOverlay'>
+  </div>
+  <div class='app-container'>
+    <aside class='app-sidebar' id='appSidebar'>
+      <button id='sidebar-toggle-arrow' class='sidebar-toggle-arrow' aria-label='Thu gọn/Mở rộng Sidebar'>
+        <svg viewBox='0 0 24 24' width='14' height='14' stroke='currentColor' stroke-width='2.5' fill='none'
+          stroke-linecap='round' stroke-linejoin='round' class='toggle-arrow-svg'>
+          <polyline points='15 18 9 12 15 6'>
+          </polyline>
         </svg>
       </button>
-
-      <nav class="sidebar-nav" aria-label="Điều hướng chính">
-        <ul class="nav-list" role="list">
+      <nav class='sidebar-nav' aria-label='Điều hướng chính'>
+        <ul class='nav-list' role='list'>
           <li>
-            <a href="../../index.html" class="nav-item" title="Trang chủ">
-              <span class="nav-icon">🏠</span>
-              <span class="nav-text">Trang chủ</span>
+            <a href='../../../index.html' class='nav-item'>
+              <span class='nav-icon'>
+                🏠
+              </span>
+              <span class='nav-text'>
+                Trang chủ
+              </span>
             </a>
           </li>
           <li>
-            <a href="../Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item" title="Sinh lý & Sinh lý bệnh">
-              <span class="nav-icon">🧬</span>
-              <span class="nav-text">Sinh lý</span>
+            <a href='../ky-nang-lam-sang.html' class='nav-item'>
+              <span class='nav-icon'>
+                🩺
+              </span>
+              <span class='nav-text'>
+                Kỹ năng lâm sàng
+              </span>
             </a>
           </li>
           <li>
-            <a href="ky-nang-lam-sang.html" class="nav-item" title="Kỹ năng lâm sàng">
-              <span class="nav-icon">🩺</span>
-              <span class="nav-text">Kỹ năng lâm sàng</span>
+            <a href='../../Tiếp cận/tiep-can.html' class='nav-item'>
+              <span class='nav-icon'>
+                🤒
+              </span>
+              <span class='nav-text'>
+                Tiếp cận lâm sàng
+              </span>
             </a>
           </li>
           <li>
-            <a href="../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
-              <span class="nav-icon">🤒</span>
-              <span class="nav-text">Tiếp cận lâm sàng</span>
-            </a>
-          </li>
-          <li>
-            <a href="../Công cụ/cong-cu.html" class="nav-item" title="Công cụ lâm sàng">
-              <span class="nav-icon">⚙️</span>
-              <span class="nav-text">Công cụ lâm sàng</span>
-            </a>
-          </li>
-          <li>
-            <a href="../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý & Kháng sinh">
-              <span class="nav-icon">💊</span>
-              <span class="nav-text">Dược lý lâm sàng</span>
-            </a>
-          </li>
-          <li>
-            <a href="../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
-              <span class="nav-icon">📄</span>
-              <span class="nav-text">Y học chứng cứ</span>
+            <a href='../../Công cụ/cong-cu.html' class='nav-item'>
+              <span class='nav-icon'>
+                ⚙️
+              </span>
+              <span class='nav-text'>
+                Công cụ lâm sàng
+              </span>
             </a>
           </li>
         </ul>
       </nav>
     </aside>
-
-    <!-- ===================== MAIN CONTENT ===================== -->
-    <div class="main-wrapper" id="mainContent">
-
-      <!--BREADCRUMB-->
-      <nav aria-label="Breadcrumb" class="breadcrumb-container">
-        <ol class="breadcrumb-list">
-          <li class="breadcrumb-item">
-            <a href="../../index.html" class="breadcrumb-link">
-              <span class="home-icon">🏠</span> Home
+    <div class='main-wrapper' id='mainContent'>
+      <nav aria-label='Breadcrumb' class='breadcrumb-container'>
+        <ol class='breadcrumb-list'>
+          <li class='breadcrumb-item'>
+            <a href='../../../index.html' class='breadcrumb-link'>
+              <span class='home-icon'>
+                🏠
+              </span>
+              Home
             </a>
           </li>
-          <li class="breadcrumb-item">
-            <a href="ky-nang-lam-sang.html" class="breadcrumb-link">Kỹ năng lâm sàng</a>
+          <li class='breadcrumb-item'>
+            <a href='../ky-nang-lam-sang.html' class='breadcrumb-link'>
+              Kỹ năng lâm sàng
+            </a>
           </li>
-          <li class="breadcrumb-item active" aria-current="page">Khám Hệ Hô Hấp</li>
+          <li class='breadcrumb-item active' aria-current='page'>
+            Khám hệ hô hấp
+          </li>
         </ol>
       </nav>
-
-      <!-- HERO BANNER -->
-      <section class="skill-hero">
-        <div class="skill-hero-header">
-          <div class="skill-hero-icon">🫁</div>
-          <div class="skill-hero-title-group">
-            <h1>Khám Hệ Hô Hấp</h1>
-            <span class="skill-hero-chapter">Macleod Ch.5</span>
+      <section class='hero'>
+        <h1>
+          Khám Hệ Hô Hấp
+        </h1>
+        <p>
+          Bài khám tập trung vào hệ Hô hấp theo Macleod's Clinical Examination. Hướng dẫn khai thác bệnh sử hô hấp, thực hiện quy trình khám phổi chi tiết (Nhìn, Sờ, Gõ, Nghe) và diễn giải các âm phế nang, ran nổ, khò khè bedside.
+        </p>
+        <div class='quick'>
+          <div class='qi'>
+            <b>
+              Tư thế
+            </b>
+            Nằm ngửa 45 độ hoặc ngồi thẳng lưng, bộc lộ ngực và lưng
+          </div>
+          <div class='qi'>
+            <b>
+              Điểm nhấn
+            </b>
+            Độ giãn nở, gõ đục/vang, rì rào phế nang, ran nổ/ran ẩm, khò khè
+          </div>
+          <div class='qi'>
+            <b>
+              Red flags
+            </b>
+            Ho ra máu lượng nhiều, co kéo cơ hô hấp phụ nặng, suy hô hấp cấp
           </div>
         </div>
-        <p>Hướng dẫn khám hô hấp chuẩn Macleod: Đánh giá kiểu thở, sờ rung thanh, gõ phổi và nghe phế nang cùng các âm bệnh lý.</p>
-        
-        <div class="quick-info-board">
-          <div class="info-item">
-            <span class="info-label">Tư thế bệnh nhân</span>
-            <span class="info-val">Ngồi thẳng lưng (hoặc nằm ngửa đối với bệnh nhân nặng)</span>
-          </div>
-          <div class="info-item">
-            <span class="info-label">Thời gian thực hiện</span>
-            <span class="info-val">10 phút</span>
-          </div>
-          <div class="info-item">
-            <span class="info-label">Dụng cụ tối thiểu</span>
-            <span class="info-val">Ống nghe (Stethoscope) 🩺</span>
+      </section>
+      <div class='tabs'>
+        <button class='tab-btn active' data-tab='core'>
+          Nền tảng
+        </button>
+        <button class='tab-btn' data-tab='hx'>
+          Hỏi bệnh
+        </button>
+        <button class='tab-btn' data-tab='exam'>
+          Khám
+        </button>
+        <button class='tab-btn' data-tab='int'>
+          Biện luận
+        </button>
+        <button class='tab-btn' data-tab='tests'>
+          Cận lâm sàng
+        </button>
+        <button class='tab-btn' data-tab='osce'>
+          OSCE
+        </button>
+      </div>
+
+      <!-- TAB: NỀN TẢNG -->
+      <section class='tab active' id='core'>
+        <div class='card'>
+          <h2>Giải phẫu và Sinh lý học lâm sàng (Anatomy and physiology)</h2>
+          <ul>
+            <li>Hiểu biết về giải phẫu bề mặt của phổi và các cấu trúc lân cận là yếu tố tiên quyết trong thực hành hô hấp. Vào cuối kỳ thở ra bình thường, vòm hoành vươn cao vào lồng ngực đến khoảng ngang mức đầu trước xương sườn thứ 5, bên trái thấp hơn bên phải một chút.</li>
+            <li>Trong trạng thái khỏe mạnh, phổi tối ưu hóa quá trình trao đổi khí thông qua sự tương xứng chặt chẽ giữa thông khí và tưới máu vùng (V/Q ratio). Các bệnh lý đường thở và nhu mô phá vỡ sự tương xứng này, gây thiếu oxy máu và tím tái, đồng thời kích thích các dây thần kinh hướng tâm của phổi dẫn đến triệu chứng khó thở và dấu hiệu thở nhanh trên lâm sàng.</li>
+          </ul>
+          <div class='clinical-pearl' style='margin-top: 14px;'>
+            <h4>💡 Hội chứng đỉnh phổi (Pancoast Tumor)</h4>
+            <p>Đỉnh phổi nằm ngay bên dưới đám rối thần kinh cánh tay. Do đó, các khối u đỉnh phổi thường phá hủy các sợi rễ T1, gây đau và tê mặt trong cánh tay trên, đồng thời làm teo các cơ nhỏ bàn tay. Tổn thương đường ra giao cảm ngực trên đến mắt có thể dẫn đến co đồng tử và sụp mi (hội chứng Horner).</p>
           </div>
         </div>
       </section>
 
-      <!-- TAB CONTROLS -->
-      <div class="skill-tabs">
-        <button class="tab-btn active" data-tab="tab-prep"><i class="fa-solid fa-list-check"></i> Chuẩn bị</button>
-        <button class="tab-btn" data-tab="tab-steps"><i class="fa-solid fa-stethoscope"></i> Quy trình khám</button>
-        <button class="tab-btn" data-tab="tab-findings"><i class="fa-solid fa-magnifying-glass"></i> Triệu chứng & Ý nghĩa</button>
-        <button class="tab-btn" data-tab="tab-tips"><i class="fa-regular fa-lightbulb"></i> Lưu ý Bedside</button>
-      </div>
-
-      <!-- TAB CONTENTS -->
-      <div class="tab-container">
-        
-        <!-- Tab 1: Chuẩn bị -->
-        <div class="tab-pane active" id="tab-prep">
-          <div class="checklist-card">
-            <h2><i class="fa-solid fa-clipboard-list"></i> Các bước chuẩn bị cơ bản</h2>
-            <ul class="checklist-list">
-              <li class="checklist-item"><input type="checkbox"> <span>Giới thiệu bản thân, giải thích quy trình khám phổi và xin đồng ý.</span></li>
-              <li class="checklist-item"><input type="checkbox"> <span>Sát khuẩn tay nhanh trước khi chạm vào người bệnh nhân.</span></li>
-              <li class="checklist-item"><input type="checkbox"> <span>Bộc lộ nửa trên cơ thể bệnh nhân từ thắt lưng trở lên.</span></li>
-              <li class="checklist-item"><input type="checkbox"> <span>Yêu cầu bệnh nhân ngồi thẳng lưng trên giường/ghế, thả lỏng hai vai.</span></li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Tab 2: Quy trình khám -->
-        <div class="tab-pane" id="tab-steps">
-          <div class="checklist-card">
-            <h2><i class="fa-regular fa-circle-dot"></i> 1. Nhìn lồng ngực & Kiểu thở</h2>
-            <ul class="checklist-list">
-              <li class="checklist-item"><input type="checkbox"> <span>Quan sát chung: Tìm nhịp thở nhanh, khó thở co kéo cơ hô hấp phụ (cơ ức đòn chũm, cơ liên sườn), tím tái, ngón tay dùi trống.</span></li>
-              <li class="checklist-item"><input type="checkbox"> <span>Đánh giá cấu trúc lồng ngực: Tìm lồng ngực hình thùng (COPD), gù vẹo cột sống, ngực lõm (pectus excavatum).</span></li>
-              <li class="checklist-item"><input type="checkbox"> <span>Quan sát sự di động của lồng ngực theo nhịp thở (đều hai bên hay hạn chế một bên).</span></li>
-            </ul>
-          </div>
-
-          <div class="checklist-card">
-            <h2><i class="fa-regular fa-circle-dot"></i> 2. Sờ lồng ngực & Rung thanh</h2>
-            <ul class="checklist-list">
-              <li class="checklist-item"><input type="checkbox"> <span>Xác định vị trí khí quản: Đặt ngón trỏ vào hõm ức để xem khí quản có bị lệch sang một bên hay không.</span></li>
-              <li class="checklist-item"><input type="checkbox"> <span>Đo độ giãn nở lồng ngực: Đặt hai bàn tay ôm hai bên lồng ngực, hai ngón cái hướng vào nhau sát đường giữa. Yêu cầu bệnh nhân thở sâu và quan sát khoảng cách xa nhau giữa hai ngón cái (bình thường > 2cm).</span></li>
-              <li class="checklist-item"><input type="checkbox"> <span>Khám rung thanh: Đặt lòng bàn tay hoặc bờ ngoài bàn tay lên các vùng đối xứng của phổi, yêu cầu bệnh nhân nói '1, 2, 3' (hoặc '33'). So sánh độ rung truyền đến tay.</span></li>
-            </ul>
-          </div>
-
-          <div class="checklist-card">
-            <h2><i class="fa-regular fa-circle-dot"></i> 3. Gõ phổi</h2>
-            <ul class="checklist-list">
-              <li class="checklist-item"><input type="checkbox"> <span>Gõ phổi đối xứng: Đặt ngón tay giữa của bàn tay không thuận áp sát liên sườn, dùng ngón giữa bàn tay thuận gõ lên đốt 2 của ngón đó.</span></li>
-              <li class="checklist-item"><input type="checkbox"> <span>Gõ so sánh từ trên xuống dưới, trước ra sau và vùng nách. Phân biệt âm gõ trong (bình thường), gõ đục (dịch, đông đặc) hay gõ vang (khí).</span></li>
-            </ul>
-          </div>
-
-          <div class="checklist-card">
-            <h2><i class="fa-regular fa-circle-dot"></i> 4. Nghe phổi</h2>
-            <ul class="checklist-list">
-              <li class="checklist-item"><input type="checkbox"> <span>Nghe rì rào phế nang bằng màng ống nghe. Yêu cầu bệnh nhân thở sâu bằng miệng.</span></li>
-              <li class="checklist-item"><input type="checkbox"> <span>Nghe lần lượt các vùng đối xứng từ đỉnh phổi xuống đáy phổi, phía trước, phía sau và hai bên nách.</span></li>
-              <li class="checklist-item"><input type="checkbox"> <span>Xác định các âm bệnh lý: Ran ẩm/ran nổ (crepitations/crackles), ran rít/ran ngáy (wheeze), tiếng cọ màng phổi (pleural rub).</span></li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Tab 3: Triệu chứng & Ý nghĩa -->
-        <div class="tab-pane" id="tab-findings">
-          <div class="findings-table-wrapper">
-            <table class="findings-table">
+      <!-- TAB: HỎI BỆNH -->
+      <section class='tab' id='hx'>
+        <div class='card'>
+          <h2>Các triệu chứng cơ năng thường gặp (Common symptoms)</h2>
+          <p>Bệnh nhân sử dụng nhiều thuật ngữ khác nhau để mô tả các triệu chứng hô hấp. Cần định nghĩa và phân biệt rõ ràng nguyên nhân hô hấp với tim mạch.</p>
+          <div style='overflow-x: auto; margin-top: 12px;'>
+            <table class='cmp'>
               <thead>
                 <tr>
-                  <th>Triệu chứng phát hiện</th>
-                  <th>Ý nghĩa lâm sàng / Định hướng chẩn đoán</th>
+                  <th>Triệu chứng</th>
+                  <th>Nguyên nhân Hô hấp</th>
+                  <th>Nguyên nhân Tim mạch / Khác</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td class="cell-sign">Khí quản lệch sang một bên</td>
-                  <td class="cell-significance">Xẹp phổi/xơ phổi (lệch về phía tổn thương) hoặc tràn dịch/tràn khí màng phổi áp lực (lệch về bên đối diện).</td>
+                  <td><strong>Khó thở (Dyspnoea)</strong></td>
+                  <td>Viêm đường hô hấp dưới, hen phế quản, COPD, thuyên tắc phổi, tràn khí màng phổi.</td>
+                  <td>Suy tim, bệnh tim bẩm sinh, thiếu máu, bệnh thần kinh cơ, tăng thông khí do lo âu.</td>
                 </tr>
                 <tr>
-                  <td class="cell-sign">Gõ đục kèm rung thanh giảm, rì rào phế nang giảm</td>
-                  <td class="cell-significance">Tràn dịch màng phổi (Pleural effusion).</td>
+                  <td><strong>Đau ngực (Chest pain)</strong></td>
+                  <td>Viêm phổi/viêm màng phổi (đau kiểu màng phổi), thuyên tắc phổi.</td>
+                  <td>Đau thắt ngực / nhồi máu cơ tim, trào ngược dạ dày thực quản, đau cơ xương sườn.</td>
                 </tr>
                 <tr>
-                  <td class="cell-sign">Gõ đục kèm rung thanh tăng, rì rào phế nang giảm + tiếng thổi ống</td>
-                  <td class="cell-significance">Đông đặc nhu mô phổi (viêm phổi thùy).</td>
+                  <td><strong>Ho (Cough)</strong></td>
+                  <td>Viêm phế quản, giãn phế quản, hen (đặc biệt ho về đêm), ung thư phổi, lao.</td>
+                  <td>Suy tim sung huyết, tác dụng phụ của thuốc (Đặc biệt thuốc ức chế men chuyển - ACE inhibitors).</td>
                 </tr>
                 <tr>
-                  <td class="cell-sign">Gõ vang trống kèm rung thanh giảm, rì rào phế nang mất</td>
-                  <td class="cell-significance">Tràn khí màng phổi (Pneumothorax).</td>
-                </tr>
-                <tr>
-                  <td class="cell-sign">Ran nổ cuối kỳ hít vào, không thay đổi sau ho</td>
-                  <td class="cell-significance">Xơ hóa phổi kẽ hoặc viêm phế nang.</td>
+                  <td><strong>Khò khè (Wheeze)</strong></td>
+                  <td>Hen phế quản, COPD, dị vật đường thở.</td>
+                  <td>Phù phổi cấp (hen tim).</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
 
-        <!-- Tab 4: Lưu ý Bedside -->
-        <div class="tab-pane" id="tab-tips">
-          <div class="tips-container">
-            <div class="tip-alert-card tip-info">
-              <span class="tip-alert-icon">💡</span>
-              <div class="tip-alert-content">
-                <h3>Lời khuyên thực tế</h3>
-                <p>Khi khám mặt sau phổi, hãy yêu cầu bệnh nhân khoanh hai tay trước ngực để xương bả vai mở rộng ra hai bên, bộc lộ tối đa vùng phổi phía sau.</p>
-              </div>
-            </div>
+        <div class='card'>
+          <h2>Phân tích chi tiết triệu chứng chủ chốt</h2>
+          <ul>
+            <li><strong>Khó thở (Breathlessness/Dyspnoea):</strong>
+              <ul>
+                <li><em>Thời gian (Timing):</em> Khởi phát đột ngột, ngay lập tức (gợi ý tràn khí màng phổi, thuyên tắc phổi). Khởi phát qua nhiều giờ (gợi ý hen, phù phổi cấp hoặc nhiễm trùng cấp tính). Khởi phát âm ỉ (gợi ý tràn dịch màng phổi, bệnh phổi kẽ hoặc u).</li>
+                <li><em>Khó thở khi nằm (Orthopnoea):</em> Phổ biến ở bệnh nhân suy tim, nhưng cũng gặp trong tắc nghẽn luồng khí nặng hoặc yếu cơ hoành (do các tạng ổ bụng đẩy cơ hoành lên phía trên khi nằm, làm giảm dung tích sống).</li>
+                <li><em>Hội chứng tăng thông khí:</em> Cảm giác "không thể hít đủ không khí/oxy" kèm tê rần quanh miệng và đầu ngón tay thường gợi ý nguyên nhân tâm lý (lo âu).</li>
+              </ul>
+            </li>
+            <li style='margin-top: 10px;'><strong>Khò khè (Wheeze) và Tiếng rít (Stridor):</strong>
+              <ul>
+                <li><em>Khò khè:</em> Âm thanh có âm sắc cao, có tính nhạc (như tiếng huýt sáo), sinh ra do dòng khí xoáy qua các đường thở nhỏ bị hẹp. Thường nghe rõ nhất vào thì thở ra.</li>
+                <li><em>Tiếng rít thanh quản (Stridor):</em> Âm thanh thô ráp, ồn ào sinh ra do tắc nghẽn ở khí quản hoặc các đường thở lớn, thường nghe rõ vào thì hít vào.</li>
+              </ul>
+            </li>
+            <li style='margin-top: 10px;'><strong>Ho và Khạc đờm (Cough and Sputum):</strong>
+              <ul>
+                <li><em>Ho kiểu "bò" (bovine cough):</em> Ho không có âm mở thanh môn bùng nổ ban đầu, là dấu hiệu cảnh báo liệt dây thanh do tổn thương thần kinh thanh quản quặt ngược (gợi ý khối u rốn phổi trái).</li>
+                <li><em>Màu sắc đờm:</em> Trong/nhầy (COPD/giãn phế quản không có nhiễm trùng cấp); Vàng (nhiễm trùng hô hấp dưới/hen); Xanh (nhiễm trùng hiện tại); Đỏ/nâu gỉ sắt (viêm phổi do phế cầu); Hồng có bọt (phù phổi cấp).</li>
+              </ul>
+            </li>
+          </ul>
 
-            <div class="tip-alert-card tip-warning">
-              <span class="tip-alert-icon">⚠️</span>
-              <div class="tip-alert-content">
-                <h3>Cảnh báo Bedside</h3>
-                <p>Luôn luôn gõ và nghe so sánh đối xứng hai bên tại cùng một vị trí trước khi chuyển sang vùng tiếp theo.</p>
-              </div>
-            </div>
-
-            <div class="tip-alert-card tip-info">
-              <span class="tip-alert-icon">💡</span>
-              <div class="tip-alert-content">
-                <h3>Lời khuyên thực tế</h3>
-                <p>Phân biệt ran nổ (do mở các phế nang bị xẹp) và ran ẩm (do dịch dịch chuyển trong phế quản) bằng cách nghe sự thay đổi sau khi bệnh nhân ho.</p>
-              </div>
-            </div>
+          <div class='clinical-warning' style='margin-top: 14px;'>
+            <h4>⚠️ Cảnh báo: Ho ra máu (Haemoptysis)</h4>
+            <p>Phải luôn coi ho ra máu là dấu hiệu bệnh lý nghiêm trọng cho đến khi chứng minh được điều ngược lại. Các nguyên nhân gây ho ra máu lượng nhiều (&gt;20 mL) bao gồm: Ung thư phổi xâm lấn mạch máu, Giãn phế quản (như xơ nang), Bệnh tạo hang (U nấm Aspergilloma), Viêm mạch máu phổi.</p>
           </div>
         </div>
 
-      </div><!-- end tab-container -->
+        <div class='card'>
+          <h2>Khung câu hỏi gợi ý ("Ask about...")</h2>
+          <ul>
+            <li><strong>Khó thở:</strong> "Bạn có thể đi bộ được bao xa vào một ngày khỏe nhất? Khó thở xuất hiện ban đêm hay lúc nghỉ ngơi không?".</li>
+            <li><strong>Khò khè:</strong> "Khò khè xuất hiện trong hay sau khi tập thể dục? Bạn có bị thức giấc vì khò khè vào ban đêm không?".</li>
+            <li><strong>Ho ra máu:</strong> "Máu chắc chắn được khạc từ ngực ra chứ không phải chảy từ răng, nướu hay mũi? Lượng máu là bao nhiêu và có lẫn đờm mủ không?".</li>
+          </ul>
+        </div>
 
-    </div><!-- end main-wrapper -->
-  </div><!-- end app-container -->
+        <div class='card'>
+          <h2>Thang điểm khó thở MRC (Medical Research Council)</h2>
+          <p>Sử dụng để định lượng và đánh giá tác động của bệnh lên mức độ tàn phế của bệnh nhân:</p>
+          <ul>
+            <li><em>Độ 1:</em> Không bị khó thở ngoại trừ khi tập thể dục gắng sức.</li>
+            <li><em>Độ 2:</em> Khó thở khi đi vội trên đường bằng hoặc đi lên dốc nhẹ.</li>
+            <li><em>Độ 3:</em> Đi chậm hơn người cùng tuổi trên đường bằng do khó thở, hoặc phải dừng lại để thở khi đi bộ cùng tốc độ trên đường bằng.</li>
+            <li><em>Độ 4:</em> Phải dừng lại để thở sau khi đi bộ khoảng 100 thước (khoảng 90m) hoặc sau vài phút trên đường bằng.</li>
+            <li><em>Độ 5:</em> Quá khó thở để ra khỏi nhà, hoặc khó thở cả khi thay quần áo.</li>
+          </ul>
+        </div>
 
-  <footer class="global-footer">
-    <div id="footer-placeholder" data-footer-path="../footer.html"></div>
+        <div class='card'>
+          <h2>Tiền sử bệnh, Dùng thuốc & Đời sống - Xã hội</h2>
+          <ul>
+            <li><strong>Tiền sử bệnh (Past medical history):</strong> Chú ý các bệnh lý thời thơ ấu (hen, ho gà, sởi - nguy cơ gây giãn phế quản), tiền sử bệnh lao, bệnh mô liên kết (viêm khớp dạng thấp có thể gây xơ phổi, tràn dịch màng phổi), hoặc các bệnh lý ác tính, phẫu thuật trước đây.</li>
+            <li><strong>Đời sống - Xã hội (Social history):</strong> Tiền sử hút thuốc cực kỳ quan trọng, cần tính số bao-năm (pack-years). Tiền sử nghề nghiệp (tiếp xúc bụi amiăng, bụi than, bụi silica) hoặc sở thích (nuôi chim bồ câu, tiếp xúc nấm mốc) có thể gợi ý các bệnh phổi kẽ/nghề nghiệp.</li>
+          </ul>
+          <div class='clinical-warning' style='margin-top: 14px;'>
+            <h4>⚠️ Các thuốc gây tác dụng phụ hô hấp nguy hiểm</h4>
+            <p><strong>Chẹn beta, NSAIDs:</strong> Có thể gây co thắt phế quản nặng ở bệnh nhân hen phế quản hoặc COPD.</p>
+            <p style='margin-top: 4px;'><strong>Thuốc ức chế men chuyển (ACEi):</strong> Tác dụng phụ gây ho khan dai dẳng (thường do tích tụ bradykinin).</p>
+            <p style='margin-top: 4px;'><strong>Amiodarone, Bleomycin, Methotrexate:</strong> Nguy cơ gây bệnh phổi kẽ hoặc xơ hóa phổi không hồi phục.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: KHÁM CHUYÊN KHOA -->
+      <section class='tab' id='exam'>
+        <div class='grid2'>
+          <div class='card'>
+            <h2>Khám toàn thân (General examination)</h2>
+            <ul>
+              <li><strong>Tần số thở & Kiểu thở:</strong> Đánh giá nhịp thở (bình thường 12-15 lần/phút). Nhịp thở Cheyne-Stokes (luân phiên sâu và nông/ngừng thở) gặp ở người lớn tuổi suy tim, chấn thương sọ não, u não.</li>
+              <li><strong>Bàn tay:</strong> Tìm ngón tay dùi trống (clubbing) đặc trưng của giãn phế quản, ung thư phổi, xơ phổi. Vết ố vàng do hắc ín thuốc lá (tar staining) và run tay (coarse flapping tremor / asterixis) do ứ đọng khí CO2.</li>
+              <li><strong>Mặt và Cổ:</strong> Kiểm tra kết mạc mắt (thiếu máu), lưỡi (tím trung ương). Tắc nghẽn tĩnh mạch chủ trên (phù nề, tím mặt và cổ). Phản xạ tĩnh mạch cổ (JVP). Khoảng cách nhẫn-ức (bình thường &gt;3 ngón tay; giảm trong khí phế thũng). Sờ hạch bạch huyết cổ và thượng đòn.</li>
+            </ul>
+          </div>
+          <div class='card'>
+            <h2>Quy trình khám lồng ngực chi tiết</h2>
+            <p>Thực hiện khám lồng ngực đối xứng trước và sau theo trình tự:</p>
+            <ul class='check' style='margin-top: 12px;'>
+              <li>
+                <input type='checkbox'>
+                <span><strong>1. Nhìn (Inspection):</strong> Tìm biến dạng lồng ngực như ngực hình thùng (hyperinflated chest), ngực lõm (pectus excavatum), ngực gồ (pectus carinatum) hoặc gù vẹo cột sống (kyphoscoliosis). Đánh giá sự co kéo cơ hô hấp phụ (cơ ức đòn chũm, cơ bậc thang) và cơ liên sườn.</span>
+              </li>
+              <li>
+                <input type='checkbox'>
+                <span><strong>2. Sờ - Xác định vị trí khí quản:</strong> Đặt ngón trỏ vào hõm ức để xem khí quản có bị lệch hay không. (Lưu ý: xẹp/xơ phổi kéo khí quản về bên tổn thương; tràn dịch/tràn khí màng phổi đẩy lệch khí quản sang bên đối diện).</span>
+              </li>
+              <li>
+                <input type='checkbox'>
+                <span><strong>3. Sờ - Đo độ giãn nở lồng ngực:</strong> Đặt hai bàn tay ôm lấy ngực dưới, hai ngón cái hướng vào nhau sát đường giữa. Yêu cầu bệnh nhân hít sâu để quan sát sự di động của ngón cái. (Dấu hiệu Hoover: xương sườn dưới bị kéo lõm vào trong khi hít vào ở bệnh nhân COPD nặng).</span>
+              </li>
+              <li>
+                <input type='checkbox'>
+                <span><strong>4. Gõ (Percussion):</strong> Gõ đối xứng hai bên từ đỉnh xuống đáy phổi. Tiếng gõ đục (dull) gợi ý mô phổi đông đặc/dịch. Gõ quá vang (hyper-resonant) kèm mất rì rào phế nang là dấu hiệu tràn khí màng phổi.</span>
+              </li>
+              <li>
+                <input type='checkbox'>
+                <span><strong>5. Nghe (Auscultation):</strong> Nghe bằng phần màng. Âm phế quản (bronchial breathing: nghe chói, thô ráp giống nghe trên thanh quản) gặp trong đông đặc hoặc xơ hóa lớn. Xác định các tiếng phụ (wheeze, ran nổ, ran ẩm, cọ màng phổi).</span>
+              </li>
+              <li>
+                <input type='checkbox'>
+                <span><strong>6. Rung thanh (Vocal resonance):</strong> Yêu cầu bệnh nhân đếm "một, một, một". Tiếng truyền to, rõ ở vùng phổi đông đặc/xơ hóa; giảm hoặc mất ở vùng tràn dịch/tràn khí.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class='card'>
+          <h2>Chi tiết các tiếng nghe phổi bất thường (Added sounds)</h2>
+          <div style='overflow-x: auto; margin-top: 10px;'>
+            <table class='cmp'>
+              <thead>
+                <tr>
+                  <th>Tiếng phụ</th>
+                  <th>Tính chất âm học</th>
+                  <th>Gợi ý bệnh lý</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Khò khè (Wheeze) đa âm</strong></td>
+                  <td>Âm sắc cao, có tính nhạc, rõ nhất thì thở ra do hẹp đường thở nhỏ.</td>
+                  <td>Hen phế quản, COPD, viêm phế quản.</td>
+                </tr>
+                <tr>
+                  <td><strong>Khò khè đơn âm cố định</strong></td>
+                  <td>Một âm sắc duy nhất, cố định, không thay đổi khi ho.</td>
+                  <td>Tắc nghẽn phế quản do khối u hoặc dị vật.</td>
+                </tr>
+                <tr>
+                  <td><strong>Ran nổ mịn (Fine crackles)</strong></td>
+                  <td>Âm sắc cao, cuối kỳ hít vào, âm thanh giống tiếng bóc khóa nhám Velcro.</td>
+                  <td>Xơ phổi kẽ, phù phổi cấp giai đoạn đầu.</td>
+                </tr>
+                <tr>
+                  <td><strong>Ran nổ thô (Coarse crackles)</strong></td>
+                  <td>Âm sắc thấp, thô ráp, thay đổi sau khi ho/khạc đờm.</td>
+                  <td>Ứ đọng dịch trong phế quản lớn (giãn phế quản, viêm phổi).</td>
+                </tr>
+                <tr>
+                  <td><strong>Tiếng cọ màng phổi (Pleural rub)</strong></td>
+                  <td>Âm thanh lạo xạo như hai tờ giấy nhám chà vào nhau khi thở.</td>
+                  <td>Viêm màng phổi (đau ngực kiểu màng phổi tăng lên khi hít sâu).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: BIỆN LUẬN -->
+      <section class='tab' id='int'>
+        <div class='grid2'>
+          <div class='card'>
+            <h2>1. Hội chứng đông đặc (Viêm phổi thùy)</h2>
+            <ul>
+              <li><strong>Hỏi bệnh:</strong> Sốt cao, ho đờm vàng/xanh hoặc đỏ gỉ sắt, đau ngực kiểu màng phổi.</li>
+              <li><strong>Sờ:</strong> Rung thanh tăng. Khí quản nằm ở đường giữa.</li>
+              <li><strong>Gõ:</strong> Đục.</li>
+              <li><strong>Nghe:</strong> Rì rào phế nang giảm, nghe thấy tiếng thổi ống (bronchial breathing), ran nổ thô/mịn rải rác.</li>
+            </ul>
+          </div>
+          <div class='card'>
+            <h2>2. Hội chứng tràn dịch màng phổi</h2>
+            <ul>
+              <li><strong>Hỏi bệnh:</strong> Khó thở tiến triển tăng dần, đau ngực giảm khi dịch tăng lên.</li>
+              <li><strong>Sờ:</strong> Rung thanh giảm hoặc mất. Khí quản bị đẩy lệch sang bên đối diện nếu tràn dịch lượng nhiều.</li>
+              <li><strong>Gõ:</strong> Gõ đục vùng thấp (như gõ vào gỗ).</li>
+              <li><strong>Nghe:</strong> Rì rào phế nang mất hoàn toàn tại vùng tràn dịch.</li>
+            </ul>
+          </div>
+          <div class='card'>
+            <h2>3. Hội chứng tràn khí màng phổi</h2>
+            <ul>
+              <li><strong>Hỏi bệnh:</strong> Đau ngực dữ dội khởi phát đột ngột, khó thở cấp tính.</li>
+              <li><strong>Sờ:</strong> Rung thanh giảm hoặc mất hoàn toàn.</li>
+              <li><strong>Gõ:</strong> Gõ vang trống (hyper-resonant).</li>
+              <li><strong>Nghe:</strong> Rì rào phế nang mất hoàn toàn.</li>
+            </ul>
+          </div>
+          <div class='card'>
+            <h2>4. Hội chứng tắc nghẽn (Hen / COPD)</h2>
+            <ul>
+              <li><strong>Hỏi bệnh:</strong> Khó thở cơn về đêm (hen), hoặc khó thở gắng sức mạn tính kèm ho khạc đờm kéo dài (COPD).</li>
+              <li><strong>Nhìn & Sờ:</strong> Lồng ngực hình thùng, co kéo cơ hô hấp phụ, giảm độ giãn nở ngực đều hai bên.</li>
+              <li><strong>Gõ:</strong> Gõ vang đều hai phế trường, mất diện đục của gan và tim.</li>
+              <li><strong>Nghe:</strong> Rì rào phế nang giảm đều hai bên, thì thở ra kéo dài, nghe nhiều ran rít, ran ngáy (wheeze).</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: CẬN LÂM SÀNG -->
+      <section class='tab' id='tests'>
+        <div class='card'>
+          <h2>Cận lâm sàng Hô hấp thường quy</h2>
+          <ul>
+            <li><strong>Xét nghiệm máu & Vi sinh:</strong> Công thức bạch cầu (WCC), CRP để đánh giá nhiễm trùng. Cấy đờm, nhuộm Gram tìm vi khuẩn gây viêm phổi. Định lượng D-dimer trong nghi ngờ thuyên tắc phổi.</li>
+            <li><strong>Khí máu động mạch (ABG):</strong> Đánh giá phân loại suy hô hấp (Type 1: giảm oxy máu đơn thuần; Type 2: giảm oxy kèm ứ CO2 gây toan hô hấp).</li>
+            <li><strong>Chẩn đoán hình ảnh:</strong>
+              <ul>
+                <li><em>X-quang ngực (CXR):</em> Chỉ định đầu tay phát hiện đông đặc, tràn dịch, tràn khí, u phổi.</li>
+                <li><em>CT ngực độ phân giải cao (HRCT):</em> Tiêu chuẩn vàng đánh giá xơ phổi kẽ và giãn phế quản.</li>
+                <li><em>CT động mạch phổi (CTPA):</em> Tiêu chuẩn vàng để xác định thuyên tắc phổi (PE).</li>
+              </ul>
+            </li>
+            <li><strong>Thăm dò chức năng phổi:</strong> Hô hấp ký (Spirometry) đo FEV1, FVC giúp phân biệt hội chứng tắc nghẽn (FEV1/FVC &lt; 0.7) với hội chứng hạn chế. Làm test phục hồi phế quản với thuốc giãn phế quản (SABA) để chẩn đoán hen.</li>
+            <li><strong>Nội soi phế quản:</strong> Sinh thiết tổn thương u phế quản trung tâm, rửa phế quản phế nang làm xét nghiệm tế bào học.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: OSCE -->
+      <section class='tab' id='osce'>
+        <div class='grid2'>
+          <div class='card'>
+            <span class='case'>OSCE 1</span>
+            <h2>Tình huống 1: Hỏi bệnh sử Hô hấp (Respiratory history)</h2>
+            <p><strong>Yêu cầu:</strong> Bệnh nhân nữ 55 tuổi (Mrs Walker), đến khám vì ho và khò khè. Hãy hỏi bệnh sử.</p>
+            <p style='margin-top: 8px;'><strong>Tóm tắt phát hiện:</strong> Bệnh nhân làm nghề đầu bếp, tiền sử hút thuốc 10 điếu/ngày trong 20 năm (20 bao-năm). Xuất hiện triệu chứng khò khè làm rối loạn giấc ngủ kéo dài 6 tháng nay, kèm theo ho khan. Các triệu chứng biến đổi nhiều theo thời gian và nặng hơn khi gắng sức nhẹ như leo cầu thang.</p>
+            <p style='margin-top: 8px;'><strong>Chẩn đoán sơ bộ:</strong> Hen phế quản khởi phát muộn (Late-onset Asthma) do tính chất dao động của triệu chứng và hay xuất hiện về đêm. Chẩn đoán phân biệt với Bệnh phổi tắc nghẽn mạn tính (COPD).</p>
+            <p style='margin-top: 8px;'><strong>Đề xuất đánh giá tiếp theo:</strong> Đo hô hấp ký (Spirometry) và làm test phục hồi phế quản; hướng dẫn tự theo dõi lưu lượng đỉnh (PEF); chụp X-quang phổi; xét nghiệm máu tìm bạch cầu ái toan (eosinophils) và định lượng IgE.</p>
+          </div>
+          <div class='card'>
+            <span class='case'>OSCE 2</span>
+            <h2>Tình huống 2: Khám hệ hô hấp (Respiratory examination)</h2>
+            <p><strong>Yêu cầu:</strong> Bệnh nhân nam 82 tuổi (Mr Tate), khó thở tiến triển tăng dần vài tuần nay. Hãy khám phổi.</p>
+            <p style='margin-top: 8px;'><strong>Tóm tắt phát hiện:</strong> Bệnh nhân thở nhanh nhẹ khi nghỉ ngơi, có dấu hiệu ngón tay dùi trống rõ ở hai bàn tay. Sờ lồng ngực phát hiện độ giãn nở lồng ngực bên phải giảm đáng kể. Gõ đục góc sườn hoành phải lan lên vùng nách. Nghe phổi rì rào phế nang và rung thanh mất hoàn toàn ở đáy phổi phải. Có sẹo nhỏ mờ ở lưng phải gợi ý tiền sử chọc dịch màng phổi.</p>
+            <p style='margin-top: 8px;'><strong>Chẩn đoán sơ bộ:</strong> Tràn dịch màng phổi phải lượng nhiều (Pleural effusion). Sự hiện diện của ngón tay dùi trống kèm tràn dịch một bên ở bệnh nhân lớn tuổi cảnh báo mạnh mẽ bệnh lý ác tính nguyên phát (ung thư phổi) hoặc thứ phát, hoặc viêm mủ màng phổi mạn tính.</p>
+            <p style='margin-top: 8px;'><strong>Đề xuất đánh giá tiếp theo:</strong> Chụp X-quang ngực thẳng thẳng; Siêu âm màng phổi định vị dịch và hướng dẫn chọc hút dịch làm sinh hóa (Protein, LDH), tế bào học tìm tế bào ác tính và nuôi cấy vi sinh.</p>
+          </div>
+        </div>
+        <div class='card'>
+          <h2>Tài liệu tham khảo (References)</h2>
+          <ol>
+            <li>Innes JA, Dover AR, Fairhurst K. <em>Macleod's Clinical Examination</em>. 14th ed. Edinburgh: Elsevier; 2018.</li>
+          </ol>
+        </div>
+      </section>
+      <section class='links'>
+        <div class='card'>
+          <h2>Các bài cùng chuyên khoa khám lâm sàng</h2>
+          <div class='grid2'>
+            <a class='link-card' href='../Khám tiêu hóa/KN_Tieuhoa.html'>
+              <h3>Khám tiêu hóa</h3>
+              <small>Khám bụng 4 bước, sờ gan lách, các điểm đau bụng cấp và báng bụng.</small>
+            </a>
+            <a class='link-card' href='../Khám thần kinh/KN_Thankinh.html'>
+              <h3>Khám thần kinh</h3>
+              <small>Khám 12 dây thần kinh sọ, phản xạ gân xương, cơ lực và dấu màng não.</small>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <footer class='global-footer'>
+    <div id='footer-placeholder' data-footer-path='../../../footer.html'>
+    </div>
   </footer>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // --- TABS TOGGLE FUNCTIONALITY ---
-      const tabBtns = document.querySelectorAll('.tab-btn');
-      const tabPanes = document.querySelectorAll('.tab-pane');
-
-      tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          // Remove active classes
-          tabBtns.forEach(b => b.classList.remove('active'));
-          tabPanes.forEach(p => p.classList.remove('active'));
-
-          // Add active class to clicked button
-          btn.classList.add('active');
-
-          // Show corresponding pane
-          const tabId = btn.dataset.tab;
-          const activePane = document.getElementById(tabId);
-          if (activePane) {
-            activePane.classList.add('active');
-          }
-        });
-      });
-
-      // --- CHECKLIST CLICK TOGGLE ---
-      const checklistItems = document.querySelectorAll('.checklist-item');
-      checklistItems.forEach(item => {
-        const checkbox = item.querySelector('input[type="checkbox"]');
-        
-        // Handle clicking the item text/row
-        item.addEventListener('click', (e) => {
-          if (e.target !== checkbox) {
-            checkbox.checked = !checkbox.checked;
-          }
-          item.classList.toggle('checked', checkbox.checked);
-        });
-
-        // Handle direct checkbox clicks
-        checkbox.addEventListener('change', () => {
-          item.classList.toggle('checked', checkbox.checked);
-        });
-      });
-    });
-  </script>
+  <script src='../../../js/clinical-skill-tabs.js'></script>
 </body>
 
 </html>

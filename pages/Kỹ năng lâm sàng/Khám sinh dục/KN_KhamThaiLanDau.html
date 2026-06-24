@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang='vi' data-theme='light'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta name='description'
+    content='Hỏi bệnh sử và khám thai lần đầu (Booking Visit) theo Macleod: Cách tính EDD, phân tầng nguy cơ, sàng lọc Down và rà soát bạo lực gia đình.'>
+  <title>
+    Khám Thai Lần Đầu (Booking Visit) - CliniPortal
+  </title>
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+  <link
+    href='https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap'
+    rel='stylesheet'>
+  <link rel='stylesheet' href='../../../css/reset.css'>
+  <link rel='stylesheet' href='../../../css/main.css'>
+  <link rel='stylesheet' href='../../../css/components/header.css'>
+  <link rel='stylesheet' href='../../../css/components/sidebar.css'>
+  <link rel='stylesheet' href='../../../css/components/footer.css'>
+  <script src='../../../pages/header.js'>
+  </script>
+  <script src='../../../pages/footer.js'>
+  </script>
+  <style>
+    :root {
+      --a: #0891b2;
+      --b: #06b6d4;
+      --c: #cffafe;
+    }
+  </style>
+  <link rel='stylesheet' href='../../../css/components/clinical-skill.css'>
+</head>
+
+<body>
+  <div id='header-placeholder' data-header-path='../../header.html'>
+  </div>
+  <div class='sidebar-overlay' id='sidebarOverlay'>
+  </div>
+  <div class='app-container'>
+    <aside class='app-sidebar' id='appSidebar'>
+      <button id='sidebar-toggle-arrow' class='sidebar-toggle-arrow' aria-label='Thu gọn/Mở rộng Sidebar'>
+        <svg viewBox='0 0 24 24' width='14' height='14' stroke='currentColor' stroke-width='2.5' fill='none'
+          stroke-linecap='round' stroke-linejoin='round' class='toggle-arrow-svg'>
+          <polyline points='15 18 9 12 15 6'>
+          </polyline>
+        </svg>
+      </button>
+      <nav class='sidebar-nav' aria-label='Điều hướng chính'>
+        <ul class='nav-list' role='list'>
+          <li>
+            <a href='../../../index.html' class='nav-item'>
+              <span class='nav-icon'>
+                🏠
+              </span>
+              <span class='nav-text'>
+                Trang chủ
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href='../ky-nang-lam-sang.html' class='nav-item'>
+              <span class='nav-icon'>
+                🩺
+              </span>
+              <span class='nav-text'>
+                Kỹ năng lâm sàng
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href='../../Tiếp cận/tiep-can.html' class='nav-item'>
+              <span class='nav-icon'>
+                🤒
+              </span>
+              <span class='nav-text'>
+                Tiếp cận lâm sàng
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href='../../Công cụ/cong-cu.html' class='nav-item'>
+              <span class='nav-icon'>
+                ⚙️
+              </span>
+              <span class='nav-text'>
+                Công cụ lâm sàng
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <div class='main-wrapper' id='mainContent'>
+      <nav aria-label='Breadcrumb' class='breadcrumb-container'>
+        <ol class='breadcrumb-list'>
+          <li class='breadcrumb-item'>
+            <a href='../../../index.html' class='breadcrumb-link'>
+              <span class='home-icon'>
+                🏠
+              </span>
+              Home
+            </a>
+          </li>
+          <li class='breadcrumb-item'>
+            <a href='../ky-nang-lam-sang.html' class='breadcrumb-link'>
+              Kỹ năng lâm sàng
+            </a>
+          </li>
+          <li class='breadcrumb-item'>
+            <a href='KN_Sinhduc.html' class='breadcrumb-link'>
+              Khám hệ sinh sản
+            </a>
+          </li>
+          <li class='breadcrumb-item active' aria-current='page'>
+            Khám thai lần đầu
+          </li>
+        </ol>
+      </nav>
+      <section class='hero'>
+        <h1>
+          Khám Thai Lần Đầu (The Booking Visit)
+        </h1>
+        <p>
+          Quy trình hướng dẫn hỏi bệnh và khám lâm sàng trong lần đăng ký khám thai đầu tiên (tuần 8-12) theo Macleod's Clinical Examination. Tập trung vào phân tầng nguy cơ sản khoa, tính EDD chuẩn, sàng lọc Down và phát hiện bạo lực gia đình.
+        </p>
+        <div class='quick'>
+          <div class='qi'>
+            <b>
+              Thời điểm
+            </b>
+            Tuần 8 - 12 của thai kỳ
+          </div>
+          <div class='qi'>
+            <b>
+              Điểm nhấn
+            </b>
+            Tính LMP/EDD/Parity (x+y), tư vấn Acid Folic, đo BMI & huyết áp, cấy nước tiểu MSU
+          </div>
+          <div class='qi'>
+            <b>
+              Red flags
+            </b>
+            Hỏi riêng tư về bạo lực gia đình (domestic abuse), thuốc chống chỉ định thai kỳ, mẹ lớn tuổi nguy cơ Down
+          </div>
+        </div>
+      </section>
+      <div class='tabs'>
+        <button class='tab-btn active' data-tab='core'>
+          Nền tảng
+        </button>
+        <button class='tab-btn' data-tab='hx'>
+          Hỏi bệnh
+        </button>
+        <button class='tab-btn' data-tab='exam'>
+          Khám
+        </button>
+        <button class='tab-btn' data-tab='int'>
+          Biện luận
+        </button>
+        <button class='tab-btn' data-tab='tests'>
+          Cận lâm sàng
+        </button>
+        <button class='tab-btn' data-tab='osce'>
+          OSCE
+        </button>
+      </div>
+
+      <!-- TAB: NỀN TẢNG -->
+      <section class='tab active' id='core'>
+        <div class='card'>
+          <h2>Giải phẫu và Sinh lý học lâm sàng (Anatomy and physiology)</h2>
+          <ul>
+            <li>Trong thai kỳ, cơ thể người phụ nữ trải qua những thay đổi sinh lý đáng kể để thích nghi với sự phát triển của thai nhi. Các triệu chứng sinh lý sớm xuất hiện ngay trong 3 tháng đầu (trimester đầu tiên) bao gồm:
+              <ul>
+                <li><strong>Căng tức vú:</strong> Thường là triệu chứng xuất hiện sớm nhất.</li>
+                <li><strong>Buồn nôn và nôn (morning sickness):</strong> Xuất hiện sớm và thường tự thuyên giảm từ tuần 16 - 20.</li>
+                <li><strong>Khác:</strong> Táo bón, tiểu nhiều lần do tử cung chèn ép bàng quang.</li>
+              </ul>
+            </li>
+            <li>Tử cung lớn dần theo tuổi thai. Tuy nhiên, ở lần khám thai đầu tiên (tuần 8-12), tử cung vẫn nằm hoàn toàn trong vùng chậu và chưa vượt quá khớp mu, do đó chưa thể sờ thấy qua thành bụng.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: HỎI BỆNH -->
+      <section class='tab' id='hx'>
+        <div class='card'>
+          <h2>Các định nghĩa và thuật ngữ sản khoa quan trọng</h2>
+          <div style='overflow-x: auto; margin-top: 12px;'>
+            <table class='cmp'>
+              <thead>
+                <tr>
+                  <th>Thuật ngữ</th>
+                  <th>Định nghĩa chuẩn lâm sàng</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Kỳ kinh cuối (LMP)</strong></td>
+                  <td>Ngày đầu tiên của kỳ kinh nguyệt cuối cùng bình thường (Last Menstrual Period).</td>
+                </tr>
+                <tr>
+                  <td><strong>Dự kiến sinh (EDD)</strong></td>
+                  <td>Tính tròn 40 tuần (280 ngày) kể từ ngày đầu của LMP. Chỉ có dưới 5% trẻ sinh đúng EDD. EDD tính chính xác nhất dựa trên siêu âm đo chiều dài đầu-mông (CRL) cuối 3 tháng đầu.</td>
+                </tr>
+                <tr>
+                  <td><strong>Tiền sử sinh đẻ (Parity)</strong></td>
+                  <td>Định dạng <strong>x + y</strong>:<br>
+                    - <strong>x:</strong> Số lần sinh con sống hoặc các thai kỳ kết thúc sau tuần 24 (bao gồm cả thai lưu muộn). Đa thai chỉ tính là 1 lần sinh.<br>
+                    - <strong>y:</strong> Số lần sảy thai, thai ngoài tử cung, chấm dứt thai kỳ, hoặc thai lưu trước tuần 24.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Tuổi thai (Gestation)</strong></td>
+                  <td>Tính theo số tuần + số ngày kể từ ngày đầu LMP (hoặc điều chỉnh theo siêu âm). Thai đủ tháng (term) là từ tuần 37 đến tuần 42.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class='card'>
+          <h2>Yếu tố nguy cơ và tiền sử bệnh lý</h2>
+          <ul>
+            <li><strong>Nguy cơ di truyền gia đình:</strong> Khai thác tiền sử gia đình cả bố và mẹ bé để tìm các bệnh lý di truyền đơn gen:
+              <ul>
+                <li><em>Trội NST thường:</em> Huntington, loạn dưỡng cơ tăng trương lực.</li>
+                <li><em>Lặn NST thường:</em> Xơ nang (Cystic fibrosis), hồng cầu hình liềm, Thalassemia.</li>
+                <li><em>Liên kết NST X:</em> Loạn dưỡng cơ Duchenne, Hemophilia (máu khó đông).</li>
+              </ul>
+            </li>
+            <li><strong>Nguy cơ hội chứng Down (Trisomy 21) theo tuổi mẹ:</strong>
+              <ul>
+                <li>20 tuổi: nguy cơ 1/1500.</li>
+                <li>30 tuổi: nguy cơ 1/900.</li>
+                <li>35 tuổi: nguy cơ 1/400 (bắt đầu khuyến cáo sàng lọc chuyên sâu).</li>
+                <li>40 tuổi: nguy cơ 1/100.</li>
+              </ul>
+            </li>
+            <li><strong>Tiền sử sản khoa trước:</strong> Phương pháp sinh (sinh thường, sinh forceps/giác hút, hay sinh mổ), cân nặng con trước, các biến chứng như băng huyết sau sinh, tiền sản giật hay đái tháo đường thai kỳ.</li>
+            <li><strong>Tiền sử bệnh lý:</strong> Bệnh lý tim mạch, đái tháo đường, hen suyễn (có thể cải thiện khi mang thai), bệnh ruột viêm (IBD - có xu hướng nặng hơn sau sinh).</li>
+            <li><strong>Thuốc & Dự phòng Folic Acid:</strong> Kiểm tra việc bổ sung <strong>400 µg acid folic/ngày</strong> trước tuần thứ 12 để dự phòng dị tật ống thần kinh (phụ nữ có nguy cơ cao như béo phì, đái tháo đường, hoặc tiền sử con bị dị tật cần dùng liều cao hơn 5 mg/ngày).</li>
+          </ul>
+        </div>
+
+        <div class='card'>
+          <div class='clinical-warning'>
+            <h4>⚠️ Sàng lọc Bạo lực gia đình (Domestic Abuse)</h4>
+            <p>Bạo lực gia đình có thể khởi phát hoặc leo thang nghiêm trọng hơn trong thai kỳ, làm tăng tỷ lệ tử vong mẹ và thai nhi.</p>
+            <p style='margin-top: 8px;'><strong>Quy tắc bắt buộc:</strong> Bác sĩ/nữ hộ sinh phải gặp riêng thai phụ <em>không có người chồng/bạn đời đi cùng</em> trong ít nhất một lần khám thai để hỏi trực tiếp và tế nhị về bạo lực gia đình.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: KHÁM -->
+      <section class='tab' id='exam'>
+        <div class='card'>
+          <h2>Quy trình thăm khám Booking Visit</h2>
+          <ul class='check'>
+            <li>
+              <input type='checkbox'>
+              <span><strong>1. Đo huyết áp:</strong> Lấy huyết áp cơ sở để tầm soát tăng huyết áp thai kỳ và tiền sản giật ở các tuần sau.</span>
+            </li>
+            <li>
+              <input type='checkbox'>
+              <span><strong>2. Đánh giá sinh trắc học (BMI):</strong> Đo chiều cao, cân nặng và tính chỉ số khối cơ thể $BMI = cân nặng (kg) / chiều cao^2 (m)$. Giúp tư vấn mức tăng cân phù hợp và phân loại nguy cơ.</span>
+            </li>
+            <li>
+              <input type='checkbox'>
+              <span><strong>3. Lấy nước tiểu giữa dòng (MSU):</strong> Hướng dẫn thai phụ lấy mẫu nước tiểu giữa dòng vô trùng để soi và cấy vi khuẩn.</span>
+            </li>
+            <li>
+              <input type='checkbox'>
+              <span><strong>4. Khám toàn thân (khi có chỉ định):</strong> Không khám âm đạo hay khám vú thường quy ở phụ nữ mang thai khỏe mạnh. Chỉ nghe tim phổi toàn diện nếu có tiền sử bệnh lý hoặc thai phụ là người di cư mới đến.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: BIỆN LUẬN -->
+      <section class='tab' id='int'>
+        <div class='grid2'>
+          <div class='card'>
+            <h2>Phân tầng nguy cơ sản khoa</h2>
+            <ul>
+              <li><strong>Thai kỳ nguy cơ thấp:</strong> Thai phụ khỏe mạnh, không có tiền sử bệnh nền, không biến chứng sản khoa cũ. Được theo dõi định kỳ thường quy chủ yếu bởi nữ hộ sinh (midwife-led care).</li>
+              <li><strong>Thai kỳ nguy cơ cao:</strong> Cần được quản lý và phối hợp điều trị chặt chẽ bởi bác sĩ sản khoa (obstetrician-led care). Yếu tố đẩy vào nguy cơ cao bao gồm:
+                <ul>
+                  <li>Tiền sử sinh mổ, thai lưu hoặc sảy thai liên tiếp.</li>
+                  <li>Bệnh nền: đái tháo đường, tăng huyết áp, bệnh thận, lupus đỏ.</li>
+                  <li>Mẹ lớn tuổi (&ge;35-40 tuổi).</li>
+                  <li>Đa thai.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class='card'>
+            <h2>Mẹo Bedside: Đánh giá lối sống</h2>
+            <ul>
+              <li>Khuyên tất cả phụ nữ mang thai dừng hoàn toàn việc hút thuốc lá (nguy cơ thai chậm tăng trưởng, nhau bong non) và kiêng hoàn toàn rượu bia (nguy cơ hội chứng nhiễm độc rượu thai nhi).</li>
+              <li>Rà soát kỹ các thuốc đang dùng để loại bỏ hoặc chuyển đổi các thuốc có nguy cơ gây dị dạng thai nhi (ví dụ chuyển từ thuốc ức chế men chuyển điều trị tăng HA sang Methyldopa/Labetalol).</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: CẬN LÂM SÀNG -->
+      <section class='tab' id='tests'>
+        <div class='card'>
+          <h2>Cận lâm sàng thường quy ở lần khám đầu</h2>
+          <div style='overflow-x: auto; margin-top: 12px;'>
+            <table class='cmp'>
+              <thead>
+                <tr>
+                  <th>Xét nghiệm chỉ định</th>
+                  <th>Mục tiêu sàng lọc và Ý nghĩa lâm sàng</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Cấy nước tiểu giữa dòng (MSU)</strong></td>
+                  <td>Tầm soát vi khuẩn niệu không triệu chứng (asymptomatic bacteriuria) để điều trị kháng sinh sớm, ngăn ngừa tiến triển thành viêm bể thận cấp và sinh non. Sàng lọc liên cầu khuẩn nhóm B (GBS).</td>
+                </tr>
+                <tr>
+                  <td><strong>Tổng phân tích nước tiểu bằng que thử</strong></td>
+                  <td>Tìm protein niệu (nếu &ge;1+ cần gửi MSU loại trừ nhiễm trùng) hoặc glucose niệu (nghi ngờ ĐTĐ thai kỳ).</td>
+                </tr>
+                <tr>
+                  <td><strong>Công thức máu (FBC)</strong></td>
+                  <td>Tầm soát thiếu máu thai kỳ. Nếu Hb &lt; 105 g/L ở 3 tháng đầu, cần xét nghiệm ferritin và bổ sung sắt.</td>
+                </tr>
+                <tr>
+                  <td><strong>Nhóm máu và Kháng thể</strong></td>
+                  <td>Xác định nhóm máu hệ ABO và hệ Rhesus (Rh). Sàng lọc kháng thể bất thường để phát hiện nguy cơ bất đồng nhóm máu Rh giữa mẹ và con.</td>
+                </tr>
+                  <td><strong>Điện di Hemoglobin</strong></td>
+                  <td>Tầm soát bệnh hồng cầu hình liềm (sickle cell disease) và các thể Thalassaemia ở mẹ.</td>
+                </tr>
+                <tr>
+                  <td><strong>Sàng lọc nhiễm trùng (Virus/Giang mai)</strong></td>
+                  <td>Xét nghiệm bắt buộc tìm kháng thể HIV, kháng nguyên viêm gan B (HBsAg) và phản ứng huyết thanh giang mai để can thiệp dự phòng lây truyền sang con.</td>
+                </tr>
+                <tr>
+                  <td><strong>Siêu âm 3 tháng đầu (Tuần 6-13)</strong></td>
+                  <td>Xác định thai sống trong tử cung, số lượng thai (đơn/đa thai, số bánh nhau), và đo chiều dài đầu-mông (CRL) từ tuần 10-13 để tính dự kiến sinh EDD chính xác nhất.</td>
+                </tr>
+                <tr>
+                  <td><strong>Sàng lọc kết hợp (Combined Test - Tuần 11-14)</strong></td>
+                  <td>Siêu âm đo độ mờ da gáy (Nuchal Translucency) kết hợp xét nghiệm sinh hóa máu mẹ (PAPP-A và free beta-hCG) để tính toán nguy cơ mắc hội chứng Down (Trisomy 21), Patau, Edwards. Độ nhạy đạt 80-90%.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: OSCE -->
+      <section class='tab' id='osce'>
+        <div class='grid2'>
+          <div class='card'>
+            <span class='case'>OSCE</span>
+            <h2>OSCE: Khai thác bệnh sử lần khám thai đầu tiên</h2>
+            <p><strong>Yêu cầu:</strong> Thai phụ nữ 32 tuổi, mang thai 10 tuần, đến phòng khám đăng ký quản lý thai kỳ lần đầu. Hãy hỏi bệnh sử sản khoa.</p>
+            <p style='margin-top: 8px;'><strong>Tóm tắt phát hiện:</strong> Bệnh nhân mang thai lần đầu (Para 0+0), tuổi thai 10 tuần tính theo kỳ kinh cuối bình thường (chu kỳ đều 28 ngày). Có triệu chứng buồn nôn nhẹ buổi sáng và căng tức ngực, không ra máu âm đạo hay đau bụng dưới. Không có tiền sử bệnh lý nội ngoại khoa hay phẫu thuật vùng chậu. Đang bổ sung acid folic 400 µg/ngày từ khi biết tin có thai. Không hút thuốc lá, không uống rượu bia. Sống cùng chồng, mối quan hệ ổn định và cảm thấy an toàn tại nhà. Không có tiền sử gia đình mắc bệnh di truyền đơn gen hay đái tháo đường.</p>
+            <p style='margin-top: 8px;'><strong>Chẩn đoán sơ bộ:</strong> Thai con so 10 tuần phát triển bình thường, thuộc nhóm thai kỳ nguy cơ thấp.</p>
+            <p style='margin-top: 8px;'><strong>Đề xuất đánh giá tiếp theo:</strong>
+              1. Đo huyết áp cơ sở và tính chỉ số BMI.
+              2. Chỉ định bộ xét nghiệm máu thường quy (Công thức máu, nhóm máu/Rh, kháng thể, điện di hemoglobin, HIV, viêm gan B, giang mai) và lấy mẫu MSU cấy nước tiểu.
+              3. Siêu âm 3 tháng đầu đo CRL để xác định chính xác EDD và tư vấn làm xét nghiệm sàng lọc hội chứng Down (Combined test) ở tuần thứ 11-14.
+            </p>
+          </div>
+        </div>
+        <div class='card'>
+          <h2>Tài liệu tham khảo (References)</h2>
+          <ol>
+            <li>Innes JA, Dover AR, Fairhurst K. <em>Macleod's Clinical Examination</em>. 14th ed. Edinburgh: Elsevier; 2018.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class='links'>
+        <div class='card'>
+          <h2>Các bài cùng chuyên khoa Sinh Sản</h2>
+          <div class='grid3'>
+            <a class='link-card' href='KN_KhamVu.html'>
+              <h3 style='color: #db2777;'>Khám Tuyến Vú</h3>
+              <small>Khám phát hiện u vú, hạch nách/cổ và quy trình Đánh giá bộ ba (Triple Assessment).</small>
+            </a>
+            <a class='link-card' href='KN_KhamThaiDinhKy.html'>
+              <h3 style='color: #059669;'>Khám Thai Giai Đoạn Sau</h3>
+              <small>Đo bề cao tử cung (SFH), khám ngôi thai/độ lọt và tầm soát tiền sản giật.</small>
+            </a>
+            <a class='link-card' href='KN_KhamSinhDucNam.html'>
+              <h3 style='color: #4f46e5;'>Khám Sinh Dục Nam</h3>
+              <small>Khám u bìu, tràn dịch màng tinh hoàn và thăm trực tràng khám tuyến tiền liệt.</small>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <footer class='global-footer'>
+    <div id='footer-placeholder' data-footer-path='../../../footer.html'>
+    </div>
+  </footer>
+  <script src='../../../js/clinical-skill-tabs.js'></script>
+</body>
+
+</html>
