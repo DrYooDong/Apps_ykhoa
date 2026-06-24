@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CliniPortal Icon Library</title>
+    <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --border-color: #e0e0e0;
+            /* Màu mặc định cho icon (Light Mode) */
+            --icon-color: #2c3e50; 
+            --accent-color: #3498db;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #1a1a1a;
+                --card-bg: #2d2d2d;
+                --text-color: #e0e0e0;
+                --border-color: #444444;
+                /* Màu icon khi Dark Mode (Sáng hơn để nổi bật trên nền tối) */
+                --icon-color: #ecf0f1; 
+            }
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 40px;
+            opacity: 0.8;
+        }
+
+        .module-section {
+            margin-bottom: 50px;
+        }
+
+        .module-title {
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 20px;
+        }
+
+        .icon-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .icon-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .icon-card svg {
+            width: 48px;
+            height: 48px;
+            fill: var(--icon-color); /* Áp dụng biến màu động */
+            margin-bottom: 10px;
+            transition: fill 0.3s ease;
+        }
+
+        .icon-label {
+            font-size: 0.8rem;
+            text-align: center;
+            word-break: break-word;
+            opacity: 0.8;
+        }
+
+        /* Utility class để copy code */
+        .code-snippet {
+            display: none;
+            font-family: monospace;
+            font-size: 0.7rem;
+            background: #eee;
+            padding: 2px 5px;
+            border-radius: 4px;
+            margin-top: 5px;
+            color: #333;
+        }
+        
+        .icon-card:hover .code-snippet {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>CliniPortal Icon Library</h1>
+    <p class="intro">Bộ sưu tập >50 icon SVG cho 6 Module chính và các Web con. <br>Icon tự động đổi màu sang trắng/sáng khi hệ thống bật Dark Mode.</p>
+
+    <!-- MODULE 1: CÔNG CỤ (TOOLS) -->
+    <div class="module-section">
+        <h2 class="module-title">1. Công Cụ Lâm Sàng (Tools)</h2>
+        <div class="icon-grid">
+            <!-- Calculator Hub -->
+            <div class="icon-card" title="Calculator Hub">
+                <svg viewBox="0 0 24 24"><path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 2v4h10V4H7zm2 6v2h2v-2H9zm0 4v2h2v-2H9zm0 4v2h2v-2H9zm4-8v2h2v-2h-2zm0 4v2h2v-2h-2zm0 4v2h2v-2h-2zm4-8v2h2v-2h-2zm0 4v2h2v-2h-2zm0 4v2h2v-2h-2z"/></svg>
+                <span class="icon-label">Calculator Hub</span>
+            </div>
+            <!-- ECG Interpreter -->
+            <div class="icon-card" title="ECG Interpreter">
+                <svg viewBox="0 0 24 24"><path d="M2 12h2l2-5 3 10 3-12 2 7h8"/></svg>
+                <span class="icon-label">ECG Tool</span>
+            </div>
+            <!-- ABG Analyzer -->
+            <div class="icon-card" title="ABG Analyzer">
+                <svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 0 0-5 5v2a5 5 0 0 0 10 0V7a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v2a3 3 0 0 1-6 0V7a3 3 0 0 1 3-3zM4 14v6h16v-6H4zm2 2h2v2H6v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2z"/></svg>
+                <span class="icon-label">ABG Gas</span>
+            </div>
+            <!-- Fluid Calculator -->
+            <div class="icon-card" title="Fluid Calculator">
+                <svg viewBox="0 0 24 24"><path d="M12 2L6 10h12L12 2zm-1 12v8h2v-8h-2zM4 14h16v2H4v-2z"/></svg>
+                <span class="icon-label">Fluid Calc</span>
+            </div>
+            <!-- Score Charts -->
+            <div class="icon-card" title="Score Charts">
+                <svg viewBox="0 0 24 24"><path d="M3 3v18h18V3H3zm2 2h4v4H5V5zm6 0h4v4h-4V5zm6 0h4v4h-4V5zM5 11h4v8H5v-8zm6 0h4v8h-4v-8zm6 0h4v8h-4v-8z"/></svg>
+                <span class="icon-label">Scores</span>
+            </div>
+             <!-- GFR Calc -->
+             <div class="icon-card" title="GFR Calculator">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                <span class="icon-label">GFR / Kidney</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODULE 2: DƯỢC LÝ (PHARMACOLOGY) -->
+    <div class="module-section">
+        <h2 class="module-title">2. Dược Lý & Kháng Sinh</h2>
+        <div class="icon-grid">
+            <!-- Drug Interaction -->
+            <div class="icon-card" title="Drug Interaction">
+                <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l4.59-4.59L18 11l-6 6z"/></svg>
+                <span class="icon-label">Interactions</span>
+            </div>
+            <!-- Antibiotic Guide -->
+            <div class="icon-card" title="Antibiotic Guide">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                <span class="icon-label">AntibioGuide</span>
+            </div>
+            <!-- Dosage Calc -->
+            <div class="icon-card" title="Dosage Calculator">
+                <svg viewBox="0 0 24 24"><path d="M7 2h10v2H7V2zm0 4h10v2H7V6zm0 4h10v2H7v-2zm0 4h10v2H7v-2zm0 4h10v2H7v-2z"/><circle cx="18" cy="18" r="3"/></svg>
+                <span class="icon-label">Dosage</span>
+            </div>
+            <!-- Renal Dosing -->
+            <div class="icon-card" title="Renal Dosing">
+                <svg viewBox="0 0 24 24"><path d="M12 2L4 12h16L12 2zm0 3.5L16.5 12H7.5L12 5.5zM4 14v6h16v-6H4zm2 2h2v2H6v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2z"/></svg>
+                <span class="icon-label">Renal Dose</span>
+            </div>
+            <!-- Pill Box -->
+            <div class="icon-card" title="Pill Box">
+                <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4V6zm2 2v2h2V8H6zm4 0v2h2V8h-2zm4 0v2h2V8h-2zm-8 4v2h2v-2H6zm4 0v2h2v-2h-2zm4 0v2h2v-2h-2z"/></svg>
+                <span class="icon-label">Pill Organizer</span>
+            </div>
+            <!-- IV Compatibility -->
+            <div class="icon-card" title="IV Compatibility">
+                <svg viewBox="0 0 24 24"><path d="M12 2L8 6h3v8h2V6h3L12 2zm-7 10v10h14V12H5zm2 2h2v2H7v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2z"/></svg>
+                <span class="icon-label">IV Compat</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODULE 3: KỸ NĂNG LÂM SÀNG (CLINICAL SKILLS) -->
+    <div class="module-section">
+        <h2 class="module-title">3. Kỹ Năng Lâm Sàng</h2>
+        <div class="icon-grid">
+            <!-- Stethoscope -->
+            <div class="icon-card" title="Stethoscope">
+                <svg viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 0-4 4v2a4 4 0 0 0 8 0V6a4 4 0 0 0-4-4zm0 2a2 2 0 0 1 2 2v2a2 2 0 0 1-4 0V6a2 2 0 0 1 2-2zm-6 8v6a6 6 0 0 0 12 0v-6h-2v6a4 4 0 0 1-8 0v-6H6z"/></svg>
+                <span class="icon-label">Exam Skills</span>
+            </div>
+            <!-- Procedure Steps -->
+            <div class="icon-card" title="Procedure Steps">
+                <svg viewBox="0 0 24 24"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2zm0 10H4v-2h6v2zm0-4H4V8h6v2zm4 4h-2v-2h2v2zm0-4h-2V8h2v2zm4 4h-2v-2h2v2zm0-4h-2V8h2v2z"/></svg>
+                <span class="icon-label">Procedures</span>
+            </div>
+            <!-- Hand Hygiene -->
+            <div class="icon-card" title="Hand Hygiene">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-2h2v2zm0-4h-2V7h2v6zm4 4h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                <span class="icon-label">Hygiene</span>
+            </div>
+            <!-- Suturing -->
+            <div class="icon-card" title="Suturing">
+                <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l4.59-4.59L18 11l-6 6z"/></svg>
+                <span class="icon-label">Suturing</span>
+            </div>
+            <!-- CPR Training -->
+            <div class="icon-card" title="CPR Training">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                <span class="icon-label">CPR / ACLS</span>
+            </div>
+            <!-- Physical Exam -->
+            <div class="icon-card" title="Physical Exam">
+                <svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 0 0-5 5v2a5 5 0 0 0 10 0V7a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v2a3 3 0 0 1-6 0V7a3 3 0 0 1 3-3zM4 14h16v2H4v-2zm0 4h16v2H4v-2z"/></svg>
+                <span class="icon-label">Phys Exam</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODULE 4: TIẾP CẬN TRIỆU CHỨNG (APPROACH) -->
+    <div class="module-section">
+        <h2 class="module-title">4. Tiếp Cận Triệu Chứng</h2>
+        <div class="icon-grid">
+            <!-- Chest Pain Flowchart -->
+            <div class="icon-card" title="Chest Pain">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                <span class="icon-label">Chest Pain</span>
+            </div>
+            <!-- Dyspnea Approach -->
+            <div class="icon-card" title="Dyspnea">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <span class="icon-label">Dyspnea</span>
+            </div>
+            <!-- Abdominal Pain -->
+            <div class="icon-card" title="Abdominal Pain">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                <span class="icon-label">Abdo Pain</span>
+            </div>
+            <!-- Fever Workup -->
+            <div class="icon-card" title="Fever">
+                <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                <span class="icon-label">Fever</span>
+            </div>
+            <!-- Headache Dx -->
+            <div class="icon-card" title="Headache">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg>
+                <span class="icon-label">Headache</span>
+            </div>
+            <!-- Syncope -->
+            <div class="icon-card" title="Syncope">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                <span class="icon-label">Syncope</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODULE 5: SINH LÝ BỆNH (PATHOPHYSIOLOGY) -->
+    <div class="module-section">
+        <h2 class="module-title">5. Sinh Lý - Bệnh Học</h2>
+        <div class="icon-grid">
+            <!-- Heart Failure Mech -->
+            <div class="icon-card" title="Heart Failure">
+                <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                <span class="icon-label">Cardio Mech</span>
+            </div>
+            <!-- Acid Base Balance -->
+            <div class="icon-card" title="Acid Base">
+                <svg viewBox="0 0 24 24"><path d="M12 2L6 10h12L12 2zm-1 12v8h2v-8h-2zM4 14h16v2H4v-2z"/></svg>
+                <span class="icon-label">Acid/Base</span>
+            </div>
+            <!-- Shock Types -->
+            <div class="icon-card" title="Shock Types">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                <span class="icon-label">Shock</span>
+            </div>
+            <!-- Diabetes Path -->
+            <div class="icon-card" title="Diabetes">
+                <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l4.59-4.59L18 11l-6 6z"/></svg>
+                <span class="icon-label">Endo Path</span>
+            </div>
+            <!-- Respiratory Mech -->
+            <div class="icon-card" title="Respiratory">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <span class="icon-label">Resp Mech</span>
+            </div>
+            <!-- Coagulation Cascade -->
+            <div class="icon-card" title="Coagulation">
+                <svg viewBox="0 0 24 24"><path d="M12 2L4 12h16L12 2zm0 3.5L16.5 12H7.5L12 5.5zM4 14v6h16v-6H4zm2 2h2v2H6v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2z"/></svg>
+                <span class="icon-label">Heme/Clot</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODULE 6: Y HỌC CHỨNG CỨ (EBM) -->
+    <div class="module-section">
+        <h2 class="module-title">6. Y Học Chứng Cứ & Nghiên Cứu</h2>
+        <div class="icon-grid">
+            <!-- Guidelines -->
+            <div class="icon-card" title="Guidelines">
+                <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                <span class="icon-label">Guidelines</span>
+            </div>
+            <!-- Sample Size -->
+            <div class="icon-card" title="Sample Size">
+                <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l4.59-4.59L18 11l-6 6z"/></svg>
+                <span class="icon-label">Stats Calc</span>
+            </div>
+            <!-- Journal Club -->
+            <div class="icon-card" title="Journal Club">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                <span class="icon-label">Journal</span>
+            </div>
+            <!-- Risk Assessment -->
+            <div class="icon-card" title="Risk Assessment">
+                <svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.5L18.5 19H5.5L12 5.5zM11 10v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+                <span class="icon-label">Risk Meta</span>
+            </div>
+            <!-- Evidence Pyramid -->
+            <div class="icon-card" title="Evidence Pyramid">
+                <svg viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 3.5L18.5 20H5.5L12 5.5zM11 14v4h2v-4h-2zm0-6v4h2V8h-2z"/></svg>
+                <span class="icon-label">Evid. Level</span>
+            </div>
+            <!-- Research Protocol -->
+            <div class="icon-card" title="Protocol">
+                <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                <span class="icon-label">Protocol</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- GENERAL ICONS (COMMON) -->
+    <div class="module-section">
+        <h2 class="module-title">Icon Chung & Điều Hướng</h2>
+        <div class="icon-grid">
+            <div class="icon-card"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg><span class="icon-label">Home</span></div>
+            <div class="icon-card"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg><span class="icon-label">Info</span></div>
+            <div class="icon-card"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg><span class="icon-label">Check</span></div>
+            <div class="icon-card"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg><span class="icon-label">Alert</span></div>
+            <div class="icon-card"><svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg><span class="icon-label">Menu</span></div>
+            <div class="icon-card"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span class="icon-label">Search</span></div>
+            <div class="icon-card"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg><span class="icon-label">Favorite</span></div>
+            <div class="icon-card"><svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg><span class="icon-label">Add</span></div>
+            <div class="icon-card"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg><span class="icon-label">Close</span></div>
+            <div class="icon-card"><svg viewBox="0 0 24 24"><path d="M12 8V4l8 8-8 8v-4H4V8z"/></svg><span class="icon-label">Next</span></div>
+        </div>
+    </div>
+
+</body>
+</html>
