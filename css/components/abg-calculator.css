@@ -1,0 +1,171 @@
+/* ============================================================
+     PAGE-SPECIFIC STYLES: PHÂN TÍCH KHÍ MÁU ĐỘNG MẠCH (ABG)
+     Đã quy hoạch 100% về Design Tokens chuẩn của CliniPortal
+  ============================================================ */
+
+    /* Bố cục lưới hai bên (Input bên trái, Phân tích bên phải trên PC) */
+    .abg-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    /* Khung Panel chứa dữ liệu và kết quả */
+    .panel {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: background-color var(--tr), border-color var(--tr);
+    }
+
+    .panel-title {
+      font-size: var(--text-md);
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--color-divider);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Cấu trúc các nhóm nhập liệu */
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .input-group label {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      background-color: var(--color-surface-offset);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      transition: border-color var(--tr), box-shadow var(--tr);
+    }
+
+    input[type="number"]:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px var(--color-primary-hl);
+    }
+
+    .grid-2-col {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    /* Hộp hiển thị kết quả các bước phân tích logic */
+    .step-box {
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      background-color: var(--color-surface-offset);
+      border-left: 4px solid var(--color-border);
+      transition: border-color var(--tr), background-color var(--tr);
+    }
+
+    .step-box h4 {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--color-text);
+    }
+
+    .step-box p {
+      font-size: var(--text-sm);
+      margin: 0;
+      line-height: 1.5;
+      color: var(--color-text);
+    }
+
+    /* Trạng thái đường viền linh hoạt cho các bước phân tích */
+    .status-valid {
+      border-left-color: var(--color-success);
+    }
+
+    .status-invalid {
+      border-left-color: var(--color-rose);
+      background-color: var(--color-rose-hl);
+    }
+
+    .status-primary {
+      border-left-color: var(--color-primary);
+    }
+
+    .status-warning {
+      border-left-color: var(--color-warning);
+    }
+
+    /* Khối kết luận chẩn đoán cuối cùng */
+    .conclusion-box {
+      background-color: var(--color-success-hl);
+      border: 1px solid var(--color-success);
+      padding: 1.25rem;
+      border-radius: var(--radius-md);
+      margin-top: 1.5rem;
+    }
+
+    .conclusion-box h3 {
+      color: var(--color-success);
+      margin: 0 0 0.5rem 0;
+      font-size: var(--text-md);
+      font-weight: 700;
+    }
+
+    .conclusion-box p {
+      margin: 0;
+      font-size: var(--text-sm);
+      color: var(--color-text);
+      line-height: 1.5;
+    }
+
+    /* Nút đặt lại dữ liệu */
+    .reset-btn {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: var(--color-surface-offset);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color var(--tr), border-color var(--tr);
+      margin-top: 1rem;
+    }
+
+    .reset-btn:hover {
+      background-color: var(--color-divider);
+      border-color: var(--color-primary);
+    }
+
+    /* ── Xử lý Responsive trên thiết bị màn hình lớn ── */
+    @media (min-width: 992px) {
+      .abg-grid {
+        grid-template-columns: 1fr 1fr;
+        /* Chia đôi hai cột cân xứng */
+      }
+
+      .sticky-panel {
+        position: sticky;
+        top: calc(var(--header-height, 60px) + 1.25rem);
+        height: fit-content;
+      }
+    }

@@ -1,0 +1,681 @@
+/* ============================================================
+   PHYSIOLOGY & PATHOPHYSIOLOGY DESIGN SYSTEM (physio-patho.css)
+   ============================================================ */
+
+/* ============================================================
+   SECTION 1: PHYSIOLOGY & PATHOPHYSIOLOGY MODULE HUB (Sinhly-sinhlybenh.html)
+   ============================================================ */
+.section-divider {
+    margin: 2.5rem 0 1.5rem 0;
+    border: 0;
+    border-top: 1px dashed var(--color-border);
+}
+
+.specialty-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+    gap: 1.25rem;
+}
+
+.specialty-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    transition: transform var(--tr), box-shadow var(--tr), border-color var(--tr), background var(--tr);
+    text-decoration: none;
+    color: inherit;
+}
+
+.specialty-card:not(.disabled):hover {
+    transform: translateY(-3px);
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-md);
+}
+
+.specialty-card.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: var(--color-surface-offset);
+    border-color: var(--color-divider);
+}
+
+.specialty-card.disabled .specialty-icon {
+    filter: grayscale(100%);
+    opacity: 0.7;
+}
+
+.specialty-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--color-surface-offset);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    border: 1px solid var(--color-divider);
+    transition: transform var(--tr), background var(--tr), border-color var(--tr);
+}
+
+.specialty-card:not(.disabled):hover .specialty-icon {
+    transform: scale(1.05);
+    background: var(--color-primary-hl);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.physio-group-container {
+    margin-bottom: 2rem;
+}
+
+.physio-group-container:last-child {
+    margin-bottom: 0;
+}
+
+.physio-group-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-divider);
+}
+
+.physio-group-header h3 {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--color-text-muted);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.physio-group-icon {
+    font-size: 1.1rem;
+}
+
+.specialty-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.specialty-info h3 {
+    font-size: var(--text-base);
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: var(--color-text);
+}
+
+.specialty-info p {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    line-height: 1.5;
+}
+
+/* Accordions for Pathophysiology group-container */
+.groups-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.group-container {
+    flex: 1 1 calc(50% - 1.25rem);
+    min-width: 320px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-divider);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--tr);
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.group-container.active {
+    flex: 1 1 100%;
+    box-shadow: var(--shadow-md);
+}
+
+.group-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    padding: 0.25rem 0;
+}
+
+.group-heading h3 {
+    font-size: var(--text-md);
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.toggle-indicator {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--tr);
+    color: var(--color-text-muted);
+}
+
+.toggle-indicator::after {
+    content: '▼';
+    font-size: 0.75rem;
+}
+
+.group-container.active .toggle-indicator {
+    transform: rotate(180deg);
+    color: var(--color-primary);
+}
+
+.category-grid-wrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows var(--tr), margin var(--tr), padding var(--tr);
+}
+
+.group-container.active .category-grid-wrapper {
+    grid-template-rows: 1fr;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px dashed var(--color-divider);
+}
+
+.category-grid {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.group-container.g-red.active {
+    border-left: 4px solid var(--color-rose);
+}
+
+.group-container.g-blue.active {
+    border-left: 4px solid var(--color-primary);
+}
+
+.group-container.g-amber.active {
+    border-left: 4px solid var(--color-warning);
+}
+
+.group-container.g-teal.active {
+    border-left: 4px solid #14b8a6;
+}
+
+.group-container.g-green.active {
+    border-left: 4px solid var(--color-success);
+}
+
+
+/* ============================================================
+   SECTION 2: PHYSIOLOGY & PATHOPHYSIOLOGY SPECIALTY HUB (SL_HeMau&Huyethoc.html)
+   ============================================================ */
+
+/* Compartment theme overrides */
+.comp-1 {
+    --comp-color: #0d9488; /* Teal */
+    --comp-color-light: rgba(13, 148, 136, 0.08);
+    --comp-bg: var(--color-surface);
+}
+.comp-2 {
+    --comp-color: #e11d48; /* Rose */
+    --comp-color-light: rgba(225, 29, 72, 0.08);
+    --comp-bg: var(--color-surface);
+}
+.comp-3 {
+    --comp-color: #7c3aed; /* Violet */
+    --comp-color-light: rgba(124, 58, 237, 0.08);
+    --comp-bg: var(--color-surface);
+}
+.comp-4 {
+    --comp-color: #d97706; /* Amber */
+    --comp-color-light: rgba(217, 119, 6, 0.08);
+    --comp-bg: var(--color-surface);
+}
+
+.search-control-panel {
+    background: var(--color-surface);
+    border: 1px solid var(--color-divider);
+    border-radius: var(--radius-xl);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.search-container {
+    position: relative;
+    width: 100%;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.65rem 1rem 0.65rem 2.5rem;
+    font-size: var(--text-sm);
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    color: var(--color-text);
+    outline: none;
+    transition: border-color var(--tr), box-shadow var(--tr), background var(--tr);
+}
+
+.search-input:focus {
+    border-color: var(--color-hema-accent, var(--color-primary));
+    box-shadow: 0 0 0 3px rgba(var(--color-hema-accent-rgb, var(--color-primary-rgb, 0, 128, 128)), 0.12);
+    background: var(--color-surface);
+}
+
+.search-icon-svg {
+    position: absolute;
+    left: 0.85rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-faint);
+    pointer-events: none;
+}
+
+.compartments-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2.25rem;
+}
+
+.compartment-section {
+    background: var(--color-surface-offset);
+    border: 1px solid var(--color-divider);
+    border-radius: var(--radius-xl);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: border-color var(--tr);
+}
+
+.compartment-section:hover {
+    border-color: var(--color-divider);
+}
+
+.compartment-title-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--color-divider);
+}
+
+.compartment-icon {
+    font-size: 1.5rem;
+    padding: 0.35rem;
+    background: var(--comp-color-light);
+    border-radius: var(--radius-md);
+    color: var(--comp-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(var(--color-hema-accent-rgb, var(--color-primary-rgb, 0, 128, 128)), 0.1);
+}
+
+.compartment-info {
+    flex: 1;
+}
+
+.compartment-info h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-md);
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0 0 0.2rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.compartment-info p {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin: 0;
+    line-height: 1.45;
+}
+
+.lessons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+    gap: 1.25rem;
+}
+
+.lesson-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--tr), border-color var(--tr), box-shadow var(--tr);
+    height: 100%;
+}
+
+.lesson-card-accent {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--comp-color);
+    border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+    transition: width var(--tr);
+}
+
+.lesson-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--comp-color);
+    box-shadow: var(--shadow-md);
+}
+
+.lesson-card:hover .lesson-card-accent {
+    width: 6px;
+}
+
+.lesson-card h3 {
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.4;
+    padding-left: 0.25rem;
+    transition: color var(--tr);
+}
+
+.lesson-card:hover h3 {
+    color: var(--comp-color);
+}
+
+.lesson-tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: auto;
+    padding-left: 0.25rem;
+}
+
+.lesson-tag {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    background: var(--color-surface-offset);
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-divider);
+    transition: all var(--tr);
+}
+
+.empty-search-state {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+    text-align: center;
+    background: var(--color-surface);
+    border: 1px dashed var(--color-divider);
+    border-radius: var(--radius-xl);
+    margin-top: 1.5rem;
+}
+
+.empty-search-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.empty-search-state h3 {
+    font-size: var(--text-md);
+    margin-bottom: 0.25rem;
+    color: var(--color-text);
+}
+
+.empty-search-state p {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+}
+
+
+/* ============================================================
+   SECTION 3: PHYSIOLOGY INDIVIDUAL LESSONS (SL_Hema_BaiX.html)
+   ============================================================ */
+.back-link-container {
+    margin-bottom: 1.25rem;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-hema-accent, var(--color-primary));
+    font-weight: 600;
+    font-size: var(--text-sm);
+    text-decoration: none;
+    transition: transform var(--tr), color var(--tr);
+}
+
+.back-link:hover {
+    color: var(--color-hema-accent-hover, var(--color-primary-hover));
+    transform: translateX(-4px);
+}
+
+.lesson-container {
+    background: var(--color-surface);
+    border: 1px solid var(--color-divider);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.lesson-header-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    border-bottom: 2px solid var(--color-divider);
+    padding-bottom: 1.25rem;
+}
+
+.lesson-header-row h1 {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.lesson-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.lesson-tag {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    background: var(--color-hema-accent-light, var(--color-primary-hl));
+    color: var(--color-hema-accent, var(--color-primary));
+    border: 1px solid rgba(var(--color-hema-accent-rgb, var(--color-primary-rgb, 0, 128, 128)), 0.15);
+}
+
+.lesson-summary-box {
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    color: var(--color-text);
+    background: var(--color-surface-offset);
+    border-left: 4px solid var(--color-hema-accent, var(--color-primary));
+    padding: 1.25rem;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.clinical-section-title {
+    font-family: var(--font-display);
+    font-size: var(--text-md);
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 1.5rem 0 0.75rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.high-yield-card {
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.high-yield-list {
+    margin: 0;
+    padding-left: 1.5rem;
+    list-style-type: decimal;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.high-yield-list li {
+    font-size: var(--text-sm);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+
+/* ============================================================
+   SECTION 4: VISUAL PHYSIOLOGY PAGES (Visual Physiology/PhanX/ChuongX_Name.html)
+   ============================================================ */
+.visual-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.chapter-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.chapter-header h1 {
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.chapter-header p {
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+}
+
+.image-placeholder-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.image-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.image-drop-area {
+    width: 100%;
+    min-height: 400px;
+    background: var(--color-surface-offset);
+    border: 2px dashed var(--color-divider);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.image-drop-area:hover {
+    border-color: var(--color-primary);
+    background: rgba(0, 128, 128, 0.05); /* CliniPortal medical green tint */
+}
+
+.image-drop-text {
+    text-align: center;
+}
+
+.image-drop-text .icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+    opacity: 0.7;
+}
+
+.image-description {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    background: var(--color-surface-offset);
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    border-left: 4px solid var(--color-primary);
+}

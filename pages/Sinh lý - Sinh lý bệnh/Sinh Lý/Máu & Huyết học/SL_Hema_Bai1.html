@@ -19,8 +19,9 @@
     <link rel="stylesheet" href="../../../../css/components/sidebar.css">
     <link rel="stylesheet" href="../../../../css/components/footer.css">
 
-    <script src="../../../../pages/header.js" defer></script>
+    <script src="../../../../components/header.js" defer></script>
 
+    <link rel="stylesheet" href="../../../../css/components/physio-patho.css">
     <style>
         :root {
             --color-hema-accent: #be123c;
@@ -28,281 +29,11 @@
             --color-hema-accent-light: #fff1f2;
             --color-hema-accent-rgb: 190, 18, 60;
         }
-
-        .breadcrumb-container {
-            padding: 0.5rem 0 1.25rem 0;
-        }
-
-        .breadcrumb-list {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            font-size: var(--text-sm);
-        }
-
-        .breadcrumb-item {
-            display: flex;
-            align-items: center;
-            color: var(--color-text-muted);
-        }
-
-        .breadcrumb-link {
-            color: var(--color-text-muted);
-            transition: color var(--tr);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            text-decoration: none;
-        }
-
-        .breadcrumb-link:hover {
-            color: var(--color-primary);
-            text-decoration: underline;
-        }
-
-        .breadcrumb-item:not(:last-child)::after {
-            content: ">";
-            margin-left: 0.5rem;
-            color: var(--color-border);
-            font-size: 0.8rem;
-            pointer-events: none;
-        }
-
-        .breadcrumb-item.active {
-            color: var(--color-hema-accent);
-            font-weight: 600;
-        }
-
-        .back-link-container {
-            margin-bottom: 1.25rem;
-        }
-
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--color-hema-accent);
-            font-weight: 600;
-            font-size: var(--text-sm);
-            text-decoration: none;
-            transition: transform var(--tr), color var(--tr);
-        }
-
-        .back-link:hover {
-            color: var(--color-hema-accent-hover);
-            transform: translateX(-4px);
-        }
-
-        .lesson-container {
-            background: var(--color-surface);
-            border: 1px solid var(--color-divider);
-            border-radius: var(--radius-xl);
-            padding: 2rem;
-            box-shadow: var(--shadow-sm);
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .lesson-header-row {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            border-bottom: 2px solid var(--color-divider);
-            padding-bottom: 1.25rem;
-        }
-
-        .lesson-header-row h1 {
-            font-family: var(--font-display);
-            font-size: var(--text-lg);
-            font-weight: 700;
-            color: var(--color-text);
-            margin: 0;
-            line-height: 1.3;
-        }
-
-        .lesson-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .lesson-tag {
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            padding: 3px 10px;
-            border-radius: var(--radius-full);
-            background: var(--color-hema-accent-light);
-            color: var(--color-hema-accent);
-            border: 1px solid rgba(var(--color-hema-accent-rgb), 0.15);
-        }
-
-        .lesson-summary-box {
-            font-size: var(--text-sm);
-            line-height: 1.6;
-            color: var(--color-text);
-            background: var(--color-surface-offset);
-            border-left: 4px solid var(--color-hema-accent);
-            padding: 1.25rem;
-            border-radius: 0 var(--radius-md) var(--radius-md) 0;
-        }
-
-        .clinical-section-title {
-            font-family: var(--font-display);
-            font-size: var(--text-md);
-            font-weight: 700;
-            color: var(--color-text);
-            margin: 1.5rem 0 0.75rem 0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .high-yield-card {
-            background: var(--color-surface-2);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-lg);
-            padding: 1.5rem;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .high-yield-list {
-            margin: 0;
-            padding-left: 1.5rem;
-            list-style-type: decimal;
-            display: flex;
-            flex-direction: column;
-            gap: 0.85rem;
-        }
-
-        .high-yield-list li {
-            font-size: var(--text-sm);
-            color: var(--color-text);
-            line-height: 1.6;
-        }
-        /* Interactive Diagrams with Illustrations */
-        .diagram-section {
-            margin-top: 2.5rem;
-            animation: fadeIn var(--tr-slow) ease-out forwards;
-        }
-
-        .interactive-diagram {
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-xl);
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            box-shadow: inset 0 2px 10px rgba(0,0,0,0.02);
-        }
-
-        .diagram-visual-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .diagram-visual-wrapper {
-                flex-direction: row;
-                align-items: flex-start;
-            }
-        }
-
-        .illustration-container {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: var(--color-surface-offset);
-            border-radius: var(--radius-lg);
-            padding: 1rem;
-            border: 1px dashed var(--color-border);
-            min-height: 250px;
-        }
-
-        .diagram-image {
-            max-width: 100%;
-            height: auto;
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-sm);
-            transition: transform 0.3s ease;
-        }
-
-        .legend-container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .legend-container h3 {
-            font-size: var(--text-md);
-            margin: 0 0 0.5rem 0;
-            color: var(--color-text-strong);
-            font-weight: 700;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem 1rem;
-            border-radius: var(--radius-md);
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-size: var(--text-sm);
-            font-weight: 600;
-            color: var(--color-text);
-        }
-
-        .legend-item:hover {
-            background: var(--color-surface-offset);
-            border-color: var(--color-text-muted);
-            transform: translateX(4px);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .legend-color {
-            width: 16px;
-            height: 16px;
-            border-radius: 4px;
-            display: inline-block;
-            flex-shrink: 0;
-        }
-
-        .diagram-info-box {
-            background: var(--color-surface-2);
-            color: var(--color-text-strong);
-            padding: 1.25rem 1.5rem;
-            border-radius: var(--radius-lg);
-            font-size: var(--text-md);
-            font-weight: 500;
-            line-height: 1.6;
-            min-height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
-            border: 1px solid var(--color-border);
-            margin-top: 0.5rem;
-        }
     </style>
 </head>
 
 <body>
-    <div id="header-placeholder" data-header-path="../../../../pages/header.html"></div>
+    <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
     <div class="app-container">
@@ -435,7 +166,7 @@
                     <div class="interactive-diagram" id="fluid-diagram">
                         <div class="diagram-visual-wrapper">
                             <div class="illustration-container">
-                                <img src="../../../../assets/images/body_fluid_compartments.png" alt="Sơ đồ phân chia khoang dịch" class="diagram-image">
+                                <img src="../../../../assets/images/body_fluid_compartments.svg" alt="Sơ đồ phân chia khoang dịch" class="diagram-image">
                             </div>
                             <div class="legend-container">
                                 <h3>Chú thích Sơ đồ</h3>
@@ -467,7 +198,7 @@
                     <div class="interactive-diagram" id="blood-diagram">
                         <div class="diagram-visual-wrapper">
                             <div class="illustration-container">
-                                <img src="../../../../assets/images/blood_components.png" alt="Sơ đồ thành phần máu và điện di protein" class="diagram-image">
+                                <img src="../../../../assets/images/blood_components.svg" alt="Sơ đồ thành phần máu và điện di protein" class="diagram-image">
                             </div>
                             <div class="legend-container">
                                 <h3>Chú thích Sơ đồ</h3>

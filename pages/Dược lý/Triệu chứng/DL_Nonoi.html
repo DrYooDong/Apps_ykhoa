@@ -13,60 +13,12 @@
     <link rel="stylesheet" href="../../../css/components/header.css">
     <link rel="stylesheet" href="../../../css/components/sidebar.css">
     <link rel="stylesheet" href="../../../css/components/footer.css">
-    <script src="../../../pages/header.js" defer></script>
-    <style>
-        :root{--fc-danger:#dc2626;--fc-danger-h:#fef2f2;--fc-danger-b:#fecaca;--fc-warn:#d97706;--fc-warn-h:#fffbeb;--fc-warn-b:#fde68a;--fc-info:#0284c7;--fc-info-h:#f0f9ff;--fc-info-b:#bae6fd;--fc-ok:#16a34a;--fc-ok-h:#f0fdf4;--fc-ok-b:#bbf7d0;--fc-primary:#3f51b5;--fc-teal:#0d9488;--fc-teal-h:#f0fdfa;--fc-teal-b:#99f6e4;}
-        .flow-page{padding-bottom:40px;}
-        .flow-hero{background:linear-gradient(135deg,#134e4a,#0d9488 50%,#059669);border-radius:18px;padding:24px 28px;margin-bottom:20px;color:#fff;position:relative;overflow:hidden;}
-        .flow-hero::before{content:'';position:absolute;top:-30px;right:-30px;width:160px;height:160px;background:rgba(255,255,255,.06);border-radius:50%;}
-        .flow-hero h1{font-size:clamp(16px,2.2vw,22px);font-weight:700;margin:0 0 5px;}
-        .flow-hero p{font-size:13px;opacity:.82;margin:0;}
-        .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.15);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.25);border-radius:100px;padding:3px 11px;font-size:11px;font-weight:600;margin-bottom:10px;}
-        .fc-tree{background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:16px;padding:20px 16px;margin-bottom:20px;}
-        .fc-row{display:flex;justify-content:center;align-items:flex-start;gap:12px;width:100%;flex-wrap:wrap;}
-        .fc-arrow-down{display:flex;flex-direction:column;align-items:center;margin:6px 0;}
-        .fc-arrow-line{width:2px;height:20px;background:linear-gradient(to bottom,#94a3b8,#64748b);}
-        .fc-arrow-head{width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:10px solid #64748b;}
-        .fc-sep{width:100%;border:none;border-top:1.5px dashed #e2e8f0;margin:8px 0;}
-        .fc-legend{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;}
-        .fc-legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:#475569;}
-        .fc-legend-dot{width:11px;height:11px;border-radius:3px;}
-        .fc-node{border-radius:13px;padding:13px 16px;cursor:pointer;border:2px solid transparent;box-shadow:0 3px 12px rgba(0,0,0,.08);transition:all .22s;text-align:center;flex:1;min-width:150px;max-width:300px;}
-        .fc-node:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.14);}
-        .fc-node-title{font-size:13.5px;font-weight:700;margin:0 0 4px;line-height:1.3;}
-        .fc-node-sub{font-size:11.5px;opacity:.8;line-height:1.4;}
-        .fc-node-tag{display:inline-flex;align-items:center;font-size:10px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:2px 8px;border-radius:100px;background:rgba(0,0,0,.1);margin-bottom:6px;}
-        .nc-root{background:linear-gradient(135deg,#134e4a,#0d9488);color:#fff;border-color:rgba(255,255,255,.15);cursor:default;}
-        .nc-danger{background:var(--fc-danger-h);border-color:var(--fc-danger-b);color:#7f1d1d;}
-        .nc-warn{background:var(--fc-warn-h);border-color:var(--fc-warn-b);color:#78350f;}
-        .nc-teal{background:var(--fc-teal-h);border-color:var(--fc-teal-b);color:#134e4a;}
-        .nc-neutral{background:#fff;border-color:#e2e8f0;color:#334155;}
-        .fc-node.active{transform:translateY(-2px);}
-        .nc-danger.active{background:var(--fc-danger)!important;color:#fff!important;border-color:var(--fc-danger)!important;box-shadow:0 4px 16px rgba(220,38,38,.35)!important;}
-        .nc-warn.active{background:var(--fc-warn)!important;color:#fff!important;border-color:var(--fc-warn)!important;}
-        .nc-teal.active,.nc-neutral.active{background:var(--fc-teal)!important;color:#fff!important;border-color:var(--fc-teal)!important;}
-        .fc-layer-disabled{opacity:.32;pointer-events:none;transition:opacity .3s;}
-        .fc-layer-enabled{opacity:1;pointer-events:auto;transition:opacity .3s;}
-        .proto-panel{background:#fff;border-radius:14px;padding:20px;border:1.5px solid #e2e8f0;box-shadow:0 4px 20px rgba(0,0,0,.08);animation:fadeSlide .3s ease;margin-top:4px;}
-        .proto-panel-title{font-size:15px;font-weight:700;margin:0 0 14px;padding-bottom:10px;border-bottom:2px solid;}
-        .proto-badge{display:inline-flex;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(0,0,0,.07);margin-bottom:10px;}
-        .drug-table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0;}
-        .drug-table th{background:#f8fafc;padding:8px 10px;text-align:left;font-weight:700;font-size:12px;border-top:1px solid #e2e8f0;border-bottom:1.5px solid #e2e8f0;}
-        .drug-table td{padding:8px 10px;border-bottom:1px solid #f1f5f9;vertical-align:top;}
-        .drug-table tr:last-child td{border-bottom:none;}
-        .ab{padding:10px 14px;border-radius:9px;margin-top:8px;font-size:13px;border-left:4px solid;line-height:1.55;}
-        .ab-danger{background:var(--fc-danger-h);border-color:var(--fc-danger);color:#7f1d1d;}
-        .ab-warn{background:var(--fc-warn-h);border-color:var(--fc-warn);color:#78350f;}
-        .ab-info{background:var(--fc-info-h);border-color:var(--fc-info);color:#0c4a6e;}
-        .src-badge{display:inline-block;background:#f1f5f9;color:#64748b;font-size:11px;padding:2px 8px;border-radius:6px;margin-top:10px;}
-        @keyframes pulseRed{0%,100%{box-shadow:0 0 0 0 rgba(220,38,38,.4);}50%{box-shadow:0 0 0 8px rgba(220,38,38,0);}}
-        .pulse-danger{animation:pulseRed 2s ease-in-out infinite;}
-        @keyframes fadeSlide{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
-        @media(max-width:560px){.fc-row{flex-direction:column;align-items:center;}.fc-node{max-width:100%;width:100%;}}
-    </style>
+    <script src="../../../components/header.js" defer></script>
+    <link rel="stylesheet" href="../../../css/components/pharmacology-symptoms.css">
+  <script src="../../../js/pharmacology-symptoms.js" defer></script>
 </head>
 <body>
-<div id="header-placeholder" data-header-path="../../header.html"></div>
+<div id="header-placeholder" data-header-path="../../../components/header.html"></div>
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
 <div class="app-container">
     <aside class="app-sidebar" id="appSidebar">
@@ -264,12 +216,7 @@ const DB = {
     }
 };
 
-function resetAll(){
-    document.querySelectorAll('.fc-node:not(.nc-root)').forEach(n=>n.classList.remove('active'));
-    document.getElementById('layer-types').className='fc-layer-disabled';
-    document.getElementById('layer-scenarios').style.display='none';
-    document.getElementById('proto-panel').style.display='none';
-}
+
 function selectPath(path){
     resetAll();
     if(path==='SEVERE'){
@@ -331,25 +278,7 @@ function showEmergencyReferral(name){
     event.currentTarget.classList.add('active');
     document.getElementById('proto-panel').scrollIntoView({behavior:'smooth',block:'nearest'});
 }
-function displayProtocol(key){
-    const d=DB.scenarios[key];
-    const rows=d.drugs.map(dr=>`<tr><td><strong>${dr.name}</strong></td><td>${dr.dose}</td><td>${dr.duration}</td></tr>`).join('');
-    document.getElementById('proto-panel').style.display='block';
-    document.getElementById('proto-panel').innerHTML=`<div class="proto-panel">
-        <div class="proto-badge">💊 Phác đồ Dược lý</div>
-        <div class="proto-panel-title" style="color:#0d9488;border-color:#0d9488;">📋 PHÁC ĐỒ DƯỢC LÝ & AN TOÀN SỬ DỤNG THUỐC CHỐNG NÔN</div>
-        <p style="font-size:14px;font-weight:700;margin-bottom:10px;">${d.title}</p>
-        <table class="drug-table">
-            <thead><tr><th>Tên Thuốc / Liệu Pháp</th><th>Liều lượng & Đường dùng</th><th>Thời gian / Ghi chú</th></tr></thead>
-            <tbody>${rows}</tbody>
-        </table>
-        <div class="ab ab-danger"><strong>🚫 Chống chỉ định:</strong> ${d.ci}</div>
-        <div class="ab ab-warn"><strong>⚠️ Tác dụng phụ:</strong> ${d.warn}</div>
-        <div class="ab ab-info"><strong>🔄 Tương tác thuốc:</strong> ${d.ia}</div>
-        <span class="src-badge">📚 ${d.source}</span>
-    </div>`;
-    document.getElementById('proto-panel').scrollIntoView({behavior:'smooth',block:'nearest'});
-}
+
 </script>
 </body>
 </html>
