@@ -1,0 +1,798 @@
+/* ============================================================
+   PHYSIOLOGY & PATHOPHYSIOLOGY SHARED CONTENT STYLE (physio-shared.css)
+   ============================================================ */
+
+/* 1. INLINE KEYWORD HIGHLIGHTING */
+.term-hl {
+  display: inline-block;
+  background-color: var(--color-primary-hl);
+  color: var(--color-primary);
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.9em;
+  border: 1px solid rgba(var(--color-primary-rgb), 0.15);
+  margin: 0 0.1rem;
+  transition: all var(--tr);
+}
+
+.term-hl:hover {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(var(--color-primary-rgb), 0.2);
+}
+
+/* Secondary high-yield terms (e.g. enzymes, channels) */
+.term-hl-secondary {
+  display: inline-block;
+  background-color: var(--color-purple-hl);
+  color: var(--color-purple);
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.9em;
+  border: 1px solid rgba(var(--color-purple-rgb), 0.15);
+  margin: 0 0.1rem;
+  transition: all var(--tr);
+}
+
+.term-hl-secondary:hover {
+  background-color: var(--color-purple);
+  color: var(--color-surface);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(var(--color-purple-rgb), 0.2);
+}
+
+/* 2. ELEGANT STEPS / TIMELINE PROCESS LIST (For sequential content) */
+.physio-steps {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin: 2rem 0 !important;
+  position: relative;
+  counter-reset: step-counter;
+}
+
+/* Vertical line connecting steps */
+.physio-steps::before {
+  content: '';
+  position: absolute;
+  top: 1rem;
+  bottom: 1rem;
+  left: 1.25rem;
+  width: 2px;
+  background: var(--color-divider);
+  z-index: 1;
+}
+
+.physio-steps li {
+  position: relative;
+  padding-left: 3.5rem;
+  margin-bottom: 1.5rem !important;
+  counter-increment: step-counter;
+}
+
+.physio-steps li:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Custom circle counters */
+.physio-steps li::before {
+  content: counter(step-counter);
+  position: absolute;
+  left: 0.25rem;
+  top: 0.25rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--color-surface);
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: all var(--tr);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Step content card */
+.physio-step-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  transition: all var(--tr);
+  box-shadow: var(--shadow-sm);
+}
+
+.physio-step-card:hover {
+  border-color: var(--color-primary);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-md);
+}
+
+.physio-steps li:hover::before {
+  background: var(--color-primary);
+  color: var(--color-surface);
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.3);
+}
+
+.physio-step-title {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* 3. GRID CONCEPT CARDS LAYOUT (For multi-factor lists) */
+.physio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+.physio-grid-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  transition: all var(--tr);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.physio-grid-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--gradient-accent);
+}
+
+.physio-grid-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md), var(--shadow-glow);
+}
+
+.physio-grid-title {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.physio-grid-card p {
+  font-size: var(--text-sm) !important;
+  color: var(--color-text-muted) !important;
+  line-height: 1.6 !important;
+  margin-bottom: 0 !important;
+  text-align: left !important;
+}
+
+/* 4. MODERN ACCORDION DETAILS (For collapsing extra detail) */
+.physio-details {
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  margin: 1.5rem 0;
+  overflow: hidden;
+  transition: all var(--tr);
+  box-shadow: var(--shadow-sm);
+}
+
+.physio-details[open] {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.physio-details summary {
+  padding: 1rem 1.25rem;
+  font-weight: 600;
+  color: var(--color-text);
+  cursor: pointer;
+  background: var(--color-surface-2);
+  user-select: none;
+  list-style: none; /* Hide default arrow */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background var(--tr);
+}
+
+.physio-details summary:hover {
+  background: var(--color-surface-offset);
+}
+
+.physio-details summary::-webkit-details-marker {
+  display: none; /* Hide Safari default marker */
+}
+
+.physio-details summary::after {
+  content: '▼';
+  font-size: 0.75rem;
+  transition: transform var(--tr);
+  color: var(--color-text-muted);
+}
+
+.physio-details[open] summary::after {
+  transform: rotate(180deg);
+  color: var(--color-primary);
+}
+
+.physio-details-content {
+  padding: 1.25rem;
+  border-top: 1px solid var(--color-divider);
+  background: var(--color-surface);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+/* 5. PROPERTY LISTS (Key-value lines, e.g. Constants) */
+.physio-property-list {
+  background: var(--color-surface-2);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+  border: 1px solid var(--color-divider);
+  list-style: none !important;
+  padding-left: 0 !important;
+}
+
+.physio-property-list li {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--color-divider);
+  gap: 0.25rem;
+}
+
+.physio-property-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.physio-property-list li:first-child {
+  padding-top: 0;
+}
+
+.physio-property-name {
+  font-weight: 700;
+  color: var(--color-primary);
+  font-size: var(--text-sm);
+}
+
+.physio-property-desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+@media (min-width: 640px) {
+  .physio-property-list li {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .physio-property-name {
+    width: 200px;
+    flex-shrink: 0;
+  }
+  
+  .physio-property-desc {
+    flex: 1;
+  }
+}
+
+/* 6. REFINED CLINICAL CALLOUT BOX & HIGH-YIELD CARDS */
+.clinical-note-box {
+  background: var(--color-rose-hl) !important;
+  border-left: 4px solid var(--color-rose) !important;
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0 !important;
+  border: 1px solid rgba(var(--color-rose-rgb), 0.1) !important;
+  border-left-width: 4px !important;
+  padding: 1.5rem !important;
+  transition: transform var(--tr) !important;
+}
+
+.clinical-note-box:hover {
+  transform: scale(1.005);
+}
+
+.clinical-note-box h4 {
+  font-family: var(--font-display);
+  font-size: var(--text-md) !important;
+  font-weight: 700;
+  color: var(--color-rose) !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.clinical-note-box p {
+  color: var(--color-text-muted) !important;
+  line-height: 1.65 !important;
+  margin-bottom: 0 !important;
+}
+
+/* High yield card wrapper override */
+.high-yield-card {
+  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-2) 100%);
+  border: 1px solid var(--color-divider);
+  border-top: 4px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin: 2rem 0;
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.high-yield-card::after {
+  content: '🎯';
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  font-size: 1.5rem;
+  opacity: 0.2;
+}
+
+.high-yield-list {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.high-yield-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem !important;
+  line-height: 1.6 !important;
+  font-size: var(--text-sm) !important;
+}
+
+.high-yield-list li::before {
+  content: '⚡';
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  font-size: 0.95rem;
+}
+
+.high-yield-list li:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* ============================================================
+   7. TITLE & SUBTITLE HEADER CARD
+   ============================================================ */
+.chapter-header {
+  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-2) 100%) !important;
+  border: 1px solid var(--color-divider) !important;
+  border-top: 5px solid var(--color-primary) !important;
+  border-radius: var(--radius-lg) !important;
+  padding: 2.25rem 2.5rem !important;
+  margin: 1.5rem 0 2.5rem 0 !important;
+  box-shadow: var(--shadow-md) !important;
+  text-align: left !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.chapter-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(var(--color-primary-rgb), 0.06) 0%, rgba(var(--color-primary-rgb), 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.chapter-header h1 {
+  font-family: var(--font-display) !important;
+  font-size: var(--text-xl) !important;
+  font-weight: 800 !important;
+  color: var(--color-primary) !important;
+  margin-bottom: 0.75rem !important;
+  line-height: 1.35 !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.chapter-header p {
+  color: var(--color-text-muted) !important;
+  font-size: var(--text-base) !important;
+  line-height: 1.65 !important;
+  margin-bottom: 0 !important;
+  max-width: 850px;
+}
+
+/* ============================================================
+   8. TABLE STYLES & RESPONSIVE WRAPPER
+   ============================================================ */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.75rem 0;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-divider);
+}
+
+.table-responsive .physio-table {
+  margin: 0;
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+}
+
+/* Comparative Table styling */
+.physio-table-compare {
+  width: 100%;
+}
+
+.physio-table-compare th {
+  background: linear-gradient(to bottom, var(--color-primary-hl), rgba(var(--color-primary-rgb), 0.08)) !important;
+  color: var(--color-primary) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  font-size: var(--text-xs);
+  letter-spacing: 0.03em;
+}
+
+/* Highlight first column (spec comparisons) */
+.physio-table-compare td:first-child {
+  font-weight: 600;
+  color: var(--color-text);
+  background-color: var(--color-surface-2);
+  width: 25%;
+}
+
+/* Summary Table styling */
+.physio-table-summary {
+  width: 100%;
+  font-size: var(--text-xs) !important;
+}
+
+.physio-table-summary th {
+  background: var(--color-surface-offset) !important;
+  color: var(--color-text) !important;
+  border-bottom: 2px solid var(--color-divider) !important;
+  font-weight: 600 !important;
+}
+
+.physio-table-summary td {
+  padding: 0.65rem 1rem !important;
+}
+
+/* ============================================================
+   9. PARAGRAPH STYLES
+   ============================================================ */
+.physio-lead {
+  font-size: var(--text-md) !important;
+  line-height: 1.75 !important;
+  color: var(--color-text) !important;
+  font-weight: 500;
+  margin-bottom: 1.5rem !important;
+}
+
+.physio-text-block p {
+  margin-bottom: 1.25rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+/* Callout blockquote */
+.physio-quote {
+  position: relative;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  background: var(--color-surface-2);
+  border-left: 4px solid var(--color-primary);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-style: italic;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   10. CUSTOM LIST STYLES
+   ============================================================ */
+/* Checklist style */
+.physio-list-check {
+  list-style: none !important;
+  padding-left: 0.5rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.physio-list-check li {
+  position: relative;
+  padding-left: 1.75rem !important;
+  margin-bottom: 0.65rem !important;
+  line-height: 1.6 !important;
+  font-size: var(--text-sm) !important;
+  color: var(--color-text-muted) !important;
+}
+
+.physio-list-check li::before {
+  content: '✔️';
+  position: absolute;
+  left: 0;
+  top: 0.05rem;
+  font-size: 0.85rem;
+  color: var(--color-success);
+}
+
+/* Arrow list style */
+.physio-list-arrow {
+  list-style: none !important;
+  padding-left: 0.5rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.physio-list-arrow li {
+  position: relative;
+  padding-left: 1.75rem !important;
+  margin-bottom: 0.65rem !important;
+  line-height: 1.6 !important;
+  font-size: var(--text-sm) !important;
+  color: var(--color-text-muted) !important;
+}
+
+.physio-list-arrow li::before {
+  content: '➔';
+  position: absolute;
+  left: 0;
+  top: 0.05rem;
+  font-size: 0.9rem;
+  color: var(--color-primary);
+  transition: transform var(--tr);
+}
+
+.physio-list-arrow li:hover::before {
+  transform: translateX(3px);
+}
+
+/* Colored Dot list style */
+.physio-list-dot {
+  list-style: none !important;
+  padding-left: 0.5rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.physio-list-dot li {
+  position: relative;
+  padding-left: 1.75rem !important;
+  margin-bottom: 0.65rem !important;
+  line-height: 1.6 !important;
+  font-size: var(--text-sm) !important;
+  color: var(--color-text-muted) !important;
+}
+
+.physio-list-dot li::before {
+  content: '';
+  position: absolute;
+  left: 0.35rem;
+  top: 0.55rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+}
+
+/* ============================================================
+   11. HEADINGS STYLES & ACCENTS
+   ============================================================ */
+.physio-text-block h3 {
+  font-family: var(--font-display) !important;
+  font-size: 1.4rem !important;
+  color: var(--color-primary) !important;
+  margin: 2.25rem 0 1.25rem 0 !important;
+  border-bottom: 1px solid var(--color-divider) !important;
+  padding-bottom: 0.5rem !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  font-weight: 700 !important;
+}
+
+.physio-text-block h3::before {
+  content: "✦" !important;
+  color: var(--color-primary) !important;
+  font-size: 1.1rem !important;
+}
+
+.physio-text-block h4 {
+  font-family: var(--font-display) !important;
+  font-size: var(--text-sm) !important;
+  font-weight: 700 !important;
+  color: var(--color-text) !important;
+  margin-top: 1.75rem !important;
+  margin-bottom: 0.75rem !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  border: none !important;
+  padding: 0 !important;
+  background: none !important;
+}
+
+.physio-text-block h4::before {
+  content: "▪" !important;
+  color: var(--color-primary) !important;
+  font-size: 1rem !important;
+}
+
+.physio-text-block h5 {
+  font-family: var(--font-display) !important;
+  font-size: var(--text-xs) !important;
+  font-weight: 600 !important;
+  color: var(--color-text-muted) !important;
+  margin-top: 1.25rem !important;
+  margin-bottom: 0.5rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none !important;
+  padding: 0 !important;
+}
+
+/* ============================================================
+   12. IMAGE OPTIMIZATION (LAZY LOADING & LIGHTBOX)
+   ============================================================ */
+/* Lazy Loading Smooth Blur-In Transition */
+.physio-img-lazy {
+  opacity: 0;
+  filter: blur(8px);
+  transition: opacity 350ms ease-in-out, filter 350ms ease-in-out;
+}
+
+.physio-img-lazy.loaded {
+  opacity: 1;
+  filter: blur(0);
+}
+
+/* Click-to-Zoom Hover effect on Diagrams */
+.image-drop-area img {
+  cursor: zoom-in;
+  transition: transform var(--tr) !important;
+}
+
+.image-drop-area img:hover {
+  transform: scale(1.025);
+}
+
+/* Lightbox Modal Elements */
+.physio-lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  background-color: rgba(8, 14, 26, 0.95);
+  backdrop-filter: blur(12px) saturate(180%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.physio-lightbox-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.physio-lightbox-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 90%;
+  max-height: 80vh;
+  position: relative;
+}
+
+.physio-lightbox-img {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: var(--radius-md);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  cursor: zoom-out;
+  transform: scale(0.95);
+  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.physio-lightbox-overlay.active .physio-lightbox-img {
+  transform: scale(1);
+}
+
+/* Caption and Meta content card in Lightbox */
+.physio-lightbox-caption {
+  margin-top: 1.5rem;
+  max-width: 750px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-md);
+  color: #e2e8f0;
+  text-align: center;
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  font-family: var(--font-body);
+  box-shadow: var(--shadow-sm);
+}
+
+.physio-lightbox-caption strong {
+  color: var(--color-primary);
+  display: block;
+  font-size: var(--text-base);
+  margin-bottom: 0.25rem;
+  font-family: var(--font-display);
+}
+
+/* Close round button top right */
+.physio-lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--tr);
+  z-index: 100000;
+}
+
+.physio-lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #ffffff;
+  transform: rotate(90deg);
+}
+
+@media (max-width: 768px) {
+  .physio-lightbox-content {
+    max-width: 95%;
+  }
+  .physio-lightbox-caption {
+    width: 90%;
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    font-size: var(--text-xs);
+  }
+  .physio-lightbox-close {
+    top: 1rem;
+    right: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+
