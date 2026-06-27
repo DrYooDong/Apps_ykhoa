@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang='vi' data-theme='light'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta name='description'
+    content='Khám mũi xoang theo Macleod: Hướng dẫn soi mũi trước anterior rhinoscopy, kiểm tra lệch vách ngăn, phát hiện polyp và dấu hiệu tụ máu vách ngăn.'>
+  <title>
+    Khám Mũi Xoang - CliniPortal
+  </title>
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+  <link
+    href='https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap'
+    rel='stylesheet'>
+  <link rel='stylesheet' href="../../../../css/reset.css">
+  <link rel='stylesheet' href="../../../../css/main.css">
+  <link rel='stylesheet' href="../../../../css/components/header.css">
+  <link rel='stylesheet' href="../../../../css/components/sidebar.css">
+  <link rel='stylesheet' href="../../../../css/components/footer.css">
+  <script src="../../../../components/header.js">
+  </script>
+  <script src="../../../../components/footer.js">
+  </script>
+  <style>
+    :root {
+      --a: #047857;
+      --b: #059669;
+      --c: #a7f3d0;
+    }
+  </style>
+  <link rel='stylesheet' href="../../../../css/components/clinical-skill.css">
+</head>
+
+<body>
+  <div id='header-placeholder' data-header-path="../../../../components/header.html">
+  </div>
+  <div class='sidebar-overlay' id='sidebarOverlay'>
+  </div>
+  <div class='app-container'>
+    <aside class='app-sidebar' id='appSidebar'>
+      <button id='sidebar-toggle-arrow' class='sidebar-toggle-arrow' aria-label='Thu gọn/Mở rộng Sidebar'>
+        <svg viewBox='0 0 24 24' width='14' height='14' stroke='currentColor' stroke-width='2.5' fill='none'
+          stroke-linecap='round' stroke-linejoin='round' class='toggle-arrow-svg'>
+          <polyline points='15 18 9 12 15 6'>
+          </polyline>
+        </svg>
+      </button>
+      <nav class='sidebar-nav' aria-label='Điều hướng chính'>
+        <ul class='nav-list' role='list'>
+          <li>
+            <a href="../../../../index.html" class='nav-item'>
+              <span class='nav-icon'>
+                🏠
+              </span>
+              <span class='nav-text'>
+                Trang chủ
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../ky-nang.html" class='nav-item'>
+              <span class='nav-icon'>
+                🩺
+              </span>
+              <span class='nav-text'>
+                Kỹ năng lâm sàng
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Tiếp cận/tiep-can.html" class='nav-item'>
+              <span class='nav-icon'>
+                🤒
+              </span>
+              <span class='nav-text'>
+                Tiếp cận lâm sàng
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Công cụ/cong-cu.html" class='nav-item'>
+              <span class='nav-icon'>
+                ⚙️
+              </span>
+              <span class='nav-text'>
+                Công cụ lâm sàng
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <div class='main-wrapper' id='mainContent'>
+      <nav aria-label='Breadcrumb' class='breadcrumb-container'>
+        <ol class='breadcrumb-list'>
+          <li class='breadcrumb-item'>
+            <a href="../../../../index.html" class='breadcrumb-link'>
+              <span class='home-icon'>
+                🏠
+              </span>
+              Home
+            </a>
+          </li>
+          <li class='breadcrumb-item'>
+            <a href="../../ky-nang.html" class='breadcrumb-link'>
+              Kỹ năng lâm sàng
+            </a>
+          </li>
+          <li class='breadcrumb-item'>
+            <a href='KN_TaiMuiHong.html' class='breadcrumb-link'>
+              Khám tai mũi họng
+            </a>
+          </li>
+          <li class='breadcrumb-item active' aria-current='page'>
+            Khám mũi xoang
+          </li>
+        </ol>
+      </nav>
+      <section class='hero'>
+        <h1>
+          Khám Mũi Xoang (The Nose & Sinuses Examination)
+        </h1>
+        <p>
+          Quy trình hướng dẫn hỏi bệnh và khám lâm sàng hệ thống mũi và các xoang cạnh mũi theo Macleod's Clinical Examination. Hướng dẫn kỹ thuật soi mũi trước, đánh giá độ thông thoáng, phát hiện biến dạng sống mũi và các dấu chứng nguy cơ cao.
+        </p>
+        <div class='quick'>
+          <div class='qi'>
+            <b>
+              Tư thế
+            </b>
+            Ngồi thẳng, đối diện bác sĩ, hơi ngửa đầu nhẹ khi soi mũi
+          </div>
+          <div class='qi'>
+            <b>
+              Điểm nhấn
+            </b>
+            Anterior Rhinoscopy, điểm mạch Little, niêm mạc cuốn mũi, thử độ thông thoáng đường thở
+          </div>
+          <div class='qi'>
+            <b>
+              Red flags
+            </b>
+            Tụ máu vách ngăn (septal haematoma), nghẹt/chảy máu mũi 1 bên kéo dài (nguy cơ u ác), rò dịch não tủy
+          </div>
+        </div>
+      </section>
+      <div class='tabs'>
+        <button class='tab-btn active' data-tab='core'>
+          Nền tảng
+        </button>
+        <button class='tab-btn' data-tab='hx'>
+          Hỏi bệnh
+        </button>
+        <button class='tab-btn' data-tab='exam'>
+          Khám
+        </button>
+        <button class='tab-btn' data-tab='int'>
+          Biện luận
+        </button>
+        <button class='tab-btn' data-tab='tests'>
+          Cận lâm sàng
+        </button>
+        <button class='tab-btn' data-tab='osce'>
+          OSCE
+        </button>
+      </div>
+
+      <!-- TAB: NỀN TẢNG -->
+      <section class='tab active' id='core'>
+        <div class='card'>
+          <h2>Giải phẫu và Sinh lý học lâm sàng (Anatomy and physiology)</h2>
+          <ul>
+            <li><strong>Mũi ngoài (External nose):** Khung nâng đỡ gồm xương chính mũi ở phía trên (khớp với xương trán, xương hàm trên và xương sàng) và phần sụn ở phía dưới tạo nên đỉnh mũi. Khung xương sụn này gắn chặt vào vách ngăn mũi.</strong></li>
+            <li><strong>Hốc mũi (Nasal cavity):** Được ngăn đôi bởi vách ngăn mũi (phần sụn phía trước, phần xương phía sau). Thành ngoài mỗi hốc mũi có 3 cuốn mũi (dưới, giữa, trên) giúp tăng diện tích tiếp xúc để làm ấm, làm ẩm và lọc bụi không khí. Khe khứu giác nằm ở vị trí cao nhất trong hốc mũi, chứa các thụ thể khứu giác có sợi thần kinh đi xuyên qua mảnh sàng lên hành khứu ở hố sọ trước.</strong></li>
+            <li><strong>Các xoang cạnh mũi (Paranasal sinuses):** Các hốc rỗng chứa khí trong xương sọ, được chia thành 2 nhóm:
+              <ul>
+                <li><em>Nhóm xoang trước:</em> Gồm xoang trán, xoang hàm trên và xoang sàng trước. Tất cả dẫn lưu nước và khí vào ngách mũi giữa (dưới cuốn mũi giữa).</li>
+                <li><em>Nhóm xoang sau:</em> Gồm xoang sàng sau và xoang bướm. Dẫn lưu vào ngách bướm sàng (nằm trên cuốn mũi giữa).</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: HỎI BỆNH -->
+      <section class='tab' id='hx'>
+        <div class='card'>
+          <h2>Các triệu chứng lâm sàng thường gặp</h2>
+          <div style='overflow-x: auto; margin-top: 12px;'>
+            <table class='cmp'>
+              <thead>
+                <tr>
+                  <th>Triệu chứng</th>
+                  <th>Gợi ý bệnh lý lành tính vùng mũi xoang</th>
+                  <th>Dấu hiệu cờ đỏ / Nguyên nhân khác</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Nghẹt mũi (Nasal obstruction)</strong></td>
+                  <td>Nghẹt 2 bên: Viêm mũi dị ứng, viêm mũi xoang cấp/mạn, polyp mũi.<br>Nghẹt 1 bên: Lệch vách ngăn, chấn thương cũ.</td>
+                  <td>Nghẹt mũi 1 bên liên tục kèm đau tức và chảy máu: Khối u ác tính vùng mũi xoang hoặc u xơ vòm mũi họng (ở nam thiếu niên).</td>
+                </tr>
+                <tr>
+                  <td><strong>Chảy dịch mũi (Rhinorrhoea)</strong></td>
+                  <td>Dịch trong 2 bên: Viêm mũi dị ứng/vận mạch.<br>Dịch mủ xanh/vàng 2 bên: Viêm mũi xoang nhiễm khuẩn.</td>
+                  <td>Dịch mủ hôi 1 bên ở trẻ em: Dị vật hốc mũi.<br>Dịch trong chảy 1 bên liên tục sau chấn thương đầu: Rò dịch não tủy (CSF leak) do nứt vỡ nền sọ.</td>
+                </tr>
+                <tr>
+                  <td><strong>Chảy máu mũi (Epistaxis)</strong></td>
+                  <td>Khô niêm mạc, ngoáy mũi, chấn thương nhẹ vách ngăn trước (điểm mạch Little).</td>
+                  <td>Chảy máu mũi sau hoặc chảy máu 1 bên dai dẳng: U ác tính, dùng thuốc chống đông (warfarin), tăng huyết áp, hít cocaine gây hoại tử vách ngăn.</td>
+                </tr>
+                <tr>
+                  <td><strong>Biến dạng mũi</strong></td>
+                  <td>Chấn thương lệch trục sống mũi.</td>
+                  <td>Biến dạng "mũi hình yên ngựa" (saddle nose): Thủng vách ngăn do giang mai bẩm sinh, u hạt Wegener, hít cocaine mạn tính.</td>
+                </tr>
+                <tr>
+                  <td><strong>Rối loạn ngửi (Hyposmia)</strong></td>
+                  <td>Mất/giảm ngửi tạm thời do nghẹt mũi, viêm xoang, polyp mũi cản trở luồng khí.</td>
+                  <td>Mất ngửi sau chấn thương sọ não (đứt sợi thần kinh khứu). Ảo khứu (phantosmia) gợi ý động kinh thùy thái dương.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class='card'>
+          <h2>Khung câu hỏi gợi ý và tiền sử bệnh</h2>
+          <ul>
+            <li><strong>Khảo sát tính chất nghẹt/chảy dịch:</strong> "Bạn nghẹt mũi 1 bên hay cả 2 bên? Nghẹt liên tục hay thay đổi theo tư thế nằm? Dịch mũi màu gì, chảy ra trước hay chảy rớt xuống họng gây ho?".</li>
+            <li><strong>Tầm soát dị ứng và hen suyễn:</strong> Hỏi về tiền sử dị ứng thời tiết, bụi nhà (atopy). Chú ý rằng khoảng 1/3 bệnh nhân viêm mũi dị ứng có hen suyễn đi kèm.</li>
+            <li><strong>Lối sống & Nghề nghiệp:</strong> Tiền sử hít cocaine. Phơi nhiễm lâu năm với bụi gỗ cứng là yếu tố nguy cơ được chứng minh gây adenocarcinoma vùng sàng hàm.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: KHÁM -->
+      <section class='tab' id='exam'>
+        <div class='card'>
+          <h2>Quy trình khám lâm sàng Mũi Xoang</h2>
+          <ul class='check'>
+            <li>
+              <input type='checkbox'>
+              <span><strong>1. Nhìn bên ngoài:</strong> Đứng đối diện và nhìn từ trên đỉnh đầu xuống để đánh giá trục sống mũi có thẳng hay lệch, tìm sẹo mổ cũ, sưng nề đỏ hay bầm tím do chấn thương cấp.</span>
+            </li>
+            <li>
+              <input type='checkbox'>
+              <span><strong>2. Đánh giá độ thông thoáng đường thở:</strong> Dùng ngón tay ấn đè lần lượt từng bên cánh mũi để bít đường thở, yêu cầu bệnh nhân hít thở mạnh bằng bên còn lại để cảm nhận luồng khí. Có thể dùng đè lưỡi kim loại lạnh đặt dưới 2 lỗ mũi để quan sát diện tích vết đọng hơi nước.</span>
+            </li>
+            <li>
+              <input type='checkbox'>
+              <span><strong>3. Kỹ thuật soi mũi trước (Anterior Rhinoscopy):</strong>
+                <ul>
+                  <li>Dùng ngón tay cái của tay không thuận nâng nhẹ đỉnh mũi bệnh nhân lên trên để lộ rõ tiền đình mũi.</li>
+                  <li>Cầm đèn soi tai (otoscope) với loa soi lớn nhất, đưa nhẹ vào tiền đình mũi.</li>
+                  <li>Quan sát vách ngăn mũi: Đánh giá màu sắc niêm mạc, tìm mạng mạch máu cương tụ ở vùng Little, sẹo cũ, lỗ thủng vách ngăn hoặc khối tụ máu vách ngăn.</li>
+                  <li>Quan sát các cuốn mũi (đặc biệt cuốn mũi dưới và cuốn mũi giữa): Đánh giá niêm mạc cuốn mũi sưng nề đỏ hay nhợt nhạt xám xịt; tìm dịch nhầy trong hoặc dịch mủ ở các khe ngách mũi.</li>
+                  <li>Tìm kiếm polyp mũi: Polyp xuất hiện dưới dạng khối sưng màu vàng nhạt hoặc xám, trơn láng, mọng nước.</li>
+                </ul>
+              </span>
+            </li>
+            <li>
+              <input type='checkbox'>
+              <span><strong>4. Sờ nắn:</strong> Sờ nắn nhẹ dọc xương chính mũi tìm điểm đau chói, tiếng lạo xạo xương (gãy xương chính mũi). Ở bệnh nhân chấn thương mặt, bắt buộc phải sờ dọc bờ dưới ổ mắt tìm biến dạng bậc thang (step deformity) và kiểm tra cảm giác vùng dưới ổ mắt (dây V2).</span>
+            </li>
+            <li>
+              <input type='checkbox'>
+              <span><strong>5. Ấn điểm đau xoang:</strong> Ấn ngón cái vào vùng xoang trán (khóe trong trên ổ mắt) và vùng xoang hàm (hố nanh dưới ổ mắt) tìm điểm đau chói trong viêm xoang cấp.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: BIỆN LUẬN -->
+      <section class='tab' id='int'>
+        <div class='grid2'>
+          <div class='card'>
+            <h2>Biện luận phát hiện khi soi mũi trước</h2>
+            <ul>
+              <li><strong>Niêm mạc nhợt nhạt, ẩm ướt, cuốn mũi phì đại:</strong> Đặc trưng của viêm mũi dị ứng. Đi kèm triệu chứng hắt hơi, ngứa mắt đỏ mắt.</li>
+              <li><strong>Niêm mạc sưng đỏ, sung huyết mạnh:</strong> Điển hình cho viêm mũi nhiễm khuẩn hoặc viêm mũi do thuốc (lạm dụng thuốc xịt co mạch otrivin kéo dài).</li>
+              <li><strong>Cách phân biệt cuốn mũi dưới phì đại và polyp mũi:</strong>
+                <ul>
+                  <li>Dùng tăm bông đeo găng chạm nhẹ vào khối sưng: Cuốn mũi dưới có cảm giác đau và rất chắc. Polyp mũi mọng nước, di động dễ dàng, hoàn toàn không đau khi chạm và không co lại khi nhỏ thuốc co mạch.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class='card'>
+            <div class='clinical-warning'>
+              <h4>⚠️ Dấu hiệu nguy cấp: Tụ máu vách ngăn (Septal Haematoma)</h4>
+              <p>Thường xuất hiện sau chấn thương mũi. Nhìn thấy khối sưng màu đỏ/tím, phập phều ở một hoặc hai bên vách ngăn trước, gây nghẹt mũi hoàn toàn.</p>
+              <p style='margin-top: 8px;'><em>Cơ chế nguy hại:</em> Sụn vách ngăn không có mạch máu nuôi riêng mà nhận khuếch tán dinh dưỡng từ màng sụn. Khối tụ máu bóc tách màng sụn làm sụn hoại tử vô mạch sau 24-48 giờ, dẫn đến thủng vách ngăn vĩnh viễn và sụp đổ sống mũi gây biến dạng "mũi hình yên ngựa".</p>
+              <p style='margin-top: 8px;'><strong>Xử trí:</strong> Rạch dẫn lưu khối tụ máu và nhét bấc mũi ép chặt khẩn cấp.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: CẬN LÂM SÀNG -->
+      <section class='tab' id='tests'>
+        <div class='card'>
+          <h2>Cận lâm sàng chuyên khoa Mũi Xoang</h2>
+          <ul>
+            <li><strong>Nội soi mũi xoang (Nasal Endoscopy):</strong> Sử dụng ống nội soi cứng (0 độ, 30 độ hoặc 70 độ) hoặc ống soi mềm. Giúp quan sát chi tiết ngách mũi giữa, lỗ đổ các xoang, phát hiện sớm polyp nhỏ, vùng niêm mạc thoái hóa và lấy dịch mủ cấy vi khuẩn.</li>
+            <li><strong>Chụp cắt lớp vi tính (CT Scan) mũi xoang:</strong> Tiêu chuẩn vàng để đánh giá hệ thống xoang. Cho thấy tình trạng dày niêm mạc, mức dịch khí trong xoang, các polyp lấp đầy xoang và tình trạng tiêu xương/xâm lấn nghi ngờ u ác tính. Rất quan trọng để lập bản đồ phẫu thuật nội soi mũi xoang (FESS).</li>
+            <li><strong>X-quang Blondeau - Hirtz:</strong> Giá trị hạn chế, hiện nay hầu như được thay thế bằng CT Scan do chồng ảnh nhiều.</li>
+            <li><strong>Xét nghiệm dị ứng:</strong> Test lẩy da (Skin-prick test) với dị nguyên hô hấp hoặc định lượng IgE đặc hiệu trong máu giúp chẩn đoán nguyên nhân viêm mũi dị ứng.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: OSCE -->
+      <section class='tab' id='osce'>
+        <div class='grid2'>
+          <div class='card'>
+            <span class='case'>OSCE 1</span>
+            <h2>OSCE: Tiếp cận bệnh nhân chảy máu mũi (Epistaxis)</h2>
+            <p><strong>Yêu cầu:</strong> Bệnh nhân nam 68 tuổi, đến cấp cứu vì chảy máu mũi bên trái tái phát nhiều lần trong 2 tuần qua. Hãy khai thác bệnh sử và đề xuất hướng xử trí.</p>
+            <p style='margin-top: 8px;'><strong>Tóm tắt phát hiện:</strong> Khai chảy máu mũi trái rỉ rả từng đợt, tự cầm sau 10 phút ép chặt cánh mũi, máu chủ yếu chảy ra cửa mũi trước. Không có chấn thương cơ học. Không nghẹt mũi kéo dài, không đau tức mặt, không sụt cân. Bệnh nhân có tiền sử tăng huyết áp và rung nhĩ, đang dùng thuốc chống đông Warfarin và Amlodipine.</p>
+            <p style='margin-top: 8px;'><strong>Chẩn đoán sơ bộ:</strong> Chảy máu mũi trước bên trái (điểm mạch Little) do thành mạch yếu kết hợp rối loạn đông máu do thuốc (Warfarin) và kiểm soát huyết áp kém.</p>
+            <p style='margin-top: 8px;'><strong>Đề xuất xử trí:</strong> 
+              1. Hướng dẫn bệnh nhân ngồi cúi đầu nhẹ ra trước (tránh nuốt máu), bóp chặt cánh mũi liên tục trong 10 phút, đặt gạc lạnh vùng gốc mũi.
+              2. Đo huyết áp, kiểm tra công thức máu và xét nghiệm chỉ số đông máu INR cấp.
+              3. Soi mũi trước tìm điểm mạch chảy để tiến hành đốt điện hoặc chấm nitrat bạc co mạch. Nếu không cầm, nhét bấc mũi trước (anterior nasal packing).
+            </p>
+          </div>
+
+          <div class='card'>
+            <span class='case'>OSCE 2</span>
+            <h2>OSCE: Khám bệnh nhân nghẹt mũi nghi ngờ Polyp</h2>
+            <p><strong>Yêu cầu:</strong> Bệnh nhân nữ 24 tuổi than phiền bị nghẹt mũi hai bên kéo dài và mất khứu giác. Hãy thăm khám mũi.</p>
+            <p style='margin-top: 8px;'><strong>Tóm tắt phát hiện:</strong> Trục mũi ngoài thẳng. Soi mũi trước bằng otoscope phát hiện hốc mũi hai bên bị lấp đầy bởi các khối sưng mềm màu xám nhạt, bề mặt trơn láng mọng nước, không đau khi chạm nhẹ bằng tăm bông. Không có khối tụ máu vách ngăn, vách ngăn không lệch. Nghiệm pháp đè lưỡi lạnh đọng hơi nước rất ít ở cả hai bên hốc mũi.</p>
+            <p style='margin-top: 8px;'><strong>Chẩn đoán sơ bộ:</strong> Polyp mũi hai bên mức độ III gây tắc nghẽn đường thở và giảm khứu giác.</p>
+            <p style='margin-top: 8px;'><strong>Đề xuất đánh giá tiếp theo:</strong> Chuyển khám chuyên khoa thực hiện nội soi mũi xoang đánh giá mức độ lan rộng của polyp và chụp CT Scan mũi xoang đánh giá hệ thống xoang cạnh mũi. Khai thác thêm tiền sử hen phế quản và dị ứng thuốc (tam chứng Samter: polyp mũi + hen + nhạy cảm Aspirin).</p>
+          </div>
+        </div>
+        <div class='card'>
+          <h2>Tài liệu tham khảo (References)</h2>
+          <ol>
+            <li>Innes JA, Dover AR, Fairhurst K. <em>Macleod's Clinical Examination</em>. 14th ed. Edinburgh: Elsevier; 2018.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class='links'>
+        <div class='card'>
+          <h2>Các bài cùng chuyên khoa Tai Mũi Họng</h2>
+          <div class='grid3'>
+            <a class='link-card' href='KN_KhamTai.html'>
+              <h3 style='color: #0ea5e9;'>Khám Tai</h3>
+              <small>Soi tai màng nhĩ, khám thính lực bằng âm thoa Rinne & Weber, khám tiền đình Dix-Hallpike.</small>
+            </a>
+            <a class='link-card' href='KN_KhamHongCo.html'>
+              <h3 style='color: #7c3aed;'>Khám Họng Cổ</h3>
+              <small>Khám khoang miệng, amidan, sờ hạch vùng cổ và đánh giá khàn tiếng.</small>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <footer class='global-footer'>
+    <div id='footer-placeholder' data-footer-path="../../../../components/footer.html">
+    </div>
+  </footer>
+  <script src="../../../../js/clinical-skill-tabs.js"></script>
+  <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Trang bài viết lý thuyết Cơ chế Sinh lý - Sinh lý bệnh mẫu chuẩn CliniPortal">
+    <title>Physiology Template – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components/header.css">
+    <link rel="stylesheet" href="../css/components/sidebar.css">
+    <link rel="stylesheet" href="../css/components/footer.css">
+
+    <!-- CSS Sinh lý học dùng chung (Tải từ module Sinh lý - Sinh lý bệnh) -->
+    <link rel="stylesheet" href="../pages/Sinh lý - Sinh lý bệnh/css/physio-shared.css">
+    <link rel="stylesheet" href="../css/components/toc.css">
+
+    <!-- Script điều hướng hệ thống -->
+    <script src="../components/header.js" defer></script>
+    <script src="../components/footer.js" defer></script>
+    <script src="../js/main.js" defer></script>
+    
+    <!-- Script Sinh lý học dùng chung (Tải từ module Sinh lý - Sinh lý bệnh) -->
+    <script src="../pages/Sinh lý - Sinh lý bệnh/js/physio-shared.js" defer></script>
+    <script src="../js/toc.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../pages/Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh">
+                            <span class="nav-icon">🧬</span>
+                            <span class="nav-text">Sinh lý & Sinh lý bệnh</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <main class="main-wrapper">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container">
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item">
+                        <a href="../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="../pages/Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="breadcrumb-link">Sinh lý & Sinh lý bệnh</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Cơ chế sinh lý học mẫu</li>
+                </ol>
+            </nav>
+
+            <!-- CHAPTER HEADER CARD -->
+            <div class="chapter-header">
+                <h1>TÊN BÀI HỌC CƠ CHẾ Y KHOA</h1>
+                <p>Hệ thống hóa cơ chế sinh lý cơ bản và cơ chế sinh lý bệnh học liên quan, hỗ trợ lập luận chẩn đoán lâm sàng.</p>
+            </div>
+
+            <!-- MAIN CONTENT AREA (Thường chia làm nội dung chính và cột TOC bên phải trên màn hình máy tính) -->
+            <div class="physio-content-wrapper" style="display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 1.5rem;">
+                <!-- Hỗ trợ responsive layout cho TOC bên phải -->
+                <style>
+                    @media (min-width: 1024px) {
+                        .physio-content-wrapper {
+                            grid-template-columns: 3fr 1fr !important;
+                        }
+                    }
+                </style>
+
+                <!-- VÙNG NỘI DUNG CHÍNH (Chứa H2/H3 để script tự động tạo TOC) -->
+                <div class="physio-main-article">
+                    
+                    <p class="physio-lead">
+                        Đoạn dẫn nhập mở đầu bài học (Lead paragraph) giúp khái quát cơ chế cốt lõi. Ví dụ: Sự điều hòa hoạt động cơ quan thông qua các thụ thể <span class="term-hl">Receptor</span> đặc hiệu và hệ thống tín hiệu nội bào.
+                    </p>
+
+                    <h2 id="sec-sinh-ly">1. Cơ chế Sinh lý học bình thường</h2>
+                    <p>Các cơ chế cân bằng nội môi diễn ra liên tục nhằm duy trì sự ổn định của hệ thống sinh học.</p>
+
+                    <!-- Lưới so sánh song song (.physio-grid) -->
+                    <div class="physio-grid">
+                        <div class="physio-grid-card">
+                            <div class="physio-grid-title">🧬 Con đường A</div>
+                            <p>Kích hoạt thụ thể làm giải phóng ion <span class="term-hl-secondary">Canxi</span> nội bào, dẫn đến co thắt cơ trơn mạch máu.</p>
+                        </div>
+                        <div class="physio-grid-card">
+                            <div class="physio-grid-title">🧪 Con đường B</div>
+                            <p>Ức chế tổng hợp chất xúc tác thông qua tác dụng điều hòa ngược âm tính (Negative feedback loop).</p>
+                        </div>
+                    </div>
+
+                    <h2 id="sec-timeline">2. Diễn tiến các bước / Timeline cơ chế bệnh</h2>
+                    <p>Sự rối loạn chức năng diễn ra theo chuỗi sự kiện tuyến tính liên tục dưới đây:</p>
+
+                    <!-- Chuỗi các bước (.physio-steps) -->
+                    <ol class="physio-steps">
+                        <li>
+                            <div class="physio-step-card">
+                                <span class="physio-step-title">Bước 1: Tác nhân kích thích</span>
+                                Tác nhân gây tổn thương hoặc kích hoạt hệ thống bù trừ ban đầu của cơ thể.
+                            </div>
+                        </li>
+                        <li>
+                            <div class="physio-step-card">
+                                <span class="physio-step-title">Bước 2: Phản ứng bù trừ quá mức</span>
+                                Các cơ chế điều hòa ngược hoạt động quá tải, dẫn đến biến đổi cấu trúc tế bào.
+                            </div>
+                        </li>
+                        <li>
+                            <div class="physio-step-card">
+                                <span class="physio-step-title">Bước 3: Suy giảm chức năng cơ quan</span>
+                                Biểu hiện triệu chứng lâm sàng rõ rệt trên bệnh nhân (Ví dụ: khó thở, giảm tưới máu ngoại biên).
+                            </div>
+                        </li>
+                    </ol>
+
+                    <h2 id="sec-property">3. Các thông số sinh lý quan trọng</h2>
+                    
+                    <!-- Danh sách thuộc tính (.physio-property-list) -->
+                    <ul class="physio-property-list">
+                        <li>
+                            <span class="physio-property-name">Áp suất thẩm thấu huyết tương (Posm)</span>
+                            <span class="physio-property-desc">Duy trì trong khoảng từ 280 đến 295 mOsm/kg H2O, điều hòa chủ yếu bởi ADH và cảm giác khát.</span>
+                        </li>
+                        <li>
+                            <span class="physio-property-name">Tốc độ lọc cầu thận (GFR)</span>
+                            <span class="physio-property-desc">Chỉ số đánh giá chức năng lọc của thận, bình thường dao động quanh mức 90 - 120 mL/phút/1.73m².</span>
+                        </li>
+                    </ul>
+
+                    <h2 id="sec-so-sanh">4. Bảng so sánh lâm sàng</h2>
+                    
+                    <!-- Bảng biểu (.physio-table-compare) -->
+                    <div class="table-responsive">
+                        <table class="physio-table physio-table-compare">
+                            <thead>
+                                <tr>
+                                    <th>Đặc tính</th>
+                                    <th>Trạng thái Sinh lý</th>
+                                    <th>Trạng thái Bệnh lý</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Trương lực mạch</strong></td>
+                                    <td>Ổn định, tự điều hòa linh hoạt</td>
+                                    <td>Giảm trương lực, mất khả năng tự điều hòa</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Đáp ứng với kích thích</strong></td>
+                                    <td>Tuyến tính, trong giới hạn an toàn</td>
+                                    <td>Bùng phát mất kiểm soát, gây hại mô xung quanh</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- CỘT MỤC LỤC BÊN PHẢI (Tự động nạp danh sách liên kết nhờ script) -->
+                <div class="physio-toc-sidebar">
+                    <div class="physio-toc-container" id="physio-toc-container">
+                        <!-- Script physio-toc.js sẽ tự động kết xuất mục lục tại đây -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../components/footer.html"></div>
+
+    <!-- Scripts dùng chung -->
+    <script src="../js/sidebar.js"></script>
+</body>
+
+</html>

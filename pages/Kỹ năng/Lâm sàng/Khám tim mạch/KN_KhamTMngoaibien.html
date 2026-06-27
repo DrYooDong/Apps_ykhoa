@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang='vi' data-theme='light'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta name='description'
+    content='Khám tĩnh mạch ngoại biên: DVT, suy tĩnh mạch mạn, giãn tĩnh mạch, loét tĩnh mạch và JVP khi có phù.'>
+  <title>
+    Khám Tĩnh Mạch Ngoại Biên - CliniPortal
+  </title>
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+  <link
+    href='https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap'
+    rel='stylesheet'>
+  <link rel='stylesheet' href="../../../../css/reset.css">
+  <link rel='stylesheet' href="../../../../css/main.css">
+  <link rel='stylesheet' href="../../../../css/components/header.css">
+  <link rel='stylesheet' href="../../../../css/components/sidebar.css">
+  <link rel='stylesheet' href="../../../../css/components/footer.css">
+  <script src="../../../../components/header.js">
+  </script>
+  <script src="../../../../components/footer.js">
+  </script>
+  <style>
+    :root {
+      --a: #7c3aed;
+      --b: #8b5cf6;
+      --c: #a78bfa;
+    }
+  </style>
+  <link rel='stylesheet' href="../../../../css/components/clinical-skill.css">
+</head>
+
+<body>
+  <div id='header-placeholder' data-header-path="../../../../components/header.html">
+  </div>
+  <div class='sidebar-overlay' id='sidebarOverlay'>
+  </div>
+  <div class='app-container'>
+    <aside class='app-sidebar' id='appSidebar'>
+      <button id='sidebar-toggle-arrow' class='sidebar-toggle-arrow' aria-label='Thu gọn/Mở rộng Sidebar'>
+        <svg viewBox='0 0 24 24' width='14' height='14' stroke='currentColor' stroke-width='2.5' fill='none'
+          stroke-linecap='round' stroke-linejoin='round' class='toggle-arrow-svg'>
+          <polyline points='15 18 9 12 15 6'>
+          </polyline>
+        </svg>
+      </button>
+      <nav class='sidebar-nav' aria-label='Điều hướng chính'>
+        <ul class='nav-list' role='list'>
+          <li>
+            <a href="../../../../index.html" class='nav-item'>
+              <span class='nav-icon'>
+                🏠
+              </span>
+              <span class='nav-text'>
+                Trang chủ
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../ky-nang.html" class='nav-item'>
+              <span class='nav-icon'>
+                🩺
+              </span>
+              <span class='nav-text'>
+                Kỹ năng lâm sàng
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Tiếp cận/tiep-can.html" class='nav-item'>
+              <span class='nav-icon'>
+                🤒
+              </span>
+              <span class='nav-text'>
+                Tiếp cận lâm sàng
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Công cụ/cong-cu.html" class='nav-item'>
+              <span class='nav-icon'>
+                ⚙️
+              </span>
+              <span class='nav-text'>
+                Công cụ lâm sàng
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <div class='main-wrapper' id='mainContent'>
+      <nav aria-label='Breadcrumb' class='breadcrumb-container'>
+        <ol class='breadcrumb-list'>
+          <li class='breadcrumb-item'>
+            <a href="../../../../index.html" class='breadcrumb-link'>
+              <span class='home-icon'>
+                🏠
+              </span>
+              Home
+            </a>
+          </li>
+          <li class='breadcrumb-item'>
+            <a href="../../ky-nang.html" class='breadcrumb-link'>
+              Kỹ năng lâm sàng
+            </a>
+          </li>
+          <li class='breadcrumb-item'>
+            <a href='../Khám tim mạch/KN_Timmach.html' class='breadcrumb-link'>
+              Khám tim mạch
+            </a>
+          </li>
+          <li class='breadcrumb-item active' aria-current='page'>
+            Khám tĩnh mạch ngoại biên
+          </li>
+        </ol>
+      </nav>
+      <section class='hero'>
+        <h1>
+          Khám Tĩnh Mạch Ngoại Biên
+        </h1>
+        <p>
+          Bài khám này dùng khi tiếp cận sưng đau chi dưới, nghi DVT, giãn tĩnh mạch, suy tĩnh mạch mạn hoặc loét tĩnh
+          mạch. Nội dung được dựng lại từ
+          <code>
+              KN_Khám TM ngoại biên.md
+            </code>
+          .
+        </p>
+        <div class='quick'>
+          <div class='qi'>
+            <b>
+              Tư thế
+            </b>
+            Khám cả tư thế đứng và nằm ngửa
+          </div>
+          <div class='qi'>
+            <b>
+              Điểm nhấn
+            </b>
+            Mức độ phù, giãn tĩnh mạch, thay đổi da, loét, JVP
+          </div>
+          <div class='qi'>
+            <b>
+              Red flags
+            </b>
+            DVT sau bất động, sưng đau một chân, tím tái, đau tăng nhanh
+          </div>
+        </div>
+      </section>
+      <div class='tabs'>
+        <button class='tab-btn active' data-tab='core'>
+          Nền tảng
+        </button>
+        <button class='tab-btn' data-tab='hx'>
+          Hỏi bệnh
+        </button>
+        <button class='tab-btn' data-tab='exam'>
+          Khám
+        </button>
+        <button class='tab-btn' data-tab='int'>
+          Biện luận
+        </button>
+        <button class='tab-btn' data-tab='tests'>
+          Cận lâm sàng
+        </button>
+        <button class='tab-btn' data-tab='osce'>
+          OSCE
+        </button>
+      </div>
+      <section class='tab active' id='core'>
+        <div class='card'>
+          <h2>Giải phẫu và Sinh lý học lâm sàng (Anatomy and physiology)</h2>
+          <ul>
+            <li>Máu từ các vùng ngoại biên được đưa trở về tim thông qua một mạng lưới bao gồm các tĩnh mạch sâu (đảm nhiệm 90% lượng máu) và tĩnh mạch nông (10%).</li>
+            <li>Áp lực tác động lên lòng bàn chân khi đi bộ, cùng với sự co bóp của các cơ bắp chân ("bơm cơ bắp chân") và phần nào từ cơ đùi, cơ mông, là động lực chính đẩy máu ngược lên tim chống lại trọng lực.</li>
+            <li>Dòng máu trào ngược được ngăn chặn nhờ hệ thống các van tĩnh mạch, giúp chia cột máu dài từ bàn chân đến tâm nhĩ phải thành các phân đoạn ngắn, áp lực thấp. Nhờ đó, 'áp lực tĩnh mạch khi đi lại' ở bàn chân trong điều kiện sinh lý bình thường thường &lt;20 mmHg.</li>
+            <li>Hệ tĩnh mạch nông ở chi dưới bao gồm tĩnh mạch hiển lớn (chạy dọc mặt trong cẳng chân và đùi, đổ vào tĩnh mạch đùi chung tại bẹn) và tĩnh mạch hiển bé (chạy phía sau mắt cá ngoài và mặt sau bắp chân, đổ vào tĩnh mạch khoeo).</li>
+            <li>Tổn thương van có thể là nguyên phát hoặc thứ phát sau huyết khối (hội chứng hậu huyết khối), dẫn đến sự kết hợp giữa tắc nghẽn và trào ngược tĩnh mạch, gây đau, phù, thay đổi da và loét.</li>
+          </ul>
+        </div>
+      </section>
+      <section class='tab' id='hx'>
+        <div class='card'>
+          <h2>Các triệu chứng cơ năng thường gặp (Common presenting symptoms)</h2>
+          <p>Bệnh lý tĩnh mạch chi dưới thường biểu hiện qua 4 nhóm chính: Giãn tĩnh mạch (varicose veins), Huyết khối tĩnh mạch sâu (deep vein thrombosis - DVT), Suy tĩnh mạch mạn tính kèm loét, và Viêm tĩnh mạch huyết khối nông. Mức độ nghiêm trọng của triệu chứng đôi khi không tương xứng với mức độ bệnh lý thực thể.</p>
+        </div>
+        <div class='table-wrap'>
+          <table class='cmp'>
+            <thead>
+              <tr>
+                <th>Triệu chứng</th>
+                <th>Bệnh lý tĩnh mạch nông/Giãn TM</th>
+                <th>Huyết khối tĩnh mạch sâu (DVT)</th>
+                <th>Suy tĩnh mạch mạn tính / Loét</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Đau chân</strong></td>
+                <td>Cảm giác đau tức, nhức mỏi, ngứa, nặng chân; nặng hơn khi đứng lâu hoặc về chiều.</td>
+                <td>Đau và bắp chân nhạy cảm đau khi chạm vào.</td>
+                <td>Loét tĩnh mạch thường không đau; nếu có đau, triệu chứng giảm khi kê cao chân.</td>
+              </tr>
+              <tr>
+                <td><strong>Sưng phù</strong></td>
+                <td>Cảm giác sưng nề (dù có thể không thấy rõ trên lâm sàng).</td>
+                <td>Sưng toàn bộ cẳng chân hoặc cánh tay, da tím tái, nổi vân đá.</td>
+                <td>Sưng phù mạn tính kèm thay đổi màu sắc da.</td>
+              </tr>
+              <tr>
+                <td><strong>Biểu hiện bề mặt</strong></td>
+                <td>Tĩnh mạch nông giãn to, ngoằn ngoèo. Viêm TM huyết khối nông tạo dải rát đỏ, sờ thấy thừng cứng đau.</td>
+                <td>Ở chi trên có thể thấy tĩnh mạch nông giãn căng (tuần hoàn bàng hệ) ở cánh tay, vai, ngực.</td>
+                <td>Loét nông, màu hồng (mô hạt) hoặc vàng/xanh (mô hoại tử), bờ không đều.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class='grid2'>
+          <div class='card'>
+            <h2>Phân tích chi tiết từng triệu chứng chủ chốt</h2>
+            <p><strong>Đau và sưng phù do bệnh lý tĩnh mạch (Pain and Limb swelling):</strong></p>
+            <ul>
+              <li><em>Vị trí (Site):</em> Thường khu trú ở bắp chân (DVT) hoặc dọc theo đường đi của tĩnh mạch hiển (viêm tĩnh mạch nông). Loét tĩnh mạch mạn tính thường xuất hiện ở mặt trong của cẳng chân.</li>
+              <li><em>Tính chất (Character):</em> Cảm giác căng tức, nặng mỏi (giãn tĩnh mạch) hoặc đau nhức dữ dội (DVT). Viêm TM nông biểu hiện bằng dải rát đỏ và thừng tĩnh mạch sờ đau.</li>
+              <li><em>Yếu tố tăng/giảm:</em> Đau do giãn tĩnh mạch nặng hơn khi đứng lâu và về cuối ngày. Đau do loét tĩnh mạch thuyên giảm khi kê cao chân. <em>Lưu ý:</em> Cần loại trừ bệnh lý động mạch trước khi băng ép điều trị loét tĩnh mạch.</li>
+            </ul>
+            <p style='margin-top: 12px;'><strong>Thay đổi da và loét mạn tính (Skin changes &amp; Ulceration):</strong></p>
+            <ul>
+              <li><em>Chàm tĩnh mạch (Varicose eczema):</em> Vùng da cẳng chân đỏ, ngứa, khô.</li>
+              <li><em>Lắng đọng haemosiderin:</em> Sự thoát mạch của các thành phần máu do tăng áp lực tĩnh mạch gây ra tình trạng da đổi màu nâu, chủ yếu ở mặt trong 1/3 dưới cẳng chân.</li>
+              <li><em>Xơ cứng mỡ da (Lipodermatosclerosis):</em> Phản ứng viêm với haemosiderin làm da đổi màu đỏ/tím và xơ cứng. Lớp da xơ hóa, dày cộm thắt chặt phần dưới cẳng chân, tạo hình ảnh "chai champagne ngược".</li>
+              <li><em>Teo trắng (Atrophie blanche):</em> Các vùng da sẹo nhỏ, màu trắng bên trong khu vực da bị tổn thương.</li>
+            </ul>
+          </div>
+          <div class='card'>
+            <h2>Khung câu hỏi gợi ý ("Ask about...")</h2>
+            <ul>
+              <li><strong>Đau và Sưng:</strong> "Chân của bạn bắt đầu sưng từ khi nào? Cảm giác đau có tăng lên khi đứng lâu hay về chiều tối không? Việc kê cao chân có làm bạn thấy dễ chịu hơn không?".</li>
+              <li><strong>Thay đổi da:</strong> "Bạn có nhận thấy vùng da quanh mắt cá chân bị ngứa, khô ráp hay đổi màu nâu đen không?".</li>
+              <li><strong>Yếu tố nguy cơ DVT:</strong> "Gần đây bạn có nằm viện, phẫu thuật, hay trải qua một chuyến bay dài không? Bạn có đang mang thai hoặc dùng thuốc tránh thai không?".</li>
+            </ul>
+          </div>
+          <div class='card'>
+            <h2>Tiền sử bệnh, Dùng thuốc &amp; Đời sống - Xã hội</h2>
+            <ul>
+              <li><strong>Tiền sử bệnh (Past medical history):</strong> Khai thác kỹ các can thiệp hoặc phẫu thuật tĩnh mạch trước đây (ví dụ: mổ giãn tĩnh mạch).</li>
+              <li><strong>Tiền sử gia đình (Family history):</strong> Tiền sử gia đình mắc bệnh huyết khối hoặc bệnh rối loạn đông máu di truyền (như đột biến yếu tố V Leiden).</li>
+              <li><strong>Lối sống (Social history):</strong> Hút thuốc lá là yếu tố nguy cơ của bệnh lý tim mạch nói chung và làm tăng nguy cơ huyết khối.</li>
+            </ul>
+            <div class='clinical-warning' style='margin-top: 14px;'>
+              <h4>⚠️ Yếu tố nguy cơ &amp; Thuốc gây huyết khối (DVT)</h4>
+              <p><strong>Yếu tố nguy cơ cao:</strong> Nằm bất động kéo dài (sau phẫu thuật, bó bột, chuyến bay dài &gt;4 giờ), béo phì, bệnh lý ác tính, thai kỳ, hoặc tiền sử DVT trước đó.</p>
+              <p style='margin-top: 4px;'><strong>Thuốc làm tăng đông:</strong> Việc sử dụng <strong>thuốc tránh thai đường uống</strong> hoặc <strong>liệu pháp thay thế hormone (HRT)</strong> làm tăng đáng kể nguy cơ huyết khối tĩnh mạch sâu.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class='tab' id='exam'>
+        <div class='grid2'>
+          <div class='card'>
+            <h2>Khám toàn thân (General examination)</h2>
+            <ul>
+              <li>Quan sát biểu hiện đau đớn, mức độ sưng phù của chi và các biến đổi màu sắc da (tím tái, nổi vân đá) để đánh giá sơ bộ tình trạng ứ trệ tĩnh mạch.</li>
+            </ul>
+          </div>
+          <div class='card'>
+            <h2>Quy trình khám chi tiết (Examination sequence)</h2>
+            <p>Quy trình khám được thực hiện với bệnh nhân ở cả hai tư thế: đứng và nằm ngửa.</p>
+            <ul class='check' style='margin-top: 12px;'>
+              <li>
+                <input type='checkbox'>
+                <span><strong>1. Nhìn (Inspection):</strong> Yêu cầu bệnh nhân bộc lộ hai chân. Quan sát sự thay đổi màu sắc da, mức độ sưng nề và sự hiện diện của các tĩnh mạch nông giãn to, ngoằn ngoèo (varicose veins). Tìm kiếm các dấu hiệu của suy tĩnh mạch mạn tính: chàm tĩnh mạch, lắng đọng haemosiderin (màu nâu), xơ cứng mỡ da (lipodermatosclerosis), và loét (đặc biệt ở mặt trong cẳng chân).</span>
+              </li>
+              <li>
+                <input type='checkbox'>
+                <span><strong>2. Sờ (Palpation):</strong> Cảm nhận và so sánh nhiệt độ giữa hai chân. Khám phù ấn lõm (Pitting oedema) bằng cách dùng ngón tay ấn nhẹ lên vùng xương chày phía trên mắt cá chân trong vài giây rồi thả ra xem có để lại vết lõm không. Tránh ấn vào các vùng da đang bị đau hoặc quanh vết loét. Nếu chân sưng to rõ rệt, cần ấn ở các mức cao hơn (bắp chân, đầu gối, đùi) để xác định giới hạn trên của tình trạng phù.</span>
+              </li>
+              <li>
+                <input type='checkbox'>
+                <span><strong>3. Đánh giá áp lực tĩnh mạch cảnh (JVP):</strong> Nếu phát hiện phù chi dưới, bắt buộc phải kiểm tra JVP. Nếu JVP tăng, điều này gợi ý nguyên nhân gây phù là do bệnh lý tim mạch (như suy tim phải) hoặc tăng áp phổi, đặc biệt khi phù xuất hiện ở cả hai chân.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class='tab' id='int'>
+        <div class='card'>
+          <h2>Biện luận triệu chứng và phát hiện lâm sàng (Interpretation of the findings)</h2>
+          <ul>
+            <li><strong>Cấp tính vs Mạn tính:</strong> Mức độ sưng phù và thay đổi da giúp phân biệt bệnh lý cấp tính và mạn tính. Một chân sưng to, đau cấp tính ở bệnh nhân có yếu tố nguy cơ gợi ý huyết khối tĩnh mạch sâu (DVT). Ngược lại, sưng nề nhẹ kèm da đổi màu nâu sẫm, xơ cứng và loét nông ở vùng mắt cá trong là dấu hiệu kinh điển của suy tĩnh mạch mạn tính.</li>
+          </ul>
+          <div class='clinical-warning' style='margin-top: 14px;'>
+            <h4>⚠️ Cảnh báo quan trọng trước khi băng ép điều trị</h4>
+            <p><strong>Bắt buộc đánh giá tưới máu động mạch</strong> (bắt mạch mu chân, chày sau hoặc đo chỉ số ABPI) trước khi băng ép điều trị loét tĩnh mạch. Băng ép có <strong>chống chỉ định tuyệt đối</strong> nếu bệnh nhân có suy động mạch nặng kèm theo, do nguy cơ hoại tử chi do thiếu máu nuôi dưỡng.</p>
+          </div>
+        </div>
+      </section>
+      <section class='tab' id='tests'>
+        <div class='card'>
+          <h2>Cận lâm sàng (Investigations)</h2>
+          <ul>
+            <li>Các nghiệm pháp khám lâm sàng kinh điển để đánh giá sự suy van tĩnh mạch hiển-đùi (như nghiệm pháp garo - tourniquet test, hoặc Trendelenburg test) hiện nay <strong>không còn được sử dụng (obsolete)</strong> và đã được thay thế bằng siêu âm Doppler.</li>
+            <li><strong>Siêu âm Doppler tĩnh mạch (Duplex ultrasound):</strong> Là <strong>tiêu chuẩn vàng</strong> hiện nay để chẩn đoán xác định DVT và lập bản đồ hệ tĩnh mạch để đánh giá suy van cũng như lập kế hoạch can thiệp/phẫu thuật.</li>
+          </ul>
+          <div class='clinical-pearl' style='margin-top: 14px;'>
+            <h4>💡 Sử dụng đầu dò Doppler cầm tay (Hand-held Doppler)</h4>
+            <p><strong>Cách thực hiện:</strong> Bệnh nhân đứng, dồn trọng lượng sang chân đối diện. Đặt đầu dò Doppler cầm tay lên tĩnh mạch hiển lớn hoặc vị trí tiếp nối hiển-đùi (cách điểm giữa nếp bẹn 2 cm xuống dưới và vào trong). Bóp mạnh cơ bắp chân rồi thả ra.</p>
+            <p style='margin-top: 6px;'><strong>Biện luận kết quả:</strong></p>
+            <ul>
+              <li><em>Bình thường (Competent valves):</em> Khi thả tay bóp cơ bắp chân, chỉ nghe thấy một âm thanh trào ngược rất ngắn (&lt;0.5 giây) do các lá van khép lại sinh lý.</li>
+              <li><em>Suy van (Incompetent valves):</em> Nghe thấy tiếng dòng máu trào ngược dội xuống tĩnh mạch kéo dài rõ rệt (&gt;0.5 giây).</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class='tab' id='osce'>
+        <div class='grid2'>
+          <div class='card'>
+            <span class='case'>OSCE 1</span>
+            <h2>Tình huống 1: Khám và biện luận sưng đau chi dưới cấp tính</h2>
+            <p><strong>Yêu cầu:</strong> Bệnh nhân nữ 45 tuổi, vừa trở về sau chuyến bay dài 12 tiếng, than phiền đau tức và sưng bắp chân trái từ hôm qua. Hãy thăm khám hệ tĩnh mạch chi dưới.</p>
+            <p style='margin-top: 8px;'><strong>Tóm tắt phát hiện:</strong> Bệnh nhân tỉnh táo, đi lại hơi tập tễnh. Khám tư thế đứng và nằm cho thấy cẳng chân trái sưng nề toàn bộ so với chân phải. Màu sắc da chân trái hơi tím nhẹ, không có tĩnh mạch ngoằn ngoèo nổi rõ. Sờ thấy bắp chân trái ấm hơn, căng và đau nhiều khi chạm vào. Dấu hiệu ấn lõm dương tính ở 1/3 dưới cẳng chân trái. Khám áp lực tĩnh mạch cảnh (JVP) không tăng. Mạch mu chân và chày sau hai bên bắt rõ bình thường.</p>
+            <p style='margin-top: 8px;'><strong>Chẩn đoán sơ bộ phù hợp:</strong> Huyết khối tĩnh mạch sâu chi dưới trái (Left Deep Vein Thrombosis - DVT) sau bất động kéo dài.</p>
+            <p style='margin-top: 8px;'><strong>Đề xuất đánh giá tiếp theo:</strong> Siêu âm Doppler tĩnh mạch chi dưới trái để chẩn đoán xác định, xét nghiệm D-dimer (nếu nguy cơ lâm sàng ở mức trung bình/thấp theo thang điểm Wells).</p>
+          </div>
+          <div class='card'>
+            <span class='case'>OSCE 2</span>
+            <h2>Tình huống 2: Khám bệnh lý tĩnh mạch mạn tính</h2>
+            <p><strong>Yêu cầu:</strong> Bệnh nhân nam 65 tuổi, làm nghề giáo viên đứng lâu năm, than phiền chân luôn có cảm giác nặng mỏi về chiều và dạo gần đây xuất hiện vết loét ở mắt cá chân phải. Hãy thăm khám hệ tĩnh mạch.</p>
+            <p style='margin-top: 8px;'><strong>Tóm tắt phát hiện:</strong> Khám tư thế đứng thấy hệ thống tĩnh mạch hiển lớn chân phải giãn to, ngoằn ngoèo dọc từ cẳng chân lên đùi. Vùng da 1/3 dưới cẳng chân phải sẫm màu (lắng đọng haemosiderin) và xơ cứng thắt lại (lipodermatosclerosis). Có một vết loét nông kích thước 2x3 cm ở ngay trên mắt cá trong chân phải, đáy loét màu hồng có mô hạt, bờ không đều, không sưng nóng đỏ đau cấp tính. Không có dấu hiệu sưng phù lan tỏa toàn bộ chân, JVP bình thường. Mạch ngoại biên hai chân bắt rõ. Sử dụng Doppler cầm tay tại ngã ba hiển-đùi thấy có tiếng trào ngược máu kéo dài sau khi bóp cơ bắp chân.</p>
+            <p style='margin-top: 8px;'><strong>Chẩn đoán sơ bộ phù hợp:</strong> Suy van tĩnh mạch mạn tính gây giãn tĩnh mạch nông và loét tĩnh mạch (Chronic venous insufficiency with venous ulceration).</p>
+            <p style='margin-top: 8px;'><strong>Đề xuất đánh giá tiếp theo:</strong> Đo chỉ số huyết áp Cổ chân - Cánh tay (ABPI) để loại trừ bệnh lý động mạch trước khi bắt đầu liệu pháp băng ép tĩnh mạch điều trị loét; Siêu âm Doppler tĩnh mạch (Duplex ultrasound) lập bản đồ hệ tĩnh mạch để đánh giá phẫu thuật/can thiệp.</p>
+          </div>
+        </div>
+        <div class='card'>
+          <h2>Tài liệu tham khảo (References)</h2>
+          <ol>
+            <li>Innes JA, Dover AR, Fairhurst K. <em>Macleod's Clinical Examination</em>. 14th ed. Edinburgh: Elsevier; 2018.</li>
+          </ol>
+        </div>
+      </section>
+      <section class='links'>
+        <div class='card'>
+          <h2>
+            Các bài cùng chuyên khoa tim mạch
+          </h2>
+          <div class='grid2'>
+            <a class='link-card' href='../Khám tim mạch/KN_Khamtim.html'>
+              <h3>
+                Khám tim
+              </h3>
+              <small>
+                Đau ngực, JVP, tiếng tim và âm thổi.
+              </small>
+            </a>
+            <a class='link-card' href='../Khám tim mạch/KN_KhamDMngoaibien.html'>
+              <h3>
+                Khám động mạch ngoại biên
+              </h3>
+              <small>
+                Đau cách hồi, thiếu máu chi cấp, Buerger test và ABPI.
+              </small>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <footer class='global-footer'>
+    <div id='footer-placeholder' data-footer-path="../../../../components/footer.html">
+    </div>
+  </footer>
+  <script src="../../../../js/clinical-skill-tabs.js"></script>
+  <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>

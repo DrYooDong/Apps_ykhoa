@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang='vi' data-theme='light'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta name='description'
+    content='Trang điều hướng các kỹ năng khám tai (màng nhĩ, Rinne/Weber, Dix-Hallpike), khám mũi xoang và khám miệng hầu/hạch vùng cổ theo Macleod.'>
+  <title>
+    Khám Hệ Tai Mũi Họng - CliniPortal
+  </title>
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+  <link
+    href='https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap'
+    rel='stylesheet'>
+  <link rel='stylesheet' href="../../../../css/reset.css">
+  <link rel='stylesheet' href="../../../../css/main.css">
+  <link rel='stylesheet' href="../../../../css/components/header.css">
+  <link rel='stylesheet' href="../../../../css/components/sidebar.css">
+  <link rel='stylesheet' href="../../../../css/components/footer.css">
+  <script src="../../../../components/header.js">
+  </script>
+  <script src="../../../../components/footer.js">
+  </script>
+  <style>
+    :root {
+      --a: #0369a1;
+      --b: #0ea5e9;
+      --c: #bae6fd;
+    }
+  </style>
+  <link rel='stylesheet' href="../../../../css/components/clinical-skill.css">
+</head>
+
+<body>
+  <div id='header-placeholder' data-header-path="../../../../components/header.html">
+  </div>
+  <div class='sidebar-overlay' id='sidebarOverlay'>
+  </div>
+  <div class='app-container'>
+    <aside class='app-sidebar' id='appSidebar'>
+      <button id='sidebar-toggle-arrow' class='sidebar-toggle-arrow' aria-label='Thu gọn/Mở rộng Sidebar'>
+        <svg viewBox='0 0 24 24' width='14' height='14' stroke='currentColor' stroke-width='2.5' fill='none'
+          stroke-linecap='round' stroke-linejoin='round' class='toggle-arrow-svg'>
+          <polyline points='15 18 9 12 15 6'>
+          </polyline>
+        </svg>
+      </button>
+      <nav class='sidebar-nav' aria-label='Điều hướng chính'>
+        <ul class='nav-list' role='list'>
+          <li>
+            <a href="../../../../index.html" class='nav-item'>
+              <span class='nav-icon'>
+                🏠
+              </span>
+              <span class='nav-text'>
+                Trang chủ
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../ky-nang.html" class='nav-item'>
+              <span class='nav-icon'>
+                🩺
+              </span>
+              <span class='nav-text'>
+                Kỹ năng lâm sàng
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Tiếp cận/tiep-can.html" class='nav-item'>
+              <span class='nav-icon'>
+                🤒
+              </span>
+              <span class='nav-text'>
+                Tiếp cận lâm sàng
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Công cụ/cong-cu.html" class='nav-item'>
+              <span class='nav-icon'>
+                ⚙️
+              </span>
+              <span class='nav-text'>
+                Công cụ lâm sàng
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <div class='main-wrapper' id='mainContent'>
+      <nav aria-label='Breadcrumb' class='breadcrumb-container'>
+        <ol class='breadcrumb-list'>
+          <li class='breadcrumb-item'>
+            <a href="../../../../index.html" class='breadcrumb-link'>
+              <span class='home-icon'>
+                🏠
+              </span>
+              Home
+            </a>
+          </li>
+          <li class='breadcrumb-item'>
+            <a href="../../ky-nang.html" class='breadcrumb-link'>
+              Kỹ năng lâm sàng
+            </a>
+          </li>
+          <li class='breadcrumb-item active' aria-current='page'>
+            Khám tai mũi họng
+          </li>
+        </ol>
+      </nav>
+      <section class='hero'>
+        <h1>
+          Khám Hệ Tai Mũi Họng (ENT Examination)
+        </h1>
+        <p>
+          Hệ thống các bài khám lâm sàng chuyên khoa Tai Mũi Họng được biên soạn dựa trên Macleod's Clinical Examination. Vui lòng chọn bài khám cụ thể bên dưới để theo dõi chi tiết quy trình khám, dấu hiệu lâm sàng và cận lâm sàng tương ứng.
+        </p>
+        <div class='quick'>
+          <div class='quick-item qi'>
+            <b>
+              Phạm vi
+            </b>
+            Tai (Thính giác & Tiền đình), Mũi và Các xoang, Miệng & Họng & Cổ
+          </div>
+          <div class='quick-item qi'>
+            <b>
+              Mục tiêu
+            </b>
+            Chuẩn hóa hỏi bệnh, khám, biện luận và cận lâm sàng Tai Mũi Họng
+          </div>
+          <div class='quick-item qi'>
+            <b>
+              Ứng dụng
+            </b>
+            Thực hành lâm sàng, ôn thi OSCE và tra cứu bedside
+          </div>
+        </div>
+      </section>
+      <div class='tabs'>
+        <button class='tab-btn active' data-tab='ov'>
+          Tổng quan
+        </button>
+        <button class='tab-btn' data-tab='pick'>
+          Chọn bài khám
+        </button>
+        <button class='tab-btn' data-tab='ref'>
+          Tham khảo
+        </button>
+      </div>
+      <section class='tab active' id='ov'>
+        <div class='card'>
+          <h2>Ba bài khám cốt lõi</h2>
+          <p>
+            Trang hub này dẫn tới 3 bài khám tai mũi họng riêng biệt. Mỗi bài có cấu trúc đồng bộ: giải phẫu sinh lý nền tảng, hỏi bệnh sử, quy trình khám chi tiết, biện luận lâm sàng, chỉ định cận lâm sàng và các tình huống OSCE.
+          </p>
+        </div>
+        <div class='grid3' style='margin-bottom: 24px;'>
+          <a class='link-card' href='KN_KhamTai.html'>
+            <h3 style='color: #0ea5e9;'>
+              1. Khám Tai
+            </h3>
+            <small>
+              Soi tai màng nhĩ (otoscopy), test Rinne & Weber, và nghiệm pháp tiền đình Dix-Hallpike/Head Impulse.
+            </small>
+          </a>
+          <a class='link-card' href='KN_KhamMuiXoang.html'>
+            <h3 style='color: #059669;'>
+              2. Khám Mũi Xoang
+            </h3>
+            <small>
+              Soi mũi trước bằng loa soi, khám lệch vách ngăn, polyp và các biến dạng như mũi hình yên ngựa.
+            </small>
+          </a>
+          <a class='link-card' href='KN_KhamHongCo.html'>
+            <h3 style='color: #7c3aed;'>
+              3. Khám Họng Cổ
+            </h3>
+            <small>
+              Khám miệng hầu (amidan, tuyến nước bọt) và sờ hạch vùng cổ phát hiện các khối u ác tính di căn.
+            </small>
+          </a>
+        </div>
+      </section>
+      <section class='tab' id='pick'>
+        <div class='grid3'>
+          <div class='card'>
+            <h2 style='color: #0ea5e9;'>Khi ưu tiên khám Tai</h2>
+            <ul>
+              <li>
+                Đau tai (otalgia), ngứa tai hoặc có dịch mủ chảy ra (otorrhoea).
+              </li>
+              <li>
+                Nghe kém, ù tai một bên hoặc chóng mặt khi thay đổi tư thế (BPPV/Ménière).
+              </li>
+              <li>
+                Chấn thương tai hoặc nghi ngờ u dây thần kinh số VIII.
+              </li>
+            </ul>
+          </div>
+          <div class='card'>
+            <h2 style='color: #059669;'>Khi ưu tiên khám Mũi Xoang</h2>
+            <ul>
+              <li>
+                Nghẹt mũi, chảy dịch mũi mủ xanh/vàng hoặc dịch trong (rò dịch não tủy).
+              </li>
+              <li>
+                Chảy máu mũi tái phát (epistaxis) hoặc chấn thương gãy xương chính mũi.
+              </li>
+              <li>
+                Đau tức vùng mặt kèm giảm khứu giác (viêm xoang, polyp mũi).
+              </li>
+            </ul>
+          </div>
+          <div class='card'>
+            <h2 style='color: #7c3aed;'>Khi ưu tiên khám Họng Cổ</h2>
+            <ul>
+              <li>
+                Đau họng, nuốt đau hoặc khó thở/tiếng rít thở (stridor).
+              </li>
+              <li>
+                Khàn tiếng tiến triển kéo dài >3 tuần (nguy cơ ung thư thanh quản).
+              </li>
+              <li>
+                Có khối u hoặc hạch sưng phồng vùng cổ di động hoặc cố định.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class='tab' id='ref'>
+        <div class='card'>
+          <h2>Tài liệu nền tham khảo</h2>
+          <ol>
+            <li>
+              Innes JA, Dover AR, Fairhurst K.
+              <em>
+                Macleod's Clinical Examination
+              </em>
+              . 14th ed. Elsevier; 2018.
+            </li>
+            <li>
+              Nội dung các trang được xây dựng lại từ file Markdown trong thư mục
+              <code>
+                Khám tai mũi họng
+              </code>
+              .
+            </li>
+          </ol>
+        </div>
+      </section>
+    </div>
+  </div>
+  <footer class='global-footer'>
+    <div id='footer-placeholder' data-footer-path="../../../../components/footer.html">
+    </div>
+  </footer>
+  <script src="../../../../js/clinical-skill-tabs.js"></script>
+  <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>

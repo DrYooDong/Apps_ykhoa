@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang='vi' data-theme='light'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta name='description'
+    content='Khám đái tháo đường và bàn chân đái tháo đường theo Macleod: Phân biệt bàn chân thần kinh và bàn chân thiếu máu, cách thực hiện test Monofilament 10-g.'>
+  <title>
+    Khám Đái Tháo Đường & Bàn Chân ĐTĐ - CliniPortal
+  </title>
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+  <link
+    href='https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap'
+    rel='stylesheet'>
+  <link rel='stylesheet' href="../../../../css/reset.css">
+  <link rel='stylesheet' href="../../../../css/main.css">
+  <link rel='stylesheet' href="../../../../css/components/header.css">
+  <link rel='stylesheet' href="../../../../css/components/sidebar.css">
+  <link rel='stylesheet' href="../../../../css/components/footer.css">
+  <script src="../../../../components/header.js">
+  </script>
+  <script src="../../../../components/footer.js">
+  </script>
+  <style>
+    :root {
+      --a: #be123c;
+      --b: #e11d48;
+      --c: #fda4af;
+    }
+  </style>
+  <link rel='stylesheet' href="../../../../css/components/clinical-skill.css">
+</head>
+
+<body>
+  <div id='header-placeholder' data-header-path="../../../../components/header.html">
+  </div>
+  <div class='sidebar-overlay' id='sidebarOverlay'>
+  </div>
+  <div class='app-container'>
+    <aside class='app-sidebar' id='appSidebar'>
+      <button id='sidebar-toggle-arrow' class='sidebar-toggle-arrow' aria-label='Thu gọn/Mở rộng Sidebar'>
+        <svg viewBox='0 0 24 24' width='14' height='14' stroke='currentColor' stroke-width='2.5' fill='none'
+          stroke-linecap='round' stroke-linejoin='round' class='toggle-arrow-svg'>
+          <polyline points='15 18 9 12 15 6'>
+          </polyline>
+        </svg>
+      </button>
+      <nav class='sidebar-nav' aria-label='Điều hướng chính'>
+        <ul class='nav-list' role='list'>
+          <li>
+            <a href="../../../../index.html" class='nav-item'>
+              <span class='nav-icon'>
+                🏠
+              </span>
+              <span class='nav-text'>
+                Trang chủ
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../ky-nang.html" class='nav-item'>
+              <span class='nav-icon'>
+                🩺
+              </span>
+              <span class='nav-text'>
+                Kỹ năng lâm sàng
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Tiếp cận/tiep-can.html" class='nav-item'>
+              <span class='nav-icon'>
+                🤒
+              </span>
+              <span class='nav-text'>
+                Tiếp cận lâm sàng
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Công cụ/cong-cu.html" class='nav-item'>
+              <span class='nav-icon'>
+                ⚙️
+              </span>
+              <span class='nav-text'>
+                Công cụ lâm sàng
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <div class='main-wrapper' id='mainContent'>
+      <nav aria-label='Breadcrumb' class='breadcrumb-container'>
+        <ol class='breadcrumb-list'>
+          <li class='breadcrumb-item'>
+            <a href="../../../../index.html" class='breadcrumb-link'>
+              <span class='home-icon'>
+                🏠
+              </span>
+              Home
+            </a>
+          </li>
+          <li class='breadcrumb-item'>
+            <a href="../../ky-nang.html" class='breadcrumb-link'>
+              Kỹ năng lâm sàng
+            </a>
+          </li>
+          <li class='breadcrumb-item'>
+            <a href='KN_Noitiet.html' class='breadcrumb-link'>
+              Khám nội tiết
+            </a>
+          </li>
+          <li class='breadcrumb-item active' aria-current='page'>
+            Khám đái tháo đường & bàn chân ĐTĐ
+          </li>
+        </ol>
+      </nav>
+      <section class='hero'>
+        <h1>
+          Khám Đái Tháo Đường & Bàn Chân ĐTĐ (Diabetes & Diabetic Foot)
+        </h1>
+        <p>
+          Quy trình hướng dẫn hỏi bệnh và khám lâm sàng đái tháo đường theo Macleod's Clinical Examination. Tập trung phát hiện các biến chứng mạn tính và quy trình thăm khám bàn chân đái tháo đường.
+        </p>
+        <div class='quick'>
+          <div class='qi'>
+            <b>
+              Tư thế
+            </b>
+            Nằm ngửa hoặc ngồi tựa lưng, hai chân bộc lộ từ gối trở xuống
+          </div>
+          <div class='qi'>
+            <b>
+              Điểm nhấn
+            </b>
+            Test Monofilament 10-g, mạch mu chân & chày sau, gai đen (acanthosis nigricans), phì đại mô mỡ tiêm insulin
+          </div>
+          <div class='qi'>
+            <b>
+              Red flags
+            </b>
+            Bệnh khớp Charcot cấp (bàn chân sưng nóng đỏ không đau), loét hoại tử ướt, hơi thở mùi ceton
+          </div>
+        </div>
+      </section>
+      <div class='tabs'>
+        <button class='tab-btn active' data-tab='core'>
+          Nền tảng
+        </button>
+        <button class='tab-btn' data-tab='hx'>
+          Hỏi bệnh
+        </button>
+        <button class='tab-btn' data-tab='exam'>
+          Khám
+        </button>
+        <button class='tab-btn' data-tab='int'>
+          Biện luận
+        </button>
+        <button class='tab-btn' data-tab='tests'>
+          Cận lâm sàng
+        </button>
+        <button class='tab-btn' data-tab='osce'>
+          OSCE
+        </button>
+      </div>
+
+      <!-- TAB: NỀN TẢNG -->
+      <section class='tab active' id='core'>
+        <div class='card'>
+          <h2>Giải phẫu và Sinh lý học lâm sàng (Anatomy and physiology)</h2>
+          <ul>
+            <li>Tuyến tụy nằm sau dạ dày trên thành bụng sau. Chức năng nội tiết bao gồm sản xuất insulin (từ tế bào beta), glucagon (tế bào alpha), gastrin và somatostatin. Chức năng ngoại tiết tiết ra các chất kiềm chứa enzyme tiêu hóa.</li>
+            <li>Bệnh đái tháo đường (ĐTĐ) đặc trưng bởi tình trạng tăng glucose máu do thiếu hụt insulin tuyệt đối hoặc tương đối.</li>
+            <li>ĐTĐ nguyên phát được chia thành hai type chính:
+              <ul>
+                <li><strong>Type 1:</strong> Thiếu hụt insulin trầm trọng do tự miễn phá hủy các tế bào beta tiểu đảo tụy. Bệnh nhân dễ bị biến chứng cấp tính nhiễm toan ceton (DKA).</li>
+                <li><strong>Type 2:</strong> Thường gặp ở người béo phì, đặc trưng bởi tình trạng kháng insulin kết hợp với suy giảm chức năng tế bào beta tiến triển. Bệnh nhân dễ mất bù với tình trạng tăng áp lực thẩm thấu (HHS).</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: HỎI BỆNH -->
+      <section class='tab' id='hx'>
+        <div class='card'>
+          <h2>Các triệu chứng lâm sàng thường gặp (Symptoms)</h2>
+          <ul>
+            <li><strong>Tam chứng kinh điển:</strong> Đa niệu & tiểu đêm (polyuria & nocturia - do lợi niệu thẩm thấu vì đường niệu), khát nhiều (polydipsia - bù nước), sụt cân nhanh (mất dịch và tăng dị hóa cơ mỡ do thiếu hụt insulin).</li>
+            <li><strong>Nhìn mờ:</strong> Do sự thay đổi khúc xạ tạm thời của thủy tinh thể khi glucose máu tăng cao đột ngột.</li>
+            <li><strong>Nhiễm trùng da và niêm mạc tái diễn:</strong> Phổ biến là nhiễm nấm Candida (thrush) gây ngứa âm hộ ở nữ hoặc viêm bao quy đầu ở nam giới.</li>
+          </ul>
+        </div>
+
+        <div class='card'>
+          <h2>Khung câu hỏi khám định kỳ hàng năm ("Ask about...")</h2>
+          <p>Đối với bệnh nhân đã chẩn đoán ĐTĐ, cần hỏi bệnh sử chi tiết để phát hiện biến chứng mạch máu và thần kinh:</p>
+          <div style='overflow-x: auto; margin-top: 12px;'>
+            <table class='cmp'>
+              <thead>
+                <tr>
+                  <th>Lĩnh vực kiểm tra</th>
+                  <th>Câu hỏi gợi ý hỏi bệnh</th>
+                  <th>Biến chứng cần tầm soát</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Kiểm soát đường huyết</strong></td>
+                  <td>"Tần suất tự thử đường huyết ở nhà là bao nhiêu? Bạn có nhận biết và xử trí được khi có cơn hạ đường huyết không?"</td>
+                  <td>Hạ đường huyết (Hypoglycaemia) và sự mất nhận thức hạ đường huyết.</td>
+                </tr>
+                <tr>
+                  <td><strong>Vị trí tiêm insulin</strong></td>
+                  <td>"Bạn có tự xoay vòng vị trí tiêm không? Có thấy da vùng tiêm bị sưng, nổi cục hay bầm tím không?"</td>
+                  <td>Phì đại mô mỡ do tiêm insulin (Lipohypertrophy) gây kém hấp thu.</td>
+                </tr>
+                <tr>
+                  <td><strong>Biến chứng mạch máu lớn</strong></td>
+                  <td>"Bạn có bị đau ngực khi gắng sức không? Có bị đau cách hồi ở bắp chân khi đi bộ không? Có cơn yếu liệt nửa người thoáng qua nào không?"</td>
+                  <td>Bệnh mạch vành (MI), bệnh động mạch chi dưới (PAD), đột quỵ/cơn thiếu máu não thoáng qua (TIA).</td>
+                </tr>
+                <tr>
+                  <td><strong>Biến chứng mạch máu nhỏ</strong></td>
+                  <td>"Thị lực của bạn có mờ đi gần đây không? Có cảm giác tê bì, rát bỏng hay châm chích như kiến bò ở bàn chân không?"</td>
+                  <td>Bệnh võng mạc đái tháo đường (Diabetic retinopathy) và bệnh lý thần kinh ngoại biên.</td>
+                </tr>
+                <tr>
+                  <td><strong>Thần kinh tự chủ</strong></td>
+                  <td>"Bạn có bị choáng váng khi đứng dậy đột ngột không? Có bị vã mồ hôi bất thường, đầy bụng khó tiêu, tiêu chảy hay bí tiểu không? (Nam giới: Có bị rối loạn cương dương không?)"</td>
+                  <td>Hạ huyết áp tư thế, liệt dạ dày (gastroparesis), tiêu chảy do thần kinh tự chủ, rối loạn cương dương.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class='card'>
+          <h2>Nguyên nhân ĐTĐ thứ phát</h2>
+          <ul>
+            <li><strong>Bệnh lý tuyến tụy:</strong> Viêm tụy mạn, ung thư tụy, cắt tụy, xơ nang tụy, hoặc bệnh nhiễm sắc tố sắt mô (Haemochromatosis - gây sạm da "đái tháo đường đồng").</li>
+            <li><strong>Bệnh nội tiết:</strong> Hội chứng Cushing (tăng cortisol dị hóa), bệnh To đầu chi (dư GH đối kháng insulin).</li>
+            <li><strong>Thuốc:</strong> Glucocorticoid (thường gặp nhất), Olanzapine (thuốc chống loạn thần), Ciclosporin (ức chế miễn dịch gây phì đại lợi).</li>
+            <li><strong>Đơn gen (Monogenic):</strong> Thiếu hụt Glucokinase (MODY) - gặp ở người trẻ <30 tuổi, gầy, di truyền trội.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: KHÁM -->
+      <section class='tab' id='exam'>
+        <div class='card'>
+          <h2>Quy trình khám bệnh nhân ĐTĐ mới chẩn đoán</h2>
+          <ul class='check'>
+            <li>
+              <input type='checkbox'>
+              <span><strong>Đánh giá tổng trạng:</strong> BMI, tìm dấu mất nước hoặc sụt cân. Ngửi hơi thở tìm mùi ceton (mùi táo chín ngọt), đánh giá nhịp thở Kussmaul (sâu, nhanh) của nhiễm toan ceton.</span>
+            </li>
+            <li>
+              <input type='checkbox'>
+              <span><strong>Thăm khám da:</strong> Tìm các nhiễm trùng cơ hội (áp xe, nhọt, viêm mô tế bào). Phát hiện dấu <em>gai đen (Acanthosis nigricans)</em> ở gáy/nách chỉ điểm kháng insulin. Ở cẳng chân, tìm <em>hoại tử mỡ (Necrobiosis lipoidica)</em> dạng mảng vàng viền đỏ đặc trưng của ĐTĐ type 1.</span>
+            </li>
+            <li>
+              <input type='checkbox'>
+              <span><strong>Khám mắt:</strong> Tìm ban vàng (xanthelasmata) quanh mắt gợi ý tăng lipid máu. Kiểm tra thị lực và soi đáy mắt phát hiện xuất huyết/xuất tiết võng mạc.</span>
+            </li>
+            <li>
+              <input type='checkbox'>
+              <span><strong>Khám tim mạch & thần kinh:</strong> Đo huyết áp nằm và đứng tầm soát hạ HA tư thế. Bắt mạch mu chân, chày sau. Khám cảm giác nông sâu ở hai bàn chân.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class='card'>
+          <h2>Thăm khám bàn chân Đái tháo đường (The Diabetic Foot)</h2>
+          <p>Có 2 dạng tổn thương bàn chân chính ở bệnh nhân ĐTĐ cần phân biệt lâm sàng:</p>
+          <div style='overflow-x: auto; margin-top: 12px; margin-bottom: 16px;'>
+            <table class='cmp'>
+              <thead>
+                <tr>
+                  <th>Đặc điểm lâm sàng</th>
+                  <th>Bàn chân thần kinh (Neuropathic)</th>
+                  <th>Bàn chân thiếu máu thần kinh (Neuroischaemic)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Cảm giác chân</strong></td>
+                  <td>Ấm, hồng hào.</td>
+                  <td>Lạnh, nhợt nhạt hoặc tím tái.</td>
+                </tr>
+                <tr>
+                  <td><strong>Mạch ngoại biên</strong></td>
+                  <td>Bắt rõ, nảy mạnh.</td>
+                  <td>Yếu hoặc mất mạch mu chân/chày sau.</td>
+                </tr>
+                <tr>
+                  <td><strong>Tính chất vết loét</strong></td>
+                  <td>Loét không đau, thường xuất hiện ở các điểm tì đè ở gan bàn chân (chỏm xương bàn ngón). Có viền chai sừng dày xung quanh.</td>
+                  <td>Loét rất đau, thường ở rìa hoặc đầu các ngón chân, gót chân. Không có viền chai sừng.</td>
+                </tr>
+                <tr>
+                  <td><strong>Biến dạng xương khớp</strong></td>
+                  <td>Thường gặp biến dạng khớp (ngón chân hình búa, vòm rocker-bottom), bệnh khớp Charcot.</td>
+                  <td>Không có biến dạng hoặc ít gặp hơn. Da mỏng, rụng lông nách/mu chân.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Quy trình thăm khám bàn chân đái tháo đường cụ thể:</h3>
+          <ul class='check' style='margin-top: 12px;'>
+            <li>
+              <input type='checkbox'>
+              <span><strong>1. Nhìn (Inspection):</strong> Quan sát sự rụng lông cẳng bàn chân, loạn dưỡng móng (móng dày, đổi màu). Khám kỹ da kẽ ngón tìm nứt nẻ, nhiễm nấm kẽ, vết chai sừng (callus) và vết loét ẩn. Đánh giá màu sắc: nhợt nhạt khi nâng chân lên gợi ý thiếu máu động mạch cục bộ; đen/tím gợi ý hoại tử ngọn chi.</span>
+            </li>
+            <li>
+              <input type='checkbox'>
+              <span><strong>2. Đứng (Standing):</strong> Yêu cầu bệnh nhân đứng thẳng. Đánh giá sự xẹp vòm gan bàn chân (vòm rocker-bottom) gây tăng áp lực cục bộ. Tìm dấu hiệu của <em>Bệnh khớp Charcot (Charcot's arthropathy)</em>: bàn chân biến dạng sụp đổ cấu trúc xương khớp, sưng nóng đỏ cấp tính nhưng bệnh nhân không đau hoặc đau rất ít.</span>
+            </li>
+            <li>
+              <input type='checkbox'>
+              <span><strong>3. Sờ (Palpation):</strong> Sờ cảm nhận nhiệt độ hai bàn chân từ trên xuống dưới. Bắt mạch mu chân (dorsalis pedis) và mạch chày sau (posterior tibial) ở cả hai bên.</span>
+            </li>
+            <li>
+              <input type='checkbox'>
+              <span><strong>4. Khám cảm giác bằng sợi Monofilament 10-g:</strong>
+                <ul>
+                  <li>Giải thích quy trình cho bệnh nhân. Test thử lên tay bệnh nhân trước để họ nhận biết cảm giác.</li>
+                  <li>Yêu cầu bệnh nhân nhắm mắt, trả lời "Có" mỗi khi cảm nhận được kích thích.</li>
+                  <li>Đặt sợi monofilament vuông góc với da bàn chân tại các vị trí: mặt dưới ngón cái, các chỏm xương bàn ngón chân 1, 3, 5.</li>
+                  <li>Ấn cong sợi monofilament trong vòng 1-2 giây rồi nhấc ra. Tránh ấn lên các vết chai sừng dày hoặc vết loét hở.</li>
+                  <li><em>Ý nghĩa:</em> Nếu bệnh nhân mất cảm giác tại &ge;2/10 điểm thử chuẩn, chứng tỏ đã <strong>mất cảm giác bảo vệ (loss of protective sensation)</strong>, nguy cơ loét bàn chân rất cao.</li>
+                </ul>
+              </span>
+            </li>
+            <li>
+              <input type='checkbox'>
+              <span><strong>5. Đánh giá cảm giác sâu:</strong> Thử cảm giác rung âm thoa (với âm thoa 128 Hz đặt lên khớp ngón cái) và cảm giác bản thể (nhận thức vị trí khớp ngón chân).</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: BIỆN LUẬN -->
+      <section class='tab' id='int'>
+        <div class='grid2'>
+          <div class='card'>
+            <h2>Biện luận chẩn đoán phân biệt lâm sàng</h2>
+            <ul>
+              <li><strong>Phân biệt Type 1 và Type 2 mới khởi phát:</strong>
+                <ul>
+                  <li>ĐTĐ Type 1 thường gặp ở người trẻ, gầy, diễn tiến sụt cân nhanh trong vài tuần, kèm ceton niệu/máu và thở Kussmaul (DKA).</li>
+                  <li>ĐTĐ Type 2 thường gặp ở người lớn tuổi trung niên, thừa cân béo phì, có dấu gai đen (acanthosis nigricans - chỉ điểm kháng insulin mạnh) và thường không có ceton niệu trừ khi nhiễm trùng nặng.</li>
+                </ul>
+              </li>
+              <li><strong>Cơ chế loét bàn chân đái tháo đường:</strong>
+                <ul>
+                  <li><em>Bệnh lý thần kinh:</em> Giảm tiết mồ hôi làm da khô nứt nẻ; liệt cơ nội tại bàn chân gây biến dạng ngón chân hình vuốt/búa dẫn đến các điểm tì đè bất thường. Mất cảm giác bảo vệ khiến bệnh nhân đi lại trên các vết thương cọ xát mà không biết, tạo vết loét mạn tính.</li>
+                  <li><em>Bệnh lý mạch máu (PAD):</em> Hẹp tắc các động mạch vùng cẳng bàn chân làm giảm tưới máu nuôi, khiến các tổn thương không thể lành và tiến triển thành hoại tử.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class='card'>
+            <h2>Dấu hiệu cảnh báo nguy hiểm (Red flags)</h2>
+            <ul>
+              <li><strong>Nhiễm toan ceton (DKA) / Tăng áp lực thẩm thấu (HHS):</strong> Rối loạn ý thức, mất nước nặng, thở sâu Kussmaul. Cần bù dịch và insulin tĩnh mạch cấp cứu.</li>
+              <li><strong>Bệnh khớp Charcot giai đoạn cấp:</strong> Bàn chân sưng, nóng, đỏ nhưng không đau/đau ít sau chấn thương nhẹ. Cần cố định chân ngay lập tức bằng bó bột tiếp xúc toàn bộ để tránh sụp đổ cấu trúc xương vĩnh viễn (Rocker-bottom).</li>
+              <li><strong>Loét hoại tử ướt nhiễm trùng:</strong> Vết loét chảy mủ hôi, sưng nề lan rộng lên cẳng chân, sốt cao. Cần nhập viện dùng kháng sinh phổ rộng và can thiệp ngoại khoa cắt lọc tránh cắt cụt chi.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: CẬN LÂM SÀNG -->
+      <section class='tab' id='tests'>
+        <div class='card'>
+          <h2>Cận lâm sàng Đái tháo đường</h2>
+          <ul>
+            <li><strong>Chẩn đoán và đánh giá cấp tính:</strong>
+              <ul>
+                <li>Glucose huyết tương lúc đói, glucose huyết tương ngẫu nhiên, hoặc nghiệm pháp dung nạp glucose đường uống (OGTT).</li>
+                <li>Định lượng Ceton máu hoặc nước tiểu (nếu ceton dương tính chỉ điểm thiếu hụt insulin nặng).</li>
+                <li>Tự kháng thể kháng tế bào tiểu đảo (ICA, anti-GAD) để chẩn đoán ĐTĐ type 1 tự miễn.</li>
+              </ul>
+            </li>
+            <li><strong>Theo dõi định kỳ hàng năm (Tầm soát biến biến chứng):</strong>
+              <ul>
+                <li><strong>HbA1c:</strong> Thực hiện mỗi 3-6 tháng để đánh giá mức độ kiểm soát đường huyết trung bình trong 120 ngày qua.</li>
+                <li><strong>Tỷ số Albumin : Creatinin nước tiểu (ACR):</strong> Thực hiện bằng mẫu nước tiểu ngẫu nhiên buổi sáng. Phát hiện sớm tổn thương thận do ĐTĐ (microalbuminuria nếu ACR từ 3 - 30 mg/mmol hoặc 30 - 300 mg/g).</li>
+                <li><strong>Ure, Creatinin và eGFR:</strong> Đánh giá chức năng lọc của thận.</li>
+                <li><strong>Bản đồ Lipid máu:</strong> Định lượng cholesterol toàn phần, LDL-C, HDL-C và Triglyceride đánh giá nguy cơ xơ vữa mạch máu.</li>
+                <li><strong>Chụp ảnh màu võng mạc kỹ thuật số:</strong> Tầm soát bệnh lý võng mạc đái tháo đường hàng năm.</li>
+              </ul>
+            </li>
+            <li><strong>Đánh giá mạch máu chi dưới:</strong> Đo chỉ số huyết áp Cổ chân - Cánh tay (ABPI) bằng máy Doppler cầm tay. ABPI &lt; 0.9 chỉ điểm bệnh động mạch chi dưới (PAD); ABPI &gt; 1.3 chỉ điểm động mạch bị vôi hóa cứng (thường gặp ở người ĐTĐ lâu năm).</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: OSCE -->
+      <section class='tab' id='osce'>
+        <div class='grid2'>
+          <div class='card'>
+            <span class='case'>OSCE</span>
+            <h2>OSCE: Thăm khám bàn chân đái tháo đường</h2>
+            <p><strong>Yêu cầu:</strong> Ông Birnam, 67 tuổi, mắc bệnh ĐTĐ type 2 và đến khám vì đau/tê ở hai chi dưới. Hãy khám bàn chân của bệnh nhân.</p>
+            <p style='margin-top: 8px;'><strong>Tóm tắt phát hiện:</strong> Bệnh nhân có hai bàn chân lạnh, da mỏng nhợt nhạt và rụng lông cẳng chân. Không bắt được mạch mu chân và mạch chày sau ở cả hai bên. Khám cảm giác nông bằng sợi monofilament 10-g phát hiện mất cảm giác đối xứng kiểu "găng tay - bít tất" (stocking distribution) kéo dài lên tới cổ chân ở cả hai bên. Da bàn chân chưa có vết loét hay chai sừng khu trú. Khớp cổ bàn chân di động bình thường, không biến dạng rocker-bottom.</p>
+            <p style='margin-top: 8px;'><strong>Chẩn đoán sơ bộ:</strong> Bệnh lý mạch máu ngoại vi (PAD) kết hợp bệnh lý thần kinh cảm giác ngoại biên thứ phát do đái tháo đường type 2.</p>
+            <p style='margin-top: 8px;'><strong>Đề xuất đánh giá tiếp theo:</strong> 
+              1. Thực hiện siêu âm Doppler mạch máu chi dưới và đo chỉ số ABPI để đánh giá mức độ thiếu máu cục bộ.
+              2. Định lượng HbA1c đánh giá kiểm soát đường huyết.
+              3. Định lượng Vitamin B12, hỏi kỹ tiền sử sử dụng rượu để loại trừ các nguyên nhân khác gây bệnh lý thần kinh ngoại biên.
+              4. Tầm soát thêm biến chứng vi mạch: Soi đáy mắt kiểm tra võng mạc, xét nghiệm tỷ số ACR nước tiểu kiểm tra biến chứng thận.
+            </p>
+          </div>
+        </div>
+        <div class='card'>
+          <h2>Tài liệu tham khảo (References)</h2>
+          <ol>
+            <li>Innes JA, Dover AR, Fairhurst K. <em>Macleod's Clinical Examination</em>. 14th ed. Edinburgh: Elsevier; 2018.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class='links'>
+        <div class='card'>
+          <h2>Các bài cùng chuyên khoa Nội tiết</h2>
+          <div class='grid3'>
+            <a class='link-card' href='KN_KhamTuyenGiap.html'>
+              <h3>Khám Tuyến Giáp</h3>
+              <small>Đánh giá bướu cổ, sờ tuyến giáp từ phía sau, nghe âm thổi Basedow.</small>
+            </a>
+            <a class='link-card' href='KN_KhamTuyenYen.html'>
+              <h3>Khám Tuyến Yên</h3>
+              <small>Đánh giá Acromegaly mặt thô, khám thị trường bán manh thái dương.</small>
+            </a>
+            <a class='link-card' href='KN_KhamTuyenThuongThan.html'>
+              <h3>Khám Tuyến Thượng Thận</h3>
+              <small>Hội chứng Cushing béo bụng rạn da, Addison sạm da hạ HA tư thế.</small>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <footer class='global-footer'>
+    <div id='footer-placeholder' data-footer-path="../../../../components/footer.html">
+    </div>
+  </footer>
+  <script src="../../../../js/clinical-skill-tabs.js"></script>
+  <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>

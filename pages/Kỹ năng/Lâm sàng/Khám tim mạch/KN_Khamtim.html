@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang='vi' data-theme='light'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta name='description'
+    content='Khám tim theo Macleod: hỏi bệnh đau ngực, khó thở, đánh giá JVP, mỏm tim, tiếng tim và âm thổi.'>
+  <title>
+    Khám Tim - CliniPortal
+  </title>
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+  <link
+    href='https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap'
+    rel='stylesheet'>
+  <link rel='stylesheet' href="../../../../css/reset.css">
+  <link rel='stylesheet' href="../../../../css/main.css">
+  <link rel='stylesheet' href="../../../../css/components/header.css">
+  <link rel='stylesheet' href="../../../../css/components/sidebar.css">
+  <link rel='stylesheet' href="../../../../css/components/footer.css">
+  <script src="../../../../components/header.js">
+  </script>
+  <script src="../../../../components/footer.js">
+  </script>
+  <style>
+    :root {
+      --a: #1d4ed8;
+      --b: #2563eb;
+      --c: #60a5fa;
+    }
+  </style>
+  <link rel='stylesheet' href="../../../../css/components/clinical-skill.css">
+</head>
+
+<body>
+  <div id='header-placeholder' data-header-path="../../../../components/header.html">
+  </div>
+  <div class='sidebar-overlay' id='sidebarOverlay'>
+  </div>
+  <div class='app-container'>
+    <aside class='app-sidebar' id='appSidebar'>
+      <button id='sidebar-toggle-arrow' class='sidebar-toggle-arrow' aria-label='Thu gọn/Mở rộng Sidebar'>
+        <svg viewBox='0 0 24 24' width='14' height='14' stroke='currentColor' stroke-width='2.5' fill='none'
+          stroke-linecap='round' stroke-linejoin='round' class='toggle-arrow-svg'>
+          <polyline points='15 18 9 12 15 6'>
+          </polyline>
+        </svg>
+      </button>
+      <nav class='sidebar-nav' aria-label='Điều hướng chính'>
+        <ul class='nav-list' role='list'>
+          <li>
+            <a href="../../../../index.html" class='nav-item'>
+              <span class='nav-icon'>
+                🏠
+              </span>
+              <span class='nav-text'>
+                Trang chủ
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../ky-nang.html" class='nav-item'>
+              <span class='nav-icon'>
+                🩺
+              </span>
+              <span class='nav-text'>
+                Kỹ năng lâm sàng
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Tiếp cận/tiep-can.html" class='nav-item'>
+              <span class='nav-icon'>
+                🤒
+              </span>
+              <span class='nav-text'>
+                Tiếp cận lâm sàng
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Công cụ/cong-cu.html" class='nav-item'>
+              <span class='nav-icon'>
+                ⚙️
+              </span>
+              <span class='nav-text'>
+                Công cụ lâm sàng
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <div class='main-wrapper' id='mainContent'>
+      <nav aria-label='Breadcrumb' class='breadcrumb-container'>
+        <ol class='breadcrumb-list'>
+          <li class='breadcrumb-item'>
+            <a href="../../../../index.html" class='breadcrumb-link'>
+              <span class='home-icon'>
+                🏠
+              </span>
+              Home
+            </a>
+          </li>
+          <li class='breadcrumb-item'>
+            <a href="../../ky-nang.html" class='breadcrumb-link'>
+              Kỹ năng lâm sàng
+            </a>
+          </li>
+          <li class='breadcrumb-item'>
+            <a href='../Khám tim mạch/KN_Timmach.html' class='breadcrumb-link'>
+              Khám tim mạch
+            </a>
+          </li>
+          <li class='breadcrumb-item active' aria-current='page'>
+            Khám tim
+          </li>
+        </ol>
+      </nav>
+      <section class='hero'>
+        <h1>
+          Khám Tim
+        </h1>
+        <p>
+          Bài khám tập trung vào bệnh nhân có đau ngực, khó thở, hồi hộp hoặc ngất. Nội dung được dựng lại từ file
+          <code>
+              KN_Khám tim.md
+            </code>
+          , nhấn mạnh khai thác triệu chứng, đánh giá JVP, bắt mạch, sờ mỏm tim và nghe tim.
+        </p>
+        <div class='quick'>
+          <div class='qi'>
+            <b>
+              Tư thế
+            </b>
+            Nằm ngửa đầu cao 45 độ, bộc lộ cổ và ngực trước
+          </div>
+          <div class='qi'>
+            <b>
+              Điểm nhấn
+            </b>
+            JVP, mỏm tim, heave, thrill, T1-T4, âm thổi
+          </div>
+          <div class='qi'>
+            <b>
+              Red flags
+            </b>
+            Đau ngực kiểu mạch vành, ngất khi gắng sức, ran phổi, suy tim
+          </div>
+        </div>
+      </section>
+      <div class='tabs'>
+        <button class='tab-btn active' data-tab='core'>
+          Nền tảng
+        </button>
+        <button class='tab-btn' data-tab='hx'>
+          Hỏi bệnh
+        </button>
+        <button class='tab-btn' data-tab='exam'>
+          Khám
+        </button>
+        <button class='tab-btn' data-tab='int'>
+          Biện luận
+        </button>
+        <button class='tab-btn' data-tab='tests'>
+          Cận lâm sàng
+        </button>
+        <button class='tab-btn' data-tab='osce'>
+          OSCE
+        </button>
+      </div>
+      <section class='tab active' id='core'>
+        <div class='card'>
+          <h2>
+            Giải phẫu và Sinh lý học lâm sàng (Anatomy and physiology)
+          </h2>
+          <ul>
+            <li>
+              Quả tim bao gồm hai hệ thống bơm cơ học hoạt động nối tiếp nhau, được bao bọc trong một túi thanh mạc (màng ngoài tim) cho phép tim di chuyển tự do trong mỗi nhịp đập và theo nhịp hô hấp.
+            </li>
+            <li>
+              <strong>Tim phải</strong> (nhĩ phải và thất phải) nhận máu nghèo oxy từ tĩnh mạch hệ thống và bơm vào tuần hoàn phổi với áp lực tương đối thấp.
+            </li>
+            <li>
+              <strong>Tim trái</strong> (nhĩ trái và thất trái) nhận máu giàu oxy từ phổi và bơm đi khắp cơ thể với áp lực cao hơn.
+            </li>
+            <li>
+              Các van nhĩ thất (van ba lá bên phải, van hai lá bên trái) ngăn cách tâm nhĩ với tâm thất. Van động mạch phổi và van động mạch chủ ngăn cách tâm thất với các hệ thống động mạch tương ứng.
+            </li>
+            <li>
+              Sự co bóp của tim được điều hòa bởi các tế bào chuyên biệt, trong đó nút xoang nhĩ đóng vai trò chủ nhịp, đảm bảo sự co bóp của tâm nhĩ hoàn tất trước khi quá trình co tâm thất (tâm thu) bắt đầu. Vào cuối kỳ tâm thu, tâm thất giãn ra, van nhĩ thất mở để máu từ tâm nhĩ đổ về (tâm trương).
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class='tab' id='hx'>
+        <div class='card'>
+          <h2>Các triệu chứng cơ năng thường gặp (Common presenting symptoms)</h2>
+          <p>Các bệnh lý tim mạch biểu hiện qua nhiều triệu chứng đa dạng, nhưng cần chẩn đoán phân biệt với các nguyên nhân ngoài tim.</p>
+        </div>
+        <div class='table-wrap'>
+          <table class='cmp'>
+            <thead>
+              <tr>
+                <th>Triệu chứng</th>
+                <th>Nguyên nhân Tim mạch</th>
+                <th>Nguyên nhân khác</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Đau ngực</strong></td>
+                <td>Nhồi máu cơ tim, Cơn đau thắt ngực, Viêm màng ngoài tim, Phình tách động mạch chủ.</td>
+                <td>Co thắt thực quản, Tràn khí màng phổi, Đau cơ xương khớp, Bệnh hô hấp.</td>
+              </tr>
+              <tr>
+                <td><strong>Khó thở</strong></td>
+                <td>Suy tim, Bệnh lý van tim, Cơn đau thắt ngực, Nhồi máu phổi, Tăng áp phổi.</td>
+                <td>Bệnh hô hấp, Béo phì, Lo âu, Thiếu máu.</td>
+              </tr>
+              <tr>
+                <td><strong>Hồi hộp</strong></td>
+                <td>Loạn nhịp nhanh, Ngoại tâm thu.</td>
+                <td>Lo âu, Cường giáp, Thuốc.</td>
+              </tr>
+              <tr>
+                <td><strong>Ngất/Tiền ngất</strong></td>
+                <td>Loạn nhịp, Hạ huyết áp tư thế, Hẹp van động mạch chủ, Bệnh cơ tim phì đại, U nhầy nhĩ.</td>
+                <td>Ngất đơn thuần, Động kinh.</td>
+              </tr>
+              <tr>
+                <td><strong>Phù</strong></td>
+                <td>Suy tim, Viêm màng ngoài tim co thắt, Ứ trệ tĩnh mạch.</td>
+                <td>Hội chứng thận hư, Bệnh gan, Thuốc, Bất động.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class='grid2'>
+          <div class='card'>
+            <h2>Phân tích chi tiết từng triệu chứng chủ chốt</h2>
+            <p><strong>Đau ngực (Chest pain):</strong></p>
+            <ul>
+              <li><em>Vị trí (Site):</em> Thường ở sau xương ức đối với cơn đau thắt ngực hoặc nhồi máu cơ tim; đau giữa hai xương bả vai có thể gợi ý phình tách động mạch chủ.</li>
+              <li><em>Khởi phát (Onset):</em> Tăng dần trong 1-2 phút (đau thắt ngực), đột ngột dữ dội (phình tách động mạch chủ) hoặc diễn tiến nhanh (nhồi máu cơ tim).</li>
+              <li><em>Tính chất (Character):</em> Cảm giác thắt chặt, đè nặng (thiếu máu cục bộ); xé rách (phình tách); đau nhói như dao đâm và thay đổi theo nhịp thở (viêm màng ngoài tim/màng phổi).</li>
+              <li><em>Hướng lan (Radiation):</em> Lan xuống một hoặc hai cánh tay, lên cổ, hàm, hoặc vùng thượng vị.</li>
+              <li><em>Triệu chứng kèm theo:</em> Vã mồ hôi, buồn nôn, nôn, khó thở, và cảm giác sợ hãi sắp chết (angor animi) thường đi kèm nhồi máu cơ tim.</li>
+              <li><em>Yếu tố tăng/giảm:</em> Đau thắt ngực ổn định được kích phát bởi gắng sức, thời tiết lạnh, gió, hoặc sau bữa ăn no; thuyên giảm nhanh chóng khi nghỉ ngơi hoặc xịt glyceryl trinitrate (GTN) dưới lưỡi (dưới 10 phút).</li>
+            </ul>
+            <p style='margin-top: 12px;'><strong>Khó thở (Dyspnoea):</strong></p>
+            <ul>
+              <li>Suy tim là nguyên nhân tim mạch phổ biến nhất gây khó thở cấp và mạn tính.</li>
+              <li><em>Khó thở khi nằm (Orthopnoea):</em> Xảy ra ở bệnh nhân suy tim do lượng máu tĩnh mạch trở về tăng khi nằm ngang, làm trầm trọng thêm tình trạng phù phổi.</li>
+              <li><em>Khó thở kịch phát về đêm (Paroxysmal nocturnal dyspnoea):</em> Đánh thức bệnh nhân khỏi giấc ngủ, khiến họ phải ngồi dậy hoặc ra mở cửa sổ để thở.</li>
+            </ul>
+          </div>
+          <div class='card'>
+            <h2>Khung câu hỏi gợi ý ("Ask about...")</h2>
+            <ul>
+              <li><strong>Đau ngực:</strong> "Hãy mô tả vị trí, tính chất cơn đau? Đau có lan đi đâu không? Bạn đang làm gì khi cơn đau xuất hiện? Đau kéo dài bao lâu?".</li>
+              <li><strong>Khó thở:</strong> "Khả năng đi bộ bình thường của bạn là bao xa? Bạn có bao giờ thức giấc giữa đêm vì khó thở không? Khó thở có đi kèm ho, khò khè hay đau ngực không?".</li>
+              <li><strong>Hồi hộp:</strong> "Nhịp đập của bạn có nhanh, mạnh hay không đều không? Bạn có thể gõ lại nhịp đập đó không? Nó bắt đầu và kết thúc như thế nào?".</li>
+              <li><strong>Ngất:</strong> "Hoàn cảnh xảy ra ngất? Bạn có thấy triệu chứng báo trước nào không? Mất ý thức trong bao lâu và quá trình hồi phục có nhanh không?".</li>
+            </ul>
+          </div>
+          <div class='card'>
+            <h2>Phân loại chức năng lâm sàng</h2>
+            <p><strong>Phân độ đau thắt ngực theo Hiệp hội Tim mạch Canada (CCS):</strong></p>
+            <ul>
+              <li><em>Độ 1:</em> Hoạt động thể lực bình thường không gây đau ngực. Chỉ đau khi gắng sức mạnh, nhanh hoặc kéo dài.</li>
+              <li><em>Độ 2:</em> Hạn chế nhẹ hoạt động bình thường (đau khi đi bộ nhanh, leo cầu thang, đi ngược gió/lạnh).</li>
+              <li><em>Độ 3:</em> Hạn chế đáng kể hoạt động bình thường (đau khi đi bộ 1-2 dãy nhà hoặc leo một tầng lầu).</li>
+              <li><em>Độ 4:</em> Không thể thực hiện bất kỳ hoạt động thể lực nào mà không thấy khó chịu; đau ngực có thể xuất hiện khi nghỉ ngơi.</li>
+            </ul>
+            <p style='margin-top: 12px;'><strong>Phân độ suy tim theo Hiệp hội Tim mạch New York (NYHA):</strong></p>
+            <ul>
+              <li><em>Độ I:</em> Không hạn chế vận động. Hoạt động bình thường không gây mệt mỏi, khó thở hay hồi hộp.</li>
+              <li><em>Độ II:</em> Hạn chế nhẹ. Khỏe khi nghỉ ngơi nhưng hoạt động bình thường gây ra triệu chứng.</li>
+              <li><em>Độ III:</em> Hạn chế đáng kể. Thoải mái khi nghỉ ngơi nhưng hoạt động nhẹ hơn bình thường cũng gây triệu chứng.</li>
+              <li><em>Độ IV:</em> Triệu chứng suy tim xuất hiện ngay cả khi nghỉ ngơi. Bất kỳ hoạt động nào cũng làm tăng sự khó chịu.</li>
+            </ul>
+          </div>
+          <div class='card'>
+            <h2>Tiền sử bệnh, Dùng thuốc & Đời sống - Xã hội</h2>
+            <ul>
+              <li><strong>Tiền sử bệnh (Past medical history):</strong> Cần khai thác chi tiết các bệnh lý tim mạch trước đây (bệnh mạch vành, suy tim, bệnh van tim), các thủ thuật can thiệp (đặt stent, mổ bắc cầu) hoặc viêm khớp dạng thấp/sốt thấp khớp ở tuổi ấu thơ.</li>
+              <li><strong>Đời sống - Xã hội (Social history):</strong> Hút thuốc lá là yếu tố nguy cơ mạnh nhất của bệnh động mạch vành; rượu có thể gây rung nhĩ hoặc bệnh cơ tim; các thuốc giải trí (cocaine, amphetamine) có thể gây loạn nhịp, nhồi máu cơ tim.</li>
+            </ul>
+            <div class='clinical-warning' style='margin-top: 14px;'>
+              <h4>⚠️ Ảnh hưởng của thuốc trên hệ tim mạch</h4>
+              <p><strong>Beta-blockers:</strong> Có thể làm suy tim nặng hơn hoặc gây co thắt phế quản ở bệnh nhân nhạy cảm.</p>
+              <p style='margin-top: 4px;'><strong>NSAIDs:</strong> Gây giữ muối nước (phù) và làm nặng thêm tình trạng suy tim sung huyết.</p>
+              <p style='margin-top: 4px;'><strong>Thuốc chẹn kênh calci (như amlodipine):</strong> Thường gây tác dụng phụ phù ngoại biên vùng mắt cá chân.</p>
+              <p style='margin-top: 4px;'><strong>Thuốc giãn mạch (nitrates, ACE inhibitors):</strong> Có thể gây tụt huyết áp tư thế, hoa mắt hoặc ngất.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class='tab' id='exam'>
+        <div class='grid2'>
+          <div class='card'>
+            <h2>Khám toàn thân (General examination)</h2>
+            <ul>
+              <li><strong>Đánh giá chung:</strong> Sự suy kiệt, mức độ béo phì, hội chứng Marfan, hoặc các dấu hiệu của khó thở, tím tái.</li>
+              <li><strong>Bàn tay:</strong> Khám nhiệt độ và thời gian đổ đầy mao mạch. Quan sát vết ố vàng do hút thuốc, tím ngoại vi, ngón tay dùi trống, xuất huyết dưới móng (splinter haemorrhages), tổn thương Janeway (hồng ban không đau ở lòng bàn tay) và nốt Osler (nốt đau ở đầu ngón tay) - gợi ý viêm nội tâm mạc nhiễm khuẩn. Khám dấu hiệu xanthomata ở gân do tăng lipid máu.</li>
+              <li><strong>Mắt và Mặt:</strong> Quan sát ban vàng quanh mắt (xanthelasmata) và vòng giác mạc (corneal arcus), dấu hiệu tím trung ương ở niêm mạc miệng/lưỡi.</li>
+            </ul>
+          </div>
+          <div class='card'>
+            <h2>Quy trình khám chi tiết (Examination sequence)</h2>
+            <p>Thực hiện các bước khám có hệ thống sau:</p>
+            <ul class='check' style='margin-top: 12px;'>
+              <li>
+                <input type='checkbox'>
+                <span><strong>1. Khám Mạch và Huyết áp:</strong> Bắt mạch quay đánh giá nhịp điệu, tần số và biên độ mạch (đếm trong 15 giây nhân 4). Đo huyết áp động mạch ở cả hai tay.</span>
+              </li>
+              <li>
+                <input type='checkbox'>
+                <span><strong>2. Đánh giá Áp lực tĩnh mạch cảnh (JVP):</strong> Đặt bệnh nhân nằm ngửa nghiêng 45 độ, đầu tựa gối và xoay nhẹ sang trái. Áp lực tĩnh mạch cảnh phản ánh áp lực nhĩ phải (bình thường &le;4 cm so với góc ức).</span>
+              </li>
+              <li>
+                <input type='checkbox'>
+                <span><strong>3. Khám vùng trước tim (Precordium) - Nhìn:</strong> Tìm sẹo mổ cũ (đường giữa xương ức, dưới vú trái), biến dạng lồng ngực hoặc nhịp đập bất thường.</span>
+              </li>
+              <li>
+                <input type='checkbox'>
+                <span><strong>3. Khám vùng trước tim (Precordium) - Sờ:</strong> Xác định mỏm tim (KLS 5 đường trung đòn trái), sờ diện thất phải (Right ventricular heave) dọc bờ trái xương ức, và sờ rung miu (Thrills) tại các ổ van.</span>
+              </li>
+              <li>
+                <input type='checkbox'>
+                <span><strong>3. Khám vùng trước tim (Precordium) - Nghe:</strong>
+                  <ul>
+                    <li>Dùng màng (diaphragm) nghe âm tần số cao (T1, T2, âm thổi tâm trương hở chủ). Dùng chuông (bell) nghe âm tần số thấp (T3, T4, âm thổi giữa tâm trương hẹp hai lá).</li>
+                    <li>Nghe tại 4 vị trí: Mỏm tim, bờ dưới trái ức, bờ trên phải và bờ trên trái ức.</li>
+                    <li>Nghiệm pháp tư thế: Nằm nghiêng trái nghe hẹp hai lá; ngồi dậy cúi người ra trước nín thở sau thở ra nghe hở chủ.</li>
+                  </ul>
+                </span>
+              </li>
+            </ul>
+            <div class='clinical-pearl' style='margin-top: 16px;'>
+              <h4>💡 Dấu hiệu lâm sàng đặc biệt khi khám tim</h4>
+              <p><strong>Mạch nảy mạnh chìm sâu (Collapsing pulse):</strong> Gặp trong hở van ĐMC. Phát hiện bằng cách đặt gốc ngón tay lên mạch quay và nâng thẳng đứng cánh tay bệnh nhân lên cao.</p>
+              <p style='margin-top: 4px;'><strong>Mạch chậm nảy yếu (Slow-rising pulse):</strong> Dấu hiệu đặc trưng gợi ý hẹp van ĐMC.</p>
+              <p style='margin-top: 4px;'><strong>Mạch nghịch thường (Pulsus paradoxus):</strong> Huyết áp tâm thu giảm &gt;10 mmHg trong thì hít vào, gặp trong ép tim cấp (Cardiac tamponade).</p>
+              <p style='margin-top: 4px;'><strong>Sóng 'a' JVP biến mất:</strong> Gặp trong Rung nhĩ do mất hoạt động co bóp cơ học của tâm nhĩ.</p>
+              <p style='margin-top: 4px;'><strong>Tiếng T3, T4:</strong> Tiếng T3 sinh lý ở trẻ em nhưng là bệnh lý (suy tim) ở người &gt;40 tuổi; tiếng T4 luôn mang ý nghĩa bệnh lý (phì đại/giảm độ đàn hồi tâm thất).</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class='tab' id='int'>
+        <div class='grid2'>
+          <div class='card'>
+            <h2>Biện luận lâm sàng (Clinical Interpretation)</h2>
+            <p>Kỹ năng nghe tim và phân tích lâm sàng giúp xác định hướng chẩn đoán chính xác trước khi thực hiện siêu âm.</p>
+            <p style='margin-top: 10px;'>Việc phối hợp các dấu hiệu giúp định hướng tổn thương. Ví dụ: ở một bệnh nhân có bệnh van tim hậu thấp với tổn thương van hai lá hỗn hợp, nếu tiếng T1 đanh mạnh, bệnh cảnh hẹp van chiếm ưu thế; ngược lại, nếu nghe thấy tiếng T3, tổn thương hở van (quá tải thể tích) chiếm ưu thế.</p>
+          </div>
+          <div class='card'>
+            <h2>Các dấu hiệu lâm sàng định hướng</h2>
+            <ul>
+              <li><strong>Dấu gợi ý quá tải hoặc suy tim:</strong> JVP tăng, ran nổ đáy phổi, phù ngoại biên. Tiếng T3 ở người trên 40 tuổi thường mang ý nghĩa bệnh lý. Mỏm tim lệch trái và xuống dưới gợi ý giãn thất trái.</li>
+              <li><strong>Dấu gợi ý bệnh van tim:</strong>
+                <ul>
+                  <li><em>Hẹp van động mạch chủ:</em> Mạch nảy chậm và yếu (slow-rising pulse), T2 mờ, âm thổi tâm thu tống máu lan lên cổ.</li>
+                  <li><em>Hở van hai lá:</em> Âm thổi toàn tâm thu ở mỏm tim lan ra nách, có thể nghe thấy T3 do quá tải thể tích.</li>
+                  <li><em>Hở van động mạch chủ:</em> Âm thổi tâm trương ở bờ trái xương ức, mạch nảy mạnh chìm sâu (collapsing pulse).</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class='tab' id='tests'>
+        <div class='card'>
+          <h2>Cận lâm sàng (Investigations)</h2>
+          <ul>
+            <li><strong>Huyết học/Sinh hóa:</strong> Công thức máu toàn bộ (đánh giá thiếu máu), U&E (chức năng thận), xét nghiệm chức năng gan, lipid máu, và Troponin tim (để chẩn đoán nhồi máu cơ tim ở bệnh nhân đau ngực cấp).</li>
+            <li><strong>Điện tâm đồ (ECG):</strong> 12 chuyển đạo chuẩn để đánh giá thiếu máu cục bộ hoặc loạn nhịp. Theo dõi ECG lưu động (Holter 24-48 giờ) cho bệnh nhân có hồi hộp hoặc ngất. Điện tâm đồ gắng sức để đánh giá khả năng thiếu máu cục bộ do bệnh mạch vành.</li>
+            <li><strong>Chẩn đoán hình ảnh:</strong>
+              <ul>
+                <li><em>X-quang ngực:</em> Đánh giá tỷ lệ bóng tim/lồng ngực (bình thường &lt;0.5); phát hiện các dấu hiệu của suy tim (sung huyết tĩnh mạch phổi, đường Kerley B, phù phổi).</li>
+                <li><em>Siêu âm tim (Echocardiography):</em> Đánh giá bất thường cấu trúc van tim, chức năng tâm thu tâm thất và huyết động (Doppler).</li>
+                <li><em>Chụp cắt lớp vi tính (CT) và Cộng hưởng từ (MRI):</em> CT giúp đánh giá động mạch vành ở bệnh nhân nguy cơ thấp-trung bình; MRI là tiêu chuẩn vàng để khảo sát các bệnh lý cơ tim (cardiomyopathy).</li>
+              </ul>
+            </li>
+            <li><strong>Thông tim / Chụp mạch vành (Cardiac catheterisation):</strong> Khảo sát áp lực buồng tim và giải phẫu hệ mạch vành bằng thuốc cản quang, nhằm định hướng can thiệp tái tưới máu.</li>
+          </ul>
+        </div>
+      </section>
+      <section class='tab' id='osce'>
+        <div class='grid2'>
+          <div class='card'>
+            <span class='case'>OSCE 1</span>
+            <h2>Tình huống 1: Hỏi bệnh sử đau ngực (Chest pain history)</h2>
+            <p><strong>Yêu cầu:</strong> Bệnh nhân nữ 62 tuổi, đến khám vì đau ngực từng cơn. Hãy hỏi bệnh sử.</p>
+            <p style='margin-top: 8px;'><strong>Tóm tắt phát hiện:</strong> Bệnh nhân có tiền sử đau ngực khó chịu ngắt quãng trong 6 tuần. Cảm giác đau râm ran ở giữa ngực, không lan ra tay hay hàm. Đau xuất hiện chủ yếu khi gắng sức, đi lên dốc hoặc đi bộ vào buổi sáng lạnh, và thuyên giảm khi nghỉ ngơi trong vài phút. Triệu chứng làm ảnh hưởng đến công việc chăm sóc của bà. Bệnh nhân có tiền sử Tăng huyết áp và Đái tháo đường typ 2, không hút thuốc.</p>
+            <p style='margin-top: 8px;'><strong>Chẩn đoán sơ bộ phù hợp:</strong> Cơn đau thắt ngực ổn định (Stable angina pectoris).</p>
+            <p style='margin-top: 8px;'><strong>Đề xuất đánh giá tiếp theo:</strong> Khám toàn diện hệ tim mạch, xét nghiệm glucose máu, lipid máu và đo ECG 12 chuyển đạo. Cân nhắc nghiệm pháp gắng sức hoặc chụp mạch vành.</p>
+          </div>
+          <div class='card'>
+            <span class='case'>OSCE 2</span>
+            <h2>Tình huống 2: Khám hệ tim mạch (Cardiac examination)</h2>
+            <p><strong>Yêu cầu:</strong> Bệnh nhân nam 82 tuổi, đến khám vì khó thở tăng dần và choáng váng khi gắng sức. Hãy khám hệ tim mạch.</p>
+            <p style='margin-top: 8px;'><strong>Tóm tắt phát hiện:</strong> Bệnh nhân trông khá thoải mái. Nhịp tim 80 l/p, mạch nảy yếu và chậm (low-volume, slow-rising pulse). Huyết áp 110/60 mmHg. Áp lực tĩnh mạch cảnh (JVP) không tăng. Sờ thấy mỏm tim nảy mạnh (heave) nhưng không bị lệch. Tiếng tim T1 bình thường nhưng tiếng T2 mờ. Có âm thổi tâm thu dạng tống máu độ 3/6, nghe rõ nhất ở ổ van động mạch chủ và lan lên động mạch cảnh. Nghe phổi có ran nổ rải rác ở hai đáy phổi vào cuối kỳ hít vào.</p>
+            <p style='margin-top: 8px;'><strong>Chẩn đoán sơ bộ phù hợp:</strong> Hẹp van động mạch chủ kèm mất bù thất trái và suy tim (Aortic stenosis with left ventricular decompensation and heart failure).</p>
+            <p style='margin-top: 8px;'><strong>Đề xuất đánh giá tiếp theo:</strong> Đo ECG 12 chuyển đạo, X-quang ngực và Siêu âm tim qua thành ngực (Transthoracic echocardiogram).</p>
+          </div>
+        </div>
+        <div class='card'>
+          <h2>Tài liệu tham khảo (References)</h2>
+          <ol>
+            <li>Innes JA, Dover AR, Fairhurst K. <em>Macleod's Clinical Examination</em>. 14th ed. Edinburgh: Elsevier; 2018.</li>
+          </ol>
+        </div>
+      </section>
+      <section class='links'>
+        <div class='card'>
+          <h2>
+            Các bài cùng chuyên khoa tim mạch
+          </h2>
+          <div class='grid2'>
+            <a class='link-card' href='../Khám tim mạch/KN_KhamDMngoaibien.html'>
+              <h3>
+                Khám động mạch ngoại biên
+              </h3>
+              <small>
+                Đau cách hồi, thiếu máu chi cấp, Buerger test và ABPI.
+              </small>
+            </a>
+            <a class='link-card' href='../Khám tim mạch/KN_KhamTMngoaibien.html'>
+              <h3>
+                Khám tĩnh mạch ngoại biên
+              </h3>
+              <small>
+                DVT, suy tĩnh mạch mạn, giãn tĩnh mạch và loét tĩnh mạch.
+              </small>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <footer class='global-footer'>
+    <div id='footer-placeholder' data-footer-path="../../../../components/footer.html">
+    </div>
+  </footer>
+  <script src="../../../../js/clinical-skill-tabs.js"></script>
+  <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>

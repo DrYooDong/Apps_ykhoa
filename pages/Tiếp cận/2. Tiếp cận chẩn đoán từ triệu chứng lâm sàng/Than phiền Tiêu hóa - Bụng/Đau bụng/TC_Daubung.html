@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="CliniPortal - Sơ đồ tiếp cận chẩn đoán phân biệt đau bụng cấp và đau bụng mạn tính theo đối tượng lâm sàng.">
+  <title>Tiếp cận Đau Bụng – CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+  <script src="../../../../components/header.js"></script>
+  <script src="../../../../components/footer.js"></script>
+
+  <link rel="stylesheet" href="../../../../css/components/approach-hub.css">
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ===================== APP CONTAINER ===================== -->
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item" title="Sinh lý & Sinh lý bệnh">
+              <span class="nav-icon">🧬</span>
+              <span class="nav-text">Sinh lý</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng lâm sàng">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ lâm sàng">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý & Kháng sinh">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+              <span class="nav-icon">📄</span>
+              <span class="nav-text">Y học chứng cứ</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- ===================== MAIN CONTENT ===================== -->
+    <div class="main-wrapper" id="mainContent">
+
+      <!--BREADCRUMB-->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../../../index.html" class="breadcrumb-link">
+              <span class="home-icon">🏠</span> Home
+            </a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="../../tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Tiếp cận Đau Bụng</li>
+        </ol>
+      </nav>
+
+      <section class="hero-dashboard" aria-labelledby="hero-title">
+        <div class="hero-pattern"></div>
+        <div class="hero-intro">
+          <h1 id="hero-title">🤢 TIẾP CẬN ĐAU BỤNG</h1>
+          <p>Thuật toán tiếp cận chẩn đoán phân biệt, chỉ định xét nghiệm cận lâm sàng và hình ảnh học theo từng đối
+            tượng lâm sàng cụ thể.</p>
+        </div>
+      </section>
+
+      <div class="main-content-grid" id="mainContentGrid">
+
+        <!-- ===== TOOLBAR ===== -->
+        <div class="tc-toolbar">
+          <div class="tc-toolbar-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" id="tcSearch" placeholder="Tìm kiếm đối tượng hoặc bài tiếp cận..." autocomplete="off">
+            <button class="tc-search-clear" id="searchClearBtn" title="Xóa tìm kiếm">✕</button>
+            <span id="searchCount" class="tc-search-count"></span>
+          </div>
+          <div class="tc-toolbar-actions">
+            <button class="tc-toolbar-btn" id="btnExpandAll" title="Mở tất cả nhóm">
+              <span>▼</span> <span>Mở tất cả</span>
+            </button>
+            <button class="tc-toolbar-btn" id="btnCollapseAll" title="Đóng tất cả nhóm">
+              <span>▲</span> <span>Đóng tất cả</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ===== NO RESULTS ===== -->
+        <div id="searchNoResults" class="search-no-results">
+          <span class="no-results-icon">🔍</span>
+          <div>Không tìm thấy bài viết tiếp cận đau bụng nào phù hợp.</div>
+          <div style="margin-top:0.25rem;font-size:var(--text-xs)">Thử tìm kiếm với từ khóa khác như "người lớn", "trẻ
+            em", "mạn tính"...</div>
+        </div>
+
+        <div class="groups-wrapper" id="groupsWrapper">
+
+          <!-- =========================================
+               SECTION: ĐAU BỤNG THEO ĐỐI TƯỢNG LÂM SÀNG
+          ========================================= -->
+          <div class="group-container g-orange active">
+            <div class="group-heading">
+              <h3><span class="g-icon">🤢</span> Phân Loại theo đối tượng <span class="group-tool-count">5</span></h3>
+              <span class="toggle-indicator"></span>
+            </div>
+            <div class="category-grid-wrapper">
+              <div class="category-grid">
+
+                <!-- 1. Đau bụng cấp ở người lớn -->
+                <div class="tool-card card-blue" data-tool-id="tc-db-adult">
+                  <div class="card-top">
+                    <div class="tool-icon">👤</div>
+                    <span class="tool-status active">Cấp cứu</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row">
+                      <h3>Đau Bụng Cấp ở Người Lớn</h3>
+                    </div>
+                    <p>Phân loại đau theo góc tư 9 vùng bụng, định hướng ngoại khoa nguy hiểm (viêm ruột thừa, thủng dạ
+                      dày, tắc ruột, viêm tụy cấp).</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Người lớn</span>
+                    <a href="TC_Daubung_Cap_Nguoilon.html">Xem sơ đồ</a>
+                  </div>
+                </div>
+
+                <!-- 2. Đau bụng cấp ở người lớn tuổi / bệnh nền -->
+                <div class="tool-card card-rose" data-tool-id="tc-db-elderly">
+                  <div class="card-top">
+                    <div class="tool-icon">🧓</div>
+                    <span class="tool-status active">Nguy cơ cao</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row">
+                      <h3>Đau Bụng Cấp ở Người Cao Tuổi</h3>
+                    </div>
+                    <p>Biểu hiện lâm sàng âm thầm, không điển hình. Tiếp cận cảnh giác cao với thiếu máu mạc treo, vỡ
+                      phình động mạch chủ bụng (AAA), viêm túi thừa.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Người cao tuổi</span>
+                    <a href="TC_Daubung_Cap_Nguoilon-tuoi.html">Xem sơ đồ</a>
+                  </div>
+                </div>
+
+                <!-- 3. Đau bụng cấp ở trẻ em -->
+                <div class="tool-card card-green" data-tool-id="tc-db-pediatric">
+                  <div class="card-top">
+                    <div class="tool-icon">👶</div>
+                    <span class="tool-status active">Cấp cứu nhi</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row">
+                      <h3>Đau Bụng Cấp ở Trẻ Em</h3>
+                    </div>
+                    <p>Tiếp cận lâm sàng theo độ tuổi nhi khoa: Lồng ruột (trẻ bú mẹ), viêm ruột thừa, viêm hạch mạc
+                      treo, viêm dạ dày ruột cấp.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Nhi khoa</span>
+                    <a href="TC_Daubung_Cap_Treem.html">Xem sơ đồ</a>
+                  </div>
+                </div>
+
+                <!-- 4. Đau bụng cấp ở phụ nữ tuổi sinh sản -->
+                <div class="tool-card card-purple" data-tool-id="tc-db-women">
+                  <div class="card-top">
+                    <div class="tool-icon">👩‍🦰</div>
+                    <span class="tool-status active">Sản phụ khoa</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row">
+                      <h3>Đau Bụng Cấp ở Phụ Nữ Sinh Sản</h3>
+                    </div>
+                    <p>Định hướng chẩn đoán thai ngoài tử cung vỡ (luôn xét nghiệm Beta-hCG), xoắn buồng trứng, viêm
+                      vùng chậu (PID), vỡ nang hoàng thể.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Phụ khoa</span>
+                    <a href="TC_Daubung_Cap_Phunu.html">Xem sơ đồ</a>
+                  </div>
+                </div>
+
+                <!-- 5. Đau bụng mạn tính -->
+                <div class="tool-card card-amber" data-tool-id="tc-db-chronic">
+                  <div class="card-top">
+                    <div class="tool-icon">🔄</div>
+                    <span class="tool-status active">Nội khoa</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row">
+                      <h3>Đau Bụng Mạn Tính</h3>
+                    </div>
+                    <p>Tiếp cận hệ thống cho đau bụng kéo dài > 3 tháng: Hội chứng ruột kích thích (IBS), viêm tụy mạn,
+                      thiếu máu mạc treo mạn, đau thành bụng.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Mạn tính</span>
+                    <a href="TC_Daubung_Man.html">Xem sơ đồ</a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- =========================================
+               SECTION: ĐAU BỤNG THEO VỊ TRÍ
+          ========================================= -->
+          <div class="group-container g-yellow active">
+            <div class="group-heading">
+              <h3><span class="g-icon">🤢</span> Phân Loại theo vị trí đau <span class="group-tool-count">7</span></h3>
+              <span class="toggle-indicator"></span>
+            </div>
+            <div class="category-grid-wrapper">
+              <div class="category-grid">
+
+                <!-- 1. Đau bụng cấp ở 1/4 trên phải (Hạ sườn phải) -->
+                <div class="tool-card card-blue" data-tool-id="tc-db-adult">
+                  <div class="card-top">
+                    <div class="tool-icon">🫁</div>
+                    <span class="tool-status active">Nguy cơ cao</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row">
+                      <h3>Đau Bụng Cấp ở 1/4 trên phải (Hạ sườn phải)</h3>
+                    </div>
+                    <p>Đau bụng vùng hạ sườn phải: Nguyên nhân nội khoa (viêm gan, sỏi mật) và ngoại khoa (viêm túi mật,
+                      áp xe dưới hoành).</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Người lớn</span>
+                    <a href="TC_Daubung_Cap_HSR.html">Xem sơ đồ</a>
+                  </div>
+                </div>
+
+                <!-- 2. Đau bụng cấp ở 1/4 trên trái (Hạ sườn trái) -->
+                <div class="tool-card card-green" data-tool-id="tc-db-adult">
+                  <div class="card-top">
+                    <div class="tool-icon">🫁</div>
+                    <span class="tool-status active">Nguy cơ cao</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row">
+                      <h3>Đau Bụng Cấp ở 1/4 trên trái (Hạ sườn trái)</h3>
+                    </div>
+                    <p>Đau bụng vùng hạ sườn trái: Nguyên nhân nội khoa (viêm gan, sỏi mật) và ngoại khoa (viêm túi mật,
+                      áp xe dưới hoành).</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Người lớn</span>
+                    <a href="TC_Daubung_Cap_HST.html">Xem sơ đồ</a>
+                  </div>
+                </div>
+
+                <!-- 3. Đau bụng cấp ở 1/4 dưới phải (Hố chậu phải) -->
+                <div class="tool-card card-purple" data-tool-id="tc-db-adult">
+                  <div class="card-top">
+                    <div class="tool-icon">🫁</div>
+                    <span class="tool-status active">Nguy cơ cao</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row">
+                      <h3>Đau Bụng Cấp ở 1/4 dưới phải (Hố chậu phải)</h3>
+                    </div>
+                    <p>Đau bụng vùng hạ sườn phải: Nguyên nhân nội khoa (viêm gan, sỏi mật) và ngoại khoa (viêm túi mật,
+                      áp xe dưới hoành).</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Người lớn</span>
+                    <a href="TC_Daubung_Cap_HCP.html">Xem sơ đồ</a>
+                  </div>
+                </div>
+
+                <!-- 4. Đau bụng cấp ở 1/4 dưới trái (Hố chậu trái) -->
+                <div class="tool-card card-green" data-tool-id="tc-db-adult">
+                  <div class="card-top">
+                    <div class="tool-icon">🫁</div>
+                    <span class="tool-status active">Nguy cơ cao</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row">
+                      <h3>Đau Bụng Cấp ở 1/4 dưới trái (Hố chậu trái)</h3>
+                    </div>
+                    <p>Đau bụng vùng hạ sườn phải: Nguyên nhân nội khoa (viêm gan, sỏi mật) và ngoại khoa (viêm túi mật,
+                      áp xe dưới hoành).</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Người lớn</span>
+                    <a href="TC_Daubung_Cap_HCT.html">Xem sơ đồ</a>
+                  </div>
+                </div>
+
+                <!-- 5. Đau bụng cấp ở vùng thượng vị -->
+                <div class="tool-card card-blue" data-tool-id="tc-db-adult">
+                  <div class="card-top">
+                    <div class="tool-icon">🫁</div>
+                    <span class="tool-status active">Nguy cơ cao</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row">
+                      <h3>Đau Bụng Cấp ở vùng thượng vị</h3>
+                    </div>
+                    <p>Đau bụng vùng hạ sườn phải: Nguyên nhân nội khoa (viêm gan, sỏi mật) và ngoại khoa (viêm túi mật,
+                      áp xe dưới hoành).</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Người lớn</span>
+                    <a href="TC_Daubung_Cap_Thuongvi.html">Xem sơ đồ</a>
+                  </div>
+                </div>
+
+                <!-- 6. Đau bụng cấp vùng quanh rốn -->
+                <div class="tool-card card-green" data-tool-id="tc-db-adult">
+                  <div class="card-top">
+                    <div class="tool-icon">🫁</div>
+                    <span class="tool-status active">Nguy cơ cao</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row">
+                      <h3>Đau Bụng Cấp ở vùng quanh rốn</h3>
+                    </div>
+                    <p>Đau bụng vùng quanh rốn: Nguyên nhân nội khoa (viêm gan, sỏi mật) và ngoại khoa (viêm túi mật,
+                      áp xe dưới hoành).</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Người lớn</span>
+                    <a href="TC_Daubung_Cap_Quanhron.html">Xem sơ đồ</a>
+                  </div>
+                </div>
+
+                <!-- 7. Đau bụng cấp vùng hạ vị -->
+                <div class="tool-card card-purple" data-tool-id="tc-db-adult">
+                  <div class="card-top">
+                    <div class="tool-icon">🫁</div>
+                    <span class="tool-status active">Nguy cơ cao</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row">
+                      <h3>Đau Bụng Cấp ở vùng hạ vị</h3>
+                    </div>
+                    <p>Đau bụng vùng hạ vị: Nguyên nhân nội khoa (viêm gan, sỏi mật) và ngoại khoa (viêm túi mật,
+                      áp xe dưới hoành).</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Người lớn</span>
+                    <a href="TC_Daubung_Cap_HaVi.html">Xem sơ đồ</a>
+                  </div>
+                </div>
+              </div>
+            </div><!-- end groups-wrapper -->
+          </div><!-- end main-content-grid -->
+
+        </div><!-- end main-wrapper -->
+      </div><!-- end app-container -->
+    </div>
+  </div>
+  <footer class="global-footer">
+    <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+  </footer>
+
+  <!-- ===================== SCRIPT ===================== -->
+  <script src="../../../../js/approach-hub.js" defer></script>
+</body>
+
+</html>

@@ -54,7 +54,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="../Kỹ năng lâm sàng/ky-nang-lam-sang.html" class="nav-item" title="Kỹ năng lâm sàng">
+                        <a href="../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng lâm sàng">
                             <span class="nav-icon">🩺</span>
                             <span class="nav-text">Kỹ năng lâm sàng</span>
                         </a>
@@ -111,444 +111,509 @@
                 </div>
             </section>
 
-            <main class="main-content-grid">
-
-                <!-- Phần 1: Sinh lý học Đại cương và Tế bào (Fundamentals & Cell Physiology) -->
-                <section aria-labelledby="part1-heading">
-                    <div class="physio-group-container">
-                        <div class="physio-group-header">
-                            <span class="physio-group-icon">🧠</span>
-                            <h3 id="part1-heading">Phần 1: Sinh lý học Đại cương và Tế bào (Fundamentals & Cell
-                                Physiology)</h3>
-                        </div>
-                        <div class="specialty-grid">
-                            <a href="Visual Physiology/Phan1/Chuong1_MangTeBao.html" class="specialty-card">
-                                <div class="specialty-icon">🧬</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Đại cương về Sinh lý học và Nội môi (Introduction to Physiology &
-                                        Homeostasis)</h3>
-                                    <p>Bản đồ tóm tắt các thành phần của Nội môi, cơ chế điều hòa phản hồi âm.</p>
-                                </div>
-                            </a>
-                            <a href="Visual Physiology/Phan1/Chuong2_DienSinhLy.html" class="specialty-card">
-                                <div class="specialty-icon">⚡</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Sinh lý màng tế bào và Các hình thức vận chuyển chất qua màng (Cell
-                                        Membrane & Transport)</h3>
-                                    <p>Sơ đồ Vận chuyển đơn giản, thụ động và vận chuyển tích cực (bơm Na+-K+).</p>
-                                </div>
-                            </a>
-                            <a href="Visual Physiology/Phan1/Chuong3_SinhLyCo.html" class="specialty-card">
-                                <div class="specialty-icon">💪</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Điện thế màng và Điện thế hoạt động (Membrane Potentials & Action
-                                        Potentials)</h3>
-                                    <p>Đồ thị Điện thế nghỉ, Điện thế hoạt động và các giai đoạn (nhạ, tái cực, tăng
-                                        cực, lạp lại).</p>
-                                </div>
-                            </a>
-
-                            <a href="Visual Physiology/Phan1/Chuong2_DienSinhLy.html" class="specialty-card">
-                                <div class="specialty-icon">⚡</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Sự truyền tin tế bào (Cell Signaling & Receptor Physiology)</h3>
-                                    <p>Sơ đồ 4 con đường truyền tin thứ hai (cAMP, IP3/DAG, TK, Ca2+-CaM).</p>
-                                </div>
-                            </a>
-                        </div>
+            <!--CONTROL BAR / TOOLBAR-->
+            <div class="dashboard-controls">
+                <div class="search-box-container">
+                    <span class="search-icon-svg">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </span>
+                    <input type="text" id="lesson-search" placeholder="Tìm kiếm bài học..."
+                        aria-label="Tìm kiếm bài học">
+                    <button id="clear-search" class="clear-search-btn" aria-label="Xóa tìm kiếm"
+                        style="display: none;">&times;</button>
+                </div>
+                <div class="view-toggle-container">
+                    <span class="toggle-label">Chế độ xem:</span>
+                    <div class="toggle-buttons">
+                        <button id="view-grid-btn" class="toggle-btn active" title="Dạng lưới"
+                            aria-label="Xem dạng lưới">
+                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="14" width="7" height="7"></rect>
+                                <rect x="3" y="14" width="7" height="7"></rect>
+                            </svg>
+                        </button>
+                        <button id="view-list-btn" class="toggle-btn" title="Dạng danh sách"
+                            aria-label="Xem dạng danh sách">
+                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="8" y1="6" x2="21" y2="6"></line>
+                                <line x1="8" y1="12" x2="21" y2="12"></line>
+                                <line x1="8" y1="18" x2="21" y2="18"></line>
+                                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                            </svg>
+                        </button>
                     </div>
-                </section>
+                </div>
+            </div>
 
-                <hr class="section-divider">
-
-                <!-- Phần 2: Sinh lý Hệ Thần kinh và Cơ (Nerve, Muscle & Central Nervous System) -->
-                <section aria-labelledby="part2-heading">
-                    <div class="physio-group-container">
-                        <div class="physio-group-header">
-                            <span class="physio-group-icon">🩸</span>
-                            <h3 id="part2-heading">Phần 2: Sinh lý Hệ Thần kinh và Cơ (Nerve, Muscle & Central Nervous
-                                System)</h3>
-                        </div>
-                        <!--KHỐI 1: SINH LÝ CƠ VÀ ĐIỆN THẾ SYNAPSE (Ngoại biên)-->
-                        <div class="specialty-grid">
-                            <a href="Sinhly/Phan2/SL_Synapse.html" class="specialty-card">
-                                <div class="specialty-icon">🧬</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Sinh lý Synapse và Sự truyền tin qua Synapse (Synaptic Transmission)</h3>
-                                    <p>Cơ chế dẫn truyền xung thần kinh qua synapse hóa học, cấu trúc, chức năng, hoạt
-                                        động
-                                        của các chất dẫn truyền thần kinh, vai trò điều hòa hưng phấn và ức chế.
-                                    </p>
-                                </div>
-                            </a>
-                            <a href="Visual Physiology/Phan2/Chuong5_DongCauMau.html" class="specialty-card">
-                                <div class="specialty-icon">🔴</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Sinh lý Cơ xương (Skeletal Muscle Physiology)</h3>
-                                    <p>Cơ chế co cơ, các hình thái co cơ, đơn vị vận động, điều hòa trương lực cơ, các
-                                        rối loạn co cơ và các hội chứng suy nhược cơ.
-                                    </p>
-                                </div>
-                            </a>
-                            <a href="Sinh Lý/Máu & Huyết học/SL_HeMau&Huyethoc.html" class="specialty-card">
-                                <div class="specialty-icon">🩸</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Sinh lý Cơ trơn và Cơ tim (Smooth & Cardiac Muscle Physiology)</h3>
-                                    <p>Tổng quan hệ máu, 12 chuyên đề học tập chi tiết từ dịch thể, tế bào đến đông cầm
-                                        máu.</p>
-                                </div>
-                            </a>
-                        </div>
-
-                        <!--KHỐI 2: HỆ THẦN KINH TRUNG ƯƠNG VÀ ĐIỀU KHIỂN (Central Nervous System)-->
-                        <div class="specialty-grid">
-                            <a href="Visual Physiology/Phan2/Chuong4_TeBaoMau.html" class="specialty-card">
-                                <div class="specialty-icon">🛡️</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Sinh lý Tủy gai (Spinal Cord Physiology)
-                                    </h3>
-                                    <p>Cơ chế dẫn truyền cảm giác, vận động, phản xạ, duy trì trương lực cơ.
-                                    </p>
-                                </div>
-                            </a>
-                            <a href="Visual Physiology/Phan2/Chuong5_DongCauMau.html" class="specialty-card">
-                                <div class="specialty-icon">🔴</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Sinh lý Thân não, Tiểu não và Hạch nền (Brainstem, Cerebellum & Basal
-                                        Ganglia)</h3>
-                                    <p>Điều hòa hô hấp, tim mạch, thăng bằng, phối hợp vận động, học kỹ năng.</p>
-                                </div>
-                            </a>
-                            <a href="Sinh Lý/Máu & Huyết học/SL_HeMau&Huyethoc.html" class="specialty-card">
-                                <div class="specialty-icon">🩸</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Sinh lý Vỏ não và Các chức năng thần kinh cao cấp (Cerebral Cortex & Higher
-                                        Functions)</h3>
-                                    <p>Phân tích chức năng vùng não, ngôn ngữ, trí nhớ, học tập, giấc ngủ, ý thức.
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
-
-                        <!--KHỐI 3: HỆ THẦN KINH TỰ CHỦ VÀ GIÁC QUAN-->
-                        <div class="specialty-grid">
-                            <a href="Visual Physiology/Phan2/Chuong4_TeBaoMau.html" class="specialty-card">
-                                <div class="specialty-icon">🛡️</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Sinh lý Hệ Thần kinh Tự chủ (Autonomic Nervous System - ANS)
-                                    </h3>
-                                    <p>Cơ chế điều hòa nhịp tim, huyết áp, co thắt phế quản, tiêu hóa.
-                                    </p>
-                                </div>
-                            </a>
-                            <a href="Visual Physiology/Phan2/Chuong5_DongCauMau.html" class="specialty-card">
-                                <div class="specialty-icon">🔴</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Sinh lý các Giác quan (Special Senses)</h3>
-                                    <p>Cơ chế nhìn, nghe, nếm, ngửi và cảm giác đau, nhiệt độ, áp lực.</p>
-                                </div>
-                            </a>
-                        </div>
-
+            <!--DASHBOARD LAYOUT-->
+            <div class="dashboard-layout">
+                <!-- Navigation Sidebar (Sticky) -->
+                <aside class="layout-nav-sidebar" aria-label="Danh mục phần học">
+                    <div class="nav-sidebar-sticky">
+                        <h4 class="nav-sidebar-title">Danh mục phần</h4>
+                        <ul class="part-nav-list">
+                            <li>
+                                <a href="#part1-section" class="part-nav-item active" data-target="part1-section">
+                                    <span class="part-icon">🧠</span>
+                                    <span class="part-text">Phần 1: Đại cương & Tế bào</span>
+                                    <span class="part-count-badge">4</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#part2-section" class="part-nav-item" data-target="part2-section">
+                                    <span class="part-icon">💪</span>
+                                    <span class="part-text">Phần 2: Thần kinh & Cơ</span>
+                                    <span class="part-count-badge">8</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#part3-section" class="part-nav-item" data-target="part3-section">
+                                    <span class="part-icon">🩸</span>
+                                    <span class="part-text">Phần 3: Máu & Miễn dịch</span>
+                                    <span class="part-count-badge">4</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#part4-section" class="part-nav-item" data-target="part4-section">
+                                    <span class="part-icon">🫀</span>
+                                    <span class="part-text">Phần 4: Tim mạch & Hô hấp</span>
+                                    <span class="part-count-badge">6</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#part5-section" class="part-nav-item" data-target="part5-section">
+                                    <span class="part-icon">🍽️</span>
+                                    <span class="part-text">Phần 5: Tiêu hóa & Chuyển hóa</span>
+                                    <span class="part-count-badge">5</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#part6-section" class="part-nav-item" data-target="part6-section">
+                                    <span class="part-icon">💧</span>
+                                    <span class="part-text">Phần 6: Thận & Dịch cơ thể</span>
+                                    <span class="part-count-badge">4</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#part7-section" class="part-nav-item" data-target="part7-section">
+                                    <span class="part-icon">🧬</span>
+                                    <span class="part-text">Phần 7: Nội tiết & Sinh sản</span>
+                                    <span class="part-count-badge">6</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                </section>
+                </aside>
 
-                <hr class="section-divider">
-
-                <!-- Phần 3: Sinh lý Máu và Hệ Miễn dịch (Blood & Immunology) -->
-                <section aria-labelledby="part3-heading">
-                    <div class="physio-group-container">
-                        <div class="physio-group-header">
-                            <span class="physio-group-icon">🫀</span>
-                            <h3 id="part3-heading">Phần 3: Huyết động học Tim mạch và Cơ học Hô hấp</h3>
-                        </div>
-                        <div class="specialty-grid">
-                            <a href="Visual Physiology/Phan3/Chuong6_HuyetDongHoc.html" class="specialty-card">
-                                <div class="specialty-icon">📈</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Đại cương về Máu và Huyết tương (Introduction to Blood & Plasma)</h3>
-                                    <p>Thành phần huyết tương, chức năng Protein huyết tương, huyết động học.
-                                    </p>
-                                </div>
-                            </a>
-
-                            <a href="Visual Physiology/Phan3/Chuong7_CoHocHoHap.html" class="specialty-card">
-                                <div class="specialty-icon">🫁</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Sinh lý Hồng cầu (Erythrocytes / Red Blood Cells)</h3>
-                                    <p>Tổng hợp Epo, cấu trúc Hemoglobin, chuyển hóa sắt, dòng đời hồng cầu.
-                                    </p>
-                                </div>
-                            </a>
-
-                            <a href="Visual Physiology/Phan3/Chuong7_CoHocHoHap.html" class="specialty-card">
-                                <div class="specialty-icon">🫁</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Sinh lý Tiểu cầu và Quá trình Cầm máu (Platelets & Hemostasis)</h3>
-                                    <p>Vai trò tiểu cầu, yếu tố đông máu, Fibrinolysis, Tháp đông máu hiện đại.
-                                    </p>
-                                </div>
-                            </a>
-
-                            <a href="Visual Physiology/Phan3/Chuong7_CoHocHoHap.html" class="specialty-card">
-                                <div class="specialty-icon">🫁</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Sinh lý Nhóm máu và Nguyên tắc Truyền máu (Blood Groups)</h3>
-                                    <p>Hệ nhóm máu ABO, Rh, nguyên tắc tương hợp, biến chứng.
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
+                <!-- Main Content Area -->
+                <main class="layout-content-area" id="lessons-container">
+                    <!-- Empty Search State -->
+                    <div id="empty-search-state" class="empty-search-state" style="display: none;">
+                        <div class="empty-search-icon">🔍</div>
+                        <h3>Không tìm thấy bài học nào</h3>
+                        <p>Vui lòng thử từ khóa khác.</p>
                     </div>
-                </section>
 
-                <hr class="section-divider">
+                    <!-- Phần 1: Sinh lý học Đại cương và Tế bào (Fundamentals & Cell Physiology) -->
+                    <section id="part1-section" aria-labelledby="part1-heading">
+                        <div class="physio-group-container">
+                            <div class="physio-group-header">
+                                <span class="physio-group-icon">🧠</span>
+                                <h3 id="part1-heading">Phần 1: Sinh lý học Đại cương và Tế bào (Fundamentals & Cell
+                                    Physiology)</h3>
+                            </div>
+                            <div class="specialty-grid">
+                                <a href="Visual Physiology/Phan1/Chuong1_MangTeBao.html" class="specialty-card">
+                                    <div class="specialty-icon">🧬</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Đại cương về Sinh lý học và Nội môi (Introduction to Physiology &
+                                            Homeostasis)</h3>
+                                    </div>
+                                </a>
+                                <a href="Visual Physiology/Phan1/Chuong2_DienSinhLy.html" class="specialty-card">
+                                    <div class="specialty-icon">⚡</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Sinh lý màng tế bào và Các hình thức vận chuyển chất qua màng (Cell
+                                            Membrane & Transport)</h3>
+                                    </div>
+                                </a>
+                                <a href="Visual Physiology/Phan1/Chuong3_SinhLyCo.html" class="specialty-card">
+                                    <div class="specialty-icon">💪</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Điện thế màng và Điện thế hoạt động (Membrane Potentials & Action
+                                            Potentials)</h3>
+                                    </div>
+                                </a>
 
-                <!-- Phần 4: Hệ Thống Vận Chuyển và Trao Đổi Khí (Cardiovascular & Respiratory Systems) -->
-                <section aria-labelledby="part4-heading">
-                    <div class="physio-group-container">
-                        <div class="physio-group-header">
-                            <span class="physio-group-icon">💧</span>
-                            <h3 id="part4-heading">Phần 4: Thận, Điện giải và Thăng bằng Toan kiềm</h3>
+                                <a href="Visual Physiology/Phan1/Chuong2_DienSinhLy.html" class="specialty-card">
+                                    <div class="specialty-icon">⚡</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Sự truyền tin tế bào (Cell Signaling & Receptor Physiology)</h3>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
+                    </section>
 
-                        <!--PHÂN MÔN 1: SINH LÝ HỆ TIM MẠCH (CARDIOVASCULAR SYSTEM)-->
-                        <div class="specialty-grid">
-                            <a href="Visual Physiology/Phan4/Chuong8_ChucNangThan.html" class="specialty-card">
-                                <div class="specialty-icon">🔬</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Sinh lý Cơ tim và Hoạt động điện của Tim (Cardiac Electrophysiology)</h3>
-                                    <p>Cơ chế sinh điện, dẫn truyền (SA node, AV node), ECG, rối loạn nhịp. </p>
-                                </div>
-                            </a>
+                    <hr class="section-divider">
 
-                            <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
-                                <div class="specialty-icon">⚖️</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Chu kỳ tim và Cung lượng tim (Cardiac Cycle & Cardiac Output)</h3>
-                                    <p>Đồ thị Vòng lặp Áp lực-Thể tích (PV Loop), các pha chu kỳ, phương trình liên tục.
-                                    </p>
-                                </div>
-                            </a>
+                    <!-- Phần 2: Sinh lý Hệ Thần kinh và Cơ (Nerve, Muscle & Central Nervous System) -->
+                    <section id="part2-section" aria-labelledby="part2-heading">
+                        <div class="physio-group-container">
+                            <div class="physio-group-header">
+                                <span class="physio-group-icon">🩸</span>
+                                <h3 id="part2-heading">Phần 2: Sinh lý Hệ Thần kinh và Cơ (Nerve, Muscle & Central
+                                    Nervous
+                                    System)</h3>
+                            </div>
+                            <!--KHỐI 1: SINH LÝ CƠ VÀ ĐIỆN THẾ SYNAPSE (Ngoại biên)-->
+                            <div class="specialty-grid">
+                                <a href="Sinhly/Phan2/SL_Synapse.html" class="specialty-card">
+                                    <div class="specialty-icon">🧬</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Sinh lý Synapse và Sự truyền tin qua Synapse (Synaptic Transmission)
+                                        </h3>
+                                    </div>
+                                </a>
+                                <a href="Visual Physiology/Phan2/Chuong5_DongCauMau.html" class="specialty-card">
+                                    <div class="specialty-icon">🔴</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Sinh lý Cơ xương (Skeletal Muscle Physiology)</h3>
+                                    </div>
+                                </a>
+                                <a href="Sinh Lý/Máu & Huyết học/SL_HeMau&Huyethoc.html" class="specialty-card">
+                                    <div class="specialty-icon">🩸</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Sinh lý Cơ trơn và Cơ tim (Smooth & Cardiac Muscle Physiology)</h3>
+                                    </div>
+                                </a>
+                            </div>
 
-                            <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
-                                <div class="specialty-icon">⚖️</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Sinh lý Hệ Mạch và Điều hòa Huyết áp (Vascular Physiology & Blood Pressure)
-                                    </h3>
-                                    <p>Đồ thị Vòng lặp Áp lực-Thể tích (PV Loop), các pha chu kỳ, phương trình liên tục.
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
-                        <!--PHÂN MÔN 2: SINH LÝ HỆ HÔ HẤP (RESPIRATORY SYSTEM)-->
-                        <div class="specialty-grid">
-                            <a href="Visual Physiology/Phan4/Chuong8_ChucNangThan.html" class="specialty-card">
-                                <div class="specialty-icon">🔬</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Cơ học Hô hấp và Thông khí phế nang (Respiratory Mechanics & Ventilation)
-                                    </h3>
-                                    <p>Các thì của hô hấp, nguyên lý thông khí, V-Q matching. </p>
-                                </div>
-                            </a>
+                            <!--KHỐI 2: HỆ THẦN KINH TRUNG ƯƠNG VÀ ĐIỀU KHIỂN (Central Nervous System)-->
+                            <div class="specialty-grid">
+                                <a href="Visual Physiology/Phan2/Chuong4_TeBaoMau.html" class="specialty-card">
+                                    <div class="specialty-icon">🛡️</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Sinh lý Tủy gai (Spinal Cord Physiology)
+                                        </h3>
+                                    </div>
+                                </a>
+                                <a href="Visual Physiology/Phan2/Chuong5_DongCauMau.html" class="specialty-card">
+                                    <div class="specialty-icon">🔴</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Sinh lý Thân não, Tiểu não và Hạch nền (Brainstem, Cerebellum & Basal
+                                            Ganglia)</h3>
+                                    </div>
+                                </a>
+                                <a href="Sinh Lý/Máu & Huyết học/SL_HeMau&Huyethoc.html" class="specialty-card">
+                                    <div class="specialty-icon">🩸</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Sinh lý Vỏ não và Các chức năng thần kinh cao cấp (Cerebral Cortex &
+                                            Higher
+                                            Functions)</h3>
+                                    </div>
+                                </a>
+                            </div>
 
-                            <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
-                                <div class="specialty-icon">⚖️</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Trao đổi khí tại Phổi (Gas Exchange / Diffusion)</h3>
-                                    <p>Động học khuếch tán, phương trình Fick, cơ chế hòa tan và liên kết O2/CO2. </p>
-                                </div>
-                            </a>
-
-                            <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
-                                <div class="specialty-icon">⚖️</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Vận chuyển khí trong Máu và Điều hòa Hô hấp (Gas Transport & Regulation)
-                                    </h3>
-                                    <p>Hòa tan O2/CO2, Hemoglobin, Điều hòa hô hấp trung ương và ngoại vi. </p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </section>
-
-                <hr class="section-divider">
-
-                <!-- Phần 5: Tiêu hóa, Chuyển hóa và Dinh dưỡng (Nutrition & Digestion) -->
-                <section aria-labelledby="part5-heading">
-                    <div class="physio-group-container">
-                        <div class="physio-group-header">
-                            <span class="physio-group-icon">💧</span>
-                            <h3 id="part5-heading">Phần 5: Tiêu hóa, Chuyển hóa và Dinh dưỡng</h3>
-                        </div>
-
-                        <div class="specialty-grid">
-                            <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
-                                <div class="specialty-icon">🔬</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Sinh lý Tiêu hóa tại Miệng và Thực quản (Digestion in the Mouth &
-                                        Esophagus)
-                                    </h3>
-                                    <p>Khái niệm chung, cơ chế nhai, tiết nước bọt, nuốt, vận động thực quản.</p>
-                                </div>
-                            </a>
-
-                            <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
-                                <div class="specialty-icon">⚖️</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Sinh lý Tiêu hóa tại Dạ dày (Gastric Physiology)</h3>
-                                    <p>Cơ chế co bóp, tiết dịch vị (Pepsinogen, HCl), bài tiết và điều hòa.</p>
-                                </div>
-                            </a>
-
-                            <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
-                                <div class="specialty-icon">⚖️</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Sinh lý Tiêu hóa tại Ruột non và các Tuyến tiêu hóa lớn (Gan - Tụy)</h3>
-                                    <p>Bài tiết enzyme tiêu hóa, nhu động ruột, hấp thu dinh dưỡng, vai trò Gan - Tụy.
-                                    </p>
-                                </div>
-                            </a>
-
-                            <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
-                                <div class="specialty-icon">⚖️</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Sinh lý Tiêu hóa tại Ruột già (Colonic Physiology)</h3>
-                                    <p>Chức năng hấp thu nước, điện giải, hình thành phân và phản xạ đại tiện.</p>
-                                </div>
-                            </a>
-
-                            <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
-                                <div class="specialty-icon">⚖️</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Chuyển hóa Năng lượng và Điều hòa Thân nhiệt (Energy Metabolism &
-                                        Thermoregulation)</h3>
-                                    <p>Trao đổi chất cơ bản (BMR), chuyển hóa Carbohydrate, Lipid, Protein, điều hòa
-                                        nhiệt độ.
-                                    </p>
-                                </div>
-                            </a>
+                            <!--KHỐI 3: HỆ THẦN KINH TỰ CHỦ VÀ GIÁC QUAN-->
+                            <div class="specialty-grid">
+                                <a href="Visual Physiology/Phan2/Chuong4_TeBaoMau.html" class="specialty-card">
+                                    <div class="specialty-icon">🛡️</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Sinh lý Hệ Thần kinh Tự chủ (Autonomic Nervous System - ANS)
+                                        </h3>
+                                    </div>
+                                </a>
+                                <a href="Visual Physiology/Phan2/Chuong5_DongCauMau.html" class="specialty-card">
+                                    <div class="specialty-icon">🔴</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Sinh lý các Giác quan (Special Senses)</h3>
+                                    </div>
+                                </a>
+                            </div>
 
                         </div>
-                    </div>
-                </section>
+                    </section>
 
-                <hr class="section-divider">
+                    <hr class="section-divider">
 
-                <!-- Phần 6: Thận, Dịch cơ thể và Cân bằng Toan - Kiềm (Kidneys, Salt & Acid-Base Balance) -->
-                <section aria-labelledby="part6-heading">
-                    <div class="physio-group-container">
-                        <div class="physio-group-header">
-                            <span class="physio-group-icon">💧</span>
-                            <h3 id="part6-heading">Phần 6: Thận, Dịch cơ thể và Cân bằng Toan - Kiềm (Kidneys, Salt &
-                                Acid-Base Balance)</h3>
+                    <!-- Phần 3: Sinh lý Máu và Hệ Miễn dịch (Blood & Immunology) -->
+                    <section id="part3-section" aria-labelledby="part3-heading">
+                        <div class="physio-group-container">
+                            <div class="physio-group-header">
+                                <span class="physio-group-icon">🩸</span>
+                                <h3 id="part3-heading">Phần 3: Sinh lý Máu và Hệ Miễn dịch (Blood & Immunology)</h3>
+                            </div>
+                            <div class="specialty-grid">
+                                <a href="Visual Physiology/Phan3/Chuong6_HuyetDongHoc.html" class="specialty-card">
+                                    <div class="specialty-icon">📈</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Đại cương về Máu và Huyết tương (Introduction to Blood & Plasma)</h3>
+                                    </div>
+                                </a>
+
+                                <a href="Visual Physiology/Phan3/Chuong7_CoHocHoHap.html" class="specialty-card">
+                                    <div class="specialty-icon">🫁</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Sinh lý Hồng cầu (Erythrocytes / Red Blood Cells)</h3>
+                                    </div>
+                                </a>
+
+                                <a href="Visual Physiology/Phan3/Chuong7_CoHocHoHap.html" class="specialty-card">
+                                    <div class="specialty-icon">🫁</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Sinh lý Tiểu cầu và Quá trình Cầm máu (Platelets & Hemostasis)</h3>
+                                    </div>
+                                </a>
+
+                                <a href="Visual Physiology/Phan3/Chuong7_CoHocHoHap.html" class="specialty-card">
+                                    <div class="specialty-icon">🫁</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Sinh lý Nhóm máu và Nguyên tắc Truyền máu (Blood Groups)</h3>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
+                    </section>
 
-                        <div class="specialty-grid">
-                            <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
-                                <div class="specialty-icon">🔬</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Bài: Chức năng Lọc tại Cầu thận (Glomerular Filtration)</h3>
-                                    <p>Cơ sở sinh lý về cấu trúc màng lọc, các yếu tố ảnh hưởng đến dòng lọc (PFP).
-                                    </p>
-                                </div>
-                            </a>
+                    <hr class="section-divider">
 
-                            <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
-                                <div class="specialty-icon">⚖️</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Chức năng Tái hấp thu và Bài tiết tại Ống thận (Tubular Reabsorption &
-                                        Secretion)</h3>
-                                    <p>Cơ chế vận chuyển tái hấp thu các chất, bài tiết nước tiểu. </p>
-                                </div>
-                            </a>
+                    <!-- Phần 4: Hệ Thống Vận Chuyển và Trao Đổi Khí (Cardiovascular & Respiratory Systems) -->
+                    <section id="part4-section" aria-labelledby="part4-heading">
+                        <div class="physio-group-container">
+                            <div class="physio-group-header">
+                                <span class="physio-group-icon">🫀</span>
+                                <h3 id="part4-heading">Phần 4: Huyết động học Tim mạch và Cơ học Hô hấp (Cardiovascular
+                                    & Respiratory Systems)</h3>
+                            </div>
 
-                            <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
-                                <div class="specialty-icon">⚖️</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Sự Pha loãng và Cô đặc Nước tiểu – Điều hòa Dịch cơ thể (Urine
-                                        Concentration & Fluid Balance)
-                                    </h3>
-                                    <p>Cơ chế tạo nước tiểu nhược trương/ưu trương và các hormone điều hòa. </p>
-                                </div>
-                            </a>
+                            <!--PHÂN MÔN 1: SINH LÝ HỆ TIM MẠCH (CARDIOVASCULAR SYSTEM)-->
+                            <div class="specialty-grid">
+                                <a href="Visual Physiology/Phan4/Chuong8_ChucNangThan.html" class="specialty-card">
+                                    <div class="specialty-icon">🔬</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Sinh lý Cơ tim và Hoạt động điện của Tim (Cardiac Electrophysiology)
+                                        </h3>
+                                    </div>
+                                </a>
 
-                            <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
-                                <div class="specialty-icon">⚖️</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Vai trò của Thận trong Điều hòa Thăng bằng Toan - Kiềm (Renal Regulation of
-                                        Acid-Base Balance)</h3>
-                                    <p>Cơ chế đệm, bài tiết ion H+ và tái hấp thu Bicarbonate. </p>
-                                </div>
-                            </a>
+                                <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
+                                    <div class="specialty-icon">⚖️</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Chu kỳ tim và Cung lượng tim (Cardiac Cycle & Cardiac Output)</h3>
+                                    </div>
+                                </a>
+
+                                <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
+                                    <div class="specialty-icon">⚖️</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Sinh lý Hệ Mạch và Điều hòa Huyết áp (Vascular Physiology & Blood
+                                            Pressure)
+                                        </h3>
+                                    </div>
+                                </a>
+                            </div>
+                            <!--PHÂN MÔN 2: SINH LÝ HỆ HÔ HẤP (RESPIRATORY SYSTEM)-->
+                            <div class="specialty-grid">
+                                <a href="Visual Physiology/Phan4/Chuong8_ChucNangThan.html" class="specialty-card">
+                                    <div class="specialty-icon">🔬</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Cơ học Hô hấp và Thông khí phế nang (Respiratory Mechanics &
+                                            Ventilation)
+                                        </h3>
+                                    </div>
+                                </a>
+
+                                <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
+                                    <div class="specialty-icon">⚖️</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Trao đổi khí tại Phổi (Gas Exchange / Diffusion)</h3>
+                                    </div>
+                                </a>
+
+                                <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
+                                    <div class="specialty-icon">⚖️</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Vận chuyển khí trong Máu và Điều hòa Hô hấp (Gas Transport &
+                                            Regulation)
+                                        </h3>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
 
-                <hr class="section-divider">
+                    <hr class="section-divider">
 
-                <!-- Phần 7: Hệ Nội tiết và Sinh sản (Endocrine System & Reproduction) -->
-                <section aria-labelledby="part7-heading">
-                    <div class="physio-group-container">
-                        <div class="physio-group-header">
-                            <span class="physio-group-icon">💧</span>
-                            <h3 id="part7-heading">Phần 7: Hệ Nội tiết và Sinh sản (Endocrine System & Reproduction)
-                            </h3>
+                    <!-- Phần 5: Tiêu hóa, Chuyển hóa và Dinh dưỡng (Nutrition & Digestion) -->
+                    <section id="part5-section" aria-labelledby="part5-heading">
+                        <div class="physio-group-container">
+                            <div class="physio-group-header">
+                                <span class="physio-group-icon">💧</span>
+                                <h3 id="part5-heading">Phần 5: Tiêu hóa, Chuyển hóa và Dinh dưỡng</h3>
+                            </div>
+
+                            <div class="specialty-grid">
+                                <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
+                                    <div class="specialty-icon">🔬</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Sinh lý Tiêu hóa tại Miệng và Thực quản (Digestion in the Mouth &
+                                            Esophagus)
+                                        </h3>
+                                    </div>
+                                </a>
+
+                                <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
+                                    <div class="specialty-icon">⚖️</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Sinh lý Tiêu hóa tại Dạ dày (Gastric Physiology)</h3>
+                                    </div>
+                                </a>
+
+                                <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
+                                    <div class="specialty-icon">⚖️</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Sinh lý Tiêu hóa tại Ruột non và các Tuyến tiêu hóa lớn (Gan - Tụy)
+                                        </h3>
+                                    </div>
+                                </a>
+
+                                <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
+                                    <div class="specialty-icon">⚖️</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Sinh lý Tiêu hóa tại Ruột già (Colonic Physiology)</h3>
+                                    </div>
+                                </a>
+
+                                <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
+                                    <div class="specialty-icon">⚖️</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Chuyển hóa Năng lượng và Điều hòa Thân nhiệt (Energy Metabolism &
+                                            Thermoregulation)</h3>
+                                    </div>
+                                </a>
+
+                            </div>
                         </div>
-                        <div class="specialty-grid">
-                            <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
-                                <div class="specialty-icon">🔬</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Nguyên lý hoạt động chung của Hệ Nội tiết (General Principles of
-                                        Endocrinology)</h3>
-                                    <p>Cơ chế điều hòa trục dưới đồi - tuyến yên - tuyến đích (HPA, HPT, HPG). </p>
-                                </div>
-                            </a>
+                    </section>
 
-                            <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
-                                <div class="specialty-icon">⚖️</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Sinh lý Học Hormone Tăng Trưởng GH (Growth Hormone Physiology)</h3>
-                                    <p>Tổng hợp, tiết và cơ chế tác dụng của GH. </p>
-                                </div>
-                            </a>
+                    <hr class="section-divider">
 
-                            <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
-                                <div class="specialty-icon">⚖️</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Sinh lý Tuyến Vỏ Thượng Thận (Adrenal Cortex Physiology)</h3>
-                                    <p>Cortisol, Aldosterone: Tổng hợp, chuyển hóa, cơ chế tác dụng và điều hòa. </p>
-                                </div>
-                            </a>
+                    <!-- Phần 6: Thận, Dịch cơ thể và Cân bằng Toan - Kiềm (Kidneys, Salt & Acid-Base Balance) -->
+                    <section id="part6-section" aria-labelledby="part6-heading">
+                        <div class="physio-group-container">
+                            <div class="physio-group-header">
+                                <span class="physio-group-icon">💧</span>
+                                <h3 id="part6-heading">Phần 6: Thận, Dịch cơ thể và Cân bằng Toan - Kiềm (Kidneys, Salt
+                                    &
+                                    Acid-Base Balance)</h3>
+                            </div>
 
-                            <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
-                                <div class="specialty-icon">⚖️</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Sinh lý Tuyến Giáp (Thyroid Gland Physiology)</h3>
-                                    <p>Tổng hợp, tiết, cơ chế tác dụng và điều hòa của TH và Calcitonin. </p>
-                                </div>
-                            </a>
+                            <div class="specialty-grid">
+                                <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
+                                    <div class="specialty-icon">🔬</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Bài: Chức năng Lọc tại Cầu thận (Glomerular Filtration)</h3>
+                                    </div>
+                                </a>
 
-                            <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
-                                <div class="specialty-icon">⚖️</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Sinh lý Tuyến Tụy Nội Tiết (Endocrine Pancreas)</h3>
-                                    <p>Insulin và Glucagon: Tổng hợp, cơ chế tác dụng và điều hòa chuyển hóa Glucose.
-                                    </p>
-                                </div>
-                            </a>
+                                <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
+                                    <div class="specialty-icon">⚖️</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Chức năng Tái hấp thu và Bài tiết tại Ống thận (Tubular Reabsorption &
+                                            Secretion)</h3>
+                                    </div>
+                                </a>
 
-                            <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
-                                <div class="specialty-icon">⚖️</div>
-                                <div class="specialty-info">
-                                    <h3>Bài: Sinh lý Hệ Thống Sinh Sản (Reproductive Physiology)</h3>
-                                    <p>Sinh lý sinh sản nam/nữ, Chu kỳ kinh nguyệt, Thụ tinh và Thai kỳ. </p>
-                                </div>
-                            </a>
+                                <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
+                                    <div class="specialty-icon">⚖️</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Sự Pha loãng và Cô đặc Nước tiểu – Điều hòa Dịch cơ thể (Urine
+                                            Concentration & Fluid Balance)
+                                        </h3>
+                                    </div>
+                                </a>
+
+                                <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
+                                    <div class="specialty-icon">⚖️</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Vai trò của Thận trong Điều hòa Thăng bằng Toan - Kiềm (Renal
+                                            Regulation of
+                                            Acid-Base Balance)</h3>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                </section>
-            </main>
+                    </section>
+
+                    <hr class="section-divider">
+
+                    <!-- Phần 7: Hệ Nội tiết và Sinh sản (Endocrine System & Reproduction) -->
+                    <section id="part7-section" aria-labelledby="part7-heading">
+                        <div class="physio-group-container">
+                            <div class="physio-group-header">
+                                <span class="physio-group-icon">💧</span>
+                                <h3 id="part7-heading">Phần 7: Hệ Nội tiết và Sinh sản (Endocrine System & Reproduction)
+                                </h3>
+                            </div>
+                            <div class="specialty-grid">
+                                <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
+                                    <div class="specialty-icon">🔬</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Nguyên lý hoạt động chung của Hệ Nội tiết (General Principles of
+                                            Endocrinology)</h3>
+                                    </div>
+                                </a>
+
+                                <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
+                                    <div class="specialty-icon">⚖️</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Sinh lý Học Hormone Tăng Trưởng GH (Growth Hormone Physiology)</h3>
+                                    </div>
+                                </a>
+
+                                <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
+                                    <div class="specialty-icon">⚖️</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Sinh lý Tuyến Vỏ Thượng Thận (Adrenal Cortex Physiology)</h3>
+                                    </div>
+                                </a>
+
+                                <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
+                                    <div class="specialty-icon">⚖️</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Sinh lý Tuyến Giáp (Thyroid Gland Physiology)</h3>
+                                    </div>
+                                </a>
+
+                                <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
+                                    <div class="specialty-icon">⚖️</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Sinh lý Tuyến Tụy Nội Tiết (Endocrine Pancreas)</h3>
+                                    </div>
+                                </a>
+
+                                <a href="Visual Physiology/Phan4/Chuong9_ToanKiem.html" class="specialty-card">
+                                    <div class="specialty-icon">⚖️</div>
+                                    <div class="specialty-info">
+                                        <h3>Bài: Sinh lý Hệ Thống Sinh Sản (Reproductive Physiology)</h3>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
 
         </div>
     </div>

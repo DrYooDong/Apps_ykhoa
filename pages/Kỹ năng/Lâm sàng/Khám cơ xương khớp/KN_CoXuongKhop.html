@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang='vi' data-theme='light'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta name='description'
+    content='Khám hệ cơ xương khớp theo Macleod: Sàng lọc nhanh GALS (Dáng đi, Tay, Chân, Cột sống), khám khớp gối và các nghiệm pháp đặc hiệu.'>
+  <title>
+    Khám Hệ Cơ Xương Khớp - CliniPortal
+  </title>
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+  <link
+    href='https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap'
+    rel='stylesheet'>
+  <link rel='stylesheet' href="../../../../css/reset.css">
+  <link rel='stylesheet' href="../../../../css/main.css">
+  <link rel='stylesheet' href="../../../../css/components/header.css">
+  <link rel='stylesheet' href="../../../../css/components/sidebar.css">
+  <link rel='stylesheet' href="../../../../css/components/footer.css">
+  <script src="../../../../components/header.js">
+  </script>
+  <script src="../../../../components/footer.js">
+  </script>
+  <style>
+    :root {
+      --a: #c2410c;
+      --b: #ea580c;
+      --c: #ffedd5;
+    }
+  </style>
+  <link rel='stylesheet' href="../../../../css/components/clinical-skill.css">
+</head>
+
+<body>
+  <div id='header-placeholder' data-header-path="../../../../components/header.html">
+  </div>
+  <div class='sidebar-overlay' id='sidebarOverlay'>
+  </div>
+  <div class='app-container'>
+    <aside class='app-sidebar' id='appSidebar'>
+      <button id='sidebar-toggle-arrow' class='sidebar-toggle-arrow' aria-label='Thu gọn/Mở rộng Sidebar'>
+        <svg viewBox='0 0 24 24' width='14' height='14' stroke='currentColor' stroke-width='2.5' fill='none'
+          stroke-linecap='round' stroke-linejoin='round' class='toggle-arrow-svg'>
+          <polyline points='15 18 9 12 15 6'>
+          </polyline>
+        </svg>
+      </button>
+      <nav class='sidebar-nav' aria-label='Điều hướng chính'>
+        <ul class='nav-list' role='list'>
+          <li>
+            <a href="../../../../index.html" class='nav-item'>
+              <span class='nav-icon'>
+                🏠
+              </span>
+              <span class='nav-text'>
+                Trang chủ
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../ky-nang.html" class='nav-item'>
+              <span class='nav-icon'>
+                🩺
+              </span>
+              <span class='nav-text'>
+                Kỹ năng lâm sàng
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Tiếp cận/tiep-can.html" class='nav-item'>
+              <span class='nav-icon'>
+                🤒
+              </span>
+              <span class='nav-text'>
+                Tiếp cận lâm sàng
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Công cụ/cong-cu.html" class='nav-item'>
+              <span class='nav-icon'>
+                ⚙️
+              </span>
+              <span class='nav-text'>
+                Công cụ lâm sàng
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <div class='main-wrapper' id='mainContent'>
+      <nav aria-label='Breadcrumb' class='breadcrumb-container'>
+        <ol class='breadcrumb-list'>
+          <li class='breadcrumb-item'>
+            <a href="../../../../index.html" class='breadcrumb-link'>
+              <span class='home-icon'>
+                🏠
+              </span>
+              Home
+            </a>
+          </li>
+          <li class='breadcrumb-item'>
+            <a href="../../ky-nang.html" class='breadcrumb-link'>
+              Kỹ năng lâm sàng
+            </a>
+          </li>
+          <li class='breadcrumb-item active' aria-current='page'>
+            Khám cơ xương khớp
+          </li>
+        </ol>
+      </nav>
+      <section class='hero'>
+        <h1>
+          Khám Hệ Cơ Xương Khớp
+        </h1>
+        <p>
+          Bài khám hệ Cơ xương khớp được biên soạn theo tiêu chuẩn Macleod's Clinical Examination. Hướng dẫn chi tiết cách tiếp cận triệu chứng đau khớp, cứng khớp; thực hiện quy trình khám sàng lọc nhanh GALS và các nghiệm pháp đặc hiệu ở cột sống, khớp gối, khớp vai.
+        </p>
+        <div class='quick'>
+          <div class='qi'>
+            <b>
+              Tư thế
+            </b>
+            Đứng (quan sát dáng đi, cột sống) và nằm ngửa thả lỏng (khám khớp gối, khớp háng)
+          </div>
+          <div class='qi'>
+            <b>
+              Điểm nhấn
+            </b>
+            Sàng lọc GALS, Nhìn - Sờ - Vận động (chủ động và thụ động), khám tràn dịch khớp gối, nghiệm pháp ngăn kéo trước
+          </div>
+          <div class='qi'>
+            <b>
+              Red flags
+            </b>
+            Sưng nóng đỏ đau cấp tính kèm sốt cao (Viêm khớp nhiễm trùng), yếu liệt tiến triển nhanh (Chèn ép tủy cổ/thắt lưng)
+          </div>
+        </div>
+      </section>
+      <div class='tabs'>
+        <button class='tab-btn active' data-tab='core'>
+          Nền tảng
+        </button>
+        <button class='tab-btn' data-tab='hx'>
+          Hỏi bệnh
+        </button>
+        <button class='tab-btn' data-tab='exam'>
+          Khám
+        </button>
+        <button class='tab-btn' data-tab='int'>
+          Biện luận
+        </button>
+        <button class='tab-btn' data-tab='tests'>
+          Cận lâm sàng
+        </button>
+        <button class='tab-btn' data-tab='osce'>
+          OSCE
+        </button>
+      </div>
+
+      <!-- TAB: NỀN TẢNG -->
+      <section class='tab active' id='core'>
+        <div class='card'>
+          <h2>Giải phẫu và Sinh lý học lâm sàng (Anatomy and physiology)</h2>
+          <ul>
+            <li>Cấu trúc chức năng của hệ cơ xương khớp bao gồm xương, khớp, sụn, cơ, gân, dây chằng và bao hoạt dịch.</li>
+            <li><strong>Khớp hoạt dịch (Synovial joint):</strong> Tại một khớp hoạt dịch điển hình, hai đầu xương được bao phủ bởi sụn khớp nhẵn, bao quanh là bao khớp và màng hoạt dịch. Màng hoạt dịch tiết ra dịch khớp giúp bôi trơn và nuôi dưỡng sụn.</li>
+            <li><strong>Dây chằng và Gân:</strong> Dây chằng (ligaments) liên kết giữa xương với xương để ổn định khớp, trong khi gân (tendons) liên kết cơ với xương để truyền lực vận động.</li>
+            <li><strong>Bao hoạt dịch (Bursae):</strong> Nằm ở những vị trí có độ ma sát cao (giữa gân, cơ và xương) giúp đệm và giảm ma sát.</li>
+            <li>Các bệnh lý cơ xương khớp có thể bắt nguồn từ tổn thương tại chính ổ khớp (đau khớp - arthralgia), tại cơ (đau cơ - myalgia) hoặc tại các mô mềm quanh khớp.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: HỎI BỆNH -->
+      <section class='tab' id='hx'>
+        <div class='card'>
+          <h2>Các triệu chứng cơ năng thường gặp (Common presenting symptoms)</h2>
+          <p>Đau và cứng khớp là các triệu chứng phổ biến nhất, cần khai thác kỹ để phân biệt bản chất viêm hay cơ học.</p>
+          <div style='overflow-x: auto; margin-top: 12px;'>
+            <table class='cmp'>
+              <thead>
+                <tr>
+                  <th>Triệu chứng</th>
+                  <th>Bệnh lý Viêm / Tự miễn</th>
+                  <th>Bệnh lý Cơ học / Thoái hóa / Chấn thương</th>
+                  <th>Nguyên nhân khác / Gợi ý</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Đau khớp (Arthralgia)</strong></td>
+                  <td>Viêm khớp dạng thấp, Viêm cột sống dính khớp, Gout (đau chói cấp tính).</td>
+                  <td>Thoái hóa khớp (Osteoarthritis), Rách sụn chêm, Chấn thương.</td>
+                  <td>Hội chứng đau mạn tính (Fibromyalgia), Viêm khớp nhiễm trùng.</td>
+                </tr>
+                <tr>
+                  <td><strong>Đau cơ (Myalgia)</strong></td>
+                  <td>Viêm đa cơ, Viêm da cơ.</td>
+                  <td>Chấn thương, Rách cơ, Tiêu cơ vân.</td>
+                  <td>Tác dụng phụ của Statins, Suy giáp, Hội chứng cai rượu.</td>
+                </tr>
+                <tr>
+                  <td><strong>Cứng khớp (Stiffness)</strong></td>
+                  <td>Điển hình vào buổi sáng, kéo dài &gt;30 phút, giảm khi vận động.</td>
+                  <td>Cứng khớp sau khi nghỉ ngơi, thời gian ngắn (&lt;30 phút), tăng lên khi vận động.</td>
+                  <td>Đau nhức đa cơ (Polymyalgia rheumatica).</td>
+                </tr>
+                <tr>
+                  <td><strong>Sưng khớp (Swelling)</strong></td>
+                  <td>Tràn dịch màng hoạt dịch, tiến triển từ từ, kèm nóng/đỏ.</td>
+                  <td>Tụ máu khớp (haemarthrosis) tiến triển rất nhanh (&lt;30 phút) sau chấn thương.</td>
+                  <td>Tinh thể (Gout) gây sưng cấp tính, sưng đỏ giống hệt nhiễm trùng.</td>
+                </tr>
+                <tr>
+                  <td><strong>Khóa / Kẹt khớp</strong></td>
+                  <td>Gân gấp bị dày/viêm ngón tay cò súng (Triggering).</td>
+                  <td>Khóa khớp thực sự (True locking) do dị vật nội khớp, rách sụn chêm.</td>
+                  <td>Đau ức chế vận động (Pseudolocking).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class='card'>
+          <h2>Phân tích chi tiết từng triệu chứng chủ chốt (SOCRATES)</h2>
+          <ul>
+            <li><strong>Vị trí (Site):</strong> Đau tại khớp hay mô mềm xung quanh? Kiểu phân bố có tính đối xứng ở các khớp nhỏ (Gợi ý Viêm khớp dạng thấp) hay không đối xứng ở các khớp lớn (Viêm khớp vảy nến)? Nốt Heberden ở khớp ngón xa (DIP) đặc trưng cho thoái hóa khớp.</li>
+            <li><strong>Khởi phát (Onset):</strong> Đột ngột và dữ dội ngay sau chấn thương (tụ máu) hoặc qua một đêm (Gout); tiến triển trong vài giờ/ngày (Viêm khớp nhiễm trùng); hay từ từ qua nhiều tuần/tháng (Thoái hóa khớp).</li>
+            <li><strong>Tính chất (Character):</strong> Đau trong xương thường sâu, buốt, nhức nhối và tăng về đêm (cảnh báo u xương/nhiễm trùng). Đau theo dải 'bắn tia' (Shooting) thường do chèn ép rễ thần kinh.</li>
+            <li><strong>Hướng lan (Radiation):</strong> Đau cổ lan xuống vai/cánh tay, hoặc đau thắt lưng lan xuống chân (sciatica) đi theo vùng phân bố của rễ thần kinh bị chèn ép.</li>
+            <li><strong>Triệu chứng kèm theo (Associated features):</strong> Đỏ, nóng và sưng chỉ điểm viêm/nhiễm trùng. Tìm kiếm các triệu chứng ngoài khớp (Extra-articular signs) như: ban đỏ cánh bướm (Lupus - SLE), vảy nến, nốt thấp (rheumatoid nodules), khô mắt/miệng (Sjögren), hoặc sốt/sụt cân.</li>
+            <li><strong>Thời gian (Timing):</strong> Cứng khớp kéo dài buổi sáng là dấu hiệu viêm. Đau mạn tính vài năm mà khám bình thường có thể là đau cơ xơ hóa (Fibromyalgia).</li>
+            <li><strong>Yếu tố tăng/giảm (Exacerbating/relieving factors):</strong> Đau cơ học/thoái hóa tăng lên khi vận động; đau do viêm tăng khi nghỉ ngơi và có thể giảm khi vận động. Đau do nhiễm trùng đau cả khi nghỉ và khi vận động.</li>
+          </ul>
+        </div>
+
+        <div class='card'>
+          <h2>Khung câu hỏi gợi ý sàng lọc nhanh (Sàng lọc GALS)</h2>
+          <p>Hỏi 3 câu hỏi bắt buộc để sàng lọc nhanh hệ cơ xương khớp (Gait, Arms, Legs, Spine):</p>
+          <ul>
+            <li>"Bạn có bị đau hay cứng cơ, khớp, hoặc lưng không?"</li>
+            <li>"Bạn có gặp khó khăn khi tự mặc quần áo không?"</li>
+            <li>"Bạn có gặp khó khăn khi đi lên/xuống cầu thang không?"</li>
+          </ul>
+        </div>
+
+        <div class='card'>
+          <h2>Tiền sử bệnh, Dùng thuốc & Đời sống - Xã hội</h2>
+          <ul>
+            <li><strong>Tiền sử bệnh (Past medical history):</strong> Tiền sử gãy xương, chấn thương cũ, đái tháo đường, hoặc các đợt bùng phát viêm khớp/biểu hiện ngoài khớp trước đây.</li>
+            <li><strong>Tiền sử dùng thuốc (Drug history):</strong>
+              <ul>
+                <li><em>Glucocorticoids:</em> Có thể gây loãng xương, hoại tử vô mạch xương đùi, và bệnh lý cơ.</li>
+                <li><em>Statins:</em> Gây đau cơ/viêm cơ hoặc tiêu cơ vân.</li>
+                <li><em>Quinolones:</em> Liên quan đến bệnh lý gân và đứt gân Gót (Achilles).</li>
+              </ul>
+            </li>
+            <li><strong>Gia đình:</strong> Viêm khớp tự miễn và Viêm cột sống dính khớp (liên quan kháng nguyên HLA-B27) có tính gia đình cao.</li>
+            <li><strong>Lối sống & Nghề nghiệp:</strong> Đánh giá mức độ độc lập trong sinh hoạt (ADLs). Hút thuốc là yếu tố nguy cơ mạnh của Viêm khớp dạng thấp. Rượu làm tăng nguy cơ Gout và té ngã.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: KHÁM THỂ CHẤT -->
+      <section class='tab' id='exam'>
+        <div class='grid2'>
+          <div class='card'>
+            <h2>Khám toàn thân & Dấu hiệu ngoài khớp</h2>
+            <ul>
+              <li>Tìm các nốt thấp (rheumatoid nodules) ở mặt duỗi cẳng tay, hạt tophi quanh khớp/vành tai (Gout), ban cánh bướm trên mặt (Lupus).</li>
+              <li>Tìm dấu hiệu của vảy nến (ở da đầu, rốn, móng tay rỗ/bong móng), đỏ lòng bàn tay, ngón tay dùi trống hoặc xơ cứng bì (scleroderma).</li>
+            </ul>
+            <div class='clinical-warning' style='margin-top: 14px;'>
+              <h4>⚠️ Dấu hiệu sưng đỏ khớp cấp tính</h4>
+              <p>Khớp sưng, nóng, đỏ, đau chói khởi phát cấp tính kèm giới hạn vận động nghiêm trọng phải luôn cảnh giác cao độ với <strong>Viêm khớp nhiễm trùng</strong> (cấp cứu ngoại khoa/nội khoa) hoặc <strong>Cơn Gout cấp</strong>.</p>
+            </div>
+          </div>
+
+          <div class='card'>
+            <h2>Quy trình khám chi tiết (Nhìn - Sờ - Vận động)</h2>
+            <p>Tuân thủ nguyên tắc: <strong>Nhìn (Look) - Sờ (Feel) - Vận động (Move)</strong>. So sánh đối xứng hai bên.</p>
+            <ul class='check' style='margin-top: 12px;'>
+              <li>
+                <input type='checkbox'>
+                <span><strong>1. Nhìn (Look):</strong>
+                  <ul>
+                    <li>Dáng đi (Gait): Khập khiễng tránh đau (Antalgic gait), dáng đi lạch bạch (Trendelenburg gait) do yếu cơ dạng hông, hoặc vạt bàn chân (Foot drop) do tổn thương dây thần kinh mác chung.</li>
+                    <li>Biến dạng khớp: Biến dạng "cổ thiên nga" (Swan neck), biến dạng "khuy áo" (Boutonnière), lệch trụ (Ulnar deviation) tại khớp MCP trong Viêm khớp dạng thấp. Nốt Heberden (khớp DIP) và Bouchard (khớp PIP) trong thoái hóa khớp. Vẹo ngoài (valgus) hoặc vẹo trong (varus). Gù (Kyphosis), ưỡn (Lordosis), vẹo (Scoliosis).</li>
+                  </ul>
+                </span>
+              </li>
+              <li>
+                <input type='checkbox'>
+                <span><strong>2. Sờ (Feel):</strong> Hỏi bệnh nhân vị trí đau trước khi sờ. Sờ tìm độ ấm, sưng (xốp màng hoạt dịch), điểm đau chói và tiếng lạo xạo (Crepitus) khi vận động khớp.</span>
+              </li>
+              <li>
+                <input type='checkbox'>
+                <span><strong>3. Vận động (Move):</strong> Khám vận động chủ động (Active) trước, sau đó khám vận động thụ động (Passive). Đánh giá tầm vận động (ROM) và cảm giác điểm tận cùng (end-feel).</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class='card'>
+          <h2>Các nghiệm pháp khám đặc hiệu (Special tests)</h2>
+          <div style='overflow-x: auto; margin-top: 12px;'>
+            <table class='cmp'>
+              <thead>
+                <tr>
+                  <th>Nghiệm pháp</th>
+                  <th>Cách thực hiện</th>
+                  <th>Ý nghĩa lâm sàng</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Nghiệm pháp Schober</strong></td>
+                  <td>Đánh dấu mốc tại L5, 10cm phía trên và 5cm phía dưới. Yêu cầu bệnh nhân cúi gập người chạm ngón chân. Đo khoảng cách tăng thêm.</td>
+                  <td>Bình thường khoảng cách tăng lên &gt;20cm (giãn ra thêm &gt;5cm). Nếu dưới 20cm gợi ý hạn chế vận động cột sống trong Viêm cột sống dính khớp.</td>
+                </tr>
+                <tr>
+                  <td><strong>Sciatic nerve stretch / SLR (Nâng chân thẳng)</strong></td>
+                  <td>Bệnh nhân nằm ngửa, gối duỗi thẳng, bác sĩ nâng chân bệnh nhân lên từ từ cho đến khi đau. Gấp cổ chân để tăng độ căng.</td>
+                  <td>Dương tính khi xuất hiện đau dọc mặt sau đùi/cẳng chân ở góc 30-70 độ. Chỉ điểm chèn ép rễ thần kinh tọa (thường do thoát vị đĩa đệm L4-S1).</td>
+                </tr>
+                <tr>
+                  <td><strong>Femoral nerve stretch (Căng rễ đùi)</strong></td>
+                  <td>Bệnh nhân nằm sấp, gấp khớp gối 90 độ và thụ động duỗi khớp hông.</td>
+                  <td>Dương tính khi đau ở mặt trước đùi. Chỉ điểm chèn ép rễ thần kinh đùi (L2-L4).</td>
+                </tr>
+                <tr>
+                  <td><strong>Bập bềnh xương bánh chè (Patellar tap)</strong></td>
+                  <td>Dồn dịch từ túi cùng trên xương bánh chè xuống dưới, dùng ngón tay ấn nhanh xương bánh chè xuống.</td>
+                  <td>Cảm nhận được tiếng chạm 'cộc' của xương bánh chè vào lồi cầu đùi. Chỉ điểm tràn dịch khớp gối lượng trung bình đến nhiều.</td>
+                </tr>
+                <tr>
+                  <td><strong>Dấu hiệu phình/bóng nước (Bulge test)</strong></td>
+                  <td>Vuốt dịch từ khoang trong khớp gối lên túi cùng trên bánh chè, rồi vuốt từ ngoài xuống để dịch chảy ngược lại khoang trong.</td>
+                  <td>Quan sát thấy rãnh lõm ở mặt trong khớp gối phình lên. Chỉ điểm tràn dịch khớp gối lượng ít.</td>
+                </tr>
+                <tr>
+                  <td><strong>Ngăn kéo trước (Anterior drawer) / Lachmann</strong></td>
+                  <td>Bệnh nhân nằm ngửa, gối gấp 90 độ (hoặc 20-30 độ đối với Lachmann), cố định bàn chân, kéo mâm chày ra trước so với xương đùi.</td>
+                  <td>Mâm chày trượt ra trước quá mức kèm điểm tận cùng xốp (soft end-point). Chỉ điểm đứt dây chằng chéo trước (ACL).</td>
+                </tr>
+                <tr>
+                  <td><strong>Nghiệm pháp Trendelenburg</strong></td>
+                  <td>Yêu cầu bệnh nhân đứng lò cò một chân. Quan sát khung chậu từ phía sau.</td>
+                  <td>Dương tính khi khung chậu bên không chịu lực bị hạ thấp (bình thường phải nâng cao lên). Chỉ điểm yếu cơ dạng hông đối diện (cơ mông nhỡ) hoặc trật khớp háng bẩm sinh.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: BIỆN LUẬN -->
+      <section class='tab' id='int'>
+        <div class='card'>
+          <h2>Cơ học vs Viêm khớp (Mechanical vs. Inflammatory Joint Pain)</h2>
+          <div style='overflow-x: auto;'>
+            <table class='cmp'>
+              <thead>
+                <tr>
+                  <th>Đặc điểm</th>
+                  <th>Đau khớp kiểu Viêm (Inflammatory)</th>
+                  <th>Đau khớp kiểu Cơ học (Mechanical)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Thời điểm đau</strong></td>
+                  <td>Đau nhiều về đêm và sáng sớm, thức giấc vì đau.</td>
+                  <td>Đau tăng khi vận động/gắng sức, giảm nhiều khi nghỉ ngơi.</td>
+                </tr>
+                <tr>
+                  <td><strong>Cứng khớp buổi sáng</strong></td>
+                  <td>Kéo dài &gt;30 phút (thường &gt;1 giờ).</td>
+                  <td>Ngắn (&lt;30 phút), thoáng qua sau khi bất động lâu.</td>
+                </tr>
+                <tr>
+                  <td><strong>Vận động</strong></td>
+                  <td>Đau giảm bớt sau khi vận động nhẹ nhàng.</td>
+                  <td>Đau tăng lên khi tiếp tục vận động.</td>
+                </tr>
+                <tr>
+                  <td><strong>Triệu chứng tại chỗ</strong></td>
+                  <td>Thường sưng, nóng, có thể đỏ nhẹ, sờ xốp màng hoạt dịch.</td>
+                  <td>Phì đại xương cứng, ít khi nóng đỏ, có tiếng lạo xạo (crepitus).</td>
+                </tr>
+                <tr>
+                  <td><strong>Biểu hiện toàn thân</strong></td>
+                  <td>Có thể kèm sốt, mệt mỏi, sụt cân, thiếu máu.</td>
+                  <td>Không có triệu chứng toàn thân.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class='grid2'>
+          <div class='card'>
+            <h2>Định hướng chẩn đoán theo phân bố khớp</h2>
+            <ul>
+              <li><strong>Viêm đa khớp nhỏ đối xứng (MCP, PIP, cổ tay):</strong> Điển hình cho Viêm khớp dạng thấp (RA).</li>
+              <li><strong>Viêm khớp lớn không đối xứng + Viêm điểm bám gân (enthesitis) + Sưng ngón kiểu khúc dồi (dactylitis):</strong> Hướng tới Viêm khớp vảy nến hoặc nhóm Viêm khớp cột sống (Spondyloarthritis).</li>
+              <li><strong>Phì đại xương cứng ở khớp ngón xa (Heberden) và ngón gần (Bouchard):</strong> Đặc trưng của Thoái hóa khớp (Osteoarthritis).</li>
+            </ul>
+          </div>
+
+          <div class='card'>
+            <h2>Chấn thương và Kẹt khớp</h2>
+            <ul>
+              <li><strong>Tụ máu khớp nhanh (&lt;30 phút) sau chấn thương:</strong> Nghi ngờ chảy máu nội khớp do đứt dây chằng chéo trước (ACL), rách sụn chêm vùng có mạch nuôi hoặc gãy xương nội khớp.</li>
+              <li><strong>Khóa khớp thực sự (True locking):</strong> Bệnh nhân đột ngột không thể duỗi thẳng gối, gợi ý mảnh rách sụn chêm kiểu quai xách (bucket-handle tear) hoặc dị vật tự do nội khớp kẹt giữa hai diện khớp.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: CẬN LÂM SÀNG -->
+      <section class='tab' id='tests'>
+        <div class='card'>
+          <h2>Cận lâm sàng Cơ Xương Khớp</h2>
+          <ul>
+            <li><strong>Huyết học & Sinh hóa máu:</strong>
+              <ul>
+                <li><em>ESR và CRP:</em> Tăng cao trong các bệnh lý viêm hệ thống (RA, Lupus, Polymyalgia rheumatica) hoặc viêm khớp nhiễm trùng.</li>
+                <li><em>Acid Uric máu:</em> Tăng trong bệnh Gout (tuy nhiên acid uric có thể bình thường hoặc giảm trong cơn cấp).</li>
+                <li><em>Calci, Phosphate, Alkaline Phosphatase (ALP):</em> Đánh giá bệnh lý chuyển hóa xương (còi xương/nhuyễn xương, bệnh Paget).</li>
+              </ul>
+            </li>
+            <li><strong>Huyết thanh học tự miễn (Serology):</strong>
+              <ul>
+                <li><em>RF (Rheumatoid Factor) & Anti-CCP:</em> Anti-CCP có độ nhạy và độ đặc hiệu cao (&gt;95%) cho Viêm khớp dạng thấp, giúp dự báo tổn thương bào mòn khớp tiến triển.</li>
+                <li><em>ANA (Kháng thể kháng nhân) & Anti-dsDNA:</em> Sàng lọc và chẩn đoán Lupus ban đỏ hệ thống (SLE).</li>
+              </ul>
+            </li>
+            <li><strong>Chẩn đoán hình ảnh:</strong>
+              <ul>
+                <li><em>X-quang quy ước (X-ray):</em> Phát hiện gãy xương, hẹp khe khớp không đối xứng, gai xương, xơ xương dưới sụn (thoái hóa khớp), hoặc hẹp khe khớp đối xứng, bào mòn xương dưới sụn, loãng xương quanh khớp (viêm khớp dạng thấp).</li>
+                <li><em>Siêu âm khớp (Ultrasound):</em> Rất nhạy phát hiện tràn dịch khớp lượng ít, dày màng hoạt dịch, tăng sinh mạch (Doppler), hạt tophi và dấu hiệu "bờ đôi" (double-contour sign - lắng đọng urate trên sụn khớp).</li>
+                <li><em>MRI khớp:</em> Tiêu chuẩn vàng đánh giá dây chằng, sụn chêm, mô mềm, rách chóp xoay vai, và phát hiện phù tủy xương (giai đoạn rất sớm của viêm khớp).</li>
+              </ul>
+            </li>
+            <li><strong>Chọc hút và phân tích dịch khớp (Tối quan trọng trong viêm khớp cấp):</strong>
+              <ul>
+                <li>Nhuộm Gram và cấy tìm vi khuẩn (chẩn đoán xác định viêm khớp nhiễm trùng).</li>
+                <li>Soi kính hiển vi phân cực tìm tinh thể: Tinh thể monosodium urate (Gout) hình kim, bắt màu âm tính mạnh; Tinh thể canxi pyrophosphate (Giả gout) hình thoi/hộp, bắt màu dương tính yếu.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: OSCE -->
+      <section class='tab' id='osce'>
+        <div class='grid2'>
+          <div class='card'>
+            <span class='case'>OSCE 1</span>
+            <h2>Tình huống 1: Bàn tay đau và sưng (Painful hands)</h2>
+            <p><strong>Yêu cầu:</strong> Bệnh nhân nữ, 46 tuổi, tiền sử hút thuốc 15 điếu/ngày. Phàn nàn bị đau, cứng và sưng ở các khớp bàn tay khởi phát từ từ trong 8 tuần nay. Hãy thăm khám bàn tay bệnh nhân.</p>
+            <p style='margin-top: 8px;'><strong>Tóm tắt phát hiện:</strong> Khám bàn tay phát hiện sưng đối xứng các khớp bàn ngón (MCP) thứ 2, 3 hai bên và các khớp ngón gần (PIP) tay trái. Các khớp sờ ấm nhẹ, có cảm giác xốp mềm (dày màng hoạt dịch). Nghiệm pháp bóp ngang các khớp MCP (squeeze test) dương tính gây đau chói hai bên. Giới hạn tầm vận động gập ngón tay chủ động. Không có tổn thương móng tay rỗ hay ban vảy nến da đầu/khuỷu tay.</p>
+            <p style='margin-top: 8px;'><strong>Chẩn đoán sơ bộ:</strong> Viêm khớp dạng thấp (Rheumatoid Arthritis) giai đoạn hoạt động.</p>
+            <p style='margin-top: 8px;'><strong>Đề xuất xử trí tiếp theo:</strong> Chỉ định xét nghiệm FBC, CRP, ESR; định lượng RF và Anti-CCP. Chụp X-quang quy ước hai bàn tay thẳng nghiêng để tìm hình ảnh bào mòn xương khớp hoặc loãng xương quanh khớp.</p>
+          </div>
+
+          <div class='card'>
+            <span class='case'>OSCE 2</span>
+            <h2>Tình huống 2: Đau vai phải (Right shoulder pain)</h2>
+            <p><strong>Yêu cầu:</strong> Bệnh nhân nam 38 tuổi, than phiền đau vai phải 2 tháng nay không có tiền căn chấn thương trực tiếp. Hãy khám khớp vai phải.</p>
+            <p style='margin-top: 8px;'><strong>Tóm tắt phát hiện:</strong> Khớp vai phải không teo cơ quanh khớp, không lệch trục xương bả vai. Vận động thụ động khớp vai bình thường ở tất cả các hướng (loại trừ đông cứng khớp vai - frozen shoulder). Vận động chủ động dạng vai xuất hiện cơn đau chói ở tầm góc từ 60 độ đến 120 độ (cung đau - painful arc). Các nghiệm pháp khám chèn ép dưới mỏm cùng vai gồm Neer test và Hawkins-Kennedy test dương tính.</p>
+            <p style='margin-top: 8px;'><strong>Chẩn đoán sơ bộ:</strong> Hội chứng chèn ép dưới mỏm cùng vai (Impingement syndrome) / Viêm gân cơ chóp xoay (Rotator cuff tendinopathy).</p>
+            <p style='margin-top: 8px;'><strong>Đề xuất xử trí tiếp theo:</strong> Chụp X-quang vai thẳng nghiêng để đánh giá cấu trúc xương mỏm cùng vai, tìm gai xương. Chỉ định siêu âm khớp vai phải để khảo sát bao hoạt dịch dưới mỏm cùng vai và tính toàn vẹn của các gân cơ chóp xoay (gân cơ trên gai).</p>
+          </div>
+        </div>
+
+        <div class='card'>
+          <h2>Tài liệu tham khảo (References)</h2>
+          <ol>
+            <li>Innes JA, Dover AR, Fairhurst K. <em>Macleod's Clinical Examination</em>. 14th ed. Edinburgh: Elsevier; 2018.</li>
+          </ol>
+        </div>
+      </section>
+      <section class='links'>
+        <div class='card'>
+          <h2>Các bài cùng chuyên khoa khám lâm sàng</h2>
+          <div class='grid2'>
+            <a class='link-card' href='../Khám thần kinh/KN_Thankinh.html'>
+              <h3>Khám thần kinh</h3>
+              <small>Đánh giá 12 đôi dây sọ, cơ lực, trương lực cơ, phản xạ gân xương và khám cảm giác sâu.</small>
+            </a>
+            <a class='link-card' href='../Khám da tóc móng/KN_DaTocMong.html'>
+              <h3>Khám da tóc móng</h3>
+              <small>Phân tích phân bố, hình thái phát ban, test ấn kính và kiểm tra tổn thương móng tay.</small>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <footer class='global-footer'>
+    <div id='footer-placeholder' data-footer-path="../../../../components/footer.html">
+    </div>
+  </footer>
+  <script src="../../../../js/clinical-skill-tabs.js"></script>
+  <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>
