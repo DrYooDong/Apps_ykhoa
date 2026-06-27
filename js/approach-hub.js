@@ -127,4 +127,36 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
   }
+
+  // --- GRID/LIST VIEW TOGGLE ---
+  const btnGridView = document.getElementById('btnGridView');
+  const btnListView = document.getElementById('btnListView');
+  const groupsWrapper = document.getElementById('groupsWrapper');
+
+  if (btnGridView && btnListView && groupsWrapper) {
+    // Load saved view mode
+    const savedMode = localStorage.getItem('approach-view-mode') || 'grid';
+    setViewMode(savedMode);
+
+    btnGridView.addEventListener('click', () => {
+      setViewMode('grid');
+    });
+
+    btnListView.addEventListener('click', () => {
+      setViewMode('list');
+    });
+
+    function setViewMode(mode) {
+      if (mode === 'list') {
+        btnGridView.classList.remove('active');
+        btnListView.classList.add('active');
+        groupsWrapper.classList.add('view-list');
+      } else {
+        btnListView.classList.remove('active');
+        btnGridView.classList.add('active');
+        groupsWrapper.classList.remove('view-list');
+      }
+      localStorage.setItem('approach-view-mode', mode);
+    }
+  }
 });

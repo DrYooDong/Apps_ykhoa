@@ -1,0 +1,4 @@
+﻿---
+tags:
+  - Benhly
+---[[1. Areas/6. Da liễu & cơ xương khớp/Bệnh lý cụ thể/Viêm da cơ địa/1. Tổng quan & Dịch tễ học|1. Tổng quan & Dịch tễ học]]][[1. Areas/6. Da liễu & cơ xương khớp/Bệnh lý cụ thể/Viêm da cơ địa/2. Cơ chế bệnh sinh|2. Cơ chế bệnh sinh]]][[1. Areas/6. Da liễu & cơ xương khớp/Bệnh lý cụ thể/Viêm da cơ địa/3. Lâm sàng|3. Lâm sàng]]][[1. Areas/6. Da liễu & cơ xương khớp/Bệnh lý cụ thể/Viêm da cơ địa/4. Cận lâm sàng|4. Cận lâm sàng]]][[1. Areas/6. Da liễu & cơ xương khớp/Bệnh lý cụ thể/Viêm da cơ địa/5. Chẩn đoán|5. Chẩn đoán]]][[1. Areas/6. Da liễu & cơ xương khớp/Bệnh lý cụ thể/Viêm da cơ địa/6. Điều trị chung|6. Điều trị chung]]][[1. Areas/6. Da liễu & cơ xương khớp/Bệnh lý cụ thể/Viêm da cơ địa/7. Biến chứng|7. Biến chứng]]][[1. Areas/6. Da liễu & cơ xương khớp/Bệnh lý cụ thể/Viêm da cơ địa/8. Tiên lượng|8. Tiên lượng]]]

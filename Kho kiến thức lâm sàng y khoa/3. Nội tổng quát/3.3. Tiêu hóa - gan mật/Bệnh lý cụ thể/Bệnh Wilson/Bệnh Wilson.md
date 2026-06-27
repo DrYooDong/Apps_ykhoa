@@ -1,0 +1,10 @@
+﻿---
+tags:
+  - Benhly
+---[[1. Areas/3. Nội tổng quát/3.3. Tiêu hóa - gan mật/Bệnh lý cụ thể/Bệnh Wilson/1. Tổng quan & Dịch tễ học|1. Tổng quan & Dịch tễ học]]][[1. Areas/3. Nội tổng quát/3.3. Tiêu hóa - gan mật/Bệnh lý cụ thể/Bệnh Wilson/2. Cơ chế bệnh sinh|2. Cơ chế bệnh sinh]]][[1. Areas/3. Nội tổng quát/3.3. Tiêu hóa - gan mật/Bệnh lý cụ thể/Bệnh Wilson/3. Lâm sàng|3. Lâm sàng]]][[1. Areas/3. Nội tổng quát/3.3. Tiêu hóa - gan mật/Bệnh lý cụ thể/Bệnh Wilson/4. Cận lâm sàng|4. Cận lâm sàng]]][[1. Areas/3. Nội tổng quát/3.3. Tiêu hóa - gan mật/Bệnh lý cụ thể/Bệnh Wilson/5. Chẩn đoán|5. Chẩn đoán]]][[1. Areas/3. Nội tổng quát/3.3. Tiêu hóa - gan mật/Bệnh lý cụ thể/Bệnh Wilson/6. Điều trị chung|6. Điều trị chung]]][[1. Areas/3. Nội tổng quát/3.3. Tiêu hóa - gan mật/Bệnh lý cụ thể/Bệnh Wilson/7. Biến chứng|7. Biến chứng]]][[1. Areas/3. Nội tổng quát/3.3. Tiêu hóa - gan mật/Bệnh lý cụ thể/Bệnh Wilson/8. Tiên lượng|8. Tiên lượng]]]
+
+## Ghi chú hiện có
+---
+tags:
+  - Benhly
+---[[1. Areas/3. Nội tổng quát/3.3. Tiêu hóa - gan mật/Bệnh lý cụ thể/Bệnh Wilson/1. Tổng quan & Dịch tễ học|1. Tổng quan & Dịch tễ học]]][[1. Areas/3. Nội tổng quát/3.3. Tiêu hóa - gan mật/Bệnh lý cụ thể/Bệnh Wilson/2. Cơ chế bệnh sinh|2. Cơ chế bệnh sinh]]][[1. Areas/3. Nội tổng quát/3.3. Tiêu hóa - gan mật/Bệnh lý cụ thể/Bệnh Wilson/3. Lâm sàng|3. Lâm sàng]]][[1. Areas/3. Nội tổng quát/3.3. Tiêu hóa - gan mật/Bệnh lý cụ thể/Bệnh Wilson/4. Cận lâm sàng|4. Cận lâm sàng]]][[1. Areas/3. Nội tổng quát/3.3. Tiêu hóa - gan mật/Bệnh lý cụ thể/Bệnh Wilson/5. Chẩn đoán|5. Chẩn đoán]]][[1. Areas/3. Nội tổng quát/3.3. Tiêu hóa - gan mật/Bệnh lý cụ thể/Bệnh Wilson/6. Điều trị chung|6. Điều trị chung]]][[1. Areas/3. Nội tổng quát/3.3. Tiêu hóa - gan mật/Bệnh lý cụ thể/Bệnh Wilson/7. Biến chứng|7. Biến chứng]]][[1. Areas/3. Nội tổng quát/3.3. Tiêu hóa - gan mật/Bệnh lý cụ thể/Bệnh Wilson/8. Tiên lượng|8. Tiên lượng]]]
