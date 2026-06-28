@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Sinh lý học ống thận: Cơ chế tái hấp thu và bài tiết tại ống lượn gần, quai Henle, ống lượn xa và ống góp. Vai trò của các kênh vận chuyển chất SGLT2, NKCC2, NCC, ENaC và các hormon ADH, Aldosterone.">
+    <title>Chức năng Tái hấp thu và Bài tiết tại Ống thận (Tubular Reabsorption & Secretion) – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS Core CliniPortal -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học dùng chung -->
+    <link rel="stylesheet" href="../../../../css/components/physio-patho.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+    <!-- MathJax Config cho Công thức Toán/Sinh lý -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+
+    <!-- Script điều hướng hệ thống -->
+    <script src="../../../../js/toc.js" defer></script>
+    <script src="../../../../components/header.js" defer></script>
+    <script src="../../../../components/footer.js" defer></script>
+    <script src="../../js/physio-shared.js" defer></script>
+    <script src="../../../../js/main.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh">
+                            <span class="nav-icon">🧬</span>
+                            <span class="nav-text">Sinh lý</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng lâm sàng">
+                            <span class="nav-icon">🩺</span>
+                            <span class="nav-text">Kỹ năng lâm sàng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
+                            <span class="nav-icon">🤒</span>
+                            <span class="nav-text">Tiếp cận lâm sàng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ lâm sàng">
+                            <span class="nav-icon">⚙️</span>
+                            <span class="nav-text">Công cụ lâm sàng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý & Kháng sinh">
+                            <span class="nav-icon">💊</span>
+                            <span class="nav-text">Dược lý lâm sàng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+                            <span class="nav-icon">📄</span>
+                            <span class="nav-text">Y học chứng cứ</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container"
+                style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+                <ol class="breadcrumb-list"
+                    style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+                    <li><a href="../../../../index.html">🏠 Home</a> &gt;</li>
+                    <li><a href="../../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+                    <li style="color:var(--color-primary); font-weight:600;">Chức năng Tái hấp thu và Bài tiết tại Ống
+                        thận</li>
+                </ol>
+            </nav>
+
+            <!-- MAIN CONTAINER -->
+            <main class="visual-container">
+                <!-- CHAPTER HERO CARD -->
+                <div class="chapter-header">
+                    <h1>Chức năng Tái hấp thu và Bài tiết tại Ống thận</h1>
+                    <p>Hệ thống hóa cơ chế vận chuyển chất điện giải, nước và các chất dinh dưỡng tại từng phân đoạn của
+                        ống thận, các cơ chế nhân nồng độ ngược dòng và vai trò của các hormon điều hòa.</p>
+                </div>
+
+                <!-- CONTENT LAYOUT -->
+                <div class="physio-content">
+
+                    <!-- VÙNG NỘI DUNG CHÍNH -->
+                    <div class="physio-main-article">
+
+                        <p class="physio-lead">
+                            Chức năng tạo nước tiểu của thận là một quá trình phức tạp bao gồm ba khâu nối tiếp nhau:
+                            lọc tại cầu thận, tái hấp thu tại ống thận và bài tiết tại ống thận. Mặc dù mỗi ngày có
+                            khoảng 180 lít dịch được lọc qua cầu thận, nhưng chưa đến 1% lượng dịch này trở thành nước
+                            tiểu chính thức. Sự khác biệt khổng lồ này là nhờ vào hoạt động <strong>tái hấp thu</strong>
+                            (vận chuyển chất từ lòng ống thận trở lại máu mao mạch quanh ống) và <strong>bài
+                                tiết</strong> (vận chuyển chất từ máu vào lòng ống thận).
+                        </p>
+
+                        <!-- Công thức toán học nổi bật -->
+                        <div class="formula-card">
+                            <span class="formula-expr">$$\text{Bài xuất} = \text{Lọc} - \text{Tái hấp thu} +
+                                \text{Bài tiết}$$</span>
+                            <p class="formula-desc">Định luật cân bằng khối lượng xác định lượng chất cuối cùng được
+                                thải trừ ra nước tiểu.</p>
+                        </div>
+
+                        <!-- PHẦN I: ỐNG LƯỢN GẦN -->
+                        <h2 id="sec-ong-luon-gan" class="section-title">
+                            <span>Phần I: Ống lượn gần (Proximal Tubule)</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Ống lượn gần là nơi chủ yếu diễn ra sự tái hấp thu, đảm nhận việc thu hồi khoảng <span
+                                    class="term-hl">65%</span> lượng nước và ion Na+, cùng với <span
+                                    class="term-hl">100%</span> các chất dinh dưỡng (glucose, acid amin). Cơ chế biểu mô
+                                ở đây rất phát triển với bờ bàn chải rộng làm tăng diện tích tiếp xúc.
+                            </p>
+
+                            <!-- Grid 3 cột cho ống lượn gần -->
+                            <div class="physio-grid">
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">🧬 1. Tái hấp thu Na+, Glucose và Acid amin</div>
+                                    <p>
+                                        Hoạt động tái hấp thu được thúc đẩy bởi <span class="term-hl-secondary">bơm
+                                            Na<sup>+</sup>-K<sup>+</sup>-ATPase</span> ở màng đáy bên. Bơm sử dụng ATP
+                                        đẩy 3 Na+ ra dịch kẽ và đưa 2 $K^{+}$ vào tế bào, tạo điện thế âm và nồng độ Na+
+                                        thấp nội bào.
+                                        <br><br>
+                                        Động lực này kéo Na+ từ lòng ống vào tế bào qua màng đỉnh theo cơ chế
+                                        <strong>đồng vận chuyển tích cực thứ phát</strong> qua các kênh <span
+                                            class="term-hl-secondary">SGLT1</span>, <span
+                                            class="term-hl-secondary">SGLT2</span> (với glucose) và các kênh đồng vận
+                                        chuyển acid amin, lactate, phosphate. Sau đó, glucose khuếch tán thuận hóa qua
+                                        màng đáy bên vào máu nhờ kênh <span class="term-hl-secondary">GLUT2</span>.
+                                    </p>
+                                </div>
+
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">🧪 2. Tái hấp thu HCO3- và Bài tiết H+
+                                    </div>
+                                    <p>
+                                        HCO3- không thể thấm trực tiếp qua màng đỉnh. Tế bào bài tiết H+ ra
+                                        lòng ống qua kênh đối vận chuyển <span class="term-hl-secondary">NHE3
+                                            (Na<sup>+</sup>/H<sup>+</sup> exchanger)</span>. Tại lòng ống, H+ kết
+                                        hợp với HCO3- tạo thành H2CO3, phân ly thành $H_2O$ và CO2 nhờ men
+                                        <span class="term-hl-secondary">Carbonic Anhydrase (CA)</span> ở bờ bàn chải.
+                                        <br><br>
+                                        CO2 khuếch tán vào tế bào, kết hợp với $H_2O$ nhờ men CA nội bào tạo lại
+                                        thành $H^+$ và $HCO_3^-$. $HCO_3^-$ sau đó được đưa vào máu qua kênh đồng vận
+                                        chuyển <span class="term-hl-secondary">NBC1
+                                            (Na<sup>+</sup>/HCO<sub>3</sub><sup>-</sup>)</span> ở màng đáy bên. Cơ chế
+                                        này giúp tái hấp thu gần như toàn bộ HCO3- bị lọc.
+                                    </p>
+                                </div>
+
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">💊 3. Bài tiết các Anion và Cation hữu cơ</div>
+                                    <p>
+                                        Ống lượn gần là nơi bài tiết tích cực các chất thải chuyển hóa nội sinh và các
+                                        chất ngoại sinh (bao gồm các loại thuốc điều trị).
+                                        <br><br>
+                                        Các chất nội sinh như urate, creatinine, acid mật và các chất ngoại sinh như
+                                        penicillin, furosemide, salicylates được vận chuyển tích cực từ dịch kẽ vào lòng
+                                        ống nhờ hệ thống vận chuyển đặc hiệu qua các kênh <span
+                                            class="term-hl-secondary">OAT (Organic Anion Transporter)</span> và <span
+                                            class="term-hl-secondary">OCT (Organic Cation Transporter)</span>.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- HÌNH MINH HỌA 1 -->
+                            <div class="image-placeholder-card" style="margin-top: 2rem;">
+                                <div class="image-title">
+                                    <span>🖼️</span> Hình 1: Cơ chế đồng vận chuyển Na+-Glucose tại Ống lượn gần (Berne
+                                    & Levy Fig 34.1 / UMP Hình 17.12 & 17.13)
+                                </div>
+                                <div class="image-drop-area">
+                                    <div class="image-drop-text">
+                                        <img src="../../images/Phan6/Hinh3.png"
+                                            alt="Đồng vận chuyển Na+-Glucose tại ống lượn gần"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div style="display:none;">
+                                            <div class="icon">📥</div>
+                                            <div>Chèn ảnh hoặc mã iframe vào đây</div>
+                                            <div style="font-size:0.8rem; margin-top:0.5rem; opacity:0.7;">(Thay thế div
+                                                này bằng thẻ &lt;img src="../../images/Phan6/Hinh3.png"&gt;)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả chi tiết:</strong> Minh họa sự đồng vận chuyển Na+-Glucose thông qua
+                                    kênh <span class="term-hl-secondary">SGLT2</span> ở màng đỉnh (đồng vận chuyển tích
+                                    cực thứ phát) và kênh <span class="term-hl-secondary">GLUT2</span> ở màng đáy
+                                    (khuếch tán thuận hóa). Sơ đồ làm nổi bật vai trò động lực cung cấp thế năng từ hoạt
+                                    động của <span class="term-hl-secondary">bơm
+                                        Na<sup>+</sup>-K<sup>+</sup>-ATPase</span> ở màng đáy bên (bơm 3 $Na^+$ ra dịch
+                                    kẽ và đưa 2 $K^+$ vào tế bào tiêu tốn ATP).
+                                </div>
+                            </div>
+
+                            <!-- HÌNH MINH HỌA 2 -->
+                            <div class="image-placeholder-card" style="margin-top: 2rem;">
+                                <div class="image-title">
+                                    <span>🖼️</span> Hình 2: Sơ đồ vòng tuần hoàn "đóng kín" của CO2 để tái hấp thu
+                                    HCO3- tại Ống lượn gần (Berne & Levy Fig 37.3 / UMP Hình 17.15)
+                                </div>
+                                <div class="image-drop-area">
+                                    <div class="image-drop-text">
+                                        <img src="../../images/Phan6/Hinh4.png"
+                                            alt="Tái hấp thu bicarbonate tại ống lượn gần"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div style="display:none;">
+                                            <div class="icon">📥</div>
+                                            <div>Chèn ảnh hoặc mã iframe vào đây</div>
+                                            <div style="font-size:0.8rem; margin-top:0.5rem; opacity:0.7;">(Thay thế div
+                                                này bằng thẻ &lt;img src="../../images/Phan6/Hinh4.png"&gt;)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả chi tiết:</strong> Sơ đồ biểu diễn vòng tuần hoàn kín của khí CO2
+                                    qua màng tế bào biểu mô ống lượn gần. Do ion $HCO_3^-$ trong dịch lọc không thể thấm
+                                    trực tiếp qua màng đỉnh, nó buộc phải kết hợp với $H^+$ được bơm <span
+                                        class="term-hl-secondary">NHE3</span> thải ra để tạo H2CO3, sau đó phân ly
+                                    thành $H_2O$ và CO2 nhờ men <span class="term-hl-secondary">Carbonic Anhydrase
+                                        (CA)</span> ở bờ bàn chải. Khí CO2 khuếch tán tự do vào tế bào, kết hợp với
+                                    nước dưới xúc tác của CA nội bào tạo lại $H^+$ và $HCO_3^-$. Chất $HCO_3^-$ mới tạo
+                                    ra này được đưa vào máu qua kênh đồng vận chuyển <span
+                                        class="term-hl-secondary">NBC1</span> ở màng đáy bên, giúp duy trì cân bằng kiềm
+                                    toan hệ thống.
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="section-divider">
+
+                        <!-- PHẦN II: QUAI HENLE -->
+                        <h2 id="sec-quai-henle" class="section-title">
+                            <span>Phần II: Quai Henle (Loop of Henle)</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Quai Henle tái hấp thu khoảng <span class="term-hl">25%</span> lượng Na+ và <span
+                                    class="term-hl">15%</span> lượng nước của dịch lọc. Chức năng quan trọng nhất của
+                                quai Henle là thiết lập và duy trì nồng độ ưu trương ở vùng tủy thận, tạo động lực cốt
+                                lõi cho sự cô đặc nước tiểu ở ống góp.
+                            </p>
+
+                            <!-- Grid 2 cột cho Quai Henle -->
+                            <div class="physio-grid">
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">💧 1. Cành xuống mỏng (Descending Thin Limb)</div>
+                                    <p>
+                                        Phân đoạn này có đặc tính **thấm nước rất mạnh** thông qua các kênh nước <span
+                                            class="term-hl-secondary">Aquaporin-1</span> nhưng **hoàn toàn không thấm
+                                        các chất tan** (như NaCl, ure).
+                                        <br><br>
+                                        Khi dịch lọc đi sâu vào vùng tủy thận ưu trương, nước bị rút mạnh ra khoảng kẽ
+                                        tủy thận và đi vào mạch vasa recta. Quá trình này làm dịch lọc trong lòng ống bị
+                                        cô đặc dần, đạt độ ưu trương cực đại tại đỉnh quai Henle.
+                                    </p>
+                                </div>
+
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">⚡ 2. Cành lên dày (Thick Ascending Limb - TAL)</div>
+                                    <p>
+                                        Phân đoạn này **hoàn toàn không thấm nước** nhưng có khả năng vận chuyển chất
+                                        tan cực kỳ mạnh mẽ.
+                                        <br><br>
+                                        Na+, $K^{+}$ và $Cl^{-}$ được tái hấp thu tích cực từ lòng ống vào tế bào biểu
+                                        mô thông qua kênh đồng vận chuyển <span class="term-hl-secondary">NKCC2
+                                            (1Na<sup>+</sup>-1K<sup>+</sup>-2Cl<sup>-</sup>)</span> ở màng đỉnh. Sau đó,
+                                        $K^{+}$ rò rỉ ngược lại lòng ống qua kênh <span
+                                            class="term-hl-secondary">ROMK</span>, tạo ra điện thế dương trong lòng ống
+                                        (+6 đến +8 mV).
+                                        <br><br>
+                                        Điện thế dương này tạo lực đẩy điện động lực học ép các ion dương hóa trị hai
+                                        ($Ca^{2+}$, $Mg^{2+}$) tái hấp thu thụ động qua khoảng kẽ giữa các tế bào
+                                        (paracellular). Đây là vị trí tác động của <span class="term-hl">thuốc lợi tiểu
+                                            quai</span> (như Furosemide) qua việc ức chế NKCC2.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- HÌNH MINH HỌA 3 -->
+                            <div class="image-placeholder-card" style="margin-top: 2rem;">
+                                <div class="image-title">
+                                    <span>🖼️</span> Hình 3: Cơ chế đồng vận chuyển qua kênh NKCC2 và sự tái hấp thu thụ
+                                    động tại Cành lên dày (Berne & Levy Fig 34.7 / UMP Hình 17.16)
+                                </div>
+                                <div class="image-drop-area">
+                                    <div class="image-drop-text">
+                                        <img src="../../images/Phan6/Hinh5.png"
+                                            alt="Cơ chế kênh NKCC2 tại cành lên dày quai Henle"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div style="display:none;">
+                                            <div class="icon">📥</div>
+                                            <div>Chèn ảnh hoặc mã iframe vào đây</div>
+                                            <div style="font-size:0.8rem; margin-top:0.5rem; opacity:0.7;">(Thay thế div
+                                                này bằng thẻ &lt;img src="../../images/Phan6/Hinh5.png"&gt;)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả chi tiết:</strong> Sơ đồ tế bào biểu mô cành lên dày (TAL) mô tả hoạt
+                                    động đồng vận chuyển $1Na^{+}-1K^{+}-2Cl^{-}$ qua kênh <span
+                                        class="term-hl-secondary">NKCC2</span> ở màng đỉnh. $Na^+$ được bơm ra ngoài qua
+                                    basolateral ATPase, $Cl^-$ khuếch tán qua kênh CLC-K. Đặc biệt, ion $K^+$ rò rỉ
+                                    ngược lại lòng ống qua kênh <span class="term-hl-secondary">ROMK</span>, tạo ra hiệu
+                                    thế dương (+6 đến +8 mV) trong lòng ống so với dịch kẽ. Lực đẩy điện tích dương này
+                                    ép các cation hóa trị hai như $Ca^{2+}$ và $Mg^{2+}$ di chuyển paracellular (giữa
+                                    các khe tế bào) để tái hấp thu vào máu.
+                                </div>
+                            </div>
+
+                            <!-- HÌNH MINH HỌA 4 -->
+                            <div class="image-placeholder-card" style="margin-top: 2rem;">
+                                <div class="image-title">
+                                    <span>🖼️</span> Hình 4: Lưu đồ cơ chế Nhân nồng độ ngược dòng và Trao đổi ngược
+                                    dòng tại Tủy thận (Berne & Levy Fig 35.7 / UMP Hình 17.17 & 17.18)
+                                </div>
+                                <div class="image-drop-area">
+                                    <div class="image-drop-text">
+                                        <img src="../../images/Phan6/Hinh6.png"
+                                            alt="Cơ chế nhân nồng độ ngược dòng và trao đổi ngược dòng"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div style="display:none;">
+                                            <div class="icon">📥</div>
+                                            <div>Chèn ảnh hoặc mã iframe vào đây</div>
+                                            <div style="font-size:0.8rem; margin-top:0.5rem; opacity:0.7;">(Thay thế div
+                                                này bằng thẻ &lt;img src="../../images/Phan6/Hinh6.png"&gt;)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả chi tiết:</strong> Mô tả cơ cấu trao đổi chất ngược chiều giữa dịch
+                                    ống quai Henle và các mạch máu thẳng vasa recta trong tủy thận. Quai Henle hoạt động
+                                    như một <strong>hệ nhân nồng độ ngược dòng</strong> (NKCC2 bơm muối ở cành lên dày
+                                    tạo ưu trương tủy; cành xuống thấm nước làm cô đặc dịch ống), trong khi vasa recta
+                                    đóng vai trò là <strong>hệ trao đổi ngược dòng</strong> thụ động (rút nước và giữ
+                                    lại muối ở vùng kẽ tủy). Sự phối hợp này duy trì gradient thẩm thấu tủy thận từ 300
+                                    mOsm/L lên 1200 mOsm/L, làm tiền đề để ADH điều hòa cô đặc nước tiểu.
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="section-divider">
+
+                        <!-- PHẦN III: ỐNG LƯỢN XA VÀ ỐNG GÓP -->
+                        <h2 id="sec-ong-luon-xa-ong-gop" class="section-title">
+                            <span>Phần III: Ống lượn xa và Ống góp (Distal Tubule & Collecting Duct)</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Đây là đoạn "tinh chỉnh" thành phần nước tiểu cuối cùng trước khi bài xuất ra ngoài. Sự
+                                tái hấp thu và bài tiết ở đoạn này chịu sự điều hòa nghiêm ngặt của các hormon nội tiết
+                                để đáp ứng với tình trạng thể tích tuần hoàn và áp suất thẩm thấu cơ thể.
+                            </p>
+
+                            <!-- Grid 3 cột cho Ống lượn xa & Góp -->
+                            <div class="physio-grid">
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">🧪 1. Nửa đầu ống lượn xa (Đoạn pha loãng)</div>
+                                    <p>
+                                        Tương tự cành lên quai Henle, đoạn này **hoàn toàn không thấm nước**. Tế bào
+                                        biểu mô ở đây tái hấp thu Na+ và $Cl^{-}$ thông qua kênh đồng vận chuyển <span
+                                            class="term-hl-secondary">NCC (Na<sup>+</sup>-Cl<sup>-</sup>
+                                            symporter)</span> ở màng đỉnh.
+                                        <br><br>
+                                        Kênh NCC là đích ức chế trực tiếp của nhóm <span class="term-hl">thuốc lợi tiểu
+                                            Thiazide</span>. Do liên tục rút muối mà không rút nước, dịch lọc đi qua
+                                        đoạn này ngày càng loãng ra (nhược trương).
+                                    </p>
+                                </div>
+
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">🧬 2. Nửa sau ống lượn xa và Ống góp</div>
+                                    <p>
+                                        Chứa hai loại tế bào biệt hóa có chức năng trái ngược nhau:
+                                        <br><br>
+                                        <strong>Tế bào chính (Principal cells):</strong> Tái hấp thu Na+ qua kênh <span
+                                            class="term-hl-secondary">ENaC</span> và bài tiết $K^{+}$ qua kênh <span
+                                            class="term-hl-secondary">ROMK</span>. Hormon <span
+                                            class="term-hl">Aldosterone</span> làm tăng số lượng bơm
+                                        $Na^{+}-K^{+}$-ATPase và kênh ENaC, kích thích giữ muối nước, thải $K^{+}$.
+                                        Hormon <span class="term-hl">ANP</span> có tác dụng ngược lại, ức chế kênh ENaC
+                                        để tăng thải natri.
+                                        <br><br>
+                                        <strong>Tế bào kẽ (Intercalated cells):</strong>
+                                        <br>
+                                        • <em>Tế bào kẽ alpha (Type A):</em> Bài tiết tích cực H+ ra nước tiểu
+                                        thông qua <span class="term-hl-secondary">bơm H<sup>+</sup>-ATPase</span> và tái
+                                        hấp thu HCO3- cùng $K^{+}$ vào máu để điều chỉnh toan huyết.
+                                        <br>
+                                        • <em>Tế bào kẽ beta (Type B):</em> Hoạt động ngược lại, bài tiết HCO3-
+                                        vào lòng ống khi cơ thể bị kiềm huyết.
+                                    </p>
+                                </div>
+
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">💧 3. Tái hấp thu Nước và Cô đặc nước tiểu</div>
+                                    <p>
+                                        Sự tái hấp thu nước ở ống góp hoàn toàn phụ thuộc vào hormon <span
+                                            class="term-hl">ADH (Vasopressin)</span>.
+                                        <br><br>
+                                        Khi có ADH, hormon này gắn vào <span class="term-hl-secondary">thụ thể V2</span>
+                                        ở màng đáy bên, kích hoạt con đường tín hiệu <span
+                                            class="term-hl-secondary">cAMP</span> làm các túi nội bào chứa kênh nước
+                                        <span class="term-hl-secondary">Aquaporin-2 (AQP2)</span> hòa màng vào màng
+                                        đỉnh. Nước trong lòng ống sẽ được rút mạnh vào mô kẽ tủy ưu trương, làm cô đặc
+                                        nước tiểu. Thiếu ADH hoặc thụ thể mất chức năng gây ra bệnh <strong>đái tháo
+                                            nhạt</strong>.
+                                        <br><br>
+                                        Ngoài ra, ADH kích hoạt kênh vận chuyển <span
+                                            class="term-hl-secondary">UT-A1</span> ở ống góp tủy để tái hấp thu ure,
+                                        đóng góp 50% độ ưu trương của tủy thận.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- HÌNH MINH HỌA 5 -->
+                            <div class="image-placeholder-card" style="margin-top: 2rem;">
+                                <div class="image-title">
+                                    <span>🖼️</span> Hình 5: Kênh đồng vận chuyển NCC ở đoạn đầu ống lượn xa (Berne &
+                                    Levy Fig 34.8 / UMP Hình 17.19)
+                                </div>
+                                <div class="image-drop-area">
+                                    <div class="image-drop-text">
+                                        <img src="../../images/Phan6/Hinh7.png"
+                                            alt="Cơ chế kênh NCC ở nửa đầu ống lượn xa"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div style="display:none;">
+                                            <div class="icon">📥</div>
+                                            <div>Chèn ảnh hoặc mã iframe vào đây</div>
+                                            <div style="font-size:0.8rem; margin-top:0.5rem; opacity:0.7;">(Thay thế div
+                                                này bằng thẻ &lt;img src="../../images/Phan6/Hinh7.png"&gt;)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả chi tiết:</strong> Tế bào biểu mô ở nửa đầu ống lượn xa mô tả hoạt
+                                    động tái hấp thu đồng vận của Na+ và $Cl^{-}$ từ lòng ống qua màng đỉnh nhờ kênh
+                                    <span class="term-hl-secondary">NCC</span>. Đây là đích tác dụng đặc hiệu của <span
+                                        class="term-hl">thuốc lợi tiểu Thiazide</span>. Đoạn này hoàn toàn không thấm
+                                    nước nên việc liên tục rút muối ra khỏi lòng ống làm dịch lọc trở nên nhược trương,
+                                    đóng vai trò quan trọng trong cơ chế pha loãng nước tiểu.
+                                </div>
+                            </div>
+
+                            <!-- HÌNH MINH HỌA 6 -->
+                            <div class="image-placeholder-card" style="margin-top: 2rem;">
+                                <div class="image-title">
+                                    <span>🖼️</span> Hình 6: Cơ chế tác động của Aldosterone tại Tế bào chính và Tế bào
+                                    kẽ (Berne & Levy Fig 34.9 / UMP Hình 17.20)
+                                </div>
+                                <div class="image-drop-area">
+                                    <div class="image-drop-text">
+                                        <img src="../../images/Phan6/Hinh8.png" alt="Cơ chế hoạt động của Aldosterone"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div style="display:none;">
+                                            <div class="icon">📥</div>
+                                            <div>Chèn ảnh hoặc mã iframe vào đây</div>
+                                            <div style="font-size:0.8rem; margin-top:0.5rem; opacity:0.7;">(Thay thế div
+                                                này bằng thẻ &lt;img src="../../images/Phan6/Hinh8.png"&gt;)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả chi tiết:</strong> Sơ đồ biểu diễn cơ chế tác động nội tiết của hormon
+                                    vỏ thượng thận <span class="term-hl">Aldosterone</span> tại tế bào chính và tế bào
+                                    kẽ của ống lượn xa muộn và ống góp. Ở tế bào chính, Aldosterone gắn vào thụ thể
+                                    mineralocorticoid nội bào, kích thích phiên mã làm tăng số lượng bơm
+                                    $Na^{+}-K^{+}$-ATPase ở màng đáy bên và mở thêm các kênh natri <span
+                                        class="term-hl-secondary">ENaC</span> cùng kênh kali <span
+                                        class="term-hl-secondary">ROMK</span> ở màng đỉnh, thúc đẩy quá trình giữ muối
+                                    nước và thải Kali. Ở tế bào kẽ alpha, nó kích thích bài tiết ion $H^+$ thông qua
+                                    tăng cường hoạt động bơm H-ATPase để duy trì cân bằng toan kiềm.
+                                </div>
+                            </div>
+
+                            <!-- HÌNH MINH HỌA 7 -->
+                            <div class="image-placeholder-card" style="margin-top: 2rem;">
+                                <div class="image-title">
+                                    <span>🖼️</span> Hình 7: Cơ chế phân tử của hormon ADH điều hòa Aquaporin-2 tại Tế
+                                    bào ống góp (Berne & Levy Fig 35.5 / UMP Hình 17.21)
+                                </div>
+                                <div class="image-drop-area">
+                                    <div class="image-drop-text">
+                                        <img src="../../images/Phan6/Hinh9.png" alt="Cơ chế tế bào của ADH"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div style="display:none;">
+                                            <div class="icon">📥</div>
+                                            <div>Chèn ảnh hoặc mã iframe vào đây</div>
+                                            <div style="font-size:0.8rem; margin-top:0.5rem; opacity:0.7;">(Thay thế div
+                                                này bằng thẻ &lt;img src="../../images/Phan6/Hinh9.png"&gt;)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả chi tiết:</strong> Mô tả cơ chế truyền tin nội bào của hormon chống
+                                    bài niệu <span class="term-hl">ADH (Vasopressin)</span>. Khi gắn vào <span
+                                        class="term-hl-secondary">thụ thể V2</span> ở màng đáy bên tế bào chính ống góp,
+                                    ADH kích hoạt protein Gs $\rightarrow$ adenylate cyclase $\rightarrow$ tăng nồng độ
+                                    <span class="term-hl-secondary">cAMP</span> $\rightarrow$ protein kinase A (PKA).
+                                    PKA thực hiện phosphoryl hóa, thúc đẩy quá trình di chuyển và hòa màng của các túi
+                                    nội bào chứa kênh nước <span class="term-hl-secondary">Aquaporin-2 (AQP2)</span> lên
+                                    màng đỉnh. Nước từ lòng ống đi qua kênh AQP2 vào tế bào, sau đó thoát ra qua kênh
+                                    Aquaporin-3 và 4 ở màng đáy bên để trở về tuần hoàn dưới áp lực thẩm thấu của tủy
+                                    thận ưu trương.
+                                </div>
+                            </div>
+
+                            <!-- HÌNH MINH HỌA 8 -->
+                            <div class="image-placeholder-card" style="margin-top: 2rem;">
+                                <div class="image-title">
+                                    <span>🖼️</span> Hình 8: Sơ đồ tổng kết quá trình Tái hấp thu và Bài tiết dọc theo
+                                    nephron (UMP Hình 17.22)
+                                </div>
+                                <div class="image-drop-area">
+                                    <div class="image-drop-text">
+                                        <img src="../../images/Phan6/Hinh10.png"
+                                            alt="Sơ đồ tổng kết tái hấp thu bài tiết tại nephron"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div style="display:none;">
+                                            <div class="icon">📥</div>
+                                            <div>Chèn ảnh hoặc mã iframe vào đây</div>
+                                            <div style="font-size:0.8rem; margin-top:0.5rem; opacity:0.7;">(Thay thế div
+                                                này bằng thẻ &lt;img src="../../images/Phan6/Hinh10.png"&gt;)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả chi tiết:</strong> Sơ đồ tổng hợp toàn diện thể hiện các cơ chế vận
+                                    chuyển chất chủ yếu tại từng phân đoạn dọc theo chiều dài của đơn vị chức năng thận
+                                    (nephron) bao gồm: Ống lượn gần (tái hấp thu glucose, acid amin, phần lớn nước và
+                                    Na, bài tiết acid hữu cơ), Quai Henle (tái hấp thu nước ở cành xuống, tái hấp thu
+                                    muối ở cành lên tạo môi trường ưu trương tủy), Ống lượn xa (tái hấp thu NaCl nhạy
+                                    cảm Thiazide) và Ống góp (tái hấp thu nước phụ thuộc ADH và điều hòa điện giải/toan
+                                    kiềm nhạy cảm Aldosterone).
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="section-divider">
+
+                        <!-- PHẦN IV: ỨNG DỤNG LÂM SÀNG -->
+                        <h2 id="sec-ung-dung-lam-sang" class="section-title">
+                            <span>Phần IV: Liên hệ Lâm sàng & Sinh lý bệnh học</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Hiểu rõ sinh lý vận chuyển chất tại các đoạn ống thận là chìa khóa để giải thích cơ chế
+                                tác dụng của các loại thuốc lợi tiểu cũng như bệnh học các hội chứng rối loạn thăng bằng
+                                điện giải và nước.
+                            </p>
+
+                            <!-- Hộp ứng dụng lâm sàng -->
+                            <div class="clinical-note-box">
+                                <h4>🩺 Cơ chế tác dụng và phân tầng các nhóm Thuốc lợi tiểu</h4>
+                                <p>
+                                    <strong>1. Lợi tiểu quai (Loop Diuretics - vd: Furosemide):</strong>
+                                    Ức chế trực tiếp kênh <span class="term-hl-secondary">NKCC2</span> ở cành lên dày
+                                    quai Henle. Thuốc ngăn chặn tái hấp thu khoảng 25% lượng natri được lọc, dẫn đến tác
+                                    dụng lợi tiểu rất mạnh. Đồng thời, do làm mất điện thế dương trong lòng ống, lợi
+                                    tiểu quai ngăn chặn tái hấp thu thụ động $Ca^{2+}$ và $Mg^{2+}$, gây tăng thải Canxi
+                                    ra nước tiểu (có thể gây sỏi niệu hoặc hạ canxi máu).
+                                    <br><br>
+                                    <strong>2. Lợi tiểu Thiazide:</strong>
+                                    Ức chế kênh đồng vận chuyển <span class="term-hl-secondary">NCC</span> ở đoạn đầu
+                                    ống lượn xa. Thuốc ngăn chặn tái hấp thu natri ở đoạn này, có tác dụng lợi tiểu
+                                    trung bình. Tuy nhiên, khác với lợi tiểu quai, Thiazide làm **tăng tái hấp thu
+                                    Canxi** ở ống lượn xa (qua việc giảm natri nội bào kích hoạt kênh trao đổi Na/Ca ở
+                                    màng đáy bên). Vì vậy, Thiazide thường được chỉ định để điều trị tăng huyết áp kèm
+                                    loãng xương hoặc ngăn sỏi canxi thận.
+                                    <br><br>
+                                    <strong>3. Lợi tiểu tiết kiệm Kali:</strong>
+                                    • Các thuốc như Amiloride và Triamterene ức chế trực tiếp kênh <span
+                                        class="term-hl-secondary">ENaC</span> ở tế bào chính.
+                                    <br>
+                                    • Spironolactone và Eplerenone đối kháng thụ thể của <span
+                                        class="term-hl">Aldosterone</span>.
+                                    <br>
+                                    Do ngăn chặn dòng natri đi vào qua kênh ENaC, các thuốc này làm giảm điện thế âm
+                                    trong lòng ống, làm mất lực hút để kéo $K^{+}$ ra ngoài qua kênh ROMK. Kết quả là cơ
+                                    thể đào thải natri nhưng giữ lại kali, ngăn chặn nguy cơ hạ kali máu.
+                                </p>
+                            </div>
+
+                            <div class="clinical-note-box">
+                                <h4>🩺 Rối loạn điều hòa nước và bệnh lý Đái tháo nhạt (Diabetes Insipidus)</h4>
+                                <p>
+                                    Đái tháo nhạt là tình trạng cơ thể mất khả năng cô đặc nước tiểu ở ống góp, biểu
+                                    hiện bằng tiểu nhiều (polyuria, >3 lít/ngày) và nước tiểu rất loãng (nhược trương).
+                                    <br><br>
+                                    • <strong>Đái tháo nhạt trung ương (Central DI):</strong> Tuyến yên bị tổn thương
+                                    không thể bài tiết hormon <span class="term-hl">ADH</span> vào máu. Điều trị bằng
+                                    cách bổ sung ADH tổng hợp (Desmopressin).
+                                    <br><br>
+                                    • <strong>Đái tháo nhạt do thận (Nephrogenic DI):</strong> Thận bài tiết ADH bình
+                                    thường nhưng tế bào ống góp kháng lại ADH do đột biến gen thụ thể <span
+                                        class="term-hl-secondary">V2</span>, đột biến gen <span
+                                        class="term-hl-secondary">Aquaporin-2</span>, hoặc do ngộ độc lithium.
+                                    Desmopressin không có hiệu quả trong trường hợp này.
+                                </p>
+                            </div>
+                        </div>
+
+                        <hr class="section-divider">
+
+                        <!-- TÀI LIỆU THAM KHẢO -->
+                        <div class="physio-content">
+                            <h3>Tài liệu tham khảo (AMA Citation style)</h3>
+                            <div class="physio-text-block" style="font-size: 0.9rem; opacity: 0.95;">
+                                <ol
+                                    style="list-style-type: decimal; padding-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                                    <li>Mai PT, Đặng HAT, Lê QT, Vũ TTQ, Bùi DK. <em>Sinh lý học y khoa</em>. Nhà xuất
+                                        bản Đại học Quốc gia Thành phố Hồ Chí Minh; 2024.</li>
+                                    <li>Koeppen BM, Stanton BA. <em>Berne and Levy Physiology</em>. 8th ed. Elsevier;
+                                        2024.</li>
+                                    <li>Barrett KE, Barman SM, Boitano S, Brooks HL. <em>Ganong's Review of Medical
+                                            Physiology</em>. 24th ed. McGraw-Hill Medical; 2012.</li>
+                                    <li>Silbernagl S, Despopoulos A. <em>Color Atlas of Physiology</em>. 6th ed. Thieme;
+                                        2009.</li>
+                                    <li>Lê QT. <em>Sinh lý Thận YDS 2025</em>. [Video recording]. Bs. Linh O'la Scar;
+                                        2025.</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- CỘT MỤC LỤC BÊN PHẢI -->
+                    <div class="physio-toc-sidebar">
+                        <div class="physio-toc-container" id="physio-toc-container">
+                            <!-- Script toc.js sẽ tự động kết xuất mục lục tại đây -->
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+    <!-- Script Sidebar -->
+    <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>

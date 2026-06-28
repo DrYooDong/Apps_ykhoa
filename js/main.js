@@ -5,7 +5,7 @@
       let theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'dark' : 'light';
       html.setAttribute('data-theme', theme);
 
-      themeBtn.addEventListener('click', () => {
+      themeBtn?.addEventListener('click', () => {
         theme = theme === 'dark' ? 'light' : 'dark';
         html.setAttribute('data-theme', theme);
         themeBtn.textContent = theme === 'dark' ? '☀️' : '🌓';
@@ -19,27 +19,27 @@
       const footer    = document.querySelector('.global-footer');
       const isMobile  = () => window.innerWidth < 768;
 
-      arrowBtn.addEventListener('click', () => {
-        if (!isMobile()) {
+      arrowBtn?.addEventListener('click', () => {
+        if (!isMobile() && sidebar) {
           const collapsed = sidebar.classList.toggle('collapsed');
           if (footer) footer.style.marginLeft = collapsed ? 'var(--sidebar-col-w)' : 'var(--sidebar-w)';
         }
       });
 
       // --- Sidebar: mobile slide ---
-      menuBtn.addEventListener('click', () => {
+      menuBtn?.addEventListener('click', () => {
         if (isMobile()) {
-          const open = sidebar.classList.toggle('open');
-          overlay.classList.toggle('show', open);
-        } else {
+          const open = sidebar?.classList.toggle('open');
+          overlay?.classList.toggle('show', open);
+        } else if (sidebar) {
           const collapsed = sidebar.classList.toggle('collapsed');
           if (footer) footer.style.marginLeft = collapsed ? 'var(--sidebar-col-w)' : 'var(--sidebar-w)';
         }
       });
 
-      overlay.addEventListener('click', () => {
-        sidebar.classList.remove('open');
-        overlay.classList.remove('show');
+      overlay?.addEventListener('click', () => {
+        sidebar?.classList.remove('open');
+        overlay?.classList.remove('show');
       });
 
       window.addEventListener('resize', () => {
