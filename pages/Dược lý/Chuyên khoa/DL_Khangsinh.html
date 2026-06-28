@@ -81,6 +81,12 @@
     .pillbox-selection-column {
       flex: 1 1 calc(55% - 0.75rem);
       min-width: 360px;
+      transition: all 0.25s ease;
+    }
+
+    .pillbox-selection-column.full-width-layout {
+      flex: 1 1 100%;
+      max-width: 100%;
     }
 
     .pillbox-output-column {
@@ -377,6 +383,646 @@
         position: static;
       }
     }
+
+    /* ============================================================
+       WELLINGTON SPECTRUM MATRIX & MODAL STYLES
+       ============================================================ */
+    .matrix-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .matrix-search-wrapper {
+      position: relative;
+      flex: 1 1 280px;
+    }
+
+    .matrix-search-input {
+      width: 100%;
+      padding: 0.625rem 1rem 0.625rem 2.25rem;
+      font-size: var(--text-sm);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-sm, 6px);
+      background-color: var(--color-surface);
+      color: var(--color-text);
+      font-family: inherit;
+      transition: border-color 0.15s ease;
+    }
+
+    .matrix-search-input:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 2px var(--color-primary-hl);
+    }
+
+    .matrix-search-icon {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+
+    .matrix-filter-buttons {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .matrix-filter-btn {
+      background-color: var(--color-surface-offset);
+      border: 1px solid var(--color-divider);
+      color: var(--color-text-muted);
+      padding: 0.5rem 0.875rem;
+      font-size: var(--text-xs);
+      font-weight: 600;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .matrix-filter-btn:hover {
+      color: var(--color-text);
+      border-color: var(--color-text-muted);
+    }
+
+    .matrix-filter-btn.active {
+      background-color: var(--color-primary);
+      color: #ffffff;
+      border-color: var(--color-primary);
+    }
+
+    .matrix-legend-container {
+      background-color: var(--color-surface-2);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-md, 8px);
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .matrix-legend-title {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-text-muted);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .matrix-legend-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .matrix-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: var(--text-xs);
+      color: var(--color-text);
+      font-weight: 500;
+    }
+
+    .legend-color-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .legend-susceptibility-levels {
+      display: flex;
+      gap: 1.25rem;
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px dashed var(--color-divider);
+      flex-wrap: wrap;
+    }
+
+    .level-indicator-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+
+    .level-box {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 10px;
+    }
+
+    .level-box.full {
+      background-color: var(--color-primary);
+      color: #ffffff;
+    }
+
+    .level-box.partial {
+      background: repeating-linear-gradient(45deg, rgba(2, 132, 199, 0.25) 0 3px, var(--color-surface) 3px 6px);
+      border: 1px solid var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    .level-box.none {
+      border: 1px solid var(--color-divider);
+      background-color: var(--color-surface);
+      color: var(--color-text-faint);
+    }
+
+    /* Scroll wrapper for high-density matrix */
+    .matrix-scroll-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-md, 8px);
+      background-color: var(--color-surface);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .spectrum-matrix-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: var(--text-xs);
+    }
+
+    /* Sticky columns & headers */
+    .spectrum-matrix-table th,
+    .spectrum-matrix-table td {
+      border-right: 1px solid var(--color-divider);
+      border-bottom: 1px solid var(--color-divider);
+      padding: 0.5rem;
+      text-align: center;
+      vertical-align: middle;
+      position: relative;
+    }
+
+    .spectrum-matrix-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .spectrum-matrix-table th:last-child,
+    .spectrum-matrix-table td:last-child {
+      border-right: none;
+    }
+
+    /* Top category group headers */
+    .group-header-row th {
+      background-color: var(--color-surface-offset);
+      font-weight: 700;
+      color: var(--color-text);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      padding: 0.625rem 0.5rem;
+      border-bottom: 2px solid var(--color-divider);
+    }
+
+    /* Rotated pathogen subheaders */
+    .pathogen-header-row th {
+      background-color: var(--color-surface-2);
+      font-weight: 600;
+      color: var(--color-text-muted);
+      height: 120px;
+      vertical-align: bottom;
+      padding: 0.5rem 0.25rem;
+    }
+
+    .pathogen-header-text {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      white-space: nowrap;
+      text-align: left;
+      display: inline-block;
+      line-height: 1.2;
+      width: 24px;
+    }
+
+    /* Sticky First Column for Antibiotic Info */
+    .spectrum-matrix-table .sticky-col {
+      position: sticky;
+      left: 0;
+      background-color: var(--color-surface);
+      z-index: 10;
+      border-right: 2px solid var(--color-divider);
+      text-align: left;
+      min-width: 175px;
+      max-width: 200px;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+    }
+
+    [data-theme="dark"] .spectrum-matrix-table .sticky-col {
+      background-color: var(--color-surface);
+    }
+
+    .spectrum-matrix-table th.sticky-col {
+      z-index: 12;
+      background-color: var(--color-surface-offset);
+    }
+
+    .spectrum-matrix-table .pathogen-header-row th.sticky-col {
+      background-color: var(--color-surface-2);
+    }
+
+    /* Antibiotic Card Trigger cell */
+    .drug-card-trigger {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      background: none;
+      border: none;
+      padding: 0.375rem 0.5rem;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      font-family: inherit;
+      color: var(--color-text);
+      border-radius: 4px;
+      transition: background-color 0.15s ease;
+    }
+
+    .drug-card-trigger:hover {
+      background-color: var(--color-surface-offset);
+    }
+
+    .drug-card-trigger .drug-name {
+      font-weight: 700;
+      font-size: var(--text-xs);
+    }
+
+    .drug-card-trigger .drug-badge {
+      font-size: 9px;
+      padding: 0.05rem 0.35rem;
+      border-radius: 99px;
+      font-weight: 600;
+      width: fit-content;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    /* Susceptibility Cell Markers */
+    .matrix-cell {
+      width: 32px;
+      height: 32px;
+      padding: 0 !important;
+      transition: background-color 0.15s ease;
+    }
+
+    .susceptibility-block {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 10px;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+
+    .susceptibility-block.full {
+      color: #ffffff;
+    }
+
+    .susceptibility-block.partial {
+      background-size: 8px 8px;
+    }
+
+    .susceptibility-block.none {
+      color: var(--color-text-faint);
+    }
+
+    .susceptibility-block.none::after {
+      content: "•";
+      font-size: 12px;
+      color: var(--color-divider);
+    }
+
+    /* Highlights for coordinates */
+    .spectrum-matrix-table tr:hover td {
+      background-color: var(--color-surface-offset);
+    }
+    
+    .spectrum-matrix-table tr:hover td.sticky-col {
+      background-color: var(--color-surface-offset);
+    }
+
+    .col-highlight {
+      background-color: var(--color-surface-offset) !important;
+    }
+
+    /* Colors per drug class */
+    .class-penicillins { background-color: var(--color-primary); color: #ffffff; }
+    .class-penicillins-bg { background-color: rgba(2, 132, 199, 0.8); }
+    .class-penicillins-partial {
+      background: repeating-linear-gradient(45deg, rgba(2, 132, 199, 0.25) 0 3px, var(--color-surface) 3px 6px);
+      border: 1px solid var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    .class-cephalosporins { background-color: var(--color-warning); color: #ffffff; }
+    .class-cephalosporins-bg { background-color: rgba(217, 119, 6, 0.85); }
+    .class-cephalosporins-partial {
+      background: repeating-linear-gradient(45deg, rgba(217, 119, 6, 0.25) 0 3px, var(--color-surface) 3px 6px);
+      border: 1px solid var(--color-warning);
+      color: var(--color-warning);
+    }
+
+    .class-carbapenems { background-color: var(--color-teal); color: #ffffff; }
+    .class-carbapenems-bg { background-color: rgba(13, 148, 136, 0.85); }
+    .class-carbapenems-partial {
+      background: repeating-linear-gradient(45deg, rgba(13, 148, 136, 0.25) 0 3px, var(--color-surface) 3px 6px);
+      border: 1px solid var(--color-teal);
+      color: var(--color-teal);
+    }
+
+    .class-monobactams { background-color: var(--color-purple); color: #ffffff; }
+    .class-monobactams-bg { background-color: rgba(124, 58, 237, 0.85); }
+    .class-monobactams-partial {
+      background: repeating-linear-gradient(45deg, rgba(124, 58, 237, 0.25) 0 3px, var(--color-surface) 3px 6px);
+      border: 1px solid var(--color-purple);
+      color: var(--color-purple);
+    }
+
+    .class-aminoglycosides { background-color: var(--color-rose); color: #ffffff; }
+    .class-aminoglycosides-bg { background-color: rgba(225, 29, 72, 0.85); }
+    .class-aminoglycosides-partial {
+      background: repeating-linear-gradient(45deg, rgba(225, 29, 72, 0.25) 0 3px, var(--color-surface) 3px 6px);
+      border: 1px solid var(--color-rose);
+      color: var(--color-rose);
+    }
+
+    .class-fluoroquinolones { background-color: #d946ef; color: #ffffff; }
+    .class-fluoroquinolones-bg { background-color: rgba(217, 70, 239, 0.85); }
+    .class-fluoroquinolones-partial {
+      background: repeating-linear-gradient(45deg, rgba(217, 70, 239, 0.25) 0 3px, var(--color-surface) 3px 6px);
+      border: 1px solid #d946ef;
+      color: #d946ef;
+    }
+
+    .class-macrolides { background-color: #8b5cf6; color: #ffffff; }
+    .class-macrolides-bg { background-color: rgba(139, 92, 246, 0.85); }
+    .class-macrolides-partial {
+      background: repeating-linear-gradient(45deg, rgba(139, 92, 246, 0.25) 0 3px, var(--color-surface) 3px 6px);
+      border: 1px solid #8b5cf6;
+      color: #8b5cf6;
+    }
+
+    .class-glycopeptides { background-color: #f97316; color: #ffffff; }
+    .class-glycopeptides-bg { background-color: rgba(249, 115, 22, 0.85); }
+    .class-glycopeptides-partial {
+      background: repeating-linear-gradient(45deg, rgba(249, 115, 22, 0.25) 0 3px, var(--color-surface) 3px 6px);
+      border: 1px solid #f97316;
+      color: #f97316;
+    }
+
+    .class-nitroimidazoles { background-color: #06b6d4; color: #ffffff; }
+    .class-nitroimidazoles-bg { background-color: rgba(6, 182, 212, 0.85); }
+    .class-nitroimidazoles-partial {
+      background: repeating-linear-gradient(45deg, rgba(6, 182, 212, 0.25) 0 3px, var(--color-surface) 3px 6px);
+      border: 1px solid #06b6d4;
+      color: #06b6d4;
+    }
+
+    .class-sulfonamides { background-color: #ec4899; color: #ffffff; }
+    .class-sulfonamides-bg { background-color: rgba(236, 72, 153, 0.85); }
+    .class-sulfonamides-partial {
+      background: repeating-linear-gradient(45deg, rgba(236, 72, 153, 0.25) 0 3px, var(--color-surface) 3px 6px);
+      border: 1px solid #ec4899;
+      color: #ec4899;
+    }
+
+    .class-rifamycins { background-color: #eab308; color: #ffffff; }
+    .class-rifamycins-bg { background-color: rgba(234, 179, 8, 0.85); }
+    .class-rifamycins-partial {
+      background: repeating-linear-gradient(45deg, rgba(234, 179, 8, 0.25) 0 3px, var(--color-surface) 3px 6px);
+      border: 1px solid #eab308;
+      color: #eab308;
+    }
+
+    .class-tetracyclines { background-color: #6b7280; color: #ffffff; }
+    .class-tetracyclines-bg { background-color: rgba(107, 114, 128, 0.85); }
+    .class-tetracyclines-partial {
+      background: repeating-linear-gradient(45deg, rgba(107, 114, 128, 0.25) 0 3px, var(--color-surface) 3px 6px);
+      border: 1px solid #6b7280;
+      color: #6b7280;
+    }
+
+    .class-others { background-color: #64748b; color: #ffffff; }
+    .class-others-bg { background-color: rgba(100, 116, 139, 0.85); }
+    .class-others-partial {
+      background: repeating-linear-gradient(45deg, rgba(100, 116, 139, 0.25) 0 3px, var(--color-surface) 3px 6px);
+      border: 1px solid #64748b;
+      color: #64748b;
+    }
+
+    /* Modal dialog */
+    .abx-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease-in-out;
+    }
+
+    .abx-modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .abx-modal-container {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-lg, 12px);
+      width: 90%;
+      max-width: 600px;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-lg);
+      transform: scale(0.95);
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .abx-modal-overlay.open .abx-modal-container {
+      transform: scale(1);
+    }
+
+    .abx-modal-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--color-divider);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .abx-modal-title-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .abx-modal-title {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--color-text);
+      margin: 0;
+    }
+
+    .abx-modal-subtitle {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .abx-modal-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      padding: 0.25rem;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.15s;
+    }
+
+    .abx-modal-close:hover {
+      color: var(--color-rose);
+    }
+
+    .abx-modal-body {
+      padding: 1.5rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .modal-info-section {
+      background-color: var(--color-surface-2);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-md, 8px);
+      padding: 1rem 1.25rem;
+    }
+
+    .modal-info-section.danger-zone {
+      border-left: 4px solid var(--color-rose);
+      background-color: var(--color-surface);
+    }
+
+    .modal-section-title {
+      font-size: var(--text-xs);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .modal-info-section.danger-zone .modal-section-title {
+      color: var(--color-rose);
+    }
+
+    .modal-section-content {
+      font-size: var(--text-sm);
+      line-height: 1.5;
+      color: var(--color-text);
+      margin: 0;
+    }
+
+    .modal-section-content ul {
+      margin: 0.5rem 0 0 0;
+      padding-left: 1.25rem;
+    }
+
+    .modal-section-content li {
+      margin-bottom: 0.375rem;
+    }
+
+    .modal-section-content li:last-child {
+      margin-bottom: 0;
+    }
+
+    .modal-spectrum-badge-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.5rem;
+    }
+
+    .modal-spectrum-badge {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 0.15rem 0.5rem;
+      border-radius: 99px;
+      background-color: var(--color-surface-offset);
+      border: 1px solid var(--color-divider);
+      color: var(--color-text-muted);
+    }
+
+    .modal-spectrum-badge.active-susceptible {
+      background-color: var(--color-primary-hl);
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    .modal-spectrum-badge.active-partial {
+      background-color: var(--color-warning-hl);
+      border-color: var(--color-warning);
+      color: var(--color-warning);
+    }
+
+    .reference-box {
+      margin-top: 1.5rem;
+      padding: 1rem 1.25rem;
+      background-color: var(--color-surface-offset);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-md, 8px);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    .reference-box strong {
+      color: var(--color-text);
+    }
   </style>
 </head>
 
@@ -423,15 +1069,14 @@
           </ol>
         </nav>
 
+        <div class="quick-tabs-container" role="tablist" aria-label="Phân hệ dược lý kháng sinh">
+          <button class="tab-btn active" data-target="tab-antibiotics" role="tab" aria-selected="true">💊 1. Chọn Kháng sinh & Phối hợp</button>
+          <button class="tab-btn" data-target="tab-mechanism" role="tab" aria-selected="false">🎯 2. Phổ & Cơ chế tác động</button>
+          <button class="tab-btn" data-target="tab-pkpd" role="tab" aria-selected="false">🧬 3. Tối ưu PK/PD</button>
+        </div>
+
         <div class="pillbox-workspace-layout">
           <div class="pillbox-selection-column">
-            
-            <div class="quick-tabs-container" role="tablist" aria-label="Phân hệ dược lý kháng sinh">
-              <button class="tab-btn active" data-target="tab-antibiotics" role="tab" aria-selected="true">💊 1. Chọn Kháng sinh</button>
-              <button class="tab-btn" data-target="tab-mechanism" role="tab" aria-selected="false">🎯 2. Cơ chế & Phổ</button>
-              <button class="tab-btn" data-target="tab-resistance" role="tab" aria-selected="false">🦠 3. Kháng thuốc</button>
-              <button class="tab-btn" data-target="tab-pkpd" role="tab" aria-selected="false">🧬 4. Tối ưu PK/PD</button>
-            </div>
 
             <div id="tab-antibiotics" class="tab-content-panel active">
               <div class="form-section-card">
@@ -547,105 +1192,115 @@
               <div class="form-section-card">
                 <div class="section-card-header">
                   <span class="step-badge">B</span>
-                  <h3>🎯 Cơ chế tác động & Phổ kháng khuẩn</h3>
+                  <h3>🎯 Phổ Kháng Khuẩn & Cơ Chế Tác Động</h3>
                 </div>
-                <p class="section-instruction">Thông tin chi tiết về cơ chế diệt khuẩn và phổ tác động của từng nhóm kháng sinh.</p>
-                
-                <div class="knowledge-rich-content">
-                  <h4>💠 Nhóm Beta-lactam</h4>
-                  <ul>
-                    <li><strong>Cơ chế:</strong> Ức chế tổng hợp vách tế bào vi khuẩn bằng cách gắn vào protein gắn penicillin (PBP), ngăn chặn quá trình cross-linking của peptidoglycan → Vách tế bào mất vững → Vi khuẩn vỡ (lysis).</li>
-                    <li><strong>Phổ tác động:</strong>
-                      <ul>
-                        <li><em>Penicillin tự nhiên:</em> Chủ yếu Gram dương (Liên cầu, Tụ cầu nhạy cảm), một số Gram âm (Neisseria).</li>
-                        <li><em>Penicillin phổ rộng:</em> Thêm coverage cho Haemophilus influenzae, E. coli, Salmonella.</li>
-                        <li><em>Piperacillin:</em> Phủ thêm Pseudomonas aeruginosa.</li>
-                        <li><em>Cephalosporin thế hệ 1:</em> Mạnh Gram dương (MSSA, Streptococcus), ít Gram âm.</li>
-                        <li><em>Cephalosporin thế hệ 2:</em> Tăng Gram âm (Haemophilus, Moraxella).</li>
-                        <li><em>Cephalosporin thế hệ 3:</em> Mạnh Gram âm, một số phủ Pseudomonas (Ceftazidime). Ceftriaxone mạnh với Pneumococcus.</li>
-                        <li><em>Cephalosporin thế hệ 4:</em> Phổ rộng cả Gram dương và Gram âm, bao gồm Pseudomonas.</li>
-                        <li><em>Cephalosporin thế hệ 5:</em> Duy nhất có activity với MRSA.</li>
-                        <li><em>Carbapenem:</em> Phổ cực rộng, bao gồm ESBL-producing Enterobacteriaceae, kỵ khí. Ertapenem không phủ Pseudomonas.</li>
-                        <li><em>Aztreonam:</em> Chỉ Gram âm, an toàn ở bệnh nhân dị ứng Penicillin.</li>
-                      </ul>
-                    </li>
-                  </ul>
+                <p class="section-instruction">Tra cứu trực quan phổ nhạy cảm kháng sinh (Wellington ICU Summary). Nhấp vào tên bất kỳ kháng sinh nào để xem chi tiết cơ chế tác động, kháng thuốc và chiến lược lâm sàng.</p>
 
-                  <h4 style="margin-top: 1.5rem;">💠 Nhóm Aminoglycosides</h4>
-                  <ul>
-                    <li><strong>Cơ chế:</strong> Gắn vào tiểu đơn vị 30S của ribosome vi khuẩn → Ức chế tổng hợp protein và gây đọc sai mã di truyền → Diệt khuẩn.</li>
-                    <li><strong>Phổ:</strong> Gram âm hiếu khí mạnh (Pseudomonas, Enterobacter, Klebsiella, E. coli). Không có activity với Gram dương đơn độc.</li>
-                  </ul>
-
-                  <h4 style="margin-top: 1.5rem;">💠 Nhóm Fluoroquinolones</h4>
-                  <ul>
-                    <li><strong>Cơ chế:</strong> Ức chế enzym DNA Gyrase (Topoisomerase II) và Topoisomerase IV → Ngăn chặn sao chép DNA → Diệt khuẩn.</li>
-                    <li><strong>Phổ:</strong>
-                      <ul>
-                        <li><em>Ciprofloxacin:</em> Mạnh Gram âm (đặc biệt Pseudomonas), yếu Gram dương.</li>
-                        <li><em>Levofloxacin:</em> Cân bằng Gram dương và Gram âm, phủ Pneumococcus.</li>
-                        <li><em>Moxifloxacin:</em> Mạnh Gram dương và kỵ khí, yếu Pseudomonas.</li>
-                      </ul>
-                    </li>
-                  </ul>
-
-                  <h4 style="margin-top: 1.5rem;">💠 Nhóm Macrolides & Lincosamides</h4>
-                  <ul>
-                    <li><strong>Cơ chế:</strong> Gắn vào tiểu đơn vị 50S của ribosome → Ức chế tổng hợp protein → Kìm khuẩn.</li>
-                    <li><strong>Phổ:</strong> Gram dương, vi khuẩn không điển hình (Mycoplasma, Chlamydia, Legionella). Clindamycin mạnh với kỵ khí.</li>
-                  </ul>
-
-                  <h4 style="margin-top: 1.5rem;">💠 Nhóm Glycopeptides & Oxazolidinones</h4>
-                  <ul>
-                    <li><strong>Cơ chế:</strong> Vancomycin gắn vào D-Ala-D-Ala ức chế tổng hợp vách. Linezolid gắn 50S ức chế tổng hợp protein.</li>
-                    <li><strong>Phổ:</strong> Gram dương mạnh, bao gồm MRSA, VRE (Linezolid). Không có activity với Gram âm.</li>
-                  </ul>
-
-                  <h4 style="margin-top: 1.5rem;">💠 Nhóm Khác</h4>
-                  <ul>
-                    <li><strong>Metronidazole:</strong> Tạo gốc tự do phá hủy DNA vi khuẩn kỵ khí và protozoa.</li>
-                    <li><strong>Cotrimoxazole:</strong> Ức chế kép tổng hợp folate. Phổ: Gram âm, Gram dương, Pneumocystis jirovecii.</li>
-                    <li><strong>Fosfomycin/Nitrofurantoin:</strong> Dùng trong nhiễm trùng tiết niệu.</li>
-                    <li><strong>Rifampicin:</strong> Ức chế RNA polymerase. Dùng trong lao và phối hợp MRSA.</li>
-                    <li><strong>Doxycycline:</strong> Ức chế tổng hợp protein (30S). Phổ: Vi khuẩn không điển hình, Lyme, MRSA da mềm.</li>
-                  </ul>
+                <!-- MATRIX CONTROLS -->
+                <div class="matrix-controls">
+                  <div class="matrix-search-wrapper">
+                    <i class="fa-solid fa-magnifying-glass matrix-search-icon"></i>
+                    <input type="text" id="matrix-search-input" class="matrix-search-input" placeholder="Tìm tên kháng sinh..." />
+                  </div>
+                  <div class="matrix-filter-buttons">
+                    <button class="matrix-filter-btn active" data-filter="all">Tất cả</button>
+                    <button class="matrix-filter-btn" data-filter="gram-pos">Gram (+)</button>
+                    <button class="matrix-filter-btn" data-filter="gram-neg">Gram (-)</button>
+                    <button class="matrix-filter-btn" data-filter="anaerobes">Kỵ khí</button>
+                  </div>
                 </div>
-              </div>
-            </div>
 
-            <div id="tab-resistance" class="tab-content-panel">
-              <div class="form-section-card">
-                <div class="section-card-header">
-                  <span class="step-badge">C</span>
-                  <h3>🦠 Cơ chế Kháng thuốc & Chiến lược Xử trí</h3>
-                </div>
-                <p class="section-instruction">Tổng hợp các con đường vi khuẩn vô hiệu hóa kháng sinh và giải pháp lâm sàng.</p>
-                
-                <div class="knowledge-rich-content">
-                  <h4>🔴 Cơ chế Kháng thuốc Chính</h4>
-                  <ul>
-                    <li><strong>Sản xuất Enzym Beta-lactamase:</strong>
-                      <ul>
-                        <li><em>Beta-lactamase phổ thông:</em> Phá hủy vòng Beta-lactam.</li>
-                        <li><em>ESBL:</em> Kháng Penicillin, Cephalosporin thế hệ 3, 4.</li>
-                        <li><em>AmpC:</em> Kháng Cephalosporin thế hệ 3, không bị ức chế bởi Clavulanate/Tazobactam.</li>
-                        <li><em>Carbapenemase (KPC, NDM, OXA-48):</em> Phá hủy Carbapenem.</li>
-                      </ul>
-                    </li>
-                    <li><strong>Thay đổi Đích tấn công:</strong> MRSA (PBP2a), VRE (D-Ala-D-Lac), Pneumococcus kháng Penicillin.</li>
-                    <li><strong>Giảm tính thấm (Porin Loss):</strong> Hạn chế kháng sinh xâm nhập.</li>
-                    <li><strong>Bơm đẩy thuốc (Efflux Pump):</strong> Chủ động bơm kháng sinh ra ngoài.</li>
+                <!-- LEGEND -->
+                <div class="matrix-legend-container">
+                  <div class="matrix-legend-title">
+                    <i class="fa-solid fa-circle-info"></i> Chú thích phân nhóm & mức độ nhạy cảm
+                  </div>
+                  <ul class="matrix-legend-list">
+                    <li class="matrix-legend-item"><span class="legend-color-dot class-penicillins"></span> Penicillins</li>
+                    <li class="matrix-legend-item"><span class="legend-color-dot class-cephalosporins"></span> Cephalosporins</li>
+                    <li class="matrix-legend-item"><span class="legend-color-dot class-carbapenems"></span> Carbapenems</li>
+                    <li class="matrix-legend-item"><span class="legend-color-dot class-monobactams"></span> Monobactams</li>
+                    <li class="matrix-legend-item"><span class="legend-color-dot class-aminoglycosides"></span> Aminoglycosides</li>
+                    <li class="matrix-legend-item"><span class="legend-color-dot class-fluoroquinolones"></span> Quinolones</li>
+                    <li class="matrix-legend-item"><span class="legend-color-dot class-macrolides"></span> Macrolides/Linc.</li>
+                    <li class="matrix-legend-item"><span class="legend-color-dot class-glycopeptides"></span> Glyco./Oxaz.</li>
+                    <li class="matrix-legend-item"><span class="legend-color-dot class-nitroimidazoles"></span> Nitroimidazoles</li>
+                    <li class="matrix-legend-item"><span class="legend-color-dot class-sulfonamides"></span> Sulfonamides</li>
+                    <li class="matrix-legend-item"><span class="legend-color-dot class-rifamycins"></span> Rifamycins</li>
+                    <li class="matrix-legend-item"><span class="legend-color-dot class-tetracyclines"></span> Tetracyclines</li>
+                    <li class="matrix-legend-item"><span class="legend-color-dot class-others"></span> Khác</li>
                   </ul>
+                  
+                  <div class="legend-susceptibility-levels">
+                    <div class="level-indicator-item">
+                      <span class="level-box full" style="background-color: var(--color-primary);">+</span>
+                      <span>Nhạy cảm hoàn toàn (Susceptible)</span>
+                    </div>
+                    <div class="level-indicator-item">
+                      <span class="level-box partial" style="border: 1px solid var(--color-primary); color: var(--color-primary);">±</span>
+                      <span>Nhạy cảm một phần / Không hoàn toàn</span>
+                    </div>
+                    <div class="level-indicator-item">
+                      <span class="level-box none">•</span>
+                      <span>Không nhạy cảm / Đề kháng</span>
+                    </div>
+                  </div>
+                </div>
 
-                  <h4 style="margin-top: 1.5rem;">🟢 Chiến lược Xử trí</h4>
-                  <ul>
-                    <li><strong>Vượt qua ESBL:</strong> Carbapenem là lựa chọn hàng đầu.</li>
-                    <li><strong>Vượt qua MRSA:</strong> Vancomycin, Linezolid, Daptomycin, Ceftaroline.</li>
-                    <li><strong>Vượt qua CRE:</strong> Ceftazidime-Avibactam, Meropenem-Vaborbactam.</li>
-                    <li><strong>Phối hợp chất ức chế Beta-lactamase:</strong> Clavulanate, Sulbactam, Tazobactam, Avibactam.</li>
-                    <li><strong>Tối ưu hóa liều PK/PD:</strong> Truyền kéo dài Beta-lactam, liều cao 1 lần/ngày với Aminoglycoside.</li>
-                  </ul>
+                <!-- HORIZONTAL SCROLL MATRIX WRAPPER -->
+                <div class="matrix-scroll-wrapper">
+                  <table class="spectrum-matrix-table" id="susceptibility-matrix-table">
+                    <thead>
+                      <!-- Group Header Row -->
+                      <tr class="group-header-row">
+                        <th rowspan="2" class="sticky-col" style="text-align: left; vertical-align: middle;">Kháng sinh</th>
+                        <th colspan="6">Gram Dương (Gram Positive)</th>
+                        <th>Kỵ khí (+)</th>
+                        <th>Kỵ khí (-)</th>
+                        <th colspan="3">Gram Âm (Gram Negative)</th>
+                        <th colspan="5">Bacilli Gram Âm</th>
+                        <th>Khác</th>
+                      </tr>
+                      <!-- Pathogen Subheader Row -->
+                      <tr class="pathogen-header-row">
+                        <!-- Gram Positive Cocci -->
+                        <th><span class="pathogen-header-text">MRSA</span></th>
+                        <th><span class="pathogen-header-text">S. epidermidis</span></th>
+                        <th><span class="pathogen-header-text">MSSA</span></th>
+                        <th><span class="pathogen-header-text">E. faecium</span></th>
+                        <th><span class="pathogen-header-text">E. faecalis</span></th>
+                        <th><span class="pathogen-header-text">Streptococcus</span></th>
+                        <!-- Anaerobes (+) -->
+                        <th><span class="pathogen-header-text">Clostridium/Pepto.</span></th>
+                        <!-- Anaerobes (-) -->
+                        <th><span class="pathogen-header-text">Bacteroides/Fusob.</span></th>
+                        <!-- Gram Negative Cocci -->
+                        <th><span class="pathogen-header-text">N. meningitidis</span></th>
+                        <th><span class="pathogen-header-text">H. influenzae</span></th>
+                        <th><span class="pathogen-header-text">Moraxella</span></th>
+                        <!-- Gram Negative Bacilli -->
+                        <th><span class="pathogen-header-text">E. coli</span></th>
+                        <th><span class="pathogen-header-text">Klebsiella</span></th>
+                        <th><span class="pathogen-header-text">Proteus mirabilis</span></th>
+                        <th><span class="pathogen-header-text">Pseudomonas</span></th>
+                        <th><span class="pathogen-header-text">ESCHAPPM</span></th>
+                        <!-- Atypical / Legionella -->
+                        <th><span class="pathogen-header-text">Legionella</span></th>
+                      </tr>
+                    </thead>
+                    <tbody id="matrix-tbody">
+                      <!-- Rendered dynamically by javascript -->
+                    </tbody>
+                  </table>
                 </div>
+
+                <!-- Nguồn thông tin tham khảo -->
+                <div class="reference-box">
+                  <strong>📚 Nguồn thông tin:</strong><br>
+                  • Wellington ICU Drug Book & Susceptibility Spectrum Summary.<br>
+                  • Hệ thống Dịch vụ Y tế Quốc gia New Zealand (Health New Zealand / Te Whatu Ora) - Cập nhật T5/2025.
+                </div>
+
               </div>
             </div>
 
@@ -736,6 +1391,7 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // 1. DRUG DATABASE (For DDI Selection & Basket)
       const DRUG_DATABASE = {
         "penicillin_g": { name: "Penicillin G", category: "Beta-lactam" },
         "amoxicillin": { name: "Amoxicillin", category: "Beta-lactam" },
@@ -784,6 +1440,7 @@
         "simvastatin": { name: "Simvastatin", category: "Companion" }
       };
 
+      // 2. DDI INTERACTION RULES
       const INTERACTION_RULES = [
         { drugs: ["clarithromycin", "amiodarone"], level: "danger", mechanism: "Clarithromycin ức chế CYP3A4 + cả hai kéo dài QT → Nguy cơ xoắn đỉnh.", action: "CHỐNG CHỈ ĐỊNH. Chọn Azithromycin hoặc kháng sinh khác." },
         { drugs: ["erythromycin", "amiodarone"], level: "danger", mechanism: "Hiệp đồng kéo dài QT nghiêm trọng.", action: "CHỐNG CHỈ ĐỊNH." },
@@ -830,25 +1487,218 @@
         { drugs: ["metronidazole", "ciprofloxacin"], level: "synergy", mechanism: "Coverage kỵ khí + Gram âm trong nhiễm trùng ổ bụng.", action: "PHỐI HỢP HỢP LÝ trong áp xe ổ bụng." }
       ];
 
+      // 3. PATHOGEN DEFINITIONS (Wellington ICU columns)
+      const PATHOGENS = [
+        { key: "mrsa", name: "MRSA", group: "gram-pos" },
+        { key: "s_epidermidis", name: "S. epidermidis", group: "gram-pos" },
+        { key: "mssa", name: "MSSA", group: "gram-pos" },
+        { key: "e_faecium", name: "E. faecium", group: "gram-pos" },
+        { key: "e_faecalis", name: "E. faecalis", group: "gram-pos" },
+        { key: "streptococcus", name: "Streptococcus", group: "gram-pos" },
+        { key: "clostridium", name: "Clostridium/Pepto.", group: "anaerobes" },
+        { key: "bacteroides", name: "Bacteroides/Fusob.", group: "anaerobes" },
+        { key: "n_meningitidis", name: "N. meningitidis", group: "gram-neg" },
+        { key: "h_influenzae", name: "H. influenzae", group: "gram-neg" },
+        { key: "moraxella", name: "Moraxella", group: "gram-neg" },
+        { key: "e_coli", name: "E. coli", group: "gram-neg" },
+        { key: "klebsiella", name: "Klebsiella", group: "gram-neg" },
+        { key: "proteus", name: "P. mirabilis", group: "gram-neg" },
+        { key: "pseudomonas", name: "Pseudomonas", group: "gram-neg" },
+        { key: "eschappm", name: "ESCHAPPM", group: "gram-neg" },
+        { key: "legionella", name: "Legionella", group: "atypical" }
+      ];
+
+      // 4. DRUG CLASS DETAILS (Consolidated mechanisms & resistance from Tab 3)
+      const CLASS_DETAILS = {
+        "penicillins": {
+          name: "Penicillins (Beta-lactam)",
+          cssClass: "class-penicillins",
+          mechanism: "Ức chế tổng hợp vách tế bào vi khuẩn bằng cách gắn vào protein gắn penicillin (PBP), ngăn chặn quá trình liên kết chéo (cross-linking) của peptidoglycan → Vách tế bào mất vững → Vi khuẩn vỡ (lysis).",
+          resistance: "1. Sản xuất enzyme Beta-lactamase thường thủy phân vòng beta-lactam.\n2. Thay đổi cấu trúc đích gắn PBP (như ở Phế cầu kháng thuốc hoặc MRSA).\n3. Giảm tính thấm qua màng (đột biến porin) hoặc bơm đẩy thuốc ở vi khuẩn Gram âm.",
+          strategy: "1. Sử dụng kết hợp chất ức chế Beta-lactamase (Clavulanate, Sulbactam, Tazobactam).\n2. Chuyển sang Cephalosporin thế hệ muộn hoặc Carbapenem trong nhiễm trùng ESBL.\n3. Dùng thuốc kháng MRSA chuyên biệt (Vancomycin, Linezolid)."
+        },
+        "cephalosporins": {
+          name: "Cephalosporins (Beta-lactam)",
+          cssClass: "class-cephalosporins",
+          mechanism: "Ức chế tổng hợp vách tế bào tương tự Penicillin nhưng có cấu trúc vòng bền vững hơn trước một số enzyme. Phổ dịch chuyển từ Gram (+) ở thế hệ 1 sang Gram (-) ở thế hệ 3, 4. Thế hệ 5 đặc trị được MRSA.",
+          resistance: "1. Bị thủy phân bởi ESBL (Beta-lactamase phổ rộng) phổ biến ở E. coli & Klebsiella.\n2. Đột biến tiết AmpC (Cephalosporinase cảm ứng) kháng Cephalosporin thế hệ 3.\n3. Thay đổi đích gắn PBP (như PBP2a ở MRSA đề kháng mọi thế hệ trừ thế hệ 5).",
+          strategy: "1. Sử dụng Carbapenem để vượt qua ESBL.\n2. Tránh dùng Cephalosporin thế hệ 3 khi nghi ngờ vi khuẩn tiết AmpC cảm ứng (nhóm ESCHAPPM/SPACE); ưu tiên dùng Cefepime (thế hệ 4) hoặc Carbapenem.\n3. Cefepime không có phổ tác động trên vi khuẩn kỵ khí; cần phối hợp thêm Metronidazole khi điều trị nhiễm trùng hỗn hợp hoặc nhiễm trùng ổ bụng.\n4. Dùng Ceftaroline (thế hệ 5) cho các nhiễm trùng nghi ngờ do MRSA."
+        },
+        "carbapenems": {
+          name: "Carbapenems (Beta-lactam)",
+          cssClass: "class-carbapenems",
+          mechanism: "Ức chế tổng hợp vách tế bào vi khuẩn. Có cấu trúc vòng rất bền vững trước hầu hết các enzyme beta-lactamase (bao gồm cả ESBL và AmpC). Là vũ khí phổ rộng cuối cùng của nhóm beta-lactam.",
+          resistance: "1. Tiết enzyme Carbapenemase (KPC, NDM-1, OXA-48, MBL) phá hủy trực tiếp Carbapenem.\n2. Phối hợp đột biến mất kênh porin màng ngoài (như OprD ở Pseudomonas) và tăng tiết AmpC/ESBL.",
+          strategy: "1. Sử dụng phối hợp thuốc mới có chất ức chế Carbapenemase chuyên biệt (như Ceftazidime-Avibactam, Meropenem-Vaborbactam).\n2. Phối hợp Carbapenem liều cao truyền kéo dài (3 giờ) kết hợp Aminoglycosides hoặc Colistin/Polymyxin B."
+        },
+        "monobactams": {
+          name: "Monobactams (Aztreonam)",
+          cssClass: "class-monobactams",
+          mechanism: "Ức chế tổng hợp vách tế bào bằng cách gắn ưu tiên vào PBP-3 của vi khuẩn Gram âm hiếu khí. Không có hoạt tính trên Gram dương và vi khuẩn kỵ khí.",
+          resistance: "Bị phá hủy bởi enzyme ESBL và Carbapenemase.",
+          strategy: "Sử dụng thay thế rất tốt cho bệnh nhân dị ứng penicillin mức độ nặng (không có phản ứng dị ứng chéo với beta-lactam khác)."
+        },
+        "aminoglycosides": {
+          name: "Aminoglycosides",
+          cssClass: "class-aminoglycosides",
+          mechanism: "Gắn không thuận nghịch vào tiểu đơn vị 30S ribosome vi khuẩn → Ức chế tổng hợp protein và gây đọc sai mã di truyền → Diệt khuẩn nhanh phụ thuộc nồng độ.",
+          resistance: "1. Sản xuất enzyme biến đổi Aminoglycoside (AMEs) làm mất hoạt tính của thuốc.\n2. Đột biến ribosome làm mất ái lực gắn.\n3. Giảm hấp thu thuốc vào tế bào (đặc biệt trong môi trường thiếu oxy/acid, vi khuẩn kỵ khí kháng tự nhiên).",
+          strategy: "1. Phối hợp với nhóm Beta-lactam để tạo hiệu ứng hiệp đồng diệt khuẩn vượt trội.\n2. Tối ưu liều dựa trên chỉ số Cmax/MIC bằng cách dùng liều cao 1 lần/ngày (Once-daily dosing) giúp tăng hiệu quả diệt khuẩn, tận dụng hiệu ứng hậu kháng sinh (PAE) và hạn chế tối đa độc tính trên thận/tai."
+        },
+        "fluoroquinolones": {
+          name: "Fluoroquinolones",
+          cssClass: "class-fluoroquinolones",
+          mechanism: "Ức chế enzyme DNA Gyrase (Topoisomerase II) và Topoisomerase IV của vi khuẩn → Ngăn chặn quá trình tháo xoắn và sao chép DNA → Diệt khuẩn nhanh chóng.",
+          resistance: "1. Đột biến điểm ở gen gyrA/gyrB hoặc parC/parE thay đổi cấu trúc enzyme đích.\n2. Tăng hoạt động bơm đẩy thuốc ra ngoài.\n3. Kháng thuốc qua trung gian plasmid mang gen qnr bảo vệ enzyme.",
+          strategy: "1. Tránh đơn trị liệu cho các nhiễm trùng nặng do Pseudomonas aeruginosa để ngăn ngừa kháng thuốc nhanh.\n2. Quinolone hô hấp (Levofloxacin, Moxifloxacin) được tối ưu hóa để vượt qua đề kháng ở Phế cầu."
+        },
+        "macrolides": {
+          name: "Macrolides",
+          cssClass: "class-macrolides",
+          mechanism: "Gắn đảo ngược vào tiểu đơn vị 50S ribosome vi khuẩn → Ức chế phản ứng chuyển vị peptidyl và tổng hợp protein → Kìm khuẩn (trừ nồng độ cao diệt khuẩn phế cầu).",
+          resistance: "1. Đột biến methyl hóa ribosome (gen erm) làm biến đổi đích gắn 50S (gây kháng chéo MLSB: Macrolides, Lincosamides, Streptogramin).\n2. Bơm đẩy thuốc chủ động (mã hóa bởi gen mef).",
+          strategy: "Thường dùng cho vi khuẩn không điển hình (Mycoplasma, Chlamydia, Legionella) hoặc thay thế khi dị ứng beta-lactam nhẹ."
+        },
+        "lincosamides": {
+          name: "Lincosamides (Clindamycin)",
+          cssClass: "class-macrolides",
+          mechanism: "Gắn vào tiểu đơn vị 50S ribosome vi khuẩn tương tự macrolide → Ức chế tổng hợp protein → Kìm khuẩn. Có khả năng ức chế sinh độc tố của tụ cầu và liên cầu cực tốt.",
+          resistance: "Đột biến methyl hóa ribosome (gen erm) gây đề kháng chéo MLSB.",
+          strategy: "1. Phối hợp trong sốc nhiễm độc do Tụ cầu/Liên cầu (như viêm cân mạc hoại tử) để ngừng sản xuất độc tố tế bào.\n2. Bao phủ vi khuẩn kỵ khí phía trên cơ hoành."
+        },
+        "glycopeptides": {
+          name: "Glycopeptides (Vancomycin, Teicoplanin)",
+          cssClass: "class-glycopeptides",
+          mechanism: "Gắn vào đầu D-Ala-D-Ala của chuỗi tiền chất peptidoglycan → Ngăn cản sự tổng hợp polymer vách tế bào → Diệt khuẩn Gram dương. Không tác dụng trên Gram âm do kích thước phân tử quá lớn.",
+          resistance: "1. Thay đổi cấu trúc đích gắn từ D-Ala-D-Ala thành D-Ala-D-Lac hoặc D-Ala-D-Ser (mã hóa bởi cụm gen vanA, vanB ở Enterococcus - VRE).\n2. Dày vách tế bào vi khuẩn giam giữ vancomycin bên ngoài (ở VISA).",
+          strategy: "1. Sử dụng Linezolid, Tedizolid, Daptomycin hoặc Tigecycline thay thế cho VRE hoặc VISA.\n2. Target AUC/MIC đạt 400 - 600 để tối ưu hóa diệt khuẩn và giảm độc thận."
+        },
+        "oxazolidinones": {
+          name: "Oxazolidinones (Linezolid, Tedizolid)",
+          cssClass: "class-glycopeptides",
+          mechanism: "Gắn vào vị trí A tại tiểu đơn vị 50S ribosome vi khuẩn → Ngăn chặn phức hợp khởi đầu 70S → Ức chế tổng hợp protein → Kìm khuẩn Gram dương.",
+          resistance: "Đột biến điểm tại gen 23S rRNA hoặc thu nhận gen cfr mã hóa men methyl hóa ribosome truyền qua plasmid.",
+          strategy: "Tedizolid có ái lực mạnh hơn Linezolid và vẫn giữ hoạt tính chống lại một số chủng kháng Linezolid qua gen cfr."
+        },
+        "nitroimidazoles": {
+          name: "Nitroimidazoles (Metronidazole)",
+          cssClass: "class-nitroimidazoles",
+          mechanism: "Bị khử bởi ferredoxin của vi khuẩn kỵ khí bắt buộc tạo ra các gốc tự do làm gãy chuỗi DNA vi khuẩn → Diệt khuẩn nhanh chóng.",
+          resistance: "Rất ít gặp đề kháng. Đột biến làm giảm hoạt tính của enzyme nitroreductase hoạt hóa thuốc.",
+          strategy: "Dùng bao phủ vi khuẩn kỵ khí dưới cơ hoành (đặc biệt trong ổ bụng/phụ khoa), phối hợp với Cephalosporin hoặc Fluoroquinolone."
+        },
+        "sulfonamides": {
+          name: "Sulfonamides & Trimethoprim (Cotrimoxazole)",
+          cssClass: "class-sulfonamides",
+          mechanism: "Ức chế kép quá trình tổng hợp acid folic cần cho tổng hợp DNA của vi khuẩn. Sulfamethoxazole cạnh tranh với PABA; Trimethoprim ức chế men dihydrofolate reductase.",
+          resistance: "Đột biến gen mã hóa enzyme đích DHPS hoặc DHFR không còn nhạy cảm với thuốc.",
+          strategy: "Lựa chọn tốt cho nhiễm trùng da mô mềm nghi do CA-MRSA, viêm phổi do Pneumocystis jirovecii (PCP)."
+        },
+        "rifamycins": {
+          name: "Rifamycins (Rifampicin)",
+          cssClass: "class-rifamycins",
+          mechanism: "Gắn vào tiểu đơn vị beta của enzyme RNA polymerase phụ thuộc DNA của vi khuẩn → Ức chế tổng hợp RNA → Diệt khuẩn mạnh đặc biệt trong biofilm.",
+          resistance: "Đột biến điểm rất nhanh ở gen rpoB mã hóa RNA polymerase nếu dùng đơn độc.",
+          strategy: "Tuyệt đối không dùng đơn độc trong điều trị nhiễm trùng để tránh kháng thuốc cấp tính; luôn phối hợp với kháng sinh khác."
+        },
+        "tetracyclines": {
+          name: "Tetracyclines & Glycylcyclines (Doxycycline, Tigecycline)",
+          cssClass: "class-tetracyclines",
+          mechanism: "Gắn đảo ngược vào tiểu đơn vị 30S ribosome vi khuẩn → Ngăn aminoacyl-tRNA gắn vào vị trí A → Ức chế tổng hợp protein → Kìm khuẩn.",
+          resistance: "Bơm đẩy thuốc chủ động và đột biến sản xuất protein bảo vệ ribosome giải phóng thuốc.",
+          strategy: "Tigecycline vượt qua được các cơ chế đề kháng tetracycline thông thường nhờ chuỗi bên glycylamido đặc thù."
+        },
+        "others": {
+          name: "Các kháng sinh khác (Fosfomycin, Nitrofurantoin)",
+          cssClass: "class-others",
+          mechanism: "Fosfomycin ức chế men MurA ngăn tổng hợp peptidoglycan giai đoạn sớm. Nitrofurantoin bị khử bởi men vi khuẩn tạo các gốc tự do tấn công đồng thời nhiều vị trí (DNA, ribosome, vách).",
+          resistance: "Đột biến men vận chuyển thuốc hoặc đột biến enzyme MurA.",
+          strategy: "Thường chỉ dùng viêm bàng quang cấp không biến chứng do thuốc tập trung rất cao trong nước tiểu và ít gây kháng thuốc hệ thống."
+        }
+      };
+
+      // 5. MATRIX DRUGS SUSCEPTIBILITY PROFILE (17 Pathogens: 2 = Full, 1 = Partial, 0 = None)
+      const MATRIX_DRUGS = {
+        "penicillin_g": { name: "Penicillin G", class: "penicillins", sus: [0, 0, 0, 0, 1, 2, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0] },
+        "amoxicillin": { name: "Amoxicillin", class: "penicillins", sus: [0, 0, 0, 0, 2, 2, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0] },
+        "ampicillin": { name: "Ampicillin", class: "penicillins", sus: [0, 0, 0, 0, 2, 2, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0] },
+        "amox_clav": { name: "Amoxicillin/Clavulanate", class: "penicillins", sus: [0, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0] },
+        "amp_sulb": { name: "Ampicillin/Sulbactam", class: "penicillins", sus: [0, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0] },
+        "pip_tazo": { name: "Piperacillin/Tazobactam", class: "penicillins", sus: [0, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0] },
+        
+        "cephalexin": { name: "Cephalexin (Gen 1)", class: "cephalosporins", sus: [0, 1, 2, 0, 0, 2, 0, 0, 1, 1, 2, 2, 2, 2, 0, 0, 0] },
+        "cefazolin": { name: "Cefazolin (Gen 1)", class: "cephalosporins", sus: [0, 1, 2, 0, 0, 2, 0, 0, 1, 1, 2, 2, 2, 2, 0, 0, 0] },
+        "cefuroxime": { name: "Cefuroxime (Gen 2)", class: "cephalosporins", sus: [0, 1, 1, 0, 0, 2, 0, 0, 2, 2, 1, 2, 2, 2, 0, 0, 0] },
+        "ceftriaxone": { name: "Ceftriaxone (Gen 3)", class: "cephalosporins", sus: [0, 1, 1, 0, 0, 2, 0, 0, 2, 2, 2, 2, 2, 2, 0, 0, 0] },
+        "ceftazidime": { name: "Ceftazidime (Gen 3)", class: "cephalosporins", sus: [0, 0, 0, 0, 0, 1, 0, 0, 2, 2, 2, 2, 2, 2, 2, 1, 0] },
+        "cefepime": { name: "Cefepime (Gen 4)", class: "cephalosporins", sus: [0, 1, 2, 0, 0, 2, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 0] },
+        "cefpirome": { name: "Cefpirome (Gen 4)", class: "cephalosporins", sus: [0, 1, 2, 0, 0, 2, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 0] },
+        "ceftaroline": { name: "Ceftaroline (Gen 5)", class: "cephalosporins", sus: [2, 2, 2, 0, 0, 2, 0, 0, 2, 2, 2, 2, 2, 2, 0, 1, 0] },
+        
+        "imipenem": { name: "Imipenem/Cilastatin", class: "carbapenems", sus: [0, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0] },
+        "meropenem": { name: "Meropenem", class: "carbapenems", sus: [0, 2, 2, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0] },
+        "ertapenem": { name: "Ertapenem", class: "carbapenems", sus: [0, 2, 2, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2, 0] },
+        "doripenem": { name: "Doripenem", class: "carbapenems", sus: [0, 2, 2, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0] },
+        "aztreonam": { name: "Aztreonam", class: "monobactams", sus: [0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 0] },
+        
+        "amikacin": { name: "Amikacin", class: "aminoglycosides", sus: [0, 1, 1, 0, 1, 1, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 0] },
+        "gentamicin": { name: "Gentamicin", class: "aminoglycosides", sus: [1, 1, 1, 1, 1, 1, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 0] },
+        "tobramycin": { name: "Tobramycin", class: "aminoglycosides", sus: [1, 1, 1, 1, 1, 1, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 0] },
+        "streptomycin": { name: "Streptomycin", class: "aminoglycosides", sus: [0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0] },
+        
+        "ciprofloxacin": { name: "Ciprofloxacin", class: "fluoroquinolones", sus: [0, 1, 1, 0, 0, 1, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2] },
+        "levofloxacin": { name: "Levofloxacin", class: "fluoroquinolones", sus: [0, 1, 1, 0, 1, 2, 0, 0, 2, 2, 2, 2, 2, 2, 1, 2, 2] },
+        "moxifloxacin": { name: "Moxifloxacin", class: "fluoroquinolones", sus: [1, 1, 1, 0, 0, 2, 1, 1, 2, 2, 2, 2, 2, 2, 0, 1, 2] },
+        "norfloxacin": { name: "Norfloxacin", class: "fluoroquinolones", sus: [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 0, 1, 0] },
+        
+        "erythromycin": { name: "Erythromycin", class: "macrolides", sus: [0, 1, 1, 0, 0, 2, 0, 0, 1, 1, 2, 0, 0, 0, 0, 0, 2] },
+        "clarithromycin": { name: "Clarithromycin", class: "macrolides", sus: [0, 1, 1, 0, 0, 2, 0, 0, 1, 1, 2, 0, 0, 0, 0, 0, 2] },
+        "azithromycin": { name: "Azithromycin", class: "macrolides", sus: [0, 1, 1, 0, 0, 2, 0, 0, 1, 2, 2, 0, 0, 0, 0, 0, 2] },
+        "clindamycin": { name: "Clindamycin", class: "lincosamides", sus: [1, 2, 2, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
+        
+        "vancomycin": { name: "Vancomycin", class: "glycopeptides", sus: [2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
+        "teicoplanin": { name: "Teicoplanin", class: "glycopeptides", sus: [2, 2, 2, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
+        "linezolid": { name: "Linezolid", class: "oxazolidinones", sus: [2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
+        "tedizolid": { name: "Tedizolid", class: "oxazolidinones", sus: [2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
+        
+        "metronidazole": { name: "Metronidazole", class: "nitroimidazoles", sus: [0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
+        "cotrimoxazole": { name: "Cotrimoxazole", class: "sulfonamides", sus: [2, 2, 2, 0, 0, 1, 0, 0, 2, 2, 2, 2, 2, 2, 0, 2, 1] },
+        "rifampicin": { name: "Rifampicin", class: "rifamycins", sus: [2, 2, 2, 0, 0, 2, 1, 0, 2, 2, 2, 0, 0, 0, 0, 0, 2] },
+        "doxycycline": { name: "Doxycycline", class: "tetracyclines", sus: [2, 2, 2, 1, 1, 2, 1, 1, 2, 2, 2, 1, 1, 0, 0, 1, 2] },
+        "fosfomycin": { name: "Fosfomycin", class: "others", sus: [2, 2, 2, 2, 2, 2, 0, 0, 0, 2, 2, 2, 2, 2, 1, 2, 0] },
+        "nitrofurantoin": { name: "Nitrofurantoin", class: "others", sus: [1, 1, 1, 2, 2, 2, 0, 0, 0, 0, 0, 2, 1, 0, 0, 1, 0] }
+      };
+
       let selectedDrugs = [];
       const basketContainer = document.getElementById('virtual-pillbox-basket');
       const ddiDashboard = document.getElementById('ddi-alert-dashboard');
       const selectedCountSpan = document.getElementById('selected-count');
       const clearAllBtn = document.getElementById('clear-all-basket-btn');
 
+      // First tab selection button handlers
       document.querySelectorAll('.drug-select-btn').forEach(button => {
         button.addEventListener('click', () => {
           const drugKey = button.getAttribute('data-drug');
-          if (selectedDrugs.includes(drugKey)) {
-            selectedDrugs = selectedDrugs.filter(k => k !== drugKey);
-            button.classList.remove('selected');
-          } else {
-            selectedDrugs.push(drugKey);
-            button.classList.add('selected');
+          if (DRUG_DATABASE[drugKey] && DRUG_DATABASE[drugKey].category === "Companion") {
+            // Toggles directly for companion DDI check
+            toggleDrugSelection(button, drugKey);
+          } else if (MATRIX_DRUGS[drugKey]) {
+            // For antibiotic drugs, toggle selection
+            toggleDrugSelection(button, drugKey);
           }
-          updatePillboxWorkspace();
         });
       });
+
+      function toggleDrugSelection(button, drugKey) {
+        if (selectedDrugs.includes(drugKey)) {
+          selectedDrugs = selectedDrugs.filter(k => k !== drugKey);
+          button.classList.remove('selected');
+        } else {
+          selectedDrugs.push(drugKey);
+          button.classList.add('selected');
+        }
+        updatePillboxWorkspace();
+      }
 
       clearAllBtn.addEventListener('click', () => {
         selectedDrugs = [];
@@ -870,11 +1720,19 @@
         clearAllBtn.style.display = 'block';
 
         selectedDrugs.forEach(drugKey => {
-          const drugInfo = DRUG_DATABASE[drugKey];
+          const drugInfo = DRUG_DATABASE[drugKey] || MATRIX_DRUGS[drugKey];
           const chip = document.createElement('div');
           chip.className = 'selected-drug-chip';
-          chip.innerHTML = `<span class="chip-name">💊 ${drugInfo.name}</span><button type="button" class="chip-remove-btn" data-key="${drugKey}">&times;</button>`;
+          chip.innerHTML = `<span class="chip-name" style="cursor:pointer;" title="Click xem chi tiết cơ chế & phổ">💊 ${drugInfo.name}</span><button type="button" class="chip-remove-btn" data-key="${drugKey}">&times;</button>`;
           basketContainer.appendChild(chip);
+
+          // Click chip name to view antibiotic info modal
+          chip.querySelector('.chip-name').addEventListener('click', () => {
+            if (MATRIX_DRUGS[drugKey]) {
+              openDrugDetailModal(drugKey);
+            }
+          });
+
           chip.querySelector('.chip-remove-btn').addEventListener('click', () => {
             selectedDrugs = selectedDrugs.filter(k => k !== drugKey);
             const gridBtn = document.querySelector(`.drug-select-btn[data-drug="${drugKey}"]`);
@@ -907,8 +1765,8 @@
             );
 
             if (matchedRule) {
-              const drugNameA = DRUG_DATABASE[keyA].name;
-              const drugNameB = DRUG_DATABASE[keyB].name;
+              const drugNameA = (DRUG_DATABASE[keyA] || MATRIX_DRUGS[keyA]).name;
+              const drugNameB = (DRUG_DATABASE[keyB] || MATRIX_DRUGS[keyB]).name;
               const alertHtml = `
                 <div class="ddi-item">
                   <div class="ddi-item-title"><strong>${drugNameA}</strong> &harr; <strong>${drugNameB}</strong></div>
@@ -937,6 +1795,7 @@
         }
       }
 
+      // Helper helper panel rendering
       function renderAlertPanel(level, alertsArray) {
         const panel = document.getElementById(`panel-${level}`);
         const container = document.getElementById(`container-${level}`);
@@ -949,8 +1808,11 @@
         }
       }
 
+      // Quick tabs logic (Updated for renumbered tabs and dynamic layout)
       const tabButtons = document.querySelectorAll('.tab-btn');
       const tabPanels = document.querySelectorAll('.tab-content-panel');
+      const selectionCol = document.querySelector('.pillbox-selection-column');
+      const outputCol = document.querySelector('.pillbox-output-column');
 
       tabButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -963,10 +1825,350 @@
           button.classList.add('active');
           button.setAttribute('aria-selected', 'true');
           document.getElementById(targetId).classList.add('active');
+
+          // Dynamically adjust layout depending on active tab
+          if (targetId === 'tab-antibiotics') {
+            if (outputCol) outputCol.style.display = '';
+            if (selectionCol) selectionCol.classList.remove('full-width-layout');
+          } else {
+            if (outputCol) outputCol.style.display = 'none';
+            if (selectionCol) selectionCol.classList.add('full-width-layout');
+          }
         });
       });
+
+      // 6. SUSCEPTIBILITY SPECTRUM MATRIX RENDERING
+      function renderSpectrumTable() {
+        const tbody = document.getElementById('matrix-tbody');
+        tbody.innerHTML = '';
+
+        Object.keys(MATRIX_DRUGS).forEach(drugKey => {
+          const drugData = MATRIX_DRUGS[drugKey];
+          const classKey = drugData.class;
+          const classDetails = CLASS_DETAILS[classKey];
+
+          const tr = document.createElement('tr');
+          tr.setAttribute('data-name', drugData.name);
+          tr.setAttribute('data-class', classDetails.name);
+          tr.setAttribute('data-key', drugKey);
+
+          // 1. Sticky First Column (Antibiotic trigger card)
+          const stickyTd = document.createElement('td');
+          stickyTd.className = 'sticky-col';
+          stickyTd.innerHTML = `
+            <button type="button" class="drug-card-trigger" title="Xem chi tiết ${drugData.name}">
+              <span class="drug-name">${drugData.name}</span>
+              <span class="drug-badge class-${classKey}">${classDetails.name.split(' ')[0]}</span>
+            </button>
+          `;
+
+          // Click handler to open details modal
+          stickyTd.querySelector('.drug-card-trigger').addEventListener('click', () => {
+            openDrugDetailModal(drugKey);
+          });
+
+          tr.appendChild(stickyTd);
+
+          // 2. Susceptibility Cells
+          drugData.sus.forEach((susLevel, idx) => {
+            const pathogen = PATHOGENS[idx];
+            const td = document.createElement('td');
+            td.className = 'matrix-cell';
+            td.setAttribute('data-pathogen', pathogen.key);
+
+            let cellContent = '';
+            if (susLevel === 2) {
+              cellContent = `<div class="susceptibility-block full class-${classKey}-bg" title="${drugData.name} &rarr; ${pathogen.name}: Nhạy cảm hoàn toàn">+</div>`;
+            } else if (susLevel === 1) {
+              cellContent = `<div class="susceptibility-block partial class-${classKey}-partial" title="${drugData.name} &rarr; ${pathogen.name}: Nhạy cảm một phần">±</div>`;
+            } else {
+              cellContent = `<div class="susceptibility-block none" title="${drugData.name} &rarr; ${pathogen.name}: Không nhạy cảm">•</div>`;
+            }
+
+            td.innerHTML = cellContent;
+            
+            // Clicking any cell also opens the details modal for this drug
+            td.addEventListener('click', () => {
+              openDrugDetailModal(drugKey);
+            });
+
+            tr.appendChild(td);
+          });
+
+          tbody.appendChild(tr);
+        });
+
+        // Add Hover Highlighting listeners
+        setupMatrixHighlights();
+      }
+
+      function setupMatrixHighlights() {
+        document.querySelectorAll('.matrix-cell').forEach(cell => {
+          cell.addEventListener('mouseenter', () => {
+            const colKey = cell.getAttribute('data-pathogen');
+            document.querySelectorAll(`[data-pathogen="${colKey}"]`).forEach(c => c.classList.add('col-highlight'));
+          });
+          cell.addEventListener('mouseleave', () => {
+            const colKey = cell.getAttribute('data-pathogen');
+            document.querySelectorAll(`[data-pathogen="${colKey}"]`).forEach(c => c.classList.remove('col-highlight'));
+          });
+        });
+      }
+
+      // 7. MATRIX SEARCH AND COLUMN/ROW FILTERS
+      function executeMatrixFiltering() {
+        const query = document.getElementById('matrix-search-input').value.toLowerCase().trim();
+        const filter = document.querySelector('.matrix-filter-btn.active').getAttribute('data-filter');
+
+        const tbody = document.getElementById('matrix-tbody');
+        const rows = tbody.querySelectorAll('tr');
+
+        // Row Search Filtering
+        rows.forEach(row => {
+          const name = row.getAttribute('data-name').toLowerCase();
+          const abxClass = row.getAttribute('data-class').toLowerCase();
+          if (query && !name.includes(query) && !abxClass.includes(query)) {
+            row.style.display = 'none';
+          } else {
+            row.style.display = '';
+          }
+        });
+
+        // Pathogen Column Indices based on filter
+        // 1-indexed to match children in tr (ignoring sticky col which is column 1)
+        const colIndices = {
+          'all': [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17],
+          'gram-pos': [1,2,3,4,5,6,7],
+          'gram-neg': [8,9,10,11,12,13,14,15,16,17],
+          'anaerobes': [7,8]
+        };
+
+        const activeCols = colIndices[filter];
+
+        // Toggle subheaders
+        const table = document.getElementById('susceptibility-matrix-table');
+        const subHeaders = table.querySelectorAll('.pathogen-header-row th:not(.sticky-col)');
+        subHeaders.forEach((th, idx) => {
+          const colNum = idx + 1;
+          if (activeCols.includes(colNum)) {
+            th.style.display = '';
+          } else {
+            th.style.display = 'none';
+          }
+        });
+
+        // Toggle row cells
+        rows.forEach(row => {
+          const cells = row.querySelectorAll('.matrix-cell');
+          cells.forEach((td, idx) => {
+            const colNum = idx + 1;
+            if (activeCols.includes(colNum)) {
+              td.style.display = '';
+            } else {
+              td.style.display = 'none';
+            }
+          });
+        });
+
+        // Toggle and adjust group headers colspan
+        const grpHeaders = table.querySelectorAll('.group-header-row th:not(.sticky-col)');
+        if (filter === 'all') {
+          grpHeaders.forEach(th => th.style.display = '');
+          grpHeaders[0].setAttribute('colspan', '6'); // Gram Pos
+          grpHeaders[1].setAttribute('colspan', '1'); // Anaerobes (+)
+          grpHeaders[2].setAttribute('colspan', '1'); // Anaerobes (-)
+          grpHeaders[3].setAttribute('colspan', '3'); // Gram Neg Cocci
+          grpHeaders[4].setAttribute('colspan', '5'); // Gram Neg Bacilli
+          grpHeaders[5].setAttribute('colspan', '1'); // Legionella
+        } else if (filter === 'gram-pos') {
+          grpHeaders.forEach((th, idx) => {
+            if (idx === 0 || idx === 1) th.style.display = '';
+            else th.style.display = 'none';
+          });
+          grpHeaders[0].setAttribute('colspan', '6');
+          grpHeaders[1].setAttribute('colspan', '1');
+        } else if (filter === 'gram-neg') {
+          grpHeaders.forEach((th, idx) => {
+            if (idx >= 2) th.style.display = '';
+            else th.style.display = 'none';
+          });
+          grpHeaders[2].setAttribute('colspan', '1');
+          grpHeaders[3].setAttribute('colspan', '3');
+          grpHeaders[4].setAttribute('colspan', '5');
+          grpHeaders[5].setAttribute('colspan', '1');
+        } else if (filter === 'anaerobes') {
+          grpHeaders.forEach((th, idx) => {
+            if (idx === 1 || idx === 2) th.style.display = '';
+            else th.style.display = 'none';
+          });
+          grpHeaders[1].setAttribute('colspan', '1');
+          grpHeaders[2].setAttribute('colspan', '1');
+        }
+      }
+
+      // Bind search and filter events
+      document.getElementById('matrix-search-input').addEventListener('input', executeMatrixFiltering);
+      
+      document.querySelectorAll('.matrix-filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.matrix-filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          executeMatrixFiltering();
+        });
+      });
+
+      // 8. INTERACTIVE ANTIBIOTIC DETAIL MODAL POPUP
+      const modalOverlay = document.getElementById('abx-detail-modal');
+      const closeBtn = document.getElementById('modal-close-btn');
+
+      function openDrugDetailModal(drugKey) {
+        const drug = MATRIX_DRUGS[drugKey];
+        if (!drug) return;
+
+        const classDetails = CLASS_DETAILS[drug.class];
+
+        // Fill modal details
+        document.getElementById('modal-drug-name').textContent = drug.name;
+        
+        const modalClassBadge = document.getElementById('modal-drug-class');
+        modalClassBadge.textContent = classDetails.name;
+        modalClassBadge.className = 'abx-modal-subtitle';
+        // Add color dynamically based on class
+        const classColorMap = {
+          'penicillins': 'var(--color-primary)',
+          'cephalosporins': 'var(--color-warning)',
+          'carbapenems': 'var(--color-teal)',
+          'monobactams': 'var(--color-purple)',
+          'aminoglycosides': 'var(--color-rose)',
+          'fluoroquinolones': '#d946ef',
+          'macrolides': '#8b5cf6',
+          'lincosamides': '#8b5cf6',
+          'glycopeptides': '#f97316',
+          'oxazolidinones': '#f97316',
+          'nitroimidazoles': '#06b6d4',
+          'sulfonamides': '#ec4899',
+          'rifamycins': '#eab308',
+          'tetracyclines': '#6b7280',
+          'others': '#64748b'
+        };
+        modalClassBadge.style.color = classColorMap[drug.class] || 'var(--color-text-muted)';
+
+        document.getElementById('modal-mechanism').textContent = classDetails.mechanism;
+
+        // Generate susceptibility written list
+        const activeFull = [];
+        const activePartial = [];
+        drug.sus.forEach((level, idx) => {
+          const pathogen = PATHOGENS[idx];
+          if (level === 2) activeFull.push(pathogen.name);
+          else if (level === 1) activePartial.push(pathogen.name);
+        });
+
+        let spectrumTextHtml = '';
+        if (activeFull.length > 0) {
+          spectrumTextHtml += `<strong>Nhạy cảm tốt (+):</strong> ${activeFull.join(', ')}.<br>`;
+        }
+        if (activePartial.length > 0) {
+          spectrumTextHtml += `<strong>Nhạy cảm một phần / hiệp đồng (±):</strong> ${activePartial.join(', ')}.`;
+        }
+        if (activeFull.length === 0 && activePartial.length === 0) {
+          spectrumTextHtml = 'Không có hoạt tính lâm sàng trên các tác nhân trong danh mục.';
+        }
+        document.getElementById('modal-spectrum-text').innerHTML = spectrumTextHtml;
+
+        // Render visual badges
+        const badgesContainer = document.getElementById('modal-spectrum-badges');
+        badgesContainer.innerHTML = '';
+        PATHOGENS.forEach((pathogen, idx) => {
+          const susLevel = drug.sus[idx];
+          const badge = document.createElement('span');
+          badge.className = 'modal-spectrum-badge';
+          badge.textContent = pathogen.name;
+          if (susLevel === 2) {
+            badge.classList.add('active-susceptible');
+            badge.textContent += ' (+)';
+            badgesContainer.appendChild(badge);
+          } else if (susLevel === 1) {
+            badge.classList.add('active-partial');
+            badge.textContent += ' (±)';
+            badgesContainer.appendChild(badge);
+          }
+        });
+
+        // Fill Resistance details if available
+        const resistanceSec = document.getElementById('modal-resistance-section');
+        if (classDetails.resistance) {
+          resistanceSec.style.display = 'block';
+          document.getElementById('modal-resistance-mechanism').innerHTML = classDetails.resistance.replace(/\n/g, '<br>');
+          document.getElementById('modal-resistance-strategy').innerHTML = classDetails.strategy.replace(/\n/g, '<br>');
+        } else {
+          resistanceSec.style.display = 'none';
+        }
+
+        // Open modal
+        modalOverlay.classList.add('open');
+        document.body.style.overflow = 'hidden'; // Lock body scroll
+      }
+
+      function closeDrugDetailModal() {
+        modalOverlay.classList.remove('open');
+        document.body.style.overflow = ''; // Unlock body scroll
+      }
+
+      closeBtn.addEventListener('click', closeDrugDetailModal);
+      modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) {
+          closeDrugDetailModal();
+        }
+      });
+
+      // Close modal on Esc keypress
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modalOverlay.classList.contains('open')) {
+          closeDrugDetailModal();
+        }
+      });
+
+      // INITIALIZE MATRIX TABLE
+      renderSpectrumTable();
     });
   </script>
+  <!-- DETAIL MODAL -->
+  <div class="abx-modal-overlay" id="abx-detail-modal">
+    <div class="abx-modal-container">
+      <div class="abx-modal-header">
+        <div class="abx-modal-title-wrap">
+          <h2 class="abx-modal-title" id="modal-drug-name">Tên kháng sinh</h2>
+          <span class="abx-modal-subtitle" id="modal-drug-class">Nhóm kháng sinh</span>
+        </div>
+        <button type="button" class="abx-modal-close" id="modal-close-btn" aria-label="Đóng">&times;</button>
+      </div>
+      <div class="abx-modal-body">
+        <div class="modal-info-section">
+          <div class="modal-section-title"><i class="fa-solid fa-gears"></i> Cơ chế tác động</div>
+          <p class="modal-section-content" id="modal-mechanism">Cơ chế chi tiết của thuốc...</p>
+        </div>
+
+        <div class="modal-info-section">
+          <div class="modal-section-title"><i class="fa-solid fa-circle-nodes"></i> Phổ tác động chính (Wellington)</div>
+          <p class="modal-section-content" id="modal-spectrum-text">Các vi khuẩn nhạy cảm...</p>
+          <div class="modal-spectrum-badge-grid" id="modal-spectrum-badges">
+            <!-- Badges render dynamically -->
+          </div>
+        </div>
+
+        <div class="modal-info-section danger-zone" id="modal-resistance-section" style="display: none;">
+          <div class="modal-section-title"><i class="fa-solid fa-shield-virus"></i> Cơ chế đề kháng & Xử trí</div>
+          <div class="modal-section-content">
+            <strong>Đề kháng:</strong> <span id="modal-resistance-mechanism">Cơ chế đề kháng...</span>
+            <br><br>
+            <strong>Chiến lược xử trí:</strong> <span id="modal-resistance-strategy">Cách phối hợp hoặc sử dụng liều...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 
 </html>
