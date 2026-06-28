@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi" data-theme="light">
 
 <head>
@@ -21,8 +21,9 @@
   <link rel="stylesheet" href="../../css/components/sidebar.css">
   <link rel="stylesheet" href="../../css/components/footer.css">
 
-  <script src="../../components/header.js"></script>
-  <script src="../../components/footer.js"></script>
+  <script src="../../js/main.js" defer></script>
+  <script src="../../components/header.js" defer></script>
+  <script src="../../components/footer.js" defer></script>
 
   <link rel="stylesheet" href="../../css/components/approach-hub.css">
 </head>
@@ -121,7 +122,7 @@
         <div class="tc-toolbar">
           <div class="tc-toolbar-search">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="search" id="tcSearch" placeholder="Tìm kỹ năng hoặc hệ cơ quan..." autocomplete="off">
+            <input type="search" id="tcSearch" placeholder="Tìm kiếm kỹ năng, bệnh án, cận lâm sàng, điều trị..." autocomplete="off">
             <button class="tc-search-clear" id="searchClearBtn" title="Xóa tìm kiếm">✕</button>
             <span id="searchCount" class="tc-search-count"></span>
           </div>
@@ -144,6 +145,57 @@
         </div>
 
         <div class="groups-wrapper" id="groupsWrapper">
+
+          <!-- =========================================
+               SECTION 1: CLINICAL MEDICAL RECORDS
+          ========================================= -->
+          <div class="group-container g-red active">
+            <div class="group-heading">
+              <h3><span class="g-icon">📋</span> Bệnh Án Lâm Sàng <span class="group-tool-count">2</span></h3>
+              <span class="toggle-indicator"></span>
+            </div>
+            <div class="category-grid-wrapper">
+              <div class="category-grid">
+
+                <!-- 1. Bệnh án Nội khoa -->
+                <div class="tool-card card-blue disabled" data-tool-id="ba-noi-khoa">
+                  <div class="card-top">
+                    <div class="tool-icon">📋</div>
+                    <span class="tool-status expected">Sắp ra mắt</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row">
+                      <h3>Bệnh Án Nội Khoa</h3>
+                    </div>
+                    <p>Hướng dẫn khai thác bệnh sử, tiền sử, thăm khám hệ cơ quan và viết tóm tắt bệnh án nội khoa chuẩn.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Bệnh án</span>
+                    <a href="#">Đang cập nhật</a>
+                  </div>
+                </div>
+
+                <!-- 2. Bệnh án Ngoại khoa -->
+                <div class="tool-card card-amber disabled" data-tool-id="ba-ngoai-khoa">
+                  <div class="card-top">
+                    <div class="tool-icon">🪡</div>
+                    <span class="tool-status expected">Sắp ra mắt</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row">
+                      <h3>Bệnh Án Ngoại Khoa</h3>
+                    </div>
+                    <p>Quy trình khám ngoại khoa cấp cứu, lập bệnh án tiền phẫu, hậu phẫu và mô tả phẫu thuật.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Bệnh án</span>
+                    <a href="#">Đang cập nhật</a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
 
           <!-- =========================================
                SECTION 2: SYSTEM-BASED EXAMINATION
@@ -370,18 +422,151 @@
             </div>
           </div>
 
+          <!-- =========================================
+               SECTION 3: DIAGNOSTIC TESTS
+          ========================================= -->
+          <div class="group-container g-blue active">
+            <div class="group-heading">
+              <h3><span class="g-icon">🔬</span> Cận Lâm Sàng <span class="group-tool-count">3</span></h3>
+              <span class="toggle-indicator"></span>
+            </div>
+            <div class="category-grid-wrapper">
+              <div class="category-grid">
+
+                <!-- 1. Đọc Điện tâm đồ (ECG) -->
+                <div class="tool-card card-rose disabled" data-tool-id="cls-ecg">
+                  <div class="card-top">
+                    <div class="tool-icon">📈</div>
+                    <span class="tool-status expected">Sắp ra mắt</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row">
+                      <h3>Đọc Điện Tâm Đồ (ECG)</h3>
+                    </div>
+                    <p>Quy trình 6 bước phân tích điện tâm đồ, phát hiện các rối loạn nhịp, phì đại buồng tim và thiếu máu cơ tim.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Tim mạch</span>
+                    <a href="#">Đang cập nhật</a>
+                  </div>
+                </div>
+
+                <!-- 2. Đọc X-quang Ngực thẳng -->
+                <div class="tool-card card-blue disabled" data-tool-id="cls-cxr">
+                  <div class="card-top">
+                    <div class="tool-icon">🩻</div>
+                    <span class="tool-status expected">Sắp ra mắt</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row">
+                      <h3>Đọc X-Quang Ngực Thẳng</h3>
+                    </div>
+                    <p>Phương pháp ABCDE phân tích X-quang phổi thẳng, đánh giá bóng tim, phế trường, màng phổi và trung thất.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Hô hấp</span>
+                    <a href="#">Đang cập nhật</a>
+                  </div>
+                </div>
+
+                <!-- 3. Đọc Khí máu động mạch -->
+                <div class="tool-card card-purple disabled" data-tool-id="cls-abg">
+                  <div class="card-top">
+                    <div class="tool-icon">🩸</div>
+                    <span class="tool-status expected">Sắp ra mắt</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row">
+                      <h3>Đọc Khí Máu Động Mạch</h3>
+                    </div>
+                    <p>Tiếp cận phân tích khí máu động mạch từng bước, xác định rối loạn toan kiềm nguyên phát, bù trừ và khoảng trống anion.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Hóa sinh</span>
+                    <a href="#">Đang cập nhật</a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- =========================================
+               SECTION 4: TREATMENT MANAGEMENT
+          ========================================= -->
+          <div class="group-container g-purple active">
+            <div class="group-heading">
+              <h3><span class="g-icon">💊</span> Quản Lý Điều Trị <span class="group-tool-count">3</span></h3>
+              <span class="toggle-indicator"></span>
+            </div>
+            <div class="category-grid-wrapper">
+              <div class="category-grid">
+
+                <!-- 1. Lựa chọn kháng sinh -->
+                <div class="tool-card card-blue" data-tool-id="dt-khang-sinh">
+                  <div class="card-top">
+                    <div class="tool-icon">💊</div>
+                    <span class="tool-status active">WHO AWaRe</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row">
+                      <h3>Lựa Chọn Kháng Sinh Kinh Nghiệm</h3>
+                    </div>
+                    <p>Nguyên tắc sử dụng kháng sinh ban đầu theo kinh nghiệm, phân loại AWaRe (Access, Watch, Reserve) cho các nhiễm trùng thường gặp.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Kháng sinh</span>
+                    <a href="Quản lý điều trị/Luachon_Khangsinh.html">Xem hướng dẫn</a>
+                  </div>
+                </div>
+
+                <!-- 2. Kê đơn thuốc ngoại trú -->
+                <div class="tool-card card-green disabled" data-tool-id="dt-ke-don">
+                  <div class="card-top">
+                    <div class="tool-icon">📝</div>
+                    <span class="tool-status expected">Sắp ra mắt</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row">
+                      <h3>Kê Đơn Thuốc Ngoại Trú</h3>
+                    </div>
+                    <p>Quy chuẩn kê đơn thuốc, ghi thông tin hành chính, hàm lượng, liều dùng, tương tác thuốc và dặn dò bệnh nhân.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Điều trị</span>
+                    <a href="#">Đang cập nhật</a>
+                  </div>
+                </div>
+
+                <!-- 3. Xử trí cấp cứu ban đầu -->
+                <div class="tool-card card-rose disabled" data-tool-id="dt-cap-cuu">
+                  <div class="card-top">
+                    <div class="tool-icon">🚑</div>
+                    <span class="tool-status expected">Sắp ra mắt</span>
+                  </div>
+                  <div class="tool-content">
+                    <div class="tool-title-row">
+                      <h3>Xử Trí Cấp Cứu Ban Đầu (ABCDE)</h3>
+                    </div>
+                    <p>Tiếp cận và xử trí ban đầu đe dọa tính mạng theo nguyên tắc ABCDE tại phòng cấp cứu hoặc ngoài bệnh viện.</p>
+                  </div>
+                  <div class="tool-footer">
+                    <span class="tool-category">Cấp cứu</span>
+                    <a href="#">Đang cập nhật</a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
         </div><!-- end groups-wrapper -->
       </div><!-- end main-content-grid -->
 
     </div><!-- end main-wrapper -->
   </div><!-- end app-container -->
 
-  <footer class="global-footer">
-    <div class="footer-copyright">
-      <p>CliniPortal &copy; 2026 · Kỹ năng lâm sàng · Chỉ mang tính hỗ trợ tham khảo, không thay thế phán xét lâm sàng
-        của bác sĩ y khoa.</p>
-    </div>
-  </footer>
+  <div id="footer-placeholder" data-footer-path="../../components/footer.html"></div>
 
   <!-- ===================== SCRIPT ===================== -->
   <script src="../../js/approach-hub.js" defer></script>
