@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Hướng dẫn lựa chọn kháng sinh theo kinh nghiệm lâm sàng và phân tầng AWaRe 2023 của WHO – CliniPortal.">
+  <title>Lựa chọn Kháng sinh – CliniPortal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../css/components/clinical-skill.css">
+  <script src="../../../js/main.js" defer></script>
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+  <style>
+    /* === BADGE === */
+    .badge {
+      display: inline-block;
+      padding: .2em .65em;
+      border-radius: 999px;
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: .04em;
+      vertical-align: middle
+    }
+
+    .badge-access {
+      background: #dcfce7;
+      color: #166534
+    }
+
+    .badge-watch {
+      background: #fff7ed;
+      color: #9a3412
+    }
+
+    .badge-reserve {
+      background: #fef2f2;
+      color: #991b1b
+    }
+
+    .badge-no {
+      background: #f1f5f9;
+      color: #475569
+    }
+
+    [data-theme="dark"] .badge-access {
+      background: #14532d;
+      color: #86efac
+    }
+
+    [data-theme="dark"] .badge-watch {
+      background: #431407;
+      color: #fdba74
+    }
+
+    [data-theme="dark"] .badge-reserve {
+      background: #450a0a;
+      color: #fca5a5
+    }
+
+    [data-theme="dark"] .badge-no {
+      background: #1e293b;
+      color: #94a3b8
+    }
+
+    /* === AWARE STRIP === */
+    .aware-strip {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem
+    }
+
+    .aware-card {
+      flex: 1 1 220px;
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.5rem;
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden
+    }
+
+    .aware-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px
+    }
+
+    .aware-card.access {
+      background: #f0fdf4;
+      border-color: #bbf7d0
+    }
+
+    .aware-card.access::before {
+      background: #22c55e
+    }
+
+    .aware-card.watch {
+      background: #fff7ed;
+      border-color: #fed7aa
+    }
+
+    .aware-card.watch::before {
+      background: #f97316
+    }
+
+    .aware-card.reserve {
+      background: #fef2f2;
+      border-color: #fecaca
+    }
+
+    .aware-card.reserve::before {
+      background: #ef4444
+    }
+
+    .aware-card.no {
+      background: #f8fafc;
+      border-color: #e2e8f0
+    }
+
+    .aware-card.no::before {
+      background: #94a3b8
+    }
+
+    [data-theme="dark"] .aware-card.access {
+      background: #052e16;
+      border-color: #166534
+    }
+
+    [data-theme="dark"] .aware-card.watch {
+      background: #1c0a00;
+      border-color: #7c2d12
+    }
+
+    [data-theme="dark"] .aware-card.reserve {
+      background: #1c0000;
+      border-color: #7f1d1d
+    }
+
+    [data-theme="dark"] .aware-card.no {
+      background: #0f172a;
+      border-color: #334155
+    }
+
+    .aware-card h3 {
+      margin: 0 0 .5rem;
+      font-size: var(--text-md);
+      font-weight: 700
+    }
+
+    .aware-card.access h3 {
+      color: #15803d
+    }
+
+    .aware-card.watch h3 {
+      color: #c2410c
+    }
+
+    .aware-card.reserve h3 {
+      color: #b91c1c
+    }
+
+    .aware-card.no h3 {
+      color: var(--color-text-muted)
+    }
+
+    .aware-card p {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      margin: 0 0 .75rem;
+      line-height: 1.55
+    }
+
+    .drug-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      padding: 0;
+      list-style: none;
+      margin: 0
+    }
+
+    .drug-list li {
+      background: rgba(0, 0, 0, .06);
+      padding: .2em .6em;
+      border-radius: var(--radius-sm);
+      font-size: var(--text-xs);
+      font-weight: 500;
+      color: var(--color-text)
+    }
+
+    [data-theme="dark"] .drug-list li {
+      background: rgba(255, 255, 255, .08)
+    }
+
+    /* === GOAL BAR === */
+    .goal-bar-wrap {
+      background: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem
+    }
+
+    .goal-bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: var(--text-sm);
+      margin-bottom: .5rem;
+      font-weight: 600
+    }
+
+    .goal-bar-track {
+      background: var(--color-divider);
+      border-radius: 999px;
+      height: 10px;
+      overflow: hidden;
+      display: flex;
+      gap: 2px
+    }
+
+    .goal-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      transition: width .6s ease
+    }
+
+    .goal-bar-fill.access {
+      background: #22c55e;
+      width: 60%
+    }
+
+    .goal-bar-fill.watch {
+      background: #f97316;
+      width: 35%
+    }
+
+    .goal-bar-fill.reserve {
+      background: #ef4444;
+      width: 5%
+    }
+
+    /* === SYNDROME TABLE === */
+    .syndrome-table-wrap {
+      overflow-x: auto;
+      margin-bottom: 1.5rem
+    }
+
+    .syndrome-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-sm)
+    }
+
+    .syndrome-table th {
+      background: var(--color-surface);
+      color: var(--color-text);
+      padding: .75rem 1rem;
+      text-align: left;
+      font-weight: 700;
+      border-bottom: 2px solid var(--color-divider)
+    }
+
+    .syndrome-table td {
+      padding: .75rem 1rem;
+      border-bottom: 1px solid var(--color-divider);
+      vertical-align: top;
+      line-height: 1.55
+    }
+
+    .syndrome-table tr:last-child td {
+      border-bottom: none
+    }
+
+    .syndrome-table tr:hover td {
+      background: var(--color-surface)
+    }
+
+    /* === STEP FLOW === */
+    .step-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative
+    }
+
+    .step-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 0 0 1.5rem 0;
+      position: relative
+    }
+
+    .step-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 18px;
+      top: 38px;
+      bottom: 0;
+      width: 2px;
+      background: var(--color-divider)
+    }
+
+    .step-num {
+      width: 38px;
+      height: 38px;
+      min-width: 38px;
+      border-radius: 50%;
+      background: var(--color-primary, #2563eb);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: var(--text-sm);
+      z-index: 1
+    }
+
+    .step-content {
+      flex: 1
+    }
+
+    .step-content h4 {
+      margin: .4rem 0 .3rem;
+      font-size: var(--text-md);
+      font-weight: 700;
+      color: var(--color-text)
+    }
+
+    .step-content p,
+    .step-content ul {
+      margin: 0;
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: 1.6
+    }
+
+    .step-content ul {
+      padding-left: 1.2rem;
+      margin-top: .4rem
+    }
+
+    .step-content ul li {
+      margin-bottom: .25rem
+    }
+
+    /* === RISK PILLS === */
+    .risk-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: .5rem
+    }
+
+    .risk-pill {
+      background: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: 999px;
+      padding: .25em .85em;
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      font-weight: 500
+    }
+
+    .risk-pill.danger {
+      background: #fef2f2;
+      border-color: #fecaca;
+      color: #991b1b
+    }
+
+    [data-theme="dark"] .risk-pill.danger {
+      background: #1c0000;
+      border-color: #7f1d1d;
+      color: #fca5a5
+    }
+
+    /* === HERO === */
+    .hero-ks {
+      background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 60%, #0ea5e9 100%);
+      color: #fff;
+      padding: 2rem 2rem 1.75rem;
+      border-radius: var(--radius-lg);
+      margin-bottom: 1.5rem
+    }
+
+    .hero-ks h1 {
+      margin: 0 0 .5rem;
+      font-size: var(--text-xl);
+      font-weight: 800
+    }
+
+    .hero-ks p {
+      margin: 0 0 1.25rem;
+      opacity: .88;
+      font-size: var(--text-sm)
+    }
+
+    .hero-ks .quick {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem
+    }
+
+    .hero-ks .qi {
+      background: rgba(255, 255, 255, .13);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, .2);
+      padding: .55rem 1rem;
+      border-radius: var(--radius-md);
+      font-size: var(--text-xs);
+      line-height: 1.4
+    }
+
+    .hero-ks .qi b {
+      display: block;
+      font-weight: 700;
+      margin-bottom: .15rem
+    }
+
+    /* === ALERT BOX === */
+    .alert-box {
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      font-size: var(--text-sm);
+      line-height: 1.6;
+      border-left: 4px solid
+    }
+
+    .alert-box.warning {
+      background: #fffbeb;
+      border-color: #f59e0b;
+      color: #78350f
+    }
+
+    .alert-box.info {
+      background: #eff6ff;
+      border-color: #3b82f6;
+      color: #1e3a8a
+    }
+
+    .alert-box.success {
+      background: #f0fdf4;
+      border-color: #22c55e;
+      color: #14532d
+    }
+
+    .alert-box.danger {
+      background: #fef2f2;
+      border-color: #ef4444;
+      color: #7f1d1d
+    }
+
+    [data-theme="dark"] .alert-box.warning {
+      background: #1c1300;
+      color: #fde68a
+    }
+
+    [data-theme="dark"] .alert-box.info {
+      background: #0a1628;
+      color: #93c5fd
+    }
+
+    [data-theme="dark"] .alert-box.success {
+      background: #052e16;
+      color: #86efac
+    }
+
+    [data-theme="dark"] .alert-box.danger {
+      background: #1c0000;
+      color: #fca5a5
+    }
+
+    .alert-box h4 {
+      margin: 0 0 .4rem;
+      font-weight: 700;
+      font-size: var(--text-sm)
+    }
+
+    /* === DEESCALATION === */
+    .deesc-timeline {
+      display: flex;
+      gap: 0;
+      align-items: stretch;
+      overflow-x: auto;
+      padding-bottom: .5rem
+    }
+
+    .deesc-node {
+      flex: 1;
+      min-width: 140px;
+      text-align: center;
+      position: relative
+    }
+
+    .deesc-node:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      right: -.6rem;
+      top: 38px;
+      font-size: 1.2rem;
+      color: var(--color-text-muted);
+      z-index: 1
+    }
+
+    .deesc-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      margin: 0 auto .6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem
+    }
+
+    .deesc-circle.c1 {
+      background: #fef2f2
+    }
+
+    .deesc-circle.c2 {
+      background: #fff7ed
+    }
+
+    .deesc-circle.c3 {
+      background: #f0fdf4
+    }
+
+    .deesc-circle.c4 {
+      background: #eff6ff
+    }
+
+    .deesc-node h5 {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      margin: 0 0 .2rem
+    }
+
+    .deesc-node p {
+      font-size: .7rem;
+      color: var(--color-text-muted);
+      margin: 0
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="app-container">
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li><a href="../../../index.html" class="nav-item"><span class="nav-icon">🏠</span><span
+                class="nav-text">Trang chủ</span></a></li>
+          <li><a href="../ky-nang.html" class="nav-item active"><span class="nav-icon">🩺</span><span
+                class="nav-text">Kỹ năng lâm sàng</span></a></li>
+          <li><a href="../../Tiếp cận/tiep-can.html" class="nav-item"><span class="nav-icon">🤒</span><span
+                class="nav-text">Tiếp cận lâm sàng</span></a></li>
+          <li><a href="../../Dược lý/duoc-ly.html" class="nav-item"><span class="nav-icon">💊</span><span
+                class="nav-text">Dược lý lâm sàng</span></a></li>
+          y học
+        </ul>
+      </nav>
+    </aside>
+    <main class="main-wrapper" id="mainContent">
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../../../index.html" class="breadcrumb-link"><span
+                class="home-icon">🏠</span> Home</a></li>
+          <li class="breadcrumb-item"><a href="../ky-nang.html" class="breadcrumb-link">Kỹ năng lâm sàng</a></li>
+          <li class="breadcrumb-item">Quản lý điều trị</li>
+          <li class="breadcrumb-item active" aria-current="page">Lựa chọn kháng sinh</li>
+        </ol>
+      </nav>
+
+      <!-- HERO -->
+      <section class="hero-ks">
+        <h1>Lựa chọn Kháng sinh</h1>
+        <p>Hướng dẫn tiếp cận có hệ thống trong kê đơn kháng sinh – từ đánh giá lâm sàng theo kinh nghiệm đến phân tầng
+          AWaRe 2023 của WHO.</p>
+        <div class="quick">
+          <div class="qi"><b>Nguyên tắc D8</b>Chẩn đoán → Quyết định → Loại thuốc → Liều lượng → Dạng bào chế → Thời
+            gian → Tư vấn → Ghi chép</div>
+          <div class="qi"><b>De-escalation</b>Đánh giá lại sau 48–72 giờ, thu hẹp phổ khi có kết quả vi sinh</div>
+          <div class="qi"><b>Mục tiêu WHO</b>≥ 60% kháng sinh dùng thuộc nhóm Access (Tiếp cận)</div>
+        </div>
+      </section>
+
+      <!-- TABS -->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="empirical">🧑‍⚕️ Theo kinh nghiệm</button>
+        <button class="tab-btn" data-tab="aware">🌍 Theo WHO 2023 (AWaRe)</button>
+      </div>
+
+      <!-- TAB 1: THEO KINH NGHIEM -->
+      <section class="tab active" id="empirical">
+        <div class="card" style="margin-bottom:1.5rem">
+          <h2>Quy trình quyết định kháng sinh theo kinh nghiệm</h2>
+          <p style="color:var(--color-text-muted);font-size:var(--text-sm);margin-bottom:1.5rem">Liệu pháp theo kinh
+            nghiệm (Empirical therapy) được thực hiện ngay khi có nghi ngờ nhiễm khuẩn mà chưa có kết quả vi sinh. Cần
+            đánh giá toàn diện 5 phương diện sau:</p>
+          <div class="step-flow">
+            <div class="step-item">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <h4>Quyết định sự cần thiết của kháng sinh</h4>
+                <p>Hầu hết nhiễm khuẩn nhẹ tại cộng đồng (viêm phế quản cấp, viêm xoang nhẹ, phần lớn viêm họng, tiêu
+                  chảy phân nước) có nguồn gốc virus hoặc tự giới hạn – <strong>không cần kháng sinh.</strong> Ưu tiên
+                  "Chăm sóc không dùng kháng sinh" (giảm đau, hạ sốt, bù nước) cho các trường hợp này.</p>
+                <div class="alert-box warning" style="margin-top:.75rem">
+                  <h4>⚠️ Nguyên tắc D8</h4>
+                  Chẩn đoán bệnh gì? → Có thực sự cần kháng sinh không? → Loại thuốc nào? → Liều lượng? → Dạng bào chế?
+                  → Thời gian dùng? → Tư vấn bệnh nhân gì? → Ghi chép hồ sơ.
+                </div>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <h4>Đánh giá cơ địa và yếu tố vật chủ (Host Factors)</h4>
+                <ul>
+                  <li><strong>Tình trạng miễn dịch:</strong> Suy giảm miễn dịch (HIV, ung thư hoá trị, ghép tạng, giảm
+                    bạch cầu hạt) → phổ vi khuẩn khác biệt, cần phổ rộng ngay lập tức (Piperacillin/tazobactam hoặc
+                    Meropenem).</li>
+                  <li><strong>Dị ứng kháng sinh:</strong> &gt;95% bệnh nhân khai báo dị ứng Penicillin không thực sự bị
+                    dị ứng qua trung gian miễn dịch. Cephalosporin và Carbapenem có thể dùng an toàn trong hầu hết dị
+                    ứng penicillin không nghiêm trọng (không có tiền sử sốc phản vệ, SJS, DRESS).</li>
+                  <li><strong>Đặc điểm khác:</strong> Chức năng thận (chỉnh liều), béo phì (thay đổi Vd), thai kỳ (tránh
+                    Fluoroquinolon, Tetracyclin).</li>
+                </ul>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <h4>Đánh giá mức độ nghiêm trọng của bệnh</h4>
+                <ul>
+                  <li><strong>Viêm phổi cộng đồng (CAP):</strong> CURB-65 — điểm 0–1: ngoại trú; điểm 2: cân nhắc nhập
+                    viện; điểm ≥3: nhập viện/ICU.</li>
+                  <li><strong>Nhiễm khuẩn huyết:</strong> qSOFA (nhịp thở ≥22, rối loạn tri giác, HA tâm thu ≤100 mmHg).
+                  </li>
+                  <li><strong>Sốc nhiễm khuẩn / Viêm màng não:</strong> Kháng sinh tĩnh mạch phải dùng <strong>trong
+                      vòng 1 giờ</strong>, không trì hoãn để chờ kết quả.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">4</div>
+              <div class="step-content">
+                <h4>Đánh giá nguy cơ vi khuẩn đa kháng (MDRO Risk)</h4>
+                <p>Cốt lõi để quyết định có cần bao vây <em>P. aeruginosa</em>, <em>A. baumannii</em>, MRSA, vi khuẩn
+                  sinh ESBL hay không:</p>
+                <div class="risk-row">
+                  <span class="risk-pill danger">Phân lập MDRO trong 12 tháng qua</span>
+                  <span class="risk-pill danger">Dùng KS tĩnh mạch trong 90 ngày qua</span>
+                  <span class="risk-pill danger">Viêm phổi bệnh viện (HAP/VAP) muộn &gt;5 ngày</span>
+                  <span class="risk-pill">MRSA tại đơn vị &gt;10% → thêm Vancomycin</span>
+                  <span class="risk-pill">Kháng Fluoroquinolon cao → dùng Ceftriaxone/Azithromycin</span>
+                </div>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">5</div>
+              <div class="step-content">
+                <h4>Đánh giá lại và "Xuống thang" (De-escalation)</h4>
+                <p>Điều trị kinh nghiệm phổ rộng không được kéo dài vĩnh viễn.</p>
+                <div class="deesc-timeline" style="margin-top:1rem">
+                  <div class="deesc-node">
+                    <div class="deesc-circle c1">🦠</div>
+                    <h5>Giờ 0</h5>
+                    <p>Lấy mẫu vi sinh + dùng KS kinh nghiệm phổ rộng</p>
+                  </div>
+                  <div class="deesc-node">
+                    <div class="deesc-circle c2">📋</div>
+                    <h5>48–72 giờ</h5>
+                    <p>Đánh giá lại: kết quả cấy &amp; đáp ứng lâm sàng</p>
+                  </div>
+                  <div class="deesc-node">
+                    <div class="deesc-circle c3">⬇️</div>
+                    <h5>De-escalation</h5>
+                    <p>Thu hẹp phổ, chuyển sang KS nhắm đích</p>
+                  </div>
+                  <div class="deesc-node">
+                    <div class="deesc-circle c4">💊</div>
+                    <h5>IV → PO</h5>
+                    <p>Khi hết sốt, huyết động ổn, tiêu hóa hấp thu tốt</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:1.5rem">
+          <h2>Phác đồ kinh nghiệm theo hội chứng lâm sàng điển hình</h2>
+          <div class="syndrome-table-wrap">
+            <table class="syndrome-table">
+              <thead>
+                <tr>
+                  <th>Hội chứng / Bệnh cảnh</th>
+                  <th>Tác nhân thường gặp</th>
+                  <th>Phác đồ nhẹ / Ngoại trú</th>
+                  <th>Phác đồ nặng / Nội trú</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Viêm phổi cộng đồng (CAP)</strong></td>
+                  <td><em>S. pneumoniae, H. influenzae, Mycoplasma</em></td>
+                  <td>BN khỏe mạnh: <span class="badge badge-access">Access</span> Amoxicillin 1g × 3/ngày<br>Có bệnh
+                    đồng mắc: Amoxicillin/clavulanate + Azithromycin</td>
+                  <td><span class="badge badge-watch">Watch</span> Ceftriaxone + Clarithromycin/Azithromycin<br><em>Chỉ
+                      bao vây MRSA/Pseudomonas khi có YTNC</em></td>
+                </tr>
+                <tr>
+                  <td><strong>Nhiễm khuẩn da &amp; mô mềm (SSTI)</strong></td>
+                  <td><em>Streptococcus spp., S. aureus (MSSA/MRSA)</em></td>
+                  <td>Không sinh mủ:<br><span class="badge badge-access">Access</span> Amoxicillin/clavulanate hoặc
+                    Cefalexin</td>
+                  <td>Có mủ/nguy cơ MRSA: TMP/SMX hoặc Clindamycin<br>Viêm cân mạc hoại tử: Pip/tazo + Clindamycin +
+                    Vancomycin</td>
+                </tr>
+                <tr>
+                  <td><strong>Nhiễm khuẩn ổ bụng / Đường mật</strong></td>
+                  <td><em>E. coli, Klebsiella, Bacteroides spp.</em></td>
+                  <td><span class="badge badge-watch">Watch</span> Ceftriaxone + Metronidazole</td>
+                  <td>Nặng/ESBL: <span class="badge badge-watch">Watch</span> Pip/Tazobactam<br>Kháng carbapenem: <span
+                      class="badge badge-reserve">Reserve</span> Meropenem</td>
+                </tr>
+                <tr>
+                  <td><strong>Nhiễm khuẩn tiết niệu (UTI)</strong></td>
+                  <td><em>E. coli, Klebsiella, Enterococcus</em></td>
+                  <td>Viêm bàng quang đơn giản:<br><span class="badge badge-access">Access</span> Nitrofurantoin hoặc
+                    TMP/SMX</td>
+                  <td>Viêm thận–bể thận: <span class="badge badge-watch">Watch</span> Ceftriaxone IV<br><em>Kiểm tra
+                      kháng sinh đồ địa phương trước FQ</em></td>
+                </tr>
+                <tr>
+                  <td><strong>Nhiễm khuẩn huyết / Sốc nhiễm khuẩn</strong></td>
+                  <td>Đa vi khuẩn, tuỳ ổ nhiễm</td>
+                  <td colspan="2"><span class="badge badge-watch">Watch</span> Pip/Tazobactam; Khi nghi MRSA: bổ sung
+                    Vancomycin<br>Nguy cơ MDRO cao: <span class="badge badge-reserve">Reserve</span> Meropenem ±
+                    Vancomycin/Linezolid</td>
+                </tr>
+                <tr>
+                  <td><strong>Viêm màng não vi khuẩn</strong></td>
+                  <td><em>S. pneumoniae, N. meningitidis, L. monocytogenes</em></td>
+                  <td colspan="2"><span class="badge badge-watch">Watch</span> Ceftriaxone 2g IV × 2/ngày<br>Người cao
+                    tuổi/suy giảm MD: thêm Ampicillin (Listeria)<br>Dexamethasone kèm để giảm phù não</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div class="card">
+            <h2>Nguyên tắc PK/PD trong lựa chọn liều</h2>
+            <ul>
+              <li><strong>Phụ thuộc thời gian (Beta-lactam):</strong> Hiệu quả khi nồng độ &gt;MIC trong phần lớn khoảng
+                cách liều (%T&gt;MIC). Dùng extended infusion ở bệnh nhân nặng.</li>
+              <li><strong>Phụ thuộc nồng độ (Aminoglycoside, FQ):</strong> Hiệu quả phụ thuộc Cmax/MIC hoặc AUC/MIC. Ưu
+                tiên liều cao, khoảng cách dài.</li>
+              <li><strong>Chỉnh liều theo thận:</strong> Luôn kiểm tra eGFR trước khi kê kháng sinh thải qua thận
+                (Vancomycin, Aminoglycoside, Carbapenem).</li>
+              <li><strong>Nếu hai kháng sinh tương đương:</strong> Chọn loại an toàn hơn, rẻ hơn, tiện lợi hơn và có sẵn
+                tại cơ sở.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h2>Các sai lầm cần tránh</h2>
+            <div class="alert-box danger">
+              <h4>❌ Dùng kháng sinh phổ rộng khi không cần</h4>
+              Tránh dùng Carbapenem hoặc Pip/tazo cho nhiễm khuẩn nhẹ, chưa có bằng chứng MDRO.
+            </div>
+            <div class="alert-box danger" style="margin-top:.75rem">
+              <h4>❌ Không lấy mẫu vi sinh trước khi dùng kháng sinh</h4>
+              Mẫu máu, đờm, nước tiểu, DNT phải lấy TRƯỚC liều đầu tiên (ngoại trừ sốc nhiễm khuẩn).
+            </div>
+            <div class="alert-box danger" style="margin-top:.75rem">
+              <h4>❌ Không đánh giá lại sau 48–72 giờ</h4>
+              Thiếu de-escalation là nguyên nhân hàng đầu chọn lọc vi khuẩn đa kháng tại bệnh viện.
+            </div>
+            <div class="alert-box success" style="margin-top:.75rem">
+              <h4>✅ Luôn tham khảo Antibiogram tại địa phương</h4>
+              Dữ liệu kháng thuốc tại chỗ là yếu tố quyết định nhất cho lựa chọn kinh nghiệm tối ưu.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: THEO WHO AWARE 2023 -->
+      <section class="tab" id="aware">
+        <div class="card" style="margin-bottom:1.5rem">
+          <h2>Hệ thống phân loại AWaRe của WHO</h2>
+          <p style="color:var(--color-text-muted);font-size:var(--text-sm);line-height:1.65;margin-bottom:1rem">
+            Hệ thống AWaRe được WHO giới thiệu năm 2017 và cập nhật 2023 trong Danh mục Thuốc Thiết yếu (EML), nhằm tối
+            ưu hóa sử dụng kháng sinh và giảm thiểu kháng kháng sinh (AMR). AWaRe phân loại kháng sinh thành 4 nhóm theo
+            mô hình <strong>"đèn tín hiệu giao thông"</strong>: Tiếp cận (Xanh) → Giám sát (Cam) → Dự trữ (Đỏ) → Không
+            khuyến nghị (Xám).
+          </p>
+          <div class="goal-bar-wrap">
+            <div class="goal-bar-label">
+              <span>🎯 Mục tiêu WHO: ≥ 60% tổng lượng kháng sinh tiêu thụ quốc gia phải thuộc nhóm Tiếp cận
+                (Access)</span>
+              <span style="color:#15803d;font-weight:700">60% Access</span>
+            </div>
+            <div class="goal-bar-track">
+              <div class="goal-bar-fill access"></div>
+              <div class="goal-bar-fill watch"></div>
+              <div class="goal-bar-fill reserve"></div>
+            </div>
+            <div style="display:flex;gap:1rem;margin-top:.5rem;font-size:var(--text-xs);color:var(--color-text-muted)">
+              <span>🟢 Access ≥ 60%</span>
+              <span>🟠 Watch ≤ 35%</span>
+              <span>🔴 Reserve ≤ 5%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="aware-strip">
+          <div class="aware-card access">
+            <h3>🟢 Nhóm Tiếp cận (Access)</h3>
+            <p>Kháng sinh phổ hẹp, an toàn, chi phí thấp, ít nguy cơ gây kháng thuốc. <strong>Lựa chọn đầu tay hoặc thứ
+                hai</strong> cho phần lớn nhiễm khuẩn thông thường tại cộng đồng.</p>
+            <ul class="drug-list">
+              <li>Amoxicillin</li>
+              <li>Amoxicillin/clavulanate</li>
+              <li>Phenoxymethylpenicillin</li>
+              <li>Cefalexin</li>
+              <li>Cloxacillin</li>
+              <li>Nitrofurantoin</li>
+              <li>TMP/SMX</li>
+              <li>Metronidazole</li>
+              <li>Doxycycline</li>
+              <li>Clindamycin</li>
+              <li>Gentamicin</li>
+              <li>Ampicillin IV</li>
+              <li>Benzylpenicillin IV</li>
+              <li>Cefazolin IV</li>
+            </ul>
+          </div>
+          <div class="aware-card watch">
+            <h3>🟠 Nhóm Giám sát (Watch)</h3>
+            <p>Phổ rộng hơn, chi phí cao, <strong>nguy cơ cao chọn lọc vi khuẩn kháng thuốc.</strong> Chỉ dùng làm đầu
+              tay khi bệnh nặng hoặc vi khuẩn kháng nhóm Access.</p>
+            <ul class="drug-list">
+              <li>Ciprofloxacin</li>
+              <li>Levofloxacin</li>
+              <li>Moxifloxacin</li>
+              <li>Azithromycin</li>
+              <li>Clarithromycin</li>
+              <li>Cefixime</li>
+              <li>Ceftriaxone</li>
+              <li>Cefotaxime</li>
+              <li>Cefepime</li>
+              <li>Pip/tazobactam</li>
+              <li>Vancomycin</li>
+              <li>Ertapenem</li>
+              <li>Meropenem*</li>
+            </ul>
+            <p style="margin-top:.5rem;font-size:.7rem">* Meropenem đang được cân nhắc chuyển sang Reserve trong bản cập
+              nhật 2023.</p>
+          </div>
+          <div class="aware-card reserve">
+            <h3>🔴 Nhóm Dự trữ (Reserve)</h3>
+            <p><strong>"Lựa chọn cuối cùng" (last-resort)</strong> – chỉ dùng cho nhiễm khuẩn đe dọa tính mạng do vi
+              khuẩn đa kháng (MDR). Yêu cầu giám sát và phê duyệt đặc biệt.</p>
+            <ul class="drug-list">
+              <li>Colistin</li>
+              <li>Polymyxin B</li>
+              <li>Fosfomycin IV</li>
+              <li>Cefiderocol</li>
+              <li>Ceftazidime/avibactam</li>
+              <li>Meropenem/vaborbactam</li>
+              <li>Imipenem/cilastatin/relebactam</li>
+              <li>Aztreonam/avibactam</li>
+              <li>Plazomicin</li>
+              <li>Linezolid</li>
+              <li>Dalbavancin</li>
+              <li>Tedizolid</li>
+            </ul>
+          </div>
+          <div class="aware-card no">
+            <h3>⛔ Không khuyến cáo</h3>
+            <p>Các dạng phối hợp liều cố định (FDC) không được phê duyệt bởi các cơ quan quản lý chính, không mang lại
+              lợi ích rõ ràng nhưng tăng độc tính và thúc đẩy kháng thuốc.</p>
+            <ul class="drug-list">
+              <li>KS phổ rộng FDC không cần thiết</li>
+              <li>KS + kháng nấm FDC không chuẩn</li>
+              <li>KS + men vi sinh FDC</li>
+            </ul>
+            <div class="alert-box warning" style="margin-top:.75rem;font-size:.72rem;padding:.6rem .85rem">
+              Ở một số quốc gia thu nhập trung bình, các thuốc này chiếm tới 20% tổng đơn kháng sinh.
+            </div>
+          </div>
+        </div>
+
+        <div class="grid2" style="margin-bottom:1.5rem">
+          <div class="card">
+            <h2>🟢 Tiếp cận (Access) – Chi tiết</h2>
+            <ul>
+              <li><strong>Đặc điểm:</strong> Phổ tác dụng hẹp, chi phí thấp, hồ sơ an toàn tốt, khả năng gây kháng thuốc
+                thấp nhất.</li>
+              <li><strong>Chỉ định:</strong> Lựa chọn đầu tay hoặc thứ hai cho phần lớn nhiễm khuẩn thông thường tại
+                cộng đồng và cơ sở chăm sóc sức khỏe ban đầu.</li>
+              <li><strong>Mục tiêu WHO:</strong> Ít nhất <strong>60%</strong> tổng lượng kháng sinh tiêu thụ quốc gia
+                phải thuộc nhóm này.</li>
+              <li><strong>Ví dụ lâm sàng:</strong> Viêm tai giữa → Amoxicillin; Viêm da mô tế bào → Cefalexin; UTI đơn
+                giản → Nitrofurantoin.</li>
+            </ul>
+            <div class="alert-box success" style="margin-top:1rem">
+              <h4>✅ Ưu tiên nhóm Access bất cứ khi nào có thể</h4>
+              Chuyển sang nhóm Watch hoặc Reserve chỉ khi có bằng chứng lâm sàng rõ ràng về mức độ nặng hoặc kháng
+              thuốc.
+            </div>
+          </div>
+          <div class="card">
+            <h2>🟠 Giám sát (Watch) – Chi tiết</h2>
+            <ul>
+              <li><strong>Đặc điểm:</strong> Phổ rộng hơn, chi phí cao hơn, <strong>nguy cơ cao chọn lọc vi khuẩn kháng
+                  thuốc.</strong></li>
+              <li><strong>Chỉ định:</strong> Lựa chọn đầu tay chỉ khi bệnh nhân có biểu hiện lâm sàng nặng, hoặc vi
+                khuẩn có khả năng đã kháng lại nhóm Access (ví dụ: nhiễm khuẩn đường tiết niệu trên, viêm phổi nội trú).
+              </li>
+              <li><strong>Vấn đề:</strong> Sử dụng quá mức nhóm Watch cho nhiễm khuẩn nhẹ đang gia tăng toàn cầu – đây
+                là chìa khóa then chốt của AMR.</li>
+              <li><strong>Fluoroquinolon:</strong> Nguy cơ tác dụng phụ nghiêm trọng (gân, thần kinh, QTc kéo dài), tác
+                động AMR mạnh.</li>
+            </ul>
+            <div class="alert-box warning" style="margin-top:1rem">
+              <h4>⚠️ Tránh Fluoroquinolon uống cho nhiễm khuẩn nhẹ</h4>
+              WHO và IDSA khuyến cáo hạn chế Fluoroquinolon đường uống cho các chỉ định thực sự cần phổ bao vây gram âm
+              đặc biệt.
+            </div>
+          </div>
+          <div class="card">
+            <h2>🔴 Dự trữ (Reserve) – Chi tiết</h2>
+            <ul>
+              <li><strong>Đặc điểm:</strong> "Lựa chọn cuối cùng" – còn giữ hoạt tính chống MDRO cực kỳ nguy hiểm: CRE,
+                <em>P. aeruginosa</em> đa kháng, <em>A. baumannii</em> đa kháng.</li>
+              <li><strong>Chỉ định nhắm đích:</strong> Lý tưởng nhất khi đã có kết quả vi sinh và kháng sinh đồ chứng
+                minh nhạy cảm với thuốc Reserve.</li>
+              <li><strong>Chỉ định kinh nghiệm:</strong> Chỉ ở bệnh nhân sốc nhiễm khuẩn có nghi ngờ cao MDRO (tiền sử
+                nhiễm/cư trú CRE, thất bại với carbapenem).</li>
+              <li><strong>Quản lý:</strong> Cần Stewardship Program nghiêm ngặt để bảo vệ nhóm thuốc này cho tương lai.
+              </li>
+            </ul>
+            <div class="alert-box danger" style="margin-top:1rem">
+              <h4>🔴 Colistin / Polymyxin B</h4>
+              Độc tính thận và thần kinh cao. Chỉ dùng khi không còn lựa chọn nào khác. Cần TDM nếu có điều kiện.
+            </div>
+          </div>
+          <div class="card">
+            <h2>🚦 Tóm tắt ứng dụng AWaRe trên lâm sàng</h2>
+            <div class="syndrome-table-wrap">
+              <table class="syndrome-table">
+                <thead>
+                  <tr>
+                    <th>Tình huống lâm sàng</th>
+                    <th>Nhóm AWaRe phù hợp</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Nhiễm khuẩn nhẹ – thông thường tại cộng đồng</td>
+                    <td><span class="badge badge-access">Access</span></td>
+                  </tr>
+                  <tr>
+                    <td>Nhiễm khuẩn trung bình – nhập viện, nguy cơ kháng Access</td>
+                    <td><span class="badge badge-watch">Watch</span></td>
+                  </tr>
+                  <tr>
+                    <td>Nhiễm khuẩn nặng – ICU, vi khuẩn đa kháng đã xác định</td>
+                    <td><span class="badge badge-reserve">Reserve</span></td>
+                  </tr>
+                  <tr>
+                    <td>FDC kháng sinh không chuẩn hóa</td>
+                    <td><span class="badge badge-no">Không khuyến cáo</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="alert-box info" style="margin-top:1rem">
+              <h4>💡 Chăm sóc không dùng kháng sinh (Antibiotic-free care)</h4>
+              AWaRe nhấn mạnh: quyết định quan trọng nhất <em>không phải</em> là chọn nhóm nào, mà là <strong>có thực sự
+                cần dùng kháng sinh không?</strong> Đa phần nhiễm khuẩn nhẹ tại cộng đồng là virus hoặc tự giới hạn –
+              điều trị triệu chứng là đủ.
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Tài liệu tham khảo</h2>
+          <ol>
+            <li>World Health Organization. <em>The WHO AWaRe (Access, Watch, Reserve) antibiotic book.</em> Geneva: WHO;
+              2022. Updated 2023.</li>
+            <li>World Health Organization. <em>WHO Model List of Essential Medicines – 23rd List.</em> Geneva: WHO;
+              2023.</li>
+            <li>Antimicrobial Stewardship Programs: IDSA/SHEA Guidelines, 2016 (updated).</li>
+            <li>Dịch tễ học kháng thuốc Việt Nam – Bộ Y tế / Bệnh viện Bạch Mai Antibiogram.</li>
+          </ol>
+        </div>
+      </section>
+    </main>
+  </div>
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+  <script src="../../../js/sidebar.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var tabBtns = document.querySelectorAll('.tab-btn');
+      var tabSections = document.querySelectorAll('section.tab');
+      tabBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var target = this.getAttribute('data-tab');
+          tabBtns.forEach(function (b) { b.classList.remove('active'); });
+          tabSections.forEach(function (s) { s.classList.remove('active'); });
+          this.classList.add('active');
+          var activeSection = document.getElementById(target);
+          if (activeSection) activeSection.classList.add('active');
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

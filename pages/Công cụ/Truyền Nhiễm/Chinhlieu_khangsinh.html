@@ -1144,6 +1144,56 @@
       transform: translateX(0);
     }
 
+    .pkpd-box {
+      background: var(--color-purple-hl);
+      border: 1.5px solid var(--color-purple);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      margin-bottom: 14px;
+      opacity: 0;
+      transform: translateX(28px);
+      transition: opacity 0.42s ease, transform 0.42s ease;
+    }
+
+    .pkpd-box.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .pkpd-box .pkpd-header {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--color-purple);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pkpd-badge {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      background: var(--color-purple);
+      color: var(--color-text-inverse);
+      margin-left: auto;
+    }
+
+    .pkpd-box .pkpd-item {
+      margin-bottom: 8px;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: var(--text);
+    }
+
+    .pkpd-box .pkpd-item:last-child {
+      margin-bottom: 0;
+    }
+
     /* KSĐ panel layout */
     .result-ksd-wrap {
       display: flex;
@@ -1491,10 +1541,9 @@
           <div class="hero-badge"
             style="background: rgba(255,255,255,0.2); display: inline-block; padding: 0.25rem 0.75rem; border-radius: var(--radius-full); font-size: var(--text-xs); font-weight: 700; margin-bottom: 0.5rem;">
             🧮 CÔNG CỤ DƯỢC LÂM SÀNG</div>
-          <h1 style="margin: 0; font-size: var(--text-xl); font-weight: 800;">TÍNH LIỀU KHÁNG SINH & TRA CỨU KHÁNG SINH
-            ĐỒ</h1>
+          <h1 style="margin: 0; font-size: var(--text-xl); font-weight: 800;">CHỈNH LIỀU KHÁNG SINH</h1>
           <p style="margin: 0.5rem 0 0; font-size: var(--text-sm); opacity: 0.9;">Tính toán liều kháng sinh theo chức
-            năng thận (Cockcroft-Gault) kết hợp tra cứu dữ liệu vi sinh nội bộ.</p>
+            năng thận (Cockcroft-Gault) và PK/PD.</p>
         </div>
         <div style="display:flex;flex-direction:column;align-items:center;gap:3px;flex-shrink:0">
           <button class="reset-btn" onclick="resetAll()" title="Xóa tất cả (Space)"
@@ -1544,6 +1593,14 @@
             <input type="number" id="weight" value="50" min="1" max="300" step="0.5" style="color:var(--muted)"
               onfocus="if(this.value==='50'){this.value='';this.style.color='var(--text)'}"
               onblur="if(this.value===''){this.value='50';this.style.color='var(--muted)'}else{this.style.color='var(--text)'}"
+              oninput="this.style.color='var(--text)'">
+          </div>
+
+          <div class="form-group">
+            <label>Albumin huyết thanh <span class="unit">(g/dL)</span></label>
+            <input type="number" id="albumin" value="4.0" min="0.5" max="7.0" step="0.1" style="color:var(--muted)"
+              onfocus="if(this.value==='4.0'){this.value='';this.style.color='var(--text)'}"
+              onblur="if(this.value===''){this.value='4.0';this.style.color='var(--muted)'}else{this.style.color='var(--text)'}"
               oninput="this.style.color='var(--text)'">
           </div>
 
@@ -3460,7 +3517,220 @@
       },
     };
 
-    // Render KSĐ inline table (right column inside dose-box)
+    // Render PK/PD analysis box based on Dược PK_PD.md
+    function getPkPdAnalysis(ab, crcl, weight, severity, isDialysis, albumin) {
+      if (albumin === undefined || albumin === null) albumin = 4.0;
+      
+      let pkpdGroup = '';
+      let indexName = '';
+      let targetGoal = '';
+      let clinicalStrategy = '';
+      let sepsisEffect = '';
+      let arcEffect = '';
+      let tdmSection = '';
+      
+      const id = ab.id;
+      const groupName = ab.group.toLowerCase();
+      
+      // Determine physical-chemical classification
+      const isHydrophilic = ['meropenem', 'imipenem', 'ertapenem', 'piperacillin_tazo', 'ceftriaxon', 'cefotaxim', 'cefepim', 'ceftazidim', 'amikacin', 'gentamicin', 'tobramycin', 'aztreonam', 'vancomycin', 'teicoplanin', 'colistin', 'fosfomycin'].includes(id) || groupName.includes('carbapenem') || groupName.includes('cephalosporin') || groupName.includes('penicillin') || groupName.includes('aminoglycoside') || groupName.includes('glycopeptid') || groupName.includes('monobactam');
+      
+      const physioType = isHydrophilic 
+        ? `<span style="background:var(--color-primary-hl);color:var(--color-primary);padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:700">Thân nước (Hydrophilic)</span>`
+        : `<span style="background:var(--color-warning-hl);color:var(--color-warning);padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:700">Thân lipid (Lipophilic)</span>`;
+        
+      const physioNote = isHydrophilic
+        ? 'Thể tích phân bố (V<sub>d</sub>) nhỏ, thải trừ chủ yếu qua thận, thâm nhập tế bào kém. Bị ảnh hưởng mạnh bởi tình trạng rò rỉ mao mạch và bù dịch ở bệnh nhân nặng (làm giảm nồng độ thuốc).'
+        : 'Thể tích phân bố (V<sub>d</sub>) lớn, thâm nhập mô và nội bào cực tốt, chủ yếu thải trừ qua gan. Ít bị ảnh hưởng bởi rò rỉ mao mạch/bù dịch ở ICU.';
+
+      // Determine Group & Specific Details
+      if (['amikacin', 'gentamicin', 'tobramycin', 'colistin', 'daptomycin', 'caspofungin', 'micafungin', 'anidulafungin'].includes(id) || groupName.includes('aminoglycoside') || groupName.includes('echinocandin')) {
+        pkpdGroup = 'Phụ thuộc nồng độ (Concentration-dependent)';
+        indexName = 'C<sub>max</sub> / MIC';
+        
+        if (groupName.includes('aminoglycoside')) {
+          targetGoal = 'Đạt C<sub>max</sub> / MIC ≥ 8 - 10 để tối ưu hóa hoạt tính diệt khuẩn và hạn chế đề kháng.';
+          clinicalStrategy = 'Sử dụng chế độ liều cao một lần duy nhất trong ngày (Once-daily dosing / ODA), kéo dài khoảng cách liều (24h, 36h hoặc 48h tùy chức năng thận). Chiến lược này giúp tối đa hóa C<sub>max</sub>, tận dụng hiệu ứng hậu kháng sinh (PAE) dài (0.5 - 8h), và cho phép nồng độ đáy rớt xuống rất thấp (&lt; 1 mcg/mL với Gentamicin/Tobramycin, &lt; 5 mcg/mL với Amikacin) để rửa trôi thuốc khỏi tế bào tai và thận, làm giảm độc tính tích lũy.';
+        } else if (id === 'colistin') {
+          targetGoal = 'Đạt nồng độ đích diệt khuẩn tối ưu dựa trên tỷ lệ C<sub>max</sub> / MIC.';
+          clinicalStrategy = 'Do độc tính thận cao và phạm vi điều trị hẹp, việc sử dụng Colistin đòi hỏi liều nạp lớn ban đầu để nhanh chóng đạt nồng độ điều trị, sau đó điều chỉnh liều duy trì chặt chẽ theo chức năng thận (CrCl). Cần cân nhắc phối hợp thuốc (ví dụ Sulbactam) khi nhiễm vi khuẩn đa kháng.';
+        } else if (groupName.includes('echinocandin')) {
+          targetGoal = 'Tối ưu hóa tỷ lệ C<sub>max</sub> / MIC để tiêu diệt nấm nhạy cảm.';
+          clinicalStrategy = 'Truyền tĩnh mạch một lần mỗi ngày. Không cần hiệu chỉnh liều theo chức năng thận.';
+        } else {
+          targetGoal = 'Tối ưu hóa nồng độ đỉnh thuốc tự do so với MIC (C<sub>max</sub> / MIC).';
+          clinicalStrategy = 'Sử dụng liều cao, kéo dài khoảng cách liều để tối đa hóa hiệu quả diệt khuẩn và tận dụng hiệu ứng hậu kháng sinh (PAE).';
+        }
+        
+        if (['amikacin', 'gentamicin', 'tobramycin', 'colistin'].includes(id)) {
+          sepsisEffect = 'Là kháng sinh thân nước (hydrophilic), V<sub>d</sub> tăng mạnh trong nhiễm khuẩn huyết / ICU (do rò rỉ mao mạch, bù dịch). Bắt buộc phải dùng <strong>liều nạp (loading dose) lớn hơn bình thường</strong> (ví dụ: Amikacin 20-25 mg/kg, Gentamicin 5-7 mg/kg, Colistin 9 MIU) để nhanh chóng đạt nồng độ đích huyết tương.';
+          if (['amikacin', 'gentamicin', 'tobramycin'].includes(id)) {
+            sepsisEffect += ' Đồng thời bắt buộc <strong>giám sát nồng độ thuốc trong máu (TDM)</strong> để chỉnh liều.';
+          }
+        }
+      } 
+      else if (groupName.includes('carbapenem') || groupName.includes('cephalosporin') || groupName.includes('penicillin') || id === 'aztreonam' || groupName.includes('monobactam') || groupName.includes('beta-lactam')) {
+        pkpdGroup = 'Phụ thuộc thời gian (Time-dependent)';
+        indexName = '%fT<sub>&gt;MIC</sub> (Phần trăm thời gian nồng độ thuốc tự do trên MIC trong khoảng cách liều)';
+        
+        if (groupName.includes('carbapenem')) {
+          targetGoal = 'Duy trì %fT<sub>&gt;MIC</sub> từ 20% - 30% đối với nhiễm khuẩn thông thường.';
+          clinicalStrategy = 'Ở bệnh nhân nặng hoặc nhiễm vi khuẩn Gram âm kém nhạy (như Pseudomonas, Acinetobacter), mục tiêu PK/PD được nâng lên <strong>100% fT<sub>&gt;MIC</sub></strong> (thậm chí 100% fT<sub>&gt;4xMIC</sub>). Giải pháp tối ưu là <strong>truyền kéo dài (Extended Infusion)</strong> trong 3 giờ (như Meropenem) hoặc truyền liên tục để duy trì nồng độ thuốc ổn định trên MIC mà không gây độc tính thần kinh do nồng độ đỉnh quá cao.';
+        } else if (groupName.includes('cephalosporin')) {
+          targetGoal = 'Duy trì %fT<sub>&gt;MIC</sub> từ 40% - 50% đối với vi khuẩn Gram dương, cao hơn đối với vi khuẩn Gram âm.';
+          clinicalStrategy = 'Ở bệnh nhân nặng, khuyến cáo nâng mục tiêu lên 100% fT<sub>&gt;MIC</sub>. Có thể áp dụng truyền kéo dài 3-4 giờ hoặc truyền liên tục để đạt đích điều trị tối ưu.';
+        } else if (groupName.includes('penicillin') || groupName.includes('beta-lactam')) {
+          targetGoal = 'Duy trì %fT<sub>&gt;MIC</sub> từ 30% - 40% đối với vi khuẩn Gram dương, cao hơn đối với Gram âm.';
+          if (id === 'piperacillin_tazo') {
+            clinicalStrategy = 'Đối với bệnh nhân nặng/nguy kịch ở ICU, khuyến cáo áp dụng <strong>truyền kéo dài 4 giờ (Extended Infusion)</strong> hoặc truyền liên tục để đạt mục tiêu 100% fT<sub>&gt;MIC</sub>, đặc biệt khi nghi ngờ hoặc nhiễm vi khuẩn Gram âm đa kháng.';
+          } else {
+            clinicalStrategy = 'Duy trì khoảng cách đưa thuốc đều đặn hoặc sử dụng truyền kéo dài/truyền liên tục đối với bệnh nhân nặng để tối ưu hóa thời gian phơi nhiễm thuốc trên MIC.';
+          }
+        } else {
+          targetGoal = 'Duy trì %fT<sub>&gt;MIC</sub> tối ưu tùy thuộc từng phân nhóm kháng sinh.';
+          clinicalStrategy = 'Kéo dài thời gian phơi nhiễm bằng cách truyền tĩnh mạch kéo dài hoặc tăng tần suất đưa thuốc.';
+        }
+        
+        sepsisEffect = 'Là kháng sinh thân nước (hydrophilic), V<sub>d</sub> của thuốc bị ảnh hưởng nghiêm trọng bởi tình trạng rò rỉ mao mạch và bù dịch ở bệnh nhân nặng. Cần dùng <strong>liều nạp (loading dose) cao ban đầu</strong> để tránh nồng độ dưới ngưỡng điều trị trong những giờ đầu.';
+        
+        if (['ceftriaxon', 'ertapenem'].includes(id)) {
+          sepsisEffect += ' Thuốc có tỷ lệ liên kết protein cao. Khi <strong>hạ albumin máu</strong> (rất phổ biến ở ICU), phần thuốc tự do tăng lên làm tăng V<sub>d</sub> và tăng đào thải qua thận, dẫn đến nồng độ thuốc sụt giảm nhanh chóng vào cuối khoảng cách liều.';
+        }
+        
+        if (!isNaN(crcl) && crcl > 130) {
+          arcEffect = 'Bệnh nhân có hiện tượng <strong>Tăng thanh thải qua thận (Augmented Renal Clearance - ARC)</strong> (CrCl &gt; 130 mL/phút), khiến thuốc bị đào thải rất nhanh. Đích %fT<sub>&gt;MIC</sub> sẽ rất khó đạt nếu dùng liều chuẩn. Cần <strong>tăng liều, tăng tần suất đưa thuốc</strong> (ví dụ: dùng q6h thay vì q8h) hoặc <strong>truyền kéo dài</strong>.';
+        }
+      } 
+      else if (['vancomycin', 'teicoplanin', 'ciprofloxacin', 'levofloxacin', 'moxifloxacin', 'linezolid', 'tigecyclin', 'clindamycin', 'tmp_smx', 'azithromycin'].includes(id) || groupName.includes('fluoroquinolone') || groupName.includes('glycopeptid') || groupName.includes('oxazolidinone')) {
+        pkpdGroup = 'Phụ thuộc cả nồng độ và thời gian (Concentration & Time-dependent)';
+        indexName = 'AUC<sub>0-24</sub> / MIC';
+        
+        if (id === 'vancomycin') {
+          targetGoal = 'Duy trì tỷ lệ AUC<sub>0-24</sub> / MIC ≥ 400 - 600 (giả định MIC = 1 mg/L đối với MRSA) để tối ưu hóa hiệu quả diệt khuẩn và giảm độc tính thận.';
+          clinicalStrategy = 'Khuyến cáo đo nồng độ và giám sát liều bằng phương pháp Bayesian (ưu việt hơn vì có thể đo sớm trong 24-48h đầu) hoặc phương trình động học bậc 1 (cần 2 mẫu máu đỉnh và đáy). Tránh sử dụng nồng độ đáy đơn thuần (trough) mục tiêu 15-20 mg/L làm đại diện vì thường đẩy AUC<sub>24</sub> lên quá cao (&gt; 600 - 800 mg·h/L), làm tăng đáng kể nguy cơ <strong>tổn thương thận cấp (AKI)</strong>.';
+          sepsisEffect = 'Là kháng sinh thân nước, V<sub>d</sub> tăng nhiều khi sốc nhiễm khuẩn và truyền dịch. Đòi hỏi <strong>liều nạp cao ban đầu</strong> (20-25 mg/kg hoặc thậm chí 25-30 mg/kg ở bệnh nhân nặng) để sớm đạt nồng độ đích.';
+        } else if (id === 'teicoplanin') {
+          targetGoal = 'Tối ưu hóa diện tích dưới đường cong so với MIC (AUC<sub>0-24</sub> / MIC).';
+          clinicalStrategy = 'Cần dùng chế độ liều nạp (loading dose) thích hợp trong 3-5 ngày đầu để đạt trạng thái ổn định nhanh chóng, sau đó duy trì liều điều chỉnh theo chức năng thận từ ngày thứ 5.';
+          sepsisEffect = 'Là kháng sinh thân nước. Tuy nhiên teicoplanin liên kết protein rất cao (~90%). Sepsis có thể làm tăng phần thuốc tự do, tăng phân bố vào mô và đào thải nhanh hơn.';
+        } else if (groupName.includes('fluoroquinolone')) {
+          targetGoal = 'Đạt AUC<sub>0-24</sub> / MIC từ 25 - 30 đối với vi khuẩn Gram dương, và ≥ 125 đối với vi khuẩn Gram âm (như Pseudomonas aeruginosa).';
+          clinicalStrategy = 'Hiệu quả diệt khuẩn phụ thuộc vào tổng lượng thuốc đưa vào cơ thể trong 24 giờ. Cần tối ưu hóa tổng liều hàng ngày.';
+          sepsisEffect = 'Là kháng sinh thân lipid (lipophilic), có thể tích phân bố (V<sub>d</sub>) lớn, thâm nhập tốt vào các mô và tế bào. Ít bị ảnh hưởng bởi sự rò rỉ mao mạch và bù dịch ở ICU so với kháng sinh thân nước, tuy nhiên vẫn cần hiệu chỉnh liều duy trì theo chức năng thận (trừ Moxifloxacin chủ yếu chuyển hóa qua gan).';
+        } else if (id === 'linezolid') {
+          targetGoal = 'Đích AUC<sub>0-24</sub> / MIC tối ưu cho hoạt tính diệt khuẩn/ức chế khuẩn.';
+          clinicalStrategy = 'Không cần hiệu chỉnh liều theo chức năng thận. Dùng liều cố định q12h.';
+          sepsisEffect = 'Là kháng sinh có độ tan tốt trong cả nước và lipid, phân bố rộng. Theo dõi độc tính tủy xương (giảm tiểu cầu) khi dùng kéo dài trên 10-14 ngày.';
+        } else if (id === 'tigecyclin') {
+          targetGoal = 'Đích AUC<sub>0-24</sub> / MIC tối ưu.';
+          clinicalStrategy = 'Có thể tích phân bố rất lớn, nồng độ trong huyết tương thấp nhưng nồng độ tại mô cao. KHÔNG dùng đơn trị liệu trong nhiễm khuẩn huyết nặng vì nồng độ trong máu không đạt đích PK/PD.';
+          sepsisEffect = 'Không cần hiệu chỉnh liều theo chức năng thận, nhưng cần liều nạp cao (LD 100-200mg) ban đầu để nhanh chóng đạt nồng độ ổn định trong mô.';
+        } else {
+          targetGoal = 'Tối ưu hóa tổng lượng phơi nhiễm thuốc trong 24 giờ so với MIC (AUC/MIC).';
+          clinicalStrategy = 'Đảm bảo tổng liều hàng ngày đầy đủ để đạt đích AUC mong muốn.';
+        }
+      }
+      else {
+        if (id === 'metronidazol') {
+          pkpdGroup = 'Phụ thuộc nồng độ (Concentration-dependent) / Phụ thuộc AUC/MIC';
+          indexName = 'C<sub>max</sub> / MIC hoặc AUC<sub>0-24</sub> / MIC';
+          targetGoal = 'Tối ưu hóa nồng độ đỉnh hoặc diện tích dưới đường cong so với MIC của kỵ khí.';
+          clinicalStrategy = 'Liều thường dùng q8h hoặc q6h cho kỵ khí nặng. Không cần hiệu chỉnh liều theo thận nhưng kịch bản tích lũy chất chuyển hóa cần lưu ý khoảng cách q8h. Giảm liều ở bệnh nhân suy gan nặng.';
+        } else if (id === 'fosfomycin') {
+          pkpdGroup = 'Phụ thuộc thời gian & nồng độ (AUC/MIC hoặc %fT>MIC)';
+          indexName = 'AUC / MIC hoặc %fT<sub>&gt;MIC</sub>';
+          targetGoal = 'Tối ưu hóa phơi nhiễm kháng sinh tại ổ nhiễm khuẩn (đặc biệt trong nước tiểu).';
+          clinicalStrategy = 'Dùng liều duy nhất 3g đường uống cho viêm bàng quang cấp chưa biến chứng. Đạt nồng độ rất cao trong nước tiểu duy trì suốt 36-48 giờ.';
+        } else {
+          pkpdGroup = 'Chưa phân loại chuyên biệt';
+          indexName = 'AUC / MIC hoặc %fT<sub>&gt;MIC</sub>';
+          targetGoal = 'Đảm bảo đạt nồng độ trên MIC tại ổ nhiễm khuẩn.';
+          clinicalStrategy = 'Tuân thủ liều lượng khuyến cáo và hiệu chỉnh theo chức năng thận.';
+        }
+      }
+
+      // Protein-binding and Albumin effect logic
+      const highlyProteinBound = ['ceftriaxon', 'ertapenem', 'daptomycin', 'teicoplanin', 'voriconazole'].includes(id);
+      let albuminWarning = '';
+      if (albumin < 3.5) {
+        if (highlyProteinBound) {
+          albuminWarning = `⚠️ <strong>Hạ Albumin máu (Albumin = ${albumin} g/dL):</strong> Kháng sinh này có tỷ lệ liên kết protein cao (~90%+). Hạ Albumin làm tăng đáng kể phân đoạn thuốc tự do (không liên kết), dẫn đến tăng thể tích phân bố và tăng độ thanh thải qua thận. Hậu quả là nồng độ thuốc có nguy cơ sụt giảm nghiêm trọng dưới ngưỡng điều trị ở cuối khoảng cách liều, có thể gây thất bại điều trị.`;
+        } else if (isHydrophilic) {
+          albuminWarning = `ℹ️ <strong>Hạ Albumin máu (Albumin = ${albumin} g/dL):</strong> Thường đi kèm với hiện tượng tăng thể tích phân bố (V<sub>d</sub>) ở bệnh nhân nặng/ICU. Cần đặc biệt chú ý sử dụng liều nạp đầy đủ cho kháng sinh thân nước này.`;
+        }
+      }
+
+      // TDM Targets Guidelines
+      const tdmGuidelines = {
+        vancomycin: '🎯 <strong>Đích TDM:</strong> AUC/MIC từ 400 - 600. Lấy 2 mẫu (đỉnh: 1-2h sau truyền xong; đáy: ngay trước liều tiếp theo) để tính theo phương trình bậc 1 ở trạng thái ổn định, hoặc lấy 1-2 mẫu bất kỳ để chỉnh liều chủ động bằng mô hình Bayesian.',
+        teicoplanin: '🎯 <strong>Đích TDM:</strong> Nồng độ đáy (trough) duy trì từ 15 - 30 mg/L đối với nhiễm trùng thông thường, hoặc 30 - 40 mg/L cho viêm xương tủy/viêm màng trong tim. Lấy mẫu đáy ngay trước liều duy trì tiếp theo.',
+        amikacin: '🎯 <strong>Đích TDM (liều ODA):</strong> Nồng độ đỉnh C<sub>max</sub> đạt 50 - 60 mcg/mL (lấy mẫu sau khi truyền xong 1 giờ) để tối đa diệt khuẩn; Nồng độ đáy C<sub>min</sub> &lt; 5 mcg/mL (lý tưởng &lt; 1 mcg/mL, lấy mẫu ngay trước liều tiếp theo) để tránh tích lũy độc tính.',
+        gentamicin: '🎯 <strong>Đích TDM (liều ODA):</strong> Nồng độ đỉnh C<sub>max</sub> đạt 10 - 12 mcg/mL (liều truyền thống: C<sub>max</sub> 5-8 mcg/mL; lấy mẫu sau truyền xong 1h); Nồng độ đáy C<sub>min</sub> &lt; 2 mcg/mL (lý tưởng &lt; 1 mcg/mL, lấy mẫu ngay trước liều tiếp theo).',
+        tobramycin: '🎯 <strong>Đích TDM (liều ODA):</strong> Tương tự Gentamicin (C<sub>max</sub> đỉnh đạt 10 - 12 mcg/mL, C<sub>min</sub> đáy &lt; 2 mcg/mL, lý tưởng &lt; 1 mcg/mL để tránh độc tính thận/tai).',
+        colistin: '🎯 <strong>Đích TDM:</strong> Nồng độ trung bình ở trạng thái ổn định C<sub>ss,avg</sub> duy trì khoảng 2 mcg/mL. Cân nhắc lấy mẫu đáy ngay trước liều tiếp theo nếu chức năng thận suy giảm nặng hoặc dao động ở ICU.',
+        voriconazole: '🎯 <strong>Đích TDM:</strong> Nồng độ đáy C<sub>min</sub> duy trì từ 1.0 - 5.5 mcg/mL để đảm bảo hiệu quả điều trị và tránh độc tính thần kinh/gan. Lấy mẫu sau 3-5 ngày bắt đầu điều trị.'
+      };
+      
+      if (tdmGuidelines[id]) {
+        tdmSection = tdmGuidelines[id];
+      } else if (['amikacin', 'gentamicin', 'tobramycin', 'vancomycin', 'teicoplanin', 'colistin', 'voriconazole'].includes(id) || groupName.includes('aminoglycoside')) {
+        tdmSection = '🎯 <strong>Khuyến cáo TDM:</strong> Giám sát nồng độ thuốc trong máu để tối ưu hóa liều và giảm độc tính.';
+      }
+      
+      let html = `
+      <div class="pkpd-box">
+        <div class="pkpd-header">
+          <span>🧠 Phân tích PK/PD Dược lý lâm sàng</span>
+          <span class="pkpd-badge">PK/PD</span>
+        </div>
+        <div class="pkpd-item">
+          <strong>Đặc tính hóa lý:</strong> ${physioType}
+          <div style="font-size: 0.78rem; color: var(--color-text-muted); margin-top: 2px;">${physioNote}</div>
+        </div>
+        <div class="pkpd-item" style="margin-top: 8px;">
+          <strong>Nhóm đặc tính PK/PD:</strong> <span style="color:var(--color-purple); font-weight: 700;">${pkpdGroup}</span>
+        </div>
+        <div class="pkpd-item">
+          <strong>Chỉ số đặc trưng:</strong> <code>${indexName}</code>
+        </div>
+        <div class="pkpd-item">
+          <strong>Mục tiêu lâm sàng:</strong> ${targetGoal}
+        </div>
+        <div class="pkpd-item">
+          <strong>Chiến lược tối ưu hóa liều:</strong> ${clinicalStrategy}
+        </div>`;
+        
+      if (sepsisEffect) {
+        html += `
+        <div class="pkpd-item" style="margin-top: 10px; padding-top: 8px; border-top: 1px dashed var(--color-divider);">
+          <strong style="color:var(--color-rose);">🏥 Tác động của Sepsis/ICU:</strong> ${sepsisEffect}
+        </div>`;
+      }
+      
+      if (albuminWarning) {
+        html += `
+        <div class="pkpd-item" style="margin-top: 8px; padding: 8px 10px; background: var(--color-rose-hl); border: 1.5px solid var(--color-rose); border-radius: 6px; color: var(--color-rose); font-size: 0.82rem;">
+          ${albuminWarning}
+        </div>`;
+      }
+      
+      if (arcEffect) {
+        html += `
+        <div class="pkpd-item" style="margin-top: 6px; padding: 6px 10px; background: rgba(217, 119, 6, 0.08); border: 1px solid var(--color-warning); border-radius: 6px; font-size: 0.82rem;">
+          <strong style="color:var(--color-warning);">⚡ Cảnh báo Tăng thanh thải thận (ARC):</strong> ${arcEffect}
+        </div>`;
+      }
+      
+      if (tdmSection) {
+        html += `
+        <div class="pkpd-item" style="margin-top: 10px; padding: 8px 12px; background: var(--color-primary-hl); border: 1.5px solid var(--color-primary); border-radius: 6px; font-size: 0.82rem; color: var(--color-primary-hover)">
+          ${tdmSection}
+        </div>`;
+      }
+      
+      html += `</div>`;
+      return html;
+    }
 
     // Render KSĐ inline table (right column inside dose-box)
     function renderKsdInline(ab) {
@@ -3656,6 +3926,13 @@
           wEl.value = rd.weight;
           wEl.style.color = 'var(--text)';
         }
+        if (rd.albumin !== undefined) {
+          const albEl = document.getElementById('albumin');
+          if (albEl) {
+            albEl.value = rd.albumin;
+            albEl.style.color = 'var(--text)';
+          }
+        }
         if (rd.gender) {
           const maleRadio = document.querySelector('input[name=gender][value=male]');
           const femaleRadio = document.querySelector('input[name=gender][value=female]');
@@ -3682,7 +3959,7 @@
         document.getElementById('clear-btn').style.display = 'block';
         document.getElementById('suggestions').style.display = 'none';
 
-        renderResult(rd.crcl, rd.cat || getCrClCategory(rd.crcl), ab, rd.severity, rd.diseases || [], rd.isDialysis || false, rd.weight);
+        renderResult(rd.crcl, rd.cat || getCrClCategory(rd.crcl), ab, rd.severity, rd.diseases || [], rd.isDialysis || false, rd.weight, rd.albumin !== undefined ? rd.albumin : 4.0);
         return;
       }
       // Fallback for old entries
@@ -3834,7 +4111,7 @@
     });
 
     // ─── SPECIAL DRUG RENDERERS ───────────────────────────────────────────────────
-    function renderTeicoplanin(crcl, cat, ab, isDialysis, weight, diseases) {
+    function renderTeicoplanin(crcl, cat, ab, isDialysis, weight, diseases, albumin) {
       const diseaseCompat = getDiseaseCompatibility(ab, diseases);
       const prepData = formatPrepStructured(ab, { d: '(theo chỉ định)', f: 'q12h' });
 
@@ -3917,6 +4194,7 @@
         <div style="font-size:0.8rem;color:var(--muted);margin-bottom:8px">Giữ cùng liều mg/kg đã chọn ở LD — chỉ thay khoảng cách liều</div>
         ${mdRows}
       </div>` : ''}
+      ${getPkPdAnalysis(ab, crcl, weight, null, isDialysis, albumin)}
       ${renderPrepBox(prepData)}
       ${ab.notes?.length ? `<div class="notes-box"><div class="notes-header">Lưu ý quan trọng</div>
         ${ab.notes.map(n => `<div class="note-item">${n}</div>`).join('')}
@@ -3928,7 +4206,7 @@
     </div>`;
     }
 
-    function renderColistin(crcl, cat, ab, isDialysis, weight) {
+    function renderColistin(crcl, cat, ab, isDialysis, weight, albumin) {
       // LD: 4mg CBA/kg IBW, max 300mg = 9 MIU
       const ld = ab.ld_cba;
       const ldRaw = Math.round(ld.mgkg * weight);
@@ -4006,6 +4284,7 @@
         <div class="dose-header">Liều duy trì (MD) – Bắt đầu sau 12h – Theo CrCl</div>
         ${mdRows}
       </div>`}
+      ${getPkPdAnalysis(ab, crcl, weight, null, isDialysis, albumin)}
       ${renderPrepBox(prepData)}
       ${ab.notes?.length ? `<div class="notes-box"><div class="notes-header">Lưu ý quan trọng</div>
         ${ab.notes.map(n => `<div class="note-item">${n}</div>`).join('')}
@@ -4043,6 +4322,7 @@
       const scr = parseFloat(document.getElementById('scr').value);
       const age = parseFloat(document.getElementById('age').value);
       const weight = parseFloat(document.getElementById('weight').value);
+      const albumin = parseFloat(document.getElementById('albumin').value) || 4.0;
       const gender = document.querySelector('input[name=gender]:checked').value;
       const severity = document.getElementById('severity').value;
 
@@ -4064,10 +4344,10 @@
           ab_id: selectedAB.id,
           crcl,
           severity,
-          render_data: { ab_id: selectedAB.id, crcl, cat, severity, diseases, isDialysis: dialysis, weight: currentWeight, scr, age, gender }
+          render_data: { ab_id: selectedAB.id, crcl, cat, severity, diseases, isDialysis: dialysis, weight: currentWeight, scr, age, gender, albumin }
         });
       }
-      renderResult(crcl, cat, selectedAB, severity, diseases, dialysis, currentWeight);
+      renderResult(crcl, cat, selectedAB, severity, diseases, dialysis, currentWeight, albumin);
     }
 
     function autoCalculate() {
@@ -4075,6 +4355,7 @@
       const scrVal = parseFloat(document.getElementById('scr').value);
       const ageVal = parseFloat(document.getElementById('age').value);
       const weightVal = parseFloat(document.getElementById('weight').value);
+      const albuminVal = parseFloat(document.getElementById('albumin').value) || 4.0;
       const genderEl = document.querySelector('input[name=gender]:checked');
       const genderVal = genderEl ? genderEl.value : 'male';
       const severityVal = document.getElementById('severity').value;
@@ -4096,10 +4377,10 @@
             ab_id: selectedAB.id,
             crcl: crclVal,
             severity: severityVal,
-            render_data: { ab_id: selectedAB.id, crcl: crclVal, cat: catVal, severity: severityVal, diseases: diseasesVal, isDialysis: dialysis, weight: weightVal, scr: scrVal, age: ageVal, gender: genderVal }
+            render_data: { ab_id: selectedAB.id, crcl: crclVal, cat: catVal, severity: severityVal, diseases: diseasesVal, isDialysis: dialysis, weight: weightVal, scr: scrVal, age: ageVal, gender: genderVal, albumin: albuminVal }
           });
         }
-        renderResult(crclVal, catVal, selectedAB, severityVal, diseasesVal, dialysis, currentWeight);
+        renderResult(crclVal, catVal, selectedAB, severityVal, diseasesVal, dialysis, currentWeight, albuminVal);
       } else {
         // Hide results if inputs are incomplete or invalid
         document.getElementById('result-area').style.display = 'none';
@@ -4120,6 +4401,7 @@
       document.getElementById('scr').value = '';
       document.getElementById('age').value = '';
       const wEl = document.getElementById('weight'); wEl.value = '50'; wEl.style.color = 'var(--muted)';
+      const albEl = document.getElementById('albumin'); if (albEl) { albEl.value = '4.0'; albEl.style.color = 'var(--muted)'; }
       document.querySelector('input[name=gender][value=male]').checked = true;
       clearAntibiotic();
       document.querySelectorAll('#disease-grid .checkbox-item').forEach(el => {
@@ -4272,12 +4554,17 @@
           });
         }, 200);
         setTimeout(() => {
+          document.querySelectorAll('.pkpd-box').forEach((el, i) => {
+            setTimeout(() => el.classList.add('visible'), i * 50);
+          });
+        }, 230);
+        setTimeout(() => {
           document.querySelectorAll('.ksd-panel').forEach(el => el.classList.add('visible'));
         }, 260);
       });
     }
 
-    function renderResult(crcl, cat, ab, severity, diseases, isDialysis, weight) {
+    function renderResult(crcl, cat, ab, severity, diseases, isDialysis, weight, albumin) {
       document.getElementById('empty-state').style.display = 'none';
       document.getElementById('result-area').style.display = 'block';
       const histSec = document.getElementById('history-section');
@@ -4285,12 +4572,12 @@
 
       // Route special drugs to dedicated renderers
       if (ab.special_dosing === 'teicoplanin') {
-        document.getElementById('result-area').innerHTML = renderTeicoplanin(crcl, cat, ab, isDialysis, weight, diseases);
+        document.getElementById('result-area').innerHTML = renderTeicoplanin(crcl, cat, ab, isDialysis, weight, diseases, albumin);
         triggerResultAnimations(crcl);
         return;
       }
       if (ab.special_dosing === 'colistin') {
-        document.getElementById('result-area').innerHTML = renderColistin(crcl, cat, ab, isDialysis, weight);
+        document.getElementById('result-area').innerHTML = renderColistin(crcl, cat, ab, isDialysis, weight, albumin);
         triggerResultAnimations(crcl);
         return;
       }
@@ -4402,6 +4689,8 @@
           ${renderKsdNote(ab)}
         </div>
       ` : `<div class="error-msg">Không có dữ liệu liều cho mức lọc cầu thận này – tham khảo dược sĩ</div>`}
+
+      ${getPkPdAnalysis(ab, crcl, weight, severity, isDialysis, albumin)}
 
       ${renderPrepBox(prepData)}
 
@@ -4719,7 +5008,7 @@
     });
 
     // Set up auto-calculate event listeners
-    ['scr', 'age', 'weight'].forEach(id => {
+    ['scr', 'age', 'weight', 'albumin'].forEach(id => {
       document.getElementById(id)?.addEventListener('input', autoCalculate);
     });
     document.querySelectorAll('input[name=gender]').forEach(el => {
