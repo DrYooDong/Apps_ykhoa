@@ -852,6 +852,17 @@
   <script>
     let currentScenario = null;
 
+    function highlightDoses(text) {
+      if (!text) return text;
+      // Regex matches HTML tags in Group 1, and medical dosage values/units in Group 2
+      const pattern = /(<[^>]+>)|(\b\d+(?:\.\d+)?(?:[–-]\d+(?:\.\d+)?)?\s*(?:mL\/giờ|mL\/kg\/giờ|mL\/kg|mL|ml|giọt\/phút|Lít|lít|mg|mcg|g|ĐV|UI|%|giờ|phút)\b)/gi;
+      return text.replace(pattern, (match, p1, p2) => {
+        if (p1) return p1; // Keep HTML tags unchanged
+        return `<span class="dose-highlight">${p2}</span>`;
+      });
+    }
+
+
     /* ── MAPPING ── */
     const SC_MAP = {
       'DIARRHEA': 'sc-diarrhea',
@@ -1432,7 +1443,7 @@
 
       const panel = document.getElementById('result-panel');
       document.getElementById('result-title').textContent = title;
-      document.getElementById('result-body').innerHTML = html;
+      document.getElementById('result-body').innerHTML = highlightDoses(html);
       panel.style.display = 'block';
       panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }

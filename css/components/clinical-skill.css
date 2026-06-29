@@ -376,3 +376,48 @@
     padding: 10px 12px;
   }
 }
+
+/* ==========================================================================
+   INLINE KEYWORD HIGHLIGHTING (Copied from Physiology Module)
+   ========================================================================== */
+.term-hl {
+  display: inline-block;
+  background-color: var(--color-primary-hl);
+  color: var(--color-primary);
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.9em;
+  border: 1px solid rgba(var(--color-primary-rgb), 0.15);
+  margin: 0 0.1rem;
+  transition: all var(--tr);
+}
+
+.term-hl:hover {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(var(--color-primary-rgb), 0.2);
+}
+
+/* Secondary high-yield terms (e.g. enzymes, channels) */
+.term-hl-secondary {
+  display: inline-block;
+  background-color: var(--color-purple-hl);
+  color: var(--color-purple);
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.9em;
+  border: 1px solid rgba(var(--color-purple-rgb), 0.15);
+  margin: 0 0.1rem;
+  transition: all var(--tr);
+}
+
+.term-hl-secondary:hover {
+  background-color: var(--color-purple);
+  color: var(--color-surface);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(var(--color-purple-rgb), 0.2);
+}
+

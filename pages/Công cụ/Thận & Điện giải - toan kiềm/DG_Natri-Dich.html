@@ -561,8 +561,8 @@
             boxEmergency.innerHTML = `
               <span class="failure-protocol-title text-rose">🚨 Y LỆNH KHẨN CẤP (EMERGENCY INFUSION - PROTOCOL KHÔNG TRÌ HOÃN):</span>
               <ul>
-                <li>Bệnh nhân hạ Natri máu kèm triệu chứng thần kinh nguy kịch. Y lệnh: <strong>Truyền tĩnh mạch nhanh 100 - 150 mL dung dịch NaCl 3% trong 20 phút</strong>.</li>
-                <li>Có thể lặp lại tối đa 2 lần nữa (mỗi lần cách 20 phút) nếu lâm sàng chưa cải thiện hoặc cho đến khi Na⁺ tăng thêm 5 mmol/L.</li>
+                <li>Bệnh nhân hạ Natri máu kèm triệu chứng thần kinh nguy kịch. Y lệnh: <strong>Truyền tĩnh mạch nhanh <span class="dose-highlight">100 - 150 mL dung dịch NaCl 3% trong 20 phút</span></strong>.</li>
+                <li>Có thể lặp lại tối đa 2 lần nữa (mỗi lần cách <span class="dose-highlight">20 phút</span>) nếu lâm sàng chưa cải thiện hoặc cho đến khi Na⁺ tăng thêm 5 mmol/L.</li>
                 <li><strong>Theo dõi:</strong> Xét nghiệm lại điện giải đồ mỗi 2-4 giờ. Khi triệu chứng thần kinh đã ổn định, dừng bolus và áp dụng phác đồ duy trì chậm bên dưới.</li>
               </ul>
             `;
@@ -637,14 +637,14 @@
           conclTitle.textContent = "Phác đồ Duy trì / Điều chỉnh Đề xuất:";
 
           let conclHTML = `Để điều chỉnh nồng độ Na⁺ từ <strong>${currentNa}</strong> về <strong>${targetNa}</strong> (Δ = ${requiredChange > 0 ? '+' : ''}${requiredChange} mmol/L), y lệnh duy trì chuẩn là:<br><br>`;
-          conclHTML += `📌 <strong>Tổng thể tích dịch cần:</strong> ${Math.abs(requiredVolumeLiters).toFixed(2)} Lít (~<strong>${Math.round(Math.abs(requiredVolumeMl))} mL</strong>) dung dịch <strong>${fluidName}</strong>.<br>`;
+          conclHTML += `📌 <strong>Tổng thể tích dịch cần:</strong> ${Math.abs(requiredVolumeLiters).toFixed(2)} Lít (~<strong><span class="dose-highlight">${Math.round(Math.abs(requiredVolumeMl))} mL</span></strong>) dung dịch <strong>${fluidName}</strong>.<br>`;
 
           if (isCritical) {
             conclHTML += `<br>${warningText}<br><br>`;
-            conclHTML += `⏱️ <strong>Thời gian truyền an toàn tối thiểu:</strong> Kéo dài và rải đều lượng dịch trên trong ít nhất <strong>${Math.ceil(safeTimeHours)} giờ</strong>.<br>`;
-            conclHTML += `💧 <strong>Cài đặt tốc độ máy bơm tiêm điện (BTĐ):</strong> ~<strong>${Math.round(Math.abs(requiredVolumeMl) / safeTimeHours)} mL/giờ</strong>.`;
+            conclHTML += `⏱️ <strong>Thời gian truyền an toàn tối thiểu:</strong> Kéo dài và rải đều lượng dịch trên trong ít nhất <strong><span class="dose-highlight">${Math.ceil(safeTimeHours)} giờ</span></strong>.<br>`;
+            conclHTML += `💧 <strong>Cài đặt tốc độ máy bơm tiêm điện (BTĐ):</strong> ~<strong><span class="dose-highlight">${Math.round(Math.abs(requiredVolumeMl) / safeTimeHours)} mL/giờ</span></strong>.`;
           } else {
-            conclHTML += `💧 <strong>Tốc độ truyền (nếu phân bổ đều 24h):</strong> ~<strong>${Math.round(Math.abs(infusionRateMlHr))} mL/giờ</strong>.<br>`;
+            conclHTML += `💧 <strong>Tốc độ truyền (nếu phân bổ đều 24h):</strong> ~<strong><span class="dose-highlight">${Math.round(Math.abs(infusionRateMlHr))} mL/giờ</span></strong>.<br>`;
           }
 
           conclHTML += `<br><br><span style="font-size:0.85rem; color:var(--color-text-muted);">*Cảnh báo giường bệnh: Phương trình Adrogue-Madias chỉ ước tính trong hệ đóng tĩnh. Trên thực tế lâm sàng, bắt buộc phải cộng thêm lượng dịch mất tiếp diễn (nước tiểu, sốt, dịch dẫn lưu) và xét nghiệm kiểm tra lại Natri máu mỗi 4-6 giờ một lần để điều chỉnh kịp thời.</span>`;
