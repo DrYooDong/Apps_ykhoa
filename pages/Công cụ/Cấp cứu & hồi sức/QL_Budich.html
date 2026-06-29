@@ -36,6 +36,36 @@
       --bd-green: #16a34a;
       --bd-green-h: #f0fdf4;
       --bd-green-b: #bbf7d0;
+      --bd-purple: #7c3aed;
+      --bd-purple-h: #f5f3ff;
+      --bd-purple-b: #ddd6fe;
+      --bd-orange: #ea580c;
+      --bd-orange-h: #fff7ed;
+      --bd-orange-b: #fed7aa;
+    }
+
+    [data-theme="dark"] {
+      --bd-blue: #38bdf8;
+      --bd-blue-h: #0a2236;
+      --bd-blue-b: #0c4a6e;
+      --bd-red: #f87171;
+      --bd-red-h: #1f0808;
+      --bd-red-b: #7f1d1d;
+      --bd-amber: #fbbf24;
+      --bd-amber-h: #1f1500;
+      --bd-amber-b: #78350f;
+      --bd-teal: #2dd4bf;
+      --bd-teal-h: #062820;
+      --bd-teal-b: #115e59;
+      --bd-green: #4ade80;
+      --bd-green-h: #052e16;
+      --bd-green-b: #14532d;
+      --bd-purple: #a78bfa;
+      --bd-purple-h: #160e30;
+      --bd-purple-b: #4c1d95;
+      --bd-orange: #fb923c;
+      --bd-orange-h: #1c0c00;
+      --bd-orange-b: #7c2d12;
     }
 
     /* ── LAYOUT ── */
@@ -93,17 +123,18 @@
     /* ── SCENARIO PICKER ── */
     .scenario-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
       margin-bottom: 20px;
     }
 
     .sc-btn {
-      border: 2px solid #e2e8f0;
+      border: 2px solid var(--color-divider);
       border-radius: 14px;
-      padding: 16px;
+      padding: 14px;
       cursor: pointer;
-      background: #fff;
+      background: var(--color-surface);
+      color: var(--color-text);
       text-align: left;
       transition: all .2s;
       position: relative;
@@ -111,20 +142,24 @@
     }
 
     .sc-btn:hover {
-      border-color: #0284c7;
-      background: #f0f9ff;
+      border-color: var(--bd-blue);
+      background: var(--bd-blue-h);
       transform: translateY(-2px);
     }
 
     .sc-btn.active {
-      border-color: #0284c7;
-      background: #0284c7;
+      border-color: var(--bd-blue);
+      background: var(--bd-blue);
       color: #fff;
     }
 
     .sc-btn.active .sc-tag {
       background: rgba(255, 255, 255, .2);
       color: #fff;
+    }
+
+    .sc-btn.active .sc-sub {
+      opacity: .9;
     }
 
     .sc-tag {
@@ -135,20 +170,20 @@
       text-transform: uppercase;
       padding: 2px 8px;
       border-radius: 100px;
-      background: #f1f5f9;
-      color: #475569;
+      background: var(--color-surface-offset);
+      color: var(--color-text-muted);
       margin-bottom: 8px;
     }
 
     .sc-title {
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 700;
       line-height: 1.35;
       margin: 0 0 4px;
     }
 
     .sc-sub {
-      font-size: 11.5px;
+      font-size: 11px;
       opacity: .7;
       line-height: 1.4;
       margin: 0;
@@ -174,10 +209,40 @@
       border-color: var(--bd-amber);
     }
 
+    .sc-btn.sc-purple {
+      border-color: var(--bd-purple-b);
+      background: var(--bd-purple-h);
+    }
+
+    .sc-btn.sc-purple.active {
+      background: var(--bd-purple);
+      border-color: var(--bd-purple);
+    }
+
+    .sc-btn.sc-orange {
+      border-color: var(--bd-orange-b);
+      background: var(--bd-orange-h);
+    }
+
+    .sc-btn.sc-orange.active {
+      background: var(--bd-orange);
+      border-color: var(--bd-orange);
+    }
+
+    .sc-btn.sc-teal {
+      border-color: var(--bd-teal-b);
+      background: var(--bd-teal-h);
+    }
+
+    .sc-btn.sc-teal.active {
+      background: var(--bd-teal);
+      border-color: var(--bd-teal);
+    }
+
     /* ── INPUT PANEL ── */
     .input-panel {
-      background: #f8fafc;
-      border: 1.5px solid #e2e8f0;
+      background: var(--color-surface-2);
+      border: 1.5px solid var(--color-divider);
       border-radius: 16px;
       padding: 20px;
       margin-bottom: 16px;
@@ -190,6 +255,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      color: var(--color-text);
     }
 
     .input-grid {
@@ -207,17 +273,17 @@
     .inp-group label {
       font-size: 12px;
       font-weight: 600;
-      color: #475569;
+      color: var(--color-text-muted);
     }
 
     .inp-group input,
     .inp-group select {
       padding: 8px 10px;
-      border: 1.5px solid #e2e8f0;
+      border: 1.5px solid var(--color-divider);
       border-radius: 9px;
       font-size: 13px;
-      background: #fff;
-      color: #1e293b;
+      background: var(--color-surface);
+      color: var(--color-text);
       width: 100%;
       transition: border-color .2s;
     }
@@ -226,17 +292,75 @@
     .inp-group select:focus {
       outline: none;
       border-color: var(--bd-blue);
-      box-shadow: 0 0 0 3px var(--bd-blue-h);
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+    }
+
+    /* ── TIME PICKER PANEL ── */
+    .time-picker-panel {
+      background: var(--color-surface-2);
+      border: 1.5px dashed var(--color-border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .time-picker-panel label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .time-picker-panel input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--bd-blue);
+      cursor: pointer;
+    }
+
+    .time-picker-panel input[type="datetime-local"] {
+      padding: 7px 10px;
+      border: 1.5px solid var(--color-divider);
+      border-radius: 9px;
+      font-size: 13px;
+      background: var(--color-surface);
+      color: var(--color-text);
+      transition: border-color .2s;
+    }
+
+    .time-picker-panel input[type="datetime-local"]:focus {
+      outline: none;
+      border-color: var(--bd-blue);
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+    }
+
+    .time-dt-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .time-dt-group label {
+      font-size: 12px;
+      color: var(--color-text-muted);
     }
 
     /* ── RESULT PANEL ── */
     .result-panel {
-      background: #fff;
-      border: 1.5px solid #e2e8f0;
+      background: var(--color-surface);
+      border: 1.5px solid var(--color-divider);
       border-radius: 16px;
       padding: 20px;
       margin-bottom: 16px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, .07);
+      box-shadow: var(--shadow-md);
       animation: fadeIn .3s ease;
     }
 
@@ -293,6 +417,16 @@
       border-color: var(--bd-teal-b);
     }
 
+    .fc-purple {
+      background: var(--bd-purple-h);
+      border-color: var(--bd-purple-b);
+    }
+
+    .fc-orange {
+      background: var(--bd-orange-h);
+      border-color: var(--bd-orange-b);
+    }
+
     .fluid-card-title {
       font-size: 12px;
       font-weight: 700;
@@ -332,17 +466,27 @@
       border-color: var(--bd-amber-b);
     }
 
+    .rate-display.rate-teal {
+      background: var(--bd-teal-h);
+      border-color: var(--bd-teal-b);
+    }
+
+    .rate-display.rate-purple {
+      background: var(--bd-purple-h);
+      border-color: var(--bd-purple-b);
+    }
+
     .rate-label {
       font-size: 12px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: .4px;
-      color: #334155;
+      color: var(--color-text);
     }
 
     .rate-sub {
       font-size: 11.5px;
-      color: #64748b;
+      color: var(--color-text-muted);
       margin-top: 3px;
     }
 
@@ -356,7 +500,7 @@
     .rate-unit {
       font-size: 13px;
       font-weight: 600;
-      color: #334155;
+      color: var(--color-text);
       margin-left: 4px;
     }
 
@@ -368,55 +512,32 @@
       font-size: 13px;
       border-left: 4px solid;
       line-height: 1.6;
+      color: var(--color-text);
     }
 
     .ab-danger {
       background: var(--bd-red-h);
       border-color: var(--bd-red);
-      color: #7f1d1d;
     }
 
     .ab-warn {
       background: var(--bd-amber-h);
       border-color: var(--bd-amber);
-      color: #78350f;
     }
 
     .ab-info {
       background: var(--bd-blue-h);
       border-color: var(--bd-blue);
-      color: #0c4a6e;
     }
 
     .ab-ok {
       background: var(--bd-green-h);
       border-color: var(--bd-green);
-      color: #14532d;
     }
 
-    /* ── STEPBAR ── */
-    .stepbar {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-    }
-
-    .step-btn {
-      padding: 6px 14px;
-      border-radius: 100px;
-      font-size: 12px;
-      font-weight: 700;
-      border: 1.5px solid #e2e8f0;
-      background: #f8fafc;
-      cursor: pointer;
-      transition: all .2s;
-    }
-
-    .step-btn.active {
-      background: #0284c7;
-      border-color: #0284c7;
-      color: #fff;
+    .ab-purple {
+      background: var(--bd-purple-h);
+      border-color: var(--bd-purple);
     }
 
     /* ── TABLE ── */
@@ -428,19 +549,21 @@
     }
 
     .fluid-table th {
-      background: #f8fafc;
+      background: var(--color-surface-offset);
       padding: 7px 10px;
       text-align: left;
       font-weight: 700;
       font-size: 11.5px;
-      border-top: 1px solid #e2e8f0;
-      border-bottom: 1.5px solid #e2e8f0;
+      border-top: 1px solid var(--color-divider);
+      border-bottom: 1.5px solid var(--color-divider);
+      color: var(--color-text);
     }
 
     .fluid-table td {
       padding: 8px 10px;
-      border-bottom: 1px solid #f1f5f9;
+      border-bottom: 1px solid var(--color-surface-offset);
       vertical-align: top;
+      color: var(--color-text);
     }
 
     .fluid-table tr:last-child td {
@@ -449,8 +572,8 @@
 
     .src-badge {
       display: inline-block;
-      background: #f1f5f9;
-      color: #64748b;
+      background: var(--color-surface-offset);
+      color: var(--color-text-muted);
       font-size: 11px;
       padding: 2px 8px;
       border-radius: 6px;
@@ -464,6 +587,11 @@
 
       .scenario-grid {
         grid-template-columns: 1fr 1fr;
+      }
+
+      .time-picker-panel {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
   </style>
@@ -551,7 +679,7 @@
 
       <!-- BƯỚC 1: CHỌN BỆNH CẢNH -->
       <div style="margin-bottom:16px;">
-        <div style="font-size:14px;font-weight:700;margin-bottom:10px;">📋 BƯỚC 1 – Chọn bệnh cảnh lâm sàng</div>
+        <div style="font-size:14px;font-weight:700;margin-bottom:10px;color:var(--color-text);">📋 BƯỚC 1 – Chọn bệnh cảnh lâm sàng</div>
         <div class="scenario-grid">
           <button class="sc-btn" id="sc-diarrhea" onclick="setScenario('DIARRHEA')">
             <span class="sc-tag">💧 Tiêu hóa</span>
@@ -565,13 +693,28 @@
           </button>
           <button class="sc-btn sc-danger" id="sc-dhf-severe" onclick="setScenario('DHF_SEVERE')">
             <span class="sc-tag">🚨 SXHD Nặng</span>
-            <div class="sc-title">SXH Dengue Nặng / Sốc Dengue</div>
-            <div class="sc-sub">Sốc bù hoặc không bù, thoát huyết tương mạnh</div>
+            <div class="sc-title">SXH Dengue Nặng / Sốc</div>
+            <div class="sc-sub">Sốc bù hoặc mất bù, thoát huyết tương mạnh</div>
           </button>
           <button class="sc-btn sc-danger" id="sc-sepsis" onclick="setScenario('SEPSIS')">
             <span class="sc-tag">🦠 Sốc NK</span>
             <div class="sc-title">Sốc Nhiễm khuẩn</div>
-            <div class="sc-sub">MAP &lt; 65, Lactate ≥ 2 mmol/L, cần dịch &amp; vận mạch</div>
+            <div class="sc-sub">MAP &lt; 65, Lactate ≥ 2 mmol/L</div>
+          </button>
+          <button class="sc-btn sc-purple" id="sc-dka" onclick="setScenario('DKA')">
+            <span class="sc-tag">🩸 Nội tiết</span>
+            <div class="sc-title">DKA / HHS</div>
+            <div class="sc-sub">Biến chứng cấp ĐTĐ, nhiễm toan ceton, tăng ALTT</div>
+          </button>
+          <button class="sc-btn sc-orange" id="sc-burn" onclick="setScenario('BURN')">
+            <span class="sc-tag">🔥 Bỏng</span>
+            <div class="sc-title">Sốc Bỏng</div>
+            <div class="sc-sub">Modified Brooke 2 mL/kg/%TBSA, chuẩn độ theo UOP</div>
+          </button>
+          <button class="sc-btn sc-teal" id="sc-cardio" onclick="setScenario('CARDIO')">
+            <span class="sc-tag">💔 Tim mạch</span>
+            <div class="sc-title">Sốc Tim</div>
+            <div class="sc-sub">Cung lượng tim thấp, thận trọng dịch tối đa</div>
           </button>
         </div>
       </div>
@@ -582,12 +725,13 @@
         <div class="input-grid">
           <div class="inp-group">
             <label for="pt-weight">Cân nặng (kg)</label>
-            <input type="number" id="pt-weight" value="60" min="5" step="1" oninput="calculate()">
+            <input type="number" id="pt-weight" value="60" min="3" step="1" oninput="calculate()">
           </div>
           <div class="inp-group" id="group-age" style="display:none;">
             <label for="pt-age">Tuổi (năm)</label>
-            <input type="number" id="pt-age" value="30" min="1" step="1" oninput="calculate()">
+            <input type="number" id="pt-age" value="30" min="0" step="1" oninput="calculate()">
           </div>
+          <!-- Diarrhea -->
           <div class="inp-group" id="group-diarrhea-grade" style="display:none;">
             <label for="diarrhea-grade">Mức độ mất nước</label>
             <select id="diarrhea-grade" onchange="calculate()">
@@ -596,6 +740,7 @@
               <option value="severe">Nặng (> 10%) – Vật vã, mạch nhanh</option>
             </select>
           </div>
+          <!-- SXHD -->
           <div class="inp-group" id="group-hct" style="display:none;">
             <label for="pt-hct">HCT hiện tại (%)</label>
             <input type="number" id="pt-hct" value="45" min="20" max="70" step="0.5" oninput="calculate()">
@@ -604,9 +749,18 @@
             <label for="dhf-type">Phân loại sốc Dengue</label>
             <select id="dhf-type" onchange="calculate()">
               <option value="compensated">Sốc bù được (Có mạch, HA còn)</option>
-              <option value="decompensated">Sốc không bù (Mạch nhanh nhẹ, kẹt HA)</option>
+              <option value="decompensated">Sốc mất bù (Mạch=0, HA=0)</option>
             </select>
           </div>
+          <div class="inp-group" id="group-dhf-age" style="display:none;">
+            <label for="dhf-age-group">Nhóm tuổi</label>
+            <select id="dhf-age-group" onchange="calculate()">
+              <option value="child">Trẻ em (< 13 tuổi)</option>
+              <option value="adolescent">Thiếu niên (13–16 tuổi)</option>
+              <option value="adult" selected>Người lớn (≥ 16 tuổi)</option>
+            </select>
+          </div>
+          <!-- Sepsis -->
           <div class="inp-group" id="group-map" style="display:none;">
             <label for="pt-map">MAP hiện tại (mmHg)</label>
             <input type="number" id="pt-map" value="55" min="20" max="120" oninput="calculate()">
@@ -615,12 +769,74 @@
             <label for="pt-lactate">Lactate (mmol/L)</label>
             <input type="number" id="pt-lactate" value="3.5" min="0" max="20" step="0.1" oninput="calculate()">
           </div>
+          <!-- DKA/HHS -->
+          <div class="inp-group" id="group-dka-type" style="display:none;">
+            <label for="dka-type">Loại biến chứng</label>
+            <select id="dka-type" onchange="calculate()">
+              <option value="dka" selected>DKA (Nhiễm toan ceton)</option>
+              <option value="hhs">HHS (Tăng ALTT)</option>
+              <option value="euglycemic">Euglycemic DKA (ĐH bình thường)</option>
+            </select>
+          </div>
+          <div class="inp-group" id="group-glucose" style="display:none;">
+            <label for="pt-glucose">Đường huyết (mg/dL)</label>
+            <input type="number" id="pt-glucose" value="450" min="30" max="2000" step="1" oninput="calculate()">
+          </div>
+          <div class="inp-group" id="group-dka-comorbid" style="display:none;">
+            <label for="dka-comorbid">Bệnh nền đặc biệt</label>
+            <select id="dka-comorbid" onchange="calculate()">
+              <option value="none" selected>Không có</option>
+              <option value="heart-renal">Suy tim / Suy thận</option>
+              <option value="frail">Người cao tuổi yếu</option>
+            </select>
+          </div>
+          <!-- Burn -->
+          <div class="inp-group" id="group-tbsa" style="display:none;">
+            <label for="pt-tbsa">% TBSA (Diện tích bỏng)</label>
+            <input type="number" id="pt-tbsa" value="30" min="20" max="100" step="1" oninput="calculate()">
+          </div>
+          <div class="inp-group" id="group-burn-delay" style="display:none;">
+            <label for="burn-delay">Giờ từ lúc bỏng → nhập viện</label>
+            <input type="number" id="burn-delay" value="1" min="0" max="8" step="0.5" oninput="calculate()">
+          </div>
+          <!-- Cardiogenic -->
+          <div class="inp-group" id="group-cardio-map" style="display:none;">
+            <label for="cardio-map">MAP (mmHg)</label>
+            <input type="number" id="cardio-map" value="55" min="20" max="120" oninput="calculate()">
+          </div>
+          <div class="inp-group" id="group-congestion" style="display:none;">
+            <label for="cardio-congestion">Dấu hiệu sung huyết</label>
+            <select id="cardio-congestion" onchange="calculate()">
+              <option value="no" selected>Không có sung huyết</option>
+              <option value="yes">Có sung huyết (phù phổi, TM cổ nổi)</option>
+            </select>
+          </div>
+          <div class="inp-group" id="group-plr" style="display:none;">
+            <label for="cardio-plr">Nghiệm pháp PLR</label>
+            <select id="cardio-plr" onchange="calculate()">
+              <option value="pending">Chưa thực hiện</option>
+              <option value="positive" selected>Dương tính (CO tăng ≥ 10%)</option>
+              <option value="negative">Âm tính</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- DATETIME PICKER -->
+      <div class="time-picker-panel" id="time-picker-panel">
+        <label for="use-realtime">
+          <input type="checkbox" id="use-realtime" onchange="toggleRealtime()">
+          🕐 Lập lịch truyền theo thời gian thực
+        </label>
+        <div class="time-dt-group" id="datetime-group" style="display:none;">
+          <label for="start-datetime">Bắt đầu truyền:</label>
+          <input type="datetime-local" id="start-datetime" onchange="calculate()">
         </div>
       </div>
 
       <!-- KẾT QUẢ -->
       <div class="result-panel" id="result-panel" style="display:none;">
-        <div class="result-title" id="result-title" style="color:#0284c7;border-color:#0284c7;"></div>
+        <div class="result-title" id="result-title" style="color:var(--bd-blue);border-color:var(--bd-blue);"></div>
         <div id="result-body"></div>
       </div>
     </div><!-- /main-wrapper -->
@@ -631,239 +847,587 @@
       <p>CliniPortal © 2026 · Chỉ mang tính hỗ trợ tham khảo, không thay thế phán xét lâm sàng của bác sĩ.</p>
     </div>
   </footer>
+  <script src="../../../js/main.js" defer></script>
   <script src="../../../js/sidebar.js"></script>
   <script>
     let currentScenario = null;
 
-    function setScenario(sc) {
-      currentScenario = sc;
-      // Reset nút
-      document.querySelectorAll('.sc-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById('sc-' + sc.toLowerCase().replace('_', '-')).classList.add('active');
-      // Ẩn/hiện field
-      const showGroup = (id, show) => document.getElementById(id).style.display = show ? '' : 'none';
-      showGroup('group-age', false);
-      showGroup('group-diarrhea-grade', false);
-      showGroup('group-hct', false);
-      showGroup('group-dhf-type', false);
-      showGroup('group-map', false);
-      showGroup('group-lactate', false);
-      if (sc === 'DIARRHEA') { showGroup('group-diarrhea-grade', true); }
-      if (sc === 'DHF_WARN') { showGroup('group-hct', true); }
-      if (sc === 'DHF_SEVERE') { showGroup('group-hct', true); showGroup('group-dhf-type', true); }
-      if (sc === 'SEPSIS') { showGroup('group-map', true); showGroup('group-lactate', true); }
-      calculate();
-    }
+    /* ── MAPPING ── */
+    const SC_MAP = {
+      'DIARRHEA': 'sc-diarrhea',
+      'DHF_WARN': 'sc-dhf-warn',
+      'DHF_SEVERE': 'sc-dhf-severe',
+      'SEPSIS': 'sc-sepsis',
+      'DKA': 'sc-dka',
+      'BURN': 'sc-burn',
+      'CARDIO': 'sc-cardio'
+    };
 
-    // Fix scenario id to html id map
-    function sc2HtmlId(sc) {
-      const m = { 'DIARRHEA': 'sc-diarrhea', 'DHF_WARN': 'sc-dhf-warn', 'DHF_SEVERE': 'sc-dhf-severe', 'SEPSIS': 'sc-sepsis' };
-      return m[sc];
-    }
-    // Override: use correct mapping
+    const ALL_GROUPS = [
+      'group-age', 'group-diarrhea-grade', 'group-hct', 'group-dhf-type', 'group-dhf-age',
+      'group-map', 'group-lactate', 'group-dka-type', 'group-glucose', 'group-dka-comorbid',
+      'group-tbsa', 'group-burn-delay', 'group-cardio-map', 'group-congestion', 'group-plr'
+    ];
+
     function setScenario(sc) {
       currentScenario = sc;
       document.querySelectorAll('.sc-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById(sc2HtmlId(sc)).classList.add('active');
-      const showGroup = (id, show) => document.getElementById(id).style.display = show ? '' : 'none';
-      ['group-age', 'group-diarrhea-grade', 'group-hct', 'group-dhf-type', 'group-map', 'group-lactate'].forEach(id => showGroup(id, false));
-      if (sc === 'DIARRHEA') { showGroup('group-diarrhea-grade', true); }
-      if (sc === 'DHF_WARN') { showGroup('group-hct', true); }
-      if (sc === 'DHF_SEVERE') { showGroup('group-hct', true); showGroup('group-dhf-type', true); }
-      if (sc === 'SEPSIS') { showGroup('group-map', true); showGroup('group-lactate', true); }
+      document.getElementById(SC_MAP[sc]).classList.add('active');
+
+      const show = (id, v) => document.getElementById(id).style.display = v ? '' : 'none';
+      ALL_GROUPS.forEach(id => show(id, false));
+
+      if (sc === 'DIARRHEA') { show('group-diarrhea-grade', true); }
+      if (sc === 'DHF_WARN') { show('group-hct', true); show('group-dhf-age', true); }
+      if (sc === 'DHF_SEVERE') { show('group-hct', true); show('group-dhf-type', true); show('group-dhf-age', true); }
+      if (sc === 'SEPSIS') { show('group-map', true); show('group-lactate', true); }
+      if (sc === 'DKA') { show('group-dka-type', true); show('group-glucose', true); show('group-dka-comorbid', true); }
+      if (sc === 'BURN') { show('group-tbsa', true); show('group-burn-delay', true); }
+      if (sc === 'CARDIO') { show('group-cardio-map', true); show('group-congestion', true); show('group-plr', true); }
+
       calculate();
     }
 
+    /* ── REALTIME TOGGLE ── */
+    function toggleRealtime() {
+      const cb = document.getElementById('use-realtime');
+      const grp = document.getElementById('datetime-group');
+      grp.style.display = cb.checked ? 'flex' : 'none';
+      if (cb.checked && !document.getElementById('start-datetime').value) {
+        const now = new Date();
+        now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+        document.getElementById('start-datetime').value = now.toISOString().slice(0, 16);
+      }
+      calculate();
+    }
+
+    function getRealtimeStart() {
+      if (!document.getElementById('use-realtime').checked) return null;
+      const v = document.getElementById('start-datetime').value;
+      return v ? new Date(v) : null;
+    }
+
+    function fmtTime(d) {
+      return d.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', hour12: false });
+    }
+    function fmtDate(d) {
+      return d.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit' });
+    }
+    function fmtDateTime(d) {
+      return fmtTime(d) + ' ' + fmtDate(d);
+    }
+
+    function addHours(base, h) {
+      return new Date(base.getTime() + h * 3600000);
+    }
+
+    function timeCol(startH, endH, baseDate) {
+      if (!baseDate) return '';
+      const s = addHours(baseDate, startH);
+      const e = addHours(baseDate, endH);
+      return `<td style="color:var(--bd-blue);font-weight:600;">${fmtDateTime(s)} → ${fmtDateTime(e)}</td>`;
+    }
+
+    function timeColHeader(baseDate) {
+      return baseDate ? '<th>Thời gian thực</th>' : '';
+    }
+
+    /* ── HELPERS ── */
     function val(id) { return parseFloat(document.getElementById(id).value) || 0; }
     function sel(id) { const e = document.getElementById(id); return e ? e.value : ''; }
+    function r(n) { return Math.round(n); }
 
+    /* ── CALCULATE ── */
     function calculate() {
       if (!currentScenario) return;
       const weight = val('pt-weight');
       if (!weight) return;
+      const rt = getRealtimeStart();
       let title = '', html = '';
 
+      /* ═══════════ TIÊU CHẢY ═══════════ */
       if (currentScenario === 'DIARRHEA') {
         const grade = sel('diarrhea-grade');
         title = '💧 Y LỆNH BÙ DỊCH – TIÊU CHẢY CẤP / TẢ';
-        let deficit = 0, plan = '', fluidType = '', maintenance = weight * 40, ors = '';
+        let deficit = 0, maintenance = weight * 40;
         if (grade === 'mild') {
-          deficit = weight * 0.04 * 1000; // 4% BW in mL
-          plan = 'Bổ sung qua đường uống (PO). KHÔNG cần truyền TM.';
-          fluidType = 'Oresol (ORS) uống theo nhu cầu';
-          ors = `ORS: ${Math.round(deficit)}–${Math.round(deficit * 1.5)} mL trong 4 giờ đầu + ${Math.round(maintenance)} mL/24h duy trì`;
+          deficit = weight * 0.04 * 1000;
           html = `
             <div class="fluid-card fc-green">
-                <div class="fluid-card-title" style="color:#14532d;">🟢 Mất nước nhẹ (< 5%) – Bù qua đường uống</div>
+                <div class="fluid-card-title" style="color:var(--bd-green);">🟢 Mất nước nhẹ (< 5%) – Bù qua đường uống</div>
                 <div class="fluid-card-body">
-                    <strong>Ước lượng lượng nước thiếu hụt:</strong> ~${Math.round(deficit)} mL<br>
-                    <strong>Phác đồ:</strong> ${plan}<br>
-                    <strong>ORS:</strong> ${ors}
+                    <strong>Ước lượng lượng nước thiếu hụt:</strong> ~${r(deficit)} mL<br>
+                    <strong>Phác đồ:</strong> Bổ sung qua đường uống (PO). KHÔNG cần truyền TM.<br>
+                    <strong>ORS:</strong> ${r(deficit)}–${r(deficit * 1.5)} mL trong 4 giờ đầu + ${r(maintenance)} mL/24h duy trì
                 </div>
             </div>
             <div class="ab ab-ok"><strong>✅ Phác đồ A (WHO):</strong> ORS tự do theo nhu cầu. Theo dõi tại nhà nếu không có dấu hiệu cảnh báo. Tái khám nếu tiêu chảy nhiều hơn hoặc không uống được.</div>
             <div class="ab ab-info"><strong>💡 Điều chỉnh ORS:</strong> Sau mỗi lần đi ngoài: Trẻ &lt; 2 tuổi: 50–100mL | Trẻ 2–10 tuổi: 100–200mL | Người lớn: uống tùy thích.</div>
             <span class="src-badge">📚 WHO Oral Rehydration Therapy Guidelines & QĐ 2919/QĐ-BYT</span>`;
         } else if (grade === 'moderate') {
-          deficit = weight * 0.075 * 1000; // 7.5%
-          const rlRate = Math.round(deficit / 4);
+          deficit = weight * 0.075 * 1000;
+          const rlRate = r(deficit / 4);
+          const thR = timeColHeader(rt);
+          const tc1 = timeCol(0, 4, rt);
+          const tc2 = timeCol(4, 24, rt);
           html = `
             <div class="fluid-card fc-blue">
-                <div class="fluid-card-title" style="color:#0c4a6e;">🔵 Mất nước vừa (5–10%) – Bù qua đường TM + uống</div>
+                <div class="fluid-card-title" style="color:var(--bd-blue);">🔵 Mất nước vừa (5–10%) – Bù qua đường TM + uống</div>
                 <div class="fluid-card-body">
-                    <strong>Ước lượng thiếu hụt:</strong> ~${Math.round(deficit)} mL<br>
+                    <strong>Ước lượng thiếu hụt:</strong> ~${r(deficit)} mL<br>
                     <strong>Dịch:</strong> Ringer Lactate (RL) – Dịch tinh thể cân bằng ưu tiên hàng đầu
                 </div>
             </div>
-            <div class="rate-display">
-                <div><div class="rate-label">Giai đoạn bù (4 giờ đầu)</div><div class="rate-sub">Ringer Lactate truyền nhanh</div></div>
-                <div style="text-align:right;"><span class="rate-val" style="color:#0284c7;">${rlRate}</span><span class="rate-unit">mL/giờ</span></div>
-            </div>
-            <div class="rate-display rate-amber">
-                <div><div class="rate-label">Duy trì (Sau 4 giờ)</div><div class="rate-sub">Chuyển ORS khi uống được</div></div>
-                <div style="text-align:right;"><span class="rate-val" style="color:#d97706;">${Math.round(maintenance / 20)}</span><span class="rate-unit">mL/giờ</span></div>
-            </div>
+            <table class="fluid-table">
+                <thead><tr><th>Giai đoạn</th><th>Tốc độ</th><th>Hành động</th>${thR}</tr></thead>
+                <tbody>
+                    <tr><td>0–4 giờ (Bù)</td><td><strong>${rlRate} mL/giờ</strong></td><td>RL truyền nhanh</td>${tc1}</tr>
+                    <tr><td>Sau 4 giờ (Duy trì)</td><td>${r(maintenance / 20)} mL/giờ</td><td>Chuyển ORS khi uống được</td>${tc2}</tr>
+                </tbody>
+            </table>
             <div class="ab ab-warn"><strong>⚠️ Phác đồ B (WHO):</strong> Theo dõi mạch, HA, nước tiểu mỗi 30 phút. Sau 4 giờ đánh giá lại: nếu tốt → chuyển ORS. Nếu xấu hơn → nâng lên Phác đồ C.</div>
             <div class="ab ab-info"><strong>💡 Theo dõi đáp ứng:</strong> Nước tiểu &gt; 0.5 mL/kg/giờ, mạch &lt; 100, hết mắt trũng, lưỡi ẩm.</div>
             <span class="src-badge">📚 WHO, QĐ 2919/QĐ-BYT (Phác đồ B)</span>`;
         } else {
-          const phase1 = Math.round(weight * 30); // 30mL/kg first 30 min
-          const phase2 = Math.round(deficit * 0.6 - phase1 > 0 ? deficit * 0.6 - phase1 : 0);
+          deficit = weight * 0.10 * 1000;
+          const phase1 = r(weight * 30);
+          const thR = timeColHeader(rt);
+          const tc1 = timeCol(0, 0.5, rt);
+          const tc2 = timeCol(0.5, 3, rt);
           html = `
             <div class="fluid-card fc-red">
-                <div class="fluid-card-title" style="color:#7f1d1d;">🔴 Mất nước nặng (> 10%) – Cấp cứu TM khẩn cấp (Phác đồ C)</div>
+                <div class="fluid-card-title" style="color:var(--bd-red);">🔴 Mất nước nặng (> 10%) – Cấp cứu TM khẩn cấp (Phác đồ C)</div>
                 <div class="fluid-card-body">
-                    <strong>Ước lượng thiếu hụt:</strong> ~${Math.round(deficit)} mL<br>
+                    <strong>Ước lượng thiếu hụt:</strong> ~${r(deficit)} mL<br>
                     <strong>Dịch:</strong> Ringer Lactate (RL) – Chạy nhanh nhất có thể
                 </div>
             </div>
-            <div class="rate-display rate-red">
-                <div><div class="rate-label">Pha 1 – 30 phút đầu</div><div class="rate-sub">Bolus nhanh RL</div></div>
-                <div style="text-align:right;"><span class="rate-val" style="color:#dc2626;">${phase1}</span><span class="rate-unit">mL</span></div>
-            </div>
-            <div class="rate-display">
-                <div><div class="rate-label">Pha 2 – 2.5 giờ tiếp theo</div><div class="rate-sub">Bù phần còn lại</div></div>
-                <div style="text-align:right;"><span class="rate-val">${Math.round((deficit * 0.6) / 2.5)}</span><span class="rate-unit">mL/giờ</span></div>
-            </div>
+            <table class="fluid-table">
+                <thead><tr><th>Pha</th><th>Thể tích / Tốc độ</th><th>Chi tiết</th>${thR}</tr></thead>
+                <tbody>
+                    <tr><td>Pha 1 – 30 phút đầu</td><td><strong>${phase1} mL</strong> bolus nhanh</td><td>RL chạy tối đa</td>${tc1}</tr>
+                    <tr><td>Pha 2 – 2.5 giờ tiếp</td><td><strong>${r((deficit * 0.6) / 2.5)} mL/giờ</strong></td><td>Bù phần còn lại</td>${tc2}</tr>
+                </tbody>
+            </table>
             <div class="ab ab-danger"><strong>🚨 Sốc mất nước:</strong> Nếu mạch không bắt được, tụt HA → Truyền nhanh 100mL/kg trong 3 giờ đầu. Theo dõi liên tục mỗi 15–30 phút.</div>
             <div class="ab ab-warn"><strong>⚠️ Chú ý Tả:</strong> Nếu nghi ngờ dịch tả (phân nước vo gạo ào ạt) – Bù dịch cực kỳ tích cực. Kháng sinh: Azithromycin 1g liều duy nhất (người lớn).</div>
             <span class="src-badge">📚 WHO Phác đồ C, QĐ 2919/QĐ-BYT</span>`;
         }
       }
 
+      /* ═══════════ SXHD CÓ DHCB ═══════════ */
       else if (currentScenario === 'DHF_WARN') {
         const hct = val('pt-hct');
-        title = '🟡 Y LỆNH BÙ DỊCH – SXHD CÓ DẤU HIỆU CẢNH BÁO (DHCB)';
-        const baseRate = 6; // 6mL/kg/h start
+        const ageGrp = sel('dhf-age-group');
+        title = '🟡 Y LỆNH BÙ DỊCH – SXHD CÓ DẤU HIỆU CẢNH BÁO';
+        const thR = timeColHeader(rt);
+
+        let rows = '';
+        if (ageGrp === 'adult') {
+          rows = `
+            <tr><td>0–2 giờ</td><td><strong>${r(weight * 6)} mL/giờ</strong> (6 mL/kg/h)</td><td>Đánh giá lại lâm sàng</td>${timeCol(0, 2, rt)}</tr>
+            <tr><td>2–4 giờ</td><td>${r(weight * 5)} mL/giờ (5 mL/kg/h)</td><td>Kiểm tra HCT</td>${timeCol(2, 4, rt)}</tr>
+            <tr><td>4–6 giờ</td><td>${r(weight * 3)} mL/giờ (3 mL/kg/h)</td><td>Nếu cải thiện → duy trì</td>${timeCol(4, 6, rt)}</tr>
+            <tr><td>6–24 giờ</td><td>${r(weight * 2.5)} mL/giờ (2.5 mL/kg/h)</td><td>Giảm dần theo lâm sàng</td>${timeCol(6, 24, rt)}</tr>`;
+        } else if (ageGrp === 'adolescent') {
+          rows = `
+            <tr><td>0–1 giờ</td><td><strong>${r(weight * 6)} mL/giờ</strong> (6 mL/kg/h)</td><td>Đánh giá lại lâm sàng</td>${timeCol(0, 1, rt)}</tr>
+            <tr><td>1–2 giờ</td><td>${r(weight * 5)} mL/giờ (5 mL/kg/h)</td><td>Kiểm tra HCT</td>${timeCol(1, 2, rt)}</tr>
+            <tr><td>2–4 giờ</td><td>${r(weight * 3)} mL/giờ (3 mL/kg/h)</td><td>Thời gian rút gọn 1/2</td>${timeCol(2, 4, rt)}</tr>
+            <tr><td>4–12 giờ</td><td>${r(weight * 2.5)} mL/giờ (2.5 mL/kg/h)</td><td>Giảm dần, tránh quá tải</td>${timeCol(4, 12, rt)}</tr>`;
+        } else {
+          rows = `
+            <tr><td>0–2 giờ</td><td><strong>${r(weight * 6)} mL/giờ</strong> (6 mL/kg/h)</td><td>Đánh giá lại lâm sàng</td>${timeCol(0, 2, rt)}</tr>
+            <tr><td>2–4 giờ</td><td>${r(weight * 5)} mL/giờ (5 mL/kg/h)</td><td>Kiểm tra HCT</td>${timeCol(2, 4, rt)}</tr>
+            <tr><td>4–8 giờ</td><td>${r(weight * 3)} mL/giờ (3 mL/kg/h)</td><td>Nếu cải thiện → duy trì</td>${timeCol(4, 8, rt)}</tr>
+            <tr><td>8–24 giờ</td><td>${r(weight * 2.5)} mL/giờ (2.5 mL/kg/h)</td><td>Giảm dần theo lâm sàng</td>${timeCol(8, 24, rt)}</tr>`;
+        }
+
+        let hctStatus = '';
+        if (hct >= 45) hctStatus = '<span style="color:var(--bd-red);font-weight:700;">(Tăng – Thoát huyết tương đang xảy ra)</span>';
+        else if (hct < 40) hctStatus = '<span style="color:var(--bd-green);font-weight:700;">(Có thể cải thiện)</span>';
+        else hctStatus = '<span style="color:var(--bd-amber);font-weight:700;">(Theo dõi sát)</span>';
+
         html = `
         <div class="ab ab-warn"><strong>⚠️ Dấu hiệu cảnh báo (DHCB) theo BYT:</strong> Đau bụng nhiều / cơ hoành, nôn ói liên tục, xuất huyết niêm mạc, li bì/bứt rứt, gan to > 2cm, HCT tăng cao kèm tiểu cầu giảm nhanh.</div>
         <div class="fluid-card fc-amber">
-            <div class="fluid-card-title" style="color:#78350f;">Phác đồ Bù dịch SXHD Có DHCB</div>
+            <div class="fluid-card-title" style="color:var(--bd-amber);">Phác đồ Bù dịch SXHD Có DHCB – ${ageGrp === 'adult' ? 'Người lớn' : ageGrp === 'adolescent' ? 'Thiếu niên 13–16 tuổi' : 'Trẻ em'}</div>
             <div class="fluid-card-body">
-                <strong>Dịch:</strong> Ringer Lactate (RL) – Lựa chọn ưu tiên<br>
-                <strong>HCT hiện tại:</strong> ${hct}% ${hct >= 45 ? '<span style="color:#dc2626;font-weight:700;">(Tăng – Thoát huyết tương đang xảy ra)</span>' : hct < 40 ? '<span style="color:#16a34a;font-weight:700;">(Có thể cải thiện)</span>' : '<span style="color:#d97706;font-weight:700;">(Theo dõi sát)</span>'}
+                <strong>Dịch:</strong> Ringer Lactate (RL) – Lựa chọn ưu tiên. <em>Nếu AST/ALT > 1000 hoặc suy gan → Ringer Acetate</em><br>
+                <strong>HCT hiện tại:</strong> ${hct}% ${hctStatus}
             </div>
         </div>
         <div class="rate-display rate-amber">
-            <div><div class="rate-label">Tốc độ khởi đầu (2 giờ đầu)</div><div class="rate-sub">RL truyền nhỏ giọt</div></div>
-            <div style="text-align:right;"><span class="rate-val" style="color:#d97706;">${Math.round(weight * baseRate)}</span><span class="rate-unit">mL/giờ</span></div>
+            <div><div class="rate-label">Tốc độ khởi đầu</div><div class="rate-sub">RL truyền nhỏ giọt</div></div>
+            <div style="text-align:right;"><span class="rate-val" style="color:var(--bd-amber);">${r(weight * 6)}</span><span class="rate-unit">mL/giờ</span></div>
         </div>
         <table class="fluid-table">
-            <thead><tr><th>Thời điểm</th><th>Tốc độ</th><th>Hành động</th></tr></thead>
-            <tbody>
-                <tr><td>0–2 giờ</td><td>${Math.round(weight * 6)} mL/giờ (6mL/kg/h)</td><td>Đánh giá lại lâm sàng</td></tr>
-                <tr><td>2–4 giờ</td><td>${Math.round(weight * 5)} mL/giờ (5mL/kg/h)</td><td>Kiểm tra HCT</td></tr>
-                <tr><td>4–6 giờ</td><td>${Math.round(weight * 3)} mL/giờ (3mL/kg/h)</td><td>Nếu cải thiện → duy trì</td></tr>
-                <tr><td>6–24 giờ</td><td>${Math.round(weight * 2.5)} mL/giờ (2.5mL/kg/h)</td><td>Giảm dần theo lâm sàng</td></tr>
-            </tbody>
+            <thead><tr><th>Thời điểm</th><th>Tốc độ</th><th>Hành động</th>${thR}</tr></thead>
+            <tbody>${rows}</tbody>
         </table>
         <div class="ab ab-danger"><strong>🚨 Chỉ định chuyển sốc Dengue:</strong> Mạch nhanh nhẹ khó bắt, HA kẹt ≤ 20mmHg, tứ chi lạnh, bứt rứt li bì → Áp dụng ngay phác đồ Sốc Dengue.</div>
+        <div class="ab ab-info"><strong>💡 Lưu ý ABW:</strong> Nếu BMI ≥ 25 → sử dụng <strong>cân nặng hiệu chỉnh</strong> (Adjusted Body Weight) để tính lượng dịch, tránh quá tải tuần hoàn.</div>
         <div class="ab ab-info"><strong>💡 Không dùng Dextrose đơn thuần</strong> để bù dịch trong SXHD – nguy cơ hạ natri máu.</div>
         <span class="src-badge">📚 Hướng dẫn chẩn đoán và điều trị SXHD – BYT 2019</span>`;
       }
 
+      /* ═══════════ SỐC DENGUE NẶNG ═══════════ */
       else if (currentScenario === 'DHF_SEVERE') {
         const hct = val('pt-hct');
         const type = sel('dhf-type');
+        const ageGrp = sel('dhf-age-group');
         title = '🔴 Y LỆNH BÙ DỊCH – SXHD NẶNG / SỐC DENGUE';
-        const bolus1 = Math.round(weight * 10);
-        const bolus2 = Math.round(weight * 15);
-        const maint = Math.round(weight * 5);
+        const thR = timeColHeader(rt);
+
+        const isChild = (ageGrp === 'child' || ageGrp === 'adolescent');
+        const isDecomp = (type === 'decompensated');
+
+        let bolusSection = '';
+        let stepdownTable = '';
+
+        if (!isDecomp) {
+          /* SỐC BÙ */
+          if (isChild) {
+            /* Trẻ em sốc bù: 20 mL/kg/giờ × 1h */
+            const bolus = r(weight * 20);
+            bolusSection = `
+            <div class="rate-display rate-red">
+                <div><div class="rate-label">Bolus – Ringer Lactate (1 giờ)</div><div class="rate-sub">20 mL/kg/giờ trong 1 giờ</div></div>
+                <div style="text-align:right;"><span class="rate-val" style="color:var(--bd-red);">${bolus}</span><span class="rate-unit">mL</span></div>
+            </div>
+            <div class="ab ab-warn"><strong>⚠️ Đánh giá lại sau 1 giờ:</strong><br>
+                ✅ Cải thiện → Giảm: 10 mL/kg/h (1–2h) → 7.5 mL/kg/h (1–2h) → 5 mL/kg/h (3–4h) → 3 mL/kg/h (4–6h)<br>
+                ❌ Không cải thiện + Hct tăng/≥ 40% → Cao phân tử 10–20 mL/kg/h trong 1h<br>
+                ❌ Không cải thiện + Hct ≤ 35% hoặc giảm > 20% → Truyền hồng cầu lắng 5 mL/kg + cao phân tử 10 mL/kg/h</div>`;
+            const factor = ageGrp === 'adolescent' ? 0.5 : 1;
+            stepdownTable = `
+            <table class="fluid-table">
+                <thead><tr><th>Giai đoạn (sau khi cải thiện)</th><th>Tốc độ</th><th>Thời gian</th>${thR}</tr></thead>
+                <tbody>
+                    <tr><td>Giảm 1</td><td>${r(weight * 10)} mL/giờ (10 mL/kg/h)</td><td>${r(1 * factor)}–${r(2 * factor)} giờ</td>${timeCol(1, 1 + 2 * factor, rt)}</tr>
+                    <tr><td>Giảm 2</td><td>${r(weight * 7.5)} mL/giờ (7.5 mL/kg/h)</td><td>${r(1 * factor)}–${r(2 * factor)} giờ</td>${timeCol(1 + 2 * factor, 1 + 4 * factor, rt)}</tr>
+                    <tr><td>Giảm 3</td><td>${r(weight * 5)} mL/giờ (5 mL/kg/h)</td><td>${r(3 * factor)}–${r(4 * factor)} giờ</td>${timeCol(1 + 4 * factor, 1 + 8 * factor, rt)}</tr>
+                    <tr><td>Duy trì</td><td>${r(weight * 3)} mL/giờ (3 mL/kg/h)</td><td>${r(4 * factor)}–${r(6 * factor)} giờ</td>${timeCol(1 + 8 * factor, 1 + 14 * factor, rt)}</tr>
+                </tbody>
+            </table>`;
+          } else {
+            /* Người lớn sốc bù: 15 mL/kg/giờ × 1h */
+            const bolus = r(weight * 15);
+            bolusSection = `
+            <div class="rate-display rate-red">
+                <div><div class="rate-label">Bolus – Ringer Lactate (1 giờ)</div><div class="rate-sub">15 mL/kg/giờ trong 1 giờ</div></div>
+                <div style="text-align:right;"><span class="rate-val" style="color:var(--bd-red);">${bolus}</span><span class="rate-unit">mL</span></div>
+            </div>
+            <div class="ab ab-warn"><strong>⚠️ Đánh giá lại sau 1 giờ:</strong><br>
+                ✅ Cải thiện → Giảm dần theo bảng bên dưới<br>
+                ❌ Không cải thiện + Hct tăng/không đổi/giảm < 20% → Cao phân tử 10–15 mL/kg/h trong 1h<br>
+                ❌ Không cải thiện + Hct giảm > 20% hoặc < 35% → Truyền máu/chế phẩm máu</div>`;
+            stepdownTable = `
+            <table class="fluid-table">
+                <thead><tr><th>Giai đoạn (sau khi cải thiện)</th><th>Tốc độ</th><th>Thời gian</th>${thR}</tr></thead>
+                <tbody>
+                    <tr><td>Giảm 1</td><td>${r(weight * 10)} mL/giờ (10 mL/kg/h)</td><td>2 giờ</td>${timeCol(1, 3, rt)}</tr>
+                    <tr><td>Giảm 2</td><td>${r(weight * 6)} mL/giờ (6 mL/kg/h)</td><td>2 giờ</td>${timeCol(3, 5, rt)}</tr>
+                    <tr><td>Giảm 3</td><td>${r(weight * 3)} mL/giờ (3 mL/kg/h)</td><td>5–7 giờ</td>${timeCol(5, 12, rt)}</tr>
+                    <tr><td>Duy trì</td><td>${r(weight * 1.5)} mL/giờ (1.5 mL/kg/h)</td><td>12 giờ → xem xét ngưng</td>${timeCol(12, 24, rt)}</tr>
+                </tbody>
+            </table>`;
+          }
+        } else {
+          /* SỐC MẤT BÙ */
+          if (isChild) {
+            const bolusAmt = r(weight * 20);
+            bolusSection = `
+            <div class="rate-display rate-red">
+                <div><div class="rate-label">BÙ DỊCH HỎA TỐC – 15 PHÚT</div><div class="rate-sub">Bơm tiêm TM trực tiếp RL/NaCl 0.9%: 20 mL/kg trong 15 phút</div></div>
+                <div style="text-align:right;"><span class="rate-val" style="color:var(--bd-red);">${bolusAmt}</span><span class="rate-unit">mL</span></div>
+            </div>
+            <div class="ab ab-danger"><strong>🚨 Đánh giá ngay sau 15 phút:</strong><br>
+                ✅ Mạch rõ, HA bình thường → Cao phân tử 10 mL/kg/h × 1h, sau đó giảm dần tinh thể (7.5 → 5 → 3 mL/kg/h)<br>
+                ❌ Mạch nhanh, HA kẹt/tụt → Cao phân tử 15–20 mL/kg/h. Đo CVP, HA xâm lấn, khí máu → Phối hợp vận mạch (Dopamin, Dobutamin, Noradrenaline)</div>`;
+          } else {
+            const bolusAmt = r(weight * 15);
+            bolusSection = `
+            <div class="rate-display rate-red">
+                <div><div class="rate-label">BÙ DỊCH HỎA TỐC – 15 PHÚT</div><div class="rate-sub">RL/NaCl 0.9%: 15 mL/kg trong 15 phút</div></div>
+                <div style="text-align:right;"><span class="rate-val" style="color:var(--bd-red);">${bolusAmt}</span><span class="rate-unit">mL</span></div>
+            </div>
+            <div class="ab ab-danger"><strong>🚨 Chuyển đổi ngay sau 15 phút:</strong><br>
+                → Chuyển sang Cao phân tử <strong>15 mL/kg/h × 1 giờ</strong> (${r(weight * 15)} mL), sau đó đánh giá lại Hct<br>
+                ✅ Cải thiện → RL 15 mL/kg/h × 1h, rồi giảm dần<br>
+                ❌ Không cải thiện → Tiếp tục cao phân tử 15 mL/kg/h, đo CVP, HA xâm lấn, tìm xuất huyết ẩn</div>`;
+          }
+          stepdownTable = '';
+        }
+
+        let hctNote = '';
+        if (hct < 35) hctNote = `<div class="ab ab-danger"><strong>🚨 HCT < 35% kèm sốc:</strong> Nghĩ đến XUẤT HUYẾT NỘI. Truyền hồng cầu lắng ${isChild ? '5 mL/kg' : '5–10 mL/kg'} hoặc máu toàn phần ${isChild ? '10 mL/kg' : '10 mL/kg'}. Tìm ổ chảy máu ẩn (XHTH, xuất huyết ổ bụng).</div>`;
+
         html = `
-        <div class="ab ab-danger"><strong>🚨 Sốc Dengue bù được (Compensated):</strong> Mạch nhanh nhẹ, HA kẹt hoặc HA tâm thu bình thường nhưng chênh lệch HA ≤ 20mmHg. <strong>Sốc không bù:</strong> Mạch nhanh nhẹ khó bắt hoặc không bắt được, hạ HA rõ rệt.</div>
+        <div class="ab ab-danger"><strong>🚨 Phân loại:</strong> <strong>Sốc bù:</strong> Mạch nhanh nhẹ, HA kẹt (hiệu áp ≤ 20mmHg). <strong>Sốc mất bù:</strong> Mạch không bắt được, HA không đo được.</div>
         <div class="fluid-card fc-red">
-            <div class="fluid-card-title" style="color:#7f1d1d;">Phác đồ Bù dịch Sốc Dengue (${type === 'compensated' ? 'SỐC BÙ ĐƯỢC' : 'SỐC KHÔNG BÙ'})</div>
+            <div class="fluid-card-title" style="color:var(--bd-red);">Phác đồ Sốc Dengue – ${isDecomp ? 'SỐC MẤT BÙ' : 'SỐC BÙ ĐƯỢC'} – ${isChild ? (ageGrp === 'adolescent' ? 'Thiếu niên 13–16t' : 'Trẻ em') : 'Người lớn ≥ 16t'}</div>
             <div class="fluid-card-body">
-                <strong>Dịch ưu tiên:</strong> Ringer Lactate (RL) – Dịch đầu tay tuyệt đối<br>
+                <strong>Dịch ưu tiên:</strong> Ringer Lactate (RL). <em>Suy gan (AST/ALT > 1000) → Ringer Acetate</em><br>
                 <strong>HCT:</strong> ${hct}% – Theo dõi mỗi 1–2 giờ trong pha sốc
             </div>
         </div>
-        ${type === 'compensated' ? `
-        <div class="rate-display rate-red">
-            <div><div class="rate-label">Bolus lần 1 – chạy trong 15 phút</div><div class="rate-sub">RL 10mL/kg nhanh</div></div>
-            <div style="text-align:right;"><span class="rate-val" style="color:#dc2626;">${bolus1}</span><span class="rate-unit">mL</span></div>
-        </div>
-        <div class="ab ab-warn"><strong>⚠️ Đánh giá sau 15 phút:</strong><br>
-            ✅ Cải thiện → Giảm xuống ${Math.round(weight * 5)}–${Math.round(weight * 7)} mL/giờ (5–7mL/kg/h)<br>
-            ❌ Không cải thiện → Lặp lại Bolus ${bolus1} mL RL trong 15 phút (Lần 2)<br>
-            ❌ Vẫn không cải thiện → Chuyển sang dung dịch keo (Dextran 40, Hydroxyethyl Starch) + Hội chẩn ICU</div>
-        `: `
-        <div class="rate-display rate-red">
-            <div><div class="rate-label">Bolus khẩn – chạy trong 10–15 phút</div><div class="rate-sub">RL 15–20mL/kg ngay lập tức</div></div>
-            <div style="text-align:right;"><span class="rate-val" style="color:#dc2626;">${bolus2}</span><span class="rate-unit">mL</span></div>
-        </div>
-        <div class="ab ab-danger"><strong>🚨 Sốc không bù – Hành động khẩn cấp:</strong><br>
-            → Bolus ${bolus2} mL RL trong 10–15 phút (20mL/kg)<br>
-            → Nếu vẫn sốc → Dung dịch keo (Dextran 40 6% hoặc Gelatin) ${Math.round(weight * 10)}–${Math.round(weight * 15)} mL bolus<br>
-            → Theo dõi liên tục mạch, HA mỗi 5–10 phút<br>
-            → Hội chẩn ICU, đặt đường truyền 2 kim lớn, truyền máu nếu HCT &lt; 35%</div>
-        `}
+        ${bolusSection}
+        ${stepdownTable}
+        ${hctNote}
         <table class="fluid-table">
             <thead><tr><th>Pha điều trị</th><th>Dịch</th><th>Lưu ý</th></tr></thead>
             <tbody>
-                <tr><td>Pha bù sốc (Bolus)</td><td>Ringer Lactate</td><td>Dịch đầu tay trong mọi trường hợp</td></tr>
-                <tr><td>Kháng trị (Bolus lần 2–3)</td><td>Dextran 40 6% hoặc Gelatin 4%</td><td>Khi RL không cải thiện huyết động</td></tr>
+                <tr><td>Pha bù sốc (Bolus)</td><td>Ringer Lactate</td><td>Dịch đầu tay, Ringer Acetate nếu suy gan</td></tr>
+                <tr><td>Kháng trị (Bolus 2–3)</td><td>Dextran 40 6% / Gelatin 4% / HES</td><td>Tổng cao phân tử ≤ 60 mL/kg. Khi RL không cải thiện</td></tr>
+                <tr><td>Khi cao phân tử ≥ 60 mL/kg</td><td>Albumin 5–10%</td><td>Hoặc Albumin ≤ 2.5 g/dL, suy gan/thận, ARDS</td></tr>
                 <tr><td>Khi HCT &lt; 35% kèm sốc</td><td>Hồng cầu lắng (PRBC)</td><td>Xem xét xuất huyết tiêu hóa ẩn</td></tr>
-                <tr><td>Sau ra sốc</td><td>RL ${maint} mL/giờ</td><td>Theo dõi sát, ngừng sớm khi đủ</td></tr>
             </tbody>
         </table>
-        <div class="ab ab-info"><strong>💡 Tránh truyền quá tải dịch:</strong> Nguy cơ phù phổi cấp, tràn dịch màng phổi sau ra sốc. Khi nước tiểu &gt; 1mL/kg/giờ và HCT giảm về bình thường → Ngừng dịch.</div>
+        <div class="ab ab-info"><strong>💡 ABW:</strong> BMI ≥ 25 → Dùng cân nặng hiệu chỉnh để tính liều dịch, giảm nguy cơ quá tải.</div>
+        <div class="ab ab-info"><strong>💡 Tránh quá tải dịch:</strong> Nguy cơ phù phổi cấp, tràn dịch màng phổi sau ra sốc. Khi nước tiểu &gt; 1mL/kg/giờ và HCT giảm về bình thường → Ngừng dịch.</div>
+        <div class="ab ab-purple"><strong>👶 Nhũ nhi ≤ 12 tháng:</strong> Khó đo HA, Hct nền thấp (30–35%). Dùng siêu âm IVC thay CVP. Kiểm soát dịch cực kỳ gắt gao.<br>
+            <strong>🤰 Thai phụ:</strong> Hct > 38–40% đã là cảnh báo. Dùng cân nặng theo chiều cao. Tránh can thiệp sản khoa ngày 3–7 trừ cấp cứu.</div>
         <span class="src-badge">📚 WHO Dengue Guidelines 2012 & BYT SXHD 2019</span>`;
       }
 
+      /* ═══════════ SỐC NHIỄM KHUẨN ═══════════ */
       else if (currentScenario === 'SEPSIS') {
         const map = val('pt-map');
         const lac = val('pt-lactate');
         title = '🦠 Y LỆNH BÙ DỊCH – SỐC NHIỄM KHUẨN';
-        const bolus = Math.round(weight * 30); // 30mL/kg SSC
+        const bolus = r(weight * 30);
+        const thR = timeColHeader(rt);
         html = `
         <div class="fluid-card fc-red">
-            <div class="fluid-card-title" style="color:#7f1d1d;">Phác đồ Bù dịch Sốc Nhiễm khuẩn (SSC 2021 / ESICM 2025)</div>
+            <div class="fluid-card-title" style="color:var(--bd-red);">Phác đồ Bù dịch Sốc Nhiễm khuẩn (SSC 2021 / ESICM 2025)</div>
             <div class="fluid-card-body">
-                <strong>Tình trạng hiện tại:</strong> MAP ${map} mmHg ${map < 65 ? '<span style="color:#dc2626;font-weight:700;">(< 65 mmHg – Đang sốc)</span>' : ''} | Lactate ${lac} mmol/L ${lac >= 4 ? '<span style="color:#dc2626;font-weight:700;">(≥ 4 – Tưới máu kém nặng)</span>' : lac >= 2 ? '<span style="color:#d97706;font-weight:700;">(2–4 – Cần hành động)</span>' : ''}<br>
-                <strong>Dịch ưu tiên:</strong> Balanced crystalloids – Ringer Lactate hoặc Plasma-Lyte. <span style="color:#dc2626;font-weight:600;">HẠN CHẾ NaCl 0.9%</span> (gây toan tăng Cl máu).
+                <strong>Tình trạng hiện tại:</strong> MAP ${map} mmHg ${map < 65 ? '<span style="color:var(--bd-red);font-weight:700;">(< 65 mmHg – Đang sốc)</span>' : ''} | Lactate ${lac} mmol/L ${lac >= 4 ? '<span style="color:var(--bd-red);font-weight:700;">(≥ 4 – Tưới máu kém nặng)</span>' : lac >= 2 ? '<span style="color:var(--bd-amber);font-weight:700;">(2–4 – Cần hành động)</span>' : ''}<br>
+                <strong>Dịch ưu tiên:</strong> Balanced crystalloids – Ringer Lactate hoặc Plasma-Lyte. <span style="color:var(--bd-red);font-weight:600;">HẠN CHẾ NaCl 0.9%</span> (gây toan tăng Cl máu).
             </div>
         </div>
         <div class="rate-display rate-red">
             <div><div class="rate-label">Fluid Challenge – Trong 1–3 giờ đầu</div><div class="rate-sub">30mL/kg Ringer Lactate</div></div>
-            <div style="text-align:right;"><span class="rate-val" style="color:#dc2626;">${bolus}</span><span class="rate-unit">mL</span></div>
+            <div style="text-align:right;"><span class="rate-val" style="color:var(--bd-red);">${bolus}</span><span class="rate-unit">mL</span></div>
         </div>
         <div class="ab ab-warn"><strong>⚠️ SAU MỖI 250–500mL – Đánh giá đáp ứng dịch bằng:</strong><br>
             • PLR (Passive Leg Raise): Nâng chân thụ động 45° trong 1 phút → Nếu MAP tăng ≥ 10% → Còn đáp ứng<br>
             • Siêu âm tim: VTI (Velocity Time Integral) tăng ≥ 10–15% → Còn đáp ứng<br>
             • KHÔNG truyền mù – Dừng ngay khi KHÔNG đáp ứng</div>
         <table class="fluid-table">
-            <thead><tr><th>Giai đoạn</th><th>Chiến lược</th><th>Hành động</th></tr></thead>
+            <thead><tr><th>Giai đoạn</th><th>Chiến lược</th><th>Hành động</th>${thR}</tr></thead>
             <tbody>
-                <tr><td>Giờ 0–3</td><td>Bù dịch tích cực</td><td>30mL/kg RL + Kháng sinh + Cấy máu</td></tr>
-                <tr><td>Giờ 1–6</td><td>Khởi động vận mạch</td><td>Norepinephrine nếu MAP &lt; 65 sau 1L dịch</td></tr>
-                <tr><td>Giờ 6–24</td><td>Kiểm soát cân bằng dịch</td><td>Tránh dương tính dịch quá mức (> 10% BW)</td></tr>
-                <tr><td>Ngày 2–3</td><td>Rút dịch chủ động (De-escalation)</td><td>Nếu ổn định → Dừng/rút dịch, tránh tích lũy</td></tr>
+                <tr><td>Giờ 0–3</td><td>Bù dịch tích cực</td><td>30mL/kg RL + Kháng sinh + Cấy máu</td>${timeCol(0, 3, rt)}</tr>
+                <tr><td>Giờ 1–6</td><td>Khởi động vận mạch</td><td>Norepinephrine nếu MAP &lt; 65 sau 1L dịch</td>${timeCol(1, 6, rt)}</tr>
+                <tr><td>Giờ 6–24</td><td>Kiểm soát cân bằng dịch</td><td>Tránh dương tính dịch quá mức (&gt; 10% BW)</td>${timeCol(6, 24, rt)}</tr>
+                <tr><td>Ngày 2–3</td><td>Rút dịch chủ động</td><td>Nếu ổn định → Dừng/rút dịch, tránh tích lũy</td>${timeCol(24, 72, rt)}</tr>
             </tbody>
         </table>
         <div class="ab ab-danger"><strong>🚨 Ngưỡng khởi động vận mạch:</strong> Norepinephrine (Lựa chọn đầu tay) ngay khi MAP &lt; 65 dù đang bù dịch – Không chờ bù đủ dịch mới bắt đầu NE.</div>
         <div class="ab ab-info"><strong>💡 Mục tiêu điều trị 6 giờ (Sepsis Bundle SSC):</strong> Cấy máu → Kháng sinh → Dịch 30mL/kg → Vận mạch → Lactate đo lại → MAP ≥ 65 mmHg → Nước tiểu ≥ 0.5mL/kg/h</div>
         <span class="src-badge">📚 SSC Guidelines 2021 & ESICM 2025 Fluid Therapy</span>`;
+      }
+
+      /* ═══════════ DKA / HHS ═══════════ */
+      else if (currentScenario === 'DKA') {
+        const dkaType = sel('dka-type');
+        const glucose = val('pt-glucose');
+        const comorbid = sel('dka-comorbid');
+        title = '🩸 Y LỆNH BÙ DỊCH – ' + (dkaType === 'dka' ? 'NHIỄM TOAN CETON (DKA)' : dkaType === 'hhs' ? 'TĂNG ALTT (HHS)' : 'EUGLYCEMIC DKA');
+        const thR = timeColHeader(rt);
+
+        const isFragile = (comorbid === 'heart-renal' || comorbid === 'frail');
+        const isEuglycemic = (dkaType === 'euglycemic');
+        const isHHS = (dkaType === 'hhs');
+
+        let ratePhase1 = isFragile ? '250 mL bolus × lặp lại' : '500–1000 mL/giờ';
+        let ratePhase1Num = isFragile ? 250 : 750;
+        let glucoseStatus = '';
+        if (glucose < 250) glucoseStatus = '<span style="color:var(--bd-amber);font-weight:700;">< 250 mg/dL → CẦN THÊM DEXTROSE</span>';
+        else if (glucose > 600) glucoseStatus = '<span style="color:var(--bd-red);font-weight:700;">> 600 mg/dL – Tăng đường huyết nặng</span>';
+        else glucoseStatus = `${glucose} mg/dL`;
+
+        let dextrose = '';
+        if (isEuglycemic || glucose < 250) {
+          dextrose = `
+          <div class="fluid-card fc-amber">
+              <div class="fluid-card-title" style="color:var(--bd-amber);">⚠️ CHỈ ĐỊNH DEXTROSE ${isEuglycemic ? '– NGAY TỪ ĐẦU (Euglycemic DKA)' : '– GLUCOSE < 250 mg/dL'}</div>
+              <div class="fluid-card-body">
+                  <strong>Dịch:</strong> Dextrose 5% hoặc 10% (pha trong RL hoặc NaCl 0.9%)<br>
+                  <strong>Lý do:</strong> ${isEuglycemic ? 'Euglycemic DKA (do SGLT2i, nhịn ăn, thai kỳ) – ĐH bình thường nhưng toan ceton nặng. Phải truyền Dextrose đồng thời với Insulin để ức chế sinh ceton mà không gây hạ ĐH.' : 'Cung cấp glucose ngoại sinh phòng hạ ĐH, cho phép duy trì Insulin 0.05 đv/kg/h để ức chế hoàn toàn sinh ceton.'}<br>
+                  ${isEuglycemic ? '<strong style="color:var(--bd-red);">→ Ngừng ngay thuốc SGLT2i.</strong>' : ''}
+              </div>
+          </div>`;
+        }
+
+        let hhsWarning = '';
+        if (isHHS) {
+          hhsWarning = `
+          <div class="ab ab-danger"><strong>🚨 Cảnh báo HHS – Tốc độ giảm quá nhanh gây phù não:</strong><br>
+              • Đường huyết: Không giảm > 90–120 mg/dL/giờ<br>
+              • Na máu: Không giảm > 10 mmol/L/24 giờ<br>
+              • ALTT máu: Không giảm > 3–8 mOsm/kg/giờ<br>
+              • NaCl 0.45% (nhược trương): Chỉ dùng khi ALTT không giảm dù đã truyền đủ dịch + insulin</div>`;
+        }
+
+        html = `
+        <div class="fluid-card fc-purple">
+            <div class="fluid-card-title" style="color:var(--bd-purple);">Phác đồ Bù dịch ${dkaType === 'dka' ? 'DKA' : dkaType === 'hhs' ? 'HHS' : 'Euglycemic DKA'} (ADA 2024 / Consensus 2025)</div>
+            <div class="fluid-card-body">
+                <strong>Đường huyết:</strong> ${glucoseStatus}<br>
+                <strong>Dịch ưu tiên:</strong> Tinh thể cân bằng (Ringer Lactate / Plasma-Lyte). <span style="color:var(--bd-amber);font-weight:600;">NaCl 0.9% chỉ dùng khi không có sẵn</span> (gây toan tăng Cl, dễ nhầm DKA chưa hồi phục).<br>
+                ${isFragile ? '<strong style="color:var(--bd-red);">⚠️ Suy tim/Suy thận/Người cao tuổi:</strong> KHÔNG dùng phác đồ hồi sức ồ ạt. Bolus 250 mL/lần, đánh giá lại liên tục.' : ''}
+            </div>
+        </div>
+        <div class="rate-display rate-purple">
+            <div><div class="rate-label">Pha 1 – Hồi sức ban đầu (2–4 giờ đầu)</div><div class="rate-sub">Tinh thể cân bằng (RL / Plasma-Lyte)</div></div>
+            <div style="text-align:right;"><span class="rate-val" style="color:var(--bd-purple);">${isFragile ? '250' : '500–1000'}</span><span class="rate-unit">${isFragile ? 'mL/lần' : 'mL/giờ'}</span></div>
+        </div>
+        ${dextrose}
+        ${hhsWarning}
+        <table class="fluid-table">
+            <thead><tr><th>Giai đoạn</th><th>Chiến lược</th><th>Chi tiết</th>${thR}</tr></thead>
+            <tbody>
+                <tr><td>Giờ 0–4</td><td>Hồi sức thể tích</td><td>${ratePhase1} tinh thể cân bằng${isFragile ? '. Đánh giá JVP, phổi sau mỗi bolus' : ''}</td>${timeCol(0, 4, rt)}</tr>
+                <tr><td>Giờ 4–12</td><td>Bù dịch duy trì</td><td>Bù 50% thiếu hụt trong 8–12h đầu. Đánh giá Na hiệu chỉnh</td>${timeCol(4, 12, rt)}</tr>
+                <tr><td>Giờ 12–48</td><td>Bù phần còn lại</td><td>50% thiếu hụt còn lại trong 24–48h tiếp theo</td>${timeCol(12, 48, rt)}</tr>
+                <tr><td>Khi ĐH < 250</td><td><strong>Thêm Dextrose 5–10%</strong></td><td>Duy trì Insulin 0.05 đv/kg/h để ức chế sinh ceton</td><td></td></tr>
+            </tbody>
+        </table>
+        <div class="ab ab-info"><strong>💡 Bù dịch đơn thuần:</strong> Có thể giảm ĐH 50–70 mg/dL/giờ (2.8–3.9 mmol/L/giờ) ngay cả khi chưa dùng insulin, nhờ tăng tưới máu thận và đào thải glucose qua nước tiểu.</div>
+        <div class="ab ab-info"><strong>💡 Ưu thế tinh thể cân bằng:</strong> Giải quyết toan máu nhanh hơn 20–30% so với NaCl 0.9% (trung bình 13.0 giờ vs 16.9 giờ), giảm rối loạn điện giải, rút ngắn nằm viện.</div>
+        <span class="src-badge">📚 ADA Consensus 2024, Hyperglycemic Crises Report 2025, Systematic Review ICU 2025</span>`;
+      }
+
+      /* ═══════════ SỐC BỎNG ═══════════ */
+      else if (currentScenario === 'BURN') {
+        const tbsa = val('pt-tbsa');
+        const delay = val('burn-delay');
+        title = '🔥 Y LỆNH BÙ DỊCH – SỐC BỎNG (Modified Brooke – ABA 2023)';
+        const thR = timeColHeader(rt);
+
+        const totalFluid = 2 * weight * tbsa;
+        const half = totalFluid / 2;
+        const hoursPhase1 = 8 - delay;
+        const ratePhase1 = hoursPhase1 > 0 ? r(half / hoursPhase1) : r(half);
+        const ratePhase2 = r(half / 16);
+        const uopTarget = r(weight * 0.5);
+        const rescueThreshold = r(6 * weight * tbsa);
+
+        html = `
+        <div class="fluid-card fc-orange">
+            <div class="fluid-card-title" style="color:var(--bd-orange);">Phác đồ Modified Brooke – ABA 2023</div>
+            <div class="fluid-card-body">
+                <strong>Công thức:</strong> 2 mL × ${weight} kg × ${tbsa}% TBSA = <strong>${r(totalFluid)} mL</strong> dịch trong 24 giờ đầu<br>
+                <strong>Dịch:</strong> Lactated Ringer (LR) – Dịch tinh thể cân bằng<br>
+                <strong>Thời gian delay:</strong> ${delay} giờ từ lúc bỏng → nhập viện (tính vào 8 giờ đầu)
+            </div>
+        </div>
+        <div class="rate-display" style="background:var(--bd-orange-h);border-color:var(--bd-orange-b);">
+            <div><div class="rate-label">8 GIỜ ĐẦU (tính từ lúc bỏng) – Truyền 1/2 tổng dịch</div><div class="rate-sub">Còn ${hoursPhase1 > 0 ? hoursPhase1 : 0} giờ nữa (đã trừ ${delay}h delay)</div></div>
+            <div style="text-align:right;"><span class="rate-val" style="color:var(--bd-orange);">${hoursPhase1 > 0 ? ratePhase1 : '⚠️'}</span><span class="rate-unit">mL/giờ</span></div>
+        </div>
+        <div class="rate-display">
+            <div><div class="rate-label">16 GIỜ TIẾP THEO – Truyền 1/2 còn lại</div><div class="rate-sub">Tốc độ đều</div></div>
+            <div style="text-align:right;"><span class="rate-val" style="color:var(--bd-blue);">${ratePhase2}</span><span class="rate-unit">mL/giờ</span></div>
+        </div>
+        ${hoursPhase1 <= 0 ? '<div class="ab ab-danger"><strong>🚨 Delay > 8 giờ:</strong> Toàn bộ 1/2 tổng dịch cần truyền CÀN NHỎ NHẤT CÓ THỂ. Tham khảo ý kiến chuyên gia bỏng.</div>' : ''}
+        <table class="fluid-table">
+            <thead><tr><th>Giai đoạn</th><th>Thể tích</th><th>Tốc độ</th><th>Chi tiết</th>${thR}</tr></thead>
+            <tbody>
+                <tr><td>8 giờ đầu</td><td>${r(half)} mL</td><td>${hoursPhase1 > 0 ? ratePhase1 + ' mL/giờ' : 'Cần đẩy nhanh'}</td><td>Tính từ thời điểm bị bỏng (không phải nhập viện)</td>${timeCol(0, hoursPhase1 > 0 ? hoursPhase1 : 1, rt)}</tr>
+                <tr><td>16 giờ sau</td><td>${r(half)} mL</td><td>${ratePhase2} mL/giờ</td><td>Truyền đều, chuẩn độ theo UOP</td>${timeCol(hoursPhase1 > 0 ? hoursPhase1 : 1, (hoursPhase1 > 0 ? hoursPhase1 : 1) + 16, rt)}</tr>
+            </tbody>
+        </table>
+        <div class="fluid-card fc-teal">
+            <div class="fluid-card-title" style="color:var(--bd-teal);">📏 CHUẨN ĐỘ THEO NƯỚC TIỂU (UOP) – MỖI GIỜ</div>
+            <div class="fluid-card-body">
+                <strong>Mục tiêu UOP:</strong> 0.5 mL/kg/giờ = <strong>${uopTarget} mL/giờ</strong> (30–50 mL/giờ ở người lớn)<br>
+                • UOP < 30 mL/giờ → <strong style="color:var(--bd-red);">Tăng tốc độ 20–30%</strong><br>
+                • UOP > 50 mL/giờ → <strong style="color:var(--bd-amber);">Giảm tốc độ 20–30%</strong>
+            </div>
+        </div>
+        <div class="ab ab-warn"><strong>⚠️ Albumin 5% (Rescue therapy):</strong> Xem xét bổ sung nếu bệnh nhân cần lượng dịch tinh thể vượt quá dự kiến, dấu hiệu phù nề/tràn dịch nặng, hoặc tỷ lệ I:O ratio cao. Đặc biệt ở bỏng diện rộng.</div>
+        ${totalFluid >= rescueThreshold ? `<div class="ab ab-danger"><strong>🚨 Dịch dự kiến ≥ 6 mL/kg/%TBSA (${r(rescueThreshold)} mL) hoặc ≥ 250 mL/kg:</strong><br>
+            • Đo <strong>Áp lực ổ bụng (IAP)</strong> qua sonde tiểu mỗi 4h. IAP > 20 mmHg + suy tạng → Báo phẫu thuật (ACS)<br>
+            • Đo <strong>Áp lực nội nhãn (IOP)</strong> nếu bỏng sâu quanh hốc mắt hoặc lồi mắt</div>` : ''}
+        <div class="ab ab-info"><strong>💡 Chống chỉ định Vitamin C liều cao:</strong> ABA 2023 KHÔNG khuyến cáo thường quy. Nguy cơ bệnh thận do oxalate, lợi tiểu thẩm thấu gây mất nước, sai lệch thông số UOP.</div>
+        <div class="ab ab-info"><strong>💡 Vận mạch:</strong> Nếu MAP < 65 dù bù đủ dịch → Norepinephrine (hoặc Vasopressin). Không có đủ bằng chứng ưu tiên loại nào.</div>
+        <span class="src-badge">📚 ABA Clinical Practice Guidelines on Burn Shock Resuscitation 2023</span>`;
+      }
+
+      /* ═══════════ SỐC TIM ═══════════ */
+      else if (currentScenario === 'CARDIO') {
+        const cMap = val('cardio-map');
+        const congestion = sel('cardio-congestion');
+        const plr = sel('cardio-plr');
+        title = '💔 Y LỆNH BÙ DỊCH – SỐC TIM';
+
+        if (congestion === 'yes') {
+          /* CÓ SUNG HUYẾT → KHÔNG BÙ DỊCH */
+          html = `
+          <div class="fluid-card fc-red">
+              <div class="fluid-card-title" style="color:var(--bd-red);">🚫 CHỐNG CHỈ ĐỊNH BÙ DỊCH – Có sung huyết</div>
+              <div class="fluid-card-body">
+                  <strong>Tình trạng:</strong> Phù phổi / Tĩnh mạch cổ nổi / Tràn dịch màng phổi / Phù ngoại vi<br>
+                  <strong>Hướng xử trí:</strong> Lợi tiểu + Vận mạch/Inotrope. KHÔNG truyền thêm dịch.
+              </div>
+          </div>
+          <div class="ab ab-danger"><strong>🚨 Truyền dịch khi có sung huyết</strong> → Nguy cơ cao trầm trọng suy tim, phù phổi cấp, tăng áp đổ đầy.</div>
+          <div class="fluid-card fc-teal">
+              <div class="fluid-card-title" style="color:var(--bd-teal);">Y LỆNH ĐỀ XUẤT</div>
+              <div class="fluid-card-body">
+                  <strong>Vận mạch:</strong> Norepinephrine TM trung tâm → MAP ≥ 65 mmHg (hiện: ${cMap} mmHg)<br>
+                  <strong>Inotrope:</strong> Dobutamine hoặc Milrinone (ưu tiên Milrinone nếu tăng áp phổi / đang dùng chẹn beta)<br>
+                  <strong>Lợi tiểu:</strong> Furosemide TM nếu sung huyết rõ. Theo dõi sát điện giải, creatinine<br>
+                  <strong>Theo dõi:</strong> Arterial line, CVC, lactate mỗi 2–4h, siêu âm tim đánh giá EF/CO
+              </div>
+          </div>
+          <div class="ab ab-warn"><strong>⚠️ Lưu ý Inotrope:</strong> Phải phối hợp với vận mạch nếu MAP < 65 mmHg vì Inotropes có thể gây giãn mạch làm tụt HA nặng hơn.</div>`;
+        } else if (plr === 'negative') {
+          /* KHÔNG SUNG HUYẾT + PLR ÂM TÍNH → KHÔNG BÙ DỊCH */
+          html = `
+          <div class="fluid-card fc-amber">
+              <div class="fluid-card-title" style="color:var(--bd-amber);">⚠️ PLR ÂM TÍNH – Không đáp ứng bù dịch</div>
+              <div class="fluid-card-body">
+                  <strong>Nghiệm pháp PLR:</strong> CO/SV tăng < 10% → Bệnh nhân <strong>KHÔNG đáp ứng bù dịch</strong><br>
+                  <strong>Hướng xử trí:</strong> Chuyển sang chiến lược vận mạch + inotrope. KHÔNG truyền thêm dịch.
+              </div>
+          </div>
+          <div class="fluid-card fc-teal">
+              <div class="fluid-card-title" style="color:var(--bd-teal);">Y LỆNH ĐỀ XUẤT</div>
+              <div class="fluid-card-body">
+                  <strong>Vận mạch:</strong> Norepinephrine TM → MAP ≥ 65 mmHg (hiện: ${cMap} mmHg)<br>
+                  <strong>Inotrope:</strong> Dobutamine hoặc Milrinone<br>
+                  <strong>Siêu âm tim:</strong> Đánh giá lại EF, CO, SV, tìm nguyên nhân (NMCT, viêm cơ tim, cardiomyopathy...)
+              </div>
+          </div>`;
+        } else {
+          /* KHÔNG SUNG HUYẾT + PLR DƯƠNG TÍNH / CHƯA LÀM → FLUID CHALLENGE */
+          const bolusAmt = 250;
+          html = `
+          <div class="fluid-card fc-blue">
+              <div class="fluid-card-title" style="color:var(--bd-blue);">Nghiệm pháp truyền dịch (Fluid Challenge) – Sốc tim</div>
+              <div class="fluid-card-body">
+                  <strong>Điều kiện:</strong> Không có sung huyết ${plr === 'positive' ? '+ PLR dương tính (CO tăng ≥ 10%)' : '+ PLR chưa thực hiện (nên làm PLR trước)'}<br>
+                  <strong>MAP hiện tại:</strong> ${cMap} mmHg ${cMap < 65 ? '<span style="color:var(--bd-red);font-weight:700;">(< 65 – Cần vận mạch song song)</span>' : ''}
+              </div>
+          </div>
+          <div class="rate-display rate-teal">
+              <div><div class="rate-label">Fluid Bolus – 10–15 phút</div><div class="rate-sub">Ringer Lactate hoặc NaCl 0.9%</div></div>
+              <div style="text-align:right;"><span class="rate-val" style="color:var(--bd-teal);">${bolusAmt}</span><span class="rate-unit">mL</span></div>
+          </div>
+          <div class="ab ab-warn"><strong>⚠️ Đánh giá SAU KHI TRUYỀN 250 mL:</strong><br>
+              • Đo lại CO hoặc VTI trên siêu âm tim ngay<br>
+              • ✅ CO/SV tăng > 10–15% → Có đáp ứng, xem xét lặp lại bolus 250 mL (thận trọng)<br>
+              • ❌ CO/SV tăng < 10% → <strong>Ngừng hoàn toàn bù dịch</strong>. Chuyển inotrope/vận mạch<br>
+              • ❌ Xuất hiện sung huyết (ran phổi, JVP tăng, đường B siêu âm) → Lập tức ngừng dịch</div>
+          ${plr === 'pending' ? '<div class="ab ab-info"><strong>💡 Khuyến cáo:</strong> Nên thực hiện nghiệm pháp PLR (nâng chân thụ động 45°) hoặc EEOT (tắc nghẽn cuối thì thở ra) TRƯỚC KHI truyền dịch để đánh giá fluid responsiveness an toàn hơn.</div>' : ''}`;
+        }
+
+        html += `
+        <div class="ab ab-danger"><strong>🚨 Tiêu chuẩn Escalation (SCAI Stage D/E):</strong> Nếu cần ≥ 2 loại vận mạch, sốc kháng trị → Kích hoạt Shock Team MDT. Xem xét PCI cấp cứu (nếu NMCT), hoặc hỗ trợ tuần hoàn cơ học tạm thời (IABP, Impella, VA-ECMO).</div>
+        <span class="src-badge">📚 ESICM Circulatory Shock Guidelines 2025, Intensive Care NSW Cardiogenic Shock 2026</span>`;
       }
 
       const panel = document.getElementById('result-panel');
