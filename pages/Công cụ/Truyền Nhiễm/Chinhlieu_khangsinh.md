@@ -8,7 +8,7 @@ Tài liệu này phân tích chi tiết cấu trúc giao diện (HTML/CSS) và l
 * **Đường dẫn tệp:** [Chinhlieu_khangsinh.html](file:///i:/Drive%20c%E1%BB%A7a%20t%C3%B4i/apps/Apps_ykhoa/pages/C%C3%B4ng%20c%E1%BB%A5/Truy%E1%BB%81n%20Nhi%E1%BB%85m/Chinhlieu_khangsinh.html)
 * **Chức năng chính:** 
   1. Tính toán mức lọc cầu thận (eGFR/ClCr) theo công thức Cockcroft-Gault.
-  2. Gợi ý liều nạp (LD), liều duy trì (MD), khoảng cách liều, cách pha truyền (số giọt/phút hoặc SE ml/h), và lịch trình dùng thuốc cụ thể cho 24 loại kháng sinh/kháng nấm.
+  2. Gợi ý liều nạp (LD), liều duy trì (MD), khoảng cách liều, cách pha truyền (số giọt/phút hoặc SE ml/h), và lịch trình dùng thuốc cụ thể cho 25 loại kháng sinh/kháng nấm.
   3. Tra cứu dữ liệu kháng sinh đồ (KSĐ) lâm sàng của BV ĐKKV Quảng Nam (năm 2025, cập nhật 6/2026).
   4. Đưa ra các cảnh báo lâm sàng đặc hiệu (phù hợp bệnh lý nhiễm trùng thần kinh trung ương, viêm phổi, chống chỉ định,...).
 

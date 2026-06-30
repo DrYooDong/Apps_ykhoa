@@ -1821,7 +1821,7 @@
           'Ngưỡng Piperacillin 100% thấu qua màng bụng; theo dõi thần kinh khi liều cao',
           'Viêm phổi BV/HAP: ưu tiên 4.5g q6h truyền kéo dài với BN nặng'
         ],
-        alt: ['ampicillin_sulbactam', 'cefo_sulbactam']
+        alt: ['ampicillin_sulbactam', 'cefo_sulbactam', 'ticarcillin_clav']
       },
       {
         id: 'ampicillin_sulbactam', name: 'Ampicillin/Sulbactam', group: 'Beta-lactam/Ức chế BLase',
@@ -1859,7 +1859,7 @@
           'A.baumannii đa kháng: dùng liều Ampicillin/Sulbactam 9g q8h (IDSA 2024) – tính theo liều sulbactam',
           'Theo dõi phát ban, phản ứng dị ứng; suy thận nặng cân nhắc hiệu chỉnh'
         ],
-        alt: ['piperacillin_tazo', 'cefo_sulbactam']
+        alt: ['piperacillin_tazo', 'cefo_sulbactam', 'ticarcillin_clav']
       },
       {
         id: 'cefo_sulbactam', name: 'Cefoperazon/Sulbactam', group: 'Beta-lactam/Ức chế BLase',
@@ -1892,7 +1892,7 @@
           'Tác dụng trực tiếp với A.baumannii qua thành phần Sulbactam',
           'Cần theo dõi PT/INR khi dùng kéo dài (ảnh hưởng Vit K)'
         ],
-        alt: ['piperacillin_tazo', 'ampicillin_sulbactam']
+        alt: ['piperacillin_tazo', 'ampicillin_sulbactam', 'ticarcillin_clav']
       },
       {
         id: 'ceftriaxon', name: 'Ceftriaxon', group: 'Cephalosporin thế hệ 3',
@@ -2973,7 +2973,52 @@
           'Tỷ lệ kháng E.coli cộng đồng ngày càng tăng; phù hợp CAP nhẹ-trung bình, NK da/mô mềm, NK đường tiểu không biến chứng',
           'Uống sau ăn để giảm tác dụng phụ tiêu hóa; theo dõi chức năng gan khi dùng kéo dài'
         ],
-        alt: ['ampicillin_sulbactam', 'pip_tazo']
+        alt: ['ampicillin_sulbactam', 'piperacillin_tazo', 'ticarcillin_clav']
+      },
+      {
+        id: 'ticarcillin_clav', name: 'Ticarcillin/Clavulanic acid', group: 'Beta-lactam/Ức chế BLase',
+        aliases: ['ticarcillin', 'ticar', 'clav', 'timentin', 'ticarcillin clavulanate', 'ticarcillin/clavulanate'],
+        route: 'IV', forms: ['3.1g/lọ (3g/0.1g)'],
+        dosing: [
+          {
+            cmin: 60, cmax: 999,
+            du_phong: null,
+            trung_binh: { d: '3.1g', f: 'q6h', note_dose: 'Tính theo Ticarcillin; <60kg: 200-300 mg/kg/ngày chia q4-6h' },
+            nang: { d: '3.1g', f: 'q4-6h', note_dose: '≥60kg: 3g q4-6h (Ticar/Clav); <60kg: 200-300 mg/kg/ngày chia q4-6h. MAX 18g/ngày' },
+            nguy_kich: { d: '3.1g', f: 'q4h', note_dose: '≥60kg: 3g q4h; <60kg: 300 mg/kg/ngày chia q4h. MAX 18g/ngày' }
+          },
+          {
+            cmin: 30, cmax: 59,
+            trung_binh: { d: '2g q4h hoặc 3.2g', f: 'q8h' },
+            nang: { d: '2g q4h hoặc 3.2g', f: 'q8h' },
+            nguy_kich: { d: '2g q4h hoặc 3.2g', f: 'q8h' }
+          },
+          {
+            cmin: 10, cmax: 29,
+            trung_binh: { d: 'LD 3.1g; MD 2g', f: 'q8h', note_dose: 'MD: Hoặc 3.1g q12h' },
+            nang: { d: 'LD 3.1g; MD 2g', f: 'q8h', note_dose: 'MD: Hoặc 3.1g q12h' },
+            nguy_kich: { d: 'LD 3.1g; MD 3.1g', f: 'q12h' }
+          },
+          {
+            cmin: 0, cmax: 9,
+            trung_binh: { d: 'LD 3.1g; MD 2g', f: 'q12h', note_dose: 'Nếu kèm suy gan: MD 2g q24h' },
+            nang: { d: 'LD 3.1g; MD 2g', f: 'q12h', note_dose: 'Nếu kèm suy gan: MD 2g q24h' },
+            nguy_kich: { d: 'LD 3.1g; MD 2g', f: 'q12h', note_dose: 'Nếu kèm suy gan: MD 2g q24h' }
+          }
+        ],
+        dialysis: 'CVVHDF/CVVHD: LD 3.1g; MD 3.1g q6-8h\nCVVH: LD 3.1g; MD 2g q6-8h',
+        prep: { sol: 'NaCl 0,9%', vol: 100, time: 30, se: false },
+        notes: [
+          'Liều người lớn tính theo thành phần Ticarcillin. Timentin 3.1g chứa 3g Ticarcillin và 0.1g Clavulanate.',
+          'Chỉnh liều suy gan: Child A: không cần chỉnh; Child B, C suy gan kèm CrCl < 10 ml/ph: LD 3.1g, sau đó MD 2g q24h.',
+          'Phụ nữ mang thai (PNCT): FDA Phân nhóm B (An toàn tương đối).',
+          'Liều trẻ em (tổng liều Ticar/Clav): GFR ≥60: Sơ sinh thiếu tháng <2kg: 80 mg/kg q12h; ≥2kg: 80 mg/kg q6-8h. Sơ sinh đủ tháng: 80 mg/kg q6-8h. Trẻ ≥1 tháng <40kg: 80 mg/kg q8h (nhẹ-TB) hoặc 80 mg/kg q6h (nặng). Trẻ ≥40kg: 3.2g q6-8h (nhẹ-TB) hoặc 3.2g q4h (nặng).',
+          'Trẻ em suy thận (giảm liều): GFR 30-60: 100% liều q8h; GFR 10-30: 50% liều q8h (kèm suy gan: 50-75 mg/kg q24h); GFR <10: 50% liều q12h; CRRT: 50-75 mg/kg q8h.',
+          'Dược động học: t1/2: ~1.2h (Ticarcillin) / ~1.5h (Clavulanate); Vd: 0.17 L/kg / 0.3 L/kg; Gắn kết protein: 45-65% / 22-30%; Thải qua thận: 60-70% / 35-45%.',
+          'Khả năng thấm mô (KNĐT): Đạt nồng độ tốt (+) ở Tiết niệu, Gan mật, Phổi, Xương khớp; Kém (-) ở Não (hàng rào máu não).',
+          'Độ đề kháng: Kháng hoàn toàn (Profile R, MIC >64/2) với Klebsiella pneumoniae sinh carbapenemase.'
+        ],
+        alt: ['piperacillin_tazo', 'ampicillin_sulbactam', 'cefo_sulbactam']
       }
     ];
 
@@ -3408,6 +3453,14 @@
         chi_dinh: 'Nhiễm khuẩn kỵ khí ổ bụng, áp xe, viêm phúc mạc (phối hợp). Tiệt trừ H. pylori (phác đồ 3 thuốc). Nhiễm ký sinh trùng đường ruột (Giardia, Entamoeba).',
         luu_y: 'Báo cáo KSĐ BV chỉ bao gồm vi khuẩn hiếu khí — không áp dụng trực tiếp. Không dùng đơn trị liệu cho nhiễm khuẩn Gram âm hiếu khí.'
       },
+      ticarcillin_clav: {
+        viet_tat: 'TiC', hieu_luc: 'mat_hieu_luc',
+        vi_khuan: [
+          { ten: 'Klebsiella pneumoniae (sinh carbapenemase)', R: '100%', dg: 'khang' }
+        ],
+        chi_dinh: 'Nhiễm khuẩn do vi khuẩn Gram âm nhạy cảm, trực khuẩn mủ xanh (P. aeruginosa).',
+        luu_y: 'Kháng hoàn toàn (Profile R, MIC >64/2) với K. pneumoniae sản sinh carbapenemase.'
+      },
       amikacin: {
         viet_tat: 'Ak', hieu_luc: 'co_dieu_kien',
         vi_khuan: [
@@ -3533,7 +3586,7 @@
       const groupName = ab.group.toLowerCase();
       
       // Determine physical-chemical classification
-      const isHydrophilic = ['meropenem', 'imipenem', 'ertapenem', 'piperacillin_tazo', 'ceftriaxon', 'cefotaxim', 'cefepim', 'ceftazidim', 'amikacin', 'gentamicin', 'tobramycin', 'aztreonam', 'vancomycin', 'teicoplanin', 'colistin', 'fosfomycin'].includes(id) || groupName.includes('carbapenem') || groupName.includes('cephalosporin') || groupName.includes('penicillin') || groupName.includes('aminoglycoside') || groupName.includes('glycopeptid') || groupName.includes('monobactam');
+      const isHydrophilic = ['meropenem', 'imipenem', 'ertapenem', 'piperacillin_tazo', 'ceftriaxon', 'cefotaxim', 'cefepim', 'ceftazidim', 'amikacin', 'gentamicin', 'tobramycin', 'aztreonam', 'vancomycin', 'teicoplanin', 'colistin', 'fosfomycin', 'ticarcillin_clav'].includes(id) || groupName.includes('carbapenem') || groupName.includes('cephalosporin') || groupName.includes('penicillin') || groupName.includes('aminoglycoside') || groupName.includes('glycopeptid') || groupName.includes('monobactam');
       
       const physioType = isHydrophilic 
         ? `<span style="background:var(--color-primary-hl);color:var(--color-primary);padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:700">Thân nước (Hydrophilic)</span>`
