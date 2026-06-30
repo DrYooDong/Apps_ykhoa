@@ -164,6 +164,40 @@
             <input type="number" id="abg-alb" value="4.0" step="0.1">
           </div>
 
+          <div class="grid-2-col">
+            <div class="input-group">
+              <label for="abg-lactate">Lactate (mmol/L) <span
+                  style="font-weight: normal; font-size: 0.85rem; color: var(--color-text-muted);">(BT: &lt;2)</span></label>
+              <input type="number" id="abg-lactate" value="" step="0.1" placeholder="Nhập nếu có">
+            </div>
+            <div class="input-group">
+              <label for="abg-glucose">Glucose (mg/dL) <span
+                  style="font-weight: normal; font-size: 0.85rem; color: var(--color-text-muted);">(BT: 70-100)</span></label>
+              <input type="number" id="abg-glucose" value="" step="1" placeholder="Nhập nếu có">
+            </div>
+          </div>
+
+          <div class="grid-2-col">
+            <div class="input-group">
+              <label for="abg-ure">Ure (mmol/L) <span
+                  style="font-weight: normal; font-size: 0.85rem; color: var(--color-text-muted);">(BT: 2.5-7.5)</span></label>
+              <input type="number" id="abg-ure" value="" step="0.1" placeholder="Nhập nếu có">
+            </div>
+            <div class="input-group">
+              <label for="abg-ketone">Ketone niệu/máu</label>
+              <select id="abg-ketone" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                <option value="negative">Âm tính</option>
+                <option value="positive">Dương tính</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="abg-osm">Osmolal máu đo được (mOsm/kg) <span
+                style="font-weight: normal; font-size: 0.85rem; color: var(--color-text-muted);">(Dùng tính Osmolal Gap)</span></label>
+            <input type="number" id="abg-osm" value="" step="1" placeholder="Nhập nếu có">
+          </div>
+
           <button type="button" id="btn-reset" class="reset-btn">🔄 Làm mới dữ liệu</button>
         </div>
 
@@ -193,6 +227,11 @@
           <div id="step5-delta" class="step-box" style="display: none;">
             <h4>Bước 5: Tỷ lệ Delta (ΔGap / ΔHCO₃⁻)</h4>
             <p id="out-delta">-</p>
+          </div>
+
+          <div id="step6-causes" class="step-box" style="display: none;">
+            <h4>Bước 6: Gợi ý Nguyên nhân Cụ thể</h4>
+            <div id="out-causes">Vui lòng nhập đầy đủ thông số...</div>
           </div>
 
           <div class="conclusion-box">
