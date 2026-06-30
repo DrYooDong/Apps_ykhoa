@@ -96,8 +96,14 @@
 
     .grid-2-col {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr;
       gap: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid-2-col {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     /* ── 3. KHỐI HIỂN THỊ KẾT QUẢ TỪNG BƯỚC ── */
@@ -260,12 +266,18 @@
 
     #ods-risk-group {
       display: none;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
       gap: 0.5rem 0.75rem;
     }
 
     #ods-risk-group>label:first-child {
       grid-column: 1 / -1;
+    }
+
+    @media (min-width: 576px) {
+      #ods-risk-group {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     @media (min-width: 768px) {
@@ -368,7 +380,7 @@
             </a>
           </li>
 
-          <li class="breadcrumb-item" aria-current="page"> Thận & điện giải, toan kiềm</a>
+          <li class="breadcrumb-item"> Thận & điện giải, toan kiềm
           </li>
 
           <li class="breadcrumb-item active" aria-current="page"> Natri/Nước
@@ -531,7 +543,7 @@
 
           // Hiện/Ẩn bảng kiểm chọn nguy cơ ODS
           if (isHyponatremia) {
-            odsGroup.style.display = "flex";
+            odsGroup.style.display = "grid";
           } else {
             odsGroup.style.display = "none";
           }
