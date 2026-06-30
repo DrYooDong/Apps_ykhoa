@@ -34,7 +34,7 @@ Dược lý/
 │   ├── DL_Hohap.html          # Tương tác thuốc hô hấp (hen, COPD, giãn phế quản...)
 │   ├── DL_Tiêuhoá.html        # Tương tác thuốc tiêu hóa (PPI, kháng H2, prokinetics...)
 │   ├── DL_Ttoan_than.html     # Các tương tác thuốc toàn thân kinh điển cần lưu ý
-│   └── DL_Khangsink.html      # Tương tác chi tiết nhóm Kháng sinh (đặc hiệu nhóm thuốc)
+│   └── DL_Khangsinh.html      # Tương tác chi tiết nhóm Kháng sinh (đặc hiệu nhóm thuốc)
 ├── Triệu chứng/               # [Phần 2] Dược lý tiếp cận từ triệu chứng dạng Flowchart
 │   ├── DL_Daubungcap.html     # Thuật toán xử trí thuốc trong đau bụng cấp ngoại/nội khoa
 │   ├── DL_Ho.html             # Sơ đồ tiếp cận thuốc ho (ho khan, ho đàm, giảm ho, long đàm)

@@ -4,6 +4,31 @@ Thư mục này chứa bộ CSS dùng chung (`css/physio-shared.css`) giúp trì
 
 ---
 
+## 📁 Cấu trúc Thư mục Phân hệ
+
+```
+Sinh lý - Sinh lý bệnh/
+├── Sinhly/                    # Bài học sinh lý học chi tiết theo từng hệ cơ quan
+│   ├── Phan1/                 # Đại cương tế bào & Điện sinh lý
+│   ├── Phan2/                 # Sinh lý hệ Thần kinh - Cơ
+│   ├── Phan3/                 # Sinh lý Máu & Miễn dịch
+│   ├── Phan4/                 # Sinh lý hệ Tuần hoàn & Hô hấp
+│   ├── Phan5/                 # Sinh lý hệ Tiêu hóa & Chuyển hóa
+│   ├── Phan6/                 # Sinh lý hệ Thận - Tiết niệu & Toan kiềm
+│   ├── Phan7/                 # Sinh lý hệ Nội tiết & Sinh sản
+│   └── Note sinh ly.md        # Ghi chú tổng hợp nội dung sinh lý học
+├── Sinhlybenh/                # Bài học sinh lý bệnh học (định hướng phát triển tiếp theo)
+├── css/
+│   └── physio-shared.css      # Stylesheet dùng chung cho toàn bộ phân hệ Sinh lý
+├── js/
+│   └── physio-shared.js       # Kịch bản hỗ trợ hiệu ứng hiển thị hình ảnh y khoa
+├── images/                    # Kho ảnh minh họa y khoa dùng chung (được phân theo các Phan1-Phan7)
+├── Sinhly-sinhlybenh.html     # Trang Hub điều hướng chính của phân hệ Sinh lý
+└── README.md                  # Tài liệu hướng dẫn này
+```
+
+---
+
 ## 1. Cách tích hợp Tài nguyên chung
 
 ### 1.1 Tích hợp CSS

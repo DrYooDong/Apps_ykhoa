@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi" data-theme="light">
 
 <head>
@@ -15,23 +15,87 @@
     rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="../../../../css/reset.css">
-  <link rel="stylesheet" href="../../../../css/main.css">
-  <link rel="stylesheet" href="../../../../css/components/header.css">
-  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
-  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../../css/components/footer.css">
 
-  <script src="../../../../components/header.js"></script>
-  <script src="../../../../components/footer.js"></script>
+  <!-- JS Core -->
+  <script src="../../../../../../js/main.js" defer></script>
+  <script src="../../../../../../components/header.js" defer></script>
+  <script src="../../../../../../components/footer.js" defer></script>
 
   <style>
-    </style>
-  <link rel="stylesheet" href="../../../../css/components/flowchart.css">
+    /* ============================================================
+       QUICK SUB-NAVIGATION SWITCHER BAR (DUAL-ROW)
+    ============================================================ */
+    .tc-sub-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+      padding: 12px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      animation: fadeInUp 0.4s ease-out;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .sub-nav-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sub-nav-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--color-text-faint);
+      margin-right: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .sub-nav-divider {
+      height: 1px;
+      background-color: var(--color-divider);
+      width: 100%;
+    }
+
+    .sub-nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: all var(--tr);
+    }
+
+    .sub-nav-link:hover {
+      color: var(--color-primary);
+      background: var(--color-surface-offset);
+    }
+
+    .sub-nav-link.active {
+      color: var(--color-primary);
+      background: var(--color-primary-hl);
+    }
+  </style>
+  <link rel="stylesheet" href="../../../../../../css/components/flowchart.css">
 
 </head>
 
 <body>
-  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div id="header-placeholder" data-header-path="../../../../../../components/header.html"></div>
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
   <!-- ===================== APP CONTAINER ===================== -->
@@ -49,7 +113,7 @@
       <nav class="sidebar-nav" aria-label="Điều hướng chính">
         <ul class="nav-list" role="list">
           <li>
-            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+            <a href="../../../../../../index.html" class="nav-item" title="Trang chủ">
               <span class="nav-icon">🏠</span>
               <span class="nav-text">Trang chủ</span>
             </a>
@@ -68,7 +132,7 @@
             </a>
           </li>
           <li>
-            <a href="../../tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
+            <a href="../../../../tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
               <span class="nav-icon">🤒</span>
               <span class="nav-text">Tiếp cận lâm sàng</span>
             </a>
@@ -102,12 +166,12 @@
       <nav aria-label="Breadcrumb" class="breadcrumb-container">
         <ol class="breadcrumb-list">
           <li class="breadcrumb-item">
-            <a href="../../../../index.html" class="breadcrumb-link">
+            <a href="../../../../../../index.html" class="breadcrumb-link">
               <span class="home-icon">🏠</span> Home
             </a>
           </li>
           <li class="breadcrumb-item">
-            <a href="../../tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
+            <a href="../../../../tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
           </li>
           <li class="breadcrumb-item">
             <a href="TC_Daubung.html" class="breadcrumb-link">Tiếp cận Đau Bụng</a>
@@ -171,173 +235,179 @@
       </div>
 
       <!-- INTERACTIVE FLOW CANVAS -->
-      <div class="flow-canvas">
+      <div class="flow-canvas-wrapper">
+        <div class="flow-col">
 
-        <!-- ==================== BƯỚC 1 ==================== -->
-        <div class="fnode fnode-start">
-          <div class="fnode-tag">BƯỚC 1: Đánh giá ban đầu & Sàng lọc ngoài ổ bụng</div>
-          <div class="fnode-title">
-            <span class="step-badge">1</span>
-            Initial Survey & Extra-abdominal Screening
+          <!-- ==================== BƯỚC 1 ==================== -->
+          <div class="fnode fnode-start">
+            <div class="fnode-tag">BƯỚC 1: Đánh giá ban đầu & Sàng lọc ngoài ổ bụng</div>
+            <div class="fnode-title">
+              <span class="step-badge">1</span>
+              Initial Survey & Extra-abdominal Screening
+            </div>
+            <p class="fnode-body">
+              Đánh giá sinh hiệu và chủ động loại trừ các nguyên nhân từ lồng ngực. Triệu chứng ở người già thường mờ
+              nhạt, không điển hình.
+            </p>
           </div>
-          <p class="fnode-body">
-            Đánh giá sinh hiệu và chủ động loại trừ các nguyên nhân từ lồng ngực. Triệu chứng ở người già thường mờ
-            nhạt, không điển hình.
-          </p>
-        </div>
 
-        <div class="flow-connector">
-          <div class="flow-connector-line" style="height: 35px;"></div>
-          <div class="flow-connector-arrow"></div>
-        </div>
+          <div class="flow-connector">
+            <div class="flow-connector-line" style="height: 35px;"></div>
+            <div class="flow-connector-arrow"></div>
+          </div>
 
-        <div class="flow-branch">
-          <div class="flow-branch-side">
-            <div class="flow-connector-label fc-yes">🔴 NGUY CƠ CAO (Sinh hiệu không ổn định / Bệnh nền nặng)</div>
-            <div class="flow-connector">
-              <div class="flow-connector-line"></div>
-              <div class="flow-connector-arrow"></div>
+          <div class="flow-branch">
+            <div class="flow-branch-side">
+              <div class="flow-connector-label fc-yes">🔴 NGUY CƠ CAO (Sinh hiệu không ổn định / Bệnh nền nặng)</div>
+              <div class="flow-connector">
+                <div class="flow-connector-line"></div>
+                <div class="flow-connector-arrow"></div>
+              </div>
+
+              <!-- BƯỚC 2 -->
+              <div class="fnode fnode-danger clickable" onclick="toggleNode(this)">
+                <div class="fnode-tag">BƯỚC 2: Xử trí đe dọa tính mạng cấp cứu</div>
+                <div class="fnode-title">HỒI SỨC & CHẨN ĐOÁN KHẨN CẤP</div>
+                <p class="fnode-body">
+                  Tiến hành hồi sức huyết động song song với chẩn đoán hình ảnh khẩn cấp. Rule out 3 bệnh lý tử vong
+                  cao.
+                </p>
+                <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem chi tiết bệnh lý
+                  nguy kịch</div>
+                <div class="fnode-details">
+                  <div class="detail-box" style="border-left: 4px solid var(--c-danger);">
+                    <strong>1. Thiếu máu mạc treo cấp (Mesenteric Ischemia):</strong>
+                    <p>Thường gặp ở người già có rung nhĩ, xơ vữa động mạch. Biểu hiện đau bụng dữ dội nhưng khám bụng
+                      mềm
+                      (đau không tương xứng thực thể).</p>
+                    <p>👉 <b>Chỉ định:</b> Chụp CT mạch máu (CTA) ngay lập tức (chấp nhận nguy cơ thuốc cản quang trên
+                      nền
+                      suy thận vì nguy cơ tử vong cao).</p>
+                  </div>
+                  <div class="detail-box" style="border-left: 4px solid var(--c-warn); margin-top: 8px;">
+                    <strong>2. Phình động mạch chủ bụng (AAA) vỡ/rỉ máu:</strong>
+                    <p>Dễ nhầm với cơn đau quặn thận ở người già.</p>
+                    <p>👉 <b>Chỉ định:</b> Siêu âm tại giường (POCUS), tránh hồi sức dịch quá mức (chủ động hạ huyết áp
+                      kiểm soát), hội chẩn phẫu thuật mạch máu khẩn cấp.</p>
+                  </div>
+                  <div class="detail-box" style="border-left: 4px solid var(--c-info); margin-top: 8px;">
+                    <strong>3. Thủng tạng rỗng / Viêm ruột thừa cấp ở người già:</strong>
+                    <p>Triệu chứng rất nhẹ, có khi chỉ chán ăn, buồn nôn, lú lẫn/sảng. Cần chụp CT cản quang khẩn cấp,
+                      tránh chủ quan.</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <!-- BƯỚC 2 -->
-            <div class="fnode fnode-danger clickable" onclick="toggleNode(this)">
-              <div class="fnode-tag">BƯỚC 2: Xử trí đe dọa tính mạng cấp cứu</div>
-              <div class="fnode-title">HỒI SỨC & CHẨN ĐOÁN KHẨN CẤP</div>
-              <p class="fnode-body">
-                Tiến hành hồi sức huyết động song song với chẩn đoán hình ảnh khẩn cấp. Rule out 3 bệnh lý tử vong cao.
-              </p>
-              <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem chi tiết bệnh lý
-                nguy kịch</div>
-              <div class="fnode-details">
-                <div class="detail-box" style="border-left: 4px solid var(--c-danger);">
-                  <strong>1. Thiếu máu mạc treo cấp (Mesenteric Ischemia):</strong>
-                  <p>Thường gặp ở người già có rung nhĩ, xơ vữa động mạch. Biểu hiện đau bụng dữ dội nhưng khám bụng mềm
-                    (đau không tương xứng thực thể).</p>
-                  <p>👉 <b>Chỉ định:</b> Chụp CT mạch máu (CTA) ngay lập tức (chấp nhận nguy cơ thuốc cản quang trên nền
-                    suy thận vì nguy cơ tử vong cao).</p>
+            <div class="flow-branch-side">
+              <div class="flow-connector-label fc-no">🟢 NGUY CƠ THẤP (Sinh hiệu ổn định / Bệnh nền kiểm soát)</div>
+              <div class="flow-connector">
+                <div class="flow-connector-line"></div>
+                <div class="flow-connector-arrow"></div>
+              </div>
+
+              <!-- BƯỚC 3 -->
+              <div class="fnode fnode-info clickable" onclick="toggleNode(this)">
+                <div class="fnode-tag">BƯỚC 3: Xử trí nhóm nguy cơ thấp & Workup</div>
+                <div class="fnode-title">
+                  <span class="step-badge">3</span>
+                  Stable Patient & Standard Evaluation
                 </div>
-                <div class="detail-box" style="border-left: 4px solid var(--c-warn); margin-top: 8px;">
-                  <strong>2. Phình động mạch chủ bụng (AAA) vỡ/rỉ máu:</strong>
-                  <p>Dễ nhầm với cơn đau quặn thận ở người già.</p>
-                  <p>👉 <b>Chỉ định:</b> Siêu âm tại giường (POCUS), tránh hồi sức dịch quá mức (chủ động hạ huyết áp
-                    kiểm soát), hội chẩn phẫu thuật mạch máu khẩn cấp.</p>
-                </div>
-                <div class="detail-box" style="border-left: 4px solid var(--c-info); margin-top: 8px;">
-                  <strong>3. Thủng tạng rỗng / Viêm ruột thừa cấp ở người già:</strong>
-                  <p>Triệu chứng rất nhẹ, có khi chỉ chán ăn, buồn nôn, lú lẫn/sảng. Cần chụp CT cản quang khẩn cấp,
-                    tránh chủ quan.</p>
+                <p class="fnode-body">
+                  Người già ít khi bị đau bụng cơ năng. Luôn rà soát các bệnh lý thực thể phổ biến nhất ở nhóm tuổi này.
+                </p>
+                <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem các nguyên nhân
+                  phổ biến</div>
+                <div class="fnode-details">
+                  <div class="detail-box">
+                    <strong>Các bệnh lý thường gặp ở người già:</strong>
+                    <ul>
+                      <li><b>Viêm túi thừa (Diverticulitis):</b> Nguyên nhân hàng đầu gây đau hố chậu trái ở người >65
+                        tuổi.</li>
+                      <li><b>Bệnh lý gan mật:</b> Sỏi mật, viêm túi mật cấp (Murphy siêu âm dương tính, sốt, vàng da).
+                      </li>
+                      <li><b>Bệnh lý đường tiết niệu:</b> Bí tiểu cấp (khám thấy cầu bàng quang), nhiễm trùng tiểu tản
+                        phát.</li>
+                    </ul>
+                  </div>
+                  <div class="detail-box">
+                    <strong>Xét nghiệm cận lâm sàng cơ bản:</strong>
+                    CBC, CRP, Chức năng thận, Men gan, Lipase, Tổng phân tích nước tiểu.
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="flow-branch-side">
-            <div class="flow-connector-label fc-no">🟢 NGUY CƠ THẤP (Sinh hiệu ổn định / Bệnh nền kiểm soát)</div>
-            <div class="flow-connector">
-              <div class="flow-connector-line"></div>
-              <div class="flow-connector-arrow"></div>
-            </div>
+          <div class="flow-connector">
+            <div class="flow-connector-line" style="height: 35px;"></div>
+            <div class="flow-connector-arrow"></div>
+          </div>
 
-            <!-- BƯỚC 3 -->
-            <div class="fnode fnode-info clickable" onclick="toggleNode(this)">
-              <div class="fnode-tag">BƯỚC 3: Xử trí nhóm nguy cơ thấp & Workup</div>
-              <div class="fnode-title">
-                <span class="step-badge">3</span>
-                Stable Patient & Standard Evaluation
+          <!-- BƯỚC 4 -->
+          <div class="fnode fnode-ok clickable" onclick="toggleNode(this)">
+            <div class="fnode-tag">BƯỚC 4: Chỉ định hình ảnh học tích cực & Đánh giá lão khoa</div>
+            <div class="fnode-title">
+              <span class="step-badge">4</span>
+              Imaging Policy & Geriatric Assessment
+            </div>
+            <p class="fnode-body">
+              Chỉ định rộng rãi CT scan bụng chậu có cản quang do khám thực thể không đáng tin cậy. Kết hợp chăm sóc lão
+              khoa toàn diện.
+            </p>
+            <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem chi tiết khuyến cáo
+              lâm sàng</div>
+            <div class="fnode-details">
+              <div class="detail-box">
+                <strong>Khuyến cáo chỉ định CT Scan:</strong>
+                Các dấu hiệu thực thể ở người già (phản ứng dội, đề kháng) giảm 50% độ nhạy. CT scan làm thay đổi kế
+                hoạch
+                điều trị ở hơn 65% bệnh nhân lớn tuổi bị đau bụng. Ưu tiên chụp CT cản quang nếu không có chống chỉ định
+                tuyệt đối.
               </div>
-              <p class="fnode-body">
-                Người già ít khi bị đau bụng cơ năng. Luôn rà soát các bệnh lý thực thể phổ biến nhất ở nhóm tuổi này.
-              </p>
-              <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem các nguyên nhân
-                phổ biến</div>
-              <div class="fnode-details">
-                <div class="detail-box">
-                  <strong>Các bệnh lý thường gặp ở người già:</strong>
-                  <ul>
-                    <li><b>Viêm túi thừa (Diverticulitis):</b> Nguyên nhân hàng đầu gây đau hố chậu trái ở người >65
-                      tuổi.</li>
-                    <li><b>Bệnh lý gan mật:</b> Sỏi mật, viêm túi mật cấp (Murphy siêu âm dương tính, sốt, vàng da).
-                    </li>
-                    <li><b>Bệnh lý đường tiết niệu:</b> Bí tiểu cấp (khám thấy cầu bàng quang), nhiễm trùng tiểu tản
-                      phát.</li>
-                  </ul>
-                </div>
-                <div class="detail-box">
-                  <strong>Xét nghiệm cận lâm sàng cơ bản:</strong>
-                  CBC, CRP, Chức năng thận, Men gan, Lipase, Tổng phân tích nước tiểu.
-                </div>
+              <div class="detail-box" style="margin-top: 8px;">
+                <strong>Đánh giá toàn diện lão khoa (Comprehensive Geriatric Assessment - CGA):</strong>
+                Trong quá trình chẩn đoán và điều trị, cần phối hợp đánh giá: tình trạng dinh dưỡng, chức năng sinh hoạt
+                hàng ngày (ADLs), nhận thức (phát hiện sảng/lú lẫn cấp), tránh sử dụng các thuốc có nguy cơ cao (như
+                NSAIDs, anticholinergics).
               </div>
             </div>
           </div>
+
         </div>
 
-        <div class="flow-connector">
-          <div class="flow-connector-line" style="height: 35px;"></div>
-          <div class="flow-connector-arrow"></div>
-        </div>
+        <!-- REFERENCE -->
+        <section class="checklist-card" style="margin-top: 2rem;">
+          <h2><i class="fa-solid fa-book-bookmark"></i> Tài liệu tham khảo y học</h2>
+          <ul
+            style="list-style: none; padding-left: 0; font-size: var(--text-xs); line-height: 1.6; display:flex; flex-direction:column; gap:8px;">
 
-        <!-- BƯỚC 4 -->
-        <div class="fnode fnode-ok clickable" onclick="toggleNode(this)">
-          <div class="fnode-tag">BƯỚC 4: Chỉ định hình ảnh học tích cực & Đánh giá lão khoa</div>
-          <div class="fnode-title">
-            <span class="step-badge">4</span>
-            Imaging Policy & Geriatric Assessment
-          </div>
-          <p class="fnode-body">
-            Chỉ định rộng rãi CT scan bụng chậu có cản quang do khám thực thể không đáng tin cậy. Kết hợp chăm sóc lão
-            khoa toàn diện.
-          </p>
-          <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem chi tiết khuyến cáo
-            lâm sàng</div>
-          <div class="fnode-details">
-            <div class="detail-box">
-              <strong>Khuyến cáo chỉ định CT Scan:</strong>
-              Các dấu hiệu thực thể ở người già (phản ứng dội, đề kháng) giảm 50% độ nhạy. CT scan làm thay đổi kế hoạch
-              điều trị ở hơn 65% bệnh nhân lớn tuổi bị đau bụng. Ưu tiên chụp CT cản quang nếu không có chống chỉ định
-              tuyệt đối.
-            </div>
-            <div class="detail-box" style="margin-top: 8px;">
-              <strong>Đánh giá toàn diện lão khoa (Comprehensive Geriatric Assessment - CGA):</strong>
-              Trong quá trình chẩn đoán và điều trị, cần phối hợp đánh giá: tình trạng dinh dưỡng, chức năng sinh hoạt
-              hàng ngày (ADLs), nhận thức (phát hiện sảng/lú lẫn cấp), tránh sử dụng các thuốc có nguy cơ cao (như
-              NSAIDs, anticholinergics).
-            </div>
-          </div>
-        </div>
+            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Yew KS, George MK, Allred
+              HB.
+              Acute Abdominal Pain in Adults: Evaluation and Diagnosis. <em>Am Fam Physician</em>. 2023;107(6):585-596.
+            </li>
+            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Tham TCK, Collins JSA,
+              Soetikno R, eds. <em>Gastrointestinal Emergencies</em>. 3rd ed. John Wiley & Sons; 2016.</li>
+            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Innes JA, Dover AR,
+              Fairhurst
+              K, eds. <em>Macleod's Clinical Examination</em>. 14th ed. Elsevier; 2018.</li>
+            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Haist SA, Robbins JB.
+              <em>Internal Medicine on Call</em>. McGraw-Hill; 2005.
+            </li>
+            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Harrison M, Mohammed A, eds.
+              <em>Algorithms for Emergency Medicine</em>. Oxford University Press; 2023.
+            </li>
 
-      </div>
+          </ul>
+        </section>
 
-      <!-- REFERENCE -->
-      <section class="checklist-card" style="margin-top: 2rem;">
-        <h2><i class="fa-solid fa-book-bookmark"></i> Tài liệu tham khảo y học</h2>
-        <ul
-          style="list-style: none; padding-left: 0; font-size: var(--text-xs); line-height: 1.6; display:flex; flex-direction:column; gap:8px;">
+      </div><!-- end main-wrapper -->
+    </div><!-- end app-container -->
+  </div>
+  <!-- Náº¡p Footer -->
+  <div id="footer-placeholder" data-footer-path="../../../../../../components/footer.html"></div>
 
-          <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Yew KS, George MK, Allred HB.
-            Acute Abdominal Pain in Adults: Evaluation and Diagnosis. <em>Am Fam Physician</em>. 2023;107(6):585-596.
-          </li>
-          <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Tham TCK, Collins JSA,
-            Soetikno R, eds. <em>Gastrointestinal Emergencies</em>. 3rd ed. John Wiley & Sons; 2016.</li>
-          <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Innes JA, Dover AR, Fairhurst
-            K, eds. <em>Macleod's Clinical Examination</em>. 14th ed. Elsevier; 2018.</li>
-          <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Haist SA, Robbins JB.
-            <em>Internal Medicine on Call</em>. McGraw-Hill; 2005.
-          </li>
-          <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Harrison M, Mohammed A, eds.
-            <em>Algorithms for Emergency Medicine</em>. Oxford University Press; 2023.
-          </li>
-
-        </ul>
-      </section>
-
-    </div><!-- end main-wrapper -->
-  </div><!-- end app-container -->
-
-  <footer class="global-footer">
-    <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
-  </footer>
-
-  <script src="../../../../js/flowchart.js"></script>
+  <script src="../../../../../../js/flowchart.js"></script>
 </body>
 
 </html>

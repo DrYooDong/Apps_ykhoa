@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi" data-theme="light">
 
 <head>
@@ -15,23 +15,87 @@
     rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="../../../../css/reset.css">
-  <link rel="stylesheet" href="../../../../css/main.css">
-  <link rel="stylesheet" href="../../../../css/components/header.css">
-  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
-  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../../css/components/footer.css">
 
-  <script src="../../../../components/header.js"></script>
-  <script src="../../../../components/footer.js"></script>
+  <!-- JS Core -->
+  <script src="../../../../../../js/main.js" defer></script>
+  <script src="../../../../../../components/header.js" defer></script>
+  <script src="../../../../../../components/footer.js" defer></script>
 
   <style>
-    </style>
-  <link rel="stylesheet" href="../../../../css/components/flowchart.css">
+    /* ============================================================
+       QUICK SUB-NAVIGATION SWITCHER BAR (DUAL-ROW)
+    ============================================================ */
+    .tc-sub-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+      padding: 12px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      animation: fadeInUp 0.4s ease-out;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .sub-nav-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sub-nav-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--color-text-faint);
+      margin-right: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .sub-nav-divider {
+      height: 1px;
+      background-color: var(--color-divider);
+      width: 100%;
+    }
+
+    .sub-nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: all var(--tr);
+    }
+
+    .sub-nav-link:hover {
+      color: var(--color-primary);
+      background: var(--color-surface-offset);
+    }
+
+    .sub-nav-link.active {
+      color: var(--color-primary);
+      background: var(--color-primary-hl);
+    }
+  </style>
+  <link rel="stylesheet" href="../../../../../../css/components/flowchart.css">
 
 </head>
 
 <body>
-  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div id="header-placeholder" data-header-path="../../../../../../components/header.html"></div>
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
   <!-- ===================== APP CONTAINER ===================== -->
@@ -49,7 +113,7 @@
       <nav class="sidebar-nav" aria-label="Điều hướng chính">
         <ul class="nav-list" role="list">
           <li>
-            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+            <a href="../../../../../../index.html" class="nav-item" title="Trang chủ">
               <span class="nav-icon">🏠</span>
               <span class="nav-text">Trang chủ</span>
             </a>
@@ -68,7 +132,7 @@
             </a>
           </li>
           <li>
-            <a href="../../tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
+            <a href="../../../../tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
               <span class="nav-icon">🤒</span>
               <span class="nav-text">Tiếp cận lâm sàng</span>
             </a>
@@ -102,12 +166,12 @@
       <nav aria-label="Breadcrumb" class="breadcrumb-container">
         <ol class="breadcrumb-list">
           <li class="breadcrumb-item">
-            <a href="../../../../index.html" class="breadcrumb-link">
+            <a href="../../../../../../index.html" class="breadcrumb-link">
               <span class="home-icon">🏠</span> Home
             </a>
           </li>
           <li class="breadcrumb-item">
-            <a href="../../tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
+            <a href="../../../../tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
           </li>
           <li class="breadcrumb-item">
             <a href="TC_Daubung.html" class="breadcrumb-link">Tiếp cận Đau Bụng</a>
@@ -170,145 +234,153 @@
       </div>
 
       <!-- INTERACTIVE FLOW CANVAS -->
-      <div class="flow-canvas">
+      <div class="flow-canvas-wrapper">
+        <div class="flow-col">
 
-        <!-- ==================== BƯỚC 1 ==================== -->
-        <div class="fnode fnode-start">
-          <div class="fnode-tag">BƯỚC 1: Sàng lọc nguyên nhân sản phụ khoa cấp cứu ở nữ</div>
-          <div class="fnode-title">
-            <span class="step-badge">1</span>
-            Gynecological & Obstetric Screening
-          </div>
-          <p class="fnode-body">
-            Đối với bệnh nhân nữ trong độ tuổi sinh đẻ: Thực hiện xét nghiệm nước tiểu Beta-hCG bắt buộc.
-          </p>
-        </div>
-
-        <div class="flow-connector">
-          <div class="flow-connector-line" style="height: 35px;"></div>
-          <div class="flow-connector-arrow"></div>
-        </div>
-
-        <div class="flow-branch">
-          <div class="flow-branch-side">
-            <div class="flow-connector-label fc-yes">🔴 Nữ giới có hCG (+) hoặc nghi buồng trứng xoắn</div>
-            <div class="flow-connector">
-              <div class="flow-connector-line"></div>
-              <div class="flow-connector-arrow"></div>
+          <!-- ==================== BƯỚC 1 ==================== -->
+          <div class="fnode fnode-start">
+            <div class="fnode-tag">BƯỚC 1: Sàng lọc nguyên nhân sản phụ khoa cấp cứu ở nữ</div>
+            <div class="fnode-title">
+              <span class="step-badge">1</span>
+              Gynecological & Obstetric Screening
             </div>
-            <div class="fnode fnode-danger clickable" onclick="toggleNode(this)">
-              <div class="fnode-tag">🚨 Hội chẩn Sản Phụ Khoa khẩn</div>
-              <div class="fnode-title">SIÊU ÂM TIỂU KHUNG NGẢ ÂM ĐẠO</div>
-              <p class="fnode-body">
-                Tầm soát thai ngoài tử cung vỡ, xoắn buồng trứng hoặc viêm vùng chậu (PID) biến chứng áp xe vòi trứng
-                buồng trứng.
-              </p>
-              <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem chi tiết chẩn đoán
-                phụ khoa</div>
-              <div class="fnode-details">
-                <div class="detail-box">
-                  <strong>Siêu âm đầu dò âm đạo giúp đánh giá:</strong>
-                  <ul>
-                    <li>Vị trí túi thai (tầm soát thai ngoài tử cung).</li>
-                    <li>Tưới máu buồng trứng (loại trừ xoắn buồng trứng).</li>
-                    <li>Sự hiện diện của dịch/máu vùng tiểu khung (Douglas).</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+            <p class="fnode-body">
+              Đối với bệnh nhân nữ trong độ tuổi sinh đẻ: Thực hiện xét nghiệm nước tiểu Beta-hCG bắt buộc.
+            </p>
           </div>
 
-          <div class="flow-branch-side">
-            <div class="flow-connector-label fc-no">🟢 Nam giới hoặc Nữ giới có hCG (-)</div>
-            <div class="flow-connector">
-              <div class="flow-connector-line"></div>
-              <div class="flow-connector-arrow"></div>
-            </div>
+          <div class="flow-connector">
+            <div class="flow-connector-line" style="height: 35px;"></div>
+            <div class="flow-connector-arrow"></div>
+          </div>
 
-            <!-- BƯỚC 2 -->
-            <div class="fnode fnode-info clickable" onclick="toggleNode(this)">
-              <div class="fnode-tag">BƯỚC 2: Định hướng chẩn đoán hệ tiết niệu</div>
-              <div class="fnode-title">
-                <span class="step-badge">2</span>
-                Khảo sát Đường tiết niệu dưới
+          <div class="flow-branch">
+            <div class="flow-branch-side">
+              <div class="flow-connector-label fc-yes">🔴 Nữ giới có hCG (+) hoặc nghi buồng trứng xoắn</div>
+              <div class="flow-connector">
+                <div class="flow-connector-line"></div>
+                <div class="flow-connector-arrow"></div>
               </div>
-              <p class="fnode-body">
-                Tìm kiếm triệu chứng tiểu gắt, tiểu buốt, tiểu nhiều lần, tiểu máu hoặc cầu bàng quang do bí tiểu cấp.
-              </p>
-              <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem hướng dẫn cận lâm
-                sàng tiết niệu</div>
-              <div class="fnode-details">
-                <div class="detail-box">
-                  <strong>Các chẩn đoán tiết niệu phổ biến ở hạ vị:</strong>
-                  <ul>
-                    <li><b>Viêm bàng quang cấp (Cystitis):</b> Nữ giới chiếm ưu thế, tiểu buốt/tiểu rắt. Thực hiện tổng
-                      phân tích nước tiểu (Nitrite (+), Leukocyte (+)). Cho kháng sinh đường uống thích hợp.</li>
-                    <li><b>Bí tiểu cấp gây cầu bàng quang:</b> Thường gặp ở nam giới lớn tuổi (phì đại tuyến tiền liệt).
-                      Khám thấy khối vùng hạ vị căng tròn gõ đục. Đặt sonde tiểu giải áp bàng quang ngay lập tức.</li>
-                  </ul>
+              <div class="fnode fnode-danger clickable" onclick="toggleNode(this)">
+                <div class="fnode-tag">🚨 Hội chẩn Sản Phụ Khoa khẩn</div>
+                <div class="fnode-title">SIÊU ÂM TIỂU KHUNG NGẢ ÂM ĐẠO</div>
+                <p class="fnode-body">
+                  Tầm soát thai ngoài tử cung vỡ, xoắn buồng trứng hoặc viêm vùng chậu (PID) biến chứng áp xe vòi trứng
+                  buồng trứng.
+                </p>
+                <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem chi tiết chẩn
+                  đoán
+                  phụ khoa</div>
+                <div class="fnode-details">
+                  <div class="detail-box">
+                    <strong>Siêu âm đầu dò âm đạo giúp đánh giá:</strong>
+                    <ul>
+                      <li>Vị trí túi thai (tầm soát thai ngoài tử cung).</li>
+                      <li>Tưới máu buồng trứng (loại trừ xoắn buồng trứng).</li>
+                      <li>Sự hiện diện của dịch/máu vùng tiểu khung (Douglas).</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div class="flow-connector">
-              <div class="flow-connector-line"></div>
-              <div class="flow-connector-arrow"></div>
-            </div>
-
-            <!-- BƯỚC 3 -->
-            <div class="fnode fnode-warn clickable" onclick="toggleNode(this)">
-              <div class="fnode-tag">BƯỚC 3: Sàng lọc nguyên nhân tiêu hóa</div>
-              <div class="fnode-title">
-                <span class="step-badge">3</span>
-                Đại tràng Sigma, Trực tràng & Ruột thừa tiểu khung
+            <div class="flow-branch-side">
+              <div class="flow-connector-label fc-no">🟢 Nam giới hoặc Nữ giới có hCG (-)</div>
+              <div class="flow-connector">
+                <div class="flow-connector-line"></div>
+                <div class="flow-connector-arrow"></div>
               </div>
-              <p class="fnode-body">
-                Viêm túi thừa đại tràng Sigma biến chứng thấp, hoặc viêm ruột thừa thể tiểu khung có thể biểu hiện bằng
-                đau vùng hạ vị.
-              </p>
-              <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem hướng dẫn chẩn
-                đoán hình ảnh</div>
-              <div class="fnode-details">
-                <div class="detail-box">
-                  <strong>Chỉ định chẩn đoán hình ảnh:</strong>
-                  <ul>
-                    <li>Nếu có sốt, thay đổi thói quen đi tiêu (táo bón/tiêu chảy), đau bụng hạ vị liên tục nề nhẹ ->
-                      Chỉ định chụp <b>CT-scan bụng có cản quang tĩnh mạch</b> để chẩn đoán xác định viêm ruột thừa tiểu
-                      khung hoặc viêm túi thừa.</li>
-                  </ul>
+
+              <!-- BƯỚC 2 -->
+              <div class="fnode fnode-info clickable" onclick="toggleNode(this)">
+                <div class="fnode-tag">BƯỚC 2: Định hướng chẩn đoán hệ tiết niệu</div>
+                <div class="fnode-title">
+                  <span class="step-badge">2</span>
+                  Khảo sát Đường tiết niệu dưới
+                </div>
+                <p class="fnode-body">
+                  Tìm kiếm triệu chứng tiểu gắt, tiểu buốt, tiểu nhiều lần, tiểu máu hoặc cầu bàng quang do bí tiểu cấp.
+                </p>
+                <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem hướng dẫn cận
+                  lâm
+                  sàng tiết niệu</div>
+                <div class="fnode-details">
+                  <div class="detail-box">
+                    <strong>Các chẩn đoán tiết niệu phổ biến ở hạ vị:</strong>
+                    <ul>
+                      <li><b>Viêm bàng quang cấp (Cystitis):</b> Nữ giới chiếm ưu thế, tiểu buốt/tiểu rắt. Thực hiện
+                        tổng
+                        phân tích nước tiểu (Nitrite (+), Leukocyte (+)). Cho kháng sinh đường uống thích hợp.</li>
+                      <li><b>Bí tiểu cấp gây cầu bàng quang:</b> Thường gặp ở nam giới lớn tuổi (phì đại tuyến tiền
+                        liệt).
+                        Khám thấy khối vùng hạ vị căng tròn gõ đục. Đặt sonde tiểu giải áp bàng quang ngay lập tức.</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
-            </div>
 
+              <div class="flow-connector">
+                <div class="flow-connector-line"></div>
+                <div class="flow-connector-arrow"></div>
+              </div>
+
+              <!-- BƯỚC 3 -->
+              <div class="fnode fnode-warn clickable" onclick="toggleNode(this)">
+                <div class="fnode-tag">BƯỚC 3: Sàng lọc nguyên nhân tiêu hóa</div>
+                <div class="fnode-title">
+                  <span class="step-badge">3</span>
+                  Đại tràng Sigma, Trực tràng & Ruột thừa tiểu khung
+                </div>
+                <p class="fnode-body">
+                  Viêm túi thừa đại tràng Sigma biến chứng thấp, hoặc viêm ruột thừa thể tiểu khung có thể biểu hiện
+                  bằng
+                  đau vùng hạ vị.
+                </p>
+                <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem hướng dẫn chẩn
+                  đoán hình ảnh</div>
+                <div class="fnode-details">
+                  <div class="detail-box">
+                    <strong>Chỉ định chẩn đoán hình ảnh:</strong>
+                    <ul>
+                      <li>Nếu có sốt, thay đổi thói quen đi tiêu (táo bón/tiêu chảy), đau bụng hạ vị liên tục nề nhẹ ->
+                        Chỉ định chụp <b>CT-scan bụng có cản quang tĩnh mạch</b> để chẩn đoán xác định viêm ruột thừa
+                        tiểu
+                        khung hoặc viêm túi thừa.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </div>
           </div>
+
         </div>
 
-      </div>
+        <!-- REFERENCE -->
+        <section class="checklist-card" style="margin-top: 2rem;">
+          <h2><i class="fa-solid fa-book-bookmark"></i> Tài liệu tham khảo y học</h2>
+          <ul
+            style="list-style: none; padding-left: 0; font-size: var(--text-xs); line-height: 1.6; display:flex; flex-direction:column; gap:8px;">
 
-      <!-- REFERENCE -->
-      <section class="checklist-card" style="margin-top: 2rem;">
-        <h2><i class="fa-solid fa-book-bookmark"></i> Tài liệu tham khảo y học</h2>
-        <ul
-          style="list-style: none; padding-left: 0; font-size: var(--text-xs); line-height: 1.6; display:flex; flex-direction:column; gap:8px;">
+            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Yew KS, George MK, Allred
+              HB.
+              Acute Abdominal Pain in Adults: Evaluation and Diagnosis. <em>Am Fam Physician</em>. 2023;107(6):585-596.
+            </li>
+            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Stern SDC, Cifu AS, Altkorn
+              D.
+              <em>Symptoms to Diagnosis: An Evidence-Based Guide</em>. 4th ed. McGraw-Hill Education; 2020.
+            </li>
 
-          <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Yew KS, George MK, Allred HB.
-            Acute Abdominal Pain in Adults: Evaluation and Diagnosis. <em>Am Fam Physician</em>. 2023;107(6):585-596.
-          </li>
-          <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Stern SDC, Cifu AS, Altkorn D.
-            <em>Symptoms to Diagnosis: An Evidence-Based Guide</em>. 4th ed. McGraw-Hill Education; 2020.
-          </li>
+          </ul>
+        </section>
 
-        </ul>
-      </section>
+      </div><!-- end main-wrapper -->
+    </div><!-- end app-container -->
+  </div>
+  <!-- Náº¡p Footer -->
+  <div id="footer-placeholder" data-footer-path="../../../../../../components/footer.html"></div>
 
-    </div><!-- end main-wrapper -->
-  </div><!-- end app-container -->
-
-  <footer class="global-footer">
-    <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
-  </footer>
-
-  <script src="../../../../js/flowchart.js"></script>
+  <script src="../../../../../../js/flowchart.js"></script>
 </body>
 
 </html>

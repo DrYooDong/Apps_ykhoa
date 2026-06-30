@@ -44,12 +44,19 @@ Công cụ/
 ├── Tiêu hóa & Dinh dưỡng/     # Suy gan, dinh dưỡng lâm sàng
 │   ├── DG_Dinhduongnoitru.html # Tính nhu cầu năng lượng và lập thực đơn dinh dưỡng nội trú
 │   ├── DG_Xogan.html          # Thang điểm Child-Pugh, MELD đánh giá xơ gan
-│   └── DG_ptncHCC.html        # Tính điểm phân tầng nguy cơ ung thư gan (HCC)
-├── Truyền Nhiễm/              # Công cụ phân tầng nhiễm trùng/sepsis
-│   └── SL_Nhiem-khuan.html    # Tính điểm qSOFA/SOFA và phác đồ Hour-1 Bundle xử trí sepsis
+│   ├── DG_ptncHCC.html        # Tính điểm phân tầng nguy cơ ung thư gan (HCC)
+│   └── thangdiemHCC.md        # Tóm tắt tài liệu các thang điểm nguy cơ ung thư biểu mô tế bào gan
+├── Truyền Nhiễm/              # Công cụ phân tầng nhiễm trùng/sepsis, điều trị kháng sinh
+│   ├── SL_Nhiem-khuan.html    # Tính điểm qSOFA/SOFA và phác đồ Hour-1 Bundle xử trí sepsis
+│   ├── QL_Vancomycin.html     # Phần mềm tính toán, quản lý liều và theo dõi nồng độ Vancomycin
+│   ├── QL Vancomycin.md       # Tài liệu lâm sàng về dược động học và giám sát trị liệu Vancomycin (TDM)
+│   ├── Chỉnh liều Vancomycin.md # Hướng dẫn điều chỉnh liều Vancomycin dựa trên AUC/MIC và Cmin
+│   ├── Chinhlieu_khangsinh.html # Phần mềm tính toán, chỉnh liều các nhóm kháng sinh chính ở bệnh nhân suy thận
+│   ├── Chinhlieu_khangsinh.md # Tài liệu tham khảo hướng dẫn chỉnh liều kháng sinh
+│   └── Dược PK_PD.md          # Tài liệu lý thuyết về Dược lực học/Dược động học (PK/PD) kháng sinh
 ├── Chung/                     # Tài liệu chung về lâm sàng
-│   ├── Bệnh án/               # Hướng dẫn làm bệnh án nội khoa chuyên nghiệp (BSCKI Trần Thanh Tuấn...)
-│   └── benh-an-noi-khoa.html  # Bản điện tử tương tác hỗ trợ điền bệnh án chuẩn
+│   └── Bệnh án/               # Hướng dẫn làm bệnh án nội khoa chuyên nghiệp (BSCKI Trần Thanh Tuấn...)
+│       └── benh-an-noi-khoa.html  # Bản điện tử tương tác hỗ trợ điền bệnh án chuẩn
 └── cong-cu.html               # Trang Hub điều hướng trung tâm của phân hệ Công cụ
 ```
 

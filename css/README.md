@@ -13,7 +13,18 @@ css/
 │   ├── sidebar.css       # Thanh trình đơn bên cạnh (Accordion Sidebar)
 │   ├── footer.css        # Chân trang (Footer)
 │   ├── clinical-skill.css # Giao diện tab kỹ năng lâm sàng
-│   └── flowchart.css     # Thư viện dùng chung cho lưu đồ/flowchart tương tác
+│   ├── flowchart.css     # Thư viện dùng chung cho lưu đồ/flowchart tương tác
+│   ├── abg-calculator.css # Giao diện bộ tính toán khí máu động mạch (ABG)
+│   ├── insulin-calculator.css # Giao diện bộ tính toán chỉnh liều Insulin
+│   ├── pharmacology-symptoms.css # Giao diện phân hệ dược lý theo triệu chứng
+│   ├── approach-hub.css  # Hub tiếp cận lâm sàng
+│   ├── approach-card.css # Giao diện thẻ tiếp cận lâm sàng
+│   ├── approach-detail.css # Giao diện trang tiếp cận chi tiết
+│   ├── physio-patho.css  # Giao diện tổng quan Sinh lý - Sinh lý bệnh
+│   ├── physio-content.css # Định dạng nội dung bài học Sinh lý - Sinh lý bệnh
+│   ├── physio-headings.css # Định dạng tiêu đề bài học Sinh lý - Sinh lý bệnh
+│   ├── toc.css           # Cột mục lục tự động (Table of Contents)
+│   └── benh-an.css       # Giao diện mẫu bệnh án điện tử tương tác
 ├── main.css              # Hệ thống thiết kế cốt lõi (Core Design System)
 └── reset.css             # Thiết lập lại CSS mặc định của các trình duyệt (Reset CSS)
 ```

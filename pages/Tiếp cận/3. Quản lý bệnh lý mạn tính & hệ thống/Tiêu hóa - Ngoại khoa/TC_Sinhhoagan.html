@@ -14,20 +14,22 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="../../../../css/reset.css">
-    <link rel="stylesheet" href="../../../../css/main.css">
-    <link rel="stylesheet" href="../../../../css/components/header.css">
-    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
-    <link rel="stylesheet" href="../../../../css/components/footer.css">
+    <link rel="stylesheet" href="../../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../../css/components/footer.css">
 
-    <script src="../../../../components/header.js"></script>
-    <script src="../../../../components/footer.js"></script>
+    <!-- JS Core -->
+    <script src="../../../../../js/main.js" defer></script>
+    <script src="../../../../../components/header.js" defer></script>
+    <script src="../../../../../components/footer.js" defer></script>
 
-    <link rel="stylesheet" href="../../../../css/components/flowchart.css">
+    <link rel="stylesheet" href="../../../../../css/components/flowchart.css">
 </head>
 
 <body>
-    <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+    <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
     <div class="app-container">
@@ -43,7 +45,7 @@
             <nav class="sidebar-nav" aria-label="Điều hướng chính">
                 <ul class="nav-list" role="list">
                     <li>
-                        <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+                        <a href="../../../../../index.html" class="nav-item" title="Trang chủ">
                             <span class="nav-icon">🏠</span>
                             <span class="nav-text">Trang chủ</span>
                         </a>
@@ -62,7 +64,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="../../tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
+                        <a href="../../../tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
                             <span class="nav-icon">🤒</span>
                             <span class="nav-text">Tiếp cận lâm sàng</span>
                         </a>
@@ -95,7 +97,7 @@
             <nav aria-label="Breadcrumb" class="breadcrumb-container">
                 <ol class="breadcrumb-list">
                     <li class="breadcrumb-item">
-                        <a href="../../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span>
+                        <a href="../../../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span>
                             Home</a>
                     </li>
                     <li class="breadcrumb-item">
@@ -244,7 +246,6 @@
                     </div>
 
                     <!-- Đường ngang nối 2 nhánh -->
-                    <div class="branch-horizontal"></div>
                     <div class="flow-branch">
                         <!-- LEFT: ALF YES -->
                         <div class="flow-branch-side">
@@ -331,9 +332,6 @@
                                     </table>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
                     <!-- Divider -->
                     <div class="flow-connector" style="margin-top:12px;">
                         <div class="flow-connector-line"></div>
@@ -486,8 +484,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div><!-- end flow-branch -->
-                </div><!-- end flow-col -->
+                    </div><!-- end flow-branch 2 -->
+                </div><!-- end flow-branch-side 1 -->
+            </div><!-- end flow-branch 1 -->
+        </div><!-- end flow-col -->
             </div><!-- end pane-hepa -->
 
 
@@ -732,15 +732,9 @@
         </main>
     </div>
 
-    <!-- FOOTER -->
-    <footer class="global-footer">
-        <div class="footer-copyright">
-            <p>CliniPortal © 2026. Giao diện tối ưu hóa hiển thị linh hoạt trên Mobile và Desktop.</p>
-        </div>
-    </footer>
-
-    <script src="../../../../js/sidebar.js"></script>
-    <script src="../../../../js/flowchart.js"></script>
+    <!-- Nạp Footer -->
+    <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+    <script src="../../../../../js/flowchart.js"></script>
     <script>
         function calcR() {
             const alt = parseFloat(document.getElementById('alt-val').value);

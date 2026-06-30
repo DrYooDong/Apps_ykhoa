@@ -1,0 +1,293 @@
+﻿<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lưu đồ hướng dẫn tiếp cận khảo sát ban đầu bệnh nhân chấn thương nặng theo nguyên tắc ATLS.">
+    <title>Cấp cứu Ngoại khoa & Chấn thương (ATLS) – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal -->
+    <link rel="stylesheet" href="../../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../../css/components/footer.css">
+
+    <!-- CSS Flowchart dùng chung -->
+    <link rel="stylesheet" href="../../../../../css/components/flowchart.css">
+
+    <!-- Script điều hướng hệ thống -->
+    <script src="../../../../../js/main.js" defer></script>
+    <script src="../../../../../components/header.js" defer></script>
+    <script src="../../../../../components/footer.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../../../../../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item" title="Sinh lý & Sinh lý bệnh">
+                            <span class="nav-icon">🧬</span>
+                            <span class="nav-text">Sinh lý</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng lâm sàng">
+                            <span class="nav-icon">🩺</span>
+                            <span class="nav-text">Kỹ năng lâm sàng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../tiep-can.html" class="nav-item active" title="Tiếp cận lâm sàng">
+                            <span class="nav-icon">🤒</span>
+                            <span class="nav-text">Tiếp cận lâm sàng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ lâm sàng">
+                            <span class="nav-icon">⚙️</span>
+                            <span class="nav-text">Công cụ lâm sàng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý & Kháng sinh">
+                            <span class="nav-icon">💊</span>
+                            <span class="nav-text">Dược lý lâm sàng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+                            <span class="nav-icon">📄</span>
+                            <span class="nav-text">Y học chứng cứ</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <main class="main-wrapper flow-page">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container">
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item">
+                        <a href="../../../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="../../../tiep-can.html" class="breadcrumb-link">Tiếp cận</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Khảo sát Chấn thương (ATLS)</li>
+                </ol>
+            </nav>
+
+            <!-- HERO BANNER -->
+            <div class="flow-hero">
+                <div class="hero-badge">🩹 Cấp cứu Chấn thương</div>
+                <h1>KHẢO SÁT CHẤN THƯƠNG BAN ĐẦU (PRIMARY SURVEY - ATLS)</h1>
+                <p>Thuật toán tiếp cận xử trí bệnh nhân chấn thương nặng đa cơ quan theo nguyên tắc ưu tiên đe dọa tính mạng trước. Nhấp vào các node để xem chi tiết can thiệp.</p>
+            </div>
+
+            <!-- TABS SWITCHER -->
+            <div class="flow-tabs">
+                <button class="flow-tab-btn active" id="tab-btn-primary" onclick="switchPane('primary')">
+                    <span class="tab-dot"></span> Khảo sát ban đầu (Primary Survey: ABCDE)
+                </button>
+                <button class="flow-tab-btn tab-danger" id="tab-btn-secondary" onclick="switchPane('secondary')">
+                    <span class="tab-dot"></span> Khảo sát thứ cấp (Secondary Survey)
+                </button>
+            </div>
+
+            <!-- FLOW CANVAS -->
+            <div class="flow-canvas-wrapper">
+
+                <!-- PANE 1: PRIMARY SURVEY -->
+                <div class="flow-pane active" id="pane-primary">
+                    <div class="flow-col">
+                        
+                        <!-- 1. Node Bắt đầu -->
+                        <div class="fnode fnode-start">
+                            <div class="fnode-tag">Khảo sát ban đầu</div>
+                            <div class="fnode-title">Tiếp nhận bệnh nhân đa chấn thương nặng</div>
+                            <p class="fnode-body">
+                                ⚠️ Cố định cột sống cổ bằng nẹp cứng ngay lập tức. Đánh giá nhanh tình trạng đe dọa tính mạng theo trình tự ưu tiên ABCDE.
+                            </p>
+                        </div>
+
+                        <!-- Mũi tên kết nối -->
+                        <div class="flow-connector">
+                            <div class="flow-connector-line"></div>
+                            <div class="flow-connector-arrow"></div>
+                        </div>
+
+                        <!-- A. Airway -->
+                        <div class="fnode fnode-danger clickable" onclick="toggleNode(this)">
+                            <div class="fnode-tag">A • Airway</div>
+                            <div class="fnode-title">Đường thở & Cố định cột sống cổ</div>
+                            <p class="fnode-body">
+                                Đánh giá đường thở thông thoáng. Kiểm tra dị vật, gãy xương hàm, chấn thương thanh quản.
+                            </p>
+                            <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấp để xem can thiệp khẩn cấp đường thở</div>
+                            <div class="fnode-details">
+                                <div class="detail-box">
+                                    <div class="detail-box-title">🛠️ Can thiệp Đường thở:</div>
+                                    <ul>
+                                        <li>Nâng cằm, đẩy hàm (Jaw-thrust) - tránh ngửa đầu để bảo vệ tủy cổ.</li>
+                                        <li>Hút đờm dãi, loại bỏ dị vật.</li>
+                                        <li>Đặt nội khí quản (hoặc mở khí quản cấp cứu) nếu suy hô hấp, hôn mê (GCS &le; 8), tắc nghẽn đường thở hoàn toàn.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mũi tên kết nối -->
+                        <div class="flow-connector">
+                            <div class="flow-connector-line"></div>
+                            <div class="flow-connector-arrow"></div>
+                        </div>
+
+                        <!-- B. Breathing -->
+                        <div class="fnode fnode-danger clickable" onclick="toggleNode(this)">
+                            <div class="fnode-tag">B • Breathing</div>
+                            <div class="fnode-title">Thông khí & Trao đổi khí</div>
+                            <p class="fnode-body">
+                                Quan sát di động lồng ngực, tần số thở, nghe rì rào phế nang. Loại trừ các tổn thương ngực đe dọa tính mạng tức thì.
+                            </p>
+                            <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấp để xem tổn thương ngực nguy hiểm</div>
+                            <div class="fnode-details">
+                                <div class="detail-box">
+                                    <div class="detail-box-title">⚠️ Tổn thương ngực đe dọa tính mạng:</div>
+                                    <ul>
+                                        <li><strong>Tràn khí màng phổi áp lực:</strong> Chọc hút kim lớn liên sườn II đường trung đòn, sau đó đặt ống dẫn lưu.</li>
+                                        <li><strong>Mảng sườn di động:</strong> Thở oxy, giảm đau tốt, thông khí nhân tạo áp lực dương nếu cần.</li>
+                                        <li><strong>Tràn máu màng phổi lượng nhiều:</strong> Đặt ống dẫn lưu ngực liên sườn V đường nách trước.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mũi tên kết nối -->
+                        <div class="flow-connector">
+                            <div class="flow-connector-line"></div>
+                            <div class="flow-connector-arrow"></div>
+                        </div>
+
+                        <!-- C. Circulation -->
+                        <div class="fnode fnode-danger clickable" onclick="toggleNode(this)">
+                            <div class="fnode-tag">C • Circulation</div>
+                            <div class="fnode-title">Tuần hoàn & Kiểm soát chảy máu</div>
+                            <p class="fnode-body">
+                                Đánh giá tưới máu (mạch, màu sắc da, thời gian đổ đầy mao mạch CRT), đo huyết áp. Phát hiện các nguồn chảy máu lớn.
+                            </p>
+                            <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấp để xem can thiệp tuần hoàn</div>
+                            <div class="fnode-details">
+                                <div class="detail-box">
+                                    <div class="detail-box-title">🩸 Kiểm soát tuần hoàn & bù dịch:</div>
+                                    <ul>
+                                        <li>Ép trực tiếp lên vết thương chảy máu ngoài.</li>
+                                        <li>Thiết lập 2 đường truyền tĩnh mạch ngoại vi lớn (kim 14-16G).</li>
+                                        <li>Lấy máu làm bilan xét nghiệm và định nhóm máu chéo cấp.</li>
+                                        <li>Truyền dịch Lactate Ringer ấm 1 lít; nếu huyết động không ổn định, tiến hành truyền máu sớm (tỷ lệ 1:1:1 hồng cầu, huyết tương, tiểu cầu).</li>
+                                        <li>Nghi ngờ chảy máu trong: Chụp X-quang phổi/khung chậu tại giường, siêu âm FAST tìm dịch tự do ổ bụng/màng tim.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mũi tên kết nối -->
+                        <div class="flow-connector">
+                            <div class="flow-connector-line"></div>
+                            <div class="flow-connector-arrow"></div>
+                        </div>
+
+                        <!-- D. Disability -->
+                        <div class="fnode fnode-warn clickable" onclick="toggleNode(this)">
+                            <div class="fnode-tag">D • Disability</div>
+                            <div class="fnode-title">Thần kinh & Tri giác</div>
+                            <p class="fnode-body">
+                                Đánh giá điểm Glasgow (GCS) và phản xạ đồng tử (kích thước, phản ứng ánh sáng).
+                            </p>
+                            <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấp để xem mục tiêu theo dõi</div>
+                            <div class="fnode-details">
+                                <div class="detail-box">
+                                    <p>Nhận diện nhanh chấn thương sọ não tiến triển (ví dụ: giãn đồng tử một bên kèm liệt nửa người hướng tới thoát vị não - chỉ định truyền Mannitol/Saline ưu trương cấp cứu).</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mũi tên kết nối -->
+                        <div class="flow-connector">
+                            <div class="flow-connector-line"></div>
+                            <div class="flow-connector-arrow"></div>
+                        </div>
+
+                        <!-- E. Exposure -->
+                        <div class="fnode fnode-info clickable" onclick="toggleNode(this)">
+                            <div class="fnode-tag">E • Exposure</div>
+                            <div class="fnode-title">Bộc lộ toàn thân & Kiểm soát thân nhiệt</div>
+                            <p class="fnode-body">
+                                Cởi bỏ quần áo bệnh nhân để thăm khám toàn diện vết thương tránh bỏ sót tổn thương vùng lưng, tầng sinh môn.
+                            </p>
+                            <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấp để xem lưu ý</div>
+                            <div class="fnode-details">
+                                <div class="detail-box">
+                                    <div class="detail-box-title">🌡️ Tránh hạ thân nhiệt:</div>
+                                    <p>Giữ ấm bằng chăn ấm, sưởi phòng cấp cứu và dùng dịch truyền ấm (37-39 độ C) để tránh tam chứng tử vong chấn thương (Toan máu, Rối loạn đông máu, Hạ thân nhiệt).</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!-- End Pane 1 -->
+
+                <!-- PANE 2: SECONDARY SURVEY -->
+                <div class="flow-pane" id="pane-secondary">
+                    <div class="flow-col">
+                        <div class="fnode fnode-purple">
+                            <div class="fnode-tag">Khảo sát thứ cấp</div>
+                            <div class="fnode-title">Thăm khám toàn diện từ Đầu đến Chân</div>
+                            <p class="fnode-body">
+                                Chỉ thực hiện khi kết thúc Primary Survey, các chỉ số sinh hiệu đã ổn định hoặc đang được kiểm soát tốt. Thăm khám chi tiết mắt, tai, mũi họng, sọ mặt, cột sống, ngực bụng, tứ chi và khám trực tràng/sinh dục.
+                            </p>
+                        </div>
+                    </div>
+                </div><!-- End Pane 2 -->
+
+            </div><!-- End Flow Canvas Wrapper -->
+        </main>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+    <!-- Scripts dùng chung -->
+    <script src="../../../../../js/flowchart.js"></script>
+</body>
+
+</html>

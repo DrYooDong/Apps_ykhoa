@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi" data-theme="light">
 
 <head>
@@ -15,18 +15,82 @@
     rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="../../../../css/reset.css">
-  <link rel="stylesheet" href="../../../../css/main.css">
-  <link rel="stylesheet" href="../../../../css/components/header.css">
-  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
-  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../../css/components/footer.css">
 
-  <script src="../../../../components/header.js"></script>
-  <script src="../../../../components/footer.js"></script>
+  <!-- JS Core -->
+  <script src="../../../../../../js/main.js" defer></script>
+  <script src="../../../../../../components/header.js" defer></script>
+  <script src="../../../../../../components/footer.js" defer></script>
 
   <style>
-    </style>
-  <link rel="stylesheet" href="../../../../css/components/flowchart.css">
+    /* ============================================================
+       QUICK SUB-NAVIGATION SWITCHER BAR (DUAL-ROW)
+    ============================================================ */
+    .tc-sub-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+      padding: 12px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      animation: fadeInUp 0.4s ease-out;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .sub-nav-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sub-nav-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--color-text-faint);
+      margin-right: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .sub-nav-divider {
+      height: 1px;
+      background-color: var(--color-divider);
+      width: 100%;
+    }
+
+    .sub-nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: all var(--tr);
+    }
+
+    .sub-nav-link:hover {
+      color: var(--color-primary);
+      background: var(--color-surface-offset);
+    }
+
+    .sub-nav-link.active {
+      color: var(--color-primary);
+      background: var(--color-primary-hl);
+    }
+  </style>
+  <link rel="stylesheet" href="../../../../../../css/components/flowchart.css">
 
 
 
@@ -34,7 +98,7 @@
 </head>
 
 <body>
-  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div id="header-placeholder" data-header-path="../../../../../../components/header.html"></div>
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
   <!-- ===================== APP CONTAINER ===================== -->
@@ -52,7 +116,7 @@
       <nav class="sidebar-nav" aria-label="Điều hướng chính">
         <ul class="nav-list" role="list">
           <li>
-            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+            <a href="../../../../../../index.html" class="nav-item" title="Trang chủ">
               <span class="nav-icon">🏠</span>
               <span class="nav-text">Trang chủ</span>
             </a>
@@ -71,7 +135,7 @@
             </a>
           </li>
           <li>
-            <a href="../../tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
+            <a href="../../../../tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
               <span class="nav-icon">🤒</span>
               <span class="nav-text">Tiếp cận lâm sàng</span>
             </a>
@@ -105,12 +169,12 @@
       <nav aria-label="Breadcrumb" class="breadcrumb-container">
         <ol class="breadcrumb-list">
           <li class="breadcrumb-item">
-            <a href="../../../../index.html" class="breadcrumb-link">
+            <a href="../../../../../../index.html" class="breadcrumb-link">
               <span class="home-icon">🏠</span> Home
             </a>
           </li>
           <li class="breadcrumb-item">
-            <a href="../../tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
+            <a href="../../../../tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
           </li>
           <li class="breadcrumb-item">
             <a href="TC_Daubung.html" class="breadcrumb-link">Tiếp cận Đau Bụng</a>
@@ -173,148 +237,158 @@
       </div>
 
       <!-- INTERACTIVE FLOW CANVAS -->
-      <div class="flow-canvas">
+      <div class="flow-canvas-wrapper">
+        <div class="flow-col">
 
-        <!-- ==================== BƯỚC 1 ==================== -->
-        <div class="fnode fnode-start">
-          <div class="fnode-tag">BƯỚC 1: Sàng lọc Thiếu máu mạc treo cấp (Cực kỳ nguy kịch)</div>
-          <div class="fnode-title">
-            <span class="step-badge">1</span>
-            Mesenteric Ischemia Screening
-          </div>
-          <p class="fnode-body">
-            Bệnh nhân có triệu chứng đau bụng dữ dội liên tục nhưng khám bụng mềm (đau không tương xứng thực thể), lớn
-            tuổi, rung nhĩ?
-          </p>
-        </div>
-
-        <div class="flow-connector">
-          <div class="flow-connector-line" style="height: 35px;"></div>
-          <div class="flow-connector-arrow"></div>
-        </div>
-
-        <div class="flow-branch">
-          <div class="flow-branch-side">
-            <div class="flow-connector-label fc-yes">🔴 CÓ (Nghi ngờ tắc mạch mạc treo)</div>
-            <div class="flow-connector">
-              <div class="flow-connector-line"></div>
-              <div class="flow-connector-arrow"></div>
+          <!-- ==================== BƯỚC 1 ==================== -->
+          <div class="fnode fnode-start">
+            <div class="fnode-tag">BƯỚC 1: Sàng lọc Thiếu máu mạc treo cấp (Cực kỳ nguy kịch)</div>
+            <div class="fnode-title">
+              <span class="step-badge">1</span>
+              Mesenteric Ischemia Screening
             </div>
-            <div class="fnode fnode-danger clickable" onclick="toggleNode(this)">
-              <div class="fnode-tag">🚨 Ngoại khoa / Can thiệp mạch khẩn</div>
-              <div class="fnode-title">CHỤP CTA MẠCH MÁU MẠC TREO & PHẪU THUẬT TÁI THÔNG</div>
-              <p class="fnode-body">
-                Tắc mạch mạc treo ruột dẫn đến hoại tử ruột nhanh chóng nếu không tái thông mạch sớm.
-              </p>
-              <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem hướng dẫn xử trí
-                khẩn cấp</div>
-              <div class="fnode-details">
-                <div class="detail-box">
-                  <strong>Quy trình xử trí:</strong>
-                  <ul>
-                    <li>Cho nhịn ăn, truyền dịch nâng đỡ huyết động, định lượng Lactate máu khẩn cấp (tăng trong hoại tử
-                      ruột).</li>
-                    <li>Chụp <b>CT angiography (CTA)</b> động mạch mạc treo ruột có thuốc cản quang cản quang tĩnh mạch
-                      sớm (tiêu chuẩn vàng chẩn đoán).</li>
-                    <li>Mời hội chẩn phẫu thuật mạch máu hoặc can thiệp mạch để lấy huyết khối/tái thông mạch trước khi
-                      ruột bị hoại tử hoàn toàn.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+            <p class="fnode-body">
+              Bệnh nhân có triệu chứng đau bụng dữ dội liên tục nhưng khám bụng mềm (đau không tương xứng thực thể), lớn
+              tuổi, rung nhĩ?
+            </p>
           </div>
 
-          <div class="flow-branch-side">
-            <div class="flow-connector-label fc-no">🟢 KHÔNG (Thành bụng mềm, không đau kiểu mạch máu)</div>
-            <div class="flow-connector">
-              <div class="flow-connector-line"></div>
-              <div class="flow-connector-arrow"></div>
-            </div>
-
-            <!-- BƯỚC 2 -->
-            <div class="fnode fnode-warn clickable" onclick="toggleNode(this)">
-              <div class="fnode-tag">BƯỚC 2: Tầm soát Tắc ruột cơ học</div>
-              <div class="fnode-title">
-                <span class="step-badge">2</span>
-                Đánh giá triệu chứng Tắc ruột
-              </div>
-              <p class="fnode-body">
-                Tìm kiếm hội chứng tắc ruột: Đau bụng cơn, nôn ói nhiều (dịch mật/dịch phân), chướng bụng, bí trung đại
-                tiện.
-              </p>
-              <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem chẩn đoán hình ảnh
-                tắc ruột</div>
-              <div class="fnode-details">
-                <div class="detail-box">
-                  <strong>Thăm dò hình ảnh học:</strong>
-                  <ul>
-                    <li>Chỉ định chụp <b>X-quang bụng đứng không sửa soạn</b> tìm hình ảnh mức nước - hơi (quai ruột
-                      chướng hơi kèm mức dịch).</li>
-                    <li>Nếu nghi ngờ tắc ruột quai kín hoặc bán tắc ruột: Chụp CT ổ bụng có cản quang để tìm vị trí tắc
-                      (điểm chuyển tiếp - transition point) và nguyên nhân (dây chằng, thoát vị nghẹt, u).</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="flow-connector">
-              <div class="flow-connector-line"></div>
-              <div class="flow-connector-arrow"></div>
-            </div>
-
-            <!-- BƯỚC 3 -->
-            <div class="fnode fnode-info clickable" onclick="toggleNode(this)">
-              <div class="fnode-tag">BƯỚC 3: Viêm ruột thừa giai đoạn sớm hoặc viêm dạ dày ruột</div>
-              <div class="fnode-title">
-                <span class="step-badge">3</span>
-                Đánh giá viêm ruột thừa sớm & nhiễm trùng tiêu hóa
-              </div>
-              <p class="fnode-body">
-                Viêm ruột thừa giai đoạn đầu thường đau mơ hồ quanh rốn trước khi khu trú xuống hố chậu phải.
-              </p>
-              <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem hướng dẫn chẩn
-                đoán phân biệt</div>
-              <div class="fnode-details">
-                <div class="detail-box">
-                  <strong>1. Viêm ruột thừa sớm:</strong>
-                  <p>Theo dõi sát diễn tiến cơn đau sau 6 - 12 giờ xem có di chuyển xuống HCP hay không. Cân nhắc siêu
-                    âm bụng lặp lại.</p>
-                </div>
-                <div class="detail-box" style="margin-top: 8px;">
-                  <strong>2. Viêm dạ dày ruột cấp:</strong>
-                  <p>Đau quặn quanh rốn kèm tiêu chảy nhiều lần, buồn nôn, sốt. Khám bụng mềm, nhu động ruột tăng mạnh.
-                    Chủ yếu bù dịch nâng đỡ đường uống hoặc tĩnh mạch.</p>
-                </div>
-              </div>
-            </div>
-
+          <div class="flow-connector">
+            <div class="flow-connector-line" style="height: 35px;"></div>
+            <div class="flow-connector-arrow"></div>
           </div>
+
+          <div class="flow-branch">
+            <div class="flow-branch-side">
+              <div class="flow-connector-label fc-yes">🔴 CÓ (Nghi ngờ tắc mạch mạc treo)</div>
+              <div class="flow-connector">
+                <div class="flow-connector-line"></div>
+                <div class="flow-connector-arrow"></div>
+              </div>
+              <div class="fnode fnode-danger clickable" onclick="toggleNode(this)">
+                <div class="fnode-tag">🚨 Ngoại khoa / Can thiệp mạch khẩn</div>
+                <div class="fnode-title">CHỤP CTA MẠCH MÁU MẠC TREO & PHẪU THUẬT TÁI THÔNG</div>
+                <p class="fnode-body">
+                  Tắc mạch mạc treo ruột dẫn đến hoại tử ruột nhanh chóng nếu không tái thông mạch sớm.
+                </p>
+                <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem hướng dẫn xử trí
+                  khẩn cấp</div>
+                <div class="fnode-details">
+                  <div class="detail-box">
+                    <strong>Quy trình xử trí:</strong>
+                    <ul>
+                      <li>Cho nhịn ăn, truyền dịch nâng đỡ huyết động, định lượng Lactate máu khẩn cấp (tăng trong hoại
+                        tử
+                        ruột).</li>
+                      <li>Chụp <b>CT angiography (CTA)</b> động mạch mạc treo ruột có thuốc cản quang cản quang tĩnh
+                        mạch
+                        sớm (tiêu chuẩn vàng chẩn đoán).</li>
+                      <li>Mời hội chẩn phẫu thuật mạch máu hoặc can thiệp mạch để lấy huyết khối/tái thông mạch trước
+                        khi
+                        ruột bị hoại tử hoàn toàn.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flow-branch-side">
+              <div class="flow-connector-label fc-no">🟢 KHÔNG (Thành bụng mềm, không đau kiểu mạch máu)</div>
+              <div class="flow-connector">
+                <div class="flow-connector-line"></div>
+                <div class="flow-connector-arrow"></div>
+              </div>
+
+              <!-- BƯỚC 2 -->
+              <div class="fnode fnode-warn clickable" onclick="toggleNode(this)">
+                <div class="fnode-tag">BƯỚC 2: Tầm soát Tắc ruột cơ học</div>
+                <div class="fnode-title">
+                  <span class="step-badge">2</span>
+                  Đánh giá triệu chứng Tắc ruột
+                </div>
+                <p class="fnode-body">
+                  Tìm kiếm hội chứng tắc ruột: Đau bụng cơn, nôn ói nhiều (dịch mật/dịch phân), chướng bụng, bí trung
+                  đại
+                  tiện.
+                </p>
+                <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem chẩn đoán hình
+                  ảnh
+                  tắc ruột</div>
+                <div class="fnode-details">
+                  <div class="detail-box">
+                    <strong>Thăm dò hình ảnh học:</strong>
+                    <ul>
+                      <li>Chỉ định chụp <b>X-quang bụng đứng không sửa soạn</b> tìm hình ảnh mức nước - hơi (quai ruột
+                        chướng hơi kèm mức dịch).</li>
+                      <li>Nếu nghi ngờ tắc ruột quai kín hoặc bán tắc ruột: Chụp CT ổ bụng có cản quang để tìm vị trí
+                        tắc
+                        (điểm chuyển tiếp - transition point) và nguyên nhân (dây chằng, thoát vị nghẹt, u).</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flow-connector">
+                <div class="flow-connector-line"></div>
+                <div class="flow-connector-arrow"></div>
+              </div>
+
+              <!-- BƯỚC 3 -->
+              <div class="fnode fnode-info clickable" onclick="toggleNode(this)">
+                <div class="fnode-tag">BƯỚC 3: Viêm ruột thừa giai đoạn sớm hoặc viêm dạ dày ruột</div>
+                <div class="fnode-title">
+                  <span class="step-badge">3</span>
+                  Đánh giá viêm ruột thừa sớm & nhiễm trùng tiêu hóa
+                </div>
+                <p class="fnode-body">
+                  Viêm ruột thừa giai đoạn đầu thường đau mơ hồ quanh rốn trước khi khu trú xuống hố chậu phải.
+                </p>
+                <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem hướng dẫn chẩn
+                  đoán phân biệt</div>
+                <div class="fnode-details">
+                  <div class="detail-box">
+                    <strong>1. Viêm ruột thừa sớm:</strong>
+                    <p>Theo dõi sát diễn tiến cơn đau sau 6 - 12 giờ xem có di chuyển xuống HCP hay không. Cân nhắc siêu
+                      âm bụng lặp lại.</p>
+                  </div>
+                  <div class="detail-box" style="margin-top: 8px;">
+                    <strong>2. Viêm dạ dày ruột cấp:</strong>
+                    <p>Đau quặn quanh rốn kèm tiêu chảy nhiều lần, buồn nôn, sốt. Khám bụng mềm, nhu động ruột tăng
+                      mạnh.
+                      Chủ yếu bù dịch nâng đỡ đường uống hoặc tĩnh mạch.</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
         </div>
 
-      </div>
+        <!-- REFERENCE -->
+        <section class="checklist-card" style="margin-top: 2rem;">
+          <h2><i class="fa-solid fa-book-bookmark"></i> Tài liệu tham khảo y học</h2>
+          <ul
+            style="list-style: none; padding-left: 0; font-size: var(--text-xs); line-height: 1.6; display:flex; flex-direction:column; gap:8px;">
 
-      <!-- REFERENCE -->
-      <section class="checklist-card" style="margin-top: 2rem;">
-        <h2><i class="fa-solid fa-book-bookmark"></i> Tài liệu tham khảo y học</h2>
-        <ul
-          style="list-style: none; padding-left: 0; font-size: var(--text-xs); line-height: 1.6; display:flex; flex-direction:column; gap:8px;">
+            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Stern SDC, Cifu AS, Altkorn
+              D.
+              <em>Symptoms to Diagnosis: An Evidence-Based Guide</em>. 4th ed. McGraw-Hill Education; 2020.
+            </li>
+            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Harrison M, Mohammed A, eds.
+              <em>Algorithms for Emergency Medicine</em>. Oxford University Press; 2023.
+            </li>
 
-          <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Stern SDC, Cifu AS, Altkorn D.
-            <em>Symptoms to Diagnosis: An Evidence-Based Guide</em>. 4th ed. McGraw-Hill Education; 2020.</li>
-          <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Harrison M, Mohammed A, eds.
-            <em>Algorithms for Emergency Medicine</em>. Oxford University Press; 2023.</li>
+          </ul>
+        </section>
 
-        </ul>
-      </section>
+      </div><!-- end main-wrapper -->
+    </div><!-- end app-container -->
+  </div>
+  <!-- Náº¡p Footer -->
+  <div id="footer-placeholder" data-footer-path="../../../../../../components/footer.html"></div>
 
-    </div><!-- end main-wrapper -->
-  </div><!-- end app-container -->
-
-  <footer class="global-footer">
-    <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
-  </footer>
-
-  <script src="../../../../js/flowchart.js"></script>
+  <script src="../../../../../../js/flowchart.js"></script>
 </body>
 
 </html>

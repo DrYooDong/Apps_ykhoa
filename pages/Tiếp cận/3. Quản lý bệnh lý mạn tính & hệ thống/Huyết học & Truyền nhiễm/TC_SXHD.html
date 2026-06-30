@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi" data-theme="light">
 
 <head>
@@ -15,20 +15,22 @@
         rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="../../../../css/reset.css">
-    <link rel="stylesheet" href="../../../../css/main.css">
-    <link rel="stylesheet" href="../../../../css/components/header.css">
-    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
-    <link rel="stylesheet" href="../../../../css/components/footer.css">
+    <link rel="stylesheet" href="../../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../../css/components/footer.css">
 
-    <script src="../../../../components/header.js"></script>
-    <script src="../../../../components/footer.js"></script>
+    <!-- JS Core -->
+    <script src="../../../../../js/main.js" defer></script>
+    <script src="../../../../../components/header.js" defer></script>
+    <script src="../../../../../components/footer.js" defer></script>
 
-    <link rel="stylesheet" href="../../../../css/components/flowchart.css">
+    <link rel="stylesheet" href="../../../../../css/components/flowchart.css">
 </head>
 
 <body>
-    <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+    <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
     <div class="app-container">
@@ -44,7 +46,7 @@
             <nav class="sidebar-nav" aria-label="Điều hướng chính">
                 <ul class="nav-list" role="list">
                     <li>
-                        <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+                        <a href="../../../../../index.html" class="nav-item" title="Trang chủ">
                             <span class="nav-icon">🏠</span>
                             <span class="nav-text">Trang chủ</span>
                         </a>
@@ -96,7 +98,7 @@
             <nav aria-label="Breadcrumb" class="breadcrumb-container">
                 <ol class="breadcrumb-list">
                     <li class="breadcrumb-item">
-                        <a href="../../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span>
+                        <a href="../../../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span>
                             Home</a>
                     </li>
                     <li class="breadcrumb-item">
@@ -319,7 +321,6 @@
                         <div class="flow-connector-arrow"></div>
                     </div>
                     <div class="flow-branch">
-                        <div class="branch-horizontal"></div>
                         <!-- LEFT: SEVERE YES -->
                         <div class="flow-branch-side">
                             <div class="flow-connector-label fc-yes">CÓ → Dengue Nặng</div>
@@ -402,7 +403,6 @@
 
                             <!-- Second flow branch (nested!) -->
                             <div class="flow-branch" style="max-width:100%;">
-                                <div class="branch-horizontal"></div>
                                 <!-- LEFT: WARNING YES -->
                                 <div class="flow-branch-side">
                                     <div class="flow-connector-label fc-yes">CÓ CẢNH BÁO</div>
@@ -480,7 +480,6 @@
 
                                     <!-- Third flow branch (nested!) -->
                                     <div class="flow-branch" style="max-width:100%;">
-                                        <div class="branch-horizontal"></div>
                                         <!-- LEFT: DENGUE STANDARD YES -->
                                         <div class="flow-branch-side">
                                             <div class="flow-connector-label fc-yes">ĐỦ TIÊU CHUẨN</div>
@@ -618,7 +617,6 @@
                         <div class="flow-connector-arrow"></div>
                     </div>
                     <div class="flow-branch">
-                        <div class="branch-horizontal"></div>
                         <!-- LEFT BRANCH: SHOCK / SEVERE (Group C) -->
                         <div class="flow-branch-side">
                             <div class="flow-connector-label fc-yes">CÓ SỐC (Nhóm C)</div>
@@ -720,7 +718,6 @@
                                 <div class="flow-connector-arrow"></div>
                             </div>
                             <div class="flow-branch" style="max-width:100%;">
-                                <div class="branch-horizontal"></div>
                                 <!-- LEFT: Group B Fluid -->
                                 <div class="flow-branch-side">
                                     <div class="flow-connector-label fc-yes">CÓ (Nhóm B)</div>
@@ -804,14 +801,10 @@
         </main>
     </div>
 
-    <!-- FOOTER -->
-    <footer class="global-footer">
-        <div class="footer-copyright">
-            <p>CliniPortal © 2026. Giao diện tối ưu hóa hiển thị linh hoạt trên Mobile và Desktop.</p>
-        </div>
-    </footer>
+    <!-- Nạp Footer -->
+    <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
 
-    <script src="../../../js/flowchart.js"></script>
+    <script src="../../../../../js/flowchart.js"></script>
     <script>
         function calcFluid() {
             const weight = parseFloat(document.getElementById('fluid_weight').value);

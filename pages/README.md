@@ -10,7 +10,7 @@ Thư mục này chứa toàn bộ các trang nội dung, công cụ tính toán 
 pages/
 ├── Công cụ/                # Các bộ tính toán chỉ số lâm sàng (Clinical Calculators)
 ├── Dược lý/                # Dược động học, tương tác thuốc và phác đồ điều trị triệu chứng
-├── Kỹ năng lâm sàng/       # Hướng dẫn quy trình thực hành kỹ năng (OSCE & Bedside skills)
+├── Kỹ năng/                # Hướng dẫn quy trình thực hành kỹ năng (OSCE & Bedside skills)
 ├── Sinh lý - Sinh lý bệnh/ # Cơ chế sinh lý bệnh trực quan (Visual Physiology)
 ├── Tiếp cận/               # Các thuật toán chẩn đoán & lưu đồ (Interactive Flowcharts)
 ├── Y học chứng cứ/         # Bộ công cụ dịch tễ học và y học chứng cứ (EBM Tools)
@@ -52,8 +52,9 @@ Khi tạo một trang nội dung mới trong các phân hệ, vui lòng tuân th
     ```
 
 2.  **Nhúng JS điều hướng & Layout**:
-    Nhúng các script cần thiết để tự động dựng Header/Footer và nạp Sidebar:
+    Nhúng các script cần thiết để tự động dựng Header/Footer, điều khiển theme và trạng thái co giãn của Sidebar:
     ```html
+    <script src="[path-to-root]/js/main.js" defer></script>
     <script src="[path-to-root]/components/header.js" defer></script>
     <script src="[path-to-root]/components/footer.js" defer></script>
     ```
@@ -79,9 +80,6 @@ Khi tạo một trang nội dung mới trong các phân hệ, vui lòng tuân th
 
       <!-- FOOTER -->
       <div id="footer-placeholder" data-footer-path="[path-to-root]/components/footer.html"></div>
-
-      <!-- Script Sidebar -->
-      <script src="[path-to-root]/js/sidebar.js"></script>
     </body>
     ```
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi" data-theme="light">
 
 <head>
@@ -15,23 +15,87 @@
     rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="../../../../css/reset.css">
-  <link rel="stylesheet" href="../../../../css/main.css">
-  <link rel="stylesheet" href="../../../../css/components/header.css">
-  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
-  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../../css/components/footer.css">
 
-  <script src="../../../../components/header.js"></script>
-  <script src="../../../../components/footer.js"></script>
+  <!-- JS Core -->
+  <script src="../../../../../../js/main.js" defer></script>
+  <script src="../../../../../../components/header.js" defer></script>
+  <script src="../../../../../../components/footer.js" defer></script>
 
   <style>
-    </style>
-  <link rel="stylesheet" href="../../../../css/components/flowchart.css">
+    /* ============================================================
+       QUICK SUB-NAVIGATION SWITCHER BAR (DUAL-ROW)
+    ============================================================ */
+    .tc-sub-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+      padding: 12px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      animation: fadeInUp 0.4s ease-out;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .sub-nav-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sub-nav-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--color-text-faint);
+      margin-right: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .sub-nav-divider {
+      height: 1px;
+      background-color: var(--color-divider);
+      width: 100%;
+    }
+
+    .sub-nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: all var(--tr);
+    }
+
+    .sub-nav-link:hover {
+      color: var(--color-primary);
+      background: var(--color-surface-offset);
+    }
+
+    .sub-nav-link.active {
+      color: var(--color-primary);
+      background: var(--color-primary-hl);
+    }
+  </style>
+  <link rel="stylesheet" href="../../../../../../css/components/flowchart.css">
 
 </head>
 
 <body>
-  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div id="header-placeholder" data-header-path="../../../../../../components/header.html"></div>
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
   <!-- ===================== APP CONTAINER ===================== -->
@@ -49,13 +113,14 @@
       <nav class="sidebar-nav" aria-label="Điều hướng chính">
         <ul class="nav-list" role="list">
           <li>
-            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+            <a href="../../../../../../index.html" class="nav-item" title="Trang chủ">
               <span class="nav-icon">🏠</span>
               <span class="nav-text">Trang chủ</span>
             </a>
           </li>
           <li>
-            <a href="../../../Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item" title="Sinh lý & Sinh lý bệnh">
+            <a href="../../../Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item"
+              title="Sinh lý & Sinh lý bệnh">
               <span class="nav-icon">🧬</span>
               <span class="nav-text">Sinh lý</span>
             </a>
@@ -67,7 +132,7 @@
             </a>
           </li>
           <li>
-            <a href="../../tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
+            <a href="../../../../tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
               <span class="nav-icon">🤒</span>
               <span class="nav-text">Tiếp cận lâm sàng</span>
             </a>
@@ -101,12 +166,12 @@
       <nav aria-label="Breadcrumb" class="breadcrumb-container">
         <ol class="breadcrumb-list">
           <li class="breadcrumb-item">
-            <a href="../../../../index.html" class="breadcrumb-link">
+            <a href="../../../../../../index.html" class="breadcrumb-link">
               <span class="home-icon">🏠</span> Home
             </a>
           </li>
           <li class="breadcrumb-item">
-            <a href="../../tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
+            <a href="../../../../tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
           </li>
           <li class="breadcrumb-item">
             <a href="TC_Daubung.html" class="breadcrumb-link">Tiếp cận Đau Bụng</a>
@@ -169,200 +234,205 @@
       </div>
 
       <!-- INTERACTIVE FLOW CANVAS -->
-      <div class="flow-canvas">
+      <div class="flow-canvas-wrapper">
+        <div class="flow-col">
 
-        <!-- ==================== BƯỚC 1 ==================== -->
-        <div class="fnode fnode-start">
-          <div class="fnode-tag">BƯỚC 1: Đánh giá ban đầu & Sàng lọc ngoài gan mật</div>
-          <div class="fnode-title">
-            <span class="step-badge">1</span>
-            Triage & Extra-hepatobiliary Screening
-          </div>
-          <p class="fnode-body">
-            Đánh giá lâm sàng loại trừ các nguyên nhân từ cơ quan ngoài ổ bụng (Phổi, Thận, Tiết niệu).
-          </p>
-        </div>
-
-        <div class="flow-connector">
-          <div class="flow-connector-line" style="height: 35px;"></div>
-          <div class="flow-connector-arrow"></div>
-        </div>
-
-        <div class="flow-branch">
-          <div class="flow-branch-side">
-            <div class="flow-connector-label fc-yes">⚠️ Có Triệu Chứng Hô Hấp/Tiết Niệu</div>
-            <div class="flow-connector">
-              <div class="flow-connector-line"></div>
-              <div class="flow-connector-arrow"></div>
+          <!-- ==================== BƯỚC 1 ==================== -->
+          <div class="fnode fnode-start">
+            <div class="fnode-tag">BƯỚC 1: Đánh giá ban đầu & Sàng lọc ngoài gan mật</div>
+            <div class="fnode-title">
+              <span class="step-badge">1</span>
+              Triage & Extra-hepatobiliary Screening
             </div>
-            <div class="fnode fnode-danger clickable" onclick="toggleNode(this)">
-              <div class="fnode-tag">🚨 Xử trí ngoài gan mật</div>
-              <div class="fnode-title">CHẨN ĐOÁN THEO CƠ QUAN LIÊN QUAN</div>
-              <p class="fnode-body">
-                Tiến hành các chẩn đoán hình ảnh và xét nghiệm đặc hiệu cho phổi hoặc hệ niệu.
-              </p>
-              <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem hướng dẫn chẩn
-                đoán</div>
-              <div class="fnode-details">
-                <div class="detail-box">
-                  <strong>1. Biểu hiện hô hấp (Ho, đau ngực kiểu màng phổi, giảm SpO2):</strong>
-                  <ul>
-                    <li>Chụp X-quang phổi thẳng đứng (CXR).</li>
-                    <li>Nếu nghi ngờ Thuyên tắc phổi (PE): định lượng D-dimer, chụp CT xoắn ốc mạch máu phổi (CTPA).
-                    </li>
-                  </ul>
-                </div>
-                <div class="detail-box">
-                  <strong>2. Biểu hiện tiết niệu (Đau hông lưng, tiểu máu/tiểu mủ):</strong>
-                  <ul>
-                    <li>Tổng phân tích nước tiểu (Urine dipstick).</li>
-                    <li>Nghi ngờ sỏi niệu quản: Chụp CT hệ tiết niệu không cản quang (Non-contrast CT KUB).</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+            <p class="fnode-body">
+              Đánh giá lâm sàng loại trừ các nguyên nhân từ cơ quan ngoài ổ bụng (Phổi, Thận, Tiết niệu).
+            </p>
           </div>
 
-          <div class="flow-branch-side">
-            <div class="flow-connector-label fc-no">🟢 Không Có (Khu trú tại bụng)</div>
-            <div class="flow-connector">
-              <div class="flow-connector-line"></div>
-              <div class="flow-connector-arrow"></div>
-            </div>
-
-            <!-- BƯỚC 2 -->
-            <div class="fnode fnode-info clickable" onclick="toggleNode(this)">
-              <div class="fnode-tag">BƯỚC 2: Định hướng nguyên nhân gan mật</div>
-              <div class="fnode-title">
-                <span class="step-badge">2</span>
-                Khám gan mật & Xét nghiệm máu
-              </div>
-              <p class="fnode-body">
-                Khai thác dấu hiệu Murphy, cơn đau quặn mật và chỉ định các xét nghiệm men gan, sinh hóa.
-              </p>
-              <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem chi tiết khám &
-                xét nghiệm</div>
-              <div class="fnode-details">
-                <div class="detail-box">
-                  <strong>Dấu hiệu gợi ý gan mật:</strong>
-                  <ul>
-                    <li>Cơn đau quặn mật (bắt đầu thượng vị/hạ sườn phải lan lên vai phải, kéo dài vài giờ).</li>
-                    <li>Sốt, vàng da (Tam chứng Charcot gợi ý viêm đường mật).</li>
-                    <li>Dấu hiệu Murphy dương tính: ngừng thở đột ngột khi ấn sâu vùng hạ sườn phải trong lúc bệnh nhân
-                      hít vào.</li>
-                  </ul>
-                </div>
-                <div class="detail-box">
-                  <strong>Chỉ định xét nghiệm máu bắt buộc:</strong>
-                  <ul>
-                    <li>Công thức máu (CBC), CRP.</li>
-                    <li>Sinh hóa gan toàn bộ (LFTs): AST, ALT, Bilirubin toàn phần & trực tiếp, Alkaline Phosphatase
-                      (ALP), GGT.</li>
-                    <li>Amylase & Lipase máu (loại trừ viêm tụy cấp).</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="flow-connector">
-              <div class="flow-connector-line"></div>
-              <div class="flow-connector-arrow"></div>
-            </div>
-
-            <!-- BƯỚC 3 -->
-            <div class="fnode fnode-warn clickable" onclick="toggleNode(this)">
-              <div class="fnode-tag">BƯỚC 3: Siêu âm bụng đầu tay</div>
-              <div class="fnode-title">
-                <span class="step-badge">3</span>
-                Chẩn đoán hình ảnh bước 1
-              </div>
-              <p class="fnode-body">
-                Siêu âm bụng tổng quát là lựa chọn hàng đầu để khảo sát đường mật và nhu mô gan.
-              </p>
-              <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem phân loại kết quả
-                siêu âm</div>
-              <div class="fnode-details">
-                <div class="detail-box" style="border-left: 4px solid var(--c-danger);">
-                  <strong>🔴 Kết quả SIÊU ÂM DƯƠNG TÍNH:</strong>
-                  <p>Siêu âm thấy sỏi túi mật, thành túi mật dày > 4mm, dịch quanh túi mật, hoặc dấu Murphy siêu âm
-                    dương tính.</p>
-                  <p>👉 <b>Chẩn đoán:</b> Viêm túi mật cấp / Sỏi túi mật. Hội chẩn ngoại khoa để xem xét cắt túi mật.
-                  </p>
-                </div>
-                <div class="detail-box" style="border-left: 4px solid var(--c-info); margin-top: 8px;">
-                  <strong>⚪ Kết quả SIÊU ÂM ÂM TÍNH HOẶC KHÔNG RÕ RÀNG:</strong>
-                  <p>Lâm sàng vẫn nghi ngờ nhiều nhưng siêu âm không thấy bất thường hoặc chỉ thấy chướng hơi cản trở.
-                    Chuyển sang Bước 4.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="flow-connector">
-              <div class="flow-connector-line"></div>
-              <div class="flow-connector-arrow"></div>
-            </div>
-
-            <!-- BƯỚC 4 -->
-            <div class="fnode fnode-question clickable" onclick="toggleNode(this)">
-              <div class="fnode-tag">BƯỚC 4: Chẩn đoán hình ảnh nâng cao</div>
-              <div class="fnode-title">
-                <span class="step-badge">4</span>
-                Advanced Imaging & Xử trí
-              </div>
-              <p class="fnode-body">
-                Sử dụng HIDA scan, CT hoặc MRCP dựa trên các dấu hiệu lâm sàng và xét nghiệm bổ sung.
-              </p>
-              <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem hướng dẫn chẩn
-                đoán nâng cao</div>
-              <div class="fnode-details">
-                <div class="detail-box">
-                  <strong>1. Nghi ngờ viêm túi mật cấp (siêu âm âm tính):</strong>
-                  <ul>
-                    <li>Chụp xạ hình đường mật (HIDA scan) hoặc chụp CT ổ bụng.</li>
-                    <li>Hình ảnh túi mật không hiển thị trên HIDA scan sau 4 giờ là tiêu chuẩn vàng chẩn đoán viêm túi
-                      mật cấp.</li>
-                  </ul>
-                </div>
-                <div class="detail-box" style="margin-top: 8px;">
-                  <strong>2. Nghi ngờ sỏi ống mật chủ hoặc viêm đường mật (Vàng da, Bilirubin tăng):</strong>
-                  <ul>
-                    <li>Chỉ định chụp cộng hưởng từ đường mật tụy (MRCP) hoặc Siêu âm nội soi (EUS).</li>
-                    <li>Nếu xác định tắc nghẽn: Can thiệp lấy sỏi khẩn cấp qua nội soi mật tụy ngược dòng (ERCP).</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
+          <div class="flow-connector">
+            <div class="flow-connector-line" style="height: 35px;"></div>
+            <div class="flow-connector-arrow"></div>
           </div>
+
+          <div class="flow-branch">
+            <div class="flow-branch-side">
+              <div class="flow-connector-label fc-yes">⚠️ Có Triệu Chứng Hô Hấp/Tiết Niệu</div>
+              <div class="flow-connector">
+                <div class="flow-connector-line"></div>
+                <div class="flow-connector-arrow"></div>
+              </div>
+              <div class="fnode fnode-danger clickable" onclick="toggleNode(this)">
+                <div class="fnode-tag">🚨 Xử trí ngoài gan mật</div>
+                <div class="fnode-title">CHẨN ĐOÁN THEO CƠ QUAN LIÊN QUAN</div>
+                <p class="fnode-body">
+                  Tiến hành các chẩn đoán hình ảnh và xét nghiệm đặc hiệu cho phổi hoặc hệ niệu.
+                </p>
+                <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem hướng dẫn chẩn
+                  đoán</div>
+                <div class="fnode-details">
+                  <div class="detail-box">
+                    <strong>1. Biểu hiện hô hấp (Ho, đau ngực kiểu màng phổi, giảm SpO2):</strong>
+                    <ul>
+                      <li>Chụp X-quang phổi thẳng đứng (CXR).</li>
+                      <li>Nếu nghi ngờ Thuyên tắc phổi (PE): định lượng D-dimer, chụp CT xoắn ốc mạch máu phổi (CTPA).
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="detail-box">
+                    <strong>2. Biểu hiện tiết niệu (Đau hông lưng, tiểu máu/tiểu mủ):</strong>
+                    <ul>
+                      <li>Tổng phân tích nước tiểu (Urine dipstick).</li>
+                      <li>Nghi ngờ sỏi niệu quản: Chụp CT hệ tiết niệu không cản quang (Non-contrast CT KUB).</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flow-branch-side">
+              <div class="flow-connector-label fc-no">🟢 Không Có (Khu trú tại bụng)</div>
+              <div class="flow-connector">
+                <div class="flow-connector-line"></div>
+                <div class="flow-connector-arrow"></div>
+              </div>
+
+              <!-- BƯỚC 2 -->
+              <div class="fnode fnode-info clickable" onclick="toggleNode(this)">
+                <div class="fnode-tag">BƯỚC 2: Định hướng nguyên nhân gan mật</div>
+                <div class="fnode-title">
+                  <span class="step-badge">2</span>
+                  Khám gan mật & Xét nghiệm máu
+                </div>
+                <p class="fnode-body">
+                  Khai thác dấu hiệu Murphy, cơn đau quặn mật và chỉ định các xét nghiệm men gan, sinh hóa.
+                </p>
+                <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem chi tiết khám &
+                  xét nghiệm</div>
+                <div class="fnode-details">
+                  <div class="detail-box">
+                    <strong>Dấu hiệu gợi ý gan mật:</strong>
+                    <ul>
+                      <li>Cơn đau quặn mật (bắt đầu thượng vị/hạ sườn phải lan lên vai phải, kéo dài vài giờ).</li>
+                      <li>Sốt, vàng da (Tam chứng Charcot gợi ý viêm đường mật).</li>
+                      <li>Dấu hiệu Murphy dương tính: ngừng thở đột ngột khi ấn sâu vùng hạ sườn phải trong lúc bệnh
+                        nhân
+                        hít vào.</li>
+                    </ul>
+                  </div>
+                  <div class="detail-box">
+                    <strong>Chỉ định xét nghiệm máu bắt buộc:</strong>
+                    <ul>
+                      <li>Công thức máu (CBC), CRP.</li>
+                      <li>Sinh hóa gan toàn bộ (LFTs): AST, ALT, Bilirubin toàn phần & trực tiếp, Alkaline Phosphatase
+                        (ALP), GGT.</li>
+                      <li>Amylase & Lipase máu (loại trừ viêm tụy cấp).</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flow-connector">
+                <div class="flow-connector-line"></div>
+                <div class="flow-connector-arrow"></div>
+              </div>
+
+              <!-- BƯỚC 3 -->
+              <div class="fnode fnode-warn clickable" onclick="toggleNode(this)">
+                <div class="fnode-tag">BƯỚC 3: Siêu âm bụng đầu tay</div>
+                <div class="fnode-title">
+                  <span class="step-badge">3</span>
+                  Chẩn đoán hình ảnh bước 1
+                </div>
+                <p class="fnode-body">
+                  Siêu âm bụng tổng quát là lựa chọn hàng đầu để khảo sát đường mật và nhu mô gan.
+                </p>
+                <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem phân loại kết
+                  quả
+                  siêu âm</div>
+                <div class="fnode-details">
+                  <div class="detail-box" style="border-left: 4px solid var(--c-danger);">
+                    <strong>🔴 Kết quả SIÊU ÂM DƯƠNG TÍNH:</strong>
+                    <p>Siêu âm thấy sỏi túi mật, thành túi mật dày > 4mm, dịch quanh túi mật, hoặc dấu Murphy siêu âm
+                      dương tính.</p>
+                    <p>👉 <b>Chẩn đoán:</b> Viêm túi mật cấp / Sỏi túi mật. Hội chẩn ngoại khoa để xem xét cắt túi mật.
+                    </p>
+                  </div>
+                  <div class="detail-box" style="border-left: 4px solid var(--c-info); margin-top: 8px;">
+                    <strong>⚪ Kết quả SIÊU ÂM ÂM TÍNH HOẶC KHÔNG RÕ RÀNG:</strong>
+                    <p>Lâm sàng vẫn nghi ngờ nhiều nhưng siêu âm không thấy bất thường hoặc chỉ thấy chướng hơi cản trở.
+                      Chuyển sang Bước 4.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flow-connector">
+                <div class="flow-connector-line"></div>
+                <div class="flow-connector-arrow"></div>
+              </div>
+
+              <!-- BƯỚC 4 -->
+              <div class="fnode fnode-question clickable" onclick="toggleNode(this)">
+                <div class="fnode-tag">BƯỚC 4: Chẩn đoán hình ảnh nâng cao</div>
+                <div class="fnode-title">
+                  <span class="step-badge">4</span>
+                  Advanced Imaging & Xử trí
+                </div>
+                <p class="fnode-body">
+                  Sử dụng HIDA scan, CT hoặc MRCP dựa trên các dấu hiệu lâm sàng và xét nghiệm bổ sung.
+                </p>
+                <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem hướng dẫn chẩn
+                  đoán nâng cao</div>
+                <div class="fnode-details">
+                  <div class="detail-box">
+                    <strong>1. Nghi ngờ viêm túi mật cấp (siêu âm âm tính):</strong>
+                    <ul>
+                      <li>Chụp xạ hình đường mật (HIDA scan) hoặc chụp CT ổ bụng.</li>
+                      <li>Hình ảnh túi mật không hiển thị trên HIDA scan sau 4 giờ là tiêu chuẩn vàng chẩn đoán viêm túi
+                        mật cấp.</li>
+                    </ul>
+                  </div>
+                  <div class="detail-box" style="margin-top: 8px;">
+                    <strong>2. Nghi ngờ sỏi ống mật chủ hoặc viêm đường mật (Vàng da, Bilirubin tăng):</strong>
+                    <ul>
+                      <li>Chỉ định chụp cộng hưởng từ đường mật tụy (MRCP) hoặc Siêu âm nội soi (EUS).</li>
+                      <li>Nếu xác định tắc nghẽn: Can thiệp lấy sỏi khẩn cấp qua nội soi mật tụy ngược dòng (ERCP).</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
         </div>
 
-      </div>
+        <!-- REFERENCE -->
+        <section class="checklist-card" style="margin-top: 2rem;">
+          <h2><i class="fa-solid fa-book-bookmark"></i> Tài liệu tham khảo y học</h2>
+          <ul
+            style="list-style: none; padding-left: 0; font-size: var(--text-xs); line-height: 1.6; display:flex; flex-direction:column; gap:8px;">
 
-      <!-- REFERENCE -->
-      <section class="checklist-card" style="margin-top: 2rem;">
-        <h2><i class="fa-solid fa-book-bookmark"></i> Tài liệu tham khảo y học</h2>
-        <ul
-          style="list-style: none; padding-left: 0; font-size: var(--text-xs); line-height: 1.6; display:flex; flex-direction:column; gap:8px;">
+            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Yew KS, George MK, Allred
+              HB.
+              Acute Abdominal Pain in Adults: Evaluation and Diagnosis. <em>Am Fam Physician</em>. 2023;107(6):585-596.
+            </li>
+            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Stern SDC, Cifu AS, Altkorn
+              D.
+              <em>Symptoms to Diagnosis: An Evidence-Based Guide</em>. 4th ed. McGraw-Hill Education; 2020.
+            </li>
+            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Cartwright SL, Knudson MP.
+              Evaluation of Acute Abdominal Pain in Adults. <em>Am Fam Physician</em>. 2008;77(7):971-978.</li>
 
-          <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Yew KS, George MK, Allred HB.
-            Acute Abdominal Pain in Adults: Evaluation and Diagnosis. <em>Am Fam Physician</em>. 2023;107(6):585-596.
-          </li>
-          <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Stern SDC, Cifu AS, Altkorn D.
-            <em>Symptoms to Diagnosis: An Evidence-Based Guide</em>. 4th ed. McGraw-Hill Education; 2020.</li>
-          <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Cartwright SL, Knudson MP.
-            Evaluation of Acute Abdominal Pain in Adults. <em>Am Fam Physician</em>. 2008;77(7):971-978.</li>
+          </ul>
+        </section>
 
-        </ul>
-      </section>
+      </div><!-- end main-wrapper -->
+    </div><!-- end app-container -->
+  </div>
+  <!-- Náº¡p Footer -->
+  <div id="footer-placeholder" data-footer-path="../../../../../../components/footer.html"></div>
 
-    </div><!-- end main-wrapper -->
-  </div><!-- end app-container -->
-
-  <footer class="global-footer">
-    <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
-  </footer>
-
-  <script src="../../../../js/flowchart.js"></script>
+  <script src="../../../../../../js/flowchart.js"></script>
 </body>
 
 </html>

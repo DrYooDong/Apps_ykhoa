@@ -6,6 +6,21 @@ Thư mục này chứa toàn bộ các tài nguyên tĩnh phục vụ cho giao d
 
 ## 📁 Cấu trúc Thư mục Tài nguyên
 
+```
+assets/
+├── fonts/                 # Bộ phông chữ Inter cục bộ phục vụ chạy ngoại tuyến
+├── images/                # Các sơ đồ và hình vẽ minh họa y khoa gốc (SVG, PNG)
+├── logos/                 # Biểu trưng, thương hiệu, favicons và app icons
+├── icons/                 # Hơn 50+ biểu tượng SVG chuyên khoa y học
+├── lottie/                # Kho hoạt ảnh y khoa động định dạng JSON
+├── buttons/               # Thư viện hiệu ứng CSS động cho nút bấm
+├── geometry/              # Hoa văn và hình khối hình học trang trí
+├── backgrounds/           # Dải màu gradients và hình nền Glassmorphism
+├── charts/                # Thư viện và mẫu vẽ đồ thị y học thuần JS
+├── demo-assets.html       # Trang cổng thư viện hiển thị và thử nghiệm assets
+└── README.md              # Tài liệu hướng dẫn này
+```
+
 ### 1. 🎨 Biểu trưng & Thương hiệu (`/logos`)
 *   **Logo chính (`/main`)**: Chứa các biến thể logo của CliniPortal dạng đầy đủ (`cliniportal-full.svg`), dạng biểu tượng (`cliniportal-icon.svg`), và dạng văn bản chữ (`cliniportal-text.svg`) hỗ trợ cả giao diện sáng (Light) và tối (Dark).
 *   **Biểu tượng Phân hệ (`/modules`)**: Bộ logo màu sắc đặc trưng cho 6 phân hệ lớn:
@@ -42,6 +57,12 @@ Thư mục này chứa toàn bộ các tài nguyên tĩnh phục vụ cho giao d
 ### 7. 📊 Thư viện Đồ thị (`/charts`)
 *   Thư viện vẽ biểu đồ y khoa viết bằng JavaScript thuần (`pure-charts.js`) không phụ thuộc vào bất kỳ thư viện bên ngoài nào.
 *   Hỗ trợ biểu đồ Đường (Line), Cột (Bar), Đồng hồ đo (Gauge), Radar, giúp trực quan hóa sinh hiệu, kết quả lab, và động học nồng độ thuốc.
+
+### 8. 📷 Hình ảnh & Sơ đồ Y khoa (`/images`)
+*   Chứa các hình ảnh, sơ đồ giải phẫu học, và lưu đồ tĩnh hỗ trợ trực quan hóa các bài viết lý thuyết sinh lý/lâm sàng (ví dụ: `co2_transport_blood.png`, `body_fluid_compartments.svg`, `blood_components.svg`).
+
+### 9. 🔤 Phông chữ Hệ thống (`/fonts`)
+*   Chứa bộ phông chữ Inter (Variable Font) phục vụ hiển thị ngoại tuyến trong môi trường PWA hoặc khi mất kết nối mạng.
 
 ---
 
