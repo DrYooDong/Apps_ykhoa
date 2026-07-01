@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Sinh lý tiêu hóa tại dạ dày: Hoạt động cơ học chứa đựng (giãn thích nghi), nhu động nhào trộn và sự tống thoát dưỡng trấp. Bài tiết dịch vị, cơ chế phân tử bài tiết HCl ở tế bào thành, vai trò của yếu tố nội tại và điều hòa bài tiết dịch vị. Ứng dụng lâm sàng liên quan.">
+  <title>Phần 5: Sinh lý Tiêu hóa – Sinh lý Dạ dày</title>
+  
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core CliniPortal -->
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  
+  <!-- CSS chuyên biệt Sinh lý & TOC -->
+  <link rel="stylesheet" href="../../../../css/components/physio-patho.css">
+  <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+  <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+  <link rel="stylesheet" href="../../css/physio-shared.css">
+  <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+  <!-- Scripts điều hướng & xử lý tương tác động -->
+  <script src="../../../../js/toc.js" defer></script>
+  <script src="../../../../components/header.js"></script>
+  <script src="../../../../components/footer.js"></script>
+  <script src="../../js/physio-shared.js" defer></script>
+  <script src="../../../../js/main.js" defer></script>
+</head>
+
+<body>
+  <!-- Nạp Header động -->
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR HỆ THỐNG -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh">
+              <span class="nav-icon">🧬</span>
+              <span class="nav-text">Sinh lý</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng lâm sàng">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ lâm sàng">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý & Kháng sinh">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+              <span class="nav-icon">📄</span>
+              <span class="nav-text">Y học chứng cứ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Y học cổ truyền/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền">
+              <span class="nav-icon">☯️</span>
+              <span class="nav-text">Y học cổ truyền</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- KHUNG CHỨA NỘI DUNG CHÍNH -->
+    <div class="main-wrapper" id="mainContent">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container" style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+        <ol class="breadcrumb-list" style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+          <li><a href="../../../../index.html">🏠 Home</a> &gt;</li>
+          <li><a href="../../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+          <li style="color:var(--color-primary); font-weight:600;">Chương 5: Sinh lý Tiêu hóa - Bài: Sinh lý dạ dày</li>
+        </ol>
+      </nav>
+
+      <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+      <main class="visual-container">
+        <!-- Chapter Header -->
+        <div class="chapter-header">
+          <h1>Sinh lý dạ dày</h1>
+          <p>Tìm hiểu các chức năng cơ học chứa đựng, nhào trộn và tống thoát dưỡng trấp; cơ chế phân tử bài tiết HCl ở tế bào thành; vai trò của yếu tố nội tại và điều hòa thần kinh - nội tiết của hoạt động dạ dày cùng các ứng dụng lâm sàng loét dạ dày, thiếu máu ác tính, và các nhóm thuốc điều trị.</p>
+        </div>
+
+        <!-- PHẦN I: Hoạt động cơ học -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần I: Hoạt động cơ học của dạ dày</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              Dạ dày hoạt động như một buồng nhào trộn cơ học và bể chứa thức ăn tạm thời. Hoạt động cơ học của dạ dày gồm 3 khâu chính: chứa đựng thức ăn, nhào trộn thức ăn với dịch vị tạo thành dưỡng trấp (chyme), và tống thoát dưỡng trấp qua môn vị vào tá tràng với tốc độ thích hợp.
+            </p>
+
+            <h3>1. Chức năng chứa đựng và phản xạ giãn thích nghi</h3>
+            <p>
+              Khi thức ăn đi qua thực quản, phản xạ nuốt kích thích sợi hướng tâm phế vị đi về hành não, từ đó kích hoạt các sợi ly tâm phế vị đối giao cảm đi tới đám rối thần kinh cơ ruột ở vùng đáy và thân dạ dày. Các sợi này giải phóng các chất truyền tin thần kinh ức chế co thắt cơ trơn là <span class="term-hl">nitric oxide (NO)</span> và <span class="term-hl">vasoactive intestinal peptide (VIP)</span>. 
+            </p>
+            <p>
+              Hiện tượng này gọi là <span class="term-hl">phản xạ giãn thích nghi (receptive relaxation)</span>, cho phép dạ dày giãn rộng thể tích chứa đựng từ 50 mL ban đầu lên đến 1,5 lít mà áp suất trong lòng dạ dày hầu như tăng rất ít, ngăn cản sự tăng áp lực ổ bụng và trào ngược thực quản.
+            </p>
+
+            <div class="clinical-note-box" style="background: var(--color-warning-hl); border-left: 4px solid var(--color-warning); margin-top: 1.25rem; margin-bottom: 1.25rem;">
+              <div class="clinical-note-title" style="font-weight: 700; color: var(--color-warning); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: var(--text-sm);">
+                🧠 Ý NGHĨA SINH LÝ: PHẢN XẠ GIÃN THÍCH NGHI
+              </div>
+              <p style="font-size: var(--text-xs); line-height: 1.6; margin: 0; color: var(--color-text-muted);">
+                Nếu dây X bị cắt bỏ hoặc bị tổn thương, dạ dày sẽ mất phản xạ giãn thích nghi. Khi đó, áp suất dạ dày sẽ tăng vọt rất nhanh ngay khi nhận một lượng thức ăn nhỏ, gây ra cảm giác no sớm, đầy chướng bụng, đau thượng vị và dễ nôn ói.
+              </p>
+            </div>
+
+            <h3>2. Sự nhào trộn thức ăn và cơ chế dội ngược (Retropulsion)</h3>
+            <p>
+              Các sóng nhu động bắt nguồn từ vùng tạo nhịp tự phát (gồm các <span class="term-hl">tế bào kẽ Cajal</span>) ở phần cao thân vị, lan dần xuống hang vị với tần số khoảng <strong>3 chu kỳ/phút</strong>.
+            </p>
+            <p>
+              Khi sóng co bóp tiến xuống hang vị, lớp cơ dày lên làm cho lực co bóp mạnh dần lên để ép và nhào trộn thức ăn. Khi sóng nhu động chạm tới cơ môn vị, cơ thắt môn vị co lại. Hầu hết dưỡng trấp bị sóng nhu động dồn ép sẽ va vào môn vị đang đóng kín và bị dội ngược trở lại thân vị (gọi là <span class="term-hl">hiện tượng dội ngược - retropulsion</span>). Hiện tượng này lặp đi lặp lại giúp nghiền nát thức ăn dạng thô thành các hạt dưỡng trấp có đường kính dưới 2 mm.
+            </p>
+
+            <div class="image-placeholder-card" style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
+              <div class="image-title">
+                <span>🖼️</span> Hình 1: Cơ chế nhu động nhào trộn và dội ngược (Retropulsion) ở hang vị dạ dày (Sách Berne & Levy Physiology)
+              </div>
+              <div class="image-drop-area">
+                <div class="image-drop-text">
+                  <img src="../../images/Phan5/CoHoc_Daday_Mixing.png" alt="Nhu động và cơ chế dội ngược dạ dày"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                    <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                    <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh nhu động và dội ngược đang được cập nhật</p>
+                  </div>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Mô tả:</strong> Thể hiện sóng nhu động lan từ thân vị xuống hang vị. Sự co thắt của môn vị giữ hầu hết dưỡng trấp lại và đẩy ngược trở lại lòng dạ dày để tiếp tục nghiền nhỏ, chỉ cho phép dung dịch lỏng thoát đi.
+              </div>
+            </div>
+
+            <h3>3. Sự tống thoát dạ dày (Gastric Emptying) và điều hòa ngược tá tràng</h3>
+            <p>
+              Chỉ các hạt thức ăn đã được nghiền nhỏ và dung dịch lỏng mới được tống thoát qua môn vị (nhờ hoạt động của bơm hang vị). Tốc độ tống thoát dạ dày được điều phối cân bằng bởi hai cơ chế thúc đẩy và ức chế đối nghịch:
+            </p>
+
+            <div class="physio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+              <!-- Cột Thúc đẩy -->
+              <div class="physio-grid-card" style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-success);">
+                <div class="physio-grid-title" style="font-weight: 700; color: var(--color-success); font-size: var(--text-sm); margin-bottom: 0.5rem;">
+                  🟢 Các yếu tố thúc đẩy tống thoát (Từ dạ dày)
+                </div>
+                <ul class="physio-list-arrow" style="font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.6; margin: 0; padding-left: 1rem;">
+                  <li><strong>Thể tích thức ăn:</strong> Thức ăn làm căng phồng thành dạ dày kích hoạt các phản xạ cơ học thần kinh tại chỗ và kích thích dây X, làm tăng co bóp hang vị và giãn mở môn vị.</li>
+                  <li><strong>Hormon Gastrin:</strong> Tiết ra từ tế bào G khi có protein/sự căng giãn ở hang vị, giúp tăng co bóp cơ trơn thành dạ dày, thúc đẩy bơm hang vị hoạt động.</li>
+                </ul>
+              </div>
+
+              <!-- Cột Ức chế -->
+              <div class="physio-grid-card" style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-rose);">
+                <div class="physio-grid-title" style="font-weight: 700; color: var(--color-rose); font-size: var(--text-sm); margin-bottom: 0.5rem;">
+                  🔴 Các yếu tố ức chế tống thoát (Từ tá tràng)
+                </div>
+                <ul class="physio-list-arrow" style="font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.6; margin: 0; padding-left: 1rem;">
+                  <li><strong>Phản xạ ruột - dạ dày (Enterogastric reflex):</strong> Kích hoạt bởi acid tá tràng (pH &lt; 3.5), dưỡng trấp ưu trương, hay sản phẩm tiêu hóa mỡ. Phản xạ này ức chế trực tiếp hoạt động phế vị, làm co thắt cơ vòng môn vị.</li>
+                  <li><strong>Hormon tá tràng (Enterogastrones):</strong> Mỡ kích thích tế bào I tá tràng tiết <span class="term-hl-secondary">Cholecystokinin (CCK)</span>. Acid kích thích tế bào S tiết <span class="term-hl-secondary">Secretin</span>. Glucose kích thích tiết <span class="term-hl-secondary">GIP</span>. Tất cả các hormon này đi theo máu để làm chậm co bóp dạ dày.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- PHẦN II: Hoạt động bài tiết -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần II: Hoạt động bài tiết của dạ dày (Dịch vị)</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              Niêm mạc dạ dày bài tiết khoảng 2 - 2,5 lít dịch vị mỗi ngày. Các tuyến bài tiết dịch vị được định vị ở hai khu vực giải phẫu chính với chức năng khác biệt.
+            </p>
+
+            <h3>1. Tuyến sinh acid (Oxyntic glands / Gastric glands)</h3>
+            <p>
+              Tuyến sinh acid chiếm khoảng 80% diện tích niêm mạc, nằm ở vùng đáy và thân dạ dày. Tuyến cấu tạo gồm nhiều tế bào chuyên biệt:
+            </p>
+            <ul class="physio-list-arrow">
+              <li><strong>Tế bào thành (Parietal cells / Oxyntic cells):</strong> Bài tiết <span class="term-hl">Acid Clohydric (HCl)</span> cực to và <span class="term-hl">Yếu tố nội tại (Intrinsic factor)</span>.</li>
+              <li><strong>Tế bào chính (Chief cells / Peptic cells):</strong> Bài tiết <span class="term-hl">pepsinogen</span> (tiền men chưa hoạt động). HCl sẽ cắt liên kết peptide để hoạt hóa pepsinogen thành <span class="term-hl">pepsin</span> hoạt động, có khả năng cắt đứt các chuỗi protein thức ăn.</li>
+              <li><strong>Tế bào giống ưa chrom của ruột (ECL cells):</strong> Bài tiết <span class="term-hl">histamine</span>, chất truyền tin cận tiết kích hoạt thụ thể H2 trên tế bào thành để tiết acid.</li>
+              <li><strong>Tế bào cổ tuyến (Mucous neck cells):**</strong> Tiết ra chất nhầy hòa tan để bảo vệ lòng cổ tuyến.</li>
+            </ul>
+
+            <h3>2. Tuyến môn vị (Pyloric glands)</h3>
+            <p>
+              Nằm ở vùng hang vị, chiếm 20% niêm mạc. Tuyến môn vị chủ yếu bài tiết chất nhầy bảo vệ và các hormon điều hòa nội tiết quan trọng:
+            </p>
+            <ul class="physio-list-arrow">
+              <li><strong>Tế bào G (G-cells):</strong> Bài tiết hormon <span class="term-hl">gastrin</span> vào máu tĩnh mạch để kích thích tiết acid và nhu động.</li>
+              <li><strong>Tế bào D (D-cells):</strong> Bài tiết <span class="term-hl">somatostatin</span>, chất ức chế vạn năng có tác dụng ức chế trực tiếp tế bào thành tiết acid và gián tiếp ngăn tế bào G tiết gastrin và tế bào ECL tiết histamine.</li>
+            </ul>
+
+            <h3>3. Hàng rào bảo vệ niêm mạc dạ dày (Gastric Mucosal Barrier)</h3>
+            <p>
+              Để niêm mạc dạ dày không bị tiêu hủy bởi dịch vị có độ acid cực kỳ cao (pH khoảng 1.5 - 2.0) và enzyme pepsin tiêu đạm, cơ thể đã thiết lập một hệ thống bảo vệ đa lớp:
+            </p>
+            <ol class="physio-steps">
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Lớp gel chất nhầy - Bicarbonate</span>
+                  Tế bào biểu mô bề mặt tiết lớp gel glycoprotein dày (~0.2 mm) bao bọc toàn bộ bề mặt niêm mạc dạ dày, đồng thời tiết ion <span class="term-hl-secondary">HCO<sub>3</sub><sup>-</sup></span> bị bẫy lại trong lớp gel này. Lớp gel tạo ra bậc thang pH: pH trong lòng dạ dày là 1.5 - 2.0, nhưng pH ở bề mặt tế bào biểu mô duy trì gần trung tính ~ 7.0.
+                </div>
+              </li>
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Liên kết chặt chẽ giữa tế bào biểu mô</span>
+                  Các liên kết chặt (tight junctions) giữa các tế bào biểu mô ngăn cản các ion <span class="term-hl-secondary">H<sup>+</sup></span> khuếch tán ngược từ lòng dạ dày vào kẽ mô.
+                </div>
+              </li>
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Tưới máu phong phú và Prostaglandin</span>
+                  Mạng lưới mạch máu niêm mạc tưới máu dồi dào mang lại các chất dinh dưỡng và mang đi các ion $H^+$ khuếch tán ngược. Sự bài tiết nhầy, bicarbonate và sự tưới máu này phụ thuộc vào vai trò điều hòa của <span class="term-hl">Prostaglandin E2 và I2</span> được tổng hợp nội sinh thông qua con đường enzym COX-1.
+                </div>
+              </li>
+            </ol>
+
+            <div class="clinical-note-box" style="background: var(--color-warning-hl); border-left: 4px solid var(--color-warning); margin-top: 1.5rem;">
+              <div class="clinical-note-title" style="font-weight: 700; color: var(--color-warning); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: var(--text-sm);">
+                🧠 CƠ CHẾ TÁC DỤNG PHỤ CỦA THUỐC NSAIDs
+              </div>
+              <p style="font-size: var(--text-xs); line-height: 1.6; margin: 0; color: var(--color-text-muted);">
+                Các thuốc kháng viêm không steroid (NSAIDs) như Aspirin, Ibuprofen hoạt động bằng cách ức chế enzym COX-1. Điều này trực tiếp làm suy giảm lượng prostaglandin ở dạ dày, dẫn tới giảm tiết chất nhầy, giảm bài tiết bicarbonate, co mạch giảm dòng máu niêm mạc, làm sụp đổ hàng rào bảo vệ dạ dày và gây ra các vết loét chảy máu nghiêm trọng.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- PHẦN III: Cơ chế tế bào bài tiết HCl -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần III: Cơ chế tế bào bài tiết Acid Clohydric (HCl)</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              Tế bào thành (parietal cell) có cấu trúc đặc biệt chứa các vi ống chế tiết (secretory canaliculi) ăn sâu vào trong tế bào giúp làm tăng diện tích màng đỉnh khi được kích hoạt. Quá trình sản sinh và bài tiết ion $H^+$ và $Cl^-$ vào lòng dạ dày diễn ra qua các bước cụ thể:
+            </p>
+
+            <ol class="physio-steps">
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Bước 1: Bơm Proton (H<sup>+</sup>/K<sup>+</sup>-ATPase) hoạt động tích cực nguyên phát</span>
+                  Bơm proton nằm ở màng đỉnh sử dụng năng lượng thủy phân ATP để bơm chủ động ion <span class="term-hl-secondary">H<sup>+</sup></span> từ bào tương tế bào thành vào lòng ống chế tiết, đồng thời kéo ion <span class="term-hl-secondary">K<sup>+</sup></span> đi ngược trở lại từ lòng ống vào trong tế bào. Bơm này có thể duy trì gradient nồng độ $H^+$ khổng lồ (gấp 3 triệu lần so với máu). Ion $K^+$ đi vào tế bào sau đó sẽ quay lại lòng ống qua kênh $K^+$ để duy trì nguồn cung cho bơm.
+                </div>
+              </li>
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Bước 2: Tạo nguồn H<sup>+</sup> nhờ enzyme Carbonic Anhydrase (CA)</span>
+                  Bên trong tế bào thành, khí <span class="term-hl-secondary">CO<sub>2</sub></span> (khuếch tán từ máu hoặc từ chuyển hóa nội bào) kết hợp với nước nhờ xúc tác của enzym <strong>Carbonic Anhydrase (CA)</strong> tạo ra H<sub>2</sub>CO<sub>3</sub>. Axit kém bền này nhanh chóng phân ly thành ion <span class="term-hl-secondary">H<sup>+</sup></span> (cung cấp cho bơm proton màng đỉnh) và ion <span class="term-hl-secondary">HCO<sub>3</sub><sup>-</sup></span>.
+                </div>
+              </li>
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Bước 3: Vận chuyển Chloride và Hiện tượng Kiềm triều (Alkaline Tide)</span>
+                  Ion <span class="term-hl-secondary">HCO<sub>3</sub><sup>-</sup></span> tạo ra ở màng đáy được đẩy ra ngoài tế bào đi vào máu thông qua bơm trao đổi anion <span class="term-hl">Cl<sup>-</sup>/HCO<sub>3</sub><sup>-</sup></span>, đồng thời kéo ion <span class="term-hl-secondary">Cl<sup>-</sup></span> từ máu vào tế bào thành. Lượng lớn bicarbonate đi vào máu tĩnh mạch dạ dày sau bữa ăn làm tăng pH máu tạm thời, tạo nên **hiện tượng kiềm triều (alkaline tide)**.
+                </div>
+              </li>
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Bước 4: Bài tiết Cl<sup>-</sup> tạo acid HCl</span>
+                  Lượng ion <span class="term-hl-secondary">Cl<sup>-</sup></span> tích lũy trong tế bào thành sẽ khuếch tán thụ động ra ngoài màng đỉnh qua kênh <span class="term-hl-secondary">Cl<sup>-</sup></span> để đi vào lòng ống chế tiết. Tại đây, ion $Cl^-$ kết hợp với ion $H^+$ tạo nên dung dịch <span class="term-hl">Axit clohydric (HCl)</span>. Nước đi theo dòng thẩm thấu vào lòng ống chế tiết.
+                </div>
+              </li>
+            </ol>
+
+            <div class="image-placeholder-card" style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
+              <div class="image-title">
+                <span>🖼️</span> Hình 2: Sơ đồ sinh lý cơ chế phân tử bài tiết axit HCl ở tế bào thành dạ dày (Sách Berne & Levy Physiology)
+              </div>
+              <div class="image-drop-area">
+                <div class="image-drop-text">
+                  <img src="../../images/Phan5/TeBaoThanh_HCl_Secretion.png" alt="Cơ chế tiết HCl ở tế bào thành"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                    <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                    <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh cơ chế tiết HCl đang được cập nhật</p>
+                  </div>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Mô tả:</strong> Tế bào thành liên kết máu (màng đáy bên) và lòng dạ dày (màng đỉnh). Thể hiện bơm H+/K+-ATPase, kênh Cl-, kênh K+ ở màng đỉnh, và bơm trao đổi Cl-/HCO3- ở màng đáy bên kèm phản ứng Carbonic Anhydrase tạo ra kiềm triều (alkaline tide).
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- PHẦN IV: Điều hòa bài tiết dịch vị -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần IV: Điều hòa bài tiết dịch vị</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              Quá trình bài tiết acid dạ dày được kiểm soát chặt chẽ bởi sự phối hợp giữa ba chất kích thích chính kích hoạt các con đường tín hiệu nội bào và cơ chế phản hồi âm từ somatostatin.
+            </p>
+
+            <h3>1. Ba chất kích thích bài tiết acid chính ở tế bào thành</h3>
+            <div class="physio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+              <!-- Acetylcholine -->
+              <div class="physio-grid-card" style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-primary);">
+                <div class="physio-grid-title" style="font-weight: 700; color: var(--color-primary); font-size: var(--text-sm); margin-bottom: 0.5rem;">
+                  ⚡ Acetylcholine (ACh)
+                </div>
+                <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                  Giải phóng từ các tận cùng thần kinh phế vị (dây X), liên kết vào thụ thể <strong>M<sub>3</sub></strong> trên tế bào thành. Chất truyền tin này kích hoạt con đường <strong>IP<sub>3</sub>/Ca<sup>2+</sup></strong> kích thích bơm proton. Ngoài ra, ACh cũng kích thích tế bào ECL tiết histamine và ức chế tế bào D tiết somatostatin.
+                </p>
+              </div>
+
+              <!-- Gastrin -->
+              <div class="physio-grid-card" style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-success);">
+                <div class="physio-grid-title" style="font-weight: 700; color: var(--color-success); font-size: var(--text-sm); margin-bottom: 0.5rem;">
+                  🩸 Hormon Gastrin
+                </div>
+                <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                  Tiết ra từ tế bào G vùng hang vị, đi vào máu và gắn lên thụ thể <strong>CCK<sub>2</sub></strong> ở tế bào thành, kích thích bài tiết acid qua con đường <strong>IP<sub>3</sub>/Ca<sup>2+</sup></strong>. Gastrin cũng là chất kích thích mạnh nhất cho sự tăng sinh tế bào ECL và giải phóng histamine.
+                </p>
+              </div>
+
+              <!-- Histamine -->
+              <div class="physio-grid-card" style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-purple);">
+                <div class="physio-grid-title" style="font-weight: 700; color: var(--color-purple); font-size: var(--text-sm); margin-bottom: 0.5rem;">
+                  🧪 Chất cận tiết Histamine
+                </div>
+                <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                  Tiết ra từ tế bào ECL cận kề tế bào thành, gắn lên thụ thể <strong>H<sub>2</sub></strong> của tế bào thành. Con đường truyền tin của histamine thông qua <strong>cAMP/PKA</strong>. Histamine đóng vai trò khuếch đại cực mạnh vì nó làm tăng đáng kể độ nhạy cảm của tế bào thành với cả ACh và Gastrin.
+                </p>
+              </div>
+            </div>
+
+            <h3>2. Cơ chế ức chế phản hồi ngược bởi Somatostatin</h3>
+            <p>
+              Khi dịch vị dạ dày quá acid (pH giảm xuống &lt; 1.5 - 2.0), tế bào D cảm nhận độ acid cao ở hang vị sẽ tăng tiết <span class="term-hl">somatostatin</span>. Somatostatin tác động theo cơ chế cận tiết và nội tiết để khóa chặt sự tiết acid:
+            </p>
+            <ul class="physio-list-arrow">
+              <li><strong>Ức chế trực tiếp:</strong> Gắn lên thụ thể somatostatin trên tế bào thành, ức chế enzyme adenylate cyclase làm giảm nồng độ <span class="term-hl-secondary">cAMP</span> nội bào, khóa bơm proton.</li>
+              <li><strong>Ức chế gián tiếp:</strong> Gắn lên tế bào G vùng hang vị để chặn tiết gastrin, và gắn lên tế bào ECL vùng thân vị để chặn tiết histamine.</li>
+            </ul>
+
+            <h3>3. Ba giai đoạn điều hòa bài tiết dịch vị</h3>
+            <p>
+              Tùy thuộc vào vị trí của thức ăn, quá trình bài tiết dịch vị được chia làm 3 giai đoạn sinh lý liên tục:
+            </p>
+            <ol class="physio-steps">
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Giai đoạn tâm thần (Cephalic phase - ~30%)</span>
+                  Bắt đầu trước khi thức ăn vào dạ dày. Các kích thích giác quan (nhìn, ngửi, nếm, nghĩ về thức ăn) truyền tín hiệu lên vỏ não và vùng hạ đồi, đi qua nhân vận động lưng của dây phế vị (dây X) xuống dạ dày. Sợi phế vị kích thích trực tiếp tế bào thành tiết HCl, kích thích tế bào ECL tiết histamine và giải phóng GRP (gastrin-releasing peptide) kích thích tế bào G tiết gastrin.
+                </div>
+              </li>
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Giai đoạn dạ dày (Gastric phase - ~60%)</span>
+                  Khi thức ăn vào lòng dạ dày, hai kích thích chính xuất hiện: (1) <strong>Sự căng giãn dạ dày</strong> kích hoạt phản xạ tại chỗ và phản xạ phế vị - phế vị hướng tâm kích thích tiết acid; (2) <strong>Các peptide và acid amin</strong> trong dưỡng trấp trung hòa bớt acid làm pH tăng lên, kích thích trực tiếp tế bào G tiết lượng lớn gastrin, khởi phát làn sóng bài tiết acid tối đa.
+                </div>
+              </li>
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Giai đoạn ruột (Intestinal phase - ~10%)</span>
+                  Khi dưỡng trấp acid và acid amin mới bắt đầu đi vào tá tràng, tá tràng tiết gastrin ruột kích thích nhẹ dạ dày. Tuy nhiên, khi tá tràng căng giãn nhiều, sự hiện diện của acid (pH &lt; 3.0), mỡ và các sản phẩm phân giải protein sẽ kích hoạt **phản xạ ruột - dạ dày** và tiết các hormon tá tràng (CCK, Secretin, GIP). Tất cả các tín hiệu này đi ngược lại để **ức chế mạnh mẽ** sự bài tiết acid của dạ dày, bảo vệ tá tràng.
+                </div>
+              </li>
+            </ol>
+
+            <div class="image-placeholder-card" style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
+              <div class="image-title">
+                <span>🖼️</span> Hình 3: Mạng lưới điều hòa bài tiết dịch vị giữa tế bào thành, tế bào ECL, tế bào G và tế bào D (Sách Berne & Levy Physiology)
+              </div>
+              <div class="image-drop-area">
+                <div class="image-drop-text">
+                  <img src="../../images/Phan5/DieuHoa_DichVi_Cellular.png" alt="Điều hòa tế bào bài tiết dịch vị"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                    <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                    <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh điều hòa bài tiết dịch vị đang được cập nhật</p>
+                  </div>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Mô tả:</strong> Lưu đồ phối hợp các tế bào vùng đáy vị (thành, ECL) và hang vị (G, D). Thể hiện các chất kích thích ACh, gastrin, histamine và chất ức chế somatostatin trong kiểm soát hoạt tính bơm H+/K+-ATPase.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- PHẦN V: Ứng dụng lâm sàng -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần V: Ứng dụng lâm sàng</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              Rối loạn các cơ chế cơ học, bài tiết hoặc sự suy sụp của hàng rào bảo vệ niêm mạc dạ dày dẫn đến nhiều bệnh lý lâm sàng quan trọng.
+            </p>
+
+            <!-- Loét dạ dày tá tràng -->
+            <div class="clinical-note-box" style="background: var(--color-rose-hl); border-left: 4px solid var(--color-rose); margin-top: 1.5rem; margin-bottom: 1.5rem;">
+              <div class="clinical-note-title" style="font-weight: 700; color: var(--color-rose); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: var(--text-sm);">
+                🦠 BỆNH LÝ: LOÉT DẠ DÀY TÁ TRÀNG & VAI TRÒ CỦA HELICOBACTER PYLORI
+              </div>
+              <p style="font-size: var(--text-xs); line-height: 1.6; margin: 0; color: var(--color-text-muted);">
+                Xảy ra do mất cân bằng giữa <strong>yếu tố phá hủy</strong> (HCl, pepsin, thuốc NSAIDs, rượu, vi khuẩn *H. pylori*) và <strong>yếu tố bảo vệ</strong> (chất nhầy, HCO<sub>3</sub><sup>-</sup>, tưới máu niêm mạc, prostaglandin). Vi khuẩn <strong>Helicobacter pylori</strong> cư trú dưới lớp chất nhầy, tiết ra enzyme <strong>urease</strong> biến đổi ure thành amoniac (NH<sub>3</sub>) kiềm tính để tự bảo vệ. Sự hiện diện của NH<sub>3</sub> và các độc tố của vi khuẩn kích hoạt phản ứng viêm tại chỗ dữ dội, phá hủy các liên kết tế bào biểu mô và làm sụp đổ lớp gel chất nhầy, tạo điều kiện cho HCl trực tiếp tiêu hủy lớp biểu mô gây loét.
+              </p>
+            </div>
+
+            <!-- Zollinger-Ellison -->
+            <div class="clinical-note-box" style="background: var(--color-rose-hl); border-left: 4px solid var(--color-rose); margin-top: 1.5rem; margin-bottom: 1.5rem;">
+              <div class="clinical-note-title" style="font-weight: 700; color: var(--color-rose); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: var(--text-sm);">
+                🩸 BỆNH LÝ: HỘI CHỨNG ZOLLINGER-ELLISON (GASTRINOMA)
+              </div>
+              <p style="font-size: var(--text-xs); line-height: 1.6; margin: 0; color: var(--color-text-muted);">
+                Là tình trạng xuất hiện khối u tiết gastrin (thường ở tá tràng hoặc tuyến tụy). Lượng gastrin khổng lồ trong máu liên tục kích thích các tế bào thành dạ dày phì đại và hoạt động hết công suất, tiết ra lượng acid clohydric cực lớn bất kể bữa ăn. Bệnh nhân có biểu hiện loét dạ dày tá tràng nặng, loét đa ổ ở những vị trí không điển hình (như hỗng tràng), loét tái phát nhanh sau điều trị, kèm theo tiêu chảy nặng do lượng acid quá lớn làm bất hoạt các enzym tiêu hóa của tụy ở tá tràng.
+              </p>
+            </div>
+
+            <!-- Pernicious Anemia -->
+            <div class="clinical-note-box" style="background: var(--color-rose-hl); border-left: 4px solid var(--color-rose); margin-top: 1.5rem; margin-bottom: 1.5rem;">
+              <div class="clinical-note-title" style="font-weight: 700; color: var(--color-rose); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: var(--text-sm);">
+                🧠 BỆNH LÝ: VIÊM DẠ DÀY TỰ MIỄN TEO NIÊM MẠC & THIẾU MÁU ÁC TÍNH
+              </div>
+              <p style="font-size: var(--text-xs); line-height: 1.6; margin: 0; color: var(--color-text-muted);">
+                Xảy ra khi cơ thể sinh ra các tự kháng thể tấn công hủy hoại các tế bào thành dạ dày hoặc gắn kết bất hoạt Yếu tố nội tại (IF). Quá trình viêm tự miễn làm teo niêm mạc thân và đáy vị dẫn đến mất tế bào thành, gây vô toan dịch vị (achlorhydria) và thiếu hụt trầm trọng <span class="term-hl">yếu tố nội tại</span>. Do thiếu yếu tố nội tại, vitamin B12 không được bảo vệ và không thể hấp thu ở hồi tràng, gây ra **thiếu máu hồng cầu to** (thiếu máu ác tính - Pernicious Anemia) do cản trở sự trưởng thành của hồng cầu trong tủy xương, đồng thời gây thoái hóa kết hợp bán cấp tủy sống dẫn đến các triệu chứng thần kinh cảm giác và vận động nghiêm trọng.
+              </p>
+            </div>
+
+            <!-- Dược lý điều trị dạ dày -->
+            <div class="clinical-note-box" style="background: var(--color-primary-hl); border-left: 4px solid var(--color-primary); margin-top: 1.5rem; margin-bottom: 1.5rem;">
+              <div class="clinical-note-title" style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: var(--text-sm);">
+                💊 DƯỢC LÝ LÂM SÀNG: CƠ CHẾ CÁC THUỐC ỨC CHẾ ACID DẠ DÀY
+              </div>
+              <p style="font-size: var(--text-xs); line-height: 1.6; margin: 0; color: var(--color-text-muted);">
+                Hiểu rõ sinh lý tế bào thành giúp giải thích cơ chế tác dụng của các nhóm thuốc hướng dạ dày:
+              </p>
+              <ul class="physio-list-arrow" style="font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.6; margin-top: 0.5rem; padding-left: 1rem;">
+                <li><strong>Thuốc ức chế bơm Proton (PPIs - Omeprazole, Esomeprazole):</strong> PPIs là các base yếu, khuếch tán vào vi ống chế tiết có tính acid cao của tế bào thành, tại đây chúng bị proton hóa biến đổi cấu trúc thành sulfenamide. Dạng hoạt hóa này liên kết cộng hóa trị không thuận nghịch vào các nhóm sulfhydryl của bơm <span class="term-hl-secondary">H<sup>+</sup>/K<sup>+</sup>-ATPase</span>, làm bất hoạt hoàn toàn bơm. PPIs là nhóm ức chế acid mạnh nhất vì chúng chặn đứng "con đường chung cuối cùng" của sự tiết $H^+$.</li>
+                <li><strong>Thuốc kháng thụ thể H2 (H2RAs - Famotidine, Ranitidine):</strong> Đối kháng cạnh tranh trực tiếp với histamine tại thụ thể H2 trên màng tế bào thành, làm giảm tổng hợp <span class="term-hl-secondary">cAMP</span> nội bào. Thuốc này ức chế hiệu quả sự bài tiết acid nền vào ban đêm.</li>
+                <li><strong>Antacids (Magnesium hydroxide, Aluminum hydroxide):</strong> Là các muối kiềm yếu, uống vào lòng dạ dày thực hiện phản ứng trung hòa trực tiếp acid clohydric tại chỗ, nâng pH dịch vị nhanh chóng giúp giảm ngay cơn đau thượng vị tức thời.</li>
+                <li><strong>Chất tương tự Prostaglandin (Misoprostol):</strong> Prostaglandin tổng hợp gắn vào thụ thể EP3 trên tế bào thành để ức chế tiết acid qua con đường cAMP, đồng thời kích hoạt tế bào biểu mô tiết chất nhầy và bicarbonate, cải thiện tưới máu niêm mạc dạ dày. Thường dùng để phòng ngừa loét dạ dày do điều trị NSAIDs kéo dài.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần cuối: Tài liệu tham khảo -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Tài liệu tham khảo</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <ol style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin-left: 1.5rem;">
+              <li>Mai PT. <em>Sinh lý học y khoa</em>. Nhà xuất bản Đại học Quốc gia Thành phố Hồ Chí Minh; 2024.</li>
+              <li>Koeppen BM, Stanton BA. <em>Berne and Levy Physiology</em>. 8th ed. Elsevier; 2024.</li>
+              <li>Barrett KE, Barman SM, Boitano S, Brooks HL. <em>Ganong's Review of Medical Physiology</em>. 24th ed. McGraw-Hill Medical; 2012.</li>
+              <li>Hall JE, Hall ME. <em>Guyton and Hall Textbook of Medical Physiology</em>. 14th ed. Elsevier; 2021.</li>
+              <li>Silbernagl S, Despopoulos A. <em>Color Atlas of Physiology</em>. 6th ed. Thieme; 2009.</li>
+            </ol>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Nạp Footer động -->
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+</body>
+
+</html>

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Sinh lý Cơ học Hô hấp & Thông khí phế nang – Cấu trúc chức năng, cơ học các động tác hô hấp, áp suất màng phổi, suất đàn, chất hoạt diện surfactant, sức cản đường dẫn khí, công hô hấp, các thể tích/dung tích phổi và khoảng chết.">
+  <title>Sinh lý Cơ học Hô hấp & Thông khí phế nang – CliniPortal</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../css/components/physio-patho.css">
+  <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+  <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+  <link rel="stylesheet" href="../../css/physio-shared.css">
+  <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+  <script src="../../../../js/toc.js" defer></script>
+  <script src="../../../../components/header.js"></script>
+  <script src="../../../../components/footer.js"></script>
+  <script src="../../js/physio-shared.js" defer></script>
+  <script src="../../../../js/main.js" defer></script>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh">
+              <span class="nav-icon">🧬</span>
+              <span class="nav-text">Sinh lý</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng lâm sàng">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ lâm sàng">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý & Kháng sinh">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+              <span class="nav-icon">📄</span>
+              <span class="nav-text">Y học chứng cứ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Y học cổ truyền/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền">
+              <span class="nav-icon">☯️</span>
+              <span class="nav-text">Y học cổ truyền</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="main-wrapper" id="mainContent">
+      <nav aria-label="Breadcrumb" class="breadcrumb-container"
+        style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+        <ol class="breadcrumb-list"
+          style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+          <li><a href="../../../../index.html">🏠 Home</a> &gt;</li>
+          <li><a href="../../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+          <li style="color:var(--color-primary); font-weight:600;">Chương 4: Huyết động &amp; Hô hấp - Cơ học Hô hấp &amp; Thông khí Phế nang</li>
+        </ol>
+      </nav>
+
+      <main class="visual-container">
+        <!-- Chapter Header -->
+        <div class="chapter-header">
+          <h1>Sinh lý Cơ học Hô hấp &amp; Thông khí Phế nang</h1>
+          <p>Hệ thống hóa cấu trúc chức năng hệ hô hấp, cơ học các động tác thở, sức căng bề mặt phế nang, sức cản đường thở, công hô hấp, các thể tích phổi và thông khí phế nang.</p>
+        </div>
+
+        <!-- Phần I: Cấu trúc chức năng của Hệ Hô hấp -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần I: Cấu trúc chức năng của Hệ Hô hấp</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              Hệ thống đường dẫn khí và diện trao đổi của hệ hô hấp được chia thành hai vùng chức năng chính dựa trên sự tham gia vào quá trình khuếch tán khí.
+            </p>
+            <ul class="physio-list-arrow">
+              <li>
+                <strong>Vùng dẫn khí (Conducting airway):</strong> Bắt đầu từ khí quản và phân nhánh liên tục qua 16 thế hệ đầu tiên cho đến các tiểu phế quản tận cùng. Vùng này không tham gia vào sự trao đổi khí (tạo nên <span class="term-hl">khoảng chết giải phẫu</span>) mà đóng vai trò dẫn khí, làm ấm, làm ẩm và lọc sạch bụi bẩn nhờ hệ thống biểu mô lông chuyển và chất nhầy.
+              </li>
+              <li>
+                <strong>Vùng hô hấp (Respiratory zone):</strong> Bao gồm 7 thế hệ phân nhánh cuối cùng: tiểu phế quản hô hấp, ống phế nang và các phế nang. Tại đây, diện tích mặt cắt ngang của đường thở tăng vọt (từ khoảng 2.5 cm<sup>2</sup> ở khí quản lên tới hơn 11.800 cm<sup>2</sup> ở phế nang), làm cho vận tốc dòng khí giảm xuống mức cực kỳ nhỏ, tạo điều kiện lý tưởng cho sự khuếch tán khí.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần II: Cơ học các động tác hô hấp và Áp suất màng phổi -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần II: Cơ học các động tác hô hấp và Áp suất màng phổi</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              Phổi và thành ngực là các cấu trúc có tính đàn hồi cao. Hoạt động hô hấp dựa trên sự thay đổi thể tích lồng ngực tạo ra chênh lệch áp suất để di chuyển khí.
+            </p>
+            <ul class="physio-list-arrow">
+              <li>
+                <strong>Thì hít vào (Inspiration):</strong> Là quá trình <strong>chủ động</strong>. Sự co của cơ hoành (chiếm 75% sự thay đổi thể tích lồng ngực) và các cơ liên sườn ngoài làm lồng ngực giãn rộng ra. Thể tích lồng ngực tăng làm <span class="term-hl">áp suất khoang màng phổi (intrapleural pressure)</span> trở nên âm sâu hơn (từ -2.5 mmHg xuống -6 mmHg). Sự giảm áp suất này kéo phổi nở ra theo, khiến áp suất phế nang trở nên âm so với áp suất khí quyển, hút khí vào phổi.
+              </li>
+              <li>
+                <strong>Thì thở ra (Expiration):</strong> Trong hô hấp bình thường lúc nghỉ ngơi, thở ra là quá trình <strong>thụ động</strong>. Các cơ hít vào giãn ra, lực đàn hồi của phổi và lồng ngực kéo chúng về vị trí nghỉ. Áp suất phế nang trở nên dương so với khí quyển, đẩy khí ra ngoài.
+              </li>
+            </ul>
+
+            <div class="clinical-note-box"
+              style="background: var(--color-primary-hl); border-left: 4px solid var(--color-primary); margin-top: 1.5rem;">
+              <div class="clinical-note-title"
+                style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: var(--text-sm);">
+                🧠 CƠ CHẾ ÁP LỰC MÀNG PHỔI ÂM
+              </div>
+              <p style="font-size: var(--text-xs); line-height: 1.6; margin: 0; color: var(--color-text-muted);">
+                Áp suất âm khoang màng phổi là kết quả của hai lực kéo ngược chiều: lực co đàn hồi hướng vào trong của nhu mô phổi và lực đàn hồi giãn ra ngoài của thành ngực. Áp suất âm này giữ phổi luôn áp sát vào thành ngực và giãn nở theo lồng ngực, ngăn chặn xẹp phổi. Ngoài ra, áp suất âm này còn tạo điều kiện thuận lợi cho máu tĩnh mạch trở về tim (tăng lưu lượng tuần hoàn hệ thống trong thì hít vào).
+              </p>
+            </div>
+          </div>
+
+          <!-- Hình 1 -->
+          <div class="image-placeholder-card">
+            <div class="image-title">
+              <span>🖼️</span> Hình 1: Thay đổi áp suất phế nang và áp suất màng phổi trong chu kỳ hô hấp (Figure 34-7 - Ganong's Review of Medical Physiology 24th Edition)
+            </div>
+            <div class="image-drop-area">
+              <div class="image-drop-text">
+                <img src="../../images/Phan4/CoHohap_Hinh1.png" alt="Thay đổi áp suất phế nang và màng phổi"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                  <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                  <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh minh họa đang được cập nhật</p>
+                </div>
+              </div>
+            </div>
+            <div class="image-description">
+              <strong>Mô tả:</strong> Biểu đồ đối chiếu sự thay đổi áp suất phế nang và khoang màng phổi theo thời gian. Ở thì hít vào, áp suất màng phổi trở nên âm sâu hơn (đường nét liền đi xuống), áp suất phế nang giảm xuống dưới mức khí quyển (kéo khí vào). Ở thì thở ra, áp suất màng phổi bớt âm, áp suất phế nang tăng lên mức dương (đẩy khí ra).
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần III: Tính đàn hồi của phổi, Suất đàn (Compliance) và Chất hoạt diện (Surfactant) -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần III: Tính đàn hồi của phổi, Suất đàn &amp; Chất hoạt diện</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              Lực đàn hồi của phổi quyết định khả năng giãn nở và duy trì cấu trúc ổn định của các phế nang.
+            </p>
+            <ul class="physio-list-arrow">
+              <li>
+                <strong>Suất đàn (Compliance):</strong> Là chỉ số đo lường sự thay đổi thể tích phổi trên mỗi đơn vị thay đổi áp suất (&Delta;V/&Delta;P). 
+                <br>• Trong bệnh xơ phổi (pulmonary fibrosis), suất đàn giảm mạnh (phổi bị "cứng"), làm tăng đáng kể công hô hấp hít vào.
+                <br>• Ngược lại, trong bệnh khí phế thũng (emphysema), suất đàn tăng do sự phá hủy cấu trúc các vách đàn hồi của phế nang làm phổi dễ giãn ra nhưng mất lực đàn hồi co về.
+              </li>
+              <li>
+                <strong>Chất hoạt diện (Surfactant):</strong> Lực đàn hồi của phổi phụ thuộc 1/3 vào mô liên kết và 2/3 vào sức căng bề mặt của lớp dịch lót phế nang. Tế bào biểu mô phế nang type II tiết ra <span class="term-hl">surfactant</span> (một phức hợp phospholipid-protein) có tác dụng làm giảm sức căng bề mặt.
+                <br>• Theo định luật Laplace ($P = 2T/r$), surfactant làm giảm sức căng bề mặt ở các phế nang nhỏ nhiều hơn ở các phế nang lớn, giúp cân bằng áp suất giữa chúng, ngăn ngừa hiện tượng phế nang nhỏ bị xẹp và dồn khí sang phế nang lớn.
+              </li>
+            </ul>
+
+            <div class="physio-grid"
+              style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+              <!-- Xơ phổi -->
+              <div class="physio-grid-card"
+                style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-rose);">
+                <div class="physio-grid-title"
+                  style="font-weight: 700; color: var(--color-rose); font-size: var(--text-sm); margin-bottom: 0.5rem;">
+                  📉 Giảm Suất Đàn (Xơ phổi)
+                </div>
+                <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                  Đường cong Áp suất - Thể tích dịch chuyển sang PHẢI và XUỐNG DƯỚI. Phổi cứng, cần áp suất xuyên phổi rất lớn để làm phồng phổi. Tăng gánh nặng cơ hô hấp.
+                </p>
+              </div>
+
+              <!-- Khí phế thũng -->
+              <div class="physio-grid-card"
+                style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-primary);">
+                <div class="physio-grid-title"
+                  style="font-weight: 700; color: var(--color-primary); font-size: var(--text-sm); margin-bottom: 0.5rem;">
+                  📈 Tăng Suất Đàn (Khí phế thũng)
+                </div>
+                <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                  Đường cong dịch chuyển sang TRÁI và LÊN TRÊN. Phổi rất dễ phình ra nhưng giảm sức co đàn hồi để thở ra tự nhiên, dẫn đến bẫy khí (air trapping) trong phổi.
+                </p>
+              </div>
+            </div>
+
+            <div class="clinical-note-box"
+              style="background: var(--color-rose-hl); border-left: 4px solid var(--color-rose); margin-top: 1.5rem;">
+              <div class="clinical-note-title"
+                style="font-weight: 700; color: var(--color-rose); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: var(--text-sm);">
+                ⚠️ LƯU Ý LÂM SÀNG: HỘI CHỨNG SUY HÔ HẤP CẤP Ở TRẺ SINH NON (RDS)
+              </div>
+              <p style="font-size: var(--text-xs); line-height: 1.6; margin: 0; color: var(--color-text-muted);">
+                Trẻ sinh non (trước tuần thứ 28 - 32 của thai kỳ) có hệ thống tế bào biểu mô phế nang type II chưa hoàn thiện đầy đủ, dẫn đến thiếu hụt surfactant. Sức căng bề mặt phế nang tăng cao làm xẹp phổi diện rộng, giảm suất đàn phổi nghiêm trọng gây suy hô hấp cấp tiến triển.
+              </p>
+            </div>
+          </div>
+
+          <!-- Hình 2 -->
+          <div class="image-placeholder-card">
+            <div class="image-title">
+              <span>🖼️</span> Hình 2: Ứng dụng định luật Laplace trong phế nang (Fig. 21.10 - Berne and Levy Physiology 8th Edition)
+            </div>
+            <div class="image-drop-area">
+              <div class="image-drop-text">
+                <img src="../../images/Phan4/CoHohap_Hinh2.png" alt="Định luật Laplace trong phế nang"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                  <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                  <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh minh họa đang được cập nhật</p>
+                </div>
+              </div>
+            </div>
+            <div class="image-description">
+              <strong>Mô tả:</strong> Hình minh họa định luật Laplace. Hình A: Khi không có surfactant, phế nang nhỏ có sức căng bề mặt tương đương phế nang lớn tạo áp suất cao hơn, đẩy khí sang phế nang lớn gây xẹp phế nang nhỏ. Hình B: Khi có surfactant (vùng màu xám) làm giảm sức căng bề mặt ở phế nang nhỏ, áp suất giữa các phế nang lớn và nhỏ được cân bằng giúp duy trì thể tích các phế nang ổn định.
+            </div>
+          </div>
+
+          <!-- Hình 3 -->
+          <div class="image-placeholder-card" style="margin-top: 1.5rem;">
+            <div class="image-title">
+              <span>🖼️</span> Hình 3: Đường cong suất đàn tĩnh của phổi ở người bình thường và bệnh lý (Figure 34-11 - Ganong's Review of Medical Physiology 24th Edition)
+            </div>
+            <div class="image-drop-area">
+              <div class="image-drop-text">
+                <img src="../../images/Phan4/CoHohap_Hinh3.png" alt="Đường cong suất đàn phổi"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                  <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                  <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh minh họa đang được cập nhật</p>
+                </div>
+              </div>
+            </div>
+            <div class="image-description">
+              <strong>Mô tả:</strong> Đường cong Áp suất - Thể tích thở ra tĩnh. Ở bệnh nhân xơ phổi (Fibrosis), đường cong dịch chuyển xuống dưới và sang phải (giảm suất đàn compliance). Ở bệnh nhân khí phế thũng (Emphysema), đường cong dịch chuyển lên trên và sang trái (tăng suất đàn).
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần IV: Sức cản đường dẫn khí (Airway Resistance) và Công hô hấp -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần IV: Sức cản đường dẫn khí và Công hô hấp</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              Động lực lưu thông của dòng khí phụ thuộc vào sức cản đường thở và lực co của các cơ hô hấp tiêu tốn năng lượng.
+            </p>
+            <ul class="physio-list-arrow">
+              <li>
+                <strong>Sức cản đường dẫn khí (Airway Resistance):</strong> Dòng khí lưu thông có thể là dòng chảy tầng (laminar) ở đường thở nhỏ hoặc dòng chảy xoáy (turbulent) ở đường thở lớn. Kháng lực đường thở chịu ảnh hưởng cực kỳ mạnh mẽ bởi bán kính ống dẫn ($R \propto 1/r^4$).
+                <br>• Tuy nhiên, vị trí có sức cản lớn nhất lại nằm ở 8 thế hệ đường thở đầu tiên (phế quản lớn và vừa) chứ không phải các tiểu phế quản nhỏ, vì tổng diện tích mặt cắt ngang của hàng triệu tiểu phế quản nhỏ gộp lại là cực kỳ khổng lồ.
+                <br>• Sức cản giảm đi khi thể tích phổi tăng do nhu mô phổi kéo căng làm rộng đường thở.
+              </li>
+              <li>
+                <strong>Công hô hấp (Work of Breathing):</strong> Công cơ học tiêu tốn trong chu kỳ hô hấp bình thường nhằm 3 mục tiêu chính:
+                <br>1. Thắng lực đàn hồi của phổi và lồng ngực (chiếm khoảng <strong>65%</strong>).
+                <br>2. Thắng lực ma sát của dòng khí qua đường thở (airway resistance, chiếm khoảng <strong>28%</strong>).
+                <br>3. Thắng lực nhớt của nhu mô (viscous resistance, chiếm khoảng <strong>7%</strong>).
+              </li>
+            </ul>
+          </div>
+
+          <!-- Hình 4 -->
+          <div class="image-placeholder-card">
+            <div class="image-title">
+              <span>🖼️</span> Hình 4: Đồ thị động học áp suất - thể tích và công hô hấp (Plate 5.6 C - Color Atlas of Physiology 6th Edition)
+            </div>
+            <div class="image-drop-area">
+              <div class="image-drop-text">
+                <img src="../../images/Phan4/CoHohap_Hinh4.png" alt="Đồ thị động học áp suất thể tích"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                  <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                  <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh minh họa đang được cập nhật</p>
+                </div>
+              </div>
+            </div>
+            <div class="image-description">
+              <strong>Mô tả:</strong> Đồ thị động biểu diễn mối tương quan Áp suất - Thể tích trong một chu kỳ hô hấp. Diện tích hình vạch chéo đại diện cho công đàn hồi ($A_{elast}$). Diện tích phần tô màu xanh và hồng nhạt biểu thị phần công tiêu tốn để vượt qua sức cản của đường dẫn khí trong thì hít vào ($AR_{insp}$) và thở ra ($AR_{exp}$).
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần V: Các Thể tích và Dung tích Phổi (Lung Volumes & Capacities) -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần V: Các Thể tích và Dung tích Phổi</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              Thăm dò chức năng thông khí bằng hô hấp đồ (Spirometry) giúp lượng hóa các thông số thể tích và dung tích phổi cơ bản.
+            </p>
+            
+            <h3>1. Bốn thể tích phổi tĩnh cơ bản:</h3>
+            <ul class="physio-list-arrow">
+              <li><strong>Thể tích lưu thông (Tidal Volume - TV hay V<sub>T</sub>):</strong> Lượng khí hít vào hoặc thở ra bình thường ở trạng thái nghỉ ngơi (khoảng 500 - 750 mL).</li>
+              <li><strong>Thể tích dự trữ hít vào (Inspiratory Reserve Volume - IRV):</strong> Lượng khí có thể hít vào thêm tối đa sau thì hít vào bình thường.</li>
+              <li><strong>Thể tích dự trữ thở ra (Expiratory Reserve Volume - ERV):</strong> Lượng khí có thể thở ra cố sức thêm tối đa sau thì thở ra bình thường.</li>
+              <li><strong>Thể tích cặn (Residual Volume - RV):</strong> Lượng khí còn tồn dư trong phổi sau khi đã thở ra gắng sức tối đa (khoảng 1.2 - 1.3 L). <span class="term-hl">RV không thể đo trực tiếp bằng hô hấp ký thông thường</span> mà phải sử dụng phương pháp pha loãng khí Helium hoặc phế dung thân ký (body plethysmography).</li>
+            </ul>
+
+            <h3>2. Các dung tích phổi (sự kết hợp của các thể tích):</h3>
+            <ul class="physio-list-arrow">
+              <li><strong>Dung tích sống (Vital Capacity - VC):</strong> Lượng khí tối đa có thể huy động trong một nhịp thở gắng sức ($VC = TV + IRV + ERV$).</li>
+              <li><strong>Dung tích cặn cơ năng (Functional Residual Capacity - FRC):</strong> Lượng khí còn lại trong phổi sau khi thở ra bình thường ($FRC = RV + ERV$). FRC đóng vai trò như một bộ đệm giúp giữ cho phân áp khí phế nang không bị biến đổi đột ngột giữa các nhịp thở.</li>
+              <li><strong>Dung tích hít vào (Inspiratory Capacity - IC):</strong> Lượng khí tối đa có thể hít vào từ vị trí thở ra bình thường ($IC = TV + IRV$).</li>
+              <li><strong>Tổng dung lượng phổi (Total Lung Capacity - TLC):</strong> Toàn bộ lượng khí chứa trong phổi sau khi hít vào gắng sức tối đa ($TLC = VC + RV$).</li>
+            </ul>
+          </div>
+
+          <!-- Hình 5 -->
+          <div class="image-placeholder-card">
+            <div class="image-title">
+              <span>🖼️</span> Hình 5: Biểu đồ hô hấp ký thể hiện các thể tích và dung tích phổi (Fig. 21.3 - Berne and Levy Physiology 8th Edition)
+            </div>
+            <div class="image-drop-area">
+              <div class="image-drop-text">
+                <img src="../../images/Phan4/CoHohap_Hinh5.png" alt="Các thể tích và dung tích phổi"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                  <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                  <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh minh họa đang được cập nhật</p>
+                </div>
+              </div>
+            </div>
+            <div class="image-description">
+              <strong>Mô tả:</strong> Hô hấp đồ (spirogram) vẽ theo thời gian, hiển thị rõ vị trí của 4 thể tích cơ bản (V<sub>T</sub>, IRV, ERV, RV) và các dung tích là sự kết hợp của chúng (FRC, VC, TLC, IC).
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần VI: Khoảng chết và Thông khí phế nang (Dead Space & Alveolar Ventilation) -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần VI: Khoảng chết và Thông khí phế nang</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              Hiệu quả thực tế của hoạt động thông khí được quyết định bởi lượng khí đi vào vùng trao đổi khí phế nang mỗi phút chứ không chỉ là thông khí toàn bộ.
+            </p>
+            
+            <ul class="physio-list-arrow">
+              <li>
+                <strong>Khoảng chết (Dead Space - V<sub>D</sub>):</strong> Là phần thể tích khí đi vào đường hô hấp nhưng không tham gia trao đổi khí.
+                <br>• <i>Khoảng chết giải phẫu:</i> Thể tích của vùng dẫn khí (mũi, hầu, khí phế quản đến tiểu phế quản tận cùng, khoảng 150 mL).
+                <br>• <i>Khoảng chết sinh lý:</i> Là khoảng chết giải phẫu cộng với thể tích phế nang có thông khí nhưng không được tưới máu (không trao đổi khí). Ở người bình thường, khoảng chết giải phẫu gần bằng khoảng chết sinh lý.
+              </li>
+              <li>
+                <strong>Thông khí phế nang (Alveolar Ventilation - V<sub>A</sub>):</strong> Lượng khí mới thực sự đi tới phế nang để trao đổi với máu mỗi phút:
+                <div style="font-weight: 700; color: var(--color-primary); background: var(--color-surface-offset); padding: 0.75rem; border-radius: var(--radius-md); text-align: center; margin: 1rem 0; font-family: monospace; border: 1px solid var(--color-border);">
+                  V<sub>A</sub> = (Tidal Volume - Dead Space) &times; Respiratory Rate
+                </div>
+              </li>
+              <li>
+                <strong>Mối quan hệ với phân áp CO<sub>2</sub>:</strong> Thông khí phế nang tỷ lệ nghịch với phân áp CO<sub>2</sub> phế nang (P<sub>A</sub>CO<sub>2</sub>). 
+                <br>• Khi tăng gấp đôi thông khí phế nang, P<sub>A</sub>CO<sub>2</sub> sẽ giảm đi một nửa (tăng thải CO<sub>2</sub>).
+                <br>• Khi giảm thông khí phế nang, P<sub>A</sub>CO<sub>2</sub> sẽ tích tụ và tăng vọt.
+              </li>
+            </ul>
+
+            <div class="clinical-note-box"
+              style="background: var(--color-warning-hl); border-left: 4px solid var(--color-warning); margin-top: 1.5rem;">
+              <div class="clinical-note-title"
+                style="font-weight: 700; color: var(--color-warning); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: var(--text-sm);">
+                🧠 Ý NGHĨA LÂM SÀNG: NHỊP THỞ SÂU VÀ THỞ NÔNG
+              </div>
+              <p style="font-size: var(--text-xs); line-height: 1.6; margin: 0; color: var(--color-text-muted);">
+                Nếu một bệnh nhân thở rất nông nhưng nhanh (ví dụ TV = 200 mL, RR = 30 lần/phút) so với thở sâu và chậm (ví dụ TV = 600 mL, RR = 10 lần/phút), mặc dù tổng thông khí phút đều là 6 L/phút, nhưng thông khí phế nang ở ca thở nông sẽ rất thấp: (200 - 150) &times; 30 = 1.5 L/phút, gây suy hô hấp. Trong khi ca thở sâu là: (600 - 150) &times; 10 = 4.5 L/phút. Thở sâu giúp thông khí phế nang hiệu quả hơn thở nhanh nông.
+              </p>
+            </div>
+          </div>
+
+          <!-- Hình 6 -->
+          <div class="image-placeholder-card">
+            <div class="image-title">
+              <span>🖼️</span> Hình 6: Phân áp khí CO2 phế nang như một hàm số của thông khí phế nang mỗi phút (Fig. 23.1 - Berne and Levy Physiology 8th Edition)
+            </div>
+            <div class="image-drop-area">
+              <div class="image-drop-text">
+                <img src="../../images/Phan4/CoHohap_Hinh6.png" alt="Phân áp CO2 và thông khí phế nang"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                  <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                  <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh minh họa đang được cập nhật</p>
+                </div>
+              </div>
+            </div>
+            <div class="image-description">
+              <strong>Mô tả:</strong> Biểu đồ thể hiện mối quan hệ tỷ lệ nghịch giữa thông khí phế nang (Alveolar ventilation, L/phút) và phân áp CO<sub>2</sub> phế nang (P<sub>A</sub>CO<sub>2</sub>). Ở trạng thái nghỉ ngơi, khi thông khí phế nang là 5 L/phút, P<sub>A</sub>CO<sub>2</sub> giữ ổn định ở 40 mmHg. Nếu giảm thông khí (hypoventilation) xuống 2.5 L/phút, P<sub>A</sub>CO<sub>2</sub> sẽ tăng vọt lên 80 mmHg.
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần VII: Tài liệu tham khảo -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Tài liệu tham khảo</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <ol style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin-left: 1.5rem;">
+              <li>Barrett KE, Barman SM, Boitano S, Brooks HL. <em>Ganong's Review of Medical Physiology</em>. 24th ed. McGraw-Hill Medical; 2012.</li>
+              <li>Koeppen BM, Stanton BA. <em>Berne and Levy Physiology</em>. 8th ed. Elsevier; 2024.</li>
+              <li>Silbernagl S, Despopoulos A. <em>Color Atlas of Physiology</em>. 6th ed. Thieme; 2009.</li>
+              <li>Vũ TTQ. <em>Sinh lý HÔ HẤP P1 YDS 2025</em> [Video recording]. Bs. Linh O'la Scar; 2025.</li>
+              <li>Pinsky MR, Brochard L, Mancebo J, Hedenstierna G, eds. <em>Applied Physiology in Intensive Care Medicine</em>. 2nd ed. Springer; 2009.</li>
+            </ol>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+  <!-- Scripts dùng chung -->
+  <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>
