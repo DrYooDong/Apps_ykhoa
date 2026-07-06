@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CliniPortal Medical Icons Preview</title>
+  <style>
+    :root {
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-color: #1e293b;
+      --border-color: #e2e8f0;
+      --icon-color: #0ea5e9;
+      --primary: #0ea5e9;
+    }
+
+    body.dark {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --text-color: #f1f5f9;
+      --border-color: #334155;
+      --icon-color: #38bdf8;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0.75rem 1.5rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .icon-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    }
+
+    .icon-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+      border-color: var(--primary);
+    }
+
+    .icon-wrapper {
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .icon-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.05));
+    }
+
+    .icon-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 0.25rem;
+    }
+
+    .icon-filename {
+      font-size: 0.75rem;
+      color: #64748b;
+      font-family: monospace;
+    }
+
+    .dark .icon-filename {
+      color: #94a3b8;
+    }
+  </style>
+  <script src="../../components/footer.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🔹 CliniPortal SVG Icons</h1>
+      <p>Bộ sưu tập 58 icon SVG y khoa chuyên sâu</p>
+      <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+    </header>
+
+    <div class="icon-grid" id="iconGrid">
+      <!-- Cards will be populated by JS -->
+    </div>
+  </div>
+
+  <script>
+    const icons = [
+      // 12 Original Core Icons
+      { name: "Công cụ lâm sàng (Core)", file: "ic-cong-cu.svg" },
+      { name: "Dược lý (Core)", file: "ic-duoc-ly.svg" },
+      { name: "Nhiễm khuẩn (Core)", file: "ic-nhiem-khuan.svg" },
+      { name: "Nội tiết (Core)", file: "ic-noi-tiet.svg" },
+      { name: "Phác đồ điều trị (Core)", file: "ic-phac-do.svg" },
+      { name: "Thần kinh (Core)", file: "ic-than-kinh.svg" },
+      { name: "Thận - Tiết niệu (Core)", file: "ic-than.svg" },
+      { name: "Tiếp cận lâm sàng (Core)", file: "ic-tiep-can.svg" },
+      { name: "Tiêu hóa (Core)", file: "ic-tieu-hoa.svg" },
+      { name: "Tim mạch (Core)", file: "ic-tim-mach.svg" },
+      { name: "Trang chủ (Core)", file: "ic-trang-chu.svg" },
+      { name: "Y học chứng cứ (Core)", file: "ic-y-hoc.svg" },
+      
+      // Module 1: Tools
+      { name: "Calculator Hub", file: "ic-calculator-hub.svg" },
+      { name: "ECG Interpreter", file: "ic-ecg-interpreter.svg" },
+      { name: "ABG Analyzer", file: "ic-abg-gas.svg" },
+      { name: "Fluid Calculator", file: "ic-fluid-calculator.svg" },
+      { name: "Score Charts", file: "ic-score-charts.svg" },
+      { name: "GFR Calculator", file: "ic-gfr-calculator.svg" },
+      
+      // Module 2: Pharmacology
+      { name: "Drug Interaction", file: "ic-drug-interaction.svg" },
+      { name: "Antibiotic Guide", file: "ic-antibiotic-guide.svg" },
+      { name: "Dosage Calculator", file: "ic-dosage-calculator.svg" },
+      { name: "Renal Dosing", file: "ic-renal-dosing.svg" },
+      { name: "Pill Box", file: "ic-pill-box.svg" },
+      { name: "IV Compatibility", file: "ic-iv-compatibility.svg" },
+      
+      // Module 3: Skills
+      { name: "Stethoscope", file: "ic-stethoscope.svg" },
+      { name: "Procedure Steps", file: "ic-procedure-steps.svg" },
+      { name: "Hand Hygiene", file: "ic-hand-hygiene.svg" },
+      { name: "Suturing", file: "ic-suturing.svg" },
+      { name: "CPR Training", file: "ic-cpr-training.svg" },
+      { name: "Physical Exam", file: "ic-physical-exam.svg" },
+      
+      // Module 4: Approach
+      { name: "Chest Pain Flowchart", file: "ic-chest-pain-flowchart.svg" },
+      { name: "Dyspnea Approach", file: "ic-dyspnea-approach.svg" },
+      { name: "Abdominal Pain", file: "ic-abdominal-pain.svg" },
+      { name: "Fever Workup", file: "ic-fever-workup.svg" },
+      { name: "Headache Dx", file: "ic-headache-dx.svg" },
+      { name: "Syncope", file: "ic-syncope.svg" },
+      
+      // Module 5: Physiology
+      { name: "Heart Failure Mech", file: "ic-heart-failure-mech.svg" },
+      { name: "Acid-Base Balance", file: "ic-acid-base-balance.svg" },
+      { name: "Shock Types", file: "ic-shock-types.svg" },
+      { name: "Diabetes Path", file: "ic-diabetes-path.svg" },
+      { name: "Respiratory Mech", file: "ic-respiratory-mech.svg" },
+      { name: "Coagulation Cascade", file: "ic-coagulation-cascade.svg" },
+      
+      // Module 6: EBM
+      { name: "Guidelines", file: "ic-guidelines.svg" },
+      { name: "Sample Size", file: "ic-sample-size.svg" },
+      { name: "Journal Club", file: "ic-journal-club.svg" },
+      { name: "Risk Assessment", file: "ic-risk-assessment.svg" },
+      { name: "Evidence Pyramid", file: "ic-evidence-pyramid.svg" },
+      { name: "Research Protocol", file: "ic-research-protocol.svg" },
+      
+      // Common / Navigation
+      { name: "Home", file: "ic-home.svg" },
+      { name: "Info", file: "ic-info.svg" },
+      { name: "Check", file: "ic-check.svg" },
+      { name: "Alert", file: "ic-alert.svg" },
+      { name: "Menu", file: "ic-menu.svg" },
+      { name: "Search", file: "ic-search.svg" },
+      { name: "Favorite", file: "ic-favorite.svg" },
+      { name: "Add", file: "ic-add.svg" },
+      { name: "Close", file: "ic-close.svg" },
+      { name: "Next", file: "ic-next.svg" }
+    ];
+
+    const grid = document.getElementById('iconGrid');
+    icons.forEach(ico => {
+      const card = document.createElement('div');
+      card.className = 'icon-card';
+      card.onclick = () => copyToClipboard(ico.file);
+      card.innerHTML = `
+        <div class="icon-wrapper">
+          <img src="${ico.file}" alt="${ico.name}">
+        </div>
+        <div class="icon-label">${ico.name}</div>
+        <div class="icon-filename">${ico.file}</div>
+      `;
+      grid.appendChild(card);
+    });
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      const btn = document.querySelector('.theme-toggle');
+      btn.textContent = document.body.classList.contains('dark') ? '☀️ Light Mode' : '🌙 Dark Mode';
+    }
+
+    function copyToClipboard(filename) {
+      const tag = `/assets/icons/${filename}`;
+      navigator.clipboard.writeText(tag).then(() => {
+        alert(`Đã sao chép đường dẫn: ${tag}`);
+      });
+    }
+  </script>
+
+  <div id="footer-placeholder" data-footer-path="../../components/footer.html"></div>
+</body>
+</html>

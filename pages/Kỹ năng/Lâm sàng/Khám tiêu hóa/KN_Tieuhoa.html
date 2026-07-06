@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang='vi' data-theme='light'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta name='description'
+    content='Khám hệ tiêu hóa theo Macleod: Khám bụng 4 bước (Nhìn, Sờ, Gõ, Nghe), sờ gan lách, gõ đục vùng thấp và phát hiện các cờ đỏ tiêu hóa.'>
+  <title>
+    Khám Hệ Tiêu Hóa - CliniPortal
+  </title>
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+  <link
+    href='https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap'
+    rel='stylesheet'>
+  <link rel='stylesheet' href="../../../../css/reset.css">
+  <link rel='stylesheet' href="../../../../css/main.css">
+  <link rel='stylesheet' href="../../../../css/components/header.css">
+  <link rel='stylesheet' href="../../../../css/components/sidebar.css">
+  <link rel='stylesheet' href="../../../../css/components/footer.css">
+  <script src="../../../../components/header.js">
+  </script>
+  <script src="../../../../components/footer.js">
+  </script>
+  <style>
+    :root {
+      --a: #b45309;
+      --b: #d97706;
+      --c: #fbbf24;
+    }
+  </style>
+  <link rel='stylesheet' href="../../../../css/components/clinical-skill.css">
+</head>
+
+<body>
+  <div id='header-placeholder' data-header-path="../../../../components/header.html">
+  </div>
+  <div class='sidebar-overlay' id='sidebarOverlay'>
+  </div>
+  <div class='app-container'>
+    <aside class='app-sidebar' id='appSidebar'>
+      <button id='sidebar-toggle-arrow' class='sidebar-toggle-arrow' aria-label='Thu gọn/Mở rộng Sidebar'>
+        <svg viewBox='0 0 24 24' width='14' height='14' stroke='currentColor' stroke-width='2.5' fill='none'
+          stroke-linecap='round' stroke-linejoin='round' class='toggle-arrow-svg'>
+          <polyline points='15 18 9 12 15 6'>
+          </polyline>
+        </svg>
+      </button>
+      <nav class='sidebar-nav' aria-label='Điều hướng chính'>
+        <ul class='nav-list' role='list'>
+          <li>
+            <a href="../../../../index.html" class='nav-item'>
+              <span class='nav-icon'>
+                🏠
+              </span>
+              <span class='nav-text'>
+                Trang chủ
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../ky-nang.html" class='nav-item'>
+              <span class='nav-icon'>
+                🩺
+              </span>
+              <span class='nav-text'>
+                Kỹ năng lâm sàng
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Tiếp cận/tiep-can.html" class='nav-item'>
+              <span class='nav-icon'>
+                🤒
+              </span>
+              <span class='nav-text'>
+                Tiếp cận lâm sàng
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Công cụ/cong-cu.html" class='nav-item'>
+              <span class='nav-icon'>
+                ⚙️
+              </span>
+              <span class='nav-text'>
+                Công cụ lâm sàng
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <div class='main-wrapper' id='mainContent'>
+      <nav aria-label='Breadcrumb' class='breadcrumb-container'>
+        <ol class='breadcrumb-list'>
+          <li class='breadcrumb-item'>
+            <a href="../../../../index.html" class='breadcrumb-link'>
+              <span class='home-icon'>
+                🏠
+              </span>
+              Home
+            </a>
+          </li>
+          <li class='breadcrumb-item'>
+            <a href="../../ky-nang.html" class='breadcrumb-link'>
+              Kỹ năng lâm sàng
+            </a>
+          </li>
+          <li class='breadcrumb-item active' aria-current='page'>
+            Khám hệ tiêu hóa
+          </li>
+        </ol>
+      </nav>
+      <section class='hero'>
+        <h1>
+          Khám Hệ Tiêu Hóa
+        </h1>
+        <p>
+          Bài khám hệ Tiêu hóa được xây dựng chuẩn theo Macleod's Clinical Examination. Hướng dẫn khai thác triệu chứng bụng cấp/mạn, vàng da và thực hiện quy trình khám bụng chi tiết (Nhìn, Nghe, Gõ, Sờ) nhằm định hướng chẩn đoán xơ gan, báng bụng hay tắc mật.
+        </p>
+        <div class='quick'>
+          <div class='qi'>
+            <b>
+              Tư thế
+            </b>
+            Nằm ngửa, gối mỏng dưới đầu, bộc lộ từ mũi ức đến khớp mu
+          </div>
+          <div class='qi'>
+            <b>
+              Điểm nhấn
+            </b>
+            Sờ nông/sâu, sờ gan lách thận, shifting dullness, âm ruột, khám trực tràng
+          </div>
+          <div class='qi'>
+            <b>
+              Red flags
+            </b>
+            Vàng da không đau, sụt cân, nôn ra máu/phân đen, đề kháng bụng
+          </div>
+        </div>
+      </section>
+      <div class='tabs'>
+        <button class='tab-btn active' data-tab='core'>
+          Nền tảng
+        </button>
+        <button class='tab-btn' data-tab='hx'>
+          Hỏi bệnh
+        </button>
+        <button class='tab-btn' data-tab='exam'>
+          Khám
+        </button>
+        <button class='tab-btn' data-tab='int'>
+          Biện luận
+        </button>
+        <button class='tab-btn' data-tab='tests'>
+          Cận lâm sàng
+        </button>
+        <button class='tab-btn' data-tab='osce'>
+          <span class="term-hl-secondary">OSCE</span>
+        </button>
+      </div>
+
+      <!-- TAB: NỀN TẢNG -->
+      <section class='tab active' id='core'>
+        <div class='card'>
+          <h2>Giải phẫu và Sinh lý học lâm sàng (<span class="term-hl">Anatomy and physiology</span>)</h2>
+          <ul>
+            <li>Hệ tiêu hóa bao gồm ống tiêu hóa (trải dài từ miệng đến hậu môn), gan, hệ thống đường mật, tuyến tụy và lách. Ống tiêu hóa gồm thực quản, dạ dày, ruột non (tá tràng, hổng tràng, hồi tràng), đại tràng (ruột già) và trực tràng.</li>
+            <li>Bề mặt bụng được chia thành 9 vùng dựa trên sự giao nhau của hai mặt phẳng ngang và hai mặt phẳng dọc: vùng thượng vị, quanh rốn, hạ vị, hai vùng hạ sườn, hai vùng mạn sườn, và hai vùng hố chậu.</li>
+            <li>Cảm giác đau từ các cấu trúc ống tiêu hóa nguyên thủy được dẫn truyền qua thần kinh tạng giao cảm, dẫn đến vị trí đau bụng tương ứng: các tạng thuộc ruột trước (dạ dày, tụy, gan, mật) gây đau vùng thượng vị; ruột giữa (ruột non, ruột thừa) gây đau quanh rốn; và ruột sau (đại tràng) gây đau vùng hạ vị.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: HỎI BỆNH -->
+      <section class='tab' id='hx'>
+        <div class='card'>
+          <h2>Các triệu chứng cơ năng thường gặp (<span class="term-hl">Common symptoms</span>)</h2>
+          <p>Triệu chứng tiêu hóa rất phổ biến. Tuy nhiên, một số triệu chứng mang tính chất cảnh báo đặc biệt cần phát hiện sớm.</p>
+          <div style='overflow-x: auto; margin-top: 12px;'>
+            <table class='cmp'>
+              <thead>
+                <tr>
+                  <th>Triệu chứng</th>
+                  <th>Chẩn đoán phân biệt / Gợi ý nguyên nhân</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Đau bụng (<span class="term-hl">Abdominal pain</span>)</strong></td>
+                  <td>Loét dạ dày-tá tràng, cơn đau quặn mật, viêm tụy cấp, cơn đau quặn thận, viêm ruột thừa, thiếu máu mạc treo.</td>
+                </tr>
+                <tr>
+                  <td><strong>Khó nuốt (<span class="term-hl">Dysphagia</span>)</strong></td>
+                  <td>Bệnh lý thần kinh (yếu hành tủy), rối loạn vận động (co thắt tâm vị), chèn ép cơ học (hẹp thực quản, ung thư).</td>
+                </tr>
+                <tr>
+                  <td><strong>Buồn nôn & Nôn</strong></td>
+                  <td>Viêm dạ dày, loét, tắc ruột, nguyên nhân toàn thân (thuốc, thai kỳ, toan ceton, tăng áp nội sọ).</td>
+                </tr>
+                <tr>
+                  <td><strong>Thay đổi thói quen đi tiêu</strong></td>
+                  <td>Tiêu chảy (bài tiết hoặc thẩm thấu), hội chứng ruột kích thích (<span class="term-hl">IBS</span>), táo bón (ung thư đại trực tràng, suy giáp, thuốc).</td>
+                </tr>
+                <tr>
+                  <td><strong>Xuất huyết tiêu hóa</strong></td>
+                  <td>Nôn ra máu/Phân đen (loét dạ dày, vỡ giãn tĩnh mạch thực quản, rách Mallory-Weiss), Tiêu máu đỏ (trĩ, nứt hậu môn, viêm ruột, ung thư đại tràng).</td>
+                </tr>
+                <tr>
+                  <td><strong>Vàng da (<span class="term-hl">Jaundice</span>)</strong></td>
+                  <td>Trước gan (tán huyết), tại gan (viêm gan, xơ gan), sau gan (sỏi mật, u đầu tụy).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class='clinical-warning' style='margin-top: 14px;'>
+            <h4>⚠️ Các "Dấu hiệu Cờ đỏ" (<span class="term-hl">Red Flags</span>) Tiêu hóa</h4>
+            <p>Nôn mửa dai dẳng, khó nuốt tiến triển, xuất huyết tiêu hóa (nôn máu/tiêu phân đen), sụt cân không giải thích được, tiêu chảy nhiều nước không đau, thức giấc vì triệu chứng về đêm, sốt kéo dài và thiếu máu.</p>
+          </div>
+        </div>
+
+        <div class='card'>
+          <h2>Phân tích chi tiết triệu chứng chủ chốt</h2>
+          <ul>
+            <li><strong>Đau bụng (<span class="term-hl">Abdominal pain</span>):</strong>
+              <ul>
+                <li><em>Đau tạng (<span class="term-hl">Visceral</span>):</em> Thường sâu, mơ hồ và nằm ở đường giữa bụng.</li>
+                <li><em>Đau thành (<span class="term-hl">Somatic</span>):</em> Cảm giác sắc nét, khu trú rõ rệt tại vùng phúc mạc bị viêm (ví dụ: đau hố chậu trái do viêm túi thừa đại tràng sigma).</li>
+                <li><em>Khởi phát (<span class="term-hl">Onset</span>):</em> Đột ngột, dữ dội rồi lan tỏa gợi ý thủng tạng rỗng, vỡ phình động mạch chủ bụng hoặc nhồi máu mạc treo. Đau quặn cơn gợi ý tắc ruột; đau âm ỉ liên tục gợi ý quá trình viêm nhiễm trùng.</li>
+                <li><em>Hướng lan (<span class="term-hl">Radiation</span>):</em> Lên vai phải (viêm túi mật); xuống bẹn (cơn đau quặn thận); xuyên ra sau lưng (viêm tụy cấp).</li>
+                <li><em>Yếu tố thay đổi:</em> Viêm phúc mạc làm đau tăng khi ho/cử động (bệnh nhân nằm im); tắc ruột/cơn đau quặn tạng khiến bệnh nhân trằn trọc không yên.</li>
+              </ul>
+            </li>
+            <li style='margin-top: 10px;'><strong>Vàng da (<span class="term-hl">Jaundice</span>):</strong>
+              <ul>
+                <li>Định nghĩa: đổi màu vàng ở da, củng mạc mắt và niêm mạc khi bilirubin huyết thanh &gt;50 µmol/L (<span class="term-hl">2.92 mg/dL</span>).</li>
+                <li><em>Trước gan:</em> Phân và nước tiểu có màu sắc bình thường (<span class="term-hl">acholuric jaundice</span>).</li>
+                <li><em>Tại gan:</em> Nước tiểu sẫm màu (do bilirubin liên hợp tan trong nước thải ra nước tiểu), phân bình thường.</li>
+                <li><em>Sau gan (tắc mật):</em> Nước tiểu sậm màu, phân nhạt màu (phân bạc màu như đất sét), kèm ngứa da nhiều do ứ muối mật.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class='card'>
+          <h2>Khung câu hỏi gợi ý & Các phân loại lâm sàng</h2>
+          <ul>
+            <li><strong>Nôn ra máu:</strong> "Chất nôn có màu đỏ tươi hay màu nâu đen như bã cà phê? Việc nôn ra máu xảy ra ngay từ lần nôn đầu tiên hay sau một đợt nôn khan dữ dội (gợi ý Mallory-Weiss)?".</li>
+            <li><strong>Thang điểm phân Bristol:</strong> Lượng giá hình thái phân từ type 1 (táo bón nặng, lổn nhổn) đến type 7 (tiêu chảy toàn nước).</li>
+            <li><strong>Thang điểm Rockall:</strong> Tiên lượng nguy cơ tử vong ở bệnh nhân xuất huyết tiêu hóa trên dựa vào Tuổi, Dấu hiệu sốc, Bệnh lý đi kèm, và các dấu hiệu chảy máu trên nội soi.</li>
+          </ul>
+        </div>
+
+        <div class='card'>
+          <h2>Tiền sử bệnh, Dùng thuốc & Đời sống - Xã hội</h2>
+          <ul>
+            <li><strong>Tiền sử bệnh:</strong> Tiền sử loét dạ dày tá tràng, bệnh viêm ruột (<span class="term-hl">IBD</span>), viêm tụy, phẫu thuật ổ bụng (nguy cơ dính ruột, tắc ruột). Rung nhĩ hoặc suy tim làm tăng nguy cơ nhồi máu mạc treo gây đau bụng cấp.</li>
+            <li><strong>Đời sống - Xã hội:</strong> Tính lượng rượu tiêu thụ (liên quan xơ gan, viêm tụy); hút thuốc lá làm tăng nguy cơ ung thư ống tiêu hóa và bệnh Crohn. Tiền sử tiêm chủng, hình xăm, du lịch nước ngoài gợi ý nguy cơ viêm gan virus.</li>
+          </ul>
+          <div class='clinical-warning' style='margin-top: 14px;'>
+            <h4>⚠️ Các thuốc gây tác dụng phụ tiêu hóa và độc gan</h4>
+            <p><strong>NSAIDs & Corticosteroids:</strong> Nguy cơ gây loét và xuất huyết tiêu hóa nặng.</p>
+            <p style='margin-top: 4px;'><strong>Kháng sinh & PPI:</strong> Nguy cơ gây tiêu chảy cấp hoặc viêm đại tràng màng giả do Clostridioides difficile.</p>
+            <p style='margin-top: 4px;'><strong>Opioids:</strong> Thường gây ra táo bón nặng.</p>
+            <p style='margin-top: 4px;'><strong>Paracetamol, Rifampicin, Isoniazid:</strong> Độc tính cao gây hoại tử tế bào gan cấp.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: KHÁM CHUYÊN KHOA -->
+      <section class='tab' id='exam'>
+        <div class='grid2'>
+          <div class='card'>
+            <h2>Khám toàn thân (<span class="term-hl">General examination</span>)</h2>
+            <ul>
+              <li><strong>Bàn tay:</strong> Dấu móng dùi trống (xơ gan, <span class="term-hl-secondary">IBD</span>, kém hấp thu), móng trắng (leuconychia do giảm albumin), móng hình thìa (thiếu máu thiếu sắt), ban đỏ lòng bàn tay (<span class="term-hl">palmar erythema</span>), co thắt gân gan bàn tay Dupuytren (nghiện rượu). Dấu run vỗ cánh (<span class="term-hl">asterixis</span>) trong bệnh lý não gan.</li>
+              <li><strong>Mắt & Mặt:</strong> Khám củng mạc mắt tìm vàng mắt. Viêm khóe miệng (<span class="term-hl">angular cheilitis</span>) và viêm lưỡi teo (<span class="term-hl">atrophic glossitis</span>) do thiếu máu/thiếu vitamin. Hơi thở mùi mốc (<span class="term-hl">fetor hepaticus</span>) do luồng thông cửa-chủ.</li>
+              <li><strong>Hạch Troisier (hạch Virchow):</strong> Hạch thượng đòn trái sờ thấy chắc, không đau gợi ý di căn từ ung thư dạ dày hoặc tụy.</li>
+            </ul>
+            <div class='clinical-warning' style='margin-top: 14px;'>
+              <h4>⚠️ Các dấu hiệu suy tế bào gan & Tăng áp cửa</h4>
+              <p>Nốt nhện (<span class="term-hl">spider naevi</span>) vùng tĩnh mạch chủ trên, nữ hóa tuyến vú nam giới (<span class="term-hl">gynaecomastia</span>), teo tinh hoàn, rụng lông. Giãn tĩnh mạch quanh rốn kiểu đầu sứa (<span class="term-hl">caput medusae</span>).</p>
+            </div>
+          </div>
+          <div class='card'>
+            <h2>Quy trình khám ổ bụng chi tiết</h2>
+            <p>Bệnh nhân nằm ngửa, hai tay xuôi dọc thân, bộc lộ bụng. Thực hiện:</p>
+            <ul class='check' style='margin-top: 12px;'>
+              <li>
+                <input type='checkbox'>
+                <span><strong>1. Nhìn (<span class="term-hl">Inspection</span>):</strong> Tìm sẹo mổ cũ, rạn da, vết bầm (<span class="term-hl">Grey Turner/Cullen</span>), hernia, và tuần hoàn bàng hệ.</span>
+              </li>
+              <li>
+                <input type='checkbox'>
+                <span><strong>2. Sờ nông & Sờ sâu:</strong> Sờ nông tránh vùng đau trước. Đánh giá đề kháng thành bụng (<span class="term-hl">guarding/rigidity</span>). Co cứng như gỗ (<span class="term-hl">board-like rigidity</span>) là dấu hiệu của viêm phúc mạc toàn thể.</span>
+              </li>
+              <li>
+                <input type='checkbox'>
+                <span><strong>3. Sờ Gan (<span class="term-hl">Liver</span>):</strong> Bắt đầu từ hố chậu phải, tay hướng lên bờ sườn phải. Yêu cầu bệnh nhân hít sâu để cảm nhận bờ gan di chuyển xuống chạm tay. Đo kích thước gan dưới bờ sườn, mô tả bề mặt (nhẵn/gồ ghề), mật độ, ấn đau.</span>
+              </li>
+              <li>
+                <input type='checkbox'>
+                <span><strong>4. Sờ Lách (<span class="term-hl">Spleen</span>):</strong> Lách to hướng chéo từ hạ sườn trái xuống rốn. Sờ từ rốn hướng chéo lên. Lách to có khuyết ở bờ trước.</span>
+              </li>
+              <li>
+                <input type='checkbox'>
+                <span><strong>5. Gõ bụng - Gõ đục vùng thấp (<span class="term-hl">Shifting dullness</span>):</strong> Phát hiện báng bụng (dịch tự do). Gõ từ rốn ra mạn sườn cho đến khi âm chuyển đục. Nghiêng bệnh nhân sang bên đối diện, chờ 10 giây rồi gõ lại. Nếu âm chuyển thành trong, chứng tỏ có dịch tự do.</span>
+              </li>
+              <li>
+                <input type='checkbox'>
+                <span><strong>6. Nghe bụng (<span class="term-hl">Auscultation</span>):</strong> Nghe âm ruột (bình thường 5-10 giây/lần). Mất âm ruột gặp trong liệt ruột/viêm phúc mạc; tăng âm sắc leng keng (<span class="term-hl">tinkling</span>) gặp trong tắc ruột cơ học. Nghe tiếng thổi động mạch thận/động mạch chủ.</span>
+              </li>
+              <li>
+                <input type='checkbox'>
+                <span><strong>7. Khám Thoát vị & Thăm trực tràng (<span class="term-hl">DRE</span>):</strong> Yêu cầu bệnh nhân ho tìm khối thoát vị bẹn/đùi. Thăm trực tràng quan sát trĩ, nứt, sờ tiền liệt tuyến, u trực tràng, kiểm tra phân bám găng (phân đen/máu đỏ).</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class='card'>
+          <h2>Các nghiệm pháp đặc hiệu trong bụng cấp</h2>
+          <ul>
+            <li><strong>Nghiệm pháp Murphy:</strong> Ấn sâu vào vùng túi mật (dưới bờ sườn phải đường trung đòn) trong thì hít vào. Bệnh nhân đau chói và ngừng thở đột ngột -> Dương tính trong viêm túi mật cấp.</li>
+            <li><strong>Dấu Rovsing:</strong> Ấn sâu vào hố chậu trái gây đau ở hố chậu phải -> Dương tính trong viêm ruột thừa cấp.</li>
+            <li><strong>Dấu cơ thắt lưng chậu (<span class="term-hl">Iliopsoas sign</span>):</strong> Bệnh nhân nằm nghiêng trái, duỗi đùi phải ra sau gây đau hố chậu phải -> Gợi ý viêm ruột thừa sau manh tràng hoặc áp xe cơ đắt chậu.</li>
+            <li><strong>Dấu Grey Turner & Cullen:</strong> Vết bầm tím ở vùng mạn sườn (<span class="term-hl">Grey Turner</span>) hoặc quanh rốn (<span class="term-hl">Cullen</span>) -> Gợi ý viêm tụy cấp thể xuất huyết hoại tử.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: BIỆN LUẬN -->
+      <section class='tab' id='int'>
+        <div class='grid2'>
+          <div class='card'>
+            <h2>Phân biệt Lách to vs Thận trái to</h2>
+            <p>Hai tạng này ở hạ sườn trái rất dễ nhầm lẫn khi thăm khám sờ nông sâu:</p>
+            <ul>
+              <li><strong>Lách to:</strong> Di chuyển chéo xuống hố chậu phải khi hít vào. Có khuyết ở bờ trong. Không thể sờ luồn được phía trên khối (<span class="term-hl">can't get above it</span>). Gõ đục ở phía trước (không có ruột đè lên). Không thể chạm ngón (<span class="term-hl">not ballottable</span>).</li>
+              <li><strong>Thận trái to:</strong> Di chuyển thẳng xuống dưới. Bề mặt tròn, không có khuyết. Có thể sờ luồn phía trên khối. Gõ trong ở phía trước (do quai ruột đè lên trước thận). Có thể chạm ngón (ballottable - tay dưới hất lên cảm nhận được bằng tay trên).</li>
+            </ul>
+          </div>
+          <div class='card'>
+            <h2>Phân tích dịch báng bụng (<span class="term-hl">Ascites</span>)</h2>
+            <p>Chọc dịch báng và phân tích giúp xác định cơ chế bệnh sinh:</p>
+            <ul>
+              <li><strong>Dịch thấm (<span class="term-hl">Transudate</span>):</strong> Hàm lượng protein thấp (&lt;25 g/L) hoặc hiệu số Albumin huyết thanh - dịch báng (<span class="term-hl">SAAG</span>) &ge;1.1 g/dL. Cơ chế do tăng áp lực thủy tĩnh hoặc giảm áp lực keo. Gặp trong Xơ gan, Suy tim phải, Hội chứng thận hư.</li>
+              <li><strong>Dịch tiết (<span class="term-hl">Exudate</span>):</strong> Hàm lượng protein cao (&ge;25 g/L) hoặc SAAG &lt;1.1 g/dL. Cơ chế do viêm hoặc tăng tính thấm thành mạch. Gặp trong Lao màng bụng, Viêm màng bụng do vi khuẩn, Ung thư di căn màng bụng.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: CẬN LÂM SÀNG -->
+      <section class='tab' id='tests'>
+        <div class='card'>
+          <h2>Cận lâm sàng Tiêu hóa theo hệ thống</h2>
+          <ul>
+            <li><strong>Xét nghiệm máu:</strong> Công thức máu (<span class="term-hl-secondary">FBC</span> - thiếu máu do trĩ/u/loét), LFTs (bilirubin, men gan <span class="term-hl-secondary">AST</span>/<span class="term-hl-secondary">ALT</span>, albumin đánh giá vàng da/suy gan), Amylase/Lipase (tăng &gt;3 lần trong viêm tụy cấp).</li>
+            <li><strong>Xét nghiệm phân:</strong> Tìm máu ẩn trong phân (<span class="term-hl">FOB</span>) để sàng lọc ung thư đại trực tràng; Calprotectin phân (để chẩn đoán phân biệt <span class="term-hl-secondary">IBD</span> vs <span class="term-hl-secondary">IBS</span>).</li>
+            <li><strong>Chẩn đoán hình ảnh:</strong>
+              <ul>
+                <li><em>X-quang bụng không chuẩn bị:</em> Tìm liềm hơi dưới cơ hoành (thủng tạng rỗng) hoặc các mức nước-hơi (tắc ruột).</li>
+                <li><em>Siêu âm bụng:</em> Khảo sát sỏi mật, giãn đường mật trong/ngoài gan, báng bụng lượng ít.</li>
+                <li><em><span class="term-hl-secondary">CT</span> scan bụng chậu:</em> Tiêu chuẩn vàng đánh giá bụng cấp (viêm ruột thừa, viêm túi thừa, tắc ruột), chấn thương tạng đặc và staging ung thư.</li>
+                <li><em>MRCP (Cộng hưởng từ đường mật):</em> Chẩn đoán sỏi ống mật chủ hoặc u đường mật không xâm lấn.</li>
+              </ul>
+            </li>
+            <li><strong>Nội soi tiêu hóa:</strong>
+              <ul>
+                <li><em>Nội soi dạ dày (<span class="term-hl">OGD</span>):</em> Chẩn đoán loét dạ dày tá tràng, trào ngược thực quản, vỡ giãn tĩnh mạch thực quản (canh thiệp thắt vòng cao su).</li>
+                <li><em>Nội soi đại tràng (<span class="term-hl">Colonoscopy</span>):</em> Chẩn đoán viêm ruột Crohn/<span class="term-hl-secondary">UC</span>, polyp, ung thư đại trực tràng.</li>
+                <li><em>ERCP (Nội soi mật tụy ngược dòng):</em> Lấy sỏi ống mật chủ, đặt stent đường mật giải áp tắc mật.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: OSCE -->
+      <section class='tab' id='osce'>
+        <div class='grid2'>
+          <div class='card'>
+            <span class='case'><span class="term-hl-secondary">OSCE</span> 1</span>
+            <h2>Tình huống 1: Đau bụng và tiêu chảy (<span class="term-hl">Crohn vs IBS</span>)</h2>
+            <p><strong>Yêu cầu:</strong> Bệnh nhân nam 29 tuổi, chán ăn, sụt 7kg, đau bụng và tiêu chảy phân lỏng 6 tháng nay. Tiền sử mổ ruột thừa 4 tháng trước. Hãy thăm khám hệ tiêu hóa.</p>
+            <p style='margin-top: 8px;'><strong>Tóm tắt phát hiện:</strong> Bệnh nhân nam trẻ tuổi gầy ốm. Khám bụng có sẹo mổ ruột thừa vùng hố chậu phải lành tốt. Ấn đau nhẹ vùng quanh rốn và hố chậu phải. Không sờ thấy khối u hay dấu đề kháng thành bụng. Âm ruột bình thường.</p>
+            <p style='margin-top: 8px;'><strong>Chẩn đoán sơ bộ:</strong> Bệnh Crohn (<span class="term-hl">Crohn's disease</span>) - thể viêm hồi manh tràng (giải thích cho việc đau hố chậu phải nhầm với ruột thừa trước đó). Chẩn đoán phân biệt với Hội chứng ruột kích thích (<span class="term-hl">IBS</span>) kèm sụt cân cờ đỏ.</p>
+            <p style='margin-top: 8px;'><strong>Đề xuất đánh giá tiếp theo:</strong> Công thức máu (<span class="term-hl">FBC</span>), <span class="term-hl-secondary">CRP</span>, Calprotectin trong phân. Thực hiện nội soi đại tràng và soi hồi tràng sinh thiết (<span class="term-hl">ileocolonoscopy</span>); chụp cộng hưởng từ ruột non (<span class="term-hl">MR enterography</span>).</p>
+          </div>
+          <div class='card'>
+            <span class='case'><span class="term-hl-secondary">OSCE</span> 2</span>
+            <h2>Tình huống 2: Vàng da & Báng bụng (Xơ gan do rượu)</h2>
+            <p><strong>Yêu cầu:</strong> Bệnh nhân nam 61 tuổi, mệt mỏi chán ăn 4 tháng. Hai tuần nay tiểu sậm màu, phân nhạt màu, vàng da rõ. Uống 1 lít rượu whisky/ngày trong 5 năm. Hãy khám bụng.</p>
+            <p style='margin-top: 8px;'><strong>Tóm tắt phát hiện:</strong> Vàng da và củng mạc mắt rõ. Có nhiều nốt nhện (<span class="term-hl">spider naevi</span>) trên ngực. Bụng trướng nhẹ, nghiệm pháp gõ đục vùng thấp dương tính (<span class="term-hl">shifting dullness</span>). Sờ thấy bờ gan chắc dưới bờ sườn 2 cm. Lòng bàn tay son và co thắt Dupuytren nhẹ ở tay.</p>
+            <p style='margin-top: 8px;'><strong>Chẩn đoán sơ bộ:</strong> Xơ gan mất bù do rượu (<span class="term-hl">Alcoholic liver cirrhosis</span>) kèm cổ trướng. Chẩn đoán phân biệt với Ung thư gan (<span class="term-hl">HCC</span>) trên nền xơ gan, viêm gan do rượu cấp.</p>
+            <p style='margin-top: 8px;'><strong>Đề xuất đánh giá tiếp theo:</strong> Xét nghiệm LFTs, albumin máu, tỷ Prothrombin (<span class="term-hl">PT</span>), công thức máu, đông máu toàn bộ, AFP. Làm siêu âm bụng đánh giá nhu mô gan và tĩnh mạch cửa; nội soi tiêu hóa trên sàng lọc giãn tĩnh mạch thực quản.</p>
+          </div>
+        </div>
+        <div class='card'>
+          <h2>Tài liệu tham khảo (<span class="term-hl">References</span>)</h2>
+          <ol>
+            <li>Innes JA, Dover AR, Fairhurst K. <em>Macleod's Clinical Examination</em>. 14th ed. Edinburgh: Elsevier; 2018.</li>
+          </ol>
+        </div>
+      </section>
+      <section class='links'>
+        <div class='card'>
+          <h2>Các bài cùng chuyên khoa khám lâm sàng</h2>
+          <div class='grid2'>
+            <a class='link-card' href='../Khám hô hấp/KN_Hohap.html'>
+              <h3>Khám hô hấp</h3>
+              <small>Quy trình Nhìn, Sờ, Gõ, Nghe phổi, đánh giá ran phế quản và khó thở mạn tính.</small>
+            </a>
+            <a class='link-card' href='../Khám thần kinh/KN_Thankinh.html'>
+              <h3>Khám thần kinh</h3>
+              <small>Khám 12 dây thần kinh sọ, phản xạ gân xương, cơ lực và dấu màng não.</small>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <footer class='global-footer'>
+    <div id='footer-placeholder' data-footer-path="../../../../components/footer.html">
+    </div>
+  </footer>
+  <script src="../../../../js/clinical-skill-tabs.js"></script>
+  <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>

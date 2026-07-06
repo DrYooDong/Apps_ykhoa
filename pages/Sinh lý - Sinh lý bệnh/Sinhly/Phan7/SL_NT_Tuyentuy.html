@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Sinh lý học tuyến tụy nội tiết: Cấu trúc mô học đảo Langerhans, sinh lý insulin (tổng hợp, receptor tyrosine kinase, cơ chế bài tiết qua kênh K-ATP, tác dụng lên GLUT 4, glucid, lipid, protid, kali), sinh lý glucagon, somatostatin và liên hệ lâm sàng DKA, C-peptide.">
+    <title>Sinh lý học Tuyến tụy nội tiết – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS Core CliniPortal -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học dùng chung -->
+    <link rel="stylesheet" href="../../../../css/components/physio-patho.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+    <!-- MathJax Config cho Công thức Toán/Sinh lý -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+
+    <!-- Script điều hướng hệ thống -->
+    <script src="../../../../js/toc.js" defer></script>
+    <script src="../../../../components/header.js" defer></script>
+    <script src="../../../../components/footer.js" defer></script>
+    <script src="../../js/physio-shared.js" defer></script>
+    <script src="../../../../js/main.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+            <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Sinhly-sinhlybenh.html" class="nav-item active" aria-current="page" title="S.lý - S.lý bệnh">
+              <span class="nav-icon">🧬</span>
+              <span class="nav-text">S.lý - S.lý bệnh</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container"
+                style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+                <ol class="breadcrumb-list"
+                    style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+                    <li><a href="../../../../index.html">🏠 Home</a> &gt;</li>
+                    <li><a href="../../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+                    <li style="color:var(--color-primary); font-weight:600;">Chương 7: Sinh lý nội tiết - Tuyến tụy</li>
+                </ol>
+            </nav>
+
+            <!-- MAIN CONTAINER -->
+            <main class="visual-container">
+                <!-- CHAPTER HERO CARD -->
+                <div class="chapter-header">
+                    <h1>Sinh lý học Tuyến tụy nội tiết</h1>
+                    <p>Hệ thống hóa cấu trúc mô học đảo Langerhans, con đường sinh tổng hợp và cơ chế bài tiết
+                        insulin/glucagon, cơ chế truyền tin nội bào qua thụ thể tyrosine kinase và các mối liên hệ lâm
+                        sàng quan trọng.</p>
+                </div>
+
+                <!-- CONTENT LAYOUT -->
+                <div class="physio-content-wrapper"
+                    style="display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 1.5rem;">
+
+                    <!-- VÙNG NỘI DUNG CHÍNH -->
+                    <div class="physio-main-article">
+
+                        <p class="physio-lead">
+                            Tuyến tụy là một cơ quan hỗn hợp đặc biệt trong hệ thống tiêu hóa và nội tiết. Trong khi
+                            phần lớn thể tích tuyến tụy thực hiện chức năng ngoại tiết (bài tiết các men tiêu hóa), phần
+                            nội tiết được đảm nhiệm bởi các cụm tế bào biệt hóa nhỏ gọi là <span class="term-hl">đảo
+                                Langerhans (Islets of Langerhans)</span>. Tuy chỉ chiếm 1-2% khối lượng tuyến tụy, các
+                            đảo này nhận được lượng máu nuôi dưỡng vô cùng phong phú, giải phóng các hormon kiểm soát
+                            trực tiếp toàn bộ trạng thái chuyển hóa nhiên liệu của cơ thể.
+                        </p>
+
+                        <!-- PHẦN I -->
+                        <h2 id="sec-cau-truc-dao-tuy" class="section-title">
+                            <span>Phần I: Cấu Trúc Đảo Tụy (Islets of Langerhans)</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Đảo Langerhans là các đơn vị chức năng nội tiết phân bố rải rác trong nhu mô tụy ngoại
+                                tiết, tập trung nhiều nhất ở vùng đuôi tụy. Có khoảng 1 đến 2 triệu đảo tụy ở người
+                                trưởng thành. Toàn bộ dòng máu từ các đảo tụy sẽ được dẫn lưu trực tiếp vào <strong>tĩnh
+                                    mạch cửa</strong> để đi thẳng về gan, giúp gan tiếp xúc với nồng độ hormon giáp (đặc
+                                biệt là insulin và glucagon) cao nhất.
+                            </p>
+                            <p>
+                                Mỗi đảo tụy chứa ít nhất 4 loại tế bào bài tiết hormon chuyên biệt, phân bố theo vùng
+                                chức năng rõ rệt:
+                            </p>
+
+                            <div class="physio-grid" style="margin-top: 1rem;">
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">🔵 1. Tế bào Beta (Tế bào B)</div>
+                                    <p>
+                                        Chiếm tỷ lệ lớn nhất (<strong>60 - 75%</strong> tổng số tế bào đảo tụy), nằm tập
+                                        trung ở vùng trung tâm đảo. Tế bào Beta có nhiệm vụ tổng hợp, dự trữ và bài tiết
+                                        hormon đồng hóa quan trọng nhất cơ thể: <strong>Insulin</strong> (cùng với
+                                        C-peptide và amylin).
+                                    </p>
+                                </div>
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">🔴 2. Tế bào Alpha (Tế bào A)</div>
+                                    <p>
+                                        Chiếm khoảng <strong>20%</strong> số tế bào, phân bố chủ yếu ở vùng ngoại vi của
+                                        đảo tụy, bao quanh lõi tế bào Beta. Tế bào Alpha bài tiết hormon dị hóa
+                                        <strong>Glucagon</strong>, có tác dụng đối kháng trực tiếp với Insulin.
+                                    </p>
+                                </div>
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">🟢 3. Tế bào Delta (Tế bào D)</div>
+                                    <p>
+                                        Chiếm khoảng <strong>5 - 10%</strong>, nằm rải rác ở vùng ngoại vi đảo. Tế bào
+                                        Delta bài tiết hormon peptide **Somatostatin**, đóng vai trò điều hòa cận tiết
+                                        (paracrine) tại chỗ đối với hoạt động của tế bào Alpha và Beta lân cận.
+                                    </p>
+                                </div>
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">🟡 4. Tế bào F (Tế bào PP)</div>
+                                    <p>
+                                        Chiếm tỷ lệ nhỏ (< 2%), nằm rải rác chủ yếu ở các đảo tụy thuộc phần sau của đầu
+                                            tụy. Tế bào F bài tiết **Pancreatic Polypeptide (PP)**, có tác dụng điều hòa
+                                            quá trình hấp thu thức ăn và hoạt động bài tiết mật, dịch tụy ngoại tiết.
+                                            </p>
+                                </div>
+                            </div>
+
+                            <!-- HÌNH 1: Mô học đảo tụy -->
+                            <div class="image-placeholder-card" style="margin-top: 1.5rem;">
+                                <div class="image-title">
+                                    <span style="font-size:1.2rem">🖼️</span> Hình 1: Cấu trúc mô học và phân bố tế bào
+                                    trong đảo Langerhans (Fig. 39.5 Berne & Levy)
+                                </div>
+                                <div class="image-drop-text">
+                                    <div class="image-drop-area">
+                                        <img src="../../images/Phan7/TuyenTuy_Hinh1.png" alt="Cấu trúc mô học đảo tụy"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div
+                                            style="display:none; padding: 2rem; text-align: center; color: var(--color-text-muted);">
+                                            [Ảnh nhuộm hóa mô miễn dịch đảo Langerhans biểu diễn tế bào Beta tập trung
+                                            mật độ cao ở vùng trung tâm đảo và tế bào Alpha xếp ở viền ngoài]
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả chi tiết:</strong> Các đảo tụy được bao bọc bởi bao liên kết mỏng phân
+                                    tách với các nang tuyến ngoại tiết xung quanh. Sự phân bố tế bào Beta ở trung tâm và
+                                    tế bào Alpha ở ngoại vi tạo điều kiện cho dòng máu chảy từ trung tâm ra ngoại vi
+                                    mang theo insulin ức chế trực tiếp sự bài tiết glucagon của tế bào Alpha (cơ chế
+                                    điều hòa cận tiết định hướng).
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PHẦN II -->
+                        <h2 id="sec-sinh-ly-insulin" class="section-title">
+                            <span>Phần II: Sinh Lý Hormon Insulin</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Insulin là hormon protein đồng hóa (anabolic hormone) duy nhất của cơ thể làm giảm nồng
+                                độ glucose máu, kích thích tích lũy năng lượng dưới dạng glycogen, lipid và protein.
+                            </p>
+
+                            <h3>1. Quá trình Sinh tổng hợp và Chuyển hóa</h3>
+                            <p>
+                                Phân tử insulin trưởng thành gồm hai chuỗi polypeptide: chuỗi A (21 acid amin) và chuỗi
+                                B (30 acid amin), liên kết với nhau bằng hai cầu nối disulfide liên chuỗi và một cầu nối
+                                nội chuỗi A. Quá trình tổng hợp diễn ra qua các bước:
+                            </p>
+
+                            <!-- SƠ ĐỒ TIMELINE TỔNG HỢP INSULIN -->
+                            <ol class="physio-steps" style="margin-top: 1rem;">
+                                <li>
+                                    <div class="physio-step-card">
+                                        <span class="physio-step-title">Dịch mã tạo Preproinsulin</span>
+                                        <p>
+                                            Gen insulin nằm trên nhiễm sắc thể 11 mã hóa một chuỗi tiền chất lớn gọi là
+                                            <strong>preproinsulin</strong> (chứa signal peptide dẫn đường) được tổng hợp
+                                            tại lưới nội chất hạt của tế bào Beta.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="physio-step-card">
+                                        <span class="physio-step-title">Cắt signal peptide tạo Proinsulin</span>
+                                        <p>
+                                            Khi đi vào lòng lưới nội chất, signal peptide bị cắt bỏ nhanh chóng tạo
+                                            thành chuỗi <strong>proinsulin</strong>. Phân tử proinsulin tự gấp cuộn lại
+                                            để thiết lập đúng các cầu nối disulfide giữa các gốc cysteine.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="physio-step-card">
+                                        <span class="physio-step-title">Đóng gói và phân cắt trong hạt tiết</span>
+                                        <p>
+                                            Proinsulin được vận chuyển đến bộ máy Golgi và đóng gói vào các túi tiết
+                                            (secretory granules). Trong các túi này, các enzyme <strong>prohormone
+                                                convertase (PC1/3 và PC2)</strong> cùng men carboxypeptidase E tiến hành
+                                            cắt đứt chuỗi peptide liên kết ở giữa gọi là **C-peptide (Connecting
+                                            peptide)** ra khỏi proinsulin.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="physio-step-card">
+                                        <span class="physio-step-title">Xuất bào đồng phân tử (Equimolar)</span>
+                                        <p>
+                                            Kết quả là hạt tiết chứa phân tử Insulin hoàn chỉnh liên kết với kẽm tạo
+                                            dạng tinh thể hexamer, và các chuỗi C-peptide tự do. Khi xuất bào, Insulin
+                                            và C-peptide được giải phóng vào tuần hoàn với **tỷ lệ phân tử 1:1**.
+                                        </p>
+                                    </div>
+                                </li>
+                            </ol>
+
+                            <p style="margin-top: 1rem;">
+                                <strong>Đặc tính chuyển hóa:</strong> Insulin tự do trong máu có thời gian bán hủy cực
+                                ngắn (khoảng <strong>5 phút</strong>). Khi đi qua gan lần đầu tiên qua tĩnh mạch cửa,
+                                khoảng 50% lượng insulin bị phân hủy ngay bởi enzyme **IDE (Insulin-Degrading Enzyme)**.
+                                Ngược lại, C-peptide có thời gian bán hủy dài hơn (khoảng 30 phút) và không bị gan phân
+                                hủy, do đó được ứng dụng làm chỉ số phản ánh trung thực chức năng tiết insulin nội sinh
+                                của tế bào Beta trên lâm sàng.
+                            </p>
+
+                            <!-- HÌNH 2: Phân cắt Proinsulin -->
+                            <div class="image-placeholder-card" style="margin-top: 1.5rem;">
+                                <div class="image-title">
+                                    <span style="font-size:1.2rem">🖼️</span> Hình 2: Quá trình cắt nắn proinsulin tạo
+                                    insulin và C-peptide (Fig. 39.6 Berne & Levy)
+                                </div>
+                                <div class="image-drop-text">
+                                    <div class="image-drop-area">
+                                        <img src="../../images/Phan7/TuyenTuy_Hinh2.png" alt="Quá trình cắt proinsulin"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div
+                                            style="display:none; padding: 2rem; text-align: center; color: var(--color-text-muted);">
+                                            [Sơ đồ cấu trúc phân tử proinsulin chỉ ra chuỗi A và B liên kết với nhau qua
+                                            chuỗi C-peptide gấp khúc. Enzyme PC cắt bỏ C-peptide giải phóng phân tử
+                                            insulin hoạt động]
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả chi tiết:</strong> Các cầu nối disulfide liên kết chuỗi A và B là tối
+                                    quan trọng để giữ cấu trúc không gian ba chiều hoạt tính của Insulin. Chuỗi
+                                    C-peptide trung gian bị cắt đứt nhưng vẫn được lưu trữ và bài xuất đồng đều với
+                                    insulin.
+                                </div>
+                            </div>
+
+                            <h3 style="margin-top: 1.5rem;">2. Thụ thể và Cơ chế tác động tế bào</h3>
+                            <p>
+                                Thụ thể của insulin (Insulin Receptor - IR) là một glycoprotein xuyên màng thuộc nhóm
+                                thụ thể **Tyrosine Kinase** hoạt động dưới dạng tetramer gồm:
+                                <br>• Hai tiểu đơn vị $\alpha$ nằm hoàn toàn ở phía ngoại bào, chứa vị trí gắn đặc hiệu
+                                với phân tử insulin.
+                                <br>• Hai tiểu đơn vị $\beta$ xuyên màng, phần nội bào chứa các gốc tyrosine có hoạt
+                                tính enzyme tyrosine kinase.
+                            </p>
+
+                            <p><strong>Cơ chế truyền tin nội bào:</strong></p>
+                            <ol style="list-style-type: decimal; padding-left: 1.5rem; line-height: 1.6;">
+                                <li>Insulin gắn vào tiểu đơn vị $\alpha$ $\rightarrow$ làm thay đổi cấu hình thụ thể
+                                    $\rightarrow$ kích hoạt tyrosine kinase ở phần nội bào tiểu đơn vị $\beta$ tự
+                                    phosphoryl hóa chéo các gốc tyrosine của nhau.</li>
+                                <li>Tiểu đơn vị $\beta$ đã phosphoryl hóa sẽ tiếp tục phosphoryl hóa các protein giá đỡ
+                                    nội bào gọi là **IRS (Insulin Receptor Substrates 1-4)**.</li>
+                                <li>IRS đã hoạt hóa kích hoạt con đường **PI3K (Phosphatidylinositol 3-kinase)**
+                                    $\rightarrow$ hoạt hóa **Akt kinase (Protein Kinase B)**.</li>
+                                <li>Akt kinase kích thích sự chuyển vị (translocation) của các túi nội bào chứa kênh vận
+                                    chuyển glucose **GLUT 4** tiến ra hòa màng với màng tế bào. Hiện tượng này làm tăng
+                                    tốc độ hấp thu glucose vào tế bào lên gấp 10-40 lần, xảy ra chủ yếu ở **cơ xương**
+                                    và **mô mỡ** (các mô phụ thuộc insulin). Các tế bào gan, não, hồng cầu hấp thu
+                                    glucose không phụ thuộc insulin (sử dụng GLUT 1, 2, 3).</li>
+                            </ol>
+
+                            <h3 style="margin-top: 1.5rem;">3. Tác dụng sinh lý của Insulin</h3>
+                            <p>
+                                Tác dụng tổng thể của insulin là tăng cường các con đường đồng hóa tích lũy năng lượng
+                                và ức chế các con đường dị hóa thoái hóa cơ chất:
+                            </p>
+
+                            <div class="physio-grid">
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">🌾 Chuyển hóa Glucid (Hạ đường huyết)</div>
+                                    <p>
+                                        • Tăng thu nhận glucose ở cơ xương và mô mỡ thông qua việc huy động kênh
+                                        <strong>GLUT 4</strong> lên bề mặt màng tế bào.<br>
+                                        • Tại Gan: kích thích enzyme <strong>glucokinase</strong> để phosphoryl hóa bẫy
+                                        glucose bên trong tế bào dưới dạng G-6-P. Kích thích enzyme glycogen synthase
+                                        tăng tổng hợp **glycogen** dự trữ.<br>
+                                        • Ức chế các enzyme chìa khóa của con đường tân sinh glucose (gluconeogenesis)
+                                        và phân giải glycogen ở gan.
+                                    </p>
+                                </div>
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">🧈 Chuyển hóa Lipid (Tích lũy mỡ)</div>
+                                    <p>
+                                        • Tăng tổng hợp acid béo và triglyceride tại mô mỡ và gan.<br>
+                                        • Tăng hoạt tính enzyme Lipoprotein Lipase (LPL) ở thành mao mạch mô mỡ để giải
+                                        phóng acid béo từ chylomicron và VLDL đưa vào tế bào mỡ.<br>
+                                        • **Ức chế mạnh mẽ enzyme HSL (Hormone-Sensitive Lipase)** nội bào, qua đó ngăn
+                                        chặn phản ứng thủy phân triglyceride thành acid béo tự do. Đây là tác dụng cực
+                                        kỳ quan trọng ngăn ngừa sự tạo thể ceton quá mức.
+                                    </p>
+                                </div>
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">🥩 Chuyển hóa Protid (Đồng hóa đạm)</div>
+                                    <p>
+                                        • Kích thích vận chuyển chủ động các acid amin từ máu vào trong tế bào (đặc biệt
+                                        là cơ xương).<br>
+                                        • Tăng cường hoạt động dịch mã của ribosome thúc đẩy tổng hợp protein mới.<br>
+                                        • Ức chế sự thoái hóa protein cơ và giảm giải phóng acid amin về gan làm nguyên
+                                        liệu tân tạo glucose.
+                                    </p>
+                                </div>
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">🔋 Chuyển hóa Điện giải (Hạ Kali máu)</div>
+                                    <p>
+                                        • Insulin kích thích trực tiếp hoạt động của bơm
+                                        <strong>$\text{Na}^+,\text{K}^+\text{-ATPase}$</strong> trên màng tế bào của hầu
+                                        hết các mô cơ thể.<br>
+                                        • Việc này làm tăng vận chuyển tích cực ion $\text{K}^+$ từ môi trường ngoại bào
+                                        vào bên trong nội bào, dẫn đến tác dụng làm giảm nồng độ kali huyết tương.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <h3 style="margin-top: 1.5rem;">4. Cơ chế điều hòa bài tiết Insulin</h3>
+                            <p>
+                                Nồng độ glucose máu là tác nhân điều hòa bài tiết insulin mạnh nhất. Cơ chế tế bào của
+                                quá trình kích thích bài tiết insulin bởi glucose diễn ra tuần tự như sau:
+                            </p>
+
+                            <!-- HỘP MINH HỌA BƯỚC TIẾT INSULIN -->
+                            <div
+                                style="background-color: var(--color-bg-offset); border-left: 4px solid var(--color-primary); padding: 1.2rem; border-radius: 0.5rem; margin-top: 1rem; line-height: 1.6;">
+                                <h4 style="margin-top: 0; color: var(--color-primary);">⚡ Chuỗi sự kiện bài tiết Insulin
+                                    tại tế bào Beta:</h4>
+                                <ol style="margin-left: 1.2rem; margin-bottom: 0;">
+                                    <li>Glucose máu tăng cao $\rightarrow$ khuếch tán tạo thuận lợi vào tế bào Beta qua
+                                        kênh vận chuyển **GLUT 2** (có ái lực thấp nhưng công suất lớn, phản ánh trực
+                                        tiếp nồng độ glucose máu).</li>
+                                    <li>Glucose được phosphoryl hóa bởi enzyme **glucokinase** (bộ cảm biến glucose của
+                                        tế bào) và đi vào chu trình Krebs của ty thể $\rightarrow$ sinh ra lượng lớn
+                                        **ATP**.</li>
+                                    <li>Nồng độ ATP nội bào tăng cao (làm tăng tỷ lệ ATP/ADP) $\rightarrow$ gắn và
+                                        **đóng kênh $\text{K}^+$ nhạy cảm ATP (kênh K-ATP)** trên màng tế bào.</li>
+                                    <li>Kênh $\text{K}^+$ đóng làm ngăn dòng ion $\text{K}^+$ đi ra $\rightarrow$ tích
+                                        tụ điện tích dương nội bào gây **khử cực màng tế bào** (điện thế màng thay đổi
+                                        từ $-70\text{ mV}$ lên khoảng $-30\text{ mV}$).</li>
+                                    <li>Điện thế màng khử cực kích hoạt mở các **kênh $\text{Ca}^{2+}$ phụ thuộc điện
+                                        thế (L-type Ca2+ channel)** $\rightarrow$ dòng ion $\text{Ca}^{2+}$ ùa vào tế
+                                        bào theo gradient nồng độ.</li>
+                                    <li>Nồng độ $\text{Ca}^{2+}$ nội bào tăng cao kích hoạt hoạt động của các protein
+                                        vận động và vi ống $\rightarrow$ đẩy các hạt tiết chứa insulin tiến sát và hòa
+                                        màng xuất bào (**exocytosis**) giải phóng Insulin vào máu.</li>
+                                </ol>
+                            </div>
+
+                            <!-- HÌNH 3: Cơ chế bài tiết insulin -->
+                            <div class="image-placeholder-card" style="margin-top: 1.5rem;">
+                                <div class="image-title">
+                                    <span style="font-size:1.2rem">🖼️</span> Hình 3: Cơ chế ghép cặp kích thích - bài
+                                    tiết insulin bởi glucose tại tế bào Beta (Fig. 24-11 Ganong)
+                                </div>
+                                <div class="image-drop-text">
+                                    <div class="image-drop-area">
+                                        <img src="../../images/Phan7/TuyenTuy_Hinh3.png"
+                                            alt="Cơ chế bài tiết insulin tại tế bào B"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div
+                                            style="display:none; padding: 2rem; text-align: center; color: var(--color-text-muted);">
+                                            [Lưu đồ tế bào: Glucose -> GLUT2 -> Ty thể -> ATP tăng -> Đóng kênh K-ATP ->
+                                            Khử cực màng -> Mở kênh Ca2+ -> Ca2+ vào bào tương -> Xuất bào Insulin]
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả chi tiết:</strong> Các thuốc điều trị đái tháo đường sulfonylurea (như
+                                    gliclazide, glimepiride) tác dụng trực tiếp bằng cách gắn vào thụ thể SUR1 trên kênh
+                                    K-ATP làm đóng kênh này, bắt chước tác dụng của ATP để kích thích bài tiết insulin
+                                    không phụ thuộc glucose.
+                                </div>
+                            </div>
+
+                            <p style="margin-top: 1rem;">
+                                <strong>Các yếu tố điều hòa khác:</strong>
+                                <br>• <strong>Hệ Incretin (Hormon dạ dày - ruột):</strong> GLP-1 (Glucagon-like
+                                peptide-1) và GIP (Glucose-dependent insulinotropic polypeptide) tiết ra từ ruột non khi
+                                có thức ăn kích hoạt receptor liên kết $G_s$ trên tế bào Beta làm tăng cAMP
+                                $\rightarrow$ tăng nhạy cảm của hạt tiết với $\text{Ca}^{2+}$, thúc đẩy bài tiết insulin
+                                mạnh mẽ trước cả khi glucose máu tăng.
+                                <br>• <strong>Thần kinh tự chủ:</strong> Kích thích phó giao cảm (dây X, acetylcholine)
+                                qua thụ thể Muscarinic làm tăng tiết insulin (chuẩn bị hấp thu chất dinh dưỡng). Kích
+                                thích giao cảm (epinephrine, norepinephine) tác động lên thụ thể
+                                **$\alpha_2$-adrenergic** (chiếm ưu thế trên tế bào Beta) làm ức chế mạnh tiết insulin
+                                để dành glucose cho cơ xương và não trong phản ứng chiến đấu hay bỏ chạy.
+                            </p>
+                        </div>
+
+                        <!-- PHẦN III -->
+                        <h2 id="sec-sinh-ly-glucagon" class="section-title">
+                            <span>Phần III: Sinh Lý Hormon Glucagon</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Glucagon là một polypeptide gồm 29 acid amin do tế bào Alpha của đảo tụy bài tiết, hoạt
+                                động như một hormon dị hóa đối kháng trực tiếp với tác dụng của insulin để nâng cao nồng
+                                độ glucose máu lúc cơ thể đói hoặc bị stress.
+                            </p>
+                            <ul>
+                                <li>
+                                    <strong>Sinh tổng hợp:</strong> Được tổng hợp dưới dạng tiền chất
+                                    <em>preproglucagon</em>. Điều thú vị là gen preproglucagon cũng được biểu hiện ở tế
+                                    bào L của ruột non. Tuy nhiên, do sự khác biệt về các enzyme protease xử lý sau dịch
+                                    mã: tại tế bào Alpha của tụy sinh ra <strong>Glucagon</strong>; còn tại tế bào L của
+                                    ruột non lại sinh ra các hormon incretin **GLP-1** và **GLP-2**.
+                                </li>
+                                <li>
+                                    <strong>Tác dụng sinh lý (Đích tác động chính là Gan):</strong>
+                                    Glucagon gắn vào thụ thể màng liên kết **G-protein ($G_s$)** $\rightarrow$ kích hoạt
+                                    adenylate cyclase $\rightarrow$ tăng nồng độ **cAMP** nội bào $\rightarrow$ hoạt hóa
+                                    Protein Kinase A (PKA). PKA phosphoryl hóa hoạt hóa chuỗi enzyme gây:
+                                    <br>• Phân giải mạnh mẽ glycogen dự trữ ở gan thành glucose tự do đưa vào máu.
+                                    <br>• Tăng cường tân tạo glucose (gluconeogenesis) từ acid amin (alanine, glutamine)
+                                    và lactate.
+                                    <br>• Ở mô mỡ: hoạt hóa enzyme **HSL** để phân giải lipid giải phóng glycerol và
+                                    acid béo vào máu, cung cấp năng lượng thay thế cho glucose.
+                                </li>
+                                <li>
+                                    <strong>Điều hòa bài tiết:</strong>
+                                    <br>• <em>Kích thích tiết:</em> Tình trạng hạ đường huyết (yếu tố chính), nồng độ
+                                    acid amin tăng cao trong máu sau bữa ăn giàu protein (để tránh hạ đường huyết do
+                                    insulin cũng tăng tiết đồng thời), kích thích giao cảm và stress cơ thể.
+                                    <br>• <em>Ức chế tiết:</em> Insulin và Somatostatin cận tiết ức chế trực tiếp tế bào
+                                    Alpha. Nồng độ glucose máu cao và chất truyền tin GABA giải phóng từ tế bào Beta lân
+                                    cận cũng có tác dụng khóa tế bào Alpha tiết glucagon.
+                                </li>
+                            </ul>
+
+                            <!-- HÌNH 4: Xử lý preproglucagon -->
+                            <div class="image-placeholder-card" style="margin-top: 1.5rem;">
+                                <div class="image-title">
+                                    <span style="font-size:1.2rem">🖼️</span> Hình 4: Quá trình dịch mã và cắt nắn
+                                    preproglucagon ở tế bào Alpha và tế bào L ở ruột (Fig. 24-12 Ganong)
+                                </div>
+                                <div class="image-drop-text">
+                                    <div class="image-drop-area">
+                                        <img src="../../images/Phan7/TuyenTuy_Hinh4.png"
+                                            alt="Xử lý hậu dịch mã preproglucagon"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div
+                                            style="display:none; padding: 2rem; text-align: center; color: var(--color-text-muted);">
+                                            [Sơ đồ so sánh: Một chuỗi gen preproglucagon ở tuyến tụy bị cắt tạo Glucagon
+                                            hoạt động, còn ở ruột non lại được cắt tạo chuỗi peptide GLP-1 và GLP-2]
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả chi tiết:</strong> Minh họa cơ chế sinh học phân tử biểu hiện gen cùng
+                                    một tiền chất nhưng cho ra các sản phẩm hormon có chức năng sinh lý hoàn toàn khác
+                                    biệt ở các mô khác nhau nhờ hoạt tính enzyme phân cắt đặc hiệu.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PHẦN IV -->
+                        <h2 id="sec-somatostatin-pp" class="section-title">
+                            <span>Phần IV: Hormon Somatostatin và Pancreatic Polypeptide (PP)</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Bên cạnh hai hormon chủ chốt điều hòa đường huyết, đảo Langerhans còn bài tiết các
+                                hormon có vai trò điều phối tinh tế quá trình tiêu hóa và cân bằng nội môi tại chỗ:
+                            </p>
+                            <ul>
+                                <li>
+                                    <strong>Somatostatin (do tế bào Delta tiết):</strong>
+                                    Hoạt động chủ yếu theo cơ chế **cận tiết (paracrine)**. Somatostatin ức chế mạnh mẽ
+                                    sự bài tiết của cả Insulin (tế bào Beta), Glucagon (tế bào Alpha) và Pancreatic
+                                    Polypeptide (tế bào F) ngay trong đảo tụy. Somatostatin cũng làm giảm nhu động dạ
+                                    dày, ruột, giảm bài tiết dịch tiêu hóa và làm chậm tốc độ hấp thu dinh dưỡng ở ruột
+                                    non để ngăn chặn hiện tượng tăng đường huyết đột ngột sau ăn.
+                                </li>
+                                <li>
+                                    <strong>Pancreatic Polypeptide (PP - do tế bào F tiết):</strong>
+                                    Được kích thích bài tiết mạnh mẽ sau các bữa ăn giàu protein, khi đói, hạ đường
+                                    huyết hoặc tập luyện cường độ cao. PP có tác dụng ức chế co bóp túi mật, ức chế bài
+                                    tiết các men tụy ngoại tiết, làm chậm tốc độ hấp thu chất dinh dưỡng tại ruột để tối
+                                    ưu hóa hiệu quả tiêu hóa của cơ thể.
+                                </li>
+                            </ul>
+
+                            <!-- HÌNH 5: Sơ đồ tương tác cận tiết -->
+                            <div class="image-placeholder-card" style="margin-top: 1.5rem;">
+                                <div class="image-title">
+                                    <span style="font-size:1.2rem">🖼️</span> Hình 5: Sơ đồ mạng lưới điều hòa chéo (cận
+                                    tiết) giữa các tế bào đảo tụy (Fig. 24-14 Ganong)
+                                </div>
+                                <div class="image-drop-text">
+                                    <div class="image-drop-area">
+                                        <img src="../../images/Phan7/TuyenTuy_Hinh5.png"
+                                            alt="Mạng lưới điều hòa chéo đảo tụy"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div
+                                            style="display:none; padding: 2rem; text-align: center; color: var(--color-text-muted);">
+                                            [Sơ đồ mạng lưới tam giác: Somatostatin ức chế (-) cả Insulin và Glucagon.
+                                            Insulin ức chế (-) Glucagon. Glucagon kích thích (+) cả Insulin và
+                                            Somatostatin]
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả chi tiết:</strong> Sơ đồ biểu diễn cơ chế tương tác phức tạp cận tiết.
+                                    Sự cân bằng giữa ba hormon này đảm bảo nồng độ glucose huyết tương luôn được giữ
+                                    vững trong giới hạn sinh lý hẹp dù trạng thái dinh dưỡng thay đổi liên tục.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PHẦN V -->
+                        <h2 id="sec-lien-he-lam-sang" class="section-title">
+                            <span>Phần V: Highlight Lâm Sàng (High-Yield Clinical Correlation)</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Hiểu rõ sinh lý tuyến tụy nội tiết là chìa khóa để giải thích cơ chế bệnh học và nguyên
+                                lý điều trị các bệnh chuyển hóa phổ biến:
+                            </p>
+
+                            <!-- BOX LÂM SÀNG 1 -->
+                            <div class="clinical-note-box">
+                                <h4>🩺 1. Định lượng C-peptide trong chẩn đoán Đái tháo đường</h4>
+                                <p>
+                                    Khi chẩn đoán phân biệt đái tháo đường type 1 (phá hủy tự miễn tế bào Beta) và đái
+                                    tháo đường type 2 (kháng insulin kèm suy tế bào Beta thứ phát), xét nghiệm insulin
+                                    máu có thể bị nhiễu do insulin ngoại sinh (thuốc tiêm). Do **C-peptide** được bài
+                                    tiết cùng insulin nội sinh với tỷ lệ 1:1 và không có trong chế phẩm insulin ngoại
+                                    sinh, nồng độ C-peptide máu thấp/không đo được là bằng chứng khẳng định cạn kiệt tế
+                                    bào Beta trong đái tháo đường type 1. Ngược lại, C-peptide bình thường hoặc tăng cao
+                                    định hướng đái tháo đường type 2 ở giai đoạn đầu.
+                                </p>
+                            </div>
+
+                            <!-- BOX LÂM SÀNG 2 -->
+                            <div class="clinical-note-box">
+                                <h4>🩺 2. Cơ chế sinh lý bệnh của Hôn mê toan ceton (DKA)</h4>
+                                <p>
+                                    Hôn mê toan ceton (Diabetic Ketoacidosis - DKA) là biến chứng cấp tính đe dọa tính
+                                    mạng do thiếu hụt insulin tuyệt đối. Khi không có insulin, tác dụng ức chế lên
+                                    enzyme **HSL (Hormone-Sensitive Lipase)** ở mô mỡ bị mất hoàn toàn. HSL hoạt động
+                                    quá mức giải phóng lượng lớn acid béo tự do vào máu chạy về gan. Tại gan, do thiếu
+                                    glucose nội bào, các acid béo bị đẩy mạnh qua quá trình $\beta$-oxy hóa để chuyển
+                                    thành các thể ceton ($\beta$-hydroxybutyrate và acetoacetate). Sự tích tụ thể ceton
+                                    có tính acid mạnh trong máu làm giảm pH máu, gây toan hóa và suy đa cơ quan.
+                                </p>
+                            </div>
+
+                            <!-- BOX LÂM SÀNG 3 -->
+                            <div class="clinical-note-box">
+                                <h4>🩺 3. Ứng dụng điều trị hạ Kali máu cấp cứu bằng Insulin</h4>
+                                <p>
+                                    Trong cấp cứu tăng kali máu đe dọa ngừng tim, truyền **Insulin phối hợp với
+                                    Glucose** là liệu pháp đầu tay giúp hạ nhanh kali máu tạm thời. Cơ chế sinh lý do
+                                    insulin kích hoạt bơm $\text{Na}^+,\text{K}^+\text{-ATPase}$ đưa nhanh ion
+                                    $\text{K}^+$ từ máu vào nội bào. Glucose được truyền kèm để tránh tai biến hạ đường
+                                    huyết do tác dụng đồng thời của insulin.
+                                </p>
+                            </div>
+
+                            <!-- BOX LÂM SÀNG 4 -->
+                            <div class="clinical-note-box">
+                                <h4>🩺 4. Ứng dụng nhóm thuốc điều trị ĐTĐ dựa trên hệ thống Incretin</h4>
+                                <p>
+                                    Các nhóm thuốc hiện đại như **đồng vận thụ thể GLP-1 (GLP-1 Receptor Agonists)** và
+                                    **ức chế enzyme DPP-4 (DPP-4 Inhibitors)** khai thác triệt để sinh lý hệ incretin.
+                                    Thuốc đồng vận GLP-1 bắt chước hoạt tính của GLP-1 ruột để kích thích tiết insulin
+                                    phụ thuộc glucose và ức chế tiết glucagon. Thuốc ức chế DPP-4 ngăn cản sự phân hủy
+                                    của GLP-1 nội sinh, giúp kéo dài thời gian tác dụng kích thích tế bào Beta sau bữa
+                                    ăn.
+                                </p>
+                            </div>
+                        </div>
+
+                        <hr class="section-divider">
+
+                        <!-- TÀI LIỆU THAM KHẢO -->
+                        <div class="physio-content">
+                            <h3>Tài liệu tham khảo (AMA Citation Style)</h3>
+                            <div class="physio-text-block" style="font-size: 0.9rem; opacity: 0.95;">
+                                <ol
+                                    style="list-style-type: decimal; padding-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                                    <li>Lê QT. <em>Sinh lý NỘI TIẾT YDS 2025</em> [Video recording]. Bs. Linh O'la Scar;
+                                        2025.</li>
+                                    <li>Barrett KE, Barman SM, Boitano S, Brooks HL. <em>Ganong's Review of Medical
+                                            Physiology</em>. 24th ed. McGraw-Hill Medical; 2012.</li>
+                                    <li>Koeppen BM, Stanton BA. <em>Berne and Levy Physiology</em>. 8th ed. Elsevier;
+                                        2024.</li>
+                                    <li>Silbernagl S, Despopoulos A. <em>Color Atlas of Physiology</em>. 6th ed. Thieme;
+                                        2009.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CỘT MỤC LỤC BÊN PHẢI -->
+                    <div class="physio-toc-sidebar">
+                        <div class="physio-toc-container" id="physio-toc-container">
+                            <!-- Script toc.js sẽ tự động kết xuất mục lục tại đây -->
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+    <!-- Script Sidebar -->
+    <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>

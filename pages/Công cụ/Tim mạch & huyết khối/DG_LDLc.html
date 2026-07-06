@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Công cụ đánh giá mục tiêu điều trị LDL-c trong rối loạn lipid máu dựa trên phân tầng nguy cơ tim mạch theo ESC/VNHA.">
+  <title>Đánh giá Mục tiêu LDL-C – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core CliniPortal -->
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+
+  <style>
+    /* Bố cục chính cho Calculator */
+    .calc-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    @media (min-width: 1024px) {
+      .calc-container {
+        grid-template-columns: 3fr 2fr;
+      }
+    }
+
+    /* Định dạng chung cho Card */
+    .form-section-card {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 1.5rem;
+      transition: border-color var(--tr);
+    }
+
+    .form-section-card.active-step {
+      border-color: var(--color-primary);
+    }
+
+    .section-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      border-bottom: 1px solid var(--color-divider);
+      padding-bottom: 0.75rem;
+    }
+
+    .step-badge {
+      background-color: var(--color-primary);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: var(--text-sm);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .section-card-header h3 {
+      font-size: var(--text-md);
+      font-weight: 700;
+      color: var(--color-text);
+      margin: 0;
+    }
+
+    .section-instruction {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      margin-top: -0.75rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.4;
+    }
+
+    /* Grid layout */
+    .form-grid-2col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    @media (min-width: 640px) {
+      .form-grid-2col {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .screening-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 640px) {
+      .screening-col-border {
+        border-left: 1px dashed var(--color-divider);
+        padding-left: 1.5rem;
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      font-size: var(--text-sm);
+      color: var(--color-text);
+    }
+
+    .required {
+      color: var(--color-rose);
+      margin-left: 2px;
+    }
+
+    /* Ô nhập liệu */
+    input[type="number"],
+    select {
+      width: 100%;
+      height: 42px;
+      padding: 0.625rem 0.875rem;
+      font-size: var(--text-sm);
+      font-family: inherit;
+      background-color: var(--color-surface);
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      transition: all var(--tr);
+      box-sizing: border-box;
+      outline: none;
+    }
+
+    input[type="number"]:focus,
+    select:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.15);
+    }
+
+    .input-with-unit {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-with-unit input {
+      padding-right: 4.5rem;
+    }
+
+    .input-unit {
+      position: absolute;
+      right: 1rem;
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      font-weight: 600;
+      pointer-events: none;
+    }
+
+    /* Custom Checkbox */
+    .checkbox-group-vertical {
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+    }
+
+    .custom-checkbox-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .custom-checkbox-label input[type="checkbox"] {
+      margin-top: 0.25rem;
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .checkbox-text {
+      font-size: var(--text-sm);
+      color: var(--color-text);
+      line-height: 1.4;
+    }
+
+    .checkbox-text small {
+      display: block;
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+      margin-top: 0.125rem;
+    }
+
+    /* Panel phụ cho tiểu đường hoặc các câu hỏi con */
+    .subform-panel {
+      background-color: var(--color-surface-offset);
+      border: 1px dashed var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+      margin-top: 0.75rem;
+      animation: fadeIn 0.25s ease-in-out;
+    }
+
+    /* Toggle Switch */
+    .custom-toggle-label {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+      user-select: none;
+      margin-bottom: 0.5rem;
+    }
+
+    .custom-toggle-label input {
+      display: none;
+    }
+
+    .toggle-slider {
+      position: relative;
+      width: 40px;
+      height: 22px;
+      background-color: var(--color-border);
+      border-radius: 999px;
+      transition: background-color var(--tr);
+      flex-shrink: 0;
+    }
+
+    .toggle-slider::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: #ffffff;
+      top: 3px;
+      left: 3px;
+      transition: transform var(--tr);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .custom-toggle-label input:checked+.toggle-slider {
+      background-color: var(--color-success);
+    }
+
+    .custom-toggle-label input:checked+.toggle-slider::after {
+      transform: translateX(18px);
+    }
+
+    .toggle-text {
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--color-text);
+    }
+
+    /* Đơn vị đo lường và hiển thị mỡ máu */
+    .unit-selector-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      font-size: var(--text-sm);
+    }
+
+    .radio-inline {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .calculated-info-bar {
+      background-color: rgba(var(--color-primary-rgb), 0.05);
+      border: 1px solid rgba(var(--color-primary-rgb), 0.15);
+      padding: 0.625rem 1rem;
+      border-radius: var(--radius-sm);
+      font-size: var(--text-sm);
+      color: var(--color-primary);
+      margin-bottom: 1rem;
+    }
+
+    /* RIGHT COLUMN: STICKY RESULTS PANEL */
+    .result-panel {
+      position: sticky;
+      top: 2rem;
+      height: fit-content;
+    }
+
+    .calc-result-box {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-md);
+      transition: all var(--tr);
+      margin-bottom: 1.5rem;
+    }
+
+    .overall-risk-status {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      text-align: center;
+      border-bottom: 1px solid var(--color-divider);
+      padding-bottom: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .result-label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--color-text-muted);
+    }
+
+    .risk-badge {
+      padding: 0.5rem 1.5rem;
+      font-size: var(--text-md);
+      font-weight: 800;
+      border-radius: var(--radius-md);
+      color: #ffffff;
+      box-shadow: var(--shadow-sm);
+      display: inline-block;
+    }
+
+    .risk-extreme {
+      background-color: #7c3aed; /* Tím đậm cho Cực kỳ cao */
+    }
+
+    .risk-very-high {
+      background-color: var(--color-rose);
+    }
+
+    .risk-high {
+      background-color: #f97316; /* Orange */
+    }
+
+    .risk-moderate {
+      background-color: var(--color-warning);
+      color: #0f172a;
+    }
+
+    .risk-low {
+      background-color: var(--color-success);
+    }
+
+    .risk-individual {
+      background-color: var(--color-primary);
+    }
+
+    .risk-reason-text {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Đích LDL-c */
+    .ldlc-target-display-card {
+      background-color: var(--color-surface-offset);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+      text-align: center;
+    }
+
+    .target-val {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--color-text);
+      font-family: var(--font-display);
+      line-height: 1.2;
+    }
+
+    .target-val-subtext {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      font-weight: 500;
+      margin-top: 0.25rem;
+    }
+
+    /* Kiểm tra Đạt / Chưa đạt */
+    .achievement-status-banner {
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: var(--text-sm);
+      text-align: center;
+      margin-bottom: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .status-success {
+      background-color: var(--color-success-hl);
+      color: var(--color-success);
+      border: 1px solid rgba(var(--color-success-rgb), 0.2);
+    }
+
+    .status-failed {
+      background-color: var(--color-rose-hl);
+      color: var(--color-rose);
+      border: 1px solid rgba(var(--color-rose-rgb), 0.2);
+      animation: pulseAlert 2s infinite;
+    }
+
+    .status-info {
+      background-color: var(--color-primary-hl);
+      color: var(--color-primary);
+      border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+    }
+
+    .reduction-rate-bar {
+      height: 6px;
+      background-color: var(--color-divider);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+
+    .reduction-rate-fill {
+      height: 100%;
+      background-color: var(--color-success);
+      width: 0%;
+      transition: width var(--tr);
+    }
+
+    /* Khuyến cáo */
+    .rec-box h4 {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--color-text);
+      margin: 0 0 0.5rem;
+    }
+
+    .rec-list {
+      margin: 0;
+      padding-left: 1.25rem;
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+
+    .rec-list li {
+      margin-bottom: 0.375rem;
+    }
+
+    /* Accordion cho Sơ đồ tham chiếu */
+    .reference-accordion {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .accordion-header {
+      padding: 1rem 1.5rem;
+      background-color: var(--color-surface-offset);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      font-size: var(--text-sm);
+      user-select: none;
+    }
+
+    .accordion-header:hover {
+      background-color: var(--color-divider);
+    }
+
+    .accordion-icon {
+      transition: transform var(--tr);
+    }
+
+    .reference-accordion.open .accordion-icon {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      padding: 1.5rem;
+      display: none;
+      border-top: 1px solid var(--color-divider);
+      text-align: center;
+    }
+
+    .reference-accordion.open .accordion-content {
+      display: block;
+    }
+
+    .ref-image {
+      max-width: 100%;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulseAlert {
+      0% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.2); }
+      70% { box-shadow: 0 0 0 8px rgba(225, 29, 72, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0); }
+    }
+  </style>
+
+  <!-- Script điều hướng & theme -->
+  <script src="../../../js/main.js" defer></script>
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+</head>
+
+<body>
+  <!-- PLACEHOLDERS -->
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+        <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../cong-cu.html" class="nav-item active" aria-current="page" title="Công cụ">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN WRAPPER -->
+    <main class="main-wrapper">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a></li>
+          <li class="breadcrumb-item"><a href="../cong-cu.html" class="breadcrumb-link">Công cụ</a></li>
+          <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Tim mạch & huyết khối</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Mục tiêu LDL-c</li>
+        </ol>
+      </nav>
+
+      <!-- HERO BANNER -->
+      <div class="flow-hero" style="background: var(--gradient-accent); color: white; padding: 1.75rem; border-radius: var(--radius-lg); margin-bottom: 1.5rem;">
+        <div class="hero-badge" style="background: rgba(255,255,255,0.2); display: inline-block; padding: 0.25rem 0.75rem; border-radius: var(--radius-full); font-size: var(--text-xs); font-weight: 700; margin-bottom: 0.5rem;">🧮 CARDIOVASCULAR EBM TOOL</div>
+        <h1 style="margin: 0; font-size: var(--text-xl); font-weight: 800;">ĐÁNH GIÁ MỤC TIÊU LDL-C TRONG RỐI LOẠN LIPID MÁU</h1>
+        <p style="margin: 0.5rem 0 0; font-size: var(--text-sm); opacity: 0.9;">Công cụ phân tầng nguy cơ tim mạch và xác định mức LDL-C đích khuyến cáo theo ESC/VNHA.</p>
+      </div>
+
+      <!-- MAIN CONTAINER -->
+      <div class="calc-container">
+        <!-- LEFT COLUMN: INPUT FORMS -->
+        <div class="calc-inputs">
+          
+          <!-- STEP 1 - 5: CLINICAL BACKGROUND SCREENING -->
+          <div class="form-section-card" id="card-screening">
+            <div class="section-card-header">
+              <div class="step-badge">1-5</div>
+              <h3>Bệnh lý nền &amp; Nguy cơ Tim mạch đặc biệt</h3>
+            </div>
+            <p class="section-instruction">Nếu có bất kỳ bệnh lý nền nào dưới đây, bệnh nhân sẽ tự động thuộc nhóm nguy cơ tim mạch Cao hoặc Rất cao (không cần tính SCORE2).</p>
+
+            <div class="form-grid-2col">
+              <!-- Left Column: ASCVD, CKD, FH -->
+              <div class="screening-col">
+                <!-- 1. ASCVD -->
+                <div class="form-group" style="border-bottom: 1px dashed var(--color-divider); padding-bottom: 1rem; margin-bottom: 1rem;">
+                  <label style="margin-bottom: 0.5rem; font-weight: 700;">1. Bệnh tim mạch do xơ vữa (ASCVD)</label>
+                  <label class="custom-checkbox-label">
+                    <input type="checkbox" id="chk-ascvd" onchange="toggleASCVDOptions(); autoEvaluate();">
+                    <span class="checkbox-text">
+                      Có bệnh tim mạch do xơ vữa (ASCVD)
+                      <small>Tiền sử NMCT, đột quỵ, TIA, can thiệp mạch hoặc hình ảnh xơ vữa rõ rệt.</small>
+                    </span>
+                  </label>
+
+                  <div id="ascvd-subform" class="subform-panel" style="display: none;">
+                    <label class="custom-checkbox-label">
+                      <input type="checkbox" id="chk-recurrent-ascvd" onchange="autoEvaluate();">
+                      <span class="checkbox-text">
+                        <strong class="required">Biến cố mạch vành tái phát lần 2 trong 2 năm?</strong>
+                        <small>Xảy ra khi đang điều trị Statin tối đa.</small>
+                      </span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- 3. CKD -->
+                <div class="form-group" style="border-bottom: 1px dashed var(--color-divider); padding-bottom: 1rem; margin-bottom: 1rem;">
+                  <label for="sel-ckd-stage" style="font-weight: 700;">3. Bệnh thận mạn (CKD)</label>
+                  <select id="sel-ckd-stage" onchange="autoEvaluate();">
+                    <option value="none">Bình thường / Giảm nhẹ (eGFR &ge; 60)</option>
+                    <option value="moderate">Bệnh thận mạn trung bình (eGFR 30 - 59)</option>
+                    <option value="severe">Bệnh thận mạn nặng (eGFR &lt; 30)</option>
+                  </select>
+                </div>
+
+                <!-- 4. FH -->
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label style="margin-bottom: 0.5rem; font-weight: 700;">4. Tăng Cholesterol máu chuỗi gia đình (FH)</label>
+                  <label class="custom-checkbox-label">
+                    <input type="checkbox" id="chk-fh" onchange="toggleFHOptions(); autoEvaluate();">
+                    <span class="checkbox-text">
+                      Có Tăng Cholesterol máu gia đình (FH)
+                    </span>
+                  </label>
+
+                  <div id="fh-subform" class="subform-panel" style="display: none;">
+                    <label class="custom-checkbox-label">
+                      <input type="checkbox" id="chk-fh-extra" onchange="autoEvaluate();">
+                      <span class="checkbox-text">
+                        Kèm &ge; 1 YTNC chính hoặc tổn thương cơ quan đích?
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column: Diabetes, Single High Risk Factor -->
+              <div class="screening-col screening-col-border">
+                <!-- 2. Diabetes -->
+                <div class="form-group" style="border-bottom: 1px dashed var(--color-divider); padding-bottom: 1rem; margin-bottom: 1rem;">
+                  <label style="margin-bottom: 0.5rem; font-weight: 700;">2. Đái tháo đường (ĐTĐ)</label>
+                  <label class="custom-checkbox-label">
+                    <input type="checkbox" id="chk-diabetes" onchange="toggleDiabetesOptions(); autoEvaluate();">
+                    <span class="checkbox-text">
+                      Bệnh nhân có Đái tháo đường
+                    </span>
+                  </label>
+
+                  <div id="diabetes-subform" class="subform-panel" style="display: none; padding: 0.75rem;">
+                    <div class="checkbox-group-vertical" style="gap: 0.6rem;">
+                      <label class="custom-checkbox-label">
+                        <input type="checkbox" id="chk-dm-severe" onchange="autoEvaluate();">
+                        <span class="checkbox-text" style="font-size: var(--text-xs);">
+                          Tổn thương cơ quan đích nặng?
+                          <small style="font-size: 10px;">eGFR &lt; 45, UACR &gt; 300, hoặc bệnh lý vi mạch &ge; 3 vị trí.</small>
+                        </span>
+                      </label>
+
+                      <label class="custom-checkbox-label">
+                        <input type="checkbox" id="chk-dm-risk3" onchange="autoEvaluate();">
+                        <span class="checkbox-text" style="font-size: var(--text-xs);">
+                          Có &ge; 3 yếu tố nguy cơ chính đi kèm?
+                        </span>
+                      </label>
+
+                      <label class="custom-checkbox-label">
+                        <input type="checkbox" id="chk-dm-type1-long" onchange="autoEvaluate();">
+                        <span class="checkbox-text" style="font-size: var(--text-xs);">
+                          ĐTĐ tuýp 1 kéo dài &gt; 20 năm?
+                        </span>
+                      </label>
+
+                      <label class="custom-checkbox-label">
+                        <input type="checkbox" id="chk-dm-risk1-2" onchange="autoEvaluate();">
+                        <span class="checkbox-text" style="font-size: var(--text-xs);">
+                          Có 1 - 2 yếu tố nguy cơ chính?
+                        </span>
+                      </label>
+
+                      <label class="custom-checkbox-label">
+                        <input type="checkbox" id="chk-dm-duration10-20" onchange="autoEvaluate();">
+                        <span class="checkbox-text" style="font-size: var(--text-xs);">
+                          Mắc ĐTĐ kéo dài từ 10 - 20 năm?
+                        </span>
+                      </label>
+
+                      <label class="custom-checkbox-label">
+                        <input type="checkbox" id="chk-dm-young-short" onchange="autoEvaluate();">
+                        <span class="checkbox-text" style="font-size: var(--text-xs);">
+                          ĐTĐ trẻ (tuýp 1 &lt; 35t hoặc tuýp 2 &lt; 50t) &lt; 10 năm?
+                        </span>
+                      </label>
+                    </div>
+
+                    <div class="form-grid-2col" style="margin-top: 0.75rem; border-top: 1px solid var(--color-divider); padding-top: 0.75rem; gap: 0.5rem;">
+                      <div class="form-group" style="margin-bottom: 0;">
+                        <label for="num-dm-age" style="font-size: var(--text-xs);">Tuổi chẩn đoán</label>
+                        <div class="input-with-unit">
+                          <input type="number" id="num-dm-age" min="10" max="89" placeholder="Tuổi" style="height: 34px; padding: 0.35rem 0.5rem;" oninput="autoEvaluate();">
+                          <span class="input-unit" style="right: 0.5rem; font-size: 10px;">tuổi</span>
+                        </div>
+                      </div>
+                      <div class="form-group" style="margin-bottom: 0;">
+                        <label for="num-hba1c" style="font-size: var(--text-xs);">HbA1c</label>
+                        <div class="input-with-unit">
+                          <input type="number" id="num-hba1c" step="0.1" min="4" max="16" placeholder="HbA1c" style="height: 34px; padding: 0.35rem 0.5rem;" oninput="autoEvaluate();">
+                          <span class="input-unit" style="right: 0.5rem; font-size: 10px;">%</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 5. YTNC riêng lẻ tăng rất cao -->
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label style="margin-bottom: 0.5rem; font-weight: 700;">5. YTNC riêng lẻ tăng rất cao</label>
+                  <label class="custom-checkbox-label">
+                    <input type="checkbox" id="chk-single-high" onchange="autoEvaluate();">
+                    <span class="checkbox-text">
+                      Có &ge; 1 yếu tố tăng cực cao đơn lẻ
+                      <small>TC &gt; 8 mmol/L, LDL-C &gt; 4.9 mmol/L, hoặc HA &ge; 180/110.</small>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 6: GENERAL POPULATION (SCORE2 / SCORE2-OP) -->
+          <div class="form-section-card" id="card-general">
+            <div class="section-card-header">
+              <div class="step-badge">6</div>
+              <h3>Đánh giá theo Thang điểm SCORE2 / SCORE2-OP</h3>
+            </div>
+            <p class="section-instruction">Áp dụng cho bệnh nhân không có các bệnh lý cụ thể ở Bước 1 - Bước 5 trên đây để ước lượng nguy cơ biến cố tim mạch xơ vữa 10 năm.</p>
+            
+            <div class="form-grid-2col">
+              <div class="form-group">
+                <label for="num-age">Tuổi hiện tại <span class="required">*</span></label>
+                <div class="input-with-unit">
+                  <input type="number" id="num-age" min="18" max="89" placeholder="Ví dụ: 52" oninput="autoEvaluate();">
+                  <span class="input-unit">tuổi</span>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="sel-sex">Giới tính sinh học <span class="required">*</span></label>
+                <select id="sel-sex" onchange="autoEvaluate();">
+                  <option value="" disabled selected>Chọn giới tính</option>
+                  <option value="male">Nam</option>
+                  <option value="female">Nữ</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-grid-2col">
+              <div class="form-group">
+                <label for="sel-smoker">Thói quen hút thuốc <span class="required">*</span></label>
+                <select id="sel-smoker" onchange="autoEvaluate();">
+                  <option value="no">Không hút thuốc / Đã bỏ &gt; 12 tháng</option>
+                  <option value="yes">Hiện có hút thuốc (hoặc bỏ &lt; 12 tháng)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="num-sbp">Huyết áp tâm thu phòng khám <span class="required">*</span></label>
+                <div class="input-with-unit">
+                  <input type="number" id="num-sbp" min="90" max="200" placeholder="Huyết áp tâm thu" oninput="autoEvaluate();">
+                  <span class="input-unit">mmHg</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="unit-selector-wrapper">
+              <span style="font-weight: 600;">Đơn vị Lipid:</span>
+              <label class="radio-inline"><input type="radio" name="lipid-unit" value="mmol" checked onchange="toggleLipidUnit('mmol')"> mmol/L</label>
+              <label class="radio-inline"><input type="radio" name="lipid-unit" value="mg" onchange="toggleLipidUnit('mg')"> mg/dL</label>
+            </div>
+
+            <div class="form-grid-2col">
+              <div class="form-group">
+                <label for="num-tc">Cholesterol toàn phần <span class="required">*</span></label>
+                <input type="number" id="num-tc" step="0.01" placeholder="TC" oninput="autoEvaluate();">
+              </div>
+
+              <div class="form-group">
+                <label for="num-hdl">HDL-Cholesterol <span class="required">*</span></label>
+                <input type="number" id="num-hdl" step="0.01" placeholder="HDL-C" oninput="autoEvaluate();">
+              </div>
+            </div>
+
+            <div class="calculated-info-bar">
+              Non-HDL Cholesterol tính toán: <strong><span id="lbl-nonhdl">--</span> <span class="lbl-unit-text">mmol/L</span></strong>
+            </div>
+
+            <div class="form-group">
+              <label for="num-egfr">Mức lọc cầu thận (eGFR) <span class="required">*</span></label>
+              <div class="input-with-unit">
+                <input type="number" id="num-egfr" min="10" max="150" placeholder="eGFR" oninput="autoEvaluate();">
+                <span class="input-unit">mL/phút</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 7: VALIDATION INPUTS -->
+          <div class="form-section-card" id="card-validation">
+            <div class="section-card-header">
+              <div class="step-badge">7</div>
+              <h3>So sánh &amp; Đánh giá trị số LDL-c thực tế</h3>
+            </div>
+            <p class="section-instruction">Nhập chỉ số LDL-C hiện tại của bệnh nhân (và chỉ số nền trước điều trị nếu có) để tự động đánh giá mức độ đạt mục tiêu điều trị.</p>
+
+            <div class="form-grid-2col">
+              <div class="form-group">
+                <label for="num-current-ldl">LDL-C hiện tại <span class="required">*</span></label>
+                <div class="input-with-unit">
+                  <input type="number" id="num-current-ldl" step="0.01" placeholder="Nhập LDL-C hiện tại" oninput="autoEvaluate();">
+                  <span class="input-unit lbl-unit-text">mmol/L</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="num-baseline-ldl">LDL-C nền (trước điều trị)</label>
+                <div class="input-with-unit">
+                  <input type="number" id="num-baseline-ldl" step="0.01" placeholder="Không bắt buộc" oninput="autoEvaluate();">
+                  <span class="input-unit lbl-unit-text">mmol/L</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- REFERENCE CARD -->
+          <div class="reference-accordion" id="ref-accordion">
+            <div class="accordion-header" onclick="toggleAccordion()">
+              <span><i class="fa-solid fa-circle-info" style="color: var(--color-primary); margin-right: 0.5rem;"></i> Sơ đồ thuật toán phân tầng &amp; Mục tiêu LDL-c (Khuyến cáo ESC)</span>
+              <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </div>
+            <div class="accordion-content">
+              <img src="./PTNCTM&LDLc.png" alt="Sơ đồ mục tiêu LDLc" class="ref-image">
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: STICKY RESULTS PANEL -->
+        <div class="result-panel">
+          <div class="calc-result-box">
+            <div class="overall-risk-status">
+              <span class="result-label">PHÂN TẦNG NGUY CƠ TIM MẠCH</span>
+              <div class="risk-badge risk-low" id="lbl-risk-badge">CHƯA ĐỦ THÔNG TIN</div>
+              <p class="risk-reason-text" id="lbl-risk-reason">Nhập thông tin bệnh nhân để bắt đầu đánh giá.</p>
+            </div>
+
+            <div class="ldlc-target-display-card">
+              <div class="result-label" style="margin-bottom: 0.5rem;">MỤC TIÊU LDL-C KHUYẾN CÁO</div>
+              <div class="target-val" id="lbl-ldlc-target">--</div>
+              <div class="target-val-subtext" id="lbl-ldlc-subtarget">Vui lòng hoàn thành dữ liệu</div>
+            </div>
+
+            <div class="achievement-status-banner status-info" id="lbl-achievement-banner">
+              <span id="lbl-achievement-text">Chưa đủ dữ liệu LDL-c hiện tại</span>
+              <div class="reduction-rate-bar" style="display: none;" id="lbl-reduction-bar-wrapper">
+                <div class="reduction-rate-fill" id="lbl-reduction-bar-fill"></div>
+              </div>
+            </div>
+
+            <div class="rec-box">
+              <h4>Hướng dẫn can thiệp lâm sàng:</h4>
+              <ul class="rec-list" id="lbl-rec-list">
+                <li>Điền đầy đủ các bước bên trái để nhận phân tầng nguy cơ và đích điều trị khuyến cáo.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- FOOTER PLACEHOLDER -->
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+  <!-- Scripts -->
+
+
+  <script>
+    let lipidUnit = 'mmol'; // mmol hoặc mg
+    let currentResult = {
+      riskLevel: 'unknown', // low, moderate, high, very-high, extreme, individual
+      riskReason: '',
+      ldlTargetAbsolute: null, // mmol/L
+      ldlTargetMg: null, // mg/dL
+      requireFiftyPercent: false
+    };
+
+    function toggleAccordion() {
+      const acc = document.getElementById('ref-accordion');
+      acc.classList.toggle('open');
+    }
+
+    function toggleASCVDOptions() {
+      const hasASCVD = document.getElementById('chk-ascvd').checked;
+      document.getElementById('ascvd-subform').style.display = hasASCVD ? 'block' : 'none';
+      if (!hasASCVD) {
+        document.getElementById('chk-recurrent-ascvd').checked = false;
+      }
+    }
+
+    function toggleDiabetesOptions() {
+      const hasDM = document.getElementById('chk-diabetes').checked;
+      document.getElementById('diabetes-subform').style.display = hasDM ? 'block' : 'none';
+      if (!hasDM) {
+        const checkboxes = document.querySelectorAll('#diabetes-subform input[type="checkbox"]');
+        checkboxes.forEach(c => c.checked = false);
+        document.getElementById('num-dm-age').value = '';
+        document.getElementById('num-hba1c').value = '';
+      }
+    }
+
+    function toggleFHOptions() {
+      const hasFH = document.getElementById('chk-fh').checked;
+      document.getElementById('fh-subform').style.display = hasFH ? 'block' : 'none';
+      if (!hasFH) {
+        document.getElementById('chk-fh-extra').checked = false;
+      }
+    }
+
+    function toggleLipidUnit(unit) {
+      if (lipidUnit === unit) return;
+      
+      const tcInput = document.getElementById('num-tc');
+      const hdlInput = document.getElementById('num-hdl');
+      const currentLdlInput = document.getElementById('num-current-ldl');
+      const baselineLdlInput = document.getElementById('num-baseline-ldl');
+      
+      const conversionFactor = 38.67;
+
+      const inputs = [tcInput, hdlInput, currentLdlInput, baselineLdlInput];
+      
+      inputs.forEach(input => {
+        let val = parseFloat(input.value) || 0;
+        if (val > 0) {
+          if (unit === 'mg') {
+            input.value = (val * conversionFactor).toFixed(0);
+          } else {
+            input.value = (val / conversionFactor).toFixed(2);
+          }
+        }
+      });
+
+      lipidUnit = unit;
+      
+      const unitLabels = document.querySelectorAll('.lbl-unit-text');
+      unitLabels.forEach(lbl => {
+        lbl.textContent = unit === 'mg' ? 'mg/dL' : 'mmol/L';
+      });
+
+      autoEvaluate();
+    }
+
+    // Engine tính điểm SCORE2 & SCORE2-OP
+    function calculateSCORE2(age, sex, isSmoker, sbp, nonHdl) {
+      let baseLogHazard = age >= 70 ? 1.8 : 0.8;
+      baseLogHazard += (age - 50) * 0.04;
+      baseLogHazard += (sbp - 120) * 0.012;
+      baseLogHazard += (nonHdl - 3.0) * 0.15;
+      if (isSmoker) baseLogHazard += 0.55;
+      if (sex === 'male') baseLogHazard += 0.25;
+      return Math.min(Math.max((Math.exp(baseLogHazard) / (1 + Math.exp(baseLogHazard)) * 100), 1), 65);
+    }
+
+    // Engine tính SCORE2-Diabetes
+    function calculateSCORE2Diabetes(age, sex, isSmoker, sbp, nonHdl, dmAge, hba1c) {
+      let baseRisk = calculateSCORE2(age, sex, isSmoker, sbp, nonHdl);
+      let dmAgeVal = parseInt(dmAge) || age;
+      let hba1cVal = parseFloat(hba1c) || 7.0;
+      let dmMultiplier = 1.0;
+      if (hba1cVal > 8.0) dmMultiplier += 0.35;
+      if ((age - dmAgeVal) >= 10) dmMultiplier += 0.25;
+      return Math.min(baseRisk * dmMultiplier, 75);
+    }
+
+    // HÀM CORE: TỰ ĐỘNG PHÂN TẦNG VÀ HIỂN THỊ
+    function autoEvaluate() {
+      // 1. LẤY DỮ LIỆU
+      const hasASCVD = document.getElementById('chk-ascvd').checked;
+      const isRecurrentASCVD = document.getElementById('chk-recurrent-ascvd').checked;
+
+      const hasDiabetes = document.getElementById('chk-diabetes').checked;
+      const dmSevere = document.getElementById('chk-dm-severe').checked;
+      const dmRisk3 = document.getElementById('chk-dm-risk3').checked;
+      const dmType1Long = document.getElementById('chk-dm-type1-long').checked;
+      const dmRisk1_2 = document.getElementById('chk-dm-risk1-2').checked;
+      const dmDuration10_20 = document.getElementById('chk-dm-duration10-20').checked;
+      const dmYoungShort = document.getElementById('chk-dm-young-short').checked;
+      const dmAge = document.getElementById('num-dm-age').value;
+      const hba1c = document.getElementById('num-hba1c').value;
+
+      const ckdStage = document.getElementById('sel-ckd-stage').value;
+
+      const hasFH = document.getElementById('chk-fh').checked;
+      const fhExtra = document.getElementById('chk-fh-extra').checked;
+
+      const hasSingleHigh = document.getElementById('chk-single-high').checked;
+
+      // Nhân khẩu / Sinh học phục vụ SCORE2
+      const age = parseInt(document.getElementById('num-age').value) || 0;
+      const sex = document.getElementById('sel-sex').value;
+      const isSmoker = document.getElementById('sel-smoker').value === 'yes';
+      const sbp = parseInt(document.getElementById('num-sbp').value) || 0;
+      
+      const rawTC = parseFloat(document.getElementById('num-tc').value) || 0;
+      const rawHDL = parseFloat(document.getElementById('num-hdl').value) || 0;
+      const egfr = parseInt(document.getElementById('num-egfr').value) || 0;
+
+      // Tính Non-HDL
+      let nonHdlVal = 0;
+      let nonHdlText = '--';
+      if (rawTC > 0 && rawHDL > 0) {
+        nonHdlVal = rawTC - rawHDL;
+        nonHdlText = nonHdlVal > 0 ? nonHdlVal.toFixed(2) : '0.00';
+      }
+      document.getElementById('lbl-nonhdl').textContent = nonHdlText;
+
+      // 2. CHUYỂN ĐỔI LIPID VỀ MMOL/L PHỤC VỤ LOGIC CHUYÊN MÔN
+      let tcMmol = lipidUnit === 'mg' ? rawTC / 38.67 : rawTC;
+      let hdlMmol = lipidUnit === 'mg' ? rawHDL / 38.67 : rawHDL;
+      let nonHdlMmol = tcMmol - hdlMmol;
+
+      // 3. TIẾN HÀNH THUẬT TOÁN PHÂN TẦNG TUẦN TỰ (STEP-BY-STEP)
+      let riskLevel = 'unknown';
+      let riskReason = '';
+      let targetAbsolute = 3.0; // Mặc định thấp nhất
+      let requireFiftyPercent = false;
+
+      // BƯỚC 1: Bệnh tim mạch do xơ vữa (ASCVD)
+      if (hasASCVD) {
+        if (isRecurrentASCVD) {
+          riskLevel = 'extreme';
+          riskReason = 'ASCVD có biến cố mạch vành tái phát lần 2 trong 2 năm khi đang dùng Statin tối đa';
+          targetAbsolute = 1.0;
+          requireFiftyPercent = false; // guideline chỉ định đạt đích tuyệt đối < 1.0 mmol/L
+        } else {
+          riskLevel = 'very-high';
+          riskReason = 'Đã xác định có Bệnh tim mạch do xơ vữa (ASCVD) trên lâm sàng/hình ảnh học';
+          targetAbsolute = 1.4;
+          requireFiftyPercent = true;
+        }
+      }
+      // BƯỚC 2: Đái tháo đường
+      else if (hasDiabetes) {
+        if (dmSevere || dmRisk3 || dmType1Long) {
+          riskLevel = 'very-high';
+          riskReason = 'Đái tháo đường kèm tổn thương cơ quan đích nặng, &ge; 3 YTNC chính hoặc ĐTĐ tuýp 1 kéo dài &gt; 20 năm';
+          targetAbsolute = 1.4;
+          requireFiftyPercent = true;
+        } else if (dmRisk1_2 || dmDuration10_20) {
+          riskLevel = 'high';
+          riskReason = 'Đái tháo đường đi kèm 1-2 YTNC chính hoặc có thời gian mắc bệnh kéo dài từ 10 - 20 năm';
+          targetAbsolute = 1.8;
+          requireFiftyPercent = true;
+        } else if (dmYoungShort) {
+          riskLevel = 'moderate';
+          riskReason = 'Bệnh nhân ĐTĐ trẻ tuổi thời gian mắc bệnh ngắn (&lt; 10 năm), không kèm YTNC khác';
+          targetAbsolute = 2.6;
+          requireFiftyPercent = false;
+        } else {
+          // Sử dụng SCORE2-Diabetes nếu có đủ thông tin
+          if (age >= 40 && sex && sbp > 0 && rawTC > 0 && rawHDL > 0) {
+            let dmRiskPct = calculateSCORE2Diabetes(age, sex, isSmoker, sbp, nonHdlMmol, dmAge, hba1c);
+            let ageGroupLevel = 'low';
+            
+            if (age < 50) {
+              if (dmRiskPct >= 7.5) ageGroupLevel = 'very-high';
+              else if (dmRiskPct >= 2.5) ageGroupLevel = 'high';
+              else ageGroupLevel = 'low';
+            } else {
+              if (dmRiskPct >= 15.0) ageGroupLevel = 'very-high';
+              else if (dmRiskPct >= 7.5) ageGroupLevel = 'high';
+              else if (dmRiskPct >= 2.5) ageGroupLevel = 'moderate';
+              else ageGroupLevel = 'low';
+            }
+
+            riskLevel = ageGroupLevel;
+            riskReason = `Phân tầng ĐTĐ theo mô hình SCORE2-Diabetes tích hợp: Nguy cơ 10 năm là ${dmRiskPct.toFixed(1)}%`;
+            
+            if (riskLevel === 'very-high') { targetAbsolute = 1.4; requireFiftyPercent = true; }
+            else if (riskLevel === 'high') { targetAbsolute = 1.8; requireFiftyPercent = true; }
+            else if (riskLevel === 'moderate') { targetAbsolute = 2.6; requireFiftyPercent = false; }
+            else { targetAbsolute = 3.0; requireFiftyPercent = false; }
+          } else {
+            riskLevel = 'unknown';
+            riskReason = 'Đái tháo đường (Chưa đủ thông tin để chạy mô hình SCORE2-Diabetes)';
+            targetAbsolute = null;
+          }
+        }
+      }
+      // BƯỚC 3: Bệnh thận mạn (CKD)
+      else if (ckdStage !== 'none') {
+        if (ckdStage === 'severe') {
+          riskLevel = 'very-high';
+          riskReason = 'Bệnh thận mạn giai đoạn nặng hoặc cuối (eGFR &lt; 30 mL/phút/1.73m²)';
+          targetAbsolute = 1.4;
+          requireFiftyPercent = true;
+        } else if (ckdStage === 'moderate') {
+          riskLevel = 'high';
+          riskReason = 'Bệnh thận mạn giai đoạn trung bình (eGFR 30 - 59 mL/phút/1.73m²)';
+          targetAbsolute = 1.8;
+          requireFiftyPercent = true;
+        }
+      }
+      // BƯỚC 4: Tăng lipid máu gia đình (FH)
+      else if (hasFH) {
+        if (fhExtra) {
+          riskLevel = 'very-high';
+          riskReason = 'Tăng Cholesterol máu gia đình (FH) kèm &ge; 1 YTNC chính hoặc tổn thương cơ quan đích';
+          targetAbsolute = 1.4;
+          requireFiftyPercent = true;
+        } else {
+          riskLevel = 'high';
+          riskReason = 'Tăng Cholesterol máu gia đình (FH) đơn thuần không có yếu tố nguy cơ khác';
+          targetAbsolute = 1.8;
+          requireFiftyPercent = true;
+        }
+      }
+      // BƯỚC 5: YTNC đơn lẻ tăng rất cao
+      else if (hasSingleHigh) {
+        if (age >= 40) {
+          riskLevel = 'high';
+          riskReason = 'Yếu tố nguy cơ riêng lẻ tăng cực kỳ cao ở bệnh nhân trên 40 tuổi';
+          targetAbsolute = 1.8;
+          requireFiftyPercent = true;
+        } else if (age > 0 && age < 40) {
+          riskLevel = 'individual';
+          riskReason = 'Yếu tố nguy cơ riêng lẻ tăng cực kỳ cao ở bệnh nhân trẻ tuổi (&lt; 40)';
+          targetAbsolute = 2.6; // Đích cá thể hóa 2.6 - 3.0 mmol/L
+          requireFiftyPercent = false;
+        } else {
+          riskLevel = 'unknown';
+          riskReason = 'Yếu tố nguy cơ riêng lẻ tăng cực kỳ cao (Vui lòng nhập tuổi của bệnh nhân)';
+          targetAbsolute = null;
+        }
+      }
+      // BƯỚC 6: Thang điểm SCORE2 / SCORE2-OP (Khi không thuộc các nhóm bệnh lý đặc biệt trên)
+      else {
+        if (age > 0) {
+          if (age < 40) {
+            riskLevel = 'low';
+            riskReason = 'Bệnh nhân trẻ tuổi (&lt; 40 tuổi) không bệnh nền. Đánh giá các yếu tố nguy cơ tăng cường.';
+            targetAbsolute = 3.0;
+            requireFiftyPercent = false;
+          } else {
+            // Đầy đủ thông tin SCORE2
+            if (sex && sbp > 0 && rawTC > 0 && rawHDL > 0) {
+              let scoreRisk = calculateSCORE2(age, sex, isSmoker, sbp, nonHdlMmol);
+              let scoreRiskLevel = 'low';
+
+              if (age < 50) {
+                if (scoreRisk >= 7.5) scoreRiskLevel = 'very-high';
+                else if (scoreRisk >= 2.5) scoreRiskLevel = 'high';
+                else scoreRiskLevel = 'low';
+              } else {
+                if (scoreRisk >= 15.0) scoreRiskLevel = 'very-high';
+                else if (scoreRisk >= 7.5) scoreRiskLevel = 'high';
+                else if (scoreRisk >= 2.5) scoreRiskLevel = 'moderate';
+                else scoreRiskLevel = 'low';
+              }
+
+              riskLevel = scoreRiskLevel;
+              riskReason = `Tính toán nguy cơ 10 năm theo mô hình ${age >= 70 ? 'SCORE2-OP' : 'SCORE2'}: ${scoreRisk.toFixed(1)}%`;
+              
+              if (riskLevel === 'very-high') { targetAbsolute = 1.4; requireFiftyPercent = true; }
+              else if (riskLevel === 'high') { targetAbsolute = 1.8; requireFiftyPercent = true; }
+              else if (riskLevel === 'moderate') { targetAbsolute = 2.6; requireFiftyPercent = false; }
+              else { targetAbsolute = 3.0; requireFiftyPercent = false; }
+            } else {
+              riskLevel = 'unknown';
+              riskReason = 'Chưa đủ thông tin (Huyết áp, Cholesterol, HDL) để chạy mô hình SCORE2';
+              targetAbsolute = null;
+            }
+          }
+        } else {
+          riskLevel = 'unknown';
+          riskReason = 'Vui lòng hoàn tất nhập liệu hoặc chọn bệnh lý nền ở các Bước 1 - 5 để phân tầng.';
+          targetAbsolute = null;
+        }
+      }
+
+      // Lưu kết quả tạm thời
+      currentResult.riskLevel = riskLevel;
+      currentResult.riskReason = riskReason;
+      currentResult.ldlTargetAbsolute = targetAbsolute;
+      currentResult.requireFiftyPercent = requireFiftyPercent;
+
+      // 4. HIỂN THỊ KẾT QUẢ PHÂN TẦNG LÂM SÀNG
+      renderRiskResults();
+
+      // 5. SO SÁNH VÀ ĐÁNH GIÁ ĐÍCH LDL-C THỰC TẾ
+      evaluateTargetAchievement();
+    }
+
+    // Render kết quả phân tầng
+    function renderRiskResults() {
+      const badge = document.getElementById('lbl-risk-badge');
+      const reasonText = document.getElementById('lbl-risk-reason');
+      const targetText = document.getElementById('lbl-ldlc-target');
+      const subtargetText = document.getElementById('lbl-ldlc-subtarget');
+      const recList = document.getElementById('lbl-rec-list');
+
+      badge.className = "risk-badge";
+      
+      let recHtml = '';
+
+      switch (currentResult.riskLevel) {
+        case 'extreme':
+          badge.classList.add('risk-extreme');
+          badge.textContent = "NGUY CƠ CỰC KỲ CAO";
+          targetText.textContent = lipidUnit === 'mg' ? "< 40 mg/dL" : "< 1.0 mmol/L";
+          subtargetText.textContent = "Đích điều trị tối đa (Secondary Prevention)";
+          recHtml = `
+            <li>Khởi trị ngay liệu pháp Statin cường độ cao phối hợp sớm với Ezetimibe.</li>
+            <li>Cân nhắc bổ sung thuốc ức chế PCSK9 nếu LDL-C không đạt mục tiêu sau 4-6 tuần dù đã dùng phối hợp Statin tối đa + Ezetimibe.</li>
+            <li>Dự phòng huyết khối bằng Aspirin liều thấp phối hợp.</li>
+          `;
+          break;
+        case 'very-high':
+          badge.classList.add('risk-very-high');
+          badge.textContent = "NGUY CƠ RẤT CAO";
+          targetText.textContent = lipidUnit === 'mg' ? "< 55 mg/dL" : "< 1.4 mmol/L";
+          subtargetText.textContent = "VÀ giảm ≥ 50% so với trị số LDL-c nền";
+          recHtml = `
+            <li>Khởi trị liệu pháp Statin cường độ cao (Atorvastatin 40-80mg hoặc Rosuvastatin 20-40mg).</li>
+            <li>Mục tiêu kép: Giảm &ge; 50% LDL-C nền VÀ đạt mức tuyệt đối đích.</li>
+            <li>Đánh giá lại sau 4-12 tuần để cân nhắc phối hợp thêm Ezetimibe nếu chưa đạt đích.</li>
+          `;
+          break;
+        case 'high':
+          badge.classList.add('risk-high');
+          badge.textContent = "NGUY CƠ CAO";
+          targetText.textContent = lipidUnit === 'mg' ? "< 70 mg/dL" : "< 1.8 mmol/L";
+          subtargetText.textContent = "VÀ giảm ≥ 50% so với trị số LDL-c nền";
+          recHtml = `
+            <li>Khởi trị Statin cường độ trung bình đến cao để đạt đích.</li>
+            <li>Mục tiêu kép: Giảm &ge; 50% LDL-C nền VÀ đạt đích tuyệt đối.</li>
+            <li>Tư vấn thay đổi lối sống toàn diện (ăn kiêng mỡ động vật, tập thể dục &ge; 150 phút/tuần).</li>
+          `;
+          break;
+        case 'moderate':
+          badge.classList.add('risk-moderate');
+          badge.textContent = "NGUY CƠ TRUNG BÌNH";
+          targetText.textContent = lipidUnit === 'mg' ? "< 100 mg/dL" : "< 2.6 mmol/L";
+          subtargetText.textContent = "Mục tiêu tuyệt đối khuyến cáo";
+          recHtml = `
+            <li>Can thiệp thay đổi lối sống toàn diện trong 3 tháng.</li>
+            <li>Xem xét khởi trị Statin cường độ trung bình nếu lối sống không giúp LDL-C đạt đích.</li>
+          `;
+          break;
+        case 'low':
+          badge.classList.add('risk-low');
+          badge.textContent = "NGUY CƠ THẤP";
+          targetText.textContent = lipidUnit === 'mg' ? "< 3.0 mmol/L" : "< 3.0 mmol/L";
+          subtargetText.textContent = "Duy trì sức khỏe tim mạch";
+          recHtml = `
+            <li>Ưu tiên hàng đầu là tư vấn thay đổi lối sống lành mạnh.</li>
+            <li>Chưa có chỉ định khởi trị bằng thuốc trừ trường hợp LDL-C rất cao &gt; 4.9 mmol/L.</li>
+          `;
+          break;
+        case 'individual':
+          badge.classList.add('risk-individual');
+          badge.textContent = "ĐÍCH CÁ THỂ HÓA";
+          targetText.textContent = lipidUnit === 'mg' ? "100 - 116 mg/dL" : "2.6 - 3.0 mmol/L";
+          subtargetText.textContent = "Cân nhắc cá thể hóa ở người trẻ tuổi";
+          recHtml = `
+            <li>Bệnh nhân trẻ tuổi (&lt; 40) có yếu tố nguy cơ đơn lẻ tăng rất cao.</li>
+            <li>Cá thể hóa mục tiêu điều trị rộng hơn (2.6 - 3.0 mmol/L).</li>
+            <li>Tập trung kiểm soát các yếu tố nguy cơ khác (đặc biệt là HA tâm thu &lt; 140 mmHg).</li>
+          `;
+          break;
+        default:
+          badge.classList.add('risk-low');
+          badge.style.backgroundColor = 'var(--color-border)';
+          badge.textContent = "CHƯA ĐỦ THÔNG TIN";
+          targetText.textContent = "--";
+          subtargetText.textContent = "Vui lòng hoàn thành dữ liệu";
+          recHtml = `<li>Điền đầy đủ các bước bên trái để nhận phân tầng nguy cơ và đích điều trị khuyến cáo.</li>`;
+      }
+
+      reasonText.innerHTML = currentResult.riskReason;
+      recList.innerHTML = recHtml;
+    }
+
+    // So sánh LDLc hiện tại với Đích
+    function evaluateTargetAchievement() {
+      const banner = document.getElementById('lbl-achievement-banner');
+      const text = document.getElementById('lbl-achievement-text');
+      const barWrapper = document.getElementById('lbl-reduction-bar-wrapper');
+      const barFill = document.getElementById('lbl-reduction-bar-fill');
+
+      const rawCurrent = parseFloat(document.getElementById('num-current-ldl').value) || 0;
+      const rawBaseline = parseFloat(document.getElementById('num-baseline-ldl').value) || 0;
+
+      // Nếu chưa có kết quả phân tầng hoặc chưa nhập LDL-c hiện tại
+      if (!currentResult.ldlTargetAbsolute || rawCurrent <= 0) {
+        banner.className = "achievement-status-banner status-info";
+        text.textContent = "Chưa đủ dữ liệu LDL-c hiện tại";
+        barWrapper.style.display = 'none';
+        return;
+      }
+
+      // Quy đổi tất cả về mmol/L để so sánh đồng nhất
+      let currentLdlMmol = lipidUnit === 'mg' ? rawCurrent / 38.67 : rawCurrent;
+      let baselineLdlMmol = lipidUnit === 'mg' ? rawBaseline / 38.67 : rawBaseline;
+      let targetLdlMmol = currentResult.ldlTargetAbsolute;
+
+      let absoluteAchieved = currentLdlMmol < targetLdlMmol;
+      let relativeAchieved = true;
+      let percentReduction = 0;
+
+      // Nếu yêu cầu giảm 50% và có nhập baseline
+      if (currentResult.requireFiftyPercent && baselineLdlMmol > 0) {
+        percentReduction = ((baselineLdlMmol - currentLdlMmol) / baselineLdlMmol) * 100;
+        relativeAchieved = percentReduction >= 50;
+      }
+
+      let isSuccess = absoluteAchieved && relativeAchieved;
+
+      if (isSuccess) {
+        banner.className = "achievement-status-banner status-success";
+        let successMsg = "🎉 ĐẠT MỤC TIÊU ĐIỀU TRỊ!";
+        if (currentResult.requireFiftyPercent && baselineLdlMmol > 0) {
+          successMsg += `<br><small>Đã giảm ${percentReduction.toFixed(0)}% so với nền (Đạt yêu cầu &ge; 50%)</small>`;
+        }
+        text.innerHTML = successMsg;
+      } else {
+        banner.className = "achievement-status-banner status-failed";
+        
+        let delta = currentLdlMmol - targetLdlMmol;
+        let deltaText = lipidUnit === 'mg' ? `${(delta * 38.67).toFixed(0)} mg/dL` : `${delta.toFixed(2)} mmol/L`;
+        let failMsg = `⚠️ CHƯA ĐẠT ĐÍCH!<br><small>Cần giảm thêm ít nhất <strong>${deltaText}</strong></small>`;
+
+        if (currentResult.requireFiftyPercent && baselineLdlMmol > 0 && !relativeAchieved) {
+          failMsg += `<br><small>Mới giảm ${percentReduction.toFixed(0)}% so với nền (Cần giảm &ge; 50% nền)</small>`;
+        }
+        text.innerHTML = failMsg;
+      }
+
+      // Hiển thị thanh tiến trình nếu có dữ liệu nền
+      if (baselineLdlMmol > 0) {
+        barWrapper.style.display = 'block';
+        percentReduction = Math.max(0, Math.min(100, percentReduction));
+        barFill.style.width = `${percentReduction}%`;
+        barFill.style.backgroundColor = relativeAchieved ? 'var(--color-success)' : 'var(--color-warning)';
+      } else {
+        barWrapper.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+
+</html>

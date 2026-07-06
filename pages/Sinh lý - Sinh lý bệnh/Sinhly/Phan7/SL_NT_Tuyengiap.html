@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Sinh lý học tuyến giáp: Cấu trúc mô học nang giáp, quá trình sinh tổng hợp, dự trữ và bài tiết hormon T3, T4, vận chuyển và chuyển hóa ngoại biên, cơ chế tác động tại mô đích, các tác dụng sinh lý và cơ chế điều hòa ngược.">
+    <title>Sinh lý học Tuyến giáp – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS Core CliniPortal -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học dùng chung -->
+    <link rel="stylesheet" href="../../../../css/components/physio-patho.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+    <!-- MathJax Config cho Công thức Toán/Sinh lý -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+
+    <!-- Script điều hướng hệ thống -->
+    <script src="../../../../js/toc.js" defer></script>
+    <script src="../../../../components/header.js" defer></script>
+    <script src="../../../../components/footer.js" defer></script>
+    <script src="../../js/physio-shared.js" defer></script>
+    <script src="../../../../js/main.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+            <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Sinhly-sinhlybenh.html" class="nav-item active" aria-current="page" title="S.lý - S.lý bệnh">
+              <span class="nav-icon">🧬</span>
+              <span class="nav-text">S.lý - S.lý bệnh</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container"
+                style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+                <ol class="breadcrumb-list"
+                    style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+                    <li><a href="../../../../index.html">🏠 Home</a> &gt;</li>
+                    <li><a href="../../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+                    <li style="color:var(--color-primary); font-weight:600;">Chương 7: Sinh lý nội tiết - Tuyến giáp
+                    </li>
+                </ol>
+            </nav>
+
+            <!-- MAIN CONTAINER -->
+            <main class="visual-container">
+                <!-- CHAPTER HERO CARD -->
+                <div class="chapter-header">
+                    <h1>Sinh lý học Tuyến giáp</h1>
+                    <p>Hệ thống hóa cấu trúc giải phẫu - mô học nang giáp, chu trình sinh tổng hợp và giải phóng hormon,
+                        các cơ chế tác động tại tế bào đích, tác dụng sinh lý và trục điều hòa ngược.</p>
+                </div>
+
+                <!-- CONTENT LAYOUT -->
+                <div class="physio-content-wrapper"
+                    style="display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 1.5rem;">
+
+                    <!-- VÙNG NỘI DUNG CHÍNH -->
+                    <div class="physio-main-article">
+
+                        <p class="physio-lead">
+                            Tuyến giáp (thyroid gland) là tuyến nội tiết lớn nhất trong cơ thể con người, nằm ở phía
+                            trước cổ, ngay dưới thanh quản. Tuyến giáp nhận lượng máu nuôi dưỡng vô cùng phong phú
+                            (chiếm khoảng 1% cung lượng tim), đảm bảo việc cung cấp liên tục nguyên liệu (iod) và phân
+                            phối nhanh chóng các hormon giáp là <span class="term-hl">Triiodothyronine ($T_3$)</span> và
+                            <span class="term-hl">Thyroxine ($T_4$)</span> tới mọi mô đích trong cơ thể, thiết lập mức
+                            chuyển hóa cơ bản cho toàn bộ hệ thống sống.
+                        </p>
+
+                        <!-- PHẦN I -->
+                        <h2 id="sec-cau-truc-mo-hoc" class="section-title">
+                            <span>Phần I: Cấu trúc Giải phẫu và Mô học của Tuyến Giáp</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Về mặt đại thể, tuyến giáp gồm hai thùy (thùy phải và thùy trái) nối với nhau qua một eo
+                                giáp hẹp. Ở mức độ vi thể, đơn vị chức năng và cấu trúc cơ bản của tuyến giáp là các
+                                <strong>nang giáp (thyroid follicles)</strong>. Cấu trúc mô học của một nang giáp bao
+                                gồm ba thành phần cốt lõi:
+                            </p>
+
+                            <div class="physio-grid" style="margin-top: 1rem;">
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">🧫 1. Tế bào biểu mô nang giáp</div>
+                                    <p>
+                                        Là lớp tế bào đơn (follicular cells) bao bọc xung quanh nang giáp. Tế bào biểu
+                                        mô có hình lập phương (cuboid) ở trạng thái bình thường hoặc hình trụ cao
+                                        (columnar) khi hoạt động mạnh dưới sự kích thích của TSH. Chúng có nhiệm vụ tổng
+                                        hợp thyroglobulin và vận chuyển chủ động các ion iod.
+                                    </p>
+                                </div>
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">🧪 2. Chất keo nang giáp (Colloid)</div>
+                                    <p>
+                                        Lòng nang giáp chứa đầy chất keo màu hồng khi nhuộm H&E, thành phần chính là
+                                        glycoprotein <strong>thyroglobulin (Tg)</strong>. Thyroglobulin do tế bào nang
+                                        giáp chế tiết, đóng vai trò là một "kho dự trữ" khổng lồ của các hormon giáp đã
+                                        được tổng hợp, đủ cung cấp cho cơ thể trong 2 đến 3 tháng.
+                                    </p>
+                                </div>
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">🧬 3. Tế bào cận nang (Tế bào C)</div>
+                                    <p>
+                                        Nằm xen kẽ giữa các nang giáp ở vùng mô liên kết kẽ là các <strong>tế bào C
+                                            (parafollicular cells)</strong>. Các tế bào này có nguồn gốc từ mào thần
+                                        kinh, chịu trách nhiệm bài tiết hormon peptide <strong>calcitonin</strong>, tham
+                                        gia điều hòa giảm nồng độ canxi huyết tương (đối kháng với PTH).
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- HÌNH 1: Cấu trúc của một nang giáp -->
+                            <div class="image-placeholder-card" style="margin-top: 1.5rem;">
+                                <div class="image-title">
+                                    <span style="font-size:1.2rem">🖼️</span> Hình 1: Cấu trúc mô học của nang giáp
+                                    (Fig. 42.2 Berne & Levy)
+                                </div>
+                                <div class="image-drop-text">
+                                    <div class="image-drop-area">
+                                        <img src="../../images/Phan7/TuyenGiap_Hinh1.png"
+                                            alt="Cấu trúc mô học của tuyến giáp"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div
+                                            style="display:none; padding: 2rem; text-align: center; color: var(--color-text-muted);">
+                                            [Sơ đồ mô học nang giáp chỉ ra lớp biểu mô nang giáp, chất keo colloid bên
+                                            trong lòng nang và các mạch máu, tế bào cận nang kẽ]
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả chi tiết:</strong> Đơn vị nang giáp hình cầu được lót bởi các tế bào
+                                    biểu mô nang giáp phân cực. Màng đáy hướng về phía mao mạch để nhận Iodide ($I^-$)
+                                    và giải phóng hormon, màng đỉnh có nhiều vi nhung mao hướng vào lòng nang chứa chất
+                                    keo thyroglobulin nhằm thực hiện các phản ứng iod hóa và ghép cặp.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PHẦN II -->
+                        <h2 id="sec-sinh-tong-hop" class="section-title">
+                            <span>Phần II: Sinh tổng hợp, Dự trữ và Bài tiết Hormon Giáp</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Tuyến giáp tổng hợp hai hormon iodothyronine chính: <strong>Thyroxine ($T_4$)</strong>
+                                và <strong>Triiodothyronine ($T_3$)</strong>. Khoảng 90% lượng hormon giải phóng từ
+                                tuyến giáp là $T_4$ (dạng tiền hormon hoạt tính yếu), 10% là $T_3$ (dạng hoạt tính mạnh
+                                gấp 3-4 lần). Quá trình sinh tổng hợp hormon diễn ra qua chuỗi 6 bước nối tiếp chặt chẽ:
+                            </p>
+
+                            <!-- SƠ ĐỒ TIMELINE 6 BƯỚC -->
+                            <ol class="physio-steps" style="margin-top: 1.5rem;">
+                                <li>
+                                    <div class="physio-step-card">
+                                        <span class="physio-step-title">Bước 1: Bắt giữ Iodide (Iodide Trapping)</span>
+                                        <p>
+                                            Iodide ($I^-$) từ máu được tế bào biểu mô bắt giữ chủ động qua màng đáy nhờ
+                                            kênh đồng vận chuyển <strong>NIS (Sodium-Iodide Symporter)</strong>. Quá
+                                            trình này đồng vận chuyển $2Na^+$ cùng $1I^-$ vào trong tế bào, sử dụng năng
+                                            lượng gián tiếp từ bơm $Na^+,K^+$-ATPase màng đáy. Nó giúp tích tụ $I^-$ nội
+                                            bào cao gấp 30-250 lần nồng độ trong máu.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="physio-step-card">
+                                        <span class="physio-step-title">Bước 2: Vận chuyển Iodide ra màng đỉnh (Iodide
+                                            Efflux)</span>
+                                        <p>
+                                            Ion $I^-$ di chuyển xuyên qua bào tương đến màng đỉnh. Tại đây, $I^-$ được
+                                            vận chuyển thụ động vào lòng nang chứa chất keo thông qua kênh trao đổi
+                                            anion $I^-/Cl^-$ chuyên biệt có tên là <strong>Pendrin</strong>.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="physio-step-card">
+                                        <span class="physio-step-title">Bước 3: Tổng hợp và xuất bào Thyroglobulin
+                                            (Tg)</span>
+                                        <p>
+                                            Song song đó, tế bào nang giáp tổng hợp chuỗi polypeptide lớn
+                                            **Thyroglobulin (Tg)** chứa nhiều gốc acid amin tyrosine tại lưới nội chất
+                                            hạt, glycosyl hóa tại phức hợp Golgi, rồi đóng gói vào túi tiết và xuất bào
+                                            vào lòng nang.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="physio-step-card">
+                                        <span class="physio-step-title">Bước 4: Oxy hóa và Iod hóa Tyrosine
+                                            (Organification)</span>
+                                        <p>
+                                            Tại ranh giới màng đỉnh - chất keo, enzyme **TPO (Thyroid Peroxidase)** cùng
+                                            với phân tử hỗ trợ $H_2O_2$ (tạo ra từ enzyme DUOX2) tiến hành oxy hóa nhanh
+                                            chóng $I^-$ thành dạng hoạt động ($I^0$ hoặc $I_2$). Dạng hoạt động này lập
+                                            tức gắn vào vị trí 3 và 5 của nhân tyrosine trên phân tử Thyroglobulin để
+                                            tạo ra:
+                                            <br>• <strong>Monoiodotyrosine (MIT)</strong> (gắn 1 iod).
+                                            <br>• <strong>Diiodotyrosine (DIT)</strong> (gắn 2 iod).
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="physio-step-card">
+                                        <span class="physio-step-title">Bước 5: Phản ứng Ghép cặp (Coupling
+                                            Reaction)</span>
+                                        <p>
+                                            Tiếp tục dưới sự xúc tác của enzyme **TPO**, các gốc tyrosine đã iod hóa
+                                            trên cùng một phân tử Tg được ghép cặp với nhau:
+                                            <br>• $\text{DIT} + \text{DIT} \rightarrow \text{Thyroxine } (T_4)$ (chiếm
+                                            đa số).
+                                            <br>• $\text{MIT} + \text{DIT} \rightarrow \text{Triiodothyronine } (T_3)$.
+                                            <br>Hormon hoàn chỉnh được dự trữ trong lòng nang giáp dưới dạng gắn chặt
+                                            với thyroglobulin trong khối chất keo.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="physio-step-card">
+                                        <span class="physio-step-title">Bước 6: Ẩm bào chất keo và Bài tiết
+                                            hormon</span>
+                                        <p>
+                                            Khi có kích thích từ hormon TSH, màng đỉnh tế bào nang giáp co bóp hình
+                                            thành giả túc ẩm bào (endocytosis) các giọt chất keo chứa Tg trở lại tế bào.
+                                            Các túi ẩm bào này hòa màng với **lysosome**. Enzyme protease trong lysosome
+                                            thủy phân phân cắt thyroglobulin, giải phóng $T_3, T_4$ tự do. Chúng khuếch
+                                            tán qua màng đáy vào tuần hoàn máu. Các gốc MIT và DIT dư thừa được khử iod
+                                            ngay tại chỗ bởi men *iodotyrosine deiodinase* để tái sử dụng iod tự do.
+                                        </p>
+                                    </div>
+                                </li>
+                            </ol>
+
+                            <!-- HÌNH 2: Tổng hợp hormon giáp -->
+                            <div class="image-placeholder-card" style="margin-top: 1.5rem;">
+                                <div class="image-title">
+                                    <span style="font-size:1.2rem">🖼️</span> Hình 2: Sơ đồ tế bào học của quá trình
+                                    tổng hợp và bài tiết hormon giáp (Fig. 42.5 Berne & Levy)
+                                </div>
+                                <div class="image-drop-text">
+                                    <div class="image-drop-area">
+                                        <img src="../../images/Phan7/TuyenGiap_Hinh2.png"
+                                            alt="Sơ đồ tổng hợp hormon giáp"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div
+                                            style="display:none; padding: 2rem; text-align: center; color: var(--color-text-muted);">
+                                            [Sơ đồ chi tiết tế bào nang giáp biểu diễn bơm NIS ở màng đáy, Pendrin và
+                                            phức hợp TPO/DUOX ở màng đỉnh, quá trình xuất bào Tg, phản ứng ghép cặp
+                                            trong keo giáp, ẩm bào và thủy phân giải phóng T3, T4]
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả chi tiết:</strong> Minh họa tính phân cực chức năng rõ rệt của tế bào
+                                    biểu mô nang giáp. Toàn bộ quá trình tổng hợp (NIS, Pendrin, Tg, TPO) và phân cắt
+                                    bài tiết diễn ra theo chu trình khép kín, được điều khiển chặt chẽ bởi nồng độ TSH
+                                    trong máu.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PHẦN III -->
+                        <h2 id="sec-van-chuyen-chuyen-hoa" class="section-title">
+                            <span>Phần III: Vận chuyển và Chuyển hóa Hormon ở Ngoại biên</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Sau khi được bài tiết vào dòng máu, hormon giáp được vận chuyển và chuyển hóa phức tạp
+                                tại các mô đích ngoại biên:
+                            </p>
+                            <ul>
+                                <li>
+                                    <strong>Trạng thái vận chuyển:</strong> Do có cấu trúc kỵ nước cao, >99.9% $T_4$ và
+                                    >99.7% $T_3$ lưu hành dưới dạng gắn kết với các protein huyết tương. Protein vận
+                                    chuyển chủ yếu là <strong>TBG (Thyroxine-Binding Globulin)</strong> chiếm khoảng 70%
+                                    lượng hormon gắn kết, phần còn lại liên kết với Transthyretin (TTR) và Albumin. Chỉ
+                                    có phần rất nhỏ dạng tự do ($\text{fT}_3$ và $\text{fT}_4$) mới có khả năng đi qua
+                                    màng tế bào vào mô đích và thực hiện chức năng sinh học cũng như cơ chế điều hòa
+                                    ngược (feedback).
+                                </li>
+                                <li>
+                                    <strong>Chuyển hóa ngoại biên (Khử Iod):</strong>
+                                    Tại các mô đích, $T_4$ đóng vai trò như một tiền hormon (prohormone). Nó được khử
+                                    một nguyên tử iod ở vòng ngoài bởi enzyme **$5'$-deiodinase (Type 1 và Type 2)** để
+                                    chuyển thành $T_3$ có hoạt tính sinh học mạnh mẽ. Ngược lại, enzyme **Type 3
+                                    deiodinase (D3)** sẽ khử iod ở vòng trong để chuyển $T_4$ thành **reverse $T_3$
+                                    ($rT_3$)** - một đồng phân hoàn toàn bất hoạt sinh học. Đây là cơ chế bảo vệ quan
+                                    trọng giúp điều hòa hoạt tính hormon theo nhu cầu năng lượng (ví dụ: cơ thể tăng tạo
+                                    $rT_3$ bất hoạt khi đói nghèo, stress nặng hoặc bệnh cấp tính).
+                                </li>
+                            </ul>
+
+                            <!-- HÌNH 3: Chuyển hóa ngoại biên -->
+                            <div class="image-placeholder-card" style="margin-top: 1.5rem;">
+                                <div class="image-title">
+                                    <span style="font-size:1.2rem">🖼️</span> Hình 3: Cấu trúc hóa học của T4, T3 và
+                                    reverse T3 (Fig. 42.3 Berne & Levy)
+                                </div>
+                                <div class="image-drop-text">
+                                    <div class="image-drop-area">
+                                        <img src="../../images/Phan7/TuyenGiap_Hinh3.png"
+                                            alt="Cấu trúc hóa học T4, T3, rT3"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div
+                                            style="display:none; padding: 2rem; text-align: center; color: var(--color-text-muted);">
+                                            [Cấu trúc hóa học của phân tử T4 chỉ ra hai vòng benzene nối qua cầu oxy.
+                                            Khử Iod vòng ngoài tạo T3 hoạt hóa; khử Iod vòng trong tạo rT3 bất hoạt]
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả chi tiết:</strong> Enzyme Deiodinase Type 1 và 2 cắt bỏ nguyên tử Iod
+                                    ở vị trí $5'$ (vòng ngoài) biến $T_4$ (3,5,3',5'-tetraiodothyronine) thành $T_3$
+                                    (3,5,3'-triiodothyronine). Men Deiodinase Type 3 cắt bỏ Iod ở vị trí 5 (vòng trong)
+                                    tạo thành $rT_3$ (3,3',5'-triiodothyronine).
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PHẦN IV -->
+                        <h2 id="sec-co-che-tac-dong" class="section-title">
+                            <span>Phần IV: Cơ Chế Tác Động Tại Mô Đích</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Để đi vào tế bào đích, hormon giáp tự do cần được vận chuyển chủ động qua màng tế bào
+                                bởi các protein mang đặc hiệu (như MCT8 hoặc OATP1C1). Khi đã ở trong bào tương, hormon
+                                thực hiện tác động qua hai con đường chính:
+                            </p>
+
+                            <div class="physio-grid">
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">🧬 1. Tác động trên gen (Genomic Action)</div>
+                                    <p>
+                                        Đây là cơ chế cổ điển và chủ yếu, diễn ra chậm (sau vài giờ đến vài ngày).
+                                        $T_3$ đi vào nhân tế bào và gắn vào thụ thể nhân **TR (Thyroid Hormone
+                                        Receptor)**. Thụ thể TR tạo phức hợp dị dimer (heterodimer) với thụ thể **RXR**
+                                        (Retinoid X Receptor). Phức hợp này liên kết trực tiếp vào vùng **TRE (Thyroid
+                                        Response Element)** trên chuỗi DNA của gen đích, điều hòa quá trình phiên mã tạo
+                                        mRNA và dịch mã tổng hợp các protein mới (như bơm $Na^+,K^+$-ATPase, enzyme hô
+                                        hấp ty thể, thụ thể $\beta$-adrenergic, myosin chuỗi nặng $\alpha$).
+                                    </p>
+                                </div>
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">⚡ 2. Tác động ngoài gen (Non-genomic Action)</div>
+                                    <p>
+                                        Xảy ra nhanh chóng trong vòng vài phút. Hormon giáp tương tác với các thụ thể
+                                        trên màng tế bào (ví dụ thụ thể integrin $\alpha_V\beta_3$), trong bào tương
+                                        hoặc ty thể. Con đường này kích hoạt các con đường truyền tin thứ hai (như MAPK,
+                                        PI3K/Akt) để làm thay đổi tức thì hoạt tính của các kênh ion, tăng dòng canxi
+                                        nội bào, thúc đẩy sinh nhiệt tại ty thể hoặc kích hoạt quá trình sinh mạch máu
+                                        mới.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PHẦN V -->
+                        <h2 id="sec-tac-dung-sinh-ly" class="section-title">
+                            <span>Phần V: Tác Dụng Sinh Lý Của Hormon Giáp</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Hormon giáp tác động lên hầu hết mọi tế bào trong cơ thể, thiết lập mức độ chuyển hóa cơ
+                                bản (Basal Metabolic Rate - BMR) và điều hòa sự phát triển thể chất cũng như tinh thần:
+                            </p>
+
+                            <!-- BẢNG TỔNG HỢP TÁC DỤNG SINH LÝ -->
+                            <div class="table-responsive" style="margin-top: 1rem;">
+                                <table class="physio-table physio-table-compare">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 25%;">Hệ Cơ Quan</th>
+                                            <th>Cơ Chế và Tác Dụng Sinh Lý Cốt Lõi</th>
+                                            <th style="width: 30%;">Biểu Hiện Cường Giáp / Suy Giáp</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Chuyển hóa năng lượng & Sinh nhiệt</strong></td>
+                                            <td>
+                                                • Tăng tiêu thụ oxy ($O_2$) và BMR ở hầu hết các mô (ngoại trừ não,
+                                                lách, tinh hoàn).<br>
+                                                • Tăng số lượng, kích thước và hoạt động ty thể.<br>
+                                                • Tăng biểu hiện bơm $Na^+,K^+$-ATPase.<br>
+                                                • Tăng tổng hợp protein **UCP1 (Thermogenin)** ở mô mỡ nâu gây rò rỉ
+                                                proton qua màng ty thể để giải phóng năng lượng dưới dạng nhiệt thay vì
+                                                ATP.
+                                            </td>
+                                            <td>
+                                                • <strong>Cường giáp:</strong> Sợ nóng, da ấm ẩm, sụt cân dù ăn
+                                                nhiều.<br>
+                                                • <strong>Suy giáp:</strong> Sợ lạnh, da khô ráp, tăng cân nhẹ.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Chuyển hóa chất (Glucid, Lipid, Protid)</strong></td>
+                                            <td>
+                                                • Tăng hấp thu glucose ở ruột, tăng tân tạo glucose và phân giải
+                                                glycogen ở gan.<br>
+                                                • Kích thích ly giải mỡ (lipolysis), giải phóng acid béo tự do.<br>
+                                                • <strong>Giảm cholesterol máu:</strong> Tăng tổng hợp thụ thể LDL tại
+                                                gan để dọn dẹp LDL-C khỏi tuần hoàn.<br>
+                                                • Tăng cả tổng hợp và phân giải protein (ưu tiên phân giải ở nồng độ
+                                                cao).
+                                            </td>
+                                            <td>
+                                                • <strong>Cường giáp:</strong> Tăng đường huyết nhẹ, giảm cholesterol
+                                                máu, yếu cơ teo cơ do dị hóa protid.<br>
+                                                • <strong>Suy giáp:</strong> Tăng cholesterol máu, phù niêm (myxedema)
+                                                do tích tụ glycosaminoglycan.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Hệ Tim mạch</strong></td>
+                                            <td>
+                                                • **Tăng số lượng thụ thể $\beta_1$-adrenergic** trên cơ tim, làm tim
+                                                nhạy cảm mạnh với catecholamine.<br>
+                                                • Tăng biểu hiện chuỗi nặng myosin-$\alpha$ và bơm SERCA2a ở lưới nội
+                                                chất cơ tim $\rightarrow$ tăng sức co bóp cơ tim và tần số tim.<br>
+                                                • Giãn mạch ngoại vi do tăng sinh nhiệt và chuyển hóa mô giải phóng chất
+                                                giãn mạch ($CO_2$, acid lactic) $\rightarrow$ giảm sức cản hệ thống,
+                                                tăng mạnh cung lượng tim (Cardiac Output).
+                                            </td>
+                                            <td>
+                                                • <strong>Cường giáp:</strong> Nhịp tim nhanh, đánh trống ngực, tăng
+                                                huyết áp tâm thu, huyết áp hiệu số rộng, nguy cơ rung nhĩ.<br>
+                                                • <strong>Suy giáp:</strong> Nhịp tim chậm, giảm cung lượng tim, huyết
+                                                áp tâm trương tăng nhẹ do co mạch ngoại vi bù trừ.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Hệ Thần kinh & Tăng trưởng</strong></td>
+                                            <td>
+                                                • <strong>Ở bào thai & sơ sinh:</strong> Tuyệt đối cần thiết cho sự phát
+                                                triển não bộ (thúc đẩy phân nhánh sợi gai, synap hóa, myelin hóa sợi
+                                                thần kinh).<br>
+                                                • <strong>Ở người lớn:</strong> Duy trì tính hưng phấn của hệ thần kinh
+                                                trung ương và tốc độ phản xạ của cung phản xạ tủy xương.<br>
+                                                • <strong>Phát triển xương:</strong> Tác động hiệp đồng với GH (Growth
+                                                Hormone) và các IGF để thúc đẩy sự phát triển của sụn đầu xương, hóa cốt
+                                                xương giúp tăng chiều cao.
+                                            </td>
+                                            <td>
+                                                • <strong>Sơ sinh thiếu giáp:</strong> Bệnh đần độn bẩm sinh (Cretinism)
+                                                kèm lùn không cân đối.<br>
+                                                • <strong>Người lớn:</strong><br>
+                                                - Cường giáp: Lo âu, mất ngủ, run tay tần số cao.<br>
+                                                - Suy giáp: Chậm chạp, ngủ gà, suy giảm trí nhớ, phản xạ gân gót chậm.
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- HÌNH 4: Tác dụng tim mạch -->
+                            <div class="image-placeholder-card" style="margin-top: 1.5rem;">
+                                <div class="image-title">
+                                    <span style="font-size:1.2rem">🖼️</span> Hình 4: Cơ chế tăng cung lượng tim của
+                                    hormon giáp (Fig. 42.11 Berne & Levy)
+                                </div>
+                                <div class="image-drop-text">
+                                    <div class="image-drop-area">
+                                        <img src="../../images/Phan7/TuyenGiap_Hinh4.png"
+                                            alt="Cơ chế tác động tim mạch của hormon giáp"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div
+                                            style="display:none; padding: 2rem; text-align: center; color: var(--color-text-muted);">
+                                            [Sơ đồ tương tác: Hormon giáp tác động trực tiếp lên tim tăng co bóp/tần số
+                                            và tác động gián tiếp lên mạch giãn mạch giảm sức cản ngoại biên, cả hai con
+                                            đường phối hợp làm tăng cung lượng tim]
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả chi tiết:</strong> Sự gia tăng cung lượng tim được thực hiện thông qua
+                                    hai cơ chế song song: Tác động trực tiếp lên tế bào cơ tim làm tăng lực co bóp và
+                                    nhịp tim; Tác động gián tiếp qua trung gian giãn mạch hệ thống do tăng thải nhiệt và
+                                    chuyển hóa tại các mô ngoại vi.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PHẦN VI -->
+                        <h2 id="sec-dieu-hoa-bai-tiet" class="section-title">
+                            <span>Phần VI: Điều Hòa Bài Tiết Hormon Giáp</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Hoạt động bài tiết của tuyến giáp được kiểm soát nghiêm ngặt bởi cơ chế trục thần kinh -
+                                nội tiết và sự tự điều hòa tại chỗ bởi iod:
+                            </p>
+
+                            <h3 style="color: var(--color-primary); font-size: 1.1rem; margin-top: 1rem;">1. Trục điều
+                                hòa Hạ đồi - Tuyến yên - Tuyến giáp (HPT Axis)</h3>
+                            <p>
+                                • <strong>Hạ đồi tiết TRH (Thyrotropin-Releasing Hormone):</strong> TRH được bài tiết
+                                vào hệ mạch cửa hạ đồi-yên, gắn vào thụ thể trên tế bào hướng giáp ở tuyến yên trước,
+                                kích hoạt con đường phospholipase C ($IP_3/DAG$) để kích thích bài tiết **TSH**.
+                                <br>• <strong>Tuyến yên trước tiết TSH (Thyroid-Stimulating Hormone):</strong> TSH gắn
+                                vào thụ thể liên kết protein $G_s$ trên tế bào biểu mô nang giáp, làm tăng nồng độ chất
+                                truyền tin thứ hai **cAMP** và hoạt hóa protein kinase A (PKA). TSH kích thích **tất cả
+                                các bước** trong chu trình tổng hợp và giải phóng hormon (tăng hoạt động NIS, tăng ẩm
+                                bào Tg, phì đại tế bào giáp). TSH kích thích kéo dài sẽ dẫn đến phì đại tuyến giáp (gây
+                                bướu cổ).
+                                <br>• <strong>Điều hòa ngược âm tính (Negative Feedback):</strong> fT3 và fT4 tự do
+                                trong máu tăng cao sẽ tác động ngược lên tuyến yên trước để làm giảm mật độ thụ thể TRH
+                                và giảm phiên mã chuỗi TSH, đồng thời ức chế vùng hạ đồi giảm tiết TRH, nhằm duy trì
+                                nồng độ hormon ổn định trong máu.
+                            </p>
+
+                            <h3 style="color: var(--color-primary); font-size: 1.1rem; margin-top: 1.2rem;">2. Sự tự
+                                điều hòa tại chỗ bằng Iod (Autoregulation)</h3>
+                            <p>
+                                Tuyến giáp có khả năng độc đáo tự điều chỉnh chức năng của mình để thích ứng với lượng
+                                iod nạp vào:
+                            </p>
+                            <ul>
+                                <li>
+                                    <strong>Hiệu ứng Wolff-Chaikoff (Ức chế do thừa iod cấp):</strong>
+                                    Khi lượng iod trong tuần hoàn tăng đột ngột lên mức rất cao, nồng độ iodide hữu cơ
+                                    nội bào tăng vượt ngưỡng sẽ <em>tự động ức chế enzyme TPO</em> và giảm biểu hiện của
+                                    bơm NIS. Quá trình này làm ngừng trệ tạm thời sự iod hóa thyroglobulin, giảm tổng
+                                    hợp $T_3, T_4$ nhằm bảo vệ cơ thể khỏi cơn bão giáp nhiễm độc. Tuy nhiên, sau 1-2
+                                    tuần, tuyến giáp sẽ thực hiện hiện tượng "thoát ức chế" (escape) bằng cách giảm bắt
+                                    giữ iod qua NIS để nồng độ iod nội bào giảm xuống bình thường.
+                                </li>
+                                <li>
+                                    <strong>Hiệu ứng Jod-Basedow (Cường giáp do iod):</strong>
+                                    Xảy ra ở những người có bướu cổ phình giáp cũ hoặc nhân độc tuyến giáp ẩn nấp, khi
+                                    được bổ sung một lượng lớn iod, tuyến giáp mất khả năng tự điều hòa Wolff-Chaikoff
+                                    sẽ sử dụng lượng iod này làm nguyên liệu sản xuất ồ ạt $T_3, T_4$, dẫn đến bùng phát
+                                    bệnh cảnh nhiễm độc giáp cấp tính.
+                                </li>
+                            </ul>
+
+                            <!-- HÌNH 5: Trục HPT -->
+                            <div class="image-placeholder-card" style="margin-top: 1.5rem;">
+                                <div class="image-title">
+                                    <span style="font-size:1.2rem">🖼️</span> Hình 5: Trục Hạ đồi - Tuyến yên - Tuyến
+                                    giáp và điều hòa ngược âm tính (Fig. 11.11A Color Atlas)
+                                </div>
+                                <div class="image-drop-text">
+                                    <div class="image-drop-area">
+                                        <img src="../../images/Phan7/TuyenGiap_Hinh5.png" alt="Trục HPT và feedback"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div
+                                            style="display:none; padding: 2rem; text-align: center; color: var(--color-text-muted);">
+                                            [Lưu đồ trục HPT: Hạ đồi tiết TRH (+) kích thích Tuyến yên tiết TSH (+) kích
+                                            thích Tuyến giáp tiết T3, T4. T3, T4 tự do ức chế ngược (-) lên cả tuyến yên
+                                            và hạ đồi]
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả chi tiết:</strong> Ngoài cơ chế feedback âm tính của hormon giáp tự
+                                    do, các yếu tố môi trường như lạnh (kích thích vùng hạ đồi tiết TRH tăng sinh nhiệt)
+                                    hoặc stress (ức chế TRH) cũng tham gia điều hòa trục nội tiết này.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PHẦN VII -->
+                        <h2 id="sec-lien-he-lam-sang" class="section-title">
+                            <span>Phần VII: Highlight Lâm Sàng (High-Yield Clinical Correlation)</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Các rối loạn chức năng và tự miễn liên quan đến tuyến giáp là những bệnh lý nội tiết vô
+                                cùng thường gặp trên lâm sàng:
+                            </p>
+
+                            <!-- BOX LÂM SÀNG 1 -->
+                            <div class="clinical-note-box">
+                                <h4>🩺 1. Bệnh Graves (Basedow) - Cường giáp tự miễn</h4>
+                                <p>
+                                    Bệnh Graves là nguyên nhân hàng đầu gây cường giáp. Cơ chế sinh lý bệnh do cơ thể
+                                    sinh ra các tự kháng thể kháng thụ thể TSH gọi là **TSI (Thyroid-Stimulating
+                                    Immunoglobulin)**. Kháng thể này có cấu trúc giả dạng TSH, gắn vào và kích hoạt liên
+                                    tục thụ thể TSHR trên tế bào nang giáp. Do không chịu sự kiểm soát của cơ chế điều
+                                    hòa ngược âm tính, tuyến giáp liên tục sản xuất và giải phóng lượng lớn $T_3, T_4$
+                                    vào máu, gây hội chứng nhiễm độc giáp (nhịp tim nhanh, sụt cân, lồi mắt, bướu cổ phì
+                                    đại).
+                                </p>
+                            </div>
+
+                            <!-- BOX LÂM SÀNG 2 -->
+                            <div class="clinical-note-box">
+                                <h4>🩺 2. Bệnh suy giáp bẩm sinh (Cretinism)</h4>
+                                <p>
+                                    Suy giáp bẩm sinh xảy ra do loạn sản tuyến giáp hoặc khuyết tật enzyme tổng hợp
+                                    hormon giáp thời kỳ bào thai và sơ sinh. Vì hormon giáp tuyệt đối cần thiết cho sự
+                                    phát triển của xương và đặc biệt là hệ thần kinh trung ương (quá trình myelin hóa và
+                                    tạo synapse), trẻ bị suy giáp bẩm sinh nếu không được phát hiện và điều trị bù
+                                    hormon kịp thời trong vài tuần đầu sau sinh sẽ bị tổn thương não vĩnh viễn gây đần
+                                    độn bẩm sinh kèm lùn không cân đối.
+                                </p>
+                            </div>
+
+                            <!-- BOX LÂM SÀNG 3 -->
+                            <div class="clinical-note-box">
+                                <h4>🩺 3. Cơ chế tác dụng của thuốc kháng giáp tổng hợp</h4>
+                                <p>
+                                    Các thuốc điều trị cường giáp hàng đầu như **Propylthiouracil (PTU)** và
+                                    **Methimazole** hoạt động bằng cách **ức chế trực tiếp enzyme TPO (Thyroid
+                                    Peroxidase)** ở màng đỉnh tế bào giáp. Sự ức chế này chặn đứng cả phản ứng oxy hóa
+                                    iodide, phản ứng iod hóa tyrosine (organification) và phản ứng ghép cặp. Riêng thuốc
+                                    PTU còn có thêm một cơ chế phụ cực kỳ quan trọng ở ngoại biên là **ức chế enzyme
+                                    Deiodinase Type 1**, làm giảm quá trình chuyển hóa từ prohormone $T_4$ thành dạng
+                                    hoạt động $T_3$, do đó thường được ưu tiên lựa chọn trong điều trị cơn bão giáp cấp
+                                    tính.
+                                </p>
+                            </div>
+                        </div>
+
+                        <hr class="section-divider">
+
+                        <!-- TÀI LIỆU THAM KHẢO -->
+                        <div class="physio-content">
+                            <h3>Tài liệu tham khảo (AMA Citation Style)</h3>
+                            <div class="physio-text-block" style="font-size: 0.9rem; opacity: 0.95;">
+                                <ol
+                                    style="list-style-type: decimal; padding-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                                    <li>Mai PT, Đặng HAT, Lê QT, Vũ TTQ, Bùi DK. <em>Sinh lý học y khoa</em>. Nhà xuất
+                                        bản Đại học Quốc gia Thành phố Hồ Chí Minh; 2024.</li>
+                                    <li>Koeppen BM, Stanton BA. <em>Berne and Levy Physiology</em>. 8th ed. Elsevier;
+                                        2024.</li>
+                                    <li>Barrett KE, Barman SM, Boitano S, Brooks HL. <em>Ganong's Review of Medical
+                                            Physiology</em>. 24th ed. McGraw-Hill Medical; 2012.</li>
+                                    <li>Silbernagl S, Despopoulos A. <em>Color Atlas of Physiology</em>. 6th ed. Thieme;
+                                        2009.</li>
+                                    <li>Lê QT. <em>Sinh lý NỘI TIẾT YDS 2025</em> [Video]. Bs. Linh O'la Scar; 2025.
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CỘT MỤC LỤC BÊN PHẢI -->
+                    <div class="physio-toc-sidebar">
+                        <div class="physio-toc-container" id="physio-toc-container">
+                            <!-- Script toc.js sẽ tự động kết xuất mục lục tại đây -->
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+    <!-- Script Sidebar -->
+    <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>

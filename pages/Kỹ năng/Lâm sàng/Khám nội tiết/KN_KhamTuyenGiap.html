@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang='vi' data-theme='light'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta name='description'
+    content='Khám tuyến giáp và mắt Basedow theo Macleod: Nhìn, sờ từ phía sau, nghe âm thổi tuyến giáp, đánh giá dấu trễ mi (lid lag), lồi mắt (exophthalmos) và sưng cổ.'>
+  <title>
+    Khám Tuyến Giáp - CliniPortal
+  </title>
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+  <link
+    href='https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap'
+    rel='stylesheet'>
+  <link rel='stylesheet' href="../../../../css/reset.css">
+  <link rel='stylesheet' href="../../../../css/main.css">
+  <link rel='stylesheet' href="../../../../css/components/header.css">
+  <link rel='stylesheet' href="../../../../css/components/sidebar.css">
+  <link rel='stylesheet' href="../../../../css/components/footer.css">
+  <script src="../../../../components/header.js">
+  </script>
+  <script src="../../../../components/footer.js">
+  </script>
+  <style>
+    :root {
+      --a: #0d9488;
+      --b: #0f766e;
+      --c: #5eead4;
+    }
+  </style>
+  <link rel='stylesheet' href="../../../../css/components/clinical-skill.css">
+</head>
+
+<body>
+  <div id='header-placeholder' data-header-path="../../../../components/header.html">
+  </div>
+  <div class='sidebar-overlay' id='sidebarOverlay'>
+  </div>
+  <div class='app-container'>
+    <aside class='app-sidebar' id='appSidebar'>
+      <button id='sidebar-toggle-arrow' class='sidebar-toggle-arrow' aria-label='Thu gọn/Mở rộng Sidebar'>
+        <svg viewBox='0 0 24 24' width='14' height='14' stroke='currentColor' stroke-width='2.5' fill='none'
+          stroke-linecap='round' stroke-linejoin='round' class='toggle-arrow-svg'>
+          <polyline points='15 18 9 12 15 6'>
+          </polyline>
+        </svg>
+      </button>
+      <nav class='sidebar-nav' aria-label='Điều hướng chính'>
+        <ul class='nav-list' role='list'>
+          <li>
+            <a href="../../../../index.html" class='nav-item'>
+              <span class='nav-icon'>
+                🏠
+              </span>
+              <span class='nav-text'>
+                Trang chủ
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../ky-nang.html" class='nav-item'>
+              <span class='nav-icon'>
+                🩺
+              </span>
+              <span class='nav-text'>
+                Kỹ năng lâm sàng
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Tiếp cận/tiep-can.html" class='nav-item'>
+              <span class='nav-icon'>
+                🤒
+              </span>
+              <span class='nav-text'>
+                Tiếp cận lâm sàng
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Công cụ/cong-cu.html" class='nav-item'>
+              <span class='nav-icon'>
+                ⚙️
+              </span>
+              <span class='nav-text'>
+                Công cụ lâm sàng
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <div class='main-wrapper' id='mainContent'>
+      <nav aria-label='Breadcrumb' class='breadcrumb-container'>
+        <ol class='breadcrumb-list'>
+          <li class='breadcrumb-item'>
+            <a href="../../../../index.html" class='breadcrumb-link'>
+              <span class='home-icon'>
+                🏠
+              </span>
+              Home
+            </a>
+          </li>
+          <li class='breadcrumb-item'>
+            <a href="../../ky-nang.html" class='breadcrumb-link'>
+              Kỹ năng lâm sàng
+            </a>
+          </li>
+          <li class='breadcrumb-item'>
+            <a href='KN_Noitiet.html' class='breadcrumb-link'>
+              Khám nội tiết
+            </a>
+          </li>
+          <li class='breadcrumb-item active' aria-current='page'>
+            Khám tuyến giáp
+          </li>
+        </ol>
+      </nav>
+      <section class='hero'>
+        <h1>
+          Khám Tuyến Giáp & Mắt Basedow
+        </h1>
+        <p>
+          Bài khám tập trung vào tuyến giáp và các biểu hiện Basedow theo Macleod's Clinical Examination. Hướng dẫn sờ tuyến giáp từ phía sau, nghiệm pháp nuốt nước, nghe âm thổi tuyến giáp và các nghiệm pháp khám mắt chuyên sâu.
+        </p>
+        <div class='quick'>
+          <div class='qi'>
+            <b>
+              Tư thế
+            </b>
+            Ngồi thẳng lưng, bộc lộ vùng cổ từ ngực trước đến cằm
+          </div>
+          <div class='qi'>
+            <b>
+              Điểm nhấn
+            </b>
+            Sờ tuyến giáp khi nuốt, nốt sáng nhịp đập, trễ mi (<span class="term-hl">lid lag</span>), lồi mắt, âm thổi giáp
+          </div>
+          <div class='qi'>
+            <b>
+              Red flags
+            </b>
+            Bướu cứng dính cố định, khàn tiếng do chèn ép dây quặt ngược, stridor thở rít
+          </div>
+        </div>
+      </section>
+      <div class='tabs'>
+        <button class='tab-btn active' data-tab='core'>
+          Nền tảng
+        </button>
+        <button class='tab-btn' data-tab='hx'>
+          Hỏi bệnh
+        </button>
+        <button class='tab-btn' data-tab='exam'>
+          Khám
+        </button>
+        <button class='tab-btn' data-tab='int'>
+          Biện luận
+        </button>
+        <button class='tab-btn' data-tab='tests'>
+          Cận lâm sàng
+        </button>
+        <button class='tab-btn' data-tab='osce'>
+          <span class="term-hl-secondary">OSCE</span>
+        </button>
+      </div>
+
+      <!-- TAB: NỀN TẢNG -->
+      <section class='tab active' id='core'>
+        <div class='card'>
+          <h2>Giải phẫu và Sinh lý học lâm sàng (<span class="term-hl">Anatomy and physiology</span>)</h2>
+          <ul>
+            <li>Tuyến giáp có hình con bướm, nằm phía dưới sụn nhẫn, cách khuyết trên sụn giáp khoảng 4 cm. Ở người bình thường, tuyến giáp có thể tích &lt; 20 mL và có thể sờ thấy ở khoảng 50% phụ nữ và 25% nam giới.</li>
+            <li>Tuyến gồm một eo tuyến giáp ở giữa (rộng khoảng 1.5 cm, phủ qua vòng sụn khí quản 2 đến 4) và hai thùy bên (kích thước thường không lớn hơn thùy xa ngón cái của bệnh nhân).</li>
+            <li>Tuyến giáp có thể phát triển xuống trung thất trên và nằm một phần hoặc hoàn toàn sau xương ức (bướu giáp chìm sau xương ức). Nang giáp móng (nang giáp lưỡi) thường nằm ở ngang mức xương móng và đặc trưng bởi sự di động lên trên khi thè lưỡi.</li>
+            <li>Tuyến giáp gắn vào mạc trước khí quản nên sẽ di động lên trên khi nuốt hoặc ngửa cổ.</li>
+            <li><strong>Cường giáp (<span class="term-hl">Thyrotoxicosis</span>):</strong> Tăng chuyển hóa do thừa hormone. Graves (<span class="term-hl">Basedow</span>) là nguyên nhân tự miễn phổ biến nhất, nữ gấp 5-10 lần nam giới.</li>
+            <li><strong>Suy giáp (<span class="term-hl">Hypothyroidism</span>):</strong> Giảm hormone giáp, phổ biến do Hashimoto tự miễn, gặp ở nữ gấp 6 lần nam.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: HỎI BỆNH -->
+      <section class='tab' id='hx'>
+        <div class='card'>
+          <h2>Các triệu chứng rối loạn Tuyến Giáp</h2>
+          <p>Các triệu chứng rối loạn tuyến giáp tác động lên nhiều hệ cơ quan và thường mang tính hệ thống.</p>
+          <div style='overflow-x: auto; margin-top: 12px;'>
+            <table class='cmp'>
+              <thead>
+                <tr>
+                  <th>Triệu chứng</th>
+                  <th>Cường giáp (<span class="term-hl">Hyperthyroidism</span>)</th>
+                  <th>Suy giáp (<span class="term-hl">Hypothyroidism</span>)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Chuyển hóa</strong></td>
+                  <td>Sụt cân dù ăn nhiều, sợ nóng, đổ mồ hôi nhiều.</td>
+                  <td>Tăng cân, sợ lạnh, mệt mỏi.</td>
+                </tr>
+                <tr>
+                  <td><strong>Thần kinh - Cơ</strong></td>
+                  <td>Run tay, lo âu, bồn chồn, mất ngủ, yếu cơ mạn gần (khó đứng dậy từ ghế/bồn tắm).</td>
+                  <td>Chậm chạp tư duy, trầm cảm, hội chứng ống cổ tay.</td>
+                </tr>
+                <tr>
+                  <td><strong>Tim mạch</strong></td>
+                  <td>Hồi hộp, nhịp tim nhanh, khó thở, phù mắt cá chân.</td>
+                  <td>Nhịp tim chậm.</td>
+                </tr>
+                <tr>
+                  <td><strong>Tiêu hóa</strong></td>
+                  <td>Tăng số lần đi tiêu, tiêu chảy.</td>
+                  <td>Táo bón.</td>
+                </tr>
+                <tr>
+                  <td><strong>Lông, tóc, móng</strong></td>
+                  <td>Ngứa, ly móng (tách móng khỏi giường), rụng tóc.</td>
+                  <td>Da và tóc khô, thô ráp.</td>
+                </tr>
+                <tr>
+                  <td><strong>Mắt & Sinh dục</strong></td>
+                  <td>Cộm xốn, lồi mắt, sưng/đỏ mi mắt, nhìn đôi; Kinh thưa hoặc vô kinh.</td>
+                  <td>Phù quanh ổ mắt; Rong kinh.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class='card'>
+          <h2>Hỏi bệnh sử khối sưng vùng cổ</h2>
+          <ul>
+            <li><strong>Khối sưng vùng cổ (<span class="term-hl">Neck swelling / Goitre</span>):</strong> Bướu cổ lớn hoặc chìm sau xương ức có thể gây chèn ép cơ học: thở rít (<span class="term-hl">stridor</span>), khó thở, hoặc nuốt nghẹn (<span class="term-hl">dysphagia</span>).</li>
+            <li><strong>Đau vùng cổ (<span class="term-hl">Neck pain</span>):</strong> Rất hiếm gặp trong bệnh lý tuyến giáp. Nếu đau khởi phát đột ngột kèm sưng, thường do xuất huyết vào trong một nhân/nang giáp. Đau cũng gặp trong viêm tuyến giáp bán cấp (<span class="term-hl">de Quervain</span>) do virus.</li>
+            <li><strong>Tiền sử y khoa:</strong> Hỏi về tiền sử chiếu xạ vùng cổ (ung thư tuyến giáp), thai kỳ (viêm giáp sau sinh), thuốc sử dụng (amiodarone, lithium gây rối loạn tuyến giáp), và lối sống (thiếu i-ốt, hút thuốc lá làm tăng bệnh mắt Graves).</li>
+          </ul>
+          <div class='clinical-warning' style='margin-top: 14px;'>
+            <h4>⚠️ Triệu chứng chèn ép nguy hiểm</h4>
+            <p>Bướu cổ quá lớn chèn ép khí quản và thực quản có thể gây khó thở khi nằm nghiêng, tiếng rít thanh quản thì hít vào, hoặc nuốt nghẹn thức ăn đặc. Khàn giọng tiến triển gợi ý xâm lấn dây thần kinh thanh quản quặt ngược.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: KHÁM -->
+      <section class='tab' id='exam'>
+        <div class='grid2'>
+          <div class='card'>
+            <h2>Khám toàn thân tuyến giáp</h2>
+            <ul>
+              <li><strong>Tổng trạng & Giọng nói:</strong> Đánh giá BMI, giọng nói dồn dập (cường giáp) vs chậm chạp trầm đục (suy giáp). Khàn tiếng gợi ý liệt dây thanh do chèn ép.</li>
+              <li><strong>Bàn tay:</strong> Bàn tay ấm, ẩm ướt, run vẩy nhỏ (cường giáp). Dấu thyroid acropachy (sưng ngón xa và phì đại màng xương).</li>
+              <li><strong>Tim mạch:</strong> Nhịp nhanh, rung nhĩ hoặc nhịp chậm; nghe tim tìm âm thổi giữa tâm thu do tăng cung lượng tim.</li>
+              <li><strong>Chi dưới:</strong> Phù niêm trước xương chày (<span class="term-hl">pretibial myxoedema</span>) gặp đặc hiệu trong Graves. Phù quanh mắt và phản xạ gót kéo dài trong suy giáp. Yếu cơ gốc chi (yêu cầu đứng dậy từ ghế không chống tay).</li>
+            </ul>
+          </div>
+
+          <div class='card'>
+            <h2>Quy trình khám Tuyến giáp & Mắt</h2>
+            <p>Bệnh nhân ngồi thẳng, bác sĩ tiếp cận cả phía trước và phía sau:</p>
+            <ul class='check' style='margin-top: 12px;'>
+              <li>
+                <input type='checkbox'>
+                <span><strong>1. Nhìn (<span class="term-hl">Inspection</span>):</strong> Nhìn cổ từ trước tìm bướu, sẹo mổ cũ. Nhìn nghiêng với cổ hơi ngửa. Thực hiện nghiệm pháp nuốt với ly nước, quan sát tuyến giáp di động lên trên.</span>
+              </li>
+              <li>
+                <input type='checkbox'>
+                <span><strong>2. Sờ từ phía sau (<span class="term-hl">Palpation</span>):</strong> Đứng sau bệnh nhân, cổ bệnh nhân gập nhẹ. Đặt hai tay sờ eo giáp và 2 thùy khi nuốt. Đánh giá kích thước, mật độ, bề mặt (nhẵn, nốt), rung miu (<span class="term-hl">thrill</span>) và sờ hạch cổ.</span>
+              </li>
+              <li>
+                <input type='checkbox'>
+                <span><strong>3. Gõ & Nghe:</strong> Gõ đục cán xương ức (tìm bướu chìm). Nghe âm thổi (<span class="term-hl">bruit</span>) tại thùy giáp trong Graves.</span>
+              </li>
+              <li>
+                <input type='checkbox'>
+                <span><strong>4. Khám Mắt Basedow - Co rút mi:</strong> Nhìn thẳng, tìm dấu co rút mi trên (lộ củng mạc trên mống mắt). Khám lồi mắt (<span class="term-hl">exophthalmos</span>) từ phía sau nhìn từ trên đỉnh đầu xuống.</span>
+              </li>
+              <li>
+                <input type='checkbox'>
+                <span><strong>5. Khám Mắt Basedow - Vận nhãn & Lid lag:</strong> Đánh giá dấu trễ mi (<span class="term-hl">Lid lag</span>): Ngón tay bác sĩ đi từ trên xuống dưới, mi trên di chuyển chậm hơn nhãn cầu làm lộ củng mạc trên. Khám 6 hướng vận nhãn ( Graves gây hạn chế liếc lên).</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: BIỆN LUẬN -->
+      <section class='tab' id='int'>
+        <div class='grid2'>
+          <div class='card'>
+            <h2>Biện luận hình thái Tuyến Giáp</h2>
+            <ul>
+              <li><strong>Bướu giáp to lan tỏa trơn láng:</strong> Gợi ý bệnh Basedow (<span class="term-hl">Graves</span>) tự miễn hoặc bướu giáp đơn thuần.</li>
+              <li><strong>Bướu giáp đa nhân / đơn nhân:</strong> Bề mặt gồ ghề không đều. Bướu cứng như đá, dính chặt không di động khi nuốt kèm hạch cổ sờ thấy chắc gợi ý ung thư tuyến giáp.</li>
+              <li><strong>Đau tuyến giáp:</strong> Đau lan tỏa gợi ý viêm giáp bán cấp de Quervain do virus; đau khu trú đột ngột gợi ý xuất huyết trong nang giáp.</li>
+            </ul>
+          </div>
+          <div class='card'>
+            <h2>Biện luận biểu hiện Mắt Basedow</h2>
+            <ul>
+              <li><strong>Co rút mi trên & trễ mi (<span class="term-hl">lid lag</span>):</strong> Do tăng giao cảm kích thích cơ nâng mi trên trong cường giáp nói chung.</li>
+              <li><strong>Lồi mắt (<span class="term-hl">exophthalmos/proptosis</span>):</strong> Chỉ gặp đặc hiệu trong bệnh lý mắt Graves tự miễn, do các tự kháng thể kích thích thâm nhiễm viêm, phù nề mô liên kết sau nhãn cầu và cơ vận nhãn trong hốc mắt. Có thể gây loét giác mạc, nhìn đôi hoặc chèn ép thần kinh thị.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: CẬN LÂM SÀNG -->
+      <section class='tab' id='tests'>
+        <div class='card'>
+          <h2>Cận lâm sàng Tuyến Giáp thường quy</h2>
+          <ul>
+            <li><strong>Xét nghiệm hormone (<span class="term-hl">TFTs</span>):</strong> <span class="term-hl-secondary">TSH</span> (nhạy nhất để sàng lọc), fT3, fT4. (Cường giáp: <span class="term-hl-secondary">TSH</span> giảm cực thấp, fT3/fT4 tăng. Suy giáp: <span class="term-hl-secondary">TSH</span> tăng cao, fT4 giảm).</li>
+            <li><strong>Kháng thể tự miễn:</strong>
+              <ul>
+                <li><em>Anti-TPO:</em> Tăng trong viêm giáp Hashimoto và Graves.</li>
+                <li><em>TRAb (<span class="term-hl">Anti-TSHR</span>):</em> Đặc hiệu chẩn đoán bệnh Graves (<span class="term-hl">Basedow</span>).</li>
+              </ul>
+            </li>
+            <li><strong>Chẩn đoán hình ảnh & Giải phẫu bệnh:</strong>
+              <ul>
+                <li><em>Siêu âm giáp:</em> Khảo sát cấu trúc nhu mô giáp, phân độ nhân giáp TIRADS và định hướng FNA.</li>
+                <li><em>Chọc hút tế bào bằng kim nhỏ (<span class="term-hl">FNA</span>):</em> Tiêu chuẩn vàng đánh giá lành/ác tính nhân tuyến giáp.</li>
+                <li><em>Xạ hình tuyến giáp (<span class="term-hl">123I, 99mTc</span>):</em> Đánh giá các nhân nóng (tăng hoạt động phóng xạ) và nhân lạnh (giảm hoạt động phóng xạ, nguy cơ ác tính cao).</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: OSCE -->
+      <section class='tab' id='osce'>
+        <div class='grid2'>
+          <div class='card'>
+            <span class='case'><span class="term-hl-secondary">OSCE</span> 1</span>
+            <h2><span class="term-hl-secondary">OSCE</span>: Khám Tuyến giáp & Bướu cổ</h2>
+            <p><strong>Yêu cầu:</strong> Bệnh nhân nữ 27 tuổi (<span class="term-hl">Mrs Duncan</span>), đến khám vì hồi hộp, sụt cân và sưng cổ kéo dài 6 tháng. Hãy khám tuyến giáp.</p>
+            <p style='margin-top: 8px;'><strong>Tóm tắt phát hiện:</strong> Bệnh nhân gầy gò, tay ấm ẩm có run vẩy nhẹ hạt mịn. Nhịp tim 106 l/p. Có lồi mắt hai bên, co rút mi trên và dấu trễ mi (<span class="term-hl">lid lag</span>) dương tính. Vùng cổ trước có bướu cổ to lan tỏa đối xứng, bề mặt trơn láng, không đau, di động tốt theo nhịp nuốt, nghe thấy âm thổi ở cả hai thùy tuyến giáp.</p>
+            <p style='margin-top: 8px;'><strong>Chẩn đoán sơ bộ:</strong> Cường giáp tự miễn (Bệnh Graves / Basedow).</p>
+            <p style='margin-top: 8px;'><strong>Đề xuất đánh giá tiếp theo:</strong> Xét nghiệm hormone TFTs (<span class="term-hl">TSH, fT4, fT3</span>), định lượng TRAb và siêu âm tuyến giáp.</p>
+          </div>
+        </div>
+        <div class='card'>
+          <h2>Tài liệu tham khảo (<span class="term-hl">References</span>)</h2>
+          <ol>
+            <li>Innes JA, Dover AR, Fairhurst K. <em>Macleod's Clinical Examination</em>. 14th ed. Edinburgh: Elsevier; 2018.</li>
+          </ol>
+        </div>
+      </section>
+      <section class='links'>
+        <div class='card'>
+          <h2>Các bài cùng chuyên khoa Nội tiết</h2>
+          <div class='grid3'>
+            <a class='link-card' href='KN_KhamTuyenYen.html'>
+              <h3>Khám Tuyến Yên</h3>
+              <small>Đánh giá bệnh To đầu chi, suy yên, thị trường bán manh thái dương.</small>
+            </a>
+            <a class='link-card' href='KN_KhamTuyenThuongThan.html'>
+              <h3>Khám Tuyến Thượng Thận</h3>
+              <small>Hội chứng Cushing, Addison sạm da và tụt huyết áp tư thế đứng.</small>
+            </a>
+            <a class='link-card' href='KN_KhamDaiThaoDuong.html'>
+              <h3>Khám Bàn Chân Đái Tháo Đường</h3>
+              <small>Test monofilament 10-g cảm giác bảo vệ và bệnh lý mạch máu ngoại vi.</small>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <footer class='global-footer'>
+    <div id='footer-placeholder' data-footer-path="../../../../components/footer.html">
+    </div>
+  </footer>
+  <script src="../../../../js/clinical-skill-tabs.js"></script>
+  <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>

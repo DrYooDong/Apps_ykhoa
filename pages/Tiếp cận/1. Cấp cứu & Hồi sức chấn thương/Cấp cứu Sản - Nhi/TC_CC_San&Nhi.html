@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lưu đồ hướng dẫn xử trí cấp cứu Sản khoa (băng huyết sau sinh) và Nhi khoa (hồi sức sơ sinh tại phòng sinh).">
+    <title>Cấp cứu Sản - Nhi – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal -->
+    <link rel="stylesheet" href="../../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../../css/components/footer.css">
+
+    <!-- CSS Flowchart dùng chung -->
+    <link rel="stylesheet" href="../../../../../css/components/flowchart.css">
+
+    <!-- Script điều hướng hệ thống -->
+    <script src="../../../../../js/main.js" defer></script>
+    <script src="../../../../../components/header.js" defer></script>
+    <script src="../../../../../components/footer.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+            <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../tiep-can.html" class="nav-item active" aria-current="page" title="Tiếp cận">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+        <!-- MAIN WRAPPER -->
+        <main class="main-wrapper flow-page">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container">
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item">
+                        <a href="../../../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="../../../tiep-can.html" class="breadcrumb-link">Tiếp cận</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Cấp cứu Sản - Nhi</li>
+                </ol>
+            </nav>
+
+            <!-- HERO BANNER -->
+            <div class="flow-hero">
+                <div class="hero-badge">👶 Cấp cứu Sản - Nhi</div>
+                <h1>CẤP CỨU SẢN KHOA & SƠ SINH</h1>
+                <p>Thuật toán tiếp cận xử trí nhanh băng huyết sau sinh và hồi sức sơ sinh tại phòng sinh. Nhấp vào các node để xem chi tiết.</p>
+            </div>
+
+            <!-- TABS SWITCHER -->
+            <div class="flow-tabs">
+                <button class="flow-tab-btn active" id="tab-btn-pph" onclick="switchPane('pph')">
+                    <span class="tab-dot"></span> Sơ đồ 1: Băng huyết sau sinh (Postpartum Hemorrhage)
+                </button>
+                <button class="flow-tab-btn tab-danger" id="tab-btn-neo" onclick="switchPane('neo')">
+                    <span class="tab-dot"></span> Sơ đồ 2: Hồi sức sơ sinh (Neonatal Resuscitation)
+                </button>
+            </div>
+
+            <!-- LEGEND -->
+            <div class="flow-legend">
+                <div class="legend-item"><div class="legend-dot" style="background:linear-gradient(135deg, #1e3a5f, #3f51b5)"></div> Đánh giá ban đầu</div>
+                <div class="legend-item"><div class="legend-dot" style="background:var(--c-danger-b)"></div> Xử trí khẩn cấp</div>
+                <div class="legend-item"><div class="legend-dot" style="background:var(--c-warn-b)"></div> Khảo sát nguyên nhân</div>
+                <div class="legend-item"><div class="legend-dot" style="background:var(--c-ok-b)"></div> Ổn định</div>
+            </div>
+
+            <!-- FLOW CANVAS -->
+            <div class="flow-canvas-wrapper">
+
+                <!-- PANE 1: PPH -->
+                <div class="flow-pane active" id="pane-pph">
+                    <div class="flow-col">
+                        
+                        <!-- 1. Node Bắt đầu -->
+                        <div class="fnode fnode-start">
+                            <div class="fnode-tag">Nhận diện PPH</div>
+                            <div class="fnode-title">Băng huyết sau sinh (Lượng máu mất &gt; 500ml sau sinh thường hoặc &gt; 1000ml sau mổ đẻ)</div>
+                            <p class="fnode-body">
+                                ⚠️ Kích hoạt báo động cấp cứu Sản khoa. Đánh giá sinh hiệu, thở oxy, lập đường truyền lớn, chuẩn bị máu khẩn cấp.
+                            </p>
+                        </div>
+
+                        <!-- Mũi tên kết nối -->
+                        <div class="flow-connector">
+                            <div class="flow-connector-line"></div>
+                            <div class="flow-connector-arrow"></div>
+                        </div>
+
+                        <!-- 2. Tìm nguyên nhân 4T -->
+                        <div class="fnode fnode-warn clickable" onclick="toggleNode(this)">
+                            <div class="fnode-tag">Bước 2 • Biện luận lâm sàng</div>
+                            <div class="fnode-title">Xác định nguyên nhân theo quy tắc 4T</div>
+                            <p class="fnode-body">
+                                Kiểm tra cơ tử cung, bánh rau, đường sinh dục và bilan đông máu để định hướng điều trị.
+                            </p>
+                            <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Xem chi tiết quy tắc 4T</div>
+                            <div class="fnode-details">
+                                <div class="detail-box">
+                                    <div class="detail-box-title">🔍 Quy tắc 4T trong băng huyết sau sinh:</div>
+                                    <ul>
+                                        <li><strong>Tone (Đờ tử cung - 70%):</strong> Tử cung nhão, to, ấn không co hồi tốt.</li>
+                                        <li><strong>Trauma (Chấn thương đường sinh dục - 20%):</strong> Rách cổ tử cung, âm đạo, vỡ tử cung.</li>
+                                        <li><strong>Tissue (Sót rau, màng rau - 10%):</strong> Kiểm tra bánh rau thấy thiếu múi hoặc sót màng.</li>
+                                        <li><strong>Thrombin (Rối loạn đông máu - 1%):</strong> Máu không đông, có bệnh lý đông máu từ trước.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mũi tên kết nối -->
+                        <div class="flow-connector">
+                            <div class="flow-connector-line"></div>
+                            <div class="flow-connector-arrow"></div>
+                        </div>
+
+                        <!-- 3. Can thiệp đờ tử cung -->
+                        <div class="fnode fnode-danger clickable" onclick="toggleNode(this)">
+                            <div class="fnode-tag">Can thiệp đờ tử cung (Tone)</div>
+                            <div class="fnode-title">Xoa bóp tử cung & Sử dụng thuốc co hồi tử cung</div>
+                            <p class="fnode-body">
+                                Thực hiện liên tục xoa bóp tử cung qua thành bụng và dùng thuốc tăng co hồi tử cung theo phác đồ bậc thang.
+                            </p>
+                            <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Xem phác đồ co hồi tử cung bậc thang</div>
+                            <div class="fnode-details">
+                                <div class="detail-box">
+                                    <div class="detail-box-title">💊 Phác đồ thuốc co hồi tử cung:</div>
+                                    <ul>
+                                        <li><strong>Oxytocin:</strong> 10-20 UI truyền tĩnh mạch chậm (pha trong NaCl 0.9%).</li>
+                                        <li><strong>Ergometrine (Methergin):</strong> 0.2mg tiêm bắp (Chống chỉ định nếu có tăng huyết áp, tiền sản giật).</li>
+                                        <li><strong>Misoprostol:</strong> 800 mcg ngậm dưới lưỡi hoặc đặt trực tràng.</li>
+                                        <li><strong>Carbetocin (Pabal):</strong> 100 mcg IV chậm (nếu có sẵn).</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!-- End Pane 1 -->
+
+                <!-- PANE 2: NEO -->
+                <div class="flow-pane" id="pane-neo">
+                    <div class="flow-col">
+                        
+                        <!-- 1. Node Bắt đầu -->
+                        <div class="fnode fnode-start">
+                            <div class="fnode-tag">Phòng sinh</div>
+                            <div class="fnode-title">Đánh giá trẻ ngay sau sinh</div>
+                            <p class="fnode-body">
+                                Hỏi 3 câu hỏi nhanh: Trẻ có đủ tháng? Trẻ có thở hoặc khóc? Cơ lực trẻ có tốt không?
+                            </p>
+                        </div>
+
+                        <!-- Mũi tên kết nối -->
+                        <div class="flow-connector">
+                            <div class="flow-connector-line"></div>
+                            <div class="flow-connector-arrow"></div>
+                        </div>
+
+                        <!-- 2. Rẽ nhánh chăm sóc -->
+                        <div class="flow-branch">
+                            
+                            <!-- Nhánh Tốt -->
+                            <div class="flow-branch-side">
+                                <div class="flow-connector-label fc-no">TẤT CẢ CÓ</div>
+                                <div class="flow-connector">
+                                    <div class="flow-connector-line"></div>
+                                    <div class="flow-connector-arrow"></div>
+                                </div>
+                                <div class="fnode fnode-ok">
+                                    <div class="fnode-title">Chăm sóc thường quy</div>
+                                    <p class="fnode-body">
+                                        Lau khô, đặt trẻ da kề da với mẹ, kẹp cắt rốn muộn, hỗ trợ bú mẹ sớm.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Nhánh Bất thường -->
+                            <div class="flow-branch-side">
+                                <div class="flow-connector-label fc-yes">CÓ BẤT THƯỜNG</div>
+                                <div class="flow-connector">
+                                    <div class="flow-connector-line"></div>
+                                    <div class="flow-connector-arrow"></div>
+                                </div>
+                                
+                                <div class="fnode fnode-danger clickable" onclick="toggleNode(this)">
+                                    <div class="fnode-tag">Bước 1 • Hồi sơ sinh</div>
+                                    <div class="fnode-title">Hồi sức sơ sinh bước đầu (60 giây vàng)</div>
+                                    <p class="fnode-body">
+                                        Giữ ấm, đặt tư thế ngửa đầu nhẹ, làm sạch đường thở (nếu có dịch cản trở), lau khô và kích thích thở.
+                                    </p>
+                                    <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Xem chỉ định thông khí áp lực dương (PPV)</div>
+                                    <div class="fnode-details">
+                                        <div class="detail-box">
+                                            <p>Nếu sau các bước ban đầu, trẻ vẫn <strong>ngừng thở/thở ngáp</strong> hoặc <strong>nhịp tim &lt; 100 lần/phút</strong>: Tiến hành bóp bóng qua mặt nạ (PPV) ngay lập tức và gắn máy đo SpO2 ở tay phải (nơi trước ống động mạch).</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div><!-- End Flow Branch -->
+
+                    </div>
+                </div><!-- End Pane 2 -->
+
+            </div><!-- End Flow Canvas Wrapper -->
+        </main>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+    <!-- Scripts dùng chung -->
+    <script src="../../../../../js/flowchart.js"></script>
+</body>
+
+</html>

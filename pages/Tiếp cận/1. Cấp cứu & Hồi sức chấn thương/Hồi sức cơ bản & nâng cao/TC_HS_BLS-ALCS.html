@@ -1,0 +1,391 @@
+﻿<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lưu đồ hướng dẫn Hồi sức tim phổi cơ bản (BLS) và nâng cao (ACLS) chuẩn AHA 2020 / ERC.">
+    <title>Hồi sức Tim phổi BLS & ACLS – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal -->
+    <link rel="stylesheet" href="../../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../../css/components/footer.css">
+
+    <!-- CSS Flowchart dùng chung -->
+    <link rel="stylesheet" href="../../../../../css/components/flowchart.css">
+
+    <!-- Script điều hướng hệ thống -->
+    <script src="../../../../../js/main.js" defer></script>
+    <script src="../../../../../components/header.js" defer></script>
+    <script src="../../../../../components/footer.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+            <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../tiep-can.html" class="nav-item active" aria-current="page" title="Tiếp cận">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+        <!-- MAIN WRAPPER -->
+        <main class="main-wrapper flow-page">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container">
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item">
+                        <a href="../../../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="../../../tiep-can.html" class="breadcrumb-link">Tiếp cận</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Hồi sức BLS & ACLS</li>
+                </ol>
+            </nav>
+
+            <!-- HERO BANNER -->
+            <div class="flow-hero">
+                <div class="hero-badge">🚑 Cấp cứu & Hồi sức</div>
+                <h1>HỒI SỨC TIM PHỔI CƠ BẢN & NÂNG CAO (BLS & ACLS)</h1>
+                <p>Thuật toán tiếp cận xử trí cấp cứu ngừng tuần hoàn hô hấp theo khuyến cáo AHA mới nhất. Nhấp vào các node để xem chi tiết kỹ thuật.</p>
+            </div>
+
+            <!-- TABS SWITCHER -->
+            <div class="flow-tabs">
+                <button class="flow-tab-btn active" id="tab-btn-bls" onclick="switchPane('bls')">
+                    <span class="tab-dot"></span> Sơ đồ 1: Hồi sức cơ bản (BLS - Ngoài bệnh viện)
+                </button>
+                <button class="flow-tab-btn tab-danger" id="tab-btn-acls" onclick="switchPane('acls')">
+                    <span class="tab-dot"></span> Sơ đồ 2: Hồi sức nâng cao (ACLS - Trong bệnh viện)
+                </button>
+            </div>
+
+            <!-- LEGEND / CHÚ GIẢI -->
+            <div class="flow-legend">
+                <div class="legend-item"><div class="legend-dot" style="background:linear-gradient(135deg, #1e3a5f, #3f51b5)"></div> Bắt đầu</div>
+                <div class="legend-item"><div class="legend-dot" style="background:var(--c-danger-b)"></div> Khẩn cấp / Cấp cứu</div>
+                <div class="legend-item"><div class="legend-dot" style="background:var(--c-warn-b)"></div> Theo dõi / Đánh giá</div>
+                <div class="legend-item"><div class="legend-dot" style="background:var(--c-info-b)"></div> Can thiệp / Điều trị</div>
+                <div class="legend-item"><div class="legend-dot" style="background:var(--c-ok-b)"></div> Có mạch lại (ROSC)</div>
+            </div>
+
+            <!-- FLOW CANVAS -->
+            <div class="flow-canvas-wrapper">
+
+                <!-- PANE 1: BLS -->
+                <div class="flow-pane active" id="pane-bls">
+                    <div class="flow-col">
+                        
+                        <!-- 1. Node Bắt đầu -->
+                        <div class="fnode fnode-start">
+                            <div class="fnode-tag">Bước 1 • An toàn hiện trường</div>
+                            <div class="fnode-title">Đảm bảo hiện trường an toàn</div>
+                            <p class="fnode-body">
+                                Kiểm tra an toàn cho bản thân và nạn nhân trước khi tiếp cận. Đánh giá phản xạ đáp ứng bằng cách lay gọi to.
+                            </p>
+                        </div>
+
+                        <!-- Mũi tên kết nối -->
+                        <div class="flow-connector">
+                            <div class="flow-connector-line"></div>
+                            <div class="flow-connector-arrow"></div>
+                        </div>
+
+                        <!-- 2. Đánh giá hô hấp & mạch -->
+                        <div class="fnode fnode-warn clickable" onclick="toggleNode(this)">
+                            <div class="fnode-tag">Bước 2 • Đánh giá nhanh (&lt; 10 giây)</div>
+                            <div class="fnode-title">Kiểm tra mạch cảnh và nhịp thở</div>
+                            <p class="fnode-body">
+                                Đồng thời quan sát lồng ngực (thở bình thường/ngáp cá) và bắt mạch cảnh.
+                            </p>
+                            <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấp để xem các tình huống xảy ra</div>
+                            
+                            <div class="fnode-details">
+                                <div class="detail-box">
+                                    <ul>
+                                        <li><strong>Có mạch + Thở bình thường:</strong> Đặt tư thế an toàn, theo dõi liên tục.</li>
+                                        <li><strong>Có mạch + Không thở/Thở bất thường:</strong> Thổi ngạt hỗ trợ (1 chu kỳ mỗi 5-6 giây, khoảng 10-12 lần/phút). Kiểm tra mạch mỗi 2 phút.</li>
+                                        <li><strong>Không mạch + Không thở:</strong> Bắt đầu ngay CPR chất lượng cao.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mũi tên kết nối -->
+                        <div class="flow-connector">
+                            <div class="flow-connector-line"></div>
+                            <div class="flow-connector-arrow"></div>
+                        </div>
+
+                        <!-- 3. Gọi hỗ trợ -->
+                        <div class="fnode fnode-danger pulse-danger">
+                            <div class="fnode-tag">Bước 3 • Kích hoạt khẩn cấp</div>
+                            <div class="fnode-title">📞 Kích hoạt hệ thống cấp cứu và lấy máy AED</div>
+                            <p class="fnode-body">
+                                Gọi 115 (hoặc hệ thống cấp cứu nội viện). Yêu cầu người hỗ trợ lấy máy khử rung tim tự động (AED).
+                            </p>
+                        </div>
+
+                        <!-- Mũi tên kết nối -->
+                        <div class="flow-connector">
+                            <div class="flow-connector-line"></div>
+                            <div class="flow-connector-arrow"></div>
+                        </div>
+
+                        <!-- 4. CPR -->
+                        <div class="fnode fnode-info clickable" onclick="toggleNode(this)">
+                            <div class="fnode-tag">Bước 4 • Can thiệp</div>
+                            <div class="fnode-title">⚡ Tiến hành CPR chất lượng cao (Tỷ lệ 30:2)</div>
+                            <p class="fnode-body">
+                                Thực hiện liên tục chu kỳ 30 lần ép tim và 2 lần thổi ngạt cho đến khi có máy AED hoặc nhân viên y tế đến.
+                            </p>
+                            <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Xem tiêu chuẩn CPR chất lượng cao</div>
+                            <div class="fnode-details">
+                                <div class="detail-box">
+                                    <div class="detail-box-title">🎯 Tiêu chuẩn Ép tim Chất lượng cao:</div>
+                                    <ul>
+                                        <li><strong>Tần số:</strong> 100 - 120 lần/phút.</li>
+                                        <li><strong>Độ sâu:</strong> Ít nhất 5 cm (không quá 6 cm ở người lớn).</li>
+                                        <li><strong>Để lồng ngực nở hoàn toàn</strong> sau mỗi lần ép (không tì đè).</li>
+                                        <li><strong>Giảm thiểu gián đoạn</strong> ép tim (gián đoạn dưới 10 giây).</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mũi tên kết nối -->
+                        <div class="flow-connector">
+                            <div class="flow-connector-line"></div>
+                            <div class="flow-connector-arrow"></div>
+                        </div>
+
+                        <!-- 5. Phân tích nhịp AED -->
+                        <div class="fnode fnode-question clickable" onclick="toggleNode(this)">
+                            <div class="fnode-tag">Bước 5 • Máy AED đến</div>
+                            <div class="fnode-title">Phân tích nhịp bằng máy AED</div>
+                            <p class="fnode-body">
+                                Dán các miếng điện cực AED lên ngực trần của nạn nhân và làm theo chỉ dẫn bằng giọng nói của máy.
+                            </p>
+                            <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấp để xem quyết định phân tích</div>
+                            <div class="fnode-details">
+                                <div class="detail-box">
+                                    <div class="detail-box-title">🖥️ Máy phân tích nhịp tim:</div>
+                                    <p>Yêu cầu tất cả mọi người tránh xa nạn nhân trong khi máy phân tích.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mũi tên kết nối phân nhánh -->
+                        <div class="flow-connector">
+                            <div class="flow-connector-line"></div>
+                            <div class="flow-connector-arrow"></div>
+                        </div>
+
+                        <!-- RẼ NHÁNH SHOCK / NO SHOCK -->
+                        <div class="flow-branch">
+                            
+                            <!-- Nhánh CÓ CHỈ ĐỊNH SHOCK -->
+                            <div class="flow-branch-side">
+                                <div class="flow-connector-label fc-yes">CÓ CHỈ ĐỊNH SHOCK</div>
+                                <div class="flow-connector">
+                                    <div class="flow-connector-line"></div>
+                                    <div class="flow-connector-arrow"></div>
+                                </div>
+                                
+                                <div class="fnode fnode-danger pulse-danger">
+                                    <div class="fnode-tag">Khử rung</div>
+                                    <div class="fnode-title">⚡ Phát tia shock điện</div>
+                                    <p class="fnode-body">
+                                        Đảm bảo không ai chạm vào nạn nhân. Bấm nút Shock. Sau khi shock, lập tiếp tục CPR ngay (bắt đầu bằng ép tim) trong 2 phút.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Nhánh KHÔNG CHỈ ĐỊNH SHOCK -->
+                            <div class="flow-branch-side">
+                                <div class="flow-connector-label fc-no">KHÔNG CHỈ ĐỊNH SHOCK</div>
+                                <div class="flow-connector">
+                                    <div class="flow-connector-line"></div>
+                                    <div class="flow-connector-arrow"></div>
+                                </div>
+
+                                <div class="fnode fnode-info">
+                                    <div class="fnode-tag">Tiếp tục CPR</div>
+                                    <div class="fnode-title">🔄 CPR ngay lập tức</div>
+                                    <p class="fnode-body">
+                                        Tiếp tục thực hiện CPR trong 2 phút. Máy AED sẽ nhắc nhở phân tích lại nhịp sau mỗi 2 phút.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div><!-- End Flow Branch -->
+
+                    </div>
+                </div><!-- End Pane 1 -->
+
+                <!-- PANE 2: ACLS -->
+                <div class="flow-pane" id="pane-acls">
+                    <div class="flow-col">
+                        
+                        <!-- 1. Node Bắt đầu -->
+                        <div class="fnode fnode-start">
+                            <div class="fnode-tag">Bắt đầu ACLS</div>
+                            <div class="fnode-title">Ngừng tuần hoàn nội viện / Đội cấp cứu chuyên nghiệp</div>
+                            <p class="fnode-body">
+                                Cung cấp oxy hỗ trợ, gắn Monitor theo dõi điện tim và thiết lập đường truyền tĩnh mạch (IV/IO).
+                            </p>
+                        </div>
+
+                        <!-- Mũi tên kết nối -->
+                        <div class="flow-connector">
+                            <div class="flow-connector-line"></div>
+                            <div class="flow-connector-arrow"></div>
+                        </div>
+
+                        <!-- 2. Đánh giá nhịp -->
+                        <div class="fnode fnode-question clickable" onclick="toggleNode(this)">
+                            <div class="fnode-tag">Đánh giá nhịp trên Monitor</div>
+                            <div class="fnode-title">Nhịp tim có chỉ định sốc điện không (Shockable)?</div>
+                            <p class="fnode-body">
+                                Nhấp để xem phân loại nhịp và hướng xử lý tiếp theo.
+                            </p>
+                            <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Xem phân loại nhịp tim</div>
+                            <div class="fnode-details">
+                                <div class="detail-box">
+                                    <ul>
+                                        <li><strong>Nhóm 1 (Shockable):</strong> Rung thất (VF) / Nhịp nhanh thất vô mạch (pVT).</li>
+                                        <li><strong>Nhóm 2 (Non-shockable):</strong> Vô tâm thu (Asystole) / Hoạt động điện vô mạch (PEA).</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mũi tên kết nối phân nhánh -->
+                        <div class="flow-connector">
+                            <div class="flow-connector-line"></div>
+                            <div class="flow-connector-arrow"></div>
+                        </div>
+
+                        <!-- RẼ NHÁNH ACLS -->
+                        <div class="flow-branch">
+                            
+                            <!-- Nhánh Shockable (VF/pVT) -->
+                            <div class="flow-branch-side">
+                                <div class="flow-connector-label fc-yes">VF / pVT</div>
+                                <div class="flow-connector">
+                                    <div class="flow-connector-line"></div>
+                                    <div class="flow-connector-arrow"></div>
+                                </div>
+                                
+                                <div class="fnode fnode-danger clickable" onclick="toggleNode(this)">
+                                    <div class="fnode-tag">Shockable Path</div>
+                                    <div class="fnode-title">⚡ Sốc điện lần 1 & Dùng thuốc</div>
+                                    <p class="fnode-body">
+                                        Tiến hành sốc điện (Biphasic: 120-200 J). CPR ngay trong 2 phút. Đánh giá lại nhịp sau 2 phút.
+                                    </p>
+                                    <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Xem phác đồ thuốc chu kỳ tiếp theo</div>
+                                    <div class="fnode-details">
+                                        <div class="detail-box">
+                                            <div class="detail-box-title">💊 Thuốc sử dụng:</div>
+                                            <ul>
+                                                <li><strong>Sau sốc điện lần 2:</strong> Dùng <strong>Adrenaline 1mg</strong> IV/IO mỗi 3-5 phút.</li>
+                                                <li><strong>Sau sốc điện lần 3:</strong> Dùng <strong>Amiodarone 300mg</strong> IV/IO bolus (liều 2: 150mg) hoặc <strong>Lidocaine 1-1.5mg/kg</strong>.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Nhánh Non-shockable (Asystole/PEA) -->
+                            <div class="flow-branch-side">
+                                <div class="flow-connector-label fc-no">ASYSTOLE / PEA</div>
+                                <div class="flow-connector">
+                                    <div class="flow-connector-line"></div>
+                                    <div class="flow-connector-arrow"></div>
+                                </div>
+
+                                <div class="fnode fnode-warn clickable" onclick="toggleNode(this)">
+                                    <div class="fnode-tag">Non-shockable Path</div>
+                                    <div class="fnode-title">🔄 CPR ngay & Adrenaline càng sớm càng tốt</div>
+                                    <p class="fnode-body">
+                                        Không sốc điện. CPR ngay trong 2 phút. Tiêm tĩnh mạch Adrenaline 1mg ngay lập tức.
+                                    </p>
+                                    <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Xem nguyên nhân cần tìm (5H & 5T)</div>
+                                    <div class="fnode-details">
+                                        <div class="detail-box">
+                                            <div class="detail-box-title">🔍 Tìm nguyên nhân có thể đảo ngược (5H & 5T):</div>
+                                            <ul>
+                                                <li><strong>5 H:</strong> Hypovolemia (Giảm thể tích), Hypoxia (Giảm oxy), Hydrogen ion (Toan máu), Hypo/Hyperkalemia (Hạ/Tăng Kali), Hypothermia (Hạ thân nhiệt).</li>
+                                                <li><strong>5 T:</strong> Tension pneumothorax (Tràn khí MP áp lực), Tamponade (Chèn ép tim), Toxins (Ngộ độc), Thrombosis pulmonary (Thuyên tắc phổi), Thrombosis coronary (Hội chứng vành cấp).</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div><!-- End Flow Branch -->
+
+                        <!-- Mũi tên kết nối ROSC -->
+                        <div class="flow-connector">
+                            <div class="flow-connector-line"></div>
+                            <div class="flow-connector-arrow"></div>
+                        </div>
+
+                        <!-- Kết quả có ROSC -->
+                        <div class="fnode fnode-ok">
+                            <div class="fnode-tag">ROSC đạt được</div>
+                            <div class="fnode-title">🎉 Chăm sóc sau hồi sức tim phổi thành công</div>
+                            <p class="fnode-body">
+                                Bệnh nhân có mạch và nhịp thở tự nhiên trở lại. Chuyển sang tối ưu hóa thông khí (đạt SpO2 92-98%), kiểm soát huyết động (MAP > 65 mmHg) và can thiệp mạch vành nếu có chỉ định.
+                            </p>
+                        </div>
+
+                    </div>
+                </div><!-- End Pane 2 -->
+
+            </div><!-- End Flow Canvas Wrapper -->
+        </main>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+    <!-- Scripts dùng chung -->
+    <script src="../../../../../js/flowchart.js"></script>
+</body>
+
+</html>

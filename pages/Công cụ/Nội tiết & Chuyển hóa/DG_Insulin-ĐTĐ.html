@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="CliniPortal – Hệ thống hỗ trợ quyết định lâm sàng dành cho bác sĩ nội khoa tại Việt Nam" />
+  <title>CliniPortal – Hỗ trợ Lâm sàng</title>
+
+  <!-- Preconnect fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+
+  <script src="../../../components/header.js"></script>
+
+    <link rel="stylesheet" href="../../../css/components/insulin-calculator.css">
+  <script src="../../../components/footer.js" defer></script>
+</head>
+
+<body>
+  <!-- Placeholder nạp header.html — đường dẫn tính từ vị trí cong-cu.html -->
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ===================== APP CONTAINER ===================== -->
+  <div class="app-container">
+
+        <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../cong-cu.html" class="nav-item active" aria-current="page" title="Công cụ">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-wrapper" id="mainContent">
+
+      <section class="hero-dashboard" aria-labelledby="hero-title">
+        <div class="hero-intro">
+          <h1 id="hero-title">PHÁC ĐỒ INSULIN NỘI VIỆN</h1>
+          <p>Tính toán liều Insulin truyền tĩnh mạch (ICU) và Phác đồ Basal-Bolus tiêm dưới da (Non-ICU) dựa trên ADA
+            2026 & SCCM.</p>
+        </div>
+      </section>
+
+      <!--BREADCRUMB-->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../../index.html" class="breadcrumb-link">
+              <span class="home-icon">🏠</span> Home
+            </a>
+          </li>
+
+          <li class="breadcrumb-item">
+            <a href="../cong-cu.html" class="breadcrumb-link">Công cụ</a>
+          </li>
+
+          <li class="breadcrumb-item" aria-current="page"> Nội tiết & Chuyển hóa</a>
+          </li>
+
+          <li class="breadcrumb-item active" aria-current="page"> Insulin nội viện
+          </li>
+        </ol>
+      </nav>
+
+      <!--ARTICLE-->
+      <div class="workspace-container">
+
+        <div class="input-side">
+
+          <div class="input-card">
+            <span class="card-zone-badge badge-blue">1. Đánh giá Lâm sàng</span>
+
+            <div class="form-group" style="margin-bottom: 1rem;">
+              <label for="clinicalSetting">Bối cảnh lâm sàng (Setting):</label>
+              <select id="clinicalSetting">
+                <option value="non_icu">Bệnh phòng (Non-ICU) - Tiêm dưới da</option>
+                <option value="icu">Hồi sức tích cực (ICU) - Truyền tĩnh mạch</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="patientWeight">Cân nặng (kg):</label>
+                <input type="number" id="patientWeight" value="60" min="30">
+              </div>
+              <div class="form-group">
+                <label for="currentBG">Đường huyết hiện tại (mg/dL):</label>
+                <input type="number" id="currentBG" value="250" min="40">
+              </div>
+            </div>
+
+            <div class="checkbox-group" id="riskFactorsGroup">
+              <label style="font-size: var(--text-sm); font-weight: 600;">Yếu tố nguy cơ / Đề kháng Insulin:</label>
+              <label class="checkbox-item">
+                <input type="checkbox" id="riskHypo"> Suy thận (eGFR &lt; 30) / Cao tuổi / Nguy cơ hạ ĐH cao
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" id="riskResist"> Đang dùng Corticoid liều cao / Béo phì (BMI &gt; 30)
+              </label>
+            </div>
+          </div>
+
+          <div class="input-card" id="nutritionCard">
+            <span class="card-zone-badge badge-red">2. Tình trạng Dinh dưỡng</span>
+            <div class="form-group">
+              <label for="nutritionStatus">Khả năng ăn uống:</label>
+              <select id="nutritionStatus">
+                <option value="eating">Ăn uống bình thường / Đủ bữa</option>
+                <option value="npo">Nhịn ăn (NPO) / Nuôi dưỡng tĩnh mạch</option>
+                <option value="enteral">Nuôi ăn qua sonde liên tục</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="output-side">
+
+          <div class="result-box" id="resultNonICU">
+            <div class="result-title"><span>💉</span> PHÁC ĐỒ NỀN - PHÓNG (BASAL-BOLUS)</div>
+
+            <div class="prescription-block">
+              <div class="prescription-title">🎯 Tổng liều Insulin dự kiến (TDD): <span id="resTDD"
+                  class="highlight-blue">-- ĐV/ngày</span></div>
+              <div class="prescription-detail" style="margin-top: 0.5rem;">
+                <strong>1. Insulin Nền (Basal):</strong> Tiêm <span id="resBasal" class="highlight-blue">-- ĐV</span>
+                (Glargine/Detemir) 1 lần/ngày. <br>
+                <strong>2. Insulin Bữa ăn (Prandial):</strong> Tiêm <span id="resBolus" class="highlight-blue">--
+                  ĐV</span> (Aspart/Lispro/Actrapid) x 3 lần/ngày (Trước ba bữa ăn chính).
+              </div>
+            </div>
+
+            <div class="failure-protocol alert-critical" id="npoAlert" style="display: none; margin-bottom: 1rem;">
+              <span class="failure-protocol-title text-rose">⚠️ Bệnh nhân nhịn ăn (NPO):</span>
+              <ul>
+                <li>Giữ nguyên hoặc giảm 20-30% Insulin nền.</li>
+                <li><strong>NGỪNG hoàn toàn</strong> Insulin theo bữa ăn (Prandial). Chỉ dùng liều hiệu chỉnh
+                  (Correction) mỗi 4-6 giờ.</li>
+              </ul>
+            </div>
+
+            <div class="pump-recipe">
+              <strong>Mục tiêu đường huyết:</strong> 140 - 180 mg/dL (7.8 - 10.0 mmol/L). Không khuyến cáo dùng đơn độc
+              phác đồ Sliding Scale.
+            </div>
+          </div>
+
+          <div class="result-box" id="resultICU" style="display: none;">
+            <div class="result-title"><span>💧</span> PHÁC ĐỒ TRUYỀN TĨNH MẠCH (CII)</div>
+
+            <div class="pump-recipe">
+              <strong>CÁCH PHA CHUẨN:</strong> Pha <span class="dose-highlight">50 Đơn vị Insulin Regular (Actrapid) + 50 mL NaCl 0.9%</span>. <br>
+              <span style="color:var(--text-muted); font-size:0.85rem;">Nồng độ đạt được: 1 Đơn vị / 1 mL.</span>
+            </div>
+
+            <div class="pump-display">
+              <div>
+                <div class="pump-title">Tốc độ Bơm tiêm điện khởi đầu:</div>
+                <div class="pump-subtitle">Theo cân nặng (<span id="icuMultiplier">0.1</span> ĐV/kg/giờ)</div>
+              </div>
+              <div class="pump-value-group">
+                <span class="pump-rate" id="pumpRateIV">--</span>
+                <span class="pump-unit">mL/giờ</span>
+              </div>
+            </div>
+
+            <div class="failure-protocol">
+              <span class="failure-protocol-title text-warning">📌 Theo dõi & Điều chỉnh:</span>
+              <ul>
+                <li>Đo đường huyết mao mạch mỗi 1 giờ cho đến khi ĐH ổn định trong vùng mục tiêu (140-180 mg/dL).</li>
+                <li>Nếu ĐH &lt; 70 mg/dL (3.9 mmol/L): <strong>Ngừng truyền Insulin ngay lập tức</strong> và tiêm TM
+                  <span class="dose-highlight">25-50 mL Dextrose 20-50%</span>.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="global-footer">
+    <div class="footer-copyright">
+      <p>&copy; 2026 CliniPortal. Dành cho mục đích hỗ trợ lâm sàng.</p>
+    </div>
+  </footer>
+
+    <script src="../../../js/calculators/insulin-calculator.js" defer></script>
+
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+</body>
+
+</html>

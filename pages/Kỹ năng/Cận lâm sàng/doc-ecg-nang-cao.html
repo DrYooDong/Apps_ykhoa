@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hướng dẫn nâng cao phân tích điện tâm đồ (ECG) chẩn đoán loạn nhịp phức tạp, blốc nhánh, định khu mạch vành và các hội chứng di truyền đột tử.">
+  <title>Các bước đọc ECG Nâng cao – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS core CliniPortal -->
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../css/components/toc.css">
+  <link rel="stylesheet" href="../../../css/components/paraclinical.css">
+
+  <script src="../../../js/toc.js" defer></script>
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+  
+  <script src="../../../js/main.js" defer></script>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+        <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../ky-nang.html" class="nav-item active" aria-current="page" title="Kỹ năng">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN WRAPPER -->
+    <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../../index.html" class="breadcrumb-link">
+              <span class="home-icon">🏠</span> Home
+            </a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="../ky-nang.html" class="breadcrumb-link">Kỹ năng lâm sàng</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="Doc_KQCLS.html" class="breadcrumb-link">Đọc kết quả cận lâm sàng</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Đọc ECG Nâng cao</li>
+        </ol>
+      </nav>
+
+      <!-- VISUAL CONTAINER FOR TOC GENERATION -->
+      <main class="visual-container">
+        <!-- Chapter Header -->
+        <div class="para-header"><span class="para-badge orange">⚡ Tim mạch nâng cao</span>
+  
+          <h1>Các Bước Đọc ECG Nâng Cao</h1>
+          <p>Phương pháp biện luận chuyên sâu điện tâm đồ: chẩn đoán phân biệt loạn nhịp thất/trên thất, định vị vùng nhồi máu cơ tim phức tạp và nhận diện hội chứng đột tử di truyền.</p>
+        </div>
+
+        <div class="para-content">
+          <p class="para-lead">
+            Để đọc và phân tích điện tâm đồ (ECG) ở mức độ nâng cao, bạn không chỉ dừng lại ở việc nhận diện các sóng đơn lẻ mà phải phân tích mối tương quan phức tạp giữa chúng, sử dụng các thuật toán chuyên sâu để chẩn đoán nguyên nhân loạn nhịp, định khu chính xác tổn thương nhồi máu, và nhận diện các rối loạn dẫn truyền hoặc bất thường cấu trúc di truyền.
+          </p>
+
+          <ol class="para-step-list">
+            <!-- BƯỚC 1 -->
+            <li>
+              <div class="para-card">
+                <h3 class="para-card-title">Bước 1: Phân tích chuyên sâu Nhịp nhanh QRS hẹp (Tachyarrhythmias with Narrow QRS)</h3>
+                <p>Khi đối mặt với nhịp nhanh có phức bộ QRS hẹp (&lt; 0.12s), bước nâng cao là đánh giá <strong>khoảng RP</strong> (từ sóng R của QRS đến sóng P đi kèm) để chẩn đoán phân biệt cơ chế vào lại:</p>
+                <ul>
+                  <li><strong>RP ngắn (&lt; 70 ms):</strong> Sóng P thường bị che khuất hoặc dính ngay vào phần cuối QRS (tạo hình ảnh giả r' ở V1 hoặc giả S ở DII, DIII, aVF). Đây là dấu hiệu cực kỳ điển hình của <strong>Nhịp nhanh vào lại nút nhĩ thất (AVNRT) thể chậm-nhanh</strong>.</li>
+                  <li><strong>RP ngắn nhưng &gt; 70 ms:</strong> Sóng P đi sau QRS một khoảng rõ ràng. Dấu hiệu này gợi ý cao <strong>Nhịp nhanh vào lại nhĩ thất (AVRT)</strong> do dẫn truyền xuôi qua nút và ngược qua đường phụ (bó Kent).</li>
+                  <li><strong>RP dài (PR &lt; RP):</strong> Sóng P nằm xa QRS đi trước và gần với QRS tiếp theo. Điều này gợi ý <strong>Nhịp nhanh nhĩ (Atrial Tachycardia)</strong>, AVNRT thể nhanh-chậm, hoặc nhịp nhanh xoang.</li>
+                </ul>
+              </div>
+            </li>
+
+            <!-- BƯỚC 2 -->
+            <li>
+              <div class="para-card">
+                <h3 class="para-card-title">Bước 2: Sử dụng Thuật toán Brugada trong Nhịp nhanh QRS rộng (Wide Complex Tachycardia)</h3>
+                <p>Nhịp nhanh QRS rộng (&gt; 0.12s) đe dọa tính mạng và cần phân biệt giữa Nhịp nhanh thất (VT) và Nhịp nhanh trên thất dẫn truyền lệch hướng (SVT with aberrancy). Bắt buộc áp dụng <strong>Thuật toán Brugada</strong> theo 4 bước sau:</p>
+                
+                <ol >
+                  <li><strong>Có phức bộ RS ở các chuyển đạo trước tim (V1-V6) không?</strong> Nếu hoàn toàn không có (tất cả đều là R đơn pha hoặc QS - đồng hướng dương/âm), chẩn đoán ngay là VT (độ đặc hiệu 100%).</li>
+                  <li><strong>Khoảng RS &gt; 100 ms (0.1s) ở bất kỳ chuyển đạo trước tim nào không?</strong> (Đo từ đầu sóng R đến đáy sóng S). Nếu có, chẩn đoán là VT.</li>
+                  <li><strong>Có phân ly nhĩ thất không?</strong> Việc nhìn thấy sóng P độc lập, nhát bắt được thất (capture beats) hoặc nhát bóp hỗn hợp (fusion beats) là bằng chứng chắc chắn của VT.</li>
+                  <li><strong>Tiêu chuẩn hình thái ở V1-V2 và V6:</strong>
+                    <ul class="para-list-muted">
+                      <li><em>Nếu có dạng Block nhánh phải:</em> Tại V1 có dạng R đơn pha, qR, hoặc tai thỏ phải ($R > R'$); tại V6 có dạng QS hoặc tỷ lệ R/S &lt; 1 thì chẩn đoán VT.</li>
+                      <li><em>Nếu có dạng Block nhánh trái:</em> Tại V1 sóng r &gt; 30ms, có khấc ở nhánh xuống sóng S (dấu hiệu Josephson), thời gian từ đầu QRS đến đáy S &gt; 70ms (dấu hiệu Brugada); tại V6 có sóng q hoặc QS thì chẩn đoán VT.</li>
+                    </ul>
+                  </li>
+                </ol>
+              </div>
+            </li>
+
+            <!-- BƯỚC 3 -->
+            <li>
+              <div class="para-card">
+                <h3 class="para-card-title">Bước 3: Đánh giá chi tiết các Blốc Nhánh và Phân Nhánh (Fascicular Blocks)</h3>
+                <p>Cấu trúc dẫn truyền thất trái có hai phân nhánh lớn (trước trên và sau dưới). Đánh giá sự tắc nghẽn đòi hỏi quan sát tinh tế:</p>
+                <ul>
+                  <li><strong>Blốc phân nhánh trái trước (LAFB):</strong> Trục lệch trái mạnh ($-30^\circ$ đến $-90^\circ$). QRS có dạng qR ở DI, aVL và dạng rS sâu ở DII, DIII, aVF. Thời gian nhánh nội điện ở aVL kéo dài &gt; 0.045s.</li>
+                  <li><strong>Blốc phân nhánh trái sau (LPFB):</strong> Trục lệch phải mạnh ($+110^\circ$ đến $+160^\circ$). QRS có dạng rS ở DI, aVL và qR ở DII, DIII, aVF. Cần loại trừ phì đại thất phải trước khi chẩn đoán LPFB.</li>
+                  <li><strong>Blốc hai bó (Bifascicular Block):</strong> Sự kết hợp giữa Blốc nhánh phải (RBBB) hoàn toàn (rSR' ở V1, QRS &gt; 0.12s) kết hợp với LAFB hoặc LPFB.</li>
+                </ul>
+              </div>
+            </li>
+
+            <!-- BƯỚC 4 -->
+            <li>
+              <div class="para-card">
+                <h3 class="para-card-title">Bước 4: Định khu phức tạp và tiến triển của Nhồi máu cơ tim (MI)</h3>
+                <p>Nhận diện hình ảnh soi gương và tổn thương các vùng khuất:</p>
+                <ul>
+                  <li><strong>Định khu chính xác:</strong>
+                    <ul>
+                      <li>Tổn thương ĐM liên thất trước (LAD) gây NMCT trước vách (V1-V4), trước rộng (V1-V6, DI, aVL).</li>
+                      <li>Tổn thương ĐM vành phải (RCA) thường gây NMCT thành dưới (II, III, aVF) và có thể kèm NMCT thất phải (ST chênh lên ở V4R).</li>
+                    </ul>
+                  </li>
+                  <li><strong>Nhồi máu cơ tim thành sau thực (Posterior MI):</strong> Tìm dấu hiệu soi gương gián tiếp tại V1-V3: Sóng R cao, rộng; ST chênh xuống đi ngang; sóng T dương cao nhọn. Cần đo thêm V7, V8, V9 để xác nhận ST chênh lên thực tế.</li>
+                  <li><strong>Hiện tượng cắt cụt sóng R (Poor R-Wave Progression):</strong> Sóng R không tăng dần chiều cao từ V1 đến V3 (sóng R ở V3 &le; 3mm), gợi ý NMCT cũ vùng trước vách hoặc bệnh cơ tim.</li>
+                  <li><strong>NMCT trên nền Blốc nhánh trái (LBBB):</strong> Áp dụng <strong>Tiêu chuẩn Sgarbossa</strong>: (1) ST chênh lên cùng hướng QRS &ge; 1mm; (2) ST chênh xuống ở V1-V3 &ge; 1mm; (3) ST chênh ngược hướng QRS &ge; 5mm.</li>
+                </ul>
+              </div>
+            </li>
+
+            <!-- BƯỚC 5 -->
+            <li>
+              <div class="para-card">
+                <h3 class="para-card-title">Bước 5: Phân tích Phì đại (Tăng gánh) Tâm thất qua các chỉ số nâng cao</h3>
+                <ul>
+                  <li><strong>Dày thất trái (LVH):</strong> Ngoài Sokolow-Lyon, cần áp dụng <strong>Tiêu chuẩn Cornell</strong> (R ở aVL + S ở V3 &gt; 20mm ở nữ hoặc &gt; 28mm ở nam) do độ chuyên biệt cao lên tới 96%. Hoặc dùng Thang điểm Romhilt-Estes để đánh giá toàn diện.</li>
+                  <li><strong>Dày thất phải (RVH):</strong> Tỷ lệ R/S ở V1 &gt; 1 (với R &gt; 5mm), trục lệch phải mạnh (&ge; $+90^\circ$), S sâu ở V5/V6 (&ge; 7mm), kèm theo biến đổi ST chênh xuống và T âm ở V1-V3.</li>
+                </ul>
+              </div>
+            </li>
+
+            <!-- BƯỚC 6 -->
+            <li>
+              <div class="para-card">
+                <h3 class="para-card-title">Bước 6: Nhận diện các Hội chứng Tiền kích thích và Bất thường Gen di truyền</h3>
+                <ul>
+                  <li><strong>Hội chứng Wolff-Parkinson-White (WPW):</strong> PR ngắn, sóng Delta, và QRS rộng. Xác định vị trí bó Kent: Nếu QRS/Delta dương ở V1-V2 là Type A (bó Kent trái); nếu QRS/Delta âm ở V1-V2 là Type B (bó Kent phải).</li>
+                  <li><strong>Hội chứng Brugada:</strong> Gây nguy cơ đột tử rất cao, đặc trưng bởi ST chênh lên hình vòm (coved type) hoặc hình yên ngựa đi kèm dạng blốc nhánh phải ở V1-V3, không có sóng S rộng ở V5, V6.</li>
+                  <li><strong>Hội chứng QT dài/ngắn:</strong> QTc &gt; 450ms (nam) hoặc &gt; 470ms (nữ) cảnh báo nguy cơ xuất hiện Xoắn đỉnh. Dấu hiệu sóng T so le (T-wave alternans) luân phiên thay đổi biên độ là yếu tố tiên lượng cực kỳ xấu.</li>
+                </ul>
+              </div>
+            </li>
+
+            <!-- BƯỚC 7 -->
+            <li>
+              <div class="para-card">
+                <h3 class="para-card-title">Bước 7: Liên kết ECG với rối loạn Điện giải và Chuyển hóa</h3>
+                <ul>
+                  <li><strong>Tăng Kali máu (Hyperkalemia):</strong> Tiến triển từ sóng T cao nhọn hẹp ở đáy &rarr; đoạn PR kéo dài, sóng P xẹp dần &rarr; QRS dãn rộng dị dạng &rarr; cuối cùng tạo thành hình sin đe dọa ngừng tim.</li>
+                  <li><strong>Hạ Kali máu (Hypokalemia):</strong> Sóng T dẹt/âm, ST chênh xuống, xuất hiện sóng U khổng lồ (có khi cao hơn cả sóng T, rõ nhất ở V2-V3), làm cho khoảng QT trông có vẻ rất dài (thực chất là khoảng QU).</li>
+                  <li><strong>Hạ Thân Nhiệt (Hypothermia):</strong> Xuất hiện <strong>sóng Osborn (sóng J)</strong>, là một độ lệch dương tại điểm J nhô cao, thường thấy ở các chuyển đạo trước tim, đi kèm nhịp chậm.</li>
+                </ul>
+
+                <div class="para-callout" >
+                  <h4>💡 Lời khuyên cho lâm sàng</h4>
+                  <p>Để làm chủ việc đọc ECG nâng cao, điều quan trọng nhất là không bao giờ bỏ qua các chi tiết nhỏ (như khấc của sóng S, điểm J, hay sự thay đổi kín đáo của hình thái sóng P) và luôn đặt chúng vào bối cảnh lâm sàng của bệnh nhân.</p>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+  <!-- SCRIPT -->
+  <script src="../../../js/sidebar.js"></script>
+</body>
+
+</html>

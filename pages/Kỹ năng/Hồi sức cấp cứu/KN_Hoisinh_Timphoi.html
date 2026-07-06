@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hướng dẫn hồi sinh tim phổi cơ bản (BLS) và nâng cao (ACLS) chuẩn AHA, theo dõi thán đồ EtCO2 và chẩn đoán nguyên nhân 5H-5T.">
+  <title>Hồi Sinh Tim Phổi (CPR & ACLS) - CliniPortal</title>
+
+  <!-- Google Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../css/components/clinical-skill.css">
+
+  <script src="../../../js/main.js" defer></script>
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+  <script src="../../../js/clinical-skill-tabs.js" defer></script>
+
+  <style>
+    :root {
+      --a: #9f1239;
+      --b: #be123c;
+      --c: #fb7185;
+    }
+
+    .ht-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .ht-card {
+      padding: 16px;
+      border-radius: var(--radius-md);
+      background-color: var(--color-surface-offset);
+      border: 1px solid var(--color-divider);
+    }
+
+    .ht-card h3 {
+      color: var(--a);
+      font-size: var(--text-md);
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 10px;
+      border-bottom: 1px dashed var(--color-divider);
+      padding-bottom: 6px;
+    }
+
+    @media (max-width: 768px) {
+      .ht-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+        <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../ky-nang.html" class="nav-item active" aria-current="page" title="Kỹ năng">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN WRAPPER -->
+    <main class="main-wrapper" id="mainContent">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠 Home</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="../ky-nang.html" class="breadcrumb-link">Kỹ năng lâm sàng</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Hồi sinh tim phổi (CPR & ACLS)</li>
+        </ol>
+      </nav>
+
+      <!-- HERO SECTION -->
+      <section class="hero">
+        <h1>Hồi Sinh Tim Phổi Cơ Bản & Nâng Cao (CPR & ACLS)</h1>
+        <p>Quy trình hồi sức tim phổi chất lượng cao theo chuẩn hiệp hội tim mạch thế giới (AHA), phân cấp xử trí loạn nhịp ngưng tim và tìm kiếm nguyên nhân đảo ngược 5H-5T.</p>
+        <div class="quick">
+          <div class="qi">
+            <b>BLS (CPR Cơ bản)</b>
+            Tần số 100-120 l/p, độ sâu <span class="critical-val">5-6 cm, nhả ngực hoàn toàn, tỷ lệ 30:2.
+          </div>
+          <div class="qi">
+            <b>ACLS (Hồi sức nâng cao)</b>
+            Sốc điện sớm (VF/pVT), dùng <span class="drug-name">Adrenaline, <span class="drug-name">Amiodarone và theo dõi thán đồ.
+          </div>
+          <div class="qi">
+            <b>Mục Tiêu Sinh Lý</b>
+            Duy trì Áp lực tưới máu mạch vành (CPP) và bảo vệ tế bào não.
+          </div>
+        </div>
+      </section>
+
+      <!-- TABS SWITCHER -->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="core">Sinh lý Tuần hoàn</button>
+        <button class="tab-btn" data-tab="bls">Hồi sức Cơ bản (BLS)</button>
+        <button class="tab-btn" data-tab="acls">Hồi sức Nâng cao (ACLS)</button>
+        <button class="tab-btn" data-tab="monitoring">Đường thở & Theo dõi</button>
+        <button class="tab-btn" data-tab="reversible">Nguyên nhân 5H-5T</button>
+        <button class="tab-btn" data-tab="post-cpr">Sau ngưng tim</button>
+      </div>
+
+      <!-- TAB 1: CORE -->
+      <section class="tab active" id="core">
+        <div class="card">
+          <h2>1. Cơ sở sinh lý bệnh của ngưng tuần hoàn và mục tiêu hồi sức</h2>
+          <p>Ngưng tuần hoàn làm mất ngay lập tức dòng máu tưới não. Tế bào não sẽ hoại tử không phục hồi chỉ sau <strong>4-5 phút</strong>. Quá trình ngưng tim diễn tiến qua 3 pha quyết định đến hiệu quả can thiệp:</p>
+          <ul>
+            <li><strong>Pha điện học (0 - 4 phút đầu):</strong> Cơ tim còn năng lượng dự trữ (ATP). Sốc điện (khử rung) ngay lập tức đạt tỷ lệ thành công cao nhất.</li>
+            <li><strong>Pha tuần hoàn (4 - 10 phút):</strong> Năng lượng cạn kiệt, acid lactic tích tụ. Sốc điện đơn thuần thường thất bại. Ép tim chất lượng cao là bắt buộc để tạo ra <span class="term-hl">Áp lực tưới máu vành (Coronary Perfusion Pressure - <span class="term-hl">CPP</span>)</span> trong thì tâm trương. Mọi gián đoạn ép tim làm <span class="term-hl">CPP</span> sụp đổ về 0.</li>
+            <li><strong>Pha chuyển hóa (sau 10 phút):</strong> Tổn thương màng lan rộng, giải phóng cytokine viêm gây chết tế bào. Cần can thiệp chuyên sâu (kiểm soát thân nhiệt, hỗ trợ tuần hoàn ngoài cơ thể - ECPR).</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB 2: BLS -->
+      <section class="tab" id="bls">
+        <div class="grid2">
+          <div class="card">
+            <h2>2. Hồi sinh tim phổi cơ bản (BLS) - Chuỗi sự sống</h2>
+            <h3>2.1 Nhận diện ngưng tuần hoàn</h3>
+            <p>Xác định nhanh trong <strong>&le; <span class="critical-val">10 giây</span></strong> qua 3 dấu hiệu: Bất tỉnh, ngưng thở (hoặc thở ngáp), và không bắt được mạch lớn (mạch cảnh/mạch bẹn). Nếu không chắc chắn bắt được mạch, tiến hành <span class="term-hl">CPR</span> ngay.</p>
+            
+            <h3>2.2 Kỹ thuật ép tim chất lượng cao (C - Circulation)</h3>
+            <ul>
+              <li><strong>Tư thế:</strong> Đặt gót bàn tay ở 1/2 dưới xương ức (giữa ngực), thẳng cánh tay, dùng trọng lượng cơ thể ép thẳng góc xuống.</li>
+              <li><strong>Độ sâu & Tần số:</strong> Ép sâu <strong><span class="critical-val">5 - 6 cm</span></strong> với tần số <strong><span class="critical-val">100 - 120 lần/phút</span></strong>.</li>
+              <li><strong>Nhả ngực hoàn toàn (Recoil):</strong> Để lồng ngực phồng lên hết cỡ sau mỗi lần ép nhằm giúp máu tĩnh mạch hồi lưu về tim. Không tỳ tay lên ngực.</li>
+              <li><strong>Hạn chế gián đoạn:</strong> Đổi người ép tim mỗi 2 phút để duy trì lực. Thời gian gián đoạn &lt; <span class="critical-val">10 giây</span>.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h2>2.3 Kiểm soát đường thở & Thông khí (A - Airway & B - Breathing)</h2>
+            <ul>
+              <li>Khai thông đường thở bằng <strong>Ngửa đầu - nâng cằm</strong> (nếu không chấn thương cổ) hoặc <strong>Ấn hàm</strong> (nếu nghi ngờ chấn thương cột sống cổ).</li>
+              <li>Tỷ lệ ép tim : thổi ngạt ở người lớn là <strong>30:2</strong>.</li>
+              <li>Mỗi hơi thổi ngạt trong <strong>1 giây</strong>, chỉ vừa đủ làm ngực nhô lên. Tránh thổi ngạt quá nhanh/quá mạnh vì tăng áp lực lồng ngực làm cản trở hồi lưu tĩnh mạch về tim.</li>
+              <li>Nếu không thể thổi ngạt, thực hiện <strong>ép tim liên tục không nghỉ (Hands-only <span class="term-hl">CPR</span>)</strong>.</li>
+            </ul>
+
+            <h3 style="margin-top: 15px;">2.4 Khử rung sớm bằng máy AED</h3>
+            <p>Dán pad <span class="term-hl">AED</span> dưới xương đòn phải và dưới nách trái ngay khi có máy. Cho máy phân tích nhịp tim (yêu cầu mọi người tránh xa). Nhấn nút shock nếu có chỉ định, và lập tức tiếp tục ép tim ngay sau đó trong 2 phút trước khi phân tích lại.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: ACLS -->
+      <section class="tab" id="acls">
+        <div class="card">
+          <h2>3. Hồi sinh tim phổi nâng cao (ACLS) - Phác đồ phân nhánh</h2>
+          <p>Duy trì <span class="term-hl">BLS</span> liên tục, đặt đường truyền tĩnh mạch/xương (IV/IO), thiết lập monitor điện tâm đồ và phân nhánh xử trí:</p>
+        </div>
+
+        <div class="ht-grid">
+          <div class="ht-card">
+            <h3>Nhánh Sốc điện được (Rung thất - VF / Nhịp nhanh thất vô mạch - pVT)</h3>
+            <ul>
+              <li><strong>Khử rung tim (Sốc điện):</strong> Can thiệp hàng đầu. Máy 2 pha (Biphasic) dùng <strong>120-200J</strong>; máy 1 pha (Monophasic) dùng <strong>360J</strong>. Sốc 1 lần rồi lập tức ép tim tiếp trong 2 phút (không kiểm tra mạch ngay).</li>
+              <li><strong>Sử dụng thuốc:</strong>
+                <ul>
+                  <li><em><span class="drug-name">Adrenaline</span> (<span class="drug-name">Epinephrine</span>):</em> Tiêm <strong>1mg IV/IO mỗi 3-5 phút</strong>. Chỉ bắt đầu dùng <em>sau lần sốc điện đầu tiên thất bại</em> (để tránh co thạch mạch quá mức trong pha điện học).</li>
+                  <li><em><span class="drug-name">Amiodarone</span>:</em> Chỉ định khi <span class="term-hl">VF</span>/<span class="term-hl">pVT</span> trơ sau lần sốc thứ 3. Liều đầu <strong>300mg IV</strong>, liều thứ hai <strong>150mg</strong>. (Có thể thay thế bằng <em><span class="drug-name">Lidocaine</span></em> 1-1.5 mg/kg).</li>
+                </ul>
+              </li>
+              <li><strong>Rung thất kháng trị (Refractory <span class="term-hl">VF</span>):</strong> Sử dụng kỹ thuật Khử rung tuần tự kép (DSED - dùng 2 máy phóng điện đồng thời) hoặc Đổi Vector hướng pad dán (trước-sau) nếu <span class="term-hl">VF</span> dai dẳng sau 3 lần sốc điện thông thường.</li>
+            </ul>
+          </div>
+
+          <div class="ht-card">
+            <h3>Nhánh Không sốc điện (Vô tâm thu - Asystole / Hoạt động điện vô mạch - PEA)</h3>
+            <ul>
+              <li><strong>Không có chỉ định sốc điện:</strong> Sốc điện lúc này làm tổn thương thêm cơ tim mất động lực.</li>
+              <li><strong>Sử dụng thuốc:</strong> Tiêm <strong><span class="drug-name">Adrenaline</span> 1mg IV/IO càng sớm càng tốt</strong> ngay khi thiết lập đường truyền. Lặp lại mỗi 3-5 phút.</li>
+              <li><strong>Tập trung tìm nguyên nhân gốc rễ:</strong> Khả năng cứu sống nhóm này hoàn toàn phụ thuộc vào việc tìm và đảo ngược nguyên nhân gây ngừng tim thông qua <strong>quy tắc 5H-5T</strong>.</li>
+              <li>Ép tim liên tục, bóp bóng qua mask và kiểm tra mạch/nhịp tim mỗi 2 phút.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: MONITORING -->
+      <section class="tab" id="monitoring">
+        <div class="grid2">
+          <div class="card">
+            <h2>4. Kiểm soát đường thở nâng cao & Thán đồ EtCO2</h2>
+            <ul>
+              <li><strong>Đường thở nâng cao:</strong> Đặt nội khí quản (<span class="term-hl">ETI</span>) hoặc dụng cụ trên thanh môn (<span class="term-hl">SGA</span> như <span class="term-hl">LMA</span>, iGel). Thao tác đặt ống không được làm ngắt quãng ép tim. Khi đã đặt ống, thông khí độc lập với ép tim: bóp bóng <strong>10 lần/phút (1 nhịp mỗi 6 giây)</strong>, ép tim liên tục không dừng.</li>
+              <li><strong>Thán đồ sóng (Waveform Capnography - EtCO2):</strong> Tiêu chuẩn vàng theo dõi hồi sức:
+                <ol>
+                  <li><em>Xác định vị trí ống:</em> Đường cong thán đồ chuẩn xác nhận ống nằm đúng trong khí quản (độ nhạy 100%).</li>
+                  <li><em>Đánh giá chất lượng <span class="term-hl">CPR</span>:</em> Duy trì <strong>EtCO2 &gt; 20 mmHg</strong> là mục tiêu ép tim hiệu quả. Nếu EtCO2 &lt; 10 mmHg, chứng tỏ lực ép không đủ sâu, tần số chưa chuẩn hoặc mỏi cơ, cần đổi người/chỉnh kỹ thuật ngay.</li>
+                  <li><em>Nhận diện <span class="term-hl">ROSC</span> (Tuần hoàn trở lại):</em> EtCO2 tăng vọt đột ngột và duy trì ổn định (thường <strong>&gt; 40 mmHg</strong>) là dấu hiệu sớm nhất của <span class="term-hl">ROSC</span>, xuất hiện trước khi bắt được mạch quay/mạch cảnh.</li>
+                </ol>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h2>Ứng dụng siêu âm tại giường (POCUS) trong ACLS</h2>
+            <p>Siêu âm tim tập trung giúp phát hiện nhanh các nguyên nhân có thể điều trị lập tức:</p>
+            <ul>
+              <li>Tìm dịch màng ngoài tim gây chèn ép tim cấp.</li>
+              <li>Khảo sát kích thước thất phải (giãn to nghi thuyên tắc phổi lớn).</li>
+              <li>Kiểm tra chuyển động trượt màng phổi loại trừ tràn khí màng phổi áp lực.</li>
+            </ul>
+            <div class="clinical-warning" style="margin-top: 15px;">
+              <h4>⚠️ Lưu ý an toàn khi làm siêu âm</h4>
+              <p>Chỉ được phép đặt đầu dò siêu âm quét trong thời gian <strong>cửa sổ &lt; <span class="critical-val">10 giây</span> khi kiểm tra mạch</strong>. Tuyệt đối không được dừng ép tim hoặc kéo dài thời gian ngừng ép tim chỉ để thực hiện siêu âm.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: REVERSIBLE -->
+      <section class="tab" id="reversible">
+        <div class="card">
+          <h2>5. Tìm kiếm & Điều trị các nguyên nhân có thể đảo ngược (5H - 5T)</h2>
+          <p>Trong quá trình <span class="term-hl">CPR</span>, bác sĩ phải liên tục rà soát 10 nguyên nhân sau để can thiệp đặc hiệu:</p>
+        </div>
+
+        <div class="ht-grid">
+          <div class="ht-card">
+            <h3>Năm nhóm "H" (Nội môi & Thể tích)</h3>
+            <ul>
+              <li><strong>Hypovolemia (Giảm thể tích tuần hoàn):</strong> Sốc mất máu/mất dịch. Điều trị: truyền nhanh dịch tinh thể ấm, truyền máu khẩn cấp theo phác đồ.</li>
+              <li><strong>Hypoxia (Thiếu oxy):</strong> Suy hô hấp, ngạt thở. Điều trị: cung cấp oxy FiO2 100%, thiết lập đường thở nâng cao.</li>
+              <li><strong>Hydrogen ion (Toan chuyển hóa):</strong> Toan acid nặng. Điều trị: thông khí tối ưu thải CO2, cân nhắc truyền Natri <span class="drug-name">Bicarbonate</span> (nếu toan nặng pH &lt; 7.1 hoặc ngộ độc thuốc chống trầm cảm 3 vòng).</li>
+              <li><strong>Hypo-/Hyperkalemia (Hạ/Tăng Kali máu):</strong> Rối loạn điện giải. Điều trị:
+                <ul>
+                  <li><em>Tăng Kali:</em> tiêm Canxi Clorua/Canxi Gluconate bảo vệ màng cơ tim, truyền Insulin kèm Glucose, kiềm hóa máu.</li>
+                  <li><em>Hạ Kali:</em> bổ sung Kali và Magne sulfat truyền tĩnh mạch.</li>
+                </ul>
+              </li>
+              <li><strong>Hypothermia (Hạ thân nhiệt):</strong> Thân nhiệt &lt; 35°C. Điều trị: làm ấm chủ động (truyền dịch ấm, chăn ấm, sưởi khí thở).</li>
+            </ul>
+          </div>
+
+          <div class="ht-card">
+            <h3>Năm nhóm "T" (Cơ học & Độc chất)</h3>
+            <ul>
+              <li><strong>Tension pneumothorax (Tràn khí áp lực):</strong> Mất âm phế bào, lệch khí quản. Điều trị: chọc kim giải áp khoang liên sườn 2 đường trung đòn, sau đó đặt ống dẫn lưu ngực.</li>
+              <li><strong>Tamponade, cardiac (Chèn ép tim cấp):</strong> Dịch màng tim nhiều gây xẹp thất. Điều trị: chọc hút dịch màng ngoài tim cấp cứu dưới hướng dẫn siêu âm.</li>
+              <li><strong>Toxins (Ngộ độc):</strong> Opioid, thuốc tê, thuốc chẹn beta/canxi. Điều trị: dùng chất giải độc đặc hiệu (<span class="drug-name">Naloxone</span> cho opioid; nhũ tương lipid 20% cho thuốc tan trong mỡ).</li>
+              <li><strong>Thrombosis, pulmonary (Thuyên tắc phổi):</strong> Tắc động mạch phổi lớn. Điều trị: dùng thuốc tiêu sợi huyết (fibrinolytic) hoặc phẫu thuật lấy huyết khối khẩn cấp.</li>
+              <li><strong>Thrombosis, coronary (Nhồi máu cơ tim):</strong> Tắc mạch vành gây ngưng tim đột ngột. Điều trị: can thiệp mạch vành qua da (PCI) khẩn cấp ngay khi có <span class="term-hl">ROSC</span>.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 6: POST-CPR -->
+      <section class="tab" id="post-cpr">
+        <div class="grid2">
+          <div class="card">
+            <h2>6. Chăm sóc sau ngưng tim (Hội chứng sau ngưng tim)</h2>
+            <p>Sau khi có tuần hoàn tự nhiên (<span class="term-hl">ROSC</span>), bệnh nhân đối mặt với tổn thương não thiếu máu cục bộ, choáng cơ tim và đáp ứng viêm hệ thống. Các kỹ năng hồi sức gồm:</p>
+            <ul>
+              <li><strong>Kiểm soát Thân nhiệt Mục tiêu (TTM):</strong> Duy trì nhiệt độ cơ thể ổn định ở mức <strong><span class="critical-val">32°C - 36°C</span> trong ít nhất <span class="normal-val">24 giờ</span></strong> đối với bệnh nhân còn hôn mê sau <span class="term-hl">ROSC</span>. Giúp giảm nhu cầu chuyển hóa não, giảm giải phóng gốc tự do và bảo vệ tế bào thần kinh. Tránh tuyệt đối sốt (&gt; 37.5°C) trong 72 giờ đầu.</li>
+              <li><strong>Hỗ trợ hô hấp:</strong> Duy trì oxy hóa máu SpO2 <strong>94-98%</strong> (tránh thừa oxy quá mức gây tổn thương oxy hóa mô não), cài đặt máy thở đạt đẳng thán PaCO2 <strong>35-45 mmHg</strong>.</li>
+              <li><strong>Hỗ trợ huyết động:</strong> Tránh tụt huyết áp gây thiếu máu não thứ phát. Duy trì huyết áp tâm thu <strong>&gt; 100 mmHg</strong> hoặc áp lực động mạch trung bình MAP <strong>&gt; 65 mmHg</strong> bằng dịch truyền và vận mạch (<span class="drug-name">Norepinephrine</span>).</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h2>Chụp mạch vành & Tiên lượng thần kinh</h2>
+            <ul>
+              <li><strong>Chụp mạch vành cấp cứu:</strong> Chỉ định chụp mạch vành và can thiệp tái thông (PCI) sớm cho bệnh nhân có điện tâm đồ ST chênh lên (STEMI) hoặc nghi ngờ cao do nguyên nhân mạch vành, kể cả khi bệnh nhân còn hôn mê.</li>
+              <li><strong>Tiên lượng thần kinh muộn:</strong> Chỉ thực hiện đánh giá khả năng phục hồi thần kinh của bệnh nhân <strong>sau ít nhất 72 giờ</strong> tính từ thời điểm <span class="term-hl">ROSC</span> (hoặc lâu hơn nếu có dùng TTM hoặc thuốc an thần/giãn cơ). Tránh rút nội khí quản hoặc tiên lượng tử vong quá sớm vì các cơ chế ức chế thần kinh tạm thời chưa hồi phục hoàn toàn.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- FOOTER PLACEHOLDER -->
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+  <!-- Script Sidebar -->
+  <script src="../../../js/sidebar.js"></script>
+</body>
+
+</html>

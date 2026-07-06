@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hướng dẫn kiểm soát đường thở và thông khí, kỹ năng đặt nội khí quản RSI, xử trí khủng hoảng CICO và thở máy bảo vệ phổi ARDS/COPD.">
+  <title>Kiểm Soát Đường Thở & Thông Khí - CliniPortal</title>
+
+  <!-- Google Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../css/components/clinical-skill.css">
+
+  <script src="../../../js/main.js" defer></script>
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+  <script src="../../../js/clinical-skill-tabs.js" defer></script>
+
+  <style>
+    :root {
+      --a: #1d4ed8;
+      --b: #2563eb;
+      --c: #60a5fa;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+        <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../ky-nang.html" class="nav-item active" aria-current="page" title="Kỹ năng">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN WRAPPER -->
+    <main class="main-wrapper" id="mainContent">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠 Home</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="../ky-nang.html" class="breadcrumb-link">Kỹ năng lâm sàng</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Kiểm soát đường thở & thông khí</li>
+        </ol>
+      </nav>
+
+      <!-- HERO SECTION -->
+      <section class="hero">
+        <h1>Kiểm Soát Đường Thở & Thông Khí</h1>
+        <p>Quy trình kiểm soát đường thở từ cơ bản đến nâng cao (RSI), xử lý biến chứng <span class="term-hl">CICO</span> nguy kịch, hỗ trợ thông khí không xâm lấn và thiết lập thông số thở máy bảo vệ phổi.</p>
+        <div class="quick">
+          <div class="qi">
+            <b>Đường thở (Airway)</b>
+            OPA, NPA, SGA, Đặt nội khí quản RSI, Mở màng nhẫn giáp eFONA.
+          </div>
+          <div class="qi">
+            <b>Oxy & Không xâm lấn</b>
+            SpO2 mục tiêu, HFNC (ROX index), NIV (BiPAP/CPAP, HACOR).
+          </div>
+          <div class="qi">
+            <b>Thở máy bảo vệ phổi</b>
+            ARDS: Vt 4-8 ml/kg PBW, Pplat &lt; 30, Driving Pressure &le; 15.
+          </div>
+        </div>
+      </section>
+
+      <!-- TABS SWITCHER -->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="core">Đánh giá ban đầu</button>
+        <button class="tab-btn" data-tab="basic">Đường thở Cơ bản</button>
+        <button class="tab-btn" data-tab="rsi-cico">RSI & Cấp cứu CICO</button>
+        <button class="tab-btn" data-tab="non-invasive">Oxy & NIV</button>
+        <button class="tab-btn" data-tab="ventilation">Thở máy Xâm lấn</button>
+        <button class="tab-btn" data-tab="trauma">Chấn thương ngực</button>
+      </div>
+
+      <!-- TAB 1: CORE -->
+      <section class="tab active" id="core">
+        <div class="card">
+          <h2>1. Cơ sở sinh lý bệnh & Đánh giá đường thở ban đầu</h2>
+          <ul>
+            <li><strong>Mối đe dọa sinh lý:</strong> Đường thở trên là một cấu trúc động làm từ mô mềm. Khi bệnh nhân bất tỉnh, mất trương lực cơ hầu họng sẽ làm lưỡi tụt ra sau và nắp thanh quản che lấp hoàn toàn lối vào khí quản, gây ngạt thở cấp tính.</li>
+            <li><strong>Kỹ năng đánh giá nhanh (Nhìn - Nghe - Cảm nhận):</strong>
+              <ul>
+                <li><em>Nhìn:</em> Sự di động của lồng ngực, các dấu hiệu co kéo cơ hô hấp phụ, phập phồng cánh mũi, hoặc tím tái.</li>
+                <li><em>Nghe:</em> Âm thở bất thường như <strong>thở rít (stridor)</strong> gợi ý hẹp đường thở trên; <strong>khò khè</strong> gợi ý co thắt phế quản; <strong>tiếng ngáy (snoring)</strong> do tụt lưỡi.</li>
+                <li><em>Cảm nhận:</em> Luồng khí thở ra từ mũi/miệng bệnh nhân.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB 2: BASIC -->
+      <section class="tab" id="basic">
+        <div class="grid2">
+          <div class="card">
+            <h2>2. Thủ thuật bằng tay & Dụng cụ hỗ trợ đường thở cơ bản</h2>
+            <ul>
+              <li><strong>Ngửa đầu - nâng cằm (Head-tilt chin-lift):</strong> Kéo khối cơ lưỡi ra phía trước, mở rộng hầu họng. Chỉ dùng khi không nghi ngờ chấn thương cột sống cổ.</li>
+              <li><strong>Ấn hàm / Nâng hàm (Jaw-thrust):</strong> Nâng xương hàm dưới ra trước mà không làm di lệch cột sống cổ. Bắt buộc áp dụng trong đa chấn thương.</li>
+              <li><strong>Xử trí dị vật đường thở (Heimlich):</strong>
+                <ul>
+                  <li><em>Còn tỉnh:</em> Khuyến khích ho. Nếu ho yếu/tắc nghẽn hoàn toàn, thực hiện luân phiên <strong>5 vỗ lưng và 5 ấn bụng</strong> (nghiệm pháp Heimlich).</li>
+                  <li><em>Bất tỉnh:</em> Bắt đầu ép tim <span class="term-hl">CPR</span> ngay, kiểm tra khoang miệng trước mỗi lần thổi ngạt và chỉ lấy dị vật khi nhìn thấy rõ (không móc mù bằng tay).</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h2>Dụng cụ hỗ trợ đường thở cơ bản</h2>
+            <ul>
+              <li><strong>Canuyn miệng hầu (<span class="term-hl">OPA</span> / Guedel / Mayo):</strong>
+                <p>Giúp đè giữ lưỡi không tụt ra sau. Chỉ chỉ định ở bệnh nhân <strong>bất tỉnh hoàn toàn mất phản xạ nôn</strong>. Nếu còn phản xạ, đặt <span class="term-hl">OPA</span> sẽ kích thích gây nôn ói và hít sặc.</p>
+              </li>
+              <li><strong>Canuyn mũi hầu (<span class="term-hl">NPA</span>):</strong>
+                <p>Luồn qua mũi vào hầu họng. Dùng được cho bệnh nhân bán mê, còn phản xạ nôn. <strong>Chống chỉ định tuyệt đối</strong> khi nghi ngờ có chấn thương vỡ nền sọ (do nguy cơ ống đi chệch hướng vào nội sọ qua xương sàng).</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: RSI-CICO -->
+      <section class="tab" id="rsi-cico">
+        <div class="card">
+          <h2>3. Đặt nội khí quản nâng cao & RSI</h2>
+          <p>Khi bệnh nhân mất phản xạ bảo vệ đường thở hoặc suy hô hấp nặng không đáp ứng thông khí không xâm lấn, cần tiến hành đặt ống nội khí quản.</p>
+        </div>
+
+        <div class="grid2">
+          <div class="card">
+            <h2>Khởi mê Trình tự Nhanh (RSI - Rapid Sequence Induction)</h2>
+            <p>Kỹ thuật tiêm đồng thời thuốc mê và thuốc giãn cơ cực nhanh nhằm ức chế phản xạ và đặt ống trong vòng &lt; 60 giây, giảm thiểu nguy cơ trào ngược dạ dày:</p>
+            <ul>
+              <li><strong>Thuốc mê:</strong> <em><span class="drug-name">Propofol</span></em> (nguy cơ tụt HA), <em><span class="drug-name">Etomidate</span></em> (ít ảnh hưởng huyết động), hoặc <em><span class="drug-name">Ketamine</span></em> (ưu tiên trong hen phế quản hoặc sốc do duy trì giao cảm).</li>
+              <li><strong>Thuốc giãn cơ:</strong> <em><span class="drug-name">Succinylcholine</span></em> (giãn cơ khử cực cực nhanh, chống chỉ định khi tăng kali máu hoặc bỏng) hoặc <em><span class="drug-name">Rocuronium</span></em> (không khử cực, tác dụng kéo dài).</li>
+              <li><strong>NODESAT (Oxy hóa dòng khối):</strong> Ở bệnh nhân béo phì hoặc sốc, thời gian ngưng thở an toàn rất ngắn. Cần tiền oxy hóa 100% trong 3-5 phút trước đặt ống và duy trì <strong>oxy lưu lượng cao qua cannula mũi (15 L/phút)</strong> liên tục trong suốt quá trình đặt ống để làm chậm tốc độ tụt SpO2.</li>
+              <li><strong>Video Laryngoscopy:</strong> Đèn soi thanh quản có camera được khuyến cáo ưu tiên sử dụng để tăng tỷ lệ đặt ống thành công ngay từ lần đầu.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h2>Khủng hoảng CICO (Không đặt ống được, Không thông khí được)</h2>
+            <p>Khi thất bại ở cả 3 bước: Đặt ống nội khí quản (Plan A) &rarr; Đặt mặt nạ thanh quản <span class="term-hl">LMA</span> (Plan B) &rarr; Bóp bóng qua mask (Plan C). Bệnh nhân đối mặt với tử vong do ngạt thở cấp.</p>
+            <div class="clinical-warning">
+              <h4>🚨 Kích hoạt ngay Plan D: Mở đường thở cấp cứu qua cổ (eFONA)</h4>
+              <p>Thực hiện ngay kỹ thuật <strong>Dao - Bougie - Ống (Scalpel-Bougie-Tube)</strong>:</p>
+              <ol>
+                <li>Dùng dao rạch ngang màng nhẫn giáp ở mặt trước cổ.</li>
+                <li>Xoay lưỡi dao 90 độ để mở rộng khoang.</li>
+                <li>Luồn đầu Bougie trượt vào khí quản.</li>
+                <li>Trượt ống nội khí quản (cỡ nhỏ 6.0) qua Bougie vào sâu trong khí quản và bơm bóng chèn cố định ống.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-wrap" style="margin-top: 15px;">
+          <table class="cmp">
+            <thead>
+              <tr>
+                <th>Bảng kiểm Tiên lượng</th>
+                <th>Tên quy tắc</th>
+                <th>Các yếu tố đánh giá lâm sàng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Đặt nội khí quản khó</strong></td>
+                <td><strong>L-E-M-O-N</strong></td>
+                <td>Look externally (Nhìn ngoài); Evaluate 3-3-2 (Đo khoảng cách hàm/cổ); Mallampati score; Obstruction (Tắc nghẽn hầu họng); Neck mobility (Vận động cổ kém).</td>
+              </tr>
+              <tr>
+                <td><strong>Bóp bóng qua mask khó</strong></td>
+                <td><strong>M-O-A-N-S</strong></td>
+                <td>Mask seal (Râu quai nón); Obesity/Obstruction; Age &gt; 55; No teeth (Mất răng); Stiff lungs (Phổi cứng/tăng sức cản).</td>
+              </tr>
+              <tr>
+                <td><strong>Đặt mask thanh môn khó</strong></td>
+                <td><strong>R-O-D-S</strong></td>
+                <td>Restriction (Giới hạn há miệng); Obstruction; Disruption/Distortion (Biến dạng giải phẫu hầu họng); Stiff lungs.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB 4: NON-INVASIVE -->
+      <section class="tab" id="non-invasive">
+        <div class="grid2">
+          <div class="card">
+            <h2>4. Liệu pháp hỗ trợ Oxy dòng cao & Thông khí không xâm lấn (NIV)</h2>
+            <h3>4.1 Oxy dòng cao qua gọng mũi (HFNC)</h3>
+            <p>Cung cấp dòng khí oxy ấm và ẩm lên đến <strong>60 L/phút</strong> với FiO2 từ 21-100%:</p>
+            <ul>
+              <li><strong>Cơ chế sinh lý:</strong> Rửa sạch CO2 khoảng chết giải phẫu, cung cấp FiO2 chính xác, tạo áp lực dương cuối kỳ thở ra <span class="term-hl">PEEP</span> nhẹ (3-5 cmH2O) giúp phế nang không bị xẹp, làm ẩm đàm nhớt và giảm đáng kể công hô hấp.</li>
+              <li><strong>Chỉ số ROX (SpO2/FiO2 / Tần số thở):</strong> Đánh giá đáp ứng. Chỉ số <strong>ROX &lt; 3.85</strong> sau 12 giờ thở <span class="term-hl">HFNC</span> báo hiệu nguy cơ thất bại cao, cần đặt nội khí quản sớm tránh trì hoãn.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h2>4.2 Thông khí nhân tạo không xâm lấn (NIV / NPPV)</h2>
+            <p>Sử dụng mặt nạ (mask) kín kết nối với máy thở chế độ <span class="term-hl">CPAP</span> hoặc <span class="term-hl">BiPAP</span> (hai mức áp lực):</p>
+            <ul>
+              <li><strong>Chỉ định tốt nhất:</strong>
+                <ul>
+                  <li><em>Phù phổi cấp huyết động:</em> Áp lực dương ép dịch ra khỏi phế nang, đồng thời làm giảm tiền tải và hậu tải thất trái giúp cải thiện suy tim nhanh chóng.</li>
+                  <li><em>Đợt cấp <span class="term-hl">COPD</span> kèm toan hô hấp:</em> Giúp đào thải khí CO2 ứ đọng, giảm mỏi cơ hô hấp.</li>
+                </ul>
+              </li>
+              <li><strong>Chỉ số HACOR:</strong> Đánh giá thất bại <span class="term-hl">NIV</span> dựa trên nhịp tim, toan kiềm pH, tri giác, SpO2/FiO2 và tần số thở. <strong>HACOR &gt; 5 điểm</strong> sau 1-2 giờ thở <span class="term-hl">NIV</span> dự báo thất bại cao, cần chủ động đặt nội khí quản.</li>
+              <li><strong>Chống chỉ định:</strong> Rối loạn tri giác (trừ hôn mê tăng CO2 ở <span class="term-hl">COPD</span>), sốc không ổn định, nguy cơ hít sặc cao hoặc chấn thương hàm mặt.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: VENTILATION -->
+      <section class="tab" id="ventilation">
+        <div class="grid2">
+          <div class="card">
+            <h2>5. Thở máy xâm lấn & Chiến lược bảo vệ phổi</h2>
+            <p>Tránh biến chứng <strong>Tổn thương phổi do thở máy (<span class="term-hl">VILI</span>)</strong> ở bệnh nhân nặng:</p>
+            <ul>
+              <li><strong>Thông khí bảo vệ phổi (<span class="term-hl">ARDS</span>):</strong>
+                <ul>
+                  <li>Cài đặt thể tích khí lưu thông thấp <strong>Vt = 4 - 8 ml/kg PBW</strong> (cân nặng dự đoán theo chiều cao, không dùng cân nặng thực tế) để tránh căng giãn phế nang quá mức (volutrauma).</li>
+                  <li>Duy trì áp lực bình nguyên <strong>Pplat &lt; 30 cmH2O</strong> nhằm bảo vệ phế nang không bị tổn thương do áp lực (barotrauma).</li>
+                  <li>Tính toán <strong>Áp lực đẩy (Driving Pressure = Pplat - <span class="term-hl">PEEP</span>)</strong> và duy trì <strong>&le; 15 cmH2O</strong> để hạn chế lực xé mô phổi.</li>
+                </ul>
+              </li>
+              <li><strong>Cài đặt <span class="term-hl">PEEP</span> hợp lý:</strong> Giúp mở và giữ phế nang thông thoáng, tránh hiện tượng xẹp - mở phế nang liên tục (atelectrauma). Tuy nhiên, <span class="term-hl">PEEP</span> quá cao gây cản trở máu về tim phải và làm tụt huyết áp.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h2>Xử trí Auto-PEEP ở bệnh nhân Hen / COPD</h2>
+            <div class="clinical-warning">
+              <h4>⚠️ Bẫy khí phế nang (Auto-PEEP)</h4>
+              <p>Ở bệnh nhân co thắt phế quản nặng, thì thở ra bị cản trở làm khí bị kẹt lại trong phổi, tạo ra áp lực dương nội sinh (Auto-<span class="term-hl">PEEP</span>) gây mỏi cơ hô hấp và ép tim phải làm tụt huyết áp nặng.</p>
+            </div>
+            <ul>
+              <li><strong>Chiến lược cài đặt máy thở:</strong>
+                <ol>
+                  <li>Giảm tần số thở (RR &le; 10-12 lần/phút) để kéo dài thì thở ra.</li>
+                  <li>Tăng tốc độ dòng đỉnh hít vào (Inspirational Flow &ge; 60-80 L/phút) nhằm kết thúc thì hít vào sớm hơn.</li>
+                  <li>Cài đặt tỷ lệ hít vào/thở ra <strong>I:E kéo dài từ 1:3 đến 1:4</strong>.</li>
+                  <li>Chấp nhận <strong>Tăng CO2 máu cho phép (Permissive Hypercapnia)</strong> miễn là duy trì pH máu &ge; 7.20.</li>
+                </ol>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 6: TRAUMA -->
+      <section class="tab" id="trauma">
+        <div class="grid2">
+          <div class="card">
+            <h2>6. Cấp cứu Chấn thương lồng ngực đe dọa tính mạng</h2>
+            <h3>6.1 Tràn khí màng phổi áp lực (Tension Pneumothorax)</h3>
+            <p>Cơ chế van một chiều làm khí tích tụ liên tục trong khoang màng phổi, ép xẹp phổi hoàn toàn, đẩy lệch trung thất làm gập góc tĩnh mạch chủ dưới, dẫn đến ngưng tuần hoàn cực nhanh:</p>
+            <ul>
+              <li><strong>Dấu hiệu lâm sàng:</strong> Suy hô hấp dữ dội, tụt huyết áp, tĩnh mạch cổ nổi JVP tăng, mất âm phế bào một bên, khí quản lệch sang bên đối diện.</li>
+              <li><strong>Xử trí cấp cứu lập tức:</strong> Tiến hành <strong>chọc kim giải áp ngay</strong> bằng kim luồn lớn (14G-16G) ở khoang liên sườn 2 đường trung đòn trước (hoặc KLS 4-5 đường nách giữa). Tuyệt đối không chờ chụp X-quang nếu đã có triệu chứng lâm sàng rõ ràng. Sau giải áp bằng kim, đặt ngay ống dẫn lưu ngực liên tục.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h2>6.2 Vết thương ngực hở (Sucking Chest Wound)</h2>
+            <p>Có sự thông thương trực tiếp từ môi trường vào khoang màng phổi qua thành ngực:</p>
+            <ul>
+              <li><strong>Cơ chế bệnh sinh:</strong> Mỗi thì hít vào, không khí đi trực tiếp vào khoang màng phổi thay vì đi vào phổi qua khí quản, gây xẹp phổi nhanh.</li>
+              <li><strong>Xử trí cấp cứu:</strong> Tiến hành băng kín vết thương thành ngực bằng <strong>miếng dán/băng gạc 3 góc (Three-sided dressing)</strong>. Thiết kế này tạo cơ chế van một chiều: khí có thể thoát ra ngoài khoang màng phổi khi thở ra, nhưng gạc sẽ bị hút ép chặt vào da ngăn khí đi vào lồng ngực khi hít vào.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- FOOTER PLACEHOLDER -->
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+  <!-- Script Sidebar -->
+  <script src="../../../js/sidebar.js"></script>
+</body>
+
+</html>

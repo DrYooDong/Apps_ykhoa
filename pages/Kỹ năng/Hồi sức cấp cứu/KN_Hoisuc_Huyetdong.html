@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hướng dẫn hồi sức huyết động, đánh giá đáp ứng dịch qua PPV/SVV/PLR, sử dụng thuốc vận mạch Norepinephrine và Dobutamine, phác đồ chống sốc đặc hiệu.">
+  <title>Hồi Sức Huyết Động & Chống Sốc - CliniPortal</title>
+
+  <!-- Google Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../css/components/clinical-skill.css">
+
+  <script src="../../../js/main.js" defer></script>
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+  <script src="../../../js/clinical-skill-tabs.js" defer></script>
+
+  <style>
+    :root {
+      --a: #b45309;
+      --b: #d97706;
+      --c: #fbbf24;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+        <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../ky-nang.html" class="nav-item active" aria-current="page" title="Kỹ năng">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN WRAPPER -->
+    <main class="main-wrapper" id="mainContent">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠 Home</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="../ky-nang.html" class="breadcrumb-link">Kỹ năng lâm sàng</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Hồi sức huyết động & chống sốc</li>
+        </ol>
+      </nav>
+
+      <!-- HERO SECTION -->
+      <section class="hero">
+        <h1>Hồi Sức Huyết Động & Xử Trí Chống Sốc</h1>
+        <p>Quy trình đánh giá tưới máu vi tuần hoàn, theo dõi huyết động động học bằng nghiệm pháp <span class="term-hl">PLR</span>, chỉ định liệu pháp dịch truyền 4 pha và sử dụng hợp lý các nhóm thuốc vận mạch.</p>
+        <div class="quick">
+          <div class="qi">
+            <b>Cơ chế Sốc</b>
+            Mất cân bằng giữa Cung cấp oxy (DO2) và Tiêu thụ oxy (VO2) ở tế bào.
+          </div>
+          <div class="qi">
+            <b>Theo dõi Huyết động</b>
+            CRT, Động học Lactate, ScvO2, PPV/SVV, PLR và siêu âm RUSH.
+          </div>
+          <div class="qi">
+            <b>Vận mạch & Co cơ tim</b>
+            <span class="drug-name">Norepinephrine (lựa chọn 1), <span class="drug-name">Epinephrine, <span class="drug-name">Vasopressin, <span class="drug-name">Dobutamine.
+          </div>
+        </div>
+      </section>
+
+      <!-- TABS SWITCHER -->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="core">Cơ chế Sốc</button>
+        <button class="tab-btn" data-tab="monitoring">Đánh giá Huyết động</button>
+        <button class="tab-btn" data-tab="fluids">Hồi sức Dịch</button>
+        <button class="tab-btn" data-tab="vasopressors">Vận mạch & Co bóp</button>
+        <button class="tab-btn" data-tab="specific">Chống sốc Đặc hiệu</button>
+      </div>
+
+      <!-- TAB 1: CORE -->
+      <section class="tab active" id="core">
+        <div class="card">
+          <h2>1. Cơ sở sinh lý bệnh của huyết động và hội chứng sốc</h2>
+          <ul>
+            <li><strong>Bản chất cốt lõi:</strong> Sốc không đơn thuần là tụt huyết áp. Sốc là tình trạng suy sụp tuần hoàn gây mất cân bằng giữa cung cấp oxy tế bào (<span class="term-hl">DO2</span>) và tiêu thụ oxy (<span class="term-hl">VO2</span>), dẫn đến thiếu oxy mô, chuyển hóa yếm khí, toan lactic và suy đa cơ quan.</li>
+            <li><strong>Phân loại 4 nhóm sốc chính:</strong>
+              <ol>
+                <li><strong>Sốc giảm thể tích (Hypovolemic):</strong> Mất máu hoặc mất nước làm giảm thể tích tuần hoàn hiệu dụng (giảm tiền tải).</li>
+                <li><strong>Sốc tim (Cardiogenic):</strong> Suy giảm sức co bóp cơ tim cấp, thể tích nhát bóp sụp đổ.</li>
+                <li><strong>Sốc phân bố (Distributive):</strong> Giãn động/tĩnh mạch hệ thống nghiêm trọng, điển hình là sốc nhiễm khuẩn, sốc phản vệ.</li>
+                <li><strong>Sốc tắc nghẽn (Obstructive):</strong> Cản trở cơ học dòng máu về tim (chèn ép tim cấp, tràn khí áp lực) hoặc nghẽn đường ra thất (thuyên tắc phổi lớn).</li>
+              </ol>
+            </li>
+            <li><strong>Sinh lý bệnh mất bù:</strong> Ban đầu, cơ thể bù trừ bằng cách kích hoạt giao cảm giải phóng catecholamine gây co mạch hệ thống để tưới máu cơ quan thiết yếu (não, tim). Khi bù trừ thất bại, toan chuyển hóa nặng sẽ ức chế thụ thể mạch máu, gây giãn mạch trơ, tụt HA không phục hồi.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB 2: MONITORING -->
+      <section class="tab" id="monitoring">
+        <div class="grid2">
+          <div class="card">
+            <h2>2. Kỹ năng theo dõi huyết động đại tuần hoàn và vi tuần hoàn</h2>
+            <ul>
+              <li><strong>Mất đồng bộ huyết động (Hemodynamic Incoherence):</strong> Huyết áp phục hồi ổn định không đồng nghĩa với vi tuần hoàn tại mô đã bình thường. Phải theo dõi các dấu hiệu tưới máu cơ quan đích:
+                <ul>
+                  <li>Thời gian đổ đầy mao mạch <strong>CRT &le; 2 giây</strong>.</li>
+                  <li>Thể tích nước tiểu <strong>&ge; 0.5 ml/kg/giờ</strong>.</li>
+                  <li>Tình trạng tri giác tỉnh táo.</li>
+                </ul>
+              </li>
+              <li><strong>Động học Lactate máu:</strong> Chỉ dấu nhạy phản ánh chuyển hóa yếm khí. Cần theo dõi xu hướng thay đổi (độ thanh thải lactate <strong>&ge; 20% trong 2 giờ đầu</strong> hoặc giảm về <strong>&lt; 2 mmol/L</strong>) để tiên lượng thành công hồi sức.</li>
+              <li><strong>ScvO2 (Độ bão hòa oxy tĩnh mạch trung tâm):</strong> ScvO2 thấp (&lt; 70%) đi kèm lactate cao phản ánh tình trạng tăng tiêu thụ oxy do giảm cung cấp DO2 nghiêm trọng.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h2>Đánh giá đáp ứng dịch bằng các chỉ số động</h2>
+            <div class="clinical-warning">
+              <h4>⚠️ Chống chỉ định dùng chỉ số tĩnh (CVP) đơn độc</h4>
+              <p>Áp lực tĩnh mạch trung tâm (CVP) không phản ánh chính xác khả năng dung nạp dịch của tim. Truyền dịch mù quáng dựa vào CVP dễ gây quá tải dịch mô kẽ.</p>
+            </div>
+            <ul>
+              <li><strong>Biến thiên áp lực mạch (PPV) / Biến thiên thể tích nhát bóp (SVV):</strong> Nếu <strong>PPV hoặc SVV &gt; 12-13%</strong> ở bệnh nhân thở máy hoàn toàn (không có nhịp tự thở, không loạn nhịp), dự báo tim nằm ở phần dốc đường cong Starling và sẽ tăng cung lượng tim khi truyền dịch.</li>
+              <li><strong>Nghiệm pháp nâng chân thụ động (<span class="term-hl">PLR</span>):</strong> Nghiệm pháp "bù dịch nội sinh" bằng cách nâng 2 chân lên 45 độ dồn 300ml máu tĩnh mạch về tim. Nếu cung lượng tim hoặc thể tích nhát bóp tăng <strong>&ge; 10-15%</strong> sau 1-2 phút nâng chân, chứng tỏ có đáp ứng bù dịch.</li>
+              <li><strong>Siêu âm <span class="term-hl">RUSH</span> (Pump - Tank - Pipes):</strong> Đánh giá nhanh sức co bóp cơ tim (Pump), đường kính/độ xẹp tĩnh mạch chủ dưới IVC & tràn dịch màng phổi/bụng (Tank), phình bóc tách ĐMC & huyết khối tĩnh mạch sâu (Pipes).</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: FLUIDS -->
+      <section class="tab" id="fluids">
+        <div class="grid2">
+          <div class="card">
+            <h2>3. Hồi sức dịch truyền và kiểm soát thể tích</h2>
+            <p>Hồi sức dịch phải tuân thủ nghiêm ngặt <strong>nguyên lý 4 pha</strong> để tránh nguy cơ quá tải:</p>
+            <ol>
+              <li><strong>Pha 1: Hồi sức (Resuscitation - R):</strong> Cứu mạng, truyền dịch nhanh xử trí sốc đe dọa tính mạng.</li>
+              <li><strong>Pha 2: Tối ưu hóa (Optimization - O):</strong> Đánh giá cung lượng tim, bù dịch thận trọng dựa trên các chỉ số động học (<span class="term-hl">PLR</span>, PPV).</li>
+              <li><strong>Pha 3: Ổn định (Stabilization - S):</strong> Duy trì tưới máu tạng, ngưng bù dịch tích cực khi sinh hiệu ổn, chỉ truyền duy trì khi mất dịch thật sự.</li>
+              <li><strong>Pha 4: Rút dịch (De-escalation - D):</strong> Tháo dịch, dùng lợi tiểu hoặc lọc máu siêu lọc để rút bớt dịch thừa ra khỏi cơ thể khi đã qua giai đoạn nguy kịch.</li>
+            </ol>
+          </div>
+
+          <div class="card">
+            <h2>Dịch truyền & Nguy cơ Quá tải dịch</h2>
+            <ul>
+              <li><strong>Kỹ thuật Fluid Challenge:</strong> Truyền nhanh 300-500 ml dịch tinh thể đẳng trương trong 10-15 phút.</li>
+              <li><strong>Ưu tiên dịch tinh thể cân bằng:</strong> Sử dụng các dung dịch cân bằng (Ringer Lactate, Acetate) giúp hạn chế nguy cơ toan chuyển hóa tăng clo máu so với dùng Nước muối sinh lý 0.9% truyền khối lượng lớn.</li>
+              <li><strong>Mối nguy quá tải dịch:</strong> Khoảng <strong>75%</strong> thể tích dịch tinh thể truyền vào lòng mạch sẽ thoát ra ngoài mô kẽ sau 1 giờ. Quá tải dịch gây phù mô kẽ kẽ tạng, làm tăng khoảng cách khuếch tán oxy từ mao mạch vào tế bào, dẫn đến suy hô hấp, phù ruột và suy đa tạng.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: VASOPRESSORS -->
+      <section class="tab" id="vasopressors">
+        <div class="card">
+          <h2>4. Kỹ năng sử dụng thuốc vận mạch và tăng co bóp cơ tim</h2>
+          <p>Chỉ định khi huyết áp trung bình <strong><span class="critical-val">MAP &lt; 65 mmHg</span></strong> dù đã bù đủ dịch hoặc khi tụt huyết áp nặng đe dọa tính mạng (giãn mạch trầm trọng):</p>
+        </div>
+
+        <div class="table-wrap">
+          <table class="cmp">
+            <thead>
+              <tr>
+                <th>Thuốc</th>
+                <th>Cơ chế Thụ thể</th>
+                <th>Chỉ định & Vai trò Lâm sàng</th>
+                <th>Lưu ý & Tác dụng phụ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong><span class="drug-name">Norepinephrine</span></strong></td>
+                <td>&alpha;1 (mạnh), &beta;1 (yếu)</td>
+                <td>Thuốc vận mạch <strong>lựa chọn đầu tay</strong> trong sốc nhiễm khuẩn và hầu hết sốc giãn mạch. Nâng MAP hiệu quả.</td>
+                <td>Gây thiếu máu cục bộ ngoại biên nếu dùng liều cao kéo dài. Chăm sóc đường truyền cẩn thận (tránh hoại tử mô do thoát mạch).</td>
+              </tr>
+              <tr>
+                <td><strong><span class="drug-name">Epinephrine</span><br>(<span class="drug-name">Adrenaline</span>)</strong></td>
+                <td>&beta;1, &beta;2, &alpha;1 (mạnh)</td>
+                <td>Thuốc <strong>cứu mạng đầu tay</strong> trong sốc phản vệ và cấp cứu ngưng tuần hoàn. Hàng 2-3 trong sốc nhiễm khuẩn.</td>
+                <td>Tăng lactate máu thứ phát (do kích thích thụ thể &beta;2 ở cơ vân gây tăng đường phân yếm khí), tăng loạn nhịp tim.</td>
+              </tr>
+              <tr>
+                <td><strong><span class="drug-name">Vasopressin</span></strong></td>
+                <td>V1 (co mạch cơ trơn)</td>
+                <td>Phối hợp với <span class="drug-name">Norepinephrine</span> trong sốc nhiễm khuẩn kháng trị nhằm giảm liều catecholamine và nâng MAP hiệp đồng.</td>
+                <td>Gây co mạch vành, mạch mạc treo ruột nếu dùng liều cao. Không tự ý chỉnh liều nhanh.</td>
+              </tr>
+              <tr>
+                <td><strong><span class="drug-name">Dobutamine</span></strong></td>
+                <td>&beta;1 (mạnh), &beta;2 (yếu)</td>
+                <td>Thuốc tăng co bóp cơ tim dùng trong <strong>sốc tim</strong> hoặc sốc nhiễm khuẩn có kèm suy giảm chức năng cơ tim (cung lượng tim thấp).</td>
+                <td>Gây nhịp tim nhanh, tăng loạn nhịp và giãn mạch gây tụt huyết áp nếu chưa bù đủ dịch lòng mạch.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB 5: SPECIFIC -->
+      <section class="tab" id="specific">
+        <div class="grid2">
+          <div class="card">
+            <h2>5. Phác đồ điều trị chống sốc đặc hiệu theo bệnh lý</h2>
+            <h3>5.1 Sốc mất máu cấp (Do chấn thương)</h3>
+            <p>Áp dụng chiến lược <strong>Hồi sức kiểm soát thiệt hại (Damage Control Resuscitation - DCR)</strong> gồm 3 trụ cột:</p>
+            <ol>
+              <li><strong>Cầm máu cơ học ngay lập tức:</strong> Băng ép, garo chi, nhét gạc lòng mạch hoặc can thiệp mạch (nút mạch/phẫu thuật khẩn).</li>
+              <li><strong>Hạ huyết áp cho phép (Permissive Hypotension):</strong> Duy trì huyết áp tâm thu dao động <strong>80-90 mmHg</strong> (ở người không chấn thương sọ não) để tránh áp lực lớn làm bung cục máu đông non nớt vừa hình thành.</li>
+              <li><strong>Truyền máu khối lượng lớn (MTP):</strong> Truyền máu sớm theo tỷ lệ cân bằng <strong>1:1:1 (Hồng cầu : Huyết tương : Tiểu cầu)</strong> để chống rối loạn đông máu do chấn thương. Sử dụng sớm <strong><span class="drug-name">Acid Tranexamic</span> (<span class="drug-name">TXA</span>)</strong> trong vòng 3h đầu và bù Canxi Clorua (duy trì Ca2+ ion hóa &gt; 1.1 mmol/L).</li>
+            </ol>
+          </div>
+
+          <div class="card">
+            <h2>5.2 Chống sốc trong các bệnh cảnh khác</h2>
+            <ul>
+              <li><strong>Sốc nhiễm khuẩn (Septic shock):</strong>
+                <p>Thực hiện <strong>gói xử trí 1 giờ</strong>: Cấy máu trước khi dùng kháng sinh, dùng kháng sinh phổ rộng sớm, truyền nhanh dịch tinh thể <strong>30 ml/kg</strong> và khởi động sớm <span class="drug-name">Norepinephrine</span> qua catheter để duy trì MAP &ge; 65 mmHg.</p>
+              </li>
+              <li><strong>Sốc tim:</strong>
+                <p>Truyền dịch cực kỳ thận trọng tránh phù phổi cấp. Sử dụng <span class="drug-name">Norepinephrine</span> để giữ HA, phối hợp <span class="drug-name">Dobutamine</span> tăng sức bóp cơ tim. Nhanh chóng tái thông mạch vành PCI cấp cứu nếu do nhồi máu cơ tim, cân nhắc hỗ trợ tuần hoàn cơ học (ECMO, IABP).</p>
+              </li>
+              <li><strong>Sốc tắc nghẽn:</strong>
+                <p>Truyền dịch tạm thời để tăng áp lực đổ đầy tim. Can thiệp giải quyết tắc nghẽn cơ học ngay lập tức: chọc hút dịch màng tim (chèn ép tim), chọc kim giải áp màng phổi (tràn khí áp lực), hoặc dùng thuốc tiêu sợi huyết (thuyên tắc phổi lớn).</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- FOOTER PLACEHOLDER -->
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+  <!-- Script Sidebar -->
+  <script src="../../../js/sidebar.js"></script>
+</body>
+
+</html>

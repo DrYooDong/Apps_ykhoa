@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang='vi' data-theme='light'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta name='description'
+    content='Khám vú theo Macleod: Hướng dẫn khám phát hiện u vú, hạch nách, hạch thượng đòn và quy trình Đánh giá bộ ba (Triple Assessment).'>
+  <title>
+    Khám Tuyến Vú - CliniPortal
+  </title>
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+  <link
+    href='https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap'
+    rel='stylesheet'>
+  <link rel='stylesheet' href="../../../../css/reset.css">
+  <link rel='stylesheet' href="../../../../css/main.css">
+  <link rel='stylesheet' href="../../../../css/components/header.css">
+  <link rel='stylesheet' href="../../../../css/components/sidebar.css">
+  <link rel='stylesheet' href="../../../../css/components/footer.css">
+  <script src="../../../../components/header.js">
+  </script>
+  <script src="../../../../components/footer.js">
+  </script>
+  <style>
+    :root {
+      --a: #be185d;
+      --b: #db2777;
+      --c: #fbcfe8;
+    }
+  </style>
+  <link rel='stylesheet' href="../../../../css/components/clinical-skill.css">
+</head>
+
+<body>
+  <div id='header-placeholder' data-header-path="../../../../components/header.html">
+  </div>
+  <div class='sidebar-overlay' id='sidebarOverlay'>
+  </div>
+  <div class='app-container'>
+    <aside class='app-sidebar' id='appSidebar'>
+      <button id='sidebar-toggle-arrow' class='sidebar-toggle-arrow' aria-label='Thu gọn/Mở rộng Sidebar'>
+        <svg viewBox='0 0 24 24' width='14' height='14' stroke='currentColor' stroke-width='2.5' fill='none'
+          stroke-linecap='round' stroke-linejoin='round' class='toggle-arrow-svg'>
+          <polyline points='15 18 9 12 15 6'>
+          </polyline>
+        </svg>
+      </button>
+      <nav class='sidebar-nav' aria-label='Điều hướng chính'>
+        <ul class='nav-list' role='list'>
+          <li>
+            <a href="../../../../index.html" class='nav-item'>
+              <span class='nav-icon'>
+                🏠
+              </span>
+              <span class='nav-text'>
+                Trang chủ
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../ky-nang.html" class='nav-item'>
+              <span class='nav-icon'>
+                🩺
+              </span>
+              <span class='nav-text'>
+                Kỹ năng lâm sàng
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Tiếp cận/tiep-can.html" class='nav-item'>
+              <span class='nav-icon'>
+                🤒
+              </span>
+              <span class='nav-text'>
+                Tiếp cận lâm sàng
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Công cụ/cong-cu.html" class='nav-item'>
+              <span class='nav-icon'>
+                ⚙️
+              </span>
+              <span class='nav-text'>
+                Công cụ lâm sàng
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <div class='main-wrapper' id='mainContent'>
+      <nav aria-label='Breadcrumb' class='breadcrumb-container'>
+        <ol class='breadcrumb-list'>
+          <li class='breadcrumb-item'>
+            <a href="../../../../index.html" class='breadcrumb-link'>
+              <span class='home-icon'>
+                🏠
+              </span>
+              Home
+            </a>
+          </li>
+          <li class='breadcrumb-item'>
+            <a href="../../ky-nang.html" class='breadcrumb-link'>
+              Kỹ năng lâm sàng
+            </a>
+          </li>
+          <li class='breadcrumb-item'>
+            <a href='KN_Sinhduc.html' class='breadcrumb-link'>
+              Khám hệ sinh sản
+            </a>
+          </li>
+          <li class='breadcrumb-item active' aria-current='page'>
+            Khám tuyến vú
+          </li>
+        </ol>
+      </nav>
+      <section class='hero'>
+        <h1>
+          Khám Tuyến Vú (<span class="term-hl">The Breast Examination</span>)
+        </h1>
+        <p>
+          Quy trình hướng dẫn hỏi bệnh và khám lâm sàng tuyến vú theo Macleod's Clinical Examination. Hướng dẫn chi tiết kỹ thuật nhìn trong 3 tư thế, sờ mô vú theo hình mặt đồng hồ, khám hạch vùng và quy trình "Đánh giá bộ ba" (<span class="term-hl">Triple Assessment</span>).
+        </p>
+        <div class='quick'>
+          <div class='qi'>
+            <b>
+              Tư thế
+            </b>
+            Ngồi thẳng khi nhìn; nằm ngửa đầu kê gối nhẹ khi sờ vú
+          </div>
+          <div class='qi'>
+            <b>
+              Điểm nhấn
+            </b>
+            Đuôi nách Spence, co ngực lớn, sờ lòng bàn tay phẳng, co kéo da (<span class="term-hl">dimpling</span>), khám hạch nách/thượng đòn
+          </div>
+          <div class='qi'>
+            <b>
+              Red flags
+            </b>
+            BẮT BUỘC có người làm chứng (<span class="term-hl">chaperone</span>), sần da cam (<span class="term-hl">peau d'orange</span>), tụt núm vú 1 bên mới xuất hiện, loét chàm núm vú (<span class="term-hl">Paget</span>)
+          </div>
+        </div>
+      </section>
+      <div class='tabs'>
+        <button class='tab-btn active' data-tab='core'>
+          Nền tảng
+        </button>
+        <button class='tab-btn' data-tab='hx'>
+          Hỏi bệnh
+        </button>
+        <button class='tab-btn' data-tab='exam'>
+          Khám
+        </button>
+        <button class='tab-btn' data-tab='int'>
+          Biện luận
+        </button>
+        <button class='tab-btn' data-tab='tests'>
+          Cận lâm sàng
+        </button>
+        <button class='tab-btn' data-tab='osce'>
+          <span class="term-hl-secondary">OSCE</span>
+        </button>
+      </div>
+
+      <!-- TAB: NỀN TẢNG -->
+      <section class='tab active' id='core'>
+        <div class='card'>
+          <h2>Giải phẫu và Sinh lý học lâm sàng (<span class="term-hl">Anatomy and physiology</span>)</h2>
+          <ul>
+            <li>Tuyến vú về bản chất là các tuyến mồ hôi biến đổi. Các ống sinh sữa mở ra ở đỉnh của núm vú - một cấu trúc chứa mô cương.</li>
+            <li>Núm vú nằm ở khoang liên sườn 4 trên đường giữa đòn. Tuy nhiên, các mô vú phụ hoặc núm vú phụ có thể phát triển ở bất kỳ vị trí nào dọc theo đường sữa (<span class="term-hl">milk line</span>) từ nách đến bẹn.</li>
+            <li>Tuyến vú trưởng thành được chia thành: núm vú, quầng vú, 4 góc phần tư (trên ngoài, trên trong, dưới ngoài, dưới trong) và một <strong>đuôi nách (đuôi Spence)</strong> nhô ra từ góc phần tư trên ngoài.</li>
+            <li>Kích thước và hình dạng của vú thay đổi theo tuổi, di truyền, thai kỳ, cho con bú và dinh dưỡng. Vú phản ứng mạnh với nồng độ oestrogen và progesterone (sưng đau pha tiền kinh nguyệt). Khi lớn tuổi, mô tuyến vú teo đi và được thay thế bằng mô mỡ, khiến vú mềm và xệ hơn.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: HỎI BỆNH -->
+      <section class='tab' id='hx'>
+        <div class='card'>
+          <h2>Các triệu chứng lâm sàng thường gặp</h2>
+          <div style='overflow-x: auto; margin-top: 12px;'>
+            <table class='cmp'>
+              <thead>
+                <tr>
+                  <th>Triệu chứng tại vú</th>
+                  <th>Đặc điểm lâm sàng và Gợi ý nguyên nhân</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Khối u vú (<span class="term-hl">Breast lump</span>)</strong></td>
+                  <td>Thường phát hiện tình cờ. Cần phân biệt u đơn độc (<span class="term-hl">malignant/benign</span>) hay nhiều u hai bên (<span class="term-hl">fibrocystic changes</span>), đau hay không đau, thay đổi theo chu kỳ kinh nguyệt hay không.</td>
+                </tr>
+                <tr>
+                  <td><strong>Đau vú (<span class="term-hl">Mastalgia</span>)</strong></td>
+                  <td>*Theo chu kỳ:* đau tăng vào nửa sau chu kỳ kinh và giảm rõ khi hành kinh (lành tính sinh lý).<br>*Không theo chu kỳ:* Cần phân biệt rõ với đau thành ngực (hội chứng Tietze).</td>
+                </tr>
+                <tr>
+                  <td><strong>Thay đổi ở da</strong></td>
+                  <td>*Lõm da (<span class="term-hl">Dimpling</span>):* Da lõm nhẹ khi nâng vú.<br>*Co kéo da (<span class="term-hl">Indrawing</span>):* Da dính chặt vào khối u.<br>*Sần da cam (<span class="term-hl">Peau d'orange</span>):* Phù bạch huyết dưới da làm da sưng phồng quanh nang lông, gợi ý ung thư dạng viêm (<span class="term-hl">inflammatory breast cancer</span>) hoặc nhiễm trùng.<br>*Chàm (<span class="term-hl">Eczema</span>):* Vết loét chàm khu trú ở núm vú gợi ý bệnh Paget núm vú (ung thư nội ống).</td>
+                </tr>
+                <tr>
+                  <td><strong>Thay đổi núm vú</strong></td>
+                  <td>*Tụt núm vú (<span class="term-hl">Inversion</span>):* Nếu bẩm sinh/hai bên là lành tính; tụt mới xuất hiện và không đối xứng gợi ý u ác tính co kéo ống tuyến.<br>*Tiết dịch (<span class="term-hl">Discharge</span>):* Tiết dịch 1 ống tuyến hoặc dịch lẫn máu gợi ý giãn ống tuyến, u nhú nội ống hoặc ung thư.<br>*Tiết sữa (<span class="term-hl">Galactorrhoea</span>):* Tiết dịch sữa từ nhiều ống 2 bên, gợi ý tăng prolactin máu.</td>
+                </tr>
+                <tr>
+                  <td><strong>Nữ hóa tuyến vú ở nam</strong></td>
+                  <td>Phì đại tuyến vú (<span class="term-hl">Gynaecomastia</span>). Gặp ở tuổi dậy thì, xơ gan (không thải oestrogen), cường giáp, hội chứng Klinefelter hoặc do thuốc (cần sa, methadone, spironolactone, digoxin).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class='card'>
+          <h2>Tiền sử và Yếu tố nguy cơ ung thư vú</h2>
+          <ul>
+            <li><strong>Yếu tố nguy cơ gia đình:</strong> Tiền sử gia đình có mẹ/chị em gái mắc ung thư vú hoặc ung thư buồng trứng (gợi ý đột biến gen BRCA1, BRCA2).</li>
+            <li><strong>Tiền sử nội tiết:</strong> Sử dụng liệu pháp thay thế hormone (<span class="term-hl">HRT</span>) kéo dài, tuổi có kinh sớm, mãn kinh muộn, không sinh con hoặc sinh con muộn.</li>
+            <li><strong>Tiền sử y khoa:</strong> Tiền sử xạ trị vùng ngực (như điều trị u lympho Hodgkin trước đây).</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: KHÁM -->
+      <section class='tab' id='exam'>
+        <div class='card'>
+          <h2>Quy trình thăm khám Tuyến Vú</h2>
+          <div class='clinical-warning' style='margin-bottom: 16px;'>
+            <h4>⚠️ Quy tắc bắt buộc: Người làm chứng (<span class="term-hl">Chaperone</span>)</h4>
+            <p>Khám vú là một khám thực thể nhạy cảm. Bác sĩ nam BẮT BUỘC phải có người làm chứng (<span class="term-hl">chaperone</span>) nữ đi cùng và ghi nhận tên của người đó vào hồ sơ bệnh án.</p>
+          </div>
+          <ul class='check'>
+            <li>
+              <input type='checkbox'>
+              <span><strong>1. Nhìn trong tư thế ngồi thẳng (Hai tay buông thõng đặt lên đùi):</strong> Quan sát sự đối xứng kích thước vú, sưng nề khu trú, thay đổi màu sắc da, lõm da, sần da cam, tụt núm vú hay loét chàm.</span>
+            </li>
+            <li>
+              <input type='checkbox'>
+              <span><strong>2. Nhìn khi co cơ ngực (Chống chặt hai tay vào hông):</strong> Yêu cầu bệnh nhân ấn mạnh hai tay vào hông để làm căng cơ ngực lớn. Tìm kiếm sự co kéo da hoặc biến dạng vú xuất hiện khi cơ co.</span>
+            </li>
+            <li>
+              <input type='checkbox'>
+              <span><strong>3. Nhìn khi giơ tay và cúi người:</strong> Yêu cầu bệnh nhân giơ hai tay lên quá đầu, sau đó nghiêng người nhẹ về phía trước để bộc lộ hoàn toàn phần dưới vú và làm nổi bật các vết lõm da do khối u kéo giữ.</span>
+            </li>
+            <li>
+              <input type='checkbox'>
+              <span><strong>4. Sờ vú ở tư thế nằm ngửa:</strong>
+                <ul>
+                  <li>Yêu cầu bệnh nhân nằm ngửa, đặt bàn tay bên vú cần khám ra sau đầu.</li>
+                  <li>Dùng lòng bàn tay phẳng (mặt lòng 3 ngón tay giữa) để sờ nhẹ nhàng, ép mô vú lên thành ngực.</li>
+                  <li>Khám tuần tự theo hình mặt đồng hồ, từ ngoài vào trong hướng về núm vú. Khám toàn bộ mô vú từ xương đòn đến bụng trên và từ đường giữa đòn đến bờ trước cơ lưng rộng.</li>
+                  <li>Đánh giá u: Vị trí, kích thước, mật độ, bờ, đau khi ấn, độ di động. Nâng nhẹ vú lên bằng tay để tìm vết lõm da trên u.</li>
+                  <li>Khám độ cố định u: Yêu cầu bệnh nhân chống tay vào hông và co cơ ngực luân phiên. Đánh giá xem khối u có bị dính vào cơ ngực lớn không.</li>
+                </ul>
+              </span>
+            </li>
+            <li>
+              <input type='checkbox'>
+              <span><strong>5. Khám đuôi nách Spence và núm vú:</strong> Sờ đuôi nách bằng cách kẹp nhẹ giữa ngón tay và ngón cái. Sờ núm vú, vuốt nhẹ mô vú hướng về núm vú xem có tiết dịch không. Nếu có, ghi nhận màu sắc dịch (trong, sữa, hay máu) và số lượng ống tuyến.</span>
+            </li>
+            <li>
+              <input type='checkbox'>
+              <span><strong>6. Khám hệ hạch lympho vùng nách và cổ:</strong>
+                <ul>
+                  <li>Bệnh nhân ngồi đối diện. Dùng một tay nâng đỡ toàn bộ cánh tay bệnh nhân để thả lỏng cơ nách.</li>
+                  <li>Đưa tay còn lại của bác sĩ vào sâu trong hố nách, áp sát lòng ngón tay vào thành ngực để cảm nhận hạch nách.</li>
+                  <li>Sờ hố thượng đòn và vùng cổ từ phía sau tìm hạch cổ/thượng đòn.</li>
+                </ul>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: BIỆN LUẬN -->
+      <section class='tab' id='int'>
+        <div class='grid2'>
+          <div class='card'>
+            <h2>Biện luận đặc điểm khối u vú</h2>
+            <ul>
+              <li><strong>Ung thư vú (<span class="term-hl">Breast cancers</span>):</strong> Thường biểu hiện là một khối u đặc, cứng, không đều, không đau, giới hạn không rõ. Có thể dính chặt vào da hoặc cơ ngực bên dưới (cố định, không di động khi cơ ngực co). Có thể đi kèm hạch nách/thượng đòn cứng.</li>
+              <li><strong>U xơ tuyến vú (Fibroadenomas - U chuột):</strong> U lành tính thường gặp ở phụ nữ trẻ dưới 35 tuổi. Đặc điểm: trơn láng, di động rất tốt dưới da, ranh giới rõ rệt, mật độ chắc như cao su và không đau.</li>
+              <li><strong>Nang vú (<span class="term-hl">Breast cysts</span>):** Túi chứa dịch thường gặp ở phụ nữ 35-55 tuổi. Cảm giác phập phều, mềm nếu áp lực dịch thấp; cứng căng đau nếu áp lực cao.</strong></li>
+              <li><strong>Áp xe vú (<span class="term-hl">Abscess</span>):</strong> Khối sưng nóng đỏ đau cấp tính, phập phều. Áp xe ngoại vi liên quan cho con bú (tiết sữa); áp xe dưới quầng vú liên quan viêm quanh ống tuyến ở phụ nữ trẻ hút thuốc lá.</li>
+            </ul>
+          </div>
+          <div class='card'>
+            <h2>Đánh giá bộ ba (<span class="term-hl">Triple Assessment</span>)</h2>
+            <p>Mọi khối u vú nghi ngờ ác tính bắt buộc phải được đánh giá đồng thời bằng 3 cận lâm sàng để tránh bỏ sót:</p>
+            <ol style='margin-top: 8px; padding-left: 20px; line-height: 1.6;'>
+              <li><strong>Đánh giá lâm sàng:</strong> Hỏi bệnh và thăm khám chi tiết bởi bác sĩ chuyên khoa.</li>
+              <li><strong>Chẩn đoán hình ảnh:</strong> Siêu âm vú (lựa chọn ưu tiên cho phụ nữ &lt;40 tuổi có mô vú đặc) và/hoặc Nhũ ảnh (Mammography - cho phụ nữ &ge;40 tuổi).</li>
+              <li><strong>Chẩn đoán tế bào/mô bệnh học:</strong> Sinh thiết lõi kim (Core Biopsy - lựa chọn hàng đầu để phân biệt ung thư xâm lấn) hoặc chọc hút tế bào bằng kim nhỏ (FNA - chủ yếu đánh giá hạch nách).</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: CẬN LÂM SÀNG -->
+      <section class='tab' id='tests'>
+        <div class='card'>
+          <h2>Cận lâm sàng Tuyến Vú</h2>
+          <ul>
+            <li><strong>Siêu âm tuyến vú (<span class="term-hl">Breast Ultrasound</span>):</strong> Đánh giá u nang (chứa dịch) hay u đặc. Đây là lựa chọn đầu tay cho phụ nữ trẻ &lt;40 tuổi do mô vú của họ rất đặc, làm giảm độ nhạy của nhũ ảnh.</li>
+            <li><strong>Nhũ ảnh (<span class="term-hl">Mammography</span>):</strong> Chụp X-quang vú. Ung thư điển hình biểu hiện bằng đám mờ dạng hình sao (<span class="term-hl">spiculate opacity</span>) hoặc các hạt vi vôi hóa (<span class="term-hl">microcalcification</span>). Không nên chụp thường quy ở phụ nữ &lt;40 tuổi.</li>
+            <li><strong>Chụp cộng hưởng từ (<span class="term-hl">MRI</span>) tuyến vú:</strong> Chỉ định đánh giá vú có túi ngực nhân tạo, vú quá đặc, hoặc sàng lọc ung thư vú ở phụ nữ trẻ có nguy cơ di truyền cao (đột biến BRCA1/2).</li>
+            <li><strong>Sinh thiết lõi (<span class="term-hl">Core Biopsy</span>):</strong> Sử dụng kim sinh thiết lớn dưới hướng dẫn của siêu âm để lấy mẫu mô. Cho phép chẩn đoán xác định cấu trúc mô học (ung thư biểu mô ống hay thùy, xâm lấn hay tại chỗ) và các thụ thể nội tiết (<span class="term-hl">ER, PR, HER2</span>).</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: OSCE -->
+      <section class='tab' id='osce'>
+        <div class='grid2'>
+          <div class='card'>
+            <span class='case'><span class="term-hl-secondary">OSCE</span></span>
+            <h2><span class="term-hl-secondary">OSCE</span>: Thăm khám và tiếp cận bệnh nhân u vú</h2>
+            <p><strong>Yêu cầu:</strong> Cô McIntyre, 27 tuổi, đến khám vì tự sờ thấy một khối u ở vú phải 6 tuần nay. Hãy thăm khám vú cho bệnh nhân.</p>
+            <p style='margin-top: 8px;'><strong>Tóm tắt phát hiện:</strong> Khám nhìn ngoài vú cân đối, không có co kéo da, sần da cam hay tụt núm vú. Sờ vú ở tư thế nằm phát hiện có một khối u duy nhất, kích thước khoảng 2 cm, mật độ chắc như cao su, bề mặt trơn láng, giới hạn rõ rệt và di động rất tốt dưới da ở vị trí 11 giờ của vú phải, cách núm vú 5 cm. U không đau, không dính vào da hay cơ ngực lớn. Không có dịch tiết núm vú. Khám hạch nách và hạch thượng đòn hai bên không sờ thấy hạch phì đại.</p>
+            <p style='margin-top: 8px;'><strong>Chẩn đoán sơ bộ:</strong> U xơ tuyến vú phải lành tính (<span class="term-hl">Fibroadenoma</span>). Chẩn đoán phân biệt: Nang vú, thay đổi bọc sợi tuyến vú, hoặc ung thư vú (ít nghĩ đến do tuổi trẻ và đặc điểm u lành tính).</p>
+            <p style='margin-top: 8px;'><strong>Đề xuất đánh giá tiếp theo:</strong> Thực hiện "Đánh giá bộ ba" (<span class="term-hl">Triple Assessment</span>): Siêu âm tuyến vú (do bệnh nhân &lt;40 tuổi) và chỉ định sinh thiết lõi (<span class="term-hl">Core Biopsy</span>) dưới hướng dẫn của siêu âm để chẩn đoán xác định.</p>
+          </div>
+        </div>
+        <div class='card'>
+          <h2>Tài liệu tham khảo (<span class="term-hl">References</span>)</h2>
+          <ol>
+            <li>Innes JA, Dover AR, Fairhurst K. <em>Macleod's Clinical Examination</em>. 14th ed. Edinburgh: Elsevier; 2018.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class='links'>
+        <div class='card'>
+          <h2>Các bài cùng chuyên khoa Sinh Sản</h2>
+          <div class='grid3'>
+            <a class='link-card' href='KN_KhamThaiLanDau.html'>
+              <h3 style='color: #0891b2;'>Khám Thai Lần Đầu</h3>
+              <small>Hỏi bệnh sử thai sản lần đầu (<span class="term-hl">Booking visit</span>), phân tầng nguy cơ và sàng lọc Down.</small>
+            </a>
+            <a class='link-card' href='KN_KhamThaiDinhKy.html'>
+              <h3 style='color: #059669;'>Khám Thai Giai Đoạn Sau</h3>
+              <small>Đo bề cao tử cung (<span class="term-hl">SFH</span>), khám ngôi thai/độ lọt và tầm soát tiền sản giật.</small>
+            </a>
+            <a class='link-card' href='KN_KhamSinhDucNam.html'>
+              <h3 style='color: #4f46e5;'>Khám Sinh Dục Nam</h3>
+              <small>Khám u bìu, tràn dịch màng tinh hoàn và thăm trực tràng khám tuyến tiền liệt.</small>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <footer class='global-footer'>
+    <div id='footer-placeholder' data-footer-path="../../../../components/footer.html">
+    </div>
+  </footer>
+  <script src="../../../../js/clinical-skill-tabs.js"></script>
+  <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>

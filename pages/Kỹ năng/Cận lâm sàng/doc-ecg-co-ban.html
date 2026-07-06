@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hướng dẫn chi tiết từng bước đọc và phân tích điện tâm đồ (ECG) cơ bản dành cho sinh viên y khoa và bác sĩ lâm sàng.">
+  <title>Các bước đọc ECG Cơ bản – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS core CliniPortal -->
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../css/components/toc.css">
+  <link rel="stylesheet" href="../../../css/components/paraclinical.css">
+
+  <script src="../../../js/toc.js" defer></script>
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+  
+  <script src="../../../js/main.js" defer></script>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+        <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../ky-nang.html" class="nav-item active" aria-current="page" title="Kỹ năng">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN WRAPPER -->
+    <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../../index.html" class="breadcrumb-link">
+              <span class="home-icon">🏠</span> Home
+            </a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="../ky-nang.html" class="breadcrumb-link">Kỹ năng lâm sàng</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="Doc_KQCLS.html" class="breadcrumb-link">Đọc kết quả cận lâm sàng</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Đọc ECG Cơ bản</li>
+        </ol>
+      </nav>
+
+      <!-- VISUAL CONTAINER FOR TOC GENERATION -->
+      <main class="visual-container">
+        <!-- Chapter Header -->
+        <div class="para-header"><span class="para-badge purple">📈 Tim mạch</span>
+  
+          <h1>Các Bước Đọc ECG Cơ Bản</h1>
+          <p>Quy trình 9 bước phân tích điện tâm đồ chuẩn y khoa. Hướng dẫn tính tần số, trục, khảo sát hình thái các sóng và khoảng dẫn truyền nhĩ thất.</p>
+        </div>
+
+        <div class="para-content">
+          <p class="para-lead">
+            Để đọc và phân tích một bản điện tâm đồ (ECG) một cách chính xác và không bỏ sót tổn thương, bạn cần tuân thủ một quy trình phân tích có hệ thống. Trước khi bắt đầu, hãy luôn kiểm tra <strong>chuẩn hóa (calibration)</strong> của máy: tốc độ giấy chạy chuẩn là <strong>25 mm/giây</strong> (1 ô nhỏ = 0,04 giây, 1 ô lớn = 0,20 giây) và test điện thế chuẩn là <strong>1 mV = 10 mm</strong> (2 ô lớn).
+          </p>
+
+          <ol class="para-step-list">
+            <!-- BƯỚC 1 -->
+            <li>
+              <div class="para-card">
+                <h3 class="para-card-title">Bước 1: Đánh giá Tần số và Sự đều đặn (Rate and Regularity)</h3>
+                <ul>
+                  <li><strong>Sự đều đặn:</strong> Quan sát khoảng cách giữa các đỉnh R (khoảng RR) trên chuyển đạo kéo dài (thường là DII) xem nhịp tim có đều hay không.</li>
+                  <li><strong>Tính tần số tim:</strong>
+                    <ul>
+                      <li><em>Nếu nhịp đều:</em> Lấy <strong>300</strong> chia cho số ô vuông lớn giữa 2 sóng R liên tiếp (Tần số = 300 / số ô lớn). Hoặc lấy <strong>1500</strong> chia cho số ô vuông nhỏ giữa 2 R để có kết quả chính xác hơn.</li>
+                      <li><em>Nếu nhịp không đều (như trong rung nhĩ):</em> Đếm số phức bộ QRS trong một đoạn giấy dài 6 giây (30 ô lớn) rồi nhân với 10.</li>
+                    </ul>
+                  </li>
+                  <li><strong>Mức bình thường:</strong> Dao động từ 60 - 100 lần/phút. Dưới 60 lần/phút là nhịp chậm (bradycardia), trên 100 lần/phút là nhịp nhanh (tachycardia).</li>
+                </ul>
+              </div>
+            </li>
+
+            <!-- BƯỚC 2 -->
+            <li>
+              <div class="para-card">
+                <h3 class="para-card-title">Bước 2: Phân tích Nhịp (Rhythm)</h3>
+                <p>Xác định xem nhịp tim có xuất phát từ nút xoang (nhịp xoang bình thường) hay không. Nhịp xoang đặc trưng bởi các tiêu chuẩn:</p>
+                <div class="para-grid" >
+                  <div class="para-grid-card">
+                    <div class="para-grid-card-title">✅ Tiêu chuẩn nhịp xoang</div>
+                    <p>1. Có sóng P đi trước mỗi phức bộ QRS.<br>
+                    2. Sóng P dương ở các chuyển đạo DII, aVF và luôn âm ở aVR.<br>
+                    3. Hình dạng sóng P đồng nhất trên cùng một chuyển đạo.<br>
+                    4. Khoảng PR hằng định và nằm trong giới hạn bình thường.</p>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <!-- BƯỚC 3 -->
+            <li>
+              <div class="para-card">
+                <h3 class="para-card-title">Bước 3: Xác định Trục điện tim (Electrical Axis)</h3>
+                <p>Trục điện tim được xác định nhanh dựa vào chiều hướng âm/dương của phức bộ QRS ở 2 chuyển đạo vuông góc là <strong>DI và aVF</strong>:</p>
+                
+                <div class="para-table-wrapper" >
+                  <table class="para-table">
+                    <thead>
+                      <tr>
+                        <th>DI</th>
+                        <th>aVF</th>
+                        <th>Trục điện tim</th>
+                        <th>Bối cảnh lâm sàng gợi ý</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>Dương (+)</strong></td>
+                        <td><strong>Dương (+)</strong></td>
+                        <td>Trục trung gian (Bình thường: 0&deg; đến +90&deg;)</td>
+                        <td>Bình thường.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Dương (+)</strong></td>
+                        <td><strong>Âm (-)</strong></td>
+                        <td>Trục lệch trái (0&deg; đến -90&deg;)</td>
+                        <td>Phì đại thất trái, block phân nhánh trái trước (LAFB), hoặc nhồi máu cơ tim cũ thành dưới.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Âm (-)</strong></td>
+                        <td><strong>Dương (+)</strong></td>
+                        <td>Trục lệch phải (+90&deg; đến +180&deg;)</td>
+                        <td>Phì đại thất phải, tâm phế cấp/mạn, block phân nhánh trái sau (LPFB).</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Âm (-)</strong></td>
+                        <td><strong>Âm (-)</strong></td>
+                        <td>Trục vô định (trục Tây Bắc)</td>
+                        <td>Nhịp nhanh thất (VT), khí phế thũng nặng.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </li>
+
+            <!-- BƯỚC 4 -->
+            <li>
+              <div class="para-card">
+                <h3 class="para-card-title">Bước 4: Đánh giá Sóng P (Khử cực nhĩ)</h3>
+                <p>Sóng P đại diện cho quá trình lan truyền xung điện khử cực 2 tâm nhĩ.</p>
+                <ul>
+                  <li><strong>Bình thường:</strong> Thời gian &lt; 0.12 giây (3 ô nhỏ) và biên độ &lt; 2.5 mm (2.5 ô nhỏ).</li>
+                  <li><strong>Bất thường hình thái:</strong>
+                    <ul>
+                      <li><span class="term-hl">P phế (P pulmonale):</span> Sóng P cao, nhọn (biên độ &ge; 2.5 mm) ở DII, DIII, aVF. Đây là dấu hiệu của <strong>dày/lớn nhĩ phải</strong> (gặp trong bệnh phổi mạn tính COPD, hẹp van 3 lá, tâm phế mạn).</li>
+                      <li><span class="term-hl-secondary">P hai lá (P mitrale):</span> Sóng P rộng (&ge; 0.12 giây), có khấc hình lưng lạc đà ở DII; pha âm của P ở V1 rộng và sâu. Đây là dấu hiệu của <strong>dày/lớn nhĩ trái</strong> (gặp trong bệnh van hai lá, tăng huyết áp).</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+            <!-- BƯỚC 5 -->
+            <li>
+              <div class="para-card">
+                <h3 class="para-card-title">Bước 5: Khoảng PR / PQ (Dẫn truyền nhĩ - thất)</h3>
+                <p>Đo từ đầu sóng P đến đầu phức bộ QRS, phản ánh thời gian xung động đi từ nhĩ qua nút nhĩ thất xuống khử cực thất.</p>
+                <ul>
+                  <li><strong>Bình thường:</strong> 0.12 - 0.20 giây (3 đến 5 ô nhỏ).</li>
+                  <li><strong>PR kéo dài (&gt; 0.20 giây):</strong> Dẫn truyền nhĩ thất bị chậm trễ, biểu hiện của <strong>Blốc nhĩ thất độ 1</strong> (1st-degree AV block). Thường gặp trong suy động mạch vành, thấp tim, ngộ độc Digoxin, thuốc chẹn beta hoặc viêm cơ tim.</li>
+                  <li><strong>PR ngắn (&lt; 0.12 giây):</strong> Xung động đi tắt không qua nút nhĩ thất, gặp trong <strong>hội chứng kích thích sớm</strong> như Wolff-Parkinson-White (WPW - kèm sóng delta và QRS rộng), hội chứng Lown-Ganong-Levine, hoặc nhịp bộ nối.</li>
+                </ul>
+              </div>
+            </li>
+
+            <!-- BƯỚC 6 -->
+            <li>
+              <div class="para-card">
+                <h3 class="para-card-title">Bước 6: Phức bộ QRS (Khử cực thất)</h3>
+                <p>Đại diện cho sự khử cực và co bóp của tâm thất. Cần chú ý 3 thông số:</p>
+                <ul>
+                  <li><strong>Thời gian QRS:</strong> Bình thường từ 0.05 - 0.10 giây. Nếu <strong>QRS dãn rộng (&ge; 0.12 giây)</strong>, gợi ý block nhánh (trái hoặc phải), nhịp tự thất, ngoại tâm thu thất, hoặc hội chứng tiền kích thích WPW.</li>
+                  <li><strong>Biên độ QRS:</strong>
+                    <ul>
+                      <li><em>Tăng biên độ (Phì đại thất):</em> Chỉ số <strong>Sokolow-Lyon</strong> (S ở V1 + R ở V5/V6 &ge; 35 mm) gợi ý dày thất trái.</li>
+                      <li><em>Điện thế thấp:</em> Tổng biên độ QRS &lt; 5 mm ở tất cả chuyển đạo chi hoặc &lt; 10 mm ở các chuyển đạo trước ngực (gặp trong tràn dịch màng ngoài tim, khí phế thũng, béo phì, suy giáp nặng).</li>
+                    </ul>
+                  </li>
+                  <li><strong>Sóng Q bệnh lý (Q hoại tử):</span></strong> Sóng Q rộng &ge; 0.03 - 0.04 giây và độ sâu &ge; 1/4 biên độ sóng R đi kèm. Đây là dấu hiệu chỉ điểm của <strong>hoại tử cơ tim do nhồi máu cơ tim</strong>.</li>
+                </ul>
+              </div>
+            </li>
+
+            <!-- BƯỚC 7 -->
+            <li>
+              <div class="para-card">
+                <h3 class="para-card-title">Bước 7: Đoạn ST</h3>
+                <p>Nằm từ điểm J (cuối QRS) đến đầu sóng T. Bình thường đoạn ST nằm ngang trùng với đường đẳng điện.</p>
+                <ul>
+                  <li><strong>ST chênh lên (ST Elevation):</strong> Dấu hiệu tối cấp của <strong>tổn thương cơ tim xuyên thành (Nhồi máu cơ tim cấp - STEMI)</strong> (ST chênh lên dạng lồi). Nếu ST chênh lên dạng lõm lan tỏa ở hầu hết chuyển đạo kèm PR chênh xuống, gợi ý <strong>viêm màng ngoài tim cấp</strong>.</li>
+                  <li><strong>ST chênh xuống (ST Depression):</strong> Dấu hiệu của <strong>thiếu máu cơ tim dưới nội tâm mạc</strong> (trong cơn đau thắt ngực ổn định/không ổn định), hoặc do tăng gánh thất, ngộ độc Digoxin (chênh xuống hình đáy chén "ngọc").</li>
+                </ul>
+              </div>
+            </li>
+
+            <!-- BƯỚC 8 -->
+            <li>
+              <div class="para-card">
+                <h3 class="para-card-title">Bước 8: Sóng T (Tái cực thất)</h3>
+                <p>Sóng T đại diện cho quá trình tái cực của tâm thất. Sóng T bình thường tù, bất đối xứng, hướng dương ở hầu hết chuyển đạo và luôn âm ở aVR.</p>
+                <ul>
+                  <li><strong>Sóng T cao, nhọn, đối xứng:</strong> Xuất hiện rất sớm trong nhồi máu cơ tim tối cấp (sóng T khổng lồ) hoặc là dấu hiệu điển hình của tình trạng <strong>tăng Kali máu</strong>.</li>
+                  <li><strong>Sóng T âm sâu, đối xứng:</strong> Biểu hiện của <strong>thiếu máu cục bộ cơ tim</strong>. Sóng T âm không đối xứng thường đi kèm ST chênh xuống trong tăng gánh thất trái (Strain pattern).</li>
+                </ul>
+              </div>
+            </li>
+
+            <!-- BƯỚC 9 -->
+            <li>
+              <div class="para-card">
+                <h3 class="para-card-title">Bước 9: Khoảng QT (hoặc QTc) và Sóng U</h3>
+                <ul>
+                  <li><strong>Khoảng QT/QTc:</strong> Đo từ đầu QRS đến cuối sóng T, phản ánh toàn bộ thời gian khử cực và tái cực thất. Do QT thay đổi theo tần số tim nên cần tính QT hiệu chỉnh (QTc). Bình thường QTc &le; 0.45 giây ở nam và &le; 0.46 giây ở nữ.
+                    <ul>
+                      <li><strong>QTc kéo dài:</strong> Nguy cơ rất cao gây ra loạn nhịp thất đe dọa tính mạng là <strong>xoắn đỉnh (Torsades de pointes)</strong>. Thường gặp do hạ K+, hạ Ca2+, hạ Mg2+ máu, hoặc dùng thuốc (kháng sinh macrolid, thuốc chống loạn nhịp nhóm IA, III).</li>
+                    </ul>
+                  </li>
+                  <li><strong>Sóng U:</strong> Sóng nhỏ đi sau sóng T. Nếu sóng U nổi bật, cao &ge; 1 mm (thấy rõ ở chuyển đạo trước tim V2 - V3), đây là dấu hiệu chỉ điểm đặc trưng của <strong>hạ Kali máu nặng</strong>.</li>
+                </ul>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+  <!-- SCRIPT -->
+  <script src="../../../js/sidebar.js"></script>
+</body>
+
+</html>

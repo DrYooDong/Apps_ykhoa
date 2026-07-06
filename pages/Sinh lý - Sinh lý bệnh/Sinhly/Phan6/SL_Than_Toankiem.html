@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Sinh lý học thận trong điều hòa thăng bằng toan kiềm: Cơ chế bài tiết ion H+, tái hấp thu ion HCO3-, vai trò của carbonic anhydrase (CA), hệ đệm phosphat (acid chuẩn độ), hệ đệm amoniac (NH4+), và cơ chế bẫy khuếch tán.">
+    <title>Sinh lý Thận: Điều hòa Thăng bằng Toan - Kiềm – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS Core CliniPortal -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học dùng chung -->
+    <link rel="stylesheet" href="../../../../css/components/physio-patho.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+    <!-- MathJax Config cho Công thức Toán/Sinh lý -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+
+    <!-- Script điều hướng hệ thống -->
+    <script src="../../../../js/toc.js" defer></script>
+    <script src="../../../../components/header.js" defer></script>
+    <script src="../../../../components/footer.js" defer></script>
+    <script src="../../js/physio-shared.js" defer></script>
+    <script src="../../../../js/main.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+            <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Sinhly-sinhlybenh.html" class="nav-item active" aria-current="page" title="S.lý - S.lý bệnh">
+              <span class="nav-icon">🧬</span>
+              <span class="nav-text">S.lý - S.lý bệnh</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container"
+                style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+                <ol class="breadcrumb-list"
+                    style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+                    <li><a href="../../../../index.html">🏠 Home</a> &gt;</li>
+                    <li><a href="../../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+                    <li style="color:var(--color-primary); font-weight:600;">Chương 6: Sinh lý Thận - Toan Kiềm</li>
+                </ol>
+            </nav>
+
+            <!-- MAIN CONTAINER -->
+            <main class="visual-container">
+                <!-- CHAPTER HERO CARD -->
+                <div class="chapter-header">
+                    <h1>Sinh lý Thận: Điều hòa Thăng bằng Toan - Kiềm</h1>
+                    <p>Hệ thống hóa cơ chế bài tiết ion $H^+$, tái hấp thu $HCO_3^-$ và quá trình sản sinh bicarbonate
+                        mới nhằm duy trì hằng định pH dịch ngoại bào.</p>
+                </div>
+
+                <!-- CONTENT LAYOUT -->
+                <div class="physio-content-wrapper"
+                    style="display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 1.5rem;">
+
+                    <!-- VÙNG NỘI DUNG CHÍNH -->
+                    <div class="physio-main-article">
+                        <p class="physio-lead">
+                            Thận đóng vai trò then chốt trong việc duy trì thăng bằng toan - kiềm của cơ thể bằng cách
+                            giữ cho nồng độ ion <span class="term-hl">$H^+$</span> và <span
+                                class="term-hl-secondary">$HCO_3^-$</span> trong dịch ngoại bào luôn ở mức hằng định.
+                            Hoạt động này được thực hiện thông qua hai nhiệm vụ chính: <strong>(1) Tái hấp thu gần như
+                                toàn bộ $HCO_3^-$</strong> được lọc qua cầu thận để tránh mất chất đệm quan trọng này
+                            qua nước tiểu, và <strong>(2) Bài tiết một lượng acid cố định</strong> (acid không bay hơi)
+                            sinh ra từ chuyển hóa protid hằng ngày.
+                        </p>
+
+                        <!-- PHẦN I -->
+                        <h2 id="sec-bai-tiet-tai-hap-thu" class="section-title">
+                            <span>Phần I: Bài tiết ion $H^+$ và Tái hấp thu $HCO_3^-$</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Để ngăn cản sự thất thoát $HCO_3^-$ (khoảng 4320 mmol/ngày được lọc qua cầu thận), các
+                                tế bào biểu mô ống thận thực hiện quá trình bài tiết ion $H^+$ vào lòng ống. Quá trình
+                                này diễn ra song song với việc đưa ion $HCO_3^-$ trở lại tuần hoàn, nhưng có sự khác
+                                biệt rõ rệt về cơ chế phân tử giữa các đoạn ống thận:
+                            </p>
+
+                            <!-- BẢNG SO SÁNH GIỮA ỐNG GẦN VÀ ỐNG GÓP -->
+                            <div class="physio-grid">
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">🧬 1. Tại Ống lượn gần và Quai Henle</div>
+                                    <p>
+                                        Chịu trách nhiệm cho <strong>80% – 90%</strong> lượng $HCO_3^-$ được tái hấp
+                                        thu.
+                                    </p>
+                                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                                        • <strong>Bài tiết $H^+$:</strong> Theo cơ chế tích cực thứ phát ngược chiều với
+                                        $Na^+$ nhờ kênh <strong>NHE3</strong> ở màng đỉnh, kết hợp với một bơm
+                                        $H^+$-ATPase chủ động.<br>
+                                        • <strong>Xúc tác CA:</strong> Carbonic Anhydrase bờ bàn chải (<strong>CA
+                                            IV</strong>) thúc đẩy phân ly $H_2CO_3 \rightarrow H_2O + CO_2$ để khuếch
+                                        tán vào tế bào. Trong bào tương, <strong>CA II</strong> xúc tác phản ứng ngược
+                                        lại để tái tạo $H^+$ và $HCO_3^-$.<br>
+                                        • <strong>Vận chuyển màng đáy:</strong> $HCO_3^-$ thoát ra dịch kẽ và máu qua
+                                        kênh đồng vận chuyển <strong>NBC1</strong> ($Na^+-3HCO_3^-$).
+                                    </p>
+                                </div>
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">🧪 2. Tại Ống lượn xa và Ống góp</div>
+                                    <p>
+                                        Tái hấp thu nốt lượng $HCO_3^-$ còn lại và thực hiện bài xuất lượng acid dư
+                                        thừa.
+                                    </p>
+                                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                                        • <strong>Tế bào kẽ Alpha ($\alpha$-intercalated cells):</strong> Đảm nhiệm vai
+                                        trò chính.<br>
+                                        • <strong>Bài tiết $H^+$ chủ động:</strong> Nhờ bơm
+                                        <strong>$H^+$-ATPase</strong> và bơm <strong>$H^+/K^+$-ATPase</strong> ở màng
+                                        đỉnh. Đây là cơ chế tích cực nguyên phát cực mạnh, có thể chống lại gradient
+                                        nồng độ $H^+$ gấp 1000 lần, cho phép pH nước tiểu giảm xuống giới hạn sinh lý
+                                        tối đa là <strong>4.5</strong>.<br>
+                                        • <strong>Vận chuyển màng đáy:</strong> $HCO_3^-$ mới được đưa vào máu nhờ kênh
+                                        trao đổi anion <strong>AE1</strong> ($Cl^-/HCO_3^-$).
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- TIMELINE BƯỚC TÁI HẤP THU HCO3- TẠI ỐNG LƯỢN GẦN -->
+                            <h3 style="margin-top: 1.5rem;">Quy trình tái hấp thu $HCO_3^-$ tại tế bào ống lượn gần:
+                            </h3>
+                            <ol class="physio-steps">
+                                <li>
+                                    <div class="physio-step-card">
+                                        <span class="physio-step-title">Bước 1: Bài tiết H+ và kết hợp tại lòng
+                                            ống</span>
+                                        Kênh NHE3 đẩy $H^+$ ra lòng ống đổi lấy $Na^+$. Tại đây, $H^+$ kết hợp với
+                                        $HCO_3^-$ dịch lọc tạo thành $H_2CO_3$.
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="physio-step-card">
+                                        <span class="physio-step-title">Bước 2: Phân ly và khuếch tán CO2 qua màng
+                                            đỉnh</span>
+                                        Enzyme <strong>CA IV</strong> ở bờ bàn chải nhanh chóng phân hủy $H_2CO_3$ thành
+                                        $CO_2$ và $H_2O$. Phân tử $CO_2$ dễ dàng khuếch tán qua màng lipid tế bào đi vào
+                                        bào tương.
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="physio-step-card">
+                                        <span class="physio-step-title">Bước 3: Tái tạo H+ và HCO3- nội bào</span>
+                                        Bên trong tế bào, enzyme <strong>CA II</strong> xúc tác phản ứng ngược: $CO_2 +
+                                        H_2O \rightarrow H_2CO_3 \rightarrow H^+ + HCO_3^-$. Ion $H^+$ được tái sử dụng
+                                        để bơm ra ngoài, còn $HCO_3^-$ được vận chuyển qua màng đáy bên nhờ kênh NBC1 để
+                                        về máu tuần hoàn.
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+
+                        <!-- PHẦN II -->
+                        <h2 id="sec-tao-bicarbonate-moi" class="section-title">
+                            <span>Phần II: Sự tạo thành Bicarbonate mới và Bài tiết Acid</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Cơ thể liên tục sản sinh khoảng 50 - 80 mmol acid cố định (non-volatile acids như
+                                $H_2SO_4$, $H_3PO_4$) mỗi ngày từ chuyển hóa protein. Để trung hòa lượng acid này mà
+                                không làm cạn kiệt nguồn kiềm dự trữ, thận phải bài tiết ion $H^+$ dư thừa ra nước tiểu
+                                thông qua hai hệ đệm chính. Quá trình này giúp đưa các phân tử $HCO_3^-$
+                                <strong>"mới"</strong> (không phải lượng $HCO_3^-$ được lọc ban đầu) vào dòng máu.
+                            </p>
+
+                            <div class="physio-grid">
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">🧪 1. Hệ đệm Phosphate (Acid có thể chuẩn độ)</div>
+                                    <p>
+                                        Chiếm khoảng <strong>1/3</strong> lượng acid bài xuất ròng của thận.
+                                    </p>
+                                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                                        Hệ đệm chính là cặp phosphat acid/base ($HPO_4^{2-}/H_2PO_4^-$). Ion $H^+$ bài
+                                        tiết từ tế bào ống lượn xa và ống góp sẽ gắn kết với gốc phosphat kiềm
+                                        ($HPO_4^{2-}$ - vốn đã được lọc qua cầu thận và không hấp thu hết) để tạo thành
+                                        gốc phosphat acid ($H_2PO_4^-$).
+                                        <br>
+                                        Dạng này bị khóa trong lòng ống và đào thải qua
+                                        nước tiểu dưới dạng <em>"acid có thể chuẩn độ"</em> (titratable acid).
+                                        <br>
+                                        Mỗi ion
+                                        $H^+$ đào thải theo cách này tương ứng với một phân tử $HCO_3^-$ mới được giải
+                                        phóng vào tuần hoàn mạch máu quanh ống.
+                                        <br>
+                                        Ngoài ra còn có cơ chế tổng hợp $NH_3$ trong tế bào ống góp và bài tiết
+                                        vào lòng ống để bẫy $H^+$ tạo thành $NH_4^+$. Đây là hệ đệm chính khi cơ
+                                        thể bị toan hóa kéo dài.
+                                    </p>
+                                </div>
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">🧬 2. Hệ đệm Amoni ($NH_4^+$)</div>
+                                    <p>
+                                        Chiếm khoảng <strong>2/3</strong> lượng acid bài xuất ròng, có khả năng tăng
+                                        hoạt linh hoạt khi cơ thể bị toan hóa kéo dài.
+                                    </p>
+                                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                                        Hệ thống đệm này hoạt động phức tạp trải dài qua nhiều đoạn nephron:<br>
+                                        • <strong>Tại ống lượn gần:</strong> Axit amin <strong>Glutamine</strong> được
+                                        chuyển hóa bởi enzyme <em>glutaminase</em> sinh ra $2NH_4^+$ và $2HCO_3^-$. Ion
+                                        $HCO_3^-$ mới đi về máu, trong khi $NH_4^+$ được tiết vào lòng ống qua kênh đối
+                                        vận chuyển $Na^+/NH_4^+$.<br>
+                                        • <strong>Quai Henle:</strong> $NH_4^+$ được tái hấp thu tích cực ở nhánh lên
+                                        dày (thay thế vị trí $K^+$ trên đồng vận chuyển $Na^+-K^+-2Cl^-$) và tích tụ
+                                        nồng độ cao ở kẽ tủy thận dưới dạng $NH_3$ và $NH_4^+$.<br>
+                                        • <strong>Ống góp (Cơ chế bẫy khuếch tán):</strong> Xem chi tiết các bước dưới
+                                        đây.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <h3 style="margin-top: 1.5rem;">Cơ chế bẫy khuếch tán Amoniac (Diffusion Trapping) tại ống
+                                góp:</h3>
+                            <ol class="physio-steps">
+                                <li>
+                                    <div class="physio-step-card">
+                                        <span class="physio-step-title">Bước 1: Khuếch tán khí NH3 vào lòng ống
+                                            góp</span>
+                                        Khí amoniac ($NH_3$) tích tụ ở vùng kẽ tủy thận khuếch tán thụ động vào lòng ống
+                                        góp qua màng lipid của tế bào hoặc qua các kênh protein vận chuyển đặc hiệu
+                                        glycoprotein Rhesus (<strong>RhBG</strong> và <strong>RhCG</strong>).
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="physio-step-card">
+                                        <span class="physio-step-title">Bước 2: Bài tiết chủ động H+ từ tế bào kẽ
+                                            Alpha</span>
+                                        Tế bào kẽ alpha bài tiết chủ động $H^+$ vào lòng ống góp thông qua các bơm
+                                        $H^+$-ATPase. Quá trình này giúp giữ pH trong lòng ống góp ở mức acid.
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="physio-step-card">
+                                        <span class="physio-step-title">Bước 3: Phản ứng bẫy ion (Ion trapping)</span>
+                                        Trong lòng ống góp, khí $NH_3$ lập tức kết hợp với ion $H^+$ tự do tạo thành ion
+                                        amoni ($NH_4^+$). Vì màng tế bào biểu mô ống góp hoàn toàn không thấm đối với
+                                        ion tích điện $NH_4^+$, chất này bị khóa chặt ("bẫy") trong dịch ống và buộc
+                                        phải thải ra nước tiểu cùng ion $Cl^-$, hoàn tất quá trình đào thải acid ròng.
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+
+                        <!-- PHẦN III -->
+                        <h2 id="sec-dieu-hoa-bai-tiet" class="section-title">
+                            <span>Phần III: Điều hòa hoạt động bài tiết ion $H^+$</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Sự bài tiết ion $H^+$ và sản sinh $HCO_3^-$ của thận không cố định mà thay đổi linh hoạt
+                                dưới sự kiểm soát của các yếu tố nội môi, khí máu và nội tiết:
+                            </p>
+
+                            <!-- DANH SÁCH THÔNG SỐ VÀ YẾU TỐ ĐIỀU HÒA -->
+                            <ul class="physio-property-list">
+                                <li>
+                                    <span class="physio-property-name">Tình trạng toan hóa máu (Acidosis)</span>
+                                    <span class="physio-property-desc">Khi pH máu giảm hoặc $PCO_2$ tăng (toan hô hấp),
+                                        nồng độ $H^+$ nội bào tăng kích thích trực tiếp hoạt động của bơm NHE3 và
+                                        $H^+$-ATPase màng đỉnh. Đồng thời, toan hóa mạn tính kích thích biểu hiện gene
+                                        enzyme glutaminase ở ống gần sau vài ngày, tăng vọt công suất bài xuất $NH_4^+$
+                                        gấp nhiều lần.</span>
+                                </li>
+                                <li>
+                                    <span class="physio-property-name">Tình trạng kiềm hóa máu (Alkalosis)</span>
+                                    <span class="physio-property-desc">pH dịch ngoại bào tăng làm giảm nồng độ $H^+$ nội
+                                        bào, ức chế bài tiết $H^+$ ở màng đỉnh. Đồng thời, các tế bào kẽ beta
+                                        ($\beta$-intercalated cells) ở ống góp hoạt động ngược lại: chuyển bơm
+                                        $H^+$-ATPase sang màng đáy bên để thải $HCO_3^-$ ra lòng ống qua kênh AE1 màng
+                                        đỉnh.</span>
+                                </li>
+                                <li>
+                                    <span class="physio-property-name">Hệ nội tiết (Aldosterone, Angiotensin II,
+                                        Cortisol)</span>
+                                    <span class="physio-property-desc">
+                                        • <strong>Angiotensin II & Cortisol:</strong> Kích thích trực tiếp kênh NHE3 ở
+                                        ống lượn gần, tăng tái hấp thu $HCO_3^-$.<br>
+                                        • <strong>Aldosterone:</strong> Kích thích trực tiếp bơm $H^+$-ATPase ở màng
+                                        đỉnh của tế bào kẽ alpha ống góp và tăng hấp thu $Na^+$ qua kênh ENaC ở tế bào
+                                        chính tạo điện thế âm lòng ống, gián tiếp thúc đẩy bài xuất $H^+$.
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="physio-property-name">Nồng độ Kali máu ($K^+$)</span>
+                                    <span class="physio-property-desc">
+                                        • <strong>Hạ kali máu:</strong> Thúc đẩy ion $K^+$ đi từ tế bào ra dịch ngoại
+                                        bào để bù đắp, đổi lại $H^+$ đi từ ngoài vào trong tế bào ống thận (shift tế
+                                        bào) $\rightarrow$ toan hóa nội bào kích thích bài xuất $H^+$, gây tình trạng
+                                        <em>"nước tiểu acid nghịch thường"</em>.<br>
+                                        • <strong>Tăng kali máu:</strong> Gây kiềm hóa nội bào tế bào ống thận
+                                        $\rightarrow$ giảm bài tiết $H^+$ và giảm tổng hợp amoniac.
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- PHẦN IV -->
+                        <h2 id="sec-so-do-minh-hoa" class="section-title">
+                            <span>Phần IV: Sơ đồ minh họa cơ chế phân tử</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Dưới đây là các sơ đồ minh họa chi tiết về cơ chế vận chuyển ion và hoạt động đệm tại hệ
+                                thống ống thận (nhấp chuột vào sơ đồ để kiểm tra chi tiết):
+                            </p>
+
+                            <!-- HÌNH 1 -->
+                            <div class="image-placeholder-card">
+                                <div class="image-title">
+                                    <span style="font-size:1.5rem">🖼️</span> Hình 1: Sự bài tiết ion $H^+$ và tái hấp
+                                    thu $HCO_3^-$ tại hệ thống ống thận
+                                </div>
+                                <div class="image-drop-area">
+                                    <div class="image-drop-text">
+                                        <img src="../../images/Phan6/Than_Toankiem_Hinh1.png"
+                                            alt="Sự bài tiết ion H+ và tái hấp thu HCO3-"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả:</strong> Nửa trái mô tả hoạt động tại ống lượn gần và quai Henle sử
+                                    dụng kênh NHE3 ($Na^+/H^+$ exchanger) ở màng đỉnh bài tiết $H^+$ và kênh NBC1
+                                    ($Na^+-3HCO_3^-$ cotransporter) ở màng đáy đưa $HCO_3^-$ về máu. Nửa phải mô tả hoạt
+                                    động tại ống lượn xa và ống góp, nơi tế bào kẽ alpha dùng bơm chủ động $H^+$-ATPase
+                                    ở màng đỉnh để tiết $H^+$ chống lại gradient nồng độ cao, và dùng kênh Anion
+                                    exchanger (AE1) đẩy $HCO_3^-$ mới về máu.
+                                </div>
+                            </div>
+
+                            <!-- HÌNH 2 -->
+                            <div class="image-placeholder-card">
+                                <div class="image-title">
+                                    <span style="font-size:1.5rem">🖼️</span> Hình 2: Hoạt động của hệ đệm amoni
+                                    ($NH_4^+$) tại ống góp (Cơ chế bẫy khuếch tán)
+                                </div>
+                                <div class="image-drop-area">
+                                    <div class="image-drop-text">
+                                        <img src="../../images/Phan6/Than_Toankiem_Hinh2.png"
+                                            alt="Cơ chế bẫy khuếch tán amoniac tại ống góp"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả:</strong> Sơ đồ toàn cảnh hệ thống Amoniac/Amoni trong thận. Thể hiện
+                                    quá trình chuyển hóa glutamine tại ống gần tạo amoni bài tiết vào lòng ống, tiếp tục
+                                    được quai Henle tái hấp thu tích lũy tại tủy thận để làm nguồn đệm khuếch tán bẫy
+                                    proton tại ống góp.
+                                </div>
+                            </div>
+
+                            <!-- HÌNH 3 -->
+                            <div class="image-placeholder-card">
+                                <div class="image-title">
+                                    <span style="font-size:1.5rem">🖼️</span> Hình 3: Cơ chế phân tử tái hấp thu
+                                    $HCO_3^-$ ở ống gần (Berne & Levy Fig 37.3)
+                                </div>
+                                <div class="image-drop-area">
+                                    <div class="image-drop-text">
+                                        <img src="../../images/Phan6/Than_Toankiem_Hinh3.png"
+                                            alt="Sơ đồ chi tiết Berne and Levy Figure 37.3"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <!-- SVG Fallback diagram -->
+                                        <div class="image-fallback"
+                                            style="display:none; width: 100%; max-width: 600px; margin: auto; padding: 1rem;">
+                                            <div
+                                                style="border: 2px dashed var(--color-primary); padding: 2rem; border-radius: var(--radius-md); background: var(--color-surface-offset);">
+                                                <i class="fa-solid fa-microscope"
+                                                    style="font-size: 3rem; color: var(--color-primary); margin-bottom: 1rem;"></i>
+                                                <h4 style="color: var(--color-text);">Sơ đồ cơ chế phân tử màng đỉnh ống
+                                                    gần</h4>
+                                                <p
+                                                    style="font-size: 0.9rem; color: var(--color-text-muted); max-width: 400px; margin: 0.5rem auto 0;">
+                                                    Mô tả chi tiết vị trí kênh NHE3 hoạt động song song với bơm V-type
+                                                    H+-ATPase ở màng đỉnh, và hệ đồng vận chuyển điện thế NBC1
+                                                    ($Na^+/3HCO_3^-$) ở màng đáy bên của tế bào biểu mô ống gần.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả:</strong> Cơ chế màng tế bào biểu mô ống gần: Sự liên kết chặt chẽ của
+                                    các protein xuyên màng. Sự bài tiết $H^+$ được thúc đẩy bằng cả hai động lực: kênh
+                                    trao đổi NHE3 ($Na^+/H^+$) chiếm ưu thế và bơm proton V-ATPase phụ trợ, duy trì dòng
+                                    tái hấp thu bicarbonate tối đa.
+                                </div>
+                            </div>
+
+                            <!-- HÌNH 4 -->
+                            <div class="image-placeholder-card">
+                                <div class="image-title">
+                                    <span style="font-size:1.5rem">🖼️</span> Hình 5: Ba số phận của ion $H^+$ sau khi
+                                    được bài tiết vào lòng ống (Ganong Fig 39-2)
+                                </div>
+                                <div class="image-drop-area">
+                                    <div class="image-drop-text">
+                                        <img src="../../images/Phan6/Than_Toankiem_Hinh4.png"
+                                            alt="Ba số phận của ion H+ bài tiết"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả:</strong> Tóm tắt 3 số phận của ion $H^+$ sau khi đi vào nước tiểu
+                                    nguyên thủy: (1) Kết hợp với $HCO_3^-$ tạo thành $CO_2$ khuếch tán lại vào tế bào để
+                                    hoàn tất chu trình tái hấp thu kiềm. (2) Kết hợp với $HPO_4^{2-}$ tạo thành acid
+                                    phosphate yếu đào thải (acid chuẩn độ). (3) Kết hợp với $NH_3$ tạo thành $NH_4^+$
+                                    thải ra ngoài (đệm amoni).
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PHẦN V -->
+                        <h2 id="sec-lien-he-lam-sang" class="section-title">
+                            <span>Phần V: Liên hệ Lâm sàng (High-Yield Clinical Correlation)</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Bất kỳ sự rối loạn nào trong chuỗi cơ chế phân tử bài tiết acid và tái hấp thu kiềm tại
+                                thận đều dẫn đến các biến đổi toan kiềm nghiêm trọng trên lâm sàng:
+                            </p>
+
+                            <!-- BOX LÂM SÀNG 1 -->
+                            <div class="clinical-note-box">
+                                <h4>🩺 1. Hội chứng Toan hóa ống thận (Renal Tubular Acidosis - RTA)</h4>
+                                <p>
+                                    Là nhóm bệnh lý đặc trưng bởi tình trạng toan chuyển hóa có khoảng trống anion bình
+                                    thường (normal anion gap metabolic acidosis - toan mất kiềm) do suy giảm chức năng
+                                    bài tiết $H^+$ hoặc tái hấp thu $HCO_3^-$ của ống thận:
+                                </p>
+                                <ul style="margin-top: 0.5rem; padding-left: 1.5rem; list-style-type: disc;">
+                                    <li><strong>RTA Type 1 (Distal RTA):</strong> Tổn thương cơ chế bài tiết proton của
+                                        tế bào kẽ alpha ở ống góp (suy bơm $H^+$-ATPase hoặc rò rỉ màng). Thận không thể
+                                        giảm pH nước tiểu xuống dưới 5.3 bất kể tình trạng toan máu. Gây mất $K^+$ máu
+                                        nặng và tăng nguy cơ sỏi calci thận do phosphat calci lắng đọng trong môi trường
+                                        nước tiểu kiềm.</li>
+                                    <li><strong>RTA Type 2 (Proximal RTA):</strong> Tổn thương cơ chế tái hấp thu
+                                        $HCO_3^-$ ở ống lượn gần (giảm hoạt tính NHE3, NBC1 hoặc carbonic anhydrase).
+                                        Thận làm rò rỉ lượng lớn kiềm ra nước tiểu cho tới khi nồng độ kiềm máu hạ xuống
+                                        rất thấp mới đạt trạng thái cân bằng mới. Thường phối hợp trong hội chứng
+                                        Fanconi.</li>
+                                    <li><strong>RTA Type 4 (Hyperkalemic RTA):</strong> Liên quan đến tình trạng thiếu
+                                        hụt Aldosterone (suy thượng thận, bệnh thận đái tháo đường gây giảm renin) hoặc
+                                        đề kháng aldosterone. Việc thiếu aldosterone làm giảm biểu hiện bơm $H^+$-ATPase
+                                        ở tế bào kẽ alpha và giảm hấp thu $Na^+$ qua kênh ENaC ở tế bào chính
+                                        $\rightarrow$ giảm bài tiết $H^+$ và $K^+$, gây toan máu đi kèm tăng kali máu
+                                        đặc trưng.</li>
+                                </ul>
+                            </div>
+
+                            <!-- BOX LÂM SÀNG 2 -->
+                            <div class="clinical-note-box">
+                                <h4>🩺 2. Tác dụng của các thuốc lợi tiểu lên thăng bằng Toan - Kiềm</h4>
+                                <p>
+                                    Cơ chế lọc và hấp thu ion tại các đoạn ống thận chịu sự chi phối mạnh của các nhóm
+                                    thuốc lợi tiểu, tạo ra các rối loạn toan kiềm thứ phát:
+                                </p>
+                                <ul style="margin-top: 0.5rem; padding-left: 1.5rem; list-style-type: disc;">
+                                    <li><strong>Thuốc ức chế Carbonic Anhydrase (Acetazolamide):</strong> Ức chế hoạt
+                                        động của CA ở ống lượn gần $\rightarrow$ chặn đứng quá trình phân ly và tái hợp
+                                        $HCO_3^-$. Thận tăng thải $HCO_3^-$ ra nước tiểu $\rightarrow$ gây toan chuyển
+                                        hóa. Ứng dụng điều trị lợi tiểu nhẹ, giảm nhãn áp, hoặc điều hòa bù trừ kiềm hô
+                                        hấp khi leo núi cao.</li>
+                                    <li><strong>Lợi tiểu quai (Furosemide) & Lợi tiểu Thiazide:</strong> Ức chế hấp thu
+                                        $Na^+$ ở quai Henle và ống lượn xa $\rightarrow$ tăng tải lượng $Na^+$ và nước
+                                        đi xuống ống góp. Tế bào chính ở ống góp tăng cường hấp thu $Na^+$ qua kênh ENaC
+                                        tạo điện thế âm lòng ống $\rightarrow$ kích thích tế bào kẽ alpha bài tiết cực
+                                        mạnh $H^+$ và tăng thải $K^+$ qua kênh ROMK $\rightarrow$ gây <strong>kiềm
+                                            chuyển hóa mất nước hạ kali (hypokalemic contraction alkalosis)</strong>.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <hr class="section-divider">
+
+                        <!-- TÀI LIỆU THAM KHẢO -->
+                        <div class="physio-content">
+                            <h3>Tài liệu tham khảo (AMA Citation Style)</h3>
+                            <div class="physio-text-block" style="font-size: 0.9rem; opacity: 0.95;">
+                                <ol
+                                    style="list-style-type: decimal; padding-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                                    <li>Mai PT, Đặng HAT, Lê QT, Vũ TTQ, Bùi DK. <em>Sinh lý học y khoa</em>. Nhà xuất
+                                        bản Đại học Quốc gia Thành phố Hồ Chí Minh; 2024.</li>
+                                    <li>Koeppen BM, Stanton BA. <em>Berne and Levy Physiology</em>. 8th ed. Elsevier;
+                                        2024.</li>
+                                    <li>Silbernagl S, Despopoulos A. <em>Color Atlas of Physiology</em>. 6th ed. Thieme;
+                                        2009.</li>
+                                    <li>Barrett KE, Barman SM, Boitano S, Brooks HL. <em>Ganong's Review of Medical
+                                            Physiology</em>. 24th ed. McGraw-Hill Medical; 2012.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CỘT MỤC LỤC BÊN PHẢI -->
+                    <div class="physio-toc-sidebar">
+                        <div class="physio-toc-container" id="physio-toc-container">
+                            <!-- Script toc.js sẽ tự động kết xuất mục lục tại đây -->
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+    <!-- Script Sidebar -->
+    <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>

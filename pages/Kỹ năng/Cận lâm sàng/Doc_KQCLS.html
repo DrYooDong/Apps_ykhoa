@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Hệ thống hướng dẫn đọc kết quả xét nghiệm máu, chẩn đoán hình ảnh và các thăm dò chức năng lâm sàng tại CliniPortal.">
+  <title>Đọc Kết Quả Cận Lâm Sàng – CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../css/components/physio-patho.css">
+
+  <script src="../../../js/main.js" defer></script>
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ===================== APP CONTAINER ===================== -->
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item" title="S.lý - S.lý bệnh">
+              <span class="nav-icon">🧬</span>
+              <span class="nav-text">S.lý - S.lý bệnh</span>
+            </a>
+          </li>
+          <li>
+            <a href="../ky-nang.html" class="nav-item active" aria-current="page" title="Kỹ năng">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+              <span class="nav-icon">📄</span>
+              <span class="nav-text">Y học chứng cứ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Y học cổ truyền/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền">
+              <span class="nav-icon">☯️</span>
+              <span class="nav-text">Y học cổ truyền</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- ===================== MAIN CONTENT ===================== -->
+    <div class="main-wrapper" id="mainContent">
+
+      <!--BREADCRUMB-->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../../index.html" class="breadcrumb-link">
+              <span class="home-icon">🏠</span> Home
+            </a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="../ky-nang.html" class="breadcrumb-link">Kỹ năng lâm sàng</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Đọc kết quả cận lâm sàng</li>
+        </ol>
+      </nav>
+
+      <section class="hero-dashboard" aria-labelledby="hero-title">
+        <div class="hero-intro">
+          <h1 id="hero-title">🔬 ĐỌC KẾT QUẢ CẬN LÂM SÀNG</h1>
+          <p>Hệ thống hóa quy trình phân tích chỉ số xét nghiệm huyết học, sinh hóa, chẩn đoán hình ảnh phổi - bụng và
+            thăm dò chức năng tim - hô hấp chuẩn xác.</p>
+        </div>
+      </section>
+
+      <!-- ===== TOOLBAR / CONTROL BAR ===== -->
+      <div class="dashboard-controls">
+        <div class="search-box-container">
+          <span class="search-icon-svg">
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </span>
+          <input type="text" id="lesson-search" placeholder="Tìm kiếm cận lâm sàng..."
+            aria-label="Tìm kiếm cận lâm sàng">
+          <button id="clear-search" class="clear-search-btn" aria-label="Xóa tìm kiếm"
+            style="display: none;">&times;</button>
+        </div>
+        <div class="view-toggle-container">
+          <span class="toggle-label">Chế độ xem:</span>
+          <div class="toggle-buttons">
+            <button id="view-grid-btn" class="toggle-btn active" title="Dạng lưới" aria-label="Xem dạng lưới">
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+            </button>
+            <button id="view-list-btn" class="toggle-btn" title="Dạng danh sách" aria-label="Xem dạng danh sách">
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="8" y1="6" x2="21" y2="6"></line>
+                <line x1="8" y1="12" x2="21" y2="12"></line>
+                <line x1="8" y1="18" x2="21" y2="18"></line>
+                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== DASHBOARD LAYOUT ===== -->
+      <div class="dashboard-layout">
+        <!-- Navigation Sidebar (Sticky) -->
+        <aside class="layout-nav-sidebar" aria-label="Danh mục phần học">
+          <div class="nav-sidebar-sticky">
+            <h4 class="nav-sidebar-title">Danh mục phần</h4>
+            <ul class="part-nav-list">
+              <li>
+                <a href="#part1-section" class="part-nav-item p1 active" data-target="part1-section">
+                  <span class="part-icon"><i class="fa-solid fa-droplet"></i></span>
+                  <span class="part-text">Phần 1: Xét Nghiệm Máu</span>
+                  <span class="part-count-badge">5</span>
+                </a>
+              </li>
+              <li>
+                <a href="#part2-section" class="part-nav-item p2" data-target="part2-section">
+                  <span class="part-icon"><i class="fa-solid fa-xray"></i></span>
+                  <span class="part-text">Phần 2: Hình Ảnh Học</span>
+                  <span class="part-count-badge">2</span>
+                </a>
+              </li>
+              <li>
+                <a href="#part3-section" class="part-nav-item p3" data-target="part3-section">
+                  <span class="part-icon"><i class="fa-solid fa-wave-square"></i></span>
+                  <span class="part-text">Phần 3: Cận Lâm Sàng Khác</span>
+                  <span class="part-count-badge">4</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="layout-content-area" id="lessons-container">
+          <!-- Empty Search State -->
+          <div id="empty-search-state" class="empty-search-state" style="display: none;">
+            <div class="empty-search-icon">🔍</div>
+            <h3>Không tìm thấy cận lâm sàng nào</h3>
+            <p>Vui lòng thử từ khóa khác hoặc xóa bộ lọc.</p>
+          </div>
+
+          <!-- PHẦN 1: XÉT NGHIỆM MÁU -->
+          <section id="part1-section" aria-labelledby="part1-heading">
+            <div class="physio-group-container">
+              <div class="physio-group-header">
+                <span class="physio-group-icon"><i class="fa-solid fa-droplet"></i></span>
+                <h3 id="part1-heading">Phần 1: Xét Nghiệm Máu</h3>
+              </div>
+              <div class="specialty-grid">
+
+                <!-- 1. Đọc Tổng phân tích tế bào máu -->
+                <a href="doc-tpttb-mau.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🩸</div>
+                    <div class="specialty-info">
+                      <h3>Đọc Tổng Phân Tích Tế Bào Máu</h3>
+                      <p>Hướng dẫn 4 bước đọc công thức máu, phân tích dòng hồng cầu, bạch cầu, tiểu cầu và phết máu ngoại vi.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Xem quy trình</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+                <!-- 2. Đọc Điện giải đồ -->
+                <a href="doc-dien-giai-do.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🧪</div>
+                    <div class="specialty-info">
+                      <h3>Đọc Điện Giải Đồ</h3>
+                      <p>Cách tiếp cận phân tích nồng độ K+, Na+, Ca2+, Mg2+, PO4 3- máu và loại trừ các sai số tán huyết giả tạo.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Xem quy trình</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+                <!-- 3. Đọc sinh hóa gan -->
+                <a href="doc-sh-gan.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🧬</div>
+                    <div class="specialty-info">
+                      <h3>Đọc Sinh Hóa Gan (LFTs)</h3>
+                      <p>Phân tích tổn thương hủy hoại tế bào gan (AST/ALT), ứ mật (ALP/GGT), chức năng tổng hợp và bài tiết.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Xem quy trình</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+                <!-- 4. Đọc sinh hóa thận -->
+                <a href="doc-sh-than.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🫘</div>
+                    <div class="specialty-info">
+                      <h3>Đọc Sinh Hóa Thận</h3>
+                      <p>Đánh giá Creatinine, độ lọc cầu thận eGFR, tỷ số BUN/Creatinine và các chỉ số cặn lắng nước tiểu.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Xem quy trình</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+                <!-- 5. Đọc Đông máu -->
+                <a href="doc-dong-mau.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🩸</div>
+                    <div class="specialty-info">
+                      <h3>Đọc Kết Quả Đông Máu</h3>
+                      <p>Phân tích chỉ số PT/INR, APTT, Thời gian Thrombin, Fibrinogen, D-dimer và ảnh hưởng các thuốc chống đông.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Xem quy trình</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+          </section>
+
+          <!-- PHẦN 2: HÌNH ẢNH HỌC -->
+          <section id="part2-section" aria-labelledby="part2-heading">
+            <div class="physio-group-container">
+              <div class="physio-group-header">
+                <span class="physio-group-icon"><i class="fa-solid fa-xray"></i></span>
+                <h3 id="part2-heading">Phần 2: Hình Ảnh Học</h3>
+              </div>
+              <div class="specialty-grid">
+
+                <!-- 1. Đọc X-quang Ngực thẳng -->
+                <a href="doc-xq-nguc.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🩻</div>
+                    <div class="specialty-info">
+                      <h3>Đọc X-Quang Ngực Thẳng</h3>
+                      <p>Phương pháp ABCDE phân tích X-quang phổi thẳng, đánh giá bóng tim, phế trường, màng phổi và trung thất.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Xem quy trình</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+                <!-- 2. Đọc X-quang Bụng không chuẩn bị -->
+                <a href="doc-xq-bung.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🤰</div>
+                    <div class="specialty-info">
+                      <h3>Đọc X-Quang Bụng</h3>
+                      <p>Phân tích dải khí trong ruột, tìm liềm hơi tự do ổ bụng, vôi hóa bất thường và các dị vật can thiệp.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Xem quy trình</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+          </section>
+
+          <!-- PHẦN 3: CẬN LÂM SÀNG KHÁC -->
+          <section id="part3-section" aria-labelledby="part3-heading">
+            <div class="physio-group-container">
+              <div class="physio-group-header">
+                <span class="physio-group-icon"><i class="fa-solid fa-wave-square"></i></span>
+                <h3 id="part3-heading">Phần 3: Cận Lâm Sàng Khác</h3>
+              </div>
+              <div class="specialty-grid">
+
+                <!-- 1. Đọc Điện tâm đồ (ECG) Cơ bản -->
+                <a href="doc-ecg-co-ban.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">📈</div>
+                    <div class="specialty-info">
+                      <h3>Đọc ECG Cơ Bản</h3>
+                      <p>Quy trình 9 bước phân tích điện tâm đồ chuẩn xoang, tính trục, tần số, đánh giá sóng P, QRS, T, khoảng PR, QT.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Xem quy trình</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+                <!-- 2. Đọc Điện tâm đồ (ECG) Nâng cao -->
+                <a href="doc-ecg-nang-cao.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">⚡</div>
+                    <div class="specialty-info">
+                      <h3>Đọc ECG Nâng Cao</h3>
+                      <p>Giải chẩn đoán loạn nhịp QRS hẹp/rộng (AVNRT/VT Brugada), block phân nhánh, định khu mạch vành, hội chứng di truyền.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Xem quy trình</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+                <!-- 3. Đọc Hô hấp ký -->
+                <a href="#" class="specialty-card disabled">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🫁</div>
+                    <div class="specialty-info">
+                      <h3>Đọc Hô Hấp Ký</h3>
+                      <p>Phân tích các chỉ số FVC, FEV1, Tiffeneau/Gaensler giúp chẩn đoán hội chứng tắc nghẽn và hạn chế đường thở.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Đang cập nhật</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+                <!-- 4. Đọc Nhuộm soi vi sinh -->
+                <a href="doc-nhuom-soi.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🔬</div>
+                    <div class="specialty-info">
+                      <h3>Đọc Nhuộm Soi Vi Sinh</h3>
+                      <p>Quy trình và phân tích tiêu bản nhuộm Gram vi khuẩn, soi tươi tìm nấm (KOH), ký sinh trùng (Lugol) và trùng roi.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Xem quy trình</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+          </section>
+        </main>
+      </div><!-- end dashboard-layout -->
+
+    </div><!-- end main-wrapper -->
+  </div><!-- end app-container -->
+
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+  <!-- ===================== SCRIPT ===================== -->
+  <script src="../../../js/physio-patho.js" defer></script>
+  <script src="../../../js/sidebar.js" defer></script>
+</body>
+
+</html>

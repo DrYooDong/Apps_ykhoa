@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CliniPortal - Bản đồ Giải phẫu Huyệt vị Tương tác: Xoa bóp, Bấm huyệt, Châm cứu">
+  <title>Bản đồ Huyệt vị Tương tác – CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  <link rel="stylesheet" href="css/body-map.css">
+
+  <script src="../../../js/main.js" defer></script>
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+
+  <script src="data/acupoints-data.js"></script>
+  <script src="data/meridians-data.js"></script>
+  <script src="data/danger-zones-data.js"></script>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li><a href="../../../index.html" class="nav-item" title="Trang chủ"><span class="nav-icon">🏠</span><span
+                class="nav-text">Trang chủ</span></a></li>
+          <li><a href="../../Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item" title="Sinh lý"><span
+                class="nav-icon">🧬</span><span class="nav-text">Sinh lý</span></a></li>
+          <li><a href="../../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng lâm sàng"><span
+                class="nav-icon">🩺</span><span class="nav-text">Kỹ năng lâm sàng</span></a></li>
+          <li><a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng"><span
+                class="nav-icon">🤒</span><span class="nav-text">Tiếp cận lâm sàng</span></a></li>
+          <li><a href="../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ lâm sàng"><span
+                class="nav-icon">⚙️</span><span class="nav-text">Công cụ lâm sàng</span></a></li>
+          <li><a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý"><span
+                class="nav-icon">💊</span><span class="nav-text">Dược lý lâm sàng</span></a></li>
+          <li><a href="../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ"><span
+                class="nav-icon">📄</span><span class="nav-text">Y học chứng cứ</span></a></li>
+          <li><a href="../y-hoc-co-truyen.html" class="nav-item active" aria-current="page"
+              title="Y học cổ truyền"><span class="nav-icon">☯️</span><span class="nav-text">Y học cổ truyền</span></a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-wrapper">
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../../../index.html" class="breadcrumb-link"><span
+                class="home-icon">🏠</span> Trang chủ</a></li>
+          <li class="breadcrumb-item"><a href="../y-hoc-co-truyen.html" class="breadcrumb-link">Y học cổ truyền</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Bản đồ Huyệt vị</li>
+        </ol>
+      </nav>
+
+      <section class="hero-dashboard" aria-labelledby="hero-title">
+        <div class="hero-pattern"></div>
+        <div class="hero-intro">
+          <h1 id="hero-title">📍 BẢN ĐỒ GIẢI PHẪU HUYỆT VỊ</h1>
+          <p>Bản đồ tương tác 14 đường kinh mạch & huyệt vị chủ chốt — dựa trên Atlas of Acupuncture Points.</p>
+        </div>
+      </section>
+
+      <div class="bodymap-toolbar" id="bodymapToolbar">
+        <span class="toolbar-group-label">Lớp cấu trúc:</span>
+        <div class="toolbar-group" id="layerToggles">
+          <button class="layer-btn layer-anatomy active" data-layer="anatomy" title="Giải phẫu cơ thể">
+            <span class="btn-icon">🦴</span> <span>Giải phẫu cơ thể</span>
+          </button>
+          <button class="layer-btn layer-meridians active" data-layer="meridians" title="Hệ thống đường kinh mạch">
+            <span class="btn-icon">🔀</span> <span>Hệ Kinh mạch</span>
+          </button>
+          <button class="layer-btn layer-acupoints active" data-layer="acupoints" title="Hệ thống huyệt vị">
+            <span class="btn-icon">📍</span> <span>Hệ Huyệt vị</span>
+          </button>
+          <button class="layer-btn layer-danger" data-layer="danger" title="Vùng nguy hiểm giải phẫu">
+            <span class="btn-icon">⚠️</span> <span>Vùng nguy hiểm</span>
+          </button>
+        </div>
+
+        <div class="toolbar-sep"></div>
+
+        <span class="toolbar-group-label">Vị trí giải phẫu:</span>
+        <div class="toolbar-group" id="regionSelector">
+          <button class="region-btn active" data-region="all" title="Toàn thân">Toàn thân</button>
+          <button class="region-btn" data-region="head-neck" title="Vùng Đầu - Mặt - Cổ">Vùng Đầu - Cổ</button>
+          <button class="region-btn" data-region="chest-abdomen" title="Vùng Ngực - Bụng">Vùng Ngực - Bụng</button>
+          <button class="region-btn" data-region="back" title="Vùng Lưng">Vùng Lưng</button>
+          <button class="region-btn" data-region="upper-limb" title="Chi trên (Hệ tay)">Chi trên</button>
+          <button class="region-btn" data-region="lower-limb" title="Chi dưới (Hệ chân)">Chi dưới</button>
+        </div>
+
+        <div class="toolbar-sep"></div>
+
+        <span class="toolbar-group-label">Mặt quan sát:</span>
+        <div class="toolbar-group" id="viewToggle">
+          <button class="view-btn active" data-view="front" title="Mặt trước (Anterior / Ventral)">Mặt trước</button>
+          <button class="view-btn" data-view="back" title="Mặt sau (Posterior / Dorsal)">Mặt sau</button>
+        </div>
+
+        <div class="toolbar-sep"></div>
+
+        <div class="bodymap-search">
+          <span class="search-icon">🔍</span>
+          <input type="search" id="acupointSearch" placeholder="Tìm huyệt (VD: Hợp Cốc, LI4)..." autocomplete="off">
+        </div>
+      </div>
+
+      <div class="bodymap-layout">
+        <div class="bodymap-canvas-wrapper" id="canvasWrapper">
+          <svg id="bodymapSVG" viewBox="0 0 500 1000" preserveAspectRatio="xMidYMid meet"
+            xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="heatmap-danger">
+                <stop offset="0%" stop-color="rgba(225,29,72,0.55)" />
+                <stop offset="100%" stop-color="rgba(225,29,72,0)" />
+              </radialGradient>
+              <radialGradient id="heatmap-caution">
+                <stop offset="0%" stop-color="rgba(217,119,6,0.45)" />
+                <stop offset="100%" stop-color="rgba(217,119,6,0)" />
+              </radialGradient>
+            </defs>
+
+            <g id="layer-anatomy" class="body-layer">
+              <image id="anatomy-img-front" href="../../../assets/images/anatomy_front.png" x="0" y="0" width="500"
+                height="900" preserveAspectRatio="none" opacity="1" class="anatomy-real-img" />
+              <image id="anatomy-img-back" href="../../../assets/images/anatomy_back.png" x="0" y="0" width="500"
+                height="900" preserveAspectRatio="none" opacity="0" class="anatomy-real-img"
+                style="pointer-events:none; display:none;" />
+            </g>
+
+            <g id="layer-meridians" class="body-layer"></g>
+
+            <g id="layer-acupoints" class="body-layer"></g>
+
+            <g id="layer-danger" class="body-layer hidden"></g>
+          </svg>
+
+          <div class="bodymap-tooltip" id="bodymapTooltip">
+            <span class="tt-id"></span>
+            <span class="tt-name"></span>
+          </div>
+
+          <div class="bodymap-legend">
+            <div class="legend-title">Mức độ an toàn lâm sàng</div>
+            <div class="legend-items">
+              <div class="legend-item">
+                <div class="legend-dot" style="background:var(--color-success)"></div> An toàn
+              </div>
+              <div class="legend-item">
+                <div class="legend-dot" style="background:var(--color-warning)"></div> Thận trọng
+              </div>
+              <div class="legend-item">
+                <div class="legend-dot" style="background:var(--color-rose)"></div> Nguy hiểm
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bodymap-detail" id="bodymapDetail">
+          <div class="detail-scroll" id="detailScroll">
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+  <script src="../../../js/sidebar.js"></script>
+  <script src="js/body-map.js"></script>
+</body>
+
+</html>

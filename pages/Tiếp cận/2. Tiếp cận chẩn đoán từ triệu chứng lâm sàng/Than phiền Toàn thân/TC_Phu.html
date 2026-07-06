@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lưu đồ thuật toán tiếp cận chẩn đoán phân biệt hội chứng Phù khu trú và Phù toàn thân.">
+    <title>Tiếp cận chẩn đoán Phù – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal -->
+    <link rel="stylesheet" href="../../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../../css/components/footer.css">
+
+    <!-- CSS Flowchart dùng chung -->
+    <link rel="stylesheet" href="../../../../../css/components/flowchart.css">
+
+    <!-- Script điều hướng hệ thống -->
+    <script src="../../../../../js/main.js" defer></script>
+    <script src="../../../../../components/header.js" defer></script>
+    <script src="../../../../../components/footer.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+            <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../tiep-can.html" class="nav-item active" aria-current="page" title="Tiếp cận">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+        <!-- MAIN WRAPPER -->
+        <main class="main-wrapper flow-page">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container">
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item">
+                        <a href="../../../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="../../../tiep-can.html" class="breadcrumb-link">Tiếp cận</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Tiếp cận chẩn đoán Phù</li>
+                </ol>
+            </nav>
+
+            <!-- HERO BANNER -->
+            <div class="flow-hero">
+                <div class="hero-badge">🧬 Sinh lý bệnh & Lâm sàng</div>
+                <h1>TIẾP CẬN CHẨN ĐOÁN HỘI CHỨNG PHÙ</h1>
+                <p>Thuật toán lâm sàng phân loại phù khu trú, phù toàn thân và biện luận tìm nguyên nhân gốc. Nhấp vào các node để xem chi tiết chẩn đoán.</p>
+            </div>
+
+            <!-- TABS SWITCHER -->
+            <div class="flow-tabs">
+                <button class="flow-tab-btn active" id="tab-btn-dist" onclick="switchPane('dist')">
+                    <span class="tab-dot"></span> Sơ đồ: Phân loại & Tiếp cận Phù
+                </button>
+            </div>
+
+            <!-- FLOW CANVAS -->
+            <div class="flow-canvas-wrapper">
+
+                <div class="flow-pane active" id="pane-dist">
+                    <div class="flow-col">
+                        
+                        <!-- 1. Node Bắt đầu -->
+                        <div class="fnode fnode-start">
+                            <div class="fnode-tag">Bước 1 • Khám lâm sàng</div>
+                            <div class="fnode-title">Xác định tính chất Phù</div>
+                            <p class="fnode-body">
+                                Kiểm tra vị trí phù (một bên hay hai bên), tính chất phù (phù mềm ấn lõm hay phù cứng, phù trắng hay phù đỏ/tím), đau hay không đau.
+                            </p>
+                        </div>
+
+                        <!-- Mũi tên kết nối -->
+                        <div class="flow-connector">
+                            <div class="flow-connector-line"></div>
+                            <div class="flow-connector-arrow"></div>
+                        </div>
+
+                        <!-- 2. Rẽ nhánh Phù khu trú vs Phù toàn thân -->
+                        <div class="flow-branch">
+                            
+                            <!-- Nhánh Phù khu trú (1 bên chi hoặc vùng cụ thể) -->
+                            <div class="flow-branch-side">
+                                <div class="flow-connector-label fc-yes">PHÙ KHU TRÚ (1 BÊN CHI)</div>
+                                <div class="flow-connector">
+                                    <div class="flow-connector-line"></div>
+                                    <div class="flow-connector-arrow"></div>
+                                </div>
+                                
+                                <div class="fnode fnode-warn clickable" onclick="toggleNode(this)">
+                                    <div class="fnode-tag">Phù khu trú</div>
+                                    <div class="fnode-title">Định hướng nguyên nhân tại chỗ</div>
+                                    <p class="fnode-body">
+                                        Nghi ngờ tắc nghẽn mạch máu, bạch mạch hoặc nhiễm trùng tại chỗ.
+                                    </p>
+                                    <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Xem các nguyên nhân thường gặp</div>
+                                    <div class="fnode-details">
+                                        <div class="detail-box">
+                                            <ul>
+                                                <li><strong>Huyết khối tĩnh mạch sâu (DVT):</strong> Phù 1 bên chi dưới cấp tính, căng đau, tăng chu vi bắp chân > 3cm. Chỉ định: Siêu âm Doppler mạch máu chi dưới.</li>
+                                                <li><strong>Viêm mô tế bào:</strong> Phù kèm sưng, nóng, đỏ, đau rõ rệt, có thể sốt. Điều trị: Kháng sinh đường toàn thân.</li>
+                                                <li><strong>Tắc bạch mạch (Lymphedema):</strong> Phù cứng, không ấn lõm, da dày lên (chân voi). Thường gặp sau phẫu thuật nạo hạch hoặc xạ trị.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Nhánh Phù toàn thân (Đối xứng hai bên) -->
+                            <div class="flow-branch-side">
+                                <div class="flow-connector-label fc-no">PHÙ TOÀN THÂN (2 BÊN CHI)</div>
+                                <div class="flow-connector">
+                                    <div class="flow-connector-line"></div>
+                                    <div class="flow-connector-arrow"></div>
+                                </div>
+
+                                <div class="fnode fnode-info clickable" onclick="toggleNode(this)">
+                                    <div class="fnode-tag">Phù toàn thân</div>
+                                    <div class="fnode-title">Khảo sát chức năng Tạng (Tim, Gan, Thận, Dinh dưỡng)</div>
+                                    <p class="fnode-body">
+                                        Nghi ngờ rối loạn áp lực thủy tĩnh hoặc giảm áp lực keo huyết tương toàn thân.
+                                    </p>
+                                    <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Xem các tạng cần khảo sát</div>
+                                    <div class="fnode-details">
+                                        <div class="detail-box">
+                                            <div class="detail-box-title">🔍 Biện luận theo hệ cơ quan:</div>
+                                            <ul>
+                                                <li><strong>Suy tim:</strong> Phù hai chi dưới (nặng về chiều), kèm khó thở khi nằm/gắng sức, tĩnh mạch cổ nổi. Khảo sát: Siêu âm tim, NT-proBNP.</li>
+                                                <li><strong>Xơ gan:</strong> Phù chi dưới đi kèm cổ trướng (báng bụng), tuần hoàn bàng hệ, vàng da. Khảo sát: Siêu âm bụng, Albumin máu, AST/ALT.</li>
+                                                <li><strong>Hội chứng thận hư / Suy thận:</strong> Phù toàn thân xuất hiện sớm ở mặt/mi mắt (nặng về sáng), tiểu ít. Khảo sát: Protein niệu 24h, Creatinine máu, Albumin máu giảm nặng.</li>
+                                                <li><strong>Suy dinh dưỡng / Suy kiệt:</strong> Giảm cung cấp Albumin.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div><!-- End Flow Branch -->
+
+                    </div>
+                </div>
+
+            </div><!-- End Flow Canvas Wrapper -->
+        </main>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+    <!-- Scripts dùng chung -->
+    <script src="../../../../../js/flowchart.js"></script>
+</body>
+
+</html>

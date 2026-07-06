@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang='vi' data-theme='light'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta name='description'
+    content='Khám họng cổ theo Macleod: Hướng dẫn khám khoang miệng, amidan, sờ hạch vùng cổ phát hiện các u hạch di căn và tiếp cận bệnh nhân khàn tiếng.'>
+  <title>
+    Khám Họng Cổ - CliniPortal
+  </title>
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+  <link
+    href='https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap'
+    rel='stylesheet'>
+  <link rel='stylesheet' href="../../../../css/reset.css">
+  <link rel='stylesheet' href="../../../../css/main.css">
+  <link rel='stylesheet' href="../../../../css/components/header.css">
+  <link rel='stylesheet' href="../../../../css/components/sidebar.css">
+  <link rel='stylesheet' href="../../../../css/components/footer.css">
+  <script src="../../../../components/header.js">
+  </script>
+  <script src="../../../../components/footer.js">
+  </script>
+  <style>
+    :root {
+      --a: #6d28d9;
+      --b: #7c3aed;
+      --c: #ddd6fe;
+    }
+  </style>
+  <link rel='stylesheet' href="../../../../css/components/clinical-skill.css">
+</head>
+
+<body>
+  <div id='header-placeholder' data-header-path="../../../../components/header.html">
+  </div>
+  <div class='sidebar-overlay' id='sidebarOverlay'>
+  </div>
+  <div class='app-container'>
+    <aside class='app-sidebar' id='appSidebar'>
+      <button id='sidebar-toggle-arrow' class='sidebar-toggle-arrow' aria-label='Thu gọn/Mở rộng Sidebar'>
+        <svg viewBox='0 0 24 24' width='14' height='14' stroke='currentColor' stroke-width='2.5' fill='none'
+          stroke-linecap='round' stroke-linejoin='round' class='toggle-arrow-svg'>
+          <polyline points='15 18 9 12 15 6'>
+          </polyline>
+        </svg>
+      </button>
+      <nav class='sidebar-nav' aria-label='Điều hướng chính'>
+        <ul class='nav-list' role='list'>
+          <li>
+            <a href="../../../../index.html" class='nav-item'>
+              <span class='nav-icon'>
+                🏠
+              </span>
+              <span class='nav-text'>
+                Trang chủ
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../ky-nang.html" class='nav-item'>
+              <span class='nav-icon'>
+                🩺
+              </span>
+              <span class='nav-text'>
+                Kỹ năng lâm sàng
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Tiếp cận/tiep-can.html" class='nav-item'>
+              <span class='nav-icon'>
+                🤒
+              </span>
+              <span class='nav-text'>
+                Tiếp cận lâm sàng
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Công cụ/cong-cu.html" class='nav-item'>
+              <span class='nav-icon'>
+                ⚙️
+              </span>
+              <span class='nav-text'>
+                Công cụ lâm sàng
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <div class='main-wrapper' id='mainContent'>
+      <nav aria-label='Breadcrumb' class='breadcrumb-container'>
+        <ol class='breadcrumb-list'>
+          <li class='breadcrumb-item'>
+            <a href="../../../../index.html" class='breadcrumb-link'>
+              <span class='home-icon'>
+                🏠
+              </span>
+              Home
+            </a>
+          </li>
+          <li class='breadcrumb-item'>
+            <a href="../../ky-nang.html" class='breadcrumb-link'>
+              Kỹ năng lâm sàng
+            </a>
+          </li>
+          <li class='breadcrumb-item'>
+            <a href='KN_TaiMuiHong.html' class='breadcrumb-link'>
+              Khám tai mũi họng
+            </a>
+          </li>
+          <li class='breadcrumb-item active' aria-current='page'>
+            Khám họng cổ
+          </li>
+        </ol>
+      </nav>
+      <section class='hero'>
+        <h1>
+          Khám Họng Cổ (Miệng, Hầu Họng & Cổ)
+        </h1>
+        <p>
+          Quy trình hướng dẫn hỏi bệnh và khám lâm sàng khoang miệng, amidan, các tuyến nước bọt và hệ thống hạch cổ theo Macleod's Clinical Examination. Tiếp cận chẩn đoán khàn tiếng mãn tính và các khối u vùng cổ.
+        </p>
+        <div class='quick'>
+          <div class='qi'>
+            <b>
+              Tư thế
+            </b>
+            Ngồi thẳng đối diện bác sĩ, đầu ngửa nhẹ hoặc cúi tùy theo vị trí sờ nắn hạch cổ
+          </div>
+          <div class='qi'>
+            <b>
+              Điểm nhấn
+            </b>
+            Nhìn niêm mạc miệng & lưỡi, sờ bimanual tuyến nước bọt, khám hạch cổ từ phía sau
+          </div>
+          <div class='qi'>
+            <b>
+              Red flags
+            </b>
+            Khàn tiếng >3 tuần, loét miệng/amidan không lành >3 tuần, hạch thượng đòn trái (<span class="term-hl">Virchow</span>), khít hàm
+          </div>
+        </div>
+      </section>
+      <div class='tabs'>
+        <button class='tab-btn active' data-tab='core'>
+          Nền tảng
+        </button>
+        <button class='tab-btn' data-tab='hx'>
+          Hỏi bệnh
+        </button>
+        <button class='tab-btn' data-tab='exam'>
+          Khám
+        </button>
+        <button class='tab-btn' data-tab='int'>
+          Biện luận
+        </button>
+        <button class='tab-btn' data-tab='tests'>
+          Cận lâm sàng
+        </button>
+        <button class='tab-btn' data-tab='osce'>
+          <span class="term-hl-secondary">OSCE</span>
+        </button>
+      </div>
+
+      <!-- TAB: NỀN TẢNG -->
+      <section class='tab active' id='core'>
+        <div class='card'>
+          <h2>Giải phẫu và Sinh lý học lâm sàng (<span class="term-hl">Anatomy and physiology</span>)</h2>
+          <ul>
+            <li><strong>Khoang miệng (<span class="term-hl">Mouth</span>):</strong> Giới hạn từ môi phía trước đến trụ trước amidan phía sau. Lưỡi có nhú hình chỉ chứa nụ vị giác ở 2/3 trước, ranh giới với 1/3 sau là các nhú đài lớn xếp hình chữ V. Tuyến nước bọt gồm:
+              <ul>
+                <li><em>Tuyến mang tai:</em> Ống Stenon đổ vào niêm mạc má đối diện răng cối lớn số 2 hàm trên.</li>
+                <li><em>Tuyến dưới hàm:</em> Ống Wharton đổ vào sàn miệng ngay cạnh hãm lưỡi.</li>
+              </ul>
+            </li>
+            <li><strong>Hầu họng & Thanh quản (<span class="term-hl">Throat</span>):</strong> Thanh quản (hộp phát âm và bảo vệ đường thở) gồm sụn giáp và sụn nhẫn. Màng nhẫn giáp là nơi thực hiện thủ thuật mở khí quản cấp cứu. Dây thần kinh thanh quản quặt ngược (nhánh của dây X) chi phối vận động hầu hết các cơ thanh quản và cảm giác dưới dây thanh.</li>
+            <li><strong>Vùng cổ (<span class="term-hl">Neck</span>):</strong> Cơ ức đòn chũm chia cổ thành tam giác cổ trước và tam giác cổ sau. Các nhóm hạch cổ dẫn lưu bạch huyết từ da đầu, tai, mũi xoang, khoang miệng, thanh quản và tuyến giáp.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: HỎI BỆNH -->
+      <section class='tab' id='hx'>
+        <div class='card'>
+          <h2>Các triệu chứng lâm sàng thường gặp</h2>
+          <div style='overflow-x: auto; margin-top: 12px;'>
+            <table class='cmp'>
+              <thead>
+                <tr>
+                  <th>Triệu chứng</th>
+                  <th>Chẩn đoán phân biệt chính</th>
+                  <th>Dấu hiệu cờ đỏ gợi ý ác tính / Nguy kịch</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Đau miệng (<span class="term-hl">Sore mouth</span>)</strong></td>
+                  <td>Loét aphthe, chấn thương niêm mạc răng giả, nấm miệng (<span class="term-hl">candidiasis</span>), lichen phẳng.</td>
+                  <td>Vết loét miệng kéo dài >3 tuần không tự lành: Nghi ngờ ung thư khoang miệng (biểu mô tế bào vảy).</td>
+                </tr>
+                <tr>
+                  <td><strong>Đau họng (<span class="term-hl">Sore throat</span>)</strong></td>
+                  <td>Viêm họng/amidan cấp do virus/vi khuẩn, bệnh tăng bạch cầu đơn nhân nhiễm khuẩn (sốt tuyến).</td>
+                  <td>Khít hàm (<span class="term-hl">trismus</span>), khó nuốt, đau tai xuất chiếu: Áp xe quanh amidan (<span class="term-hl">Quinsy</span>). Nuốt đau dữ dội kèm khó thở ở trẻ em: Viêm nắp thanh môn cấp.</td>
+                </tr>
+                <tr>
+                  <td><strong>Khàn tiếng (<span class="term-hl">Dysphonia</span>)</strong></td>
+                  <td>Viêm thanh quản cấp do cảm lạnh, hạt xơ/polyp dây thanh do lạm dụng giọng nói, trào ngược dạ dày.</td>
+                  <td>Khàn tiếng liên tục >3 tuần ở người trung niên hút thuốc lá: Nghi ngờ ung thư thanh quản. Ho kiểu "bò" (<span class="term-hl">bovine cough</span>) không bùng nổ: Liệt dây thần kinh thanh quản quặt ngược (chèn ép do u phổi/thực quản).</td>
+                </tr>
+                <tr>
+                  <td><strong>Tiếng thở rít (<span class="term-hl">Stridor</span>)</strong></td>
+                  <td>Hẹp thanh quản hoặc khí quản (dị vật đường thở, viêm nắp thanh môn, chấn thương vùng cổ).</td>
+                  <td>Stridor thì hít vào âm sắc cao chỉ điểm hẹp nghiêm trọng tại hoặc trên mức dây thanh. Đây là <strong>cấp cứu đường thở khẩn cấp</strong>.</td>
+                </tr>
+                <tr>
+                  <td><strong>Khối u vùng cổ (<span class="term-hl">Neck lump</span>)</strong></td>
+                  <td>Nang giáp móng, u tuyến mang tai lành tính, hạch viêm phản ứng sau nhiễm trùng răng miệng/họng.</td>
+                  <td>Khối u cứng, cố định, không đau tăng nhanh kích thước ở người hút thuốc/rượu mạn: Hạch cổ di căn ung thư tế bào vảy. Khối u thượng đòn trái (hạch Virchow): Di căn ung thư dạ dày.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class='card'>
+          <h2>Cảm giác vướng họng (<span class="term-hl">Globus pharyngeus</span>) vs Nuốt khó (<span class="term-hl">Dysphagia</span>)</h2>
+          <ul>
+            <li><strong>Cảm giác vướng họng (<span class="term-hl">Globus</span>):</strong> Bệnh nhân có cảm giác nghẹn, vướng một khối ở cổ họng nhưng <em>khám hoàn toàn bình thường</em>. Triệu chứng thay đổi từng ngày, thường giảm đi hoặc biến mất khi nuốt thức ăn. Thường liên quan đến tình trạng lo âu, thói quen đằng hắng hoặc trào ngược dịch dạ dày.</li>
+            <li><strong>Nuốt khó/Nuốt đau (<span class="term-hl">Dysphagia/Odynophagia</span>):</strong> Khó nuốt thực sự đối với thức ăn đặc hoặc lỏng, tăng dần. Đây là dấu hiệu cờ đỏ của hẹp thực quản hoặc ung thư vùng hầu họng - thực quản, cần soi thực quản/họng khẩn cấp.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: KHÁM -->
+      <section class='tab' id='exam'>
+        <div class='card'>
+          <h2>Quy trình khám Miệng và Họng miệng</h2>
+          <ul class='check'>
+            <li>
+              <input type='checkbox'>
+              <span><strong>Chuẩn bị:</strong> Sử dụng đèn đội đầu để tự do cả hai tay. Yêu cầu bệnh nhân tháo răng giả nếu có. Sử dụng hai cây đè lưỡi gỗ.</span>
+            </li>
+            <li>
+              <input type='checkbox'>
+              <span><strong>1. Nhìn niêm mạc miệng:</strong> Khám niêm mạc tiền đình miệng, niêm mạc má tìm vết loét, mảng trắng. Xác định lỗ đổ ống Stenon đối diện răng cối lớn số 2 hàm trên (bóp nhẹ tuyến mang tai xem có mủ chảy ra không).</span>
+            </li>
+            <li>
+              <input type='checkbox'>
+              <span><strong>2. Khám sàn miệng & lưỡi:</strong> Yêu cầu bệnh nhân cong lưỡi lên vòm miệng để quan sát mặt dưới lưỡi và sàn miệng. Xác định lỗ đổ ống Wharton cạnh hãm lưỡi. Khám bờ bên của lưỡi. Yêu cầu thè lưỡi thẳng ra trước tìm dấu lệch một bên (liệt dây XII).</span>
+            </li>
+            <li>
+              <input type='checkbox'>
+              <span><strong>3. Khám họng và amidan:</strong> Dùng đè lưỡi ép 2/3 trước lưỡi xuống, yêu cầu bệnh nhân phát âm "Aaah" để quan sát di động vòm hầu. Quan sát kích thước, màu sắc amidan, tìm giả mạc hay dịch mủ ở các hốc amidan. Đánh giá lưỡi gà có bị lệch bên không.</span>
+            </li>
+            <li>
+              <input type='checkbox'>
+              <span><strong>4. Sờ hai tay (<span class="term-hl">Bimanual palpation</span>):</strong> Đeo găng, dùng một ngón tay trỏ đưa vào trong khoang miệng phối hợp với bàn tay còn lại sờ nắn bên ngoài má/dưới hàm. Kỹ thuật này bắt buộc để đánh giá mật độ, ranh giới khối u sàn miệng hoặc sỏi tuyến nước bọt dưới hàm.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class='card'>
+          <h2>Quy trình khám Cổ và Hạch cổ (<span class="term-hl">Neck lump examination</span>)</h2>
+          <ul class='check'>
+            <li>
+              <input type='checkbox'>
+              <span><strong>1. Nhìn vùng cổ:</strong> Bộc lộ toàn bộ vùng cổ của bệnh nhân. Quan sát từ phía trước tìm vết sẹo mổ cũ, sự đối xứng của các cơ, nhịp đập động mạch cảnh hoặc khối u gồ lên.</span>
+            </li>
+            <li>
+              <input type='checkbox'>
+              <span><strong>2. Khám khối u đường giữa:</strong>
+                <ul>
+                  <li>Yêu cầu bệnh nhân nuốt một ngụm nước: Khối u tuyến giáp hoặc nang giáp móng sẽ di động lên trên theo nhịp nuốt do gắn vào khí quản và mạc trước giáp.</li>
+                  <li>Yêu cầu bệnh nhân thè lưỡi ra trước: Nang giáp móng sẽ di động kéo lên trên rõ rệt khi thè lưỡi vì đường rò nang gắn chặt với xương móng và đáy lưỡi. Khối u tuyến giáp không di động khi thè lưỡi.</li>
+                </ul>
+              </span>
+            </li>
+            <li>
+              <input type='checkbox'>
+              <span><strong>3. Sờ nắn các nhóm hạch cổ (Thực hiện từ phía sau bệnh nhân):</strong>
+                <ul>
+                  <li>Yêu cầu bệnh nhân cúi nhẹ đầu ra trước để làm chùng các cơ cổ.</li>
+                  <li>Dùng các đầu ngón tay của cả hai bàn tay sờ nắn đối xứng hai bên theo thứ tự:
+                    1. Nhóm dưới cằm (<span class="term-hl">submental</span>)
+                    2. Nhóm dưới hàm (<span class="term-hl">submandibular</span>)
+                    3. Nhóm trước tai và sau tai (<span class="term-hl">pre/post-auricular</span>)
+                    4. Nhóm chẩm (<span class="term-hl">occipital</span>)
+                    5. Nhóm hạch cổ nông dọc cơ ức đòn chũm
+                    6. Nhóm hạch cổ sâu (nằm dưới cơ ức đòn chũm)
+                    7. Nhóm hạch tam giác cổ sau
+                    8. Nhóm hạch thượng đòn (<span class="term-hl">supraclavicular</span>) - chú ý hố thượng đòn trái tìm hạch Virchow.
+                  </li>
+                </ul>
+              </span>
+            </li>
+            <li>
+              <input type='checkbox'>
+              <span><strong>4. Mô tả tính chất khối u cổ:</strong> Kích thước, vị trí giải phẫu, mật độ (mềm, chắc hay cứng như đá), bờ rõ hay không, có di động hay cố định vào cơ/xương sâu, có đau khi sờ không, có phập phều hay thấu quang (nang bạch mạch) không.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: BIỆN LUẬN -->
+      <section class='tab' id='int'>
+        <div class='grid2'>
+          <div class='card'>
+            <h2>Biện luận tổn thương niêm mạc miệng</h2>
+            <ul>
+              <li><strong>Mảng trắng niêm mạc miệng:</strong>
+                <ul>
+                  <li><em>Nấm miệng (<span class="term-hl">Candida</span>):</em> Mảng trắng như váng sữa, dễ dàng dùng đè lưỡi cạo bong ra lộ nền niêm mạc đỏ rỉ máu bên dưới. Gặp ở người suy giảm miễn dịch, đái tháo đường, hoặc sau dùng kháng sinh/corticoid xịt.</li>
+                  <li><em>Bạch sản (<span class="term-hl">Leukoplakia</span>):</em> Mảng trắng phẳng, bám chặt vào niêm mạc lưỡi/má, <strong>không thể cạo bong ra</strong>. Đây là tổn thương tiền ung thư liên quan đến hút thuốc/rượu mạn tính, bắt buộc phải sinh thiết.</li>
+                </ul>
+              </li>
+              <li><strong>Áp xe quanh amidan (<span class="term-hl">Quinsy</span>):</strong> Biến chứng của viêm amidan cấp. Biểu hiện khít hàm nặng (không mở miệng to được do kích thích cơ chân bướm), giọng nói ngậm hạt thị (<span class="term-hl">hot-potato voice</span>), lưỡi gà bị đẩy lệch sang bên đối diện, amidan một bên sưng phồng đỏ rực. Cần chọc hút mủ cấp cứu.</li>
+            </ul>
+          </div>
+          <div class='card'>
+            <h2>Biện luận bản chất khối u vùng cổ</h2>
+            <ul>
+              <li><strong>Khối u đường giữa:</strong>
+                <ul>
+                  <li>Nang giáp móng (nang ống giáp lưỡi): u nang bẩm sinh, di động lên trên khi thè lưỡi và nuốt, thường gặp ở người trẻ tuổi.</li>
+                  <li>U tuyến giáp (phình giáp, nhân giáp): di động khi nuốt, không di động khi thè lưỡi.</li>
+                </ul>
+              </li>
+              <li><strong>Khối u vùng bên cổ:</strong>
+                <ul>
+                  <li>U nang khe mang (<span class="term-hl">branchial cyst</span>): u nang lành tính nằm ở 1/3 trên bờ trước cơ ức đòn chũm, phập phều, trơn láng, không đau, thường xuất hiện ở người trẻ.</li>
+                  <li>Hạch cổ ác tính: Thường cứng như đá, giới hạn không rõ, dính chặt cố định vào các cấu trúc xung quanh, không đau. Hầu hết là di căn từ ung thư biểu mô tế bào vảy (<span class="term-hl">SCC</span>) đường hô hấp/tiêu hóa trên.</li>
+                  <li>Sưng tuyến mang tai: U tuyến đa hình mang tai (<span class="term-hl">pleomorphic adenoma</span>) là u lành tính thường gặp nhất ở thùy đuôi tuyến mang tai (góc hàm dưới tai). Nếu khối u mang tai tiến triển nhanh, cứng kèm liệt mặt (liệt dây VII) là dấu hiệu u ác tính tuyến mang tai.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: CẬN LÂM SÀNG -->
+      <section class='tab' id='tests'>
+        <div class='card'>
+          <h2>Cận lâm sàng vùng Miệng, Họng và Cổ</h2>
+          <ul>
+            <li><strong>Siêu âm vùng cổ (<span class="term-hl">Neck Ultrasound</span>):</strong> Cận lâm sàng đầu tay cho mọi khối u vùng cổ. Giúp phân biệt u đặc hay u nang, đánh giá cấu trúc tuyến giáp, tuyến nước bọt và các đặc điểm nghi ngờ ác tính của hạch cổ (mất rốn hạch, tròn, hoại tử trung tâm, tăng tưới máu).</li>
+            <li><strong>Chọc hút tế bào bằng kim nhỏ (<span class="term-hl">FNA</span>):</strong> Thực hiện dưới hướng dẫn của siêu âm. Phương pháp đơn giản, an toàn và có độ chính xác cao giúp chẩn đoán bản chất mô bệnh học của hạch cổ, nhân giáp hoặc u tuyến nước bọt.</li>
+            <li><strong>Nội soi tai mũi họng / Soi thanh quản ống mềm:</strong> Bắt buộc thực hiện ở bệnh nhân khàn tiếng >3 tuần hoặc nuốt khó/nuốt đau. Giúp quan sát dây thanh âm (tìm hạt xơ, polyp, u sùi dây thanh hoặc liệt vận động dây thanh) và tầm soát ung thư hạ họng - thanh quản.</li>
+            <li><strong>Chụp <span class="term-hl-secondary">CT</span> Scan hoặc <span class="term-hl-secondary">MRI</span> cổ:</strong> Đánh giá mức độ xâm lấn của u ác tính họng thanh quản vào các khoang sâu vùng cổ và lập bản đồ phẫu thuật nạo vét hạch cổ.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB: OSCE -->
+      <section class='tab' id='osce'>
+        <div class='grid2'>
+          <div class='card'>
+            <span class='case'><span class="term-hl-secondary">OSCE</span> 1</span>
+            <h2><span class="term-hl-secondary">OSCE</span>: Tiếp cận bệnh nhân khàn tiếng (<span class="term-hl">Hoarseness</span>)</h2>
+            <p><strong>Yêu cầu:</strong> Bệnh nhân nam 65 tuổi, đến khám vì khàn tiếng dai dẳng. Hãy khai thác bệnh sử tập trung và đề xuất chẩn đoán.</p>
+            <p style='margin-top: 8px;'><strong>Tóm tắt phát hiện:</strong> Khai khàn giọng tiến triển từ từ trong 3 tháng nay, giọng khàn đặc, thở hổn hển (<span class="term-hl">breathy voice</span>) kèm ho khan kiểu "bò" (<span class="term-hl">bovine cough</span>) không bùng nổ. Không nuốt khó, không đau họng hay đau tai xuất chiếu. Không sốt, sụt 1 kg. Tiền sử hút thuốc lá nặng (40 bao-năm). Không có sẹo mổ cổ hay chấn thương cũ.</p>
+            <p style='margin-top: 8px;'><strong>Chẩn đoán sơ bộ:</strong> Liệt dây thần kinh thanh quản quặt ngược bên trái do u ác tính xâm lấn (u phổi trái chèn ép dây quặt ngược ở quai động mạch chủ hoặc ung thư thực quản). Chẩn đoán phân biệt: Ung thư thanh quản nguyên phát.</p>
+            <p style='margin-top: 8px;'><strong>Đề xuất đánh giá tiếp theo:</strong>
+              1. Chuyển khám chuyên khoa nội soi thanh quản ống mềm khẩn cấp đánh giá dây thanh.
+              2. Chụp X-quang ngực thẳng (tầm soát u phổi/trung thất) và chụp <span class="term-hl-secondary">CT</span> ngực có cản quang nếu X-quang nghi ngờ.
+            </p>
+          </div>
+
+          <div class='card'>
+            <span class='case'><span class="term-hl-secondary">OSCE</span> 2</span>
+            <h2><span class="term-hl-secondary">OSCE</span>: Khám phát hiện khối u vùng cổ (<span class="term-hl">Neck Lump</span>)</h2>
+            <p><strong>Yêu cầu:</strong> Bệnh nhân nữ 55 tuổi, tình cờ phát hiện một khối sưng ở dưới tai trái, ngay góc hàm. Hãy khám khối u cổ.</p>
+            <p style='margin-top: 8px;'><strong>Tóm tắt phát hiện:</strong> Nhìn ngoài cổ đối xứng, không sẹo mổ cũ. Sờ phát hiện một khối u kích thước 1.5 cm ở sau góc hàm trái (vùng đuôi tuyến mang tai trái). Khối u mật độ chắc, bề mặt trơn láng, giới hạn rõ, di động tốt, hoàn toàn không đau khi ấn. Không sờ thấy hạch cổ bất thường ở các nhóm hạch khác. Khám niêm mạc miệng, họng bình thường. Khám vận động các cơ mặt (dây VII) đối xứng bình thường, không sụp mi hay lệch nhân trung.</p>
+            <p style='margin-top: 8px;'><strong>Chẩn đoán sơ bộ:</strong> U tuyến đa hình tuyến mang tai trái lành tính (<span class="term-hl">Pleomorphic adenoma</span>).</p>
+            <p style='margin-top: 8px;'><strong>Đề xuất đánh giá tiếp theo:</strong> Chỉ định siêu âm vùng cổ kết hợp chọc hút tế bào bằng kim nhỏ (<span class="term-hl">FNA</span>) khối u để xác định tế bào học trước khi lập kế hoạch phẫu thuật cắt thùy nông tuyến mang tai bảo tồn dây VII.</p>
+          </div>
+        </div>
+        <div class='card'>
+          <h2>Tài liệu tham khảo (<span class="term-hl">References</span>)</h2>
+          <ol>
+            <li>Innes JA, Dover AR, Fairhurst K. <em>Macleod's Clinical Examination</em>. 14th ed. Edinburgh: Elsevier; 2018.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class='links'>
+        <div class='card'>
+          <h2>Các bài cùng chuyên khoa Tai Mũi Họng</h2>
+          <div class='grid3'>
+            <a class='link-card' href='KN_KhamTai.html'>
+              <h3 style='color: #0ea5e9;'>Khám Tai</h3>
+              <small>Soi tai màng nhĩ, khám thính lực bằng âm thoa Rinne & Weber, khám tiền đình Dix-Hallpike.</small>
+            </a>
+            <a class='link-card' href='KN_KhamMuiXoang.html'>
+              <h3 style='color: #059669;'>Khám Mũi Xoang</h3>
+              <small>Soi mũi trước bằng loa soi, đánh giá lệch vách ngăn, polyp và chảy máu mũi.</small>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <footer class='global-footer'>
+    <div id='footer-placeholder' data-footer-path="../../../../components/footer.html">
+    </div>
+  </footer>
+  <script src="../../../../js/clinical-skill-tabs.js"></script>
+  <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>

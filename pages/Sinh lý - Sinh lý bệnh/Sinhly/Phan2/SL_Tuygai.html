@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Sinh lý học tủy gai: Cấu trúc đại cương chất xám và chất trắng, đường dẫn truyền cảm giác hướng tâm, vận động ly tâm và các cung phản xạ tủy (phản xạ căng cơ, phản xạ gân Golgi, phản xạ rút lui, duỗi chéo).">
+  <title>Sinh lý Tủy gai – CliniPortal</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core CliniPortal -->
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+  <!-- CSS chuyên biệt Sinh lý & TOC -->
+  <link rel="stylesheet" href="../../../../css/components/physio-patho.css">
+  <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+  <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+  <link rel="stylesheet" href="../../css/physio-shared.css">
+  <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+  <!-- MathJax Config cho Công thức Toán/Sinh lý -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+
+  <!-- Scripts điều hướng & xử lý tương tác động -->
+  <script src="../../../../js/toc.js" defer></script>
+  <script src="../../../../components/header.js" defer></script>
+  <script src="../../../../components/footer.js" defer></script>
+  <script src="../../js/physio-shared.js" defer></script>
+  <script src="../../../../js/main.js" defer></script>
+</head>
+
+<body>
+  <!-- Nạp Header động -->
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR HỆ THỐNG -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh">
+              <span class="nav-icon">🧬</span>
+              <span class="nav-text">Sinh lý</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- KHUNG CHỨA NỘI DUNG CHÍNH -->
+    <div class="main-wrapper" id="mainContent">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container"
+        style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+        <ol class="breadcrumb-list"
+          style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+          <li><a href="../../../../index.html">🏠 Home</a> &gt;</li>
+          <li><a href="../../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+          <li style="color:var(--color-primary); font-weight:600;">Chương 4: Sinh lý Hệ thần kinh &gt; Bài: Sinh lý Tủy gai</li>
+        </ol>
+      </nav>
+
+      <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+      <main class="visual-container">
+        <!-- Chapter Header -->
+        <div class="chapter-header">
+          <h1>Sinh lý Tủy gai (Spinal Cord Physiology)</h1>
+          <p>Phân tích cấu trúc chức năng chất xám, chất trắng, các đường truyền cảm giác/vận động và các cung phản xạ tủy quan trọng trong lâm sàng.</p>
+        </div>
+
+        <!-- PHẦN I -->
+        <div class="physio-content">
+          <h2 id="sec-cau-truc" class="section-title">
+            <span>Phần I: Cấu Trúc Đại Cương Của Tủy Gai</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              <strong>Tủy gai</strong> là phần thần kinh trung ương nằm trong ống sống, kéo dài từ lỗ chẩm đến đốt sống thắt lưng L1-L2. Tủy gai chia làm 31 đoạn, tương ứng với 31 đôi dây thần kinh gai nhô ra chi phối cảm giác và vận động cơ thể.
+            </p>
+
+            <p>Khi cắt ngang tủy gai, ta thấy hai vùng rõ rệt:</p>
+
+            <div class="physio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+              <!-- Chất xám -->
+              <div class="physio-grid-card" style="border-left: 4px solid var(--color-rose);">
+                <div class="physio-grid-title" style="color: var(--color-rose);">
+                  🦋 1. Chất xám (Gray matter)
+                </div>
+                <p>
+                  Nằm ở trong, có hình chữ H hoặc hình con bướm. Bản chất là nơi tập hợp các thân neuron thần kinh và tế bào thần kinh đệm. Chất xám chia làm 3 sừng chính:
+                  <br>• <strong>Sừng trước (sừng vận động):</strong> Chứa thân của các <span class="term-hl">neuron vận động alpha</span> chi phối các sợi cơ vân.
+                  <br>• <strong>Sừng sau (sừng cảm giác):</strong> Nơi nhận sợi trục cảm giác đi vào từ ngoại vi (thân neuron nằm ở hạch rễ sau).
+                  <br>• <strong>Sừng bên (sừng trung gian):</strong> Chứa thân neuron của hệ thần kinh tự chủ (giao cảm ở đoạn tủy ngực C8-L2 và đối giao cảm ở đoạn tủy cùng S2-S4).
+                </p>
+              </div>
+
+              <!-- Chất trắng -->
+              <div class="physio-grid-card" style="border-left: 4px solid var(--color-primary);">
+                <div class="physio-grid-title" style="color: var(--color-primary);">
+                  ⚪ 2. Chất trắng (White matter)
+                </div>
+                <p>
+                  Bao quanh chất xám, cấu tạo chủ yếu bởi các bó sợi trục có myelin chạy dọc tủy gai. Chất trắng chia làm 3 cột (cột trước, cột bên, cột sau), chứa các đường dẫn truyền (bó thần kinh):
+                  <br>• <strong>Đường đi lên (Ascending tracts):</strong> Dẫn truyền cảm giác từ ngoại vi lên não bộ.
+                  <br>• <strong>Đường đi xuống (Descending tracts):</strong> Mang mệnh lệnh vận động từ não xuống sừng trước tủy gai để đến các cơ quan đáp ứng.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- PHẦN II -->
+        <div class="physio-content">
+          <h2 id="sec-dan-truyen" class="section-title">
+            <span>Phần II: Chức Năng Dẫn Truyền Của Tủy Gai</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              Tủy gai là trạm trung chuyển, đảm nhiệm dẫn truyền các tín hiệu cảm giác đi lên vỏ não/tiểu não và các mệnh lệnh vận động đi xuống các cơ.
+            </p>
+
+            <h3 style="color: var(--color-primary); margin-top: 1.5rem;">1. Dẫn truyền cảm giác (Ascending tracts)</h3>
+            <p>Hệ thống dẫn truyền cảm giác hướng tâm chia thành 3 hệ thống bó chính:</p>
+
+            <ul class="physio-list-arrow">
+              <li>
+                <strong>Cảm giác sâu có ý thức &amp; Xúc giác tinh tế:</strong> Dẫn truyền qua <span class="term-hl">bó thon</span> (gracilis tract - truyền tín hiệu từ nửa dưới cơ thể) và <span class="term-hl">bó chêm</span> (cuneatus tract - truyền tín hiệu từ nửa trên cơ thể). 
+                <br><em>Đặc điểm đường đi:</em> Các sợi trục đi vào tủy gai qua rễ sau, chạy thẳng lên cột sau cùng bên mà không bắt chéo, lên đến hành não (tiếp hợp tại nhân thon và nhân chêm) mới bắt chéo sang đối bên tại <strong>liềm trong (medial lemniscus)</strong> để lên đồi thị và vỏ não cảm giác.
+              </li>
+              <li>
+                <strong>Cảm giác đau, nhiệt độ &amp; Xúc giác thô sơ:</strong> Dẫn truyền qua <span class="term-hl">bó gai đồi thị bên</span> (spinothalamic tract bên - dẫn truyền đau, nhiệt) và <span class="term-hl">bó gai đồi thị trước</span> (spinothalamic tract trước - dẫn truyền sờ thô sơ).
+                <br><em>Đặc điểm đường đi:</em> Sợi trục đi vào tủy qua rễ sau, tiếp hợp ngay tại sừng sau chất xám, sau đó <strong>bắt chéo ngay lập tức</strong> qua mép trắng trước sang cột bên đối bên của tủy gai rồi chạy thẳng lên đồi thị.
+              </li>
+              <li>
+                <strong>Cảm giác sâu không ý thức:</strong> Dẫn truyền qua các bó gai - tiểu não (bó thẳng và bó chéo), dẫn truyền tín hiệu về trương lực cơ và tư thế khớp từ cơ xương khớp về tiểu não, giúp điều hòa phối hợp động tác và giữ thăng bằng.
+              </li>
+            </ul>
+
+            <!-- Hình 1 -->
+            <div class="image-placeholder-card" style="margin-top: 2rem;">
+              <div class="image-title">
+                <span>🖼️</span> Hình 4.1: Các đường dẫn truyền cảm giác lên não (Plate 12.5 Color Atlas of Physiology)
+              </div>
+              <div class="image-drop-area">
+                <img src="../../images/Phan2/Tuygai_Hinh1.png" alt="Các đường dẫn truyền cảm giác tủy gai"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="fallback-placeholder" style="display: none; padding: 2rem; text-align: center;">
+                  <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                  <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Sơ đồ hệ thống cột sau (bó thon/chêm) bắt chéo hành não và bó gai đồi thị bắt chéo tủy gai</p>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Mô tả:</strong> Đường dẫn truyền cảm giác sâu (cột sau) đi thẳng lên hành não rồi bắt chéo tại liềm trong. Đường dẫn truyền đau nhiệt (bó gai đồi thị) bắt chéo ngay tại khoanh tủy tương ứng trước khi đi lên đồi thị.
+              </div>
+            </div>
+
+            <h3 style="color: var(--color-primary); margin-top: 2rem;">2. Dẫn truyền vận động (Descending tracts)</h3>
+            <p>Mệnh lệnh vận động ly tâm từ trung ương truyền xuống cơ vân theo 2 hệ thống chính:</p>
+
+            <div class="physio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+              <!-- Hệ tháp -->
+              <div class="physio-grid-card" style="border-left: 4px solid var(--color-primary);">
+                <div class="physio-grid-title" style="color: var(--color-primary);">
+                  🧠 Vận động chủ ý (Hệ Tháp)
+                </div>
+                <p>
+                  Xuất phát từ các tế bào tháp ở vỏ não vận động đi xuống hành não. Tại đây, khoảng 80-90% số sợi bắt chéo sang bên đối diện tạo thành <strong>bó vỏ gai bên</strong> (bó tháp bên) đi ở cột bên tủy gai. Số sợi còn lại đi thẳng tạo thành <strong>bó vỏ gai trước</strong> (bó tháp trước). Cả hai đường cuối cùng đều tiếp hợp với neuron vận động alpha ở sừng trước đối bên để điều khiển co cơ vân chủ ý.
+                </p>
+              </div>
+
+              <!-- Hệ ngoại tháp -->
+              <div class="physio-grid-card" style="border-left: 4px solid var(--color-purple);">
+                <div class="physio-grid-title" style="color: var(--color-purple);">
+                  🔄 Vận động tự phát / Chỉnh thế (Hệ Ngoại Tháp)
+                </div>
+                <p>
+                  Bắt nguồn từ các nhân xám dưới vỏ và thân não (nhân đỏ, nhân tiền đình, cấu thể lưới...) tạo thành các bó: bó đỏ - gai, lưới - gai, tiền đình - gai, mái - gai... Các bó này dẫn truyền xung động đến sừng trước tủy gai nhằm duy trì trương lực cơ, điều hòa các cử động phối hợp tự động, tư thế và giữ thăng bằng.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- PHẦN III -->
+        <div class="physio-content">
+          <h2 id="sec-phan-xa" class="section-title">
+            <span>Phần III: Chức Năng Phản Xạ Của Tủy Gai</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              Tủy gai hoạt động như một trung tâm tích hợp phản xạ độc lập với não bộ. Cung phản xạ tủy bao gồm 5 thành phần cơ bản: (1) Bộ phận nhận cảm, (2) Đường hướng tâm (cảm giác), (3) Trung tâm tích hợp (chất xám tủy gai), (4) Đường ly tâm (vận động), và (5) Cơ quan đáp ứng (cơ/tuyến).
+            </p>
+
+            <!-- Hình 2 -->
+            <div class="image-placeholder-card" style="margin-top: 1.5rem;">
+              <div class="image-title">
+                <span>🖼️</span> Hình 4.2: Cấu trúc một Cung phản xạ tủy điển hình (Figure 12-1 Ganong's)
+              </div>
+              <div class="image-drop-area">
+                <img src="../../images/Phan2/Tuygai_Hinh2.png" alt="Cung phản xạ tủy"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="fallback-placeholder" style="display: none; padding: 2rem; text-align: center;">
+                  <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                  <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Sơ đồ cơ quan nhận cảm, neuron hướng tâm, synapse chất xám tủy, neuron ly tâm và cơ đáp ứng</p>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Mô tả:</strong> Xung động xuất phát từ bộ phận nhận cảm đi theo neuron hướng tâm qua rễ sau vào chất xám tủy gai. Tại đây diễn ra các hiện tượng điện thế kích thích hoặc ức chế sau synapse (EPSPs/IPSPs), hoạt hóa neuron ly tâm ở sừng trước truyền luồng thần kinh ra rễ trước gây co cơ.
+              </div>
+            </div>
+
+            <h3 style="color: var(--color-primary); margin-top: 2rem;">1. Phản xạ một synapse (Monosynaptic reflex / Phản xạ căng cơ)</h3>
+            <p>
+              Đây là phản xạ có thời gian tiềm tàng ngắn nhất do chỉ có duy nhất một synapse giữa neuron cảm giác và neuron vận động trong tủy gai.
+            </p>
+            <ul class="physio-list-arrow">
+              <li><strong>Cơ chế hoạt động:</strong> Thụ thể nhận cảm là <span class="term-hl">thoi cơ (muscle spindle)</span> nằm song song với các sợi cơ vân. Khi cơ bị kéo căng đột ngột (ví dụ: gõ búa phản xạ vào gân bánh chè), thoi cơ bị kéo căng kích hoạt phát xung đi theo sợi cảm giác nhanh <strong>nhóm Ia</strong> vào tủy gai. Sợi Ia tiếp hợp trực tiếp với neuron vận động alpha của chính cơ đó ở sừng trước, làm cơ co lại để chống lại sự kéo căng.</li>
+              <li><strong>Ý nghĩa sinh học:</strong> Giúp cơ duy trì chiều dài ổn định, bảo vệ cơ khỏi chấn thương căng giãn quá mức và đóng vai trò quan trọng giữ tư thế đứng thẳng của cơ thể.</li>
+            </ul>
+
+            <h3 style="color: var(--color-primary); margin-top: 2rem;">2. Phản xạ đa synapse (Polysynaptic reflexes)</h3>
+            <p>Các phản xạ này có sự tham gia của một hoặc nhiều neuron trung gian (interneurons) điều hòa tín hiệu, làm trung gian phối hợp:</p>
+
+            <div class="physio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+              <!-- Phản xạ gân Golgi -->
+              <div class="physio-grid-card" style="border-left: 4px solid var(--color-purple);">
+                <div class="physio-grid-title" style="color: var(--color-purple);">
+                  💪 Phản xạ gân Golgi (Phản xạ căng cơ nghịch đảo)
+                </div>
+                <p>
+                  Khi cơ co quá mạnh, sức căng tác động lên <span class="term-hl">thụ thể gân Golgi</span> (nằm nối tiếp ở đầu gân cơ). Xung động truyền theo sợi <strong>nhóm Ib</strong> vào tủy gai kích hoạt <strong>neuron trung gian ức chế</strong>. Neuron này tiết ra chất dẫn truyền <em>glycine</em> gây ưu phân cực neuron vận động alpha, làm cơ đang co mạnh đột ngột giãn ra nhằm bảo vệ gân và cơ không bị đứt rách.
+                </p>
+              </div>
+
+              <!-- Phản xạ gấp rút lui -->
+              <div class="physio-grid-card" style="border-left: 4px solid var(--color-rose);">
+                <div class="physio-grid-title" style="color: var(--color-rose);">
+                  🔥 Phản xạ gấp rút lui (Withdrawal Reflex)
+                </div>
+                <p>
+                  Xuất hiện khi chi tiếp xúc kích thích gây đau đớn (nociceptive stimulus). Tín hiệu đau truyền vào tủy gai qua các neuron trung gian để: kích thích các cơ gập co lại, đồng thời ức chế các cơ duỗi cùng bên (ức chế đối lập - reciprocal inhibition). Kết quả là chi bị đau tự động co rụt lại để tránh tác nhân tổn thương.
+                </p>
+              </div>
+
+              <!-- Phản xạ duỗi chéo -->
+              <div class="physio-grid-card" style="border-left: 4px solid var(--color-primary);">
+                <div class="physio-grid-title" style="color: var(--color-primary);">
+                  ⚖️ Phản xạ duỗi chéo (Crossed Extensor Reflex)
+                </div>
+                <p>
+                  Xảy ra đồng thời với phản xạ gấp rút lui ở các chi nâng đỡ cơ thể. Luồng hướng tâm bắt chéo qua tủy gai sang đối bên, kích thích các cơ duỗi và ức chế các cơ gập của chi đối diện. Điều này giúp chân đối bên duỗi thẳng làm trụ vững chắc chống đỡ toàn bộ trọng lượng cơ thể khi chân bị đau co lên, tránh ngã đổ.
+                </p>
+              </div>
+            </div>
+
+            <!-- Hình 3 -->
+            <div class="image-placeholder-card" style="margin-top: 2rem;">
+              <div class="image-title">
+                <span>🖼️</span> Hình 4.3: Sơ đồ phối hợp Phản xạ căng cơ và Phản xạ gân Golgi (Figure 12-3 Ganong's)
+              </div>
+              <div class="image-drop-area">
+                <img src="../../images/Phan2/Tuygai_Hinh3.png" alt="Phối hợp phản xạ căng cơ và Golgi"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="fallback-placeholder" style="display: none; padding: 2rem; text-align: center;">
+                  <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                  <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Sơ đồ so sánh đường truyền sợi Ia (co cơ) và sợi Ib qua neuron trung gian ức chế tiết glycine (giãn cơ)</p>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Mô tả:</strong> Sự kéo căng kích thích sợi Ia gây phản xạ một synapse làm co cơ. Sự co cơ quá mạnh kích thích sợi Ib truyền về chất xám tủy qua neuron trung gian ức chế giải phóng glycine làm bất hoạt neuron alpha, gây giãn cơ tự động bảo vệ.
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- PHẦN IV -->
+        <div class="physio-content">
+          <h2 id="sec-lam-sang" class="section-title">
+            <span>Phần IV: Lâm Sàng Liên Quan - Tổn Thương Tủy Gai</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              Các tổn thương thực thể ở tủy gai do chấn thương hoặc bệnh lý thể hiện rõ rệt sự mất kiểm soát của não bộ đối với các phản xạ tủy và đường dẫn truyền cảm giác/vận động.
+            </p>
+
+            <!-- Hộp lâm sàng: Choáng tủy -->
+            <div class="clinical-note-box" style="background: var(--color-warning-hl); border-left: 4px solid var(--color-warning); margin-bottom: 1.5rem;">
+              <div class="clinical-note-title" style="font-weight: 700; color: var(--color-warning); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: var(--text-sm);">
+                ⚡ HIỆN TƯỢNG CHOÁNG TỦY (SPINAL SHOCK)
+              </div>
+              <p style="font-size: var(--text-xs); line-height: 1.6; margin: 0; color: var(--color-text-muted);">
+                Khi tủy gai đột ngột bị cắt đứt ngang hoàn toàn, toàn bộ các phản xạ tủy, trương lực cơ, chức năng vận động và cảm giác ở vùng cơ thể dưới vị trí tổn thương sẽ bị mất hoàn toàn ngay lập tức. Bệnh nhân liệt mềm hoàn toàn và mất phản xạ (areflexia).
+                <br>• <strong>Nguyên nhân:</strong> Do mất đột ngột và toàn bộ các luồng xung động kích thích đi xuống liên tục từ các trung tâm vận động cao hơn ở não bộ.
+                <br>• <strong>Diễn tiến:</strong> Sau vài tuần đến vài tháng, các phản xạ tủy dưới mức tổn thương bắt đầu phục hồi dần và có xu hướng tăng hoạt động quá mức (tăng phản xạ gân xương, liệt cứng cơ). Cơ chế phục hồi do hiện tượng <em>tăng nhạy cảm do mất phân bố thần kinh (denervation hypersensitivity)</em> và sự mọc các nhánh bên mới của các neuron tủy.
+              </p>
+            </div>
+
+            <!-- Hộp lâm sàng: Brown-Sequard -->
+            <div class="clinical-note-box" style="background: var(--color-rose-hl); border-left: 4px solid var(--color-rose); margin-bottom: 1.5rem;">
+              <div class="clinical-note-title" style="font-weight: 700; color: var(--color-rose); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: var(--text-sm);">
+                🚑 HỘI CHỨNG BROWN-SÉQUARD (ĐỨT NỬA TỦY GAI)
+              </div>
+              <p style="font-size: var(--text-xs); line-height: 1.6; margin: 0; color: var(--color-text-muted);">
+                Xảy ra do tổn thương cắt đứt một nửa bên của tủy gai (hemisection). Triệu chứng lâm sàng dưới mức tổn thương phân bố không đối xứng do đặc điểm bắt chéo của các đường dẫn truyền:
+                <br>• <strong>Phía cùng bên tổn thương (Ipsilateral):</strong> Bệnh nhân bị <strong>liệt vận động</strong> (tổn thương bó vỏ gai bên) và <strong>mất cảm giác sâu, xúc giác tinh tế</strong> (tổn thương bó thon, bó chêm chưa bắt chéo).
+                <br>• <strong>Phía đối bên tổn thương (Contralateral):</strong> Bệnh nhân bị <strong>mất cảm giác đau và nhiệt độ</strong> (tổn thương bó gai đồi thị bên do đường này đã bắt chéo sang bên đối diện ngay khi đi vào tủy gai).
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- TÀI LIỆU THAM KHẢO -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Tài liệu tham khảo</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <ol style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin-left: 1.5rem;">
+              <li>Koeppen BM, Stanton BA. <em>Berne and Levy Physiology</em>. 8th ed. Elsevier; 2018.</li>
+              <li>Ganong WF. <em>Review of Medical Physiology</em>. 24th ed. McGraw-Hill; 2012.</li>
+              <li>Despopoulos A, Silbernagl S. <em>Color Atlas of Physiology</em>. 5th ed. Thieme; 2003.</li>
+              <li>Jardin F, Vieillard-Baron A. <em>Applied Physiology in Intensive Care Medicine</em>. Springer-Verlag; 2009.</li>
+              <li>Anh Thư ĐH. <em>Sinh lý THẦN KINH YDS 2025</em>. Youtube; 2025.</li>
+            </ol>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Nạp Footer động -->
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+  <!-- Script điều khiển chung -->
+  <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>

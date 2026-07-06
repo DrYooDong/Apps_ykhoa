@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang='vi' data-theme='light'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta name='description'
+    content='Trang điều hướng các kỹ năng khám vú, hỏi bệnh sử sản khoa (lần khám thai đầu tiên), khám thai định kỳ giai đoạn sau và khám hệ sinh dục nam theo Macleod.'>
+  <title>
+    Khám Hệ Sinh Sản - CliniPortal
+  </title>
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+  <link
+    href='https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap'
+    rel='stylesheet'>
+  <link rel='stylesheet' href="../../../../css/reset.css">
+  <link rel='stylesheet' href="../../../../css/main.css">
+  <link rel='stylesheet' href="../../../../css/components/header.css">
+  <link rel='stylesheet' href="../../../../css/components/sidebar.css">
+  <link rel='stylesheet' href="../../../../css/components/footer.css">
+  <script src="../../../../components/header.js">
+  </script>
+  <script src="../../../../components/footer.js">
+  </script>
+  <style>
+    :root {
+      --a: #be185d;
+      --b: #db2777;
+      --c: #fbcfe8;
+    }
+  </style>
+  <link rel='stylesheet' href="../../../../css/components/clinical-skill.css">
+</head>
+
+<body>
+  <div id='header-placeholder' data-header-path="../../../../components/header.html">
+  </div>
+  <div class='sidebar-overlay' id='sidebarOverlay'>
+  </div>
+  <div class='app-container'>
+    <aside class='app-sidebar' id='appSidebar'>
+      <button id='sidebar-toggle-arrow' class='sidebar-toggle-arrow' aria-label='Thu gọn/Mở rộng Sidebar'>
+        <svg viewBox='0 0 24 24' width='14' height='14' stroke='currentColor' stroke-width='2.5' fill='none'
+          stroke-linecap='round' stroke-linejoin='round' class='toggle-arrow-svg'>
+          <polyline points='15 18 9 12 15 6'>
+          </polyline>
+        </svg>
+      </button>
+      <nav class='sidebar-nav' aria-label='Điều hướng chính'>
+        <ul class='nav-list' role='list'>
+          <li>
+            <a href="../../../../index.html" class='nav-item'>
+              <span class='nav-icon'>
+                🏠
+              </span>
+              <span class='nav-text'>
+                Trang chủ
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../ky-nang.html" class='nav-item'>
+              <span class='nav-icon'>
+                🩺
+              </span>
+              <span class='nav-text'>
+                Kỹ năng lâm sàng
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Tiếp cận/tiep-can.html" class='nav-item'>
+              <span class='nav-icon'>
+                🤒
+              </span>
+              <span class='nav-text'>
+                Tiếp cận lâm sàng
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../Công cụ/cong-cu.html" class='nav-item'>
+              <span class='nav-icon'>
+                ⚙️
+              </span>
+              <span class='nav-text'>
+                Công cụ lâm sàng
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <div class='main-wrapper' id='mainContent'>
+      <nav aria-label='Breadcrumb' class='breadcrumb-container'>
+        <ol class='breadcrumb-list'>
+          <li class='breadcrumb-item'>
+            <a href="../../../../index.html" class='breadcrumb-link'>
+              <span class='home-icon'>
+                🏠
+              </span>
+              Home
+            </a>
+          </li>
+          <li class='breadcrumb-item'>
+            <a href="../../ky-nang.html" class='breadcrumb-link'>
+              Kỹ năng lâm sàng
+            </a>
+          </li>
+          <li class='breadcrumb-item active' aria-current='page'>
+            Khám hệ sinh sản
+          </li>
+        </ol>
+      </nav>
+      <section class='hero'>
+        <h1>
+          Khám Hệ Sinh Sản (<span class="term-hl">Reproductive System</span>)
+        </h1>
+        <p>
+          Hệ thống các bài khám lâm sàng chuyên khoa Sản Phụ Khoa & Nam Khoa được biên soạn dựa trên Macleod's Clinical Examination. Vui lòng chọn bài khám cụ thể bên dưới để theo dõi chi tiết quy trình khám, dấu hiệu lâm sàng và cận lâm sàng tương ứng.
+        </p>
+        <div class='quick'>
+          <div class='qi'>
+            <b>
+              Phạm vi
+            </b>
+            Tuyến vú, Hỏi bệnh sử sản khoa (<span class="term-hl">Booking visit</span>), Khám thai định kỳ giai đoạn sau, Hệ sinh dục nam
+          </div>
+          <div class='qi'>
+            <b>
+              Mục tiêu
+            </b>
+            Chuẩn hóa hỏi bệnh, khám, biện luận và cận lâm sàng hệ sinh sản
+          </div>
+          <div class='qi'>
+            <b>
+              Ứng dụng
+            </b>
+            Thực hành lâm sàng, ôn thi <span class="term-hl-secondary">OSCE</span> và tra cứu bedside
+          </div>
+        </div>
+      </section>
+      <div class='tabs'>
+        <button class='tab-btn active' data-tab='ov'>
+          Tổng quan
+        </button>
+        <button class='tab-btn' data-tab='pick'>
+          Chọn bài khám
+        </button>
+        <button class='tab-btn' data-tab='ref'>
+          Tham khảo
+        </button>
+      </div>
+      <section class='tab active' id='ov'>
+        <div class='card'>
+          <h2>Bốn bài khám cốt lõi</h2>
+          <p>
+            Trang hub này dẫn tới 4 bài khám hệ sinh sản riêng biệt. Mỗi bài có cấu trúc đồng bộ: giải phẫu sinh lý nền tảng, hỏi bệnh sử, quy trình khám chi tiết, biện luận lâm sàng, chỉ định cận lâm sàng và các tình huống <span class="term-hl-secondary">OSCE</span>.
+          </p>
+        </div>
+        <div class='grid2' style='margin-bottom: 24px;'>
+          <a class='link-card' href='KN_KhamVu.html'>
+            <h3 style='color: #db2777;'>
+              1. Khám Tuyến Vú
+            </h3>
+            <small>
+              Đánh giá khối u vú, co kéo da (<span class="term-hl">dimpling</span>), sần da cam (<span class="term-hl">peau d'orange</span>), sờ hạch nách/cổ và "Đánh giá bộ ba" (<span class="term-hl">Triple Assessment</span>).
+            </small>
+          </a>
+          <a class='link-card' href='KN_KhamThaiLanDau.html'>
+            <h3 style='color: #0891b2;'>
+              2. Khám Thai Lần Đầu (<span class="term-hl">Booking Visit</span>)
+            </h3>
+            <small>
+              Hỏi tiền sử sản khoa, tính EDD bằng CRL siêu âm, đánh giá nguy cơ Down, rà soát thuốc và bạo lực gia đình.
+            </small>
+          </a>
+          <a class='link-card' href='KN_KhamThaiDinhKy.html'>
+            <h3 style='color: #059669;'>
+              3. Khám Thai Định Kỳ Giai Đoạn Sau
+            </h3>
+            <small>
+              Đo bề cao tử cung (<span class="term-hl">SFH</span>), xác định ngôi thai/độ lọt, nghe tim thai, tầm soát tiền sản giật và xuất huyết trước sinh.
+            </small>
+          </a>
+          <a class='link-card' href='KN_KhamSinhDucNam.html'>
+            <h3 style='color: #4f46e5;'>
+              4. Khám Sinh Dục Nam
+            </h3>
+            <small>
+              Đánh giá sưng đau bìu cấp (xoắn tinh hoàn), hydrocoele/varicocoele bằng transillumination và thăm trực tràng khám tiền liệt tuyến.
+            </small>
+          </a>
+        </div>
+      </section>
+      <section class='tab' id='pick'>
+        <div class='grid2'>
+          <div class='card'>
+            <h2 style='color: #db2777;'>Khi ưu tiên khám Tuyến Vú</h2>
+            <ul>
+              <li>
+                Bệnh nhân nữ phát hiện khối u vú mới (đặc biệt u cứng, cố định, không đau).
+              </li>
+              <li>
+                Các thay đổi da vú (lõm da, sần da cam) hoặc tụt/tiết dịch núm vú một bên.
+              </li>
+              <li>
+                Tầm soát định kỳ ở phụ nữ có yếu tố nguy cơ gia đình cao (<span class="term-hl">mang gen BRCA1/2</span>).
+              </li>
+            </ul>
+          </div>
+          <div class='card'>
+            <h2 style='color: #0891b2;'>Khi ưu tiên hỏi bệnh sử Booking Visit</h2>
+            <ul>
+              <li>
+                Lần khám thai đầu tiên (<span class="term-hl">booking visit</span>) ở tuần 8-12 của thai kỳ.
+              </li>
+              <li>
+                Phân tầng nguy cơ thai kỳ (nguy cơ thấp do midwife quản lý vs nguy cơ cao do obstetrician quản lý).
+              </li>
+              <li>
+                Rà soát các loại thuốc đang dùng và tư vấn dự phòng Acid Folic.
+              </li>
+            </ul>
+          </div>
+          <div class='card'>
+            <h2 style='color: #059669;'>Khi ưu tiên khám bụng thai giai đoạn sau</h2>
+            <ul>
+              <li>
+                Khám thai định kỳ thường quy từ tuần thứ 24 trở đi.
+              </li>
+              <li>
+                Nghi ngờ thai chậm tăng trưởng trong tử cung (SFH lệch &ge;3 cm) hoặc thai máy yếu.
+              </li>
+              <li>
+                Tầm soát dấu hiệu tiền sản giật (đo HA, nước tiểu tìm protein, tăng phản xạ) hoặc xuất huyết trước sinh.
+              </li>
+            </ul>
+          </div>
+          <div class='card'>
+            <h2 style='color: #4f46e5;'>Khi ưu tiên khám Sinh Dục Nam</h2>
+            <ul>
+              <li>
+                Đau bìu một bên dữ dội đột ngột ở người trẻ (nghi ngờ xoắn tinh hoàn cấp).
+              </li>
+              <li>
+                Khối sưng bìu mạn tính không đau (hydrocoele, nang mào tinh, giãn tĩnh mạch varicocoele).
+              </li>
+              <li>
+                Bệnh nhân lớn tuổi có triệu chứng đường tiểu dưới (<span class="term-hl">LUTS</span>) cần thăm trực tràng đánh giá phì đại/ung thư tiền liệt tuyến.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class='tab' id='ref'>
+        <div class='card'>
+          <h2>Tài liệu nền tham khảo</h2>
+          <ol>
+            <li>
+              Innes JA, Dover AR, Fairhurst K.
+              <em>
+                Macleod's Clinical Examination
+              </em>
+              . 14th ed. Elsevier; 2018.
+            </li>
+            <li>
+              Nội dung các trang được xây dựng lại từ file Markdown trong thư mục
+              <code>
+                Khám sinh dục
+              </code>
+              .
+            </li>
+          </ol>
+        </div>
+      </section>
+    </div>
+  </div>
+  <footer class='global-footer'>
+    <div id='footer-placeholder' data-footer-path="../../../../components/footer.html">
+    </div>
+  </footer>
+  <script src="../../../../js/clinical-skill-tabs.js"></script>
+  <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>

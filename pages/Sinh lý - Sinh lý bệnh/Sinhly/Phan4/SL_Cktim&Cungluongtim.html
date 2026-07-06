@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Sinh lý Chu kỳ tim & Cung lượng tim – Các giai đoạn tâm thu, tâm trương, biểu đồ Wiggers, vòng lặp P-V, công thức CO và các yếu tố điều hòa tiền tải, hậu tải.">
+  <title>Sinh lý Chu kỳ tim & Cung lượng tim – CliniPortal</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../css/components/physio-patho.css">
+  <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+  <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+  <link rel="stylesheet" href="../../css/physio-shared.css">
+  <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+  <script src="../../../../js/toc.js" defer></script>
+  <script src="../../../../components/header.js"></script>
+  <script src="../../../../components/footer.js"></script>
+  <script src="../../js/physio-shared.js" defer></script>
+  <script src="../../../../js/main.js" defer></script>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+        <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Sinhly-sinhlybenh.html" class="nav-item active" aria-current="page" title="S.lý - S.lý bệnh">
+              <span class="nav-icon">🧬</span>
+              <span class="nav-text">S.lý - S.lý bệnh</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="main-wrapper" id="mainContent">
+      <nav aria-label="Breadcrumb" class="breadcrumb-container"
+        style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+        <ol class="breadcrumb-list"
+          style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+          <li><a href="../../../../index.html">🏠 Home</a> &gt;</li>
+          <li><a href="../../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+          <li style="color:var(--color-primary); font-weight:600;">Chương 4: Huyết động &amp; Hô hấp - Chu kỳ tim &amp;
+            Cung lượng</li>
+        </ol>
+      </nav>
+
+      <main class="visual-container">
+        <!-- Chapter Header -->
+        <div class="chapter-header">
+          <h1>Sinh lý Chu kỳ tim &amp; Cung lượng tim</h1>
+          <p>Hệ thống hóa các sự kiện cơ học trong chu kỳ hoạt động của tim, các tiếng tim, nguyên lý đo và các cơ chế
+            điều hòa huyết động học.</p>
+        </div>
+
+        <!-- Phần I: Sinh lý Chu kỳ tim (Cardiac Cycle) -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần I: Sinh lý Chu kỳ tim (Cardiac Cycle)</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              <strong>Chu kỳ tim (Cardiac Cycle)</strong> là một chuỗi các sự kiện điện học và cơ học xảy ra nối tiếp
+              nhau, lặp đi lặp lại một cách tuần hoàn trong mỗi nhịp đập của tim, thực hiện chức năng bơm máu vào hệ
+              động mạch và hút máu trở về từ hệ tĩnh mạch.
+            </p>
+            <p>
+              Ở một người trưởng thành bình thường có tần số tim nghỉ ngơi khoảng 75 lần/phút, một chu kỳ tim kéo dài
+              đúng <strong>0,8 giây</strong>. Trong đó, tổng thời gian tâm trương (tim giãn để đổ đầy máu, chiếm 0,5
+              giây) luôn dài hơn thời gian tâm thu (tim co bóp tống máu, chiếm 0,3 giây), giúp cơ tim có đủ thời gian
+              nghỉ ngơi và nhận máu nuôi dưỡng từ mạch vành.
+            </p>
+
+            <h3>1. Giai đoạn Tâm thu (Systole): Tổng thời gian thất thu là 0,3s</h3>
+            <p>
+              Tâm thu bao gồm các hoạt động co cơ của tâm nhĩ và tâm thất để chủ động đẩy máu đi:
+            </p>
+            <ul class="physio-list-arrow">
+              <li>
+                <strong>Thu nhĩ (Atrial systole - 0,1s):</strong> Xảy ra ngay sau sóng P trên điện tâm đồ (biểu thị khử
+                cực hai tâm nhĩ). Tâm nhĩ co bóp giúp đẩy nốt <strong>30% thể tích máu còn lại</strong> xuống tâm thất
+                (70% lượng máu trước đó đã tự động chảy thụ động xuống thất trong kỳ tâm trương). Sự dội máu mạnh vào
+                thành tâm thất căng giãn ở cuối giai đoạn này tạo ra tiếng tim thứ tư (T4 / S4), thường là tiếng tim
+                bệnh lý (như phì đại cơ thất) và rất khó nghe thấy ở người bình thường.
+              </li>
+              <li>
+                <strong>Thu thất (Ventricular systole - 0,3s):</strong> Được tính từ thời điểm đóng van nhĩ thất đến khi
+                đóng van bán nguyệt, chia làm 2 pha rõ rệt:
+                <ol style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                  <li>
+                    <strong>Pha co đồng thể tích (Isovolumetric contraction):</strong> Bắt đầu khi áp suất trong tâm
+                    thất bắt đầu tăng vượt quá áp suất tâm nhĩ, làm đóng lập tức van nhĩ thất (van 2 lá và 3 lá), tạo
+                    nên <span class="term-hl">tiếng tim thứ nhất (T1 / S1)</span> trầm, dài. Lúc này van bán nguyệt (van
+                    động mạch chủ và phổi) chưa mở. Tâm thất tạm thời là một buồng kín tuyệt đối. Cơ thất co gồng mạnh
+                    làm áp suất thất tăng vọt rất nhanh, nhưng thể tích máu và chiều dài sợi cơ không hề thay đổi.
+                  </li>
+                  <li>
+                    <strong>Pha bơm máu ra ngoài (Ventricular ejection):</strong> Khi áp suất tâm thất vượt qua áp suất
+                    động mạch chủ (khoảng 80 mmHg ở thất trái) và động mạch phổi (khoảng 10 mmHg ở thất phải), van bán
+                    nguyệt mở toang. Pha này chia thành pha bơm máu nhanh (1/3 thời gian đầu, tống đi 70% lượng máu nhát
+                    bóp) và pha bơm máu chậm (2/3 thời gian sau, tống nốt 30% lượng máu còn lại).
+                  </li>
+                </ol>
+              </li>
+            </ul>
+
+            <h3>2. Giai đoạn Tâm trương (Diastole): Kéo dài khoảng 0,5s</h3>
+            <p>
+              Là giai đoạn cơ tim thư giãn hoàn toàn để hút máu từ các tĩnh mạch lớn về tim:
+            </p>
+            <ul class="physio-list-arrow">
+              <li>
+                <strong>Giãn đồng thể tích (Isovolumetric relaxation):</strong> Khi thất tống máu xong và bắt đầu giãn,
+                áp suất thất sụt giảm nhanh chóng xuống dưới áp suất động mạch chủ và phổi, làm đóng lập tức các van bán
+                nguyệt để ngăn dòng máu chảy ngược, tạo nên <span class="term-hl">tiếng tim thứ hai (T2 / S2)</span>
+                thanh, ngắn. Lúc này các van nhĩ thất vẫn chưa mở, tâm thất lại là buồng kín, áp suất tiếp tục giảm sâu
+                thẳng đứng trong khi thể tích máu không đổi.
+              </li>
+              <li>
+                <strong>Giai đoạn tim hút máu về (Ventricular filling):</strong> Khi áp suất thất giảm xuống thấp hơn áp
+                suất trong tâm nhĩ, van nhĩ thất mở ra.
+                <ol style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                  <li>
+                    <strong>Pha hút máu về nhanh:</strong> Máu tích lũy ở nhĩ ồ ạt tràn xuống thất rất nhanh dưới lực
+                    hút âm của thất (chiếm 70% lượng máu đổ đầy). Dòng máu dội mạnh vào thành thất đang giãn rộng tạo ra
+                    tiếng tim thứ ba (T3 / S3), có thể sinh lý ở trẻ em nhưng thường là bệnh lý ở người lớn (suy tim).
+                  </li>
+                  <li>
+                    <strong>Pha hút máu về chậm (Diastasis):</strong> Máu từ các tĩnh mạch chủ và phổi chảy từ từ qua
+                    nhĩ đi thẳng xuống thất. Pha này sẽ gối tiếp vào pha thu nhĩ của chu kỳ tim tiếp theo để hoàn thành
+                    100% lượng máu nạp vào tâm thất.
+                  </li>
+                </ol>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Hình 1 -->
+          <div class="image-placeholder-card">
+            <div class="image-title">
+              <span>🖼️</span> Hình 1: Biểu đồ Wiggers (Wigger's diagram) trong chu kỳ tim (Figure 30-3 - Ganong's
+              Review of Medical
+              Physiology)
+            </div>
+            <div class="image-drop-area">
+              <div class="image-drop-text">
+                <img src="../../images/Phan4/Cktim_Hinh1.png" alt="Biểu đồ Wiggers trong chu kỳ tim"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+              </div>
+            </div>
+            <div class="image-description">
+              <strong>Mô tả:</strong> Biểu đồ Wiggers biểu diễn mối tương quan thời gian giữa: hoạt động điện tâm đồ
+              (ECG), áp suất tâm nhĩ, áp suất tâm thất trái, áp suất động mạch chủ, thể tích tâm thất trái, và tiếng tim
+              (T1, T2, T3, T4). Lưu ý điểm mở/đóng các van và sự tăng vọt áp suất thất trái trong pha co đồng thể tích.
+            </div>
+          </div>
+
+          <!-- Hình 2 -->
+          <div class="image-placeholder-card">
+            <div class="image-title">
+              <span>🖼️</span> Hình 2: Vòng lặp Áp suất - Thể tích (Pressure-Volume Loop) của thất trái (Fig. 16.42 -
+              Berne and Levy Physiology 8e)
+            </div>
+            <div class="image-drop-area">
+              <img src="../../images/Phan4/Cktim_Hinh2.png" alt="Vòng lặp Áp suất - Thể tích"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            </div>
+            <div class="image-description">
+              <strong>Mô tả:</strong> Trục tung biểu thị áp suất thất trái (mmHg), trục hoành biểu thị thể tích (mL).
+              Vòng lặp chỉ rõ: pha đổ đầy thất (A&rarr;C, thể tích tăng lên EDV), pha co đồng thể tích (C&rarr;D, áp
+              suất tăng dọc), pha tống máu (D&rarr;F, thể tích giảm về ESV), và pha giãn đồng thể tích (F&rarr;A, áp
+              suất giảm dọc). Khoảng cách ngang (EDV - ESV) chính là Thể tích nhát bóp (Stroke Volume).
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần II: Sinh lý Cung lượng tim (Cardiac Output) -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần II: Sinh lý Cung lượng tim (Cardiac Output)</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <h3>1. Khái niệm và Công thức tính toán</h3>
+            <p>
+              <strong>Cung lượng tim (Cardiac Output - CO)</strong> là thể tích máu được một tâm thất bơm vào vòng tuần
+              hoàn trong thời gian một phút. Ở người trưởng thành khỏe mạnh lúc nghỉ ngơi, cung lượng tim trung bình dao
+              động khoảng <strong>5,0 L/phút</strong>.
+            </p>
+
+            <div class="formula-card">
+              <span class="formula-expr">CO = HR &times; SV</span>
+              <span class="formula-desc">Trong đó:
+                <br>• <strong>HR (Heart Rate):</strong> Tần số tim hay nhịp tim (bình thường khoảng 70 - 75 nhịp/phút).
+                <br>• <strong>SV (Stroke Volume):</strong> Thể tích nhát bóp, là lượng máu một tâm thất tống đi trong
+                mỗi nhịp co bóp (khoảng 70 - 90 mL).
+              </span>
+            </div>
+
+            <p>
+              Thể tích nhát bóp (SV) là hiệu số của lượng máu nạp đầy thất cuối kỳ tâm trương và lượng máu còn sót lại
+              sau khi tống máu cuối kỳ tâm thu:
+            </p>
+            <div class="formula-card"
+              style="border-left-color: var(--color-purple); background: var(--color-surface-offset);">
+              <span class="formula-expr" style="color: var(--color-purple);">SV = EDV - ESV</span>
+              <span class="formula-desc">
+                • <strong>EDV (End-Diastolic Volume):</strong> Thể tích cuối tâm trương (khoảng 110 - 130 mL).
+                <br>• <strong>ESV (End-Systolic Volume):</strong> Thể tích cuối tâm thu (khoảng 40 - 50 mL).
+                <br>• <strong>Phân suất tống máu (Ejection Fraction - EF):</strong> Được tính bằng <span
+                  class="term-hl-secondary">EF = SV / EDV</span> (bình thường đạt &gt;50-55%, chỉ số vàng đánh giá chức
+                năng bơm máu của tim).
+              </span>
+            </div>
+
+            <h3>2. Các phương pháp đo Cung lượng tim trên lâm sàng</h3>
+            <ul class="physio-list-arrow">
+              <li>
+                <strong>Nguyên lý Fick (Fick Principle):</strong> Dựa trên định luật bảo toàn khối lượng. Lượng oxy tiêu
+                thụ bởi các mô cơ quan bằng tích số của cung lượng tim và hiệu số nồng độ oxy giữa máu động mạch và máu
+                tĩnh mạch. Do đó:
+                <div class="formula-card" style="margin: 1rem 0;">
+                  <span class="formula-expr" style="font-size: 1.15rem;">CO = Mức tiêu thụ O<sub>2</sub> / (Nồng độ
+                    O<sub>2</sub> động mạch - Nồng độ O<sub>2</sub> tĩnh mạch trộn)</span>
+                </div>
+              </li>
+              <li>
+                <strong>Phương pháp pha loãng chất chỉ thị (Indicator dilution):</strong> Bơm một lượng chất màu đặc
+                hiệu hoặc chất chỉ thị nhiệt đã biết trước vào tĩnh mạch lớn, sau đó đo sự thay đổi nồng độ của chất này
+                tại động mạch ngoại biên theo thời gian để vẽ đường cong đào thải và tính CO.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Hình 3-->
+          <div class="image-placeholder-card">
+            <div class="image-title">
+              <span>🖼️</span> Hình 3: Mô tả Nguyên lý Fick trong đo Cung lượng tim (Fig. 16.44 - Berne and Levy
+              Physiology 8e)
+            </div>
+            <div class="image-drop-area">
+              <img src="../../images/Phan4/Cktim_Hinh3.png" alt="Nguyên lý Fick trong đo Cung lượng tim"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            </div>
+            <div class="image-description">
+              <strong>Mô tả:</strong> Sơ đồ mô phỏng: Phổi hấp thu 250 mL O<sub>2</sub>/phút. Máu đi vào động mạch phổi
+              mang 0.15 mL O<sub>2</sub>/mL máu; máu đi ra tĩnh mạch phổi mang 0.20 mL O<sub>2</sub>/mL máu. Cung lượng
+              tim CO = 250 / (0.20 - 0.15) = 5000 mL/phút (5.0 L/phút).
+            </div>
+          </div>
+
+          <div class="physio-text-block">
+            <h3>3. Bốn yếu tố sinh lý điều hòa Cung lượng tim</h3>
+            <p>
+              Cung lượng tim được kiểm soát chặt chẽ thông qua việc điều hòa Nhịp tim (HR) và Thể tích nhát bóp (SV) bởi
+              4 nhân tố:
+            </p>
+
+            <ul class="physio-list-arrow">
+              <li>
+                <strong>Nhịp tim (Heart Rate):</strong> Chịu sự chi phối của hệ thần kinh tự chủ:
+                <br>• Thần kinh giao cảm giải phóng Norepinephrine tác động thụ thể &beta;<sub>1</sub> adrenergic ở nút
+                xoang làm tăng dốc điện thế tự phát, <strong>tăng nhịp tim</strong>.
+                <br>• Thần kinh phó giao cảm (dây X) giải phóng Acetylcholine tác động thụ thể Muscarinic làm tăng mở
+                kênh K<sup>+</sup>, ưu phân cực màng nút xoang, <strong>giảm nhịp tim</strong>.
+              </li>
+              <li>
+                <strong>Tiền tải (Preload):</strong> Là mức độ kéo căng của các sợi cơ tim ngay trước khi co bóp (tương
+                ứng với thể tích cuối tâm trương EDV). EDV phụ thuộc chính vào lượng máu tĩnh mạch trở về tim.
+                <br>• <span class="term-hl">Định luật Frank-Starling:</span> Lượng máu tĩnh mạch đổ về tim càng lớn
+                &rarr; cơ tim càng bị kéo căng kéo dài &rarr; tạo lực co bóp cơ tim càng mạnh ở chu kỳ ngay sau đó, giúp
+                tống hết lượng máu thừa đi.
+              </li>
+              <li>
+                <strong>Hậu tải (Afterload):</strong> Là áp suất sức cản mà tâm thất phải co bóp vượt qua để có thể mở
+                được van bán nguyệt tống máu đi (chính là áp suất động mạch chủ đối với thất trái và động mạch phổi đối
+                với thất phải). Hậu tải tăng (ví dụ trong tăng huyết áp, hẹp van động mạch chủ) sẽ trực tiếp **làm giảm
+                thể tích nhát bóp (SV)**.
+              </li>
+              <li>
+                <strong>Sức co bóp cơ tim (Contractility / Inotropism):</strong> Khả năng tạo lực co bóp của sợi cơ tim
+                tại một mức Tiền tải và Hậu tải cố định. Sức co bóp tăng chủ yếu do tăng dòng ion <span
+                  class="term-hl-secondary">Ca<sup>2+</sup></span> đi vào nội bào trong pha điện thế hoạt động (dưới tác
+                dụng giao cảm của catecholamine hoặc thuốc trợ tim nhóm Digitalis). Tăng sức co bóp giúp tăng SV và tăng
+                phân suất tống máu EF.
+              </li>
+            </ul>
+
+            <!-- Hộp thuốc trợ tim -->
+            <div class="clinical-note-box"
+              style="background: var(--color-warning-hl); border-left: 4px solid var(--color-warning);">
+              <div class="clinical-note-title"
+                style="font-weight: 700; color: var(--color-warning); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: var(--text-sm);">
+                🩺 ỨNG DỤNG LÂM SÀNG: CƠ CHẾ THUỐC TRỢ TIM DIGITALIS
+              </div>
+              <p style="font-size: var(--text-xs); line-height: 1.6; margin: 0; color: var(--color-text-muted);">
+                Thuốc trợ tim <strong>Digitalis (Digoxin)</strong> ức chế bơm Na<sup>+</sup>-K<sup>+</sup>-ATPase trên
+                màng tế bào cơ tim. Điều này làm tăng nồng độ Na<sup>+</sup> nội bào, dẫn đến gián tiếp ức chế bơm trao
+                đổi Na<sup>+</sup>-Ca<sup>2+</sup> (bơm đẩy Ca<sup>2+</sup> ra ngoài). Kết quả là tích tụ
+                Ca<sup>2+</sup> trong bào tương cơ tim tăng lên, cung cấp nhiều Ca<sup>2+</sup> hơn cho các sợi
+                actin-myosin trượt lên nhau, làm **tăng mạnh mẽ sức co bóp cơ tim** trong điều trị suy tim.
+              </p>
+            </div>
+          </div>
+
+          <!-- Hình 4 -->
+          <div class="image-placeholder-card">
+            <div class="image-title">
+              <span>🖼️</span> Hình 4: Ảnh hưởng của thay đổi Sức co bóp lên Đường tương quan Frank-Starling (Fig. 16.48
+              - Berne and Levy Physiology 8e)
+            </div>
+            <div class="image-drop-area">
+              <img src="../../images/Phan4/Cktim_Hinh4.png"
+                alt="Ảnh hưởng của thay đổi Sức co bóp lên Đường tương quan Frank-Starling"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            </div>
+            <div class="image-description">
+              <strong>Mô tả:</strong> Đồ thị biểu thị Stroke Volume theo Ventricular EDV. Khi tăng sức co bóp (kích
+              thích giao cảm, digitalis), đường cong dịch chuyển lên trên và sang trái (tống nhiều máu hơn ở cùng mức
+              tiền tải). Khi suy tim hoặc nhiễm toan, đường cong dịch xuống dưới và sang phải (giảm SV).
+            </div>
+          </div>
+
+          <!-- Hình 5 -->
+          <div class="image-placeholder-card">
+            <div class="image-title">
+              <span>🖼️</span> Hình 5: Sơ đồ 4 yếu tố quyết định Cung lượng tim (Fig. 19.1 - Berne and Levy
+              Physiology 8e)
+            </div>
+            <div class="image-drop-area">
+              <img src="../../images/Phan4/Cktim_Hinh5.png" alt="Sơ đồ 4 yếu tố quyết định Cung lượng tim"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            </div>
+            <div class="image-description">
+              <strong>Mô tả:</strong> Sơ đồ phân chia: Nhịp tim và Sức co bóp thuộc nhóm "Yếu tố nội tại của tim"
+              (Cardiac factors); Tiền tải và Hậu tải thuộc nhóm "Yếu tố ghép nối" (Coupling factors) liên quan mật thiết
+              đến hệ mạch máu ngoại biên.
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần III: Tài liệu tham khảo -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Tài liệu tham khảo</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <ol style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin-left: 1.5rem;">
+              <li>Đặng HAT. <em>Sinh lý TIM MẠCH YDS 2025</em> [Video]. Bs. Linh O'la Scar; 2025.</li>
+              <li>Koeppen BM, Stanton BA. <em>Berne and Levy Physiology</em>. 8th ed. Elsevier; 2024.</li>
+              <li>Barrett KE, Barman SM, Boitano S, Brooks HL. <em>Ganong's Review of Medical Physiology</em>. 24th ed.
+                McGraw-Hill Medical; 2012.</li>
+              <li>Silbernagl S, Despopoulos A. <em>Color Atlas of Physiology</em>. 6th ed. Thieme; 2009.</li>
+            </ol>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+  <!-- Scripts dùng chung -->
+  <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>

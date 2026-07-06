@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Sinh lý học cầu thận: Cơ chế siêu lọc tại cầu thận, cấu trúc màng lọc 3 lớp, động lực học các lực Starling và cơ chế tự điều hòa lưu lượng máu thận và tốc độ lọc cầu thận (myogenic & tubuloglomerular feedback).">
+    <title>Chức năng Lọc tại Cầu thận (Glomerular Filtration) – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS Core CliniPortal -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học dùng chung -->
+    <link rel="stylesheet" href="../../../../css/components/physio-patho.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+    <!-- MathJax Config cho Công thức Toán/Sinh lý -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+
+    <!-- Script điều hướng hệ thống -->
+    <script src="../../../../js/toc.js" defer></script>
+    <script src="../../../../components/header.js" defer></script>
+    <script src="../../../../components/footer.js" defer></script>
+    <script src="../../js/physio-shared.js" defer></script>
+    <script src="../../../../js/main.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+            <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Sinhly-sinhlybenh.html" class="nav-item active" aria-current="page" title="S.lý - S.lý bệnh">
+              <span class="nav-icon">🧬</span>
+              <span class="nav-text">S.lý - S.lý bệnh</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container"
+                style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+                <ol class="breadcrumb-list"
+                    style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+                    <li><a href="../../../../index.html">🏠 Home</a> &gt;</li>
+                    <li><a href="../../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+                    <li style="color:var(--color-primary); font-weight:600;">Chức năng Lọc tại Cầu thận</li>
+                </ol>
+            </nav>
+
+            <!-- MAIN CONTAINER -->
+            <main class="visual-container">
+                <!-- CHAPTER HERO CARD -->
+                <div class="chapter-header">
+                    <h1>Chức năng Lọc tại Cầu thận (Glomerular Filtration)</h1>
+                    <p>Hệ thống hóa cơ chế siêu lọc huyết tương từ mao mạch cầu thận vào khoang Bowman, động lực học của
+                        các lực Starling và cơ chế tự điều hòa lưu lượng lọc cầu thận.</p>
+                </div>
+
+                <!-- CONTENT LAYOUT -->
+                <div class="physio-content">
+
+                    <!-- VÙNG NỘI DUNG CHÍNH -->
+                    <div class="physio-main-article">
+
+                        <p class="physio-lead">
+                            Quá trình hình thành nước tiểu bắt đầu tại cầu thận bằng cơ chế <strong>siêu lọc
+                                (ultrafiltration)</strong>. Huyết tương khi đi qua các mao mạch cầu thận sẽ được lọc vào
+                            khoang Bowman để tạo thành dịch lọc cầu thận (nước tiểu nguyên thủy). Quá trình này diễn ra
+                            hoàn toàn thụ động nhờ vào sự chênh lệch áp suất giữa lòng mao mạch và khoang Bowman, được
+                            kiểm soát chặt chẽ bởi các cơ chế tự điều hòa tại thận nhằm đảm bảo sự ổn định của nội môi.
+                        </p>
+
+                        <!-- PHẦN I -->
+                        <h2 id="sec-mang-loc" class="section-title">
+                            <span>Phần I: Màng lọc Cầu thận và Tính thấm</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Để huyết tương đi từ lòng mao mạch vào được khoang Bowman, dịch lọc phải vượt qua một
+                                hàng rào sinh học cực kỳ đặc hiệu gọi là <strong>Màng lọc cầu thận (Glomerular
+                                    filtration barrier)</strong>. Màng lọc này được cấu tạo từ ba lớp đồng tâm, hoạt
+                                động phối hợp như một bộ rây siêu vi.
+                            </p>
+
+                            <!-- 3 lớp màng lọc dạng GRID CARDS -->
+                            <div class="physio-grid">
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">🧬 1. Nội mô mao mạch</div>
+                                    <p>
+                                        Lớp tế bào nội mô của mao mạch cầu thận có hàng ngàn lỗ nhỏ gọi là <strong>"cửa
+                                            sổ" (fenestrations)</strong> với đường kính từ <span class="term-hl">70 -
+                                            100 nm</span>. Kích thước này ngăn cản các tế bào máu (hồng cầu, bạch cầu,
+                                        tiểu cầu) đi qua nhưng cho phép nước và các protein nhỏ lọt qua. Bề mặt lớp nội
+                                        mô được phủ bởi một lớp carbonhydrate tích điện âm gọi là
+                                        <strong>glycocalyx</strong> giúp hạn chế protein.
+                                    </p>
+                                </div>
+
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">🧪 2. Màng đáy (Basement Membrane)</div>
+                                    <p>
+                                        Là một mạng lưới các sợi collagen type IV cấu trúc vô định hình đan xen với các
+                                        glycoprotein sulfat hóa (như heparan sulfat proteoglycan). Màng đáy tích điện âm
+                                        rất mạnh, đóng vai trò là <strong>rào cản chính yếu</strong> ngăn chặn các đại
+                                        phân tử tích điện âm (đặc biệt là albumin huyết tương) đi qua màng lọc.
+                                    </p>
+                                </div>
+
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">🕸️ 3. Tế bào có chân (Podocytes)</div>
+                                    <p>
+                                        Là lớp biểu mô lá tạng của bao Bowman. Các podocyte tỏa ra các chân giả lớn rồi
+                                        chia thành các chân giả nhỏ (foot processes) bám chặt vào màng đáy. Giữa các
+                                        chân giả đan xen nhau là các khe lọc (filtration slits) rộng khoảng <span
+                                            class="term-hl">40 nm</span>. Khe này được nối lại bởi màng khe lọc chứa
+                                        protein <strong>nephrin</strong>, hoạt động như một màng rây cơ học cuối cùng.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <h3>Tính chọn lọc của màng lọc cầu thận</h3>
+                            <p>
+                                Khả năng đi qua màng lọc của một chất phụ thuộc chặt chẽ vào hai đặc tính vật lý lý hóa:
+                            </p>
+                            <ul class="physio-property-list" style="margin-top: 1rem;">
+                                <li>
+                                    <span class="physio-property-name">Kích thước phân tử (Bán kính hydrate hóa)</span>
+                                    <span class="physio-property-desc">Các phân tử có kích thước nhỏ dưới <span
+                                            class="term-hl-secondary">10 kDa</span> (như nước, điện giải Na<sup>+</sup>,
+                                        K<sup>+</sup>, Cl<sup>-</sup>, glucose, urea) đi qua màng lọc tự do không bị cản
+                                        trở. Các phân tử có kích thước lớn hơn <span class="term-hl-secondary">80
+                                            kDa</span> (như globulin, các protein trọng lượng phân tử lớn) bị giữ lại
+                                        hoàn toàn trong lòng mạch.</span>
+                                </li>
+                                <li>
+                                    <span class="physio-property-name">Điện tích phân tử</span>
+                                    <span class="physio-property-desc">Do cả ba lớp của màng lọc đều phủ đầy các gốc
+                                        tích điện âm (glycocalyx, heparan sulfat), các phân tử mang <strong>điện tích
+                                            âm</strong> (như protein albumin, dù bán kính phân tử chỉ khoảng 3.6 nm -
+                                        nhỏ hơn khe lọc) sẽ bị lực đẩy tĩnh điện ngăn cản mạnh mẽ, hầu như không lọt
+                                        được vào nước tiểu nguyên thủy. Ngược lại, các ion dương hoặc phân tử trung tính
+                                        đi qua dễ dàng hơn.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- HÌNH MINH HỌA 1 -->
+                        <div class="image-placeholder-card" style="margin-top: 2rem;">
+                            <div class="image-title">
+                                <span>🖼️</span> Hình 1: Cấu trúc siêu vi 3 lớp của Màng lọc cầu thận (Berne & Levy
+                                Figure 33.11)
+                            </div>
+                            <div class="image-drop-area">
+                                <div class="image-drop-text">
+                                    <img src="../../images/Phan6/Hinh1.png" alt="Cấu trúc màng lọc cầu thận"
+                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                </div>
+                            </div>
+                            <div class="image-description">
+                                <strong>Mô tả chi tiết:</strong> Lát cắt cấu trúc màng lọc cầu thận chỉ rõ mối tương
+                                quan giữa lòng mao mạch và khoang Bowman. Dịch lọc đi qua các cửa sổ nội mô, xuyên qua
+                                lớp màng đáy tích điện âm mạnh, và cuối cùng lọt qua khe lọc tạo bởi các chân giả
+                                podocyte. Các phân tử protein nephrin đan xen tạo thành cấu trúc "khóa kéo" trên màng
+                                khe lọc.
+                            </div>
+                        </div>
+
+                        <hr class="section-divider">
+
+                        <!-- PHẦN II -->
+                        <h2 id="sec-dong-luc-hoc" class="section-title">
+                            <span>Phần II: Động lực học Siêu lọc (Các lực Starling)</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Tốc độ lọc cầu thận (Glomerular Filtration Rate - \(GFR\)) bình thường ở người trưởng
+                                thành khoảng <span class="term-hl">125 mL/phút</span> (tương đương 180 lít dịch lọc mỗi
+                                ngày). Quá trình siêu lọc này được vận hành bởi sự chênh lệch áp suất thủy tĩnh và áp
+                                suất keo ở hai bên màng lọc cầu thận, tuân theo định luật Starling về trao đổi dịch qua
+                                màng mao mạch.
+                            </p>
+
+                            <h3>Công thức tính Áp suất lọc thực tế (\(P_{UF}\) hoặc \(UP\))</h3>
+                            <p>
+                                Áp suất siêu lọc thực tế là hiệu số giữa lực đẩy dịch ra khỏi mao mạch và các lực cản
+                                giữ dịch lại:
+                            </p>
+
+                            <div class="formula-card">
+                                <div class="formula-expr">
+                                    $$UP = P_{GC} - P_{BS} - \Pi_{GC}$$
+                                </div>
+                                <p class="formula-desc">
+                                    (Chú ý: Áp suất keo của dịch lọc trong khoang Bowman \(\Pi_{BS}\) được coi bằng 0 vì
+                                    dịch lọc bình thường không chứa protein).
+                                </p>
+                            </div>
+
+                            <h3>Các thành phần áp suất Starling tại cầu thận</h3>
+                            <ul class="physio-property-list">
+                                <li>
+                                    <span class="physio-property-name">Áp suất thủy tĩnh mao mạch (\(P_{GC}\))</span>
+                                    <span class="physio-property-desc">Khoảng <strong>55 mmHg</strong>. Đây là lực ĐẨY
+                                        dịch ra khỏi lòng mạch vào khoang Bowman. Trị số này cao hơn nhiều so với áp
+                                        suất thủy tĩnh ở các mao mạch cơ quan khác (khoảng 15-30 mmHg) vì tiểu động mạch
+                                        vào rất ngắn, thẳng và tiểu động mạch ra có sức cản rất lớn.</span>
+                                </li>
+                                <li>
+                                    <span class="physio-property-name">Áp suất thủy tĩnh khoang Bowman
+                                        (\(P_{BS}\))</span>
+                                    <span class="physio-property-desc">Khoảng <strong>15 mmHg</strong>. Đây là lực CẢN
+                                        lọc, đẩy dịch ngược từ khoang Bowman vào lại mao mạch. Lực này được tạo ra do
+                                        dịch lọc phải di chuyển liên tục qua một hệ thống ống thận hẹp.</span>
+                                </li>
+                                <li>
+                                    <span class="physio-property-name">Áp suất keo huyết tương mao mạch (\(\Pi_{GC}\)
+                                        hoặc COP)</span>
+                                    <span class="physio-property-desc">Khoảng <strong>30 mmHg</strong> (ở đầu tiểu động
+                                        mạch vào) và tăng dần lên khoảng <strong>35 mmHg</strong> (ở đầu tiểu động mạch
+                                        ra). Đây là lực CẢN lọc, giữ nước lại trong lòng mạch dưới sức hút thẩm thấu của
+                                        các protein không lọc được. Trị số này tăng dần dọc theo mao mạch do nước bị lọc
+                                        ra ngoài làm protein huyết tương bị cô đặc lại.</span>
+                                </li>
+                            </ul>
+
+                            <p style="margin-top: 1rem;">
+                                Thế trị số trung bình vào công thức:
+                                $$UP = 55\text{ mmHg} - 15\text{ mmHg} - 30\text{ mmHg} = +10\text{ mmHg}$$
+                                Áp suất siêu lọc thực tế dương (\(+10\text{ mmHg}\)) đảm bảo dịch lọc liên tục được đẩy
+                                ra để tạo thành nước tiểu nguyên thủy.
+                            </p>
+
+                            <h3>Công thức tính GFR</h3>
+                            <p>
+                                Tốc độ lọc cầu thận tỷ lệ thuận với áp suất lọc thực tế và hệ số siêu lọc màng:
+                            </p>
+                            <div class="formula-card">
+                                <div class="formula-expr">
+                                    $$GFR = K_f \times UP$$
+                                </div>
+                                <p class="formula-desc">
+                                    Trong đó, <span class="term-hl">\(K_f\) (hệ số siêu lọc)</span> phụ thuộc vào diện
+                                    tích bề mặt lọc và tính thấm của màng lọc cầu thận; <span
+                                        class="term-hl">\(UP\)</span> là áp suất lọc thực tế.
+                                </p>
+                            </div>
+                            <p>
+                                Trị số \(K_f\) ở cầu thận cực kỳ lớn (khoảng 12.5 mL/phút/mmHg), gấp 400 lần so với các
+                                mao mạch khác trong cơ thể.
+                            </p>
+                        </div>
+
+                        <!-- HÌNH MINH HỌA 2 -->
+                        <div class="image-placeholder-card" style="margin-top: 2rem;">
+                            <div class="image-title">
+                                <span>🖼️</span> Hình 2: Phân bố lực Starling dọc theo quai mao mạch cầu thận (Berne &
+                                Levy Figure 33.17)
+                            </div>
+                            <div class="image-drop-area">
+                                <div class="image-drop-text">
+                                    <img src="../../images/Phan6/Hinh2.png" alt="Các lực Starling tại cầu thận"
+                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                </div>
+                            </div>
+                            <div class="image-description">
+                                <strong>Mô tả chi tiết:</strong> Biểu đồ thể hiện sự biến thiên của các lực dọc theo
+                                chiều dài mao mạch cầu thận. Áp suất thủy tĩnh trong mao mạch (\(P_{GC}\)) chỉ giảm rất
+                                nhẹ từ đầu vào đến đầu ra nhờ cơ chế điều hòa ngược dòng chảy. Tuy nhiên, áp suất keo
+                                huyết tương (\(\Pi_{GC}\)) tăng dốc liên tục do dịch lọc thoát ra ngoài làm cô đặc
+                                protein, khiến áp suất siêu lọc thực tế (\(UP\)) giảm dần về phía cuối mao mạch.
+                            </div>
+                        </div>
+
+                        <hr class="section-divider">
+
+                        <!-- PHẦN III -->
+                        <h2 id="sec-dieu-hoa" class="section-title">
+                            <span>Phần III: Tự điều hòa Độ lọc Cầu thận (Autoregulation)</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Để bảo vệ nhu mô thận khỏi tổn thương do áp lực và duy trì tốc độ bài tiết chất thải ổn
+                                định, thận có khả năng duy trì lưu lượng máu thận (RBF) và tốc độ lọc cầu thận (\(GFR\))
+                                tương đối hằng định khi huyết áp động mạch hệ thống dao động trong khoảng rộng từ <span
+                                    class="term-hl">80 - 180 mmHg</span>. Quá trình này được thực hiện thông qua hai cơ
+                                chế điều hòa nội tại tại chỗ:
+                            </p>
+
+                            <h3>1. Cơ chế tự co cơ trơn (Myogenic Mechanism)</h3>
+                            <p>
+                                Đây là phản ứng cơ học trực tiếp của tế bào cơ trơn trên thành mạch máu:
+                            </p>
+                            <div class="physio-grid" style="margin-top: 1rem; margin-bottom: 1.5rem;">
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">📈 Khi Huyết áp tăng</div>
+                                    <p>
+                                        Thành tiểu động mạch vào bị căng ra \(\rightarrow\) Mở các kênh ion \(Ca^{2+}\)
+                                        nhạy cảm lực căng trên màng tế bào cơ trơn \(\rightarrow\) \(Ca^{2+}\) đi vào
+                                        nội bào gây co tiểu động mạch vào \(\rightarrow\) Tăng sức cản mạch máu,
+                                        giảm lượng máu đi vào cầu thận \(\rightarrow\) Giữ \(GFR\) ổn định.
+                                    </p>
+                                </div>
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">📉 Khi Huyết áp giảm</div>
+                                    <p>
+                                        Giảm sức căng thành mạch \(\rightarrow\) Đóng các kênh \(Ca^{2+}\)
+                                        \(\rightarrow\) Giãn cơ trơn tiểu động mạch vào \(\rightarrow\) Tăng lượng
+                                        máu đi vào cầu thận \(\rightarrow\) Duy trì \(GFR\) không bị sụt giảm.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <h3>2. Cơ chế điều hòa ngược Ống - Cầu (Tubuloglomerular Feedback - TGF)</h3>
+                            <p>
+                                Cơ chế này sử dụng cấu trúc chuyên biệt gọi là Phức hợp cận cầu thận (Juxtaglomerular
+                                Apparatus - JGA) làm cảm biến hóa học và áp lực học. JGA nằm ở điểm tiếp xúc giữa đoạn
+                                đầu ống lượn xa và tiểu động mạch của chính cầu thận đó.
+                            </p>
+
+                            <!-- TIMELINE CƠ CHẾ TGF -->
+                            <ol class="physio-steps">
+                                <li>
+                                    <div class="physio-step-card">
+                                        <span class="physio-step-title">Bước 1: Huyết áp động mạch hệ thống tăng</span>
+                                        <p>Áp suất lọc thực tế tăng làm tốc độ lọc cầu thận (\(GFR\)) tăng lên đột ngột.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="physio-step-card">
+                                        <span class="physio-step-title">Bước 2: Tốc độ dòng dịch trong ống thận tăng
+                                            nhanh</span>
+                                        <p>Dịch lọc chảy quá nhanh qua ống lượn gần làm giảm thời gian tái hấp thu muối
+                                            nước tại đây, dẫn đến nồng độ Na<sup>+</sup> và Cl<sup>-</sup> trong dịch
+                                            lọc tăng cao khi đi đến đoạn ống lượn xa.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="physio-step-card">
+                                        <span class="physio-step-title">Bước 3: Tế bào Vết đặc (Macula densa) cảm nhận
+                                            NaCl</span>
+                                        <p>Tế bào vết đặc ở thành ống lượn xa hấp thu Na<sup>+</sup>, Cl<sup>-</sup>
+                                            thông qua kênh đồng vận chuyển NKCC2. Lượng NaCl đi vào tế bào nhiều làm
+                                            tăng hoạt động bơm Na<sup>+</sup>-K<sup>+</sup>-ATPase, tiêu tốn nhiều ATP
+                                            nội bào.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="physio-step-card">
+                                        <span class="physio-step-title">Bước 4: Giải phóng ATP và Adenosine</span>
+                                        <p>ATP bị phân hủy và giải phóng ra khoảng kẽ dưới dạng ATP và
+                                            Adenosine. Hai chất này hoạt động như các chất truyền tin co mạch tại
+                                            chỗ.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="physio-step-card">
+                                        <span class="physio-step-title">Bước 5: Co tiểu động mạch vào</span>
+                                        <p>Adenosine gắn vào thụ thể A<sub>1</sub> trên tế bào cơ trơn của tiểu động
+                                            mạch vào gây co mạch, làm giảm lưu lượng máu vào mao mạch cầu thận. Kết quả
+                                            là làm giảm áp suất thủy tĩnh (\(P_{GC}\)) và đưa \(GFR\) trở lại mức bình
+                                            thường.</p>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+
+                        <!-- HÌNH MINH HỌA 3 -->
+                        <div class="image-placeholder-card" style="margin-top: 2rem;">
+                            <div class="image-title">
+                                <span>🖼️</span> Hình 3: Cơ chế phân tử của Điều hòa ngược Ống - Cầu tại Phức hợp cận
+                                cầu thận (Berne & Levy Figure 33.20)
+                            </div>
+                            <div class="image-drop-area">
+                                <div class="image-drop-text">
+                                    <img src="../../images/Phan6/Hinh3.png" alt="Cơ chế điều hòa ngược ống cầu"
+                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                </div>
+                            </div>
+                            <div class="image-description">
+                                <strong>Mô tả chi tiết:</strong> Sơ đồ mô tả cơ chế phân tử tại tế bào vết đặc (Macula
+                                densa). Khi nồng độ NaCl tăng, kênh NKCC2 vận chuyển chúng vào tế bào, kích hoạt phản
+                                ứng giải phóng Adenosine và ATP qua màng đáy bên vào khoảng kẽ, gắn lên thụ thể A1 trên
+                                cơ trơn tiểu động mạch vào để mở kênh calci nội bào gây co mạch mạnh.
+                            </div>
+                        </div>
+
+                        <hr class="section-divider">
+
+                        <!-- PHẦN IV -->
+                        <h2 id="sec-lam-sang" class="section-title">
+                            <span>Phần IV: Mối liên hệ Lâm sàng & Ứng dụng Y khoa</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Rối loạn chức năng siêu lọc cầu thận và các cơ chế điều hòa huyết động tại thận là nguồn
+                                gốc bệnh sinh của nhiều hội chứng lâm sàng quan trọng:
+                            </p>
+
+                            <!-- BOX LÂM SÀNG 1 -->
+                            <div class="clinical-note-box">
+                                <h4>🩺 1. Tổn thương màng lọc & Hội chứng Thận hư (Nephrotic Syndrome)</h4>
+                                <p>
+                                    Khi có sự tổn thương cấu trúc màng lọc cầu thận (ví dụ: do phản ứng miễn dịch trong
+                                    viêm cầu thận cấp/mạn, lắng đọng phức hợp miễn dịch, hoặc tổn thương tế bào
+                                    podocytes do đái tháo đường), tính chọn lọc của màng lọc bị phá hủy hoàn toàn.
+                                </p>
+                                <p style="margin-top: 0.5rem;">
+                                    Sự mất đi các gốc tích điện âm của màng đáy và tổn thương các protein khe lọc (như
+                                    nephrin) làm cho màng lọc cầu thận "rò rỉ" lượng lớn protein (chủ yếu là Albumin).
+                                    Khi protein thoát ra nước tiểu vượt quá <strong>3.5 g/24 giờ</strong>, bệnh nhân sẽ
+                                    rơi vào bệnh cảnh Hội chứng Thận hư, đặc trưng bởi: albumin máu giảm nặng, giảm áp
+                                    suất keo huyết tương (\(\Pi_{GC}\) toàn thân) dẫn đến dịch thoát ra khoảng kẽ gây
+                                    phù toàn thân (phù mềm, trắng, ấn lõm), tràn dịch đa màng.
+                                </p>
+                            </div>
+
+                            <!-- BOX LÂM SÀNG 2 -->
+                            <div class="clinical-note-box">
+                                <h4>🩺 2. Suy thận cấp trước thận (Prerenal Acute Kidney Injury)</h4>
+                                <p>
+                                    Trong các tình trạng giảm thể tích tuần hoàn nặng (mất máu do chấn thương, mất nước
+                                    do tiêu chảy cấp, hoặc suy tim sung huyết), huyết áp động mạch hệ thống tụt dốc dưới
+                                    mức giới hạn tự điều hòa (\(< 80\text{ mmHg}\)). </p>
+                                        <p style="margin-top: 0.5rem;">
+                                            Khi đó, áp suất thủy tĩnh mao mạch cầu thận (\(P_{GC}\)) sụt giảm mạnh
+                                            (xuống dưới 45 mmHg). Lúc này, hiệu số lọc thực tế:
+                                            $$UP = P_{GC} - P_{BS} - \Pi_{GC} \approx 40 - 15 - 28 = -3\text{ mmHg}$$
+                                            Áp suất lọc thực tế bị triệt tiêu hoàn toàn (trở về 0 hoặc âm), khiến quá
+                                            trình siêu lọc ngừng lại. Bệnh nhân lâm sàng xuất hiện tình trạng thiểu niệu
+                                            (thể tích nước tiểu < 400 mL/ngày) hoặc vô niệu (< 100 mL/ngày), ure và
+                                                creatinine máu tăng vọt, gây ra bệnh cảnh Suy thận cấp trước thận. </p>
+                            </div>
+
+                            <!-- HIGH YIELD CARD -->
+                            <div class="high-yield-card">
+                                <h4
+                                    style="font-size:1.1rem; color:var(--color-primary); margin-bottom:0.75rem; display:flex; align-items:center; gap:0.5rem">
+                                    🩺 Ứng dụng Lâm sàng Cao (High-Yield Clinical Correlation)
+                                </h4>
+                                <ul class="high-yield-list">
+                                    <li>
+                                        <strong>Tác dụng bảo vệ thận của Thuốc ức chế SGLT2 (SGLT2 inhibitors):</strong>
+                                        Ở bệnh nhân đái tháo đường, nồng độ glucose trong dịch lọc rất cao dẫn đến tăng
+                                        hoạt động của kênh đồng vận chuyển natri-glucose (SGLT2) ở ống lượn gần. Sự tăng
+                                        hấp thu natri kèm glucose ở ống lượn gần làm giảm lượng NaCl đi đến ống lượn
+                                        xa. Tế bào vết đặc cảm nhận natri thấp \(\rightarrow\) giả định rằng dòng dịch
+                                        lọc đang chảy quá chậm \(\rightarrow\) giảm tiết Adenosine \(\rightarrow\) gây
+                                        giãn mạnh tiểu động mạch vào. Đồng thời, hệ RAAS cục bộ được kích hoạt gây
+                                        co tiểu động mạch ra. Kết quả là làm tăng vọt áp suất thủy tĩnh mao mạch
+                                        (\(P_{GC}\)), đẩy GFR tăng cao quá mức (tăng lọc cầu thận - hyperfiltration). Sự
+                                        tăng lọc kéo dài này gây xơ hóa cầu thận và suy thận mạn tiến triển.
+                                        <br><br>
+                                        <strong>Cơ chế điều trị của SGLT2i:</strong> Khi dùng thuốc ức chế SGLT2, natri
+                                        và glucose không bị tái hấp thu ở ống lượn gần và đi xuống nhiều hơn đến ống
+                                        lượn xa. Tế bào vết đặc phát hiện nồng độ NaCl cao \(\rightarrow\) kích hoạt lại
+                                        cơ chế TGF \(\rightarrow\) giải phóng Adenosine gây co nhẹ tiểu động mạch
+                                        vào \(\rightarrow\) làm giảm áp suất thủy tĩnh mao mạch cầu thận về mức bình
+                                        thường. Nhờ đó làm giảm áp lực lọc cơ học tác động lên màng lọc cầu thận, bảo vệ
+                                        cầu thận khỏi tổn thương dài hạn trên lâm sàng.
+                                    </li>
+                                    <li>
+                                        <strong>Ảnh hưởng của NSAID và Ức chế men chuyển (ACEi) lên huyết động cầu
+                                            thận:</strong>
+                                        Máu chảy vào và ra khỏi cầu thận được kiểm soát bởi hai tiểu động mạch: tiểu
+                                        động mạch vào (được giãn chủ yếu bởi Prostaglandin tại chỗ) và tiểu động mạch ra
+                                        (được co chủ yếu bởi Angiotensin II).
+                                        <ul>
+                                            <li><strong>NSAID (Thuốc kháng viêm không steroid):</strong> Ức chế tổng hợp
+                                                Prostaglandin \(\rightarrow\) gây co tiểu động mạch vào, làm giảm dòng
+                                                máu đến cầu thận, giảm áp suất lọc.</li>
+                                            <li><strong>Thuốc ức chế men chuyển (ACEi) / Thụ thể (ARB):</strong> Ngăn
+                                                chặn tác dụng của Angiotensin II \(\rightarrow\) gây giãn tiểu động mạch
+                                                ra.</li>
+                                        </ul>
+                                        Nếu kết hợp hai loại thuốc này trên một bệnh nhân mất nước hoặc suy tim (mạch
+                                        thận đang co để bù trừ), áp suất lọc cầu thận sẽ bị sụt giảm kép nghiêm trọng,
+                                        dễ đẩy bệnh nhân vào tình trạng suy thận cấp.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <hr class="section-divider">
+
+                        <!-- TÀI LIỆU THAM KHẢO -->
+                        <div class="physio-content">
+                            <h3>Tài liệu tham khảo (AMA Citation style)</h3>
+                            <div class="physio-text-block" style="font-size: 0.9rem; opacity: 0.95;">
+                                <ol
+                                    style="list-style-type: decimal; padding-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                                    <li>Mai PT, Đặng HAT, Lê QT, Vũ TTQ, Bùi DK. <em>Sinh lý học y khoa</em>. Nhà xuất
+                                        bản Đại học Quốc gia Thành phố Hồ Chí Minh; 2024.</li>
+                                    <li>Koeppen BM, Stanton BA. <em>Berne and Levy Physiology</em>. 8th ed. Elsevier;
+                                        2024.</li>
+                                    <li>Barrett KE, Barman SM, Boitano S, Brooks HL. <em>Ganong's Review of Medical
+                                            Physiology</em>. 24th ed. McGraw-Hill Medical; 2012.</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- CỘT MỤC LỤC BÊN PHẢI -->
+                    <div class="physio-toc-sidebar">
+                        <div class="physio-toc-container" id="physio-toc-container">
+                            <!-- Script toc.js sẽ tự động kết xuất mục lục tại đây -->
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+    <!-- Script Sidebar -->
+    <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>

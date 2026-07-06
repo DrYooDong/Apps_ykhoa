@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CliniPortal - Hệ sinh thái công cụ hỗ trợ lâm sàng dành cho bác sĩ nội khoa">
+  <title>CliniPortal - Hệ sinh thái Công cụ Lâm sàng</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components/header.css">
+  <link rel="stylesheet" href="css/components/sidebar.css">
+  <link rel="stylesheet" href="css/components/footer.css">
+  <link rel="stylesheet" href="css/components/homepage-widgets.css">
+  <link rel="stylesheet" href="css/components/homepage-effects.css">
+
+  <script src="js/main.js" defer></script>
+  <script src="components/footer.js" defer></script>
+</head>
+
+<body>
+  <!-- ===================== HEADER ===================== -->
+  <header class="global-header">
+    <div class="header-left">
+      <div class="logo-brand">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+          <rect width="28" height="28" rx="7" fill="#0284c7" />
+          <path d="M14 6v16M8 11h12M8 17h8" stroke="white" stroke-width="2" stroke-linecap="round" />
+        </svg>
+        <span class="logo-text">CliniPortal</span>
+      </div>
+    </div>
+
+    <div class="search-bar-container">
+      <div class="search-container">
+        <svg viewBox="0 0 24 24" class="search__icon" aria-hidden="true">
+          <g>
+            <path
+              d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z" />
+          </g>
+        </svg>
+        <input class="input" type="search" placeholder="Tìm công cụ, phác đồ… (Phím /)" aria-label="Tìm kiếm">
+      </div>
+      <div class="search-results-dropdown" id="searchResultsDropdown"></div>
+    </div>
+
+    <div class="header-actions">
+      <!-- Command Palette trigger -->
+      <button class="header-cmd-hint" id="cmdPaletteTrigger" title="Mở Command Palette (Ctrl+K)" aria-label="Command Palette">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span>Tìm nhanh</span>
+        <kbd>Ctrl K</kbd>
+      </button>
+      <button id="theme-toggle-btn" title="Chuyển đổi Sáng/Tối" aria-label="Toggle Theme">🌓</button>
+      <button id="sync-settings-btn" title="Cài đặt & Đồng bộ" aria-label="Settings and Sync">⚙️</button>
+    </div>
+  </header>
+
+  <!-- ===================== APP CONTAINER ===================== -->
+  <main>
+    <div class="app-container">
+
+      <!-- MAIN CONTENT -->
+      <div class="main-wrapper homepage-wrapper" id="mainContent">
+        <!-- Cột bên trái: Nội dung chính -->
+        <div class="homepage-left">
+          <!-- HERO -->
+          <section class="hero-dashboard" aria-labelledby="hero-title">
+            <div class="hero-intro">
+              <!-- Live clock & greeting -->
+              <div class="hero-meta-row">
+                <p class="hero-greeting" id="heroGreeting">
+                  <span>🌅</span> Chào buổi sáng, Bác sĩ!
+                </p>
+                <div class="hero-clock">
+                  <i class="fa-regular fa-clock" style="color:rgba(255,255,255,0.7);font-size:0.8rem;"></i>
+                  <span class="hero-clock-time" id="heroClockTime">--:--:--</span>
+                  <span class="hero-clock-date" id="heroClockDate">Thứ hai, 1 tháng 1</span>
+                </div>
+              </div>
+
+              <h1 id="hero-title">HỆ SINH THÁI CÁC ỨNG DỤNG LÂM SÀNG</h1>
+              <p>Hỗ trợ quyết định lâm sàng nhanh chóng, chính xác ngay tại giường bệnh.</p>
+              <div class="hero-stats">
+                <div class="hero-stat">
+                  <span class="hero-stat-number" data-count="120" data-suffix="+">0+</span>
+                  <span class="hero-stat-label">Công cụ & Thang điểm</span>
+                </div>
+                <div class="hero-stat">
+                  <span class="hero-stat-number" data-count="50" data-suffix="+">0+</span>
+                  <span class="hero-stat-label">Phác đồ xử trí</span>
+                </div>
+                <div class="hero-stat">
+                  <span class="hero-stat-number" data-count="30" data-suffix="+">0+</span>
+                  <span class="hero-stat-label">Kỹ năng lâm sàng</span>
+                </div>
+              </div>
+            </div>
+            <!-- Floating orbs -->
+            <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+            <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+            <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
+            <div class="hero-pattern" aria-hidden="true"></div>
+          </section>
+
+          <!-- ANNOUNCEMENT BANNER -->
+          <div class="announcement-banner" id="announcementBanner">
+            <div class="announcement-text">
+              <span class="announcement-badge">Mới</span>
+              <span>💊 Phân hệ <strong>Dược lý lâm sàng</strong> vừa cập nhật danh mục thuốc và hiệu chỉnh liều kháng sinh mới nhất.</span>
+            </div>
+            <button class="announcement-close" id="announcementClose" aria-label="Đóng thông báo">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <!-- QUICK ACCESS / APP THƯỜNG DÙNG -->
+          <section class="quick-access-section" aria-labelledby="quick-access-title">
+            <h2 class="section-heading" id="quick-access-title">Ứng dụng thường dùng</h2>
+            <div class="quick-access-grid">
+              <!-- 1. Tra cứu mã ICD-10 -->
+              <a href="pages/Công cụ/Chung/Tracuu_maICD10.html" class="quick-access-card" style="--card-accent: var(--color-primary); --card-accent-hl: var(--color-primary-hl); --card-accent-rgb: var(--color-primary-rgb)">
+                <div class="quick-access-icon">🔍</div>
+                <div class="quick-access-info">
+                  <h3>Tra cứu mã ICD-10</h3>
+                  <p>Tra cứu nhanh mã bệnh quốc tế nhanh chóng</p>
+                </div>
+              </a>
+
+              <!-- 2. Đọc Điện tâm đồ ECG -->
+              <a href="pages/Kỹ năng/Cận lâm sàng/doc-ecg-co-ban.html" class="quick-access-card" style="--card-accent: var(--color-rose); --card-accent-hl: var(--color-rose-hl); --card-accent-rgb: var(--color-rose-rgb)">
+                <div class="quick-access-icon">📈</div>
+                <div class="quick-access-info">
+                  <h3>Đọc Điện tâm đồ ECG</h3>
+                  <p>Hướng dẫn phân tích sóng và chẩn đoán ECG</p>
+                </div>
+              </a>
+
+              <!-- 3. Đọc phân tích tế bào máu CBC -->
+              <a href="pages/Kỹ năng/Cận lâm sàng/doc-tpttb-mau.html" class="quick-access-card" style="--card-accent: var(--color-rose); --card-accent-hl: var(--color-rose-hl); --card-accent-rgb: var(--color-rose-rgb)">
+                <div class="quick-access-icon">🩸</div>
+                <div class="quick-access-info">
+                  <h3>Phân tích tế bào máu</h3>
+                  <p>Diễn giải kết quả tổng phân tích tế bào máu</p>
+                </div>
+              </a>
+
+              <!-- 4. Đọc sinh hóa chức năng Thận -->
+              <a href="pages/Kỹ năng/Cận lâm sàng/doc-sh-than.html" class="quick-access-card" style="--card-accent: var(--color-teal); --card-accent-hl: var(--color-teal-hl); --card-accent-rgb: var(--color-teal-rgb)">
+                <div class="quick-access-icon">🧪</div>
+                <div class="quick-access-info">
+                  <h3>Sinh hóa chức năng Thận</h3>
+                  <p>Đánh giá Ure, Creatinin và độ lọc cầu thận eGFR</p>
+                </div>
+              </a>
+
+              <!-- 5. Xử trí Sốt xuất huyết Dengue -->
+              <a href="pages/Tiếp cận/3. Quản lý bệnh lý mạn tính & hệ thống/Huyết học & Truyền nhiễm/TC_SXHD.html" class="quick-access-card" style="--card-accent: var(--color-warning); --card-accent-hl: var(--color-warning-hl); --card-accent-rgb: var(--color-warning-rgb)">
+                <div class="quick-access-icon">🦟</div>
+                <div class="quick-access-info">
+                  <h3>Xử trí SXH Dengue</h3>
+                  <p>Phác đồ tiếp cận, phân độ và điều trị SXHD</p>
+                </div>
+              </a>
+
+              <!-- 6. Lựa chọn kháng sinh kinh nghiệm -->
+              <a href="pages/Kỹ năng/Quản lý điều trị/Luachon_Khangsinh.html" class="quick-access-card" style="--card-accent: var(--color-purple); --card-accent-hl: var(--color-purple-hl); --card-accent-rgb: var(--color-purple-rgb)">
+                <div class="quick-access-icon">💊</div>
+                <div class="quick-access-info">
+                  <h3>Kháng sinh kinh nghiệm</h3>
+                  <p>Hướng dẫn lựa chọn kháng sinh ban đầu theo đích</p>
+                </div>
+              </a>
+            </div>
+          </section>
+
+          <!-- TOOL GRID -->
+          <div class="main-content-grid">
+            <h2 class="section-heading">Phân nhóm chức năng chính</h2>
+
+            <div class="category-grid">
+
+              <!-- Card 1: Sinh lý & Sinh lý bệnh -->
+              <div class="tool-card card-green">
+                <div class="card-top">
+                  <div class="tool-icon">🧬</div>
+                  <span class="tool-status active">Hoạt động</span>
+                </div>
+                <div class="tool-content">
+                  <h3>Sinh lý học trực quan</h3>
+                  <p>Tra cứu sơ đồ động, cơ chế sinh lý học và sinh lý bệnh học lâm sàng trực quan.</p>
+                  <div class="tool-footer">
+                    <span class="tool-category">Physiology</span>
+                    <a href="pages/Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html">Truy cập ứng dụng</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2: Kỹ năng lâm sàng -->
+              <div class="tool-card card-rose">
+                <div class="card-top">
+                  <div class="tool-icon">🩺</div>
+                  <span class="tool-status active">Hoạt động</span>
+                </div>
+                <div class="tool-content">
+                  <h3>Kỹ năng Lâm sàng</h3>
+                  <p>Quy trình thăm khám 11 hệ cơ quan chuẩn y khoa, bảng kiểm bedside dựa trên Macleod.</p>
+                  <div class="tool-footer">
+                    <span class="tool-category">Clinical Skills</span>
+                    <a href="pages/Kỹ năng/ky-nang.html">Truy cập ứng dụng</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 3: Tiếp cận vấn đề -->
+              <div class="tool-card card-green">
+                <div class="card-top">
+                  <div class="tool-icon">📋</div>
+                  <span class="tool-status active">Hoạt động</span>
+                </div>
+                <div class="tool-content">
+                  <h3>Tiếp cận Lâm sàng</h3>
+                  <p>Phác đồ từng bước xử trí các hội chứng, triệu chứng cấp cứu và thường gặp.</p>
+                  <div class="tool-footer">
+                    <span class="tool-category">Algorithms</span>
+                    <a href="pages/Tiếp cận/tiep-can.html">Truy cập ứng dụng</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 4: Công cụ lâm sàng -->
+              <div class="tool-card card-blue">
+                <div class="card-top">
+                  <div class="tool-icon">🧮</div>
+                  <span class="tool-status active">Hoạt động</span>
+                </div>
+                <div class="tool-content">
+                  <h3>Công cụ Lâm sàng</h3>
+                  <p>Tính toán các thang điểm nặng, tiên lượng và hỗ trợ chẩn đoán chính xác tại giường.</p>
+                  <div class="tool-footer">
+                    <span class="tool-category">Calculators</span>
+                    <a href="pages/Công cụ/cong-cu.html">Truy cập ứng dụng</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 5: Dược lý lâm sàng -->
+              <div class="tool-card card-purple">
+                <div class="card-top">
+                  <div class="tool-icon">💊</div>
+                  <span class="tool-status active">Hoạt động</span>
+                </div>
+                <div class="tool-content">
+                  <h3>Dược lý lâm sàng</h3>
+                  <p>Tra cứu liều thuốc, chỉnh liều theo chức năng thận tối ưu PK/PD kháng sinh.</p>
+                  <div class="tool-footer">
+                    <span class="tool-category">Pharmacology</span>
+                    <a href="pages/Dược lý/duoc-ly.html">Truy cập ứng dụng</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 6: Y học chứng cứ -->
+              <div class="tool-card card-amber">
+                <div class="card-top">
+                  <div class="tool-icon">📄</div>
+                  <span class="tool-status active">Hoạt động</span>
+                </div>
+                <div class="tool-content">
+                  <h3>Y học chứng cứ</h3>
+                  <p>Tra cứu các bằng chứng y học hỗ trợ quyết định điều trị.</p>
+                  <div class="tool-footer">
+                    <span class="tool-category">Evidence</span>
+                    <a href="pages/Y học chứng cứ/yhcc.html">Truy cập ứng dụng</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 7: Y học cổ truyền -->
+              <div class="tool-card card-teal">
+                <div class="card-top">
+                  <div class="tool-icon">☯️</div>
+                  <span class="tool-status active">Hoạt động</span>
+                </div>
+                <div class="tool-content">
+                  <h3>Y học cổ truyền</h3>
+                  <p>Kho lưu trữ kiến thức Y học cổ truyền: Xoa bóp, bấm huyệt, châm cứu và dược liệu.</p>
+                  <div class="tool-footer">
+                    <span class="tool-category">Traditional Med</span>
+                    <a href="pages/Y học cổ truyền/y-hoc-co-truyen.html">Truy cập ứng dụng</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cột bên phải: Tiện ích mới -->
+        <aside class="homepage-right">
+
+          <!-- Widget 1: Clinical Pearl of the Day -->
+          <section class="widget-card pearl-widget" aria-label="Hạt ngọc lâm sàng">
+            <div class="widget-header">
+              <h3 class="widget-title">
+                <i class="fa-solid fa-lightbulb"></i> Hạt ngọc lâm sàng
+              </h3>
+            </div>
+            <div class="widget-body">
+              <div class="pearl-container">
+                <div class="pearl-content-box">
+                  <p class="pearl-text" id="pearlText">Đang tải hạt ngọc lâm sàng...</p>
+                </div>
+                <div class="pearl-footer">
+                  <button class="btn-pearl-refresh" id="pearlRefreshBtn" title="Xem hạt ngọc khác">
+                    <i class="fa-solid fa-rotate"></i> Đổi ngẫu nhiên
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Widget: Recently Visited -->
+          <section class="widget-card" aria-label="Đã xem gần đây">
+            <div class="widget-header">
+              <h3 class="widget-title">
+                <i class="fa-regular fa-clock" style="background:var(--color-teal-hl);color:var(--color-teal)"></i>
+                Đã xem gần đây
+              </h3>
+            </div>
+            <div class="widget-body">
+              <div id="recentlyVisitedList" class="recent-list"></div>
+            </div>
+          </section>
+
+          <!-- Widget 2: Medical Converter -->
+          <section class="widget-card converter-widget" aria-label="Chuyển đổi chỉ số y khoa">
+            <div class="widget-header">
+              <h3 class="widget-title">
+                <i class="fa-solid fa-calculator"></i> Quy đổi chỉ số nhanh
+              </h3>
+            </div>
+            <div class="widget-body">
+              <div class="converter-tabs">
+                <button class="converter-tab active" data-target="panelGlucose">Glucose</button>
+                <button class="converter-tab" data-target="panelCreatinine">Creatinine</button>
+                <button class="converter-tab" data-target="panelTemp">Nhiệt độ</button>
+              </div>
+
+              <!-- Panel Glucose -->
+              <div class="converter-panel active" id="panelGlucose">
+                <div class="converter-row">
+                  <input type="number" id="glcMg" placeholder="mg/dL" step="any">
+                  <span class="converter-unit">mg/dL</span>
+                </div>
+                <div class="converter-arrow-icon">
+                  <i class="fa-solid fa-arrows-up-down"></i>
+                </div>
+                <div class="converter-row">
+                  <input type="number" id="glcMmol" placeholder="mmol/L" step="any">
+                  <span class="converter-unit">mmol/L</span>
+                </div>
+              </div>
+
+              <!-- Panel Creatinine -->
+              <div class="converter-panel" id="panelCreatinine">
+                <div class="converter-row">
+                  <input type="number" id="crUmol" placeholder="µmol/L" step="any">
+                  <span class="converter-unit">µmol/L</span>
+                </div>
+                <div class="converter-arrow-icon">
+                  <i class="fa-solid fa-arrows-up-down"></i>
+                </div>
+                <div class="converter-row">
+                  <input type="number" id="crMg" placeholder="mg/dL" step="any">
+                  <span class="converter-unit">mg/dL</span>
+                </div>
+              </div>
+
+              <!-- Panel Nhiệt độ -->
+              <div class="converter-panel" id="panelTemp">
+                <div class="converter-row">
+                  <input type="number" id="tempC" placeholder="°C" step="any">
+                  <span class="converter-unit">°C</span>
+                </div>
+                <div class="converter-arrow-icon">
+                  <i class="fa-solid fa-arrows-up-down"></i>
+                </div>
+                <div class="converter-row">
+                  <input type="number" id="tempF" placeholder="°F" step="any">
+                  <span class="converter-unit">°F</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Widget 3: Clinical Scratchpad -->
+          <section class="widget-card scratchpad-widget" aria-label="Ghi chú lâm sàng">
+            <div class="widget-header">
+              <h3 class="widget-title">
+                <i class="fa-solid fa-note-sticky"></i> Ghi chú lâm sàng
+              </h3>
+            </div>
+            <div class="widget-body">
+              <div class="scratchpad-container">
+                <textarea id="scratchpadText" class="scratchpad-textarea" placeholder="Ghi nhanh chẩn đoán, kết quả xét nghiệm, công thức..."></textarea>
+                <div class="scratchpad-actions">
+                  <div class="scratchpad-left-actions">
+                    <button class="btn-widget" id="scratchpadCopyBtn" title="Sao chép toàn bộ">
+                      <i class="fa-regular fa-copy"></i> Chép
+                    </button>
+                    <button class="btn-widget" id="scratchpadExportBtn" title="Tải về file .txt">
+                      <i class="fa-solid fa-download"></i> Xuất
+                    </button>
+                    <button class="btn-widget btn-danger" id="scratchpadClearBtn" title="Xóa ghi chú">
+                      <i class="fa-regular fa-trash-can"></i> Xóa
+                    </button>
+                  </div>
+                  <select class="scratchpad-template-select" id="scratchpadTemplateSelect" aria-label="Mẫu ghi chú nhanh">
+                    <option value="" disabled selected>Mẫu nhanh</option>
+                    <option value="summary">Tóm tắt Bệnh án</option>
+                    <option value="lab">Kết quả Lab/CLS</option>
+                    <option value="rx">Y lệnh tham khảo</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </aside>
+      </div>
+    </div>
+
+    <!-- Placeholder nạp footer.html -->
+    <div id="footer-placeholder" data-footer-path="components/footer.html"></div>
+  </main>
+
+  <!-- ========== GLOBAL UI OVERLAYS ========== -->
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress-bar" id="scrollProgressBar" aria-hidden="true"></div>
+
+  <!-- Back-to-Top Button -->
+  <button class="back-to-top" id="backToTopBtn" title="Về đầu trang" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Command Palette Overlay -->
+  <div class="cmd-palette-overlay" id="cmdPaletteOverlay" role="dialog" aria-modal="true" aria-label="Command Palette">
+    <div class="cmd-palette">
+      <div class="cmd-search-row">
+        <i class="fa-solid fa-magnifying-glass cmd-search-icon"></i>
+        <input
+          type="text"
+          class="cmd-search-input"
+          id="cmdSearchInput"
+          placeholder="Tìm công cụ, kỹ năng, phác đồ..."
+          autocomplete="off"
+          spellcheck="false"
+        >
+        <kbd class="cmd-search-kbd">ESC</kbd>
+      </div>
+      <div class="cmd-results" id="cmdResults"></div>
+      <div class="cmd-footer">
+        <span class="cmd-footer-hint">
+          <span class="cmd-kbd">↑</span>
+          <span class="cmd-kbd">↓</span>
+          Di chuyển
+        </span>
+        <span class="cmd-footer-hint">
+          <span class="cmd-kbd">⏎</span>
+          Mở
+        </span>
+        <span class="cmd-footer-hint">
+          <span class="cmd-kbd">Ctrl K</span>
+          Đóng/Mở
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/homepage-widgets.js" defer></script>
+  <script src="js/homepage-effects.js" defer></script>
+</body>
+
+</html>

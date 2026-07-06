@@ -1,0 +1,4 @@
+﻿---
+tags:
+  - Benhly
+---[[1. Areas/5. Mắt - Tai mũi họng - Răng hàm mặt/Bệnh lý cụ thể/Viêm tai giữa/1. Tổng quan & Dịch tễ học|1. Tổng quan & Dịch tễ học]]][[1. Areas/5. Mắt - Tai mũi họng - Răng hàm mặt/Bệnh lý cụ thể/Viêm tai giữa/2. Cơ chế bệnh sinh|2. Cơ chế bệnh sinh]]][[1. Areas/5. Mắt - Tai mũi họng - Răng hàm mặt/Bệnh lý cụ thể/Viêm tai giữa/3. Lâm sàng|3. Lâm sàng]]][[1. Areas/5. Mắt - Tai mũi họng - Răng hàm mặt/Bệnh lý cụ thể/Viêm tai giữa/4. Cận lâm sàng|4. Cận lâm sàng]]][[1. Areas/5. Mắt - Tai mũi họng - Răng hàm mặt/Bệnh lý cụ thể/Viêm tai giữa/5. Chẩn đoán|5. Chẩn đoán]]][[1. Areas/5. Mắt - Tai mũi họng - Răng hàm mặt/Bệnh lý cụ thể/Viêm tai giữa/6. Điều trị chung|6. Điều trị chung]]][[1. Areas/5. Mắt - Tai mũi họng - Răng hàm mặt/Bệnh lý cụ thể/Viêm tai giữa/7. Biến chứng|7. Biến chứng]]][[1. Areas/5. Mắt - Tai mũi họng - Răng hàm mặt/Bệnh lý cụ thể/Viêm tai giữa/8. Tiên lượng|8. Tiên lượng]]]

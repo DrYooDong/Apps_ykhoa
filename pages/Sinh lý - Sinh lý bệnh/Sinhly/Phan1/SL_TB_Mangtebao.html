@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Sinh lý học màng tế bào và các cơ chế vận chuyển chất: Khuếch tán đơn thuần, khuếch tán tạo thuận lợi, thẩm thấu, vận chuyển chủ động nguyên phát & thứ phát, xuất nhập bào, vận chuyển biểu mô và liên hệ lâm sàng.">
+    <title>Sinh lý Màng Tế bào & Vận chuyển chất – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS Core CliniPortal -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học dùng chung -->
+    <link rel="stylesheet" href="../../../../css/components/physio-patho.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+    <!-- MathJax Config cho Công thức Toán/Sinh lý -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+
+    <!-- Script điều hướng hệ thống -->
+    <script src="../../../../js/toc.js" defer></script>
+    <script src="../../../../components/header.js" defer></script>
+    <script src="../../../../components/footer.js" defer></script>
+    <script src="../../js/physio-shared.js" defer></script>
+    <script src="../../../../js/main.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+            <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Sinhly-sinhlybenh.html" class="nav-item active" aria-current="page" title="S.lý - S.lý bệnh">
+              <span class="nav-icon">🧬</span>
+              <span class="nav-text">S.lý - S.lý bệnh</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container"
+                style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+                <ol class="breadcrumb-list"
+                    style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+                    <li><a href="../../../../index.html">🏠 Home</a> &gt;</li>
+                    <li><a href="../../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+                    <li style="color:var(--color-primary); font-weight:600;">Chương 1: Sinh lý màng tế bào</li>
+                </ol>
+            </nav>
+
+            <!-- MAIN CONTAINER -->
+            <main class="visual-container">
+                <!-- CHAPTER HERO CARD -->
+                <div class="chapter-header">
+                    <h1>Sinh lý Màng Tế bào & Vận chuyển chất qua màng</h1>
+                    <p>Hệ thống hóa cấu trúc màng lipid kép, động lực gradient điện hóa, và các cơ chế khuếch tán, thẩm
+                        thấu, vận chuyển chủ động, xuất nhập bào và vận chuyển qua biểu mô.</p>
+                </div>
+
+                <!-- CONTENT LAYOUT -->
+                <div class="physio-content-wrapper"
+                    style="display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 1.5rem;">
+
+                    <!-- VÙNG NỘI DUNG CHÍNH -->
+                    <div class="physio-main-article">
+
+                        <p class="physio-lead">
+                            Màng tế bào (plasma membrane) là một cấu trúc lipid kép mỏng manh (dày khoảng <strong>5
+                                nm</strong>) có khảm các protein, đóng vai trò ngăn cách nghiêm ngặt môi trường nội bào
+                            và ngoại bào. Phần lõi kỵ nước của màng là một rào cản hiệu quả đối với hầu hết các chất hòa
+                            tan quan trọng. Sự sống của tế bào phụ thuộc vào việc trao đổi liên tục nước, ion, chất dinh
+                            dưỡng (glucose, acid amin) và các chất thải sinh học. Quá trình này được thực hiện một cách
+                            chính xác nhờ các <strong>protein vận chuyển màng</strong> (membrane transport proteins),
+                            chiếm tới khoảng <strong>10%</strong> toàn bộ hệ gen người.
+                        </p>
+
+                        <!-- PHẦN 1 -->
+                        <h2 id="sec-gradient-dien-hoa" class="section-title">
+                            <span>Phần I: Gradient Điện Hóa (Động Lực Vận Chuyển)</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                <strong>Gradient điện hóa (electrochemical gradient)</strong> là lực đẩy ròng quyết định
+                                xu hướng và tốc độ di chuyển của một chất hòa tan đi qua màng tế bào. Nó là sự hợp lực
+                                của hai thành phần độc lập:
+                            </p>
+                            <ul
+                                style="margin-left: 1.5rem; margin-top: 0.5rem; list-style-type: square; line-height: 1.6;">
+                                <li><strong>Gradient nồng độ (hóa học):</strong> Chênh lệch nồng độ chất hòa tan giữa
+                                    hai bên màng ($C_{out} - C_{in}$).</li>
+                                <li><strong>Gradient điện tích (điện học):</strong> Tác động của lực hút/đẩy tĩnh điện
+                                    lên các phân tử mang điện (ion) khi đi qua màng có hiệu điện thế ($V_m$, thường âm ở
+                                    bên trong tế bào, dao động từ $-60\text{ mV}$ đến $-90\text{ mV}$).</li>
+                            </ul>
+
+                            <!-- HÌNH 1: Electrochemical Gradient -->
+                            <div class="image-placeholder-card" style="margin-top: 1.5rem;">
+                                <div class="image-title">
+                                    <span style="font-size:1.2rem">🖼️</span> Hình 1: Động lực vận chuyển chất qua màng
+                                    (Fig. 1.6 Berne & Levy)
+                                </div>
+                                <div class="image-drop-text">
+                                    <div class="image-drop-area">
+                                        <img src="../../images/Phan1/MangTEbao_Hinh1.png"
+                                            alt="Động lực vận chuyển chất qua màng"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả chi tiết:</strong> So sánh động lực di chuyển. (A) Glucose phân cực
+                                    nhưng không tích điện, do đó di chuyển thuần túy theo gradient nồng độ vào trong.
+                                    (B) Ion Kali ($K^+$) mang điện dương, chênh lệch nồng độ cao đẩy $K^+$ ra ngoài (lực
+                                    hóa học) nhưng điện thế màng âm bên trong tế bào hút $K^+$ giữ lại (lực điện học).
+                                    Lực hóa học lớn hơn nên động lực ròng vẫn hướng ra ngoài.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PHẦN 2 -->
+                        <h2 id="sec-van-chuyen-thu-dong" class="section-title">
+                            <span>Phần II: Vận Chuyển Thụ Động (Passive Transport)</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Vận chuyển thụ động là sự chuyển dịch của các chất đi theo chiều của gradient điện hóa
+                                hoặc hóa học ròng của chúng. Quá trình này diễn ra hoàn toàn tự nhiên và không tiêu hao
+                                năng lượng hóa học (ATP) của tế bào.
+                            </p>
+
+                            <div class="physio-grid">
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">💨 1. Khuếch tán đơn thuần (Simple Diffusion)</div>
+                                    <p>
+                                        Các chất tan không phân cực, có tính kỵ nước cao (như chất khí $O_2$, $N_2$,
+                                        $CO_2$) và các hormone steroid có thể hòa tan trực tiếp qua lớp màng lipid kép
+                                        để đi qua tế bào. Tốc độ khuếch tán qua màng tuân theo **định luật Fick**:
+                                        $$J = P \cdot A \cdot (C_1 - C_2)$$
+                                        Trong đó $J$ là dòng khuếch tán, $P$ là hệ số thấm, $A$ là diện tích màng, và
+                                        $C_1 - C_2$ là chênh lệch nồng độ.
+                                    </p>
+                                </div>
+                                <div class="physio-grid-card">
+                                    <div class="physio-grid-title">🤝 2. Khuếch tán tạo thuận lợi (Facilitated
+                                        Diffusion)</div>
+                                    <p>
+                                        Áp dụng cho các chất phân cực, tích điện không thể tự do đi qua lõi kỵ nước của
+                                        màng. Chúng đi qua nhờ các protein mang chuyên biệt:
+                                    </p>
+                                    <p style="margin-top:0.3rem; font-size:0.9rem;">
+                                        • <strong>Kênh ion (Ion channels):</strong> Ví dụ kênh rò rỉ $K^+$ hoặc kênh
+                                        cổng điện thế/phối tử.<br>
+                                        • <strong>Protein mang (Carriers/Uniporter):</strong> Thể hiện tính bão hòa,
+                                        cạnh tranh và đặc hiệu cao. Ví dụ tiêu biểu là kênh vận chuyển glucose
+                                        <strong>GLUT-1</strong> (hoặc GLUT-4 nhạy cảm với insulin).
+                                    </p>
+                                </div>
+                            </div>
+
+                            <h3 style="margin-top: 1.5rem; font-size: 1.1rem; color: var(--color-primary);">3. Thẩm thấu
+                                (Osmosis) & Áp suất thẩm thấu</h3>
+                            <p>
+                                Sự dịch chuyển của nước qua màng bán thấm là một quá trình thụ động từ nơi có nồng độ
+                                chất hòa tan thấp (nhiều nước tự do) sang nơi có nồng độ chất hòa tan cao (ít nước tự
+                                do). Các phân tử nước đi qua màng thông qua các kênh nước đặc hiệu gọi là **Aquaporin
+                                (AQP)**.
+                            </p>
+
+                            <!-- HÌNH 2: Osmosis -->
+                            <div class="image-placeholder-card" style="margin-top: 1.5rem;">
+                                <div class="image-title">
+                                    <span style="font-size:1.2rem">🖼️</span> Hình 2: Cơ chế thẩm thấu và sự phát sinh
+                                    áp suất thẩm thấu (Fig. 1.8 Berne & Levy)
+                                </div>
+                                <div class="image-drop-text">
+                                    <div class="image-drop-area">
+                                        <img src="../../images/Phan1/MangTEbao_Hinh2.png" alt="Cơ chế thẩm thấu và sự
+                                            phát sinh áp suất thẩm thấu"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả chi tiết:</strong> Ngăn A chứa các hạt chất tan không qua được màng
+                                    bán thấm, ngăn B chứa nước tinh khiết. Nước di chuyển từ B sang A theo gradient thẩm
+                                    thấu. Tại điểm cân bằng, áp suất thủy tĩnh của cột nước chênh lệch $h$ sẽ ngăn chặn
+                                    dòng nước thuần ròng tiếp tục chảy qua và có độ lớn bằng với áp suất thẩm thấu do
+                                    dung dịch trong ngăn A tạo ra.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PHẦN 3 -->
+                        <h2 id="sec-van-chuyen-chu-dong" class="section-title">
+                            <span>Phần III: Vận Chuyển Chủ Động (Active Transport)</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Vận chuyển chủ động là hoạt động vận chuyển các chất **ngược lại với gradient điện hóa
+                                hoặc nồng độ** của chúng. Quá trình này bắt buộc phải tiêu tốn năng lượng sinh học.
+                            </p>
+
+                            <h3 style="font-size: 1.1rem; color: var(--color-primary); margin-top: 1rem;">1. Vận chuyển
+                                chủ động nguyên phát (Primary Active Transport)</h3>
+                            <p>
+                                Năng lượng được cung cấp trực tiếp từ việc thủy phân liên kết phosphat giàu năng lượng
+                                trong phân tử **ATP**. Các protein vận chuyển này hoạt động như một enzyme ATPase (được
+                                gọi là bơm ion):
+                            </p>
+
+                            <ul
+                                style="margin-left: 1.5rem; margin-top: 0.5rem; list-style-type: disc; line-height: 1.6;">
+                                <li><strong>Bơm $Na^+, K^+$-ATPase:</strong> Hiện diện ở màng tế bào của mọi tế bào
+                                    trong cơ thể. Bơm tiêu thụ 1 ATP để đẩy **3 $Na^+$ ra ngoài** tế bào và kéo **2
+                                    $K^+$ vào trong**, giúp thiết lập nồng độ ion và điện thế màng âm.</li>
+                                <li><strong>Bơm $Ca^{2+}$-ATPase (SERCA hoặc PMCA):</strong> Bơm ion $Ca^{2+}$ ra ngoài
+                                    tế bào hoặc vào trong lưới nội chất, giữ nồng độ $Ca^{2+}$ tự do trong bào tương ở
+                                    mức rất thấp ($10^{-7}\text{ M}$).</li>
+                                <li><strong>Bơm $H^+$-ATPase và $H^+/K^+$-ATPase:</strong> Tiết ion axit trong tế bào kẽ
+                                    của ống góp thận và tế bào viền của niêm mạc dạ dày.</li>
+                            </ul>
+
+                            <h3 style="font-size: 1.1rem; color: var(--color-primary); margin-top: 1.5rem;">2. Vận
+                                chuyển chủ động thứ phát (Secondary Active Transport)</h3>
+                            <p>
+                                Quá trình này không trực tiếp phân cắt ATP mà sử dụng thế năng tích trữ của **gradient
+                                nồng độ ion khác** (thường là ion $Na^+$ đã được bơm nguyên phát thiết lập sẵn). Sự
+                                chuyển dịch của $Na^+$ xuôi dòng sẽ kéo theo chất khác đi ngược dòng:
+                            </p>
+
+                            <ul
+                                style="margin-left: 1.5rem; margin-top: 0.5rem; list-style-type: disc; line-height: 1.6;">
+                                <li><strong>Đồng vận chuyển (Cotransport / Symport):</strong> Các chất di chuyển cùng
+                                    hướng. Ví dụ tiêu biểu là bơm <strong>SGLT</strong> (Sodium-Glucose Cotransporter)
+                                    vận chuyển đồng thời $Na^+$ và glucose từ dịch lọc vào trong tế bào biểu mô ruột/ống
+                                    thận.</li>
+                                <li><strong>Đối vận chuyển (Countertransport / Antiport):</strong> Các chất di chuyển
+                                    ngược hướng. Ví dụ bơm trao đổi <strong>$3Na^+-1Ca^{2+}$</strong> đẩy $Ca^{2+}$ ra
+                                    ngoài tế bào bằng cách cho $Na^+$ đi vào, hoặc bơm trao đổi <strong>$Na^+-H^+$
+                                        (NHE3)</strong> ở ống thận.</li>
+                            </ul>
+
+                            <!-- HÌNH 3: Transporters Classification -->
+                            <div class="image-placeholder-card" style="margin-top: 1.5rem;">
+                                <div class="image-title">
+                                    <span style="font-size:1.2rem">🖼️</span> Hình 3: Minh họa các dạng protein vận
+                                    chuyển chính trên màng tế bào (Fig. 1.7 Berne & Levy)
+                                </div>
+                                <div class="image-drop-text">
+                                    <div class="image-drop-area">
+                                        <img src="../../images/Phan1/MangTEbao_Hinh3.png" alt="Cơ chế thẩm thấu và sự
+                                            phát sinh áp suất thẩm thấu"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả chi tiết:</strong> Các kiểu vận chuyển protein qua màng. Từ trái sang
+                                    phải: (1) Kênh khuếch tán thụ động (ion trượt theo gradient điện hóa); (2) Bơm chủ
+                                    động nguyên phát $Na^+, K^+$-ATPase thủy phân trực tiếp ATP; (3) Đồng vận chuyển thứ
+                                    phát (Symport SGLT); (4) Đối vận chuyển thứ phát (Antiport NCX).
+                                </div>
+                            </div>
+
+                            <!-- HÌNH 4: Composite secondary effects -->
+                            <div class="image-placeholder-card" style="margin-top: 2rem;">
+                                <div class="image-title">
+                                    <span style="font-size:1.2rem">🖼️</span> Hình 4: Các hiệu ứng thứ phát phát sinh từ
+                                    hoạt động của bơm Na+/K+-ATPase (Fig. 2-19 Ganong)
+                                </div>
+                                <div class="image-drop-text">
+                                    <div class="image-drop-area">
+                                        <img src="../../images/Phan1/MangTEbao_Hinh4.png" alt="Các hiệu ứng thứ phát
+                                            phát sinh từ hoạt động của bơm Na+/K+-ATPase"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả chi tiết:</strong> Hệ thống động lực thứ phát. Hoạt động liên tục của
+                                    bơm $Na^+, K^+$-ATPase (bơm nguyên phát) giúp duy trì gradient nồng độ $Na^+$ nội
+                                    bào cực thấp. Điều này tạo ra một lực đẩy mạnh cho các chất vận chuyển chủ động thứ
+                                    phát hoạt động (đồng vận chuyển đường/acid amin, đối vận chuyển tống xuất $Ca^{2+}$
+                                    và $H^+$ ra khỏi tế bào).
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PHẦN 4 -->
+                        <h2 id="sec-van-chuyen-tui-mang" class="section-title">
+                            <span>Phần IV: Vận Chuyển Bằng Túi Màng (Vesicular Transport)</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Các đại phân tử (như protein, polysaccharide) hoặc lượng dịch lớn không thể đi qua màng
+                                thông qua các kênh hay chất vận chuyển thông thường. Chúng được đóng gói trong các túi
+                                màng (vesicles) để vận chuyển, giúp bảo toàn tính toàn vẹn của màng.
+                            </p>
+
+                            <ol class="physio-steps">
+                                <li>
+                                    <div class="physio-step-card">
+                                        <span class="physio-step-title">1. Nhập bào (Endocytosis)</span>
+                                        Là sự đưa các chất từ ngoài vào trong tế bào nhờ sự lõm của màng tế bào. Gồm:
+                                        <ul style="margin-left: 1rem; margin-top: 0.2rem; list-style-type: circle;">
+                                            <li><strong>Thực bào (Phagocytosis):</strong> Đưa các hạt có kích thước lớn
+                                                (như vi khuẩn, mảnh vỡ tế bào) vào trong. Màng tế bào tạo chân giả bao
+                                                lấy hạt tạo túi thực bào (chỉ có ở một số tế bào như bạch cầu trung
+                                                tính, đại thực bào).</li>
+                                            <li><strong>Ẩm bào (Pinocytosis):</strong> Đưa dịch ngoại bào và các chất
+                                                tan nhỏ vào tế bào (không có tính chọn lọc cao).</li>
+                                            <li><strong>Nhập bào qua trung gian thụ thể (Receptor-mediated
+                                                    endocytosis):</strong> Cực kỳ đặc hiệu. Chất tan (ligand - ví dụ
+                                                cholesterol LDL, transferrin) gắn vào các thụ thể chuyên biệt tập trung
+                                                ở <strong>hố áo (coated pits)</strong> được bao bọc bởi protein
+                                                **Clathrin** và **Adaptin**. Men **Dynamin** co thắt ở cổ hố để cắt đứt
+                                                tạo thành túi màng trần đi vào trong bào tương.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="physio-step-card">
+                                        <span class="physio-step-title">2. Xuất bào (Exocytosis)</span>
+                                        Quá trình tống các chất bên trong túi màng ra ngoài ngoại bào (ví dụ: hormone,
+                                        chất dẫn truyền thần kinh). Quá trình này phụ thuộc nghiêm ngặt vào sự gia tăng
+                                        nồng độ ion **$Ca^{2+}$ nội bào** và sự tương tác ăn khớp giữa các protein màng
+                                        túi (<strong>v-SNARE</strong> / Synaptobrevin) và protein màng đích
+                                        (<strong>t-SNARE</strong> / Syntaxin, SNAP-25) để kích hoạt sự dung hợp màng.
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="physio-step-card">
+                                        <span class="physio-step-title">3. Xuyên bào (Transcytosis)</span>
+                                        Sự kết hợp liên hoàn giữa nhập bào ở một cực của tế bào (ví dụ màng đỉnh) và
+                                        xuất bào ở cực đối diện (màng đáy bên). Cơ chế này giúp vận chuyển nguyên vẹn
+                                        các đại phân tử như kháng thể IgA đi xuyên qua lớp tế bào biểu mô ruột hoặc nội
+                                        mô mao mạch.
+                                    </div>
+                                </li>
+                            </ol>
+
+                            <!-- HÌNH 5: Receptor-Mediated Endocytosis -->
+                            <div class="image-placeholder-card" style="margin-top: 1.5rem;">
+                                <div class="image-title">
+                                    <span style="font-size:1.2rem">🖼️</span> Hình 5: Các bước nhập bào qua trung gian
+                                    thụ thể (Fig. 1.5 Berne & Levy)
+                                </div>
+                                <div class="image-drop-text">
+                                    <div class="image-drop-area">
+                                        <img src="../../images/Phan1/MangTEbao_Hinh5.png" alt="Các bước nhập bào qua
+                                            trung gian thụ thể"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả chi tiết:</strong> Trình tự các bước trong nhập bào qua trung gian thụ
+                                    thể. LDL/cholesterol hoặc transferrin gắn vào thụ thể tập trung ở hố áo Clathrin.
+                                    Phức hợp co lại tạo túi, tiếp tục được enzyme thắt cổ Dynamin cắt đứt hoàn toàn khỏi
+                                    màng để đưa vào nội bào.
+                                </div>
+                            </div>
+
+                            <!-- HÌNH 6: Exocytosis vs Endocytosis comparison -->
+                            <div class="image-placeholder-card" style="margin-top: 2rem;">
+                                <div class="image-title">
+                                    <span style="font-size:1.2rem">🖼️</span> Hình 6: So sánh cơ chế màng của Xuất bào
+                                    và Nhập bào (Fig. 2-12 Ganong)
+                                </div>
+                                <div class="image-drop-text">
+                                    <div class="image-drop-area">
+                                        <img src="../../images/Phan1/MangTEbao_Hinh6.png" alt="So sánh cơ chế màng của
+                                            Xuất bào và Nhập bào"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả chi tiết:</strong> Cơ chế dung hợp màng. Trong xuất bào, mặt tế bào
+                                    chất của màng túi dung hợp với màng sinh chất để mở ra ngoài và đẩy chất tiết. Trong
+                                    nhập bào, màng tế bào tự lõm sâu vào trong, các rìa màng khép lại và hòa hợp để tạo
+                                    túi kín di chuyển vào trong bào tương.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PHẦN 5 -->
+                        <h2 id="sec-van-chuyen-bieu-mo" class="section-title">
+                            <span>Phần V: Vận Chuyển Qua Biểu Mô (Epithelial Transport)</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Tế bào biểu mô (ở ống thận, ruột, tuyến mồ hôi) tạo thành các rào cản ngăn cách môi
+                                trường bên ngoài và nội môi. Khác với tế bào đối xứng thông thường (như hồng cầu), tế
+                                bào biểu mô có tính **bất đối xứng (polarization)** rõ rệt. Màng tế bào được phân chia
+                                làm hai vùng nhờ cấu trúc liên kết chặt (tight junctions):
+                            </p>
+
+                            <ul
+                                style="margin-left: 1.5rem; margin-top: 0.5rem; list-style-type: disc; line-height: 1.6;">
+                                <li><strong>Màng đỉnh (Apical membrane):</strong> Tiếp xúc với lòng ống chứa dịch lọc
+                                    hoặc thức ăn. Thường chứa các kênh ion thụ động (như ENaC) hoặc các protein đồng vận
+                                    chuyển thứ phát (như SGLT1/SGLT2).</li>
+                                <li><strong>Màng đáy bên (Basolateral membrane):</strong> Tiếp xúc dịch kẽ và mạch máu.
+                                    Luôn phân bố dày đặc bơm chủ động **$Na^+, K^+$-ATPase** để duy trì gradient nồng độ
+                                    liên tục, cùng các kênh khuếch tán được tạo thuận lợi (như GLUT2).</li>
+                            </ul>
+
+                            <p style="margin-top: 0.8rem;">
+                                Các chất có thể đi qua biểu mô theo hai con đường:
+                            </p>
+                            <ul style="margin-left: 1.5rem; list-style-type: circle; line-height: 1.6;">
+                                <li><strong>Vận chuyển xuyên bào (Transcellular transport):</strong> Đi xuyên qua cả
+                                    màng đỉnh và màng đáy bên nhờ các protein vận chuyển phân bố bất đối xứng.</li>
+                                <li><strong>Vận chuyển gian bào (Paracellular transport):</strong> Các chất hòa tan nhỏ
+                                    đi thụ động qua khe hở giữa hai tế bào liền kề qua các liên kết chặt, động lực nhờ
+                                    sự chênh lệch nồng độ hoặc điện thế xuyên biểu mô.</li>
+                            </ul>
+
+                            <!-- HÌNH 7: Symmetrical vs Polarized Epithelial Cell -->
+                            <div class="image-placeholder-card" style="margin-top: 1.5rem;">
+                                <div class="image-title">
+                                    <span style="font-size:1.2rem">🖼️</span> Hình 7: Sự phân bố protein vận chuyển ở tế
+                                    bào đối xứng và tế bào biểu mô phân cực (Fig. 2.11 Berne & Levy)
+                                </div>
+                                <div class="image-drop-text">
+                                    <div class="image-drop-area">
+                                        <img src="../../images/Phan1/MangTEbao_Hinh7.png" alt="Sự phân bố protein
+                                            vận chuyển ở tế bào đối xứng và tế bào biểu mô phân cực"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    </div>
+                                </div>
+                                <div class="image-description">
+                                    <strong>Mô tả chi tiết:</strong> Đối xứng vs Phân cực. (A) Tế bào hồng cầu đối xứng,
+                                    các protein vận chuyển phân bố đều khắp bề mặt màng. (B) Tế bào biểu mô phân cực,
+                                    màng đỉnh và màng đáy bên được ngăn cách bởi liên kết chặt (tight junction). Kênh
+                                    hấp thụ $Na^+$ nằm ở màng đỉnh, trong khi bơm $Na^+, K^+$-ATPase nằm ở màng đáy bên
+                                    để thực hiện vận chuyển định hướng $Na^+$ xuyên bào từ lòng ống vào máu.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PHẦN VI -->
+                        <h2 id="sec-lien-he-lam-sang" class="section-title">
+                            <span>Phần VI: Highlight Lâm Sàng (High-Yield Clinical Correlation)</span>
+                        </h2>
+
+                        <div class="physio-text-block">
+                            <p>
+                                Sự rối loạn hoặc biến đổi các cơ chế protein màng tế bào đóng vai trò sinh lý bệnh mấu
+                                chốt trong nhiều bệnh lý và là đích tác dụng của nhiều thuốc điều trị:
+                            </p>
+
+                            <!-- BOX LÂM SÀNG 1 -->
+                            <div class="clinical-note-box">
+                                <h4>🩺 1. Hội chứng Fanconi & Toan hóa ống thận Type 2 (Proximal RTA)</h4>
+                                <p>
+                                    Toan hóa ống thận Type 2 xảy ra do sự suy giảm khả năng tái hấp thu $HCO_3^-$ của tế
+                                    bào ống lượn gần. Khi kết hợp với sự mất đồng loạt các protein vận chuyển chủ động
+                                    thứ phát ở màng đỉnh (như <strong>SGLT2</strong> vận chuyển glucose, các chất đồng
+                                    vận chuyển phosphat, axit amin), bệnh nhân sẽ biểu hiện **Hội chứng Fanconi** đầy
+                                    đủ: nước tiểu chứa nhiều glucose (dù đường huyết bình thường), axit amin, phosphat
+                                    và mất bicarbonate gây toan hóa máu nặng nề.
+                                </p>
+                            </div>
+
+                            <!-- BOX LÂM SÀNG 2 -->
+                            <div class="clinical-note-box">
+                                <h4>🩺 2. Bệnh xơ nang (Cystic Fibrosis) - Bệnh lý kênh ion</h4>
+                                <p>
+                                    Xơ nang là một bệnh lý di truyền lặn gây ra do đột biến gen mã hóa kênh vận chuyển
+                                    ion Clo hoạt hóa bởi cAMP gọi là **CFTR** (Cystic Fibrosis Transmembrane Conductance
+                                    Regulator). Sự mất chức năng kênh này dẫn đến giảm bài xuất ion $Cl^-$ ra ngoài tế
+                                    bào biểu mô, kéo theo giảm bài tiết nước thụ động. Kết quả là các dịch nhầy trong
+                                    phổi, ống tụy và đường mật trở nên quánh đặc, gây nhiễm trùng hô hấp tái diễn và suy
+                                    chức năng tụy ngoại tiết.
+                                </p>
+                            </div>
+
+                            <!-- BOX LÂM SÀNG 3 -->
+                            <div class="clinical-note-box">
+                                <h4>🩺 3. Cơ chế tác dụng của Digoxin (Thuốc điều trị suy tim)</h4>
+                                <p>
+                                    Digoxin là một glycoside tim hoạt động bằng cách **ức chế trực tiếp bơm
+                                    $Na^+,K^+$-ATPase** ở màng tế bào cơ tim. Quá trình này diễn ra như một chuỗi sự
+                                    kiện sinh lý bệnh liên hoàn:
+                                </p>
+                                <ol
+                                    style="margin-left: 1.5rem; margin-top: 0.4rem; list-style-type: decimal; line-height: 1.6;">
+                                    <li>Ức chế bơm $Na^+,K^+$-ATPase $\rightarrow$ tích tụ ion $Na^+$ bên trong tế bào
+                                        cơ tim (làm giảm gradient nồng độ $Na^+$ qua màng).</li>
+                                    <li>Gradient $Na^+$ giảm làm suy yếu hoạt động của bơm đối vận chuyển thứ phát
+                                        **$3Na^+-Ca^{2+}$ (NCX)** $\rightarrow$ Giảm đẩy $Ca^{2+}$ ra ngoài tế bào.</li>
+                                    <li>Nồng độ ion $Ca^{2+}$ nội bào tăng cao $\rightarrow$ tăng lượng $Ca^{2+}$ được
+                                        trữ vào lưới nội chất (qua bơm SERCA).</li>
+                                    <li>Khi có kích thích co cơ, lượng $Ca^{2+}$ phóng thích nhiều hơn $\rightarrow$
+                                        tăng lực co bóp của sợi cơ tim (tác dụng co cơ dương tính - positive inotropic
+                                        effect).</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <hr class="section-divider">
+
+                        <!-- TÀI LIỆU THAM KHẢO -->
+                        <div class="physio-content">
+                            <h3>Tài liệu tham khảo (AMA Citation Style)</h3>
+                            <div class="physio-text-block" style="font-size: 0.9rem; opacity: 0.95;">
+                                <ol
+                                    style="list-style-type: decimal; padding-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                                    <li>Koeppen BM, Stanton BA. <em>Berne and Levy Physiology</em>. 8th ed. Elsevier;
+                                        2024.</li>
+                                    <li>Barrett KE, Barman SM, Boitano S, Brooks HL. <em>Ganong's Review of Medical
+                                            Physiology</em>. 24th ed. McGraw-Hill Medical; 2012.</li>
+                                    <li>Silbernagl S, Despopoulos A. <em>Color Atlas of Physiology</em>. 6th ed. Thieme;
+                                        2009.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CỘT MỤC LỤC BÊN PHẢI -->
+                    <div class="physio-toc-sidebar">
+                        <div class="physio-toc-container" id="physio-toc-container">
+                            <!-- Script toc.js sẽ tự động kết xuất mục lục tại đây -->
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+    <!-- Script Sidebar -->
+    <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>

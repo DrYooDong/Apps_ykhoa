@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CliniPortal - Module Sinh lý & Sinh lý bệnh Song song (Physio-Patho Mirror)">
+    <title>Physio-Patho Mirror - Hệ RAAS & Điều hòa Huyết áp</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/components/header.css">
+    <link rel="stylesheet" href="../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../css/components/footer.css">
+
+    <script src="../../components/header.js" defer></script>
+
+    <link rel="stylesheet" href="../../css/components/physio-patho.css">
+  <script src="../../components/footer.js" defer></script>
+</head>
+
+<body>
+    <div id="header-placeholder" data-header-path="../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!--SIDEBAR-->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="Sinhly-sinhlybenh.html" class="nav-item active" aria-current="page"
+                            title="S.lý - S.lý bệnh">
+                            <span class="nav-icon">🧬</span>
+                            <span class="nav-text">S.lý - S.lý bệnh</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng">
+                            <span class="nav-icon">🩺</span>
+                            <span class="nav-text">Kỹ năng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận">
+                            <span class="nav-icon">🤒</span>
+                            <span class="nav-text">Tiếp cận</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Công cụ/cong-cu.html" class="nav-item" title="Công cụ">
+                            <span class="nav-icon">⚙️</span>
+                            <span class="nav-text">Công cụ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+                            <span class="nav-icon">💊</span>
+                            <span class="nav-text">Dược lý</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+                            <span class="nav-icon">📄</span>
+                            <span class="nav-text">Y học chứng cứ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Y học cổ truyền/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền">
+                            <span class="nav-icon">☯️</span>
+                            <span class="nav-text">Y học cổ truyền</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!--MAIN CONTENT-->
+        <div class="main-wrapper" id="mainContent">
+
+            <!--BREADCRUMB-->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container">
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item">
+                        <a href="../../index.html" class="breadcrumb-link">
+                            <span class="home-icon">🏠</span> Home
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Sinh lý & sinh lý bệnh</li>
+                </ol>
+            </nav>
+
+            <!--HERO SECTION-->
+            <section class="hero-dashboard" aria-labelledby="hero-title">
+                <div class="hero-intro">
+                    <h1 id="hero-title">SINH LÝ & SINH LÝ BỆNH HỌC</h1>
+                    <p>Hệ thống hóa kiến thức Sinh lý và Sinh lý bệnh học, cung cấp nền tảng vững chắc để hiểu cơ chế
+                        bệnh sinh và rối loạn chức năng cơ quan.</p>
+                </div>
+            </section>
+
+            <!--CONTROL BAR / TOOLBAR-->
+            <div class="dashboard-controls">
+                <div class="search-box-container">
+                    <span class="search-icon-svg">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </span>
+                    <input type="text" id="lesson-search" placeholder="Tìm kiếm bài học..."
+                        aria-label="Tìm kiếm bài học">
+                    <button id="clear-search" class="clear-search-btn" aria-label="Xóa tìm kiếm"
+                        style="display: none;">&times;</button>
+                </div>
+                <div class="view-toggle-container">
+                    <span class="toggle-label">Chế độ xem:</span>
+                    <div class="toggle-buttons">
+                        <button id="view-grid-btn" class="toggle-btn active" title="Dạng lưới"
+                            aria-label="Xem dạng lưới">
+                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="14" width="7" height="7"></rect>
+                                <rect x="3" y="14" width="7" height="7"></rect>
+                            </svg>
+                        </button>
+                        <button id="view-list-btn" class="toggle-btn" title="Dạng danh sách"
+                            aria-label="Xem dạng danh sách">
+                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="8" y1="6" x2="21" y2="6"></line>
+                                <line x1="8" y1="12" x2="21" y2="12"></line>
+                                <line x1="8" y1="18" x2="21" y2="18"></line>
+                                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!--DASHBOARD LAYOUT-->
+            <div class="dashboard-layout">
+                <!-- Navigation Sidebar (Sticky) -->
+                <aside class="layout-nav-sidebar" aria-label="Danh mục phần học">
+                    <div class="nav-sidebar-sticky">
+                        <h4 class="nav-sidebar-title">Danh mục phần</h4>
+                        <ul class="part-nav-list">
+                            <li>
+                                <a href="#part1-section" class="part-nav-item p1 active" data-target="part1-section">
+                                    <span class="part-icon"><i class="fa-solid fa-microscope"></i></span>
+                                    <span class="part-text">Phần 1: Đại cương & Tế bào</span>
+                                    <span class="part-count-badge">3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#part2-section" class="part-nav-item p2" data-target="part2-section">
+                                    <span class="part-icon"><i class="fa-solid fa-brain"></i></span>
+                                    <span class="part-text">Phần 2: Thần kinh & Cơ</span>
+                                    <span class="part-count-badge">8</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#part3-section" class="part-nav-item p3" data-target="part3-section">
+                                    <span class="part-icon"><i class="fa-solid fa-droplet"></i></span>
+                                    <span class="part-text">Phần 3: Máu & Miễn dịch</span>
+                                    <span class="part-count-badge">4</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#part4-section" class="part-nav-item p4" data-target="part4-section">
+                                    <span class="part-icon"><i class="fa-solid fa-heart-pulse"></i></span>
+                                    <span class="part-text">Phần 4: Tim mạch & Hô hấp</span>
+                                    <span class="part-count-badge">6</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#part5-section" class="part-nav-item p5" data-target="part5-section">
+                                    <span class="part-icon"><i class="fa-solid fa-bowl-food"></i></span>
+                                    <span class="part-text">Phần 5: Tiêu hóa & Chuyển hóa</span>
+                                    <span class="part-count-badge">6</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#part6-section" class="part-nav-item p6" data-target="part6-section">
+                                    <span class="part-icon"><i class="fa-solid fa-filter"></i></span>
+                                    <span class="part-text">Phần 6: Thận & Dịch cơ thể</span>
+                                    <span class="part-count-badge">4</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#part7-section" class="part-nav-item p7" data-target="part7-section">
+                                    <span class="part-icon"><i class="fa-solid fa-venus-mars"></i></span>
+                                    <span class="part-text">Phần 7: Nội tiết & Sinh sản</span>
+                                    <span class="part-count-badge">6</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <!-- Main Content Area -->
+                <main class="layout-content-area" id="lessons-container">
+                    <!-- Empty Search State -->
+                    <div id="empty-search-state" class="empty-search-state" style="display: none;">
+                        <div class="empty-search-icon">🔍</div>
+                        <h3>Không tìm thấy bài học nào</h3>
+                        <p>Vui lòng thử từ khóa khác.</p>
+                    </div>
+
+                    <!-- Phần 1: Sinh lý học Đại cương và Tế bào (Fundamentals & Cell Physiology) -->
+                    <section id="part1-section" aria-labelledby="part1-heading">
+                        <div class="physio-group-container">
+                            <div class="physio-group-header">
+                                <span class="physio-group-icon"><i class="fa-solid fa-microscope"></i></span>
+                                <h3 id="part1-heading">Phần 1: Sinh lý học Đại cương và Tế bào (Fundamentals & Cell
+                                    Physiology)</h3>
+                            </div>
+                            <div class="specialty-grid">
+                                <a href="Sinhly/Phan1/SL_TB_Daicuong&TB.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Đại cương về Sinh lý học và Nội môi (Introduction to Physiology &
+                                                Homeostasis)</h3>
+                                            <p>Khái niệm môi trường bên trong cơ thể, cơ chế điều hòa ngược âm tính và
+                                                dương tính giúp duy trì cân bằng nội môi.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+                                <a href="Sinhly/Phan1/SL_TB_Mangtebao.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-circle-nodes"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Sinh lý màng tế bào và Các hình thức vận chuyển chất qua màng (Cell
+                                                Membrane & Transport)</h3>
+                                            <p>Cơ chế khuếch tán, vận chuyển tích cực chủ động, thụ động và vai trò
+                                                quyết định của các kênh ion màng.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+                                <a href="Sinhly/Phan1/SL_TB_Diensinhly.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Điện thế màng và Điện thế hoạt động (Membrane Potentials & Action
+                                                Potentials)</h3>
+                                            <p>Điện thế nghỉ, sự khử cực, tái cực và cơ chế phát sinh, lan truyền xung
+                                                động thần kinh qua màng tế bào.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+
+
+                    <!-- Phần 2: Sinh lý Hệ Thần kinh và Cơ (Nerve, Muscle & Central Nervous System) -->
+                    <section id="part2-section" aria-labelledby="part2-heading">
+                        <div class="physio-group-container">
+                            <div class="physio-group-header">
+                                <span class="physio-group-icon"><i class="fa-solid fa-brain"></i></span>
+                                <h3 id="part2-heading">Phần 2: Sinh lý Hệ Thần kinh và Cơ (Nerve, Muscle & Central
+                                    Nervous System)</h3>
+                            </div>
+
+                            <!--KHỐI 1: SINH LÝ CƠ VÀ ĐIỆN THẾ SYNAPSE (Ngoại biên)-->
+                            <div class="specialty-grid" style="margin-bottom: 1.25rem;">
+                                <a href="Sinhly/Phan2/SL_Synapse.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-network-wired"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Sinh lý Synapse và Sự truyền tin qua Synapse (Synaptic
+                                                Transmission)</h3>
+                                            <p>Cơ chế giải phóng chất truyền đạt hóa học hậu synapse và vai trò của các
+                                                thụ thể trong dẫn truyền xung động.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+                                <a href="Sinhly/Phan2/SL_Coxuong.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-dumbbell"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Sinh lý Cơ xương (Skeletal Muscle Physiology)</h3>
+                                            <p>Cơ chế trượt sợi Actin và Myosin, vai trò của ion Calci, hệ thống ống
+                                                ngang T và năng lượng ATP trong co cơ.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+                                <a href="Sinhly/Phan2/SL_Cotron&Cotim.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Sinh lý Cơ trơn và Cơ tim (Smooth & Cardiac Muscle Physiology)</h3>
+                                            <p>Cơ chế co cơ đặc thù ở tạng phủ và cơ tim, vai trò của liên kết khe (gap
+                                                junctions) và hoạt động tự phát.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <!--KHỐI 2: HỆ THẦN KINH TRUNG ƯƠNG VÀ ĐIỀU KHIỂN (Central Nervous System)-->
+                            <div class="specialty-grid" style="margin-bottom: 1.25rem;">
+                                <a href="Sinhly/Phan2/SL_Tygai.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-bezier-curve"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Sinh lý Tủy gai (Spinal Cord Physiology)</h3>
+                                            <p>Cung phản xạ tủy, đường dẫn truyền cảm giác hướng tâm và đường vận động
+                                                ly tâm qua tủy sống.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+                                <a href="Sinhly/Phan2/SL_Thannao&Tieunao&Hangnen.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-yin-yang"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Sinh lý Thân não, Tiểu não và Hạch nền (Brainstem, Cerebellum &
+                                                Basal Ganglia)</h3>
+                                            <p>Hệ thống điều hòa trương lực cơ, thăng bằng tư thế và cơ chế kiểm soát,
+                                                khởi phát cử động tự ý.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+                                <a href="Sinhly/Phan2/SL_Vonao&ChucnangTKcaocap.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Sinh lý Vỏ não và Các chức năng thần kinh cao cấp (Cerebral Cortex
+                                                & Higher Functions)</h3>
+                                            <p>Các vùng chức năng nhận thức, ngôn ngữ (Wernicke, Broca), quá trình hình
+                                                thành trí nhớ và chu kỳ giấc ngủ.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <!--KHỐI 3: HỆ THẦN KINH TỰ CHỦ VÀ GIÁC QUAN-->
+                            <div class="specialty-grid">
+                                <a href="Sinhly/Phan2/SL_Thankinh-tuchu.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Sinh lý Hệ Thần kinh Tự chủ (Autonomic Nervous System - ANS)</h3>
+                                            <p>Hoạt động điều hòa chức năng các cơ quan nội tạng của hệ giao cảm
+                                                (Symphathetic) và phó giao cảm (Parasympathetic).</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+                                <a href="Sinhly/Phan2/SL_Giacquan.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-eye"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Sinh lý các Giác quan (Special Senses)</h3>
+                                            <p>Cơ chế tiếp nhận kích thích, dẫn truyền và phân tích cảm giác thị giác,
+                                                thính giác, vị giác và khứu giác.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+
+
+                    <!-- Phần 3: Sinh lý Máu và Hệ Miễn dịch (Blood & Immunology) -->
+                    <section id="part3-section" aria-labelledby="part3-heading">
+                        <div class="physio-group-container">
+                            <div class="physio-group-header">
+                                <span class="physio-group-icon"><i class="fa-solid fa-droplet"></i></span>
+                                <h3 id="part3-heading">Phần 3: Sinh lý Máu và Hệ Miễn dịch (Blood & Immunology)</h3>
+                            </div>
+                            <div class="specialty-grid">
+                                <a href="Sinhly/Phan3/SL_HeMau&Huyethoc.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-droplet"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Đại cương về Máu và Huyết tương (Introduction to Blood & Plasma)
+                                            </h3>
+                                            <p>Thành phần tế bào và huyết tương, chức năng sinh lý của máu, áp suất keo
+                                                và độ nhớt của máu.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+
+                                <a href="Sinhly/Phan3/SL_Hongcau.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-circle"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Sinh lý Hồng cầu (Erythrocytes / Red Blood Cells)</h3>
+                                            <p>Quá trình sinh hồng cầu, vai trò của sắt và Erythropoietin, cấu trúc
+                                                Hemoglobin và chức năng vận chuyển khí.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+
+                                <a href="Sinhly/Phan3/SL_Tieucaucammau.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-bandage"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Sinh lý Tiểu cầu và Quá trình Cầm máu (Platelets & Hemostasis)</h3>
+                                            <p>Động lực của nút tiểu cầu, các giai đoạn đông máu huyết tương và hệ thống
+                                                kháng đông tự nhiên.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+
+                                <a href="Sinhly/Phan3/SL_Nhommau&Truyenmau.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-hand-holding-droplet"></i>
+                                        </div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Sinh lý Nhóm máu và Nguyên tắc Truyền máu (Blood Groups)</h3>
+                                            <p>Hệ nhóm máu ABO và Rhesus, phản ứng ngưng kết và nguyên tắc đảm bảo an
+                                                toàn sinh học truyền máu.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+
+
+                    <!-- Phần 4: Hệ Thống Vận Chuyển và Trao Đổi Khí (Cardiovascular & Respiratory Systems) -->
+                    <section id="part4-section" aria-labelledby="part4-heading">
+                        <div class="physio-group-container">
+                            <div class="physio-group-header">
+                                <span class="physio-group-icon"><i class="fa-solid fa-heart-pulse"></i></span>
+                                <h3 id="part4-heading">Phần 4: Huyết động học Tim mạch và Cơ học Hô hấp (Cardiovascular
+                                    & Respiratory Systems)</h3>
+                            </div>
+
+                            <!--PHÂN MÔN 1: SINH LÝ HỆ TIM MẠCH (CARDIOVASCULAR SYSTEM)-->
+                            <div class="specialty-grid" style="margin-bottom: 1.25rem;">
+                                <a href="Sinhly/Phan4/SL_CoTim&HoatdongDien.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-wave-square"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Sinh lý Cơ tim và Hoạt động điện của Tim (Cardiac
+                                                Electrophysiology)</h3>
+                                            <p>Đặc tính tự nhịp, dẫn truyền xung động điện, điện thế hoạt động cơ tim và
+                                                cơ sở điện tâm đồ (ECG).</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+
+                                <a href="Sinhly/Phan4/SL_Cktim&Cungluongtim.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-arrows-spin"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Chu kỳ tim và Cung lượng tim (Cardiac Cycle & Cardiac Output)</h3>
+                                            <p>Các thì co bóp và đổ đầy, các yếu tố điều hòa thể tích tâm thu, tiền
+                                                gánh, hậu gánh và sức co bóp.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+
+                                <a href="Sinhly/Phan4/SL_HeMach&DieuhoaHA.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-gauge-high"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Sinh lý Hệ Mạch và Điều hòa Huyết áp (Vascular Physiology & Blood
+                                                Pressure)</h3>
+                                            <p>Huyết động học động mạch, mao mạch và tĩnh mạch, cơ chế điều hòa huyết áp
+                                                ngắn hạn và dài hạn.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+                            </div>
+                            <!--PHÂN MÔN 2: SINH LÝ HỆ HÔ HẤP (RESPIRATORY SYSTEM)-->
+                            <div class="specialty-grid">
+                                <a href="Sinhly/Phan4/SL_CoHohap&Thongkhi.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-wind"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Cơ học Hô hấp và Thông khí phế nang (Respiratory Mechanics &
+                                                Ventilation)</h3>
+                                            <p>Hoạt động của các cơ hô hấp, thay đổi áp suất khoang màng phổi, các thể
+                                                tích phổi và vai trò của Surfactant.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+
+                                <a href="Sinhly/Phan4/SL_Traodoikhi.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-arrows-left-right"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Trao đổi khí tại Phổi (Gas Exchange / Diffusion)</h3>
+                                            <p>Cơ chế khuếch tán khí qua màng phế nang - mao mạch, các yếu tố ảnh hưởng
+                                                đến phân áp khí và trao đổi khí.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+
+                                <a href="Sinhly/Phan4/SL_Vanchuyen&DieuhoaHH.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-lungs"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Vận chuyển khí trong Máu và Điều hòa Hô hấp (Gas Transport &
+                                                Regulation)</h3>
+                                            <p>Dạng vận chuyển O2 và CO2 trong tuần hoàn, điều hòa hô hấp qua hóa thụ
+                                                thể trung ương và ngoại biên.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+
+
+                    <!-- Phần 5: Tiêu hóa, Chuyển hóa và Dinh dưỡng (Nutrition & Digestion) -->
+                    <section id="part5-section" aria-labelledby="part5-heading">
+                        <div class="physio-group-container">
+                            <div class="physio-group-header">
+                                <span class="physio-group-icon"><i class="fa-solid fa-bowl-food"></i></span>
+                                <h3 id="part5-heading">Phần 5: Tiêu hóa, Chuyển hóa và Dinh dưỡng (Nutrition &
+                                    Digestion)</h3>
+                            </div>
+
+                            <div class="specialty-grid">
+                                <a href="Sinhly/Phan5/SL_TH_Mieng&TQ.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-utensils"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Sinh lý Tiêu hóa tại Miệng và Thực quản (Digestion in the Mouth &
+                                                Esophagus)</h3>
+                                            <p>Tiêu hóa cơ học, hoạt động nhai, phản xạ nuốt thức ăn và bài tiết, vai
+                                                trò men Amylase của nước bọt.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+
+                                <a href="Sinhly/Phan5/SL_TH_Daday.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-fire"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Sinh lý Tiêu hóa tại Dạ dày (Gastric Physiology)</h3>
+                                            <p>Chức năng cơ học chứa đựng và nhào trộn, bài tiết dịch vị (HCl, Pepsin)
+                                                và cơ chế điều hòa ngược.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+
+                                <a href="Sinhly/Phan5/SL_TH_Ruotnon.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-cubes"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Sinh lý Tiêu hóa tại Ruột non (Small Intestinal Physiology)</h3>
+                                            <p>Bài tiết dịch mật, dịch tụy, dịch ruột và cơ chế hấp thu chất dinh dưỡng
+                                                qua lớp vi nhung mao.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+
+                                <a href="Sinhly/Phan5/SL_TH_Ruotgia.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-trash-can"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Sinh lý Tiêu hóa tại Ruột già (Colonic Physiology)</h3>
+                                            <p>Hấp thu nước, điện giải, hoạt động lên men của hệ vi khuẩn thường trú và
+                                                phản xạ tống phân đại tiện.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+
+                                <a href="Sinhly/Phan5/SL_TH_GanTuy.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-filter"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Sinh lý các tuyến tiêu hóa lớn (Gan - Tụy)</h3>
+                                            <p>Chức năng chuyển hóa glucid, lipid, protid, khử độc, dự trữ của gan và
+                                                chức năng ngoại tiết dịch tụy.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+
+                                <a href="Sinhly/Phan5/SL_ChuyenhoaNL&Dieuhoanhiet.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-temperature-half"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Chuyển hóa Năng lượng và Điều hòa Thân nhiệt (Energy Metabolism &
+                                                Thermoregulation)</h3>
+                                            <p>Chuyển hóa cơ bản, cơ chế sinh nhiệt, thải nhiệt và trung tâm điều nhiệt
+                                                vùng dưới đồi (Hypothalamus).</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+
+
+                    <!-- Phần 6: Thận, Dịch cơ thể và Cân bằng Toan - Kiềm (Kidneys, Salt & Acid-Base Balance) -->
+                    <section id="part6-section" aria-labelledby="part6-heading">
+                        <div class="physio-group-container">
+                            <div class="physio-group-header">
+                                <span class="physio-group-icon"><i class="fa-solid fa-filter"></i></span>
+                                <h3 id="part6-heading">Phần 6: Thận, Dịch cơ thể và Cân bằng Toan - Kiềm (Kidneys, Salt
+                                    & Acid-Base Balance)</h3>
+                            </div>
+
+                            <div class="specialty-grid">
+                                <a href="Sinhly/Phan6/SL_Than_Cauthan.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-filter"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Chức năng Lọc tại Cầu thận (Glomerular Filtration)</h3>
+                                            <p>Cấu tạo màng lọc cầu thận, động lực áp suất lọc và các yếu tố điều hòa
+                                                tốc độ lọc cầu thận (GFR).</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+
+                                <a href="Sinhly/Phan6/SL_Than_Ongthan.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-recycle"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Chức năng Tái hấp thu và Bài tiết tại Ống thận (Tubular
+                                                Reabsorption & Secretion)</h3>
+                                            <p>Tái hấp thu các chất dinh dưỡng, nước, điện giải và bài tiết các chất
+                                                thải tại từng phân đoạn ống thận.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+
+                                <a href="Sinhly/Phan6/SL_Than_Phaloang&Dieuhoadich.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-droplet-slash"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Sự Pha loãng và Cô đặc Nước tiểu – Điều hòa Dịch cơ thể (Urine
+                                                Concentration & Fluid Balance)</h3>
+                                            <p>Cơ chế nhân nồng độ ngược dòng của quai Henle, vasa recta và vai trò của
+                                                ADH, Aldosterone.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+
+                                <a href="Sinhly/Phan6/SL_Than_Toankiem.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-vial"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Vai trò của Thận trong Điều hòa Thăng bằng Toan - Kiềm (Renal
+                                                Regulation of Acid-Base Balance)</h3>
+                                            <p>Cơ chế bài tiết ion H+, tái hấp thu HCO3- mới và vai trò của các hệ đệm
+                                                phosphate, amoniac tại ống thận.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+
+
+                    <!-- Phần 7: Hệ Nội tiết và Sinh sản (Endocrine System & Reproduction) -->
+                    <section id="part7-section" aria-labelledby="part7-heading">
+                        <div class="physio-group-container">
+                            <div class="physio-group-header">
+                                <span class="physio-group-icon"><i class="fa-solid fa-venus-mars"></i></span>
+                                <h3 id="part7-heading">Phần 7: Hệ Nội tiết và Sinh sản (Endocrine System & Reproduction)
+                                </h3>
+                            </div>
+                            <div class="specialty-grid">
+                                <a href="Sinhly/Phan7/SL_NT_Tongquat.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-tower-broadcast"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Nguyên lý hoạt động chung của Hệ Nội tiết (General Principles of
+                                                Endocrinology)</h3>
+                                            <p>Phân loại hormone, receptor tế bào đích, cơ chế truyền tin thứ hai và cơ
+                                                chế điều hòa ngược (feedback).</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+
+                                <a href="Sinhly/Phan7/SL_NT_GH.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-arrows-up-to-line"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Sinh lý Học Hormone Tăng Trưởng GH (Growth Hormone Physiology)</h3>
+                                            <p>Tác dụng sinh học lên sự phát triển xương, cơ và chuyển hóa chất của
+                                                hormone tăng trưởng thùy trước tuyến yên.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+
+                                <a href="Sinhly/Phan7/SL_NT_VoThuongthan.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-shield"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Sinh lý Tuyến Vỏ Thượng Thận (Adrenal Cortex Physiology)</h3>
+                                            <p>Tác dụng sinh lý của các nhóm hormone Cortisol, Aldosterone và Androgen
+                                                vỏ thượng thận trong đáp ứng stress.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+
+                                <a href="Sinhly/Phan7/SL_NT_Tuyengiap.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-shield-heart"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Sinh lý Tuyến Giáp (Thyroid Gland Physiology)</h3>
+                                            <p>Quá trình tổng hợp, dự trữ và tác dụng sinh lý thúc đẩy chuyển hóa tế bào
+                                                của hormone giáp T3, T4.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+
+                                <a href="Sinhly/Phan7/SL_NT_Tuyentuy.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-syringe"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Sinh lý Tuyến Tụy Nội Tiết (Endocrine Pancreas)</h3>
+                                            <p>Hoạt động bài tiết Insulin từ tế bào beta và Glucagon từ tế bào alpha
+                                                trong điều hòa nồng độ glucose máu.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+
+                                <a href="Sinhly/Phan7/SL_NT_Sinhsan.html" class="specialty-card">
+                                    <div class="specialty-card-top">
+                                        <div class="specialty-icon"><i class="fa-solid fa-venus-mars"></i></div>
+                                        <div class="specialty-info">
+                                            <h3>Bài: Sinh lý Hệ Thống Sinh Sản (Reproductive Physiology)</h3>
+                                            <p>Chức năng tạo tinh trùng, sản sinh trứng, chu kỳ kinh nguyệt nữ và các
+                                                hormone thai kỳ chính.</p>
+                                        </div>
+                                    </div>
+                                    <div class="specialty-card-action">
+                                        <span>Xem bài học</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+
+        </div>
+    </div>
+
+    <!--FOOTER-->
+    <footer class="global-footer">
+        <div class="footer-copyright">
+            <p>CliniPortal &copy; 2026 · Module Physio-Patho Mirror · Dữ liệu chuẩn hóa dựa trên Giáo trình Sinh lý
+                bệnh học chuyên khoa.</p>
+        </div>
+    </footer>
+
+    <!--SCRIPT-->
+    <script src="../../js/physio-patho.js" defer></script>
+
+  <div id="footer-placeholder" data-footer-path="../../components/footer.html"></div>
+</body>
+
+</html>

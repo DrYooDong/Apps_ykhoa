@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hướng dẫn phân loại bệnh nhân cấp cứu (Triage) theo ESI v4, đánh giá ABCDE và phân loại thảm họa START/JumpSTART.">
+  <title>Đánh Giá & Phân Loại (Triage) - CliniPortal</title>
+
+  <!-- Google Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../css/components/clinical-skill.css">
+
+  <script src="../../../js/main.js" defer></script>
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+  <script src="../../../js/clinical-skill-tabs.js" defer></script>
+
+  <style>
+    :root {
+      --a: #b91c1c;
+      --b: #dc2626;
+      --c: #f87171;
+    }
+    
+    .esi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .esi-badge {
+      padding: 12px;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      text-align: center;
+      color: white;
+      font-size: var(--text-sm);
+    }
+    .esi-1 { background-color: #881337; } /<em> Deep rose / burgundy </em>/
+    .esi-2 { background-color: #b91c1c; } /<em> Red </em>/
+    .esi-3 { background-color: #d97706; } /<em> Orange </em>/
+    .esi-4 { background-color: #eab308; color: #1e293b; } /<em> Yellow </em>/
+    .esi-5 { background-color: #16a34a; } /<em> Green </em>/
+
+    .triage-card {
+      border-left: 5px solid var(--card-accent);
+      padding: 15px;
+      border-radius: var(--radius-md);
+      background-color: var(--color-surface-offset);
+      margin-bottom: 12px;
+    }
+
+    .triage-red { --card-accent: #dc2626; }
+    .triage-yellow { --card-accent: #eab308; }
+    .triage-green { --card-accent: #16a34a; }
+    .triage-black { --card-accent: #1e293b; }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+        <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../ky-nang.html" class="nav-item active" aria-current="page" title="Kỹ năng">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN WRAPPER -->
+    <main class="main-wrapper" id="mainContent">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠 Home</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="../ky-nang.html" class="breadcrumb-link">Kỹ năng lâm sàng</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Đánh giá & Phân loại (Triage)</li>
+        </ol>
+      </nav>
+
+      <!-- HERO SECTION -->
+      <section class="hero">
+        <h1>Đánh Giá & Phân Loại Cấp Cứu (Triage)</h1>
+        <p>Quy trình phân loại lâm sàng có hệ thống nhằm tối ưu hóa thời gian vàng điều trị và phân bổ nguồn lực y tế hợp lý. Dựa trên thuật toán <span class="term-hl">ESI</span> v4 và quy tắc cấp cứu thảm họa.</p>
+        <div class="quick">
+          <div class="qi">
+            <b>Mục Tiêu</b>
+            Xác định đúng độ nặng, đúng thời điểm can thiệp, tránh quá tải cấp cứu.
+          </div>
+          <div class="qi">
+            <b>Hệ Thống Phân Loại</b>
+            ESI v4 (5 mức độ) & START / JumpSTART trong thảm họa.
+          </div>
+          <div class="qi">
+            <b>Nguyên Tắc Cốt Lõi</b>
+            Đánh giá mối đe dọa sinh tồn (ABCDE) trong 5 phút đầu tiên.
+          </div>
+        </div>
+      </section>
+
+      <!-- TABS SWITCHER -->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="core">Nguyên lý Triage</button>
+        <button class="tab-btn" data-tab="abcde">Tiếp cận ABCDE</button>
+        <button class="tab-btn" data-tab="esi">Phân loại ESI v4</button>
+        <button class="tab-btn" data-tab="special">Đối tượng Đặc thù</button>
+        <button class="tab-btn" data-tab="mci">Thảm họa (MCI)</button>
+        <button class="tab-btn" data-tab="code-red">Báo động đỏ</button>
+      </div>
+
+      <!-- TAB 1: CORE -->
+      <section class="tab active" id="core">
+        <div class="card">
+          <h2>1. Bản chất & Nguyên lý Sinh lý bệnh của Triage</h2>
+          <ul>
+            <li><strong>Không phải chẩn đoán xác định:</strong> Triage là quá trình đánh giá chủ động, liên tục và có hệ thống nhằm xác định mức độ khẩn cấp, từ đó đưa ra thứ tự ưu tiên điều trị.</li>
+            <li><strong>Nguyên lý cốt lõi:</strong> Đảm bảo <em>"đúng bệnh nhân, đúng thời điểm, đúng nơi chốn và đúng nguồn lực"</em>.</li>
+            <li><strong>Sinh lý bệnh mất bù:</strong> Các cơ chế bù trừ cơ thể (nhịp tim nhanh, nhịp thở nhanh, co mạch ngoại vi) thường che lấp suy sụp huyết động ở giai đoạn sớm. Người làm Triage phải phát hiện các dấu hiệu cạn kiệt <span class="term-hl">khoảng dự trữ sinh lý</span> trước khi bệnh nhân rơi vào trạng thái mất bù và ngưng tim.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB 2: ABCDE -->
+      <section class="tab" id="abcde">
+        <div class="grid2">
+          <div class="card">
+            <h2>2. Đánh giá Mối đe dọa Sinh tồn (ABCDE)</h2>
+            <p>Thực hiện sơ bộ trong <strong>5 phút đầu tiên</strong> ở mọi bệnh nhân cấp cứu trước khi áp dụng thang phân loại chi tiết:</p>
+            <ul>
+              <li><strong>A (Airway - Đường thở):</strong> Kiểm tra sự thông thoáng, tìm dị vật, phù nề, hoặc tiếng thở rít (stridor). Bảo vệ cột sống cổ nếu nghi chấn thương.</li>
+              <li><strong>B (Breathing - Hô hấp):</strong> Tần số, biên độ, công thở (co kéo cơ hô hấp phụ, phập phồng cánh mũi) và đo <span class="term-hl-secondary">SpO2</span>.</li>
+              <li><strong>C (Circulation - Tuần hoàn):</strong> Nhịp tim, huyết áp, thời gian đổ đầy mao mạch (<span class="term-hl-secondary">CRT</span>), màu sắc/nhiệt độ da. Cầm máu ngoài ngay nếu có chảy máu ồ ạt.</li>
+              <li><strong>D (Disability - Thần kinh):</strong> Ý thức qua <span class="term-hl">AVPU</span> hoặc <span class="term-hl-secondary">GCS</span>, phản xạ đồng tử, và đo đường huyết mao mạch.</li>
+              <li><strong>E (Exposure - Bộc lộ):</strong> Bộc lộ toàn thân tìm tổn thương ẩn, giữ ấm tránh hạ thân nhiệt.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h2>Khai thác nhanh bệnh sử (Quy tắc SAMPLE)</h2>
+            <ul class="check">
+              <li><input type="checkbox" checked disabled> <span><strong>S (Symptoms):</strong> Triệu chứng cơ năng chính dẫn bệnh nhân đến khám.</span></li>
+              <li><input type="checkbox" checked disabled> <span><strong>A (Allergies):</strong> Tiền sử dị ứng thuốc, thức ăn, độc chất.</span></li>
+              <li><input type="checkbox" checked disabled> <span><strong>M (Medications):</strong> Các thuốc đang sử dụng (đặc biệt là insulin, tim mạch, đông máu).</span></li>
+              <li><input type="checkbox" checked disabled> <span><strong>P (Past Medical History):</strong> Tiền sử bệnh lý nội/ngoại khoa liên quan.</span></li>
+              <li><input type="checkbox" checked disabled> <span><strong>L (Last Oral Intake):</strong> Bữa ăn/nước uống cuối cùng (quan trọng nếu cần mổ khẩn).</span></li>
+              <li><input type="checkbox" checked disabled> <span><strong>E (Events):</strong> Sự kiện dẫn đến tình huống cấp cứu hiện tại.</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: ESI -->
+      <section class="tab" id="esi">
+        <div class="card">
+          <h2>3. Hệ thống phân loại ESI (Emergency Severity Index) v4</h2>
+          <p>Tích hợp đánh giá độ nặng lâm sàng và dự báo nhu cầu nguồn lực y tế tại khoa Cấp cứu:</p>
+
+          <div class="esi-grid">
+            <div class="esi-badge esi-1">Mức 1: Hồi sức khẩn cấp</div>
+            <div class="esi-badge esi-2">Mức 2: Cấp cứu trì hoãn ngắn</div>
+            <div class="esi-badge esi-3">Mức 3: Khẩn cấp (>= 2 nguồn lực)</div>
+            <div class="esi-badge esi-4">Mức 4: Ít khẩn cấp (1 nguồn lực)</div>
+            <div class="esi-badge esi-5">Mức 5: Không khẩn cấp (0 nguồn lực)</div>
+          </div>
+
+          <div style="margin-top: 20px;">
+            <h3>Chi tiết phân cấp quyết định ESI:</h3>
+            <ul>
+              <li><strong><span class="term-hl">ESI</span> 1 (Can thiệp cứu mạng ngay lập tức):</strong> Bệnh nhân đe dọa tử vong nếu không có bác sĩ tại giường. Ví dụ: đặt nội khí quản, ngưng tim (<span class="term-hl">CPR</span>), sốc điện, truyền máu cấp, dùng vận mạch tích cực, tri giác bất tỉnh (<span class="term-hl">AVPU</span> = P hoặc U, hoặc GCS &lt; 8).</li>
+              <li><strong><span class="term-hl">ESI</span> 2 (Nguy cơ cao / Bất ổn / Đau tột độ):</strong> Sinh hiệu có thể còn bù nhưng nguy cơ sụp đổ nhanh (ví dụ: đau ngực kiểu mạch vành, phình tách ĐMC, thai ngoài tử cung vỡ, lơ mơ lú lẫn cấp tính, đau rất nặng điểm đau &ge; 7/10 kèm vã mồ hôi).</li>
+              <li><strong>Vùng nguy hiểm sinh hiệu (Danger Zone Vitals):</strong> Nếu định xếp <span class="term-hl">ESI</span> 3 nhưng nhịp tim &gt; 100, nhịp thở &gt; 20, SpO2 &lt; 92% (ở người lớn), phải nâng lên <strong><span class="term-hl">ESI</span> 2</strong> vì đây là dấu hiệu sớm của sốc còn bù hoặc nhiễm khuẩn huyết nặng.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table class="cmp">
+            <thead>
+              <tr>
+                <th>Phân cấp <span class="term-hl">ESI</span></th>
+                <th>Định nghĩa Nguồn lực (Resources)</th>
+                <th>Ví dụ không được tính là Nguồn lực</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Được tính là nguồn lực</strong></td>
+                <td>
+                  <ul>
+                    <li>Xét nghiệm máu, nước tiểu, khí máu (Tính chung = 1)</li>
+                    <li>X-quang, CT, siêu âm, MRI (Mỗi loại tính riêng = 1)</li>
+                    <li>Dịch truyền tĩnh mạch (bù thể tích)</li>
+                    <li>Thuốc tiêm tĩnh mạch (IV), tiêm bắp (IM)</li>
+                    <li>Khâu vết thương, đặt thông tiểu, thủ thuật chuyên khoa</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>Khám lâm sàng toàn diện</li>
+                    <li>Khám chuyên khoa hội chẩn</li>
+                    <li>Kê đơn thuốc uống hoặc thuốc xịt</li>
+                    <li>Xét nghiệm nhanh tại giường (ví dụ: test đường huyết mao mạch)</li>
+                    <li>Băng bó vết thương đơn giản, thay băng</li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB 4: SPECIAL -->
+      <section class="tab" id="special">
+        <div class="grid3">
+          <div class="card">
+            <h2>Nhi khoa (Tam giác PAT)</h2>
+            <p>Trẻ em bù trừ rất tốt nhưng suy sụp rất nhanh. Tam giác PAT đánh giá trong vài giây:</p>
+            <ul>
+              <li><strong>Diện mạo (Appearance):</strong> Trương lực cơ, tương tác, khả năng dỗ dành, ánh mắt, tiếng khóc (đánh giá tưới máu não).</li>
+              <li><strong>Công thở (Work of Breathing):</strong> Thở rít, khò khè, co kéo cơ hô hấp.</li>
+              <li><strong>Tuần hoàn da (Circulation):</strong> Da nhợt, nổi vân tím, tím tái.</li>
+            </ul>
+            <div class="clinical-pearl" style="margin-top:10px; padding: 10px;">
+              💡 Bất thường cả 3 góc cảnh báo suy đa tạng mất bù nguy kịch (&rarr; <span class="term-hl">ESI</span> 1).
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Lão khoa (Thang ISAR)</h2>
+            <p>Người già thường có "sự giả bình thường" (ví dụ nhiễm khuẩn nặng không sốt, chỉ lơ mơ té ngã; NMCT không đau ngực). Đánh giá nguy cơ cao (Frailty) qua thang ISAR (&ge; 2 câu trả lời "Có"):</p>
+            <ol>
+              <li>Cần trợ giúp sinh hoạt hàng ngày nhiều hơn?</li>
+              <li>Có bất kỳ thay đổi trí nhớ gần đây?</li>
+              <li>Gặp khó khăn lớn về thị lực?</li>
+              <li>Có nhập viện trong 6 tháng qua?</li>
+              <li>Dùng &ge; 3 loại thuốc hàng ngày?</li>
+              <li>Cần trợ giúp để đi lại an toàn?</li>
+            </ol>
+          </div>
+
+          <div class="card">
+            <h2>Sản khoa (Thang OTAS)</h2>
+            <p>Phân loại sản phụ cấp cứu dựa trên nguy cơ thai nhi và mẹ:</p>
+            <ul>
+              <li><strong>OTAS 1 (Tối khẩn):</strong> Tiền sản giật nặng (HA &gt; 160/110 kèm mờ mắt/đau đầu), sa dây rốn, vỡ tử cung, nhịp tim thai mất dao động nội tại.</li>
+              <li><strong>OTAS 2:</strong> Dọa sảy thai kèm chảy máu nhiều, vỡ ối non kèm sốt.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: MCI -->
+      <section class="tab" id="mci">
+        <div class="card">
+          <h2>5. Triage trong Thảm họa và Tai nạn hàng loạt (MCI)</h2>
+          <p>Mục tiêu: Cứu sống số đông nạn nhân nhất có thể khi nguồn lực y tế bị quá tải cực độ.</p>
+        </div>
+
+        <div class="grid2">
+          <div class="card">
+            <h2>START (Simple Triage and Rapid Treatment) - Người lớn</h2>
+            <p>Đánh giá &lt; 60 giây mỗi nạn nhân theo trình tự <strong>RPM (Respiration - Perfusion - Mental status)</strong>:</p>
+            
+            <div class="triage-card triage-green">
+              <strong>Thẻ XANH (Trì hoãn được):</strong> Nạn nhân đi lại được, tổn thương nhẹ tự di chuyển theo hướng dẫn.
+            </div>
+            
+            <div class="triage-card triage-black">
+              <strong>Thẻ ĐEN (Tử vong / Tiên lượng tử vong):</strong> Không thở dù đã được ngửa đầu khai thông đường thở.
+            </div>
+
+            <div class="triage-card triage-red">
+              <strong>Thẻ ĐỎ (Nguy kịch / Khẩn cấp):</strong>
+              <ul>
+                <li>Không thở &rarr; ngửa đầu &rarr; bắt đầu thở lại.</li>
+                <li>Thở nhanh &gt; 30 lần/phút.</li>
+                <li>Mạch quay yếu/mất hoặc thời gian đổ đầy mao mạch CRT &gt; 2 giây.</li>
+                <li>Không thực hiện được các lệnh đơn giản (rối loạn ý thức).</li>
+              </ul>
+            </div>
+
+            <div class="triage-card triage-yellow">
+              <strong>Thẻ VÀNG (Cần theo dõi):</strong> Thở &lt; 30 l/p, CRT &lt; 2s, làm theo lệnh đơn giản nhưng không thể tự đi lại (chấn thương xương đùi, chấn thương cột sống ổn định).
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>JumpSTART - Dành cho Trẻ em (1 - 8 tuổi)</h2>
+            <div class="clinical-warning">
+              <h4>⚠️ Đặc trưng sinh lý trẻ em</h4>
+              <p>Trẻ em thường ngưng thở trước khi ngưng tim (do thiếu oxy). Việc đánh giá ngưng thở cần kết hợp bắt mạch trước khi kết luận tử vong.</p>
+            </div>
+            <ul>
+              <li><strong>Khai thông đường thở:</strong> Nếu trẻ không thở &rarr; tiến hành bắt mạch mạch lớn (mạch đùi/mạch cảnh).</li>
+              <li><strong>Nếu có mạch:</strong> Tiến hành thổi ngạt cứu mạng 5 lần. Nếu trẻ thở lại &rarr; <strong>Thẻ ĐỎ</strong>. Nếu vẫn không thở &rarr; <strong>Thẻ ĐEN</strong>.</li>
+              <li><strong>Nếu không mạch:</strong> Đóng thẻ <strong>ĐEN</strong> ngay lập tức.</li>
+              <li><strong>Tần số thở:</strong> Mức giới hạn nhịp thở ở trẻ em trong JumpSTART là 15 - 45 lần/phút. Thở &lt; 15 hoặc &gt; 45 lần/phút &rarr; <strong>Thẻ ĐỎ</strong>.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 6: CODE RED -->
+      <section class="tab" id="code-red">
+        <div class="card">
+          <h2>6. Quy trình "Báo động đỏ nội viện" (Code Red)</h2>
+          <p>Áp dụng khi bệnh nhân có tình trạng nguy kịch đe dọa tính mạng cần can thiệp ngoại khoa khẩn cấp (như đa chấn thương sốc mất máu nặng, vỡ tạng đặc độ IV-V, vết thương tim, thuyên tắc ối).</p>
+          <div class="clinical-pearl">
+            <h4>🚨 Nguyên tắc quy trình báo động đỏ</h4>
+            <ul>
+              <li><strong>Bỏ qua hành chính:</strong> Bỏ qua mọi thủ tục đóng tiền, làm bệnh án hành chính hay xét nghiệm tiền phẫu không cần thiết.</li>
+              <li><strong>Dịch chuyển khẩn cấp:</strong> Đẩy thẳng bệnh nhân từ cửa cấp cứu lên thẳng phòng mổ trong vòng vài phút.</li>
+              <li><strong>Hỗ trợ liên khoa:</strong> Các khoa Phẫu thuật, Gây mê hồi sức, Hồi sức tích cực và Ngân hàng máu có mặt tại phòng mổ ngay lập tức để vừa hồi sức vừa mổ giải quyết nguyên nhân.</li>
+            </ul>
+          </div>
+          <div class="clinical-warning">
+            <h4>⚠️ Trách nhiệm pháp lý của bác sĩ Triage</h4>
+            <p>Quyết định kích hoạt Báo động đỏ hoàn toàn phụ thuộc vào nhận định lâm sàng nhanh tại cửa tiếp nhận. Nếu đánh giá sai mức độ nặng (ví dụ vết thương tim rỉ lả xếp <span class="term-hl">ESI</span> 2 thay vì <span class="term-hl">ESI</span> 1), bệnh nhân sẽ mất thời gian vàng dẫn đến tử vong và bác sĩ phải chịu trách nhiệm pháp lý nghiêm trọng.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- FOOTER PLACEHOLDER -->
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+  <!-- Script Sidebar -->
+  <script src="../../../js/sidebar.js"></script>
+</body>
+
+</html>

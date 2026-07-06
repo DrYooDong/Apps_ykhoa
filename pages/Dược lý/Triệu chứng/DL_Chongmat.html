@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lưu đồ dược lý tương tác xử trí Chóng Mặt – CliniPortal">
+    <title>Dược lý Chóng Mặt – CliniPortal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../css/components/footer.css">
+    <script src="../../../components/header.js" defer></script>
+    <link rel="stylesheet" href="../../../css/components/pharmacology-symptoms.css">
+  <script src="../../../js/pharmacology-symptoms.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+</head>
+<body>
+<div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div class="app-container">
+        <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../duoc-ly.html" class="nav-item active" aria-current="page" title="Dược lý">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main-wrapper flow-page">
+        <nav aria-label="Breadcrumb" class="breadcrumb-container">
+            <ol class="breadcrumb-list">
+                <li class="breadcrumb-item"><a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a></li>
+                <li class="breadcrumb-item"><a href="../duoc-ly.html" class="breadcrumb-link">Dược lý</a></li>
+                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Triệu chứng</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Chóng mặt</li>
+            </ol>
+        </nav>
+
+        <!-- HERO -->
+        <div class="flow-hero">
+            <div class="hero-badge">💊 Dược lý lâm sàng • 2026</div>
+            <h1>Lưu đồ Dược lý Xử trí Chóng Mặt</h1>
+            <p>Nhấn vào từng nút lưu đồ để tra cứu phác đồ thuốc, chống chỉ định và tương tác dược lý</p>
+        </div>
+
+        <!-- LEGEND -->
+        <div class="fc-legend">
+            <div class="fc-legend-item"><div class="fc-legend-dot" style="background:var(--fc-danger)"></div> Khẩn cấp / Chuyển tuyến</div>
+            <div class="fc-legend-item"><div class="fc-legend-dot" style="background:var(--fc-warn)"></div> Ngoại biên / Phân loại</div>
+            <div class="fc-legend-item"><div class="fc-legend-dot" style="background:var(--fc-teal)"></div> Phác đồ thuốc</div>
+            <div class="fc-legend-item" style="font-style:italic;">💡 Nhấn nút để xem chi tiết bên dưới</div>
+        </div>
+
+        <!-- FLOWCHART TREE -->
+        <div class="fc-tree">
+            <!-- Row 1: ROOT -->
+            <div class="fc-row">
+                <div class="fc-node nc-root" style="max-width:280px;">
+                    <div class="fc-node-tag">🎯 Điểm khởi đầu</div>
+                    <div class="fc-node-title">TIẾP CẬN BỆNH NHÂN CHÓNG MẶT</div>
+                    <div class="fc-node-sub">Bước 1: Phân loại nguyên nhân trung ương vs ngoại biên</div>
+                </div>
+            </div>
+
+            <!-- Arrow -->
+            <div class="fc-arrow-down"><div class="fc-arrow-line"></div><div class="fc-arrow-head"></div></div>
+
+            <!-- Row 2: Phân loại mức độ -->
+            <div class="fc-row">
+                <div class="fc-node nc-danger pulse-danger" id="node-severe" onclick="selectPath('SEVERE')">
+                    <div class="fc-node-tag">🚨 Nguy cơ cao</div>
+                    <div class="fc-node-title">CHÓNG MẶT DO TỔN THƯƠNG TẠI NÃO</div>
+                    <div class="fc-node-sub">Liệt khu trú, tăng HA ác tính, nystagmus đa hướng...</div>
+                </div>
+                <div class="fc-node nc-warn" id="node-mild" onclick="selectPath('MILD')">
+                    <div class="fc-node-tag">✅ Nội khoa</div>
+                    <div class="fc-node-title">CHÓNG MẶT KHÔNG DO TỔN THƯƠNG NÃO</div>
+                    <div class="fc-node-sub">Phân loại căn nguyên ngoại biên / tư thế</div>
+                </div>
+            </div>
+
+            <!-- Row 3: Phân loại ngoại biên (khóa ban đầu) -->
+            <div id="layer-types" class="fc-layer-disabled">
+                <hr class="fc-sep">
+                <div class="fc-row" style="gap:10px;">
+                    <div class="fc-node nc-teal" id="node-peripheral" onclick="selectCategory('PERIPHERAL')">
+                        <div class="fc-node-tag">👂 Ngoại biên</div>
+                        <div class="fc-node-title">Hội chứng Tiền đình Ngoại biên</div>
+                    </div>
+                    <div class="fc-node nc-teal" id="node-orthostatic" onclick="selectCategory('ORTHOSTATIC')">
+                        <div class="fc-node-tag">⬆️ Tư thế</div>
+                        <div class="fc-node-title">Hạ huyết áp Tư thế đứng</div>
+                    </div>
+                    <div class="fc-node nc-warn" id="node-ototoxicity" onclick="selectCategory('OTOTOXICITY')">
+                        <div class="fc-node-tag">💊 Độc tính</div>
+                        <div class="fc-node-title">Độc tính Tai do Thuốc</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 4: Scenarios (ẩn ban đầu) -->
+            <div id="layer-scenarios" style="display:none;">
+                <hr class="fc-sep">
+                <div class="fc-row" id="row-scenarios"></div>
+            </div>
+        </div>
+
+        <!-- PROTOCOL PANEL -->
+        <div id="proto-panel" style="display:none;"></div>
+    </main>
+</div>
+
+<footer class="global-footer">
+    <div class="footer-copyright"><p>CliniPortal © 2026 · Công cụ lâm sàng · Chỉ mang tính hỗ trợ tham khảo, không thay thế phán xét lâm sàng của bác sĩ.</p></div>
+</footer>
+<script src="../../../js/sidebar.js"></script>
+<script>
+// ══ DATA ══
+const DB = {
+    emergency:{
+        source:"QĐ số 2919/QĐ-BYT (Trang 82) & Harrison's Manual of Medicine",
+        redFlags:[
+            "Liệt khu trú, yếu nửa người, méo miệng hoặc nuốt sặc.",
+            "Đau đầu dữ dội mới xuất hiện hoặc đau gáy, cứng gáy (nghi xuất huyết dưới nhện, TBMMN).",
+            "Chóng mặt kèm tăng HA ác tính hoặc nystagmus đa hướng liên tục.",
+            "Chênh lệch HATT > 20 mmHg giữa hai tay (nghi Subclavian Steal Syndrome)."
+        ],
+        action:"NGUYÊN TẮC DƯỢC LÝ: Tuyệt đối không trì hoãn bằng cách lạm dụng thuốc ức chế tiền đình đường uống/tiêm tại trạm y tế. Chuyển ngay bệnh nhân đến cơ sở có CT/MRI não."
+    },
+    scenarios:{
+        PERI_ACUTE:{
+            title:"Cơn tiền đình ngoại biên cấp tính (BPPV / Viêm thần kinh tiền đình)",
+            source:"QĐ số 2919/QĐ-BYT (Trang 82) & Harrison's Table 53-2",
+            drugs:[
+                {name:"Acetyl-DL-leucine (Tanganil) 500mg",dose:"Uống 2 viên/lần × 2 lần/ngày (hoặc tiêm TM chậm 1g nếu nôn nhiều)",duration:"3–5 ngày (giai đoạn cấp)"},
+                {name:"Meclizine 25mg hoặc Dimenhydrinate 50mg",dose:"Uống 1 viên/lần × 1–3 lần/ngày",duration:"Chỉ dùng ngắn ngày trong pha cấp"},
+                {name:"Diazepam 5mg",dose:"Uống 1/2–1 viên trước khi ngủ để an thần",duration:"1–3 ngày đầu"}
+            ],
+            ci:"Không dùng Meclizine/Dimenhydrinate cho người Glaucom góc đóng hoặc phì đại tiền liệt tuyến nặng. Chống chỉ định Diazepam cho người suy hô hấp.",
+            warn:"LƯU Ý CỐT LÕI: Các thuốc ức chế tiền đình chỉ dùng tối đa 3–5 ngày. Dùng kéo dài làm chậm bù trừ tiền đình của TKTW.",
+            ia:"Diazepam + Dimenhydrinate → tăng nặng ngủ gà, mất thăng bằng."
+        },
+        PERI_MENIERE:{
+            title:"Hội chứng Ménière (Ù tai + Giảm thính lực + Chóng mặt từng đợt)",
+            source:"Harrison's Manual of Medicine (Chapter 53 - Vertigo)",
+            drugs:[
+                {name:"Betahistine dihydrochloride 16mg",dose:"Uống 1 viên/lần × 3 lần/ngày (hoặc 24mg × 2 lần) trong bữa ăn",duration:"Điều trị duy trì dài hạn"},
+                {name:"Hydrochlorothiazide 25mg (lợi tiểu)",dose:"Uống 1 viên/ngày + chế độ ăn giảm muối < 1000mg/ngày",duration:"Giảm áp lực dịch nội mê nhĩ"}
+            ],
+            ci:"Chống chỉ định Betahistine cho pheochromocytoma hoặc loét dạ dày đợt cấp.",
+            warn:"Theo dõi điện giải (đặc biệt Kali máu) khi dùng lợi tiểu thiazide kéo dài.",
+            ia:"Betahistine + kháng histamin → triệt tiêu hiệu năng dược lý (đối kháng thụ thể H1)."
+        },
+        ORTHO_DRUG:{
+            title:"Hạ huyết áp tư thế đứng do thuốc / suy tự chủ",
+            source:"Internal Medicine on Call & Symptoms to Diagnosis",
+            drugs:[
+                {name:"Rà soát & Ngừng thuốc gây hạ áp tư thế",dose:"Đình chỉ/giảm liều: thuốc giãn mạch, chẹn alpha, lợi tiểu vòng, TCA",duration:"Xử trí nguyên nhân gốc"},
+                {name:"Fludrocortisone hoặc Midodrine (Tuyến chuyên khoa)",dose:"Theo chỉ định chuyên sâu nếu do suy hệ tự chủ",duration:"Theo dõi sát huyết áp tư thế"}
+            ],
+            ci:"Chống chỉ định bù dịch/muối liều cao cho bệnh nhân suy tim ứ huyết nặng hoặc suy thận giai đoạn cuối.",
+            warn:"Tiêu chuẩn chẩn đoán: HATT giảm ≥ 20 mmHg hoặc HATTr giảm ≥ 10 mmHg trong 3 phút sau khi đứng.",
+            ia:"Hướng dẫn BN nâng cao đầu giường khi ngủ, co duỗi cơ chân trước khi đứng dậy."
+        },
+        OTO_TOXICITY:{
+            title:"Chóng mặt / Mất thăng bằng do độc tính tai của thuốc (Ototoxicity)",
+            source:"Tài liệu Bộ Y tế - Sử dụng thuốc hợp lý (Phụ lục 9)",
+            drugs:[
+                {name:"Đình chỉ ngay nhóm thuốc gây độc tai",dose:"Ngừng Aminoglycoside (Streptomycin, Gentamicin, Amikacin) hoặc lợi tiểu quai liều cao",duration:"Vĩnh viễn"},
+                {name:"Chuyển đổi phác đồ kháng sinh an toàn",dose:"Thay thế bằng Beta-lactam hoặc nhóm không độc với dây TK VIII",duration:"Duy trì điều trị nhiễm khuẩn"}
+            ],
+            ci:"Không cố chấp duy trì Aminoglycoside khi BN bắt đầu có triệu chứng ù tai, chóng mặt hoặc giảm thính lực.",
+            warn:"Độc tính tế bào lông tiền đình của Streptomycin/Gentamicin có thể gây mất thăng bằng VĨNH VIỄN nếu không ngừng kịp thời.",
+            ia:"Nguy cơ độc tính tai tăng nhiều lần khi phối hợp Aminoglycoside + Furosemide đồng thời."
+        }
+    }
+};
+
+
+
+function selectPath(path){
+    resetAll();
+    if(path==='SEVERE'){
+        document.getElementById('node-severe').classList.add('active');
+        renderEmergency();
+    } else {
+        document.getElementById('node-mild').classList.add('active');
+        document.getElementById('layer-types').className='fc-layer-enabled';
+    }
+}
+
+function selectCategory(cat){
+    ['peripheral','orthostatic','ototoxicity'].forEach(id=>document.getElementById('node-'+id.toLowerCase()).classList.remove('active'));
+    document.getElementById('proto-panel').style.display='none';
+    document.getElementById('node-'+cat.toLowerCase()).classList.add('active');
+    const layer=document.getElementById('layer-scenarios');
+    layer.style.display='block';
+    let html='';
+    if(cat==='PERIPHERAL'){
+        html=nodeBtn('flowCoughMap','PERI_ACUTE','Cơn Tiền Đình Cấp / BPPV','nc-teal')+nodeBtn('flowCoughMap','PERI_MENIERE','Bệnh Ménière (Ù tai + Giảm thính lực + Từng đợt)','nc-teal');
+    } else if(cat==='ORTHOSTATIC'){
+        html=nodeBtn('flowCoughMap','ORTHO_DRUG','Hạ huyết áp tư thế đứng (Do thuốc / Suy tự chủ)','nc-warn');
+    } else {
+        html=nodeBtn('flowCoughMap','OTO_TOXICITY','Nhiễm độc tiền đình ốc tai do Thuốc (Aminoglycoside, Furosemide)','nc-warn');
+    }
+    document.getElementById('row-scenarios').innerHTML=html;
+    document.querySelectorAll('#row-scenarios .fc-node').forEach(n=>n.addEventListener('click',function(){
+        document.querySelectorAll('#row-scenarios .fc-node').forEach(x=>x.classList.remove('active'));
+        this.classList.add('active');
+    }));
+}
+
+function nodeBtn(ns,key,label,cls){
+    return `<div class="fc-node ${cls}" onclick="displayProtocol('${key}')">`+
+        `<div class="fc-node-title">${label}</div></div>`;
+}
+
+function renderEmergency(){
+    const d=DB.emergency;
+    const flags=d.redFlags.map(f=>`<li style="margin-bottom:5px;">${f}</li>`).join('');
+    document.getElementById('proto-panel').style.display='block';
+    document.getElementById('proto-panel').innerHTML=`
+    <div class="proto-panel">
+        <div class="proto-badge">🚨 Khẩn cấp – Chuyển tuyến</div>
+        <div class="proto-panel-title" style="color:var(--fc-danger);border-color:var(--fc-danger);">
+            QUY TRÌNH PHÂN TUYẾN CẤP CỨU THẦN KINH TRUNG ƯƠNG
+        </div>
+        <p style="font-size:14px;margin-bottom:8px;font-weight:600;">Bệnh nhân chóng mặt kèm MỘT trong các dấu hiệu sau → Chuyển viện NGAY:</p>
+        <ul style="font-size:13px;color:#7f1d1d;padding-left:18px;font-weight:600;">${flags}</ul>
+        <div class="ab ab-danger"><strong>⚠️ Nguyên tắc dược lý:</strong> ${d.action}</div>
+        <span class="src-badge">📚 ${d.source}</span>
+    </div>`;
+    document.getElementById('proto-panel').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+
+</script>
+
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+</body>
+</html>

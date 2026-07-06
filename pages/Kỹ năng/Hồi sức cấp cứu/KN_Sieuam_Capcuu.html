@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hướng dẫn siêu âm cấp cứu tại giường POCUS, thực hiện eFAST đa chấn thương, giao thức RUSH trong chống sốc, và hướng dẫn đặt catheter động/tĩnh mạch.">
+  <title>Siêu Âm Cấp Cứu Tại Giường (POCUS) - CliniPortal</title>
+
+  <!-- Google Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../css/components/clinical-skill.css">
+
+  <script src="../../../js/main.js" defer></script>
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+  <script src="../../../js/clinical-skill-tabs.js" defer></script>
+
+  <style>
+    :root {
+      --a: #0f766e;
+      --b: #0d9488;
+      --c: #2dd4bf;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+        <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../ky-nang.html" class="nav-item active" aria-current="page" title="Kỹ năng">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN WRAPPER -->
+    <main class="main-wrapper" id="mainContent">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠 Home</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="../ky-nang.html" class="breadcrumb-link">Kỹ năng lâm sàng</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Siêu âm cấp cứu tại giường</li>
+        </ol>
+      </nav>
+
+      <!-- HERO SECTION -->
+      <section class="hero">
+        <h1>Siêu Âm Cấp Cứu Tại Giường (POCUS)</h1>
+        <p>Quy trình thực hiện siêu âm có trọng điểm tại giường nhằm đánh giá xuất huyết nội trong chấn thương (<span class="term-hl">eFAST</span>), phân loại thể sốc (<span class="term-hl">RUSH</span>) và hướng dẫn thực hiện thủ thuật xâm lấn an toàn.</p>
+        <div class="quick">
+          <div class="qi">
+            <b>Chấn thương (eFAST)</b>
+            Khảo sát 4 cửa sổ tìm dịch tự do ổ bụng/màng tim và tràn khí màng phổi.
+          </div>
+          <div class="qi">
+            <b>Huyết động (RUSH)</b>
+            Pump (Tim), Tank (IVC & Phổi), Pipes (Aorta & Huyết khối tĩnh mạch).
+          </div>
+          <div class="qi">
+            <b>Định hướng Thủ thuật</b>
+            Đặt CVC, catheter động mạch dưới hướng dẫn trực quan (In-plane/Out-of-plane).
+          </div>
+        </div>
+      </section>
+
+      <!-- TABS SWITCHER -->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="core">Nguyên lý POCUS</button>
+        <button class="tab-btn" data-tab="efast">Quét FAST & eFAST</button>
+        <button class="tab-btn" data-tab="rush">Giao thức RUSH</button>
+        <button class="tab-btn" data-tab="fluid-response">Đánh giá Đáp ứng dịch</button>
+        <button class="tab-btn" data-tab="procedures">Hướng dẫn Thủ thuật</button>
+      </div>
+
+      <!-- TAB 1: CORE -->
+      <section class="tab active" id="core">
+        <div class="card">
+          <h2>1. Cơ sở sinh lý học và vai trò của siêu âm POCUS</h2>
+          <ul>
+            <li><strong>Bản chất công cụ:</strong> Siêu âm có trọng điểm tại giường (<span class="term-hl">POCUS</span> - Point-of-Care Ultrasound) là công cụ chẩn đoán hình ảnh chức năng trực tiếp thực hiện bởi bác sĩ lâm sàng trong quá trình hồi sức. Giúp thu hẹp chẩn đoán phân biệt nhanh chóng mà không cần di chuyển bệnh nhân huyết động bất ổn.</li>
+            <li><strong>Nguyên lý trở kháng âm:</strong>
+              <ul>
+                <li>Sự khác biệt về trở kháng âm giữa các mô quyết định phản xạ sóng âm.</li>
+                <li>Dịch tự do (máu, dịch tiết) không cản âm hiển thị <strong>trống âm màu đen (anechoic)</strong>.</li>
+                <li>Khí (trong phổi) gây nhiễu sóng âm, tạo các đường phản chiếu giả lặp (reverberation artifacts).</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB 2: EFAST -->
+      <section class="tab" id="efast">
+        <div class="grid2">
+          <div class="card">
+            <h2>2. Kỹ năng siêu âm đánh giá đa chấn thương (eFAST)</h2>
+            <p>Sử dụng đầu dò cong (curvilinear) tần số 3.5 - 5 MHz quét tìm dịch ở các khoang phụ thuộc trọng lực:</p>
+            <ul>
+              <li><strong>Màng ngoài tim (dưới mũi ức):</strong> Quét tìm dịch trống âm bao quanh tim. Dịch lượng nhiều kèm xẹp nhĩ/thất phải kỳ tâm trương là chỉ dấu chèn ép tim cấp nguy kịch.</li>
+              <li><strong>Khoang gan thận (Morison space):</strong> Vị trí nhạy nhất để phát hiện tràn máu phúc mạc ở bên phải ổ bụng.</li>
+              <li><strong>Khoang lách thận:</strong> Quét tìm dịch tự do quanh lách và thận trái.</li>
+              <li><strong>Vùng chậu (sau bàng quang):</strong> Đánh giá dịch tự do ở túi cùng Douglas (nữ) hoặc khoang sau bàng quang (nam).</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h2>Đánh giá màng phổi (Phần mở rộng eFAST)</h2>
+            <p>Đặt đầu dò phẳng (linear) ở khoang liên sườn 2-3 đường trung đòn trước:</p>
+            <ul>
+              <li><strong>Dấu hiệu trượt phổi (Lung sliding):</strong> Bình thường hai lá màng phổi trượt lên nhau tạo hình ảnh lấp lánh và dấu hiệu <strong>"bờ biển" (Seashore sign)</strong> trên M-mode.</li>
+              <li><strong>Tràn khí màng phổi:</strong> Mất dấu trượt phổi, trên M-mode xuất hiện các đường song song nằm ngang giống <strong>"mã vạch" (Barcode sign / Stratosphere sign)</strong>.</li>
+            </ul>
+            <div class="clinical-warning" style="margin-top: 15px;">
+              <h4>⚠️ FAST âm tính không loại trừ hoàn toàn chảy máu</h4>
+              <p>Siêu âm <span class="term-hl">FAST</span> chỉ phát hiện dịch tự do khi thể tích tích tụ <strong>&ge; 200 - 300 mL</strong>. Nếu nghi ngờ lâm sàng cao, bắt buộc phải siêu âm lặp lại sau mỗi 30-60 phút hoặc chụp CT ổ bụng khi huyết động ổn định.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: RUSH -->
+      <section class="tab" id="rush">
+        <div class="card">
+          <h2>3. Giao thức RUSH trong đánh giá Sốc huyết động</h2>
+          <p>Tiếp cận chẩn đoán cơ chế sốc theo mô hình cơ học hệ thống <strong>"Pump - Tank - Pipes"</strong>:</p>
+        </div>
+
+        <div class="grid3">
+          <div class="card">
+            <h2>Pump (Đánh giá Tim)</h2>
+            <ul>
+              <li><strong>Sốc tim:</strong> Thành cơ tim co bóp kém đồng bộ, phân suất tống máu giảm nặng (<strong>EF &lt; 30%</strong>), buồng tim giãn.</li>
+              <li><strong>Sốc giảm thể tích:</strong> Cơ tim co bóp tăng động dữ dội, buồng tim nhỏ và có thể xuất hiện dấu hiệu <strong>"kissing ventricles"</strong> (hai thành thất trái chạm nhau vào cuối tâm thu).</li>
+              <li><strong>Sốc tắc nghẽn:</strong> Thất phải giãn to ép dẹt thất trái (dấu hiệu D-shape vách liên thất) kèm rối loạn vận động tự do thất phải (McConnell sign) do thuyên tắc phổi lớn.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h2>Tank (Bể chứa thể tích)</h2>
+            <ul>
+              <li><strong>Khảo sát tĩnh mạch chủ dưới (IVC):</strong>
+                <ul>
+                  <li><em>Giảm thể tích:</em> Đường kính IVC nhỏ <strong>&lt; 1.5 cm</strong> và xẹp nhiều <strong>&gt; 50%</strong> theo nhịp thở.</li>
+                  <li><em>Ứ trệ (sốc tim/tắc nghẽn/quá tải dịch):</em> IVC giãn to <strong>&gt; 2.5 cm</strong> và xẹp kém <strong>&lt; 20%</strong>.</li>
+                </ul>
+              </li>
+              <li><strong>Siêu âm phổi (Giao thức FALLS):</strong>
+                <ul>
+                  <li>Đường A (A-lines): Phổi khô, an toàn để truyền dịch.</li>
+                  <li>Đường B (B-lines) lan tỏa: Phổi ướt, dấu hiệu phù phổi kẽ, <strong>phải dừng truyền dịch lập tức</strong>.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h2>Pipes (Đường ống)</h2>
+            <ul>
+              <li><strong>Động mạch chủ:</strong> Quét dọc từ mũi ức đến ngã ba chậu tìm phình động mạch chủ bụng (<strong>đường kính &gt; 3 cm</strong>) hoặc lá nội mạc bóc tách (intimal flap).</li>
+              <li><strong>Tĩnh mạch sâu:</strong> Siêu âm ép đầu dò (compression test) tại tĩnh mạch đùi và tĩnh mạch kheo. Nếu tĩnh mạch <strong>không xẹp hoàn toàn khi ấn đầu dò</strong>, chứng tỏ có huyết khối tĩnh mạch sâu (<span class="term-hl">DVT</span>) gợi ý nguyên nhân thuyên tắc phổi gây sốc tắc nghẽn.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: FLUID-RESPONSE -->
+      <section class="tab" id="fluid-response">
+        <div class="grid2">
+          <div class="card">
+            <h2>4. Siêu âm đánh giá đáp ứng bù dịch động học</h2>
+            <p>Bác sĩ đo lường sự thay đổi của Thể tích nhát bóp (Stroke Volume - SV) thông qua siêu âm tim:</p>
+            <ul>
+              <li><strong>Kỹ thuật đo <span class="term-hl">VTI</span> (Tích phân vận tốc tống máu):</strong>
+                <ol>
+                  <li>Sử dụng mặt cắt 5 buồng từ mỏm tim.</li>
+                  <li>Đặt mẫu xung Doppler vào đường ra thất trái (LVOT) ngay sát van động mạch chủ để đo <span class="term-hl">VTI</span>.</li>
+                  <li>Thể tích nhát bóp (SV) tỷ lệ thuận với chỉ số <span class="term-hl">VTI</span>.</li>
+                </ol>
+              </li>
+              <li><strong>Nghiệm pháp nâng chân thụ động (<span class="term-hl">PLR</span>):</strong>
+                <p>Nâng chân bệnh nhân lên 45 độ trong 1-2 phút để dồn dịch tự thân về tim. Nếu <strong><span class="term-hl">VTI</span> tăng &ge; 10-15%</strong> sau khi nâng chân, chứng tỏ bệnh nhân có đáp ứng bù dịch (tim hoạt động ở phần dốc của đường cong Frank-Starling).</p>
+                <div class="clinical-pearl" style="margin-top: 10px;">
+                  💡 Phương pháp <span class="term-hl">PLR</span> kết hợp đo <span class="term-hl">VTI</span> siêu âm có độ chính xác cao nhất, áp dụng được cho cả bệnh nhân loạn nhịp tim hoặc đang tự thở (nơi mà chỉ số PPV/SVV bị nhiễu).
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card" style="display: flex; align-items: center; justify-content: center; background-color: var(--color-surface-offset);">
+            <div style="text-align: center; padding: 20px;">
+              <span style="font-size: 3rem; color: var(--a);">📈</span>
+              <h3 style="margin-top: 10px; font-weight: 700;">Định luật Frank-Starling</h3>
+              <p style="font-size: var(--text-sm); max-width: 320px; color: var(--color-text-muted); margin: 8px auto 0;">Khi cơ tim được kéo giãn vừa phải (tăng tiền tải nhờ bù dịch), sức co bóp sẽ tăng lên tạo ra thể tích nhát bóp lớn hơn. Nếu tim quá tải, tăng tiền tải sẽ không làm tăng SV mà gây phù phổi cấp.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: PROCEDURES -->
+      <section class="tab" id="procedures">
+        <div class="grid2">
+          <div class="card">
+            <h2>5. Siêu âm định vị và hướng dẫn thủ thuật xâm lấn</h2>
+            <p><span class="term-hl">POCUS</span> là tiêu chuẩn vàng an toàn khi đặt catheter tĩnh mạch trung tâm (<span class="term-hl">CVC</span>) hoặc catheter động mạch quay/đùi:</p>
+            <ul>
+              <li><strong>Phân biệt Động mạch & Tĩnh mạch vùng cổ/bẹn:</strong>
+                <ul>
+                  <li><em>Động mạch:</em> Thành dày, hình tròn, đập theo mạch tim, <strong>không xẹp khi ấn nhẹ đầu dò</strong>.</li>
+                  <li><em>Tĩnh mạch:</em> Thành mỏng, hình bầu dục, <strong>xẹp hoàn toàn khi ấn đầu dò</strong>, khẩu kính thay đổi theo hô hấp và nghiệm pháp Valsalva.</li>
+                </ul>
+              </li>
+              <li><strong>Loại trừ huyết khối:</strong> Bắt buộc ép đầu dò kiểm tra tĩnh mạch trước khi chọc kim; không chọc kim vào tĩnh mạch có huyết khối vì nguy cơ làm trôi cục máu đông gây tắc mạch phổi.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h2>Kỹ thuật chọc kim dưới hướng dẫn siêu âm</h2>
+            <ul>
+              <li><strong>Trục cắt ngang (Out-of-plane - Cắt ngoài trục):</strong>
+                <p>Chùm tia siêu âm cắt ngang thân kim. Đầu kim hiển thị là một chấm sáng (hyperechoic dot) trên màn hình. Bác sĩ khó kiểm soát chính xác vị trí đầu kim thực tế, dễ đâm xuyên thủng thành sau mạch máu.</p>
+              </li>
+              <li><strong>Trục cắt dọc (In-plane - Cắt dọc trục):</strong>
+                <p>Đặt đầu dò song song với hướng đi của mạch máu và thân kim. Kỹ thuật này <strong>an toàn hơn</strong> vì cho phép quan sát trực tiếp toàn bộ thân kim và đầu kim tiến xuyên qua mô dưới da đi vào thành trước mạch máu trên màn hình thời gian thực.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- FOOTER PLACEHOLDER -->
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+  <!-- Script Sidebar -->
+  <script src="../../../js/sidebar.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Sinh lý học điện thế màng: Điện thế màng nghỉ, điện thế hoạt động ở sợi thần kinh, cơ vân và các loại điện thế hoạt động cơ tim (đáp ứng nhanh, đáp ứng chậm).">
+  <title>Điện thế màng &amp; Điện thế hoạt động – CliniPortal</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core CliniPortal -->
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+  <!-- CSS chuyên biệt Sinh lý & TOC -->
+  <link rel="stylesheet" href="../../../../css/components/physio-patho.css">
+  <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+  <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+  <link rel="stylesheet" href="../../css/physio-shared.css">
+  <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+  <!-- MathJax Config cho Công thức Toán/Sinh lý -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+
+  <!-- Scripts điều hướng & xử lý tương tác động -->
+  <script src="../../../../js/toc.js" defer></script>
+  <script src="../../../../components/header.js" defer></script>
+  <script src="../../../../components/footer.js" defer></script>
+  <script src="../../js/physio-shared.js" defer></script>
+  <script src="../../../../js/main.js" defer></script>
+</head>
+
+<body>
+  <!-- Nạp Header động -->
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR HỆ THỐNG -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh">
+              <span class="nav-icon">🧬</span>
+              <span class="nav-text">Sinh lý</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- KHUNG CHỨA NỘI DUNG CHÍNH -->
+    <div class="main-wrapper" id="mainContent">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container"
+        style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+        <ol class="breadcrumb-list"
+          style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+          <li><a href="../../../../index.html">🏠 Home</a> &gt;</li>
+          <li><a href="../../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+          <li style="color:var(--color-primary); font-weight:600;">Chương 2: Điện thế màng &amp; Điện thế hoạt động</li>
+        </ol>
+      </nav>
+
+      <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+      <main class="visual-container">
+        <!-- Chapter Header -->
+        <div class="chapter-header">
+          <h1>Điện thế màng &amp; Điện thế hoạt động (Membrane &amp; Action Potentials)</h1>
+          <p>Tìm hiểu cơ chế lý hóa hình thành điện thế nghỉ và các pha của điện thế hoạt động ở tế bào thần kinh, cơ vân, và cơ tim.</p>
+        </div>
+
+        <!-- PHẦN I -->
+        <div class="physio-content">
+          <h2 id="sec-dien-the-nghi" class="section-title">
+            <span>Phần I: Điện Thế Màng Nghỉ (Resting Membrane Potential)</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              <strong>Điện thế màng nghỉ</strong> là sự chênh lệch điện thế giữa hai bên màng tế bào khi tế bào ở trạng thái không bị kích thích, trong đó mặt trong màng tích điện âm so với mặt ngoài.
+            </p>
+
+            <ul class="physio-list-arrow">
+              <li>
+                <strong>Trị số điện thế nghỉ:</strong> Thường ở mức khoảng <span class="term-hl">$-70\text{ mV}$</span> ở neuron thần kinh và dao động từ <span class="term-hl">$-60\text{ mV}$ đến $-90\text{ mV}$</span> ở tế bào cơ tim hoặc cơ vân tùy thuộc vào vùng tế bào.
+              </li>
+            </ul>
+
+            <h3 style="margin-top: 1.5rem; color: var(--color-primary);">Cơ chế hình thành điện thế màng nghỉ</h3>
+            <p>Điện thế màng nghỉ được thiết lập và duy trì bởi sự phối hợp của ba yếu tố chính:</p>
+
+            <div class="physio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+              <!-- Yếu tố 1 -->
+              <div class="physio-grid-card" style="border-left: 4px solid var(--color-primary);">
+                <div class="physio-grid-title" style="color: var(--color-primary);">
+                  🧪 1. Sự phân bố ion không đồng đều
+                </div>
+                <p>
+                  Nồng độ ion <span class="term-hl-secondary">$K^+$</span> bên trong tế bào cao hơn rất nhiều so với bên ngoài, trong khi nồng độ <span class="term-hl-secondary">$Na^+$</span> và <span class="term-hl-secondary">$Cl^-$</span> ở dịch ngoại bào cao hơn dịch nội bào. Sự chênh lệch nồng độ này tạo ra khuynh hướng khuếch tán tự nhiên của các ion qua màng.
+                </p>
+              </div>
+
+              <!-- Yếu tố 2 -->
+              <div class="physio-grid-card" style="border-left: 4px solid var(--color-purple);">
+                <div class="physio-grid-title" style="color: var(--color-purple);">
+                  ⚡ 2. Bơm $Na^+/K^+$ ATPase
+                </div>
+                <p>
+                  Hoạt động vận chuyển tích cực chủ động liên tục sử dụng năng lượng ATP để tống <span class="term-hl-secondary">3 $Na^+$</span> ra ngoài và đưa <span class="term-hl-secondary">2 $K^+$</span> vào trong tế bào. Đây là một <em>bơm sinh điện (electrogenic pump)</em> vì nó tạo ra sự mất cân bằng điện tích dương ròng (tống ra nhiều điện tích dương hơn đưa vào), đóng góp trực tiếp khoảng $-4\text{ mV}$ vào điện thế màng nghỉ.
+                </p>
+              </div>
+
+              <!-- Yếu tố 3 -->
+              <div class="physio-grid-card" style="border-left: 4px solid var(--color-warning);">
+                <div class="physio-grid-title" style="color: var(--color-warning);">
+                  🔑 3. Tính thấm chọn lọc của màng
+                </div>
+                <p>
+                  Ở trạng thái nghỉ, màng tế bào có độ dẫn điện (conductance - $g_K$) đối với <span class="term-hl-secondary">$K^+$</span> rất cao thông qua các <em>kênh rò rỉ K+</em> (như kênh $I_{K1}$). Do đó, $K^+$ dễ dàng khuếch tán ra ngoài theo gradient nồng độ, để lại các anion không khuếch tán được (như protein và phosphate mang điện âm) ở mặt trong màng. Ngược lại, tính thấm đối với $Na^+$ và $Ca^{2+}$ lúc nghỉ cực kỳ thấp.
+                </p>
+              </div>
+            </div>
+
+            <h3 style="margin-top: 1.5rem; color: var(--color-primary);">Phương trình Nernst và Hiệu ứng Gibbs-Donnan</h3>
+            <p>
+              Điện thế cân bằng của một ion là mức điện thế màng mà tại đó lực điện học cân bằng tuyệt đối với lực hóa học (gradient nồng độ), triệt tiêu dòng ion ròng di chuyển qua màng. Trị số này được tính bằng <strong>Phương trình Nernst</strong>:
+              $$E_{ion} = \frac{RT}{zF} \ln \frac{[Ion]_{out}}{[Ion]_{in}}$$
+              Điện thế màng nghỉ có giá trị xấp xỉ điện thế cân bằng của Kali ($E_K \approx -93\text{ mV}$) do màng lúc nghỉ thấm chủ yếu với $K^+$. Sự phân bố ion thụ động còn chịu ảnh hưởng bởi các protein tích điện âm lớn không thể đi qua màng (Hiệu ứng Gibbs-Donnan).
+            </p>
+
+            <!-- Bảng nồng độ ion tế bào cơ tim -->
+            <div class="table-responsive" style="margin-top: 1.5rem;">
+              <div style="padding: 1rem; background: var(--color-surface-2); font-weight: 700; border-bottom: 1px solid var(--color-divider); font-size: var(--text-sm);">
+                📊 Bảng: Nồng độ ion và Điện thế cân bằng trong tế bào cơ tim (Table 16.1 Berne & Levy)
+              </div>
+              <table class="physio-table">
+                <thead>
+                  <tr>
+                    <th>Ion</th>
+                    <th>Nồng độ ngoại bào (mmol/L)</th>
+                    <th>Nồng độ nội bào (mmol/L)</th>
+                    <th>Điện thế cân bằng ($E_{ion}$)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>$Na^+$</strong></td>
+                    <td>145</td>
+                    <td>10</td>
+                    <td style="color: var(--color-success); font-weight: 600;">$+71\text{ mV}$</td>
+                  </tr>
+                  <tr>
+                    <td><strong>$K^+$</strong></td>
+                    <td>4</td>
+                    <td>135</td>
+                    <td style="color: var(--color-rose); font-weight: 600;">$-93\text{ mV}$</td>
+                  </tr>
+                  <tr>
+                    <td><strong>$Ca^{2+}$</strong></td>
+                    <td>2</td>
+                    <td>$10^{-4}$</td>
+                    <td style="color: var(--color-success); font-weight: 600;">$+129\text{ mV}$</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Hình 1 -->
+            <div class="image-placeholder-card" style="margin-top: 2rem;">
+              <div class="image-title">
+                <span>🖼️</span> Hình 2.1: Cơ chế hình thành Điện thế màng nghỉ (Plate 2.2 Color Atlas of Physiology)
+              </div>
+              <div class="image-drop-area">
+                <img src="../../images/Phan1/Diensinhly_Hinh1.png" alt="Cơ chế hình thành Điện thế màng nghỉ"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="fallback-placeholder" style="display: none; padding: 2rem; text-align: center;">
+                  <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                  <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Sơ đồ minh họa 5 bước tạo điện thế nghỉ qua bơm Na+/K+ và khuếch tán K+</p>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Mô tả:</strong> Minh họa sự phân bố ion thụ động, hoạt động bơm điện học $Na^+/K^+$ ATPase, sự khuếch tán $K^+$ ra ngoài làm màng tích điện âm bên trong, sự đẩy ion $Cl^-$ ra ngoài và trạng thái cân bằng động cuối cùng của điện thế nghỉ.
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- PHẦN II -->
+        <div class="physio-content">
+          <h2 id="sec-dien-the-hoat-dong" class="section-title">
+            <span>Phần II: Điện Thế Hoạt Động (Action Potential) Ở Thần Kinh &amp; Cơ Vân</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              <strong>Điện thế hoạt động</strong> là sự biến đổi nhanh chóng, đột ngột của điện thế màng theo quy luật "tất cả hoặc không có gì" (all-or-none) khi tế bào bị kích thích đạt đến điện thế ngưỡng.
+            </p>
+
+            <h3 style="color: var(--color-primary); margin-top: 1.5rem;">Diễn tiến các pha của Điện thế hoạt động</h3>
+            <ol class="physio-steps">
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Pha Khử cực (Depolarization)</span>
+                  Khi kích thích làm màng khử cực từ mức nghỉ đến điện thế ngưỡng (threshold potential, khoảng <span class="term-hl">$-55\text{ mV}$</span>), các <strong>kênh $Na^+$ phụ thuộc điện thế</strong> mở ra nhanh và đồng loạt. $Na^+$ tràn ồ ạt vào tế bào theo gradient nồng độ và điện thế, làm đảo cực điện thế màng đạt mức dương (overshoot, khoảng $+35\text{ mV}$).
+                </div>
+              </li>
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Pha Tái cực (Repolarization)</span>
+                  Các kênh $Na^+$ nhanh chóng chuyển sang trạng thái đóng bất hoạt (inactivated). Đồng thời, các <strong>kênh $K^+$ phụ thuộc điện thế</strong> mở ra chậm hơn. Dòng $K^+$ đi ra ngoài tế bào mang điện tích dương ra ngoài, đưa điện thế màng trở lại mức âm.
+                </div>
+              </li>
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Pha Quá phân cực (Hyperpolarization)</span>
+                  Kênh $K^+$ phụ thuộc điện thế đóng lại chậm chạp. Do đó, $K^+$ vẫn tiếp tục thoát ra ngoài ngay cả khi điện thế đã trở về mức nghỉ, khiến mặt trong màng tạm thời âm hơn bình thường (tiến sát điện thế cân bằng $E_K$). Sau đó, hoạt động của bơm $Na^+/K^+$ sẽ khôi phục lại trạng thái cân bằng ion ban đầu.
+                </div>
+              </li>
+            </ol>
+
+            <h3 style="color: var(--color-primary); margin-top: 1.5rem;">Thời kỳ trơ của màng (Refractory Periods)</h3>
+            <p>Trong thời gian diễn ra điện thế hoạt động, tế bào giảm hoặc mất khả năng đáp ứng với kích thích tiếp theo:</p>
+
+            <div class="physio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+              <!-- Trơ tuyệt đối -->
+              <div class="physio-grid-card" style="border-left: 4px solid var(--color-rose);">
+                <div class="physio-grid-title" style="color: var(--color-rose); font-weight: 700;">
+                  🚫 1. Thời kỳ trơ tuyệt đối (Absolute Refractory Period)
+                </div>
+                <p>
+                  Kéo dài từ khi bắt đầu khử cực đến khoảng 1/3 pha tái cực. Lúc này, các kênh $Na^+$ đang mở hoặc đang nằm ở trạng thái bất hoạt hoàn toàn. Không một kích thích nào, dù mạnh đến đâu, có thể tạo ra thêm một điện thế hoạt động mới.
+                </p>
+              </div>
+
+              <!-- Trơ tương đối -->
+              <div class="physio-grid-card" style="border-left: 4px solid var(--color-warning);">
+                <div class="physio-grid-title" style="color: var(--color-warning); font-weight: 700;">
+                  ⚠️ 2. Thời kỳ trơ tương đối (Relative Refractory Period)
+                </div>
+                <p>
+                  Xảy ra ở giai đoạn sau của tái cực và quá phân cực. Một số kênh $Na^+$ đã phục hồi về trạng thái đóng sẵn sàng mở, trong khi một số kênh $K^+$ vẫn còn mở. Một kích thích có cường độ mạnh hơn ngưỡng bình thường mới có thể tạo ra điện thế hoạt động mới.
+                </p>
+              </div>
+            </div>
+
+            <h3 style="color: var(--color-primary); margin-top: 1.5rem;">Sự lan truyền điện thế hoạt động (Propagation)</h3>
+            <p>
+              Điện thế hoạt động lan truyền dọc theo màng tế bào nhờ các dòng điện vòng cục bộ kích thích vùng màng lân cận kế bên đạt ngưỡng.
+            </p>
+            <ul class="physio-list-arrow">
+              <li><strong>Sợi không có bao myelin:</strong> Xung động lan truyền liên tục dọc theo sợi trục với tốc độ chậm và tiêu hao nhiều năng lượng (do bơm phải hoạt động trên toàn bộ màng).</li>
+              <li><strong>Sợi có bao myelin (Dẫn truyền nhảy cóc - Saltatory Conduction):</strong> Bao myelin đóng vai trò là chất cách điện. Dòng điện chỉ có thể đi qua màng tại các <em>eo Ranvier</em> (nơi tập trung mật độ cao kênh $Na^+$). Điện thế hoạt động nhảy từ eo này sang eo khác, tăng tốc độ dẫn truyền lên gấp nhiều lần và tiết kiệm năng lượng cho tế bào.</li>
+            </ul>
+
+            <!-- Hình 2 -->
+            <div class="image-placeholder-card" style="margin-top: 2rem;">
+              <div class="image-title">
+                <span>🖼️</span> Hình 2.2: Thay đổi tính thấm ion và Thời kỳ trơ trong Điện thế hoạt động (Fig. 4-6 Ganong's)
+              </div>
+              <div class="image-drop-area">
+                <img src="../../images/Phan1/Diensinhly_Hinh2.png" alt="Thay đổi tính thấm ion trong điện thế hoạt động"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="fallback-placeholder" style="display: none; padding: 2rem; text-align: center;">
+                  <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                  <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Biểu đồ mô tả điện thế màng khớp với tính thấm ion Na+ và K+ theo thời gian</p>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Mô tả:</strong> Đường cong điện thế màng (mV) tương ứng với sự gia tăng đột ngột tính thấm $Na^+$ ($g_{Na}$) ở pha khử cực và sự gia tăng chậm của tính thấm $K^+$ ($g_K$) ở pha tái cực. Đồng thời chỉ rõ ranh giới của thời kỳ trơ tuyệt đối và trơ tương đối.
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- PHẦN III -->
+        <div class="physio-content">
+          <h2 id="sec-dien-the-tim" class="section-title">
+            <span>Phần III: Điện Thế Hoạt Động Của Tế Bào Cơ Tim (Cardiac Action Potentials)</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              Khác với tế bào thần kinh và cơ vân, điện thế hoạt động của tế bào cơ tim kéo dài hơn rất nhiều (từ 200 đến 400 ms) nhằm đảm bảo tim co bóp nhịp nhàng và tránh hiện tượng co cứng cơ (tetanus). Cơ tim có 2 loại điện thế hoạt động chính:
+            </p>
+
+            <h3 style="color: var(--color-primary); margin-top: 1.5rem;">1. Điện thế hoạt động loại đáp ứng nhanh (Fast-Response Action Potentials)</h3>
+            <p>Xảy ra ở tế bào cơ tâm nhĩ, tâm thất và hệ thống dẫn truyền His-Purkinje. Diễn tiến gồm 5 pha:</p>
+
+            <ol class="physio-steps">
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Pha 0: Khử cực nhanh (Upstroke)</span>
+                  Kích thích làm màng đạt ngưỡng kích hoạt các <strong>kênh $Na^+$ nhanh</strong> mở ra. $Na^+$ tràn vào ồ ạt, điện thế màng vọt lên nhanh chóng tiệm cận mức $+20\text{ mV}$.
+                </div>
+              </li>
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Pha 1: Tái cực sớm (Initial Repolarization)</span>
+                  Kênh $Na^+$ nhanh đóng bất hoạt. Kênh Kali mở tạo ra dòng $K^+$ đi ra ngoài thoáng qua ($I_{to}$), làm điện thế giảm nhẹ, tạo nên khía chữ V (notch) đặc trưng trên đồ thị.
+                </div>
+              </li>
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Pha 2: Bình nguyên (Plateau)</span>
+                  Đây là pha đặc trưng nhất của cơ tim. Sự khử cực kích hoạt các <strong>kênh Canxi type L (L-type $Ca^{2+}$ channels)</strong> mở ra chậm. Dòng $Ca^{2+}$ đi vào ($I_{Ca,L}$) cân bằng với dòng $K^+$ đi ra qua các kênh chỉnh lưu, giữ điện thế màng ở trạng thái ổn định đi ngang. Dòng $Ca^{2+}$ đi vào này kích hoạt sự giải phóng Canxi từ lưới nội cơ tương (Calcium-induced calcium release), gây co cơ tim.
+                </div>
+              </li>
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Pha 3: Tái cực nhanh (Final Repolarization)</span>
+                  Kênh Canxi type L bất hoạt dần và đóng lại. Đồng thời, các kênh Kali chỉnh lưu chậm ($I_{Kr}$, $I_{Ks}$) mở mạnh, tống $K^+$ ra ngoài tế bào, đưa điện thế màng nhanh chóng trở lại mức nghỉ âm sâu.
+                </div>
+              </li>
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Pha 4: Điện thế nghỉ ổn định</span>
+                  Điện thế màng được duy trì ổn định ở mức khoảng $-85\text{ mV}$ đến $-90\text{ mV}$ nhờ dòng $K^+$ chỉnh lưu nhập bào ($I_{K1}$) cùng sự trao đổi chất của các bơm ion.
+                </div>
+              </li>
+            </ol>
+
+            <!-- Hình 3 -->
+            <div class="image-placeholder-card" style="margin-top: 1.5rem;">
+              <div class="image-title">
+                <span>🖼️</span> Hình 2.3: Các dòng ion trong Điện thế hoạt động đáp ứng nhanh ở cơ tim (Fig. 16.4 Berne & Levy)
+              </div>
+              <div class="image-drop-area">
+                <img src="../../images/Phan1/Diensinhly_Hinh3.png" alt="Điện thế hoạt động đáp ứng nhanh cơ tim"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="fallback-placeholder" style="display: none; padding: 2rem; text-align: center;">
+                  <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                  <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Sơ đồ 5 pha từ 0 đến 4 và các dòng ion Na+, Ca2+, K+ tương ứng</p>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Mô tả:</strong> Sự thay đổi điện thế màng tâm thất qua 5 pha từ 0 đến 4, chỉ rõ sự tham gia của dòng khử cực nhanh $I_{Na}$, dòng tái cực sớm $I_{to}$, dòng bình nguyên $I_{Ca}$ và các dòng tái cực $I_K$.
+              </div>
+            </div>
+
+            <h3 style="color: var(--color-primary); margin-top: 2rem;">2. Điện thế hoạt động loại đáp ứng chậm (Slow-Response Action Potentials)</h3>
+            <p>Xảy ra ở các tế bào tạo nhịp tự nhiên như <strong>nút xoang (SA node)</strong> và <strong>nút nhĩ thất (AV node)</strong>. Các đặc điểm chính:</p>
+
+            <ul class="physio-list-arrow">
+              <li><strong>Pha 0 (Khử cực chậm):</strong> Không có dòng $Na^+$ nhanh do các kênh $Na^+$ nhanh ở đây bị bất hoạt do điện thế nghỉ nền bớt âm hơn. Pha khử cực hoàn toàn phụ thuộc vào dòng Canxi đi vào qua kênh canxi chậm type L ($I_{Ca,L}$). Tốc độ khử cực chậm hơn nhiều.</li>
+              <li><strong>Không có Pha 1 và Pha 2 rõ rệt.</strong></li>
+              <li><strong>Pha 3 (Tái cực):</strong> Kênh $Ca^{2+}$ type L đóng lại và kênh $K^+$ mở ra đưa $K^+$ đi ra ngoài để tái cực màng.</li>
+              <li><strong>Pha 4 (Khử cực tâm trương tự phát / Tự động tính):</strong> Tế bào tạo nhịp không có điện thế nghỉ thực sự ổn định. Điện thế màng sau tái cực đạt mức âm tối đa (khoảng $-60\text{ mV}$) rồi tự động dốc lên đạt ngưỡng nhờ:
+                <ol style="margin-left: 1.5rem; margin-top: 0.5rem; list-style-type: decimal;">
+                  <li>Sự giảm dần dòng $K^+$ đi ra.</li>
+                  <li>Sự mở ra của <strong>kênh "funny" ($I_f$)</strong> cho dòng $Na^+$ đi vào khi màng ở mức điện thế âm sâu.</li>
+                  <li>Dòng $Ca^{2+}$ đi vào thoáng qua qua kênh type T ($I_{Ca,T}$).</li>
+                  <li>Hoạt động của bộ trao đổi $Na^+/Ca^{2+}$ ($I_{NCX}$) kích hoạt bởi sự phóng thích $Ca^{2+}$ tự phát từ lưới nội bào.</li>
+                </ol>
+              </li>
+            </ul>
+
+            <!-- Hình 4 -->
+            <div class="image-placeholder-card" style="margin-top: 1.5rem;">
+              <div class="image-title">
+                <span>🖼️</span> Hình 2.4: Cơ chế dòng ion của Điện thế hoạt động đáp ứng chậm ở nút xoang (Fig. 16.9 Berne & Levy)
+              </div>
+              <div class="image-drop-area">
+                <img src="../../images/Phan1/Diensinhly_Hinh4.png" alt="Điện thế hoạt động đáp ứng chậm nút xoang"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="fallback-placeholder" style="display: none; padding: 2rem; text-align: center;">
+                  <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                  <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Sơ đồ điện thế nút xoang, pha 4 dốc lên tự phát và các dòng ion If, ICa,T, ICa,L</p>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Mô tả:</strong> Đường biểu diễn điện thế hoạt động nút xoang tự dốc lên ở pha 4 (khử cực tự phát) cho đến khi đạt ngưỡng kích hoạt dòng $I_{Ca,L}$ gây co. Minh họa vai trò phối hợp của dòng funny $I_f$, dòng canxi type T $I_{Ca,T}$ và sự suy giảm dòng $I_K$.
+              </div>
+            </div>
+
+            <!-- Khối ghi chú lâm sàng liên quan -->
+            <div class="clinical-note-box" style="background: var(--color-warning-hl); border-left: 4px solid var(--color-warning); margin-top: 2rem;">
+              <div class="clinical-note-title" style="font-weight: 700; color: var(--color-warning); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: var(--text-sm);">
+                🧠 ỨNG DỤNG LÂM SÀNG: CÁC THUỐC ĐIỀU TRỊ LOẠN NHỊP TIM
+              </div>
+              <p style="font-size: var(--text-xs); line-height: 1.6; margin: 0; color: var(--color-text-muted);">
+                Sự chênh lệch về các kênh ion giữa các pha điện thế hoạt động cơ tim là cơ sở phân loại nhóm thuốc chống loạn nhịp Vaughan Williams:
+                <br>• <strong>Nhóm I (Chẹn kênh $Na^+$):</strong> Ức chế pha 0 của tế bào đáp ứng nhanh (như Lidocaine, Quinidine).
+                <br>• <strong>Nhóm II (Beta-blockers):</strong> Làm giảm độ dốc pha 4 ở nút xoang, làm giảm nhịp tim.
+                <br>• <strong>Nhóm III (Chẹn kênh $K^+$):</strong> Kéo dài pha 3 tái cực và thời kỳ trơ (như Amiodarone).
+                <br>• <strong>Nhóm IV (Chẹn kênh $Ca^{2+}$ type L):</strong> Ức chế pha 0 ở nút tạo nhịp và pha 2 ở tế bào đáp ứng nhanh (như Verapamil, Diltiazem).
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- TÀI LIỆU THAM KHẢO -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Tài liệu tham khảo</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <ol style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin-left: 1.5rem;">
+              <li>Koeppen BM, Stanton BA. <em>Berne and Levy Physiology</em>. 8th ed. Elsevier; 2018.</li>
+              <li>Ganong WF. <em>Review of Medical Physiology</em>. 24th ed. McGraw-Hill; 2012.</li>
+              <li>Despopoulos A, Silbernagl S. <em>Color Atlas of Physiology</em>. 5th ed. Thieme; 2003.</li>
+              <li>Jardin F, Vieillard-Baron A. <em>Applied Physiology in Intensive Care Medicine</em>. Springer-Verlag; 2009.</li>
+              <li>Anh Thư ĐH. <em>Sinh lý TIM MẠCH YDS 2025</em>. Youtube; 2025.</li>
+            </ol>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Nạp Footer động -->
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+  <!-- Script điều khiển chung -->
+  <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>

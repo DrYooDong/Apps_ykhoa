@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Công cụ phân tích khí máu động mạch (ABG) tự động, đánh giá rối loạn toan kiềm phối hợp, đáp ứng bù trừ sinh lý (cấp vs mạn) và Anion Gap hiệu chỉnh." />
+  <title>Phân tích Khí máu Động mạch (ABG) – CliniPortal</title>
+
+  <!-- Preconnect fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+
+  <script src="../../../components/header.js"></script>
+  <link rel="stylesheet" href="../../../css/components/abg-calculator.css">
+  <script src="../../../components/footer.js" defer></script>
+</head>
+
+<body>
+  <!-- Placeholder nạp header.html — đường dẫn tính từ vị trí cong-cu.html -->
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ===================== APP CONTAINER ===================== -->
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../cong-cu.html" class="nav-item active" aria-current="page" title="Công cụ">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!--MAIN CONTENT-->
+    <div class="main-wrapper" id="mainContent">
+
+      <section class="hero-dashboard" aria-labelledby="hero-title">
+        <div class="hero-intro">
+          <h1 id="hero-title">PHÂN TÍCH KHÍ MÁU ĐỘNG MẠCH (ABG)</h1>
+          <p>Hệ thống tự động kiểm định kết quả, đánh giá rối loạn toan kiềm hỗn hợp và tính toán Delta Ratio theo
+            phương pháp Henderson-Hasselbalch.</p>
+        </div>
+      </section>
+
+      <!--BREADCRUMB-->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../../index.html" class="breadcrumb-link">
+              <span class="home-icon">🏠</span> Home
+            </a>
+          </li>
+
+          <li class="breadcrumb-item">
+            <a href="../cong-cu.html" class="breadcrumb-link" title="Công cụ lâm sàng">
+              <span class="home-icon">⚙️</span> Công cụ
+            </a>
+          </li>
+
+          <li class="breadcrumb-item" aria-current="page"> Thận & điện giải, toan kiềm
+          </li>
+
+          <li class="breadcrumb-item active" aria-current="page"> ABG
+          </li>
+        </ol>
+      </nav>
+
+      <div class="abg-grid">
+
+        <div class="panel">
+          <div class="panel-title"><span>🩸</span> Thông số Khí máu & Điện giải</div>
+
+          <div class="grid-2-col">
+            <div class="input-group">
+              <label for="abg-ph">pH máu</label>
+              <input type="number" id="abg-ph" value="7.20" step="0.01">
+            </div>
+            <div class="input-group">
+              <label for="abg-duration">Thời gian bệnh Hô hấp</label>
+              <select id="abg-duration">
+                <option value="acute">Cấp tính (Acute)</option>
+                <option value="chronic">Mạn tính (Chronic)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid-2-col">
+            <div class="input-group">
+              <label for="abg-pco2">pCO₂ (mmHg)</label>
+              <input type="number" id="abg-pco2" value="25" step="0.1">
+            </div>
+            <div class="input-group">
+              <label for="abg-hco3">HCO₃⁻ (mEq/L)</label>
+              <input type="number" id="abg-hco3" value="9.6" step="0.1">
+            </div>
+          </div>
+
+          <div class="grid-2-col">
+            <div class="input-group">
+              <label for="abg-na">Na⁺ (mmol/L)</label>
+              <input type="number" id="abg-na" value="140" step="1">
+            </div>
+            <div class="input-group">
+              <label for="abg-cl">Cl⁻ (mmol/L)</label>
+              <input type="number" id="abg-cl" value="100" step="1">
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="abg-alb">Albumin (g/dL) <span
+                style="font-weight: normal; font-size: 0.85rem; color: var(--color-text-muted);">(Dùng để hiệu chỉnh
+                AG)</span></label>
+            <input type="number" id="abg-alb" value="4.0" step="0.1">
+          </div>
+
+          <div class="grid-2-col">
+            <div class="input-group">
+              <label for="abg-lactate">Lactate (mmol/L) <span
+                  style="font-weight: normal; font-size: 0.85rem; color: var(--color-text-muted);">(BT:
+                  &lt;2)</span></label>
+              <input type="number" id="abg-lactate" value="1.2" step="0.1" placeholder="Nhập nếu có">
+            </div>
+            <div class="input-group">
+              <label for="abg-glucose">Glucose (mg/dL) <span
+                  style="font-weight: normal; font-size: 0.85rem; color: var(--color-text-muted);">(BT:
+                  70-100)</span></label>
+              <input type="number" id="abg-glucose" value="280" step="1" placeholder="Nhập nếu có">
+            </div>
+          </div>
+
+          <div class="grid-2-col">
+            <div class="input-group">
+              <label for="abg-ure">Ure (mmol/L) <span
+                  style="font-weight: normal; font-size: 0.85rem; color: var(--color-text-muted);">(BT:
+                  2.5-7.5)</span></label>
+              <input type="number" id="abg-ure" value="" step="0.1" placeholder="Nhập nếu có">
+            </div>
+            <div class="input-group">
+              <label for="abg-ketone">Ketone niệu/máu</label>
+              <select id="abg-ketone">
+                <option value="negative">Âm tính</option>
+                <option value="positive" selected>Dương tính</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid-2-col">
+            <div class="input-group">
+              <label for="abg-osm">Osmolal đo được (mOsm/kg) <span
+                  style="font-weight: normal; font-size: 0.75rem; color: var(--color-text-muted);">(Tính Osmolal
+                  Gap)</span></label>
+              <input type="number" id="abg-osm" value="" step="1" placeholder="Nhập nếu có">
+            </div>
+            <div class="input-group">
+              <label for="abg-urine-cl">Cl⁻ niệu (Urine Cl⁻, mEq/L) <span
+                  style="font-weight: normal; font-size: 0.75rem; color: var(--color-text-muted);">(Khóa Kiềm
+                  CH)</span></label>
+              <input type="number" id="abg-urine-cl" value="" step="1" placeholder="Nhập nếu có">
+            </div>
+          </div>
+
+          <button type="button" id="btn-reset" class="reset-btn">🔄 Làm mới dữ liệu</button>
+        </div>
+
+        <div class="panel sticky-panel">
+          <div class="panel-title"><span>🧠</span> Phân tích Logic Lâm sàng</div>
+
+          <div id="step1-validation" class="step-box">
+            <h4>Bước 1: Kiểm định mẫu (Henderson-Hasselbalch)</h4>
+            <p id="out-validation">Đang chờ dữ liệu...</p>
+          </div>
+
+          <div id="step2-primary" class="step-box">
+            <h4>Bước 2: Rối loạn Nguyên phát</h4>
+            <p id="out-primary">-</p>
+          </div>
+
+          <div id="step3-compensation" class="step-box">
+            <h4>Bước 3: Đáp ứng Bù trừ Sinh lý</h4>
+            <p id="out-compensation">-</p>
+          </div>
+
+          <div id="step4-aniongap" class="step-box">
+            <h4>Bước 4: Khoảng trống Anion (AG)</h4>
+            <p id="out-ag">-</p>
+          </div>
+
+          <div id="step5-delta" class="step-box" style="display: none;">
+            <h4>Bước 5: Tỷ lệ Delta (ΔGap / ΔHCO₃⁻)</h4>
+            <p id="out-delta">-</p>
+          </div>
+
+          <div id="step6-causes" class="step-box" style="display: none;">
+            <h4>Bước 6: Gợi ý Nguyên nhân Cụ thể</h4>
+            <div id="out-causes">Vui lòng nhập đầy đủ thông số...</div>
+          </div>
+
+          <div id="step7-warnings" class="step-box status-warning" style="display: none;">
+            <h4>🚨 Lưu ý Thực hành & Cảnh báo Nguy cơ</h4>
+            <div id="out-warnings">-</div>
+          </div>
+
+          <div class="conclusion-box">
+            <h3>Kết luận Chẩn đoán:</h3>
+            <p id="out-conclusion" style="font-weight: 600; font-size: 1rem;">Vui lòng nhập đầy đủ thông số Khí máu.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="../../../js/calculators/abg-calculator.js" defer></script>
+
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+</body>
+
+</html>

@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CliniPortal - Hệ sinh thái công cụ hỗ trợ lâm sàng dành cho bác sĩ nội khoa">
+  <title>CliniPortal – Công cụ Lâm sàng</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/components/header.css">
+  <link rel="stylesheet" href="../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../css/components/footer.css">
+
+  <script src="../../js/main.js" defer></script>
+  <script src="../../components/header.js" defer></script>
+  <script src="../../components/footer.js" defer></script>
+
+  <link rel="stylesheet" href="../../css/components/physio-patho.css">
+
+  <style>
+    /* Bổ sung màu sắc cho phần 8 và 9 của Sidebar danh mục */
+    #part8-section {
+      --part-color: var(--color-warning);
+      --part-color-hl: var(--color-warning-hl);
+      --part-color-rgb: var(--color-warning-rgb);
+    }
+
+    #part9-section {
+      --part-color: var(--color-teal);
+      --part-color-hl: var(--color-teal-hl);
+      --part-color-rgb: var(--color-teal-rgb);
+    }
+
+    .part-nav-item.p8:hover {
+      background: rgba(var(--color-warning-rgb), 0.06);
+      color: var(--color-warning);
+    }
+
+    .part-nav-item.p9:hover {
+      background: rgba(var(--color-teal-rgb), 0.06);
+      color: var(--color-teal);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ===================== APP CONTAINER ===================== -->
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item" title="S.lý - S.lý bệnh">
+              <span class="nav-icon">🧬</span>
+              <span class="nav-text">S.lý - S.lý bệnh</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận</span>
+            </a>
+          </li>
+          <li>
+            <a href="cong-cu.html" class="nav-item active" aria-current="page" title="Công cụ">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+              <span class="nav-icon">📄</span>
+              <span class="nav-text">Y học chứng cứ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Y học cổ truyền/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền">
+              <span class="nav-icon">☯️</span>
+              <span class="nav-text">Y học cổ truyền</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- ===================== MAIN CONTENT ===================== -->
+    <div class="main-wrapper" id="mainContent">
+
+      <!--BREADCRUMB-->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../index.html" class="breadcrumb-link">
+              <span class="home-icon">🏠</span> Home
+            </a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Công cụ lâm sàng</li>
+        </ol>
+      </nav>
+
+      <section class="hero-dashboard" aria-labelledby="hero-title">
+        <div class="hero-intro">
+          <h1 id="hero-title">🧮 CÔNG CỤ LÂM SÀNG</h1>
+          <p>Hệ thống hỗ trợ quyết định lâm sàng, chuẩn hóa đánh giá bệnh nhân tại giường.</p>
+        </div>
+      </section>
+
+      <!-- ===== TOOLBAR / CONTROL BAR ===== -->
+      <div class="dashboard-controls">
+        <div class="search-box-container">
+          <span class="search-icon-svg">
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </span>
+          <input type="text" id="lesson-search" placeholder="Tìm kiếm công cụ tính toán..."
+            aria-label="Tìm kiếm công cụ tính toán">
+          <button id="clear-search" class="clear-search-btn" aria-label="Xóa tìm kiếm"
+            style="display: none;">&times;</button>
+        </div>
+        <div class="view-toggle-container">
+          <span class="toggle-label">Chế độ xem:</span>
+          <div class="toggle-buttons">
+            <button id="view-grid-btn" class="toggle-btn active" title="Dạng lưới" aria-label="Xem dạng lưới">
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+            </button>
+            <button id="view-list-btn" class="toggle-btn" title="Dạng danh sách" aria-label="Xem dạng danh sách">
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="8" y1="6" x2="21" y2="6"></line>
+                <line x1="8" y1="12" x2="21" y2="12"></line>
+                <line x1="8" y1="18" x2="21" y2="18"></line>
+                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== DASHBOARD LAYOUT ===== -->
+      <div class="dashboard-layout">
+        <!-- Navigation Sidebar (Sticky) -->
+        <aside class="layout-nav-sidebar" aria-label="Danh mục phần học">
+          <div class="nav-sidebar-sticky">
+            <h4 class="nav-sidebar-title">Danh mục phần</h4>
+            <ul class="part-nav-list">
+              <li>
+                <a href="#part1-section" class="part-nav-item p1 active" data-target="part1-section">
+                  <span class="part-icon"><i class="fa-solid fa-file-lines"></i></span>
+                  <span class="part-text">Phần 1: Chung</span>
+                  <span class="part-count-badge">2</span>
+                </a>
+              </li>
+              <li>
+                <a href="#part2-section" class="part-nav-item p2" data-target="part2-section">
+                  <span class="part-icon"><i class="fa-solid fa-virus"></i></span>
+                  <span class="part-text">Phần 2: Truyền Nhiễm</span>
+                  <span class="part-count-badge">3</span>
+                </a>
+              </li>
+              <li>
+                <a href="#part3-section" class="part-nav-item p3" data-target="part3-section">
+                  <span class="part-icon"><i class="fa-solid fa-triangle-exclamation"></i></span>
+                  <span class="part-text">Phần 3: Cấp cứu & Hồi sức</span>
+                  <span class="part-count-badge">1</span>
+                </a>
+              </li>
+              <li>
+                <a href="#part4-section" class="part-nav-item p4" data-target="part4-section">
+                  <span class="part-icon"><i class="fa-solid fa-lungs"></i></span>
+                  <span class="part-text">Phần 4: Hô hấp & Lao</span>
+                  <span class="part-count-badge">1</span>
+                </a>
+              </li>
+              <li>
+                <a href="#part5-section" class="part-nav-item p5" data-target="part5-section">
+                  <span class="part-icon"><i class="fa-solid fa-apple-whole"></i></span>
+                  <span class="part-text">Phần 5: Tiêu hóa & Dinh dưỡng</span>
+                  <span class="part-count-badge">3</span>
+                </a>
+              </li>
+              <li>
+                <a href="#part6-section" class="part-nav-item p6" data-target="part6-section">
+                  <span class="part-icon"><i class="fa-solid fa-filter"></i></span>
+                  <span class="part-text">Phần 6: Thận & Điện giải</span>
+                  <span class="part-count-badge">4</span>
+                </a>
+              </li>
+              <li>
+                <a href="#part7-section" class="part-nav-item p7" data-target="part7-section">
+                  <span class="part-icon"><i class="fa-solid fa-heart-pulse"></i></span>
+                  <span class="part-text">Phần 7: Tim mạch & Huyết khối</span>
+                  <span class="part-count-badge">3</span>
+                </a>
+              </li>
+              <li>
+                <a href="#part8-section" class="part-nav-item p8" data-target="part8-section">
+                  <span class="part-icon"><i class="fa-solid fa-droplet"></i></span>
+                  <span class="part-text">Phần 8: Nội tiết & Chuyển hóa</span>
+                  <span class="part-count-badge">1</span>
+                </a>
+              </li>
+              <li>
+                <a href="#part9-section" class="part-nav-item p9" data-target="part9-section">
+                  <span class="part-icon"><i class="fa-solid fa-brain"></i></span>
+                  <span class="part-text">Phần 9: Thần kinh</span>
+                  <span class="part-count-badge">1</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="layout-content-area" id="lessons-container">
+          <!-- Empty Search State -->
+          <div id="empty-search-state" class="empty-search-state" style="display: none;">
+            <div class="empty-search-icon">🔍</div>
+            <h3>Không tìm thấy công cụ lâm sàng nào</h3>
+            <p>Vui lòng thử từ khóa khác hoặc xóa bộ lọc.</p>
+          </div>
+
+          <!-- PHẦN 1: CHUNG -->
+          <section id="part1-section" aria-labelledby="part1-heading">
+            <div class="physio-group-container">
+              <div class="physio-group-header">
+                <span class="physio-group-icon"><i class="fa-solid fa-file-lines"></i></span>
+                <h3 id="part1-heading">Phần 1: Chung</h3>
+              </div>
+              <div class="specialty-grid">
+
+                <!-- 1. Mẫu bệnh án nội khoa -->
+                <a href="Chung/Bệnh án/benh-an-noi-khoa.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">📝</div>
+                    <div class="specialty-info">
+                      <h3>Mẫu bệnh án nội khoa</h3>
+                      <p>Hướng dẫn viết bệnh án nội khoa chuẩn hóa</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Mở công cụ</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+                <!-- 2. Tra cứu mã ICD10 -->
+                <a href="Chung/Tracuu_maICD10.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">📝</div>
+                    <div class="specialty-info">
+                      <h3>Tra cứu mã ICD10 hưởng BHYT</h3>
+                      <p>Tra cứu mã ICD10 hưởng Bảo hiểm y tế nhanh chóng</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Mở công cụ</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+          </section>
+
+
+          <!-- PHẦN 2: TRUYỀN NHIỄM -->
+          <section id="part2-section" aria-labelledby="part2-heading">
+            <div class="physio-group-container">
+              <div class="physio-group-header">
+                <span class="physio-group-icon"><i class="fa-solid fa-virus"></i></span>
+                <h3 id="part2-heading">Phần 2: Truyền Nhiễm</h3>
+              </div>
+              <div class="specialty-grid">
+
+                <!-- 1. Sàng lọc Nhiễm khuẩn -->
+                <a href="Truyền Nhiễm/SL_Nhiem-khuan.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🦠</div>
+                    <div class="specialty-info">
+                      <h3>Sàng lọc Nhiễm khuẩn</h3>
+                      <p>NEWS2, SOFA, qSOFA, SIRS, MEDS</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Mở công cụ</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+                <!-- 2. Chỉnh liều kháng sinh -->
+                <a href="Truyền Nhiễm/Chinhlieu_khangsinh.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🦠</div>
+                    <div class="specialty-info">
+                      <h3>Chỉnh liều kháng sinh</h3>
+                      <p>Tra cứu kháng sinh đồ và chỉnh liều dựa trên chức năng thận</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Mở công cụ</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+                <!-- 3. Quản lý sử dụng Vancomycin -->
+                <a href="Truyền Nhiễm/QL_Vancomycin.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🦠</div>
+                    <div class="specialty-info">
+                      <h3>Quản lý sử dụng Vancomycin</h3>
+                      <p>Khởi liều, theo dõi MRSA, Vancomycin</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Mở công cụ</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+          </section>
+
+
+          <!-- PHẦN 3: CẤP CỨU & HỒI SỨC -->
+          <section id="part3-section" aria-labelledby="part3-heading">
+            <div class="physio-group-container">
+              <div class="physio-group-header">
+                <span class="physio-group-icon"><i class="fa-solid fa-triangle-exclamation"></i></span>
+                <h3 id="part3-heading">Phần 3: Cấp cứu & Hồi sức</h3>
+              </div>
+              <div class="specialty-grid">
+
+                <!-- 1. Bù dịch -->
+                <a href="Cấp cứu & hồi sức/QL_Budich.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">💧</div>
+                    <div class="specialty-info">
+                      <h3>Bù dịch</h3>
+                      <p>Mini-fluid challenge, Bolus, Mục tiêu CO, Cân bằng nước.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Mở công cụ</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+          </section>
+
+
+          <!-- PHẦN 4: HÔ HẤP & LAO -->
+          <section id="part4-section" aria-labelledby="part4-heading">
+            <div class="physio-group-container">
+              <div class="physio-group-header">
+                <span class="physio-group-icon"><i class="fa-solid fa-lungs"></i></span>
+                <h3 id="part4-heading">Phần 4: Hô hấp & Lao</h3>
+              </div>
+              <div class="specialty-grid">
+
+                <!-- 1. Đánh giá Viêm phổi -->
+                <a href="Hô hấp & Lao/DG_Viem-phoi.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🫁</div>
+                    <div class="specialty-info">
+                      <h3>Đánh giá Viêm phổi</h3>
+                      <p>CURB-65, PSI, IDSA/ATS, MDR Risk, SARI</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Mở công cụ</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+          </section>
+
+
+          <!-- PHẦN 5: TIÊU HÓA & DINH DƯỠNG -->
+          <section id="part5-section" aria-labelledby="part5-heading">
+            <div class="physio-group-container">
+              <div class="physio-group-header">
+                <span class="physio-group-icon"><i class="fa-solid fa-apple-whole"></i></span>
+                <h3 id="part5-heading">Phần 5: Tiêu hóa & Dinh dưỡng</h3>
+              </div>
+              <div class="specialty-grid">
+
+                <!-- 1. Đánh giá Dinh dưỡng nội viện -->
+                <a href="Tiêu hóa & Dinh dưỡng/DG_Dinhduongnoitru.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🍽️</div>
+                    <div class="specialty-info">
+                      <h3>Đánh giá Dinh dưỡng nội viện</h3>
+                      <p>Nhu cầu năng lượng, Đạm (Protein), Dịch, Carbohydrate, Lipid</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Mở công cụ</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+                <!-- 2. Đánh giá & Phân độ Xơ gan -->
+                <a href="Tiêu hóa & Dinh dưỡng/DG_Xogan.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🫗</div>
+                    <div class="specialty-info">
+                      <h3>Đánh giá & Phân độ Xơ gan</h3>
+                      <p>Child-Pugh, MELD-Na</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Mở công cụ</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+                <!-- 3. Phân tầng nguy cơ HCC -->
+                <a href="Tiêu hóa & Dinh dưỡng/DG_ptncHCC.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🫗</div>
+                    <div class="specialty-info">
+                      <h3>Phân tầng nguy cơ HCC</h3>
+                      <p>Phân tầng nguy cơ mắc ung thư biểu mô tế bào gan (HCC) theo guideline AGA 2026</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Mở công cụ</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+          </section>
+
+
+          <!-- PHẦN 6: THẬN & ĐIỆN GIẢI -->
+          <section id="part6-section" aria-labelledby="part6-heading">
+            <div class="physio-group-container">
+              <div class="physio-group-header">
+                <span class="physio-group-icon"><i class="fa-solid fa-filter"></i></span>
+                <h3 id="part6-heading">Phần 6: Thận & Điện giải</h3>
+              </div>
+              <div class="specialty-grid">
+
+                <!-- 1. Chức năng thận -->
+                <a href="Thận & Điện giải - toan kiềm/renal-function.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🔬</div>
+                    <div class="specialty-info">
+                      <h3>Chức năng thận</h3>
+                      <p>Cockcroft-Gault, CKD-EPI 2021, KDIGO, KDIGO AKI</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Mở công cụ</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+                <!-- 2. Phân tích khí máu động mạch -->
+                <a href="Thận & Điện giải - toan kiềm/DG_ABG.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🔬</div>
+                    <div class="specialty-info">
+                      <h3>Phân tích khí máu động mạch</h3>
+                      <p>Henderson-Hasselbalch, Winters, Anion Gap, Delta Ratio</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Mở công cụ</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+                <!-- 3. Xử trí rối loạn kali/canxi máu -->
+                <a href="Thận & Điện giải - toan kiềm/DG_Kali-Canxi.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🔬</div>
+                    <div class="specialty-info">
+                      <h3>Xử trí rối loạn kali/canxi máu</h3>
+                      <p>Canxi hiệu chỉnh (Albumin), Phác đồ UKKA</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Mở công cụ</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+                <!-- 4. Xử trí rối loạn natri máu & dịch -->
+                <a href="Thận & Điện giải - toan kiềm/DG_Natri-Dich.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🔬</div>
+                    <div class="specialty-info">
+                      <h3>Xử trí rối loạn natri máu & dịch</h3>
+                      <p>Adrogue-Madias, TBW, Free Water Deficit, ODS Risk</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Mở công cụ</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+          </section>
+
+
+          <!-- PHẦN 7: TIM MẠCH & HUYẾT KHỐI -->
+          <section id="part7-section" aria-labelledby="part7-heading">
+            <div class="physio-group-container">
+              <div class="physio-group-header">
+                <span class="physio-group-icon"><i class="fa-solid fa-heart-pulse"></i></span>
+                <h3 id="part7-heading">Phần 7: Tim mạch & Huyết khối</h3>
+              </div>
+              <div class="specialty-grid">
+
+                <!-- 1. Phân tầng nguy cơ tim mạch toàn bộ -->
+                <a href="Tim mạch & huyết khối/ptnctimmach.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">📊</div>
+                    <div class="specialty-info">
+                      <h3>Phân tầng nguy cơ tim mạch toàn bộ</h3>
+                      <p>SCORE2, SCORE2-OP, SCORE2-Diabetes, PREVENT</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Mở công cụ</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+                <!-- 2. Đánh giá mục tiêu LDL-c -->
+                <a href="Tim mạch & huyết khối/DG_LDLc.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🩸</div>
+                    <div class="specialty-info">
+                      <h3>Đánh giá mục tiêu LDL-c</h3>
+                      <p>Xác định mục tiêu LDL-c theo phân tầng nguy cơ tim mạch ESC/VNHA và so sánh thực tế.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Mở công cụ</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+                <!-- 3. Suy tim toàn diện -->
+                <a href="Tim mạch & huyết khối/DG_Suytim.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">❤️</div>
+                    <div class="specialty-info">
+                      <h3>Đánh giá & Phân loại Suy tim</h3>
+                      <p>Phân tầng nguy cơ toàn diện – Áp dụng trực tiếp cho thực hành lâm sàng tại Việt Nam.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Mở công cụ</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+          </section>
+
+
+          <!-- PHẦN 8: NỘI TIẾT & CHUYỂN HÓA -->
+          <section id="part8-section" aria-labelledby="part8-heading">
+            <div class="physio-group-container">
+              <div class="physio-group-header">
+                <span class="physio-group-icon"><i class="fa-solid fa-droplet"></i></span>
+                <h3 id="part8-heading">Phần 8: Nội tiết & Chuyển hóa</h3>
+              </div>
+              <div class="specialty-grid">
+
+                <!-- 1. Chỉnh liều Insulin nội trú -->
+                <a href="Nội tiết & Chuyển hóa/DG_Insulin-ĐTĐ.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">💉</div>
+                    <div class="specialty-info">
+                      <h3>Chỉnh liều Insulin nội trú</h3>
+                      <p>Basal-Bolus, CII (ICU)</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Mở công cụ</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+          </section>
+
+
+          <!-- PHẦN 9: THẦN KINH -->
+          <section id="part9-section" aria-labelledby="part9-heading">
+            <div class="physio-group-container">
+              <div class="physio-group-header">
+                <span class="physio-group-icon"><i class="fa-solid fa-brain"></i></span>
+                <h3 id="part9-heading">Phần 9: Thần kinh</h3>
+              </div>
+              <div class="specialty-grid">
+
+                <!-- 1. Sàng lọc & Phân tầng Đột quỵ cấp -->
+                <a href="Thần kinh/DG_Dotquy.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🫀</div>
+                    <div class="specialty-info">
+                      <h3>Sàng lọc &amp; Phân tầng Đột quỵ cấp</h3>
+                      <p>NIHSS, ASPECTS, ABCD2, ICH, VAN</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Mở công cụ</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+          </section>
+
+        </main>
+      </div><!-- end dashboard-layout -->
+    </div><!-- end main-wrapper -->
+  </div><!-- end app-container -->
+
+  <div id="footer-placeholder" data-footer-path="../../components/footer.html"></div>
+
+  <!-- ===================== SCRIPT ===================== -->
+  <script src="../../js/physio-patho.js" defer></script>
+</body>
+
+</html>

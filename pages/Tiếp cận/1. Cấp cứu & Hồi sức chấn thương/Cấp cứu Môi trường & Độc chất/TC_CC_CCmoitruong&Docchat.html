@@ -1,0 +1,264 @@
+﻿<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lưu đồ hướng dẫn xử trí cấp cứu các tai nạn do môi trường (sốc nhiệt, đuối nước, bỏng) và ngộ độc cấp.">
+    <title>Cấp cứu Môi trường & Độc chất – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal -->
+    <link rel="stylesheet" href="../../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../../css/components/footer.css">
+
+    <!-- CSS Flowchart dùng chung -->
+    <link rel="stylesheet" href="../../../../../css/components/flowchart.css">
+
+    <!-- Script điều hướng hệ thống -->
+    <script src="../../../../../js/main.js" defer></script>
+    <script src="../../../../../components/header.js" defer></script>
+    <script src="../../../../../components/footer.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+            <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../tiep-can.html" class="nav-item active" aria-current="page" title="Tiếp cận">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+        <!-- MAIN WRAPPER -->
+        <main class="main-wrapper flow-page">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container">
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item">
+                        <a href="../../../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="../../../tiep-can.html" class="breadcrumb-link">Tiếp cận</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Cấp cứu Môi trường & Độc chất</li>
+                </ol>
+            </nav>
+
+            <!-- HERO BANNER -->
+            <div class="flow-hero">
+                <div class="hero-badge">☣️ Môi trường & Độc chất</div>
+                <h1>CẤP CỨU MÔI TRƯỜNG & TIẾP CẬN NGỘ ĐỘC CẤP</h1>
+                <p>Thuật toán chẩn đoán và xử trí nhanh sốc nhiệt, đuối nước, bỏng nặng và ngộ độc hóa chất/thuốc cấp tính. Nhấp vào các node để xem chi tiết.</p>
+            </div>
+
+            <!-- TABS SWITCHER -->
+            <div class="flow-tabs">
+                <button class="flow-tab-btn active" id="tab-btn-env" onclick="switchPane('env')">
+                    <span class="tab-dot"></span> Sơ đồ 1: Cấp cứu Môi trường (Nhiệt, Đuối nước, Bỏng)
+                </button>
+                <button class="flow-tab-btn tab-danger" id="tab-btn-tox" onclick="switchPane('tox')">
+                    <span class="tab-dot"></span> Sơ đồ 2: Tiếp cận Ngộ độc cấp (Toxins)
+                </button>
+            </div>
+
+            <!-- LEGEND -->
+            <div class="flow-legend">
+                <div class="legend-item"><div class="legend-dot" style="background:linear-gradient(135deg, #1e3a5f, #3f51b5)"></div> Bắt đầu</div>
+                <div class="legend-item"><div class="legend-dot" style="background:var(--c-danger-b)"></div> Cấp cứu nguy kịch</div>
+                <div class="legend-item"><div class="legend-dot" style="background:var(--c-warn-b)"></div> Biện pháp thải độc</div>
+                <div class="legend-item"><div class="legend-dot" style="background:var(--c-info-b)"></div> Kháng độc lực / Giải độc đặc hiệu</div>
+            </div>
+
+            <!-- FLOW CANVAS -->
+            <div class="flow-canvas-wrapper">
+
+                <!-- PANE 1: ENV -->
+                <div class="flow-pane active" id="pane-env">
+                    <div class="flow-col">
+                        
+                        <!-- 1. Sốc nhiệt -->
+                        <div class="fnode fnode-danger clickable" onclick="toggleNode(this)">
+                            <div class="fnode-tag">Sốc nhiệt (Heat Stroke)</div>
+                            <div class="fnode-title">🚨 Tăng thân nhiệt ác tính (&gt; 40°C) + Rối loạn tri giác</div>
+                            <p class="fnode-body">
+                                Cấp cứu khẩn cấp. Rối loạn tri giác (mất định hướng, mê sảng, co giật, hôn mê) trong môi trường nóng.
+                            </p>
+                            <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấp xem phác đồ hạ nhiệt nhanh</div>
+                            <div class="fnode-details">
+                                <div class="detail-box">
+                                    <div class="detail-box-title">❄️ Biện pháp hạ nhiệt khẩn cấp:</div>
+                                    <ul>
+                                        <li>Đưa bệnh nhân vào bóng râm, cởi bỏ quần áo.</li>
+                                        <li>Ngâm người vào nước lạnh (chườm đá lạnh vùng nách, bẹn, cổ).</li>
+                                        <li>Quạt thổi liên tục lên người ẩm để tăng bay hơi nhiệt.</li>
+                                        <li><strong>Mục tiêu:</strong> Hạ thân nhiệt trung tâm xuống dưới 39°C trong vòng 30 phút.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mũi tên kết nối -->
+                        <div class="flow-connector">
+                            <div class="flow-connector-line"></div>
+                            <div class="flow-connector-arrow"></div>
+                        </div>
+
+                        <!-- 2. Đuối nước -->
+                        <div class="fnode fnode-warn clickable" onclick="toggleNode(this)">
+                            <div class="fnode-tag">Đuối nước (Drowning)</div>
+                            <div class="fnode-title">🌊 Cấp cứu Đuối nước & Suy hô hấp cấp</div>
+                            <p class="fnode-body">
+                                Đánh giá ngay nhịp thở và tuần hoàn. Bắt đầu hô hấp nhân tạo ngay khi có thể tiếp cận an toàn.
+                            </p>
+                            <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấp xem các bước hồi sức</div>
+                            <div class="fnode-details">
+                                <div class="detail-box">
+                                    <div class="detail-box-title">🔄 Hồi sức đuối nước:</div>
+                                    <ul>
+                                        <li>Nếu ngừng thở: Cho 5 nhịp thổi ngạt đầu tiên trước khi ép tim.</li>
+                                        <li>Đặt nội khí quản sớm nếu có phù phổi cấp hoặc suy hô hấp nặng trơ với thở oxy.</li>
+                                        <li>Sấy ấm toàn thân nếu hạ thân nhiệt.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!-- End Pane 1 -->
+
+                <!-- PANE 2: TOX -->
+                <div class="flow-pane" id="pane-tox">
+                    <div class="flow-col">
+                        
+                        <!-- 1. Node Bắt đầu -->
+                        <div class="fnode fnode-start">
+                            <div class="fnode-tag">Độc chất học lâm sàng</div>
+                            <div class="fnode-title">Tiếp cận bệnh nhân Ngộ độc cấp</div>
+                            <p class="fnode-body">
+                                Ổn định chức năng sống (A-B-C). Hỏi tiền sử nhiễm độc (tên chất, lượng dùng, thời gian, đường vào).
+                            </p>
+                        </div>
+
+                        <!-- Mũi tên kết nối -->
+                        <div class="flow-connector">
+                            <div class="flow-connector-line"></div>
+                            <div class="flow-connector-arrow"></div>
+                        </div>
+
+                        <!-- 2. Thải độc ban đầu -->
+                        <div class="fnode fnode-warn clickable" onclick="toggleNode(this)">
+                            <div class="fnode-tag">Can thiệp 1 • Hạn chế hấp thu chất độc</div>
+                            <div class="fnode-title">Ngăn chặn hấp thu & Thải độc</div>
+                            <p class="fnode-body">
+                                Tiến hành các biện pháp hạn chế hấp thu độc chất qua đường tiêu hóa/da.
+                            </p>
+                            <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấp để xem chỉ định cụ thể</div>
+                            <div class="fnode-details">
+                                <div class="detail-box">
+                                    <div class="detail-box-title">🧼 Biện pháp thải độc:</div>
+                                    <ul>
+                                        <li><strong>Rửa dạ dày:</strong> Chỉ định trong vòng 1 giờ đầu sau uống chất độc độc lực cao. Không rửa nếu uống chất ăn mòn (acid/kiềm) hoặc hydrocarbon (dầu hỏa).</li>
+                                        <li><strong>Than hoạt (Activated Charcoal):</strong> 1g/kg (liều đơn), dùng trong vòng 1-2 giờ đầu sau nuốt phải chất độc có khả năng hấp phụ.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mũi tên kết nối -->
+                        <div class="flow-connector">
+                            <div class="flow-connector-line"></div>
+                            <div class="flow-connector-arrow"></div>
+                        </div>
+
+                        <!-- 3. Chất giải độc đặc hiệu -->
+                        <div class="fnode fnode-info clickable" onclick="toggleNode(this)">
+                            <div class="fnode-tag">Can thiệp 2 • Giải độc đặc hiệu</div>
+                            <div class="fnode-title">Sử dụng Antidote (Chất giải độc đặc hiệu)</div>
+                            <p class="fnode-body">
+                                Xác định hội chứng ngộ độc (Toxidrome) để dùng chất giải độc đặc hiệu nếu có.
+                            </p>
+                            <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấp xem bảng tra cứu nhanh Antidote</div>
+                            <div class="fnode-details">
+                                <div class="detail-box">
+                                    <table class="flow-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Chất gây độc</th>
+                                                <th>Chất giải độc (Antidote)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Paracetamol</td>
+                                                <td><strong>N-Acetylcysteine (NAC)</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Opioids (Heroin, Morphine)</td>
+                                                <td><strong>Naloxone</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Benzodiazepines</td>
+                                                <td><strong>Flumazenil</strong> (Lưu ý nguy cơ co giật)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Thuốc trừ sâu phospho hữu cơ</td>
+                                                <td><strong>Atropin</strong> + <strong>Pralidoxime (PAM)</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Kim loại nặng (Chì, Thủy ngân)</td>
+                                                <td><strong>Dimercaprol (BAL), EDTA</strong></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!-- End Pane 2 -->
+
+            </div><!-- End Flow Canvas Wrapper -->
+        </main>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+    <!-- Scripts dùng chung -->
+    <script src="../../../../../js/flowchart.js"></script>
+</body>
+
+</html>

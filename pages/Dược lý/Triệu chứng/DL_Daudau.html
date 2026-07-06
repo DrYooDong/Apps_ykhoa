@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lưu đồ dược lý tương tác xử trí Đau Đầu – CliniPortal">
+    <title>Dược lý Đau Đầu – CliniPortal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../css/components/footer.css">
+    <script src="../../../components/header.js" defer></script>
+    <link rel="stylesheet" href="../../../css/components/pharmacology-symptoms.css">
+  <script src="../../../js/pharmacology-symptoms.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+</head>
+<body>
+<div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div class="app-container">
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item" title="Sinh lý & Sinh lý bệnh">
+              <span class="nav-icon">🧬</span>
+              <span class="nav-text">Sinh lý</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng lâm sàng">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ lâm sàng">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../duoc-ly.html" class="nav-item" title="Dược lý & Kháng sinh">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+              <span class="nav-icon">📄</span>
+              <span class="nav-text">Y học chứng cứ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Y học cổ truyền/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền">
+              <span class="nav-icon">☯️</span>
+              <span class="nav-text">Y học cổ truyền</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-wrapper flow-page">
+        <nav aria-label="Breadcrumb" class="breadcrumb-container">
+            <ol class="breadcrumb-list">
+                <li class="breadcrumb-item"><a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a></li>
+                <li class="breadcrumb-item"><a href="../duoc-ly.html" class="breadcrumb-link">Dược lý</a></li>
+                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Triệu chứng</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Đau đầu</li>
+            </ol>
+        </nav>
+
+        <div class="flow-hero">
+            <div class="hero-badge">💊 Dược lý lâm sàng • 2026</div>
+            <h1>Lưu đồ Dược lý Xử trí Đau Đầu</h1>
+            <p>Nhấn vào từng nút lưu đồ để tra cứu phác đồ thuốc theo loại đau đầu lâm sàng</p>
+        </div>
+
+        <div class="fc-legend">
+            <div class="fc-legend-item"><div class="fc-legend-dot" style="background:var(--fc-danger)"></div> Khẩn cấp / Thứ phát</div>
+            <div class="fc-legend-item"><div class="fc-legend-dot" style="background:var(--fc-purple)"></div> Đau đầu nguyên phát</div>
+            <div class="fc-legend-item"><div class="fc-legend-dot" style="background:var(--fc-teal)"></div> Phác đồ thuốc</div>
+            <div class="fc-legend-item" style="font-style:italic;">💡 Nhấn nút để xem chi tiết bên dưới</div>
+        </div>
+
+        <div class="fc-tree">
+            <div class="fc-row">
+                <div class="fc-node nc-root" style="max-width:280px;">
+                    <div class="fc-node-tag">🎯 Điểm khởi đầu</div>
+                    <div class="fc-node-title">TIẾP CẬN BỆNH NHÂN ĐAU ĐẦU</div>
+                    <div class="fc-node-sub">Bước 1: Phân biệt đau đầu thứ phát nguy hiểm vs nguyên phát lành tính</div>
+                </div>
+            </div>
+            <div class="fc-arrow-down"><div class="fc-arrow-line"></div><div class="fc-arrow-head"></div></div>
+
+            <div class="fc-row">
+                <div class="fc-node nc-danger pulse-danger" id="node-secondary" onclick="selectPath('SECONDARY')">
+                    <div class="fc-node-tag">🚨 Dấu hiệu đỏ</div>
+                    <div class="fc-node-title">ĐAU ĐẦU THỨ PHÁT / DẤU HIỆU ĐỎ</div>
+                    <div class="fc-node-sub">Sấm sét, tăng HA, cứng gáy, sốt cao, liệt TK...</div>
+                </div>
+                <div class="fc-node nc-purple" id="node-primary" onclick="selectPath('PRIMARY')">
+                    <div class="fc-node-tag">🧠 Nguyên phát</div>
+                    <div class="fc-node-title">ĐAU ĐẦU NGUYÊN PHÁT LÀNH TÍNH</div>
+                    <div class="fc-node-sub">Migraine, Đau đầu căng cơ, Cluster headache...</div>
+                </div>
+            </div>
+
+            <div id="layer-types" class="fc-layer-disabled">
+                <hr class="fc-sep">
+                <div class="fc-row" style="gap:10px;">
+                    <div class="fc-node nc-purple" id="node-tension" onclick="selectType('TENSION')">
+                        <div class="fc-node-tag">😟 Căng cơ</div>
+                        <div class="fc-node-title">Đau đầu Căng Cơ (TTH)</div>
+                        <div class="fc-node-sub">Hai bên, ép chặt, không nặng hơn khi vận động</div>
+                    </div>
+                    <div class="fc-node nc-purple" id="node-migraine" onclick="selectType('MIGRAINE')">
+                        <div class="fc-node-tag">⚡ Migraine</div>
+                        <div class="fc-node-title">Đau nửa đầu Migraine</div>
+                        <div class="fc-node-sub">Một bên, nhói theo mạch, buồn nôn, sợ ánh sáng/tiếng động</div>
+                    </div>
+                    <div class="fc-node nc-warn" id="node-cluster" onclick="selectType('CLUSTER')">
+                        <div class="fc-node-tag">🔥 Cluster</div>
+                        <div class="fc-node-title">Đau đầu Cluster</div>
+                        <div class="fc-node-sub">Quanh hốc mắt một bên, kịch phát, kèm chảy nước mắt/mũi</div>
+                    </div>
+                    <div class="fc-node nc-warn" id="node-htn" onclick="selectType('HTN')">
+                        <div class="fc-node-tag">❤️ Huyết áp</div>
+                        <div class="fc-node-title">Đau đầu do Tăng Huyết Áp</div>
+                        <div class="fc-node-sub">HA tâm thu > 160 mmHg, thường gáy và hai bên thái dương</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="layer-scenarios" style="display:none;">
+                <hr class="fc-sep">
+                <div class="fc-row" id="row-scenarios"></div>
+            </div>
+        </div>
+
+        <div id="proto-panel" style="display:none;"></div>
+    </main>
+</div>
+
+<footer class="global-footer">
+    <div class="footer-copyright"><p>CliniPortal © 2026 · Chỉ mang tính hỗ trợ tham khảo, không thay thế phán xét lâm sàng.</p></div>
+</footer>
+<script src="../../../js/sidebar.js"></script>
+<script>
+const DB = {
+    secondary:{
+        redFlags:[
+            "Đau đầu 'Thunderclap' – đột ngột dữ dội đạt đỉnh trong < 1 phút (nghi Xuất huyết dưới nhện - SAH).",
+            "Đau đầu kèm cứng gáy + Sốt cao ≥ 39°C + Phát ban xuất huyết (nghi Viêm màng não mủ, Meningococcemia).",
+            "Đau đầu kèm Liệt nửa người, Méo miệng, Nói khó mới xuất hiện (nghi Tai biến mạch máu não - TBMMN).",
+            "Đau đầu kèm Tăng huyết áp ác tính (≥ 180/120 mmHg) + Phù gai thị / Rối loạn ý thức.",
+            "Đau đầu mới xuất hiện hoặc thay đổi tính chất ở bệnh nhân > 50 tuổi, có tiền sử ung thư hoặc HIV/AIDS.",
+            "Đau đầu kèm Hội chứng tăng áp lực nội sọ: nôn vọt không buồn nôn, tư thế ngồi giảm đau, thị lực giảm."
+        ],
+        action:"NGUYÊN TẮC DƯỢC LÝ: Tuyệt đối không cho dùng thuốc giảm đau Analgesic tại chỗ để tránh che khuất triệu chứng. Ưu tiên chụp CT não không cản quang khẩn cấp và chuyển tuyến thần kinh.",
+        source:"QĐ số 2919/QĐ-BYT & Harrison's Neurology"
+    },
+    scenarios:{
+        TENSION_EPISO:{title:"Đau đầu căng cơ từng đợt (Episodic TTH) – < 15 ngày/tháng",source:"QĐ số 2919/QĐ-BYT & IHS Guidelines",
+            drugs:[
+                {name:"Paracetamol 500–1000mg",dose:"Uống 1–2 viên khi đau, cách nhau tối thiểu 4–6 giờ",duration:"Tối đa 4g/ngày"},
+                {name:"Ibuprofen 400–600mg",dose:"Uống 1 viên sau ăn khi đau, cách nhau 6–8 giờ",duration:"Tối đa 2.4g/ngày"},
+                {name:"Aspirin 500–1000mg (Lựa chọn thay thế)",dose:"Uống khi đau",duration:"Không dùng cho trẻ < 16 tuổi"}
+            ],
+            ci:"Không dùng Ibuprofen/NSAIDs cho BN có tiền sử loét dạ dày tiến triển, suy thận nặng, hoặc đang dùng thuốc chống đông.",
+            warn:"CẢNH BÁO: Dùng Analgesic > 10 ngày/tháng (cho Triptans, Ergotamine) hoặc > 15 ngày/tháng (cho Paracetamol, NSAIDs) gây Đau đầu do lạm dụng thuốc (MOH – Medication Overuse Headache). Khi đó cần ngừng thuốc giảm đau và dùng phác đồ phòng ngừa.",
+            ia:"Aspirin làm tăng thời gian chảy máu – cẩn trọng khi phối hợp với thuốc chống đông."
+        },
+        TENSION_CHRONIC:{title:"Đau đầu căng cơ mạn tính (Chronic TTH) – ≥ 15 ngày/tháng",source:"IHS Classification ICHD-3 & AAN Guidelines",
+            drugs:[
+                {name:"Amitriptyline 10–75mg/ngày (Phòng ngừa – Lựa chọn 1)",dose:"Uống khởi đầu 10mg/ngày trước khi ngủ, tăng dần đến liều hiệu quả",duration:"Tối thiểu 3 tháng để đánh giá hiệu quả"},
+                {name:"Venlafaxine (SNRI) hoặc Nortriptyline (Thay thế)",dose:"Theo chỉ định tuyến chuyên khoa thần kinh",duration:"Điều trị duy trì phòng ngừa"},
+                {name:"Vật lý trị liệu + Thư giãn (Biện pháp không dùng thuốc)",dose:"Tập thư giãn, biofeedback, châm cứu theo chỉ định",duration:"Phối hợp song song với thuốc"}
+            ],
+            ci:"Amitriptyline chống chỉ định trong nhồi máu cơ tim gần đây, loạn nhịp tim nặng, Glaucom góc đóng, bí tiểu.",
+            warn:"Tác dụng phụ Amitriptyline: Khô miệng, táo bón, mờ mắt, tụt huyết áp tư thế đứng – Thường cải thiện sau vài tuần.",
+            ia:"Amitriptyline + MAOIs → Hội chứng Serotonin (cấm tuyệt đối). Phối hợp với các thuốc an thần → Tăng ức chế TKTW."
+        },
+        MIGRAINE_ACUTE:{title:"Migraine cơn cấp tính – Điều trị cắt cơn",source:"QĐ số 2919/QĐ-BYT & IHS/AHS Guidelines",
+            drugs:[
+                {name:"Triptan (Sumatriptan 50–100mg)",dose:"Uống 1 viên ngay khi bắt đầu cơn đau. Có thể lặp lại sau 2h nếu chưa đỡ. Tối đa 2 liều/ngày.",duration:"Không dùng quá 10 ngày/tháng"},
+                {name:"Ergotamine + Caffeine (Cafergot)",dose:"Uống 1–2 viên khi khởi phát cơn, tối đa 6 viên/cơn và 10 viên/tuần",duration:"Lựa chọn khi không có Triptan"},
+                {name:"Ibuprofen 400–800mg hoặc Naproxen 500–1000mg (Cơn nhẹ–vừa)",dose:"Uống ngay khi đau, kết hợp với Metoclopramide 10mg nếu buồn nôn",duration:"Khi cơn đau còn kiểm soát được bằng NSAID"}
+            ],
+            ci:"Triptan và Ergotamine CHỐNG CHỈ ĐỊNH tuyệt đối trong: Bệnh tim mạch (thiếu máu cơ tim, TBMMN), HA chưa kiểm soát, Phụ nữ có thai/cho con bú, Hemiplegic migraine.",
+            warn:"Dấu hiệu chuyển viện: Cơn Migraine kéo dài > 72 giờ (Migraine Status), hoặc cơn đầu tiên trong đời với aura kéo dài > 60 phút.",
+            ia:"TRÁNH phối hợp Triptan + Ergotamine (tăng nguy cơ co mạch nguy hiểm). Triptan + SSRI/SNRI → Hội chứng Serotonin tiềm ẩn."
+        },
+        MIGRAINE_PREVENT:{title:"Migraine – Điều trị phòng ngừa (Chỉ định: ≥ 4 cơn/tháng hoặc cơn nặng ảnh hưởng chất lượng sống)",source:"AAN/AHS Guideline 2021 & IHS",
+            drugs:[
+                {name:"Propranolol 40–240mg/ngày (Beta-blocker – Lựa chọn 1)",dose:"Uống khởi đầu 40mg × 2 lần/ngày, tăng dần",duration:"Đánh giá lại sau 3 tháng"},
+                {name:"Topiramate 50–100mg/ngày (Lựa chọn 1 phối hợp)",dose:"Uống 25mg/ngày rồi tăng dần mỗi 2 tuần",duration:"Tối thiểu 6 tháng"},
+                {name:"Amitriptyline 10–75mg/ngày (Lựa chọn thay thế)",dose:"Uống liều thấp ban đêm, tăng dần",duration:"Có thể dùng cho BN kèm lo âu/mất ngủ/trầm cảm"}
+            ],
+            ci:"Propranolol CCI: Hen phế quản, Block tim độ 2–3, Suy tim mất bù. Topiramate CCI: Sỏi thận, Tăng nhãn áp góc đóng.",
+            warn:"Topiramate gây dị cảm đầu ngón tay/chân thường gặp, mờ nhận thức (brain fog) – có thể giảm dần. Giảm hiệu quả thuốc tránh thai → cần biện pháp tránh thai thay thế.",
+            ia:"Propranolol + Triptan (Ergotamine) → Tăng co mạch. Topiramate ức chế enzyme → tăng nồng độ Phenytoin và giảm nồng độ Valproate."
+        },
+        CLUSTER:{title:"Đau đầu Cluster – Điều trị cắt cơn",source:"IHS ICHD-3 & EHF Guidelines",
+            drugs:[
+                {name:"Thở Oxy 100% qua mặt nạ không hồi thở (Đơn trị liệu cắt cơn tốt nhất)",dose:"7–12 lít/phút trong 15–20 phút khi đang có cơn",duration:"Khi lên cơn – Hiệu quả ~80%"},
+                {name:"Sumatriptan tiêm dưới da 6mg",dose:"Tiêm 1 lần khi bắt đầu cơn. Lặp lại 1 lần nếu chưa đỡ (Tối đa 2 lần/ngày)",duration:"Tác dụng nhanh nhất trong 10–15 phút"},
+                {name:"Verapamil 240–480mg/ngày (Phòng ngừa – Lựa chọn 1)",dose:"Uống chia 3 lần/ngày, tăng liều dưới theo dõi ECG",duration:"Điều trị phòng ngừa trong giai đoạn cluster"}
+            ],
+            ci:"Verapamil CCI: Block tim độ 2–3, Suy tim tâm thu nặng. Triptan CCI tương tự như Migraine.",
+            warn:"Cluster headache rất hiếm gặp và thường cần được chuyển đến tuyến Thần kinh chuyên khoa để xác nhận chẩn đoán và xây dựng phác đồ phòng ngừa cá thể hóa.",
+            ia:"Verapamil + Beta-blocker → Nguy cơ block tim cộng hưởng."
+        },
+        HTN_HEADACHE:{title:"Đau đầu do Tăng Huyết Áp (HA Tâm thu > 160 mmHg, thường gáy và thái dương)",source:"QĐ số 2919/QĐ-BYT (Điều trị Tăng huyết áp)",
+            drugs:[
+                {name:"Điều trị hạ huyết áp là cốt lõi – Không phải thuốc giảm đau",dose:"Tối ưu hóa phác đồ hạ áp nền. Mục tiêu HATT < 140 mmHg (hoặc < 130 mmHg nếu bệnh thận/ĐTĐ)",duration:"Kiểm soát dài hạn"},
+                {name:"Nếu HA rất cao (> 180/120 mmHg) kèm triệu chứng: Captopril 25mg hoặc Nifedipine tác dụng ngắn",dose:"Uống hoặc ngậm dưới lưỡi khi cần hạ áp khẩn. Theo dõi sát huyết áp mỗi 15 phút",duration:"Cần tránh hạ HA quá nhanh > 25% trong giờ đầu"},
+                {name:"Metoprolol 25–50mg hoặc Amlodipine 5mg (Điều chỉnh phác đồ nền)",dose:"Uống theo phác đồ điều trị nền huyết áp đang dùng",duration:"Điều trị duy trì"}
+            ],
+            ci:"Tuyệt đối KHÔNG dùng Nifedipine tác dụng ngắn dạng nhai/nghiền để hạ áp khẩn cấp (nguy cơ hạ áp đột ngột gây TBMMN và nhồi máu cơ tim).",
+            warn:"Đau đầu do THA cải thiện song song với kiểm soát huyết áp. Nếu đau đầu vẫn dai dẳng dù HA đã kiểm soát tốt → Xem xét chẩn đoán nguyên nhân khác.",
+            ia:"NSAIDs (Ibuprofen) làm giảm hiệu quả thuốc hạ áp (đặc biệt nhóm ACEi, ARB, lợi tiểu) và tăng giữ nước → hạn chế tối đa."
+        }
+    }
+};
+
+
+function selectPath(path){
+    resetAll();
+    if(path==='SECONDARY'){
+        document.getElementById('node-secondary').classList.add('active');
+        renderSecondary();
+    } else {
+        document.getElementById('node-primary').classList.add('active');
+        document.getElementById('layer-types').className='fc-layer-enabled';
+    }
+}
+function selectType(type){
+    ['tension','migraine','cluster','htn'].forEach(id=>document.getElementById('node-'+id.toLowerCase()).classList.remove('active'));
+    document.getElementById('proto-panel').style.display='none';
+    document.getElementById('node-'+type.toLowerCase()).classList.add('active');
+    document.getElementById('layer-scenarios').style.display='block';
+    const btn=(key,label,cls='nc-teal')=>`<div class="fc-node ${cls}" onclick="displayProtocol('${key}')"><div class="fc-node-title">${label}</div></div>`;
+    let html='';
+    if(type==='TENSION'){
+        html=btn('TENSION_EPISO','Đau đầu căng cơ từng đợt (< 15 ngày/tháng)')+
+             btn('TENSION_CHRONIC','Đau đầu căng cơ mạn tính (≥ 15 ngày/tháng)');
+    } else if(type==='MIGRAINE'){
+        html=btn('MIGRAINE_ACUTE','Migraine – Điều trị cắt cơn cấp tính','nc-purple')+
+             btn('MIGRAINE_PREVENT','Migraine – Điều trị phòng ngừa','nc-purple');
+    } else if(type==='CLUSTER'){
+        html=btn('CLUSTER','Đau đầu Cluster – Cắt cơn & Phòng ngừa','nc-warn');
+    } else {
+        html=btn('HTN_HEADACHE','Đau đầu do Tăng Huyết Áp','nc-warn');
+    }
+    document.getElementById('row-scenarios').innerHTML=html;
+    document.querySelectorAll('#row-scenarios .fc-node').forEach(n=>n.addEventListener('click',function(){
+        document.querySelectorAll('#row-scenarios .fc-node').forEach(x=>x.classList.remove('active'));
+        this.classList.add('active');
+    }));
+}
+function renderSecondary(){
+    const d=DB.secondary;
+    const flags=d.redFlags.map(f=>`<li style="margin-bottom:5px;">${f}</li>`).join('');
+    document.getElementById('proto-panel').style.display='block';
+    document.getElementById('proto-panel').innerHTML=`<div class="proto-panel">
+        <div class="proto-badge">🚨 Khẩn cấp – Dấu hiệu đỏ</div>
+        <div class="proto-panel-title" style="color:var(--fc-danger);border-color:var(--fc-danger);">SÀNG LỌC DẤU HIỆU ĐỎ – CHỈ ĐỊNH CHUYỂN TUYẾN KHẨN CẤP</div>
+        <p style="font-size:14px;margin-bottom:8px;font-weight:600;">Bệnh nhân đau đầu kèm MỘT trong các dấu hiệu sau → CHUYỂN VIỆN / CT NÃO NGAY:</p>
+        <ul style="font-size:13px;color:#7f1d1d;padding-left:18px;font-weight:600;">${flags}</ul>
+        <div class="ab ab-danger"><strong>⚠️ Nguyên tắc dược lý:</strong> ${d.action}</div>
+        <span class="src-badge">📚 ${d.source}</span>
+    </div>`;
+    document.getElementById('proto-panel').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+</script>
+
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+</body>
+</html>

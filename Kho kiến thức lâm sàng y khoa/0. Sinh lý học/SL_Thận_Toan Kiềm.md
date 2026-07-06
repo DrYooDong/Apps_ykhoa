@@ -1,0 +1,37 @@
+**1. NỘI DUNG SINH LÝ HỌC CHI TIẾT:**
+
+Thận đóng vai trò then chốt trong việc duy trì thăng bằng toan - kiềm của cơ thể bằng cách giữ cho nồng độ ion $H^+$ và $HCO_3^-$ trong dịch ngoại bào luôn ở mức hằng định. Hoạt động này được thực hiện thông qua hai nhiệm vụ chính: (1) tái hấp thu gần như toàn bộ $HCO_3^-$ được lọc qua cầu thận để tránh mất chất đệm quan trọng này qua nước tiểu và (2) bài tiết một lượng acid tương đương với lượng acid cố định (không bay hơi) sinh ra từ quá trình chuyển hóa hằng ngày của cơ thể. 
+
+Quá trình điều hòa này bao gồm các cơ chế sinh lý sau:
+
+*   **Sự bài tiết ion $H^+$ và tái hấp thu $HCO_3^-$:**
+    *   **Tại ống lượn gần và quai Henle:** Khoảng 80% - 90% lượng $HCO_3^-$ được lọc sẽ được tái hấp thu tại ống lượn gần. Ion $H^+$ được bài tiết từ tế bào biểu mô ra lòng ống theo cơ chế đồng vận chuyển tích cực thứ phát, ngược chiều với ion $Na^+$ nhờ kênh trao đổi $Na^+/H^+$ (chủ yếu là NHE3) và một phần nhờ bơm $H^+$-ATPase. Trong dịch ống, $H^+$ kết hợp với $HCO_3^-$ được lọc tạo thành $H_2CO_3$. Nhờ enzyme Carbonic Anhydrase (CA IV) ở bờ bàn chải, $H_2CO_3$ phân ly thành $H_2O$ và $CO_2$. $CO_2$ khuếch tán dễ dàng vào trong tế bào, tại đây CA II nội bào xúc tác phản ứng ngược lại để tạo ra $H^+$ và $HCO_3^-$. Ion $H^+$ tiếp tục được bài tiết, còn ion $HCO_3^-$ được vận chuyển qua màng đáy bên để vào máu mao mạch quanh ống thông qua kênh đồng vận chuyển $Na^+-3HCO_3^-$ (NBC1).
+    *   **Tại ống lượn xa và ống góp:** Phần $HCO_3^-$ nhỏ còn lại thoát khỏi ống gần sẽ được tái hấp thu tại đây. Các "tế bào kẽ alpha" (alpha intercalated cells) bài tiết $H^+$ theo cơ chế vận chuyển tích cực nguyên phát nhờ bơm $H^+$-ATPase và $H^+/K^+$-ATPase ở màng đỉnh. Cơ chế này có thể vận chuyển $H^+$ chống lại bậc thang nồng độ gấp 1.000 lần, làm giảm pH nước tiểu xuống mức tối đa là khoảng 4.5. Ion $HCO_3^-$ tạo ra trong tế bào được đưa vào máu qua màng đáy bên nhờ kênh trao đổi $Cl^-/HCO_3^-$ (AE1).
+
+*   **Sự tạo thành Bicarbonate mới và Bài tiết Acid:**
+    Để trung hòa lượng acid cố định (như $H_2SO_4, H_3PO_4$ sinh ra từ chuyển hóa protein), thận bài xuất $H^+$ dư thừa ra nước tiểu dưới hai dạng hệ đệm, qua đó giúp tạo ra các phân tử $HCO_3^-$ "mới" bổ sung vào máu.
+    *   **Bài tiết dưới dạng Acid có thể chuẩn độ (Titratable acid):** Chiếm khoảng 1/3 lượng acid bài xuất ròng (khoảng 40% acid không bay hơi). Hệ đệm chủ yếu là phosphate ($HPO_4^{2-}/H_2PO_4^-$). Ion $H^+$ được bài tiết vào lòng ống lượn xa và ống góp sẽ phản ứng với ion $HPO_4^{2-}$ (lọc qua cầu thận nhưng không được tái hấp thu hết) để tạo thành $H_2PO_4^-$, một acid yếu hòa tan và được thải ra nước tiểu.
+    *   **Bài tiết dưới dạng Amoni ($NH_4^+$):** Chiếm khoảng 2/3 lượng acid bài xuất ròng (khoảng 60% acid không bay hơi). Tại ống lượn gần, acid amin glutamine được chuyển hóa bởi enzyme glutaminase tạo thành 2 ion $NH_4^+$ và 2 ion $HCO_3^-$. $HCO_3^-$ mới được hấp thu vào máu, trong khi $NH_4^+$ được bài tiết vào lòng ống qua sự trao đổi với $Na^+$. Tại nhánh lên dày của quai Henle, $NH_4^+$ được tái hấp thu (thay thế $K^+$ trên kênh $Na^+-K^+-2Cl^-$) và tích tụ nồng độ rất cao ở vùng tủy thận. Tại ống góp, $NH_3$ khuếch tán thụ động vào lòng ống, kết hợp với ion $H^+$ do tế bào kẽ alpha tiết ra để tạo thành $NH_4^+$. Vì màng tế bào không thấm với $NH_4^+$, ion này bị "bẫy" (diffusion trapping) trong lòng ống và bài xuất ra ngoài.
+
+*   **Sự điều hòa hoạt động bài tiết $H^+$:**
+    Trong tình trạng toan hóa máu (acidosis), nồng độ nội bào của $H^+$ và $PCO_2$ tăng lên, làm kích thích các bơm $Na^+/H^+$ và $H^+$-ATPase, đồng thời tăng cường hoạt động enzyme tạo amoniac ở ống gần (kéo dài trong nhiều ngày), giúp tăng thải acid ròng. Các yếu tố nội tiết như cortisol, endothelin, và angiotensin II cũng tham gia kích thích sự bài tiết $H^+$ và tạo $NH_4^+$. Ngược lại, tình trạng kiềm hóa máu (alkalosis) làm giảm bài tiết $H^+$ và tăng sự bài xuất $HCO_3^-$ ra nước tiểu.
+
+**2. TRÍCH XUẤT LƯU ĐỒ / HÌNH ẢNH MINH HỌA TỪ TÀI LIỆU CÓ SẴN:**
+
+*   **Hình 19.10: Sự bài tiết ion $H^+$ và tái hấp thu ion $HCO_3^-$ tại hệ thống ống thận** (Sách: *Sinh lý học - UMP 2024*).
+    *   *Mô tả:* Lắp ghép 2 nửa cơ chế ở 2 đoạn ống thận. Nửa trái mô tả hoạt động tại ống lượn gần và quai Henle, nơi tế bào sử dụng kênh $Na^+/H^+$ exchanger ở màng đỉnh bài tiết $H^+$ và kênh $Na^+-3HCO_3^-$ cotransporter ở màng đáy đưa $HCO_3^-$ về máu. Nửa phải mô tả hoạt động tại đoạn sau ống lượn xa và ống góp, nơi các tế bào kẽ alpha dùng bơm chủ động $H^+$-ATPase ở màng đỉnh để tiết $H^+$ chống lại gradient nồng độ cao, và dùng kênh Anion exchanger để đẩy $HCO_3^-$ "mới" về máu, đồng thời đưa $Cl^-$ vào tế bào.
+*   **Hình 19.11: Hoạt động của hệ đệm amoni $(NH_4^+)$ trên sự bài tiết ion $H^+$ tại ống thận** (Sách: *Sinh lý học - UMP 2024*).
+    *   *Mô tả:* Hình vẽ bên trái thể hiện tại ống lượn gần, chất Glutamine được chuyển hóa sinh ra $NH_4^+$ và $HCO_3^-$. $NH_4^+$ đi vào lòng ống, $HCO_3^-$ về máu. Hình vẽ bên phải mô tả tại ống góp, $NH_3$ (có khả năng khuếch tán qua màng) đi từ tế bào kẽ vào lòng ống. Tại đây, $NH_3$ gắn với ion $H^+$ do tế bào kẽ alpha bơm ra để tạo thành $NH_4^+$, sau đó kết hợp với $Cl^-$ tạo muối $NH_4Cl$ thải ra nước tiểu.
+*   **Figure 37.3: Cellular mechanism for reabsorption of filtered $HCO_3^-$ by cells of the proximal tubule** (Sách: *Berne and Levy Physiology 8e*).
+    *   *Mô tả:* Sơ đồ cơ chế phân tử tái hấp thu $HCO_3^-$ ở ống gần. Cho thấy $H^+$ được đẩy vào lòng ống chủ yếu qua kênh đối vận chuyển NHE3 ($Na^+/H^+$) và V-ATPase. Quá trình kết hợp và phân ly $H_2O$ và $CO_2$ được xúc tác bởi carbonic anhydrase (CA) ở cả màng đỉnh và bào tương. Ở màng đáy, $HCO_3^-$ thoát ra máu qua kênh đồng vận chuyển NBC1 ($Na^+/HCO_3^-$).
+*   **Figure 37.7: Production, transport, and excretion of $NH_4^+$ by the nephron** (Sách: *Berne and Levy Physiology 8e*).
+    *   *Mô tả:* Lưu đồ hoàn chỉnh hệ thống Amoni. Bắt đầu từ glutamine chuyển hóa trong tế bào ống gần tạo $NH_4^+$ bài tiết vào lòng ống. Di chuyển đến quai Henle, $NH_4^+$ được tái hấp thu tích cực bởi nhánh lên dày và tích tụ ở mô kẽ tủy thận. Sau đó, $NH_3$ được bài tiết từ mô kẽ vào lòng ống góp qua các kênh rhesus glycoproteins (RhBG, RhCG), tại đây nó "bẫy" ion $H^+$ tiết ra từ tế bào tạo thành $NH_4^+$ đi ra nước tiểu, và tương ứng 1 phân tử "new $HCO_3^-$" được đưa trở lại ECF.
+*   **Figure 39-2: Fate of $H^+$ secreted into a tubule in exchange for $Na^+$** (Sách: *Ganong's Review of Medical Physiology 24th ed*).
+    *   *Mô tả:* Hình ảnh tóm tắt 3 số phận của ion $H^+$ sau khi được tiết vào lòng ống thận: (1) Kết hợp với $HCO_3^-$ tạo $CO_2$ khuếch tán lại vào tế bào để tái hấp thu bicarbonate. (2) Kết hợp với $HPO_4^{2-}$ tạo thành dạng $H_2PO_4^-$ (acid monobasic phosphate - acid chuẩn độ). (3) Kết hợp với $NH_3$ tạo $NH_4^+$ (hệ đệm amoni). Trong cả ba trường hợp, mỗi một ion $H^+$ được bài tiết ra sẽ giúp một ion $Na^+$ và một ion $HCO_3^-$ được đưa trở lại dòng máu.
+
+**3. TRÍCH DẪN TÀI LIỆU THAM KHẢO CHUẨN AMA:**
+
+1. Mai PT, Đặng HAT, Lê QT, Vũ TTQ, Bùi DK. *Sinh lý học y khoa*. Nhà xuất bản Đại học Quốc gia Thành phố Hồ Chí Minh; 2024.
+2. Koeppen BM, Stanton BA. *Berne and Levy Physiology*. 8th ed. Elsevier; 2024.
+3. Silbernagl S, Despopoulos A. *Color Atlas of Physiology*. 6th ed. Thieme; 2009.
+4. Barrett KE, Barman SM, Boitano S, Brooks HL. *Ganong's Review of Medical Physiology*. 24th ed. McGraw-Hill Medical; 2012.
