@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bài 2: Đánh giá giá trị các công cụ chẩn đoán — CliniPortal">
+  <title>Bài 2: Đánh giá công cụ chẩn đoán — CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="text-style.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #0369a1;
+      --accent-light: #e0f2fe;
+      --accent-mid: #0284c7;
+      --bg: #f0f9ff;
+      --surface: #ffffff;
+      --surface-2: #f8fafc;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --text-faint: #94a3b8;
+      --radius: 16px;
+      --tr: 260ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── TOPNAV ── */
+    .topnav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 1rem;
+      padding: 0 1.5rem; height: 54px;
+    }
+    .topnav-back {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      color: var(--accent); text-decoration: none;
+      font-size: 0.82rem; font-weight: 600;
+      padding: 0.35rem 0.75rem; border-radius: 8px;
+      transition: background var(--tr);
+    }
+    .topnav-back:hover { background: var(--accent-light); }
+    .topnav-divider { width: 1px; height: 20px; background: var(--border); }
+    .topnav-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700; font-size: 0.9rem; color: var(--text);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .topnav-pill {
+      padding: 0.2rem 0.65rem; border-radius: 20px;
+      background: var(--accent-light); color: var(--accent);
+      font-size: 0.7rem; font-weight: 700; margin-left: auto;
+    }
+
+    /* ── LAYOUT ── */
+    .main-container {
+      max-width: 800px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+
+    /* ── BANNER ── */
+    .banner {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+    .banner h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+    .banner p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    /* ── THEORY PLACEHOLDER ── */
+    .theory-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      position: relative;
+    }
+    .theory-placeholder-badge {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      background: #fef3c7;
+      color: #d97706;
+      font-size: 0.7rem;
+      font-weight: 700;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .theory-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .theory-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    .theory-guide {
+      background: var(--surface-2);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      border-left: 3.5px solid #d97706;
+    }
+    .theory-guide h4 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #92400e;
+      margin-bottom: 0.5rem;
+    }
+    .theory-guide ul {
+      list-style-position: inside;
+      font-size: 0.78rem;
+      color: #78350f;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    /* ── CALCULATOR SECTION ── */
+    .calc-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+    .calc-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+    }
+    .calc-icon {
+      font-size: 1.5rem;
+    }
+    .calc-title h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .calc-title p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .calc-tabs {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+    }
+    .calc-tab {
+      padding: 0.45rem 1rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all var(--tr);
+    }
+    .calc-tab:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+    .calc-tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    .calc-panel { display: none; }
+    .calc-panel.active { display: block; }
+
+    /* Sn/Sp 2x2 Grid input */
+    .grid-2x2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .calc-field label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+    .calc-field input {
+      width: 100%;
+      padding: 0.6rem 0.9rem;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.88rem;
+      background: var(--surface);
+      color: var(--text);
+      outline: none;
+      transition: border-color var(--tr), box-shadow var(--tr);
+    }
+    .calc-field input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(3, 105, 161, 0.12);
+    }
+
+    .calc-btn {
+      padding: 0.65rem 1.5rem;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all var(--tr);
+    }
+    .calc-btn:hover { background: var(--accent-mid); transform: translateY(-1px); }
+
+    .calc-result {
+      margin-top: 1.5rem;
+      background: linear-gradient(135deg, var(--accent-light) 0%, #bfdbfe 100%);
+      border: 1px solid rgba(3, 105, 161, 0.2);
+      border-radius: 12px;
+      padding: 1.25rem;
+      display: none;
+    }
+    .calc-result.show { display: block; }
+
+    .calc-result-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+    .calc-result-value {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .calc-result-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+    .calc-result-interp {
+      font-size: 0.82rem;
+      color: var(--text);
+      line-height: 1.6;
+      border-top: 1px solid rgba(3, 105, 161, 0.15);
+      padding-top: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    /* LR form */
+    .lr-form {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 600px) { .lr-form { grid-template-columns: 1fr; } }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="Thongkeyhoc.html" class="topnav-back">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Thống kê y học
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">Bài 2: Đánh giá giá trị các công cụ chẩn đoán</div>
+    <span class="topnav-pill">Bài 2</span>
+  </nav>
+
+  <!-- MAIN CONTAINER -->
+  <div class="main-container">
+
+    <!-- BANNER -->
+    <div class="banner">
+      <h1>Đánh giá giá trị các công cụ chẩn đoán</h1>
+      <p>Tìm hiểu cách phân tích hiệu lực của một phương pháp xét nghiệm sàng lọc hoặc chẩn đoán dựa trên độ nhạy, độ đặc hiệu, giá trị dự báo và tỷ số khả dĩ.</p>
+    </div>
+
+    <!-- THEORY SECTION -->
+    <div class="theory-box">
+      <div class="theory-content">
+        <p>Chào bạn, dưới góc độ của một bác sĩ chuyên khoa sâu và nhà nghiên cứu lâm sàng (Clinical Researcher), việc đánh giá giá trị của một công cụ chẩn đoán không chỉ đơn thuần là nhìn vào kết quả "dương tính" hay "âm tính". Để áp dụng một xét nghiệm vào thực hành, chúng ta phải hiểu rõ bản chất thống kê, sai số, và giá trị thực sự của nó trên từng quần thể bệnh nhân chuyên biệt.</p>
+
+        <p>Dưới đây là phân tích chuyên sâu về các chỉ số xác suất và giá trị của công cụ chẩn đoán trong y học thực chứng.</p>
+
+        <h2>Cơ chế Bệnh sinh & Liên hệ Lâm sàng: Bản chất của Công cụ Chẩn đoán</h2>
+        <p>Mọi công cụ chẩn đoán (từ thăm khám lâm sàng, xét nghiệm sinh hóa, đến chẩn đoán hình ảnh) đều phản ánh sự thay đổi về sinh lý bệnh học, cấu trúc giải phẫu hoặc phân tử của cơ thể. Tuy nhiên, sự biểu hiện bệnh lý ở mỗi cá thể là khác nhau (biến thiên sinh học). Do đó, không có một công cụ chẩn đoán nào là hoàn hảo tuyệt đối.</p>
+
+        <p>Để xác định độ chính xác của một xét nghiệm mới, trong nghiên cứu lâm sàng, nó bắt buộc phải được so sánh với một <strong>Tiêu chuẩn vàng (Criterion standard / Reference standard)</strong>. Tiêu chuẩn vàng là phương pháp chẩn đoán tốt nhất hiện có để xác định bệnh (lý tưởng là đạt độ nhạy và độ đặc hiệu 100%). Việc đánh giá sự "sai lệch" (misclassification) của xét nghiệm mới so với tiêu chuẩn vàng là nền tảng để tính toán các chỉ số xác suất chẩn đoán.</p>
+
+        <h2>Ứng dụng Thực hành Lâm sàng: Lựa chọn và Đánh giá Xét nghiệm</h2>
+        <p>Việc ra quyết định trên lâm sàng đòi hỏi bác sĩ phải đánh đổi (trade-off) giữa việc không bỏ sót bệnh và việc tránh báo động nhầm.</p>
+        <ul>
+          <li><strong>Khi hậu quả của việc bỏ sót bệnh là cực kỳ nghiêm trọng</strong> (ví dụ: ung thư giai đoạn sớm, nhồi máu cơ tim, HIV), bác sĩ cần một công cụ có <strong>Độ nhạy cao</strong> để sàng lọc.</li>
+          <li><strong>Khi hậu quả của một kết quả dương tính giả là rất nặng nề</strong> (ví dụ: dẫn đến phẫu thuật cắt bỏ cơ quan, hoặc gây gánh nặng tâm lý lớn, chi phí cao), bác sĩ cần ưu tiên một công cụ có <strong>Độ đặc hiệu cao</strong> để chẩn đoán xác định.</li>
+        </ul>
+
+        <p>Đối với các xét nghiệm cho ra kết quả dưới dạng biến liên tục (ví dụ: nồng độ men tim, kháng thể), bác sĩ không thể chỉ dựa vào một con số để kết luận bệnh. Việc xác định <strong>điểm cắt (cut-off point)</strong> chia ranh giới giữa "bình thường" và "bất thường" là một quyết định lâm sàng và kinh tế, trong đó việc tăng độ nhạy sẽ dẫn đến giảm độ đặc hiệu và ngược lại.</p>
+
+        <h2>Tư duy Thống kê & Nghiên cứu khoa học: Phân tích Các Chỉ số Xác suất</h2>
+
+        <h3>1. Phân tích các chỉ số nền tảng (Sensitivity, Specificity)</h3>
+        <p>Trong một bảng chéo 2×2 đối chiếu giữa kết quả Test (Dương/Âm) và Tình trạng bệnh (Có/Không theo Tiêu chuẩn vàng), các chỉ số được tính toán như sau:</p>
+        <ul>
+          <li><strong>Độ nhạy (Sensitivity):</strong> Khả năng của test để xác định chính xác những người thực sự CÓ bệnh (Tỷ lệ dương tính thật). Độ nhạy thấp đồng nghĩa với việc có nhiều ca âm tính giả. Quy tắc lâm sàng: Một test có độ nhạy rất cao, khi cho kết quả âm tính, giúp <strong>loại trừ bệnh</strong> một cách đáng tin cậy (Quy tắc <strong>SNOUT</strong> - Highly <strong>S</strong>ensitive test, <strong>N</strong>egative rules <strong>OUT</strong>).</li>
+          <li><strong>Độ đặc hiệu (Specificity):</strong> Khả năng của test để xác định chính xác những người KHÔNG CÓ bệnh (Tỷ lệ âm tính thật). Độ đặc hiệu thấp dẫn đến nhiều ca dương tính giả. Quy tắc lâm sàng: Một test có độ đặc hiệu rất cao, khi cho kết quả dương tính, giúp <strong>chẩn đoán xác định bệnh</strong> (Quy tắc <strong>SPIN</strong> - Highly <strong>SP</strong>ecific test, <strong>P</strong>ositive rules <strong>IN</strong>).</li>
+          <li><strong>Độ chính xác / Độ hiệu quả (Efficiency/Accuracy):</strong> Là tỷ lệ các phân loại đúng (cả dương tính thật và âm tính thật) trên tổng số bệnh nhân được đánh giá. Công thức: <span class="formula-span">(tp + tn) / (tp + fp + fn + tn)</span>.</li>
+        </ul>
+
+        <h3>2. Sự phụ thuộc vào tỷ lệ lưu hành bệnh: Giá trị tiên đoán (Predictive Values)</h3>
+        <p>Trong thực hành, bác sĩ không biết trước bệnh nhân có bệnh hay không, do đó độ nhạy và độ đặc hiệu là chưa đủ. Câu hỏi lâm sàng thực sự là: <em>"Nếu kết quả test là dương tính/âm tính, xác suất bệnh nhân thực sự mắc bệnh/không mắc bệnh là bao nhiêu?"</em></p>
+        <ul>
+          <li><strong>Giá trị tiên đoán dương (PPV):</strong> Tần suất một kết quả test dương tính thực sự là có bệnh. PPV <strong>bị chi phối cực kỳ mạnh mẽ bởi tỷ lệ lưu hành bệnh (prevalence)</strong>. Ngay cả một test có độ đặc hiệu 99%, nếu áp dụng sàng lọc ở một cộng đồng có tỷ lệ mắc bệnh rất thấp, nó vẫn sẽ tạo ra một lượng lớn ca dương tính giả, gây báo động không cần thiết (Ví dụ: sàng lọc HIV trước kết hôn ở nhóm nguy cơ thấp).</li>
+          <li><strong>Giá trị tiên đoán âm (NPV):</strong> Xác suất một người thực sự không mắc bệnh khi có kết quả test âm tính.</li>
+        </ul>
+
+        <h3>3. Tỷ số khả dĩ (Likelihood Ratio - LR): Công cụ định lượng sức mạnh chẩn đoán</h3>
+        <p>Vì PPV và NPV bị nhiễu bởi tỷ lệ lưu hành bệnh, các nhà nghiên cứu ưu tiên sử dụng <strong>Tỷ số khả dĩ (LR)</strong> vì nó độc lập với tỷ lệ lưu hành và cung cấp trực tiếp mức độ thay đổi xác suất mắc bệnh.</p>
+        <ul>
+          <li><strong>Tỷ số khả dĩ dương (LR+):</strong> Cho biết một test dương tính có khả năng xảy ra ở người có bệnh cao gấp bao nhiêu lần so với người không bệnh. LR+ được tính bằng <span class="formula-span">Độ nhạy / (1 - Độ đặc hiệu)</span>.</li>
+          <li><strong>Giá trị lâm sàng:</strong> Một test có LR &gt; 10 (hoặc &lt; 0.1 đối với LR-) được xem là có sức mạnh thay đổi xác suất tiền nghiệm (pre-test probability) một cách đáng kể, cung cấp bằng chứng rất mạnh mẽ để khẳng định (hoặc loại trừ) bệnh.</li>
+        </ul>
+
+        <h3>4. Đường cong ROC (Receiver Operating Characteristic Curve)</h3>
+        <p>Đường cong ROC biểu diễn sự đánh đổi giữa Độ nhạy (trục tung) và tỷ lệ Dương tính giả [1 - Độ đặc hiệu] (trục hoành) tại nhiều điểm cắt (cut-off points) khác nhau.</p>
+        <ul>
+          <li><strong>Diện tích dưới đường cong (AUC) hoặc Chỉ số C (C-statistic):</strong> Là thước đo đánh giá hiệu suất tổng thể của mô hình/test. Một test hoàn hảo sẽ có AUC = 1.0, trong khi một test không có giá trị phân định (tương đương tung đồng xu) sẽ có AUC = 0.5. Điểm cắt tối ưu trên lâm sàng thường nằm ở góc trên cùng bên trái của đường cong, nơi nó bắt đầu chuyển từ dốc sang ngang.</li>
+        </ul>
+
+        <h3>5. Khoảng tin cậy 95% (95% CI) và Đánh giá Sai lệch (Bias)</h3>
+        <p>Khi báo cáo kết quả của một nghiên cứu chẩn đoán, không thể chỉ đưa ra các giá trị điểm (point estimates). Bắt buộc phải cung cấp <strong>Khoảng tin cậy 95% (95% CI)</strong> cho Độ nhạy, Độ đặc hiệu và Likelihood Ratio để thể hiện độ chính xác (precision) của ước lượng.</p>
+        <p>Hơn nữa, khi đọc các bài báo về công cụ chẩn đoán, bác sĩ cần đặc biệt cảnh giác với các <strong>Sai lệch (Bias)</strong> ảnh hưởng đến giá trị của test:</p>
+        <ul>
+          <li><strong>Sai lệch phổ bệnh (Spectrum bias):</strong> Xảy ra khi test được đánh giá trên một quần thể không đại diện cho thực tế lâm sàng. Nếu nghiên cứu chỉ đưa vào những ca bệnh ở giai đoạn cuối (quá rõ ràng) và những người khỏe mạnh hoàn toàn làm nhóm chứng, test sẽ cho ra Độ nhạy và Độ đặc hiệu "đẹp một cách giả tạo" (overly sanguine estimate).</li>
+          <li><strong>Sai lệch xác minh / Sai lệch do quy trình chẩn đoán (Differential verification bias / Workup bias):</strong> Xảy ra khi quyết định thực hiện "Tiêu chuẩn vàng" bị ảnh hưởng bởi kết quả của test đang nghiên cứu (ví dụ: chỉ những bệnh nhân có test gắng sức bất thường mới được chụp mạch vành, trong khi nhóm âm tính thì không). Điều này làm sai lệch nghiêm trọng các chỉ số chẩn đoán.</li>
+        </ul>
+
+        <hr>
+
+        <div class="references-section">
+          <h5>Tài liệu tham khảo (AMA Style):</h5>
+          <ol class="references-list">
+            <li>World Health Organization. <em>A Practical Guide for Health Researchers</em>. WHO Regional Office for the Eastern Mediterranean; 2004.</li>
+            <li>Đại học Y Dược TP. Hồ Chí Minh. <em>Phương pháp nghiên cứu khoa học cơ bản dành cho bác sĩ lâm sàng</em>. Ấn bản lần thứ nhất. TP. Hồ Chí Minh, Việt Nam: Japan International Cooperation Agency (JICA); 2014.</li>
+            <li>Riegelman RK. <em>Studying a Study & Testing a Test: Reading Evidence-Based Health Research</em>. 6th ed. Wolters Kluwer/Lippincott Williams & Wilkins Health; 2013.</li>
+            <li>Hazra A. Using the confidence interval confidently. <em>J Thorac Dis</em>. 2017;9(10):4125-4130.</li>
+            <li>AMA Manual of Style Committee. <em>AMA Manual of Style: A Guide for Authors and Editors</em>. 11th ed. Oxford University Press; 2020.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- CALCULATOR -->
+    <div class="calc-box" id="calculator">
+      <div class="calc-header">
+        <span class="calc-icon">🧪</span>
+        <div class="calc-title">
+          <h3>Máy tính chẩn đoán lâm sàng</h3>
+          <p>Tính toán các chỉ số độ nhạy, độ đặc hiệu, giá trị dự báo và tỷ số khả dĩ</p>
+        </div>
+      </div>
+
+      <div class="calc-tabs">
+        <button class="calc-tab active" id="tab-snsp" onclick="switchCalc('snsp')">Sn / Sp & PPV / NPV</button>
+        <button class="calc-tab" id="tab-lr" onclick="switchCalc('lr')">Likelihood Ratio (Tỷ số khả dĩ)</button>
+      </div>
+
+      <!-- PANEL Sn/Sp -->
+      <div class="calc-panel active" id="panel-snsp">
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:1rem;">Nhập số liệu thực tế từ bảng 2x2:</p>
+        <div class="grid-2x2">
+          <div class="calc-field">
+            <label for="tp">TP (True Positive — Dương thật)</label>
+            <input type="number" id="tp" placeholder="Ví dụ: 80" min="0">
+          </div>
+          <div class="calc-field">
+            <label for="fp">FP (False Positive — Dương giả)</label>
+            <input type="number" id="fp" placeholder="Ví dụ: 10" min="0">
+          </div>
+          <div class="calc-field">
+            <label for="fn">FN (False Negative — Âm giả)</label>
+            <input type="number" id="fn" placeholder="Ví dụ: 20" min="0">
+          </div>
+          <div class="calc-field">
+            <label for="tn">TN (True Negative — Âm thật)</label>
+            <input type="number" id="tn" placeholder="Ví dụ: 90" min="0">
+          </div>
+        </div>
+
+        <button class="calc-btn" onclick="calcSnSp()">Tính kết quả</button>
+
+        <div class="calc-result" id="result-snsp">
+          <div class="calc-result-grid">
+            <div>
+              <div class="calc-result-value" id="sn-val">—</div>
+              <div class="calc-result-label">Sensitivity (Độ nhạy)</div>
+            </div>
+            <div>
+              <div class="calc-result-value" id="sp-val">—</div>
+              <div class="calc-result-label">Specificity (Độ đặc hiệu)</div>
+            </div>
+            <div>
+              <div class="calc-result-value" id="ppv-val">—</div>
+              <div class="calc-result-label">PPV (Giá trị dự báo +)</div>
+            </div>
+            <div>
+              <div class="calc-result-value" id="npv-val">—</div>
+              <div class="calc-result-label">NPV (Giá trị dự báo -)</div>
+            </div>
+          </div>
+          <div class="calc-result-interp" id="snsp-interp"></div>
+        </div>
+      </div>
+
+      <!-- PANEL LR -->
+      <div class="calc-panel" id="panel-lr">
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:1rem;">Nhập các thông số chẩn đoán và xác suất tiền lâm sàng (Pre-test probability):</p>
+        
+        <div class="lr-form">
+          <div class="calc-field">
+            <label for="lr-sn">Sensitivity (%)</label>
+            <input type="number" id="lr-sn" placeholder="Ví dụ: 80" min="0" max="100" step="0.1">
+          </div>
+          <div class="calc-field">
+            <label for="lr-sp">Specificity (%)</label>
+            <input type="number" id="lr-sp" placeholder="Ví dụ: 90" min="0" max="100" step="0.1">
+          </div>
+          <div class="calc-field">
+            <label for="pretest">Xác suất trước XN (%)</label>
+            <input type="number" id="pretest" placeholder="Ví dụ: 30" min="0" max="100" step="0.1">
+          </div>
+        </div>
+
+        <button class="calc-btn" onclick="calcLR()">Tính kết quả</button>
+
+        <div class="calc-result" id="result-lr">
+          <div class="calc-result-grid" style="grid-template-columns: repeat(4, 1fr);">
+            <div>
+              <div class="calc-result-value" id="lrp-val">—</div>
+              <div class="calc-result-label">LR+</div>
+            </div>
+            <div>
+              <div class="calc-result-value" id="lrn-val">—</div>
+              <div class="calc-result-label">LR−</div>
+            </div>
+            <div>
+              <div class="calc-result-value" id="post-pos-val">—</div>
+              <div class="calc-result-label">Xác suất sau XN(+)</div>
+            </div>
+            <div>
+              <div class="calc-result-value" id="post-neg-val">—</div>
+              <div class="calc-result-label">Xác suất sau XN(-)</div>
+            </div>
+          </div>
+          <div class="calc-result-interp" id="lr-interp"></div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    function switchCalc(panel) {
+      document.querySelectorAll('.calc-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.calc-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById('tab-' + panel).classList.add('active');
+      document.getElementById('panel-' + panel).classList.add('active');
+    }
+
+    function calcSnSp() {
+      const tp = parseFloat(document.getElementById('tp').value) || 0;
+      const fp = parseFloat(document.getElementById('fp').value) || 0;
+      const fn = parseFloat(document.getElementById('fn').value) || 0;
+      const tn = parseFloat(document.getElementById('tn').value) || 0;
+
+      const sn = tp + fn === 0 ? 0 : tp / (tp + fn) * 100;
+      const sp = tn + fp === 0 ? 0 : tn / (tn + fp) * 100;
+      const ppv = tp + fp === 0 ? 0 : tp / (tp + fp) * 100;
+      const npv = tn + fn === 0 ? 0 : tn / (tn + fn) * 100;
+
+      document.getElementById('sn-val').textContent = sn.toFixed(1) + '%';
+      document.getElementById('sp-val').textContent = sp.toFixed(1) + '%';
+      document.getElementById('ppv-val').textContent = ppv.toFixed(1) + '%';
+      document.getElementById('npv-val').textContent = npv.toFixed(1) + '%';
+
+      document.getElementById('snsp-interp').innerHTML = 
+        `🔍 <strong>Độ nhạy = ${sn.toFixed(1)}%:</strong> ${sn >= 90 ? 'Rất cao — cực tốt để dùng chẩn đoán sàng lọc loại trừ bệnh (SnOUT)' : sn >= 70 ? 'Ở mức trung bình' : 'Khá thấp — dễ bỏ sót ca bệnh thực tế'}.<br>
+        🎯 <strong>Độ đặc hiệu = ${sp.toFixed(1)}%:</strong> ${sp >= 90 ? 'Rất cao — cực tốt để xác nhận chẩn đoán bệnh chắc chắn (SpIN)' : sp >= 70 ? 'Ở mức trung bình' : 'Khá thấp — tỷ lệ dương tính giả cao'}.`;
+      
+      document.getElementById('result-snsp').classList.add('show');
+    }
+
+    function calcLR() {
+      const sn = parseFloat(document.getElementById('lr-sn').value) / 100;
+      const sp = parseFloat(document.getElementById('lr-sp').value) / 100;
+      const pre = parseFloat(document.getElementById('pretest').value) / 100;
+
+      if (isNaN(sn) || isNaN(sp) || isNaN(pre)) {
+        alert('Vui lòng nhập đủ các thông số chẩn đoán và xác suất trước xét nghiệm.');
+        return;
+      }
+
+      const lrp = sp === 1 ? Infinity : sn / (1 - sp);
+      const lrn = sn === 0 ? 0 : (1 - sn) / sp;
+
+      const preOdds = pre / (1 - pre);
+      const postOddsPos = preOdds * lrp;
+      const postOddsNeg = preOdds * lrn;
+
+      const postPos = isFinite(postOddsPos) ? (postOddsPos / (1 + postOddsPos) * 100) : 100;
+      const postNeg = postOddsNeg / (1 + postOddsNeg) * 100;
+
+      document.getElementById('lrp-val').textContent = isFinite(lrp) ? lrp.toFixed(2) : '∞';
+      document.getElementById('lrn-val').textContent = lrn.toFixed(2);
+      document.getElementById('post-pos-val').textContent = postPos.toFixed(1) + '%';
+      document.getElementById('post-neg-val').textContent = postNeg.toFixed(1) + '%';
+
+      let interp = `📊 Xác suất lâm sàng ban đầu = ${(pre*100).toFixed(0)}%.<br>
+        • Nếu xét nghiệm <strong>DƯƠNG TÍNH</strong>, xác suất mắc bệnh tăng lên thành <strong>${postPos.toFixed(1)}%</strong>.<br>
+        • Nếu xét nghiệm <strong>ÂM TÍNH</strong>, xác suất mắc bệnh giảm xuống còn <strong>${postNeg.toFixed(1)}%</strong>.<br>`;
+      
+      interp += `<br><strong>Đánh giá:</strong> LR+ = ${isFinite(lrp) ? lrp.toFixed(2) : '∞'} (${lrp >= 10 ? '≥10: Cực mạnh để khẳng định bệnh' : lrp >= 5 ? '5–10: Mạnh vừa' : '<5: Giá trị khẳng định kém'}). 
+        LR- = ${lrn.toFixed(2)} (${lrn <= 0.1 ? '≤0.1: Cực mạnh để loại trừ bệnh' : lrn <= 0.2 ? '0.1–0.2: Mạnh vừa' : '>0.2: Giá trị loại trừ kém'}).`;
+
+      document.getElementById('lr-interp').innerHTML = interp;
+      document.getElementById('result-lr').classList.add('show');
+    }
+  </script>
+
+</body>
+</html>

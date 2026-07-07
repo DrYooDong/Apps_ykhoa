@@ -1,0 +1,249 @@
+/* ============================================================
+   SHARED TYPOGRAPHY & TEXT STYLES FOR LESSONS
+   Location: pages/Y học chứng cứ/Thống kê y học/text-style.css
+============================================================ */
+
+/* Theme Variables (Fallback support) */
+:root {
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted-faint: #94a3b8;
+  --border-light: #e2e8f0;
+  --bg-subtle: #f8fafc;
+  
+  --primary-accent: #0284c7;
+  --primary-accent-light: #e0f2fe;
+  --primary-accent-dark: #0369a1;
+  
+  --success-color: #10b981;
+  --success-bg: #f0fdf4;
+  --success-border: #bbf7d0;
+
+  --warning-color: #d97706;
+  --warning-bg: #fffbeb;
+  --warning-border: #fde68a;
+
+  --danger-color: #ef4444;
+  --danger-bg: #fef2f2;
+  --danger-border: #fecaca;
+  
+  --line-height-body: 1.7;
+  --line-height-heading: 1.35;
+}
+
+/* Theory Content Container */
+.theory-content {
+  color: var(--text-primary);
+  line-height: var(--line-height-body);
+  font-size: 0.92rem;
+}
+
+/* Headings */
+.theory-content h2 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-top: 2rem;
+  margin-bottom: 0.85rem;
+  letter-spacing: -0.02em;
+  border-left: 4px solid var(--primary-accent);
+  padding-left: 0.75rem;
+}
+
+.theory-content h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 1.5rem;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.01em;
+}
+
+.theory-content h4 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Paragraphs */
+.theory-content p {
+  margin-bottom: 1.1rem;
+  color: var(--text-secondary);
+}
+
+/* Bold / Strong */
+.theory-content strong {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Lists */
+.theory-content ul, 
+.theory-content ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.theory-content li {
+  color: var(--text-secondary);
+}
+
+.theory-content ul {
+  list-style-type: disc;
+}
+
+.theory-content ol {
+  list-style-type: decimal;
+}
+
+/* Inner lists spacing */
+.theory-content li > ul,
+.theory-content li > ol {
+  margin-top: 0.45rem;
+  margin-bottom: 0;
+}
+
+/* Horizontal Rule */
+.theory-content hr {
+  border: 0;
+  height: 1px;
+  background: var(--border-light);
+  margin: 2.25rem 0;
+}
+
+/* Blockquotes & Callouts */
+.theory-content blockquote,
+.theory-content .callout {
+  padding: 1.1rem 1.25rem;
+  border-radius: 12px;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--border-light);
+  background: var(--bg-subtle);
+  border-left: 4px solid var(--text-muted-faint);
+}
+
+.theory-content blockquote p:last-child,
+.theory-content .callout p:last-child {
+  margin-bottom: 0;
+}
+
+/* Specialized Callout Variations */
+.theory-content .callout-info {
+  background: var(--primary-accent-light);
+  border-color: rgba(3, 105, 161, 0.15);
+  border-left-color: var(--primary-accent);
+  color: var(--primary-accent-dark);
+}
+.theory-content .callout-info strong {
+  color: var(--primary-accent-dark);
+}
+
+.theory-content .callout-success {
+  background: var(--success-bg);
+  border-color: var(--success-border);
+  border-left-color: var(--success-color);
+  color: var(--success-color);
+}
+.theory-content .callout-success strong {
+  color: #065f46;
+}
+
+.theory-content .callout-warning {
+  background: var(--warning-bg);
+  border-color: var(--warning-border);
+  border-left-color: var(--warning-color);
+  color: #92400e;
+}
+.theory-content .callout-warning strong {
+  color: #78350f;
+}
+
+.theory-content .callout-danger {
+  background: var(--danger-bg);
+  border-color: var(--danger-border);
+  border-left-color: var(--danger-color);
+  color: #b91c1c;
+}
+.theory-content .callout-danger strong {
+  color: #7f1d1d;
+}
+
+/* Tables inside lessons */
+.theory-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+}
+
+.theory-content th {
+  padding: 0.65rem 0.85rem;
+  text-align: left;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  background: var(--bg-subtle);
+  border-bottom: 2px solid var(--border-light);
+}
+
+.theory-content td {
+  padding: 0.75rem 0.85rem;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  vertical-align: top;
+}
+
+.theory-content tr:last-child td {
+  border-bottom: none;
+}
+
+.theory-content tr:hover td {
+  background: var(--primary-accent-light);
+}
+
+/* Formulas / Math style spans */
+.theory-content .formula-span {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.82rem;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+  color: var(--primary-accent-dark);
+}
+
+/* References Section styling */
+.theory-content .references-section {
+  margin-top: 2rem;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.theory-content .references-section h5 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.65rem;
+}
+
+.theory-content .references-list {
+  padding-left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.theory-content .references-list li {
+  color: var(--text-secondary);
+}

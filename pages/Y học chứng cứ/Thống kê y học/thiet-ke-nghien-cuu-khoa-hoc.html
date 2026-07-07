@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bài 3: Thiết kế nghiên cứu khoa học y học — CliniPortal">
+  <title>Bài 3: Thiết kế nghiên cứu khoa học — CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="text-style.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #0369a1;
+      --accent-light: #e0f2fe;
+      --accent-mid: #0284c7;
+      --bg: #f0f9ff;
+      --surface: #ffffff;
+      --surface-2: #f8fafc;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --text-faint: #94a3b8;
+      --radius: 16px;
+      --tr: 260ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── TOPNAV ── */
+    .topnav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 1rem;
+      padding: 0 1.5rem; height: 54px;
+    }
+    .topnav-back {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      color: var(--accent); text-decoration: none;
+      font-size: 0.82rem; font-weight: 600;
+      padding: 0.35rem 0.75rem; border-radius: 8px;
+      transition: background var(--tr);
+    }
+    .topnav-back:hover { background: var(--accent-light); }
+    .topnav-divider { width: 1px; height: 20px; background: var(--border); }
+    .topnav-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700; font-size: 0.9rem; color: var(--text);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .topnav-pill {
+      padding: 0.2rem 0.65rem; border-radius: 20px;
+      background: var(--accent-light); color: var(--accent);
+      font-size: 0.7rem; font-weight: 700; margin-left: auto;
+    }
+
+    /* ── LAYOUT ── */
+    .main-container {
+      max-width: 800px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+
+    /* ── BANNER ── */
+    .banner {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+    .banner h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+    .banner p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    /* ── THEORY PLACEHOLDER ── */
+    .theory-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      position: relative;
+    }
+    .theory-placeholder-badge {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      background: #fef3c7;
+      color: #d97706;
+      font-size: 0.7rem;
+      font-weight: 700;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .theory-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .theory-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    .theory-guide {
+      background: var(--surface-2);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      border-left: 3.5px solid #d97706;
+    }
+    .theory-guide h4 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #92400e;
+      margin-bottom: 0.5rem;
+    }
+    .theory-guide ul {
+      list-style-position: inside;
+      font-size: 0.78rem;
+      color: #78350f;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    /* ── EVIDENCE PYRAMID VISUAL ── */
+    .pyramid-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+    .pyramid-header {
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+    }
+    .pyramid-header h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .pyramid-header p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .study-pyramid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .pyramid-level {
+      border-radius: 10px;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      cursor: default;
+      transition: transform var(--tr);
+    }
+    .pyramid-level:hover { transform: translateX(4px); }
+    .pyramid-level-rank {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .pyramid-level-info h4 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.15rem;
+    }
+    .pyramid-level-info p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .pyramid-level-badge {
+      margin-left: auto;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      background: rgba(255,255,255,0.6);
+      color: inherit;
+      white-space: nowrap;
+    }
+
+    .l1 { background: linear-gradient(135deg, #fef3c7, #fde68a); }
+    .l2 { background: linear-gradient(135deg, #d1fae5, #a7f3d0); }
+    .l3 { background: linear-gradient(135deg, #dbeafe, #bfdbfe); }
+    .l4 { background: linear-gradient(135deg, #ede9fe, #ddd6fe); }
+    .l5 { background: linear-gradient(135deg, #fce7f3, #fbcfe8); }
+    .l6 { background: linear-gradient(135deg, #f1f5f9, #e2e8f0); }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="Thongkeyhoc.html" class="topnav-back">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Thống kê y học
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">Bài 3: Thiết kế nghiên cứu khoa học y học</div>
+    <span class="topnav-pill">Bài 3</span>
+  </nav>
+
+  <!-- MAIN CONTAINER -->
+  <div class="main-container">
+
+    <!-- BANNER -->
+    <div class="banner">
+      <h1>Thiết kế nghiên cứu khoa học y học</h1>
+      <p>Làm quen với các mô hình thiết kế nghiên cứu dịch tễ học và y học lâm sàng, từ các quan sát ca lâm sàng đơn giản cho đến các thử nghiệm can thiệp mạnh mẽ.</p>
+    </div>
+
+    <!-- EVIDENCE PYRAMID VISUAL -->
+    <div class="pyramid-box">
+      <div class="pyramid-header">
+        <h3>Kim tự tháp bằng chứng (Evidence Pyramid)</h3>
+        <p>Bậc thang phân loại độ tin cậy của các thiết kế nghiên cứu trong y học chứng cứ</p>
+      </div>
+
+      <div class="study-pyramid">
+        <div class="pyramid-level l1">
+          <div class="pyramid-level-rank">1</div>
+          <div class="pyramid-level-info">
+            <h4>Systematic Review & Meta-analysis</h4>
+            <p>Tổng quan hệ thống và phân tích gộp các RCT — Mức bằng chứng mạnh nhất</p>
+          </div>
+          <span class="pyramid-level-badge">⭐ Cao nhất</span>
+        </div>
+        <div class="pyramid-level l2">
+          <div class="pyramid-level-rank">2</div>
+          <div class="pyramid-level-info">
+            <h4>Randomized Controlled Trial (RCT)</h4>
+            <p>Thử nghiệm lâm sàng ngẫu nhiên có nhóm chứng — Tiêu chuẩn vàng để can thiệp</p>
+          </div>
+          <span class="pyramid-level-badge">⭐ Cao</span>
+        </div>
+        <div class="pyramid-level l3">
+          <div class="pyramid-level-rank">3</div>
+          <div class="pyramid-level-info">
+            <h4>Cohort Study (Nghiên cứu thuần tập)</h4>
+            <p>Theo dõi tiến cứu/hồi cứu nhóm phơi nhiễm và không phơi nhiễm theo thời gian</p>
+          </div>
+          <span class="pyramid-level-badge">Trung bình-Cao</span>
+        </div>
+        <div class="pyramid-level l4">
+          <div class="pyramid-level-rank">4</div>
+          <div class="pyramid-level-info">
+            <h4>Case-Control Study (Nghiên cứu bệnh chứng)</h4>
+            <p>So sánh quá khứ phơi nhiễm giữa nhóm bệnh nhân có sẵn và nhóm chứng khỏe mạnh</p>
+          </div>
+          <span class="pyramid-level-badge">Trung bình</span>
+        </div>
+        <div class="pyramid-level l5">
+          <div class="pyramid-level-rank">5</div>
+          <div class="pyramid-level-info">
+            <h4>Cross-Sectional Study (Nghiên cứu cắt ngang)</h4>
+            <p>Đo lường sự phơi nhiễm và bệnh tật tại cùng một thời điểm hiện tại</p>
+          </div>
+          <span class="pyramid-level-badge">Thấp-Trung bình</span>
+        </div>
+        <div class="pyramid-level l6">
+          <div class="pyramid-level-rank">6</div>
+          <div class="pyramid-level-info">
+            <h4>Case Report / Expert Opinion</h4>
+            <p>Báo cáo ca lâm sàng riêng lẻ hoặc ý kiến chuyên gia y khoa</p>
+          </div>
+          <span class="pyramid-level-badge">Thấp nhất</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- THEORY PLACEHOLDER -->
+    <div class="theory-box">
+      <div class="theory-content">
+        <span class="theory-placeholder-badge">Chờ nạp lý thuyết</span>
+        <h2 class="theory-title">1. Nội dung lý thuyết bài học</h2>
+        <p class="theory-note">Nội dung lý thuyết chi tiết của bài học chưa được điền. Bạn có thể tự nạp lý thuyết của mình tại đây.</p>
+        
+        <div class="theory-guide">
+          <h4>💡 Gợi ý dàn bài lý thuyết nên nạp:</h4>
+          <ul>
+            <li>Nguyên tắc phân chia nghiên cứu: Nghiên cứu quan sát (Observational) và Nghiên cứu can thiệp (Experimental).</li>
+            <li>Chi tiết về các nghiên cứu mô tả (Descriptive): Báo cáo ca (Case Report), loạt ca (Case Series).</li>
+            <li>Chi tiết về nghiên cứu phân tích quan sát: Cắt ngang (Cross-sectional), Bệnh chứng (Case-control), Thuần tập (Cohort study) kèm ưu/nhược điểm từng loại.</li>
+            <li>Thử nghiệm lâm sàng ngẫu nhiên phân nhóm có đối chứng (RCT): Cấu trúc, kỹ thuật làm mù (blinding), phân ngẫu nhiên (randomization).</li>
+            <li>Các loại sai số hệ thống (Bias) trong thiết kế nghiên cứu (Selection bias, Recall bias, Confounding...) và phương pháp hạn chế.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Thống kê Y học — Các bài học lý thuyết thống kê, thiết kế nghiên cứu khoa học và công cụ tính toán">
+  <title>Thống kê Y Học & Nghiên cứu — CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #0369a1;
+      --accent-light: #e0f2fe;
+      --accent-mid: #0284c7;
+      --bg: #f0f9ff;
+      --surface: #ffffff;
+      --surface-2: #f8fafc;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --text-faint: #94a3b8;
+      --radius: 20px;
+      --tr: 280ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── TOP NAV BAR ── */
+    .topnav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0 1.5rem;
+      height: 54px;
+    }
+
+    .topnav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.35rem 0.75rem;
+      border-radius: 8px;
+      transition: background var(--tr);
+    }
+    .topnav-back:hover { background: var(--accent-light); }
+
+    .topnav-divider { width: 1px; height: 20px; background: var(--border); }
+
+    .topnav-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .topnav-pill {
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.7rem;
+      font-weight: 700;
+      margin-left: auto;
+    }
+
+    /* ── LAYOUT CONTAINER ── */
+    .main-container {
+      max-width: 1080px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 2.5rem 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* ── HEADER BANNER ── */
+    .header-banner {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      border-radius: 24px;
+      padding: 2.5rem;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(3, 105, 161, 0.15);
+    }
+
+    .header-banner-bg {
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      pointer-events: none;
+    }
+
+    .header-banner h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.4rem, 1.1rem + 1vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+
+    .header-banner p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.85);
+      max-width: 60ch;
+      line-height: 1.6;
+    }
+
+    /* ── LESSONS GRID ── */
+    .lessons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(450px, 100%), 1fr));
+      gap: 1.5rem;
+    }
+
+    .lesson-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      transition: transform var(--tr), box-shadow var(--tr), border-color var(--tr);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lesson-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(3, 105, 161, 0.08);
+      border-color: var(--accent-mid);
+    }
+
+    .lesson-number {
+      position: absolute;
+      top: -10px; right: -10px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 6rem;
+      font-weight: 800;
+      color: rgba(3, 105, 161, 0.03);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      transition: color var(--tr);
+    }
+    .lesson-card:hover .lesson-number {
+      color: rgba(3, 105, 161, 0.06);
+    }
+
+    .lesson-badge {
+      align-self: flex-start;
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-bottom: 1.1rem;
+    }
+
+    .lesson-card h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.35;
+      margin-bottom: 0.6rem;
+      transition: color var(--tr);
+    }
+    .lesson-card:hover h2 {
+      color: var(--accent-mid);
+    }
+
+    .lesson-card p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+
+    .lesson-points {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+
+    .lesson-point {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .lesson-point-bullet {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent-mid);
+      flex-shrink: 0;
+    }
+
+    .lesson-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-top: auto;
+      transition: transform var(--tr);
+    }
+    .lesson-card:hover .lesson-cta {
+      transform: translateX(4px);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .main-container { padding: 1.5rem 1rem; }
+      .header-banner { padding: 1.5rem; }
+      .lesson-card { padding: 1.5rem; }
+      .lessons-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topnav" aria-label="Top navigation">
+    <a href="../yhcc.html" class="topnav-back">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Y học chứng cứ
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">
+      📊 Thống kê Y Học & Nghiên cứu
+    </div>
+    <span class="topnav-pill">Mô-đun 1</span>
+  </nav>
+
+  <!-- MAIN -->
+  <div class="main-container">
+
+    <!-- HEADER BANNER -->
+    <div class="header-banner">
+      <div class="header-banner-bg"></div>
+      <h1>Lý Thuyết Thống Kê & Thiết Kế Nghiên Cứu</h1>
+      <p>Hệ thống 4 bài học nền tảng giúp hình thành tư duy thống kê, đọc hiểu, phân tích các nghiên cứu khoa học y học và áp dụng y học chứng cứ trong thực tế lâm sàng.</p>
+    </div>
+
+    <!-- LESSONS GRID -->
+    <div class="lessons-grid">
+
+      <!-- Bài 1 -->
+      <a href="y-nghia-thong-ke-va-lam-sang.html" class="lesson-card">
+        <div class="lesson-number">01</div>
+        <div class="lesson-badge">Bài 1</div>
+        <h2>Ý nghĩa thống kê và ý nghĩa lâm sàng</h2>
+        <p>Phân biệt sự khác nhau cốt lõi giữa kết quả mang ý nghĩa toán học (P-value) và giá trị thực sự áp dụng trên bệnh nhân (NNT, ARR, RRR).</p>
+        <div class="lesson-points">
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Thống kê mô tả vs Thống kê suy luận</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Giá trị P (P-value) & Ý nghĩa thống kê</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Chỉ số hiệu quả tuyệt đối (ARR) & NNT</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Tích hợp máy tính chỉ số NNT, ARR, RRR</div>
+        </div>
+        <span class="lesson-cta">
+          Bắt đầu học
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </a>
+
+      <!-- Bài 2 -->
+      <a href="danh-gia-cong-cu-chan-doan.html" class="lesson-card">
+        <div class="lesson-number">02</div>
+        <div class="lesson-badge">Bài 2</div>
+        <h2>Đánh giá giá trị các công cụ chẩn đoán</h2>
+        <p>Tìm hiểu các khái niệm độ nhạy, độ đặc hiệu, giá trị dự báo và cách sử dụng tỷ số khả dĩ để xác định xác suất mắc bệnh sau xét nghiệm.</p>
+        <div class="lesson-points">
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Độ nhạy (Sensitivity) & Độ đặc hiệu (Specificity)</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Giá trị dự báo dương (PPV) & âm (NPV)</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Tỷ số khả dĩ dương (LR+) và âm (LR-)</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Tích hợp máy tính Sn/Sp & Likelihood Ratio</div>
+        </div>
+        <span class="lesson-cta">
+          Bắt đầu học
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </a>
+
+      <!-- Bài 3 -->
+      <a href="thiet-ke-nghien-cuu-khoa-hoc.html" class="lesson-card">
+        <div class="lesson-number">03</div>
+        <div class="lesson-badge">Bài 3</div>
+        <h2>Thiết kế nghiên cứu khoa học y học</h2>
+        <p>Phân loại các thiết kế nghiên cứu từ báo cáo ca bệnh, cắt ngang, bệnh chứng đến các nghiên cứu mạnh hơn như thuần tập và thử nghiệm ngẫu nhiên.</p>
+        <div class="lesson-points">
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Bậc thang bằng chứng (Evidence Pyramid)</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Nghiên cứu quan sát (Bệnh chứng, Thuần tập)</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Nghiên cứu can thiệp (RCT) & Nhóm chứng</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Nhận diện các nguồn sai số hệ thống (Bias)</div>
+        </div>
+        <span class="lesson-cta">
+          Bắt đầu học
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </a>
+
+      <!-- Bài 4 -->
+      <a href="phan-tich-rct-meta-analysis.html" class="lesson-card">
+        <div class="lesson-number">04</div>
+        <div class="lesson-badge">Bài 4</div>
+        <h2>Phân tích bằng chứng RCT & Meta-analysis</h2>
+        <p>Đi sâu vào cách phân tích thử nghiệm lâm sàng ngẫu nhiên có nhóm chứng và kỹ năng đọc hiểu biểu đồ Forest Plot trong phân tích gộp.</p>
+        <div class="lesson-points">
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Cách đọc và phê bình một bài báo RCT</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Tổng quan hệ thống (Systematic Review)</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Đọc hiểu biểu đồ Forest Plot & Tính đồng nhất</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Đánh giá phân loại chất lượng bằng chứng GRADE</div>
+        </div>
+        <span class="lesson-cta">
+          Bắt đầu học
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
