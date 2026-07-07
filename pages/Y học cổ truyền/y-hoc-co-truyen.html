@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="CliniPortal - Y học cổ truyền">
+  <meta name="description" content="CliniPortal - Y học cổ truyền: Bản đồ huyệt vị tương tác, kỹ năng châm cứu, cứu ngải và dược liệu cổ phương.">
   <title>CliniPortal – Y học cổ truyền</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,20 +12,18 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
     rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="../../css/reset.css">
   <link rel="stylesheet" href="../../css/main.css">
   <link rel="stylesheet" href="../../css/components/header.css">
   <link rel="stylesheet" href="../../css/components/sidebar.css">
   <link rel="stylesheet" href="../../css/components/footer.css">
+  <link rel="stylesheet" href="../../css/components/y-hoc-co-truyen.css">
 
-  <script src="../../components/header.js"></script>
-  <script src="../../components/footer.js"></script>
-  <script src="../../js/main.js"></script>
-
-  <style>
-    /* Add specific styles for Y học cổ truyền here if needed */
-  </style>
+  <script src="../../components/header.js" defer></script>
+  <script src="../../components/footer.js" defer></script>
+  <script src="../../js/main.js" defer></script>
 </head>
 
 <body>
@@ -113,56 +111,173 @@
         </ol>
       </nav>
 
-      <section class="hero-dashboard" aria-labelledby="hero-title">
-        <div class="hero-pattern"></div>
-        <div class="hero-intro">
-          <h1 id="hero-title">☯️ Y HỌC CỔ TRUYỀN</h1>
-          <p>Kho lưu trữ kiến thức Y học cổ truyền: Xoa bóp, bấm huyệt, châm cứu và dược liệu.</p>
+      <!-- HERO SECTION -->
+      <section class="hero-dashboard tcm-hero" aria-labelledby="hero-title">
+        <div class="tcm-hero-content">
+          <div class="hero-intro">
+            <h1 id="hero-title">☯️ Y HỌC CỔ TRUYỀN</h1>
+            <p>Kho lưu trữ kiến thức Đông y học: Hệ kinh mạch huyệt vị, các thủ thuật châm cứu, xoa bóp và học thuyết dược liệu cổ phương.</p>
+          </div>
+          <div class="tcm-hero-decor">
+            <!-- Animated Yin-Yang SVG -->
+            <svg class="yinyang-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="100" cy="100" r="95" fill="none" stroke="#0d9488" stroke-width="6"/>
+              <!-- Dark Side (Left) -->
+              <path d="M100 5C47.53 5 5 47.53 5 100s42.53 95 95 95c0-47.5 0-47.5 0-95s0-47.5 0-95z" fill="#1e293b"/>
+              <!-- Light Side (Right) -->
+              <path d="M100 5c52.47 0 95 42.53 95 95s-42.53 95-95 95c0-47.5 0-47.5 0-95s0-47.5 0-95z" fill="#f8fafc"/>
+              <!-- Small Semicircle Top -->
+              <path d="M100 5c26.23 0 47.5 21.27 47.5 47.5S126.23 100 100 100" fill="#1e293b"/>
+              <!-- Small Semicircle Bottom -->
+              <path d="M100 100c-26.23 0-47.5 21.27-47.5 47.5s21.27 47.5 47.5 47.5" fill="#f8fafc"/>
+              <!-- Dot in Semicircle Top -->
+              <circle cx="100" cy="52.5" r="15" fill="#f8fafc"/>
+              <!-- Dot in Semicircle Bottom -->
+              <circle cx="100" cy="147.5" r="15" fill="#1e293b"/>
+            </svg>
+          </div>
         </div>
+        <div class="hero-pattern"></div>
       </section>
 
-      <div class="main-content-grid" id="mainContentGrid" style="padding: 1.5rem;">
+      <!-- TWO COLUMN LAYOUT -->
+      <div class="tcm-layout-grid">
         
-        <div class="groups-wrapper">
-          <div class="group-container g-green active">
-            <div class="group-heading">
-              <h3><span class="g-icon">🌿</span> Xoa bóp & Bấm huyệt</h3>
+        <!-- COLUMN 1: CATEGORIES & SPOTLIGHTS -->
+        <div class="tcm-card-section">
+          
+          <!-- QUICK FILTER TABS -->
+          <nav class="tcm-filter-nav" aria-label="Bộ lọc nội dung">
+            <button class="tcm-filter-btn active" data-filter="all">
+              <i class="fa-solid fa-border-all"></i> Tất cả
+            </button>
+            <button class="tcm-filter-btn" data-filter="therapy">
+              <i class="fa-solid fa-hand-holding-medical"></i> Trị liệu & Huyệt vị
+            </button>
+            <button class="tcm-filter-btn" data-filter="herbs">
+              <i class="fa-solid fa-leaf"></i> Dược thảo & Cổ phương
+            </button>
+          </nav>
+
+          <!-- CATEGORY CONTAINER -->
+          <div class="tcm-categories-container">
+            <!-- GROUP: Xoa bóp & Bấm huyệt -->
+            <div class="tcm-category-group" data-category="therapy">
+              <div class="tcm-group-header">
+                <i class="fa-solid fa-hands-holding"></i>
+                <h3>Xoa bóp & Bấm huyệt</h3>
+              </div>
+              <div class="tcm-items-grid">
+                <a href="Xoa bóp & bấm huyệt/ban-do-huyet-vi.html" class="tcm-item-card">
+                  <div class="tcm-card-icon">📍</div>
+                  <div class="tcm-card-title">Bản đồ Huyệt vị Tương tác</div>
+                  <div class="tcm-card-desc">Atlas 14 đường kinh mạch & huyệt vị chủ chốt với 4 lớp hiển thị trực quan.</div>
+                </a>
+                
+                <a href="#" class="tcm-item-card" onclick="return false;">
+                  <div class="tcm-card-icon">🙌</div>
+                  <div class="tcm-card-title">Thủ thuật Xoa bóp (Án ma)</div>
+                  <div class="tcm-card-desc">Các kỹ thuật xát, xoa, miết, phân, hợp, véo và bấm huyệt cơ bản.</div>
+                  <span class="badge-dev">Đang phát triển</span>
+                </a>
+              </div>
             </div>
-            <div class="category-grid-wrapper">
-              <div class="category-grid">
-                <a href="Xoa bóp & bấm huyệt/ban-do-huyet-vi.html" style="text-decoration:none;display:block;padding:1rem;background:var(--color-surface-offset);border:1px solid var(--color-divider);border-radius:var(--radius-md);transition:all var(--tr);" onmouseover="this.style.borderColor='var(--color-primary)';this.style.boxShadow='var(--shadow-card-hover)'" onmouseout="this.style.borderColor='var(--color-divider)';this.style.boxShadow='none'">
-                  <div style="font-size:1.5rem;margin-bottom:0.5rem">📍</div>
-                  <div style="font-weight:700;color:var(--color-text);font-size:var(--text-sm);margin-bottom:0.25rem">Bản đồ Huyệt vị Tương tác</div>
-                  <div style="font-size:var(--text-xs);color:var(--color-text-muted)">Atlas 14 kinh mạch & huyệt vị chủ chốt — 4 lớp hiển thị tương tác.</div>
+
+            <!-- GROUP: Châm cứu -->
+            <div class="tcm-category-group" data-category="therapy">
+              <div class="tcm-group-header">
+                <i class="fa-solid fa-needle"></i>
+                <h3>Châm cứu học</h3>
+              </div>
+              <div class="tcm-items-grid">
+                <a href="#" class="tcm-item-card" onclick="return false;">
+                  <div class="tcm-card-icon">🩺</div>
+                  <div class="tcm-card-title">Kỹ thuật Châm & Cứu</div>
+                  <div class="tcm-card-desc">Kỹ thuật bổ tả, hào châm, ôn châm, cứu ngải và cứu gián tiếp bằng gừng/tỏi.</div>
+                  <span class="badge-dev">Đang phát triển</span>
+                </a>
+                
+                <a href="#" class="tcm-item-card" onclick="return false;">
+                  <div class="tcm-card-icon">⚠️</div>
+                  <div class="tcm-card-title">An toàn châm cứu & Tai biến</div>
+                  <div class="tcm-card-desc">Cách phòng ngừa và xử trí vượng châm, trúng kim, cong kim, gãy kim...</div>
+                  <span class="badge-dev">Đang phát triển</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- GROUP: Dược liệu & Cổ phương -->
+            <div class="tcm-category-group" data-category="herbs">
+              <div class="tcm-group-header">
+                <i class="fa-solid fa-mortar-pestle"></i>
+                <h3>Dược liệu - Cổ phương</h3>
+              </div>
+              <div class="tcm-items-grid">
+                <a href="#" class="tcm-item-card" onclick="return false;">
+                  <div class="tcm-card-icon">🍵</div>
+                  <div class="tcm-card-title">Tra cứu Dược thảo</div>
+                  <div class="tcm-card-desc">Cơ sở dữ liệu tính vị, quy kinh, công năng, chủ trị và cấm kỵ của thuốc Y học cổ truyền.</div>
+                  <span class="badge-dev">Đang phát triển</span>
+                </a>
+                
+                <a href="#" class="tcm-item-card" onclick="return false;">
+                  <div class="tcm-card-icon">📜</div>
+                  <div class="tcm-card-title">Phương tễ học (Bài thuốc)</div>
+                  <div class="tcm-card-desc">Các bài thuốc cổ phương tiêu biểu: Quân - Thần - Tá - Sứ và ứng dụng gia giảm lâm sàng.</div>
+                  <span class="badge-dev">Đang phát triển</span>
                 </a>
               </div>
             </div>
           </div>
 
-          <div class="group-container g-amber active">
-            <div class="group-heading">
-              <h3><span class="g-icon">📍</span> Châm cứu</h3>
+          <!-- SPOTLIGHT: HERB OF THE DAY -->
+          <section class="herb-spotlight" aria-labelledby="herb-spotlight-title">
+            <div class="herb-spotlight-title" id="herb-spotlight-title">
+              <i class="fa-solid fa-leaf"></i> Dược liệu & Bài thuốc tiêu biểu
             </div>
-            <div class="category-grid-wrapper">
-              <div class="category-grid">
-                <!-- Content can be added here later -->
-                <p style="color: var(--color-text-faint); padding: 1rem;">Đang cập nhật dữ liệu...</p>
+            
+            <div class="herb-tabs" id="herbTabs">
+              <button class="herb-tab-btn active" data-herb="nhansam">Nhân Sâm</button>
+              <button class="herb-tab-btn" data-herb="kytu">Kỷ Tử</button>
+              <button class="herb-tab-btn" data-herb="hoangky">Hoàng Kỳ</button>
+              <button class="herb-tab-btn" data-herb="lucvi">Lục Vị Địa Hoàng Hoàn</button>
+            </div>
+            
+            <div class="herb-content-panel" id="herbContentPanel">
+              <!-- Populated dynamically by JS -->
+            </div>
+          </section>
+
+        </div>
+
+        <!-- COLUMN 2: MERIDIAN BIOLOGICAL CLOCK -->
+        <aside class="clock-widget" aria-label="Đồng hồ sinh học kinh mạch">
+          <div class="clock-widget-title">
+            <h3><i class="fa-solid fa-yin-yang"></i> Tý Ngọ Lưu Chú</h3>
+            <span class="clock-current-time" id="clockCurrentTime">Giờ hệ thống: --:--:--</span>
+          </div>
+          
+          <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin-bottom: 1rem; line-height: 1.4;">
+            Đồng hồ kinh học 12 canh giờ. Canh giờ hiện tại được tự động kích hoạt và đánh dấu màu ngọc lục bảo. Bạn có thể chọn múi giờ khác để khám phá.
+          </p>
+
+          <!-- Circular Clock Face -->
+          <div class="meridian-wheel-container">
+            <div class="meridian-wheel" id="meridianWheel">
+              <div class="meridian-center" id="meridianCenter">
+                <span class="center-label" id="centerStatus">Đang chạy</span>
+                <span class="center-name" id="centerMeridianName">Đang tải...</span>
+                <span class="center-time" id="centerMeridianTime">--:--</span>
               </div>
+              <!-- 12 marker nodes positioned dynamically via JS -->
             </div>
           </div>
 
-          <div class="group-container g-blue active">
-            <div class="group-heading">
-              <h3><span class="g-icon">🍵</span> Dược liệu - Cổ phương</h3>
-            </div>
-            <div class="category-grid-wrapper">
-              <div class="category-grid">
-                <!-- Content can be added here later -->
-                <p style="color: var(--color-text-faint); padding: 1rem;">Đang cập nhật dữ liệu...</p>
-              </div>
-            </div>
+          <!-- Active Meridian Detail Card -->
+          <div class="meridian-details-card" id="meridianDetailsCard">
+            <!-- Populated dynamically by JS -->
           </div>
-        </div>
+        </aside>
 
       </div>
     </div>
@@ -171,6 +286,417 @@
   <div id="footer-placeholder" data-footer-path="../../components/footer.html"></div>
 
   <script src="../../js/sidebar.js"></script>
+
+  <!-- ===================== TCM WEB APP SCRIPT ===================== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // 1. FILTER CATEGORIES LOGIC
+      const filterBtns = document.querySelectorAll(".tcm-filter-btn");
+      const categoryGroups = document.querySelectorAll(".tcm-category-group");
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          // Remove active class from all buttons
+          filterBtns.forEach(b => b.classList.remove("active"));
+          // Add active class to clicked button
+          btn.classList.add("active");
+
+          const filterValue = btn.getAttribute("data-filter");
+
+          categoryGroups.forEach(group => {
+            if (filterValue === "all" || group.getAttribute("data-category") === filterValue) {
+              group.style.display = "block";
+            } else {
+              group.style.display = "none";
+            }
+          });
+        });
+      });
+
+      // 2. HERB OF THE DAY / SPOTLIGHT DATA
+      const herbsData = {
+        nhansam: {
+          name: "Nhân Sâm",
+          latin: "Panax ginseng C. A. Mey.",
+          pinyin: "Rén Shēn (人参)",
+          taste: "Vị ngọt, hơi đắng, tính ôn (ấm).",
+          meridians: "Tỳ, Phế, Tâm.",
+          actions: "Đại bổ nguyên khí, bổ tỳ ích phế, sinh tân, an thần, ích trí.",
+          indications: "Phế khí hư nhược (thở ngắn, ho suyễn), tỳ khí hư (tiêu chảy, mệt mỏi), tiêu khát, cơ thể suy nhược sau bệnh nặng, mất ngủ.",
+          contra: "Không dùng khi có thực tà (đang bị cảm sốt cấp tính), âm hư hỏa vượng, hoặc kết hợp với Lê Lô, Ngũ Linh Chi.",
+          icon: "🌿"
+        },
+        kytu: {
+          name: "Kỷ Tử (Câu Kỷ Tử)",
+          latin: "Lycium barbarum L.",
+          pinyin: "Gǒu Qǐ Zǐ (枸杞子)",
+          taste: "Vị ngọt, tính bình.",
+          meridians: "Phế, Can, Thận.",
+          actions: "Tư bổ can thận, ích tinh huyết, minh mục (làm sáng mắt), nhuận phế.",
+          indications: "Can thận âm hư gây lưng đau gối mỏi, chóng mặt ù tai, mắt mờ nhìn kém, ho khan do phế âm hư, tiêu khát.",
+          contra: "Người có tỳ vị hư hàn, tiêu chảy kéo dài, hoặc đang bị sốt, viêm nhiễm cấp tính không nên dùng nhiều.",
+          icon: "🍒"
+        },
+        hoangky: {
+          name: "Hoàng Kỳ",
+          latin: "Astragalus membranaceus (Fisch.) Bge.",
+          pinyin: "Huáng Qí (黄芪)",
+          taste: "Vị ngọt, tính ôn.",
+          meridians: "Tỳ, Phế.",
+          actions: "Bổ khí thăng dương, ích vệ cố biểu (tăng sức đề kháng), lợi niệu tiêu thũng, bài nùng sinh cơ.",
+          indications: "Tỳ vị khí hư gây mệt mỏi, ăn kém, sa tử cung, sa trực tràng. Vệ khí hư tự hãn (mồ hôi trộm), phù thũng do khí hư, ung thũng khó vỡ mủ hoặc khó lành miệng.",
+          contra: "Không dùng cho trường hợp thực chứng, âm hư dương thịnh, mụn nhọt mới phát hỏa độc đang thịnh.",
+          icon: "🌱"
+        },
+        lucvi: {
+          name: "Lục Vị Địa Hoàng Hoàn",
+          latin: "Liuwei Dihuang Wan",
+          pinyin: "Liù Wèi Dì Huáng Wán (六味地黄丸)",
+          taste: "Bài thuốc cổ phương gồm 6 vị: Thục địa, Sơn thù du, Sơn dược, Trạch tả, Đan bì, Phục linh.",
+          meridians: "Tác động vào ba kinh Thận, Can, Tỳ (chủ yếu bổ Thận âm).",
+          actions: "Tư âm bổ thận (công thức phối ngũ 'Tam bổ Tam tả' giúp bổ âm mà không gây nê trệ tỳ vị).",
+          indications: "Thận âm bất túc gây triều nhiệt (nóng sốt về chiều), cốt chưng, đạo hãn (đổ mồ hôi trộm), ù tai di tinh, đau lưng mỏi gối, chóng mặt, trẻ em chậm mọc răng thóp lâu liền.",
+          contra: "Người tỳ vị hư hàn (hay đầy bụng, tiêu chảy), đang bị cảm mạo phong hàn hoặc đờm thấp thịnh.",
+          icon: "🥣"
+        }
+      };
+
+      const herbTabs = document.querySelectorAll("#herbTabs .herb-tab-btn");
+      const herbContentPanel = document.getElementById("herbContentPanel");
+
+      function renderHerb(key) {
+        const data = herbsData[key];
+        if (!data) return;
+
+        herbContentPanel.innerHTML = `
+          <div class="herb-avatar">${data.icon}</div>
+          <div class="herb-details">
+            <h4 style="margin:0;font-size:var(--text-base);font-weight:700;color:var(--color-text);">
+              ${data.name} <span class="herb-name-latin">${data.latin} (${data.pinyin})</span>
+            </h4>
+            <div class="herb-meta-grid">
+              <div class="herb-meta-item"><strong>Tính vị:</strong> ${data.taste}</div>
+              <div class="herb-meta-item"><strong>Quy kinh:</strong> ${data.meridians}</div>
+            </div>
+            <div class="herb-meta-item" style="margin-bottom:0.25rem;">
+              <strong>Công năng:</strong> ${data.actions}
+            </div>
+            <div class="herb-meta-item" style="margin-bottom:0.25rem;">
+              <strong>Chủ trị:</strong> ${data.indications}
+            </div>
+            <div class="herb-meta-item" style="font-size:var(--text-xs);color:var(--color-warning);">
+              <strong>Cấm kỵ / Lưu ý:</strong> ${data.contra}
+            </div>
+          </div>
+        `;
+      }
+
+      // Initial render
+      renderHerb("nhansam");
+
+      herbTabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+          herbTabs.forEach(t => t.classList.remove("active"));
+          tab.classList.add("active");
+          renderHerb(tab.getAttribute("data-herb"));
+        });
+      });
+
+
+      // 3. MERIDIAN CLOCK LOGIC (TÝ NGỌ LƯU CHÚ)
+      const meridiansClockData = [
+        {
+          id: 0,
+          zodiac: "Tý",
+          timeStr: "23:00 - 01:00",
+          startHour: 23,
+          endHour: 1,
+          name: "Đảm (Mật)",
+          fullName: "Túc Thiếu Dương Đảm Kinh",
+          element: "Mộc",
+          elClass: "element-wood",
+          desc: "Túi mật bài tiết dịch mật để hỗ trợ tiêu hóa chất béo và là nơi lọc máu. Đây là thời gian phục hồi của tủy xương và hệ thần kinh.",
+          advice: "Nên ngủ sâu trước 23:00 để túi mật hoạt động hiệu quả, giúp ngày hôm sau tràn đầy sinh lực và tinh thần minh mẫn."
+        },
+        {
+          id: 1,
+          zodiac: "Sửu",
+          timeStr: "01:00 - 03:00",
+          startHour: 1,
+          endHour: 3,
+          name: "Can (Gan)",
+          fullName: "Túc Quyết Âm Can Kinh",
+          element: "Mộc",
+          elClass: "element-wood",
+          desc: "Gan thực hiện chức năng đào thải độc tố mạnh mẽ nhất, lọc máu cũ và tái sinh máu mới. Đây là đỉnh điểm âm khí.",
+          advice: "Cực kỳ cần ngủ say. Tránh thức khuya giờ này vì sẽ làm tổn thương Can huyết, gây nóng gan, sạm da và suy giảm thị lực."
+        },
+        {
+          id: 2,
+          zodiac: "Dần",
+          timeStr: "03:00 - 05:00",
+          startHour: 3,
+          endHour: 5,
+          name: "Phế (Phổi)",
+          fullName: "Thủ Thái Âm Phế Kinh",
+          element: "Kim",
+          elClass: "element-metal",
+          desc: "Phổi phân phối dưỡng khí và khí huyết đi toàn thân. Thời gian này cơ thể chuyển từ trạng thái tĩnh sang động.",
+          advice: "Cần ngủ ấm. Người lớn tuổi hoặc người bị hen suyễn thường dễ ho vào giờ này. Nếu đã dậy, nên tập thở sâu, thiền nhẹ."
+        },
+        {
+          id: 3,
+          zodiac: "Mão",
+          timeStr: "05:00 - 07:00",
+          startHour: 5,
+          endHour: 7,
+          name: "Đại Trường",
+          fullName: "Thủ Dương Minh Đại Trường Kinh",
+          element: "Kim",
+          elClass: "element-metal",
+          desc: "Ruột già co bóp mạnh để thải chất cặn bã ra ngoài, giải độc cho cơ thể trước ngày mới.",
+          advice: "Thời điểm vàng để thức dậy, uống một ly nước ấm và đi đại tiện để làm sạch đại tràng, ngăn ngừa tích tụ độc tố."
+        },
+        {
+          id: 4,
+          zodiac: "Thìn",
+          timeStr: "07:00 - 09:00",
+          startHour: 7,
+          endHour: 9,
+          name: "Vị (Dạ dày)",
+          fullName: "Túc Dương Minh Vị Kinh",
+          element: "Thổ",
+          elClass: "element-earth",
+          desc: "Dạ dày hoạt động co bóp tiêu hóa thức ăn mạnh mẽ nhất. Khả năng hấp thụ chất dinh dưỡng ở mức cao nhất trong ngày.",
+          advice: "Bắt buộc phải ăn bữa sáng đầy đủ dinh dưỡng. Tránh ăn đồ lạnh hoặc bỏ bữa sáng để bảo vệ tỳ vị."
+        },
+        {
+          id: 5,
+          zodiac: "Tỵ",
+          timeStr: "09:00 - 11:00",
+          startHour: 9,
+          endHour: 11,
+          name: "Tỳ (Lá lách)",
+          fullName: "Túc Thái Âm Tỳ Kinh",
+          element: "Thổ",
+          elClass: "element-earth",
+          desc: "Tỳ chủ vận hóa chất dinh dưỡng từ dạ dày, chuyển hóa thành khí huyết đi nuôi dưỡng cơ bắp và não bộ.",
+          advice: "Thời gian làm việc và học tập tập trung nhất. Uống đủ nước, tránh ăn vặt đồ ngọt để tỳ vị hoạt động tốt."
+        },
+        {
+          id: 6,
+          zodiac: "Ngọ",
+          timeStr: "11:00 - 13:00",
+          startHour: 11,
+          endHour: 13,
+          name: "Tâm (Tim)",
+          fullName: "Thủ Thiếu Âm Tâm Kinh",
+          element: "Hỏa",
+          elClass: "element-fire",
+          desc: "Tim điều khiển dòng tuần hoàn máu, điều hòa thần trí. Khí huyết đạt cực đại (Dương cực sinh Âm).",
+          advice: "Nên nghỉ trưa ngắn từ 15-30 phút để dưỡng Tâm khí, giúp cân bằng âm dương và duy trì sự tỉnh táo cho buổi chiều."
+        },
+        {
+          id: 7,
+          zodiac: "Mùi",
+          timeStr: "13:00 - 15:00",
+          startHour: 13,
+          endHour: 15,
+          name: "Tiểu Trường",
+          fullName: "Thủ Thái Dương Tiểu Trường Kinh",
+          element: "Hỏa",
+          elClass: "element-fire",
+          desc: "Ruột non hấp thụ các chất dinh dưỡng tốt nhất từ bữa trưa và phân loại chất lỏng đưa sang bàng quang.",
+          advice: "Nên uống nước để hỗ trợ quá trình lọc và hấp thụ. Tránh ăn bữa trưa quá muộn sau 13:00."
+        },
+        {
+          id: 8,
+          zodiac: "Thân",
+          timeStr: "15:00 - 17:00",
+          startHour: 15,
+          endHour: 17,
+          name: "Bàng Quang",
+          fullName: "Túc Thái Dương Bàng Quang Kinh",
+          element: "Thủy",
+          elClass: "element-water",
+          desc: "Bàng quang chứa và thải nước tiểu. Đường kinh dài nhất đi qua dọc cột sống lên não bộ, ảnh hưởng trí nhớ.",
+          advice: "Thời điểm lý tưởng để học tập, làm việc trí óc hoặc tập thể thao nhẹ. Nên uống nước nhiều để thanh lọc đường niệu."
+        },
+        {
+          id: 9,
+          zodiac: "Dậu",
+          timeStr: "17:00 - 19:00",
+          startHour: 17,
+          endHour: 19,
+          name: "Thận",
+          fullName: "Túc Thiếu Âm Thận Kinh",
+          element: "Thủy",
+          elClass: "element-water",
+          desc: "Thận tàng tinh, chủ cốt tủy, là gốc của sinh mệnh. Giờ này Thận bắt đầu lọc và dự trữ tinh hoa.",
+          advice: "Thời điểm thích hợp để ăn tối nhẹ nhàng, đi dạo. Tránh làm việc quá sức hoặc ăn mặn vào giờ này để giảm tải cho Thận."
+        },
+        {
+          id: 10,
+          zodiac: "Tuất",
+          timeStr: "19:00 - 21:00",
+          startHour: 19,
+          endHour: 21,
+          name: "Tâm Bào",
+          fullName: "Thủ Quyết Âm Tâm Bào Kinh",
+          element: "Hỏa",
+          elClass: "element-fire",
+          desc: "Màng ngoài tim bảo vệ tim, điều hòa lưu thông khí huyết quanh ngực và hệ thần kinh.",
+          advice: "Thích hợp để thư giãn tinh thần, đọc sách, trò chuyện cùng gia đình. Tránh vận động mạnh hoặc tức giận trước khi đi ngủ."
+        },
+        {
+          id: 11,
+          zodiac: "Hợi",
+          timeStr: "21:00 - 23:00",
+          startHour: 21,
+          endHour: 23,
+          name: "Tam Tiêu",
+          fullName: "Thủ Thiếu Dương Tam Tiêu Kinh",
+          element: "Hỏa",
+          elClass: "element-fire",
+          desc: "Tam tiêu (Thượng tiêu, Trung tiêu, Hạ tiêu) điều phối toàn bộ đường thủy đạo và khí hóa toàn thân.",
+          advice: "Thời gian hệ miễn dịch thải độc. Nên thư giãn, thiền hoặc massage chân ấm để chuẩn bị bước vào giấc ngủ ngon."
+        }
+      ];
+
+      const wheelEl = document.getElementById("meridianWheel");
+      const centerMeridianName = document.getElementById("centerMeridianName");
+      const centerMeridianTime = document.getElementById("centerMeridianTime");
+      const meridianDetailsCard = document.getElementById("meridianDetailsCard");
+      const clockCurrentTime = document.getElementById("clockCurrentTime");
+      const centerStatus = document.getElementById("centerStatus");
+
+      let activeIndex = -1;
+      let userSelected = false;
+
+      // Generate 12 Markers
+      function renderWheelMarkers() {
+        const radius = 86; // px
+        const center = 120; // px
+
+        meridiansClockData.forEach((data, index) => {
+          const marker = document.createElement("div");
+          marker.className = "meridian-marker";
+          marker.id = `marker-${index}`;
+          marker.innerText = data.zodiac;
+          marker.title = `${data.zodiac} (${data.timeStr}) - ${data.name}`;
+
+          // Calculate positions
+          // Tý is at 6 o'clock (90deg), Mão is at 9 o'clock (180deg), Ngọ is at 12 o'clock (270deg), Dậu is at 3 o'clock (360deg)
+          const angle = 90 + (index * 30);
+          const rad = (angle * Math.PI) / 180;
+          
+          const x = center + radius * Math.cos(rad) - 16;
+          const y = center + radius * Math.sin(rad) - 16;
+
+          marker.style.left = `${x}px`;
+          marker.style.top = `${y}px`;
+
+          marker.addEventListener("click", () => {
+            userSelected = true;
+            centerStatus.innerText = "Tra cứu";
+            centerStatus.style.color = "var(--color-tcm-gold)";
+            highlightMeridian(index);
+          });
+
+          wheelEl.appendChild(marker);
+        });
+      }
+
+      function highlightMeridian(index) {
+        // Clear all actives
+        document.querySelectorAll(".meridian-marker").forEach(m => m.classList.remove("active"));
+        
+        const activeMarker = document.getElementById(`marker-${index}`);
+        if (activeMarker) activeMarker.classList.add("active");
+
+        const data = meridiansClockData[index];
+        activeIndex = index;
+
+        // Update Center
+        centerMeridianName.innerText = data.name;
+        centerMeridianTime.innerText = data.timeStr;
+
+        // Update details card
+        meridianDetailsCard.innerHTML = `
+          <div class="meridian-details-header">
+            <h4>
+              <span style="font-size:1.2rem;">☯️</span> 
+              <span>${data.fullName} (${data.zodiac} Giờ)</span>
+            </h4>
+            <span class="element-badge ${data.elClass}">Ngũ hành: ${data.element}</span>
+          </div>
+          <div class="meridian-detail-row">
+            <strong>Giờ hoạt động:</strong> <span>${data.timeStr}</span>
+          </div>
+          <div class="meridian-detail-row">
+            <strong>Cơ chế sinh học:</strong>
+            <p class="meridian-detail-desc">${data.desc}</p>
+          </div>
+          <div class="meridian-detail-row" style="margin-bottom:0; border-top: 1px dashed var(--color-divider); padding-top: 0.5rem; margin-top: 0.5rem;">
+            <strong>Khuyên dùng Dưỡng sinh:</strong>
+            <p class="meridian-detail-desc" style="color:var(--color-tcm-green);font-weight:500;">💡 ${data.advice}</p>
+          </div>
+        `;
+      }
+
+      function checkSystemTime() {
+        const now = new Date();
+        const hrs = now.getHours();
+        const mins = now.getMinutes().toString().padStart(2, '0');
+        const secs = now.getSeconds().toString().padStart(2, '0');
+        
+        clockCurrentTime.innerText = `Giờ hệ thống: ${hrs.toString().padStart(2, '0')}:${mins}:${secs}`;
+
+        if (userSelected) return; // Do not override if user is looking at another meridian
+
+        // Find active meridian index
+        let activeIdx = 0;
+        for (let i = 0; i < meridiansClockData.length; i++) {
+          const item = meridiansClockData[i];
+          if (item.startHour === 23) {
+            // Special case for Tý (23:00 - 1:00)
+            if (hrs >= 23 || hrs < 1) {
+              activeIdx = i;
+              break;
+            }
+          } else {
+            if (hrs >= item.startHour && hrs < item.endHour) {
+              activeIdx = i;
+              break;
+            }
+          }
+        }
+
+        if (activeIdx !== activeIndex) {
+          centerStatus.innerText = "Đang chạy";
+          centerStatus.style.color = "var(--color-text-faint)";
+          highlightMeridian(activeIdx);
+        }
+      }
+
+      // Initialize clock widget
+      renderWheelMarkers();
+      checkSystemTime();
+      setInterval(checkSystemTime, 1000); // update system clock display every second and checks logic
+      
+      // Double click center to resume automatic time tracking
+      const centerBtn = document.getElementById("meridianCenter");
+      centerBtn.style.cursor = "pointer";
+      centerBtn.title = "Click đúp để quay lại giờ tự động";
+      centerBtn.addEventListener("dblclick", () => {
+        userSelected = false;
+        activeIndex = -1;
+        centerStatus.innerText = "Đang chạy";
+        centerStatus.style.color = "var(--color-text-faint)";
+        checkSystemTime();
+      });
+    });
+  </script>
 </body>
 
 </html>

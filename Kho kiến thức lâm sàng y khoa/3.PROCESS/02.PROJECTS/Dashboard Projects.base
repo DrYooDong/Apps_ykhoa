@@ -1,0 +1,46 @@
+filters:
+  and:
+    - file.inFolder("3.PROCESS/02.PROJECTS")
+    - subtype == "project"
+formulas:
+  uu_tien: if(priority == "P0", "🔴 P0", if(priority == "P1", "🟠 P1", if(priority == "P2", "🟡 P2", priority)))
+  con_lai: if(deadline, (date(deadline) - today()).days, "")
+  qua_han: if(deadline, if(date(deadline) < today(), "⚠️ Quá hạn", ""), "")
+  viec: if(task_total, task_done + "/" + task_total, "")
+  loi_task: if(task_error, task_error, "")
+properties:
+  status:
+    displayName: Trạng thái
+  formula.viec:
+    displayName: Việc (xong/tổng)
+  task_progress:
+    displayName: Tiến độ %
+  formula.loi_task:
+    displayName: Task lỗi
+  formula.uu_tien:
+    displayName: Ưu tiên
+  formula.con_lai:
+    displayName: Còn (ngày)
+  formula.qua_han:
+    displayName: Cảnh báo
+views:
+  - type: table
+    name: Tất cả Project
+    order:
+      - file.name
+      - formula.uu_tien
+      - status
+      - formula.viec
+      - task_progress
+      - formula.loi_task
+      - owner
+      - deadline
+      - formula.con_lai
+      - formula.qua_han
+  - type: cards
+    name: Thẻ
+    order:
+      - file.name
+      - formula.uu_tien
+      - status
+      - task_progress

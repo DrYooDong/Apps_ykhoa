@@ -1284,3 +1284,213 @@
     border-radius: var(--radius-sm);
     border-left: 4px solid var(--color-primary);
 }
+
+/* ============================================================
+   PREMIUM CLINICAL PORTAL OVERHAUL STYLES
+   ============================================================ */
+
+/* 1. Custom Hero Gradients */
+.hero-physio {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 40%, #0c4a6e 100%) !important;
+}
+.hero-skills {
+    background: linear-gradient(135deg, #e11d48 0%, #be123c 40%, #881337 100%) !important;
+}
+.hero-approach {
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 40%, #312e81 100%) !important;
+}
+.hero-tools {
+    background: linear-gradient(135deg, #0d9488 0%, #115e59 40%, #0f172a 100%) !important;
+}
+.hero-pharm {
+    background: linear-gradient(135deg, #10b981 0%, #047857 40%, #064e3b 100%) !important;
+}
+
+[data-theme="dark"] .hero-physio {
+    background: linear-gradient(135deg, #0f172a 0%, #0a334d 50%, #022036 100%) !important;
+}
+[data-theme="dark"] .hero-skills {
+    background: linear-gradient(135deg, #0f172a 0%, #50072e 50%, #3a0019 100%) !important;
+}
+[data-theme="dark"] .hero-approach {
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #120e36 100%) !important;
+}
+[data-theme="dark"] .hero-tools {
+    background: linear-gradient(135deg, #0f172a 0%, #022c22 50%, #001a14 100%) !important;
+}
+[data-theme="dark"] .hero-pharm {
+    background: linear-gradient(135deg, #0f172a 0%, #064e3b 50%, #022d22 100%) !important;
+}
+
+/* 2. SVG Decor and Animations */
+.tcm-hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    z-index: 2;
+}
+
+.tcm-hero-decor {
+    flex-shrink: 0;
+    margin-left: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* DNA Pulse */
+.dna-svg {
+    width: 90px;
+    height: 90px;
+    filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.4));
+    animation: pulseDna 4s ease-in-out infinite;
+}
+@keyframes pulseDna {
+    0%, 100% { transform: scale(1); opacity: 0.85; }
+    50% { transform: scale(1.08); opacity: 1; filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.6)); }
+}
+
+/* ECG Heartbeat */
+.ecg-svg {
+    width: 100px;
+    height: 80px;
+    filter: drop-shadow(0 0 12px rgba(225, 29, 72, 0.5));
+    animation: heartbeat 1.4s ease-in-out infinite;
+}
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    14% { transform: scale(1.08); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.12); }
+    70% { transform: scale(1); }
+}
+
+/* Decision Tree Floating */
+.tree-svg {
+    width: 90px;
+    height: 90px;
+    filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.4));
+    animation: floatTree 6s ease-in-out infinite;
+}
+@keyframes floatTree {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+/* Gears Rotate/Pulse */
+.gears-svg {
+    width: 90px;
+    height: 90px;
+    filter: drop-shadow(0 0 10px rgba(13, 148, 136, 0.4));
+    animation: pulseGears 5s ease-in-out infinite;
+}
+@keyframes pulseGears {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(15deg) scale(1.05); }
+}
+
+/* Molecule Scale/Rotate */
+.molecule-svg {
+    width: 90px;
+    height: 90px;
+    filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.4));
+    animation: pulseMolecule 6s ease-in-out infinite;
+}
+@keyframes pulseMolecule {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.05) rotate(10deg); }
+}
+
+/* 3. Premium Glassmorphic Sidebar overrides */
+.layout-nav-sidebar {
+    background: var(--glass-bg) !important;
+    backdrop-filter: var(--glass-blur) !important;
+    -webkit-backdrop-filter: var(--glass-blur) !important;
+    border: 1px solid var(--glass-border) !important;
+    box-shadow: var(--shadow-md) !important;
+    border-radius: var(--radius-xl) !important;
+}
+
+.part-nav-item {
+    position: relative;
+    padding-left: 1.15rem !important;
+    overflow: hidden;
+    transition: all var(--tr) !important;
+}
+
+/* Left vertical accent line indicator */
+.part-nav-item::before {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: 0;
+    width: 4px;
+    height: 70%;
+    background: var(--part-color);
+    border-radius: var(--radius-full);
+    opacity: 0;
+    transition: opacity var(--tr), transform var(--tr);
+    transform: scaleY(0.4);
+}
+
+.part-nav-item:hover::before,
+.part-nav-item.active::before {
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+/* Dynamic Capsule count badge */
+.part-count-badge {
+    border-radius: var(--radius-full) !important;
+    padding: 2px 8px !important;
+    font-weight: 700 !important;
+    transition: all var(--tr) !important;
+}
+
+/* 4. Premium Specialty Card overrides */
+.specialty-card {
+    border: 1px solid var(--color-divider) !important;
+    background: var(--color-surface-2) !important;
+    border-radius: var(--radius-lg) !important;
+    transition: transform var(--tr), box-shadow var(--tr), border-color var(--tr), background var(--tr) !important;
+}
+
+.specialty-card:not(.disabled):hover {
+    transform: translateY(-4px) !important;
+    border-color: var(--part-color) !important;
+    background: var(--color-surface) !important;
+}
+
+/* Section hover glows based on part-color variables */
+#part1-section .specialty-card:not(.disabled):hover { box-shadow: 0 12px 24px -6px rgba(13, 148, 136, 0.18), var(--shadow-md) !important; }
+#part2-section .specialty-card:not(.disabled):hover { box-shadow: 0 12px 24px -6px rgba(124, 58, 237, 0.18), var(--shadow-md) !important; }
+#part3-section .specialty-card:not(.disabled):hover { box-shadow: 0 12px 24px -6px rgba(225, 29, 72, 0.18), var(--shadow-md) !important; }
+#part4-section .specialty-card:not(.disabled):hover { box-shadow: 0 12px 24px -6px rgba(2, 132, 199, 0.18), var(--shadow-md) !important; }
+#part5-section .specialty-card:not(.disabled):hover { box-shadow: 0 12px 24px -6px rgba(217, 119, 6, 0.18), var(--shadow-md) !important; }
+#part6-section .specialty-card:not(.disabled):hover { box-shadow: 0 12px 24px -6px rgba(8, 145, 178, 0.18), var(--shadow-md) !important; }
+#part7-section .specialty-card:not(.disabled):hover { box-shadow: 0 12px 24px -6px rgba(219, 39, 119, 0.18), var(--shadow-md) !important; }
+
+.specialty-icon {
+    border-radius: var(--radius-md) !important;
+    transition: transform var(--tr), background var(--tr), border-color var(--tr), color var(--tr), box-shadow var(--tr) !important;
+}
+
+.specialty-card:not(.disabled):hover .specialty-icon {
+    transform: scale(1.08) rotate(3deg) !important;
+    background: var(--part-color) !important;
+    border-color: var(--part-color) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Specialty card action chevron animate */
+.specialty-card-action i {
+    transition: transform var(--tr) !important;
+}
+
+.specialty-card:not(.disabled):hover .specialty-card-action i {
+    transform: translateX(4px) !important;
+    color: var(--part-color) !important;
+}
+

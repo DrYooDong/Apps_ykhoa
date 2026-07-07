@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Sinh lý Cơ xương – Tìm hiểu cấu trúc vi thể sarcomere, cơ chế co cơ trượt sợi actin-myosin, khớp nối thần kinh cơ, phân loại sợi cơ và chuyển hóa năng lượng cơ cơ học.">
+  <title>Sinh lý Cơ xương (Skeletal Muscle Physiology) – CliniPortal</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../css/components/physio-patho.css">
+  <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+  <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+  <link rel="stylesheet" href="../../css/physio-shared.css">
+  <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+  <script src="../../../../js/toc.js" defer></script>
+  <script src="../../../../components/header.js"></script>
+  <script src="../../../../components/footer.js"></script>
+  <script src="../../js/physio-shared.js" defer></script>
+  <script src="../../../../js/main.js" defer></script>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Sinhly-sinhlybenh.html" class="nav-item active" aria-current="page" title="S.lý - S.lý bệnh">
+              <span class="nav-icon">🧬</span>
+              <span class="nav-text">S.lý - S.lý bệnh</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="main-wrapper" id="mainContent">
+      <nav aria-label="Breadcrumb" class="breadcrumb-container"
+        style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+        <ol class="breadcrumb-list"
+          style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+          <li><a href="../../../../index.html">🏠 Home</a> &gt;</li>
+          <li><a href="../../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+          <li style="color:var(--color-primary); font-weight:600;">Chương 2: Sinh lý Cơ &amp; Thần kinh - Cơ xương</li>
+        </ol>
+      </nav>
+
+      <main class="visual-container">
+        <!-- Chapter Header -->
+        <div class="chapter-header">
+          <h1>Sinh lý Cơ xương (Skeletal Muscle Physiology)</h1>
+          <p>Tìm hiểu chi tiết cấu trúc sarcomere, cơ chế ghép nối điện - cơ thông qua receptor DHPR và RYR, thuyết sợi trượt, cơ học co cơ đẳng trương - đẳng trường và chuyển hóa năng lượng.</p>
+        </div>
+
+        <!-- Phần I: Cấu trúc đại cương của Cơ xương -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần I: Cấu trúc Đại cương của Cơ xương</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              <strong>Cơ xương (cơ vân - Skeletal Muscle)</strong> là loại cơ bám trực tiếp vào hệ thống xương của cơ thể, chịu sự điều khiển có ý thức của vỏ não (thần kinh trung ương) và chịu trách nhiệm chính trong việc thực thi vận động, duy trì tư thế, hỗ trợ nhịp thở và sinh nhiệt để ổn định thân nhiệt.
+            </p>
+            <p>
+              Về tổ chức cấu trúc đại thể đến vi thể, một bắp cơ lớn được bọc ngoài bởi lớp màng thượng cơ (epimysium), phân chia bên trong thành nhiều <strong>bó cơ (fasciculi)</strong>. Mỗi bó cơ chứa hàng chục đến hàng trăm <strong>sợi cơ (muscle fibers)</strong>. Sợi cơ thực chất là một tế bào cơ vân đa nhân khổng lồ dạng hình trụ dài, chứa vô số các <strong>tơ cơ (myofibrils)</strong> xếp song song và chạy dọc suốt chiều dài sợi cơ.
+            </p>
+
+            <h3>1. Cấu trúc đơn vị co cơ - Sarcomere</h3>
+            <p>
+              Tơ cơ được cấu thành bởi các đơn vị lặp lại có chu kỳ gọi là <strong>Sarcomere (lồng cơ)</strong>. Đây là đơn vị chức năng co cơ cơ bản nhất, giới hạn ở hai đầu bởi hai vạch Z (Z lines). Ở trạng thái nghỉ, mỗi sarcomere có chiều dài khoảng <strong>2 µm</strong>. Cấu trúc bên trong sarcomere phân chia thành các vùng sáng tối rõ rệt:
+            </p>
+            <ul class="physio-list-arrow">
+              <li><strong>Dải I (I band - Vùng sáng):</strong> Chỉ chứa các <strong>sợi mảnh (thin filaments)</strong> có bản chất là các chuỗi protein xoắn kép <strong>actin</strong>, phối hợp với hai protein điều hòa co cơ là <strong>tropomyosin</strong> và <strong>troponin</strong>. Sợi mảnh bắt đầu neo ở vạch Z và hướng vào tâm sarcomere.</li>
+              <li><strong>Dải A (A band - Vùng tối):</strong> Chiếm phần trung tâm sarcomere, chứa toàn bộ chiều dài của các <strong>sợi dày (thick filaments)</strong> có cấu tạo từ phân tử protein động cơ <strong>myosin</strong>. Vùng rìa ngoài của dải A là nơi các sợi dày và sợi mảnh đan xen chồng lấp lên nhau theo mạng lưới lục giác.</li>
+              <li><strong>Đới H (H band):</strong> Nằm ở trung tâm dải A, là vùng chỉ chứa sợi dày myosin mà hoàn toàn không có sợi mảnh actin lấn vào.</li>
+              <li><strong>Đường M (M line):</strong> Nằm chính giữa đới H, chứa các protein kết nối giúp giữ cố định và định hướng thẳng hàng cho các sợi dày.</li>
+            </ul>
+
+            <h3>2. Hệ thống ống ngang (T-tubules) và Lưới nội cơ tương (SR)</h3>
+            <p>
+              Màng sợi cơ (sarcolemma) lõm sâu vào lòng sợi cơ tạo nên mạng lưới <strong>ống ngang (T-tubules)</strong> chạy ôm quanh các tơ cơ. Nằm áp sát hai bên mỗi ống ngang là các bể chứa tận cùng (terminal cisternae) của <strong>lưới nội cơ tương (Sarcoplasmic Reticulum - SR)</strong> - đây là kho dự trữ lớn ion calci (Ca<sup>2+</sup>) của tế bào cơ.
+            </p>
+            <p>
+              Sự kết hợp giữa một ống ngang T ở giữa và hai bể chứa tận cùng của SR ở hai bên tạo thành một cấu trúc đặc trưng gọi là <strong>bộ ba (triad)</strong>. Bộ ba này phân bố tại ranh giới giữa dải A và dải I trong sarcomere cơ xương, đóng vai trò cầu nối truyền tín hiệu điện thế vào sâu bên trong tế bào cơ để kích hoạt giải phóng Ca<sup>2+</sup>.
+            </p>
+          </div>
+
+          <!-- Hình 1 - Cấu trúc Sarcomere -->
+          <div class="image-placeholder-card">
+            <div class="image-title">
+              <span>🖼️</span> Hình 1: Tổ chức protein và cấu trúc vi thể của một sarcomere (Figure 12.3 A, B, C - Berne &amp; Levy)
+            </div>
+            <div class="image-drop-area">
+              <img src="../../images/Phan2/CX_Fig12_3.png" alt="Cấu trúc vi thể của sarcomere"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="image-fallback" style="display: none; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; background: var(--color-surface-2); border: 1px dashed var(--color-border); border-radius: var(--radius-md); color: var(--color-text-muted);">
+                <i class="fa-regular fa-image" style="font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--color-text-muted);"></i>
+                <span style="font-size: 0.85rem;">Hình 1: Cấu tạo bộ ba Triad (ống T và bể chứa SR) bao bọc quanh các myofibril. Cấu tạo chi tiết sarcomere giới hạn giữa 2 vạch Z chứa dải A, dải I, đới H, đường M.</span>
+              </div>
+            </div>
+            <div class="image-description">
+              <strong>Mô tả:</strong> Hình ảnh mô phỏng cấu trúc 3D của tơ cơ cơ vân. Chỉ rõ các phân tử actin sợi mảnh và đầu myosin sợi dày sắp xếp so le, cùng các cầu nối chéo sẽ hình thành khi bắt đầu kích hoạt co cơ.
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần II: Cơ chế co cơ -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần II: Cơ chế co cơ (Excitation-Contraction Coupling)</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p>
+              Quá trình co cơ xương là sự nối tiếp nhịp nhàng từ hiện tượng khử cực màng điện sinh lý chuyển hóa thành lực cơ học kéo cơ rút ngắn (Khớp nối điện - cơ) và hoạt động trượt sợi actin-myosin (Thuyết sợi trượt).
+            </p>
+
+            <h3>1. Chuỗi sự kiện ghép nối Điện - Cơ (Excitation-Contraction Coupling)</h3>
+            <ol class="physio-steps">
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Khử cực tại bản vận động cơ (Neuromuscular Junction)</span>
+                  Xung động thần kinh truyền đến tận cùng axon nơ-ron vận động &alpha;, kích hoạt giải phóng chất dẫn truyền hóa học <strong>Acetylcholine (ACh)</strong>. ACh gắn vào receptor nicotinic trên màng sợi cơ làm mở kênh ion, gây dòng Na<sup>+</sup> ồ ạt đi vào sinh điện thế hoạt động (AP) lan truyền khắp màng cơ và đi sâu vào hệ thống ống T.
+                </div>
+              </li>
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Kích hoạt cảm biến điện thế DHPR</span>
+                  Điện thế hoạt động truyền dọc ống T kích hoạt thụ thể <strong>Dihydropyridine (DHPR)</strong> - bản chất là kênh calci phụ thuộc điện thế.
+                </div>
+              </li>
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Mở kênh Ryanodine (RYR1) giải phóng Calci</span>
+                  Nhờ liên kết vật lý cơ học trực tiếp giữa DHPR trên màng ống T và thụ thể <strong>Ryanodine (RYR1)</strong> trên màng lưới nội cơ tương (SR), DHPR thay đổi cấu hình làm mở toang kênh RYR1. Calci (Ca<sup>2+</sup>) từ SR tràn vào bào tương xung quanh tơ cơ, đẩy nồng độ Ca<sup>2+</sup> tăng vọt gấp trăm lần.
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <!-- Hình 2 - Sơ đồ đường truyền tín hiệu co cơ -->
+          <div class="image-placeholder-card">
+            <div class="image-title">
+              <span>🖼️</span> Hình 2: Lưu đồ dẫn truyền thông tin từ thần kinh đến co cơ và giãn cơ (Figure 5-7 - Ganong)
+            </div>
+            <div class="image-drop-area">
+              <img src="../../images/Phan2/CX_Fig5_7.png" alt="Sơ đồ đường truyền tín hiệu co cơ"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="image-fallback" style="display: none; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; background: var(--color-surface-2); border: 1px dashed var(--color-border); border-radius: var(--radius-md); color: var(--color-text-muted);">
+                <i class="fa-regular fa-image" style="font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--color-text-muted);"></i>
+                <span style="font-size: 0.85rem;">Hình 2: Sơ đồ chuỗi sự kiện: Axon AP -> Giải phóng ACh -> Khử cực bản vận động -> Ống T AP -> Giải phóng Ca2+ từ SR -> Co cơ. Giãn cơ qua SERCA bơm lại Ca2+.</span>
+              </div>
+            </div>
+            <div class="image-description">
+              <strong>Mô tả:</strong> Lưu đồ các bước kích hoạt hóa lý liên tiếp. Thể hiện tiến trình đồng bộ thời gian từ lúc nơ-ron phát điện thế đến khi cơ phát sinh lực cơ học co rút tối đa.
+            </div>
+          </div>
+
+          <div class="physio-text-block">
+            <h3>2. Chu kỳ cầu nối chéo và Thuyết sợi trượt (Sliding Filament Theory)</h3>
+            <p>
+              Khi Ca<sup>2+</sup> ngập tràn trong bào tương, cơ chế tương tác sợi actin-myosin bắt đầu vận hành theo 5 bước tuần hoàn liên tục:
+            </p>
+            <ol class="physio-steps">
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Bước 1: Calci gắn Troponin C</span>
+                  Ca<sup>2+</sup> gắn đặc hiệu vào tiểu đơn vị <strong>troponin C</strong> trên sợi mảnh.
+                </div>
+              </li>
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Bước 2: Bộc lộ vị trí gắn Myosin</span>
+                  Sự gắn kết Ca<sup>2+</sup> làm thay đổi hình cấu không gian của phức hợp troponin, kéo trượt sợi dây <strong>tropomyosin</strong> lệch khỏi rãnh xoắn actin, bộc lộ các điểm gắn hoạt động với myosin trên phân tử actin.
+                </div>
+              </li>
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Bước 3: Gắn cầu nối chéo (Cross-bridge)</span>
+                  Đầu myosin (đang ở trạng thái mang năng lượng cao chứa ADP và Pi tích lũy từ chu kỳ trước) vươn lên gắn chặt vào điểm hoạt động trên actin, tạo nên cấu trúc **cầu nối chéo**.
+                </div>
+              </li>
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Bước 4: Nhát chèo phát lực (Power Stroke)</span>
+                  Đầu myosin giải phóng ADP và Pi vô cơ. Sự giải phóng này làm đầu myosin gập đột ngột một góc 45 độ, tạo lực kéo sợi mảnh actin trượt về phía trung tâm đường M của sarcomere một khoảng cách nhỏ (~10 nm).
+                </div>
+              </li>
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Bước 5: Tách cầu và Tái nạp năng lượng</span>
+                  Một phân tử <strong>ATP mới</strong> gắn vào đầu myosin, làm giảm mạnh ái lực giữa myosin và actin khiến đầu myosin tách rời khỏi actin. Ngay sau đó, hoạt tính ATPase trên đầu myosin thủy phân ATP thành ADP và Pi, sử dụng năng lượng này dựng đứng đầu myosin trở lại tư thế "bật cò" ban đầu, sẵn sàng gắn vào điểm tiếp theo trên actin nếu Ca<sup>2+</sup> vẫn còn cao.
+                </div>
+              </li>
+            </ol>
+
+            <h3 style="margin-top: 1.5rem;">3. Cơ chế Giãn cơ (Muscle Relaxation)</h3>
+            <p>
+              Quá trình co cơ sẽ dừng lại và chuyển sang trạng thái giãn khi xung động thần kinh kích thích dừng phát. Bơm chủ động <strong>SERCA (Sarcoplasmic/Endoplasmic Reticulum Calcium ATPase)</strong> trên màng lưới nội cơ tương liên tục dùng năng lượng phân hủy ATP để bơm ngược ion Ca<sup>2+</sup> từ bào tương trở lại tích trữ trong bể chứa SR.
+            </p>
+            <p>
+              Khi nồng độ Ca<sup>2+</sup> tự do trong bào tương giảm xuống dưới mức 0,1 µM, Ca<sup>2+</sup> rời bỏ troponin C. Phức hợp troponin quay lại cấu dạng ban đầu, đưa dây xích tropomyosin trở lại che kín các vị trí hoạt động trên actin. Đầu myosin không còn điểm bám, các sợi trượt tự do trở lại chiều dài ban đầu dưới tác dụng đàn hồi cơ học, cơ giãn ra hoàn toàn.
+            </p>
+          </div>
+
+          <!-- Hình 3 - Power stroke -->
+          <div class="image-placeholder-card">
+            <div class="image-title">
+              <span>🖼️</span> Hình 3: Chu kỳ tương tác năm bước của cầu nối chéo Myosin - Actin (Figure 5-6 - Ganong)
+            </div>
+            <div class="image-drop-area">
+              <img src="../../images/Phan2/CX_Fig5_6.png" alt="Chu kỳ cầu nối chéo Myosin - Actin"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="image-fallback" style="display: none; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; background: var(--color-surface-2); border: 1px dashed var(--color-border); border-radius: var(--radius-md); color: var(--color-text-muted);">
+                <i class="fa-regular fa-image" style="font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--color-text-muted);"></i>
+                <span style="font-size: 0.85rem;">Hình 3: Chu kỳ gắn kết, phát lực (nhát chèo) của đầu myosin lên sợi actin. Minh họa rõ thời điểm thủy phân ATP và giải phóng ADP để chuyển đổi cơ năng.</span>
+              </div>
+            </div>
+            <div class="image-description">
+              <strong>Mô tả:</strong> Mô hình phân tử mô tả đầu myosin biến đổi góc nghiêng. Quá trình này được thúc đẩy bởi sự biến đổi liên kết hóa học từ ATP sang ADP + Pi, tạo lực trượt làm co ngắn sarcomere.
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần III: Đơn vị vận động và Phân loại sợi cơ -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần III: Đơn vị vận động và Phân loại sợi cơ</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <h3>1. Khái niệm Đơn vị vận động (Motor Unit)</h3>
+            <p>
+              Một <strong>Đơn vị vận động (Motor Unit)</strong> được định nghĩa gồm **một nơ-ron vận động &alpha; duy nhất** phát nguồn từ sừng trước tủy sống và toàn bộ các sợi cơ xương mà các nhánh tận cùng sợi trục của nơ-ron đó đi đến chi phối. Khi nơ-ron phát một xung điện thế hoạt động, tất cả sợi cơ thuộc đơn vị vận động đó sẽ nhận kích thích và co đồng thời theo nguyên lý "tất cả hoặc không có gì".
+            </p>
+            <p>
+              Kích thước của đơn vị vận động rất khác nhau tùy thuộc vào vị trí và tính chất hoạt động của cơ cơ thể:
+            </p>
+            <ul class="physio-list-arrow">
+              <li><strong>Đơn vị vận động nhỏ (chỉ chi phối 2-10 sợi cơ):</strong> Nằm ở các cơ thực hiện các vận động cử động đòi hỏi độ tinh vi, chính xác cực cao, ví dụ: cơ vận nhãn ngoài của mắt, cơ bàn tay.</li>
+              <li><strong>Đơn vị vận động lớn (chi phối từ vài trăm đến hàng ngàn sợi cơ):</strong> Nằm ở các cơ lớn thực hiện vận động thô, chịu tải trọng lớn, ví dụ: cơ tứ đầu đùi, cơ dép ở bắp chân.</li>
+            </ul>
+
+            <h3 style="margin-top: 1.5rem;">Nguyên lý kích thước Henneman (Size Principle):</h3>
+            <p>
+              Khi cơ thể thực hiện co cơ chống lại lực cản tăng dần, hệ thần kinh sẽ huy động các đơn vị vận động theo trình tự kích thước tăng dần. Các nơ-ron vận động nhỏ (kích thích các sợi cơ co chậm loại I, lực yếu nhưng chịu mỏi tốt) có ngưỡng kích thích thấp sẽ được huy động trước tiên. Khi cần tăng sinh thêm lực cơ học mạnh hơn, các nơ-ron vận động có kích thước lớn hơn (kích thích sợi co nhanh loại II) mới được phát xung kích hoạt bổ sung.
+            </p>
+
+            <h3>2. Phân loại các Loại sợi cơ xương</h3>
+            <p>
+              Tất cả các sợi cơ nằm trong cùng một đơn vị vận động thì bắt buộc phải cùng một loại sợi cơ. Các sợi cơ vân ở người được chia thành 3 nhóm sinh lý chính:
+            </p>
+
+            <div class="table-responsive">
+              <table class="physio-table physio-table-compare">
+                <thead>
+                  <tr>
+                    <th>Thông số so sánh</th>
+                    <th>Sợi Loại I (S - Slow)</th>
+                    <th>Sợi Loại IIA (FR - Fast Resistant)</th>
+                    <th>Sợi Loại IIB/IIX (FF - Fast Fatigable)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Tên đặc trưng</strong></td>
+                    <td>Co chậm, Đỏ (Slow Oxidative)</td>
+                    <td>Co nhanh, Đỏ (Fast Oxidative-Glycolytic)</td>
+                    <td>Co nhanh, Trắng (Fast Glycolytic)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tốc độ co &amp; Hoạt tính ATPase</strong></td>
+                    <td>Chậm, hoạt tính ATPase thấp</td>
+                    <td>Nhanh, hoạt tính ATPase cao</td>
+                    <td>Cực nhanh, hoạt tính ATPase rất cao</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Hàm lượng Myoglobin</strong></td>
+                    <td>Rất cao (Tạo nên màu đỏ sẫm đặc trưng)</td>
+                    <td>Cao (Màu đỏ hồng)</td>
+                    <td>Rất thấp (Màu trắng nhạt)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Mật độ Ty thể &amp; Mao mạch</strong></td>
+                    <td>Rất nhiều ty thể, mạng mao mạch dày đặc</td>
+                    <td>Nhiều ty thể, mao mạch phát triển tốt</td>
+                    <td>Ít ty thể, mao mạch thưa thớt</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Năng lực Chuyển hóa chính</strong></td>
+                    <td>Hô hấp hiếu khí (Oxy hóa chất béo và carbohydrate)</td>
+                    <td>Đường phân và Hô hấp hiếu khí kết hợp</td>
+                    <td>Đường phân yếm khí (Anaerobic Glycolysis)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Khả năng Kháng mỏi cơ</strong></td>
+                    <td>Cực kỳ cao (Kháng mỏi, rất bền bỉ)</td>
+                    <td>Kháng mỏi ở mức trung bình khá</td>
+                    <td>Thấp (Cực kỳ dễ bị mỏi cơ nhanh chóng)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Chức năng vận động</strong></td>
+                    <td>Duy trì tư thế chống trọng lực, chạy cự ly dài (marathon).</td>
+                    <td>Hoạt động thể lực liên tục lực vừa phải, chạy trung bình.</td>
+                    <td>Vận động bộc phát nhanh, cực mạnh: cử tạ, chạy nước rút 100m.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần IV: Đặc tính cơ học của cơ xương -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần IV: Đặc tính Cơ học của Cơ xương</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <h3>1. Hiện tượng Cộng gộp và Co cứng cơ (Summation &amp; Tetanus)</h3>
+            <p>
+              Một kích thích đơn độc sinh ra một chu kỳ co cơ đơn độc (twitch). Tuy nhiên, điện thế hoạt động của cơ chỉ kéo dài vài mili giây, trong khi chu kỳ co cơ kéo dài đến hàng chục mili giây. Do đó:
+            </p>
+            <ul class="physio-list-arrow">
+              <li><strong>Cộng gộp lực (Summation):</strong> Nếu một kích thích mới truyền đến khi cơ chưa kịp giãn hoàn toàn sau kích thích trước, lượng Ca<sup>2+</sup> trong bào tương vẫn còn tồn dư và được bổ sung thêm, làm lực co cơ sau cộng dồn vào cơ trước tạo sức căng lớn hơn.</li>
+              <li><strong>Co cứng (Tetanic contraction / Tetanus):</strong> Khi tần số kích thích tăng lên rất cao khiến cơ không có thời gian giãn giữa các nhịp kích thích, các lực co hòa trộn hoàn toàn thành một đường co rút kéo dài, ổn định liên tục. Lực co cứng tối đa có thể lớn gấp <strong>4 lần</strong> so với lực co cơ đơn độc.</li>
+            </ul>
+
+            <h3>2. Phân loại các Loại hình co cơ</h3>
+            <p>
+              Dựa vào sự biến đổi chiều dài và lực căng của cơ khi hoạt động, co cơ được phân làm các dạng:
+            </p>
+            <ul class="physio-list-arrow">
+              <li><strong>Co cơ Đẳng trường (Isometric Contraction):</strong> Chiều dài của bắp cơ giữ nguyên không đổi, trong khi lực căng cơ tăng mạnh. Xảy ra khi tải trọng kéo lớn hơn lực co tối đa của cơ (ví dụ: gồng cơ đẩy tường, xách vật quá nặng mà không nhấc lên được).</li>
+              <li><strong>Co cơ Đẳng trương (Isotonic Contraction):</strong> Lực căng cơ giữ nguyên không đổi suốt quá trình rút ngắn, chiều dài bắp cơ co ngắn lại, sinh công cơ học rõ rệt (ví dụ: nhấc tạ tay lên).</li>
+              <li><strong>Co cơ Auxotonic:</strong> Chiều dài cơ co ngắn đồng thời lực căng cơ cũng tăng dần lên (hầu hết các vận động tự nhiên của cơ thể).</li>
+            </ul>
+
+            <h3>3. Mối tương quan Chiều dài - Lực căng (Length - Tension Relationship)</h3>
+            <p>
+              Lực co chủ động tối đa mà sarcomere cơ xương có thể tạo ra phụ thuộc vào <strong>chiều dài ban đầu</strong> của cơ trước khi kích thích:
+            </p>
+            <ul class="physio-list-arrow">
+              <li>Lực co chủ động đạt cực đại khi cơ ở <strong>chiều dài nghỉ sinh lý (resting length, l<sub>0</sub>)</strong>. Tại đây, sự chồng lấp giữa đầu myosin và sợi actin là tối ưu nhất, tạo ra tối đa số lượng cầu nối chéo hoạt động.</li>
+              <li>Nếu cơ bị kéo căng quá mức, các sợi actin bị kéo tuột ra ngoài, số cầu nối chéo giảm dần dẫn đến lực co giảm về 0.</li>
+              <li>Nếu cơ bị co ngắn quá mức, các sợi actin chồng chéo đè lên nhau ở trung tâm làm cản trở tương tác cơ học, lực co cũng giảm mạnh.</li>
+              <li>Lực đàn hồi thụ động khi kéo căng cơ không kích thích được đảm nhiệm bởi protein khổng lồ đàn hồi <strong>titin</strong> nối vạch Z với đường M.</li>
+            </ul>
+
+            <h3>4. Mối tương quan Lực - Vận tốc (Force - Velocity Relationship)</h3>
+            <p>
+              Vận tốc co rút ngắn cơ tỷ lệ nghịch với tải trọng (lực cản). Vận tốc co cơ đạt cực đại khi tải trọng bằng 0 (co không tải) và giảm dần xuống bằng 0 khi tải trọng tăng bằng đúng lực co tối đa đẳng trường của cơ.
+            </p>
+          </div>
+
+          <!-- Hình 4 - Đặc tính cơ học -->
+          <div class="image-placeholder-card">
+            <div class="image-title">
+              <span>🖼️</span> Hình 4: Các đặc tính cơ học cơ xương: Co cứng cơ và phân biệt đẳng trường/đẳng trương (Plate 2.14 - Color Atlas)
+            </div>
+            <div class="image-drop-area">
+              <img src="../../images/Phan2/CX_Plate2_14.png" alt="Các đặc tính cơ học cơ xương"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="image-fallback" style="display: none; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; background: var(--color-surface-2); border: 1px dashed var(--color-border); border-radius: var(--radius-md); color: var(--color-text-muted);">
+                <i class="fa-regular fa-image" style="font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--color-text-muted);"></i>
+                <span style="font-size: 0.85rem;">Hình 4: Đồ thị lực cơ theo tần số kích thích chỉ ra hiện tượng co cứng (tetanus). Mô tả thí nghiệm co cơ đẳng trường (chiều dài cố định) và đẳng trương (tải cố định).</span>
+              </div>
+            </div>
+            <div class="image-description">
+              <strong>Mô tả:</strong> Biểu đồ cơ học co cơ vân. Thể hiện sự cộng gộp các đợt giải phóng calci làm tăng nồng độ Ca2+ bào tương thường trực tạo lực co cứng gấp nhiều lần co đơn lẻ.
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần V: Nguồn năng lượng và Sự mỏi cơ -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần V: Nguồn Năng Lượng và Sự Mỏi Cơ</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <h3>1. Các nguồn năng lượng tái tạo ATP trong co cơ</h3>
+            <p>
+              Năng lượng trực tiếp cho đầu myosin phát lực và cho bơm calci SERCA vận hành bắt buộc phải lấy từ sự thủy phân phân tử <strong>ATP</strong>. Tuy nhiên, lượng ATP tích trữ sẵn trong cơ chỉ đủ duy trì co cơ liên tục trong <strong>chưa đầy 1-2 giây</strong>. Cơ thể phải liên tục tái tổng hợp ATP thông qua 3 nguồn:
+            </p>
+            <ul class="physio-list-arrow">
+              <li><strong>Hệ Phosphagen (Phosphorylcreatine - CP):</strong> Truyền trực tiếp và tức thời nhóm phosphate giàu năng lượng cho ADP tạo lại ATP nhờ enzym creatine kinase. Nguồn này rất nhanh, không cần oxy nhưng trữ lượng cực nhỏ, cạn kiệt sau <strong>5 - 8 giây</strong> (ví dụ chạy nước rút 100m).</li>
+              <li><strong>Đường phân yếm khí (Anaerobic Glycolysis):</strong> Phân hủy glucose từ máu hoặc glycogen dự trữ trong cơ thành axit pyruvic (chuyển thành axit lactic khi thiếu oxy). Nguồn này sinh ATP nhanh gấp 2.5 lần hiếu khí, không cần oxy, nhưng hiệu suất thấp (chỉ tạo 2 ATP/glucose) và gây tích tụ axit lactic làm mỏi cơ. Cung cấp năng lượng chính cho vận động cường độ cao kéo dài từ <strong>30 giây đến 2 phút</strong>.</li>
+              <li><strong>Hô hấp hiếu khí (Aerobic Oxidation):</strong> Oxy hóa hoàn toàn glucose, axit amin và đặc biệt là axit béo (fatty acids) trong ty thể thông qua chu trình Krebs và chuỗi truyền điện tử. Nguồn này cần oxy, sinh ATP chậm hơn nhưng hiệu suất cực cao (36 - 38 ATP/glucose). Đây là nguồn năng lượng vô tận duy trì cho các vận động thể lực kéo dài hàng giờ.</li>
+            </ul>
+
+            <h3>2. Hiện tượng Nợ Oxy (Oxygen Debt)</h3>
+            <p>
+              Sau khi dừng vận động cường độ cao, cơ thể vẫn tiếp tục thở dốc, tiêu thụ một lượng oxy vượt mức nghỉ sinh lý. Lượng oxy tiêu thụ thêm này gọi là <strong>Nợ oxy (Oxygen debt)</strong>, dùng để:
+            </p>
+            <ul class="physio-list-arrow">
+              <li>Tái tổng hợp lượng Creatine Phosphate và ATP đã cạn kiệt trong cơ.</li>
+              <li>Chuyển hóa loại bỏ axit lactic tích tụ tại gan thành glucose (chu trình Cori) hoặc oxy hóa axit lactic thành pyruvate để sinh năng lượng.</li>
+              <li>Tái bão hòa oxy cho myoglobin trong cơ và hemoglobin trong máu.</li>
+            </ul>
+
+            <h3>3. Sinh lý học sự Mỏi cơ (Muscle Fatigue)</h3>
+            <p>
+              Mỏi cơ là hiện tượng giảm khả năng sinh lực co cơ sau một thời gian vận động kéo dài. Sự mỏi cơ không đơn thuần do cạn kiệt ATP (vì lượng ATP trong cơ mỏi vẫn giữ ở mức 60-70% để tránh trạng thái cứng tử thi). Cơ chế chính bao gồm:
+            </p>
+            <ul class="physio-list-arrow">
+              <li><strong>Tích tụ axit lactic gây giảm pH nội bào:</strong> Sự giảm pH làm biến tính nhẹ protein, trực tiếp ức chế hoạt tính enzyme myosin ATPase, đồng thời làm giảm ái lực gắn kết của ion Ca<sup>2+</sup> với troponin C.</li>
+              <li><strong>Tích tụ Phosphate vô cơ (P<sub>i</sub>):</strong> Phân hủy nhiều ATP làm tích tụ Pi trong bào tương. Pi đi vào lưới nội cơ tương kết tủa với calci tạo thành CaHPO<sub>4</sub>, làm giảm lượng Ca<sup>2+</sup> tự do sẵn có để giải phóng từ SR khi có kích thích.</li>
+              <li><strong>Mệt mỏi trung ương:</strong> Hệ thần kinh trung ương giảm phát xung vận động &alpha; bảo vệ cơ thể khỏi tổn thương cơ học quá mức.</li>
+            </ul>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần VI: Sự phát triển, phì đại, teo cơ và sửa chữa -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần VI: Sự phát triển, Phì đại, Teo cơ và Sửa chữa</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <h3>1. Cơ chế Phì đại cơ (Hypertrophy)</h3>
+            <p>
+              Tập luyện kháng lực (nâng tạ nặng) sinh lực căng lớn lên cơ, gây ra các tổn thương vi thể (micro-tears) trên các sợi cơ vân. Phản ứng sinh lý đáp ứng lại là kích hoạt con đường tín hiệu nội bào (như mTOR) thúc đẩy tăng cường phiên mã tổng hợp protein cơ. Kết quả là bổ thêm các tơ cơ (myofibrils) mới xếp song song trong sợi cơ, làm **tăng đường kính của sợi cơ** và tăng sức mạnh co cơ rõ rệt mà không làm tăng số lượng sợi cơ.
+            </p>
+
+            <h3>2. Khả năng Tăng sản cơ (Hyperplasia) và Sửa chữa cơ</h3>
+            <p>
+              Sự phân chia tạo sợi cơ mới (tăng sản - hyperplasia) hầu như không xảy ra ở người trưởng thành. Khi cơ bị tổn thương cơ học nghiêm trọng, quá trình sửa chữa được đảm nhận bởi <strong>tế bào vệ tinh (satellite cells)</strong>. Đây là các tế bào gốc chưa biệt hóa nằm áp sát dưới màng đáy (basal lamina) của sợi cơ. Khi cơ tổn thương, tế bào vệ tinh được kích hoạt để tăng sinh mạnh mẽ, biệt hóa và dung hợp (fusion) với nhau hoặc dung hợp vào sợi cơ cũ bị rách để sửa chữa cấu trúc, hoặc tạo thành sợi cơ mới thay thế.
+            </p>
+
+            <h3>3. Sinh lý học Teo cơ (Muscle Atrophy)</h3>
+            <p>
+              Teo cơ xảy ra khi tốc độ phân hủy protein cơ lớn hơn tốc độ tổng hợp protein mới. Các nguyên nhân chính gây teo cơ trên lâm sàng bao gồm:
+            </p>
+            <ul class="physio-list-arrow">
+              <li><strong>Mất phân bố thần kinh (Denervation Atrophy):</strong> Khi sợi axon nơ-ron vận động &alpha; bị đứt hủy, cơ mất hoàn toàn kích thích trương lực cơ cơ bản. Cơ hoại tử teo nhanh chóng và có thể bị thay thế bởi mô xơ liên kết sau vài tháng.</li>
+              <li><strong>Bất động lâu ngày (Disuse Atrophy):</strong> Bó bột cố định xương, nằm liệt giường kéo dài, hoặc môi trường không trọng lực của phi hành gia làm cơ không phải chịu lực tải cơ học.</li>
+            </ul>
+
+            <div class="clinical-note-box"
+              style="background: var(--color-rose-hl); border-left: 4px solid var(--color-rose);">
+              <div class="clinical-note-title"
+                style="font-weight: 700; color: var(--color-rose); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: var(--text-sm);">
+                ⚠️ CẢNH BÁO LÂM SÀNG: TEO CƠ HOÀNH DO THỞ MÁY (VIDD)
+              </div>
+              <p style="font-size: var(--text-xs); line-height: 1.6; margin: 0; color: var(--color-text-muted);">
+                Trong môi trường hồi sức tích cực (ICU), bệnh nhân được <strong>thở máy cơ học kiểm soát hoàn toàn (mechanical ventilation)</strong> kéo dài sẽ gây ra hội chứng <strong>Teo cơ hoành do thở máy (Ventilator-Induced Diaphragmatic Dysfunction - VIDD)</strong>. Do máy thở làm hết nhiệm vụ co cơ hoành, việc mất tải lực cơ học chủ động sẽ nhanh chóng hoạt hóa các hệ thống tiêu protein nội bào mạnh mẽ gồm hệ <strong>ubiquitin-proteasome</strong>, calpain, caspase và lysosome. VIDD xảy ra rất nhanh (chỉ sau 18-24 giờ thở máy), làm giảm tới 50% lực co cơ hoành, khiến việc cai máy thở trở nên cực kỳ khó khăn. Đáng chú ý, các sợi cơ co chậm Type I nhạy cảm với sự mất tải cơ học và bị teo với tốc độ nhanh hơn các sợi co nhanh Type II.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần VII: Tài liệu tham khảo -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Tài liệu tham khảo</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <ol style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin-left: 1.5rem;">
+              <li>Koeppen BM, Stanton BA. <em>Berne and Levy Physiology</em>. 8th ed. Philadelphia, PA: Elsevier; 2018.</li>
+              <li>Despopoulos A, Silbernagl S. <em>Color Atlas of Physiology</em>. 5th ed. Stuttgart, Germany: Thieme; 2003.</li>
+              <li>Barrett KE, Barman SM, Boitano S, Brooks HL. <em>Ganong's Review of Medical Physiology</em>. 24th ed. New York, NY: McGraw-Hill Education; 2012.</li>
+              <li>Jardin F, Vieillard-Baron A. <em>Applied Physiology in Intensive Care Medicine</em>. Berlin, Germany: Springer-Verlag; 2009.</li>
+            </ol>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+  <!-- Scripts dùng chung -->
+  <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>
