@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Sinh lý Tiểu cầu và Quá trình Cầm máu – Khảo sát đặc tính cấu trúc tiểu cầu, động lực của nút chặn tiểu cầu, các giai đoạn đông máu huyết tương, hệ thống kháng đông tự nhiên và quá trình tiêu sợi huyết.">
+  <title>Sinh lý Tiểu cầu và Cầm máu – CliniPortal</title>
+  
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core CliniPortal -->
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  
+  <!-- CSS chuyên biệt Sinh lý & TOC -->
+  <link rel="stylesheet" href="../../../../css/components/physio-patho.css">
+  <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+  <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+  <link rel="stylesheet" href="../../css/physio-shared.css">
+  <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+  <!-- Scripts điều hướng & xử lý tương tác động -->
+  <script src="../../../../js/toc.js" defer></script>
+  <script src="../../../../components/header.js"></script>
+  <script src="../../../../components/footer.js"></script>
+  <script src="../../js/physio-shared.js" defer></script>
+  <script src="../../../../js/main.js" defer></script>
+</head>
+
+<body>
+  <!-- Nạp Header động -->
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR HỆ THỐNG -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Sinhly-sinhlybenh.html" class="nav-item active" aria-current="page" title="S.lý - S.lý bệnh">
+              <span class="nav-icon">🧬</span>
+              <span class="nav-text">S.lý - S.lý bệnh</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- KHUNG CHỨA NỘI DUNG CHÍNH -->
+    <div class="main-wrapper" id="mainContent">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container" style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+        <ol class="breadcrumb-list" style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+          <li><a href="../../../../index.html">🏠 Home</a> &gt;</li>
+          <li><a href="../../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+          <li style="color:var(--color-primary); font-weight:600;">Chương 3: Sinh lý Hệ máu - Sinh lý Tiểu cầu và Cầm máu</li>
+        </ol>
+      </nav>
+
+      <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+      <main class="visual-container">
+        <!-- Chapter Header -->
+        <div class="chapter-header">
+          <h1>Sinh lý Tiểu cầu và Cầm máu (Platelets & Hemostasis)</h1>
+          <p>Tìm hiểu chi tiết về cấu trúc, nguồn gốc tiểu cầu, các giai đoạn của quá trình cầm máu ban đầu và duy trì, cơ chế tiêu sợi huyết cùng hệ thống kháng đông tự nhiên bảo vệ lòng mạch.</p>
+        </div>
+
+        <!-- PHẦN I -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần I: Đại cương và Cấu trúc Tiểu cầu</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              <strong>Tiểu cầu (Platelets / Thrombocytes)</strong> là những mảnh tế bào nhỏ, không nhân, hình dĩa hai mặt lồi khi ở trạng thái nghỉ, đóng vai trò trung tâm khởi phát và phối hợp quá trình cầm máu khi mạch máu bị tổn thương.
+            </p>
+            
+            <h3>1. Nguồn gốc, sinh sản và đời sống</h3>
+            <ul class="physio-list-arrow">
+              <li><strong>Nguồn gốc:</strong> Tiểu cầu được sinh ra tại tủy xương từ các <span class="term-hl">tế bào nhân khổng lồ (megakaryocytes)</span>. Megakaryocytes trải qua quá trình phân chia nội bào không phân bào (endomitosis) để tích lũy lượng lớn bào tương, sau đó vỡ ra dọc theo các kênh sinh tiểu cầu để giải phóng hàng ngàn mảnh bào tương nhỏ vào dòng tuần hoàn dưới dạng tiểu cầu.</li>
+              <li><strong>Chất điều hòa sinh sản:</strong> Sự sản sinh tiểu cầu được kiểm soát chặt chẽ bởi <span class="term-hl-secondary">Thrombopoietin (TPO)</span> – một glycoprotein kích thích tạo máu chủ yếu do gan sản xuất thường trực và thận bài tiết, kết hợp cùng các yếu tố kích thích cụm (CSFs).</li>
+              <li><strong>Số lượng:</strong> Số lượng tiểu cầu bình thường trong máu ngoại vi dao động trong khoảng <strong>150.000 đến 400.000/&micro;L</strong>. Khoảng 60-75% lượng tiểu cầu lưu hành tự do trong máu tuần hoàn, trong khi phần còn lại (25-40%) được dự trữ tích lũy ở lách.</li>
+              <li><strong>Đời sống:</strong> Đời sống của tiểu cầu rất ngắn, chỉ kéo dài khoảng <strong>8 - 12 ngày</strong> (trung bình 10 ngày). Tiểu cầu già hoặc bị tổn thương sẽ bị tiêu hủy tại hệ liên võng nội mô của lách và gan bởi các đại thực bào.</li>
+            </ul>
+
+            <h3>2. Đặc điểm cấu trúc và thành phần bên trong</h3>
+            <ul class="physio-list-arrow">
+              <li><strong>Cấu trúc màng:</strong> Đường kính tiểu cầu chỉ khoảng 2-4 &micro;m. Màng tiểu cầu mang <strong>điện tích âm mạnh</strong> nhờ các phospholipid phân cực và lớp glycocalyx bao quanh, ngăn các tiểu cầu bám dính vào nhau và vào nội mô mạch máu bình thường. Trên màng chứa các glycoprotein đặc hiệu đóng vai trò là thụ thể gắn kết quan trọng: <span class="term-hl">GP Ib/IX</span> (gắn với vWF) và <span class="term-hl">GP IIb/IIIa</span> (gắn với fibrinogen).</li>
+              <li><strong>Hệ vi quản ngoại vi:</strong> Chứa một vòng vi ống (microtubules) và vi sợi (actin, myosin) ở ngoại vi giúp duy trì hình dạng đĩa dẹt và co bóp mạnh mẽ khi bị hoạt hóa. Hệ thống kênh mở rộng thông với màng (open canalicular system) tạo cấu trúc lõm sâu tăng diện tích tiếp xúc với môi trường xung quanh.</li>
+              <li><strong>Thành phần bào tương (Hạt nội bào):</strong> Chứa các bào quan như ty thể, glycogen để sản xuất năng lượng và đặc biệt là hai loại hạt chế tiết:
+                <ol style="margin-left: 1.5rem; margin-top: 0.5rem; list-style-type: decimal;">
+                  <li><strong>Hạt đặc (Dense granules):</strong> Chứa các phân tử nhỏ như <span class="term-hl-secondary">serotonin</span> (chất co mạch), <span class="term-hl-secondary">ADP</span> và các nucleotide adenine (hoạt hóa tiểu cầu), và ion <span class="term-hl-secondary">Ca<sup>2+</sup></span> cần thiết cho quá trình đông máu.</li>
+                  <li><strong>Hạt &alpha; (&alpha;-granules):</strong> Chứa các protein lớn bao gồm các yếu tố đông máu (fibrinogen, yếu tố V, yếu tố von Willebrand - vWF) và yếu tố tăng trưởng nguồn gốc tiểu cầu (<span class="term-hl-secondary">PDGF</span> - thúc đẩy sửa chữa mạch máu).</li>
+                </ol>
+              </li>
+            </ul>
+
+            <div class="table-responsive">
+              <table class="physio-table">
+                <caption>Table 31-1: Giá trị bình thường của các tế bào máu (Trích từ Ganong's Review of Medical Physiology 24th ed.)</caption>
+                <thead>
+                  <tr>
+                    <th>Thành phần tế bào</th>
+                    <th>Trị số trung bình</th>
+                    <th>Khoảng tham chiếu bình thường</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Hồng cầu (RBCs)</strong></td>
+                    <td>5.000.000 / &micro;L</td>
+                    <td>4.200.000 - 5.900.000 / &micro;L</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Bạch cầu (WBCs)</strong></td>
+                    <td>9.000 / &micro;L</td>
+                    <td>4.000 - 11.000 / &micro;L</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tiểu cầu (Platelets)</strong></td>
+                    <td><strong>300.000 / &micro;L</strong></td>
+                    <td><strong>150.000 - 400.000 / &micro;L</strong> (200.000 - 500.000 / &micro;L theo Ganong)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- PHẦN II -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần II: Giai đoạn Cầm máu ban đầu (Primary Hemostasis)</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              Giai đoạn cầm máu ban đầu xảy ra tức thì ngay sau khi mạch máu bị tổn thương, nhằm mục đích hạn chế tối đa lượng máu thoát ra ngoài qua vết thương bằng sự co thắt mạch máu và hình thành nút chặn tiểu cầu che lấp lỗ rách.
+            </p>
+
+            <h3>1. Co thắt thành mạch (Vascular Constriction / Spasm)</h3>
+            <p>
+              Mạch máu tổn thương lập tức co thắt lại nhờ 3 cơ chế phối hợp:
+            </p>
+            <ul class="physio-list-arrow">
+              <li><strong>Phản xạ thần kinh giao cảm:</strong> Kích hoạt bởi các sợi thần kinh thụ cảm đau tại vị trí tổn thương.</li>
+              <li><strong>Sự co thắt cơ trơn tại chỗ:</strong> Hiện tượng co thắt cơ học đáp ứng trực tiếp đối với tổn thương thành mạch.</li>
+              <li><strong>Yếu tố thể dịch từ tiểu cầu:</strong> Sự phóng thích các chất gây co mạch cực mạnh từ hạt đặc của tiểu cầu khi bám dính, tiêu biểu là <span class="term-hl-secondary">Serotonin</span> và <span class="term-hl-secondary">Thromboxane A<sub>2</sub> (TXA<sub>2</sub>)</span>.</li>
+            </ul>
+
+            <h3>2. Sự hình thành nút chặn tiểu cầu (Platelet Plug Formation)</h3>
+            <p>
+              Quy trình hình thành nút chặn tiểu cầu gồm 3 bước nối tiếp nhau:
+            </p>
+
+            <ol class="physio-steps">
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Bước 1: Kết dính tiểu cầu (Adhesion)</span>
+                  Khi lớp tế bào nội mô lót lòng mạch bị rách, các sợi collagen dưới nội mô bị bộc lộ ra ngoài. Tiểu cầu trong dòng chảy lập tức bám vào các sợi collagen này nhờ cầu nối trung gian là <span class="term-hl">yếu tố von Willebrand (vWF)</span> (do tế bào nội mô bị tổn thương chế tiết) liên kết giữa collagen và phức hợp glycoprotein <span class="term-hl">GP Ib/IX</span> trên màng tiểu cầu.
+                </div>
+              </li>
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Bước 2: Hoạt hóa &amp; Phóng thích hạt (Activation &amp; Secretion)</span>
+                  Sự gắn kết collagen kích hoạt các tín hiệu nội bào làm tiểu cầu thay đổi hình dạng mạnh mẽ: phình to, thọc ra nhiều chân giả (pseudopodia) gai góc để tăng bề mặt tiếp xúc. Đồng thời, tiểu cầu phóng thích các chất chứa trong các hạt nội bào ra ngoài (ADP, Serotonin, Ca<sup>2+</sup>) và tổng hợp tại chỗ chất hướng động <span class="term-hl-secondary">Thromboxane A<sub>2</sub> (TXA<sub>2</sub>)</span> từ arachidonic acid của màng nhờ enzyme cyclooxygenase (COX).
+                </div>
+              </li>
+              <li>
+                <div class="physio-step-card">
+                  <span class="physio-step-title">Bước 3: Ngưng tập tiểu cầu (Aggregation)</span>
+                  Các chất hướng động phóng thích (<span class="term-hl-secondary">ADP</span> và <span class="term-hl-secondary">TXA<sub>2</sub></span>) tiếp tục lôi kéo, hoạt hóa các tiểu cầu tự do khác đang di chuyển gần đó đến bám vào lớp tiểu cầu đã kết dính trước. Các tiểu cầu hoạt hóa bộc lộ thụ thể <span class="term-hl">GP IIb/IIIa</span> kết nối chéo với nhau qua mạng lưới cầu nối <span class="term-hl">fibrinogen</span>, chồng chất lên nhau tạo thành **nút chặn tiểu cầu** (nút trắng - white clot) vững chắc, bít kín tổn thương ở các mao mạch nhỏ.
+                </div>
+              </li>
+            </ol>
+
+            <div class="clinical-note-box" style="background: var(--color-rose-hl); border-left: 4px solid var(--color-rose); margin-top: 1.5rem;">
+              <div class="clinical-note-title" style="font-weight: 700; color: var(--color-rose); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: var(--text-sm);">
+                💊 ỨNG DỤNG LÂM SÀNG: CƠ CHẾ CỦA THUỐC KHÁNG ĐÔNG &amp; KHÁNG TIỂU CẦU
+              </div>
+              <p style="font-size: var(--text-xs); line-height: 1.6; margin: 0; color: var(--color-text-muted);">
+                - <strong>Aspirin liều thấp:</strong> Ức chế không thuận nghịch enzyme <em>Cyclooxygenase (COX-1)</em> của tiểu cầu, ngăn cản sự tổng hợp Thromboxane A<sub>2</sub> (TXA<sub>2</sub>), từ đó ức chế mạnh mẽ pha ngưng tập tiểu cầu. Được dùng rộng rãi để phòng ngừa huyết khối động mạch (nhồi máu cơ tim, đột quỵ).<br>
+                - <strong>Clopidogrel (Plavix):</strong> Ức chế thụ thể ADP loại P2Y12 trên màng tiểu cầu, ngăn cản ADP hoạt hóa thụ thể GP IIb/IIIa, giảm kết dính tiểu cầu dòng thác.
+              </p>
+            </div>
+
+            <!-- Hình 1 -->
+            <div class="image-placeholder-card">
+              <div class="image-title">
+                <span>🖼️</span> Hình 1: Quá trình cầm máu do tiểu cầu (Plate 4.8 - Hemostasis - Color Atlas of Physiology)
+              </div>
+              <div class="image-drop-area">
+                <img src="../../images/Phan3/TC_Hinh1.png" alt="Quá trình cầm máu do tiểu cầu"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                  <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                  <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh minh họa Plate 4.8 đang được cập nhật</p>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Mô tả:</strong> Minh họa 5 bước cơ bản của cầm máu tiểu cầu: (1) Kết dính vào sợi collagen nhờ vWF và thụ thể màng; (2) Hoạt hóa tế bào; (3) Chế tiết các chất hóa hướng động (ADP, TXA2) và co mạch (serotonin); (4) Thay đổi hình dạng phóng chân giả; (5) Ngưng tập qua cầu nối Fibrinogen tạo nút chặn tạm thời.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- PHẦN III -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần III: Giai đoạn Cầm máu duy trì - Đông máu (Secondary Hemostasis)</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              Đối với các tổn thương mạch máu lớn, nút chặn tiểu cầu ban đầu rất lỏng lẻo và dễ bị cuốn trôi. Sự đông máu (Coagulation) – một chuỗi phản ứng enzyme liên hoàn – sẽ được kích hoạt nhằm biến Fibrinogen hòa tan thành mạng lưới sợi huyết Fibrin không hòa tan, ôm giữ chặt các tế bào máu tạo thành cục máu đông vững chắc.
+            </p>
+
+            <div class="table-responsive">
+              <table class="physio-table">
+                <caption>Table 31-5: Hệ thống danh pháp các yếu tố đông máu huyết tương (Ganong's Physiology)</caption>
+                <thead>
+                  <tr>
+                    <th>Yếu tố</th>
+                    <th>Tên khoa học / Danh pháp chuẩn</th>
+                    <th>Vai trò sinh lý chính</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Yếu tố I</td>
+                    <td>Fibrinogen</td>
+                    <td>Tiền chất của mạng lưới sợi huyết Fibrin</td>
+                  </tr>
+                  <tr>
+                    <td>Yếu tố II</td>
+                    <td>Prothrombin</td>
+                    <td>Tiền chất của enzyme hoạt hóa Thrombin (IIa)</td>
+                  </tr>
+                  <tr>
+                    <td>Yếu tố III</td>
+                    <td>Yếu tố mô (Tissue Factor - TF / Thromboplastin)</td>
+                    <td>Khởi phát con đường đông máu ngoại sinh</td>
+                  </tr>
+                  <tr>
+                    <td>Yếu tố IV</td>
+                    <td>Ion Canxi (Ca<sup>2+</sup>)</td>
+                    <td>Đồng yếu tố bắt buộc ở hầu hết phản ứng cascade</td>
+                  </tr>
+                  <tr>
+                    <td>Yếu tố V</td>
+                    <td>Proaccelerin (Yếu tố không bền)</td>
+                    <td>Đồng yếu tố trong phức hợp Prothrombinase</td>
+                  </tr>
+                  <tr>
+                    <td>Yếu tố VII</td>
+                    <td>Proconvertin (Yếu tố ổn định)</td>
+                    <td>Phối hợp với TF kích hoạt yếu tố X và IX</td>
+                  </tr>
+                  <tr>
+                    <td>Yếu tố VIII</td>
+                    <td>Yếu tố chống chảy máu A (Antihemophilic A)</td>
+                    <td>Đồng yếu tố hoạt hóa yếu tố X (con đường nội sinh)</td>
+                  </tr>
+                  <tr>
+                    <td>Yếu tố IX</td>
+                    <td>Yếu tố Christmas (Antihemophilic B)</td>
+                    <td>Enzyme protease hoạt hóa yếu tố X</td>
+                  </tr>
+                  <tr>
+                    <td>Yếu tố X</td>
+                    <td>Yếu tố Stuart-Prower</td>
+                    <td>Enzyme protease mấu chốt cấu tạo Prothrombinase</td>
+                  </tr>
+                  <tr>
+                    <td>Yếu tố XI</td>
+                    <td>Tiền chất thromboplastin huyết tương (PTA)</td>
+                    <td>Hoạt hóa yếu tố IX trong con đường nội sinh</td>
+                  </tr>
+                  <tr>
+                    <td>Yếu tố XII</td>
+                    <td>Yếu tố Hageman (Yếu tố tiếp xúc)</td>
+                    <td>Khởi phát con đường nội sinh khi chạm bề mặt âm</td>
+                  </tr>
+                  <tr>
+                    <td>Yếu tố XIII</td>
+                    <td>Yếu tố ổn định sợi huyết (FSF)</td>
+                    <td>Tạo liên kết cộng hóa trị chéo làm bền vững mạng Fibrin</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3>Động học của chuỗi phản ứng đông máu</h3>
+            <p>
+              Quá trình đông máu diễn ra qua 3 giai đoạn nối tiếp theo mô hình cổ điển:
+            </p>
+
+            <div class="physio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+              <!-- Thẻ ngoại sinh -->
+              <div class="physio-grid-card" style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-rose);">
+                <div class="physio-grid-title" style="font-weight: 700; color: var(--color-rose); font-size: var(--text-sm); margin-bottom: 0.5rem;">
+                  1. Con đường ngoại sinh (Extrinsic Pathway)
+                </div>
+                <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                  Khởi phát nhanh chóng khi các mô tổn thương ngoài mạch máu giải phóng <span class="term-hl">Yếu tố mô (Tissue Factor - TF / Yếu tố III)</span>. TF tạo phức hợp với Yếu tố VII hoạt hóa (VIIa) khi có mặt ion <span class="term-hl-secondary">Ca<sup>2+</sup></span>, trực tiếp cắt và hoạt hóa yếu tố X thành Xa tại vị trí tổn thương mạch máu.
+                </p>
+              </div>
+
+              <!-- Thẻ nội sinh -->
+              <div class="physio-grid-card" style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-primary);">
+                <div class="physio-grid-title" style="font-weight: 700; color: var(--color-primary); font-size: var(--text-sm); margin-bottom: 0.5rem;">
+                  2. Con đường nội sinh (Intrinsic Pathway)
+                </div>
+                <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                  Khởi phát chậm hơn khi máu tiếp xúc bề mặt tích điện âm (như sợi collagen dưới nội mô bị lộ ra). Yếu tố XII tiếp xúc biến thành XIIa, lần lượt kích hoạt XI thành XIa, rồi IX thành IXa. Sau đó, phức hợp IXa kết hợp với đồng yếu tố VIIIa, ion <span class="term-hl-secondary">Ca<sup>2+</sup></span> và phospholipid màng tiểu cầu (Tenase complex) để hoạt hóa yếu tố X thành Xa.
+                </p>
+              </div>
+            </div>
+
+            <h3>3. Con đường chung (Common Pathway) và sự tạo Fibrin</h3>
+            <ul class="physio-list-arrow">
+              <li><strong>Hình thành Prothrombinase:</strong> Yếu tố Xa từ cả hai con đường kết hợp với đồng yếu tố Va, ion <span class="term-hl-secondary">Ca<sup>2+</sup></span> và Phospholipid màng để tạo thành phức hợp enzyme hoạt hóa <span class="term-hl">Prothrombinase</span>.</li>
+              <li><strong>Tạo Thrombin:</strong> Phức hợp Prothrombinase xúc tác cắt phân tử <span class="term-hl">Prothrombin (Yếu tố II)</span> thành enzyme hoạt động mạnh là <span class="term-hl">Thrombin (Yếu tố IIa)</span>.</li>
+              <li><strong>Tạo mạng lưới Fibrin vững chắc:</strong> Thrombin (IIa) xúc tác cắt bỏ các đoạn peptide nhỏ trên phân tử <span class="term-hl">Fibrinogen (Yếu tố I)</span> hòa tan, tạo các monomer Fibrin. Các monomer này tự động trùng hợp tạo thành mạng sợi huyết lỏng lẻo. Cuối cùng, Thrombin hoạt hóa <span class="term-hl-secondary">Yếu tố XIII</span> thành XIIIa. Dưới xúc tác của XIIIa và ion <span class="term-hl-secondary">Ca<sup>2+</sup></span>, các sợi huyết liên kết cộng hóa trị chéo vững chắc với nhau giam giữ hồng cầu, bạch cầu tạo thành cục máu đông đỏ (red clot).</li>
+            </ul>
+
+            <div class="clinical-note-box" style="background: var(--color-warning-hl); border-left: 4px solid var(--color-warning); margin-top: 1.5rem;">
+              <div class="clinical-note-title" style="font-weight: 700; color: var(--color-warning); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: var(--text-sm);">
+                🧠 CƠ CHẾ BỆNH HỌC: BỆNH ƯA CHẢY MÁU (HEMOPHILIA)
+              </div>
+              <p style="font-size: var(--text-xs); line-height: 1.6; margin: 0; color: var(--color-text-muted);">
+                Bệnh liên quan đến sự thiếu hụt các yếu tố đông máu di truyền liên kết nhiễm sắc thể X:<br>
+                - <strong>Hemophilia A:</strong> Thiếu hụt di truyền <span class="term-hl">Yếu tố VIII</span> (chiếm khoảng 85% các ca Hemophilia), làm tê liệt phức hợp Tenase nội sinh, không hoạt hóa được Yếu tố X.<br>
+                - <strong>Hemophilia B (Christmas Disease):</strong> Thiếu hụt di truyền <span class="term-hl">Yếu tố IX</span>.<br>
+                Bệnh nhân có biểu hiện xuất huyết kéo dài tự phát hoặc sau chấn thương nhẹ, đặc biệt xuất huyết tại các khớp lớn và cơ sâu.
+              </p>
+            </div>
+
+            <!-- Hình 2 -->
+            <div class="image-placeholder-card">
+              <div class="image-title">
+                <span>🖼️</span> Hình 2: Cơ chế dòng thác đông máu huyết tương (Figure 31-12 - The clotting mechanism - Ganong's Physiology)
+              </div>
+              <div class="image-drop-area">
+                <img src="../../images/Phan3/TC_Hinh2.png" alt="Cơ chế dòng thác đông máu"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                  <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                  <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh minh họa Figure 31-12 đang được cập nhật</p>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Mô tả:</strong> Sơ đồ tổng quát về cơ chế đông máu nội sinh (bắt đầu bằng XII tiếp xúc), ngoại sinh (bắt đầu bằng mô tổn thương giải phóng TF), cả hai cùng dẫn tới hoạt hóa yếu tố X. Con đường chung xúc tác Prothrombin thành Thrombin, biến đổi Fibrinogen thành sợi huyết Fibrin không hòa tan và được gia cố bởi yếu tố XIIIa.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- PHẦN IV -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần IV: Co cục máu đông và Tiêu sợi huyết (Clot Retraction &amp; Fibrinolysis)</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              Sau khi cục máu đông đã hình thành ổn định và sửa chữa xong vết rách thành mạch, cục máu đông cần phải co rút lại để kéo khép hai mép vết thương, sau đó sẽ bị phân hủy hoàn toàn để tái thông lòng mạch bình thường.
+            </p>
+
+            <h3>1. Hiện tượng co cục máu đông (Clot Retraction)</h3>
+            <p>
+              Khoảng vài chục phút đến vài giờ sau khi đông máu, các sợi fibrin trong cục máu đông bắt đầu co rút lại. Quá trình này được thúc đẩy bởi:
+            </p>
+            <ul class="physio-list-arrow">
+              <li>Sự co bóp của các vi sợi cơ actin và myosin của các tiểu cầu nằm kẹp trong mạng lưới fibrin.</li>
+              <li>Sự xúc tác của enzyme <span class="term-hl-secondary">retractozyme</span> được phóng thích từ bào tương tiểu cầu hoạt hóa.</li>
+              <li>Sự có mặt bắt buộc của năng lượng ATP, men Thrombin và ion <span class="term-hl-secondary">Ca<sup>2+</sup></span>.</li>
+            </ul>
+            <p>Kết quả là huyết thanh (serum - huyết tương đã loại bỏ fibrinogen và các yếu tố đông máu) bị ép ra ngoài. Cục máu đông co nhỏ lại làm khép chặt mép tổn thương, giúp phục hồi lưu thông mạch máu ban đầu nhanh hơn.</p>
+
+            <h3>2. Quá trình tiêu sợi huyết (Fibrinolysis)</h3>
+            <p>
+              Để dọn dẹp hoàn toàn cục huyết khối sau khi mạch máu đã lành lặn, hệ thống tiêu sợi huyết sẽ được kích hoạt để làm tan mạng lưới Fibrin:
+            </p>
+            <ul class="physio-list-arrow">
+              <li><strong>Hoạt hóa Plasminogen:</strong> Một glycoprotein huyết tương thụ động là <span class="term-hl">Plasminogen</span> bị giam giữ trong cục máu đông sẽ được hoạt hóa thành enzyme protease <span class="term-hl">Plasmin (Fibrinolysin)</span>.</li>
+              <li><strong>Tác nhân kích hoạt:</strong> Quá trình chuyển hóa này được xúc tác bởi <span class="term-hl-secondary">t-PA (tissue Plasminogen Activator)</span> do các tế bào nội mô mạch máu lành xung quanh tiết ra, hoặc <span class="term-hl-secondary">u-PA (urokinase)</span>, và các yếu tố tiếp xúc nội sinh như Yếu tố XIIa, Kallikrein.</li>
+              <li><strong>Tiêu Fibrin:</strong> Plasmin là một enzyme phân giải protein mạnh. Nó cắt đứt các sợi fibrin và fibrinogen thành các mảnh peptide hòa tan gọi là các sản phẩm thoái biến của fibrin (<span class="term-hl">FDPs - Fibrin Degradation Products</span>, bao gồm cả **D-Dimer**).</li>
+            </ul>
+
+            <div class="clinical-note-box" style="background: var(--color-warning-hl); border-left: 4px solid var(--color-warning); margin-top: 1.5rem;">
+              <div class="clinical-note-title" style="font-weight: 700; color: var(--color-warning); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: var(--text-sm);">
+                🧠 ỨNG DỤNG LÂM SÀNG: ĐIỀU TRỊ TIÊU SỢI HUYẾT VÀ CHỈ SỐ D-DIMER
+              </div>
+              <p style="font-size: var(--text-xs); line-height: 1.6; margin: 0; color: var(--color-text-muted);">
+                - <strong>Thuốc tiêu sợi huyết (t-PA tái tổ hợp - Alteplase):</strong> Được dùng truyền tĩnh mạch cấp cứu cho bệnh nhân nhồi máu não cấp hoặc nhồi máu cơ tim cấp trong "giờ vàng" nhằm nhanh chóng làm tan cục máu đông chặn động mạch, tái tưới máu cứu nhu mô cơ tim/não.<br>
+                - <strong>Định lượng D-Dimer:</strong> D-Dimer là một sản phẩm thoái hóa đặc hiệu từ sợi Fibrin đã được liên kết chéo bởi XIIIa. Chỉ số D-Dimer tăng cao trong máu phản ánh có sự hiện diện của cục máu đông đang bị phân hủy trong cơ thể (như thuyên tắc phổi - PE, huyết khối tĩnh mạch sâu - DVT, hay đông máu nội quản rải rác - DIC).
+              </p>
+            </div>
+
+            <!-- Hình 3 -->
+            <div class="image-placeholder-card">
+              <div class="image-title">
+                <span>🖼️</span> Hình 3: Sơ đồ hệ thống tiêu sợi huyết (Plate 4.9 - Fibrinolysis and Thromboprotection - Color Atlas of Physiology)
+              </div>
+              <div class="image-drop-area">
+                <img src="../../images/Phan3/TC_Hinh3.png" alt="Sơ đồ hệ thống tiêu sợi huyết"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                  <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                  <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh minh họa Plate 4.9 đang được cập nhật</p>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Mô tả:</strong> Sơ đồ biểu diễn cơ chế hoạt hóa Plasminogen tuần hoàn thành Plasmin hoạt động dưới tác động của tPA hoặc Urokinase, xúc tác cắt đứt sợi Fibrin liên kết chéo thành các hạt Fibrinopeptides/D-Dimer hòa tan để giải tỏa lòng mạch.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- PHẦN V -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần V: Các Cơ chế Chống đông máu tự nhiên (Natural Anticoagulant Mechanisms)</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              Để ngăn cản phản ứng đông máu lan rộng mất kiểm soát gây bít kín lòng mạch lành, cơ thể duy trì trạng thái lỏng của máu nhờ các cơ chế chống đông tự nhiên tại lớp tế bào nội mô lành lặn.
+            </p>
+
+            <ul class="physio-list-arrow">
+              <li>
+                <strong>Hệ thống Antithrombin III và Heparin:</strong>
+                <span class="term-hl">Antithrombin III</span> là một chất ức chế protease serine tuần hoàn do gan sản xuất. Nó gắn kết và bất hoạt enzyme Thrombin (IIa) cùng các yếu tố hoạt hóa khác bao gồm IXa, Xa, XIa, XIIa. Hoạt tính ức chế của Antithrombin III được tăng lên gấp hàng ngàn lần khi liên kết với chất chống đông tự nhiên <span class="term-hl-secondary">Heparin</span> (do các tế bào mast nội mô và bạch cầu ái kiềm giải phóng).
+              </li>
+              <li>
+                <strong>Hệ thống Thrombomodulin - Protein C - Protein S:</strong>
+                Tế bào nội mô nguyên vẹn biểu lộ protein màng <span class="term-hl">Thrombomodulin</span>. Khi Thrombin (IIa) dư thừa liên kết với Thrombomodulin, nó bị biến đổi cấu hình mất tính gây đông máu, đồng thời kích hoạt chất chống đông tự nhiên là <span class="term-hl">Protein C</span> tuần hoàn tạo thành Protein C hoạt hóa (APC). APC phối hợp với đồng yếu tố <span class="term-hl-secondary">Protein S</span> cắt bất hoạt hoàn toàn hai đồng yếu tố hoạt hóa quan trọng là <span class="term-hl-secondary">Va</span> và <span class="term-hl-secondary">VIIIa</span>, làm đình trệ dòng thác đông máu.
+              </li>
+              <li>
+                <strong>Chất ức chế con đường Yếu tố mô (TFPI - Tissue Factor Pathway Inhibitor):</strong>
+                TFPI là một protein huyết tương do tế bào nội mô bài tiết, trực tiếp tạo phức hợp ức chế đa phân gồm TF-VIIa-Xa để bất hoạt nhanh chóng con đường đông máu ngoại sinh ngay tại giai đoạn khởi đầu.
+              </li>
+              <li>
+                <strong>Prostacyclin (PGI<sub>2</sub>) và Nitric Oxide (NO):</strong>
+                Do các tế bào nội mô nguyên vẹn bài tiết thường trực vào lòng mạch. Có tác dụng sinh lý gây giãn cơ trơn thành mạch và ức chế mạnh mẽ sự bám dính cũng như ngưng tập của tiểu cầu vào vùng nội mô lành.
+              </li>
+            </ul>
+
+            <!-- Hình 4 -->
+            <div class="image-placeholder-card">
+              <div class="image-title">
+                <span>🖼️</span> Hình 4: Cơ chế điều hòa chống đông và tiêu sợi huyết của hệ thống Protein C (Figure 31-13 - Ganong's Physiology)
+              </div>
+              <div class="image-drop-area">
+                <img src="../../images/Phan3/TC_Hinh4.png" alt="Cơ chế điều hòa Protein C"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                  <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                  <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh minh họa Figure 31-13 đang được cập nhật</p>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Mô tả:</strong> Hình vẽ bóc tách hoạt động của Protein C. Thrombin kết hợp Thrombomodulin trên nội mô kích hoạt Protein C thành APC. APC cùng Protein S phân hủy Va, VIIIa. Đồng thời APC ức chế chất ức chế hoạt hóa plasminogen (PAI-1) giúp hoạt hóa t-PA thúc đẩy phân hủy Fibrin.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- TÀI LIỆU THAM KHẢO -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Tài liệu tham khảo</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <ol style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin-left: 1.5rem;">
+              <li>Barrett KE, Barman SM, Boitano S, Brooks HL. <em>Ganong's Review of Medical Physiology</em>. 24th ed. McGraw-Hill Education; 2012.</li>
+              <li>Despopoulos A, Silbernagl S. <em>Color Atlas of Physiology</em>. 5th ed. Thieme; 2003.</li>
+              <li>Thảo MP. <em>Sinh lý MÁU P1 YDS 2025</em> [Video recording]. Youtube; 2025.</li>
+              <li>Thảo MP. <em>Sinh lý MÁU P2 YDS</em> [Video recording]. Youtube; 2025.</li>
+            </ol>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Nạp Footer động -->
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+  <!-- Script điều khiển chung -->
+  <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>
