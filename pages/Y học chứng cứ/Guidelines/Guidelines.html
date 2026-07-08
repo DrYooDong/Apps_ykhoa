@@ -4,12 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Tổng hợp nghiên cứu lâm sàng hệ Nội — Cập nhật từ các tạp chí và hội nghị y khoa quốc tế">
-  <title>Nghiên Cứu Lâm Sàng Hệ Nội — CliniPortal</title>
+  <meta name="description" content="Tổng hợp hướng dẫn điều trị Bộ Y tế, các hiệp hội và tài liệu y khoa Việt Nam cùng các nghiên cứu lâm sàng quốc tế">
+  <title>Hướng Dẫn & Nghiên Cứu Lâm Sàng — CliniPortal</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Supabase JS Client SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -42,6 +44,18 @@
       --bg-negative: #f3f4f6;
       --color-regulatory: #7c3aed;
       --bg-regulatory: #faf5ff;
+
+      /* Source Type colors */
+      --color-src-intl-study: #6366f1;
+      --bg-src-intl-study: #e0e7ff;
+      --color-src-intl-guideline: #0d9488;
+      --bg-src-intl-guideline: #ccfbf1;
+      --color-src-vn-moh: #dc2626;
+      --bg-src-vn-moh: #fee2e2;
+      --color-src-vn-doh: #ea580c;
+      --bg-src-vn-doh: #ffedd5;
+      --color-src-vn-association: #16a34a;
+      --bg-src-vn-association: #dcfce7;
     }
 
     html { scroll-behavior: smooth; }
@@ -576,6 +590,13 @@
     .impact-regulatory { background: var(--bg-regulatory); color: var(--color-regulatory); }
     .impact-regulatory .impact-dot { background: var(--color-regulatory); }
 
+    /* Source Type badges */
+    .badge-src-intl-study { background: var(--bg-src-intl-study); color: var(--color-src-intl-study); }
+    .badge-src-intl-guideline { background: var(--bg-src-intl-guideline); color: var(--color-src-intl-guideline); }
+    .badge-src-vn-moh { background: var(--bg-src-vn-moh); color: var(--color-src-vn-moh); }
+    .badge-src-vn-doh { background: var(--bg-src-vn-doh); color: var(--color-src-vn-doh); }
+    .badge-src-vn-association { background: var(--bg-src-vn-association); color: var(--color-src-vn-association); }
+
     .badge {
       display: inline-flex; align-items: center; gap: 4px;
       padding: 3px 9px; border-radius: 12px;
@@ -885,9 +906,14 @@
       Y học chứng cứ
     </a>
     <div class="topnav-divider"></div>
-    <div class="topnav-title">📊 Nghiên Cứu Lâm Sàng Hệ Nội Khoa</div>
+    <div class="topnav-title">📊 Hướng Dẫn & Nghiên Cứu Lâm Sàng</div>
     <div class="topnav-right">
-      <span class="topnav-pill">Nội khoa</span>
+      <!-- Supabase Connection Indicator & Sync -->
+      <button class="btn" id="supabase-status-btn" onclick="openSupabaseModal()" style="padding: 0.35rem 0.65rem; display: flex; align-items: center; gap: 6px; border-radius: 8px; border: 1.5px solid var(--border-light); cursor: pointer;">
+        <span id="supabase-status-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #94a3b8; display: inline-block;"></span>
+        <span id="supabase-status-text" style="font-size: 0.72rem; font-weight: 700;">Supabase: Local Mode</span>
+      </button>
+      <span class="topnav-pill">EBM & Guidelines</span>
     </div>
   </nav>
 
@@ -898,7 +924,7 @@
       <div class="left-nav-section">
         <div class="left-nav-label">Chức năng chính</div>
         <button class="left-nav-link active" id="sidebar-btn-studies" onclick="switchTab('list')">
-          <span>📚 Tất cả nghiên cứu</span>
+          <span>📚 Tất cả tài liệu</span>
           <span class="left-nav-link-badge" id="total-count-sidebar">0</span>
         </button>
         <button class="left-nav-link" id="sidebar-btn-saved" onclick="switchTab('saved')">
@@ -906,7 +932,7 @@
           <span class="left-nav-link-badge" id="saved-count-sidebar">0</span>
         </button>
         <button class="left-nav-link" onclick="openAddModal()">
-          <span>➕ Thêm nghiên cứu</span>
+          <span>➕ Thêm tài liệu</span>
         </button>
         <button class="left-nav-link" onclick="openImportModal()">
           <span>📥 Nhập dữ liệu JSON</span>
@@ -926,7 +952,7 @@
       <section class="updates-section" id="section-recent-updates">
         <div class="updates-header">
           <h2>🆕 Có Gì Mới</h2>
-          <p>Cập nhật nghiên cứu lâm sàng mới nhất hệ Nội khoa</p>
+          <p>Cập nhật hướng dẫn lâm sàng và nghiên cứu mới nhất</p>
         </div>
         <div class="updates-list" id="updates-list">
           <!-- Dynamic content -->
@@ -936,8 +962,8 @@
       <!-- TABS NAVIGATION ROW -->
       <div class="tabs-header-row">
         <div class="tabs-header-left">
-          <h1 id="page-panel-title">Nghiên Cứu Lâm Sàng</h1>
-          <p>Dữ liệu y học chứng cứ hỗ trợ ra quyết định lâm sàng dựa trên các thử nghiệm mới nhất</p>
+          <h1 id="page-panel-title">Hướng Dẫn & Nghiên Cứu Lâm Sàng</h1>
+          <p>Dữ liệu hướng dẫn điều trị Bộ Y tế, hội chuyên khoa Việt Nam/quốc tế và các thử nghiệm lâm sàng</p>
         </div>
         <div class="tab-bar-container">
           <button class="tab-trigger active" id="tab-list" onclick="switchTab('list')">
@@ -974,10 +1000,14 @@
                 📊 Cột hiển thị
               </button>
               <div class="dropdown-menu" id="columns-dropdown-menu">
+                <label class="dropdown-item"><input type="checkbox" checked data-column="sourceType" onchange="toggleColumnVisibility('sourceType', this.checked)"> Phân loại nguồn</label>
                 <label class="dropdown-item"><input type="checkbox" checked data-column="specialty" onchange="toggleColumnVisibility('specialty', this.checked)"> Chuyên khoa</label>
+                <label class="dropdown-item"><input type="checkbox" checked data-column="design" onchange="toggleColumnVisibility('design', this.checked)"> Thiết kế nghiên cứu</label>
+                <label class="dropdown-item"><input type="checkbox" checked data-column="intervention" onchange="toggleColumnVisibility('intervention', this.checked)"> Can thiệp / Đối chứng</label>
+                <label class="dropdown-item"><input type="checkbox" checked data-column="primaryEndpoint" onchange="toggleColumnVisibility('primaryEndpoint', this.checked)"> Tiêu chí chính</label>
+                <label class="dropdown-item"><input type="checkbox" checked data-column="keyResults" onchange="toggleColumnVisibility('keyResults', this.checked)"> Kết quả chính</label>
                 <label class="dropdown-item"><input type="checkbox" checked data-column="impact" onchange="toggleColumnVisibility('impact', this.checked)"> Ảnh hưởng</label>
                 <label class="dropdown-item"><input type="checkbox" checked data-column="conclusion" onchange="toggleColumnVisibility('conclusion', this.checked)"> Kết luận</label>
-                <label class="dropdown-item"><input type="checkbox" checked data-column="phase" onchange="toggleColumnVisibility('phase', this.checked)"> Giai đoạn</label>
                 <label class="dropdown-item"><input type="checkbox" checked data-column="sampleSize" onchange="toggleColumnVisibility('sampleSize', this.checked)"> Cỡ mẫu</label>
                 <label class="dropdown-item"><input type="checkbox" checked data-column="population" onchange="toggleColumnVisibility('population', this.checked)"> Đối tượng</label>
               </div>
@@ -996,6 +1026,22 @@
             </div>
           </div>
 
+          <!-- Row 2: Source Type Filters -->
+          <div class="filter-group-row" id="filter-row-source-type">
+            <span class="filter-row-label">Phân loại nguồn</span>
+            <div class="filter-pills" id="source-type-pills">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- Row 3: Impact Filters -->
+          <div class="filter-group-row" id="filter-row-impact">
+            <span class="filter-row-label">Mức ảnh hưởng</span>
+            <div class="filter-pills" id="impact-pills">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
           <!-- Advanced Filters Row (Chuyên khoa) -->
           <div class="filter-group-row" id="filter-row-specialty" style="display: none;">
             <span class="filter-row-label">Chuyên khoa</span>
@@ -1004,16 +1050,16 @@
             </div>
           </div>
 
-          <!-- Row 2: Impact Filters -->
-          <div class="filter-group-row">
-            <span class="filter-row-label">Mức ảnh hưởng</span>
-            <div class="filter-pills" id="impact-pills">
+          <!-- Advanced Filters Row (Thiết kế nghiên cứu) -->
+          <div class="filter-group-row" id="filter-row-design" style="display: none;">
+            <span class="filter-row-label">Thiết kế</span>
+            <div class="filter-pills" id="design-pills">
               <!-- Rendered via JS -->
             </div>
           </div>
 
-          <!-- Row 3: Period Filters & Asian data checkbox -->
-          <div class="filter-group-row">
+          <!-- Advanced Filters Row (Thời gian & Châu Á) -->
+          <div class="filter-group-row" id="filter-row-period" style="display: none;">
             <span class="filter-row-label">Thời gian</span>
             <div class="filter-pills" id="period-pills">
               <!-- Rendered via JS -->
@@ -1036,11 +1082,15 @@
                 </th>
                 <th class="col-star cell-center">⭐</th>
                 <th class="col-expand cell-center"></th>
-                <th class="col-study sortable" data-sort="title">Nghiên cứu / Thuốc</th>
+                <th class="col-study sortable" data-sort="title">Tài liệu & Nghiên cứu / Hoạt chất</th>
+                <th class="sortable" data-sort="sourceType" data-col="sourceType">Phân loại nguồn</th>
                 <th class="sortable" data-sort="specialty" data-col="specialty">Chuyên khoa</th>
+                <th class="sortable" data-sort="design" data-col="design">Thiết kế</th>
+                <th class="sortable" data-sort="intervention" data-col="intervention">Can thiệp / Đối chứng</th>
+                <th class="sortable" data-sort="primaryEndpoint" data-col="primaryEndpoint">Tiêu chí chính</th>
+                <th class="sortable" data-sort="keyResults" data-col="keyResults">Kết quả chính</th>
                 <th class="col-impact sortable" data-sort="impact" data-col="impact">Ảnh hưởng</th>
                 <th class="sortable" data-sort="conclusion" data-col="conclusion">Kết luận</th>
-                <th class="sortable cell-center" data-sort="phase" data-col="phase">GĐ</th>
                 <th class="sortable" data-sort="sampleSize" data-col="sampleSize">Cỡ mẫu</th>
                 <th class="sortable" data-sort="population" data-col="population">Đối tượng</th>
               </tr>
@@ -1054,7 +1104,7 @@
         <!-- Empty State -->
         <div class="empty-state" id="empty-state" style="display:none;">
           <div class="empty-state-icon">📋</div>
-          <p id="empty-state-message">Chưa có nghiên cứu nào khớp với bộ lọc. Hãy điều chỉnh bộ lọc hoặc thêm nghiên cứu mới.</p>
+          <p id="empty-state-message">Chưa có tài liệu nào khớp với bộ lọc. Hãy điều chỉnh bộ lọc hoặc thêm tài liệu mới.</p>
         </div>
 
       </section>
@@ -1064,8 +1114,8 @@
         <div class="compare-container">
           <div class="compare-header">
             <div>
-              <h3>Bảng đối chiếu thử nghiệm lâm sàng</h3>
-              <p>Đang so sánh <span id="compare-selected-count">0</span> nghiên cứu được chọn</p>
+              <h3>Bảng đối chiếu hướng dẫn & nghiên cứu lâm sàng</h3>
+              <p>Đang so sánh <span id="compare-selected-count">0</span> tài liệu được chọn</p>
             </div>
             <button class="btn" onclick="clearComparison()">❌ Xóa tất cả so sánh</button>
           </div>
@@ -1076,7 +1126,7 @@
           
           <div class="empty-state" id="compare-empty-state">
             <div class="empty-state-icon">🔄</div>
-            <p>Vui lòng chọn ít nhất một nghiên cứu ở bảng danh sách (tích chọn checkbox) để so sánh.</p>
+            <p>Vui lòng chọn ít nhất một tài liệu ở bảng danh sách (tích chọn checkbox) để so sánh.</p>
           </div>
         </div>
       </section>
@@ -1088,7 +1138,7 @@
   <div class="modal-overlay" id="add-modal">
     <div class="modal">
       <div class="modal-header">
-        <h3 id="modal-form-title">➕ Thêm Nghiên Cứu Mới</h3>
+        <h3 id="modal-form-title">➕ Thêm Tài Liệu / Nghiên Cứu Mới</h3>
         <button class="modal-close" onclick="closeAddModal()">&times;</button>
       </div>
       <div class="modal-body">
@@ -1097,15 +1147,41 @@
           
           <div class="form-row">
             <div class="form-group">
-              <label for="study-title">Tên nghiên cứu *</label>
-              <input type="text" id="study-title" required placeholder="Ví dụ: EMPA-REG OUTCOME">
+              <label for="study-title">Tên tài liệu / Nghiên cứu *</label>
+              <input type="text" id="study-title" required placeholder="Ví dụ: Khuyến cáo điều trị suy tim VNHA 2023">
             </div>
             <div class="form-group">
-              <label for="study-drug">Tên thuốc hoạt chất *</label>
-              <input type="text" id="study-drug" required placeholder="Ví dụ: Empagliflozin">
+              <label for="study-drug">Tên hoạt chất / Nhóm thuốc *</label>
+              <input type="text" id="study-drug" required placeholder="Ví dụ: ARNI, SGLT2i">
             </div>
           </div>
           
+          <div class="form-row">
+            <div class="form-group">
+              <label for="study-source-type">Phân loại nguồn *</label>
+              <select id="study-source-type" required>
+                <option value="">-- Chọn phân loại nguồn --</option>
+                <option value="intl-study">Nghiên cứu Quốc tế</option>
+                <option value="intl-guideline">Guideline Quốc tế</option>
+                <option value="vn-moh">Bộ Y tế Việt Nam</option>
+                <option value="vn-doh">Sở Y tế Việt Nam</option>
+                <option value="vn-association">Hội chuyên khoa VN (VNHA,...)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="study-design">Thiết kế nghiên cứu *</label>
+              <select id="study-design" required>
+                <option value="">-- Chọn thiết kế nghiên cứu --</option>
+                <option value="rct">Thử nghiệm lâm sàng (RCT)</option>
+                <option value="meta">Tổng quan / Phân tích gộp (Meta-Analysis)</option>
+                <option value="cohort">Nghiên cứu quan sát / Thuần tập</option>
+                <option value="guideline">Hướng dẫn / Khuyến cáo lâm sàng</option>
+                <option value="review">Bài tổng quan y khoa (Review)</option>
+                <option value="other">Khác</option>
+              </select>
+            </div>
+          </div>
+
           <div class="form-row">
             <div class="form-group">
               <label for="study-specialty">Chuyên khoa *</label>
@@ -1149,8 +1225,19 @@
 
           <div class="form-row">
             <div class="form-group">
-              <label for="study-phase">Giai đoạn thử nghiệm</label>
-              <input type="text" id="study-phase" placeholder="Ví dụ: Phase III, Phase IV, Meta-analysis">
+              <label for="study-intervention">Can thiệp / Đối chứng</label>
+              <input type="text" id="study-intervention" placeholder="Ví dụ: Empagliflozin 10mg vs Placebo">
+            </div>
+            <div class="form-group">
+              <label for="study-primary-endpoint">Tiêu chí đánh giá chính</label>
+              <input type="text" id="study-primary-endpoint" placeholder="Ví dụ: Tử vong do tim mạch hoặc nhập viện do suy tim">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="study-key-results">Kết quả chính / Chỉ số thống kê</label>
+              <input type="text" id="study-key-results" placeholder="Ví dụ: HR 0.75 (95% CI 0.65-0.86); p<0.001">
             </div>
             <div class="form-group">
               <label for="study-sample-size">Cỡ mẫu nghiên cứu (số lượng bệnh nhân)</label>
@@ -1198,38 +1285,70 @@
 
           <div style="display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1.5rem;">
             <button type="button" class="btn" onclick="closeAddModal()">Hủy</button>
-            <button type="submit" class="btn btn-primary" id="btn-save-study">Lưu nghiên cứu</button>
+            <button type="submit" class="btn btn-primary" id="btn-save-study">Lưu tài liệu</button>
           </div>
         </form>
       </div>
     </div>
   </div>
 
-  <!-- IMPORT JSON MODAL -->
-  <div class="modal-overlay" id="import-modal">
-    <div class="modal">
+  <!-- SUPABASE SETTINGS MODAL -->
+  <div class="modal-overlay" id="supabase-modal">
+    <div class="modal" style="max-width: 500px;">
       <div class="modal-header">
-        <h3>📥 Nhập File JSON</h3>
-        <button class="modal-close" onclick="closeImportModal()">&times;</button>
+        <h3>☁️ Cấu hình Supabase</h3>
+        <button class="modal-close" onclick="closeSupabaseModal()">&times;</button>
       </div>
       <div class="modal-body">
-        <div class="file-drop-zone" id="drop-zone" onclick="document.getElementById('file-input').click()">
-          <p style="font-size: 1.5rem; margin-bottom: 0.5rem;">📁</p>
-          <p><strong>Kéo thả file JSON vào đây</strong></p>
-          <p>hoặc click để chọn file</p>
-          <small>Định dạng: Mảng chứa các đối tượng nghiên cứu lâm sàng</small>
-        </div>
-        <input type="file" id="file-input" accept=".json" style="display: none;" onchange="handleFileSelect(event)">
-        
-        <div class="form-group" style="margin-top: 1.5rem;">
-          <label for="json-text">Hoặc dán JSON trực tiếp:</label>
-          <textarea id="json-text" rows="8" placeholder='[{"title": "...", "drug": "...", "specialty": "cardio", "impact": "practice-changing", "year": 2015}]'></textarea>
-        </div>
+        <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5;">
+          Đồng bộ dữ liệu tài liệu & nghiên cứu lên đám mây Supabase để đồng bộ hóa trên mọi thiết bị. Dữ liệu sẽ tự động lưu tạm thời tại LocalStorage khi ngoại tuyến.
+        </p>
+        <form id="supabase-form" onsubmit="saveSupabaseConfig(event)">
+          <div class="form-group">
+            <label for="sb-url">Supabase Project URL</label>
+            <input type="url" id="sb-url" placeholder="https://xxxxxxxxxxxxxx.supabase.co" required>
+          </div>
+          <div class="form-group">
+            <label for="sb-key">Supabase Anon Key (Public Key)</label>
+            <input type="password" id="sb-key" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." required>
+          </div>
 
-        <div style="display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1.5rem;">
-          <button type="button" class="btn" onclick="closeImportModal()">Hủy</button>
-          <button type="button" class="btn btn-primary" onclick="importFromText()">Nhập dữ liệu</button>
-        </div>
+          <details style="margin-top: 1rem; border: 1px solid var(--border-light); border-radius: 8px; padding: 0.5rem;">
+            <summary style="font-size: 0.75rem; font-weight: 700; color: var(--accent); cursor: pointer; user-select: none;">💡 Câu lệnh SQL tạo bảng mẫu trên Supabase</summary>
+            <pre style="font-size: 0.68rem; background: var(--surface-2); padding: 0.5rem; border-radius: 6px; overflow-x: auto; margin-top: 0.5rem; color: var(--text-muted); text-align: left; max-height: 150px; font-family: monospace;">
+create table clinical_guidelines (
+  id text primary key,
+  title text not null,
+  drug text,
+  "sourceType" text,
+  specialty text,
+  design text,
+  intervention text,
+  "primaryEndpoint" text,
+  "keyResults" text,
+  impact text,
+  year integer,
+  organization text,
+  phase text,
+  "sampleSize" integer,
+  population text,
+  summary text,
+  "detailedConclusion" text,
+  "fdaStatus" text,
+  "sourceUrl" text,
+  file text,
+  "asianData" boolean,
+  bookmarked boolean,
+  "createdAt" timestamp with time zone default timezone('utc'::text, now())
+);</pre>
+          </details>
+          
+          <div style="display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1.5rem;">
+            <button type="button" class="btn" style="color: var(--color-practice-changing); border-color: rgba(220,38,38,0.2);" onclick="clearSupabaseConfig()">Xóa cấu hình</button>
+            <button type="button" class="btn" onclick="closeSupabaseModal()">Hủy</button>
+            <button type="submit" class="btn btn-primary">Lưu & Kết nối</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -1252,6 +1371,23 @@
       onco: { name: 'Ung thư', color: '#be185d', bg: '#fce7f3' }
     };
 
+    const SOURCE_TYPES = {
+      'intl-study': { name: 'Nghiên cứu Quốc tế', color: '#6366f1', bg: '#e0e7ff' },
+      'intl-guideline': { name: 'Guideline Quốc tế', color: '#0d9488', bg: '#ccfbf1' },
+      'vn-moh': { name: 'Bộ Y tế Việt Nam', color: '#dc2626', bg: '#fee2e2' },
+      'vn-doh': { name: 'Sở Y tế Việt Nam', color: '#ea580c', bg: '#ffedd5' },
+      'vn-association': { name: 'Hội chuyên khoa VN', color: '#16a34a', bg: '#dcfce7' }
+    };
+
+    const DESIGNS = {
+      'rct': { name: 'Thử nghiệm lâm sàng (RCT)' },
+      'meta': { name: 'Tổng quan / Meta-Analysis' },
+      'cohort': { name: 'Nghiên cứu quan sát / Thuần tập' },
+      'guideline': { name: 'Hướng dẫn / Khuyến cáo' },
+      'review': { name: 'Bài tổng quan y khoa (Review)' },
+      'other': { name: 'Khác' }
+    };
+
     const IMPACTS = {
       'practice-changing': { name: 'Practice-Changing', color: '#dc2626', bg: '#fef2f2' },
       'informative': { name: 'Informative', color: '#2563eb', bg: '#eff6ff' },
@@ -1265,7 +1401,12 @@
         id: "study_empareg",
         title: "EMPA-REG OUTCOME",
         drug: "Empagliflozin",
+        sourceType: "intl-study",
         specialty: "cardio",
+        design: "rct",
+        intervention: "Empagliflozin 10/25mg QD vs Placebo",
+        primaryEndpoint: "3-point MACE (Tử vong tim mạch, nhồi máu cơ tim không tử vong, đột quỵ không tử vong)",
+        keyResults: "HR 0.86 (95% CI 0.74-0.99); p=0.04",
         impact: "practice-changing",
         year: 2015,
         organization: "NEJM / Boehringer Ingelheim",
@@ -1280,6 +1421,56 @@
         asianData: true,
         bookmarked: true,
         createdAt: new Date().toISOString()
+      },
+      {
+        id: "study_vnha2023",
+        title: "Khuyến cáo chẩn đoán & điều trị suy tim cấp và mạn VNHA/VCS 2023",
+        drug: "ARNI, SGLT2i, Chẹn Beta, MRA",
+        sourceType: "vn-association",
+        specialty: "cardio",
+        design: "guideline",
+        intervention: "Bộ tứ trụ cột (ARNI/ACEi/ARB, Chẹn Beta, Kháng Aldosterone, SGLT2i) vs Điều trị chuẩn cũ",
+        primaryEndpoint: "Cải thiện tử vong tim mạch và giảm nhập viện do suy tim",
+        keyResults: "Khuyến cáo mức chỉ định Class I (Bằng chứng A)",
+        impact: "practice-changing",
+        year: 2023,
+        organization: "Hội Tim Mạch Học Quốc Gia Việt Nam",
+        phase: "Guidelines",
+        sampleSize: null,
+        population: "Bệnh nhân suy tim cấp hoặc mạn tính tại Việt Nam",
+        summary: "Cập nhật khuyến cáo điều trị suy tim theo bộ tứ trụ cột (ARNI/ACEi/ARB, Chẹn beta, Kháng aldosterone, SGLT2i) phù hợp với thực hành lâm sàng tại Việt Nam.",
+        detailedConclusion: "Phân độ khuyến cáo Class I cho điều trị suy tim phân suất tống máu giảm (HFrEF) với bộ tứ trụ cột. ARNI được ưu tiên chỉ định thay thế ACEi/ARB để cải thiện tử vong và nhập viện do suy tim.",
+        fdaStatus: "Khuyến cáo Class I - VNHA 2023",
+        sourceUrl: "https://vnha.org.vn/",
+        file: "",
+        asianData: true,
+        bookmarked: false,
+        createdAt: new Date().toISOString()
+      },
+      {
+        id: "study_byt2020",
+        title: "Hướng dẫn chẩn đoán và điều trị đái tháo đường típ 2 - Bộ Y tế",
+        drug: "Metformin, SGLT2i, GLP-1 RA, DPP-4i, SU, Insulin",
+        sourceType: "vn-moh",
+        specialty: "endo",
+        design: "guideline",
+        intervention: "Cá thể hóa phác đồ kết hợp Metformin, SGLT2i, GLP-1 RA dựa trên nguy cơ tim mạch",
+        primaryEndpoint: "Kiểm soát HbA1c và bảo vệ tim mạch/thận",
+        keyResults: "Phác đồ ưu tiên hàng đầu cho bệnh nhân kèm suy tim, bệnh thận mạn",
+        impact: "practice-changing",
+        year: 2020,
+        organization: "Bộ Y tế Việt Nam",
+        phase: "Guidelines",
+        sampleSize: null,
+        population: "Bệnh nhân đái tháo đường típ 2 tại Việt Nam",
+        summary: "Phác đồ điều trị ĐTĐ típ 2 cập nhật của Bộ Y tế Việt Nam, cá thể hóa điều trị dựa trên bệnh lý tim mạch do xơ vữa, suy tim hoặc bệnh thận mạn kèm theo.",
+        detailedConclusion: "Ưu tiên lựa chọn SGLT2i hoặc GLP-1 RA độc lập với mức HbA1c ở bệnh nhân ĐTĐ típ 2 kèm bệnh tim mạch do xơ vữa, suy tim hoặc bệnh thận mạn để bảo vệ tim mạch và thận.",
+        fdaStatus: "Quyết định số 4800/QĐ-BYT",
+        sourceUrl: "https://kcb.vn/",
+        file: "",
+        asianData: true,
+        bookmarked: false,
+        createdAt: new Date().toISOString()
       }
     ];
 
@@ -1292,12 +1483,21 @@
     let currentTab = 'list'; // 'list', 'saved', 'compare'
     let showAdvancedFilters = false;
 
+    // Supabase state
+    let supabaseClient = null;
+    let supabaseConfig = { url: '', key: '' };
+    let dbStatus = 'disconnected'; // 'connected', 'disconnected', 'error'
+
     // Columns visibility state
     let columnVisibility = {
+      sourceType: true,
       specialty: true,
+      design: true,
+      intervention: true,
+      primaryEndpoint: true,
+      keyResults: true,
       impact: true,
       conclusion: true,
-      phase: true,
       sampleSize: true,
       population: true
     };
@@ -1305,7 +1505,9 @@
     // Filter values
     let filters = {
       search: '',
+      sourceType: null,
       specialty: null,
+      design: null,
       impact: null,
       period: null,
       asianData: false
@@ -1313,6 +1515,228 @@
 
     let sortField = 'title';
     let sortAsc = true;
+
+    // ════════════════════════════
+    // SUPABASE CONFIG & SYNC
+    // ════════════════════════════
+
+    function initSupabase() {
+      const url = localStorage.getItem('supabaseUrl');
+      const key = localStorage.getItem('supabaseKey');
+      
+      if (url && key && window.supabase) {
+        supabaseConfig = { url, key };
+        try {
+          supabaseClient = window.supabase.createClient(url, key);
+          updateSupabaseStatus('connected', 'Supabase: Connected');
+          return true;
+        } catch (err) {
+          console.error('Supabase initialization failed:', err);
+          updateSupabaseStatus('error', 'Supabase: Conn Error');
+          return false;
+        }
+      } else {
+        supabaseClient = null;
+        updateSupabaseStatus('disconnected', 'Supabase: Local Mode');
+        return false;
+      }
+    }
+
+    function updateSupabaseStatus(status, text) {
+      dbStatus = status;
+      const dot = document.getElementById('supabase-status-dot');
+      const txt = document.getElementById('supabase-status-text');
+      if (dot && txt) {
+        txt.textContent = text;
+        if (status === 'connected') {
+          dot.style.background = '#22c55e'; // Green
+        } else if (status === 'error') {
+          dot.style.background = '#ef4444'; // Red
+        } else {
+          dot.style.background = '#94a3b8'; // Gray
+        }
+      }
+    }
+
+    function openSupabaseModal() {
+      const url = localStorage.getItem('supabaseUrl') || '';
+      const key = localStorage.getItem('supabaseKey') || '';
+      document.getElementById('sb-url').value = url;
+      document.getElementById('sb-key').value = key;
+      document.getElementById('supabase-modal').classList.add('active');
+    }
+
+    function closeSupabaseModal() {
+      document.getElementById('supabase-modal').classList.remove('active');
+    }
+
+    function saveSupabaseConfig(event) {
+      event.preventDefault();
+      const url = document.getElementById('sb-url').value.trim();
+      const key = document.getElementById('sb-key').value.trim();
+      
+      localStorage.setItem('supabaseUrl', url);
+      localStorage.setItem('supabaseKey', key);
+      
+      alert('💾 Đã lưu thông tin cấu hình Supabase!');
+      closeSupabaseModal();
+      
+      if (initSupabase()) {
+        syncStudiesWithSupabase();
+      }
+    }
+
+    function clearSupabaseConfig() {
+      if (confirm('☁️ Bạn có chắc chắn muốn xóa cấu hình Supabase? Hệ thống sẽ quay lại sử dụng LocalStorage.')) {
+        localStorage.removeItem('supabaseUrl');
+        localStorage.removeItem('supabaseKey');
+        document.getElementById('sb-url').value = '';
+        document.getElementById('sb-key').value = '';
+        closeSupabaseModal();
+        initSupabase();
+        loadStudies(); // reload local data
+        renderTable();
+        renderUpdates();
+      }
+    }
+
+    async function syncStudiesWithSupabase() {
+      if (!supabaseClient) return;
+      
+      updateSupabaseStatus('connected', 'Supabase: Syncing...');
+      try {
+        const { data, error } = await supabaseClient
+          .from('clinical_guidelines')
+          .select('*')
+          .order('createdAt', { ascending: false });
+          
+        if (error) throw error;
+        
+        if (data && data.length > 0) {
+          studies = data.map(s => ({
+            id: s.id,
+            title: s.title || '',
+            drug: s.drug || 'N/A',
+            sourceType: s.sourceType || 'intl-study',
+            specialty: s.specialty || 'cardio',
+            design: s.design || 'rct',
+            intervention: s.intervention || '',
+            primaryEndpoint: s.primaryEndpoint || '',
+            keyResults: s.keyResults || '',
+            impact: s.impact || 'informative',
+            year: s.year || new Date().getFullYear(),
+            organization: s.organization || 'N/A',
+            phase: s.phase || 'N/A',
+            sampleSize: s.sampleSize || null,
+            population: s.population || 'N/A',
+            summary: s.summary || 'Không có kết luận',
+            detailedConclusion: s.detailedConclusion || '',
+            fdaStatus: s.fdaStatus || 'N/A',
+            sourceUrl: s.sourceUrl || '',
+            file: s.file || '',
+            asianData: s.asianData !== undefined ? s.asianData : false,
+            bookmarked: s.bookmarked !== undefined ? s.bookmarked : false,
+            createdAt: s.createdAt || new Date().toISOString()
+          }));
+          saveStudies(); // cache local
+          renderTable();
+          renderUpdates();
+          updateSupabaseStatus('connected', 'Supabase: Synced');
+        } else {
+          // Upload local data to seed Supabase
+          if (studies.length > 0) {
+            const { error: insertError } = await supabaseClient
+              .from('clinical_guidelines')
+              .insert(studies.map(s => ({
+                id: s.id,
+                title: s.title,
+                drug: s.drug,
+                sourceType: s.sourceType,
+                specialty: s.specialty,
+                design: s.design,
+                intervention: s.intervention || '',
+                primaryEndpoint: s.primaryEndpoint || '',
+                keyResults: s.keyResults || '',
+                impact: s.impact,
+                year: s.year,
+                organization: s.organization,
+                phase: s.phase,
+                sampleSize: s.sampleSize,
+                population: s.population,
+                summary: s.summary,
+                detailedConclusion: s.detailedConclusion,
+                fdaStatus: s.fdaStatus,
+                sourceUrl: s.sourceUrl,
+                file: s.file,
+                asianData: s.asianData,
+                bookmarked: s.bookmarked,
+                createdAt: s.createdAt
+              })));
+              
+            if (insertError) throw insertError;
+            updateSupabaseStatus('connected', 'Supabase: Seeded');
+          }
+        }
+      } catch (err) {
+        console.error('Supabase Sync failed:', err);
+        updateSupabaseStatus('error', 'Supabase: Sync Failed');
+      }
+    }
+
+    async function dbSaveStudy(study) {
+      if (!supabaseClient) return;
+      try {
+        const { error } = await supabaseClient
+          .from('clinical_guidelines')
+          .upsert({
+            id: study.id,
+            title: study.title,
+            drug: study.drug,
+            sourceType: study.sourceType,
+            specialty: study.specialty,
+            design: study.design,
+            intervention: study.intervention || '',
+            primaryEndpoint: study.primaryEndpoint || '',
+            keyResults: study.keyResults || '',
+            impact: study.impact,
+            year: study.year,
+            organization: study.organization,
+            phase: study.phase,
+            sampleSize: study.sampleSize,
+            population: study.population,
+            summary: study.summary,
+            detailedConclusion: study.detailedConclusion,
+            fdaStatus: study.fdaStatus,
+            sourceUrl: study.sourceUrl,
+            file: study.file,
+            asianData: study.asianData,
+            bookmarked: study.bookmarked,
+            createdAt: study.createdAt
+          });
+          
+        if (error) throw error;
+        console.log('Saved to Supabase successfully');
+      } catch (err) {
+        console.error('Failed to save to Supabase:', err);
+        updateSupabaseStatus('error', 'Supabase: Save Failed');
+      }
+    }
+
+    async function dbDeleteStudy(id) {
+      if (!supabaseClient) return;
+      try {
+        const { error } = await supabaseClient
+          .from('clinical_guidelines')
+          .delete()
+          .eq('id', id);
+          
+        if (error) throw error;
+        console.log('Deleted from Supabase successfully');
+      } catch (err) {
+        console.error('Failed to delete from Supabase:', err);
+        updateSupabaseStatus('error', 'Supabase: Delete Failed');
+      }
+    }
 
     // ════════════════════════════
     // DATA MIGRATION & LOCAL STORAGE
@@ -1324,13 +1748,37 @@
         try {
           studies = JSON.parse(saved);
           
-          // Data structure migration (ensure all new fields are present)
+          // Data structure migration
           studies = studies.map(s => {
+            let defaultSourceType = s.sourceType || 'intl-study';
+            let defaultDesign = s.design || 'rct';
+            
+            if (!s.sourceType) {
+              if (s.organization && (s.organization.toLowerCase().includes('byt') || s.organization.toLowerCase().includes('bộ y tế'))) {
+                defaultSourceType = 'vn-moh';
+                defaultDesign = 'guideline';
+              } else if (s.organization && (s.organization.toLowerCase().includes('sở y tế') || s.organization.toLowerCase().includes('syt'))) {
+                defaultSourceType = 'vn-doh';
+                defaultDesign = 'guideline';
+              } else if (s.organization && (s.organization.toLowerCase().includes('vnha') || s.organization.toLowerCase().includes('hội'))) {
+                defaultSourceType = 'vn-association';
+                defaultDesign = 'guideline';
+              } else if (s.phase && s.phase.toLowerCase().includes('guideline')) {
+                defaultSourceType = 'intl-guideline';
+                defaultDesign = 'guideline';
+              }
+            }
+
             return {
               id: s.id || generateId(),
               title: s.title || '',
               drug: s.drug || 'N/A',
+              sourceType: defaultSourceType,
               specialty: s.specialty || 'cardio',
+              design: defaultDesign,
+              intervention: s.intervention || '',
+              primaryEndpoint: s.primaryEndpoint || '',
+              keyResults: s.keyResults || '',
               impact: s.impact || 'informative',
               year: s.year || new Date().getFullYear(),
               organization: s.organization || s.source || 'N/A',
@@ -1370,52 +1818,80 @@
     // ════════════════════════════
 
     function renderFilterPills() {
-      // 1. Specialty pills
+      // 1. Source Type pills
+      const sourceContainer = document.getElementById('source-type-pills');
+      if (sourceContainer) {
+        let sourceHtml = `<button class="filter-pill ${filters.sourceType === null ? 'active' : ''}" onclick="setFilter('sourceType', null)">Tất cả</button>`;
+        Object.entries(SOURCE_TYPES).forEach(([key, src]) => {
+          sourceHtml += `<button class="filter-pill ${filters.sourceType === key ? 'active' : ''}" onclick="setFilter('sourceType', '${key}')">${src.name}</button>`;
+        });
+        sourceContainer.innerHTML = sourceHtml;
+      }
+
+      // 2. Specialty pills
       const specContainer = document.getElementById('specialty-pills');
-      let specHtml = `<button class="filter-pill ${filters.specialty === null ? 'active' : ''}" onclick="setFilter('specialty', null)">Tất cả</button>`;
-      Object.entries(SPECIALTIES).forEach(([key, spec]) => {
-        specHtml += `<button class="filter-pill ${filters.specialty === key ? 'active' : ''}" onclick="setFilter('specialty', '${key}')">${spec.name}</button>`;
-      });
-      specContainer.innerHTML = specHtml;
+      if (specContainer) {
+        let specHtml = `<button class="filter-pill ${filters.specialty === null ? 'active' : ''}" onclick="setFilter('specialty', null)">Tất cả</button>`;
+        Object.entries(SPECIALTIES).forEach(([key, spec]) => {
+          specHtml += `<button class="filter-pill ${filters.specialty === key ? 'active' : ''}" onclick="setFilter('specialty', '${key}')">${spec.name}</button>`;
+        });
+        specContainer.innerHTML = specHtml;
+      }
 
-      // 2. Impact pills
+      // 3. Design pills
+      const designContainer = document.getElementById('design-pills');
+      if (designContainer) {
+        let designHtml = `<button class="filter-pill ${filters.design === null ? 'active' : ''}" onclick="setFilter('design', null)">Tất cả</button>`;
+        Object.entries(DESIGNS).forEach(([key, des]) => {
+          designHtml += `<button class="filter-pill ${filters.design === key ? 'active' : ''}" onclick="setFilter('design', '${key}')">${des.name}</button>`;
+        });
+        designContainer.innerHTML = designHtml;
+      }
+
+      // 4. Impact pills
       const impactContainer = document.getElementById('impact-pills');
-      let impactHtml = `<button class="filter-pill ${filters.impact === null ? 'active' : ''}" onclick="setFilter('impact', null)">Tất cả</button>`;
-      Object.entries(IMPACTS).forEach(([key, imp]) => {
-        impactHtml += `<button class="filter-pill ${filters.impact === key ? 'active' : ''}" onclick="setFilter('impact', '${key}')">${imp.name}</button>`;
-      });
-      impactContainer.innerHTML = impactHtml;
+      if (impactContainer) {
+        let impactHtml = `<button class="filter-pill ${filters.impact === null ? 'active' : ''}" onclick="setFilter('impact', null)">Tất cả</button>`;
+        Object.entries(IMPACTS).forEach(([key, imp]) => {
+          impactHtml += `<button class="filter-pill ${filters.impact === key ? 'active' : ''}" onclick="setFilter('impact', '${key}')">${imp.name}</button>`;
+        });
+        impactContainer.innerHTML = impactHtml;
+      }
 
-      // 3. Period pills
+      // 5. Period pills
       const periodContainer = document.getElementById('period-pills');
-      const periods = [
-        { key: null, name: 'Tất cả' },
-        { key: '2weeks', name: '2 tuần qua' },
-        { key: '1month', name: 'Tháng qua' },
-        { key: '1year', name: 'Năm qua' }
-      ];
-      let periodHtml = '';
-      periods.forEach(p => {
-        periodHtml += `<button class="filter-pill ${filters.period === p.key ? 'active' : ''}" onclick="setFilter('period', ${p.key ? `'${p.key}'` : 'null'})">${p.name}</button>`;
-      });
-      periodContainer.innerHTML = periodHtml;
+      if (periodContainer) {
+        const periods = [
+          { key: null, name: 'Tất cả' },
+          { key: '2weeks', name: '2 tuần qua' },
+          { key: '1month', name: 'Tháng qua' },
+          { key: '1year', name: 'Năm qua' }
+        ];
+        let periodHtml = '';
+        periods.forEach(p => {
+          periodHtml += `<button class="filter-pill ${filters.period === p.key ? 'active' : ''}" onclick="setFilter('period', ${p.key ? `'${p.key}'` : 'null'})">${p.name}</button>`;
+        });
+        periodContainer.innerHTML = periodHtml;
+      }
 
       // Left Nav specialty filter
       const leftNavSpecList = document.getElementById('spec-filter-list');
-      leftNavSpecList.innerHTML = `
-        <button class="spec-filter-item ${filters.specialty === null ? 'active' : ''}" onclick="setFilter('specialty', null)">
-          <span class="spec-filter-dot" style="background: var(--text-faint);"></span>
-          Tất cả
-        </button>
-      `;
-      Object.entries(SPECIALTIES).forEach(([key, spec]) => {
-        leftNavSpecList.innerHTML += `
-          <button class="spec-filter-item ${filters.specialty === key ? 'active' : ''}" onclick="setFilter('specialty', '${key}')">
-            <span class="spec-filter-dot" style="background: ${spec.color};"></span>
-            ${spec.name}
+      if (leftNavSpecList) {
+        leftNavSpecList.innerHTML = `
+          <button class="spec-filter-item ${filters.specialty === null ? 'active' : ''}" onclick="setFilter('specialty', null)">
+            <span class="spec-filter-dot" style="background: var(--text-faint);"></span>
+            Tất cả
           </button>
         `;
-      });
+        Object.entries(SPECIALTIES).forEach(([key, spec]) => {
+          leftNavSpecList.innerHTML += `
+            <button class="spec-filter-item ${filters.specialty === key ? 'active' : ''}" onclick="setFilter('specialty', '${key}')">
+              <span class="spec-filter-dot" style="background: ${spec.color};"></span>
+              ${spec.name}
+            </button>
+          `;
+        });
+      }
     }
 
     // Helper for period validation
@@ -1444,9 +1920,19 @@
         result = result.filter(s => s.bookmarked);
       }
 
+      // Source Type filter
+      if (filters.sourceType) {
+        result = result.filter(s => s.sourceType === filters.sourceType);
+      }
+
       // Specialty filter
       if (filters.specialty) {
         result = result.filter(s => s.specialty === filters.specialty);
+      }
+
+      // Design filter
+      if (filters.design) {
+        result = result.filter(s => s.design === filters.design);
       }
 
       // Impact filter
@@ -1473,7 +1959,10 @@
           s.organization.toLowerCase().includes(query) ||
           (s.summary && s.summary.toLowerCase().includes(query)) ||
           (s.detailedConclusion && s.detailedConclusion.toLowerCase().includes(query)) ||
-          (s.population && s.population.toLowerCase().includes(query))
+          (s.population && s.population.toLowerCase().includes(query)) ||
+          (s.intervention && s.intervention.toLowerCase().includes(query)) ||
+          (s.primaryEndpoint && s.primaryEndpoint.toLowerCase().includes(query)) ||
+          (s.keyResults && s.keyResults.toLowerCase().includes(query))
         );
       }
 
@@ -1529,7 +2018,9 @@
     function resetFilters() {
       filters = {
         search: '',
+        sourceType: null,
         specialty: null,
+        design: null,
         impact: null,
         period: null,
         asianData: false
@@ -1566,12 +2057,12 @@
       if (tabName === 'compare') {
         panelStudies.classList.remove('active');
         panelCompare.classList.add('active');
-        pageTitle.textContent = 'So Sánh Thử Nghiệm';
+        pageTitle.textContent = 'So Sánh Tài Liệu';
         renderCompareView();
       } else {
         panelCompare.classList.remove('active');
         panelStudies.classList.add('active');
-        pageTitle.textContent = tabName === 'saved' ? 'Nghiên Cứu Đã Lưu' : 'Nghiên Cứu Lâm Sàng';
+        pageTitle.textContent = tabName === 'saved' ? 'Tài Liệu Đã Lưu' : 'Hướng Dẫn & Nghiên Cứu Lâm Sàng';
         renderTable();
       }
     }
@@ -1586,6 +2077,8 @@
     function toggleAdvancedFilters() {
       showAdvancedFilters = !showAdvancedFilters;
       document.getElementById('filter-row-specialty').style.display = showAdvancedFilters ? 'flex' : 'none';
+      document.getElementById('filter-row-design').style.display = showAdvancedFilters ? 'flex' : 'none';
+      document.getElementById('filter-row-period').style.display = showAdvancedFilters ? 'flex' : 'none';
       document.getElementById('advanced-filters-btn').classList.toggle('active', showAdvancedFilters);
     }
 
@@ -1624,9 +2117,9 @@
         tbody.innerHTML = '';
         emptyState.style.display = 'block';
         if (currentTab === 'saved') {
-          document.getElementById('empty-state-message').textContent = 'Chưa có nghiên cứu nào được lưu trữ. Hãy nhấn ngôi sao ở bảng danh sách để lưu.';
+          document.getElementById('empty-state-message').textContent = 'Chưa có tài liệu nào được lưu trữ. Hãy nhấn ngôi sao ở bảng danh sách để lưu.';
         } else {
-          document.getElementById('empty-state-message').textContent = 'Không tìm thấy nghiên cứu nào khớp với bộ lọc.';
+          document.getElementById('empty-state-message').textContent = 'Không tìm thấy tài liệu nào khớp với bộ lọc.';
         }
         return;
       }
@@ -1641,9 +2134,16 @@
 
         const spec = SPECIALTIES[study.specialty] || { name: study.specialty, color: '#666', bg: '#f0f0f0' };
         const impactConfig = IMPACTS[study.impact] || { name: study.impact || 'N/A', color: '#6b7280', bg: '#f3f4f6' };
+        const srcTypeConfig = SOURCE_TYPES[study.sourceType] || { name: study.sourceType || 'N/A', color: '#6b7280', bg: '#f3f4f6' };
+        const designConfig = DESIGNS[study.design] || { name: study.design || 'N/A' };
 
         // Columns HTML segments
+        const sourceTypeCell = columnVisibility.sourceType ? `<td><span class="badge badge-src-${study.sourceType}">${srcTypeConfig.name}</span></td>` : '';
         const specialtyCell = columnVisibility.specialty ? `<td><span class="badge badge-${study.specialty}">${spec.name}</span></td>` : '';
+        const designCell = columnVisibility.design ? `<td><span class="badge-source">${designConfig.name}</span></td>` : '';
+        const interventionCell = columnVisibility.intervention ? `<td><div class="study-summary ${viewMode === 'compact' ? 'clamped' : ''}">${escapeHtml(study.intervention || 'N/A')}</div></td>` : '';
+        const primaryEndpointCell = columnVisibility.primaryEndpoint ? `<td><div class="study-summary ${viewMode === 'compact' ? 'clamped' : ''}">${escapeHtml(study.primaryEndpoint || 'N/A')}</div></td>` : '';
+        const keyResultsCell = columnVisibility.keyResults ? `<td><span class="badge-phase" style="font-family: monospace; font-size: 0.73rem; background: var(--surface-2); border-color: var(--border-light); font-weight: 700; color: var(--accent);">${escapeHtml(study.keyResults || 'N/A')}</span></td>` : '';
         const impactCell = columnVisibility.impact ? `
           <td>
             <span class="impact-badge impact-${study.impact}">
@@ -1661,7 +2161,6 @@
           </td>
         ` : '';
 
-        const phaseCell = columnVisibility.phase ? `<td class="cell-center"><span class="badge-phase">${escapeHtml(study.phase || 'N/A')}</span></td>` : '';
         const sampleSizeCell = columnVisibility.sampleSize ? `<td>${study.sampleSize ? 'n=' + formatNumber(study.sampleSize) : 'N/A'}</td>` : '';
         const populationCell = columnVisibility.population ? `<td><div class="study-summary ${viewMode === 'compact' ? 'clamped' : ''}">${escapeHtml(study.population || 'N/A')}</div></td>` : '';
 
@@ -1679,13 +2178,17 @@
             <td>
               <div class="study-title-wrapper">
                 <a class="study-title" href="#" onclick="event.preventDefault(); toggleExpandRow('${study.id}', event)">${escapeHtml(study.title)}</a>
-                <span class="study-drug">${escapeHtml(study.drug || 'N/A')}</span>
+                <span class="study-drug">${escapeHtml(study.drug || 'N/A')} • ${escapeHtml(study.organization || 'N/A')} (${study.year})</span>
               </div>
             </td>
+            ${sourceTypeCell}
             ${specialtyCell}
+            ${designCell}
+            ${interventionCell}
+            ${primaryEndpointCell}
+            ${keyResultsCell}
             ${impactCell}
             ${conclusionCell}
-            ${phaseCell}
             ${sampleSizeCell}
             ${populationCell}
           </tr>
@@ -1711,7 +2214,20 @@
                         <p style="font-size: 0.8rem; color: var(--text-muted); white-space: pre-line;">${escapeHtml(study.detailedConclusion)}</p>
                       </div>
                     ` : ''}
+                    
                     <div class="detail-grid" style="margin-top: 0.75rem;">
+                      <div class="detail-item">
+                        <span class="detail-label">Can thiệp / Đối chứng</span>
+                        <span class="detail-val" style="font-weight:600; color:var(--text);">${escapeHtml(study.intervention || 'N/A')}</span>
+                      </div>
+                      <div class="detail-item">
+                        <span class="detail-label">Tiêu chí đánh giá chính</span>
+                        <span class="detail-val" style="font-weight:600; color:var(--text);">${escapeHtml(study.primaryEndpoint || 'N/A')}</span>
+                      </div>
+                      <div class="detail-item">
+                        <span class="detail-label">Kết quả / Chỉ số</span>
+                        <span class="detail-val" style="font-family: monospace; color: var(--accent); font-weight:700;">${escapeHtml(study.keyResults || 'N/A')}</span>
+                      </div>
                       <div class="detail-item">
                         <span class="detail-label">Đối tượng nghiên cứu</span>
                         <span class="detail-val">${escapeHtml(study.population || 'N/A')}</span>
@@ -1726,8 +2242,12 @@
                   <div class="detail-sidebar">
                     <div class="detail-meta-list">
                       <div class="detail-item">
-                        <span class="detail-label">Phê duyệt FDA / Hướng dẫn</span>
-                        <span class="detail-val" style="color: var(--accent);">${escapeHtml(study.fdaStatus || 'N/A')}</span>
+                        <span class="detail-label">Phân loại & Thiết kế</span>
+                        <span class="detail-val" style="color: var(--accent); font-weight: 700;">${srcTypeConfig.name} • ${designConfig.name} ${study.phase ? `(${study.phase})` : ''}</span>
+                      </div>
+                      <div class="detail-item">
+                        <span class="detail-label">Khuyến cáo / FDA</span>
+                        <span class="detail-val">${escapeHtml(study.fdaStatus || 'N/A')}</span>
                       </div>
                       <div class="detail-item">
                         <span class="detail-label">Tạp chí / Tổ chức</span>
@@ -1760,7 +2280,6 @@
     function renderUpdates() {
       const container = document.getElementById('updates-list');
       
-      // Latest studies based on createdAt or publication year
       const latest = [...studies].sort((a, b) => {
         const dateA = a.createdAt ? new Date(a.createdAt) : new Date(a.year, 0, 1);
         const dateB = b.createdAt ? new Date(b.createdAt) : new Date(b.year, 0, 1);
@@ -1772,7 +2291,7 @@
           <div class="update-item" style="cursor: default;">
             <div class="update-content">
               <div class="update-title">Chưa có cập nhật mới</div>
-              <div class="update-meta">Hãy thêm nghiên cứu lâm sàng để thấy ở đây.</div>
+              <div class="update-meta">Hãy thêm tài liệu hoặc nghiên cứu lâm sàng để thấy ở đây.</div>
             </div>
           </div>
         `;
@@ -1811,6 +2330,10 @@
         renderTable();
         renderUpdates();
         updateBadges();
+        
+        if (supabaseClient) {
+          dbSaveStudy(study);
+        }
       }
     }
 
@@ -1902,23 +2425,41 @@
       container.innerHTML = comparedStudies.map(study => {
         const spec = SPECIALTIES[study.specialty] || { name: study.specialty, color: '#666', bg: '#f0f0f0' };
         const impactConfig = IMPACTS[study.impact] || { name: study.impact || 'N/A', color: '#6b7280', bg: '#f3f4f6' };
+        const srcTypeConfig = SOURCE_TYPES[study.sourceType] || { name: study.sourceType || 'N/A', color: '#6b7280', bg: '#f3f4f6' };
+        const designConfig = DESIGNS[study.design] || { name: study.design || 'N/A' };
 
         return `
           <div class="compare-card">
             <button class="compare-remove" onclick="removeCompare('${study.id}')">&times;</button>
             
             <div class="compare-row">
-              <span class="detail-label">Nghiên cứu / Thuốc</span>
+              <span class="detail-label">Tài liệu & Nghiên cứu / Hoạt chất</span>
               <h4 style="font-size: 1rem; font-weight: 800; color: var(--text);">${escapeHtml(study.title)}</h4>
               <p style="font-size: 0.82rem; font-weight: 600; color: var(--text-muted);">${escapeHtml(study.drug)}</p>
             </div>
 
-            <div class="compare-row" style="display: flex; gap: 8px;">
+            <div class="compare-row" style="display: flex; flex-wrap: wrap; gap: 6px;">
+              <span class="badge badge-src-${study.sourceType}">${srcTypeConfig.name}</span>
               <span class="badge badge-${study.specialty}">${spec.name}</span>
               <span class="impact-badge impact-${study.impact}">
                 <span class="impact-dot"></span>
                 ${impactConfig.name}
               </span>
+            </div>
+
+            <div class="compare-row">
+              <span class="detail-label">Can thiệp / Đối chứng</span>
+              <p style="font-size: 0.78rem; font-weight: 600; color: var(--text);">${escapeHtml(study.intervention || 'N/A')}</p>
+            </div>
+
+            <div class="compare-row">
+              <span class="detail-label">Tiêu chí đánh giá chính</span>
+              <p style="font-size: 0.78rem; font-weight: 600; color: var(--text);">${escapeHtml(study.primaryEndpoint || 'N/A')}</p>
+            </div>
+
+            <div class="compare-row">
+              <span class="detail-label">Kết quả / Chỉ số</span>
+              <p style="font-size: 0.78rem; font-weight: 700; font-family: monospace; color: var(--accent);">${escapeHtml(study.keyResults || 'N/A')}</p>
             </div>
 
             <div class="compare-row">
@@ -1933,8 +2474,8 @@
 
             <div class="compare-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
               <div>
-                <span class="detail-label">Giai đoạn</span>
-                <p style="font-size: 0.78rem; font-weight: 600;">${escapeHtml(study.phase || 'N/A')}</p>
+                <span class="detail-label">Thiết kế / Giai đoạn</span>
+                <p style="font-size: 0.78rem; font-weight: 600;">${designConfig.name} ${study.phase ? `(${study.phase})` : ''}</p>
               </div>
               <div>
                 <span class="detail-label">Cỡ mẫu</span>
@@ -1983,7 +2524,12 @@
       const studyId = document.getElementById('study-id').value;
       const title = document.getElementById('study-title').value.trim();
       const drug = document.getElementById('study-drug').value.trim();
+      const sourceType = document.getElementById('study-source-type').value;
       const specialty = document.getElementById('study-specialty').value;
+      const design = document.getElementById('study-design').value;
+      const intervention = document.getElementById('study-intervention').value.trim();
+      const primaryEndpoint = document.getElementById('study-primary-endpoint').value.trim();
+      const keyResults = document.getElementById('study-key-results').value.trim();
       const impact = document.getElementById('study-impact').value;
       const organization = document.getElementById('study-organization').value.trim();
       const year = parseInt(document.getElementById('study-year').value);
@@ -1997,28 +2543,34 @@
       const file = document.getElementById('study-file').value.trim();
       const asianData = document.getElementById('study-asian-data').checked;
 
+      let savedStudy = null;
+
       if (studyId) {
         // Edit mode
         const index = studies.findIndex(s => s.id === studyId);
         if (index !== -1) {
           studies[index] = {
             ...studies[index],
-            title, drug, specialty, impact, organization, year, phase, sampleSize,
+            title, drug, sourceType, specialty, design, intervention, primaryEndpoint, keyResults,
+            impact, organization, year, phase, sampleSize,
             population, summary, detailedConclusion, fdaStatus, sourceUrl, file, asianData
           };
-          alert('✅ Đã cập nhật nghiên cứu thành công!');
+          savedStudy = studies[index];
+          alert('✅ Đã cập nhật tài liệu thành công!');
         }
       } else {
         // Add mode
         const newStudy = {
           id: generateId(),
-          title, drug, specialty, impact, organization, year, phase, sampleSize,
+          title, drug, sourceType, specialty, design, intervention, primaryEndpoint, keyResults,
+          impact, organization, year, phase, sampleSize,
           population, summary, detailedConclusion, fdaStatus, sourceUrl, file, asianData,
           bookmarked: false,
           createdAt: new Date().toISOString()
         };
         studies.unshift(newStudy);
-        alert('✅ Đã thêm nghiên cứu mới thành công!');
+        savedStudy = newStudy;
+        alert('✅ Đã thêm tài liệu mới thành công!');
       }
 
       saveStudies();
@@ -2026,13 +2578,17 @@
       
       renderTable();
       renderUpdates();
+
+      if (savedStudy && supabaseClient) {
+        dbSaveStudy(savedStudy);
+      }
     }
 
     function openAddModal() {
       document.getElementById('add-form').reset();
       document.getElementById('study-id').value = '';
-      document.getElementById('modal-form-title').textContent = '➕ Thêm Nghiên Cứu Mới';
-      document.getElementById('btn-save-study').textContent = 'Lưu nghiên cứu';
+      document.getElementById('modal-form-title').textContent = '➕ Thêm Tài Liệu / Nghiên Cứu Mới';
+      document.getElementById('btn-save-study').textContent = 'Lưu tài liệu';
       document.getElementById('add-modal').classList.add('active');
     }
 
@@ -2044,7 +2600,12 @@
       document.getElementById('study-id').value = study.id;
       document.getElementById('study-title').value = study.title;
       document.getElementById('study-drug').value = study.drug || '';
+      document.getElementById('study-source-type').value = study.sourceType || 'intl-study';
       document.getElementById('study-specialty').value = study.specialty;
+      document.getElementById('study-design').value = study.design || 'rct';
+      document.getElementById('study-intervention').value = study.intervention || '';
+      document.getElementById('study-primary-endpoint').value = study.primaryEndpoint || '';
+      document.getElementById('study-key-results').value = study.keyResults || '';
       document.getElementById('study-impact').value = study.impact || '';
       document.getElementById('study-organization').value = study.organization || '';
       document.getElementById('study-year').value = study.year;
@@ -2058,8 +2619,8 @@
       document.getElementById('study-file').value = study.file || '';
       document.getElementById('study-asian-data').checked = study.asianData || false;
 
-      document.getElementById('modal-form-title').textContent = '✏️ Chỉnh Sửa Nghiên Cứu';
-      document.getElementById('btn-save-study').textContent = 'Cập nhật nghiên cứu';
+      document.getElementById('modal-form-title').textContent = '✏️ Chỉnh Sửa Tài Liệu / Nghiên Cứu';
+      document.getElementById('btn-save-study').textContent = 'Cập nhật tài liệu';
       document.getElementById('add-modal').classList.add('active');
     }
 
@@ -2069,7 +2630,7 @@
 
     function deleteStudy(id, event) {
       if (event) event.stopPropagation();
-      if (confirm('🗑️ Bạn có chắc chắn muốn xóa nghiên cứu này không?')) {
+      if (confirm('🗑️ Bạn có chắc chắn muốn xóa tài liệu / nghiên cứu này không?')) {
         studies = studies.filter(s => s.id !== id);
         selectedIds.delete(id);
         expandedIds.delete(id);
@@ -2077,6 +2638,10 @@
         renderTable();
         renderUpdates();
         updateCompareBadge();
+        
+        if (supabaseClient) {
+          dbDeleteStudy(id);
+        }
       }
     }
 
@@ -2133,7 +2698,12 @@
             id: item.id || generateId(),
             title: item.title,
             drug: item.drug || 'N/A',
+            sourceType: item.sourceType || 'intl-study',
             specialty: item.specialty || 'cardio',
+            design: item.design || 'rct',
+            intervention: item.intervention || '',
+            primaryEndpoint: item.primaryEndpoint || '',
+            keyResults: item.keyResults || '',
             impact: item.impact || 'informative',
             year: item.year || new Date().getFullYear(),
             organization: item.organization || item.source || 'N/A',
@@ -2151,6 +2721,10 @@
           };
           studies.push(study);
           imported++;
+
+          if (supabaseClient) {
+            dbSaveStudy(study);
+          }
         }
       });
 
@@ -2161,9 +2735,9 @@
         renderUpdates();
         closeImportModal();
         document.getElementById('json-text').value = '';
-        alert(`✅ Đã nhập ${imported} nghiên cứu thành công!`);
+        alert(`✅ Đã nhập ${imported} tài liệu thành công!`);
       } else {
-        alert('⚠️ Không tìm thấy nghiên cứu hợp lệ nào.');
+        alert('⚠️ Không tìm thấy tài liệu hợp lệ nào.');
       }
     }
 
@@ -2230,7 +2804,13 @@
     // ════════════════════════════
 
     document.addEventListener('DOMContentLoaded', function() {
+      initSupabase();
       loadStudies();
+      
+      if (supabaseClient) {
+        syncStudiesWithSupabase();
+      }
+      
       renderFilterPills();
       renderTable();
       renderUpdates();
@@ -2263,6 +2843,7 @@
         if (e.key === 'Escape') {
           closeAddModal();
           closeImportModal();
+          closeSupabaseModal();
         }
       });
     });

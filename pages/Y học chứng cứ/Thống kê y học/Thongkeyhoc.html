@@ -4,15 +4,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Thống kê Y học — Các bài học lý thuyết thống kê, thiết kế nghiên cứu khoa học và công cụ tính toán">
+  <meta name="description"
+    content="Thống kê Y học — Các bài học lý thuyết thống kê, thiết kế nghiên cứu khoa học và công cụ tính toán">
   <title>Thống kê Y Học & Nghiên cứu — CliniPortal</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
       --accent: #0369a1;
@@ -45,7 +54,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255,255,255,0.88);
+      background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
       display: flex;
@@ -67,9 +76,16 @@
       border-radius: 8px;
       transition: background var(--tr);
     }
-    .topnav-back:hover { background: var(--accent-light); }
 
-    .topnav-divider { width: 1px; height: 20px; background: var(--border); }
+    .topnav-back:hover {
+      background: var(--accent-light);
+    }
+
+    .topnav-divider {
+      width: 1px;
+      height: 20px;
+      background: var(--border);
+    }
 
     .topnav-title {
       font-family: 'Plus Jakarta Sans', sans-serif;
@@ -116,10 +132,12 @@
 
     .header-banner-bg {
       position: absolute;
-      top: -40px; right: -40px;
-      width: 220px; height: 220px;
+      top: -40px;
+      right: -40px;
+      width: 220px;
+      height: 220px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.06);
+      background: rgba(255, 255, 255, 0.06);
       pointer-events: none;
     }
 
@@ -134,7 +152,7 @@
 
     .header-banner p {
       font-size: 0.9rem;
-      color: rgba(255,255,255,0.85);
+      color: rgba(255, 255, 255, 0.85);
       max-width: 60ch;
       line-height: 1.6;
     }
@@ -167,7 +185,8 @@
 
     .lesson-number {
       position: absolute;
-      top: -10px; right: -10px;
+      top: -10px;
+      right: -10px;
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 6rem;
       font-weight: 800;
@@ -177,6 +196,7 @@
       user-select: none;
       transition: color var(--tr);
     }
+
     .lesson-card:hover .lesson-number {
       color: rgba(3, 105, 161, 0.06);
     }
@@ -203,6 +223,7 @@
       margin-bottom: 0.6rem;
       transition: color var(--tr);
     }
+
     .lesson-card:hover h2 {
       color: var(--accent-mid);
     }
@@ -250,16 +271,28 @@
       margin-top: auto;
       transition: transform var(--tr);
     }
+
     .lesson-card:hover .lesson-cta {
       transform: translateX(4px);
     }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
-      .main-container { padding: 1.5rem 1rem; }
-      .header-banner { padding: 1.5rem; }
-      .lesson-card { padding: 1.5rem; }
-      .lessons-grid { grid-template-columns: 1fr; }
+      .main-container {
+        padding: 1.5rem 1rem;
+      }
+
+      .header-banner {
+        padding: 1.5rem;
+      }
+
+      .lesson-card {
+        padding: 1.5rem;
+      }
+
+      .lessons-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -269,7 +302,9 @@
   <!-- TOP NAV -->
   <nav class="topnav" aria-label="Top navigation">
     <a href="../yhcc.html" class="topnav-back">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <polyline points="15 18 9 12 15 6" />
+      </svg>
       Y học chứng cứ
     </a>
     <div class="topnav-divider"></div>
@@ -286,81 +321,111 @@
     <div class="header-banner">
       <div class="header-banner-bg"></div>
       <h1>Lý Thuyết Thống Kê & Thiết Kế Nghiên Cứu</h1>
-      <p>Hệ thống 4 bài học nền tảng giúp hình thành tư duy thống kê, đọc hiểu, phân tích các nghiên cứu khoa học y học và áp dụng y học chứng cứ trong thực tế lâm sàng.</p>
+      <p>Hệ thống 4 bài học nền tảng giúp hình thành tư duy thống kê, đọc hiểu, phân tích các nghiên cứu khoa học y học
+        và áp dụng y học chứng cứ trong thực tế lâm sàng.</p>
     </div>
 
     <!-- LESSONS GRID -->
     <div class="lessons-grid">
 
       <!-- Bài 1 -->
-      <a href="y-nghia-thong-ke-va-lam-sang.html" class="lesson-card">
+      <a href="1_Ynghia_Thongke&Lamsang.html" class="lesson-card">
         <div class="lesson-number">01</div>
         <div class="lesson-badge">Bài 1</div>
         <h2>Ý nghĩa thống kê và ý nghĩa lâm sàng</h2>
-        <p>Phân biệt sự khác nhau cốt lõi giữa kết quả mang ý nghĩa toán học (P-value) và giá trị thực sự áp dụng trên bệnh nhân (NNT, ARR, RRR).</p>
+        <p>Phân biệt sự khác nhau cốt lõi giữa kết quả mang ý nghĩa toán học (P-value) và giá trị thực sự áp dụng trên
+          bệnh nhân (NNT, ARR, RRR).</p>
         <div class="lesson-points">
           <div class="lesson-point"><span class="lesson-point-bullet"></span> Thống kê mô tả vs Thống kê suy luận</div>
-          <div class="lesson-point"><span class="lesson-point-bullet"></span> Giá trị P (P-value) & Ý nghĩa thống kê</div>
-          <div class="lesson-point"><span class="lesson-point-bullet"></span> Chỉ số hiệu quả tuyệt đối (ARR) & NNT</div>
-          <div class="lesson-point"><span class="lesson-point-bullet"></span> Tích hợp máy tính chỉ số NNT, ARR, RRR</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Giá trị P (P-value) & Ý nghĩa thống kê
+          </div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Chỉ số hiệu quả tuyệt đối (ARR) & NNT
+          </div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Tích hợp máy tính chỉ số NNT, ARR, RRR
+          </div>
         </div>
         <span class="lesson-cta">
           Bắt đầu học
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
         </span>
       </a>
 
       <!-- Bài 2 -->
-      <a href="danh-gia-cong-cu-chan-doan.html" class="lesson-card">
+      <a href="2_DG_Congcu_Chandoan.html" class="lesson-card">
         <div class="lesson-number">02</div>
         <div class="lesson-badge">Bài 2</div>
         <h2>Đánh giá giá trị các công cụ chẩn đoán</h2>
-        <p>Tìm hiểu các khái niệm độ nhạy, độ đặc hiệu, giá trị dự báo và cách sử dụng tỷ số khả dĩ để xác định xác suất mắc bệnh sau xét nghiệm.</p>
+        <p>Tìm hiểu các khái niệm độ nhạy, độ đặc hiệu, giá trị dự báo và cách sử dụng tỷ số khả dĩ để xác định xác suất
+          mắc bệnh sau xét nghiệm.</p>
         <div class="lesson-points">
-          <div class="lesson-point"><span class="lesson-point-bullet"></span> Độ nhạy (Sensitivity) & Độ đặc hiệu (Specificity)</div>
-          <div class="lesson-point"><span class="lesson-point-bullet"></span> Giá trị dự báo dương (PPV) & âm (NPV)</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Độ nhạy (Sensitivity) & Độ đặc hiệu
+            (Specificity)</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Giá trị dự báo dương (PPV) & âm (NPV)
+          </div>
           <div class="lesson-point"><span class="lesson-point-bullet"></span> Tỷ số khả dĩ dương (LR+) và âm (LR-)</div>
-          <div class="lesson-point"><span class="lesson-point-bullet"></span> Tích hợp máy tính Sn/Sp & Likelihood Ratio</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Tích hợp máy tính Sn/Sp & Likelihood Ratio
+          </div>
         </div>
         <span class="lesson-cta">
           Bắt đầu học
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
         </span>
       </a>
 
       <!-- Bài 3 -->
-      <a href="thiet-ke-nghien-cuu-khoa-hoc.html" class="lesson-card">
+      <a href="3_Thietke_NCKH.html" class="lesson-card">
         <div class="lesson-number">03</div>
         <div class="lesson-badge">Bài 3</div>
         <h2>Thiết kế nghiên cứu khoa học y học</h2>
-        <p>Phân loại các thiết kế nghiên cứu từ báo cáo ca bệnh, cắt ngang, bệnh chứng đến các nghiên cứu mạnh hơn như thuần tập và thử nghiệm ngẫu nhiên.</p>
+        <p>Phân loại các thiết kế nghiên cứu từ báo cáo ca bệnh, cắt ngang, bệnh chứng đến các nghiên cứu mạnh hơn như
+          thuần tập và thử nghiệm ngẫu nhiên.</p>
         <div class="lesson-points">
-          <div class="lesson-point"><span class="lesson-point-bullet"></span> Bậc thang bằng chứng (Evidence Pyramid)</div>
-          <div class="lesson-point"><span class="lesson-point-bullet"></span> Nghiên cứu quan sát (Bệnh chứng, Thuần tập)</div>
-          <div class="lesson-point"><span class="lesson-point-bullet"></span> Nghiên cứu can thiệp (RCT) & Nhóm chứng</div>
-          <div class="lesson-point"><span class="lesson-point-bullet"></span> Nhận diện các nguồn sai số hệ thống (Bias)</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Bậc thang bằng chứng (Evidence Pyramid)
+          </div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Nghiên cứu quan sát (Bệnh chứng, Thuần
+            tập)</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Nghiên cứu can thiệp (RCT) & Nhóm chứng
+          </div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Nhận diện các nguồn sai số hệ thống (Bias)
+          </div>
         </div>
         <span class="lesson-cta">
           Bắt đầu học
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
         </span>
       </a>
 
       <!-- Bài 4 -->
-      <a href="phan-tich-rct-meta-analysis.html" class="lesson-card">
+      <a href="4_PhantichNC_rct&meta-analysis.html" class="lesson-card">
         <div class="lesson-number">04</div>
         <div class="lesson-badge">Bài 4</div>
         <h2>Phân tích bằng chứng RCT & Meta-analysis</h2>
-        <p>Đi sâu vào cách phân tích thử nghiệm lâm sàng ngẫu nhiên có nhóm chứng và kỹ năng đọc hiểu biểu đồ Forest Plot trong phân tích gộp.</p>
+        <p>Đi sâu vào cách phân tích thử nghiệm lâm sàng ngẫu nhiên có nhóm chứng và kỹ năng đọc hiểu biểu đồ Forest
+          Plot trong phân tích gộp.</p>
         <div class="lesson-points">
           <div class="lesson-point"><span class="lesson-point-bullet"></span> Cách đọc và phê bình một bài báo RCT</div>
-          <div class="lesson-point"><span class="lesson-point-bullet"></span> Tổng quan hệ thống (Systematic Review)</div>
-          <div class="lesson-point"><span class="lesson-point-bullet"></span> Đọc hiểu biểu đồ Forest Plot & Tính đồng nhất</div>
-          <div class="lesson-point"><span class="lesson-point-bullet"></span> Đánh giá phân loại chất lượng bằng chứng GRADE</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Tổng quan hệ thống (Systematic Review)
+          </div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Đọc hiểu biểu đồ Forest Plot & Tính đồng
+            nhất</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Đánh giá phân loại chất lượng bằng chứng
+            GRADE</div>
         </div>
         <span class="lesson-cta">
           Bắt đầu học
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
         </span>
       </a>
 
@@ -369,4 +434,5 @@
   </div>
 
 </body>
+
 </html>

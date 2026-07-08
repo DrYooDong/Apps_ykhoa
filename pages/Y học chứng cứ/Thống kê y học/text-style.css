@@ -1,79 +1,212 @@
 /* ============================================================
    SHARED TYPOGRAPHY & TEXT STYLES FOR LESSONS
    Location: pages/Y học chứng cứ/Thống kê y học/text-style.css
+   Author: CliniPortal Pair Programming
 ============================================================ */
 
-/* Theme Variables (Fallback support) */
+/* Theme Variables (Fallback support with automatic Dark Mode integration) */
 :root {
-  --text-primary: #0f172a;
+  /* Typography Scale & Metrics */
+  --line-height-body: 1.75;
+  --line-height-heading: 1.3;
+  --font-display-lesson: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-body-lesson: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  
+  /* Color Palette - Light Theme (Default) */
+  --text-primary: #1e293b;
   --text-secondary: #475569;
-  --text-muted-faint: #94a3b8;
-  --border-light: #e2e8f0;
+  --text-muted-faint: #cbd5e1;
+  --border-light: #f1f5f9;
+  --border-mid: #e2e8f0;
   --bg-subtle: #f8fafc;
   
   --primary-accent: #0284c7;
-  --primary-accent-light: #e0f2fe;
+  --primary-accent-light: #f0f9ff;
   --primary-accent-dark: #0369a1;
   
-  --success-color: #10b981;
+  --success-color: #059669;
   --success-bg: #f0fdf4;
-  --success-border: #bbf7d0;
+  --success-border: #d1fae5;
 
   --warning-color: #d97706;
   --warning-bg: #fffbeb;
-  --warning-border: #fde68a;
+  --warning-border: #fef3c7;
 
-  --danger-color: #ef4444;
-  --danger-bg: #fef2f2;
-  --danger-border: #fecaca;
+  --danger-color: #e11d48;
+  --danger-bg: #fff1f2;
+  --danger-border: #ffe4e6;
   
-  --line-height-body: 1.7;
-  --line-height-heading: 1.35;
+  /* Interactive Callout Text Colors */
+  --callout-info-text: var(--primary-accent-dark);
+  --callout-success-text: #065f46;
+  --callout-warning-text: #92400e;
+  --callout-danger-text: #b91c1c;
+
+  /* Elevation Shadows */
+  --shadow-lesson-sm: 0 1px 3px rgba(15, 23, 42, 0.05), 0 1px 2px rgba(15, 23, 42, 0.03);
+  --shadow-lesson-md: 0 4px 12px rgba(15, 23, 42, 0.06), 0 2px 4px rgba(15, 23, 42, 0.03);
+  --shadow-lesson-lg: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.03);
+  
+  --tr-lesson: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* TOC Fallbacks (for independent lessons running without main.css) */
+  --header-height: 54px;
+  --color-surface: #ffffff;
+  --color-surface-2: var(--bg-subtle);
+  --color-divider: var(--border-mid);
+  --color-border: var(--border-light);
+  --radius-lg: 14px;
+  --radius-sm: 6px;
+  --radius-full: 9999px;
+  --shadow-sm: var(--shadow-lesson-sm);
+  --font-display: var(--font-display-lesson);
+  --text-sm: 0.88rem;
+  --color-text: var(--text-primary);
+  --color-text-muted: var(--text-secondary);
+  --color-primary: var(--primary-accent);
+  --color-primary-hl: var(--primary-accent-light);
+  --color-primary-hover: var(--primary-accent-dark);
+  --color-primary-rgb: 2, 132, 199;
+  --tr-slow: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  --tr: var(--tr-lesson);
+}
+
+/* Automatic System Dark Mode Override */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted-faint: #334155;
+    --border-light: #1e293b;
+    --border-mid: #334155;
+    --bg-subtle: #162032;
+    
+    --primary-accent: #38bdf8;
+    --primary-accent-light: #0c2540;
+    --primary-accent-dark: #7dd3fc;
+    
+    --success-color: #34d399;
+    --success-bg: #06241a;
+    --success-border: #0d533c;
+
+    --warning-color: #fbbf24;
+    --warning-bg: #221800;
+    --warning-border: #805300;
+
+    --danger-color: #fb7185;
+    --danger-bg: #2d0f1a;
+    --danger-border: #8b1c31;
+
+    --callout-info-text: #7dd3fc;
+    --callout-success-text: #a7f3d0;
+    --callout-warning-text: #fde68a;
+    --callout-danger-text: #fecaca;
+    
+    --shadow-lesson-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+    --shadow-lesson-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Explicit CliniPortal Dark Theme Override */
+html[data-theme="dark"] {
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted-faint: #334155;
+  --border-light: #1e293b;
+  --border-mid: #334155;
+  --bg-subtle: #162032;
+  
+  --primary-accent: #38bdf8;
+  --primary-accent-light: #0c2540;
+  --primary-accent-dark: #7dd3fc;
+  
+  --success-color: #34d399;
+  --success-bg: #06241a;
+  --success-border: #0d533c;
+
+  --warning-color: #fbbf24;
+  --warning-bg: #221800;
+  --warning-border: #805300;
+
+  --danger-color: #fb7185;
+  --danger-bg: #2d0f1a;
+  --danger-border: #8b1c31;
+
+  --callout-info-text: #7dd3fc;
+  --callout-success-text: #a7f3d0;
+  --callout-warning-text: #fde68a;
+  --callout-danger-text: #fecaca;
+  
+  --shadow-lesson-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-lesson-md: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 /* Theory Content Container */
 .theory-content {
   color: var(--text-primary);
   line-height: var(--line-height-body);
-  font-size: 0.92rem;
+  font-size: 0.96rem; /* Slightly larger for enhanced readability */
+  font-family: var(--font-body-lesson);
+  letter-spacing: -0.004em;
 }
 
-/* Headings */
+/* General Typography Hover Effect for interactive reading list */
+.theory-content p {
+  margin-bottom: 1.25rem;
+  color: var(--text-secondary);
+  text-align: justify;
+}
+
+/* Headings with premium typography markers */
 .theory-content h2 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1.3rem;
+  font-family: var(--font-display-lesson);
+  font-size: 1.35rem;
   font-weight: 800;
   color: var(--text-primary);
-  margin-top: 2rem;
-  margin-bottom: 0.85rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
   letter-spacing: -0.02em;
   border-left: 4px solid var(--primary-accent);
-  padding-left: 0.75rem;
+  padding-left: 0.85rem;
+  line-height: var(--line-height-heading);
+  scroll-margin-top: 80px;
+  position: relative;
 }
 
 .theory-content h3 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1.1rem;
+  font-family: var(--font-display-lesson);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 1.85rem;
+  margin-bottom: 0.8rem;
+  letter-spacing: -0.01em;
+  line-height: var(--line-height-heading);
+  scroll-margin-top: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.theory-content h3::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: var(--primary-accent);
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+}
+
+.theory-content h4 {
+  font-family: var(--font-display-lesson);
+  font-size: 1.02rem;
   font-weight: 700;
   color: var(--text-primary);
   margin-top: 1.5rem;
   margin-bottom: 0.6rem;
-  letter-spacing: -0.01em;
-}
-
-.theory-content h4 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-top: 1.25rem;
-  margin-bottom: 0.5rem;
-}
-
-/* Paragraphs */
-.theory-content p {
-  margin-bottom: 1.1rem;
-  color: var(--text-secondary);
+  line-height: var(--line-height-heading);
+  scroll-margin-top: 80px;
 }
 
 /* Bold / Strong */
@@ -82,18 +215,19 @@
   color: var(--text-primary);
 }
 
-/* Lists */
+/* Lists and list bullets styling */
 .theory-content ul, 
 .theory-content ol {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
   padding-left: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
+  gap: 0.55rem;
 }
 
 .theory-content li {
   color: var(--text-secondary);
+  line-height: var(--line-height-body);
 }
 
 .theory-content ul {
@@ -107,27 +241,47 @@
 /* Inner lists spacing */
 .theory-content li > ul,
 .theory-content li > ol {
-  margin-top: 0.45rem;
+  margin-top: 0.55rem;
   margin-bottom: 0;
 }
 
-/* Horizontal Rule */
+/* Elegant Faded Horizontal Rule */
 .theory-content hr {
   border: 0;
   height: 1px;
-  background: var(--border-light);
-  margin: 2.25rem 0;
+  background: linear-gradient(to right, transparent, var(--border-mid) 15%, var(--border-mid) 85%, transparent);
+  margin: 2.75rem 0;
 }
 
-/* Blockquotes & Callouts */
+/* Premium Blockquotes & Callouts */
 .theory-content blockquote,
 .theory-content .callout {
-  padding: 1.1rem 1.25rem;
-  border-radius: 12px;
-  margin-bottom: 1.25rem;
-  border: 1px solid var(--border-light);
+  position: relative;
+  padding: 1.25rem 1.5rem 1.25rem 3.25rem;
+  border-radius: 14px;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border-mid);
   background: var(--bg-subtle);
-  border-left: 4px solid var(--text-muted-faint);
+  border-left: 5px solid var(--text-muted-faint);
+  box-shadow: var(--shadow-lesson-sm);
+  transition: transform var(--tr-lesson), box-shadow var(--tr-lesson);
+}
+
+.theory-content blockquote:hover,
+.theory-content .callout:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lesson-md);
+}
+
+/* Default icon for blockquote & callout */
+.theory-content blockquote::before,
+.theory-content .callout::before {
+  content: "💡";
+  position: absolute;
+  left: 1.15rem;
+  top: 1.25rem;
+  font-size: 1.25rem;
+  line-height: 1;
 }
 
 .theory-content blockquote p:last-child,
@@ -135,72 +289,90 @@
   margin-bottom: 0;
 }
 
-/* Specialized Callout Variations */
+/* Specialized Callout Variations with custom symbols and colors */
 .theory-content .callout-info {
   background: var(--primary-accent-light);
-  border-color: rgba(3, 105, 161, 0.15);
+  border-color: rgba(2, 132, 199, 0.15);
   border-left-color: var(--primary-accent);
-  color: var(--primary-accent-dark);
+  color: var(--callout-info-text);
+}
+.theory-content .callout-info::before {
+  content: "💡"; /* Clinical pearl or key tip */
 }
 .theory-content .callout-info strong {
-  color: var(--primary-accent-dark);
+  color: var(--callout-info-text);
 }
 
 .theory-content .callout-success {
   background: var(--success-bg);
   border-color: var(--success-border);
   border-left-color: var(--success-color);
-  color: var(--success-color);
+  color: var(--callout-success-text);
+}
+.theory-content .callout-success::before {
+  content: "✅"; /* Clinical standard or positive goal */
 }
 .theory-content .callout-success strong {
-  color: #065f46;
+  color: var(--callout-success-text);
 }
 
 .theory-content .callout-warning {
   background: var(--warning-bg);
   border-color: var(--warning-border);
   border-left-color: var(--warning-color);
-  color: #92400e;
+  color: var(--callout-warning-text);
+}
+.theory-content .callout-warning::before {
+  content: "⚠️"; /* Caution / Diagnostic pitfall */
 }
 .theory-content .callout-warning strong {
-  color: #78350f;
+  color: var(--callout-warning-text);
 }
 
 .theory-content .callout-danger {
   background: var(--danger-bg);
   border-color: var(--danger-border);
   border-left-color: var(--danger-color);
-  color: #b91c1c;
+  color: var(--callout-danger-text);
+}
+.theory-content .callout-danger::before {
+  content: "🚨"; /* Red flag / Absolute contraindication */
 }
 .theory-content .callout-danger strong {
-  color: #7f1d1d;
+  color: var(--callout-danger-text);
 }
 
-/* Tables inside lessons */
+/* Modern Rounded-Corner Tables */
 .theory-content table {
   width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 1.5rem;
-  font-size: 0.85rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 1.75rem;
+  font-size: 0.88rem;
+  border: 1px solid var(--border-mid);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lesson-sm);
 }
 
 .theory-content th {
-  padding: 0.65rem 0.85rem;
+  padding: 0.85rem 1rem;
   text-align: left;
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 0.72rem;
-  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
   color: var(--text-secondary);
   background: var(--bg-subtle);
-  border-bottom: 2px solid var(--border-light);
+  border-bottom: 1px solid var(--border-mid);
 }
 
 .theory-content td {
-  padding: 0.75rem 0.85rem;
+  padding: 0.9rem 1rem;
   border-bottom: 1px solid var(--border-light);
   color: var(--text-secondary);
-  vertical-align: top;
+  vertical-align: middle;
+  transition: background-color var(--tr-lesson);
 }
 
 .theory-content tr:last-child td {
@@ -211,39 +383,97 @@
   background: var(--primary-accent-light);
 }
 
-/* Formulas / Math style spans */
+/* Interactive Math / Statistical Formulas */
 .theory-content .formula-span {
   font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-  font-size: 0.82rem;
-  background: var(--bg-subtle);
-  border: 1px solid var(--border-light);
-  padding: 0.15rem 0.35rem;
-  border-radius: 4px;
+  font-size: 0.86rem;
+  background: var(--primary-accent-light);
+  border: 1px solid rgba(2, 132, 199, 0.18);
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
   color: var(--primary-accent-dark);
+  font-weight: 600;
+  display: inline-block;
+  box-shadow: 0 1px 2px rgba(2, 132, 199, 0.05);
+  transition: all var(--tr-lesson);
 }
 
-/* References Section styling */
+.theory-content .formula-span:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(2, 132, 199, 0.12);
+  border-color: var(--primary-accent);
+}
+
+/* Interactive Links inside lessons */
+.theory-content a {
+  color: var(--primary-accent);
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1.5px solid rgba(2, 132, 199, 0.2);
+  transition: all var(--tr-lesson);
+}
+
+.theory-content a:hover {
+  color: var(--primary-accent-dark);
+  border-bottom-color: var(--primary-accent);
+  background-color: var(--primary-accent-light);
+  border-radius: 4px;
+  padding: 0 0.2rem;
+  margin: 0 -0.2rem;
+}
+
+/* Premium References Section Styling (AMA Style) */
 .theory-content .references-section {
-  margin-top: 2rem;
-  font-size: 0.78rem;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed var(--border-mid);
+  font-size: 0.8rem;
   color: var(--text-secondary);
 }
 
 .theory-content .references-section h5 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.85rem;
+  font-family: var(--font-display-lesson);
+  font-size: 0.9rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theory-content .references-section h5::before {
+  content: "📚";
+  font-size: 1rem;
 }
 
 .theory-content .references-list {
-  padding-left: 1.2rem;
+  padding-left: 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.55rem;
 }
 
 .theory-content .references-list li {
   color: var(--text-secondary);
+  line-height: 1.5;
+  transition: color var(--tr-lesson);
+}
+
+.theory-content .references-list li:hover {
+  color: var(--text-primary);
+}
+
+.theory-content .references-list li em {
+  font-style: italic;
+  color: var(--text-primary);
+}
+
+/* Layout overrides when TOC is active */
+@media (min-width: 1200px) {
+  /* Expand the page main container to fit both content and the TOC sidebar */
+  .main-container:has(.visual-container.has-toc) {
+    max-width: 1140px !important;
+    transition: max-width var(--tr-lesson);
+  }
 }
