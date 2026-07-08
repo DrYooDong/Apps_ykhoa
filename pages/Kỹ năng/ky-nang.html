@@ -227,6 +227,26 @@
             <p>Vui lòng thử từ khóa khác hoặc xóa bộ lọc.</p>
           </div>
 
+          <!-- ===== KỸ NĂNG THƯỜNG DÙNG ===== -->
+          <section id="favorites-section" class="favorites-section" data-favorite-type="skills" style="display: none;">
+            <div class="physio-group-container" id="favorites-container" style="border-left-color: var(--color-warning); margin-bottom: 2rem; transition: padding var(--tr);">
+              <div class="physio-group-header collapsible-header" id="favorites-header" style="background: linear-gradient(90deg, var(--color-warning-hl) 0%, transparent 100%); border-top-right-radius: calc(var(--radius-lg) - 1px); cursor: pointer; display: flex; justify-content: space-between; align-items: center; width: 100%; transition: margin var(--tr), border-color var(--tr);">
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                  <span class="physio-group-icon" style="color: var(--color-warning); border-color: var(--color-warning-hl);"><i class="fa-solid fa-star"></i></span>
+                  <h3 id="favorites-heading" style="margin: 0;">Kỹ năng thường dùng</h3>
+                </div>
+                <span class="favorites-toggle-indicator" style="font-size: 0.95rem; color: var(--color-text-muted); transition: transform var(--tr); margin-right: 0.5rem;"><i class="fa-solid fa-chevron-up"></i></span>
+              </div>
+              <div class="favorites-collapse-wrapper" id="favorites-collapse" style="display: grid; grid-template-rows: 1fr; transition: grid-template-rows var(--tr); overflow: hidden;">
+                <div class="favorites-collapse-inner" style="min-height: 0;">
+                  <div class="specialty-grid" id="favorites-grid">
+                    <!-- các kỹ năng được ghim sẽ hiển thị tại đây -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
           <!-- PHẦN 1: BỆNH ÁN LÂM SÀNG -->
           <section id="part1-section" aria-labelledby="part1-heading">
             <div class="physio-group-container">
