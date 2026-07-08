@@ -1494,3 +1494,214 @@
     color: var(--part-color) !important;
 }
 
+/* ============================================================
+   SECTION 5: FAVORITES / PINNED TOOLS SYSTEM ADDITIONS
+   ============================================================ */
+.favorites-section {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.favorites-section .specialty-card:not(.disabled):hover {
+    box-shadow: 0 12px 24px -6px rgba(217, 119, 6, 0.18), var(--shadow-md) !important;
+}
+
+.specialty-info {
+    padding-right: 1.5rem; /* Chừa khoảng trống cho ngôi sao ở góc */
+}
+
+.favorite-btn {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    color: var(--color-text-faint);
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 0.25rem;
+    z-index: 5;
+    transition: color var(--tr), transform var(--tr), opacity var(--tr);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.favorite-btn:hover {
+    transform: scale(1.2);
+    color: var(--color-warning);
+}
+
+.favorite-btn.active {
+    color: var(--color-warning);
+}
+
+/* Ẩn bớt ngôi sao khi chưa active và card không hover */
+.specialty-card:not(:hover) .favorite-btn:not(.active) {
+    opacity: 0.3;
+}
+.specialty-card:hover .favorite-btn:not(.active) {
+    opacity: 0.8;
+}
+
+/* Thích ứng cho chế độ danh sách (List View) */
+.specialty-grid.list-view .specialty-card {
+    padding-right: 2.75rem !important; /* Tạo thêm khoảng trống bên phải cho ngôi sao */
+}
+
+.specialty-grid.list-view .favorite-btn {
+    right: 0.85rem !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+}
+
+/* Placeholder khi chưa ghim công cụ nào */
+.no-favorites-placeholder {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1.5rem;
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    color: var(--color-text-muted);
+    background: var(--color-surface-2);
+    box-shadow: var(--shadow-xs);
+    animation: floatTree 6s ease-in-out infinite;
+}
+
+
+/* ============================================================
+   SECTION 5: FAVORITES / PINNED TOOLS SYSTEM ADDITIONS
+   ============================================================ */
+.favorites-section {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.favorites-section .specialty-card:not(.disabled):hover {
+    box-shadow: 0 12px 24px -6px rgba(217, 119, 6, 0.18), var(--shadow-md) !important;
+}
+
+.specialty-info {
+    padding-right: 1.5rem; /* Chừa khoảng trống cho ngôi sao ở góc */
+}
+
+.favorite-btn {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    color: var(--color-text-faint);
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 0.25rem;
+    z-index: 5;
+    transition: color var(--tr), transform var(--tr), opacity var(--tr);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.favorite-btn:hover {
+    transform: scale(1.2);
+    color: var(--color-warning);
+}
+
+.favorite-btn.active {
+    color: var(--color-warning);
+}
+
+/* Ẩn bớt ngôi sao khi chưa active và card không hover */
+.specialty-card:not(:hover) .favorite-btn:not(.active) {
+    opacity: 0.3;
+}
+.specialty-card:hover .favorite-btn:not(.active) {
+    opacity: 0.8;
+}
+
+/* Thích ứng cho chế độ danh sách (List View) */
+.specialty-grid.list-view .specialty-card {
+    padding-right: 2.75rem !important; /* Tạo thêm khoảng trống bên phải cho ngôi sao */
+}
+
+.specialty-grid.list-view .favorite-btn {
+    right: 0.85rem !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+}
+
+/* Placeholder khi chưa ghim công cụ nào */
+.no-favorites-placeholder {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1.5rem;
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    color: var(--color-text-muted);
+    background: var(--color-surface-2);
+    box-shadow: var(--shadow-xs);
+    animation: fadeIn 0.4s ease-out;
+}
+
+.no-favorites-placeholder i {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-warning);
+    animation: float 4s ease-in-out infinite;
+}
+
+.no-favorites-placeholder p {
+    font-weight: 600;
+    font-size: var(--text-sm);
+    margin-bottom: 0.35rem;
+    color: var(--color-text);
+}
+
+.no-favorites-placeholder span {
+    font-size: var(--text-xs);
+    color: var(--color-text-faint);
+    max-width: 45ch;
+    line-height: 1.5;
+}
+
+/* Styles cho tính năng thu gọn/xổ ra của favorites-section */
+.favorites-collapse-wrapper {
+    display: grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows var(--tr);
+    overflow: hidden;
+}
+
+.favorites-collapse-wrapper.collapsed {
+    grid-template-rows: 0fr !important;
+}
+
+#favorites-container {
+    transition: padding var(--tr), box-shadow var(--tr);
+}
+
+#favorites-container.collapsed {
+    padding-bottom: 0 !important;
+}
+
+#favorites-container.collapsed .physio-group-header {
+    margin-bottom: 0 !important;
+    border-bottom-color: transparent !important;
+}
+
+#favorites-container.collapsed .favorites-toggle-indicator {
+    transform: rotate(180deg);
+}
+
+.collapsible-header {
+    transition: background var(--tr), filter var(--tr);
+}
+
+.collapsible-header:hover {
+    filter: brightness(0.97);
+}
+[data-theme="dark"] .collapsible-header:hover {
+    filter: brightness(1.08);
+}
