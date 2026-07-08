@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Kho Guidelines lâm sàng — Hướng dẫn điều trị từ BYT và các Hiệp hội quốc tế, Công cụ tính thang điểm lâm sàng">
-  <title>Kho Guidelines Lâm Sàng — CliniPortal</title>
+  <meta name="description" content="Tổng hợp nghiên cứu lâm sàng hệ Nội — Cập nhật từ các tạp chí và hội nghị y khoa quốc tế">
+  <title>Nghiên Cứu Lâm Sàng Hệ Nội — CliniPortal</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +28,7 @@
       --text-faint: #94a3b8;
       --radius: 16px;
       --tr: 260ms cubic-bezier(0.16, 1, 0.3, 1);
-      --sidebar-w: 260px;
+      --sidebar-w: 280px;
     }
 
     html { scroll-behavior: smooth; }
@@ -72,15 +72,6 @@
       background: var(--accent-light); color: var(--accent);
       font-size: 0.7rem; font-weight: 700;
     }
-    .topnav-bookmarks-btn {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      padding: 0.35rem 0.85rem; border-radius: 8px;
-      border: 1.5px solid var(--border);
-      background: var(--surface); color: var(--text-muted);
-      font-size: 0.78rem; font-weight: 600; cursor: pointer;
-      transition: all var(--tr);
-    }
-    .topnav-bookmarks-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
 
     /* ── APP SHELL ── */
     .app-shell {
@@ -90,7 +81,7 @@
       overflow: hidden;
     }
 
-    /* ── LEFT NAV (section switcher) ── */
+    /* ── LEFT NAV ── */
     .left-nav {
       width: var(--sidebar-w);
       background: var(--surface);
@@ -121,16 +112,6 @@
     .left-nav-link:hover { background: var(--accent-light); color: var(--accent); }
     .left-nav-link.active { background: var(--accent); color: #fff; font-weight: 700; }
 
-    .left-nav-link-badge {
-      margin-left: auto;
-      padding: 1px 7px; border-radius: 20px;
-      font-size: 0.65rem; font-weight: 700;
-      background: rgba(255,255,255,0.25);
-    }
-    .left-nav-link.active .left-nav-link-badge { background: rgba(255,255,255,0.3); color: #fff; }
-    .left-nav-link:not(.active) .left-nav-link-badge { background: var(--surface-2); color: var(--text-faint); }
-
-    /* Specialty filter list */
     .spec-filter-item {
       display: flex; align-items: center; gap: 0.5rem;
       padding: 0.4rem 0.75rem; border-radius: 8px;
@@ -159,143 +140,171 @@
     .content-panel.active { display: flex; flex-direction: column; gap: 1.25rem; }
 
     /* ══════════════════════════
-       PANEL 1: KHO GUIDELINES
+       CÓ GÌ MỚI
     ══════════════════════════ */
-
-    /* Controls */
-    .gl-controls {
+    .updates-section {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 1.1rem 1.25rem;
+      overflow: hidden;
+    }
+    .updates-header {
+      padding: 1rem 1.25rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent-mid));
+      color: #fff;
+    }
+    .updates-header h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1rem; font-weight: 800; margin-bottom: 0.25rem;
+    }
+    .updates-header p {
+      font-size: 0.75rem; opacity: 0.9;
+    }
+    .updates-list {
+      padding: 0.5rem 0;
+    }
+    .update-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 0.75rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      transition: background var(--tr);
+      cursor: pointer;
+    }
+    .update-item:last-child { border-bottom: none; }
+    .update-item:hover { background: var(--accent-light); }
+    .update-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      margin-top: 0.45rem; flex-shrink: 0;
+    }
+    .update-content { flex: 1; }
+    .update-title {
+      font-size: 0.85rem; font-weight: 600; color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+    .update-meta {
+      font-size: 0.73rem; color: var(--text-faint);
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+    }
+    .update-tag {
+      padding: 2px 10px; border-radius: 6px;
+      font-size: 0.68rem; font-weight: 700; white-space: nowrap;
+    }
+
+    /* ══════════════════════════
+       BẢNG TỔNG HỢP NGHIÊN CỨU
+    ══════════════════════════ */
+    .controls-bar {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
       display: flex;
       flex-wrap: wrap;
       gap: 0.75rem;
       align-items: center;
     }
 
-    .gl-search {
+    .search-box {
       flex: 1; min-width: 200px; max-width: 360px; position: relative;
     }
-    .gl-search input {
+    .search-box input {
       width: 100%; padding: 0.55rem 1rem 0.55rem 2.25rem;
       border: 1.5px solid var(--border); border-radius: 10px;
       font-size: 0.85rem; background: var(--surface); color: var(--text);
       outline: none; transition: border-color var(--tr), box-shadow var(--tr);
     }
-    .gl-search input:focus {
+    .search-box input:focus {
       border-color: var(--accent);
       box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.12);
     }
-    .gl-search::before {
+    .search-box::before {
       content: '🔍'; position: absolute; left: 0.7rem; top: 50%;
       transform: translateY(-50%); font-size: 0.82rem; pointer-events: none;
     }
 
-    .gl-view-toggle { display: flex; gap: 0.3rem; }
-    .gl-view-btn {
-      width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
-      border-radius: 8px; border: 1.5px solid var(--border); background: var(--surface);
-      color: var(--text-muted); cursor: pointer; font-size: 1rem; transition: all var(--tr);
+    .btn-group { display: flex; gap: 0.5rem; }
+    .btn {
+      padding: 0.5rem 1rem; border-radius: 10px;
+      border: 1.5px solid var(--border); background: var(--surface);
+      color: var(--text-muted); font-size: 0.8rem; font-weight: 600;
+      cursor: pointer; transition: all var(--tr);
+      display: inline-flex; align-items: center; gap: 0.4rem;
     }
-    .gl-view-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-primary {
+      background: var(--accent); color: #fff; border-color: var(--accent);
+    }
+    .btn-primary:hover { background: var(--accent-dark); color: #fff; }
 
-    .gl-stats {
+    .stats-badge {
       font-size: 0.78rem; color: var(--text-faint);
       padding: 0.25rem 0.75rem; border-radius: 8px;
       background: var(--surface-2); border: 1px solid var(--border);
     }
-    .gl-stats strong { color: var(--accent); }
+    .stats-badge strong { color: var(--accent); }
 
-    /* Table View */
-    .gl-table-wrap {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); overflow: hidden;
+    .table-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow-x: auto;
     }
-    .gl-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
-    .gl-table thead { background: var(--surface-2); border-bottom: 2px solid var(--border); }
-    .gl-table th {
+
+    .study-table {
+      width: 100%; border-collapse: collapse;
+      font-size: 0.83rem;
+      min-width: 900px;
+    }
+    .study-table thead {
+      background: var(--surface-2);
+      border-bottom: 2px solid var(--border);
+    }
+    .study-table th {
       padding: 0.65rem 1rem; text-align: left;
       font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
       letter-spacing: 0.05em; color: var(--text-muted); white-space: nowrap;
       cursor: pointer; user-select: none; transition: color var(--tr);
     }
-    .gl-table th:hover { color: var(--accent); }
-    .gl-table td {
-      padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top;
+    .study-table th:hover { color: var(--accent); }
+    .study-table td {
+      padding: 0.75rem 1rem; border-bottom: 1px solid var(--border);
+      vertical-align: top;
     }
-    .gl-table tbody tr { transition: background var(--tr); }
-    .gl-table tbody tr:hover { background: var(--accent-light); }
-    .gl-table tbody tr:last-child td { border-bottom: none; }
+    .study-table tbody tr {
+      transition: background var(--tr);
+      cursor: pointer;
+    }
+    .study-table tbody tr:hover { background: var(--accent-light); }
+    .study-table tbody tr:last-child td { border-bottom: none; }
 
-    .gl-title-main { font-weight: 600; color: var(--text); margin-bottom: 2px; font-size: 0.85rem; }
-    .gl-title-summary { font-size: 0.75rem; color: var(--text-muted); line-height: 1.5; }
+    .study-title {
+      font-weight: 600; color: var(--text);
+      margin-bottom: 4px; font-size: 0.85rem;
+      display: block;
+    }
+    .study-summary {
+      font-size: 0.75rem; color: var(--text-muted);
+      line-height: 1.5; display: -webkit-box;
+      -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
 
-    .gl-badge {
+    .badge {
       display: inline-flex; align-items: center; gap: 4px;
       padding: 2px 9px; border-radius: 20px;
       font-size: 0.7rem; font-weight: 700; white-space: nowrap;
     }
-    .gl-year {
+    .badge-year {
       display: inline-block; padding: 2px 8px; border-radius: 6px;
       font-size: 0.72rem; font-weight: 700;
       background: var(--accent-light); color: var(--accent);
     }
-    .gl-source-tag {
+    .badge-source {
       display: inline-block; padding: 2px 8px; border-radius: 6px;
       font-size: 0.7rem; font-weight: 600;
       background: var(--surface-2); color: var(--text-muted);
       border: 1px solid var(--border);
     }
-    .gl-impact {
-      display: inline-flex; align-items: center; gap: 3px;
-      padding: 2px 8px; border-radius: 6px;
-      font-size: 0.7rem; font-weight: 700;
-    }
-    .impact-essential { background: #dcfce7; color: #15803d; }
-    .impact-recommended { background: #e0f2fe; color: #0369a1; }
-    .impact-reference { background: #f1f5f9; color: #64748b; }
-
-    .bookmark-btn {
-      background: none; border: none; cursor: pointer;
-      font-size: 1rem; color: var(--text-faint); padding: 2px;
-      transition: all var(--tr); border-radius: 4px;
-    }
-    .bookmark-btn:hover { color: #f59e0b; }
-    .bookmark-btn.bookmarked { color: #f59e0b; }
-
-    /* Card View */
-    .gl-cards-grid {
-      display: none;
-      grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
-      gap: 1rem;
-    }
-    .gl-cards-grid.visible { display: grid; }
-
-    .gl-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.25rem;
-      transition: all var(--tr); position: relative; overflow: hidden;
-    }
-    .gl-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: var(--card-color, var(--accent)); opacity: 0; transition: opacity var(--tr);
-    }
-    .gl-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(124,58,237,0.12); border-color: var(--accent); }
-    .gl-card:hover::before { opacity: 1; }
-    .gl-card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.6rem; }
-    .gl-card-title { font-weight: 700; font-size: 0.88rem; color: var(--text); line-height: 1.35; }
-    .gl-card-meta { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.6rem; }
-    .gl-card-body { font-size: 0.78rem; color: var(--text-muted); line-height: 1.55; }
-
-    /* Empty state */
-    .gl-empty {
-      text-align: center; padding: 4rem 1rem;
-      color: var(--text-faint); background: var(--surface);
-      border: 1px solid var(--border); border-radius: var(--radius);
-    }
-    .gl-empty-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
-    .gl-empty p { font-size: 0.85rem; }
 
     /* Specialty badge colors */
     .badge-cardio { background: #fef2f2; color: #dc2626; }
@@ -307,123 +316,95 @@
     .badge-renal { background: #ecfeff; color: #0891b2; }
     .badge-rheum { background: #fff7ed; color: #ea580c; }
     .badge-hema { background: #fdf2f8; color: #db2777; }
-    .badge-icu { background: #f1f5f9; color: #475569; }
+    .badge-onco { background: #fce7f3; color: #be185d; }
 
-    /* ══════════════════════════
-       PANEL 2: THANG ĐIỂM
-    ══════════════════════════ */
-    .calc-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
-      gap: 1rem;
+    /* Empty state */
+    .empty-state {
+      text-align: center; padding: 4rem 1rem;
+      color: var(--text-faint); background: var(--surface);
+      border: 1px solid var(--border); border-radius: var(--radius);
     }
+    .empty-state-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+    .empty-state p { font-size: 0.85rem; }
 
-    .score-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); overflow: hidden; transition: all var(--tr);
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: none; align-items: center; justify-content: center;
+      z-index: 1000;
     }
-    .score-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
-
-    .score-card-header {
-      padding: 1rem 1.25rem;
-      display: flex; align-items: center; gap: 0.75rem;
+    .modal-overlay.active { display: flex; }
+    .modal {
+      background: var(--surface);
+      border-radius: var(--radius);
+      width: 90%; max-width: 700px;
+      max-height: 90vh; overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
     }
-    .score-card-icon {
-      width: 40px; height: 40px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;
+    .modal-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
     }
-    .score-card-header h3 { font-size: 0.92rem; font-weight: 800; color: #fff; margin-bottom: 0.1rem; }
-    .score-card-header p { font-size: 0.72rem; color: rgba(255,255,255,0.72); }
-
-    .score-card-body { padding: 1rem 1.25rem; }
-
-    .score-criteria {
-      display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem;
-    }
-    .score-criterion {
-      display: flex; align-items: center; gap: 0.75rem;
-    }
-    .score-criterion label {
-      font-size: 0.8rem; color: var(--text-muted); flex: 1; cursor: pointer;
-    }
-    .score-criterion input[type="checkbox"] {
-      width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer; flex-shrink: 0;
-    }
-    .score-criterion-pts {
-      font-size: 0.72rem; font-weight: 700; color: var(--text-faint);
-      background: var(--surface-2); border: 1px solid var(--border);
-      padding: 1px 7px; border-radius: 6px; white-space: nowrap;
-    }
-    .score-criterion input[type="number"] {
-      width: 72px; padding: 0.3rem 0.5rem; border: 1.5px solid var(--border);
-      border-radius: 6px; font-size: 0.82rem; background: var(--surface); color: var(--text); outline: none;
-    }
-
-    .score-calc-btn {
-      width: 100%; padding: 0.6rem;
-      background: var(--accent); color: #fff; border: none;
-      border-radius: 10px; font-size: 0.82rem; font-weight: 700;
-      cursor: pointer; transition: all var(--tr); margin-bottom: 0.75rem;
-    }
-    .score-calc-btn:hover { background: var(--accent-dark); }
-
-    .score-result {
-      display: none; background: var(--surface-2); border: 1px solid var(--border);
-      border-radius: 10px; padding: 0.85rem 1rem;
-    }
-    .score-result.show { display: block; }
-    .score-result-num {
+    .modal-header h3 {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 1.6rem; font-weight: 800; color: var(--accent);
+      font-size: 1.1rem; font-weight: 800; color: var(--text);
     }
-    .score-result-label { font-size: 0.72rem; color: var(--text-faint); margin-bottom: 0.4rem; }
-    .score-result-interp { font-size: 0.78rem; color: var(--text); line-height: 1.55; }
-
-    /* CURB-65 */
-    .sc-curb { --sc-color: #2563eb; --sc-bg: linear-gradient(135deg,#1d4ed8,#2563eb); }
-    /* CHADS2-VASc */
-    .sc-chads { --sc-color: #dc2626; --sc-bg: linear-gradient(135deg,#991b1b,#dc2626); }
-    /* SOFA */
-    .sc-sofa { --sc-color: #475569; --sc-bg: linear-gradient(135deg,#1e293b,#475569); }
-    /* GRACE */
-    .sc-grace { --sc-color: #ea580c; --sc-bg: linear-gradient(135deg,#7c2d12,#ea580c); }
-    /* Wells DVT */
-    .sc-wells { --sc-color: #059669; --sc-bg: linear-gradient(135deg,#064e3b,#059669); }
-    /* Child-Pugh */
-    .sc-child { --sc-color: #ca8a04; --sc-bg: linear-gradient(135deg,#713f12,#ca8a04); }
-
-    .score-card-header { background: var(--sc-bg, linear-gradient(135deg,#7c3aed,#6d28d9)); }
-    .score-card-icon { background: rgba(255,255,255,0.2); }
-
-    /* ══════════════════════════
-       PANEL 3: CẬP NHẬT MỚI
-    ══════════════════════════ */
-    .updates-list {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); overflow: hidden;
+    .modal-close {
+      background: none; border: none; font-size: 1.5rem;
+      color: var(--text-faint); cursor: pointer;
+      padding: 0.25rem; line-height: 1;
     }
-    .update-item {
-      display: flex; align-items: flex-start; gap: 1rem;
-      padding: 0.95rem 1.25rem; border-bottom: 1px solid var(--border);
-      transition: background var(--tr);
+    .modal-close:hover { color: var(--text); }
+    .modal-body { padding: 1.5rem; }
+
+    .form-group {
+      margin-bottom: 1.25rem;
     }
-    .update-item:last-child { border-bottom: none; }
-    .update-item:hover { background: var(--accent-light); }
-    .update-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 0.45rem; flex-shrink: 0; }
-    .update-content { flex: 1; }
-    .update-title { font-size: 0.85rem; font-weight: 600; color: var(--text); margin-bottom: 0.2rem; }
-    .update-meta { font-size: 0.73rem; color: var(--text-faint); }
-    .update-tag {
-      padding: 2px 10px; border-radius: 6px; font-size: 0.68rem; font-weight: 700; white-space: nowrap;
+    .form-group label {
+      display: block; font-size: 0.8rem; font-weight: 600;
+      color: var(--text); margin-bottom: 0.5rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; padding: 0.6rem 0.85rem;
+      border: 1.5px solid var(--border); border-radius: 10px;
+      font-size: 0.85rem; background: var(--surface); color: var(--text);
+      outline: none; transition: border-color var(--tr);
+      font-family: inherit;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.12);
+    }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .form-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
     }
 
-    /* ══════════════════════════
-       PANEL 4: YÊU THÍCH
-    ══════════════════════════ */
-    .bookmarks-empty {
-      text-align: center; padding: 3rem 1rem;
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-      color: var(--text-faint);
+    .file-drop-zone {
+      border: 2px dashed var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      transition: all var(--tr);
+      cursor: pointer;
+    }
+    .file-drop-zone:hover,
+    .file-drop-zone.dragover {
+      border-color: var(--accent);
+      background: var(--accent-light);
+    }
+    .file-drop-zone p {
+      font-size: 0.85rem; color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+    .file-drop-zone small {
+      font-size: 0.72rem; color: var(--text-faint);
     }
 
     /* ── RESPONSIVE ── */
@@ -432,6 +413,7 @@
     }
     @media (max-width: 600px) {
       .main-content { padding: 1rem; }
+      .form-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -444,12 +426,9 @@
       Y học chứng cứ
     </a>
     <div class="topnav-divider"></div>
-    <div class="topnav-title">📋 Kho Guidelines Lâm Sàng</div>
+    <div class="topnav-title">📊 Nghiên Cứu Lâm Sàng Hệ Nội</div>
     <div class="topnav-right">
-      <button class="topnav-bookmarks-btn" onclick="switchPanel('bookmarks')">
-        ⭐ Yêu thích (<span id="bookmark-count">0</span>)
-      </button>
-      <span class="topnav-pill">Mô-đun 3</span>
+      <span class="topnav-pill">Nội khoa</span>
     </div>
   </nav>
 
@@ -459,26 +438,20 @@
     <nav class="left-nav">
       <div class="left-nav-section">
         <div class="left-nav-label">Chức năng</div>
-        <button class="left-nav-link active" id="nav-kho" onclick="switchPanel('kho')">
-          📚 Kho Guidelines
-          <span class="left-nav-link-badge" id="badge-kho">30+</span>
+        <button class="left-nav-link active" onclick="switchPanel('studies')">
+          📚 Tất cả nghiên cứu
+          <span class="left-nav-link-badge" id="total-count">0</span>
         </button>
-        <button class="left-nav-link" id="nav-thangdiem" onclick="switchPanel('thangdiem')">
-          🧮 Thang điểm LS
-          <span class="left-nav-link-badge">6</span>
+        <button class="left-nav-link" onclick="openAddModal()">
+          ➕ Thêm nghiên cứu
         </button>
-        <button class="left-nav-link" id="nav-updates" onclick="switchPanel('updates')">
-          🆕 Cập nhật mới
-          <span class="left-nav-link-badge">5</span>
-        </button>
-        <button class="left-nav-link" id="nav-bookmarks" onclick="switchPanel('bookmarks')">
-          ⭐ Yêu thích
-          <span class="left-nav-link-badge" id="left-badge-bm">0</span>
+        <button class="left-nav-link" onclick="openImportModal()">
+          📥 Nhập JSON
         </button>
       </div>
 
-      <div class="left-nav-section" id="spec-filter-section">
-        <div class="left-nav-label">Lọc chuyên khoa</div>
+      <div class="left-nav-section">
+        <div class="left-nav-label">Lọc theo chuyên khoa</div>
         <div id="spec-filter-list"></div>
       </div>
     </nav>
@@ -486,753 +459,607 @@
     <!-- MAIN CONTENT -->
     <div class="main-content">
 
-      <!-- ══ PANEL: KHO GUIDELINES ══ -->
-      <div class="content-panel active" id="panel-kho">
+      <!-- ══ CÓ GÌ MỚI ══ -->
+      <section class="updates-section">
+        <div class="updates-header">
+          <h2>🆕 Có Gì Mới</h2>
+          <p>Cập nhật nghiên cứu mới nhất trong tuần</p>
+        </div>
+        <div class="updates-list" id="updates-list">
+          <!-- Dynamic content -->
+        </div>
+      </section>
 
+      <!-- ══ BẢNG TỔNG HỢP ══ -->
+      <section class="content-panel active" id="panel-studies">
+        
         <!-- Controls -->
-        <div class="gl-controls">
-          <div class="gl-search">
-            <input type="text" id="gl-search-input" placeholder="Tìm kiếm guideline, nghiên cứu, thuốc..." aria-label="Tìm kiếm">
+        <div class="controls-bar">
+          <div class="search-box">
+            <input type="text" id="search-input" placeholder="Tìm kiếm nghiên cứu, thuốc, bệnh lý..." aria-label="Tìm kiếm">
           </div>
-          <div class="gl-view-toggle">
-            <button class="gl-view-btn active" id="btn-table" title="Bảng" onclick="setGlView('table')">☰</button>
-            <button class="gl-view-btn" id="btn-card" title="Thẻ" onclick="setGlView('card')">▦</button>
+          <div class="btn-group">
+            <button class="btn btn-primary" onclick="openAddModal()">➕ Thêm mới</button>
+            <button class="btn" onclick="openImportModal()">📥 Nhập JSON</button>
+            <button class="btn" onclick="exportJSON()">📤 Xuất JSON</button>
           </div>
-          <div class="gl-stats" id="gl-stats">Hiển thị <strong>0</strong> guidelines</div>
+          <div class="stats-badge">
+            Hiển thị <strong id="display-count">0</strong> nghiên cứu
+          </div>
         </div>
 
-        <!-- Table View -->
-        <div class="gl-table-wrap" id="gl-table-wrap">
-          <table class="gl-table">
+        <!-- Table -->
+        <div class="table-container">
+          <table class="study-table">
             <thead>
               <tr>
-                <th>Guideline / Nghiên cứu</th>
-                <th>Chuyên khoa</th>
-                <th>Nguồn</th>
-                <th>Năm</th>
-                <th>Mức độ</th>
-                <th>⭐</th>
+                <th data-sort="title">Nghiên cứu</th>
+                <th data-sort="specialty">Chuyên khoa</th>
+                <th data-sort="organization">Tổ chức / Tạp chí</th>
+                <th data-sort="year">Năm</th>
+                <th data-sort="phase">Giai đoạn</th>
+                <th data-sort="population">Đối tượng</th>
               </tr>
             </thead>
-            <tbody id="gl-table-body"></tbody>
+            <tbody id="table-body">
+              <!-- Dynamic content -->
+            </tbody>
           </table>
         </div>
 
-        <!-- Card View -->
-        <div class="gl-cards-grid" id="gl-cards-grid"></div>
-
-        <!-- Empty -->
-        <div class="gl-empty" id="gl-empty" style="display:none;">
-          <div class="gl-empty-icon">🔍</div>
-          <p>Không tìm thấy kết quả phù hợp. Thử thay đổi từ khóa hoặc bộ lọc.</p>
+        <!-- Empty State -->
+        <div class="empty-state" id="empty-state" style="display:none;">
+          <div class="empty-state-icon">📋</div>
+          <p>Chưa có nghiên cứu nào. Hãy thêm nghiên cứu đầu tiên hoặc nhập file JSON.</p>
         </div>
 
-      </div>
-
-      <!-- ══ PANEL: THANG ĐIỂM ══ -->
-      <div class="content-panel" id="panel-thangdiem">
-        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1.25rem 1.5rem;">
-          <h2 style="font-family:'Plus Jakarta Sans',sans-serif; font-size:1.1rem; font-weight:800; color:var(--text); margin-bottom:0.3rem;">🧮 Thang Điểm Lâm Sàng</h2>
-          <p style="font-size:0.82rem; color:var(--text-muted);">Công cụ tính nhanh các thang điểm lâm sàng quan trọng. Kết quả chỉ mang tính tham khảo hỗ trợ, không thay thế phán xét lâm sàng.</p>
-        </div>
-
-        <div class="calc-grid">
-
-          <!-- CURB-65 -->
-          <div class="score-card sc-curb" id="sc-curb">
-            <div class="score-card-header">
-              <div class="score-card-icon">🫁</div>
-              <div>
-                <h3>CURB-65</h3>
-                <p>Phân tầng viêm phổi cộng đồng</p>
-              </div>
-            </div>
-            <div class="score-card-body">
-              <div class="score-criteria">
-                <div class="score-criterion">
-                  <input type="checkbox" id="curb-c"><label for="curb-c">Confusion — Rối loạn ý thức mới</label>
-                  <span class="score-criterion-pts">+1</span>
-                </div>
-                <div class="score-criterion">
-                  <input type="checkbox" id="curb-u"><label for="curb-u">Urea > 7 mmol/L (Urê > 19 mg/dL)</label>
-                  <span class="score-criterion-pts">+1</span>
-                </div>
-                <div class="score-criterion">
-                  <input type="checkbox" id="curb-r"><label for="curb-r">Respiratory rate ≥ 30 lần/phút</label>
-                  <span class="score-criterion-pts">+1</span>
-                </div>
-                <div class="score-criterion">
-                  <input type="checkbox" id="curb-b"><label for="curb-b">Blood pressure ≤ 90 mmHg (tâm thu) hoặc ≤ 60 (tâm trương)</label>
-                  <span class="score-criterion-pts">+1</span>
-                </div>
-                <div class="score-criterion">
-                  <input type="checkbox" id="curb-65"><label for="curb-65">Age ≥ 65 tuổi</label>
-                  <span class="score-criterion-pts">+1</span>
-                </div>
-              </div>
-              <button class="score-calc-btn" onclick="calcCURB65()">Tính điểm</button>
-              <div class="score-result" id="res-curb">
-                <div class="score-result-num" id="curb-score">0</div>
-                <div class="score-result-label">Điểm CURB-65 / 5</div>
-                <div class="score-result-interp" id="curb-interp"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- CHADS2-VASc -->
-          <div class="score-card sc-chads" id="sc-chads">
-            <div class="score-card-header">
-              <div class="score-card-icon">🫀</div>
-              <div>
-                <h3>CHA₂DS₂-VASc</h3>
-                <p>Nguy cơ đột quỵ trong rung nhĩ</p>
-              </div>
-            </div>
-            <div class="score-card-body">
-              <div class="score-criteria">
-                <div class="score-criterion">
-                  <input type="checkbox" id="chads-c"><label for="chads-c">Suy tim sung huyết (C)</label>
-                  <span class="score-criterion-pts">+1</span>
-                </div>
-                <div class="score-criterion">
-                  <input type="checkbox" id="chads-h"><label for="chads-h">Tăng huyết áp (H)</label>
-                  <span class="score-criterion-pts">+1</span>
-                </div>
-                <div class="score-criterion">
-                  <input type="checkbox" id="chads-a2"><label for="chads-a2">Tuổi ≥ 75 (A₂)</label>
-                  <span class="score-criterion-pts">+2</span>
-                </div>
-                <div class="score-criterion">
-                  <input type="checkbox" id="chads-d"><label for="chads-d">Đái tháo đường (D)</label>
-                  <span class="score-criterion-pts">+1</span>
-                </div>
-                <div class="score-criterion">
-                  <input type="checkbox" id="chads-s2"><label for="chads-s2">Đột quỵ / TIA trước đây (S₂)</label>
-                  <span class="score-criterion-pts">+2</span>
-                </div>
-                <div class="score-criterion">
-                  <input type="checkbox" id="chads-v"><label for="chads-v">Bệnh mạch máu (MI, PAD, plaque ĐMC) (V)</label>
-                  <span class="score-criterion-pts">+1</span>
-                </div>
-                <div class="score-criterion">
-                  <input type="checkbox" id="chads-a1"><label for="chads-a1">Tuổi 65–74 (A₁)</label>
-                  <span class="score-criterion-pts">+1</span>
-                </div>
-                <div class="score-criterion">
-                  <input type="checkbox" id="chads-sc"><label for="chads-sc">Nữ giới (Sc)</label>
-                  <span class="score-criterion-pts">+1</span>
-                </div>
-              </div>
-              <button class="score-calc-btn" onclick="calcCHADS()">Tính điểm</button>
-              <div class="score-result" id="res-chads">
-                <div class="score-result-num" id="chads-score">0</div>
-                <div class="score-result-label">Điểm CHA₂DS₂-VASc / 9</div>
-                <div class="score-result-interp" id="chads-interp"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- SOFA -->
-          <div class="score-card sc-sofa" id="sc-sofa">
-            <div class="score-card-header">
-              <div class="score-card-icon">🏥</div>
-              <div>
-                <h3>SOFA Score</h3>
-                <p>Đánh giá suy đa cơ quan — Sepsis</p>
-              </div>
-            </div>
-            <div class="score-card-body">
-              <div style="font-size:0.75rem; color:var(--text-faint); margin-bottom:0.75rem;">Nhập điểm từng hệ cơ quan (0–4)</div>
-              <div class="score-criteria">
-                <div class="score-criterion">
-                  <label>Hô hấp (P/F ratio)</label>
-                  <input type="number" id="sofa-resp" min="0" max="4" placeholder="0–4">
-                </div>
-                <div class="score-criterion">
-                  <label>Đông máu (Platelet)</label>
-                  <input type="number" id="sofa-coag" min="0" max="4" placeholder="0–4">
-                </div>
-                <div class="score-criterion">
-                  <label>Gan (Bilirubin)</label>
-                  <input type="number" id="sofa-liver" min="0" max="4" placeholder="0–4">
-                </div>
-                <div class="score-criterion">
-                  <label>Tim mạch (MAP / Vận mạch)</label>
-                  <input type="number" id="sofa-cardio" min="0" max="4" placeholder="0–4">
-                </div>
-                <div class="score-criterion">
-                  <label>Thần kinh (GCS)</label>
-                  <input type="number" id="sofa-neuro" min="0" max="4" placeholder="0–4">
-                </div>
-                <div class="score-criterion">
-                  <label>Thận (Creatinine/Nước tiểu)</label>
-                  <input type="number" id="sofa-renal" min="0" max="4" placeholder="0–4">
-                </div>
-              </div>
-              <button class="score-calc-btn" onclick="calcSOFA()">Tính điểm</button>
-              <div class="score-result" id="res-sofa">
-                <div class="score-result-num" id="sofa-score">0</div>
-                <div class="score-result-label">Tổng điểm SOFA / 24</div>
-                <div class="score-result-interp" id="sofa-interp"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Wells DVT -->
-          <div class="score-card sc-wells" id="sc-wells">
-            <div class="score-card-header">
-              <div class="score-card-icon">🩸</div>
-              <div>
-                <h3>Wells Score DVT</h3>
-                <p>Khả năng tiền lâm sàng DVT</p>
-              </div>
-            </div>
-            <div class="score-card-body">
-              <div class="score-criteria">
-                <div class="score-criterion">
-                  <input type="checkbox" id="wells-paralysis"><label for="wells-paralysis">Liệt, liệt nhẹ chi dưới hoặc bó bột gần đây</label>
-                  <span class="score-criterion-pts">+1</span>
-                </div>
-                <div class="score-criterion">
-                  <input type="checkbox" id="wells-bedridden"><label for="wells-bedridden">Nằm liệt giường ≥3 ngày hoặc phẫu thuật lớn gần đây &lt;12 tuần</label>
-                  <span class="score-criterion-pts">+1</span>
-                </div>
-                <div class="score-criterion">
-                  <input type="checkbox" id="wells-tender"><label for="wells-tender">Đau dọc theo tĩnh mạch sâu</label>
-                  <span class="score-criterion-pts">+1</span>
-                </div>
-                <div class="score-criterion">
-                  <input type="checkbox" id="wells-entire"><label for="wells-entire">Phù toàn bộ chi dưới</label>
-                  <span class="score-criterion-pts">+1</span>
-                </div>
-                <div class="score-criterion">
-                  <input type="checkbox" id="wells-calf"><label for="wells-calf">Bắp chân to hơn bên đối diện &gt;3 cm</label>
-                  <span class="score-criterion-pts">+1</span>
-                </div>
-                <div class="score-criterion">
-                  <input type="checkbox" id="wells-pitting"><label for="wells-pitting">Phù lõm (pitting) ở chi bệnh</label>
-                  <span class="score-criterion-pts">+1</span>
-                </div>
-                <div class="score-criterion">
-                  <input type="checkbox" id="wells-collateral"><label for="wells-collateral">Tĩnh mạch bàng hệ nổi (không giãn)</label>
-                  <span class="score-criterion-pts">+1</span>
-                </div>
-                <div class="score-criterion">
-                  <input type="checkbox" id="wells-cancer"><label for="wells-cancer">Ung thư đang điều trị hoặc ≤6 tháng</label>
-                  <span class="score-criterion-pts">+1</span>
-                </div>
-                <div class="score-criterion">
-                  <input type="checkbox" id="wells-alt"><label for="wells-alt">Chẩn đoán thay thế có khả năng ít nhất bằng DVT</label>
-                  <span class="score-criterion-pts">−2</span>
-                </div>
-              </div>
-              <button class="score-calc-btn" onclick="calcWells()">Tính điểm</button>
-              <div class="score-result" id="res-wells">
-                <div class="score-result-num" id="wells-score">0</div>
-                <div class="score-result-label">Điểm Wells DVT</div>
-                <div class="score-result-interp" id="wells-interp"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Child-Pugh -->
-          <div class="score-card sc-child" id="sc-child">
-            <div class="score-card-header">
-              <div class="score-card-icon">🟡</div>
-              <div>
-                <h3>Child-Pugh Score</h3>
-                <p>Phân loại mức độ xơ gan</p>
-              </div>
-            </div>
-            <div class="score-card-body">
-              <div style="font-size:0.75rem; color:var(--text-faint); margin-bottom:0.75rem;">Chọn điểm cho từng tiêu chí (1–3)</div>
-              <div class="score-criteria">
-                <div class="score-criterion">
-                  <label>Bilirubin TP (mg/dL)</label>
-                  <select id="cp-bili" style="flex:1; padding:0.3rem 0.5rem; border:1.5px solid var(--border); border-radius:6px; font-size:0.82rem; background:var(--surface); color:var(--text); outline:none;">
-                    <option value="1">&lt;2 mg/dL (+1)</option>
-                    <option value="2">2–3 mg/dL (+2)</option>
-                    <option value="3">&gt;3 mg/dL (+3)</option>
-                  </select>
-                </div>
-                <div class="score-criterion">
-                  <label>Albumin (g/dL)</label>
-                  <select id="cp-alb" style="flex:1; padding:0.3rem 0.5rem; border:1.5px solid var(--border); border-radius:6px; font-size:0.82rem; background:var(--surface); color:var(--text); outline:none;">
-                    <option value="1">&gt;3.5 g/dL (+1)</option>
-                    <option value="2">2.8–3.5 g/dL (+2)</option>
-                    <option value="3">&lt;2.8 g/dL (+3)</option>
-                  </select>
-                </div>
-                <div class="score-criterion">
-                  <label>PT kéo dài (giây)</label>
-                  <select id="cp-pt" style="flex:1; padding:0.3rem 0.5rem; border:1.5px solid var(--border); border-radius:6px; font-size:0.82rem; background:var(--surface); color:var(--text); outline:none;">
-                    <option value="1">&lt;4 giây (+1)</option>
-                    <option value="2">4–6 giây (+2)</option>
-                    <option value="3">&gt;6 giây (+3)</option>
-                  </select>
-                </div>
-                <div class="score-criterion">
-                  <label>Cổ trướng</label>
-                  <select id="cp-ascites" style="flex:1; padding:0.3rem 0.5rem; border:1.5px solid var(--border); border-radius:6px; font-size:0.82rem; background:var(--surface); color:var(--text); outline:none;">
-                    <option value="1">Không có (+1)</option>
-                    <option value="2">Nhẹ/điều trị được (+2)</option>
-                    <option value="3">Nặng/kháng trị (+3)</option>
-                  </select>
-                </div>
-                <div class="score-criterion">
-                  <label>Bệnh não gan</label>
-                  <select id="cp-enc" style="flex:1; padding:0.3rem 0.5rem; border:1.5px solid var(--border); border-radius:6px; font-size:0.82rem; background:var(--surface); color:var(--text); outline:none;">
-                    <option value="1">Không có (+1)</option>
-                    <option value="2">Độ 1–2 (+2)</option>
-                    <option value="3">Độ 3–4 (+3)</option>
-                  </select>
-                </div>
-              </div>
-              <button class="score-calc-btn" onclick="calcChildPugh()">Tính điểm</button>
-              <div class="score-result" id="res-child">
-                <div class="score-result-num" id="child-score">0</div>
-                <div class="score-result-label">Tổng điểm Child-Pugh / 15</div>
-                <div class="score-result-interp" id="child-interp"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- GRACE -->
-          <div class="score-card sc-grace" id="sc-grace">
-            <div class="score-card-header">
-              <div class="score-card-icon">🫀</div>
-              <div>
-                <h3>GRACE 2.0</h3>
-                <p>Tiên lượng ACS — Nguy cơ tử vong</p>
-              </div>
-            </div>
-            <div class="score-card-body">
-              <div style="font-size:0.75rem; color:var(--text-faint); margin-bottom:0.75rem;">Ước tính nhanh — Dùng GRACE 2.0 calculator online để chính xác</div>
-              <div class="score-criteria">
-                <div class="score-criterion">
-                  <input type="checkbox" id="grace-old"><label for="grace-old">Tuổi &gt; 65</label>
-                  <span class="score-criterion-pts">+30</span>
-                </div>
-                <div class="score-criterion">
-                  <input type="checkbox" id="grace-hr"><label for="grace-hr">Nhịp tim &gt; 100/phút</label>
-                  <span class="score-criterion-pts">+20</span>
-                </div>
-                <div class="score-criterion">
-                  <input type="checkbox" id="grace-sbp"><label for="grace-sbp">HA tâm thu &lt; 90 mmHg</label>
-                  <span class="score-criterion-pts">+58</span>
-                </div>
-                <div class="score-criterion">
-                  <input type="checkbox" id="grace-cr"><label for="grace-cr">Creatinine &gt; 2.0 mg/dL</label>
-                  <span class="score-criterion-pts">+38</span>
-                </div>
-                <div class="score-criterion">
-                  <input type="checkbox" id="grace-st"><label for="grace-st">ST chênh lên hoặc LBBB mới</label>
-                  <span class="score-criterion-pts">+28</span>
-                </div>
-                <div class="score-criterion">
-                  <input type="checkbox" id="grace-card"><label for="grace-card">Ngừng tim khi nhập viện</label>
-                  <span class="score-criterion-pts">+39</span>
-                </div>
-                <div class="score-criterion">
-                  <input type="checkbox" id="grace-trop"><label for="grace-trop">Troponin tăng cao</label>
-                  <span class="score-criterion-pts">+14</span>
-                </div>
-                <div class="score-criterion">
-                  <input type="checkbox" id="grace-killip"><label for="grace-killip">Killip class &gt; I (có suy tim)</label>
-                  <span class="score-criterion-pts">+20</span>
-                </div>
-              </div>
-              <button class="score-calc-btn" onclick="calcGRACE()">Ước tính nguy cơ</button>
-              <div class="score-result" id="res-grace">
-                <div class="score-result-num" id="grace-score">0</div>
-                <div class="score-result-label">Điểm GRACE (ước tính)</div>
-                <div class="score-result-interp" id="grace-interp"></div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- ══ PANEL: CẬP NHẬT ══ -->
-      <div class="content-panel" id="panel-updates">
-        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1.25rem 1.5rem;">
-          <h2 style="font-family:'Plus Jakarta Sans',sans-serif; font-size:1.1rem; font-weight:800; color:var(--text); margin-bottom:0.3rem;">🆕 Guidelines Cập Nhật Gần Đây</h2>
-          <p style="font-size:0.82rem; color:var(--text-muted);">Theo dõi các hướng dẫn lâm sàng mới nhất từ các hiệp hội y khoa hàng đầu</p>
-        </div>
-        <div class="updates-list" id="updates-list"></div>
-      </div>
-
-      <!-- ══ PANEL: YÊU THÍCH ══ -->
-      <div class="content-panel" id="panel-bookmarks">
-        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1.25rem 1.5rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.75rem;">
-          <div>
-            <h2 style="font-family:'Plus Jakarta Sans',sans-serif; font-size:1.1rem; font-weight:800; color:var(--text); margin-bottom:0.3rem;">⭐ Guidelines Yêu Thích</h2>
-            <p style="font-size:0.82rem; color:var(--text-muted);">Guidelines được lưu vào bộ nhớ trình duyệt (localStorage)</p>
-          </div>
-          <button onclick="clearBookmarks()" style="padding:0.4rem 1rem; border:1.5px solid var(--border); border-radius:8px; font-size:0.78rem; font-weight:600; color:var(--text-muted); background:var(--surface); cursor:pointer;">Xóa tất cả</button>
-        </div>
-        <div id="bookmarks-container"></div>
-      </div>
+      </section>
 
     </div>
   </div>
 
-  <script>
-    // ══ DATA ══════════════════════════════════════════════════════
+  <!-- ADD STUDY MODAL -->
+  <div class="modal-overlay" id="add-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>➕ Thêm Nghiên Cứu Mới</h3>
+        <button class="modal-close" onclick="closeAddModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="add-form" onsubmit="handleAddStudy(event)">
+          <div class="form-group">
+            <label for="study-title">Tên nghiên cứu *</label>
+            <input type="text" id="study-title" required placeholder="Ví dụ: KEYNOTE-189">
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="study-specialty">Chuyên khoa *</label>
+              <select id="study-specialty" required>
+                <option value="">-- Chọn chuyên khoa --</option>
+                <option value="cardio">Tim mạch (Cardiology)</option>
+                <option value="pulmo">Hô hấp (Pulmonology)</option>
+                <option value="gi">Tiêu hóa (Gastroenterology)</option>
+                <option value="endo">Nội tiết (Endocrinology)</option>
+                <option value="neuro">Thần kinh (Neurology)</option>
+                <option value="infect">Truyền nhiễm (Infectious Disease)</option>
+                <option value="renal">Thận học (Nephrology)</option>
+                <option value="rheum">Cơ xương khớp (Rheumatology)</option>
+                <option value="hema">Huyết học (Hematology)</option>
+                <option value="onco">Ung thư (Oncology)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="study-year">Năm *</label>
+              <input type="number" id="study-year" required min="2000" max="2030" placeholder="2024">
+            </div>
+          </div>
 
+          <div class="form-row">
+            <div class="form-group">
+              <label for="study-organization">Tổ chức / Tạp chí *</label>
+              <input type="text" id="study-organization" required placeholder="Ví dụ: ASCO, NEJM, JAMA">
+            </div>
+            <div class="form-group">
+              <label for="study-phase">Giai đoạn</label>
+              <input type="text" id="study-phase" placeholder="Ví dụ: Phase III">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="study-population">Đối tượng nghiên cứu</label>
+            <input type="text" id="study-population" placeholder="Ví dụ: Bệnh nhân ung thư phổi không tế bào nhỏ">
+          </div>
+
+          <div class="form-group">
+            <label for="study-summary">Tóm tắt</label>
+            <textarea id="study-summary" rows="4" placeholder="Mô tả ngắn gọn về nghiên cứu..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="study-file">File HTML tóm tắt (tùy chọn)</label>
+            <input type="text" id="study-file" placeholder="Ví dụ: studies/keynote-189.html">
+            <small style="color: var(--text-faint); display: block; margin-top: 0.25rem;">
+              Đường dẫn tương đối đến file HTML chứa nội dung tóm tắt nghiên cứu
+            </small>
+          </div>
+
+          <div style="display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1.5rem;">
+            <button type="button" class="btn" onclick="closeAddModal()">Hủy</button>
+            <button type="submit" class="btn btn-primary">Lưu nghiên cứu</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMPORT JSON MODAL -->
+  <div class="modal-overlay" id="import-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>📥 Nhập File JSON</h3>
+        <button class="modal-close" onclick="closeImportModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="file-drop-zone" id="drop-zone" onclick="document.getElementById('file-input').click()">
+          <p style="font-size: 1.5rem; margin-bottom: 0.5rem;">📁</p>
+          <p><strong>Kéo thả file JSON vào đây</strong></p>
+          <p>hoặc click để chọn file</p>
+          <small>Định dạng: Array of study objects</small>
+        </div>
+        <input type="file" id="file-input" accept=".json" style="display: none;" onchange="handleFileSelect(event)">
+        
+        <div class="form-group" style="margin-top: 1.5rem;">
+          <label for="json-text">Hoặc dán JSON trực tiếp:</label>
+          <textarea id="json-text" rows="8" placeholder='[{"title": "...", "specialty": "..."}]'></textarea>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1.5rem;">
+          <button type="button" class="btn" onclick="closeImportModal()">Hủy</button>
+          <button type="button" class="btn btn-primary" onclick="importFromText()">Nhập dữ liệu</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ════════════════════════════
+    // DATA MANAGEMENT
+    // ════════════════════════════
+    
     const SPECIALTIES = {
-      cardio: { name: 'Tim mạch', icon: '🫀', badge: 'badge-cardio', color: '#dc2626', bg: '#fef2f2' },
-      pulmo:  { name: 'Hô hấp', icon: '🫁', badge: 'badge-pulmo', color: '#2563eb', bg: '#eff6ff' },
-      gi:     { name: 'Tiêu hóa', icon: '🟡', badge: 'badge-gi', color: '#ca8a04', bg: '#fefce8' },
-      endo:   { name: 'Nội tiết', icon: '💊', badge: 'badge-endo', color: '#7c3aed', bg: '#faf5ff' },
-      neuro:  { name: 'Thần kinh', icon: '🧠', badge: 'badge-neuro', color: '#c026d3', bg: '#fdf4ff' },
-      infect: { name: 'Nhiễm', icon: '🦠', badge: 'badge-infect', color: '#16a34a', bg: '#f0fdf4' },
-      renal:  { name: 'Thận - Tiết niệu', icon: '🔵', badge: 'badge-renal', color: '#0891b2', bg: '#ecfeff' },
-      rheum:  { name: 'Cơ xương khớp', icon: '🦴', badge: 'badge-rheum', color: '#ea580c', bg: '#fff7ed' },
-      hema:   { name: 'Huyết học', icon: '🩸', badge: 'badge-hema', color: '#db2777', bg: '#fdf2f8' },
-      icu:    { name: 'Hồi sức - Cấp cứu', icon: '🏥', badge: 'badge-icu', color: '#475569', bg: '#f1f5f9' }
+      cardio: { name: 'Tim mạch', color: '#dc2626', bg: '#fef2f2' },
+      pulmo: { name: 'Hô hấp', color: '#2563eb', bg: '#eff6ff' },
+      gi: { name: 'Tiêu hóa', color: '#ca8a04', bg: '#fefce8' },
+      endo: { name: 'Nội tiết', color: '#7c3aed', bg: '#faf5ff' },
+      neuro: { name: 'Thần kinh', color: '#c026d3', bg: '#fdf4ff' },
+      infect: { name: 'Truyền nhiễm', color: '#16a34a', bg: '#f0fdf4' },
+      renal: { name: 'Thận học', color: '#0891b2', bg: '#ecfeff' },
+      rheum: { name: 'Cơ xương khớp', color: '#ea580c', bg: '#fff7ed' },
+      hema: { name: 'Huyết học', color: '#db2777', bg: '#fdf2f8' },
+      onco: { name: 'Ung thư', color: '#be185d', bg: '#fce7f3' }
     };
 
-    const DB = [
-      // TIM MẠCH
-      { id:'gl001', title:'Hướng dẫn chẩn đoán và điều trị Suy tim mạn tính', specialty:'cardio', source:'BYT - QĐ 1857/2023', year:2023, impact:'essential', summary:'Phân độ NYHA và EF, điều trị "4 trụ cột" (ACEi/ARNI + BB + MRA + SGLT2i), chỉ định CRT/ICD.' },
-      { id:'gl002', title:'Guideline Quản lý Tăng huyết áp — ESC/ESH', specialty:'cardio', source:'ESC/ESH 2023', year:2023, impact:'essential', summary:'THA ≥140/90 mmHg, phân tầng nguy cơ, mục tiêu HA <130/80, đơn trị vs phối hợp thuốc.' },
-      { id:'gl003', title:'Xử trí Hội chứng vành cấp (ACS) — ESC', specialty:'cardio', source:'ESC 2023', year:2023, impact:'essential', summary:'STEMI: PCI sớm <90p. NSTEMI: GRACE score, DAPT, kháng đông.' },
-      { id:'gl004', title:'Khuyến cáo chẩn đoán và điều trị Rung nhĩ — ESC', specialty:'cardio', source:'ESC 2024', year:2024, impact:'essential', summary:'CC-To-ABC pathway, CHA₂DS₂-VASc, NOAC ưu tiên, kiểm soát tần số vs nhịp, cắt đốt.' },
-      { id:'gl005', title:'Điều trị Rối loạn lipid máu — Hướng dẫn BYT', specialty:'cardio', source:'BYT 2022', year:2022, impact:'recommended', summary:'SCORE2, mục tiêu LDL-C theo nhóm nguy cơ, Statin liều cao, Ezetimibe, PCSK9i.' },
-      // HÔ HẤP
-      { id:'gl006', title:'GOLD 2025 — Quản lý COPD toàn diện', specialty:'pulmo', source:'GOLD 2025', year:2025, impact:'essential', summary:'Phân nhóm ABE, LAMA/LABA ± ICS, Triple therapy, phòng đợt cấp, phục hồi chức năng phổi.' },
-      { id:'gl007', title:'GINA 2025 — Chiến lược quản lý Hen phế quản', specialty:'pulmo', source:'GINA 2025', year:2025, impact:'essential', summary:'Bước 1–5 điều trị, ICS-formoterol PRN thay SABA, Biologic (anti-IL5, anti-IL4R).' },
-      { id:'gl008', title:'Hướng dẫn điều trị Viêm phổi cộng đồng người lớn', specialty:'pulmo', source:'BYT - QĐ 4815/2020', year:2020, impact:'essential', summary:'CURB-65/PSI, kháng sinh theo nhóm, thời gian 5–7 ngày, xuống thang IV→PO.' },
-      { id:'gl009', title:'Hướng dẫn chẩn đoán và xử trí Thuyên tắc phổi', specialty:'pulmo', source:'ESC 2019 (Updated 2024)', year:2024, impact:'recommended', summary:'sPESI, CT-PA, D-dimer, NOAC, tiêu sợi huyết PE massive, theo dõi CTEPH.' },
-      // TIÊU HÓA
-      { id:'gl010', title:'Xử trí Xuất huyết tiêu hóa trên không do giãn TM', specialty:'gi', source:'BYT & ACG 2021', year:2021, impact:'essential', summary:'Blatchford, hồi sức, PPI bolus + truyền, nội soi <24h, hemostasis, H. pylori.' },
-      { id:'gl011', title:'Phân loại và điều trị Viêm tụy cấp (Atlanta 2012)', specialty:'gi', source:'ACG/IAP (Atlanta)', year:2012, impact:'essential', summary:'Nhẹ/trung bình/nặng, Ranson, BISAP, Ringer Lactate, nuôi ăn sớm.' },
-      { id:'gl012', title:'EASL Guideline — Xử trí Xơ gan mất bù', specialty:'gi', source:'EASL 2024', year:2024, impact:'recommended', summary:'Cổ trướng: Spironolactone + Furosemide, Albumin, SBP prophylaxis, TIPS.' },
-      { id:'gl013', title:'Hướng dẫn điều trị Viêm gan virus B mạn', specialty:'gi', source:'BYT - QĐ 5765/2021', year:2021, impact:'essential', summary:'HBV DNA + ALT, Tenofovir/Entecavir, HBsAg, FibroScan, tầm soát HCC.' },
-      // NỘI TIẾT
-      { id:'gl014', title:'ADA Standards of Care — Đái tháo đường 2025', specialty:'endo', source:'ADA 2025', year:2025, impact:'essential', summary:'HbA1c <7%, SGLT2i/GLP-1RA nếu BTMXV/CKD/HF, CGM, tự quản lý.' },
-      { id:'gl015', title:'Hướng dẫn chẩn đoán và điều trị ĐTĐ type 2 — BYT', specialty:'endo', source:'BYT - QĐ 5481/2020', year:2020, impact:'essential', summary:'FPG, OGTT, HbA1c, phác đồ từng bước, phối hợp thuốc, insulin hóa.' },
-      { id:'gl016', title:'ATA Guideline — Quản lý cường giáp Basedow', specialty:'endo', source:'ATA 2016', year:2016, impact:'recommended', summary:'TSH, FT4/FT3, TRAb, Methimazole/PTU, I-131, phẫu thuật, cơn bão giáp.' },
-      // THẦN KINH
-      { id:'gl017', title:'AHA/ASA — Đột quỵ nhồi máu não cấp', specialty:'neuro', source:'AHA/ASA 2019 (Updated 2024)', year:2024, impact:'essential', summary:'tPA <4.5h, Thrombectomy <24h nếu LVO, kiểm soát HA, phòng ngừa thứ phát.' },
-      { id:'gl018', title:'Hướng dẫn xử trí Xuất huyết não — BYT', specialty:'neuro', source:'BYT 2019', year:2019, impact:'essential', summary:'HA <140 mmHg, đảo ngược kháng đông, phẫu thuật, phòng co giật, phù não.' },
-      { id:'gl019', title:'Hướng dẫn điều trị Động kinh — ILAE', specialty:'neuro', source:'ILAE 2022', year:2022, impact:'recommended', summary:'Phân loại 2017, Levetiracetam, Lacosamide, ngưng thuốc sau 2 năm hết cơn.' },
-      // NHIỄM
-      { id:'gl020', title:'Surviving Sepsis Campaign — Nhiễm khuẩn huyết', specialty:'infect', source:'SSC/SCCM 2021', year:2021, impact:'essential', summary:'Bundle 1h: Lactate, cấy máu, KS <1h, 30ml/kg dịch, Norepi MAP <65, Corticoid sốc.' },
-      { id:'gl021', title:'Hướng dẫn sử dụng Kháng sinh — BYT', specialty:'infect', source:'BYT - QĐ 708/2015', year:2015, impact:'essential', summary:'Nguyên tắc kê đơn, PK/PD, xuống thang, thời gian điều trị, ASP.' },
-      { id:'gl022', title:'Hướng dẫn điều trị HIV/AIDS — Bộ Y tế', specialty:'infect', source:'BYT - QĐ 5968/2021', year:2021, impact:'essential', summary:'ARV bậc 1 (TDF/3TC/DTG), viral load, nhiễm trùng cơ hội, PrEP, dự phòng lao.' },
-      { id:'gl023', title:'Hướng dẫn chẩn đoán và điều trị Sốt xuất huyết', specialty:'infect', source:'BYT - QĐ 3705/2019', year:2019, impact:'essential', summary:'WHO: SXHD, SXHD cảnh báo, SXHD nặng. Bù dịch theo phác đồ, Hct, TC.' },
-      // THẬN
-      { id:'gl024', title:'KDIGO Guideline — Tổn thương thận cấp (AKI)', specialty:'renal', source:'KDIGO 2024', year:2024, impact:'essential', summary:'Phân độ 1-2-3, trước thận/tại thận/sau thận, bù dịch, lọc máu cấp.' },
-      { id:'gl025', title:'KDIGO CKD Guideline — Bệnh thận mạn', specialty:'renal', source:'KDIGO 2024', year:2024, impact:'essential', summary:'G1-G5, A1-A3, ACEi/ARB, SGLT2i, thiếu máu, chuẩn bị thay thế thận.' },
-      { id:'gl026', title:'Hướng dẫn xử trí rối loạn điện giải — BYT', specialty:'renal', source:'BYT 2022', year:2022, impact:'recommended', summary:'Na+ <8-10 mEq/24h. Hạ K+: KCl. Tăng K+: Calcium, Insulin+Glucose, Kayexalate.' },
-      // CƠ XƯƠNG KHỚP
-      { id:'gl027', title:'ACR/EULAR Guideline — Viêm khớp dạng thấp', specialty:'rheum', source:'ACR/EULAR 2021', year:2021, impact:'recommended', summary:'Methotrexate first-line, bDMARDs (anti-TNF, anti-IL6), treat-to-target DAS28.' },
-      { id:'gl028', title:'ACR Guideline — Quản lý Gout 2020', specialty:'rheum', source:'ACR 2020', year:2020, impact:'recommended', summary:'Cơn cấp: Colchicine, NSAIDs, Corticoid. Allopurinol, target <6mg/dL, Febuxostat.' },
-      { id:'gl029', title:'Hướng dẫn chẩn đoán và điều trị Loãng xương — BYT', specialty:'rheum', source:'BYT 2022', year:2022, impact:'recommended', summary:'DXA T-score ≤-2.5, FRAX, Ca+VitD, Bisphosphonate, Denosumab, Teriparatide.' },
-      // HUYẾT HỌC
-      { id:'gl030', title:'Hướng dẫn chẩn đoán và xử trí Huyết khối TM sâu', specialty:'hema', source:'ASH 2020 & ESC 2024', year:2024, impact:'essential', summary:'Wells, D-dimer, siêu âm Doppler, NOAC, 3–6 tháng kháng đông, Filter TM chủ.' },
-      { id:'gl031', title:'Hướng dẫn điều trị Thiếu máu — BYT', specialty:'hema', source:'BYT 2019', year:2019, impact:'recommended', summary:'MCV: Microcytic (thiếu sắt, Thalassemia), Normocytic, Macrocytic (B12/Folate).' },
-      // HỒI SỨC
-      { id:'gl032', title:'AHA ACLS — Cấp cứu Ngừng tuần hoàn', specialty:'icu', source:'AHA 2020 (Updated 2025)', year:2025, impact:'essential', summary:'CPR chất lượng cao, Epinephrine 1mg/3-5p, Amiodarone VF/pVT, ROSC, TTM 32-36°C.' },
-      { id:'gl033', title:'Hướng dẫn Thở máy — ARDS Network', specialty:'icu', source:'ARDSNet & SCCM', year:2023, impact:'essential', summary:'Vt 6ml/kg IBW, Pplat <30, PEEP table, Prone >16h, NMB 48h nếu P/F <150, ECMO.' },
-      { id:'gl034', title:'Hướng dẫn Bù dịch & Vận mạch trong Sốc', specialty:'icu', source:'SSC 2021 & BYT', year:2021, impact:'essential', summary:'Ringer Lactate, Norepinephrine first-line, Vasopressin, PLR, PPV.' },
-      { id:'gl035', title:'ICU Liberation Bundle (ABCDEF)', specialty:'icu', source:'SCCM/PADIS 2018', year:2018, impact:'recommended', summary:'A:đau, B:SAT/SBT, C:an thần, D:CAM-ICU, E:vận động sớm, F:gia đình.' }
-    ];
+    let studies = [];
+    let currentFilter = null;
+    let sortField = null;
+    let sortAsc = true;
 
-    const UPDATES = [
-      { title:'GOLD 2025 — Quản lý COPD toàn diện', specialty:'pulmo', date:'Tháng 1/2025', tag:'Guideline', dot:'blue' },
-      { title:'GINA 2025 — Chiến lược quản lý Hen phế quản', specialty:'pulmo', date:'Tháng 1/2025', tag:'Guideline', dot:'blue' },
-      { title:'AHA ACLS — Updated 2025', specialty:'icu', date:'2025', tag:'Guideline', dot:'gray' },
-      { title:'ADA Standards of Care 2025', specialty:'endo', date:'Tháng 1/2025', tag:'Guideline', dot:'purple' },
-      { title:'KDIGO AKI 2024 & KDIGO CKD 2024', specialty:'renal', date:'2024', tag:'Guideline', dot:'teal' },
-    ];
-
-    // ══ STATE ══════════════════════════════════════════════════════
-    let currentSpecFilter = 'all';
-    let currentView = 'table';
-    let searchQuery = '';
-    let bookmarks = JSON.parse(localStorage.getItem('gl-bookmarks') || '[]');
-
-    // ══ PANEL SWITCHING ═══════════════════════════════════════════
-    function switchPanel(panel) {
-      ['kho','thangdiem','updates','bookmarks'].forEach(p => {
-        document.getElementById('panel-' + p)?.classList.remove('active');
-        document.getElementById('nav-' + p)?.classList.remove('active');
-      });
-      document.getElementById('panel-' + panel)?.classList.add('active');
-      document.getElementById('nav-' + panel)?.classList.add('active');
-      document.getElementById('spec-filter-section').style.display = (panel === 'kho') ? '' : 'none';
-      if (panel === 'bookmarks') renderBookmarks();
-      if (panel === 'updates') renderUpdates();
+    // Load from localStorage
+    function loadStudies() {
+      const saved = localStorage.getItem('internalMedicineStudies');
+      if (saved) {
+        try {
+          studies = JSON.parse(saved);
+        } catch (e) {
+          console.error('Error loading studies:', e);
+          studies = [];
+        }
+      }
     }
 
-    // ══ SPECIALTY FILTER ══════════════════════════════════════════
-    function initSpecFilter() {
+    // Save to localStorage
+    function saveStudies() {
+      localStorage.setItem('internalMedicineStudies', JSON.stringify(studies));
+    }
+
+    // Generate ID
+    function generateId() {
+      return 'study_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    }
+
+    // ════════════════════════════
+    // RENDER FUNCTIONS
+    // ════════════════════════════
+
+    function renderSpecFilters() {
       const container = document.getElementById('spec-filter-list');
-      let html = `<button class="spec-filter-item active" id="sf-all" onclick="setSpec('all')">
-        <span class="spec-filter-dot" style="background:#64748b;"></span> Tất cả
-        <span style="margin-left:auto; font-size:0.7rem; color:var(--text-faint);">${DB.length}</span>
-      </button>`;
-      for (const [key, sp] of Object.entries(SPECIALTIES)) {
-        const count = DB.filter(g => g.specialty === key).length;
-        html += `<button class="spec-filter-item" id="sf-${key}" onclick="setSpec('${key}')">
-          <span class="spec-filter-dot" style="background:${sp.color};"></span> ${sp.icon} ${sp.name}
-          <span style="margin-left:auto; font-size:0.7rem; color:var(--text-faint);">${count}</span>
-        </button>`;
-      }
-      container.innerHTML = html;
-    }
-
-    function setSpec(key) {
-      currentSpecFilter = key;
-      document.querySelectorAll('.spec-filter-item').forEach(el => el.classList.remove('active'));
-      document.getElementById('sf-' + key)?.classList.add('active');
-      renderGuidelines();
-    }
-
-    // ══ GUIDELINES RENDER ═════════════════════════════════════════
-    function getFiltered() {
-      return DB.filter(g => {
-        const matchSpec = currentSpecFilter === 'all' || g.specialty === currentSpecFilter;
-        if (!matchSpec) return false;
-        if (!searchQuery) return true;
-        return `${g.title} ${g.summary} ${g.source} ${SPECIALTIES[g.specialty]?.name || ''}`.toLowerCase().includes(searchQuery);
+      container.innerHTML = `
+        <button class="spec-filter-item ${currentFilter === null ? 'active' : ''}" onclick="setFilter(null)">
+          <span class="spec-filter-dot" style="background: var(--text-faint);"></span>
+          Tất cả
+        </button>
+      `;
+      
+      Object.entries(SPECIALTIES).forEach(([key, spec]) => {
+        container.innerHTML += `
+          <button class="spec-filter-item ${currentFilter === key ? 'active' : ''}" onclick="setFilter('${key}')">
+            <span class="spec-filter-dot" style="background: ${spec.color};"></span>
+            ${spec.name}
+          </button>
+        `;
       });
     }
 
-    function renderGuidelines() {
-      const filtered = getFiltered();
-      const statsEl = document.getElementById('gl-stats');
-      statsEl.innerHTML = `Hiển thị <strong>${filtered.length}</strong> / ${DB.length} guidelines`;
-
-      const empty = document.getElementById('gl-empty');
-      const tableWrap = document.getElementById('gl-table-wrap');
-      const cardGrid = document.getElementById('gl-cards-grid');
-
-      if (filtered.length === 0) {
-        empty.style.display = 'block'; tableWrap.style.display = 'none'; cardGrid.classList.remove('visible');
-        return;
+    function getFilteredStudies() {
+      let filtered = [...studies];
+      
+      // Filter by specialty
+      if (currentFilter) {
+        filtered = filtered.filter(s => s.specialty === currentFilter);
       }
-      empty.style.display = 'none';
-      renderTable(filtered);
-      renderCards(filtered);
-      if (currentView === 'table') { tableWrap.style.display = 'block'; cardGrid.classList.remove('visible'); }
-      else { tableWrap.style.display = 'none'; cardGrid.classList.add('visible'); }
-    }
-
-    function impactBadge(impact) {
-      if (impact === 'essential') return '<span class="gl-impact impact-essential">🟢 Thiết yếu</span>';
-      if (impact === 'recommended') return '<span class="gl-impact impact-recommended">🔵 Khuyến cáo</span>';
-      return '<span class="gl-impact impact-reference">⚪ Tham khảo</span>';
-    }
-
-    function renderTable(data) {
-      document.getElementById('gl-table-body').innerHTML = data.map(g => {
-        const sp = SPECIALTIES[g.specialty];
-        const bm = bookmarks.includes(g.id);
-        return `<tr>
-          <td><div class="gl-title-main">${g.title}</div><div class="gl-title-summary">${g.summary}</div></td>
-          <td><span class="gl-badge ${sp?.badge || ''}">${sp?.icon || ''} ${sp?.name || ''}</span></td>
-          <td><span class="gl-source-tag">${g.source}</span></td>
-          <td><span class="gl-year">${g.year}</span></td>
-          <td>${impactBadge(g.impact)}</td>
-          <td><button class="bookmark-btn ${bm ? 'bookmarked' : ''}" title="${bm ? 'Bỏ yêu thích' : 'Yêu thích'}" onclick="toggleBookmark('${g.id}', this)">⭐</button></td>
-        </tr>`;
-      }).join('');
-    }
-
-    function renderCards(data) {
-      document.getElementById('gl-cards-grid').innerHTML = data.map(g => {
-        const sp = SPECIALTIES[g.specialty];
-        const bm = bookmarks.includes(g.id);
-        return `<div class="gl-card" style="--card-color:${sp?.color || '#7c3aed'}">
-          <div class="gl-card-header">
-            <div class="gl-card-title">${g.title}</div>
-            <button class="bookmark-btn ${bm ? 'bookmarked' : ''}" title="${bm ? 'Bỏ yêu thích' : 'Yêu thích'}" onclick="toggleBookmark('${g.id}', this)">⭐</button>
-          </div>
-          <div class="gl-card-meta">
-            <span class="gl-badge ${sp?.badge || ''}">${sp?.icon || ''} ${sp?.name || ''}</span>
-            <span class="gl-source-tag">${g.source}</span>
-            <span class="gl-year">${g.year}</span>
-            ${impactBadge(g.impact)}
-          </div>
-          <div class="gl-card-body">${g.summary}</div>
-        </div>`;
-      }).join('');
-    }
-
-    function setGlView(view) {
-      currentView = view;
-      document.getElementById('btn-table').classList.toggle('active', view === 'table');
-      document.getElementById('btn-card').classList.toggle('active', view === 'card');
-      renderGuidelines();
-    }
-
-    // ══ BOOKMARK ══════════════════════════════════════════════════
-    function toggleBookmark(id, btn) {
-      if (bookmarks.includes(id)) {
-        bookmarks = bookmarks.filter(b => b !== id);
-        document.querySelectorAll('.bookmark-btn').forEach(b => {
-          if (b.getAttribute('onclick')?.includes(`'${id}'`)) b.classList.remove('bookmarked');
+      
+      // Filter by search
+      const searchQuery = document.getElementById('search-input').value.toLowerCase().trim();
+      if (searchQuery) {
+        filtered = filtered.filter(s => 
+          s.title.toLowerCase().includes(searchQuery) ||
+          (s.organization && s.organization.toLowerCase().includes(searchQuery)) ||
+          (s.summary && s.summary.toLowerCase().includes(searchQuery)) ||
+          (s.population && s.population.toLowerCase().includes(searchQuery))
+        );
+      }
+      
+      // Sort
+      if (sortField) {
+        filtered.sort((a, b) => {
+          let aVal = a[sortField] || '';
+          let bVal = b[sortField] || '';
+          if (typeof aVal === 'string') aVal = aVal.toLowerCase();
+          if (typeof bVal === 'string') bVal = bVal.toLowerCase();
+          if (aVal < bVal) return sortAsc ? -1 : 1;
+          if (aVal > bVal) return sortAsc ? 1 : -1;
+          return 0;
         });
-      } else {
-        bookmarks.push(id);
-        btn.classList.add('bookmarked');
       }
-      localStorage.setItem('gl-bookmarks', JSON.stringify(bookmarks));
-      updateBookmarkCount();
+      
+      return filtered;
     }
 
-    function updateBookmarkCount() {
-      const c = bookmarks.length;
-      document.getElementById('bookmark-count').textContent = c;
-      document.getElementById('left-badge-bm').textContent = c;
-    }
-
-    function clearBookmarks() {
-      bookmarks = [];
-      localStorage.setItem('gl-bookmarks', '[]');
-      updateBookmarkCount();
-      renderBookmarks();
-      renderGuidelines();
-    }
-
-    function renderBookmarks() {
-      const container = document.getElementById('bookmarks-container');
-      if (bookmarks.length === 0) {
-        container.innerHTML = `<div class="bookmarks-empty">
-          <div style="font-size:2.5rem; margin-bottom:0.75rem;">⭐</div>
-          <p style="font-size:0.85rem;">Chưa có guidelines nào được lưu. Nhấn ⭐ ở kho guidelines để lưu yêu thích.</p>
-        </div>`;
+    function renderTable() {
+      const tbody = document.getElementById('table-body');
+      const emptyState = document.getElementById('empty-state');
+      const displayCount = document.getElementById('display-count');
+      const totalCount = document.getElementById('total-count');
+      
+      const filtered = getFilteredStudies();
+      
+      displayCount.textContent = filtered.length;
+      totalCount.textContent = studies.length;
+      
+      if (filtered.length === 0) {
+        tbody.innerHTML = '';
+        emptyState.style.display = 'block';
         return;
       }
-      const bms = DB.filter(g => bookmarks.includes(g.id));
-      container.innerHTML = `<div class="gl-table-wrap" style="background:var(--surface);">
-        <table class="gl-table">
-          <thead><tr><th>Guideline</th><th>Chuyên khoa</th><th>Nguồn</th><th>Năm</th><th>Mức độ</th><th></th></tr></thead>
-          <tbody>${bms.map(g => {
-            const sp = SPECIALTIES[g.specialty];
-            return `<tr>
-              <td><div class="gl-title-main">${g.title}</div></td>
-              <td><span class="gl-badge ${sp?.badge || ''}">${sp?.icon || ''} ${sp?.name || ''}</span></td>
-              <td><span class="gl-source-tag">${g.source}</span></td>
-              <td><span class="gl-year">${g.year}</span></td>
-              <td>${impactBadge(g.impact)}</td>
-              <td><button class="bookmark-btn bookmarked" onclick="toggleBookmark('${g.id}', this); renderBookmarks();">⭐</button></td>
-            </tr>`;
-          }).join('')}</tbody>
-        </table>
-      </div>`;
-    }
-
-    // ══ UPDATES ════════════════════════════════════════════════════
-    function renderUpdates() {
-      const dotColors = { blue:'#2563eb', gray:'#475569', purple:'#7c3aed', teal:'#0891b2' };
-      document.getElementById('updates-list').innerHTML = UPDATES.map(u => {
-        const sp = SPECIALTIES[u.specialty];
-        return `<div class="update-item">
-          <div class="update-dot" style="background:${dotColors[u.dot] || '#7c3aed'};"></div>
-          <div class="update-content">
-            <div class="update-title">${u.title}</div>
-            <div class="update-meta">${sp?.name || ''} · Cập nhật ${u.date}</div>
-          </div>
-          <span class="update-tag" style="background:var(--accent-light); color:var(--accent);">${u.tag}</span>
-        </div>`;
+      
+      emptyState.style.display = 'none';
+      
+      tbody.innerHTML = filtered.map(study => {
+        const spec = SPECIALTIES[study.specialty] || { name: study.specialty, color: '#666', bg: '#f0f0f0' };
+        const badgeClass = `badge-${study.specialty}`;
+        const linkUrl = study.file || `studies/${study.id}.html`;
+        
+        return `
+          <tr onclick="window.location.href='${linkUrl}'">
+            <td>
+              <span class="study-title">${escapeHtml(study.title)}</span>
+              <span class="study-summary">${escapeHtml(study.summary || 'Không có tóm tắt')}</span>
+            </td>
+            <td>
+              <span class="badge ${badgeClass}">${spec.name}</span>
+            </td>
+            <td>
+              <span class="badge badge-source">${escapeHtml(study.organization || 'N/A')}</span>
+            </td>
+            <td>
+              <span class="badge badge-year">${study.year || 'N/A'}</span>
+            </td>
+            <td>${escapeHtml(study.phase || 'N/A')}</td>
+            <td>${escapeHtml(study.population || 'N/A')}</td>
+          </tr>
+        `;
       }).join('');
     }
 
-    // ══ CALCULATORS ═══════════════════════════════════════════════
-    function showResult(id, score, interp) {
-      const r = document.getElementById('res-' + id);
-      document.getElementById(id + '-score').textContent = score;
-      document.getElementById(id + '-interp').innerHTML = interp;
-      r.classList.add('show');
+    function renderUpdates() {
+      const container = document.getElementById('updates-list');
+      
+      // Get latest 5 studies (sorted by year desc, then by creation order)
+      const latest = [...studies].sort((a, b) => {
+        const yearDiff = (b.year || 0) - (a.year || 0);
+        if (yearDiff !== 0) return yearDiff;
+        return b.id.localeCompare(a.id);
+      }).slice(0, 5);
+      
+      if (latest.length === 0) {
+        container.innerHTML = `
+          <div class="update-item" style="cursor: default;">
+            <div class="update-content">
+              <div class="update-title">Chưa có cập nhật</div>
+              <div class="update-meta">Thêm nghiên cứu để xem tại đây</div>
+            </div>
+          </div>
+        `;
+        return;
+      }
+      
+      container.innerHTML = latest.map(study => {
+        const spec = SPECIALTIES[study.specialty] || { name: study.specialty, color: '#666' };
+        const linkUrl = study.file || `studies/${study.id}.html`;
+        
+        return `
+          <div class="update-item" onclick="window.location.href='${linkUrl}'">
+            <span class="update-dot" style="background: ${spec.color};"></span>
+            <div class="update-content">
+              <div class="update-title">${escapeHtml(study.title)}</div>
+              <div class="update-meta">
+                <span class="update-tag" style="background: ${spec.bg}; color: ${spec.color};">${spec.name}</span>
+                <span>${escapeHtml(study.organization || 'N/A')}</span>
+                <span>• ${study.year || 'N/A'}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
     }
 
-    function calcCURB65() {
-      const checks = ['curb-c','curb-u','curb-r','curb-b','curb-65'];
-      const s = checks.reduce((acc, id) => acc + (document.getElementById(id).checked ? 1 : 0), 0);
-      let interp = '';
-      if (s <= 1) interp = '✅ <strong>Nguy cơ thấp</strong>: Tỷ lệ tử vong ~1–3%. Cân nhắc điều trị ngoại trú hoặc nhập viện ngắn.';
-      else if (s === 2) interp = '⚠️ <strong>Nguy cơ trung bình</strong>: Tỷ lệ tử vong ~8–9%. Nhập viện điều trị.';
-      else interp = '🔴 <strong>Nguy cơ cao</strong>: Tỷ lệ tử vong ~15–40% (CURB-65 = 4–5). Cân nhắc ICU.';
-      showResult('curb', s + '/5', interp);
+    // ════════════════════════════
+    // EVENT HANDLERS
+    // ════════════════════════════
+
+    function setFilter(spec) {
+      currentFilter = spec;
+      renderSpecFilters();
+      renderTable();
     }
 
-    function calcCHADS() {
-      const map = {'chads-c':1,'chads-h':1,'chads-a2':2,'chads-d':1,'chads-s2':2,'chads-v':1,'chads-a1':1,'chads-sc':1};
-      const s = Object.entries(map).reduce((acc,[id,pts]) => acc + (document.getElementById(id).checked ? pts : 0), 0);
-      let interp = '';
-      if (s === 0) interp = '✅ <strong>Nguy cơ thấp</strong>: Đột quỵ/năm ~0%. Không cần kháng đông.';
-      else if (s === 1) interp = '⚠️ <strong>Nguy cơ thấp-trung bình</strong>: Đột quỵ/năm ~1.3%. Đánh giá thêm, ưu tiên không dùng kháng đông nếu nữ là yếu tố duy nhất.';
-      else interp = `🔴 <strong>Nguy cơ cao (điểm ${s})</strong>: Đột quỵ/năm cao. <strong>Chỉ định kháng đông: NOAC ưu tiên</strong> (trừ bệnh van tim).`;
-      showResult('chads', s + '/9', interp);
+    function handleSort(field) {
+      if (sortField === field) {
+        sortAsc = !sortAsc;
+      } else {
+        sortField = field;
+        sortAsc = true;
+      }
+      renderTable();
     }
 
-    function calcSOFA() {
-      const ids = ['sofa-resp','sofa-coag','sofa-liver','sofa-cardio','sofa-neuro','sofa-renal'];
-      const s = ids.reduce((acc, id) => acc + (parseInt(document.getElementById(id).value) || 0), 0);
-      let interp = '';
-      if (s < 2) interp = '✅ <strong>SOFA < 2</strong>: Ít có rối loạn chức năng cơ quan nặng.';
-      else if (s <= 7) interp = `⚠️ <strong>SOFA ${s}</strong>: Rối loạn chức năng cơ quan vừa-nặng. Tỷ lệ tử vong ~15–20%.`;
-      else interp = `🔴 <strong>SOFA ${s}</strong>: Suy đa cơ quan nặng. Tỷ lệ tử vong >50% nếu SOFA ≥11.`;
-      showResult('sofa', s + '/24', interp);
+    function handleSearch() {
+      renderTable();
     }
 
-    function calcWells() {
-      const pts = {
-        'wells-paralysis':1,'wells-bedridden':1,'wells-tender':1,'wells-entire':1,
-        'wells-calf':1,'wells-pitting':1,'wells-collateral':1,'wells-cancer':1
+    function handleAddStudy(event) {
+      event.preventDefault();
+      
+      const newStudy = {
+        id: generateId(),
+        title: document.getElementById('study-title').value.trim(),
+        specialty: document.getElementById('study-specialty').value,
+        year: parseInt(document.getElementById('study-year').value),
+        organization: document.getElementById('study-organization').value.trim(),
+        phase: document.getElementById('study-phase').value.trim(),
+        population: document.getElementById('study-population').value.trim(),
+        summary: document.getElementById('study-summary').value.trim(),
+        file: document.getElementById('study-file').value.trim(),
+        createdAt: new Date().toISOString()
       };
-      let s = Object.entries(pts).reduce((acc,[id,p]) => acc + (document.getElementById(id).checked ? p : 0), 0);
-      if (document.getElementById('wells-alt').checked) s -= 2;
-      let interp = '';
-      if (s <= 0) interp = '✅ <strong>Nguy cơ thấp</strong>: Xác suất DVT ~3%. D-dimer âm tính → loại trừ DVT.';
-      else if (s <= 2) interp = '⚠️ <strong>Nguy cơ trung bình</strong>: Xác suất DVT ~17%. D-dimer và/hoặc siêu âm Doppler.';
-      else interp = '🔴 <strong>Nguy cơ cao</strong>: Xác suất DVT ~75%. Siêu âm Doppler ngay. Cân nhắc kháng đông trước kết quả.';
-      showResult('wells', s, interp);
+      
+      studies.unshift(newStudy);
+      saveStudies();
+      
+      closeAddModal();
+      document.getElementById('add-form').reset();
+      
+      renderSpecFilters();
+      renderTable();
+      renderUpdates();
+      
+      alert('✅ Đã thêm nghiên cứu thành công!');
     }
 
-    function calcChildPugh() {
-      const ids = ['cp-bili','cp-alb','cp-pt','cp-ascites','cp-enc'];
-      const s = ids.reduce((acc, id) => acc + parseInt(document.getElementById(id).value), 0);
-      let interp = '';
-      if (s <= 6) interp = '🅰️ <strong>Child-Pugh A</strong> (5–6 điểm): Chức năng gan còn bù. Tỷ lệ sống 1 năm ~100%, 2 năm ~85%.';
-      else if (s <= 9) interp = '🅱️ <strong>Child-Pugh B</strong> (7–9 điểm): Mất bù vừa. Tỷ lệ sống 1 năm ~80%, 2 năm ~60%. Cân nhắc đánh giá ghép gan.';
-      else interp = '🆀 <strong>Child-Pugh C</strong> (10–15 điểm): Mất bù nặng. Tỷ lệ sống 1 năm ~45%, 2 năm ~35%. <strong>Cần ghép gan sớm</strong>.';
-      showResult('child', s + '/15', interp);
+    function openAddModal() {
+      document.getElementById('add-modal').classList.add('active');
     }
 
-    function calcGRACE() {
-      const pts = {
-        'grace-old':30,'grace-hr':20,'grace-sbp':58,'grace-cr':38,
-        'grace-st':28,'grace-card':39,'grace-trop':14,'grace-killip':20
+    function closeAddModal() {
+      document.getElementById('add-modal').classList.remove('active');
+    }
+
+    function openImportModal() {
+      document.getElementById('import-modal').classList.add('active');
+    }
+
+    function closeImportModal() {
+      document.getElementById('import-modal').classList.remove('active');
+    }
+
+    function handleFileSelect(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const data = JSON.parse(e.target.result);
+          importData(data);
+        } catch (err) {
+          alert('❌ Lỗi: File JSON không hợp lệ! ' + err.message);
+        }
       };
-      const s = Object.entries(pts).reduce((acc,[id,p]) => acc + (document.getElementById(id).checked ? p : 0), 0);
-      let interp = '';
-      if (s < 109) interp = '✅ <strong>GRACE thấp (&lt;109)</strong>: Nguy cơ tử vong nội viện <1%. Có thể PCI trước xuất viện hoặc trong 24–72h.';
-      else if (s <= 140) interp = '⚠️ <strong>GRACE trung bình (109–140)</strong>: Nguy cơ 1–3%. Nội soi mạch vành sớm ≤24h (ACS) khuyến cáo.';
-      else interp = '🔴 <strong>GRACE cao (&gt;140)</strong>: Nguy cơ >3%. Cần can thiệp sớm (PCI/CABG) ngay sau ổn định.';
-      interp += '<br><small style="color:var(--text-faint);">⚠️ Đây là ước tính đơn giản. Dùng GRACE 2.0 online calculator để chính xác.</small>';
-      showResult('grace', s, interp);
+      reader.readAsText(file);
     }
 
-    // ══ SEARCH ═════════════════════════════════════════════════════
-    document.addEventListener('DOMContentLoaded', () => {
-      initSpecFilter();
-      renderGuidelines();
-      updateBookmarkCount();
+    function importFromText() {
+      const text = document.getElementById('json-text').value.trim();
+      if (!text) {
+        alert('❌ Vui lòng nhập hoặc dán dữ liệu JSON!');
+        return;
+      }
+      
+      try {
+        const data = JSON.parse(text);
+        importData(data);
+      } catch (err) {
+        alert('❌ Lỗi: JSON không hợp lệ! ' + err.message);
+      }
+    }
 
-      let debounce;
-      document.getElementById('gl-search-input').addEventListener('input', e => {
-        clearTimeout(debounce);
-        debounce = setTimeout(() => {
-          searchQuery = e.target.value.toLowerCase().trim();
-          renderGuidelines();
-        }, 200);
+    function importData(data) {
+      if (!Array.isArray(data)) {
+        alert('❌ Dữ liệu phải là một mảng (array)!');
+        return;
+      }
+      
+      let imported = 0;
+      data.forEach(item => {
+        if (item.title && item.specialty) {
+          const study = {
+            id: item.id || generateId(),
+            title: item.title,
+            specialty: item.specialty,
+            year: item.year,
+            organization: item.organization || '',
+            phase: item.phase || '',
+            population: item.population || '',
+            summary: item.summary || '',
+            file: item.file || '',
+            createdAt: item.createdAt || new Date().toISOString()
+          };
+          studies.push(study);
+          imported++;
+        }
+      });
+      
+      if (imported > 0) {
+        saveStudies();
+        renderSpecFilters();
+        renderTable();
+        renderUpdates();
+        closeImportModal();
+        document.getElementById('json-text').value = '';
+        alert(`✅ Đã nhập ${imported} nghiên cứu thành công!`);
+      } else {
+        alert('⚠️ Không có nghiên cứu hợp lệ nào được nhập.');
+      }
+    }
+
+    function exportJSON() {
+      if (studies.length === 0) {
+        alert('⚠️ Chưa có nghiên cứu nào để xuất!');
+        return;
+      }
+      
+      const dataStr = JSON.stringify(studies, null, 2);
+      const blob = new Blob([dataStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `nghien-cuu-he-noi-${new Date().toISOString().split('T')[0]}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function switchPanel(panelName) {
+      // For future expansion
+      console.log('Switching to panel:', panelName);
+    }
+
+    // Setup table header sorting
+    function setupTableSorting() {
+      document.querySelectorAll('.study-table th[data-sort]').forEach(th => {
+        th.addEventListener('click', () => {
+          handleSort(th.dataset.sort);
+        });
+      });
+    }
+
+    // Drag and drop for file import
+    function setupDragDrop() {
+      const dropZone = document.getElementById('drop-zone');
+      
+      ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, preventDefaults, false);
+      });
+      
+      function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      
+      ['dragenter', 'dragover'].forEach(eventName => {
+        dropZone.addEventListener(eventName, () => {
+          dropZone.classList.add('dragover');
+        }, false);
+      });
+      
+      ['dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, () => {
+          dropZone.classList.remove('dragover');
+        }, false);
+      });
+      
+      dropZone.addEventListener('drop', (e) => {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        
+        if (files.length > 0) {
+          const input = document.getElementById('file-input');
+          input.files = files;
+          handleFileSelect({ target: input });
+        }
+      }, false);
+    }
+
+    // ════════════════════════════
+    // INITIALIZATION
+    // ════════════════════════════
+
+    document.addEventListener('DOMContentLoaded', function() {
+      loadStudies();
+      renderSpecFilters();
+      renderTable();
+      renderUpdates();
+      setupTableSorting();
+      setupDragDrop();
+      
+      // Search listener
+      document.getElementById('search-input').addEventListener('input', handleSearch);
+      
+      // Close modals on overlay click
+      document.querySelectorAll('.modal-overlay').forEach(overlay => {
+        overlay.addEventListener('click', (e) => {
+          if (e.target === overlay) {
+            overlay.classList.remove('active');
+          }
+        });
+      });
+      
+      // Escape key to close modals
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeAddModal();
+          closeImportModal();
+        }
       });
     });
   </script>
