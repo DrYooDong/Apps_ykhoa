@@ -137,6 +137,7 @@
 | File | Vai trò |
 |------|---------|
 | `Kỹ năng/ky-nang.html` | Hub tổng Kỹ năng |
+| `Kỹ năng/Bệnh án/KN_Benhan_Noikhoa.html` | Cách làm bệnh án nội khoa chuẩn |
 | `Kỹ năng/Cận lâm sàng/Doc_KQCLS.html` | Đọc kết quả CLS (overview) |
 | `Kỹ năng/Cận lâm sàng/doc-dien-giai-do.html` | Đọc điện giải đồ |
 | `Kỹ năng/Cận lâm sàng/doc-dong-mau.html` | Đọc đông máu |
@@ -175,6 +176,7 @@
 | `Sinh lý .../Sinhly-sinhlybenh.html` | Hub tổng | Cấp 2 |
 | `Sinh lý .../Sinhly/HUONG_DAN_THIET_KE.md` | Design guide sinh lý | — |
 | `Sinh lý .../Sinhly/Phan1/SL_*.html` | Bài học sinh lý (Phần 1: TB) | Cấp 4 |
+| `Sinh lý .../Sinhly/Phan4/SL_Traodoikhi.html` | Sinh lý Trao đổi & Vận chuyển khí | Cấp 4 |
 | `Sinh lý .../Sinhly/css/physio-shared.css` | CSS riêng cho bài viết SL | — |
 | `Sinh lý .../Sinhly/js/physio-shared.js` | JS riêng cho bài viết SL | — |
 | `Sinh lý .../images/` | Ảnh minh họa sinh lý | — |

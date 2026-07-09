@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hướng dẫn chi tiết quy trình, kỹ năng thu thập thông tin, thăm khám lâm sàng, tóm tắt bệnh án, đặt vấn đề, biện luận chẩn đoán và đề xuất cận lâm sàng trong bệnh án nội khoa chuẩn.">
+    <title>Cách làm Bệnh án Nội khoa – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal -->
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../css/components/footer.css">
+
+    <!-- CSS riêng cho Kỹ năng Lâm sàng -->
+    <link rel="stylesheet" href="../../../css/components/clinical-skill.css">
+
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../../../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../pages/Kỹ năng/ky-nang.html" class="nav-item active" title="Kỹ năng lâm sàng">
+                            <span class="nav-icon">🩺</span>
+                            <span class="nav-text">Kỹ năng lâm sàng</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <main class="main-wrapper">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container">
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item">
+                        <a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="../../../pages/Kỹ năng/ky-nang.html" class="breadcrumb-link">Kỹ năng lâm sàng</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Bệnh án Nội khoa</li>
+                </ol>
+            </nav>
+
+            <!-- HERO SECTION -->
+            <section class="hero" style="background: linear-gradient(135deg, var(--color-primary), #0284c7, #0369a1); color: white; padding: 2rem; border-radius: var(--radius-lg); margin-bottom: 1.5rem;">
+                <h1 style="margin: 0; font-size: var(--text-xl); font-weight: 800; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">CÁCH LÀM BỆNH ÁN NỘI KHOA CHUẨN</h1>
+                <p style="margin: 0.5rem 0 1.25rem; opacity: 0.95; font-size: var(--text-md); line-height: 1.6;">
+                    Hướng dẫn toàn diện quy trình thu thập thông tin, hỏi bệnh sử, thăm khám lâm sàng, phân tích cận lâm sàng, biện luận lập luận logic và lập kế hoạch điều trị theo mẫu chuẩn giảng dạy lâm sàng.
+                </p>
+                <div class="quick">
+                    <div class="qi">
+                        <b>Cơ sở pháp lý:</b>
+                        <span style="font-size: var(--text-sm);">Điều 69 Luật Khám bệnh, chữa bệnh số 15/2023/QH15.</span>
+                    </div>
+                    <div class="qi">
+                        <b>Cấu trúc chuẩn:</b>
+                        <span style="font-size: var(--text-sm);">Gồm 14 - 15 phần cốt lõi từ hành chính đến tiên lượng.</span>
+                    </div>
+                    <div class="qi">
+                        <b>Phương pháp luận:</b>
+                        <span style="font-size: var(--text-sm);">Phối hợp Biện luận phân tích (Y3) & Biện luận tổng hợp (Y4/Y6).</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TABS SWITCHER -->
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="hoi-benh">1. Hỏi bệnh & Thu thập</button>
+                <button class="tab-btn" data-tab="tham-kham">2. Thăm khám Thực thể</button>
+                <button class="tab-btn" data-tab="tom-tat">3. Tóm tắt & Chẩn đoán</button>
+                <button class="tab-btn" data-tab="bien-luan">4. Biện luận & CLS</button>
+                <button class="tab-btn" data-tab="bang-kiem">5. Bảng kiểm & Thực hành</button>
+            </div>
+
+            <!-- TAB 1: ASK HISTORY & INFORMATION GATHERING -->
+            <section class="tab active" id="hoi-benh">
+                <div class="clinical-pearl">
+                    <h4><i class="fas fa-info-circle"></i> Bản chất của Bệnh án Nội khoa</h4>
+                    <p>
+                        Bệnh án là văn bản ghi nhận đầy đủ các thông tin về người bệnh nhằm theo dõi hiệu quả điều trị, làm tài liệu học tập kinh nghiệm chuyên môn và phục vụ nghiên cứu khoa học. Hỏi bệnh và thu thập thông tin thành công giúp gợi ý đến <span class="term-hl">50% chẩn đoán</span> trước khi tiến hành khám thực thể.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h2>I. Phần Hành chính & Lý do vào viện</h2>
+                    <div class="grid2">
+                        <div>
+                            <h3 style="color: var(--color-primary); font-size: var(--text-md); margin-bottom: 0.5rem;"><i class="fas fa-id-card"></i> 1. Hành chính</h3>
+                            <ul style="padding-left: 1rem; margin-bottom: 1rem;">
+                                <li><strong>Họ tên:</strong> Viết in hoa, viết tắt chữ cái cuối (VD: NGUYỄN VĂN A -> NGUYỄN V. A. hoặc NGUYỄN B...) nhằm đảm bảo y đức và bảo mật thông tin người bệnh.</li>
+                                <li><strong>Tuổi:</strong> Ghi rõ số tuổi hoặc năm sinh (VD: 60 tuổi - 1962).</li>
+                                <li><strong>Giới tính:</strong> Nam/Nữ.</li>
+                                <li><strong>Nghề nghiệp:</strong> Ghi nghề nghiệp hiện tại. Nếu đã nghỉ hưu, ghi rõ nghề nghiệp trước đây (gợi ý bệnh lý nghề nghiệp).</li>
+                                <li><strong>Địa chỉ:</strong> Chi tiết đến quận, huyện, tỉnh/thành phố.</li>
+                                <li><strong>Ngày giờ vào viện:</strong> Xác định rõ mốc thời gian tiếp nhận cấp cứu hoặc nhập viện.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 style="color: var(--color-primary); font-size: var(--text-md); margin-bottom: 0.5rem;"><i class="fas fa-door-open"></i> 2. Lý do vào viện (Chief Complaints)</h3>
+                            <p>Là triệu chứng nổi bật, nguyên nhân chính khiến bệnh nhân tìm đến chăm sóc y tế.</p>
+                            <div class="clinical-warning" style="margin-top: 0.5rem; padding: 10px;">
+                                <h4><i class="fas fa-exclamation-triangle"></i> Quy tắc xác định:</h4>
+                                <ul style="margin: 0; padding-left: 1.25rem; font-size: var(--text-sm);">
+                                    <li><strong>Chọn một lý do chính duy nhất</strong>: Tránh ghi hàng loạt triệu chứng vụn vặt (ví dụ: đau ngực, thay vì mệt mỏi, khó ngủ).</li>
+                                    <li><strong>Đặc hiệu</strong>: Chọn triệu chứng khu trú định hướng cơ quan (đau ngực, đau bụng cấp).</li>
+                                    <li>Có thể là triệu chứng <strong>cơ năng</strong> (đau đầu) hoặc <strong>thực thể</strong> (sưng mi mắt, bầm tím tay) do bệnh nhân phát hiện.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>II. Bệnh sử (History of Present Illness - HPI)</h2>
+                    <p>Mô tả diễn tiến bệnh từ lúc bắt đầu xuất hiện triệu chứng đầu tiên cho đến thời điểm khám bệnh hiện tại, viết dưới dạng kể một câu chuyện logic.</p>
+                    
+                    <h3 style="color: var(--color-primary); font-size: var(--text-md); margin: 1rem 0 0.5rem;"><i class="fas fa-clock"></i> 1. Cú pháp và cấu trúc viết bệnh sử</h3>
+                    <ul style="padding-left: 1.25rem;">
+                        <li><strong>Khởi đầu bằng mốc thời gian rõ ràng</strong>:
+                            <ul>
+                                <li>Dùng từ <span class="term-hl">"Cách nhập viện [khoảng thời gian]"</span> cho triệu chứng xảy ra đơn lẻ, đột ngột rồi kết thúc không lặp lại (Ví dụ: <i>Cách nhập viện 4 ngày, bệnh nhân đau quặn bụng cơn...</i>).</li>
+                                <li>Dùng từ <span class="term-hl">"Từ [khoảng thời gian] nay"</span> cho triệu chứng xuất hiện liên tục, âm ỉ hàng ngày (Ví dụ: <i>Từ 7 ngày nay, bệnh nhân đau ngực trái âm ỉ...</i>).</li>
+                            </ul>
+                        </li>
+                        <li><strong>Hoàn cảnh khởi phát</strong>: Mô tả cụ thể bệnh nhân đang làm gì khi xuất hiện triệu chứng (đang ngủ, khiêng vật nặng, cãi nhau...).</li>
+                        <li><strong>Tính chất triệu chứng chính</strong>: Phân tích 7 tính chất triệu chứng (vị trí, hướng lan, hoàn cảnh, tính chất, mức độ, yếu tố tăng/giảm, triệu chứng đi kèm).</li>
+                        <li><strong>Diễn tiến và Lý do đến bệnh viện</strong>: Triệu chứng tăng lên như thế nào khiến bệnh nhân không chịu đựng được và phải nhập viện.</li>
+                        <li><strong>Triệu chứng âm tính có giá trị</strong>: Các triệu chứng giúp loại trừ các chẩn đoán phân biệt nguy hiểm, <strong>ghi ở phần cuối cùng của bệnh sử</strong>. (VD: <i>Ngoài đau ngực, bệnh nhân không sốt, không ho, không khó thở...</i>).</li>
+                    </ul>
+
+                    <h3 style="color: var(--color-primary); font-size: var(--text-md); margin: 1.25rem 0 0.5rem;"><i class="fas fa-circle-xmark"></i> 2. Các lỗi kinh điển cần tránh khi viết bệnh sử</h3>
+                    <div class="table-wrap">
+                        <table class="cmp">
+                            <thead>
+                                <tr>
+                                    <th>Lỗi thường gặp</th>
+                                    <th>Ví dụ sai (Hardcode/Thuật ngữ)</th>
+                                    <th>Ví dụ đúng (Mô tả lâm sàng dân dã)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Dùng thuật ngữ chuyên môn quá sớm</strong><br><small>Bệnh sử phải là mô tả từ lời kể bệnh nhân, không được áp đặt chẩn đoán lý thuyết.</small></td>
+                                    <td><span class="critical-val">"Đau ngực sau xương ức"</span> hoặc <span class="critical-val">"Cơn khó thở kịch phát về đêm"</span></td>
+                                    <td><span class="normal-val">"Đau ở giữa ngực và đau sâu bên trong"</span> hoặc <span class="normal-val">"Đang nằm ngủ đột ngột thấy khó thở phải ngồi dậy để thở, sau 15 phút thì đỡ khó thở và nằm ngủ tiếp"</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Mô tả triệu chứng mơ hồ, không lượng hóa</strong><br><small>Cần dùng mốc ranh giới sinh hoạt cụ thể để đánh giá.</small></td>
+                                    <td><span class="critical-val">"Bệnh nhân mệt mỏi, giảm khả năng gắng sức"</span></td>
+                                    <td><span class="normal-val">"Bình thường bệnh nhân đi bộ được 1000m, nhưng nay đi khoảng 200m đã phải dừng lại vì mệt và hồi hộp"</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Đưa thuật ngữ khám thực thể vào bệnh sử</strong><br><small>Bệnh nhân không tự khám được triệu chứng thực thể y khoa.</small></td>
+                                    <td><span class="critical-val">"Bệnh nhân phát hiện phù trắng mềm ấn lõm hai chân"</span></td>
+                                    <td><span class="normal-val">"Bệnh nhân cảm giác hai chân nặng nề, sờ vào mềm, dùng ngón tay ấn vào mu chân thấy lõm và không đau"</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3 style="color: var(--color-primary); font-size: var(--text-md); margin: 1.25rem 0 0.5rem;"><i class="fas fa-hospital"></i> 3. Diễn tiến tại các tuyến điều trị</h3>
+                    <ul>
+                        <li><strong>Thông tin tuyến trước</strong>: Ghi tóm tắt chẩn đoán, các xét nghiệm đã làm, thuốc đã dùng và lý do chuyển tuyến (nếu có chuyển viện).</li>
+                        <li><strong>Tình trạng lúc nhập viện</strong>: Sinh hiệu lúc nhập viện, các triệu chứng lâm sàng nổi bật lúc tiếp nhận tại cấp cứu/phòng khám.</li>
+                        <li><strong>Diễn tiến từ lúc nhập viện đến lúc khám</strong>: Tóm tắt sự thay đổi triệu chứng và các y lệnh xử trí chính trong quá trình nằm viện cho đến thời điểm làm bệnh án.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h2>III. Tiền căn & Lược qua các cơ quan</h2>
+                    <div class="grid2">
+                        <div>
+                            <h3 style="color: var(--color-primary); font-size: var(--text-md); margin-bottom: 0.5rem;"><i class="fas fa-history"></i> 1. Tiền căn (Medical History)</h3>
+                            <h4 style="font-size: var(--text-sm); font-weight: bold; margin-top: 0.5rem;">a. Bản thân:</h4>
+                            <ul style="padding-left: 1.25rem; font-size: var(--text-sm);">
+                                <li><strong>Bệnh lý Nội khoa:</strong> Bệnh đã mắc (nơi chẩn đoán, thời gian, đang điều trị thuốc gì, kiểm soát tốt không?). Nêu rõ các yếu tố nguy cơ của bệnh lý đích (VD: THA, ĐTĐ).</li>
+                                <li><strong>Toa thuốc đang dùng:</strong> Ghi rõ tên thuốc, liều lượng, cách dùng (Ví dụ: <i>Telmisartan 40mg 1 viên uống sáng, Metformin 500mg 2 viên/ngày</i>).</li>
+                                <li><strong>Ngoại khoa:</strong> Tiền căn chấn thương, phẫu thuật trước đây.</li>
+                                <li><strong>Sản phụ khoa (Nữ):</strong> Ghi nhận PARA, chu kỳ kinh nguyệt, biện pháp tránh thai đang sử dụng.</li>
+                                <li><strong>Thói quen sinh hoạt:</strong> Chế độ ăn uống (ăn mặn), hút thuốc lá (bao nhiêu gói-năm?), rượu bia, tập thể dục.</li>
+                                <li><strong>Dị ứng:</strong> Thức ăn, thuốc, thời tiết hoặc cơ địa đặc biệt.</li>
+                            </ul>
+                            <h4 style="font-size: var(--text-sm); font-weight: bold; margin-top: 0.5rem;">b. Gia đình:</h4>
+                            <p style="font-size: var(--text-sm); margin-left: 0.5rem;">Có ai có triệu chứng tương tự hay mắc các bệnh di truyền/truyền nhiễm liên quan hay không.</p>
+                        </div>
+                        <div>
+                            <h3 style="color: var(--color-primary); font-size: var(--text-md); margin-bottom: 0.5rem;"><i class="fas fa-list-ul"></i> 2. Lược qua các cơ quan (ROS)</h3>
+                            <p style="font-size: var(--text-sm); margin-bottom: 0.5rem;"><strong>Ghi nhận tại thời điểm thăm khám:</strong> Liệt kê ngắn gọn triệu chứng cơ năng hiện tại của bệnh nhân ở các cơ quan chính để đánh giá toàn diện.</p>
+                            <ul style="padding-left: 1.25rem; font-size: var(--text-sm); display: grid; gap: 4px;">
+                                <li><strong>Tim mạch:</strong> Có đau ngực, hồi hộp, đánh trống ngực, khó thở khi nằm hay không?</li>
+                                <li><strong>Hô hấp:</strong> Có ho khan, ho đờm, ho ra máu, khò khè hay khó thở không?</li>
+                                <li><strong>Tiêu hóa:</strong> Có đau bụng, nôn ói, tiêu chảy hay táo bón không?</li>
+                                <li><strong>Tiết niệu:</strong> Có tiểu buốt, tiểu rắt, tiểu máu hay tiểu ít không?</li>
+                                <li><strong>Thần kinh - Cơ xương khớp:</strong> Đau đầu, yếu liệt, đau khớp, dị cảm?</li>
+                                <li><strong>Toàn thân/Chuyển hóa:</strong> Có sốt, ớn lạnh hay sụt cân không?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: PHYSICAL EXAMINATION -->
+            <section class="tab" id="tham-kham">
+                <div class="clinical-pearl">
+                    <h4><i class="fas fa-stethoscope"></i> Nguyên tắc khám lâm sàng nội khoa</h4>
+                    <p>
+                        Tiến hành khám theo trình tự hệ thống để tránh bỏ sót tổn thương. Phương pháp khám cơ bản bao gồm bốn bước: <span class="term-hl">Nhìn (Inspection)</span>, <span class="term-hl">Sờ (Palpation)</span>, <span class="term-hl">Gõ (Percussion)</span>, và <span class="term-hl">Nghe (Auscultation)</span>. Hãy mô tả trung thực cả dấu hiệu dương tính và âm tính có giá trị chẩn đoán.
+                    </p>
+                </div>
+
+                <div class="grid2">
+                    <!-- Khám tổng quát & Sinh hiệu -->
+                    <div class="card">
+                        <h2>I. Khám Tổng quát & Sinh hiệu</h2>
+                        <h3 style="color: var(--color-primary); font-size: var(--text-md); margin-bottom: 0.5rem;"><i class="fas fa-user-doctor"></i> 1. Khám tổng quát</h3>
+                        <ul style="padding-left: 1.25rem; font-size: var(--text-sm); margin-bottom: 1rem;">
+                            <li><strong>Tri giác:</strong> Tỉnh táo, tiếp xúc tốt / lừ đừ / tiếp xúc chậm / lơ mơ / Glasgow...</li>
+                            <li><strong>Thể trạng:</strong> Chiều cao, cân nặng. Tính BMI để phân loại thể trạng (gầy, cân đối, thừa cân, béo phì).</li>
+                            <li><strong>Tư thế:</strong> Nằm đầu ngang / nằm đầu cao / tư thế ngồi để thở.</li>
+                            <li><strong>Da niêm:</strong> Hồng hào / nhạt / vàng da, kết mạc mắt vàng / sạm da.</li>
+                            <li><strong>Xuất huyết da niêm:</strong> Có xuất huyết hay không? Dạng chấm, nốt, mảng ở vị trí nào?</li>
+                            <li><strong>Phù:</strong> Không phù / phù mềm ấn lõm ở mu chân, mắt cá, phù toàn thân.</li>
+                            <li><strong>Hạch ngoại vi:</strong> Không to / hạch vùng cổ, nách, bẹn sưng to (kích thước, mật độ, đau?).</li>
+                            <li><strong>Lông, tóc, móng:</strong> Rụng tóc, móng khô dễ gãy, ngón tay dùi trống.</li>
+                        </ul>
+
+                        <h3 style="color: var(--color-primary); font-size: var(--text-md); margin-bottom: 0.5rem;"><i class="fas fa-heart-pulse"></i> 2. Dấu hiệu sinh tồn (Sinh hiệu)</h3>
+                        <div class="clinical-warning" style="padding: 10px; margin-bottom: 0.5rem;">
+                            <strong>QUY TẮC VÀNG:</strong> Chỉ ghi nhận số đo chính xác, <strong>không mô tả từ ngữ định tính</strong> ở phần sinh hiệu.
+                        </div>
+                        <ul style="padding-left: 1.25rem; font-size: var(--text-sm);">
+                            <li><strong>Mạch:</strong> ... lần/phút (ví dụ: 80 lần/phút, không ghi "mạch nhanh" hay "mạch đều").</li>
+                            <li><strong>Huyết áp:</strong> ... mmHg (ví dụ: 120/80 mmHg).</li>
+                            <li><strong>Nhiệt độ:</strong> ... °C (ví dụ: 37 °C).</li>
+                            <li><strong>Nhịp thở:</strong> ... lần/phút (ví dụ: 20 lần/phút).</li>
+                            <li><strong>SpO2:</strong> ...% (nêu rõ thở khí trời hay đang hỗ trợ oxy qua canula/mask).</li>
+                            <li><strong>Nước tiểu:</strong> ... ml / 24 giờ.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Khám vùng chuyên khoa -->
+                    <div class="card">
+                        <h2>II. Khám vùng cơ quan</h2>
+                        
+                        <h3 style="color: var(--color-primary); font-size: var(--text-sm); font-weight: bold; margin-bottom: 0.25rem;">a. Đầu - Mặt - Cổ</h3>
+                        <p style="font-size: var(--text-xs); margin: 0 0 0.5rem 0.5rem; color: var(--color-text-muted);">
+                            Khí quản (không lệch)? Tuyến giáp (không to)? Động mạch cảnh (không âm thổi)? Tĩnh mạch cảnh nổi ở tư thế nằm đầu cao 45°?
+                        </p>
+
+                        <h3 style="color: var(--color-primary); font-size: var(--text-sm); font-weight: bold; margin-bottom: 0.25rem;">b. Ngực (Lồng ngực - Tim - Phổi)</h3>
+                        <ul style="padding-left: 1.25rem; font-size: var(--text-sm); margin-bottom: 0.5rem;">
+                            <li><strong>Nhìn:</strong> Ngực cân đối, di động đều theo nhịp thở. Có sẹo mổ cũ, sao mạch, khoảng gian sườn giãn rộng không?</li>
+                            <li><strong>Khám Tim:</strong>
+                                <ul>
+                                    <li>Mỏm tim ở khoang gian sườn mấy, cách đường trung đòn trái bao nhiêu cm? Diện đập, độ nảy mỏm tim.</li>
+                                    <li>Tìm các dấu hiệu: Dấu Harzer, dấu nảy trước ngực, rung miêu.</li>
+                                    <li>Nghe tim: T1, T2 rõ, đều, tần số. Có âm thổi tâm thu/tâm trương, tiếng tim mờ, cọ màng ngoài tim?</li>
+                                </ul>
+                            </li>
+                            <li><strong>Khám Phổi:</strong> Rung thanh (đều 2 bên), gõ trong/đục, rì rào phế nang (phế bào đều 2 phế trường), ran phổi (ran ẩm, ran nổ, ran rít, ran ngáy, tiếng cọ màng phổi).</li>
+                        </ul>
+
+                        <h3 style="color: var(--color-primary); font-size: var(--text-sm); font-weight: bold; margin-bottom: 0.25rem;">c. Bụng</h3>
+                        <p style="font-size: var(--text-xs); margin: 0 0 0.5rem 0.5rem; color: var(--color-text-muted);">
+                            Nhìn bụng cân đối, di động nhịp thở, không tuần hoàn bàng hệ. Nghe nhu động ruột (tần số/phút), không âm thổi động mạch thận/chủ bụng. Gõ trong, xác định chiều cao gan. Sờ bụng mềm, không điểm đau khu trú (McBurney, Murphy), phản ứng thành bụng, gan/lách không to.
+                        </p>
+
+                        <h3 style="color: var(--color-primary); font-size: var(--text-sm); font-weight: bold; margin-bottom: 0.25rem;">d. Tứ chi & Chuyên khoa liên quan</h3>
+                        <p style="font-size: var(--text-xs); margin: 0 0 0.5rem 0.5rem; color: var(--color-text-muted);">
+                            Tứ chi ấm, mạch quay, mạch chày sau nảy rõ, đều 2 bên. Cơ xương khớp không biến dạng, không giới hạn vận động. Khám chuyên khoa sâu liên quan triệu chứng chính (VD: đau đầu khám Thần kinh tìm dấu màng não [cổ mềm, Kernig], yếu liệt cơ lực; mờ mắt khám mắt...).
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 3: SUMMARY, PROBLEM LIST & DIAGNOSIS -->
+            <section class="tab" id="tom-tat">
+                <div class="card">
+                    <h2>I. Tóm tắt bệnh án (Medical Summary)</h2>
+                    <p>Tóm tắt bệnh án là phần chắt lọc lại những thông tin lâm sàng đắt giá nhất. Giúp người đọc hình dung ngay bệnh cảnh của bệnh nhân.</p>
+                    <div class="clinical-pearl">
+                        <h4><i class="fas fa-check-double"></i> Nguyên tắc tóm tắt:</h4>
+                        <ul style="margin: 0; padding-left: 1.25rem; font-size: var(--text-sm);">
+                            <li>Chỉ ghi nhận những <strong>triệu chứng dương tính</strong> có ý nghĩa và <strong>triệu chứng âm tính đắt giá</strong> dùng để loại trừ.</li>
+                            <li><strong>Bắt buộc chuyển đổi</strong> lời mô tả sinh hoạt của bệnh nhân thành <strong>thuật ngữ chuyên môn y khoa</strong>.</li>
+                        </ul>
+                    </div>
+
+                    <h3 style="color: var(--color-primary); font-size: var(--text-md); margin: 1rem 0 0.5rem;"><i class="fas fa-file-invoice"></i> Mẫu tóm tắt bệnh án chuẩn:</h3>
+                    <div style="background-color: var(--color-surface-offset); padding: 15px; border-radius: var(--radius-md); border-left: 4px solid var(--color-primary); font-family: monospace; font-size: 0.95rem; line-height: 1.6;">
+                        Bệnh nhân [Nam/Nữ], [Số] tuổi, vào viện vì lý do [Triệu chứng chính], bệnh sử diễn tiến trong [Khoảng thời gian]. Qua hỏi bệnh và thăm khám lâm sàng ghi nhận các hội chứng và triệu chứng sau:<br>
+                        - <strong>Triệu chứng cơ năng:</strong> [Liệt kê các triệu chứng cơ năng định hướng bệnh sử bằng thuật ngữ chuyên môn]<br>
+                        - <strong>Triệu chứng thực thể:</strong> [Liệt kê các dấu hiệu thực thể phát hiện khi khám, bao gồm cả sinh hiệu bất thường]<br>
+                        - <strong>Tiền căn:</strong> [Nêu các bệnh lý nền liên quan trực tiếp, thói quen có hại, các yếu tố nguy cơ mạch vành/nội khoa]<br>
+                        * Không ghi nhận các triệu chứng bất thường khác.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>II. Đặt vấn đề (Problem List)</h2>
+                    <p>Vấn đề là những bất thường lâm sàng cần được bác sĩ giải quyết. Một vấn đề có thể là một triệu chứng nổi bật, hoặc một hội chứng bệnh lý.</p>
+                    
+                    <div class="case-card card">
+                        <span class="case">Ví dụ đặt vấn đề cụ thể</span>
+                        <p><strong>Tóm tắt bệnh án:</strong> Bệnh nhân nam 66 tuổi vào viện vì đau đầu cấp giờ thứ 4. Đau đột ngột dữ dội, liên tục kèm mệt mỏi, vã mồ hôi. Khám HA 200/120 mmHg. Tiền căn Tăng huyết áp 10 năm bỏ thuốc 2 ngày.</p>
+                        <p><strong>Vấn đề đặt ra trên bệnh nhân:</strong></p>
+                        <ol style="padding-left: 1.25rem; font-weight: bold; color: var(--color-rose);">
+                            <li>Đau đầu cấp dữ dội</li>
+                            <li>Cơn tăng huyết áp (Hypertensive crisis)</li>
+                            <li>Tiền căn tăng huyết áp kiểm soát kém (ngưng điều trị)</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>III. Chẩn đoán sơ bộ & Chẩn đoán phân biệt</h2>
+                    
+                    <h3 style="color: var(--color-primary); font-size: var(--text-md); margin-bottom: 0.5rem;"><i class="fas fa-stethoscope"></i> 1. Công thức chẩn đoán đầy đủ</h3>
+                    <div style="background: rgba(var(--color-primary-rgb), 0.05); padding: 12px; border-radius: var(--radius-sm); font-weight: 600; text-align: center; margin-bottom: 1rem; border: 1px solid var(--color-primary);">
+                        Chẩn đoán = BỆNH CHÍNH + MỨC ĐỘ/GIAI ĐOẠN + NGUYÊN NHÂN + BIẾN CHỨNG + BỆNH KÈM
+                    </div>
+                    <p style="font-size: var(--text-sm); font-style: italic;">Ví dụ: Chẩn đoán: Suy tim trái độ IV theo NYHA do bệnh cơ tim thiếu máu cục bộ, biến chứng rung nhĩ đáp ứng thất trung bình – Đái tháo đường type 2.</p>
+
+                    <h3 style="color: var(--color-primary); font-size: var(--text-md); margin: 1rem 0 0.5rem;"><i class="fas fa-scale-balanced"></i> 2. Các quy tắc chẩn đoán bắt buộc</h3>
+                    <ul style="padding-left: 1.25rem;">
+                        <li><strong>Quy tắc cân đối cấu trúc chẩn đoán:</strong> Chẩn đoán sơ bộ và chẩn đoán phân biệt phải đồng dạng về mặt cấu trúc (đủ các thành phần của công thức).
+                            <div class="clinical-warning" style="margin-top: 5px; padding: 10px; font-size: var(--text-sm);">
+                                <strong>Sai lầm phổ biến:</strong> Sơ bộ chẩn đoán rất đầy đủ (nhồi máu cơ tim cấp giờ 3, Killip I, THA) nhưng chẩn đoán phân biệt chỉ ghi cụm từ chung chung (Đau thắt ngực không ổn định) mà không có mức độ và bệnh kèm.
+                            </div>
+                        </li>
+                        <li><strong>Không chẩn đoán phân biệt giữa các mức độ nặng nhẹ:</strong> Tránh đưa ra chẩn đoán phân biệt chỉ khác biệt về mức độ của cùng một bệnh lý (VD: không phân biệt giữa Suy tim trái NYHA III và NYHA IV). Chỉ phân biệt khi có sự khác biệt về thể bệnh hoặc cơ chế bệnh sinh (VD: Suy tim trái vs Suy tim toàn bộ).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- TAB 4: CLINICAL REASONING & PARACLINICAL -->
+            <section class="tab" id="bien-luan">
+                <div class="card">
+                    <h2>I. Phương pháp Biện luận Lâm sàng</h2>
+                    <p>Biện luận là quá trình tư duy logic xâu chuỗi các triệu chứng cơ năng, thực thể và tiền căn để bảo vệ chẩn đoán sơ bộ và loại trừ chẩn đoán phân biệt.</p>
+                    
+                    <div class="table-wrap">
+                        <table class="cmp">
+                            <thead>
+                                <tr>
+                                    <th>Đặc điểm so sánh</th>
+                                    <th>Biện luận Phân tích (Phù hợp cho Y3)</th>
+                                    <th>Biện luận Tổng hợp (Phù hợp cho Y4 - Y6)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Phương pháp tiếp cận</strong></td>
+                                    <td>Liệt kê toàn bộ các nguyên nhân có thể gây ra triệu chứng chính. Sau đó đối chiếu lâm sàng bệnh nhân với lý thuyết của từng nguyên nhân để giữ lại hoặc loại trừ.</td>
+                                    <td>Nhận diện trực tiếp bệnh cảnh điển hình của bệnh nhân phù hợp với chẩn đoán nào, đưa ra bằng chứng lâm sàng trực tiếp để khẳng định chẩn đoán đó.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Ưu điểm</strong></td>
+                                    <td>Rất kỹ lưỡng, <span class="term-hl">tránh bỏ sót chẩn đoán</span>, rèn luyện tư duy nền tảng tốt cho sinh viên mới đi lâm sàng.</td>
+                                    <td>Nhanh chóng, ngắn gọn, tập trung thẳng vào lập kế hoạch điều trị và phân tích kết quả cận lâm sàng.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Nhược điểm</strong></td>
+                                    <td>Tốn nhiều thời gian viết, không thích hợp trong các tình huống cấp cứu khẩn cấp đòi hỏi xử trí nhanh.</td>
+                                    <td>Dễ chủ quan, có khả năng bỏ sót các chẩn đoán phân biệt ít gặp hoặc không điển hình.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Cấu trúc câu lập luận</strong></td>
+                                    <td>"Bệnh nhân có triệu chứng X. Các nguyên nhân gây X gồm A, B, C. Nếu là A thì phải có..., bệnh nhân có/không có... nên nghĩ/không nghĩ đến A..."</td>
+                                    <td>"Nghĩ nhiều bệnh nhân bị bệnh A vì có triệu chứng chính..., triệu chứng phụ..., tiền căn... và yếu tố nguy cơ..."</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="clinical-pearl">
+                        <h4><i class="fas fa-circle-nodes"></i> Thứ tự sắp xếp Bằng chứng biện luận:</h4>
+                        <ol style="margin: 0; padding-left: 1.25rem; font-size: var(--text-sm);">
+                            <li><strong>Triệu chứng chính</strong> (triệu chứng đặc hiệu nhất định hướng cơ quan).</li>
+                            <li><strong>Triệu chứng phụ/triệu chứng đi kèm</strong> (giúp củng cố thêm chẩn đoán).</li>
+                            <li><strong>Tiền căn bệnh lý liên quan</strong>.</li>
+                            <li><strong>Yếu tố nguy cơ nền</strong> (tuổi, giới, thói quen sinh hoạt).</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>II. Đề nghị Cận lâm sàng (CLS)</h2>
+                    <p>Chỉ định xét nghiệm y khoa một cách khoa học dựa theo mục đích sử dụng lâm sàng.</p>
+                    
+                    <h3 style="color: var(--color-primary); font-size: var(--text-md); margin-bottom: 0.5rem;"><i class="fas fa-vial"></i> 1. Phân nhóm cận lâm sàng</h3>
+                    <ul style="padding-left: 1.25rem; font-size: var(--text-sm);">
+                        <li><strong>CLS Chẩn đoán/Loại trừ:</strong> Cung cấp bằng chứng trực tiếp xác định bệnh (VD: Troponin I trong NMCT, điện tâm đồ, siêu âm tim, X-quang phổi).</li>
+                        <li><strong>CLS Tiên lượng:</strong> Đánh giá mức độ nặng, độ suy sụp cơ quan (VD: NT-proBNP trong suy tim).</li>
+                        <li><strong>CLS Điều trị:</strong> Đảm bảo an toàn trước và trong khi dùng thuốc/can thiệp (VD: Chức năng thận trước dùng UCMC/kháng sinh, INR trước dùng kháng đông).</li>
+                        <li><strong>CLS Thường quy:</strong> Tầm soát cơ bản (Công thức máu, đường huyết đói, Ure, Creatinine, Ion đồ, AST/ALT, Tổng phân tích nước tiểu, ECG, X-quang phổi).</li>
+                    </ul>
+
+                    <h3 style="color: var(--color-primary); font-size: var(--text-md); margin: 1rem 0 0.5rem;"><i class="fas fa-table-cells"></i> 2. Ma trận chỉ định cận lâm sàng (Ví dụ cho bệnh cảnh Suy tim)</h3>
+                    <div class="table-wrap">
+                        <table class="cmp">
+                            <thead>
+                                <tr>
+                                    <th>Cận lâm sàng đề xuất</th>
+                                    <th>Bệnh (Suy tim trái)</th>
+                                    <th>Mức độ (NYHA III)</th>
+                                    <th>Nguyên nhân (Bệnh cơ tim cục bộ)</th>
+                                    <th>Biến chứng (Loạn nhịp rung nhĩ)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Siêu âm tim (Echocardiography)</strong></td>
+                                    <td style="text-align: center; color: var(--color-success); font-weight: bold;"><i class="fas fa-check"></i></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Đo nồng độ NT-proBNP</strong></td>
+                                    <td style="text-align: center; color: var(--color-success); font-weight: bold;"><i class="fas fa-check"></i></td>
+                                    <td style="text-align: center; color: var(--color-success); font-weight: bold;"><i class="fas fa-check"></i></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Điện tâm đồ (ECG 12 dẫn)</strong></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align: center; color: var(--color-success); font-weight: bold;"><i class="fas fa-check"></i> (Hình ảnh sóng Q ngoại tử)</td>
+                                    <td style="text-align: center; color: var(--color-success); font-weight: bold;"><i class="fas fa-check"></i> (Mất sóng P, sóng f lăn tăn)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>X-quang ngực thẳng</strong></td>
+                                    <td style="text-align: center; color: var(--color-success); font-weight: bold;"><i class="fas fa-check"></i> (Bóng tim to, sung huyết)</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>III. Dự đoán & Phân tích kết quả Cận lâm sàng</h2>
+                    
+                    <h3 style="color: var(--color-primary); font-size: var(--text-md); margin-bottom: 0.5rem;"><i class="fas fa-wand-magic-sparkles"></i> 1. Dự đoán kết quả</h3>
+                    <p style="font-size: var(--text-sm);">Dựa trên kiến thức bệnh lý học, lập sẵn kịch bản kết quả CLS để sẵn sàng chẩn đoán xác định.</p>
+                    <ul style="padding-left: 1.25rem; font-size: var(--text-sm); margin-bottom: 1rem;">
+                        <li><strong>Kịch bản A:</strong> Nếu ECG có ST chênh lên dạng vòm ở DII, DIII, aVF -> Chẩn đoán Nhồi máu cơ tim cấp có ST chênh lên thành dưới.</li>
+                        <li><strong>Kịch bản B:</strong> Nếu ECG có ST chênh lên lan tỏa dạng lõm -> Chẩn đoán Viêm màng ngoài tim cấp.</li>
+                        <li><strong>Kịch bản C:</strong> Nếu ECG bình thường -> Loại trừ tổn thương xuyên thành lớn cấp tính, tiến hành theo dõi động học men tim để tìm hội chứng vành cấp không ST chênh.</li>
+                    </ul>
+
+                    <h3 style="color: var(--color-primary); font-size: var(--text-md); margin-bottom: 0.5rem;"><i class="fas fa-chart-line"></i> 2. Quy trình Phân tích kết quả CLS (4 bước lâm sàng)</h3>
+                    <ol style="padding-left: 1.25rem; font-size: var(--text-sm);">
+                        <li><strong>Bước 1: Đọc kết quả</strong>: Chỉ giải thích và liệt kê chi tiết các chỉ số bất thường so với khoảng tham chiếu (VD: <i>Chỉ số Cornell ECG lớn thất trái, Troponin I tăng động học...</i>).</li>
+                        <li><strong>Bước 2: Phân tích/Bàn luận</strong>: Giải thích lý do bất thường và đối chiếu với diễn tiến lâm sàng (VD: <i>Troponin I giờ thứ 2 bình thường do bệnh nhân đến sớm, cần làm lại sau 3 giờ để theo dõi động học</i>).</li>
+                        <li><strong>Bước 3: Kết luận</strong>: Đưa ra chẩn đoán dựa trên kết quả đã đọc (VD: <i>Nhồi máu cơ tim cấp thành dưới giờ thứ 4</i>).</li>
+                        <li><strong>Bước 4: Hướng xử trí tiếp theo</strong>: Đề xuất thăm khám sâu hơn hoặc can thiệp dựa vào kết quả CLS vừa nhận (VD: <i>Nghi ngờ nhồi máu thành dưới cần đo thêm điện tâm đồ các chuyển đạo bên phải V3R, V4R để loại trừ nhồi máu thất phải kèm theo</i>).</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- TAB 5: OSCE CHECKLIST & PRACTICE -->
+            <section class="tab" id="bang-kiem">
+                <div class="card">
+                    <h2>I. Bảng kiểm Kỹ năng Làm bệnh án Nội khoa (OSCE)</h2>
+                    <p style="color: var(--color-text-muted); font-size: var(--text-sm); margin-bottom: 1rem;">
+                        Nhấp chuột vào từng tiêu chí để đánh dấu hoàn thành trong quá trình tự luyện tập hoặc chấm thi thử kỹ năng viết bệnh án.
+                    </p>
+                    
+                    <ul class="check">
+                        <li style="border: 1px solid var(--color-border); border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center; gap: 0.75rem; transition: background var(--tr);">
+                            <input type="checkbox" style="pointer-events: none;">
+                            <span class="checkbox-text"><strong>Phần Hành chính (1.0đ):</strong> Ghi đầy đủ thông tin hành chính, bảo mật họ tên bệnh nhân đúng quy định y đức.</span>
+                        </li>
+                        <li style="border: 1px solid var(--color-border); border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center; gap: 0.75rem; transition: background var(--tr);">
+                            <input type="checkbox" style="pointer-events: none;">
+                            <span class="checkbox-text"><strong>Lý do vào viện (1.0đ):</strong> Chọn một lý do chính, đặc hiệu, tránh ghi nhận triệu chứng chung chung hoặc mơ hồ.</span>
+                        </li>
+                        <li style="border: 1px solid var(--color-border); border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center; gap: 0.75rem; transition: background var(--tr);">
+                            <input type="checkbox" style="pointer-events: none;">
+                            <span class="checkbox-text"><strong>Bệnh sử khoa học (2.0đ):</strong> Xác định mốc thời gian ("cách" vs "từ"), diễn tiến câu chuyện logic, không dùng thuật ngữ thực thể/chuyên môn sai chỗ, có triệu chứng âm tính đắt giá ở cuối bệnh sử.</span>
+                        </li>
+                        <li style="border: 1px solid var(--color-border); border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center; gap: 0.75rem; transition: background var(--tr);">
+                            <input type="checkbox" style="pointer-events: none;">
+                            <span class="checkbox-text"><strong>Tiền căn chi tiết (1.0đ):</strong> Khai thác đủ tiền căn nội khoa kèm toa thuốc đang dùng, ngoại khoa, thói quen sinh hoạt xấu (hút thuốc lá gói-năm, ăn mặn) và gia đình.</span>
+                        </li>
+                        <li style="border: 1px solid var(--color-border); border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center; gap: 0.75rem; transition: background var(--tr);">
+                            <input type="checkbox" style="pointer-events: none;">
+                            <span class="checkbox-text"><strong>Khám thực thể toàn diện (1.5đ):</strong> Ghi nhận tri giác, tính BMI, khám đầu cổ, ngực (mỏm tim, tiếng tim, rì rào phế nang, ran), bụng, tứ chi và chuyên khoa phù hợp.</span>
+                        </li>
+                        <li style="border: 1px solid var(--color-border); border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center; gap: 0.75rem; transition: background var(--tr);">
+                            <input type="checkbox" style="pointer-events: none;">
+                            <span class="checkbox-text"><strong>Ghi nhận sinh hiệu chuẩn (0.5đ):</strong> Chỉ ghi con số sinh hiệu đo đạc được, tuyệt đối không dùng từ ngữ mô tả định tính ở phần sinh hiệu.</span>
+                        </li>
+                        <li style="border: 1px solid var(--color-border); border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center; gap: 0.75rem; transition: background var(--tr);">
+                            <input type="checkbox" style="pointer-events: none;">
+                            <span class="checkbox-text"><strong>Tóm tắt & Đặt vấn đề chuẩn (1.0đ):</strong> Gom triệu chứng thành hội chứng chuyên môn, liệt kê danh sách vấn đề cần giải quyết rõ ràng.</span>
+                        </li>
+                        <li style="border: 1px solid var(--color-border); border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center; gap: 0.75rem; transition: background var(--tr);">
+                            <input type="checkbox" style="pointer-events: none;">
+                            <span class="checkbox-text"><strong>Biện luận biện chứng (1.0đ):</strong> Lập luận logic dựa trên triệu chứng chính, phụ, tiền căn và yếu tố nguy cơ. Chẩn đoán sơ bộ và phân biệt cân đối cấu trúc.</span>
+                        </li>
+                        <li style="border: 1px solid var(--color-border); border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center; gap: 0.75rem; transition: background var(--tr);">
+                            <input type="checkbox" style="pointer-events: none;">
+                            <span class="checkbox-text"><strong>Đề nghị & Phân tích CLS (1.0đ):</strong> Đề xuất đúng 4 nhóm xét nghiệm. Phân tích kết quả theo 4 bước lâm sàng (đọc, bàn luận, kết luận, xử trí tiếp).</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card" style="border: 2px dashed var(--color-primary); background: rgba(var(--color-primary-rgb), 0.02); text-align: center; padding: 2.5rem 1.5rem;">
+                    <i class="fas fa-file-medical" style="font-size: 3rem; color: var(--color-primary); margin-bottom: 1rem;"></i>
+                    <h2 style="border: none; padding: 0; margin-bottom: 0.5rem; font-size: 1.3rem;">Bắt đầu soạn thảo bệnh án của bạn</h2>
+                    <p style="color: var(--color-text-muted); max-width: 600px; margin: 0 auto 1.5rem; font-size: 0.95rem;">
+                        CliniPortal cung cấp công cụ Bệnh án Điện tử tương tác mẫu chuẩn. Hỗ trợ nhập liệu thông tin, kiểm tra tính đầy đủ, tự động tính toán BMI và hỗ trợ in ấn mẫu bệnh án phục vụ học tập.
+                    </p>
+                    <a href="../../Công cụ/Chung/Bệnh án/benh-an-noi-khoa.html" class="tab-btn active" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-size: var(--text-sm); padding: 12px 24px; border-radius: var(--radius-md); box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.2);">
+                        <i class="fas fa-laptop-medical"></i> Đi đến Công cụ Bệnh án Điện tử
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+    <!-- Scripts dùng chung -->
+    <script src="../../../js/main.js" defer></script>
+    <script src="../../../components/header.js" defer></script>
+    <script src="../../../components/footer.js" defer></script>
+    <script src="../../../js/clinical-skill-tabs.js" defer></script>
+    <script src="../../../js/sidebar.js"></script>
+</body>
+
+</html>

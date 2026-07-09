@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Sinh lý học về sự trao đổi khí tại màng phế nang - mao mạch và các cơ chế vận chuyển khí Oxy, Carbon Dioxide trong máu tuần hoàn. Các định luật khuếch tán Dalton, Henry, Fick và các hiệu ứng Bohr, Haldane.">
+  <title>Sinh lý Trao đổi & Vận chuyển khí – CliniPortal</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core CliniPortal -->
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+  <!-- CSS chuyên biệt Sinh lý & TOC -->
+  <link rel="stylesheet" href="../../../../css/components/physio-patho.css">
+  <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+  <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+  <link rel="stylesheet" href="../../css/physio-shared.css">
+  <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+  <!-- MathJax Config cho Công thức Toán/Sinh lý -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+
+  <!-- Scripts điều hướng & xử lý tương tác động -->
+  <script src="../../../../js/toc.js" defer></script>
+  <script src="../../../../components/header.js" defer></script>
+  <script src="../../../../components/footer.js" defer></script>
+  <script src="../../js/physio-shared.js" defer></script>
+  <script src="../../../../js/main.js" defer></script>
+</head>
+
+<body>
+  <!-- Nạp Header động -->
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR HỆ THỐNG -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Sinhly-sinhlybenh.html" class="nav-item active" aria-current="page" title="S.lý - S.lý bệnh">
+              <span class="nav-icon">🧬</span>
+              <span class="nav-text">S.lý - S.lý bệnh</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="main-wrapper" id="mainContent">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container"
+        style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+        <ol class="breadcrumb-list"
+          style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+          <li><a href="../../../../index.html">🏠 Home</a> &gt;</li>
+          <li><a href="../../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+          <li style="color:var(--color-primary); font-weight:600;">Chương 4: Huyết động &amp; Hô hấp - Trao đổi &amp; Vận chuyển khí</li>
+        </ol>
+      </nav>
+
+      <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+      <main class="visual-container">
+        <!-- Chapter Header -->
+        <div class="chapter-header">
+          <h1>Sinh lý Trao đổi &amp; Vận chuyển khí</h1>
+          <p>Tìm hiểu các nguyên lý vật lý chi phối sự khuếch tán khí qua màng hô hấp, cùng các cơ chế sinh lý vận chuyển Oxy và Cacbonic trong dòng tuần hoàn để đảm bảo hô hấp tế bào.</p>
+        </div>
+
+        <!-- Phần I: Nguyên lý vật lý và cơ học của sự khuếch tán khí -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần I: Nguyên lý vật lý và cơ học của sự khuếch tán khí</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              Sự trao đổi khí trong cơ thể dựa trên nguyên lý khuếch tán thụ động từ nơi có áp suất (hoặc nồng độ) cao đến nơi có áp suất (hoặc nồng độ) thấp. Quá trình này được chi phối bởi ba định luật vật lý cơ bản:
+            </p>
+
+            <div class="physio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin: 1.5rem 0;">
+              <!-- Dalton -->
+              <div class="physio-grid-card" style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-primary);">
+                <div class="physio-grid-title" style="font-weight: 700; color: var(--color-primary); font-size: var(--text-sm); margin-bottom: 0.5rem;">
+                  📜 Định luật Dalton
+                </div>
+                <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                  Áp suất của một hỗn hợp khí bằng tổng áp suất riêng phần của từng loại khí có trong hỗn hợp đó. Biết được tỷ lệ phần trăm của một khí, ta có thể tính được áp suất riêng phần của nó.
+                </p>
+              </div>
+
+              <!-- Henry -->
+              <div class="physio-grid-card" style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-info);">
+                <div class="physio-grid-title" style="font-weight: 700; color: var(--color-info); font-size: var(--text-sm); margin-bottom: 0.5rem;">
+                  📜 Định luật Henry
+                </div>
+                <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                  Lượng khí hòa tan trong một chất lỏng tỷ lệ thuận với áp suất riêng phần của khí đó và hệ số hòa tan của nó trong chất lỏng cụ thể ở một nhiệt độ nhất định.
+                </p>
+              </div>
+
+              <!-- Fick -->
+              <div class="physio-grid-card" style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-success);">
+                <div class="physio-grid-title" style="font-weight: 700; color: var(--color-success); font-size: var(--text-sm); margin-bottom: 0.5rem;">
+                  📜 Định luật Fick
+                </div>
+                <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                  Tốc độ khuếch tán của một khí qua màng tỷ lệ thuận với diện tích bề mặt màng ($A$), hệ số khuếch tán của khí ($D$) và sự chênh lệch áp suất qua màng ($\Delta P$); đồng thời tỷ lệ nghịch với chiều dày của màng ($T$).
+                </p>
+              </div>
+            </div>
+
+            <!-- Công thức định luật Fick -->
+            <div class="key-concept" style="background: var(--color-bg); border: 1px solid var(--color-border); padding: 1.5rem; border-radius: var(--radius-lg); margin: 1.5rem 0; text-align: center;">
+              <h4 style="margin-top: 0; margin-bottom: 1rem; color: var(--color-text); font-size: var(--text-sm); font-weight: 600;">CÔNG THỨC ĐỊNH LUẬT FICK VỀ KHUẾCH TÁN</h4>
+              <div style="font-size: var(--text-lg); margin-bottom: 1rem;">
+                $$\dot{V}_{gas} = A \times D \times \frac{P_1 - P_2}{T}$$
+              </div>
+              <div style="text-align: left; font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.6; max-width: 500px; margin: 0 auto;">
+                <strong>Trong đó:</strong>
+                <ul style="margin: 0.5rem 0 0 1rem; padding: 0; list-style-type: disc;">
+                  <li>$\dot{V}_{gas}$: Tốc độ khuếch tán khí qua màng mô.</li>
+                  <li>$A$: Diện tích bề mặt tiếp xúc của màng khuếch tán.</li>
+                  <li>$D$: Hằng số khuếch tán của khí (tỷ lệ thuận với độ hòa tan, tỷ lệ nghịch với căn bậc hai khối lượng phân tử).</li>
+                  <li>$P_1 - P_2$ hoặc $\Delta P$: Chênh lệch phân áp khí giữa hai bên màng.</li>
+                  <li>$T$: Chiều dày của màng khuếch tán (khoảng cách khí phải đi qua).</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hình 1 -->
+          <div class="image-placeholder-card">
+            <div class="image-title">
+              <span>🖼️</span> Hình 1: Sự khuếch tán của Oxy từ vùng áp suất cao sang áp suất thấp (Figure 40-1 - Guyton and Hall Textbook of Medical Physiology 13th Edition)
+            </div>
+            <div class="image-drop-area">
+              <div class="image-drop-text">
+                <img src="../../images/Phan4/SL_Traodoikhi_Hinh1.png" alt="Sự khuếch tán oxy trong buồng chứa"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                  <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                  <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh minh họa đang được cập nhật</p>
+                </div>
+              </div>
+            </div>
+            <div class="image-description">
+              <strong>Mô tả:</strong> Hình ảnh mô tả sự khuếch tán của oxy từ một đầu của buồng chứa sang đầu kia. Sự chênh lệch độ dài của các mũi tên đại diện cho sự khuếch tán ròng của khí từ vùng có áp suất cao di chuyển ngẫu nhiên sang vùng có áp suất thấp.
+            </div>
+          </div>
+
+          <!-- Hình 2 -->
+          <div class="image-placeholder-card" style="margin-top: 1.5rem;">
+            <div class="image-title">
+              <span>🖼️</span> Hình 2: Cơ chế khuếch tán khí qua lớp mô mỏng theo định luật Fick (Figure 24.2 - Berne and Levy Physiology 8th Edition)
+            </div>
+            <div class="image-drop-area">
+              <div class="image-drop-text">
+                <img src="../../images/Phan4/SL_Traodoikhi_Hinh2.png" alt="Định luật Fick về khuếch tán khí"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                  <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                  <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh minh họa đang được cập nhật</p>
+                </div>
+              </div>
+            </div>
+            <div class="image-description">
+              <strong>Mô tả:</strong> Biểu đồ mô tả định luật Fick, trong đó sự khuếch tán của một khí qua một lớp mô ($\dot{V}_{gas}$) liên quan trực tiếp đến diện tích bề mặt ($A$), hằng số khuếch tán ($D$), và sự chênh lệch áp suất ($P_1 - P_2$), và tỷ lệ nghịch với độ dày của mô ($T$) với công thức: $\dot{V}_{gas} = A \times D \times \frac{P_1 - P_2}{T}$.
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần II: Trao đổi khí tại màng phế nang - mao mạch -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần II: Trao đổi khí tại màng phế nang - mao mạch</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              Tại phổi, sự trao đổi khí xảy ra qua <span class="term-hl">màng phế nang - mao mạch</span> (màng hô hấp) có độ dày cực kỳ mỏng (chỉ từ 0,4 đến 2,0 micromet) và tổng diện tích tiếp xúc rất lớn (khoảng 70 m<sup>2</sup> ở người trưởng thành).
+            </p>
+
+            <ul class="physio-list-arrow">
+              <li>
+                <strong>Sự chênh lệch phân áp khí:</strong> 
+                <br>• Máu tĩnh mạch đi vào mao mạch phổi có phân áp oxy ($PO_2$) khoảng <strong>40 mmHg</strong> và phân áp carbon dioxide ($PCO_2$) khoảng <strong>45-46 mmHg</strong>.
+                <br>• Không khí trong phế nang có $PO_2$ khoảng <strong>100-104 mmHg</strong> và $PCO_2$ khoảng <strong>40 mmHg</strong>.
+                <br>• Sự chênh lệch này tạo lực đẩy khuếch tán: $O_2$ đi từ phế nang vào máu mao mạch phổi ($\Delta P \approx 60-64\text{ mmHg}$), và $CO_2$ đi từ máu ra phế nang ($\Delta P \approx 5-6\text{ mmHg}$). Mặc dù $\Delta P$ của $CO_2$ rất nhỏ, nhưng do hệ số hòa tan của nó cực lớn (gấp hơn 20 lần $O_2$), tốc độ khuếch tán của $CO_2$ vẫn diễn ra rất nhanh chóng.
+              </li>
+              <li>
+                <strong>Động học của sự cân bằng khí:</strong> Thời gian trung bình một hồng cầu lưu lại trong mao mạch phổi ở người bình thường lúc nghỉ ngơi là khoảng <strong>0,75 giây</strong>. Tuy nhiên, sự trao đổi và cân bằng phân áp khí giữa phế nang và máu diễn ra cực nhanh, chỉ mất khoảng <strong>0,25 giây đầu tiên</strong> (chiếm 1/3 thời gian tiếp xúc). Phần thời gian còn lại (0,50 giây) đóng vai trò là lưới đệm an toàn khi cơ thể gắng sức (khi đó cung lượng tim tăng và tốc độ dòng máu chạy nhanh hơn).
+              </li>
+            </ul>
+
+            <!-- Khối thông tin: Giới hạn bởi khuếch tán vs tưới máu -->
+            <div class="clinical-note-box" style="background: var(--color-primary-hl); border-left: 4px solid var(--color-primary); margin-top: 1.5rem;">
+              <div class="clinical-note-title" style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: var(--text-sm);">
+                🔑 CƠ CHẾ GIỚI HẠN BỞI TƯỚI MÁU VÀ GIỚI HẠN BỞI KHUẾCH TÁN
+              </div>
+              <p style="font-size: var(--text-xs); line-height: 1.6; margin: 0; color: var(--color-text-muted);">
+                - <strong>Giới hạn bởi tưới máu (Perfusion-limited):</strong> Xảy ra với khí <span class="term-hl-secondary">N<sub>2</sub>O</span> và <span class="term-hl-secondary">O<sub>2</sub></span> ở người bình thường. Phân áp khí trong máu nhanh chóng đạt trạng thái cân bằng với phế nang trước khi ra khỏi mao mạch. Lượng khí trao đổi thêm chỉ tăng lên khi tăng dòng máu tưới qua phổi.
+                <br>- <strong>Giới hạn bởi khuếch tán (Diffusion-limited):</strong> Điển hình là khí <span class="term-hl-secondary">CO</span> (Carbon Monoxide) và <span class="term-hl-secondary">O<sub>2</sub></span> trong bệnh lý xơ phổi hoặc khi gắng sức cực hạn. Vì CO gắn kết cực mạnh với Hb, phân áp tự do của nó trong huyết tương tăng lên rất chậm và không bao giờ đạt cân bằng với phế nang trong suốt 0,75 giây hồng cầu đi qua mao mạch. Lượng khí trao đổi phụ thuộc chủ yếu vào khả năng khuếch tán của màng hô hấp.
+              </p>
+            </div>
+
+            <!-- Cấu trúc 6 lớp màng hô hấp -->
+            <h3 class="subsection-title" style="margin-top: 1.5rem;">Cấu trúc siêu vi 6 lớp của màng hô hấp:</h3>
+            <p>Để khuếch tán qua lại giữa phế nang và mao mạch, các phân tử khí phải vượt qua lần lượt 6 lớp cấu trúc:</p>
+            <ol style="font-size: var(--text-sm); line-height: 1.6; color: var(--color-text); margin-left: 1.5rem;">
+              <li>Lớp dịch lót phế nang có chứa <span class="term-hl">chất hoạt diện (surfactant)</span> giúp giảm sức căng bề mặt.</li>
+              <li>Lớp biểu mô phế nang (gồm chủ yếu tế bào phế nang dẹt type I).</li>
+              <li>Màng đáy biểu mô phế nang.</li>
+              <li>Khoảng kẽ mỏng giữa biểu mô phế nang và màng nội mô mao mạch.</li>
+              <li>Màng đáy mao mạch (ở nhiều vị trí sẽ hòa lẫn với màng đáy biểu mô phế nang).</li>
+              <li>Lớp tế bào nội mô của mao mạch phổi.</li>
+            </ol>
+          </div>
+
+          <!-- Hình 3 -->
+          <div class="image-placeholder-card">
+            <div class="image-title">
+              <span>🖼️</span> Hình 3: Cấu trúc siêu vi 6 lớp của màng hô hấp phế nang - mao mạch (Figure 40-9 - Guyton and Hall Textbook of Medical Physiology 13th Edition)
+            </div>
+            <div class="image-drop-area">
+              <div class="image-drop-text">
+                <img src="../../images/Phan4/SL_Traodoikhi_Hinh3.png" alt="Mặt cắt ngang cấu trúc màng hô hấp"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                  <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                  <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh minh họa đang được cập nhật</p>
+                </div>
+              </div>
+            </div>
+            <div class="image-description">
+              <strong>Mô tả:</strong> Bản vẽ mặt cắt ngang cấu trúc siêu vi của màng hô hấp phế nang. Màng gồm 6 lớp: (1) lớp dịch lót phế nang có chứa surfactant, (2) lớp biểu mô phế nang, (3) màng đáy biểu mô, (4) khoảng kẽ, (5) màng đáy mao mạch, và (6) lớp nội mô mao mạch. Hình ảnh thể hiện chiều khuếch tán của $O_2$ vào hồng cầu và $CO_2$ đi ra phế nang.
+            </div>
+          </div>
+
+          <!-- Hình 4 -->
+          <div class="image-placeholder-card" style="margin-top: 1.5rem;">
+            <div class="image-title">
+              <span>🖼️</span> Hình 4: Động học thu nhận Nitrous Oxide, Oxy và Carbon Monoxide tại mao mạch phổi (Figure 24.3 - Berne and Levy Physiology 8th Edition)
+            </div>
+            <div class="image-drop-area">
+              <div class="image-drop-text">
+                <img src="../../images/Phan4/SL_Traodoikhi_Hinh4.png" alt="Đồ thị giới hạn bởi khuếch tán và tưới máu"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                  <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                  <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh minh họa đang được cập nhật</p>
+                </div>
+              </div>
+            </div>
+            <div class="image-description">
+              <strong>Mô tả:</strong> Đồ thị thể hiện mối quan hệ giữa áp suất riêng phần trong máu mao mạch và thời gian hồng cầu nằm trong mao mạch (0.75 giây). Các khí bị giới hạn bởi tưới máu ($N_2O$ và $O_2$ bình thường) đạt cân bằng nhanh chóng với áp suất phế nang ngay trước khi rời khỏi mao mạch. Ngược lại, áp suất riêng phần của khí CO (giới hạn bởi khuếch tán) tăng rất chậm và không đạt trạng thái cân bằng.
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần III: Vận chuyển Oxy (O2) trong máu -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần III: Vận chuyển Oxy (O<sub>2</sub>) trong máu</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              Oxy ($O_2$) được chuyên chở từ phổi đến các mao mạch mô cơ quan dưới hai dạng chính trong máu:
+            </p>
+
+            <ul class="physio-list-arrow">
+              <li>
+                <strong>Dạng hòa tan vật lý:</strong> Chiếm tỷ lệ rất nhỏ, chỉ khoảng <strong>3%</strong> tổng lượng oxy vận chuyển (khoảng 0.3 mL $O_2$ hòa tan trong 100 mL máu ở phân áp $100\text{ mmHg}$). Dù lượng nhỏ nhưng dạng hòa tan này quyết định <span class="term-hl">phân áp oxy ($PO_2$)</span> của máu, tạo lực đẩy khuếch tán ban đầu cho oxy gắn với hemoglobin và đi vào mô tế bào.
+              </li>
+              <li>
+                <strong>Dạng kết hợp với Hemoglobin (Hb):</strong> Là dạng vận chuyển chủ yếu, chiếm tới <strong>97%</strong> tổng lượng oxy. Mỗi phân tử Hemoglobin có cấu trúc gồm 4 tiểu đơn vị protein (2 chuỗi $\alpha$, 2 chuỗi $\beta$), mỗi chuỗi chứa một nhân Heme có tâm là ion sắt hóa trị hai (<span class="term-hl-secondary">Fe<sup>2+</sup></span>). Mỗi ion $Fe^{2+}$ có khả năng liên kết lỏng lẻo và thuận nghịch trực tiếp với 1 phân tử $O_2$. Như vậy, 1 phân tử Hb có thể vận chuyển tối đa 4 phân tử $O_2$.
+              </li>
+            </ul>
+
+            <!-- Đường cong Barcroft -->
+            <h3 class="subsection-title" style="margin-top: 1.5rem;">Đường cong phân ly Oxy-Hemoglobin (Đường cong Barcroft):</h3>
+            <p>Đồ thị biểu diễn mối tương quan giữa phân áp oxy ($PO_2$) và độ bão hòa oxy của Hemoglobin ($SaO_2\%$) có hình chữ <strong>S (sigmoid)</strong> đặc trưng. Điều này phản ánh <span class="term-hl">tính hợp tác (cooperativity)</span> của phân tử Hb: khi một phân tử $O_2$ đầu tiên gắn vào một tiểu đơn vị, nó làm thay đổi cấu hình không gian của Hb, khiến ái lực của các tiểu đơn vị còn lại với $O_2$ tăng vọt lên, giúp chúng gắn oxy dễ dàng hơn.</p>
+            
+            <ul class="physio-list-arrow">
+              <li>
+                <strong>Đoạn ngang phía trên (phân áp $PO_2 > 60\text{ mmHg}$):</strong> Khá phẳng. Điều này đảm bảo rằng ngay cả khi phân áp oxy trong phế nang giảm nhẹ (do môi trường cao, bệnh phổi nhẹ), độ bão hòa oxy trong máu động mạch vẫn được giữ vững ở mức rất cao ($>90\%$).
+              </li>
+              <li>
+                <strong>Đoạn dốc phía dưới (phân áp $PO_2 < 60\text{ mmHg}$):</strong> Rất dốc. Điều này cực kỳ có lợi khi máu đi đến mô cơ quan (nơi $PO_2$ thấp khoảng $40\text{ mmHg}$ hoặc thấp hơn nữa khi hoạt động). Sự sụt giảm nhỏ của $PO_2$ tại mô sẽ thúc đẩy Hb nhanh chóng phóng thích (nhả) một lượng rất lớn oxy cho tế bào sử dụng.
+              </li>
+              <li>
+                <strong>Chỉ số $P_{50}$:</strong> Là phân áp oxy mà tại đó 50% số lượng phân tử Hemoglobin được bão hòa oxy (ở người trưởng thành khỏe mạnh, $P_{50} \approx 27\text{ mmHg}$).
+                <br>• $P_{50}$ tăng tương ứng với đường cong dịch chuyển sang PHẢI (giảm ái lực của Hb với $O_2$, dễ nhả oxy hơn).
+                <br>• $P_{50}$ giảm tương ứng với đường cong dịch chuyển sang TRÁI (tăng ái lực của Hb với $O_2$, giữ oxy chặt hơn).
+              </li>
+            </ul>
+
+            <!-- Sự lệch chuyển đường cong phân ly -->
+            <h3 class="subsection-title" style="margin-top: 1.5rem;">Các yếu tố ảnh hưởng và sự dịch chuyển đường cong:</h3>
+            <div class="physio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+              <!-- Lệch Phải -->
+              <div class="physio-grid-card" style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-rose);">
+                <div class="physio-grid-title" style="font-weight: 700; color: var(--color-rose); font-size: var(--text-sm); margin-bottom: 0.5rem;">
+                  ➡️ Dịch chuyển sang PHẢI (Giảm ái lực, Tăng nhả $O_2$)
+                </div>
+                <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0; line-height: 1.6;">
+                  Xảy ra khi mô tăng cường chuyển hóa (ví dụ: khi cơ bắp vận động mạnh):
+                  <br>• Tăng phân áp carbon dioxide ($\uparrow PCO_2$).
+                  <br>• Tăng nồng độ ion hydro, gây giảm pH ($\downarrow\text{pH}$ / toan hóa) - đây gọi là <strong>Hiệu ứng Bohr</strong>.
+                  <br>• Tăng nhiệt độ cơ thể ($\uparrow\text{Nhiệt độ}$).
+                  <br>• Tăng nồng độ chất <span class="term-hl-secondary">2,3-DPG</span> (sản phẩm phụ của glycolysis trong hồng cầu).
+                </p>
+              </div>
+
+              <!-- Lệch Trái -->
+              <div class="physio-grid-card" style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-primary);">
+                <div class="physio-grid-title" style="font-weight: 700; color: var(--color-primary); font-size: var(--text-sm); margin-bottom: 0.5rem;">
+                  ⬅️ Dịch chuyển sang TRÁI (Tăng ái lực, Giữ chặt $O_2$)
+                </div>
+                <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0; line-height: 1.6;">
+                  Xảy ra trong các điều kiện ngược lại hoặc trạng thái đặc biệt:
+                  <br>• Giảm phân áp carbon dioxide ($\downarrow PCO_2$).
+                  <br>• Giảm nồng độ ion hydro, tăng pH ($\uparrow\text{pH}$ / kiềm hóa).
+                  <br>• Giảm nhiệt độ cơ thể ($\downarrow\text{Nhiệt độ}$).
+                  <br>• Giảm nồng độ chất <span class="term-hl-secondary">2,3-DPG</span>.
+                  <br>• Sự hiện diện của <strong>Hemoglobin bào thai (HbF)</strong>: HbF có ái lực tự nhiên với oxy cao hơn HbA (người lớn) do không gắn mạnh với 2,3-DPG, giúp thai nhi dễ dàng "giành" lấy oxy từ máu mẹ qua nhau thai.
+                </p>
+              </div>
+            </div>
+
+            <!-- Cảnh báo lâm sàng: Ngộ độc CO -->
+            <div class="clinical-note-box" style="background: var(--color-rose-hl); border-left: 4px solid var(--color-rose); margin-top: 1.5rem;">
+              <div class="clinical-note-title" style="font-weight: 700; color: var(--color-rose); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: var(--text-sm);">
+                ⚠️ LƯU Ý LÂM SÀNG: NGỘ ĐỘC KHÍ CARBON MONOXIDE (CO)
+              </div>
+              <p style="font-size: var(--text-xs); line-height: 1.6; margin: 0; color: var(--color-text-muted);">
+                Khí <span class="term-hl-secondary">CO</span> cạnh tranh trực tiếp với $O_2$ tại vị trí gắn sắt hóa trị hai ($Fe^{2+}$) trên nhân heme. Ái lực của CO với Hemoglobin cực kỳ mạnh mẽ, <strong>gấp 200 - 210 lần</strong> so với ái lực của $O_2$. 
+                <br>Khi CO gắn vào Hb (tạo thành Carboxyhemoglobin - COHb), nó gây ra hai hậu quả nguy hiểm:
+                <br>1. Chiếm chỗ và làm giảm mạnh số lượng vị trí gắn khả dụng dành cho $O_2$, từ đó làm giảm dung lượng chứa oxy của máu.
+                <br>2. Sự gắn kết của CO vào một vài nhân heme sẽ kích hoạt biến đổi cấu hình Hb, làm <strong>đường cong phân ly Hb-O<sub>2</sub> còn lại dịch chuyển mạnh sang TRÁI</strong>. Điều này làm cho các phân tử oxy đã gắn trên Hb bị giữ chặt hơn và không thể giải phóng cho mô tế bào sử dụng, gây nên tình trạng ngạt và chết tế bào nhanh chóng (mặc dù $PO_2$ hòa tan đo được trong máu động mạch vẫn có thể bình thường).
+              </p>
+            </div>
+          </div>
+
+          <!-- Hình 5 -->
+          <div class="image-placeholder-card">
+            <div class="image-title">
+              <span>🖼️</span> Hình 5: Đường cong phân ly Oxy - Hemoglobin và điểm P50 chuẩn (Figure 24.4 - Berne and Levy Physiology 8th Edition)
+            </div>
+            <div class="image-drop-area">
+              <div class="image-drop-text">
+                <img src="../../images/Phan4/SL_Traodoikhi_Hinh5.png" alt="Đường cong Barcroft phân ly oxy-hemoglobin"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                  <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                  <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh minh họa đang được cập nhật</p>
+                </div>
+              </div>
+            </div>
+            <div class="image-description">
+              <strong>Mô tả:</strong> Đồ thị đường cong phân ly Oxy-Hemoglobin mô tả mối quan hệ giữa phân áp oxy ($PO_2$) và độ bão hòa Hb. Điểm $P_{50}$ được biểu diễn tại 27 mmHg. Nếu đường cong lệch phải, $P_{50}$ tăng (ái lực giảm); nếu lệch trái, $P_{50}$ giảm (ái lực tăng).
+            </div>
+          </div>
+
+          <!-- Hình 6 -->
+          <div class="image-placeholder-card" style="margin-top: 1.5rem;">
+            <div class="image-title">
+              <span>🖼️</span> Hình 6: Sự dịch chuyển sang phải của đường cong phân ly do giảm pH, tăng CO2 và nhiệt độ (Figure 41-10 - Guyton and Hall Textbook of Medical Physiology 13th Edition)
+            </div>
+            <div class="image-drop-area">
+              <div class="image-drop-text">
+                <img src="../../images/Phan4/SL_Traodoikhi_Hinh6.png" alt="Sự dịch chuyển đường cong phân ly sang phải"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                  <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                  <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh minh họa đang được cập nhật</p>
+                </div>
+              </div>
+            </div>
+            <div class="image-description">
+              <strong>Mô tả:</strong> Đồ thị minh họa đường cong bão hòa oxy dịch chuyển sang phải do tăng nồng độ ion hydro (giảm pH từ 7.4 xuống 7.2) - thể hiện hiệu ứng Bohr. Ghi chú trong hình cũng nêu rõ các yếu tố khác gây lệch phải bao gồm: tăng $CO_2$, tăng nhiệt độ, và tăng BPG (2,3-DPG).
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần IV: Vận chuyển Carbon Dioxide (CO2) trong máu -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần IV: Vận chuyển Carbon Dioxide (CO<sub>2</sub>) trong máu</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              Carbon Dioxide ($CO_2$) là sản phẩm cuối cùng của chu trình Krebs trong tế bào. $CO_2$ khuếch tán qua khoảng kẽ vào máu mao mạch và được vận chuyển về phổi dưới ba dạng chính:
+            </p>
+
+            <ul class="physio-list-arrow">
+              <li>
+                <strong>Dạng hòa tan vật lý trong huyết tương:</strong> Chiếm khoảng <strong>7%</strong>. Mặc dù tỷ lệ này vẫn nhỏ, nhưng nó vẫn cao gấp đôi so với dạng hòa tan của $O_2$ vì $CO_2$ dễ hòa tan trong nước hơn nhiều. Dạng hòa tan này quyết định phân áp carbon dioxide ($PCO_2$) của máu.
+              </li>
+              <li>
+                <strong>Dạng gắn với protein (Carbaminohemoglobin):</strong> Chiếm khoảng <strong>20 - 23%</strong>. Phân tử $CO_2$ gắn lỏng lẻo và thuận nghịch trực tiếp với các nhóm amin ($NH_2$) của chuỗi globin trên Hemoglobin (tạo thành $HbCO_2$), và một phần nhỏ gắn với các protein huyết tương như albumin. Phản ứng này không cạnh tranh với $O_2$ vì vị trí gắn hoàn toàn khác nhau (oxy gắn với sắt ở nhân heme, cacbonic gắn với chuỗi globin).
+              </li>
+              <li>
+                <strong>Dạng ion Bicarbonate ($HCO_3^-$):</strong> Là dạng vận chuyển chủ yếu nhất, chiếm đến <strong>70%</strong> tổng lượng $CO_2$ chuyên chở trong cơ thể.
+              </li>
+            </ul>
+
+            <!-- Hiện tượng Hamburger -->
+            <h3 class="subsection-title" style="margin-top: 1.5rem;">Cơ chế hình thành Bicarbonate và Hiện tượng Hamburger (Chloride shift):</h3>
+            <p>Quá trình chuyển đổi $CO_2$ thành ion $HCO_3^-$ diễn ra chủ yếu bên trong hồng cầu theo một chuỗi phản ứng phối hợp chặt chẽ:</p>
+            <ul class="physio-list-arrow">
+              <li>
+                Khi $CO_2$ từ mô tế bào khuếch tán vào bên trong hồng cầu, nó kết hợp với nước nhờ sự xúc tác cực kỳ nhanh của enzyme <span class="term-hl">Carbonic Anhydrase (CA)</span> để tạo thành acid carbonic ($H_2CO_3$):
+                <div style="text-align: center; margin: 1rem 0; font-size: var(--text-base);">
+                  $$CO_2 + H_2O \xrightarrow{\text{Carbonic Anhydrase}} H_2CO_3 \rightleftharpoons H^+ + HCO_3^-$$
+                </div>
+              </li>
+              <li>
+                Acid carbonic sau đó lập tức phân ly thành ion hydro ($H^+$) và ion bicarbonate ($HCO_3^-$).
+              </li>
+              <li>
+                Ion $H^+$ mới tạo thành được đệm ngay lập tức bởi phân tử Hemoglobin đã khử oxy (deoxyhemoglobin), ngăn chặn sự giảm mạnh pH nội bào.
+              </li>
+              <li>
+                Khi nồng độ ion $HCO_3^-$ bên trong hồng cầu tăng cao, nó sẽ khuếch tán ra ngoài huyết tương xuôi dòng nồng độ. Để đảm bảo cân biến điện tích màng tế bào, ion Chloride (<span class="term-hl-secondary">Cl<sup>-</sup></span>) từ ngoài huyết tương sẽ được vận chuyển ngược vào trong hồng cầu thông qua một protein trao đổi anion đặc hiệu (anion exchanger 1 hay band 3). Đây được gọi là <span class="term-hl">Hiện tượng dịch chuyển Chloride (Chloride shift)</span> hay <strong>Hiện tượng Hamburger</strong>. Do nước cũng di chuyển thụ động theo ion $Cl^-$ vào trong hồng cầu, nên thể tích hồng cầu trong máu tĩnh mạch thường lớn hơn nhẹ so với trong máu động mạch.
+              </li>
+              <li>
+                <strong>Tại phổi:</strong> Khi máu tĩnh mạch đi qua mao mạch phổi, toàn bộ chuỗi phản ứng trên sẽ diễn ra theo <strong>chiều ngược lại</strong>: $Cl^-$ khuếch tán ngược ra ngoài huyết tương, $HCO_3^-$ đi vào hồng cầu kết hợp với $H^+$ tạo lại $CO_2$ và nước, và $CO_2$ được thải vào phế nang để thở ra ngoài.
+              </li>
+            </ul>
+
+            <!-- Khối thông tin: Hiệu ứng Haldane -->
+            <div class="clinical-note-box" style="background: var(--color-primary-hl); border-left: 4px solid var(--color-primary); margin-top: 1.5rem;">
+              <div class="clinical-note-title" style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: var(--text-sm);">
+                🧠 HIỆU ỨNG HALDANE VÀ VAI TRÒ ĐIỀU HÒA TRAO ĐỔI KHÍ
+              </div>
+              <p style="font-size: var(--text-xs); line-height: 1.6; margin: 0; color: var(--color-text-muted);">
+                Sự gắn kết của oxy với Hemoglobin tại phế nang phổi biến Hb thành một acid mạnh hơn. Đặc tính này dẫn đến <strong>Hiệu ứng Haldane</strong> với hai cơ chế bổ trợ:
+                <br>1. Phân tử Oxyhemoglobin (Hb-O<sub>2</sub>) có ái lực rất thấp với $CO_2$, thúc đẩy giải phóng nhanh chóng $CO_2$ ra khỏi dạng liên kết carbaminohemoglobin để thải ra phế nang.
+                <br>2. Do tính acid mạnh hơn, Hb giải phóng các ion $H^+$. Các ion $H^+$ tự do này sẽ kết hợp ngay với ion $HCO_3^-$ vừa đi vào hồng cầu để tạo thành acid carbonic ($H_2CO_3$), rồi nhanh chóng phân hủy dưới tác dụng của enzym CA tạo thành nước và khí $CO_2$ để thải ra ngoài.
+                <br><em>Tóm lại:</em> Hiệu ứng Bohr giúp mô lấy oxy dễ dàng nhờ sự hiện diện của $CO_2$. Ngược lại, Hiệu ứng Haldane giúp phổi thải $CO_2$ hiệu quả hơn nhờ sự hiện diện của $O_2$.
+              </p>
+            </div>
+          </div>
+
+          <!-- Hình 7 -->
+          <div class="image-placeholder-card">
+            <div class="image-title">
+              <span>🖼️</span> Hình 7: Sơ đồ cơ chế vận chuyển Carbon Dioxide trong máu ngoại vi (Figure 41-13 - Guyton and Hall Textbook of Medical Physiology 13th Edition)
+            </div>
+            <div class="image-drop-area">
+              <div class="image-drop-text">
+                <img src="../../images/Phan4/SL_Traodoikhi_Hinh7.png" alt="Sơ đồ vận chuyển CO2 tại mô"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                  <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                  <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh minh họa đang được cập nhật</p>
+                </div>
+              </div>
+            </div>
+            <div class="image-description">
+              <strong>Mô tả:</strong> Sơ đồ mô tả $CO_2$ hòa tan (7%), $CO_2$ gắn với Hemoglobin tạo $Hb-CO_2$ (23%), và phản ứng $CO_2 + H_2O \rightleftharpoons H_2CO_3 \rightleftharpoons HCO_3^- + H^+$ dưới tác dụng của Carbonic Anhydrase (70%). Kèm theo đó là sự dịch chuyển của ion $Cl^-$ đi vào tế bào hồng cầu để đổi lấy $HCO_3^-$ đi ra huyết tương (Hiện tượng Hamburger).
+            </div>
+          </div>
+
+          <!-- Hình 8 -->
+          <div class="image-placeholder-card" style="margin-top: 1.5rem;">
+            <div class="image-title">
+              <span>🖼️</span> Hình 8: Sự đối nghịch giữa quá trình trao đổi CO2 tại mô ngoại vi và tại phế nang phổi (Plate 5.10 A - Color Atlas of Physiology 6th Edition)
+            </div>
+            <div class="image-drop-area">
+              <div class="image-drop-text">
+                <img src="../../images/Phan4/SL_Traodoikhi_Hinh8.png" alt="Sự trao đổi CO2 tại mô và phổi"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                  <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                  <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh minh họa đang được cập nhật</p>
+                </div>
+              </div>
+            </div>
+            <div class="image-description">
+              <strong>Mô tả:</strong> Sơ đồ hai nửa mô tả quá trình trao đổi $CO_2$. Ở ngoại vi (in periphery), $CO_2$ đi vào hồng cầu tạo Bicarbonate và Hemoglobin carbamate; $H^+$ được đệm bởi Hb và xảy ra sự trao đổi $Cl^- / HCO_3^-$. Tại phổi (in lung), oxy đi vào hồng cầu tạo Oxy-Hb thúc đẩy giải phóng $H^+$, tái tạo $CO_2$ để thải ra phế nang, đồng thời hướng của bơm trao đổi $Cl^- / HCO_3^-$ bị đảo ngược.
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần cuối: Tài liệu tham khảo -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Tài liệu tham khảo</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <ol style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin-left: 1.5rem;">
+              <li>Đặng Huỳnh Anh Thư. <em>Sinh lý HỆ MẠCH</em>. Đại học Y Dược TP.HCM; 2025.</li>
+              <li>Mai Phương Thảo. <em>Sinh lý MÁU</em>. Đại học Y Dược TP.HCM; 2025.</li>
+              <li>Vũ Trần Thiên Quân. <em>Sinh lý HÔ HẤP</em>. Đại học Y Dược TP.HCM; 2025.</li>
+              <li>Koeppen BM, Stanton BA. <em>Berne and Levy Physiology</em>. 8th ed. Elsevier.</li>
+              <li>Hall JE. <em>Guyton and Hall Textbook of Medical Physiology</em>. 13th ed. Elsevier; 2016.</li>
+              <li>Despopoulos A, Silbernagl S. <em>Color Atlas of Physiology</em>. Thieme.</li>
+            </ol>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Nạp Footer động -->
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+  <!-- Script điều khiển chung -->
+  <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>
