@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sinh lý tuyến vỏ thượng thận: các lớp tiết Aldosterone, Cortisol, Androgens, cơ chế sinh tổng hợp và sinh lý bệnh Cushing, Addison, CAH.">
+  <title>Nội tiết: Tuyến Vỏ Thượng Thận – CliniPortal</title>
+  
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core CliniPortal -->
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  
+  <!-- CSS chuyên biệt Sinh lý & TOC -->
+  <link rel="stylesheet" href="../../../../css/components/physio-patho.css">
+  <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+  <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+  <link rel="stylesheet" href="../../css/physio-shared.css">
+  <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+  <!-- Scripts điều hướng & xử lý tương tác động -->
+  <script src="../../../../js/toc.js" defer></script>
+  <script src="../../../../components/header.js"></script>
+  <script src="../../../../components/footer.js"></script>
+  <script src="../../js/physio-shared.js" defer></script>
+  <script src="../../../../js/main.js" defer></script>
+</head>
+
+<body>
+  <!-- Nạp Header động -->
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR HỆ THỐNG -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh">
+              <span class="nav-icon">🧬</span>
+              <span class="nav-text">Sinh lý</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- KHUNG CHỨA NỘI DUNG CHÍNH -->
+    <div class="main-wrapper" id="mainContent">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container" style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+        <ol class="breadcrumb-list" style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+          <li><a href="../../../../index.html">🏠 Home</a> &gt;</li>
+          <li><a href="../../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+          <li style="color:var(--color-primary); font-weight:600;">Bài: Tuyến Vỏ Thượng Thận</li>
+        </ol>
+      </nav>
+
+      <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+      <main class="visual-container">
+        <!-- Chapter Header -->
+        <div class="chapter-header">
+          <h1>Sinh lý Tuyến Vỏ Thượng Thận</h1>
+          <p>Hiểu về sự phân vùng, sinh tổng hợp Steroid, chức năng của Aldosterone, Cortisol và "lỗ hổng" sinh lý gây bệnh Tăng sản thượng thận bẩm sinh (CAH).</p>
+        </div>
+
+        <!-- Phần 1 -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần I: Giải phẫu chức năng và Sinh tổng hợp Steroid</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <h3 class="subsection-title">1. Phân vùng Vỏ thượng thận</h3>
+            <p>Vỏ thượng thận chiếm 80-90% tuyến, chia thành ba lớp nội tiết:</p>
+            <ul class="physio-list-arrow">
+              <li><strong>Lớp cầu (Zona glomerulosa):</strong> Tiết <strong>Aldosterone</strong>. Kiểm soát bởi ion Kali và hệ Renin-Angiotensin.</li>
+              <li><strong>Lớp bó (Zona fasciculata):</strong> Tiết glucocorticoid, chủ yếu là <strong>Cortisol</strong>. Kiểm soát bởi ACTH.</li>
+              <li><strong>Lớp lưới (Zona reticularis):</strong> Tiết hormone sinh dục (Adrenal androgens) như <strong>DHEA</strong>. Kiểm soát bởi ACTH.</li>
+            </ul>
+
+            <h3 class="subsection-title">2. Sinh tổng hợp Hormone Steroid</h3>
+            <p>Tất cả bắt nguồn từ <strong>Cholesterol</strong> (chủ yếu từ LDL). Enzyme <em>cholesterol desmolase</em> biến đổi cholesterol thành <strong>pregnenolone</strong> (bước giới hạn tốc độ). Lớp cầu thiếu 17a-hydroxylase nên tạo Aldosterone. Lớp bó/lưới có 17a-hydroxylase nên chuyển sang tạo Cortisol và Androgen.</p>
+
+            <div class="image-placeholder-card">
+              <div class="image-title">
+                <span>🖼️</span> Hình 1: Con đường sinh tổng hợp Steroid vỏ thượng thận
+              </div>
+              <div class="image-drop-area">
+                <div class="image-drop-text">
+                  <img src="../../images/Phan7/Adrenal_Steroid_Synthesis.png" alt="Sinh tổng hợp Steroid"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                    <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                    <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh minh họa đang được cập nhật</p>
+                  </div>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Mô tả:</strong> Bắt đầu từ Cholesterol chuyển thành Pregnenolone. Từ đó phân 3 nhánh: (1) Lớp cầu tạo Aldosterone (nhờ aldosterone synthase); (2) Lớp bó tạo Cortisol; (3) Lớp lưới tạo Androgen.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần 2 -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần II: Sinh lý Aldosterone và Cortisol</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <h3 class="subsection-title">1. Mineralocorticoid (Aldosterone)</h3>
+            <p>Duy trì thăng bằng natri, thể tích dịch và huyết áp.</p>
+            <ul class="physio-list-arrow">
+              <li><strong>Chức năng tại thận:</strong> Tác động tế bào chính ống lượn xa muộn, ống góp. Kích thích tái hấp thu Na+ vào máu, bài tiết K+ và H+ vào nước tiểu. Mất aldosterone gây tụt HA nặng, sốc.</li>
+              <li><strong>Bảo vệ thụ thể MR:</strong> Cortisol nồng độ rất cao cũng gắn MR, nhưng tế bào thận có enzyme <strong>11b-HSD2</strong> bất hoạt cortisol thành cortisone, giúp bảo vệ thụ thể cho aldosterone.</li>
+              <li><strong>Điều hòa:</strong> Kích thích mạnh nhất bởi tăng K+ máu và Angiotensin II (khi hạ HA).</li>
+            </ul>
+
+            <h3 class="subsection-title">2. Glucocorticoid (Cortisol)</h3>
+            <p>"Hormone stress" thiết yếu, 90% gắn với protein CBG.</p>
+            <div class="physio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+              <div class="physio-grid-card" style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-primary);">
+                <div class="physio-grid-title" style="font-weight: 700; color: var(--color-primary); font-size: var(--text-sm); margin-bottom: 0.5rem;">
+                  Chuyển hóa
+                </div>
+                <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                  Tân tạo đường ở gan, ly giải protein ở cơ, huy động mỡ. Làm tăng đường huyết.
+                </p>
+              </div>
+              
+              <div class="physio-grid-card" style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-warning);">
+                <div class="physio-grid-title" style="font-weight: 700; color: var(--color-warning); font-size: var(--text-sm); margin-bottom: 0.5rem;">
+                  Chống viêm, Ức chế MD
+                </div>
+                <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                  Giảm gen tiền viêm, ức chế phospholipase A2. Ức chế bạch cầu, ổn định lysosome.
+                </p>
+              </div>
+            </div>
+            <p><strong>Điều hòa bài tiết:</strong> Trục HPA (Hạ đồi tiết CRH &rarr; Yên tiết ACTH &rarr; Vỏ thượng thận tiết Cortisol). Cortisol ức chế ngược âm tính (negative feedback) lên não.</p>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần 3 -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần III: Sinh lý Bệnh học (Cushing, Addison, CAH)</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <h3 class="subsection-title">1. Hormone sinh dục tuyến thượng thận (Lỗ hổng trục HPA)</h3>
+            <p>Lớp lưới tiết DHEA/Androgen cung cấp 50% androgen hoạt động ở nữ. <strong>Lỗ hổng:</strong> Androgen vỏ thượng thận KHÔNG thể phản hồi âm tính (feedback) ức chế ACTH. Nếu tắc nghẽn đường tổng hợp Cortisol, ACTH tăng vọt sẽ đẩy sản phẩm sang sản xuất Androgen ồ ạt.</p>
+
+            <h3 class="subsection-title">2. Sinh lý bệnh Vỏ thượng thận</h3>
+            <div style="overflow-x:auto;">
+              <table style="width:100%; border-collapse: collapse; margin-top: 1rem; margin-bottom: 1rem; font-size: 0.9rem;">
+                <thead>
+                  <tr style="background-color: var(--color-surface); border-bottom: 2px solid var(--color-primary);">
+                    <th style="padding: 0.75rem; text-align: left;">Bệnh lý</th>
+                    <th style="padding: 0.75rem; text-align: left;">Hormone thay đổi</th>
+                    <th style="padding: 0.75rem; text-align: left;">Biểu hiện lâm sàng nổi bật</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom: 1px solid var(--color-border);">
+                    <td style="padding: 0.75rem; font-weight: 600;">Suy TT nguyên phát (Addison)</td>
+                    <td style="padding: 0.75rem; color: var(--color-danger);">&darr; Cortisol, &darr; Aldosterone<br>&uarr; ACTH (rất cao)</td>
+                    <td style="padding: 0.75rem;">Hạ đường huyết, tụt HA, tăng Kali máu. <strong>Sạm da</strong> (do ACTH cao kích thích hắc tố).</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--color-border);">
+                    <td style="padding: 0.75rem; font-weight: 600;">Hội chứng Cushing</td>
+                    <td style="padding: 0.75rem; color: var(--color-success);">&uarr; Cortisol dư thừa</td>
+                    <td style="padding: 0.75rem;">Béo trung tâm, mặt trăng (moon face), u mỡ gáy, rạn da tím, tăng HA, tăng đường huyết.</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--color-border);">
+                    <td style="padding: 0.75rem; font-weight: 600;">Hội chứng Conn</td>
+                    <td style="padding: 0.75rem; color: var(--color-success);">&uarr; Aldosterone (U lớp cầu)</td>
+                    <td style="padding: 0.75rem;">Tăng HA, hạ Kali máu nghiêm trọng, kiềm chuyển hóa, ức chế Renin.</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 0.75rem; font-weight: 600;">Tăng sản TT bẩm sinh (CAH) - Thiếu 21b-OH</td>
+                    <td style="padding: 0.75rem; color: var(--color-warning);">&darr; Cortisol, &darr; Aldosterone<br>&uarr; Androgen, &uarr; ACTH</td>
+                    <td style="padding: 0.75rem;">Bé gái bị nam hóa cơ quan sinh dục ngoài, mất muối, hạ HA nguy hiểm.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần cuối: Tài liệu tham khảo -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Tài liệu tham khảo</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <ol style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin-left: 1.5rem;">
+              <li>Costanzo LS. <em>Physiology</em>. 6th ed. LWW; 2018.</li>
+              <li>Hall JE. <em>Guyton and Hall Textbook of Medical Physiology</em>. 13th ed. Elsevier; 2016.</li>
+              <li>Barrett KE, Barman SM, Boitano S, Brooks HL. <em>Ganong's Review of Medical Physiology</em>. 24th ed. McGraw-Hill.</li>
+              <li>Lê Quốc Tuấn. <em>CKI_Nội tiết</em>. Đại học Y Dược TP.HCM.</li>
+            </ol>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Nạp Footer động -->
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+  <!-- Script điều khiển chung -->
+  <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>

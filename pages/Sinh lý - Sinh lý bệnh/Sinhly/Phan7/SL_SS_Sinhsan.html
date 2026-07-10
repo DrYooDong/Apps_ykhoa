@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Sinh lý hệ sinh sản: phân hóa giới tính, sinh lý nam (sinh tinh, nội tiết), sinh lý nữ (chu kỳ buồng trứng, tử cung) và quá trình thụ thai, mang thai, chuyển dạ.">
+    <title>Sinh lý Hệ Sinh sản – CliniPortal</title>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS Core CliniPortal -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+    <!-- CSS chuyên biệt Sinh lý & TOC -->
+    <link rel="stylesheet" href="../../../../css/components/physio-patho.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+    <!-- Scripts điều hướng & xử lý tương tác động -->
+    <script src="../../../../js/toc.js" defer></script>
+    <script src="../../../../components/header.js"></script>
+    <script src="../../../../components/footer.js"></script>
+    <script src="../../js/physio-shared.js" defer></script>
+    <script src="../../../../js/main.js" defer></script>
+</head>
+
+<body>
+    <!-- Nạp Header động -->
+    <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR HỆ THỐNG -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh">
+                            <span class="nav-icon">🧬</span>
+                            <span class="nav-text">Sinh lý</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- KHUNG CHỨA NỘI DUNG CHÍNH -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container"
+                style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+                <ol class="breadcrumb-list"
+                    style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+                    <li><a href="../../../../index.html">🏠 Home</a> &gt;</li>
+                    <li><a href="../../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+                    <li style="color:var(--color-primary); font-weight:600;">Bài: Sinh lý Hệ Sinh sản</li>
+                </ol>
+            </nav>
+
+            <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+            <main class="visual-container">
+                <!-- Chapter Header -->
+                <div class="chapter-header">
+                    <h1>Sinh lý Hệ Sinh sản</h1>
+                    <p>Khám phá cơ chế phân hóa giới tính, sinh lý hệ sinh dục nam (sinh tinh) và nữ (chu kỳ kinh
+                        nguyệt), cùng quá trình thụ thai, mang thai và chuyển dạ.</p>
+                </div>
+
+                <!-- Phần 1 -->
+                <div class="physio-content">
+                    <h2 class="section-title">
+                        <span>Phần I: Phân hóa và Phát triển Giới tính</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 class="subsection-title">1. Phân hóa giới tính</h3>
+                        <p>Sự phát triển giới tính phụ thuộc vào sự hiện diện của NST Y mang gen <strong>SRY</strong>
+                            (sex-determining region of the Y chromosome).</p>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Nam (XY):</strong> Gen SRY kích thích vùng tủy phát triển thành tinh hoàn (tuần
+                                7-8). Tế bào Leydig tiết <em>Testosterone</em> (phát triển ống Wolffian thành đường sinh
+                                dục nam) và tế bào Sertoli tiết <em>MIS (chất ức chế Müllerian)</em> làm thoái hóa đường
+                                sinh dục nữ. Testosterone chuyển hóa thành DHT hình thành cơ quan sinh dục ngoài.</li>
+                            <li><strong>Nữ (XX):</strong> Không có gen SRY, tuyến sinh dục phát triển thành buồng trứng.
+                                Do không có Testosterone và MIS, ống Wolffian thoái hóa, còn ống Müllerian phát triển
+                                thành vòi trứng, tử cung, âm đạo.</li>
+                        </ul>
+
+                        <div class="image-placeholder-card">
+                            <div class="image-title">
+                                <span>🖼️</span> Hình 1: Xác định và biệt hóa giới tính ở người
+                            </div>
+                            <div class="image-drop-area">
+                                <div class="image-drop-text">
+                                    <img src="../../images/Phan7/Sex_Differentiation.png" alt="Phân hóa giới tính"
+                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                                        <i class="fa-regular fa-image"
+                                            style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                                        <p
+                                            style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">
+                                            Hình ảnh minh họa đang được cập nhật</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="image-description">
+                                <strong>Mô tả:</strong> Tóm tắt vai trò của gen SRY, Testosterone (T), MIS và DHT trong
+                                sự phát triển cơ quan sinh dục trong và ngoài ở nam và nữ.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- Phần 2 -->
+                <div class="physio-content">
+                    <h2 class="section-title">
+                        <span>Phần II: Sinh lý Hệ Sinh sản Nam</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 class="subsection-title">1. Quá trình sinh tinh (Spermatogenesis)</h3>
+                        <p>Diễn ra tại ống sinh tinh, kéo dài khoảng 74 ngày: Tinh nguyên bào &rarr; Tinh bào bậc 1
+                            &rarr; Giảm phân I tạo Tinh bào bậc 2 &rarr; Giảm phân II tạo Tinh tử &rarr; Tinh trùng
+                            trưởng thành.</p>
+                        <p><strong>Vai trò tế bào Sertoli:</strong> Tạo hàng rào máu-tinh hoàn, cung cấp dưỡng chất,
+                            tiết ABP (giữ Testosterone tại chỗ) và tiết Inhibin.</p>
+
+                        <h3 class="subsection-title">2. Trục Hạ đồi - Tuyến yên - Tinh hoàn</h3>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Hạ đồi:</strong> Tiết GnRH kích thích tuyến yên.</li>
+                            <li><strong>Tuyến yên:</strong> Tiết <strong>LH</strong> (kích thích tế bào Leydig tiết
+                                Testosterone) và <strong>FSH</strong> (kích thích tế bào Sertoli hỗ trợ sinh tinh).</li>
+                            <li><strong>Phản hồi âm tính (Negative feedback):</strong> Testosterone ức chế LH và GnRH;
+                                Inhibin ức chế FSH.</li>
+                        </ul>
+
+                        <h3 class="subsection-title">3. Cương dương và Xuất tinh</h3>
+                        <p><strong>Cương dương:</strong> Phản xạ phó giao cảm (NO, VIP gây giãn mạch thể hang).<br>
+                            <strong>Xuất tinh:</strong> Phản xạ giao cảm (phóng tinh dịch và co thắt tống tinh ra
+                            ngoài).
+                        </p>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- Phần 3 -->
+                <div class="physio-content">
+                    <h2 class="section-title">
+                        <span>Phần III: Sinh lý Hệ Sinh sản Nữ</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 class="subsection-title">1. Chu kỳ Buồng trứng (Ovarian Cycle)</h3>
+                        <ol class="physio-steps">
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">Pha nang noãn</span>
+                                    FSH kích thích nang noãn phát triển. Tế bào vỏ (theca) và hạt (granulosa) tiết ra
+                                    lượng lớn <strong>Estrogen</strong>. Nang vượt trội sẽ phát triển.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">Rụng trứng (Ngày 14)</span>
+                                    Estrogen đạt ngưỡng rất cao tạo phản hồi <strong>dương tính</strong> &rarr; Đỉnh LH
+                                    (LH surge) làm vỡ nang, giải phóng noãn.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">Pha hoàng thể</span>
+                                    Nang vỡ thành hoàng thể, tiết ra lượng lớn <strong>Progesterone</strong> và
+                                    Estrogen. Nếu không có thai, hoàng thể thoái hóa sau 14 ngày.
+                                </div>
+                            </li>
+                        </ol>
+
+                        <h3 class="subsection-title">2. Chu kỳ Tử cung (Uterine Cycle)</h3>
+                        <div class="physio-grid"
+                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+                            <div class="physio-grid-card"
+                                style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-primary);">
+                                <div class="physio-grid-title"
+                                    style="font-weight: 700; color: var(--color-primary); font-size: var(--text-sm); margin-bottom: 0.5rem;">
+                                    Pha Tăng sinh
+                                </div>
+                                <p
+                                    style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                                    Nhờ <strong>Estrogen</strong>, niêm mạc tử cung phát triển dày lên, các tuyến dài ra
+                                    (song song pha nang noãn).
+                                </p>
+                            </div>
+
+                            <div class="physio-grid-card"
+                                style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-warning);">
+                                <div class="physio-grid-title"
+                                    style="font-weight: 700; color: var(--color-warning); font-size: var(--text-sm); margin-bottom: 0.5rem;">
+                                    Pha Chế tiết
+                                </div>
+                                <p
+                                    style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                                    Nhờ <strong>Progesterone</strong>, tuyến ngoằn ngoèo, tích glycogen/lipid chuẩn bị
+                                    cho phôi làm tổ (song song pha hoàng thể).
+                                </p>
+                            </div>
+
+                            <div class="physio-grid-card"
+                                style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-danger);">
+                                <div class="physio-grid-title"
+                                    style="font-weight: 700; color: var(--color-danger); font-size: var(--text-sm); margin-bottom: 0.5rem;">
+                                    Hành kinh
+                                </div>
+                                <p
+                                    style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                                    Hoàng thể thoái hóa, giảm nội tiết làm co thắt mạch máu, hoại tử và bong niêm mạc
+                                    tạo ra kinh nguyệt.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="image-placeholder-card">
+                            <div class="image-title">
+                                <span>🖼️</span> Hình 2: Mối tương quan chu kỳ buồng trứng và tử cung
+                            </div>
+                            <div class="image-drop-area">
+                                <div class="image-drop-text">
+                                    <img src="../../images/Phan7/Ovarian_Uterine_Cycle.png" alt="Chu kỳ kinh nguyệt"
+                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                                        <i class="fa-regular fa-image"
+                                            style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                                        <p
+                                            style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">
+                                            Hình ảnh minh họa đang được cập nhật</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- Phần 4 -->
+                <div class="physio-content">
+                    <h2 class="section-title">
+                        <span>Phần IV: Thụ thai, Mang thai và Chuyển dạ</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 class="subsection-title">1. Nội tiết Nhau thai</h3>
+                        <p>Nhau thai (Placenta) tiết ra các hormone quan trọng:</p>
+                        <ul class="physio-list-arrow">
+                            <li><strong>hCG:</strong> Tiết ra ngay sau làm tổ, cứu hoàng thể không bị thoái hóa, duy trì
+                                Estrogen/Progesterone 3 tháng đầu.</li>
+                            <li><strong>Progesterone:</strong> Giữ yên cơ tử cung, chống sảy thai tự nhiên.</li>
+                            <li><strong>Estrogens:</strong> Tăng máu nuôi tử cung, phát triển tuyến vú, tăng receptor
+                                oxytocin chuẩn bị sinh.</li>
+                            <li><strong>hCS (hPL):</strong> Giảm nhạy insulin ở mẹ, ưu tiên Glucose cho thai nhi.</li>
+                        </ul>
+
+                        <h3 class="subsection-title">2. Cơ chế Chuyển dạ (Phản hồi dương tính)</h3>
+                        <p><strong>Phản xạ Ferguson:</strong> Đầu thai nhi kéo căng cổ tử cung &rarr; Tín hiệu lên não
+                            kích thích Tuyến yên sau tiết <strong>Oxytocin</strong> &rarr; Tử cung co thắt mạnh hơn
+                            &rarr; Thai nhi tiếp tục bị đẩy xuống làm căng thêm cổ tử cung... Lặp lại cho đến khi sổ
+                            thai.</p>
+
+                        <h3 class="subsection-title">3. Tuyến vú và Tiết sữa</h3>
+                        <p>Estrogen (phát triển ống sữa) và Progesterone (phát triển nang tuyến) ức chế tiết sữa khi
+                            mang thai. Sau sổ nhau, nội tiết tố giảm giải phóng ức chế, <strong>Prolactin</strong> kích
+                            thích tạo sữa dồi dào. Phản xạ mút vú của trẻ giúp giải phóng <strong>Oxytocin</strong> co
+                            bóp tống sữa ra ngoài.</p>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- Phần cuối: Tài liệu tham khảo -->
+                <div class="physio-content">
+                    <h2 class="section-title">
+                        <span>Tài liệu tham khảo</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <ol
+                            style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin-left: 1.5rem;">
+                            <li>Barrett KE, Barman SM, Boitano S, Brooks HL. <em>Ganong's Review of Medical
+                                    Physiology</em>. 24th ed. McGraw-Hill.</li>
+                            <li>Hall JE. <em>Guyton and Hall Textbook of Medical Physiology</em>. 13th ed. Elsevier;
+                                2016.</li>
+                            <li>Koeppen BM, Stanton BA. <em>Berne and Levy Physiology</em>. 8th ed. Elsevier.</li>
+                            <li>Costanzo LS. <em>Physiology</em>. 6th ed. LWW; 2018.</li>
+                        </ol>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Nạp Footer động -->
+    <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+    <!-- Script điều khiển chung -->
+    <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>

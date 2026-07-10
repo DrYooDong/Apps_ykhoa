@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Nguyên lý hoạt động hệ nội tiết: phân loại hormone, cơ chế tác động qua thụ thể màng và thụ thể nội bào, và các quy luật điều hòa bài tiết hormone (Feedback).">
+    <title>Nguyên lý hoạt động hệ Nội tiết – CliniPortal</title>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS Core CliniPortal -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+    <!-- CSS chuyên biệt Sinh lý & TOC -->
+    <link rel="stylesheet" href="../../../../css/components/physio-patho.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+    <!-- Scripts điều hướng & xử lý tương tác động -->
+    <script src="../../../../js/toc.js" defer></script>
+    <script src="../../../../components/header.js"></script>
+    <script src="../../../../components/footer.js"></script>
+    <script src="../../js/physio-shared.js" defer></script>
+    <script src="../../../../js/main.js" defer></script>
+</head>
+
+<body>
+    <!-- Nạp Header động -->
+    <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR HỆ THỐNG -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh">
+                            <span class="nav-icon">🧬</span>
+                            <span class="nav-text">Sinh lý</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- KHUNG CHỨA NỘI DUNG CHÍNH -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container"
+                style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+                <ol class="breadcrumb-list"
+                    style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+                    <li><a href="../../../../index.html">🏠 Home</a> &gt;</li>
+                    <li><a href="../../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+                    <li style="color:var(--color-primary); font-weight:600;">Bài: Nguyên lý hệ Nội tiết</li>
+                </ol>
+            </nav>
+
+            <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+            <main class="visual-container">
+                <!-- Chapter Header -->
+                <div class="chapter-header">
+                    <h1>Nguyên lý hoạt động Hệ Nội tiết</h1>
+                    <p>Cơ chế giao tiếp tế bào, phân loại và sự tổng hợp hormone, thụ thể màng - nội bào và cơ chế điều hòa ngược (Feedback) duy trì hằng định nội môi.</p>
+                </div>
+
+                <!-- Phần 1 -->
+                <div class="physio-content">
+                    <h2 class="section-title">
+                        <span>Phần I: Giao tiếp tế bào & Bản chất Hormone</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 class="subsection-title">1. Các hình thức giao tiếp tế bào</h3>
+                        <p>Tế bào giao tiếp qua các chất truyền tin hóa học theo 4 phương thức chính:</p>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Nội tiết (Endocrine):</strong> Hormone tiết vào dòng máu đến cơ quan đích ở xa.</li>
+                            <li><strong>Cận tiết (Paracrine):</strong> Chất truyền tin khuếch tán qua dịch kẽ tác động lên tế bào lân cận.</li>
+                            <li><strong>Tự tiết (Autocrine):</strong> Tín hiệu tác động ngược lại chính tế bào đã tiết ra nó.</li>
+                            <li><strong>Thần kinh nội tiết (Neuroendocrine):</strong> Nơron (như vùng hạ đồi) tiết neurohormone vào máu.</li>
+                        </ul>
+
+                        <div class="image-placeholder-card">
+                            <div class="image-title">
+                                <span>🖼️</span> Hình 1: Các hệ thống giao tiếp tế bào
+                            </div>
+                            <div class="image-drop-area">
+                                <div class="image-drop-text">
+                                    <img src="../../images/Phan7/Endocrine_Communication.png" alt="Giao tiếp tế bào"
+                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                                        <i class="fa-regular fa-image"
+                                            style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                                        <p
+                                            style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">
+                                            Hình ảnh minh họa đang được cập nhật</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="image-description">
+                                <strong>Mô tả:</strong> Các con đường Autocrine (tự tác động), Paracrine (tác động lân cận) và Endocrine (qua dòng máu).
+                            </div>
+                        </div>
+
+                        <h3 class="subsection-title">2. Bản chất hóa học của Hormone</h3>
+                        <div class="physio-grid"
+                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+                            
+                            <div class="physio-grid-card"
+                                style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-primary);">
+                                <div class="physio-grid-title"
+                                    style="font-weight: 700; color: var(--color-primary); font-size: var(--text-sm); margin-bottom: 0.5rem;">
+                                    Tan trong nước (Peptide & Catecholamine)
+                                </div>
+                                <p
+                                    style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                                    Lưu hành tự do trong huyết tương. Tác dụng nhanh, thời gian bán hủy ngắn. Không qua được màng lipid, phải gắn vào <strong>Thụ thể màng</strong> (như GPCR).
+                                </p>
+                            </div>
+
+                            <div class="physio-grid-card"
+                                style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-warning);">
+                                <div class="physio-grid-title"
+                                    style="font-weight: 700; color: var(--color-warning); font-size: var(--text-sm); margin-bottom: 0.5rem;">
+                                    Tan trong Lipid (Steroid & Tuyến giáp)
+                                </div>
+                                <p
+                                    style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                                    Cần protein mang (carrier) trong máu. Tác dụng chậm (phiên mã gene), thời gian bán hủy dài. Khuếch tán qua màng để gắn vào <strong>Thụ thể nội bào</strong>.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- Phần 2 -->
+                <div class="physio-content">
+                    <h2 class="section-title">
+                        <span>Phần II: Cơ chế tác động qua Thụ thể (Receptors)</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 class="subsection-title">1. Tác động qua Thụ thể màng (Non-genomic action)</h3>
+                        <p>Thường gặp ở hormone peptide và catecholamine.</p>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Thụ thể liên kết Protein G (GPCR):</strong> Hormone gắn vào receptor &rarr; Kích hoạt Protein G &rarr; Kích hoạt enzyme tạo chất truyền tin thứ 2 (cAMP hoặc $IP_3$/DAG) &rarr; Phosphoryl hóa protein.</li>
+                            <li><strong>Thụ thể liên kết Enzyme:</strong> (VD: Insulin) Gây nhị phân hóa (dimerization) và kích hoạt Tyrosine kinase nội bào.</li>
+                        </ul>
+
+                        <h3 class="subsection-title">2. Tác động qua Thụ thể nội bào (Genomic action)</h3>
+                        <p>Thường gặp ở hormone steroid và tuyến giáp. Phức hợp Hormone-Receptor đi vào nhân, đóng vai trò như một yếu tố phiên mã (transcription factor) tác động lên đoạn DNA (Hormone response element) tạo ra mRNA và protein mới. Quá trình này mất vài giờ đến vài ngày.</p>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- Phần 3 -->
+                <div class="physio-content">
+                    <h2 class="section-title">
+                        <span>Phần III: Điều hòa bài tiết Hormone (Feedback)</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <p>Hệ nội tiết thường hoạt động theo trục 3 tầng: <strong>Hạ đồi &rarr; Tuyến yên &rarr; Tuyến ngoại biên</strong>.</p>
+                        
+                        <div class="clinical-note-box" style="background: var(--color-success-hl); border-left: 4px solid var(--color-success); margin-bottom: 1.5rem;">
+                            <div class="clinical-note-title"
+                                style="font-weight: 700; color: var(--color-success); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: var(--text-sm);">
+                                🔄 ĐIỀU HÒA NGƯỢC ÂM TÍNH (NEGATIVE FEEDBACK)
+                            </div>
+                            <p style="font-size: var(--text-xs); line-height: 1.6; margin: 0; color: var(--color-text-muted);">
+                                Là cơ chế chủ đạo duy trì hằng định nội môi. Khi nồng độ hormone đích tăng cao, nó quay lại ức chế Tuyến yên và Vùng hạ đồi (vòng lặp dài), làm giảm bài tiết hormone kích thích.
+                            </p>
+                        </div>
+
+                        <div class="clinical-note-box" style="background: var(--color-danger-hl); border-left: 4px solid var(--color-danger); margin-bottom: 1.5rem;">
+                            <div class="clinical-note-title"
+                                style="font-weight: 700; color: var(--color-danger); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: var(--text-sm);">
+                                ⚡ ĐIỀU HÒA NGƯỢC DƯƠNG TÍNH (POSITIVE FEEDBACK)
+                            </div>
+                            <p style="font-size: var(--text-xs); line-height: 1.6; margin: 0; color: var(--color-text-muted);">
+                                Tính khuếch đại, phá vỡ hằng định nội môi tạm thời. Ví dụ: Đỉnh Estrogen gây phóng thích ồ ạt LH (LH surge) gây rụng trứng; hoặc phản xạ mút vú làm tăng liên tục Oxytocin.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- Phần cuối: Tài liệu tham khảo -->
+                <div class="physio-content">
+                    <h2 class="section-title">
+                        <span>Tài liệu tham khảo</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <ol
+                            style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin-left: 1.5rem;">
+                            <li>Hall JE. <em>Guyton and Hall Textbook of Medical Physiology</em>. 13th ed. Elsevier; 2016.</li>
+                            <li>Koeppen BM, Stanton BA. <em>Berne and Levy Physiology</em>. 8th ed. Elsevier.</li>
+                            <li>Lê Quốc Tuấn. <em>Sinh lý HỆ NỘI TIẾT YDS 2025</em>. Đại học Y Dược TP.HCM; 2025.</li>
+                        </ol>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Nạp Footer động -->
+    <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+    <!-- Script điều khiển chung -->
+    <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>

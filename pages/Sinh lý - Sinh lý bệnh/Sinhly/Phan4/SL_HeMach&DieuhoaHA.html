@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sinh lý hệ mạch và điều hòa huyết áp: huyết động lực học, huyết áp động mạch, vi tuần hoàn, tuần hoàn tĩnh mạch, và cơ chế điều hòa huyết áp hệ thống.">
+  <title>Hệ Mạch & Điều Hòa Huyết Áp – CliniPortal</title>
+  
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core CliniPortal -->
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  
+  <!-- CSS chuyên biệt Sinh lý & TOC -->
+  <link rel="stylesheet" href="../../../../css/components/physio-patho.css">
+  <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+  <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+  <link rel="stylesheet" href="../../css/physio-shared.css">
+  <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+  <!-- Scripts điều hướng & xử lý tương tác động -->
+  <script src="../../../../js/toc.js" defer></script>
+  <script src="../../../../components/header.js"></script>
+  <script src="../../../../components/footer.js"></script>
+  <script src="../../js/physio-shared.js" defer></script>
+  <script src="../../../../js/main.js" defer></script>
+</head>
+
+<body>
+  <!-- Nạp Header động -->
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR HỆ THỐNG -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh">
+              <span class="nav-icon">🧬</span>
+              <span class="nav-text">Sinh lý</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- KHUNG CHỨA NỘI DUNG CHÍNH -->
+    <div class="main-wrapper" id="mainContent">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container" style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+        <ol class="breadcrumb-list" style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+          <li><a href="../../../../index.html">🏠 Home</a> &gt;</li>
+          <li><a href="../../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+          <li style="color:var(--color-primary); font-weight:600;">Bài: Hệ Mạch & Điều Hòa Huyết Áp</li>
+        </ol>
+      </nav>
+
+      <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+      <main class="visual-container">
+        <!-- Chapter Header -->
+        <div class="chapter-header">
+          <h1>Hệ Mạch & Điều Hòa Huyết Áp</h1>
+          <p>Hiểu biết về huyết động lực học, huyết áp động mạch, sự trao đổi tại mao mạch và cơ chế điều hòa thần kinh - nội tiết của huyết áp hệ thống.</p>
+        </div>
+
+        <!-- Phần 1 -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần I: Đại cương về hệ mạch và Huyết động lực học (Hemodynamics)</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p>Hệ tuần hoàn là hệ thống vận chuyển và phân phối máu chứa các chất dinh dưỡng, oxy đến mô và lấy đi các sản phẩm chuyển hóa. Hệ thống ống dẫn bao gồm:</p>
+            <ul class="physio-list-arrow">
+              <li><strong>Động mạch (Arteries):</strong> Có thành dày, nhiều mô đàn hồi và cơ trơn, hoạt động dưới áp suất cao để phân phối máu chứa oxy (thể tích căng - <em>stressed volume</em>).</li>
+              <li><strong>Tiểu động mạch (Arterioles):</strong> Nhánh nhỏ nhất của động mạch, là vị trí có sức cản cao nhất. Thành cơ trơn chi phối mạnh bởi hệ thần kinh tự chủ giúp điều hòa kháng lực ngoại biên (TPR).</li>
+              <li><strong>Mao mạch (Capillaries):</strong> Thành rất mỏng (một lớp tế bào nội mô và màng đáy), tổng diện tích bề mặt và thiết diện cắt ngang lớn nhất. Đây là nơi trao đổi chất, khí và nước.</li>
+              <li><strong>Tĩnh mạch (Veins):</strong> Thành mỏng, hoạt động dưới áp suất thấp và có khả năng giãn nở lớn. Chứa tỷ lệ máu cao nhất (khoảng 64-70%), đóng vai trò hồ chứa máu (thể tích không căng - <em>unstressed volume</em>).</li>
+            </ul>
+
+            <h3 class="subsection-title">Nguyên lý vật lý của dòng máu</h3>
+            <p>
+              <strong>Vận tốc và Lưu lượng:</strong> Vận tốc (v) tỷ lệ thuận với lưu lượng (Q) và tỷ lệ nghịch với thiết diện cắt ngang (A): v = Q/A. Vận tốc máu chậm nhất ở mao mạch (tổng thiết diện lớn nhất), thuận lợi trao đổi chất.<br>
+              <strong>Lực cản và Định luật Poiseuille:</strong> Lưu lượng Q = ΔP/R. Theo định luật Poiseuille, kháng lực R = 8ηl / πr⁴. Bán kính (r) đóng vai trò quan trọng nhất vì sức cản tỷ lệ nghịch với lũy thừa bậc 4 của bán kính.<br>
+              <strong>Dòng chảy tầng và dòng chảy xoáy:</strong> Máu bình thường chảy thành tầng (laminar flow). Nếu vận tốc quá nhanh, mạch máu bị hẹp, dòng chảy hỗn loạn (turbulent flow), tạo ra âm thanh (tiếng thổi).
+            </p>
+
+            <div class="image-placeholder-card">
+              <div class="image-title">
+                <span>🖼️</span> Hình 1: Vận tốc dòng chảy phụ thuộc vào thiết diện cắt ngang
+              </div>
+              <div class="image-drop-area">
+                <div class="image-drop-text">
+                  <img src="../../images/Phan4/Velocity_CrossSection.png" alt="Vận tốc và thiết diện cắt ngang"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                    <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                    <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh minh họa đang được cập nhật</p>
+                  </div>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Mô tả:</strong> Ống dẫn có thiết diện thay đổi (A). Nơi thiết diện rộng (mao mạch), vận tốc dòng chảy (v) giảm thấp nhất, dù lưu lượng (Q) không đổi.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần 2 -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần II: Huyết áp động mạch</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p>Huyết áp là lực của máu tác động lên một đơn vị diện tích thành mạch. Dòng máu trong động mạch có tính chất mạch đập (pulsatile).</p>
+            <ul class="physio-list-arrow">
+              <li><strong>Huyết áp tâm thu (Systolic pressure):</strong> Là áp suất cao nhất trong mạch, đo được ngay sau khi tâm thất co bóp tống máu vào động mạch. Bình thường khoảng 120 mmHg.</li>
+              <li><strong>Huyết áp tâm trương (Diastolic pressure):</strong> Là áp suất thấp nhất, ghi nhận lúc tim giãn và máu đang trở về tim. Bình thường khoảng 80 mmHg.</li>
+              <li><strong>Hiệu áp (Pulse pressure):</strong> Là hiệu số giữa HA tâm thu và HA tâm trương, phản ánh thể tích nhát bóp và độ giãn nở của động mạch.</li>
+              <li><strong>Huyết áp trung bình (Mean Arterial Pressure - MAP):</strong> Là áp suất tạo ra dòng máu chảy liên tục. Tính xấp xỉ: MAP = HA tâm trương + 1/3 (Hiệu áp).</li>
+            </ul>
+
+            <div class="image-placeholder-card">
+              <div class="image-title">
+                <span>🖼️</span> Hình 2: Áp suất động mạch trong chu kỳ tim
+              </div>
+              <div class="image-drop-area">
+                <div class="image-drop-text">
+                  <img src="../../images/Phan4/Arterial_pressure_cardiac_cycle.png" alt="Áp suất động mạch theo thời gian"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                    <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                    <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh minh họa đang được cập nhật</p>
+                  </div>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Mô tả:</strong> Đồ thị biểu diễn áp suất động mạch theo thời gian. Mức áp suất đạt đỉnh là huyết áp tâm thu, mức thấp nhất là huyết áp tâm trương. Khoảng cách giữa 2 mức này là Hiệu áp, và đường nét đứt biểu diễn Huyết áp trung bình.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần 3 -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần III: Vi tuần hoàn và sự trao đổi tại mao mạch (Starling Forces)</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p>Quá trình trao đổi chất và dịch tại mao mạch được chi phối bởi các lực Starling. Dòng dịch di chuyển qua màng mao mạch được tính bằng công thức:<br>
+            <strong>Jv = Kf [(Pc - Pi) - σ(πc - πi)]</strong></p>
+
+            <ul class="physio-list-arrow">
+              <li><strong>Pc (Áp suất thủy tĩnh mao mạch):</strong> Lực đẩy dịch từ lòng mạch ra mô kẽ. Ở đầu động mạch cao nên lọc ra; ở đầu tĩnh mạch giảm nên dịch hấp thu lại.</li>
+              <li><strong>Pi (Áp suất thủy tĩnh mô kẽ):</strong> Đối kháng lại quá trình lọc.</li>
+              <li><strong>πc (Áp suất keo mao mạch):</strong> Tạo ra bởi protein huyết tương (Albumin), là lực hút nước từ mô kẽ trở lại lòng mạch.</li>
+              <li><strong>πi (Áp suất keo mô kẽ):</strong> Thường rất nhỏ do ít protein ra mô kẽ.</li>
+            </ul>
+
+            <p>Hệ thống mạch bạch huyết (Lymphatic system) hút dịch dư thừa và protein từ mô kẽ trả về tĩnh mạch, ngăn phù nề (edema).</p>
+
+            <div class="image-placeholder-card">
+              <div class="image-title">
+                <span>🖼️</span> Hình 3: Lực Starling qua thành mao mạch
+              </div>
+              <div class="image-drop-area">
+                <div class="image-drop-text">
+                  <img src="../../images/Phan4/Starling_forces.png" alt="Lực Starling"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                    <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                    <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh minh họa đang được cập nhật</p>
+                  </div>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Mô tả:</strong> Sơ đồ 4 lực Starling quyết định sự dịch chuyển chất lỏng. Pc và πi mang dấu (+) ưu tiên đẩy dịch ra (Filtration). Pi và πc mang dấu (-) ưu tiên kéo dịch vào (Absorption).
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần 4 & 5 -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần IV: Tuần hoàn tĩnh mạch & Điều hòa lưu lượng máu tại chỗ</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <h3 class="subsection-title">1. Lực đẩy máu về tim từ tĩnh mạch</h3>
+            <p>Tĩnh mạch chứa 64-70% lượng máu. Áp suất tĩnh mạch rất thấp, máu trở về tim nhờ:</p>
+            <ul class="physio-list-arrow">
+              <li><strong>Bơm cơ xương (Muscle pump):</strong> Cơ vân bao quanh tĩnh mạch ép vào thành mạch, đẩy máu về tim.</li>
+              <li><strong>Van tĩnh mạch:</strong> Đảm bảo máu chảy một chiều, ngăn trào ngược do trọng lực.</li>
+              <li><strong>Bơm hô hấp (Thoracic pump):</strong> Hít vào làm áp suất lồng ngực giảm tạo lực hút máu về tim.</li>
+              <li><strong>Lực hút từ tim:</strong> Kỳ tâm trương, áp suất buồng tim giảm hút máu về.</li>
+            </ul>
+
+            <h3 class="subsection-title">2. Điều hòa lưu lượng máu tại chỗ (Local Control)</h3>
+            <ul class="physio-list-arrow">
+              <li><strong>Thuyết cơ học (Myogenic hypothesis):</strong> Cơ trơn mạch tự động co lại khi áp suất tưới máu tăng (Autoregulation) để duy trì lưu lượng ổn định.</li>
+              <li><strong>Thuyết chuyển hóa (Metabolic hypothesis):</strong> Mô hoạt động tiết chất chuyển hóa (H+, CO2, K+, acid lactic, Adenosine) làm giãn mạch (xung huyết động - Active hyperemia).</li>
+              <li><strong>Vai trò tế bào nội mô:</strong> Sản xuất Nitric Oxide (NO), Prostacyclin (giãn mạch) và Endothelin-1, Thromboxane A2 (co mạch).</li>
+            </ul>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần 6 -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần V: Cơ chế điều hòa huyết áp hệ thống</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <h3 class="subsection-title">1. Điều hòa ngắn hạn (Phản xạ thần kinh)</h3>
+            <p>Giúp điều chỉnh huyết áp nhanh chóng (từng giây, từng phút):</p>
+            <ul class="physio-list-arrow">
+              <li><strong>Phản xạ Baroreceptor:</strong> Thụ thể áp suất ở xoang cảnh và quai động mạch chủ. Khi huyết áp giảm &rarr; giảm xung động về hành não &rarr; Tăng giao cảm, giảm phó giao cảm &rarr; Tăng nhịp tim, co mạch ngoại biên (tăng TPR), co tĩnh mạch đẩy máu về tim.</li>
+              <li><strong>Phản xạ Chemoreceptor:</strong> Nhạy cảm với giảm PO2, tăng PCO2 và H+. Kích thích gây co mạch mạnh khi huyết áp giảm trầm trọng.</li>
+              <li><strong>Phản ứng thiếu máu não cục bộ:</strong> Khi huyết áp < 60 mmHg, trung tâm vận mạch bị kích thích tột độ bởi CO2, gây co mạch giao cảm tối đa toàn thân ("phòng thủ cuối cùng").</li>
+            </ul>
+
+            <div class="image-placeholder-card">
+              <div class="image-title">
+                <span>🖼️</span> Hình 4: Cơ chế phản xạ Baroreceptor khi xuất huyết cấp tính
+              </div>
+              <div class="image-drop-area">
+                <div class="image-drop-text">
+                  <img src="../../images/Phan4/Baroreceptor_hemorrhage.png" alt="Phản xạ Baroreceptor"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                    <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                    <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh minh họa đang được cập nhật</p>
+                  </div>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Mô tả:</strong> Mất máu làm giảm huyết áp &rarr; giảm tần số phóng điện &rarr; tăng giao cảm &rarr; Huyết áp tăng trở lại bình thường.
+              </div>
+            </div>
+
+            <h3 class="subsection-title">2. Điều hòa dài hạn (Nội tiết - Thận)</h3>
+            <ul class="physio-list-arrow">
+              <li><strong>Hệ Renin-Angiotensin-Aldosterone (RAAS):</strong> Giảm huyết áp &rarr; Thận tiết Renin &rarr; Tạo Angiotensin I &rarr; ACE chuyển thành Angiotensin II (co mạch cực mạnh). Angiotensin II kích thích vỏ thượng thận tiết Aldosterone giúp ống lượn xa tái hấp thu Na+ và nước, phục hồi thể tích máu.</li>
+              <li><strong>Peptide lợi niệu tâm nhĩ (ANP):</strong> Khi buồng tâm nhĩ căng giãn do thể tích máu lớn, cơ nhĩ tiết ANP làm giãn mạch, tăng bài tiết Na+ và nước ở thận, hạ huyết áp.</li>
+            </ul>
+
+            <div class="image-placeholder-card">
+              <div class="image-title">
+                <span>🖼️</span> Hình 5: Hệ Renin-Angiotensin-Aldosterone đáp ứng xuất huyết
+              </div>
+              <div class="image-drop-area">
+                <div class="image-drop-text">
+                  <img src="../../images/Phan4/RAAS_hemorrhage.png" alt="Hệ RAAS"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                    <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                    <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh minh họa đang được cập nhật</p>
+                  </div>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Mô tả:</strong> Giảm áp lực tưới máu thận &rarr; Tăng Renin &rarr; Angiotensin II &rarr; Tăng Aldosterone, kích thích khát, co mạch &rarr; Đưa huyết áp trung bình về bình thường.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần cuối: Tài liệu tham khảo -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Tài liệu tham khảo</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <ol style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin-left: 1.5rem;">
+              <li>Đặng Huỳnh Anh Thư. <em>Sinh lý HỆ MẠCH</em>. Đại học Y Dược TP.HCM; 2025.</li>
+              <li>Costanzo LS. <em>Physiology</em>. 6th ed. LWW; 2018.</li>
+              <li>Koeppen BM, Stanton BA. <em>Berne and Levy Physiology</em>. 8th ed. Elsevier.</li>
+              <li>Hall JE. <em>Guyton and Hall Textbook of Medical Physiology</em>. 13th ed. Elsevier; 2016.</li>
+              <li>Barrett KE, Barman SM, Boitano S, Brooks HL. <em>Ganong's Review of Medical Physiology</em>. 24th ed. McGraw-Hill.</li>
+              <li>Despopoulos A, Silbernagl S. <em>Color Atlas of Physiology</em>. Thieme.</li>
+            </ol>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Nạp Footer động -->
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+  <!-- Script điều khiển chung -->
+  <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>

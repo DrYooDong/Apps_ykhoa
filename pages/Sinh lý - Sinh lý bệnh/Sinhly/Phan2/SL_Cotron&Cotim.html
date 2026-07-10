@@ -2,137 +2,267 @@
 <html lang="vi" data-theme="light">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chương 5: Đông - Cầm máu & Sinh lý bệnh nâng cao</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="../../../../css/reset.css">
-  <link rel="stylesheet" href="../../../../css/main.css">
-  <link rel="stylesheet" href="../../../../css/components/header.css">
-  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
-  <link rel="stylesheet" href="../../../../css/components/footer.css">
-  <link rel="stylesheet" href="../../../../css/components/physio-patho.css">
-  <script src="../../../../components/footer.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Sinh lý cơ tim và cơ trơn: cấu trúc hợp bào, điện thế động (pha bình nguyên), cặp đôi hưng phấn - co cơ (CICR) và cơ chế chốt (Latch mechanism).">
+    <title>Sinh lý Cơ tim & Cơ trơn – CliniPortal</title>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS Core CliniPortal -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+    <!-- CSS chuyên biệt Sinh lý & TOC -->
+    <link rel="stylesheet" href="../../../../css/components/physio-patho.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+    <!-- Scripts điều hướng & xử lý tương tác động -->
+    <script src="../../../../js/toc.js" defer></script>
+    <script src="../../../../components/header.js"></script>
+    <script src="../../../../components/footer.js"></script>
+    <script src="../../js/physio-shared.js" defer></script>
+    <script src="../../../../js/main.js" defer></script>
 </head>
 
 <body>
-  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
-  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <!-- Nạp Header động -->
+    <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-  <div class="app-container">
-        <!-- SIDEBAR -->
-    <aside class="app-sidebar" id="appSidebar">
-      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
-        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
-          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
-          <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
-      </button>
+    <div class="app-container">
+        <!-- SIDEBAR HỆ THỐNG -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
 
-      <nav class="sidebar-nav" aria-label="Điều hướng chính">
-        <ul class="nav-list" role="list">
-          <li>
-            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
-              <span class="nav-icon">🏠</span>
-              <span class="nav-text">Trang chủ</span>
-            </a>
-          </li>
-          <li>
-            <a href="../../Sinhly-sinhlybenh.html" class="nav-item active" aria-current="page" title="S.lý - S.lý bệnh">
-              <span class="nav-icon">🧬</span>
-              <span class="nav-text">S.lý - S.lý bệnh</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </aside>
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh">
+                            <span class="nav-icon">🧬</span>
+                            <span class="nav-text">Sinh lý</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
 
-    <div class="main-wrapper" id="mainContent">
-      <nav aria-label="Breadcrumb" class="breadcrumb-container"
-        style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
-        <ol class="breadcrumb-list"
-          style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
-          <li><a href="../../../../index.html">🏠 Home</a> &gt;</li>
-          <li><a href="../../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
-          <li style="color:var(--color-primary); font-weight:600;">Chương 5</li>
-        </ol>
-      </nav>
+        <!-- KHUNG CHỨA NỘI DUNG CHÍNH -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container"
+                style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+                <ol class="breadcrumb-list"
+                    style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+                    <li><a href="../../../../index.html">🏠 Home</a> &gt;</li>
+                    <li><a href="../../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+                    <li style="color:var(--color-primary); font-weight:600;">Bài: Sinh lý Cơ tim & Cơ trơn</li>
+                </ol>
+            </nav>
 
-      <main class="visual-container">
-        <div class="chapter-header">
-          <h1>Chương 5: Đông - Cầm máu & Sinh lý bệnh nâng cao</h1>
-          <p>Phần 2: Lưu biến học, Miễn dịch và Cấp cứu Hệ máu</p>
+            <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+            <main class="visual-container">
+                <!-- Chapter Header -->
+                <div class="chapter-header">
+                    <h1>Sinh lý Cơ tim & Cơ trơn</h1>
+                    <p>Khám phá cấu trúc hợp bào, điện thế động pha bình nguyên của cơ tim, cơ chế CICR và quá trình co cơ độc đáo qua Calmodulin của cơ trơn.</p>
+                </div>
+
+                <!-- Phần 1 -->
+                <div class="physio-content">
+                    <h2 class="section-title">
+                        <span>Phần I: Sinh lý Cơ tim (Cardiac Muscle)</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 class="subsection-title">1. Đặc điểm Cấu trúc và Tính Hợp bào</h3>
+                        <p>Cơ tim có vân (sarcomere) nhưng tế bào phân nhánh, nối kết bằng đĩa xen kẽ (intercalated discs). Các liên kết khe (gap junctions) tại đây có điện trở thấp giúp lan truyền điện thế cực nhanh, biến khối cơ thành một <strong>hợp bào (syncytium)</strong> duy nhất.</p>
+
+                        <h3 class="subsection-title">2. Điện thế động Cơ tim</h3>
+                        <p>Kéo dài (200-400 ms), gồm 5 pha khác biệt với cơ vân:</p>
+                        <ol class="physio-steps">
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">Pha 0 & Pha 1</span>
+                                    <strong>Khử cực nhanh:</strong> Mở kênh Na+ nhanh. Sau đó <strong>Tái cực sớm (Pha 1):</strong> Đóng Na+, mở K+.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">Pha 2 (Bình nguyên)</span>
+                                    Mở chậm kênh <strong>Ca2+ loại L (L-type)</strong>. Ca2+ đi vào cân bằng với K+ đi ra, kéo dài khử cực và tạo thời kỳ trơ dài, chống hiện tượng co cứng (tetanus).
+                                </div>
+                            </li>
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">Pha 3 & Pha 4</span>
+                                    <strong>Tái cực nhanh:</strong> Kênh Ca2+ đóng, kênh K+ mở rộng. Sau đó duy trì <strong>Điện thế nghỉ (Pha 4)</strong> ở -90 mV.
+                                </div>
+                            </li>
+                        </ol>
+
+                        <h3 class="subsection-title">3. Cặp đôi Hưng phấn - Co cơ (CICR)</h3>
+                        <p>Ở cơ tim, nguồn Canxi ngoại bào rất quan trọng. Điện thế màng làm mở kênh Ca2+ (L-type), một lượng nhỏ Ca2+ vào bào tương sẽ gắn thụ thể RyR2 trên lưới nội cơ tương (SR). Điều này kích hoạt SR giải phóng ồ ạt Ca2+. Cơ chế này gọi là <strong>Canxi kích thích giải phóng Canxi (CICR)</strong>.</p>
+
+                        <div class="image-placeholder-card">
+                            <div class="image-title">
+                                <span>🖼️</span> Hình 1: Cơ chế Co - Giãn ở Cơ tim
+                            </div>
+                            <div class="image-drop-area">
+                                <div class="image-drop-text">
+                                    <img src="../../images/Phan2/Cardiac_Excitation_Contraction.png" alt="Co cơ tim"
+                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                                        <i class="fa-regular fa-image"
+                                            style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                                        <p
+                                            style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">
+                                            Hình ảnh minh họa đang được cập nhật</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="image-description">
+                                <strong>Mô tả:</strong> Ca2+ vào từ ống T kích hoạt giải phóng Ca2+ từ SR. Sau khi co cơ (gắn Troponin C), Ca2+ được thu hồi vào SR bởi SERCA2 và bơm ra ngoài qua kênh NCX.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- Phần 2 -->
+                <div class="physio-content">
+                    <h2 class="section-title">
+                        <span>Phần II: Sinh lý Cơ trơn (Smooth Muscle)</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 class="subsection-title">1. Đặc điểm Cấu trúc</h3>
+                        <p>Không có vân ngang (không có sarcomere). Actin và myosin đan chéo bám vào các <strong>thể đặc (dense bodies)</strong>. Chia làm 2 loại:</p>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Cơ trơn một đơn vị (Unitary):</strong> Co đồng bộ như hợp bào (nhờ gap junctions). Tìm thấy ở ruột, tử cung, bàng quang. Có sóng chậm tự động.</li>
+                            <li><strong>Cơ trơn đa đơn vị (Multi-unit):</strong> Sợi cơ độc lập, nhận chi phối thần kinh riêng biệt. Tìm thấy ở mống mắt, cơ dựng lông.</li>
+                        </ul>
+
+                        <h3 class="subsection-title">2. Cơ chế Co cơ trơn (Khác biệt hoàn toàn)</h3>
+                        <p>Cơ trơn <strong>không có Troponin</strong>. Co cơ điều hòa qua Myosin:</p>
+                        <ul class="physio-list-arrow">
+                            <li>Ca2+ nội bào tăng &rarr; gắn kết với <strong>Calmodulin</strong>.</li>
+                            <li>Phức hợp Ca2+-Calmodulin hoạt hóa enzym <strong>MLCK (Myosin Light Chain Kinase)</strong>.</li>
+                            <li>MLCK phosphoryl hóa chuỗi nhẹ của Myosin, cho phép nó gắn vào Actin sinh lực co.</li>
+                        </ul>
+
+                        <div class="clinical-note-box" style="background: var(--color-warning-hl); border-left: 4px solid var(--color-warning); margin-top: 1.5rem;">
+                            <div class="clinical-note-title"
+                                style="font-weight: 700; color: var(--color-warning); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: var(--text-sm);">
+                                💡 SINH LÝ ĐẶC TRƯNG: CƠ CHẾ CHỐT (LATCH MECHANISM)
+                            </div>
+                            <p style="font-size: var(--text-xs); line-height: 1.6; margin: 0; color: var(--color-text-muted);">
+                                Khả năng duy trì lực co trương lực cực lâu với cực ít ATP (1/300 so với cơ vân). Xảy ra khi enzym MLCP khử phosphoryl hóa Myosin <em>ngay lúc nó đang bám Actin</em>, làm tốc độ tách rời chậm lại đáng kể, "chốt" chặt trạng thái co.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- Phần 3 -->
+                <div class="physio-content">
+                    <h2 class="section-title">
+                        <span>Phần III: Bảng So sánh Các loại Cơ</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <div style="overflow-x:auto;">
+                            <table style="width:100%; border-collapse: collapse; margin-top: 1rem; margin-bottom: 1rem; font-size: 0.9rem;">
+                                <thead>
+                                    <tr style="background-color: var(--color-surface); border-bottom: 2px solid var(--color-primary);">
+                                        <th style="padding: 0.75rem; text-align: left;">Đặc điểm</th>
+                                        <th style="padding: 0.75rem; text-align: left;">Cơ Vân</th>
+                                        <th style="padding: 0.75rem; text-align: left;">Cơ Tim</th>
+                                        <th style="padding: 0.75rem; text-align: left;">Cơ Trơn</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid var(--color-border);">
+                                        <td style="padding: 0.75rem; font-weight: 600;">Hình thái</td>
+                                        <td style="padding: 0.75rem;">Có vân, đa nhân</td>
+                                        <td style="padding: 0.75rem;">Có vân, hợp bào</td>
+                                        <td style="padding: 0.75rem;">Không vân</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--color-border);">
+                                        <td style="padding: 0.75rem; font-weight: 600;">Pha khử cực</td>
+                                        <td style="padding: 0.75rem;">Na+ đi vào</td>
+                                        <td style="padding: 0.75rem;">Na+ (thất) hoặc Ca2+ (SA)</td>
+                                        <td style="padding: 0.75rem;">Ca2+ đi vào</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--color-border);">
+                                        <td style="padding: 0.75rem; font-weight: 600;">Thời gian Action Potential</td>
+                                        <td style="padding: 0.75rem;">~ 1 ms</td>
+                                        <td style="padding: 0.75rem;">200 - 300 ms (Bình nguyên)</td>
+                                        <td style="padding: 0.75rem;">~ 10 ms</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 0.75rem; font-weight: 600;">Cơ sở phân tử co cơ</td>
+                                        <td style="padding: 0.75rem;">Ca2+ gắn Troponin C</td>
+                                        <td style="padding: 0.75rem;">Ca2+ gắn Troponin C (CICR)</td>
+                                        <td style="padding: 0.75rem;">Ca2+ gắn Calmodulin (hoạt hóa MLCK)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- Phần cuối: Tài liệu tham khảo -->
+                <div class="physio-content">
+                    <h2 class="section-title">
+                        <span>Tài liệu tham khảo</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <ol
+                            style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin-left: 1.5rem;">
+                            <li>Costanzo LS. <em>Physiology</em>. 6th ed. LWW; 2018.</li>
+                            <li>Hall JE. <em>Guyton and Hall Textbook of Medical Physiology</em>. 13th ed. Elsevier;
+                                2016.</li>
+                        </ol>
+                    </div>
+                </div>
+
+            </main>
         </div>
-
-
-        <!-- Hình 5.1 -->
-        <div class="image-placeholder-card">
-          <div class="image-title">
-            <span style="font-size:1.5rem">🖼️</span> Hình 5.1: Sơ đồ Thác dòng Đông máu huyết tương cổ điển kết hợp mô
-            hình màng tế bào hiện đại
-          </div>
-          <div class="image-drop-area">
-            <div class="image-drop-text">
-              <div class="icon">📥</div>
-              <div>Chèn ảnh hoặc mã iframe vào đây</div>
-              <div style="font-size:0.8rem; margin-top:0.5rem; opacity:0.7;">(Thay thế div này bằng thẻ &lt;img
-                src="..."&gt;)</div>
-            </div>
-          </div>
-          <div class="image-description">
-            <strong>Mô tả:</strong> Bản vẽ các yếu tố đông máu dạng tiền chất chuyển thành dạng hoạt hóa ($a$), phân
-            tách rõ 2 con đường nội/ngoại sinh tụ hội về con đường chung để tạo sợi Fibrin.
-          </div>
-        </div>
-
-        <!-- Hình 5.2 -->
-        <div class="image-placeholder-card">
-          <div class="image-title">
-            <span style="font-size:1.5rem">🖼️</span> Hình 5.2: Sơ đồ hệ thống chống đông tự nhiên và tiêu sợi huyết
-          </div>
-          <div class="image-drop-area">
-            <div class="image-drop-text">
-              <div class="icon">📥</div>
-              <div>Chèn ảnh hoặc mã iframe vào đây</div>
-              <div style="font-size:0.8rem; margin-top:0.5rem; opacity:0.7;">(Thay thế div này bằng thẻ &lt;img
-                src="..."&gt;)</div>
-            </div>
-          </div>
-          <div class="image-description">
-            <strong>Mô tả:</strong> Minh họa vị trí ức chế của Antithrombin III, phức hợp Thrombin-Thrombomodulin kích
-            hoạt Protein C/S, và cơ chế chuyển Plasminogen thành Plasmin để cắt sợi Fibrin.
-          </div>
-        </div>
-
-        <!-- Hình 5.3 -->
-        <div class="image-placeholder-card">
-          <div class="image-title">
-            <span style="font-size:1.5rem">🖼️</span> Hình 5.3: Sơ đồ vi tuần hoàn lâm sàng nâng cao (Dành cho
-            Sepsis/ICU)
-          </div>
-          <div class="image-drop-area">
-            <div class="image-drop-text">
-              <div class="icon">📥</div>
-              <div>Chèn ảnh hoặc mã iframe vào đây</div>
-              <div style="font-size:0.8rem; margin-top:0.5rem; opacity:0.7;">(Thay thế div này bằng thẻ &lt;img
-                src="..."&gt;)</div>
-            </div>
-          </div>
-          <div class="image-description">
-            <strong>Mô tả:</strong> Sơ đồ mô tả hiện tượng giảm độ biến dạng màng hồng cầu (RBC rheology), sự kích hoạt
-            quá mức của tế bào nội mô mạch máu dẫn đến pha tăng đông, hình thành huyết khối vi mạch và rò rỉ dịch mao
-            mạch.
-          </div>
-        </div>
-
-
-      </main>
     </div>
-  </div>
 
-  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+    <!-- Nạp Footer động -->
+    <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+    <!-- Script điều khiển chung -->
+    <script src="../../../../js/sidebar.js"></script>
 </body>
 
 </html>

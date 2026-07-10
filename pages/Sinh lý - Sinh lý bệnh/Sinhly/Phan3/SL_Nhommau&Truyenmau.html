@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sinh lý nhóm máu, hệ thống ABO, hệ Rh, nguyên tắc truyền máu và các tai biến do truyền nhầm nhóm máu.">
+  <title>Nhóm máu & Truyền máu – CliniPortal</title>
+  
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core CliniPortal -->
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  
+  <!-- CSS chuyên biệt Sinh lý & TOC -->
+  <link rel="stylesheet" href="../../../../css/components/physio-patho.css">
+  <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+  <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+  <link rel="stylesheet" href="../../css/physio-shared.css">
+  <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+  <!-- Scripts điều hướng & xử lý tương tác động -->
+  <script src="../../../../js/toc.js" defer></script>
+  <script src="../../../../components/header.js"></script>
+  <script src="../../../../components/footer.js"></script>
+  <script src="../../js/physio-shared.js" defer></script>
+  <script src="../../../../js/main.js" defer></script>
+</head>
+
+<body>
+  <!-- Nạp Header động -->
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR HỆ THỐNG -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh">
+              <span class="nav-icon">🧬</span>
+              <span class="nav-text">Sinh lý</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- KHUNG CHỨA NỘI DUNG CHÍNH -->
+    <div class="main-wrapper" id="mainContent">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container" style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+        <ol class="breadcrumb-list" style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+          <li><a href="../../../../index.html">🏠 Home</a> &gt;</li>
+          <li><a href="../../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+          <li style="color:var(--color-primary); font-weight:600;">Bài: Nhóm máu & Truyền máu</li>
+        </ol>
+      </nav>
+
+      <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+      <main class="visual-container">
+        <!-- Chapter Header -->
+        <div class="chapter-header">
+          <h1>Nhóm máu & Truyền máu</h1>
+          <p>Tìm hiểu cơ chế di truyền, bản chất kháng nguyên hệ ABO và Rh, cùng các nguyên tắc an toàn trong thực hành truyền máu.</p>
+        </div>
+
+        <!-- Phần 1 -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần I: Hệ thống nhóm máu ABO</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <h3 class="subsection-title">1. Đại cương về Nhóm máu</h3>
+            <p>Màng tế bào hồng cầu chứa nhiều loại kháng nguyên (antigen) hay ngưng kết nguyên (agglutinogen). Sự hiện diện hay vắng mặt của các kháng nguyên này quyết định nhóm máu. Hai hệ thống nhóm máu quan trọng nhất trong lâm sàng là hệ ABO và hệ Rh.</p>
+
+            <h3 class="subsection-title">2. Đặc điểm hệ ABO</h3>
+            <p><strong>Bản chất kháng nguyên:</strong> Kháng nguyên hệ ABO là các phân tử đường oligosaccharide.</p>
+            <ul class="physio-list-arrow">
+              <li>Kháng nguyên H (nền tảng): Được tạo bởi enzyme fucose transferase gắn một phân tử fucose ở tận cùng.</li>
+              <li><strong>Kháng nguyên A:</strong> Có thêm enzyme gắn N-acetylgalactosamine vào kháng nguyên H.</li>
+              <li><strong>Kháng nguyên B:</strong> Có enzyme gắn galactose vào kháng nguyên H.</li>
+              <li>Nhóm O không có hai enzyme trên nên chỉ có kháng nguyên H.</li>
+            </ul>
+
+            <div class="image-placeholder-card">
+              <div class="image-title">
+                <span>🖼️</span> Hình 1: Cấu trúc phân tử kháng nguyên ABO
+              </div>
+              <div class="image-drop-area">
+                <div class="image-drop-text">
+                  <img src="../../images/Phan3/ABO_Antigens_Structure.png" alt="Cấu trúc kháng nguyên ABO"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                    <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                    <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh minh họa đang được cập nhật</p>
+                  </div>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Mô tả:</strong> Sơ đồ mô tả cấu trúc chuỗi phân tử đường tạo nên kháng nguyên ABO. Tất cả đều kết nối với lớp màng lipid. Kháng nguyên O (H) có gốc fucose. Kháng nguyên A có thêm N-acetylgalactosamine. Kháng nguyên B có thêm galactose.
+              </div>
+            </div>
+
+            <p><strong>Phân loại và Di truyền học (Alen I<sup>A</sup>, I<sup>B</sup>, I<sup>O</sup>):</strong></p>
+            <div style="overflow-x:auto;">
+              <table style="width:100%; border-collapse: collapse; margin-top: 1rem; margin-bottom: 1rem; font-size: 0.9rem;">
+                <thead>
+                  <tr style="background-color: var(--color-surface); border-bottom: 2px solid var(--color-primary);">
+                    <th style="padding: 0.75rem; text-align: left;">Kiểu gen</th>
+                    <th style="padding: 0.75rem; text-align: left;">Nhóm máu</th>
+                    <th style="padding: 0.75rem; text-align: left;">Kháng nguyên (Hồng cầu)</th>
+                    <th style="padding: 0.75rem; text-align: left;">Kháng thể (Huyết tương)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom: 1px solid var(--color-border);">
+                    <td style="padding: 0.75rem;">OO</td>
+                    <td style="padding: 0.75rem; font-weight: 600;">O</td>
+                    <td style="padding: 0.75rem;">Không có (chỉ có H)</td>
+                    <td style="padding: 0.75rem; color: var(--color-danger);">Anti-A & Anti-B</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--color-border);">
+                    <td style="padding: 0.75rem;">OA, AA</td>
+                    <td style="padding: 0.75rem; font-weight: 600;">A</td>
+                    <td style="padding: 0.75rem;">A</td>
+                    <td style="padding: 0.75rem; color: var(--color-danger);">Anti-B</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--color-border);">
+                    <td style="padding: 0.75rem;">OB, BB</td>
+                    <td style="padding: 0.75rem; font-weight: 600;">B</td>
+                    <td style="padding: 0.75rem;">B</td>
+                    <td style="padding: 0.75rem; color: var(--color-danger);">Anti-A</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 0.75rem;">AB</td>
+                    <td style="padding: 0.75rem; font-weight: 600;">AB</td>
+                    <td style="padding: 0.75rem;">A và B</td>
+                    <td style="padding: 0.75rem; color: var(--color-success);">Không có</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="clinical-note-box" style="background: var(--color-info-hl); border-left: 4px solid var(--color-info);">
+              <div class="clinical-note-title" style="font-weight: 700; color: var(--color-info); margin-bottom: 0.5rem;">
+                💡 KIẾN THỨC BỔ SUNG: NHÓM MÁU O BOMBAY
+              </div>
+              <p style="font-size: var(--text-xs); line-height: 1.6; margin: 0; color: var(--color-text-muted);">
+                Người mang nhóm máu O Bombay có kiểu gen đồng hợp tử lặn (hh), không tổng hợp được kháng nguyên H. Hậu quả là trên hồng cầu không có kháng nguyên A, B hay H, nhưng trong huyết tương lại có Anti-A, Anti-B và Anti-H. Họ chỉ có thể nhận máu từ người nhóm O Bombay khác; nếu truyền máu nhóm O bình thường, kháng thể Anti-H sẽ gây tán huyết.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần 2 -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần II: Hệ thống nhóm máu Rh</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <p><strong>Bản chất kháng nguyên:</strong> Hệ Rh là các phân tử protein xuyên màng. Kháng nguyên D có tính sinh miễn dịch mạnh nhất.</p>
+            <ul class="physio-list-arrow">
+              <li>Người có kháng nguyên D là <strong>Rh dương tính (Rh+)</strong>. (85% người da trắng, gần 100% người châu Á).</li>
+              <li>Người không có kháng nguyên D là <strong>Rh âm tính (Rh-)</strong>.</li>
+            </ul>
+
+            <p><strong>Kháng thể Anti-D:</strong> Khác với hệ ABO, kháng thể anti-D (IgG) không có sẵn tự nhiên. Nó chỉ được tạo ra khi người Rh- tiếp xúc với hồng cầu mang kháng nguyên D (truyền nhầm máu hoặc mang thai).</p>
+
+            <div class="clinical-note-box" style="background: var(--color-warning-hl); border-left: 4px solid var(--color-warning); margin-top: 1.5rem;">
+              <div class="clinical-note-title" style="font-weight: 700; color: var(--color-warning); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: var(--text-sm);">
+                ⚠️ BỆNH LÝ LÂM SÀNG: BẤT ĐỒNG NHÓM MÁU MẸ - CON (ERYTHROBLASTOSIS FETALIS)
+              </div>
+              <p style="font-size: var(--text-xs); line-height: 1.6; margin: 0; color: var(--color-text-muted);">
+                Xảy ra khi người mẹ Rh- mang thai đứa trẻ Rh+.<br><br>
+                - Ở lần thai đầu, thai nhi thường an toàn. Khi sinh, máu thai lọt vào tuần hoàn mẹ kích thích tạo kháng thể anti-D.<br>
+                - Ở các lần thai Rh+ tiếp theo, kháng thể anti-D (IgG) của mẹ đi qua nhau thai, tấn công hồng cầu thai nhi, gây tan máu ở trẻ sơ sinh, thiếu máu nặng, vàng da nhân não (kernicterus).<br><br>
+                <strong>Phòng ngừa:</strong> Tiêm Anti-D (Rh immune globulin) cho mẹ Rh- ở tuần thai 28-30 và ngay sau sinh để dọn sạch hồng cầu Rh+ của thai lọt sang.
+              </p>
+            </div>
+
+            <div class="image-placeholder-card" style="margin-top: 1.5rem;">
+              <div class="image-title">
+                <span>🖼️</span> Hình 2: Quá trình mẫn cảm hệ Rh khi mang thai
+              </div>
+              <div class="image-drop-area">
+                <div class="image-drop-text">
+                  <img src="../../images/Phan3/Rh_Sensitization.png" alt="Mẫn cảm Rh"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                    <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                    <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh minh họa đang được cập nhật</p>
+                  </div>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Mô tả:</strong> Khi người mẹ Rh- mang thai con Rh+ đầu tiên, kháng nguyên D xâm nhập máu mẹ kích thích tạo kháng thể Anti-D. Ở những đứa con Rh+ tiếp theo, Anti-D tấn công sang hồng cầu thai nhi gây vỡ hồng cầu.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần 3 -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Phần III: Định nhóm máu & Nguyên tắc truyền máu</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <h3 class="subsection-title">1. Nguyên tắc Truyền máu</h3>
+            <p>Nguyên tắc quan trọng nhất: <strong>Hồng cầu của người cho không được bị ngưng kết bởi kháng thể trong huyết tương của người nhận.</strong></p>
+            
+            <div class="physio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+              <div class="physio-grid-card" style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-primary);">
+                <div class="physio-grid-title" style="font-weight: 700; color: var(--color-primary); font-size: var(--text-sm); margin-bottom: 0.5rem;">
+                  🩸 Người cho và Nhận phổ quát
+                </div>
+                <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                  - <strong>Nhóm O:</strong> Người cho phổ quát (do không có kháng nguyên A, B trên màng).<br>
+                  - <strong>Nhóm AB:</strong> Người nhận phổ quát (do không có kháng thể trong huyết tương).<br>
+                  - <strong>Hệ Rh:</strong> Người Rh- cho được Rh+, nhưng tuyệt đối không truyền máu Rh+ cho người Rh-.
+                </p>
+              </div>
+              
+              <div class="physio-grid-card" style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-danger);">
+                <div class="physio-grid-title" style="font-weight: 700; color: var(--color-danger); font-size: var(--text-sm); margin-bottom: 0.5rem;">
+                  ⚠️ Phản ứng chéo (Cross-matching)
+                </div>
+                <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                  Trong mọi trường hợp, trước khi truyền máu bắt buộc phải thực hiện phản ứng chéo tại giường bệnh: Trộn hồng cầu người cho với huyết tương người nhận để kiểm tra hiện tượng ngưng kết.
+                </p>
+              </div>
+            </div>
+
+            <h3 class="subsection-title">2. Tai biến do truyền nhầm nhóm máu (Transfusion Reactions)</h3>
+            <p>Khi truyền sai nhóm máu, kháng thể sẽ gắn vào hồng cầu tạo các cụm ngưng kết làm tắc nghẽn mạch máu nhỏ. Sau đó hồng cầu bị phá hủy (tán huyết). Hậu quả nghiêm trọng bao gồm:</p>
+            <ul class="physio-list-arrow">
+              <li><strong>Vàng da:</strong> Do hemoglobin bị chuyển hóa thành bilirubin.</li>
+              <li><strong>Suy thận cấp:</strong> Biến chứng nguy hiểm nhất do: (1) Phản ứng co thắt mạch thận; (2) Sốc tuần hoàn hạ huyết áp; (3) Hemoglobin tự do kết tủa và làm tắc nghẽn hoàn toàn ống thận.</li>
+            </ul>
+
+            <div class="image-placeholder-card">
+              <div class="image-title">
+                <span>🖼️</span> Hình 3: Bất tương hợp nhóm máu ABO
+              </div>
+              <div class="image-drop-area">
+                <div class="image-drop-text">
+                  <img src="../../images/Phan3/ABO_Incompatibility.png" alt="Bất tương hợp ABO"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                    <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                    <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Hình ảnh minh họa đang được cập nhật</p>
+                  </div>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Mô tả:</strong> Kháng nguyên trên bề mặt hồng cầu phản ứng với các kháng thể trong huyết thanh tạo ra hiện tượng ngưng kết (Agglutination), kéo theo sau là hiện tượng vỡ hồng cầu (Hemolysis).
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Phần cuối: Tài liệu tham khảo -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>Tài liệu tham khảo</span>
+          </h2>
+
+          <div class="physio-text-block">
+            <ol style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin-left: 1.5rem;">
+              <li>Koeppen BM, Stanton BA. <em>Berne and Levy Physiology</em>. 8th ed. Elsevier.</li>
+              <li>Hall JE. <em>Guyton and Hall Textbook of Medical Physiology</em>. 13th ed. Elsevier; 2016.</li>
+              <li>Mai Phương Thảo. <em>Sinh lý MÁU P1 & P2 YDS 2025</em>. Đại học Y Dược TP.HCM.</li>
+              <li>Silbernagl S, Despopoulos A. <em>Color Atlas of Physiology</em>. 6th ed. Thieme.</li>
+            </ol>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Nạp Footer động -->
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+  <!-- Script điều khiển chung -->
+  <script src="../../../../js/sidebar.js"></script>
+</body>
+
+</html>

@@ -1,122 +1,256 @@
 <!DOCTYPE html>
 <html lang="vi" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chương 6: Sinh lý học Tim mạch & Huyết động</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description"
+        content="Đại cương về máu và huyết tương: thành phần tế bào hữu hình, dung tích hồng cầu (Hematocrit), protein huyết tương (Albumin, Globulin, Fibrinogen) và chức năng tạo áp suất keo.">
+    <title>Đại cương Máu & Huyết tương – CliniPortal</title>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS Core CliniPortal -->
     <link rel="stylesheet" href="../../../../css/reset.css">
     <link rel="stylesheet" href="../../../../css/main.css">
     <link rel="stylesheet" href="../../../../css/components/header.css">
     <link rel="stylesheet" href="../../../../css/components/sidebar.css">
     <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+    <!-- CSS chuyên biệt Sinh lý & TOC -->
     <link rel="stylesheet" href="../../../../css/components/physio-patho.css">
-  <script src="../../../../components/footer.js" defer></script>
+    <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+    <!-- Scripts điều hướng & xử lý tương tác động -->
+    <script src="../../../../js/toc.js" defer></script>
+    <script src="../../../../components/header.js"></script>
+    <script src="../../../../components/footer.js"></script>
+    <script src="../../js/physio-shared.js" defer></script>
+    <script src="../../../../js/main.js" defer></script>
 </head>
+
 <body>
+    <!-- Nạp Header động -->
     <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
     <div class="app-container">
-            <!-- SIDEBAR -->
-    <aside class="app-sidebar" id="appSidebar">
-      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
-        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
-          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
-          <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
-      </button>
+        <!-- SIDEBAR HỆ THỐNG -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
 
-      <nav class="sidebar-nav" aria-label="Điều hướng chính">
-        <ul class="nav-list" role="list">
-          <li>
-            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
-              <span class="nav-icon">🏠</span>
-              <span class="nav-text">Trang chủ</span>
-            </a>
-          </li>
-          <li>
-            <a href="../../Sinhly-sinhlybenh.html" class="nav-item active" aria-current="page" title="S.lý - S.lý bệnh">
-              <span class="nav-icon">🧬</span>
-              <span class="nav-text">S.lý - S.lý bệnh</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </aside>
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh">
+                            <span class="nav-icon">🧬</span>
+                            <span class="nav-text">Sinh lý</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
 
+        <!-- KHUNG CHỨA NỘI DUNG CHÍNH -->
         <div class="main-wrapper" id="mainContent">
-            <nav aria-label="Breadcrumb" class="breadcrumb-container" style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
-                <ol class="breadcrumb-list" style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container"
+                style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+                <ol class="breadcrumb-list"
+                    style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
                     <li><a href="../../../../index.html">🏠 Home</a> &gt;</li>
                     <li><a href="../../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
-                    <li style="color:var(--color-primary); font-weight:600;">Chương 6</li>
+                    <li style="color:var(--color-primary); font-weight:600;">Bài: Đại cương Máu & Huyết tương</li>
                 </ol>
             </nav>
 
+            <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
             <main class="visual-container">
+                <!-- Chapter Header -->
                 <div class="chapter-header">
-                    <h1>Chương 6: Sinh lý học Tim mạch & Huyết động</h1>
-                    <p>Phần 3: Huyết động học Tim mạch và Cơ học Hô hấp Nâng cao</p>
+                    <h1>Đại cương Máu & Huyết tương</h1>
+                    <p>Khám phá thành phần của máu, phân biệt huyết tương và huyết thanh, cùng chức năng sinh lý của hệ protein huyết tương (Albumin, Globulin).</p>
                 </div>
 
-                
-                <!-- Hình 6.1 -->
-                <div class="image-placeholder-card">
-                    <div class="image-title">
-                        <span style="font-size:1.5rem">🖼️</span> Hình 6.1: Đồ thị Chu chuyển tim phối hợp (Wiggers Diagram)
-                    </div>
-                    <div class="image-drop-area">
-                        <div class="image-drop-text">
-                            <div class="icon">📥</div>
-                            <div>Chèn ảnh hoặc mã iframe vào đây</div>
-                            <div style="font-size:0.8rem; margin-top:0.5rem; opacity:0.7;">(Thay thế div này bằng thẻ &lt;img src="..."&gt;)</div>
+                <!-- Phần 1 -->
+                <div class="physio-content">
+                    <h2 class="section-title">
+                        <span>Phần I: Tổng quan về Máu và Tế bào</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 class="subsection-title">1. Cấu trúc chung</h3>
+                        <p>Máu chiếm khoảng 7-8% trọng lượng cơ thể (5-5.6 lít ở nam). Bao gồm:</p>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Huyết tương (Plasma):</strong> Chiếm 55-60%, là dịch giàu protein.</li>
+                            <li><strong>Thành phần hữu hình:</strong> Chiếm 40-45%, gồm Hồng cầu, Bạch cầu và Tiểu cầu.</li>
+                        </ul>
+                        <p><strong>Hematocrit (Dung tích hồng cầu):</strong> Tỷ lệ thể tích hồng cầu trong máu. Bình thường 40-47% ở nam, 36-42% ở nữ. Rất thấp trong thiếu máu và rất cao trong đa hồng cầu.</p>
+
+                        <h3 class="subsection-title">2. Tế bào máu</h3>
+                        <p>Được tạo ra từ tủy xương ở người trưởng thành:</p>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Hồng cầu:</strong> Không nhân (chứa Hemoglobin), sống 120 ngày.</li>
+                            <li><strong>Bạch cầu:</strong> Miễn dịch (Neutrophils, Eosinophils, Basophils, Lympho, Mono).</li>
+                            <li><strong>Tiểu cầu:</strong> Mảnh vỡ từ megakaryocyte, tham gia cầm máu, sống 8-12 ngày.</li>
+                        </ul>
+
+                        <div style="overflow-x:auto;">
+                            <table style="width:100%; border-collapse: collapse; margin-top: 1rem; margin-bottom: 1rem; font-size: 0.9rem;">
+                                <thead>
+                                    <tr style="background-color: var(--color-surface); border-bottom: 2px solid var(--color-primary);">
+                                        <th style="padding: 0.75rem; text-align: left;">Thành phần</th>
+                                        <th style="padding: 0.75rem; text-align: left;">Số lượng bình thường (/µL)</th>
+                                        <th style="padding: 0.75rem; text-align: left;">Phân loại chính</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid var(--color-border);">
+                                        <td style="padding: 0.75rem; font-weight: 600; color: var(--color-danger);">Hồng cầu</td>
+                                        <td style="padding: 0.75rem;">Nam: 5.4 x 10^6 | Nữ: 4.8 x 10^6</td>
+                                        <td style="padding: 0.75rem;">-</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--color-border);">
+                                        <td style="padding: 0.75rem; font-weight: 600; color: var(--color-primary);">Bạch cầu</td>
+                                        <td style="padding: 0.75rem;">9,000 (4,000 - 11,000)</td>
+                                        <td style="padding: 0.75rem;">Neutrophil (50-70%), Lympho (20-40%)</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 0.75rem; font-weight: 600; color: var(--color-warning);">Tiểu cầu</td>
+                                        <td style="padding: 0.75rem;">300,000 (200,000 - 500,000)</td>
+                                        <td style="padding: 0.75rem;">-</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                    <div class="image-description">
-                        <strong>Mô tả:</strong> Đồ thị kinh điển tích hợp đồng bộ theo thời gian của: Điện tâm đồ (ECG), Áp lực tâm thất/tâm nhĩ/động mạch chủ, Thể tích tâm thất và các tiếng tim.
-                    </div>
                 </div>
 
-                <!-- Hình 6.2 -->
-                <div class="image-placeholder-card">
-                    <div class="image-title">
-                        <span style="font-size:1.5rem">🖼️</span> Hình 6.2: Sơ đồ Vòng lặp Áp lực - Thể tích tâm thất (Pressure-Volume Loop)
-                    </div>
-                    <div class="image-drop-area">
-                        <div class="image-drop-text">
-                            <div class="icon">📥</div>
-                            <div>Chèn ảnh hoặc mã iframe vào đây</div>
-                            <div style="font-size:0.8rem; margin-top:0.5rem; opacity:0.7;">(Thay thế div này bằng thẻ &lt;img src="..."&gt;)</div>
+                <hr class="section-divider">
+
+                <!-- Phần 2 -->
+                <div class="physio-content">
+                    <h2 class="section-title">
+                        <span>Phần II: Huyết tương và Protein Huyết tương</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 class="subsection-title">1. Phân biệt Huyết tương và Huyết thanh</h3>
+                        <p><strong>Huyết tương (Plasma)</strong> chứa đầy đủ các ion (Na+ 142 mmol/L, Cl- 104 mmol/L) và các yếu tố đông máu.</p>
+                        <p><strong>Huyết thanh (Serum)</strong> = Huyết tương - Fibrinogen và các yếu tố đông máu (do đã dùng để tạo cục máu đông). Serum có Serotonin cao hơn do tiểu cầu giải phóng.</p>
+
+                        <h3 class="subsection-title">2. Protein Huyết tương</h3>
+                        <p>Nồng độ 66-85 g/L, phần lớn tổng hợp tại Gan. Phân làm 3 loại chính:</p>
+                        
+                        <div class="physio-grid"
+                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+                            <div class="physio-grid-card"
+                                style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-primary);">
+                                <div class="physio-grid-title"
+                                    style="font-weight: 700; color: var(--color-primary); font-size: var(--text-sm); margin-bottom: 0.5rem;">
+                                    Albumin (60%)
+                                </div>
+                                <p
+                                    style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                                    Đóng vai trò chính tạo <strong>Áp suất keo (Oncotic)</strong> giữ nước trong mạch. Vận chuyển hormone, thuốc, bilirubin. Mất Albumin gây phù nề.
+                                </p>
+                            </div>
+
+                            <div class="physio-grid-card"
+                                style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-success);">
+                                <div class="physio-grid-title"
+                                    style="font-weight: 700; color: var(--color-success); font-size: var(--text-sm); margin-bottom: 0.5rem;">
+                                    Globulins
+                                </div>
+                                <p
+                                    style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                                    <strong>Alpha/Beta:</strong> Từ Gan (vận chuyển Fe, lipid).<br>
+                                    <strong>Gamma (Ig):</strong> Từ tế bào miễn dịch, là kháng thể (IgG, IgA, IgM).
+                                </p>
+                            </div>
+
+                            <div class="physio-grid-card"
+                                style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-warning);">
+                                <div class="physio-grid-title"
+                                    style="font-weight: 700; color: var(--color-warning); font-size: var(--text-sm); margin-bottom: 0.5rem;">
+                                    Fibrinogen
+                                </div>
+                                <p
+                                    style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                                    Do Gan tổng hợp. Tiền chất thiết yếu chuyển hóa thành mạng lưới sợi huyết Fibrin trong quá trình đông máu.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="image-placeholder-card">
+                            <div class="image-title">
+                                <span>🖼️</span> Hình 1: Điện di Protein Huyết tương
+                            </div>
+                            <div class="image-drop-area">
+                                <div class="image-drop-text">
+                                    <img src="../../images/Phan3/Plasma_Proteins_Electrophoresis.png" alt="Điện di protein"
+                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <div class="fallback-placeholder" style="display: none; padding: 2rem;">
+                                        <i class="fa-regular fa-image"
+                                            style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                                        <p
+                                            style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">
+                                            Hình ảnh minh họa đang được cập nhật</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="image-description">
+                                <strong>Mô tả:</strong> Đỉnh lớn nhất là Albumin (60%), tiếp theo là các vùng alpha 1, alpha 2, beta và gamma globulin.
+                            </div>
                         </div>
                     </div>
-                    <div class="image-description">
-                        <strong>Mô tả:</strong> Đồ thị minh họa các pha đầy thất, co cơ đẳng tích, tống máu, và giãn đẳng tích; chỉ rõ sự thay đổi của vòng lặp khi thay đổi Tiền tải (Preload), Hậu tải (Afterload) và Sức co bóp cơ tim (Inotropy).
-                    </div>
                 </div>
 
-                <!-- Hình 6.3 -->
-                <div class="image-placeholder-card">
-                    <div class="image-title">
-                        <span style="font-size:1.5rem">🖼️</span> Hình 6.3: Sơ đồ phản hồi Baroreceptor điều hòa huyết áp
-                    </div>
-                    <div class="image-drop-area">
-                        <div class="image-drop-text">
-                            <div class="icon">📥</div>
-                            <div>Chèn ảnh hoặc mã iframe vào đây</div>
-                            <div style="font-size:0.8rem; margin-top:0.5rem; opacity:0.7;">(Thay thế div này bằng thẻ &lt;img src="..."&gt;)</div>
-                        </div>
-                    </div>
-                    <div class="image-description">
-                        <strong>Mô tả:</strong> Flowchart dạng chuỗi mũi tên nguyên nhân - kết quả khi huyết áp tăng/giảm, thể hiện đường hướng tâm thần kinh IX, X về hành não và đường ly tâm giao cảm/phó giao cảm đến tim và mạch máu.
+                <hr class="section-divider">
+
+                <!-- Phần cuối: Tài liệu tham khảo -->
+                <div class="physio-content">
+                    <h2 class="section-title">
+                        <span>Tài liệu tham khảo</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <ol
+                            style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin-left: 1.5rem;">
+                            <li>Barrett KE, Barman SM, Boitano S, Brooks HL. <em>Ganong's Review of Medical Physiology</em>. 24th ed. McGraw-Hill.</li>
+                            <li>Silbernagl S, Despopoulos A. <em>Color Atlas of Physiology</em>. 6th ed. Thieme.</li>
+                            <li>Hall JE. <em>Guyton and Hall Textbook of Medical Physiology</em>. 13th ed. Elsevier; 2016.</li>
+                        </ol>
                     </div>
                 </div>
-
 
             </main>
         </div>
     </div>
 
-  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+    <!-- Nạp Footer động -->
+    <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+    <!-- Script điều khiển chung -->
+    <script src="../../../../js/sidebar.js"></script>
 </body>
+
 </html>
