@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hướng dẫn phương pháp xác định mục tiêu điều trị, lý luận lựa chọn biện pháp dùng thuốc và không dùng thuốc, cách viết y lệnh cụ thể và thiết lập chế độ theo dõi bệnh nhân.">
+    <title>Lý luận Điều trị Nội khoa – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal -->
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../css/components/footer.css">
+
+    <!-- CSS riêng cho Kỹ năng Lâm sàng -->
+    <link rel="stylesheet" href="../../../css/components/clinical-skill.css">
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../../../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../pages/Kỹ năng/ky-nang.html" class="nav-item active" title="Kỹ năng lâm sàng">
+                            <span class="nav-icon">🩺</span>
+                            <span class="nav-text">Kỹ năng lâm sàng</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <main class="main-wrapper">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container">
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item">
+                        <a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="../../../pages/Kỹ năng/ky-nang.html" class="breadcrumb-link">Kỹ năng lâm sàng</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Lý luận điều trị</li>
+                </ol>
+            </nav>
+
+            <!-- HERO SECTION -->
+            <section class="hero" style="background: linear-gradient(135deg, #6366f1, #4f46e5, #3730a3); color: white; padding: 2rem; border-radius: var(--radius-lg); margin-bottom: 1.5rem;">
+                <h1 style="margin: 0; font-size: var(--text-xl); font-weight: 800; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">LÝ LUẬN ĐIỀU TRỊ NỘI KHOA</h1>
+                <p style="margin: 0.5rem 0 1.25rem; opacity: 0.95; font-size: var(--text-md); line-height: 1.6;">
+                    Phương pháp tư duy logic từ chẩn đoán xác định đến thiết lập mục tiêu điều trị cụ thể, lựa chọn thuốc/can thiệp, soạn thảo y lệnh lâm sàng chuẩn và lập kế hoạch theo dõi đáp ứng điều trị của người bệnh.
+                </p>
+                <div class="quick">
+                    <div class="qi">
+                        <b>Mục tiêu cốt lõi:</b>
+                        <span style="font-size: var(--text-sm);">4 mục tiêu điều trị: triệu chứng, nguyên nhân, tiên lượng và biến chứng.</span>
+                    </div>
+                    <div class="qi">
+                        <b>Nguyên tắc kê đơn:</b>
+                        <span style="font-size: var(--text-sm);">Thứ tự y lệnh chuẩn, liều lượng khởi đầu và đường dùng phù hợp.</span>
+                    </div>
+                    <div class="qi">
+                        <b>Kế hoạch theo dõi:</b>
+                        <span style="font-size: var(--text-sm);">Đánh giá hiệu quả lâm sàng, theo dõi tác dụng phụ và điều chỉnh liều.</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TABS SWITCHER -->
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="muc-tieu">1. Xác định Mục tiêu</button>
+                <button class="tab-btn" data-tab="lua-chon">2. Lựa chọn Điều trị</button>
+                <button class="tab-btn" data-tab="y-lenh">3. Cách viết Y lệnh</button>
+                <button class="tab-btn" data-tab="theo-doi">4. Theo dõi & Đánh giá</button>
+            </div>
+
+            <!-- TAB 1: DEFINE GOALS -->
+            <section class="tab active" id="muc-tieu">
+                <div class="clinical-pearl">
+                    <h4><i class="fas fa-bullseye"></i> Nguyên tắc xác định Mục tiêu điều trị</h4>
+                    <p>
+                        Ngay sau khi có chẩn đoán xác định hoặc chẩn đoán hiện tại, bước đầu tiên và quan trọng nhất trước khi bắt đầu kê đơn là xác định <span class="term-hl">Mục tiêu điều trị</span>. Mục tiêu điều trị là các đích lâm sàng/cận lâm sàng cần đạt được để cuộc điều trị thành công.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h2>I. 4 Mục tiêu điều trị cơ bản của một bệnh lý</h2>
+                    <p style="margin-bottom: 1rem;">Mục tiêu điều trị của mọi bệnh lý nội khoa thường xoay quanh 4 nhóm chính:</p>
+                    <div class="grid2">
+                        <div style="background: var(--color-surface-offset); padding: 15px; border-radius: var(--radius-md); border-left: 4px solid var(--color-primary);">
+                            <h3 style="margin: 0 0 5px; font-size: var(--text-sm); font-weight: bold; color: var(--color-primary);"><i class="fas fa-hand-holding-medical"></i> 1. Kiểm soát triệu chứng</h3>
+                            <p style="margin: 0; font-size: var(--text-xs); line-height: 1.5;">Làm giảm hoặc biến mất các than phiền cơ năng của người bệnh (giảm đau, hạ sốt, hết khó thở), cải thiện chất lượng sống trước mắt.</p>
+                        </div>
+                        <div style="background: var(--color-surface-offset); padding: 15px; border-radius: var(--radius-md); border-left: 4px solid var(--color-success);">
+                            <h3 style="margin: 0 0 5px; font-size: var(--text-sm); font-weight: bold; color: var(--color-success);"><i class="fas fa-virus-slash"></i> 2. Kiểm soát hoặc loại bỏ nguyên nhân</h3>
+                            <p style="margin: 0; font-size: var(--text-xs); line-height: 1.5;">Tác động trực tiếp vào căn nguyên sinh bệnh (VD: tái thông mạch vành hẹp, sử dụng kháng sinh tiêu diệt vi khuẩn, phẫu thuật cắt bỏ u).</p>
+                        </div>
+                        <div style="background: var(--color-surface-offset); padding: 15px; border-radius: var(--radius-md); border-left: 4px solid #8b5cf6;">
+                            <h3 style="margin: 0 0 5px; font-size: var(--text-sm); font-weight: bold; color: #8b5cf6;"><i class="fas fa-heart-pulse"></i> 3. Cải thiện tiên lượng</h3>
+                            <p style="margin: 0; font-size: var(--text-xs); line-height: 1.5;">Kéo dài thời gian sống còn, làm chậm tiến triển bệnh lý mãn tính và ngăn ngừa tử vong lâu dài (VD: dùng chẹn beta trong suy tim).</p>
+                        </div>
+                        <div style="background: var(--color-surface-offset); padding: 15px; border-radius: var(--radius-md); border-left: 4px solid var(--color-warning);">
+                            <h3 style="margin: 0 0 5px; font-size: var(--text-sm); font-weight: bold; color: var(--color-warning);"><i class="fas fa-triangle-exclamation"></i> 4. Phòng ngừa & kiểm soát biến chứng</h3>
+                            <p style="margin: 0; font-size: var(--text-xs); line-height: 1.5;">Ngăn chặn tổn thương cơ quan đích do bệnh gây ra (VD: kiểm soát nhịp tim tránh rung thất, bù nước điện giải tránh suy thận cấp).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>II. Quy tắc Ưu tiên và Thay đổi thứ tự Mục tiêu điều trị</h2>
+                    <p>Tùy thuộc vào bệnh cảnh lâm sàng cụ thể của từng bệnh nhân mà <strong>thứ tự ưu tiên của các mục tiêu có thể thay đổi</strong>. Mục tiêu liên quan trực tiếp đến sự sống còn và đe dọa tính mạng người bệnh phải luôn được ưu tiên giải quyết trước mắt.</p>
+
+                    <div class="grid3" style="margin-top: 1rem;">
+                        <!-- Case 1 -->
+                        <div class="case-card card">
+                            <span class="case" style="background: rgba(16, 185, 129, 0.08); color: var(--color-success);">Bệnh cảnh 1: NMCT không biến chứng</span>
+                            <p style="font-size: var(--text-xs); margin-bottom: 0.5rem;">Bệnh nhân vào viện vì đau ngực cấp do Nhồi máu cơ tim cấp, chưa ghi nhận biến chứng suy tim hay rối loạn nhịp.</p>
+                            <h4 style="font-size: var(--text-xs); font-weight: bold; margin-bottom: 3px; color: var(--color-primary);">Thứ tự mục tiêu ưu tiên:</h4>
+                            <ol style="font-size: var(--text-xs); padding-left: 1.25rem; margin: 0;">
+                                <li>Kiểm soát triệu chứng đau ngực</li>
+                                <li>Tái thông mạch vành sớm (Giải quyết nguyên nhân)</li>
+                                <li>Ngăn ngừa huyết khối tiến triển</li>
+                                <li>Cải thiện tiên lượng lâu dài</li>
+                                <li>Phòng ngừa biến chứng</li>
+                            </ol>
+                        </div>
+
+                        <!-- Case 2 -->
+                        <div class="case-card card warning-case">
+                            <span class="case" style="background: rgba(239, 68, 68, 0.08); color: #ef4444;">Bệnh cảnh 2: NMCT biến chứng Phù phổi cấp</span>
+                            <p style="font-size: var(--text-xs); margin-bottom: 0.5rem;">Bệnh nhân vào viện vì đau ngực cấp, kèm khó thở dữ dội, phổi đầy ran ẩm, SpO2 tụt. Chẩn đoán NMCT biến chứng Phù phổi cấp.</p>
+                            <h4 style="font-size: var(--text-xs); font-weight: bold; margin-bottom: 3px; color: #ef4444;">Thứ tự mục tiêu ưu tiên:</h4>
+                            <ol style="font-size: var(--text-xs); padding-left: 1.25rem; margin: 0; font-weight: bold;">
+                                <li style="color: #ef4444;">Kiểm soát triệu chứng khó thở & duy trì PaO2 > 60 mmHg (Ưu tiên biến chứng sống còn)</li>
+                                <li>Kiểm soát triệu chứng đau ngực</li>
+                                <li>Tái thông mạch vành sớm</li>
+                                <li>Ngăn ngừa huyết khối tiến triển</li>
+                                <li>Cải thiện tiên lượng</li>
+                            </ol>
+                        </div>
+
+                        <!-- Case 3 -->
+                        <div class="case-card card warning-case">
+                            <span class="case" style="background: rgba(245, 158, 11, 0.08); color: var(--color-warning);">Bệnh cảnh 3: Choáng nhiễm trùng tiêu hóa</span>
+                            <p style="font-size: var(--text-xs); margin-bottom: 0.5rem;">Bệnh nhân sốt cao, đau bụng quặn tiêu chảy mất nước nặng. Lúc khám: Lơ mơ, tiếp xúc chậm, mạch 110 lần/phút, HA 80/50 mmHg.</p>
+                            <h4 style="font-size: var(--text-xs); font-weight: bold; margin-bottom: 3px; color: var(--color-warning);">Thứ tự mục tiêu ưu tiên:</h4>
+                            <ol style="font-size: var(--text-xs); padding-left: 1.25rem; margin: 0;">
+                                <li><strong>Hồi sức huyết động:</strong> Đưa HA > 90 mmHg (chống choáng)</li>
+                                <li><strong>Kiểm soát nhiễm trùng:</strong> Sử dụng kháng sinh phù hợp</li>
+                                <li><strong>Giảm triệu chứng:</strong> Hạ sốt, giảm đau bụng và tiêu chảy</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: CHOOSE TREATMENT -->
+            <section class="tab" id="lua-chon">
+                <div class="card">
+                    <h2>I. Điều trị không dùng thuốc</h2>
+                    <p style="margin-bottom: 0.5rem;">Là các biện pháp thay đổi lối sống, điều chỉnh chế độ ăn uống, tập luyện nhằm nâng cao thể trạng và hỗ trợ kiểm soát bệnh.</p>
+                    <ul style="padding-left: 1.25rem; font-size: var(--text-sm);">
+                        <li><strong>Chế độ ăn uống:</strong> Điều chỉnh phù hợp với bệnh lý nền (VD: Hạn chế muối/ăn lạt ở bệnh nhân Tăng huyết áp/Suy tim; hạn chế đường tinh luyện, kiểm soát tinh bột ở bệnh nhân Đái tháo đường).</li>
+                        <li><strong>Chế độ vận động & nghỉ ngơi:</strong> Hướng dẫn cụ thể cường độ hoạt động dựa trên khả năng gắng sức (VD: nằm nghỉ ngơi tại giường đầu cao trong cơn khó thở cấp; tập thể dục đều đặn 30 phút mỗi ngày khi tình trạng ổn định).</li>
+                        <li><strong>Chế độ phục hồi chức năng:</strong> Tập vật lý trị liệu, tập thở, phục hồi chức năng hô hấp/tim mạch sau biến cố cấp tính.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h2>II. Điều trị dùng thuốc hoặc Can thiệp điều trị</h2>
+                    <p>Khi lựa chọn và bảo vệ một phương pháp điều trị dùng thuốc hoặc can thiệp trên lâm sàng, bác sĩ cần lý giải đầy đủ các yếu tố sau:</p>
+                    
+                    <h3 style="color: var(--color-primary); font-size: var(--text-md); margin: 1rem 0 0.5rem;"><i class="fas fa-clipboard-question"></i> 1. Chỉ định & Chống chỉ định</h3>
+                    <ul style="padding-left: 1.25rem; font-size: var(--text-sm);">
+                        <li><strong>Chỉ định:</strong> Bệnh nhân có những triệu chứng, dấu hiệu thực thể hoặc cận lâm sàng nào phù hợp với hướng dẫn/khuyến cáo y khoa của thuốc.</li>
+                        <li><strong>Chống chỉ định:</strong> Bệnh nhân có tình trạng sinh lý hay bệnh lý nào cản trở việc dùng thuốc hay không (VD: suy thận nặng chống chỉ định dùng thuốc thải trừ qua thận; HA < 90 mmHg chống chỉ định dùng thuốc hạ áp/giãn mạch).</li>
+                    </ul>
+
+                    <h3 style="color: var(--color-primary); font-size: var(--text-md); margin: 1rem 0 0.5rem;"><i class="fas fa-route"></i> 2. Lựa chọn Đường dùng & Liều lượng thuốc</h3>
+                    <ul style="padding-left: 1.25rem; font-size: var(--text-sm);">
+                        <li><strong>Đường dùng (Route of Administration):</strong> Lựa chọn giữa đường tiêm truyền tĩnh mạch (cho tác dụng nhanh, khẩn cấp), đường tiêm dưới da (như insulin, heparin), đường uống (khi ổn định, duy trì), đường nhét trực tràng...</li>
+                        <li><strong>Liều lượng (Dosage):</strong> Giải thích lý do lựa chọn liều cụ thể (VD: tại sao khởi đầu bằng liều thấp nhất và tăng dần liều từ từ ở bệnh nhân suy tim; tại sao cần dùng liều tấn công trong nhiễm trùng nặng).</li>
+                    </ul>
+
+                    <h3 style="color: var(--color-primary); font-size: var(--text-md); margin: 1rem 0 0.5rem;"><i class="fas fa-scale-balanced"></i> 3. 6 Tiêu chuẩn lựa chọn khi có nhiều phương pháp điều trị</h3>
+                    <p style="font-size: var(--text-sm); margin-bottom: 0.5rem;">Khi đứng trước nhiều lựa chọn điều trị song song, quyết định lâm sàng tối ưu phụ thuộc vào:</p>
+                    <div class="grid3" style="gap: 10px;">
+                        <div style="background-color: var(--color-surface-2); padding: 10px; border-radius: var(--radius-sm); font-size: var(--text-xs);">
+                            <strong>1. Khuyến cáo (Guidelines):</strong> Theo chuẩn của các hiệp hội uy tín (AHA, ESC, ADA, bộ Y tế) với mức độ bằng chứng cao nhất (Class I, Level A).
+                        </div>
+                        <div style="background-color: var(--color-surface-2); padding: 10px; border-radius: var(--radius-sm); font-size: var(--text-xs);">
+                            <strong>2. Hiệu quả (Efficacy):</strong> Tốc độ và mức độ giải quyết mục tiêu điều trị (VD: can thiệp mạch vành có hiệu quả tái thông cao hơn tiêu sợi huyết).
+                        </div>
+                        <div style="background-color: var(--color-surface-2); padding: 10px; border-radius: var(--radius-sm); font-size: var(--text-xs);">
+                            <strong>3. Tính sẵn có (Availability):</strong> Trang thiết bị kỹ thuật hiện có tại cơ sở y tế (VD: phòng thông tim can thiệp có hoạt động không?).
+                        </div>
+                        <div style="background-color: var(--color-surface-2); padding: 10px; border-radius: var(--radius-sm); font-size: var(--text-xs);">
+                            <strong>4. Chi phí (Cost):</strong> Điều kiện kinh tế của người bệnh và khả năng chi trả của Bảo hiểm y tế.
+                        </div>
+                        <div style="background-color: var(--color-surface-2); padding: 10px; border-radius: var(--radius-sm); font-size: var(--text-xs);">
+                            <strong>5. Tác động bất lợi (Side Effects):</strong> Đánh giá các biến chứng, độc tính, phản ứng có hại của thuốc đối với thể trạng của bệnh nhân.
+                        </div>
+                        <div style="background-color: var(--color-surface-2); padding: 10px; border-radius: var(--radius-sm); font-size: var(--text-xs);">
+                            <strong>6. Đồng thuận của người bệnh:</strong> Tôn trọng quyền tự quyết và mong muốn phối hợp điều trị lâu dài của bệnh nhân.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card case-card">
+                    <span class="case">Case Study: Phân tích Lựa chọn điều trị cụ thể</span>
+                    <h3 style="font-size: var(--text-md); margin-top: 0;">1. Đợt mất bù suy tim trái cấp do Rung nhĩ đáp ứng thất nhanh</h3>
+                    <p style="font-size: var(--text-sm); margin-bottom: 0.5rem;"><strong>Mục tiêu:</strong> Kiểm soát triệu chứng khó thở và duy trì SpO2 > 90%.</p>
+                    <ul style="padding-left: 1.25rem; font-size: var(--text-sm);">
+                        <li><strong>Biện pháp không dùng thuốc:</strong> Đặt bệnh nhân nằm đầu cao, thở oxy qua cannula 2-4 lít/phút.</li>
+                        <li><strong>Biện pháp dùng thuốc:</strong> Sử dụng lợi tiểu quai <span class="drug-name">Furosemide</span>.
+                            <ul>
+                                <li><i>Lý do lựa chọn:</i> Bệnh nhân có triệu chứng ứ huyết rõ (khó thở phải ngồi, phổi có ran ẩm, phù 2 chân).</li>
+                                <li><i>Chống chỉ định loại trừ:</i> Bệnh nhân không bị tụt huyết áp (HA hiện tại 120/80 mmHg, không < 90 mmHg).</li>
+                                <li><i>Đường dùng:</i> Tiêm tĩnh mạch chậm vì cần tác dụng giãn tĩnh mạch và thải muối nước nhanh tức thì.</li>
+                                <li><i>Liều lượng khởi đầu:</i> 40mg (Furosemide 20mg 2 ống tiêm mạch chậm).</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h3 style="font-size: var(--text-md); margin-top: 1rem; margin-bottom: 0.5rem;">2. Nhồi máu cơ tim cấp có ST chênh lên giờ thứ 8</h3>
+                    <p style="font-size: var(--text-sm); margin-bottom: 0.5rem;"><strong>Lựa chọn biện pháp Tái thông mạch vành:</strong> So sánh giữa Can thiệp mạch vành qua da (PCI) và Thuốc tiêu sợi huyết.</p>
+                    <div class="table-wrap" style="margin: 0;">
+                        <table class="cmp">
+                            <thead>
+                                <tr>
+                                    <th>Can thiệp động mạch vành qua da (PCI) (Lựa chọn)</th>
+                                    <th>Dùng thuốc tiêu sợi huyết (Không lựa chọn)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>- Chỉ định khuyến cáo mức độ cao nhất (Class IA).<br>- Tỷ lệ tái thông thành công cao hơn nhiều ở mốc giờ thứ 8.<br>- Xác định trực tiếp và xử trí chính xác động mạch vành thủ phạm gây nhồi máu.<br>- Đánh giá được cấu trúc hệ mạch vành còn lại và dự trữ mạch vành.</td>
+                                    <td>- Tỷ lệ tái thông thành công thấp hơn khi bệnh nhân đến muộn (giờ thứ 8).<br>- Nguy cơ biến chứng xuất huyết cao đặc biệt là xuất huyết não.<br>- Không đánh giá được giải phẫu chi tiết hệ mạch vành.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 3: WRITE PRESCRIPTIONS -->
+            <section class="tab" id="y-lenh">
+                <div class="clinical-pearl">
+                    <h4><i class="fas fa-file-signature"></i> Quy chuẩn viết Y lệnh trong Hồ sơ bệnh án</h4>
+                    <p>
+                        Y lệnh điều trị là văn bản pháp lý chỉ đạo trực tiếp để điều dưỡng thực hiện chăm sóc và dùng thuốc cho người bệnh. Y lệnh phải rõ ràng, ghi đúng hàm lượng, đường dùng, số lượng, khoảng cách liều và <strong>phải tuân thủ đúng thứ tự ưu tiên các đường dùng thuốc</strong>.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h2>I. Thứ tự ghi nhận Y lệnh thuốc trong hồ sơ</h2>
+                    <p style="margin-bottom: 0.5rem;">Khi ghi nhận y lệnh điều trị hàng ngày, các thuốc và can thiệp phải được viết theo trình tự từ đường dùng tác dụng nhanh đến chậm, từ xâm lấn nhiều đến ít:</p>
+                    <ol style="padding-left: 1.25rem; font-size: var(--text-sm); font-weight: bold; color: var(--color-primary);">
+                        <li>Thuốc truyền tĩnh mạch (Intravenous Infusions)</li>
+                        <li>Thuốc tiêm/chích tĩnh mạch (Intravenous Injections - IV)</li>
+                        <li>Thuốc tiêm dưới da / tiêm bắp (Subcutaneous/Intramuscular Injections - SC/IM)</li>
+                        <li>Thuốc uống (Oral Medications)</li>
+                        <li>Thuốc tại chỗ: dán, nhỏ tai/mắt, thoa ngoài da</li>
+                        <li>Thuốc nhét (Suppositories)</li>
+                    </ol>
+                </div>
+
+                <div class="card">
+                    <h2>II. Quy tắc soạn thảo chi tiết y lệnh thuốc</h2>
+                    
+                    <h3 style="color: var(--color-primary); font-size: var(--text-md); margin-bottom: 0.5rem;"><i class="fas fa-prescription-bottle-dropper"></i> 1. Cách ghi y lệnh dịch truyền tĩnh mạch</h3>
+                    <p style="font-size: var(--text-sm);">Ghi rõ: Tên dịch truyền, dung tích, số lượng chai, đường dùng, và <strong>tốc độ truyền bằng số La Mã (số giọt/phút)</strong>.</p>
+                    <div style="background-color: var(--color-surface-offset); padding: 10px; border-radius: var(--radius-sm); font-family: monospace; font-size: 0.9rem; margin-bottom: 1rem;">
+                        VD: Natrichlorua 0,9% 500ml 1 chai truyền tĩnh mạch XXX giọt/phút.
+                    </div>
+
+                    <h3 style="color: var(--color-primary); font-size: var(--text-md); margin-bottom: 0.5rem;"><i class="fas fa-prescription-bottle"></i> 2. Cách ghi y lệnh thuốc tiêm, thuốc uống thường quy</h3>
+                    <p style="font-size: var(--text-sm);">Ghi rõ: Tên hoạt chất (nên dùng tên gốc/generic), hàm lượng, số lượng chế phẩm, đường dùng. Nếu dùng nhiều lần trong ngày, ghi rõ thời điểm dùng hoặc khoảng cách liều cụ thể.</p>
+                    <div class="grid2">
+                        <div style="background-color: var(--color-surface-offset); padding: 10px; border-radius: var(--radius-sm); font-family: monospace; font-size: 0.9rem;">
+                            // Thuốc tiêm/chích:<br>
+                            - Furosemide 20mg 2 ống tiêm mạch chậm.<br>
+                            - Enoxaparin 0,06g/0,6ml 1 ống x 2 tiêm dưới da lúc 7g và 19g.
+                        </div>
+                        <div style="background-color: var(--color-surface-offset); padding: 10px; border-radius: var(--radius-sm); font-family: monospace; font-size: 0.9rem;">
+                            // Thuốc uống:<br>
+                            - Enalapril 5mg 1 viên x 2 uống, sáng, chiều.<br>
+                            - Insulin Lantus 15 UI tiêm dưới da trước ăn sáng 30 phút.
+                        </div>
+                    </div>
+
+                    <h3 style="color: var(--color-primary); font-size: var(--text-md); margin: 1rem 0 0.5rem;"><i class="fas fa-vial-circle-check"></i> 3. Cách ghi y lệnh thuốc pha loãng truyền tĩnh mạch</h3>
+                    <p style="font-size: var(--text-sm);">Phải ghi rõ lượng dịch dùng để pha loãng thuốc và tốc độ truyền.</p>
+                    <div style="background-color: var(--color-surface-offset); padding: 10px; border-radius: var(--radius-sm); font-family: monospace; font-size: 0.9rem; margin-bottom: 1rem;">
+                        VD: Imipenem 0,5g 1 lọ pha Natrichlorua 0,9% 100ml truyền tĩnh mạch XXX giọt/phút.
+                    </div>
+
+                    <h3 style="color: var(--color-primary); font-size: var(--text-md); margin-bottom: 0.5rem;"><i class="fas fa-microchip"></i> 4. Cách ghi y lệnh truyền qua Bơm tiêm điện (Syringe Pump - SE)</h3>
+                    <p style="font-size: var(--text-sm);">Phải ghi rõ tên thuốc pha, lượng dịch pha vừa đủ (đủ 50ml), ký hiệu <strong>SE (Bơm tiêm điện)</strong>, tốc độ bơm điện bằng <strong>ml/giờ</strong> và liều lượng lượng tương đương.</p>
+                    <div style="background-color: var(--color-surface-offset); padding: 10px; border-radius: var(--radius-sm); font-family: monospace; font-size: 0.9rem; margin-bottom: 1rem;">
+                        VD: Dobutamin 250mg 1 ống pha Natrichlorua 0,9% đủ 50ml SE 3 ml/giờ (tương đương liều 2 mcg/kg/phút).
+                    </div>
+
+                    <h3 style="color: var(--color-primary); font-size: var(--text-md); margin-bottom: 0.5rem;"><i class="fas fa-triangle-exclamation"></i> 5. Cách ghi y lệnh tiêm tĩnh mạch chậm</h3>
+                    <div style="background-color: var(--color-surface-offset); padding: 10px; border-radius: var(--radius-sm); font-family: monospace; font-size: 0.9rem;">
+                        VD: Amiodaron 150mg 1 ống pha Natrichlorua 0,9% đủ 20ml tiêm mạch chậm.
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 4: CLINICAL MONITORING -->
+            <section class="tab" id="theo-doi">
+                <div class="clinical-pearl">
+                    <h4><i class="fas fa-eye"></i> Kế hoạch Theo dõi bệnh nhân</h4>
+                    <p>
+                        Mục đích của việc theo dõi là để đánh giá mức độ đạt được của các mục tiêu điều trị đã đề ra lúc ban đầu, đồng thời phát hiện sớm các tác dụng phụ có hại của thuốc và các biến chứng mới phát sinh.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h2>I. Nguyên tắc thiết lập kế hoạch theo dõi</h2>
+                    <ul style="padding-left: 1.25rem; font-size: var(--text-sm);">
+                        <li><strong>Dựa trực tiếp trên Mục tiêu điều trị:</strong> Nếu mục tiêu là giảm khó thở thì phải theo dõi tần số thở, SpO2, nghe ran phổi. Nếu mục tiêu là hạ HA thì phải đo HA định kỳ.</li>
+                        <li><strong>Theo dõi tác dụng phụ của thuốc:</strong> Cần nắm vững đặc tính dược lý của thuốc chỉ định (VD: dùng lợi tiểu có thể gây tụt huyết áp, mất kali máu -> cần theo dõi sinh hiệu, ion đồ máu).</li>
+                        <li><strong>Định kỳ đánh giá đáp ứng:</strong> Đưa ra mốc thời gian cụ thể để đánh giá lại (mỗi 15 phút, 1 giờ, 12 giờ hoặc hàng ngày).</li>
+                    </ul>
+                </div>
+
+                <div class="card case-card warning-case">
+                    <span class="case" style="background: rgba(239, 68, 68, 0.08); color: #ef4444;">Case Study: Theo dõi bệnh nhân suy tim cấp dùng Lợi tiểu quai</span>
+                    <p style="font-size: var(--text-sm); margin-bottom: 0.75rem;">Bệnh nhân suy tim mất bù cấp do rung nhĩ đáp ứng thất nhanh được chỉ định dùng Furosemide đường tĩnh mạch. Kế hoạch theo dõi cụ thể bao gồm:</p>
+                    
+                    <div class="grid2">
+                        <div>
+                            <h4 style="font-size: var(--text-sm); font-weight: bold; margin-bottom: 5px; color: var(--color-primary);"><i class="fas fa-circle-check"></i> Các chỉ số đánh giá ĐÁP ỨNG TỐT:</h4>
+                            <ul style="padding-left: 1.25rem; font-size: var(--text-xs); line-height: 1.6;">
+                                <li><strong>Cải thiện hô hấp:</strong> Cảm giác khó thở của bệnh nhân giảm dần, tư thế nằm đầu ngang được thiết lập lại thay vì phải ngồi thở.</li>
+                                <li><strong>Lượng nước tiểu tăng lên:</strong> Đây là bằng chứng lợi tiểu bắt đầu có tác dụng thải dịch thừa.</li>
+                                <li><strong>SpO2 tăng ổn định</strong> về mức bình thường (> 90%).</li>
+                                <li><strong>Ran phổi giảm dần:</strong> Giảm sung huyết tại các phế nang.</li>
+                                <li><strong>Nhịp tim giảm và huyết động ổn định:</strong> Tay chân ấm dần, mạch rõ đều.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="font-size: var(--text-sm); font-weight: bold; margin-bottom: 5px; color: var(--color-danger);"><i class="fas fa-triangle-exclamation"></i> Các chỉ số theo dõi TÁC DỤNG PHỤ:</h4>
+                            <ul style="padding-left: 1.25rem; font-size: var(--text-xs); line-height: 1.6;">
+                                <li><strong>Tụt huyết áp quá mức:</strong> Lợi tiểu làm giảm thể tích tuần hoàn nhanh, có thể gây choáng váng, tụt HA tâm thu < 90 mmHg.</li>
+                                <li><strong>Rối loạn điện giải (Hạ Kali, Natri máu):</strong> Cần theo dõi sát xét nghiệm ion đồ, dấu hiệu lâm sàng chuột rút, yếu cơ do hạ kali.</li>
+                                <li><strong>Mất nước quá nhanh:</strong> Theo dõi sát cân nặng hàng ngày và lượng dịch xuất - nhập (nước tiểu).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="clinical-warning" style="margin-top: 1rem; padding: 10px; font-size: var(--text-sm);">
+                        <strong>KẾT LUẬN LÂM SÀNG:</strong> Bác sĩ lâm sàng chỉ có thể đánh giá hiệu quả điều trị thành công khi nắm vững đặc điểm bệnh học và cơ chế dược lý học để nhận biết sớm dấu hiệu đáp ứng và biến chứng điều trị của người bệnh.
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+    <!-- Scripts dùng chung -->
+    <script src="../../../js/main.js" defer></script>
+    <script src="../../../components/header.js" defer></script>
+    <script src="../../../components/footer.js" defer></script>
+    <script src="../../../js/clinical-skill-tabs.js" defer></script>
+    <script src="../../../js/sidebar.js"></script>
+</body>
+
+</html>

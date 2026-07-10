@@ -156,6 +156,7 @@
 | `Kỹ năng/Hồi sức cấp cứu/KN_Triage.html` | Phân loại bệnh nhân (Triage) |
 | `Kỹ năng/Hồi sức cấp cứu/KN_Xutri_Ngodoc.html` | Xử trí ngộ độc |
 | `Kỹ năng/Quản lý điều trị/Luachon_Khangsinh.html` | Lựa chọn kháng sinh |
+| `Kỹ năng/Quản lý điều trị/Lyluan_DieutriNoikhoa.html` | Phương pháp lý luận điều trị và kê đơn thuốc nội khoa |
 
 ---
 
@@ -189,6 +190,7 @@
 |------|---------|
 | `Y học chứng cứ/yhcc.html` | Hub tổng EBM |
 | `Y học chứng cứ/Guidelines/Guidelines.html` | Tra cứu guidelines |
+| `Y học chứng cứ/Guidelines/README.md` | Hướng dẫn sử dụng phân hệ Guidelines |
 | `Y học chứng cứ/Thống kê y học/Thongkeyhoc.html` | Thống kê y học |
 | `Y học chứng cứ/Thống kê y học/danh-gia-cong-cu-chan-doan.html` | Đánh giá công cụ chẩn đoán |
 | `Y học chứng cứ/Thống kê y học/phan-tich-rct-meta-analysis.html` | Phân tích RCT & Meta-analysis |

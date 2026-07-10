@@ -1003,6 +1003,7 @@
                 <label class="dropdown-item"><input type="checkbox" checked data-column="sourceType" onchange="toggleColumnVisibility('sourceType', this.checked)"> Phân loại nguồn</label>
                 <label class="dropdown-item"><input type="checkbox" checked data-column="specialty" onchange="toggleColumnVisibility('specialty', this.checked)"> Chuyên khoa</label>
                 <label class="dropdown-item"><input type="checkbox" checked data-column="design" onchange="toggleColumnVisibility('design', this.checked)"> Thiết kế nghiên cứu</label>
+                <label class="dropdown-item"><input type="checkbox" checked data-column="organization" onchange="toggleColumnVisibility('organization', this.checked)"> Tạp chí / Tổ chức</label>
                 <label class="dropdown-item"><input type="checkbox" checked data-column="intervention" onchange="toggleColumnVisibility('intervention', this.checked)"> Can thiệp / Đối chứng</label>
                 <label class="dropdown-item"><input type="checkbox" checked data-column="primaryEndpoint" onchange="toggleColumnVisibility('primaryEndpoint', this.checked)"> Tiêu chí chính</label>
                 <label class="dropdown-item"><input type="checkbox" checked data-column="keyResults" onchange="toggleColumnVisibility('keyResults', this.checked)"> Kết quả chính</label>
@@ -1086,6 +1087,7 @@
                 <th class="sortable" data-sort="sourceType" data-col="sourceType">Phân loại nguồn</th>
                 <th class="sortable" data-sort="specialty" data-col="specialty">Chuyên khoa</th>
                 <th class="sortable" data-sort="design" data-col="design">Thiết kế</th>
+                <th class="sortable" data-sort="organization" data-col="organization">Tạp chí / Tổ chức</th>
                 <th class="sortable" data-sort="intervention" data-col="intervention">Can thiệp / Đối chứng</th>
                 <th class="sortable" data-sort="primaryEndpoint" data-col="primaryEndpoint">Tiêu chí chính</th>
                 <th class="sortable" data-sort="keyResults" data-col="keyResults">Kết quả chính</th>
@@ -1151,9 +1153,14 @@
               <input type="text" id="study-title" required placeholder="Ví dụ: Khuyến cáo điều trị suy tim VNHA 2023">
             </div>
             <div class="form-group">
-              <label for="study-drug">Tên hoạt chất / Nhóm thuốc *</label>
-              <input type="text" id="study-drug" required placeholder="Ví dụ: ARNI, SGLT2i">
+              <label for="study-author">Tên tác giả (nếu có)</label>
+              <input type="text" id="study-author" placeholder="Ví dụ: Braunwald, McMurray...">
             </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="study-drug">Tên hoạt chất / Nhóm thuốc *</label>
+            <input type="text" id="study-drug" required placeholder="Ví dụ: ARNI, SGLT2i">
           </div>
           
           <div class="form-row">
@@ -1236,13 +1243,18 @@
 
           <div class="form-row">
             <div class="form-group">
-              <label for="study-key-results">Kết quả chính / Chỉ số thống kê</label>
-              <input type="text" id="study-key-results" placeholder="Ví dụ: HR 0.75 (95% CI 0.65-0.86); p<0.001">
+              <label for="study-phase">Giai đoạn nghiên cứu / Phân loại phụ</label>
+              <input type="text" id="study-phase" placeholder="Ví dụ: Phase III, Guidelines">
             </div>
             <div class="form-group">
               <label for="study-sample-size">Cỡ mẫu nghiên cứu (số lượng bệnh nhân)</label>
               <input type="number" id="study-sample-size" placeholder="Ví dụ: 7020">
             </div>
+          </div>
+
+          <div class="form-group">
+            <label for="study-key-results">Kết quả chính / Chỉ số thống kê</label>
+            <input type="text" id="study-key-results" placeholder="Ví dụ: HR 0.75 (95% CI 0.65-0.86); p<0.001">
           </div>
 
           <div class="form-group">
@@ -1273,7 +1285,7 @@
 
           <div class="form-row">
             <div class="form-group">
-              <label for="study-file">File HTML chi tiết (tùy chọn)</label>
+              <label for="study-file">File HTML tóm tắt (tùy chọn)</label>
               <input type="text" id="study-file" placeholder="Ví dụ: studies/empa-reg.html">
             </div>
             <div class="form-group" style="display: flex; align-items: center;">
@@ -1319,6 +1331,7 @@
 create table clinical_guidelines (
   id text primary key,
   title text not null,
+  author text,
   drug text,
   "sourceType" text,
   specialty text,
@@ -1349,6 +1362,72 @@ create table clinical_guidelines (
             <button type="submit" class="btn btn-primary">Lưu & Kết nối</button>
           </div>
         </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMPORT DATA MODAL -->
+  <div class="modal-overlay" id="import-modal">
+    <div class="modal" style="max-width: 600px;">
+      <div class="modal-header">
+        <h3>📥 Nhập Dữ Liệu Hướng Dẫn & Nghiên Cứu</h3>
+        <button class="modal-close" onclick="closeImportModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.5;">
+          Nhập dữ liệu bằng cách kéo thả/tải lên file JSON hoặc dán chuỗi mã JSON trực tiếp dưới đây. Cấu trúc JSON cần khớp với định dạng cơ sở dữ liệu.
+        </p>
+        
+        <!-- Way 1: File Upload (Drag & Drop) -->
+        <div class="form-group">
+          <label style="font-weight: 700; margin-bottom: 0.5rem; display: block;">Cách 1: Chọn hoặc Kéo thả file JSON</label>
+          <div class="file-drop-zone" id="drop-zone" onclick="document.getElementById('file-input').click()">
+            <p>📂 Kéo thả file .json vào đây hoặc click để chọn file</p>
+            <small>Hỗ trợ file JSON chứa một đối tượng nghiên cứu hoặc danh sách nghiên cứu</small>
+            <input type="file" id="file-input" accept=".json" style="display: none;" onchange="handleFileSelect(event)">
+          </div>
+        </div>
+
+        <div style="text-align: center; margin: 1.25rem 0; color: var(--text-faint); font-weight: 600; font-size: 0.78rem; position: relative;">
+          <span style="background: var(--surface); padding: 0 12px; position: relative; z-index: 1;">HOẶC</span>
+          <div style="position: absolute; top: 50%; left: 0; right: 0; border-top: 1px solid var(--border-light); z-index: 0;"></div>
+        </div>
+
+        <!-- Way 2: Textarea copy-paste -->
+        <div class="form-group">
+          <label for="json-text" style="font-weight: 700; margin-bottom: 0.5rem; display: block;">Cách 2: Dán mã JSON trực tiếp</label>
+          <textarea id="json-text" rows="8" placeholder='Ví dụ:
+[
+  {
+    "title": "EMPA-REG OUTCOME",
+    "author": "Zinman B et al.",
+    "drug": "Empagliflozin",
+    "sourceType": "intl-study",
+    "specialty": "cardio",
+    "design": "rct",
+    "intervention": "Empagliflozin 10/25mg QD vs Placebo",
+    "primaryEndpoint": "3-point MACE",
+    "keyResults": "HR 0.86 (95% CI 0.74-0.99); p=0.04",
+    "impact": "practice-changing",
+    "year": 2015,
+    "organization": "NEJM / Boehringer Ingelheim",
+    "phase": "Phase III",
+    "sampleSize": 7020,
+    "population": "Bệnh nhân đái tháo đường typ 2...",
+    "summary": "Mô tả tóm tắt...",
+    "detailedConclusion": "",
+    "fdaStatus": "Approved 2016",
+    "sourceUrl": "",
+    "file": "",
+    "asianData": true
+  }
+]' style="font-family: monospace; font-size: 0.78rem;"></textarea>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1.5rem;">
+          <button type="button" class="btn" onclick="closeImportModal()">Hủy</button>
+          <button type="button" class="btn btn-primary" onclick="importFromText()">📥 Nhập dữ liệu mã JSON</button>
+        </div>
       </div>
     </div>
   </div>
@@ -1493,6 +1572,7 @@ create table clinical_guidelines (
       sourceType: true,
       specialty: true,
       design: true,
+      organization: true,
       intervention: true,
       primaryEndpoint: true,
       keyResults: true,
@@ -1616,6 +1696,7 @@ create table clinical_guidelines (
           studies = data.map(s => ({
             id: s.id,
             title: s.title || '',
+            author: s.author || '',
             drug: s.drug || 'N/A',
             sourceType: s.sourceType || 'intl-study',
             specialty: s.specialty || 'cardio',
@@ -1650,6 +1731,7 @@ create table clinical_guidelines (
               .insert(studies.map(s => ({
                 id: s.id,
                 title: s.title,
+                author: s.author,
                 drug: s.drug,
                 sourceType: s.sourceType,
                 specialty: s.specialty,
@@ -1691,6 +1773,7 @@ create table clinical_guidelines (
           .upsert({
             id: study.id,
             title: study.title,
+            author: study.author,
             drug: study.drug,
             sourceType: study.sourceType,
             specialty: study.specialty,
@@ -1772,6 +1855,7 @@ create table clinical_guidelines (
             return {
               id: s.id || generateId(),
               title: s.title || '',
+              author: s.author || '',
               drug: s.drug || 'N/A',
               sourceType: defaultSourceType,
               specialty: s.specialty || 'cardio',
@@ -2141,9 +2225,10 @@ create table clinical_guidelines (
         const sourceTypeCell = columnVisibility.sourceType ? `<td><span class="badge badge-src-${study.sourceType}">${srcTypeConfig.name}</span></td>` : '';
         const specialtyCell = columnVisibility.specialty ? `<td><span class="badge badge-${study.specialty}">${spec.name}</span></td>` : '';
         const designCell = columnVisibility.design ? `<td><span class="badge-source">${designConfig.name}</span></td>` : '';
+        const organizationCell = columnVisibility.organization ? `<td><div class="study-summary ${viewMode === 'compact' ? 'clamped' : ''}">${escapeHtml(study.organization || 'N/A')} (${study.year})</div></td>` : '';
         const interventionCell = columnVisibility.intervention ? `<td><div class="study-summary ${viewMode === 'compact' ? 'clamped' : ''}">${escapeHtml(study.intervention || 'N/A')}</div></td>` : '';
         const primaryEndpointCell = columnVisibility.primaryEndpoint ? `<td><div class="study-summary ${viewMode === 'compact' ? 'clamped' : ''}">${escapeHtml(study.primaryEndpoint || 'N/A')}</div></td>` : '';
-        const keyResultsCell = columnVisibility.keyResults ? `<td><span class="badge-phase" style="font-family: monospace; font-size: 0.73rem; background: var(--surface-2); border-color: var(--border-light); font-weight: 700; color: var(--accent);">${escapeHtml(study.keyResults || 'N/A')}</span></td>` : '';
+        const keyResultsCell = columnVisibility.keyResults ? `<td><div class="study-summary ${viewMode === 'compact' ? 'clamped' : ''}">${escapeHtml(study.keyResults || 'N/A')}</div></td>` : '';
         const impactCell = columnVisibility.impact ? `
           <td>
             <span class="impact-badge impact-${study.impact}">
@@ -2184,6 +2269,7 @@ create table clinical_guidelines (
             ${sourceTypeCell}
             ${specialtyCell}
             ${designCell}
+            ${organizationCell}
             ${interventionCell}
             ${primaryEndpointCell}
             ${keyResultsCell}
@@ -2204,6 +2290,12 @@ create table clinical_guidelines (
               <td colspan="${visibleColsCount}">
                 <div class="detail-wrapper">
                   <div class="detail-main">
+                    ${study.author ? `
+                    <div class="detail-item">
+                      <span class="detail-section-title">Tên tác giả</span>
+                      <p class="detail-conclusion-text" style="font-weight: 600;">${escapeHtml(study.author)}</p>
+                    </div>
+                    ` : ''}
                     <div class="detail-item">
                       <span class="detail-section-title">Kết luận lâm sàng</span>
                       <p class="detail-conclusion-text">${escapeHtml(study.summary)}</p>
@@ -2261,7 +2353,7 @@ create table clinical_guidelines (
                     
                     <div class="detail-actions">
                       ${study.sourceUrl ? `<a href="${study.sourceUrl}" target="_blank" class="btn btn-small">📄 Bài báo gốc</a>` : ''}
-                      ${study.file ? `<a href="${study.file}" class="btn btn-small btn-primary">📖 Xem chi tiết</a>` : ''}
+                      ${study.file ? `<a href="${study.file}" class="btn btn-small btn-primary">📝 Tóm tắt</a>` : ''}
                       <button class="btn btn-small" onclick="openEditModal('${study.id}', event)">✏️ Sửa</button>
                       <button class="btn btn-small" style="color: var(--color-practice-changing); border-color: rgba(220,38,38,0.3);" onclick="deleteStudy('${study.id}', event)">🗑️ Xóa</button>
                     </div>
@@ -2495,7 +2587,7 @@ create table clinical_guidelines (
 
             <div class="compare-row" style="display: flex; gap: 8px; border-bottom: none; margin-top: auto; padding-top: 0.5rem;">
               ${study.sourceUrl ? `<a href="${study.sourceUrl}" target="_blank" class="btn btn-small" style="flex: 1; text-align: center; justify-content: center;">📄 Nguồn</a>` : ''}
-              ${study.file ? `<a href="${study.file}" class="btn btn-small btn-primary" style="flex: 1; text-align: center; justify-content: center;">📖 Xem chi tiết</a>` : ''}
+              ${study.file ? `<a href="${study.file}" class="btn btn-small btn-primary" style="flex: 1; text-align: center; justify-content: center;">📝 Tóm tắt</a>` : ''}
             </div>
           </div>
         `;
@@ -2523,6 +2615,7 @@ create table clinical_guidelines (
       
       const studyId = document.getElementById('study-id').value;
       const title = document.getElementById('study-title').value.trim();
+      const author = document.getElementById('study-author') ? document.getElementById('study-author').value.trim() : '';
       const drug = document.getElementById('study-drug').value.trim();
       const sourceType = document.getElementById('study-source-type').value;
       const specialty = document.getElementById('study-specialty').value;
@@ -2551,7 +2644,7 @@ create table clinical_guidelines (
         if (index !== -1) {
           studies[index] = {
             ...studies[index],
-            title, drug, sourceType, specialty, design, intervention, primaryEndpoint, keyResults,
+            title, author, drug, sourceType, specialty, design, intervention, primaryEndpoint, keyResults,
             impact, organization, year, phase, sampleSize,
             population, summary, detailedConclusion, fdaStatus, sourceUrl, file, asianData
           };
@@ -2562,7 +2655,7 @@ create table clinical_guidelines (
         // Add mode
         const newStudy = {
           id: generateId(),
-          title, drug, sourceType, specialty, design, intervention, primaryEndpoint, keyResults,
+          title, author, drug, sourceType, specialty, design, intervention, primaryEndpoint, keyResults,
           impact, organization, year, phase, sampleSize,
           population, summary, detailedConclusion, fdaStatus, sourceUrl, file, asianData,
           bookmarked: false,
@@ -2599,6 +2692,7 @@ create table clinical_guidelines (
 
       document.getElementById('study-id').value = study.id;
       document.getElementById('study-title').value = study.title;
+      if(document.getElementById('study-author')) document.getElementById('study-author').value = study.author || '';
       document.getElementById('study-drug').value = study.drug || '';
       document.getElementById('study-source-type').value = study.sourceType || 'intl-study';
       document.getElementById('study-specialty').value = study.specialty;
@@ -2697,6 +2791,7 @@ create table clinical_guidelines (
           const study = {
             id: item.id || generateId(),
             title: item.title,
+            author: item.author || '',
             drug: item.drug || 'N/A',
             sourceType: item.sourceType || 'intl-study',
             specialty: item.specialty || 'cardio',

@@ -1,1335 +1,603 @@
 <!DOCTYPE html>
 <html lang="vi" data-theme="light">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Hệ sinh thái công cụ hỗ trợ tính toán liều ban đầu và hiệu chỉnh liều Vancomycin dựa theo AUC/MIC và các phác đồ lâm sàng chuẩn hóa.">
-    <title>Quản lý & Chỉnh liều Vancomycin – CliniPortal</title>
-
-    <!-- Google Fonts -->
+    <meta name="description" content="Công cụ tính toán liều ban đầu và hiệu chỉnh liều Vancomycin dựa trên AUC/MIC, dược động học cá thể hóa theo hướng dẫn ASHP/IDSA/SIDP 2020 – CliniPortal.">
+    <title>Quản lý &amp; Chỉnh liều Vancomycin – CliniPortal</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
-    <!-- CSS core CliniPortal -->
     <link rel="stylesheet" href="../../../css/reset.css">
     <link rel="stylesheet" href="../../../css/main.css">
     <link rel="stylesheet" href="../../../css/components/header.css">
     <link rel="stylesheet" href="../../../css/components/sidebar.css">
     <link rel="stylesheet" href="../../../css/components/footer.css">
-
-    <!-- Custom CSS cho trang quản lý Vancomycin -->
+    <script src="../../../components/header.js"></script>
     <style>
-        .van-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
+        :root {
+            --van-blue:#0284c7;--van-blue-h:#f0f9ff;--van-blue-b:#bae6fd;
+            --van-green:#059669;--van-green-h:#ecfdf5;--van-green-b:#a7f3d0;
+            --van-amber:#d97706;--van-amber-h:#fffbeb;--van-amber-b:#fde68a;
+            --van-red:#dc2626;--van-red-h:#fef2f2;--van-red-b:#fecaca;
+            --van-purple:#7c3aed;--van-purple-h:#f5f3ff;--van-purple-b:#ddd6fe;
+            --van-teal:#0d9488;--van-teal-h:#f0fdfa;--van-teal-b:#99f6e4;
         }
-
-        @media (min-width: 1024px) {
-            .van-container {
-                grid-template-columns: 3fr 2fr;
-            }
+        [data-theme="dark"]{
+            --van-blue:#38bdf8;--van-blue-h:#0a2030;--van-blue-b:#0c4a6e;
+            --van-green:#34d399;--van-green-h:#022c22;--van-green-b:#065f46;
+            --van-amber:#fbbf24;--van-amber-h:#1c1200;--van-amber-b:#78350f;
+            --van-red:#f87171;--van-red-h:#1f0808;--van-red-b:#7f1d1d;
+            --van-purple:#a78bfa;--van-purple-h:#160e30;--van-purple-b:#4c1d95;
+            --van-teal:#2dd4bf;--van-teal-h:#022820;--van-teal-b:#115e59;
         }
-
-        /* Giao diện Tabs */
-        .tabs-wrapper {
-            background-color: var(--color-surface);
-            border: 1px solid var(--color-divider);
-            border-radius: var(--radius-lg);
-            padding: 0.5rem;
-            box-shadow: var(--shadow-sm);
-            margin-bottom: 1.5rem;
-        }
-
-        .tabs-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.25rem;
-            border-bottom: 1px solid var(--color-divider);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .tab-trigger {
-            background: none;
-            border: none;
-            padding: 0.625rem 1rem;
-            font-size: var(--text-sm);
-            font-weight: 600;
-            color: var(--color-text-muted);
-            cursor: pointer;
-            border-radius: var(--radius-md);
-            transition: all var(--tr);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .tab-trigger:hover {
-            color: var(--color-text);
-            background-color: var(--color-surface-offset);
-        }
-
-        .tab-trigger.active {
-            color: var(--color-primary);
-            background-color: var(--color-primary-hl);
-        }
-
-        /* Form & Cards */
-        .van-card {
-            background-color: var(--color-surface);
-            border: 1px solid var(--color-divider);
-            border-radius: var(--radius-lg);
-            padding: 1.5rem;
-            box-shadow: var(--shadow-sm);
-            margin-bottom: 1.5rem;
-        }
-
-        .van-card-header {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1.25rem;
-            border-bottom: 1px solid var(--color-divider);
-            padding-bottom: 0.75rem;
-        }
-
-        .van-card-header h3 {
-            font-size: var(--text-md);
-            font-weight: 700;
-            color: var(--color-text);
-            margin: 0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .card-icon {
-            color: var(--color-primary);
-            font-size: 1.2rem;
-        }
-
-        .form-grid-2col {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-        }
-
-        @media (min-width: 640px) {
-            .form-grid-2col {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.375rem;
-            margin-bottom: 1rem;
-        }
-
-        .form-group label {
-            font-weight: 600;
-            font-size: var(--text-sm);
-            color: var(--color-text);
-        }
-
-        .input-with-unit {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .input-with-unit input,
-        .input-with-unit select {
-            width: 100%;
-            padding: 0.625rem 1rem;
-            padding-right: 4.5rem;
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-md);
-            background-color: var(--color-surface);
-            color: var(--color-text);
-            font-family: inherit;
-            font-size: var(--text-sm);
-            transition: border-color var(--tr);
-        }
-
-        .input-with-unit input:focus,
-        .input-with-unit select:focus {
-            outline: none;
-            border-color: var(--color-primary);
-            box-shadow: 0 0 0 3px var(--color-primary-hl);
-        }
-
-        .input-unit {
-            position: absolute;
-            right: 1rem;
-            font-size: var(--text-xs);
-            color: var(--color-text-muted);
-            font-weight: 600;
-            pointer-events: none;
-        }
-
-        /* Result Panel */
-        .result-panel {
-            position: sticky;
-            top: 2rem;
-            height: fit-content;
-        }
-
-        .calc-result-box {
-            background-color: var(--color-surface);
-            border: 1px solid var(--color-divider);
-            border-radius: var(--radius-lg);
-            padding: 1.5rem;
-            box-shadow: var(--shadow-md);
-            transition: all var(--tr);
-        }
-
-        .result-title {
-            margin: 0 0 1rem;
-            font-size: var(--text-md);
-            font-weight: 700;
-            color: var(--color-text);
-            text-align: center;
-            border-bottom: 1px solid var(--color-divider);
-            padding-bottom: 0.5rem;
-        }
-
-        .result-output-area {
-            margin: 1.5rem 0;
-            text-align: center;
-        }
-
-        .result-value-big {
-            font-size: 2.25rem;
-            font-weight: 800;
-            color: var(--color-primary);
-            line-height: 1.2;
-        }
-
-        .result-unit-sub {
-            font-size: var(--text-sm);
-            color: var(--color-text-muted);
-            font-weight: 500;
-            margin-top: 0.25rem;
-        }
-
-        .result-status-alert {
-            padding: 0.75rem 1rem;
-            border-radius: var(--radius-md);
-            font-weight: 700;
-            font-size: var(--text-sm);
-            margin-top: 1rem;
-            background-color: var(--color-surface-offset);
-            color: var(--color-text-muted);
-            border: 1px solid var(--color-divider);
-            text-align: center;
-            transition: all var(--tr);
-        }
-
-        /* Hộp cảnh báo y học */
-        .clinical-alert-box {
-            margin-top: 1rem;
-            padding: 1rem;
-            border-radius: var(--radius-md);
-            font-size: var(--text-sm);
-            line-height: 1.5;
-            display: flex;
-            gap: 0.75rem;
-        }
-
-        .clinical-alert-box.info {
-            background-color: var(--color-primary-hl);
-            color: var(--color-primary);
-            border: 1px solid rgba(14, 165, 233, 0.15);
-        }
-
-        .clinical-alert-box.warning {
-            background-color: var(--color-warning-hl);
-            color: var(--color-warning);
-            border: 1px solid rgba(217, 119, 6, 0.15);
-        }
-
-        .clinical-alert-box.danger {
-            background-color: var(--color-rose-hl);
-            color: var(--color-rose);
-            border: 1px solid rgba(225, 29, 72, 0.15);
-        }
-
-        .clinical-alert-box i {
-            font-size: 1.1rem;
-            margin-top: 0.1rem;
-        }
-
-        .alert-text-content h4 {
-            margin: 0 0 0.25rem 0;
-            font-weight: 700;
-            font-size: var(--text-sm);
-        }
-
-        .alert-text-content p {
-            margin: 0;
-            font-weight: 400;
-            opacity: 0.9;
-        }
-
-        /* Mẹo lâm sàng và hướng dẫn nhanh */
-        .guide-box {
-            background-color: var(--color-surface-offset);
-            border-radius: var(--radius-md);
-            padding: 1rem;
-            margin-top: 1rem;
-            border-left: 4px solid var(--color-primary);
-        }
-
-        .guide-box h4 {
-            margin: 0 0 0.5rem 0;
-            font-size: var(--text-sm);
-            font-weight: 700;
-            color: var(--color-text);
-        }
-
-        .guide-box ul {
-            margin: 0;
-            padding-left: 1.25rem;
-            font-size: var(--text-xs);
-            color: var(--color-text-muted);
-            line-height: 1.6;
-        }
-
-        /* Màu phân tầng nguy cơ */
-        .risk-low {
-            background-color: var(--color-success-hl);
-            color: var(--color-success);
-            border-color: rgba(5, 150, 105, 0.2);
-        }
-
-        .risk-medium {
-            background-color: var(--color-warning-hl);
-            color: var(--color-warning);
-            border-color: rgba(217, 119, 6, 0.2);
-        }
-
-        .risk-high {
-            background-color: var(--color-rose-hl);
-            color: var(--color-rose);
-            border-color: rgba(225, 29, 72, 0.2);
-        }
-
-        /* Table */
-        .info-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: var(--text-xs);
-            margin-top: 0.75rem;
-        }
-
-        .info-table th,
-        .info-table td {
-            border: 1px solid var(--color-divider);
-            padding: 0.5rem;
-            text-align: left;
-        }
-
-        .info-table th {
-            background-color: var(--color-surface-offset);
-            font-weight: 700;
-            color: var(--color-text);
-        }
-
-        /* Tooltip */
-        .info-tip {
-            cursor: help;
-            color: var(--color-primary);
-            margin-left: 0.25rem;
-        }
+        .van-hero{background:linear-gradient(135deg,#0c4a6e 0%,#0284c7 55%,#0891b2 100%);border-radius:20px;padding:28px 32px;margin-bottom:18px;position:relative;overflow:hidden;box-shadow:0 12px 32px rgba(2,132,199,.22)}
+        .van-hero::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.06)}
+        .van-hero::after{content:'';position:absolute;bottom:-60px;left:-20px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.04)}
+        .van-hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.25);color:#fff;padding:4px 12px;border-radius:99px;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:10px}
+        .van-hero h1{margin:0 0 8px;font-size:clamp(1.2rem,3vw,1.65rem);font-weight:800;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;line-height:1.2}
+        .van-hero p{margin:0;font-size:.84rem;color:rgba(255,255,255,.88);line-height:1.6;max-width:680px}
+        .van-hero-pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+        .van-hero-pill{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.95);padding:3px 10px;border-radius:99px;font-size:11px;font-weight:600}
+        .van-tabs{display:flex;flex-wrap:wrap;gap:6px;background:var(--color-surface);border:1px solid var(--color-divider);border-radius:16px;padding:8px;margin-bottom:14px;box-shadow:var(--shadow-sm)}
+        .van-tab-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border:none;border-radius:12px;background:transparent;color:var(--color-text-muted);font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;white-space:nowrap}
+        .van-tab-btn:hover{background:var(--color-surface-offset);color:var(--color-text)}
+        .van-tab-btn.active{background:linear-gradient(135deg,#0284c7,#0891b2);color:#fff;box-shadow:0 4px 12px rgba(2,132,199,.35)}
+        .tab-num{display:flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.25);font-size:10px;font-weight:800}
+        .van-tab-btn:not(.active) .tab-num{background:var(--color-surface-offset);color:var(--color-text-muted)}
+        .van-subtabs{display:none;flex-wrap:wrap;gap:4px;background:var(--color-surface-offset);border:1px dashed var(--color-divider);border-radius:12px;padding:8px;margin-bottom:14px}
+        .van-subtabs.visible{display:flex}
+        .van-subtabs-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--color-text-muted);padding:4px 8px;align-self:center}
+        .van-subtab-btn{display:flex;align-items:center;gap:6px;padding:7px 14px;border:1px solid var(--color-divider);border-radius:8px;background:var(--color-surface);color:var(--color-text-muted);font-size:.78rem;font-weight:700;cursor:pointer;transition:all .18s;font-family:'Plus Jakarta Sans',sans-serif}
+        .van-subtab-btn:hover{color:var(--color-text);border-color:var(--van-blue)}
+        .van-subtab-btn.active{background:var(--van-blue-h);border-color:var(--van-blue);color:var(--van-blue)}
+        .van-layout{display:grid;grid-template-columns:1fr;gap:16px;align-items:start}
+        @media(min-width:1024px){.van-layout{grid-template-columns:3fr 2fr}}
+        .van-card{background:var(--color-surface);border:1px solid var(--color-divider);border-radius:16px;padding:20px;box-shadow:var(--shadow-sm);margin-bottom:14px}
+        .van-card:last-child{margin-bottom:0}
+        .van-card-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--color-divider)}
+        .van-card-head-icon{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:var(--van-blue-h);color:var(--van-blue);font-size:1rem;flex-shrink:0}
+        .van-card-head-icon.green{background:var(--van-green-h);color:var(--van-green)}
+        .van-card-head-icon.amber{background:var(--van-amber-h);color:var(--van-amber)}
+        .van-card-head-icon.red{background:var(--van-red-h);color:var(--van-red)}
+        .van-card-head-icon.purple{background:var(--van-purple-h);color:var(--van-purple)}
+        .van-card-head-icon.teal{background:var(--van-teal-h);color:var(--van-teal)}
+        .van-card-head h3{font-size:.92rem;font-weight:800;color:var(--color-text);margin:0;font-family:'Plus Jakarta Sans',sans-serif}
+        .van-card-head p{font-size:.73rem;color:var(--color-text-muted);margin:2px 0 0}
+        .fg{display:flex;flex-direction:column;gap:5px;margin-bottom:11px}
+        .fg:last-child{margin-bottom:0}
+        .fg label{font-size:.78rem;font-weight:700;color:var(--color-text);display:flex;align-items:center;gap:5px}
+        .fg label i{color:var(--color-text-muted);font-size:.74rem}
+        .input-wrap{position:relative;display:flex;align-items:center}
+        .input-wrap .i-left{position:absolute;left:11px;color:var(--color-text-muted);font-size:.8rem;pointer-events:none;z-index:1}
+        .input-wrap input,.input-wrap select{width:100%;padding:9px 12px 9px 34px;border:1.5px solid var(--color-border);border-radius:8px;background:var(--color-surface);color:var(--color-text);font-size:.84rem;font-family:inherit;transition:border-color .18s,box-shadow .18s}
+        .input-wrap select{appearance:none}
+        .input-wrap input:focus,.input-wrap select:focus{outline:none;border-color:var(--van-blue);box-shadow:0 0 0 3px var(--van-blue-h)}
+        .input-unit{position:absolute;right:10px;font-size:10px;font-weight:700;color:var(--color-text-muted);text-transform:uppercase;pointer-events:none}
+        .input-wrap input{padding-right:44px}
+        .input-wrap select{padding-right:24px}
+        .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+        @media(max-width:520px){.form-grid{grid-template-columns:1fr}}
+        .check-toggle{display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--color-surface-offset);border:1px dashed var(--color-border);border-radius:8px;cursor:pointer;margin-bottom:10px}
+        .check-toggle input[type="checkbox"]{width:16px;height:16px;cursor:pointer;accent-color:var(--van-blue);flex-shrink:0}
+        .check-toggle label{font-size:.77rem;font-weight:700;color:var(--van-blue);cursor:pointer;display:flex;align-items:center;gap:5px;margin:0}
+        .metrics-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:12px;padding-top:12px;border-top:1px dashed var(--color-divider)}
+        .metric-item{background:var(--color-surface-offset);border-radius:8px;padding:8px 10px;border:1px solid var(--color-divider)}
+        .metric-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--color-text-muted)}
+        .metric-val{font-size:1.05rem;font-weight:800;color:var(--van-blue);font-family:'Plus Jakarta Sans',sans-serif;margin-top:2px}
+        .metric-unit{font-size:10px;font-weight:600;color:var(--color-text-muted)}
+        .van-result-panel{position:sticky;top:20px}
+        .van-result-card{background:var(--color-surface);border:1px solid var(--color-divider);border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md)}
+        .vrc-header{background:linear-gradient(135deg,#0284c7,#0891b2);padding:16px 20px;display:flex;align-items:center;gap:10px}
+        .vrc-header-icon{width:38px;height:38px;border-radius:8px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem}
+        .vrc-header-title{font-size:.84rem;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.5px;font-family:'Plus Jakarta Sans',sans-serif}
+        .vrc-header-subtitle{font-size:.72rem;color:rgba(255,255,255,.78);margin-top:2px}
+        .vrc-body{padding:18px}
+        .vrc-main-result{text-align:center;padding:18px 14px;background:var(--color-surface-offset);border-radius:12px;margin-bottom:12px;border:1px solid var(--color-divider);min-height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+        .vrc-placeholder{color:var(--color-text-muted);font-size:.8rem;display:flex;flex-direction:column;align-items:center;gap:8px}
+        .vrc-placeholder i{font-size:1.8rem;opacity:.35}
+        .vrc-dose-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--color-text-muted);margin-bottom:4px}
+        .vrc-dose-val{font-size:2rem;font-weight:800;color:var(--van-blue);font-family:'Plus Jakarta Sans',sans-serif;line-height:1.1}
+        .vrc-dose-sub{font-size:.77rem;color:var(--color-text-muted);margin-top:4px;font-weight:500;line-height:1.5}
+        .vrc-status{display:flex;align-items:center;justify-content:center;gap:8px;padding:9px 14px;border-radius:10px;font-size:.77rem;font-weight:800;text-transform:uppercase;letter-spacing:.4px;margin-bottom:12px;border:1px solid var(--color-divider);background:var(--color-surface-offset);color:var(--color-text-muted)}
+        .vrc-status.s-ok{background:var(--van-green-h);border-color:var(--van-green-b);color:var(--van-green)}
+        .vrc-status.s-warn{background:var(--van-amber-h);border-color:var(--van-amber-b);color:var(--van-amber)}
+        .vrc-status.s-danger{background:var(--van-red-h);border-color:var(--van-red-b);color:var(--van-red)}
+        .vrc-status.s-info{background:var(--van-blue-h);border-color:var(--van-blue-b);color:var(--van-blue)}
+        .vrc-status.s-purple{background:var(--van-purple-h);border-color:var(--van-purple-b);color:var(--van-purple)}
+        .pk-report{display:none;background:var(--color-surface-offset);border:1px solid var(--color-divider);border-radius:10px;padding:12px;margin-bottom:12px}
+        .pk-report-title{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--van-blue);margin-bottom:8px;display:flex;align-items:center;gap:5px}
+        .pk-report-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
+        .pk-item{background:var(--color-surface);border-radius:7px;padding:7px 9px;border:1px solid var(--color-divider)}
+        .pk-item-label{font-size:10px;color:var(--color-text-muted);font-weight:600}
+        .pk-item-val{font-size:.88rem;font-weight:800;color:var(--color-text);font-family:'Plus Jakarta Sans',sans-serif}
+        .van-alert{display:flex;gap:10px;padding:11px 13px;border-radius:10px;margin-bottom:10px;font-size:.79rem;line-height:1.5;border:1px solid;animation:fadeSlideIn .22s ease-out}
+        @keyframes fadeSlideIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+        .van-alert.a-info{background:var(--van-blue-h);border-color:var(--van-blue-b);color:var(--van-blue)}
+        .van-alert.a-warn{background:var(--van-amber-h);border-color:var(--van-amber-b);color:var(--van-amber)}
+        .van-alert.a-danger{background:var(--van-red-h);border-color:var(--van-red-b);color:var(--van-red)}
+        .van-alert.a-ok{background:var(--van-green-h);border-color:var(--van-green-b);color:var(--van-green)}
+        .van-alert-icon{font-size:1.1rem;margin-top:1px;flex-shrink:0}
+        .van-alert-content h4{font-size:.79rem;font-weight:800;margin:0 0 3px}
+        .van-alert-content p{font-size:.74rem;margin:0;opacity:.9}
+        .regimen-table-wrap{display:none;margin-bottom:12px;border-radius:10px;overflow:hidden;border:1px solid var(--color-divider)}
+        .regimen-table-title{background:var(--color-surface-offset);padding:8px 12px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--color-text);border-bottom:1px solid var(--color-divider)}
+        .regimen-table{width:100%;border-collapse:collapse;font-size:.74rem}
+        .regimen-table th{background:var(--color-surface-offset);padding:7px 10px;text-align:left;font-weight:700;color:var(--color-text-muted);font-size:.69rem;text-transform:uppercase;letter-spacing:.3px;border-bottom:1px solid var(--color-divider)}
+        .regimen-table td{padding:7px 10px;border-bottom:1px solid var(--color-divider);color:var(--color-text);font-weight:500}
+        .regimen-table tr:last-child td{border-bottom:none}
+        .regimen-table tr:hover td{background:var(--color-surface-offset)}
+        .r-badge{display:inline-flex;align-items:center;padding:2px 7px;border-radius:99px;font-size:10px;font-weight:800}
+        .r-badge.ok{background:var(--van-green-h);color:var(--van-green);border:1px solid var(--van-green-b)}
+        .r-badge.warn{background:var(--van-amber-h);color:var(--van-amber);border:1px solid var(--van-amber-b)}
+        .r-badge.danger{background:var(--van-red-h);color:var(--van-red);border:1px solid var(--van-red-b)}
+        .van-guide{background:linear-gradient(135deg,var(--van-blue-h),var(--color-surface-offset));border-left:4px solid var(--van-blue);border-radius:10px;padding:14px 16px;margin-bottom:12px}
+        .van-guide h4{font-size:.8rem;font-weight:800;color:var(--color-text);margin:0 0 8px;display:flex;align-items:center;gap:6px}
+        .van-guide ul{margin:0;padding-left:16px;display:grid;gap:5px}
+        .van-guide li{font-size:.74rem;color:var(--color-text-muted);line-height:1.55}
+        .tab-content{display:none}
+        .tab-content.active{display:block}
+        .method-switch{display:flex;gap:6px;margin-bottom:12px}
+        .method-btn{flex:1;padding:9px 10px;border:1.5px solid var(--color-border);border-radius:8px;background:var(--color-surface);color:var(--color-text-muted);font-size:.76rem;font-weight:700;cursor:pointer;transition:all .18s;text-align:center;font-family:'Plus Jakarta Sans',sans-serif}
+        .method-btn:hover{border-color:var(--van-blue);color:var(--color-text)}
+        .method-btn.active{border-color:var(--van-blue);background:var(--van-blue-h);color:var(--van-blue)}
+        .section-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--van-blue);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+        .section-label::after{content:'';flex:1;height:1px;background:var(--color-divider)}
+        .input-readonly{background:var(--color-surface-offset)!important;font-weight:800!important;color:var(--van-blue)!important;cursor:default}
+        .scenario-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:12px}
+        @media(max-width:480px){.scenario-grid{grid-template-columns:1fr}}
+        .sc-btn{padding:12px 14px;border:2px solid var(--color-border);border-radius:12px;background:var(--color-surface);cursor:pointer;text-align:left;transition:all .18s;display:flex;flex-direction:column;gap:3px}
+        .sc-btn-icon{font-size:1.2rem;margin-bottom:2px}
+        .sc-btn-name{font-size:.79rem;font-weight:800;color:var(--color-text);font-family:'Plus Jakarta Sans',sans-serif}
+        .sc-btn-desc{font-size:.69rem;color:var(--color-text-muted);line-height:1.4}
+        .sc-btn:hover{border-color:var(--van-blue);transform:translateY(-1px)}
+        .sc-btn.active{border-color:var(--van-blue);background:var(--van-blue-h)}
+        .sc-btn.active .sc-btn-name{color:var(--van-blue)}
+        .sc-btn.sc-amber:hover{border-color:var(--van-amber)}
+        .sc-btn.sc-amber.active{border-color:var(--van-amber);background:var(--van-amber-h)}
+        .sc-btn.sc-amber.active .sc-btn-name{color:var(--van-amber)}
+        .sc-btn.sc-purple:hover{border-color:var(--van-purple)}
+        .sc-btn.sc-purple.active{border-color:var(--van-purple);background:var(--van-purple-h)}
+        .sc-btn.sc-purple.active .sc-btn-name{color:var(--van-purple)}
+        .sc-btn.sc-teal:hover{border-color:var(--van-teal)}
+        .sc-btn.sc-teal.active{border-color:var(--van-teal);background:var(--van-teal-h)}
+        .sc-btn.sc-teal.active .sc-btn-name{color:var(--van-teal)}
+        .auc-gauge{display:none;margin-bottom:12px}
+        .auc-gauge-bar{position:relative;height:9px;background:var(--color-surface-offset);border-radius:99px;overflow:visible;border:1px solid var(--color-divider)}
+        .auc-zone{position:absolute;top:0;height:100%}
+        .auc-zone.low{background:var(--van-amber-b);left:0;width:40%;border-radius:99px 0 0 99px}
+        .auc-zone.ok{background:var(--van-green-b);left:40%;width:20%}
+        .auc-zone.high{background:var(--van-red-b);left:60%;width:40%;border-radius:0 99px 99px 0}
+        .auc-pointer{position:absolute;top:-4px;width:17px;height:17px;border-radius:50%;background:var(--van-blue);border:2.5px solid var(--color-surface);box-shadow:0 2px 6px rgba(0,0,0,.18);transform:translateX(-50%);transition:left .4s ease,background .3s}
+        .auc-gauge-labels{display:flex;justify-content:space-between;margin-top:6px;font-size:10px;color:var(--color-text-muted);font-weight:600}
+        .auc-gauge-val{text-align:center;font-size:.75rem;margin-top:6px;font-weight:600}
+        .btn-print{width:100%;padding:11px;border:none;border-radius:10px;background:linear-gradient(135deg,#0284c7,#0891b2);color:#fff;font-size:.82rem;font-weight:800;cursor:pointer;display:none;align-items:center;justify-content:center;gap:8px;margin-top:12px;transition:opacity .2s;font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:.3px}
+        .btn-print:hover{opacity:.88}
+        .crcl-ok{color:var(--van-green)!important}
+        .crcl-mod{color:var(--van-amber)!important}
+        .crcl-severe{color:var(--van-red)!important}
+        @media print{.app-sidebar,#header-placeholder,.sidebar-overlay,.van-tabs,.van-subtabs,.breadcrumb-container,.btn-print{display:none!important}.main-wrapper{margin:0!important;padding:0!important;width:100%!important}.van-layout{grid-template-columns:1fr!important}}
     </style>
-
-    <!-- Script điều hướng & theme của hệ thống -->
-    <script src="../../../components/header.js" defer></script>
-    <script src="../../../components/footer.js" defer></script>
-    <script src="../../../js/main.js" defer></script>
 </head>
-
 <body>
-    <!-- HEADER PLACEHOLDER -->
-    <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-    <div class="app-container">
-            <!-- SIDEBAR -->
+<div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div class="app-container">
     <aside class="app-sidebar" id="appSidebar">
-      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
-        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
-          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
-          <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
-      </button>
-
-      <nav class="sidebar-nav" aria-label="Điều hướng chính">
-        <ul class="nav-list" role="list">
-          <li>
-            <a href="../../../index.html" class="nav-item" title="Trang chủ">
-              <span class="nav-icon">🏠</span>
-              <span class="nav-text">Trang chủ</span>
-            </a>
-          </li>
-          <li>
-            <a href="../cong-cu.html" class="nav-item active" aria-current="page" title="Công cụ">
-              <span class="nav-icon">⚙️</span>
-              <span class="nav-text">Công cụ</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+        <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn Sidebar">
+            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <nav class="sidebar-nav" aria-label="Điều hướng">
+            <ul class="nav-list" role="list">
+                <li><a href="../../../index.html" class="nav-item" title="Trang chủ"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+                <li><a href="../cong-cu.html" class="nav-item active" aria-current="page" title="Công cụ"><span class="nav-icon">⚙️</span><span class="nav-text">Công cụ</span></a></li>
+            </ul>
+        </nav>
     </aside>
+    <main class="main-wrapper">
+        <nav aria-label="Breadcrumb" class="breadcrumb-container">
+            <ol class="breadcrumb-list">
+                <li class="breadcrumb-item"><a href="../../../index.html" class="breadcrumb-link">🏠 Home</a></li>
+                <li class="breadcrumb-item"><a href="../cong-cu.html" class="breadcrumb-link">Công cụ</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)" class="breadcrumb-link">Truyền Nhiễm</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Quản lý &amp; Chỉnh liều Vancomycin</li>
+            </ol>
+        </nav>
 
-        <!-- MAIN WRAPPER -->
-        <main class="main-wrapper">
-            <!-- BREADCRUMB -->
-            <nav aria-label="Breadcrumb" class="breadcrumb-container">
-                <ol class="breadcrumb-list">
-                    <li class="breadcrumb-item">
-                        <a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a>
-                    </li>
-                    <li class="breadcrumb-item">
-                        <a href="../cong-cu.html" class="breadcrumb-link">Công cụ</a>
-                    </li>
-                    <li class="breadcrumb-item">
-                        <a href="javascript:void(0)" class="breadcrumb-link">Truyền Nhiễm</a>
-                    </li>
-                    <li class="breadcrumb-item active" aria-current="page">Quản lý & Chỉnh liều Vancomycin</li>
-                </ol>
-            </nav>
-
-            <!-- HERO BANNER -->
-            <div class="flow-hero"
-                style="background: var(--gradient-accent); color: white; padding: 1.75rem; border-radius: var(--radius-lg); margin-bottom: 1.5rem;">
-                <div class="hero-badge"
-                    style="background: rgba(255,255,255,0.2); display: inline-block; padding: 0.25rem 0.75rem; border-radius: var(--radius-full); font-size: var(--text-xs); font-weight: 700; margin-bottom: 0.5rem;">
-                    🧮 CÔNG CỤ DƯỢC LÂM SÀNG</div>
-                <h1 style="margin: 0; font-size: var(--text-xl); font-weight: 800;">QUẢN LÝ & CHỈNH LIỀU VANCOMYCIN</h1>
-                <p style="margin: 0.5rem 0 0; font-size: var(--text-sm); opacity: 0.9;">Cá thể hóa liều dùng dựa trên
-                    đích AUC/MIC 400–600 mg·h/L và hiệu chỉnh liều trên các nhóm đối tượng đặc biệt.</p>
+        <!-- HERO -->
+        <div class="van-hero">
+            <div class="van-hero-badge"><i class="fa-solid fa-flask-vial"></i> Dược Lâm Sàng — Kháng Sinh Glycopeptide</div>
+            <h1>Quản lý &amp; Chỉnh liều Vancomycin</h1>
+            <p>Tính toán liều nạp, liều duy trì ban đầu và tối ưu hóa liều dùng cá thể hóa dựa trên đích <strong style="color:rgba(255,255,255,.95)">AUC/MIC 400-600 mg·h/L</strong> (ASHP/IDSA/SIDP 2020). Hỗ trợ nhiều bối cảnh lâm sàng: truyền ngắt quãng, truyền liên tục, lọc máu ngắt quãng và điều trị ngoại trú.</p>
+            <div class="van-hero-pills">
+                <span class="van-hero-pill"><i class="fa-solid fa-bullseye"></i> Đích AUC/MIC 400-600</span>
+                <span class="van-hero-pill"><i class="fa-solid fa-flask"></i> PK Sawchuk-Zaske</span>
+                <span class="van-hero-pill"><i class="fa-solid fa-kidney"></i> Hiệu chỉnh CrCl</span>
+                <span class="van-hero-pill"><i class="fa-solid fa-chart-line"></i> So sánh phác đồ</span>
             </div>
+        </div>
 
-            <!-- TAB MENU ĐIỀU HƯỚNG CHÍNH -->
-            <div class="tabs-wrapper" style="margin-bottom: 1rem;">
-                <div class="tabs-list" role="tablist" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
-                    <button class="tab-trigger active" onclick="switchMainTab('empiric', this)" role="tab"
-                        aria-selected="true" style="font-size: var(--text-md); padding: 0.75rem 1.25rem;">
-                        <i class="fa-solid fa-calculator"></i> 1. Tính liều ban đầu (Empiric Dosing)
-                    </button>
-                    <button class="tab-trigger" onclick="switchMainTab('adjustment', this)" role="tab"
-                        aria-selected="false" style="font-size: var(--text-md); padding: 0.75rem 1.25rem;">
-                        <i class="fa-solid fa-sliders"></i> 2. Hiệu chỉnh liều dùng (Dose Adjustment)
-                    </button>
-                </div>
-            </div>
+        <!-- MAIN TABS -->
+        <div class="van-tabs" role="tablist">
+            <button class="van-tab-btn active" onclick="switchMainTab('empiric',this)" role="tab" aria-selected="true">
+                <span class="tab-num">1</span><i class="fa-solid fa-calculator"></i> Liều ban đầu (Empiric)
+            </button>
+            <button class="van-tab-btn" onclick="switchMainTab('adjustment',this)" role="tab" aria-selected="false">
+                <span class="tab-num">2</span><i class="fa-solid fa-sliders"></i> Hiệu chỉnh liều (Adjustment)
+            </button>
+        </div>
 
-            <!-- PHẦN CHỌN TRƯỜNG HỢP (SUB-TABS) DÀNH CHO HIỆU CHỈNH LIỀU -->
-            <div id="sub-tabs-wrapper" class="tabs-wrapper"
-                style="display: none; background-color: var(--color-surface-offset); border-style: dashed; margin-bottom: 1.5rem;">
-                <div
-                    style="font-size: var(--text-xs); font-weight: 700; color: var(--color-text-muted); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.5px; padding-left: 0.5rem;">
-                    Chọn trường hợp hiệu chỉnh lâm sàng:
-                </div>
-                <div class="tabs-list" role="tablist" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
-                    <button class="tab-trigger active sub-tab" onclick="switchSubTab('intermittent', this)" role="tab">
-                        <i class="fa-solid fa-chart-line"></i> Truyền ngắt quãng (AUC-based)
-                    </button>
-                    <button class="tab-trigger sub-tab" onclick="switchSubTab('civ', this)" role="tab">
-                        <i class="fa-solid fa-arrows-spin"></i> Truyền liên tục (CIV)
-                    </button>
-                    <button class="tab-trigger sub-tab" onclick="switchSubTab('ihd', this)" role="tab">
-                        <i class="fa-solid fa-kidney"></i> Lọc máu ngắt quãng (IHD)
-                    </button>
-                    <button class="tab-trigger sub-tab" onclick="switchSubTab('opat', this)" role="tab">
-                        <i class="fa-solid fa-house-medical"></i> Ngoại trú (OPAT)
-                    </button>
-                </div>
-            </div>
+        <!-- SUB-TABS -->
+        <div class="van-subtabs" id="vanSubtabs">
+            <span class="van-subtabs-label">Chọn bối cảnh lâm sàng:</span>
+            <button class="van-subtab-btn active" onclick="switchSubTab('intermittent',this)"><i class="fa-solid fa-chart-line"></i> Ngắt quãng (AUC)</button>
+            <button class="van-subtab-btn" onclick="switchSubTab('civ',this)"><i class="fa-solid fa-arrows-spin"></i> Liên tục (CIV)</button>
+            <button class="van-subtab-btn" onclick="switchSubTab('ihd',this)"><i class="fa-solid fa-filter-circle-xmark"></i> Lọc máu (IHD)</button>
+            <button class="van-subtab-btn" onclick="switchSubTab('opat',this)"><i class="fa-solid fa-house-medical"></i> Ngoại trú (OPAT)</button>
+        </div>
 
-            <!-- BODY CHIA 2 CỘT -->
-            <div class="van-container">
-
-                <!-- CỘT TRÁI: CÁC INPUT THEO TAB -->
-                <div class="van-inputs">
-
-                    <!-- THẺ THÔNG TIN BỆNH NHÂN CHUNG (PATIENT PROFILE) -->
-                    <div class="van-card" id="patient-profile-card">
-                        <div class="van-card-header">
-                            <div class="card-icon"><i class="fa-solid fa-user-doctor"></i></div>
-                            <h3>Thông tin bệnh nhân (Patient Profile)</h3>
+        <div class="van-layout">
+            <!-- LEFT COLUMN -->
+            <div>
+                <!-- PATIENT CARD -->
+                <div class="van-card">
+                    <div class="van-card-head">
+                        <div class="van-card-head-icon"><i class="fa-solid fa-clipboard-user"></i></div>
+                        <div><h3>Hồ sơ bệnh nhân (Patient Profile)</h3><p>Thông tin cơ bản để tính toán dược động học cá thể hóa</p></div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="fg">
+                            <label for="prof-age"><i class="fa-solid fa-calendar-days"></i> Tuổi</label>
+                            <div class="input-wrap"><i class="fa-solid fa-calendar-days i-left"></i><input type="number" id="prof-age" value="65" min="1" max="120" oninput="onPatientChange()"><span class="input-unit">tuổi</span></div>
                         </div>
-                        <div class="form-grid-2col">
-                            <div class="form-group">
-                                <label for="prof-age">Tuổi bệnh nhân</label>
-                                <div class="input-with-unit">
-                                    <input type="number" id="prof-age" placeholder="Ví dụ: 65" min="1" max="120"
-                                        oninput="calculatePatientMetrics()">
-                                    <span class="input-unit">tuổi</span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="prof-gender">Giới tính</label>
-                                <div class="input-with-unit">
-                                    <select id="prof-gender" onchange="calculatePatientMetrics()">
-                                        <option value="male">Nam (Male)</option>
-                                        <option value="female">Nữ (Female)</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="prof-weight">Cân nặng thực tế (TBW)</label>
-                                <div class="input-with-unit">
-                                    <input type="number" id="prof-weight" placeholder="Ví dụ: 70" min="2" max="250"
-                                        oninput="calculatePatientMetrics()">
-                                    <span class="input-unit">kg</span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="prof-height">Chiều cao</label>
-                                <div class="input-with-unit">
-                                    <input type="number" id="prof-height" placeholder="Ví dụ: 170" min="50" max="250"
-                                        oninput="calculatePatientMetrics()">
-                                    <span class="input-unit">cm</span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="prof-scr">Creatinin huyết thanh (Cr)</label>
-                                <div class="input-with-unit" style="gap: 0.25rem;">
-                                    <input type="number" id="prof-scr" placeholder="Ví dụ: 1.0" min="0.1" max="15"
-                                        step="0.01" oninput="calculatePatientMetrics()" style="flex: 2;">
-                                    <select id="prof-scr-unit" onchange="calculatePatientMetrics()"
-                                        style="flex: 1.2; padding-right: 1.5rem; font-size: var(--text-xs);">
-                                        <option value="mgdl">mg/dL</option>
-                                        <option value="umoll">µmol/L</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Độ thanh thải Creatinin (CrCl)</label>
-                                <div class="input-with-unit">
-                                    <input type="text" id="prof-crcl-val" readonly
-                                        style="background-color: var(--color-surface-offset); font-weight: 700; color: var(--color-primary);"
-                                        value="--">
-                                    <span class="input-unit">mL/phút</span>
-                                </div>
+                        <div class="fg">
+                            <label for="prof-gender"><i class="fa-solid fa-venus-mars"></i> Giới tính</label>
+                            <div class="input-wrap"><i class="fa-solid fa-venus-mars i-left"></i>
+                                <select id="prof-gender" onchange="onPatientChange()"><option value="male" selected>Nam (Male)</option><option value="female">Nữ (Female)</option></select>
                             </div>
                         </div>
-
-                        <!-- Bảng thông tin sinh học tính toán được (IBW, BSA...) -->
-                        <div id="patient-calculated-metrics"
-                            style="display: none; margin-top: 1rem; border-top: 1px dashed var(--color-divider); padding-top: 0.75rem; font-size: var(--text-xs); color: var(--color-text-muted);">
-                            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;">
-                                <div>Cân nặng lý tưởng (IBW): <strong id="val-ibw"
-                                        style="color: var(--color-text);">--</strong> kg</div>
-                                <div>Cân nặng hiệu chỉnh (AdjBW): <strong id="val-adjbw"
-                                        style="color: var(--color-text);">--</strong> kg</div>
-                                <div>BSA (Mosteller): <strong id="val-bsa" style="color: var(--color-text);">--</strong>
-                                    m²</div>
-                                <div>Thể trạng béo phì: <strong id="val-obese-status"
-                                        style="color: var(--color-text);">--</strong></div>
+                        <div class="fg">
+                            <label for="prof-weight"><i class="fa-solid fa-weight-scale"></i> Cân nặng thực (TBW)</label>
+                            <div class="input-wrap"><i class="fa-solid fa-weight-scale i-left"></i><input type="number" id="prof-weight" value="60" min="2" max="300" oninput="onPatientChange()"><span class="input-unit">kg</span></div>
+                        </div>
+                        <div class="fg">
+                            <label for="prof-scr"><i class="fa-solid fa-vial"></i> Creatinin huyết thanh</label>
+                            <div class="input-wrap" style="gap:4px">
+                                <i class="fa-solid fa-vial i-left" style="z-index:2"></i>
+                                <input type="number" id="prof-scr" value="1.0" min="0.1" max="15" step="0.01" style="flex:2;padding-left:34px" oninput="onPatientChange()">
+                                <select id="prof-scr-unit" onchange="onPatientChange()" style="flex:1.2;padding-left:8px;padding-right:16px;font-size:.77rem;min-width:0">
+                                    <option value="mgdl" selected>mg/dL</option><option value="umoll">umol/L</option>
+                                </select>
                             </div>
                         </div>
                     </div>
-
-                    <!-- TAB 1: LIỀU BAN ĐẦU -->
-                    <div id="tab-empiric" class="tab-content active">
-                        <div class="van-card">
-                            <div class="van-card-header">
-                                <div class="step-badge">2</div>
-                                <h3>Chỉ định liều ban đầu theo kinh nghiệm</h3>
-                            </div>
-                            <div class="form-group">
-                                <label for="emp-patient-group">Nhóm đối tượng đích</label>
-                                <div class="input-with-unit">
-                                    <select id="emp-patient-group" onchange="runEmpiric()">
-                                        <option value="adult">Người lớn (Thận bình thường)</option>
-                                        <option value="obese">Người lớn béo phì (BMI ≥ 30)</option>
-                                        <option value="child">Trẻ em (3 tháng - &lt;12 tuổi)</option>
-                                        <option value="civ">Truyền tĩnh mạch liên tục (CIV)</option>
-                                    </select>
-                                </div>
-                            </div>
+                    <div class="check-toggle"><input type="checkbox" id="prof-obese" onchange="toggleObese()"><label for="prof-obese"><i class="fa-solid fa-person-circle-check" style="color:var(--van-blue)"></i> Bệnh nhân béo phì — nhập chiều cao để tính IBW &amp; AdjBW</label></div>
+                    <div id="height-row" style="display:none;margin-bottom:10px">
+                        <div class="fg" style="margin-bottom:0">
+                            <label for="prof-height"><i class="fa-solid fa-ruler-vertical"></i> Chiều cao</label>
+                            <div class="input-wrap"><i class="fa-solid fa-ruler-vertical i-left"></i><input type="number" id="prof-height" value="165" min="50" max="250" oninput="onPatientChange()"><span class="input-unit">cm</span></div>
                         </div>
                     </div>
-
-                    <!-- TAB 2: CHỈNH LIỀU TRUYỀN NGẮT QUÃNG -->
-                    <div id="tab-intermittent" class="tab-content">
-                        <div class="van-card">
-                            <div class="van-card-header">
-                                <div class="step-badge">2</div>
-                                <h3>Phác đồ hiện tại & Phương thức tính AUC</h3>
-                            </div>
-
-                            <div class="form-group" style="margin-bottom: 1.25rem;">
-                                <label for="int-calc-method">Phương thức xác định AUC hiện tại</label>
-                                <div class="input-with-unit">
-                                    <select id="int-calc-method" onchange="toggleAucMethod()">
-                                        <option value="direct">Nhập trực tiếp chỉ số AUC 24h (Đã biết)</option>
-                                        <option value="pk">Tính AUC từ nồng độ Đỉnh/Đáy thực tế (PK bậc một)</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!-- Form chung cho cả 2 phương thức -->
-                            <div class="form-grid-2col"
-                                style="margin-bottom: 1rem; border-top: 1px dashed var(--color-divider); padding-top: 1rem;">
-                                <div class="form-group">
-                                    <label for="int-dose">Liều truyền mỗi lần hiện tại</label>
-                                    <div class="input-with-unit">
-                                        <input type="number" id="int-dose" placeholder="Ví dụ: 1000" min="100"
-                                            max="3000" step="50" oninput="runIntermittent()">
-                                        <span class="input-unit">mg</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="int-interval">Khoảng cách đưa liều hiện tại</label>
-                                    <div class="input-with-unit">
-                                        <select id="int-interval" onchange="runIntermittent()">
-                                            <option value="8">Mỗi 8 giờ (Q8H)</option>
-                                            <option value="12" selected>Mỗi 12 giờ (Q12H)</option>
-                                            <option value="24">Mỗi 24 giờ (Q24H)</option>
-                                            <option value="48">Mỗi 48 giờ (Q48H)</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- PHƯƠNG THỨC 1: NHẬP TRỰC TIẾP AUC -->
-                            <div id="method-direct-fields">
-                                <div class="form-grid-2col">
-                                    <div class="form-group">
-                                        <label for="int-auc-calc">AUC tính toán hiện tại (AUC_calculated)</label>
-                                        <div class="input-with-unit">
-                                            <input type="number" id="int-auc-calc" placeholder="Ví dụ: 800" min="50"
-                                                max="2000" oninput="runIntermittent()">
-                                            <span class="input-unit">mg·h/L</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="int-auc-desired">AUC đích mong muốn (AUC_desired)</label>
-                                        <div class="input-with-unit">
-                                            <input type="number" id="int-auc-desired" value="600" min="400" max="600"
-                                                oninput="runIntermittent()">
-                                            <span class="input-unit">mg·h/L</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- PHƯƠNG THỨC 2: TÍNH TỪ ĐỈNH / ĐÁY (PK BẬC 1) -->
-                            <div id="method-pk-fields" style="display: none;">
-                                <div
-                                    style="font-size: var(--text-xs); font-weight: 700; color: var(--color-primary); margin-bottom: 0.75rem; text-transform: uppercase;">
-                                    Nhập nồng độ đỉnh/đáy đo được:</div>
-                                <div class="form-grid-2col">
-                                    <div class="form-group">
-                                        <label for="int-c-peak">Nồng độ đỉnh thực đo (C_peak)</label>
-                                        <div class="input-with-unit">
-                                            <input type="number" id="int-c-peak" placeholder="Ví dụ: 30" min="5"
-                                                max="80" step="0.1" oninput="runIntermittent()">
-                                            <span class="input-unit">mg/L</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="int-t-peak-sample">Lấy mẫu đỉnh sau khi kết thúc truyền</label>
-                                        <div class="input-with-unit">
-                                            <input type="number" id="int-t-peak-sample" value="1.0" min="0" max="4"
-                                                step="0.1" oninput="runIntermittent()">
-                                            <span class="input-unit">giờ</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="int-c-trough">Nồng độ đáy thực đo (C_trough)</label>
-                                        <div class="input-with-unit">
-                                            <input type="number" id="int-c-trough" placeholder="Ví dụ: 12" min="1"
-                                                max="40" step="0.1" oninput="runIntermittent()">
-                                            <span class="input-unit">mg/L</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="int-t-trough-sample">Lấy mẫu đáy trước liều kế tiếp</label>
-                                        <div class="input-with-unit">
-                                            <input type="number" id="int-t-trough-sample" value="0.0" min="0" max="4"
-                                                step="0.1" oninput="runIntermittent()">
-                                            <span class="input-unit">giờ</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="int-t-inf">Thời gian truyền tĩnh mạch (t_inf)</label>
-                                        <div class="input-with-unit">
-                                            <input type="number" id="int-t-inf" value="1.0" min="0.5" max="4" step="0.1"
-                                                oninput="runIntermittent()">
-                                            <span class="input-unit">giờ</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="int-auc-desired-pk">AUC đích mong muốn (AUC_desired)</label>
-                                        <div class="input-with-unit">
-                                            <input type="number" id="int-auc-desired-pk" value="600" min="400" max="600"
-                                                oninput="runIntermittent()">
-                                            <span class="input-unit">mg·h/L</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="fg" style="margin-bottom:0">
+                        <label><i class="fa-solid fa-gauge-high"></i> Độ thanh thải Creatinin (CrCl — Cockcroft-Gault)</label>
+                        <div class="input-wrap"><i class="fa-solid fa-gauge-high i-left"></i><input type="text" id="crcl-display" class="input-readonly" readonly value="—"><span class="input-unit">mL/min</span></div>
+                    </div>
+                    <div id="metrics-panel" style="display:none">
+                        <div class="metrics-grid">
+                            <div class="metric-item"><div class="metric-label">IBW (Devine)</div><div class="metric-val" id="m-ibw">—</div><div class="metric-unit">kg</div></div>
+                            <div class="metric-item"><div class="metric-label">AdjBW (40%)</div><div class="metric-val" id="m-adjbw">—</div><div class="metric-unit">kg</div></div>
+                            <div class="metric-item"><div class="metric-label">BSA (Mosteller)</div><div class="metric-val" id="m-bsa">—</div><div class="metric-unit">m2</div></div>
+                            <div class="metric-item"><div class="metric-label">Thể trạng</div><div class="metric-val" id="m-status" style="font-size:.77rem">—</div></div>
                         </div>
                     </div>
-
-                    <!-- TAB 3: CHỈNH LIỀU CIV -->
-                    <div id="tab-civ" class="tab-content">
-                        <div class="van-card">
-                            <div class="van-card-header">
-                                <div class="step-badge">2</div>
-                                <h3>Truyền liên tục (CIV) hiện tại</h3>
-                            </div>
-                            <div class="form-grid-2col">
-                                <div class="form-group">
-                                    <label for="civ-current-tdd">Tổng liều truyền 24 giờ hiện tại</label>
-                                    <div class="input-with-unit">
-                                        <input type="number" id="civ-current-tdd" placeholder="Ví dụ: 2000" min="500"
-                                            max="6000" step="250" oninput="runCIV()">
-                                        <span class="input-unit">mg/24h</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="civ-measured-css">Nồng độ thuốc đo được (Css hiện tại)</label>
-                                    <div class="input-with-unit">
-                                        <input type="number" id="civ-measured-css" placeholder="Ví dụ: 12" min="1"
-                                            max="100" step="0.1" oninput="runCIV()">
-                                        <span class="input-unit">mg/L</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="civ-target-css">Nồng độ mục tiêu (Css mong muốn)</label>
-                                    <div class="input-with-unit">
-                                        <input type="number" id="civ-target-css" value="20" min="15" max="30"
-                                            oninput="runCIV()">
-                                        <span class="input-unit">mg/L</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- TAB 4: LỌC MÁU NGẮT QUÃNG IHD -->
-                    <div id="tab-ihd" class="tab-content">
-                        <div class="van-card">
-                            <div class="van-card-header">
-                                <div class="step-badge">2</div>
-                                <h3>Bệnh nhân lọc máu ngắt quãng (IHD)</h3>
-                            </div>
-                            <div class="form-group">
-                                <label for="ihd-pre-level">Nồng độ trước lọc máu đo được (Pre-HD level)</label>
-                                <div class="input-with-unit">
-                                    <input type="number" id="ihd-pre-level" placeholder="Ví dụ: 12" min="1" max="60"
-                                        step="0.1" oninput="runIHD()">
-                                    <span class="input-unit">mcg/mL</span>
-                                </div>
-                            </div>
-                            <p
-                                style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: 0.5rem; margin-bottom: 0;">
-                                * Liều bổ sung theo mg/kg sẽ tự động tính toán dựa trên <strong>Cân nặng thực
-                                    tế</strong> lấy từ Hồ sơ bệnh nhân ở trên.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- TAB 5: ĐÁY NGOẠI TRÚ (OPAT) -->
-                    <div id="tab-opat" class="tab-content">
-                        <div class="van-card">
-                            <div class="van-card-header">
-                                <div class="step-badge">2</div>
-                                <h3>Dữ liệu lâm sàng trong bệnh viện</h3>
-                            </div>
-                            <div class="form-grid-2col">
-                                <div class="form-group">
-                                    <label for="opat-trough">Nồng độ đáy đo được trong viện ($C_{trough}$)</label>
-                                    <div class="input-with-unit">
-                                        <input type="number" id="opat-trough" placeholder="Ví dụ: 12" min="2" max="40"
-                                            step="0.1" oninput="runOPAT()">
-                                        <span class="input-unit">mg/L</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="opat-auc">AUC tính toán tương ứng trong viện</label>
-                                    <div class="input-with-unit">
-                                        <input type="number" id="opat-auc" placeholder="Ví dụ: 500" min="100" max="1000"
-                                            oninput="runOPAT()">
-                                        <span class="input-unit">mg·h/L</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
 
-                <!-- CỘT PHẢI: KẾT QUẢ VÀ HƯỚNG DẪN Y KHOA -->
-                <div class="result-panel">
-                    <div class="calc-result-box" id="resultCard">
-                        <h3 class="result-title" id="resultCardTitle">KẾT QUẢ LIỀU KHỞI ĐẦU</h3>
-
-                        <div class="result-output-area">
-                            <div class="result-value-big" id="primaryResult">--</div>
-                            <div class="result-unit-sub" id="secondaryResult">Vui lòng nhập đầy đủ thông tin ở cột
-                                bên trái để tính toán.</div>
+                <!-- TAB 1: EMPIRIC -->
+                <div id="tc-empiric" class="tab-content active">
+                    <div class="van-card">
+                        <div class="van-card-head"><div class="van-card-head-icon green"><i class="fa-solid fa-person-circle-check"></i></div><div><h3>Chọn đối tượng lâm sàng</h3><p>Phác đồ liều nạp và duy trì theo nhóm bệnh nhân</p></div></div>
+                        <div class="scenario-grid">
+                            <button class="sc-btn active" id="sc-adult" onclick="selectScenario('adult',this)">
+                                <div class="sc-btn-icon">🧑</div><div class="sc-btn-name">Người lớn (Chuẩn)</div><div class="sc-btn-desc">Cân nặng bình thường, không béo phì, thận không suy</div>
+                            </button>
+                            <button class="sc-btn sc-amber" id="sc-obese" onclick="selectScenario('obese',this)">
+                                <div class="sc-btn-icon">⚖️</div><div class="sc-btn-name">Béo phì</div><div class="sc-btn-desc">BMI &gt;=30 hoặc TBW &gt; 120% IBW — Hiệu chỉnh AdjBW</div>
+                            </button>
+                            <button class="sc-btn sc-purple" id="sc-child" onclick="selectScenario('child',this)">
+                                <div class="sc-btn-icon">👶</div><div class="sc-btn-name">Nhi khoa</div><div class="sc-btn-desc">3 tháng – &lt; 12 tuổi, chức năng thận bình thường</div>
+                            </button>
+                            <button class="sc-btn sc-teal" id="sc-civ" onclick="selectScenario('civ',this)">
+                                <div class="sc-btn-icon">💉</div><div class="sc-btn-name">Truyền liên tục (CIV)</div><div class="sc-btn-desc">Loading dose + tốc độ CIV 24h ban đầu</div>
+                            </button>
                         </div>
+                    </div>
+                </div>
 
-                        <div class="result-status-alert" id="clinicalStatus">
-                            Đang chờ nhập dữ liệu...
+                <!-- TAB 2a: INTERMITTENT -->
+                <div id="tc-intermittent" class="tab-content">
+                    <div class="van-card">
+                        <div class="van-card-head"><div class="van-card-head-icon"><i class="fa-solid fa-chart-bar"></i></div><div><h3>Phác đồ &amp; Nồng độ đo được</h3><p>Truyền ngắt quãng — tối ưu theo AUC 24h</p></div></div>
+                        <div class="section-label">Phác đồ đang dùng</div>
+                        <div class="form-grid">
+                            <div class="fg"><label for="int-dose"><i class="fa-solid fa-pills"></i> Liều mỗi lần</label><div class="input-wrap"><i class="fa-solid fa-pills i-left"></i><input type="number" id="int-dose" value="1000" min="100" max="3000" step="50" oninput="runIntermittent()"><span class="input-unit">mg</span></div></div>
+                            <div class="fg"><label for="int-interval"><i class="fa-solid fa-clock"></i> Khoảng cách liều</label><div class="input-wrap"><i class="fa-solid fa-clock i-left"></i><select id="int-interval" onchange="runIntermittent()"><option value="6">Q6H</option><option value="8">Q8H</option><option value="12" selected>Q12H</option><option value="24">Q24H</option><option value="48">Q48H</option></select></div></div>
                         </div>
+                        <div class="fg"><label for="int-auc-target"><i class="fa-solid fa-bullseye"></i> AUC 24h đích mong muốn</label><div class="input-wrap"><i class="fa-solid fa-bullseye i-left"></i><input type="number" id="int-auc-target" value="500" min="400" max="600" oninput="runIntermittent()"><span class="input-unit">mg.h/L</span></div></div>
+                        <div class="section-label" style="margin-top:6px">Phương thức xác định AUC hiện tại</div>
+                        <div class="method-switch">
+                            <button class="method-btn active" onclick="setMethod('pk',this)"><i class="fa-solid fa-chart-line"></i> Đo Đỉnh &amp; Đáy (PK)</button>
+                            <button class="method-btn" onclick="setMethod('direct',this)"><i class="fa-solid fa-keyboard"></i> Nhập trực tiếp AUC</button>
+                        </div>
+                        <div id="fields-direct" style="display:none">
+                            <div class="fg"><label for="int-auc-calc"><i class="fa-solid fa-square-poll-vertical"></i> AUC 24h đo được / tính toán</label><div class="input-wrap"><i class="fa-solid fa-square-poll-vertical i-left"></i><input type="number" id="int-auc-calc" value="720" min="50" max="2000" oninput="runIntermittent()"><span class="input-unit">mg.h/L</span></div></div>
+                        </div>
+                        <div id="fields-pk">
+                            <div class="section-label">Nồng độ đo ở trạng thái ổn định (Steady-state)</div>
+                            <div class="form-grid">
+                                <div class="fg"><label for="int-cpeak"><i class="fa-solid fa-arrow-trend-up"></i> C-peak đo được <span title="Lấy mẫu ít nhất 1 giờ sau khi kết thúc truyền" style="cursor:help;color:var(--van-blue)"><i class="fa-solid fa-circle-info"></i></span></label><div class="input-wrap"><i class="fa-solid fa-arrow-trend-up i-left"></i><input type="number" id="int-cpeak" value="35.5" min="5" max="100" step="0.1" oninput="runIntermittent()"><span class="input-unit">mg/L</span></div></div>
+                                <div class="fg"><label for="int-t-peak"><i class="fa-solid fa-hourglass-start"></i> TG lấy mẫu Đỉnh</label><div class="input-wrap"><i class="fa-solid fa-hourglass-start i-left"></i><input type="number" id="int-t-peak" value="1.0" min="0" max="4" step="0.1" oninput="runIntermittent()"><span class="input-unit">gio</span></div></div>
+                                <div class="fg"><label for="int-ctrough"><i class="fa-solid fa-arrow-trend-down"></i> C-trough đo được <span title="Lấy mẫu 30 phút trước liều kế tiếp" style="cursor:help;color:var(--van-blue)"><i class="fa-solid fa-circle-info"></i></span></label><div class="input-wrap"><i class="fa-solid fa-arrow-trend-down i-left"></i><input type="number" id="int-ctrough" value="14.2" min="1" max="50" step="0.1" oninput="runIntermittent()"><span class="input-unit">mg/L</span></div></div>
+                                <div class="fg"><label for="int-t-trough"><i class="fa-solid fa-hourglass-end"></i> TG lấy mẫu Đáy</label><div class="input-wrap"><i class="fa-solid fa-hourglass-end i-left"></i><input type="number" id="int-t-trough" value="0.0" min="0" max="4" step="0.1" oninput="runIntermittent()"><span class="input-unit">gio</span></div></div>
+                                <div class="fg"><label for="int-tinf"><i class="fa-solid fa-stopwatch"></i> TG truyền (t-inf)</label><div class="input-wrap"><i class="fa-solid fa-stopwatch i-left"></i><input type="number" id="int-tinf" value="1.0" min="0.5" max="4" step="0.1" oninput="runIntermittent()"><span class="input-unit">gio</span></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                        <!-- Vùng hiển thị cảnh báo lâm sàng -->
-                        <div id="clinicalAlertsArea"></div>
+                <!-- TAB 2b: CIV -->
+                <div id="tc-civ" class="tab-content">
+                    <div class="van-card">
+                        <div class="van-card-head"><div class="van-card-head-icon teal"><i class="fa-solid fa-arrows-spin"></i></div><div><h3>Thông số Truyền liên tục (CIV)</h3><p>Hiệu chỉnh tốc độ truyền dựa trên Css đo được</p></div></div>
+                        <div class="form-grid">
+                            <div class="fg"><label for="civ-tdd"><i class="fa-solid fa-calculator"></i> Tổng liều 24h hiện tại</label><div class="input-wrap"><i class="fa-solid fa-calculator i-left"></i><input type="number" id="civ-tdd" value="2000" min="500" max="6000" step="250" oninput="runCIV()"><span class="input-unit">mg/24h</span></div></div>
+                            <div class="fg"><label for="civ-css"><i class="fa-solid fa-vial-virus"></i> Css đo được (ngẫu nhiên)</label><div class="input-wrap"><i class="fa-solid fa-vial-virus i-left"></i><input type="number" id="civ-css" value="15.0" min="1" max="100" step="0.1" oninput="runCIV()"><span class="input-unit">mg/L</span></div></div>
+                            <div class="fg" style="grid-column:1/-1"><label for="civ-target"><i class="fa-solid fa-bullseye"></i> Css đích mong muốn</label><div class="input-wrap"><i class="fa-solid fa-bullseye i-left"></i><input type="number" id="civ-target" value="20" min="15" max="30" oninput="runCIV()"><span class="input-unit">mg/L</span></div></div>
+                        </div>
+                    </div>
+                </div>
 
-                        <!-- Vùng hiển thị hướng dẫn tóm tắt động theo Tab -->
-                        <div class="guide-box" id="dynamicGuideBox">
-                            <h4>💡 Nguyên tắc Dược động học</h4>
-                            <ul id="dynamicGuideList">
-                                <li>Mục tiêu cốt lõi: Tối ưu tỷ số AUC/MIC trong khoảng 400 - 600 để đảm bảo tối đa
-                                    hiệu quả diệt khuẩn và giảm tối thiểu độc tính trên thận (AKI).</li>
-                                <li>Giả định MIC của chủng vi khuẩn gây bệnh (ví dụ MRSA) là 1 mg/L nếu không có xét
-                                    nghiệm vi sinh định danh.</li>
-                                <li>Theo dõi nồng độ đáy đơn thuần (mục tiêu 15-20 mg/L) không còn được khuyến cáo
-                                    làm đích chính vì thường đẩy AUC > 600 mg·h/L.</li>
+                <!-- TAB 2c: IHD -->
+                <div id="tc-ihd" class="tab-content">
+                    <div class="van-card">
+                        <div class="van-card-head"><div class="van-card-head-icon red"><i class="fa-solid fa-filter-circle-xmark"></i></div><div><h3>Nồng độ trước lọc máu (Pre-HD)</h3><p>Tính liều bù (supplementary dose) sau mỗi chu kỳ lọc</p></div></div>
+                        <div class="fg"><label for="ihd-pre"><i class="fa-solid fa-vials"></i> Nồng độ Vancomycin trước lọc máu</label><div class="input-wrap"><i class="fa-solid fa-vials i-left"></i><input type="number" id="ihd-pre" value="12.0" min="1" max="60" step="0.1" oninput="runIHD()"><span class="input-unit">mg/L</span></div></div>
+                        <div class="fg"><label for="ihd-target"><i class="fa-solid fa-bullseye"></i> Nồng độ đích sau lọc máu</label><div class="input-wrap"><i class="fa-solid fa-bullseye i-left"></i><input type="number" id="ihd-target" value="15.0" min="10" max="25" step="0.5" oninput="runIHD()"><span class="input-unit">mg/L</span></div></div>
+                        <div class="van-alert a-info" style="margin-top:8px"><i class="fa-solid fa-circle-info van-alert-icon"></i><div class="van-alert-content"><h4>Lưu ý lâm sàng</h4><p>Màng lọc thông lượng cao (High-flux) loại bỏ 30-40% Vancomycin trong mỗi chu kỳ lọc. Liều bù tính theo TBW. Cho thuốc ngay sau khi kết thúc chu kỳ IHD.</p></div></div>
+                    </div>
+                </div>
+
+                <!-- TAB 2d: OPAT -->
+                <div id="tc-opat" class="tab-content">
+                    <div class="van-card">
+                        <div class="van-card-head"><div class="van-card-head-icon purple"><i class="fa-solid fa-house-medical"></i></div><div><h3>Quy đổi đích theo dõi ngoại trú (OPAT)</h3><p>Ước tính khoảng đáy tương đương với đích AUC nội viện</p></div></div>
+                        <div class="form-grid">
+                            <div class="fg"><label for="opat-trough"><i class="fa-solid fa-arrow-trend-down"></i> C-trough nội viện đã đạt</label><div class="input-wrap"><i class="fa-solid fa-arrow-trend-down i-left"></i><input type="number" id="opat-trough" value="15.0" min="2" max="40" step="0.1" oninput="runOPAT()"><span class="input-unit">mg/L</span></div></div>
+                            <div class="fg"><label for="opat-auc"><i class="fa-solid fa-square-poll-vertical"></i> AUC 24h nội viện tương ứng</label><div class="input-wrap"><i class="fa-solid fa-square-poll-vertical i-left"></i><input type="number" id="opat-auc" value="500" min="100" max="1000" oninput="runOPAT()"><span class="input-unit">mg.h/L</span></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end left col -->
+
+            <!-- RIGHT COLUMN: RESULTS -->
+            <div class="van-result-panel">
+                <div class="van-result-card">
+                    <div class="vrc-header">
+                        <div class="vrc-header-icon"><i class="fa-solid fa-flask-vial"></i></div>
+                        <div><div class="vrc-header-title" id="rcTitle">Kết quả Liều ban đầu</div><div class="vrc-header-subtitle" id="rcSubtitle">Empiric Dosing — Vancomycin</div></div>
+                    </div>
+                    <div class="vrc-body">
+                        <div class="auc-gauge" id="aucGauge">
+                            <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--color-text-muted);margin-bottom:6px">AUC 24h hiện tại — Đích 400-600 mg.h/L</div>
+                            <div class="auc-gauge-bar"><div class="auc-zone low"></div><div class="auc-zone ok"></div><div class="auc-zone high"></div><div class="auc-pointer" id="aucPointer"></div></div>
+                            <div class="auc-gauge-labels"><span>0</span><span>400</span><span>600</span><span>1000</span></div>
+                            <div class="auc-gauge-val" id="aucGaugeVal">—</div>
+                        </div>
+                        <div class="vrc-main-result" id="mainResult">
+                            <div class="vrc-placeholder"><i class="fa-solid fa-calculator"></i><span>Nhập thông tin bệnh nhân<br>để bắt đầu tính toán</span></div>
+                        </div>
+                        <div class="vrc-status" id="rcStatus"><i class="fa-solid fa-circle-dot"></i> Đang chờ dữ liệu...</div>
+                        <div class="pk-report" id="pkReport">
+                            <div class="pk-report-title"><i class="fa-solid fa-dna"></i> Báo cáo thông số Dược động học (PK Parameters)</div>
+                            <div class="pk-report-grid">
+                                <div class="pk-item"><div class="pk-item-label">ke (Hằng số thải trừ)</div><div class="pk-item-val"><span id="pk-ke">—</span> h-1</div></div>
+                                <div class="pk-item"><div class="pk-item-label">t-half (Bán thải)</div><div class="pk-item-val"><span id="pk-thalf">—</span> gio</div></div>
+                                <div class="pk-item"><div class="pk-item-label">Vd (Phân bố)</div><div class="pk-item-val"><span id="pk-vd">—</span> L (<span id="pk-vd-kg">—</span> L/kg)</div></div>
+                                <div class="pk-item"><div class="pk-item-label">Cl-vanc (Thanh thải)</div><div class="pk-item-val"><span id="pk-cl">—</span> L/h (<span id="pk-cl-ml">—</span> mL/min)</div></div>
+                                <div class="pk-item" style="grid-column:1/-1"><div class="pk-item-label">AUC 24h (MIC=1)</div><div class="pk-item-val"><span id="pk-auc">—</span> mg.h/L | AUC/MIC = <span id="pk-auc-mic">—</span></div></div>
+                            </div>
+                        </div>
+                        <div class="regimen-table-wrap" id="regimenBox">
+                            <div class="regimen-table-title"><i class="fa-solid fa-table-columns"></i> So sánh phác đồ thay thế (MIC = 1 mg/L)</div>
+                            <table class="regimen-table">
+                                <thead><tr><th>Phác đồ</th><th>AUC24</th><th>C-trough</th><th>Đánh giá</th></tr></thead>
+                                <tbody id="regimenBody"></tbody>
+                            </table>
+                        </div>
+                        <div id="alertsArea"></div>
+                        <div class="van-guide" id="clinicalGuide">
+                            <h4><i class="fa-solid fa-lightbulb" style="color:var(--van-amber)"></i> Hướng dẫn lâm sàng</h4>
+                            <ul id="guideList">
+                                <li>Đích tối ưu: AUC/MIC = 400-600 mg.h/L để tối đa hiệu quả diệt khuẩn, giảm nguy cơ AKI.</li>
+                                <li>Giả định MIC = 1 mg/L nếu chưa có kết quả kháng sinh đồ (MRSA, Enterococcus).</li>
+                                <li>Không dùng nồng độ đáy đơn thuần làm đích chính (hãy đẩy AUC &gt; 600).</li>
                             </ul>
                         </div>
+                        <button class="btn-print" id="btnPrint" onclick="window.print()"><i class="fa-solid fa-print"></i> In phiếu tư vấn dược lâm sàng</button>
                     </div>
                 </div>
-
-            </div>
-    </div>
+            </div><!-- end right col -->
+        </div><!-- end van-layout -->
     </main>
-    </div>
-
-    <!-- FOOTER PLACEHOLDER -->
-    <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
-
-    <!-- Scripts dùng chung -->
-    <script src="../../../js/sidebar.js"></script>
-
-    <!-- SCRIPT LOGIC CHI TIẾT -->
-    <script>
-        // Biến lưu giữ Tab hiện tại
-        let currentMainTab = 'empiric';
-        let currentSubTab = 'intermittent';
-
-        // Biến toàn cục lưu kết quả tính toán bệnh nhân
-        let patientMetrics = {
-            age: 0,
-            gender: 'male',
-            weight: 0,
-            height: 0,
-            scr: 0,
-            scrUnit: 'mgdl',
-            ibw: 0,
-            adjbw: 0,
-            bsa: 0,
-            crcl: null,
-            isObese: false,
-            weightForCalculations: 0
-        };
-
-        // Hàm tính toán các chỉ số sinh học bệnh nhân (Patient Profile)
-        function calculatePatientMetrics() {
-            const age = parseInt(document.getElementById('prof-age').value) || 0;
-            const gender = document.getElementById('prof-gender').value;
-            const weight = parseFloat(document.getElementById('prof-weight').value) || 0;
-            const height = parseFloat(document.getElementById('prof-height').value) || 0;
-            const scrVal = parseFloat(document.getElementById('prof-scr').value) || 0;
-            const scrUnit = document.getElementById('prof-scr-unit').value;
-
-            const crclDisplay = document.getElementById('prof-crcl-val');
-            const metricsDiv = document.getElementById('patient-calculated-metrics');
-
-            if (age <= 0 || weight <= 0 || height <= 0 || scrVal <= 0) {
-                crclDisplay.value = "--";
-                metricsDiv.style.display = "none";
-                patientMetrics.weight = weight;
-                patientMetrics.crcl = null;
-                patientMetrics.weightForCalculations = weight;
-                triggerCurrentTabCalculator();
-                return;
-            }
-
-            let ibw = gender === 'male' ? 50 + 0.91 * (height - 152.4) : 45.5 + 0.91 * (height - 152.4);
-            ibw = Math.round(ibw * 10) / 10;
-
-            const isObese = weight > (1.2 * ibw);
-            let obeseStatusText = isObese ? "Béo phì (TBW > 120% IBW)" : (weight < ibw ? "Nhẹ cân (TBW < IBW)" : "Bình thường");
-            let adjbw = isObese ? Math.round((ibw + 0.4 * (weight - ibw)) * 10) / 10 : weight;
-
-            let bsa = Math.round(Math.sqrt((height * weight) / 3600) * 100) / 100;
-
-            let scrMgdl = scrUnit === 'umoll' ? scrVal / 88.4 : scrVal;
-            let adjustedScr = (age >= 65 && scrMgdl < 0.7) ? 0.7 : scrMgdl;
-
-            const weightForCrCl = isObese ? adjbw : weight;
-            let crcl = Math.round(((140 - age) * weightForCrCl) / (72 * adjustedScr) * (gender === 'female' ? 0.85 : 1));
-
-            patientMetrics = {
-                age, gender, weight, height, scr: scrVal, scrUnit,
-                ibw, adjbw, bsa, crcl, isObese,
-                weightForCalculations: isObese ? adjbw : weight
-            };
-
-            crclDisplay.value = crcl;
-            document.getElementById('val-ibw').innerText = ibw;
-            document.getElementById('val-adjbw').innerText = isObese ? adjbw : "--";
-            document.getElementById('val-bsa').innerText = bsa;
-            document.getElementById('val-obese-status').innerText = obeseStatusText;
-            metricsDiv.style.display = "block";
-
-            triggerCurrentTabCalculator();
-        }
-
-        // Ẩn hiện các trường nhập liệu AUC trong Tab 2
-        function toggleAucMethod() {
-            const method = document.getElementById('int-calc-method').value;
-            const directFields = document.getElementById('method-direct-fields');
-            const pkFields = document.getElementById('method-pk-fields');
-
-            if (method === 'direct') {
-                directFields.style.display = 'block';
-                pkFields.style.display = 'none';
-            } else {
-                directFields.style.display = 'none';
-                pkFields.style.display = 'block';
-            }
-            runIntermittent();
-        }
-
-        // Hàm chuyển đổi Tab Chính
-        function switchMainTab(mainTabId, element) {
-            currentMainTab = mainTabId;
-
-            document.querySelectorAll('.tabs-list:not(#sub-tabs-wrapper .tabs-list) .tab-trigger').forEach(btn => {
-                btn.classList.remove('active');
-                btn.setAttribute('aria-selected', 'false');
-            });
-            element.classList.add('active');
-            element.setAttribute('aria-selected', 'true');
-
-            const subTabsWrapper = document.getElementById('sub-tabs-wrapper');
-            if (mainTabId === 'empiric') {
-                subTabsWrapper.style.display = 'none';
-                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-                document.getElementById('tab-empiric').classList.add('active');
-                document.getElementById('resultCardTitle').innerText = "KẾT QUẢ LIỀU KHỞI ĐẦU";
-                updateClinicalGuide('empiric');
-                runEmpiric();
-            } else {
-                subTabsWrapper.style.display = 'block';
-                const activeSubTabBtn = document.querySelector('.sub-tab.active');
-                if (activeSubTabBtn) {
-                    switchSubTab(currentSubTab, activeSubTabBtn);
-                } else {
-                    const firstSubTab = document.querySelector('.sub-tab');
-                    if (firstSubTab) firstSubTab.click();
-                }
-            }
-        }
-
-        // Hàm chuyển đổi Sub-tabs
-        function switchSubTab(subTabId, element) {
-            currentSubTab = subTabId;
-            document.querySelectorAll('.sub-tab').forEach(btn => btn.classList.remove('active'));
-            element.classList.add('active');
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            const targetContent = document.getElementById('tab-' + subTabId);
-            if (targetContent) targetContent.classList.add('active');
-
-            const cardTitle = document.getElementById('resultCardTitle');
-            if (subTabId === 'intermittent') {
-                cardTitle.innerText = "KẾT QUẢ ĐIỀU CHỈNH LIỀU";
-                updateClinicalGuide('intermittent');
-                runIntermittent();
-            } else if (subTabId === 'civ') {
-                cardTitle.innerText = "KẾT QUẢ ĐIỀU CHỈNH LIỀU CIV";
-                updateClinicalGuide('civ');
-                runCIV();
-            } else if (subTabId === 'ihd') {
-                cardTitle.innerText = "ĐỀ XUẤT LIỀU BÙ SAU LỌC MÁU";
-                updateClinicalGuide('ihd');
-                runIHD();
-            } else if (subTabId === 'opat') {
-                cardTitle.innerText = "ĐÍCH NỒNG ĐỘ NGOẠI TRÚ (OPAT)";
-                updateClinicalGuide('opat');
-                runOPAT();
-            }
-        }
-
-        // Cập nhật hướng dẫn y khoa
-        function updateClinicalGuide(tabId) {
-            const guideList = document.getElementById('dynamicGuideList');
-            guideList.innerHTML = "";
-
-            if (tabId === 'empiric') {
-                guideList.innerHTML = `
-                    <li><strong>Liều nạp (Loading dose):</strong> Cực kỳ quan trọng ở bệnh nhân nặng (nhiễm khuẩn huyết, viêm phổi nặng, HAP/VAP, viêm màng não) để đạt nhanh nồng độ điều trị trong 24h đầu. Tính theo cân nặng thực tế (TBW).</li>
-                    <li><strong>Hiệu chỉnh theo CrCl:</strong> Khoảng cách đưa liều duy trì (Q8H, Q12H, Q24H, Q48H) được cá thể hóa dựa trên độ thanh thải creatinin để hạn chế tích lũy thuốc gây độc thận.</li>
-                    <li><strong>Bệnh nhân béo phì:</strong> Tính liều duy trì dựa trên Cân nặng hiệu chỉnh (AdjBW) và giới hạn tổng liều tối đa không quá 4.500 mg/ngày.</li>
-                    <li><strong>Tốc độ truyền tĩnh mạch:</strong> Phải truyền chậm (không vượt quá 10-15 mg/phút) để phòng hội chứng Red Man.</li>
-                `;
-            } else if (tabId === 'intermittent') {
-                guideList.innerHTML = `
-                    <li><strong>Tính AUC từ Đỉnh/Đáy (PK bậc 1):</strong> Áp dụng phương trình Sawchuk-Zaske. Thích hợp khi có kết quả xét nghiệm đo nồng độ đỉnh (lấy 1-2h sau truyền xong) và đáy (lấy ngay trước liều tiếp theo) ở trạng thái ổn định.</li>
-                    <li><strong>Nhập trực tiếp AUC:</strong> Phù hợp khi bệnh viện có sẵn phần mềm Bayesian PK chuyên dụng.</li>
-                    <li><strong>Nguyên lý chỉnh liều:</strong> Đích AUC/MIC tối ưu từ 400 đến 600. Tổng liều hàng ngày (TDD) tỉ lệ thuận tuyến tính với chỉ số AUC 24h.</li>
-                `;
-            } else if (tabId === 'civ') {
-                guideList.innerHTML = `
-                    <li><strong>Đích nồng độ ($C_{ss}$):</strong> Đích nồng độ ở trạng thái ổn định khi truyền liên tục là 20 - 25 mg/L (hoặc 17 - 25 mg/L), tương ứng với AUC 24 giờ là 480 - 600 mg·h/L.</li>
-                    <li><strong>Thời điểm lấy mẫu:</strong> Đo nồng độ ngẫu nhiên sau 24 giờ kể từ khi bắt đầu truyền liên tục.</li>
-                    <li><strong>Điều chỉnh:</strong> Nếu chưa đạt đích và chức năng thận ổn định, điều chỉnh tổng liều truyền 24 giờ theo công thức tỷ lệ thuận. Thử lại nồng độ sau 24h nếu chỉnh liều hoặc sau 72h nếu đã đạt đích.</li>
-                `;
-            } else if (tabId === 'ihd') {
-                guideList.innerHTML = `
-                    <li><strong>Nguyên tắc:</strong> Vancomycin bị loại bỏ một phần qua màng lọc máu ngắt quãng hiệu năng cao (tới 30-40%). Thuốc cần được bổ sung ngay <em>sau khi kết thúc chu kỳ lọc máu</em>.</li>
-                    <li><strong>Nồng độ đáy trước lọc (Pre-HD):</strong> Đây là chỉ số quyết định liều bù. Đo ngay trước khi bắt đầu ca lọc máu định kỳ.</li>
-                    <li><strong>Cân nặng tính liều:</strong> Tự động lấy cân nặng thực tế (TBW) từ hồ sơ bệnh nhân chung ở trên để tính toán liều bổ sung (theo mg/kg) chuẩn xác.</li>
-                `;
-            } else if (tabId === 'opat') {
-                guideList.innerHTML = `
-                    <li><strong>Mục đích ngoại trú (OPAT):</strong> Khi bệnh nhân xuất viện, việc lấy 2 mẫu máu để tính toán AUC là cực kỳ khó khăn. Bác sĩ cần cá thể hóa khoảng nồng độ đáy mục tiêu dựa trên dữ liệu lúc nằm viện.</li>
-                    <li><strong>Phương pháp tỷ lệ:</strong> Giả định chức năng thận của bệnh nhân không đổi sau khi xuất viện, nồng độ đáy tỉ lệ thuận với AUC. Quy đổi khoảng AUC đích (400 - 600) thành khoảng nồng độ đáy.</li>
-                    <li><strong>Tần suất giám sát:</strong> Theo dõi nồng độ đáy ngoại trú ít nhất 1 lần mỗi tuần để đảm bảo an toàn.</li>
-                `;
-            }
-        }
-
-        // Gọi hàm tính toán tương ứng với tab đang mở
-        function triggerCurrentTabCalculator() {
-            if (currentMainTab === 'empiric') runEmpiric();
-            else if (currentSubTab === 'intermittent') runIntermittent();
-            else if (currentSubTab === 'civ') runCIV();
-            else if (currentSubTab === 'ihd') runIHD();
-            else if (currentSubTab === 'opat') runOPAT();
-        }
-
-        function roundToClinicalDose(dose, step = 250) { return Math.round(dose / step) * step; }
-
-        function setClinicalAlert(type, title, text) {
-            const area = document.getElementById('clinicalAlertsArea');
-            let icon = type === 'warning' ? 'fa-triangle-exclamation' : (type === 'danger' ? 'fa-circle-xmark' : 'fa-circle-info');
-            area.innerHTML = `
-                <div class="clinical-alert-box ${type}">
-                    <i class="fa-solid ${icon}"></i>
-                    <div class="alert-text-content">
-                        <h4>${title}</h4>
-                        <p>${text}</p>
-                    </div>
-                </div>
-            `;
-        }
-
-        function clearClinicalAlert() { document.getElementById('clinicalAlertsArea').innerHTML = ''; }
-
-        // TAB 1: LIỀU BAN ĐẦU
-        function runEmpiric() {
-            const weight = patientMetrics.weight;
-            const group = document.getElementById('emp-patient-group').value;
-            const crcl = patientMetrics.crcl;
-
-            const primaryResult = document.getElementById('primaryResult');
-            const secondaryResult = document.getElementById('secondaryResult');
-            const clinicalStatus = document.getElementById('clinicalStatus');
-
-            if (!weight || weight <= 0) {
-                primaryResult.innerHTML = "--";
-                secondaryResult.innerHTML = "<span style='color: var(--color-rose); font-weight: 700;'><i class='fa-solid fa-triangle-exclamation'></i> Vui lòng nhập thông tin bệnh nhân (đặc biệt là Cân nặng) ở bảng Hồ sơ bệnh nhân phía trên để bắt đầu tính toán.</span>";
-                clinicalStatus.innerText = "Chưa đủ thông tin";
-                clinicalStatus.className = "result-status-alert";
-                clearClinicalAlert();
-                return;
-            }
-
-            let loadingDose = roundToClinicalDose(Math.min(25 * weight, 3000));
-            let maintenanceDose = 0;
-            let computedInterval = 12;
-            let isDoseByLevel = false;
-
-            if (crcl !== null) {
-                if (crcl >= 90) computedInterval = 12;
-                else if (crcl >= 50) computedInterval = 12;
-                else if (crcl >= 30) computedInterval = 24;
-                else if (crcl >= 20) computedInterval = 48;
-                else isDoseByLevel = true;
-            }
-
-            let warningText = crcl === null ? "⚠️ Thiếu thông tin Creatinin huyết thanh để tính CrCl. Đề xuất khoảng cách đưa liều mặc định (Q12H) giả định chức năng thận bình thường." : "";
-
-            if (group === 'adult') {
-                maintenanceDose = roundToClinicalDose(15 * weight);
-                if (isDoseByLevel) {
-                    primaryResult.innerHTML = `<div>Liều nạp: <strong style="color: var(--color-primary);">${loadingDose} mg</strong> truyền IV</div><div style="font-size: var(--text-md); margin-top: 0.5rem; color: var(--color-rose); font-weight: 700;">Duy trì: Tính liều theo nồng độ (Dose-by-level)</div>`;
-                    secondaryResult.innerHTML = `CrCl của bệnh nhân quá thấp (${crcl} mL/phút).`;
-                    clinicalStatus.innerText = "CẦN TÍNH LIỀU THEO NỒNG ĐỘ (DOSE BY LEVEL)";
-                    clinicalStatus.className = "result-status-alert risk-high";
-                    setClinicalAlert('danger', 'Chức năng thận suy giảm nặng', 'Độ thanh thải Creatinin < 20 mL/phút. Nguy cơ tích lũy độc tính rất cao.');
-                } else {
-                    primaryResult.innerHTML = `<div>Liều nạp: <strong style="color: var(--color-primary);">${loadingDose} mg</strong> truyền IV</div><div style="font-size: var(--text-lg); margin-top: 0.5rem;">Duy trì: <strong>${maintenanceDose} mg</strong> mỗi ${computedInterval} giờ (Q${computedInterval}H)</div>`;
-                    secondaryResult.innerHTML = `Tính toán trên cân nặng TBW ${weight} kg và CrCl ${crcl !== null ? crcl + ' mL/phút' : 'không xác định'}.<br>${warningText}`;
-                    clinicalStatus.innerText = (crcl !== null && crcl < 50) ? "KÉO DÀI KHOẢNG CÁCH ĐƯA LIỀU" : "Liều kinh nghiệm gợi ý";
-                    clinicalStatus.className = "result-status-alert " + ((crcl !== null && crcl < 50) ? "risk-medium" : "risk-low");
-                    if (crcl !== null && crcl < 50) setClinicalAlert('warning', 'Hiệu chỉnh liều theo chức năng thận', `Bệnh nhân có suy giảm chức năng thận (CrCl = ${crcl} mL/phút).`);
-                    else clearClinicalAlert();
-                }
-            } else if (group === 'obese') {
-                loadingDose = roundToClinicalDose(Math.min(20 * weight, 3000));
-                let maintWeight = patientMetrics.weightForCalculations;
-                maintenanceDose = roundToClinicalDose(Math.min(10 * maintWeight, 4500 / (24 / computedInterval)));
-                primaryResult.innerHTML = `<div>Liều nạp: <strong style="color: var(--color-primary);">${loadingDose} mg</strong> truyền IV</div><div style="font-size: var(--text-lg); margin-top: 0.5rem;">Duy trì: <strong>${maintenanceDose} mg</strong> mỗi ${computedInterval} giờ (Q${computedInterval}H)</div>`;
-                secondaryResult.innerHTML = `Tính trên TBW ${weight} kg (nạp) và AdjBW ${maintWeight} kg (duy trì).<br>${warningText}`;
-                clinicalStatus.className = "result-status-alert risk-medium";
-                clinicalStatus.innerText = "BÉO PHÌ - HIỆU CHỈNH LIỀU";
-            } else if (group === 'child') {
-                const singleDose = roundToClinicalDose(Math.min(70 * weight, 3600) / 4, 50);
-                primaryResult.innerHTML = `<div>Duy trì: <strong style="color: var(--color-primary);">${singleDose} mg</strong> mỗi 6 giờ (Q6H)</div>`;
-                secondaryResult.innerHTML = `Tính cho bệnh nhi.`;
-            } else if (group === 'civ') {
-                loadingDose = roundToClinicalDose(15 * weight);
-                let maintCIV = roundToClinicalDose(35 * weight);
-                primaryResult.innerHTML = `<div>Liều nạp: <strong style="color: var(--color-primary);">${loadingDose} mg</strong> truyền tĩnh mạch</div><div style="font-size: var(--text-lg); margin-top: 0.5rem;">Tốc độ CIV: <strong>${maintCIV} mg / 24 giờ</strong></div>`;
-                secondaryResult.innerHTML = `Liệu pháp truyền liên tục. Đích $C_{ss}$ là 20-25 mg/L.`;
-            }
-        }
-
-        // TAB 2: CHỈNH LIỀU TRUYỀN NGẮT QUÃNG THEO AUC
-        function runIntermittent() {
-            const method = document.getElementById('int-calc-method').value;
-            const currentDose = parseFloat(document.getElementById('int-dose').value);
-            const interval = parseInt(document.getElementById('int-interval').value);
-            if (!currentDose || !interval) return;
-
-            const dosesPerDay = 24 / interval;
-            const currentTDD = currentDose * dosesPerDay;
-            let calculatedAuc = 0;
-            let desiredAuc = 600;
-
-            if (method === 'direct') {
-                calculatedAuc = parseFloat(document.getElementById('int-auc-calc').value);
-                desiredAuc = parseFloat(document.getElementById('int-auc-desired').value);
-            } else {
-                const cPeak = parseFloat(document.getElementById('int-c-peak').value);
-                const tPeakSample = parseFloat(document.getElementById('int-t-peak-sample').value);
-                const cTrough = parseFloat(document.getElementById('int-c-trough').value);
-                const tTroughSample = parseFloat(document.getElementById('int-t-trough-sample').value);
-                const tInf = parseFloat(document.getElementById('int-t-inf').value);
-                desiredAuc = parseFloat(document.getElementById('int-auc-desired-pk').value);
-                const ke = Math.log(cPeak / cTrough) / (interval - tInf - tPeakSample - tTroughSample);
-                const cMax = cPeak * Math.exp(ke * tPeakSample);
-                const cMin = cTrough * Math.exp(-ke * tTroughSample);
-                const aucTau = ((cMax + cMin) * tInf) / 2 + (cMax - cMin) / ke;
-                calculatedAuc = aucTau * dosesPerDay;
-            }
-
-            const proposedTDD = roundToClinicalDose(currentTDD * (desiredAuc / calculatedAuc), 250);
-            let proposedDose = roundToClinicalDose(proposedTDD / (24 / interval), 250);
-
-            document.getElementById('primaryResult').innerHTML = `<div>Liều mới: <strong style="color: var(--color-primary);">${proposedDose} mg</strong> mỗi ${interval} giờ</div><div style="font-size: var(--text-sm); margin-top: 0.25rem; color: var(--color-text-muted);">Tổng liều mới: ${proposedTDD} mg/ngày</div>`;
-            document.getElementById('secondaryResult').innerText = `AUC 24h hiện tại là ${Math.round(calculatedAuc)} mg·h/L. Chỉnh liều về đích ${desiredAuc} mg·h/L.`;
-
-            if (calculatedAuc > 600) {
-                document.getElementById('clinicalStatus').className = "result-status-alert risk-high";
-                document.getElementById('clinicalStatus').innerText = "AUC HIỆN TẠI VƯỢT QUÁ ĐÍCH (> 600)";
-            } else {
-                document.getElementById('clinicalStatus').className = "result-status-alert risk-low";
-                document.getElementById('clinicalStatus').innerText = "AUC ĐẠT MỤC TIÊU";
-            }
-        }
-
-        // TAB 3: CHỈNH LIỀU TRUYỀN LIÊN TỤC (CIV)
-        function runCIV() {
-            const currentTdd = parseFloat(document.getElementById('civ-current-tdd').value);
-            const measuredCss = parseFloat(document.getElementById('civ-measured-css').value);
-            const targetCss = parseFloat(document.getElementById('civ-target-css').value);
-
-            const primaryResult = document.getElementById('primaryResult');
-            const secondaryResult = document.getElementById('secondaryResult');
-            const clinicalStatus = document.getElementById('clinicalStatus');
-
-            if (!currentTdd || !measuredCss || !targetCss || measuredCss <= 0) {
-                primaryResult.innerHTML = "--";
-                secondaryResult.innerText = "Vui lòng nhập liều 24 giờ hiện tại, nồng độ thực tế đo được và đích nồng độ.";
-                clinicalStatus.innerText = "Chưa đủ thông tin";
-                clinicalStatus.className = "result-status-alert";
-                clearClinicalAlert();
-                return;
-            }
-
-            const newTdd = currentTdd * (targetCss / measuredCss);
-            const proposedTdd = roundToClinicalDose(newTdd, 250);
-
-            primaryResult.innerHTML = `
-                <div>Tốc độ CIV mới: <strong style="color: var(--color-primary);">${proposedTdd} mg / 24 giờ</strong></div>
-                <div style="font-size: var(--text-sm); margin-top: 0.25rem; color: var(--color-text-muted);">Tăng/giảm: ${proposedTdd - currentTdd} mg so với liều cũ</div>
-            `;
-            secondaryResult.innerText = `Chỉnh liều để duy trì nồng độ thuốc ở trạng thái ổn định từ ${measuredCss} mg/L về nồng độ đích ${targetCss} mg/L.`;
-
-            if (measuredCss > 25) {
-                clinicalStatus.innerText = "NỒNG ĐỘ CSS VƯỢT QUÁ ĐÍCH (> 25 mg/L)";
-                clinicalStatus.className = "result-status-alert risk-high";
-                setClinicalAlert('danger', 'Cảnh báo độc tính', `Nồng độ thuốc trong máu quá cao (${measuredCss} mg/L). Cần tạm ngừng truyền (hold) Vancomycin cho đến khi nồng độ giảm về < 20 mg/L, sau đó chạy lại với liều truyền thấp hơn ${proposedTdd} mg/24h.`);
-            } else if (measuredCss < 17) {
-                clinicalStatus.innerText = "NỒNG ĐỘ CSS DƯỚI ĐÍCH (< 17 mg/L)";
-                clinicalStatus.className = "result-status-alert risk-medium";
-                setClinicalAlert('warning', 'Chưa đạt nồng độ điều trị', `Nồng độ thuốc ${measuredCss} mg/L chưa đạt đích điều trị. Tăng liều truyền liên tục lên ${proposedTdd} mg/24h và kiểm tra lại nồng độ sau 24 giờ.`);
-            } else {
-                clinicalStatus.innerText = "NỒNG ĐỘ CSS ĐẠT ĐÍCH (17 - 25 mg/L)";
-                clinicalStatus.className = "result-status-alert risk-low";
-                setClinicalAlert('info', 'Duy trì tốc độ truyền hiện tại', `Nồng độ đạt tối ưu ở trạng thái ổn định. Tiếp tục truyền liều hiện tại và đo lại nồng độ thuốc sau 72 giờ.`);
-            }
-        }
-
-        // TAB 4: LỌC MÁU NGẮT QUÃNG IHD
-        function runIHD() {
-            const weight = patientMetrics.weight; // Lấy tự động từ hồ sơ
-            const preLevel = parseFloat(document.getElementById('ihd-pre-level').value);
-
-            const primaryResult = document.getElementById('primaryResult');
-            const secondaryResult = document.getElementById('secondaryResult');
-            const clinicalStatus = document.getElementById('clinicalStatus');
-
-            if (!weight || weight <= 0) {
-                primaryResult.innerHTML = "--";
-                secondaryResult.innerHTML = "<span style='color: var(--color-rose); font-weight: 700;'><i class='fa-solid fa-triangle-exclamation'></i> Vui lòng nhập Cân nặng ở bảng Hồ sơ bệnh nhân phía trên để tính liều bổ sung.</span>";
-                clinicalStatus.innerText = "Chưa đủ thông tin";
-                clinicalStatus.className = "result-status-alert";
-                clearClinicalAlert();
-                return;
-            }
-
-            if (!preLevel || preLevel <= 0) {
-                primaryResult.innerHTML = "--";
-                secondaryResult.innerText = "Vui lòng nhập nồng độ trước lọc (Pre-HD) để bắt đầu.";
-                clinicalStatus.innerText = "Chưa đủ thông tin";
-                clinicalStatus.className = "result-status-alert";
-                clearClinicalAlert();
-                return;
-            }
-
-            let doseMin = 0;
-            let doseMax = 0;
-            let roundedDoseMin = 0;
-            let roundedDoseMax = 0;
-            let decision = "";
-            let alertText = "";
-            let alertType = "info";
-            let statusText = "";
-            let statusClass = "";
-
-            if (preLevel < 10) {
-                doseMin = 10 * weight;
-                doseMax = 15 * weight;
-                roundedDoseMin = roundToClinicalDose(doseMin, 250);
-                roundedDoseMax = roundToClinicalDose(doseMax, 250);
-                decision = roundedDoseMin === roundedDoseMax ? `${roundedDoseMin} mg` : `${roundedDoseMin} - ${roundedDoseMax} mg`;
-                statusText = "NỒNG ĐỘ TRƯỚC LỌC THẤP (< 10 mcg/mL)";
-                statusClass = "risk-medium";
-                alertType = "warning";
-                alertText = `Nồng độ trước lọc máu thấp. Bệnh nhân có nguy cơ thiếu liều điều trị. Bù liều tích cực từ ${decision} ngay sau khi ca lọc máu kết thúc.`;
-            } else if (preLevel >= 10 && preLevel < 15) {
-                doseMin = 7.5 * weight;
-                doseMax = 10 * weight;
-                roundedDoseMin = roundToClinicalDose(doseMin, 250);
-                roundedDoseMax = roundToClinicalDose(doseMax, 250);
-                decision = roundedDoseMin === roundedDoseMax ? `${roundedDoseMin} mg` : `${roundedDoseMin} - ${roundedDoseMax} mg`;
-                statusText = "NỒNG ĐỘ TRƯỚC LỌC CẬN ĐÍCH (10 - 15 mcg/mL)";
-                statusClass = "risk-low";
-                alertType = "info";
-                alertText = `Nồng độ tương đối ổn định. Bổ sung liều trung bình ${decision} sau ca lọc máu để duy trì.`;
-            } else if (preLevel >= 15 && preLevel <= 20) {
-                doseMin = 5 * weight;
-                roundedDoseMin = roundToClinicalDose(doseMin, 250);
-                if (roundedDoseMin < 250) roundedDoseMin = 250;
-                decision = `${roundedDoseMin} mg`;
-                statusText = "NỒNG ĐỘ TRƯỚC LỌC ĐẠT ĐÍCH (15 - 20 mcg/mL)";
-                statusClass = "risk-low";
-                alertType = "info";
-                alertText = `Nồng độ trước lọc nằm trong khoảng mục tiêu tối ưu. Bù liều thấp duy trì ${decision} sau ca lọc máu.`;
-            } else if (preLevel > 20 && preLevel <= 25) {
-                decision = "Không bù hoặc chỉ bù 250 mg";
-                statusText = "NỒNG ĐỘ TRƯỚC LỌC CAO NHẸ (20 - 25 mcg/mL)";
-                statusClass = "risk-medium";
-                alertType = "warning";
-                alertText = `Nồng độ trước lọc hơi cao. Khuyến cáo bỏ qua liều bù (Hold) sau ca lọc này hoặc chỉ bổ sung một liều nhỏ 250 mg.`;
-            } else {
-                decision = "TẠM NGỪNG DÙNG (HOLD)";
-                statusText = "NỒNG ĐỘ QUÁ CAO (> 25 mcg/mL)";
-                statusClass = "risk-high";
-                alertType = "danger";
-                alertText = `Nồng độ thuốc trước lọc quá cao. Không bổ sung liều sau lọc. Trì hoãn liều và kiểm tra lại nồng độ trước ca lọc tiếp theo.`;
-            }
-
-            primaryResult.innerHTML = `
-                <div style="font-size: var(--text-lg);">Khuyến cáo: <strong style="color: var(--color-primary);">${decision}</strong></div>
-            `;
-            secondaryResult.innerText = `Nồng độ đo được trước lọc là ${preLevel} mcg/mL (Tính trên cân nặng thực tế ${weight} kg).`;
-
-            clinicalStatus.innerText = statusText;
-            clinicalStatus.className = "result-status-alert " + statusClass;
-            setClinicalAlert(alertType, 'Quyết định lâm sàng IHD', alertText);
-
-            // TAB 5: ĐÁY NGOẠI TRÚ (OPAT)
-            function runOPAT() {
-                const trough = parseFloat(document.getElementById('opat-trough').value);
-                const auc = parseFloat(document.getElementById('opat-auc').value);
-
-                const primaryResult = document.getElementById('primaryResult');
-                const secondaryResult = document.getElementById('secondaryResult');
-                const clinicalStatus = document.getElementById('clinicalStatus');
-
-                if (!trough || !auc || trough <= 0 || auc <= 0) {
-                    primaryResult.innerHTML = "--";
-                    secondaryResult.innerText = "Vui lòng nhập nồng độ đáy và AUC tương ứng đo được trong viện.";
-                    clinicalStatus.innerText = "Chưa đủ thông tin";
-                    clinicalStatus.className = "result-status-alert";
-                    clearClinicalAlert();
-                    return;
-                }
-
-                // Tính nồng độ đáy tương ứng khoảng AUC 400 - 600
-                const troughMin = (trough * 400) / auc;
-                const troughMax = (trough * 600) / auc;
-
-                // Làm tròn 1 chữ số thập phân
-                const roundedMin = Math.round(troughMin * 10) / 10;
-                const roundedMax = Math.round(troughMax * 10) / 10;
-
-                primaryResult.innerHTML = `
-                <div>Đích đáy ngoại trú: <strong style="color: var(--color-primary);">${roundedMin} - ${roundedMax} mg/L</strong></div>
-            `;
-                secondaryResult.innerText = `Quy đổi từ tỉ số trong viện: C_trough ${trough} mg/L tương đương AUC ${auc} mg·h/L.`;
-
-                clinicalStatus.innerText = `ĐÃ THIẾT LẬP KHOẢNG ĐÁY NGOẠI TRÚ`;
-                clinicalStatus.className = "result-status-alert risk-low";
-
-                setClinicalAlert('info', 'Hướng dẫn điều trị ngoại trú (OPAT)', `Khi bệnh nhân chuyển sang điều trị ngoại trú, hãy duy trì nồng độ đáy xét nghiệm định kỳ trong khoảng <strong>${roundedMin} - ${roundedMax} mg/L</strong> (thay vì đích 15-20 mg/L mặc định). Điều này đảm bảo bệnh nhân vẫn đạt đích AUC 400-600 mg·h/L an toàn.`);
-            }
-
-            // Khởi tạo trạng thái ban đầu khi load trang
-            window.addEventListener('DOMContentLoaded', () => {
-                const firstMainTabBtn = document.querySelector('.tabs-list:not(#sub-tabs-wrapper .tabs-list) .tab-trigger');
-                if (firstMainTabBtn) {
-                    switchMainTab('empiric', firstMainTabBtn);
-                }
-            });
-        }
-
-    </script>
+</div>
+<div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+<script src="../../../js/main.js" defer></script>
+<script src="../../../components/footer.js" defer></script>
+<script>
+var currentMainTab='empiric',currentSubTab='intermittent',currentMethod='pk',currentScenario='adult';
+var patient={age:0,gender:'male',weight:0,height:0,scr:0,scrUnit:'mgdl',ibw:0,adjbw:0,bsa:0,crcl:null,isObese:false,calcWeight:0};
+function toggleObese(){var c=document.getElementById('prof-obese').checked;document.getElementById('height-row').style.display=c?'block':'none';onPatientChange();}
+function onPatientChange(){
+    var age=parseInt(document.getElementById('prof-age').value)||0,gender=document.getElementById('prof-gender').value,
+        weight=parseFloat(document.getElementById('prof-weight').value)||0,scrVal=parseFloat(document.getElementById('prof-scr').value)||0,
+        scrUnit=document.getElementById('prof-scr-unit').value,obese=document.getElementById('prof-obese').checked,
+        height=parseFloat(document.getElementById('prof-height').value)||0,
+        crclEl=document.getElementById('crcl-display'),metEl=document.getElementById('metrics-panel');
+    if(age<=0||weight<=0||scrVal<=0){crclEl.value='—';crclEl.className='input-readonly';metEl.style.display='none';patient={age:age,gender:gender,weight:weight,height:height,scr:scrVal,scrUnit:scrUnit,ibw:weight,adjbw:weight,bsa:0,crcl:null,isObese:false,calcWeight:weight};triggerCalc();return;}
+    if(obese&&height<=0){crclEl.value='—';metEl.style.display='none';patient.crcl=null;triggerCalc();return;}
+    var ibw=weight,adjbw=weight,bsa=0,isObese=false;
+    if(obese&&height>0){
+        ibw=gender==='male'?50+0.91*(height-152.4):45.5+0.91*(height-152.4);
+        ibw=Math.max(ibw,1);ibw=Math.round(ibw*10)/10;
+        isObese=weight>1.2*ibw;adjbw=isObese?Math.round((ibw+0.4*(weight-ibw))*10)/10:weight;
+        bsa=Math.round(Math.sqrt((height*weight)/3600)*100)/100;
+        document.getElementById('m-ibw').textContent=ibw;
+        document.getElementById('m-adjbw').textContent=isObese?adjbw:'N/A';
+        document.getElementById('m-bsa').textContent=bsa;
+        document.getElementById('m-status').textContent=isObese?'Béo phì':(weight<ibw?'Nhẹ cân':'Bình thường');
+        metEl.style.display='block';
+    }else{metEl.style.display='none';}
+    var scrMgdl=scrUnit==='umoll'?scrVal/88.4:scrVal,adjScr=(age>=65&&scrMgdl<0.7)?0.7:scrMgdl;
+    var cgW=(obese&&isObese)?adjbw:weight,crcl=Math.max(Math.round(((140-age)*cgW)/(72*adjScr)*(gender==='female'?0.85:1)),1);
+    crclEl.value=crcl;
+    crclEl.className='input-readonly '+(crcl>=60?'crcl-ok':crcl>=30?'crcl-mod':'crcl-severe');
+    patient={age:age,gender:gender,weight:weight,height:height,scr:scrVal,scrUnit:scrUnit,ibw:ibw,adjbw:adjbw,bsa:bsa,crcl:crcl,isObese:(obese&&isObese),calcWeight:(obese&&isObese)?adjbw:weight};
+    triggerCalc();
+}
+function switchMainTab(tabId,btn){
+    currentMainTab=tabId;
+    document.querySelectorAll('.van-tab-btn').forEach(function(b){b.classList.remove('active');b.setAttribute('aria-selected','false');});
+    btn.classList.add('active');btn.setAttribute('aria-selected','true');
+    var st=document.getElementById('vanSubtabs'),bp=document.getElementById('btnPrint');
+    if(tabId==='empiric'){st.classList.remove('visible');bp.style.display='none';showTabContent('tc-empiric');setResultHeader('Kết quả Liều ban đầu','Empiric Dosing — Vancomycin');document.getElementById('pkReport').style.display='none';document.getElementById('regimenBox').style.display='none';document.getElementById('aucGauge').style.display='none';setGuide('empiric');runEmpiric();}
+    else{st.classList.add('visible');bp.style.display='flex';var as=document.querySelector('.van-subtab-btn.active');if(as)as.click();}
+}
+function switchSubTab(tabId,btn){
+    currentSubTab=tabId;document.querySelectorAll('.van-subtab-btn').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');showTabContent('tc-'+tabId);
+    document.getElementById('pkReport').style.display='none';document.getElementById('regimenBox').style.display='none';document.getElementById('aucGauge').style.display='none';
+    if(tabId==='intermittent'){setResultHeader('Hiệu chỉnh liều — Ngắt quãng','AUC-based Dosing Adjustment');setGuide('intermittent');runIntermittent();}
+    else if(tabId==='civ'){setResultHeader('Hiệu chỉnh liều — CIV','Continuous Infusion Vancomycin');setGuide('civ');runCIV();}
+    else if(tabId==='ihd'){setResultHeader('Liều bù sau lọc máu','IHD Supplementary Dose');setGuide('ihd');runIHD();}
+    else if(tabId==='opat'){setResultHeader('Đích nồng độ Ngoại trú','OPAT Trough Target');setGuide('opat');runOPAT();}
+}
+function showTabContent(id){document.querySelectorAll('.tab-content').forEach(function(el){el.classList.remove('active');});var el=document.getElementById(id);if(el)el.classList.add('active');}
+function setResultHeader(t,s){document.getElementById('rcTitle').textContent=t;document.getElementById('rcSubtitle').textContent=s;}
+function setMethod(m,btn){currentMethod=m;document.querySelectorAll('.method-btn').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');document.getElementById('fields-pk').style.display=m==='pk'?'block':'none';document.getElementById('fields-direct').style.display=m==='direct'?'block':'none';runIntermittent();}
+function selectScenario(sc,btn){currentScenario=sc;document.querySelectorAll('.sc-btn').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');runEmpiric();}
+function roundDose(d,step){step=step||250;return Math.max(250,Math.round(d/step)*step);}
+function setStatus(text,cls){var el=document.getElementById('rcStatus');el.innerHTML=text;el.className='vrc-status '+cls;}
+function setMainResult(html){document.getElementById('mainResult').innerHTML=html;}
+function clearAlerts(){document.getElementById('alertsArea').innerHTML='';}
+function addAlert(type,icon,title,body){document.getElementById('alertsArea').innerHTML+='<div class="van-alert a-'+type+'"><i class="fa-solid '+icon+' van-alert-icon"></i><div class="van-alert-content"><h4>'+title+'</h4><p>'+body+'</p></div></div>';}
+function updateAUCGauge(auc){
+    document.getElementById('aucGauge').style.display='block';
+    var pct=Math.min(Math.max(auc/1000*100,0),100),ptr=document.getElementById('aucPointer');
+    ptr.style.left=pct+'%';
+    var col=auc<400?'var(--van-amber)':auc>600?'var(--van-red)':'var(--van-green)';
+    ptr.style.background=col;
+    document.getElementById('aucGaugeVal').innerHTML='<span style="color:'+col+';font-weight:800">'+Math.round(auc)+' mg.h/L</span> — '+(auc<400?'Dưới đích (<400)':auc>600?'Vượt đích (>600)':'Trong khoảng đích (400-600)');
+}
+function triggerCalc(){if(currentMainTab==='empiric')runEmpiric();else if(currentSubTab==='intermittent')runIntermittent();else if(currentSubTab==='civ')runCIV();else if(currentSubTab==='ihd')runIHD();else runOPAT();}
+function runEmpiric(){
+    clearAlerts();['pkReport','regimenBox','aucGauge'].forEach(function(id){document.getElementById(id).style.display='none';});
+    var w=patient.weight,crcl=patient.crcl,sc=currentScenario;
+    if(!w||w<=0){setMainResult('<div class="vrc-placeholder"><i class="fa-solid fa-user-plus"></i><span>Vui lòng nhập thông tin bệnh nhân<br>(đặc biệt Cân nặng)</span></div>');setStatus('<i class="fa-solid fa-circle-dot"></i> Chưa đủ thông tin','');return;}
+    var tau=12,dbl=false;
+    if(crcl!==null){if(crcl>=90)tau=8;else if(crcl>=50)tau=12;else if(crcl>=30)tau=24;else if(crcl>=20)tau=48;else dbl=true;}
+    if(sc==='adult'){
+        var ld=roundDose(Math.min(25*w,3000));
+        if(dbl){setMainResult('<div class="vrc-dose-label">Liều nạp (Loading Dose)</div><div class="vrc-dose-val">'+ld+' mg</div><div class="vrc-dose-sub">Truyền IV — Sau đó chỉnh liều theo nồng độ đo được</div><div style="margin-top:10px;padding:9px;background:var(--van-red-h);border:1px solid var(--van-red-b);border-radius:8px;color:var(--van-red);font-size:.77rem;font-weight:700"><i class="fa-solid fa-triangle-exclamation"></i> CrCl &lt; 20 mL/min — Không thể tính liều duy trì theo công thức</div>');setStatus('<i class="fa-solid fa-triangle-exclamation"></i> CẦN CHỈNH LIỀU THEO NỒNG ĐỘ','s-danger');addAlert('danger','fa-kidney','Suy thận nặng — Dose-by-level','CrCl = '+crcl+' mL/min. Nguy cơ tích lũy thuốc rất cao. Cho liều nạp '+ld+' mg, đo nồng độ đáy mỗi 24h để quyết định có cho liều tiếp không.');}
+        else{var md=roundDose(15*w);setMainResult('<div class="vrc-dose-label">Liều nạp (Loading Dose)</div><div class="vrc-dose-val">'+ld+' mg</div><div class="vrc-dose-sub" style="margin-bottom:10px">Truyền IV — Một lần duy nhất</div><hr style="border:none;border-top:1px solid var(--color-divider);margin:10px 0"><div class="vrc-dose-label">Liều duy trì (Maintenance)</div><div class="vrc-dose-val" style="font-size:1.5rem">'+md+' mg mỗi '+tau+'h</div><div class="vrc-dose-sub">= '+(md*(24/tau))+' mg/ngày — TBW '+w+' kg, CrCl '+(crcl||'?')+' mL/min</div>');if(crcl===null){setStatus('<i class="fa-solid fa-circle-question"></i> Thiếu dữ liệu Creatinin','s-info');addAlert('warn','fa-triangle-exclamation','Không tính được CrCl','Thiếu Creatinin huyết thanh. Khoảng cách Q12H mặc định. Bổ sung Scr để tối ưu phác đồ.');}else if(crcl<50){setStatus('<i class="fa-solid fa-hourglass-half"></i> KHOẢNG LIỀU KÉO DÀI (CrCl '+crcl+' mL/min)','s-warn');addAlert('warn','fa-triangle-exclamation','Suy thận mức độ vừa (CrCl = '+crcl+' mL/min)','Khoảng cách liều kéo dài Q'+tau+'H để giảm tích lũy. Theo dõi nồng độ sau 2-3 liều.');}else{setStatus('<i class="fa-solid fa-circle-check"></i> Phác đồ Empiric gợi ý','s-ok');addAlert('ok','fa-circle-check','Chức năng thận bình thường','CrCl = '+crcl+' mL/min — Khoảng cách Q'+tau+'H phù hợp. Đo nồng độ đáy trước liều thứ 3-4.');}}
+    }else if(sc==='obese'){
+        if(!patient.adjbw||patient.adjbw<=0){setMainResult('<div class="vrc-placeholder"><i class="fa-solid fa-weight-scale"></i><span>Bật checkbox béo phì và nhập chiều cao<br>để tính AdjBW cho phác đồ béo phì</span></div>');setStatus('<i class="fa-solid fa-circle-dot"></i> Cần nhập chiều cao','s-warn');return;}
+        var ab=patient.adjbw,ld2=roundDose(Math.min(20*w,3000)),md2=roundDose(Math.min(15*ab,4500/(24/tau)));
+        setMainResult('<div class="vrc-dose-label">Liều nạp — Theo TBW '+w+' kg</div><div class="vrc-dose-val">'+ld2+' mg</div><div class="vrc-dose-sub" style="margin-bottom:10px">Truyền IV — 20 mg/kg TBW (tối đa 3000 mg)</div><hr style="border:none;border-top:1px solid var(--color-divider);margin:10px 0"><div class="vrc-dose-label">Liều duy trì — Theo AdjBW '+ab+' kg</div><div class="vrc-dose-val" style="font-size:1.5rem">'+md2+' mg mỗi '+tau+'h</div><div class="vrc-dose-sub">= '+(md2*(24/tau))+' mg/ngày</div>');
+        setStatus('<i class="fa-solid fa-person-walking"></i> PHÁC ĐỒ BÉO PHÌ (TBW + AdjBW)','s-warn');addAlert('info','fa-circle-info','Hiệu chỉnh cân nặng béo phì','Nạp theo TBW '+w+' kg để đạt nồng độ điều trị nhanh. Duy trì theo AdjBW '+ab+' kg (IBW '+patient.ibw+' kg + 40% thặng dư).');
+    }else if(sc==='child'){
+        var sd=roundDose((60*w)/4,50);setMainResult('<div class="vrc-dose-label">Liều duy trì — Nhi khoa Q6H</div><div class="vrc-dose-val">'+sd+' mg</div><div class="vrc-dose-sub">= mỗi 6 giờ (Q6H) = '+(sd*4)+' mg/ngày<br>Tính: 60 mg/kg/ngày : 4 liều — Cân nặng '+w+' kg</div>');
+        setStatus('<i class="fa-solid fa-child"></i> LIỀU PHÁP NHI KHOA (Q6H)','s-info');addAlert('info','fa-circle-info','Lưu ý dược động học nhi khoa','Trẻ em (3 tháng – < 12 tuổi) có thể tích phân bố và lọc cầu thận cao hơn người lớn, cần Q6H. Kiểm tra nồng độ đáy sau 48h.');
+    }else if(sc==='civ'){
+        var ld3=roundDose(15*w),cr=roundDose(30*w,250);setMainResult('<div class="vrc-dose-label">Liều nạp (Loading Dose)</div><div class="vrc-dose-val">'+ld3+' mg</div><div class="vrc-dose-sub" style="margin-bottom:10px">Truyền IV trong 1-2 giờ — Trước khi bắt đầu CIV</div><hr style="border:none;border-top:1px solid var(--color-divider);margin:10px 0"><div class="vrc-dose-label">Tốc độ CIV ban đầu</div><div class="vrc-dose-val" style="font-size:1.5rem">'+cr+' mg/24h</div><div class="vrc-dose-sub">= '+Math.round(cr/24)+' mg/giờ — Đích Css = 20-25 mg/L</div>');
+        setStatus('<i class="fa-solid fa-arrows-spin"></i> CIV — TRUYỀN LIÊN TỤC','s-info');addAlert('info','fa-circle-info','Phác đồ truyền liên tục (CIV)','Đích Css = 20-25 mg/L tương đương AUC = 480-600 mg.h/L. Đo Css ngẫu nhiên sau 24h truyền ổn định để hiệu chỉnh tốc độ.');
+    }
+}
+function runIntermittent(){
+    clearAlerts();document.getElementById('regimenBox').style.display='none';
+    var dose=parseFloat(document.getElementById('int-dose').value),tau=parseInt(document.getElementById('int-interval').value),
+        aucTarget=parseFloat(document.getElementById('int-auc-target').value),w=patient.weight;
+    if(!dose||!tau||!w||w<=0){setMainResult('<div class="vrc-placeholder"><i class="fa-solid fa-sliders"></i><span>Nhập đầy đủ thông tin bệnh nhân<br>và phác đồ hiện tại</span></div>');setStatus('<i class="fa-solid fa-circle-dot"></i> Chưa đủ thông tin','');document.getElementById('pkReport').style.display='none';document.getElementById('aucGauge').style.display='none';return;}
+    var n=24/tau,tdd=dose*n,calcAUC=0,ke=0,Vd=0,Cl=0,tHalf=0,pkR=document.getElementById('pkReport');
+    if(currentMethod==='direct'){
+        calcAUC=parseFloat(document.getElementById('int-auc-calc').value)||0;pkR.style.display='none';
+        if(!calcAUC){setMainResult('<div class="vrc-placeholder"><span>Nhập AUC 24h hiện tại để tiếp tục</span></div>');setStatus('','');document.getElementById('aucGauge').style.display='none';return;}
+    }else{
+        var cP=parseFloat(document.getElementById('int-cpeak').value),tP=parseFloat(document.getElementById('int-t-peak').value),
+            cT=parseFloat(document.getElementById('int-ctrough').value),tT=parseFloat(document.getElementById('int-t-trough').value),
+            tI=parseFloat(document.getElementById('int-tinf').value);
+        if(!cP||!cT||isNaN(tP)||isNaN(tT)||!tI){setMainResult('<div class="vrc-placeholder"><span>Nhập nồng độ Đỉnh/Đáy và thời gian lấy mẫu</span></div>');pkR.style.display='none';document.getElementById('aucGauge').style.display='none';return;}
+        if(cP<=cT){setMainResult('<div class="vrc-placeholder" style="color:var(--van-red)"><i class="fa-solid fa-triangle-exclamation"></i><span>C-peak phải lớn hơn C-trough</span></div>');pkR.style.display='none';document.getElementById('aucGauge').style.display='none';return;}
+        var tD=tau-tI-tP-tT;
+        if(tD<=0){setMainResult('<div class="vrc-placeholder" style="color:var(--van-red)"><i class="fa-solid fa-triangle-exclamation"></i><span>Lỗi thời gian: Tổng TG lấy mẫu vượt khoảng cách liều</span></div>');pkR.style.display='none';document.getElementById('aucGauge').style.display='none';return;}
+        ke=Math.log(cP/cT)/tD;tHalf=Math.log(2)/ke;
+        var cMax=cP*Math.exp(ke*tP),cMin=cT*Math.exp(-ke*tT);
+        Vd=(dose*(1-Math.exp(-ke*tI)))/(tI*ke*(cMax-cMin*Math.exp(-ke*tI)));Cl=ke*Vd;
+        var aT=((cMax+cMin)*tI)/2+(cMax-cMin)/ke;calcAUC=aT*n;
+        document.getElementById('pk-ke').textContent=ke.toFixed(4);document.getElementById('pk-thalf').textContent=tHalf.toFixed(1);
+        document.getElementById('pk-vd').textContent=Vd.toFixed(1);document.getElementById('pk-vd-kg').textContent=(Vd/w).toFixed(2);
+        document.getElementById('pk-cl').textContent=Cl.toFixed(2);document.getElementById('pk-cl-ml').textContent=Math.round(Cl*1000/60);
+        document.getElementById('pk-auc').textContent=Math.round(calcAUC);document.getElementById('pk-auc-mic').textContent=Math.round(calcAUC);
+        pkR.style.display='block';
+    }
+    updateAUCGauge(calcAUC);
+    var nTDD=tdd*(aucTarget/calcAUC),nD=roundDose(nTDD/n),aTDD=nD*n,delta=aTDD-tdd;
+    setMainResult('<div class="vrc-dose-label">Liều đề xuất mới</div><div class="vrc-dose-val">'+nD+' mg mỗi '+tau+'h</div><div class="vrc-dose-sub">TDD mới: '+aTDD+' mg/ngày ('+(delta>0?'+':'')+delta+' mg so với cũ)<br>AUC hiện tại: '+Math.round(calcAUC)+' → Đích: '+aucTarget+' mg.h/L</div>');
+    if(calcAUC>600){setStatus('<i class="fa-solid fa-circle-radiation"></i> AUC VƯỢT ĐÍCH — NGUY CƠ ĐỘC TÍNH','s-danger');addAlert('danger','fa-kidney','AUC vượt đích ('+Math.round(calcAUC)+' > 600)','Nguy cơ AKI tăng đáng kể. Cần GIẢM liều về '+nD+' mg Q'+tau+'H. Theo dõi SCr và nước tiểu.');}
+    else if(calcAUC<400){setStatus('<i class="fa-solid fa-arrow-trend-down"></i> AUC DƯỚI ĐÍCH — NGUY CƠ THẤT BẠI','s-warn');addAlert('warn','fa-triangle-exclamation','AUC dưới đích ('+Math.round(calcAUC)+' < 400)','Nguy cơ thất bại điều trị. Cần Tăng liều lên '+nD+' mg Q'+tau+'H. Đo lại nồng độ sau 3-4 liều.');}
+    else{setStatus('<i class="fa-solid fa-circle-check"></i> AUC TRONG KHOẢNG ĐÍCH (400-600)','s-ok');addAlert('ok','fa-circle-check','AUC tối ưu ('+Math.round(calcAUC)+' mg.h/L)','Phác đồ đang đạt đích. Duy trì '+dose+' mg Q'+tau+'H và kiểm tra lại nồng độ sau 3-5 ngày.');}
+    if(currentMethod==='pk'&&ke>0&&Vd>0){
+        var intv=[8,12,24],tb='';
+        intv.forEach(function(t){var ni=24/t,rd=roundDose(nTDD/ni,250),tIs=1.0,cMp=(rd*(1-Math.exp(-ke*tIs)))/(tIs*ke*Vd*(1-Math.exp(-ke*t))),cMn=cMp*Math.exp(-ke*(t-tIs)),aP=(((cMp+cMn)*tIs)/2+(cMp-cMn)/ke)*ni,isOk=aP>=400&&aP<=600,bC=isOk?'ok':(aP>600?'danger':'warn'),bT=isOk?'Khuyên dùng':(aP>600?'AUC cao':'AUC thấp');tb+='<tr><td><strong>'+rd+' mg</strong> Q'+t+'H</td><td>'+Math.round(aP)+'</td><td>'+cMn.toFixed(1)+'</td><td><span class="r-badge '+bC+'">'+bT+'</span></td></tr>';});
+        document.getElementById('regimenBody').innerHTML=tb;document.getElementById('regimenBox').style.display='block';
+    }
+}
+function runCIV(){
+    clearAlerts();['pkReport','regimenBox','aucGauge'].forEach(function(id){document.getElementById(id).style.display='none';});
+    var tdd=parseFloat(document.getElementById('civ-tdd').value),css=parseFloat(document.getElementById('civ-css').value),tg=parseFloat(document.getElementById('civ-target').value);
+    if(!tdd||!css||!tg||css<=0){setMainResult('<div class="vrc-placeholder"><span>Nhập tổng liều 24h, Css đo được và Css đích</span></div>');setStatus('','');return;}
+    var nT=roundDose(tdd*(tg/css),250),dl=nT-tdd;
+    setMainResult('<div class="vrc-dose-label">Tềc độ CIV điều chỉnh</div><div class="vrc-dose-val">'+nT+' mg/24h</div><div class="vrc-dose-sub">= '+Math.round(nT/24)+' mg/giờ<br>Thay đổi: '+(dl>0?'+':'')+dl+' mg/ngày so với phác đồ cũ<br>Css hiện tại: '+css+' → Đích: '+tg+' mg/L</div>');
+    if(css>25){setStatus('<i class="fa-solid fa-circle-radiation"></i> CSS QUÁ CAO — NGỬNG VÀ TÁI TITRATE','s-danger');addAlert('danger','fa-circle-xmark','Css vượt ngưỡng an toàn ('+css+' > 25 mg/L)','Nguy cơ AKI. TẠM NGỬNG truyền cho đến khi Css < 20 mg/L, sau đó khởi động lại: '+nT+' mg/24h.');}
+    else if(css<17){setStatus('<i class="fa-solid fa-arrow-trend-up"></i> CSS DƯỚI ĐÍCH — TĂNG TỐC ĐỘ TRUYỀN','s-warn');addAlert('warn','fa-triangle-exclamation','Css chưa đạt đích ('+css+' < 17 mg/L)','Tăng tốc độ CIV lên '+nT+' mg/24h. Cân nhắc cho thêm liều nạp bổ sung (5-10 mg/kg) nếu nhiễm khuản nặng.');}
+    else{setStatus('<i class="fa-solid fa-circle-check"></i> CSS TRONG KHOẢNG ĐÍCH','s-ok');addAlert('ok','fa-circle-check','Css tối ưu ('+css+' mg/L)','Duy trì tốc độ '+tdd+' mg/24h. Kiểm tra Css mỗi 24-48h.');}
+}
+function runIHD(){
+    clearAlerts();['pkReport','regimenBox','aucGauge'].forEach(function(id){document.getElementById(id).style.display='none';});
+    var pre=parseFloat(document.getElementById('ihd-pre').value),tp=parseFloat(document.getElementById('ihd-target').value),w=patient.weight;
+    if(!pre||!tp||!w||w<=0){setMainResult('<div class="vrc-placeholder"><span>Nhập nồng độ trước lọc máu và cân nặng</span></div>');setStatus('','');return;}
+    var postEst=pre*0.65,supp=Math.max(0,(tp-postEst)*0.7*w),sd=roundDose(supp,250),mpk=(sd/w).toFixed(1);
+    setMainResult('<div class="vrc-dose-label">Nồng độ ước tính sau lọc máu</div><div class="vrc-dose-val" style="font-size:1.4rem;color:var(--van-amber)">'+postEst.toFixed(1)+' mg/L</div><div class="vrc-dose-sub" style="margin-bottom:10px">Ước tính: '+pre+' mg/L × (1 - 0.35)</div><hr style="border:none;border-top:1px solid var(--color-divider);margin:10px 0"><div class="vrc-dose-label">Liều bù (Supplementary Dose)</div><div class="vrc-dose-val">'+sd+' mg</div><div class="vrc-dose-sub">= '+mpk+' mg/kg — TBW '+w+' kg<br>Đích đạt sau bù: ~'+tp+' mg/L — Cho NGAY sau IHD</div>');
+    if(pre<10){setStatus('<i class="fa-solid fa-arrow-up"></i> CẦN BỔ SUNG LIỀU TRƯỚC KHI LỌC MÁU','s-warn');addAlert('warn','fa-triangle-exclamation','Nồng độ trước lọc thấp ('+pre+' mg/L)','Nồng độ trước HD thấp hơn đích điều trị. Cân nhắc cho liều nạp trước khi lọc máu.');}
+    else if(pre>20){setStatus('<i class="fa-solid fa-droplet-slash"></i> NỒNG ĐỘ CAO — THEO DÕI SAU LỌC','s-info');addAlert('info','fa-circle-info','Nồng độ trước lọc cao ('+pre+' mg/L)','Lọc máu sẽ làm giảm nồng độ xuống ~'+postEst.toFixed(1)+' mg/L. Nếu đạt đích sau lọc, có thể bỏ qua liều bù.');}
+    else{setStatus('<i class="fa-solid fa-circle-check"></i> LIỀU BÙ TÍNH TOÁN ĐẦY ĐỦ','s-ok');addAlert('ok','fa-circle-check','Lịch trình điều trị hợp lý','Cho '+sd+' mg ('+mpk+' mg/kg) ngay sau IHD để phục hồi nồng độ về đích '+tp+' mg/L.');}
+}
+function runOPAT(){
+    clearAlerts();['pkReport','regimenBox','aucGauge'].forEach(function(id){document.getElementById(id).style.display='none';});
+    var tr=parseFloat(document.getElementById('opat-trough').value),auc=parseFloat(document.getElementById('opat-auc').value);
+    if(!tr||!auc){setMainResult('<div class="vrc-placeholder"><span>Nhập nồng độ đáy và AUC nội viện</span></div>');setStatus('','');return;}
+    var ratio=auc/tr,t4=(400/ratio).toFixed(1),t6=(600/ratio).toFixed(1),
+        ac=auc<400?'Dưới đích':auc>600?'Vượt đích':'Đạt đích',acol=auc<400?'var(--van-amber)':auc>600?'var(--van-red)':'var(--van-green)';
+    setMainResult('<div style="text-align:left;width:100%"><div class="vrc-dose-label">AUC nội viện: '+Math.round(auc)+' mg.h/L — <span style="color:'+acol+'">'+ac+'</span></div><div style="margin:10px 0;font-size:.82rem;color:var(--color-text)"><strong>Tỉ lệ AUC/Ctrough</strong> ước tính: <span style="color:var(--van-blue);font-weight:800">'+ratio.toFixed(1)+'</span> mg.h/L per mg/L đáy</div><hr style="border:none;border-top:1px solid var(--color-divider);margin:10px 0"><div class="vrc-dose-label">Khoảng nồng độ đáy OPAT (AUC 400-600)</div><div class="vrc-dose-val" style="font-size:1.4rem">'+t4+' – '+t6+' mg/L</div><div class="vrc-dose-sub">Nồng độ đáy ngoại trú trong khoảng này → AUC 400-600 mg.h/L<br>(Giả định chức năng thận ổn định sau xuất viện)</div></div>');
+    setStatus('<i class="fa-solid fa-house-medical-circle-check"></i> ĐÍCH NGOẠI TRÚ TỪ NỘI VIỆN','s-purple');addAlert('info','fa-circle-info','Hướng dẫn theo dõi OPAT','Đo nồng độ đáy mỗi 1-2 tuần ngoại trú. Dừng Vancomycin nếu SCr tăng > 0.5 mg/dL hoặc nồng độ đáy vượt '+t6+' mg/L.');
+}
+function setGuide(tabId){
+    var g={empiric:['<strong>Liều nạp (Loading dose):</strong> 20-25 mg/kg TBW (tối đa 3000 mg) — Cần thiết để đạt nhanh nồng độ điều trị.','<strong>Liều duy trì:</strong> Hiệu chỉnh khoảng cách liều (Q8H-Q48H) theo CrCl để tránh tích lũy và độc tính thận.','<strong>Thể trạng đặc biệt:</strong> Béo phì: nạp TBW, duy trì AdjBW. Nhi khoa: Q6H. CIV: Css 20-25 mg/L.','<strong>Theo dõi:</strong> Đo nồng độ đáy trước liều thứ 3-4 ở trạng thái ổn định.'],
+    intermittent:['<strong>Lấy mẫu Đỉnh:</strong> Ít nhất 1 giờ sau kết thúc truyền dịch.','<strong>Lấy mẫu Đáy:</strong> 30 phút trước liều kế tiếp — đo ở trạng thái ổn định (sau 3-4 liều).','<strong>Sawchuk-Zaske:</strong> Tính ke, t-half, Vd và Cl-vanc cá thể hóa từ 2 điểm nồng độ.','<strong>Bảng so sánh:</strong> Dự đoán AUC và Ctrough với Q8H/Q12H/Q24H để chọn phác đồ tối ưu.'],
+    civ:['<strong>Đích Css:</strong> 20-25 mg/L tương đương AUC ~480-600 mg.h/L.','<strong>Ưu điểm CIV:</strong> Nồng độ ổn định hơn, ít độc tính đỉnh, thuận lợi cho suy thận nặng.','<strong>Hiệu chỉnh:</strong> Liều mới = (Css-đích / Css-đo) x Liều cũ — Áp dụng ngay.','<strong>Hold:</strong> Ngừng truyền nếu Css > 25 mg/L cho đến khi < 20 mg/L rồi giảm 20-30%.'],
+    ihd:['<strong>Loại bỏ qua lọc:</strong> Màng high-flux loại bỏ 30-40% Vancomycin mỗi chu kỳ IHD 4 giờ.','<strong>Thời điểm bù thuốc:</strong> Cho liều bổ sung ngay sau khi kết thúc chu kỳ IHD.','<strong>Theo dõi:</strong> Đo nồng độ 2-3 ngày/lần ở bệnh nhân IHD.','<strong>Tần suất:</strong> Bệnh nhân IHD 3 lần/tuần thường cần Vancomycin mỗi 48-72h.'],
+    opat:['<strong>Giả định:</strong> Tỉ lệ AUC/Ctrough ổn định khi chức năng thận không đổi sau xuất viện.','<strong>Theo dõi ngoại trú:</strong> Đo nồng độ đáy mỗi 1-2 tuần; SCr mỗi tuần đầu.','<strong>Dừng thuốc khi:</strong> Ctrough > giới hạn trên OPAT, SCr tăng >= 0.5 mg/dL.','<strong>Phối hợp:</strong> Dược sĩ lâm sàng OPAT cần theo dõi và hiệu chỉnh định kỳ.']};
+    var items=g[tabId]||g.empiric;document.getElementById('guideList').innerHTML=items.map(function(i){return'<li>'+i+'</li>';}).join('');
+}
+document.addEventListener('DOMContentLoaded',function(){onPatientChange();setGuide('empiric');});
+</script>
 </body>
-
 </html>
