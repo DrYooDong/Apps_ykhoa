@@ -26,6 +26,78 @@
   <script src="../../components/footer.js" defer></script>
 
   <link rel="stylesheet" href="../../css/components/physio-patho.css">
+<style>
+  /* Infographic Mode Styles */
+  .infographic-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)) !important;
+    gap: 12px !important;
+    padding: 0 !important;
+  }
+  .info-card {
+    padding: 10px !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
+    min-height: auto !important;
+    border: 1px solid var(--color-border) !important;
+  }
+  .info-card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1) !important;
+  }
+  .info-card .specialty-card-top {
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 0 !important;
+  }
+  .info-img-box {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f8fafc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .info-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .info-card .specialty-info h3 {
+    font-size: 13.5px !important;
+    margin-bottom: 2px !important;
+    line-height: 1.25 !important;
+  }
+  .info-card .specialty-info p {
+    font-size: 11.5px !important;
+    color: var(--color-text-muted) !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0 !important;
+    line-height: 1.4 !important;
+  }
+  .info-card .specialty-card-action {
+    display: none !important; /* Hide action bar to make it compact */
+  }
+  .sub-specialty-title {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin: 16px 0 8px 0;
+    padding-bottom: 4px;
+    border-bottom: 1px dashed var(--color-border);
+  }
+  .empty-text {
+    font-size: 13px;
+    color: #94a3b8;
+    font-style: italic;
+  }
+</style>
 </head>
 
 <body>
@@ -188,37 +260,26 @@
             <ul class="part-nav-list">
               <li>
                 <a href="#part1-section" class="part-nav-item p1 active" data-target="part1-section">
-                  <span class="part-icon"><i class="fa-solid fa-triangle-exclamation"></i></span>
-                  <span class="part-text">Phần 1: Cấp cứu & Hồi sức</span>
-                  <span class="part-count-badge">4</span>
+                  <span class="part-icon"><i class="fa-solid fa-truck-medical"></i></span>
+                  <span class="part-text">Cấp cứu - Hồi sức</span>
                 </a>
               </li>
               <li>
                 <a href="#part2-section" class="part-nav-item p2" data-target="part2-section">
-                  <span class="part-icon"><i class="fa-solid fa-temperature-three-quarters"></i></span>
-                  <span class="part-text">Phần 2: Triệu chứng lâm sàng</span>
-                  <span class="part-count-badge">6</span>
+                  <span class="part-icon"><i class="fa-solid fa-stethoscope"></i></span>
+                  <span class="part-text">Triệu chứng - Hội chứng</span>
                 </a>
               </li>
               <li>
                 <a href="#part3-section" class="part-nav-item p3" data-target="part3-section">
-                  <span class="part-icon"><i class="fa-solid fa-hospital"></i></span>
-                  <span class="part-text">Phần 3: Bệnh lý mạn tính</span>
-                  <span class="part-count-badge">12</span>
+                  <span class="part-icon"><i class="fa-solid fa-microscope"></i></span>
+                  <span class="part-text">Cận lâm sàng</span>
                 </a>
               </li>
               <li>
                 <a href="#part4-section" class="part-nav-item p4" data-target="part4-section">
-                  <span class="part-icon"><i class="fa-solid fa-baby"></i></span>
-                  <span class="part-text">Phần 4: Sản & Nhi khoa</span>
-                  <span class="part-count-badge">4</span>
-                </a>
-              </li>
-              <li>
-                <a href="#part5-section" class="part-nav-item p5" data-target="part5-section">
-                  <span class="part-icon"><i class="fa-solid fa-shield-halved"></i></span>
-                  <span class="part-text">Phần 5: Dự phòng & Kỹ năng</span>
-                  <span class="part-count-badge">4</span>
+                  <span class="part-icon"><i class="fa-solid fa-bed-pulse"></i></span>
+                  <span class="part-text">Bệnh lý</span>
                 </a>
               </li>
             </ul>
@@ -254,570 +315,158 @@
             </div>
           </section>
 
-          <!-- PHẦN 1: CẤP CỨU & HỒI SỨC CHẤN THƯƠNG -->
+          
+          <!-- PHẦN 1: CẤP CỨU - HỒI SỨC -->
           <section id="part1-section" aria-labelledby="part1-heading">
             <div class="physio-group-container">
               <div class="physio-group-header">
-                <span class="physio-group-icon"><i class="fa-solid fa-triangle-exclamation"></i></span>
-                <h3 id="part1-heading">Phần 1: Cấp cứu & Hồi sức chấn thương</h3>
+                <span class="physio-group-icon"><i class="fa-solid fa-truck-medical"></i></span>
+                <h3 id="part1-heading">Cấp cứu - Hồi sức</h3>
               </div>
-              <div class="specialty-grid">
-
-                <!-- 1. Hồi sức cơ bản & nâng cao -->
-                <a href="1. Cấp cứu & Hồi sức chấn thương/Hồi sức cơ bản & nâng cao/TC_HS_BLS-ALCS.html"
-                  class="specialty-card disabled">
+              <div class="specialty-grid infographic-grid">
+                <!-- Card 1 -->
+                <a href="#" class="specialty-card info-card">
                   <div class="specialty-card-top">
-                    <div class="specialty-icon">🫀</div>
+                    <div class="info-img-box">
+                       <img src="https://placehold.co/80x80/ffe4e6/be123c?text=CC" alt="Emergency">
+                    </div>
                     <div class="specialty-info">
-                      <h3>Hồi sức cơ bản & nâng cao</h3>
-                      <p>Hồi sức tim phổi cơ bản (BLS) & nâng cao (ACLS): ngưng tuần hoàn, sốc phản vệ, hôn mê.</p>
+                      <h3>Ngưng tuần hoàn</h3>
+                      <p>Tiếp cận BLS & ACLS</p>
                     </div>
                   </div>
-                  <div class="specialty-card-action">
-                    <span>Đang biên soạn</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
                 </a>
-
-                <!-- 2. Cấp cứu Ngoại khoa & Chấn thương -->
-                <a href="1. Cấp cứu & Hồi sức chấn thương/Cấp cứu Ngoại khoa & Chấn thương/TC_CC_Ngoai&CT.html"
-                  class="specialty-card disabled">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">🩹</div>
-                    <div class="specialty-info">
-                      <h3>Cấp cứu Ngoại khoa & Chấn thương</h3>
-                      <p>Tiếp cận đa chấn thương, chấn thương sọ não, ngực, bụng, gãy xương và bỏng nặng.</p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Đang biên soạn</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
-                <!-- 3. Cấp cứu Môi trường & Độc chất -->
-                <a href="1. Cấp cứu & Hồi sức chấn thương/Cấp cứu Môi trường & Độc chất/TC_CC_CCmoitruong&Docchat.html"
-                  class="specialty-card disabled">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">🧪</div>
-                    <div class="specialty-info">
-                      <h3>Cấp cứu Môi trường & Độc chất</h3>
-                      <p>Xử trí ngộ độc cấp, vết cắn của động vật/côn trùng, đuối nước và sốc nhiệt.</p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Đang biên soạn</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
-                <!-- 4. Cấp cứu Sản - Nhi -->
-                <a href="1. Cấp cứu & Hồi sức chấn thương/Cấp cứu Sản - Nhi/TC_CC_San&Nhi.html"
-                  class="specialty-card disabled">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">🤰</div>
-                    <div class="specialty-info">
-                      <h3>Cấp cứu Sản - Nhi</h3>
-                      <p>Nhận diện và xử trí choáng sản khoa, sa dây rốn, băng huyết và sốt cao co giật sơ sinh.</p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Đang biên soạn</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
               </div>
             </div>
           </section>
 
-
-          <!-- PHẦN 2: TIẾP CẬN CHẨN ĐOÁN TỪ TRIỆU CHỨNG LÂM SÀNG -->
+          <!-- PHẦN 2: TRIỆU CHỨNG - HỘI CHỨNG -->
           <section id="part2-section" aria-labelledby="part2-heading">
             <div class="physio-group-container">
               <div class="physio-group-header">
-                <span class="physio-group-icon"><i class="fa-solid fa-temperature-three-quarters"></i></span>
-                <h3 id="part2-heading">Phần 2: Tiếp cận chẩn đoán từ triệu chứng lâm sàng</h3>
+                <span class="physio-group-icon"><i class="fa-solid fa-stethoscope"></i></span>
+                <h3 id="part2-heading">Triệu chứng - Hội chứng</h3>
               </div>
-              <div class="specialty-grid">
-
-                <!-- 1. Tiếp cận Sốt -->
-                <a href="2. Tiếp cận chẩn đoán từ triệu chứng lâm sàng/Than phiền Toàn thân/Sốt/TC_Sot.html"
-                  class="specialty-card">
+              <div class="specialty-grid infographic-grid">
+                <!-- C1 -->
+                <a href="2. Tiếp cận chẩn đoán từ triệu chứng lâm sàng/Than phiền Toàn thân/Sốt/TC_Sot.html" class="specialty-card info-card">
                   <div class="specialty-card-top">
-                    <div class="specialty-icon">🌡️</div>
+                    <div class="info-img-box"><img src="https://placehold.co/80x80/ffedd5/c2410c?text=Sot" alt=""></div>
                     <div class="specialty-info">
-                      <h3>Tiếp cận Sốt</h3>
-                      <p>Phân tầng nguyên nhân sốt, định hướng cận lâm sàng và ngưỡng dùng kháng sinh theo bối cảnh.</p>
+                      <h3>Sốt</h3>
+                      <p>Phân tầng nguyên nhân sốt, định hướng xử trí.</p>
                     </div>
                   </div>
-                  <div class="specialty-card-action">
-                    <span>Xem tiếp cận</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
                 </a>
-
-                <!-- 2. Tiếp cận Khó Thở -->
-                <a href="2. Tiếp cận chẩn đoán từ triệu chứng lâm sàng/Than phiền Hô hấp - Tim mạch/TC_KhoTho.html"
-                  class="specialty-card">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">🫁</div>
-                    <div class="specialty-info">
-                      <h3>Tiếp cận Khó Thở</h3>
-                      <p>Thuật toán phân biệt nguyên nhân khó thở cấp/mạn do tim mạch, hô hấp và chuyển hóa.</p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Xem tiếp cận</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
-                <!-- 3. Tiếp cận Đau Bụng -->
-                <a href="2. Tiếp cận chẩn đoán từ triệu chứng lâm sàng/Than phiền Tiêu hóa - Bụng/Đau bụng/TC_Daubung.html"
-                  class="specialty-card">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">🤢</div>
-                    <div class="specialty-info">
-                      <h3>Tiếp cận Đau Bụng</h3>
-                      <p>Phân loại đau bụng cấp ngoại khoa/nội khoa, đỏ cờ lâm sàng ở người lớn, trẻ em và phụ nữ.</p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Xem tiếp cận</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
-                <!-- 4. Tiếp cận Hội chứng Vàng Da -->
-                <a href="2. Tiếp cận chẩn đoán từ triệu chứng lâm sàng/Than phiền Toàn thân/TC_Vangda.html"
-                  class="specialty-card">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">🟡</div>
-                    <div class="specialty-info">
-                      <h3>Tiếp cận Hội chứng Vàng Da</h3>
-                      <p>Hướng dẫn chẩn đoán phân biệt vàng da trước gan, tại gan và tắc mật có hệ thống.</p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Xem tiếp cận</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
-                <!-- 5. Tiếp cận Phù -->
-                <a href="2. Tiếp cận chẩn đoán từ triệu chứng lâm sàng/Than phiền Toàn thân/TC_Phu.html"
-                  class="specialty-card">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">🦶</div>
-                    <div class="specialty-info">
-                      <h3>Tiếp cận Phù</h3>
-                      <p>Phân biệt phù khu trú và toàn thân; hướng dẫn thăm khám lâm sàng và xét nghiệm định hướng.</p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Xem tiếp cận</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
-                <!-- 6. Tiếp cận Đau Ngực -->
-                <a href="2. Tiếp cận chẩn đoán từ triệu chứng lâm sàng/Than phiền Hô hấp - Tim mạch/TC_DauNguc.html"
-                  class="specialty-card disabled">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">💔</div>
-                    <div class="specialty-info">
-                      <h3>Tiếp cận Đau Ngực</h3>
-                      <p>Tầm soát và loại trừ các nguyên nhân đau ngực nguy hiểm: ACS, bóc tách ĐMC, thuyên tắc phổi.
-                      </p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Đang biên soạn</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
-                <!-- 7. Đột quỵ (Quản lý Huyết khối) -->
-                <a href="2. Tiếp cận chẩn đoán từ triệu chứng lâm sàng/Than phiền Thần kinh - Cơ xương khớp/antithrombotic-stroke.html"
-                  class="specialty-card">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">🧠</div>
-                    <div class="specialty-info">
-                      <h3>Đột quỵ (Huyết khối)</h3>
-                      <p>Lưu đồ quản lý thuốc chống huyết khối cấp tính trong Đột quỵ thiếu máu não cục bộ hoặc TIA.</p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Xem tiếp cận</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
               </div>
             </div>
           </section>
 
-
-          <!-- PHẦN 3: QUẢN LÝ BỆNH LÝ MẠN TÍNH & HỆ THỐNG -->
+          
+          <!-- PHẦN 3: CẬN LÂM SÀNG -->
           <section id="part3-section" aria-labelledby="part3-heading">
             <div class="physio-group-container">
               <div class="physio-group-header">
-                <span class="physio-group-icon"><i class="fa-solid fa-hospital"></i></span>
-                <h3 id="part3-heading">Phần 3: Quản lý bệnh lý mạn tính & hệ thống</h3>
+                <span class="physio-group-icon"><i class="fa-solid fa-microscope"></i></span>
+                <h3 id="part3-heading">Cận lâm sàng</h3>
               </div>
-              <div class="specialty-grid">
-
-                <!-- 1. Sốt xuất huyết Dengue -->
-                <a href="3. Quản lý bệnh lý mạn tính & hệ thống/Huyết học & Truyền nhiễm/TC_SXHD.html"
-                  class="specialty-card">
+              <div class="specialty-grid infographic-grid">
+                <a href="3. Quản lý bệnh lý mạn tính & hệ thống/Tiêu hóa - Ngoại khoa/TC_Sinhhoagan.html" class="specialty-card info-card">
                   <div class="specialty-card-top">
-                    <div class="specialty-icon">🦟</div>
+                    <div class="info-img-box"><img src="https://placehold.co/80x80/fef3c7/b45309?text=Gan" alt=""></div>
                     <div class="specialty-info">
-                      <h3>Sốt xuất huyết Dengue</h3>
-                      <p>Chẩn đoán xác định, phân loại mức độ nặng theo WHO, chỉ định xét nghiệm và truyền dịch.</p>
+                      <h3>Sinh hóa Gan</h3>
+                      <p>ALT, AST, ALP, GGT.</p>
                     </div>
                   </div>
-                  <div class="specialty-card-action">
-                    <span>Xem tiếp cận</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
                 </a>
-
-                <!-- 2. Viêm gan Siêu vi B -->
-                <a href="3. Quản lý bệnh lý mạn tính & hệ thống/Huyết học & Truyền nhiễm/TC_vgsvB.html"
-                  class="specialty-card">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">🧬</div>
-                    <div class="specialty-info">
-                      <h3>Viêm gan Siêu vi B</h3>
-                      <p>Chẩn đoán giai đoạn, phân tầng nguy cơ xơ gan/HCC và chỉ định điều trị thuốc kháng virus.</p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Xem tiếp cận</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
-                <!-- 3. Tiếp cận Rối loạn Bạch cầu -->
-                <a href="3. Quản lý bệnh lý mạn tính & hệ thống/Huyết học & Truyền nhiễm/TC_bachcau.html"
-                  class="specialty-card">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">🩸</div>
-                    <div class="specialty-info">
-                      <h3>Tiếp cận Rối loạn Bạch cầu</h3>
-                      <p>Thuật toán chẩn đoán tăng/giảm bạch cầu, bạch cầu hạt trung tính và tế bào lympho.</p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Xem tiếp cận</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
-                <!-- 4. Mono, Eosinophil, Basophil -->
-                <a href="3. Quản lý bệnh lý mạn tính & hệ thống/Huyết học & Truyền nhiễm/TC_monocyte.html"
-                  class="specialty-card">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">🩸</div>
-                    <div class="specialty-info">
-                      <h3>Mono, Eosinophil, Basophil</h3>
-                      <p>Tiếp cận tăng bạch cầu ái toan (Eosinophilia), tăng monocytes và các hội chứng suy tủy.</p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Xem tiếp cận</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
-                <!-- 5. Tiếp cận Rối loạn Tiểu cầu -->
-                <a href="3. Quản lý bệnh lý mạn tính & hệ thống/Huyết học & Truyền nhiễm/TC_tieu-cau.html"
-                  class="specialty-card">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">🩸</div>
-                    <div class="specialty-info">
-                      <h3>Tiếp cận Rối loạn Tiểu cầu</h3>
-                      <p>Tiếp cận giảm tiểu cầu (ITP, TTP-HUS, DIC) và tăng tiểu cầu phản ứng/tiên phát.</p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Xem tiếp cận</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
-                <!-- 6. Tiếp cận Thiếu máu -->
-                <a href="3. Quản lý bệnh lý mạn tính & hệ thống/Huyết học & Truyền nhiễm/TC_Thieumau.html"
-                  class="specialty-card">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">🩸</div>
-                    <div class="specialty-info">
-                      <h3>Tiếp cận Thiếu máu</h3>
-                      <p>Phân loại thiếu máu theo chỉ số hồng cầu (MCV, MCH, RDW) và thuật toán định hướng nguyên nhân.
-                      </p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Xem tiếp cận</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
-                <!-- 7. Tiếp cận Sinh hóa Gan -->
-                <a href="3. Quản lý bệnh lý mạn tính & hệ thống/Tiêu hóa - Ngoại khoa/TC_Sinhhoagan.html"
-                  class="specialty-card">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">🧪</div>
-                    <div class="specialty-info">
-                      <h3>Tiếp cận Sinh hóa Gan</h3>
-                      <p>Diễn giải các xét nghiệm hủy tế bào gan, tắc mật, và chức năng tổng hợp của gan.</p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Xem tiếp cận</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
-                <!-- 8. Viêm Phổi Cộng Đồng -->
-                <a href="../Công cụ/Hô hấp & Lao/DG_Viem-phoi.html" class="specialty-card">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">🫁</div>
-                    <div class="specialty-info">
-                      <h3>Viêm Phổi Cộng Đồng</h3>
-                      <p>Đánh giá thang điểm PSI/CURB-65, định hướng tác nhân và phác đồ kháng sinh kinh nghiệm.</p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Xem tiếp cận</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
-                <!-- 9. Tiếp cận Đái Tháo Đường -->
-                <a href="../Công cụ/Nội tiết & Chuyển hóa/DG_Insulin-ĐTĐ.html" class="specialty-card">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">💉</div>
-                    <div class="specialty-info">
-                      <h3>Tiếp cận Đái Tháo Đường</h3>
-                      <p>Chẩn đoán, phân loại đái tháo đường, xử trí biến chứng cấp DKA, HHS và biến chứng mạn.</p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Xem tiếp cận</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
-                <!-- 10. Hội chứng Sepsis & Sốc NK -->
-                <a href="../Công cụ/Truyền Nhiễm/SL_Nhiem-khuan.html" class="specialty-card">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">🦠</div>
-                    <div class="specialty-info">
-                      <h3>Hội chứng Sepsis & Sốc NK</h3>
-                      <p>Hướng dẫn quy trình Hour-1 Bundle: cấy máu, kháng sinh phổ rộng và hồi sức huyết động.</p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Xem tiếp cận</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
-                <!-- 11. Khí Máu Động Mạch -->
-                <a href="../Công cụ/Thận & Điện giải - toan kiềm/DG_ABG.html" class="specialty-card">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">🔬</div>
-                    <div class="specialty-info">
-                      <h3>Khí Máu Động Mạch</h3>
-                      <p>Phân tích 6 bước khí máu động mạch: rối loạn toan kiềm tiên phát, Anion Gap và rối loạn hỗn
-                        hợp.</p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Xem tiếp cận</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
-                <!-- 12. Tổn thương Thận Cấp -->
-                <a href="../Công cụ/Thận & Điện giải - toan kiềm/renal-function.html" class="specialty-card">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">🫘</div>
-                    <div class="specialty-info">
-                      <h3>Tổn thương Thận Cấp</h3>
-                      <p>Phân loại AKI trước thận, tại thận, sau thận theo tiêu chuẩn KDIGO và chỉ định lọc máu cấp cứu.
-                      </p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Xem tiếp cận</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
               </div>
             </div>
           </section>
 
-
-          <!-- PHẦN 4: CHĂM SÓC ĐẶC BIỆT SẢN PHỤ KHOA & NHI KHOA -->
+          <!-- PHẦN 4: BỆNH LÝ -->
           <section id="part4-section" aria-labelledby="part4-heading">
             <div class="physio-group-container">
               <div class="physio-group-header">
-                <span class="physio-group-icon"><i class="fa-solid fa-baby"></i></span>
-                <h3 id="part4-heading">Phần 4: Chăm sóc đặc biệt Sản Phụ khoa & Nhi khoa</h3>
+                <span class="physio-group-icon"><i class="fa-solid fa-bed-pulse"></i></span>
+                <h3 id="part4-heading">Bệnh lý</h3>
               </div>
-              <div class="specialty-grid">
-
-                <!-- 1. Khám thai & Tầm soát thai kỳ -->
-                <a href="#" class="specialty-card disabled">
+              
+              <!-- 1. Bệnh truyền nhiễm -->
+              <h4 class="sub-specialty-title">1. Bệnh truyền nhiễm</h4>
+              <div class="specialty-grid infographic-grid">
+                 <a href="3. Quản lý bệnh lý mạn tính & hệ thống/Huyết học & Truyền nhiễm/TC_SXHD.html" class="specialty-card info-card">
                   <div class="specialty-card-top">
-                    <div class="specialty-icon">🤰</div>
+                    <div class="info-img-box"><img src="https://placehold.co/80x80/e0e7ff/4338ca?text=SXH" alt=""></div>
                     <div class="specialty-info">
-                      <h3>Khám thai & Tầm soát thai kỳ</h3>
-                      <p>Lịch trình khám thai, xét nghiệm tầm soát dị tật nửa đầu thai kỳ, đái tháo đường và THA thai
-                        kỳ.</p>
+                      <h3>SXH Dengue</h3>
+                      <p>Tiếp cận chẩn đoán, truyền dịch, vận mạch.</p>
                     </div>
                   </div>
-                  <div class="specialty-card-action">
-                    <span>Đang biên soạn</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
                 </a>
-
-                <!-- 2. Bất thường vùng chậu & Phụ khoa -->
-                <a href="#" class="specialty-card disabled">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">🩸</div>
-                    <div class="specialty-info">
-                      <h3>Bất thường vùng chậu & Phụ khoa</h3>
-                      <p>Tiếp cận xuất huyết tử cung bất thường (AUB), vô kinh, viêm vùng chậu và tầm soát u xơ/u nang.
-                      </p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Đang biên soạn</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
-                <!-- 3. Vàng da sơ sinh -->
-                <a href="#" class="specialty-card disabled">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">👶</div>
-                    <div class="specialty-info">
-                      <h3>Vàng da sơ sinh</h3>
-                      <p>Phân tầng nguy cơ vàng da tăng Bilirubin tự do ở trẻ sơ sinh và chỉ định chiếu đèn/thay máu.
-                      </p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Đang biên soạn</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
-                <!-- 4. Rối loạn phát triển ở trẻ em -->
-                <a href="#" class="specialty-card disabled">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">📈</div>
-                    <div class="specialty-info">
-                      <h3>Rối loạn phát triển ở trẻ em</h3>
-                      <p>Đánh giá mốc phát triển tâm thần vận động, phát hiện sớm các dấu hiệu chậm phát triển hoặc tự
-                        kỷ.</p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Đang biên soạn</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
               </div>
+
+              <!-- 2. Nội tổng quát -->
+              <h4 class="sub-specialty-title">2. Nội tổng quát</h4>
+              <div class="specialty-grid infographic-grid">
+                 <a href="3. Quản lý bệnh lý mạn tính & hệ thống/Huyết học & Truyền nhiễm/TC_vgsvB.html" class="specialty-card info-card">
+                  <div class="specialty-card-top">
+                    <div class="info-img-box"><img src="https://placehold.co/80x80/dcfce7/15803d?text=VGB" alt=""></div>
+                    <div class="specialty-info">
+                      <h3>Viêm gan B</h3>
+                      <p>Chẩn đoán, đánh giá xơ gan, thuốc kháng virus.</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              
+              <!-- 3. Huyết học & ung thư -->
+              <h4 class="sub-specialty-title">3. Huyết học & ung thư</h4>
+              <div class="specialty-grid infographic-grid">
+                 <a href="3. Quản lý bệnh lý mạn tính & hệ thống/Huyết học & Truyền nhiễm/TC_Thieumau.html" class="specialty-card info-card">
+                  <div class="specialty-card-top">
+                    <div class="info-img-box"><img src="https://placehold.co/80x80/fee2e2/b91c1c?text=TM" alt=""></div>
+                    <div class="specialty-info">
+                      <h3>Thiếu máu</h3>
+                      <p>Phân loại MCV, MCH, RDW.</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              <!-- 4. Mắt - Tai mũi họng - Răng hàm mặt -->
+              <h4 class="sub-specialty-title">4. Mắt - TMH - RHM</h4>
+              <div class="specialty-grid infographic-grid">
+                <p class="empty-text">Đang cập nhật...</p>
+              </div>
+
+              <!-- 5. Da liễu & cơ xương khớp -->
+              <h4 class="sub-specialty-title">5. Da liễu & Cơ xương khớp</h4>
+              <div class="specialty-grid infographic-grid">
+                <p class="empty-text">Đang cập nhật...</p>
+              </div>
+
+              <!-- 6. Ngoại khoa -->
+              <h4 class="sub-specialty-title">6. Ngoại khoa</h4>
+              <div class="specialty-grid infographic-grid">
+                <p class="empty-text">Đang cập nhật...</p>
+              </div>
+
+              <!-- 7. Sản phụ khoa -->
+              <h4 class="sub-specialty-title">7. Sản phụ khoa</h4>
+              <div class="specialty-grid infographic-grid">
+                 <p class="empty-text">Đang cập nhật...</p>
+              </div>
+
+              <!-- 8. Nhi khoa -->
+              <h4 class="sub-specialty-title">8. Nhi khoa</h4>
+              <div class="specialty-grid infographic-grid">
+                 <p class="empty-text">Đang cập nhật...</p>
+              </div>
+
             </div>
           </section>
-
-
-          <!-- PHẦN 5: Y HỌC DỰ PHÒNG & KỸ NĂNG NỀN TẢNG -->
-          <section id="part5-section" aria-labelledby="part5-heading">
-            <div class="physio-group-container">
-              <div class="physio-group-header">
-                <span class="physio-group-icon"><i class="fa-solid fa-shield-halved"></i></span>
-                <h3 id="part5-heading">Phần 5: Y học dự phòng & Kỹ năng nền tảng</h3>
-              </div>
-              <div class="specialty-grid">
-
-                <!-- 1. Tầm soát Ung thư -->
-                <a href="#" class="specialty-card disabled">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">🎗️</div>
-                    <div class="specialty-info">
-                      <h3>Tầm soát Ung thư</h3>
-                      <p>Hướng dẫn tầm soát ung thư vú, cổ tử cung, đại trực tràng và ung thư gan theo lứa tuổi.</p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Đang biên soạn</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
-                <!-- 2. Tiêm chủng người lớn & trẻ em -->
-                <a href="#" class="specialty-card disabled">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">💉</div>
-                    <div class="specialty-info">
-                      <h3>Tiêm chủng người lớn & trẻ em</h3>
-                      <p>Lịch tiêm chủng mở rộng và tiêm chủng dịch vụ cho trẻ em, phụ nữ có thai và nhóm nguy cơ cao.
-                      </p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Đang biên soạn</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
-                <!-- 3. Chăm sóc giảm nhẹ & Kiểm soát đau -->
-                <a href="#" class="specialty-card disabled">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">🕊️</div>
-                    <div class="specialty-info">
-                      <h3>Chăm sóc giảm nhẹ & Kiểm soát đau</h3>
-                      <p>Bậc thang giảm đau của WHO, chăm sóc giảm nhẹ cuối đời cho bệnh nhân ung thư/mạn tính giai đoạn
-                        cuối.</p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Đang biên soạn</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
-                <!-- 4. Diễn giải y văn & Thống kê y sinh -->
-                <a href="#" class="specialty-card disabled">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">📊</div>
-                    <div class="specialty-info">
-                      <h3>Diễn giải y văn & Thống kê y sinh</h3>
-                      <p>Đọc hiểu các thiết kế nghiên cứu (RCT, Cohort), diễn giải chỉ số thống kê (RR, OR, HR, p-value)
-                        trong y học chứng cứ.</p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Đang biên soạn</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
-              </div>
-            </div>
-          </section>
-
-        </main>
+</main>
       </div><!-- end dashboard-layout -->
     </div><!-- end main-wrapper -->
   </div><!-- end app-container -->

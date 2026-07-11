@@ -224,7 +224,29 @@ Dưới đây là mã nguồn khung chuẩn của một trang lưu đồ tương
 
 ---
 
-## 🎨 3. Quy chuẩn Thiết kế các Node (`.fnode`)
+## 📖 3. Bố cục HTML Chuẩn (Clinical Article Boilerplate) - Dành cho Tiếp cận Bệnh lý
+
+Ngoài dạng Lưu đồ tương tác ở trên, phân hệ "Tiếp cận" còn sử dụng **Dạng Bài đọc (Clinical Article)** dành riêng cho các bài **Tiếp cận Bệnh lý cụ thể** (Ví dụ: Tiếp cận Sốt xuất huyết Dengue, Tiếp cận Bệnh thận mạn). 
+
+Dạng bài này kết hợp giao diện của phân hệ Sinh lý, bao gồm **thanh cuộn Mục lục tự động (TOC)** và cấu trúc nội dung **7 phần tiêu chuẩn**. Hệ thống đã cung cấp sẵn tệp mẫu `TEMPLATE_TIEP_CAN_BENH_LY.html` tại thư mục gốc của phân hệ Tiếp cận.
+
+### Cấu trúc 7 phần bắt buộc (`h2.section-title`):
+1. **Tổng quan & Dịch tễ học**: Định nghĩa và dịch tễ.
+2. **Cơ chế bệnh sinh**: Sử dụng `.clinical-note-box` màu vàng (`var(--color-warning)`) để nhấn mạnh cơ chế lõi.
+3. **Nguyên nhân**: Liệt kê nguyên nhân.
+4. **Lâm sàng & Cận lâm sàng**: Phân chia rõ triệu chứng và xét nghiệm đề nghị.
+5. **Chẩn đoán**: Bao gồm tiêu chuẩn chẩn đoán, chẩn đoán phân biệt, và chèn `.image-placeholder-card` cho Sơ đồ chẩn đoán.
+6. **Điều trị**: Cụ thể hóa bằng lưới các thẻ thuốc `.physio-grid-card` và hộp cảnh báo sai lầm màu đỏ (`var(--color-rose)`).
+7. **Biến chứng & Tiên lượng**.
+
+### Yêu cầu Tài nguyên Hệ thống:
+Khi sử dụng dạng bài đọc này, bạn KHÔNG nạp `flowchart.css` hay `flowchart.js`. Thay vào đó, phải nạp các thành phần sau:
+- **CSS**: `physio-patho.css`, `physio-headings.css`, `physio-content.css`, `toc.css`
+- **JS**: `toc.js`
+
+---
+
+## 🎨 4. Quy chuẩn Thiết kế các Node (`.fnode`) cho Lưu đồ
 
 Mỗi khối thông tin (Node) trong lưu đồ đại diện cho một trạng thái sinh lý/hành động y khoa, được chuẩn hóa màu sắc như sau:
 1. **Node Bắt đầu (`.fnode-start`)**: Thiết lập trạng thái tiếp nhận, màu xanh lục đậm chuyển sắc (`linear-gradient(135deg, #1e3a5f, #3f51b5)`).
@@ -236,7 +258,7 @@ Mỗi khối thông tin (Node) trong lưu đồ đại diện cho một trạng 
 
 ---
 
-## ⚡ 4. Tương tác Động bằng Javascript
+## ⚡ 5. Tương tác Động bằng Javascript cho Lưu đồ
 - **Chuyển đổi sơ đồ (`switchPane`)**: Được thực hiện thông qua hàm `switchPane(paneId)`. Nút bấm tab chuyển tiếp phải gọi hàm này và truyền chính xác ID của `.flow-pane` tương ứng.
 - **Xem chi tiết (`toggleNode`)**: Thẻ nào muốn click mở rộng thông tin chi tiết bắt buộc phải có thuộc tính `class="... clickable" onclick="toggleNode(this)"`, đi kèm với cấu trúc `.fnode-expand-hint` và `.fnode-details` đặt bên trong nó.
 - Cả hai logic động này đều đã được đóng gói sẵn trong tệp `js/flowchart.js` của hệ thống, tuyệt đối không được viết đè hoặc định nghĩa lại hàm trong tệp nội dung.

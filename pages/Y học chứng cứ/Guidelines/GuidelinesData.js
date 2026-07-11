@@ -1,0 +1,120 @@
+    // ════════════════════════════
+    // CONFIG & STATE
+    // ════════════════════════════
+    
+    const SPECIALTIES = {
+      cardio: { name: 'Tim mạch', color: '#dc2626', bg: '#fef2f2' },
+      pulmo: { name: 'Hô hấp', color: '#2563eb', bg: '#eff6ff' },
+      gi: { name: 'Tiêu hóa', color: '#ca8a04', bg: '#fefce8' },
+      endo: { name: 'Nội tiết', color: '#7c3aed', bg: '#faf5ff' },
+      neuro: { name: 'Thần kinh', color: '#c026d3', bg: '#fdf4ff' },
+      infect: { name: 'Truyền nhiễm', color: '#16a34a', bg: '#f0fdf4' },
+      renal: { name: 'Thận học', color: '#0891b2', bg: '#ecfeff' },
+      rheum: { name: 'Cơ xương khớp', color: '#ea580c', bg: '#fff7ed' },
+      hema: { name: 'Huyết học', color: '#db2777', bg: '#fdf2f8' },
+      onco: { name: 'Ung thư', color: '#be185d', bg: '#fce7f3' }
+    };
+
+    const SOURCE_TYPES = {
+      'intl-study': { name: 'Nghiên cứu Quốc tế', color: '#6366f1', bg: '#e0e7ff' },
+      'intl-guideline': { name: 'Guideline Quốc tế', color: '#0d9488', bg: '#ccfbf1' },
+      'vn-moh': { name: 'Bộ Y tế Việt Nam', color: '#dc2626', bg: '#fee2e2' },
+      'vn-doh': { name: 'Sở Y tế Việt Nam', color: '#ea580c', bg: '#ffedd5' },
+      'vn-association': { name: 'Hội chuyên khoa VN', color: '#16a34a', bg: '#dcfce7' }
+    };
+
+    const DESIGNS = {
+      'rct': { name: 'Thử nghiệm lâm sàng (RCT)' },
+      'meta': { name: 'Tổng quan / Meta-Analysis' },
+      'cohort': { name: 'Nghiên cứu quan sát / Thuần tập' },
+      'guideline': { name: 'Hướng dẫn / Khuyến cáo' },
+      'review': { name: 'Bài tổng quan y khoa (Review)' },
+      'other': { name: 'Khác' }
+    };
+
+    const IMPACTS = {
+      'practice-changing': { name: 'Practice-Changing', color: '#dc2626', bg: '#fef2f2' },
+      'informative': { name: 'Informative', color: '#2563eb', bg: '#eff6ff' },
+      'early-signal': { name: 'Early Signal', color: '#d97706', bg: '#fffbeb' },
+      'negative': { name: 'Negative/Âm tính', color: '#4b5563', bg: '#f3f4f6' },
+      'regulatory': { name: 'Regulatory', color: '#7c3aed', bg: '#faf5ff' }
+    };
+
+    const SAMPLE_STUDIES = [
+      {
+        id: "study_empareg",
+        title: "EMPA-REG OUTCOME",
+        drug: "Empagliflozin",
+        sourceType: "intl-study",
+        specialty: "cardio",
+        design: "rct",
+        intervention: "Empagliflozin 10/25mg QD vs Placebo",
+        primaryEndpoint: "3-point MACE (Tử vong tim mạch, nhồi máu cơ tim không tử vong, đột quỵ không tử vong)",
+        keyResults: "HR 0.86 (95% CI 0.74-0.99); p=0.04",
+        impact: "practice-changing",
+        year: 2015,
+        organization: "NEJM / Boehringer Ingelheim",
+        phase: "Phase III",
+        sampleSize: 7020,
+        population: "Bệnh nhân đái tháo đường typ 2 có nguy cơ tim mạch cao",
+        summary: "Empagliflozin làm giảm ý nghĩa 14% tiêu chí gộp chính MACE (tử vong do tim mạch, nhồi máu cơ tim không vong, đột quỵ không vong) và giảm 38% tử vong do tim mạch.",
+        detailedConclusion: "Thử nghiệm lâm sàng ngẫu nhiên, mù đôi, đối chứng giả dược. Kết quả cho thấy tỷ lệ nhập viện do suy tim giảm 35%, tử vong do mọi nguyên nhân giảm 32%. Đây là thuốc điều trị đái tháo đường đầu tiên chứng minh được lợi ích bảo vệ tim mạch vượt trội.",
+        fdaStatus: "FDA Approved 2016 (chỉ định giảm tử vong tim mạch)",
+        sourceUrl: "https://www.nejm.org/doi/full/10.1056/nejmoa1504720",
+        file: "",
+        asianData: true,
+        bookmarked: true,
+        createdAt: new Date().toISOString()
+      },
+      {
+        id: "study_vnha2023",
+        title: "Khuyến cáo chẩn đoán & điều trị suy tim cấp và mạn VNHA/VCS 2023",
+        drug: "ARNI, SGLT2i, Chẹn Beta, MRA",
+        sourceType: "vn-association",
+        specialty: "cardio",
+        design: "guideline",
+        intervention: "Bộ tứ trụ cột (ARNI/ACEi/ARB, Chẹn Beta, Kháng Aldosterone, SGLT2i) vs Điều trị chuẩn cũ",
+        primaryEndpoint: "Cải thiện tử vong tim mạch và giảm nhập viện do suy tim",
+        keyResults: "Khuyến cáo mức chỉ định Class I (Bằng chứng A)",
+        impact: "practice-changing",
+        year: 2023,
+        organization: "Hội Tim Mạch Học Quốc Gia Việt Nam",
+        phase: "Guidelines",
+        sampleSize: null,
+        population: "Bệnh nhân suy tim cấp hoặc mạn tính tại Việt Nam",
+        summary: "Cập nhật khuyến cáo điều trị suy tim theo bộ tứ trụ cột (ARNI/ACEi/ARB, Chẹn beta, Kháng aldosterone, SGLT2i) phù hợp với thực hành lâm sàng tại Việt Nam.",
+        detailedConclusion: "Phân độ khuyến cáo Class I cho điều trị suy tim phân suất tống máu giảm (HFrEF) với bộ tứ trụ cột. ARNI được ưu tiên chỉ định thay thế ACEi/ARB để cải thiện tử vong và nhập viện do suy tim.",
+        fdaStatus: "Khuyến cáo Class I - VNHA 2023",
+        sourceUrl: "https://vnha.org.vn/",
+        file: "",
+        asianData: true,
+        bookmarked: false,
+        createdAt: new Date().toISOString()
+      },
+      {
+        id: "study_byt2020",
+        title: "Hướng dẫn chẩn đoán và điều trị đái tháo đường típ 2 - Bộ Y tế",
+        drug: "Metformin, SGLT2i, GLP-1 RA, DPP-4i, SU, Insulin",
+        sourceType: "vn-moh",
+        specialty: "endo",
+        design: "guideline",
+        intervention: "Cá thể hóa phác đồ kết hợp Metformin, SGLT2i, GLP-1 RA dựa trên nguy cơ tim mạch",
+        primaryEndpoint: "Kiểm soát HbA1c và bảo vệ tim mạch/thận",
+        keyResults: "Phác đồ ưu tiên hàng đầu cho bệnh nhân kèm suy tim, bệnh thận mạn",
+        impact: "practice-changing",
+        year: 2020,
+        organization: "Bộ Y tế Việt Nam",
+        phase: "Guidelines",
+        sampleSize: null,
+        population: "Bệnh nhân đái tháo đường típ 2 tại Việt Nam",
+        summary: "Phác đồ điều trị ĐTĐ típ 2 cập nhật của Bộ Y tế Việt Nam, cá thể hóa điều trị dựa trên bệnh lý tim mạch do xơ vữa, suy tim hoặc bệnh thận mạn kèm theo.",
+        detailedConclusion: "Ưu tiên lựa chọn SGLT2i hoặc GLP-1 RA độc lập với mức HbA1c ở bệnh nhân ĐTĐ típ 2 kèm bệnh tim mạch do xơ vữa, suy tim hoặc bệnh thận mạn để bảo vệ tim mạch và thận.",
+        fdaStatus: "Quyết định số 4800/QĐ-BYT",
+        sourceUrl: "https://kcb.vn/",
+        file: "",
+        asianData: true,
+        bookmarked: false,
+        createdAt: new Date().toISOString()
+      }
+    ];
+

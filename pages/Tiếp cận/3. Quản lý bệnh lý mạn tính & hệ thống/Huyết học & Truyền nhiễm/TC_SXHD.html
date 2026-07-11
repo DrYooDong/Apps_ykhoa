@@ -1,44 +1,111 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi" data-theme="light">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Lưu đồ tương tác chẩn đoán, phân tầng nguy cơ và xử trí bù dịch, vận mạch trong Sốt xuất huyết Dengue (WHO 2009 / Bộ Y tế) – CliniPortal">
-    <title>Tiếp cận Sốt Xuất Huyết Dengue – CliniPortal</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hướng dẫn Tiếp cận Chẩn đoán và Điều trị Sốt xuất huyết Dengue (WHO 2009 / Bộ Y tế 2023) - CliniPortal">
+  <title>Tiếp cận Sốt Xuất Huyết Dengue – CliniPortal</title>
+  
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- CSS Core CliniPortal -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+  
+  <!-- CSS chuyên biệt Sinh lý & TOC & Flowchart -->
+  <link rel="stylesheet" href="../../../../../css/components/physio-patho.css">
+  <link rel="stylesheet" href="../../../../../css/components/physio-headings.css">
+  <link rel="stylesheet" href="../../../../../css/components/physio-content.css">
+  <link rel="stylesheet" href="../../../../../css/components/toc.css">
+  <link rel="stylesheet" href="../../../../../css/components/flowchart.css">
 
-    <link rel="stylesheet" href="../../../../../css/reset.css">
-    <link rel="stylesheet" href="../../../../../css/main.css">
-    <link rel="stylesheet" href="../../../../../css/components/header.css">
-    <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
-    <link rel="stylesheet" href="../../../../../css/components/footer.css">
+  <style>
+    /* CSS cho Thẻ Liên kết Sinh lý bệnh (Cross-Module Card) */
+    .cross-module-card {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      background: linear-gradient(135deg, var(--color-primary-hl) 0%, rgba(2, 132, 199, 0.05) 100%);
+      border: 1px solid rgba(2, 132, 199, 0.2);
+      border-left: 5px solid var(--color-primary);
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin: 1.5rem 0;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: var(--color-text);
+    }
+    .cross-module-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-primary);
+    }
+    .cross-module-icon {
+      flex-shrink: 0;
+      width: 50px;
+      height: 50px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--color-primary);
+      box-shadow: var(--shadow-sm);
+    }
+    .cross-module-content {
+      flex-grow: 1;
+    }
+    .cross-module-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--color-primary);
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .cross-module-desc {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+    .cross-module-arrow {
+      color: var(--color-primary);
+      font-size: 1.25rem;
+      transition: transform 0.3s ease;
+    }
+    .cross-module-card:hover .cross-module-arrow {
+      transform: translateX(5px);
+    }
+  </style>
 
-    <!-- JS Core -->
-    <script src="../../../../../js/main.js" defer></script>
-    <script src="../../../../../components/header.js" defer></script>
-    <script src="../../../../../components/footer.js" defer></script>
-
-    <link rel="stylesheet" href="../../../../../css/components/flowchart.css">
+  <!-- Scripts điều hướng & xử lý tương tác động -->
+  <script src="../../../../../js/toc.js" defer></script>
+  <script src="../../../../../components/header.js"></script>
+  <script src="../../../../../components/footer.js"></script>
+  <script src="../../../../../js/flowchart.js"></script>
+  <script src="../../../../../js/main.js" defer></script>
 </head>
 
 <body>
-    <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <!-- Nạp Header động -->
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-    <div class="app-container">
-            <!-- SIDEBAR -->
+  <div class="app-container">
+    <!-- SIDEBAR HỆ THỐNG -->
     <aside class="app-sidebar" id="appSidebar">
       <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
-        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
-          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
           <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
       </button>
@@ -46,13 +113,13 @@
       <nav class="sidebar-nav" aria-label="Điều hướng chính">
         <ul class="nav-list" role="list">
           <li>
-            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+            <a href="../../../../../index.html" class="nav-item" title="Trang chủ">
               <span class="nav-icon">🏠</span>
               <span class="nav-text">Trang chủ</span>
             </a>
           </li>
           <li>
-            <a href="../../tiep-can.html" class="nav-item active" aria-current="page" title="Tiếp cận">
+            <a href="../../../tiep-can.html" class="nav-item active" title="Tiếp cận">
               <span class="nav-icon">🤒</span>
               <span class="nav-text">Tiếp cận</span>
             </a>
@@ -61,882 +128,306 @@
       </nav>
     </aside>
 
-        <!-- MAIN -->
-        <main class="main-wrapper flow-page">
-            <!-- BREADCRUMB -->
-            <nav aria-label="Breadcrumb" class="breadcrumb-container">
-                <ol class="breadcrumb-list">
-                    <li class="breadcrumb-item">
-                        <a href="../../../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span>
-                            Home</a>
-                    </li>
-                    <li class="breadcrumb-item">
-                        <a href="../../../Tiếp cận/tiep-can.html" class="breadcrumb-link">Tiếp cận</a>
-                    </li>
-                    <li class="breadcrumb-item active" aria-current="page">Sốt xuất huyết Dengue</li>
-                </ol>
-            </nav>
+    <!-- KHUNG CHỨA NỘI DUNG CHÍNH -->
+    <div class="main-wrapper" id="mainContent">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container" style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+        <ol class="breadcrumb-list" style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+          <li><a href="../../../../../index.html">🏠 Home</a> &gt;</li>
+          <li><a href="../../../tiep-can.html">Tiếp cận y khoa</a> &gt;</li>
+          <li>Quản lý bệnh lý mạn tính & hệ thống &gt;</li>
+          <li style="color:var(--color-primary); font-weight:600;">Sốt xuất huyết Dengue</li>
+        </ol>
+      </nav>
 
-            <!-- HERO -->
-            <div class="flow-hero">
-                <div class="hero-badge">🦟 Tiếp cận bệnh lý • 2026</div>
-                <h1>Tiếp cận Sốt Xuất Huyết Dengue</h1>
-                <p>Thuật toán lâm sàng chẩn đoán phân loại (WHO 2009) & Lưu đồ hướng dẫn bù dịch, vận mạch hồi sức –
-                    Nhấn vào từng nút để xem chi tiết.</p>
+      <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+      <main class="visual-container">
+        <!-- Chapter Header -->
+        <div class="chapter-header">
+          <h1>Tiếp cận Sốt xuất huyết Dengue (Cập nhật 2023)</h1>
+          <p>Hướng dẫn chẩn đoán và hồi sức chống sốc theo Bộ Y tế và Tổ chức Y tế Thế giới (WHO).</p>
+        </div>
+
+        <!-- 1. Tổng quan & Liên kết -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>1. Tổng quan</span>
+          </h2>
+          <div class="physio-text-block">
+            <p class="physio-lead">
+              Sốt xuất huyết Dengue (SXHD) là bệnh truyền nhiễm cấp tính do <span class="term-hl">virus Dengue</span> lây truyền qua muỗi vằn, đặc trưng bởi sốt cao đột ngột và rò rỉ huyết tương nghiêm trọng gây sốc giảm thể tích.
+            </p>
+            
+            <!-- THẺ LIÊN KẾT XUYÊN PHÂN HỆ -->
+            <a href="../../../../Sinh lý - Sinh lý bệnh/Sinh lý bệnh/Truyen_nhiem/SLB_SXHD.html" class="cross-module-card">
+              <div class="cross-module-icon">
+                <i class="fa-solid fa-brain"></i>
+              </div>
+              <div class="cross-module-content">
+                <div class="cross-module-title">
+                  Sinh lý bệnh & Cơ chế Sốc Dengue
+                  <span style="font-size: 0.75rem; background: var(--color-primary); color: white; padding: 2px 8px; border-radius: 12px; font-weight: 500;">Chuyên sâu</span>
+                </div>
+                <p class="cross-module-desc">
+                  Tìm hiểu quá trình cơn bão Cytokine, cơ chế rò rỉ huyết tương (Plasma Leakage) và hiện tượng cô đặc máu dẫn tới sốc.
+                </p>
+              </div>
+              <div class="cross-module-arrow">
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- 2. Tiếp cận Chẩn đoán -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>2. Tiếp cận Chẩn đoán</span>
+          </h2>
+          <div class="physio-text-block">
+            
+            <h3>Dấu hiệu cảnh báo (Red Flags)</h3>
+            <p>Giai đoạn nguy hiểm (Ngày 3-7) thường bắt đầu khi bệnh nhân giảm hoặc hết sốt. Cần đặc biệt chú ý các dấu hiệu cảnh báo sốc:</p>
+            <div class="clinical-note-box" style="background: var(--color-rose-hl); border-left: 4px solid var(--color-rose); margin-bottom: 1.5rem;">
+              <div class="clinical-note-title" style="font-weight: 700; color: var(--color-rose); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: var(--text-sm);">
+                🚨 DẤU HIỆU CẢNH BÁO (WARNING SIGNS)
+              </div>
+              <ul class="physio-list-arrow" style="font-size: var(--text-xs); color: #881337; margin:0;">
+                <li><strong>Vật vã, lừ đừ, li bì:</strong> Biểu hiện của giảm tưới máu não giai đoạn sớm.</li>
+                <li><strong>Đau bụng nhiều và liên tục:</strong> Gan to đau (> 2cm), bao gan căng.</li>
+                <li><strong>Nôn ói nhiều:</strong> Định nghĩa là ≥ 3 lần/1h hoặc ≥ 4 lần/6h.</li>
+                <li><strong>Xuất huyết niêm mạc:</strong> Chân răng, mũi, nôn ra máu, đi tiêu phân đen.</li>
+              </ul>
             </div>
 
-            <!-- LEGEND -->
-            <div class="flow-legend">
-                <div class="legend-item">
-                    <div class="legend-dot" style="background:var(--c-danger)"></div> Khẩn cấp / Cấp cứu ICU
-                </div>
-                <div class="legend-item">
-                    <div class="legend-dot" style="background:var(--c-warn)"></div> Nhập viện / Cảnh báo
-                </div>
-                <div class="legend-item">
-                    <div class="legend-dot" style="background:var(--c-ok)"></div> Ngoại trú / Ổn định
-                </div>
-                <div class="legend-item">
-                    <div class="legend-dot" style="background:var(--c-info)"></div> Thông tin / Chỉ định
-                </div>
-                <div class="legend-item">
-                    <div class="legend-dot" style="background:#cbd5e1; border: 1px solid #94a3b8;"></div> Chưa đủ tiêu
-                    chuẩn
-                </div>
-                <div class="legend-item" style="font-style:italic;">💡 Nhấn vào nút màu để xem hướng dẫn xử trí chi tiết
-                </div>
+            <h3>Cận lâm sàng chìa khóa</h3>
+            <ul class="physio-list-arrow">
+              <li><strong>Công thức máu:</strong> <span class="term-hl-secondary">Hct tăng cao</span> đồng thời <span class="term-hl-secondary">Tiểu cầu giảm nhanh</span>.</li>
+              <li><strong>Huyết thanh chẩn đoán:</strong> Kháng nguyên NS1 (dương tính trong 3-5 ngày đầu), Kháng thể IgM/IgG (từ ngày 5).</li>
+            </ul>
+
+            <!-- Phân độ bằng bảng -->
+            <h3 style="margin-top: 1.5rem;">Phân độ Lâm sàng (Bộ Y tế 2023)</h3>
+            <div style="overflow-x: auto; margin-top: 1rem;">
+              <table style="width: 100%; border-collapse: collapse; text-align: left; background: var(--color-surface);">
+                <thead>
+                  <tr style="background: var(--color-bg); border-bottom: 2px solid var(--color-border);">
+                    <th style="padding: 1rem; color: var(--color-primary);">Phân độ</th>
+                    <th style="padding: 1rem; color: var(--color-primary);">Đặc điểm lâm sàng chính</th>
+                    <th style="padding: 1rem; color: var(--color-primary);">Hướng xử trí</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom: 1px solid var(--color-divider);">
+                    <td style="padding: 1rem; font-weight: 600;">Nhóm A (Nhẹ)</td>
+                    <td style="padding: 1rem;">SXHD thông thường, không có dấu hiệu cảnh báo.</td>
+                    <td style="padding: 1rem;"><span style="color: var(--color-success); font-weight: 600;">Ngoại trú</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--color-divider);">
+                    <td style="padding: 1rem; font-weight: 600;">Nhóm B (Vừa)</td>
+                    <td style="padding: 1rem;">SXHD <strong>có dấu hiệu cảnh báo</strong> (đau bụng, nôn, xuất huyết...).</td>
+                    <td style="padding: 1rem;"><span style="color: var(--color-warning); font-weight: 600;">Nhập viện nội trú</span></td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 1rem; font-weight: 600; color: var(--color-rose);">Nhóm C (Nặng)</td>
+                    <td style="padding: 1rem;">Sốc Dengue, Xuất huyết nặng, Suy tạng nặng.</td>
+                    <td style="padding: 1rem;"><span style="color: var(--color-rose); font-weight: 600;">Cấp cứu / ICU</span></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
 
-            <!-- ═══════════════════════════════════════
-                 STEP 0: DENGUE CLINICAL CALCULATORS
-            ═══════════════════════════════════════ -->
-            <div class="section-label">Bước 0 · Công cụ tính toán dịch truyền & vận mạch</div>
-
-            <div class="r-calc-grid">
-                <!-- Fluid Speed Calculator -->
-                <div class="r-calc-card">
-                    <div>
-                        <p class="r-calc-title">💧 1. Tính tốc độ truyền dịch (Fluid Rate)</p>
-                        <p style="font-size:12px; color:#64748b; margin: 0 0 14px 0;">
-                            Tính toán lưu lượng dịch tinh thể/cao phân tử theo cân nặng lâm sàng thực tế.
-                        </p>
-                        <div class="r-grid">
-                            <div class="r-field">
-                                <label>Cân nặng thực tế (kg)</label>
-                                <input type="number" id="fluid_weight" placeholder="VD: 50" min="1">
-                            </div>
-                            <div class="r-field">
-                                <label>Phác đồ / Tốc độ chỉ định</label>
-                                <select id="fluid_goal" onchange="toggleFluidInput()">
-                                    <option value="maintain_low">3 ml/kg/giờ (Duy trì nhẹ)</option>
-                                    <option value="maintain_med">5 ml/kg/giờ (Cảnh báo vừa)</option>
-                                    <option value="maintain_high">7 ml/kg/giờ (Bắt đầu cảnh báo)</option>
-                                    <option value="bolus_standard">15 ml/kg/giờ (Chống sốc còn bù)</option>
-                                    <option value="bolus_shock">20 ml/kg/giờ (Sốc mất bù nhanh)</option>
-                                    <option value="maintain_min">1.5 ml/kg/giờ (Giảm tối thiểu)</option>
-                                    <option value="custom">Tùy chỉnh tốc độ...</option>
-                                </select>
-                            </div>
-                            <div class="r-field" id="custom_rate_div" style="display:none;">
-                                <label>Tốc độ riêng (ml/kg/giờ)</label>
-                                <input type="number" id="fluid_custom_rate" placeholder="VD: 10" min="0.1" step="0.1">
-                            </div>
-                            <div class="r-field">
-                                <label>Hệ số giọt của dây truyền</label>
-                                <select id="fluid_drop_factor">
-                                    <option value="20">Dây truyền thường (20 giọt = 1ml)</option>
-                                    <option value="15">Dây truyền máu (15 giọt = 1ml)</option>
-                                    <option value="60">Dây truyền trẻ em (60 giọt = 1ml)</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="r-actions">
-                            <button class="btn-flow btn-calc" id="btn-calc-fluid" onclick="calcFluid()">⚡ Tính tốc độ
-                                dịch</button>
-                            <button class="btn-flow btn-reset" onclick="resetFluid()">↺ Xóa</button>
-                        </div>
-                        <div id="fluid_result" class="calc-output-box"></div>
-                    </div>
+            <!-- Hộp chứa ảnh lưu đồ chẩn đoán -->
+            <div class="image-placeholder-card" style="margin-top: 2rem;">
+              <div class="image-title">
+                <span>🖼️</span> Hình 1: Lưu đồ Phân độ Chẩn đoán SXHD
+              </div>
+              <div class="image-drop-area">
+                <div class="image-drop-text">
+                  <img src="" alt="Lưu đồ chẩn đoán SXHD"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <div class="fallback-placeholder" style="display: none; padding: 2rem; text-align: center;">
+                    <i class="fa-regular fa-image" style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 0.5rem;"></i>
+                    <p style="margin: 0; font-size: 0.85rem; color: #64748b;">(Chèn link ảnh Phân độ lâm sàng vào đây)</p>
+                  </div>
                 </div>
-
-                <!-- Vasopressor Calculator -->
-                <div class="r-calc-card">
-                    <div>
-                        <p class="r-calc-title" style="color:var(--c-purple)">💉 2. Tính liều Vận mạch (Vasopressor
-                            Rate)</p>
-                        <p style="font-size:12px; color:#64748b; margin: 0 0 14px 0;">
-                            Thiết lập liều truyền bơm tiêm điện (SP) sau khi bù đủ dịch mà HA vẫn không cải thiện.
-                        </p>
-                        <div class="r-grid">
-                            <div class="r-field">
-                                <label>Cân nặng (kg)</label>
-                                <input type="number" id="vaso_weight" placeholder="VD: 50" min="1">
-                            </div>
-                            <div class="r-field">
-                                <label>Loại vận mạch</label>
-                                <select id="vaso_drug" onchange="onDrugChange()">
-                                    <option value="dopa">Dopamine</option>
-                                    <option value="adren">Adrenaline (Cấp cứu)</option>
-                                    <option value="noradren">Noradrenaline</option>
-                                </select>
-                            </div>
-                            <div class="r-field">
-                                <label>Liều chỉ định (mcg/kg/phút)</label>
-                                <input type="number" id="vaso_dose" value="5" step="0.1" min="0.01">
-                            </div>
-                            <div class="r-field">
-                                <label>Pha thuốc: Mass (mg) / Thể tích (ml)</label>
-                                <div style="display:flex; gap:6px;">
-                                    <input type="number" id="vaso_conc_mg" value="200" title="Mass (mg)"
-                                        style="flex:1;">
-                                    <span style="align-self:center; color:#94a3b8;">/</span>
-                                    <input type="number" id="vaso_vol_ml" value="50" title="Vol (ml)" style="flex:1;">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="r-actions">
-                            <button class="btn-flow btn-calc-vaso" id="btn-calc-vaso" onclick="calcVaso()">⚡ Tính tốc độ
-                                bơm</button>
-                            <button class="btn-flow btn-reset" onclick="resetVaso()">↺ Xóa</button>
-                        </div>
-                        <div id="vaso_result" class="calc-output-box"></div>
-                    </div>
-                </div>
+              </div>
             </div>
 
-            <!-- ═══════════════════════════════════════
-                 FLOW TABS
-            ═══════════════════════════════════════ -->
-            <div class="section-label">Lưu đồ phân nhánh tiếp cận</div>
+          </div>
+        </div>
 
-            <div class="flow-tabs" role="tablist">
-                <button id="tab-btn-diag" class="flow-tab-btn tab-danger active" role="tab" aria-selected="true"
-                    onclick="switchPane('diag')" aria-controls="pane-diag">
-                    <span class="tab-dot"></span>
-                    🔴 SƠ ĐỒ 1: Tiếp cận Chẩn đoán & Phân loại (WHO)
-                </button>
-                <button id="tab-btn-mgmt" class="flow-tab-btn tab-warn" role="tab" aria-selected="false"
-                    onclick="switchPane('mgmt')" aria-controls="pane-mgmt">
-                    <span class="tab-dot"></span>
-                    💧 SƠ ĐỒ 2: Xử trí Bù dịch & Vận mạch
-                </button>
+        <hr class="section-divider">
+
+        <!-- 3. Hướng dẫn Điều trị -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>3. Hướng dẫn Điều trị</span>
+          </h2>
+          <div class="physio-text-block">
+            <p>Mục tiêu cốt lõi của điều trị sốc Dengue là <strong>bù dịch tinh thể khẩn trương</strong>.</p>
+            
+            <!-- Cảnh báo chống chỉ định -->
+            <div class="clinical-note-box" style="background: var(--color-rose-hl); border-left: 4px solid var(--color-rose); margin-bottom: 1.5rem;">
+              <div class="clinical-note-title" style="font-weight: 700; color: var(--color-rose); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: var(--text-sm);">
+                🚨 NHỮNG SAI LẦM NGHIÊM TRỌNG TRONG ĐIỀU TRỊ
+              </div>
+              <ul class="physio-list-arrow" style="font-size: var(--text-xs); color: #881337; margin:0;">
+                <li><strong>Dùng thuốc hạ sốt NSAIDs (Aspirin, Ibuprofen):</strong> Trực tiếp gây rối loạn đông máu, tăng nguy cơ xuất huyết ồ ạt. Chỉ dùng Paracetamol.</li>
+                <li><strong>Truyền dịch bù cho bệnh nhân Nhóm A:</strong> Cực kỳ nguy hiểm, có thể dẫn tới quá tải tuần hoàn, phù phổi cấp ở giai đoạn tái hấp thu.</li>
+                <li><strong>Truyền tiểu cầu dự phòng:</strong> Tuyệt đối không truyền dự phòng kể cả khi TC < 10.000, trừ khi có xuất huyết đe dọa tính mạng.</li>
+              </ul>
             </div>
 
-            <!-- ═══════════════════════════════════════
-                 PANE 1: DIAGNOSIS & CLASSIFICATION
-            ═══════════════════════════════════════ -->
-            <div id="pane-diag" class="flow-pane active" role="tabpanel" aria-labelledby="tab-btn-diag">
-                <div class="flow-col">
+            <!-- TABS ĐIỀU TRỊ -->
+            <div class="flow-tabs" style="margin-top: 2rem;">
+              <button class="flow-tab-btn active" id="btn-tab-nhe" onclick="switchPane('tab-nhe')">Nhóm A (Ngoại trú)</button>
+              <button class="flow-tab-btn" id="btn-tab-vua" onclick="switchPane('tab-vua')">Nhóm B (Nội trú)</button>
+              <button class="flow-tab-btn tab-danger" id="btn-tab-nang" onclick="switchPane('tab-nang')">Nhóm C (Cấp cứu Sốc)</button>
+            </div>
 
-                    <!-- Node: Start -->
-                    <div class="fnode fnode-start">
-                        <div class="fnode-tag">🔴 Nghi ngờ Sốt xuất huyết Dengue</div>
-                        <div class="fnode-title">
-                            <span>Bệnh nhân có triệu chứng sốt cấp tính</span>
-                        </div>
-                        <p class="fnode-body">Sốt cao đột ngột liên tục 2-7 ngày + sống/đi du lịch đến vùng dịch tễ
-                            Dengue trong vòng 14 ngày. Bắt đầu sàng lọc khẩn cấp.</p>
-                    </div>
+            <div class="flow-canvas-wrapper" style="border: 1px solid var(--color-divider); border-radius: 0 0 12px 12px; padding: 1.5rem; background: var(--color-surface);">
+              <!-- PANE NHẸ -->
+              <div class="flow-pane active" id="tab-nhe">
+                <h4 style="color: var(--color-primary); margin-bottom: 1rem;">Điều trị Ngoại trú (Nhóm A)</h4>
+                <ul class="physio-list-arrow">
+                  <li>Khuyến khích uống nhiều nước (Oresol, nước trái cây).</li>
+                  <li>Hạ sốt bằng Paracetamol 10-15mg/kg/lần, không quá 60mg/kg/ngày.</li>
+                  <li>Theo dõi sát các dấu hiệu cảnh báo để nhập viện kịp thời.</li>
+                </ul>
+              </div>
+              <!-- PANE VỪA -->
+              <div class="flow-pane" id="tab-vua" style="display:none;">
+                <h4 style="color: var(--color-warning); margin-bottom: 1rem;">Điều trị Nội trú (Nhóm B)</h4>
+                <ul class="physio-list-arrow">
+                  <li>Chỉ định truyền dịch khi: nôn nhiều không uống được, Hct tăng cao, có dấu hiệu mất nước.</li>
+                  <li>Dịch truyền: Ringer Lactate hoặc NaCl 0.9%.</li>
+                  <li>Tốc độ truyền ban đầu: 5-7 ml/kg/giờ trong 1-2 giờ, sau đó giảm dần tùy đáp ứng lâm sàng và Hct.</li>
+                </ul>
+              </div>
+              <!-- PANE NẶNG -->
+              <div class="flow-pane" id="tab-nang" style="display:none;">
+                <h4 style="color: var(--color-rose); margin-bottom: 1rem;">Phác đồ Chống Sốc (Nhóm C)</h4>
+                <ul class="physio-list-arrow">
+                  <li>Thở oxy qua gọng kính.</li>
+                  <li>Truyền dịch khẩn trương: Ringer Lactate 15-20 ml/kg/giờ trong 1 giờ đầu.</li>
+                  <li>Đánh giá lại sau 1 giờ: Nếu cải thiện thì giảm tốc độ. Nếu không cải thiện (Hct còn cao) → Chuyển dung dịch cao phân tử (HES).</li>
+                </ul>
+                <div class="image-placeholder-card" style="margin-top: 1rem;">
+                  <div class="image-title">
+                    <span>🖼️</span> Hình 2: Phác đồ Xử trí Hồi sức Sốc Dengue
+                  </div>
+                  <div class="image-drop-area">
+                    <p style="margin: 0; font-size: 0.85rem; color: #64748b;">(Chèn link ảnh Phác đồ Xử trí Sốc vào đây)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-                    <!-- Arrow -->
-                    <div class="flow-connector">
-                        <div class="flow-connector-line"></div>
-                        <div class="flow-connector-arrow"></div>
-                    </div>
+            <!-- PHARMACOLOGY GRID (Thuốc & Dịch truyền) -->
+            <h3 style="margin-top: 2.5rem;">Dịch truyền & Chế phẩm máu</h3>
+            <div class="physio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+              <div class="physio-grid-card" style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: 12px; border-left: 4px solid var(--color-primary);">
+                <div class="physio-grid-title" style="font-weight: 700; color: var(--color-primary); font-size: 15px; margin-bottom: 0.5rem;">
+                  💧 Ringer Lactate (RL)
+                </div>
+                <p style="font-size: 13.5px; color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                  <strong>Chỉ định:</strong> Lựa chọn ưu tiên hàng đầu trong chống sốc.<br>
+                  <strong>Ưu điểm:</strong> Tránh toan chuyển hóa tăng Clo máu do truyền lượng lớn NaCl 0.9%.<br>
+                  <strong>Lưu ý:</strong> Thận trọng ở bệnh nhân suy gan nặng do không chuyển hóa được lactate.
+                </p>
+              </div>
 
-                    <!-- Node Q1: Severe Dengue? -->
-                    <div class="fnode fnode-question clickable" id="diag-q1" onclick="toggleNode(this)">
-                        <div class="fnode-tag">❓ Bước 1 · Đánh giá dấu hiệu nặng</div>
-                        <div class="fnode-title">
-                            <span class="step-badge">1</span>
-                            Bệnh nhân có bất kỳ dấu hiệu SXH Dengue Nặng?
-                        </div>
-                        <p class="fnode-body">
-                            Sốc thoát dịch nặng, xuất huyết ồ ạt, hoặc tổn thương tạng (suy gan, suy tạng khác)?
-                        </p>
-                        <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấn xem tiêu chí SXH Dengue
-                            Nặng</div>
-                        <div class="fnode-details">
-                            <div class="detail-box">
-                                <div class="detail-box-title">🚨 Tiêu chuẩn SXH Dengue Nặng (WHO 2009)</div>
-                                <ul>
-                                    <li><strong>1. Thoát huyết tương nặng dẫn đến:</strong>
-                                        <ul>
-                                            <li>Sốc Dengue (DSS) hoặc tụt HA kéo dài.</li>
-                                            <li>Ứ dịch khoang màng phổi/màng bụng gây suy hô hấp nặng.</li>
-                                        </ul>
-                                    </li>
-                                    <li><strong>2. Xuất huyết nặng:</strong> Xuất huyết tiêu hóa nặng (nôn ra máu, tiêu
-                                        phân đen), xuất huyết âm đạo ồ ạt hoặc xuất huyết não/cơ.</li>
-                                    <li><strong>3. Tổn thương tạng nặng:</strong>
-                                        <ul>
-                                            <li>Gan tổn thương cấp tính: <code>AST hoặc ALT ≥ 1000 U/L</code>.</li>
-                                            <li>Hệ thần kinh trung ương: Rối loạn tri giác (li bì, ngủ gà, hôn mê).</li>
-                                            <li>Suy tim cấp, suy thận cấp hoặc tạng khác.</li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+              <div class="physio-grid-card" style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: 12px; border-left: 4px solid var(--color-warning);">
+                <div class="physio-grid-title" style="font-weight: 700; color: var(--color-warning); font-size: 15px; margin-bottom: 0.5rem;">
+                  🧫 Dịch Cao Phân Tử (HES)
+                </div>
+                <p style="font-size: 13.5px; color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                  <strong>Chỉ định:</strong> Sốc không đáp ứng với dịch tinh thể và <strong>Hct còn cao</strong>.<br>
+                  <strong>Cơ chế:</strong> Kéo nước từ gian bào vào lòng mạch mạnh hơn.
+                </p>
+              </div>
 
-                    <!-- Branch: Severe yes vs no -->
-                    <div class="flow-connector">
-                        <div class="flow-connector-line"></div>
-                        <div class="flow-connector-arrow"></div>
-                    </div>
-                    <div class="flow-branch">
-                        <!-- LEFT: SEVERE YES -->
-                        <div class="flow-branch-side">
-                            <div class="flow-connector-label fc-yes">CÓ → Dengue Nặng</div>
-                            <div class="flow-connector" style="margin:4px 0">
-                                <div class="flow-connector-line"></div>
-                                <div class="flow-connector-arrow"></div>
-                            </div>
-                            <div class="fnode fnode-danger pulse-danger clickable" onclick="toggleNode(this)">
-                                <div class="fnode-tag">🚨 BÁO ĐỘNG ĐỎ</div>
-                                <div class="fnode-title">SXH DENGUE NẶNG – CẤP CỨU ICU KHẨN CẤP</div>
-                                <p class="fnode-body">Nguy cơ tử vong rất cao. Đòi hỏi hồi sức chống sốc dịch truyền
-                                    khẩn cấp.</p>
-                                <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấn xem y lệnh xử trí
-                                    ngay</div>
-                                <div class="fnode-details">
-                                    <div class="detail-box">
-                                        <div class="detail-box-title">⚡ Hành động lập tức</div>
-                                        <ul>
-                                            <li>Chuyển ngay bệnh nhân vào phòng <strong>Hồi sức tích cực (ICU / Cấp
-                                                    cứu)</strong>.</li>
-                                            <li>Đặt nằm đầu thấp, thở oxy qua mask/canula.</li>
-                                            <li>Lấy máu làm xét nghiệm khẩn: CTM (Hct nền), nhóm máu, đông máu toàn bộ,
-                                                chức năng tạng.</li>
-                                            <li><strong>Bù dịch chống sốc</strong>: Thiết lập 2 đường truyền lớn. Bắt
-                                                đầu truyền Ringer Lactate/NaCl 0.9% với tốc độ 15-20 ml/kg trong 1 giờ.
-                                                (Xem chi tiết Sơ đồ 2).</li>
-                                            <li>Nếu sốc trơ: Chuẩn bị dịch cao phân tử hoặc truyền chế phẩm máu (nếu
-                                                nghi ngờ xuất huyết ẩn).</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+              <div class="physio-grid-card" style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 1.25rem; border-radius: 12px; border-left: 4px solid var(--color-rose);">
+                <div class="physio-grid-title" style="font-weight: 700; color: var(--color-rose); font-size: 15px; margin-bottom: 0.5rem;">
+                  🩸 Hồng cầu lắng (HCL)
+                </div>
+                <p style="font-size: 13.5px; color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                  <strong>Chỉ định:</strong> Sốc không đáp ứng bù dịch kèm <strong>Hct giảm đột ngột</strong>.<br>
+                  <strong>Lưu ý:</strong> Đây là dấu hiệu cảnh báo đang có xuất huyết nội tạng ồ ạt ẩn dấu.
+                </p>
+              </div>
+            </div>
+            
+            <!-- LIÊN KẾT CÔNG CỤ -->
+            <div style="background: #f8fafc; border: 1px solid var(--color-border); padding: 1.5rem; border-radius: 12px; margin: 2rem 0; text-align: center;">
+                <i class="fa-solid fa-calculator" style="font-size: 2rem; color: var(--color-primary); margin-bottom: 1rem;"></i>
+                <h3 style="margin: 0 0 0.5rem 0; color: var(--color-text);">Công cụ Hỗ trợ Hồi sức</h3>
+                <p style="margin-bottom: 1rem; color: var(--color-text-muted); font-size: 0.95rem;">Sử dụng công cụ để tính toán nhanh tốc độ dịch truyền (ml/giờ, giọt/phút) theo các mốc chống sốc.</p>
+                <a href="../../../../Công cụ/Cấp cứu & hồi sức/QL_Budich.html" class="btn" style="background: var(--color-primary); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block;">
+                    Mở Công cụ Tính Bù Dịch (Tốc độ & Liều lượng) →
+                </a>
+            </div>
 
-                        <!-- RIGHT: SEVERE NO -->
-                        <div class="flow-branch-side">
-                            <div class="flow-connector-label fc-no">KHÔNG → Đánh giá tiếp</div>
-                            <div class="flow-connector" style="margin:4px 0">
-                                <div class="flow-connector-line"></div>
-                                <div class="flow-connector-arrow"></div>
-                            </div>
+          </div>
+        </div>
 
-                            <!-- Node Q2: Warning signs? -->
-                            <div class="fnode fnode-question clickable" onclick="toggleNode(this)">
-                                <div class="fnode-tag">❓ Bước 2 · Sàng lọc dấu hiệu cảnh báo</div>
-                                <div class="fnode-title">
-                                    <span class="step-badge">2</span>
-                                    Có bất kỳ Dấu hiệu Cảnh báo (Warning Signs)?
-                                </div>
-                                <p class="fnode-body">Các dấu hiệu lâm sàng gợi ý thoát dịch/tổn thương cơ quan sắp xảy
-                                    ra?</p>
-                                <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấn xem các Dấu hiệu
-                                    cảnh báo</div>
-                                <div class="fnode-details">
-                                    <div class="detail-box">
-                                        <div class="detail-box-title">⚠️ Dấu hiệu Cảnh báo lâm sàng & Cận lâm sàng</div>
-                                        <ul>
-                                            <li><strong>Đau bụng nhiều và liên tục</strong>, đặc biệt là đau vùng hạ
-                                                sườn phải hoặc đau tăng khi sờ nắn.</li>
-                                            <li><strong>Nôn ói nhiều</strong> (nôn liên tục ≥ 3 lần/giờ hoặc ≥ 4 lần
-                                                trong 6 giờ).</li>
-                                            <li><strong>Chảy máu niêm mạc tự nhiên</strong>: Chảy máu cam, chảy máu chân
-                                                răng, tiểu máu, xuất huyết âm đạo bất thường.</li>
-                                            <li><strong>Gan to > 2 cm</strong> dưới bờ sườn.</li>
-                                            <li><strong>Lừ đừ, vật vã, li bì hoặc ngủ gà</strong>.</li>
-                                            <li><strong>Tích tụ dịch lâm sàng</strong>: Tràn dịch màng phổi, màng bụng
-                                                (phát hiện bằng siêu âm hoặc khám lâm sàng).</li>
-                                            <li><strong>Cận lâm sàng quan trọng</strong>: Hematocrit (Hct) tăng nhanh
-                                                đồng thời với số lượng tiểu cầu giảm nhanh chóng.</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+        <hr class="section-divider">
 
-                            <!-- Vertical connector from Node Q2 -->
-                            <div class="flow-connector" style="margin-top:12px;">
-                                <div class="flow-connector-line"></div>
-                                <div class="flow-connector-arrow"></div>
-                            </div>
+        <!-- 4. Theo dõi & Biến chứng -->
+        <div class="physio-content">
+          <h2 class="section-title">
+            <span>4. Theo dõi & Tiêu chuẩn Xuất viện</span>
+          </h2>
+          <div class="physio-text-block">
+            <h3>Biến chứng cấp tính (Nhóm C)</h3>
+            <ul class="physio-list-arrow">
+              <li>Sốc Dengue kéo dài dẫn đến toan chuyển hóa nặng, đông máu nội mạch rải rác (DIC).</li>
+              <li>Suy đa tạng (Suy gan cấp, Suy thận cấp).</li>
+              <li><strong>Quá tải dịch (Fluid Overload):</strong> Gây tràn dịch màng phổi, phù phổi cấp (Thường do bù dịch quá mức ở giai đoạn tái hấp thu).</li>
+            </ul>
 
-                            <!-- Second flow branch (nested!) -->
-                            <div class="flow-branch" style="max-width:100%;">
-                                <!-- LEFT: WARNING YES -->
-                                <div class="flow-branch-side">
-                                    <div class="flow-connector-label fc-yes">CÓ CẢNH BÁO</div>
-                                    <div class="flow-connector" style="margin:4px 0">
-                                        <div class="flow-connector-line"></div>
-                                        <div class="flow-connector-arrow"></div>
-                                    </div>
-                                    <div class="fnode fnode-warn clickable" onclick="toggleNode(this)">
-                                        <div class="fnode-tag">🟡 SXH Dengue Có Dấu hiệu Cảnh báo</div>
-                                        <div class="fnode-title">NHẬP VIỆN ĐIỀU TRỊ NỘI TRÚ BẮT BUỘC</div>
-                                        <p class="fnode-body">Yêu cầu theo dõi sát huyết động và bắt đầu liệu pháp
-                                            truyền dịch tĩnh mạch chủ động.</p>
-                                        <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấn xem phác
-                                            đồ xử trí dịch truyền</div>
-                                        <div class="fnode-details">
-                                            <div class="detail-box">
-                                                <div class="detail-box-title">💧 Nguyên tắc bù dịch Nhóm B</div>
-                                                <ul>
-                                                    <li>Truyền dịch tĩnh mạch: Ringer Lactate hoặc NaCl 0.9%.</li>
-                                                    <li>Tốc độ truyền ban đầu: <strong>6 ml/kg/giờ</strong> trong 1-2
-                                                        giờ đầu.</li>
-                                                    <li>Nếu lâm sàng cải thiện và Hct giảm: Giảm dần tốc độ xuống 5
-                                                        ml/kg/h -> 3 ml/kg/h -> 1.5 ml/kg/h.</li>
-                                                    <li>Theo dõi sinh hiệu, lượng nước tiểu, Hct mỗi 4-6 giờ.</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+            <h3>Tiêu chuẩn xuất viện</h3>
+            <ul class="physio-list-arrow">
+              <li>Hết sốt ít nhất 2 ngày mà không dùng thuốc hạ sốt.</li>
+              <li>Tỉnh táo, ăn uống được, mạch/huyết áp ổn định.</li>
+              <li>Không khó thở, không xuất huyết tiến triển.</li>
+              <li>Hct ổn định và Tiểu cầu > 50.000/mm3.</li>
+            </ul>
+          </div>
+        </div>
 
-                                <!-- RIGHT: WARNING NO -->
-                                <div class="flow-branch-side">
-                                    <div class="flow-connector-label fc-no">KHÔNG CẢNH BÁO</div>
-                                    <div class="flow-connector" style="margin:4px 0">
-                                        <div class="flow-connector-line"></div>
-                                        <div class="flow-connector-arrow"></div>
-                                    </div>
-
-                                    <!-- Node Q3: Standard Dengue Criteria? -->
-                                    <div class="fnode fnode-question clickable" onclick="toggleNode(this)">
-                                        <div class="fnode-tag">❓ Bước 3 · Tiêu chuẩn ca bệnh Dengue</div>
-                                        <div class="fnode-title">
-                                            <span class="step-badge">3</span>
-                                            Bệnh nhân đủ tiêu chuẩn ca bệnh nghi ngờ?
-                                        </div>
-                                        <p class="fnode-body">Sốt cao + ít nhất 2 triệu chứng điển hình (đau đầu, cơ,
-                                            khớp, ban đỏ, NS1+)?</p>
-                                        <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấn xem tiêu
-                                            chuẩn chẩn đoán ca bệnh</div>
-                                        <div class="fnode-details">
-                                            <div class="detail-box">
-                                                <div class="detail-box-title">📋 Tiêu chuẩn ca bệnh nghi ngờ</div>
-                                                <ul>
-                                                    <li>Sốt cao đột ngột 2-7 ngày.</li>
-                                                    <li>Kèm ít nhất 2 dấu hiệu sau:
-                                                        <ul>
-                                                            <li>Đau cơ, đau khớp.</li>
-                                                            <li>Đau đầu, đau hố mắt.</li>
-                                                            <li>Ban xung huyết, chấm xuất huyết dưới da.</li>
-                                                            <li>Nghiệm pháp dây thắt dương tính.</li>
-                                                            <li>Xét nghiệm: Bạch cầu giảm, Tiểu cầu giảm.</li>
-                                                            <li>Kháng nguyên NS1 dương tính hoặc IgM dương tính.</li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Vertical connector from Node Q3 -->
-                                    <div class="flow-connector" style="margin-top:12px;">
-                                        <div class="flow-connector-line"></div>
-                                        <div class="flow-connector-arrow"></div>
-                                    </div>
-
-                                    <!-- Third flow branch (nested!) -->
-                                    <div class="flow-branch" style="max-width:100%;">
-                                        <!-- LEFT: DENGUE STANDARD YES -->
-                                        <div class="flow-branch-side">
-                                            <div class="flow-connector-label fc-yes">ĐỦ TIÊU CHUẨN</div>
-                                            <div class="flow-connector" style="margin:4px 0">
-                                                <div class="flow-connector-line"></div>
-                                                <div class="flow-connector-arrow"></div>
-                                            </div>
-                                            <div class="fnode fnode-ok clickable" onclick="toggleNode(this)">
-                                                <div class="fnode-tag">🟢 SXH Dengue Cổ Điển (Thể Nhẹ)</div>
-                                                <div class="fnode-title">THEO DÕI NGOẠI TRÚ (ĐIỀU TRỊ TẠI NHÀ)</div>
-                                                <p class="fnode-body">Cho phép điều trị tại nhà dưới sự tự theo dõi chặt
-                                                    chẽ của người nhà.</p>
-                                                <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấn
-                                                    xem hướng dẫn theo dõi & điều trị</div>
-                                                <div class="fnode-details">
-                                                    <div class="detail-box">
-                                                        <div class="detail-box-title">🏡 Hướng dẫn điều trị tại nhà
-                                                        </div>
-                                                        <ul>
-                                                            <li><strong>Bù dịch đường uống tích cực</strong>: Oresol
-                                                                (ORS) pha đúng tỷ lệ, nước trái cây (cam, dừa), nước
-                                                                cháo muối. Uống theo nhu cầu.</li>
-                                                            <li><strong>Hạ sốt an toàn</strong>: Chỉ dùng
-                                                                <code>Paracetamol</code> liều 10-15 mg/kg mỗi 4-6 giờ
-                                                                (không quá 4g/ngày).
-                                                            </li>
-                                                            <li><strong>🚫 TUYỆT ĐỐI KHÔNG DÙNG</strong>: Aspirin,
-                                                                Ibuprofen hoặc các thuốc nhóm NSAID khác vì tăng nguy cơ
-                                                                chảy máu dạ dày, xuất huyết nặng.</li>
-                                                            <li><strong>Tầm soát cảnh báo</strong>: Người nhà đưa bệnh
-                                                                nhân đến viện ngay nếu phát hiện: đau bụng, nôn ói, lừ
-                                                                đừ, chảy máu răng/cam, chân tay lạnh ẩm.</li>
-                                                            <li>Lấy máu làm CTM mỗi sáng để theo dõi xu hướng Hct và
-                                                                tiểu cầu.</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- RIGHT: DENGUE STANDARD NO -->
-                                        <div class="flow-branch-side">
-                                            <div class="flow-connector-label fc-norm">CHƯA ĐỦ / CHẨN ĐOÁN KHÁC</div>
-                                            <div class="flow-connector" style="margin:4px 0">
-                                                <div class="flow-connector-line"></div>
-                                                <div class="flow-connector-arrow"></div>
-                                            </div>
-                                            <div class="fnode fnode-neutral clickable" onclick="toggleNode(this)">
-                                                <div class="fnode-tag">⚪ Theo dõi diễn tiến & Chẩn đoán phân biệt</div>
-                                                <div class="fnode-title">TÌM NGUYÊN NHÂN SỐT KHÁC</div>
-                                                <p class="fnode-body">Bệnh nhân chưa đủ tiêu chuẩn chẩn đoán SXH. Theo
-                                                    dõi thêm lâm sàng và kết quả xét nghiệm.</p>
-                                                <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấn
-                                                    xem xét nghiệm bổ sung</div>
-                                                <div class="fnode-details">
-                                                    <div class="detail-box">
-                                                        <div class="detail-box-title">🔬 Xét nghiệm & Chẩn đoán phân
-                                                            biệt</div>
-                                                        <ul>
-                                                            <li>Chỉ định xét nghiệm khẳng định:
-                                                                <ul>
-                                                                    <li>Từ ngày 1 - 3: <strong>Kháng nguyên NS1</strong>
-                                                                        bằng test nhanh.</li>
-                                                                    <li>Từ ngày 4 trở đi: <strong>Kháng thể IgM /
-                                                                            IgG</strong> Dengue.</li>
-                                                                </ul>
-                                                            </li>
-                                                            <li>Loại trừ chẩn đoán phân biệt: Sốt siêu vi khác, nhiễm
-                                                                trùng tiểu, viêm họng cấp, sốt rét, nhiễm trùng huyết.
-                                                            </li>
-                                                            <li>Hẹn tái khám sau 24h nếu sốt tiếp diễn.</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> <!-- end third flow-branch -->
-                                </div> <!-- end RIGHT: WARNING NO side -->
-                            </div> <!-- end second flow-branch -->
-                        </div> <!-- end RIGHT: SEVERE NO side -->
-                    </div> <!-- end first flow-branch -->
-
-                </div><!-- end flow-col -->
-            </div><!-- end pane-diag -->
-
-
-            <!-- ═══════════════════════════════════════
-                 PANE 2: FLUID & VASOPRESSOR MANAGEMENT
-            ═══════════════════════════════════════ -->
-            <div id="pane-mgmt" class="flow-pane" role="tabpanel" aria-labelledby="tab-btn-mgmt">
-                <div class="flow-col">
-
-                    <!-- Node: Start -->
-                    <div class="fnode"
-                        style="background:linear-gradient(135deg, #1e3a5f, #0284c7); color:#fff; max-width:520px;">
-                        <div class="fnode-tag">💧 Lưu đồ hồi sức dịch truyền</div>
-                        <div class="fnode-title">Phân loại bù dịch theo nhóm lâm sàng</div>
-                        <p class="fnode-body">Xác định phác đồ bù dịch chủ đạo dựa trên phân độ mức độ nặng (Nhóm A, B,
-                            C) theo quy chuẩn Bộ Y tế.</p>
-                    </div>
-
-                    <div class="flow-connector">
-                        <div class="flow-connector-line"></div>
-                        <div class="flow-connector-arrow"></div>
-                    </div>
-
-                    <!-- Split by severity: Shock vs No Shock -->
-                    <div class="fnode fnode-question clickable" onclick="toggleNode(this)">
-                        <div class="fnode-tag">❓ Phân loại 1 · Tình trạng sốc</div>
-                        <div class="fnode-title">
-                            <span class="step-badge">1</span>
-                            Bệnh nhân có biểu hiện Sốc Dengue (DSS) hoặc Sốc Dengue Nặng?
-                        </div>
-                        <p class="fnode-body">Huyết động không ổn định (Mạch nhanh nhẹ/không bắt được, HA tụt/kẹp, chi
-                            lạnh)?</p>
-                        <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấn xem tiêu chí chẩn đoán
-                            sốc</div>
-                        <div class="fnode-details">
-                            <div class="detail-box">
-                                <div class="detail-box-title">🚨 Chẩn đoán lâm sàng Sốc Dengue</div>
-                                <ul>
-                                    <li><strong>Sốc Dengue (DSS) - Còn bù</strong>: Huyết áp kẹp (hiệu số HA tối đa -
-                                        tối thiểu ≤ 20 mmHg) hoặc huyết áp tụt, mạch nhanh nhẹ, chi lạnh ẩm, thời gian
-                                        đổ đầy mao mạch (CRT) kéo dài > 2 giây, lừ đừ vật vã.</li>
-                                    <li><strong>Sốc Dengue Nặng - Mất bù</strong>: Mạch nhanh nhỏ cực kỳ khó bắt hoặc
-                                        không bắt được, huyết áp không đo được (HA = 0), chi lạnh ngắt, tím tái, co giật
-                                        hoặc hôn mê.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flow-connector">
-                        <div class="flow-connector-line"></div>
-                        <div class="flow-connector-arrow"></div>
-                    </div>
-                    <div class="flow-branch">
-                        <!-- LEFT BRANCH: SHOCK / SEVERE (Group C) -->
-                        <div class="flow-branch-side">
-                            <div class="flow-connector-label fc-yes">CÓ SỐC (Nhóm C)</div>
-                            <div class="flow-connector" style="margin:4px 0">
-                                <div class="flow-connector-line"></div>
-                                <div class="flow-connector-arrow"></div>
-                            </div>
-
-                            <div class="fnode fnode-danger clickable" onclick="toggleNode(this)">
-                                <div class="fnode-tag">🚨 Phác đồ chống sốc Nhóm C</div>
-                                <div class="fnode-title">HỒI SỨC SỐC DENGUE CẤP CỨU</div>
-                                <p class="fnode-body">Truyền dịch chống sốc nhanh chóng. Sử dụng dịch tinh thể đẳng
-                                    trương hoặc cao phân tử tùy đáp ứng.</p>
-                                <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấn xem lưu đồ chống
-                                    sốc chi tiết</div>
-                                <div class="fnode-details">
-                                    <div class="detail-box">
-                                        <div class="detail-box-title">🔵 1. Sốc Dengue còn bù</div>
-                                        <ul>
-                                            <li>Truyền dịch tinh thể (Ringer Lactate hoặc NaCl 0.9%) tốc độ: <strong>15
-                                                    - 20 ml/kg trong 1 giờ đầu</strong>.</li>
-                                            <li><strong>Đánh giá sau 1 giờ</strong>:
-                                                <ul>
-                                                    <li>Nếu cải thiện (HA hết kẹp, mạch rõ): Giảm liều truyền xuống 10
-                                                        ml/kg/h (trong 1-2h) -> 7.5 ml/kg/h (trong 3-4h) -> 5 ml/kg/h ->
-                                                        3 ml/kg/h -> 1.5 ml/kg/h.</li>
-                                                    <li>Nếu không cải thiện (Sốc trơ): Đo Hct khẩn cấp:
-                                                        <ul>
-                                                            <li>Hct tăng cao: Truyền dịch Cao phân tử (HES 130 hoặc
-                                                                Dextran) 10-20 ml/kg trong 1 giờ.</li>
-                                                            <li>Hct giảm nhanh: Nghi ngờ xuất huyết nội ẩn -> Chỉ định
-                                                                truyền máu khẩn (Hồng cầu lắng).</li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="detail-box" style="border-left: 3px solid var(--c-danger);">
-                                        <div class="detail-box-title">🔴 2. Sốc Dengue mất bù/nhược</div>
-                                        <ul>
-                                            <li>Truyền tinh thể xả nhanh: <strong>20 ml/kg trong 15 - 30 phút</strong>.
-                                            </li>
-                                            <li>Đánh giá lại ngay:
-                                                <ul>
-                                                    <li>Nếu mạch bắt được, HA đo được: Tiếp tục truyền tinh thể 10-20
-                                                        ml/kg trong 1 giờ tiếp theo rồi giảm dần liều.</li>
-                                                    <li>Nếu mạch vẫn không bắt được: Chuyển ngay sang truyền
-                                                        <strong>Dịch cao phân tử (Colloid) 10 - 20 ml/kg trong 30-60
-                                                            phút</strong>.
-                                                    </li>
-                                                    <li>Cân nhắc dùng <strong>vận mạch Adrenaline/Noradrenaline</strong>
-                                                        qua catheter tĩnh mạch trung tâm nếu đã bù đủ thể tích tuần hoàn
-                                                        nhưng huyết áp vẫn tụt trơ. (Sử dụng Công cụ tính toán Bước 0).
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- RIGHT BRANCH: NO SHOCK (Group A or B) -->
-                        <div class="flow-branch-side">
-                            <div class="flow-connector-label fc-no">KHÔNG SỐC (Huyết động ổn)</div>
-                            <div class="flow-connector" style="margin:4px 0">
-                                <div class="flow-connector-line"></div>
-                                <div class="flow-connector-arrow"></div>
-                            </div>
-
-                            <!-- Node Q2.2: Warning signs present for fluid? -->
-                            <div class="fnode fnode-question clickable" onclick="toggleNode(this)">
-                                <div class="fnode-tag">❓ Phân loại 2 · Nhóm A hay B?</div>
-                                <div class="fnode-title">
-                                    <span class="step-badge">2</span>
-                                    Bệnh nhân có Dấu hiệu cảnh báo (Warning Signs)?
-                                </div>
-                                <p class="fnode-body">Quyết định truyền dịch tĩnh mạch chủ động hay chỉ cần bù nước bằng
-                                    đường uống.</p>
-                                <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấn xem hướng dẫn
-                                    phân loại</div>
-                                <div class="fnode-details">
-                                    <div class="detail-box">
-                                        <div class="detail-box-title">📌 Phân định bù dịch</div>
-                                        <ul>
-                                            <li><strong>Có Cảnh báo (Nhóm B)</strong>: Bắt buộc truyền dịch tĩnh mạch
-                                                chủ động.</li>
-                                            <li><strong>Không Cảnh báo (Nhóm A)</strong>: Khuyên dùng bù dịch bằng đường
-                                                uống (Oresol). Chỉ truyền dịch khi nôn ói nhiều không uống được hoặc Hct
-                                                tăng cao đáng ngại.</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="flow-connector">
-                                <div class="flow-connector-line"></div>
-                                <div class="flow-connector-arrow"></div>
-                            </div>
-                            <div class="flow-branch" style="max-width:100%;">
-                                <!-- LEFT: Group B Fluid -->
-                                <div class="flow-branch-side">
-                                    <div class="flow-connector-label fc-yes">CÓ (Nhóm B)</div>
-                                    <div class="flow-connector" style="margin:4px 0">
-                                        <div class="flow-connector-line"></div>
-                                        <div class="flow-connector-arrow"></div>
-                                    </div>
-                                    <div class="fnode fnode-warn clickable" onclick="toggleNode(this)">
-                                        <div class="fnode-tag">🟡 Phác đồ truyền dịch Nhóm B</div>
-                                        <div class="fnode-title">BÙ DỊCH TĨNH MẠCH CHỦ ĐỘNG</div>
-                                        <p class="fnode-body">Sử dụng dịch truyền tinh thể đẳng trương. Duy trì tổng
-                                            thời gian truyền không quá 36-48 giờ.</p>
-                                        <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấn xem phác
-                                            đồ hạ liều dịch</div>
-                                        <div class="fnode-details">
-                                            <div class="detail-box">
-                                                <div class="detail-box-title">💧 Phác đồ hạ liều dịch tĩnh mạch</div>
-                                                <ol>
-                                                    <li>Bắt đầu: <strong>6 ml/kg/giờ</strong> trong 1 - 2 giờ đầu.</li>
-                                                    <li>Nếu lâm sàng cải thiện + Hct giảm: Giảm xuống <strong>5
-                                                            ml/kg/giờ</strong> trong 2 - 4 giờ tiếp theo.</li>
-                                                    <li>Giảm tiếp xuống <strong>3 ml/kg/giờ</strong> duy trì trong 4 - 6
-                                                        giờ.</li>
-                                                    <li>Giảm tiếp xuống <strong>1.5 ml/kg/giờ</strong> hoặc duy trì liều
-                                                        thấp.</li>
-                                                </ol>
-                                            </div>
-                                            <div class="detail-box" style="background:rgba(22, 163, 74, 0.07);">
-                                                <div class="detail-box-title">✅ Tiêu chuẩn ngưng truyền dịch</div>
-                                                <ul>
-                                                    <li>Huyết động ổn định (mạch rõ, HA bình thường, chi ấm).</li>
-                                                    <li>Hct đi ngang hoặc giảm ổn định.</li>
-                                                    <li>Ăn uống tốt bằng đường miệng.</li>
-                                                    <li>Tiểu nhiều (lượng nước tiểu > 0.5 - 1 ml/kg/giờ).</li>
-                                                    <li>Tiểu cầu có xu hướng hồi phục ổn định.</li>
-                                                    <li>Hết sốt > 24-48 giờ không dùng thuốc hạ sốt.</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- RIGHT: Group A Fluid -->
-                                <div class="flow-branch-side">
-                                    <div class="flow-connector-label fc-no">KHÔNG (Nhóm A)</div>
-                                    <div class="flow-connector" style="margin:4px 0">
-                                        <div class="flow-connector-line"></div>
-                                        <div class="flow-connector-arrow"></div>
-                                    </div>
-                                    <div class="fnode fnode-ok clickable" onclick="toggleNode(this)">
-                                        <div class="fnode-tag">🟢 Bù dịch đường uống Nhóm A</div>
-                                        <div class="fnode-title">BÙ DỊCH UỐNG TỰ NHIÊN</div>
-                                        <p class="fnode-body">Khuyến khích uống nhiều nước Oresol, nước trái cây. Không
-                                            truyền dịch bừa bãi tránh nguy cơ quá tải dịch kẽ.</p>
-                                        <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấn xem lưu ý
-                                            quan trọng</div>
-                                        <div class="fnode-details">
-                                            <div class="detail-box">
-                                                <div class="detail-box-title">⚠️ Lưu ý bù nước đường uống</div>
-                                                <ul>
-                                                    <li>Pha Oresol đúng tỷ lệ ghi trên bao bì. Không pha quá đặc/loãng.
-                                                    </li>
-                                                    <li>Tránh các loại nước có gas hoặc có màu đỏ, đen, nâu để không gây
-                                                        nhầm lẫn với triệu chứng xuất huyết dạ dày nếu bệnh nhân nôn ói.
-                                                    </li>
-                                                    <li>Chỉ truyền dịch tĩnh mạch (NaCl 0.9%/Ringer Lactate) khi bệnh
-                                                        nhân nôn ói liên tục không uống được, Hct tăng cao đáng kể trên
-                                                        xét nghiệm CTM.</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- end branch B vs A -->
-                        </div><!-- end No Shock side -->
-                    </div><!-- end branch Shock vs No Shock -->
-
-                </div><!-- end flow-col -->
-            </div><!-- end pane-mgmt -->
-
-        </main>
+      </main>
     </div>
+  </div>
 
-    <!-- Nạp Footer -->
-    <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+  <!-- Nạp Footer động -->
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
 
-    <script src="../../../../../js/flowchart.js"></script>
-    <script>
-        function calcFluid() {
-            const weight = parseFloat(document.getElementById('fluid_weight').value);
-            const goal = document.getElementById('fluid_goal').value;
-            const dropFactor = parseFloat(document.getElementById('fluid_drop_factor').value);
-            const box = document.getElementById('fluid_result');
-
-            if (!weight || isNaN(weight)) {
-                box.style.display = 'block';
-                box.style.background = '#fef2f2';
-                box.style.borderLeftColor = '#dc2626';
-                box.innerHTML = '<strong>⚠️ Vui lòng nhập cân nặng của bệnh nhân.</strong>';
-                return;
-            }
-
-            let ratePerKg = 0;
-            let note = "";
-
-            if (goal === 'bolus_shock') {
-                ratePerKg = 20;
-                note = "Hồi sức sốc nặng (Sốc mất bù). Truyền nhanh trong 15-30 phút.";
-            } else if (goal === 'bolus_standard') {
-                ratePerKg = 15;
-                note = "Hồi sức sốc Dengue còn bù. Truyền nhanh trong 1 giờ, sau đó đánh giá lại.";
-            } else if (goal === 'maintain_high') {
-                ratePerKg = 7;
-                note = "Phác đồ bù dịch tĩnh mạch Nhóm B (Liều bắt đầu). Đánh giá lâm sàng và Hct mỗi 1-2h.";
-            } else if (goal === 'maintain_med') {
-                ratePerKg = 5;
-                note = "Liều duy trì trung bình ở nhóm cảnh báo hoặc sau hạ liều chống sốc.";
-            } else if (goal === 'maintain_low') {
-                ratePerKg = 3;
-                note = "Liều duy trì thấp cho nhóm cảnh báo. Cần theo dõi sinh hiệu, Hct và lượng nước tiểu.";
-            } else if (goal === 'maintain_min') {
-                ratePerKg = 1.5;
-                note = "Liều duy trì tối thiểu chuẩn bị ngưng truyền dịch tĩnh mạch.";
-            } else if (goal === 'custom') {
-                ratePerKg = parseFloat(document.getElementById('fluid_custom_rate').value);
-                if (!ratePerKg || isNaN(ratePerKg)) {
-                    box.style.display = 'block';
-                    box.style.background = '#fef2f2';
-                    box.style.borderLeftColor = '#dc2626';
-                    box.innerHTML = '<strong>⚠️ Vui lòng nhập tốc độ tùy chỉnh (ml/kg/giờ).</strong>';
-                    return;
-                }
-                note = "Tốc độ truyền dịch tùy chỉnh lâm sàng.";
-            }
-
-            const totalRate = weight * ratePerKg;
-            const dropRate = (totalRate * dropFactor) / 60;
-            const secondsPerDrop = dropRate > 0 ? 60 / dropRate : 0;
-
-            box.style.display = 'block';
-            box.style.background = '#f0fdf4';
-            box.style.borderLeftColor = '#16a34a';
-            box.innerHTML = `
-                <div class="r-value-big" style="color:#16a34a">💧 ${totalRate.toFixed(1)} ml/giờ</div>
-                <div style="font-weight:700; color:#14532d; margin-bottom:6px;">Tốc độ: ~${dropRate.toFixed(0)} giọt/phút</div>
-                <div style="font-size:13px; color:#475569; margin-bottom:8px;">
-                    Nhịp nhỏ giọt: <strong>1 giọt mỗi ${secondsPerDrop.toFixed(1)} giây</strong> (Hệ số dây: ${dropFactor} giọt/ml)
-                </div>
-                <div style="font-size:12px; color:#15803d; font-style:italic;">💡 Chỉ định: ${note}</div>
-            `;
-            box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-
-        function resetFluid() {
-            document.getElementById('fluid_weight').value = '';
-            document.getElementById('fluid_goal').selectedIndex = 0;
-            document.getElementById('fluid_custom_rate').value = '';
-            document.getElementById('custom_rate_div').style.display = 'none';
-            const box = document.getElementById('fluid_result');
-            box.style.display = 'none';
-            box.innerHTML = '';
-        }
-
-        // --- VASOPRESSOR CALCULATOR ---
-        function onDrugChange() {
-            const drug = document.getElementById('vaso_drug').value;
-            const doseInp = document.getElementById('vaso_dose');
-            const mgInp = document.getElementById('vaso_conc_mg');
-            const mlInp = document.getElementById('vaso_vol_ml');
-
-            if (drug === 'dopa') {
-                doseInp.value = 5;
-                mgInp.value = 200;
-                mlInp.value = 50;
-            } else if (drug === 'adren' || drug === 'noradren') {
-                doseInp.value = 0.1;
-                mgInp.value = 4;
-                mlInp.value = 50;
-            }
-        }
-
-        function calcVaso() {
-            const weight = parseFloat(document.getElementById('vaso_weight').value);
-            const drug = document.getElementById('vaso_drug').value;
-            const dose = parseFloat(document.getElementById('vaso_dose').value); // mcg/kg/min
-            const concMg = parseFloat(document.getElementById('vaso_conc_mg').value);
-            const volMl = parseFloat(document.getElementById('vaso_vol_ml').value);
-            const box = document.getElementById('vaso_result');
-
-            if (!weight || isNaN(weight) || !dose || isNaN(dose) || !concMg || isNaN(concMg) || !volMl || isNaN(volMl)) {
-                box.style.display = 'block';
-                box.style.background = '#fef2f2';
-                box.style.borderLeftColor = '#dc2626';
-                box.innerHTML = '<strong>⚠️ Vui lòng điền đầy đủ các thông số tính liều vận mạch.</strong>';
-                return;
-            }
-
-            const concMcgPerMl = (concMg * 1000) / volMl;
-            const rateMlPerHour = (dose * weight * 60) / concMcgPerMl;
-            const drugName = document.getElementById('vaso_drug').options[document.getElementById('vaso_drug').selectedIndex].text;
-
-            let warningText = "";
-            if (drug === 'adren' || drug === 'noradren') {
-                if (dose > 1.0) {
-                    warningText = "⚠️ Cảnh báo: Liều Adrenaline/Noradrenaline rất cao! Kiểm tra lại đường truyền trung tâm và theo dõi sát HA động mạch xâm lấn.";
-                }
-            } else if (drug === 'dopa') {
-                if (dose > 20.0) {
-                    warningText = "⚠️ Cảnh báo: Liều Dopamine vượt quá ngưỡng tối đa khuyến cáo (20 mcg/kg/phút). Cân nhắc chuyển sang Noradrenaline/Adrenaline.";
-                }
-            }
-
-            box.style.display = 'block';
-            box.style.background = '#fdf2f8';
-            box.style.borderLeftColor = '#db2777';
-            box.innerHTML = `
-                <div class="r-value-big" style="color:#db2777">💉 ${rateMlPerHour.toFixed(2)} ml/giờ</div>
-                <div style="font-weight:700; color:#831843; margin-bottom:6px;">Tốc độ Bơm tiêm điện (SP)</div>
-                <div style="font-size:13px; color:#475569; margin-bottom:8px;">
-                    Liều: <strong>${dose} mcg/kg/phút</strong> (${drugName}) | Nồng độ dịch: ${concMcgPerMl.toFixed(0)} mcg/ml
-                </div>
-                ${warningText ? `<div style="font-size:12px; color:#b91c1c; font-weight:600; padding:6px; background:#fef2f2; border-radius:6px; margin-top:6px;">${warningText}</div>` : ''}
-            `;
-            box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-
-        function resetVaso() {
-            document.getElementById('vaso_weight').value = '';
-            document.getElementById('vaso_drug').selectedIndex = 0;
-            onDrugChange();
-            const box = document.getElementById('vaso_result');
-            box.style.display = 'none';
-            box.innerHTML = '';
-        }
-
-        // ══════════════════════════════════════════
-        //  4. ENTER KEY TRIGGERS
-        // ══════════════════════════════════════════
-        document.querySelectorAll('.r-calc-card input').forEach(inp => {
-            inp.addEventListener('keydown', e => {
-                if (e.key === 'Enter') {
-                    if (inp.closest('.r-calc-card').querySelector('.btn-calc')) {
-                        calcFluid();
-                    } else if (inp.closest('.r-calc-card').querySelector('.btn-calc-vaso')) {
-                        calcVaso();
-                    }
-                }
-            });
-        });
-    </script>
+  <!-- Script điều khiển chung -->
+  <script src="../../../../../js/sidebar.js"></script>
+  
+  <script>
+    // Hàm fix nhanh cho switchPane trong file này vì flowchart.js có thể yêu cầu setup thêm
+    // Nếu flowchart.js đã có hàm switchPane thì đoạn này sẽ bị ghi đè, nếu không thì đoạn này giúp tab hoạt động.
+    function switchPane(paneId) {
+      // Ẩn tất cả panes
+      document.querySelectorAll('.flow-canvas-wrapper .flow-pane').forEach(p => p.style.display = 'none');
+      // Bỏ active tất cả buttons
+      document.querySelectorAll('.flow-tabs .flow-tab-btn').forEach(b => b.classList.remove('active'));
+      
+      // Hiện pane được chọn
+      document.getElementById(paneId).style.display = 'block';
+      // Thêm active cho nút được click
+      event.currentTarget.classList.add('active');
+    }
+    
+    // Khởi tạo tab đầu tiên
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('tab-nhe').style.display = 'block';
+    });
+  </script>
 </body>
-
 </html>
