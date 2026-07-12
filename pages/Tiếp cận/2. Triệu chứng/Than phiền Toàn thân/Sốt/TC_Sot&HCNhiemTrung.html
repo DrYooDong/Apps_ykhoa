@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tiếp cận chẩn đoán và xử trí bệnh nhân Sốt kèm Hội chứng nhiễm trùng">
+  <title>Sốt & Hội chứng nhiễm trùng – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core (5 levels up) -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+
+  <!-- CSS Layout tiếp cận triệu chứng -->
+  <link rel="stylesheet" href="../../../../../css/components/approach-symptom.css">
+</head>
+
+<body>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="TC_Sot.html" class="nav-item active" title="Tiếp cận Sốt">
+              <span class="nav-icon">🌡️</span>
+              <span class="nav-text">Tiếp cận Sốt</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="main-wrapper">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Trang chủ</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="TC_Sot.html" class="breadcrumb-link">Tiếp cận Sốt</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Sốt + Hội chứng nhiễm trùng</li>
+        </ol>
+      </nav>
+
+      <!-- HERO BANNER -->
+      <section class="hero-dashboard">
+        <div class="hero-intro">
+          <h1>🌡️ TIẾP CẬN HỘI CHỨNG NHIỄM TRÙNG</h1>
+          <p>Nhận diện nhiễm khuẩn hệ thống, loại trừ tình trạng nhiễm khuẩn huyết (Sepsis) và sốc nhiễm khuẩn đe dọa tính mạng, đồng thời tìm kiếm ổ nhiễm trùng nguyên phát để định hướng kháng sinh kinh nghiệm.</p>
+        </div>
+      </section>
+
+      <!-- SYMPTOM GRID LAYOUT (BƯỚC 1 -> 7) -->
+      <div class="symptom-grid">
+
+        <!-- BƯỚC 1: 50% width (border-danger - Cấp cứu & sàng lọc nguy cơ) -->
+        <div class="symptom-step-card border-danger symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-danger">Bước 1</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-exclamation-triangle"></i> Ổn định ban đầu – Sàng lọc nguy cơ</h3>
+          <div class="step-card-body">
+            <p>Nhận diện ngay các dấu hiệu nguy kịch đe dọa tính mạng (red flags) chỉ điểm tình trạng <strong>Nhiễm khuẩn huyết (Sepsis)</strong> hoặc <strong>Sốc nhiễm khuẩn</strong>:</p>
+            <ul>
+              <li><strong>Huyết động không ổn định:</strong> Huyết áp tâm thu &lt; 90 mmHg, nhịp tim &gt; 120 lần/phút, da nổi vân tím, tay chân lạnh ẩm, thời gian đổ đầy mao mạch (refill) &gt; 3 giây.</li>
+              <li><strong>Suy hô hấp cấp:</strong> Nhịp thở nhanh &gt; 20 lần/phút (ở người lớn) hoặc &gt; 60 lần/phút (ở trẻ &lt; 2 tháng), co kéo lồng ngực nhiều, độ bão hòa oxy SpO2 &lt; 92% khi thở khí trời.</li>
+              <li><strong>Rối loạn tri giác cấp tính:</strong> Lơ mơ, lú lẫn, ngủ gà, vật vã hoặc hôn mê.</li>
+              <li><strong>Thiểu niệu / Vô niệu:</strong> Thể tích nước tiểu &lt; 400 mL/24 giờ hoặc &lt; 0.5 mL/kg/giờ trong 6 giờ liên tiếp (suy thận cấp trước thận do giảm tưới máu).</li>
+              <li><strong>Toan chuyển hóa / Lactate tăng cao:</strong> Chỉ số Lactate máu &gt; 2 mmol/L.</li>
+            </ul>
+            <div class="step-alert-box">
+              <i class="fas fa-ambulance"></i>
+              <span><strong>Cấp cứu khẩn cấp Sepsis:</strong> Sepsis là một tình trạng rối loạn chức năng cơ quan đe dọa tính mạng gây ra bởi đáp ứng không được kiểm soát của cơ thể với nhiễm trùng. Yêu cầu xử trí giờ vàng khẩn cấp.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 2: 50% width -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 2</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-notes-medical"></i> Thu thập dữ kiện tập trung</h3>
+          <div class="step-card-body">
+            <p>Tìm kiếm ổ nhiễm trùng nguyên phát thông qua khai thác lâm sàng toàn diện:</p>
+            <ul>
+              <li><strong>Đặc điểm sốt:</strong> Sốt cao đột ngột kèm theo cơn rét run/ớn lạnh nhiều (gợi ý vi khuẩn đi vào máu).</li>
+              <li><strong>Định vị ổ nhiễm trùng nguyên phát:</strong>
+                <ul>
+                  <li><em>Hô hấp:</em> Ho khạc đờm vàng/lục, đau ngực màng phổi.</li>
+                  <li><em>Tiêu hóa - Ổ bụng:</em> Đau quặn bụng vùng gan, vàng da, tiêu chảy phân lỏng nhầy máu.</li>
+                  <li><em>Tiết niệu:</em> Tiểu buốt, tiểu rắt, đục, đau vùng hông lưng.</li>
+                  <li><em>Thần kinh:</em> Sốt cao kèm nhức đầu nhiều, nôn vọt.</li>
+                  <li><em>Da - Mô mềm:</em> Vết thương hở, nhọt mủ sưng đau ngoài da.</li>
+                </ul>
+              </li>
+              <li><strong>Yếu tố nguy cơ & Tiền sử can thiệp:</strong>
+                <ul>
+                  <li>Suy giảm miễn dịch, tiểu đường, dùng corticoid kéo dài, bệnh nhân ung thư đang hóa trị.</li>
+                  <li>Có can thiệp y tế gần đây: Phẫu thuật, đặt catheter tĩnh mạch trung tâm, đặt ống thông tiểu Foley lưu ngày (nguy cơ nhiễm khuẩn bệnh viện do vi khuẩn đa kháng).</li>
+                </ul>
+              </li>
+              <li><strong>Thăm khám thực thể toàn diện (A-B-C-D-E):</strong> Khám phổi (ran nổ, đông đặc); khám bụng (phản ứng thành bụng); khám da niêm (tìm ban hoại tử hình sao của não mô cầu, nhọt mủ); khám thần kinh (dấu cổ cứng). Phát hiện <strong>mạch nhiệt phân ly</strong> gợi ý thương hàn, quai bị, sốt rét.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 3: 100% width (Chẩn đoán phân biệt) -->
+        <div class="symptom-step-card border-warning symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-warning">Bước 3</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-list-ul"></i> Danh sách Chẩn đoán phân biệt</h3>
+          <div class="step-card-body">
+            <p>Xác định ổ nhiễm trùng dựa trên chẩn đoán phân biệt lâm sàng:</p>
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Ổ nhiễm trùng nghi ngờ</th>
+                    <th>Chẩn đoán thường gặp</th>
+                    <th>Đặc điểm lâm sàng & Cận lâm sàng gợi ý</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Đường Hô hấp dưới</strong></td>
+                    <td><strong>Viêm phổi mắc phải cộng đồng (CAP)</strong></td>
+                    <td>Sốt cao, ho khạc đờm đục, khó thở. Nghe phổi có ran nổ khu trú hoặc hội chứng đông đặc. X-quang phổi có tổn thương thâm nhiễm nhu mô.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Hệ Tiêu hóa & Ổ bụng</strong></td>
+                    <td>
+                      <strong>Viêm đường mật cấp</strong><br>
+                      <strong>Viêm phúc mạc cấp / Áp xe gan</strong>
+                    </td>
+                    <td>
+                      - Sốt cao rét run, đau hạ sườn phải, vàng da (Tam chứng Charcot rõ).<br>
+                      - Sốt, đau bụng dữ dội toàn thể, bụng chướng cứng đề kháng, gõ đục vùng thấp. Gan to chắc đau (áp xe).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Đường Tiết niệu</strong></td>
+                    <td><strong>Viêm thận bể thận cấp</strong></td>
+                    <td>Sốt cao kèm rét run, đau hố thắt lưng (gõ rung thận dương tính chói), nước tiểu đục, có thể có tiểu buốt rắt kèm theo.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Hệ Thần kinh trung ương</strong></td>
+                    <td><strong>Viêm màng não mủ</strong></td>
+                    <td>Sốt cao, đau đầu dữ dội, nôn vọt, khám có dấu cổ cứng, Kernig/Brudzinski (+). Dịch não tủy lờ đục, đạm tăng, đường giảm sâu.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Da và Mô mềm</strong></td>
+                    <td><strong>Nhọt bầy / Viêm mô tế bào</strong></td>
+                    <td>Sốt cao, tại chỗ da sưng nóng đỏ đau giới hạn rõ hoặc hóa mủ rộng. Có thể nổi hạch bạch huyết vùng lân cận.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 4: 50% width (Biện luận lâm sàng) -->
+        <div class="symptom-step-card border-success symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-success">Bước 4</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-filter"></i> Biện luận lâm sàng (Clinical reasoning)</h3>
+          <div class="step-card-body">
+            <p>Phương thức biện luận lâm sàng theo mức độ nặng:</p>
+            <ul>
+              <li><strong>Độ ưu tiên hàng đầu:</strong> Nhận diện sớm hội chứng <strong>Nhiễm khuẩn huyết</strong> (đáp ứng viêm hệ thống kèm nghi ngờ nhiễm trùng) và <strong>Sốc nhiễm khuẩn</strong>. Việc trì hoãn dùng kháng sinh tĩnh mạch phổ rộng mỗi giờ làm tăng tỷ lệ tử vong lên khoảng 8%.</li>
+              <li><strong>Lý luận lâm sàng ủng hộ:</strong>
+                <ul>
+                  <li><em>Sốt cao lạnh run + Mạch nhanh + HA tụt + Lú lẫn:</em> Hướng mạnh đến Nhiễm khuẩn huyết nặng/Sốc nhiễm khuẩn.</li>
+                  <li><em>Sốt cao xuất hiện trên bệnh nhân đang đặt catheter tĩnh mạch trung tâm hoặc ống thông tiểu lưu:</em> Cảnh báo <strong>Nhiễm khuẩn bệnh viện</strong> (nguy cơ cao nhiễm các chủng vi khuẩn đa kháng như MRSA, <em>Pseudomonas aeruginosa</em>).</li>
+                  <li><em>Sốt + Ho đờm mủ + Ran nổ phổi khu trú:</em> Chỉ điểm ổ nhiễm trùng tại Phổi.</li>
+                  <li><em>Sốt + Tiểu buốt rắt + Đau hông lưng:</em> Chỉ điểm ổ nhiễm trùng tại Thận.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 5: 50% width (Cận lâm sàng) -->
+        <div class="symptom-step-card border-info symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-vials"></i> Chỉ định Cận lâm sàng hợp lý</h3>
+          <div class="step-card-body">
+            <p>Các cận lâm sàng thiết yếu để đánh giá mức độ nặng và tìm căn nguyên vi khuẩn:</p>
+            <ul>
+              <li><strong>Xét nghiệm huyết học & Sinh hóa:</strong> Công thức máu (Bạch cầu tăng &gt; 12.000/mcL hoặc giảm &lt; 4.000/mcL, ưu thế trung tính, tỷ lệ bạch cầu non/band &gt; 5-10%; tiểu cầu giảm gợi ý Sepsis/DIC). Marker viêm: CRP và Procalcitonin tăng vọt (&gt; 0.5 ng/mL).</li>
+              <li><strong>Xét nghiệm đánh giá tạng & tưới máu:</strong> Lactate máu (chỉ số sinh tồn để chẩn đoán giảm tưới máu mô trong sốc), Khí máu động mạch, Creatinin, men gan, đông máu cơ bản.</li>
+              <li><strong>Xét nghiệm vi sinh tìm vi khuẩn (Cực kỳ quan trọng):</strong>
+                <ul>
+                  <li><strong>Cấy máu:</strong> <em>Bắt buộc phải lấy máu trước khi bắt đầu liều kháng sinh tĩnh mạch đầu tiên</em>. Lấy ít nhất 2 mẫu từ 2 vị trí tĩnh mạch khác nhau.</li>
+                  <li>Cấy các dịch sinh học khác định hướng theo lâm sàng: Cấy nước tiểu, cấy đờm, cấy dịch mủ, chọc dò dịch não tủy.</li>
+                </ul>
+              </li>
+              <li><strong>Hình ảnh học:</strong> X-quang ngực thẳng (tầm soát viêm phổi), Siêu âm ổ bụng (tìm sỏi mật, giãn đường mật, áp xe sâu).</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 5 PHỤ: 100% width (Bổ trợ các tiêu chuẩn Sepsis nặng) -->
+        <div class="symptom-step-card border-info symptom-col-12" id="tieu-chuan-sepsis-nang">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bổ trợ Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-list-ol"></i> Các chỉ số lâm sàng và cận lâm sàng định hướng Sepsis nặng (Critical Care Medicine)</h3>
+          <div class="step-card-body">
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Thông số đánh giá</th>
+                    <th>Ngưỡng giá trị bất thường</th>
+                    <th>Ý nghĩa lâm sàng</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Nhiệt độ (Temperature)</strong></td>
+                    <td>&gt; 38.5°C hoặc &lt; 36.0°C</td>
+                    <td>Phản ứng điều nhiệt hệ thống đối với chí nhiệt tố vi khuẩn.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Nhịp tim (Heart Rate)</strong></td>
+                    <td>&gt; 120 lần/phút</td>
+                    <td>Nhịp tim tăng bù trừ cho sự giãn mạch hệ thống.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Huyết áp tâm thu (SBP)</strong></td>
+                    <td>&lt; 90 mmHg (hoặc giảm &gt; 40 mmHg so với nền)</td>
+                    <td>Tụt huyết áp chỉ điểm sốc phân bố hoặc giảm thể tích.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Nhịp thở (Respiratory Rate)</strong></td>
+                    <td>&gt; 20 lần/phút</td>
+                    <td>Thở nhanh do toan chuyển hóa hoặc tổn thương phổi kẽ.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Lactate máu (Lactate)</strong></td>
+                    <td><strong>&gt; 2.0 mmol/L</strong></td>
+                    <td>Đánh giá tình trạng giảm tưới máu mô tế bào (giảm oxy tế bào).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Procalcitonin (PCT)</strong></td>
+                    <td>&gt; 0.5 ng/mL</td>
+                    <td>Marker đặc hiệu cho tình trạng nhiễm khuẩn nặng do vi khuẩn.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Bạch cầu (WBC)</strong></td>
+                    <td>&gt; 12.000 hoặc &lt; 4.000 cells/µL; <strong>Bạch cầu non (Band) &gt; 5%</strong></td>
+                    <td>Đáp ứng tủy xương với nhiễm trùng cấp tính (tăng sinh hoặc suy kiệt bạch cầu).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tiểu cầu (Platelet)</strong></td>
+                    <td>&lt; 150.000 /µL (giảm nhanh)</td>
+                    <td>Cảnh báo tình trạng đông máu rải rác trong lòng mạch (DIC) do Sepsis.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Lượng nước tiểu (Urine output)</strong></td>
+                    <td>Thiểu niệu (Oliguria)</td>
+                    <td>Giảm tưới máu thận gây suy thận cấp trước thận.</td>
+                  </tr>
+                  <tr class="table-summary-row">
+                    <td><strong>Đặc điểm cấy máu</strong></td>
+                    <td>Chỉ dương tính trong khoảng <strong>1/3 số ca</strong> lâm sàng Sepsis.</td>
+                    <td>Cấy âm tính không loại trừ chẩn đoán Nhiễm khuẩn huyết.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 6: 50% width (Xử trí ban đầu) -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 6</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-capsules"></i> Hướng xử trí ban đầu</h3>
+          <div class="step-card-body">
+            <p>Nguyên tắc can thiệp cấp cứu Sepsis và Sốc nhiễm khuẩn:</p>
+            <ul>
+              <li><strong>Hỗ trợ tuần hoàn & hô hấp khẩn cấp (A-B-C):</strong> Thở oxy duy trì SpO2 &gt; 94%. Thiết lập ngay đường truyền tĩnh mạch lớn. Truyền dịch tĩnh mạch đẳng trương (NaCl 0.9% hoặc Ringer Lactate) nhanh 30 mL/kg nếu có tụt huyết áp hoặc lactate &ge; 4 mmol/L.</li>
+              <li><strong>Liệu pháp kháng sinh tĩnh mạch phổ rộng sớm:</strong>
+                <ul>
+                  <li>Phải được dùng sớm nhất có thể, tốt nhất là <strong>trong vòng 1 giờ đầu tiên</strong> (giờ vàng) ngay sau khi đã lấy mẫu cấy máu.</li>
+                  <li>Lựa chọn kinh nghiệm: Ceftriaxone 2g IV phối hợp Vancomycin 1-1.5g IV (nếu nghi nhiễm khuẩn cộng đồng chưa rõ ổ). Dùng carbapenem (Meropenem) phối hợp Colistin nếu nghi nhiễm khuẩn bệnh viện đa kháng.</li>
+                </ul>
+              </li>
+              <li><strong>Kiểm soát ổ nhiễm khuẩn (Source Control):</strong> Rút ngay các đường truyền catheter tĩnh mạch nghi ngờ nhiễm trùng, đặt thông tiểu giải áp nếu tắc nghẽn, rạch dẫn lưu các ổ áp xe mô mềm/gan, phẫu thuật cắt lọc hoại tử hoặc giải quyết thủng tạng rỗng.</li>
+              <li><strong>Theo dõi đáp ứng:</strong> Đánh giá huyết động, nhịp thở, tri giác và thử lại lactate máu mỗi 2-4 giờ để đánh giá hiệu quả hồi sức.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 7: 50% width (Chuyển tuyến) -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 7</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-ambulance"></i> Tiêu chuẩn chuyển viện & hội chẩn</h3>
+          <div class="step-card-body">
+            <p>Chuyển tuyến Hồi sức tích cực (ICU) hoặc gọi hội chẩn liên khoa khẩn cấp khi:</p>
+            <ul>
+              <li>Bệnh nhân có biểu hiện tụt huyết áp trơ với bù dịch (đã bù đủ 30ml/kg dịch tinh thể) cần sử dụng thuốc vận mạch Noradrenalin duy trì MAP &ge; 65 mmHg (Sốc nhiễm khuẩn).</li>
+              <li>Suy hô hấp tiến triển cần đặt nội khí quản và thở máy xâm lấn.</li>
+              <li>Suy chức năng đa cơ quan (suy thận cấp vô niệu, rối loạn đông máu nặng tiến triển DIC, hôn mê gan/thần kinh).</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- VISUAL ALGORITHMS CARDS -->
+      <section class="symptom-grid" style="margin-top: 2rem;">
+        
+        <!-- Lưu đồ 1: Xử trí cấp cứu Sepsis/Septic Shock -->
+        <div class="symptom-step-card border-primary symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag">Sơ đồ 1</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-project-diagram"></i> Lưu đồ Xử trí Nhiễm khuẩn huyết và Sốc nhiễm khuẩn cấp cứu</h3>
+          <div class="step-card-body">
+            <div class="image-placeholder-card">
+              <div class="image-title">
+                <span>📊</span> Sơ đồ Tiếp cận và Xử trí cấp cứu Sepsis & Septic Shock – Algorithms for Emergency Medicine 2023
+              </div>
+              <div class="image-drop-area">
+                <div class="image-drop-text">
+                  <img src="../../../../../images/TC_Sot_NhiemTrung_Hinh1.png" alt="Sepsis Septic Shock ER Algorithm"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <div class="fallback-placeholder" style="display: none;">
+                    <i class="fa-regular fa-image"></i>
+                    <p>Sơ đồ tiếp cận và xử trí Sepsis đang được cập nhật</p>
+                  </div>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Tóm tắt lưu đồ xử trí cấp cứu (Sepsis/Septic Shock Algorithm):</strong><br>
+                - <strong>Bước 1: TAKE BLOODS (Lấy máu xét nghiệm)</strong> &rarr; Cấy máu bắt buộc 2 mẫu từ 2 vị trí khác nhau trước khi dùng kháng sinh; làm công thức máu, khí máu, lactate.<br>
+                - <strong>Bước 2: IV ANTIBIOTICS (Dùng kháng sinh tĩnh mạch)</strong> &rarr; Tiêm tĩnh mạch kháng sinh phổ rộng ngay lập tức (trong giờ vàng đầu tiên). Đừng trì hoãn vì chờ kết quả xét nghiệm.<br>
+                - <strong>Bước 3: FLUID BALANCE (Cân bằng dịch truyền)</strong> &rarr; Truyền dịch đẳng trương đẳng liều tích cực (30 ml/kg) nếu có tụt huyết áp hoặc lactate &ge; 4 mmol/L.<br>
+                - <strong>Bước 4: Đánh giá Sốc nhiễm khuẩn (Septic Shock)</strong> &rarr; Nếu mặc dù đã hồi sức đủ dịch đẳng trương mà huyết áp động mạch trung bình (MAP) vẫn &lt; 65 mmHg ĐỒNG THỜI Lactate &ge; 2 mmol/L &rarr; Bệnh nhân đã rơi vào <strong>SỐC NHIỄM KHUẨN</strong>.<br>
+                - <strong>Bước 5: Xử trí nâng cao</strong> &rarr; Hội chẩn khẩn ICU, chuyên khoa vi sinh; thiết lập đường truyền tĩnh mạch trung tâm/động mạch xâm lấn để sử dụng thuốc vận mạch Noradrenalin nâng MAP &ge; 65 mmHg.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- TAKE HOME MESSAGES -->
+      <section class="take-home-card">
+        <div class="take-home-title">
+          <i class="fas fa-lightbulb"></i> Thông điệp Cốt lõi (Take-home Messages)
+        </div>
+        <div class="take-home-body">
+          <ul>
+            <li><strong>Giờ vàng kháng sinh tĩnh mạch:</strong> Kháng sinh tĩnh mạch phổ rộng phải được bắt đầu trong vòng 1 giờ đầu tiên sau khi nhận diện Sepsis hoặc sốc nhiễm khuẩn. Trì hoãn kháng sinh làm tăng đáng kể tỷ lệ tử vong.</li>
+            <li><strong>Cấy máu trước kháng sinh là bắt buộc:</strong> Luôn lấy tối thiểu 2 mẫu cấy máu trước liều kháng sinh đầu tiên. Tuy nhiên, nếu việc cấy máu gặp khó khăn kỹ thuật, tuyệt đối không trì hoãn dùng kháng sinh quá 1 giờ.</li>
+            <li><strong>Tìm ổ nhiễm trùng nguyên phát:</strong> Thăm khám toàn diện từ phổi, ổ bụng, đường niệu đến da cơ xương khớp là mấu chốt để định hướng đúng kháng sinh kinh nghiệm ban đầu trước khi có kháng sinh đồ.</li>
+            <li><strong>Source Control sinh tử:</strong> Song song với kháng sinh và dịch truyền, việc rút bỏ catheter nhiễm trùng, dẫn lưu áp xe hoặc phẫu thuật ổ bụng bị thủng/viêm là điều kiện quyết định để cứu sống bệnh nhân.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TÀI LIỆU THAM KHẢO -->
+      <section class="references-card">
+        <div class="references-title">
+          <i class="fas fa-book"></i> Tài liệu Tham khảo
+        </div>
+        <ol class="references-list">
+          <li>Algorithms for Emergency Medicine 2023.</li>
+          <li>Critical Care Medicine: An Algorithmic Approach, 2023 Edition.</li>
+          <li>Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021.</li>
+          <li>Harrison's Manual of Medicine, 20th Edition.</li>
+          <li>Macleod's Clinical Examination, 14th Edition.</li>
+        </ol>
+      </section>
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+  <!-- JS Core -->
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+
+  <!-- JS Layout tiếp cận triệu chứng -->
+  <script src="../../../../../js/approach-symptom.js" defer></script>
+</body>
+
+</html>

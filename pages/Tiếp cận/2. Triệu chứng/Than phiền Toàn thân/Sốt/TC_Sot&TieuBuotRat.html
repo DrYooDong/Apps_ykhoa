@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tiếp cận chẩn đoán và xử trí bệnh nhân Sốt kèm Tiểu buốt hoặc Tiểu rắt">
+  <title>Sốt & Tiểu buốt/Tiểu rắt – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core (5 levels up) -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+
+  <!-- CSS Layout tiếp cận triệu chứng -->
+  <link rel="stylesheet" href="../../../../../css/components/approach-symptom.css">
+</head>
+
+<body>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="TC_Sot.html" class="nav-item active" title="Tiếp cận Sốt">
+              <span class="nav-icon">🌡️</span>
+              <span class="nav-text">Tiếp cận Sốt</span>
+            </a>
+          </li>
+        </ul>
+
+        <!-- Mục lục tự động (TOC) sẽ được JS tự động chèn vào đây -->
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="main-wrapper">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Trang chủ</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="TC_Sot.html" class="breadcrumb-link">Tiếp cận Sốt</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Sốt + Tiểu buốt/rắt</li>
+        </ol>
+      </nav>
+
+      <!-- HERO BANNER -->
+      <section class="hero-dashboard">
+        <div class="hero-intro">
+          <h1>🌡️ TIẾP CẬN SỐT KÈM TIỂU BUỐT HOẶC TIỂU RẮT</h1>
+          <p>Tổ hợp triệu chứng thường gặp của nhiễm trùng đường tiết niệu hoặc sinh dục, có nguy cơ tiến triển thành nhiễm khuẩn huyết đường niệu cần nhận diện và xử trí khẩn cấp.</p>
+        </div>
+      </section>
+
+      <!-- SYMPTOM GRID LAYOUT (BƯỚC 1 -> 7) -->
+      <div class="symptom-grid">
+
+        <!-- BƯỚC 1: 50% width (border-danger - Cấp cứu & sàng lọc nguy cơ) -->
+        <div class="symptom-step-card border-danger symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-danger">Bước 1</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-exclamation-triangle"></i> Ổn định ban đầu – Sàng lọc nguy cơ</h3>
+          <div class="step-card-body">
+            <p>Nhận diện ngay các dấu hiệu "cờ đỏ" (red flags) chỉ điểm tình trạng nguy kịch tính mạng (đặc biệt là Nhiễm khuẩn huyết đường tiết niệu - Urosepsis):</p>
+            <ul>
+              <li><strong>Huyết động không ổn định / Sốc:</strong> Tụt huyết áp (HATT &lt; 90 mmHg hoặc giảm trên 40 mmHg so với nền), nhịp tim nhanh (&gt; 90-100 lần/phút), thay đổi tư thế có nhịp tim nhanh hoặc tụt huyết áp tư thế rõ.</li>
+              <li><strong>Suy hô hấp cấp:</strong> Nhịp thở nhanh (&gt; 20-24 lần/phút).</li>
+              <li><strong>Rối loạn tri giác:</strong> Ngủ gà, lú lẫn, lơ mơ hoặc hôn mê.</li>
+              <li><strong>Mất nước nặng:</strong> Không có khả năng dung nạp nước/thuốc bằng đường uống do nôn mửa liên tục kèm dấu mất nước rõ.</li>
+              <li><strong>Cơ địa đặc biệt nguy cơ cao:</strong> Người già yếu, phụ nữ mang thai, đái tháo đường, suy giảm miễn dịch nặng hoặc đang đặt/can thiệp ống thông tiểu (catheter).</li>
+            </ul>
+            <div class="step-alert-box">
+              <i class="fas fa-ambulance"></i>
+              <span><strong>Urosepsis cấp cứu:</strong> Nếu có dấu hiệu sốc nhiễm khuẩn niệu, cần bù dịch tĩnh mạch tích cực ngay lập tức, cấy máu, cấy nước tiểu và tiêm kháng sinh phổ rộng đường tĩnh mạch trong giờ đầu tiên.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 2: 50% width -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 2</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-notes-medical"></i> Thu thập dữ kiện tập trung</h3>
+          <div class="step-card-body">
+            <p>Khai thác nhanh các thông tin lâm sàng định hướng:</p>
+            <ul>
+              <li><strong>Đặc điểm triệu chứng đường niệu:</strong>
+                <ul>
+                  <li><em>Thời gian khởi phát:</em> Cấp tính trong 1-2 ngày (thường gặp trong nhiễm trùng tiết niệu dưới) hay kéo dài &gt; 1 tuần (gợi ý nhiễm trùng tiết niệu trên).</li>
+                  <li><em>Tính chất tiểu tiện:</em> Tiểu buốt (nóng rát dọc niệu đạo khi đi tiểu), tiểu rắt (tăng tần suất đi tiểu, lượng nước tiểu mỗi lần ít), tiểu gấp, tiểu đêm, tiểu đục, tiểu máu.</li>
+                  <li><em>Triệu chứng toàn thân đi kèm:</em> Đau hông lưng/hố thắt lưng, sốt cao lạnh run/rét run, buồn nôn hoặc nôn ói.</li>
+                </ul>
+              </li>
+              <li><strong>Yếu tố nguy cơ & Tiền sử:</strong> Lịch sử quan hệ tình dục (quan hệ không an toàn, bạn tình mới gợi ý viêm niệu đạo do lậu cầu hoặc Chlamydia). Tiền sử sỏi thận, phì đại lành tính tuyến tiền liệt, trào ngược bàng quang niệu quản hoặc can thiệp dụng cụ đường niệu gần đây.</li>
+              <li><strong>Thăm khám thực thể:</strong>
+                <ul>
+                  <li><em>Sinh hiệu:</em> Đánh giá sốt, mạch, huyết áp, nhịp thở (sàng lọc tiêu chuẩn SIRS/qSOFA).</li>
+                  <li><em>Bụng & Lưng:</em> Khám ấn điểm đau trên xương mu (viêm bàng quang); gõ hông lưng hoặc làm <strong>nghiệm pháp rung thận</strong> (CVA tenderness) dương tính gợi ý viêm thận bể thận cấp.</li>
+                  <li><em>Sinh dục & Trực tràng:</em> Ở nam giới, khám trực tràng đánh giá tuyến tiền liệt (tiền liệt tuyến sưng to, mềm, đau chói gợi ý viêm tuyến tiền liệt cấp); tìm dịch tiết niệu đạo. Ở nữ giới, khám loại trừ khí hư bất thường, viêm âm đạo/cổ tử cung.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 3: 100% width (Chẩn đoán phân biệt) -->
+        <div class="symptom-step-card border-warning symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-warning">Bước 3</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-list-ul"></i> Danh sách Chẩn đoán phân biệt</h3>
+          <div class="step-card-body">
+            <p>Các nhóm nguyên nhân chính cần phân biệt trên lâm sàng:</p>
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Nhóm nguyên nhân</th>
+                    <th>Ví dụ bệnh / hội chứng</th>
+                    <th>Đặc điểm lâm sàng chính</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Nhiễm khuẩn tiết niệu trên</strong></td>
+                    <td><strong>Viêm thận bể thận cấp</strong></td>
+                    <td>Sốt cao, rét run, buồn nôn/nôn, đau hố thắt lưng/đau hông lưng, nghiệm pháp rung thận (+) rõ, có thể kèm tiểu buốt rắt.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Nhiễm khuẩn tiết niệu dưới</strong></td>
+                    <td>
+                      <strong>Viêm bàng quang cấp</strong><br>
+                      <strong>Viêm tuyến tiền liệt cấp (Nam giới)</strong>
+                    </td>
+                    <td>
+                      - Tiểu buốt, tiểu rắt, tiểu gấp, đau tức vùng trên xương mu. Thường chỉ sốt nhẹ hoặc không sốt.<br>
+                      - Sốt cao, lạnh run, tiểu buốt, tiểu khó/bí tiểu cấp, đau sâu vùng tầng sinh môn/trực tràng lan ra sau lưng; thăm trực tràng tiền liệt tuyến căng đau.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Bệnh lây truyền qua đường tình dục (STIs)</strong></td>
+                    <td>
+                      <strong>Viêm niệu đạo (do lậu, chlamydia)</strong><br>
+                      <strong>Viêm âm đạo / Cổ tử cung</strong>
+                    </td>
+                    <td>
+                      - Tiểu buốt, chảy mủ niệu đạo (mủ vàng đặc trong lậu, mủ dịch nhầy trong chlamydia), ngứa niệu đạo, tiền sử quan hệ không an toàn.<br>
+                      - Tiểu buốt ngoài, khí hư nhiều, hôi, ngứa âm hộ, đau khi giao hợp.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Nguyên nhân cơ học khác</strong></td>
+                    <td><strong>Sỏi bàng quang / Sỏi niệu quản kẹt</strong></td>
+                    <td>Đau quặn thận hoặc đau tức trên xương mu lan xuống bẹn, tiểu máu đại thể, tiểu buốt rắt ngắt quãng, chỉ sốt khi có nhiễm trùng kèm theo.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 4: 50% width (Biện luận lâm sàng) -->
+        <div class="symptom-step-card border-success symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-success">Bước 4</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-filter"></i> Biện luận lâm sàng (Clinical reasoning)</h3>
+          <div class="step-card-body">
+            <p>Phương pháp tiếp cận và phân tầng biện luận lâm sàng:</p>
+            <ul>
+              <li><strong>Ưu tiên loại trừ biến chứng nặng:</strong> Đối với bệnh nhân sốt kèm tiểu buốt rắt, ưu tiên hàng đầu là nhận diện <strong>Viêm thận bể thận cấp</strong> và biến chứng <strong>Nhiễm khuẩn huyết (Urosepsis)</strong> để bắt đầu liệu pháp kháng sinh tĩnh mạch thích hợp ngay, tránh suy thận cấp và sốc nhiễm trùng.</li>
+              <li><strong>Định hướng triệu chứng chìa khóa:</strong>
+                <ul>
+                  <li><em>Sốt cao rét run + đau hông lưng + rung thận (+):</em> Chẩn đoán xác định <em>Viêm thận bể thận cấp</em>.</li>
+                  <li><em>Sốt + tụt huyết áp + lơ mơ lú lẫn:</em> Cảnh báo biến chứng nặng <em>Sốc nhiễm khuẩn đường niệu</em>.</li>
+                  <li><em>Nam giới + sốt + đau tức vùng tầng sinh môn/trực tràng:</em> Định hướng <em>Viêm tuyến tiền liệt cấp</em> (tránh thăm trực tràng quá thô bạo do nguy cơ gây phóng thích vi khuẩn vào máu).</li>
+                  <li><em>Tiểu buốt rắt nổi bật + đau trên xương mu + không sốt cao/đau lưng:</em> Định hướng <em>Viêm bàng quang cấp</em>.</li>
+                  <li><em>Tiểu buốt + chảy dịch mủ niệu đạo rõ rệt:</em> Nghĩ đến <em>Viêm niệu đạo do lậu cầu/chlamydia</em>.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 5: 50% width (Cận lâm sàng) -->
+        <div class="symptom-step-card border-info symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-vials"></i> Chỉ định Cận lâm sàng hợp lý</h3>
+          <div class="step-card-body">
+            <p>Các thăm dò cận lâm sàng thiết yếu:</p>
+            <ul>
+              <li><strong>Tổng phân tích nước tiểu / Que thử nước tiểu (Dipstick):</strong> Xét nghiệm đầu tay nhanh chóng. Tìm bạch cầu (pyuria), Nitrite dương tính (gợi ý vi khuẩn Gram âm khử nitrate như E. coli) và hồng cầu.</li>
+              <li><strong>Cấy nước tiểu (Urine Culture):</strong> Là chỉ định <strong>bắt buộc</strong> ở nam giới, phụ nữ mang thai, bệnh nhân nghi ngờ viêm thận bể thận cấp, nhiễm khuẩn tiết niệu phức tạp hoặc urosepsis. Giúp định danh vi khuẩn và làm kháng sinh đồ.</li>
+              <li><strong>Xét nghiệm máu cơ bản:</strong> Công thức máu (BC tăng, chuyển trái), CRP, Procalcitonin. Xét nghiệm chức năng thận (Ure, Creatinin), điện giải đồ để đánh giá biến chứng suy thận cấp.</li>
+              <li><strong>Cấy máu (Blood Culture):</strong> Thực hiện trước khi dùng kháng sinh ở tất cả các bệnh nhân có sốt cần nhập viện vì viêm thận bể thận cấp hoặc nhiễm khuẩn huyết niệu.</li>
+              <li><strong>Vi sinh đặc hiệu khác:</strong> Soi tươi, cấy dịch niệu đạo/dịch cổ tử cung hoặc làm PCR tìm lậu cầu và Chlamydia.</li>
+              <li><strong>Hình ảnh học:</strong> Siêu âm hệ tiết niệu (tìm sỏi, ứ nước thận, áp xe quanh thận). CT scan ổ bụng chậu chỉ định khi sốt kéo dài &gt; 48-72 giờ điều trị kháng sinh không đỡ hoặc nghi ngờ tắc nghẽn đường tiết niệu nặng.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 5 PHỤ: 100% width (Bảng Giả thuyết chẩn đoán) -->
+        <div class="symptom-step-card border-info symptom-col-12" id="bang-gia-thuyet-tieu-buot">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bổ trợ Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-microscope"></i> Phân biệt các Giả thuyết Chẩn đoán (Diagnostic Hypotheses)</h3>
+          <div class="step-card-body">
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Chẩn đoán hướng đến</th>
+                    <th>Dịch tễ, Yếu tố nguy cơ & Triệu chứng, Dấu hiệu chính</th>
+                    <th>Xét nghiệm & Thăm dò quan trọng</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Viêm thận bể thận cấp (Pyelonephritis)</strong></td>
+                    <td>Sốt cao, lạnh run, buồn nôn hoặc nôn, đau hông lưng, ấn đau/gõ đau vùng góc sườn lưng (CVA tenderness).</td>
+                    <td>Que thử/Tổng phân tích nước tiểu, Cấy nước tiểu, Siêu âm hoặc chụp CT scan hệ niệu (nếu nghi ngờ tắc nghẽn hoặc điều trị không đỡ).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Viêm bàng quang cấp phức tạp (Complicated cystitis)</strong></td>
+                    <td>Tiểu buốt, tiểu rắt, tiểu gấp mà không có đau hông lưng hay lan ra sau lưng. Có thể có sốt nhẹ/vừa. Thường gặp trên cơ địa có bệnh lý nền/can thiệp.</td>
+                    <td>Tổng phân tích nước tiểu hoặc que thử nước tiểu, Cấy nước tiểu.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Viêm tuyến tiền liệt cấp (Acute prostatitis)</strong></td>
+                    <td>Nam giới. Tiểu buốt, tiểu rắt, tiểu khó/bí tiểu, đau tức lan ra vùng thắt lưng thấp, trực tràng hoặc tầng sinh môn. Kèm sốt cao, lạnh run, mệt mỏi.</td>
+                    <td>Thăm trực tràng khám tuyến tiền liệt nhẹ nhàng (tiền liệt tuyến sưng đau, mềm). Tổng phân tích nước tiểu, cấy nước tiểu, PCR dịch niệu đạo tìm lậu/chlamydia, U&E cơ bản.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Viêm niệu đạo do STIs (Urethritis)</strong></td>
+                    <td>Tiểu buốt, chảy dịch/mủ niệu đạo rõ rệt, đau khi giao hợp, đau tinh hoàn. Có tiền sử quan hệ tình dục không an toàn.</td>
+                    <td>Thăm khám tìm dịch tiết niệu đạo. Xét nghiệm PCR nước tiểu/dịch niệu đạo tìm lậu cầu (GC) và Chlamydia.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Nhiễm khuẩn huyết đường tiết niệu (Urosepsis)</strong></td>
+                    <td>Các triệu chứng nhiễm trùng tiểu (như viêm bàng quang, viêm thận bể thận) đi kèm với: tụt huyết áp, sốt cao hoặc hạ thân nhiệt, tri giác lơ mơ, ngủ gà, lú lẫn, và thỏa tiêu chuẩn SIRS.</td>
+                    <td>Công thức máu (WBC tăng/giảm), Tổng phân tích nước tiểu, Cấy nước tiểu, Cấy máu, đo huyết áp tư thế, đánh giá tiêu chuẩn SIRS.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 6: 50% width (Xử trí ban đầu) -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 6</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-capsules"></i> Hướng xử trí ban đầu</h3>
+          <div class="step-card-body">
+            <p>Nguyên tắc can thiệp và điều trị đặc hiệu:</p>
+            <ul>
+              <li><strong>Hồi sức ban đầu (Urosepsis):</strong> Truyền dịch tĩnh mạch đẳng trương (NaCl 0.9% hoặc Ringer lactate) tích cực để bù khối lượng tuần hoàn. Dùng vận mạch nếu huyết áp không cải thiện sau bù dịch đủ.</li>
+              <li><strong>Kháng sinh đặc hiệu (sau khi đã lấy mẫu cấy nước tiểu/máu):</strong>
+                <ul>
+                  <li><em>Viêm thận bể thận cấp nhẹ/ngoại trú:</em> Fluoroquinolones đường uống (Ciprofloxacin 500mg uống x 2 lần/ngày hoặc Levofloxacin 750mg uống x 1 lần/ngày trong 7 ngày) nếu tỷ lệ kháng E. coli tại địa phương &lt; 10%.</li>
+                  <li><em>Viêm thận bể thận nặng/nhập viện:</em> Kháng sinh tĩnh mạch rộng như Ceftriaxone 1-2g IV mỗi 24 giờ, Aminoglycoside (Gentamicin 5-7 mg/kg IV mỗi 24 giờ), hoặc Piperacillin-Tazobactam.</li>
+                  <li><em>Viêm bàng quang cấp không phức tạp:</em> Nitrofurantoin 100mg uống x 2 lần/ngày trong 5 ngày, hoặc Fosfomycin 3g uống liều duy nhất, hoặc Cephalosporin thế hệ 2, 3 uống trong 3-5 ngày.</li>
+                  <li><em>Viêm niệu đạo do STIs:</em> Ceftriaxone 250mg tiêm bắp liều duy nhất (phủ lậu cầu) phối hợp Azithromycin 1g uống liều duy nhất hoặc Doxycycline 100mg uống x 2 lần/ngày trong 7 ngày (phủ Chlamydia).</li>
+                </ul>
+              </li>
+              <li><strong>Xử trí triệu chứng:</strong> Paracetamol hạ sốt, giảm đau bụng/hông lưng. Khuyên bệnh nhân uống nhiều nước để tăng lưu lượng nước tiểu giúp tống xuất vi khuẩn. Giải quyết tắc nghẽn nếu có (đặt ống thông tiểu nếu có bí tiểu do phì đại tuyến tiền liệt).</li>
+            </ul>
+
+            <!-- Trích dẫn Bảng Kháng sinh Viêm thận bể thận cấp -->
+            <div class="image-placeholder-card">
+              <div class="image-title">
+                <span>📊</span> Sơ đồ 1: Hướng dẫn Kháng sinh điều trị Viêm thận bể thận cấp – Clinical Guidelines
+              </div>
+              <div class="image-drop-area">
+                <div class="image-drop-text">
+                  <img src="../../../../../images/TC_Sot_TieuBuotRat_Hinh1.png" alt="Antibiotic Treatments for Pyelonephritis"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <div class="fallback-placeholder" style="display: none;">
+                    <i class="fa-regular fa-image"></i>
+                    <p>Bảng Hướng dẫn Kháng sinh đang được cập nhật</p>
+                  </div>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Tóm tắt lựa chọn kháng sinh (Table 15.2):</strong><br>
+                - <strong>Fluoroquinolones / Aminoglycosides:</strong> Ciprofloxacin 500mg bd, Levofloxacin 750mg od, Gentamicin, Amikacin. (Thận trọng: độc thận và thính giác, cần theo dõi chức năng thận).<br>
+                - <strong>Beta-lactam + chất ức chế beta-lactamase:</strong> Amoxicillin-Clavulanate 1g bd, Piperacillin-Tazobactam 3.375g IV mỗi 6 giờ.<br>
+                - <strong>Cephalosporins:</strong> Cefpodoxime proxetil 200mg bd (hoặc Ceftriaxone tĩnh mạch).<br>
+                - <strong>Carbapenems:</strong> Meropenem 500-1000mg bd, Imipenem+Cilastatin 500mg tid/qid (dành cho thể nặng/đa kháng).
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 7: 50% width (Chuyển tuyến) -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 7</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-ambulance"></i> Tiêu chuẩn chuyển viện & hội chẩn</h3>
+          <div class="step-card-body">
+            <p>Chuyển tuyến hoặc hội chẩn chuyên khoa Tiết niệu/Hồi sức tích cực khi:</p>
+            <ul>
+              <li>Bệnh nhân có biểu hiện sốc nhiễm khuẩn (Urosepsis), huyết động không ổn định hoặc rối loạn tri giác.</li>
+              <li>Nghi ngờ tắc nghẽn đường tiết niệu do sỏi hoặc phì đại tuyến tiền liệt lớn gây bí tiểu/ứ mủ bể thận cần can thiệp ngoại khoa cấp cứu (dẫn lưu bể thận qua da hoặc đặt stent JJ).</li>
+              <li>Bệnh nhân nôn ói liên tục, mất nước nhiều không thể dung nạp nước và thuốc bằng đường uống.</li>
+              <li>Phụ nữ mang thai mắc viêm thận bể thận cấp (bắt buộc nhập viện dùng kháng sinh tĩnh mạch và theo dõi sát).</li>
+              <li>Lâm sàng không cải thiện, sốt dai dẳng sau 48-72 giờ điều trị bằng kháng sinh thích hợp.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- TAKE HOME MESSAGES -->
+      <section class="take-home-card">
+        <div class="take-home-title">
+          <i class="fas fa-lightbulb"></i> Thông điệp Cốt lõi (Take-home Messages)
+        </div>
+        <div class="take-home-body">
+          <ul>
+            <li><strong>Nhận diện Urosepsis sớm:</strong> Sốt cao kèm tiểu buốt rắt và tụt huyết áp hoặc lú lẫn là tình trạng urosepsis nguy hiểm, đòi hỏi phải cấy máu, cấy nước tiểu và dùng ngay kháng sinh tĩnh mạch phổ rộng trong giờ đầu tiên.</li>
+            <li><strong>Cẩn thận với nam giới:</strong> Tiểu buốt, tiểu rắt kèm sốt ở nam giới luôn được phân loại là nhiễm khuẩn tiết niệu phức tạp, bắt buộc phải cấy nước tiểu và khám tuyến tiền liệt để loại trừ viêm tuyến tiền liệt cấp.</li>
+            <li><strong>Không chỉ là viêm bàng quang:</strong> Đừng bao giờ chẩn đoán viêm bàng quang đơn thuần khi bệnh nhân có sốt cao kèm rét run và đau hông lưng; đây là dấu hiệu chỉ điểm tổn thương nhu mô thận trong viêm thận bể thận cấp.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TÀI LIỆU THAM KHẢO -->
+      <section class="references-card">
+        <div class="references-title">
+          <i class="fas fa-book"></i> Tài liệu Tham khảo
+        </div>
+        <ol class="references-list">
+          <li>Symptoms to Diagnosis: An Evidence-Based Guide, 4th Edition (S2D4ed.pdf).</li>
+          <li>Harrison's Manual of Medicine, 20th Edition.</li>
+          <li>Clinical Guidelines for Management Level 4, 5, 6 - National Hospitals.</li>
+          <li>Internal Medicine On Call.</li>
+          <li>Hướng dẫn điều trị nhiễm khuẩn đường tiết niệu - Hội Tiết niệu Thận học Việt Nam.</li>
+        </ol>
+      </section>
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+  <!-- JS Core -->
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+
+  <!-- JS Layout tiếp cận triệu chứng -->
+  <script src="../../../../../js/approach-symptom.js" defer></script>
+</body>
+
+</html>

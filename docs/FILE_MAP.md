@@ -36,6 +36,7 @@
 | `components/sidebar.css` | Styling sidebar accordion | Mọi trang có sidebar |
 | `components/footer.css` | Styling footer | Mọi trang |
 | `components/flowchart.css` | Styling lưu đồ tương tác | `pages/Tiếp cận/**` |
+| `components/approach-symptom.css` | Styling tiếp cận triệu chứng chuẩn 7 bước | `pages/Tiếp cận/2. Triệu chứng/**` |
 | `components/approach-hub.css` | Hub tiếp cận tổng hợp | `tiep-can.html` |
 | `components/approach-card.css` | Thẻ tiếp cận lâm sàng | `tiep-can.html` |
 | `components/approach-detail.css` | Chi tiết tiếp cận | `tiep-can.html` |
@@ -61,6 +62,7 @@
 |------|---------|---------|
 | `main.js` | Theme switching, sidebar toggle, keyboard shortcuts | Mọi trang |
 | `flowchart.js` | switchPane, toggleNode, R-Ratio calculator | `pages/Tiếp cận/**` |
+| `approach-symptom.js` | Tự động tạo mục lục & ScrollSpy triệu chứng | `pages/Tiếp cận/2. Triệu chứng/**` |
 | `approach-hub.js` | Search + filter lưu đồ | `tiep-can.html` |
 | `clinical-skill-tabs.js` | Tab switching kỹ năng lâm sàng | `pages/Kỹ năng/**` |
 | `pharmacology-symptoms.js` | Filter dược lý theo triệu chứng | `pages/Dược lý/Triệu chứng/**` |
@@ -79,6 +81,7 @@
 | File | Dùng để tạo |
 |------|------------|
 | `flowchart-template.html` | Trang lưu đồ tiếp cận mới |
+| `approach-symptom-template.html` | Trang tiếp cận triệu chứng mới (7 bước) |
 | `clinical-skill-template.html` | Trang kỹ năng lâm sàng mới |
 | `calculator-template.html` | Trang công cụ tính toán mới |
 | `physiology-template.html` | Bài viết sinh lý/sinh lý bệnh mới |
@@ -166,7 +169,22 @@
 |------|---------|
 | `Tiếp cận/tiep-can.html` | Hub tổng Tiếp cận |
 | `Tiếp cận/1. .../[Phân nhóm]/TC_*.html` | Lưu đồ tiếp cận cấp cứu |
-| `Tiếp cận/2. .../Than phiền .../TC_*.html` | Lưu đồ theo triệu chứng |
+| `Tiếp cận/2. Triệu chứng/Than phiền Toàn thân/Sốt/TC_Sot.html` | Hub tiếp cận Sốt |
+| `Tiếp cận/2. Triệu chứng/Than phiền Toàn thân/Sốt/TC_Sot&Daudau.html` | Tiếp cận Sốt + Đau đầu |
+| `Tiếp cận/2. Triệu chứng/Than phiền Toàn thân/Sốt/TC_Sot&DauCo.html` | Tiếp cận Sốt + Đau cơ |
+| `Tiếp cận/2. Triệu chứng/Than phiền Toàn thân/Sốt/TC_Sot&DauKhop.html` | Tiếp cận Sốt + Đau khớp |
+| `Tiếp cận/2. Triệu chứng/Than phiền Toàn thân/Sốt/TC_Sot&DauNguc.html` | Tiếp cận Sốt + Đau ngực |
+| `Tiếp cận/2. Triệu chứng/Than phiền Toàn thân/Sốt/TC_Sot&Ho.html` | Tiếp cận Sốt + Ho |
+| `Tiếp cận/2. Triệu chứng/Than phiền Toàn thân/Sốt/TC_Sot&PhatBan.html` | Tiếp cận Sốt + Phát ban |
+| `Tiếp cận/2. Triệu chứng/Than phiền Toàn thân/Sốt/TC_Sot&TieuBuotRat.html` | Tiếp cận Sốt + Tiểu buốt hoặc tiểu rắt |
+| `Tiếp cận/2. Triệu chứng/Than phiền Toàn thân/Sốt/TC_Sot&VangDa.html` | Tiếp cận Sốt + Vàng da |
+| `Tiếp cận/2. Triệu chứng/Than phiền Toàn thân/Sốt/TC_Sot&TieuChay.html` | Tiếp cận Sốt + Nôn / Tiêu chảy |
+| `Tiếp cận/2. Triệu chứng/Than phiền Toàn thân/Sốt/TC_Sot&HachTo.html` | Tiếp cận Sốt + Hạch to |
+| `Tiếp cận/2. Triệu chứng/Than phiền Toàn thân/Sốt/TC_Sot&RoiLoanTriGiac.html` | Tiếp cận Sốt + Rối loạn tri giác |
+| `Tiếp cận/2. Triệu chứng/Than phiền Toàn thân/Sốt/TC_Sot&HCNhiemSieuVi.html` | Tiếp cận Sốt + Hội chứng nhiễm siêu vi |
+| `Tiếp cận/2. Triệu chứng/Than phiền Toàn thân/Sốt/TC_Sot&HCNhiemTrung.html` | Tiếp cận Sốt + Hội chứng nhiễm trùng |
+| `Tiếp cận/2. Triệu chứng/Than phiền Toàn thân/Sốt/TC_Sot&HCSoc.html` | Tiếp cận Sốt + Hội chứng sốc |
+| `Tiếp cận/2. .../Than phiền .../TC_*.html` | Lưu đồ theo các triệu chứng khác |
 
 ---
 

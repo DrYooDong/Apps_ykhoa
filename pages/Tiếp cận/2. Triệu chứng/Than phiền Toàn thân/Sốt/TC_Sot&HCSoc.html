@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tiếp cận chẩn đoán và xử trí bệnh nhân Sốt kèm Hội chứng sốc">
+  <title>Sốt & Hội chứng sốc – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core (5 levels up) -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+
+  <!-- CSS Layout tiếp cận triệu chứng -->
+  <link rel="stylesheet" href="../../../../../css/components/approach-symptom.css">
+</head>
+
+<body>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="TC_Sot.html" class="nav-item active" title="Tiếp cận Sốt">
+              <span class="nav-icon">🌡️</span>
+              <span class="nav-text">Tiếp cận Sốt</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="main-wrapper">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Trang chủ</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="TC_Sot.html" class="breadcrumb-link">Tiếp cận Sốt</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Sốt + Hội chứng sốc</li>
+        </ol>
+      </nav>
+
+      <!-- HERO BANNER -->
+      <section class="hero-dashboard">
+        <div class="hero-intro">
+          <h1>🌡️ TIẾP CẬN HỘI CHỨNG SỐC KÈM SỐT</h1>
+          <p>Xử lý cấp cứu suy sụp tuần hoàn cấp, phân biệt sốc nhiễm khuẩn (sốc giãn mạch) và sốc sốt xuất huyết Dengue (sốc giảm thể tích do thoát dịch), thực hiện hồi sức dịch tĩnh mạch trong thời gian vàng.</p>
+        </div>
+      </section>
+
+      <!-- SYMPTOM GRID LAYOUT (BƯỚC 1 -> 7) -->
+      <div class="symptom-grid">
+
+        <!-- BƯỚC 1: 50% width (border-danger - Cấp cứu & sàng lọc nguy cơ) -->
+        <div class="symptom-step-card border-danger symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-danger">Bước 1</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-exclamation-triangle"></i> Ổn định ban đầu – Sàng lọc nguy cơ</h3>
+          <div class="step-card-body">
+            <p>Nhận diện ngay tình trạng suy tuần hoàn đe dọa tính mạng tính bằng phút:</p>
+            <ul>
+              <li><strong>Huyết động nguy kịch:</strong> Huyết áp tâm thu &lt; 90 mmHg (ở người lớn), hoặc huyết áp kẹt (hiệu số HA tâm thu - HA tâm trương &le; 20 mmHg), hoặc không đo được huyết áp.</li>
+              <li><strong>Tụt huyết áp tư thế:</strong> Huyết áp giảm &gt; 20 mmHg khi chuyển tư thế từ nằm sang ngồi/đứng.</li>
+              <li><strong>Rối loạn tưới máu mô:</strong> Đầu chi lạnh ẩm, vã mồ hôi, da nổi vân tím, CRT &gt; 3 giây.
+                <ul>
+                  <li><em>Lưu ý:</em> Trong sốc nhiễm khuẩn giai đoạn sớm, bệnh nhân có thể biểu hiện <strong>sốc ấm</strong> (chi ấm, mạch nảy mạnh nhanh) do tình trạng giãn mạch hệ thống.</li>
+                </ul>
+              </li>
+              <li><strong>Mạch:</strong> Mạch nhanh, nhỏ, khó bắt (&gt; 120 lần/phút) hoặc nhịp chậm/không đều ở giai đoạn muộn.</li>
+              <li><strong>Suy cơ quan đích:</strong> Rối loạn tri giác (lơ mơ, vật vã, kích thích, lú lẫn), thiểu niệu hoặc vô niệu.</li>
+            </ul>
+            <div class="step-alert-box">
+              <i class="fas fa-hourglass-half"></i>
+              <span><strong>Thời gian vàng:</strong> Hồi sức dịch tinh thể đẳng trương nhanh là biện pháp sống còn hàng đầu cho sốc nhiễm khuẩn và sốc Dengue. Cần thiết lập đường truyền tĩnh mạch lớn ngay lập tức.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 2: 50% width -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 2</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-notes-medical"></i> Thu thập dữ kiện tập trung</h3>
+          <div class="step-card-body">
+            <p>Khai thác các thông tin lâm sàng và dịch tễ định hướng chẩn đoán:</p>
+            <ul>
+              <li><strong>Bệnh sử & Diễn tiến:</strong> Xác định thời điểm xuất hiện các biểu hiện mệt lả, lạnh chi. Hỏi về tính chất sốt (sốt cao liên tục nhiều ngày gợi ý Dengue; sốt kèm lạnh run gợi ý nhiễm trùng huyết). Tìm ổ nhiễm trùng nguyên phát (ho, tiểu buốt, đau bụng, tiêu chảy).</li>
+              <li><strong>Yếu tố dịch tễ cực kỳ quan trọng:</strong> Sống hoặc di chuyển từ vùng dịch tễ Sốt xuất huyết Dengue, dịch Não mô cầu, Tả hoặc Sốt rét ác tính.</li>
+              <li><strong>Tiền sử bệnh lý:</strong> Cơ địa suy giảm miễn dịch, đái tháo đường, suy thận, xơ gan, đặt catheter mạch máu hoặc Foley dài ngày.</li>
+              <li><strong>Thăm khám thực thể (ABCDE):</strong>
+                <ul>
+                  <li><em>Khám da:</em> Ban xuất huyết hoại tử hình sao (Não mô cầu), chấm xuất huyết dưới da tự nhiên hoặc sau nghiệm pháp dây thắt (Dengue).</li>
+                  <li><em>Khám bụng:</em> Sờ gan to, đau tức vùng gan (dấu hiệu cảnh báo thoát dịch nặng của Dengue), phản ứng thành bụng (viêm phúc mạc).</li>
+                  <li><em>Khám tim mạch:</em> Tĩnh mạch cổ nổi, tiếng ngựa phi T3, phổi có ran ẩm (nghĩ đến sốc tim/viêm cơ tim hoặc quá tải dịch).</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 3: 100% width (Chẩn đoán phân biệt) -->
+        <div class="symptom-step-card border-warning symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-warning">Bước 3</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-list-ul"></i> Danh sách Chẩn đoán phân biệt</h3>
+          <div class="step-card-body">
+            <p>Phân loại các thể sốc thường gặp đi kèm sốt:</p>
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Loại sốc</th>
+                    <th>Chẩn đoán lâm sàng</th>
+                    <th>Yếu tố định hướng chính</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Sốc phân bố (Distributive shock)</strong></td>
+                    <td><strong>Sốc nhiễm khuẩn (Septic shock)</strong></td>
+                    <td>Sốt cao, rét run, mạch nảy mạnh/chi ấm ở giai đoạn sớm, lú lẫn, thở nhanh. Có ổ nhiễm trùng rõ ràng (phổi, tiết niệu, ổ bụng). Huyết áp tụt và lactate &gt; 2 mmol/L trơ với bù dịch.</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="2"><strong>Sốc giảm thể tích (Hypovolemic shock)</strong></td>
+                    <td><strong>Sốc Sốt xuất huyết Dengue nặng</strong></td>
+                    <td>Sống/đi từ vùng dịch Dengue. Sốt cao liên tục 3-5 ngày, đột ngột hạ sốt kèm vật vã, chi lạnh ẩm, huyết áp kẹt, gan to, chấm xuất huyết, tiểu ít. Hematocrit tăng vọt, tiểu cầu giảm mạnh.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sốc do tiêu chảy cấp mất nước (Tả)</strong></td>
+                    <td>Sốt nhẹ đến trung bình, nôn ói nhiều kèm tiêu chảy phân nước đục ồ ạt lượng lớn, mắt trũng sâu, nếp véo da mất rất chậm.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sốc tim / Sốc tắc nghẽn (Cardiogenic shock)</strong></td>
+                    <td><strong>Viêm cơ tim cấp / Chèn ép tim do mủ</strong></td>
+                    <td>Sốt, khó thở dữ dội, tĩnh mạch cổ nổi, nhịp tim nhanh ngựa phi, gan to đau, phổi nghe nhiều ran ẩm dâng lên. Siêu âm tim thấy EF giảm nặng hoặc tràn dịch màng ngoài tim chèn ép tim.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 4: 50% width (Biện luận lâm sàng) -->
+        <div class="symptom-step-card border-success symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-success">Bước 4</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-filter"></i> Biện luận lâm sàng (Clinical reasoning)</h3>
+          <div class="step-card-body">
+            <p>Biện luận phân biệt các nguyên nhân sốc thường gặp:</p>
+            <ul>
+              <li><strong>Độ ưu tiên hàng đầu:</strong> Đặt <strong>Sốc nhiễm khuẩn</strong> và <strong>Sốc Sốt xuất huyết Dengue</strong> lên hàng đầu. Đây là hai nguyên nhân thường gặp nhất của sốc kèm sốt và có phác đồ bù dịch hoàn toàn khác nhau.</li>
+              <li><strong>Lập luận ủng hộ:</strong>
+                <ul>
+                  <li><em>Sốc ấm (Chi ấm, CRT nhanh, mạch nảy mạnh) + Sốt cao + Ớn lạnh:</em> Ủng hộ mạnh mẽ <strong>Sốc nhiễm khuẩn</strong>.</li>
+                  <li><em>Hạ sốt đột ngột vào ngày thứ 3-6 của bệnh + Chi lạnh ẩm + HA kẹt + Hct tăng vọt:</em> Điển hình cho <strong>Sốc sốt xuất huyết Dengue</strong> do thoát huyết tương.</li>
+                  <li><em>Sốt + Gan to + Tĩnh mạch cổ nổi + Ran ẩm phổi:</em> Nghi ngờ <strong>Sốc tim</strong> do viêm cơ tim cấp. Bắt buộc hạn chế truyền dịch nhanh để tránh phù phổi cấp.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 5: 50% width (Cận lâm sàng) -->
+        <div class="symptom-step-card border-info symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-vials"></i> Chỉ định Cận lâm sàng hợp lý</h3>
+          <div class="step-card-body">
+            <p>Các xét nghiệm đánh giá huyết động và tìm căn nguyên gây sốc:</p>
+            <ul>
+              <li><strong>Lactate máu:</strong> Chỉ số bắt buộc để chẩn đoán giảm tưới máu mô trong sốc nhiễm trùng. Lactate &gt; 2 mmol/L là tiêu chuẩn xác định mức độ nặng.</li>
+              <li><strong>Huyết học & Sinh hóa:</strong> Công thức máu (Hematocrit tăng cao biểu thị cô đặc máu trong Dengue; HCT giảm biểu thị mất máu âm thầm; bạch cầu tăng/giảm mạnh; tiểu cầu giảm sâu). Marker viêm: CRP và Procalcitonin.</li>
+              <li><strong>Chức năng đa cơ quan:</strong> Ure, Creatinin (suy thận cấp), AST, ALT (suy gan), Khí máu động mạch (toan chuyển hóa), Đông máu toàn bộ.</li>
+              <li><strong>Vi sinh học:</strong> <strong>Cấy máu bắt buộc</strong> trước liều kháng sinh đầu tiên ở bệnh nhân nghi sốc nhiễm khuẩn. Test nhanh NS1/IgM Dengue, phết máu ngoại vi tìm ký sinh trùng sốt rét.</li>
+              <li><strong>Chẩn đoán hình ảnh:</strong> Siêu âm tim tại giường (Focus) đánh giá chức năng thất trái và dịch màng tim. Siêu âm ổ bụng tìm dịch tự do ổ bụng. X-quang phổi.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 5 PHỤ: 100% width (Bổ trợ bảng phân biệt sốc của WHO ở trẻ em) -->
+        <div class="symptom-step-card border-info symptom-col-12" id="phan-biet-soc-who">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bổ trợ Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-child"></i> Chẩn đoán phân biệt trẻ em nhập viện trong bệnh cảnh Sốc kèm Sốt (WHO Guidelines)</h3>
+          <div class="step-card-body">
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Chẩn đoán / Nguyên nhân</th>
+                    <th>Đặc điểm ủng hộ trên lâm sàng</th>
+                    <th>Yếu tố cận lâm sàng & Tiền sử đặc hiệu</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Sốc giảm thể tích do mất máu (Bleeding shock)</strong></td>
+                    <td>Tiền sử chấn thương rõ rệt, hoặc đang có vị trí xuất huyết hoạt động ngoài da/đường tiêu hóa.</td>
+                    <td>Hematocrit giảm nhanh. Không có dấu hiệu cô đặc máu.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sốc sốt xuất huyết Dengue (Dengue shock)</strong></td>
+                    <td>Đang có mùa dịch Dengue lưu hành. Tiền sử sốt cao liên tục 3-5 ngày. Có chấm xuất huyết da/niêm mạc, gan to đau, chi lạnh ẩm, mạch nhanh nhỏ.</td>
+                    <td>Hematocrit tăng cao so với trị số nền (cô đặc máu), số lượng tiểu cầu giảm sâu &lt; 100.000/mcL.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sốc tim (Cardiac shock)</strong></td>
+                    <td>Tiền sử bệnh lý tim bẩm sinh hoặc nghe có tiếng thổi ở tim. Tĩnh mạch cổ nổi rõ, gan to sờ thấy dưới bờ sườn, phổi nghe nhiều ran ẩm.</td>
+                    <td>X-quang ngực thấy bóng tim to, ứ huyết phổi. Siêu âm tim có suy giảm chức năng co bóp cơ tim.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sốc nhiễm khuẩn (Septic shock)</strong></td>
+                    <td>Tiền sử có bệnh lý nhiễm trùng cấp tính (viêm phổi, viêm ruột). Trẻ biểu hiện nhiễm trùng nhiễm độc nặng. Da có thể ấm đỏ ở giai đoạn đầu hoặc lạnh tím giai đoạn sau.</td>
+                    <td>Bạch cầu tăng hoặc giảm mạnh, chỉ số CRP/Procalcitonin tăng cao. Có thể có ban xuất huyết hoại tử hình sao (não mô cầu).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sốc do tiêu chảy mất nước nặng</strong></td>
+                    <td>Tiền sử tiêu chảy phân lỏng liên tục, nôn ói nhiều, tiểu ít hoặc vô niệu. Đang có dịch tả lưu hành.</td>
+                    <td>Xét nghiệm có rối loạn điện giải và toan chuyển hóa nặng, Hct tăng thứ phát do mất nước.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 6: 50% width (Xử trí ban đầu) -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 6</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-capsules"></i> Hướng xử trí ban đầu</h3>
+          <div class="step-card-body">
+            <p>Hồi sức tuần hoàn cấp cứu khẩn cấp:</p>
+            <ul>
+              <li><strong>Hỗ trợ hô hấp:</strong> Thở oxy lưu lượng cao qua mask. Chuẩn bị đặt nội khí quản nếu GCS &le; 8 điểm hoặc suy hô hấp trơ.</li>
+              <li><strong>Hồi sức dịch truyền tĩnh mạch (Can thiệp ưu tiên số một):</strong>
+                <ul>
+                  <li>Đặt ngay 2 đường truyền tĩnh mạch ngoại vi lớn (kim 16G-18G).</li>
+                  <li>Bơm truyền dịch nhanh (Bolus) dung dịch tinh thể đẳng trương (Ringer Lactate hoặc NaCl 0.9%) liều <strong>20 ml/kg trong vòng 15-30 phút</strong>. Đánh giá lại mạch, huyết áp, CRT sau mỗi liều dịch truyền.</li>
+                </ul>
+              </li>
+              <li><strong>Thuốc vận mạch (Sốc giãn mạch/Sốc nhiễm khuẩn):</strong> Nếu huyết áp động mạch trung bình (MAP) vẫn &lt; 65 mmHg sau khi đã bù đủ dịch, bắt đầu truyền thuốc vận mạch (Noradrenalin truyền tĩnh mạch qua catheter lớn hoặc catheter tĩnh mạch trung tâm).</li>
+              <li><strong>Liệu pháp kháng sinh sớm (Sốc nhiễm khuẩn):</strong> Cho kháng sinh tĩnh mạch phổ rộng trong vòng 1 giờ đầu tiên (sau khi đã lấy máu cấy).</li>
+              <li><strong>Kiểm soát biến chứng:</strong> Điều trị toan chuyển hóa nặng, hạ đường huyết, truyền hồng cầu lắng nếu HCT &lt; 30% kèm chảy máu hoạt động.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 7: 50% width (Chuyển tuyến) -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 7</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-ambulance"></i> Tiêu chuẩn chuyển viện & hội chẩn</h3>
+          <div class="step-card-body">
+            <p>Quy định chuyển viện hồi sức tích cực:</p>
+            <ul>
+              <li>Tất cả bệnh nhân sốt kèm hội chứng sốc bắt buộc phải được theo dõi sát tại đơn vị Hồi sức tích cực (ICU).</li>
+              <li>Sốc trơ với bù dịch ban đầu (sốc thất bại truyền dịch), cần hội chẩn khẩn tuyến trên để chỉ định dung dịch cao phân tử hoặc phối hợp nhiều loại thuốc vận mạch.</li>
+              <li>Sốc đi kèm suy hô hấp nặng cần thở máy hoặc suy đa tạng tiến triển cần lọc máu liên tục.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- VISUAL ALGORITHMS CARDS -->
+      <section class="symptom-grid" style="margin-top: 2rem;">
+        
+        <!-- Lưu đồ 1: Phác đồ sốc Dengue nặng -->
+        <div class="symptom-step-card border-primary symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag">Sơ đồ 1</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-project-diagram"></i> Phác đồ xử trí khẩn cấp Sốc sốt xuất huyết Dengue nặng (Bộ Y tế 2020)</h3>
+          <div class="step-card-body">
+            <div class="image-placeholder-card">
+              <div class="image-title">
+                <span>📊</span> Lưu đồ điều trị sốc sốt xuất huyết Dengue nặng ở trẻ em – Hướng dẫn Bộ Y tế
+              </div>
+              <div class="image-drop-area">
+                <div class="image-drop-text">
+                  <img src="../../../../../images/TC_Sot_Soc_Hinh1.png" alt="Dengue Severe Shock Fluid Protocol"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <div class="fallback-placeholder" style="display: none;">
+                    <i class="fa-regular fa-image"></i>
+                    <p>Sơ đồ phác đồ điều trị sốc Dengue nặng đang được cập nhật</p>
+                  </div>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Tóm tắt phác đồ điều trị sốc Dengue nặng (Severe Dengue Shock Protocol):</strong><br>
+                - Để người bệnh nằm đầu thấp. Thở oxy hỗ trợ tuần hoàn.<br>
+                - <strong>Truyền dịch nhanh khẩn cấp:</strong> Dùng bơm tiêm to bơm trực tiếp vào tĩnh mạch dung dịch tinh thể (Ringer lactate hoặc NaCl 0,9%) với tốc độ <strong>20 ml/kg cân nặng trong vòng 15 phút</strong>.<br>
+                - Đánh giá lại mạch, huyết áp, CRT và lượng nước tiểu ngay sau 15 phút.<br>
+                - <strong>Nếu thất bại bù dịch (còn sốc):</strong> Hội chẩn khoa, bệnh viện, hoặc hội chẩn tuyến trên khẩn cấp để chuyển sang dung dịch cao phân tử (dextran hoặc starch) hoặc sử dụng vận mạch.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- TAKE HOME MESSAGES -->
+      <section class="take-home-card">
+        <div class="take-home-title">
+          <i class="fas fa-lightbulb"></i> Thông điệp Cốt lõi (Take-home Messages)
+        </div>
+        <div class="take-home-body">
+          <ul>
+            <li><strong>Bù dịch tinh thể là cốt lõi:</strong> Hồi sức dịch nhanh bằng dung dịch tinh thể đẳng trương là bước can thiệp sống còn đầu tiên cho cả sốc nhiễm khuẩn và sốc Dengue trong thời gian vàng.</li>
+            <li><strong>Không đợi tụt huyết áp mới hồi sức:</strong> Bệnh nhân có thể đã bị sốc (sốc ấm) khi tay chân vẫn ấm và mạch nảy nhanh. Phân tầng điều trị dựa trên tri giác, nước tiểu và lactate sớm.</li>
+            <li><strong>Kháng sinh khẩn cấp trong sốc nhiễm trùng:</strong> Cấy máu trước kháng sinh là nguyên tắc, nhưng tuyệt đối không trì hoãn tiêm kháng sinh tĩnh mạch phổ rộng quá 1 giờ ở bệnh nhân đang sốc.</li>
+            <li><strong>Dấu hiệu cảnh báo sốc Dengue:</strong> Nếu bệnh nhân sốt cao liên tục hạ sốt đột ngột vào ngày 3-6 kèm theo vật vã, đau gan, HA kẹt &rarr; Chỉ chỉ định truyền dịch tinh thể 20ml/kg trong 15 phút ngay lập tức.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TÀI LIỆU THAM KHẢO -->
+      <section class="references-card">
+        <div class="references-title">
+          <i class="fas fa-book"></i> Tài liệu Tham khảo
+        </div>
+        <ol class="references-list">
+          <li>Hướng dẫn chẩn đoán và điều trị sốt xuất huyết Dengue - Bộ Y tế 2020.</li>
+          <li>WHO Guidelines: Pocket Book of Hospital Care for Children.</li>
+          <li>Critical Care Medicine: An Algorithmic Approach, 2023 Edition.</li>
+          <li>Algorithms for Emergency Medicine 2023.</li>
+          <li>Harrison's Manual of Medicine, 20th Edition.</li>
+        </ol>
+      </section>
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+  <!-- JS Core -->
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+
+  <!-- JS Layout tiếp cận triệu chứng -->
+  <script src="../../../../../js/approach-symptom.js" defer></script>
+</body>
+
+</html>

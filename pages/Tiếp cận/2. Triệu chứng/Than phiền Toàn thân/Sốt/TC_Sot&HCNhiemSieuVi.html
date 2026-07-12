@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tiếp cận chẩn đoán và xử trí bệnh nhân Sốt kèm Hội chứng nhiễm siêu vi">
+  <title>Sốt & Hội chứng nhiễm siêu vi – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core (5 levels up) -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+
+  <!-- CSS Layout tiếp cận triệu chứng -->
+  <link rel="stylesheet" href="../../../../../css/components/approach-symptom.css">
+</head>
+
+<body>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="TC_Sot.html" class="nav-item active" title="Tiếp cận Sốt">
+              <span class="nav-icon">🌡️</span>
+              <span class="nav-text">Tiếp cận Sốt</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="main-wrapper">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Trang chủ</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="TC_Sot.html" class="breadcrumb-link">Tiếp cận Sốt</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Sốt + Hội chứng nhiễm siêu vi</li>
+        </ol>
+      </nav>
+
+      <!-- HERO BANNER -->
+      <section class="hero-dashboard">
+        <div class="hero-intro">
+          <h1>🌡️ TIẾP CẬN HỘI CHỨNG NHIỄM SIÊU VI</h1>
+          <p>Định hướng chẩn đoán các biểu hiện toàn thân không đặc hiệu do virus, sàng lọc các cờ đỏ nguy hiểm (sốc Dengue, suy hô hấp do cúm, viêm não) và tối ưu hóa điều trị hỗ trợ.</p>
+        </div>
+      </section>
+
+      <!-- SYMPTOM GRID LAYOUT (BƯỚC 1 -> 7) -->
+      <div class="symptom-grid">
+
+        <!-- BƯỚC 1: 50% width (border-danger - Cấp cứu & sàng lọc nguy cơ) -->
+        <div class="symptom-step-card border-danger symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-danger">Bước 1</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-exclamation-triangle"></i> Ổn định ban đầu – Sàng lọc nguy cơ</h3>
+          <div class="step-card-body">
+            <p>Nhận diện ngay các dấu hiệu nguy kịch đe dọa tính mạng (red flags) ở bệnh nhân có hội chứng nhiễm siêu vi:</p>
+            <ul>
+              <li><strong>Tình trạng sốc, tụt huyết áp:</strong> Mạch nhanh nhỏ, huyết áp kẹt (hiệu số HA &le; 20 mmHg), chi lạnh, ẩm, thời gian đổ đầy mao mạch kéo dài &gt; 3 giây (cảnh báo sốc Sốt xuất huyết Dengue nặng hoặc sốc nhiễm khuẩn phối hợp).</li>
+              <li><strong>Suy hô hấp cấp tính:</strong> Thở nhanh nông, khó thở, co kéo cơ hô hấp phụ, tím tái đầu chi, SpO2 giảm &lt; 92-94% (gợi ý Cúm ác tính, SARS-CoV-2 tiến triển viêm phổi ARDS).</li>
+              <li><strong>Rối loạn tri giác, co giật:</strong> Lơ mơ, ngủ li bì, vật vã, co giật khu trú hoặc toàn thể, hôn mê (gợi ý Viêm não - Màng não do virus, sốt xuất huyết thể não).</li>
+              <li><strong>Xuất huyết nặng:</strong> Nôn ra máu, đi tiêu phân đen, xuất huyết niêm mạc ồ ạt tiến triển.</li>
+              <li><strong>Cơ địa đặc biệt:</strong> Phụ nữ mang thai, người già có bệnh nền, trẻ nhỏ có nôn nhiều liên tục, đau bụng vùng gan dữ dội.</li>
+            </ul>
+            <div class="step-alert-box">
+              <i class="fas fa-exclamation-circle"></i>
+              <span><strong>Tránh lạm dụng Aspirin & NSAIDs:</strong> Tuyệt đối không dùng Aspirin hay các thuốc kháng viêm phi steroid để hạ sốt cho bệnh nhân nghi ngờ nhiễm virus khi chưa loại trừ hoàn toàn Sốt xuất huyết Dengue do nguy cơ xuất huyết ồ ạt khó kiểm soát.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 2: 50% width -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 2</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-notes-medical"></i> Thu thập dữ kiện tập trung</h3>
+          <div class="step-card-body">
+            <p>Khai thác thông tin có tính định hướng dịch tễ và lâm sàng:</p>
+            <ul>
+              <li><strong>Đặc điểm lâm sàng:</strong>
+                <ul>
+                  <li><em>Đặc điểm sốt:</em> Khởi phát đột ngột sốt cao liên tục hay sốt nhẹ từ từ.</li>
+                  <li><em>Triệu chứng toàn thân:</em> Đau nhức hố mắt, đau mỏi cơ xương khớp nhiều (đặc trưng của Dengue, Cúm).</li>
+                  <li><em>Viêm long hô hấp & mắt:</em> Ho, sổ mũi, hắt hơi, đau họng, viêm kết mạc đỏ mắt (Sởi, Cúm, Adenovirus).</li>
+                </ul>
+              </li>
+              <li><strong>Yếu tố dịch tễ & Nguy cơ:</strong>
+                <ul>
+                  <li>Mùa dịch lưu hành địa phương (Sốt xuất huyết Dengue, dịch Cúm, Tay chân miệng). Tiếp xúc nguồn lây nhiễm có triệu chứng tương tự.</li>
+                  <li>Tiền sử tiêm ngừa (Sởi, Cúm, Thủy đậu, quai bị, rubella).</li>
+                  <li>Cơ địa suy giảm miễn dịch, phụ nữ mang thai, trẻ nhỏ.</li>
+                </ul>
+              </li>
+              <li><strong>Thăm khám thực thể:</strong>
+                <ul>
+                  <li><em>Đánh giá huyết động:</em> Đo huyết áp tư thế, đánh giá mạch, kiểm tra CRT, đo nhiệt độ trung tâm. Chú ý hiện tượng <strong>mạch nhiệt phân ly</strong> (nhiệt độ tăng nhưng mạch không tăng tương xứng) trong thương hàn hoặc nhiễm virus đường ruột.</li>
+                  <li><em>Khám da niêm:</em> Tìm nốt ban chẩn, ban bọng nước ở lòng bàn tay, bàn chân, mông (nguy cơ Tay chân miệng); ban dát sẩn mịn dạng sởi xuất hiện tuần tự đầu - mặt - cổ xuống thân chi. Làm nghiệm pháp dây thắt (Lacet test).</li>
+                  <li><em>Khám tai mũi họng:</em> Tìm hạt Koplik ở niêm mạc má (chỉ điểm sớm của Sởi trước phát ban), khám amidan có giả mạc trắng (EBV).</li>
+                  <li><em>Khám bụng:</em> Sờ tìm điểm đau dưới sườn phải, gan to (Dengue).</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 3: 100% width (Chẩn đoán phân biệt) -->
+        <div class="symptom-step-card border-warning symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-warning">Bước 3</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-list-ul"></i> Danh sách Chẩn đoán phân biệt</h3>
+          <div class="step-card-body">
+            <p>Các hội chứng nhiễm virus thường gặp trên lâm sàng:</p>
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Hội chứng / Tác nhân</th>
+                    <th>Yếu tố dịch tễ & Cơ địa nguy cơ</th>
+                    <th>Đặc điểm lâm sàng điển hình</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Sốt xuất huyết Dengue</strong></td>
+                    <td>Vùng lưu hành dịch muỗi truyền. Thường bùng phát mùa mưa.</td>
+                    <td>Sốt cao đột ngột liên tục 2-7 ngày, nhức đầu, đau hố mắt, đau cơ khớp dữ dội. Xuất huyết da/niêm mạc, làm dây thắt dương tính. Máu cô đặc, tiểu cầu giảm từ ngày thứ 3.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Cúm mùa (Influenza A/B)</strong></td>
+                    <td>Mùa đông xuân, lây lan mạnh qua đường hô hấp trong cộng đồng. Nguy cơ ở người già, phụ nữ mang thai.</td>
+                    <td>Sốt cao rét run đột ngột, đau nhức mỏi cơ toàn thân dữ dội, đau họng, ho khan, chảy nước mũi. Khám phổi nghe ran rít/ran ngáy nhẹ hoặc bình thường.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Bệnh Sởi (Measles)</strong></td>
+                    <td>Trẻ em hoặc người trẻ chưa tiêm phòng vắc-xin đầy đủ.</td>
+                    <td>Sốt cao dao động kèm hội chứng 3C: ho nhiều (Cough), viêm mũi long (Coryza), đỏ mắt chảy nước mắt (Conjunctivitis). Phát ban tuần tự đầu-mặt-thân-chi. Có <strong>hạt Koplik</strong> đặc trưng ở miệng.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Bệnh Tay chân miệng (EV71 / Coxsackie)</strong></td>
+                    <td>Trẻ em &lt; 5 tuổi, lây truyền đường tiêu hóa qua nước bọt/phân.</td>
+                    <td>Sốt nhẹ đến cao, loét miệng gây đau đau kém ăn, phỏng nước nhỏ ở lòng bàn tay, lòng bàn chân, đầu gối, mông. Có nguy cơ biến chứng viêm não, suy tim cấp do chủng EV71.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tăng bạch cầu đơn nhân (EBV / CMV)</strong></td>
+                    <td>Tuổi thanh thiếu niên, lây truyền qua tiếp xúc nước bọt ("kissing disease").</td>
+                    <td>Sốt kéo dài, đau họng nặng kèm giả mạc trắng dai dính ở amidan, hạch cổ to nhiều, lách to. Xét nghiệm có lympho bào không điển hình tăng cao.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Nhiễm HIV cấp tính</strong></td>
+                    <td>Có tiền sử quan hệ không an toàn, tiêm chích ma túy, phơi nhiễm máu.</td>
+                    <td>Sốt, đau họng, nổi hạch toàn thân, ban đỏ dạng sởi nhẹ, mệt mỏi mỏi cơ. Triệu chứng tự giới hạn giống nhiễm virus thông thường.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 4: 50% width (Biện luận lâm sàng) -->
+        <div class="symptom-step-card border-success symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-success">Bước 4</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-filter"></i> Biện luận lâm sàng (Clinical reasoning)</h3>
+          <div class="step-card-body">
+            <p>Lý luận phân tầng ưu tiên chẩn đoán:</p>
+            <ul>
+              <li><strong>Độ ưu tiên loại trừ:</strong> Phải loại trừ các chẩn đoán đe dọa tính mạng nhanh chóng: Sốc/Thoát dịch trong Sốt xuất huyết Dengue nặng, Suy hô hấp do Cúm biến chứng, Viêm não do EV71 (Tay chân miệng) và nhiễm khuẩn huyết phối hợp.</li>
+              <li><strong>Điểm định hướng lâm sàng:</strong>
+                <ul>
+                  <li><em>Đau nhức cơ khớp cực kỳ dữ dội ("sốt bẻ xương") + Da xung huyết + Nhức hai hố mắt + Không ho sổ mũi:</em> Định hướng mạnh mẽ <strong>Sốt xuất huyết Dengue</strong>.</li>
+                  <li><em>Khởi phát rầm rộ ho, sổ mũi, đỏ mắt kèm hạt Koplik và ban mọc từ đầu xuống chân:</em> Chỉ điểm lâm sàng của <strong>Bệnh Sởi</strong>.</li>
+                  <li><em>Trẻ em sốt cao kèm loét miệng và phát ban dạng bọng nước lòng bàn tay/chân:</em> Nghĩ ngay đến <strong>Tay chân miệng</strong>. Chú ý các dấu hiệu giật mình chới với, đi loạng choạng (biến chứng thần kinh nặng).</li>
+                  <li><em>Sốt cao + Viêm amidan giả mạc + Hạch cổ to sưng đau + Lách to:</em> Ủng hộ <strong>EBV / Tăng bạch cầu đơn nhân</strong>.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 5: 50% width (Cận lâm sàng) -->
+        <div class="symptom-step-card border-info symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-vials"></i> Chỉ định Cận lâm sàng hợp lý</h3>
+          <div class="step-card-body">
+            <p>Quy trình chỉ định cận lâm sàng tối ưu:</p>
+            <ul>
+              <li><strong>Huyết học & Sinh hóa:</strong> Công thức máu (BC thường giảm, Lympho tăng. Trong Dengue: HCT tăng chỉ điểm cô đặc máu thoát huyết tương, tiểu cầu giảm). Đo men gan AST/ALT (Dengue nặng men gan có thể tăng &ge; 400-1000 U/L), CRP (thường bình thường, nếu tăng cao nghĩ đến bội nhiễm vi khuẩn).</li>
+              <li><strong>Vi sinh xác định căn nguyên:</strong>
+                <ul>
+                  <li><em>Nghi Dengue:</em> Test nhanh NS1 Ag (ngày 1-5), IgM/IgG (từ ngày 5).</li>
+                  <li><em>Nghi Cúm:</em> Test nhanh kháng nguyên Influenza A/B từ dịch tỵ hầu.</li>
+                  <li><em>Nghi Sởi / Rubella:</em> IgM huyết thanh.</li>
+                  <li><em>Nghi Tay chân miệng nặng:</em> RT-PCR EV71 từ dịch phết họng/dịch phỏng nước.</li>
+                  <li><em>Nghi EBV:</em> Monospot test, tìm lympho không điển hình trên phết máu ngoại vi.</li>
+                </ul>
+              </li>
+              <li><strong>Hình ảnh học:</strong> Siêu âm ổ bụng (tìm gan to, dịch ổ bụng trong thoát dịch Dengue), X-quang phổi (phát hiện tổn thương phổi kẽ do virus hoặc viêm phổi bội nhiễm).</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 5 PHỤ: 100% width (Bổ trợ bảng so sánh triệu chứng) -->
+        <div class="symptom-step-card border-info symptom-col-12" id="so-sanh-cum-cap">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bổ trợ Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-microscope"></i> So sánh đặc điểm lâm sàng: Cúm vs Viêm phổi (CAP) vs Viêm phế quản cấp</h3>
+          <div class="step-card-body">
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Bệnh lý</th>
+                    <th>Sốt cao đột ngột</th>
+                    <th>Triệu chứng thực thể phổi</th>
+                    <th>Khó thở / Suy hô hấp</th>
+                    <th>Thời gian lưu hành dịch</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Cúm mùa (Influenza)</strong></td>
+                    <td><span class="text-danger">Rất phổ biến</span></td>
+                    <td>Không phổ biến (ran phổi khu trú rất hiếm)</td>
+                    <td>Không phổ biến (trừ thể ác tính)</td>
+                    <td>Tháng 12 - Tháng 5 (mùa lạnh)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Viêm phổi cộng đồng (CAP)</strong></td>
+                    <td><span class="text-danger">Phổ biến</span></td>
+                    <td><strong>Phổ biến</strong> (Ran nổ khu trú, hội chứng đông đặc)</td>
+                    <td>Thay đổi tùy mức độ tổn thương phổi</td>
+                    <td>Quanh năm</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Viêm phế quản cấp</strong></td>
+                    <td>Hiếm gặp / Nhẹ</td>
+                    <td>Không phổ biến (nghe phổi ran ẩm/ngáy lan tỏa)</td>
+                    <td>Hiếm gặp</td>
+                    <td>Quanh năm</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 6: 50% width (Xử trí ban đầu) -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 6</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-capsules"></i> Hướng xử trí ban đầu</h3>
+          <div class="step-card-body">
+            <p>Nguyên tắc chăm sóc hỗ trợ và can thiệp đặc hiệu:</p>
+            <ul>
+              <li><strong>Hồi sức chống sốc (SXHD nặng):</strong> Cho nằm đầu thấp, thở oxy gọng kính. Truyền dịch nhanh tĩnh mạch dung dịch đẳng trương (Ringer lactate hoặc NaCl 0.9%) liều 10-20ml/kg/giờ tùy đáp ứng lâm sàng.</li>
+              <li><strong>Bù dịch đường uống sớm:</strong> Khuyến khích bệnh nhân còn uống được bù nước bằng Oresol, nước trái cây để phòng ngừa cô đặc máu.</li>
+              <li><strong>Chỉ định thuốc đặc hiệu (nhiễm siêu vi đa số tự giới hạn):</strong>
+                <ul>
+                  <li><em>Điều trị Cúm nặng/nguy cơ cao:</em> Cho Oseltamivir 75mg uống x 2 lần/ngày trong 5 ngày. Tối ưu nhất khi dùng trong 48 giờ đầu.</li>
+                  <li><em>Điều trị Sởi:</em> Bổ sung Vitamin A liều cao trong 2 ngày liên tiếp (Trẻ &lt; 6 tháng: 50.000 UI; 6-12 tháng: 100.000 UI; &gt; 12 tháng: 200.000 UI) giúp giảm biến chứng giác mạc và tử vong.</li>
+                </ul>
+              </li>
+              <li><strong>Hạ sốt & Giảm đau an toàn:</strong> Dùng Paracetamol 10-15 mg/kg mỗi 4-6 giờ (không quá 60 mg/kg/ngày). <strong>TUYỆT ĐỐI KHÔNG dùng Aspirin, Ibuprofen</strong> hoặc các NSAIDs khác vì nguy cơ gây xuất huyết tiêu hóa nặng hoặc hội chứng Reye ở trẻ em.</li>
+              <li><strong>Cách ly kiểm soát lây nhiễm:</strong> Cách ly bệnh nhân đối với các tác nhân lây nhiễm mạnh (Sởi, Cúm, COVID-19) để tránh bùng phát dịch chéo.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 7: 50% width (Chuyển tuyến) -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 7</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-ambulance"></i> Tiêu chuẩn chuyển viện & hội chẩn</h3>
+          <div class="step-card-body">
+            <p>Chuyển tuyến điều trị tích cực (ICU) hoặc hội chẩn khẩn cấp khi:</p>
+            <ul>
+              <li>Sốt xuất huyết Dengue có dấu hiệu cảnh báo (nôn nhiều, đau bụng gan, chảy máu niêm mạc, Hct tăng vọt kèm TC giảm nhanh).</li>
+              <li>Sốc giảm thể tích hoặc sốc nhiễm trùng phối hợp, mạch nhanh nhỏ, huyết áp tụt/kẹt.</li>
+              <li>Suy hô hấp nặng, khó thở nhiều, SpO2 &lt; 92% khi thở khí trời (nguy cơ viêm phổi kẽ/ARDS do virus).</li>
+              <li>Biến chứng thần kinh trung ương: Rối loạn ý thức (li bì, ngủ gà, lú lẫn), co giật, có dấu hiệu màng não cổ cứng.</li>
+              <li>Tay chân miệng từ độ 2b trở lên (giật mình nhiều, run chi, thất điều, mạch nhanh &gt; 150 lần/phút).</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- VISUAL ALGORITHMS CARDS -->
+      <section class="symptom-grid" style="margin-top: 2rem;">
+        
+        <!-- Lưu đồ 1: Phác đồ truyền dịch Dengue cảnh báo -->
+        <div class="symptom-step-card border-primary symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag">Sơ đồ 1</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-project-diagram"></i> Phác đồ truyền dịch Sốt xuất huyết Dengue có dấu hiệu cảnh báo (Bộ Y tế)</h3>
+          <div class="step-card-body">
+            <div class="image-placeholder-card">
+              <div class="image-title">
+                <span>📊</span> Lưu đồ xử trí truyền dịch SXHD có dấu hiệu cảnh báo – Hướng dẫn Bộ Y tế
+              </div>
+              <div class="image-drop-area">
+                <div class="image-drop-text">
+                  <img src="../../../../../images/TC_Sot_NhiemSieuVi_Hinh1.png" alt="Dengue Warning Signs Hydration Algorithm"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <div class="fallback-placeholder" style="display: none;">
+                    <i class="fa-regular fa-image"></i>
+                    <p>Sơ đồ lưu đồ truyền dịch Dengue cảnh báo đang được cập nhật</p>
+                  </div>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Tóm tắt phác đồ bù dịch (Dengue Warning Signs Protocol):</strong><br>
+                - Khuyến khích bù dịch bằng đường uống (Oresol, nước trái cây) nếu người bệnh còn khả năng uống được.<br>
+                - <strong>Chỉ định truyền dịch tĩnh mạch:</strong> Người bệnh không uống được, nôn nhiều liên tục, có dấu hiệu mất nước lâm sàng, hoặc chỉ số Hematocrit (Hct) tăng cao.<br>
+                - <strong>Phác đồ truyền dịch:</strong> Sử dụng dung dịch đẳng trương (Ringer lactate, Ringer acetate hoặc NaCl 0.9%).<br>
+                - *Nếu bệnh nhân có chi mát, mạch nhanh, huyết áp bình thường (tiền sốc):* Truyền tốc độ <strong>10 ml/kg/giờ trong 1 giờ đầu</strong>, sau đó đánh giá lại và giảm dần tốc độ truyền. Thời gian truyền dịch thông thường không kéo dài quá 24 - 48 giờ.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- TAKE HOME MESSAGES -->
+      <section class="take-home-card">
+        <div class="take-home-title">
+          <i class="fas fa-lightbulb"></i> Thông điệp Cốt lõi (Take-home Messages)
+        </div>
+        <div class="take-home-body">
+          <ul>
+            <li><strong>Chống chỉ định Aspirin/NSAIDs trong nhiễm siêu vi:</strong> Việc dùng Aspirin/NSAIDs có thể gây hội chứng Reye ở trẻ em và làm trầm trọng thêm tình trạng xuất huyết nếu bệnh nhân mắc Dengue. Paracetamol là lựa chọn hạ sốt duy nhất an toàn.</li>
+            <li><strong>Vitamin A trong bệnh Sởi:</strong> Đây là chỉ định bắt buộc giúp rút ngắn thời gian bệnh, bảo vệ giác mạc tránh mù lòa và giảm đáng kể tỷ lệ tử vong do biến chứng ở trẻ nhỏ.</li>
+            <li><strong>Dịch tễ học là chìa khóa:</strong> Trong nhiễm siêu vi, việc khai thác mùa dịch (cúm, tay chân miệng, Dengue) và yếu tố tiếp xúc nguồn lây đóng vai trò quyết định chẩn đoán lâm sàng chính xác.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TÀI LIỆU THAM KHẢO -->
+      <section class="references-card">
+        <div class="references-title">
+          <i class="fas fa-book"></i> Tài liệu Tham khảo
+        </div>
+        <ol class="references-list">
+          <li>Hướng dẫn chẩn đoán và điều trị sốt xuất huyết Dengue - Bộ Y tế 2020.</li>
+          <li>Symptoms to Diagnosis: An Evidence-Based Guide, 4th Edition (S2D4ed.pdf).</li>
+          <li>Harrison's Manual of Medicine, 20th Edition.</li>
+          <li>CÁC VẤN ĐỀ LÂM SÀNG THIẾT YẾU của chương trình ĐÀO TẠO BÁC SĨ Y KHOA - Bộ Y tế.</li>
+          <li>WHO Pocket Book of Hospital Care for Children.</li>
+        </ol>
+      </section>
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+  <!-- JS Core -->
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+
+  <!-- JS Layout tiếp cận triệu chứng -->
+  <script src="../../../../../js/approach-symptom.js" defer></script>
+</body>
+
+</html>

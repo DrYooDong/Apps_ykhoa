@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tiếp cận chẩn đoán và xử trí bệnh nhân Sốt kèm Đau khớp">
+  <title>Sốt & Đau khớp – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core (5 levels up) -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+
+  <!-- CSS Layout tiếp cận triệu chứng -->
+  <link rel="stylesheet" href="../../../../../css/components/approach-symptom.css">
+</head>
+
+<body>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="TC_Sot.html" class="nav-item active" title="Tiếp cận Sốt">
+              <span class="nav-icon">🌡️</span>
+              <span class="nav-text">Tiếp cận Sốt</span>
+            </a>
+          </li>
+        </ul>
+
+        <!-- Mục lục tự động (TOC) sẽ được JS tự động chèn vào đây -->
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="main-wrapper">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Trang chủ</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="TC_Sot.html" class="breadcrumb-link">Tiếp cận Sốt</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Sốt + Đau khớp</li>
+        </ol>
+      </nav>
+
+      <!-- HERO BANNER -->
+      <section class="hero-dashboard">
+        <div class="hero-intro">
+          <h1>🌡️ TIẾP CẬN SỐT KÈM ĐAU KHỚP</h1>
+          <p>Tổ hợp triệu chứng cảnh báo các bệnh lý tự miễn hệ thống, nhiễm trùng tại khớp hoặc lây truyền qua đường tình dục cần chẩn đoán phân biệt chính xác tại giường.</p>
+        </div>
+      </section>
+
+      <!-- SYMPTOM GRID LAYOUT (BƯỚC 1 -> 7) -->
+      <div class="symptom-grid">
+
+        <!-- BƯỚC 1: 50% width (border-danger - Cấp cứu & sàng lọc nguy cơ) -->
+        <div class="symptom-step-card border-danger symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-danger">Bước 1</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-exclamation-triangle"></i> Ổn định ban đầu – Sàng lọc nguy cơ</h3>
+          <div class="step-card-body">
+            <p>Nhận diện các dấu hiệu "cờ đỏ" (red flags) chỉ điểm tình trạng nguy kịch đe dọa tính mạng hoặc phá hủy chức năng vận động vĩnh viễn ở bệnh nhân:</p>
+            <ul>
+              <li><strong>Viêm một khớp cấp dữ dội:</strong> Khớp sưng, nóng, đỏ, đau dữ dội, mất hoàn toàn khả năng vận động chủ động và thụ động (cảnh báo <strong>Viêm khớp nhiễm khuẩn</strong> - septic arthritis, phá hủy khớp rất nhanh).</li>
+              <li><strong>Nghi ngờ Viêm nội tâm mạc nhiễm khuẩn:</strong> Sốt cao đi kèm với tiếng thổi mới xuất hiện ở tim, tổn thương da đặc hiệu (nốt Osler, tổn thương Janeway), hoặc lú lẫn.</li>
+              <li><strong>Cơ địa đặc biệt nguy cơ cao:</strong> Suy giảm miễn dịch, đái tháo đường, đang sử dụng thuốc ức chế miễn dịch hoặc corticoid dài ngày.</li>
+              <li><strong>Tổn thương toàn thân nặng:</strong> Đau khớp đi kèm ban xuất huyết dưới da, yếu cơ tiến triển, hoặc sụt cân nhanh không rõ nguyên nhân (hội chứng nhiễm trùng nhiễm độc nặng).</li>
+            </ul>
+            <div class="step-alert-box">
+              <i class="fas fa-ambulance"></i>
+              <span><strong>Cấp cứu khớp:</strong> Viêm khớp nhiễm khuẩn là một cấp cứu nội/ngoại khoa. Trì hoãn xử trí có thể gây hoại tử sụn khớp và tàn phế vĩnh viễn.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 2: 50% width -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 2</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-notes-medical"></i> Thu thập dữ kiện tập trung</h3>
+          <div class="step-card-body">
+            <p>Khai thác nhanh các thông tin lâm sàng định hướng:</p>
+            <ul>
+              <li><strong>Đặc điểm đau khớp:</strong>
+                <ul>
+                  <li><em>Đau tại khớp:</em> Hạn chế cả vận động chủ động và thụ động.</li>
+                  <li><em>Đau quanh khớp:</em> Chỉ hạn chế vận động chủ động (như viêm gân, viêm bao khớp).</li>
+                  <li><em>Số lượng khớp bị ảnh hưởng:</em> Viêm một khớp (monoarthritis), viêm vài khớp (oligoarthritis: 2-4 khớp), hay viêm đa khớp (polyarthritis: > 4 khớp).</li>
+                  <li><em>Tính chất đối xứng:</em> Đối xứng (thường gặp trong RA, SLE) hay không đối xứng (gout, viêm khớp vảy nến, viêm khớp phản ứng).</li>
+                  <li><em>Kiểu diễn tiến:</em> Cấp hay mạn, có tính chất di chuyển (migratory - điển hình trong thấp tim hoặc lậu cầu) không.</li>
+                  <li><em>Cứng khớp buổi sáng:</em> Kéo dài > 1 giờ gợi ý nguyên nhân viêm khớp hệ thống (như viêm khớp dạng thấp).</li>
+                </ul>
+              </li>
+              <li><strong>Yếu tố nguy cơ & Tiền sử:</strong> Chấn thương khớp gần đây, tiêm chích ma túy, quan hệ tình dục không an toàn (nguy cơ lậu cầu), tiền sử ve cắn hoặc đi du lịch từ vùng dịch tễ (bệnh Lyme, Chikungunya, Dengue).</li>
+              <li><strong>Thăm khám thực thể:</strong>
+                <ul>
+                  <li><em>Khám khớp:</em> Đánh giá mức độ sưng, nóng, đỏ, tràn dịch khớp và tầm vận động của khớp.</li>
+                  <li><em>Khám ngoài khớp (rất quan trọng):</em> Tìm ban cánh bướm ở mặt (SLE), ban mụn mủ ở ngọn chi (lậu cầu), hồng ban vòng (thấp tim), viêm kết mạc/mống mắt (viêm khớp phản ứng), dịch mủ tiết niệu đạo/âm đạo (lậu, chlamydia), nghe tim tìm tiếng thổi mới xuất hiện.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 3: 100% width (Chẩn đoán phân biệt) -->
+        <div class="symptom-step-card border-warning symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-warning">Bước 3</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-list-ul"></i> Danh sách Chẩn đoán phân biệt</h3>
+          <div class="step-card-body">
+            <p>Các nhóm nguyên nhân chính cần phân biệt trên lâm sàng:</p>
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Nhóm nguyên nhân</th>
+                    <th>Ví dụ bệnh / hội chứng</th>
+                    <th>Đặc điểm lâm sàng chính</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Nhiễm trùng (Viêm khớp)</strong></td>
+                    <td>
+                      <strong>Viêm khớp nhiễm khuẩn</strong> (S. aureus, Liên cầu...)<br>
+                      <strong>Lậu cầu lan tỏa (Disseminated Gonococcal)</strong><br>
+                      <strong>Bệnh Lyme</strong>
+                    </td>
+                    <td>
+                      - Sốt cao, sưng nóng đỏ đau cấp tính tại <em>một khớp đơn độc</em> (thường là khớp gối), hạn chế vận động nặng nề.<br>
+                      - Sốt, viêm đa khớp di chuyển, <em>viêm bao gân</em> nổi bật, ban mụn mủ ở ngọn chi (ngón tay, ngón chân), hay gặp ở nữ trẻ tuổi.<br>
+                      - Sốt, tiền sử ve cắn, xuất hiện ban đỏ di chuyển (erythema migrans), viêm một hoặc vài khớp lớn sau đó.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Bệnh lý Tự miễn / Hệ thống</strong></td>
+                    <td>
+                      <strong>Thấp tim (Rheumatic fever)</strong><br>
+                      <strong>Lupus ban đỏ hệ thống (SLE)</strong><br>
+                      <strong>Viêm khớp phản ứng (Reiter's)</strong>
+                    </td>
+                    <td>
+                      - Sốt, <em>viêm đa khớp di chuyển</em> ở các khớp lớn, có thể kèm viêm tim, múa giật, hồng ban vòng.<br>
+                      - Sốt dai dẳng, viêm đa khớp đối xứng, <em>ban cánh bướm</em> ở mặt, nhạy cảm ánh sáng, tổn thương đa cơ quan (tim, thận, huyết học).<br>
+                      - Sốt, viêm khớp không đối xứng ở chi dưới (khớp gối, cổ chân) xuất hiện 1-4 tuần sau viêm niệu đạo hoặc viêm ruột, có thể kèm viêm kết mạc mắt (Tam chứng Reiter).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tinh thể / Nguyên nhân khác</strong></td>
+                    <td>
+                      <strong>Gout cấp / Pseudogout cấp</strong><br>
+                      <strong>Nhiễm Virus</strong> (Parvovirus, Rubella, Dengue...)
+                    </td>
+                    <td>
+                      - Đau chói, sưng nóng đỏ dữ dội xuất hiện đột ngột trong đêm tại <em>một khớp</em> (thường là khớp bàn ngón chân cái - podagra), có thể kèm sốt cao.<br>
+                      - Sốt, <em>viêm đa khớp đối xứng</em>, kèm phát ban ngoài da hoặc triệu chứng đường hô hấp trên tự giới hạn.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 4: 50% width (Biện luận lâm sàng) -->
+        <div class="symptom-step-card border-success symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-success">Bước 4</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-filter"></i> Biện luận lâm sàng (Clinical reasoning)</h3>
+          <div class="step-card-body">
+            <p>Phương pháp tiếp cận và biện luận phân tầng ưu tiên:</p>
+            <ul>
+              <li><strong>Nguyên tắc sống còn:</strong> Khi đối diện với sốt và viêm một khớp cấp tính, bắt buộc phải loại trừ <strong>Viêm khớp nhiễm khuẩn</strong> đầu tiên. Đây là chẩn đoán không được phép bỏ sót vì khớp có thể bị phá hủy hoàn toàn trong vòng 24-48 giờ nếu không được dẫn lưu mủ kịp thời.</li>
+              <li><strong>Định hướng chẩn đoán phân biệt:</strong>
+                <ul>
+                  <li><em>Viêm khớp nhiễm khuẩn vs Gout cấp:</em> Cả hai đều có thể gây sưng nóng đỏ đau dữ dội một khớp kèm sốt cao. Phân biệt chính xác chỉ có thể dựa vào chọc hút dịch khớp.</li>
+                  <li><em>Nữ trẻ tuổi + viêm bao gân + ban mụn mủ đầu chi:</em> Nghĩ ngay đến <em>Nhiễm lậu cầu lan tỏa</em>.</li>
+                  <li><em>Tiền sử tiêu chảy hoặc tiểu buốt cách đây 1-4 tuần + viêm khớp gối/cổ chân lệch đối xứng + đỏ mắt:</em> Hướng mạnh đến <em>Viêm khớp phản ứng</em>.</li>
+                  <li><em>Viêm khớp đa khớp đối xứng khởi phát sau đợt sốt, phát ban, giống cúm:</em> Định hướng <em>Viêm khớp do siêu vi</em> (thường tự giới hạn sau vài tuần).</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 5: 50% width (Cận lâm sàng) -->
+        <div class="symptom-step-card border-info symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-vials"></i> Chỉ định Cận lâm sàng hợp lý</h3>
+          <div class="step-card-body">
+            <p>Các thăm dò cận lâm sàng thiết yếu:</p>
+            <ul>
+              <li><strong>Chọc hút dịch khớp (Arthrocentesis):</strong> Chỉ định tuyệt đối và bắt buộc cho mọi trường hợp sưng đau một khớp cấp tính kèm sốt chưa rõ nguyên nhân.
+                <ul>
+                  <li>Gửi dịch khớp làm: Đếm tế bào (WBC & %PMN), nhuộm Gram, cấy tìm vi khuẩn và soi tìm tinh thể dưới kính hiển vi phân cực (tinh thể Urate trong Gout hoặc CPPD trong giả Gout).</li>
+                </ul>
+              </li>
+              <li><strong>Xét nghiệm máu cơ bản:</strong> Công thức máu (BC tăng hoặc bình thường), tốc độ lắng máu (ESR), CRP (chỉ số viêm hệ thống).</li>
+              <li><strong>Xét nghiệm vi sinh:</strong>
+                <ul>
+                  <li><em>Cấy máu:</em> Lấy ít nhất 2 mẫu ở 2 vị trí khác nhau (dương tính trong khoảng 50% viêm khớp nhiễm khuẩn).</li>
+                  <li>Phết dịch tiết niệu đạo, trực tràng, cổ tử cung hoặc họng để cấy/PCR tìm lậu cầu hoặc Chlamydia.</li>
+                </ul>
+              </li>
+              <li><strong>Huyết thanh học định hướng:</strong> Kháng thể kháng nhân (ANA), RF, Anti-CCP (nghi ngờ SLE/RA), kháng thể kháng Lyme hoặc kháng thể liên cầu ASOT (thấp tim).</li>
+              <li><strong>Hình ảnh học:</strong> Siêu âm khớp (phát hiện tràn dịch khớp sớm, hỗ trợ chọc dịch dưới hướng dẫn siêu âm), X-quang khớp (đánh giá tổn thương xương khớp, hẹp khe khớp hoặc vôi hóa sụn).</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 5 PHỤ: 100% width (Bảng Phân loại dịch khớp) -->
+        <div class="symptom-step-card border-info symptom-col-12" id="bang-phan-tich-dich-khop">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bổ trợ Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-microscope"></i> Phân tích đặc điểm Dịch khớp (Synovial Fluid Analysis)</h3>
+          <div class="step-card-body">
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Loại dịch</th>
+                    <th>Màu sắc & Độ trong</th>
+                    <th>Tế bào Bạch cầu (/mcL)</th>
+                    <th>% Bạch cầu Đa nhân (PMN)</th>
+                    <th>Định hướng lâm sàng</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Bình thường</strong></td>
+                    <td>Vàng nhạt, trong suốt</td>
+                    <td>&lt; 200</td>
+                    <td>&lt; 25%</td>
+                    <td>Khớp khỏe mạnh bình thường.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Không viêm (Noninflammatory)</strong></td>
+                    <td>Vàng nhạt, trong suốt</td>
+                    <td>200 - 2.000</td>
+                    <td>&lt; 25%</td>
+                    <td>Thoái hóa khớp (OA), chấn thương nhẹ, viêm khớp cơ học.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Viêm (Inflammatory)</strong></td>
+                    <td>Vàng lục, đục, lờ đờ</td>
+                    <td>2.000 - 50.000 (có thể đến 100.000)</td>
+                    <td>&gt; 50% - 75%</td>
+                    <td>Viêm khớp dạng thấp (RA), Lupus (SLE), Thấp tim, Viêm khớp phản ứng.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Nhiễm khuẩn / Tinh thể cấp</strong></td>
+                    <td>Vàng lục hoặc trắng đục như mủ, không thấu quang</td>
+                    <td>&gt; 50.000 - 100.000</td>
+                    <td>&gt; 75% - 90%</td>
+                    <td><strong>Viêm khớp nhiễm khuẩn</strong> (nhuộm Gram hoặc cấy +) hoặc <strong>Gout cấp / Giả Gout</strong> (soi thấy tinh thể).</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 6: 50% width (Xử trí ban đầu) -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 6</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-capsules"></i> Hướng xử trí ban đầu</h3>
+          <div class="step-card-body">
+            <p>Nguyên tắc can thiệp cấp cứu và điều trị đặc hiệu:</p>
+            <ul>
+              <li><strong>Viêm khớp nhiễm khuẩn cấp:</strong>
+                <ul>
+                  <li><strong>Dẫn lưu mủ khớp:</strong> Là bắt buộc. Thực hiện qua chọc hút bằng kim nhiều lần, nội soi khớp rửa sạch hoặc phẫu thuật mở dẫn lưu mủ khớp.</li>
+                  <li><strong>Kháng sinh tĩnh mạch kinh nghiệm:</strong> Phải dùng ngay lập tức sau khi đã chọc dịch khớp. Kháng sinh phải bao phủ được tụ cầu vàng (S. aureus) và Gram âm. Lựa chọn ưu tiên là Ceftriaxone 1-2g IV mỗi 24 giờ phối hợp Vancomycin 1g IV mỗi 12 giờ (để phủ MRSA).</li>
+                </ul>
+              </li>
+              <li><strong>Nhiễm lậu cầu lan tỏa:</strong> Ceftriaxone 1g tiêm tĩnh mạch hoặc tiêm bắp mỗi 24 giờ.</li>
+              <li><strong>Gout hoặc Giả Gout cấp:</strong> Dùng NSAIDs liều cao, Colchicine (0.5mg uống, lặp lại phù hợp) hoặc tiêm Corticoid nội khớp (chỉ thực hiện sau khi đã loại trừ hoàn toàn viêm khớp nhiễm khuẩn).</li>
+              <li><strong>Viêm khớp phản ứng / Tự miễn:</strong> Điều trị bằng thuốc kháng viêm không steroid (NSAIDs) và điều trị triệu chứng.</li>
+              <li><strong>Hạ sốt & Giảm đau khớp:</strong> Paracetamol hỗ trợ giảm đau. Bất động khớp tạm thời ở tư thế chức năng trong giai đoạn viêm cấp tính, sau đó tập vận động sớm để tránh cứng khớp.</li>
+            </ul>
+
+            <!-- Trích dẫn Lưu đồ Hot Red Swollen Painful Knee -->
+            <div class="image-placeholder-card">
+              <div class="image-title">
+                <span>📊</span> Sơ đồ 1: Lưu đồ Đánh giá khớp gối sưng nóng đỏ đau – Algorithms for Emergency Medicine 2023
+              </div>
+              <div class="image-drop-area">
+                <div class="image-drop-text">
+                  <img src="../../../../../images/TC_Sot_DauKhop_Hinh1.png" alt="Knee Pain Algorithm"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <div class="fallback-placeholder" style="display: none;">
+                    <i class="fa-regular fa-image"></i>
+                    <p>Lưu đồ Đánh giá khớp gối sưng nóng đỏ đau đang được cập nhật</p>
+                  </div>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Tóm tắt lưu đồ (Hot red swollen painful knee):</strong><br>
+                - Biểu hiện lâm sàng: Sưng nóng đỏ đau một khớp lớn đột ngột (monoarthritis), sốt/toàn thân mệt mỏi, hạn chế vận động khớp nặng nề, không thể tỳ đè trọng lực.<br>
+                - Xét nghiệm máu: Tăng bạch cầu (WBC), CRP và lắng máu (ESR) rõ rệt.<br>
+                - Xét nghiệm dịch khớp: Đếm tế bào thấy bạch cầu dịch khớp tăng rất cao (&gt; 50.000 - 100.000/mcL), ưu thế bạch cầu đa nhân trung tính (polymorphs). Nhuộm Gram (+) hoặc cấy vi khuẩn mọc (+) (nếu chưa dùng kháng sinh trước đó).<br>
+                - Hướng xử trí: Giảm đau thích hợp, tiêm kháng sinh tĩnh mạch kinh nghiệm và chuyển ngoại chấn thương chỉnh hình rửa khớp khẩn cấp.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 7: 50% width (Chuyển tuyến) -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 7</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-ambulance"></i> Tiêu chuẩn chuyển viện & hội chẩn</h3>
+          <div class="step-card-body">
+            <p>Nhập viện và hội chẩn khẩn cấp chuyên khoa Chấn thương chỉnh hình hoặc Cơ xương khớp khi:</p>
+            <ul>
+              <li>Nghi ngờ hoặc chẩn đoán xác định viêm khớp nhiễm khuẩn để tiến hành rửa khớp và dẫn lưu mủ cấp cứu.</li>
+              <li>Bệnh nhân có hội chứng nhiễm trùng toàn thân nặng, sốc nhiễm khuẩn hoặc lú lẫn.</li>
+              <li>Viêm khớp phản ứng hoặc tự miễn hệ thống có tổn thương cơ quan đích nặng (tim, phổi, thận) đi kèm.</li>
+              <li>Bệnh nhân không cải thiện lâm sàng sau 48 giờ điều trị kháng sinh thích hợp.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- TAKE HOME MESSAGES -->
+      <section class="take-home-card">
+        <div class="take-home-title">
+          <i class="fas fa-lightbulb"></i> Thông điệp Cốt lõi (Take-home Messages)
+        </div>
+        <div class="take-home-body">
+          <ul>
+            <li><strong>Chọc dịch khớp là tối thượng:</strong> Đứng trước một tình trạng sưng nóng đỏ đau cấp tính tại <em>một khớp đơn độc</em> kèm sốt, chọc hút dịch khớp là thủ thuật bắt buộc thực hiện ngay để loại trừ nhiễm trùng.</li>
+            <li><strong>Mọi sự chậm trễ đều phải trả giá:</strong> Viêm khớp nhiễm khuẩn là cấp cứu nội/ngoại khoa khớp; trì hoãn kháng sinh và dẫn lưu mủ sẽ dẫn đến phá hủy sụn khớp không hồi phục trong vòng vài ngày.</li>
+            <li><strong>Không tiêm Corticoid mù:</strong> Tuyệt đối không tiêm corticoid vào ổ khớp khi chưa có kết quả xét nghiệm dịch khớp loại trừ viêm khớp nhiễm khuẩn vì có thể làm bùng phát nhiễm trùng nặng nề.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TÀI LIỆU THAM KHẢO -->
+      <section class="references-card">
+        <div class="references-title">
+          <i class="fas fa-book"></i> Tài liệu Tham khảo
+        </div>
+        <ol class="references-list">
+          <li>Symptoms to Diagnosis: An Evidence-Based Guide, 4th Edition (S2D4ed.pdf).</li>
+          <li>Algorithms for Emergency Medicine 2023.</li>
+          <li>Harrison's Manual of Medicine, 20th Edition.</li>
+          <li>Internal Medicine On Call.</li>
+          <li>Macleod's Clinical Examination, 14th Edition.</li>
+        </ol>
+      </section>
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+  <!-- JS Core -->
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+
+  <!-- JS Layout tiếp cận triệu chứng -->
+  <script src="../../../../../js/approach-symptom.js" defer></script>
+</body>
+
+</html>

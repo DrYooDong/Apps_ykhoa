@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tiếp cận chẩn đoán và xử trí bệnh nhân Sốt kèm Phát ban">
+  <title>Sốt & Phát ban – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core (5 levels up) -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+
+  <!-- CSS Layout tiếp cận triệu chứng -->
+  <link rel="stylesheet" href="../../../../../css/components/approach-symptom.css">
+</head>
+
+<body>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="TC_Sot.html" class="nav-item active" title="Tiếp cận Sốt">
+              <span class="nav-icon">🌡️</span>
+              <span class="nav-text">Tiếp cận Sốt</span>
+            </a>
+          </li>
+        </ul>
+
+        <!-- Mục lục tự động (TOC) sẽ được JS tự động chèn vào đây -->
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="main-wrapper">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Trang chủ</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="TC_Sot.html" class="breadcrumb-link">Tiếp cận Sốt</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Sốt + Phát ban</li>
+        </ol>
+      </nav>
+
+      <!-- HERO BANNER -->
+      <section class="hero-dashboard">
+        <div class="hero-intro">
+          <h1>🌡️ TIẾP CẬN SỐT KÈM PHÁT BAN</h1>
+          <p>Tổ hợp triệu chứng thường gặp trong các bệnh lý truyền nhiễm virus/vi khuẩn hoặc dị ứng thuốc nặng đe dọa tính mạng cần sàng lọc cẩn thận tại giường.</p>
+        </div>
+      </section>
+
+      <!-- SYMPTOM GRID LAYOUT (BƯỚC 1 -> 7) -->
+      <div class="symptom-grid">
+
+        <!-- BƯỚC 1: 50% width (border-danger - Cấp cứu & sàng lọc nguy cơ) -->
+        <div class="symptom-step-card border-danger symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-danger">Bước 1</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-exclamation-triangle"></i> Ổn định ban đầu – Sàng lọc nguy cơ</h3>
+          <div class="step-card-body">
+            <p>Nhận diện ngay các dấu hiệu "cờ đỏ" (red flags) chỉ điểm tình trạng nguy kịch đe dọa tính mạng ở bệnh nhân:</p>
+            <ul>
+              <li><strong>Ban xuất huyết / bầm máu diễn tiến nhanh:</strong> Các chấm/dát xuất huyết hoặc mảng hoại tử dạng hình sao tiến triển nhanh chóng và <strong>không biến mất khi ấn kính</strong> (nghi ngờ nhiễm trùng huyết do não mô cầu).</li>
+              <li><strong>Sốc, tụt huyết áp:</strong> Huyết áp kẹt/tụt, nhịp tim nhanh, chi lạnh ẩm, thiểu niệu hoặc rối loạn tri giác (li bì, ngủ gà, hôn mê).</li>
+              <li><strong>Tổn thương da trợt loét rộng:</strong> Ban đỏ sẫm có bọng nước lan rộng, bong trợt da kèm theo tổn thương niêm mạc (mắt, miệng, cơ quan sinh dục), dấu hiệu <strong>Nikolsky dương tính</strong> (gợi ý hội chứng Stevens-Johnson [SJS] hoặc hoại tử thượng bì nhiễm độc [TEN]).</li>
+              <li><strong>Diện tích da tổn thương lớn:</strong> Trên 10% hoặc &gt; 30% diện tích cơ thể.</li>
+              <li><strong>Cơ địa đặc biệt:</strong> Bệnh nhân suy giảm miễn dịch nặng hoặc trẻ sơ sinh.</li>
+            </ul>
+            <div class="step-alert-box">
+              <i class="fas fa-ambulance"></i>
+              <span><strong>Cấp cứu khẩn cấp:</strong> Ngừng ngay lập tức toàn bộ các loại thuốc nghi ngờ gây phản ứng dị ứng da nặng. Nếu nghi ngờ nhiễm não mô cầu, tiêm tĩnh mạch/tiêm bắp ngay Ceftriaxone liều đầu trước khi chuyển tuyến cấp cứu.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 2: 50% width -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 2</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-notes-medical"></i> Thu thập dữ kiện tập trung</h3>
+          <div class="step-card-body">
+            <p>Khai thác nhanh các thông tin lâm sàng định hướng:</p>
+            <ul>
+              <li><strong>Đặc điểm phát ban:</strong>
+                <ul>
+                  <li><em>Loại tổn thương cơ bản:</em> Dát sẩn, mụn nước, bóng nước, mụn mủ, ban xuất huyết, vết loét.</li>
+                  <li><em>Thời điểm xuất hiện:</em> Xuất hiện cùng lúc với sốt hay sau khi sốt giảm (ví dụ: ban sởi mọc khi sốt cao đạt đỉnh; ban sốt phát ban thông thường mọc sau khi hết sốt).</li>
+                  <li><em>Diễn tiến:</em> Vị trí bắt đầu và hướng lan (sởi lan từ sau tai xuống mặt, thân mình, sau đó xuống chi).</li>
+                  <li><em>Cảm giác tại chỗ:</em> Có ngứa nhiều (thủy đậu, dị ứng) hay không ngứa/đau rát (SJS/TEN, sởi).</li>
+                </ul>
+              </li>
+              <li><strong>Tiền sử dùng thuốc (cực kỳ quan trọng):</strong> Khai thác chi tiết lịch sử dùng các thuốc (đặc biệt là kháng sinh nhóm Beta-lactam, thuốc chống động kinh, NSAIDs, Allopurinol) trong vòng 2-8 tuần gần đây.</li>
+              <li><strong>Yếu tố dịch tễ:</strong> Có sống hoặc đi từ vùng dịch tễ Sốt xuất huyết Dengue, Sởi, bệnh Tay chân miệng, hoặc tiếp xúc động vật/côn trùng (nguy cơ sốt mò).</li>
+              <li><strong>Thăm khám thực thể:</strong> Khám toàn diện da và niêm mạc (mắt, miệng, sinh dục) tìm vết loét, giả mạc hoặc hạt Koplik ở niêm mạc má (sởi). Khám hạch cổ, gan lách to, kết mạc mắt tìm viêm kết mạc đỏ không ghỉ.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 3: 100% width (Chẩn đoán phân biệt) -->
+        <div class="symptom-step-card border-warning symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-warning">Bước 3</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-list-ul"></i> Danh sách Chẩn đoán phân biệt</h3>
+          <div class="step-card-body">
+            <p>Các nhóm nguyên nhân chính cần phân biệt trên lâm sàng:</p>
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Nhóm nguyên nhân</th>
+                    <th>Ví dụ bệnh / hội chứng</th>
+                    <th>Đặc điểm lâm sàng chính</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Nhiễm Virus</strong></td>
+                    <td>
+                      <strong>Sởi (Measles)</strong><br>
+                      <strong>Thủy đậu (Varicella)</strong><br>
+                      <strong>Tay chân miệng (EV71, Coxsackie)</strong>
+                    </td>
+                    <td>
+                      - Sốt cao, viêm long đường hô hấp trên và viêm đỏ kết mạc mắt, hạt Koplik ở niêm mạc má, ban dát sẩn mịn mọc tuần tự từ đầu xuống chân.<br>
+                      - Sốt nhẹ/vừa, nổi phỏng nước nhiều lứa tuổi (dát đỏ, mụn nước trong, mụn nước đục, đóng vảy tiết) rải rác toàn thân, rất ngứa.<br>
+                      - Sốt, loét niêm mạc miệng gây đau, phỏng nước/ban đỏ ở vị trí đặc trưng: lòng bàn tay, lòng bàn chân, gối, mông.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Nhiễm Vi khuẩn / KST</strong></td>
+                    <td>
+                      <strong>Nhiễm khuẩn huyết Não mô cầu</strong><br>
+                      <strong>Sốt mò (Scrub Typhus)</strong>
+                    </td>
+                    <td>
+                      - Toàn trạng nguy kịch, diễn tiến sốc rất nhanh, ban xuất huyết hoại tử hình sao lan rộng nhanh chóng.<br>
+                      - Sốt cao liên tục, đau mỏi toàn thân, sưng hạch bạch huyết, có <em>vết loét eschar</em> đóng vảy đen không đau ở vùng nếp gấp, ban dát sẩn đỏ.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Dị ứng / Miễn dịch nặng</strong></td>
+                    <td>
+                      <strong>Hội chứng SJS / TEN (Lyell)</strong><br>
+                      <strong>Hội chứng DRESS</strong><br>
+                      <strong>Bệnh Kawasaki (Trẻ em)</strong>
+                    </td>
+                    <td>
+                      - Sốt, ban đỏ sẫm màu xuất hiện bọng nước trợt loét nặng nề, <em>tổn thương nặng &ge; 2 vùng niêm mạc</em> (mắt, miệng, sinh dục), Nikolsky (+), tiền sử dùng thuốc.<br>
+                      - Sốt, ban đỏ toàn thân, nổi hạch to, tổn thương tạng nặng (viêm gan, suy thận), bạch cầu ái toan tăng cao trong máu.<br>
+                      - Sốt kéo dài &gt; 5 ngày kèm: đỏ kết mạc mắt hai bên không ghỉ, môi đỏ nứt nẻ, lưỡi dâu tây, ban đỏ đa dạng, phù nề/bong da đầu chi, hạch cổ to.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 4: 50% width (Biện luận lâm sàng) -->
+        <div class="symptom-step-card border-success symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-success">Bước 4</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-filter"></i> Biện luận lâm sàng (Clinical reasoning)</h3>
+          <div class="step-card-body">
+            <p>Phương pháp tiếp cận và phân tầng chẩn đoán:</p>
+            <ul>
+              <li><strong>Độ ưu tiên hàng đầu:</strong> Loại trừ ngay các bệnh lý đe dọa tính mạng tiến triển nhanh như: <strong>Nhiễm khuẩn huyết do Não mô cầu</strong>, sốc <strong>Sốt xuất huyết Dengue</strong>, và các dị ứng thuốc thể nặng (<strong>SJS/TEN/DRESS</strong>).</li>
+              <li><strong>Định hướng lâm sàng nhanh:</strong>
+                <ul>
+                  <li>Sốt + viêm long hô hấp/đỏ mắt + ban dát sẩn mọc tuần tự: Hướng tới <em>Sởi</em>.</li>
+                  <li>Sốt + bóng nước nhiều lứa tuổi rải rác toàn thân: Hướng tới <em>Thủy đậu</em>.</li>
+                  <li>Sốt + trợt da bọng nước đau rát + loét niêm mạc mắt/miệng + tiền sử dùng thuốc: Nghĩ ngay đến <em>SJS</em> (tổn thương &lt; 10% diện tích cơ thể) hoặc <em>TEN</em> (tổn thương &ge; 30% diện tích).</li>
+                  <li>Sốt cao + eschar đóng vảy đen ở bẹn/nách + hạch to: Nghĩ đến <em>Sốt mò</em>.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 5: 50% width (Cận lâm sàng) -->
+        <div class="symptom-step-card border-info symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-vials"></i> Chỉ định Cận lâm sàng hợp lý</h3>
+          <div class="step-card-body">
+            <p>Các xét nghiệm cận lâm sàng thiết yếu:</p>
+            <ul>
+              <li><strong>Xét nghiệm máu cơ bản:</strong> Công thức máu (theo dõi tiểu cầu giảm trong Dengue/nhiễm trùng huyết; bạch cầu ái toan tăng cao gợi ý hội chứng DRESS), CRP, tốc độ lắng máu (ESR).</li>
+              <li><strong>Đánh giá chức năng tạng:</strong> AST, ALT (men gan tăng vọt trong DRESS, sốt mò), ure, creatinin, điện giải đồ.</li>
+              <li><strong>Vi sinh & huyết thanh học:</strong>
+                <ul>
+                  <li><em>Cấy máu:</em> Bắt buộc thực hiện trước khi cho kháng sinh nếu nghi ngờ nhiễm khuẩn huyết.</li>
+                  <li>Xét nghiệm đặc hiệu: IgM sởi, IgM/IgG Dengue, PCR EV71 (tay chân miệng), PCR dịch nốt phỏng (thủy đậu), huyết thanh chẩn đoán Rickettsia.</li>
+                </ul>
+              </li>
+              <li><strong>Chẩn đoán hình ảnh & giải phẫu bệnh:</strong>
+                <ul>
+                  <li>X-quang ngực thẳng tầm soát viêm phổi biến chứng (nhất là trong sởi).</li>
+                  <li><em>Sinh thiết da:</em> Tiêu chuẩn vàng để phân biệt các thể dị ứng thuốc nặng, tự miễn hoặc bệnh bóng nước nhiễm trùng.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 5 PHỤ: 100% width (SJS vs TEN) -->
+        <div class="symptom-step-card border-info symptom-col-12" id="bang-sjs-ten">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bổ trợ Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-microscope"></i> Phân biệt lâm sàng Stevens-Johnson (SJS) và Hoại tử thượng bì nhiễm độc (TEN)</h3>
+          <div class="step-card-body">
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Đặc điểm lâm sàng</th>
+                    <th>Hội chứng Stevens-Johnson (SJS)</th>
+                    <th>Thể chồng lấp SJS/TEN</th>
+                    <th>Hoại tử thượng bì nhiễm độc (TEN/Lyell)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Tổn thương cơ bản</strong></td>
+                    <td>Dát đỏ thẫm, tổn thương hình bia bắn không điển hình, bọng nước dập vỡ gây trợt da.</td>
+                    <td>Dát đỏ thẫm rải rác, bọng nước trợt loét lan rộng trên thân mình và tứ chi.</td>
+                    <td>Mảng trợt da rộng lớn, bong thượng bì dạng xé giấy (như bỏng nặng), Nikolsky dương tính rõ.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Diện tích thượng bì bong trợt</strong></td>
+                    <td><strong>&lt; 10%</strong> diện tích cơ thể.</td>
+                    <td><strong>10% - 30%</strong> diện tích cơ thể.</td>
+                    <td><strong>&gt; 30%</strong> diện tích cơ thể.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tổn thương niêm mạc</strong></td>
+                    <td>Có tổn thương (&ge; 2 vùng niêm mạc miệng, mắt, sinh dục).</td>
+                    <td>Tổn thương nặng, lan rộng &ge; 2 vùng niêm mạc.</td>
+                    <td>Trợt loét nghiêm trọng, đau rát dữ dội, nguy cơ dính kết mạc, mù lòa, suy dinh dưỡng.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Triệu chứng toàn thân</strong></td>
+                    <td>Sốt, mệt mỏi, thường hay xuất hiện.</td>
+                    <td>Sốt cao dai dẳng, luôn luôn có.</td>
+                    <td>Sốt cao liên tục, nhiễm trùng nhiễm độc nặng, mất dịch, rối loạn điện giải.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 6: 50% width (Xử trí ban đầu) -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 6</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-capsules"></i> Hướng xử trí ban đầu</h3>
+          <div class="step-card-body">
+            <p>Nguyên tắc can thiệp cấp cứu và chăm sóc đặc hiệu:</p>
+            <ul>
+              <li><strong>Hồi sức ban đầu:</strong> Đối với trẻ có sốc hoặc mất dịch nặng do trợt da lớn, cần thiết lập đường truyền tĩnh mạch lớn, bù dịch đẳng trương thích hợp. Kiểm soát hạ sốt tích cực, chống co giật bằng Diazepam nếu cần.</li>
+              <li><strong>Ngừng ngay thuốc nghi ngờ:</strong> Đối với SJS/TEN/DRESS, việc ngừng ngay lập tức tất cả các loại thuốc nghi ngờ là can thiệp quan trọng nhất giúp giảm tỷ lệ tử vong.</li>
+              <li><strong>Điều trị nội khoa đặc hiệu:</strong>
+                <ul>
+                  <li><em>Nhiễm trùng huyết do não mô cầu:</em> Tiêm tĩnh mạch ngay Ceftriaxone liều cao kinh nghiệm.</li>
+                  <li><em>Sốt mò:</em> Doxycycline 100mg uống x 2 lần/ngày ( Azithromycin cho thai phụ).</li>
+                  <li><em>Dị ứng nặng (Kawasaki, DRESS, SJS/TEN):</em> Sử dụng Corticoid đường tĩnh mạch liều cao hoặc Globulin miễn dịch (IVIG) phối hợp Aspirin (đối với Kawasaki) theo phác đồ chuyên khoa.</li>
+                </ul>
+              </li>
+              <li><strong>Chăm sóc da & niêm mạc tại chỗ:</strong> Rửa da nhẹ nhàng bằng nước muối sinh lý, bôi dung dịch sát khuẩn (xanh methylen, milian) vào nốt phỏng vỡ. Đối với SJS/TEN: Chăm sóc phòng cách ly vô khuẩn như bệnh nhân bỏng nặng, nhỏ nước muối sinh lý/thuốc mỡ kháng sinh mắt liên tục để tránh dính kết mạc, loét giác mạc.</li>
+              <li><strong>Hạ sốt:</strong> Dùng Paracetamol 10-15 mg/kg. <strong>Tránh dùng Aspirin</strong> ở trẻ em (nguy cơ hội chứng Reye) và hạn chế dùng NSAIDs nếu chưa loại trừ hoàn toàn sốt xuất huyết Dengue.</li>
+            </ul>
+
+            <!-- Trích dẫn Lưu đồ Sàng lọc Sốt tại phòng Cấp cứu -->
+            <div class="image-placeholder-card">
+              <div class="image-title">
+                <span>📊</span> Sơ đồ 2: Lưu đồ Sàng lọc Sốt tại phòng Cấp cứu – Algorithms for Emergency Medicine 2023
+              </div>
+              <div class="image-drop-area">
+                <div class="image-drop-text">
+                  <img src="../../../../../images/TC_Sot_PhatBan_Hinh1.png" alt="Fever Algorithm"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <div class="fallback-placeholder" style="display: none;">
+                    <i class="fa-regular fa-image"></i>
+                    <p>Lưu đồ Sàng lọc Sốt tại phòng Cấp cứu đang được cập nhật</p>
+                  </div>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Tóm tắt lưu đồ (Fever Assessment in ER):</strong><br>
+                - Đánh giá toàn diện sinh hiệu bao gồm GCS và đo nhiệt độ trung tâm.<br>
+                - Nếu nhiệt độ &ge; 40°C &rarr; Kiểm tra biến chứng thần kinh hoặc nguy cơ sốt cao ác tính, hạ nhiệt cấp cứu (lau mát, chườm đá, truyền dịch lạnh).<br>
+                - Đánh giá tiêu chuẩn SIRS: Nếu thỏa &ge; 2 tiêu chuẩn SIRS kèm nghi ngờ nhiễm trùng &rarr; Chuyển sang lưu đồ Nhiễm khuẩn huyết (Sepsis algorithm).<br>
+                - Cho hạ sốt paracetamol/ibuprofen (nếu không có chống chỉ định) và tiến hành đầy đủ xét nghiệm máu (FBC, đông máu, U&E, Mg, lactate, LFTs, CK, glucose, khí máu, nước tiểu).
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 7: 50% width (Chuyển tuyến) -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 7</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-ambulance"></i> Tiêu chuẩn chuyển viện & hội chẩn</h3>
+          <div class="step-card-body">
+            <p>Nhập viện hoặc chuyển khoa Hồi sức tích cực (ICU), Đơn vị Bỏng nặng khẩn cấp khi:</p>
+            <ul>
+              <li>Nghi ngờ hoặc xác định Hội chứng Stevens-Johnson, TEN (Lyell) hoặc DRESS.</li>
+              <li>Bệnh nhân có dấu hiệu cờ đỏ: Sốc, tụt huyết áp, nhịp tim nhanh &gt; 120 lần/phút (không do sốt), khó thở hoặc suy hô hấp.</li>
+              <li>Ban xuất huyết hoại tử dưới da không biến mất khi ấn kính tiến triển nhanh.</li>
+              <li>Bệnh nhân li bì, không ăn uống/bú được, mất nước nặng hoặc trẻ sơ sinh phát ban kèm sốt cao.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- TAKE HOME MESSAGES -->
+      <section class="take-home-card">
+        <div class="take-home-title">
+          <i class="fas fa-lightbulb"></i> Thông điệp Cốt lõi (Take-home Messages)
+        </div>
+        <div class="take-home-body">
+          <ul>
+            <li><strong>Nhận diện Não mô cầu nhanh:</strong> Ban xuất huyết hoại tử hình sao tiến triển nhanh trên nền sốt cao là dấu hiệu chỉ điểm nhiễm khuẩn huyết do não mô cầu, cần tiến hành tiêm Ceftriaxone và chuyển viện cấp cứu ngay.</li>
+            <li><strong>Dừng thuốc lập tức:</strong> Khi nghi ngờ dị ứng thuốc nặng (SJS, TEN, DRESS), hành động đầu tiên và quan trọng nhất là phải dừng ngay lập tức toàn bộ các loại thuốc bệnh nhân đang dùng.</li>
+            <li><strong>Khám kỹ niêm mạc:</strong> Không bao giờ được bỏ qua việc thăm khám các niêm mạc tự nhiên (miệng, mắt, sinh dục) ở bệnh nhân sốt phát ban bọng nước để phát hiện sớm SJS/TEN.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TÀI LIỆU THAM KHẢO -->
+      <section class="references-card">
+        <div class="references-title">
+          <i class="fas fa-book"></i> Tài liệu Tham khảo
+        </div>
+        <ol class="references-list">
+          <li>Hướng dẫn chẩn đoán và điều trị các bệnh da liễu – Bộ Y tế Việt Nam.</li>
+          <li>PHÁC ĐỒ ĐIỀU TRỊ BỆNH LÝ NHI KHOA - Bộ Y tế.</li>
+          <li>Algorithms for Emergency Medicine 2023.</li>
+          <li>Symptoms to Diagnosis: An Evidence-Based Guide, 4th Edition.</li>
+          <li>WHO Guidelines for Management of Fever with Rash in Children.</li>
+        </ol>
+      </section>
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+  <!-- JS Core -->
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+
+  <!-- JS Layout tiếp cận triệu chứng -->
+  <script src="../../../../../js/approach-symptom.js" defer></script>
+</body>
+
+</html>

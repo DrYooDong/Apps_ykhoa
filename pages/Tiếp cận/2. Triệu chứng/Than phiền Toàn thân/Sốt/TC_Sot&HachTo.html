@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tiếp cận chẩn đoán và xử trí bệnh nhân Sốt kèm Hạch to">
+  <title>Sốt & Hạch to – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core (5 levels up) -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+
+  <!-- CSS Layout tiếp cận triệu chứng -->
+  <link rel="stylesheet" href="../../../../../css/components/approach-symptom.css">
+</head>
+
+<body>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="TC_Sot.html" class="nav-item active" title="Tiếp cận Sốt">
+              <span class="nav-icon">🌡️</span>
+              <span class="nav-text">Tiếp cận Sốt</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="main-wrapper">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Trang chủ</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="TC_Sot.html" class="breadcrumb-link">Tiếp cận Sốt</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Sốt + Hạch to</li>
+        </ol>
+      </nav>
+
+      <!-- HERO BANNER -->
+      <section class="hero-dashboard">
+        <div class="hero-intro">
+          <h1>🌡️ TIẾP CẬN SỐT KÈM HẠCH TO</h1>
+          <p>Hướng dẫn phân loại hạch khu trú và toàn thân, nhận diện sớm các dấu hiệu cờ đỏ ác tính, và xây dựng lộ trình chỉ định cận lâm sàng, sinh thiết hợp lý.</p>
+        </div>
+      </section>
+
+      <!-- SYMPTOM GRID LAYOUT (BƯỚC 1 -> 7) -->
+      <div class="symptom-grid">
+
+        <!-- BƯỚC 1: 50% width (border-danger - Cấp cứu & sàng lọc nguy cơ) -->
+        <div class="symptom-step-card border-danger symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-danger">Bước 1</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-exclamation-triangle"></i> Ổn định ban đầu – Sàng lọc nguy cơ</h3>
+          <div class="step-card-body">
+            <p>Nhận diện ngay các dấu hiệu "cờ đỏ" (red flags) chỉ điểm tình trạng ác tính hoặc nhiễm trùng hệ thống nguy cấp cần can thiệp khẩn:</p>
+            <ul>
+              <li><strong>Hạch vị trí thượng đòn (supraclavicular) hoặc cơ bậc thang (scalene):</strong> Đây là dấu hiệu luôn luôn bất thường ở mọi lứa tuổi, nghi ngờ rất cao ung thư di căn (phổi, dạ dày) hoặc Lymphoma. Yêu cầu sinh thiết sớm.</li>
+              <li><strong>Kích thước hạch lớn &gt; 4 cm:</strong> Đặc biệt khi hạch to lên nhanh chóng.</li>
+              <li><strong>Mật độ hạch cứng như đá (rock-hard):</strong> Hạch dính chặt vào da hoặc các mô mềm xung quanh, không di động khi sờ nắn (dấu hiệu điển hình của ung thư di căn).</li>
+              <li><strong>Sốt kèm theo hội chứng B-symptoms:</strong> Đổ mồ hôi trộm ban đêm, sụt cân không rõ nguyên nhân (&gt; 10% trọng lượng cơ thể trong 6 tháng) gợi ý Lymphoma hoặc bệnh Lao.</li>
+              <li><strong>Sốt kèm gan lách to, xuất huyết, thiếu máu:</strong> Cảnh báo bệnh lý huyết học ác tính (như Leukemia cấp).</li>
+              <li><strong>Hạch to mới xuất hiện ở người trên 40 tuổi:</strong> Nguy cơ ác tính cao vượt trội so với nhóm người trẻ.</li>
+            </ul>
+            <div class="step-alert-box">
+              <i class="fas fa-microscope"></i>
+              <span><strong>Cảnh giác nốt Virchow:</strong> Hạch thượng đòn bên trái (nốt Virchow) là vị trí di căn kinh điển của các khối u ác tính vùng bụng (đặc biệt là ung thư dạ dày). Phải chuyển khám ngoại chuyên khoa ngay.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 2: 50% width -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 2</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-notes-medical"></i> Thu thập dữ kiện tập trung</h3>
+          <div class="step-card-body">
+            <p>Khai thác lâm sàng tập trung định hướng nguyên nhân:</p>
+            <ul>
+              <li><strong>Đặc điểm của hạch:</strong>
+                <ul>
+                  <li><em>Vị trí:</em> Hạch khu trú một vùng giải phẫu hay hạch toàn thân (khi to ở &ge; 3 vùng giải phẫu không liên tiếp, gợi ý bệnh hệ thống, nhiễm trùng huyết, HIV hoặc lymphoma).</li>
+                  <li><em>Tính chất khi sờ nắn:</em> Mềm và đau thấu (nhiễm trùng cấp tính tại chỗ), dai chắc như cao su (rubbery - gợi ý bệnh Hodgkin lymphoma), dính lại với nhau thành chùm (matted - gợi ý lao hạch), hay cứng chắc cố định (ung thư).</li>
+                </ul>
+              </li>
+              <li><strong>Triệu chứng toàn thân & Dịch tễ:</strong>
+                <ul>
+                  <li>Đau họng nặng, mệt mỏi nhiều (EBV); sốt âm ỉ về chiều (Lao).</li>
+                  <li>Tiền sử tiếp xúc động vật: Mèo cào (bệnh mèo cào do <em>Bartonella henselae</em>), tiếp xúc phân mèo hoặc ăn thịt chưa chín (Toxoplasmosis), làm nông nghiệp/chăn nuôi (Brucellosis).</li>
+                  <li>Tiền sử dùng thuốc: Sử dụng các thuốc như Phenytoin (có thể gây hội chứng hạch to giả lymphoma).</li>
+                  <li>Yếu tố nguy cơ lây nhiễm: Tiền sử quan hệ tình dục không an toàn, tiêm chích ma túy (nguy cơ HIV cấp).</li>
+                </ul>
+              </li>
+              <li><strong>Thăm khám thực thể:</strong>
+                <ul>
+                  <li>Khám toàn diện tất cả các nhóm hạch ngoại biên (cổ trước/sau, dưới hàm, thượng đòn, nách, bẹn, ròng rọc).</li>
+                  <li>Khám bụng tìm gan to, lách to.</li>
+                  <li>Tìm kiếm ổ nhiễm trùng nguyên phát ở vùng da, niêm mạc, răng miệng dẫn lưu tương ứng đến nhóm hạch bị sưng.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 3: 100% width (Chẩn đoán phân biệt) -->
+        <div class="symptom-step-card border-warning symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-warning">Bước 3</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-list-ul"></i> Danh sách Chẩn đoán phân biệt</h3>
+          <div class="step-card-body">
+            <p>Các nhóm nguyên nhân chính gây sốt kèm hạch to:</p>
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Nhóm nguyên nhân</th>
+                    <th>Ví dụ bệnh / hội chứng</th>
+                    <th>Đặc điểm lâm sàng chính</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Nhiễm trùng do Virus</strong></td>
+                    <td>
+                      <strong>Tăng bạch cầu đơn nhân nhiễm khuẩn (EBV/CMV)</strong><br>
+                      <strong>Hội chứng HIV cấp</strong>
+                    </td>
+                    <td>
+                      - Người trẻ tuổi, sốt cao, đau họng nặng có giả mạc trắng, hạch cổ to đối xứng hai bên, mệt mỏi nhiều, lách to nhẹ.<br>
+                      - Sốt dai dẳng, hạch to toàn thân, phát ban đỏ da, loét miệng, tiền sử hành vi nguy cơ cao.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Nhiễm trùng Vi khuẩn / Ký sinh trùng</strong></td>
+                    <td>
+                      <strong>Lao hạch (Tuberculosis lymphadenitis)</strong><br>
+                      <strong>Nhiễm Toxoplasmosis</strong><br>
+                      <strong>Bệnh mèo cào (Cat scratch disease)</strong>
+                    </td>
+                    <td>
+                      - Sốt nhẹ kéo dài về chiều, hạch cổ dính thành chùm (matted), không đau, tiến triển rò mủ bã đậu ra da.<br>
+                      - Sốt nhẹ, mệt mỏi, hạch cổ to không đau, tiền sử tiếp xúc phân mèo.<br>
+                      - Sốt, vết mèo cào/cắn vùng chi, hạch dẫn lưu nách/bẹn sưng rất to, đau thấu và hóa mủ sau vài tuần.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Bệnh lý Ác tính</strong></td>
+                    <td>
+                      <strong>Lymphoma (Bệnh Hodgkin / Non-Hodgkin)</strong><br>
+                      <strong>Bạch cầu cấp (Leukemia)</strong><br>
+                      <strong>Ung thư di căn (Metastasis)</strong>
+                    </td>
+                    <td>
+                      - Hạch to dần không đau, mật độ dai như cao su (rubbery), có hội chứng B-symptoms (sốt vã mồ hôi đêm, sụt cân).<br>
+                      - Sốt cao, xuất huyết niêm mạc/dưới da, thiếu máu nặng, gan lách hạch to toàn thân.<br>
+                      - Hạch cứng chắc như đá, dính chặt, xuất hiện hạch thượng đòn (nốt Virchow), thường ở người lớn tuổi.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Bệnh tự miễn & Bệnh hệ thống</strong></td>
+                    <td>
+                      <strong>Bệnh Sarcoidosis</strong>
+                    </td>
+                    <td>
+                      - Sốt nhẹ, mệt mỏi, hạch ngoại biên chắc không đau, kèm hồng ban nút và hạch rốn phổi hai bên trên X-quang.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 4: 50% width (Biện luận lâm sàng) -->
+        <div class="symptom-step-card border-success symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-success">Bước 4</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-filter"></i> Biện luận lâm sàng (Clinical reasoning)</h3>
+          <div class="step-card-body">
+            <p>Phương pháp biện luận và phân tầng lâm sàng:</p>
+            <ul>
+              <li><strong>Tỷ trọng ưu tiên:</strong> Ưu tiên loại trừ các chẩn đoán ác tính hệ tạo huyết (Lymphoma, Leukemia) và ung thư di căn. Đánh giá tính chất hạch và lứa tuổi là hai chìa khóa quan trọng nhất.</li>
+              <li><strong>Điểm ủng hộ lâm sàng:</strong>
+                <ul>
+                  <li><em>Bệnh nhân trẻ tuổi (15-24 tuổi) + Sốt + Đau họng nặng + Mệt mỏi nhiều + Hạch cổ to:</em> Định hướng mạnh mẽ <em>Tăng bạch cầu đơn nhân nhiễm khuẩn do EBV</em>.</li>
+                  <li><em>Nam giới trẻ tuổi + Hạch thượng đòn trái đơn độc:</em> Bắt buộc phải khám <em>tinh hoàn</em> để loại trừ ung thư tinh hoàn di căn (seminoma).</li>
+                  <li><em>Hạch sưng đau chói vùng nách/bẹn kèm sốt + Vết thương da lân cận:</em> Hướng tới <em>Viêm hạch cấp tính nhiễm khuẩn</em> do tụ cầu hoặc liên cầu.</li>
+                  <li><em>Sốt + Hạch sưng to hóa mủ + Vết mèo cào trước đó:</em> Ủng hộ <em>Bệnh mèo cào</em>.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 5: 50% width (Cận lâm sàng) -->
+        <div class="symptom-step-card border-info symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-vials"></i> Chỉ định Cận lâm sàng hợp lý</h3>
+          <div class="step-card-body">
+            <p>Quy trình chỉ định xét nghiệm phân tầng chẩn đoán:</p>
+            <ul>
+              <li><strong>Xét nghiệm huyết học cơ bản:</strong>
+                <ul>
+                  <li>Công thức máu (CTM) và phết máu ngoại vi (rất quan trọng để tìm tế bào lympho không điển hình &gt; 10% gợi ý EBV; hoặc tế bào non/blast gợi ý Leukemia).</li>
+                  <li>Tốc độ lắng máu (ESR) và CRP tăng cao định hướng nhiễm trùng hoặc viêm hệ thống.</li>
+                </ul>
+              </li>
+              <li><strong>Huyết thanh chẩn đoán vi sinh:</strong>
+                <ul>
+                  <li>Test Monospot tìm kháng thể dị ký (heterophile antibodies).</li>
+                  <li>Huyết thanh chẩn đoán EBV, HIV, Toxoplasmosis, Giang mai (VDRL).</li>
+                  <li>Phản ứng Mantoux (tuberculin skin test) hoặc IGRA để sàng lọc lao.</li>
+                </ul>
+              </li>
+              <li><strong>Hình ảnh học:</strong>
+                <ul>
+                  <li><strong>X-quang ngực (CXR):</strong> Chỉ định đầu tay bắt buộc để tìm hạch rốn phổi hoặc hạch trung thất (Lao, Sarcoidosis, Lymphoma).</li>
+                  <li>Siêu âm hạch (đánh giá cấu trúc xoang hạch, vỏ hạch), CT scan ngực/bụng để đánh giá lan rộng của hạch trong sâu.</li>
+                </ul>
+              </li>
+              <li><strong>Tiêu chuẩn vàng giải phẫu bệnh:</strong>
+                <ul>
+                  <li><strong>Sinh thiết hạch trọn vẹn (Excisional biopsy):</strong> Lấy nguyên cả hạch là tiêu chuẩn vàng chẩn đoán Lymphoma/lao hạch. Tránh làm chọc hút tế bào bằng kim nhỏ (FNAC) đơn thuần vì không đánh giá được cấu trúc hạch, dễ gây chẩn đoán lầm lymphoma.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 5 PHỤ: 100% width (Bổ trợ Harrison) -->
+        <div class="symptom-step-card border-info symptom-col-12" id="phan-nhom-benh-hach-to">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bổ trợ Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-microscope"></i> Phân loại các nhóm bệnh liên quan đến Hạch to (TABLE 46-1 - Harrison's)</h3>
+          <div class="step-card-body">
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Nhóm bệnh lý</th>
+                    <th>Cơ chế / Bệnh cảnh điển hình</th>
+                    <th>Các tác nhân / Ví dụ cụ thể</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>1. Bệnh lý Nhiễm trùng (Infectious)</strong></td>
+                    <td>Phản ứng tăng sinh lympho do kích thích kháng nguyên từ các tác nhân virus, vi khuẩn, nấm hoặc ký sinh trùng.</td>
+                    <td>
+                      - <strong>Virus:</strong> EBV, CMV, HIV cấp, Herpes Simplex, Thủy đậu, Rubella, Sởi, Viêm gan siêu vi.<br>
+                      - <strong>Vi khuẩn:</strong> Tụ cầu, Liên cầu, Lao (TB), Brucellosis, Bệnh mèo cào (Bartonella).<br>
+                      - <strong>Khác:</strong> Toxoplasmosis, Giang mai, Vi nấm hệ thống.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>2. Bệnh lý Miễn dịch (Immunologic)</strong></td>
+                    <td>Viêm hệ thống tự miễn hoặc phản ứng quá mẫn gây quá sản nang hạch bạch huyết.</td>
+                    <td>
+                      - Viêm khớp dạng thấp (RA).<br>
+                      - Lupus ban đỏ hệ thống (SLE).<br>
+                      - Viêm cơ tự miễn (Dermatomyositis).<br>
+                      - Bệnh huyết thanh (Serum sickness), phản ứng dị ứng thuốc.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>3. Bệnh lý Ác tính (Malignant)</strong></td>
+                    <td>Sự tăng sinh nguyên phát tế bào lympho tại hạch hoặc sự xâm nhập của tế bào ung thư từ cơ quan khác di căn đến hạch.</td>
+                    <td>
+                      - <strong>Ác tính huyết học:</strong> Hodgkin's Lymphoma, Non-Hodgkin Lymphoma, Leukemia cấp và mạn tính.<br>
+                      - <strong>Di căn (Metastasis):</strong> Ung thư biểu mô đường tiêu hóa (Virchow node), ung thư vú, ung thư phổi, ung thư giáp.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>4. Các bệnh lý khác (Miscellaneous)</strong></td>
+                    <td>Bệnh lý thâm nhiễm hạt lành tính hoặc tăng sản hạch không rõ nguyên nhân.</td>
+                    <td>
+                      - Bệnh Sarcoidosis (u hạt không bã đậu).<br>
+                      - Bệnh Kawasaki (sốt kèm hạch cổ to ở trẻ em).<br>
+                      - Bệnh Castleman (tăng sản hạch lympho khổng lồ).
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 6: 50% width (Xử trí ban đầu) -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 6</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-capsules"></i> Hướng xử trí ban đầu</h3>
+          <div class="step-card-body">
+            <p>Nguyên tắc can thiệp xử trí hạch to cấp tính:</p>
+            <ul>
+              <li><strong>Quản lý cấp cứu:</strong> Hồi sức tích cực nếu có sốc nhiễm trùng từ ổ áp xe. Đảm bảo đường thở thông thoáng nếu hạch trung thất lớn chèn ép khí quản/hội chứng tĩnh mạch chủ trên.</li>
+              <li><strong>Chiến lược theo dõi lâm sàng (Không dùng kháng sinh kinh nghiệm):</strong>
+                <ul>
+                  <li>Ở bệnh nhân trẻ tuổi (&lt; 40 tuổi), hạch nhỏ khu trú, mật độ mềm/dai (rubbery) hoặc đau nhẹ: <strong>Theo dõi lâm sàng trong vòng 7 - 14 ngày là hoàn toàn hợp lý</strong>.</li>
+                  <li><strong>TUYỆT ĐỐI KHÔNG</strong> tự ý dùng kháng sinh kinh nghiệm (như beta-lactam) nếu không có bằng chứng nhiễm trùng vi khuẩn tại chỗ rõ rệt (sưng nóng đỏ đau da). Việc lạm dụng kháng sinh làm trì hoãn chẩn đoán bệnh ác tính hoặc lao.</li>
+                  <li>Nếu sau 14 ngày hạch tự nhỏ lại &rarr; Không cần đánh giá thêm. Nếu hạch tiếp tục to lên hoặc xuất hiện thêm hạch mới &rarr; Chỉ định sinh thiết hạch.</li>
+                </ul>
+              </li>
+              <li><strong>Chỉ định sinh thiết hạch khẩn cấp:</strong> Cần thực hiện ngay nếu bệnh nhân có dấu hiệu cờ đỏ: hạch thượng đòn, hạch &gt; 4cm, hạch cứng dính chặt, bệnh nhân trên 40 tuổi, hoặc sốt kèm sụt cân vã mồ hôi đêm rõ rệt.</li>
+              <li><strong>Can thiệp triệu chứng:</strong> Paracetamol hạ sốt, giảm đau. Nếu hạch hóa mủ tạo áp xe mềm dao động: Cân nhắc rạch dẫn lưu mủ và lấy dịch cấy làm kháng sinh đồ.</li>
+            </ul>
+
+            <!-- Trích dẫn Bảng Harrison 20e -->
+            <div class="image-placeholder-card">
+              <div class="image-title">
+                <span>📊</span> Sơ đồ 1: Phân nhóm các bệnh lý liên quan đến Hạch to – Harrison's Manual of Medicine 20th Edition
+              </div>
+              <div class="image-drop-area">
+                <div class="image-drop-text">
+                  <img src="../../../../../images/TC_Sot_HachTo_Hinh1.png" alt="Harrison Lymphadenopathy Table"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <div class="fallback-placeholder" style="display: none;">
+                    <i class="fa-regular fa-image"></i>
+                    <p>Lưu đồ Phân nhóm bệnh hạch to đang được cập nhật</p>
+                  </div>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Tóm tắt phân loại nguyên nhân hạch to:</strong><br>
+                - <strong>Nhiễm trùng:</strong> Nguyên nhân hàng đầu, bao gồm virus (EBV, CMV, HIV), vi khuẩn (Lao, tụ cầu, bệnh mèo cào), ký sinh trùng (Toxoplasma).<br>
+                - <strong>Miễn dịch:</strong> Viêm khớp dạng thấp, Lupus (SLE), bệnh huyết thanh, dị ứng thuốc.<br>
+                - <strong>Ác tính:</strong> Bệnh Hodgkin, Lymphoma không Hodgkin, Leukemia cấp/mạn, ung thư di căn từ các tạng trong sâu.<br>
+                - <strong>Khác:</strong> Bệnh Sarcoidosis, bệnh Kawasaki, bệnh Castleman.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 7: 50% width (Chuyển tuyến) -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 7</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-ambulance"></i> Tiêu chuẩn chuyển viện & hội chẩn</h3>
+          <div class="step-card-body">
+            <p>Chuyển tuyến chuyên khoa sâu ngay lập tức khi:</p>
+            <ul>
+              <li><strong>Nghi ngờ ác tính cao:</strong> Hạch cứng chắc cố định vào mô dưới da, hạch thượng đòn (nốt Virchow), hạch to &gt; 4cm kèm lách to, sụt cân nhiều, vã mồ hôi đêm. Chuyển khám chuyên khoa Ung bướu hoặc Huyết học lâm sàng.</li>
+              <li>Phết máu ngoại vi phát hiện tế bào non (blast) nghi ngờ bạch cầu cấp.</li>
+              <li>Bệnh nhân lớn tuổi (&gt; 40 tuổi) xuất hiện hạch cổ kéo dài không rõ nguyên nhân (cần chuyển chuyên khoa Tai Mũi Họng tầm soát ung thư vòm họng, đầu mặt cổ).</li>
+              <li>Hạch trung thất lớn chèn ép đường thở gây suy hô hấp.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- TAKE HOME MESSAGES -->
+      <section class="take-home-card">
+        <div class="take-home-title">
+          <i class="fas fa-lightbulb"></i> Thông điệp Cốt lõi (Take-home Messages)
+        </div>
+        <div class="take-home-body">
+          <ul>
+            <li><strong>Hạch thượng đòn là cảnh báo đỏ:</strong> Bất kỳ hạch nào sờ thấy ở vùng thượng đòn hoặc cơ bậc thang đều luôn là dấu hiệu bệnh lý bất thường nghiêm trọng, bắt buộc phải sinh thiết hạch để chẩn đoán xác định.</li>
+            <li><strong>Tránh dùng kháng sinh kinh nghiệm vô tội vạ:</strong> Đối với hạch to đơn thuần không có dấu nhiễm khuẩn da tại chỗ ở người trẻ tuổi, việc theo dõi từ 7 đến 14 ngày là chiến lược lâm sàng an toàn và hợp lý nhất.</li>
+            <li><strong>Cảnh giác ở bệnh nhân &gt; 40 tuổi:</strong> Xuất hiện sốt kèm hạch to mới phát hiện ở lứa tuổi này phải luôn được xem là do bệnh ác tính (lymphoma hoặc di căn) cho đến khi có bằng chứng ngược lại.</li>
+            <li><strong>Sinh thiết hạch trọn vẹn là tiêu chuẩn vàng:</strong> Tránh lạm dụng chọc hút tế bào kim nhỏ (FNA) để chẩn đoán lymphoma vì FNA không lấy được cấu trúc mô bệnh học của hạch bạch huyết.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TÀI LIỆU THAM KHẢO -->
+      <section class="references-card">
+        <div class="references-title">
+          <i class="fas fa-book"></i> Tài liệu Tham khảo
+        </div>
+        <ol class="references-list">
+          <li>Harrison's Manual of Medicine, 20th Edition (TABLE 46-1).</li>
+          <li>Macleod's Clinical Examination, 14th Edition.</li>
+          <li>Symptoms to Diagnosis: An Evidence-Based Guide, 4th Edition (S2D4ed.pdf).</li>
+          <li>CÁC VẤN ĐỀ LÂM SÀNG THIẾT YẾU của chương trình ĐÀO TẠO BÁC SĨ Y KHOA - Bộ Y tế.</li>
+          <li>PHÁC ĐỒ ĐIỀU TRỊ BỆNH LÝ NHI KHOA - Bộ Y tế.</li>
+        </ol>
+      </section>
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+  <!-- JS Core -->
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+
+  <!-- JS Layout tiếp cận triệu chứng -->
+  <script src="../../../../../js/approach-symptom.js" defer></script>
+</body>
+
+</html>

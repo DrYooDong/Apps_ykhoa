@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tiếp cận chẩn đoán và xử trí bệnh nhân Sốt kèm Đau đầu cấp tính">
+  <title>Sốt & Đau đầu – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core (5 levels up) -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+
+  <!-- CSS Layout tiếp cận triệu chứng -->
+  <link rel="stylesheet" href="../../../../../css/components/approach-symptom.css">
+</head>
+
+<body>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="TC_Sot.html" class="nav-item active" title="Tiếp cận Sốt">
+              <span class="nav-icon">🌡️</span>
+              <span class="nav-text">Tiếp cận Sốt</span>
+            </a>
+          </li>
+        </ul>
+
+        <!-- Mục lục tự động (TOC) sẽ được JS tự động chèn vào đây -->
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="main-wrapper">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Trang chủ</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="TC_Sot.html" class="breadcrumb-link">Tiếp cận Sốt</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Sốt + Đau đầu</li>
+        </ol>
+      </nav>
+
+      <!-- HERO BANNER -->
+      <section class="hero-dashboard">
+        <div class="hero-intro">
+          <h1>🌡️ TIẾP CẬN SỐT KÈM ĐAU ĐẦU</h1>
+          <p>Tổ hợp triệu chứng cấp cứu nội khoa, phản ánh tình trạng bệnh lý hệ thống hoặc tổn thương nội sọ nghiêm trọng cần can thiệp khẩn cấp.</p>
+        </div>
+      </section>
+
+      <!-- SYMPTOM GRID LAYOUT (BƯỚC 1 -> 7) -->
+      <div class="symptom-grid">
+
+        <!-- BƯỚC 1: 50% width (border-danger - Cấp cứu & sàng lọc nguy cơ) -->
+        <div class="symptom-step-card border-danger symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-danger">Bước 1</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-exclamation-triangle"></i> Ổn định ban đầu – Sàng lọc nguy cơ</h3>
+          <div class="step-card-body">
+            <p>Nhận diện ngay các dấu hiệu "cờ đỏ" (red flags) chỉ điểm tình trạng nguy kịch đe dọa tính mạng:</p>
+            <ul>
+              <li><strong>Khởi phát đột ngột:</strong> Đau dữ dội chưa từng gặp ("đau đầu sét đánh", gợi ý xuất huyết dưới nhện SAH).</li>
+              <li><strong>Rối loạn tri giác:</strong> Lơ mơ, lú lẫn, ngủ gà hoặc hôn mê (GCS &lt; 15).</li>
+              <li><strong>Dấu thần kinh khu trú:</strong> Yếu liệt nửa người, co giật mới khởi phát, bất thường đồng tử hoặc phù gai thị.</li>
+              <li><strong>Hội chứng màng não:</strong> Cổ gượng, dấu hiệu Kernig, Brudzinski dương tính.</li>
+              <li><strong>Dấu hiệu da liễu:</strong> Ban xuất huyết hoại tử hình sao (gợi ý nhiễm trùng huyết do não mô cầu).</li>
+              <li><strong>Cơ địa đặc biệt:</strong> Người cao tuổi (&gt; 50 tuổi), tiền sử ung thư, hoặc suy giảm miễn dịch (HIV/AIDS) mới xuất hiện đau đầu.</li>
+            </ul>
+            <div class="step-alert-box">
+              <i class="fas fa-ambulance"></i>
+              <span><strong>Xử trí cấp cứu:</strong> Nếu có bất kỳ dấu hiệu cờ đỏ nào, thiết lập đường truyền tĩnh mạch, ổn định ABC và điều trị kháng sinh phổ rộng theo kinh nghiệm ngay lập tức.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 2: 50% width -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 2</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-notes-medical"></i> Thu thập dữ kiện tập trung</h3>
+          <div class="step-card-body">
+            <p>Khai thác nhanh các thông tin lâm sàng định hướng:</p>
+            <ul>
+              <li><strong>Bệnh sử chi tiết:</strong> Kiểu đau (đột ngột hay âm ỉ tăng dần), vị trí, cường độ, ảnh hưởng khi ho/rặn hoặc thay đổi tư thế. Tìm triệu chứng kèm theo: nôn vọt, sợ ánh sáng, sợ tiếng động.</li>
+              <li><strong>Yếu tố nguy cơ & dịch tễ:</strong> Tiền sử suy giảm miễn dịch (HIV với CD4 &lt; 200/mcL gợi ý nhiễm trùng cơ hội), chấn thương đầu gần đây, đi từ vùng dịch tễ (Sốt rét, Dengue, sốt mò).</li>
+              <li><strong>Thăm khám thực thể:</strong>
+                <ul>
+                  <li><em>Sinh hiệu:</em> Sốt, mạch chậm kèm huyết áp tăng (tam chứng Cushing trong tăng áp lực nội sọ).</li>
+                  <li><em>Thần kinh:</em> Glasgow, khám dấu màng não (cứng cổ), soi đáy mắt, tìm dấu thần kinh định vị.</li>
+                  <li><em>Khác:</em> Tìm vết loét ngoài da (eschar trong sốt mò), ban chẩn đoán, soi đèn các xoang vùng mặt.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 3: 100% width (Chẩn đoán phân biệt) -->
+        <div class="symptom-step-card border-warning symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-warning">Bước 3</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-list-ul"></i> Danh sách Chẩn đoán phân biệt</h3>
+          <div class="step-card-body">
+            <p>Các nhóm nguyên nhân chính cần phân biệt trên lâm sàng:</p>
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Nhóm nguyên nhân</th>
+                    <th>Ví dụ bệnh / hội chứng</th>
+                    <th>Đặc điểm lâm sàng chính</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Nhiễm trùng hệ TKTW</strong></td>
+                    <td>
+                      <strong>Viêm màng não</strong> (Mủ, Siêu vi, Lao)<br>
+                      <strong>Viêm não</strong> (HSV, Viêm não Nhật Bản)<br>
+                      <strong>Áp xe não</strong>
+                    </td>
+                    <td>
+                      - Sốt cao, đau đầu dữ dội, nôn vọt, <em>cổ gượng</em>, sợ ánh sáng, ban xuất huyết.<br>
+                      - Sốt cao, đau đầu, <em>rối loạn tri giác</em> từ sớm, co giật.<br>
+                      - Sốt, đau đầu khu trú kèm <em>dấu thần kinh khu trú</em> tăng dần.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Bệnh lý mạch máu</strong></td>
+                    <td><strong>Xuất huyết dưới nhện</strong> (SAH)</td>
+                    <td>Máu tràn khoang dưới nhện kích thích màng não gây sốt và <em>cổ gượng</em>. Đau đầu <em>đột ngột dữ dội đạt đỉnh ngay lập tức (sét đánh)</em>, nôn ói nhiều.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Nhiễm trùng lân cận / Hệ thống</strong></td>
+                    <td>
+                      <strong>Viêm xoang cấp</strong><br>
+                      <strong>Sốt rét, Dengue, Sốt mò, Thương hàn</strong>
+                    </td>
+                    <td>
+                      - Sốt, đau nhức vùng trán/mặt, <em>các xoang không sáng khi soi đèn</em>.<br>
+                      - Sốt cao đột ngột, đau đầu, nhức hốc mắt/cơ khớp, <em>tiền sử dịch tễ</em>, có vết loét eschar ngoài da.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 4: 50% width (Biện luận lâm sàng) -->
+        <div class="symptom-step-card border-success symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-success">Bước 4</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-filter"></i> Biện luận lâm sàng (Clinical reasoning)</h3>
+          <div class="step-card-body">
+            <p>Phương pháp tiếp cận và biện luận phân tầng ưu tiên:</p>
+            <ul>
+              <li><strong>Độ ưu tiên hàng đầu:</strong> Bắt buộc phải loại trừ đầu tiên các nguyên nhân đe dọa tính mạng: <strong>Viêm màng não</strong>, <strong>Viêm não</strong>, và <strong>Xuất huyết dưới nhện (SAH)</strong>.</li>
+              <li><strong>Định hướng triệu chứng chìa khóa:</strong>
+                <ul>
+                  <li>Nếu có <em>cổ gượng</em>, sợ ánh sáng, nôn vọt: Hướng mạnh đến <strong>Viêm màng não</strong> hoặc <strong>Xuất huyết dưới nhện</strong>.</li>
+                  <li>Nếu có <em>rối loạn tri giác</em>, thay đổi hành vi hoặc co giật nổi bật: Hướng đến <strong>Viêm não</strong>.</li>
+                  <li>Nếu có <em>dấu thần kinh khu trú</em> hoặc phù gai thị: Hướng đến tổn thương choán chỗ nội sọ như <strong>Áp xe não</strong>.</li>
+                  <li>Nếu <em>xoang vùng mặt tối</em> khi soi đèn, có chảy mũi/ngạt mũi: Định hướng <strong>Viêm xoang cấp</strong>.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 5: 50% width (Cận lâm sàng) -->
+        <div class="symptom-step-card border-info symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-vials"></i> Chỉ định Cận lâm sàng hợp lý</h3>
+          <div class="step-card-body">
+            <p>Các thăm dò cận lâm sàng thiết yếu:</p>
+            <ul>
+              <li><strong>Xét nghiệm máu cơ bản:</strong> Công thức máu (CTM), CRP, Procalcitonin (phân biệt nhiễm trùng vi khuẩn/virus), điện giải đồ, chức năng gan thận, đông máu.</li>
+              <li><strong>Huyết thanh học & vi sinh:</strong> Cấy máu (lấy 2 vị trí khác nhau trước khi dùng kháng sinh). Làm xét nghiệm NS1 Dengue, Test nhanh sốt rét, PCR vi sinh tùy dịch tễ.</li>
+              <li><strong>Chẩn đoán hình ảnh:</strong> Chụp CT hoặc MRI sọ não <em>bắt buộc thực hiện TRƯỚC khi chọc dò dịch não tủy</em> nếu bệnh nhân có dấu thần kinh khu trú, phù gai thị, hoặc suy giảm ý thức rõ rệt để loại trừ nguy cơ tụt não.</li>
+              <li><strong>Chọc dò dịch não tủy (LP):</strong> Là chỉ định bắt buộc để chẩn đoán xác định viêm màng não/viêm não khi không có chống chỉ định.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 5 PHỤ: 100% width (Bảng DNT) -->
+        <div class="symptom-step-card border-info symptom-col-12" id="bang-dich-nao-tuy">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bổ trợ Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-microscope"></i> Phân biệt các nguyên nhân qua Dịch não tủy (CSF)</h3>
+          <div class="step-card-body">
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Bệnh lý</th>
+                    <th>Đặc điểm lâm sàng & bệnh sử chính</th>
+                    <th>Biến đổi Dịch não tủy (CSF) & CLS bổ sung</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Viêm màng não mủ</strong></td>
+                    <td>
+                      - Sốt cao đột ngột, nhức đầu dữ dội, nôn vọt.<br>
+                      - Kernig (+), Brudzinski (+), co giật.<br>
+                      - Diễn tiến nhanh cấp tính trong 1-2 ngày.
+                    </td>
+                    <td>
+                      - Đại thể: <em>Lờ đục, mủ</em>.<br>
+                      - Sinh hóa: Đạm (Protein) tăng cao &gt; 0.5 g/L; Đường giảm mạnh &lt; 1/2 đường huyết.<br>
+                      - Tế bào: Bạch cầu đa nhân trung tính chiếm ưu thế.<br>
+                      - Vi sinh: Nhuộm Gram, cấy CSF (+), CRP máu &gt; 20 mg/L.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Lao màng não</strong></td>
+                    <td>
+                      - Sốt kéo dài &gt; 7 ngày, sụt cân nhanh.<br>
+                      - Dấu màng não (+), dấu thần kinh định vị (+), Babinski (+).<br>
+                      - Tiền sử tiếp xúc nguồn lao, chưa tiêm BCG.
+                    </td>
+                    <td>
+                      - Đại thể: <em>Trong hoặc màu vàng chanh, lờ đục</em>.<br>
+                      - Sinh hóa: Đạm tăng rất cao (1.0 - 2.0 g/L); Đường giảm nặng (đôi khi chỉ còn vết).<br>
+                      - Tế bào: Bạch cầu lympho chiếm ưu thế.<br>
+                      - Khác: PCR lao (+), cấy MGIT (+) muộn, X-quang phổi có tổn thương lao.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Viêm màng não siêu vi</strong></td>
+                    <td>
+                      - Sốt cao, nhức đầu, nôn vọt.<br>
+                      - Dấu màng não (+), co giật.<br>
+                      - Diễn tiến nhanh tự giới hạn.
+                    </td>
+                    <td>
+                      - Đại thể: <em>Trong suốt</em>.<br>
+                      - Sinh hóa: Đạm bình thường hoặc tăng nhẹ; Đường bình thường hoặc giảm nhẹ.<br>
+                      - Tế bào: Bạch cầu lympho chiếm ưu thế.<br>
+                      - Vi sinh: Cấy vi khuẩn (-).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Viêm não</strong></td>
+                    <td>
+                      - Sốt cao, co giật, diễn tiến nhanh.<br>
+                      - Rối loạn tri giác sớm, thay đổi hành vi.<br>
+                      - Dấu thần kinh định vị (+/-).
+                    </td>
+                    <td>
+                      - Đại thể: <em>Trong suốt</em>.<br>
+                      - Sinh hóa: Đạm bình thường hoặc tăng nhẹ; Đường bình thường.<br>
+                      - Tế bào: Bạch cầu không tăng hoặc tăng nhẹ.<br>
+                      - Áp lực dịch não tủy thường tăng cao.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 6: 50% width (Xử trí ban đầu) -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 6</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-capsules"></i> Hướng xử trí ban đầu</h3>
+          <div class="step-card-body">
+            <p>Nguyên tắc can thiệp cấp cứu và điều trị đặc hiệu:</p>
+            <ul>
+              <li><strong>Hồi sức & Cấp cứu (ABC):</strong> Đảm bảo thông khí, hỗ trợ oxy, bù dịch chống sốc nếu có suy tuần hoàn.</li>
+              <li><strong>Chống phù não & Tăng áp lực nội sọ (ICP):</strong> Cho bệnh nhân nằm đầu cao 30 độ (khi huyết động ổn định). Truyền tĩnh mạch Mannitol 20% nếu nghi ngờ tăng ICP.</li>
+              <li><strong>Kiểm soát co giật:</strong> Dùng Diazepam tiêm tĩnh mạch, tiêm bắp hoặc thụt trực tàng; thay thế bằng Phenobarbital nếu co giật kéo dài.</li>
+              <li><strong>Liệu pháp điều trị đặc hiệu:</strong>
+                <ul>
+                  <li><em>Kháng sinh kinh nghiệm (Viêm màng não mủ):</em> Dùng Ceftriaxon/Cefotaxim kết hợp Vancomycin; thêm Ampicillin ở người cao tuổi/suy giảm miễn dịch để phủ <em>Listeria</em>. Tiêm tĩnh mạch Dexamethasone trước hoặc cùng lúc với liều kháng sinh đầu tiên.</li>
+                  <li><em>Kháng virus kinh nghiệm (Viêm não HSV):</em> Sử dụng Acyclovir tĩnh mạch ngay lập tức khi nghi ngờ lâm sàng.</li>
+                </ul>
+              </li>
+              <li><strong>Điều trị triệu chứng:</strong> Paracetamol 10-15 mg/kg uống hoặc truyền tĩnh mạch hạ sốt. TRÁNH dùng Aspirin/NSAIDs khi chưa loại trừ Dengue do nguy cơ xuất huyết.</li>
+            </ul>
+
+            <!-- Trích dẫn Lưu đồ cho Đau đầu cấp cứu -->
+            <div class="image-placeholder-card">
+              <div class="image-title">
+                <span>📊</span> Sơ đồ 2: Lưu đồ Đau đầu (Headache Algorithm) – Algorithms for Emergency Medicine 2023
+              </div>
+              <div class="image-drop-area">
+                <div class="image-drop-text">
+                  <img src="../../../../../images/TC_Sot_Daudau_Hinh1.png" alt="Headache Algorithm"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <div class="fallback-placeholder" style="display: none;">
+                    <i class="fa-regular fa-image"></i>
+                    <p>Lưu đồ Đau đầu (Headache Algorithm) đang được cập nhật</p>
+                  </div>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Tóm tắt lưu đồ:</strong> Đánh giá GCS đầu tiên. Nếu GCS &lt; 15, tiến hành hồi sức tích cực và chụp CT. Nếu GCS = 15, kiểm tra sốt và hội chứng màng não. Nếu có sốt/cổ gượng mà không có dấu thần kinh khu trú mới, tiến hành chọc dò tủy sống (LP).
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 7: 50% width (Chuyển tuyến) -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 7</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-ambulance"></i> Tiêu chuẩn chuyển viện & hội chẩn</h3>
+          <div class="step-card-body">
+            <p>Kích hoạt quy trình chuyển tuyến hồi sức tích cực (ICU) hoặc hội chẩn chuyên khoa Nội/Ngoại thần kinh khẩn cấp khi:</p>
+            <ul>
+              <li>Bệnh nhân có suy giảm tri giác tiến triển (GCS &lt; 15, lơ mơ, co giật liên tục).</li>
+              <li>Phát hiện bất thường nghiêm trọng trên phim CT/MRI sọ não (như khối choán chỗ lớn, áp xe lớn, xuất huyết nội sọ hoặc xuất huyết dưới nhện cần can thiệp ngoại khoa).</li>
+              <li>Tình trạng huyết động không ổn định, sốc nhiễm trùng hoặc suy hô hấp nặng cần thiết lập đường thở nâng cao (đặt nội khí quản, thở máy).</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- TAKE HOME MESSAGES -->
+      <section class="take-home-card">
+        <div class="take-home-title">
+          <i class="fas fa-lightbulb"></i> Thông điệp Cốt lõi (Take-home Messages)
+        </div>
+        <div class="take-home-body">
+          <ul>
+            <li><strong>Chọc dò tủy sống là chìa khóa:</strong> Chọc dò DNT là khảo sát thiết yếu nhất trong chẩn đoán viêm màng não và viêm não; tuyệt đối không trì hoãn trừ khi có dấu hiệu phù gai thị, định vị cần chụp CT loại trừ u/áp xe trước.</li>
+            <li><strong>Độc quyền của Đau đầu sét đánh:</strong> Đau đầu dữ dội đột ngột đạt đỉnh cực đại ngay lập tức phải luôn được nghi ngờ là xuất huyết dưới nhện (SAH) cho đến khi có bằng chứng ngược lại, dù bệnh nhân có sốt đi kèm.</li>
+            <li><strong>Cấp bách kháng sinh giờ đầu:</strong> Liệu pháp kháng sinh và corticoid kinh nghiệm cho viêm màng não vi khuẩn phải được khởi động càng sớm càng tốt để bảo vệ nhu mô não và giảm thiểu di chứng thần kinh.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TÀI LIỆU THAM KHẢO -->
+      <section class="references-card">
+        <div class="references-title">
+          <i class="fas fa-book"></i> Tài liệu Tham khảo
+        </div>
+        <ol class="references-list">
+          <li>Harrison's Manual of Medicine, 20th Edition.</li>
+          <li>Algorithms for Emergency Medicine 2023.</li>
+          <li>CÁC VẤN ĐỀ LÂM SÀNG THIẾT YẾU của chương trình ĐÀO TẠO BÁC SĨ Y KHOA.</li>
+          <li>PHÁC ĐỒ ĐIỀU TRỊ BỆNH LÝ NHI KHOA - Bộ Y tế Việt Nam.</li>
+          <li>Internal Medicine On Call, 4th Edition.</li>
+        </ol>
+      </section>
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+  <!-- JS Core -->
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+
+  <!-- JS Layout tiếp cận triệu chứng -->
+  <script src="../../../../../js/approach-symptom.js" defer></script>
+</body>
+
+</html>

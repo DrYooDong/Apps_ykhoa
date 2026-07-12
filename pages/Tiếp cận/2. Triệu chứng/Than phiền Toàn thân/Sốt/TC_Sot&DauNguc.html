@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tiếp cận chẩn đoán và xử trí bệnh nhân Sốt kèm Đau ngực">
+  <title>Sốt & Đau ngực – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core (5 levels up) -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+
+  <!-- CSS Layout tiếp cận triệu chứng -->
+  <link rel="stylesheet" href="../../../../../css/components/approach-symptom.css">
+</head>
+
+<body>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="TC_Sot.html" class="nav-item active" title="Tiếp cận Sốt">
+              <span class="nav-icon">🌡️</span>
+              <span class="nav-text">Tiếp cận Sốt</span>
+            </a>
+          </li>
+        </ul>
+
+        <!-- Mục lục tự động (TOC) sẽ được JS tự động chèn vào đây -->
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="main-wrapper">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Trang chủ</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="TC_Sot.html" class="breadcrumb-link">Tiếp cận Sốt</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Sốt + Đau ngực</li>
+        </ol>
+      </nav>
+
+      <!-- HERO BANNER -->
+      <section class="hero-dashboard">
+        <div class="hero-intro">
+          <h1>🌡️ TIẾP CẬN SỐT KÈM ĐAU NGỰC</h1>
+          <p>Tổ hợp triệu chứng cấp cứu tim mạch - hô hấp, phản ánh các tình trạng viêm nhiễm hoặc tắc nghẽn huyết động nghiêm trọng cần can thiệp khẩn cấp.</p>
+        </div>
+      </section>
+
+      <!-- SYMPTOM GRID LAYOUT (BƯỚC 1 -> 7) -->
+      <div class="symptom-grid">
+
+        <!-- BƯỚC 1: 50% width (border-danger - Cấp cứu & sàng lọc nguy cơ) -->
+        <div class="symptom-step-card border-danger symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-danger">Bước 1</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-exclamation-triangle"></i> Ổn định ban đầu – Sàng lọc nguy cơ</h3>
+          <div class="step-card-body">
+            <p>Nhận diện ngay các dấu hiệu "cờ đỏ" (red flags) chỉ điểm tình trạng nguy kịch đe dọa tính mạng ở bệnh nhân có đau ngực và sốt:</p>
+            <ul>
+              <li><strong>Suy hô hấp nặng:</strong> Nhịp thở &gt; 30 lần/phút, độ bão hòa oxy SpO2 &lt; 92% khi thở khí trời (trừ phi có tiền sử COPD).</li>
+              <li><strong>Huyết động không ổn định / Sốc:</strong> Nhịp tim &gt; 130 lần/phút, huyết áp tâm thu &lt; 90 mmHg hoặc huyết áp tâm trương &lt; 60 mmHg.</li>
+              <li><strong>Suy giảm ý thức:</strong> Lơ mơ, ngủ gà, lú lẫn (GCS giảm).</li>
+              <li><strong>Đau ngực dữ dội kiểu xé:</strong> Đau lan ra sau lưng (cảnh báo bóc tách động mạch chủ ngực).</li>
+              <li><strong>Dấu hiệu chèn ép tim cấp (Tamponade):</strong> Tĩnh mạch cổ nổi, tiếng tim mờ xa xăm, huyết áp kẹt/tụt.</li>
+            </ul>
+            <div class="step-alert-box">
+              <i class="fas fa-ambulance"></i>
+              <span><strong>Xử trí cấp cứu:</strong> Thiết lập đường thở, hỗ trợ oxy để duy trì SpO2 &gt; 95% (trừ nguy cơ suy hô hấp tăng CO2), đặt đường truyền tĩnh mạch lớn và làm ngay điện tâm đồ (ECG) tại giường.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 2: 50% width -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 2</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-notes-medical"></i> Thu thập dữ kiện tập trung</h3>
+          <div class="step-card-body">
+            <p>Khai thác nhanh các thông tin lâm sàng định hướng:</p>
+            <ul>
+              <li><strong>Đặc điểm đau ngực:</strong>
+                <ul>
+                  <li><em>Kiểu màng phổi:</em> Đau nhói, sắc nhọn, tăng khi hít sâu, ho hoặc khi thay đổi tư thế (gợi ý viêm phổi, thuyên tắc phổi, viêm màng phổi).</li>
+                  <li><em>Không kiểu màng phổi:</em> Đè nặng, bóp nghẹt sau xương ức, hoặc giảm đau rõ rệt khi ngồi cúi người ra trước (gợi ý viêm màng ngoài tim cấp).</li>
+                </ul>
+              </li>
+              <li><strong>Yếu tố nguy cơ & Tiền sử:</strong>
+                <ul>
+                  <li>Nhiễm trùng đường hô hấp trên gần đây (gợi ý viêm màng ngoài tim do virus).</li>
+                  <li>Nguy cơ thuyên tắc tĩnh mạch sâu (DVT)/thuyên tắc phổi (PE): Bất động kéo dài, phẫu thuật lớn gần đây, ung thư, mang thai, liệu pháp estrogen.</li>
+                  <li>Suy giảm miễn dịch, tiêm chích ma túy (gợi ý viêm nội tâm mạc nhiễm khuẩn).</li>
+                </ul>
+              </li>
+              <li><strong>Thăm khám thực thể:</strong>
+                <ul>
+                  <li><em>Khám phổi:</em> Tìm hội chứng đông đặc (gõ đục, phế âm giảm, rung thanh tăng) hoặc ran nổ khu trú ở nhu mô phổi; nghe tiếng cọ màng phổi.</li>
+                  <li><em>Khám tim:</em> Nghe tiếng cọ màng ngoài tim (3 pha), tiếng tim mờ hoặc tiếng ngựa phi S3, S4, phát hiện tiếng thổi mới xuất hiện.</li>
+                  <li><em>Khám ngoại biên:</em> Tìm dấu hiệu sưng nóng đỏ đau không đối xứng ở một bên bắp chân gợi ý huyết khối tĩnh mạch sâu (DVT).</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 3: 100% width (Chẩn đoán phân biệt) -->
+        <div class="symptom-step-card border-warning symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-warning">Bước 3</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-list-ul"></i> Danh sách Chẩn đoán phân biệt</h3>
+          <div class="step-card-body">
+            <p>Các nhóm nguyên nhân chính cần phân biệt trên lâm sàng:</p>
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Nhóm nguyên nhân</th>
+                    <th>Ví dụ bệnh / hội chứng</th>
+                    <th>Đặc điểm lâm sàng chính</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Bệnh lý Hô hấp</strong></td>
+                    <td>
+                      <strong>Viêm phổi (Pneumonia)</strong><br>
+                      <strong>Thuyên tắc phổi (PE)</strong>
+                    </td>
+                    <td>
+                      - Sốt, ho khạc đờm mủ đục, đau ngực kiểu màng phổi, nghe phổi có ran nổ khu trú tại nhu mô phổi.<br>
+                      - Khó thở khởi phát đột ngột, đau ngực kiểu màng phổi, nhịp tim nhanh, ho ra máu, có yếu tố nguy cơ của DVT.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Bệnh lý Tim mạch</strong></td>
+                    <td>
+                      <strong>Viêm màng ngoài tim cấp</strong><br>
+                      <strong>Viêm nội tâm mạc nhiễm khuẩn</strong>
+                    </td>
+                    <td>
+                      - Sốt nhẹ, đau ngực sắc nhọn kiểu màng phổi, <em>đỡ đau rõ rệt khi ngồi cúi người ra trước</em>, nghe có tiếng cọ màng ngoài tim.<br>
+                      - Sốt dai dẳng, xuất hiện tiếng thổi tim mới, tổn thương xuất huyết ngoại biên (nốt Osler, tổn thương Janeway), tiền sử tiêm chích ma túy.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Bệnh lý Ổ bụng (đau lan)</strong></td>
+                    <td><strong>Áp xe gan / Áp xe dưới cơ hoành</strong></td>
+                    <td>Sốt cao, đau hạ sườn phải lan lên ngực/vai phải, gan to đau, nghiệm pháp rung gan dương tính.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 4: 50% width (Biện luận lâm sàng) -->
+        <div class="symptom-step-card border-success symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-success">Bước 4</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-filter"></i> Biện luận lâm sàng (Clinical reasoning)</h3>
+          <div class="step-card-body">
+            <p>Phương pháp tiếp cận và biện luận ưu tiên:</p>
+            <ul>
+              <li><strong>Độ ưu tiên hàng đầu:</strong> Mặc dù bệnh nhân có sốt gợi ý nguyên nhân nhiễm trùng, bắt buộc phải loại trừ các nguyên nhân đau ngực cấp đe dọa tính mạng trước, bao gồm: <strong>Hội chứng vành cấp (ACS)</strong>, <strong>Thuyên tắc phổi (PE)</strong>, và <strong>Bóc tách động mạch chủ</strong>.</li>
+              <li><strong>Định hướng lâm sàng:</strong>
+                <ul>
+                  <li><em>Sốt + ho đờm mủ + ran nổ khu trú:</em> Nghĩ nhiều đến <em>Viêm phổi</em>.</li>
+                  <li><em>Trẻ tuổi + đau ngực tăng khi nằm/giảm khi cúi ra trước + tiếng cọ màng tim:</em> Định hướng <em>Viêm màng ngoài tim cấp</em>.</li>
+                  <li><em>Đau ngực kiểu màng phổi + khó thở cấp + bất động lâu ngày/sưng chân:</em> Nghi ngờ cao <em>Thuyên tắc phổi</em>.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 5: 50% width (Cận lâm sàng) -->
+        <div class="symptom-step-card border-info symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-vials"></i> Chỉ định Cận lâm sàng hợp lý</h3>
+          <div class="step-card-body">
+            <p>Các cận lâm sàng thiết yếu:</p>
+            <ul>
+              <li><strong>Điện tâm đồ (ECG):</strong> Chỉ định đầu tay bắt buộc thực hiện ngay để loại trừ nhồi máu cơ tim (ST chênh lên khu trú), viêm màng ngoài tim (ST chênh lên yên ngựa lan tỏa kèm PR lõm xuống) hoặc thuyên tắc phổi (nhịp nhanh xoang, dấu S1Q3T3).</li>
+              <li><strong>X-quang ngực thẳng (CXR):</strong> Đánh giá nhu mô phổi (đông đặc trong viêm phổi), bóng tim to, hoặc dịch màng phổi/màng tim.</li>
+              <li><strong>Xét nghiệm máu cơ bản:</strong> Công thức máu (BC tăng gợi ý nhiễm trùng), CRP, Troponin tim và CK-MB (để loại trừ nhồi máu cơ tim hoặc đánh giá viêm cơ tim đi kèm), D-dimer nếu nghi ngờ thuyên tắc phổi.</li>
+              <li><strong>Vi sinh:</strong> Cấy máu (lấy ít nhất 2 mẫu trước khi dùng kháng sinh nếu nghi ngờ nhiễm trùng huyết hoặc viêm nội tâm mạc), nhuộm Gram và cấy đờm.</li>
+              <li><strong>Chẩn đoán hình ảnh nâng cao:</strong>
+                <ul>
+                  <li><em>CTPA (Chụp CT động mạch phổi):</em> Tiêu chuẩn vàng để xác định thuyên tắc phổi.</li>
+                  <li><em>Siêu âm tim tại giường:</em> Đánh giá tràn dịch màng tim, loại trừ ép tim cấp, đánh giá chức năng thất trái hoặc tìm sùi van tim.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 6: 50% width (Xử trí ban đầu) -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 6</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-capsules"></i> Hướng xử trí ban đầu</h3>
+          <div class="step-card-body">
+            <p>Nguyên tắc can thiệp cấp cứu và điều trị đặc hiệu:</p>
+            <ul>
+              <li><strong>Hồi sức ban đầu:</strong> Thở oxy duy trì SpO2 &gt; 95%. Lập đường truyền tĩnh mạch lớn. Nếu có chèn ép tim cấp, hội chẩn khẩn cấp chọc hút dẫn lưu dịch màng tim.</li>
+              <li><strong>Viêm phổi:</strong> Kháng sinh kinh nghiệm phổ rộng đường tĩnh mạch sớm (ví dụ: Ceftriaxone kết hợp Macrolide hoặc Levofloxacin).</li>
+              <li><strong>Viêm màng ngoài tim cấp:</strong>
+                <ul>
+                  <li>Thuốc kháng viêm không steroid (NSAIDs) liều cao (như Ibuprofen 600-800 mg x 3 lần/ngày hoặc Aspirin 650-975 mg x 4 lần/ngày).</li>
+                  <li>Bổ sung Colchicine 0.5 mg x 1-2 lần/ngày trong 3 tháng để tăng hiệu quả điều trị và giảm tái phát.</li>
+                </ul>
+              </li>
+              <li><strong>Thuyên tắc phổi:</strong> Khởi động thuốc chống đông (như Heparin trọng lượng phân tử thấp). Cân nhắc dùng thuốc tiêu sợi huyết (thrombolysis) nếu có trụy tim mạch.</li>
+              <li><strong>Giảm đau & Hạ sốt:</strong> Sử dụng Paracetamol hạ sốt. Có thể cân nhắc Morphine tĩnh mạch nếu đau ngực dữ dội do ACS.</li>
+            </ul>
+
+            <!-- Trích dẫn Lưu đồ Đau ngực cấp cứu -->
+            <div class="image-placeholder-card">
+              <div class="image-title">
+                <span>📊</span> Sơ đồ 1: Lưu đồ Tiếp cận Đau ngực tại phòng Cấp cứu – Algorithms for Emergency Medicine 2023
+              </div>
+              <div class="image-drop-area">
+                <div class="image-drop-text">
+                  <img src="../../../../../images/TC_Sot_DauNguc_Hinh1.png" alt="Chest Pain Algorithm"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <div class="fallback-placeholder" style="display: none;">
+                    <i class="fa-regular fa-image"></i>
+                    <p>Lưu đồ Tiếp cận Đau ngực đang được cập nhật</p>
+                  </div>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Tóm tắt lưu đồ (Chest Pain Algorithm):</strong><br>
+                - Mọi bệnh nhân đau ngực cần: Sinh hiệu đầy đủ, ECG 12 dẫn trình trong vòng 10 phút, hỗ trợ oxy nếu SpO2 &lt; 95% (trừ khi có nguy cơ suy hô hấp tăng CO2), đánh giá ABCDE.<br>
+                - Đau kiểu màng phổi &rarr; Chụp X-quang phổi (CXR).<br>
+                - Nếu định hướng Viêm phổi/nhiễm trùng hô hấp &rarr; Điều trị theo phác đồ địa phương và đánh giá CURB-65.<br>
+                - Nếu nghi ngờ Thuyên tắc phổi (PE) &rarr; Đánh giá nguy cơ (thang điểm Wells/D-dimer), ECG tìm dấu căng tim phải (S1Q3T3), dùng Heparin trọng lượng phân tử thấp; nếu sốc sụp tuần hoàn &rarr; dùng tiêu sợi huyết.<br>
+                - Nếu nghi ngờ Viêm màng ngoài tim/cơ tim &rarr; Làm Troponin, CRP/ESR, cân nhắc nhập viện.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 7: 50% width (Chuyển tuyến) -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 7</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-ambulance"></i> Tiêu chuẩn chuyển viện & hội chẩn</h3>
+          <div class="step-card-body">
+            <p>Chuyển bệnh nhân lên khoa Hồi sức tích cực (ICU) hoặc Tim mạch can thiệp ngay lập tức nếu:</p>
+            <ul>
+              <li>Huyết động không ổn định, sốc (sốc nhiễm trùng, sốc tim) hoặc suy hô hấp nặng cần thở máy.</li>
+              <li>Tràn dịch màng ngoài tim lượng nhiều, có dấu hiệu ép tim cấp trên siêu âm cần chọc dẫn lưu khẩn cấp.</li>
+              <li>Thuyên tắc phổi nặng có rối loạn huyết động cần dùng thuốc tiêu sợi huyết hoặc can thiệp lấy huyết khối.</li>
+              <li>Đau ngực do hội chứng vành cấp cần chụp và can thiệp mạch vành khẩn.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- TAKE HOME MESSAGES -->
+      <section class="take-home-card">
+        <div class="take-home-title">
+          <i class="fas fa-lightbulb"></i> Thông điệp Cốt lõi (Take-home Messages)
+        </div>
+        <div class="take-home-body">
+          <ul>
+            <li><strong>Loại trừ nguy cơ trước tiên:</strong> Khi tiếp cận bệnh nhân có sốt và đau ngực, luôn ưu tiên loại trừ thuyên tắc phổi, hội chứng vành cấp và chèn ép tim cấp trước khi kết luận là do nhiễm trùng phổi đơn thuần.</li>
+            <li><strong>Nhận diện tư thế giảm đau:</strong> Một bệnh nhân trẻ tuổi có đau ngực sắc nhọn kiểu màng phổi, sốt nhẹ, đau giảm rõ khi ngồi cúi người ra trước là dấu hiệu lâm sàng kinh điển của viêm màng ngoài tim cấp.</li>
+            <li><strong>ECG & X-quang là bắt buộc:</strong> Đây là hai cận lâm sàng cơ bản, nhanh chóng và bắt buộc phải thực hiện ở mọi bệnh nhân đau ngực + sốt để định hướng chẩn đoán ngay từ phòng cấp cứu.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TÀI LIỆU THAM KHẢO -->
+      <section class="references-card">
+        <div class="references-title">
+          <i class="fas fa-book"></i> Tài liệu Tham khảo
+        </div>
+        <ol class="references-list">
+          <li>Algorithms for Emergency Medicine 2023.</li>
+          <li>Symptoms to Diagnosis: An Evidence-Based Guide, 4th Edition (S2D4ed.pdf).</li>
+          <li>Harrison's Principles of Internal Medicine, 21st Edition.</li>
+          <li>Critical Care Medicine An Algorithmic Approach 2023.</li>
+          <li>Internal Medicine On Call.</li>
+        </ol>
+      </section>
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+  <!-- JS Core -->
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+
+  <!-- JS Layout tiếp cận triệu chứng -->
+  <script src="../../../../../js/approach-symptom.js" defer></script>
+</body>
+
+</html>

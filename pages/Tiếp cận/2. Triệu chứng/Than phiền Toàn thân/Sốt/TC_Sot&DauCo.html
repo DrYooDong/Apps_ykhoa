@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tiếp cận chẩn đoán và xử trí bệnh nhân Sốt kèm Đau cơ">
+  <title>Sốt & Đau cơ – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core (5 levels up) -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+
+  <!-- CSS Layout tiếp cận triệu chứng -->
+  <link rel="stylesheet" href="../../../../../css/components/approach-symptom.css">
+</head>
+
+<body>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="TC_Sot.html" class="nav-item active" title="Tiếp cận Sốt">
+              <span class="nav-icon">🌡️</span>
+              <span class="nav-text">Tiếp cận Sốt</span>
+            </a>
+          </li>
+        </ul>
+
+        <!-- Mục lục tự động (TOC) sẽ được JS tự động chèn vào đây -->
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="main-wrapper">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Trang chủ</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="TC_Sot.html" class="breadcrumb-link">Tiếp cận Sốt</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Sốt + Đau cơ</li>
+        </ol>
+      </nav>
+
+      <!-- HERO BANNER -->
+      <section class="hero-dashboard">
+        <div class="hero-intro">
+          <h1>🌡️ TIẾP CẬN SỐT KÈM ĐAU CƠ</h1>
+          <p>Tổ hợp triệu chứng thường gặp trong bệnh cảnh nhiễm siêu vi toàn thân hoặc nhiễm khuẩn hệ thống, phản ánh phản ứng miễn dịch hoặc tổn thương tế bào cơ.</p>
+        </div>
+      </section>
+
+      <!-- SYMPTOM GRID LAYOUT (BƯỚC 1 -> 7) -->
+      <div class="symptom-grid">
+
+        <!-- BƯỚC 1: 50% width (border-danger - Cấp cứu & sàng lọc nguy cơ) -->
+        <div class="symptom-step-card border-danger symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-danger">Bước 1</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-exclamation-triangle"></i> Ổn định ban đầu – Sàng lọc nguy cơ</h3>
+          <div class="step-card-body">
+            <p>Nhận diện ngay các dấu hiệu "cờ đỏ" (red flags) chỉ điểm tình trạng nguy kịch đe dọa tính mạng ở bệnh nhân có sốt và đau cơ:</p>
+            <ul>
+              <li><strong>Tình trạng sốc, tụt huyết áp:</strong> Huyết áp kẹt, tay chân lạnh, ẩm, da nổi vân tím (cảnh báo sốc sốt xuất huyết Dengue, sốc nhiễm khuẩn hoặc hội chứng sốc độc tố).</li>
+              <li><strong>Suy hô hấp cấp:</strong> Khó thở, nhịp thở nhanh, rút lõm lồng ngực, tím tái, SpO2 giảm (biến chứng ARDS hoặc phù phổi cấp do Sốt mò, Cúm ác tính, Leptospirosis).</li>
+              <li><strong>Dấu hiệu xuất huyết nặng:</strong> Nôn ra máu, đi tiêu phân đen, xuất huyết niêm mạc ồ ạt, bầm máu diện rộng.</li>
+              <li><strong>Rối loạn tri giác:</strong> Lơ mơ, li bì, co giật hoặc hôn mê (viêm não, sốt rét thể não, biến chứng thần kinh).</li>
+              <li><strong>Thiểu niệu, vô niệu kèm vàng da sậm:</strong> Gợi ý hội chứng Weil trong bệnh Leptospirosis.</li>
+            </ul>
+            <div class="step-alert-box">
+              <i class="fas fa-ambulance"></i>
+              <span><strong>Xử trí cấp cứu:</strong> Nếu có bất kỳ dấu hiệu cờ đỏ nào, nhanh chóng hỗ trợ hô hấp, tuần hoàn (ABC), cấy máu, thiết lập đường truyền tĩnh mạch lớn và hội chẩn Hồi sức tích cực.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 2: 50% width -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 2</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-notes-medical"></i> Thu thập dữ kiện tập trung</h3>
+          <div class="step-card-body">
+            <p>Khai thác nhanh các thông tin lâm sàng định hướng:</p>
+            <ul>
+              <li><strong>Đặc điểm triệu chứng:</strong>
+                <ul>
+                  <li><em>Sốt:</em> Khởi phát đột ngột hay từ từ, kiểu sốt (liên tục hay thành cơn).</li>
+                  <li><em>Đau cơ:</em> Toàn thân hay khu trú tại một vùng cơ cụ thể (như cơ vùng đùi, bắp chân).</li>
+                  <li><em>Đi kèm:</em> Đau đầu, nhức hốc mắt, đau khớp, phát ban, buồn nôn, vàng da hoặc vết loét ngoài da.</li>
+                </ul>
+              </li>
+              <li><strong>Yếu tố dịch tễ & nguy cơ:</strong>
+                <ul>
+                  <li>Tiền sử đi lại, sinh sống trong vùng dịch tễ (Sốt xuất huyết Dengue, Sốt rét, Sốt mò).</li>
+                  <li>Tiếp xúc nước bẩn, bùn lầy hoặc động vật hoang dã/gặm nhấm (nguy cơ Leptospirosis).</li>
+                  <li>Hoạt động ngoài trời, đi rừng, làm rẫy (nguy cơ mò đốt gây Sốt mò).</li>
+                  <li>Tiền sử suy giảm miễn dịch, chưa tiêm phòng vắc-xin cúm.</li>
+                </ul>
+              </li>
+              <li><strong>Thăm khám thực thể:</strong>
+                <ul>
+                  <li><em>Da niêm:</em> Tìm ban xung huyết, ban xuất huyết, làm nghiệm pháp dây thắt (Lacet). Khám kỹ toàn thân tìm <strong>vết loét eschar</strong> đóng vảy đen không đau ở các nếp gấp (nách, bẹn, cổ...). Khám kết mạc mắt tìm dấu hiệu xung huyết.</li>
+                  <li><em>Cơ-xương-khớp:</em> Đánh giá xem cơ đau có sưng, nóng, đỏ khu trú không (gợi ý viêm cơ mủ).</li>
+                  <li><em>Bụng:</em> Khám tìm gan lách to, điểm đau khu trú.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 3: 100% width (Chẩn đoán phân biệt) -->
+        <div class="symptom-step-card border-warning symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-warning">Bước 3</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-list-ul"></i> Danh sách Chẩn đoán phân biệt</h3>
+          <div class="step-card-body">
+            <p>Các nhóm nguyên nhân chính cần phân biệt trên lâm sàng:</p>
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Nhóm nguyên nhân</th>
+                    <th>Ví dụ bệnh / hội chứng</th>
+                    <th>Đặc điểm lâm sàng chính</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Nhiễm Virus</strong></td>
+                    <td>
+                      <strong>Sốt xuất huyết Dengue</strong><br>
+                      <strong>Cúm (Influenza)</strong>
+                    </td>
+                    <td>
+                      - Sốt cao đột ngột, đau nhức cơ khớp dữ dội ("sốt bẻ xương"), nhức hốc mắt, da xung huyết, chấm xuất huyết dưới da.<br>
+                      - Sốt cao đột ngột, đau cơ toàn thân dữ dội, đau đầu, kèm viêm long đường hô hấp rõ rệt (ho, chảy mũi, đau họng).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Nhiễm Khuẩn / Ký sinh trùng hệ thống</strong></td>
+                    <td>
+                      <strong>Sốt mò (Scrub typhus)</strong><br>
+                      <strong>Leptospirosis</strong><br>
+                      <strong>Sốt rét (Malaria)</strong>
+                    </td>
+                    <td>
+                      - Sốt cao, đau đầu, đau mỏi người, nổi hạch toàn thân/khu trú, xuất hiện <em>vết loét eschar</em> đóng vảy đen không đau, ban dát sẩn.<br>
+                      - Sốt cao, đau cơ dữ dội (đặc biệt cơ bắp chân, cơ lưng), xung huyết kết mạc mắt nổi bật, có thể có vàng da, xuất huyết, suy thận (Hội chứng Weil).<br>
+                      - Sốt cơn có tính chu kỳ (rét run - sốt nóng - vã mồ hôi), đau cơ, thiếu máu, gan lách to, tiền sử đi từ vùng rừng núi dịch tễ.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Nhiễm khuẩn tại chỗ</strong></td>
+                    <td><strong>Viêm cơ mủ (Pyomyositis)</strong></td>
+                    <td>Sốt, đau, sưng và tấy đỏ tại một vùng cơ khu trú (thường gặp nhất ở cơ đùi, cơ mông), có thể sờ thấy khối nung mủ sâu.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 4: 50% width (Biện luận lâm sàng) -->
+        <div class="symptom-step-card border-success symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-success">Bước 4</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-filter"></i> Biện luận lâm sàng (Clinical reasoning)</h3>
+          <div class="step-card-body">
+            <p>Phương pháp tiếp cận và phân tầng chẩn đoán ưu tiên:</p>
+            <ul>
+              <li><strong>Độ ưu tiên hàng đầu:</strong> Loại trừ ngay <strong>Sốt xuất huyết Dengue</strong> vì diễn tiến sốc giảm thể tích có thể xảy ra nhanh chóng từ ngày thứ 3-7 của bệnh.</li>
+              <li><strong>Bệnh cảnh nhiễm trùng hệ thống đáp ứng kháng sinh:</strong> Phải tìm kiếm dấu hiệu của <strong>Sốt mò</strong> (eschar) và <strong>Leptospirosis</strong> (đau bắp chân + xung huyết kết mạc + lội nước bẩn) vì điều trị kháng sinh đặc hiệu sớm giúp cải thiện tiên lượng ngoạn mục.</li>
+              <li><strong>Định hướng triệu chứng chìa khóa:</strong>
+                <ul>
+                  <li>Sốt đột ngột + đau cơ khớp nhiều + nhức hốc mắt + dây thắt (+): Hướng mạnh đến <em>Sốt xuất huyết Dengue</em>.</li>
+                  <li>Sốt + đau cơ + vết loét đóng vảy đen (eschar): Xác định <em>Sốt mò</em>.</li>
+                  <li>Sốt + đau cơ toàn thân + viêm long đường hô hấp trên: Định hướng <em>Cúm</em>.</li>
+                  <li>Sốt + đau, sưng nóng đỏ khu trú một bắp cơ lớn (đùi, mông): Hướng tới <em>Viêm cơ mủ</em>.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 5: 50% width (Cận lâm sàng) -->
+        <div class="symptom-step-card border-info symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-vials"></i> Chỉ định Cận lâm sàng hợp lý</h3>
+          <div class="step-card-body">
+            <p>Các thăm dò cận lâm sàng thiết yếu:</p>
+            <ul>
+              <li><strong>Xét nghiệm máu cơ bản:</strong> Công thức máu (theo dõi Hematocrit tăng và Tiểu cầu giảm để cảnh báo thoát huyết tương trong Dengue; bạch cầu giảm trong virus, bạch cầu tăng ưu thế trung tính trong nhiễm khuẩn), men gan (AST, ALT), ure, creatinin, điện giải đồ.</li>
+              <li><strong>Xét nghiệm hủy cơ:</strong> Creatine kinase (CK/CPK) tăng rất cao gợi ý viêm cơ hoặc hủy cơ vân cấp.</li>
+              <li><strong>Chỉ số viêm:</strong> CRP hoặc Procalcitonin tăng cao định hướng nguyên nhân vi khuẩn (Sốt mò, Leptospira, viêm cơ mủ) hơn là siêu vi (Cúm, Dengue).</li>
+              <li><strong>Vi sinh & huyết thanh học:</strong>
+                <ul>
+                  <li>Test nhanh NS1 Dengue (ngày 1-5) hoặc IgM/IgG Dengue (từ ngày 5).</li>
+                  <li>Test nhanh hoặc RT-PCR Cúm từ dịch tỵ hầu.</li>
+                  <li>Ký sinh trùng sốt rét (phết máu giọt đặc/giọt mỏng).</li>
+                  <li>Huyết thanh học/PCR tìm Rickettsia (Sốt mò) hoặc Leptospira.</li>
+                  <li>Cấy máu trước khi dùng kháng sinh; cấy mủ nếu có ổ áp xe cơ.</li>
+                </ul>
+              </li>
+              <li><strong>Hình ảnh học:</strong> Siêu âm cơ/phần mềm (tìm ổ áp xe), siêu âm bụng (gan lách to, dịch ổ bụng), X-quang phổi.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 5 PHỤ: 100% width (Bảng Phân độ Dengue) -->
+        <div class="symptom-step-card border-info symptom-col-12" id="bang-phan-do-dengue">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bổ trợ Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-microscope"></i> Phân độ Sốt xuất huyết Dengue (Bộ Y tế)</h3>
+          <div class="step-card-body">
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Phân độ</th>
+                    <th>Triệu chứng lâm sàng chính</th>
+                    <th>Cận lâm sàng tương ứng</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Sốt xuất huyết Dengue (SXHD)</strong></td>
+                    <td>Sống/đi từ vùng dịch tễ. Sốt cao liên tục &le; 7 ngày kèm theo: buồn nôn, nôn, phát ban, đau cơ khớp, nhức hai hố mắt, xuất huyết dưới da hoặc dấu hiệu dây thắt (+).</td>
+                    <td>Hematocrit bình thường hoặc tăng; Bạch cầu bình thường hoặc giảm; Tiểu cầu bình thường hoặc giảm nhẹ.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>SXHD có dấu hiệu cảnh báo</strong></td>
+                    <td>Lờ lừ, lừ đừ, vật vã, li bì; Đau bụng vùng gan hoặc ấn đau vùng gan; Nôn ói nhiều (&ge; 3 lần/1 giờ hoặc &ge; 4 lần/6 giờ); Xuất huyết niêm mạc (chảy máu cam, chảy máu chân răng, tiểu máu, rong kinh); Gan to > 2cm dưới bờ sườn; Tiểu ít.</td>
+                    <td>Hematocrit tăng cao đi kèm tiểu cầu giảm nhanh chóng; Men gan AST/ALT &ge; 400 U/L.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>SXHD nặng</strong></td>
+                    <td>
+                      1. Thoát huyết tương nặng dẫn đến sốc SXHD, sốc SXHD nặng hoặc ứ dịch gây suy hô hấp.<br>
+                      2. Xuất huyết nặng (nôn ra máu, phân đen, xuất huyết phổi/não).<br>
+                      3. Suy tạng nặng (suy gan với AST/ALT &ge; 1000 U/L, rối loạn ý thức, suy tim hoặc suy cơ quan khác).
+                    </td>
+                    <td>Rối loạn đông máu nặng, khí máu có toan chuyển hóa, tổn thương tạng nặng nề trên hình ảnh học và sinh hóa.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 6: 50% width (Xử trí ban đầu) -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 6</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-capsules"></i> Hướng xử trí ban đầu</h3>
+          <div class="step-card-body">
+            <p>Nguyên tắc can thiệp cấp cứu và điều trị đặc hiệu:</p>
+            <ul>
+              <li><strong>Hồi sức chống sốc (SXHD nặng):</strong> Bệnh nhân sốc cần nằm đầu thấp, thở oxy. Truyền dịch nhanh tĩnh mạch (Ringer lactate hoặc NaCl 0.9%) với tốc độ 20ml/kg trong vòng 15 phút. Đánh giá lại sinh hiệu và hội chẩn khẩn cấp tuyến trên nếu sốc không cải thiện.</li>
+              <li><strong>Điều trị nguyên nhân đặc hiệu:</strong>
+                <ul>
+                  <li><em>Sốt mò:</em> Doxycycline 100mg uống x 2 lần/ngày trong 7-10 ngày (lưu ý thận trọng ở phụ nữ mang thai/trẻ nhỏ; thay thế bằng Azithromycin hoặc Chloramphenicol).</li>
+                  <li><em>Leptospirosis:</em> Dùng kháng sinh sớm (Penicillin G hoặc Ceftriaxone tĩnh mạch cho thể nặng; Doxycycline cho thể nhẹ).</li>
+                  <li><em>Viêm cơ mủ:</em> Kháng sinh hướng tụ cầu (như Cloxacillin hoặc Vancomycin nếu nghi ngờ MRSA) kết hợp rạch dẫn lưu ổ mủ.</li>
+                  <li><em>Nhiễm virus (Cúm, Dengue nhẹ):</em> Điều trị triệu chứng, bù dịch bằng Oresol đường uống.</li>
+                </ul>
+              </li>
+              <li><strong>Xử trí triệu chứng:</strong> Hạ sốt bằng Paracetamol (10-15 mg/kg mỗi 4-6 giờ, tối đa 60 mg/kg/ngày). <strong>TUYỆT ĐỐI KHÔNG</strong> dùng Aspirin hay các thuốc NSAIDs (Ibuprofen, Meloxicam...) do nguy cơ gây xuất huyết tiêu hóa và suy tạng trầm trọng ở bệnh nhân Dengue.</li>
+            </ul>
+
+            <!-- Trích dẫn Phác đồ sốc sốt xuất huyết Dengue nặng -->
+            <div class="image-placeholder-card">
+              <div class="image-title">
+                <span>📊</span> Sơ đồ 1: Phác đồ Điều trị sốc sốt xuất huyết Dengue nặng – Hướng dẫn Bộ Y tế 2020
+              </div>
+              <div class="image-drop-area">
+                <div class="image-drop-text">
+                  <img src="../../../../../images/TC_Sot_DauCo_Hinh1.png" alt="Phác đồ Sốc SXHD"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <div class="fallback-placeholder" style="display: none;">
+                    <i class="fa-regular fa-image"></i>
+                    <p>Lưu đồ Phác đồ sốc sốt xuất huyết Dengue nặng đang được cập nhật</p>
+                  </div>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Tóm tắt phác đồ cấp cứu:</strong><br>
+                - Đặt người bệnh nằm đầu thấp. Thở oxy.<br>
+                - Truyền dịch nhanh: Dùng bơm tiêm to bơm trực tiếp vào tĩnh mạch Ringer lactate hoặc NaCl 0,9% với tốc độ <strong>20ml/kg cân nặng trong vòng 15 phút</strong>.<br>
+                - Nếu còn sốc (sốc thất bại bù dịch): Hội chẩn khoa, bệnh viện, hội chẩn tuyến trên ngay lập tức.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 7: 50% width (Chuyển tuyến) -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 7</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-ambulance"></i> Tiêu chuẩn chuyển viện & hội chẩn</h3>
+          <div class="step-card-body">
+            <p>Nhập viện hoặc chuyển tuyến Hồi sức tích cực ngay lập tức khi:</p>
+            <ul>
+              <li>Bệnh nhân có biểu hiện sốc, tụt huyết áp, mạch nhanh nhỏ, tay chân lạnh ẩm.</li>
+              <li>Sốt xuất huyết Dengue có bất kỳ dấu hiệu cảnh báo nào (đau bụng gan, nôn nhiều, chảy máu niêm mạc, Hct tăng kèm tiểu cầu giảm sâu).</li>
+              <li>Có các dấu hiệu suy hô hấp, khó thở, SpO2 giảm khi thở khí trời.</li>
+              <li>Rối loạn tri giác (li bì, vật vã, lú lẫn, hôn mê) hoặc suy đa tạng (suy thận cấp, hủy cơ vân nặng, men gan tăng vọt).</li>
+              <li>Áp xe cơ lớn cần phẫu thuật mở dẫn lưu mủ tại phòng mổ.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- TAKE HOME MESSAGES -->
+      <section class="take-home-card">
+        <div class="take-home-title">
+          <i class="fas fa-lightbulb"></i> Thông điệp Cốt lõi (Take-home Messages)
+        </div>
+        <div class="take-home-body">
+          <ul>
+            <li><strong>Chống chỉ định tuyệt đối NSAIDs:</strong> Khi bệnh nhân sốt cao kèm đau cơ khớp dữ dội trong mùa dịch, tuyệt đối không dùng Aspirin hay Ibuprofen để hạ sốt cho đến khi loại trừ hoàn toàn Sốt xuất huyết Dengue do nguy cơ chảy máu ồ ạt đe dọa tính mạng.</li>
+            <li><strong>Luôn tìm vết loét đóng vảy đen:</strong> Thăm khám tỉ mỉ các nếp gấp da nhạy cảm (bẹn, nách, cổ) để không bỏ sót vết loét eschar vô cảm - dấu hiệu vàng chẩn đoán sốt mò.</li>
+            <li><strong>Nhận diện viêm cơ mủ:</strong> Sốt cao kèm đau, sưng tấy khu trú một khối cơ lớn như đùi hoặc mông hướng tới viêm cơ mủ, cần siêu âm xác định ổ áp xe để rạch dẫn lưu sớm.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TÀI LIỆU THAM KHẢO -->
+      <section class="references-card">
+        <div class="references-title">
+          <i class="fas fa-book"></i> Tài liệu Tham khảo
+        </div>
+        <ol class="references-list">
+          <li>HƯỚNG DẪN CHẨN ĐOÁN VÀ ĐIỀU TRỊ BỆNH TRẺ EM (Cập nhật năm 2020) – Bộ Y tế Việt Nam.</li>
+          <li>Quyết định số 2919/QĐ-BYT hướng dẫn khám chữa bệnh tại trạm y tế xã.</li>
+          <li>Harrison's Manual of Medicine, 20th Edition.</li>
+          <li>Algorithms for Emergency Medicine 2023.</li>
+          <li>CÁC VẤN ĐỀ LÂM SÀNG THIẾT YẾU của chương trình ĐÀO TẠO BÁC SĨ Y KHOA.</li>
+        </ol>
+      </section>
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+  <!-- JS Core -->
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+
+  <!-- JS Layout tiếp cận triệu chứng -->
+  <script src="../../../../../js/approach-symptom.js" defer></script>
+</body>
+
+</html>

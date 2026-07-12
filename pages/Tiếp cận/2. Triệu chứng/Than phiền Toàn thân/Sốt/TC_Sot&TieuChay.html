@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tiếp cận chẩn đoán và xử trí bệnh nhân Sốt kèm Nôn ói hoặc Tiêu chảy">
+  <title>Sốt & Nôn ói / Tiêu chảy – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core (5 levels up) -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+
+  <!-- CSS Layout tiếp cận triệu chứng -->
+  <link rel="stylesheet" href="../../../../../css/components/approach-symptom.css">
+</head>
+
+<body>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="TC_Sot.html" class="nav-item active" title="Tiếp cận Sốt">
+              <span class="nav-icon">🌡️</span>
+              <span class="nav-text">Tiếp cận Sốt</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="main-wrapper">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Trang chủ</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="TC_Sot.html" class="breadcrumb-link">Tiếp cận Sốt</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Sốt + Nôn ói / Tiêu chảy</li>
+        </ol>
+      </nav>
+
+      <!-- HERO BANNER -->
+      <section class="hero-dashboard">
+        <div class="hero-intro">
+          <h1>🌡️ TIẾP CẬN SỐT KÈM NÔN ÓI HOẶC TIÊU CHẢY</h1>
+          <p>Hướng dẫn đánh giá nguy cơ mất nước, phân tầng nguyên nhân đường ruột và ngoài ruột, nhận diện các cấp cứu ngoại khoa ổ bụng hoặc thần kinh.</p>
+        </div>
+      </section>
+
+      <!-- SYMPTOM GRID LAYOUT (BƯỚC 1 -> 7) -->
+      <div class="symptom-grid">
+
+        <!-- BƯỚC 1: 50% width (border-danger - Cấp cứu & sàng lọc nguy cơ) -->
+        <div class="symptom-step-card border-danger symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-danger">Bước 1</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-exclamation-triangle"></i> Ổn định ban đầu – Sàng lọc nguy cơ</h3>
+          <div class="step-card-body">
+            <p>Nhận diện ngay các dấu hiệu nguy kịch đe dọa tính mạng (cờ đỏ) ở bệnh nhân sốt kèm nôn/tiêu chảy:</p>
+            <ul>
+              <li><strong>Sốc giảm thể tích / Trụy mạch:</strong> Mạch nhanh nhỏ, khó bắt, huyết áp tụt/kẹt, thời gian đổ đầy mao mạch (CRT) kéo dài &gt; 3 giây, đầu chi lạnh ẩm.</li>
+              <li><strong>Mất nước nặng:</strong> Thay đổi tri giác (li bì, ngủ gà, khó đánh thức, lơ mơ), mắt trũng sâu, nếp véo da mất rất chậm (&gt; 2 giây), không thể uống được hoặc uống rất kém.</li>
+              <li><strong>Dấu hiệu bụng ngoại khoa:</strong> Đau bụng dữ dội liên tục, chướng bụng căng, có phản ứng thành bụng hoặc cảm ứng phúc mạc, bí trung đại tiện.</li>
+              <li><strong>Nôn tất cả mọi thứ:</strong> Không thể giữ được bất kỳ chất lỏng nào bằng đường uống (chỉ định nhập viện bắt buộc).</li>
+              <li><strong>Phân có máu:</strong> Cảnh báo lỵ trực khuẩn nặng, lồng ruột, hoặc hoại tử/nhồi máu ruột.</li>
+              <li><strong>Dấu hiệu thần kinh trung ương:</strong> Nôn vọt kèm sốt cao, đau đầu dữ dội, cổ cứng hoặc thóp phồng (ở trẻ nhũ nhi) gợi ý viêm màng não.</li>
+            </ul>
+            <div class="step-alert-box">
+              <i class="fas fa-ambulance"></i>
+              <span><strong>Hồi sức nước - điện giải cấp bách:</strong> Tình trạng mất nước nặng và sốc giảm thể tích là nguyên nhân tử vong hàng đầu. Phải thiết lập đường truyền tĩnh mạch và hồi sức dịch truyền ngay lập tức theo phác đồ.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 2: 50% width -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 2</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-notes-medical"></i> Thu thập dữ kiện tập trung</h3>
+          <div class="step-card-body">
+            <p>Khai thác lâm sàng toàn diện và có trọng điểm:</p>
+            <ul>
+              <li><strong>Đặc điểm triệu chứng cơ năng:</strong>
+                <ul>
+                  <li><em>Nôn:</em> Thời điểm xuất hiện, tần suất, nôn vọt thành vòi (gợi ý tăng áp lực nội sọ) hay nôn thụ động, nôn ra thức ăn, dịch dạ dày, dịch mật hay máu.</li>
+                  <li><em>Tiêu chảy:</em> Số lần đi tiêu (tiêu chảy cấp khi &ge; 3 lần/ngày), tính chất phân (lỏng nước nhiều, nhầy máu, hay trắng đục như nước vo gạo).</li>
+                  <li><em>Triệu chứng kèm theo:</em> Đau bụng (quặn từng cơn hay âm ỉ liên tục), mót rặn (tenesmus), đau mỏi cơ, ho, đau họng, chảy mũi.</li>
+                </ul>
+              </li>
+              <li><strong>Yếu tố nguy cơ & Tiền sử:</strong>
+                <ul>
+                  <li>Tiền sử ăn uống (nghi ngờ ngộ độc thực phẩm, thức ăn đường phố).</li>
+                  <li>Dịch tễ: Có người xung quanh hoặc trong gia đình bị triệu chứng tương tự; tiền sử du lịch gần đây.</li>
+                  <li>Tiền sử dùng thuốc: Sử dụng kháng sinh phổ rộng gần đây (nguy cơ viêm đại tràng giả mạc do <em>Clostridium difficile</em>).</li>
+                </ul>
+              </li>
+              <li><strong>Thăm khám thực thể:</strong>
+                <ul>
+                  <li><em>Đánh giá mất nước:</em> Đánh giá tri giác, mắt trũng, mức độ khát nước và kiểm tra nếp véo da bụng (skin pinch).</li>
+                  <li><em>Khám bụng:</em> Tìm chướng bụng, gõ vang, nghe nhu động ruột (tăng trong viêm ruột, giảm/mất trong liệt ruột/tắc ruột). Sờ tìm phản ứng đau khu trú hố chậu phải (viêm ruột thừa) hoặc khối lồng hình quả chuối (lồng ruột ở trẻ em).</li>
+                  <li><em>Khám ngoài ruột:</em> Khám tai mũi họng, phổi, cổ cứng để loại trừ nôn/tiêu chảy phản ứng do nhiễm trùng cơ quan khác.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 3: 100% width (Chẩn đoán phân biệt) -->
+        <div class="symptom-step-card border-warning symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-warning">Bước 3</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-list-ul"></i> Danh sách Chẩn đoán phân biệt</h3>
+          <div class="step-card-body">
+            <p>Các nguyên nhân gây sốt kèm nôn ói, tiêu chảy phổ biến trên lâm sàng:</p>
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Nhóm nguyên nhân</th>
+                    <th>Ví dụ bệnh / hội chứng</th>
+                    <th>Đặc điểm lâm sàng chính</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Nhiễm trùng dạ dày - ruột (Tại ruột)</strong></td>
+                    <td>
+                      <strong>Viêm dạ dày ruột cấp</strong> (do Rotavirus, Salmonella, E. coli)<br>
+                      <strong>Hội chứng Lỵ</strong> (Lỵ trực khuẩn Shigella / Lỵ Amip)<br>
+                      <strong>Bệnh Tả</strong> (Vibrio cholerae)
+                    </td>
+                    <td>
+                      - Sốt, nôn mửa, tiêu chảy phân lỏng nhiều nước, đau quặn bụng, đau mỏi cơ.<br>
+                      - Sốt cao, đau bụng quặn, mót rặn nhiều, phân ít nhưng có nhầy và máu.<br>
+                      - Tiêu chảy ồ ạt phân toàn nước đục như nước vo gạo, không sốt hoặc sốt nhẹ, mất nước tiến triển cực nhanh dẫn đến sốc.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Cấp cứu Ngoại khoa ổ bụng</strong></td>
+                    <td>
+                      <strong>Viêm ruột thừa cấp</strong><br>
+                      <strong>Lồng ruột (Trẻ em)</strong>
+                    </td>
+                    <td>
+                      - Sốt nhẹ/vừa, nôn, đau quanh rốn khu trú dần về hố chậu phải, phản ứng thành bụng (+).<br>
+                      - Trẻ nhỏ khóc thét từng cơn, nôn vọt, đại tiện phân nhầy máu đỏ như siro/dâu tây, sờ thấy khối lồng ở bụng.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Nhiễm trùng ngoài đường tiêu hóa</strong></td>
+                    <td>
+                      <strong>Viêm màng não mủ</strong><br>
+                      <strong>Viêm tai giữa / Viêm phổi cấp</strong>
+                    </td>
+                    <td>
+                      - Sốt cao, nôn vọt (không liên quan ăn uống), đau đầu nhiều, cổ cứng (+), vạch màng não (+), tri giác suy giảm.<br>
+                      - Sốt, nôn ói và tiêu chảy phản ứng ở trẻ nhỏ đi kèm ho, khó thở, ran nổ ở phổi hoặc đau tai, màng nhĩ xung huyết đỏ.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 3 PHỤ: 100% width (Bổ trợ Chẩn đoán phân biệt trẻ em) -->
+        <div class="symptom-step-card border-warning symptom-col-12" id="bo-tro-chan-doan-tre-em">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-warning">Bổ trợ Bước 3</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-baby"></i> Phân biệt các thể lâm sàng tiêu chảy ở trẻ em (WHO)</h3>
+          <div class="step-card-body">
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Chẩn đoán (WHO)</th>
+                    <th>Đặc điểm lâm sàng ủng hộ</th>
+                    <th>Xét nghiệm & Định hướng xử trí</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Tiêu chảy cấp phân nước (Acute watery diarrhoea)</strong></td>
+                    <td>Đi tiêu phân lỏng &ge; 3 lần/ngày, không có máu trong phân. Thường tự giới hạn.</td>
+                    <td>Đánh giá mất nước lâm sàng. Bù nước bằng Oresol là chủ yếu. Không dùng kháng sinh.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Bệnh Tả (Cholera)</strong></td>
+                    <td>Tiêu chảy phân nước ồ ạt, số lượng cực nhiều gây mất nước nặng nhanh chóng trong vùng dịch tễ tả.</td>
+                    <td>Cấy phân (+) với Vibrio cholerae O1 hoặc O139. Bù dịch tích cực tĩnh mạch/uống + Kháng sinh đặc hiệu (Azithromycin).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Hội chứng Lỵ (Dysentery)</strong></td>
+                    <td>Phân có lẫn máu đỏ đại thể nhìn thấy bằng mắt thường (hoặc được người nhà báo cáo). Sốt cao, đau quặn bụng.</td>
+                    <td>Soi phân thấy bạch cầu, hồng cầu. Chỉ định kháng sinh sớm (Ciprofloxacin đường uống hoặc Ceftriaxone tiêm mạch).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tiêu chảy kéo dài (Persistent diarrhoea)</strong></td>
+                    <td>Tiêu chảy kéo dài liên tục từ <strong>14 ngày trở lên</strong>. Có thể dẫn đến suy dinh dưỡng nặng.</td>
+                    <td>Tìm nguyên nhân ký sinh trùng, bất dung nạp lactose. Hướng dẫn chế độ ăn kiêng, bổ sung kẽm và vitamin.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tiêu chảy kèm suy dinh dưỡng nặng</strong></td>
+                    <td>Any tiêu chảy đi kèm với dấu hiệu suy dinh dưỡng cấp nặng (severe acute malnutrition).</td>
+                    <td>Nhập viện điều trị phòng ngừa hạ đường huyết, hạ thân nhiệt, nhiễm trùng huyết và bù dịch cực kỳ cẩn trọng.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Lồng ruột (Intussusception)</strong></td>
+                    <td>Trẻ nhỏ khóc thét từng cơn kèm da xanh tái, nôn mửa nhiều, phân có nhầy máu đỏ sẫm. Sờ bụng có khối lồng.</td>
+                    <td><strong>Siêu âm bụng thấy hình ảnh bia bắn/hình giả thận</strong>. Chuyển ngoại khoa tháo lồng bằng hơi khẩn cấp.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 4: 50% width (Biện luận lâm sàng) -->
+        <div class="symptom-step-card border-success symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-success">Bước 4</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-filter"></i> Biện luận lâm sàng (Clinical reasoning)</h3>
+          <div class="step-card-body">
+            <p>Phương pháp phân tầng ưu tiên chẩn đoán:</p>
+            <ul>
+              <li><strong>Độ ưu tiên cấp cứu:</strong> Luôn đánh giá tình trạng huyết động và mất nước trước tiên. Loại trừ sốc giảm thể tích, viêm màng não mủ, và bụng ngoại khoa (viêm ruột thừa, tắc ruột) trước khi chẩn đoán Viêm dạ dày ruột cấp thông thường.</li>
+              <li><strong>Định hướng chẩn đoán:</strong>
+                <ul>
+                  <li><em>Nôn nhiều + Tiêu chảy phân nước nhiều + Đau mỏi cơ:</em> Ủng hộ <em>Viêm dạ dày ruột cấp do siêu vi</em> (Rotavirus, Norovirus) hoặc ngộ độc độc tố tụ cầu (sốt nhẹ/không sốt).</li>
+                  <li><em>Sốt cao + Đau quặn bụng + Mót rặn + Phân nhầy máu:</em> Hướng tới <em>Lỵ trực khuẩn (Shigella)</em> hoặc nhiễm khuẩn xâm lấn.</li>
+                  <li><em>Trẻ em sốt cao + Nôn vọt + Đau đầu / Cổ cứng:</em> Nghĩ ngay đến <em>Viêm màng não mủ</em>, chọc dò dịch não tủy là chỉ định bắt buộc nếu không có chống chỉ định.</li>
+                  <li><em>Nôn nhiều + Bí trung đại tiện + Bụng chướng đau cơn:</em> Cảnh báo <em>Tắc ruột / Lồng ruột</em>.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 5: 50% width (Cận lâm sàng) -->
+        <div class="symptom-step-card border-info symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-vials"></i> Chỉ định Cận lâm sàng hợp lý</h3>
+          <div class="step-card-body">
+            <p>Các cận lâm sàng định hướng và theo dõi điều trị:</p>
+            <ul>
+              <li><strong>Xét nghiệm máu đánh giá rối loạn điện giải và chức năng thận:</strong>
+                <ul>
+                  <li>Điện giải đồ (Na+, K+, Cl-) để phát hiện mất nước nhược trương, ưu trương và hạ kali máu do mất qua phân.</li>
+                  <li>Ure, Creatinin đánh giá suy thận cấp trước thận do giảm thể tích tuần hoàn.</li>
+                  <li>Công thức máu: Hematocrit tăng (máu cô đặc), Bạch cầu tăng/chuyển trái (nhiễm khuẩn ruột xâm lấn).</li>
+                  <li>Khí máu động mạch nếu nghi ngờ toan chuyển hóa nặng (ở bệnh nhân mất nước nặng, thở nhanh sâu kiểu Kussmaul).</li>
+                </ul>
+              </li>
+              <li><strong>Xét nghiệm phân:</strong>
+                <ul>
+                  <li>Soi phân tìm hồng cầu, bạch cầu (gợi ý lỵ trực khuẩn), kén amip, ấu trùng ký sinh trùng.</li>
+                  <li>Test nhanh kháng nguyên Rotavirus (ở trẻ &lt; 5 tuổi).</li>
+                  <li><strong>Cấy phân:</strong> Chỉ định khi phân có máu, nghi ngờ tả nặng, bệnh nhân suy giảm miễn dịch hoặc tiêu chảy kéo dài. Không làm cấy phân thường quy cho tiêu chảy phân nước tự giới hạn.</li>
+                </ul>
+              </li>
+              <li><strong>Chẩn đoán hình ảnh:</strong> Siêu âm bụng (tầm soát viêm ruột thừa, lồng ruột), X-quang bụng đứng không chuẩn bị (tìm mức nước - hơi nếu nghi ngờ tắc ruột).</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 5 PHỤ: 100% width (Bổ trợ Phân loại mất nước IMCI) -->
+        <div class="symptom-step-card border-info symptom-col-12" id="phan-loai-mat-nuoc-imci">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bổ trợ Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-baby"></i> Phân loại mức độ mất nước theo IMCI (WHO)</h3>
+          <div class="step-card-body">
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Triệu chứng đánh giá</th>
+                    <th>Mất nước nặng (Phác đồ C)</th>
+                    <th>Có mất nước (Phác đồ B)</th>
+                    <th>Không mất nước (Phác đồ A)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Toàn trạng (Ý thức)</strong></td>
+                    <td><span class="text-danger">Li bì, ngủ gà, khó đánh thức</span></td>
+                    <td>Kích thích, vật vã, quấy khóc</td>
+                    <td>Tỉnh táo, chơi ngoan</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Mắt trũng</strong></td>
+                    <td>Trũng sâu rõ rệt (++)</td>
+                    <td>Mắt trũng (+)</td>
+                    <td>Mắt bình thường, không trũng (-)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Khả năng uống nước</strong></td>
+                    <td><span class="text-danger">Không uống được hoặc uống rất kém</span></td>
+                    <td>Uống háo hức, khát nước rõ rệt</td>
+                    <td>Uống bình thường, không khát</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Nếp véo da bụng (Skin pinch)</strong></td>
+                    <td><span class="text-danger">Mất rất chậm (&gt; 2 giây)</span></td>
+                    <td>Mất chậm (&le; 2 giây)</td>
+                    <td>Mất nhanh tức thì (dưới 1 giây)</td>
+                  </tr>
+                  <tr class="table-summary-row">
+                    <td><strong>Tiêu chuẩn phân loại</strong></td>
+                    <td>Có từ <strong>&ge; 2 dấu hiệu</strong> (trong đó có ít nhất 1 dấu hiệu màu đỏ).</td>
+                    <td>Có từ <strong>&ge; 2 dấu hiệu</strong> thuộc cột này.</td>
+                    <td>Không đủ dấu hiệu để phân loại vào hai nhóm trên.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="step-alert-box" style="margin-top: 1rem;">
+              <i class="fas fa-info-circle"></i>
+              <span><strong>Lưu ý quan trọng:</strong> Đối với trẻ nhỏ dưới 2 tháng tuổi, dấu hiệu khát nước không được sử dụng để đánh giá phân loại mức độ mất nước do khó nhận biết chính xác.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 6: 50% width (Xử trí ban đầu) -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 6</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-capsules"></i> Hướng xử trí ban đầu</h3>
+          <div class="step-card-body">
+            <p>Nguyên tắc hồi sức nước điện giải và chỉ định điều trị đặc hiệu:</p>
+            <ul>
+              <li><strong>Hồi sức dịch truyền tĩnh mạch (Phác đồ C cho Mất nước nặng):</strong>
+                <ul>
+                  <li>Lựa chọn dịch truyền: Ringer Lactate hoặc Natri Clorid 0.9% truyền tĩnh mạch.</li>
+                  <li>Liều lượng: <strong>100 mL/kg</strong>.</li>
+                  <li><em>Trẻ &lt; 12 tháng:</em> 30 mL/kg truyền trong 1 giờ đầu; 70 mL/kg truyền trong 5 giờ tiếp theo.</li>
+                  <li><em>Trẻ &ge; 12 tháng & Người lớn:</em> 30 mL/kg truyền trong 30 phút đầu; 70 mL/kg truyền trong 2 giờ rưỡi tiếp theo.</li>
+                  <li>Đánh giá lại mạch, huyết áp và nếp véo da mỗi 15-30 phút để điều chỉnh tốc độ dịch.</li>
+                </ul>
+              </li>
+              <li><strong>Bù nước đường uống (Phác đồ A & B):</strong>
+                <ul>
+                  <li><em>Phác đồ A (Không mất nước):</em> Cho uống Oresol sau mỗi lần đi tiêu (trẻ &lt; 2 tuổi: 50-100ml; trẻ &ge; 2 tuổi: 100-200ml; người lớn: uống theo nhu cầu).</li>
+                  <li><em>Phác đồ B (Có mất nước):</em> Cho uống Oresol liều <strong>75 mL/kg trong 4 giờ đầu</strong> tại cơ sở y tế. Theo dõi sát khả năng uống của trẻ.</li>
+                </ul>
+              </li>
+              <li><strong>Chỉ định kháng sinh đặc hiệu (Không dùng thường quy):</strong>
+                <ul>
+                  <li><em>Lỵ trực khuẩn:</em> Ciprofloxacin 15 mg/kg uống x 2 lần/ngày trong 3 ngày, hoặc Ceftriaxone 50-100 mg/kg/ngày tiêm tĩnh mạch.</li>
+                  <li><em>Lỵ Amip:</em> Metronidazole 10 mg/kg x 3 lần/ngày trong 5-10 ngày.</li>
+                  <li><em>Bệnh Tả nặng:</em> Azithromycin 20 mg/kg liều duy nhất hoặc Erythromycin.</li>
+                </ul>
+              </li>
+              <li><strong>Bổ sung Kẽm (Zinc) cho trẻ em dưới 5 tuổi:</strong> Bắt buộc chỉ định cho trẻ bị tiêu chảy cấp. Giúp rút ngắn thời gian và giảm mức độ nặng của bệnh, đồng thời phòng ngừa đợt tiêu chảy mới trong 2-3 tháng sau.
+                <ul>
+                  <li>Trẻ &lt; 6 tháng tuổi: 10 mg/ngày trong 10-14 ngày.</li>
+                  <li>Trẻ &ge; 6 tháng tuổi: 20 mg/ngày trong 10-14 ngày.</li>
+                </ul>
+              </li>
+              <li><strong>Xử trí triệu chứng:</strong> Hạ sốt bằng Paracetamol (10-15 mg/kg mỗi 4-6 giờ). <strong>KHÔNG DÙNG</strong> thuốc cầm tiêu chảy (Loperamide, diphenoxylate) và thuốc chống nôn (như metoclopramide) cho trẻ nhỏ do nguy cơ che lấp cấp cứu bụng ngoại khoa, liệt ruột và ngộ độc thần kinh.</li>
+            </ul>
+
+            <!-- Trích dẫn Lưu đồ Phác đồ xử trí mất nước cấp cứu theo IMCI -->
+            <div class="image-placeholder-card">
+              <div class="image-title">
+                <span>📊</span> Sơ đồ 2: Phác đồ Bù dịch mất nước (Phác đồ A, B, C) – Hướng dẫn Bộ Y tế & WHO
+              </div>
+              <div class="image-drop-area">
+                <div class="image-drop-text">
+                  <img src="../../../../../images/TC_Sot_TieuChay_Hinh2.png" alt="Dehydration Rehydration Protocols"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <div class="fallback-placeholder" style="display: none;">
+                    <i class="fa-regular fa-image"></i>
+                    <p>Sơ đồ Phác đồ bù dịch đang được cập nhật</p>
+                  </div>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Tóm tắt phác đồ bù nước theo phân loại mất nước:</strong><br>
+                - **Không mất nước &rarr; Phác đồ A:** Điều trị và bù nước Oresol tại nhà sau mỗi lần đi tiêu. Tiếp tục cho trẻ ăn uống bình thường.<br>
+                - **Có mất nước &rarr; Phác đồ B:** Điều trị bù Oresol đường uống liều 75ml/kg tại cơ sở y tế trong 4 giờ. Đánh giá lại sau 4 giờ.<br>
+                - **Mất nước nặng &rarr; Phác đồ C:** Cấp cứu hồi sức dịch truyền tĩnh mạch khẩn cấp (100ml/kg Ringer Lactate/Natri clorid 0.9%). Chia tốc độ truyền theo tuổi (<a href="#buoc-6">Xem chi tiết Bước 6</a>).
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 7: 50% width (Chuyển tuyến) -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 7</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-ambulance"></i> Tiêu chuẩn chuyển viện & hội chẩn</h3>
+          <div class="step-card-body">
+            <p>Chuyển tuyến điều trị tích cực hoặc hội chẩn khẩn cấp khi:</p>
+            <ul>
+              <li>Bệnh nhân mất nước nặng (Phác đồ C) thất bại bù dịch hoặc không thể thiết lập đường truyền tĩnh mạch ngoại biên khẩn cấp.</li>
+              <li>Nôn ói liên tục mọi thứ, không thể uống được Oresol hay nước.</li>
+              <li>Nghi ngờ biến chứng bụng ngoại khoa (viêm ruột thừa, lồng ruột, tắc ruột, viêm phúc mạc).</li>
+              <li>Bệnh nhân có sốt cao kèm nôn vọt, có dấu hiệu màng não, rối loạn tri giác hoặc co giật.</li>
+              <li>Tiêu chảy cấp có biến chứng rối loạn điện giải nặng (tăng/hạ natri máu, hạ kali máu nặng) hoặc suy thận cấp tiến triển.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- VISUAL ALGORITHMS CARDS (Sơ đồ 1 đặt tại phần riêng) -->
+      <section class="symptom-grid" style="margin-top: 2rem;">
+        
+        <!-- Lưu đồ 1: Phân biệt chẩn đoán tiêu chảy -->
+        <div class="symptom-step-card border-warning symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-warning">Sơ đồ 1</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-project-diagram"></i> Phân biệt các thể chẩn đoán tiêu chảy ở trẻ em (WHO)</h3>
+          <div class="step-card-body">
+            <div class="image-placeholder-card">
+              <div class="image-title">
+                <span>📊</span> Lưu đồ Chẩn đoán phân biệt Tiêu chảy – Hướng dẫn WHO
+              </div>
+              <div class="image-drop-area">
+                <div class="image-drop-text">
+                  <img src="../../../../../images/TC_Sot_TieuChay_Hinh1.png" alt="Differential Diagnosis Diarrhoea Algorithm"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <div class="fallback-placeholder" style="display: none;">
+                    <i class="fa-regular fa-image"></i>
+                    <p>Sơ đồ lưu đồ chẩn đoán phân biệt tiêu chảy đang được cập nhật</p>
+                  </div>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Tóm tắt lưu đồ (Differential diagnosis in a child presenting with diarrhoea):</strong><br>
+                - <strong>Tiêu chảy cấp phân nước:</strong> Đi lỏng &ge; 3 lần/ngày, không máu trong phân.<br>
+                - <strong>Bệnh Tả:</strong> Tiêu chảy phân nước ồ ạt, mất nước nặng rất nhanh trong mùa dịch tả, cấy phân (+) với phẩy khuẩn tả.<br>
+                - <strong>Hội chứng Lỵ:</strong> Phân có lẫn máu đỏ đại thể nhìn thấy được.<br>
+                - <strong>Tiêu chảy kéo dài:</strong> Thời gian tiêu chảy kéo dài liên tục từ 14 ngày trở lên.<br>
+                - <strong>Tiêu chảy kèm suy dinh dưỡng nặng:</strong> Có các dấu hiệu suy dinh dưỡng cấp nặng đi kèm.<br>
+                - <strong>Lồng ruột:</strong> Khóc thét từng cơn, nôn ói, phân nhầy máu đỏ sẫm, bụng có khối lồng.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- TAKE HOME MESSAGES -->
+      <section class="take-home-card">
+        <div class="take-home-title">
+          <i class="fas fa-lightbulb"></i> Thông điệp Cốt lõi (Take-home Messages)
+        </div>
+        <div class="take-home-body">
+          <ul>
+            <li><strong>Mắt trũng & Nếp véo da:</strong> Đánh giá mức độ mất nước thông qua tri giác, mắt trũng và nếp véo da bụng là bước lâm sàng quan trọng nhất quyết định phác đồ cấp cứu ở bệnh nhân nôn mửa, tiêu chảy.</li>
+            <li><strong>Chỉ định kháng sinh hạn chế:</strong> Tuyệt đối không dùng kháng sinh kinh nghiệm thường quy cho bệnh nhân tiêu chảy cấp phân nước, trừ khi có phân nhầy máu (lỵ), tả nặng hoặc có nhiễm trùng toàn thân đi kèm.</li>
+            <li><strong>Tầm soát viêm màng não:</strong> Ở trẻ em sốt cao kèm nôn vọt, không được chủ quan chẩn đoán rối loạn tiêu hóa thông thường mà phải luôn thăm khám thần kinh tìm dấu màng não.</li>
+            <li><strong>Tuyệt đối không dùng thuốc cầm tiêu chảy cho trẻ nhỏ:</strong> Việc dùng các thuốc này làm giảm nhu động ruột, có thể gây chướng bụng liệt ruột, ứ đọng độc tố và che lấp các dấu hiệu bụng ngoại khoa nguy cấp.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TÀI LIỆU THAM KHẢO -->
+      <section class="references-card">
+        <div class="references-title">
+          <i class="fas fa-book"></i> Tài liệu Tham khảo
+        </div>
+        <ol class="references-list">
+          <li>WHO Pocket Book of Hospital Care for Children, 2nd Edition (9789241548373_eng.pdf).</li>
+          <li>CÁC VẤN ĐỀ LÂM SÀNG THIẾT YẾU của chương trình ĐÀO TẠO BÁC SĨ Y KHOA - Bộ Y tế.</li>
+          <li>Algorithms for Emergency Medicine 2023.</li>
+          <li>Symptoms to Diagnosis: An Evidence-Based Guide, 4th Edition (S2D4ed.pdf).</li>
+          <li>PHÁC ĐỒ ĐIỀU TRỊ BỆNH LÝ NHI KHOA - Bộ Y tế.</li>
+        </ol>
+      </section>
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+  <!-- JS Core -->
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+
+  <!-- JS Layout tiếp cận triệu chứng -->
+  <script src="../../../../../js/approach-symptom.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tiếp cận chẩn đoán và xử trí bệnh nhân Sốt kèm Vàng da">
+  <title>Sốt & Vàng da – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core (5 levels up) -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+
+  <!-- CSS Layout tiếp cận triệu chứng -->
+  <link rel="stylesheet" href="../../../../../css/components/approach-symptom.css">
+</head>
+
+<body>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="TC_Sot.html" class="nav-item active" title="Tiếp cận Sốt">
+              <span class="nav-icon">🌡️</span>
+              <span class="nav-text">Tiếp cận Sốt</span>
+            </a>
+          </li>
+        </ul>
+
+        <!-- Mục lục tự động (TOC) sẽ được JS tự động chèn vào đây -->
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="main-wrapper">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Trang chủ</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="TC_Sot.html" class="breadcrumb-link">Tiếp cận Sốt</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Sốt + Vàng da</li>
+        </ol>
+      </nav>
+
+      <!-- HERO BANNER -->
+      <section class="hero-dashboard">
+        <div class="hero-intro">
+          <h1>🌡️ TIẾP CẬN SỐT KÈM VÀNG DA</h1>
+          <p>Tổ hợp triệu chứng cảnh báo bệnh cảnh gan mật cấp tính, suy tế bào gan tối cấp hoặc nhiễm trùng nhiễm độc nặng cần can thiệp khẩn cấp.</p>
+        </div>
+      </section>
+
+      <!-- SYMPTOM GRID LAYOUT (BƯỚC 1 -> 7) -->
+      <div class="symptom-grid">
+
+        <!-- BƯỚC 1: 50% width (border-danger - Cấp cứu & sàng lọc nguy cơ) -->
+        <div class="symptom-step-card border-danger symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-danger">Bước 1</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-exclamation-triangle"></i> Ổn định ban đầu – Sàng lọc nguy cơ</h3>
+          <div class="step-card-body">
+            <p>Nhận diện ngay các dấu hiệu "cờ đỏ" (red flags) chỉ điểm tình trạng vàng da không ổn định và suy chức năng tạng nặng:</p>
+            <ul>
+              <li><strong>Thay đổi tri giác:</strong> Lơ mơ, lú lẫn, kích động, hôn mê, hoặc xuất hiện dấu run vẩy (asterixis/flapping tremor) gợi ý bệnh lý não gan.</li>
+              <li><strong>Sốc, tụt huyết áp:</strong> Huyết áp kẹt/tụt, tay chân lạnh ẩm, thiểu niệu (cảnh báo sốc nhiễm khuẩn đường mật hoặc sốc nhiễm trùng).</li>
+              <li><strong>Rối loạn đông máu nặng:</strong> Nhiều vết bầm tím, xuất huyết dưới da tự nhiên, chảy máu chân răng/mũi tiến triển.</li>
+              <li><strong>Đau bụng dữ dội:</strong> Đặc biệt đau nhiều vùng hạ sườn phải, đề kháng thành bụng khu trú.</li>
+              <li><strong>Cơ địa đặc biệt:</strong> Phụ nữ mang thai nghi ngờ gan nhiễm mỡ cấp thai kỳ (AFLP).</li>
+            </ul>
+            <div class="step-alert-box">
+              <i class="fas fa-ambulance"></i>
+              <span><strong>Cấp cứu gan mật:</strong> Các tình trạng như <strong>Viêm đường mật cấp</strong>, <strong>Suy gan cấp</strong>, hoặc <strong>Tán huyết cấp khối lượng lớn</strong> cần được nhận diện ngay để can thiệp dẫn lưu đường mật, hồi sức gan hoặc thay huyết tương cấp cứu.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 2: 50% width -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 2</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-notes-medical"></i> Thu thập dữ kiện tập trung</h3>
+          <div class="step-card-body">
+            <p>Khai thác nhanh các thông tin lâm sàng định hướng:</p>
+            <ul>
+              <li><strong>Đặc điểm vàng da & sốt:</strong>
+                <ul>
+                  <li><em>Vàng da:</em> Vàng da sậm (gợi ý tắc mật) hay vàng chanh nhạt (gợi ý tán huyết); thời gian xuất hiện; có đi kèm nước tiểu sẫm màu (nước tiểu màu trà đặc) hay phân bạc màu (phân trắng xám đất sét gợi ý tắc mật hoàn toàn) không.</li>
+                  <li><em>Cơn sốt:</em> Sốt cao rét run liên tục, sốt thành cơn chu kỳ hay sốt nhẹ âm ỉ.</li>
+                  <li><em>Đau bụng:</em> Vị trí đau, hướng lan (đau quặn hạ sườn phải lan lên vai phải).</li>
+                </ul>
+              </li>
+              <li><strong>Yếu tố nguy cơ & Tiền sử dịch tễ:</strong>
+                <ul>
+                  <li>Lịch sử du lịch đến vùng rừng núi lưu hành dịch (Sốt rét), tiền sử lội nước lũ/tiếp xúc súc vật (nguy cơ Leptospirosis).</li>
+                  <li>Tiền sử dùng thuốc tĩnh mạch, ma túy, quan hệ tình dục không an toàn, truyền máu hoặc xăm mình gần đây (nguy cơ viêm gan B, C cấp).</li>
+                  <li>Sử dụng các thuốc có độc tính trên gan hoặc gây tán huyết: Acetaminophen (Paracetamol) quá liều, Isoniazid (kháng lao), thuốc nam/đông y không rõ nguồn gốc.</li>
+                  <li>Tiền sử nghiện rượu, sỏi mật, phẫu thuật đường mật trước đó.</li>
+                </ul>
+              </li>
+              <li><strong>Thăm khám thực thể:</strong>
+                <ul>
+                  <li><em>Khám bụng:</em> Khám gan (gan to chắc hay mềm, ấn đau, nghiệm pháp rung gan dương tính gợi ý áp xe gan), túi mật căng to đau (dấu hiệu Courvoisier), điểm đau Murphy (+). Tìm tuần hoàn bàng hệ, báng bụng (xơ gan tiến triển).</li>
+                  <li><em>Khám da niêm:</em> Tìm dấu sao mạch, lòng bàn tay son, vết xước do ngứa, nốt xuất huyết. Khám niêm mạc mắt tìm củng mạc mắt vàng; khám niêm mạc dưới lưỡi.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 3: 100% width (Chẩn đoán phân biệt) -->
+        <div class="symptom-step-card border-warning symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-warning">Bước 3</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-list-ul"></i> Danh sách Chẩn đoán phân biệt</h3>
+          <div class="step-card-body">
+            <p>Các nhóm nguyên nhân chính cần phân biệt trên lâm sàng:</p>
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Nhóm nguyên nhân</th>
+                    <th>Ví dụ bệnh / hội chứng</th>
+                    <th>Đặc điểm lâm sàng chính</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Bệnh lý đường mật (Sau gan)</strong></td>
+                    <td><strong>Viêm đường mật cấp / Viêm túi mật cấp</strong> do sỏi</td>
+                    <td><em>Tam chứng Charcot điển hình:</em> Đau hạ sườn phải &rarr; Sốt cao rét run &rarr; Vàng da sậm. Nhiễm trùng nhiễm độc nặng, ấn đau hạ sườn phải, nước tiểu sẫm, phân bạc màu.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Bệnh lý tại gan</strong></td>
+                    <td>
+                      <strong>Viêm gan virus cấp</strong> (A, B, C)<br>
+                      <strong>Áp xe gan</strong> (vi khuẩn, amip)<br>
+                      <strong>Suy gan cấp / Viêm gan độc chất</strong>
+                    </td>
+                    <td>
+                      - Sốt nhẹ, mệt mỏi nhiều, chán ăn, buồn nôn, đau hạ sườn phải âm ỉ, nước tiểu sậm màu.<br>
+                      - Sốt cao dao động, đau tức hạ sườn phải, gan to đau, nghiệm pháp rung gan (+) rõ.<br>
+                      - Vàng da tiến triển cực nhanh, xuất hiện lơ mơ/hôn mê gan, rối loạn đông máu nặng, tiền sử ngộ độc thuốc (như Paracetamol).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Hệ thống / Tán huyết (Trước gan)</strong></td>
+                    <td>
+                      <strong>Sốt rét ác tính</strong><br>
+                      <strong>Bệnh Leptospirosis</strong><br>
+                      <strong>Nhiễm khuẩn huyết nặng</strong>
+                    </td>
+                    <td>
+                      - Sốt cơn chu kỳ rét run - nóng - vã mồ hôi, da vàng chanh nhạt, thiếu máu nặng, lách to, tiền sử đi rừng núi.<br>
+                      - Sốt cao cấp tính, đau cơ bắp chân dữ dội, xung huyết kết mạc mắt đỏ rực, vàng da sậm, kèm suy thận cấp.<br>
+                      - Sốt cao, sốc, vàng da phản ứng, ổ nhiễm trùng tiên phát rõ.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 4: 50% width (Biện luận lâm sàng) -->
+        <div class="symptom-step-card border-success symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-success">Bước 4</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-filter"></i> Biện luận lâm sàng (Clinical reasoning)</h3>
+          <div class="step-card-body">
+            <p>Phương pháp tiếp cận và phân tầng chẩn đoán ưu tiên:</p>
+            <ul>
+              <li><strong>Độ ưu tiên cấp cứu:</strong> Cần chẩn đoán phân biệt và loại trừ khẩn cấp <strong>Viêm đường mật cấp</strong> (nguy cơ sốc nhiễm khuẩn đường mật tử vong cao nếu trì hoãn giải áp đường mật), <strong>Sốt rét ác tính</strong> (cần thuốc đặc hiệu) và <strong>Suy gan tối cấp</strong>.</li>
+              <li><strong>Định hướng biện luận:</strong>
+                <ul>
+                  <li><em>Đau hạ sườn phải &rarr; Sốt rét run &rarr; Vàng da (Tam chứng Charcot):</em> Định hướng mạnh mẽ <em>Viêm đường mật cấp do tắc nghẽn</em> (sỏi, giun).</li>
+                  <li><em>Sốt + vàng da + lơ mơ/co giật hoặc flapping tremor:</em> Hướng tới <em>Suy gan cấp</em> gây hội chứng não gan.</li>
+                  <li><em>Sốt cơn + vàng da nhạt + thiếu máu + nước tiểu sẫm/đen + dịch tễ rừng núi:</em> Định hướng <em>Sốt rét ác tính</em> hoặc tán huyết cấp.</li>
+                  <li><em>Sốt + đau cơ bắp chân dữ dội + kết mạc mắt đỏ rực + suy thận:</em> Hướng tới <em>Leptospirosis</em>.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 5: 50% width (Cận lâm sàng) -->
+        <div class="symptom-step-card border-info symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-vials"></i> Chỉ định Cận lâm sàng hợp lý</h3>
+          <div class="step-card-body">
+            <p>Các cận lâm sàng thiết yếu:</p>
+            <ul>
+              <li><strong>Sinh hóa máu:</strong>
+                <ul>
+                  <li>Bilirubin (toàn phần, trực tiếp, gián tiếp) để phân loại vàng da trước gan (gián tiếp tăng), tại gan hoặc sau gan (trực tiếp tăng).</li>
+                  <li>Men gan (AST, ALT) tăng vọt &gt; 1.000 U/L gợi ý tổn thương tế bào gan cấp (viêm gan virus, ngộ độc thuốc); ALP và GGT tăng ưu thế gợi ý tình trạng ứ mật/tắc mật.</li>
+                  <li>Ure, Creatinin đánh giá biến chứng suy thận.</li>
+                </ul>
+              </li>
+              <li><strong>Huyết học & Đông máu:</strong> Công thức máu (BC tăng trong nhiễm trùng; HC/TC giảm trong sốt rét/tán huyết), <strong>thời gian Prothrombin (PT/INR)</strong> bắt buộc làm để đánh giá chức năng tổng hợp của gan (INR kéo dài &ge; 1.5 gợi ý suy gan cấp).</li>
+              <li><strong>Vi sinh & huyết thanh học:</strong>
+                <ul>
+                  <li><em>Cấy máu:</em> 2 mẫu trước khi dùng kháng sinh nếu nghi ngờ nhiễm trùng đường mật/nhiễm trùng huyết.</li>
+                  <li>HBsAg, anti-HCV, IgM anti-HAV.</li>
+                  <li>Ký sinh trùng sốt rét (phết máu ngoại biên tìm Plasmodium).</li>
+                  <li>Huyết thanh chẩn đoán Leptospira.</li>
+                </ul>
+              </li>
+              <li><strong>Siêu âm ổ bụng:</strong> Cận lâm sàng hình ảnh học đầu tay, vô cùng giá trị để phát hiện sỏi mật, giãn đường mật (tắc mật cơ học), áp xe gan hoặc dịch báng. Chụp CT hoặc MRCP nếu siêu âm chưa rõ ràng.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 5 PHỤ: 100% width (Bảng Enzym) -->
+        <div class="symptom-step-card border-info symptom-col-12" id="bang-enzym-gan">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bổ trợ Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-microscope"></i> Biến đổi Enzym gan và Bilirubin trong chẩn đoán nguyên nhân vàng da</h3>
+          <div class="step-card-body">
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Nguyên nhân</th>
+                    <th>Bilirubin trực tiếp (% của toàn phần)</th>
+                    <th>Men gan AST / ALT</th>
+                    <th>Phosphatase kiềm (ALP) / GGT</th>
+                    <th>Đặc điểm nước tiểu & phân</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Tán huyết (Trước gan)</strong></td>
+                    <td>Thấp (&lt; 20%)</td>
+                    <td>Bình thường hoặc tăng nhẹ</td>
+                    <td>Bình thường</td>
+                    <td>Bilirubin nước tiểu (-), nước tiểu màu vàng chanh đậm; phân bình thường.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Viêm gan cấp / Độc chất (Tại gan)</strong></td>
+                    <td>Cao (&gt; 40%)</td>
+                    <td>Tăng rất cao (&gt;&gt;&gt;&gt; 10-100 lần bình thường)</td>
+                    <td>Tăng nhẹ đến vừa (&lt; 2-3 lần)</td>
+                    <td>Bilirubin nước tiểu (+), nước tiểu vàng sậm; phân bình thường hoặc nhạt màu nhẹ.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Vàng da ứ mật / Tắc mật (Sau gan)</strong></td>
+                    <td>Rất cao (&gt; 50%)</td>
+                    <td>Tăng vừa</td>
+                    <td>Tăng rất cao (&gt;&gt;&gt; 3-10 lần bình thường)</td>
+                    <td>Bilirubin nước tiểu (+), nước tiểu sậm màu trà đặc; <strong>phân bạc màu</strong> (trắng xám như đất sét).</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 6: 50% width (Xử trí ban đầu) -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 6</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-capsules"></i> Hướng xử trí ban đầu</h3>
+          <div class="step-card-body">
+            <p>Nguyên tắc can thiệp cấp cứu và điều trị đặc hiệu:</p>
+            <ul>
+              <li><strong>Hồi sức huyết động:</strong> Nếu có sốc, truyền dịch tĩnh mạch đẳng trương (NaCl 0.9% hoặc Ringer Lactate) tích cực duy trì lượng nước tiểu &gt; 0.5 mL/kg/giờ. Sử dụng vận mạch sớm nếu không nâng được huyết áp sau bù đủ dịch.</li>
+              <li><strong>Suy gan cấp / Não gan:</strong> Cho bệnh nhân nằm đầu cao 30-45 độ, bảo vệ đường thở (đặt nội khí quản nếu ý thức kém bảo vệ đường thở), dùng Vitamin K tiêm mạch hoặc truyền plasma tươi đông lạnh nếu có rối loạn đông máu nặng/chảy máu hoạt động.</li>
+              <li><strong>Nhiễm trùng đường mật / Áp xe gan:</strong>
+                <ul>
+                  <li>Dùng kháng sinh phổ rộng tĩnh mạch sớm (như Ceftriaxone kết hợp Metronidazole để phủ vi khuẩn Gram âm đường ruột và kỵ khí; hoặc dùng Piperacillin-Tazobactam).</li>
+                  <li><strong>Can thiệp giải áp đường mật cấp cứu:</strong> Nếu viêm đường mật do tắc nghẽn (sỏi, giun), bắt buộc phải giải áp dẫn lưu mật sớm bằng nội soi mật tụy ngược dòng (ERCP) đặt stent hoặc cắt cơ vòng Oddi lấy sỏi, tránh sốc nhiễm khuẩn đường mật tử vong.</li>
+                </ul>
+              </li>
+              <li><strong>Sốt rét ác tính:</strong> Sử dụng Artesunate tĩnh mạch ngay lập tức.</li>
+              <li><strong>Ngộ độc Paracetamol gan cấp:</strong> Dùng giải độc đặc hiệu N-acetylcysteine (NAC) tĩnh mạch càng sớm càng tốt.</li>
+              <li><strong>Hạ sốt:</strong> Paracetamol cần <strong>tránh hoặc giảm liều tối đa</strong> (không quá 2g/ngày) ở bệnh nhân đang có suy tế bào gan rõ rệt. Lau mát tích cực hỗ trợ.</li>
+            </ul>
+
+            <!-- Trích dẫn Lưu đồ Dẫn lưu đường mật giải áp -->
+            <div class="image-placeholder-card">
+              <div class="image-title">
+                <span>📊</span> Sơ đồ 1: Lưu đồ Chỉ định Can thiệp dẫn lưu đường mật giải áp – Hướng dẫn Bộ Y tế 2020
+              </div>
+              <div class="image-drop-area">
+                <div class="image-drop-text">
+                  <img src="../../../../../images/TC_Sot_VangDa_Hinh1.png" alt="Biliary Drainage Algorithm"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <div class="fallback-placeholder" style="display: none;">
+                    <i class="fa-regular fa-image"></i>
+                    <p>Lưu đồ Chỉ định Can thiệp dẫn lưu đường mật đang được cập nhật</p>
+                  </div>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Tóm tắt phác đồ can thiệp giải áp:</strong><br>
+                Dẫn lưu đường mật loại bỏ nguyên nhân gây tắc nghẽn đường mật cơ học (sỏi, giun, u):<br>
+                - <strong>Chụp mật tụy ngược dòng (ERCP):</strong> Chỉ định ưu tiên để loại bỏ tắc nghẽn như lấy sỏi, giun đường mật hoặc đặt stent đường mật giải áp mủ.<br>
+                - <strong>Dẫn lưu đường mật qua da (PTBD):</strong> Khi ERCP thất bại hoặc có chống chỉ định.<br>
+                - <strong>Nội soi cửa sổ can thiệp:</strong> Cắt cơ vòng Oddi để giải áp và lấy sỏi mật.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 7: 50% width (Chuyển tuyến) -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 7</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-ambulance"></i> Tiêu chuẩn chuyển viện & hội chẩn</h3>
+          <div class="step-card-body">
+            <p>Chuyển tuyến khoa Hồi sức tích cực (ICU) hoặc trung tâm Ngoại Gan Mật ngay lập tức nếu:</p>
+            <ul>
+              <li>Vàng da kèm lú lẫn, flapping tremor, ngủ gà hoặc hôn mê (suy gan cấp biến chứng não gan).</li>
+              <li>Sốc nhiễm khuẩn đường mật, huyết động không ổn định bất kể đã bù dịch.</li>
+              <li>Tắc mật cơ học nặng cần can thiệp ERCP hoặc phẫu thuật giải áp đường mật cấp cứu mà cơ sở không thực hiện được.</li>
+              <li>Rối loạn đông máu nặng (INR &ge; 1.5) kèm suy gan tiến triển.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- TAKE HOME MESSAGES -->
+      <section class="take-home-card">
+        <div class="take-home-title">
+          <i class="fas fa-lightbulb"></i> Thông điệp Cốt lõi (Take-home Messages)
+        </div>
+        <div class="take-home-body">
+          <ul>
+            <li><strong>Nhận diện Sốc nhiễm trùng đường mật:</strong> Sốt cao rét run, vàng da kèm theo tụt huyết áp và thay đổi tri giác gợi ý viêm đường mật cấp mưng mủ, đòi hỏi hồi sức huyết động tích cực và can thiệp giải áp đường mật cấp cứu (ERCP).</li>
+            <li><strong>Lưu ý INR & Tri giác:</strong> Luôn đánh giá thời gian đông máu PT/INR và tri giác ở mọi bệnh nhân sốt kèm vàng da tiến triển để phát hiện và xử trí sớm tình trạng suy gan tối cấp.</li>
+            <li><strong>Siêu âm bụng là chìa khóa:</strong> Đây là thăm dò hình ảnh học đầu tay, nhanh chóng và vô cùng giá trị để định hướng vàng da là do tổn thương nhu mô gan hay tắc mật sau gan.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TÀI LIỆU THAM KHẢO -->
+      <section class="references-card">
+        <div class="references-title">
+          <i class="fas fa-book"></i> Tài liệu Tham khảo
+        </div>
+        <ol class="references-list">
+          <li>Symptoms to Diagnosis: An Evidence-Based Guide, 4th Edition (S2D4ed.pdf).</li>
+          <li>Harrison's Manual of Medicine, 20th Edition.</li>
+          <li>PHÁC ĐỒ ĐIỀU TRỊ BỆNH LÝ NHI KHOA - Bộ Y tế.</li>
+          <li>Sử dụng thuốc hợp lý trong điều trị - Bộ Y tế.</li>
+          <li>Algorithms for Emergency Medicine 2023.</li>
+        </ol>
+      </section>
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+  <!-- JS Core -->
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+
+  <!-- JS Layout tiếp cận triệu chứng -->
+  <script src="../../../../../js/approach-symptom.js" defer></script>
+</body>
+
+</html>

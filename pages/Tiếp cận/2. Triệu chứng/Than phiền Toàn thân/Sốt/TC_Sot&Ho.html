@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tiếp cận chẩn đoán và xử trí bệnh nhân Sốt kèm Ho">
+  <title>Sốt & Ho – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core (5 levels up) -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+
+  <!-- CSS Layout tiếp cận triệu chứng -->
+  <link rel="stylesheet" href="../../../../../css/components/approach-symptom.css">
+</head>
+
+<body>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="TC_Sot.html" class="nav-item active" title="Tiếp cận Sốt">
+              <span class="nav-icon">🌡️</span>
+              <span class="nav-text">Tiếp cận Sốt</span>
+            </a>
+          </li>
+        </ul>
+
+        <!-- Mục lục tự động (TOC) sẽ được JS tự động chèn vào đây -->
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="main-wrapper">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Trang chủ</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="TC_Sot.html" class="breadcrumb-link">Tiếp cận Sốt</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Sốt + Ho</li>
+        </ol>
+      </nav>
+
+      <!-- HERO BANNER -->
+      <section class="hero-dashboard">
+        <div class="hero-intro">
+          <h1>🌡️ TIẾP CẬN SỐT KÈM HO</h1>
+          <p>Tổ hợp triệu chứng thường gặp nhất của nhiễm trùng hô hấp, từ viêm phế quản nhẹ do virus đến viêm phổi nặng đe dọa tính mạng cần phân loại và xử trí kịp thời.</p>
+        </div>
+      </section>
+
+      <!-- SYMPTOM GRID LAYOUT (BƯỚC 1 -> 7) -->
+      <div class="symptom-grid">
+
+        <!-- BƯỚC 1: 50% width (border-danger - Cấp cứu & sàng lọc nguy cơ) -->
+        <div class="symptom-step-card border-danger symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-danger">Bước 1</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-exclamation-triangle"></i> Ổn định ban đầu – Sàng lọc nguy cơ</h3>
+          <div class="step-card-body">
+            <p>Nhận diện ngay các dấu hiệu "cờ đỏ" (red flags) chỉ điểm tình trạng suy hô hấp hoặc nguy kịch tính mạng ở bệnh nhân:</p>
+            <ul>
+              <li><strong>Suy hô hấp cấp:</strong>
+                <ul>
+                  <li><em>Người lớn:</em> Nhịp thở nhanh &gt; 30 lần/phút.</li>
+                  <li><em>Trẻ em:</em> Thở nhanh tùy độ tuổi (&gt; 60 lần/phút ở trẻ &lt; 2 tháng, &gt; 50 lần/phút ở trẻ 2-11 tháng, &gt; 40 lần/phút ở trẻ 1-5 tuổi), rút lõm lồng ngực mạnh, phập phồng cánh mũi, thở rên, thở rít (stridor) khi nằm yên.</li>
+                </ul>
+              </li>
+              <li><strong>Thiếu oxy máu nặng:</strong> Tím tái trung tâm (môi, đầu chi), độ bão hòa oxy SpO2 &lt; 90% khi thở khí trời.</li>
+              <li><strong>Sốc / Suy tuần hoàn:</strong> Tụt huyết áp (HATT &lt; 90 mmHg), mạch nhanh nhỏ, tay chân lạnh ẩm, thiểu niệu.</li>
+              <li><strong>Rối loạn tri giác:</strong> Lơ mơ, lú lẫn, hôn mê, hoặc không thể uống/bú được ở trẻ nhỏ.</li>
+              <li><strong>Ho ra máu lượng nhiều:</strong> Gợi ý vỡ mạch máu lớn trong lao phổi tạo hang, giãn phế quản nặng hoặc ung thư phổi.</li>
+            </ul>
+            <div class="step-alert-box">
+              <i class="fas fa-ambulance"></i>
+              <span><strong>Xử trí cấp cứu:</strong> Đảm bảo thông thoáng đường hô hấp, hỗ trợ oxy qua gọng kính hoặc mặt nạ duy trì SpO2 &gt; 90-94%, thiết lập đường truyền tĩnh mạch và chuẩn bị dụng cụ đặt nội khí quản nếu có dấu hiệu suy hô hấp nguy kịch.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 2: 50% width -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 2</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-notes-medical"></i> Thu thập dữ kiện tập trung</h3>
+          <div class="step-card-body">
+            <p>Khai thác nhanh các thông tin lâm sàng định hướng:</p>
+            <ul>
+              <li><strong>Đặc điểm ho & sốt:</strong>
+                <ul>
+                  <li><em>Thời gian ho:</em> Ho cấp tính (&lt; 3 tuần), ho bán cấp (3-8 tuần), hay ho mạn tính (&gt; 8 tuần).</li>
+                  <li><em>Tính chất ho:</em> Ho khan (thường do virus, viêm tiểu phế quản, Mycoplasma) hay ho có đờm (đờm mủ xanh/vàng gợi ý nhiễm khuẩn; đờm màu gỉ sắt gợi ý phế cầu; ho ra máu/đờm lẫn máu).</li>
+                  <li><em>Đi kèm:</em> Đau ngực kiểu màng phổi, khó thở tiến triển, khò khè, sổ mũi, đau họng, nhức mỏi cơ khớp dữ dội.</li>
+                </ul>
+              </li>
+              <li><strong>Yếu tố nguy cơ & Tiền sử:</strong> Tiền sử hút thuốc lá, bệnh phổi tắc nghẽn mạn tính (COPD), hen phế quản, suy tim, đái tháo đường. Tiền sử suy giảm miễn dịch (như HIV với CD4 &lt; 200/mcL nguy cơ cao viêm phổi PCP). Dịch tễ tiếp xúc nguồn lây Lao phổi, Cúm hoặc SARS-CoV-2.</li>
+              <li><strong>Thăm khám thực thể:</strong>
+                <ul>
+                  <li><em>Dấu hiệu sinh tồn:</em> Sốt cao đột ngột (Cúm thường sốt &gt; 39-40°C), nhịp thở, mạch, huyết áp.</li>
+                  <li><em>Khám phổi:</em> Tìm hội chứng đông đặc nhu mô phổi (gõ đục, phế âm giảm, rung thanh tăng), nghe các tiếng ran nổ, ran ẩm khu trú (viêm phổi), hoặc ran rít, ran ngáy lan tỏa (hen, COPD, viêm phế quản cấp).</li>
+                  <li><em>Khám toàn thân:</em> Tìm dấu hiệu mất nước, hạch cổ/hạch nách to, ngón tay dùi trống.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 3: 100% width (Chẩn đoán phân biệt) -->
+        <div class="symptom-step-card border-warning symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-warning">Bước 3</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-list-ul"></i> Danh sách Chẩn đoán phân biệt</h3>
+          <div class="step-card-body">
+            <p>Các nhóm nguyên nhân chính cần phân biệt trên lâm sàng:</p>
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Nhóm nguyên nhân</th>
+                    <th>Ví dụ bệnh / hội chứng</th>
+                    <th>Đặc điểm lâm sàng chính</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Nhiễm trùng hô hấp dưới cấp tính</strong></td>
+                    <td>
+                      <strong>Viêm phổi mắc phải cộng đồng (CAP)</strong><br>
+                      <strong>Viêm phế quản cấp</strong>
+                    </td>
+                    <td>
+                      - Sốt cao, ho khạc đờm mủ đục, khó thở, đau ngực kiểu màng phổi, nghe phổi có ran nổ khu trú hoặc hội chứng đông đặc nhu mô phổi.<br>
+                      - Sốt nhẹ hoặc không sốt, ho khan hoặc ho có đờm, khám phổi bình thường hoặc có ran rít/ran ngáy rải rác, không khó thở.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Nhiễm Virus hô hấp cấp</strong></td>
+                    <td>
+                      <strong>Cúm (Influenza)</strong><br>
+                      <strong>COVID-19</strong>
+                    </td>
+                    <td>
+                      - Khởi phát đột ngột, sốt rất cao (39-40°C), ho khan, đau nhức mỏi cơ toàn thân dữ dội, đau đầu, gai rét.<br>
+                      - Sốt, ho khan, khó thở tiến triển, mất khứu giác hoặc vị giác, có yếu tố dịch tễ gia đình/cộng đồng rõ rệt.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Nhiễm trùng mạn tính / Cơ hội</strong></td>
+                    <td>
+                      <strong>Lao phổi (Tuberculosis)</strong><br>
+                      <strong>Viêm phổi do Pneumocystis (PCP)</strong>
+                    </td>
+                    <td>
+                      - Sốt nhẹ về chiều, ho kéo dài &gt; 2 tuần, sụt cân nhanh, ra mồ hôi trộm ban đêm, ho ra máu, bóng thâm nhiễm/hang ở đỉnh phổi.<br>
+                      - Sốt, ho khan, khó thở tiến triển tăng dần từ từ, thường xảy ra trên bệnh nhân HIV có CD4 &lt; 200/mcL hoặc suy giảm miễn dịch nặng.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 4: 50% width (Biện luận lâm sàng) -->
+        <div class="symptom-step-card border-success symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-success">Bước 4</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-filter"></i> Biện luận lâm sàng (Clinical reasoning)</h3>
+          <div class="step-card-body">
+            <p>Phương pháp tiếp cận và biện luận phân tầng ưu tiên:</p>
+            <ul>
+              <li><strong>Độ ưu tiên hàng đầu:</strong> Bắt buộc phải chẩn đoán xác định hoặc loại trừ <strong>Viêm phổi mắc phải cộng đồng (CAP)</strong> vì đây là nguyên nhân gây tử vong hàng đầu trong các bệnh lý nhiễm trùng nếu không được điều trị kháng sinh thích hợp sớm. Đồng thời, tầm soát <strong>Lao phổi</strong> ở người có triệu chứng hô hấp kéo dài để tránh lây nhiễm chéo.</li>
+              <li><strong>Định hướng triệu chứng chìa khóa:</strong>
+                <ul>
+                  <li><em>Sốt cao + ho đờm mủ + ran nổ khu trú:</em> Định hướng mạnh mẽ <em>Viêm phổi</em>, cần chụp X-quang phổi xác nhận tổn thương thâm nhiễm nhu mô phổi.</li>
+                  <li><em>Sốt + ho nhưng sinh hiệu ổn định + phổi không ran nổ:</em> Nghĩ nhiều đến <em>Viêm phế quản cấp</em> do virus (chỉ điều trị triệu chứng, không dùng kháng sinh).</li>
+                  <li><em>Sốt cao đột ngột + ho khan + đau cơ dữ dội:</em> Định hướng <em>Cúm</em>.</li>
+                  <li><em>Ho kéo dài &gt; 2-3 tuần + sốt nhẹ về chiều + sụt cân:</em> Hướng mạnh đến <em>Lao phổi</em>, cần làm xét nghiệm đờm tầm soát.</li>
+                  <li><em>Trẻ nhỏ &lt; 2 tuổi + ho, sổ mũi + thở nhanh co kéo, khò khè:</em> Định hướng <em>Viêm tiểu phế quản cấp</em> do virus RSV.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 5: 50% width (Cận lâm sàng) -->
+        <div class="symptom-step-card border-info symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-vials"></i> Chỉ định Cận lâm sàng hợp lý</h3>
+          <div class="step-card-body">
+            <p>Các thăm dò cận lâm sàng thiết yếu:</p>
+            <ul>
+              <li><strong>X-quang ngực thẳng (CXR):</strong> Chỉ định đầu tay bắt buộc ở mọi bệnh nhân nghi ngờ viêm phổi. Giúp phát hiện tổn thương thâm nhiễm nhu mô phổi, tràn dịch màng phổi hoặc hang lao phổi, đồng thời giúp phân biệt viêm phổi với viêm phế quản cấp.</li>
+              <li><strong>Xét nghiệm máu cơ bản:</strong> Công thức máu (BC đa nhân trung tính tăng trong vi khuẩn), ure, creatinin, điện giải đồ (phục vụ đánh giá thang điểm CURB-65), chỉ số viêm CRP hoặc Procalcitonin.</li>
+              <li><strong>Đo chức năng hô hấp:</strong> Đo SpO2 liên tục, khí máu động mạch (ABG) nếu bệnh nhân suy hô hấp nặng.</li>
+              <li><strong>Vi sinh & huyết thanh học:</strong>
+                <ul>
+                  <li>Nhuộm Gram và cấy đờm, cấy máu (2 mẫu) trước khi dùng kháng sinh cho viêm phổi trung bình-nặng cần nhập viện.</li>
+                  <li>Test nhanh Cúm, PCR SARS-CoV-2 từ dịch tỵ hầu.</li>
+                  <li>Xét nghiệm đờm tìm AFB (soi trực tiếp) hoặc Xpert MTB/RIF nếu nghi ngờ Lao phổi.</li>
+                </ul>
+              </li>
+            </ul>
+            
+            <div class="symptom-table-wrapper" style="margin-top: 1rem;">
+              <div style="padding: 0.75rem; background: var(--color-surface-offset); font-weight: 700; border-bottom: 1px solid var(--color-divider); font-size: var(--text-sm);">
+                So sánh lâm sàng: CAP vs Cúm vs Viêm phế quản cấp
+              </div>
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Đặc điểm</th>
+                    <th>Viêm phổi (CAP)</th>
+                    <th>Cúm (Influenza)</th>
+                    <th>Viêm phế quản cấp</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Sốt cao</strong></td>
+                    <td>Thường xuyên</td>
+                    <td>Thường xuyên</td>
+                    <td>Không thường xuyên</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Ran nổ khu trú</strong></td>
+                    <td>Thường xuyên</td>
+                    <td>Không phổ biến</td>
+                    <td>Không phổ biến</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Khó thở</strong></td>
+                    <td>Hay gặp</td>
+                    <td>Ít gặp</td>
+                    <td>Hiếm gặp</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tổn thương CXR</strong></td>
+                    <td>Có thâm nhiễm</td>
+                    <td>Bình thường / Kẽ</td>
+                    <td>Bình thường</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 6: 50% width (Xử trí ban đầu) -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 6</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-capsules"></i> Hướng xử trí ban đầu</h3>
+          <div class="step-card-body">
+            <p>Nguyên tắc can thiệp và điều trị đặc hiệu:</p>
+            <ul>
+              <li><strong>Hỗ trợ hô hấp:</strong> Đảm bảo thông thoáng đường thở, cho thở oxy duy trì SpO2 &gt; 90-94% (hoặc 88-92% ở bệnh nhân COPD). Bù dịch tĩnh mạch nếu bệnh nhân mất nước hoặc ăn uống kém.</li>
+              <li><strong>Kháng sinh kinh nghiệm điều trị Viêm phổi (CAP):</strong>
+                <ul>
+                  <li><em>Ngoại trú (không bệnh nền):</em> Macrolide (Azithromycin 500mg ngày đầu, 250mg x 4 ngày sau) hoặc Doxycycline 100mg x 2 lần/ngày.</li>
+                  <li><em>Ngoại trú (có bệnh nền/dùng kháng sinh gần đây):</em> Beta-lactam liều cao (như Amoxicillin-Clavulanate 1g x 2 lần/ngày) phối hợp Macrolide HOẶC Fluoroquinolone hô hấp đơn trị liệu (Levofloxacin 750mg uống/ngày).</li>
+                  <li><em>Nội trú khoa thường:</em> Ceftriaxone 1-2g IV mỗi 24 giờ phối hợp Macrolide tĩnh mạch/uống HOẶC Fluoroquinolone hô hấp đơn trị liệu tĩnh mạch.</li>
+                </ul>
+              </li>
+              <li><strong>Điều trị Cúm:</strong> Cân nhắc Oseltamivir 75mg x 2 lần/ngày trong 5 ngày, hiệu quả nhất khi dùng sớm trong vòng 48 giờ đầu.</li>
+              <li><strong>Viêm phế quản cấp:</strong> Không dùng kháng sinh thường quy. Chỉ điều trị triệu chứng (giảm ho, hạ sốt, bù dịch).</li>
+              <li><strong>Xử trí triệu chứng:</strong> Hạ sốt bằng Paracetamol. Khí dung thuốc giãn phế quản (Salbutamol) nếu phổi có ran rít/ran ngáy hoặc bệnh nhân co thắt phế quản nhiều.</li>
+            </ul>
+
+            <!-- Trích dẫn Lưu đồ X-quang phổi trong Sốt kèm Ho -->
+            <div class="image-placeholder-card">
+              <div class="image-title">
+                <span>📊</span> Sơ đồ 1: Lưu đồ Xử trí dựa trên kết quả X-quang phổi ở bệnh nhân Sốt kèm Ho – Symptoms to Diagnosis 4th Edition
+              </div>
+              <div class="image-drop-area">
+                <div class="image-drop-text">
+                  <img src="../../../../../images/TC_Sot_Ho_Hinh1.png" alt="CXR Response Algorithm"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <div class="fallback-placeholder" style="display: none;">
+                    <i class="fa-regular fa-image"></i>
+                    <p>Lưu đồ Xử trí dựa trên kết quả X-quang phổi đang được cập nhật</p>
+                  </div>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Tóm tắt lưu đồ (Response to the results of the CXR in patients with cough and fever):</strong><br>
+                - Nếu phát hiện **tổn thương thâm nhiễm (infiltrate)** trên X-quang ngực:<br>
+                - &rarr; Đánh giá các tiêu chuẩn sau: Điểm CURB-65 &gt; 1; Suy hô hấp (hypoxia); Sốc; Tràn dịch màng phổi; Lú lẫn; Không uống được thuốc; Cơ địa không ổn định/sống một mình; Nghi nhiễm tụ cầu vàng (S. aureus).<br>
+                - &rarr; Nếu **CÓ** bất kỳ yếu tố nào: Tiến hành **Nhập viện (Admission)** và đánh giá thêm các nguyên nhân không phải CAP thông thường (sặc, lao, PCP, viêm phổi mạn tính).<br>
+                - &rarr; Nếu **KHÔNG**: Điều trị triệu chứng, kháng sinh kinh nghiệm ngoại trú, cân nhắc bù dịch và chụp lại X-quang sau khi bù dịch, điều trị cúm nếu trong mùa dịch cúm.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 7: 50% width (Chuyển tuyến) -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 7</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-ambulance"></i> Tiêu chuẩn nhập viện & chuyển tuyến</h3>
+          <div class="step-card-body">
+            <p>Đánh giá chỉ định nhập viện dựa trên thang điểm <strong>CURB-65</strong> (mỗi ý 1 điểm):</p>
+            <ol>
+              <li><strong>C</strong>onfusion: Lú lẫn, rối loạn tri giác mới xuất hiện.</li>
+              <li><strong>U</strong>rea: Ure máu &gt; 7 mmol/L (hoặc &gt; 20 mg/dL).</li>
+              <li><strong>R</strong>espiratory Rate: Nhịp thở &ge; 30 lần/phút.</li>
+              <li><strong>B</strong>lood Pressure: Huyết áp tâm thu &lt; 90 mmHg hoặc tâm trương &le; 60 mmHg.</li>
+              <li><strong>65</strong>: Tuổi &ge; 65.</li>
+            </ol>
+            
+            <div class="step-alert-box" style="margin-top: 1rem; border-color: rgba(var(--color-primary-rgb), 0.4); background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.08) 0%, rgba(var(--color-primary-rgb), 0.04) 100%); color: var(--color-primary);">
+              <i class="fas fa-hospital"></i>
+              <span><strong>Hướng dẫn nhập viện:</strong><br>
+                - <strong>0 - 1 điểm:</strong> Điều trị ngoại trú.<br>
+                - <strong>2 điểm:</strong> Nhập viện khoa Nội chung.<br>
+                - <strong>&ge; 3 điểm:</strong> Viêm phổi nặng, cân nhắc nhập khoa Hồi sức tích cực (ICU).
+              </span>
+            </div>
+            
+            <p style="margin-top: 1rem;"><strong>Chỉ định nhập ICU trực tiếp:</strong> Cần thở máy xâm nhập hoặc sốc nhiễm trùng cần dùng vận mạch.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- TAKE HOME MESSAGES -->
+      <section class="take-home-card">
+        <div class="take-home-title">
+          <i class="fas fa-lightbulb"></i> Thông điệp Cốt lõi (Take-home Messages)
+        </div>
+        <div class="take-home-body">
+          <ul>
+            <li><strong>Kháng sinh không phải là thần dược:</strong> Hầu hết các trường hợp sốt kèm ho do viêm phế quản cấp ở người lớn là do virus và tự giới hạn; việc lạm dụng kháng sinh không mang lại lợi ích mà còn làm tăng tỷ lệ kháng thuốc.</li>
+            <li><strong>X-quang ngực là tiêu chuẩn:</strong> Đối với bệnh nhân nghi ngờ viêm phổi, X-quang ngực thẳng là cận lâm sàng đầu tay và quan trọng nhất để xác định tổn thương thâm nhiễm nhu mô phổi.</li>
+            <li><strong>Luôn cảnh giác với Lao phổi:</strong> Đứng trước bệnh nhân sốt nhẹ về chiều kèm ho khạc đờm kéo dài trên 2 tuần và sụt cân, lao phổi là chẩn đoán phải nghĩ tới đầu tiên để tiến hành xét nghiệm đờm AFB/Xpert và cách ly phù hợp.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TÀI LIỆU THAM KHẢO -->
+      <section class="references-card">
+        <div class="references-title">
+          <i class="fas fa-book"></i> Tài liệu Tham khảo
+        </div>
+        <ol class="references-list">
+          <li>Symptoms to Diagnosis: An Evidence-Based Guide, 4th Edition (S2D4ed.pdf).</li>
+          <li>Harrison's Manual of Medicine, 20th Edition.</li>
+          <li>CÁC VẤN ĐỀ LÂM SÀNG THIẾT YẾU của chương trình ĐÀO TẠO BÁC SĨ Y KHOA.</li>
+          <li>Hướng dẫn chẩn đoán và điều trị bệnh hô hấp - Bộ Y tế Việt Nam.</li>
+          <li>Internal Medicine On Call.</li>
+        </ol>
+      </section>
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+  <!-- JS Core -->
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+
+  <!-- JS Layout tiếp cận triệu chứng -->
+  <script src="../../../../../js/approach-symptom.js" defer></script>
+</body>
+
+</html>
