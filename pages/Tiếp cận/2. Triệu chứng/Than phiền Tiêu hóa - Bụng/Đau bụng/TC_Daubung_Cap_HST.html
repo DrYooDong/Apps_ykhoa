@@ -1,13 +1,14 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi" data-theme="light">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Sơ đồ tiếp cận chẩn đoán đau 1/4 bụng trên trái (hạ sườn trái): Loại trừ nguyên nhân tim phổi ngoài ổ bụng, chẩn đoán dạ dày thực quản bằng EGD, khảo sát nhu mô lách, tụy, thận bằng CT-scan.">
-  <title>Đau Bụng Cấp ở Hạ Sườn Trái (LUQ) – CliniPortal</title>
+    content="Tiếp cận lâm sàng chẩn đoán và xử trí đau bụng cấp ở hạ sườn trái (LUQ), vỡ lách, nhồi máu lách, viêm tụy cấp, viêm loét dạ dày.">
+  <title>Đau Bụng Cấp Hạ Sườn Trái – CliniPortal</title>
 
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -15,21 +16,18 @@
     rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="../../../../../../css/reset.css">
-  <link rel="stylesheet" href="../../../../../../css/main.css">
-  <link rel="stylesheet" href="../../../../../../css/components/header.css">
-  <link rel="stylesheet" href="../../../../../../css/components/sidebar.css">
-  <link rel="stylesheet" href="../../../../../../css/components/footer.css">
+  <!-- CSS Core (5 levels up) -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
 
-  <!-- JS Core -->
-  <script src="../../../../../../js/main.js" defer></script>
-  <script src="../../../../../../components/header.js" defer></script>
-  <script src="../../../../../../components/footer.js" defer></script>
+  <!-- CSS Layout tiếp cận triệu chứng -->
+  <link rel="stylesheet" href="../../../../../css/components/approach-symptom.css">
 
   <style>
-    /* ============================================================
-       QUICK SUB-NAVIGATION SWITCHER BAR (DUAL-ROW)
-    ============================================================ */
+    /* Sub-navigation Switcher Bar */
     .tc-sub-nav {
       display: flex;
       flex-direction: column;
@@ -37,10 +35,9 @@
       margin-bottom: 24px;
       padding: 12px;
       background: var(--color-surface);
-      border: 1px solid var(--color-divider);
+      border: 1px solid var(--color-border);
       border-radius: var(--radius-md);
       box-shadow: var(--shadow-sm);
-      animation: fadeInUp 0.4s ease-out;
       width: 100%;
       box-sizing: border-box;
     }
@@ -56,14 +53,14 @@
       font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
-      color: var(--color-text-faint);
+      color: var(--color-text-muted);
       margin-right: 8px;
       letter-spacing: 0.5px;
     }
 
     .sub-nav-divider {
       height: 1px;
-      background-color: var(--color-divider);
+      background-color: var(--color-border);
       width: 100%;
     }
 
@@ -82,29 +79,24 @@
 
     .sub-nav-link:hover {
       color: var(--color-primary);
-      background: var(--color-surface-offset);
+      background: var(--color-bg);
     }
 
     .sub-nav-link.active {
       color: var(--color-primary);
       background: var(--color-primary-hl);
+      border: 1px solid var(--color-primary);
     }
   </style>
-  <link rel="stylesheet" href="../../../../../../css/components/flowchart.css">
-
-
-
-
 </head>
 
 <body>
-  <div id="header-placeholder" data-header-path="../../../../../../components/header.html"></div>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-  <!-- ===================== APP CONTAINER ===================== -->
   <div class="app-container">
-
-        <!-- SIDEBAR -->
+    <!-- SIDEBAR -->
     <aside class="app-sidebar" id="appSidebar">
       <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
         <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
@@ -122,28 +114,27 @@
             </a>
           </li>
           <li>
-            <a href="../../../tiep-can.html" class="nav-item active" aria-current="page" title="Tiếp cận">
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="nav-item active" title="Tiếp cận lâm sàng">
               <span class="nav-icon">🤒</span>
-              <span class="nav-text">Tiếp cận</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
             </a>
           </li>
         </ul>
+        <!-- Mục lục tự động (TOC) sẽ được JS tự động chèn vào đây -->
+        <div class="sidebar-toc" id="sidebarToc"></div>
       </nav>
     </aside>
 
-    <!-- ===================== MAIN CONTENT ===================== -->
-    <div class="main-wrapper flow-page" id="mainContent">
-
-      <!--BREADCRUMB-->
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="main-wrapper">
+      <!-- BREADCRUMB -->
       <nav aria-label="Breadcrumb" class="breadcrumb-container">
         <ol class="breadcrumb-list">
           <li class="breadcrumb-item">
-            <a href="../../../../../../index.html" class="breadcrumb-link">
-              <span class="home-icon">🏠</span> Home
-            </a>
+            <a href="../../../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Trang chủ</a>
           </li>
           <li class="breadcrumb-item">
-            <a href="../../../../tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
           </li>
           <li class="breadcrumb-item">
             <a href="TC_Daubung.html" class="breadcrumb-link">Tiếp cận Đau Bụng</a>
@@ -152,13 +143,11 @@
         </ol>
       </nav>
 
-
       <!-- QUICK SUB-NAVIGATION -->
       <div class="tc-sub-nav">
         <div class="sub-nav-group">
           <span class="sub-nav-label">Theo Đối Tượng:</span>
           <a href="TC_Daubung.html" class="sub-nav-link">🏠 Tổng quan</a>
-          <a href="TC_Daubung_Cap_Nguoilon.html" class="sub-nav-link">👤 Người lớn</a>
           <a href="TC_Daubung_Cap_Nguoilon-tuoi.html" class="sub-nav-link">🧓 Cao tuổi & Bệnh nền</a>
           <a href="TC_Daubung_Cap_Treem.html" class="sub-nav-link">👶 Trẻ em</a>
           <a href="TC_Daubung_Cap_Phunu.html" class="sub-nav-link">👩‍🦰 Phụ nữ sinh sản</a>
@@ -177,315 +166,295 @@
         </div>
       </div>
 
-
       <!-- HERO BANNER -->
-      <section class="flow-hero">
-        <div class="hero-badge">🧬 Lưu đồ tương tác • 2026</div>
-        <h1>Đau Bụng Cấp ở Hạ Sườn Trái (LUQ)</h1>
-        <p>Sơ đồ tiếp cận chẩn đoán đau 1/4 bụng trên trái (hạ sườn trái): Loại trừ nguyên nhân tim phổi ngoài ổ bụng,
-          chẩn đoán dạ dày thực quản bằng EGD, khảo sát nhu mô lách, tụy, thận bằng CT-scan.</p>
+      <section class="hero-dashboard">
+        <div class="hero-intro">
+          <h1>🫁 TIẾP CẬN ĐAU BỤNG CẤP Ở HẠ SƯỜN TRÁI</h1>
+          <p>Quy trình lâm sàng 7 bước tiếp cận chẩn đoán phân tầng nguy cơ và định hướng xử trí đau bụng cấp khu trú hạ sườn trái (LUQ).</p>
+        </div>
       </section>
 
-      <!-- LEGEND -->
-      <div class="flow-legend">
-        <div class="legend-item">
-          <div class="legend-dot" style="background:var(--c-danger)"></div> Khẩn cấp / Báo động đỏ
+      <!-- SYMPTOM GRID LAYOUT (BƯỚC 1 -> 7) -->
+      <div class="symptom-grid">
+
+        <!-- BƯỚC 1: Ổn định ban đầu - sàng lọc nguy cơ -->
+        <div class="symptom-step-card border-danger symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-danger">Bước 1</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-exclamation-triangle"></i> Ổn định ban đầu – Sàng lọc nguy cơ</h3>
+          <div class="step-card-body">
+            <p>Nhận diện ngay các <strong>dấu hiệu "cờ đỏ" (red flags)</strong> chỉ điểm tình trạng cấp cứu bụng ngoại khoa hoặc bệnh lý đe dọa tính mạng:</p>
+            <ul>
+              <li><strong>Huyết động không ổn định:</strong> Tụt huyết áp, nhịp tim nhanh, ngất xỉu, sốc (cảnh báo tình trạng chảy máu trong ổ bụng do vỡ lách chấn thương hoặc tự phát, vỡ phình động mạch chủ bụng, hoặc nhồi máu mạc treo ruột).</li>
+              <li><strong>Dấu hiệu viêm phúc mạc:</strong> Co cứng thành bụng (bụng cứng như gỗ), phản ứng dội (rebound tenderness) dương tính, hoặc đề kháng thành bụng khi sờ nắn (gợi ý thủng ổ loét dạ dày - tá tràng hoặc hoại tử ruột).</li>
+              <li><strong>Cơn đau ngực/bụng trên dữ dội</strong> đi kèm vã mồ hôi nhiều, khó thở, nhịp tim nhanh nhưng khám bụng mềm (cảnh báo nhồi máu cơ tim cấp hoặc thuyên tắc phổi).</li>
+              <li><strong>Đau đột ngột dữ dội, cảm giác "như xé" lan ra sau lưng</strong> (cảnh báo bóc tách động mạch chủ bụng).</li>
+            </ul>
+            <div class="step-alert-box">
+              <i class="fas fa-ambulance"></i>
+              <span><strong>Xử trí cấp cứu:</strong> Nếu có bất kỳ dấu hiệu cờ đỏ nào, đưa ngay vào phòng hồi sức khẩn cấp, thiết lập 2 đường truyền tĩnh mạch lớn, cho nhịn ăn uống hoàn toàn (NPO) và chuẩn bị truyền dịch/máu tích cực.</span>
+            </div>
+          </div>
         </div>
-        <div class="legend-item">
-          <div class="legend-dot" style="background:var(--c-warn)"></div> Sàng lọc / Đe dọa tính mạng
+
+        <!-- BƯỚC 2: Thu thập dữ kiện tập trung -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 2</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-notes-medical"></i> Thu thập dữ kiện tập trung</h3>
+          <div class="step-card-body">
+            <p>Khai thác nhanh các thông tin lâm sàng định hướng:</p>
+            <ul>
+              <li><strong>Mô tả triệu chứng:</strong>
+                <ul>
+                  <li><em>Thời gian và tính chất:</em> Đau khởi phát đột ngột và dữ dội gợi ý nhồi máu lách, vỡ lách hoặc thủng tạng rỗng. Đau cồn cào rát bỏng vùng thượng vị/hạ sườn trái liên quan đến bữa ăn (giảm/tăng sau ăn) gợi ý bệnh lý dạ dày tá tràng.</li>
+                  <li><em>Hướng lan:</em> Đau hạ sườn trái lan lên <strong>vai trái (dấu hiệu Kehr)</strong> là chỉ điểm kinh điển của tổn thương lách (vỡ lách, nhồi máu lách). Đau lan ra <strong>sau lưng</strong> gợi ý viêm tụy cấp, hoặc phình tách động mạch chủ bụng.</li>
+                  <li><em>Triệu chứng đi kèm:</em> Buồn nôn, nôn mửa nhiều, nôn máu hoặc tiêu phân đen (bệnh dạ dày tá tràng); sốt, ho, khó thở (viêm phổi/màng phổi đáy trái); tiểu máu hoặc tiểu buốt (sỏi thận trái).</li>
+                </ul>
+              </li>
+              <li><strong>Yếu tố nguy cơ:</strong> Tiền sử chấn thương bụng trái gần đây (vỡ lách); tiền sử rung nhĩ, viêm nội tâm mạc nhiễm khuẩn (nguy cơ thuyên tắc mạch gây nhồi máu lách/mạc treo); lạm dụng rượu hoặc thuốc giảm đau NSAIDs (viêm dạ dày, viêm tụy).</li>
+              <li><strong>Khám lâm sàng:</strong> Tìm phản ứng thành bụng, khám lách (sờ tìm lách to đau). Nghe tim phổi loại trừ các nguyên nhân lồng ngực gây đau quy chiếu (viêm phổi đáy trái, viêm màng ngoài tim).</li>
+            </ul>
+          </div>
         </div>
-        <div class="legend-item">
-          <div class="legend-dot" style="background:var(--c-info)"></div> Thông tin / Khám cơ bản
+
+        <!-- BƯỚC 3: Lập danh sách chẩn đoán phân biệt -->
+        <div class="symptom-step-card border-warning symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-warning">Bước 3</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-list-ul"></i> Danh sách Chẩn đoán phân biệt</h3>
+          <div class="step-card-body">
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Nhóm nguyên nhân</th>
+                    <th>Ví dụ bệnh / hội chứng</th>
+                    <th>Đặc điểm lâm sàng chính</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Bệnh lý tại Lách</strong></td>
+                    <td>
+                      <strong>Vỡ lách (Splenic rupture)</strong><br>
+                      <strong>Nhồi máu lách (Splenic infarction)</strong><br>
+                      <strong>Áp xe lách</strong>
+                    </td>
+                    <td>
+                      - Tiền sử chấn thương sườn trái (hoặc tự phát trong bệnh bạch cầu), đau lan vai trái, tụt huyết áp, sốc.<br>
+                      - Tiền sử rung nhĩ, viêm nội tâm mạc nhiễm khuẩn, đau hạ sườn trái cấp tính dữ dội lan vai trái.<br>
+                      - Sốt cao kéo dài, rét run, đau nhức vùng lách, lách to rõ rệt khi sờ nắn.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Dạ dày - Tụy - Ruột</strong></td>
+                    <td>
+                      <strong>Viêm loét dạ dày tá tràng</strong><br>
+                      <strong>Viêm tụy cấp</strong><br>
+                      <strong>Thiếu máu cục bộ đại tràng góc lách</strong>
+                    </td>
+                    <td>
+                      - Đau cồn cào thượng vị/hạ sườn trái, liên quan bữa ăn, dùng thuốc NSAIDs, có thể nôn máu/phân đen.<br>
+                      - Đau dữ dội khởi phát nhanh, lan xuyên ra <em>sau lưng</em>, buồn nôn, nôn mửa nhiều, bụng chướng.<br>
+                      - Đau quặn bụng trái đột ngột kèm theo tiêu chảy có máu, tiền sử bệnh tim mạch xơ vữa.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Thận - Tiết niệu</strong></td>
+                    <td><strong>Sỏi thận / Viêm thận bể thận trái</strong></td>
+                    <td>Đau quặn từng cơn vùng sườn lưng trái lan xuống bẹn, vỗ hông lưng trái (+), đái máu đại thể/vi thể hoặc tiểu buốt.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Ngoài ổ bụng (Tim, Phổi)</strong></td>
+                    <td>
+                      <strong>Nhồi máu cơ tim / Viêm màng ngoài tim</strong><br>
+                      <strong>Viêm phổi thùy dưới trái</strong>
+                    </td>
+                    <td>
+                      - Đau thượng vị/hạ sườn trái lan ngực, vã mồ hôi, khó thở, có yếu tố nguy cơ tim mạch, ECG biến đổi.<br>
+                      - Sốt, ho, khó thở, <em>đau kiểu màng phổi</em> (tăng khi hít sâu/ho), ran nổ ở đáy phổi trái.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
-        <div class="legend-item">
-          <div class="legend-dot" style="background:var(--c-ok)"></div> Xử trí / Kết luận
+
+        <!-- BƯỚC 4: Biện luận lâm sàng -->
+        <div class="symptom-step-card border-success symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-success">Bước 4</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-filter"></i> Biện luận lâm sàng (Clinical reasoning)</h3>
+          <div class="step-card-body">
+            <ul>
+              <li><strong>Độ ưu tiên hàng đầu:</strong> Bắt buộc phải ưu tiên loại trừ các nguyên nhân đe dọa tính mạng diễn tiến nhanh: <strong>Vỡ lách cấp tính</strong>, <strong>Nhồi máu cơ tim cấp</strong>, <strong>Thủng dạ dày</strong> và <strong>Phình tách động mạch chủ ngực-bụng</strong>.</li>
+              <li><strong>Định hướng triệu chứng chìa khóa:</strong>
+                <ul>
+                  <li>Bệnh nhân có chấn thương mạn sườn trái hoặc tiền sử rung nhĩ, có cơn đau đột ngột lan lên vai trái kèm mạch nhanh, huyết áp tụt: Chỉ điểm rất mạnh của <strong>Vỡ lách</strong> hoặc <strong>Nhồi máu lách</strong>.</li>
+                  <li>Đau thượng vị/hạ sườn trái dữ dội liên tục lan ra sau lưng, giảm khi ngồi cúi gập người, có buồn nôn và nôn nhiều: Hướng đến <strong>Viêm tụy cấp</strong>.</li>
+                  <li>Bụng mềm nhưng bệnh nhân sốt, ho, khó thở và nghe phổi có ran nổ đáy trái: Nghĩ đến đau quy chiếu do <strong>Viêm phổi thùy dưới trái</strong>.</li>
+                  <li>Đau quặn dữ dội dọc hông lưng trái lan xuống bẹn kèm tiểu máu: Hướng tới <strong>Sỏi thận / niệu quản trái</strong>.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="legend-item" style="font-style:italic; margin-left: auto;">
-          💡 Nhấn vào hộp để xem chi tiết hướng dẫn lâm sàng
+
+        <!-- BƯỚC 5: Cận lâm sàng hợp lý -->
+        <div class="symptom-step-card border-info symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-vials"></i> Chỉ định Cận lâm sàng hợp lý</h3>
+          <div class="step-card-body">
+            <p>Các cận lâm sàng cần thiết cho bệnh nhân đau hạ sườn trái:</p>
+            <ul>
+              <li><strong>Chẩn đoán hình ảnh:</strong>
+                <ul>
+                  <li><strong>CT scan bụng chậu có tiêm thuốc cản quang tĩnh mạch:</strong> Xét nghiệm lựa chọn đầu tay và ưu tiên nhất khi nghi ngờ tổn thương lách, tụy, dạ dày, thận hoặc mạch máu mạc treo.</li>
+                  <li><strong>Siêu âm tại giường (POCUS) hoặc FAST:</strong> Phát hiện nhanh dịch tự do ổ bụng (vỡ lách) hoặc tràn dịch màng phổi, tràn dịch màng ngoài tim tại cấp cứu.</li>
+                  <li><strong>X-quang ngực thẳng:</strong> Loại trừ viêm phổi đáy trái hoặc tìm liềm hơi dưới cơ hoành (thủng dạ dày).</li>
+                  <li><strong>Điện tâm đồ (ECG):</strong> Thực hiện sớm để loại trừ nhồi máu cơ tim (đặc biệt ở người có yếu tố nguy cơ).</li>
+                </ul>
+              </li>
+              <li><strong>Xét nghiệm máu và nước tiểu:</strong>
+                <ul>
+                  <li>Công thức máu, CRP (đánh giá tình trạng mất máu hoặc nhiễm trùng).</li>
+                  <li>Amylase và Lipase huyết thanh (tầm soát viêm tụy cấp).</li>
+                  <li>Men tim (Troponin) nếu nghi ngờ nhồi máu cơ tim.</li>
+                  <li>Tổng phân tích nước tiểu (hồng cầu trong sỏi thận).</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
+
+        <!-- BỔ TRỢ BƯỚC 5: Khuyến cáo hình ảnh học -->
+        <div class="symptom-step-card border-info symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bổ trợ Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-images"></i> Chỉ định Hình ảnh học ban đầu theo Đồng thuận Y khoa</h3>
+          <div class="step-card-body">
+            <p>Khuyến cáo lựa chọn hình ảnh học ban đầu đối với bệnh nhân đau bụng cấp người lớn (phù hợp với vị trí đau):</p>
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Vị trí đau bụng</th>
+                    <th>Hình ảnh học ban đầu ưu tiên</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Hố chậu phải (RLQ), Hố chậu trái (LLQ), <strong>Hạ sườn trái (LUQ)</strong>, Đau bụng lan tỏa</td>
+                    <td><strong>Chụp CT scan bụng chậu có cản quang tĩnh mạch</strong> (Computed Tomography with IV contrast)</td>
+                  </tr>
+                  <tr>
+                    <td>Hạ sườn phải (RUQ), Trên xương mu, Vùng chậu ở bệnh nhân nữ có cơ quan sinh sản</td>
+                    <td><strong>Siêu âm ổ bụng / Siêu âm vùng chậu</strong> (Ultrasonography)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-top: 8px;"><em>* Trường hợp đau hạ sườn trái không rõ nguyên nhân trên lâm sàng, chụp CT scan có cản quang là phương án chẩn đoán hình ảnh toàn diện nhất để xác định các tổn thương nhu mô lách, tụy và mạch máu.</em></p>
+          </div>
+        </div>
+
+        <!-- BƯỚC 6: Hướng xử trí ban đầu -->
+        <div class="symptom-step-card border-primary symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 6</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-hand-holding-medical"></i> Hướng xử trí ban đầu</h3>
+          <div class="step-card-body">
+            <ul>
+              <li><strong>Hồi sức cấp cứu (theo phác đồ ABCDE):</strong>
+                <ul>
+                  <li>Nếu có dấu hiệu sốc (huyết áp tụt, mạch nhanh), thiết lập 2 đường truyền tĩnh mạch lớn, bù dịch tinh thể (Ringer Lactate hoặc NaCl 0.9%) tốc độ nhanh và chuẩn bị truyền máu nếu nghi ngờ vỡ lách chảy máu nội ổ bụng.</li>
+                  <li>Yêu cầu bệnh nhân <strong>nhịn ăn uống hoàn toàn (NPO)</strong> phòng khi cần can thiệp phẫu thuật khẩn cấp.</li>
+                </ul>
+              </li>
+              <li><strong>Xử trí triệu chứng:</strong>
+                <ul>
+                  <li>Giảm đau: Sử dụng thuốc giảm đau tĩnh mạch (Opioid đường tĩnh mạch) là an toàn và cần thiết, giúp kiểm soát cơn đau mà không che lấp các dấu hiệu bụng ngoại khoa cần theo dõi.</li>
+                  <li>Sử dụng thuốc ức chế bơm proton (PPI) đường tĩnh mạch nếu nghi ngờ viêm dạ dày cấp hoặc chảy máu do loét dạ dày tá tràng.</li>
+                </ul>
+              </li>
+              <li><strong>Kháng sinh & Điều trị đặc hiệu:</strong>
+                <ul>
+                  <li>Khởi động kháng sinh phổ rộng tĩnh mạch nếu nghi ngờ thủng dạ dày gây viêm phúc mạc, áp xe lách, hoặc viêm thận bể thận cấp.</li>
+                  <li>Chuẩn bị phẫu thuật khẩn cấp nếu xác định vỡ lách có huyết động không ổn định, thủng dạ dày, hoặc nhồi máu mạc treo ruột. Vỡ lách huyết động ổn định có thể cân nhắc điều trị bảo tồn hoặc nút mạch (DSA).</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 7: Khi nào cần chuyển tuyến / gọi hội chẩn -->
+        <div class="symptom-step-card border-primary symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 7</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-hospital-user"></i> Khi nào cần chuyển tuyến / Gọi hội chẩn</h3>
+          <div class="step-card-body">
+            <ul>
+              <li><strong>Hội chẩn Ngoại khoa tiêu hóa / Ngoại lồng ngực - mạch máu khẩn cấp:</strong> Khi có bằng chứng vỡ lách, thủng ổ loét dạ dày (khí tự do ổ bụng), nhồi máu mạc treo hoặc phình tách động mạch chủ bụng.</li>
+              <li><strong>Chuyển khoa Hồi sức tích cực (ICU) hoặc tuyến trên:</strong> Khi bệnh nhân có tình trạng sốc giảm thể tích/sốc nhiễm trùng không đáp ứng bù dịch tĩnh mạch, nhồi máu cơ tim cấp, hoặc viêm tụy cấp thể nặng hoại tử có biến chứng hệ thống.</li>
+            </ul>
+          </div>
+        </div>
+
       </div>
 
-      <!-- INTERACTIVE FLOW CANVAS -->
-      <div class="flow-canvas-wrapper">
-        <div class="flow-col">
-
-          <!-- ==================== BƯỚC 1 ==================== -->
-          <div class="fnode fnode-start">
-            <div class="fnode-tag">BƯỚC 1: Đánh giá cấp cứu & Huyết động</div>
-            <div class="fnode-title">
-              <span class="step-badge">1</span>
-              Triage & Hemodynamic Status
-            </div>
-            <p class="fnode-body">
-              Đánh giá sinh hiệu và tình trạng đau khởi phát đột ngột, dữ dội hoặc dấu hiệu viêm phúc mạc toàn thể.
-            </p>
-          </div>
-
-          <div class="flow-connector">
-            <div class="flow-connector-line" style="height: 35px;"></div>
-            <div class="flow-connector-arrow"></div>
-          </div>
-
-          <div class="flow-branch">
-            <div class="flow-branch-side">
-              <div class="flow-connector-label fc-yes">🔴 CÓ (Mất ổn định/Viêm phúc mạc)</div>
-              <div class="flow-connector">
-                <div class="flow-connector-line"></div>
-                <div class="flow-connector-arrow"></div>
-              </div>
-              <div class="fnode fnode-danger clickable" onclick="toggleNode(this)">
-                <div class="fnode-tag">🚨 Hồi sức & Hội chẩn Ngoại</div>
-                <div class="fnode-title">HỒI SỨC TÍCH CỰC & NGOẠI KHOA KHẨN</div>
-                <p class="fnode-body">
-                  Nhập phòng hồi sức, thiết lập đường truyền tĩnh mạch lớn, hội chẩn Ngoại khoa khẩn cấp.
-                </p>
-                <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem chi tiết nguyên
-                  nhân & xử trí</div>
-                <div class="fnode-details">
-                  <div class="detail-box">
-                    <strong>Các nguyên nhân đe dọa tính mạng hàng đầu:</strong>
-                    <ul>
-                      <li>Phình động mạch chủ bụng (AAA) vỡ hoặc rỉ máu.</li>
-                      <li>Thiếu máu mạc treo cấp tính.</li>
-                      <li>Vỡ lách (đặc biệt nếu có tiền sử chấn thương hoặc nhiễm trùng).</li>
-                    </ul>
-                  </div>
-                  <div class="detail-box">
-                    <strong>Xử trí tức thời:</strong>
-                    Bù dịch huyết động, lấy máu làm xét nghiệm khẩn (CBC, nhóm máu chéo), chuẩn bị phòng mổ và chẩn đoán
-                    hình ảnh tại giường (POCUS) hoặc CT khẩn tùy mức độ ổn định.
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="flow-branch-side">
-              <div class="flow-connector-label fc-no">🟢 KHÔNG (Huyết động ổn định)</div>
-              <div class="flow-connector">
-                <div class="flow-connector-line"></div>
-                <div class="flow-connector-arrow"></div>
-              </div>
-
-              <!-- BƯỚC 2 -->
-              <div class="fnode fnode-info clickable" onclick="toggleNode(this)">
-                <div class="fnode-tag">BƯỚC 2: Sàng lọc ngoài ổ bụng & Xét nghiệm cơ bản</div>
-                <div class="fnode-title">
-                  <span class="step-badge">2</span>
-                  Extra-abdominal Screening & Routine Workup
-                </div>
-                <p class="fnode-body">
-                  Loại trừ các bệnh lý hô hấp, tim mạch có thể gây đau xuất chiếu vùng hạ sườn trái và chỉ định xét
-                  nghiệm
-                  cơ bản.
-                </p>
-                <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem hướng dẫn sàng
-                  lọc
-                </div>
-                <div class="fnode-details">
-                  <div class="detail-box">
-                    <strong>1. Loại trừ nguyên nhân Tim mạch / Hô hấp:</strong>
-                    <ul>
-                      <li>Viêm phổi thùy dưới trái, viêm màng phổi, nhồi máu phổi.</li>
-                      <li>Nhồi máu cơ tim (đặc biệt thành dưới), viêm màng ngoài tim, viêm nội tâm mạc.</li>
-                      <li>👉 <b>Chỉ định:</b> Đo điện tâm đồ (ECG) và chụp X-quang ngực thẳng đứng (CXR). Siêu âm tại
-                        giường (POCUS) đánh giá tràn dịch màng ngoài tim/màng phổi.</li>
-                    </ul>
-                  </div>
-                  <div class="detail-box">
-                    <strong>2. Xét nghiệm máu và nước tiểu bắt buộc:</strong>
-                    <ul>
-                      <li>Công thức máu (CBC), CRP.</li>
-                      <li>Sinh hóa máu toàn diện: AST/ALT, Urea/Creatinine, Điện giải đồ.</li>
-                      <li>Men Lipase máu (rà soát viêm tụy cấp).</li>
-                      <li>Tổng phân tích nước tiểu (Urine dipstick).</li>
-                      <li>Test thai hCG (nữ tuổi sinh sản).</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div class="flow-connector">
-                <div class="flow-connector-line"></div>
-                <div class="flow-connector-arrow"></div>
-              </div>
-
-              <!-- BƯỚC 3 -->
-              <div class="fnode fnode-warn clickable" onclick="toggleNode(this)">
-                <div class="fnode-tag">BƯỚC 3: Phân nhóm cơ quan khu trú</div>
-                <div class="fnode-title">
-                  <span class="step-badge">3</span>
-                  Anatomical & Organ-specific Assessment
-                </div>
-                <p class="fnode-body">
-                  Định hướng lâm sàng dựa trên tính chất đau và các biểu hiện đặc trưng của từng cơ quan.
-                </p>
-                <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem phân tầng chẩn
-                  đoán</div>
-                <div class="fnode-details">
-                  <div class="detail-box" style="border-left: 4px solid var(--c-purple);">
-                    <strong>🤢 Hướng dạ dày - thực quản:</strong>
-                    <p>Tiền sử viêm loét dạ dày tá tràng, đau liên quan bữa ăn, ợ chua/ợ nóng, tiêu phân đen, dùng
-                      NSAIDs.
-                      Ấn đau vùng thượng vị hoặc hạ sườn trái.</p>
-                    <p>👉 <b>Chuyển sang Bước 4A (Nội soi EGD).</b></p>
-                  </div>
-                  <div class="detail-box" style="border-left: 4px solid var(--c-info); margin-top: 8px;">
-                    <strong>🩸 Hướng Lách / Tụy / Thận / Mạch máu:</strong>
-                    <ul>
-                      <li><b>Lách:</b> Đau kèm tiền sử chấn thương bụng trái, đau lan lên vai trái (dấu Kehr - nhồi máu
-                        lách, vỡ lách), hoặc sờ thấy lách to.</li>
-                      <li><b>Tụy:</b> Đau cấp dữ dội lan ra sau lưng, tăng Lipase > 3 lần giới hạn bình thường, tiền sử
-                        sỏi mật hoặc lạm dụng rượu.</li>
-                      <li><b>Thận:</b> Đau quặn hông lưng trái lan bẹn, tiểu máu vi thể/đại thể, tiểu buốt (sỏi thận,
-                        viêm
-                        bể thận trái).</li>
-                    </ul>
-                    <p>👉 <b>Chuyển sang Bước 4B (CT Scan bụng cản quang).</b></p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="flow-connector">
-                <div class="flow-connector-line"></div>
-                <div class="flow-connector-arrow"></div>
-              </div>
-
-              <!-- BƯỚC 4 -->
-              <div class="flow-branch">
-                <div class="flow-branch-side">
-                  <div class="flow-connector-label fc-norm">🤢 Hướng Dạ dày - Thực quản</div>
-                  <div class="flow-connector">
-                    <div class="flow-connector-line"></div>
-                    <div class="flow-connector-arrow"></div>
-                  </div>
-                  <div class="fnode fnode-info clickable" onclick="toggleNode(this)">
-                    <div class="fnode-tag">BƯỚC 4A: Nội soi dạ dày</div>
-                    <div class="fnode-title">NỘI SOI TIÊU HÓA TRÊN (EGD)</div>
-                    <p class="fnode-body">
-                      Nội soi dạ dày tá tràng hoặc chụp X-quang cản quang đường tiêu hóa trên để chẩn đoán loét, viêm dạ
-                      dày.
-                    </p>
-                    <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem chi tiết
-                      điều
-                      trị</div>
-                    <div class="fnode-details">
-                      <div class="detail-box">
-                        <strong>Xử trí:</strong>
-                        <ul>
-                          <li>Nếu loét dạ dày tá tràng: Bắt đầu điều trị kháng tiết PPI, xét nghiệm tìm Helicobacter
-                            pylori để điều trị diệt trừ.</li>
-                          <li>Nếu phát hiện biến chứng (thủng ổ loét hoặc chảy máu tiêu hóa hoạt động): Cần can thiệp
-                            nội
-                            soi cầm máu hoặc hội chẩn ngoại khoa khẩn cấp.</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="flow-branch-side">
-                  <div class="flow-connector-label fc-norm">🩸 Hướng Lách/Tụy/Thận/Nghi ngờ khác</div>
-                  <div class="flow-connector">
-                    <div class="flow-connector-line"></div>
-                    <div class="flow-connector-arrow"></div>
-                  </div>
-                  <div class="fnode fnode-question clickable" onclick="toggleNode(this)">
-                    <div class="fnode-tag">BƯỚC 4B: Chụp CT Scan cản quang</div>
-                    <div class="fnode-title">CT SCAN BỤNG CHẬU CÓ CẢN QUANG</div>
-                    <p class="fnode-body">
-                      Chỉ định chụp cắt lớp vi tính bụng chậu có tiêm thuốc cản quang tĩnh mạch để đánh giá các tạng
-                      sâu.
-                    </p>
-                    <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem vai trò của
-                      CT
-                      scan</div>
-                    <div class="fnode-details">
-                      <div class="detail-box">
-                        <strong>Chỉ định vàng:</strong>
-                        CT scan là lựa chọn tốt nhất để đánh giá các tổn thương thực thể phức tạp của nhu mô lách (nhồi
-                        máu lách, áp xe lách), tụy (viêm tụy cấp, hoại tử), thận (sỏi niệu quản, viêm thận bể thận biến
-                        chứng) và hệ mạch máu.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="flow-connector">
-                <div class="flow-connector-line" style="height: 35px;"></div>
-                <div class="flow-connector-arrow"></div>
-              </div>
-
-              <!-- BƯỚC 5 -->
-              <div class="fnode fnode-ok clickable" onclick="toggleNode(this)">
-                <div class="fnode-tag">BƯỚC 5: Kết luận & Xử trí theo kết quả CT</div>
-                <div class="fnode-title">
-                  <span class="step-badge">5</span>
-                  Conclusion & Management
-                </div>
-                <p class="fnode-body">
-                  Xác định phác đồ điều trị nội khoa hoặc can thiệp ngoại khoa dựa trên kết quả hình ảnh học.
-                </p>
-                <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem hướng dẫn xử trí
-                  &
-                  cạm bẫy</div>
-                <div class="fnode-details">
-                  <div class="detail-box" style="border-left: 4px solid var(--c-danger);">
-                    <strong>🔴 CT Scan DƯƠNG TÍNH (Phát hiện tổn thương thực thể):</strong>
-                    <p>Xử trí theo bệnh lý xác định (viêm tụy cấp, nhồi máu lách, viêm thận bể thận cấp...). Hội chẩn
-                      Ngoại khoa/Nội khoa tùy mức độ nặng.</p>
-                  </div>
-                  <div class="detail-box" style="border-left: 4px solid var(--c-info); margin-top: 8px;">
-                    <strong>⚪ CT Scan ÂM TÍNH / KHÔNG RÕ RÀNG (Nondiagnostic):</strong>
-                    <p>Lưu ý: CT scan âm tính trong khoảng 73% trường hợp đau hạ sườn trái không cấp cứu ở tuyến ban
-                      đầu.
-                    </p>
-                    <p><b>Chẩn đoán loại trừ:</b> Đau bụng không đặc hiệu, sỏi niệu quản nhỏ tự đào thải, hoặc viêm loét
-                      dạ dày nhẹ.</p>
-                    <p><b>Xử trí:</b> Cho bệnh nhân ngoại trú, kê đơn giảm đau thông thường (paracetamol), thuốc ức chế
-                      tiết acid (PPI) và hẹn tái khám đánh giá lại triệu chứng sau 24-48 giờ.</p>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
+      <!-- THÔNG ĐIỆP CỐT LÕI -->
+      <section class="take-home-card">
+        <div class="take-home-title">
+          <i class="fas fa-lightbulb"></i> Thông điệp Cốt lõi (Take-home Messages)
         </div>
-
-        <!-- REFERENCE -->
-        <section class="checklist-card" style="margin-top: 2rem;">
-          <h2><i class="fa-solid fa-book-bookmark"></i> Tài liệu tham khảo y học</h2>
-          <ul
-            style="list-style: none; padding-left: 0; font-size: var(--text-xs); line-height: 1.6; display:flex; flex-direction:column; gap:8px;">
-
-            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Yew KS, George MK, Allred
-              HB.
-              Acute Abdominal Pain in Adults: Evaluation and Diagnosis. <em>Am Fam Physician</em>. 2023;107(6):585-596.
-            </li>
-            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Cartwright SL, Knudson MP.
-              Evaluation of Acute Abdominal Pain in Adults. <em>Am Fam Physician</em>. 2008;77(7):971-978.</li>
-            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Stern SDC, Cifu AS, Altkorn
-              D.
-              <em>Symptoms to Diagnosis: An Evidence-Based Guide</em>. 4th ed. McGraw-Hill Education; 2020.
-            </li>
-            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Innes JA, Dover AR,
-              Fairhurst
-              K, eds. <em>Macleod's Clinical Examination</em>. 14th ed. Elsevier; 2018.</li>
-            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Haist SA, Robbins JB.
-              <em>Internal Medicine on Call</em>. McGraw-Hill; 2005.
-            </li>
-
+        <div class="take-home-body">
+          <ul>
+            <li>Chụp cắt lớp vi tính <strong>(CT scan) ổ bụng có cản quang tĩnh mạch</strong> là phương tiện chẩn đoán hình ảnh đầu tay và chính xác nhất cho các bệnh nhân đau hạ sườn trái khi chẩn đoán lâm sàng chưa rõ ràng.</li>
+            <li>Ở bệnh nhân đau hạ sườn trái lan lên vai trái kèm theo tụt huyết áp và mạch nhanh, phải luôn nghĩ đến tình trạng <strong>vỡ lách hoặc nhồi máu lách</strong> nguy kịch (đặc biệt khi có chấn thương trước đó hoặc tiền sử viêm nội tâm mạc).</li>
+            <li>Không bao giờ được bỏ qua việc đo <strong>Điện tâm đồ (ECG) và chụp X-quang ngực</strong> ở mọi bệnh nhân đau hạ sườn trái nhằm loại trừ nhồi máu cơ tim hoặc viêm phổi đáy trái gây đau quy chiếu.</li>
+            <li>Việc sử dụng các thuốc giảm đau họ opioid ở bệnh nhân đau bụng cấp là an toàn và nhân đạo, giúp bệnh nhân ổn định mà không che lấp các dấu hiệu thực thể cần thiết.</li>
           </ul>
-        </section>
+        </div>
+      </section>
 
-      </div><!-- end main-wrapper -->
-    </div><!-- end app-container -->
+      <!-- TÀI LIỆU THAM KHẢO -->
+      <section class="references-card">
+        <div class="references-title">
+          <i class="fas fa-book"></i> Tài liệu Tham khảo
+        </div>
+        <ol class="references-list">
+          <li>Stern SDC, Cifu AS, Altkorn D. <em>Symptoms to Diagnosis: An Evidence-Based Guide</em>. 4th ed. McGraw-Hill Education; 2020.</li>
+          <li>Yew KS, George MK, Allred HB. Acute Abdominal Pain in Adults: Evaluation and Diagnosis. <em>Am Fam Physician</em>. 2023;107(6):585-596.</li>
+          <li>Kasper DL, Fauci AS, Hauser SL, Longo DL, Jameson JL, Loscalzo J. <em>Harrison's Manual of Medicine</em>. 20th ed. McGraw-Hill Education; 2019.</li>
+          <li>Cartwright SL, Knudson MP. Evaluation of Acute Abdominal Pain in Adults. <em>Am Fam Physician</em>. 2008;77(7):971-978.</li>
+          <li>Tham TCK, Collins JSA, Soetikno R, eds. <em>Gastrointestinal Emergencies</em>. 3rd ed. John Wiley & Sons; 2016.</li>
+        </ol>
+      </section>
+
+    </main>
   </div>
-  <!-- Náº¡p Footer -->
-  <div id="footer-placeholder" data-footer-path="../../../../../../components/footer.html"></div>
 
-  <script src="../../../../../../js/flowchart.js"></script>
+  <!-- FOOTER PLACEHOLDER -->
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+  <!-- JS Core -->
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+
+  <!-- JS Layout tiếp cận triệu chứng -->
+  <script src="../../../../../js/approach-symptom.js" defer></script>
 </body>
 
 </html>

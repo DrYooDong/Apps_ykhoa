@@ -1,13 +1,14 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi" data-theme="light">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Sơ đồ tiếp cận chẩn đoán đau bụng cấp ở nữ giới trong tuổi sinh đẻ: Loại trừ thai ngoài tử cung vỡ khẩn cấp, xác định trạng thái thai sản (hCG), tiếp cận đau bụng có thai (TVUS, MRI) và không có thai (viêm vùng chậu PID, xoắn buồng trứng).">
-  <title>Đau Bụng Cấp ở Phụ Nữ Độ Tuổi Sinh Sản – CliniPortal</title>
+    content="Tiếp cận lâm sàng chẩn đoán và xử trí đau bụng cấp ở phụ nữ trong độ tuổi sinh sản, thai ngoài tử cung vỡ, xoắn buồng trứng, viêm vùng chậu (PID).">
+  <title>Đau Bụng Cấp Phụ Nữ Sinh Sản – CliniPortal</title>
 
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -15,21 +16,18 @@
     rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="../../../../../../css/reset.css">
-  <link rel="stylesheet" href="../../../../../../css/main.css">
-  <link rel="stylesheet" href="../../../../../../css/components/header.css">
-  <link rel="stylesheet" href="../../../../../../css/components/sidebar.css">
-  <link rel="stylesheet" href="../../../../../../css/components/footer.css">
+  <!-- CSS Core (5 levels up) -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
 
-  <!-- JS Core -->
-  <script src="../../../../../../js/main.js" defer></script>
-  <script src="../../../../../../components/header.js" defer></script>
-  <script src="../../../../../../components/footer.js" defer></script>
+  <!-- CSS Layout tiếp cận triệu chứng -->
+  <link rel="stylesheet" href="../../../../../css/components/approach-symptom.css">
 
   <style>
-    /* ============================================================
-       QUICK SUB-NAVIGATION SWITCHER BAR (DUAL-ROW)
-    ============================================================ */
+    /* Sub-navigation Switcher Bar */
     .tc-sub-nav {
       display: flex;
       flex-direction: column;
@@ -37,10 +35,9 @@
       margin-bottom: 24px;
       padding: 12px;
       background: var(--color-surface);
-      border: 1px solid var(--color-divider);
+      border: 1px solid var(--color-border);
       border-radius: var(--radius-md);
       box-shadow: var(--shadow-sm);
-      animation: fadeInUp 0.4s ease-out;
       width: 100%;
       box-sizing: border-box;
     }
@@ -56,14 +53,14 @@
       font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
-      color: var(--color-text-faint);
+      color: var(--color-text-muted);
       margin-right: 8px;
       letter-spacing: 0.5px;
     }
 
     .sub-nav-divider {
       height: 1px;
-      background-color: var(--color-divider);
+      background-color: var(--color-border);
       width: 100%;
     }
 
@@ -82,25 +79,24 @@
 
     .sub-nav-link:hover {
       color: var(--color-primary);
-      background: var(--color-surface-offset);
+      background: var(--color-bg);
     }
 
     .sub-nav-link.active {
       color: var(--color-primary);
       background: var(--color-primary-hl);
+      border: 1px solid var(--color-primary);
     }
   </style>
-  <link rel="stylesheet" href="../../../../../../css/components/flowchart.css">
 </head>
 
 <body>
-  <div id="header-placeholder" data-header-path="../../../../../../components/header.html"></div>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-  <!-- ===================== APP CONTAINER ===================== -->
   <div class="app-container">
-
-        <!-- SIDEBAR -->
+    <!-- SIDEBAR -->
     <aside class="app-sidebar" id="appSidebar">
       <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
         <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
@@ -118,43 +114,40 @@
             </a>
           </li>
           <li>
-            <a href="../../../tiep-can.html" class="nav-item active" aria-current="page" title="Tiếp cận">
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="nav-item active" title="Tiếp cận lâm sàng">
               <span class="nav-icon">🤒</span>
-              <span class="nav-text">Tiếp cận</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
             </a>
           </li>
         </ul>
+        <!-- Mục lục tự động (TOC) sẽ được JS tự động chèn vào đây -->
+        <div class="sidebar-toc" id="sidebarToc"></div>
       </nav>
     </aside>
 
-    <!-- ===================== MAIN CONTENT ===================== -->
-    <div class="main-wrapper flow-page" id="mainContent">
-
-      <!--BREADCRUMB-->
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="main-wrapper">
+      <!-- BREADCRUMB -->
       <nav aria-label="Breadcrumb" class="breadcrumb-container">
         <ol class="breadcrumb-list">
           <li class="breadcrumb-item">
-            <a href="../../../../../../index.html" class="breadcrumb-link">
-              <span class="home-icon">🏠</span> Home
-            </a>
+            <a href="../../../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Trang chủ</a>
           </li>
           <li class="breadcrumb-item">
-            <a href="../../../../tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
           </li>
           <li class="breadcrumb-item">
             <a href="TC_Daubung.html" class="breadcrumb-link">Tiếp cận Đau Bụng</a>
           </li>
-          <li class="breadcrumb-item active" aria-current="page">Phụ nữ tuổi sinh sản</li>
+          <li class="breadcrumb-item active" aria-current="page">Phụ nữ sinh sản</li>
         </ol>
       </nav>
-
 
       <!-- QUICK SUB-NAVIGATION -->
       <div class="tc-sub-nav">
         <div class="sub-nav-group">
           <span class="sub-nav-label">Theo Đối Tượng:</span>
           <a href="TC_Daubung.html" class="sub-nav-link">🏠 Tổng quan</a>
-          <a href="TC_Daubung_Cap_Nguoilon.html" class="sub-nav-link">👤 Người lớn</a>
           <a href="TC_Daubung_Cap_Nguoilon-tuoi.html" class="sub-nav-link">🧓 Cao tuổi & Bệnh nền</a>
           <a href="TC_Daubung_Cap_Treem.html" class="sub-nav-link">👶 Trẻ em</a>
           <a href="TC_Daubung_Cap_Phunu.html" class="sub-nav-link active">👩‍🦰 Phụ nữ sinh sản</a>
@@ -174,256 +167,284 @@
       </div>
 
       <!-- HERO BANNER -->
-      <section class="flow-hero">
-        <div class="hero-badge">🧬 Lưu đồ tương tác • 2026</div>
-        <h1>Đau Bụng Cấp ở Phụ Nữ Độ Tuổi Sinh Sản</h1>
-        <p>Sơ đồ tiếp cận chẩn đoán đau bụng cấp ở nữ giới trong tuổi sinh đẻ: Loại trừ thai ngoài tử cung vỡ khẩn cấp,
-          xác định trạng thái thai sản (hCG), tiếp cận đau bụng có thai (TVUS, MRI) và không có thai (viêm vùng chậu
-          PID, xoắn buồng trứng).</p>
+      <section class="hero-dashboard">
+        <div class="hero-intro">
+          <h1>👩‍🦰 ĐAU BỤNG CẤP Ở PHỤ NỮ TRONG ĐỘ TUỔI SINH SẢN</h1>
+          <p>Quy trình lâm sàng 7 bước đánh giá chẩn đoán loại trừ biến chứng thai sản nguy kịch và tiếp cận bảo tồn chức năng sinh sản.</p>
+        </div>
       </section>
 
-      <!-- LEGEND -->
-      <div class="flow-legend">
-        <div class="legend-item">
-          <div class="legend-dot" style="background:var(--c-danger)"></div> Khẩn cấp / Báo động đỏ
+      <!-- SYMPTOM GRID LAYOUT (BƯỚC 1 -> 7) -->
+      <div class="symptom-grid">
+
+        <!-- BƯỚC 1: Ổn định ban đầu - sàng lọc nguy cơ -->
+        <div class="symptom-step-card border-danger symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-danger">Bước 1</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-exclamation-triangle"></i> Ổn định ban đầu – Sàng lọc nguy cơ</h3>
+          <div class="step-card-body">
+            <p>Nhận diện ngay các <strong>dấu hiệu "cờ đỏ" (red flags)</strong> chỉ điểm tình trạng cấp cứu ngoại khoa hoặc bệnh lý phụ khoa đe dọa tính mạng:</p>
+            <ul>
+              <li><strong>Huyết động không ổn định:</strong> Tụt huyết áp, mạch nhanh nhỏ, vã mồ hôi, da xanh tái, ngất xỉu hoặc choáng (cảnh báo tình trạng xuất huyết nội do vỡ thai ngoài tử cung hoặc vỡ nang buồng trứng xuất huyết lớn).</li>
+              <li><strong>Dấu hiệu viêm phúc mạc:</strong> Co cứng thành bụng (bụng cứng như gỗ), phản ứng dội (rebound tenderness) dương tính, hoặc đề kháng thành bụng khi sờ nắn (gợi ý thai ngoài tử cung vỡ, áp-xe phần phụ vỡ hoặc thủng tạng).</li>
+              <li><strong>Tổ hợp nguy cơ:</strong> Đau bụng cấp dữ dội đi kèm với trễ kinh, mất kinh, hoặc ra máu âm đạo bất thường.</li>
+            </ul>
+            <div class="step-alert-box">
+              <i class="fas fa-ambulance"></i>
+              <span><strong>Xử trí cấp cứu:</strong> Nếu có dấu hiệu sốc hoặc cảm ứng phúc mạc, thiết lập ngay 2 đường truyền tĩnh mạch lớn, bù nhanh dịch tinh thể (NaCl 0.9% hoặc Ringer Lactate), lấy máu thử nhóm máu và phản ứng chéo, cho bệnh nhân nhịn ăn uống hoàn toàn (NPO) chuẩn bị mổ khẩn.</span>
+            </div>
+          </div>
         </div>
-        <div class="legend-item">
-          <div class="legend-dot" style="background:var(--c-warn)"></div> Sàng lọc / Đe dọa tính mạng
+
+        <!-- BƯỚC 2: Thu thập dữ kiện tập trung -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 2</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-notes-medical"></i> Thu thập dữ kiện tập trung</h3>
+          <div class="step-card-body">
+            <p>Khai thác nhanh các thông tin tiền sử sản phụ khoa và khám thực thể:</p>
+            <ul>
+              <li><strong>Mô tả triệu chứng:</strong>
+                <ul>
+                  <li><em>Thời gian và tính chất:</em> Đau khởi phát đột ngột dữ dội ở một bên hố chậu (xoắn buồng trứng, vỡ u nang buồng trứng hoặc thai ngoài tử cung). Đau âm ỉ vùng bụng dưới lan tỏa 2 bên tăng dần kèm sốt (viêm vùng chậu - PID). Đau có liên quan đến chu kỳ kinh (đau giữa kỳ - Mittelschmerz, thống kinh).</li>
+                  <li><em>Hướng lan:</em> Đau hố chậu lan lên vai kèm chóng mặt tư thế (dấu hiệu tụ máu trong ổ bụng kích thích cơ hoành do thai ngoài tử cung vỡ).</li>
+                </ul>
+              </li>
+              <li><strong>Yếu tố nguy cơ (Tiền sử OB-GYN):</strong>
+                <ul>
+                  <li>Ngày đầu của kỳ kinh cuối cùng (LNMP) để xác định trễ kinh. Tiền sử sản khoa (sẩy thai, thai ngoài tử cung).</li>
+                  <li>Hoạt động tình dục, biện pháp tránh thai (đặc biệt dụng cụ tử cung - IUD), tiền sử mắc STIs hoặc viêm vùng chậu (PID), số lượng bạn tình.</li>
+                </ul>
+              </li>
+              <li><strong>Khám lâm sàng:</strong> Khám bụng tìm phản ứng thành bụng. <strong>Khám vùng chậu/âm đạo (Bắt buộc)</strong>: Tìm dịch tiết từ cổ tử cung, đánh giá dấu hiệu <strong>đau khi lay cổ tử cung</strong> (cervical motion tenderness) và sờ nắn tìm khối sưng đau phần phụ.</li>
+            </ul>
+          </div>
         </div>
-        <div class="legend-item">
-          <div class="legend-dot" style="background:var(--c-info)"></div> Thông tin / Khám cơ bản
+
+        <!-- BƯỚC 3: Lập danh sách chẩn đoán phân biệt -->
+        <div class="symptom-step-card border-warning symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-warning">Bước 3</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-list-ul"></i> Danh sách Chẩn đoán phân biệt</h3>
+          <div class="step-card-body">
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Nhóm nguyên nhân</th>
+                    <th>Ví dụ bệnh / hội chứng</th>
+                    <th>Đặc điểm lâm sàng chính</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Bệnh lý Sản khoa</strong></td>
+                    <td>
+                      <strong>Thai ngoài tử cung (Ectopic pregnancy)</strong><br>
+                      <strong>Sẩy thai / Dọa sẩy thai</strong>
+                    </td>
+                    <td>
+                      - Trễ kinh, ra máu âm đạo rỉ rả lợn cợn đen, đau bụng dưới một bên, <em>test thai dương tính (+)</em>, có thể choáng/ngất.<br>
+                      - Có thai, đau bụng dưới quặn từng cơn, ra máu đỏ tươi hoặc máu cục, cổ tử cung mở.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Bệnh lý Phụ khoa</strong></td>
+                    <td>
+                      <strong>Viêm vùng chậu (PID) / Áp-xe phần phụ</strong><br>
+                      <strong>Xoắn buồng trứng / U nang buồng trứng</strong><br>
+                      <strong>Lạc nội mạc tử cung</strong>
+                    </td>
+                    <td>
+                      - Sốt, đau bụng dưới hai bên, khí hư âm đạo dạng mủ, <em>đau chói khi lay động cổ tử cung</em>.<br>
+                      - Đau bụng dưới/hố chậu khởi phát đột ngột, dữ dội một bên kèm buồn nôn/nôn, sờ thấy khối phần phụ đau.<br>
+                      - Thống kinh dữ dội (đau bụng kinh tăng dần theo thời gian), đau sâu khi giao hợp.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Bệnh lý Tiêu hóa / Tiết niệu</strong></td>
+                    <td>
+                      <strong>Viêm ruột thừa cấp</strong><br>
+                      <strong>Sỏi niệu quản / Viêm bàng quang</strong>
+                    </td>
+                    <td>
+                      - Đau bụng âm ỉ quanh rốn sau đó di trú xuống HCP, buồn nôn, sốt nhẹ, không liên quan kinh nguyệt.<br>
+                      - Đau quặn sườn lưng lan xuống bẹn, tiểu máu đại thể/vi thể, tiểu buốt, tiểu rắt.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
-        <div class="legend-item">
-          <div class="legend-dot" style="background:var(--c-ok)"></div> Xử trí / Kết luận
+
+        <!-- BƯỚC 4: Biện luận lâm sàng -->
+        <div class="symptom-step-card border-success symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-success">Bước 4</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-filter"></i> Biện luận lâm sàng (Clinical reasoning)</h3>
+          <div class="step-card-body">
+            <ul>
+              <li><strong>Nguyên tắc tối thượng:</strong> Ở bất kỳ phụ nữ nào trong độ tuổi sinh sản bị đau bụng cấp, bắt buộc phải loại trừ bằng được <strong>Thai ngoài tử cung</strong> trước tiên, vì đây là nguyên nhân gây tử vong hàng đầu trong tam cá nguyệt thứ nhất. Tiếp theo là các cấp cứu bảo tồn chức năng sinh sản (xoắn buồng trứng).</li>
+              <li><strong>Định hướng triệu chứng chìa khóa:</strong>
+                <ul>
+                  <li>Trễ kinh, ra máu âm đạo đen, đau một bên và có tụt HA hoặc ngất: Chẩn đoán sơ bộ là <strong>Thai ngoài tử cung vỡ</strong> cho đến khi có bằng chứng loại trừ.</li>
+                  <li>Đau bụng dưới 2 bên kèm sốt, khí hư cổ tử cung và đau nhói khi lay cổ tử cung ở bệnh nhân trẻ tuổi: Định hướng mạnh <strong>Viêm vùng chậu (PID)</strong>.</li>
+                  <li>Đau một bên hố chậu dữ dội đột ngột kèm buồn nôn/nôn nhưng không có sốt hay trễ kinh: Nghĩ nhiều đến <strong>Xoắn buồng trứng / phần phụ</strong> hoặc vỡ nang buồng trứng xuất huyết.</li>
+                  <li>Đau âm ỉ rốn di trú HCP: <strong>Viêm ruột thừa cấp</strong>. <em>Lưu ý:</em> Ở phụ nữ mang thai lớn, vị trí ruột thừa bị đẩy lên cao hơn hướng về hạ sườn phải.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="legend-item" style="font-style:italic; margin-left: auto;">
-          💡 Nhấn vào hộp để xem chi tiết hướng dẫn lâm sàng
+
+        <!-- BƯỚC 5: Cận lâm sàng hợp lý -->
+        <div class="symptom-step-card border-info symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-vials"></i> Chỉ định Cận lâm sàng hợp lý</h3>
+          <div class="step-card-body">
+            <p>Các cận lâm sàng đặc hiệu bắt buộc:</p>
+            <ul>
+              <li><strong>Xét nghiệm nước tiểu & máu:</strong>
+                <ul>
+                  <li><strong>&beta;-hCG nước tiểu hoặc máu (Bắt buộc tuyệt đối):</strong> Làm đầu tiên ở mọi phụ nữ trước mãn kinh bị đau bụng cấp để tầm soát thai nghén.</li>
+                  <li>Công thức máu, nhóm máu và phản ứng chéo (nếu nghi thai ngoài tử cung vỡ), chức năng đông máu.</li>
+                  <li>Phết dịch cổ tử cung làm xét nghiệm NAATs tìm lậu cầu hoặc Chlamydia nếu nghi ngờ PID.</li>
+                </ul>
+              </li>
+              <li><strong>Chẩn đoán hình ảnh:</strong>
+                <ul>
+                  <li><strong>Siêu âm vùng chậu / Siêu âm đầu dò âm đạo:</strong> Phương tiện đầu tay giúp xác định vị trí túi thai, đánh giá nhu mô buồng trứng (tìm xoắn buồng trứng - mất phổ Doppler), khối áp-xe phần phụ, dịch tự do.</li>
+                  <li><strong>MRI không cản từ:</strong> Khuyến cáo chẩn đoán viêm ruột thừa ở phụ nữ có thai khi siêu âm không rõ ràng nhằm tránh tia xạ cho thai nhi.</li>
+                  <li><strong>CT scan bụng chậu:</strong> Chỉ chỉ định khi test thai <strong>chắc chắn âm tính</strong>.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
+
+        <!-- BỔ TRỢ BƯỚC 5: Sơ đồ phác đồ của Bộ Y tế -->
+        <div class="symptom-step-card border-info symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bổ trợ Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-hospital"></i> Sơ đồ xử trí và phân tuyến thai ngoài tử cung (Bộ Y tế)</h3>
+          <div class="step-card-body">
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Triệu chứng / Dấu hiệu lâm sàng</th>
+                    <th>Chẩn đoán sơ bộ</th>
+                    <th>Xử trí ban đầu & Hành động</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>- Đau bụng dưới một bên<br>- Cổ tử cung (CTC) đóng<br>- Huyết động ổn định</td>
+                    <td><strong>Theo dõi Chửa ngoài tử cung (CNTC) chưa vỡ</strong></td>
+                    <td>- Tư vấn cho thai phụ và gia đình về nguy cơ vỡ.<br>- <strong>Chuyển tuyến trên</strong> làm siêu âm đầu dò âm đạo và định lượng &beta;-hCG máu.</td>
+                  </tr>
+                  <tr>
+                    <td>- Đau bụng đột ngột dữ dội một bên<br>- CTC đóng hoặc rỉ máu đen<br>- Toàn trạng choáng/sốc, tụt huyết áp</td>
+                    <td><strong>Vỡ chửa ngoài tử cung (CNTC vỡ)</strong></td>
+                    <td>- Thiết lập đường truyền, hồi sức chống sốc bằng dịch tĩnh mạch.<br>- <strong>Chuyển tuyến trên khẩn cấp</strong> (có nhân viên y tế đi kèm) hoặc mời tuyến trên xuống hỗ trợ mổ tại chỗ.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 6: Hướng xử trí ban đầu -->
+        <div class="symptom-step-card border-primary symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 6</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-hand-holding-medical"></i> Hướng xử trí ban đầu</h3>
+          <div class="step-card-body">
+            <ul>
+              <li><strong>Hồi sức nội khoa:</strong>
+                <ul>
+                  <li>Đánh giá huyết động. Nếu có sốc (CNTC vỡ, áp-xe vỡ): Lập ngay 2 đường truyền lớn, bù dịch nhanh, chuẩn bị máu truyền, kích hoạt quy trình truyền máu khối lượng lớn.</li>
+                  <li>Yêu cầu bệnh nhân nhịn ăn uống hoàn toàn (NPO).</li>
+                </ul>
+              </li>
+              <li><strong>Điều trị đặc hiệu:</strong>
+                <ul>
+                  <li><strong>Thai ngoài tử cung vỡ:</strong> Phẫu thuật nội soi hoặc mổ mở cấp cứu cắt vòi trứng hoặc bảo tồn vòi trứng. Nếu chưa vỡ và đủ tiêu chuẩn (khối thai nhỏ, &beta;-hCG thấp, huyết động ổn), có thể điều trị nội khoa bằng tiêm Methotrexate (MTX). Tiêm Anti-D immunoglobulin nếu thai phụ có nhóm máu Rh âm.</li>
+                  <li><strong>Xoắn buồng trứng:</strong> Phẫu thuật nội soi tháo xoắn buồng trứng càng sớm càng tốt để bảo tồn nhu mô và chức năng sinh sản.</li>
+                  <li><strong>Viêm vùng chậu (PID):</strong> Dùng kháng sinh kinh nghiệm sớm đường tiêm/uống (ví dụ phối hợp Ceftriaxone tiêm bắp liều duy nhất + Doxycycline uống + Metronidazole uống).</li>
+                </ul>
+              </li>
+              <li><strong>Xử trí triệu chứng:</strong> Sử dụng thuốc giảm đau tĩnh mạch (NSAIDs hoặc Opioid) là an toàn và cần thiết, giúp giảm lo lắng đau đớn mà không làm lu mờ các dấu hiệu ngoại khoa cần theo dõi.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 7: Khi nào cần chuyển tuyến / gọi hội chẩn -->
+        <div class="symptom-step-card border-primary symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 7</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-hospital-user"></i> Khi nào cần chuyển tuyến / Gọi hội chẩn</h3>
+          <div class="step-card-body">
+            <ul>
+              <li><strong>Hội chẩn Sản Phụ khoa (OB-GYN) khẩn cấp:</strong> Cho mọi trường hợp nghi ngờ thai ngoài tử cung, u nang buồng trứng xoắn, áp-xe phần phụ, hoặc đau bụng cấp có test thai dương tính.</li>
+              <li><strong>Chuyển tuyến trên hoặc Hồi sức tích cực:</strong> Bệnh nhân có sốc giảm thể tích nặng (do chảy máu trong bụng), nhiễm trùng độc từ áp-xe vỡ, hoặc có biến chứng suy đa tạng.</li>
+            </ul>
+          </div>
+        </div>
+
       </div>
 
-      <!-- INTERACTIVE FLOW CANVAS -->
-      <div class="flow-canvas-wrapper">
-        <div class="flow-col">
-
-          <!-- ==================== BƯỚC 1 ==================== -->
-          <div class="fnode fnode-start">
-            <div class="fnode-tag">BƯỚC 1: Đánh giá ban đầu & Tình trạng huyết động</div>
-            <div class="fnode-title">
-              <span class="step-badge">1</span>
-              Primary Survey & Hemodynamics
-            </div>
-            <p class="fnode-body">
-              Đánh giá sinh hiệu đồng thời khai thác tiền sử kinh nguyệt, ra máu âm đạo, khí hư, quan hệ tình dục.
-            </p>
-          </div>
-
-          <div class="flow-connector">
-            <div class="flow-connector-line" style="height: 35px;"></div>
-            <div class="flow-connector-arrow"></div>
-          </div>
-
-          <div class="flow-branch">
-            <div class="flow-branch-side">
-              <div class="flow-connector-label fc-yes">🔴 CÓ (Huyết động không ổn định / Viêm phúc mạc toàn thể)</div>
-              <div class="flow-connector">
-                <div class="flow-connector-line"></div>
-                <div class="flow-connector-arrow"></div>
-              </div>
-              <div class="fnode fnode-danger clickable" onclick="toggleNode(this)">
-                <div class="fnode-tag">🚨 Ngoại khoa / Sản phụ khoa khẩn</div>
-                <div class="fnode-title">HỒI SỨC & CHUYỂN PHÒNG MỔ KHẨN</div>
-                <p class="fnode-body">
-                  Nghi ngờ cao thai ngoài tử cung vỡ, nang buồng trứng xuất huyết vỡ, hoặc thủng tạng rỗng.
-                </p>
-                <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem phác đồ hồi sức
-                  cấp cứu</div>
-                <div class="fnode-details">
-                  <div class="detail-box">
-                    <strong>Các bước cấp cứu khẩn cấp:</strong>
-                    <ul>
-                      <li>Thiết lập ngay 2 đường truyền tĩnh mạch lớn (cỡ 14G-16G).</li>
-                      <li>Bồi hoàn thể tích bằng dịch truyền tinh thể, làm xét nghiệm máu chéo (cross-match).</li>
-                      <li>Hội chẩn Ngoại khoa / Sản phụ khoa khẩn cấp, đưa thẳng lên phòng mổ để can thiệp nội soi/mổ hở
-                        cầm máu.</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="flow-branch-side">
-              <div class="flow-connector-label fc-no">🟢 KHÔNG (Huyết động ổn định)</div>
-              <div class="flow-connector">
-                <div class="flow-connector-line"></div>
-                <div class="flow-connector-arrow"></div>
-              </div>
-
-              <!-- BƯỚC 2 -->
-              <div class="fnode fnode-question clickable" onclick="toggleNode(this)">
-                <div class="fnode-tag">BƯỚC 2: Xác định tình trạng mang thai</div>
-                <div class="fnode-title">
-                  <span class="step-badge">2</span>
-                  Pregnancy Testing (beta-hCG)
-                </div>
-                <p class="fnode-body">
-                  Bắt buộc chỉ định xét nghiệm beta-hCG (nước tiểu hoặc huyết thanh) cho mọi phụ nữ trong độ tuổi sinh
-                  sản.
-                </p>
-                <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem lý do & định
-                  hướng
-                </div>
-                <div class="fnode-details">
-                  <div class="detail-box">
-                    <strong>Nguyên tắc vàng:</strong>
-                    Bất kể tiền sử tránh thai, thắt ống dẫn trứng, hay chu kỳ kinh nguyệt tự khai báo, xét nghiệm
-                    beta-hCG
-                    vẫn là bắt buộc để tránh bỏ sót thai ngoài tử cung.
-                    <ul>
-                      <li><b>Nếu beta-hCG DƯƠNG TÍNH (+):</b> Bệnh nhân đang mang thai. 👉 <b>Chuyển sang Bước 3.</b>
-                      </li>
-                      <li><b>Nếu beta-hCG ÂM TÍNH (-):</b> Bệnh nhân không có thai. 👉 <b>Chuyển sang Bước 4.</b></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div class="flow-connector">
-                <div class="flow-connector-line"></div>
-                <div class="flow-connector-arrow"></div>
-              </div>
-
-              <!-- BRANCH BY HCG STATUS -->
-              <div class="flow-branch">
-                <div class="flow-branch-side">
-                  <div class="flow-connector-label fc-yes">🤰 beta-hCG Dương Tính (+)</div>
-                  <div class="flow-connector">
-                    <div class="flow-connector-line"></div>
-                    <div class="flow-connector-arrow"></div>
-                  </div>
-                  <!-- BƯỚC 3 -->
-                  <div class="fnode fnode-warn clickable" onclick="toggleNode(this)">
-                    <div class="fnode-tag">BƯỚC 3: Tiếp cận đau bụng cấp có thai</div>
-                    <div class="fnode-title">SIÊU ÂM ĐẦU DÒ ÂM ĐẠO (TVUS) & MRI</div>
-                    <p class="fnode-body">
-                      Chỉ định ngay siêu âm vùng chậu qua ngả âm đạo để xác định vị trí túi thai và loại trừ cấp cứu.
-                    </p>
-                    <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem chi tiết các
-                      hướng chẩn đoán</div>
-                    <div class="fnode-details">
-                      <div class="detail-box" style="border-left: 4px solid var(--c-danger);">
-                        <strong>1. Khối thai ngoài tử cung (Ectopic pregnancy):</strong>
-                        <p>Khám chuyên khoa Sản khẩn: điều trị Methotrexate (nội khoa) hoặc phẫu thuật nội soi. Lưu ý
-                          tiêm
-                          Anti-D immunoglobulin nếu mẹ có Rh âm.</p>
-                      </div>
-                      <div class="detail-box" style="border-left: 4px solid var(--c-warn); margin-top: 8px;">
-                        <strong>2. Thai không rõ vị trí (PUL - Pregnancy of unknown location):</strong>
-                        <p>Theo dõi sát, định lượng beta-hCG chuỗi mỗi 48 giờ kết hợp siêu âm lại để phát hiện sớm thai
-                          ngoài tử cung ẩn giấu.</p>
-                      </div>
-                      <div class="detail-box" style="border-left: 4px solid var(--c-ok); margin-top: 8px;">
-                        <strong>3. Thai trong tử cung (Intrauterine pregnancy):</strong>
-                        <p>Đánh giá nguy cơ dọa sẩy thai (nếu ra huyết). Nếu có đau khu trú HCP nghi viêm ruột thừa, chỉ
-                          định <b>Siêu âm bụng</b> đầu tay; nếu siêu âm không kết luận được, ưu tiên chỉ định <b>chụp
-                            MRI
-                            chậu</b> để tránh tia xạ cho thai nhi. Chỉ dùng CT khi tình trạng cực kỳ khẩn cấp.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="flow-branch-side">
-                  <div class="flow-connector-label fc-no">👩‍🦰 beta-hCG Âm Tính (-)</div>
-                  <div class="flow-connector">
-                    <div class="flow-connector-line"></div>
-                    <div class="flow-connector-arrow"></div>
-                  </div>
-                  <!-- BƯỚC 4 -->
-                  <div class="fnode fnode-info clickable" onclick="toggleNode(this)">
-                    <div class="fnode-tag">BƯỚC 4: Tiếp cận không có thai & Khám vùng chậu</div>
-                    <div class="fnode-title">DIFFERENTIAL DIAGNOSIS (hCG -)</div>
-                    <p class="fnode-body">
-                      Thực hiện khám vùng chậu (Pelvic exam) kết hợp khám bụng để phân biệt nguyên nhân phụ khoa và
-                      ngoài
-                      phụ khoa.
-                    </p>
-                    <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem chi tiết
-                      nguyên nhân</div>
-                    <div class="fnode-details">
-                      <div class="detail-box" style="border-left: 4px solid var(--c-purple);">
-                        <strong>🌐 A. Nguyên nhân Phụ khoa:</strong>
-                        <ul>
-                          <li><b>Viêm vùng chậu (PID):</b> Sốt, đau hạ vị, khí hư âm đạo, đau khi di động cổ tử cung. 👉
-                            Xét nghiệm cổ tử cung NAAT (Lậu, Chlamydia), bắt đầu kháng sinh kinh nghiệm.</li>
-                          <li><b>Xoắn phần phụ (Adnexal Torsion):</b> Đau đột ngột, dữ dội kèm buồn nôn/nôn, có khối
-                            phần
-                            phụ nề. 👉 Siêu âm Doppler buồng trứng, hội chẩn mổ khẩn.</li>
-                          <li><b>Vỡ nang buồng trứng / Nang xuất huyết:</b> Đau đột ngột (giữa chu kỳ/sau giao hợp).
-                            Siêu
-                            âm vùng chậu chẩn đoán; điều trị bảo tồn nếu huyết động ổn.</li>
-                          <li><b>Lạc nội mạc tử cung / U xơ:</b> Đau có tính chất chu kỳ (thống kinh), dùng NSAIDs/thuốc
-                            tránh thai.</li>
-                        </ul>
-                      </div>
-                      <div class="detail-box" style="border-left: 4px solid var(--c-info); margin-top: 8px;">
-                        <strong>🧬 B. Nguyên nhân Tiêu hóa / Tiết niệu:</strong>
-                        <ul>
-                          <li><b>Viêm ruột thừa:</b> Đau HCP. Cần chụp CT cản quang để phân biệt chính xác với PID (ở
-                            nhóm
-                            không mang thai).</li>
-                          <li><b>Sỏi niệu quản / Viêm thận bể thận:</b> Đau hông lưng lan bẹn, tiểu máu/buốt. Làm tổng
-                            phân tích nước tiểu, chụp CT KUB.</li>
-                          <li><b>Bệnh lý gan mật/tụy:</b> Đau hạ sườn phải/thượng vị. Làm LFTs, Lipase, Siêu âm bụng.
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
+      <!-- THÔNG ĐIỆP CỐT LÕI -->
+      <section class="take-home-card">
+        <div class="take-home-title">
+          <i class="fas fa-lightbulb"></i> Thông điệp Cốt lõi (Take-home Messages)
         </div>
-
-        <!-- REFERENCE -->
-        <section class="checklist-card" style="margin-top: 2rem;">
-          <h2><i class="fa-solid fa-book-bookmark"></i> Tài liệu tham khảo y học</h2>
-          <ul
-            style="list-style: none; padding-left: 0; font-size: var(--text-xs); line-height: 1.6; display:flex; flex-direction:column; gap:8px;">
-
-            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Tham TCK, Collins JSA,
-              Soetikno R, eds. <em>Gastrointestinal Emergencies</em>. 3rd ed. John Wiley & Sons; 2016.</li>
-            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Harrison M, Mohammed A, eds.
-              <em>Algorithms for Emergency Medicine</em>. Oxford University Press; 2023.
-            </li>
-            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Kasper DL, Fauci AS, Hauser
-              SL, Longo DL, Jameson JL, Loscalzo J. <em>Harrison's Manual of Medicine</em>. 20th ed. McGraw-Hill
-              Education; 2019.</li>
-            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Haist SA, Robbins JB.
-              <em>Internal Medicine on Call</em>. McGraw-Hill; 2005.
-            </li>
-            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Yew KS, George MK, Allred
-              HB.
-              Acute Abdominal Pain in Adults: Evaluation and Diagnosis. <em>Am Fam Physician</em>. 2023;107(6):585-596.
-            </li>
-            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Cartwright SL, Knudson MP.
-              Evaluation of Acute Abdominal Pain in Adults. <em>Am Fam Physician</em>. 2008;77(7):971-978.</li>
-            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> <em>Tài Liệu Chuyên Môn
-                Hướng
-                Dẫn Khám, Chữa Bệnh Tại Trạm Y Tế Xã, Phường</em>. Bộ Y tế Việt Nam.</li>
-
+        <div class="take-home-body">
+          <ul>
+            <li>Xét nghiệm thử thai <strong>(&beta;-hCG)</strong> là chỉ định <strong>bắt buộc tuyệt đối</strong> và phải làm đầu tiên ở mọi phụ nữ trong độ tuổi sinh sản bị đau bụng cấp, bất kể tiền sử kinh nguyệt hay thói quen tránh thai.</li>
+            <li><strong>Siêu âm vùng chậu / Siêu âm đầu dò âm đạo</strong> là phương tiện hình ảnh đầu tay giúp xác định thai ngoài tử cung, xoắn buồng trứng hoặc khối áp-xe phần phụ nhanh chóng.</li>
+            <li>Đau bụng dưới 2 bên kèm sốt, khí hư âm đạo và <strong>đau nhói khi lay cổ tử cung</strong> là tam chứng điển hình của viêm vùng chậu (PID), đòi hỏi điều trị kháng sinh kinh nghiệm sớm để bảo vệ chức năng sinh sản.</li>
+            <li>Sử dụng giảm đau tĩnh mạch hợp lý giúp kiểm soát cơn đau, giảm kích thích cho bệnh nhân mà không làm mất đi các dấu hiệu cảm ứng phúc mạc thực thể.</li>
           </ul>
-        </section>
+        </div>
+      </section>
 
-      </div><!-- end main-wrapper -->
-    </div><!-- end app-container -->
+      <!-- TÀI LIỆU THAM KHẢO -->
+      <section class="references-card">
+        <div class="references-title">
+          <i class="fas fa-book"></i> Tài liệu Tham khảo
+        </div>
+        <ol class="references-list">
+          <li>Bộ Y tế Việt Nam. <em>Hướng dẫn quy trình kỹ thuật khám bệnh, chữa bệnh chuyên ngành Sản Phụ khoa</em>. Quyết định 2919/QĐ-BYT; 2020.</li>
+          <li>Kasper DL, Fauci AS, Hauser SL, Longo DL, Jameson JL, Loscalzo J. <em>Harrison's Manual of Medicine</em>. 20th ed. McGraw-Hill Education; 2019.</li>
+          <li>Stern SDC, Cifu AS, Altkorn D. <em>Symptoms to Diagnosis: An Evidence-Based Guide</em>. 4th ed. McGraw-Hill Education; 2020.</li>
+          <li>Yew KS, George MK, Allred HB. Acute Abdominal Pain in Adults: Evaluation and Diagnosis. <em>Am Fam Physician</em>. 2023;107(6):585-596.</li>
+        </ol>
+      </section>
+
+    </main>
   </div>
-  <!-- Náº¡p Footer -->
-  <div id="footer-placeholder" data-footer-path="../../../../../../components/footer.html"></div>
 
-  <script src="../../../../../../js/flowchart.js"></script>
+  <!-- FOOTER PLACEHOLDER -->
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+  <!-- JS Core -->
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+
+  <!-- JS Layout tiếp cận triệu chứng -->
+  <script src="../../../../../js/approach-symptom.js" defer></script>
 </body>
 
 </html>

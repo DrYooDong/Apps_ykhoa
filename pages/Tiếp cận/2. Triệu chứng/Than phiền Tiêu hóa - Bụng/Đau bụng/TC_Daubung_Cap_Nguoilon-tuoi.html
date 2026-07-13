@@ -1,13 +1,14 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi" data-theme="light">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Sơ đồ tiếp cận chẩn đoán đau bụng cấp ở người già và có bệnh nền: Đánh giá sinh hiệu và ECG/X-quang ngực loại trừ tim phổi, sàng lọc bệnh lý mạch máu nguy kịch (phình động mạch chủ, thiếu máu mạc treo) bằng CT, và chăm sóc lão khoa toàn diện.">
-  <title>Đau Bụng Cấp ở Người Lớn Tuổi & Bệnh Nền – CliniPortal</title>
+    content="Tiếp cận lâm sàng chẩn đoán và xử trí đau bụng cấp ở người cao tuổi, nhồi máu mạc treo cấp, phình động mạch chủ bụng vỡ, thủng tạng rỗng và nhiễm trùng đường mật.">
+  <title>Đau Bụng Cấp Người Cao Tuổi – CliniPortal</title>
 
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -15,21 +16,18 @@
     rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="../../../../../../css/reset.css">
-  <link rel="stylesheet" href="../../../../../../css/main.css">
-  <link rel="stylesheet" href="../../../../../../css/components/header.css">
-  <link rel="stylesheet" href="../../../../../../css/components/sidebar.css">
-  <link rel="stylesheet" href="../../../../../../css/components/footer.css">
+  <!-- CSS Core (5 levels up) -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
 
-  <!-- JS Core -->
-  <script src="../../../../../../js/main.js" defer></script>
-  <script src="../../../../../../components/header.js" defer></script>
-  <script src="../../../../../../components/footer.js" defer></script>
+  <!-- CSS Layout tiếp cận triệu chứng -->
+  <link rel="stylesheet" href="../../../../../css/components/approach-symptom.css">
 
   <style>
-    /* ============================================================
-       QUICK SUB-NAVIGATION SWITCHER BAR (DUAL-ROW)
-    ============================================================ */
+    /* Sub-navigation Switcher Bar */
     .tc-sub-nav {
       display: flex;
       flex-direction: column;
@@ -37,10 +35,9 @@
       margin-bottom: 24px;
       padding: 12px;
       background: var(--color-surface);
-      border: 1px solid var(--color-divider);
+      border: 1px solid var(--color-border);
       border-radius: var(--radius-md);
       box-shadow: var(--shadow-sm);
-      animation: fadeInUp 0.4s ease-out;
       width: 100%;
       box-sizing: border-box;
     }
@@ -56,14 +53,14 @@
       font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
-      color: var(--color-text-faint);
+      color: var(--color-text-muted);
       margin-right: 8px;
       letter-spacing: 0.5px;
     }
 
     .sub-nav-divider {
       height: 1px;
-      background-color: var(--color-divider);
+      background-color: var(--color-border);
       width: 100%;
     }
 
@@ -82,26 +79,24 @@
 
     .sub-nav-link:hover {
       color: var(--color-primary);
-      background: var(--color-surface-offset);
+      background: var(--color-bg);
     }
 
     .sub-nav-link.active {
       color: var(--color-primary);
       background: var(--color-primary-hl);
+      border: 1px solid var(--color-primary);
     }
   </style>
-  <link rel="stylesheet" href="../../../../../../css/components/flowchart.css">
-
 </head>
 
 <body>
-  <div id="header-placeholder" data-header-path="../../../../../../components/header.html"></div>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-  <!-- ===================== APP CONTAINER ===================== -->
   <div class="app-container">
-
-        <!-- SIDEBAR -->
+    <!-- SIDEBAR -->
     <aside class="app-sidebar" id="appSidebar">
       <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
         <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
@@ -119,43 +114,40 @@
             </a>
           </li>
           <li>
-            <a href="../../../tiep-can.html" class="nav-item active" aria-current="page" title="Tiếp cận">
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="nav-item active" title="Tiếp cận lâm sàng">
               <span class="nav-icon">🤒</span>
-              <span class="nav-text">Tiếp cận</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
             </a>
           </li>
         </ul>
+        <!-- Mục lục tự động (TOC) sẽ được JS tự động chèn vào đây -->
+        <div class="sidebar-toc" id="sidebarToc"></div>
       </nav>
     </aside>
 
-    <!-- ===================== MAIN CONTENT ===================== -->
-    <div class="main-wrapper flow-page" id="mainContent">
-
-      <!--BREADCRUMB-->
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="main-wrapper">
+      <!-- BREADCRUMB -->
       <nav aria-label="Breadcrumb" class="breadcrumb-container">
         <ol class="breadcrumb-list">
           <li class="breadcrumb-item">
-            <a href="../../../../../../index.html" class="breadcrumb-link">
-              <span class="home-icon">🏠</span> Home
-            </a>
+            <a href="../../../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Trang chủ</a>
           </li>
           <li class="breadcrumb-item">
-            <a href="../../../../tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
           </li>
           <li class="breadcrumb-item">
             <a href="TC_Daubung.html" class="breadcrumb-link">Tiếp cận Đau Bụng</a>
           </li>
-          <li class="breadcrumb-item active" aria-current="page">Người cao tuổi & Bệnh nền</li>
+          <li class="breadcrumb-item active" aria-current="page">Người cao tuổi</li>
         </ol>
       </nav>
-
 
       <!-- QUICK SUB-NAVIGATION -->
       <div class="tc-sub-nav">
         <div class="sub-nav-group">
           <span class="sub-nav-label">Theo Đối Tượng:</span>
           <a href="TC_Daubung.html" class="sub-nav-link">🏠 Tổng quan</a>
-          <a href="TC_Daubung_Cap_Nguoilon.html" class="sub-nav-link">👤 Người lớn</a>
           <a href="TC_Daubung_Cap_Nguoilon-tuoi.html" class="sub-nav-link active">🧓 Cao tuổi & Bệnh nền</a>
           <a href="TC_Daubung_Cap_Treem.html" class="sub-nav-link">👶 Trẻ em</a>
           <a href="TC_Daubung_Cap_Phunu.html" class="sub-nav-link">👩‍🦰 Phụ nữ sinh sản</a>
@@ -174,209 +166,254 @@
         </div>
       </div>
 
-
       <!-- HERO BANNER -->
-      <section class="flow-hero">
-        <div class="hero-badge">🧬 Lưu đồ tương tác • 2026</div>
-        <h1>Đau Bụng Cấp ở Người Lớn Tuổi & Bệnh Nền</h1>
-        <p>Sơ đồ tiếp cận chẩn đoán đau bụng cấp ở người già và có bệnh nền: Đánh giá sinh hiệu và ECG/X-quang ngực loại
-          trừ tim phổi, sàng lọc bệnh lý mạch máu nguy kịch (phình động mạch chủ, thiếu máu mạc treo) bằng CT, và chăm
-          sóc lão khoa toàn diện.</p>
+      <section class="hero-dashboard">
+        <div class="hero-intro">
+          <h1>🧓 ĐAU BỤNG CẤP Ở NGƯỜI CAO TUỔI</h1>
+          <p>Quy trình lâm sàng 7 bước đánh giá đau bụng cấp ở người cao tuổi, nhận diện các biểu hiện mờ nhạt và chỉ định cận lâm sàng khẩn cấp.</p>
+        </div>
       </section>
 
-      <!-- LEGEND -->
-      <div class="flow-legend">
-        <div class="legend-item">
-          <div class="legend-dot" style="background:var(--c-danger)"></div> Khẩn cấp / Báo động đỏ
+      <!-- SYMPTOM GRID LAYOUT (BƯỚC 1 -> 7) -->
+      <div class="symptom-grid">
+
+        <!-- BƯỚC 1: Ổn định ban đầu - sàng lọc nguy cơ -->
+        <div class="symptom-step-card border-danger symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-danger">Bước 1</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-exclamation-triangle"></i> Ổn định ban đầu – Sàng lọc nguy cơ</h3>
+          <div class="step-card-body">
+            <p><strong>Cảnh báo y khoa:</strong> Người cao tuổi (&ge; 65 tuổi) đau bụng cấp thường do nguyên nhân thực thể nặng nề, nhưng biểu hiện lâm sàng hay bị mờ nhạt. Nhận diện các dấu hiệu "cờ đỏ":</p>
+            <ul>
+              <li><strong>Huyết động không ổn định:</strong> Tụt huyết áp, mạch nhanh, lú lẫn, ngất xỉu (cảnh báo vỡ phình động mạch chủ, sốc nhiễm trùng, nhồi máu cơ tim thành dưới).</li>
+              <li><strong>Sốt có thể vắng mặt:</strong> Bệnh nhân lớn tuổi có thể <strong>không sốt</strong> ngay cả khi đang bị nhiễm trùng đường mật nặng, hoại tử ruột hoặc viêm phúc mạc.</li>
+              <li><strong>Dấu viêm phúc mạc mờ nhạt:</strong> Các dấu hiệu như đề kháng thành bụng, phản ứng dội <strong>giảm đi 50%</strong> khả năng xuất hiện ở người già do cơ thành bụng yếu.</li>
+              <li><strong>Đau bụng dữ dội không tương xứng với khám thực thể:</strong> Đau đớn liên tục nhưng ấn bụng mềm (chỉ điểm nhồi máu mạc treo cấp).</li>
+            </ul>
+            <div class="step-alert-box">
+              <i class="fas fa-ambulance"></i>
+              <span><strong>Xử trí cấp cứu:</strong> Đưa ngay bệnh nhân vào khu hồi sức, nhịn ăn uống hoàn toàn (NPO). Bù dịch tĩnh mạch tích cực bằng dịch tinh thể nếu có sốc, nhưng cần theo dõi sát để tránh quá tải dịch gây suy tim cấp ở người già.</span>
+            </div>
+          </div>
         </div>
-        <div class="legend-item">
-          <div class="legend-dot" style="background:var(--c-warn)"></div> Sàng lọc / Đe dọa tính mạng
+
+        <!-- BƯỚC 2: Thu thập dữ kiện tập trung -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 2</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-notes-medical"></i> Thu thập dữ kiện tập trung</h3>
+          <div class="step-card-body">
+            <p>Khai thác nhanh tiền sử và khám thực thể cẩn thận:</p>
+            <ul>
+              <li><strong>Mô tả triệu chứng & Diễn tiến:</strong>
+                <ul>
+                  <li>Bệnh nhân lớn tuổi thường nhập viện muộn hơn. Ví dụ, trong viêm ruột thừa, thời gian từ lúc đau đến nhập viện ở người &ge; 80 tuổi thường kéo dài (48 giờ) so với người 60-79 tuổi (24 giờ).</li>
+                  <li>Triệu chứng đau di trú xuống hố chậu phải ít xảy ra hơn (chỉ 29% so với 49% ở người trẻ). Nguy cơ thủng ruột thừa ở người > 75 tuổi lên tới 50%.</li>
+                  <li>Cơn đau có thể rất mơ hồ, chỉ kèm theo chán ăn, buồn nôn hoặc khó tiêu nhẹ.</li>
+                </ul>
+              </li>
+              <li><strong>Yếu tố nguy cơ:</strong> Tiền sử rung nhĩ, suy tim, bệnh xơ vữa động mạch (nguy cơ nhồi máu mạc treo); hút thuốc lá (nguy cơ phình động mạch chủ); sử dụng NSAIDs, Aspirin, thuốc chống đông (loét và chảy máu tiêu hóa).</li>
+              <li><strong>Khám lâm sàng:</strong> Khám bụng nhẹ nhàng tìm khối phình đập theo nhịp mạch (AAA), khám cầu bàng quang (bí tiểu). <strong>Luôn khám ngoài bụng</strong>: nghe tim phổi (viêm phổi đáy), đo ECG (nhồi máu cơ tim).</li>
+            </ul>
+          </div>
         </div>
-        <div class="legend-item">
-          <div class="legend-dot" style="background:var(--c-info)"></div> Thông tin / Khám cơ bản
+
+        <!-- BƯỚC 3: Lập danh sách chẩn đoán phân biệt -->
+        <div class="symptom-step-card border-warning symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-warning">Bước 3</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-list-ul"></i> Danh sách Chẩn đoán phân biệt</h3>
+          <div class="step-card-body">
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Nhóm nguyên nhân</th>
+                    <th>Ví dụ bệnh / hội chứng</th>
+                    <th>Đặc điểm lâm sàng chính</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Bệnh lý Mạch máu</strong></td>
+                    <td>
+                      <strong>Nhồi máu mạc treo cấp</strong><br>
+                      <strong>Phình động mạch chủ bụng (AAA) vỡ/rỉ</strong>
+                    </td>
+                    <td>
+                      - Đau bụng dữ dội khởi phát đột ngột, khám bụng mềm (đau không tương xứng thực thể), có rung nhĩ/suy tim.<br>
+                      - Đau bụng/lưng dữ dội lan tỏa, tụt huyết áp, sờ thấy khối đập theo mạch ở bụng, nam giới lớn tuổi hút thuốc.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Bệnh lý Dạ dày - Ruột</strong></td>
+                    <td>
+                      <strong>Thủng tạng rỗng (Thủng ổ loét)</strong><br>
+                      <strong>Viêm túi thừa đại tràng</strong><br>
+                      <strong>Viêm ruột thừa cấp</strong>
+                    </td>
+                    <td>
+                      - Đau bụng cấp, triệu chứng mờ nhạt, có tiền sử dùng NSAIDs/Aspirin, phản ứng thành bụng không rõ.<br>
+                      - Đau hố chậu trái (LLQ), sốt nhẹ, thay đổi thói quen đại tiện (táo bón/tiêu chảy).<br>
+                      - Đau hố chậu phải nhưng ít có tính chất di trú điển hình, chẩn đoán muộn, nguy cơ thủng vỡ cao.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Gan mật & Tiết niệu</strong></td>
+                    <td>
+                      <strong>Viêm túi mật cấp / Sỏi mật</strong><br>
+                      <strong>Bí tiểu cấp / Nhiễm trùng tiểu ẩn</strong>
+                    </td>
+                    <td>
+                      - Đau hạ sườn phải, buồn nôn, sốt có thể vắng mặt ở người già.<br>
+                      - Đau tức vùng hạ vị, sờ thấy cầu bàng quang căng tròn, hoặc sốt kèm theo lú lẫn/mê sảng cấp tính.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
-        <div class="legend-item">
-          <div class="legend-dot" style="background:var(--c-ok)"></div> Xử trí / Kết luận
+
+        <!-- BƯỚC 4: Biện luận lâm sàng -->
+        <div class="symptom-step-card border-success symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-success">Bước 4</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-filter"></i> Biện luận lâm sàng (Clinical reasoning)</h3>
+          <div class="step-card-body">
+            <ul>
+              <li><strong>Độ ưu tiên hàng đầu:</strong> Người lớn tuổi rất ít khi bị đau bụng do nguyên nhân chức năng lành tính. Bắt buộc phải loại trừ khẩn cấp các chẩn đoán đe dọa tính mạng diễn tiến nhanh: <strong>Nhồi máu mạc treo cấp</strong>, <strong>Phình động mạch chủ bụng vỡ/rỉ</strong>, <strong>Thủng tạng rỗng</strong> và <strong>Nhồi máu cơ tim thành dưới</strong>.</li>
+              <li><strong>Định hướng triệu chứng chìa khóa:</strong>
+                <ul>
+                  <li>Đau bụng dữ dội ở bệnh nhân rung nhĩ/tim mạch nhưng khám bụng mềm: Phải nghĩ ngay đến <strong>Nhồi máu mạc treo cấp</strong>.</li>
+                  <li><strong>Tuyệt đối thận trọng:</strong> Rất nguy hiểm nếu chẩn đoán "Cơn đau quặn thận" ở người > 65 tuổi mà chưa loại trừ được biến chứng rỉ máu của <strong>Phình động mạch chủ bụng (AAA)</strong>.</li>
+                  <li>Bệnh nhân lớn tuổi có đau bụng, lú lẫn, sinh hiệu không ổn định (sốc, thở nhanh) dù không sốt hay không đề kháng thành bụng: Cần nghĩ tới <strong>Thủng tạng rỗng</strong> hoặc <strong>Nhiễm khuẩn huyết</strong> từ đường mật/tiết niệu.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="legend-item" style="font-style:italic; margin-left: auto;">
-          💡 Nhấn vào hộp để xem chi tiết hướng dẫn lâm sàng
+
+        <!-- BƯỚC 5: Cận lâm sàng hợp lý -->
+        <div class="symptom-step-card border-info symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-vials"></i> Chỉ định Cận lâm sàng hợp lý</h3>
+          <div class="step-card-body">
+            <p>Các cận lâm sàng đặc biệt quan trọng cho người cao tuổi:</p>
+            <ul>
+              <li><strong>Chẩn đoán hình ảnh:</strong>
+                <ul>
+                  <li><strong>CT scan bụng chậu có cản quang:</strong> Là <strong>chỉ định sống còn và ưu tiên hàng đầu</strong> ở người già bị đau bụng cấp (giúp thay đổi hướng xử trí trong hơn 65% trường hợp). Nếu nghi ngờ nhồi máu mạc treo, thực hiện chụp CT mạch máu (CTA) khẩn cấp kể cả khi bệnh nhân có suy thận.</li>
+                  <li><strong>X-quang ngực thẳng & ECG:</strong> Bắt buộc thực hiện sớm loại trừ nhồi máu cơ tim, viêm phổi đáy hoặc liềm hơi dưới hoành (thủng tạng).</li>
+                </ul>
+              </li>
+              <li><strong>Xét nghiệm máu:</strong>
+                <ul>
+                  <li>Công thức máu, sinh hóa, chức năng gan thận, Amylase/Lipase.</li>
+                  <li><strong>Lactate máu:</strong> Rất quan trọng để chẩn đoán tình trạng thiếu máu cục bộ tạng hoặc sốc nhiễm trùng ẩn.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
+
+        <!-- BỔ TRỢ BƯỚC 5: Phân tầng nguy cơ người cao tuổi (acute-abdominal-pain-adults) -->
+        <div class="symptom-step-card border-info symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bổ trợ Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-heart-pulse"></i> Phác đồ phân tầng nguy cơ đau bụng ở người cao tuổi / suy kiệt</h3>
+          <div class="step-card-body">
+            <ul>
+              <li><strong>Nhóm Nguy cơ thấp (Huyết động ổn định, ít bệnh nền đi kèm):</strong> Hướng tới nhiễm trùng tiểu hoặc viêm túi thừa đại tràng không biến chứng. Thực hiện bộ xét nghiệm đau bụng cơ bản và điều trị nội khoa thích hợp.</li>
+              <li><strong>Nhóm Nguy cơ cao (Sinh hiệu không ổn định, nhiều bệnh nền phức tạp):</strong> Nghi ngờ nhiễm trùng huyết, thủng tạng rỗng hoặc hoại tử ruột do thiếu máu mạc treo. <strong>Hành động:</strong> Chỉ định chụp CT scan bụng chậu khẩn cấp và chuẩn bị nhập viện hồi sức/can thiệp ngoại khoa.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 6: Hướng xử trí ban đầu -->
+        <div class="symptom-step-card border-primary symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 6</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-hand-holding-medical"></i> Hướng xử trí ban đầu</h3>
+          <div class="step-card-body">
+            <ul>
+              <li><strong>Hồi sức ban đầu:</strong>
+                <ul>
+                  <li>Bảo đảm ABC (đường thở, hô hấp, tuần hoàn). Bù dịch tĩnh mạch tích cực bằng dung dịch tinh thể nếu có sốc, nhưng cần đặt catheter theo dõi sát do nguy cơ quá tải dịch gây suy tim cấp ở người già.</li>
+                  <li>Cho bệnh nhân nhịn ăn uống hoàn toàn (NPO).</li>
+                </ul>
+              </li>
+              <li><strong>Điều trị kháng sinh:</strong> Khởi động kháng sinh tĩnh mạch phổ rộng ngay lập tức nếu nghi ngờ nhiễm trùng huyết từ nguồn bụng, viêm phúc mạc do thủng tạng rỗng hoặc hoại tử ruột.</li>
+              <li><strong>Xử trí triệu chứng:</strong> Sử dụng opioid tĩnh mạch liều thấp, dò liều thận trọng. Việc giảm đau giúp bệnh nhân ổn định, hợp tác hơn và không che lấp các dấu hiệu thực thể ngoại khoa.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 7: Khi nào cần chuyển tuyến / gọi hội chẩn -->
+        <div class="symptom-step-card border-primary symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 7</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-hospital-user"></i> Khi nào cần chuyển tuyến / Gọi hội chẩn</h3>
+          <div class="step-card-body">
+            <ul>
+              <li><strong>Hội chẩn Ngoại khoa / Ngoại mạch máu khẩn cấp:</strong> Bệnh nhân lớn tuổi có đau bụng cấp nguy cơ cao (sinh hiệu không ổn định, bụng đề kháng), nghi ngờ phình động mạch chủ vỡ, thủng tạng rỗng hoặc nhồi máu mạc treo cấp.</li>
+              <li><strong>Nhập khoa Hồi sức tích cực (ICU):</strong> Bệnh nhân lớn tuổi bị sốc nhiễm khuẩn ổ bụng, sốc tim do nhồi máu, hoặc suy đa tạng cần theo dõi sát huyết động.</li>
+            </ul>
+          </div>
+        </div>
+
       </div>
 
-      <!-- INTERACTIVE FLOW CANVAS -->
-      <div class="flow-canvas-wrapper">
-        <div class="flow-col">
-
-          <!-- ==================== BƯỚC 1 ==================== -->
-          <div class="fnode fnode-start">
-            <div class="fnode-tag">BƯỚC 1: Đánh giá ban đầu & Sàng lọc ngoài ổ bụng</div>
-            <div class="fnode-title">
-              <span class="step-badge">1</span>
-              Initial Survey & Extra-abdominal Screening
-            </div>
-            <p class="fnode-body">
-              Đánh giá sinh hiệu và chủ động loại trừ các nguyên nhân từ lồng ngực. Triệu chứng ở người già thường mờ
-              nhạt, không điển hình.
-            </p>
-          </div>
-
-          <div class="flow-connector">
-            <div class="flow-connector-line" style="height: 35px;"></div>
-            <div class="flow-connector-arrow"></div>
-          </div>
-
-          <div class="flow-branch">
-            <div class="flow-branch-side">
-              <div class="flow-connector-label fc-yes">🔴 NGUY CƠ CAO (Sinh hiệu không ổn định / Bệnh nền nặng)</div>
-              <div class="flow-connector">
-                <div class="flow-connector-line"></div>
-                <div class="flow-connector-arrow"></div>
-              </div>
-
-              <!-- BƯỚC 2 -->
-              <div class="fnode fnode-danger clickable" onclick="toggleNode(this)">
-                <div class="fnode-tag">BƯỚC 2: Xử trí đe dọa tính mạng cấp cứu</div>
-                <div class="fnode-title">HỒI SỨC & CHẨN ĐOÁN KHẨN CẤP</div>
-                <p class="fnode-body">
-                  Tiến hành hồi sức huyết động song song với chẩn đoán hình ảnh khẩn cấp. Rule out 3 bệnh lý tử vong
-                  cao.
-                </p>
-                <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem chi tiết bệnh lý
-                  nguy kịch</div>
-                <div class="fnode-details">
-                  <div class="detail-box" style="border-left: 4px solid var(--c-danger);">
-                    <strong>1. Thiếu máu mạc treo cấp (Mesenteric Ischemia):</strong>
-                    <p>Thường gặp ở người già có rung nhĩ, xơ vữa động mạch. Biểu hiện đau bụng dữ dội nhưng khám bụng
-                      mềm
-                      (đau không tương xứng thực thể).</p>
-                    <p>👉 <b>Chỉ định:</b> Chụp CT mạch máu (CTA) ngay lập tức (chấp nhận nguy cơ thuốc cản quang trên
-                      nền
-                      suy thận vì nguy cơ tử vong cao).</p>
-                  </div>
-                  <div class="detail-box" style="border-left: 4px solid var(--c-warn); margin-top: 8px;">
-                    <strong>2. Phình động mạch chủ bụng (AAA) vỡ/rỉ máu:</strong>
-                    <p>Dễ nhầm với cơn đau quặn thận ở người già.</p>
-                    <p>👉 <b>Chỉ định:</b> Siêu âm tại giường (POCUS), tránh hồi sức dịch quá mức (chủ động hạ huyết áp
-                      kiểm soát), hội chẩn phẫu thuật mạch máu khẩn cấp.</p>
-                  </div>
-                  <div class="detail-box" style="border-left: 4px solid var(--c-info); margin-top: 8px;">
-                    <strong>3. Thủng tạng rỗng / Viêm ruột thừa cấp ở người già:</strong>
-                    <p>Triệu chứng rất nhẹ, có khi chỉ chán ăn, buồn nôn, lú lẫn/sảng. Cần chụp CT cản quang khẩn cấp,
-                      tránh chủ quan.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="flow-branch-side">
-              <div class="flow-connector-label fc-no">🟢 NGUY CƠ THẤP (Sinh hiệu ổn định / Bệnh nền kiểm soát)</div>
-              <div class="flow-connector">
-                <div class="flow-connector-line"></div>
-                <div class="flow-connector-arrow"></div>
-              </div>
-
-              <!-- BƯỚC 3 -->
-              <div class="fnode fnode-info clickable" onclick="toggleNode(this)">
-                <div class="fnode-tag">BƯỚC 3: Xử trí nhóm nguy cơ thấp & Workup</div>
-                <div class="fnode-title">
-                  <span class="step-badge">3</span>
-                  Stable Patient & Standard Evaluation
-                </div>
-                <p class="fnode-body">
-                  Người già ít khi bị đau bụng cơ năng. Luôn rà soát các bệnh lý thực thể phổ biến nhất ở nhóm tuổi này.
-                </p>
-                <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem các nguyên nhân
-                  phổ biến</div>
-                <div class="fnode-details">
-                  <div class="detail-box">
-                    <strong>Các bệnh lý thường gặp ở người già:</strong>
-                    <ul>
-                      <li><b>Viêm túi thừa (Diverticulitis):</b> Nguyên nhân hàng đầu gây đau hố chậu trái ở người >65
-                        tuổi.</li>
-                      <li><b>Bệnh lý gan mật:</b> Sỏi mật, viêm túi mật cấp (Murphy siêu âm dương tính, sốt, vàng da).
-                      </li>
-                      <li><b>Bệnh lý đường tiết niệu:</b> Bí tiểu cấp (khám thấy cầu bàng quang), nhiễm trùng tiểu tản
-                        phát.</li>
-                    </ul>
-                  </div>
-                  <div class="detail-box">
-                    <strong>Xét nghiệm cận lâm sàng cơ bản:</strong>
-                    CBC, CRP, Chức năng thận, Men gan, Lipase, Tổng phân tích nước tiểu.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="flow-connector">
-            <div class="flow-connector-line" style="height: 35px;"></div>
-            <div class="flow-connector-arrow"></div>
-          </div>
-
-          <!-- BƯỚC 4 -->
-          <div class="fnode fnode-ok clickable" onclick="toggleNode(this)">
-            <div class="fnode-tag">BƯỚC 4: Chỉ định hình ảnh học tích cực & Đánh giá lão khoa</div>
-            <div class="fnode-title">
-              <span class="step-badge">4</span>
-              Imaging Policy & Geriatric Assessment
-            </div>
-            <p class="fnode-body">
-              Chỉ định rộng rãi CT scan bụng chậu có cản quang do khám thực thể không đáng tin cậy. Kết hợp chăm sóc lão
-              khoa toàn diện.
-            </p>
-            <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem chi tiết khuyến cáo
-              lâm sàng</div>
-            <div class="fnode-details">
-              <div class="detail-box">
-                <strong>Khuyến cáo chỉ định CT Scan:</strong>
-                Các dấu hiệu thực thể ở người già (phản ứng dội, đề kháng) giảm 50% độ nhạy. CT scan làm thay đổi kế
-                hoạch
-                điều trị ở hơn 65% bệnh nhân lớn tuổi bị đau bụng. Ưu tiên chụp CT cản quang nếu không có chống chỉ định
-                tuyệt đối.
-              </div>
-              <div class="detail-box" style="margin-top: 8px;">
-                <strong>Đánh giá toàn diện lão khoa (Comprehensive Geriatric Assessment - CGA):</strong>
-                Trong quá trình chẩn đoán và điều trị, cần phối hợp đánh giá: tình trạng dinh dưỡng, chức năng sinh hoạt
-                hàng ngày (ADLs), nhận thức (phát hiện sảng/lú lẫn cấp), tránh sử dụng các thuốc có nguy cơ cao (như
-                NSAIDs, anticholinergics).
-              </div>
-            </div>
-          </div>
-
+      <!-- THÔNG ĐIỆP CỐT LÕI -->
+      <section class="take-home-card">
+        <div class="take-home-title">
+          <i class="fas fa-lightbulb"></i> Thông điệp Cốt lõi (Take-home Messages)
         </div>
-
-        <!-- REFERENCE -->
-        <section class="checklist-card" style="margin-top: 2rem;">
-          <h2><i class="fa-solid fa-book-bookmark"></i> Tài liệu tham khảo y học</h2>
-          <ul
-            style="list-style: none; padding-left: 0; font-size: var(--text-xs); line-height: 1.6; display:flex; flex-direction:column; gap:8px;">
-
-            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Yew KS, George MK, Allred
-              HB.
-              Acute Abdominal Pain in Adults: Evaluation and Diagnosis. <em>Am Fam Physician</em>. 2023;107(6):585-596.
-            </li>
-            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Tham TCK, Collins JSA,
-              Soetikno R, eds. <em>Gastrointestinal Emergencies</em>. 3rd ed. John Wiley & Sons; 2016.</li>
-            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Innes JA, Dover AR,
-              Fairhurst
-              K, eds. <em>Macleod's Clinical Examination</em>. 14th ed. Elsevier; 2018.</li>
-            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Haist SA, Robbins JB.
-              <em>Internal Medicine on Call</em>. McGraw-Hill; 2005.
-            </li>
-            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Harrison M, Mohammed A, eds.
-              <em>Algorithms for Emergency Medicine</em>. Oxford University Press; 2023.
-            </li>
-
+        <div class="take-home-body">
+          <ul>
+            <li>Ở người cao tuổi, các dấu hiệu kinh điển của viêm phúc mạc như co cứng thành bụng có khả năng xuất hiện <strong>thấp hơn tới 50%</strong>, và bệnh nhân có thể hoàn toàn <strong>không sốt</strong> dù đang bị hoại tử tạng nghiêm trọng.</li>
+            <li>Rất nguy hiểm và dễ dẫn đến sai lầm chết người nếu chẩn đoán cơn đau quặn thận ở bệnh nhân trên 65 tuổi mà chưa loại trừ được biến chứng rỉ máu của <strong>phình động mạch chủ bụng (AAA)</strong>.</li>
+            <li>Đau bụng dữ dội nhưng thăm khám bụng lại mềm và không có phản ứng tương xứng ở một bệnh nhân lớn tuổi có tiền sử rung nhĩ hoặc xơ vữa mạch phải luôn được coi là <strong>nhồi máu mạc treo cấp</strong>.</li>
+            <li><strong>Chụp cắt lớp vi tính (CT scan)</strong> là xét nghiệm mang tính quyết định ở người cao tuổi bị đau bụng cấp, giúp thay đổi kế hoạch điều trị trong hơn 65% trường hợp và không được trì hoãn ngay cả khi bệnh nhân suy thận nếu nghi ngờ nhồi máu ruột.</li>
           </ul>
-        </section>
+        </div>
+      </section>
 
-      </div><!-- end main-wrapper -->
-    </div><!-- end app-container -->
+      <!-- TÀI LIỆU THAM KHẢO -->
+      <section class="references-card">
+        <div class="references-title">
+          <i class="fas fa-book"></i> Tài liệu Tham khảo
+        </div>
+        <ol class="references-list">
+          <li>Yew KS, George MK, Allred HB. Acute Abdominal Pain in Adults: Evaluation and Diagnosis. <em>Am Fam Physician</em>. 2023;107(6):585-596.</li>
+          <li>Stern SDC, Cifu AS, Altkorn D. <em>Symptoms to Diagnosis: An Evidence-Based Guide</em>. 4th ed. McGraw-Hill Education; 2020.</li>
+          <li>Kasper DL, Fauci AS, Hauser SL, Longo DL, Jameson JL, Loscalzo J. <em>Harrison's Manual of Medicine</em>. 20th ed. McGraw-Hill Education; 2019.</li>
+          <li>Innes JA, Dover AR, Fairhurst K, eds. <em>Macleod's Clinical Examination</em>. 14th ed. Elsevier; 2018.</li>
+        </ol>
+      </section>
+
+    </main>
   </div>
-  <!-- Náº¡p Footer -->
-  <div id="footer-placeholder" data-footer-path="../../../../../../components/footer.html"></div>
 
-  <script src="../../../../../../js/flowchart.js"></script>
+  <!-- FOOTER PLACEHOLDER -->
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+  <!-- JS Core -->
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+
+  <!-- JS Layout tiếp cận triệu chứng -->
+  <script src="../../../../../js/approach-symptom.js" defer></script>
 </body>
 
 </html>

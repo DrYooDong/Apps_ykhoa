@@ -1,13 +1,14 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi" data-theme="light">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Sơ đồ tiếp cận chẩn đoán đau bụng mạn tính (tái diễn trên 3-6 tháng): Tầm soát dấu hiệu báo động (sụt cân, xuất huyết, thiếu máu), loại trừ nguyên nhân thứ phát và thuốc/chế độ ăn, và phác đồ quản lý Hội chứng đau bụng qua trung gian thần kinh trung ương (CAPS).">
+    content="Tiếp cận lâm sàng chẩn đoán và xử trí đau bụng mạn tính, hội chứng ruột kích thích (IBS), hội chứng đau bụng trung ương (CAPS), loét dạ dày tá tràng và bệnh lý gan mật tụy mạn tính.">
   <title>Đau Bụng Mạn Tính – CliniPortal</title>
 
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -15,21 +16,18 @@
     rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="../../../../../../css/reset.css">
-  <link rel="stylesheet" href="../../../../../../css/main.css">
-  <link rel="stylesheet" href="../../../../../../css/components/header.css">
-  <link rel="stylesheet" href="../../../../../../css/components/sidebar.css">
-  <link rel="stylesheet" href="../../../../../../css/components/footer.css">
+  <!-- CSS Core (5 levels up) -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
 
-  <!-- JS Core -->
-  <script src="../../../../../../js/main.js" defer></script>
-  <script src="../../../../../../components/header.js" defer></script>
-  <script src="../../../../../../components/footer.js" defer></script>
+  <!-- CSS Layout tiếp cận triệu chứng -->
+  <link rel="stylesheet" href="../../../../../css/components/approach-symptom.css">
 
   <style>
-    /* ============================================================
-       QUICK SUB-NAVIGATION SWITCHER BAR (DUAL-ROW)
-    ============================================================ */
+    /* Sub-navigation Switcher Bar */
     .tc-sub-nav {
       display: flex;
       flex-direction: column;
@@ -37,10 +35,9 @@
       margin-bottom: 24px;
       padding: 12px;
       background: var(--color-surface);
-      border: 1px solid var(--color-divider);
+      border: 1px solid var(--color-border);
       border-radius: var(--radius-md);
       box-shadow: var(--shadow-sm);
-      animation: fadeInUp 0.4s ease-out;
       width: 100%;
       box-sizing: border-box;
     }
@@ -56,14 +53,14 @@
       font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
-      color: var(--color-text-faint);
+      color: var(--color-text-muted);
       margin-right: 8px;
       letter-spacing: 0.5px;
     }
 
     .sub-nav-divider {
       height: 1px;
-      background-color: var(--color-divider);
+      background-color: var(--color-border);
       width: 100%;
     }
 
@@ -82,29 +79,24 @@
 
     .sub-nav-link:hover {
       color: var(--color-primary);
-      background: var(--color-surface-offset);
+      background: var(--color-bg);
     }
 
     .sub-nav-link.active {
       color: var(--color-primary);
       background: var(--color-primary-hl);
+      border: 1px solid var(--color-primary);
     }
   </style>
-  <link rel="stylesheet" href="../../../../../../css/components/flowchart.css">
-
-
-
-
 </head>
 
 <body>
-  <div id="header-placeholder" data-header-path="../../../../../../components/header.html"></div>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-  <!-- ===================== APP CONTAINER ===================== -->
   <div class="app-container">
-
-        <!-- SIDEBAR -->
+    <!-- SIDEBAR -->
     <aside class="app-sidebar" id="appSidebar">
       <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
         <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
@@ -122,28 +114,27 @@
             </a>
           </li>
           <li>
-            <a href="../../../tiep-can.html" class="nav-item active" aria-current="page" title="Tiếp cận">
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="nav-item active" title="Tiếp cận lâm sàng">
               <span class="nav-icon">🤒</span>
-              <span class="nav-text">Tiếp cận</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
             </a>
           </li>
         </ul>
+        <!-- Mục lục tự động (TOC) sẽ được JS tự động chèn vào đây -->
+        <div class="sidebar-toc" id="sidebarToc"></div>
       </nav>
     </aside>
 
-    <!-- ===================== MAIN CONTENT ===================== -->
-    <div class="main-wrapper flow-page" id="mainContent">
-
-      <!--BREADCRUMB-->
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="main-wrapper">
+      <!-- BREADCRUMB -->
       <nav aria-label="Breadcrumb" class="breadcrumb-container">
         <ol class="breadcrumb-list">
           <li class="breadcrumb-item">
-            <a href="../../../../../../index.html" class="breadcrumb-link">
-              <span class="home-icon">🏠</span> Home
-            </a>
+            <a href="../../../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Trang chủ</a>
           </li>
           <li class="breadcrumb-item">
-            <a href="../../../../tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
           </li>
           <li class="breadcrumb-item">
             <a href="TC_Daubung.html" class="breadcrumb-link">Tiếp cận Đau Bụng</a>
@@ -152,13 +143,11 @@
         </ol>
       </nav>
 
-
       <!-- QUICK SUB-NAVIGATION -->
       <div class="tc-sub-nav">
         <div class="sub-nav-group">
           <span class="sub-nav-label">Theo Đối Tượng:</span>
           <a href="TC_Daubung.html" class="sub-nav-link">🏠 Tổng quan</a>
-          <a href="TC_Daubung_Cap_Nguoilon.html" class="sub-nav-link">👤 Người lớn</a>
           <a href="TC_Daubung_Cap_Nguoilon-tuoi.html" class="sub-nav-link">🧓 Cao tuổi & Bệnh nền</a>
           <a href="TC_Daubung_Cap_Treem.html" class="sub-nav-link">👶 Trẻ em</a>
           <a href="TC_Daubung_Cap_Phunu.html" class="sub-nav-link">👩‍🦰 Phụ nữ sinh sản</a>
@@ -177,250 +166,265 @@
         </div>
       </div>
 
-
       <!-- HERO BANNER -->
-      <section class="flow-hero">
-        <div class="hero-badge">🧬 Lưu đồ tương tác • 2026</div>
-        <h1>Đau Bụng Mạn Tính</h1>
-        <p>Sơ đồ tiếp cận chẩn đoán đau bụng mạn tính (tái diễn trên 3-6 tháng): Tầm soát dấu hiệu báo động (sụt cân,
-          xuất huyết, thiếu máu), loại trừ nguyên nhân thứ phát và thuốc/chế độ ăn, và phác đồ quản lý Hội chứng đau
-          bụng qua trung gian thần kinh trung ương (CAPS).</p>
+      <section class="hero-dashboard">
+        <div class="hero-intro">
+          <h1>🔄 TIẾP CẬN ĐAU BỤNG MẠN TÍNH</h1>
+          <p>Quy trình lâm sàng 7 bước tiếp cận chẩn đoán phân biệt đau bụng mạn tính, sàng lọc các triệu chứng báo động ác tính và xử trí các rối loạn chức năng.</p>
+        </div>
       </section>
 
-      <!-- LEGEND -->
-      <div class="flow-legend">
-        <div class="legend-item">
-          <div class="legend-dot" style="background:var(--c-danger)"></div> Khẩn cấp / Báo động đỏ
+      <!-- SYMPTOM GRID LAYOUT (BƯỚC 1 -> 7) -->
+      <div class="symptom-grid">
+
+        <!-- BƯỚC 1: Ổn định ban đầu - sàng lọc nguy cơ -->
+        <div class="symptom-step-card border-danger symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-danger">Bước 1</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-exclamation-triangle"></i> Ổn định ban đầu – Sàng lọc nguy cơ</h3>
+          <div class="step-card-body">
+            <p>Đối với đau bụng mạn tính, việc quan trọng nhất là nhận diện ngay các <strong>dấu hiệu "cờ đỏ" / triệu chứng báo động</strong> chỉ điểm bệnh thực thể nghiêm trọng hoặc ác tính tiềm ẩn, bắt buộc phải nội soi/chẩn đoán chuyên sâu tức thì:</p>
+            <ul>
+              <li><strong>Sụt cân không chủ ý:</strong> Giảm &ge; 5% trọng lượng cơ thể trong vòng 6-12 tháng.</li>
+              <li><strong>Chảy máu tiêu hóa:</strong> Nôn ra máu, đi tiêu phân đen hoặc phân máu tươi; hoặc xét nghiệm có thiếu máu thiếu sắt rõ rệt.</li>
+              <li><strong>Nôn mửa dai dẳng:</strong> Kéo dài liên tục gây rối loạn điện giải.</li>
+              <li><strong>Đau ban đêm:</strong> Cơn đau dữ dội làm thức giấc bệnh nhân khi đang ngủ (hướng mạnh đến bệnh lý thực thể).</li>
+              <li><strong>Nuốt khó / Nuốt đau tiến triển:</strong> Nghi ngờ u đường tiêu hóa trên.</li>
+              <li><strong>Khởi phát muộn:</strong> Triệu chứng mới xuất hiện ở người lớn tuổi (> 45-60 tuổi).</li>
+              <li><strong>Tiền sử gia đình:</strong> Có người thân bị ung thư đại trực tràng hoặc bệnh viêm ruột (IBD).</li>
+            </ul>
+          </div>
         </div>
-        <div class="legend-item">
-          <div class="legend-dot" style="background:var(--c-warn)"></div> Sàng lọc / Đe dọa tính mạng
+
+        <!-- BƯỚC 2: Thu thập dữ kiện tập trung -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 2</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-notes-medical"></i> Thu thập dữ kiện tập trung</h3>
+          <div class="step-card-body">
+            <p>Khai thác thông tin chi tiết về cơn đau và tiền sử dùng thuốc:</p>
+            <ul>
+              <li><strong>Mô tả triệu chứng:</strong>
+                <ul>
+                  <li><em>Thời gian & Tính chất:</em> Xác định đau kéo dài bao lâu (ví dụ &ge; 6 tháng gợi ý bệnh lý chức năng). Đau nóng rát cồn cào (dạ dày), đau quặn cơn (đường mật/ruột), đau âm ỉ liên tục.</li>
+                  <li><em>Vị trí:</em> Thượng vị (loét, tụy); hạ sườn phải (sỏi mật/viêm túi mật mạn); đau bụng dưới/lan tỏa (IBS, viêm túi thừa).</li>
+                  <li><em>Liên quan sinh lý:</em> Đau có tăng lên sau ăn đồ béo (sỏi mật)? Đau lúc đói giảm sau ăn/antacid (loét tá tràng)? <strong>Đau giảm đi sau khi đại tiện</strong> (đặc trưng của Hội chứng ruột kích thích - IBS)?</li>
+                </ul>
+              </li>
+              <li><strong>Yếu tố nguy cơ & Tiền sử thuốc:</strong> Lạm dụng thuốc giảm đau NSAIDs/Aspirin (gây loét); nghiện rượu (viêm tụy mạn); lạm dụng cần sa (hội chứng nôn do cần sa); lạm dụng opioids (gây hội chứng ruột do thuốc phiện); yếu tố tâm lý (căng thẳng, lo âu, trầm cảm).</li>
+              <li><strong>Khám lâm sàng:</strong> Tìm khối u ổ bụng, gan lách to, khám điểm đau khu trú. Đau bụng mạn chức năng thường khám bụng mềm, không đề kháng.</li>
+            </ul>
+          </div>
         </div>
-        <div class="legend-item">
-          <div class="legend-dot" style="background:var(--c-info)"></div> Thông tin / Khám cơ bản
+
+        <!-- BƯỚC 3: Lập danh sách chẩn đoán phân biệt -->
+        <div class="symptom-step-card border-warning symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-warning">Bước 3</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-list-ul"></i> Danh sách Chẩn đoán phân biệt</h3>
+          <div class="step-card-body">
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Nhóm nguyên nhân</th>
+                    <th>Ví dụ bệnh / hội chứng</th>
+                    <th>Đặc điểm lâm sàng chính</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Dạ dày - Tá tràng</strong></td>
+                    <td>
+                      <strong>Viêm loét dạ dày tá tràng (PUD)</strong><br>
+                      <strong>Trào ngược dạ dày thực quản (GERD)</strong>
+                    </td>
+                    <td>
+                      - Đau rát cồn cào thượng vị, liên quan bữa ăn, giảm khi uống antacid/ăn nhẹ, có tiền sử dùng NSAIDs.<br>
+                      - Ợ nóng, ợ chua, nóng rát sau xương ức, đau tăng lên khi nằm sau ăn hoặc ăn đồ cay nóng.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Gan - Mật - Tụy</strong></td>
+                    <td>
+                      <strong>Sỏi mật / Viêm túi mật mạn</strong><br>
+                      <strong>Viêm tụy mạn tính</strong>
+                    </td>
+                    <td>
+                      - Đau quặn hạ sườn phải/thượng vị lan vai phải, xuất hiện từng đợt sau ăn nhiều dầu mỡ.<br>
+                      - Đau liên tục dữ dội thượng vị lan xuyên <em>sau lưng</em>, kèm sụt cân, tiêu chảy phân mỡ, tiền sử uống rượu nhiều năm.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Ruột / Đại trực tràng</strong></td>
+                    <td>
+                      <strong>Hội chứng ruột kích thích (IBS)</strong><br>
+                      <strong>Bệnh viêm ruột (IBD - Crohn / Viêm đại tràng loét)</strong>
+                    </td>
+                    <td>
+                      - Đau bụng mạn kèm thay đổi tần suất/tính chất phân (táo bón/tiêu chảy), <em>đau giảm rõ sau khi đại tiện</em>, không có dấu cờ đỏ.<br>
+                      - Đau bụng mạn kéo dài, tiêu chảy có máu, sốt, sụt cân, thiếu máu, CRP/máu lắng tăng.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Rối loạn chức năng trung ương</strong></td>
+                    <td><strong>Hội chứng đau bụng trung ương (CAPS)</strong></td>
+                    <td>Đau bụng liên tục hoặc gần liên tục &ge; 6 tháng, <em>không hoặc rất ít liên quan</em> đến ăn uống/đại tiện/chu kỳ kinh, giới hạn hoạt động hằng ngày.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
-        <div class="legend-item">
-          <div class="legend-dot" style="background:var(--c-ok)"></div> Xử trí / Kết luận
+
+        <!-- BƯỚC 4: Biện luận lâm sàng -->
+        <div class="symptom-step-card border-success symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-success">Bước 4</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-filter"></i> Biện luận lâm sàng (Clinical reasoning)</h3>
+          <div class="step-card-body">
+            <ul>
+              <li><strong>Độ ưu tiên hàng đầu:</strong> Bắt buộc phải loại trừ các bệnh lý ác tính đường tiêu hóa (Ung thư dạ dày, Ung thư đại trực tràng) ở bệnh nhân lớn tuổi hoặc có dấu hiệu báo động, trước khi đưa ra kết luận là bệnh lý chức năng (IBS, CAPS).</li>
+              <li><strong>Định hướng triệu chứng chìa khóa:</strong>
+                <ul>
+                  <li>Đau bụng mạn tính kèm theo thay đổi thói quen đi tiêu, bụng lình bình chướng hơi, và <strong>cơn đau giảm đi sau khi đại tiện</strong> (không sụt cân, không tiêu máu): Hướng nhiều tới <strong>Hội chứng ruột kích thích (IBS)</strong>.</li>
+                  <li>Đau nóng rát thượng vị lúc đói, giảm sau ăn/antacid ở bệnh nhân lạm dụng NSAIDs hoặc hút thuốc: Chỉ điểm của <strong>Viêm loét dạ dày tá tràng (PUD)</strong>.</li>
+                  <li>Đau bụng liên tục &ge; 6 tháng, không liên quan ăn uống hay đại tiện, gây suy giảm sinh hoạt, các thăm khám bình thường: Thỏa mãn chẩn đoán <strong>Hội chứng đau bụng qua trung gian trung ương (CAPS)</strong>.</li>
+                  <li>Đau thượng vị lan sau lưng kèm theo sụt cân và đi tiêu phân mỡ ở người nghiện rượu: Nghĩ tới <strong>Viêm tụy mạn tính</strong>.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="legend-item" style="font-style:italic; margin-left: auto;">
-          💡 Nhấn vào hộp để xem chi tiết hướng dẫn lâm sàng
+
+        <!-- BƯỚC 5: Cận lâm sàng hợp lý -->
+        <div class="symptom-step-card border-info symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-vials"></i> Chỉ định Cận lâm sàng hợp lý</h3>
+          <div class="step-card-body">
+            <p><strong>Lưu ý thực hành:</strong> Tránh lạm dụng quá mức các xét nghiệm lặp lại ở bệnh nhân không có dấu hiệu báo động vì sẽ làm tăng lo âu cho người bệnh.</p>
+            <ul>
+              <li><strong>Nội soi tiêu hóa (Nội soi dạ dày & đại tràng):</strong> Chỉ định ưu tiên và bắt buộc nếu bệnh nhân &ge; 45-60 tuổi, hoặc có triệu chứng báo động (sụt cân, thiếu máu, tiêu máu, nôn dai dẳng), hoặc nghi ngờ bệnh thực thể (IBD, loét, u).</li>
+              <li><strong>Xét nghiệm máu:</strong>
+                <ul>
+                  <li>Công thức máu, Ferritin (tầm soát thiếu máu thiếu sắt).</li>
+                  <li>CRP, tốc độ máu lắng (tăng trong bệnh thực thể IBD, bình thường trong bệnh chức năng IBS).</li>
+                  <li>Ure, Creatinin, điện giải đồ, men gan, men tụy.</li>
+                </ul>
+              </li>
+              <li><strong>Các xét nghiệm khác:</strong> Test tìm vi khuẩn <em>H. pylori</em> (hơi thở hoặc phân); siêu âm bụng (tầm soát bệnh gan mật tụy mạn hoặc u phần phụ ở nữ); CT scan bụng có cản quang (khi nghi ngờ viêm tụy mạn hoặc u ổ bụng).</li>
+            </ul>
+          </div>
         </div>
+
+        <!-- BỔ TRỢ BƯỚC 5: Tiêu chuẩn chẩn đoán CAPS và Lưu đồ Khó tiêu -->
+        <div class="symptom-step-card border-info symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bổ trợ Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-clipboard-list"></i> Tiêu chuẩn chẩn đoán Hội chứng đau bụng qua trung gian trung ương (CAPS)</h3>
+          <div class="step-card-body">
+            <p>Chẩn đoán xác định CAPS khi đáp ứng đầy đủ các tiêu chuẩn sau (thực hiện trong 3 tháng qua với các triệu chứng khởi phát ít nhất 6 tháng trước chẩn đoán):</p>
+            <ul>
+              <li>Đau bụng xảy ra liên tục hoặc gần như liên tục.</li>
+              <li>Không có hoặc chỉ thỉnh thoảng có mối liên quan giữa cơn đau với các hoạt động sinh lý (ăn uống, đại tiện hoặc chu kỳ kinh nguyệt).</li>
+              <li>Cơn đau làm giới hạn một số khía cạnh hoạt động hằng ngày của bệnh nhân (công việc, quan hệ gia đình, xã hội, học tập).</li>
+              <li>Cơn đau là thực sự (không phải giả vờ).</li>
+              <li>Cơn đau không được giải thích đầy đủ bởi các rối loạn tiêu hóa thực thể hoặc bệnh lý thực thể khác.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 6: Hướng xử trí ban đầu -->
+        <div class="symptom-step-card border-primary symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 6</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-hand-holding-medical"></i> Hướng xử trí ban đầu</h3>
+          <div class="step-card-body">
+            <ul>
+              <li><strong>Điều trị nguyên nhân thực thể:</strong>
+                <ul>
+                  <li><strong>Viêm loét dạ dày tá tràng:</strong> Diệt trừ <em>H. pylori</em> nếu dương tính, dừng sử dụng NSAIDs, dùng thuốc ức chế bơm proton (PPI) trong 4-8 tuần.</li>
+                  <li><strong>Viêm tụy mạn tính:</strong> Ngừng rượu bia và thuốc lá tuyệt đối. Bổ sung enzyme tuyến tụy thay thế trong các bữa ăn, kết hợp giảm đau và PPI hỗ trợ.</li>
+                </ul>
+              </li>
+              <li><strong>Xử trí rối loạn chức năng (IBS, CAPS):</strong>
+                <ul>
+                  <li>Giải thích kỹ cho bệnh nhân hiểu bản chất lành tính của bệnh. Mục tiêu điều trị là <strong>kiểm soát triệu chứng và cải thiện chất lượng sống</strong> chứ không phải trị khỏi hoàn toàn.</li>
+                  <li><strong>Chế độ ăn:</strong> Hạn chế các thức ăn chứa nhiều FODMAPs (carbohydrate lên men), gluten, lactose, đồ béo và rượu bia. Ghi nhật ký ăn uống tìm yếu tố kích thích.</li>
+                  <li><strong>Điều trị thuốc hướng thần liều thấp:</strong> Các thuốc chống trầm cảm ba vòng (TCAs) hoặc SSRIs/SNRIs ở liều thấp được khuyên dùng để điều hòa thần kinh ruột - não, giúp giảm cảm giác đau tạng. <strong>Tuyệt đối tránh sử dụng thuốc giảm đau opioid</strong> vì nguy cơ gây hội chứng ruột do opioid.</li>
+                  <li><strong>Liệu pháp tâm lý:</strong> Cân nhắc liệu pháp nhận thức - hành vi (CBT), thiền hoặc thôi miên để kiểm soát lo âu, stress.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 7: Khi nào cần chuyển tuyến / gọi hội chẩn -->
+        <div class="symptom-step-card border-primary symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 7</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-hospital-user"></i> Khi nào cần chuyển tuyến / Gọi hội chẩn</h3>
+          <div class="step-card-body">
+            <ul>
+              <li><strong>Chuyển khám chuyên khoa Tiêu hóa (hoặc Ung bướu):</strong> Bệnh nhân có bất kỳ dấu hiệu "cờ đỏ" báo động nào (sụt cân, thiếu máu, tiêu máu, nôn dai dẳng), bệnh nhân khởi phát đau bụng mạn trên 45-60 tuổi, hoặc nghi ngờ bệnh thực thể (IBD, u tụy).</li>
+              <li><strong>Hội chẩn Ngoại khoa:</strong> Khi nghi ngờ có tắc ruột cơ học, viêm ruột hoại tử, vàng da do u chèn ép, hoặc sờ thấy khối u bụng lớn.</li>
+              <li><strong>Hội chẩn Tâm thần học / Tâm lý lâm sàng:</strong> Khi bệnh nhân có tình trạng lo âu, trầm cảm nặng hoặc có ý tưởng tự sát đi kèm với đau bụng chức năng kháng trị.</li>
+            </ul>
+          </div>
+        </div>
+
       </div>
 
-      <!-- INTERACTIVE FLOW CANVAS -->
-      <div class="flow-canvas-wrapper">
-        <div class="flow-col">
-
-          <!-- ==================== BƯỚC 1 ==================== -->
-          <div class="fnode fnode-start">
-            <div class="fnode-tag">BƯỚC 1: Đánh giá ban đầu & Dấu hiệu báo động (Red Flags)</div>
-            <div class="fnode-title">
-              <span class="step-badge">1</span>
-              Initial Survey & Alarm Features
-            </div>
-            <p class="fnode-body">
-              Khai thác bệnh sử và khám thực thể tìm các dấu hiệu gợi ý bệnh lý thực thể nặng hoặc ác tính (đau kéo dài
-              từ
-              3-6 tháng).
-            </p>
-          </div>
-
-          <div class="flow-connector">
-            <div class="flow-connector-line" style="height: 35px;"></div>
-            <div class="flow-connector-arrow"></div>
-          </div>
-
-          <div class="flow-branch">
-            <div class="flow-branch-side">
-              <div class="flow-connector-label fc-yes">🔴 CÓ Dấu Hiệu Báo Động (Alarm features)</div>
-              <div class="flow-connector">
-                <div class="flow-connector-line"></div>
-                <div class="flow-connector-arrow"></div>
-              </div>
-              <div class="fnode fnode-danger clickable" onclick="toggleNode(this)">
-                <div class="fnode-tag">🚨 Chuyên khoa chuyên sâu</div>
-                <div class="fnode-title">NỘI SOI TIÊU HÓA & HÌNH ẢNH HỌC KHẨN</div>
-                <p class="fnode-body">
-                  Bệnh nhân cần được hội chẩn ngay chuyên khoa Tiêu hóa / Ngoại khoa để nội soi và chụp CT/MRI.
-                </p>
-                <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem danh sách các
-                  dấu
-                  hiệu báo động</div>
-                <div class="fnode-details">
-                  <div class="detail-box">
-                    <strong>Các dấu hiệu cờ đỏ bắt buộc chuyển tuyến chuyên khoa:</strong>
-                    <ul>
-                      <li>Sụt cân không chủ ý (giảm trên 5% trọng lượng cơ thể).</li>
-                      <li>Xuất huyết tiêu hóa (nôn ra máu, đi cầu phân đen/máu đỏ) hoặc thiếu máu thiếu sắt rõ rệt.</li>
-                      <li>Nôn mửa dai dẳng không giải thích được.</li>
-                      <li>Khởi phát triệu chứng lần đầu tiên sau 60 tuổi.</li>
-                      <li>Tiền sử gia đình mắc ung thư đại trực tràng hoặc bệnh viêm ruột (IBD).</li>
-                      <li>Sờ thấy khối u vùng bụng hoặc sốt kéo dài liên tục.</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="flow-branch-side">
-              <div class="flow-connector-label fc-no">🟢 KHÔNG CÓ Dấu Hiệu Báo Động</div>
-              <div class="flow-connector">
-                <div class="flow-connector-line"></div>
-                <div class="flow-connector-arrow"></div>
-              </div>
-
-              <!-- BƯỚC 2 -->
-              <div class="fnode fnode-info clickable" onclick="toggleNode(this)">
-                <div class="fnode-tag">BƯỚC 2: Rà soát nguyên nhân thứ phát & ngoài ổ bụng</div>
-                <div class="fnode-title">
-                  <span class="step-badge">2</span>
-                  Secondary & Extra-abdominal Screening
-                </div>
-                <p class="fnode-body">
-                  Loại trừ các bệnh lý tiêu hóa thường gặp khác, nguyên nhân toàn thân hoặc ảnh hưởng từ thuốc và chế độ
-                  ăn.
-                </p>
-                <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem chi tiết rà soát
-                </div>
-                <div class="fnode-details">
-                  <div class="detail-box">
-                    <strong>Các yếu tố cần rà soát và điều chỉnh:</strong>
-                    <ul>
-                      <li><b>Bệnh lý nền:</b> GERD, loét dạ dày tá tràng, IBS, sỏi thận mạn, bệnh phụ khoa (lạc nội mạc
-                        tử
-                        cung, u xơ), chuyển hóa (đái tháo đường, suy giáp).</li>
-                      <li><b>Thuốc và độc chất:</b> Sử dụng thuốc NSAIDs kéo dài (gây loét), lạm dụng Opioids (gây táo
-                        bón/đau bụng do opioids), hoặc cần sa mạn tính.</li>
-                      <li><b>Chế độ ăn:</b> Dị ứng thức ăn, bất dung nạp lactose, gluten, hoặc lạm dụng rượu bia.</li>
-                    </ul>
-                    <p>👉 <b>Xử trí:</b> Tối ưu hóa điều trị bệnh nền, ngừng thuốc nghi ngờ, tư vấn chế độ ăn. Nếu không
-                      đỡ, chuyển sang Bước 3.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="flow-connector">
-                <div class="flow-connector-line"></div>
-                <div class="flow-connector-arrow"></div>
-              </div>
-
-              <!-- BƯỚC 3 -->
-              <div class="fnode fnode-warn clickable" onclick="toggleNode(this)">
-                <div class="fnode-tag">BƯỚC 3: Cận lâm sàng sàng lọc cơ bản</div>
-                <div class="fnode-title">
-                  <span class="step-badge">3</span>
-                  Basic Screen Testing & Empiric Trial
-                </div>
-                <p class="fnode-body">
-                  Thực hiện các xét nghiệm ít xâm lấn và điều trị thử để loại trừ bệnh thực thể một cách hệ thống.
-                </p>
-                <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem chi tiết xét
-                  nghiệm & xử trí</div>
-                <div class="fnode-details">
-                  <div class="detail-box">
-                    <strong>Các cận lâm sàng khuyến cáo:</strong>
-                    <ul>
-                      <li><b>Máu:</b> CBC, ESR/CRP, Ferritin, Men gan, Creatinine, Electrolytes, Calcium, Lipase, TSH,
-                        xét
-                        nghiệm Celiac.</li>
-                      <li><b>Nước tiểu & Phân:</b> UA, test thai hCG (nếu là nữ), test Helicobacter pylori, máu ẩn trong
-                        phân (FOBT).</li>
-                      <li><b>Hình ảnh:</b> Siêu âm bụng/chậu, CXR, ECG.</li>
-                      <li><b>Điều trị thử:</b> Thử dùng PPI hoặc Kháng H2 trong 2-4 tuần nếu nghi ngờ loét dạ dày tá
-                        tràng/trào ngược.</li>
-                    </ul>
-                  </div>
-                  <div class="detail-box" style="margin-top: 8px;">
-                    <strong>👉 Hướng tiếp theo:</strong>
-                    <ul>
-                      <li><b>Nếu CÓ bất thường thực thể:</b> Điều trị theo nguyên nhân hoặc gửi nội soi/chụp CT/MRI
-                        chuyên
-                        sâu.</li>
-                      <li><b>Nếu các kết quả đều BÌNH THƯỜNG:</b> Chuyển sang Bước 4 (Chẩn đoán CAPS).</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div class="flow-connector">
-                <div class="flow-connector-line"></div>
-                <div class="flow-connector-arrow"></div>
-              </div>
-
-              <!-- BƯỚC 4 -->
-              <div class="fnode fnode-ok clickable" onclick="toggleNode(this)">
-                <div class="fnode-tag">BƯỚC 4: Chẩn đoán CAPS & Điều trị chuyên biệt</div>
-                <div class="fnode-title">
-                  <span class="step-badge">4</span>
-                  Centrally Mediated Abdominal Pain Syndrome (CAPS)
-                </div>
-                <p class="fnode-body">
-                  Nghĩ tới CAPS khi đau bụng liên tục $\ge 6$ tháng không giải thích được bằng nguyên nhân thực thể
-                  (tiêu
-                  chuẩn Rome IV).
-                </p>
-                <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem phác đồ điều trị
-                  CAPS</div>
-                <div class="fnode-details">
-                  <div class="detail-box">
-                    <strong>1. Thiết lập mối quan hệ điều trị lâu dài:</strong>
-                    Lắng nghe, trấn an bệnh nhân và quản lý kỳ vọng (mục tiêu là kiểm soát triệu chứng, cải thiện chất
-                    lượng cuộc sống chứ không phải chữa khỏi dứt điểm).
-                  </div>
-                  <div class="detail-box" style="margin-top: 8px;">
-                    <strong>2. Thay đổi lối sống & Tâm lý:</strong>
-                    <ul>
-                      <li>Tập thể dục, thiền, yoga, vệ sinh giấc ngủ tốt.</li>
-                      <li>Liệu pháp nhận thức - hành vi (CBT), thôi miên đường ruột. Khám tâm thần nếu có lo âu, trầm
-                        cảm
-                        kèm theo.</li>
-                    </ul>
-                  </div>
-                  <div class="detail-box" style="margin-top: 8px;">
-                    <strong>3. Điều trị bằng thuốc:</strong>
-                    <ul>
-                      <li>Sử dụng thuốc chống trầm cảm liều thấp (như TCAs: Amitriptyline; hoặc SSRIs, SNRIs) để giảm
-                        đau
-                        do nhạy cảm thần kinh trung ương.</li>
-                      <li><b>⚠️ LƯU Ý ĐẶC BIỆT QUAN TRỌNG:</b> Tuyệt đối tránh sử dụng các thuốc giảm đau nhóm Opioids
-                        (narcotics) vì có nguy cơ cao gây nghiện, táo bón và làm bùng phát hội chứng ruột do thuốc phiện
-                        (narcotic bowel syndrome), khiến đau bụng nặng hơn.</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
+      <!-- THÔNG ĐIỆP CỐT LÕI -->
+      <section class="take-home-card">
+        <div class="take-home-title">
+          <i class="fas fa-lightbulb"></i> Thông điệp Cốt lõi (Take-home Messages)
         </div>
-
-        <!-- REFERENCE -->
-        <section class="checklist-card" style="margin-top: 2rem;">
-          <h2><i class="fa-solid fa-book-bookmark"></i> Tài liệu tham khảo y học</h2>
-          <ul
-            style="list-style: none; padding-left: 0; font-size: var(--text-xs); line-height: 1.6; display:flex; flex-direction:column; gap:8px;">
-
-            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Primary Care Networks.
-              <em>Chronic Abdominal Pain Pathway</em>. Alberta Health Services; 2019.
-            </li>
-            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Haist SA, Robbins JB.
-              <em>Internal Medicine on Call</em>. McGraw-Hill; 2005.
-            </li>
-            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Stern SDC, Cifu AS, Altkorn
-              D.
-              <em>Symptoms to Diagnosis: An Evidence-Based Guide</em>. 4th ed. McGraw-Hill Education; 2020.
-            </li>
-
+        <div class="take-home-body">
+          <ul>
+            <li>Khai thác chi tiết các dấu hiệu báo động (sụt cân, thiếu máu, tiêu máu) là bước quan trọng nhất để không bỏ sót <strong>ung thư ống tiêu hóa</strong> ở bệnh nhân đau bụng mạn tính.</li>
+            <li>Đau bụng mạn tính thay đổi theo thói quen đi tiêu và <strong>giảm rõ sau khi đại tiện</strong> là chìa khóa vàng để nhận diện <strong>Hội chứng ruột kích thích (IBS)</strong>.</li>
+            <li>Với hội chứng đau bụng qua trung gian trung ương (CAPS), việc giải thích rõ bản chất bệnh và sử dụng <strong>thuốc điều hòa thần kinh liều thấp</strong> (như TCAs) là hướng đi đúng đắn, tuyệt đối tránh các phẫu thuật thăm dò vô ích.</li>
+            <li>Tuyệt đối tránh sử dụng các loại thuốc giảm đau gây nghiện họ opioid cho bệnh nhân đau bụng chức năng mạn tính do nguy cơ gây nghiện và làm trầm trọng thêm triệu chứng ruột.</li>
           </ul>
-        </section>
+        </div>
+      </section>
 
-      </div><!-- end main-wrapper -->
-    </div><!-- end app-container -->
+      <!-- TÀI LIỆU THAM KHẢO -->
+      <section class="references-card">
+        <div class="references-title">
+          <i class="fas fa-book"></i> Tài liệu Tham khảo
+        </div>
+        <ol class="references-list">
+          <li>Stern SDC, Cifu AS, Altkorn D. <em>Symptoms to Diagnosis: An Evidence-Based Guide</em>. 4th ed. McGraw-Hill Education; 2020.</li>
+          <li>Claudio P, et al. Chronic Abdominal Pain Pathway. <em>Journal of Clinical Medicine</em>. 2019;21(1):44-51.</li>
+          <li>Kasper DL, Fauci AS, Hauser SL, Longo DL, Jameson JL, Loscalzo J. <em>Harrison's Manual of Medicine</em>. 20th ed. McGraw-Hill Education; 2019.</li>
+          <li>Yew KS, George MK, Allred HB. Acute Abdominal Pain in Adults: Evaluation and Diagnosis. <em>Am Fam Physician</em>. 2023;107(6):585-596.</li>
+        </ol>
+      </section>
+
+    </main>
   </div>
-  <!-- Nạp Footer -->
-  <div id="footer-placeholder" data-footer-path="../../../../../../components/footer.html"></div>
 
-  <script src="../../../../../../js/flowchart.js"></script>
+  <!-- FOOTER PLACEHOLDER -->
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+  <!-- JS Core -->
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+
+  <!-- JS Layout tiếp cận triệu chứng -->
+  <script src="../../../../../js/approach-symptom.js" defer></script>
 </body>
 
 </html>

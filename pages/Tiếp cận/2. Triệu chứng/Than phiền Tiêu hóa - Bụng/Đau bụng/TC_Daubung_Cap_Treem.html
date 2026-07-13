@@ -1,13 +1,14 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi" data-theme="light">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Sơ đồ tiếp cận chẩn đoán đau bụng cấp ở trẻ em: Đánh giá cấp cứu (sốc, viêm phúc mạc), khám lâm sàng toàn diện (loại trừ hô hấp, tai họng, tinh hoàn), định hướng ngoại khoa (viêm ruột thừa, lồng ruột) và nội khoa.">
-  <title>Đau Bụng Cấp ở Trẻ Em – CliniPortal</title>
+    content="Tiếp cận lâm sàng chẩn đoán và xử trí đau bụng cấp ở trẻ em, lồng ruột cấp, viêm ruột thừa nhi khoa, tắc ruột và các nguyên nhân ngoài ổ bụng.">
+  <title>Đau Bụng Cấp Trẻ Em – CliniPortal</title>
 
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -15,21 +16,18 @@
     rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="../../../../../../css/reset.css">
-  <link rel="stylesheet" href="../../../../../../css/main.css">
-  <link rel="stylesheet" href="../../../../../../css/components/header.css">
-  <link rel="stylesheet" href="../../../../../../css/components/sidebar.css">
-  <link rel="stylesheet" href="../../../../../../css/components/footer.css">
+  <!-- CSS Core (5 levels up) -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
 
-  <!-- JS Core -->
-  <script src="../../../../../../js/main.js" defer></script>
-  <script src="../../../../../../components/header.js" defer></script>
-  <script src="../../../../../../components/footer.js" defer></script>
+  <!-- CSS Layout tiếp cận triệu chứng -->
+  <link rel="stylesheet" href="../../../../../css/components/approach-symptom.css">
 
   <style>
-    /* ============================================================
-       QUICK SUB-NAVIGATION SWITCHER BAR (DUAL-ROW)
-    ============================================================ */
+    /* Sub-navigation Switcher Bar */
     .tc-sub-nav {
       display: flex;
       flex-direction: column;
@@ -37,10 +35,9 @@
       margin-bottom: 24px;
       padding: 12px;
       background: var(--color-surface);
-      border: 1px solid var(--color-divider);
+      border: 1px solid var(--color-border);
       border-radius: var(--radius-md);
       box-shadow: var(--shadow-sm);
-      animation: fadeInUp 0.4s ease-out;
       width: 100%;
       box-sizing: border-box;
     }
@@ -56,14 +53,14 @@
       font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
-      color: var(--color-text-faint);
+      color: var(--color-text-muted);
       margin-right: 8px;
       letter-spacing: 0.5px;
     }
 
     .sub-nav-divider {
       height: 1px;
-      background-color: var(--color-divider);
+      background-color: var(--color-border);
       width: 100%;
     }
 
@@ -82,29 +79,24 @@
 
     .sub-nav-link:hover {
       color: var(--color-primary);
-      background: var(--color-surface-offset);
+      background: var(--color-bg);
     }
 
     .sub-nav-link.active {
       color: var(--color-primary);
       background: var(--color-primary-hl);
+      border: 1px solid var(--color-primary);
     }
   </style>
-  <link rel="stylesheet" href="../../../../../../css/components/flowchart.css">
-
-
-
-
 </head>
 
 <body>
-  <div id="header-placeholder" data-header-path="../../../../../../components/header.html"></div>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-  <!-- ===================== APP CONTAINER ===================== -->
   <div class="app-container">
-
-        <!-- SIDEBAR -->
+    <!-- SIDEBAR -->
     <aside class="app-sidebar" id="appSidebar">
       <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
         <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
@@ -122,28 +114,27 @@
             </a>
           </li>
           <li>
-            <a href="../../../tiep-can.html" class="nav-item active" aria-current="page" title="Tiếp cận">
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="nav-item active" title="Tiếp cận lâm sàng">
               <span class="nav-icon">🤒</span>
-              <span class="nav-text">Tiếp cận</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
             </a>
           </li>
         </ul>
+        <!-- Mục lục tự động (TOC) sẽ được JS tự động chèn vào đây -->
+        <div class="sidebar-toc" id="sidebarToc"></div>
       </nav>
     </aside>
 
-    <!-- ===================== MAIN CONTENT ===================== -->
-    <div class="main-wrapper flow-page" id="mainContent">
-
-      <!--BREADCRUMB-->
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="main-wrapper">
+      <!-- BREADCRUMB -->
       <nav aria-label="Breadcrumb" class="breadcrumb-container">
         <ol class="breadcrumb-list">
           <li class="breadcrumb-item">
-            <a href="../../../../../../index.html" class="breadcrumb-link">
-              <span class="home-icon">🏠</span> Home
-            </a>
+            <a href="../../../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Trang chủ</a>
           </li>
           <li class="breadcrumb-item">
-            <a href="../../../../tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
+            <a href="../../../../../pages/Tiếp cận/tiep-can.html" class="breadcrumb-link">Tiếp cận lâm sàng</a>
           </li>
           <li class="breadcrumb-item">
             <a href="TC_Daubung.html" class="breadcrumb-link">Tiếp cận Đau Bụng</a>
@@ -152,13 +143,11 @@
         </ol>
       </nav>
 
-
       <!-- QUICK SUB-NAVIGATION -->
       <div class="tc-sub-nav">
         <div class="sub-nav-group">
           <span class="sub-nav-label">Theo Đối Tượng:</span>
           <a href="TC_Daubung.html" class="sub-nav-link">🏠 Tổng quan</a>
-          <a href="TC_Daubung_Cap_Nguoilon.html" class="sub-nav-link">👤 Người lớn</a>
           <a href="TC_Daubung_Cap_Nguoilon-tuoi.html" class="sub-nav-link">🧓 Cao tuổi & Bệnh nền</a>
           <a href="TC_Daubung_Cap_Treem.html" class="sub-nav-link active">👶 Trẻ em</a>
           <a href="TC_Daubung_Cap_Phunu.html" class="sub-nav-link">👩‍🦰 Phụ nữ sinh sản</a>
@@ -177,250 +166,313 @@
         </div>
       </div>
 
-
       <!-- HERO BANNER -->
-      <section class="flow-hero">
-        <div class="hero-badge">🧬 Lưu đồ tương tác • 2026</div>
-        <h1>Đau Bụng Cấp ở Trẻ Em</h1>
-        <p>Sơ đồ tiếp cận chẩn đoán đau bụng cấp ở trẻ em: Đánh giá cấp cứu (sốc, viêm phúc mạc), khám lâm sàng toàn
-          diện (loại trừ hô hấp, tai họng, tinh hoàn), định hướng ngoại khoa (viêm ruột thừa, lồng ruột) và nội khoa.
-        </p>
+      <section class="hero-dashboard">
+        <div class="hero-intro">
+          <h1>👶 TIẾP CẬN ĐAU BỤNG CẤP Ở TRẺ EM</h1>
+          <p>Quy trình lâm sàng 7 bước đánh giá đau bụng cấp ở trẻ em, nhận diện các bệnh lý ngoại khoa đe dọa tính mạng và định hướng hồi sức nhi khoa.</p>
+        </div>
       </section>
 
-      <!-- LEGEND -->
-      <div class="flow-legend">
-        <div class="legend-item">
-          <div class="legend-dot" style="background:var(--c-danger)"></div> Khẩn cấp / Báo động đỏ
+      <!-- SYMPTOM GRID LAYOUT (BƯỚC 1 -> 7) -->
+      <div class="symptom-grid">
+
+        <!-- BƯỚC 1: Ổn định ban đầu - sàng lọc nguy cơ -->
+        <div class="symptom-step-card border-danger symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-danger">Bước 1</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-exclamation-triangle"></i> Ổn định ban đầu – Sàng lọc nguy cơ</h3>
+          <div class="step-card-body">
+            <p><strong>Lưu ý quan trọng:</strong> Đau bụng cấp kéo dài <strong>trên 4 giờ</strong> ở trẻ em phải luôn được coi là một cấp cứu ổ bụng tiềm tàng cho đến khi có bằng chứng loại trừ. Nhận diện các dấu hiệu "cờ đỏ" nguy kịch:</p>
+            <ul>
+              <li><strong>Dấu hiệu viêm phúc mạc:</strong> Bụng cứng, đề kháng thành bụng rõ rệt, không di động theo nhịp thở, đau chói khi sờ nắn, hoặc âm ruột mất.</li>
+              <li><strong>Nôn dịch mật:</strong> Chất nôn màu xanh lá cây hoặc vàng (cảnh báo tắc ruột, xoắn ruột).</li>
+              <li><strong>Tiêu phân nhầy máu:</strong> Phân có máu tươi hoặc nhầy máu như thạch (chỉ điểm lồng ruột cấp hoặc viêm ruột hoại tử).</li>
+              <li><strong>Huyết động không ổn định / Sốc:</strong> Mạch nhanh nhỏ, tay chân lạnh, thời gian đổ đầy mao mạch (CRT) > 2 giây, vẻ mặt li bì, mắt trũng, thóp lõm ở trẻ nhỏ (mất nước nặng/sốc).</li>
+              <li><strong>Vùng bẹn bìu sưng đau:</strong> Thoát vị bẹn bị nghẹt/kẹt hoặc xoắn tinh hoàn gây đau quy chiếu.</li>
+            </ul>
+            <div class="step-alert-box">
+              <i class="fas fa-ambulance"></i>
+              <span><strong>Xử trí cấp cứu:</strong> Yêu cầu trẻ nhịn ăn uống hoàn toàn (NPO). Nếu có sốc hoặc mất nước nặng, thiết lập đường truyền tĩnh mạch và truyền nhanh dịch đẳng trương (Ringer Lactate hoặc NaCl 0.9%) liều 20 ml/kg bolus tĩnh mạch. đặt sonde dạ dày giải áp nếu nghi ngờ tắc ruột.</span>
+            </div>
+          </div>
         </div>
-        <div class="legend-item">
-          <div class="legend-dot" style="background:var(--c-warn)"></div> Sàng lọc / Đe dọa tính mạng
+
+        <!-- BƯỚC 2: Thu thập dữ kiện tập trung -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 2</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-notes-medical"></i> Thu thập dữ kiện tập trung</h3>
+          <div class="step-card-body">
+            <p>Khai thác nhanh bệnh sử và thăm khám thực thể:</p>
+            <ul>
+              <li><strong>Mô tả triệu chứng:</strong>
+                <ul>
+                  <li><em>Vị trí và tính chất:</em> Trẻ đau ở đâu? Đau quanh rốn thường không đặc hiệu; đau di trú xuống hố chậu phải gợi ý viêm ruột thừa cấp. Đau quặn từng cơn, khóc thét, trẻ ưỡn người hoặc gập hai đùi vào sát bụng gợi ý lồng ruột.</li>
+                  <li><em>Triệu chứng đi kèm:</em> Sốt, ho, thở nhanh (nghi viêm phổi thùy dưới gây đau quy chiếu); tiêu chảy, nôn mửa; tiểu buốt, tiểu rắt (nhiễm trùng tiểu); đau họng (viêm họng kích thích hạch mạc treo).</li>
+                </ul>
+              </li>
+              <li><strong>Yếu tố nguy cơ theo độ tuổi:</strong>
+                <ul>
+                  <li><em>Sơ sinh:</em> Teo ruột/tắc ruột bẩm sinh, ruột xoay bất toàn.</li>
+                  <li><em>Nhũ nhi (< 2 tuổi):</em> Lồng ruột cấp, thoát vị bẹn nghẹt.</li>
+                  <li><em>Trẻ lớn:</em> Viêm ruột thừa cấp, viêm dạ dày ruột.</li>
+                </ul>
+              </li>
+              <li><strong>Khám bụng & Toàn thân:</strong>
+                <ul>
+                  <li>Sử dụng thang điểm FLACC để đánh giá mức độ đau ở trẻ nhỏ chưa biết nói.</li>
+                  <li>Sờ nhẹ nhàng bụng trẻ khi nằm yên. Sờ tìm khối lồng (dạng hình xúc xích ở hạ sườn phải), khối bã thức ăn, hoặc khối thoát vị bẹn.</li>
+                  <li><strong>Luôn khám bìu ở nam giới</strong> để loại trừ xoắn tinh hoàn; khám tai mũi họng và phổi.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="legend-item">
-          <div class="legend-dot" style="background:var(--c-info)"></div> Thông tin / Khám cơ bản
+
+        <!-- BƯỚC 3: Lập danh sách chẩn đoán phân biệt -->
+        <div class="symptom-step-card border-warning symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-warning">Bước 3</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-list-ul"></i> Danh sách Chẩn đoán phân biệt</h3>
+          <div class="step-card-body">
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Nhóm nguyên nhân</th>
+                    <th>Ví dụ bệnh / hội chứng</th>
+                    <th>Đặc điểm lâm sàng chính</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Cấp cứu Ngoại khoa</strong></td>
+                    <td>
+                      <strong>Lồng ruột cấp</strong><br>
+                      <strong>Viêm ruột thừa cấp</strong><br>
+                      <strong>Tắc ruột / Xoắn ruột</strong><br>
+                      <strong>Thoát vị bẹn nghẹt</strong>
+                    </td>
+                    <td>
+                      - Trẻ < 2 tuổi khóc thét từng cơn, gập đùi, nôn ói, sờ thấy khối hình xúc xích, <em>tiêu phân nhầy máu</em>.<br>
+                      - Trẻ lớn, đau quanh rốn khu trú dần xuống hố chậu phải, sốt nhẹ, chán ăn, ấn đau HCP.<br>
+                      - Nôn ra dịch mật (xanh/vàng), bụng chướng căng, bí trung đại tiện, có thể có sẹo mổ cũ.<br>
+                      - Khối phồng sưng đau vùng bẹn bìu, không đẩy lên được, trẻ quấy khóc dữ dội.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Bệnh lý Nội khoa Tiêu hóa</strong></td>
+                    <td>
+                      <strong>Viêm dạ dày ruột cấp</strong><br>
+                      <strong>Táo bón cấp / chức năng</strong><br>
+                      <strong>Viêm hạch mạc treo ruột</strong>
+                    </td>
+                    <td>
+                      - Đau bụng quặn từng cơn kèm <em>tiêu chảy phân lỏng nhiều lần</em>, nôn mửa, liên quan thức ăn/dịch tễ.<br>
+                      - Đau bụng âm ỉ, bụng hơi chướng, sờ thấy khối phân cứng dọc đại tràng, chậm đại tiện vài ngày.<br>
+                      - Sốt, đau bụng âm ỉ, thường xảy ra sau hoặc đi kèm với tình trạng viêm họng, nhiễm siêu vi hô hấp.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Nguyên nhân ngoài ổ bụng</strong></td>
+                    <td>
+                      <strong>Viêm phổi thùy dưới</strong><br>
+                      <strong>Nhiễm trùng đường tiểu</strong>
+                    </td>
+                    <td>
+                      - Sốt cao, ho, <em>thở nhanh</em>, rút lõm ngực, nghe phổi có ran nổ, đau quy chiếu vùng bụng trên.<br>
+                      - Sốt cao không rõ nguyên nhân (ở trẻ nhỏ) hoặc sốt kèm <em>tiểu buốt, tiểu rắt, tiểu đục</em> (ở trẻ lớn).
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
-        <div class="legend-item">
-          <div class="legend-dot" style="background:var(--c-ok)"></div> Xử trí / Kết luận
+
+        <!-- BƯỚC 4: Biện luận lâm sàng -->
+        <div class="symptom-step-card border-success symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-success">Bước 4</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-filter"></i> Biện luận lâm sàng (Clinical reasoning)</h3>
+          <div class="step-card-body">
+            <ul>
+              <li><strong>Độ ưu tiên hàng đầu:</strong> Bắt buộc phải loại trừ khẩn cấp các cấp cứu ngoại khoa đe dọa tính mạng cần can thiệp phẫu thuật hoặc thủ thuật sớm: <strong>Lồng ruột cấp</strong>, <strong>Viêm ruột thừa cấp</strong>, <strong>Xoắn ruột</strong> và <strong>Thoát vị bẹn nghẹt</strong>.</li>
+              <li><strong>Định hướng triệu chứng chìa khóa:</strong>
+                <ul>
+                  <li>Trẻ nhỏ dưới 2 tuổi khóc thét đột ngột từng cơn, nôn nhiều và đi tiêu phân nhầy máu: Chỉ điểm cực mạnh của <strong>Lồng ruột cấp</strong>.</li>
+                  <li>Trẻ lớn hơn có cơn đau di chuyển từ rốn xuống hố chậu phải kèm sốt nhẹ, chán ăn, ấn đau HCP: Hướng mạnh đến <strong>Viêm ruột thừa cấp</strong>.</li>
+                  <li>Trẻ nôn ra dịch mật màu xanh lá kèm chướng bụng, bí trung đại tiện: Phải cảnh giác cao độ tình trạng <strong>Tắc ruột / Ruột xoay bất toàn</strong>.</li>
+                  <li>Trẻ sốt cao, ho kèm thở nhanh hơn tuổi nhưng kêu đau bụng: Cần nghĩ đến đau quy chiếu do <strong>Viêm phổi thùy dưới</strong>.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="legend-item" style="font-style:italic; margin-left: auto;">
-          💡 Nhấn vào hộp để xem chi tiết hướng dẫn lâm sàng
+
+        <!-- BƯỚC 5: Cận lâm sàng hợp lý -->
+        <div class="symptom-step-card border-info symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-vials"></i> Chỉ định Cận lâm sàng hợp lý</h3>
+          <div class="step-card-body">
+            <p>Các thăm dò cận lâm sàng thiết yếu cho trẻ em:</p>
+            <ul>
+              <li><strong>Chẩn đoán hình ảnh:</strong>
+                <ul>
+                  <li><strong>Siêu âm ổ bụng:</strong> Là lựa chọn đầu tay và ưu tiên nhất. Siêu âm có độ nhạy và đặc hiệu rất cao để phát hiện lồng ruột (hình ảnh "bia bắn" hoặc "củ hành" trên mặt cắt ngang, hình "sandwich" trên mặt cắt dọc), viêm ruột thừa (ruột thừa căng to > 6mm, thành dày, tăng tưới máu), hoặc dịch tự do ổ bụng.</li>
+                  <li><strong>X-quang bụng đứng không chuẩn bị:</strong> Chỉ định khi nghi ngờ tắc ruột (mức nước-hơi) hoặc thủng tạng rỗng (liềm hơi dưới hoành).</li>
+                </ul>
+              </li>
+              <li><strong>Xét nghiệm sinh hóa & huyết học:</strong>
+                <ul>
+                  <li>Công thức máu, CRP (đánh giá phản ứng viêm).</li>
+                  <li>Ure, Creatinin, Điện giải đồ (đánh giá mức độ mất nước và rối loạn điện giải do nôn/tiêu chảy nhiều).</li>
+                  <li>Tổng phân tích nước tiểu (tầm soát nhiễm trùng tiểu).</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
+
+        <!-- BỔ TRỢ BƯỚC 5: Bảng nguyên nhân nặng theo lứa tuổi -->
+        <div class="symptom-step-card border-info symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bổ trợ Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-baby"></i> Một số nguyên nhân nặng cần lưu ý ở trẻ em</h3>
+          <div class="step-card-body">
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Bệnh lý</th>
+                    <th>Đặc điểm lâm sàng & bệnh sử chính</th>
+                    <th>Thao tác chẩn đoán then chốt</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Lồng ruột cấp</strong></td>
+                    <td>Trẻ nhũ nhi quấy khóc khóc thét từng cơn, nôn nhiều, đi tiêu phân nhầy máu, sờ thấy khối lồng ở bụng.</td>
+                    <td>Siêu âm ổ bụng (hình ảnh bia bắn/pseudokidney).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Viêm ruột thừa cấp</strong></td>
+                    <td>Đau bụng khu trú hố chậu phải, sốt nhẹ, nôn, phản ứng dội hoặc phản ứng thành bụng HCP.</td>
+                    <td>Khám lâm sàng lặp lại + Siêu âm bụng.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tắc ruột do giun</strong></td>
+                    <td>Đau bụng quặn từng cơn, chướng bụng, nôn ra giun hoặc nôn dịch mật, sờ thấy khối búi giun.</td>
+                    <td>Siêu âm thấy hình ảnh búi giun trong lòng ruột.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Thoát vị bẹn nghẹt</strong></td>
+                    <td>Khối phồng sưng đau ở vùng bẹn hoặc bìu, trẻ khóc thét không thể dỗ nín, khối không tự lên.</td>
+                    <td>Khám kỹ vùng bẹn bìu ở mọi trẻ đau bụng cấp.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Viêm não, màng não</strong></td>
+                    <td>Đau đầu, sốt cao, nôn vọt, co giật, thóp phồng (ở trẻ nhỏ), cổ cứng (ở trẻ lớn).</td>
+                    <td>Khám dấu hiệu màng não, chọc dò dịch não tủy.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 6: Hướng xử trí ban đầu -->
+        <div class="symptom-step-card border-primary symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 6</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-hand-holding-medical"></i> Hướng xử trí ban đầu</h3>
+          <div class="step-card-body">
+            <ul>
+              <li><strong>Hồi sức ban đầu (theo khuyến cáo WHO):</strong>
+                <ul>
+                  <li>Cho trẻ <strong>nhịn ăn uống hoàn toàn (NPO)</strong> nếu nghi ngờ có chỉ định ngoại khoa.</li>
+                  <li>Nếu trẻ có sốc (mạch nhanh nhỏ, tay chân lạnh, CRT > 2s): Truyền dịch tĩnh mạch nhanh bằng NaCl 0.9% hoặc Ringer Lactate liều <strong>20 ml/kg</strong> bolus tĩnh mạch.</li>
+                  <li>Nếu trẻ không sốc nhưng có mất nước: Bù dịch tĩnh mạch theo phác đồ mất nước.</li>
+                  <li>Đặt ống thông dạ dày (sonde dạ dày) để giải áp nếu trẻ nôn dịch mật hoặc chướng bụng nhiều để phòng ngừa thủng ruột.</li>
+                </ul>
+              </li>
+              <li><strong>Kiểm soát đau:</strong> Việc sử dụng thuốc giảm đau (như Paracetamol truyền tĩnh mạch hoặc đặt hậu môn) ở trẻ đau bụng dữ dội là <strong>an toàn và nhân đạo</strong>; thuốc không làm lu mờ các dấu hiệu ngoại khoa thành bụng mà giúp trẻ bớt hoảng sợ, tạo điều kiện cho bác sĩ thăm khám chính xác hơn.</li>
+              <li><strong>Điều trị đặc hiệu:</strong>
+                <ul>
+                  <li><strong>Lồng ruột cấp:</strong> Chuẩn bị tháo lồng bằng bơm hơi (thực hiện ở tuyến có chuyên khoa) hoặc phẫu thuật nếu tháo lồng bằng hơi thất bại/có biến chứng thủng ruột.</li>
+                  <li><strong>Viêm phúc mạc / Viêm ruột thừa:</strong> Khởi động kháng sinh kinh nghiệm đường tĩnh mạch bao phủ vi khuẩn đường ruột (ví dụ Cephalosporin thế hệ 3 + Metronidazole) và chuẩn bị phẫu thuật.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 7: Khi nào cần chuyển tuyến / gọi hội chẩn -->
+        <div class="symptom-step-card border-primary symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 7</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-hospital-user"></i> Khi nào cần chuyển tuyến / Gọi hội chẩn</h3>
+          <div class="step-card-body">
+            <ul>
+              <li><strong>Hội chẩn Ngoại khoa Nhi hoặc chuyển tuyến khẩn cấp:</strong> Khi trẻ có dấu hiệu bụng ngoại khoa (gồng cứng thành bụng), nôn dịch mật (tắc/xoắn ruột), lồng ruột cấp, thoát vị bẹn nghẹt, hoặc viêm ruột thừa cấp.</li>
+              <li><strong>Chuyển Hồi sức tích cực Nhi (PICU):</strong> Trẻ có huyết động không ổn định, sốc nhiễm trùng từ ổ bụng, hoặc sốc giảm thể tích nặng không cải thiện sau bù dịch tĩnh mạch ban đầu.</li>
+            </ul>
+          </div>
+        </div>
+
       </div>
 
-      <!-- INTERACTIVE FLOW CANVAS -->
-      <div class="flow-canvas-wrapper">
-        <div class="flow-col">
-
-          <!-- ==================== BƯỚC 1 ==================== -->
-          <div class="fnode fnode-start">
-            <div class="fnode-tag">BƯỚC 1: Đánh giá cấp cứu (Triage) & Dấu hiệu sinh tồn</div>
-            <div class="fnode-title">
-              <span class="step-badge">1</span>
-              Pediatric Triage & Peritoneal Signs
-            </div>
-            <p class="fnode-body">
-              Đánh giá nhanh tình trạng hô hấp, tuần hoàn và các dấu hiệu kích thích phúc mạc ở trẻ em.
-            </p>
-          </div>
-
-          <div class="flow-connector">
-            <div class="flow-connector-line" style="height: 35px;"></div>
-            <div class="flow-connector-arrow"></div>
-          </div>
-
-          <div class="flow-branch">
-            <div class="flow-branch-side">
-              <div class="flow-connector-label fc-yes">🔴 CÓ (Dấu hiệu sốc, suy hô hấp, viêm phúc mạc)</div>
-              <div class="flow-connector">
-                <div class="flow-connector-line"></div>
-                <div class="flow-connector-arrow"></div>
-              </div>
-              <div class="fnode fnode-danger clickable" onclick="toggleNode(this)">
-                <div class="fnode-tag">🚨 Xử trí nguy kịch ngoại khoa</div>
-                <div class="fnode-title">HỒI SỨC CẤP CỨU & HỘI CHẨN NGOẠI NHI</div>
-                <p class="fnode-body">
-                  Nghi ngờ thủng tạng, lồng ruột biến chứng, xoắn ruột hoại tử. Cần can thiệp hồi sức ngoại khoa khẩn
-                  cấp.
-                </p>
-                <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem quy trình cấp
-                  cứu
-                  nhi</div>
-                <div class="fnode-details">
-                  <div class="detail-box">
-                    <strong>Các hành động cấp cứu bắt buộc:</strong>
-                    <ul>
-                      <li>Cho trẻ nhịn ăn uống hoàn toàn (NPO - Nil Per Os).</li>
-                      <li>Thiết lập đường truyền tĩnh mạch, bù dịch chống sốc (nếu có tụt huyết áp/mạch nhanh nhẹ).</li>
-                      <li>Dùng kháng sinh tĩnh mạch phổ rộng ngay nếu nghi ngờ viêm phúc mạc.</li>
-                      <li>Mời ngay bác sĩ Ngoại Nhi hội chẩn khẩn cấp tại giường.</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="flow-branch-side">
-              <div class="flow-connector-label fc-no">🟢 KHÔNG (Huyết động ổn định, không có phúc mạc)</div>
-              <div class="flow-connector">
-                <div class="flow-connector-line"></div>
-                <div class="flow-connector-arrow"></div>
-              </div>
-
-              <!-- BƯỚC 2 -->
-              <div class="fnode fnode-info clickable" onclick="toggleNode(this)">
-                <div class="fnode-tag">BƯỚC 2: Khai thác bệnh sử & Khám lâm sàng toàn diện</div>
-                <div class="fnode-title">
-                  <span class="step-badge">2</span>
-                  Pediatric History & Complete Physical Exam
-                </div>
-                <p class="fnode-body">
-                  Hỏi kỹ triệu chứng kèm theo và bắt buộc khám các cơ quan ngoài ổ bụng (tai mũi họng, phổi, tinh hoàn,
-                  da
-                  khớp).
-                </p>
-                <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem chi tiết khám
-                  nhi
-                  khoa</div>
-                <div class="fnode-details">
-                  <div class="detail-box">
-                    <strong>1. Khai thác bệnh sử đặc thù:</strong>
-                    <ul>
-                      <li><b>Đau quặn cơn khóc thét:</b> Gợi ý lồng ruột (ở trẻ nhũ nhi < 2 tuổi).</li>
-                      <li><b>Nôn ói dịch mật (xanh/vàng):</b> Dấu hiệu báo động tắc ruột hoặc xoắn ruột trung tâm.</li>
-                      <li><b>Tiêu phân nhầy máu:</b> Gợi ý lồng ruột hoặc lỵ nhiễm trùng.</li>
-                    </ul>
-                  </div>
-                  <div class="detail-box" style="margin-top: 8px;">
-                    <strong>2. Khám ngoài ổ bụng (Bắt buộc):</strong>
-                    <ul>
-                      <li>Khám họng và tai (viêm họng/viêm tai giữa gây sốt và đau bụng phản ứng ở trẻ).</li>
-                      <li>Nghe phổi (viêm phổi thùy dưới dễ kích thích cơ hoành gây đau bụng).</li>
-                      <li>Khám cơ quan sinh dục (Xoắn tinh hoàn ở bé trai).</li>
-                      <li>Khám khớp và da (tìm ban xuất huyết Henoch-Schönlein ở mông, cẳng chân).</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div class="flow-connector">
-                <div class="flow-connector-line"></div>
-                <div class="flow-connector-arrow"></div>
-              </div>
-
-              <!-- BƯỚC 3 -->
-              <div class="fnode fnode-warn clickable" onclick="toggleNode(this)">
-                <div class="fnode-tag">BƯỚC 3: Định hướng chẩn đoán & Chỉ định cận lâm sàng</div>
-                <div class="fnode-title">
-                  <span class="step-badge">3</span>
-                  Differential Diagnosis & Testing
-                </div>
-                <p class="fnode-body">
-                  Phân nhóm trẻ vào nhóm Ngoại khoa (cần hình ảnh khẩn) hoặc Nội khoa để chỉ định xét nghiệm phù hợp.
-                </p>
-                <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem chi tiết chỉ
-                  định
-                </div>
-                <div class="fnode-details">
-                  <div class="detail-box" style="border-left: 4px solid var(--c-danger);">
-                    <strong>🧱 Hướng Cấp cứu Ngoại khoa (Surgical):</strong>
-                    <ul>
-                      <li><b>Nghi ngờ Viêm ruột thừa:</b> Đau HCP, sốt, nôn. 👉 Chỉ định Siêu âm bụng, CBC, CRP.</li>
-                      <li><b>Nghi ngờ Lồng ruột (Intussusception):</b> Trẻ nhỏ khóc thét từng cơn, nôn, phân máu. 👉 Chỉ
-                        định siêu âm bụng khẩn (tìm hình ảnh bia bắn/giả thận) - Ưu tiên số 1.</li>
-                      <li><b>Nghi ngờ Tắc/Xoắn ruột:</b> Nôn dịch mật, chướng bụng. 👉 Chụp X-quang bụng đứng không sửa
-                        soạn.</li>
-                      <li><b>Nghi ngờ Xoắn tinh hoàn/buồng trứng:</b> Đau đột ngột bìu hoặc hố chậu. 👉 Siêu âm Doppler
-                        mạch máu.</li>
-                    </ul>
-                  </div>
-                  <div class="detail-box" style="border-left: 4px solid var(--c-info); margin-top: 8px;">
-                    <strong>💊 Hướng Nội khoa (Medical):</strong>
-                    <ul>
-                      <li><b>Bệnh tiêu hóa:</b> Viêm dạ dày ruột (bù dịch), táo bón (xét nghiệm phân, X-quang nếu nghi ứ
-                        phân).</li>
-                      <li><b>Bệnh tiết niệu:</b> Nhiễm trùng tiểu, sỏi niệu. 👉 Tổng phân tích nước tiểu, siêu âm hệ
-                        niệu.
-                      </li>
-                      <li><b>Bệnh hệ thống/hô thái:</b> Viêm phổi (X-quang ngực), Toan ceton đái tháo đường DKA (thở
-                        nhanh
-                        sâu Kussmaul, khát nước, đa niệu -> kiểm tra đường huyết mao mạch, khí máu).</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div class="flow-connector">
-                <div class="flow-connector-line"></div>
-                <div class="flow-connector-arrow"></div>
-              </div>
-
-              <!-- BƯỚC 4 -->
-              <div class="fnode fnode-ok clickable" onclick="toggleNode(this)">
-                <div class="fnode-tag">BƯỚC 4: Xử trí & Theo dõi lâm sàng sát</div>
-                <div class="fnode-title">
-                  <span class="step-badge">4</span>
-                  Management & Critical Warning
-                </div>
-                <p class="fnode-body">
-                  Tiến hành điều trị đặc hiệu hoặc nhập viện theo dõi sát. Tuyệt đối tuân thủ nguyên tắc sử dụng thuốc
-                  giảm đau.
-                </p>
-                <div class="fnode-expand-hint"><i class="fa-solid fa-chevron-down expand-icon"></i> Xem cảnh báo quan
-                  trọng</div>
-                <div class="fnode-details">
-                  <div class="detail-box">
-                    <strong>1. Xử trí trường hợp đã rõ chẩn đoán:</strong>
-                    Tháo lồng bằng hơi (nếu lồng ruột), phẫu thuật cắt ruột thừa, truyền dịch (viêm dạ dày ruột).
-                  </div>
-                  <div class="detail-box" style="border-left: 4px solid var(--c-danger); margin-top: 8px;">
-                    <strong>⚠️ CẢNH BÁO NGUY HIỂM - ĐAU BỤNG CHƯA RÕ NGUYÊN NHÂN:</strong>
-                    <ul>
-                      <li>Nên cho trẻ nhập viện theo dõi lâm sàng sát, khám lại bụng và sinh hiệu mỗi 2-4 giờ.</li>
-                      <li><b>Tuyệt đối KHÔNG tự ý sử dụng các thuốc giảm đau mạnh (như opioids, NSAIDs mạnh)</b> trong
-                        giai đoạn theo dõi chưa rõ chẩn đoán. Thuốc có thể làm mờ triệu chứng thực thể (che giấu viêm
-                        phúc
-                        mạc), dẫn đến trễ nải phẫu thuật và đe dọa tính mạng trẻ.</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
+      <!-- THÔNG ĐIỆP CỐT LÕI -->
+      <section class="take-home-card">
+        <div class="take-home-title">
+          <i class="fas fa-lightbulb"></i> Thông điệp Cốt lõi (Take-home Messages)
         </div>
-
-        <!-- REFERENCE -->
-        <section class="checklist-card" style="margin-top: 2rem;">
-          <h2><i class="fa-solid fa-book-bookmark"></i> Tài liệu tham khảo y học</h2>
-          <ul
-            style="list-style: none; padding-left: 0; font-size: var(--text-xs); line-height: 1.6; display:flex; flex-direction:column; gap:8px;">
-
-            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Bệnh viện Nhi Đồng 2.
-              <em>Phác
-                đồ điều trị Nhi khoa</em>. Đau bụng cấp tính; Tắc ruột sơ sinh; Lồng ruột. Nhà xuất bản Y học; 2013.
-            </li>
-            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Bệnh viện Nhi Trung ương.
-              <em>Hướng dẫn chẩn đoán và điều trị bệnh trẻ em (Cập nhật năm 2020)</em>. Đau bụng không xác định và đau
-              bụng khác; Tiếp cận chẩn đoán trẻ nôn. Nhà xuất bản Y học; 2020.
-            </li>
-            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> World Health Organization
-              (WHO). <em>Pocket Book of Hospital Care for Children: Guidelines for the Management of Common Childhood
-                Illnesses</em>. 2nd ed. WHO Press; 2013.</li>
-            <li><i class="fa-regular fa-file-lines" style="color:var(--color-primary)"></i> Bộ Y tế Việt Nam. <em>Tài
-                liệu
-                chuyên môn hướng dẫn khám, chữa bệnh tại Trạm Y tế xã, phường</em>. Đau bụng ở trẻ em. Quyết định số
-              2919/QĐ-BYT; 2014.</li>
-
+        <div class="take-home-body">
+          <ul>
+            <li>Đau bụng kéo dài <strong>trên 4 giờ đồng hồ</strong> ở trẻ em phải luôn được coi là một tình trạng cấp cứu ngoại khoa ổ bụng tiềm tàng cho đến khi được loại trừ.</li>
+            <li>Trẻ nhỏ khóc thét từng cơn, gập hai đùi vào bụng, đi kèm nôn mửa và đi tiêu phân nhầy máu là bệnh cảnh kinh điển của <strong>lồng ruột cấp</strong>, cần siêu âm và tháo lồng bằng hơi khẩn cấp.</li>
+            <li>Không bao giờ quên khám tai mũi họng, nghe tim phổi và xét nghiệm nước tiểu ở trẻ đau bụng cấp, nhằm loại trừ viêm họng, <strong>viêm phổi thùy dưới</strong> và nhiễm trùng tiểu gây đau quy chiếu vùng bụng.</li>
+            <li>Việc sử dụng thuốc giảm đau ở trẻ bị đau bụng dữ dội là an toàn và nhân đạo; nó không che lấp dấu hiệu ngoại khoa mà giúp trẻ bớt hoảng sợ, tạo điều kiện thăm khám bụng dễ dàng hơn.</li>
           </ul>
-        </section>
+        </div>
+      </section>
 
-      </div><!-- end main-wrapper -->
-    </div><!-- end app-container -->
+      <!-- TÀI LIỆU THAM KHẢO -->
+      <section class="references-card">
+        <div class="references-title">
+          <i class="fas fa-book"></i> Tài liệu Tham khảo
+        </div>
+        <ol class="references-list">
+          <li>World Health Organization. <em>Pocket Book of Hospital Care for Children: Guidelines for the Management of Common Childhood Illnesses</em>. 2nd ed. WHO; 2013.</li>
+          <li>Bộ Y tế Việt Nam. <em>Hướng dẫn chẩn đoán và điều trị bệnh trẻ em</em>. Nhà xuất bản Y học; 2020.</li>
+          <li>Kasper DL, Fauci AS, Hauser SL, Longo DL, Jameson JL, Loscalzo J. <em>Harrison's Manual of Medicine</em>. 20th ed. McGraw-Hill Education; 2019.</li>
+          <li>Innes JA, Dover AR, Fairhurst K, eds. <em>Macleod's Clinical Examination</em>. 14th ed. Elsevier; 2018.</li>
+        </ol>
+      </section>
+
+    </main>
   </div>
-  <!-- Náº¡p Footer -->
-  <div id="footer-placeholder" data-footer-path="../../../../../../components/footer.html"></div>
 
-  <script src="../../../../../../js/flowchart.js"></script>
+  <!-- FOOTER PLACEHOLDER -->
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+  <!-- JS Core -->
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+
+  <!-- JS Layout tiếp cận triệu chứng -->
+  <script src="../../../../../js/approach-symptom.js" defer></script>
 </body>
 
 </html>

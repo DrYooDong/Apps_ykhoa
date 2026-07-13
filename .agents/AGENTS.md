@@ -79,6 +79,7 @@ Các Skills sau đây đã được tạo và sẵn sàng sử dụng:
 | `clinical-tools-module` | Tạo/sửa công cụ tính toán lâm sàng |
 | `clinical-skills-module` | Tạo/sửa trang kỹ năng lâm sàng |
 | `pharmacology-module` | Tạo/sửa trang dược lý |
+| `symptom-approach-module` | Tạo/sửa trang chẩn đoán tiếp cận triệu chứng lâm sàng |
 
 ---
 
