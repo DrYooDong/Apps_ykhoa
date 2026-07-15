@@ -171,6 +171,116 @@
           }, 1500);
         });
       }
+
+      // --- CLINICAL CALCULATORS: AUTO INITIALIZE INTERACTIVE UI ---
+      const calcContainer = document.querySelector('.na-grid, .urgent-grid, .calc-container');
+      if (calcContainer && calcContainer.children.length >= 2) {
+        const inputPanel = calcContainer.children[0];
+        const resultPanel = calcContainer.children[1];
+        
+        // 1. Tự động chèn nút Toggle Collapse vào tiêu đề của panel nhập liệu
+        const header = inputPanel.querySelector('.panel-title, .section-card-header');
+        if (header) {
+          const toggleBtn = document.createElement('button');
+          toggleBtn.type = 'button';
+          toggleBtn.className = 'toggle-input-panel-btn';
+          toggleBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+          toggleBtn.setAttribute('title', 'Thu gọn / Mở rộng bảng nhập liệu');
+          header.appendChild(toggleBtn);
+
+          toggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const collapsed = inputPanel.classList.toggle('collapsed-state');
+            calcContainer.classList.toggle('input-collapsed', collapsed);
+            
+            // Xoay icon trên nút toggle
+            const icon = toggleBtn.querySelector('i');
+            if (icon) {
+              if (collapsed) {
+                if (window.innerWidth < 768) {
+                  icon.className = 'fas fa-chevron-down';
+                } else {
+                  icon.className = 'fas fa-chevron-right';
+                }
+              } else {
+                if (window.innerWidth < 768) {
+                  icon.className = 'fas fa-chevron-up';
+                } else {
+                  icon.className = 'fas fa-chevron-left';
+                }
+              }
+            }
+          });
+        }
+
+        // 2. Tự động chèn nút cuộn nhanh trên di động
+        const scrollBtn = document.createElement('button');
+        scrollBtn.type = 'button';
+        scrollBtn.className = 'mobile-scroll-btn';
+        scrollBtn.innerHTML = '<i class="fas fa-chevron-down"></i>';
+        scrollBtn.setAttribute('title', 'Cuộn nhanh xem kết quả');
+        scrollBtn.dataset.target = 'results';
+        document.body.appendChild(scrollBtn);
+
+        const updateScrollBtn = () => {
+          if (window.innerWidth < 768) {
+            const rect = resultPanel.getBoundingClientRect();
+            if (rect.top < window.innerHeight / 2) {
+              scrollBtn.innerHTML = '<i class="fas fa-chevron-up"></i>';
+              scrollBtn.setAttribute('title', 'Cuộn lên nhập liệu');
+              scrollBtn.dataset.target = 'inputs';
+            } else {
+              scrollBtn.innerHTML = '<i class="fas fa-chevron-down"></i>';
+              scrollBtn.setAttribute('title', 'Cuộn xuống kết quả');
+              scrollBtn.dataset.target = 'results';
+            }
+          }
+        };
+
+        window.addEventListener('scroll', updateScrollBtn);
+        window.addEventListener('resize', updateScrollBtn);
+        updateScrollBtn();
+
+        scrollBtn.addEventListener('click', () => {
+          if (scrollBtn.dataset.target === 'inputs') {
+            inputPanel.scrollIntoView({ behavior: 'smooth' });
+          } else {
+            resultPanel.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      }
+
+      // 3. Event delegation chung cho nút nhập liệu ca bệnh lâm sàng mẫu
+      document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.sample-case-btn');
+        if (btn) {
+          try {
+            const values = JSON.parse(btn.dataset.values || '{}');
+            
+            // Tự động chuyển tab nếu là Kali hoặc Canxi
+            if (values['in-k-val'] !== undefined) {
+              document.getElementById('btn-potassium')?.click();
+            } else if (values['in-ca-val'] !== undefined) {
+              document.getElementById('btn-calcium')?.click();
+            }
+
+            for (const [id, val] of Object.entries(values)) {
+              const input = document.getElementById(id);
+              if (input) {
+                if (input.type === 'checkbox') {
+                  input.checked = !!val;
+                } else {
+                  input.value = val;
+                }
+                input.dispatchEvent(new Event('input', { bubbles: true }));
+                input.dispatchEvent(new Event('change', { bubbles: true }));
+              }
+            }
+          } catch (err) {
+            console.error('Lỗi khi nạp dữ liệu mẫu:', err);
+          }
+        }
+      });
     })();
 
 

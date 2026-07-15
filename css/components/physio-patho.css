@@ -65,6 +65,75 @@
     --part-color-rgb: 244, 114, 182;
 }
 
+/* Pathophysiology Specialty Colors */
+#patho-noi-section {
+    --part-color: var(--color-primary);
+    --part-color-hl: var(--color-primary-hl);
+    --part-color-rgb: var(--color-primary-rgb);
+}
+#patho-ngoai-section {
+    --part-color: var(--color-purple);
+    --part-color-hl: var(--color-purple-hl);
+    --part-color-rgb: var(--color-purple-rgb);
+}
+#patho-san-section {
+    --part-color: var(--color-rose);
+    --part-color-hl: var(--color-rose-hl);
+    --part-color-rgb: var(--color-rose-rgb);
+}
+#patho-nhi-section {
+    --part-color: var(--color-warning);
+    --part-color-hl: var(--color-warning-hl);
+    --part-color-rgb: var(--color-warning-rgb);
+}
+#patho-mat-section {
+    --part-color: var(--color-cyan);
+    --part-color-hl: var(--color-cyan-hl);
+    --part-color-rgb: 8, 145, 178;
+}
+#patho-tmh-section {
+    --part-color: var(--color-teal);
+    --part-color-hl: var(--color-teal-hl);
+    --part-color-rgb: var(--color-teal-rgb);
+}
+#patho-rhm-section {
+    --part-color: var(--color-success);
+    --part-color-hl: var(--color-success-hl);
+    --part-color-rgb: var(--color-success-rgb);
+}
+#patho-da-lieu-section {
+    --part-color: var(--color-pink);
+    --part-color-hl: var(--color-pink-hl);
+    --part-color-rgb: 219, 39, 119;
+}
+#patho-tktt-section {
+    --part-color: var(--color-purple);
+    --part-color-hl: var(--color-purple-hl);
+    --part-color-rgb: var(--color-purple-rgb);
+}
+#patho-truyen-nhiem-section {
+    --part-color: var(--color-danger);
+    --part-color-hl: var(--color-danger-hl);
+    --part-color-rgb: var(--color-danger-rgb);
+}
+#patho-ung-buou-section {
+    --part-color: var(--color-rose);
+    --part-color-hl: var(--color-rose-hl);
+    --part-color-rgb: var(--color-rose-rgb);
+}
+#patho-phcn-yhct-section {
+    --part-color: var(--color-teal);
+    --part-color-hl: var(--color-teal-hl);
+    --part-color-rgb: var(--color-teal-rgb);
+}
+
+[data-theme="dark"] #patho-mat-section {
+    --part-color-rgb: 34, 211, 238;
+}
+[data-theme="dark"] #patho-da-lieu-section {
+    --part-color-rgb: 244, 114, 182;
+}
+
 .section-divider {
     margin: 2.5rem 0 1.5rem 0;
     border: 0;
@@ -1705,3 +1774,120 @@
 [data-theme="dark"] .collapsible-header:hover {
     filter: brightness(1.08);
 }
+
+/* ============================================================
+   SECTION 4: HUB TABS DESIGN & LAYOUT
+   ============================================================ */
+.hub-tabs-container {
+    margin: 0.5rem 0 1.5rem 0;
+    border-bottom: 2px solid var(--color-divider);
+    padding-bottom: 0px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.hub-tabs {
+    display: flex;
+    gap: 1.5rem;
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.hub-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.hub-tab-btn {
+    background: transparent;
+    border: none;
+    padding: 0.85rem 0.5rem;
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    transition: all var(--tr);
+    white-space: nowrap;
+    position: relative;
+    bottom: -2px; /* overlap border-bottom */
+}
+
+.hub-tab-btn i {
+    font-size: 1.1rem;
+    transition: transform 0.2s ease;
+}
+
+.hub-tab-btn:hover {
+    color: var(--color-primary);
+}
+
+.hub-tab-btn:hover i {
+    transform: scale(1.15);
+}
+
+.hub-tab-btn.active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+    font-weight: 700;
+}
+
+/* Tab Content transitions */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: tabFadeIn 0.3s ease-out;
+}
+
+@keyframes tabFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tab Header & Intro boxes */
+.tab-header {
+    margin-bottom: 1.5rem;
+}
+
+.tab-heading {
+    display: none; /* Already described in tab buttons & breadcrumb, hide to keep clean */
+}
+
+.tab-intro {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    background: var(--color-surface-offset);
+    border-left: 4px solid var(--color-primary);
+    padding: 1rem 1.25rem;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    margin: 0;
+    border-top: 1px solid var(--color-divider);
+    border-right: 1px solid var(--color-divider);
+    border-bottom: 1px solid var(--color-divider);
+}
+
+#patho-tab-content .tab-intro {
+    border-left-color: var(--color-rose);
+}
+
+/* Dark mode adjustment for tab buttons */
+[data-theme="dark"] .hub-tab-btn.active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+}
+

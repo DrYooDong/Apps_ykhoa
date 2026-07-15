@@ -26,137 +26,145 @@
   <script src="../../components/footer.js" defer></script>
 
   <link rel="stylesheet" href="../../css/components/physio-patho.css">
-<style>
-  /* Modern List-Item Mode Styles (Upgraded) */
-  .infographic-grid {
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
-    gap: 14px !important;
-    padding: 0 !important;
-  }
-  .info-card {
-    padding: 16px 20px !important;
-    border-radius: 12px !important;
-    background: var(--color-surface) !important;
-    border: 1px solid var(--color-border) !important;
-    border-left: 4px solid var(--color-primary) !important;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.03) !important;
-    min-height: auto !important;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    position: relative;
-    overflow: hidden;
-    display: block;
-  }
-  
-  /* Subtle hover background effect */
-  .info-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 0;
-  }
-  
-  html[data-theme="light"] .info-card::before {
-    background: linear-gradient(90deg, rgba(2,132,199,0.05) 0%, transparent 100%);
-  }
-  html[data-theme="light"] .info-card:hover::before {
-    opacity: 1;
-  }
-  html[data-theme="dark"] .info-card::before {
-    background: linear-gradient(90deg, rgba(2,132,199,0.15) 0%, transparent 100%);
-  }
-  html[data-theme="dark"] .info-card:hover::before {
-    opacity: 1;
-  }
+  <style>
+    /* Modern List-Item Mode Styles (Upgraded) */
+    .infographic-grid {
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
+      gap: 14px !important;
+      padding: 0 !important;
+    }
 
-  .info-card:hover {
-    transform: translateY(-3px) !important;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08) !important;
-    border-color: var(--color-primary) !important;
-  }
-  
-  .info-card .specialty-card-top {
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 0 !important;
-    position: relative;
-    z-index: 1;
-  }
+    .info-card {
+      padding: 16px 20px !important;
+      border-radius: 12px !important;
+      background: var(--color-surface) !important;
+      border: 1px solid var(--color-border) !important;
+      border-left: 4px solid var(--color-primary) !important;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03) !important;
+      min-height: auto !important;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      position: relative;
+      overflow: hidden;
+      display: block;
+    }
 
-  .info-card .specialty-info {
-    flex: 1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-  }
+    /* Subtle hover background effect */
+    .info-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 0;
+    }
 
-  .info-card .specialty-info h3 {
-    font-size: 15px !important;
-    font-weight: 600 !important;
-    color: var(--color-text) !important;
-    margin: 0 !important;
-    line-height: 1.4 !important;
-    transition: color 0.2s ease;
-  }
-  
-  .info-card:hover .specialty-info h3 {
-    color: var(--color-primary) !important;
-  }
+    html[data-theme="light"] .info-card::before {
+      background: linear-gradient(90deg, rgba(2, 132, 199, 0.05) 0%, transparent 100%);
+    }
 
-  /* Add an arrow icon using pseudo-element */
-  .info-card .specialty-info::after {
-    content: '\f105'; /* FontAwesome angle-right */
-    font-family: 'Font Awesome 6 Free';
-    font-weight: 900;
-    font-size: 14px;
-    color: var(--color-text-muted);
-    transition: transform 0.3s ease, color 0.3s ease;
-    margin-left: 12px;
-  }
+    html[data-theme="light"] .info-card:hover::before {
+      opacity: 1;
+    }
 
-  .info-card:hover .specialty-info::after {
-    color: var(--color-primary);
-    transform: translateX(4px);
-  }
+    html[data-theme="dark"] .info-card::before {
+      background: linear-gradient(90deg, rgba(2, 132, 199, 0.15) 0%, transparent 100%);
+    }
 
-  .info-card .specialty-card-action {
-    display: none !important;
-  }
-  
-  .sub-specialty-title {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--color-primary);
-    margin: 24px 0 12px 0;
-    padding-bottom: 6px;
-    border-bottom: 2px solid var(--color-border);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .sub-specialty-title::before {
-    content: '';
-    display: block;
-    width: 6px;
-    height: 16px;
-    background: var(--color-primary);
-    border-radius: 4px;
-  }
+    html[data-theme="dark"] .info-card:hover::before {
+      opacity: 1;
+    }
 
-  .empty-text {
-    font-size: 13.5px;
-    color: var(--color-text-muted);
-    font-style: italic;
-    background: var(--color-surface);
-    padding: 12px 16px;
-    border-radius: 8px;
-    border: 1px dashed var(--color-border);
-    display: inline-block;
-  }
-</style>
+    .info-card:hover {
+      transform: translateY(-3px) !important;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08) !important;
+      border-color: var(--color-primary) !important;
+    }
+
+    .info-card .specialty-card-top {
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 0 !important;
+      position: relative;
+      z-index: 1;
+    }
+
+    .info-card .specialty-info {
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .info-card .specialty-info h3 {
+      font-size: 15px !important;
+      font-weight: 600 !important;
+      color: var(--color-text) !important;
+      margin: 0 !important;
+      line-height: 1.4 !important;
+      transition: color 0.2s ease;
+    }
+
+    .info-card:hover .specialty-info h3 {
+      color: var(--color-primary) !important;
+    }
+
+    /* Add an arrow icon using pseudo-element */
+    .info-card .specialty-info::after {
+      content: '\f105';
+      /* FontAwesome angle-right */
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      font-size: 14px;
+      color: var(--color-text-muted);
+      transition: transform 0.3s ease, color 0.3s ease;
+      margin-left: 12px;
+    }
+
+    .info-card:hover .specialty-info::after {
+      color: var(--color-primary);
+      transform: translateX(4px);
+    }
+
+    .info-card .specialty-card-action {
+      display: none !important;
+    }
+
+    .sub-specialty-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--color-primary);
+      margin: 24px 0 12px 0;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sub-specialty-title::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 16px;
+      background: var(--color-primary);
+      border-radius: 4px;
+    }
+
+    .empty-text {
+      font-size: 13.5px;
+      color: var(--color-text-muted);
+      font-style: italic;
+      background: var(--color-surface);
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px dashed var(--color-border);
+      display: inline-block;
+    }
+  </style>
 </head>
 
 <body>
@@ -248,20 +256,22 @@
         <div class="tcm-hero-content">
           <div class="hero-intro">
             <h1 id="hero-title">🤒 TIẾP CẬN LÂM SÀNG</h1>
-            <p>Hệ thống sơ đồ tiếp cận chẩn đoán phân biệt theo triệu chứng, hội chứng, bệnh lý và bất thường cận lâm sàng dựa trên y học chứng cứ.</p>
+            <p>Hệ thống sơ đồ tiếp cận chẩn đoán phân biệt theo triệu chứng, hội chứng, bệnh lý và bất thường cận lâm
+              sàng dựa trên y học chứng cứ.</p>
           </div>
           <div class="tcm-hero-decor">
             <!-- Decision Tree SVG -->
             <svg class="tree-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M50 15 L25 45 M50 15 L75 45 M25 45 L12 75 M25 45 L38 75 M75 45 L62 75 M75 45 L88 75" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
-              <circle cx="50" cy="15" r="10" fill="#ffffff" stroke="#6366f1" stroke-width="3"/>
-              <circle cx="25" cy="45" r="8" fill="#ffffff" stroke="#6366f1" stroke-width="3"/>
-              <circle cx="75" cy="45" r="8" fill="#ffffff" stroke="#6366f1" stroke-width="3"/>
-              <circle cx="12" cy="75" r="6" fill="#ffffff" stroke="#6366f1" stroke-width="2.5"/>
-              <circle cx="38" cy="75" r="6" fill="#ffffff" stroke="#6366f1" stroke-width="2.5"/>
-              <circle cx="62" cy="75" r="6" fill="#ffffff" stroke="#6366f1" stroke-width="2.5"/>
-              <circle cx="88" cy="75" r="6" fill="#ffffff" stroke="#6366f1" stroke-width="2.5"/>
-              <circle cx="50" cy="15" r="4" fill="#6366f1"/>
+              <path d="M50 15 L25 45 M50 15 L75 45 M25 45 L12 75 M25 45 L38 75 M75 45 L62 75 M75 45 L88 75"
+                stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.6" />
+              <circle cx="50" cy="15" r="10" fill="#ffffff" stroke="#6366f1" stroke-width="3" />
+              <circle cx="25" cy="45" r="8" fill="#ffffff" stroke="#6366f1" stroke-width="3" />
+              <circle cx="75" cy="45" r="8" fill="#ffffff" stroke="#6366f1" stroke-width="3" />
+              <circle cx="12" cy="75" r="6" fill="#ffffff" stroke="#6366f1" stroke-width="2.5" />
+              <circle cx="38" cy="75" r="6" fill="#ffffff" stroke="#6366f1" stroke-width="2.5" />
+              <circle cx="62" cy="75" r="6" fill="#ffffff" stroke="#6366f1" stroke-width="2.5" />
+              <circle cx="88" cy="75" r="6" fill="#ffffff" stroke="#6366f1" stroke-width="2.5" />
+              <circle cx="50" cy="15" r="4" fill="#6366f1" />
             </svg>
           </div>
         </div>
@@ -355,16 +365,24 @@
           </div>
 
           <!-- ===== TIẾP CẬN THƯỜNG DÙNG ===== -->
-          <section id="favorites-section" class="favorites-section" data-favorite-type="approaches" style="display: none;">
-            <div class="physio-group-container" id="favorites-container" style="border-left-color: var(--color-warning); margin-bottom: 2rem; transition: padding var(--tr);">
-              <div class="physio-group-header collapsible-header" id="favorites-header" style="background: linear-gradient(90deg, var(--color-warning-hl) 0%, transparent 100%); border-top-right-radius: calc(var(--radius-lg) - 1px); cursor: pointer; display: flex; justify-content: space-between; align-items: center; width: 100%; transition: margin var(--tr), border-color var(--tr);">
+          <section id="favorites-section" class="favorites-section" data-favorite-type="approaches"
+            style="display: none;">
+            <div class="physio-group-container" id="favorites-container"
+              style="border-left-color: var(--color-warning); margin-bottom: 2rem; transition: padding var(--tr);">
+              <div class="physio-group-header collapsible-header" id="favorites-header"
+                style="background: linear-gradient(90deg, var(--color-warning-hl) 0%, transparent 100%); border-top-right-radius: calc(var(--radius-lg) - 1px); cursor: pointer; display: flex; justify-content: space-between; align-items: center; width: 100%; transition: margin var(--tr), border-color var(--tr);">
                 <div style="display: flex; align-items: center; gap: 0.75rem;">
-                  <span class="physio-group-icon" style="color: var(--color-warning); border-color: var(--color-warning-hl);"><i class="fa-solid fa-star"></i></span>
+                  <span class="physio-group-icon"
+                    style="color: var(--color-warning); border-color: var(--color-warning-hl);"><i
+                      class="fa-solid fa-star"></i></span>
                   <h3 id="favorites-heading" style="margin: 0;">Tiếp cận thường dùng</h3>
                 </div>
-                <span class="favorites-toggle-indicator" style="font-size: 0.95rem; color: var(--color-text-muted); transition: transform var(--tr); margin-right: 0.5rem;"><i class="fa-solid fa-chevron-up"></i></span>
+                <span class="favorites-toggle-indicator"
+                  style="font-size: 0.95rem; color: var(--color-text-muted); transition: transform var(--tr); margin-right: 0.5rem;"><i
+                    class="fa-solid fa-chevron-up"></i></span>
               </div>
-              <div class="favorites-collapse-wrapper" id="favorites-collapse" style="display: grid; grid-template-rows: 1fr; transition: grid-template-rows var(--tr); overflow: hidden;">
+              <div class="favorites-collapse-wrapper" id="favorites-collapse"
+                style="display: grid; grid-template-rows: 1fr; transition: grid-template-rows var(--tr); overflow: hidden;">
                 <div class="favorites-collapse-inner" style="min-height: 0;">
                   <div class="specialty-grid" id="favorites-grid">
                     <!-- các tiếp cận được ghim sẽ hiển thị tại đây -->
@@ -374,7 +392,7 @@
             </div>
           </section>
 
-          
+
           <!-- PHẦN 1: CẤP CỨU - HỒI SỨC -->
           <section id="part1-section" aria-labelledby="part1-heading">
             <div class="physio-group-container">
@@ -412,7 +430,8 @@
                   </div>
                 </a>
                 <!-- C2 -->
-                <a href="2. Triệu chứng/Than phiền Tiêu hóa - Bụng/Đau bụng/TC_Daubung.html" class="specialty-card info-card">
+                <a href="2. Triệu chứng/Than phiền Tiêu hóa - Bụng/Đau bụng/TC_Daubung.html"
+                  class="specialty-card info-card">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Đau bụng</h3>
@@ -423,7 +442,7 @@
             </div>
           </section>
 
-          
+
           <!-- PHẦN 3: CẬN LÂM SÀNG -->
           <section id="part3-section" aria-labelledby="part3-heading">
             <div class="physio-group-container">
@@ -478,11 +497,11 @@
                 <span class="physio-group-icon"><i class="fa-solid fa-bed-pulse"></i></span>
                 <h3 id="part4-heading">Bệnh lý</h3>
               </div>
-              
+
               <!-- 1. Bệnh truyền nhiễm -->
               <h4 class="sub-specialty-title">1. Bệnh truyền nhiễm</h4>
               <div class="specialty-grid infographic-grid">
-                 <a href="4. Bệnh lý/2. Truyền nhiễm/TC_SXHD.html" class="specialty-card info-card">
+                <a href="4. Bệnh lý/2. Truyền nhiễm/TC_SXHD.html" class="specialty-card info-card">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>SXH Dengue</h3>
@@ -494,7 +513,7 @@
               <!-- 2. Nội tổng quát -->
               <h4 class="sub-specialty-title">2. Nội tổng quát</h4>
               <div class="specialty-grid infographic-grid">
-                 <a href="4. Bệnh lý/2. Truyền nhiễm/TC_vgsvB.html" class="specialty-card info-card">
+                <a href="4. Bệnh lý/2. Truyền nhiễm/TC_vgsvB.html" class="specialty-card info-card">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Viêm gan B</h3>
@@ -502,11 +521,11 @@
                   </div>
                 </a>
               </div>
-              
+
               <!-- 3. Huyết học & ung thư -->
               <h4 class="sub-specialty-title">3. Huyết học & ung thư</h4>
               <div class="specialty-grid infographic-grid">
-                 <p class="empty-text">Đang cập nhật...</p>
+                <p class="empty-text">Đang cập nhật...</p>
               </div>
 
               <!-- 4. Mắt - Tai mũi họng - Răng hàm mặt -->
@@ -530,18 +549,18 @@
               <!-- 7. Sản phụ khoa -->
               <h4 class="sub-specialty-title">7. Sản phụ khoa</h4>
               <div class="specialty-grid infographic-grid">
-                 <p class="empty-text">Đang cập nhật...</p>
+                <p class="empty-text">Đang cập nhật...</p>
               </div>
 
               <!-- 8. Nhi khoa -->
               <h4 class="sub-specialty-title">8. Nhi khoa</h4>
               <div class="specialty-grid infographic-grid">
-                 <p class="empty-text">Đang cập nhật...</p>
+                <p class="empty-text">Đang cập nhật...</p>
               </div>
 
             </div>
           </section>
-</main>
+        </main>
       </div><!-- end dashboard-layout -->
     </div><!-- end main-wrapper -->
   </div><!-- end app-container -->

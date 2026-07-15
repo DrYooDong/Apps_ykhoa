@@ -83,7 +83,6 @@ document.addEventListener("DOMContentLoaded", () => {
         // Real-time Lesson Search Filter
         const lessonSearch = document.getElementById("lesson-search");
         const clearSearchBtn = document.getElementById("clear-search");
-        const sections = document.querySelectorAll("#lessons-container section");
         const emptyState = document.getElementById("empty-search-state");
 
         lessonSearch.addEventListener("input", (e) => {
@@ -103,7 +102,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 favoritesSection.style.display = hasQuery ? "none" : "block";
             }
 
-            sections.forEach((section) => {
+            // Target only sections within the active tab content
+            const activeTab = document.querySelector(".tab-content.active");
+            if (!activeTab) return;
+            const activeSections = activeTab.querySelectorAll("section");
+
+            // Hide other tab's sections when filtering (just in case)
+            document.querySelectorAll(".tab-content section").forEach((section) => {
+                if (section.id === "favorites-section") return;
+                if (!activeTab.contains(section)) {
+                    section.style.display = "none";
+                }
+            });
+
+            activeSections.forEach((section) => {
                 if (section.id === "favorites-section") return; // Skip filtering cards in favorites section
 
                 const cards = section.querySelectorAll(".specialty-card");
@@ -210,7 +222,21 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }, observerOptions);
 
-        sections.forEach(section => observer.observe(section));
+        const updateScrollSpy = () => {
+            observer.disconnect();
+            const activeTab = document.querySelector(".tab-content.active");
+            if (activeTab) {
+                const activeSections = activeTab.querySelectorAll("section");
+                activeSections.forEach(section => {
+                    if (section.id !== "favorites-section") {
+                        observer.observe(section);
+                    }
+                });
+            }
+        };
+
+        // Initialize Scroll Spy
+        updateScrollSpy();
 
         navItems.forEach(item => {
             item.addEventListener("click", (e) => {
@@ -220,6 +246,52 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (targetSection) {
                     targetSection.scrollIntoView({ behavior: "smooth" });
                 }
+            });
+        });
+
+        // Hub Switcher Tabs Logic
+        const tabButtons = document.querySelectorAll(".hub-tab-btn");
+        const tabContents = document.querySelectorAll(".tab-content");
+        const physioNav = document.getElementById("physio-nav");
+        const pathoNav = document.getElementById("patho-nav");
+
+        tabButtons.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const targetId = btn.getAttribute("data-tab");
+                
+                // Toggle tab button states
+                tabButtons.forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+
+                // Toggle tab contents
+                tabContents.forEach(content => {
+                    if (content.id === targetId) {
+                        content.classList.add("active");
+                        content.style.display = "block";
+                    } else {
+                        content.classList.remove("active");
+                        content.style.display = "none";
+                    }
+                });
+
+                // Toggle sidebar navigations
+                if (targetId === "physio-tab-content") {
+                    if (physioNav) physioNav.style.display = "block";
+                    if (pathoNav) pathoNav.style.display = "none";
+                } else {
+                    if (physioNav) physioNav.style.display = "none";
+                    if (pathoNav) pathoNav.style.display = "block";
+                }
+
+                // Reset search box when switching tabs
+                if (lessonSearch) {
+                    lessonSearch.value = "";
+                    if (clearSearchBtn) clearSearchBtn.style.display = "none";
+                    lessonSearch.dispatchEvent(new Event("input"));
+                }
+
+                // Re-initialize Scroll Spy for the active sections
+                updateScrollSpy();
             });
         });
 

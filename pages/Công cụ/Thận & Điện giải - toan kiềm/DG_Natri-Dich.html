@@ -21,7 +21,8 @@
   <link rel="stylesheet" href="../../../css/components/sidebar.css">
   <link rel="stylesheet" href="../../../css/components/footer.css">
 
-  <script src="../../../components/header.js"></script>
+  <script src="../../../js/main.js" defer></script>
+  <script src="../../../components/header.js" defer></script>
   <style>
     /* ============================================================
      PAGE-SPECIFIC STYLES: RỐI LOẠN NATRI & ĐỘNG HỌC DỊCH TRUYỀN
@@ -363,6 +364,15 @@
         <div class="panel">
           <div class="panel-title"><span>📝</span> Thông số Bệnh nhân & Lâm sàng</div>
 
+          <!-- Ca lâm sàng mẫu -->
+          <div class="sample-cases-container">
+            <div class="sample-cases-title">📍 Ca lâm sàng mẫu:</div>
+            <div class="sample-cases-list">
+              <button type="button" class="sample-case-btn" data-values='{"na-weight":60,"na-age":50,"na-gender":"male","na-symptoms":"severe","na-current":118,"na-target":124,"na-fluid":"513"}'>Ca 1: Hạ Na+ nặng co giật (NaCl 3%)</button>
+              <button type="button" class="sample-case-btn" data-values='{"na-weight":70,"na-age":65,"na-gender":"female","na-symptoms":"mild","na-current":155,"na-target":145,"na-fluid":"0"}'>Ca 2: Tăng Na+ mất nước (D5%)</button>
+            </div>
+          </div>
+
           <div class="grid-2-col">
             <div class="input-group">
               <label for="na-weight">Cân nặng (kg)</label>
@@ -473,6 +483,7 @@
 
       </div>
     </div>
+  </div> <!-- Đóng .app-container -->
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
