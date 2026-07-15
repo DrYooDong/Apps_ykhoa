@@ -276,6 +276,76 @@
       transform: translateX(4px);
     }
 
+    /* ── PROGRESS BAR ── */
+    .progress-wrap {
+      margin-top: 1.5rem;
+    }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .progress-text {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+    }
+    .progress-pct {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .progress-track {
+      height: 8px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: #ffffff;
+      border-radius: 99px;
+      width: 0%;
+      transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ── DONE BADGE ON CARD ── */
+    .lesson-done-badge {
+      display: none;
+      align-items: center;
+      gap: 0.35rem;
+      align-self: flex-start;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      background: #dcfce7;
+      color: #15803d;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.75rem;
+      border: 1px solid #bbf7d0;
+    }
+    .lesson-done-badge.visible {
+      display: inline-flex;
+    }
+    .lesson-card.is-done {
+      border-color: #86efac;
+      background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+    }
+    .lesson-card.is-done .lesson-badge {
+      background: #dcfce7;
+      color: #15803d;
+    }
+    .lesson-card.is-done h2 {
+      color: var(--text);
+    }
+    .lesson-card.is-done:hover {
+      border-color: #4ade80;
+      box-shadow: 0 12px 30px rgba(21, 128, 61, 0.1);
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
       .main-container {
@@ -323,29 +393,40 @@
       <h1>Lý Thuyết Thống Kê & Thiết Kế Nghiên Cứu</h1>
       <p>Hệ thống 4 bài học nền tảng giúp hình thành tư duy thống kê, đọc hiểu, phân tích các nghiên cứu khoa học y học
         và áp dụng y học chứng cứ trong thực tế lâm sàng.</p>
+      <!-- PROGRESS BAR -->
+      <div class="progress-wrap">
+        <div class="progress-label">
+          <span class="progress-text" id="progress-label-text">Tiến độ học tập</span>
+          <span class="progress-pct" id="progress-pct-text">0 / 4 bài</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+      </div>
     </div>
 
     <!-- LESSONS GRID -->
     <div class="lessons-grid">
 
       <!-- Bài 1 -->
-      <a href="1_Ynghia_Thongke&Lamsang.html" class="lesson-card">
+      <a href="1_Ynghia_Thongke&Lamsang.html" class="lesson-card" data-lesson-id="thongke-bai1">
         <div class="lesson-number">01</div>
+        <span class="lesson-done-badge" aria-label="Đã hoàn thành">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          Đã đọc
+        </span>
         <div class="lesson-badge">Bài 1</div>
         <h2>Ý nghĩa thống kê và ý nghĩa lâm sàng</h2>
         <p>Phân biệt sự khác nhau cốt lõi giữa kết quả mang ý nghĩa toán học (P-value) và giá trị thực sự áp dụng trên
           bệnh nhân (NNT, ARR, RRR).</p>
         <div class="lesson-points">
           <div class="lesson-point"><span class="lesson-point-bullet"></span> Thống kê mô tả vs Thống kê suy luận</div>
-          <div class="lesson-point"><span class="lesson-point-bullet"></span> Giá trị P (P-value) & Ý nghĩa thống kê
-          </div>
-          <div class="lesson-point"><span class="lesson-point-bullet"></span> Chỉ số hiệu quả tuyệt đối (ARR) & NNT
-          </div>
-          <div class="lesson-point"><span class="lesson-point-bullet"></span> Tích hợp máy tính chỉ số NNT, ARR, RRR
-          </div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Giá trị P (P-value) & Ý nghĩa thống kê</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Chỉ số hiệu quả tuyệt đối (ARR) & NNT</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Khoảng tin cậy 95% (Confidence Interval)</div>
         </div>
         <span class="lesson-cta">
-          Bắt đầu học
+          Tiếp tục học
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <line x1="5" y1="12" x2="19" y2="12" />
             <polyline points="12 5 19 12 12 19" />
@@ -354,23 +435,24 @@
       </a>
 
       <!-- Bài 2 -->
-      <a href="2_DG_Congcu_Chandoan.html" class="lesson-card">
+      <a href="2_DG_Congcu_Chandoan.html" class="lesson-card" data-lesson-id="thongke-bai2">
         <div class="lesson-number">02</div>
+        <span class="lesson-done-badge" aria-label="Đã hoàn thành">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          Đã đọc
+        </span>
         <div class="lesson-badge">Bài 2</div>
         <h2>Đánh giá giá trị các công cụ chẩn đoán</h2>
         <p>Tìm hiểu các khái niệm độ nhạy, độ đặc hiệu, giá trị dự báo và cách sử dụng tỷ số khả dĩ để xác định xác suất
           mắc bệnh sau xét nghiệm.</p>
         <div class="lesson-points">
-          <div class="lesson-point"><span class="lesson-point-bullet"></span> Độ nhạy (Sensitivity) & Độ đặc hiệu
-            (Specificity)</div>
-          <div class="lesson-point"><span class="lesson-point-bullet"></span> Giá trị dự báo dương (PPV) & âm (NPV)
-          </div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Độ nhạy (Sensitivity) & Độ đặc hiệu (Specificity)</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Giá trị dự báo dương (PPV) & âm (NPV)</div>
           <div class="lesson-point"><span class="lesson-point-bullet"></span> Tỷ số khả dĩ dương (LR+) và âm (LR-)</div>
-          <div class="lesson-point"><span class="lesson-point-bullet"></span> Tích hợp máy tính Sn/Sp & Likelihood Ratio
-          </div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Máy tính Sn/Sp & Likelihood Ratio</div>
         </div>
         <span class="lesson-cta">
-          Bắt đầu học
+          Tiếp tục học
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <line x1="5" y1="12" x2="19" y2="12" />
             <polyline points="12 5 19 12 12 19" />
@@ -379,24 +461,24 @@
       </a>
 
       <!-- Bài 3 -->
-      <a href="3_Thietke_NCKH.html" class="lesson-card">
+      <a href="3_Thietke_NCKH.html" class="lesson-card" data-lesson-id="thongke-bai3">
         <div class="lesson-number">03</div>
+        <span class="lesson-done-badge" aria-label="Đã hoàn thành">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          Đã đọc
+        </span>
         <div class="lesson-badge">Bài 3</div>
         <h2>Thiết kế nghiên cứu khoa học y học</h2>
         <p>Phân loại các thiết kế nghiên cứu từ báo cáo ca bệnh, cắt ngang, bệnh chứng đến các nghiên cứu mạnh hơn như
           thuần tập và thử nghiệm ngẫu nhiên.</p>
         <div class="lesson-points">
-          <div class="lesson-point"><span class="lesson-point-bullet"></span> Bậc thang bằng chứng (Evidence Pyramid)
-          </div>
-          <div class="lesson-point"><span class="lesson-point-bullet"></span> Nghiên cứu quan sát (Bệnh chứng, Thuần
-            tập)</div>
-          <div class="lesson-point"><span class="lesson-point-bullet"></span> Nghiên cứu can thiệp (RCT) & Nhóm chứng
-          </div>
-          <div class="lesson-point"><span class="lesson-point-bullet"></span> Nhận diện các nguồn sai số hệ thống (Bias)
-          </div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Bậc thang bằng chứng (Evidence Pyramid)</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Nghiên cứu quan sát (Bệnh chứng, Thuần tập)</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Nghiên cứu can thiệp (RCT) & Nhóm chứng</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Nhận diện các nguồn sai số hệ thống (Bias)</div>
         </div>
         <span class="lesson-cta">
-          Bắt đầu học
+          Tiếp tục học
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <line x1="5" y1="12" x2="19" y2="12" />
             <polyline points="12 5 19 12 12 19" />
@@ -405,23 +487,24 @@
       </a>
 
       <!-- Bài 4 -->
-      <a href="4_PhantichNC_rct&meta-analysis.html" class="lesson-card">
+      <a href="4_PhantichNC_rct&meta-analysis.html" class="lesson-card" data-lesson-id="thongke-bai4">
         <div class="lesson-number">04</div>
+        <span class="lesson-done-badge" aria-label="Đã hoàn thành">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          Đã đọc
+        </span>
         <div class="lesson-badge">Bài 4</div>
         <h2>Phân tích bằng chứng RCT & Meta-analysis</h2>
         <p>Đi sâu vào cách phân tích thử nghiệm lâm sàng ngẫu nhiên có nhóm chứng và kỹ năng đọc hiểu biểu đồ Forest
           Plot trong phân tích gộp.</p>
         <div class="lesson-points">
           <div class="lesson-point"><span class="lesson-point-bullet"></span> Cách đọc và phê bình một bài báo RCT</div>
-          <div class="lesson-point"><span class="lesson-point-bullet"></span> Tổng quan hệ thống (Systematic Review)
-          </div>
-          <div class="lesson-point"><span class="lesson-point-bullet"></span> Đọc hiểu biểu đồ Forest Plot & Tính đồng
-            nhất</div>
-          <div class="lesson-point"><span class="lesson-point-bullet"></span> Đánh giá phân loại chất lượng bằng chứng
-            GRADE</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Tổng quan hệ thống (Systematic Review)</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Đọc hiểu biểu đồ Forest Plot & I² test</div>
+          <div class="lesson-point"><span class="lesson-point-bullet"></span> Đánh giá chất lượng bằng chứng GRADE</div>
         </div>
         <span class="lesson-cta">
-          Bắt đầu học
+          Tiếp tục học
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <line x1="5" y1="12" x2="19" y2="12" />
             <polyline points="12 5 19 12 12 19" />
@@ -432,6 +515,43 @@
     </div>
 
   </div>
+
+  <script>
+    const LESSON_IDS = ['thongke-bai1', 'thongke-bai2', 'thongke-bai3', 'thongke-bai4'];
+    const TOTAL = LESSON_IDS.length;
+
+    function updateHub() {
+      let done = 0;
+      LESSON_IDS.forEach(id => {
+        const isRead = localStorage.getItem(id) === 'done';
+        const card = document.querySelector(`[data-lesson-id="${id}"]`);
+        if (!card) return;
+        const badge = card.querySelector('.lesson-done-badge');
+        const cta = card.querySelector('.lesson-cta');
+        if (isRead) {
+          done++;
+          card.classList.add('is-done');
+          if (badge) badge.classList.add('visible');
+          if (cta) cta.firstChild.textContent = 'Xem lại ';
+        } else {
+          card.classList.remove('is-done');
+          if (badge) badge.classList.remove('visible');
+          if (cta) cta.firstChild.textContent = 'Bắt đầu học ';
+        }
+      });
+
+      const pct = Math.round((done / TOTAL) * 100);
+      document.getElementById('progress-fill').style.width = pct + '%';
+      document.getElementById('progress-pct-text').textContent = `${done} / ${TOTAL} bài`;
+
+      const labelEl = document.getElementById('progress-label-text');
+      if (done === 0) labelEl.textContent = 'Chưa bắt đầu';
+      else if (done === TOTAL) labelEl.textContent = '🎉 Hoàn thành toàn bộ!';
+      else labelEl.textContent = 'Đang học...';
+    }
+
+    updateHub();
+  </script>
 
 </body>
 

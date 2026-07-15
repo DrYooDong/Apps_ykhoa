@@ -433,8 +433,18 @@
 <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
 <script src="../../../js/main.js" defer></script>
 <script src="../../../components/footer.js" defer></script>
+<script src="../../../js/calculators/VancomycinPK.js"></script>
 <script>
 var currentMainTab='empiric',currentSubTab='intermittent',currentMethod='pk',currentScenario='adult';
+var vanWorker = null;
+try { vanWorker = new Worker('../../../js/calculators/workers/VancomycinWorker.js'); 
+      vanWorker.onmessage = function(e) {
+          if(e.data.command === 'simulatePK_Done') {
+              var wp = document.getElementById('workerStatus');
+              if(wp) wp.innerHTML = '<span style="color:var(--van-green)"><i class="fa-solid fa-check"></i> Đã mô phỏng ' + e.data.result.length + ' điểm nồng độ PK bằng Web Worker. Đã sẵn sàng cho Module vẽ Chart.</span>';
+          }
+      };
+} catch(err) { console.log('Worker init failed (CORS if file:/// without local server)'); }
 var patient={age:0,gender:'male',weight:0,height:0,scr:0,scrUnit:'mgdl',ibw:0,adjbw:0,bsa:0,crcl:null,isObese:false,calcWeight:0};
 function toggleObese(){var c=document.getElementById('prof-obese').checked;document.getElementById('height-row').style.display=c?'block':'none';onPatientChange();}
 function onPatientChange(){
@@ -445,23 +455,27 @@ function onPatientChange(){
         crclEl=document.getElementById('crcl-display'),metEl=document.getElementById('metrics-panel');
     if(age<=0||weight<=0||scrVal<=0){crclEl.value='—';crclEl.className='input-readonly';metEl.style.display='none';patient={age:age,gender:gender,weight:weight,height:height,scr:scrVal,scrUnit:scrUnit,ibw:weight,adjbw:weight,bsa:0,crcl:null,isObese:false,calcWeight:weight};triggerCalc();return;}
     if(obese&&height<=0){crclEl.value='—';metEl.style.display='none';patient.crcl=null;triggerCalc();return;}
-    var ibw=weight,adjbw=weight,bsa=0,isObese=false;
-    if(obese&&height>0){
-        ibw=gender==='male'?50+0.91*(height-152.4):45.5+0.91*(height-152.4);
-        ibw=Math.max(ibw,1);ibw=Math.round(ibw*10)/10;
-        isObese=weight>1.2*ibw;adjbw=isObese?Math.round((ibw+0.4*(weight-ibw))*10)/10:weight;
-        bsa=Math.round(Math.sqrt((height*weight)/3600)*100)/100;
-        document.getElementById('m-ibw').textContent=ibw;
-        document.getElementById('m-adjbw').textContent=isObese?adjbw:'N/A';
-        document.getElementById('m-bsa').textContent=bsa;
-        document.getElementById('m-status').textContent=isObese?'Béo phì':(weight<ibw?'Nhẹ cân':'Bình thường');
-        metEl.style.display='block';
-    }else{metEl.style.display='none';}
-    var scrMgdl=scrUnit==='umoll'?scrVal/88.4:scrVal,adjScr=(age>=65&&scrMgdl<0.7)?0.7:scrMgdl;
-    var cgW=(obese&&isObese)?adjbw:weight,crcl=Math.max(Math.round(((140-age)*cgW)/(72*adjScr)*(gender==='female'?0.85:1)),1);
-    crclEl.value=crcl;
-    crclEl.className='input-readonly '+(crcl>=60?'crcl-ok':crcl>=30?'crcl-mod':'crcl-severe');
-    patient={age:age,gender:gender,weight:weight,height:height,scr:scrVal,scrUnit:scrUnit,ibw:ibw,adjbw:adjbw,bsa:bsa,crcl:crcl,isObese:(obese&&isObese),calcWeight:(obese&&isObese)?adjbw:weight};
+    var wData = VancomycinPK.calculateWeights(weight, obese ? height : 0, gender);
+    var scrMgdl = scrUnit === 'umoll' ? scrVal / 88.4 : scrVal;
+    var crcl = null;
+    
+    if (obese && height > 0) {
+        document.getElementById('m-ibw').textContent = wData.ibw;
+        document.getElementById('m-adjbw').textContent = wData.isObese ? wData.adjbw : 'N/A';
+        document.getElementById('m-bsa').textContent = wData.bsa;
+        document.getElementById('m-status').textContent = wData.isObese ? 'Béo phì' : (weight < wData.ibw ? 'Nhẹ cân' : 'Bình thường');
+        metEl.style.display = 'block';
+    } else {
+        metEl.style.display = 'none';
+    }
+    
+    var calcW = (obese && wData.isObese) ? wData.adjbw : weight;
+    crcl = VancomycinPK.calculateCrCl(age, calcW, scrMgdl, gender);
+    
+    crclEl.value = crcl || '—';
+    crclEl.className = 'input-readonly ' + (crcl >= 60 ? 'crcl-ok' : crcl >= 30 ? 'crcl-mod' : 'crcl-severe');
+    
+    patient = { age: age, gender: gender, weight: weight, height: height, scr: scrVal, scrUnit: scrUnit, ibw: wData.ibw, adjbw: wData.adjbw, bsa: wData.bsa, crcl: crcl, isObese: wData.isObese, calcWeight: calcW };
     triggerCalc();
 }
 function switchMainTab(tabId,btn){
@@ -536,16 +550,25 @@ function runIntermittent(){
             tI=parseFloat(document.getElementById('int-tinf').value);
         if(!cP||!cT||isNaN(tP)||isNaN(tT)||!tI){setMainResult('<div class="vrc-placeholder"><span>Nhập nồng độ Đỉnh/Đáy và thời gian lấy mẫu</span></div>');pkR.style.display='none';document.getElementById('aucGauge').style.display='none';return;}
         if(cP<=cT){setMainResult('<div class="vrc-placeholder" style="color:var(--van-red)"><i class="fa-solid fa-triangle-exclamation"></i><span>C-peak phải lớn hơn C-trough</span></div>');pkR.style.display='none';document.getElementById('aucGauge').style.display='none';return;}
-        var tD=tau-tI-tP-tT;
-        if(tD<=0){setMainResult('<div class="vrc-placeholder" style="color:var(--van-red)"><i class="fa-solid fa-triangle-exclamation"></i><span>Lỗi thời gian: Tổng TG lấy mẫu vượt khoảng cách liều</span></div>');pkR.style.display='none';document.getElementById('aucGauge').style.display='none';return;}
-        ke=Math.log(cP/cT)/tD;tHalf=Math.log(2)/ke;
-        var cMax=cP*Math.exp(ke*tP),cMin=cT*Math.exp(-ke*tT);
-        Vd=(dose*(1-Math.exp(-ke*tI)))/(tI*ke*(cMax-cMin*Math.exp(-ke*tI)));Cl=ke*Vd;
-        var aT=((cMax+cMin)*tI)/2+(cMax-cMin)/ke;calcAUC=aT*n;
-        document.getElementById('pk-ke').textContent=ke.toFixed(4);document.getElementById('pk-thalf').textContent=tHalf.toFixed(1);
-        document.getElementById('pk-vd').textContent=Vd.toFixed(1);document.getElementById('pk-vd-kg').textContent=(Vd/w).toFixed(2);
-        document.getElementById('pk-cl').textContent=Cl.toFixed(2);document.getElementById('pk-cl-ml').textContent=Math.round(Cl*1000/60);
-        document.getElementById('pk-auc').textContent=Math.round(calcAUC);document.getElementById('pk-auc-mic').textContent=Math.round(calcAUC);
+        var pkParams = { dose: dose, tau: tau, tinf: tI, cPeak: cP, tPeak: tP, cTrough: cT, tTrough: tT };
+        var pkRes = VancomycinPK.calculatePK(pkParams);
+        if (pkRes.error) {
+            setMainResult('<div class="vrc-placeholder" style="color:var(--van-red)"><i class="fa-solid fa-triangle-exclamation"></i><span>' + pkRes.error + '</span></div>');
+            pkR.style.display='none'; document.getElementById('aucGauge').style.display='none'; return;
+        }
+        ke = pkRes.ke; Vd = pkRes.Vd; Cl = pkRes.Cl; tHalf = pkRes.thalf; calcAUC = pkRes.calcAUC;
+        
+        document.getElementById('pk-ke').textContent = ke.toFixed(4); document.getElementById('pk-thalf').textContent = tHalf.toFixed(1);
+        document.getElementById('pk-vd').textContent = Vd.toFixed(1); document.getElementById('pk-vd-kg').textContent = (Vd/w).toFixed(2);
+        document.getElementById('pk-cl').textContent = Cl.toFixed(2); document.getElementById('pk-cl-ml').textContent = Math.round(Cl*1000/60);
+        document.getElementById('pk-auc').textContent = Math.round(calcAUC); document.getElementById('pk-auc-mic').textContent = Math.round(calcAUC);
+        
+        if(vanWorker) {
+            vanWorker.postMessage({ command: 'simulatePK', payload: { dose: dose, tau: tau, tinf: tI, ke: ke, Vd: Vd, durationHours: 24 }});
+            var wp = document.getElementById('workerStatus');
+            if(!wp) { wp = document.createElement('div'); wp.id = 'workerStatus'; wp.style.marginTop = '10px'; wp.style.fontSize = '0.75rem'; document.getElementById('pkReport').appendChild(wp); }
+            wp.innerHTML = '<span style="color:var(--van-amber)"><i class="fa-solid fa-spinner fa-spin"></i> Đang mô phỏng PK data bằng Web Worker...</span>';
+        }
         pkR.style.display='block';
     }
     updateAUCGauge(calcAUC);
@@ -556,7 +579,13 @@ function runIntermittent(){
     else{setStatus('<i class="fa-solid fa-circle-check"></i> AUC TRONG KHOẢNG ĐÍCH (400-600)','s-ok');addAlert('ok','fa-circle-check','AUC tối ưu ('+Math.round(calcAUC)+' mg.h/L)','Phác đồ đang đạt đích. Duy trì '+dose+' mg Q'+tau+'H và kiểm tra lại nồng độ sau 3-5 ngày.');}
     if(currentMethod==='pk'&&ke>0&&Vd>0){
         var intv=[8,12,24],tb='';
-        intv.forEach(function(t){var ni=24/t,rd=roundDose(nTDD/ni,250),tIs=1.0,cMp=(rd*(1-Math.exp(-ke*tIs)))/(tIs*ke*Vd*(1-Math.exp(-ke*t))),cMn=cMp*Math.exp(-ke*(t-tIs)),aP=(((cMp+cMn)*tIs)/2+(cMp-cMn)/ke)*ni,isOk=aP>=400&&aP<=600,bC=isOk?'ok':(aP>600?'danger':'warn'),bT=isOk?'Khuyên dùng':(aP>600?'AUC cao':'AUC thấp');tb+='<tr><td><strong>'+rd+' mg</strong> Q'+t+'H</td><td>'+Math.round(aP)+'</td><td>'+cMn.toFixed(1)+'</td><td><span class="r-badge '+bC+'">'+bT+'</span></td></tr>';});
+        intv.forEach(function(t){
+            var ni = 24 / t, rd = roundDose(nTDD / ni, 250);
+            var pred = VancomycinPK.predictRegimen(rd, t, ke, Vd, 1.0);
+            var aP = pred.predictedAUC, cMn = pred.predictedTrough;
+            var isOk = aP >= 400 && aP <= 600, bC = isOk ? 'ok' : (aP > 600 ? 'danger' : 'warn'), bT = isOk ? 'Khuyên dùng' : (aP > 600 ? 'AUC cao' : 'AUC thấp');
+            tb += '<tr><td><strong>'+rd+' mg</strong> Q'+t+'H</td><td>'+Math.round(aP)+'</td><td>'+cMn.toFixed(1)+'</td><td><span class="r-badge '+bC+'">'+bT+'</span></td></tr>';
+        });
         document.getElementById('regimenBody').innerHTML=tb;document.getElementById('regimenBox').style.display='block';
     }
 }

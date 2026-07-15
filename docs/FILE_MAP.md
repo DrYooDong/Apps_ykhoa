@@ -97,6 +97,8 @@
 | `Công cụ/Chung/Bệnh án/benh-an-noi-khoa.html` | Mẫu bệnh án nội khoa | `benh-an.css` |
 | `Công cụ/Chung/NCKH/NCKH_Tinhcomau.html` | Tính cỡ mẫu nghiên cứu | — |
 | `Công cụ/Cấp cứu & hồi sức/QL_Budich.html` | Quản lý bù dịch cấp cứu | — |
+| `Công cụ/Cấp cứu & hồi sức/QL_Vanmach.html` | Quản lý liều thuốc vận mạch & trợ tim | — |
+| `Công cụ/Cấp cứu & hồi sức/QL_Maytho.html` | Quản lý máy thở chuyên sâu | — |
 | `Công cụ/Hô hấp & Lao/DG_Viem-phoi.html` | Đánh giá viêm phổi (PSI, CURB) | — |
 | `Công cụ/Thận & Điện giải - toan kiềm/DG_ABG.html` | Phân tích khí máu | `abg-calculator.css` |
 | `Công cụ/Thận & Điện giải - toan kiềm/DG_Kali-Canxi.html` | Rối loạn Kali/Canxi | — |
@@ -185,6 +187,13 @@
 | `Tiếp cận/2. Triệu chứng/Than phiền Toàn thân/Sốt/TC_Sot&HCNhiemTrung.html` | Tiếp cận Sốt + Hội chứng nhiễm trùng |
 | `Tiếp cận/2. Triệu chứng/Than phiền Toàn thân/Sốt/TC_Sot&HCSoc.html` | Tiếp cận Sốt + Hội chứng sốc |
 | `Tiếp cận/2. .../Than phiền .../TC_*.html` | Lưu đồ theo các triệu chứng khác |
+| `Tiếp cận/5. Dược lý/TC_DL_Timmach.html` | Tiếp cận Dược lý Tim mạch |
+| `Tiếp cận/5. Dược lý/TC_DL_Hohap.html` | Tiếp cận Dược lý Hô hấp |
+| `Tiếp cận/5. Dược lý/TC_DL_Tieuhoa.html` | Tiếp cận Dược lý Tiêu hóa |
+| `Tiếp cận/5. Dược lý/TC_DL_Vanmach.html` | Tiếp cận Dược lý Vận mạch & Trợ tim |
+| `Tiếp cận/5. Dược lý/TC_DL_Khangsinh.html` | Tiếp cận Dược lý Kháng sinh |
+| `Tiếp cận/5. Dược lý/TC_DL_Ttoan_than.html` | Tiếp cận Dược lý Toan thận |
+| `Tiếp cận/5. Dược lý/TC_DL_Noitiet.html` | Tiếp cận Dược lý Nội tiết & ĐTĐ |
 
 ---
 

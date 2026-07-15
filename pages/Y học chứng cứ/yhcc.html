@@ -349,150 +349,111 @@
     }
 
     /* ============================================================
-       QUICK LINKS SECTION
+       SPECIALTY LOOKUP SECTION
     ============================================================ */
-    .hub-quick-grid {
+    .hub-spec-lookup-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr));
-      gap: 0.85rem;
+      grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
+      gap: 1rem;
       margin-bottom: 2.5rem;
     }
 
-    .hub-quick-card {
+    .hub-spec-lookup-card {
       background: var(--hub-surface);
       border: 1px solid var(--hub-border);
-      border-radius: 14px;
-      padding: 1.1rem 1.25rem;
+      border-radius: 16px;
+      padding: 1.25rem;
       display: flex;
-      align-items: center;
-      gap: 1rem;
+      flex-direction: column;
+      gap: 0.75rem;
       text-decoration: none;
       transition: all var(--hub-tr);
       position: relative;
       overflow: hidden;
+      box-shadow: var(--shadow-sm);
     }
 
-    .hub-quick-card::before {
+    .hub-spec-lookup-card::before {
       content: '';
       position: absolute;
-      left: 0;
       top: 0;
-      bottom: 0;
-      width: 3px;
-      background: var(--qc-color, var(--hub-blue));
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--spec-color, var(--hub-blue));
       transform: scaleY(0);
       transition: transform var(--hub-tr);
-      border-radius: 0 2px 2px 0;
+      border-radius: 0 4px 4px 0;
     }
 
-    .hub-quick-card:hover {
-      transform: translateX(3px);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-      border-color: var(--qc-color, var(--hub-blue));
+    .hub-spec-lookup-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+      border-color: var(--spec-color, var(--hub-blue));
     }
 
-    .hub-quick-card:hover::before {
+    .hub-spec-lookup-card:hover::before {
       transform: scaleY(1);
     }
 
-    .hub-quick-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: var(--qc-bg, var(--hub-blue-light));
+    .hub-spec-icon-wrapper {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--spec-bg, var(--hub-blue-light));
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0;
+      font-size: 1.35rem;
+      transition: transform var(--hub-tr);
     }
 
-    .hub-quick-info h4 {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--hub-text);
-      margin-bottom: 0.15rem;
+    .hub-spec-lookup-card:hover .hub-spec-icon-wrapper {
+      transform: scale(1.1) rotate(-5deg);
     }
 
-    .hub-quick-info p {
-      font-size: 0.73rem;
-      color: var(--hub-text-faint);
-    }
-
-    /* ============================================================
-       RECENT UPDATES
-    ============================================================ */
-    .hub-updates-list {
-      background: var(--hub-surface);
-      border: 1px solid var(--hub-border);
-      border-radius: var(--hub-radius);
-      overflow: hidden;
-      margin-bottom: 2rem;
-    }
-
-    .hub-update-item {
+    .hub-spec-info {
       display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      padding: 0.9rem 1.25rem;
-      border-bottom: 1px solid var(--hub-border);
-      transition: background var(--hub-tr);
+      flex-direction: column;
+      gap: 0.25rem;
     }
 
-    .hub-update-item:last-child {
-      border-bottom: none;
-    }
-
-    .hub-update-item:hover {
-      background: var(--hub-surface-2);
-    }
-
-    .hub-update-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--hub-blue);
-      margin-top: 0.35rem;
-      flex-shrink: 0;
-    }
-
-    .hub-update-dot.purple {
-      background: var(--hub-purple);
-    }
-
-    .hub-update-content {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .hub-update-title {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--hub-text);
-      margin-bottom: 0.2rem;
-    }
-
-    .hub-update-meta {
-      font-size: 0.73rem;
-      color: var(--hub-text-faint);
-    }
-
-    .hub-update-tag {
-      padding: 2px 8px;
-      border-radius: 6px;
-      font-size: 0.68rem;
+    .hub-spec-info h4 {
+      font-size: 0.95rem;
       font-weight: 700;
-      flex-shrink: 0;
+      color: var(--hub-text);
+      transition: color var(--hub-tr);
     }
 
-    .tag-guideline {
-      background: #ede9fe;
-      color: #7c3aed;
+    .hub-spec-lookup-card:hover .hub-spec-info h4 {
+      color: var(--spec-color, var(--hub-blue));
     }
 
-    .tag-stat {
-      background: #e0f2fe;
-      color: #0369a1;
+    .hub-spec-info p {
+      font-size: 0.75rem;
+      color: var(--hub-text-muted);
+      line-height: 1.4;
+    }
+
+    .hub-spec-arrow {
+      align-self: flex-end;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--hub-surface-2);
+      color: var(--hub-text-muted);
+      font-size: 0.8rem;
+      transition: all var(--hub-tr);
+      margin-top: auto;
+    }
+
+    .hub-spec-lookup-card:hover .hub-spec-arrow {
+      background: var(--spec-color, var(--hub-blue));
+      color: #fff;
+      transform: translateX(4px);
     }
 
     /* ============================================================
@@ -527,18 +488,8 @@
       background: linear-gradient(145deg, #2e1065 0%, #5b21b6 100%);
     }
 
-    [data-theme="dark"] .hub-quick-card:hover {
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
-    }
-
-    [data-theme="dark"] .tag-guideline {
-      background: #2e1065;
-      color: #c4b5fd;
-    }
-
-    [data-theme="dark"] .tag-stat {
-      background: #082f49;
-      color: #7dd3fc;
+    [data-theme="dark"] .hub-spec-lookup-card:hover {
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
     }
   </style>
 </head>
@@ -747,93 +698,160 @@
 
       </div>
 
-      <!-- QUICK ACCESS -->
-      <h2 class="hub-section-title">⚡ Truy cập nhanh</h2>
-      <div class="hub-quick-grid">
-        <a href="Guidelines/Guidelines.html#calculator" class="hub-quick-card"
-          style="--qc-color:#dc2626; --qc-bg:#fef2f2;">
-          <div class="hub-quick-icon">🫀</div>
-          <div class="hub-quick-info">
-            <h4>CHADS₂-VASc</h4>
-            <p>Nguy cơ đột quỵ trong rung nhĩ</p>
+      <!-- CLINICAL GUIDELINES BY SPECIALTY -->
+      <h2 class="hub-section-title">🔍 Tra cứu Guidelines & Thử nghiệm Lâm sàng theo Chuyên khoa</h2>
+      <div class="hub-spec-lookup-grid">
+        
+        <!-- Tim mạch -->
+        <a href="Guidelines/Guidelines.html?specialty=cardio" class="hub-spec-lookup-card" style="--spec-color: #dc2626; --spec-bg: rgba(220, 38, 38, 0.1);">
+          <div class="hub-spec-icon-wrapper">🫀</div>
+          <div class="hub-spec-info">
+            <h4>Tim mạch</h4>
+            <p>Khuyến cáo điều trị suy tim, tăng huyết áp, bệnh mạch vành (VNHA, ESC, ACC/AHA...)</p>
+          </div>
+          <div class="hub-spec-arrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
           </div>
         </a>
-        <a href="Guidelines/Guidelines.html#calculator" class="hub-quick-card"
-          style="--qc-color:#475569; --qc-bg:#f1f5f9;">
-          <div class="hub-quick-icon">🏥</div>
-          <div class="hub-quick-info">
-            <h4>SOFA Score</h4>
-            <p>Đánh giá suy cơ quan trong Sepsis</p>
-          </div>
-        </a>
-        <a href="Guidelines/Guidelines.html#calculator" class="hub-quick-card"
-          style="--qc-color:#2563eb; --qc-bg:#eff6ff;">
-          <div class="hub-quick-icon">🫁</div>
-          <div class="hub-quick-info">
-            <h4>CURB-65</h4>
-            <p>Phân tầng viêm phổi cộng đồng</p>
-          </div>
-        </a>
-        <a href="Thống kê y học/y-nghia-thong-ke-va-lam-sang.html#calculator" class="hub-quick-card"
-          style="--qc-color:#7c3aed; --qc-bg:#ede9fe;">
-          <div class="hub-quick-icon">🧮</div>
-          <div class="hub-quick-info">
-            <h4>Máy tính NNT</h4>
-            <p>Tính Number Needed to Treat nhanh</p>
-          </div>
-        </a>
-        <a href="Thống kê y học/danh-gia-cong-cu-chan-doan.html#calculator" class="hub-quick-card"
-          style="--qc-color:#059669; --qc-bg:#d1fae5;">
-          <div class="hub-quick-icon">🧪</div>
-          <div class="hub-quick-info">
-            <h4>Sensitivity & Specificity</h4>
-            <p>Đánh giá công cụ chẩn đoán</p>
-          </div>
-        </a>
-        <a href="Thống kê y học/Thongkeyhoc.html" class="hub-quick-card" style="--qc-color:#0284c7; --qc-bg:#e0f2fe;">
-          <div class="hub-quick-icon">📚</div>
-          <div class="hub-quick-info">
-            <h4>Bài học Thống kê</h4>
-            <p>Danh sách 4 bài học nghiên cứu</p>
-          </div>
-        </a>
-      </div>
 
-      <!-- RECENT UPDATES -->
-      <h2 class="hub-section-title">🆕 Cập nhật gần đây</h2>
-      <div class="hub-updates-list">
-        <div class="hub-update-item">
-          <div class="hub-update-dot purple"></div>
-          <div class="hub-update-content">
-            <div class="hub-update-title">GOLD 2025 — Quản lý COPD toàn diện</div>
-            <div class="hub-update-meta">Hô hấp · Cập nhật Tháng 1/2025</div>
+        <!-- Hô hấp -->
+        <a href="Guidelines/Guidelines.html?specialty=pulmo" class="hub-spec-lookup-card" style="--spec-color: #2563eb; --spec-bg: rgba(37, 99, 235, 0.1);">
+          <div class="hub-spec-icon-wrapper">🫁</div>
+          <div class="hub-spec-info">
+            <h4>Hô hấp</h4>
+            <p>Hướng dẫn chẩn đoán và quản lý Hen phế quản, COPD, viêm phổi (GINA, GOLD, BTS...)</p>
           </div>
-          <span class="hub-update-tag tag-guideline">Guideline</span>
-        </div>
-        <div class="hub-update-item">
-          <div class="hub-update-dot purple"></div>
-          <div class="hub-update-content">
-            <div class="hub-update-title">GINA 2025 — Chiến lược quản lý Hen phế quản</div>
-            <div class="hub-update-meta">Hô hấp · Cập nhật Tháng 1/2025</div>
+          <div class="hub-spec-arrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
           </div>
-          <span class="hub-update-tag tag-guideline">Guideline</span>
-        </div>
-        <div class="hub-update-item">
-          <div class="hub-update-dot"></div>
-          <div class="hub-update-content">
-            <div class="hub-update-title">AHA ACLS — Cấp cứu Ngừng tuần hoàn (Updated 2025)</div>
-            <div class="hub-update-meta">Hồi sức - Cấp cứu · Cập nhật 2025</div>
+        </a>
+
+        <!-- Tiêu hóa -->
+        <a href="Guidelines/Guidelines.html?specialty=gi" class="hub-spec-lookup-card" style="--spec-color: #ca8a04; --spec-bg: rgba(202, 138, 4, 0.1);">
+          <div class="hub-spec-icon-wrapper">🥗</div>
+          <div class="hub-spec-info">
+            <h4>Tiêu hóa</h4>
+            <p>Hướng dẫn điều trị xơ gan, xuất huyết tiêu hóa, viêm tụy cấp, loét dạ dày tá tràng</p>
           </div>
-          <span class="hub-update-tag tag-guideline">Guideline</span>
-        </div>
-        <div class="hub-update-item">
-          <div class="hub-update-dot"></div>
-          <div class="hub-update-content">
-            <div class="hub-update-title">ADA Standards of Care — Đái tháo đường 2025</div>
-            <div class="hub-update-meta">Nội tiết · Cập nhật Tháng 1/2025</div>
+          <div class="hub-spec-arrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
           </div>
-          <span class="hub-update-tag tag-guideline">Guideline</span>
-        </div>
+        </a>
+
+        <!-- Nội tiết -->
+        <a href="Guidelines/Guidelines.html?specialty=endo" class="hub-spec-lookup-card" style="--spec-color: #7c3aed; --spec-bg: rgba(124, 58, 237, 0.1);">
+          <div class="hub-spec-icon-wrapper">💉</div>
+          <div class="hub-spec-info">
+            <h4>Nội tiết</h4>
+            <p>Tiêu chuẩn chăm sóc Đái tháo đường, bệnh lý tuyến giáp, suy thượng thận (ADA, AACE...)</p>
+          </div>
+          <div class="hub-spec-arrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Thần kinh -->
+        <a href="Guidelines/Guidelines.html?specialty=neuro" class="hub-spec-lookup-card" style="--spec-color: #c026d3; --spec-bg: rgba(192, 38, 211, 0.1);">
+          <div class="hub-spec-icon-wrapper">🧠</div>
+          <div class="hub-spec-info">
+            <h4>Thần kinh</h4>
+            <p>Xử trí đột quỵ não cấp, động kinh, đau đầu, sa sút trí tuệ (AHA/ASA, AAN...)</p>
+          </div>
+          <div class="hub-spec-arrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Truyền nhiễm -->
+        <a href="Guidelines/Guidelines.html?specialty=infect" class="hub-spec-lookup-card" style="--spec-color: #16a34a; --spec-bg: rgba(22, 163, 74, 0.1);">
+          <div class="hub-spec-icon-wrapper">🦠</div>
+          <div class="hub-spec-info">
+            <h4>Truyền nhiễm</h4>
+            <p>Khuyến cáo sử dụng kháng sinh, điều trị viêm gan B/C, nhiễm khuẩn nặng, Sepsis</p>
+          </div>
+          <div class="hub-spec-arrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Thận học -->
+        <a href="Guidelines/Guidelines.html?specialty=renal" class="hub-spec-lookup-card" style="--spec-color: #0891b2; --spec-bg: rgba(8, 145, 178, 0.1);">
+          <div class="hub-spec-icon-wrapper">💧</div>
+          <div class="hub-spec-info">
+            <h4>Thận học</h4>
+            <p>Quản lý bệnh thận mạn, tổn thương thận cấp, rối loạn điện giải (KDIGO, KDOQI...)</p>
+          </div>
+          <div class="hub-spec-arrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Cơ xương khớp -->
+        <a href="Guidelines/Guidelines.html?specialty=rheum" class="hub-spec-lookup-card" style="--spec-color: #ea580c; --spec-bg: rgba(234, 88, 12, 0.1);">
+          <div class="hub-spec-icon-wrapper">🦴</div>
+          <div class="hub-spec-info">
+            <h4>Cơ xương khớp</h4>
+            <p>Điều trị thoái hóa khớp, Gout, viêm khớp dạng thấp, loãng xương (ACR, EULAR...)</p>
+          </div>
+          <div class="hub-spec-arrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Huyết học -->
+        <a href="Guidelines/Guidelines.html?specialty=hema" class="hub-spec-lookup-card" style="--spec-color: #db2777; --spec-bg: rgba(219, 39, 119, 0.1);">
+          <div class="hub-spec-icon-wrapper">🩸</div>
+          <div class="hub-spec-info">
+            <h4>Huyết học</h4>
+            <p>Hướng dẫn truyền máu, xử trí xuất huyết giảm tiểu cầu, huyết khối, thiếu máu</p>
+          </div>
+          <div class="hub-spec-arrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Ung thư -->
+        <a href="Guidelines/Guidelines.html?specialty=onco" class="hub-spec-lookup-card" style="--spec-color: #be185d; --spec-bg: rgba(190, 24, 93, 0.1);">
+          <div class="hub-spec-icon-wrapper">🎗️</div>
+          <div class="hub-spec-info">
+            <h4>Ung thư</h4>
+            <p>Phác đồ hóa trị, điều trị đích, liệu pháp miễn dịch và chăm sóc giảm nhẹ (NCCN, ESMO...)</p>
+          </div>
+          <div class="hub-spec-arrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
+
       </div>
 
     </div>

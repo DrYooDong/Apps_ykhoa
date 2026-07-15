@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EMPA-REG OUTCOME — Empagliflozin trong điều trị ĐTĐ typ 2 có nguy cơ tim mạch cao: nghiên cứu RCT landmark, HR 0.86 (95% CI 0.74–0.99), NEJM 2015">
+  <title>EMPA-REG OUTCOME – Nghiên Cứu Landmark – CliniPortal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --accent:#7c3aed;--accent-light:#ede9fe;
+      --bg:#faf5ff;--surface:#ffffff;--surface-2:#f8fafc;
+      --border:#cbd5e1;--border-light:#e2e8f0;
+      --text:#0f172a;--text-muted:#475569;--text-faint:#94a3b8;
+      --green:#16a34a;--green-bg:#f0fdf4;--green-light:#bbf7d0;
+      --red:#dc2626;--red-bg:#fef2f2;
+      --radius:16px;--tr:200ms cubic-bezier(0.16,1,0.3,1);
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;font-size:15px;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+
+    /* TOP NAV */
+    .topnav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border-light);display:flex;align-items:center;gap:1rem;padding:0 1.5rem;height:54px}
+    .topnav-back{display:inline-flex;align-items:center;gap:0.4rem;color:var(--accent);text-decoration:none;font-size:0.82rem;font-weight:600;padding:0.35rem 0.75rem;border-radius:8px;transition:background var(--tr)}
+    .topnav-back:hover{background:var(--accent-light)}
+    .topnav-divider{width:1px;height:20px;background:var(--border-light);flex-shrink:0}
+    .topnav-title{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .topnav-badge{margin-left:auto;padding:0.2rem 0.65rem;border-radius:20px;background:#fee2e2;color:#991b1b;font-size:0.7rem;font-weight:700;white-space:nowrap;border:1px solid #fca5a5}
+
+    /* HERO */
+    .hero{background:linear-gradient(135deg,#3730a3 0%,#7c3aed 50%,#a21caf 100%);color:#fff;padding:3rem 1.5rem 4rem;position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(255,255,255,0.05) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(255,255,255,0.04) 0%,transparent 50%)}
+    .hero-inner{max-width:900px;margin:0 auto;position:relative}
+    .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:20px;padding:0.3rem 0.85rem;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:1rem}
+    .hero-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(1.9rem,4.5vw,3.2rem);font-weight:800;line-height:1.12;margin-bottom:0.6rem;letter-spacing:-0.02em}
+    .hero-subtitle{font-size:1rem;opacity:0.85;margin-bottom:1.5rem;font-weight:400;line-height:1.5;max-width:700px}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:0.75rem 1.5rem;font-size:0.82rem;opacity:0.8}
+    .hero-meta-item{display:flex;align-items:center;gap:5px}
+
+    /* STATS STRIP */
+    .stats-strip{background:var(--surface);border-bottom:1px solid var(--border-light);padding:1.5rem}
+    .stats-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:1rem}
+    .qs{text-align:center;padding:0.75rem;border-radius:12px;background:var(--surface-2);border:1px solid var(--border-light);transition:box-shadow var(--tr)}
+    .qs:hover{box-shadow:0 4px 12px rgba(124,58,237,0.1)}
+    .qs-val{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.35rem;font-weight:800;color:var(--accent);line-height:1}
+    .qs-lbl{font-size:0.65rem;color:var(--text-faint);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;margin-top:3px}
+
+    /* MAIN */
+    .page-content{max-width:900px;margin:0 auto;padding:2rem 1.5rem;display:flex;flex-direction:column;gap:1.5rem}
+    .sec-card{background:var(--surface);border:1px solid var(--border-light);border-radius:var(--radius);overflow:hidden}
+    .sec-hdr{padding:0.9rem 1.5rem;border-bottom:1px solid var(--border-light);background:var(--surface-2);display:flex;align-items:center;gap:0.5rem}
+    .sec-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:0.92rem;font-weight:800;color:var(--text)}
+    .sec-body{padding:1.5rem}
+
+    /* PICO */
+    .pico-table{width:100%;border-collapse:collapse}
+    .pico-table th{text-align:left;padding:0.6rem 1rem;background:var(--accent);color:#fff;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em}
+    .pico-table th:first-child{border-radius:6px 0 0 0}
+    .pico-table th:last-child{border-radius:0 6px 0 0}
+    .pico-table td{padding:0.85rem 1rem;border-bottom:1px solid var(--border-light);font-size:0.85rem;vertical-align:top;line-height:1.6}
+    .pico-table tr:last-child td{border-bottom:none}
+    .pico-table tr:nth-child(even) td{background:var(--surface-2)}
+    .pico-label{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;color:var(--accent);font-size:0.9rem;white-space:nowrap}
+
+    /* KEY FINDINGS */
+    .kf{display:flex;align-items:flex-start;gap:0.75rem;padding:0.85rem 1rem;background:var(--green-bg);border:1px solid var(--green-light);border-left:4px solid var(--green);border-radius:10px;margin-bottom:0.75rem;font-size:0.85rem;line-height:1.5}
+    .kf:last-child{margin-bottom:0}
+    .kf-icon{font-size:1.25rem;flex-shrink:0}
+    .kf-val{font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:800;color:var(--green)}
+
+    /* FOREST PLOT ROWS */
+    .fp-container{background:var(--surface-2);border:1px solid var(--border-light);border-radius:12px;padding:1rem 0.75rem 0.75rem;overflow-x:auto}
+    .fp-lbl{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-faint);text-align:center;margin-bottom:0.75rem}
+    .fp-row{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem}
+    .fp-row:last-child{margin-bottom:0}
+    .fp-name{flex-shrink:0;width:190px;text-align:right;font-size:0.75rem;color:var(--text-muted);line-height:1.4}
+    .fp-name strong{display:block;color:var(--text);font-size:0.78rem;font-weight:700}
+    .fp-svg{flex:1;min-width:220px}
+    .fp-stat{flex-shrink:0;width:165px;font-family:monospace;font-size:0.75rem;color:var(--green);font-weight:700;line-height:1.5}
+    .fp-direction{text-align:center;font-size:0.68rem;color:var(--text-faint);margin-top:0.75rem}
+
+    /* RESULTS TABLE */
+    .res-table{width:100%;border-collapse:collapse;font-size:0.83rem}
+    .res-table th{text-align:left;padding:0.55rem 0.7rem;border-bottom:2px solid var(--border);font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-muted);white-space:nowrap}
+    .res-table td{padding:0.8rem 0.7rem;border-bottom:1px solid var(--border-light);vertical-align:middle}
+    .res-table tr:last-child td{border-bottom:none}
+    .res-table tr:hover td{background:var(--surface-2)}
+    .rhr{font-family:monospace;font-weight:700;color:var(--green)}
+    .rpval{font-family:monospace;font-size:0.78rem;color:var(--text-muted)}
+    .rrr{color:var(--green);font-weight:600;white-space:nowrap}
+
+    /* IMPACT CARD */
+    .impact-card{display:flex;align-items:flex-start;gap:0.85rem;padding:1.25rem;background:linear-gradient(135deg,#fef2f2,#fff5f5);border:1.5px solid #fca5a5;border-radius:12px;margin-bottom:1.25rem}
+    .impact-icon{font-size:2rem;flex-shrink:0}
+    .impact-text strong{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;font-weight:800;color:var(--red);margin-bottom:0.3rem}
+    .impact-text p{font-size:0.82rem;color:var(--text-muted);line-height:1.6}
+
+    /* SAFETY GRID */
+    .safety-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.75rem}
+    .safety-item{padding:0.85rem;border:1px solid var(--border-light);border-radius:10px;background:var(--surface-2)}
+    .safety-item-title{font-weight:700;font-size:0.82rem;margin-bottom:4px}
+    .safety-item-text{font-size:0.78rem;color:var(--text-muted);line-height:1.5}
+
+    /* CITATION */
+    .citation-box{background:var(--surface-2);border:1px solid var(--border-light);border-radius:12px;padding:1.25rem;font-size:0.82rem;color:var(--text-muted);line-height:1.7;font-style:italic}
+    .citation-box a{color:var(--accent);word-break:break-all}
+
+    /* BUTTONS */
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:0.55rem 1rem;border-radius:10px;border:1.5px solid var(--border-light);background:var(--surface);color:var(--text-muted);font-size:0.82rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all var(--tr)}
+    .btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
+    .btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .btn-primary:hover{background:#5b21b6;color:#fff;border-color:#5b21b6}
+    .btn-row{display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:1.25rem}
+
+    @media(max-width:700px){
+      .page-content{padding:1rem}
+      .fp-row{flex-direction:column;align-items:flex-start}
+      .fp-name{width:100%;text-align:left}
+      .fp-svg{width:100%}
+      .fp-stat{width:auto}
+      .topnav-divider,.topnav-badge{display:none}
+      .hero-title{font-size:1.7rem}
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="topnav">
+  <a href="../Guidelines.html" class="topnav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    Hướng dẫn &amp; Nghiên cứu
+  </a>
+  <div class="topnav-divider"></div>
+  <div class="topnav-title">EMPA-REG OUTCOME</div>
+  <span class="topnav-badge">🏆 Practice-Changing</span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">🔬 Thử nghiệm lâm sàng Phase III — RCT Đa trung tâm</div>
+    <h1 class="hero-title">EMPA-REG OUTCOME</h1>
+    <p class="hero-subtitle">
+      Empagliflozin, Cardiovascular Outcomes, and Mortality in Type 2 Diabetes
+      — Nghiên cứu landmark thay đổi mô hình điều trị đái tháo đường
+    </p>
+    <div class="hero-meta">
+      <span class="hero-meta-item">📅 Công bố tháng 9 / 2015</span>
+      <span class="hero-meta-item">📰 New England Journal of Medicine</span>
+      <span class="hero-meta-item">🏢 Boehringer Ingelheim &amp; Eli Lilly</span>
+      <span class="hero-meta-item">🌏 Dữ liệu Châu Á (19 quốc gia)</span>
+    </div>
+  </div>
+</div>
+
+<!-- QUICK STATS -->
+<div class="stats-strip">
+  <div class="stats-grid">
+    <div class="qs"><div class="qs-val">7,020</div><div class="qs-lbl">Bệnh nhân</div></div>
+    <div class="qs"><div class="qs-val">3.1</div><div class="qs-lbl">Năm theo dõi</div></div>
+    <div class="qs"><div class="qs-val" style="color:var(--green)">↓14%</div><div class="qs-lbl">Giảm MACE</div></div>
+    <div class="qs"><div class="qs-val" style="color:var(--green)">↓38%</div><div class="qs-lbl">TV Tim mạch</div></div>
+    <div class="qs"><div class="qs-val" style="color:var(--green)">↓35%</div><div class="qs-lbl">NV Suy tim</div></div>
+    <div class="qs"><div class="qs-val" style="color:var(--green)">↓32%</div><div class="qs-lbl">TV mọi nguyên nhân</div></div>
+  </div>
+</div>
+
+<!-- PAGE CONTENT -->
+<div class="page-content">
+
+  <!-- PICO -->
+  <div class="sec-card">
+    <div class="sec-hdr">
+      <span>📋</span>
+      <span class="sec-title">Cấu trúc PICO</span>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="pico-table">
+        <thead>
+          <tr>
+            <th style="width:90px;">Thành phần</th>
+            <th>Nội dung</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="pico-label">P</span></td>
+            <td>Bệnh nhân <strong>đái tháo đường typ 2</strong> (≥ 18 tuổi), HbA1c 7–10%, eGFR ≥ 30 mL/phút/1.73m², có nguy cơ tim mạch cao đã xác định (tiền sử NMCT, đột quỵ, bệnh động mạch ngoại vi) hoặc ≥ 2 yếu tố nguy cơ chính.</td>
+          </tr>
+          <tr>
+            <td><span class="pico-label">I</span></td>
+            <td><strong>Empagliflozin 10mg</strong> hoặc <strong>25mg</strong> uống một lần mỗi ngày (thêm vào điều trị nền chuẩn hiện có)</td>
+          </tr>
+          <tr>
+            <td><span class="pico-label">C</span></td>
+            <td><strong>Giả dược (Placebo)</strong> uống một lần mỗi ngày (thêm vào cùng điều trị nền chuẩn)</td>
+          </tr>
+          <tr>
+            <td><span class="pico-label">O</span></td>
+            <td><strong>Tiêu chí chính (Primary):</strong> 3-point MACE — tổ hợp tử vong do tim mạch, nhồi máu cơ tim không tử vong, đột quỵ não không tử vong.<br><strong>Tiêu chí phụ (Secondary):</strong> TV tim mạch, NV suy tim, TV mọi nguyên nhân, tiến triển bệnh thận. <strong>Thời gian:</strong> trung bình 3.1 năm.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- KEY FINDINGS -->
+  <div class="sec-card">
+    <div class="sec-hdr">
+      <span>🏆</span>
+      <span class="sec-title">Kết quả Chính — Landmark Findings</span>
+    </div>
+    <div class="sec-body">
+      <div class="kf">
+        <span class="kf-icon">💚</span>
+        <div><strong>Tiêu chí gộp chính — 3-point MACE</strong><br>
+          Giảm <span class="kf-val">14%</span> nguy cơ tương đối — HR <strong>0.86</strong> (95% CI 0.74–0.99) · <em>p</em> = 0.04 (superiority)
+        </div>
+      </div>
+      <div class="kf">
+        <span class="kf-icon">💚</span>
+        <div><strong>Tử vong do Tim mạch (CV Death)</strong><br>
+          Giảm <span class="kf-val">38%</span> nguy cơ tương đối — HR <strong>0.62</strong> (95% CI 0.49–0.77) · <em>p</em> &lt; 0.001
+        </div>
+      </div>
+      <div class="kf">
+        <span class="kf-icon">💚</span>
+        <div><strong>Nhập viện do Suy tim (HF Hospitalization)</strong><br>
+          Giảm <span class="kf-val">35%</span> nguy cơ tương đối — HR <strong>0.65</strong> (95% CI 0.50–0.85) · <em>p</em> = 0.002
+        </div>
+      </div>
+      <div class="kf">
+        <span class="kf-icon">💚</span>
+        <div><strong>Tử vong mọi nguyên nhân</strong><br>
+          Giảm <span class="kf-val">32%</span> nguy cơ tương đối — HR <strong>0.68</strong> (95% CI 0.57–0.82) · <em>p</em> &lt; 0.001
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOREST PLOT -->
+  <!--
+    Axis: 0.40 → 1.30 (range 0.90) mapped to x=20–280 (range 260)
+    toX(v) = 20 + (v-0.40)/0.90 * 260
+    Null line at 1.0 → x = 20 + (0.60/0.90)*260 = 193.3 ≈ 193
+  -->
+  <div class="sec-card">
+    <div class="sec-hdr">
+      <span>📐</span>
+      <span class="sec-title">Forest Plot — Hazard Ratio (95% CI) · Empagliflozin vs Placebo</span>
+    </div>
+    <div class="sec-body" style="padding-top:0.75rem;">
+      <div class="fp-container">
+        <div class="fp-lbl">Hazard Ratio với 95% Confidence Interval · Trục từ 0.40 đến 1.30</div>
+
+        <!-- Row 1: 3-point MACE: HR 0.86 [0.74–0.99] -->
+        <div class="fp-row">
+          <div class="fp-name"><strong>3-point MACE</strong>TV tim mạch + NMCT + Đột quỵ</div>
+          <div class="fp-svg">
+            <svg viewBox="0 0 300 44" width="100%" height="44" style="display:block;overflow:visible;">
+              <line x1="20" y1="22" x2="280" y2="22" stroke="#e2e8f0" stroke-width="1"/>
+              <line x1="193" y1="9" x2="193" y2="35" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3,2"/>
+              <line x1="118" y1="22" x2="191" y2="22" stroke="#86efac" stroke-width="5" stroke-linecap="round"/>
+              <line x1="118" y1="16" x2="118" y2="28" stroke="#16a34a" stroke-width="2"/>
+              <line x1="191" y1="16" x2="191" y2="28" stroke="#16a34a" stroke-width="2"/>
+              <polygon points="153,15 160,22 153,29 146,22" fill="#16a34a" opacity="0.95"/>
+              <text x="20" y="11" font-size="8" fill="#94a3b8" font-family="monospace">0.40</text>
+              <text x="193" y="11" text-anchor="middle" font-size="8" fill="#94a3b8" font-family="monospace">1.0</text>
+              <text x="280" y="11" text-anchor="end" font-size="8" fill="#94a3b8" font-family="monospace">1.30</text>
+              <text x="153" y="41" text-anchor="middle" font-size="9" fill="#16a34a" font-weight="700" font-family="monospace">HR 0.86 [0.74–0.99]</text>
+            </svg>
+          </div>
+          <div class="fp-stat">HR 0.86 (0.74–0.99)<br><span style="color:var(--text-faint);font-size:0.7rem;">p = 0.04</span></div>
+        </div>
+
+        <!-- Row 2: CV death: HR 0.62 [0.49–0.77] -->
+        <!-- 0.49→46, 0.62→84, 0.77→127 -->
+        <div class="fp-row">
+          <div class="fp-name"><strong>Tử vong Tim mạch</strong>CV Death</div>
+          <div class="fp-svg">
+            <svg viewBox="0 0 300 44" width="100%" height="44" style="display:block;overflow:visible;">
+              <line x1="20" y1="22" x2="280" y2="22" stroke="#e2e8f0" stroke-width="1"/>
+              <line x1="193" y1="9" x2="193" y2="35" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3,2"/>
+              <line x1="46" y1="22" x2="127" y2="22" stroke="#86efac" stroke-width="5" stroke-linecap="round"/>
+              <line x1="46" y1="16" x2="46" y2="28" stroke="#16a34a" stroke-width="2"/>
+              <line x1="127" y1="16" x2="127" y2="28" stroke="#16a34a" stroke-width="2"/>
+              <polygon points="84,15 91,22 84,29 77,22" fill="#16a34a" opacity="0.95"/>
+              <text x="20" y="11" font-size="8" fill="#94a3b8" font-family="monospace">0.40</text>
+              <text x="193" y="11" text-anchor="middle" font-size="8" fill="#94a3b8" font-family="monospace">1.0</text>
+              <text x="280" y="11" text-anchor="end" font-size="8" fill="#94a3b8" font-family="monospace">1.30</text>
+              <text x="84" y="41" text-anchor="middle" font-size="9" fill="#16a34a" font-weight="700" font-family="monospace">HR 0.62 [0.49–0.77]</text>
+            </svg>
+          </div>
+          <div class="fp-stat">HR 0.62 (0.49–0.77)<br><span style="color:var(--text-faint);font-size:0.7rem;">p &lt; 0.001</span></div>
+        </div>
+
+        <!-- Row 3: HF hosp: HR 0.65 [0.50–0.85] -->
+        <!-- 0.50→49, 0.65→92, 0.85→150 -->
+        <div class="fp-row">
+          <div class="fp-name"><strong>NV Suy tim</strong>HF Hospitalization</div>
+          <div class="fp-svg">
+            <svg viewBox="0 0 300 44" width="100%" height="44" style="display:block;overflow:visible;">
+              <line x1="20" y1="22" x2="280" y2="22" stroke="#e2e8f0" stroke-width="1"/>
+              <line x1="193" y1="9" x2="193" y2="35" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3,2"/>
+              <line x1="49" y1="22" x2="150" y2="22" stroke="#86efac" stroke-width="5" stroke-linecap="round"/>
+              <line x1="49" y1="16" x2="49" y2="28" stroke="#16a34a" stroke-width="2"/>
+              <line x1="150" y1="16" x2="150" y2="28" stroke="#16a34a" stroke-width="2"/>
+              <polygon points="92,15 99,22 92,29 85,22" fill="#16a34a" opacity="0.95"/>
+              <text x="20" y="11" font-size="8" fill="#94a3b8" font-family="monospace">0.40</text>
+              <text x="193" y="11" text-anchor="middle" font-size="8" fill="#94a3b8" font-family="monospace">1.0</text>
+              <text x="280" y="11" text-anchor="end" font-size="8" fill="#94a3b8" font-family="monospace">1.30</text>
+              <text x="92" y="41" text-anchor="middle" font-size="9" fill="#16a34a" font-weight="700" font-family="monospace">HR 0.65 [0.50–0.85]</text>
+            </svg>
+          </div>
+          <div class="fp-stat">HR 0.65 (0.50–0.85)<br><span style="color:var(--text-faint);font-size:0.7rem;">p = 0.002</span></div>
+        </div>
+
+        <!-- Row 4: All-cause mortality: HR 0.68 [0.57–0.82] -->
+        <!-- 0.57→69, 0.68→101, 0.82→141 -->
+        <div class="fp-row">
+          <div class="fp-name"><strong>TV mọi nguyên nhân</strong>All-cause Mortality</div>
+          <div class="fp-svg">
+            <svg viewBox="0 0 300 44" width="100%" height="44" style="display:block;overflow:visible;">
+              <line x1="20" y1="22" x2="280" y2="22" stroke="#e2e8f0" stroke-width="1"/>
+              <line x1="193" y1="9" x2="193" y2="35" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3,2"/>
+              <line x1="69" y1="22" x2="141" y2="22" stroke="#86efac" stroke-width="5" stroke-linecap="round"/>
+              <line x1="69" y1="16" x2="69" y2="28" stroke="#16a34a" stroke-width="2"/>
+              <line x1="141" y1="16" x2="141" y2="28" stroke="#16a34a" stroke-width="2"/>
+              <polygon points="101,15 108,22 101,29 94,22" fill="#16a34a" opacity="0.95"/>
+              <text x="20" y="11" font-size="8" fill="#94a3b8" font-family="monospace">0.40</text>
+              <text x="193" y="11" text-anchor="middle" font-size="8" fill="#94a3b8" font-family="monospace">1.0</text>
+              <text x="280" y="11" text-anchor="end" font-size="8" fill="#94a3b8" font-family="monospace">1.30</text>
+              <text x="101" y="41" text-anchor="middle" font-size="9" fill="#16a34a" font-weight="700" font-family="monospace">HR 0.68 [0.57–0.82]</text>
+            </svg>
+          </div>
+          <div class="fp-stat">HR 0.68 (0.57–0.82)<br><span style="color:var(--text-faint);font-size:0.7rem;">p &lt; 0.001</span></div>
+        </div>
+
+        <div class="fp-direction">◀ Favours Empagliflozin &nbsp;|&nbsp; 1.0 (không khác biệt) &nbsp;|&nbsp; Favours Placebo ▶</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DETAILED RESULTS TABLE -->
+  <div class="sec-card">
+    <div class="sec-hdr"><span>📊</span><span class="sec-title">Bảng Kết quả Chi tiết</span></div>
+    <div style="overflow-x:auto;">
+      <table class="res-table">
+        <thead>
+          <tr>
+            <th>Tiêu chí</th>
+            <th>Empagliflozin<br><span style="font-weight:400;text-transform:none;">n=4,687</span></th>
+            <th>Placebo<br><span style="font-weight:400;text-transform:none;">n=2,333</span></th>
+            <th>HR (95% CI)</th>
+            <th>p-value</th>
+            <th>Giảm RR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>3-point MACE</strong></td>
+            <td>490 (10.5%)</td><td>282 (12.1%)</td>
+            <td class="rhr">0.86 (0.74–0.99)</td>
+            <td class="rpval">0.04</td>
+            <td class="rrr">↓ 14%</td>
+          </tr>
+          <tr>
+            <td><strong>Tử vong Tim mạch</strong></td>
+            <td>172 (3.7%)</td><td>137 (5.9%)</td>
+            <td class="rhr">0.62 (0.49–0.77)</td>
+            <td class="rpval">&lt; 0.001</td>
+            <td class="rrr">↓ 38%</td>
+          </tr>
+          <tr>
+            <td>NMCT không tử vong</td>
+            <td>213 (4.5%)</td><td>121 (5.2%)</td>
+            <td style="font-family:monospace;">0.87 (0.70–1.09)</td>
+            <td class="rpval">0.22 (NS)</td>
+            <td style="color:var(--text-faint);">–</td>
+          </tr>
+          <tr>
+            <td>Đột quỵ não không tử vong</td>
+            <td>150 (3.2%)</td><td>60 (2.6%)</td>
+            <td style="font-family:monospace;color:var(--text-muted);">1.24 (0.92–1.67)</td>
+            <td class="rpval">0.16 (NS)</td>
+            <td style="color:var(--text-faint);">–</td>
+          </tr>
+          <tr>
+            <td><strong>NV do Suy tim</strong></td>
+            <td>126 (2.7%)</td><td>95 (4.1%)</td>
+            <td class="rhr">0.65 (0.50–0.85)</td>
+            <td class="rpval">0.002</td>
+            <td class="rrr">↓ 35%</td>
+          </tr>
+          <tr>
+            <td><strong>TV mọi nguyên nhân</strong></td>
+            <td>269 (5.7%)</td><td>194 (8.3%)</td>
+            <td class="rhr">0.68 (0.57–0.82)</td>
+            <td class="rpval">&lt; 0.001</td>
+            <td class="rrr">↓ 32%</td>
+          </tr>
+          <tr>
+            <td>Tiến triển bệnh thận mạn</td>
+            <td>525 (12.7%)</td><td>388 (18.8%)</td>
+            <td class="rhr">0.61 (0.53–0.70)</td>
+            <td class="rpval">&lt; 0.001</td>
+            <td class="rrr">↓ 39%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- CLINICAL IMPACT -->
+  <div class="sec-card">
+    <div class="sec-hdr"><span>🏥</span><span class="sec-title">Ảnh hưởng Lâm sàng &amp; Thay đổi Thực hành</span></div>
+    <div class="sec-body">
+      <div class="impact-card">
+        <span class="impact-icon">🏆</span>
+        <div class="impact-text">
+          <strong>Practice-Changing — Thay đổi Hoàn toàn Mô hình Điều trị ĐTĐ</strong>
+          <p>EMPA-REG OUTCOME là RCT đầu tiên chứng minh một thuốc điều trị đái tháo đường không chỉ kiểm soát đường huyết mà còn <em>thực sự cứu sống bệnh nhân</em>. Kết quả đã dịch chuyển paradigm điều trị ĐTĐ typ 2 từ "hạ HbA1c trước" sang "bảo vệ tim mạch – thận là ưu tiên hàng đầu".</p>
+        </div>
+      </div>
+      <ul style="padding-left:1.25rem;font-size:0.85rem;color:var(--text-muted);line-height:1.9;">
+        <li>💊 <strong>FDA 2016:</strong> Chỉ định giảm tử vong tim mạch ở bệnh nhân ĐTĐ typ 2 có bệnh tim mạch xác định</li>
+        <li>📋 <strong>ESC Guidelines 2019:</strong> SGLT2i Class I cho bệnh nhân ĐTĐ có ASCVD hoặc suy tim — độc lập với HbA1c</li>
+        <li>📋 <strong>ADA Standards of Care 2020+:</strong> SGLT2i ưu tiên hàng đầu sau Metformin cho nhóm có bệnh tim mạch</li>
+        <li>🇻🇳 <strong>BYT Việt Nam &amp; VNHA:</strong> Đưa vào phác đồ quốc gia, chỉ định ưu tiên độc lập với mức HbA1c</li>
+        <li>💡 <strong>Cơ chế bảo vệ thận-tim:</strong> Giảm tải tiền-hậu tải qua lợi tiểu thẩm thấu; giảm áp lực lọc cầu thận; giảm viêm và stress oxy hóa</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SAFETY -->
+  <div class="sec-card">
+    <div class="sec-hdr"><span>⚠️</span><span class="sec-title">An toàn &amp; Tác dụng Bất lợi Đáng chú ý</span></div>
+    <div class="sec-body">
+      <div class="safety-grid">
+        <div class="safety-item"><div class="safety-item-title">🍄 Nhiễm trùng sinh dục</div><div class="safety-item-text">Phổ biến nhất, đặc biệt nữ giới. Điều trị thông thường, ít khi phải ngưng thuốc.</div></div>
+        <div class="safety-item"><div class="safety-item-title">🩸 DKA không điển hình</div><div class="safety-item-text">Đường máu có thể bình thường. Cần cảnh giác khi nhịn ăn kéo dài, phẫu thuật, nhiễm trùng.</div></div>
+        <div class="safety-item"><div class="safety-item-title">💧 Đa niệu / Mất nước</div><div class="safety-item-text">Do lợi tiểu thẩm thấu. Uống đủ nước; thận trọng bệnh nhân cao tuổi và suy thận.</div></div>
+        <div class="safety-item"><div class="safety-item-title">🦷 Hoại thư Fournier</div><div class="safety-item-text">Rất hiếm (~1/10,000). Nhận biết sớm và phẫu thuật cấp cứu ngay khi nghi ngờ.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CITATION -->
+  <div class="sec-card">
+    <div class="sec-hdr"><span>📖</span><span class="sec-title">Trích dẫn / Citation</span></div>
+    <div class="sec-body">
+      <div class="citation-box">
+        Zinman B, Wanner C, Lachin JM, et al.; EMPA-REG OUTCOME Investigators.
+        <em>Empagliflozin, Cardiovascular Outcomes, and Mortality in Type 2 Diabetes.</em>
+        <strong>N Engl J Med.</strong> 2015;373(22):2117-2128.
+        doi: <a href="https://doi.org/10.1056/NEJMoa1504720" target="_blank">10.1056/NEJMoa1504720</a>
+      </div>
+      <div class="btn-row">
+        <a href="https://www.nejm.org/doi/full/10.1056/nejmoa1504720" target="_blank" class="btn">
+          📄 Bài báo gốc (NEJM)
+        </a>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/26378978/" target="_blank" class="btn">
+          🔬 PubMed PMID: 26378978
+        </a>
+        <a href="../Guidelines.html" class="btn btn-primary">
+          ← Quay về Kho Guidelines
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page-content -->
+
+</body>
+</html>

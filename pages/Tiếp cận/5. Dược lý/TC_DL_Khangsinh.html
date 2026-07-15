@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hướng dẫn tiếp cận dược lý lâm sàng các họ kháng sinh Beta-lactam, Aminoglycosides, Macrolides và tối ưu PK/PD trong thực hành.">
+  <title>Tiếp cận Dược lý Kháng sinh – CliniPortal</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core CliniPortal -->
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  <!-- CSS riêng cho Tiếp cận -->
+  <link rel="stylesheet" href="../../../css/components/approach-card.css">
+</head>
+<body>
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR HỆ THỐNG -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../tiep-can.html" class="nav-item active" aria-current="page" title="Tiếp cận">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- NỘI DUNG CHÍNH -->
+    <main class="main-wrapper">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a></li>
+          <li class="breadcrumb-item"><a href="../tiep-can.html" class="breadcrumb-link">Tiếp cận</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Dược lý Kháng sinh</li>
+        </ol>
+      </nav>
+
+      <!-- HERO BANNER -->
+      <div class="flow-hero" style="background: linear-gradient(135deg, #ec4899, #be185d); color: white; padding: 30px; border-radius: 16px; margin-bottom: 24px; position: relative; overflow: hidden; box-shadow: var(--shadow-lg);">
+        <div class="hero-badge" style="background: rgba(255,255,255,0.2); color: white; display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 12px;">💊 Dược Lý Theo Nhóm Thuốc</div>
+        <h1 style="font-size: 28px; font-weight: 700; margin: 0 0 8px 0; color: white;">TIẾP CẬN DƯỢC LÝ KHÁNG SINH</h1>
+        <p style="font-size: 15px; margin: 0; opacity: 0.9;">Phân tích cơ chế tác dụng, chỉ định lâm sàng, phân loại phổ kháng khuẩn và nguyên lý tối ưu hóa PK/PD cho các nhóm Kháng sinh.</p>
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <div class="approach-grid" style="display: grid; grid-template-columns: 1fr; gap: 20px; margin-bottom: 40px;">
+        
+        <!-- Nhóm 1: Beta-lactam -->
+        <div class="approach-card" style="background: var(--color-surface); border: 1px solid var(--color-border); border-left: 4px solid #ec4899; padding: 24px; border-radius: 12px; box-shadow: var(--shadow-sm);">
+          <h3 class="step-title" style="color: var(--color-text); font-size: 18px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+            <span style="background: rgba(236, 72, 153, 0.1); color: #ec4899; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 14px; font-weight: 700;">1</span>
+            Kháng sinh họ Beta-lactam
+          </h3>
+          <div style="line-height: 1.6; color: var(--color-text); font-size: 14.5px;">
+            <p style="margin-bottom: 12px;"><strong>Đại diện:</strong> Penicillins (Amoxicillin, Ampicillin), Cephalosporins (thế hệ 1-5, ví dụ Ceftriaxone, Ceftazidime), Carbapenems (Imipenem, Meropenem), và Monobactams.</p>
+            <p style="margin-bottom: 12px;"><strong>Cơ chế tác dụng:</strong> Liên kết với PBP (Penicillin-Binding Proteins) trên vách tế bào vi khuẩn, ức chế tổng hợp peptidoglycan khiến vách tế bào bị yếu và vi khuẩn bị tiêu hủy dưới áp lực thẩm thấu (diệt khuẩn).</p>
+            <p style="margin-bottom: 12px;"><strong>Nguyên lý PK/PD:</strong> Diệt khuẩn phụ thuộc thời gian (fT > MIC). Cần chia nhỏ liều hoặc truyền kéo dài (truyền liên tục) để tối ưu hóa hiệu quả điều trị.</p>
+            <p style="margin-bottom: 0;" class="caution-text"><span class="drug-caution caution-high">⛔ Độc tính & Dị ứng:</span> Phản ứng dị ứng chéo giữa các phân nhóm (đặc biệt giữa Penicillin và Cephalosporin thế hệ I khoảng 5-10%; Carbapenem tỷ lệ chéo cực kỳ thấp <1%).</p>
+          </div>
+        </div>
+
+        <!-- Nhóm 2: Quinolones & Aminoglycosides -->
+        <div class="approach-card" style="background: var(--color-surface); border: 1px solid var(--color-border); border-left: 4px solid #ec4899; padding: 24px; border-radius: 12px; box-shadow: var(--shadow-sm);">
+          <h3 class="step-title" style="color: var(--color-text); font-size: 18px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+            <span style="background: rgba(236, 72, 153, 0.1); color: #ec4899; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 14px; font-weight: 700;">2</span>
+            Kháng sinh diệt khuẩn phụ thuộc nồng độ (Quinolones & Aminoglycosides)
+          </h3>
+          <div style="line-height: 1.6; color: var(--color-text); font-size: 14.5px;">
+            <p style="margin-bottom: 12px;"><strong>Đại diện:</strong> Aminoglycosides (Amikacin, Gentamicin, Tobramycin), Fluoroquinolones (Ciprofloxacin, Levofloxacin, Moxifloxacin).</p>
+            <p style="margin-bottom: 12px;"><strong>Cơ chế tác dụng:</strong> Aminoglycosides ức chế tiểu đơn vị ribosome 30S gây dịch sai mã di truyền vi khuẩn. Quinolones ức chế DNA Gyrase và Topoisomerase IV ngăn nhân bản DNA vi khuẩn.</p>
+            <p style="margin-bottom: 12px;"><strong>Nguyên lý PK/PD:</strong> Phụ thuộc nồng độ đỉnh (Cmax/MIC hoặc AUC24/MIC). Nên dùng liều cao 1 lần duy nhất trong ngày (cho Aminoglycosides) để giảm độc tính tích lũy ở tai và thận.</p>
+            <p style="margin-bottom: 0;" class="caution-text"><span class="drug-caution caution-high">⛔ Độc tính thận trọng:</span> Aminoglycosides gây độc cho tai (thính lực và tiền đình) và độc thận (phải giám sát nồng độ thuốc trong máu - TDM). Quinolones làm kéo dài khoảng QT, nguy cơ đứt gân gót Achilles, phình động mạch chủ.</p>
+          </div>
+        </div>
+
+        <!-- Nhóm 3: Macrolides & Tetracyclines -->
+        <div class="approach-card" style="background: var(--color-surface); border: 1px solid var(--color-border); border-left: 4px solid #ec4899; padding: 24px; border-radius: 12px; box-shadow: var(--shadow-sm);">
+          <h3 class="step-title" style="color: var(--color-text); font-size: 18px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+            <span style="background: rgba(236, 72, 153, 0.1); color: #ec4899; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 14px; font-weight: 700;">3</span>
+            Kháng sinh kìm khuẩn ức chế tổng hợp protein (Macrolides, Tetracyclines & Lincosamides)
+          </h3>
+          <div style="line-height: 1.6; color: var(--color-text); font-size: 14.5px;">
+            <p style="margin-bottom: 12px;"><strong>Đại diện:</strong> Macrolides (Azithromycin, Clarithromycin, Erythromycin), Tetracyclines (Doxycycline), Lincosamides (Clindamycin).</p>
+            <p style="margin-bottom: 12px;"><strong>Cơ chế tác dụng:</strong> Liên kết thuận nghịch với tiểu đơn vị 50S (Macrolides, Clindamycin) hoặc 30S (Tetracyclines) của ribosome vi khuẩn, ngăn chặn quá trình chuyển vị hoặc gắn acid amin vào chuỗi polypeptid.</p>
+            <p style="margin-bottom: 12px;"><strong>Chỉ định chính:</strong> Viêm phổi cộng đồng (bao gồm vi khuẩn không điển hình Mycoplasma, Chlamydia), nhiễm trùng da mô mềm, mụn trứng cá nặng, bệnh lyme.</p>
+            <p style="margin-bottom: 0;" class="caution-text"><span class="drug-caution caution-moderate">⚠️ Tương tác:</span> Clarithromycin và Erythromycin là chất ức chế mạnh CYP3A4, làm tăng nồng độ các thuốc dùng kèm như statins, carbamazepine trong máu lên mức độc tính.</p>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+  <!-- JS Core -->
+  <script src="../../../js/main.js" defer></script>
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+</body>
+</html>

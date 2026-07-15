@@ -61,7 +61,7 @@
         detailedConclusion: "Thử nghiệm lâm sàng ngẫu nhiên, mù đôi, đối chứng giả dược. Kết quả cho thấy tỷ lệ nhập viện do suy tim giảm 35%, tử vong do mọi nguyên nhân giảm 32%. Đây là thuốc điều trị đái tháo đường đầu tiên chứng minh được lợi ích bảo vệ tim mạch vượt trội.",
         fdaStatus: "FDA Approved 2016 (chỉ định giảm tử vong tim mạch)",
         sourceUrl: "https://www.nejm.org/doi/full/10.1056/nejmoa1504720",
-        file: "",
+        file: "Kho Guidelines/empa-reg.html",
         asianData: true,
         bookmarked: true,
         createdAt: new Date().toISOString()

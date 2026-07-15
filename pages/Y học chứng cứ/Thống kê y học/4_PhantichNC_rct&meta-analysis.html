@@ -103,6 +103,36 @@
       color: var(--text-muted);
     }
 
+    /* ── MARK AS READ ── */
+    .mark-read-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .mark-read-info { display: flex; flex-direction: column; gap: 0.2rem; }
+    .mark-read-info strong {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.92rem; font-weight: 700; color: var(--text);
+    }
+    .mark-read-info span { font-size: 0.78rem; color: var(--text-muted); }
+    .mark-read-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.65rem 1.4rem; border-radius: 10px; border: none;
+      font-size: 0.85rem; font-weight: 700; cursor: pointer;
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .mark-read-btn.unread { background: var(--accent); color: #fff; }
+    .mark-read-btn.unread:hover { background: var(--accent-mid); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(3,105,161,.25); }
+    .mark-read-btn.done { background: #dcfce7; color: #15803d; border: 1.5px solid #86efac; }
+    .mark-read-btn.done:hover { background: #bbf7d0; }
+
     /* ── THEORY PLACEHOLDER ── */
     .theory-box {
       background: var(--surface);
@@ -242,7 +272,37 @@
       </div>
     </div>
 
+    <!-- MARK AS READ -->
+    <div class="mark-read-section">
+      <div class="mark-read-info">
+        <strong>Bạn đã đọc xong bài học này?</strong>
+        <span>Đánh dấu để theo dõi tiến độ học tập của bạn</span>
+      </div>
+      <button class="mark-read-btn unread" id="mark-read-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Đánh dấu đã đọc
+      </button>
+    </div>
+
   </div>
+
+  <script>
+    const LESSON_KEY = 'thongke-bai4';
+    const btn = document.getElementById('mark-read-btn');
+    function syncBtn() {
+      const isDone = localStorage.getItem(LESSON_KEY) === 'done';
+      btn.className = isDone ? 'mark-read-btn done' : 'mark-read-btn unread';
+      btn.innerHTML = isDone
+        ? `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Đã đọc xong`
+        : `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Đánh dấu đã đọc`;
+    }
+    btn.addEventListener('click', () => {
+      const isDone = localStorage.getItem(LESSON_KEY) === 'done';
+      isDone ? localStorage.removeItem(LESSON_KEY) : localStorage.setItem(LESSON_KEY, 'done');
+      syncBtn();
+    });
+    syncBtn();
+  </script>
 
 </body>
 </html>

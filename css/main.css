@@ -1095,14 +1095,29 @@ h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.2; text-wrap: bal
    ============================================================ */
 
 /* Collapse Panel Input Layout */
+/* Collapse Panel Input Layout */
 @media (min-width: 768px) {
   .na-grid.input-collapsed,
   .urgent-grid.input-collapsed,
-  .calc-container.input-collapsed {
+  .calc-container.input-collapsed,
+  .abg-grid.input-collapsed,
+  .assessment-grid.input-collapsed,
+  .calc-layout.input-collapsed,
+  .calc-grid.input-collapsed,
+  .cirrhosis-wrapper.input-collapsed,
+  .hcc-workspace-layout.input-collapsed,
+  .van-layout.input-collapsed,
+  .ss-layout.input-collapsed,
+  .workspace-container.input-collapsed {
     grid-template-columns: 60px 1fr !important;
   }
   .panel.collapsed-state,
-  .calc-inputs.collapsed-state {
+  .calc-inputs.collapsed-state,
+  .inp-card.collapsed-state,
+  .hcc-input-column.collapsed-state,
+  .input-column.collapsed-state,
+  .input-side.collapsed-state,
+  .collapsed-state {
     padding: 1.5rem 0.5rem !important;
     width: 60px !important;
     min-width: 60px !important;
@@ -1115,12 +1130,41 @@ h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.2; text-wrap: bal
     align-items: center;
     transition: width var(--tr), padding var(--tr);
   }
-  .panel.collapsed-state > *:not(.panel-title),
-  .calc-inputs.collapsed-state > *:not(.section-card-header):not(.toggle-input-panel-btn) {
+  
+  /* Generic rule to hide direct children except header/toggle button */
+  .collapsed-state > *:not(:first-child):not(.panel-title):not(.section-card-header):not(.inp-card-title):not(.input-panel-title):not(.van-card-head):not(.ss-card-title):not(.card-zone-badge):not(label):not(.toggle-input-panel-btn) {
     display: none !important;
   }
-  .panel.collapsed-state .panel-title,
-  .calc-inputs.collapsed-state .section-card-header h3 {
+
+  /* Support for multi-card column wrappers: hide all cards except the first card */
+  .collapsed-state > *:not(:first-child) {
+    display: none !important;
+  }
+  .collapsed-state > *:first-child {
+    height: 100%;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100% !important;
+  }
+  .collapsed-state > *:first-child > *:not(.panel-title):not(.section-card-header):not(.inp-card-title):not(.input-panel-title):not(.van-card-head):not(.ss-card-title):not(.card-zone-badge):not(label):not(.toggle-input-panel-btn) {
+    display: none !important;
+  }
+
+  /* Rotate headers vertically */
+  .collapsed-state .panel-title,
+  .collapsed-state .section-card-header h3,
+  .collapsed-state .inp-card-title,
+  .collapsed-state .input-panel-title,
+  .collapsed-state .van-card-head,
+  .collapsed-state .ss-card-title,
+  .collapsed-state .card-zone-badge,
+  .collapsed-state label {
     writing-mode: vertical-rl;
     text-orientation: mixed;
     border-bottom: none;
@@ -1134,29 +1178,41 @@ h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.2; text-wrap: bal
     transform: rotate(180deg);
     gap: 1rem;
   }
-  .panel.collapsed-state .panel-title span:first-child,
-  .calc-inputs.collapsed-state .section-card-header .step-badge {
+  .collapsed-state .panel-title span:first-child,
+  .collapsed-state .section-card-header .step-badge {
     margin-bottom: 8px;
     transform: rotate(90deg);
   }
-  .panel.collapsed-state .toggle-input-panel-btn i,
-  .calc-inputs.collapsed-state .toggle-input-panel-btn i {
+  .collapsed-state .toggle-input-panel-btn i {
     transform: rotate(180deg);
   }
 }
 
 /* Mobile Collapse Panel - Accordion Style */
 @media (max-width: 767px) {
-  .panel.collapsed-state > *:not(.panel-title),
-  .calc-inputs.collapsed-state > *:not(.section-card-header):not(.toggle-input-panel-btn) {
+  /* Generic mobile hiding rule */
+  .collapsed-state > *:not(:first-child):not(.panel-title):not(.section-card-header):not(.inp-card-title):not(.input-panel-title):not(.van-card-head):not(.ss-card-title):not(.card-zone-badge):not(label):not(.toggle-input-panel-btn) {
     display: none !important;
   }
-  .panel.collapsed-state .toggle-input-panel-btn i,
-  .calc-inputs.collapsed-state .toggle-input-panel-btn i {
+
+  /* Support for multi-card column wrappers: hide all cards except the first card */
+  .collapsed-state > *:not(:first-child) {
+    display: none !important;
+  }
+  .collapsed-state > *:first-child > *:not(.panel-title):not(.section-card-header):not(.inp-card-title):not(.input-panel-title):not(.van-card-head):not(.ss-card-title):not(.card-zone-badge):not(label):not(.toggle-input-panel-btn) {
+    display: none !important;
+  }
+
+  .collapsed-state .toggle-input-panel-btn i {
     transform: rotate(-90deg);
   }
   .panel.collapsed-state,
-  .calc-inputs.collapsed-state {
+  .calc-inputs.collapsed-state,
+  .inp-card.collapsed-state,
+  .hcc-input-column.collapsed-state,
+  .input-column.collapsed-state,
+  .input-side.collapsed-state,
+  .collapsed-state {
     padding-bottom: 0.75rem !important;
     margin-bottom: 1rem !important;
   }

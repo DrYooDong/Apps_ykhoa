@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CliniPortal – Công cụ tính toán liều và điều chỉnh bơm tiêm điện (BTĐ) các thuốc vận mạch & trợ tim an toàn." />
+  <title>Tính Liều Vận Mạch &amp; Trợ Tim – CliniPortal</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- FontAwesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- CSS Core -->
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+
+  <style>
+    /* ── SHARED TOKENS ── */
+    :root {
+      --vm-red: #dc2626;
+      --vm-red-h: #fef2f2;
+      --vm-red-b: #fecaca;
+      --vm-amber: #d97706;
+      --vm-amber-h: #fffbeb;
+      --vm-amber-b: #fde68a;
+      --vm-blue: #0284c7;
+      --vm-blue-h: #f0f9ff;
+      --vm-blue-b: #bae6fd;
+      --vm-teal: #0d9488;
+      --vm-teal-h: #f0fdfa;
+      --vm-teal-b: #99f6e4;
+      --vm-purple: #7c3aed;
+      --vm-purple-h: #f5f3ff;
+      --vm-purple-b: #ddd6fe;
+      --vm-ok: #16a34a;
+      --vm-ok-h: #f0fdf4;
+      --vm-ok-b: #bbf7d0;
+    }
+
+    [data-theme="dark"] {
+      --vm-red: #f87171;
+      --vm-red-h: #1f0808;
+      --vm-red-b: #7f1d1d;
+      --vm-amber: #fbbf24;
+      --vm-amber-h: #1f1500;
+      --vm-amber-b: #78350f;
+      --vm-blue: #38bdf8;
+      --vm-blue-h: #0a2236;
+      --vm-blue-b: #0c4a6e;
+      --vm-teal: #2dd4bf;
+      --vm-teal-h: #062820;
+      --vm-teal-b: #115e59;
+      --vm-purple: #a78bfa;
+      --vm-purple-h: #160e30;
+      --vm-purple-b: #4c1d95;
+      --vm-ok: #4ade80;
+      --vm-ok-h: #052e16;
+      --vm-ok-b: #14532d;
+    }
+
+    .page-vm {
+      padding: 0 0 40px;
+    }
+
+    /* HERO */
+    .hero-vm {
+      background: linear-gradient(135deg, #450a0a, #dc2626 50%, #9333ea);
+      border-radius: 18px;
+      padding: 24px 28px;
+      margin-bottom: 20px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-vm::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 160px;
+      height: 160px;
+      background: rgba(255, 255, 255, .06);
+      border-radius: 50%;
+    }
+
+    .hero-vm h1 {
+      font-size: clamp(17px, 2.3vw, 23px);
+      font-weight: 700;
+      margin: 0 0 5px;
+    }
+
+    .hero-vm p {
+      font-size: 13px;
+      opacity: .82;
+      margin: 0;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, .15);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, .25);
+      border-radius: 100px;
+      padding: 3px 11px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    /* CALC PANEL */
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    @media(max-width:640px) {
+      .calc-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .inp-card {
+      background: var(--color-surface-2);
+      border: 1.5px solid var(--color-divider);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .inp-card-title {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--color-text);
+    }
+
+    .inp-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 10px;
+    }
+
+    .inp-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .inp-group label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-text-muted);
+    }
+
+    .inp-group input,
+    .inp-group select {
+      padding: 8px 10px;
+      border: 1.5px solid var(--color-border);
+      border-radius: 9px;
+      font-size: 13px;
+      background: var(--color-surface);
+      color: var(--color-text);
+      width: 100%;
+      transition: border-color .2s;
+    }
+
+    .inp-group input:focus,
+    .inp-group select:focus {
+      outline: none;
+      border-color: var(--vm-red);
+      box-shadow: 0 0 0 3px var(--vm-red-h);
+    }
+
+    /* RESULT CARDS */
+    .res-card {
+      background: var(--color-surface);
+      border: 1.5px solid var(--color-divider);
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .res-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin: 0 0 12px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid;
+      color: var(--color-text);
+    }
+
+    /* PUMP DISPLAY */
+    .pump-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--vm-red-h);
+      border: 1.5px solid var(--vm-red-b);
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin: 12px 0;
+    }
+
+    .pump-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      color: #7f1d1d;
+    }
+    [data-theme="dark"] .pump-label {
+      color: #f87171;
+    }
+
+    .pump-sub {
+      font-size: 11.5px;
+      color: #9f1239;
+      margin-top: 3px;
+    }
+    [data-theme="dark"] .pump-sub {
+      color: #fca5a5;
+    }
+
+    .pump-num {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--vm-red);
+      line-height: 1;
+    }
+
+    .pump-unit {
+      font-size: 13px;
+      font-weight: 600;
+      color: #7f1d1d;
+      margin-left: 4px;
+    }
+    [data-theme="dark"] .pump-unit {
+      color: #f87171;
+    }
+
+    /* INFO CARDS */
+    .info-card {
+      border-radius: 12px;
+      padding: 13px 15px;
+      margin-bottom: 10px;
+      border: 1.5px solid;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .ic-red {
+      background: var(--vm-red-h);
+      border-color: var(--vm-red-b);
+      color: #7f1d1d;
+    }
+    [data-theme="dark"] .ic-red {
+      color: #fca5a5;
+    }
+
+    .ic-amber {
+      background: var(--vm-amber-h);
+      border-color: var(--vm-amber-b);
+      color: #78350f;
+    }
+    [data-theme="dark"] .ic-amber {
+      color: #fcd34d;
+    }
+
+    .ic-blue {
+      background: var(--vm-blue-h);
+      border-color: var(--vm-blue-b);
+      color: #0c4a6e;
+    }
+    [data-theme="dark"] .ic-blue {
+      color: #bae6fd;
+    }
+
+    .ic-teal {
+      background: var(--vm-teal-h);
+      border-color: var(--vm-teal-b);
+      color: #134e4a;
+    }
+    [data-theme="dark"] .ic-teal {
+      color: #99f6e4;
+    }
+
+    .ic-purple {
+      background: var(--vm-purple-h);
+      border-color: var(--vm-purple-b);
+      color: #4c1d95;
+    }
+    [data-theme="dark"] .ic-purple {
+      color: #ddd6fe;
+    }
+
+    .ic-ok {
+      background: var(--vm-ok-h);
+      border-color: var(--vm-ok-b);
+      color: #14532d;
+    }
+    [data-theme="dark"] .ic-ok {
+      color: #a3e635;
+    }
+
+    .ic-title {
+      font-weight: 700;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    /* DOSE RANGE */
+    .dose-range-bar {
+      background: var(--color-border);
+      border-radius: 100px;
+      height: 8px;
+      margin: 8px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dose-range-fill {
+      height: 100%;
+      border-radius: 100px;
+      background: linear-gradient(to right, #16a34a, #d97706, #dc2626);
+      transition: width .4s;
+    }
+
+    .dose-range-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: var(--color-text-muted);
+      margin-top: 2px;
+    }
+
+    /* SWITCH FLOW */
+    .switch-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .sw-step {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .sw-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .sw-num.red {
+      background: var(--vm-red);
+      color: #fff;
+    }
+
+    .sw-num.amber {
+      background: var(--vm-amber);
+      color: #fff;
+    }
+
+    .sw-num.blue {
+      background: var(--vm-blue);
+      color: #fff;
+    }
+
+    .sw-num.teal {
+      background: var(--vm-teal);
+      color: #fff;
+    }
+
+    .sw-body {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--color-text);
+    }
+
+    .sw-body strong {
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- App Container -->
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../cong-cu.html" class="nav-item active" aria-current="page" title="Công cụ">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main wrapper -->
+    <main class="main-wrapper" id="mainContent" style="padding: 0 1rem 2rem;">
+      <section class="hero-vm">
+        <div class="hero-badge">⚡ Hồi sức &amp; Cấp cứu • Công cụ</div>
+        <h1>Tính Liều Thuốc Vận Mạch &amp; Trợ Tim</h1>
+        <p>Tính toán tốc độ truyền bơm tiêm điện (BTĐ), xác định ngưỡng liều an toàn và xử trí sốc kháng trị</p>
+      </section>
+
+      <!-- Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a></li>
+          <li class="breadcrumb-item"><a href="../cong-cu.html" class="breadcrumb-link">Công cụ</a></li>
+          <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Cấp cứu &amp; hồi sức</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Tính liều vận mạch</li>
+        </ol>
+      </nav>
+
+      <!-- CALCULATOR PANEL -->
+      <div class="calc-grid">
+        <!-- Input Card -->
+        <div class="inp-card">
+          <div class="inp-card-title"><i class="fa-solid fa-sliders"></i> Thông số bệnh nhân &amp; Thuốc</div>
+          
+          <div class="inp-group">
+            <label for="c-weight">Cân nặng thực tế (kg)</label>
+            <input type="number" id="c-weight" value="65" min="20" step="1" oninput="calcDose()">
+          </div>
+          
+          <div class="inp-group">
+            <label for="c-gender">Giới tính (để tính IBW phòng quá tải nếu béo phì)</label>
+            <select id="c-gender" onchange="calcDose()">
+              <option value="male">Nam</option>
+              <option value="female">Nữ</option>
+            </select>
+          </div>
+          
+          <div class="inp-group">
+            <label for="c-height">Chiều cao (cm)</label>
+            <input type="number" id="c-height" value="165" min="100" step="1" oninput="calcDose()">
+          </div>
+          
+          <div class="inp-group">
+            <label for="c-drug">Thuốc vận mạch / Trợ tim (Chọn nồng độ pha)</label>
+            <select id="c-drug" onchange="onDrugChange()">
+              <option value="NE_4">Norepinephrine 4mg/50mL (80mcg/mL) – Lựa chọn #1</option>
+              <option value="NE_8">Norepinephrine 8mg/50mL (160mcg/mL) – Đặc, hạn chế dịch</option>
+              <option value="NE_16">Norepinephrine 16mg/50mL (320mcg/mL) – Rất đặc, ICU nặng</option>
+              <option value="EPI_4">Epinephrine 4mg/50mL (80mcg/mL) – Sốc phản vệ / Nhi</option>
+              <option value="VASO">Vasopressin 20ĐV/50mL (0.4ĐV/mL) – Sốc kháng trị</option>
+              <option value="DOBU_250">Dobutamine 250mg/50mL (5000mcg/mL) – Suy co bóp cơ tim</option>
+              <option value="DOPA_200">Dopamine 200mg/50mL (4000mcg/mL) – Ít dùng, tuyến hạn chế</option>
+              <option value="PHE">Phenylephrine 100mg/50mL (2000mcg/mL) – Sốc giãn mạch thuần túy</option>
+            </select>
+          </div>
+          
+          <div class="inp-group">
+            <label for="c-dose">Liều đích (<span id="dose-unit-lbl">mcg/kg/phút</span>)</label>
+            <input type="number" id="c-dose" value="0.1" min="0" step="0.01" oninput="calcDose()">
+          </div>
+        </div>
+
+        <!-- Output Card -->
+        <div class="res-card">
+          <div class="res-title" id="calc-res-title" style="color: var(--vm-red); border-color: var(--vm-red);"><i class="fa-solid fa-square-poll-vertical"></i> Kết quả cài đặt máy</div>
+          <div id="calc-ibw-row" style="font-size: 13px; color: var(--color-text-muted); margin-bottom: 10px;"></div>
+          
+          <!-- Pump Box -->
+          <div class="pump-box">
+            <div>
+              <div class="pump-label">Tốc độ cài đặt BTĐ</div>
+              <div class="pump-sub" id="pump-dose-label">Liều: --</div>
+            </div>
+            <div style="text-align: right;">
+              <span class="pump-num" id="pump-rate">--</span>
+              <span class="pump-unit">mL/giờ</span>
+            </div>
+          </div>
+          
+          <!-- Drug profile details -->
+          <div id="calc-drug-info"></div>
+          
+          <!-- Dose range indicator -->
+          <div id="dose-range-section" style="margin-top: 12px;">
+            <div style="font-size: 12px; font-weight: 700; color: var(--color-text-muted); margin-bottom: 4px;">📈 Vị trí liều trong thang điều chỉnh</div>
+            <div class="dose-range-bar">
+              <div class="dose-range-fill" id="dose-fill" style="width: 0%"></div>
+            </div>
+            <div class="dose-range-labels" id="dose-range-labels"></div>
+            <div id="dose-zone-alert" style="margin-top: 6px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ESCALATION GUIDE -->
+      <div class="res-card" style="margin-top: 16px;">
+        <div class="res-title" style="color: var(--vm-red); border-color: var(--vm-red);"><i class="fa-solid fa-triangle-exclamation"></i> Hướng dẫn chỉnh liều &amp; Thất bại điều trị</div>
+        <div id="escalation-guide"></div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+  <!-- JS Core -->
+  <script src="../../../js/main.js" defer></script>
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+  <script src="../../../js/sidebar.js" defer></script>
+
+  <script>
+    // ── DRUG DATA ──
+    const DRUGS = {
+        NE_4:  {conc:80,  unit:'mcg/kg/phút', byWeight:true,  min:0.01, start:0.05, warn:0.25, max:2.0,   label:'Norepinephrine 4mg/50mL (80mcg/mL)'},
+        NE_8:  {conc:160, unit:'mcg/kg/phút', byWeight:true,  min:0.01, start:0.05, warn:0.25, max:2.0,   label:'Norepinephrine 8mg/50mL (160mcg/mL)'},
+        NE_16: {conc:320, unit:'mcg/kg/phút', byWeight:true,  min:0.01, start:0.05, warn:0.25, max:2.0,   label:'Norepinephrine 16mg/50mL (320mcg/mL)'},
+        EPI_4: {conc:80,  unit:'mcg/kg/phút', byWeight:true,  min:0.01, start:0.05, warn:0.5,  max:1.0,   label:'Epinephrine 4mg/50mL (80mcg/mL)'},
+        VASO:  {conc:0.4, unit:'ĐV/phút',     byWeight:false, min:0.03, start:0.03, warn:0.04, max:0.03,  label:'Vasopressin 20ĐV/50mL (0.4ĐV/mL)'},
+        DOBU_250:{conc:5000,unit:'mcg/kg/phút',byWeight:true, min:2,    start:5,    warn:15,   max:20,    label:'Dobutamine 250mg/50mL (5000mcg/mL)'},
+        DOPA_200:{conc:4000,unit:'mcg/kg/phút',byWeight:true, min:1,    start:5,    warn:15,   max:20,    label:'Dopamine 200mg/50mL (4000mcg/mL)'},
+        PHE:   {conc:2000,unit:'mcg/kg/phút', byWeight:true,  min:0.5,  start:1.5,  warn:4,    max:6,     label:'Phenylephrine 100mg/50mL (2000mcg/mL)'},
+    };
+
+    const DRUG_INFO = {
+        NE_4:  {ind:'Sốc nhiễm khuẩn, Sốc phân bố (Hàng 1 tuyệt đối)', titrate:'Tăng 0.05 mcg/kg/phút mỗi 5–10 phút. Mục tiêu MAP ≥ 65 mmHg.', warnText:'NE ≥ 0.25 mcg/kg/phút = Ngưỡng sốc kháng trị → Thêm Vasopressin 0.03ĐV/phút ngay.'},
+        NE_8:  {ind:'Sốc nhiễm khuẩn + Suy tim / OAP / ARDS – cần hạn chế thể tích dịch vào máy bơm', titrate:'Tăng 0.05 mcg/kg/phút mỗi 5–10 phút.', warnText:'Nồng độ cao – chú ý sai lầm pha chế. Kiểm tra lại nồng độ trước khi cài BTĐ.'},
+        NE_16: {ind:'ICU nặng – Sốc kháng trị cần hạn chế dịch tối đa (Fluid restriction protocol)', titrate:'Tăng 0.05 mcg/kg/phút cẩn thận.', warnText:'Nồng độ rất cao (320mcg/mL) – Nguy cơ sai liều cao. Cần đường CVC trung tâm. Kiểm tra kỹ.'},
+        EPI_4: {ind:'Sốc phản vệ (hàng 1), Sốc nhiễm khuẩn kháng trị NE+Vasopressin (hàng 3), Sốc tim Nhi khoa', titrate:'Tăng 0.05 mcg/kg/phút mỗi 5 phút.', warnText:'Epinephrine gây tăng Lactate giả tạo (ức chế pyruvate dehydrogenase, không phải thiếu oxy). KHÔNG dùng Lactate để theo dõi đáp ứng điều trị khi đang dùng Epi.'},
+        VASO:  {ind:'Sốc kháng trị (phối hợp với NE ≥ 0.25 mcg/kg/phút). KHÔNG dùng đơn độc thay thế NE.', titrate:'KHÔNG TITRATE. Liều CỐ ĐỊNH 0.03 ĐV/phút. Tốc độ BTĐ = 4.5 mL/giờ (khi pha 0.4ĐV/mL).', warnText:'Liều > 0.04 ĐV/phút không tăng thêm hiệu quả mà tăng nguy cơ thiếu máu cơ tim và hoại thư ngoại vi (đặc biệt ngón tay, ngón chân).'},
+        DOBU_250:{ind:'Suy co bóp cơ tim cấp (EF < 40%, ScvO2 < 70%, Lactate cao mà MAP ≥ 65 sau đủ NE nền)', titrate:'Tăng 2.5 mcg/kg/phút mỗi 15 phút. Theo dõi nhịp tim (tăng HR > 10–20% → Xem xét giảm liều).', warnText:'KHÔNG dùng đơn độc khi MAP < 65 mmHg – Dobutamine giãn mạch ngoại vi sẽ làm tụt HA thêm. Cần NE nền đủ trước.'},
+        DOPA_200:{ind:'Tuyến y tế không có NE. Sốc nhịp chậm (Dopamine tăng HR hữu ích)', titrate:'Liều 5–10 mcg/kg/phút: Tăng co bóp + HR. Liều >10: Co mạch.', warnText:'SSC 2021 không khuyến cáo Dopamine thay thế NE (tỉ lệ loạn nhịp cao hơn đáng kể). Chỉ dùng khi tuyệt đối không có NE.'},
+        PHE:   {ind:'Sốc giãn mạch (không suy cơ tim) kèm nhịp tim nhanh bất thường (Rung nhĩ tần số nhanh + Tụt HA)', titrate:'Tăng 0.5 mcg/kg/phút mỗi 15 phút.', warnText:'Phenylephrine co mạch thuần túy → Tăng afterload → Giảm cung lượng tim phản xạ (Baroreceptor reflex bradycardia). Không phù hợp khi có suy co bóp cơ tim đi kèm.'},
+    };
+
+    function calcIBW() {
+        const g = document.getElementById('c-gender').value;
+        const h = parseFloat(document.getElementById('c-height').value) || 165;
+        return g === 'male' ? 50 + 0.9 * (h - 152.4) : 45.5 + 0.9 * (h - 152.4);
+    }
+
+    function onDrugChange() {
+        const drug = document.getElementById('c-drug').value;
+        const d = DRUGS[drug];
+        document.getElementById('dose-unit-lbl').textContent = d.unit;
+        document.getElementById('c-dose').value = d.start;
+        document.getElementById('c-dose').step = drug === 'VASO' ? 0.01 : d.start >= 2 ? 0.5 : 0.01;
+        if (drug === 'VASO') {
+            document.getElementById('c-dose').disabled = true;
+            document.getElementById('c-dose').title = 'Vasopressin dùng liều cố định 0.03 ĐV/phút';
+        } else {
+            document.getElementById('c-dose').disabled = false;
+            document.getElementById('c-dose').title = '';
+        }
+        calcDose();
+    }
+
+    function calcDose() {
+        const drug = document.getElementById('c-drug').value;
+        const d = DRUGS[drug];
+        const wt = parseFloat(document.getElementById('c-weight').value) || 65;
+        const ibw = calcIBW();
+        const useWt = d.byWeight ? Math.min(ibw, wt) : 1;
+        let dose = parseFloat(document.getElementById('c-dose').value) || d.start;
+        if (drug === 'VASO') dose = 0.03; // Force fixed
+        
+        let rate;
+        if (d.byWeight) {
+            rate = (dose * useWt * 60) / d.conc;
+        } else {
+            rate = (dose * 60) / d.conc;
+        }
+
+        // DISPLAY
+        document.getElementById('pump-rate').textContent = rate.toFixed(1);
+        document.getElementById('pump-dose-label').textContent = `Liều: ${dose} ${d.unit}`;
+        document.getElementById('calc-res-title').innerHTML = `<i class="fa-solid fa-square-poll-vertical"></i> Kết quả – ${DRUGS[drug].label}`;
+        
+        document.getElementById('calc-ibw-row').innerHTML = `<strong>Cân nặng hiệu chỉnh:</strong> IBW = <strong>${ibw.toFixed(1)} kg</strong> | Cân nặng thực = ${wt} kg | Cân nặng tính toán: <strong>${useWt.toFixed(1)} kg</strong> (chọn nhỏ hơn)`;
+        
+        // Drug info
+        const info = DRUG_INFO[drug];
+        document.getElementById('calc-drug-info').innerHTML = `
+            <div class="info-card ic-blue" style="margin-top: 10px;">
+                <span class="ic-title">Chỉ định</span>${info.ind}
+            </div>
+            <div class="info-card ic-teal">
+                <span class="ic-title">Cách chỉnh liều</span>${info.titrate}
+            </div>
+            <div class="info-card ic-amber">
+                <span class="ic-title">⚠️ Lưu ý đặc biệt</span>${info.warnText}
+            </div>`;
+        
+        // Dose range
+        const pct = Math.min(100, Math.max(0, ((dose - d.min) / (d.max - d.min)) * 100));
+        document.getElementById('dose-fill').style.width = pct + '%';
+        document.getElementById('dose-range-labels').innerHTML = `<span>${d.min} (khởi đầu)</span><span>${d.warn} (cảnh báo)</span><span>${d.max} (tối đa)</span>`;
+        
+        let zoneHtml = '';
+        if (dose >= d.warn && drug !== 'VASO') {
+            zoneHtml = `<div class="info-card ic-red"><span class="ic-title">🚨 VÙNG LIỀU CAO / KHÁNG TRỊ</span>Liều hiện tại (${dose} ${d.unit}) đã đạt/vượt ngưỡng cảnh báo (${d.warn}). Cân nhắc phối hợp thuốc theo protocol chuyển đổi.</div>`;
+        } else if (dose > d.min && dose < d.warn) {
+            zoneHtml = `<div class="info-card ic-ok"><span class="ic-title">✅ Vùng liều điều chỉnh bình thường</span>Tiếp tục titrate hướng đến mục tiêu MAP ≥ 65 mmHg.</div>`;
+        }
+        document.getElementById('dose-zone-alert').innerHTML = zoneHtml;
+        
+        // Escalation guide
+        let esc = '';
+        if (drug.startsWith('NE')) {
+            esc = `
+            <div class="switch-flow">
+                <div class="sw-step"><div class="sw-num teal">✓</div><div class="sw-body"><strong>Hiện tại (${dose} mcg/kg/phút):</strong> Tốc độ BTĐ = <strong>${rate.toFixed(1)} mL/giờ</strong>. Tiếp tục titrate mỗi 5–10 phút theo MAP.</div></div>
+                ${dose >= 0.25 ? `<div class="sw-step"><div class="sw-num red">!</div><div class="sw-body"><strong>Ngưỡng kháng trị ĐẠT:</strong> Thêm ngay Vasopressin 0.03 ĐV/phút (4.5 mL/giờ). Không tăng NE thêm cho đến khi có Vasopressin.</div></div>` : ''}
+                <div class="sw-step"><div class="sw-num amber">→</div><div class="sw-body"><strong>Nếu vẫn không đạt MAP ≥ 65 sau NE + Vasopressin:</strong> Test Corticoid (Hydrocortisone 200mg/24h), xem xét thêm Epinephrine, Hội chẩn ICU.</div></div>
+                <div class="sw-step"><div class="sw-num blue">→</div><div class="sw-body"><strong>Nếu MAP đạt nhưng Lactate cao / ScvO2 thấp:</strong> Thêm Dobutamine 2–5 mcg/kg/phút (Bằng chứng suy cơ tim).</div></div>
+            </div>`;
+        } else if (drug === 'VASO') {
+            esc = `<div class="info-card ic-purple"><span class="ic-title">ℹ️ Vasopressin – Liều cố định không titrate</span>Chỉ dùng phối hợp với NE. Mục tiêu giúp giảm liều NE chứ không thay thế NE. Theo dõi nước tiểu và tình trạng thiếu máu cục bộ đầu ngón.</div>`;
+        } else if (drug === 'DOBU_250') {
+            esc = `<div class="switch-flow">
+                <div class="sw-step"><div class="sw-num teal">✓</div><div class="sw-body"><strong>Mục tiêu Dobutamine:</strong> ScvO2 > 70%, Lactate giảm ≥ 10%/2h, đầu chi ấm hơn.</div></div>
+                <div class="sw-step"><div class="sw-num amber">!</div><div class="sw-body"><strong>Theo dõi:</strong> HR tăng > 10–20% từ nền → Cân nhắc giảm liều. Loạn nhịp → Giảm ngay.</div></div>
+                ${dose >= 15 ? `<div class="sw-step"><div class="sw-num red">!</div><div class="sw-body"><strong>Liều cao (${dose} mcg/kg/phút):</strong> Nguy cơ loạn nhịp và thiếu máu cơ tim. Hội chẩn ECMO/IABP nếu không đáp ứng.</div></div>` : ''}
+            </div>`;
+        } else {
+            esc = `<div class="info-card ic-blue"><span class="ic-title">Hướng dẫn</span>Titrate từng bước nhỏ theo mục tiêu huyết động. Theo dõi liên tục MAP, nhịp tim, nước tiểu.</div>`;
+        }
+        document.getElementById('escalation-guide').innerHTML = esc;
+    }
+
+    // Initialize calculator
+    document.addEventListener('DOMContentLoaded', () => {
+        calcDose();
+    });
+  </script>
+</body>
+</html>

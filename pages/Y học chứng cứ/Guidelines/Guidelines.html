@@ -93,6 +93,12 @@
           <button class="tab-trigger" id="tab-compare" onclick="switchTab('compare')">
             🔄 So sánh <span class="tab-trigger-count" id="compare-count">0</span>
           </button>
+          <button class="tab-trigger" id="tab-analytics" onclick="switchTab('analytics')">
+            📊 Thống kê
+          </button>
+          <button class="tab-trigger" id="tab-timeline" onclick="switchTab('timeline')">
+            📅 Timeline
+          </button>
         </div>
       </div>
 
@@ -249,6 +255,16 @@
             <p>Vui lòng chọn ít nhất một tài liệu ở bảng danh sách (tích chọn checkbox) để so sánh.</p>
           </div>
         </div>
+      </section>
+
+      <!-- ══ PANEL: ANALYTICS ══ -->
+      <section class="content-panel" id="panel-analytics">
+        <!-- Rendered by renderAnalytics() -->
+      </section>
+
+      <!-- ══ PANEL: TIMELINE ══ -->
+      <section class="content-panel" id="panel-timeline">
+        <!-- Rendered by renderTimeline() -->
       </section>
 
     </div>

@@ -30,6 +30,12 @@
         const domWarnings = document.getElementById('out-warnings');
         const domConcl = document.getElementById('out-conclusion');
 
+        // Khởi tạo Nomogram
+        let nomogram = null;
+        if (typeof ABGNomogram !== 'undefined') {
+            nomogram = new ABGNomogram('abgNomogram');
+        }
+
         // Cơ sở dữ liệu nguyên nhân
         const CAUSES_DB = {
           highAG: [
@@ -413,6 +419,11 @@
           // TỔNG HỢP KẾT LUẬN
           let uniqueConclusions = [...new Set(conclusions)];
           domConcl.innerHTML = uniqueConclusions.join("<br>+ ");
+
+          // Vẽ biểu đồ Nomogram
+          if (nomogram && ph && pco2) {
+            nomogram.plotPoint(ph, pco2);
+          }
         }
 
         // Lắng nghe sự kiện thay đổi input/select

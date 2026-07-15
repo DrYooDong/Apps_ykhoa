@@ -1,6 +1,7 @@
     let studies = [];
     let selectedIds = new Set();
     let expandedIds = new Set();
+    let isMobileView = window.innerWidth <= 768;
     
     // View state
     let viewMode = 'full'; // 'full' or 'compact'
@@ -581,30 +582,39 @@
 
     function switchTab(tabName) {
       currentTab = tabName;
-      
-      // Update Tab Triggers visual
+
       document.querySelectorAll('.tab-trigger').forEach(btn => btn.classList.remove('active'));
       const activeBtn = document.getElementById(`tab-${tabName}`);
       if (activeBtn) activeBtn.classList.add('active');
 
-      // Update Sidebar highlights
       document.getElementById('sidebar-btn-studies').classList.remove('active');
       document.getElementById('sidebar-btn-saved').classList.remove('active');
       if (tabName === 'list') document.getElementById('sidebar-btn-studies').classList.add('active');
       if (tabName === 'saved') document.getElementById('sidebar-btn-saved').classList.add('active');
 
-      // Switch main panel
-      const panelStudies = document.getElementById('panel-studies');
-      const panelCompare = document.getElementById('panel-compare');
-      const pageTitle = document.getElementById('page-panel-title');
+      const panelStudies   = document.getElementById('panel-studies');
+      const panelCompare   = document.getElementById('panel-compare');
+      const panelAnalytics = document.getElementById('panel-analytics');
+      const panelTimeline  = document.getElementById('panel-timeline');
+      const pageTitle      = document.getElementById('page-panel-title');
+
+      [panelStudies, panelCompare, panelAnalytics, panelTimeline]
+        .filter(Boolean)
+        .forEach(p => p.classList.remove('active'));
 
       if (tabName === 'compare') {
-        panelStudies.classList.remove('active');
         panelCompare.classList.add('active');
         pageTitle.textContent = 'So Sánh Tài Liệu';
         renderCompareView();
+      } else if (tabName === 'analytics') {
+        panelAnalytics.classList.add('active');
+        pageTitle.textContent = 'Thống Kê & Phân Tích';
+        renderAnalytics();
+      } else if (tabName === 'timeline') {
+        panelTimeline.classList.add('active');
+        pageTitle.textContent = 'Timeline Hướng Dẫn';
+        renderTimeline();
       } else {
-        panelCompare.classList.remove('active');
         panelStudies.classList.add('active');
         pageTitle.textContent = tabName === 'saved' ? 'Tài Liệu Đã Lưu' : 'Hướng Dẫn & Nghiên Cứu Lâm Sàng';
         renderTable();
@@ -649,6 +659,38 @@
     // ════════════════════════════
 
     function renderTable() {
+      // Detect mobile and delegate
+      isMobileView = window.innerWidth <= 768;
+      if (isMobileView && (currentTab === 'list' || currentTab === 'saved')) {
+        const filtered = getFilteredStudies();
+        // Show table element for saved/list tab if desktop, else handle mobile
+        const tableEl = document.getElementById('studies-table-element');
+        if (tableEl) tableEl.style.display = 'none';
+        const oldCards = document.getElementById('mobile-cards-container');
+        if (oldCards) oldCards.remove();
+        const emptyState = document.getElementById('empty-state');
+        const displayCount = document.getElementById('display-count');
+        displayCount.textContent = filtered.length;
+        updateBadges();
+        if (filtered.length === 0) {
+          emptyState.style.display = 'block';
+          if (currentTab === 'saved') {
+            document.getElementById('empty-state-message').textContent = 'Chưa có tài liệu nào được lưu trữ.';
+          } else {
+            document.getElementById('empty-state-message').textContent = 'Không tìm thấy tài liệu nào khớp với bộ lọc.';
+          }
+          return;
+        }
+        emptyState.style.display = 'none';
+        renderMobileCards(filtered);
+        return;
+      }
+      // Desktop: ensure table is visible, remove any leftover mobile cards
+      const tableEl = document.getElementById('studies-table-element');
+      if (tableEl) tableEl.style.display = '';
+      const oldCards = document.getElementById('mobile-cards-container');
+      if (oldCards) oldCards.remove();
+
       const tbody = document.getElementById('table-body');
       const emptyState = document.getElementById('empty-state');
       const displayCount = document.getElementById('display-count');
@@ -681,6 +723,13 @@
         const srcTypeConfig = SOURCE_TYPES[study.sourceType] || { name: study.sourceType || 'N/A', color: '#6b7280', bg: '#f3f4f6' };
         const designConfig = DESIGNS[study.design] || { name: study.design || 'N/A' };
 
+        // Stale alert badge
+        const staleBadge = getStaleAlertBadge(study);
+
+        // Forest Plot parsing
+        const forestData = parseForestData(study.keyResults);
+        const forestPlotHtml = forestData ? `<div class="forest-plot-inline">${renderForestPlotSVG(forestData)}</div>` : '';
+
         // Columns HTML segments
         const sourceTypeCell = columnVisibility.sourceType ? `<td><span class="badge badge-src-${study.sourceType}">${srcTypeConfig.name}</span></td>` : '';
         const specialtyCell = columnVisibility.specialty ? `<td><span class="badge badge-${study.specialty}">${spec.name}</span></td>` : '';
@@ -689,6 +738,9 @@
         const interventionCell = columnVisibility.intervention ? `<td><div class="study-summary ${viewMode === 'compact' ? 'clamped' : ''}">${escapeHtml(study.intervention || 'N/A')}</div></td>` : '';
         const primaryEndpointCell = columnVisibility.primaryEndpoint ? `<td><div class="study-summary ${viewMode === 'compact' ? 'clamped' : ''}">${escapeHtml(study.primaryEndpoint || 'N/A')}</div></td>` : '';
         const keyResultsCell = columnVisibility.keyResults ? `<td><div class="study-summary ${viewMode === 'compact' ? 'clamped' : ''}">${escapeHtml(study.keyResults || 'N/A')}</div></td>` : '';
+        
+        // Build stale badge inline for title column
+        const staleInline = staleBadge ? `${staleBadge}` : '';
         const impactCell = columnVisibility.impact ? `
           <td>
             <span class="impact-badge impact-${study.impact}">
@@ -710,7 +762,7 @@
         const populationCell = columnVisibility.population ? `<td><div class="study-summary ${viewMode === 'compact' ? 'clamped' : ''}">${escapeHtml(study.population || 'N/A')}</div></td>` : '';
 
         rowsHtml += `
-          <tr class="main-row ${isExpanded ? 'expanded' : ''}" onclick="toggleExpandRow('${study.id}', event)">
+          <tr id="tr-${study.id}" class="main-row ${isExpanded ? 'expanded' : ''}" onclick="toggleExpandRow('${study.id}', event)">
             <td class="cell-center" onclick="event.stopPropagation()">
               <input type="checkbox" class="row-selector" ${isSelected ? 'checked' : ''} onchange="toggleSelectRow('${study.id}', this.checked, event)">
             </td>
@@ -722,7 +774,10 @@
             </td>
             <td>
               <div class="study-title-wrapper">
-                <a class="study-title" href="#" onclick="event.preventDefault(); toggleExpandRow('${study.id}', event)">${escapeHtml(study.title)}</a>
+                <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                  <a class="study-title" href="#" onclick="event.preventDefault(); toggleExpandRow('${study.id}', event)">${escapeHtml(study.title)}</a>
+                  ${staleInline}
+                </div>
                 <span class="study-drug">${escapeHtml(study.drug || 'N/A')} • ${escapeHtml(study.organization || 'N/A')} (${study.year})</span>
               </div>
             </td>
@@ -779,6 +834,7 @@
                       <div class="detail-item">
                         <span class="detail-label">Kết quả / Chỉ số</span>
                         <span class="detail-val" style="font-family: monospace; color: var(--accent); font-weight:700;">${escapeHtml(study.keyResults || 'N/A')}</span>
+                        ${forestPlotHtml}
                       </div>
                       <div class="detail-item">
                         <span class="detail-label">Đối tượng nghiên cứu</span>
@@ -1309,6 +1365,540 @@
       return div.innerHTML;
     }
 
+    // ════════════════════════════
+    // FOREST PLOT MINI
+    // ════════════════════════════
+
+    /**
+     * Parse HR/OR/RR + 95% CI từ chuỗi keyResults.
+     * Hỗ trợ format: HR 0.86 (95% CI 0.74-0.99) hoặc OR 0.75 [0.65, 0.86]
+     * @returns { estimate, lower, upper, label } hoặc null nếu không parse được
+     */
+    function parseForestData(keyResults) {
+      if (!keyResults) return null;
+      // Regex bắt HR/OR/RR/ARR/RRR theo sau là số thập phân + dấu ngoặc (tròn/vuông)
+      const patterns = [
+        // "HR 0.86 (95% CI 0.74-0.99)" hoặc "OR 0.75 (0.65-0.86)"
+        /\b(HR|OR|RR|ARR|RRR|aHR|aOR)\s*[=:]?\s*([\d.]+)\s*(?:\([^)]*?CI[^)]*?|\()\s*([\d.]+)[\s\-–]+([\d.]+)\s*\)/i,
+        // "HR 0.86 [0.74, 0.99]"
+        /\b(HR|OR|RR|ARR|RRR|aHR|aOR)\s*[=:]?\s*([\d.]+)\s*\[\s*([\d.]+)[\s,]+([\d.]+)\s*\]/i,
+        // "HR=0.86; 95% CI [0.74–0.99]"
+        /\b(HR|OR|RR|ARR|RRR|aHR|aOR)\s*=\s*([\d.]+)[\s;,]*(?:95%\s*CI)?\s*\[?\s*([\d.]+)[\s\-–,]+([\d.]+)\]?/i,
+      ];
+
+      for (const pattern of patterns) {
+        const match = keyResults.match(pattern);
+        if (match) {
+          const label = match[1].toUpperCase();
+          const estimate = parseFloat(match[2]);
+          const lower = parseFloat(match[3]);
+          const upper = parseFloat(match[4]);
+
+          // Sanity check
+          if (!isNaN(estimate) && !isNaN(lower) && !isNaN(upper)
+              && lower < estimate && estimate < upper
+              && lower > 0 && upper < 20) {
+            return { label, estimate, lower, upper };
+          }
+        }
+      }
+      return null;
+    }
+
+    /**
+     * Render SVG Forest Plot mini (width=260px, height=44px)
+     */
+    function renderForestPlotSVG(forestData) {
+      if (!forestData) return '';
+      const { label, estimate, lower, upper } = forestData;
+
+      const W = 260, H = 44;
+      const PAD_L = 10, PAD_R = 10;
+      const plotW = W - PAD_L - PAD_R;
+      const cy = H / 2;
+
+      // Determine axis range: centre around 1.0, extend to cover CI with 20% padding
+      const maxDist = Math.max(Math.abs(upper - 1.0), Math.abs(1.0 - lower)) * 1.3 + 0.15;
+      const axisMin = Math.max(0.05, 1.0 - maxDist);
+      const axisMax = 1.0 + maxDist;
+
+      function toX(val) {
+        return PAD_L + ((val - axisMin) / (axisMax - axisMin)) * plotW;
+      }
+
+      const x0 = toX(1.0);          // null line x
+      const xE = toX(estimate);     // estimate x
+      const xL = toX(lower);        // lower CI x
+      const xU = toX(upper);        // upper CI x
+
+      // Colour: green (benefit) if estimate < 1, red (harm) if > 1, grey if == 1
+      const isGreen = estimate < 1.0;
+      const dotColor = isGreen ? '#16a34a' : estimate > 1.0 ? '#dc2626' : '#6b7280';
+      const ciColor  = isGreen ? '#86efac' : estimate > 1.0 ? '#fca5a5' : '#cbd5e1';
+
+      // Label shown: e.g. "HR 0.86 [0.74–0.99]"
+      const labelText = `${label} ${estimate.toFixed(2)} [${lower.toFixed(2)}–${upper.toFixed(2)}]`;
+
+      // Axis ticks
+      const ticks = [axisMin, 1.0, axisMax].map(v => Math.round(v * 100) / 100);
+
+      return `
+        <svg class="forest-plot-svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}"
+             xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Forest plot: ${labelText}">
+          <!-- Axis line -->
+          <line x1="${PAD_L}" y1="${cy}" x2="${W - PAD_R}" y2="${cy}" stroke="#cbd5e1" stroke-width="1"/>
+          <!-- Null line at 1.0 -->
+          <line x1="${x0}" y1="${cy - 14}" x2="${x0}" y2="${cy + 14}" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3,2"/>
+          <!-- CI whiskers -->
+          <line x1="${xL}" y1="${cy}" x2="${xU}" y2="${cy}" stroke="${ciColor}" stroke-width="4" stroke-linecap="round"/>
+          <!-- Tails -->
+          <line x1="${xL}" y1="${cy - 5}" x2="${xL}" y2="${cy + 5}" stroke="${dotColor}" stroke-width="2"/>
+          <line x1="${xU}" y1="${cy - 5}" x2="${xU}" y2="${cy + 5}" stroke="${dotColor}" stroke-width="2"/>
+          <!-- Estimate diamond -->
+          <polygon points="${xE},${cy - 7} ${xE + 7},${cy} ${xE},${cy + 7} ${xE - 7},${cy}"
+                   fill="${dotColor}" opacity="0.95"/>
+          <!-- Label text -->
+          <text x="${W / 2}" y="${H - 3}" text-anchor="middle"
+                font-family="monospace" font-size="9" fill="${dotColor}" font-weight="700">${labelText}</text>
+          <!-- Axis ticks labels -->
+          <text x="${PAD_L}" y="${cy - 8}" font-family="monospace" font-size="8" fill="#94a3b8">${axisMin.toFixed(2)}</text>
+          <text x="${x0}" y="${cy - 8}" text-anchor="middle" font-family="monospace" font-size="8" fill="#94a3b8">1.0</text>
+          <text x="${W - PAD_R}" y="${cy - 8}" text-anchor="end" font-family="monospace" font-size="8" fill="#94a3b8">${axisMax.toFixed(2)}</text>
+        </svg>
+      `;
+    }
+
+    // ════════════════════════════
+    // GUIDELINE STALE ALERT
+    // ════════════════════════════
+
+    /**
+     * Trả về badge HTML nếu tài liệu là guideline/khuyến cáo và đã > 3 năm.
+     * Tài liệu RCT/nghiên cứu cũ thì chỉ hiển thị badge nhỏ "Nghiên cứu lâu đời".
+     */
+    function getStaleAlertBadge(study) {
+      const currentYear = new Date().getFullYear();
+      const ageYears = currentYear - (study.year || currentYear);
+
+      if (ageYears < 0) return ''; // future-dated, skip
+
+      const isGuideline = study.design === 'guideline' ||
+                          study.sourceType === 'vn-moh' ||
+                          study.sourceType === 'vn-doh' ||
+                          study.sourceType === 'vn-association' ||
+                          study.sourceType === 'intl-guideline';
+
+      if (isGuideline && ageYears >= 3) {
+        const urgency = ageYears >= 5 ? 'stale-critical' : 'stale-warning';
+        const icon = ageYears >= 5 ? '🔴' : '🟡';
+        const tip = ageYears >= 5
+          ? `Guideline đã ${ageYears} năm — khả năng cao đã có bản cập nhật!`
+          : `Guideline đã ${ageYears} năm — nên kiểm tra bản mới nhất.`;
+        return `<span class="stale-badge ${urgency}" title="${tip}">${icon} ${ageYears}yr</span>`;
+      }
+
+      // Nghiên cứu RCT/quan sát cũ hơn 10 năm — landmark badge
+      if (!isGuideline && ageYears >= 10) {
+        return `<span class="stale-badge stale-landmark" title="Nghiên cứu landmark (${ageYears} năm trước)">🏛️ Landmark</span>`;
+      }
+
+      return '';
+    }
+
+    // ════════════════════════════
+    // MOBILE CARD VIEW
+    // ════════════════════════════
+
+    function renderMobileCards(filtered) {
+      const tbody = document.getElementById('table-body');
+      const emptyState = document.getElementById('empty-state');
+      const displayCount = document.getElementById('display-count');
+      const tableEl = document.getElementById('studies-table-element');
+
+      displayCount.textContent = filtered.length;
+      updateBadges();
+
+      if (filtered.length === 0) {
+        if (tableEl) tableEl.style.display = 'none';
+        const cardsContainer = document.getElementById('mobile-cards-container');
+        if (cardsContainer) cardsContainer.remove();
+        emptyState.style.display = 'block';
+        return;
+      }
+
+      emptyState.style.display = 'none';
+
+      // Hide the data table, show cards container instead
+      if (tableEl) tableEl.style.display = 'none';
+      let cardsContainer = document.getElementById('mobile-cards-container');
+      if (!cardsContainer) {
+        cardsContainer = document.createElement('div');
+        cardsContainer.id = 'mobile-cards-container';
+        cardsContainer.className = 'mobile-cards-container';
+        tableEl.parentNode.insertBefore(cardsContainer, tableEl.nextSibling);
+      }
+
+      cardsContainer.innerHTML = filtered.map(study => {
+        const spec = SPECIALTIES[study.specialty] || { name: study.specialty, color: '#666', bg: '#f0f0f0' };
+        const impactConfig = IMPACTS[study.impact] || { name: study.impact || 'N/A', color: '#6b7280', bg: '#f3f4f6' };
+        const srcTypeConfig = SOURCE_TYPES[study.sourceType] || { name: study.sourceType || 'N/A', color: '#6b7280', bg: '#f3f4f6' };
+        const isBookmarked = study.bookmarked;
+        const isSelected = selectedIds.has(study.id);
+        const isExpanded = expandedIds.has(study.id);
+        const staleBadge = getStaleAlertBadge(study);
+        const forestData = parseForestData(study.keyResults);
+
+        return `
+          <div class="mobile-card ${isExpanded ? 'expanded' : ''}" id="mc-${study.id}">
+            <!-- Card Header -->
+            <div class="mc-header" onclick="toggleExpandRow('${study.id}', event)">
+              <div class="mc-header-left">
+                <div class="mc-title-row">
+                  <span class="mc-title">${escapeHtml(study.title)}</span>
+                  ${staleBadge}
+                </div>
+                <div class="mc-meta">
+                  <span class="badge badge-src-${study.sourceType}" style="font-size:0.65rem;">${srcTypeConfig.name}</span>
+                  <span class="badge badge-${study.specialty}" style="font-size:0.65rem;">${spec.name}</span>
+                  <span style="color: var(--text-faint); font-size: 0.72rem;">${escapeHtml(study.organization || '')} (${study.year})</span>
+                </div>
+              </div>
+              <div class="mc-header-right">
+                <button class="btn-star ${isBookmarked ? 'active' : ''}" onclick="toggleBookmark('${study.id}', event)" style="margin-right:4px;">★</button>
+                <input type="checkbox" class="row-selector" ${isSelected ? 'checked' : ''}
+                  onchange="toggleSelectRow('${study.id}', this.checked, event)"
+                  onclick="event.stopPropagation()"
+                  style="width:16px;height:16px;accent-color:var(--accent);">
+              </div>
+            </div>
+
+            <!-- Card Impact Bar -->
+            <div class="mc-impact-bar">
+              <span class="impact-badge impact-${study.impact}">
+                <span class="impact-dot"></span>
+                ${impactConfig.name}
+              </span>
+              ${study.sampleSize ? `<span class="mc-sample">n=${formatNumber(study.sampleSize)}</span>` : ''}
+              ${study.asianData ? `<span class="mc-asia-badge">🌏 Châu Á</span>` : ''}
+            </div>
+
+            <!-- Key Results + Forest Plot -->
+            ${study.keyResults ? `
+            <div class="mc-results">
+              <span class="mc-results-label">Kết quả chính:</span>
+              <span class="mc-results-val">${escapeHtml(study.keyResults)}</span>
+              ${forestData ? `<div class="mc-forest-wrap">${renderForestPlotSVG(forestData)}</div>` : ''}
+            </div>` : ''}
+
+            <!-- Summary (always visible) -->
+            <p class="mc-summary ${isExpanded ? '' : 'clamped'}">${escapeHtml(study.summary)}</p>
+
+            <!-- Expanded Detail -->
+            ${isExpanded ? `
+            <div class="mc-detail">
+              ${study.intervention ? `<div class="mc-detail-row"><span class="mc-detail-label">Can thiệp:</span> <span>${escapeHtml(study.intervention)}</span></div>` : ''}
+              ${study.primaryEndpoint ? `<div class="mc-detail-row"><span class="mc-detail-label">Tiêu chí chính:</span> <span>${escapeHtml(study.primaryEndpoint)}</span></div>` : ''}
+              ${study.population ? `<div class="mc-detail-row"><span class="mc-detail-label">Đối tượng:</span> <span>${escapeHtml(study.population)}</span></div>` : ''}
+              ${study.fdaStatus ? `<div class="mc-detail-row"><span class="mc-detail-label">FDA/Khuyến cáo:</span> <span>${escapeHtml(study.fdaStatus)}</span></div>` : ''}
+              ${study.detailedConclusion ? `<div class="mc-detail-row"><span class="mc-detail-label">Chi tiết:</span> <span style="font-size:0.78rem; color:var(--text-muted);">${escapeHtml(study.detailedConclusion)}</span></div>` : ''}
+              <div class="mc-actions">
+                ${study.sourceUrl ? `<a href="${study.sourceUrl}" target="_blank" class="btn btn-small">📄 Nguồn</a>` : ''}
+                <button class="btn btn-small" onclick="openEditModal('${study.id}', event)">✏️ Sửa</button>
+                <button class="btn btn-small" style="color:var(--color-practice-changing);border-color:rgba(220,38,38,0.3);" onclick="deleteStudy('${study.id}', event)">🗑️ Xóa</button>
+              </div>
+            </div>` : ''}
+
+            <!-- Expand toggle -->
+            <button class="mc-expand-btn" onclick="toggleExpandRow('${study.id}', event)">
+              ${isExpanded ? '▲ Thu gọn' : '▼ Xem thêm'}
+            </button>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // ════════════════════════════════
+    // ANALYTICS DASHBOARD
+    // ════════════════════════════════
+
+    function renderAnalytics() {
+      const panel = document.getElementById('panel-analytics');
+      if (!panel) return;
+      const total = studies.length;
+      if (total === 0) {
+        panel.innerHTML = `<div class="empty-state"><div class="empty-state-icon">📊</div><p>Chưa có dữ liệu để thống kê. Hãy thêm tài liệu trước.</p></div>`;
+        return;
+      }
+      const vnCount    = studies.filter(s => s.sourceType && s.sourceType.startsWith('vn-')).length;
+      const rctCount   = studies.filter(s => s.design === 'rct').length;
+      const bookmarked = studies.filter(s => s.bookmarked).length;
+      const pcCount    = studies.filter(s => s.impact === 'practice-changing').length;
+      const asianCount = studies.filter(s => s.asianData).length;
+
+      const specCounts = {}; Object.keys(SPECIALTIES).forEach(k => { specCounts[k] = 0; });
+      studies.forEach(s => { if (SPECIALTIES[s.specialty]) specCounts[s.specialty]++; });
+      const impactCounts = {}; Object.keys(IMPACTS).forEach(k => { impactCounts[k] = 0; });
+      studies.forEach(s => { if (IMPACTS[s.impact]) impactCounts[s.impact]++; });
+      const srcCounts = {}; Object.keys(SOURCE_TYPES).forEach(k => { srcCounts[k] = 0; });
+      studies.forEach(s => { if (SOURCE_TYPES[s.sourceType]) srcCounts[s.sourceType]++; });
+      const yearCounts = {};
+      studies.forEach(s => { if (s.year) yearCounts[s.year] = (yearCounts[s.year] || 0) + 1; });
+      const years = Object.keys(yearCounts).sort();
+      const maxYearCount = years.length > 0 ? Math.max(...Object.values(yearCounts)) : 1;
+
+      const specDD = Object.entries(specCounts).filter(([,v]) => v > 0)
+        .map(([k,v]) => ({ name: SPECIALTIES[k].name, color: SPECIALTIES[k].color, count: v }));
+      const impDD  = Object.entries(impactCounts).filter(([,v]) => v > 0)
+        .map(([k,v]) => ({ name: IMPACTS[k].name, color: IMPACTS[k].color, count: v }));
+
+      const statCards = [
+        { icon: '📚', value: total,       label: 'Tổng tài liệu',     color: 'var(--accent)' },
+        { icon: '🆻🇳', value: vnCount,    label: 'Tài liệu VN',       color: '#dc2626' },
+        { icon: '🔬', value: rctCount,     label: 'RCT quốc tế',      color: '#6366f1' },
+        { icon: '🏆', value: pcCount,      label: 'Practice-Changing', color: '#dc2626' },
+        { icon: '🌏', value: asianCount,   label: 'Dữ liệu Châu Á',   color: '#0d9488' },
+        { icon: '⭐', value: bookmarked,   label: 'Đã lưu trữ',       color: '#f59e0b' },
+      ];
+
+      panel.innerHTML = `
+        <div class="analytics-wrapper">
+          <div class="analytics-stats-row">
+            ${statCards.map(c => `
+              <div class="stat-card">
+                <div class="stat-icon">${c.icon}</div>
+                <div class="stat-number" style="color:${c.color};">${c.value}</div>
+                <div class="stat-label">${c.label}</div>
+              </div>`).join('')}
+          </div>
+
+          <div class="analytics-charts-row">
+            <div class="analytics-chart-card">
+              <h3 class="analytics-chart-title">🏥 Phân bố Chuyên khoa</h3>
+              ${specDD.length ? `
+              <div class="donut-chart-wrapper">
+                <div class="donut-svg-container">
+                  <svg viewBox="0 0 240 240" class="donut-svg">
+                    ${renderDonutSVG(specDD, total, 120, 120, 95, 56)}
+                    <text x="120" y="116" text-anchor="middle" font-size="24" font-weight="800" fill="var(--text)" font-family="Plus Jakarta Sans,sans-serif">${total}</text>
+                    <text x="120" y="133" text-anchor="middle" font-size="10" fill="var(--text-faint)" font-family="Inter,sans-serif">tài liệu</text>
+                  </svg>
+                </div>
+                <div class="donut-legend">
+                  ${specDD.sort((a,b)=>b.count-a.count).map(item => `
+                    <div class="legend-item">
+                      <span class="legend-dot" style="background:${item.color};"></span>
+                      <span class="legend-name">${item.name}</span>
+                      <span class="legend-count">${item.count}</span>
+                    </div>`).join('')}
+                </div>
+              </div>` : '<p class="no-data-msg">Chưa có dữ liệu.</p>'}
+            </div>
+
+            <div class="analytics-chart-card">
+              <h3 class="analytics-chart-title">⚡ Mức ảnh hưởng</h3>
+              ${impDD.length ? `
+              <div class="donut-chart-wrapper">
+                <div class="donut-svg-container">
+                  <svg viewBox="0 0 240 240" class="donut-svg">
+                    ${renderDonutSVG(impDD, total, 120, 120, 95, 56)}
+                    <text x="120" y="112" text-anchor="middle" font-size="22" font-weight="800" fill="#dc2626">${pcCount}</text>
+                    <text x="120" y="127" text-anchor="middle" font-size="8.5" fill="var(--text-faint)">Practice</text>
+                    <text x="120" y="139" text-anchor="middle" font-size="8.5" fill="var(--text-faint)">Changing</text>
+                  </svg>
+                </div>
+                <div class="donut-legend">
+                  ${impDD.sort((a,b)=>b.count-a.count).map(item => `
+                    <div class="legend-item">
+                      <span class="legend-dot" style="background:${item.color};"></span>
+                      <span class="legend-name">${item.name}</span>
+                      <span class="legend-count">${item.count}</span>
+                    </div>`).join('')}
+                </div>
+              </div>` : '<p class="no-data-msg">Chưa có dữ liệu.</p>'}
+            </div>
+          </div>
+
+          <div class="analytics-chart-card" style="margin-top:1rem;">
+            <h3 class="analytics-chart-title">📈 Phân bố theo Năm công bố</h3>
+            ${renderYearBarChart(yearCounts, years, maxYearCount)}
+          </div>
+
+          <div class="analytics-chart-card" style="margin-top:1rem;">
+            <h3 class="analytics-chart-title">🌐 Phân bố Nguồn tài liệu</h3>
+            <div class="source-bars">
+              ${Object.entries(srcCounts).filter(([,v])=>v>0).sort(([,a],[,b])=>b-a).map(([k,v])=>{
+                const src=SOURCE_TYPES[k];
+                const pct=Math.round(v/total*100);
+                return `<div class="source-bar-item">
+                  <div class="source-bar-label">
+                    <span class="badge badge-src-${k}">${src.name}</span>
+                    <span class="source-bar-pct">${pct}%&nbsp;<strong>(${v})</strong></span>
+                  </div>
+                  <div class="source-bar-track">
+                    <div class="source-bar-fill" style="width:${pct}%;background:${src.color};"></div>
+                  </div>
+                </div>`;
+              }).join('')}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderDonutSVG(data, total, cx, cy, r, innerR) {
+      if (!data || data.length === 0) return '';
+      if (data.length === 1) return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${data[0].color}" opacity="0.9"/><circle cx="${cx}" cy="${cy}" r="${innerR}" fill="var(--surface)"/>`;
+      const paths = []; let angle = -Math.PI / 2; const GAP = 0.025;
+      data.forEach(item => {
+        const sweep = Math.max((item.count/total)*2*Math.PI - GAP, 0.02);
+        const end = angle + sweep;
+        const [x1,y1]=[cx+r*Math.cos(angle),cy+r*Math.sin(angle)];
+        const [x2,y2]=[cx+r*Math.cos(end),cy+r*Math.sin(end)];
+        const [ix1,iy1]=[cx+innerR*Math.cos(end),cy+innerR*Math.sin(end)];
+        const [ix2,iy2]=[cx+innerR*Math.cos(angle),cy+innerR*Math.sin(angle)];
+        const lg=sweep>Math.PI?1:0;
+        const d=`M${x1.toFixed(2)} ${y1.toFixed(2)} A${r} ${r} 0 ${lg} 1 ${x2.toFixed(2)} ${y2.toFixed(2)} L${ix1.toFixed(2)} ${iy1.toFixed(2)} A${innerR} ${innerR} 0 ${lg} 0 ${ix2.toFixed(2)} ${iy2.toFixed(2)}Z`;
+        paths.push(`<path d="${d}" fill="${item.color}" opacity="0.9" class="donut-sector"><title>${item.name}: ${item.count}</title></path>`);
+        angle = end + GAP;
+      });
+      return paths.join('');
+    }
+
+    function renderYearBarChart(yearCounts, years, maxCount) {
+      if (!years || years.length === 0) return '<p class="no-data-msg">Không có dữ liệu năm.</p>';
+      const W=520,H=150,PL=30,PB=36,PT=18,PR=12;
+      const plotW=W-PL-PR,plotH=H-PB-PT,slotW=plotW/years.length,barW=Math.min(slotW*0.62,42);
+      const cyear=new Date().getFullYear();
+      const bars=years.map((yr,i)=>{
+        const cnt=yearCounts[yr],bh=(cnt/maxCount)*plotH;
+        const x=PL+i*slotW+(slotW-barW)/2,y=PT+plotH-bh;
+        const op=Math.max(0.35,1-(cyear-parseInt(yr))*0.055);
+        return `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW.toFixed(1)}" height="${bh.toFixed(1)}" rx="4" fill="var(--accent)" opacity="${op.toFixed(2)}"/>
+        <text x="${(x+barW/2).toFixed(1)}" y="${(H-PB+14).toFixed(1)}" text-anchor="middle" font-size="9" fill="var(--text-faint)">${yr}</text>
+        ${cnt>0?`<text x="${(x+barW/2).toFixed(1)}" y="${(y-5).toFixed(1)}" text-anchor="middle" font-size="10" font-weight="700" fill="var(--accent)">${cnt}</text>`:''}`;}).join('');
+      const guides=[0,Math.ceil(maxCount/2),maxCount].map(v=>{
+        const gy=PT+plotH-(v/maxCount)*plotH;
+        return `<line x1="${PL}" y1="${gy.toFixed(1)}" x2="${W-PR}" y2="${gy.toFixed(1)}" stroke="var(--border-light)" stroke-width="1" ${v>0?'stroke-dasharray="3,3"':''}/>
+        <text x="${(PL-5).toFixed(1)}" y="${(gy+4).toFixed(1)}" text-anchor="end" font-size="9" fill="var(--text-faint)">${v}</text>`;}).join('');
+      return `<div style="overflow-x:auto;"><svg viewBox="0 0 ${W} ${H}" style="width:100%;min-width:260px;height:${H}px;display:block;">${guides}${bars}<line x1="${PL}" y1="${PT+plotH}" x2="${W-PR}" y2="${PT+plotH}" stroke="var(--border)" stroke-width="1.5"/></svg></div>`;
+    }
+
+    // ════════════════════════════════
+    // GUIDELINE TIMELINE
+    // ════════════════════════════════
+
+    let _tlFilter = null;
+
+    function renderTimeline() {
+      const panel = document.getElementById('panel-timeline');
+      if (!panel) return;
+      if (studies.length === 0) {
+        panel.innerHTML = `<div class="empty-state"><div class="empty-state-icon">📅</div><p>Chưa có dữ liệu để hiển thị timeline.</p></div>`;
+        return;
+      }
+      _tlFilter = null;
+      const validYears = studies.map(s => s.year).filter(y => y && !isNaN(y));
+      const minY = validYears.length ? Math.min(...validYears) : new Date().getFullYear();
+      const maxY = validYears.length ? Math.max(...validYears) : new Date().getFullYear();
+      const specInUse = [...new Set(studies.map(s => s.specialty))].filter(k => SPECIALTIES[k]);
+      panel.innerHTML = `
+        <div class="tl-wrapper">
+          <div class="tl-top-bar">
+            <h2 class="tl-page-title">📅 Timeline Hướng Dẫn &amp; Nghiên Cứu Lâm Sàng</h2>
+            <p class="tl-page-subtitle">${studies.length} tài liệu${validYears.length>1?` · Từ ${minY} đến ${maxY}`:''}</p>
+            <div class="tl-filter-bar">
+              <button class="filter-pill active" onclick="filterTimeline(null,this)">Đầu tiên</button>
+              ${specInUse.map(k=>`
+                <button class="filter-pill" onclick="filterTimeline('${k}',this)">
+                  <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:${SPECIALTIES[k].color};margin-right:3px;vertical-align:middle;"></span>
+                  ${SPECIALTIES[k].name}
+                </button>`).join('')}
+            </div>
+          </div>
+          <div class="tl-body" id="tl-body">${buildTimelineHTML(null)}</div>
+        </div>
+      `;
+    }
+
+    function buildTimelineHTML(fSpec) {
+      const sorted = [...studies].sort((a,b) => (b.year||0)-(a.year||0));
+      const byYear = {};
+      sorted.forEach(s => { const y=s.year||'N/A'; if(!byYear[y]) byYear[y]=[]; byYear[y].push(s); });
+      const groups = Object.entries(byYear).sort(([a],[b])=>{
+        const na=parseInt(a),nb=parseInt(b); return isNaN(na)?1:isNaN(nb)?-1:nb-na;
+      });
+      return groups.map(([year,sts]) => {
+        const vis = fSpec ? sts.filter(s=>s.specialty===fSpec) : sts;
+        if (!vis.length) return '';
+        return `
+          <div class="tl-year-group">
+            <div class="tl-year-pin">
+              <div class="tl-year-badge">${year}</div>
+              <div class="tl-year-line"></div>
+            </div>
+            <div class="tl-items">
+              ${vis.map(study => {
+                const spec = SPECIALTIES[study.specialty]||{name:study.specialty,color:'#666'};
+                const imp  = IMPACTS[study.impact]||{name:study.impact||'N/A',color:'#6b7280'};
+                const src  = SOURCE_TYPES[study.sourceType]||{name:study.sourceType||'',color:'#6b7280'};
+                const stale = getStaleAlertBadge(study);
+                const fd = parseForestData(study.keyResults);
+                const detailLink = study.file ? `<a href="${study.file}" target="_blank" class="btn btn-small" style="font-size:0.7rem;padding:0.2rem 0.5rem;" onclick="event.stopPropagation()">📄 Chi tiết</a>` : '';
+                return `
+                  <div class="tl-item" style="--tl-color:${spec.color};" onclick="jumpToStudy('${study.id}')">
+                    <div class="tl-item-dot"></div>
+                    <div class="tl-item-body">
+                      <div class="tl-item-header">
+                        <span class="tl-item-title">${escapeHtml(study.title)}</span>
+                        ${stale}
+                      </div>
+                      <div class="tl-item-badges">
+                        <span class="badge badge-src-${study.sourceType}" style="font-size:0.62rem;">${src.name}</span>
+                        <span class="badge badge-${study.specialty}" style="font-size:0.62rem;">${spec.name}</span>
+                        <span class="impact-badge impact-${study.impact}" style="font-size:0.62rem;"><span class="impact-dot"></span>${imp.name}</span>
+                        ${study.sampleSize?`<span class="tl-n-badge">n=${formatNumber(study.sampleSize)}</span>`:''}
+                      </div>
+                      <p class="tl-item-summary">${escapeHtml(study.summary)}</p>
+                      ${study.keyResults?`
+                      <div class="tl-results-row">
+                        <code class="tl-results-code">${escapeHtml(study.keyResults)}</code>
+                        ${fd?`<div class="tl-forest">${renderForestPlotSVG(fd)}</div>`:''}
+                      </div>`:''}  
+                      <div class="tl-item-footer">
+                        <span>${escapeHtml(study.drug||'')}${study.drug&&study.organization?' · ':''}${escapeHtml(study.organization||'')} (${study.year||''})</span>
+                        <div style="display:flex;gap:4px;">
+                          ${detailLink}
+                          <button class="btn btn-small" style="font-size:0.7rem;padding:0.2rem 0.5rem;" onclick="event.stopPropagation();jumpToStudy('${study.id}')">↑ Xem trong bảng</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>`;
+              }).join('')}
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+    function filterTimeline(spec, btn) {
+      _tlFilter = spec;
+      document.querySelectorAll('.tl-filter-bar .filter-pill').forEach(p => p.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      const body = document.getElementById('tl-body');
+      if (body) body.innerHTML = buildTimelineHTML(spec);
+    }
+
+    function jumpToStudy(id) {
+      switchTab('list');
+      setTimeout(() => {
+        expandedIds.add(id);
+        renderTable();
+        setTimeout(() => {
+          const el = document.getElementById(`tr-${id}`);
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
+      }, 150);
+    }
+
     // Setup table header sorting
     function setupTableSorting() {
       document.querySelectorAll('.study-table th.sortable').forEach(th => {
@@ -1358,12 +1948,46 @@
     // INITIALIZATION
     // ════════════════════════════
 
+    // Resize listener: switch between table and card view
+    window.addEventListener('resize', () => {
+      const newMobile = window.innerWidth <= 768;
+      if (newMobile !== isMobileView) {
+        isMobileView = newMobile;
+        if (currentTab !== 'compare') renderTable();
+      }
+    });
+
     document.addEventListener('DOMContentLoaded', function() {
       initSupabase();
       loadStudies();
       
       if (supabaseClient) {
         syncStudiesWithSupabase();
+      }
+      
+      // Parse URL parameters for specialty and search
+      const urlParams = new URLSearchParams(window.location.search);
+      const specialtyParam = urlParams.get('specialty');
+      const searchParam = urlParams.get('search');
+      
+      if (specialtyParam && SPECIALTIES[specialtyParam]) {
+        filters.specialty = specialtyParam;
+        showAdvancedFilters = true;
+        const filterRowSpecialty = document.getElementById('filter-row-specialty');
+        const filterRowDesign = document.getElementById('filter-row-design');
+        const filterRowPeriod = document.getElementById('filter-row-period');
+        const advBtn = document.getElementById('advanced-filters-btn');
+        
+        if (filterRowSpecialty) filterRowSpecialty.style.display = 'flex';
+        if (filterRowDesign) filterRowDesign.style.display = 'flex';
+        if (filterRowPeriod) filterRowPeriod.style.display = 'flex';
+        if (advBtn) advBtn.classList.add('active');
+      }
+      
+      if (searchParam) {
+        filters.search = searchParam;
+        const searchInput = document.getElementById('search-input');
+        if (searchInput) searchInput.value = searchParam;
       }
       
       renderFilterPills();

@@ -173,13 +173,20 @@
       }
 
       // --- CLINICAL CALCULATORS: AUTO INITIALIZE INTERACTIVE UI ---
-      const calcContainer = document.querySelector('.na-grid, .urgent-grid, .calc-container');
+      const calcContainer = document.querySelector(
+        '.na-grid, .urgent-grid, .calc-container, .abg-grid, .assessment-grid, ' +
+        '.calc-layout, .calc-grid, .cirrhosis-wrapper, .hcc-workspace-layout, ' +
+        '.calc-container-2, .van-layout, .ss-layout, .workspace-container'
+      );
       if (calcContainer && calcContainer.children.length >= 2) {
         const inputPanel = calcContainer.children[0];
         const resultPanel = calcContainer.children[1];
         
         // 1. Tự động chèn nút Toggle Collapse vào tiêu đề của panel nhập liệu
-        const header = inputPanel.querySelector('.panel-title, .section-card-header');
+        const header = inputPanel.querySelector(
+          '.panel-title, .section-card-header, .inp-card-title, .input-panel-title, ' +
+          '.van-card-head, .ss-card-title, .card-zone-badge, label'
+        );
         if (header) {
           const toggleBtn = document.createElement('button');
           toggleBtn.type = 'button';

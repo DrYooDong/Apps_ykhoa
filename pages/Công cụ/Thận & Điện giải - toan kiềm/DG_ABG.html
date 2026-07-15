@@ -230,6 +230,11 @@
             <div id="out-warnings">-</div>
           </div>
 
+          <div id="nomogram-box" class="step-box" style="text-align: center; padding-bottom: 10px;">
+            <h4>📈 Biểu đồ Toan kiềm (Nomogram)</h4>
+            <canvas id="abgNomogram" width="400" height="300" style="width: 100%; max-width: 400px; display: block; margin: 10px auto; background: #ffffff; border: 1px solid var(--color-border); border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);"></canvas>
+          </div>
+
           <div class="conclusion-box">
             <h3>Kết luận Chẩn đoán:</h3>
             <p id="out-conclusion" style="font-weight: 600; font-size: 1rem;">Vui lòng nhập đầy đủ thông số Khí máu.</p>
@@ -240,9 +245,11 @@
     </div>
   </div>
 
+  <script src="../../../js/calculators/abg-nomogram.js" defer></script>
   <script src="../../../js/calculators/abg-calculator.js" defer></script>
 
   <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+  <script src="../../../js/main.js" defer></script>
 </body>
 
 </html>
