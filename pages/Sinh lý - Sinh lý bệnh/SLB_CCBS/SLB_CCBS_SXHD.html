@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sinh lý bệnh và Cơ chế bệnh sinh của Sốt xuất huyết Dengue (SXHD): Quá trình nhân lên của virus, hiện tượng tăng cường qua trung gian kháng thể (ADE), cơn bão cytokine, rò rỉ huyết tương, bệnh lý đông máu và suy đa tạng.">
+    <title>Sinh lý bệnh & Cơ chế bệnh sinh Sốt xuất huyết Dengue – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal (Level 3 Paths) -->
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học dùng chung (Tải từ module Sinh lý - Sinh lý bệnh) -->
+    <link rel="stylesheet" href="../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../css/components/toc.css">
+
+    <!-- Scripts điều hướng hệ thống -->
+    <script src="../../../components/header.js" defer></script>
+    <script src="../../../components/footer.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+    
+    <!-- Script Sinh lý học dùng chung -->
+    <script src="../js/physio-shared.js" defer></script>
+    <script src="../../../js/toc.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../../../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh">
+                            <span class="nav-icon">🧬</span>
+                            <span class="nav-text">Sinh lý & Sinh lý bệnh</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng">
+                            <span class="nav-icon">🩺</span>
+                            <span class="nav-text">Kỹ năng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận">
+                            <span class="nav-icon">🤒</span>
+                            <span class="nav-text">Tiếp cận</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ">
+                            <span class="nav-icon">⚙️</span>
+                            <span class="nav-text">Công cụ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+                            <span class="nav-icon">💊</span>
+                            <span class="nav-text">Dược lý</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+                            <span class="nav-icon">📄</span>
+                            <span class="nav-text">Y học chứng cứ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Y học cổ truyền/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền">
+                            <span class="nav-icon">☯️</span>
+                            <span class="nav-text">Y học cổ truyền</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container" style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+                <ol class="breadcrumb-list" style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+                    <li><a href="../../../index.html">🏠 Home</a> &gt;</li>
+                    <li><a href="../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+                    <li style="color:var(--color-primary); font-weight:600;">Sinh lý bệnh &amp; Cơ chế bệnh sinh SXHD</li>
+                </ol>
+            </nav>
+
+            <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+            <main class="visual-container">
+                <!-- CHAPTER HEADER CARD -->
+                <div class="chapter-header">
+                    <h1>SINH LÝ BỆNH & CƠ CHẾ BỆNH SINH SỐT XUẤT HUYẾT DENGUE</h1>
+                    <p>Dengue Hemorrhagic Fever Pathophysiology & Pathogenesis — Phân tích chi tiết chuỗi phản ứng miễn dịch phức tạp, hiện tượng ADE tăng cường nhiễm trùng, cơn bão cytokine, sự rò rỉ huyết tương không tổn thương cấu trúc và bệnh lý đông máu/giảm tiểu cầu.</p>
+                </div>
+
+                <p class="physio-lead">
+                    <span class="term-hl">Sốt xuất huyết Dengue (SXHD)</span> là một bệnh lý truyền nhiễm cấp tính do virus Dengue (DENV) gây ra. Ở thể nặng, sinh lý bệnh học của bệnh đặc trưng bởi tình trạng rò rỉ huyết tương nghiêm trọng gây cô đặc máu, giảm tiểu cầu nặng, bệnh lý đông máu tiêu thụ và tổn thương đa cơ quan qua trung gian phản ứng miễn dịch bùng phát.
+                </p>
+
+                <!-- PHẦN I: XÂM NHẬP VÀ NHÂN LÊN -->
+                <div class="physio-content">
+                    <h2 id="xâm-nhập-nhân-lên" class="section-title">
+                        <span>Phần I: Quá trình Xâm nhập & Nhân lên của Virus</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Virus Dengue (DENV) truyền sang người qua vết đốt của muỗi <span class="term-hl">Aedes aegypti</span>. Diễn tiến nhân lên và lan tràn của virus diễn ra qua hai giai đoạn nhiễm virus máu:</p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🦟 Nhiễm virus máu lần thứ nhất</div>
+                                <p>Virus xâm nhập qua da, tăng sinh ban đầu trong các tế bào đích chính là hệ thống bạch cầu đơn nhân - đại thực bào của mô liên kết, rồi đổ vào máu ngoại vi gây ra nhiễm virus máu lần một.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🧬 Nhiễm virus máu lần thứ hai</div>
+                                <p>Virus khu trú tại các mô võng nội mô, hạch bạch huyết và tế bào Kupffer ở gan để nhân lên mạnh mẽ. Sau đó, lượng lớn virus mới giải phóng vào tuần hoàn gây ra đợt nhiễm virus máu thứ hai, tấn công ồ ạt <span class="term-hl-secondary">tế bào monocytes</span> và <span class="term-hl-secondary">tế bào lympho B</span>.</p>
+                            </div>
+                        </div>
+
+                        <div class="clinical-note-box">
+                            <h4>⚠️ Ức chế tủy xương cấp tính</h4>
+                            <p>Sự nhân lên của virus Dengue trong giai đoạn đầu trực tiếp ức chế quá trình sinh tủy xương, làm giảm sản xuất các dòng tế bào máu. Đây là nguyên nhân ban đầu gây ra tình trạng giảm bạch cầu (leukopenia) và giảm tiểu cầu (thrombocytopenia) đặc trưng trên xét nghiệm công thức máu.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN II: HIỆN TƯỢNG ADE -->
+                <div class="physio-content">
+                    <h2 id="hien-tuong-ade" class="section-title">
+                        <span>Phần II: Hiện tượng Tăng cường qua trung gian Kháng thể (ADE)</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Hiện tượng <span class="term-hl">Tăng cường qua trung gian kháng thể (ADE - Antibody-Dependent Enhancement)</span> là cơ chế sinh bệnh học cốt lõi giải thích tại sao nhiễm trùng thứ phát lại có xu hướng diễn tiến nặng hơn nhiều so với nhiễm trùng lần đầu.</p>
+
+                        <ol class="physio-steps">
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">Bước 1: Nhiễm trùng nguyên phát (Lần 1)</span>
+                                    Cơ thể nhiễm một type huyết thanh DENV (ví dụ DENV-1), tạo ra kháng thể đặc hiệu có hoạt tính trung hòa tốt với type đó, đồng thời có phản ứng chéo yếu với các type dị chủng khác.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">Bước 2: Nhiễm trùng thứ phát dị chủng (Lần 2)</span>
+                                    Bệnh nhân nhiễm một type huyết thanh DENV dị chủng khác (ví dụ DENV-2). Các kháng thể từ lần 1 liên kết với virus mới nhưng không có khả năng trung hòa (non-neutralizing antibodies).
+                                </div>
+                            </li>
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">Bước 3: Tạo phức hợp miễn dịch</span>
+                                    Các kháng thể không trung hòa này đóng vai trò như chiếc "cầu nối", một đầu liên kết với virion DENV, đầu kia gắn vào thụ thể <span class="term-hl-secondary">Fc receptor (FcγR)</span> trên bề mặt đại thực bào và monocytes.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">Bước 4: Bùng phát nhân lên & ức chế miễn dịch</span>
+                                    Thay vì bị tiêu diệt, phức hợp này giúp virus xâm nhập tế bào dễ dàng hơn gấp nhiều lần. Đồng thời, quá trình này ức chế phản ứng kháng virus của tế bào qua trung gian <span class="term-hl-secondary">Interferon type I</span>, dẫn đến bùng nổ số lượng virus trong máu.
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN III: CƠN BÃO CYTOKINE -->
+                <div class="physio-content">
+                    <h2 id="con-bao-cytokine" class="section-title">
+                        <span>Phần III: Cơn bão Cytokine & Rối loạn Miễn dịch</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Nhiễm trùng ồ ạt tế bào monocytes/đại thực bào và sự kích hoạt tế bào T quá mức giải phóng vào tuần hoàn một lượng lớn các cytokine và chemokine tiền viêm, tạo nên <span class="term-hl">Cơn bão Cytokine (Cytokine Storm)</span>.</p>
+
+                        <ul class="physio-property-list">
+                            <li>
+                                <span class="physio-property-name">Cytokine làm tăng tính thấm thành mạch</span>
+                                <span class="physio-property-desc">Sự gia tăng mạnh mẽ của yếu tố hoại tử u <span class="term-hl-secondary">TNF-alpha</span>, các cytokine <span class="term-hl-secondary">IL-8</span>, và <span class="term-hl-secondary">IL-18</span> kích hoạt con đường tín hiệu nội bào phá vỡ các liên kết vòng bịt (tight junctions) và liên kết dính (adherens junctions) giữa các tế bào nội mạc mạch máu, làm tăng tính thấm mao mạch rõ rệt.</span>
+                            </li>
+                            <li>
+                                <span class="physio-property-name">Cytokine duy trì phản ứng viêm hệ thống</span>
+                                <span class="physio-property-desc">Hormone điều hòa miễn dịch <span class="term-hl-secondary">IL-10</span> tăng cao gây ức chế miễn dịch bảo vệ, trong khi nồng độ các yếu tố như <span class="term-hl-secondary">IL-7</span>, <span class="term-hl-secondary">VEGFR2</span>, <span class="term-hl-secondary">TGF-beta</span> và chemokine <span class="term-hl-secondary">RANTES</span> bị ức chế nặng nề, góp phần kéo dài phản ứng viêm mạch máu trong sốt xuất huyết nặng (SDI).</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN IV: BỆNH LÝ MẠCH MÁU -->
+                <div class="physio-content">
+                    <h2 id="benh-ly-mach-mau" class="section-title">
+                        <span>Phần IV: Bệnh lý Mạch máu & Rò rỉ Huyết tương</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Đặc trưng sinh lý bệnh học quan trọng nhất phân biệt SXH Dengue với các sốt virus thông thường là <span class="term-hl">rò rỉ huyết tương (Capillary Leakage)</span> do rối loạn chức năng nội mạc tạm thời, hoàn toàn không có tổn thương phá hủy cấu trúc tế bào nội mô mạch máu.</p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">💧 Phá hủy lớp Glycocalyx</div>
+                                <p>Cơn bão cytokine cùng hoạt hóa bổ thể giải phóng các phản ứng viêm và các độc tố của bổ thể như <span class="term-hl-secondary">C3a</span> và <span class="term-hl-secondary">C5a</span> làm bong tróc lớp màng carbohydrate mang điện tích âm Glycocalyx phủ trên nội mô. Mất đi lớp bảo vệ này, nước và protein dễ dàng thoát qua khe gian bào.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🎭 Hiện tượng Bắt chước Phân tử</div>
+                                <p>Sự tương đồng cấu trúc (molecular mimicry) giữa protein vỏ của virus Dengue và protein tế bào vật chủ kích thích cơ thể sản sinh các <span class="term-hl">tự kháng thể (autoantibodies)</span> tự tấn công tế bào nội mạc, gây rối loạn chức năng điều hòa trương lực mạch máu.</p>
+                            </div>
+                        </div>
+
+                        <div class="clinical-pearl">
+                            💎 <strong>Diễn tiến Lâm Sàng:</strong> Rò rỉ huyết tương thường bùng phát vào giai đoạn nguy hiểm (ngày thứ 3 đến ngày thứ 7 của bệnh, thường trùng với thời điểm bệnh nhân bắt đầu hết sốt). Huyết tương thoát ra mô kẽ gây tràn dịch màng phổi, tràn dịch màng bụng (bụng chướng), cô đặc máu nặng (Hematocrit tăng > 20% so với giá trị nền), giảm thể tích tuần hoàn và cuối cùng dẫn đến sốc giảm thể tích.
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN V: ĐÔNG MÁU & GIẢM TIỂU CẦU -->
+                <div class="physio-content">
+                    <h2 id="dong-mau-tieu-cau" class="section-title">
+                        <span>Phần V: Bệnh lý Đông máu & Cơ chế Giảm tiểu cầu</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Tình trạng xuất huyết trong Dengue nặng là sự kết hợp phức tạp của giảm số lượng, chất lượng tiểu cầu và suy sụp hệ thống đông máu tiêu thụ.</p>
+
+                        <h3 class="subsection-title">1. Cơ chế đa yếu tố gây Giảm Tiểu cầu (Thrombocytopenia)</h3>
+                        <ul class="physio-list-check">
+                            <li><strong>Phá hủy miễn dịch:</strong> Kháng thể kháng tiểu cầu loại <span class="term-hl-secondary">IgM</span> xuất hiện kết hợp với bổ thể bám lên tiểu cầu, hoạt hóa quá trình ly giải tế bào hoặc tăng cường bị thực bào tại lách và gan.</li>
+                            <li><strong>Bắt giữ ngoại vi & bám dính:</strong> Hiện tượng bám dính tế bào (cytoadherence) khiến các tiểu cầu kết tụ với nhau và bám dính vào tế bào nội mạc mạch máu bị tổn thương, dẫn đến bắt giữ tiểu cầu ở mạng lưới mạch ngoại vi.</li>
+                            <li><strong>Rối loạn chức năng:</strong> Tiểu cầu bị giảm chất lượng nghiêm trọng do khiếm khuyết trong giải phóng các hạt chứa ADP, làm suy giảm khả năng ngưng tập tiểu cầu tạo nút cầm máu.</li>
+                        </ul>
+
+                        <h3 class="subsection-title">2. Rối loạn đông máu và Xuất huyết nặng</h3>
+                        <p>Bệnh lý đông máu tiêu thụ diễn tiến song song với các rối loạn sinh hóa:</p>
+                        <ul class="physio-property-list">
+                            <li>
+                                <span class="physio-property-name">Rò rỉ Heparan Sulphate</span>
+                                <span class="physio-property-desc">Khi lớp glycocalyx bị phá hủy, chất kháng đông tự nhiên <span class="term-hl-secondary">Heparan sulphate</span> giải phóng ồ ạt vào lòng mạch, gây kéo dài thời gian thromboplastin từng phần hoạt hóa (<span class="term-hl-secondary">aPTT</span>).</span>
+                            </li>
+                            <li>
+                                <span class="physio-property-name">Đông máu tiêu thụ & Tiêu sợi huyết</span>
+                                <span class="physio-property-desc">Kích hoạt bổ thể và đông máu gây hiện tượng đông máu nội quản rải rác (<span class="term-hl">DIC</span>). Các yếu tố đông máu bị tiêu thụ nhanh chóng làm giảm nặng nồng độ <span class="term-hl-secondary">Fibrinogen</span>, đồng thời tăng nồng độ sản phẩm thoái hóa fibrinogen (FDP) và <span class="term-hl-secondary">D-dimer</span> trong huyết tương.</span>
+                            </li>
+                            <li>
+                                <span class="physio-property-name">Thiếu hụt sản xuất do tổn thương gan</span>
+                                <span class="physio-property-desc">Tổn thương tế bào gan do virus tấn công trực tiếp làm giảm khả năng tổng hợp phức hợp Prothrombin và các yếu tố đông máu phụ thuộc vitamin K.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN VI: TỔN THƯƠNG ĐA CƠ QUAN -->
+                <div class="physio-content">
+                    <h2 id="ton-thuong-da-co-quan" class="section-title">
+                        <span>Phần VI: Tổn thương Đa cơ quan trong Dengue nặng</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Bên cạnh sốc giảm thể tích, biến chứng suy tạng nặng nề là nguyên nhân tử vong hàng đầu ở giai đoạn muộn của bệnh:</p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🔴 Tổn thương Gan cấp</div>
+                                <p>Virus Dengue nhân lên trong tế bào Kupffer và tế bào gan gây viêm gan cấp tính, hoại tử tế bào gan diện rộng. Xét nghiệm thấy men gan tăng rất cao, đặc trưng là nồng độ <span class="term-hl">AST tăng cao vượt trội so với ALT</span>. Trường hợp nặng có thể dẫn đến suy gan cấp, bệnh não gan và hôn mê.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🧠 Bệnh lý Não (CNS)</div>
+                                <p>Biểu hiện co giật, rối loạn tri giác (bệnh lý não - encephalopathy) thứ phát do tình trạng xuất huyết não nội sọ, phù não diện rộng do thoát dịch, đông máu rải rác (DIC) mạch máu não hoặc biến chứng hạ Natri máu nặng.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">💔 Tim mạch & Thận</div>
+                                <p>Viêm cơ tim cấp do virus xâm nhập hoặc do bão cytokine gây suy giảm sức co bóp cơ tim. Tổn thương thận cấp (AKI) xảy ra do tình trạng giảm tưới máu thận kéo dài khi bệnh nhân bị sốc hoặc do hoại tử ống thận cấp liên quan đến lắng đọng phức hợp miễn dịch.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- BẢNG SO SÁNH DENGUE VÀ COVID-19 -->
+                <div class="physio-content">
+                    <h2 id="so-sanh-dengue-covid19" class="section-title">
+                        <span>So sánh Cơ chế bệnh sinh: Dengue vs. COVID-19</span>
+                    </h2>
+                    
+                    <div class="table-responsive">
+                        <table class="physio-table physio-table-compare">
+                            <thead>
+                                <tr>
+                                    <th>Cơ chế bệnh học</th>
+                                    <th>Sốt xuất huyết Dengue (DENV)</th>
+                                    <th>COVID-19 (SARS-CoV-2)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Bệnh lý mạch máu (Vasculopathy)</strong></td>
+                                    <td>Tăng tính thấm mao mạch gây thoát dịch huyết tương ồ ạt, dẫn đến tràn dịch đa màng và sốc giảm thể tích. Hầu như không gây hủy hoại cấu trúc nội mô.</td>
+                                    <td>Viêm nội mạc mạch máu (endotheliitis), tăng đông mạch máu, tắc mạch phổi và huyết khối động tĩnh mạch hệ thống do tổn thương tế bào trực tiếp.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Bệnh lý đông máu (Coagulopathy)</strong></td>
+                                    <td>Bệnh lý đông máu tiêu thụ: Giải phóng heparan sulphate, giảm fibrinogen và kéo dài aPTT dẫn đến <strong>thể tạng xuất huyết nặng</strong>.</td>
+                                    <td>Tình trạng tăng đông (hypercoagulability): Tăng fibrinogen, tăng D-dimer, hình thành vi huyết khối gây <strong>tắc mạch huyết khối</strong>.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Cơn bão Cytokine</strong></td>
+                                    <td>Bùng phát cytokine/chemokine (TNF-a, IL-8, IL-10, IL-18) chủ yếu tác động lên tế bào nội mô gây rò rỉ dịch toàn thân.</td>
+                                    <td>Bùng phát phản ứng viêm cytokine nặng nề gây hội chứng suy hô hấp cấp tiến triển (<span class="term-hl">ARDS</span>) ở phổi và viêm hệ thống.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Tổn thương cơ quan</strong></td>
+                                    <td>Thường tổn thương nhu mô <strong>Gan</strong> (tăng men gan AST > ALT, suy gan cấp), hệ CNS và Thận.</td>
+                                    <td>Tổn thương đa hệ thống: <strong>Phổi</strong> (suy hô hấp chính), Tim (viêm cơ tim), Thận, mạch máu và CNS.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Bệnh lý tế bào (Cytopathy)</strong></td>
+                                    <td>Giảm tiểu cầu nặng (Thrombocytopenia) và giảm bạch cầu (Leucopenia) do ức chế tủy xương và miễn dịch phá hủy.</td>
+                                    <td>Giảm tế bào lympho (Lymphopenia) nặng, giảm tiểu cầu mức độ nhẹ đến trung bình.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- TÀI LIỆU THAM KHẢO -->
+                <div class="physio-content">
+                    <h2 class="section-title">
+                        <span>Tài liệu tham khảo</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <ol style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin-left: 1.5rem;">
+                            <li>Bộ Y tế. <em>Hướng dẫn chẩn đoán và điều trị sốt xuất huyết Dengue</em>. Hà Nội; 2023.</li>
+                            <li>Soo KM, Khalid B, Ching SM, Tham CL, Basir R, Chee HY. Meta-analysis of biomarkers for severe dengue infections. <em>PeerJ</em>. 2017;5:e3589.</li>
+                            <li>Ministry of Health Timor-Leste. <em>National Guideline for Clinical Management of Dengue 2022</em>. 2022.</li>
+                            <li>Zhang F, He J, Peng J, et al. Guidelines for the Diagnosis and Treatment of Dengue in China. <em>Infect Dis Immun</em>. 2021;1(3):144-152.</li>
+                        </ol>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+    
+    <!-- Script điều khiển chung -->
+    <script src="../../../js/sidebar.js"></script>
+</body>
+
+</html>

@@ -132,6 +132,22 @@
         <div class="hero-pattern"></div>
       </section>
 
+      <!-- OSCE RANDOMIZER BANNER -->
+      <div style="background: linear-gradient(135deg, var(--color-primary-hl), var(--color-purple-hl)); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; box-shadow: var(--shadow-sm); flex-wrap: wrap; gap: 1rem;">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <div style="background: var(--color-primary); color: white; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3);">
+            <i class="fa-solid fa-dice"></i>
+          </div>
+          <div>
+            <h3 style="margin: 0; font-size: 1.1rem; color: var(--color-text);">Luyện tập thi OSCE?</h3>
+            <p style="margin: 0.25rem 0 0; font-size: 0.9rem; color: var(--color-text-muted);">Trải nghiệm ngay Hệ thống Tình huống Lâm sàng Ngẫu nhiên mới nhất!</p>
+          </div>
+        </div>
+        <a href="OSCE_Randomizer.html" style="background: var(--color-primary); color: white; text-decoration: none; padding: 0.75rem 1.5rem; border-radius: var(--radius-md); font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: var(--shadow-sm); transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+          Thử ngay <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
       <!-- ===== TOOLBAR / CONTROL BAR ===== -->
       <div class="dashboard-controls">
         <div class="search-box-container">
@@ -192,7 +208,7 @@
                 <a href="#part2-section" class="part-nav-item p2" data-target="part2-section">
                   <span class="part-icon"><i class="fa-solid fa-kit-medical"></i></span>
                   <span class="part-text">Phần 2: Hồi sức Cấp cứu</span>
-                  <span class="part-count-badge">6</span>
+                  <span class="part-count-badge">7</span>
                 </a>
               </li>
               <li>
@@ -214,6 +230,13 @@
                   <span class="part-icon"><i class="fa-solid fa-capsules"></i></span>
                   <span class="part-text">Phần 5: Quản lý Điều trị</span>
                   <span class="part-count-badge">3</span>
+                </a>
+              </li>
+              <li>
+                <a href="#part6-section" class="part-nav-item p6" data-target="part6-section">
+                  <span class="part-icon"><i class="fa-solid fa-syringe"></i></span>
+                  <span class="part-text">Phần 6: Kỹ năng Thủ thuật</span>
+                  <span class="part-count-badge">6</span>
                 </a>
               </li>
             </ul>
@@ -402,6 +425,21 @@
                   </div>
                   <div class="specialty-card-action">
                     <span>Xem quy trình</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+                <!-- 7. Xử trí Phản vệ -->
+                <a href="Hồi sức cấp cứu/KN_PhanVe.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🐝</div>
+                    <div class="specialty-info">
+                      <h3>Xử Trí Phản Vệ</h3>
+                      <p>Chẩn đoán, phân độ và phác đồ xử trí cấp cứu phản vệ theo Thông tư 51/2017/TT-BYT.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Xem phác đồ</span>
                     <i class="fa-solid fa-chevron-right"></i>
                   </div>
                 </a>
@@ -727,6 +765,109 @@
                       <h3>Xử Trí Cấp Cứu Ban Đầu (ABCDE)</h3>
                       <p>Tiếp cận và xử trí ban đầu đe dọa tính mạng theo nguyên tắc ABCDE tại phòng cấp cứu hoặc ngoài
                         bệnh viện.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Đang cập nhật</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+          </section>
+
+          <!-- PHẦN 6: KỸ NĂNG THỦ THUẬT -->
+          <section id="part6-section" aria-labelledby="part6-heading">
+            <div class="physio-group-container">
+              <div class="physio-group-header">
+                <span class="physio-group-icon"><i class="fa-solid fa-syringe"></i></span>
+                <h3 id="part6-heading">Phần 6: Kỹ năng Thủ thuật</h3>
+              </div>
+              <div class="specialty-grid">
+
+                <!-- 1. Đặt nội khí quản -->
+                <a href="#" class="specialty-card disabled">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🌬️</div>
+                    <div class="specialty-info">
+                      <h3>Đặt Nội Khí Quản</h3>
+                      <p>Kỹ thuật đặt nội khí quản nhanh (RSI), chuẩn bị dụng cụ và các bước tiến hành.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Đang cập nhật</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+                <!-- 2. Đặt tĩnh mạch trung tâm -->
+                <a href="#" class="specialty-card disabled">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">💉</div>
+                    <div class="specialty-info">
+                      <h3>Đặt Tĩnh Mạch Trung Tâm (CVC)</h3>
+                      <p>Quy trình đặt CVC dưới hướng dẫn siêu âm hoặc mốc giải phẫu, kiểm soát áp lực tĩnh mạch trung tâm.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Đang cập nhật</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+                <!-- 3. Chọc dò dịch màng phổi -->
+                <a href="#" class="specialty-card disabled">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🫁</div>
+                    <div class="specialty-info">
+                      <h3>Chọc Dò Dịch Màng Phổi</h3>
+                      <p>Chỉ định, chống chỉ định, vị trí chọc dò an toàn và tai biến thường gặp.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Đang cập nhật</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+                <!-- 4. Chọc dò dịch ổ bụng -->
+                <a href="#" class="specialty-card disabled">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🤰</div>
+                    <div class="specialty-info">
+                      <h3>Chọc Dò Dịch Ổ Bụng</h3>
+                      <p>Kỹ thuật chọc tháo dịch cổ trướng, đánh giá dịch (SAAG) và phòng ngừa tai biến.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Đang cập nhật</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+                <!-- 5. Chọc dò dịch não tủy -->
+                <a href="#" class="specialty-card disabled">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🧠</div>
+                    <div class="specialty-info">
+                      <h3>Chọc Dò Dịch Não Tủy</h3>
+                      <p>Kỹ thuật chọc thắt lưng (Lumbar Puncture), đo áp lực và phân tích kết quả DNT.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Đang cập nhật</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+                <!-- 6. Khâu vết thương & Cắt chỉ -->
+                <a href="#" class="specialty-card disabled">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🧵</div>
+                    <div class="specialty-info">
+                      <h3>Khâu Vết Thương & Cắt Chỉ</h3>
+                      <p>Các mũi khâu cơ bản, nguyên tắc vô khuẩn, gây tê tại chỗ và quy trình cắt chỉ, thay băng.</p>
                     </div>
                   </div>
                   <div class="specialty-card-action">

@@ -257,6 +257,24 @@
         });
       }
 
+      // --- Register Service Worker for PWA ---
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          const script = document.querySelector('script[src*="main.js"]');
+          if (script) {
+            const src = script.getAttribute('src');
+            const rootPath = src.replace(/js\/main\.js$/, '');
+            const swPath = rootPath + 'sw.js';
+            
+            navigator.serviceWorker.register(swPath).then((registration) => {
+              console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }).catch((err) => {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+          }
+        });
+      }
+
       // 3. Event delegation chung cho nút nhập liệu ca bệnh lâm sàng mẫu
       document.addEventListener('click', (e) => {
         const btn = e.target.closest('.sample-case-btn');

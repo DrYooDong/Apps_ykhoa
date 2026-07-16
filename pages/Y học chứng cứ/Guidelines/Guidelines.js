@@ -36,7 +36,8 @@
       design: null,
       impact: null,
       period: null,
-      asianData: false
+      asianData: false,
+      hasSubgroup: false
     };
 
     let sortField = 'title';
@@ -167,6 +168,8 @@
             file: s.file || '',
             asianData: s.asianData !== undefined ? s.asianData : false,
             bookmarked: s.bookmarked !== undefined ? s.bookmarked : false,
+            subgroups: (typeof s.subgroups === 'object' && s.subgroups !== null) ? s.subgroups
+                       : (typeof s.subgroups === 'string' && s.subgroups ? (() => { try { return JSON.parse(s.subgroups); } catch(e) { return null; } })() : null),
             createdAt: s.createdAt || new Date().toISOString()
           }));
           
@@ -212,6 +215,7 @@
                 file: s.file,
                 asianData: s.asianData,
                 bookmarked: s.bookmarked,
+                subgroups: s.subgroups ? JSON.stringify(s.subgroups) : null,
                 createdAt: s.createdAt
               })));
               
@@ -254,6 +258,7 @@
             file: study.file,
             asianData: study.asianData,
             bookmarked: study.bookmarked,
+            subgroups: study.subgroups ? JSON.stringify(study.subgroups) : null,
             createdAt: study.createdAt
           }, { onConflict: 'id' });
           
@@ -337,6 +342,8 @@
               file: s.file || '',
               asianData: s.asianData !== undefined ? s.asianData : false,
               bookmarked: s.bookmarked !== undefined ? s.bookmarked : false,
+              subgroups: (s.subgroups && typeof s.subgroups === 'object' && !Array.isArray(s.subgroups)) ? s.subgroups
+                         : (typeof s.subgroups === 'string' && s.subgroups ? (() => { try { return JSON.parse(s.subgroups); } catch(e) { return null; } })() : null),
               createdAt: s.createdAt || new Date().toISOString()
             };
           });
@@ -493,6 +500,11 @@
       // Asian data filter
       if (filters.asianData) {
         result = result.filter(s => s.asianData);
+      }
+
+      // Subgroup data filter (from sidebar quick filter)
+      if (filters.hasSubgroup) {
+        result = result.filter(s => s.subgroups && typeof s.subgroups === 'object' && Object.keys(s.subgroups).length > 0);
       }
 
       // Search filter
@@ -847,7 +859,11 @@
                     </div>
                   </div>
                   
-                  <div class="detail-sidebar">
+
+
+                    ${renderSubgroupPanel(study)}
+
+                                    <div class="detail-sidebar">
                     <div class="detail-meta-list">
                       <div class="detail-item">
                         <span class="detail-label">Phân loại & Thiết kế</span>
@@ -883,6 +899,7 @@
 
       tbody.innerHTML = rowsHtml;
       updateSelectAllCheckbox();
+      updateSubgroupSidebarCount();
     }
 
     function renderUpdates() {
@@ -1151,6 +1168,13 @@
       const sourceUrl = document.getElementById('study-source-url').value.trim();
       const file = document.getElementById('study-file').value.trim();
       const asianData = document.getElementById('study-asian-data').checked;
+      let subgroups = null;
+      const subgroupsRaw = (document.getElementById('study-subgroups') || {}).value || '';
+      if (subgroupsRaw.trim()) {
+        try { subgroups = JSON.parse(subgroupsRaw.trim()); } catch(e) {
+          alert('⚠️ Dữ liệu Subgroup không hợp lệ JSON. Vui lòng kiểm tra định dạng.'); return;
+        }
+      }
 
       let savedStudy = null;
 
@@ -1162,7 +1186,7 @@
             ...studies[index],
             title, author, drug, sourceType, specialty, design, intervention, primaryEndpoint, keyResults,
             impact, organization, year, phase, sampleSize,
-            population, summary, detailedConclusion, fdaStatus, sourceUrl, file, asianData
+            population, summary, detailedConclusion, fdaStatus, sourceUrl, file, asianData, subgroups
           };
           savedStudy = studies[index];
           alert('✅ Đã cập nhật tài liệu thành công!');
@@ -1173,7 +1197,7 @@
           id: generateId(),
           title, author, drug, sourceType, specialty, design, intervention, primaryEndpoint, keyResults,
           impact, organization, year, phase, sampleSize,
-          population, summary, detailedConclusion, fdaStatus, sourceUrl, file, asianData,
+          population, summary, detailedConclusion, fdaStatus, sourceUrl, file, asianData, subgroups,
           bookmarked: false,
           createdAt: new Date().toISOString()
         };
@@ -1228,6 +1252,8 @@
       document.getElementById('study-source-url').value = study.sourceUrl || '';
       document.getElementById('study-file').value = study.file || '';
       document.getElementById('study-asian-data').checked = study.asianData || false;
+      const sgEl = document.getElementById('study-subgroups');
+      if (sgEl) sgEl.value = (study.subgroups && typeof study.subgroups === 'object') ? JSON.stringify(study.subgroups, null, 2) : '';
 
       document.getElementById('modal-form-title').textContent = '✏️ Chỉnh Sửa Tài Liệu / Nghiên Cứu';
       document.getElementById('btn-save-study').textContent = 'Cập nhật tài liệu';
@@ -1375,32 +1401,50 @@
      * @returns { estimate, lower, upper, label } hoặc null nếu không parse được
      */
     function parseForestData(keyResults) {
-      if (!keyResults) return null;
-      // Regex bắt HR/OR/RR/ARR/RRR theo sau là số thập phân + dấu ngoặc (tròn/vuông)
+      if (!keyResults || typeof keyResults !== 'string') return null;
+
+      // 9 patterns hỗ trợ: HR/OR/RR/aHR/aOR/ARR/SMD/MD/WMD/IRR/PR
+      // Tất cả đều là regex literal đã kiểm tra, tránh lỗi escape.
       const patterns = [
-        // "HR 0.86 (95% CI 0.74-0.99)" hoặc "OR 0.75 (0.65-0.86)"
-        /\b(HR|OR|RR|ARR|RRR|aHR|aOR)\s*[=:]?\s*([\d.]+)\s*(?:\([^)]*?CI[^)]*?|\()\s*([\d.]+)[\s\-–]+([\d.]+)\s*\)/i,
-        // "HR 0.86 [0.74, 0.99]"
-        /\b(HR|OR|RR|ARR|RRR|aHR|aOR)\s*[=:]?\s*([\d.]+)\s*\[\s*([\d.]+)[\s,]+([\d.]+)\s*\]/i,
-        // "HR=0.86; 95% CI [0.74–0.99]"
-        /\b(HR|OR|RR|ARR|RRR|aHR|aOR)\s*=\s*([\d.]+)[\s;,]*(?:95%\s*CI)?\s*\[?\s*([\d.]+)[\s\-–,]+([\d.]+)\]?/i,
+        // 1a. "HR 0.86 (95% CI 0.74-0.99)" — ngoặc tròn, CI trong ngoặc, dấu gạch ngang
+        /\b(aHR|aOR|HR|OR|RR|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR)\s*[=:]?\s*(-?[\d.]+)\s*\([^)]{0,25}CI[^\d)]{0,6}(-?[\d.]+)\s*[-\u2013\u2014]\s*(-?[\d.]+)\s*\)/i,
+        // 1b. "OR 1.23 (95% CI: 1.05, 1.44)" — ngoặc tròn, dấu phẩy
+        /\b(aHR|aOR|HR|OR|RR|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR)\s*[=:]?\s*(-?[\d.]+)\s*\([^)]{0,25}CI[^\d)]{0,6}(-?[\d.]+)\s*,\s*(-?[\d.]+)\s*\)/i,
+        // 2. "HR 0.86 (0.74-0.99)" — ngoặc tròn thuần túy
+        /\b(aHR|aOR|HR|OR|RR|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR)\s*[=:]?\s*(-?[\d.]+)\s*\(\s*(-?[\d.]+)\s*[-\u2013\u2014]\s*(-?[\d.]+)\s*\)/i,
+        // 3. "HR 0.86 (0.74, 0.99)" — ngoặc tròn, dấu phẩy
+        /\b(aHR|aOR|HR|OR|RR|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR)\s*[=:]?\s*(-?[\d.]+)\s*\(\s*(-?[\d.]+)\s*,\s*(-?[\d.]+)\s*\)/i,
+        // 4. "HR 0.62 [0.49-0.77]" hoặc "[95% CI: 1.05, 1.44]"
+        /\b(aHR|aOR|HR|OR|RR|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR)\s*[=:]?\s*(-?[\d.]+)\s*\[\s*(?:[^\]]{0,20}?CI[^\d\]]{0,6})?(-?[\d.]+)\s*[-\u2013\u2014,]\s*(-?[\d.]+)\s*\]/i,
+        // 5. "RR 1.51, 95% CI 1.05-2.18" hoặc "RR 0.91; 95% CI 0.84-0.99"
+        /\b(aHR|aOR|HR|OR|RR|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR)\s*[=:]?\s*(-?[\d.]+)\s*[,;]\s*(?:95%\s*)?CI\s*[=:]?\s*(-?[\d.]+)\s*[-\u2013\u2014]\s*(-?[\d.]+)/i,
+        // 6. "RR 0.91; 95% CI (0.84-0.99)"
+        /\b(aHR|aOR|HR|OR|RR|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR)\s*[=:]?\s*(-?[\d.]+)\s*[,;]\s*(?:95%\s*)?CI\s*\(?\s*(-?[\d.]+)\s*[-\u2013\u2014]\s*(-?[\d.]+)\s*\)?/i,
+        // 7. "HR 0.86 95% CI 0.74-0.99" — phân cách khoảng trắng
+        /\b(aHR|aOR|HR|OR|RR|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR)\s*[=:]?\s*(-?[\d.]+)\s+(?:95%\s*)?CI\s*[=:]?\s*\[?\s*(-?[\d.]+)\s*[-\u2013\u2014]\s*(-?[\d.]+)\]?/i,
+        // 8. "HR=0.86; 95% CI [0.74-0.99]" hoặc "... to ..."
+        /\b(aHR|aOR|HR|OR|RR|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR)\s*=\s*(-?[\d.]+)[\s;,]+(?:95%\s*)?CI\s*\[?\s*(-?[\d.]+)\s*(?:[-\u2013\u2014]|to)\s*(-?[\d.]+)\]?/i,
+        // 9. "pooled RR = 0.91 (0.84-0.99)"
+        /(?:pooled|combined)?\s*(aHR|aOR|HR|OR|RR|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR)\s*=?\s*(-?[\d.]+)\s*\(\s*(-?[\d.]+)\s*[-\u2013\u2014]\s*(-?[\d.]+)\s*\)/i,
       ];
 
       for (const pattern of patterns) {
         const match = keyResults.match(pattern);
-        if (match) {
-          const label = match[1].toUpperCase();
-          const estimate = parseFloat(match[2]);
-          const lower = parseFloat(match[3]);
-          const upper = parseFloat(match[4]);
-
-          // Sanity check
-          if (!isNaN(estimate) && !isNaN(lower) && !isNaN(upper)
-              && lower < estimate && estimate < upper
-              && lower > 0 && upper < 20) {
-            return { label, estimate, lower, upper };
-          }
-        }
+        if (!match) continue;
+        const label    = (match[1] || '').toUpperCase();
+        const estimate = parseFloat(match[2]);
+        const lower    = parseFloat(match[3]);
+        const upper    = parseFloat(match[4]);
+        if (isNaN(estimate) || isNaN(lower) || isNaN(upper)) continue;
+        // Sanity: lower ≤ estimate ≤ upper
+        if (lower > estimate || estimate > upper) continue;
+        // CI không quá rộng (tránh parse nhầm năm, tháng, số lớn)
+        if ((upper - lower) > 15) continue;
+        // MD/SMD/WMD cho phép âm; HR/OR/RR phải dương
+        const allowNeg = ['MD', 'SMD', 'WMD'].includes(label);
+        if (!allowNeg && lower < 0) continue;
+        if (!allowNeg && estimate === 0) continue;
+        return { label, estimate, lower, upper };
       }
       return null;
     }
@@ -1897,6 +1941,105 @@
           if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }, 100);
       }, 150);
+    }
+
+    // ════════════════════════════════
+    // SUBGROUP EXPLORER
+    // ════════════════════════════════
+
+    function renderSubgroupPanel(study) {
+      const sg = study.subgroups;
+      if (!sg || typeof sg !== 'object' || Object.keys(sg).length === 0) return '';
+      const entries = Object.entries(sg);
+      const overall = parseForestData(study.keyResults);
+      const rows = entries.map(([name, result]) => {
+        const fd = parseForestData(result);
+        const hasAsia = /ch.u.+./i.test(name) || /asia/i.test(name);
+        const badge = hasAsia ? '<span class="sg-badge sg-badge-asia">\uD83C\uDF0F Ch\u00E2u \u00C1</span>' : '';
+        const rowClass = fd ? (fd.estimate < 1 ? 'sg-benefit' : fd.estimate > 1 ? 'sg-harm' : '') : '';
+        return `<tr class="sg-row ${rowClass}">
+            <td class="sg-name-cell">${badge}<span class="sg-name">${escapeHtml(name)}</span></td>
+            <td class="sg-result-cell"><code class="sg-result-code">${escapeHtml(result)}</code></td>
+            <td class="sg-plot-cell">${fd ? renderSubgroupForestRow(fd, overall) : '<span class="sg-no-data">—</span>'}</td>
+          </tr>`;
+      }).join('');
+      return `<div class="sg-panel">
+          <div class="sg-panel-header">
+            <span class="sg-panel-icon">\uD83E\uDDEC</span>
+            <span class="sg-panel-title">Ph\u00E2n t\u00EDch Subgroup</span>
+            <span class="sg-panel-count">${entries.length} ph\u00E2n nh\u00F3m</span>
+          </div>
+          <div class="sg-table-wrapper">
+            <table class="sg-table">
+              <thead>
+                <tr>
+                  <th style="width:190px;">Ph\u00E2n nh\u00F3m</th>
+                  <th style="width:210px;">K\u1EBFt qu\u1EA3</th>
+                  <th>Forest Plot mini</th>
+                </tr>
+              </thead>
+              <tbody>${rows}</tbody>
+            </table>
+          </div>
+          <div class="sg-legend">
+            <span class="sg-legend-item"><span class="sg-dot sg-dot-green"></span>L\u1EE3i \u00EDch (estimate &lt; 1)</span>
+            <span class="sg-legend-item"><span class="sg-dot sg-dot-red"></span>H\u1EA1i (estimate &gt; 1)</span>
+            <span class="sg-legend-item"><span class="sg-dot sg-dot-grey"></span>T\u1ED5ng th\u1EC3 (overall)</span>
+          </div>
+        </div>`;
+    }
+
+    function renderSubgroupForestRow(fd, overall) {
+      const W = 310, H = 36, PL = 8, PR = 8, cy = H / 2, plotW = W - PL - PR;
+      const allVals = [fd.lower, fd.estimate, fd.upper];
+      if (overall) allVals.push(overall.lower, overall.estimate, overall.upper);
+      const axisMin = Math.max(0.05, Math.min(...allVals) * 0.75);
+      const axisMax = Math.max(...allVals) * 1.25;
+      const axisRange = axisMax - axisMin || 1;
+      const toX = v => PL + ((v - axisMin) / axisRange) * plotW;
+      const x1 = toX(1.0), xE = toX(fd.estimate), xL = toX(fd.lower), xU = toX(fd.upper);
+      const isGreen = fd.estimate < 1.0;
+      const dotColor = isGreen ? '#16a34a' : fd.estimate > 1.0 ? '#dc2626' : '#6b7280';
+      const ciColor  = isGreen ? '#bbf7d0' : fd.estimate > 1.0 ? '#fecaca' : '#cbd5e1';
+      const overallLine = overall
+        ? `<line x1="${toX(overall.estimate).toFixed(1)}" y1="${cy-10}" x2="${toX(overall.estimate).toFixed(1)}" y2="${cy+10}" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3,2"/>`
+        : '';
+      return `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" class="sg-forest-svg" style="display:block;overflow:visible;">
+          <line x1="${PL}" y1="${cy}" x2="${W-PR}" y2="${cy}" stroke="#e2e8f0" stroke-width="1"/>
+          <line x1="${x1.toFixed(1)}" y1="${cy-12}" x2="${x1.toFixed(1)}" y2="${cy+12}" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,2"/>
+          ${overallLine}
+          <line x1="${xL.toFixed(1)}" y1="${cy}" x2="${xU.toFixed(1)}" y2="${cy}" stroke="${ciColor}" stroke-width="5" stroke-linecap="round"/>
+          <line x1="${xL.toFixed(1)}" y1="${cy-4}" x2="${xL.toFixed(1)}" y2="${cy+4}" stroke="${dotColor}" stroke-width="1.5"/>
+          <line x1="${xU.toFixed(1)}" y1="${cy-4}" x2="${xU.toFixed(1)}" y2="${cy+4}" stroke="${dotColor}" stroke-width="1.5"/>
+          <polygon points="${xE.toFixed(1)},${(cy-6).toFixed(1)} ${(xE+6).toFixed(1)},${cy} ${xE.toFixed(1)},${(cy+6).toFixed(1)} ${(xE-6).toFixed(1)},${cy}" fill="${dotColor}" opacity="0.92"/>
+          <text x="${PL}" y="${H-2}" font-size="7" fill="#94a3b8" font-family="monospace">${axisMin.toFixed(2)}</text>
+          <text x="${x1.toFixed(1)}" y="${H-2}" text-anchor="middle" font-size="7" fill="#94a3b8" font-family="monospace">1.0</text>
+          <text x="${W-PR}" y="${H-2}" text-anchor="end" font-size="7" fill="#94a3b8" font-family="monospace">${axisMax.toFixed(2)}</text>
+        </svg>`;
+    }
+
+    function filterBySubgroupData() {
+      document.querySelectorAll('.left-nav-link').forEach(l => l.classList.remove('active'));
+      const btn = document.getElementById('sidebar-btn-subgroup');
+      if (btn) btn.classList.add('active');
+      filters.hasSubgroup = true;
+      filters.asianData  = false;
+      renderTable();
+    }
+
+    function filterByAsianData() {
+      document.querySelectorAll('.left-nav-link').forEach(l => l.classList.remove('active'));
+      const btn = document.getElementById('sidebar-btn-asian');
+      if (btn) btn.classList.add('active');
+      filters.asianData   = true;
+      filters.hasSubgroup = false;
+      renderTable();
+    }
+
+    function updateSubgroupSidebarCount() {
+      const count = studies.filter(s => s.subgroups && typeof s.subgroups === 'object' && Object.keys(s.subgroups).length > 0).length;
+      const el = document.getElementById('subgroup-count-sidebar');
+      if (el) el.textContent = count;
     }
 
     // Setup table header sorting

@@ -1,0 +1,230 @@
+.osce-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.osce-hero {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-teal));
+    color: white;
+    border-radius: var(--radius-lg);
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-md);
+}
+
+.osce-hero h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.osce-hero p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+}
+
+.btn-generate {
+    background: white;
+    color: var(--color-primary);
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.btn-generate:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.btn-generate:active {
+    transform: translateY(0);
+}
+
+/* Case Display */
+.case-display {
+    display: none;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    margin-bottom: 2rem;
+    animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.case-header {
+    background: var(--color-primary-hl);
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.case-category {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    background: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+}
+
+.case-timer {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-danger);
+    font-family: monospace;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.case-timer.warning {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.case-body {
+    padding: 1.5rem;
+}
+
+.case-title {
+    font-size: 1.5rem;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+}
+
+.case-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    background: var(--color-bg);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-label {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    font-weight: 600;
+}
+
+.info-value {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-text);
+}
+
+.case-scenario {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: var(--color-text);
+}
+
+.checklist-section h3 {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.score-display {
+    font-size: 1.1rem;
+    color: var(--color-success);
+    font-weight: bold;
+}
+
+.osce-check {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.osce-check li {
+    border: 1px solid var(--color-border);
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: background var(--tr);
+}
+
+.osce-check li:hover {
+    background: var(--color-bg);
+}
+
+.osce-check li.checked {
+    background: var(--color-success-hl);
+    border-color: var(--color-success);
+}
+
+.osce-check input[type="checkbox"] {
+    pointer-events: none;
+    width: 18px;
+    height: 18px;
+}
+
+.checkbox-text {
+    flex: 1;
+}
+
+.controls-row {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.btn-control {
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: opacity 0.2s;
+}
+
+.btn-control:hover {
+    opacity: 0.9;
+}
+
+.btn-stop {
+    background: var(--color-danger);
+    color: white;
+}

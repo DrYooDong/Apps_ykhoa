@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Phác đồ cấp cứu sốc phản vệ Bộ Y Tế">
+    <title>Xử trí Phản vệ – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal -->
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../css/components/footer.css">
+
+    <!-- CSS riêng cho Kỹ năng Lâm sàng -->
+    <link rel="stylesheet" href="../../../css/components/clinical-skill.css">
+
+    <!-- Script điều hướng hệ thống -->
+    <script src="../../../js/main.js" defer></script>
+    <script src="../../../components/header.js" defer></script>
+    <script src="../../../components/footer.js" defer></script>
+    <script src="../../../js/clinical-skill-tabs.js" defer></script>
+
+    <style>
+        :root {
+            --a: #be123c; /* rose-700 */
+            --b: #e11d48; /* rose-600 */
+            --c: #fda4af; /* rose-300 */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../../../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../ky-nang.html" class="nav-item active" title="Kỹ năng lâm sàng">
+                            <span class="nav-icon">🩺</span>
+                            <span class="nav-text">Kỹ năng lâm sàng</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <main class="main-wrapper">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container">
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item">
+                        <a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="../ky-nang.html" class="breadcrumb-link">Kỹ năng lâm sàng</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Xử trí Phản vệ</li>
+                </ol>
+            </nav>
+
+            <!-- HERO SECTION -->
+            <section class="hero">
+                <h1>XỬ TRÍ PHẢN VỆ</h1>
+                <p>Phác đồ chẩn đoán và cấp cứu phản vệ theo Thông tư 51/2017/TT-BYT</p>
+                <div class="quick">
+                    <div class="qi">
+                        <b>Thuốc First-line</b>
+                        Adrenaline (Epinephrine) tiêm bắp ngay lập tức
+                    </div>
+                    <div class="qi">
+                        <b>Đánh giá</b>
+                        Phân độ từ nhẹ (I) đến ngừng tuần hoàn (IV)
+                    </div>
+                    <div class="qi">
+                        <b>Mục tiêu huyết áp</b>
+                        HA tối đa ≥ 90 mmHg (Người lớn), ≥ 70 mmHg (Trẻ em)
+                    </div>
+                </div>
+            </section>
+
+            <!-- SKILL CONTENT WITH TABS -->
+            <div class="skill-container">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="chan-doan">
+                        <i class="fas fa-stethoscope"></i> Chẩn đoán & Phân độ
+                    </button>
+                    <button class="tab-btn" data-tab="xu-tri">
+                        <i class="fas fa-syringe"></i> Phác đồ xử trí & Theo dõi
+                    </button>
+                </div>
+
+                <!-- TAB 1: CHẨN ĐOÁN & PHÂN ĐỘ -->
+                <div class="tab active" id="chan-doan">
+                    <div class="card">
+                        <h2>1. Triệu chứng gợi ý phản vệ</h2>
+                        <p>Cần nghĩ đến phản vệ khi người bệnh xuất hiện ít nhất một trong các triệu chứng sau:</p>
+                        <ul class="check">
+                            <li><input type="checkbox"> <span>Mày đay, phù mạch diễn biến nhanh.</span></li>
+                            <li><input type="checkbox"> <span>Khó thở, tức ngực, thở rít.</span></li>
+                            <li><input type="checkbox"> <span>Đau bụng hoặc nôn.</span></li>
+                            <li><input type="checkbox"> <span>Tụt huyết áp hoặc ngất.</span></li>
+                            <li><input type="checkbox"> <span>Rối loạn ý thức.</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h2>2. Các bệnh cảnh lâm sàng chẩn đoán phản vệ</h2>
+                        <p>Theo Thông tư 51/2017/TT-BYT, chẩn đoán phản vệ được xác định khi có <strong>1 trong 3</strong> bệnh cảnh lâm sàng sau đây:</p>
+                        
+                        <div class="clinical-pearl" style="margin-top: 1rem;">
+                            <h4><span class="step-node">1</span> Bệnh cảnh lâm sàng 1</h4>
+                            <p>Các triệu chứng xuất hiện trong vài giây đến vài giờ ở da, niêm mạc (mày đay, phù mạch, ngứa...) VÀ kèm theo ít nhất 1 trong 2 triệu chứng:</p>
+                            <ul>
+                                <li>Các triệu chứng hô hấp (khó thở, thở rít, ran rít).</li>
+                                <li>Tụt huyết áp hoặc các hậu quả của tụt HA (rối loạn ý thức, đại tiện, tiểu tiện không tự chủ...).</li>
+                            </ul>
+                        </div>
+
+                        <div class="clinical-pearl">
+                            <h4><span class="step-node">2</span> Bệnh cảnh lâm sàng 2</h4>
+                            <p>Có ít nhất <strong>2 trong 4</strong> triệu chứng sau xuất hiện trong vài giây đến vài giờ sau khi người bệnh tiếp xúc với yếu tố nghi ngờ:</p>
+                            <ul>
+                                <li>Biểu hiện ở da, niêm mạc: mày đay, phù mạch, ngứa.</li>
+                                <li>Các triệu chứng hô hấp (khó thở, thở rít, ran rít).</li>
+                                <li>Tụt huyết áp hoặc các hậu quả của tụt HA (rối loạn ý thức, đại/tiểu tiện không tự chủ...).</li>
+                                <li>Các triệu chứng tiêu hóa (nôn, đau bụng...).</li>
+                            </ul>
+                        </div>
+
+                        <div class="clinical-pearl">
+                            <h4><span class="step-node">3</span> Bệnh cảnh lâm sàng 3</h4>
+                            <p>Tụt huyết áp xuất hiện trong vài giây đến vài giờ sau khi tiếp xúc với yếu tố nghi ngờ mà người bệnh đã từng bị dị ứng:</p>
+                            <ul>
+                                <li><strong>Trẻ em:</strong> giảm ít nhất 30% HA tâm thu hoặc HA tâm thu thấp so với tuổi (<span class="critical-val">&lt; 70mmHg</span>).</li>
+                                <li><strong>Người lớn:</strong> HA tâm thu <span class="critical-val">&lt; 90mmHg</span> hoặc giảm 30% giá trị HA tâm thu nền.</li>
+                            </ul>
+                        </div>
+
+                        <div class="clinical-warning">
+                            <h4><i class="fas fa-exclamation-triangle"></i> Sơ đồ tiêu chuẩn chẩn đoán phản vệ theo WAO 2020</h4>
+                            <p>Sốc phản vệ rất có khả năng xảy ra khi đáp ứng một trong hai tiêu chuẩn sau đây:</p>
+                            <ol style="margin-top: 8px;">
+                                <li><strong>Khởi phát bệnh cấp tính (vài phút đến vài giờ)</strong> có liên quan đến da, mô niêm mạc, hoặc cả hai VÀ có ít nhất một trong các dấu hiệu:
+                                    <ul>
+                                        <li>Suy hô hấp (khó thở, khò khè, thở rít, giảm oxy máu).</li>
+                                        <li>Tụt huyết áp hoặc rối loạn chức năng cơ quan đích (ngất, tiểu tiện không tự chủ).</li>
+                                        <li>Các triệu chứng tiêu hóa nặng (đau bụng quặn dữ dội, nôn mửa lặp đi lặp lại), đặc biệt sau tiếp xúc dị nguyên không phải thực phẩm.</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Khởi phát cấp tính tình trạng tụt huyết áp hoặc co thắt phế quản hoặc phù nề thanh quản</strong> sau khi tiếp xúc với một dị nguyên đã biết hoặc rất có khả năng đối với bệnh nhân đó, ngay cả khi không có biểu hiện ở da.</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h2>3. Chẩn đoán phân biệt</h2>
+                        <p>Trong quá trình đánh giá, cần chẩn đoán phân biệt phản vệ với các tình trạng cấp cứu khác bao gồm:</p>
+                        <ul>
+                            <li>Các trường hợp sốc khác: sốc tim, sốc giảm thể tích, sốc nhiễm khuẩn.</li>
+                            <li>Tai biến mạch máu não.</li>
+                            <li>Các nguyên nhân đường hô hấp: Đợt cấp COPD, cơn hen phế quản, khó thở thanh quản (do dị vật, viêm).</li>
+                            <li>Các bệnh lý ở da: mày đay, phù mạch đơn thuần.</li>
+                            <li>Các bệnh lý nội tiết: cơn bão giáp trạng, hội chứng carcinoid, hạ đường máu.</li>
+                            <li>Các ngộ độc: rượu, opiat, histamin, thuốc an thần.</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h2>4. Phân độ phản vệ</h2>
+                        <p>Phản vệ được phân thành 4 mức độ. Cần đặc biệt lưu ý mức độ phản vệ có thể nặng lên rất nhanh và không tuân theo tuần tự.</p>
+                        
+                        <div class="table-wrap">
+                            <table class="cmp">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 25%;">Độ I (Nhẹ)</th>
+                                        <th style="width: 25%;">Độ II (Nặng)</th>
+                                        <th style="width: 25%;">Độ III (Nguy kịch)</th>
+                                        <th style="width: 25%;">Độ IV (Ngừng tuần hoàn)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <span class="badge-info">Da & Niêm mạc</span>
+                                            <ul style="margin-top: 8px; padding-left: 14px;">
+                                                <li>Nổi mày đay</li>
+                                                <li>Ngứa</li>
+                                                <li>Phù mạch</li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <span class="badge-warning">≥ 2 cơ quan</span>
+                                            <ul style="margin-top: 8px; padding-left: 14px;">
+                                                <li>Mày đay, phù mạch nhanh</li>
+                                                <li>Khó thở nhanh nông, tức ngực, khàn tiếng</li>
+                                                <li>Đau bụng, nôn, ỉa chảy</li>
+                                                <li>Huyết áp chưa tụt hoặc tăng, nhịp tim nhanh/loạn nhịp</li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <span class="badge-danger">Nguy kịch nhiều cơ quan</span>
+                                            <ul style="margin-top: 8px; padding-left: 14px;">
+                                                <li>Thở rít thanh quản, phù thanh quản</li>
+                                                <li>Thở nhanh, khò khè, tím tái, rối loạn nhịp thở</li>
+                                                <li>Sốc, mạch nhanh nhỏ, tụt HA</li>
+                                                <li>Vật vã, hôn mê, co giật, rối loạn cơ tròn</li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <span class="badge-dark">Tử vong lâm sàng</span>
+                                            <ul style="margin-top: 8px; padding-left: 14px;">
+                                                <li>Ngừng hô hấp</li>
+                                                <li>Ngừng tuần hoàn</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: XỬ TRÍ & THEO DÕI -->
+                <div class="tab" id="xu-tri">
+                    <div class="card">
+                        <h2>1. Nguyên tắc chung</h2>
+                        <div class="clinical-warning">
+                            <h4><i class="fas fa-exclamation-triangle"></i> Cực kỳ quan trọng</h4>
+                            <p>Tất cả các trường hợp phản vệ phải được phát hiện sớm, xử trí khẩn cấp, kịp thời ngay tại chỗ và theo dõi liên tục ít nhất trong vòng 24 giờ.</p>
+                            <p style="margin-top: 8px;"><strong><span class="drug-name">Adrenalin</span> là thuốc thiết yếu, quan trọng hàng đầu cứu sống người bệnh</strong>, phải được tiêm bắp ngay khi chẩn đoán phản vệ từ độ II trở lên.</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h2>2. Xử trí phản vệ nhẹ (Độ I)</h2>
+                        <ul>
+                            <li><strong>Thuốc sử dụng:</strong> <span class="drug-name">Methylprednisolon</span> (liều 1-2mg/kg) hoặc <span class="drug-name">Diphenhydramin</span> (liều 1mg/kg) đường uống hoặc tiêm tùy tình trạng người bệnh.</li>
+                            <li><strong>Theo dõi:</strong> Tiếp tục theo dõi ít nhất 24 giờ các dấu hiệu sinh tồn, kiểu thở, và diễn tiến da niêm để kịp thời phát hiện nếu chuyển độ.</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h2>3. Phác đồ xử trí Độ II và Độ III (Nặng & Nguy kịch)</h2>
+                        <p>Phải khẩn trương xử trí đồng thời theo diễn biến bệnh:</p>
+                        
+                        <div class="clinical-pearl">
+                            <h4><span class="step-node">1</span> Ngừng ngay tiếp xúc với dị nguyên</h4>
+                            <p>Dừng đường truyền, tiêm, uống hoặc cách ly dị nguyên ngay lập tức.</p>
+                        </div>
+
+                        <div class="clinical-pearl">
+                            <h4><span class="step-node">2</span> Tiêm hoặc truyền Adrenalin ngay lập tức</h4>
+                            <p>Tiêm bắp ngay <span class="drug-name">Adrenalin</span> (xem liều chi tiết ở phần dưới).</p>
+                        </div>
+
+                        <div class="clinical-pearl">
+                            <h4><span class="step-node">3</span> Tư thế bệnh nhân phù hợp</h4>
+                            <p>Nằm tại chỗ, đầu thấp, nghiêng trái nếu có nôn. Phụ nữ có thai nằm nghiêng trái. Nếu suy hô hấp: nằm đầu cao hoặc ngồi.</p>
+                        </div>
+
+                        <div class="clinical-pearl">
+                            <h4><span class="step-node">4</span> Hỗ trợ hô hấp & Oxy</h4>
+                            <p>Thở oxy qua mặt nạ hở: người lớn 6-10 lít/phút, trẻ em 2-4 lít/phút. Sẵn sàng bóp bóng, đặt nội khí quản hoặc mở khí quản nếu phù nề đường thở.</p>
+                        </div>
+
+                        <div class="clinical-pearl">
+                            <h4><span class="step-node">5</span> Thiết lập đường truyền tĩnh mạch</h4>
+                            <p>Thiết lập đường truyền tĩnh mạch lớn (kim cỡ 14G hoặc 16G) để truyền Adrenalin và đường thứ hai để bù dịch nhanh Natriclorid 0.9%.</p>
+                        </div>
+
+                        <div class="clinical-pearl">
+                            <h4><span class="step-node">6</span> Hội chẩn và gọi hỗ trợ</h4>
+                            <p>Hội ý với đồng nghiệp, báo cáo cấp trên, hội chẩn bác sĩ chuyên khoa cấp cứu/hồi sức.</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h2>4. Phác đồ sử dụng Adrenalin và Truyền dịch</h2>
+                        <p><strong>Mục tiêu:</strong> Nâng và duy trì ổn định HA tâm thu người lớn <span class="normal-val">≥ 90mmHg</span>, trẻ em <span class="normal-val">≥ 70mmHg</span>, hết thở rít, khó thở, nôn mửa.</p>
+                        
+                        <h3>A. Đường Tiêm Bắp (Ống Adrenalin 1mg/1ml)</h3>
+                        <p>Tiêm nhắc lại mỗi 3-5 phút cho đến khi huyết áp và mạch ổn định:</p>
+                        <ul>
+                            <li><strong>Người lớn:</strong> 1/2 - 1 ống (0,5 - 1 ml).</li>
+                            <li><strong>Trẻ &gt; 30kg:</strong> 1/2 ống (0,5 ml).</li>
+                            <li><strong>Trẻ khoảng 20kg:</strong> 1/3 ống (0,3 ml).</li>
+                            <li><strong>Trẻ khoảng 10kg:</strong> 1/4 ống (0,25 ml).</li>
+                            <li><strong>Trẻ sơ sinh hoặc &lt; 10kg:</strong> 1/5 ống (0,2 ml).</li>
+                        </ul>
+
+                        <h3>B. Đường Tĩnh Mạch</h3>
+                        <p>Áp dụng khi tiêm bắp 2-3 lần không hiệu quả, mạch không bắt được, HA không đo được.</p>
+                        <div class="clinical-warning">
+                            <h4><i class="fas fa-exclamation-triangle"></i> Lưu ý đường tĩnh mạch</h4>
+                            <ul>
+                                <li><strong>Chưa có đường truyền:</strong> Tiêm tĩnh mạch chậm dung dịch pha loãng 1/10.000 (1 ống Adrenalin pha với 9ml nước cất). Liều người lớn: 0,5 - 1 ml (tiêm trong 1-3 phút). <strong>Tuyệt đối không áp dụng tiêm tĩnh mạch chậm cho trẻ em.</strong></li>
+                                <li><strong>Đã có đường truyền:</strong> Truyền tĩnh mạch liên tục Adrenalin (pha với Nacl 0.9%) liều khởi đầu <span class="drug-name">0,1 µg/kg/phút</span>, chỉnh liều mỗi 3-5 phút.</li>
+                                <li><strong>Bù dịch nhanh:</strong> Truyền nhanh dung dịch Natriclorid 0.9% (1000 - 2000ml ở người lớn, hoặc 10-20ml/kg trong 10-20 phút ở trẻ em).</li>
+                            </ul>
+                        </div>
+
+                        <h3>Bảng tham khảo cách pha loãng Adrenalin truyền tĩnh mạch</h3>
+                        <p><em>(Pha 1 ống Adrenalin 1mg vào 250ml Natriclorid 0.9% → 1ml dung dịch có 4µg Adrenalin)</em></p>
+                        <div class="table-wrap">
+                            <table class="cmp" style="text-align: center;">
+                                <thead>
+                                    <tr>
+                                        <th>Cân nặng (kg)</th>
+                                        <th>Liều truyền khởi đầu (0,1 µg/kg/phút)</th>
+                                        <th>Tốc độ truyền (giọt/phút) với dây truyền 1ml = 20 giọt</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>80</td><td>2.00 ml/phút</td><td><span class="normal-val">40 giọt</span></td></tr>
+                                    <tr><td>70</td><td>1.75 ml/phút</td><td><span class="normal-val">35 giọt</span></td></tr>
+                                    <tr><td>60</td><td>1.50 ml/phút</td><td><span class="normal-val">30 giọt</span></td></tr>
+                                    <tr><td>50</td><td>1.25 ml/phút</td><td><span class="normal-val">25 giọt</span></td></tr>
+                                    <tr><td>40</td><td>1.00 ml/phút</td><td><span class="normal-val">20 giọt</span></td></tr>
+                                    <tr><td>30</td><td>0.75 ml/phút</td><td><span class="normal-val">15 giọt</span></td></tr>
+                                    <tr><td>20</td><td>0.50 ml/phút</td><td><span class="normal-val">10 giọt</span></td></tr>
+                                    <tr><td>10</td><td>0.25 ml/phút</td><td><span class="normal-val">5 giọt</span></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p style="font-style: italic; color: var(--color-text-muted); margin-top: -8px;">* Công thức tính nhanh tốc độ giọt: <strong>Tốc độ (giọt/phút) = Cân nặng (kg) / 2</strong></p>
+                    </div>
+
+                    <div class="card">
+                        <h2>5. Xử trí Phản vệ Độ IV (Ngừng tuần hoàn)</h2>
+                        <p>Tiến hành hồi sinh tim phổi nâng cao (ACLS) ngay lập tức theo quy trình <strong>C-A-B</strong>:</p>
+                        <ul>
+                            <li><strong>C (Compressions):</strong> Ép tim ngoài lồng ngực mạnh và nhanh.</li>
+                            <li><strong>A (Airway):</strong> Khai thông đường thở.</li>
+                            <li><strong>B (Breathing):</strong> Hỗ trợ hô hấp, bóp bóng qua Ambu hoặc đặt nội khí quản và thở máy. Tiêm tĩnh mạch Adrenalin mỗi 3-5 phút theo phác đồ ngưng tim.</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h2>6. Thuốc phối hợp và Theo dõi tiếp theo</h2>
+                        
+                        <h3>A. Thuốc phối hợp (sau khi dùng Adrenalin ổn định tuần hoàn)</h3>
+                        <ul>
+                            <li><strong>Hỗ trợ hô hấp:</strong> <span class="drug-name">Aminophyllin</span>, <span class="drug-name">Salbutamol</span> hoặc <span class="drug-name">Terbutalin</span> truyền tĩnh mạch nếu co thắt phế quản dai dẳng.</li>
+                            <li><strong>Dung dịch keo:</strong> Bổ sung nếu không nâng được HA sau khi đã truyền đủ dịch tinh thể và Adrenalin.</li>
+                            <li><strong>Corticosteroid:</strong> <span class="drug-name">Methylprednisolon</span> (1-2mg/kg) hoặc <span class="drug-name">Hydrocortison</span> (200mg) tiêm tĩnh mạch.</li>
+                            <li><strong>Kháng histamin:</strong> H1 (<span class="drug-name">Diphenhydramin</span> 25-50mg) và H2 (<span class="drug-name">Ranitidin</span> 50mg) tiêm tĩnh mạch.</li>
+                            <li><strong>Glucagon:</strong> Dùng khi có nhịp chậm, tụt HA kháng trị với Adrenalin (đặc biệt ở người đang dùng chẹn Beta).</li>
+                            <li><strong>Vận mạch khác:</strong> <span class="drug-name">Dopamin</span> hoặc <span class="drug-name">Noradrenalin</span> truyền tĩnh mạch nếu sốc kéo dài.</li>
+                        </ul>
+
+                        <h3>B. Chế độ theo dõi</h3>
+                        <div class="clinical-pearl">
+                            <h4><i class="fas fa-clock"></i> Giai đoạn cấp</h4>
+                            <p>Theo dõi sát mạch, huyết áp, nhịp thở, SpO2 và tri giác <strong>mỗi 3-5 phút/lần</strong> cho đến khi ổn định.</p>
+                        </div>
+                        <div class="clinical-warning">
+                            <h4><i class="fas fa-history"></i> Giai đoạn ổn định</h4>
+                            <p>Theo dõi liên tục mỗi 1-2 giờ trong <strong>ít nhất 24 giờ tiếp theo</strong> để đề phòng phản vệ pha 2 (biphasic reaction).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- REFERENCES SECTION -->
+            <div class="card" style="margin-top: 24px;">
+                <h2><i class="fas fa-book"></i> Tài liệu tham khảo</h2>
+                <ul style="font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.65; padding-left: 20px; display: grid; gap: 8px;">
+                    <li>Bộ Y tế. <em>Thông tư số 51/2017/TT-BYT Hướng dẫn phòng, chẩn đoán và xử trí phản vệ</em>. Ban hành ngày 29 tháng 12 năm 2017.</li>
+                    <li>Cardona V, Ansotegui IJ, Ebisawa M, et al. <em>World Allergy Organization Anaphylaxis Guidance 2020</em>. World Allergy Organ J. 2020;13(10):100472.</li>
+                    <li>LoVerde D, Iweala OI, Eginli A, Krishnaswamy G. <em>Anaphylaxis</em>. Chest. 2018;153(2):528-43.</li>
+                    <li>Reber LL, Hernandez JD, Galli SJ. <em>The pathophysiology of anaphylaxis</em>. J Allergy Clin Immunol. 2017;140(2):335-48.</li>
+                </ul>
+            </div>
+        </main>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+</body>
+
+</html>

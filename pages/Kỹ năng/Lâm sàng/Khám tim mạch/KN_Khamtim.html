@@ -31,6 +31,7 @@
     }
   </style>
   <link rel='stylesheet' href="../../../../css/components/clinical-skill.css">
+  <link rel='stylesheet' href="../../../../css/components/flowchart.css">
 </head>
 
 <body>
@@ -168,6 +169,9 @@
         </button>
         <button class='tab-btn' data-tab='osce'>
           <span class="term-hl-secondary">OSCE</span>
+        </button>
+        <button class='tab-btn' data-tab='flowchart'>
+          Sơ đồ tiếp cận
         </button>
       </div>
       <section class='tab active' id='core'>
@@ -392,27 +396,161 @@
       <section class='tab' id='osce'>
         <div class='grid2'>
           <div class='card'>
-            <span class='case'><span class="term-hl-secondary">OSCE</span> 1</span>
-            <h2>Tình huống 1: Hỏi bệnh sử đau ngực (<span class="term-hl">Chest pain history</span>)</h2>
+            <span class='case'>OSCE 1</span>
+            <h2>Tình huống 1: Hỏi bệnh sử đau ngực (Chest pain history)</h2>
             <p><strong>Yêu cầu:</strong> Bệnh nhân nữ 62 tuổi, đến khám vì đau ngực từng cơn. Hãy hỏi bệnh sử.</p>
             <p style='margin-top: 8px;'><strong>Tóm tắt phát hiện:</strong> Bệnh nhân có tiền sử đau ngực khó chịu ngắt quãng trong 6 tuần. Cảm giác đau râm ran ở giữa ngực, không lan ra tay hay hàm. Đau xuất hiện chủ yếu khi gắng sức, đi lên dốc hoặc đi bộ vào buổi sáng lạnh, và thuyên giảm khi nghỉ ngơi trong vài phút. Triệu chứng làm ảnh hưởng đến công việc chăm sóc của bà. Bệnh nhân có tiền sử Tăng huyết áp và Đái tháo đường typ 2, không hút thuốc.</p>
-            <p style='margin-top: 8px;'><strong>Chẩn đoán sơ bộ phù hợp:</strong> Cơn đau thắt ngực ổn định (<span class="term-hl">Stable angina pectoris</span>).</p>
-            <p style='margin-top: 8px;'><strong>Đề xuất đánh giá tiếp theo:</strong> Khám toàn diện hệ tim mạch, xét nghiệm glucose máu, lipid máu và đo <span class="term-hl-secondary">ECG</span> 12 chuyển đạo. Cân nhắc nghiệm pháp gắng sức hoặc chụp mạch vành.</p>
+            <p style='margin-top: 8px;'><strong>Chẩn đoán sơ bộ phù hợp:</strong> Cơn đau thắt ngực ổn định (Stable angina pectoris).</p>
+            <p style='margin-top: 8px;'><strong>Đề xuất đánh giá tiếp theo:</strong> Khám toàn diện hệ tim mạch, xét nghiệm glucose máu, lipid máu và đo ECG 12 chuyển đạo. Cân nhắc nghiệm pháp gắng sức hoặc chụp mạch vành.</p>
           </div>
           <div class='card'>
-            <span class='case'><span class="term-hl-secondary">OSCE</span> 2</span>
-            <h2>Tình huống 2: Khám hệ tim mạch (<span class="term-hl">Cardiac examination</span>)</h2>
+            <span class='case'>OSCE 2</span>
+            <h2>Tình huống 2: Khám hệ tim mạch (Cardiac examination)</h2>
             <p><strong>Yêu cầu:</strong> Bệnh nhân nam 82 tuổi, đến khám vì khó thở tăng dần và choáng váng khi gắng sức. Hãy khám hệ tim mạch.</p>
-            <p style='margin-top: 8px;'><strong>Tóm tắt phát hiện:</strong> Bệnh nhân trông khá thoải mái. Nhịp tim 80 l/p, mạch nảy yếu và chậm (<span class="term-hl">low-volume, slow-rising pulse</span>). Huyết áp 110/60 mmHg. Áp lực tĩnh mạch cảnh (<span class="term-hl">JVP</span>) không tăng. Sờ thấy mỏm tim nảy mạnh (<span class="term-hl">heave</span>) nhưng không bị lệch. Tiếng tim T1 bình thường nhưng tiếng T2 mờ. Có âm thổi tâm thu dạng tống máu độ 3/6, nghe rõ nhất ở ổ van động mạch chủ và lan lên động mạch cảnh. Nghe phổi có ran nổ rải rác ở hai đáy phổi vào cuối kỳ hít vào.</p>
-            <p style='margin-top: 8px;'><strong>Chẩn đoán sơ bộ phù hợp:</strong> Hẹp van động mạch chủ kèm mất bù thất trái và suy tim (<span class="term-hl">Aortic stenosis with left ventricular decompensation and heart failure</span>).</p>
-            <p style='margin-top: 8px;'><strong>Đề xuất đánh giá tiếp theo:</strong> Đo <span class="term-hl-secondary">ECG</span> 12 chuyển đạo, X-quang ngực và Siêu âm tim qua thành ngực (<span class="term-hl">Transthoracic echocardiogram</span>).</p>
+            <p style='margin-top: 8px;'><strong>Tóm tắt phát hiện:</strong> Bệnh nhân trông khá thoải mái. Nhịp tim 80 l/p, mạch nảy yếu và chậm (low-volume, slow-rising pulse). Huyết áp 110/60 mmHg. Áp lực tĩnh mạch cảnh (JVP) không tăng. Sờ thấy mỏm tim nảy mạnh (heave) nhưng không bị lệch. Tiếng tim T1 bình thường nhưng tiếng T2 mờ. Có âm thổi tâm thu dạng tống máu độ 3/6, nghe rõ nhất ở ổ van động mạch chủ và lan lên động mạch cảnh. Nghe phổi có ran nổ rải rác ở hai đáy phổi vào cuối kỳ hít vào.</p>
+            <p style='margin-top: 8px;'><strong>Chẩn đoán sơ bộ phù hợp:</strong> Hẹp van động mạch chủ kèm mất bù thất trái và suy tim (Aortic stenosis with left ventricular decompensation and heart failure).</p>
+            <p style='margin-top: 8px;'><strong>Đề xuất đánh giá tiếp theo:</strong> Đo ECG 12 chuyển đạo, X-quang ngực và Siêu âm tim qua thành ngực (Transthoracic echocardiogram).</p>
           </div>
         </div>
         <div class='card'>
-          <h2>Tài liệu tham khảo (<span class="term-hl">References</span>)</h2>
+          <h2>Tài liệu tham khảo (References)</h2>
           <ol>
             <li>Innes JA, Dover AR, Fairhurst K. <em>Macleod's Clinical Examination</em>. 14th ed. Edinburgh: Elsevier; 2018.</li>
           </ol>
+        </div>
+      </section>
+      <section class='tab' id='flowchart'>
+        <div class='card'>
+          <h2>Lưu đồ Khám tim lâm sàng</h2>
+          <p>Lưu đồ được thiết kế theo nguyên tắc <strong>Progressive Disclosure</strong> và <strong>Multi-pane</strong> để giảm tải lượng thông tin. Nhấn vào các ô có mũi tên bên phải để mở rộng chi tiết.</p>
+          
+          <div class="flow-container" style="margin-top: 20px;">
+            <div class="flow-tabs">
+              <button class="flow-tab-btn active" onclick="switchPane('fc-kham-ngoai-bien')"><span class="tab-dot"></span>1. Ngoại biên & JVP</button>
+              <button class="flow-tab-btn" onclick="switchPane('fc-kham-truoc-tim')"><span class="tab-dot"></span>2. Khám trước tim (Nghe tim)</button>
+            </div>
+            
+            <!-- Tab 1: Khám ngoại biên & JVP -->
+            <div class="flow-pane active" id="fc-kham-ngoai-bien">
+              <div class="fnode fnode-start">Đánh giá chung (General Assessment)</div>
+              
+              <div class="flow-arrow">↓</div>
+              
+              <div class="fnode fnode-expandable" onclick="toggleNode('node-hands-eyes')">
+                <div class="fnode-header">
+                  <span class="fnode-title">Khám Bàn tay, Mắt, Mặt</span>
+                  <i class="fa fa-chevron-down fnode-arrow"></i>
+                </div>
+                <div class="fnode-details" id="node-hands-eyes">
+                  <ul style="margin: 0; padding-left: 20px; text-align: left;">
+                    <li><strong>Bàn tay:</strong> Tím ngoại vi, ngón tay dùi trống, tổn thương Janeway, nốt Osler.</li>
+                    <li><strong>Mắt/Mặt:</strong> Ban vàng quanh mắt, vòng giác mạc, tím trung ương (lưỡi).</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="flow-arrow">↓</div>
+
+              <div class="fnode fnode-question">
+                <div class="fnode-q">Khám Mạch & Huyết áp</div>
+              </div>
+
+              <!-- Flexbox for branching -->
+              <div style="display: flex; justify-content: space-around; width: 100%; max-width: 600px; margin: 0 auto;">
+                <div style="display: flex; flex-direction: column; align-items: center; flex: 1; padding: 0 10px;">
+                  <div class="flow-arrow flow-arrow-no" style="font-size: 0.9em; min-height: 48px; display: flex; align-items: center;">Mạch nảy mạnh<br>chìm sâu?</div>
+                  <div class="fnode fnode-danger" style="width: 100%;">Hở van Động mạch chủ</div>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; flex: 1; padding: 0 10px;">
+                  <div class="flow-arrow flow-arrow-no" style="font-size: 0.9em; min-height: 48px; display: flex; align-items: center;">Mạch chậm<br>nảy yếu?</div>
+                  <div class="fnode fnode-danger" style="width: 100%;">Hẹp van Động mạch chủ</div>
+                </div>
+              </div>
+
+              <div class="flow-arrow">↓</div>
+
+              <div class="fnode fnode-question">
+                <div class="fnode-q">Đánh giá Áp lực TM cảnh (JVP)</div>
+              </div>
+
+              <div style="display: flex; justify-content: space-around; width: 100%; max-width: 600px; margin: 0 auto;">
+                <div style="display: flex; flex-direction: column; align-items: center; flex: 1; padding: 0 10px;">
+                  <div class="flow-arrow flow-arrow-yes" style="font-size: 0.9em; min-height: 48px; display: flex; align-items: center;">Tăng (> 4cm) /<br>Sóng 'a' mất</div>
+                  <div class="fnode fnode-danger" style="width: 100%;">Suy tim phải / Rung nhĩ</div>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; flex: 1; padding: 0 10px;">
+                  <div class="flow-arrow flow-arrow-yes" style="font-size: 0.9em; min-height: 48px; display: flex; align-items: center;">Bình thường (≤ 4cm)</div>
+                  <div class="fnode fnode-success" style="width: 100%;">JVP ổn định</div>
+                </div>
+              </div>
+
+              <div class="flow-arrow">↓</div>
+              <div class="fnode fnode-action" style="cursor: pointer;" onclick="switchPane('fc-kham-truoc-tim')">Tiếp tục: Khám vùng trước tim ➔</div>
+            </div>
+
+            <!-- Tab 2: Khám vùng trước tim -->
+            <div class="flow-pane" id="fc-kham-truoc-tim" style="display:none">
+              <div class="fnode fnode-start">Khám vùng trước tim (Precordium)</div>
+              
+              <div class="flow-arrow">↓</div>
+
+              <div class="fnode fnode-expandable" onclick="toggleNode('node-look-feel')">
+                <div class="fnode-header">
+                  <span class="fnode-title">Nhìn & Sờ (Inspection & Palpation)</span>
+                  <i class="fa fa-chevron-down fnode-arrow"></i>
+                </div>
+                <div class="fnode-details" id="node-look-feel">
+                  <ul style="margin: 0; padding-left: 20px; text-align: left;">
+                    <li><strong>Nhìn:</strong> Sẹo mổ cũ, biến dạng lồng ngực.</li>
+                    <li><strong>Sờ:</strong> Xác định mỏm tim, diện thất phải (heave), rung miu (thrill) tại các ổ van.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="flow-arrow">↓</div>
+
+              <div class="fnode fnode-question">
+                <div class="fnode-q">Nghe tim (Auscultation) - Tiếng T1, T2</div>
+              </div>
+
+              <div style="display: flex; justify-content: space-around; width: 100%; max-width: 600px; margin: 0 auto;">
+                <div style="display: flex; flex-direction: column; align-items: center; flex: 1; padding: 0 10px;">
+                  <div class="flow-arrow flow-arrow-no" style="font-size: 0.9em; min-height: 30px; display: flex; align-items: center;">Có tiếng T3/T4?</div>
+                  <div class="fnode fnode-danger" style="width: 100%; font-size: 0.9em;">
+                    <strong>T3:</strong> Suy tim (>40t)<br>
+                    <strong>T4:</strong> Giảm đàn hồi thất
+                  </div>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; flex: 1; padding: 0 10px;">
+                  <div class="flow-arrow flow-arrow-yes" style="font-size: 0.9em; min-height: 30px; display: flex; align-items: center;">Bình thường</div>
+                </div>
+              </div>
+
+              <div class="flow-arrow">↓</div>
+
+              <div class="fnode fnode-question">
+                <div class="fnode-q">Phát hiện Âm thổi (Murmurs)?</div>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; width: 100%; max-width: 600px; margin: 0 auto;">
+                <div style="display: flex; flex-direction: column; align-items: center; flex: 1; padding: 0 5px;">
+                  <div class="flow-arrow flow-arrow-yes" style="font-size: 0.85em;">Tâm thu tống máu</div>
+                  <div class="fnode fnode-action" style="width: 100%; font-size: 0.9em; padding: 10px 5px;">Hẹp ĐMC<br><small>(lan lên cổ)</small></div>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; flex: 1; padding: 0 5px;">
+                  <div class="flow-arrow flow-arrow-yes" style="font-size: 0.85em;">Toàn tâm thu</div>
+                  <div class="fnode fnode-action" style="width: 100%; font-size: 0.9em; padding: 10px 5px;">Hở van 2 lá<br><small>(lan nách)</small></div>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; flex: 1; padding: 0 5px;">
+                  <div class="flow-arrow flow-arrow-yes" style="font-size: 0.85em;">Tâm trương</div>
+                  <div class="fnode fnode-action" style="width: 100%; font-size: 0.9em; padding: 10px 5px;">Hở ĐMC<br><small>(bờ trái ức)</small></div>
+                </div>
+              </div>
+
+              <div class="flow-arrow">↓</div>
+              <div class="fnode fnode-success">Khám hoàn tất - Chỉ định Siêu âm tim, ECG</div>
+            </div>
+          </div>
         </div>
       </section>
       <section class='links'>
@@ -448,6 +586,7 @@
   </footer>
   <script src="../../../../js/clinical-skill-tabs.js"></script>
   <script src="../../../../js/sidebar.js"></script>
+  <script src="../../../../js/flowchart.js"></script>
 </body>
 
 </html>

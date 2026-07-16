@@ -60,6 +60,15 @@
       <div class="left-nav-section">
         <div class="left-nav-label">Lọc nhanh chuyên khoa</div>
         <div id="spec-filter-list"></div>
+        <div style="margin-top:0.5rem;padding-top:0.5rem;border-top:1px solid var(--border-light);">
+          <button class="left-nav-link" id="sidebar-btn-subgroup" onclick="filterBySubgroupData()">
+            <span>🧬 Có dữ liệu Subgroup</span>
+            <span class="left-nav-link-badge" id="subgroup-count-sidebar">0</span>
+          </button>
+          <button class="left-nav-link" id="sidebar-btn-asian" onclick="filterByAsianData()">
+            <span>🌏 Dữ liệu Châu Á</span>
+          </button>
+        </div>
       </div>
     </nav>
 
@@ -426,6 +435,19 @@
               <label class="form-checkbox-label">
                 <input type="checkbox" id="study-asian-data"> Thử nghiệm có dữ liệu bệnh nhân Châu Á
               </label>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group" style="grid-column: 1 / -1;">
+              <label for="study-subgroups">🧬 Dữ liệu Subgroup (JSON — tùy chọn)</label>
+              <textarea id="study-subgroups" rows="4"
+                placeholder='{
+  "Châu Á": "HR 0.82 (95% CI 0.64-1.04)",
+  "Suy tim": "HR 0.65 (95% CI 0.50-0.85)",
+  "Bệnh thận mạn": "HR 0.70 (95% CI 0.51-0.96)"
+}'></textarea>
+              <div style="font-size:0.72rem;color:var(--text-faint);margin-top:4px;">Nhập dạng JSON key-value: {"Tên subgroup": "Kết quả HR/OR/RR"}. Hệ thống sẽ tự vẽ forest plot mini.</div>
             </div>
           </div>
 

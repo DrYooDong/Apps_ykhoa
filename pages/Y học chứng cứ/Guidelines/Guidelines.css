@@ -1378,3 +1378,197 @@
         margin-left: 0;
       }
     }
+
+/* ════════════════════════════════════════════════════════════════════
+   SUBGROUP EXPLORER — Panel, Table, Mini Forest Plots
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── Panel Container ── */
+.sg-panel {
+  margin-top: 1.25rem;
+  border: 1.5px solid var(--color-info, #0891b2);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--color-surface, #fff);
+  box-shadow: 0 2px 12px rgba(8,145,178,0.08);
+}
+
+.sg-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1rem;
+  background: linear-gradient(135deg, rgba(8,145,178,0.08) 0%, rgba(8,145,178,0.03) 100%);
+  border-bottom: 1px solid rgba(8,145,178,0.15);
+}
+
+.sg-panel-icon { font-size: 1.1rem; }
+.sg-panel-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #0891b2;
+  flex: 1;
+}
+.sg-panel-count {
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: rgba(8,145,178,0.12);
+  color: #0891b2;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+/* ── Table ── */
+.sg-table-wrapper {
+  overflow-x: auto;
+}
+
+.sg-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+}
+
+.sg-table thead tr {
+  background: rgba(8,145,178,0.05);
+}
+
+.sg-table th {
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #64748b;
+  border-bottom: 1px solid rgba(8,145,178,0.12);
+  white-space: nowrap;
+}
+
+.sg-table td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+  vertical-align: middle;
+}
+
+.sg-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Row tint based on direction */
+.sg-row.sg-benefit { background: rgba(22,163,74,0.03); }
+.sg-row.sg-harm    { background: rgba(220,38,38,0.03); }
+
+.sg-row:hover { background: rgba(8,145,178,0.05) !important; }
+
+/* ── Cell content ── */
+.sg-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.sg-name {
+  font-weight: 600;
+  color: var(--color-text, #1e293b);
+  font-size: 0.78rem;
+}
+
+.sg-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.sg-badge-asia {
+  background: rgba(5,150,105,0.12);
+  color: #059669;
+  border: 1px solid rgba(5,150,105,0.25);
+}
+
+.sg-result-cell { white-space: nowrap; }
+
+.sg-result-code {
+  font-family: 'Roboto Mono', 'Courier New', monospace;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #0284c7;
+  background: rgba(2,132,199,0.07);
+  padding: 2px 6px;
+  border-radius: 5px;
+  border: 1px solid rgba(2,132,199,0.15);
+}
+
+.sg-no-data {
+  color: #94a3b8;
+  font-size: 0.75rem;
+}
+
+.sg-plot-cell {
+  min-width: 310px;
+  padding: 0.35rem 0.75rem;
+}
+
+/* ── Forest Plot SVG ── */
+.sg-forest-svg {
+  border-radius: 4px;
+}
+
+/* ── Legend ── */
+.sg-legend {
+  display: flex;
+  gap: 1.25rem;
+  padding: 0.5rem 1rem;
+  border-top: 1px solid rgba(8,145,178,0.1);
+  background: rgba(8,145,178,0.02);
+}
+
+.sg-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.7rem;
+  color: #64748b;
+}
+
+.sg-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.sg-dot-green { background: #16a34a; }
+.sg-dot-red   { background: #dc2626; }
+.sg-dot-grey  { background: transparent; border: 2px dashed #94a3b8; }
+
+/* ── Form textarea for subgroups ── */
+#study-subgroups {
+  font-family: 'Roboto Mono', 'Courier New', monospace;
+  font-size: 0.78rem;
+  resize: vertical;
+  min-height: 90px;
+}
+
+/* ── Dark mode ── */
+[data-theme="dark"] .sg-panel {
+  border-color: rgba(8,145,178,0.35);
+  background: var(--color-surface);
+}
+[data-theme="dark"] .sg-result-code {
+  background: rgba(2,132,199,0.15);
+  border-color: rgba(2,132,199,0.3);
+}
+[data-theme="dark"] .sg-table th { color: #94a3b8; }
+[data-theme="dark"] .sg-panel-header {
+  background: linear-gradient(135deg, rgba(8,145,178,0.15) 0%, rgba(8,145,178,0.05) 100%);
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .sg-panel { margin-top: 0.75rem; }
+  .sg-table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .sg-legend { flex-wrap: wrap; gap: 0.5rem; }
+  .sg-plot-cell { min-width: 260px; }
+}

@@ -202,6 +202,8 @@
 | File | Vai trò | Cấp thư mục |
 |------|---------|------------|
 | `Sinh lý .../Sinhly-sinhlybenh.html` | Hub tổng | Cấp 2 |
+| `Sinh lý .../SLB_CCBS/SLB_CCBS_THA.html` | Sinh lý bệnh & Cơ chế bệnh sinh Tăng huyết áp | Cấp 3 |
+| `Sinh lý .../SLB_CCBS/SLB_CCBS_SXHD.html` | Sinh lý bệnh & Cơ chế bệnh sinh Sốt xuất huyết Dengue | Cấp 3 |
 | `Sinh lý .../Sinhly/HUONG_DAN_THIET_KE.md` | Design guide sinh lý | — |
 | `Sinh lý .../Sinhly/Phan1/SL_*.html` | Bài học sinh lý (Phần 1: TB) | Cấp 4 |
 | `Sinh lý .../Sinhly/Phan4/SL_Traodoikhi.html` | Sinh lý Trao đổi & Vận chuyển khí | Cấp 4 |

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sinh lý bệnh và Cơ chế bệnh sinh của Tăng Huyết Áp (THA): Hệ SNS, RAAS, rối loạn nội tiết, cơ chế thận, nhạy cảm muối, rối loạn chức năng nội mô, viêm mạn tính, di truyền và các đối tượng đặc biệt.">
+    <title>Sinh lý bệnh & Cơ chế bệnh sinh Tăng huyết áp – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal (Level 3 Paths) -->
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học dùng chung (Tải từ module Sinh lý - Sinh lý bệnh) -->
+    <link rel="stylesheet" href="../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../css/components/toc.css">
+
+    <!-- Scripts điều hướng hệ thống -->
+    <script src="../../../components/header.js" defer></script>
+    <script src="../../../components/footer.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+    
+    <!-- Script Sinh lý học dùng chung -->
+    <script src="../js/physio-shared.js" defer></script>
+    <script src="../../../js/toc.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../../../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh">
+                            <span class="nav-icon">🧬</span>
+                            <span class="nav-text">Sinh lý & Sinh lý bệnh</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng">
+                            <span class="nav-icon">🩺</span>
+                            <span class="nav-text">Kỹ năng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận">
+                            <span class="nav-icon">🤒</span>
+                            <span class="nav-text">Tiếp cận</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ">
+                            <span class="nav-icon">⚙️</span>
+                            <span class="nav-text">Công cụ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+                            <span class="nav-icon">💊</span>
+                            <span class="nav-text">Dược lý</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+                            <span class="nav-icon">📄</span>
+                            <span class="nav-text">Y học chứng cứ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Y học cổ truyền/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền">
+                            <span class="nav-icon">☯️</span>
+                            <span class="nav-text">Y học cổ truyền</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container" style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+                <ol class="breadcrumb-list" style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+                    <li><a href="../../../index.html">🏠 Home</a> &gt;</li>
+                    <li><a href="../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+                    <li style="color:var(--color-primary); font-weight:600;">Sinh lý bệnh &amp; Cơ chế bệnh sinh THA</li>
+                </ol>
+            </nav>
+
+            <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+            <main class="visual-container">
+                <!-- CHAPTER HEADER CARD -->
+                <div class="chapter-header">
+                    <h1>SINH LÝ BỆNH & CƠ CHẾ BỆNH SINH TĂNG HUYẾT ÁP</h1>
+                    <p>Hypertension Pathophysiology & Pathogenesis — Phân tích chi tiết các mạng lưới điều hòa thần kinh, thể dịch, nội tiết, tổn thương cơ học tại thận, cơ chế viêm mạn tính và di truyền học thúc đẩy sự hình thành tăng huyết áp.</p>
+                </div>
+
+                <p class="physio-lead">
+                    <span class="term-hl">Tăng huyết áp (THA)</span> là một bệnh lý đa yếu tố vô cùng phức tạp, phát sinh do sự mất cân bằng giữa các cơ chế co mạch – giãn mạch, bài xuất – tích tụ natri và kiểm soát thể tích dịch cơ thể. Hiểu rõ sự giao thoa giữa hệ giao cảm, hệ nội tiết và phản ứng viêm mạn tính là chìa khóa để lựa chọn phác đồ điều trị tối ưu.
+                </p>
+
+                <!-- PHẦN I: THẦN KINH & THỂ DỊCH -->
+                <div class="physio-content">
+                    <h2 id="than-kinh-the-dich" class="section-title">
+                        <span>Phần I: Điều hòa Thần kinh & Thể dịch (SNS & RAAS)</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Sự tương tác hai chiều chặt chẽ giữa <span class="term-hl">Hệ thần kinh giao cảm (SNS)</span> và <span class="term-hl">Hệ Renin-Angiotensin-Aldosterone (RAAS)</span> tạo nên trục cơ chế cốt lõi trong sự khởi phát và duy trì áp lực động mạch cao.</p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">⚡ Hệ Giao Cảm (SNS)</div>
+                                <p>Hoạt động quá mức của hệ SNS kích thích các thụ thể <span class="term-hl-secondary">Alpha-adrenergic</span> gây co mạch hệ thống, và thụ thể <span class="term-hl-secondary">Beta-adrenergic</span> ở tim làm tăng nhịp tim và cung lượng tim. Đồng thời, SNS kích thích trực tiếp ống thận tăng tái hấp thu ion Natri.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🩸 Hệ RAAS Toàn Thân & Nội Tại</div>
+                                <p>Sự kích hoạt hệ RAAS làm tăng nồng độ <span class="term-hl-secondary">Renin</span>, Angiotensinogen, men chuyển <span class="term-hl-secondary">ACE</span>, <span class="term-hl-secondary">Angiotensin II</span> và <span class="term-hl-secondary">Aldosterone</span>. Đáng chú ý, tế bào mỡ (nhất là trong béo phì) sở hữu hệ RAAS nội tại, tự sản xuất Angiotensin II độc lập góp phần giữ huyết áp cao.</p>
+                            </div>
+                        </div>
+
+                        <div class="clinical-pearl">
+                            💎 <strong>Pearl Lâm Sàng:</strong> Trục tương tác hai chiều SNS - RAAS giải thích tại sao việc ức chế một hệ thống thường gián tiếp làm giảm hoạt tính hệ thống kia. Hệ RAAS làm tăng trương lực giao cảm trung ương, và ngược lại, hệ SNS kích thích các tế bào cận cầu thận giải phóng Renin thông qua thụ thể Beta1-adrenergic.
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN II: BÉO PHÌ, KHÁNG INSULIN -->
+                <div class="physio-content">
+                    <h2 id="chuyen-hoa-noi-tiet" class="section-title">
+                        <span>Phần II: Béo phì, Kháng Insulin & Con đường Nội tiết</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Tăng cân và béo phì là nguyên nhân trực tiếp dẫn đến 65% - 75% các trường hợp tăng huyết áp nguyên phát thông qua các biến đổi chuyển hóa và bài tiết hormone.</p>
+
+                        <ul class="physio-list-arrow">
+                            <li><strong>Kháng Insulin & Tăng Insulin máu:</strong> Béo phì gây tình trạng <span class="term-hl">kháng insulin</span> bù trừ bằng cách tăng tiết insulin. Nồng độ insulin máu tăng cao kích thích mạnh mẽ hoạt động của hệ giao cảm SNS tại các cơ và mạch máu, làm co mạch và tăng huyết áp. Đây là cơ chế chung khiến THA và Đái tháo đường thường đi kèm nhau.</li>
+                            <li><strong>Con đường Leptin-Melanocortin:</strong> Leptin (được tiết ra từ mô mỡ) tăng cao ở người béo phì. Hormone này tác động lên vùng dưới đồi, kích hoạt <span class="term-hl">thụ thể melanocortin (MCR)</span> đặc hiệu, kích thích thần kinh giao cảm gây giữ natri ở thận và co thắt mạch ngoại vi.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN III: CƠ CHẾ THẬN & NHẠY CẢM MUỐI -->
+                <div class="physio-content">
+                    <h2 id="co-che-than-natri" class="section-title">
+                        <span>Phần III: Cơ chế Thận, Ứ đọng Natri & Nhạy cảm muối</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Thận đóng vai trò trung tâm trong kiểm soát huyết áp dài hạn. Bất kỳ rối loạn nào làm giảm khả năng thải Natri của thận đều dịch chuyển đường cong áp lực - bài niệu natri sang mức huyết áp cao hơn.</p>
+
+                        <div class="clinical-note-box">
+                            <h4>⚠️ Chèn ép cơ học và Vòng xoắn bệnh lý tại Thận</h4>
+                            <p>Sự tích tụ mỡ nội tạng và mỡ quanh thận chèn ép cơ học trực tiếp lên nhu mô thận. Sự giãn nở chất nền ngoại bào tủy thận làm hẹp các mạch máu thẳng (vasa recta), gây giảm dòng máu tủy thận. Lưu lượng dịch đến vùng <span class="term-hl">vết đặc (macula densa)</span> bị giảm, kích hoạt tế bào cận cầu thận tăng tiết Renin. Tiến trình này lâu dài gây chấn thương nephron, xơ cứng cầu thận, giảm diện tích lọc và làm nặng thêm tình trạng giữ natri.</p>
+                        </div>
+
+                        <h3 class="subsection-title">Tính Nhạy Cảm Với Muối (Salt-Sensitivity) & Glycocalyx</h3>
+                        <p>Khoảng 50% bệnh nhân THA có đặc tính nhạy cảm với muối. Cơ chế liên quan đến:</p>
+                        <ul class="physio-list-check">
+                            <li><strong>Tổn thương lớp áo đường Glycocalyx:</strong> Lớp <span class="term-hl-secondary">Glycocalyx</span> mang điện tích âm trên bề mặt tế bào nội mô và hồng cầu đóng vai trò như một "bộ đệm" giữ Natri trong lòng mạch. Khi nạp quá nhiều muối hoặc có viêm mạn tính, lớp glycocalyx bị phá hủy, ion Na+ tự do xâm nhập vào thành mạch, gây co thắt tế bào cơ trơn và rối loạn nội mô.</li>
+                            <li><strong>Thâm nhiễm tế bào viêm:</strong> Natri dư thừa tích tụ ở mô kẽ da và thận, thu hút các tế bào viêm, kích thích phản ứng miễn dịch cục bộ gây xơ hóa mạch máu.</li>
+                        </ul>
+
+                        <h3 class="subsection-title">Vai trò bảo vệ của Kali và Magie</h3>
+                        <p>Ngược lại với Natri, các khoáng chất Kali và Magie hoạt động như các yếu tố hạ áp tự nhiên:</p>
+                        <ul class="physio-property-list">
+                            <li>
+                                <span class="physio-property-name">Kali (K+)</span>
+                                <span class="physio-property-desc">Kali làm tăng hoạt động của bơm Na+-K+-ATPase nội mô, thúc đẩy tổng hợp NO gây giãn mạch. Kali cũng tăng bài niệu Natri qua nước tiểu, giảm sự nhạy cảm của thụ thể mạch máu với catecholamine và Angiotensin II, đồng thời ức chế NADPH oxidase để giảm stress oxy hóa.</span>
+                            </li>
+                            <li>
+                                <span class="physio-property-name">Magie (Mg2+)</span>
+                                <span class="physio-property-desc">Magie hoạt động như một chất chẹn kênh Canxi tự nhiên, ngăn Canxi đi vào tế bào cơ trơn mạch máu để giảm co mạch. Nó cũng kích thích tổng hợp Nitric Oxide (NO) và Prostaglandin E, giảm viêm mạch máu.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN IV: RỐI LOẠN NỘI MÔ & VAI TRÒ CỦA DA -->
+                <div class="physio-content">
+                    <h2 id="roi-loan-noi-mo" class="section-title">
+                        <span>Phần IV: Rối loạn chức năng nội mô & Cơ chế tại Da</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Mạch máu không đơn thuần là những ống dẫn thụ động mà là một cơ quan nội tiết động. THA đặc trưng bởi sự mất cân bằng các chất trung gian hóa học nội mô.</p>
+
+                        <ol class="physio-steps">
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">1. Giảm sinh khả dụng Nitric Oxide (NO)</span>
+                                    Tình trạng stress oxy hóa phá hủy phân tử NO hoặc ức chế enzyme tổng hợp eNOS, làm mất cơ chế giãn mạch chủ chốt.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">2. Tăng hoạt chất co mạch Endothelin-1</span>
+                                    Các tế bào nội mô bị tổn thương tăng tiết <span class="term-hl-secondary">Endothelin-1</span> và Thromboxane A2, thúc đẩy co thắt cơ trơn mạch máu kéo dài và phì đại lớp áo giữa thành mạch.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">3. Tăng sức cản mạch ngoại vi</span>
+                                    Độ đàn hồi của các động mạch lớn giảm (cứng động mạch), kết hợp sự co thắt các động mạch kháng lực nhỏ, làm tăng mạnh sức cản mạch máu ngoại vi (TPR).
+                                </div>
+                            </li>
+                        </ol>
+
+                        <h3 class="subsection-title">Cơ chế điều hòa huyết áp bất ngờ tại Da</h3>
+                        <p>Da tham gia kiểm soát huyết áp toàn thân qua hai cơ chế sinh lý bệnh độc đáo:</p>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Hệ RAAS cục bộ tại da:</strong> Da tự tổng hợp Angiotensin II tại chỗ, gây co thắt mạng lưới động mạch kháng lực dày đặc dưới da, trực tiếp tăng huyết áp toàn thân.</li>
+                            <li><strong>Cơ chế bảo tồn nước bù trừ quá mức:</strong> Khi thận bị tổn thương nhẹ gây mất nước nhẹ, da phản ứng bằng cách co mạch dưới da để ngăn chặn sự mất nước qua biểu bì. Phản ứng co mạch này làm tăng thể tích máu trung tâm, góp phần làm tăng huyết áp. Tuyến mồ hôi cũng tăng tái hấp thu Natri tương tự ống thận để giữ nước.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN V: VIÊM MẠN TÍNH & MIỄN DỊCH -->
+                <div class="physio-content">
+                    <h2 id="viem-mien-dich" class="section-title">
+                        <span>Phần V: Viêm mạn tính & Cơ chế Miễn dịch</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Hệ miễn dịch không chỉ bảo vệ cơ thể khỏi nhiễm trùng mà còn là trung tâm thúc đẩy tổn thương cơ quan đích trong tăng huyết áp.</p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🛡️ Thâm nhiễm tế bào T & Đại thực bào</div>
+                                <p>Các tế bào giao cảm kích thích lách giải phóng các tế bào miễn dịch hoạt hóa bao gồm <span class="term-hl-secondary">tế bào T CD8+</span>, <span class="term-hl-secondary">tế bào TH17</span> và đại thực bào. Chúng di chuyển đến thận, tim, não và lớp mỡ quanh mạch (PVAT), giải phóng các cytokine gây xơ hóa.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🧪 Cytokine IL-17 & IFNy & IL-1β</div>
+                                <p>Cytokine IL-17 và IFNy gây stress oxy hóa nội mô, bất hoạt NO. Trong khi đó, IL-1β được hoạt hóa từ phức hợp <span class="term-hl-secondary">NLRP3 Inflammasome</span> tại thận, gây phản ứng viêm nhu mô và tăng cường tái hấp thu Natri ở ống thận.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🕸️ Bổ thể & Hiện tượng NETosis</div>
+                                <p>Kích hoạt bổ thể đường thay thế và hiện tượng bạch cầu trung tính phóng lưới nội bào (<span class="term-hl-secondary">NETosis</span>) bám vào nội mạc, gây viêm mạch hủy hoại cấu trúc vi mạch động mạch.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN VI: HỘI CHỨNG VÀ DI TRUYỀN -->
+                <div class="physio-content">
+                    <h2 id="osa-di-truyen" class="section-title">
+                        <span>Phần VI: Hội chứng OSA & Yếu tố Di truyền</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <h3 class="subsection-title">1. Hội chứng Ngưng thở khi ngủ do tắc nghẽn (OSA)</h3>
+                        <p>Thiếu oxy ngắt quãng mạn tính trong đêm ở bệnh nhân OSA kích thích mạnh các hóa thụ thể thể cảnh. Phản xạ này làm bùng phát hoạt động thần kinh giao cảm SNS bất thường trong giấc ngủ, kích hoạt giải phóng Endothelin-1 và chất co mạch, dẫn đến tăng huyết áp kháng trị.</p>
+
+                        <h3 class="subsection-title">2. Yếu tố di truyền & Tăng huyết áp đơn gen</h3>
+                        <p>Di truyền quyết định 30% - 50% huyết áp. Trong khi THA thông thường là đa gen, các hội chứng <span class="term-hl">tăng huyết áp đơn gen</span> đặc trưng bởi tăng huyết áp khởi phát rất sớm ở người trẻ, đi kèm nồng độ Renin huyết tương cực thấp:</p>
+
+                        <div class="table-responsive">
+                            <table class="physio-table physio-table-compare">
+                                <thead>
+                                    <tr>
+                                        <th>Hội chứng Đơn gen</th>
+                                        <th>Gen đột biến</th>
+                                        <th>Cơ chế Sinh lý bệnh chính</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Hội chứng Liddle</strong></td>
+                                        <td>SCNN1B, SCNN1G</td>
+                                        <td>Hoạt hóa quá mức kênh natri biểu mô (<span class="term-hl-secondary">ENaC</span>) ở ống góp, gây tăng tái hấp thu natri cực mạnh và bài tiết kali gây hạ kali máu.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Cường Aldosterone điều trị bằng Glucocorticoid (GRA)</strong></td>
+                                        <td>CYP11B2 (chimeric gene)</td>
+                                        <td>Tạo gen lai giữa promoter của 11-beta-hydroxylase (nhạy cảm với ACTH) và gen aldosterone synthase. ACTH kích thích tuyến thượng thận sản xuất quá mức Aldosterone.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Hội chứng Gordon</strong></td>
+                                        <td>WNK1, WNK4, KLHL3, CUL3</td>
+                                        <td>Tăng hoạt động của đồng vận chuyển Na+-Cl- (NCC) ở ống lượn xa, gây giữ natri và giảm bài tiết kali (gây tăng kali máu).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Thừa Mineralocorticoid biểu kiến (AME)</strong></td>
+                                        <td>HSD11B2</td>
+                                        <td>Thiếu hụt enzyme 11-beta-HSD2 (vốn chuyển Cortisol hoạt tính thành Cortisone bất hoạt). Cortisol nồng độ cao kích hoạt thụ thể MR tương tự Aldosterone.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Cường Aldosterone gia đình tuýp III (FH III)</strong></td>
+                                        <td>KCNJ5</td>
+                                        <td>Đột biến kênh kali chỉnh lưu dòng vào trong GIRK4, gây khử cực tế bào vỏ thượng thận, tăng dòng canxi đi vào và tăng sản xuất Aldosterone.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN VII: ĐỐI TƯỢNG ĐẶC BIỆT -->
+                <div class="physio-content">
+                    <h2 id="doi-tuong-dac-biet" class="section-title">
+                        <span>Phần VII: Sinh lý bệnh trên Đối tượng Đặc biệt</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <h3 class="subsection-title">1. Sinh lý bệnh Tăng huyết áp ở Nữ giới qua các giai đoạn</h3>
+                        <p>Nội tiết tố Estrogen có vai trò bảo vệ hệ tim mạch to lớn, do đó cơ chế bệnh sinh THA ở nữ giới thay đổi rõ rệt qua các cột mốc cuộc đời:</p>
+                        
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">👧 Tuổi Vị Thành Niên</div>
+                                <p>Estrogen bảo vệ nội mô, hỗ trợ giãn mạch và chuyển hóa lipid tốt. Tuy nhiên, béo phì sớm, hội chứng buồng trứng đa nang (PCOS) hoặc sử dụng thuốc tránh thai chứa estrogen liều cao có thể làm tăng sớm độ cứng động mạch.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🤰 Giai đoạn Thai Kỳ</div>
+                                <p>Các rối loạn như đái tháo đường thai kỳ hoặc đặc biệt là <span class="term-hl">Tiền sản giật</span> (do sự xâm nhập không hoàn toàn của tế bào nuôi vào động mạch xoắn bánh nhau) gây co mạch hệ thống, phì đại thất trái cấp tính và tổn thương nội mạc mạch máu nghiêm trọng.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">👵 Giai đoạn Mãn Kinh</div>
+                                <p>Sự sụt giảm nghiêm trọng Estrogen làm mất đi yếu tố bảo vệ mạch. Kết hợp béo trung tâm, tăng nhạy cảm muối, tăng hoạt tính giao cảm SNS và hệ RAAS thúc đẩy xơ vữa động mạch, xơ cứng mạch và rối loạn chức năng tâm trương thất trái.</p>
+                            </div>
+                        </div>
+
+                        <h3 class="subsection-title">2. Cơ chế Tăng huyết áp tư thế nằm (Supine Hypertension)</h3>
+                        <div class="clinical-note-box">
+                            <h4>💡 Động học dịch thể khi nằm ngang</h4>
+                            <p>Tăng huyết áp tư thế nằm phản ánh tải lượng huyết động thực tế lên tim trong giấc ngủ. Cơ chế gồm:</p>
+                            <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0;">
+                                <li><strong>Tái phân bố thể tích dịch:</strong> Khi chuyển từ tư thế đứng sang nằm ngang, một lượng lớn dịch ở chi dưới di chuyển về tuần hoàn trung tâm, làm tăng thể tích đổ đầy thất và cung lượng tim.</li>
+                                <li><strong>Rối loạn hệ tự chủ:</strong> Ở người khỏe mạnh, phản xạ thụ thể áp lực (baroreflex) sẽ ức chế giao cảm khi nằm xuống để giảm HA. Ở người suy tự động hoặc béo phì, baroreflex bị trơ, giao cảm vẫn hoạt động mạnh gây co mạch.</li>
+                                <li><strong>Tăng lọc cầu thận ban đêm:</strong> Áp lực lọc cao gây tiểu đêm nhiều lần, kích thích ngược lại hệ RAAS vào sáng sớm.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BẢNG SO SÁNH TRẠNG THÁI -->
+                <div class="physio-content">
+                    <h2 id="so-sanh-lam-sang" class="section-title">
+                        <span>Tóm tắt: Trạng thái Sinh lý bình thường vs. Tăng huyết áp</span>
+                    </h2>
+                    
+                    <div class="table-responsive">
+                        <table class="physio-table physio-table-compare">
+                            <thead>
+                                <tr>
+                                    <th>Đặc tính hệ thống</th>
+                                    <th>Trạng thái Sinh lý bình thường</th>
+                                    <th>Trạng thái Tăng huyết áp (THA)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Trương lực mạch máu</strong></td>
+                                    <td>Giãn mạch chiếm ưu thế nhờ giải phóng liên tục Nitric Oxide (NO). Sức cản ngoại vi thấp.</td>
+                                    <td>Co mạch chiếm ưu thế do giảm NO, tăng Endothelin-1 và Angiotensin II. Tăng sức cản ngoại vi.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Đáp ứng với muối nạp vào</strong></td>
+                                    <td>Thận dễ dàng tăng bài niệu muối nước để giữ thể tích ECF ổn định mà không cần nâng HA nền.</td>
+                                    <td>Tích tụ natri trong thành mạch, giảm diện tích lọc cầu thận. Cần áp lực HA cao hơn để duy trì bài niệu (dịch chuyển đường cong bài niệu).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Hoạt tính SNS & RAAS</strong></td>
+                                    <td>Hoạt động nhịp nhàng, tăng khi stress/gắng sức và giảm sâu khi nghỉ ngơi, ngủ.</td>
+                                    <td>Hoạt hóa thường trực, mất chu kỳ sinh học ngày đêm (non-dipping), tăng hoạt ngay cả khi ngủ.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Cấu trúc thành mạch</strong></td>
+                                    <td>Thành mạch mềm mại, độ giãn nở cao, lớp glycocalyx nội mô dày bảo vệ nội mạc.</td>
+                                    <td>Tái cấu trúc thành mạch (phì đại lớp cơ trơn), xơ cứng động mạch, glycocalyx bị phá hủy gây thâm nhiễm tế bào viêm.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+    
+    <!-- Script điều khiển chung -->
+    <script src="../../../js/sidebar.js"></script>
+</body>
+
+</html>

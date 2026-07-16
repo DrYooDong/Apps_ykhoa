@@ -62,6 +62,14 @@
         fdaStatus: "FDA Approved 2016 (chỉ định giảm tử vong tim mạch)",
         sourceUrl: "https://www.nejm.org/doi/full/10.1056/nejmoa1504720",
         file: "Kho Guidelines/empa-reg.html",
+        subgroups: {
+          "Châu Á": "HR 0.82 (95% CI 0.64-1.04)",
+          "Suy tim (HF)": "HR 0.65 (95% CI 0.50-0.85)",
+          "Bệnh thận mạn (eGFR 45-90)": "HR 0.70 (95% CI 0.51-0.96)",
+          "Nhồi máu cơ tim cũ": "HR 0.85 (95% CI 0.71-1.02)",
+          "HbA1c ≥ 8.5%": "HR 0.84 (95% CI 0.69-1.03)",
+          "Tuổi ≥ 65": "HR 0.87 (95% CI 0.71-1.07)"
+        },
         asianData: true,
         bookmarked: true,
         createdAt: new Date().toISOString()
