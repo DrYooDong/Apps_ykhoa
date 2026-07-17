@@ -536,6 +536,32 @@
           </div>
 
       </main>
+      <!-- SIDEBAR WIDGET -->
+      <aside class="layout-widget-sidebar" aria-label="Widget độc chất tương tác">
+        <section class="widget-card" aria-labelledby="antidote-finder-title">
+          <div class="widget-card-title">
+            <h3 id="antidote-finder-title"><i class="fa-solid fa-skull-crossbones"></i> Tra Cứu Độc Chất</h3>
+            <span class="clock-current-time" style="background: var(--color-danger-hl, #ffe4e6); color: var(--color-danger, #e11d48);">Antidotes Finder</span>
+          </div>
+          <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin-bottom: 1rem; line-height: 1.4;">
+            Nhấp chọn một loại thuốc hoặc độc chất để tra cứu nhanh hội chứng nhiễm độc điển hình (Toxidrome) và thuốc giải độc đặc hiệu tương ứng.
+          </p>
+          <!-- Antidote list buttons -->
+          <div class="antidote-list" id="antidoteList">
+            <div class="antidote-item-btn active" data-toxic="para">Paracetamol</div>
+            <div class="antidote-item-btn" data-toxic="opioids">Opioids</div>
+            <div class="antidote-item-btn" data-toxic="benzo">Benzodiazepines</div>
+            <div class="antidote-item-btn" data-toxic="beta">Beta-blockers</div>
+            <div class="antidote-item-btn" data-toxic="phospho">Phospho hữu cơ</div>
+            <div class="antidote-item-btn" data-toxic="digoxin">Digoxin</div>
+            <div class="antidote-item-btn" data-toxic="coag">Thuốc chống đông</div>
+          </div>
+          <!-- Details Panel -->
+          <div class="physio-details-card" id="antidoteDetailsCard" style="margin-top: 0.5rem;">
+            <!-- Populated dynamically by JS -->
+          </div>
+        </section>
+      </aside>
     </div><!-- end dashboard-layout -->
   </div><!-- end main-wrapper -->
   </div><!-- end app-container -->
@@ -544,6 +570,103 @@
 
   <!-- ===================== SCRIPT ===================== -->
   <script src="../../js/module-dashboard.js" defer></script>
+
+  <!-- ===================== ANTIDOTE FINDER SCRIPT ===================== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const toxicData = {
+        para: {
+          name: "Paracetamol (Acetaminophen)",
+          toxidrome: "Buồn nôn, vã mồ hôi, hủy hoại tế bào gan (men gan AST/ALT tăng vọt sau 24-48 giờ), suy gan cấp, bệnh não gan.",
+          antidote: "N-Acetylcysteine (NAC)",
+          pearl: "Hiệu quả bảo vệ gan đạt tối đa khi dùng NAC trong vòng 8 giờ đầu sau ngộ độc. Sử dụng biểu đồ Rumack-Matthew để định hướng điều trị."
+        },
+        opioids: {
+          name: "Opioids (Morphine, Heroin, Fentanyl)",
+          toxidrome: "Tam chứng ngộ độc: Suy giảm ý thức (hôn mê), suy hô hấp nặng (nhịp thở chậm, nông), đồng tử co nhỏ tối đa (đồng tử đinh ghim).",
+          antidote: "Naloxone (Narcan)",
+          pearl: "Thời gian bán thải của Naloxone khá ngắn (30-90 phút), thường ngắn hơn độc chất. Cần theo dõi sát để tiêm nhắc lại hoặc truyền tĩnh mạch liên tục."
+        },
+        benzo: {
+          name: "Benzodiazepines (Seduxen, Diazepam)",
+          toxidrome: "Ngủ gà, lơ mơ, mất điều hòa vận động, nói ngọng, suy giảm tri giác kèm suy hô hấp nhẹ đến trung bình.",
+          antidote: "Flumazenil (Anexate)",
+          pearl: "Chống chỉ định tương đối ở người dùng benzo mạn tính hoặc có tiền sử động kinh do nguy cơ khởi phát cơn co giật kháng trị."
+        },
+        beta: {
+          name: "Beta-blockers (Propranolol, Atenolol)",
+          toxidrome: "Nhịp tim chậm, tụt huyết áp kéo dài, block dẫn truyền nhĩ thất, co thắt phế quản, hạ đường huyết, co giật.",
+          antidote: "Glucagon / Insulin liều cao truyền tĩnh mạch",
+          pearl: "Glucagon kích hoạt hệ thống cAMP không qua thụ thể beta. Cần theo dõi sát nồng độ đường máu và điện giải của bệnh nhân."
+        },
+        phospho: {
+          name: "Phospho hữu cơ (Thuốc trừ sâu)",
+          toxidrome: "Hội chứng cường cholinergic (DUMBBELS): Co đồng tử, tăng tiết dịch (nước bọt, mồ hôi, dịch phế quản), co thắt phế quản, nhịp chậm, tiêu chảy, yếu cơ.",
+          antidote: "Atropine + Pralidoxime (PAM)",
+          pearl: "Atropin hóa đến khi đạt tiêu chí phổi khô, hết co thắt phế quản, nhịp tim > 80 lần/phút. PAM giúp tái hoạt hóa men acetylcholinesterase."
+        },
+        digoxin: {
+          name: "Digoxin (Thuốc trợ tim)",
+          toxidrome: "Nhìn mờ, nhìn màu vàng xanh (xanthopsia), buồn nôn, loạn nhịp tim (nhịp nhanh thất, block tim), tăng Kali máu.",
+          antidote: "Kháng thể kháng Digoxin (Digibind / DigiFab)",
+          pearl: "Chỉ định giải độc đặc hiệu khi bệnh nhân có loạn nhịp tim đe dọa tính mạng hoặc nồng độ Kali máu > 5.0 mmol/L kèm ngộ độc cấp."
+        },
+        coag: {
+          name: "Thuốc chống đông (Heparin / Warfarin)",
+          toxidrome: "Xuất huyết tự phát (dưới da, chảy máu chân răng, đái máu, xuất huyết tiêu hóa hoặc nội sọ), PT/APTT/INR kéo dài quá mức.",
+          antidote: "Protamine sulfate (cho Heparin) | Vitamin K / Phức hợp Prothrombin cô đặc PCC (cho Warfarin)",
+          pearl: "Protamine sulfate trung hòa nhanh Heparin. Đối với Warfarin chảy máu nặng đe dọa tính mạng, cần dùng PCC kết hợp Vitamin K tĩnh mạch để bù yếu tố đông máu."
+        }
+      };
+
+      const toxicBtns = document.querySelectorAll(".antidote-item-btn");
+      const detailsCard = document.getElementById("antidoteDetailsCard");
+
+      function showToxicDetail(key) {
+        const data = toxicData[key];
+        if (!data) return;
+
+        // Toggle active class
+        toxicBtns.forEach(btn => {
+          if (btn.getAttribute("data-toxic") === key) {
+            btn.classList.add("active");
+          } else {
+            btn.classList.remove("active");
+          }
+        });
+
+        // Render detail
+        detailsCard.innerHTML = `
+          <div class="physio-details-header">
+            <h4 style="color: var(--color-danger); font-weight: 700;"><span>${data.name}</span></h4>
+            <span class="element-badge" style="background-color: var(--color-danger);">Giải độc</span>
+          </div>
+          <div class="meridian-detail-row">
+            <strong>Hội chứng lâm sàng (Toxidrome):</strong>
+            <p class="meridian-detail-desc" style="color: var(--color-text);">${data.toxidrome}</p>
+          </div>
+          <div class="meridian-detail-row" style="border-top: 1px dashed var(--color-divider); padding-top: 0.5rem; margin-top: 0.5rem;">
+            <strong>Thuốc giải độc đặc hiệu:</strong>
+            <p class="meridian-detail-desc" style="color: var(--color-primary); font-weight: 700; font-size: var(--text-xs);">${data.antidote}</p>
+          </div>
+          <div class="meridian-detail-row" style="margin-bottom:0; border-top: 1px dashed var(--color-divider); padding-top: 0.5rem; margin-top: 0.5rem;">
+            <strong>Lưu ý lâm sàng:</strong>
+            <p class="meridian-detail-desc" style="color: var(--color-text-muted);">💡 ${data.pearl}</p>
+          </div>
+        `;
+      }
+
+      // Initialize with first item
+      showToxicDetail("para");
+
+      // Click event
+      toxicBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          showToxicDetail(btn.getAttribute("data-toxic"));
+        });
+      });
+    });
+  </script>
 </body>
 
 </html>

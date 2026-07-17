@@ -491,6 +491,193 @@
     [data-theme="dark"] .hub-spec-lookup-card:hover {
       box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
     }
+
+    /* ============================================================
+       EBM INTERACTIVE SIDEBAR & PYRAMID
+    ============================================================ */
+    .ebm-layout-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 1.75rem;
+      align-items: start;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 1200px) {
+      .ebm-layout-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .layout-widget-sidebar {
+      position: sticky;
+      top: calc(60px + 1.5rem);
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+      scrollbar-width: thin;
+    }
+
+    .widget-card {
+      background: var(--hub-surface);
+      border: 1px solid var(--hub-border);
+      border-radius: var(--hub-radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--hub-tr);
+    }
+
+    .widget-card:hover {
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
+      border-color: var(--hub-blue);
+    }
+
+    .widget-card-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--hub-surface-2);
+      padding-bottom: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .widget-card-title h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 0;
+      color: var(--hub-text);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .clock-current-time {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .pyramid-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.35rem;
+      margin: 1.5rem 0;
+    }
+
+    .pyramid-level {
+      width: var(--level-width, 100%);
+      background: var(--level-bg, var(--hub-blue));
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      text-align: center;
+      padding: 0.65rem 0.25rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-sm);
+      clip-path: polygon(var(--clip-left, 0%) 0%, var(--clip-right, 100%) 0%, 100% 100%, 0% 100%);
+    }
+
+    .pyramid-level:hover {
+      transform: scale(1.03);
+      filter: brightness(1.1);
+    }
+
+    .pyramid-level.active {
+      transform: scale(1.05);
+      box-shadow: 0 0 12px rgba(124, 58, 237, 0.4);
+      filter: brightness(1.1);
+      border: 1.5px solid #fff;
+    }
+
+    .physio-details-card {
+      background: var(--hub-surface-2);
+      border: 1px solid var(--hub-border);
+      border-radius: 12px;
+      padding: 1.1rem;
+      margin-top: 1rem;
+      transition: all var(--hub-tr);
+    }
+
+    .physio-details-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.65rem;
+      border-bottom: 1px solid var(--hub-border);
+      padding-bottom: 0.5rem;
+    }
+
+    .physio-details-header h4 {
+      margin: 0;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--hub-text);
+    }
+
+    .ebm-badge-row {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .ebm-badge {
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 20px;
+      color: #fff;
+    }
+
+    .ebm-badge.level { background: var(--hub-blue); }
+    .ebm-badge.recommend { background: var(--hub-purple); }
+
+    .meridian-detail-row {
+      margin-bottom: 0.65rem;
+      font-size: 0.78rem;
+      line-height: 1.45;
+    }
+
+    .meridian-detail-row strong {
+      color: var(--hub-text);
+    }
+
+    .meridian-detail-desc {
+      color: var(--hub-text-muted);
+      margin: 0.15rem 0 0 0;
+    }
+
+    [data-theme="dark"] .widget-card:hover {
+      border-color: var(--hub-purple);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    /* EBM Wheel specific styling */
+    .ebm-wheel-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 1.25rem 0;
+      position: relative;
+    }
+    .ebm-svg {
+      width: 170px;
+      height: 170px;
+      transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
+    }
+    .ebm-sector {
+      cursor: pointer;
+      transition: opacity 0.2s, stroke-width 0.2s;
+    }
+    .ebm-sector:hover {
+      opacity: 1 !important;
+    }
+    .ebm-sector.active {
+      opacity: 1 !important;
+    }
   </style>
 </head>
 
@@ -615,9 +802,15 @@
         </div>
       </section>
 
-      <!-- 2 MODULE CARDS -->
-      <h2 class="hub-section-title">📦 Các Mô-đun Chính</h2>
-      <div class="hub-modules">
+      <!-- TWO COLUMN LAYOUT -->
+      <div class="ebm-layout-grid">
+        
+        <!-- LEFT COLUMN: MODULES & SPECIALTY GRID -->
+        <div style="display: flex; flex-direction: column; gap: 1rem; width: 100%; min-width: 0;">
+
+          <!-- 2 MODULE CARDS -->
+          <h2 class="hub-section-title" style="margin-top: 0;">📦 Các Mô-đun Chính</h2>
+          <div class="hub-modules">
 
         <!-- Card 1: Thống kê y học -->
         <a href="Thống kê y học/Thongkeyhoc.html" class="hub-module-card stat" id="card-thongke"
@@ -854,6 +1047,49 @@
 
       </div>
 
+        </div>
+
+        <!-- RIGHT COLUMN: SIDEBAR WIDGET -->
+        <aside class="layout-widget-sidebar">
+          <section class="widget-card" aria-labelledby="ebm-wheel-title">
+            <div class="widget-card-title">
+              <h3 id="ebm-wheel-title"><i class="fa-solid fa-rotate"></i> Chu Trình EBM</h3>
+              <span class="clock-current-time" style="background: var(--hub-purple-light, rgba(124, 58, 237, 0.15)); color: var(--hub-purple, #7c3aed);">EBM 5 As</span>
+            </div>
+            <p style="font-size: var(--text-xs); color: var(--hub-text-muted); margin-bottom: 1rem; line-height: 1.4;">
+              Nhấp chọn từng bước trong chu trình thực hành Y học chứng cứ (5 As) trên vòng xoay để tra cứu mục tiêu và công cụ hỗ trợ.
+            </p>
+            
+            <div class="ebm-wheel-container">
+              <svg viewBox="0 0 200 200" class="ebm-svg" id="ebmSvg" xmlns="http://www.w3.org/2000/svg">
+                <!-- Sector 1: ASK (Hỏi) - Angle -90 to -18 (active) -->
+                <path class="ebm-sector active" data-index="0" d="M 100 100 L 100 20 A 80 80 0 0 1 176.08 75.28 Z" fill="#7c3aed" opacity="0.85" stroke="#fff" stroke-width="1.5" />
+                <!-- Sector 2: ACQUIRE (Tìm) - Angle -18 to 54 -->
+                <path class="ebm-sector" data-index="1" d="M 100 100 L 176.08 75.28 A 80 80 0 0 1 147.02 164.72 Z" fill="#06b6d4" opacity="0.85" stroke="#fff" stroke-width="1.5" />
+                <!-- Sector 3: APPRAISE (Đánh giá) - Angle 54 to 126 -->
+                <path class="ebm-sector" data-index="2" d="M 100 100 L 147.02 164.72 A 80 80 0 0 1 52.98 164.72 Z" fill="#3b82f6" opacity="0.85" stroke="#fff" stroke-width="1.5" />
+                <!-- Sector 4: APPLY (Áp dụng) - Angle 126 to 198 -->
+                <path class="ebm-sector" data-index="3" d="M 100 100 L 52.98 164.72 A 80 80 0 0 1 23.92 75.28 Z" fill="#10b981" opacity="0.85" stroke="#fff" stroke-width="1.5" />
+                <!-- Sector 5: ASSESS (Đánh giá lại) - Angle 198 to 270 (which is -90) -->
+                <path class="ebm-sector" data-index="4" d="M 100 100 L 23.92 75.28 A 80 80 0 0 1 100 20 Z" fill="#f59e0b" opacity="0.85" stroke="#fff" stroke-width="1.5" />
+                
+                <!-- Center Donut cutout overlay -->
+                <circle cx="100" cy="100" r="40" fill="var(--hub-surface)" stroke="var(--hub-border)" stroke-width="1.5" />
+                <!-- Center text indicators -->
+                <text x="100" y="96" text-anchor="middle" id="ebmCenterLabel" font-size="8px" font-weight="700" fill="var(--hub-text-muted)" style="letter-spacing: 0.5px; text-transform: uppercase;">Chu trình</text>
+                <text x="100" y="112" text-anchor="middle" id="ebmCenterName" font-size="10px" font-weight="800" fill="var(--hub-text)">ASK</text>
+              </svg>
+            </div>
+
+            <!-- Details Panel -->
+            <div class="physio-details-card" id="ebmDetailsCard" style="background: var(--hub-surface-2); border-radius: 12px; border: 1px solid var(--hub-border); margin-top: 0.5rem;">
+              <!-- Populated dynamically by JS -->
+            </div>
+          </section>
+        </aside>
+
+      </div>
+
     </div>
   </div>
 
@@ -865,6 +1101,112 @@
   </footer>
 
   <div id="footer-placeholder" data-footer-path="../../components/footer.html"></div>
+
+  <!-- ===================== EBM CYCLE WHEEL SCRIPT ===================== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const ebmData = [
+        {
+          abbr: "ASK",
+          title: "Bước 1: ASK - Đặt câu hỏi PICO",
+          color: "#7c3aed",
+          goal: "Chuyển đổi tình huống lâm sàng mơ hồ thành một câu hỏi có cấu trúc rõ ràng để định hướng tìm kiếm thông tin khoa học.",
+          tools: "Mô hình câu hỏi PICO (P - Patient, I - Intervention, C - Comparison, O - Outcome). Phân loại câu hỏi: Điều trị, Chẩn đoán, Tiên lượng, Tác hại.",
+          pearl: "Đặt câu hỏi càng cụ thể và khu trú thì kết quả tìm kiếm y văn càng chính xác và tiết kiệm thời gian."
+        },
+        {
+          abbr: "ACQUIRE",
+          title: "Bước 2: ACQUIRE - Tìm kiếm bằng chứng",
+          color: "#06b6d4",
+          goal: "Tìm kiếm các bằng chứng khoa học có chất lượng tốt nhất trong các cơ sở dữ liệu y văn uy tín thế giới.",
+          tools: "Cơ sở dữ liệu: PubMed/MEDLINE, Cochrane Library, UpToDate, Embase. Kỹ thuật tìm kiếm: Toán tử Boolean (AND, OR, NOT), nhãn trường [Mesh], [Title/Abstract].",
+          pearl: "Ưu tiên tìm từ đỉnh tháp bằng chứng xuống dưới: Bắt đầu bằng Guidelines, Systematic Reviews trước khi tìm các nghiên cứu thử nghiệm đơn lẻ (RCT)."
+        },
+        {
+          abbr: "APPRAISE",
+          title: "Bước 3: APPRAISE - Đánh giá bằng chứng",
+          color: "#3b82f6",
+          goal: "Đánh giá phê bình nghiên cứu y học tìm được để xác định độ tin cậy khoa học và giá trị ứng dụng lâm sàng thực tế.",
+          tools: "Tiêu chuẩn 3Q: Validity (Tính chân thực - Thiết kế ngẫu nhiên hóa, làm mù), Impact (Mức độ tác động - Chỉ số OR, RR, HR, NNT), Applicability (Khả năng áp dụng).",
+          pearl: "Sử dụng các bảng kiểm chuẩn hóa quốc tế như CASP (cho RCT, Cohort, Bệnh chứng) hoặc QUADAS (cho chẩn đoán) để đánh giá hệ thống."
+        },
+        {
+          abbr: "APPLY",
+          title: "Bước 4: APPLY - Áp dụng bằng chứng",
+          color: "#10b981",
+          goal: "Tích hợp bằng chứng khoa học tốt nhất đã thẩm định vào việc đưa ra quyết định điều trị cụ thể cho người bệnh.",
+          tools: "Mô hình tam giác thực hành EBM: (1) Bằng chứng tốt nhất, (2) Kinh nghiệm lâm sàng của bác sĩ, (3) Giá trị và nguyện vọng của người bệnh trong hoàn cảnh cụ thể.",
+          pearl: "Y văn chỉ ra những gì có thể làm trên lý thuyết, nhưng kinh nghiệm của bác sĩ và ý chí của bệnh nhân mới quyết định hành động tối ưu nhất."
+        },
+        {
+          abbr: "ASSESS",
+          title: "Bước 5: ASSESS - Đánh giá hiệu quả",
+          color: "#f59e0b",
+          goal: "Tự đánh giá năng lực thực hành lâm sàng và đo lường kết quả cải thiện thực tế trên bệnh nhân sau khi áp dụng y học chứng cứ.",
+          tools: "Đo lường các chỉ số kết cục (Outcomes). Nhật ký lâm sàng cá nhân. Họp hội chẩn rút kinh nghiệm chuyên môn và cải tiến chất lượng dịch vụ điều trị.",
+          pearl: "Đây là bước đóng chu trình để liên tục hoàn thiện và cập nhật kiến thức, nâng cao chất lượng tay nghề bác sĩ."
+        }
+      ];
+
+      const sectors = document.querySelectorAll(".ebm-sector");
+      const ebmSvg = document.getElementById("ebmSvg");
+      const centerName = document.getElementById("ebmCenterName");
+      const detailsCard = document.getElementById("ebmDetailsCard");
+
+      function highlightSector(index) {
+        // Toggle active class
+        sectors.forEach((sec, idx) => {
+          if (idx === index) {
+            sec.classList.add("active");
+            sec.setAttribute("stroke-width", "2.5");
+            sec.setAttribute("stroke", "var(--hub-text)");
+          } else {
+            sec.classList.remove("active");
+            sec.setAttribute("stroke-width", "1.5");
+            sec.setAttribute("stroke", "#fff");
+          }
+        });
+
+        const data = ebmData[index];
+        
+        // Update SVG center text
+        centerName.innerText = data.abbr;
+        centerName.setAttribute("fill", data.color);
+
+        // Render details card
+        detailsCard.innerHTML = `
+          <div class="physio-details-header" style="border-bottom-color: var(--hub-border); margin-bottom: 0.5rem; padding-bottom: 0.25rem;">
+            <h4 style="font-size: 0.88rem; font-weight: 700; color: ${data.color}; margin: 0;">${data.title}</h4>
+          </div>
+          <div class="meridian-detail-row" style="margin-bottom: 0.5rem; font-size: 0.78rem;">
+            <strong>Mục tiêu cốt lõi:</strong>
+            <p class="meridian-detail-desc" style="margin:0.15rem 0 0 0; color: var(--hub-text);">${data.goal}</p>
+          </div>
+          <div class="meridian-detail-row" style="margin-bottom: 0.5rem; font-size: 0.78rem;">
+            <strong>Công cụ áp dụng:</strong>
+            <p class="meridian-detail-desc" style="margin:0.15rem 0 0 0; color: var(--hub-text-muted);">${data.tools}</p>
+          </div>
+          <div class="meridian-detail-row" style="margin-bottom: 0; border-top: 1px dashed var(--hub-border); padding-top: 0.5rem; margin-top: 0.5rem; font-size: 0.78rem;">
+            <strong>Mẹo lâm sàng thực tế:</strong>
+            <p class="meridian-detail-desc" style="margin:0.15rem 0 0 0; color: ${data.color}; font-weight: 500;">💡 ${data.pearl}</p>
+          </div>
+        `;
+      }
+
+      // Add click listeners to sectors
+      sectors.forEach((sec, idx) => {
+        sec.addEventListener("click", () => {
+          // 5 sectors = 72 degrees each. Rotate so clicked is at top (offset -0 deg)
+          const targetAngle = -idx * 72;
+          ebmSvg.style.transform = `rotate(${targetAngle}deg)`;
+          highlightSector(idx);
+        });
+      });
+
+      // Initialize with sector 0 (ASK)
+      highlightSector(0);
+    });
+  </script>
 </body>
 
 </html>

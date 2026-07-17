@@ -1655,6 +1655,30 @@
                         </section>
                     </div>
                 </main>
+                <!-- SIDEBAR WIDGET -->
+                <aside class="layout-widget-sidebar" aria-label="Widget sinh lý tương tác">
+                    <section class="widget-card" aria-labelledby="physio-clock-title">
+                        <div class="widget-card-title">
+                            <h3 id="physio-clock-title"><i class="fa-solid fa-clock"></i> Nhịp Sinh Học Cơ Thể</h3>
+                            <span class="clock-current-time" id="physioCurrentTime">Giờ hệ thống: --:--:--</span>
+                        </div>
+                        <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin-bottom: 1rem; line-height: 1.4;">
+                            Biểu đồ nhịp sinh học cơ thể 24 giờ. Canh giờ sinh học hiện tại tự động kích hoạt. Bạn có thể chọn mốc giờ khác để khám phá.
+                        </p>
+                        <div class="physio-wheel-container">
+                            <div class="physio-wheel" id="physioWheel">
+                                <div class="physio-center" id="physioCenter">
+                                    <span class="center-label" id="physioStatus">Đang chạy</span>
+                                    <span class="center-name" id="physioRhythmName">Đang tải...</span>
+                                    <span class="center-time" id="physioRhythmTime">--:--</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="physio-details-card" id="physioDetailsCard">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+                    </section>
+                </aside>
             </div>
 
         </div>
@@ -1670,6 +1694,257 @@
 
     <!--SCRIPT-->
     <script src="../../js/module-dashboard.js" defer></script>
+
+    <!-- ===================== PHYSIOLOGY BIOLOGICAL CLOCK SCRIPT ===================== -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const physioClockData = [
+                {
+                    timeStr: "00:00 - 02:00",
+                    startHour: 0,
+                    endHour: 2,
+                    label: "02h",
+                    name: "Ngủ sâu nhất",
+                    desc: "Tần số tim, nhịp thở và huyết áp giảm xuống tối thiểu. Hoạt động của hệ thần kinh giao cảm bị ức chế, nhường chỗ cho phó giao cảm để tái tạo năng lượng.",
+                    advice: "Tuyến yên tăng tiết GH (Growth Hormone) giúp phục hồi tế bào và phát triển cơ thể mạnh mẽ nhất."
+                },
+                {
+                    timeStr: "02:00 - 04:30",
+                    startHour: 2,
+                    endHour: 4.5,
+                    label: "04h",
+                    name: "Thân nhiệt thấp nhất",
+                    desc: "Nhiệt độ trung tâm cơ thể giảm xuống mức thấp nhất (khoảng 36.0-36.2°C) do vùng dưới đồi điều chỉnh điểm đặt nhiệt độ nhằm tiết kiệm năng lượng chuyển hóa.",
+                    advice: "Các cơn hen phế quản co thắt thường xảy ra nặng nhất thời điểm này do nồng độ cortisol nội sinh giảm thấp."
+                },
+                {
+                    timeStr: "04:30 - 06:00",
+                    startHour: 4.5,
+                    endHour: 6,
+                    label: "06h",
+                    name: "Huyết áp tăng nhanh",
+                    desc: "Hệ giao cảm kích hoạt trở lại làm giải phóng các catecholamine (adrenalin, noradrenalin), gây co mạch và tăng cung lượng tim, tăng huyết áp nhanh chóng.",
+                    advice: "Múi giờ này có nguy cơ tai biến mạch máu não và nhồi máu cơ tim cao nhất ở người lớn tuổi do huyết áp tăng vọt."
+                },
+                {
+                    timeStr: "06:00 - 07:30",
+                    startHour: 6,
+                    endHour: 7.5,
+                    label: "07h",
+                    name: "Ngừng tiết Melatonin",
+                    desc: "Tín hiệu ánh sáng từ võng mạc truyền qua nhân trên chéo (SCN) đến tuyến tùng, ức chế hoàn toàn sự tổng hợp và giải phóng hormone gây ngủ Melatonin.",
+                    advice: "Tiếp xúc với ánh sáng tự nhiên giờ này giúp thiết lập lại đồng hồ sinh học cơ thể hiệu quả nhất."
+                },
+                {
+                    timeStr: "07:30 - 09:00",
+                    startHour: 7.5,
+                    endHour: 9,
+                    label: "08h",
+                    name: "Nhu động ruột kích hoạt",
+                    desc: "Nhu động ruột già co bóp mạnh dưới tác dụng của phản xạ dạ dày - đại tràng sau ăn sáng, thúc đẩy việc bài tiết chất thải.",
+                    advice: "Thời điểm vàng để thức dậy, uống nước ấm và bài tiết giúp làm sạch đại tràng, giảm độc tố tích tụ."
+                },
+                {
+                    timeStr: "09:00 - 12:00",
+                    startHour: 9,
+                    endHour: 12,
+                    label: "10h",
+                    name: "Tỉnh táo cao độ",
+                    desc: "Nồng độ cortisol huyết tương đạt đỉnh sinh lý. Khả năng tập trung tư duy logic, phản xạ nhanh và trí nhớ ngắn hạn hoạt động tối đa.",
+                    advice: "Khoảng thời gian tốt nhất trong ngày cho công việc tư duy logic, học tập các lý thuyết y khoa phức tạp."
+                },
+                {
+                    timeStr: "12:00 - 14:30",
+                    startHour: 12,
+                    endHour: 14.5,
+                    label: "13h",
+                    name: "Phối hợp tốt nhất",
+                    desc: "Hệ tuần hoàn và trương lực cơ bắp duy trì trạng thái ổn định. Năng lượng từ bữa trưa được hấp thu giúp cơ bắp linh hoạt.",
+                    advice: "Thích hợp cho các công việc thực hành kỹ năng lâm sàng (nghe tim phổi, khâu vết thương) đòi hỏi sự tỉ mỉ."
+                },
+                {
+                    timeStr: "14:30 - 16:30",
+                    startHour: 14.5,
+                    endHour: 16.5,
+                    label: "15h",
+                    name: "Phản xạ nhanh nhất",
+                    desc: "Tốc độ dẫn truyền tín hiệu thần kinh cơ và khả năng xử lý thông tin của hệ thần kinh trung ương đạt tốc độ nhanh nhất trong ngày.",
+                    advice: "Thời điểm lý tưởng để luyện tập lâm sàng hoặc các công việc đòi hỏi tốc độ xử lý nhanh."
+                },
+                {
+                    timeStr: "16:30 - 18:30",
+                    startHour: 16.5,
+                    endHour: 18.5,
+                    label: "17h",
+                    name: "Hiệu suất Tim & Cơ",
+                    desc: "Dung tích sống của phổi đạt mức tối đa, lực cơ bắp khỏe nhất và sức co bóp cơ tim tối ưu, tạo điều kiện vận động hiệu quả.",
+                    advice: "Thời điểm vàng để luyện tập thể chất giúp cải thiện thể lực và tuần hoàn tối đa."
+                },
+                {
+                    timeStr: "18:30 - 20:30",
+                    startHour: 18.5,
+                    endHour: 20.5,
+                    label: "19h",
+                    name: "Huyết áp cao nhất",
+                    desc: "Nhiệt độ trung tâm cơ thể và huyết áp động mạch đạt đỉnh sinh lý cuối ngày trước khi bắt đầu chu trình hạ nhiệt ban đêm.",
+                    advice: "Nên ăn tối nhẹ nhàng, tránh ăn quá muộn hoặc ăn quá nhiều chất béo để giảm tải áp lực cho hệ tuần hoàn."
+                },
+                {
+                    timeStr: "20:30 - 22:30",
+                    startHour: 20.5,
+                    endHour: 22.5,
+                    label: "21h",
+                    name: "Bắt đầu tiết Melatonin",
+                    desc: "Tuyến tùng bắt đầu tổng hợp và bài tiết Melatonin vào tuần hoàn khi ánh sáng môi trường giảm, báo hiệu cho các cơ quan chuẩn bị ngủ.",
+                    advice: "Nên tắt bớt đèn, hạn chế tiếp xúc ánh sáng xanh từ điện thoại để cơ thể chuẩn bị đi vào giấc ngủ tự nhiên."
+                },
+                {
+                    timeStr: "22:30 - 00:00",
+                    startHour: 22.5,
+                    endHour: 24,
+                    label: "23h",
+                    name: "Nhu động ruột giảm",
+                    desc: "Nhu động dạ dày - ruột giảm thiểu tối đa, trương lực cơ tiêu hóa hạ thấp để tránh trào ngược thực quản khi nằm ngủ.",
+                    advice: "Tránh ăn đêm sau 22:30 vì dễ gây tích tụ mỡ thừa, quá tải cho tuyến tụy và gây trào ngược dạ dày thực quản."
+                }
+            ];
+
+            const wheelEl = document.getElementById("physioWheel");
+            const rhythmNameEl = document.getElementById("physioRhythmName");
+            const rhythmTimeEl = document.getElementById("physioRhythmTime");
+            const detailsCardEl = document.getElementById("physioDetailsCard");
+            const currentTimeEl = document.getElementById("physioCurrentTime");
+            const statusEl = document.getElementById("physioStatus");
+
+            let activeIndex = -1;
+            let userSelected = false;
+
+            // Render 12 hour markers on the circular face
+            function renderWheel() {
+                const radius = 86; // px
+                const center = 120; // px
+
+                physioClockData.forEach((data, index) => {
+                    const marker = document.createElement("div");
+                    marker.className = "physio-marker";
+                    marker.id = `physio-marker-${index}`;
+                    marker.innerText = data.label;
+                    marker.title = `${data.name} (${data.timeStr})`;
+
+                    // Angle calculation: start from index 0 at 90deg (which represents 00:00 - 02:00)
+                    const angle = 90 + (index * 30);
+                    const rad = (angle * Math.PI) / 180;
+                    
+                    const x = center + radius * Math.cos(rad) - 16;
+                    const y = center + radius * Math.sin(rad) - 16;
+
+                    marker.style.left = `${x}px`;
+                    marker.style.top = `${y}px`;
+
+                    marker.addEventListener("click", () => {
+                        userSelected = true;
+                        statusEl.innerText = "Tra cứu";
+                        statusEl.style.color = "var(--color-cyan)";
+                        highlightRhythm(index);
+                    });
+
+                    wheelEl.appendChild(marker);
+                });
+            }
+
+            function highlightRhythm(index) {
+                // Clear active markers
+                document.querySelectorAll(".physio-marker").forEach(m => m.classList.remove("active"));
+                
+                const marker = document.getElementById(`physio-marker-${index}`);
+                if (marker) marker.classList.add("active");
+
+                const data = physioClockData[index];
+                activeIndex = index;
+
+                // Update wheel center
+                rhythmNameEl.innerText = data.name;
+                rhythmTimeEl.innerText = data.timeStr;
+
+                // Update detail card
+                detailsCardEl.innerHTML = `
+                    <div class="physio-details-header">
+                        <h4>🧬 <span>${data.name}</span></h4>
+                        <span class="element-badge" style="background-color: var(--color-cyan)">Tây y Sinh lý</span>
+                    </div>
+                    <div class="meridian-detail-row">
+                        <strong>Mốc sinh học:</strong> <span>${data.timeStr}</span>
+                    </div>
+                    <div class="meridian-detail-row">
+                        <strong>Cơ chế sinh lý:</strong>
+                        <p class="meridian-detail-desc">${data.desc}</p>
+                    </div>
+                    <div class="meridian-detail-row" style="margin-bottom:0; border-top: 1px dashed var(--color-divider); padding-top: 0.5rem; margin-top: 0.5rem;">
+                        <strong>Ứng dụng lâm sàng:</strong>
+                        <p class="meridian-detail-desc" style="color:var(--color-cyan); font-weight:500;">💡 ${data.advice}</p>
+                    </div>
+                `;
+            }
+
+            function checkSystemTime() {
+                const now = new Date();
+                const hrs = now.getHours();
+                const mins = now.getMinutes();
+                const secs = now.getSeconds();
+                
+                currentTimeEl.innerText = `Giờ hệ thống: ${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+
+                if (userSelected) return;
+
+                // Find active phase index
+                let activeIdx = 0;
+                const decimalTime = hrs + mins/60;
+
+                for (let i = 0; i < physioClockData.length; i++) {
+                    const item = physioClockData[i];
+                    if (item.startHour === 22.5) {
+                        // 22:30 - 00:00 (special case)
+                        if (decimalTime >= 22.5 || decimalTime < 0) {
+                            activeIdx = i;
+                            break;
+                        }
+                    } else if (item.startHour === 0) {
+                        if (decimalTime >= 0 && decimalTime < 2) {
+                            activeIdx = i;
+                            break;
+                        }
+                    } else {
+                        if (decimalTime >= item.startHour && decimalTime < item.endHour) {
+                            activeIdx = i;
+                            break;
+                        }
+                    }
+                }
+
+                if (activeIdx !== activeIndex) {
+                    statusEl.innerText = "Đang chạy";
+                    statusEl.style.color = "var(--color-text-faint)";
+                    highlightRhythm(activeIdx);
+                }
+            }
+
+            renderWheel();
+            checkSystemTime();
+            setInterval(checkSystemTime, 1000);
+
+            // Double click center to resume automatic system time tracking
+            const centerEl = document.getElementById("physioCenter");
+            centerEl.style.cursor = "pointer";
+            centerEl.title = "Click đúp để quay lại giờ tự động";
+            centerEl.addEventListener("dblclick", () => {
+                userSelected = false;
+                activeIndex = -1;
+                statusEl.innerText = "Đang chạy";
+                statusEl.style.color = "var(--color-text-faint)";
+                checkSystemTime();
+            });
+        });
+    </script>
 
     <div id="footer-placeholder" data-footer-path="../../components/footer.html"></div>
 </body>

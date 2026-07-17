@@ -444,6 +444,38 @@
                     </div>
                   </div>
                 </a>
+                <!-- C3: Khó thở -->
+                <a href="2. Triệu chứng/Than phiền Hô hấp - Tim mạch/TC_Khotho.html" class="specialty-card info-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-info">
+                      <h3>Khó thở</h3>
+                    </div>
+                  </div>
+                </a>
+                <!-- C4: Đau ngực -->
+                <a href="2. Triệu chứng/Than phiền Hô hấp - Tim mạch/TC_Daunguc.html" class="specialty-card info-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-info">
+                      <h3>Đau ngực</h3>
+                    </div>
+                  </div>
+                </a>
+                <!-- C5: Vàng da -->
+                <a href="2. Triệu chứng/Than phiền Toàn thân/TC_Vangda.html" class="specialty-card info-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-info">
+                      <h3>Vàng da</h3>
+                    </div>
+                  </div>
+                </a>
+                <!-- C6: Phù -->
+                <a href="2. Triệu chứng/Than phiền Toàn thân/TC_Phu.html" class="specialty-card info-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-info">
+                      <h3>Phù</h3>
+                    </div>
+                  </div>
+                </a>
               </div>
             </div>
           </section>
@@ -628,6 +660,51 @@
             </div>
           </section>
         </main>
+        <!-- SIDEBAR WIDGET -->
+        <aside class="layout-widget-sidebar" aria-label="Widget tiếp cận triệu chứng tương tác">
+          <section class="widget-card" aria-labelledby="symptom-checker-title">
+            <div class="widget-card-title">
+              <h3 id="symptom-checker-title"><i class="fa-solid fa-triangle-exclamation"></i> Ma Trận Triệu Chứng</h3>
+              <span class="clock-current-time" style="background: var(--color-danger-hl, #ffe4e6); color: var(--color-danger, #e11d48);">Cấp Cứu Red Flags</span>
+            </div>
+            <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin-bottom: 1rem; line-height: 1.4;">
+              Chọn một triệu chứng chính để tra cứu nhanh các <strong>Dấu hiệu cảnh báo đỏ (Red Flags)</strong> nguy hiểm tính mạng và hướng xử trí.
+            </p>
+            <div class="symptom-select-container">
+              <select id="symptomSelect" class="symptom-select" aria-label="Lựa chọn triệu chứng lâm sàng">
+                <option value="sot">Triệu chứng: Sốt</option>
+                <option value="daubung">Triệu chứng: Đau bụng</option>
+                <option value="khotho">Triệu chứng: Khó thở</option>
+                <option value="daunguc">Triệu chứng: Đau ngực</option>
+                <option value="vangda">Triệu chứng: Vàng da</option>
+                <option value="phu">Triệu chứng: Phù</option>
+              </select>
+            </div>
+            <!-- Red Flags Glowing Card -->
+            <div class="red-flags-container">
+              <div class="red-flags-title">
+                <i class="fa-solid fa-circle-exclamation"></i> Dấu Hiệu Cảnh Báo Đỏ (Red Flags)
+              </div>
+              <ul class="red-flags-list" id="redFlagsList">
+                <!-- Dynamic Content -->
+              </ul>
+            </div>
+            <!-- Differential Diagnoses -->
+            <div class="diff-diag-container">
+              <div class="diff-diag-title">
+                <i class="fa-solid fa-list-check"></i> Chẩn Đoán Phân Biệt Chính
+              </div>
+              <ul class="diff-diag-list" id="diffDiagList">
+                <!-- Dynamic Content -->
+              </ul>
+            </div>
+            <!-- Next Step Action Link -->
+            <a href="#" class="specialty-card-action" id="symptomActionBtn" style="display: flex; justify-content: space-between; align-items: center; text-decoration: none; background: var(--color-surface-2); padding: 0.75rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--color-divider); color: var(--color-primary); font-size: var(--text-xs); font-weight: 700; transition: all var(--tr);">
+              <span id="symptomActionText">Mở lưu đồ tiếp cận Sốt</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </section>
+        </aside>
       </div><!-- end dashboard-layout -->
     </div><!-- end main-wrapper -->
   </div><!-- end app-container -->
@@ -636,6 +713,151 @@
 
   <!-- ===================== SCRIPT ===================== -->
   <script src="../../js/module-dashboard.js" defer></script>
+
+  <!-- ===================== SYMPTOM MATRIX SCRIPT ===================== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const symptomData = {
+        sot: {
+          redFlags: [
+            "Co giật hoặc rối loạn tri giác (lơ mơ, hôn mê)",
+            "Cứng cổ, sợ ánh sáng (gợi ý kích thích màng não)",
+            "Phát ban xuất huyết hình bản đồ hoặc chấm nốt",
+            "Tụt huyết áp, mạch nhanh, thiểu niệu (dấu hiệu Sốc)",
+            "Sốt cao liên tục > 40°C không đáp ứng hạ sốt"
+          ],
+          diffDiags: [
+            "Nhiễm khuẩn huyết (Sepsis) / Sốc nhiễm khuẩn",
+            "Viêm màng não mủ / Viêm não cấp",
+            "Sốt xuất huyết Dengue nặng thoát huyết tương",
+            "Sốt rét ác tính thể não (nếu có yếu tố dịch tễ)"
+          ],
+          actionText: "Mở lưu đồ tiếp cận Sốt",
+          actionUrl: "2. Triệu chứng/Than phiền Toàn thân/Sốt/TC_Sot.html"
+        },
+        daubung: {
+          redFlags: [
+            "Đau bụng dữ dội, đột ngột như dao đâm",
+            "Đề kháng thành bụng hoặc cảm ứng phúc mạc",
+            "Nôn mửa liên tục kèm bí trung đại tiện (tắc ruột)",
+            "Huyết động không ổn định hoặc tụt huyết áp",
+            "Đau lan sau lưng kèm vã mồ hôi (phình động mạch, viêm tụy)"
+          ],
+          diffDiags: [
+            "Thủng tạng rỗng (viêm phúc mạc toàn thể)",
+            "Viêm ruột thừa cấp / Viêm tụy cấp nặng",
+            "Tắc ruột cơ học hoặc xoắn ruột",
+            "Thai ngoài tử cung vỡ (ở nữ độ tuổi sinh sản)"
+          ],
+          actionText: "Mở lưu đồ tiếp cận Đau bụng",
+          actionUrl: "2. Triệu chứng/Than phiền Tiêu hóa - Bụng/Đau bụng/TC_Daubung.html"
+        },
+        khotho: {
+          redFlags: [
+            "Thở rít (Stridor) gợi ý tắc nghẽn đường thở trên",
+            "Co kéo mạnh cơ hô hấp phụ, rút lõm hõm ức",
+            "Tím tái đầu chi, niêm mạc, SpO2 < 90% khi thở khí trời",
+            "Không thể nói hết câu ngắn, phải ngồi dậy để thở",
+            "Rối loạn nhịp thở (thở quá chậm < 10 lần/phút hoặc Cheyne-Stokes)"
+          ],
+          diffDiags: [
+            "Cơn hen phế quản ác tính đe dọa tính mạng",
+            "Đợt cấp COPD suy hô hấp cấp mất bù",
+            "Phù phổi cấp huyết động (do suy tim trái cấp)",
+            "Dị vật đường thở lớn hoặc phản vệ mức độ nặng"
+          ],
+          actionText: "Mở lưu đồ tiếp cận Khó thở",
+          actionUrl: "2. Triệu chứng/Than phiền Hô hấp - Tim mạch/TC_Khotho.html"
+        },
+        daunguc: {
+          redFlags: [
+            "Đau dữ dội khởi phát đột ngột, đau như xé ngực lan sau lưng",
+            "Vã mồ hôi lạnh, khó thở, cảm giác đè nặng bóp nghẹt",
+            "Huyết áp lệch nhau > 20 mmHg giữa hai tay",
+            "Ngất hoặc tiền ngất, mạch chậm hoặc quá nhanh",
+            "Tụt huyết áp (HA tâm thu < 90 mmHg)"
+          ],
+          diffDiags: [
+            "Nhồi máu cơ tim cấp (STEMI hoặc NSTEMI)",
+            "Phình bóc tách động mạch chủ ngực cấp tính",
+            "Thuyên tắc động mạch phổi cấp diện rộng",
+            "Tràn khí màng phổi áp lực gây chèn ép tim cấp"
+          ],
+          actionText: "Mở lưu đồ tiếp cận Đau ngực",
+          actionUrl: "2. Triệu chứng/Than phiền Hô hấp - Tim mạch/TC_Daunguc.html"
+        },
+        vangda: {
+          redFlags: [
+            "Đau hạ sườn phải dữ dội kèm sốt cao rét run (Charcot)",
+            "Rối loạn tri giác, kích động, lơ mơ (Bệnh não gan)",
+            "Rối loạn đông máu nặng (xuất huyết da niêm, chảy máu chân răng)",
+            "Thiếu niệu, vô niệu (Hội chứng gan thận cấp)",
+            "Suy kiệt nặng, sụt cân nhanh kèm sờ thấy khối u bụng"
+          ],
+          diffDiags: [
+            "Nhiễm trùng đường mật cấp do sỏi kẹt cổ túi mật",
+            "Viêm gan cấp bùng phát (do virus hoặc độc chất, paracetamol)",
+            "U đường mật (Cholangiocarcinoma) hoặc U đầu tụy chèn ép",
+            "Sơ gan mất bù giai đoạn cuối"
+          ],
+          actionText: "Mở lưu đồ tiếp cận Vàng da",
+          actionUrl: "2. Triệu chứng/Than phiền Toàn thân/TC_Vangda.html"
+        },
+        phu: {
+          redFlags: [
+            "Phù cấp tính khởi phát nhanh kèm khó thở dữ dội",
+            "Phù nề thanh quản, môi, lưỡi kèm ngứa/ban đỏ sau dùng thuốc",
+            "Phù kèm theo tăng huyết áp rất cao và thiểu niệu/vô niệu",
+            "Phù một bên chi dưới kèm nóng đỏ, đau nhức bắp chân"
+          ],
+          diffDiags: [
+            "Phản vệ mức độ nặng / Phù mạch (Quincke)",
+            "Suy tim cấp mất bù / Phù phổi cấp",
+            "Huyết khối tĩnh mạch sâu chi dưới (DVT)",
+            "Hội chứng thận hư cấp hoặc đợt cấp suy thận mạn"
+          ],
+          actionText: "Mở lưu đồ tiếp cận Phù",
+          actionUrl: "2. Triệu chứng/Than phiền Toàn thân/TC_Phu.html"
+        }
+      };
+
+      const selectEl = document.getElementById("symptomSelect");
+      const redFlagsList = document.getElementById("redFlagsList");
+      const diffDiagList = document.getElementById("diffDiagList");
+      const actionBtn = document.getElementById("symptomActionBtn");
+      const actionText = document.getElementById("symptomActionText");
+
+      function updateSymptom(key) {
+        const data = symptomData[key];
+        if (!data) return;
+
+        // Render Red Flags
+        redFlagsList.innerHTML = data.redFlags.map(flag => `<li>${flag}</li>`).join("");
+
+        // Render Differentials
+        diffDiagList.innerHTML = data.diffDiags.map(diag => `<li>${diag}</li>`).join("");
+
+        // Update Button
+        actionText.innerText = data.actionText;
+        actionBtn.setAttribute("href", data.actionUrl);
+        if (data.actionUrl === "#") {
+          actionBtn.style.opacity = "0.6";
+          actionBtn.style.pointerEvents = "none";
+        } else {
+          actionBtn.style.opacity = "1";
+          actionBtn.style.pointerEvents = "auto";
+        }
+      }
+
+      // Initialize
+      updateSymptom("sot");
+
+      // Event listener
+      selectEl.addEventListener("change", (e) => {
+        updateSymptom(e.target.value);
+      });
+    });
+  </script>
 </body>
 
 </html>

@@ -881,6 +881,38 @@
           </section>
 
         </main>
+        <!-- SIDEBAR WIDGET -->
+        <!-- SIDEBAR WIDGET -->
+        <aside class="layout-widget-sidebar" aria-label="Widget kỹ năng tương tác">
+          <section class="widget-card" aria-labelledby="nerve-title">
+            <div class="widget-card-title">
+              <h3 id="nerve-title"><i class="fa-solid fa-brain"></i> Khám Thần Kinh Sọ</h3>
+              <span class="clock-current-time" style="background: var(--color-purple-hl, #ede9fe); color: var(--color-purple, #7c3aed);">CN I - XII</span>
+            </div>
+            <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin-bottom: 1rem; line-height: 1.4;">
+              Nhấp chọn từng dây thần kinh sọ dưới đây để tra cứu nhanh chức năng, kỹ thuật thăm khám lâm sàng và dấu hiệu tổn thương tương ứng.
+            </p>
+            <!-- Nerve Grid Buttons -->
+            <div class="nerve-grid" id="nerveGrid">
+              <div class="nerve-btn active" data-nerve="cn1">CN I</div>
+              <div class="nerve-btn" data-nerve="cn2">CN II</div>
+              <div class="nerve-btn" data-nerve="cn3">CN III</div>
+              <div class="nerve-btn" data-nerve="cn4">CN IV</div>
+              <div class="nerve-btn" data-nerve="cn5">CN V</div>
+              <div class="nerve-btn" data-nerve="cn6">CN VI</div>
+              <div class="nerve-btn" data-nerve="cn7">CN VII</div>
+              <div class="nerve-btn" data-nerve="cn8">CN VIII</div>
+              <div class="nerve-btn" data-nerve="cn9">CN IX</div>
+              <div class="nerve-btn" data-nerve="cn10">CN X</div>
+              <div class="nerve-btn" data-nerve="cn11">CN XI</div>
+              <div class="nerve-btn" data-nerve="cn12">CN XII</div>
+            </div>
+            <!-- Details Panel -->
+            <div class="physio-details-card" id="nerveDetailsCard" style="margin-top: 0.5rem;">
+              <!-- Populated dynamically by JS -->
+            </div>
+          </section>
+        </aside>
       </div><!-- end dashboard-layout -->
     </div><!-- end main-wrapper -->
   </div><!-- end app-container -->
@@ -889,6 +921,133 @@
 
   <!-- ===================== SCRIPT ===================== -->
   <script src="../../js/module-dashboard.js" defer></script>
+
+  <!-- ===================== CRANIAL NERVES SCRIPT ===================== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const nerveData = {
+        cn1: {
+          title: "CN I - Dây Khứu Giác (Olfactory Nerve)",
+          type: "Cảm giác thuần túy (Khứu giác - Ngửi)",
+          exam: "Yêu cầu bệnh nhân nhắm mắt, dùng ngón tay bịt một bên lỗ mũi. Đưa các chất có mùi quen thuộc không kích thích (như trà, cà phê, vỏ cam) lại gần bên mũi mở, yêu cầu bệnh nhân nhận biết mùi. Lặp lại với bên đối diện.",
+          patho: "Mất khứu giác (anosmia) một hoặc hai bên. Thường gặp trong chấn thương sọ não (gãy mảnh sàng xương bướm), u màng não tầng trước sọ, hoặc sau viêm nhiễm virus đường hô hấp."
+        },
+        cn2: {
+          title: "CN II - Dây Thị Giác (Optic Nerve)",
+          type: "Cảm giác thuần túy (Thị giác - Nhìn)",
+          exam: "Đánh giá 3 phần: (1) Thị lực (đọc bảng Snellen hoặc đếm ngón tay); (2) Thị trường (nghiệm pháp đối chiếu tay thầy thuốc ở 4 góc phần tư); (3) Soi đáy mắt đánh giá gai thị và khám phản xạ đồng tử hướng tâm.",
+          patho: "Giảm hoặc mất thị lực, khiếm khuyết thị trường (bán manh thái dương trong u tuyến yên, bán manh đồng danh), phù gai thị (tăng áp lực nội sọ) hoặc teo gai thị."
+        },
+        cn3: {
+          title: "CN III - Dây Vận Nhãn (Oculomotor Nerve)",
+          type: "Vận động & Đối giao cảm (Vận nhãn, co đồng tử)",
+          exam: "Yêu cầu bệnh nhân liếc mắt theo ngón tay thầy thuốc di chuyển hình chữ H (đánh giá các cơ thẳng trong, thẳng trên, thẳng dưới và chéo dưới). Kiểm tra phản xạ đồng tử với ánh sáng (trực tiếp và đồng cảm). Quan sát độ mở khe mi.",
+          patho: "Sụp mi cùng bên, lác ngoài (mắt lệch ra ngoài và hơi xuống dưới), giãn đồng tử cùng bên, mất phản xạ ánh sáng. Bệnh nhân nhìn đôi (diplopia)."
+        },
+        cn4: {
+          title: "CN IV - Dây Ròng Rọc (Trochlear Nerve)",
+          type: "Vận động thuần túy (Cơ chéo trên nhãn cầu)",
+          exam: "Yêu cầu bệnh nhân nhìn xuống dưới và hướng vào trong (nhìn về phía đầu mũi).",
+          patho: "Không thể đưa nhãn cầu xuống dưới và vào trong. Bệnh nhân bị nhìn đôi khi đi xuống cầu thang, thường có xu hướng nghiêng đầu sang bên lành để bù trừ."
+        },
+        cn5: {
+          title: "CN V - Dây Tam Ba (Trigeminal Nerve)",
+          type: "Hỗn hợp (Cảm giác mặt, vận động cơ nhai)",
+          exam: "(1) Cảm giác: Thử cảm giác nông (đau, sờ) ở 3 nhánh V1, V2, V3 trên mặt; (2) Vận động: Yêu cầu bệnh nhân cắn chặt răng, sờ cơ cắn và cơ thái dương; (3) Khám phản xạ giác mạc (chạm nhẹ bông gòn vào giác mạc).",
+          patho: "Tê bì, mất cảm giác vùng mặt cùng bên; yếu cơ nhai (khi há miệng hàm lệch về bên liệt); mất phản xạ giác mạc. Đau dây thần kinh số V kịch phát."
+        },
+        cn6: {
+          title: "CN VI - Dây Vận Nhãn Ngoài (Abducens Nerve)",
+          type: "Vận động thuần túy (Cơ thẳng ngoài nhãn cầu)",
+          exam: "Yêu cầu bệnh nhân liếc mắt ra phía ngoài (về phía tai) hai bên.",
+          patho: "Lác trong (mắt lệch vào trong hướng sống mũi), không liếc mắt ra ngoài được. Gây nhìn đôi khi nhìn về phía bên liệt."
+        },
+        cn7: {
+          title: "CN VII - Dây Mặt (Facial Nerve)",
+          type: "Hỗn hợp (Vận động cơ mặt, vị giác 2/3 trước lưỡi)",
+          exam: "Quan sát mặt lúc nghỉ và yêu cầu bệnh nhân nhăn trán, nhắm chặt mắt, phồng má, nhe răng, huýt sáo. Đánh giá sự cân đối nhân trung và khe mi.",
+          patho: "Liệt mặt ngoại biên (Bell's palsy): Liệt toàn bộ nửa mặt cùng bên, mất nếp nhăn trán, mắt nhắm không kín (dấu Bell+); Liệt mặt trung ương: Chỉ liệt 1/4 dưới mặt đối bên tổn thương, vẫn nhăn trán được."
+        },
+        cn8: {
+          title: "CN VIII - Dây Tiền Đình Ốc Tai (Vestibulocochlear)",
+          type: "Cảm giác thuần túy (Thính giác và thăng bằng)",
+          exam: "(1) Nhánh ốc tai (nghe): Thử nghe tiếng cọ ngón tay hoặc làm nghiệm pháp Weber, Rinne bằng âm thoa; (2) Nhánh tiền đình: Nghiệm pháp Romberg (đứng nhắm mắt), tìm rung giật nhãn cầu (nystagmus).",
+          patho: "Ù tai, điếc tiếp nhận (tổn thương nhánh ốc tai); Chóng mặt, rung giật nhãn cầu, đi loạng choạng, Romberg dương tính (tổn thương nhánh tiền đình)."
+        },
+        cn9: {
+          title: "CN IX - Dây Thiệt Hầu (Glossopharyngeal)",
+          type: "Hỗn hợp (Cảm giác hầu, vị giác 1/3 sau lưỡi)",
+          exam: "Thường khám chung với dây X. Há miệng nói 'A' quan sát lưỡi gà và sự nâng của màn hầu. Thử vị giác ở 1/3 sau lưỡi nếu cần thiết. Đánh giá phản xạ nôn.",
+          patho: "Giảm cảm giác họng cùng bên, giảm phản xạ nôn, lưỡi gà lệch về bên lành khi nói 'A'. Nuốt sặc nhẹ."
+        },
+        cn10: {
+          title: "CN X - Dây Phế Vị (Vagus Nerve)",
+          type: "Hỗn hợp (Vận động hầu họng, phế vị đối giao cảm)",
+          exam: "Đánh giá giọng nói (có khàn tiếng hay giọng mũi không), đánh giá phản xạ nuốt thức ăn đặc/lỏng, quan sát chuyển động lưỡi gà khi bệnh nhân nói 'A'. Khám phản xạ nôn.",
+          patho: "Nuốt sặc, nghẹn đặc, khàn tiếng (liệt dây thanh âm), lưỡi gà lệch về bên lành, mất phản xạ nuốt và phản xạ nôn bên liệt."
+        },
+        cn11: {
+          title: "CN XI - Dây Phụ (Accessory Nerve)",
+          type: "Vận động thuần túy (Cơ ức đòn chũm và cơ thang)",
+          exam: "Yêu cầu bệnh nhân nhún vai chống lại sức cản của thầy thuốc (đánh giá cơ thang). Yêu cầu bệnh nhân quay đầu sang một bên chống lại sức cản (đánh giá cơ ức đòn chũm đối bên).",
+          patho: "Bả vai bên liệt xệ xuống, yếu cơ nhún vai cùng bên tổn thương; yếu cơ quay đầu sang bên đối diện. Teo cơ thang và cơ ức đòn chũm."
+        },
+        cn12: {
+          title: "CN XII - Dây Dưới Lưỡi (Hypoglossal Nerve)",
+          type: "Vận động thuần túy (Các cơ nội và ngoại nội tại của lưỡi)",
+          exam: "Yêu cầu bệnh nhân thè lưỡi thẳng ra ngoài. Quan sát độ thẳng, tình trạng teo lưỡi hay rung giật sợi cơ. Yêu cầu bệnh nhân đẩy lưỡi vào trong má chống lại sức cản bên ngoài.",
+          patho: "Lưỡi thè ra bị lệch về phía bên liệt (bên tổn thương). Lâu ngày xuất hiện teo nửa lưỡi và rung giật sợi cơ ở bên liệt."
+        }
+      };
+
+      const nerveBtns = document.querySelectorAll(".nerve-btn");
+      const detailsCard = document.getElementById("nerveDetailsCard");
+
+      function showNerveDetail(key) {
+        const data = nerveData[key];
+        if (!data) return;
+
+        // Toggle active class
+        nerveBtns.forEach(btn => {
+          if (btn.getAttribute("data-nerve") === key) {
+            btn.classList.add("active");
+          } else {
+            btn.classList.remove("active");
+          }
+        });
+
+        // Render detail
+        detailsCard.innerHTML = `
+          <div class="physio-details-header">
+            <h4 style="color: var(--color-purple); font-weight: 700;"><span>${data.title}</span></h4>
+            <span class="element-badge" style="background-color: var(--color-purple);">${data.type.split(" ")[0]}</span>
+          </div>
+          <div class="meridian-detail-row">
+            <strong>Phân loại chức năng:</strong>
+            <p class="meridian-detail-desc" style="color: var(--color-text); font-weight: 500;">${data.type}</p>
+          </div>
+          <div class="meridian-detail-row">
+            <strong>Kỹ thuật thăm khám:</strong>
+            <p class="meridian-detail-desc" style="color: var(--color-text);">${data.exam}</p>
+          </div>
+          <div class="meridian-detail-row" style="margin-bottom:0; border-top: 1px dashed var(--color-divider); padding-top: 0.5rem; margin-top: 0.5rem;">
+            <strong>Dấu hiệu tổn thương lâm sàng:</strong>
+            <p class="meridian-detail-desc" style="color: var(--color-danger); font-weight: 500;">⚠️ ${data.patho}</p>
+          </div>
+        `;
+      }
+
+      // Initialize with CN I
+      showNerveDetail("cn1");
+
+      // Click event
+      nerveBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          showNerveDetail(btn.getAttribute("data-nerve"));
+        });
+      });
+    });
+  </script>
 </body>
 
 </html>
