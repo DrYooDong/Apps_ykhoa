@@ -42,6 +42,37 @@
 
     const SAMPLE_STUDIES = [
       {
+        id: "study_ks_bn_nang",
+        title: "Kháng sinh ở bệnh nhân nặng (Cập nhật 2026)",
+        drug: "Beta-lactam, Vancomycin, Aminoglycosides, Linezolid",
+        sourceType: "intl-guideline",
+        specialty: "infect",
+        design: "review",
+        intervention: "Tối ưu hóa liều nạp, truyền kéo dài Beta-lactam & hiệu chỉnh liều theo PK/PD (AKI, CRRT, ECMO)",
+        primaryEndpoint: "Hiệu quả diệt khuẩn tối đa & giảm thiểu độc tính ở bệnh nhân ICU",
+        keyResults: "Truyền kéo dài Beta-lactam giảm tử vong 90 ngày; ACORN trial xác nhận Pip/Tazo an toàn về thận",
+        impact: "practice-changing",
+        year: 2026,
+        organization: "Critical Care Clinics",
+        phase: "Review",
+        sampleSize: null,
+        population: "Bệnh nhân nhiễm khuẩn nặng, nhiễm khuẩn huyết và sốc nhiễm khuẩn",
+        summary: "Cập nhật khuyến cáo toàn diện về sử dụng kháng sinh ở bệnh nhân hồi sức tích cực (ICU), giải quyết đồng thời 3 vấn đề: điều trị đủ sớm, bao phủ đúng tác nhân và tối ưu hóa liều lượng theo biến đổi dược động học PK/PD.",
+        detailedConclusion: "Sốc nhiễm khuẩn cần dùng kháng sinh ngay lập tức (trong vòng 1 giờ, lấy cấy máu trong 45 phút). Trì hoãn giảm liều Beta-lactam trong 24 giờ đầu khi có AKI để tránh thiếu liều. Dùng liều nạp đầy đủ cho kháng sinh ưa nước bất kể chức năng thận. TDM khuyên dùng cho Vancomycin (AUC/MIC 400-600) và Aminoglycosides.",
+        fdaStatus: "Cập nhật y văn ICU 2026",
+        sourceUrl: "https://drive.google.com/file/d/1V0ey2paO8Enbt8U4OtH1xK0Vn_MIS6Tn/view",
+        file: "Kho Guidelines/ks-cho-bn-nang.html",
+        subgroups: {
+          "Sốc nhiễm khuẩn": "Dùng kháng sinh ngay lập tức (mỗi giờ chậm trễ tăng tử vong)",
+          "Nhiễm khuẩn không sốc": "Đánh giá kỹ lưỡng trước khi quyết định dùng phổ rộng",
+          "PCR MRSA ngoáy mũi": "Giá trị tiên đoán âm >95% giúp loại trừ viêm phổi MRSA",
+          "Dị ứng Penicillin": "Tỷ lệ dị ứng thật chỉ 1-3%, phản ứng chéo với Ceph thế hệ 3 chỉ 2.4%"
+        },
+        asianData: true,
+        bookmarked: true,
+        createdAt: new Date().toISOString()
+      },
+      {
         id: "study_empareg",
         title: "EMPA-REG OUTCOME",
         drug: "Empagliflozin",

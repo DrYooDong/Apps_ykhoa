@@ -220,6 +220,8 @@
 | `Y học chứng cứ/yhcc.html` | Hub tổng EBM |
 | `Y học chứng cứ/Guidelines/Guidelines.html` | Tra cứu guidelines |
 | `Y học chứng cứ/Guidelines/README.md` | Hướng dẫn sử dụng phân hệ Guidelines |
+| `Y học chứng cứ/Guidelines/Kho Guidelines/ks-cho-bn-nang.html` | **[MỚI]** Kháng sinh cho bệnh nhân nặng — Tổng quan Critical Care Clinics 2026 (Standalone, tự chứa CSS/inline) |
+| `Y học chứng cứ/Guidelines/Kho Guidelines/empa-reg.html` | EMPA-REG OUTCOME — Empagliflozin tim mạch (Standalone) |
 | `Y học chứng cứ/Thống kê y học/Thongkeyhoc.html` | Thống kê y học |
 | `Y học chứng cứ/Thống kê y học/danh-gia-cong-cu-chan-doan.html` | Đánh giá công cụ chẩn đoán |
 | `Y học chứng cứ/Thống kê y học/phan-tich-rct-meta-analysis.html` | Phân tích RCT & Meta-analysis |
