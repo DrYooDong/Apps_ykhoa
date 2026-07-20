@@ -115,6 +115,12 @@
     .verdict-red { background: var(--red-bg); color: #991b1b; border: 1px solid var(--red-light); }
     .verdict-orange { background: var(--orange-bg); color: #92400e; border: 1px solid var(--orange-light); }
 
+    /* EVIDENCE GRADING BADGES */
+    .ebm-grade { display: inline-flex; align-items: center; gap: 0.25rem; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 6px; margin-left: 0.5rem; vertical-align: middle; }
+    .ebm-grade-i { background: var(--green); color: #fff; }
+    .ebm-grade-ii { background: var(--orange); color: #fff; }
+    .ebm-grade-iii { background: var(--red); color: #fff; }
+
     /* CITATION & ACTION BUTTONS */
     .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; font-style: italic; }
     .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem; }
@@ -265,7 +271,7 @@
                 <li>Có biểu hiện ngoài gan do HBV</li>
               </ul>
             </div>
-            <div class="update-verdict verdict-blue">Ưu tiên tuyệt đối</div>
+            <div class="update-verdict verdict-blue">Ưu tiên tuyệt đối <span class="ebm-grade ebm-grade-i">Class I, Mức A</span></div>
           </div>
           <div class="update-card">
             <div class="update-card-accent" style="background: var(--green);"></div>
@@ -278,7 +284,7 @@
               <p style="font-weight: 600; margin: 0.5rem 0;">HBV DNA phát hiện được <br>+ ALT &ge; 40 IU/L (ULN)</p>
               <p><strong>BẤT KỂ</strong> giai đoạn xơ hóa, trạng thái HBeAg, tiền sử gia đình HCC hay mắc kèm MAFLD.</p>
             </div>
-            <div class="update-verdict verdict-green">Khuyến cáo mới (B1)</div>
+            <div class="update-verdict verdict-green">Khuyến cáo mới <span class="ebm-grade ebm-grade-i">Class I, Mức B</span></div>
           </div>
         </div>
 
@@ -372,7 +378,7 @@
             </div>
             <div class="update-card-body">
               <p>Bắt buộc tầm soát định kỳ khi:</p>
-              <div style="font-size: 1.5rem; font-weight: 800; color: var(--red); margin: 0.5rem 0;">mPAGE-B &ge; 9</div>
+              <div style="font-size: 1.5rem; font-weight: 800; color: var(--red); margin: 0.5rem 0;">mPAGE-B &ge; 9 <span class="ebm-grade ebm-grade-i" style="font-size:0.75rem;">Class I, Mức A</span></div>
               <p style="font-size: 0.8rem;">(Thuộc nhóm nguy cơ Trung bình - Cao)</p>
             </div>
           </div>

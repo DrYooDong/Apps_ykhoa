@@ -5,6 +5,90 @@
 /* ============================================================
    SECTION 1: PHYSIOLOGY & PATHOPHYSIOLOGY MODULE HUB (Sinhly-sinhlybenh.html)
    ============================================================ */
+
+/* Nâng cấp: Hero Section & Glassmorphism & 3D Tilt */
+.hero-physio {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(2, 132, 199, 0.9) 0%, rgba(14, 165, 233, 0.7) 100%);
+}
+
+.hero-physio::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 10%, transparent 10.01%);
+    background-size: 20px 20px;
+    animation: particles-drift 30s linear infinite;
+    z-index: 1;
+}
+
+@keyframes particles-drift {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-50%) rotate(10deg); }
+}
+
+.hero-physio .tcm-hero-content {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+[data-theme="dark"] .hero-physio .tcm-hero-content {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.hero-physio .dna-svg {
+    animation: dna-spin 8s linear infinite;
+}
+
+@keyframes dna-spin {
+    from { transform: rotateY(0deg) scale(1.1); }
+    to { transform: rotateY(360deg) scale(1.1); }
+}
+
+/* Nâng cấp: 3D Hover Tilt cho Card */
+.module-card {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.3s;
+}
+
+.module-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="dark"] .module-card:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Nâng cấp: Progress Bar trên Thẻ Bài học */
+.card-progress-bar {
+    width: 100%;
+    height: 4px;
+    background: var(--color-border);
+    border-radius: 4px;
+    margin-top: 1rem;
+    overflow: hidden;
+}
+
+.card-progress-fill {
+    height: 100%;
+    background: var(--part-color, var(--color-primary));
+    width: 0%;
+    transition: width 1s ease-in-out;
+}
 /* Custom variables for theme colors */
 :root,
 [data-theme="light"] {
@@ -420,6 +504,38 @@
 
 .clear-search-btn:hover {
     color: var(--color-text);
+}
+
+.filter-tags-container {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-left: 16px;
+    align-items: center;
+}
+
+.tag-filter-btn {
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tag-filter-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.tag-filter-btn.active {
+    background: var(--color-primary);
+    color: #fff;
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 10px rgba(2, 132, 199, 0.2);
 }
 
 .view-toggle-container {
@@ -2425,4 +2541,145 @@
 .ebm-badge.level { background: var(--color-primary); }
 .ebm-badge.recommend { background: var(--color-purple, #7c3aed); }
 
+/* ============================================================
+   Nâng cấp 2.2: Flashcard UI & 1.3: Deep Dark Mode
+   ============================================================ */
+.flashcard-btn {
+    background: rgba(2, 132, 199, 0.1);
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+    margin-right: auto;
+    padding: 0.5rem 1rem;
+}
+.flashcard-btn:hover {
+    background: var(--color-primary);
+    color: #fff;
+}
 
+.flashcard-modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.flashcard-modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+.flashcard-modal-content {
+    background: var(--color-surface);
+    border-radius: 20px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.fc-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    color: var(--color-text);
+}
+.close-modal-btn {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    background: none; border: none;
+    font-size: 1.5rem; color: var(--color-text-muted);
+    cursor: pointer;
+}
+.flashcard-container {
+    perspective: 1000px;
+    margin-bottom: 1.5rem;
+}
+.flashcard {
+    width: 100%;
+    height: 250px;
+    background-color: transparent;
+    cursor: pointer;
+}
+.flashcard-inner {
+    position: relative;
+    width: 100%; height: 100%;
+    text-align: center;
+    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transform-style: preserve-3d;
+}
+.flashcard.flipped .flashcard-inner {
+    transform: rotateY(180deg);
+}
+.flashcard-front, .flashcard-back {
+    position: absolute;
+    width: 100%; height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid var(--color-border);
+}
+.flashcard-front {
+    background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-surface) 100%);
+    color: var(--color-text);
+}
+.flashcard-back {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-cyan) 100%);
+    color: white;
+    transform: rotateY(180deg);
+}
+.flashcard-front h3 { font-size: 1.3rem; margin-bottom: 1rem; line-height: 1.4; }
+.flashcard-back h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+.fc-hint, .fc-explanation { font-size: 0.9rem; opacity: 0.8; }
+
+.flashcard-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.fc-btn {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.fc-btn:hover { background: var(--color-border); }
+
+/* Nâng cấp 1.3 & 2.3: Dark Mode Glow & Mini-animations */
+[data-theme="dark"] .part-icon i {
+    text-shadow: 0 0 10px var(--part-color);
+}
+[data-theme="dark"] .module-card .card-icon i {
+    text-shadow: 0 0 12px var(--part-color);
+}
+[data-theme="dark"] .hub-tab-btn.active i {
+    text-shadow: 0 0 8px var(--color-primary);
+}
+
+.part-nav-item.active .part-icon i {
+    animation: pulse-icon 2s infinite;
+}
+@keyframes pulse-icon {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}

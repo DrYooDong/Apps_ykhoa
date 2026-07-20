@@ -293,6 +293,15 @@
           <button id="clear-search" class="clear-search-btn" aria-label="Xóa tìm kiếm"
             style="display: none;">&times;</button>
         </div>
+        <!-- Thêm bộ lọc Tags -->
+        <div class="filter-tags-container" style="display: flex; gap: 8px; flex-wrap: wrap; margin-left: 16px;">
+          <button class="tag-filter-btn active" data-tag="all">Tất cả</button>
+          <button class="tag-filter-btn" data-tag="cap-cuu">#cap-cuu</button>
+          <button class="tag-filter-btn" data-tag="noi-khoa">#noi-khoa</button>
+          <button class="tag-filter-btn" data-tag="nhi-khoa">#nhi-khoa</button>
+          <button class="tag-filter-btn" data-tag="san-khoa">#san-khoa</button>
+          <button class="tag-filter-btn" data-tag="ngoai-khoa">#ngoai-khoa</button>
+        </div>
         <div class="view-toggle-container">
           <span class="toggle-label">Chế độ xem:</span>
           <div class="toggle-buttons">
@@ -408,7 +417,7 @@
               </div>
               <div class="specialty-grid infographic-grid">
                 <!-- Card 1 -->
-                <a href="#" class="specialty-card info-card">
+                <a href="#" class="specialty-card info-card" data-tags="cap-cuu">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Ngưng tuần hoàn</h3>
@@ -428,7 +437,7 @@
               </div>
               <div class="specialty-grid infographic-grid">
                 <!-- C1 -->
-                <a href="2. Triệu chứng/Than phiền Toàn thân/Sốt/TC_Sot.html" class="specialty-card info-card">
+                <a href="2. Triệu chứng/Than phiền Toàn thân/Sốt/TC_Sot.html" class="specialty-card info-card" data-tags="noi-khoa nhi-khoa">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Sốt</h3>
@@ -437,7 +446,7 @@
                 </a>
                 <!-- C2 -->
                 <a href="2. Triệu chứng/Than phiền Tiêu hóa - Bụng/Đau bụng/TC_Daubung.html"
-                  class="specialty-card info-card">
+                  class="specialty-card info-card" data-tags="ngoai-khoa noi-khoa">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Đau bụng</h3>
@@ -445,7 +454,7 @@
                   </div>
                 </a>
                 <!-- C3: Khó thở -->
-                <a href="2. Triệu chứng/Than phiền Hô hấp - Tim mạch/TC_Khotho.html" class="specialty-card info-card">
+                <a href="2. Triệu chứng/Than phiền Hô hấp - Tim mạch/TC_Khotho.html" class="specialty-card info-card" data-tags="cap-cuu noi-khoa">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Khó thở</h3>
@@ -453,7 +462,7 @@
                   </div>
                 </a>
                 <!-- C4: Đau ngực -->
-                <a href="2. Triệu chứng/Than phiền Hô hấp - Tim mạch/TC_Daunguc.html" class="specialty-card info-card">
+                <a href="2. Triệu chứng/Than phiền Hô hấp - Tim mạch/TC_Daunguc.html" class="specialty-card info-card" data-tags="cap-cuu noi-khoa">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Đau ngực</h3>
@@ -461,7 +470,7 @@
                   </div>
                 </a>
                 <!-- C5: Vàng da -->
-                <a href="2. Triệu chứng/Than phiền Toàn thân/TC_Vangda.html" class="specialty-card info-card">
+                <a href="2. Triệu chứng/Than phiền Toàn thân/TC_Vangda.html" class="specialty-card info-card" data-tags="noi-khoa ngoai-khoa">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Vàng da</h3>
@@ -469,7 +478,7 @@
                   </div>
                 </a>
                 <!-- C6: Phù -->
-                <a href="2. Triệu chứng/Than phiền Toàn thân/TC_Phu.html" class="specialty-card info-card">
+                <a href="2. Triệu chứng/Than phiền Toàn thân/TC_Phu.html" class="specialty-card info-card" data-tags="noi-khoa">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Phù</h3>
@@ -489,35 +498,35 @@
                 <h3 id="part3-heading">Cận lâm sàng</h3>
               </div>
               <div class="specialty-grid infographic-grid">
-                <a href="3. Cận lâm sàng/TC_Sinhhoagan.html" class="specialty-card info-card">
+                <a href="3. Cận lâm sàng/TC_Sinhhoagan.html" class="specialty-card info-card" data-tags="noi-khoa">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Sinh hóa Gan</h3>
                     </div>
                   </div>
                 </a>
-                <a href="3. Cận lâm sàng/TC_Thieumau.html" class="specialty-card info-card">
+                <a href="3. Cận lâm sàng/TC_Thieumau.html" class="specialty-card info-card" data-tags="noi-khoa">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Thiếu máu</h3>
                     </div>
                   </div>
                 </a>
-                <a href="3. Cận lâm sàng/TC_bachcau.html" class="specialty-card info-card">
+                <a href="3. Cận lâm sàng/TC_bachcau.html" class="specialty-card info-card" data-tags="noi-khoa">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Bạch cầu</h3>
                     </div>
                   </div>
                 </a>
-                <a href="3. Cận lâm sàng/TC_tieu-cau.html" class="specialty-card info-card">
+                <a href="3. Cận lâm sàng/TC_tieu-cau.html" class="specialty-card info-card" data-tags="noi-khoa">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Tiểu cầu</h3>
                     </div>
                   </div>
                 </a>
-                <a href="3. Cận lâm sàng/TC_monocyte.html" class="specialty-card info-card">
+                <a href="3. Cận lâm sàng/TC_monocyte.html" class="specialty-card info-card" data-tags="noi-khoa">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Monocyte</h3>
@@ -539,7 +548,7 @@
               <!-- 1. Bệnh truyền nhiễm -->
               <h4 class="sub-specialty-title">1. Bệnh truyền nhiễm</h4>
               <div class="specialty-grid infographic-grid">
-                <a href="4. Bệnh lý/2. Truyền nhiễm/TC_SXHD.html" class="specialty-card info-card">
+                <a href="4. Bệnh lý/2. Truyền nhiễm/TC_SXHD.html" class="specialty-card info-card" data-tags="noi-khoa nhi-khoa">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>SXH Dengue</h3>
@@ -551,7 +560,7 @@
               <!-- 2. Nội tổng quát -->
               <h4 class="sub-specialty-title">2. Nội tổng quát</h4>
               <div class="specialty-grid infographic-grid">
-                <a href="4. Bệnh lý/2. Truyền nhiễm/TC_vgsvB.html" class="specialty-card info-card">
+                <a href="4. Bệnh lý/2. Truyền nhiễm/TC_vgsvB.html" class="specialty-card info-card" data-tags="noi-khoa">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Viêm gan B</h3>
@@ -563,37 +572,73 @@
               <!-- 3. Huyết học & ung thư -->
               <h4 class="sub-specialty-title">3. Huyết học & ung thư</h4>
               <div class="specialty-grid infographic-grid">
-                <p class="empty-text">Đang cập nhật...</p>
+                <a href="#" class="specialty-card info-card placeholder-card" style="opacity: 0.6; pointer-events: none; border-style: dashed;">
+                  <div class="specialty-card-top">
+                    <div class="specialty-info">
+                      <h3>Đang cập nhật...</h3>
+                    </div>
+                  </div>
+                </a>
               </div>
 
               <!-- 4. Mắt - Tai mũi họng - Răng hàm mặt -->
               <h4 class="sub-specialty-title">4. Mắt - TMH - RHM</h4>
               <div class="specialty-grid infographic-grid">
-                <p class="empty-text">Đang cập nhật...</p>
+                <a href="#" class="specialty-card info-card placeholder-card" style="opacity: 0.6; pointer-events: none; border-style: dashed;">
+                  <div class="specialty-card-top">
+                    <div class="specialty-info">
+                      <h3>Đang cập nhật...</h3>
+                    </div>
+                  </div>
+                </a>
               </div>
 
               <!-- 5. Da liễu & cơ xương khớp -->
               <h4 class="sub-specialty-title">5. Da liễu & Cơ xương khớp</h4>
               <div class="specialty-grid infographic-grid">
-                <p class="empty-text">Đang cập nhật...</p>
+                <a href="#" class="specialty-card info-card placeholder-card" style="opacity: 0.6; pointer-events: none; border-style: dashed;">
+                  <div class="specialty-card-top">
+                    <div class="specialty-info">
+                      <h3>Đang cập nhật...</h3>
+                    </div>
+                  </div>
+                </a>
               </div>
 
               <!-- 6. Ngoại khoa -->
               <h4 class="sub-specialty-title">6. Ngoại khoa</h4>
               <div class="specialty-grid infographic-grid">
-                <p class="empty-text">Đang cập nhật...</p>
+                <a href="#" class="specialty-card info-card placeholder-card" style="opacity: 0.6; pointer-events: none; border-style: dashed;">
+                  <div class="specialty-card-top">
+                    <div class="specialty-info">
+                      <h3>Đang cập nhật...</h3>
+                    </div>
+                  </div>
+                </a>
               </div>
 
               <!-- 7. Sản phụ khoa -->
               <h4 class="sub-specialty-title">7. Sản phụ khoa</h4>
               <div class="specialty-grid infographic-grid">
-                <p class="empty-text">Đang cập nhật...</p>
+                <a href="#" class="specialty-card info-card placeholder-card" style="opacity: 0.6; pointer-events: none; border-style: dashed;">
+                  <div class="specialty-card-top">
+                    <div class="specialty-info">
+                      <h3>Đang cập nhật...</h3>
+                    </div>
+                  </div>
+                </a>
               </div>
 
               <!-- 8. Nhi khoa -->
               <h4 class="sub-specialty-title">8. Nhi khoa</h4>
               <div class="specialty-grid infographic-grid">
-                <p class="empty-text">Đang cập nhật...</p>
+                <a href="#" class="specialty-card info-card placeholder-card" style="opacity: 0.6; pointer-events: none; border-style: dashed;">
+                  <div class="specialty-card-top">
+                    <div class="specialty-info">
+                      <h3>Đang cập nhật...</h3>
+                    </div>
+                  </div>
+                </a>
               </div>
 
             </div>
@@ -699,9 +744,12 @@
               </ul>
             </div>
             <!-- Next Step Action Link -->
-            <a href="#" class="specialty-card-action" id="symptomActionBtn" style="display: flex; justify-content: space-between; align-items: center; text-decoration: none; background: var(--color-surface-2); padding: 0.75rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--color-divider); color: var(--color-primary); font-size: var(--text-xs); font-weight: 700; transition: all var(--tr);">
+            <a href="#" class="specialty-card-action" id="symptomActionBtn" style="display: flex; justify-content: space-between; align-items: center; text-decoration: none; background: var(--color-surface-2); padding: 0.75rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--color-divider); color: var(--color-primary); font-size: var(--text-xs); font-weight: 700; transition: all var(--tr); margin-bottom: 8px;">
               <span id="symptomActionText">Mở lưu đồ tiếp cận Sốt</span>
               <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="ma-tran-trieu-chung.html" class="specialty-card-action" style="display: flex; justify-content: center; align-items: center; text-decoration: none; background: var(--color-primary); padding: 0.75rem 1rem; border-radius: var(--radius-md); color: white; font-size: var(--text-xs); font-weight: 700; transition: all var(--tr); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+              <i class="fa-solid fa-magnifying-glass-plus" style="margin-right: 6px;"></i> Tra Cứu Đa Triệu Chứng (Nâng Cao)
             </a>
           </section>
         </aside>

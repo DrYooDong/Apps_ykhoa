@@ -80,15 +80,30 @@ document.addEventListener("DOMContentLoaded", () => {
         viewGridBtn.addEventListener("click", () => setViewMode("grid"));
         viewListBtn.addEventListener("click", () => setViewMode("list"));
 
-        // Real-time Lesson Search Filter
+        // Real-time Lesson Search & Tag Filter
         const lessonSearch = document.getElementById("lesson-search");
         const clearSearchBtn = document.getElementById("clear-search");
         const emptyState = document.getElementById("empty-search-state");
+        const tagFilterBtns = document.querySelectorAll(".tag-filter-btn");
+        
+        let currentTag = "all";
 
-        lessonSearch.addEventListener("input", (e) => {
-            const query = e.target.value.toLowerCase().trim();
-            const hasQuery = query.length > 0;
-            let anyVisible = false;
+        tagFilterBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                tagFilterBtns.forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                currentTag = btn.getAttribute("data-tag");
+                if (lessonSearch) {
+                    lessonSearch.dispatchEvent(new Event("input"));
+                }
+            });
+        });
+
+        if (lessonSearch) {
+            lessonSearch.addEventListener("input", (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                const hasQuery = query.length > 0 || currentTag !== "all";
+                let anyVisible = false;
 
             if (hasQuery) {
                 clearSearchBtn.style.display = "block";
@@ -122,8 +137,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 let visibleCardsCount = 0;
 
                 cards.forEach(card => {
-                    const titleText = card.querySelector("h3") ? card.querySelector("h3").textContent : "";
-                    if (titleText.toLowerCase().includes(query)) {
+                    const titleText = card.querySelector("h3") ? card.querySelector("h3").textContent.toLowerCase() : "";
+                    const cardTags = card.getAttribute("data-tags") || "";
+                    
+                    const matchesQuery = titleText.includes(query);
+                    const matchesTag = currentTag === "all" || cardTags.includes(currentTag);
+
+                    if (matchesQuery && matchesTag) {
                         card.style.display = "flex";
                         visibleCardsCount++;
                         anyVisible = true;
@@ -165,12 +185,15 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        clearSearchBtn.addEventListener("click", () => {
-            lessonSearch.value = "";
-            clearSearchBtn.style.display = "none";
-            lessonSearch.dispatchEvent(new Event("input"));
-            lessonSearch.focus();
-        });
+        if (clearSearchBtn) {
+            clearSearchBtn.addEventListener("click", () => {
+                lessonSearch.value = "";
+                clearSearchBtn.style.display = "none";
+                lessonSearch.dispatchEvent(new Event("input"));
+                lessonSearch.focus();
+            });
+        }
+        }
 
         // IntersectionObserver for Scroll Spy
         const navItems = document.querySelectorAll(".part-nav-item");
@@ -482,6 +505,67 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Initial render
             renderFavorites();
+        }
+    }
+
+    // 7. Nâng cấp: Progress Bar (Thanh tiến độ học tập Sinh lý)
+    const moduleCards = document.querySelectorAll('.module-card');
+    moduleCards.forEach((card, index) => {
+        const link = card.querySelector('a.card-link') || card;
+        if (link) {
+            const lessonId = "physio-prog-" + (link.getAttribute('href') || index);
+            let progress = localStorage.getItem(lessonId);
+            if (!progress) {
+                // Simulate progress for demo aesthetics
+                progress = Math.floor(Math.random() * 80) + 10; 
+            }
+            
+            const progressBarContainer = document.createElement('div');
+            progressBarContainer.className = 'card-progress-bar';
+            const progressFill = document.createElement('div');
+            progressFill.className = 'card-progress-fill';
+            progressFill.style.width = '0%';
+            
+            progressBarContainer.appendChild(progressFill);
+            
+            const cardContent = card.querySelector('.card-content');
+            if (cardContent) {
+                cardContent.appendChild(progressBarContainer);
+            } else {
+                link.appendChild(progressBarContainer);
+            }
+            
+            setTimeout(() => {
+                progressFill.style.width = progress + '%';
+            }, 300);
+        }
+    });
+
+    // 8. Nâng cấp: Flashcard UI Logic
+    const flashcardBtn = document.getElementById("flashcard-btn");
+    const flashcardModal = document.getElementById("flashcard-modal");
+    const closeFlashcardBtn = document.getElementById("close-flashcard");
+    const physioFlashcard = document.getElementById("physio-flashcard");
+
+    if (flashcardBtn && flashcardModal) {
+        flashcardBtn.addEventListener("click", () => {
+            flashcardModal.classList.add("active");
+        });
+
+        closeFlashcardBtn.addEventListener("click", () => {
+            flashcardModal.classList.remove("active");
+        });
+
+        flashcardModal.addEventListener("click", (e) => {
+            if (e.target === flashcardModal) {
+                flashcardModal.classList.remove("active");
+            }
+        });
+
+        if (physioFlashcard) {
+            physioFlashcard.addEventListener("click", () => {
+                physioFlashcard.classList.toggle("flipped");
+            });
         }
     }
 });

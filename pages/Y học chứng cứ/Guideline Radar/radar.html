@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CliniPortal Guideline Radar - Cập nhật thay đổi thực hành lâm sàng">
+  <title>Guideline Radar – CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+
+  <style>
+    /* Radar specific styling */
+    :root {
+      --radar-primary: #10b981;
+      --radar-bg: #ecfdf5;
+      --radar-accent: #059669;
+    }
+    
+    .radar-hero {
+      background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%);
+      color: white;
+      padding: 4rem 2rem;
+      border-radius: 20px;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .radar-hero::after {
+      content: '📡';
+      position: absolute;
+      right: -20px;
+      top: -20px;
+      font-size: 15rem;
+      opacity: 0.1;
+      transform: rotate(15deg);
+    }
+
+    .radar-eyebrow {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      background: rgba(255,255,255,0.15);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+      backdrop-filter: blur(5px);
+    }
+    
+    .radar-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .radar-feed {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .radar-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    }
+    
+    .radar-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+
+    .radar-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+    }
+
+    .radar-badge {
+      background: #fee2e2;
+      color: #b91c1c;
+      padding: 0.3rem 0.8rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border: 1px solid #fca5a5;
+    }
+
+    .practice-changing {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      background: var(--color-bg);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border-left: 4px solid var(--radar-primary);
+    }
+
+    @media(max-width: 768px) {
+      .practice-changing { grid-template-columns: 1fr; }
+    }
+
+    .pc-col h4 {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .pc-old { color: #b91c1c; text-decoration: line-through; opacity: 0.7; }
+    .pc-new { color: var(--radar-accent); font-weight: 600; font-size: 1.1rem; }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  
+  <div class="app-container">
+    <div class="main-wrapper" style="margin-left: 0; padding-top: 2rem;">
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../../../index.html">🏠 Home</a></li>
+          <li class="breadcrumb-item"><a href="../yhcc.html">Y học chứng cứ</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Guideline Radar</li>
+        </ol>
+      </nav>
+
+      <section class="radar-hero">
+        <span class="radar-eyebrow">UPDATE 2026</span>
+        <h1 class="radar-title">Guideline Radar</h1>
+        <p style="max-width: 600px; line-height: 1.6; opacity: 0.9;">Trạm theo dõi liên tục các thay đổi quan trọng trong thực hành lâm sàng từ các tổ chức y tế uy tín toàn cầu.</p>
+      </section>
+
+      <div class="radar-feed">
+        <article class="radar-card">
+          <div class="radar-card-header">
+            <div>
+              <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--color-text);">ESC 2026 - Hướng dẫn quản lý Rung nhĩ</h2>
+              <p class="radar-date">Cập nhật: Tháng 5/2026</p>
+            </div>
+            <span class="radar-badge">🚨 THAY ĐỔI THỰC HÀNH</span>
+          </div>
+
+          <div class="practice-changing">
+            <div class="pc-col">
+              <h4>Bản 2020 (Cũ)</h4>
+              <p class="pc-old">Sử dụng thang điểm CHA2DS2-VASc để đánh giá nguy cơ đột quỵ.</p>
+            </div>
+            <div class="pc-col">
+              <h4>Bản 2026 (Mới)</h4>
+              <p class="pc-new">Bổ sung thang điểm CARE-AF tích hợp thêm yếu tố chức năng thận và biomarker sinh học cho độ chính xác cao hơn.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+</body>
+</html>

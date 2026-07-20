@@ -117,6 +117,19 @@ function initFlowchartControls() {
                 <button id="flow-search-clear" class="search-clear-btn" aria-label="Xóa tìm kiếm">&times;</button>
             </div>
             <div class="flow-action-buttons">
+                <button class="btn-flow-control" id="btn-zoom-out" title="Thu nhỏ" aria-label="Thu nhỏ lưu đồ">
+                    <i class="fa-solid fa-minus"></i>
+                </button>
+                <button class="btn-flow-control" id="btn-zoom-reset" title="Mặc định" aria-label="Khôi phục kích thước lưu đồ">
+                    <i class="fa-solid fa-expand"></i>
+                </button>
+                <button class="btn-flow-control" id="btn-zoom-in" title="Phóng to" aria-label="Phóng to lưu đồ">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+                <div style="width: 1px; height: 24px; background: #cbd5e1; margin: 0 4px;"></div>
+                <button class="btn-flow-control" id="btn-print" title="In lưu đồ" aria-label="In hoặc lưu PDF lưu đồ">
+                    <i class="fa-solid fa-print"></i> In / Xuất PDF
+                </button>
                 <button class="btn-flow-control" onclick="expandAll()" title="Mở rộng tất cả node chi tiết">
                     <i class="fa-solid fa-angles-down"></i> Mở rộng tất cả
                 </button>
@@ -245,6 +258,102 @@ function initInteractivePaths() {
     });
 }
 
+/**
+ * Initialize zoom and pan for the flowchart canvas
+ */
+function initZoomPan() {
+    const wrappers = document.querySelectorAll('.flow-canvas-wrapper');
+    if (wrappers.length === 0) return;
+
+    wrappers.forEach(wrapper => {
+        let scale = 1;
+        let isDragging = false;
+        let startX, startY;
+        let translateX = 0, translateY = 0;
+
+        wrapper.style.overflow = 'hidden';
+        wrapper.style.cursor = 'grab';
+
+        const updateTransform = () => {
+            const activePane = wrapper.querySelector('.flow-pane.active');
+            if (activePane) {
+                activePane.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+                activePane.style.transformOrigin = 'center top';
+            }
+        };
+
+        const resetTransform = () => {
+            scale = 1; translateX = 0; translateY = 0;
+            updateTransform();
+        };
+
+        // Reset transform when switching panes
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'class' && mutation.target.classList.contains('active')) {
+                   resetTransform();
+                }
+            });
+        });
+
+        wrapper.querySelectorAll('.flow-pane').forEach(pane => {
+            pane.style.transition = 'transform 0.1s ease-out';
+            observer.observe(pane, { attributes: true });
+        });
+
+        wrapper.addEventListener('mousedown', (e) => {
+            // Ignore if clicking on interactive elements
+            if (e.target.closest('.fnode') || e.target.closest('.flow-connector-label') || e.target.closest('button')) return;
+            isDragging = true;
+            wrapper.style.cursor = 'grabbing';
+            startX = e.clientX - translateX;
+            startY = e.clientY - translateY;
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            translateX = e.clientX - startX;
+            translateY = e.clientY - startY;
+            updateTransform();
+        });
+
+        window.addEventListener('mouseup', () => {
+            if (isDragging) {
+                isDragging = false;
+                wrapper.style.cursor = 'grab';
+            }
+        });
+
+        wrapper.addEventListener('wheel', (e) => {
+            if (e.target.closest('.fnode-details')) return; // Allow scrolling inside details
+            e.preventDefault();
+            const zoomSpeed = 0.05;
+            if (e.deltaY < 0) {
+                scale += zoomSpeed;
+            } else {
+                scale -= zoomSpeed;
+            }
+            scale = Math.min(Math.max(0.4, scale), 2.5); // Limit zoom
+            updateTransform();
+        }, { passive: false });
+
+        // Bind buttons
+        const btnZoomIn = document.getElementById('btn-zoom-in');
+        const btnZoomOut = document.getElementById('btn-zoom-out');
+        const btnZoomReset = document.getElementById('btn-zoom-reset');
+        const btnPrint = document.getElementById('btn-print');
+
+        if (btnZoomIn) btnZoomIn.addEventListener('click', () => { scale = Math.min(2.5, scale + 0.1); updateTransform(); });
+        if (btnZoomOut) btnZoomOut.addEventListener('click', () => { scale = Math.max(0.4, scale - 0.1); updateTransform(); });
+        if (btnZoomReset) btnZoomReset.addEventListener('click', resetTransform);
+        
+        if (btnPrint) btnPrint.addEventListener('click', () => {
+            expandAll(); // Mở rộng tất cả trước khi in
+            setTimeout(() => window.print(), 300);
+        });
+    });
+}
+
 // Dom loaded triggers
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Setup flowchart inputs auto-binding
@@ -266,4 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Init interactive path highlighting
     initInteractivePaths();
+
+    // 4. Init zoom and pan
+    initZoomPan();
 });

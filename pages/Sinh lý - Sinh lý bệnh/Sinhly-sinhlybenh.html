@@ -174,6 +174,9 @@
                         style="display: none;">&times;</button>
                 </div>
                 <div class="view-toggle-container">
+                    <button id="flashcard-btn" class="flashcard-btn" title="Flashcard Ôn tập">
+                        <i class="fa-solid fa-clone"></i> <span>Flashcards</span>
+                    </button>
                     <span class="toggle-label">Chế độ xem:</span>
                     <div class="toggle-buttons">
                         <button id="view-grid-btn" class="toggle-btn active" title="Dạng lưới"
@@ -1945,6 +1948,33 @@
             });
         });
     </script>
+
+    <!-- FLASHCARD MODAL -->
+    <div id="flashcard-modal" class="flashcard-modal-overlay">
+        <div class="flashcard-modal-content">
+            <button id="close-flashcard" class="close-modal-btn">&times;</button>
+            <h2 class="fc-title">🧠 Flashcard Sinh Lý Cơ Bản</h2>
+            <div class="flashcard-container">
+                <div class="flashcard" id="physio-flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <h3 id="fc-question">Áp suất thẩm thấu huyết tương bình thường?</h3>
+                            <p class="fc-hint"><i class="fa-solid fa-rotate"></i> Bấm để lật thẻ</p>
+                        </div>
+                        <div class="flashcard-back">
+                            <h3 id="fc-answer">280 - 295 mOsm/kg H2O</h3>
+                            <p class="fc-explanation" id="fc-explanation">Được quyết định chủ yếu bởi nồng độ Na+ máu.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flashcard-controls">
+                <button id="fc-prev" class="fc-btn"><i class="fa-solid fa-arrow-left"></i></button>
+                <span id="fc-counter">1 / 5</span>
+                <button id="fc-next" class="fc-btn"><i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
 
     <div id="footer-placeholder" data-footer-path="../../components/footer.html"></div>
 </body>

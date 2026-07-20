@@ -1017,3 +1017,88 @@ code {
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
+/* ── IN ẤN / XUẤT PDF (PRINT STYLES) ── */
+@media print {
+    /* Ẩn các thành phần không cần thiết */
+    .app-sidebar,
+    #header-placeholder,
+    #footer-placeholder,
+    .breadcrumb-container,
+    .flow-tabs,
+    .flow-controls-panel,
+    .sidebar-overlay,
+    .flow-hero::before,
+    .flow-hero::after,
+    .search-clear-btn {
+        display: none !important;
+    }
+
+    /* Đặt lại bố cục trang */
+    body, html {
+        background: #fff !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .app-container {
+        padding: 0 !important;
+        margin: 0 !important;
+        display: block !important;
+    }
+
+    .main-wrapper {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Khôi phục tỷ lệ Zoom (không zoom khi in) */
+    .flow-pane {
+        transform: none !important;
+        transition: none !important;
+        page-break-inside: avoid;
+    }
+
+    /* Tối ưu Hero banner cho in */
+    .flow-hero {
+        background: #fff !important;
+        color: #000 !important;
+        border: 2px solid #000 !important;
+        box-shadow: none !important;
+        margin-bottom: 20px !important;
+        padding: 15px !important;
+    }
+
+    .hero-badge {
+        border-color: #000 !important;
+        color: #000 !important;
+    }
+
+    /* Đảm bảo Node hiển thị viền rõ ràng */
+    .fnode {
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .fnode-title {
+        color: #000 !important;
+    }
+
+    /* Chi tiết node luôn hiển thị nếu đang mở, bỏ background mờ */
+    .detail-box {
+        background: #fff !important;
+        border: 1px solid #aaa !important;
+        color: #000 !important;
+    }
+
+    /* Các connector */
+    .flow-connector-label {
+        color: #000 !important;
+        border: 1px solid #000 !important;
+        box-shadow: none !important;
+        background: #fff !important;
+    }
+}
