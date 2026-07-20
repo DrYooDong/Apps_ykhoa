@@ -106,6 +106,37 @@
         createdAt: new Date().toISOString()
       },
       {
+        id: "study_byt_copd_2026",
+        title: "Hướng dẫn chẩn đoán và điều trị bệnh phổi tắc nghẽn mạn tính (COPD) Bộ Y tế 2026",
+        drug: "LAMA, LABA, ICS, Roflumilast, Azithromycin, Kháng sinh, Morphin",
+        sourceType: "vn-moh",
+        specialty: "pulmo",
+        design: "guideline",
+        intervention: "Phân loại tắc nghẽn GOLD 1-4, phân nhóm điều trị ABE, tiếp cận đợt cấp theo tiêu chuẩn Rome 2022, sử dụng kháng sinh theo nguy cơ Pseudomonas aeruginosa",
+        primaryEndpoint: "Giảm triệu chứng khó thở, giảm tần suất đợt cấp, cá thể hóa điều trị bằng Eosinophil máu và cải thiện tỷ lệ tử vong",
+        keyResults: "Khuyến cáo chính thức của Bộ Y tế Việt Nam ban hành kèm theo Quyết định số 2131/QĐ-BYT ngày 14/07/2026",
+        impact: "practice-changing",
+        year: 2026,
+        organization: "Bộ Y tế Việt Nam",
+        phase: "Guidelines",
+        sampleSize: null,
+        population: "Người bệnh bệnh phổi tắc nghẽn mạn tính (BPTNMT) tại Việt Nam",
+        summary: "Hướng dẫn quốc gia toàn diện nhất và mới nhất của Bộ Y tế Việt Nam về chẩn đoán xác định, phân nhóm điều trị ABE dựa trên GOLD 2026, quản lý đợt cấp bằng tiêu chuẩn Rome 2022 và cá thể hóa điều trị thuốc giãn phế quản, kháng sinh và PHCN.",
+        detailedConclusion: "Chẩn đoán xác định khi FEV1/FVC < 70% sau test giãn phế quản. Phân nhóm điều trị ABE (A: 1 thuốc giãn phế quản, B: LABA+LAMA, E: LABA+LAMA; thêm ICS nếu Eos >= 300). Đợt cấp phân loại theo Rome 2022 (Nhẹ, Trung bình, Nặng). Chỉ định kháng sinh đợt cấp dựa trên triệu chứng Anthonisen và nguy cơ nhiễm P. aeruginosa. Sử dụng Morphin liều thấp kiểm soát khó thở giai đoạn cuối đời.",
+        fdaStatus: "Quyết định số 2131/QĐ-BYT",
+        sourceUrl: "https://kcb.vn/",
+        file: "Kho Guidelines/byt-copd-2026.html",
+        subgroups: {
+          "Nhóm A": "1 thuốc giãn phế quản (SABA, LABA, LAMA, SAMA)",
+          "Nhóm B": "Phối hợp LABA + LAMA duy trì",
+          "Nhóm E (Eos < 300)": "LABA + LAMA. Eos < 100 cân nhắc Roflumilast/Azithromycin nếu còn đợt cấp",
+          "Nhóm E (Eos ≥ 300)": "LABA + LAMA + ICS (Khuyến cáo mạnh)"
+        },
+        asianData: true,
+        bookmarked: true,
+        createdAt: new Date().toISOString()
+      },
+      {
         id: "study_vnha2023",
         title: "Khuyến cáo chẩn đoán & điều trị suy tim cấp và mạn VNHA/VCS 2023",
         drug: "ARNI, SGLT2i, Chẹn Beta, MRA",

@@ -49,6 +49,43 @@
       background: rgba(var(--color-teal-rgb), 0.06);
       color: var(--color-teal);
     }
+
+    /* Nâng cấp UI/UX: Hiệu ứng thẻ (Cards) & Search Box */
+    .tool-card {
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      background: var(--color-surface);
+    }
+    .tool-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px -8px rgba(var(--part-color-rgb, 2, 132, 199), 0.25);
+      border-color: rgba(var(--part-color-rgb, 2, 132, 199), 0.5);
+    }
+    .tool-card .specialty-icon {
+      transition: transform 0.3s ease;
+    }
+    .tool-card:hover .specialty-icon {
+      transform: scale(1.15) rotate(5deg);
+    }
+    
+    .search-box-container {
+      transition: all 0.3s ease;
+    }
+    .search-box-container:focus-within {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 15px -5px rgba(var(--color-primary-rgb), 0.2);
+    }
+    #lesson-search {
+      border: 1.5px solid var(--color-border, #e2e8f0);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    [data-theme="dark"] #lesson-search {
+      border-color: var(--color-divider);
+    }
+    #lesson-search:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.15);
+      outline: none;
+    }
   </style>
 </head>
 
@@ -802,6 +839,8 @@
 
   <!-- ===================== SCRIPT ===================== -->
   <script src="../../js/module-dashboard.js" defer></script>
+  <script src="tools-data.js" defer></script>
+  <script src="cong-cu-logic.js" defer></script>
 
   <!-- ===================== LAB VALUES SCRIPT ===================== -->
   <script>

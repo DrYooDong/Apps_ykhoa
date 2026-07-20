@@ -586,3 +586,151 @@
   line-height: 1;
 }
 
+/* ==========================================================================
+   OSCE UPGRADES (Checklist, Timer, Red Flags)
+   ========================================================================== */
+
+/* Checklist Checked State */
+.check li.checked {
+  background: rgba(0, 0, 0, 0.04);
+  opacity: 0.75;
+}
+
+.check li.checked span {
+  text-decoration: line-through;
+  color: var(--color-text-muted);
+}
+
+/* Progress Bar */
+.skill-progress-container {
+  margin: 16px 0 24px;
+  background: var(--color-divider);
+  border-radius: 99px;
+  height: 8px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.skill-progress-bar {
+  height: 100%;
+  background: var(--a);
+  width: 0%;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-progress-text {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--a);
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* OSCE Timer Widget */
+.osce-timer-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  border-radius: var(--radius-lg);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.osce-timer-widget.warning {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.05);
+  box-shadow: 0 8px 30px rgba(239, 68, 68, 0.2);
+}
+
+.osce-timer-display {
+  font-family: 'Inter', monospace;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.05em;
+}
+
+.osce-timer-widget.warning .osce-timer-display {
+  color: #ef4444;
+  animation: timer-pulse 1s infinite alternate;
+}
+
+.osce-timer-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.osce-timer-controls button {
+  background: var(--color-surface-offset);
+  border: 1px solid var(--color-divider);
+  cursor: pointer;
+  color: var(--color-text);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.osce-timer-controls button:hover {
+  background: var(--a);
+  color: white;
+  border-color: var(--a);
+}
+
+@keyframes timer-pulse {
+  from { opacity: 1; }
+  to { opacity: 0.5; }
+}
+
+/* Red Flags Panel */
+.red-flags-panel {
+  background: rgba(239, 68, 68, 0.05);
+  border: 2px dashed #ef4444;
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.red-flags-panel::before {
+  content: "🚩";
+  position: absolute;
+  top: -15px;
+  left: 20px;
+  font-size: 1.5rem;
+  background: var(--color-surface);
+  border-radius: 50%;
+  padding: 2px;
+}
+
+.red-flags-panel h3 {
+  color: #ef4444;
+  margin: 0 0 12px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.red-flags-panel ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #991b1b;
+  font-weight: 600;
+}
+
+.red-flags-panel li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}

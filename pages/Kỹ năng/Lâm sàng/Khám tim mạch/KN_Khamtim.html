@@ -170,9 +170,6 @@
         <button class='tab-btn' data-tab='osce'>
           <span class="term-hl-secondary">OSCE</span>
         </button>
-        <button class='tab-btn' data-tab='flowchart'>
-          Sơ đồ tiếp cận
-        </button>
       </div>
       <section class='tab active' id='core'>
         <div class='card'>
@@ -312,10 +309,24 @@
               <li><strong>Mắt và Mặt:</strong> Quan sát ban vàng quanh mắt (<span class="term-hl">xanthelasmata</span>) và vòng giác mạc (<span class="term-hl">corneal arcus</span>), dấu hiệu tím trung ương ở niêm mạc miệng/lưỡi.</li>
             </ul>
           </div>
+          <div class="red-flags-panel">
+            <h3>Cờ đỏ trượt trực tiếp (Critical Errors)</h3>
+            <ul>
+              <li>Quên sát khuẩn tay hoặc rửa tay không đúng quy trình trước khi chạm vào bệnh nhân.</li>
+              <li>Không xin phép bệnh nhân và giải thích rõ ràng trước khi bộc lộ vùng ngực.</li>
+              <li>Khám thô bạo, để bệnh nhân lạnh hoặc không bọc ống nghe trước khi áp vào ngực.</li>
+            </ul>
+          </div>
           <div class='card'>
             <h2>Quy trình khám chi tiết (<span class="term-hl">Examination sequence</span>)</h2>
             <p>Thực hiện các bước khám có hệ thống sau:</p>
-            <ul class='check' style='margin-top: 12px;'>
+            
+            <div class="skill-progress-container">
+              <span id="skill-progress-text" class="skill-progress-text">Tiến độ: 0/5 bước (0%)</span>
+              <div id="skill-progress-bar" class="skill-progress-bar"></div>
+            </div>
+
+            <ul class='check'>
               <li>
                 <input type='checkbox'>
                 <span><strong>1. Khám Mạch và Huyết áp:</strong> Bắt mạch quay đánh giá nhịp điệu, tần số và biên độ mạch (đếm trong 15 giây nhân 4). Đo huyết áp động mạch ở cả hai tay.</span>
@@ -419,140 +430,6 @@
           </ol>
         </div>
       </section>
-      <section class='tab' id='flowchart'>
-        <div class='card'>
-          <h2>Lưu đồ Khám tim lâm sàng</h2>
-          <p>Lưu đồ được thiết kế theo nguyên tắc <strong>Progressive Disclosure</strong> và <strong>Multi-pane</strong> để giảm tải lượng thông tin. Nhấn vào các ô có mũi tên bên phải để mở rộng chi tiết.</p>
-          
-          <div class="flow-container" style="margin-top: 20px;">
-            <div class="flow-tabs">
-              <button class="flow-tab-btn active" onclick="switchPane('fc-kham-ngoai-bien')"><span class="tab-dot"></span>1. Ngoại biên & JVP</button>
-              <button class="flow-tab-btn" onclick="switchPane('fc-kham-truoc-tim')"><span class="tab-dot"></span>2. Khám trước tim (Nghe tim)</button>
-            </div>
-            
-            <!-- Tab 1: Khám ngoại biên & JVP -->
-            <div class="flow-pane active" id="fc-kham-ngoai-bien">
-              <div class="fnode fnode-start">Đánh giá chung (General Assessment)</div>
-              
-              <div class="flow-arrow">↓</div>
-              
-              <div class="fnode fnode-expandable" onclick="toggleNode('node-hands-eyes')">
-                <div class="fnode-header">
-                  <span class="fnode-title">Khám Bàn tay, Mắt, Mặt</span>
-                  <i class="fa fa-chevron-down fnode-arrow"></i>
-                </div>
-                <div class="fnode-details" id="node-hands-eyes">
-                  <ul style="margin: 0; padding-left: 20px; text-align: left;">
-                    <li><strong>Bàn tay:</strong> Tím ngoại vi, ngón tay dùi trống, tổn thương Janeway, nốt Osler.</li>
-                    <li><strong>Mắt/Mặt:</strong> Ban vàng quanh mắt, vòng giác mạc, tím trung ương (lưỡi).</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="flow-arrow">↓</div>
-
-              <div class="fnode fnode-question">
-                <div class="fnode-q">Khám Mạch & Huyết áp</div>
-              </div>
-
-              <!-- Flexbox for branching -->
-              <div style="display: flex; justify-content: space-around; width: 100%; max-width: 600px; margin: 0 auto;">
-                <div style="display: flex; flex-direction: column; align-items: center; flex: 1; padding: 0 10px;">
-                  <div class="flow-arrow flow-arrow-no" style="font-size: 0.9em; min-height: 48px; display: flex; align-items: center;">Mạch nảy mạnh<br>chìm sâu?</div>
-                  <div class="fnode fnode-danger" style="width: 100%;">Hở van Động mạch chủ</div>
-                </div>
-                <div style="display: flex; flex-direction: column; align-items: center; flex: 1; padding: 0 10px;">
-                  <div class="flow-arrow flow-arrow-no" style="font-size: 0.9em; min-height: 48px; display: flex; align-items: center;">Mạch chậm<br>nảy yếu?</div>
-                  <div class="fnode fnode-danger" style="width: 100%;">Hẹp van Động mạch chủ</div>
-                </div>
-              </div>
-
-              <div class="flow-arrow">↓</div>
-
-              <div class="fnode fnode-question">
-                <div class="fnode-q">Đánh giá Áp lực TM cảnh (JVP)</div>
-              </div>
-
-              <div style="display: flex; justify-content: space-around; width: 100%; max-width: 600px; margin: 0 auto;">
-                <div style="display: flex; flex-direction: column; align-items: center; flex: 1; padding: 0 10px;">
-                  <div class="flow-arrow flow-arrow-yes" style="font-size: 0.9em; min-height: 48px; display: flex; align-items: center;">Tăng (> 4cm) /<br>Sóng 'a' mất</div>
-                  <div class="fnode fnode-danger" style="width: 100%;">Suy tim phải / Rung nhĩ</div>
-                </div>
-                <div style="display: flex; flex-direction: column; align-items: center; flex: 1; padding: 0 10px;">
-                  <div class="flow-arrow flow-arrow-yes" style="font-size: 0.9em; min-height: 48px; display: flex; align-items: center;">Bình thường (≤ 4cm)</div>
-                  <div class="fnode fnode-success" style="width: 100%;">JVP ổn định</div>
-                </div>
-              </div>
-
-              <div class="flow-arrow">↓</div>
-              <div class="fnode fnode-action" style="cursor: pointer;" onclick="switchPane('fc-kham-truoc-tim')">Tiếp tục: Khám vùng trước tim ➔</div>
-            </div>
-
-            <!-- Tab 2: Khám vùng trước tim -->
-            <div class="flow-pane" id="fc-kham-truoc-tim" style="display:none">
-              <div class="fnode fnode-start">Khám vùng trước tim (Precordium)</div>
-              
-              <div class="flow-arrow">↓</div>
-
-              <div class="fnode fnode-expandable" onclick="toggleNode('node-look-feel')">
-                <div class="fnode-header">
-                  <span class="fnode-title">Nhìn & Sờ (Inspection & Palpation)</span>
-                  <i class="fa fa-chevron-down fnode-arrow"></i>
-                </div>
-                <div class="fnode-details" id="node-look-feel">
-                  <ul style="margin: 0; padding-left: 20px; text-align: left;">
-                    <li><strong>Nhìn:</strong> Sẹo mổ cũ, biến dạng lồng ngực.</li>
-                    <li><strong>Sờ:</strong> Xác định mỏm tim, diện thất phải (heave), rung miu (thrill) tại các ổ van.</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="flow-arrow">↓</div>
-
-              <div class="fnode fnode-question">
-                <div class="fnode-q">Nghe tim (Auscultation) - Tiếng T1, T2</div>
-              </div>
-
-              <div style="display: flex; justify-content: space-around; width: 100%; max-width: 600px; margin: 0 auto;">
-                <div style="display: flex; flex-direction: column; align-items: center; flex: 1; padding: 0 10px;">
-                  <div class="flow-arrow flow-arrow-no" style="font-size: 0.9em; min-height: 30px; display: flex; align-items: center;">Có tiếng T3/T4?</div>
-                  <div class="fnode fnode-danger" style="width: 100%; font-size: 0.9em;">
-                    <strong>T3:</strong> Suy tim (>40t)<br>
-                    <strong>T4:</strong> Giảm đàn hồi thất
-                  </div>
-                </div>
-                <div style="display: flex; flex-direction: column; align-items: center; flex: 1; padding: 0 10px;">
-                  <div class="flow-arrow flow-arrow-yes" style="font-size: 0.9em; min-height: 30px; display: flex; align-items: center;">Bình thường</div>
-                </div>
-              </div>
-
-              <div class="flow-arrow">↓</div>
-
-              <div class="fnode fnode-question">
-                <div class="fnode-q">Phát hiện Âm thổi (Murmurs)?</div>
-              </div>
-
-              <div style="display: flex; justify-content: space-between; width: 100%; max-width: 600px; margin: 0 auto;">
-                <div style="display: flex; flex-direction: column; align-items: center; flex: 1; padding: 0 5px;">
-                  <div class="flow-arrow flow-arrow-yes" style="font-size: 0.85em;">Tâm thu tống máu</div>
-                  <div class="fnode fnode-action" style="width: 100%; font-size: 0.9em; padding: 10px 5px;">Hẹp ĐMC<br><small>(lan lên cổ)</small></div>
-                </div>
-                <div style="display: flex; flex-direction: column; align-items: center; flex: 1; padding: 0 5px;">
-                  <div class="flow-arrow flow-arrow-yes" style="font-size: 0.85em;">Toàn tâm thu</div>
-                  <div class="fnode fnode-action" style="width: 100%; font-size: 0.9em; padding: 10px 5px;">Hở van 2 lá<br><small>(lan nách)</small></div>
-                </div>
-                <div style="display: flex; flex-direction: column; align-items: center; flex: 1; padding: 0 5px;">
-                  <div class="flow-arrow flow-arrow-yes" style="font-size: 0.85em;">Tâm trương</div>
-                  <div class="fnode fnode-action" style="width: 100%; font-size: 0.9em; padding: 10px 5px;">Hở ĐMC<br><small>(bờ trái ức)</small></div>
-                </div>
-              </div>
-
-              <div class="flow-arrow">↓</div>
-              <div class="fnode fnode-success">Khám hoàn tất - Chỉ định Siêu âm tim, ECG</div>
-            </div>
-          </div>
-        </div>
-      </section>
       <section class='links'>
         <div class='card'>
           <h2>
@@ -584,6 +461,16 @@
     <div id='footer-placeholder' data-footer-path="../../../../components/footer.html">
     </div>
   </footer>
+
+  <!-- OSCE Timer Widget -->
+  <div class="osce-timer-widget" id="osce-timer-widget">
+    <div class="osce-timer-display" id="osce-timer-display">07:00</div>
+    <div class="osce-timer-controls">
+      <button id="osce-timer-start">Bắt đầu</button>
+      <button id="osce-timer-reset">Đặt lại</button>
+    </div>
+  </div>
+
   <script src="../../../../js/clinical-skill-tabs.js"></script>
   <script src="../../../../js/sidebar.js"></script>
   <script src="../../../../js/flowchart.js"></script>

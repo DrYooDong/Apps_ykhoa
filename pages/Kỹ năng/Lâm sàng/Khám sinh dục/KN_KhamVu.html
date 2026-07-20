@@ -236,7 +236,21 @@
             <h4>⚠️ Quy tắc bắt buộc: Người làm chứng (<span class="term-hl">Chaperone</span>)</h4>
             <p>Khám vú là một khám thực thể nhạy cảm. Bác sĩ nam BẮT BUỘC phải có người làm chứng (<span class="term-hl">chaperone</span>) nữ đi cùng và ghi nhận tên của người đó vào hồ sơ bệnh án.</p>
           </div>
-          <ul class='check'>
+                    <div class="red-flags-panel">
+            <h3>Cờ đỏ trượt trực tiếp (Critical Errors)</h3>
+            <ul>
+              <li>Quên sát khuẩn tay hoặc rửa tay không đúng quy trình trước khi chạm vào bệnh nhân.</li>
+              <li>Không xin phép bệnh nhân và giải thích rõ ràng trước khi bộc lộ vùng thăm khám.</li>
+              <li>Khám thô bạo, để bệnh nhân lạnh hoặc không bọc dụng cụ/ống nghe trước khi chạm vào người bệnh.</li>
+            </ul>
+          </div>
+
+            <div class="skill-progress-container">
+              <span id="skill-progress-text" class="skill-progress-text">Tiến độ: 0 bước (0%)</span>
+              <div id="skill-progress-bar" class="skill-progress-bar"></div>
+            </div>
+
+            <ul class='check'>
             <li>
               <input type='checkbox'>
               <span><strong>1. Nhìn trong tư thế ngồi thẳng (Hai tay buông thõng đặt lên đùi):</strong> Quan sát sự đối xứng kích thước vú, sưng nề khu trú, thay đổi màu sắc da, lõm da, sần da cam, tụt núm vú hay loét chàm.</span>
@@ -361,6 +375,16 @@
     <div id='footer-placeholder' data-footer-path="../../../../components/footer.html">
     </div>
   </footer>
+  
+  <!-- OSCE Timer Widget -->
+  <div class="osce-timer-widget" id="osce-timer-widget">
+    <div class="osce-timer-display" id="osce-timer-display">07:00</div>
+    <div class="osce-timer-controls">
+      <button id="osce-timer-start">Bắt đầu</button>
+      <button id="osce-timer-reset">Đặt lại</button>
+    </div>
+  </div>
+
   <script src="../../../../js/clinical-skill-tabs.js"></script>
   <script src="../../../../js/sidebar.js"></script>
 </body>

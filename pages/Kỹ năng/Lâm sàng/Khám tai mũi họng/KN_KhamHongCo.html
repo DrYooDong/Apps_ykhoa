@@ -241,7 +241,21 @@
       <section class='tab' id='exam'>
         <div class='card'>
           <h2>Quy trình khám Miệng và Họng miệng</h2>
-          <ul class='check'>
+                    <div class="red-flags-panel">
+            <h3>Cờ đỏ trượt trực tiếp (Critical Errors)</h3>
+            <ul>
+              <li>Quên sát khuẩn tay hoặc rửa tay không đúng quy trình trước khi chạm vào bệnh nhân.</li>
+              <li>Không xin phép bệnh nhân và giải thích rõ ràng trước khi bộc lộ vùng thăm khám.</li>
+              <li>Khám thô bạo, để bệnh nhân lạnh hoặc không bọc dụng cụ/ống nghe trước khi chạm vào người bệnh.</li>
+            </ul>
+          </div>
+
+            <div class="skill-progress-container">
+              <span id="skill-progress-text" class="skill-progress-text">Tiến độ: 0 bước (0%)</span>
+              <div id="skill-progress-bar" class="skill-progress-bar"></div>
+            </div>
+
+            <ul class='check'>
             <li>
               <input type='checkbox'>
               <span><strong>Chuẩn bị:</strong> Sử dụng đèn đội đầu để tự do cả hai tay. Yêu cầu bệnh nhân tháo răng giả nếu có. Sử dụng hai cây đè lưỡi gỗ.</span>
@@ -409,6 +423,16 @@
     <div id='footer-placeholder' data-footer-path="../../../../components/footer.html">
     </div>
   </footer>
+  
+  <!-- OSCE Timer Widget -->
+  <div class="osce-timer-widget" id="osce-timer-widget">
+    <div class="osce-timer-display" id="osce-timer-display">07:00</div>
+    <div class="osce-timer-controls">
+      <button id="osce-timer-start">Bắt đầu</button>
+      <button id="osce-timer-reset">Đặt lại</button>
+    </div>
+  </div>
+
   <script src="../../../../js/clinical-skill-tabs.js"></script>
   <script src="../../../../js/sidebar.js"></script>
 </body>

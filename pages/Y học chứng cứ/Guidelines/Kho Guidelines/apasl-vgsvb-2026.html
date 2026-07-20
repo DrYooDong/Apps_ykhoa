@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tóm tắt hướng dẫn điều trị viêm gan B mạn tính (CHB) theo APASL 2026. Cập nhật tiêu chuẩn Treat-all, đánh giá xơ hóa bằng NITs và bộ 3 tầm soát ung thư gan.">
+  <title>APASL 2026 CPGs: Viêm Gan B Mạn – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --accent: #0f6fb4;
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16,1,0.3,1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-badges { margin-left: auto; display: flex; gap: 0.5rem; flex-shrink: 0; }
+    .badge { padding: 0.2rem 0.65rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; }
+    .badge-green { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); }
+    .badge-orange { background: var(--orange-bg); color: #92400e; border: 1px solid var(--orange-light); }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #0c4a6e 0%, #0f6fb4 40%, #065f46 100%); color: #fff; padding: 3.5rem 1.5rem 5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 60%, rgba(56,189,248,0.2) 0%, transparent 55%), radial-gradient(ellipse at 85% 20%, rgba(16,185,129,0.15) 0%, transparent 50%); }
+    .hero-inner { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.24); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; color: #7dd3fc; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #7dd3fc, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.7em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.2rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.82; max-width: 660px; margin-bottom: 2rem; line-height: 1.6; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; font-size: 0.8rem; opacity: 0.75; }
+    .hero-meta-item { display: flex; align-items: center; gap: 5px; }
+
+    /* PILLARS STRIP */
+    .pillars { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.75rem 1.5rem; }
+    .pillars-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+    .pillar { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem 1.25rem 1.25rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .pillar::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 4px 0 0 4px; }
+    .pillar.p1::before { background: var(--blue); }
+    .pillar.p2::before { background: var(--green); }
+    .pillar.p3::before { background: var(--orange); }
+    .pillar:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .pillar-icon { font-size: 1.8rem; flex-shrink: 0; line-height: 1; }
+    .pillar-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); margin-bottom: 0.25rem; }
+    .pillar-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 960px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    /* SECTION CARDS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; }
+    .sec-hdr { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; gap: 0.6rem; }
+    .sec-hdr-icon { font-size: 1.1rem; }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.95rem; font-weight: 800; color: var(--text); }
+    .sec-body { padding: 1.5rem; }
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.04em; }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; margin-bottom: 1rem; font-size: 0.85rem; line-height: 1.6; }
+    .infobox:last-child { margin-bottom: 0; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); }
+    .infobox strong { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem; margin-bottom: 0.3rem; }
+
+    /* TABLE DESIGN */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1rem;}
+    .regimen-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; min-width: 700px; }
+    .regimen-table thead th { padding: 0.7rem 0.9rem; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; text-align: left; background: var(--surface-2); border-bottom: 2px solid var(--border-light); }
+    .regimen-table thead .th-source { background: var(--accent); color: #fff; width: 120px; border-radius: 8px 0 0 0; }
+    .regimen-table thead .th-low { background: var(--green); color: #fff; }
+    .regimen-table thead .th-high { background: #b45309; color: #fff; border-radius: 0 8px 0 0; }
+    .regimen-table td { padding: 0.85rem 0.9rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .regimen-table tbody tr:hover td { background: #f8fafc; }
+    .source-cell { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.82rem; color: var(--accent); display: flex; align-items: center; gap: 0.5rem; white-space: nowrap; }
+    .rx-tag { display: inline-block; background: var(--border-light); color: var(--text-muted); font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; padding: 0.15rem 0.5rem; border-radius: 5px; margin: 0.15rem 0.1rem 0.15rem 0; }
+    .rx-tag.preferred { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); font-weight: 600; }
+
+    /* UPDATES GRID CARDS */
+    .updates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px,100%), 1fr)); gap: 1.25rem; }
+    .update-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.35rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .update-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+    .update-card-accent { position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 14px 14px 0 0; }
+    .update-card-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+    .update-card-icon { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+    .update-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.9rem; color: var(--text); line-height: 1.3; }
+    .update-card-body { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+    .update-verdict { display: inline-flex; align-items: center; gap: 0.35rem; margin-top: 0.85rem; padding: 0.35rem 0.75rem; border-radius: 8px; font-size: 0.75rem; font-weight: 700; }
+    .verdict-green { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); }
+    .verdict-blue { background: var(--blue-bg); color: #1e40af; border: 1px solid var(--blue-light); }
+    .verdict-red { background: var(--red-bg); color: #991b1b; border: 1px solid var(--red-light); }
+    .verdict-orange { background: var(--orange-bg); color: #92400e; border: 1px solid var(--orange-light); }
+
+    /* CITATION & ACTION BUTTONS */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; font-style: italic; }
+    .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 0.55rem 1.1rem; border-radius: 10px; border: 1.5px solid var(--border-light); background: var(--surface); color: var(--text-muted); font-size: 0.82rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all var(--tr); }
+    .btn:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1rem; }
+      .updates-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../Guidelines.html" class="topnav-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">APASL 2026: Viêm Gan B Mạn</div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">🔬 APASL 2026</div>
+      <h1 class="hero-title">
+        <span>APASL Clinical Practice Guidelines on the Management of Chronic Hepatitis B Infection</span>
+        Quản Lý Viêm Gan Siêu Vi B Mạn Tính
+      </h1>
+      <p class="hero-subtitle">
+        Bản cập nhật mang tính bước ngoặt đánh giá lại lịch sử tự nhiên của HBV, mở rộng mạnh mẽ chỉ định điều trị (Treat-all) và dịch chuyển sang đánh giá xơ hóa không xâm lấn, nhắm tới mục tiêu "chữa khỏi chức năng" (Functional Cure).
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          27 Tháng 6, 2026
+        </div>
+        <div class="hero-meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          Hepatology International
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLARS -->
+  <div class="pillars">
+    <div class="pillars-inner">
+      <div class="pillar p1">
+        <div class="pillar-icon">🔄</div>
+        <div>
+          <div class="pillar-title">Chiến lược Treat-all</div>
+          <div class="pillar-desc">Chỉ định điều trị ngay khi HBV DNA phát hiện được và ALT &ge; 40 IU/L, bất kể giai đoạn xơ hóa. Xóa bỏ khái niệm "người mang mầm bệnh không hoạt động".</div>
+        </div>
+      </div>
+      <div class="pillar p2">
+        <div class="pillar-icon">🎯</div>
+        <div>
+          <div class="pillar-title">Đánh giá xơ hóa NITs</div>
+          <div class="pillar-desc">Ưu tiên FIB-4, APRI hoặc VCTE làm công cụ đầu tay. Sinh thiết gan chỉ định khi kết quả NITs mâu thuẫn hoặc có đồng mắc (MAFLD).</div>
+        </div>
+      </div>
+      <div class="pillar p3">
+        <div class="pillar-icon">🔍</div>
+        <div>
+          <div class="pillar-title">Tầm soát HCC tối ưu</div>
+          <div class="pillar-desc">Bắt buộc tầm soát định kỳ ở mPAGE-B &ge; 9. Khuyến cáo bộ 3 công cụ: Siêu âm + AFP + PIVKA-II tăng độ nhạy phát hiện ung thư sớm &gt; 90%.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="page-content">
+  
+    <!-- SECTION 1 -->
+    <div class="sec-card">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">🧬</span>
+        <h2 class="sec-title">Quan Điểm Mới Về Sinh Bệnh Học & Chẩn Đoán</h2>
+      </div>
+      <div class="sec-body">
+        <p style="margin-bottom: 1rem; font-size: 0.9rem;">
+          APASL 2026 đã tái định nghĩa lại lịch sử tự nhiên của bệnh viêm gan B mạn tính dựa trên các bằng chứng vi sinh và miễn dịch học mới, loại bỏ hoàn toàn một số quan niệm cũ không còn phù hợp với mục tiêu giảm rủi ro HCC.
+        </p>
+
+        <div class="infobox info">
+          <span class="infobox-icon">💡</span>
+          <div>
+            <strong>Không còn khái niệm "Người mang mầm bệnh không hoạt động"</strong>
+            Được thay bằng thuật ngữ <em>"Nhiễm HBV mạn tính"</em> để phản ánh đúng nguy cơ sinh ung thư tồn dư. Bệnh nhân có tải lượng virus thấp (HBV DNA &lt; 2.000 IU/mL) nhưng HBsAg &ge; 1.000 IU/mL vẫn có nguy cơ mắc HCC cao gấp 3,6 lần so với người có HBsAg &lt; 100 IU/mL.
+          </div>
+        </div>
+
+        <div class="infobox warning">
+          <span class="infobox-icon">⚠️</span>
+          <div>
+            <strong>Giai đoạn "Dung nạp miễn dịch" (Immune-tolerant)</strong>
+            Thực chất luôn mang tiềm năng tiến triển bệnh, với viêm gan âm ỉ và tích hợp HBV DNA vào bộ gen tế bào gan. Rủi ro sinh ung thư vẫn diễn ra ngay cả khi mức ALT nằm trong giới hạn bình thường.
+          </div>
+        </div>
+
+        <div class="infobox success">
+          <span class="infobox-icon">💉</span>
+          <div>
+            <strong>Tiêm chủng và Tầm soát</strong>
+            Tầm soát toàn dân ít nhất 1 lần ở người lớn tại vùng lưu hành &ge;2% (như Việt Nam) với bộ tối thiểu là HBsAg + Total anti-HBc. Khuyến cáo tiêm vaccine mũi đầu tiên trong vòng 24 giờ sau sinh; với trẻ từ mẹ HBsAg(+) cần tiêm trong 12 giờ kèm HBIG để giảm lây truyền mẹ-con &lt;5%.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="sec-card">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">🎯</span>
+        <h2 class="sec-title">Chỉ Định & Chiến Lược Điều Trị "Treat-all"</h2>
+      </div>
+      <div class="sec-body">
+        <h3 class="sec-subtitle">Các Thang Bậc Mục Tiêu Điều Trị</h3>
+        <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; font-size: 0.9rem;">
+          <li style="margin-bottom: 0.5rem;"><strong>Ngắn hạn:</strong> Ức chế HBV DNA dưới ngưỡng phát hiện và bình thường hóa ALT.</li>
+          <li style="margin-bottom: 0.5rem;"><strong>Trung hạn (Chữa khỏi chức năng - Functional Cure):</strong> Mất HBsAg bền vững (&ge; 6 tháng) + HBV DNA không phát hiện &ge; 24 tuần sau ngừng thuốc. Hoặc chữa khỏi một phần với HBsAg &lt; 100 IU/mL.</li>
+          <li><strong>Dài hạn:</strong> Ngăn ngừa tiến triển xơ gan, suy gan, HCC và cải thiện sinh tồn.</li>
+        </ul>
+
+        <h3 class="sec-subtitle">Mở Rộng Tiêu Chuẩn Điều Trị Kháng Virus</h3>
+        <div class="updates-grid" style="margin-bottom: 1.5rem;">
+          <div class="update-card">
+            <div class="update-card-accent" style="background: var(--blue);"></div>
+            <div class="update-card-header">
+              <div class="update-card-icon" style="background: var(--blue-bg); color: var(--blue);">1</div>
+              <div class="update-card-title">Nhóm Điều Trị NGAY<br>(Bất kể HBV DNA & ALT)</div>
+            </div>
+            <div class="update-card-body">
+              <ul style="margin-left: 1rem;">
+                <li>Xơ gan (bù hoặc mất bù)</li>
+                <li>Ung thư biểu mô tế bào gan (HCC)</li>
+                <li>Suy gan, ghép gan</li>
+                <li>Chuẩn bị hoặc đang dùng thuốc ức chế miễn dịch</li>
+                <li>Đồng nhiễm HIV, HCV, HDV</li>
+                <li>Có biểu hiện ngoài gan do HBV</li>
+              </ul>
+            </div>
+            <div class="update-verdict verdict-blue">Ưu tiên tuyệt đối</div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-accent" style="background: var(--green);"></div>
+            <div class="update-card-header">
+              <div class="update-card-icon" style="background: var(--green-bg); color: var(--green);">2</div>
+              <div class="update-card-title">Tiếp cận "Treat-all"<br>(Chỉ định mở rộng)</div>
+            </div>
+            <div class="update-card-body">
+              <p>Chỉ định điều trị khi bệnh nhân có:</p>
+              <p style="font-weight: 600; margin: 0.5rem 0;">HBV DNA phát hiện được <br>+ ALT &ge; 40 IU/L (ULN)</p>
+              <p><strong>BẤT KỂ</strong> giai đoạn xơ hóa, trạng thái HBeAg, tiền sử gia đình HCC hay mắc kèm MAFLD.</p>
+            </div>
+            <div class="update-verdict verdict-green">Khuyến cáo mới (B1)</div>
+          </div>
+        </div>
+
+        <div class="infobox danger">
+          <span class="infobox-icon">🛑</span>
+          <div>
+            <strong>Lưu ý về việc ngừng NUCs:</strong> Tuyệt đối <strong>KHÔNG</strong> ngừng NUCs ở bệnh nhân xơ gan (có nguy cơ mất bù cao). Ở bệnh nhân không xơ gan, có thể cân nhắc ngừng khi đạt mất HBsAg bền vững (&ge; 6 tháng).
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="sec-card">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">💊</span>
+        <h2 class="sec-title">Phác Đồ Ưu Tiên & Cơ Địa Đặc Biệt</h2>
+      </div>
+      <div class="sec-body">
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th style="width: 15%">Phác đồ</th>
+                <th style="width: 35%">Đặc điểm & Chỉ định ưu tiên</th>
+                <th style="width: 50%">Lưu ý lâm sàng / Điều chỉnh liều</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell">
+                  <span class="rx-tag preferred">NUCs</span>
+                  TAF
+                </td>
+                <td>Ưu tiên hàng đầu cho người cao tuổi, có bệnh lý thận (suy thận), loãng xương. An toàn vượt trội hơn TDF về xương/thận.</td>
+                <td>Liều: 25 mg/ngày. Không cần chỉnh liều khi eGFR &ge; 15 mL/min/1.73m².</td>
+              </tr>
+              <tr>
+                <td class="source-cell">
+                  <span class="rx-tag preferred">NUCs</span>
+                  TDF
+                </td>
+                <td>Hiệu quả tốt, chi phí thấp, ưu tiên trong phòng ngừa lây truyền mẹ con (MTCT).</td>
+                <td>Liều: 300 mg/ngày. Dùng lâu dài ở NCT tăng nguy cơ gãy xương. Điều chỉnh liều khi eGFR &lt; 50.</td>
+              </tr>
+              <tr>
+                <td class="source-cell">
+                  <span class="rx-tag">NUCs</span>
+                  ETV
+                </td>
+                <td>An toàn cho thận/xương. Hiệu quả cao ở bệnh nhân chưa từng điều trị NUCs.</td>
+                <td>Liều: 0,5 mg/ngày (naïve) hoặc 1 mg (kháng LAM). <strong>KHÔNG</strong> dùng đơn trị cho HIV+HBV. Chỉnh liều khi eGFR &lt; 50.</td>
+              </tr>
+              <tr>
+                <td class="source-cell">
+                  <span class="rx-tag">IFN</span>
+                  Peg-IFN-&alpha;
+                </td>
+                <td>Lựa chọn đầu tay hoặc <em>add-on</em> trên NUCs (khi HBsAg &lt; 1.500 IU/mL) để theo đuổi chữa khỏi chức năng (tối đa 96 tuần).</td>
+                <td><strong>Chống chỉ định:</strong> Xơ gan mất bù, thai kỳ, VGAN tự miễn, bệnh tuyến giáp không kiểm soát. Giảm 50% liều nếu eGFR 30-50.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="sec-subtitle" style="margin-top: 1.5rem;">Cơ Địa Đặc Biệt & Đồng Mắc</h3>
+        <ul style="margin-left: 1.5rem; font-size: 0.9rem;">
+          <li style="margin-bottom: 0.5rem;"><strong>Thai kỳ:</strong> Bắt đầu TDF/TAF từ tuần 28-32 nếu HBV DNA &ge; 200.000 IU/mL hoặc HBeAg(+). Có thể cho bú mẹ an toàn khi đang dùng thuốc.</li>
+          <li style="margin-bottom: 0.5rem;"><strong>Đồng mắc HIV:</strong> Khởi động ART ngay. Phác đồ bắt buộc chứa 2 thuốc kháng HBV (TAF/TDF + 3TC/FTC).</li>
+          <li style="margin-bottom: 0.5rem;"><strong>Đồng mắc HCV:</strong> Dùng DAA điều trị HCV. Phải dự phòng NUCs trước DAA nếu HBsAg(+).</li>
+          <li><strong>Đồng mắc MAFLD:</strong> NUCs không thể loại bỏ nguy cơ từ gan nhiễm mỡ. Cần quản lý đồng thời cả 2 bệnh, kiểm soát đường máu tối ưu (ĐTĐ là yếu tố nguy cơ độc lập rất mạnh cho HCC) và can thiệp lối sống. Các Marker xơ hóa (NITs) không phân biệt được nguyên nhân do HBV hay MAFLD.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- SECTION 4 -->
+    <div class="sec-card">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">📊</span>
+        <h2 class="sec-title">Phân Tầng Nguy Cơ & Tầm Soát Ung Thư Gan (HCC)</h2>
+      </div>
+      <div class="sec-body">
+        <p style="margin-bottom: 1rem; font-size: 0.9rem;">
+          Tất cả bệnh nhân đang điều trị NUCs cần được phân tầng nguy cơ HCC bằng thang điểm đã được chuẩn hóa. APASL khuyến cáo mạnh mẽ <strong>mPAGE-B</strong> (đã hiệu chỉnh cho người Châu Á, dựa trên Tuổi, Giới tính, Tiểu cầu, Albumin).
+        </p>
+
+        <div class="updates-grid" style="margin-bottom: 1.5rem;">
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-title">Tiêu chuẩn Tầm soát HCC</div>
+            </div>
+            <div class="update-card-body">
+              <p>Bắt buộc tầm soát định kỳ khi:</p>
+              <div style="font-size: 1.5rem; font-weight: 800; color: var(--red); margin: 0.5rem 0;">mPAGE-B &ge; 9</div>
+              <p style="font-size: 0.8rem;">(Thuộc nhóm nguy cơ Trung bình - Cao)</p>
+            </div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-title">Chiến lược Tầm soát Tối ưu</div>
+            </div>
+            <div class="update-card-body">
+              <p>Tầm soát mỗi 6 tháng bằng <strong>BỘ 3 CÔNG CỤ:</strong></p>
+              <ul style="margin-left: 1rem; font-weight: 600; color: var(--text);">
+                <li>Siêu âm bụng</li>
+                <li>AFP (Alpha-fetoprotein)</li>
+                <li>PIVKA-II</li>
+              </ul>
+              <p style="font-size: 0.8rem; margin-top: 0.5rem; color: var(--green);">Sự kết hợp này giúp tăng độ nhạy &gt; 90%, phát hiện thêm 43% HCC giai đoạn sớm.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 5: SO SÁNH -->
+    <div class="sec-card">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">⚖️</span>
+        <h2 class="sec-title">So Sánh Phác Đồ: APASL 2026 vs. BYT Việt Nam 2026</h2>
+      </div>
+      <div class="sec-body">
+        <p style="margin-bottom: 1rem; font-size: 0.9rem;">
+          Mặc dù cùng mục tiêu giảm thiểu biến chứng do HBV, hướng dẫn của <strong>Bộ Y tế Việt Nam (QĐ 1740/QĐ-BYT, 16/6/2026)</strong> có một số khác biệt so với APASL 2026, chủ yếu để phù hợp với nguồn lực thực tế tại Việt Nam.
+        </p>
+
+        <div class="infobox info">
+          <span class="infobox-icon">⚡</span>
+          <div>
+            <strong>5 Điểm Khác Biệt Quan Trọng Nhất:</strong>
+            <ul style="margin-left: 1rem; margin-top: 0.3rem;">
+              <li><strong>Chỉ định:</strong> APASL áp dụng "Treat-all" (HBV DNA bất kỳ + ALT &gt; ULN). BYT yêu cầu xơ hóa &ge;F2 hoặc HBV DNA &gt;2000 IU/mL + ALT tăng.</li>
+              <li><strong>Phối hợp thuốc:</strong> APASL khuyên dùng Peg-IFN add-on khi HBsAg &lt;1500 IU/mL để theo đuổi Functional Cure. BYT không đề cập chiến lược này.</li>
+              <li><strong>Thuốc điều trị HDV:</strong> APASL khuyến cáo Bulevirtide (A1). BYT chỉ đề cập Peg-IFN 48 tuần (do Bulevirtide chưa có tại VN).</li>
+              <li><strong>Thời gian dùng Peg-IFN cho HDV:</strong> APASL khuyến cáo lên đến 96 tuần. BYT giới hạn 48 tuần.</li>
+              <li><strong>Thuốc TMF:</strong> APASL có đề cập TMF là thuốc NUC đầu tay (chủ yếu ở Trung Quốc). Thuốc này chưa có trong phác đồ BYT.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 class="sec-subtitle" style="margin-top: 1.5rem;">Bảng So Sánh Chi Tiết</h3>
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th style="width: 25%">Tiêu chí</th>
+                <th style="width: 25%">🌏 APASL 2026</th>
+                <th style="width: 25%">🇻🇳 BYT Việt Nam 2026</th>
+                <th style="width: 25%">Ý nghĩa thực hành</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Chỉ định điều trị</strong></td>
+                <td><strong>Treat-all</strong> (HBV DNA phát hiện được + ALT &gt; ULN). Mở rộng cả nhóm xơ hóa sớm.</td>
+                <td><strong>4 tiêu chí cụ thể:</strong> Xơ hóa &ge;F2, hoặc HBV DNA &gt;2000 + ALT tăng...</td>
+                <td>APASL điều trị rộng rãi hơn. BYT thận trọng và thực tế hơn với nguồn lực VN.</td>
+              </tr>
+              <tr>
+                <td><strong>Mục tiêu Functional Cure</strong></td>
+                <td>Mục tiêu chính (HBsAg mất &amp; duy trì &ge;6 tháng). Thêm khái niệm Partial Cure.</td>
+                <td>HBsAg âm 2 lần cách nhau 6 tháng (tương tự nhưng không đặt tên Functional Cure).</td>
+                <td>Khái niệm tương đương, APASL nhấn mạnh hơn về thuật ngữ.</td>
+              </tr>
+              <tr>
+                <td><strong>Ngừng NUC (HBeAg-)</strong></td>
+                <td>DNA undetectable &gt;3 năm (có thể ngừng). Nhấn mạnh HBsAg.</td>
+                <td>&ge;3–4 năm DNA undetectable + <strong>qHBsAg &lt;100 IU/mL</strong> (hoặc HBcrAg &lt;2 logU/mL).</td>
+                <td>BYT ứng dụng qHBsAg/HBcrAg vào tiêu chí ngừng, giúp an toàn và chặt chẽ hơn.</td>
+              </tr>
+              <tr>
+                <td><strong>Sàng lọc HCC</strong></td>
+                <td>Siêu âm + AFP mỗi 6 tháng (suốt đời kể cả sau khi mất HBsAg).</td>
+                <td>Siêu âm + AFP mỗi 12–24 tuần (6 tháng).</td>
+                <td>Tương đồng tần suất. APASL nhấn mạnh nguy cơ tồn lưu dù đã mất HBsAg.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="updates-grid" style="margin-top: 1.5rem;">
+          <div class="update-card" style="padding: 1rem;">
+            <div class="update-card-title" style="margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span style="font-size: 1.2rem;">✅</span> Điểm tương đồng cốt lõi
+            </div>
+            <ul style="margin-left: 1rem; font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+              <li>Thuốc NUC đầu tay đều là: TAF, TDF, ETV.</li>
+              <li>Bệnh nhân xơ gan <strong>bắt buộc</strong> dùng NUC suốt đời.</li>
+              <li>Dùng TDF/TAF phòng lây mẹ-con trong thai kỳ.</li>
+              <li>Tránh dùng Lamivudine/Adefovir đơn độc.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CITATION -->
+    <div class="citation-box">
+      <strong>Tài liệu gốc:</strong> Hong You, Rakhi Maiwall, Jing Chen et al. APASL clinical practice guidelines on the management of chronic hepatitis B infection: a 2026 update. Hepatology International (2026). DOI: 10.1007/s12072-026-11108-1.
+      <br>
+      Tóm tắt dựa trên tài liệu lâm sàng và cập nhật APASL 2026.
+    </div>
+
+  </div>
+
+</body>
+</html>
