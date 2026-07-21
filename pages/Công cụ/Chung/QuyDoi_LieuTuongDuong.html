@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Bộ Quy Đổi Liều Thuốc Tương Đương Lâm Sàng – Quy đổi liều Corticoid, Opioid (OME), Statin, PPI, DOACs, Benzodiazepines chính xác, chuẩn hóa y học chứng cứ.">
+  <title>Bộ Quy Đổi Liều Thuốc Tương Đương Lâm Sàng – CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../css/components/pharmacology-tools.css">
+
+  <style>
+    /* Hero Tool Styling */
+    .hero-tool {
+      background: linear-gradient(135deg, #0f172a 0%, #0284c7 60%, #3b82f6 100%);
+      border-radius: 16px;
+      padding: 1.75rem 2rem;
+      margin-bottom: 1.5rem;
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(2, 132, 199, 0.2);
+    }
+
+    .hero-tool::after {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 180px;
+      height: 180px;
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 100px;
+      padding: 4px 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: #ffffff;
+    }
+
+    .hero-tool h1 {
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+      font-weight: 700;
+      margin: 0 0 0.5rem 0;
+      color: #ffffff;
+      line-height: 1.3;
+    }
+
+    .hero-tool p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      margin: 0;
+      line-height: 1.5;
+      max-width: 900px;
+      color: #f1f5f9;
+    }
+  </style>
+
+  <script src="../../../js/main.js" defer></script>
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../cong-cu.html" class="nav-item active" aria-current="page" title="Công cụ lâm sàng">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-wrapper" id="mainContent">
+
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="../cong-cu.html" class="breadcrumb-link">Công cụ lâm sàng</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Bộ Quy Đổi Liều Thuốc Tương Đương</li>
+        </ol>
+      </nav>
+
+      <!-- HERO -->
+      <div class="hero-tool">
+        <div class="hero-badge">⚖️ Dược Lý Lâm Sàng • Equianalgesic & Dose Converter</div>
+        <h1>Bộ Quy Đổi Liều Thuốc Tương Đương Lâm Sàng</h1>
+        <p>Quy đổi liều dùng chuẩn hóa giữa các thuốc trong cùng phân nhóm dược lý (Corticosteroids, Opioids OME, Statins, PPIs, DOACs, Benzodiazepines) hỗ trợ chuyển đổi điều trị an toàn.</p>
+      </div>
+
+
+      <!-- MAIN CALCULATOR CARD -->
+      <div class="pharma-tool-card" style="padding: 1.75rem;">
+        
+        <!-- Category Tabs Navigation -->
+        <div class="converter-tabs" style="gap: 0.75rem; overflow-x: auto; padding-bottom: 0.75rem;">
+          <button class="converter-tab-btn active" data-cat="corticoid"><i class="fa-solid fa-capsules"></i> 1. Corticosteroids</button>
+          <button class="converter-tab-btn" data-cat="opioid"><i class="fa-solid fa-syringe"></i> 2. Opioids (OME)</button>
+          <button class="converter-tab-btn" data-cat="statin"><i class="fa-solid fa-heart-pulse"></i> 3. Statins (Hạ Lipid)</button>
+
+          <button class="converter-tab-btn" data-cat="ppi"><i class="fa-solid fa-vial"></i> 4. PPIs (Dạ dày)</button>
+          <button class="converter-tab-btn" data-cat="doac"><i class="fa-solid fa-droplet"></i> 5. DOACs (Chống đông)</button>
+          <button class="converter-tab-btn" data-cat="benzo"><i class="fa-solid fa-brain"></i> 6. Benzodiazepines</button>
+        </div>
+
+        <!-- Dynamic Category Header Banner -->
+        <div id="cat-banner" style="background: var(--color-primary-hl); border-radius: 10px; padding: 0.85rem 1.1rem; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: space-between;">
+          <div>
+            <h4 id="cat-title" style="margin: 0; color: var(--color-primary); font-size: 1rem; font-weight: 700;">1. Corticosteroids (Thuốc Kháng Viêm Steroid)</h4>
+            <p id="cat-desc" style="margin: 0.2rem 0 0 0; font-size: 0.8rem; color: var(--color-text-muted);">Quy đổi liều tương đương kháng viêm & giữ muối giữa các Glucocorticoid dạng uống/tiêm truyền.</p>
+          </div>
+          <span id="cat-badge" class="pharma-tool-badge">Equianalgesic</span>
+        </div>
+
+        <!-- Inputs Section -->
+        <div class="calibrator-inputs" style="margin-bottom: 1.5rem;">
+          <div class="input-field-group">
+            <label for="input-dose-val"><i class="fa-solid fa-pen"></i> Liều nhập vào:</label>
+            <input type="number" id="input-dose-val" value="40" min="0.01" step="any" placeholder="Nhập liều...">
+          </div>
+
+          <div class="input-field-group">
+            <label for="input-dose-unit"><i class="fa-solid fa-weight-scale"></i> Đơn vị:</label>
+            <select id="input-dose-unit" disabled>
+              <option value="mg" selected>mg</option>
+              <option value="mcg_h">mcg/giờ</option>
+            </select>
+          </div>
+
+          <div class="input-field-group">
+            <label for="input-base-drug"><i class="fa-solid fa-pills"></i> Thuốc gốc đang dùng:</label>
+            <select id="input-base-drug">
+              <!-- Populated dynamically by JS -->
+            </select>
+          </div>
+        </div>
+
+        <!-- Output Table Container -->
+        <div class="conversion-table-wrapper" id="converter-results-container">
+          <!-- Populated dynamically by JS -->
+        </div>
+
+        <!-- Clinical Warning / Pearl Box -->
+        <div id="clinical-pearl-box" class="interaction-alert moderate" style="margin-top: 1.25rem; margin-bottom: 0;">
+          <div class="interaction-alert-header">
+            <span class="interaction-drugs-title"><i class="fa-solid fa-triangle-exclamation"></i> Nguyên Tắc Chuyển Đổi Lâm Sàng Quan Trọng</span>
+          </div>
+          <p id="clinical-pearl-text" class="interaction-desc">
+            Khi chuyển đổi giữa các thuốc, cần lưu ý đặc tính dược động học ($t_{1/2}$, khả năng gắn protein huyết tương) và nguy cơ dung nạp chéo không hoàn toàn (*Incomplete Cross-Tolerance*).
+          </p>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      
+      // ════════════════════════════════════════════════════════════════
+      // DATABASE NÂNG CẤP DÙNG CHO 6 NHÓM THUỐC QUY ĐỔI
+      // ════════════════════════════════════════════════════════════════
+      const EQUIV_DATABASE = {
+        corticoid: {
+          title: "1. Corticosteroids (Thuốc Kháng Viêm Steroid)",
+          desc: "Quy đổi liều tương đương kháng viêm & giữ muối giữa các Glucocorticoid dạng uống/tiêm truyền.",
+          unit: "mg",
+          badge: "Glucocorticoids",
+          pearl: "💡 **Nguyên tắc**: Hydrocortisone có tác dụng giữ muối (mineralocorticoid) cao nhất, trong khi Dexamethasone & Betamethasone có tác dụng kháng viêm rất mạnh nhưng hầu như không giữ muối. 40mg Methylprednisolone tương đương 50mg Prednisolone hoặc 7.5mg Dexamethasone.",
+          drugs: [
+            { name: "Hydrocortisone", equiv: 20, anti: 1, mineralo: 2, t12: "8-12h (Ngắn)" },
+            { name: "Prednisone", equiv: 5, anti: 4, mineralo: 1, t12: "18-36h (Vừa)" },
+            { name: "Prednisolone", equiv: 5, anti: 4, mineralo: 1, t12: "18-36h (Vừa)" },
+            { name: "Methylprednisolone", equiv: 4, anti: 5, mineralo: 0.5, t12: "18-36h (Vừa)" },
+            { name: "Triamcinolone", equiv: 4, anti: 5, mineralo: 0, t12: "18-36h (Vừa)" },
+            { name: "Dexamethasone", equiv: 0.75, anti: 30, mineralo: 0, t12: "36-54h (Dài)" },
+            { name: "Betamethasone", equiv: 0.6, anti: 30, mineralo: 0, t12: "36-54h (Dài)" }
+          ]
+        },
+
+        opioid: {
+          title: "2. Opioids Pain Management (Quy Đổi MME / OME)",
+          desc: "Quy đổi liều Morphine tương đương đường uống (Oral Morphine Equivalent - OME) trong giảm đau cấp & mạn tính.",
+          unit: "mg",
+          badge: "OME Calculator",
+          pearl: "⚠️ **CẢNH BÁO AN TOÀN (Incomplete Cross-Tolerance)**: Khi chuyển đổi từ Opioid này sang Opioid khác, KHÔNG dùng trực tiếp 100% liều tính toán. **Khuyên dùng: Giảm 25% – 50% liều tính toán** để phòng ngừa quá liều suy hô hấp do dung nạp chéo không hoàn toàn.",
+          drugs: [
+            { name: "Morphine (Uống / PO)", factor: 1, note: "Liều chuẩn so sánh (Factor 1.0)" },
+            { name: "Morphine (Tĩnh mạch / IV)", factor: 3, note: "1mg IV = 3mg PO Morphine" },
+            { name: "Oxycodone (Uống / PO)", factor: 1.5, note: "Mạnh hơn Morphine uống 1.5 lần" },
+            { name: "Hydromorphone (Uống / PO)", factor: 4, note: "Mạnh hơn Morphine uống 4 lần" },
+            { name: "Hydromorphone (Tĩnh mạch / IV)", factor: 20, note: "Mạnh hơn Morphine uống 20 lần" },
+            { name: "Fentanyl dán (mcg/h)", factor: 2.4, note: "25 mcg/h miếng dán ≈ 60 mg/ngày Oral Morphine" },
+            { name: "Tramadol (Uống / PO)", factor: 0.1, note: "Bằng 1/10 liều Morphine" },
+            { name: "Codeine (Uống / PO)", factor: 0.15, note: "Bằng 15% liều Morphine" },
+            { name: "Methadone (Uống / PO)", factor: 4, note: "Thay đổi tùy liều dùng (Cần tham vấn chuyên gia)" }
+          ]
+        },
+
+        statin: {
+          title: "3. Statins (Thuốc Hạ Lipid Máu Tương Đương)",
+          desc: "Quy đổi liều Statin đạt mức giảm LDL-C tương đương theo khuyến cáo ACC/AHA.",
+          unit: "mg",
+          badge: "Lipid Lowering",
+          pearl: "💡 **Cường độ hạ LDL-C**: Cường độ Cao (Giảm LDL-C ≥ 50%: Atorvastatin 40-80mg, Rosuvastatin 20-40mg); Cường độ Trung bình (Giảm 30-40%: Atorvastatin 10-20mg, Rosuvastatin 5-10mg, Simvastatin 20-40mg); Cường độ Thấp (< 30%: Simvastatin 10mg, Pravastatin 10-20mg).",
+          drugs: [
+            { name: "Atorvastatin", equiv: 20, intensity: "Trung bình (20mg) / Cao (40-80mg)" },
+            { name: "Rosuvastatin", equiv: 10, intensity: "Trung bình (10mg) / Cao (20-40mg)" },
+            { name: "Simvastatin", equiv: 40, intensity: "Trung bình (20-40mg)" },
+            { name: "Pravastatin", equiv: 40, intensity: "Trung bình (40-80mg)" },
+            { name: "Lovastatin", equiv: 40, intensity: "Trung bình (40mg)" },
+            { name: "Fluvastatin", equiv: 80, intensity: "Trung bình (80mg)" },
+            { name: "Pitavastatin", equiv: 2, intensity: "Trung bình (2-4mg)" }
+          ]
+        },
+
+        ppi: {
+          title: "4. PPIs (Thuốc Ức Chế Bơm Proton Dạ Dày)",
+          desc: "Quy đổi liều chuẩn tương đương 20mg Omeprazole trong điều trị GERD, loét dạ dày tá tràng & diệt H.pylori.",
+          unit: "mg",
+          badge: "Acid Suppression",
+          pearl: "💡 **Nguyên tắc kê đơn**: 20mg Omeprazole tương đương 20mg Esomeprazole, 40mg Pantoprazole, 20mg Rabeprazole và 30mg Lansoprazole. Nên uống PPI trước bữa ăn sáng 30-60 phút để đạt hiệu quả ức chế H+ K+-ATPase tối ưu.",
+          drugs: [
+            { name: "Omeprazole", equiv: 20, stdDose: "20 mg 1 lần/ngày", maxDose: "40 mg 2 lần/ngày" },
+            { name: "Esomeprazole", equiv: 20, stdDose: "20 mg 1 lần/ngày", maxDose: "40 mg 2 lần/ngày" },
+            { name: "Pantoprazole", equiv: 40, stdDose: "40 mg 1 lần/ngày", maxDose: "40 mg 2 lần/ngày" },
+            { name: "Rabeprazole", equiv: 20, stdDose: "20 mg 1 lần/ngày", maxDose: "20 mg 2 lần/ngày" },
+            { name: "Lansoprazole", equiv: 30, stdDose: "30 mg 1 lần/ngày", maxDose: "30 mg 2 lần/ngày" },
+            { name: "Dexlansoprazole", equiv: 30, stdDose: "30 mg 1 lần/ngày", maxDose: "60 mg 1 lần/ngày" }
+          ]
+        },
+
+        doac: {
+          title: "5. DOACs (Thuốc Chống Đông Đường Uống Thế Hệ Mới)",
+          desc: "Tra cứu & quy đổi liều chuẩn vs Liều giảm của DOACs trong Rung nhĩ không do bệnh van tim (NVAF).",
+          unit: "mg",
+          badge: "Anticoagulation",
+          pearl: "⚠️ **Cảnh báo suy thận**: Giảm liều DOACs khi: Apixaban (có ≥ 2 tiêu chí: Tuổi ≥ 80, Cân nặng ≤ 60kg, CrSCr ≥ 1.5 mg/dL -> dùng 2.5mg x 2); Rivaroxaban (CrCl 15-49 ml/min -> dùng 15mg/ngày); Dabigatran (CrCl 30-50 ml/min -> dùng 110mg x 2).",
+          drugs: [
+            { name: "Apixaban (Eliquis)", stdDose: "5 mg x 2 lần/ngày", reducedDose: "2.5 mg x 2 lần/ngày", note: "Giảm liều nếu thỏa 2/3 tiêu chí: Tuổi≥80, Nặng≤60kg, SCr≥1.5mg/dL" },
+            { name: "Rivaroxaban (Xarelto)", stdDose: "20 mg x 1 lần/ngày (cùng ăn)", reducedDose: "15 mg x 1 lần/ngày", note: "Giảm liều khi CrCl 15–49 mL/phút. Chống chỉ định CrCl < 15" },
+            { name: "Dabigatran (Pradaxa)", stdDose: "150 mg x 2 lần/ngày", reducedDose: "110 mg x 2 lần/ngày", note: "Giảm liều khi Tuổi≥80 hoặc CrCl 30–50 mL/phút" },
+            { name: "Edoxaban (Lixiana)", stdDose: "60 mg x 1 lần/ngày", reducedDose: "30 mg x 1 lần/ngày", note: "Giảm liều khi CrCl 15–50 mL/phút hoặc Nặng ≤ 60kg" }
+          ]
+        },
+
+        benzo: {
+          title: "6. Benzodiazepines (Thuốc An Thần & Kháng Co Giật)",
+          desc: "Quy đổi liều an thần tương đương 10mg Diazepam giúp lập kế hoạch giảm liều từ từ (Tapering).",
+          unit: "mg",
+          badge: "Sedatives",
+          pearl: "💡 **Lưu ý giảm liều**: 10mg Diazepam tương đương 0.5mg Alprazolam, 0.5mg Clonazepam và 1mg Lorazepam. Khi cai thuốc Benzo mạn tính, khuyên giảm 10% liều mỗi 1-2 tuần để tránh hội chứng cai nghiện (Withdrawal Syndrome).",
+          drugs: [
+            { name: "Diazepam (Seduxen)", equiv: 10, onset: "Nhanh (15-30p)", t12: "20-100h (Rất dài)" },
+            { name: "Alprazolam (Xanax)", equiv: 0.5, onset: "Nhanh", t12: "11-16h (Trung bình)" },
+            { name: "Clonazepam (Rivotril)", equiv: 0.5, onset: "Trung bình", t12: "18-50h (Dài)" },
+            { name: "Lorazepam (Ativan)", equiv: 1, onset: "Trung bình", t12: "10-20h (Trung bình)" },
+            { name: "Midazolam (Dormicum)", equiv: 7.5, onset: "Rất nhanh", t12: "1.5-3h (Ngắn)" },
+            { name: "Oxazepam", equiv: 20, onset: "Chậm", t12: "4-15h (Ngắn)" }
+          ]
+        }
+      };
+
+      // ════════════════════════════════════════════════════════════════
+      // UI CONTROLLER & EVENT BINDINGS
+      // ════════════════════════════════════════════════════════════════
+      let currentCatKey = "corticoid";
+
+      const tabBtns = document.querySelectorAll(".converter-tab-btn");
+      const baseDrugSelect = document.getElementById("input-base-drug");
+      const doseValInput = document.getElementById("input-dose-val");
+      const resultsContainer = document.getElementById("converter-results-container");
+
+      const catTitle = document.getElementById("cat-title");
+      const catDesc = document.getElementById("cat-desc");
+      const catBadge = document.getElementById("cat-badge");
+      const pearlText = document.getElementById("clinical-pearl-text");
+
+      // Switch category tab
+      tabBtns.forEach((btn) => {
+        btn.addEventListener("click", function () {
+          tabBtns.forEach((b) => b.classList.remove("active"));
+          this.classList.add("active");
+          currentCatKey = this.getAttribute("data-cat");
+          setupCategoryUI();
+        });
+      });
+
+      function setupCategoryUI() {
+        const cat = EQUIV_DATABASE[currentCatKey];
+        if (!cat) return;
+
+        // Update banner & pearls
+        catTitle.textContent = cat.title;
+        catDesc.textContent = cat.desc;
+        catBadge.textContent = cat.badge;
+        pearlText.innerHTML = cat.pearl;
+
+        // Default input dose based on category
+        if (currentCatKey === "corticoid") doseValInput.value = 40;
+        if (currentCatKey === "opioid") doseValInput.value = 30;
+        if (currentCatKey === "statin") doseValInput.value = 20;
+        if (currentCatKey === "ppi") doseValInput.value = 20;
+        if (currentCatKey === "doac") doseValInput.value = 5;
+        if (currentCatKey === "benzo") doseValInput.value = 10;
+
+        // Populate base drug dropdown
+        baseDrugSelect.innerHTML = cat.drugs.map((d) => `<option value="${d.name}">${d.name}</option>`).join("");
+
+        calculateAndRender();
+      }
+
+      function calculateAndRender() {
+        const cat = EQUIV_DATABASE[currentCatKey];
+        const val = parseFloat(doseValInput.value) || 0;
+        const baseDrugName = baseDrugSelect.value;
+
+        if (currentCatKey === "corticoid") renderCorticoidTable(cat, val, baseDrugName);
+        else if (currentCatKey === "opioid") renderOpioidTable(cat, val, baseDrugName);
+        else if (currentCatKey === "statin") renderStatinTable(cat, val, baseDrugName);
+        else if (currentCatKey === "ppi") renderPPITable(cat, val, baseDrugName);
+        else if (currentCatKey === "doac") renderDOACTable(cat);
+        else if (currentCatKey === "benzo") renderBenzoTable(cat, val, baseDrugName);
+      }
+
+      // 1. Render Corticoid Table
+      function renderCorticoidTable(cat, val, baseName) {
+        const baseItem = cat.drugs.find((d) => d.name === baseName) || cat.drugs[0];
+        let html = `
+          <table class="conversion-table">
+            <thead>
+              <tr>
+                <th>Tên Corticosteroid</th>
+                <th>Liều Quy Đổi Tương Đương</th>
+                <th>Tác Dụng Kháng Viêm</th>
+                <th>Tác Dụng Giữ Muối</th>
+                <th>Thời Gian Tác Dụng ($t_{1/2}$)</th>
+              </tr>
+            </thead>
+            <tbody>
+        `;
+        cat.drugs.forEach((item) => {
+          const calcDose = ((val * item.equiv) / baseItem.equiv).toFixed(2);
+          const isSelected = item.name === baseName;
+          html += `
+            <tr class="${isSelected ? "highlight-row" : ""}">
+              <td><strong>${item.name}</strong> ${isSelected ? "(Thuốc gốc chọn)" : ""}</td>
+              <td><span style="color:var(--color-primary); font-weight:700; font-size:0.95rem;">${calcDose} mg</span></td>
+              <td>${item.anti}x</td>
+              <td>${item.mineralo}x</td>
+              <td>${item.t12}</td>
+            </tr>
+          `;
+        });
+        html += `</tbody></table>`;
+        resultsContainer.innerHTML = html;
+      }
+
+      // 2. Render Opioid Table (OME)
+      function renderOpioidTable(cat, val, baseName) {
+        const baseItem = cat.drugs.find((d) => d.name === baseName) || cat.drugs[0];
+        const calculatedOME = val * baseItem.factor; // Total OME
+
+        let html = `
+          <div style="background: rgba(2,132,199,0.08); padding: 0.75rem 1rem; border-radius: 8px; margin-bottom: 1rem; border: 1px solid var(--color-primary-hl);">
+            <span style="font-size:0.85rem; color:var(--color-text-muted);">Tổng liều Morphine Uống tương đương (Total OME):</span>
+            <span style="font-size:1.25rem; font-weight:800; color:var(--color-primary); margin-left:0.5rem;">${calculatedOME.toFixed(1)} mg/ngày (Oral Morphine)</span>
+          </div>
+          <table class="conversion-table">
+            <thead>
+              <tr>
+                <th>Tên Opioid / Đường dùng</th>
+                <th>Liều Tương Đương Tính Toán (100%)</th>
+                <th>Liều Khuyên Dùng Sau Giảm 30% (An toàn)</th>
+                <th>Ghi chú Lâm sàng</th>
+              </tr>
+            </thead>
+            <tbody>
+        `;
+
+        cat.drugs.forEach((item) => {
+          const calcDose = (calculatedOME / item.factor).toFixed(1);
+          const safeDose = (calcDose * 0.7).toFixed(1);
+          const isSelected = item.name === baseName;
+
+          html += `
+            <tr class="${isSelected ? "highlight-row" : ""}">
+              <td><strong>${item.name}</strong> ${isSelected ? "(Đang dùng)" : ""}</td>
+              <td><span style="font-weight:700; color:var(--color-text);">${calcDose} mg</span></td>
+              <td><span style="font-weight:700; color:var(--color-success);">${safeDose} mg</span></td>
+              <td style="font-size:0.8rem; color:var(--color-text-muted);">${item.note}</td>
+            </tr>
+          `;
+        });
+        html += `</tbody></table>`;
+        resultsContainer.innerHTML = html;
+      }
+
+      // 3. Render Statin Table
+      function renderStatinTable(cat, val, baseName) {
+        const baseItem = cat.drugs.find((d) => d.name === baseName) || cat.drugs[0];
+        let html = `
+          <table class="conversion-table">
+            <thead>
+              <tr>
+                <th>Tên Statin</th>
+                <th>Liều Tương Đương Mức Hạ LDL-C</th>
+                <th>Phân Nhóm Cường Độ Theo ACC/AHA</th>
+              </tr>
+            </thead>
+            <tbody>
+        `;
+        cat.drugs.forEach((item) => {
+          const calcDose = ((val * item.equiv) / baseItem.equiv).toFixed(1);
+          const isSelected = item.name === baseName;
+          html += `
+            <tr class="${isSelected ? "highlight-row" : ""}">
+              <td><strong>${item.name}</strong> ${isSelected ? "(Đang dùng)" : ""}</td>
+              <td><span style="color:var(--color-primary); font-weight:700; font-size:0.95rem;">${calcDose} mg/ngày</span></td>
+              <td><span class="drug-caution caution-low">${item.intensity}</span></td>
+            </tr>
+          `;
+        });
+        html += `</tbody></table>`;
+        resultsContainer.innerHTML = html;
+      }
+
+      // 4. Render PPI Table
+      function renderPPITable(cat, val, baseName) {
+        const baseItem = cat.drugs.find((d) => d.name === baseName) || cat.drugs[0];
+        let html = `
+          <table class="conversion-table">
+            <thead>
+              <tr>
+                <th>Tên Thuốc PPI</th>
+                <th>Liều Tương Đương Tính Toán</th>
+                <th>Liều Khởi Đầu Chuẩn</th>
+                <th>Liều Tối Đa Tác Dụng Kép</th>
+              </tr>
+            </thead>
+            <tbody>
+        `;
+        cat.drugs.forEach((item) => {
+          const calcDose = Math.round((val * item.equiv) / baseItem.equiv);
+          const isSelected = item.name === baseName;
+          html += `
+            <tr class="${isSelected ? "highlight-row" : ""}">
+              <td><strong>${item.name}</strong> ${isSelected ? "(Đang dùng)" : ""}</td>
+              <td><span style="color:var(--color-primary); font-weight:700;">${calcDose} mg/ngày</span></td>
+              <td>${item.stdDose}</td>
+              <td>${item.maxDose}</td>
+            </tr>
+          `;
+        });
+        html += `</tbody></table>`;
+        resultsContainer.innerHTML = html;
+      }
+
+      // 5. Render DOAC Table
+      function renderDOACTable(cat) {
+        let html = `
+          <table class="conversion-table">
+            <thead>
+              <tr>
+                <th>Tên Thuốc DOAC</th>
+                <th>Liều Chuẩn Rung Nhĩ (NVAF)</th>
+                <th>Liều Hiệu Chỉnh / Giảm Liều</th>
+                <th>Tiêu Chí Giảm Liều Lâm Sàng</th>
+              </tr>
+            </thead>
+            <tbody>
+        `;
+        cat.drugs.forEach((item) => {
+          html += `
+            <tr>
+              <td><strong>${item.name}</strong></td>
+              <td><span style="color:var(--color-primary); font-weight:700;">${item.stdDose}</span></td>
+              <td><span style="color:var(--color-warning); font-weight:700;">${item.reducedDose}</span></td>
+              <td style="font-size:0.8rem; color:var(--color-text-muted);">${item.note}</td>
+            </tr>
+          `;
+        });
+        html += `</tbody></table>`;
+        resultsContainer.innerHTML = html;
+      }
+
+      // 6. Render Benzo Table
+      function renderBenzoTable(cat, val, baseName) {
+        const baseItem = cat.drugs.find((d) => d.name === baseName) || cat.drugs[0];
+        let html = `
+          <table class="conversion-table">
+            <thead>
+              <tr>
+                <th>Tên Benzodiazepine</th>
+                <th>Liều An Thần Tương Đương</th>
+                <th>Tốc Độ Khởi Phát (Onset)</th>
+                <th>Thời Gian Bán Thải ($t_{1/2}$)</th>
+              </tr>
+            </thead>
+            <tbody>
+        `;
+        cat.drugs.forEach((item) => {
+          const calcDose = ((val * item.equiv) / baseItem.equiv).toFixed(2);
+          const isSelected = item.name === baseName;
+          html += `
+            <tr class="${isSelected ? "highlight-row" : ""}">
+              <td><strong>${item.name}</strong> ${isSelected ? "(Đang dùng)" : ""}</td>
+              <td><span style="color:var(--color-primary); font-weight:700; font-size:0.95rem;">${calcDose} mg</span></td>
+              <td>${item.onset}</td>
+              <td>${item.t12}</td>
+            </tr>
+          `;
+        });
+        html += `</tbody></table>`;
+        resultsContainer.innerHTML = html;
+      }
+
+      // Event listeners for input changes
+      doseValInput.addEventListener("input", calculateAndRender);
+      baseDrugSelect.addEventListener("change", calculateAndRender);
+
+      // Initial render
+      setupCategoryUI();
+    });
+  </script>
+</body>
+
+</html>

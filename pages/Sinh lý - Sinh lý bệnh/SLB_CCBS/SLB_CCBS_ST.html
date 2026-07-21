@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sinh lý bệnh và Cơ chế bệnh sinh Suy tim (Heart Failure Pathophysiology & Pathogenesis): Rối loạn huyết động, tái cấu trúc thất lệch tâm vs đồng tâm, kích hoạt hệ giao cảm SNS & hệ RAAS, hội chứng viêm mạn tính ở HFpEF, autophagy và ứng dụng lâm sàng Tứ trụ.">
+    <title>Sinh lý bệnh & Cơ chế bệnh sinh Suy tim – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal (Level 3 Paths) -->
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học dùng chung (Tải từ module Sinh lý - Sinh lý bệnh) -->
+    <link rel="stylesheet" href="../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../css/components/toc.css">
+
+    <!-- Scripts điều hướng hệ thống -->
+    <script src="../../../components/header.js" defer></script>
+    <script src="../../../components/footer.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+    
+    <!-- Script Sinh lý học dùng chung -->
+    <script src="../js/physio-shared.js" defer></script>
+    <script src="../../../js/toc.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../../../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh">
+                            <span class="nav-icon">🧬</span>
+                            <span class="nav-text">Sinh lý & Sinh lý bệnh</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng">
+                            <span class="nav-icon">🩺</span>
+                            <span class="nav-text">Kỹ năng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận">
+                            <span class="nav-icon">🤒</span>
+                            <span class="nav-text">Tiếp cận</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ">
+                            <span class="nav-icon">⚙️</span>
+                            <span class="nav-text">Công cụ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+                            <span class="nav-icon">💊</span>
+                            <span class="nav-text">Dược lý</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+                            <span class="nav-icon">📄</span>
+                            <span class="nav-text">Y học chứng cứ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Y học cổ truyền/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền">
+                            <span class="nav-icon">☯️</span>
+                            <span class="nav-text">Y học cổ truyền</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container" style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+                <ol class="breadcrumb-list" style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+                    <li><a href="../../../index.html">🏠 Home</a> &gt;</li>
+                    <li><a href="../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+                    <li style="color:var(--color-primary); font-weight:600;">Sinh lý bệnh &amp; Cơ chế bệnh sinh Suy tim</li>
+                </ol>
+            </nav>
+
+            <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+            <main class="visual-container">
+                <!-- CHAPTER HEADER CARD -->
+                <div class="chapter-header">
+                    <h1>SINH LÝ BỆNH & CƠ CHẾ BỆNH SINH SUY TIM</h1>
+                    <p>Heart Failure Pathophysiology & Pathogenesis — Phân tích toàn diện rối loạn huyết động học, tái cấu trúc cơ tim, phản ứng hoạt hóa thần kinh - thể dịch, mô hình viêm hệ thống ở HFpEF, cơ chế autophagy tế bào và nền tảng lâm sàng của các liệu pháp điều trị trúng đích.</p>
+                </div>
+
+                <p class="physio-lead">
+                    <span class="term-hl">Suy tim (Heart Failure - HF)</span> là một hội chứng lâm sàng phức tạp, phát sinh từ những tổn thương thực thể hoặc rối loạn chức năng của tim dẫn đến hậu quả tâm thất không đủ khả năng đổ đầy (suy chức năng tâm trương) hoặc tống máu (suy chức năng tâm thu). Sự tiến triển từ tổn thương ban đầu đến hội chứng toàn thân là kết quả của quá trình tái cấu trúc cơ tim kề thừa với sự hoạt hóa quá mức, kéo dài của các hệ thống bù trừ thần kinh - thể dịch và phản ứng viêm mạn tính.
+                </p>
+
+                <!-- PHẦN I: HUYẾT ĐỘNG HỌC & TÁI CẤU TRÚC -->
+                <div class="physio-content">
+                    <h2 id="huyet-dong-tai-cau-truc" class="section-title">
+                        <span>Phần I: Rối loạn Huyết động học & Tái cấu trúc cơ tim</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Định nghĩa cốt lõi của suy tim dựa trên sinh lý bệnh là tình trạng <span class="term-hl">tăng áp lực đổ đầy buồng tim</span> (filling pressures) và/hoặc <span class="term-hl">giảm cung lượng tim (Cardiac Output - CO)</span> khi nghỉ ngơi hay khi gắng sức.</p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">💔 HFrEF: Tái Cấu Trúc Lệch Tâm (Eccentric Hypertrophy)</div>
+                                <p>Tổn thương cơ tim (nhồi máu, độc chất, thiếu máu cục bộ) làm mất tế bào cơ tim chức năng, suy giảm khả năng co bóp tâm thu. Để bù trừ thể tích nhát bóp (SV) giảm, thất trái giãn rộng ra. Sự gia tăng thể tích cuối tâm trương làm tăng <span class="term-hl-secondary">sức căng thành tim (wall stress)</span>, đẩy cơ tim vào vòng xoắn tiến triển suy kiệt.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🛡️ HFpEF: Tái Cấu Trúc Đồng Tâm (Concentric Remodeling)</div>
+                                <p>Ở bệnh nhân HFpEF, cung lượng tim và thể tích nhát bóp ở trạng thái nghỉ có thể giữ ở mức tương đối bình thường. Tuy nhiên, tâm thất trái bị phì đại đồng tâm, giảm độ tuân thủ (compliance) và tăng độ cứng. Áp lực đổ đầy tâm trương tăng vọt đột ngột khi gắng sức, gây sung huyết phổi dù EF bảo tồn.</p>
+                            </div>
+                        </div>
+
+                        <div class="clinical-note-box">
+                            <h4>🔍 Đánh giá Cơ học Cơ tim qua Siêu âm Đánh dấu Mô (Strain Imaging)</h4>
+                            <p>Mặc dù bệnh nhân HFpEF có phân suất tống máu (LVEF ≥ 50%) bình thường trên siêu âm 2D truyền thống, các công nghệ chẩn đoán hình ảnh hiện đại (Speckle-tracking Echocardiography) đã chứng minh rằng đa số bệnh nhân này đều có <strong>giảm sức căng dọc toàn bộ thất trái (Abnormal Longitudinal Strain)</strong>. Điều này khẳng định HFpEF vẫn tồn tại các tổn thương vi tế về cơ học tâm thu cơ tim chứ không đơn thuần là bệnh lý tâm trương thuần túy.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN II: THẦN KINH - THỂ DỊCH & XƠ HÓA -->
+                <div class="physio-content">
+                    <h2 id="than-kinh-the-dich" class="section-title">
+                        <span>Phần II: Hoạt hóa Hệ Thần kinh - Thể dịch (Neurohormonal Activation)</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Khi cung lượng tim suy giảm, cơ thể phản ứng cấp tính bằng cách kích hoạt 3 hệ thống trung gian thể dịch thần kinh để bảo vệ huyết áp và tưới máu các cơ quan sinh sinh tồn. Tuy nhiên, sự hoạt hóa mạn tính quá mức lại chính là "động cơ" thúc đẩy suy tim tiến triển nặng nề hơn.</p>
+
+                        <ul class="physio-list-arrow">
+                            <li><strong>Hệ Renin - Angiotensin - Aldosterone (RAAS):</strong> Thận giảm tưới máu sẽ tăng tiết Renin, chuyển hóa thành Angiotensin II và Aldosterone. <span class="term-hl">Angiotensin II</span> gây co mạch mạnh (tăng hậu tải) và trực tiếp thúc đẩy phì đại cơ tim. <span class="term-hl">Aldosterone</span> thúc đẩy ống thận tái hấp thu Natri & nước (tăng tiền tải), đồng thời gây phì đại cơ tim, xơ hóa khoảng kẽ (interstitial fibrosis) và tăng độ cứng mạch máu.</li>
+                            <li><strong>Hệ Thần kinh Giao cảm (SNS):** Tăng hoạt tính giao cảm làm tăng nồng độ Norepinephrine huyết tương. Ban đầu giúp tăng nhịp tim và sức co bóp để duy trì cung lượng tim, nhưng lâu dài gây ngộ độc catecholamine trực tiếp lên tế bào cơ tim, thúc đẩy quá trình apoptosis (chết tế bào theo chương trình) và tái cấu trúc bất lợi.</li>
+                            <li><strong>Hệ thống Peptide Bài niệu (Natriuretic Peptides - NP):** Sự căng giãn thành tim do tăng thể tích hoặc áp lực kích thích cơ tim tiết ra các peptide bài niệu (<span class="term-hl-secondary">ANP, BNP, NT-proBNP</span>). Các peptide này giúp giãn mạch, tăng bài tiết natri/nước và đối kháng lại hệ RAAS & SNS. Tuy nhiên trong suy tim mạn, đáp ứng bù trừ có lợi này bị quá tải và lấn át hoàn toàn bởi hệ RAAS và SNS.</li>
+                        </ul>
+
+                        <div class="clinical-pearl">
+                            💎 <strong>Pearl Lâm Sàng về Dấu Ấn Xơ Hóa sST2 & Aldosterone:</strong> Nồng độ sST2 (Soluble Suppression of Tumorigenicity 2) trong huyết thanh là dấu ấn sinh học phản ánh tình trạng căng giãn tế bào và xơ hóa mô kẽ đang tiến triển. Thụ thể Mineralocorticoid bị kích hoạt bởi Aldosterone làm tăng tổng hợp Collagen type I và III, khiến khoảng kẽ tim bị xơ cứng. Đây là lý do các thuốc kháng MRA (Spironolactone, Finerenone) đóng vai trò đặc biệt quan trọng trong ngăn ngừa tái cấu trúc và xơ hóa cơ tim.
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN III: SINH LÝ BỆNH THEO KIỂU HÌNH (PHENOTYPES) -->
+                <div class="physio-content">
+                    <h2 id="kieu-hinh-suy-tim" class="section-title">
+                        <span>Phần III: Sinh lý bệnh theo các Kiểu hình Suy tim (Phenotypes)</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Quan niệm y học hiện đại coi suy tim — đặc biệt là HFpEF — không phải là một bệnh đơn lẻ mà là một <span class="term-hl">Hội chứng Viêm Hệ thống Đa Cơ quan (Multiorgan Systemic Inflammatory Syndrome)</span> với các kiểu hình cơ chế bệnh sinh riêng biệt:</p>
+
+                        <h3 class="subsection-title">1. Suy tim Phân suất Tống máu Giảm (HFrEF)</h3>
+                        <p>Khỏi nguồn từ sự tổn thương và mất mát diện rộng tế bào cơ tim. Thất trái giãn lệch tâm, tăng sức căng thành cơ tim cuối tâm thu và tâm trương, làm bùng phát hoạt hóa hệ thần kinh thể dịch toàn thân.</p>
+
+                        <h3 class="subsection-title">2. Các Phân nhóm Kiểu hình HFpEF (HFpEF Phenotypes)</h3>
+                        
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🥑 Kiểu hình Chuyển hóa - Tim mạch (Cardiometabolic)</div>
+                                <p>Đặc trưng ở bệnh nhân đái tháo đường type 2, béo phì và hội chứng chuyển hóa. Tình trạng <span class="term-hl-secondary">viêm mạn tính mức độ thấp (chronic low-grade inflammation)</span> làm tăng cytokine tiền viêm (TNF-α, IL-6), gây stress oxy hóa và làm giảm sinh khả dụng Nitric Oxide (NO) tại tế bào nội mô vi mạch vành, dẫn đến rối loạn chức năng tâm trương.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🫀 Vai trò Mô Mỡ Thượng Tâm Mạc (Epicardial Adipose Tissue - EAT)</div>
+                                <p>Ở bệnh nhân béo phì, sự gia tăng mô mỡ thượng tâm mạc không chỉ thẩm thấu các adipokine gây viêm tại chỗ vào cơ tim mà còn tạo ra <span class="term-hl-secondary">lực gò bó cơ học (mechanical restraint)</span> trong màng ngoài tim, trực tiếp cản trở tâm thất trái giãn nở trong kỳ tâm trương.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🫁 Kiểu hình Rung Nhĩ (Atrial Fibrillation)</div>
+                                <p>Phản ứng viêm tại vi môi trường cơ nhĩ giải phóng TGF-β, kích thích nguyên bào sợi biệt hóa thành nguyên bào sợi cơ (myofibroblasts), gây tăng sinh collagen và xơ hóa tâm nhĩ. Mất nhịp nhĩ bóp và nhịp thất nhanh làm giảm đáng kể thời gian đổ đầy tâm trương.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">👵 Kiểu hình Cứng Mạch Máu (Arterial Stiffness)</div>
+                                <p>Thường gặp ở người cao tuổi có tăng huyết áp. Lão hóa nội mô (endothelial senescence) và xơ cứng các động mạch lớn làm sóng áp lực mạch dội ngược sớm về tâm thất trong kỳ tâm thu, tăng hậu tải thất trái, thúc đẩy phì đại đồng tâm và làm tăng áp lực đổ đầy.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN IV: CƠ CHẾ TẾ BÀO, PHÂN TỬ & AUTOPHAGY -->
+                <div class="physio-content">
+                    <h2 id="te-bao-phan-tu-autophagy" class="section-title">
+                        <span>Phần IV: Cơ chế Tế bào, Phân tử & Tự thực (Autophagy)</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Ở mức độ tế bào và ty thể, sự suy giảm chuyển hóa năng lượng và tích tụ protein hư hỏng đóng vai trò quyết định trong sự thoái hóa của tế bào cơ tim:</p>
+
+                        <ol class="physio-steps">
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">1. Rối loạn Chuyển hóa Năng lượng Ty thể ("Energy Starvation")</span>
+                                    Cơ tim bình thường tiêu thụ 60-90% năng lượng từ oxy hóa acid béo. Khi suy tim, ty thể bị tổn thương cấu trúc, suy giảm khả năng tạo ATP, đẩy tế bào cơ tim vào tình trạng "đói năng lượng" trường diễn.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">2. Rối loạn Hệ thống Tự thực (Autophagy-Lysosome System)</span>
+                                    Quá trình tự thực (autophagy) giúp dọn dẹp các protein cuộn gập sai và các bào quan hư hỏng để duy trì cân bằng nội môi. Trong suy tim (đặc biệt khi kèm bệnh thận mạn CKD và ĐTĐ), quá trình autophagy bị rối loạn (suy giảm hoặc kích hoạt quá mức bất thường), làm tích tụ các chất độc chuyển hóa nội bào.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">3. Điều hòa con đường tín hiệu AMPK-mTOR & GSK-3β</span>
+                                    Các nghiên cứu y sinh mới cho thấy việc khôi phục lại cơ chế autophagy thông qua kích hoạt con đường <span class="term-hl">AMPK</span> và ức chế <span class="term-hl-secondary">GSK-3β</span> giúp bảo vệ tế bào cơ tim, đồng thời hỗ trợ chuyển hướng cơ chất năng lượng sang sử dụng thể Ketone (tiết kiệm oxy hơn).
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN V: CƠ CHẾ SUNG HUYẾT TRONG ADHF -->
+                <div class="physio-content">
+                    <h2 id="co-che-sung-huyet-adhf" class="section-title">
+                        <span>Phần V: Cơ chế Sung huyết trong Suy tim cấp mất bù (ADHF)</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Hơn 80% trường hợp nhập viện vì suy tim cấp mất bù (Acute Decompensated Heart Failure - ADHF) trình diện với triệu chứng sung huyết. Sinh lý bệnh hiện đại chia sung huyết cấp thành 2 cơ chế khác biệt rõ rệt:</p>
+
+                        <div class="table-responsive">
+                            <table class="physio-table physio-table-compare">
+                                <thead>
+                                    <tr>
+                                        <th>Đặc tính sinh lý bệnh</th>
+                                        <th>Quá tải Thể tích (Volume Overload)</th>
+                                        <th>Tái phân bố Dịch (Fluid Redistribution)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Cơ chế cốt lõi</strong></td>
+                                        <td>Tích tụ thực sự Natri và nước toàn cơ thể do kích hoạt RAAS & Renal retention kéo dài nhiều ngày/tuần.</td>
+                                        <td>Dịch bị dịch chuyển đột ngột từ hệ tĩnh mạch tạng (splanchnic circulation) vào tuần hoàn phổi/trung tâm.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Nguyên nhân kích hoạt</strong></td>
+                                        <td>Suy tim tiến triển, giảm diện tích lọc thận, ăn nhiều muối, ngưng lợi tiểu.</td>
+                                        <td>Tăng hoạt tính giao cảm SNS bùng phát đột ngột (cơn THA cấp cứu, stress tâm lý, thiếu máu cục bộ cơ tim).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Kiểu hình lâm sàng</strong></td>
+                                        <td>Tăng cân nhanh, phù chi dưới, cổ trướng, tĩnh mạch cổ nổi rõ. Sáp nhập chậm.</td>
+                                        <td>Khởi phát phù phổi cấp rất nhanh ("Flash Pulmonary Edema"), huyết áp tăng rất cao, cân nặng không đổi.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Chiến lược điều trị tối ưu</strong></td>
+                                        <td>Lợi tiểu quai tiêm tĩnh mạch thải Na+/nước + Phối hợp SGLT2i sớm để thải dịch mô kẽ chọn lọc.</td>
+                                        <td>Thuốc giãn tĩnh mạch & động mạch (Nitroglycerin/Nitroprusside) giảm tiền tải & hậu tải là chủ chốt. Lợi tiểu liều thấp.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN VI: ỨNG DỤNG LÂM SÀNG & TỨ TRỤ -->
+                <div class="physio-content">
+                    <h2 id="ung-dung-lam-sang" class="section-title">
+                        <span>Phần VI: Ứng dụng Sinh lý bệnh vào Thực hành Lâm sàng</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Hiểu biết sâu sắc về cơ chế bệnh sinh là chìa khóa lý giải sự thành công của các liệu pháp điều trị trúng đích hiện đại trong việc cải thiện sống còn và giảm tái nhập viện:</p>
+
+                        <h3 class="subsection-title">1. "Tứ trụ" Điều trị HFrEF & Đảo ngược Tái cấu trúc (Reverse Remodeling)</h3>
+                        <ul class="physio-list-check">
+                            <li><strong>ACEi / ARB / ARNI (Sacubitril/Valsartan):</strong> ARNI kết hợp chẹn thụ thể AT1 và ức chế enzyme Neprilysin. Giúp tăng nồng độ các Peptide bài niệu (ANP, BNP), thúc đẩy giãn mạch, bài tiết natri và trực tiếp ức chế quá trình xơ hóa, giúp <em>đảo ngược tái cấu trúc thất trái (reverse remodeling)</em>.</li>
+                            <li><strong>Thuốc chẹn Beta-adrenergic (Beta-blockers):</strong> Chẹn tác động độc hại của Catecholamine mạn tính lên tim, làm giảm nhịp tim, kéo dài thời gian tâm trương tưới máu mạch vành, giảm nguy cơ loạn nhịp thất và tử vong đột ngột.</li>
+                            <li><strong>Thuốc kháng thụ thể Mineralocorticoid (MRA - Spironolactone, Finerenone):** Đối kháng Aldosterone tại tim và mạch máu, ngăn chặn sự lắng đọng collagen, giảm xơ hóa khoảng kẽ và hạ nguy cơ hạ kali máu.</li>
+                            <li><strong>Thuốc ức chế SGLT2 (Dapagliflozin, Empagliflozin):</strong> Tạo ra cơ chế lợi niệu thẩm thấu và lợi niệu natri nhẹ ở ống lượn gần. Đồng thời cải thiện chuyển hóa cơ tim (ưu tiên sử dụng thể ketone), giảm viêm hệ thống, giảm stress oxy hóa và cải thiện chức năng vi mạch vành.</li>
+                        </ul>
+
+                        <div class="clinical-note-box">
+                            <h4>💡 Cơ chế Đột phá của SGLT2i trên Toàn bộ Phổ EF (HFrEF, HFmrEF, HFpEF)</h4>
+                            <p>Không giống như lợi tiểu quai rút dịch chủ yếu từ lòng mạch (dễ gây tụt HA và suy thận), <strong>SGLT2i rút dịch chọn lọc từ khoảng kẽ (interstitial fluid)</strong> mà không làm giảm thể tích nội mạch đáng kể. Bên cạnh đó, SGLT2i kích hoạt lại quá trình autophagy thông qua con đường AMPK, giúp dọn dẹp tế bào và bảo vệ chức năng thận mạn tính đi kèm.</p>
+                        </div>
+
+                        <h3 class="subsection-title">2. Kỷ nguyên mới trong Điều trị HFpEF Kiểu hình Béo phì</h3>
+                        <p>Ở bệnh nhân HFpEF có béo phì (BMI ≥ 30 kg/m²), việc điều trị nhắm trúng đích bằng các <strong>thuốc đồng vận thụ thể GLP-1 (Semaglutide, Tirzepatide)</strong> giúp giảm mạnh thể tích mô mỡ thượng tâm mạc (EAT), giảm sự gò bó cơ học đối với màng ngoài tim, dập tắt phản xạ viêm hệ thống và giảm đáng kể nồng độ NT-proBNP cũng như triệu chứng sung huyết lâm sàng.</p>
+                    </div>
+                </div>
+
+                <!-- BẢNG SO SÁNH TỔNG HỢP -->
+                <div class="physio-content">
+                    <h2 id="so-sanh-href-hfpef" class="section-title">
+                        <span>Tóm tắt So sánh: Sinh lý bệnh HFrEF vs. HFpEF</span>
+                    </h2>
+                    
+                    <div class="table-responsive">
+                        <table class="physio-table physio-table-compare">
+                            <thead>
+                                <tr>
+                                    <th>Tiêu chí Sinh lý bệnh</th>
+                                    <th>Suy tim EF Giảm (HFrEF)</th>
+                                    <th>Suy tim EF Bảo tồn (HFpEF)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Cơ chế khởi phát</strong></td>
+                                    <td>Mất tế bào cơ tim thực thể (Nhồi máu cơ tim, độc chất, viêm cơ tim).</td>
+                                    <td>Hội chứng viêm mạn tính hệ thống (Béo phì, ĐTĐ, THA, lão hóa nội mô).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Cấu trúc Thất trái</strong></td>
+                                    <td>Giãn buồng thất, Tái cấu trúc lệch tâm (Eccentric Hypertrophy).</td>
+                                    <td>Thành tim dày, Tái cấu trúc đồng tâm (Concentric Remodeling), buồng tim nhỏ.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Rối loạn Cơ học chính</strong></td>
+                                    <td>Suy giảm khả năng co bóp tâm thu (Giảm LVEF, giảm SV).</td>
+                                    <td>Tăng độ cứng tâm thất, suy rối loạn chức năng tâm trương (Tăng áp lực đổ đầy).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Biểu hiện Huyết động</strong></td>
+                                    <td>Giảm Cung lượng tim (CO) rõ rệt khi nghỉ và gắng sức.</td>
+                                    <td>CO nghỉ tương đối bảo tồn, nhưng áp lực tĩnh mạch phổi tăng vọt khi gắng sức.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Mô hình Thần kinh - Thể dịch</strong></td>
+                                    <td>Hoạt hóa SNS và RAAS toàn thân cực mạnh là động cơ chính.</td>
+                                    <td>Viêm vi mạch nội mô, xơ hóa mô kẽ và gò bó cơ học từ mỡ thượng tâm mạc.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Đáp ứng Thuốc điều trị</strong></td>
+                                    <td>Đáp ứng ngoạn mục với Tứ trụ (ACEi/ARNI, BB, MRA, SGLT2i).</td>
+                                    <td>SGLT2i là nền tảng cốt lõi (Class 1); bổ sung GLP-1RA cho kiểu hình béo phì.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- TÀI LIỆU THAM KHẢO -->
+                <div class="physio-content">
+                    <h2 id="tai-lieu-tham-khao" class="section-title">
+                        <span>Tài liệu Tham khảo (References)</span>
+                    </h2>
+                    <div class="physio-text-block">
+                        <ol style="font-size: 0.9rem; line-height: 1.6; color: var(--color-text-muted);">
+                            <li>Liori S, Kapelios CJ, Savarese G, Filippatos G. Heart failure evidence update 2026. <em>Heart Failure Reviews</em>. 2026;31:34. doi:10.1007/s10741-026-10609-3.</li>
+                            <li>Vilceleanu BV, Popescu AM, Cecoltan S, et al. Modern definition and treatment of HFpEF - what is valid in 2025 and what to expect in 2026. <em>R. J. Mil. Med.</em> 2026;CXXIX(2):173-182.</li>
+                            <li>Wu et al. Sodium-glucose cotransporter-2 inhibitors vs. active comparators in patients with heart failure and end-stage kidney disease. <em>Frontiers in Cardiovascular Medicine</em>. 2026;13:1652863.</li>
+                            <li>Bộ Y tế Việt Nam. <em>Hướng dẫn chẩn đoán và điều trị suy tim cấp và mạn</em>. Quyết định số 1857/QĐ-BYT; Hà Nội, 2022.</li>
+                            <li>Walsh MN, Kober L, Sliwa K, et al. AHA/ACC/ESC/WHF Expert Consensus Document: Second Universal Definition of Heart Failure (2026). <em>Circulation</em>. 2026;153.</li>
+                            <li>Mateescu DM, Cotet IG, Badalica-Petrescu M, et al. Multidomain Efficacy of SGLT2 Inhibitors in Heart Failure. <em>J. Clin. Med.</em> 2026;15:378.</li>
+                            <li>Grossman J, Kalayeh B, Hocum B. Management Updates in Heart Failure With Mildly Reduced or Preserved Ejection Fraction. <em>Am J Manag Care</em>. 2026;32(suppl 6):S87-S94.</li>
+                            <li>Lê Thị Đẹp. Giảm xung huyết ở bệnh nhân suy tim cấp: Cập nhật bằng chứng và tiếp cận hiện nay. <em>Hội nghị khoa học Tim mạch SVCC 19TH 2025</em>.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- TÀI LIỆU LIÊN QUAN -->
+                <section class="related-links-section">
+                    <h4 class="related-links-title">
+                        <i class="fas fa-link"></i> Xem thêm các nội dung liên quan
+                    </h4>
+                    <div class="related-links-grid">
+                        <a href="../../Công cụ/Tim mạch & huyết khối/DG_Suytim.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge cong-cu">Công cụ</span>
+                                <h5>Phân Loại & Đánh Giá Suy Tim 2026</h5>
+                                <p>Đánh giá suy tim theo phân loại LVEF mới (impHF, HFrEF, HFpEF), phân giai đoạn AHA/ACC và đề xuất hướng xử trí.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                        <a href="SLB_CCBS_THA.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge sinh-ly">Sinh lý bệnh</span>
+                                <h5>Sinh Lý Bệnh & Cơ Chế Bệnh Sinh Tăng Huyết Áp</h5>
+                                <p>Phân tích mạng lưới SNS, RAAS, nhạy cảm muối, rối loạn nội mô và tổn thương cơ quan đích.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                        <a href="../../Dược lý/Chuyên khoa/DL_Timmach.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge duoc-ly">Dược lý</span>
+                                <h5>Dược Lý Lâm Sàng Tim Mạch</h5>
+                                <p>Tra cứu nhanh chỉ định, chống chỉ định, liều lượng và cơ chế các nhóm thuốc tim mạch: BB, ACEi, ARB, SGLT2i, ARNI.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+    
+    <!-- Script điều khiển chung -->
+    <script src="../../../js/sidebar.js"></script>
+</body>
+
+</html>

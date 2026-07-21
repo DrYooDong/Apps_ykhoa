@@ -1,0 +1,524 @@
+/* ════════════════════════════════════════════════════════════════
+   CLINIPORTAL - PHARMACOLOGY TOOLS & INTERACTIVE MATRIX MODULE
+   Style cho: Ma trận tương tác đa thuốc, Máy tính hiệu chỉnh liều, 
+   Bộ quy đổi liều tương đương, Widget Độc chất nâng cấp
+   ════════════════════════════════════════════════════════════════ */
+
+/* Container chính cho các công cụ dược lý */
+.pharma-tools-section {
+  margin-bottom: 2.5rem;
+}
+
+.pharma-tool-card {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--radius-xl, 16px);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  transition: transform var(--tr, 0.2s ease), box-shadow var(--tr, 0.2s ease), border-color var(--tr, 0.2s ease);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .pharma-tool-card {
+  background: var(--color-surface, #1e293b);
+  border-color: var(--color-border, #334155);
+}
+
+.pharma-tool-card:hover {
+  border-color: var(--color-primary-hl, #bae6fd);
+  box-shadow: 0 8px 30px rgba(2, 132, 199, 0.08);
+}
+
+.pharma-tool-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+}
+
+.pharma-tool-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.pharma-tool-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--color-primary, #0284c7), #0369a1);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+  flex-shrink: 0;
+}
+
+.pharma-tool-title {
+  margin: 0;
+  font-family: var(--font-display, inherit);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text, #0f172a);
+}
+
+.pharma-tool-subtitle {
+  margin: 0.2rem 0 0 0;
+  font-size: 0.825rem;
+  color: var(--color-text-muted, #64748b);
+}
+
+.pharma-tool-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--color-primary-hl, #f0f9ff);
+  color: var(--color-primary, #0284c7);
+  border: 1px solid rgba(2, 132, 199, 0.2);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   1. POLYPHARMACY INTERACTION MATRIX STYLES
+   ════════════════════════════════════════════════════════════════ */
+
+.drug-selector-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  padding: 0.75rem;
+  background: var(--color-bg, #f8fafc);
+  border: 1px dashed var(--color-border, #cbd5e1);
+  border-radius: var(--radius-lg, 12px);
+}
+
+[data-theme="dark"] .drug-selector-container {
+  background: rgba(15, 23, 42, 0.4);
+  border-color: #334155;
+}
+
+.drug-select-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  background: var(--color-surface, #ffffff);
+  border: 1.5px solid var(--color-border, #cbd5e1);
+  color: var(--color-text, #334155);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.15s ease;
+}
+
+.drug-select-chip:hover {
+  border-color: var(--color-primary, #0284c7);
+  color: var(--color-primary, #0284c7);
+  transform: translateY(-1px);
+}
+
+.drug-select-chip.active {
+  background: var(--color-primary, #0284c7);
+  border-color: var(--color-primary, #0284c7);
+  color: #ffffff;
+  box-shadow: 0 3px 10px rgba(2, 132, 199, 0.3);
+}
+
+.drug-select-chip .chip-check {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.matrix-result-box {
+  margin-top: 1rem;
+  border-radius: var(--radius-lg, 12px);
+  padding: 1rem 1.25rem;
+  background: var(--color-bg, #f8fafc);
+  border: 1px solid var(--color-border, #e2e8f0);
+}
+
+.interaction-alert {
+  border-radius: var(--radius-md, 8px);
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border-left: 4px solid;
+  transition: all 0.2s ease;
+}
+
+.interaction-alert.severe {
+  background: rgba(225, 29, 72, 0.08);
+  border-left-color: #e11d48;
+  color: var(--color-text, #0f172a);
+}
+
+.interaction-alert.moderate {
+  background: rgba(217, 119, 6, 0.08);
+  border-left-color: #d97706;
+  color: var(--color-text, #0f172a);
+}
+
+.interaction-alert.safe {
+  background: rgba(16, 185, 129, 0.08);
+  border-left-color: #10b981;
+  color: var(--color-text, #0f172a);
+}
+
+.interaction-alert-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.interaction-drugs-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.interaction-severity-badge {
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.725rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.severe .interaction-severity-badge {
+  background: #e11d48;
+  color: #ffffff;
+}
+
+.moderate .interaction-severity-badge {
+  background: #d97706;
+  color: #ffffff;
+}
+
+.safe .interaction-severity-badge {
+  background: #10b981;
+  color: #ffffff;
+}
+
+.interaction-desc {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0.3rem 0;
+}
+
+.interaction-management {
+  font-size: 0.825rem;
+  margin-top: 0.5rem;
+  padding-top: 0.4rem;
+  border-top: 1px dashed rgba(0, 0, 0, 0.1);
+  color: var(--color-text-muted, #475569);
+}
+
+[data-theme="dark"] .interaction-management {
+  border-top-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   2. DOSE CALIBRATOR (RENAL & HEPATIC) STYLES
+   ════════════════════════════════════════════════════════════════ */
+
+.calibrator-inputs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.input-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.input-field-group label {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--color-text-muted, #475569);
+}
+
+.input-field-group input,
+.input-field-group select {
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--radius-md, 8px);
+  border: 1px solid var(--color-border, #cbd5e1);
+  background: var(--color-surface, #ffffff);
+  color: var(--color-text, #0f172a);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+[data-theme="dark"] .input-field-group input,
+[data-theme="dark"] .input-field-group select {
+  background: #0f172a;
+  border-color: #334155;
+  color: #f8fafc;
+}
+
+.input-field-group input:focus,
+.input-field-group select:focus {
+  border-color: var(--color-primary, #0284c7);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.dose-result-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.85rem;
+}
+
+.dose-card {
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius-lg, 10px);
+  background: var(--color-bg, #f8fafc);
+  border: 1px solid var(--color-border, #e2e8f0);
+  transition: all 0.15s ease;
+}
+
+[data-theme="dark"] .dose-card {
+  background: rgba(15, 23, 42, 0.5);
+  border-color: #334155;
+}
+
+.dose-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.dose-drug-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--color-primary, #0284c7);
+}
+
+.dose-status-badge {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.status-normal {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+}
+
+.status-reduced {
+  background: rgba(217, 119, 6, 0.15);
+  color: #d97706;
+}
+
+.status-contraindicated {
+  background: rgba(225, 29, 72, 0.15);
+  color: #e11d48;
+}
+
+.dose-value-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text, #0f172a);
+  margin-bottom: 0.3rem;
+}
+
+.dose-note-text {
+  font-size: 0.775rem;
+  color: var(--color-text-muted, #64748b);
+  line-height: 1.4;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   3. EQUIANALGESIC & STEROID CONVERTER STYLES
+   ════════════════════════════════════════════════════════════════ */
+
+.converter-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+  padding-bottom: 0.5rem;
+}
+
+.converter-tab-btn {
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted, #64748b);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.converter-tab-btn.active {
+  background: var(--color-primary, #0284c7);
+  color: #ffffff;
+}
+
+.conversion-table-wrapper {
+  overflow-x: auto;
+}
+
+.conversion-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.conversion-table th {
+  background: var(--color-bg, #f8fafc);
+  color: var(--color-text, #0f172a);
+  text-align: left;
+  padding: 0.6rem 0.8rem;
+  border-bottom: 2px solid var(--color-border, #cbd5e1);
+  font-weight: 600;
+}
+
+[data-theme="dark"] .conversion-table th {
+  background: #0f172a;
+  border-bottom-color: #334155;
+}
+
+.conversion-table td {
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+}
+
+[data-theme="dark"] .conversion-table td {
+  border-bottom-color: #334155;
+}
+
+.conversion-table tr.highlight-row {
+  background: rgba(2, 132, 199, 0.08);
+  font-weight: 600;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   4. ENHANCED ANTIDOTE FINDER WIDGET STYLES
+   ════════════════════════════════════════════════════════════════ */
+
+.antidote-search-box {
+  margin-bottom: 0.75rem;
+}
+
+.antidote-search-box input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border, #cbd5e1);
+  font-size: 0.825rem;
+  background: var(--color-surface, #ffffff);
+  color: var(--color-text, #0f172a);
+  outline: none;
+}
+
+[data-theme="dark"] .antidote-search-box input {
+  background: #0f172a;
+  border-color: #334155;
+  color: #f8fafc;
+}
+
+.antidote-quick-tag {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  margin: 0.15rem;
+  border-radius: 4px;
+  font-size: 0.725rem;
+  background: rgba(225, 29, 72, 0.1);
+  color: #e11d48;
+  font-weight: 600;
+}
+
+/* Quick Access Toolbar for Subpages */
+.subpage-pharma-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.06), rgba(99, 102, 241, 0.06));
+  border: 1px solid var(--color-primary-hl, #bae6fd);
+  border-radius: var(--radius-lg, 12px);
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
+[data-theme="dark"] .subpage-pharma-toolbar {
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.15), rgba(99, 102, 241, 0.15));
+  border-color: #0369a1;
+}
+
+.subpage-toolbar-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-primary, #0284c7);
+}
+
+.subpage-toolbar-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.subpage-tool-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.775rem;
+  font-weight: 600;
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #cbd5e1);
+  color: var(--color-text, #0f172a);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.subpage-tool-btn:hover {
+  background: var(--color-primary, #0284c7);
+  color: #ffffff;
+  border-color: var(--color-primary, #0284c7);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .pharma-tool-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .calibrator-inputs {
+    grid-template-columns: 1fr;
+  }
+  .subpage-pharma-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

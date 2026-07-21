@@ -13,16 +13,17 @@
     <link rel="stylesheet" href="../../../css/components/header.css">
     <link rel="stylesheet" href="../../../css/components/sidebar.css">
     <link rel="stylesheet" href="../../../css/components/footer.css">
-    <script src="../../../components/header.js" defer></script>
     <link rel="stylesheet" href="../../../css/components/pharmacology-symptoms.css">
-  <script src="../../../js/pharmacology-symptoms.js" defer></script>
-  <script src="../../../components/footer.js" defer></script>
+    <link rel="stylesheet" href="../../../css/components/pharmacology-tools.css">
+    <script src="../../../components/header.js" defer></script>
+    <script src="../../../js/pharmacology-symptoms.js" defer></script>
+    <script src="../../../components/footer.js" defer></script>
 </head>
 <body>
 <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
 <div class="app-container">
-        <!-- SIDEBAR -->
+    <!-- SIDEBAR -->
     <aside class="app-sidebar" id="appSidebar">
       <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
         <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
@@ -66,6 +67,18 @@
             <h1>Lưu đồ Dược lý Xử trí Chóng Mặt</h1>
             <p>Nhấn vào từng nút lưu đồ để tra cứu phác đồ thuốc, chống chỉ định và tương tác dược lý</p>
         </div>
+
+        <!-- QUICK ACCESS TOOLBAR -->
+        <div class="subpage-pharma-toolbar">
+            <div class="subpage-toolbar-title">
+                <i class="fa-solid fa-pills"></i> Phân Hệ Dược Lý Lâm Sàng
+            </div>
+            <div class="subpage-toolbar-actions">
+                <a href="../duoc-ly.html" class="subpage-tool-btn" title="Trang tổng Dược lý"><i class="fa-solid fa-house-medical"></i> Trang tổng Dược lý</a>
+                <a href="../../Công cụ/Chung/QuyDoi_LieuTuongDuong.html" class="subpage-tool-btn" title="Bộ quy đổi liều tương đương lâm sàng (Corticoids, Opioids, Statins, PPIs, DOACs, Benzo)"><i class="fa-solid fa-arrows-rotate"></i> Quy đổi liều tương đương</a>
+            </div>
+        </div>
+
 
         <!-- LEGEND -->
         <div class="fc-legend">
@@ -148,143 +161,125 @@ const DB = {
             "Đau đầu dữ dội mới xuất hiện hoặc đau gáy, cứng gáy (nghi xuất huyết dưới nhện, TBMMN).",
             "Chóng mặt kèm tăng HA ác tính hoặc nystagmus đa hướng liên tục.",
             "Chênh lệch HATT > 20 mmHg giữa hai tay (nghi Subclavian Steal Syndrome)."
+        ]
+    },
+    categories:{
+        PERIPHERAL:[
+            {key:'bppv', tag:'🌀 Tư thế', title:'BPPV (Chóng mặt tư thế kịch phát lành tính)', cls:'nc-teal'},
+            {key:'vestibular_neuritis', tag:'🦠 Viêm thần kinh', title:'Viêm Thần kinh Tiền đình / Viêm mê đạo', cls:'nc-teal'},
+            {key:'meniere', tag:'🌊 Meniere', title:'Bệnh Menière (Tăng ứ dịch tai trong)', cls:'nc-purple'}
         ],
-        action:"NGUYÊN TẮC DƯỢC LÝ: Tuyệt đối không trì hoãn bằng cách lạm dụng thuốc ức chế tiền đình đường uống/tiêm tại trạm y tế. Chuyển ngay bệnh nhân đến cơ sở có CT/MRI não."
+        ORTHOSTATIC:[
+            {key:'ortho_hypo', tag:'🩸 Hạ HA tư thế', title:'Hạ Huyết áp Tư thế đứng do Dược lý / Mất nước', cls:'nc-warn'}
+        ],
+        OTOTOXICITY:[
+            {key:'drug_ototoxic', tag:'💊 Độc tính tai', title:'Ngộ độc tai do Aminoglycoside / Furosemide / Cisplatin', cls:'nc-warn'}
+        ]
     },
     scenarios:{
-        PERI_ACUTE:{
-            title:"Cơn tiền đình ngoại biên cấp tính (BPPV / Viêm thần kinh tiền đình)",
-            source:"QĐ số 2919/QĐ-BYT (Trang 82) & Harrison's Table 53-2",
+        bppv:{
+            title:"Chóng mặt tư thế kịch phát lành tính (BPPV)",
             drugs:[
-                {name:"Acetyl-DL-leucine (Tanganil) 500mg",dose:"Uống 2 viên/lần × 2 lần/ngày (hoặc tiêm TM chậm 1g nếu nôn nhiều)",duration:"3–5 ngày (giai đoạn cấp)"},
-                {name:"Meclizine 25mg hoặc Dimenhydrinate 50mg",dose:"Uống 1 viên/lần × 1–3 lần/ngày",duration:"Chỉ dùng ngắn ngày trong pha cấp"},
-                {name:"Diazepam 5mg",dose:"Uống 1/2–1 viên trước khi ngủ để an thần",duration:"1–3 ngày đầu"}
+                {name:"Thủ thuật tái định vị sỏi tai (Epley maneuver)", dose:"Thực hiện 1–2 lần tại phòng khám", duration:"Ngay lập tức (Ưu tiên số 1)"},
+                {name:"Betahistine (Serc)", dose:"16–24 mg x 2 lần/ngày (PO)", duration:"3–5 ngày (ngắn hạn)"},
+                {name:"Cinarizin (Stugeron)", dose:"25 mg x 2–3 lần/ngày (PO)", duration:"Tối đa 5–7 ngày (tránh an thần)"}
             ],
-            ci:"Không dùng Meclizine/Dimenhydrinate cho người Glaucom góc đóng hoặc phì đại tiền liệt tuyến nặng. Chống chỉ định Diazepam cho người suy hô hấp.",
-            warn:"LƯU Ý CỐT LÕI: Các thuốc ức chế tiền đình chỉ dùng tối đa 3–5 ngày. Dùng kéo dài làm chậm bù trừ tiền đình của TKTW.",
-            ia:"Diazepam + Dimenhydrinate → tăng nặng ngủ gà, mất thăng bằng."
+            ci:"Không dùng ức chế tiền đình kéo dài > 1-2 tuần vì làm chậm quá trình bù trừ tiền đình của não bộ.",
+            warn:"Thủ thuật Epley là điều trị triệt để chính. Thuốc chỉ hỗ trợ giảm triệu chứng cấp trong 24-48 giờ đầu.",
+            ia:"Tránh phối hợp Cinarizin với thuốc an thần/kháng Histamin khác làm tăng ngủ gà nặng.",
+            source:"Hướng dẫn Chẩn đoán & Điều trị Bệnh Tiền đình - Bộ Y tế"
         },
-        PERI_MENIERE:{
-            title:"Hội chứng Ménière (Ù tai + Giảm thính lực + Chóng mặt từng đợt)",
-            source:"Harrison's Manual of Medicine (Chapter 53 - Vertigo)",
+        vestibular_neuritis:{
+            title:"Viêm Thần kinh Tiền đình Cấp tính",
             drugs:[
-                {name:"Betahistine dihydrochloride 16mg",dose:"Uống 1 viên/lần × 3 lần/ngày (hoặc 24mg × 2 lần) trong bữa ăn",duration:"Điều trị duy trì dài hạn"},
-                {name:"Hydrochlorothiazide 25mg (lợi tiểu)",dose:"Uống 1 viên/ngày + chế độ ăn giảm muối < 1000mg/ngày",duration:"Giảm áp lực dịch nội mê nhĩ"}
+                {name:"Methylprednisolone", dose:"1 mg/kg/ngày (PO) x 5 ngày, sau đó giảm liều dần", duration:"7–10 ngày"},
+                {name:"Dimenhydrinate (Vomex)", dose:"50 mg x 2–3 lần/ngày (PO/IM)", duration:"3–5 ngày cấp"},
+                {name:"Betahistine", dose:"24 mg x 2 lần/ngày (PO)", duration:"2–4 tuần"}
             ],
-            ci:"Chống chỉ định Betahistine cho pheochromocytoma hoặc loét dạ dày đợt cấp.",
-            warn:"Theo dõi điện giải (đặc biệt Kali máu) khi dùng lợi tiểu thiazide kéo dài.",
-            ia:"Betahistine + kháng histamin → triệt tiêu hiệu năng dược lý (đối kháng thụ thể H1)."
+            ci:"Chống chỉ định Corticoid ở bệnh nhân đang nhiễm trùng toàn thân chưa kiểm soát.",
+            warn:"Cần tập phục hồi chức năng tiền đình (Vestibular Rehabilitation Therapy) sớm ngay khi qua giai đoạn cấp.",
+            ia:"Thận trọng khi dùng Corticoid ở bệnh nhân đái tháo đường (gây tăng đường huyết).",
+            source:"Harrison's Principles of Internal Medicine - Vestibular Neuritis Management"
         },
-        ORTHO_DRUG:{
-            title:"Hạ huyết áp tư thế đứng do thuốc / suy tự chủ",
-            source:"Internal Medicine on Call & Symptoms to Diagnosis",
+        meniere:{
+            title:"Bệnh Menière (Hội chứng ứ dịch tai trong)",
             drugs:[
-                {name:"Rà soát & Ngừng thuốc gây hạ áp tư thế",dose:"Đình chỉ/giảm liều: thuốc giãn mạch, chẹn alpha, lợi tiểu vòng, TCA",duration:"Xử trí nguyên nhân gốc"},
-                {name:"Fludrocortisone hoặc Midodrine (Tuyến chuyên khoa)",dose:"Theo chỉ định chuyên sâu nếu do suy hệ tự chủ",duration:"Theo dõi sát huyết áp tư thế"}
+                {name:"Betahistine (Serc)", dose:"24 mg x 2 lần/ngày (PO)", duration:"Duy trì 1–3 tháng"},
+                {name:"Hydrochlorothiazide / Triamterene", dose:"25 mg / 50 mg x 1 lần/ngày (PO)", duration:"Duy trì ngắt quãng"},
+                {name:"Chế độ ăn giảm Muối", dose:"< 2g Muối (Na) / ngày", duration:"Liên tục"}
             ],
-            ci:"Chống chỉ định bù dịch/muối liều cao cho bệnh nhân suy tim ứ huyết nặng hoặc suy thận giai đoạn cuối.",
-            warn:"Tiêu chuẩn chẩn đoán: HATT giảm ≥ 20 mmHg hoặc HATTr giảm ≥ 10 mmHg trong 3 phút sau khi đứng.",
-            ia:"Hướng dẫn BN nâng cao đầu giường khi ngủ, co duỗi cơ chân trước khi đứng dậy."
+            ci:"Tránh dùng thuốc lợi niệu nếu có hạ Kali máu nặng hoặc suy thận cấp.",
+            warn:"Hạn chế tối đa Cà phê, Rượu bia, Thuốc lá vì gây co mạch tai trong.",
+            ia:"Lợi niệu Thiazide có thể làm tăng nhẹ nồng độ Acid Uric huyết thanh.",
+            source:"AAO-HNS Guidelines for Meniere's Disease"
         },
-        OTO_TOXICITY:{
-            title:"Chóng mặt / Mất thăng bằng do độc tính tai của thuốc (Ototoxicity)",
-            source:"Tài liệu Bộ Y tế - Sử dụng thuốc hợp lý (Phụ lục 9)",
+        ortho_hypo:{
+            title:"Hạ Huyết áp Tư thế đứng do Dược lý",
             drugs:[
-                {name:"Đình chỉ ngay nhóm thuốc gây độc tai",dose:"Ngừng Aminoglycoside (Streptomycin, Gentamicin, Amikacin) hoặc lợi tiểu quai liều cao",duration:"Vĩnh viễn"},
-                {name:"Chuyển đổi phác đồ kháng sinh an toàn",dose:"Thay thế bằng Beta-lactam hoặc nhóm không độc với dây TK VIII",duration:"Duy trì điều trị nhiễm khuẩn"}
+                {name:"Rà soát & Giảm liều Thuốc Hạ áp", dose:"Đánh giá nhóm Alpha-blocker, Lợi tiểu, Vasodilator", duration:"Ngay lập tức"},
+                {name:"Bổ sung Nước & Muối", dose:"1.5 – 2.0 Lít nước/ngày + Đeo tất áp lực", duration:"Duy trì"},
+                {name:"Midodrine (Thuốc cường Alpha-1)", dose:"2.5 – 5 mg x 3 lần/ngày (dùng ban ngày)", duration:"Khi nặng"}
             ],
-            ci:"Không cố chấp duy trì Aminoglycoside khi BN bắt đầu có triệu chứng ù tai, chóng mặt hoặc giảm thính lực.",
-            warn:"Độc tính tế bào lông tiền đình của Streptomycin/Gentamicin có thể gây mất thăng bằng VĨNH VIỄN nếu không ngừng kịp thời.",
-            ia:"Nguy cơ độc tính tai tăng nhiều lần khi phối hợp Aminoglycoside + Furosemide đồng thời."
+            ci:"Không uống Midodrine trước khi nằm ngủ (nguy cơ tăng HA tư thế nằm).",
+            warn:"Kiểm tra HA ở 2 tư thế: Nằm 5 phút và Đứng 1 và 3 phút (giảm HATT >= 20mmHg hoặc HATTr >= 10mmHg).",
+            ia:"Midodrine phối hợp với thuốc trợ tim gây tăng nguy cơ nhịp chậm.",
+            source:"ESC Guidelines on Syncope & Orthostatic Hypotension"
+        },
+        drug_ototoxic:{
+            title:"Độc tính Tai do Thuốc (Ototoxicity)",
+            drugs:[
+                {name:"Ngừng ngay thuốc gây độc tai", dose:"Thay Aminoglycoside sang Cephalosporin/Fluoroquinolone", duration:"Ngay lập tức"},
+                {name:"Duy trì Hydrat hóa tốt", dose:"Truyền NaCl 0.9% đảm bảo nồng độ thuốc giảm nhanh", duration:"Giai đoạn cấp"}
+            ],
+            ci:"Không phối hợp Aminoglycoside (Gentamicin, Amikacin) với Lợi tiểu quai (Furosemide) vì tăng gấp bội độc tính tai.",
+            warn:"Theo dõi thính lực đồ và độc tính tiền đình ở bệnh nhân dùng kháng sinh Aminoglycoside kéo dài > 7 ngày.",
+            ia:"Furosemide liều cao tĩnh mạch nhanh làm tăng nguy cơ điếc vĩnh viễn.",
+            source:"WHO Guidelines on Ototoxic Medications"
         }
     }
 };
 
-
-
-function selectPath(path){
+function selectPath(path) {
     resetAll();
-    if(path==='SEVERE'){
-        document.getElementById('node-severe').classList.add('active');
-        renderEmergency();
+    const nodeSevere = document.getElementById('node-severe');
+    const nodeMild = document.getElementById('node-mild');
+    if (path === 'SEVERE') {
+        if (nodeSevere) nodeSevere.classList.add('active');
+        showEmergency('Tổn thương thần kinh trung ương (Đột quỵ não / Xuất huyết não / Khối u góc cầu tiểu não)');
     } else {
-        document.getElementById('node-mild').classList.add('active');
-        document.getElementById('layer-types').className='fc-layer-enabled';
+        if (nodeMild) nodeMild.classList.add('active');
+        const layerTypes = document.getElementById('layer-types');
+        if (layerTypes) layerTypes.className = 'fc-layer-enabled';
     }
 }
 
-function selectCategory(cat){
-    ['peripheral','orthostatic','ototoxicity'].forEach(id=>document.getElementById('node-'+id.toLowerCase()).classList.remove('active'));
-    document.getElementById('proto-panel').style.display='none';
-    document.getElementById('node-'+cat.toLowerCase()).classList.add('active');
-    const layer=document.getElementById('layer-scenarios');
-    layer.style.display='block';
-    let html='';
-    if(cat==='PERIPHERAL'){
-        html=nodeBtn('flowCoughMap','PERI_ACUTE','Cơn Tiền Đình Cấp / BPPV','nc-teal')+nodeBtn('flowCoughMap','PERI_MENIERE','Bệnh Ménière (Ù tai + Giảm thính lực + Từng đợt)','nc-teal');
-    } else if(cat==='ORTHOSTATIC'){
-        html=nodeBtn('flowCoughMap','ORTHO_DRUG','Hạ huyết áp tư thế đứng (Do thuốc / Suy tự chủ)','nc-warn');
-    } else {
-        html=nodeBtn('flowCoughMap','OTO_TOXICITY','Nhiễm độc tiền đình ốc tai do Thuốc (Aminoglycoside, Furosemide)','nc-warn');
-    }
-    document.getElementById('row-scenarios').innerHTML=html;
-    document.querySelectorAll('#row-scenarios .fc-node').forEach(n=>n.addEventListener('click',function(){
-        document.querySelectorAll('#row-scenarios .fc-node').forEach(x=>x.classList.remove('active'));
-        this.classList.add('active');
-    }));
-}
-
-function nodeBtn(ns,key,label,cls){
-    return `<div class="fc-node ${cls}" onclick="displayProtocol('${key}')">`+
-        `<div class="fc-node-title">${label}</div></div>`;
-}
-
-function renderEmergency(){
-    const d=DB.emergency;
-    const flags=d.redFlags.map(f=>`<li style="margin-bottom:5px;">${f}</li>`).join('');
-    document.getElementById('proto-panel').style.display='block';
-    document.getElementById('proto-panel').innerHTML=`
-    <div class="proto-panel">
-        <div class="proto-badge">🚨 Khẩn cấp – Chuyển tuyến</div>
-        <div class="proto-panel-title" style="color:var(--fc-danger);border-color:var(--fc-danger);">
-            QUY TRÌNH PHÂN TUYẾN CẤP CỨU THẦN KINH TRUNG ƯƠNG
+function selectCategory(catKey) {
+    document.querySelectorAll('#layer-types .fc-node').forEach(n => n.classList.remove('active'));
+    
+    let clickId = '';
+    if (catKey === 'PERIPHERAL') clickId = 'node-peripheral';
+    if (catKey === 'ORTHOSTATIC') clickId = 'node-orthostatic';
+    if (catKey === 'OTOTOXICITY') clickId = 'node-ototoxicity';
+    
+    const clickNode = document.getElementById(clickId);
+    if (clickNode) clickNode.classList.add('active');
+    
+    const layerScenarios = document.getElementById('layer-scenarios');
+    const rowScenarios = document.getElementById('row-scenarios');
+    const protoPanel = document.getElementById('proto-panel');
+    
+    if (protoPanel) protoPanel.style.display = 'none';
+    
+    const list = DB.categories[catKey] || [];
+    rowScenarios.innerHTML = list.map(item => `
+        <div class="fc-node ${item.cls}" onclick="displayProtocol('${item.key}', 'var(--fc-teal)')">
+            <div class="fc-node-tag">${item.tag}</div>
+            <div class="fc-node-title">${item.title}</div>
         </div>
-        <p style="font-size:14px;margin-bottom:8px;font-weight:600;">Bệnh nhân chóng mặt kèm MỘT trong các dấu hiệu sau → Chuyển viện NGAY:</p>
-        <ul style="font-size:13px;color:#7f1d1d;padding-left:18px;font-weight:600;">${flags}</ul>
-        <div class="ab ab-danger"><strong>⚠️ Nguyên tắc dược lý:</strong> ${d.action}</div>
-        <span class="src-badge">📚 ${d.source}</span>
-    </div>`;
-    document.getElementById('proto-panel').scrollIntoView({behavior:'smooth',block:'nearest'});
+    `).join('');
+    
+    if (layerScenarios) layerScenarios.style.display = 'block';
 }
-
-
 </script>
-
-  <!-- TÀI LIỆU LIÊN QUAN -->
-  <section class="related-links-section" style="max-width: var(--fc-width, 1000px); margin: 2rem auto; width: 100%; box-sizing: border-box; padding: 0 1rem;">
-      <h4 class="related-links-title">
-          <i class="fas fa-link"></i> Xem thêm các nội dung liên quan
-      </h4>
-      <div class="related-links-grid">
-          <a href="../../Công cụ/Thần kinh/DG_Dotquy.html" class="related-link-card">
-              <div class="related-card-content">
-                  <span class="related-card-badge cong-cu">Công cụ</span>
-                  <h5>Đánh Giá Đột Quỵ Cấp & TIA</h5>
-                  <p>Hệ thống tính điểm đột quỵ NIHSS, phân tầng nguy cơ ABCD2 cho cơn thiếu máu não thoáng qua (TIA) và ICH Score.</p>
-              </div>
-              <i class="fas fa-chevron-right related-card-arrow"></i>
-          </a>
-          <a href="./DL_Daudau.html" class="related-link-card">
-              <div class="related-card-content">
-                  <span class="related-card-badge duoc-ly">Dược lý</span>
-                  <h5>Dược Lý Lâm Sàng Đau Đầu</h5>
-                  <p>Tra cứu phác đồ cắt cơn đau và phòng ngừa Migraine, đau đầu căng thẳng, đau đầu cụm.</p>
-              </div>
-              <i class="fas fa-chevron-right related-card-arrow"></i>
-          </a>
-      </div>
-  </section>
-
-  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
 </body>
 </html>

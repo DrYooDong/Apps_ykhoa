@@ -13,186 +13,74 @@
   <!-- CSS Core CliniPortal -->
   <link rel="stylesheet" href="../../css/reset.css">
   <link rel="stylesheet" href="../../css/main.css">
-  <link rel="stylesheet" href="../../css/components/header.css">
-  <link rel="stylesheet" href="../../css/components/sidebar.css">
   <link rel="stylesheet" href="../../css/components/footer.css">
-
-  <style>
-    .matrix-container {
-        padding: 30px;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-    .matrix-header {
-        text-align: center;
-        margin-bottom: 30px;
-    }
-    .matrix-header h1 {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        color: var(--color-primary);
-        margin-bottom: 10px;
-    }
-    .matrix-header p {
-        color: var(--color-text-muted);
-        font-size: 15px;
-    }
-    
-    .symptom-selector {
-        background: var(--color-surface);
-        padding: 24px;
-        border-radius: 16px;
-        border: 1px solid var(--color-border);
-        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        margin-bottom: 30px;
-    }
-    .symptom-chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 15px;
-    }
-    .symptom-chip {
-        padding: 10px 18px;
-        background: var(--color-bg);
-        border: 1.5px solid var(--color-border);
-        border-radius: 100px;
-        cursor: pointer;
-        font-size: 14px;
-        font-weight: 500;
-        transition: all 0.2s;
-        user-select: none;
-    }
-    .symptom-chip:hover {
-        border-color: var(--color-primary);
-    }
-    .symptom-chip.active {
-        background: var(--color-primary);
-        color: white;
-        border-color: var(--color-primary);
-        box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
-    }
-
-    .results-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 24px;
-    }
-    
-    .result-card {
-        background: var(--color-surface);
-        border-radius: 16px;
-        border: 1px solid var(--color-border);
-        padding: 24px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    }
-    .result-card-title {
-        font-size: 18px;
-        font-weight: 700;
-        margin-bottom: 16px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        border-bottom: 2px solid var(--color-border);
-        padding-bottom: 12px;
-    }
-    .title-danger { color: var(--color-danger); border-bottom-color: var(--color-danger-hl); }
-    .title-info { color: var(--color-primary); border-bottom-color: var(--color-primary-hl); }
-    
-    .result-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-    .result-list li {
-        padding: 12px 0;
-        border-bottom: 1px dashed var(--color-border);
-        font-size: 14.5px;
-        line-height: 1.5;
-        display: flex;
-        align-items: flex-start;
-        gap: 10px;
-    }
-    .result-list li:last-child {
-        border-bottom: none;
-    }
-    .result-list li i {
-        margin-top: 4px;
-    }
-    
-    .empty-state {
-        text-align: center;
-        padding: 40px;
-        color: var(--color-text-muted);
-        grid-column: 1 / -1;
-    }
-    .empty-state i {
-        font-size: 48px;
-        margin-bottom: 15px;
-        opacity: 0.5;
-    }
-    
-    .match-badge {
-        font-size: 11px;
-        background: var(--color-success-hl);
-        color: var(--color-success);
-        padding: 2px 8px;
-        border-radius: 100px;
-        font-weight: 700;
-        margin-left: auto;
-    }
-
-    @media (max-width: 768px) {
-        .results-grid {
-            grid-template-columns: 1fr;
-        }
-    }
-  </style>
+  <link rel="stylesheet" href="../../css/components/ma-tran-trieu-chung.css">
 </head>
 
 <body>
-  <div id="header-placeholder" data-header-path="../../components/header.html"></div>
-  <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-  <div class="app-container">
-    <!-- SIDEBAR -->
-    <aside class="app-sidebar" id="appSidebar">
-      <!-- Sidebar loaded by JS -->
-    </aside>
-
-    <main class="main-wrapper">
-      <!-- BREADCRUMB -->
-      <nav aria-label="Breadcrumb" class="breadcrumb-container" style="padding: 15px 30px 0;">
-        <ol class="breadcrumb-list">
-          <li class="breadcrumb-item"><a href="../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a></li>
-          <li class="breadcrumb-item"><a href="tiep-can.html" class="breadcrumb-link">Tiếp cận</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Ma trận Triệu chứng</li>
-        </ol>
-      </nav>
-
-      <div class="matrix-container">
-        <div class="matrix-header">
-            <h1><i class="fa-solid fa-triangle-exclamation"></i> Ma Trận Triệu Chứng Lâm Sàng</h1>
-            <p>Tra cứu kết hợp nhiều triệu chứng để phát hiện các Dấu hiệu cảnh báo đỏ (Red Flags) và thu hẹp Chẩn đoán phân biệt.</p>
-        </div>
-
-        <div class="symptom-selector">
-            <h3 style="margin-top:0; color: var(--color-text);"><i class="fa-solid fa-check-double"></i> Chọn các triệu chứng bệnh nhân đang có:</h3>
-            <div class="symptom-chips" id="chipContainer">
-                <div class="symptom-chip" data-id="sot">Sốt</div>
-                <div class="symptom-chip" data-id="daubung">Đau bụng</div>
-                <div class="symptom-chip" data-id="khotho">Khó thở</div>
-                <div class="symptom-chip" data-id="daunguc">Đau ngực</div>
-                <div class="symptom-chip" data-id="vangda">Vàng da</div>
-                <div class="symptom-chip" data-id="phu">Phù</div>
+  <div class="app-container" style="display: block;">
+    <main class="main-wrapper" style="padding:0; background:transparent; margin-left:0; width: 100%;">
+      <div class="matrix-wrapper">
+        <a href="tiep-can.html" class="back-nav-btn">
+            <i class="fa-solid fa-arrow-left"></i> Trở về Tiếp cận
+        </a>
+        <div class="matrix-container">
+            
+            <div class="matrix-header">
+                <h1><i class="fa-solid fa-network-wired"></i> Ma Trận Chẩn Đoán Cấp Cứu</h1>
+                <p>Công cụ hỗ trợ quyết định lâm sàng: Kết hợp đa triệu chứng để phát hiện tự động các <strong>Dấu hiệu cảnh báo đỏ</strong> và thu hẹp phổ <strong>Chẩn đoán phân biệt</strong>.</p>
             </div>
-        </div>
 
-        <div class="results-grid" id="resultsGrid">
-            <div class="empty-state">
-                <i class="fa-solid fa-hand-pointer"></i>
-                <h3>Chưa có triệu chứng nào được chọn</h3>
-                <p>Vui lòng chọn ít nhất 1 triệu chứng ở trên để xem kết quả.</p>
+            <div class="matrix-layout">
+                
+                <!-- LEFT PANEL: SELECTION -->
+                <div class="selector-panel">
+                    <div class="patient-context-panel">
+                        <div class="panel-title" style="font-size: 0.95rem; margin-bottom: 12px; border:none; padding:0;">
+                            <i class="fa-solid fa-user-injured" style="color: var(--color-warning);"></i> Cơ địa / Bối cảnh (Tùy chọn)
+                        </div>
+                        <div class="context-toggles">
+                            <label class="context-toggle">
+                                <input type="checkbox" value="tuoi50" onchange="updateMatrix()">
+                                <span>Tuổi > 50</span>
+                            </label>
+                            <label class="context-toggle">
+                                <input type="checkbox" value="cothai" onchange="updateMatrix()">
+                                <span>Có thai</span>
+                            </label>
+                            <label class="context-toggle">
+                                <input type="checkbox" value="tieuduong" onchange="updateMatrix()">
+                                <span>Đái tháo đường</span>
+                            </label>
+                            <label class="context-toggle">
+                                <input type="checkbox" value="miendich" onchange="updateMatrix()">
+                                <span>Suy giảm miễn dịch</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="panel-title">
+                        <i class="fa-solid fa-list-check" style="color: var(--color-primary);"></i> 
+                        Triệu chứng bệnh nhân (Chọn >= 1)
+                    </div>
+                    <div id="chipContainer" class="symptom-categories-container">
+                        <!-- Chips generated by JS -->
+                    </div>
+                </div>
+
+                <!-- RIGHT PANEL: ENGINE RESULTS -->
+                <div class="results-panel" id="resultsPanel">
+                    <div class="engine-empty">
+                        <div class="radar-scanner">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                        <h3>Engine Chẩn Đoán Đang Chờ</h3>
+                        <p>Hãy chọn các triệu chứng từ danh sách bên trái để AI tổng hợp và phân tích dữ liệu lâm sàng.</p>
+                    </div>
+                </div>
+
             </div>
+
         </div>
       </div>
     </main>
@@ -201,204 +89,9 @@
   <div id="footer-placeholder" data-footer-path="../../components/footer.html"></div>
 
   <!-- Scripts -->
-  <script src="../../js/main.js"></script>
-  <script src="../../components/header.js"></script>
-  <script src="../../components/footer.js"></script>
-  <script src="../../js/sidebar.js"></script>
-
-  <script>
-    const symptomData = {
-        sot: {
-          name: "Sốt",
-          redFlags: [
-            "Co giật hoặc rối loạn tri giác (lơ mơ, hôn mê)",
-            "Cứng cổ, sợ ánh sáng (gợi ý kích thích màng não)",
-            "Phát ban xuất huyết hình bản đồ hoặc chấm nốt",
-            "Tụt huyết áp, mạch nhanh, thiểu niệu (dấu hiệu Sốc)",
-            "Sốt cao liên tục > 40°C không đáp ứng hạ sốt"
-          ],
-          diffDiags: [
-            "Nhiễm khuẩn huyết (Sepsis) / Sốc nhiễm khuẩn",
-            "Viêm màng não mủ / Viêm não cấp",
-            "Sốt xuất huyết Dengue nặng thoát huyết tương",
-            "Sốt rét ác tính thể não (nếu có yếu tố dịch tễ)",
-            "Nhiễm trùng đường mật cấp",
-            "Viêm ruột thừa cấp"
-          ]
-        },
-        daubung: {
-          name: "Đau bụng",
-          redFlags: [
-            "Đau bụng dữ dội, đột ngột như dao đâm",
-            "Đề kháng thành bụng hoặc cảm ứng phúc mạc",
-            "Nôn mửa liên tục kèm bí trung đại tiện (tắc ruột)",
-            "Huyết động không ổn định hoặc tụt huyết áp",
-            "Đau lan sau lưng kèm vã mồ hôi (phình động mạch, viêm tụy)"
-          ],
-          diffDiags: [
-            "Thủng tạng rỗng (viêm phúc mạc toàn thể)",
-            "Viêm ruột thừa cấp / Viêm tụy cấp nặng",
-            "Tắc ruột cơ học hoặc xoắn ruột",
-            "Thai ngoài tử cung vỡ (ở nữ độ tuổi sinh sản)",
-            "Nhiễm trùng đường mật cấp"
-          ]
-        },
-        khotho: {
-          name: "Khó thở",
-          redFlags: [
-            "Thở rít (Stridor) gợi ý tắc nghẽn đường thở trên",
-            "Co kéo mạnh cơ hô hấp phụ, rút lõm hõm ức",
-            "Tím tái đầu chi, niêm mạc, SpO2 < 90% khi thở khí trời",
-            "Không thể nói hết câu ngắn, phải ngồi dậy để thở",
-            "Rối loạn nhịp thở (thở quá chậm < 10 lần/phút hoặc Cheyne-Stokes)"
-          ],
-          diffDiags: [
-            "Cơn hen phế quản ác tính đe dọa tính mạng",
-            "Đợt cấp COPD suy hô hấp cấp mất bù",
-            "Phù phổi cấp huyết động (do suy tim trái cấp)",
-            "Dị vật đường thở lớn hoặc phản vệ mức độ nặng",
-            "Nhiễm khuẩn huyết (Sepsis) / Sốc nhiễm khuẩn" //ARDS
-          ]
-        },
-        daunguc: {
-          name: "Đau ngực",
-          redFlags: [
-            "Đau dữ dội khởi phát đột ngột, đau như xé ngực lan sau lưng",
-            "Vã mồ hôi lạnh, khó thở, cảm giác đè nặng bóp nghẹt",
-            "Huyết áp lệch nhau > 20 mmHg giữa hai tay",
-            "Ngất hoặc tiền ngất, mạch chậm hoặc quá nhanh",
-            "Tụt huyết áp (HA tâm thu < 90 mmHg)"
-          ],
-          diffDiags: [
-            "Nhồi máu cơ tim cấp (STEMI hoặc NSTEMI)",
-            "Phình bóc tách động mạch chủ ngực cấp tính",
-            "Thuyên tắc động mạch phổi cấp diện rộng",
-            "Tràn khí màng phổi áp lực gây chèn ép tim cấp",
-            "Viêm màng ngoài tim cấp"
-          ]
-        },
-        vangda: {
-          name: "Vàng da",
-          redFlags: [
-            "Đau hạ sườn phải dữ dội kèm sốt cao rét run (Charcot)",
-            "Rối loạn tri giác, kích động, lơ mơ (Bệnh não gan)",
-            "Rối loạn đông máu nặng (xuất huyết da niêm, chảy máu chân răng)",
-            "Thiếu niệu, vô niệu (Hội chứng gan thận cấp)",
-            "Suy kiệt nặng, sụt cân nhanh kèm sờ thấy khối u bụng"
-          ],
-          diffDiags: [
-            "Nhiễm trùng đường mật cấp do sỏi kẹt cổ túi mật",
-            "Viêm gan cấp bùng phát (do virus hoặc độc chất, paracetamol)",
-            "U đường mật (Cholangiocarcinoma) hoặc U đầu tụy chèn ép",
-            "Xơ gan mất bù giai đoạn cuối",
-            "Nhiễm khuẩn huyết (Sepsis) / Sốc nhiễm khuẩn"
-          ]
-        },
-        phu: {
-          name: "Phù",
-          redFlags: [
-            "Phù cấp tính khởi phát nhanh kèm khó thở dữ dội",
-            "Phù nề thanh quản, môi, lưỡi kèm ngứa/ban đỏ sau dùng thuốc",
-            "Phù kèm theo tăng huyết áp rất cao và thiểu niệu/vô niệu",
-            "Phù một bên chi dưới kèm nóng đỏ, đau nhức bắp chân"
-          ],
-          diffDiags: [
-            "Phản vệ mức độ nặng / Phù mạch (Quincke)",
-            "Suy tim cấp mất bù / Phù phổi cấp",
-            "Huyết khối tĩnh mạch sâu chi dưới (DVT)",
-            "Hội chứng thận hư cấp hoặc đợt cấp suy thận mạn",
-            "Xơ gan mất bù giai đoạn cuối"
-          ]
-        }
-    };
-
-    const chips = document.querySelectorAll('.symptom-chip');
-    const resultsGrid = document.getElementById('resultsGrid');
-    let selectedSymptoms = new Set();
-
-    chips.forEach(chip => {
-        chip.addEventListener('click', () => {
-            const id = chip.getAttribute('data-id');
-            if (selectedSymptoms.has(id)) {
-                selectedSymptoms.delete(id);
-                chip.classList.remove('active');
-            } else {
-                selectedSymptoms.add(id);
-                chip.classList.add('active');
-            }
-            updateMatrix();
-        });
-    });
-
-    function updateMatrix() {
-        if (selectedSymptoms.size === 0) {
-            resultsGrid.innerHTML = `
-                <div class="empty-state">
-                    <i class="fa-solid fa-hand-pointer"></i>
-                    <h3>Chưa có triệu chứng nào được chọn</h3>
-                    <p>Vui lòng chọn ít nhất 1 triệu chứng ở trên để xem kết quả.</p>
-                </div>
-            `;
-            return;
-        }
-
-        let allRedFlags = [];
-        let diagCount = {};
-
-        selectedSymptoms.forEach(id => {
-            const data = symptomData[id];
-            
-            data.redFlags.forEach(flag => {
-                allRedFlags.push({ text: flag, source: data.name });
-            });
-
-            data.diffDiags.forEach(diag => {
-                if (!diagCount[diag]) diagCount[diag] = 0;
-                diagCount[diag]++;
-            });
-        });
-
-        const sortedDiags = Object.keys(diagCount).sort((a, b) => diagCount[b] - diagCount[a]);
-
-        let redFlagsHtml = `
-            <div class="result-card">
-                <div class="result-card-title title-danger">
-                    <i class="fa-solid fa-circle-exclamation"></i> Cảnh Báo Đỏ (Red Flags)
-                </div>
-                <ul class="result-list">
-                    ${allRedFlags.map(f => `
-                        <li>
-                            <i class="fa-solid fa-caret-right" style="color: var(--color-danger)"></i>
-                            <div>
-                                ${f.text} 
-                                <span style="font-size: 11px; opacity: 0.6; margin-left: 6px;">[Từ: ${f.source}]</span>
-                            </div>
-                        </li>
-                    `).join('')}
-                </ul>
-            </div>
-        `;
-
-        let diagsHtml = `
-            <div class="result-card">
-                <div class="result-card-title title-info">
-                    <i class="fa-solid fa-list-check"></i> Chẩn Đoán Phân Biệt 
-                    <span style="font-size: 13px; font-weight: normal; margin-left: auto;">Sắp xếp theo độ phù hợp</span>
-                </div>
-                <ul class="result-list">
-                    ${sortedDiags.map(d => `
-                        <li>
-                            <i class="fa-solid fa-stethoscope" style="color: var(--color-primary)"></i>
-                            <span>${d}</span>
-                            ${diagCount[d] > 1 ? `<span class="match-badge">Khớp ${diagCount[d]} triệu chứng</span>` : ''}
-                        </li>
-                    `).join('')}
-                </ul>
-            </div>
-        `;
-
-        resultsGrid.innerHTML = redFlagsHtml + diagsHtml;
-    }
-  </script>
+  <script src="../../js/main.js" defer></script>
+  <script src="../../components/footer.js" defer></script>
+  <script src="../../js/ma-tran-trieu-chung-data.js" defer></script>
+  <script src="../../js/ma-tran-trieu-chung.js" defer></script>
 </body>
 </html>

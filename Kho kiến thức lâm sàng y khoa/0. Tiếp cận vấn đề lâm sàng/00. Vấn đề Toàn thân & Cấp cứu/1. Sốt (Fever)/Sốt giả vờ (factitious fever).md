@@ -1,6 +1,0 @@
----
-tags:
-  - Lamsang
-  - Trieuchung
-  - Vande
----

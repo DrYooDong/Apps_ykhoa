@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Lưu đồ dược lý tương tác xử trí Nôn Ói – CliniPortal">
-    <title>Dược lý Nôn Ói – CliniPortal</title>
+    <meta name="description" content="Lưu đồ dược lý tương tác xử trí Nôn Nao & Nôn Ói – CliniPortal">
+    <title>Dược lý Xử Trí Nôn Nao / Nôn Ói – CliniPortal</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,10 +13,11 @@
     <link rel="stylesheet" href="../../../css/components/header.css">
     <link rel="stylesheet" href="../../../css/components/sidebar.css">
     <link rel="stylesheet" href="../../../css/components/footer.css">
-    <script src="../../../components/header.js" defer></script>
     <link rel="stylesheet" href="../../../css/components/pharmacology-symptoms.css">
-  <script src="../../../js/pharmacology-symptoms.js" defer></script>
-  <script src="../../../components/footer.js" defer></script>
+    <link rel="stylesheet" href="../../../css/components/pharmacology-tools.css">
+    <script src="../../../components/header.js" defer></script>
+    <script src="../../../js/pharmacology-symptoms.js" defer></script>
+    <script src="../../../components/footer.js" defer></script>
 </head>
 <body>
 <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
@@ -39,45 +40,9 @@
             </a>
           </li>
           <li>
-            <a href="../../Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item" title="Sinh lý & Sinh lý bệnh">
-              <span class="nav-icon">🧬</span>
-              <span class="nav-text">Sinh lý</span>
-            </a>
-          </li>
-          <li>
-            <a href="../../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng lâm sàng">
-              <span class="nav-icon">🩺</span>
-              <span class="nav-text">Kỹ năng lâm sàng</span>
-            </a>
-          </li>
-          <li>
-            <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng">
-              <span class="nav-icon">🤒</span>
-              <span class="nav-text">Tiếp cận lâm sàng</span>
-            </a>
-          </li>
-          <li>
-            <a href="../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ lâm sàng">
-              <span class="nav-icon">⚙️</span>
-              <span class="nav-text">Công cụ lâm sàng</span>
-            </a>
-          </li>
-          <li>
-            <a href="../duoc-ly.html" class="nav-item" title="Dược lý & Kháng sinh">
+            <a href="../duoc-ly.html" class="nav-item active" title="Dược lý">
               <span class="nav-icon">💊</span>
-              <span class="nav-text">Dược lý lâm sàng</span>
-            </a>
-          </li>
-          <li>
-            <a href="../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
-              <span class="nav-icon">📄</span>
-              <span class="nav-text">Y học chứng cứ</span>
-            </a>
-          </li>
-          <li>
-            <a href="../../Y học cổ truyền/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền">
-              <span class="nav-icon">☯️</span>
-              <span class="nav-text">Y học cổ truyền</span>
+              <span class="nav-text">Dược lý</span>
             </a>
           </li>
         </ul>
@@ -90,204 +55,204 @@
                 <li class="breadcrumb-item"><a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a></li>
                 <li class="breadcrumb-item"><a href="../duoc-ly.html" class="breadcrumb-link">Dược lý</a></li>
                 <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Triệu chứng</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Nôn ói</li>
+                <li class="breadcrumb-item active" aria-current="page">Nôn nao / Nôn ói</li>
             </ol>
         </nav>
 
         <div class="flow-hero">
             <div class="hero-badge">💊 Dược lý lâm sàng • 2026</div>
-            <h1>Lưu đồ Dược lý Điều trị Nôn Ói</h1>
-            <p>Nhấn vào từng nút lưu đồ để tra cứu phác đồ thuốc theo căn nguyên nôn ói</p>
+            <h1>Lưu đồ Dược lý Xử trí Nôn Nao & Nôn Ói</h1>
+            <p>Nhấn vào từng nút lưu đồ để tra cứu phác đồ chống nôn theo kịch bản lâm sàng</p>
         </div>
 
+        <!-- QUICK ACCESS TOOLBAR -->
+        <div class="subpage-pharma-toolbar">
+            <div class="subpage-toolbar-title">
+                <i class="fa-solid fa-pills"></i> Phân Hệ Dược Lý Lâm Sàng
+            </div>
+            <div class="subpage-toolbar-actions">
+                <a href="../duoc-ly.html" class="subpage-tool-btn" title="Trang tổng Dược lý"><i class="fa-solid fa-house-medical"></i> Trang tổng Dược lý</a>
+                <a href="../../Công cụ/Chung/QuyDoi_LieuTuongDuong.html" class="subpage-tool-btn" title="Bộ quy đổi liều tương đương lâm sàng (Corticoids, Opioids, Statins, PPIs, DOACs, Benzo)"><i class="fa-solid fa-arrows-rotate"></i> Quy đổi liều tương đương</a>
+            </div>
+        </div>
+
+
         <div class="fc-legend">
-            <div class="fc-legend-item"><div class="fc-legend-dot" style="background:var(--fc-danger)"></div> Khẩn cấp / Chuyển tuyến</div>
-            <div class="fc-legend-item"><div class="fc-legend-dot" style="background:var(--fc-teal)"></div> Phân loại căn nguyên</div>
-            <div class="fc-legend-item"><div class="fc-legend-dot" style="background:#0d9488"></div> Phác đồ thuốc</div>
+            <div class="fc-legend-item"><div class="fc-legend-dot" style="background:var(--fc-danger)"></div> Khẩn cấp / Nôn máu</div>
+            <div class="fc-legend-item"><div class="fc-legend-dot" style="background:var(--fc-warn)"></div> Phân loại căn nguyên</div>
+            <div class="fc-legend-item"><div class="fc-legend-dot" style="background:var(--fc-teal)"></div> Phác đồ thuốc chống nôn</div>
             <div class="fc-legend-item" style="font-style:italic;">💡 Nhấn nút để xem chi tiết bên dưới</div>
         </div>
 
         <div class="fc-tree">
+            <!-- Row 1: ROOT -->
             <div class="fc-row">
                 <div class="fc-node nc-root" style="max-width:280px;">
-                    <div class="fc-node-tag">🎯 Điểm khởi đầu</div>
+                    <div class="fc-node-tag">🎯 Khởi đầu</div>
                     <div class="fc-node-title">TIẾP CẬN BỆNH NHÂN NÔN ÓI</div>
-                    <div class="fc-node-sub">Bước 1: Phân loại có dấu hiệu nguy hiểm không?</div>
+                    <div class="fc-node-sub">Bước 1: Sàng lọc Nôn máu / Tăng áp lực nội sọ / Tắc ruột</div>
                 </div>
             </div>
+
+            <!-- Arrow -->
             <div class="fc-arrow-down"><div class="fc-arrow-line"></div><div class="fc-arrow-head"></div></div>
 
+            <!-- Row 2: Phân loại mức độ -->
             <div class="fc-row">
-                <div class="fc-node nc-danger pulse-danger" id="node-severe" onclick="selectPath('SEVERE')">
-                    <div class="fc-node-tag">🚨 Nguy cơ cao</div>
-                    <div class="fc-node-title">CÓ DẤU HIỆU NẶNG / NGUY CƠ CAO</div>
-                    <div class="fc-node-sub">Nghi ngoại khoa bụng, tổn thương não, nôn máu, mất nước nặng...</div>
+                <div class="fc-node nc-danger pulse-danger" id="node-redflag" onclick="selectPath('REDFLAG')">
+                    <div class="fc-node-tag">🚨 Dấu hiệu nguy cơ</div>
+                    <div class="fc-node-title">NÔN MÁU / NÔN VỌT / BỤNG NGOẠI KHOA</div>
+                    <div class="fc-node-sub">Xuất huyết tiêu hóa, Tăng áp lực nội sọ, Tắc ruột...</div>
                 </div>
-                <div class="fc-node nc-teal" id="node-mild" onclick="selectPath('MILD')">
-                    <div class="fc-node-tag">✅ Nội khoa</div>
-                    <div class="fc-node-title">NÔN ÓI THÔNG THƯỜNG / KHÔNG BIẾN CHỨNG</div>
-                    <div class="fc-node-sub">Phân loại tiếp theo căn nguyên</div>
+                <div class="fc-node nc-warn" id="node-routine" onclick="selectPath('ROUTINE')">
+                    <div class="fc-node-tag">🍹 Nội khoa</div>
+                    <div class="fc-node-title">NÔN ÓI KHÔNG CÓ DẤU HIỆU NGUY CƠ</div>
+                    <div class="fc-node-sub">Viêm dạ dày ruột, Say tàu xe, Nôn do hóa chất...</div>
                 </div>
             </div>
 
+            <!-- Row 3: Phân loại nguyên nhân (khóa ban đầu) -->
             <div id="layer-types" class="fc-layer-disabled">
                 <hr class="fc-sep">
                 <div class="fc-row" style="gap:10px;">
-                    <div class="fc-node nc-teal" id="node-gi" onclick="selectCategory('GI')">
-                        <div class="fc-node-tag">🦠 Tiêu hóa</div>
-                        <div class="fc-node-title">Do Viêm Dạ Dày Ruột</div>
+                    <div class="fc-node nc-teal" id="node-gastro" onclick="selectCategory('GASTRO')">
+                        <div class="fc-node-tag">🍹 Tiêu hóa</div>
+                        <div class="fc-node-title">Viêm Dạ dày Ruột / Nhiễm trùng</div>
                     </div>
-                    <div class="fc-node nc-teal" id="node-vestibular" onclick="selectCategory('VESTIBULAR')">
-                        <div class="fc-node-tag">🌀 Tiền đình</div>
-                        <div class="fc-node-title">Do Rối Loạn Tiền Đình</div>
+                    <div class="fc-node nc-purple" id="node-chemo_postop" onclick="selectCategory('CHEMO_POSTOP')">
+                        <div class="fc-node-tag">💉 Hóa trị / Hậu phẫu</div>
+                        <div class="fc-node-title">Nôn do Hóa trị (CINV) / Hậu phẫu (PONV)</div>
                     </div>
-                    <div class="fc-node nc-warn" id="node-drug_side" onclick="selectCategory('DRUG_SIDE')">
-                        <div class="fc-node-tag">💊 Tác dụng phụ</div>
-                        <div class="fc-node-title">Do Tác Dụng Phụ Thuốc</div>
-                    </div>
-                    <div class="fc-node nc-neutral" id="node-infant" onclick="selectCategory('INFANT')">
-                        <div class="fc-node-tag">👶 Nhi khoa</div>
-                        <div class="fc-node-title">Nôn Trớ Sơ Sinh / Nhi Khoa</div>
+                    <div class="fc-node nc-warn" id="node-motion" onclick="selectCategory('MOTION')">
+                        <div class="fc-node-tag">🚗 Say tàu xe</div>
+                        <div class="fc-node-title">Say Tàu Xe / Rối loạn Tiền đình</div>
                     </div>
                 </div>
             </div>
 
+            <!-- Row 4: Scenarios (ẩn ban đầu) -->
             <div id="layer-scenarios" style="display:none;">
                 <hr class="fc-sep">
                 <div class="fc-row" id="row-scenarios"></div>
             </div>
         </div>
 
+        <!-- PROTOCOL PANEL -->
         <div id="proto-panel" style="display:none;"></div>
     </main>
 </div>
 
 <footer class="global-footer">
-    <div class="footer-copyright"><p>CliniPortal © 2026 · Chỉ mang tính hỗ trợ tham khảo, không thay thế phán xét lâm sàng.</p></div>
+    <div class="footer-copyright"><p>CliniPortal © 2026 · Công cụ lâm sàng · Chỉ mang tính hỗ trợ tham khảo, không thay thế phán xét lâm sàng của bác sĩ.</p></div>
 </footer>
 <script src="../../../js/sidebar.js"></script>
 <script>
 const DB = {
-    emergency:{
-        source:"QĐ số 2919/QĐ-BYT (Trang 82, 313)",
-        flags:[
-            "Nôn ói kèm chóng mặt do nguyên nhân tại não: Liệt khu trú, đau đầu nhiều, đau gáy, tăng huyết áp.",
-            "Nôn ói kèm đau bụng dữ dội cấp tính nghi ngoại khoa, tắc ruột, hoặc chậm kinh/chảy máu âm đạo.",
-            "Nôn ra máu tươi hoặc chất nôn đen sẫm (Xuất huyết tiêu hóa cấp tính).",
-            "Nôn liên tục không thể uống dịch bù nước kèm mất nước nặng, choáng, tụt huyết áp."
+    categories:{
+        GASTRO:[
+            {key:'gastro_acute', tag:'🍹 Viêm ruột', title:'Nôn trong Viêm dạ dày ruột cấp', cls:'nc-teal'}
         ],
-        action:"NGUYÊN TẮC DƯỢC LÝ: Tuyệt đối không tự ý tiêm Metoclopramide khi chưa loại trừ bụng ngoại khoa. Nếu có choáng, truyền NaCl 0.9% hoặc Ringer Lactate trong khi chuyển tuyến."
+        CHEMO_POSTOP:[
+            {key:'cinv', tag:'💉 Hóa trị', title:'Nôn do Hóa trị ung thư (CINV)', cls:'nc-purple'},
+            {key:'ponv', tag:'🏥 Hậu phẫu', title:'Nôn sau Phẫu thuật / Gây mê (PONV)', cls:'nc-purple'}
+        ],
+        MOTION:[
+            {key:'motion_sickness', tag:'🚗 Say tàu xe', title:'Say Tàu Xe (Motion Sickness)', cls:'nc-warn'}
+        ]
     },
     scenarios:{
-        GI_GASTRITIS:{title:"Nôn ói do Viêm dạ dày ruột cấp / Rối loạn tiêu hóa",source:"QĐ số 2919/QĐ-BYT & Clinical Guidelines Level 4,5,6",
+        gastro_acute:{
+            title:"Nôn Ói Trong Viêm Dạ Dày Ruột Cấp Tính",
             drugs:[
-                {name:"Metoclopramide 10mg (IV/IM hoặc PO)",dose:"Dùng 1 ống hoặc 1 viên uống trước bữa ăn 20–30 phút",duration:"Khi nôn nhiều gây cản trở đường uống dịch"},
-                {name:"Bù dịch NaCl 0.9% / Ringer Lactate",dose:"Truyền TM hoặc uống Oresol tùy mức độ mất nước",duration:"Đến khi kiểm soát hoàn toàn dấu hiệu mất nước"},
-                {name:"Prochlorperazine 25mg (lựa chọn thay thế)",dose:"Tiêm bắp (IM), uống hoặc viên đặt hậu môn",duration:"Tại cơ sở có giường lưu trú"}
+                {name:"Ondansetron (Zofran)", dose:"4–8 mg (IV/PO)", duration:"1–2 ngày giai đoạn cấp"},
+                {name:"Metoclopramide (Primperan)", dose:"10 mg (IV/PO) x 2–3 lần/ngày", duration:"Trước ăn 30 phút"},
+                {name:"Bù Nước & Điện Giải (Oresol)", dose:"Uống từng ngụm nhỏ liên tục", duration:"Khi có tiêu chảy/nôn"}
             ],
-            ci:"Tuyệt đối không dùng Metoclopramide khi nghi tắc ruột cơ học, thủng ruột hoặc đang có xuất huyết tiêu hóa cấp.",
-            warn:"Thuốc chống nôn chỉ điều trị triệu chứng ngắn ngày. Cốt lõi vẫn là bù nước và điện giải tích cực.",
-            ia:"Tránh phối hợp Metoclopramide với chất ức chế TKTW hoặc thuốc an thần."
+            ci:"Metoclopramide chống chỉ định ở bệnh nhân nghi ngờ tắc ruột cơ học hoặc thủng ruột.",
+            warn:"Metoclopramide kéo dài gây nguy cơ Tác dụng phụ ngoại tháp (Hội chứng Parkinsons do thuốc, co giật cơ mặt).",
+            ia:"Ondansetron phối hợp với các thuốc kéo dài QTc (Amiodarone, Haloperidol) làm tăng rủi ro xoắn đỉnh.",
+            source:"CDC & WHO Guidelines on Acute Gastroenteritis"
         },
-        VESTIBULAR_ATTACK:{title:"Buồn nôn và nôn do Chóng mặt rối loạn tiền đình",source:"QĐ số 2919/QĐ-BYT (Trang 82)",
+        cinv:{
+            title:"Nôn Ói do Hóa Trị Ung Thư (CINV)",
             drugs:[
-                {name:"Metoclopramide (Primperan) 10mg",dose:"Uống 2 viên × 2 lần/ngày",duration:"Cắt cơn buồn nôn"},
-                {name:"Acetyl-DL-leucine (Tanganil) 500mg",dose:"Uống 2 viên × 2 lần/ngày",duration:"Điều trị gốc chóng mặt tiền đình"},
-                {name:"Flunarizine (Sibelium) 5mg",dose:"Uống 2 viên trước khi ngủ",duration:"Phòng và cắt cơn chóng mặt"},
-                {name:"Diazepam 5mg (thuốc an thần phối hợp)",dose:"Uống 1–2 viên trước khi ngủ",duration:"Nếu BN mất ngủ, lo âu kèm theo"}
+                {name:"Ondansetron / Palonosetron", dose:"8 mg IV hoặc 0.25mg IV trước hóa trị 30p", duration:"Ngày dùng hóa chất"},
+                {name:"Dexamethasone", dose:"8–12 mg IV/PO", duration:"Duy trì 2–4 ngày"},
+                {name:"Aprepitant (Kháng NK1)", dose:"125 mg (N1) -> 80 mg (N2-3)", duration:"Phác đồ 3 ngày"}
             ],
-            ci:"Chống chỉ định Diazepam cho người suy hô hấp nặng hoặc ngưng thở khi ngủ.",
-            warn:"Nếu nôn ói và chóng mặt không đỡ sau 3 ngày liên tục → Bắt buộc chuyển viện tuyến trên.",
-            ia:"Diazepam tăng tác dụng ức chế TKTW của Metoclopramide → có thể gây ngủ gà nặng."
+            ci:"Dexamethasone thận trọng ở bệnh nhân nhiễm trùng tiến triển hoặc đái tháo đường chưa kiểm soát.",
+            warn:"Phối hợp Kháng 5-HT3 + Dexamethasone + Kháng NK1 giúp cắt cơn nôn hóa trị đến 80-90%.",
+            ia:"Aprepitant là chất ức chế CYP3A4, làm tăng nồng độ Dexamethasone (cần giảm 50% liều Dexamethasone).",
+            source:"NCCN Guidelines for Antiemesis in Oncology"
         },
-        DRUG_CONTRACEPTIVE:{title:"Buồn nôn / nôn do Tác dụng phụ Thuốc tránh thai nội tiết",source:"QĐ số 2919/QĐ-BYT (Trang 339, 348, 352)",
+        ponv:{
+            title:"Nôn & Nôn Nao Sau Phẫu Thuật (PONV)",
             drugs:[
-                {name:"Tư vấn điều chỉnh thời gian uống thuốc",dose:"Khuyên uống thuốc tránh thai trước khi ngủ hoặc trong khi ăn",duration:"Hạn chế kích ứng niêm mạc dạ dày"},
-                {name:"Xử trí nôn sớm sau uống thuốc (< 2 giờ)",dose:"Bắt buộc uống bù ngay 1 viên khác thay thế",duration:"Áp dụng cho cả viên kết hợp và viên progestogen đơn"},
-                {name:"Xử trí nôn muộn kéo dài (≥ 2 ngày liên tục)",dose:"Tiếp tục lịch uống nhưng xử trí như trường hợp quên uống thuốc",duration:"Phối hợp thêm bao cao su trong 7 ngày"}
+                {name:"Ondansetron", dose:"4 mg IV chậm lúc kết thúc phẫu thuật", duration:"Liều đơn"},
+                {name:"Dexamethasone", dose:"4–8 mg IV lúc khởi mê", duration:"Liều đơn"},
+                {name:"Droperidol", dose:"0.625–1.25 mg IV", duration:"Khi nguy cơ cao"}
             ],
-            ci:"Không khuyến cáo thuốc chống nôn thường quy trước khi dùng viên thuốc tránh thai khẩn cấp chứa Levonorgestrel đơn độc (ít gây buồn nôn hơn viên kết hợp).",
-            warn:"Tác dụng phụ buồn nôn do thuốc tránh thai khẩn cấp thông thường kéo dài không quá 24 giờ. Nếu chậm kinh hoặc ra máu kéo dài → thử thai loại trừ chửa ngoài tử cung.",
-            ia:"Thuốc chống co giật (Phenytoin, Carbamazepin) hoặc Rifampicin làm giảm nồng độ thuốc tránh thai → tăng nguy cơ mang thai ngoài ý muốn."
+            ci:"Droperidol có cảnh báo đen (Black Box Warning) về nguy cơ kéo dài QTc và xoắn đỉnh (Torsades de Pointes).",
+            warn:"Đánh giá điểm nguy cơ Apfel (Nữ, Không hút thuốc, Tiền sử PONV, Dùng Opioid hậu phẫu).",
+            ia:"Phối hợp đa đích (5-HT3 + Corticoid) cho hiệu quả cao vượt trội.",
+            source:"SAMBA Consensus Guidelines for PONV Management"
         },
-        INFANT_REFLUX:{title:"Xử trí Nôn trớ sinh lý và đầy hơi ở trẻ sơ sinh, trẻ nhỏ sau bú",source:"QĐ số 2919/QĐ-BYT (Trang 290, 291)",
+        motion_sickness:{
+            title:"Dự Phòng & Điều Trị Say Tàu Xe",
             drugs:[
-                {name:"Chăm sóc tư thế không dùng thuốc (Ưu tiên cốt lõi)",dose:"Sau khi bú, bế trẻ nằm sấp trên vai mẹ, vỗ lưng nhẹ để ợ hơi dạ dày",duration:"Tránh đầy hơi gây trớ sữa"},
-                {name:"Xử lý khẩn cấp khi trào ngược sữa",dose:"Nếu sữa trào ra miệng/mũi → lập tức lau và hút sạch đường thở",duration:"Phòng ngừa hội chứng dị vật đường thở"},
-                {name:"Thủ thuật ấn mũi ức (Nếu trẻ bị sặc tắc nghẽn)",dose:"Dùng ngón trỏ và giữa ấn ngay dưới mũi ức 5 lần hướng về phía đầu trẻ + vỗ lưng",duration:"Cấp cứu ngừng tim phổi ngay nếu trẻ ngưng thở"}
+                {name:"Scopolamine (Miếng dán dái tai)", dose:"1 miếng dán sau tai 4 giờ trước chuyến đi", duration:"Tác dụng 72 giờ"},
+                {name:"Dimenhydrinate (Vomex / Nautamine)", dose:"50 mg (PO) trước đi 30 phút", duration:"Uống lại sau 4–6h"},
+                {name:"Cinarizin (Stugeron)", dose:"25 mg (PO) trước đi 2 giờ", duration:"Tối đa 3 lần/ngày"}
             ],
-            ci:"Tuyệt đối không dùng Metoclopramide cho trẻ sơ sinh tại TYT xã khi chưa loại trừ dị tật hẹp môn vị.",
-            warn:"Nhận biết rối loạn nước điện giải ở sơ sinh rất khó. TYT xã không đủ điều kiện làm XN chuyên sâu – nếu trẻ nôn + giảm bú + li bì → Chuyển viện ngay.",
-            ia:"Tập trung hướng dẫn người mẹ cho trẻ bú đúng tư thế, không ép trẻ bú quá no."
+            ci:"Miếng dán Scopolamine chống chỉ định ở bệnh nhân Glocom góc đóng hoặc phì đại tuyến tiền liệt nặng.",
+            warn:"Gây tác dụng phụ buồn ngủ nghiêm trọng. Không lái xe hoặc vận hành máy móc sau khi dùng.",
+            ia:"Tăng tác dụng ức chế thần kinh trung ương khi uống cùng rượu bia.",
+            source:"CDC Yellow Book: Motion Sickness Prevention"
         }
     }
 };
 
-
-function selectPath(path){
+function selectPath(path) {
     resetAll();
-    if(path==='SEVERE'){
-        document.getElementById('node-severe').classList.add('active');
-        renderEmergency();
+    const nodeRed = document.getElementById('node-redflag');
+    const nodeRoutine = document.getElementById('node-routine');
+    if (path === 'REDFLAG') {
+        if (nodeRed) nodeRed.classList.add('active');
+        showEmergency('Nôn máu / Nôn vọt tăng áp lực nội sọ (Nghi Xuất huyết tiêu hóa / Xuất huyết não / Tắc ruột cơ học / Viêm tụy cấp)');
     } else {
-        document.getElementById('node-mild').classList.add('active');
-        document.getElementById('layer-types').className='fc-layer-enabled';
+        if (nodeRoutine) nodeRoutine.classList.add('active');
+        const layerTypes = document.getElementById('layer-types');
+        if (layerTypes) layerTypes.className = 'fc-layer-enabled';
     }
 }
-function selectCategory(cat){
-    ['gi','vestibular','drug_side','infant'].forEach(id=>document.getElementById('node-'+id).classList.remove('active'));
-    document.getElementById('proto-panel').style.display='none';
-    document.getElementById('node-'+cat.toLowerCase()).classList.add('active');
-    document.getElementById('layer-scenarios').style.display='block';
-    const btn=(key,label,cls='nc-teal')=>`<div class="fc-node ${cls}" onclick="displayProtocol('${key}')"><div class="fc-node-title">${label}</div></div>`;
-    let html='';
-    if(cat==='GI'){
-        html=btn('GI_GASTRITIS','Nhiễm khuẩn tiêu hóa / Viêm dạ dày ruột thông thường')+
-             `<div class="fc-node nc-danger" onclick="showEmergencyReferral('Thủng tạng rỗng / Tắc ruột cơ học')"><div class="fc-node-title">🚨 Nôn kèm bí trung đại tiện / Bụng chướng hoặc đau dữ dội</div></div>`;
-    } else if(cat==='VESTIBULAR'){
-        html=btn('VESTIBULAR_ATTACK','Hội chứng chóng mặt tiền đình ngoại biên điển hình');
-    } else if(cat==='DRUG_SIDE'){
-        html=btn('DRUG_CONTRACEPTIVE','Nôn ói do tác dụng phụ của Thuốc tránh thai','nc-warn');
-    } else {
-        html=btn('INFANT_REFLUX','Trào ngược, nôn trớ sữa sinh lý ở trẻ sơ sinh','nc-neutral');
-    }
-    document.getElementById('row-scenarios').innerHTML=html;
-    document.querySelectorAll('#row-scenarios .fc-node').forEach(n=>n.addEventListener('click',function(){
-        document.querySelectorAll('#row-scenarios .fc-node').forEach(x=>x.classList.remove('active'));
-        this.classList.add('active');
-    }));
-}
-function renderEmergency(){
-    const d=DB.emergency;
-    const flags=d.flags.map(f=>`<li style="margin-bottom:5px;">${f}</li>`).join('');
-    document.getElementById('proto-panel').style.display='block';
-    document.getElementById('proto-panel').innerHTML=`<div class="proto-panel">
-        <div class="proto-badge">🚨 Khẩn cấp – Chuyển tuyến</div>
-        <div class="proto-panel-title" style="color:var(--fc-danger);border-color:var(--fc-danger);">QUY TRÌNH TIẾP CẬN SÀNG LỌC NGUY CƠ CAO & CHUYỂN TUYẾN KHẨN CẤP</div>
-        <p style="font-size:14px;margin-bottom:8px;font-weight:600;">Bệnh nhân nôn ói kèm MỘT trong các dấu hiệu sau → CHUYỂN VIỆN NGAY:</p>
-        <ul style="font-size:13px;color:#7f1d1d;padding-left:18px;font-weight:600;">${flags}</ul>
-        <div class="ab ab-danger"><strong>⚠️ Nguyên tắc dược lý:</strong> ${d.action}</div>
-        <span class="src-badge">📚 ${d.source}</span>
-    </div>`;
-    document.getElementById('proto-panel').scrollIntoView({behavior:'smooth',block:'nearest'});
-}
-function showEmergencyReferral(name){
-    document.getElementById('proto-panel').style.display='block';
-    document.getElementById('proto-panel').innerHTML=`<div class="proto-panel">
-        <div class="ab ab-danger" style="margin-top:0;">
-            <h3 style="margin:0 0 6px;">⚠️ CHỈ ĐỊNH ĐÌNH CHỈ THEO DÕI TẠI CƠ SỞ – CHUYỂN TUYẾN</h3>
-            <p><strong>Tình trạng nghi ngờ:</strong> ${name}.</p>
-            <p><strong>Xử trí bắt buộc:</strong> Ngừng hoàn toàn đường ăn uống. Thiết lập ngay đường truyền dịch TM để giữ vững huyết động và làm thủ tục chuyển viện gấp ngoại khoa. Không dùng thuốc chống nôn tại chỗ.</p>
-            <span class="src-badge">📚 QĐ số 2919/QĐ-BYT</span>
+
+function selectCategory(catKey) {
+    document.querySelectorAll('#layer-types .fc-node').forEach(n => n.classList.remove('active'));
+    
+    let clickId = '';
+    if (catKey === 'GASTRO') clickId = 'node-gastro';
+    if (catKey === 'CHEMO_POSTOP') clickId = 'node-chemo_postop';
+    if (catKey === 'MOTION') clickId = 'node-motion';
+    
+    const clickNode = document.getElementById(clickId);
+    if (clickNode) clickNode.classList.add('active');
+    
+    const layerScenarios = document.getElementById('layer-scenarios');
+    const rowScenarios = document.getElementById('row-scenarios');
+    const protoPanel = document.getElementById('proto-panel');
+    
+    if (protoPanel) protoPanel.style.display = 'none';
+    
+    const list = DB.categories[catKey] || [];
+    rowScenarios.innerHTML = list.map(item => `
+        <div class="fc-node ${item.cls}" onclick="displayProtocol('${item.key}', 'var(--fc-teal)')">
+            <div class="fc-node-tag">${item.tag}</div>
+            <div class="fc-node-title">${item.title}</div>
         </div>
-    </div>`;
-    document.querySelectorAll('#row-scenarios .fc-node').forEach(x=>x.classList.remove('active'));
-    event.currentTarget.classList.add('active');
-    document.getElementById('proto-panel').scrollIntoView({behavior:'smooth',block:'nearest'});
+    `).join('');
+    
+    if (layerScenarios) layerScenarios.style.display = 'block';
 }
-
 </script>
-
-  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
 </body>
 </html>

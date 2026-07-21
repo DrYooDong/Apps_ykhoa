@@ -46,6 +46,7 @@
 | `components/physio-headings.css` | Tiêu đề bài học sinh lý | `pages/Sinh lý/**` |
 | `components/toc.css` | Mục lục tự động (TOC) | `pages/Sinh lý/Sinhly/**` |
 | `components/pharmacology-symptoms.css` | Dược lý theo triệu chứng | `pages/Dược lý/Triệu chứng/**` |
+| `components/pharmacology-tools.css` | Ma trận tương tác, máy tính hiệu chỉnh liều | `pages/Dược lý/**` |
 | `components/abg-calculator.css` | Giao diện máy tính ABG | `DG_ABG.html` |
 | `components/insulin-calculator.css` | Giao diện máy tính Insulin | `DG_Insulin-ĐTĐ.html` |
 | `components/benh-an.css` | Mẫu bệnh án điện tử | `benh-an-noi-khoa.html` |
@@ -53,6 +54,7 @@
 | `components/homepage-effects.css` | Hiệu ứng trang chủ | `index.html` |
 | `components/homepage-widgets.css` | Widgets trang chủ | `index.html` |
 | `components/y-hoc-co-truyen.css` | Y học cổ truyền hub | `y-hoc-co-truyen.html` |
+| `components/ma-tran-trieu-chung.css` | Giao diện Ma Trận Triệu Chứng | `ma-tran-trieu-chung.html` |
 
 ---
 
@@ -66,11 +68,15 @@
 | `approach-hub.js` | Search + filter lưu đồ | `tiep-can.html` |
 | `clinical-skill-tabs.js` | Tab switching kỹ năng lâm sàng | `pages/Kỹ năng/**` |
 | `pharmacology-symptoms.js` | Filter dược lý theo triệu chứng | `pages/Dược lý/Triệu chứng/**` |
+| `pharmacology-tools.js` | Logic tương tác đa thuốc, hiệu chỉnh liều gan thận, quy đổi liều tương đương & Antidote | `pages/Dược lý/**` |
+
 | `physio-patho.js` | Lightbox ảnh, lazyload | `pages/Sinh lý/**` |
 | `toc.js` | Tự động tạo mục lục sticky | `pages/Sinh lý/Sinhly/**` |
 | `benh-an.js` | Form validation + print bệnh án | `benh-an-noi-khoa.html` |
 | `homepage-effects.js` | Particle effects, animations trang chủ | `index.html` |
 | `homepage-widgets.js` | Widget logic trang chủ | `index.html` |
+| `ma-tran-trieu-chung-data.js` | Dữ liệu triệu chứng, cờ đỏ, chẩn đoán phân biệt | `ma-tran-trieu-chung.html` |
+| `ma-tran-trieu-chung.js` | Logic ma trận triệu chứng & render giao diện | `ma-tran-trieu-chung.html` |
 | `calculators/abg-calculator.js` | Logic 6-bước chẩn đoán toan kiềm | `DG_ABG.html` |
 | `calculators/insulin-calculator.js` | Logic chỉnh liều insulin | `DG_Insulin-ĐTĐ.html` |
 
@@ -93,9 +99,11 @@
 | File | Vai trò | CSS riêng |
 |------|---------|-----------|
 | `Công cụ/cong-cu.html` | Hub tổng Công cụ | — |
+| `Công cụ/Chung/QuyDoi_LieuTuongDuong.html` | Bộ quy đổi liều thuốc tương đương (Corticoids, Opioids OME, Statins, PPIs, DOACs, Benzo) | `pharmacology-tools.css` |
 | `Công cụ/Chung/Tracuu_maICD10.html` | Tra cứu mã ICD-10 | — |
 | `Công cụ/Chung/Bệnh án/benh-an-noi-khoa.html` | Mẫu bệnh án nội khoa | `benh-an.css` |
 | `Công cụ/Chung/NCKH/NCKH_Tinhcomau.html` | Tính cỡ mẫu nghiên cứu | — |
+
 | `Công cụ/Cấp cứu & hồi sức/QL_Budich.html` | Quản lý bù dịch cấp cứu | — |
 | `Công cụ/Cấp cứu & hồi sức/QL_Vanmach.html` | Quản lý liều thuốc vận mạch & trợ tim | — |
 | `Công cụ/Cấp cứu & hồi sức/QL_Maytho.html` | Quản lý máy thở chuyên sâu | — |
@@ -203,6 +211,7 @@
 |------|---------|------------|
 | `Sinh lý .../Sinhly-sinhlybenh.html` | Hub tổng | Cấp 2 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_THA.html` | Sinh lý bệnh & Cơ chế bệnh sinh Tăng huyết áp | Cấp 3 |
+| `Sinh lý .../SLB_CCBS/SLB_CCBS_ST.html` | Sinh lý bệnh & Cơ chế bệnh sinh Suy tim | Cấp 3 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_SXHD.html` | Sinh lý bệnh & Cơ chế bệnh sinh Sốt xuất huyết Dengue | Cấp 3 |
 | `Sinh lý .../Sinhly/HUONG_DAN_THIET_KE.md` | Design guide sinh lý | — |
 | `Sinh lý .../Sinhly/Phan1/SL_*.html` | Bài học sinh lý (Phần 1: TB) | Cấp 4 |

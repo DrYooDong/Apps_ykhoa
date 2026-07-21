@@ -23,11 +23,28 @@
 
   <script src="../../../components/header.js"></script>
   <style>
-    /* ===== LAYOUT CHÍNH ===== */
-    .main-content-grid {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1.5rem;
+    /* ===== STYLE 2 CSS ===== */
+    .assessment-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1rem; }
+    .input-column, .results-sidebar { display: flex; flex-direction: column; gap: 1.25rem; }
+    
+    .panel { background-color: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm); }
+    .panel-title { font-size: var(--text-md); font-weight: 700; color: var(--color-text); margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px dashed var(--color-divider); display: flex; align-items: center; gap: 0.5rem; }
+    
+    .form-grid-2 { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+    .input-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .input-group label { font-size: var(--text-sm); font-weight: 600; color: var(--color-text-muted); }
+    
+    input[type="number"], select { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background-color: var(--color-surface-offset); color: var(--color-text); }
+    input[type="number"]:focus, select:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px var(--color-primary-hl); }
+
+    .checkbox-group { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.5rem; }
+    .checkbox-item { display: flex; align-items: flex-start; gap: 0.5rem; cursor: pointer; font-size: var(--text-sm); }
+    .checkbox-item input[type="checkbox"] { margin-top: 0.2rem; width: 16px; height: 16px; accent-color: var(--color-primary); }
+
+    @media (min-width: 768px) {
+      .assessment-grid { grid-template-columns: 2fr 1fr; }
+      .form-grid-2 { grid-template-columns: repeat(2, 1fr); }
+      .sticky-card { position: sticky; top: calc(var(--header-height) + 1.25rem); }
     }
 
     .hero-dashboard {
@@ -50,128 +67,6 @@
       margin: 0;
       color: var(--color-text-muted);
       line-height: 1.6;
-    }
-
-    /* ===== GRID 2 CỘT: FORM | KẾT QUẢ ===== */
-    .cirrhosis-wrapper {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      align-items: start;
-    }
-
-    @media (max-width: 900px) {
-      .cirrhosis-wrapper {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* ===== PANEL CHUNG ===== */
-    .panel {
-      background: var(--color-surface);
-      border: 1px solid var(--color-divider);
-      border-radius: var(--radius-md);
-      padding: 1.4rem;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .panel-title {
-      font-size: 1rem;
-      font-weight: 800;
-      color: var(--color-text);
-      margin: 0 0 1.2rem;
-      padding-bottom: .75rem;
-      border-bottom: 1px dashed var(--color-divider);
-      display: flex;
-      align-items: center;
-      gap: .5rem;
-    }
-
-    /* ===== SECTION NHÓM INPUT ===== */
-    .input-section {
-      margin-bottom: 1.4rem;
-    }
-
-    .input-section-title {
-      font-size: .78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .05em;
-      color: var(--color-primary);
-      margin: 0 0 .75rem;
-      display: flex;
-      align-items: center;
-      gap: .4rem;
-    }
-
-    .input-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: .75rem 1rem;
-    }
-
-    .input-grid.full {
-      grid-template-columns: 1fr;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: .3rem;
-    }
-
-    .form-group label {
-      font-size: .78rem;
-      font-weight: 600;
-      color: var(--color-text-muted);
-    }
-
-    .form-group input,
-    .form-group select {
-      padding: .5rem .7rem;
-      border: 1px solid var(--color-divider);
-      border-radius: var(--radius-sm, 6px);
-      background: var(--color-bg);
-      color: var(--color-text);
-      font-size: .9rem;
-      transition: border-color .2s;
-      width: 100%;
-      box-sizing: border-box;
-    }
-
-    .form-group input:focus,
-    .form-group select:focus {
-      outline: none;
-      border-color: var(--color-primary);
-    }
-
-    .input-hint {
-      font-size: .7rem;
-      color: var(--color-text-muted);
-      opacity: .75;
-    }
-
-    /* ===== NHÓM SELECT CHECKBOX ===== */
-    .checkbox-group {
-      display: flex;
-      flex-direction: column;
-      gap: .4rem;
-    }
-
-    .checkbox-item {
-      display: flex;
-      align-items: center;
-      gap: .5rem;
-      font-size: .85rem;
-      color: var(--color-text);
-      cursor: pointer;
-    }
-
-    .checkbox-item input[type=checkbox] {
-      width: 15px;
-      height: 15px;
-      accent-color: var(--color-primary);
-      cursor: pointer;
     }
 
     /* ===== NÚT ===== */
@@ -453,7 +348,7 @@
       color: var(--color-text);
     }
   </style>
-  <script src="../../../components/footer.js" defer></script>
+
 </head>
 
 <body>
@@ -463,7 +358,7 @@
 
   <!-- ===================== APP CONTAINER ===================== -->
   <div class="app-container">
-        <!-- SIDEBAR -->
+    <!-- SIDEBAR -->
     <aside class="app-sidebar" id="appSidebar">
       <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
         <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
@@ -481,7 +376,7 @@
             </a>
           </li>
           <li>
-            <a href="../cong-cu.html" class="nav-item active" aria-current="page" title="Công cụ">
+            <a href="../../cong-cu.html" class="nav-item active" aria-current="page" title="Công cụ">
               <span class="nav-icon">⚙️</span>
               <span class="nav-text">Công cụ</span>
             </a>
@@ -491,7 +386,7 @@
     </aside>
 
     <!--MAIN CONTENT-->
-    <div class="main-content-grid">
+    <div class="main-wrapper" id="mainContent">
       <section class="hero-dashboard" aria-labelledby="hero-title">
         <div class="hero-intro">
           <h1 id="hero-title">🫗 ĐÁNH GIÁ XƠ GAN TOÀN DIỆN</h1>
@@ -510,7 +405,7 @@
           </li>
 
           <li class="breadcrumb-item">
-            <a href="../cong-cu.html" class="breadcrumb-link">
+            <a href="../../cong-cu.html" class="breadcrumb-link">
               <span class="home-icon">⚙️</span> Công cụ
             </a>
           </li>
@@ -523,37 +418,38 @@
         </ol>
       </nav>
 
-      <div class="cirrhosis-wrapper">
+      <div class="assessment-grid">
 
         <!-- ===== CỘT TRÁI: FORM NHẬP ===== -->
-        <div class="panel" id="inputPanel">
+        <div class="input-column">
+          <div class="panel" id="inputPanel">
           <div class="panel-title">📋 Nhập dữ liệu lâm sàng & cận lâm sàng</div>
 
           <!-- NHÓM 1: XÉT NGHIỆM -->
           <div class="input-section">
             <div class="input-section-title">🧪 Xét nghiệm sinh hoá</div>
-            <div class="input-grid">
-              <div class="form-group">
+            <div class="form-grid-2">
+                <div class="input-group">
                 <label for="bilirubin">Bilirubin toàn phần (mg/dL)</label>
                 <input type="number" id="bilirubin" placeholder="vd: 2.5" min="0" step="0.1">
               </div>
-              <div class="form-group">
+                <div class="input-group">
                 <label for="albumin">Albumin (g/dL)</label>
                 <input type="number" id="albumin" placeholder="vd: 3.2" min="0" step="0.1">
               </div>
-              <div class="form-group">
+                <div class="input-group">
                 <label for="inr">INR</label>
                 <input type="number" id="inr" placeholder="vd: 1.5" min="0" step="0.01">
               </div>
-              <div class="form-group">
+                <div class="input-group">
                 <label for="creatinine">Creatinine (mg/dL)</label>
                 <input type="number" id="creatinine" placeholder="vd: 1.2" min="0" step="0.01">
               </div>
-              <div class="form-group">
+                <div class="input-group">
                 <label for="sodium">Natri huyết thanh (mEq/L)</label>
                 <input type="number" id="sodium" placeholder="vd: 135" min="100" max="160">
               </div>
-              <div class="form-group">
+                <div class="input-group">
                 <label for="dialysis">Lọc máu / thẩm phân phúc mạc</label>
                 <select id="dialysis">
                   <option value="0">Không</option>
@@ -566,8 +462,8 @@
           <!-- NHÓM 2: LÂM SÀNG CHILD-PUGH -->
           <div class="input-section">
             <div class="input-section-title">🩺 Lâm sàng (dùng cho Child-Pugh)</div>
-            <div class="input-grid">
-              <div class="form-group">
+            <div class="form-grid-2">
+                <div class="input-group">
                 <label for="ascites">Cổ trướng</label>
                 <select id="ascites">
                   <option value="">-- Chọn --</option>
@@ -576,7 +472,7 @@
                   <option value="3">Nhiều / khó kiểm soát</option>
                 </select>
               </div>
-              <div class="form-group">
+                <div class="input-group">
                 <label for="encephalopathy">Não gan (HE)</label>
                 <select id="encephalopathy">
                   <option value="">-- Chọn --</option>
@@ -620,8 +516,8 @@
         </div>
 
         <!-- ===== CỘT PHẢI: KẾT QUẢ ===== -->
-        <div>
-          <div class="panel">
+        <div class="results-sidebar">
+          <div class="panel sticky-card">
             <div class="panel-title">📊 Kết quả đánh giá</div>
             <div class="score-cards">
 
@@ -661,268 +557,271 @@
               <div id="alertContent"></div>
             </div>
           </div>
-
-          <!-- Tài liệu tham khảo -->
-          <div class="reference-box">
-            <strong>📚 Nguồn tham khảo:</strong><br>
-            • <strong>Child-Pugh:</strong> Pugh RN, et al. <em>Br J Surg.</em> 1973;60(8):646–649.<br>
-            • <strong>MELD-Na:</strong> Kim WR, et al. <em>Hepatology.</em> 2008;48(4):1208–1214. UNOS/OPTN 2022.<br>
-            • <strong>Decompensation:</strong> EASL Clinical Practice Guidelines. <em>J Hepatol.</em>
-            2018;69(2):406–460.<br>
-            • <strong>AASLD Practice Guidance:</strong> Tapper EB, et al. <em>Hepatology.</em> 2023.<br>
-            • Thang điểm chỉ có tính hỗ trợ — không thay thế phán xét lâm sàng.
-          </div>
         </div>
-
+        <!-- Tài liệu tham khảo -->
+        <div class="reference-box" style="margin-top: 2rem; grid-column: 1 / -1;">
+          <strong>📚 Nguồn tham khảo:</strong><br>
+          • <strong>Child-Pugh:</strong> Pugh RN, et al. <em>Br J Surg.</em> 1973;60(8):646–649.<br>
+          • <strong>MELD-Na:</strong> Kim WR, et al. <em>Hepatology.</em> 2008;48(4):1208–1214. UNOS/OPTN 2022.<br>
+          • <strong>Decompensation:</strong> EASL Clinical Practice Guidelines. <em>J Hepatol.</em>
+          2018;69(2):406–460.<br>
+          • <strong>AASLD Practice Guidance:</strong> Tapper EB, et al. <em>Hepatology.</em> 2023.<br>
+          • Thang điểm chỉ có tính hỗ trợ — không thay thế phán xét lâm sàng.
+        </div>
       </div>
     </div>
-    <script>
-      (function () {
-        /* ====== HELPERS ====== */
-        const val = id => parseFloat(document.getElementById(id).value);
-        const sel = id => document.getElementById(id).value;
-        const chk = id => document.getElementById(id).checked;
-        const el = id => document.getElementById(id);
+  </div>
+  <script src="../../../js/main.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+  <script>
+    (function () {
+      /* ====== HELPERS ====== */
+      const val = id => parseFloat(document.getElementById(id).value);
+      const sel = id => document.getElementById(id).value;
+      const chk = id => document.getElementById(id).checked;
+      const el = id => document.getElementById(id);
 
-        function setCard(cardId, colorClass, badge, label, desc, missing) {
-          const card = el(cardId);
-          card.className = 'score-card ' + colorClass;
-          el(cardId.replace('card_', '') + '_score').textContent = badge;
-          el(cardId.replace('card_', '') + '_class').textContent = label;
-          el(cardId.replace('card_', '') + '_desc').textContent = desc;
-          el(cardId.replace('card_', '') + '_missing').textContent = missing || '';
+      function setCard(cardId, colorClass, badge, label, desc, missing) {
+        const card = el(cardId);
+        card.className = 'score-card ' + colorClass;
+        el(cardId.replace('card_', '') + '_score').textContent = badge;
+        el(cardId.replace('card_', '') + '_class').textContent = label;
+        el(cardId.replace('card_', '') + '_desc').textContent = desc;
+        el(cardId.replace('card_', '') + '_missing').textContent = missing || '';
+      }
+
+      /* ====== CHILD-PUGH ====== */
+      function calcChildPugh() {
+        const bili = val('bilirubin');
+        const alb = val('albumin');
+        const inr = val('inr');
+        const asc = parseInt(sel('ascites')) || 0;
+        const enc = parseInt(sel('encephalopathy')) || 0;
+
+        const missing = [];
+        if (isNaN(bili)) missing.push('Bilirubin');
+        if (isNaN(alb)) missing.push('Albumin');
+        if (isNaN(inr)) missing.push('INR');
+        if (!asc) missing.push('Cổ trướng');
+        if (!enc) missing.push('Não gan');
+
+        if (missing.length) {
+          setCard('card_cp', 'pending', '—', 'Chờ dữ liệu đầy đủ',
+            'Cần: Bilirubin, Albumin, INR, Cổ trướng, Não gan',
+            'Còn thiếu: ' + missing.join(', '));
+          return null;
         }
 
-        /* ====== CHILD-PUGH ====== */
-        function calcChildPugh() {
-          const bili = val('bilirubin');
-          const alb = val('albumin');
-          const inr = val('inr');
-          const asc = parseInt(sel('ascites')) || 0;
-          const enc = parseInt(sel('encephalopathy')) || 0;
+        let score = 0;
+        // Bilirubin
+        score += bili < 2 ? 1 : bili <= 3 ? 2 : 3;
+        // Albumin
+        score += alb > 3.5 ? 1 : alb >= 2.8 ? 2 : 3;
+        // INR
+        score += inr < 1.7 ? 1 : inr <= 2.3 ? 2 : 3;
+        // Cổ trướng & Não gan (đã encode 1/2/3)
+        score += asc;
+        score += enc;
 
-          const missing = [];
-          if (isNaN(bili)) missing.push('Bilirubin');
-          if (isNaN(alb)) missing.push('Albumin');
-          if (isNaN(inr)) missing.push('INR');
-          if (!asc) missing.push('Cổ trướng');
-          if (!enc) missing.push('Não gan');
-
-          if (missing.length) {
-            setCard('card_cp', 'pending', '—', 'Chờ dữ liệu đầy đủ',
-              'Cần: Bilirubin, Albumin, INR, Cổ trướng, Não gan',
-              'Còn thiếu: ' + missing.join(', '));
-            return null;
-          }
-
-          let score = 0;
-          // Bilirubin
-          score += bili < 2 ? 1 : bili <= 3 ? 2 : 3;
-          // Albumin
-          score += alb > 3.5 ? 1 : alb >= 2.8 ? 2 : 3;
-          // INR
-          score += inr < 1.7 ? 1 : inr <= 2.3 ? 2 : 3;
-          // Cổ trướng & Não gan (đã encode 1/2/3)
-          score += asc;
-          score += enc;
-
-          let cls, label, desc, color;
-          if (score <= 6) {
-            cls = 'A'; color = 'green';
-            label = 'Class A — Chức năng gan còn bù tốt';
-            desc = 'Tiên lượng tương đối tốt. Tỷ lệ sống 1 năm ~100%, 2 năm ~85%.';
-          } else if (score <= 9) {
-            cls = 'B'; color = 'yellow';
-            label = 'Class B — Suy chức năng gan mức độ trung bình';
-            desc = 'Cần theo dõi sát, đánh giá chỉ định ghép gan. Tỷ lệ sống 1 năm ~80%.';
-          } else {
-            cls = 'C'; color = 'red';
-            label = 'Class C — Suy chức năng gan nặng';
-            desc = 'Tiên lượng xấu. Tỷ lệ sống 1 năm ~45%. Xem xét chỉ định ghép gan.';
-          }
-
-          setCard('card_cp', color, score + ' (Class ' + cls + ')', label, desc, '');
-          return { score, cls };
+        let cls, label, desc, color;
+        if (score <= 6) {
+          cls = 'A'; color = 'green';
+          label = 'Class A — Chức năng gan còn bù tốt';
+          desc = 'Tiên lượng tương đối tốt. Tỷ lệ sống 1 năm ~100%, 2 năm ~85%.';
+        } else if (score <= 9) {
+          cls = 'B'; color = 'yellow';
+          label = 'Class B — Suy chức năng gan mức độ trung bình';
+          desc = 'Cần theo dõi sát, đánh giá chỉ định ghép gan. Tỷ lệ sống 1 năm ~80%.';
+        } else {
+          cls = 'C'; color = 'red';
+          label = 'Class C — Suy chức năng gan nặng';
+          desc = 'Tiên lượng xấu. Tỷ lệ sống 1 năm ~45%. Xem xét chỉ định ghép gan.';
         }
 
-        /* ====== MELD-Na ====== */
-        function calcMELD() {
-          let bili = val('bilirubin');
-          let inr = val('inr');
-          let cr = val('creatinine');
-          let na = val('sodium');
-          const dial = parseInt(sel('dialysis'));
+        setCard('card_cp', color, score + ' (Class ' + cls + ')', label, desc, '');
+        return { score, cls };
+      }
 
-          const missing = [];
-          if (isNaN(bili)) missing.push('Bilirubin');
-          if (isNaN(inr)) missing.push('INR');
-          if (isNaN(cr)) missing.push('Creatinine');
-          if (isNaN(na)) missing.push('Natri');
+      /* ====== MELD-Na ====== */
+      function calcMELD() {
+        let bili = val('bilirubin');
+        let inr = val('inr');
+        let cr = val('creatinine');
+        let na = val('sodium');
+        const dial = parseInt(sel('dialysis'));
 
-          if (missing.length) {
-            setCard('card_meld', 'pending', '—', 'Chờ dữ liệu đầy đủ',
-              'Cần: Bilirubin, INR, Creatinine, Natri',
-              'Còn thiếu: ' + missing.join(', '));
-            return null;
-          }
+        const missing = [];
+        if (isNaN(bili)) missing.push('Bilirubin');
+        if (isNaN(inr)) missing.push('INR');
+        if (isNaN(cr)) missing.push('Creatinine');
+        if (isNaN(na)) missing.push('Natri');
 
-          // Clamp theo UNOS
-          if (dial === 1) cr = 4.0;
-          bili = Math.max(bili, 1.0);
-          cr = Math.max(Math.min(cr, 4.0), 1.0);
-          inr = Math.max(inr, 1.0);
-          na = Math.max(Math.min(na, 137), 125);
-
-          // MELD gốc
-          let meld = 3.78 * Math.log(bili) + 11.2 * Math.log(inr) + 9.57 * Math.log(cr) + 6.43;
-          meld = Math.round(meld);
-          // MELD-Na
-          let meldNa = meld + 1.32 * (137 - na) - (0.033 * meld * (137 - na));
-          meldNa = Math.max(Math.min(Math.round(meldNa), 40), 6);
-
-          let color, label, desc;
-          if (meldNa < 10) {
-            color = 'green';
-            label = 'Nguy cơ thấp';
-            desc = 'Tỷ lệ tử vong 90 ngày ~2–4%. Theo dõi định kỳ.';
-          } else if (meldNa < 20) {
-            color = 'yellow';
-            label = 'Nguy cơ trung bình';
-            desc = 'Tỷ lệ tử vong 90 ngày ~6–20%. Cần theo dõi sát và xem xét ghép gan.';
-          } else if (meldNa < 30) {
-            color = 'orange';
-            label = 'Nguy cơ cao';
-            desc = 'Tỷ lệ tử vong 90 ngày ~20–50%. Ưu tiên danh sách ghép gan.';
-          } else {
-            color = 'red';
-            label = 'Rất nặng — Nguy cơ tử vong cao';
-            desc = 'Tỷ lệ tử vong 90 ngày >50%. Xử trí tích cực, hội chẩn ghép gan khẩn.';
-          }
-
-          setCard('card_meld', color, meldNa.toString(), label, desc, '');
-          return meldNa;
+        if (missing.length) {
+          setCard('card_meld', 'pending', '—', 'Chờ dữ liệu đầy đủ',
+            'Cần: Bilirubin, INR, Creatinine, Natri',
+            'Còn thiếu: ' + missing.join(', '));
+          return null;
         }
 
-        /* ====== DECOMPENSATION ====== */
-        function evalDecomp(cpResult, meldScore) {
-          const varbleed = chk('chk_varbleed');
-          const sbp = chk('chk_sbp');
-          const hrs = chk('chk_hrs');
-          const jaundice = chk('chk_jaundice');
-          const fever = chk('chk_fever');
-          const confusion = chk('chk_confusion');
-          const hypotension = chk('chk_hypotension');
-          const asc = parseInt(sel('ascites')) || 0;
-          const enc = parseInt(sel('encephalopathy')) || 0;
+        // Clamp theo UNOS
+        if (dial === 1) cr = 4.0;
+        bili = Math.max(bili, 1.0);
+        cr = Math.max(Math.min(cr, 4.0), 1.0);
+        inr = Math.max(inr, 1.0);
+        na = Math.max(Math.min(na, 137), 125);
 
-          const decompFlags = [];
-          if (asc >= 2) decompFlags.push('Cổ trướng mức độ trung bình trở lên');
-          if (enc >= 2) decompFlags.push('Não gan từ Grade I trở lên');
-          if (varbleed) decompFlags.push('Xuất huyết tiêu hóa do giãn tĩnh mạch');
-          if (sbp) decompFlags.push('Nhiễm trùng dịch báng (SBP)');
-          if (hrs) decompFlags.push('AKI / Hội chứng gan thận nghi ngờ');
-          if (jaundice) decompFlags.push('Vàng da tiến triển rõ');
-          if (confusion) decompFlags.push('Lú lẫn cấp tính mới xuất hiện');
+        // MELD gốc
+        let meld = 3.78 * Math.log(bili) + 11.2 * Math.log(inr) + 9.57 * Math.log(cr) + 6.43;
+        meld = Math.round(meld);
+        // MELD-Na
+        let meldNa = meld + 1.32 * (137 - na) - (0.033 * meld * (137 - na));
+        meldNa = Math.max(Math.min(Math.round(meldNa), 40), 6);
 
-          const redFlags = [];
-          if (hypotension) redFlags.push('Tụt huyết áp / sốc — nguy cơ tử vong cao');
-          if (fever && sbp) redFlags.push('Sốt + SBP nghi ngờ — cần kháng sinh sớm');
-          if (hrs) redFlags.push('HRS — hội chẩn và xem xét terlipressin/albumin');
-          if (varbleed) redFlags.push('Xuất huyết tiêu hóa cấp — nội soi và xử trí khẩn');
+        let color, label, desc;
+        if (meldNa < 10) {
+          color = 'green';
+          label = 'Nguy cơ thấp';
+          desc = 'Tỷ lệ tử vong 90 ngày ~2–4%. Theo dõi định kỳ.';
+        } else if (meldNa < 20) {
+          color = 'yellow';
+          label = 'Nguy cơ trung bình';
+          desc = 'Tỷ lệ tử vong 90 ngày ~6–20%. Cần theo dõi sát và xem xét ghép gan.';
+        } else if (meldNa < 30) {
+          color = 'orange';
+          label = 'Nguy cơ cao';
+          desc = 'Tỷ lệ tử vong 90 ngày ~20–50%. Ưu tiên danh sách ghép gan.';
+        } else {
+          color = 'red';
+          label = 'Rất nặng — Nguy cơ tử vong cao';
+          desc = 'Tỷ lệ tử vong 90 ngày >50%. Xử trí tích cực, hội chẩn ghép gan khẩn.';
+        }
 
-          const decompCard = el('card_decomp');
-          const titleEl = el('decomp_title');
-          const listEl = el('decomp_list');
-          listEl.innerHTML = '';
+        setCard('card_meld', color, meldNa.toString(), label, desc, '');
+        return meldNa;
+      }
 
-          const cpClass = cpResult ? cpResult.cls : null;
-          const isDecomp = decompFlags.length > 0 || (cpClass && cpClass !== 'A') || (meldScore && meldScore >= 15);
+      /* ====== DECOMPENSATION ====== */
+      function evalDecomp(cpResult, meldScore) {
+        const varbleed = chk('chk_varbleed');
+        const sbp = chk('chk_sbp');
+        const hrs = chk('chk_hrs');
+        const jaundice = chk('chk_jaundice');
+        const fever = chk('chk_fever');
+        const confusion = chk('chk_confusion');
+        const hypotension = chk('chk_hypotension');
+        const asc = parseInt(sel('ascites')) || 0;
+        const enc = parseInt(sel('encephalopathy')) || 0;
 
-          if (isDecomp) {
-            decompCard.className = 'decomp-card decomp';
-            titleEl.textContent = '🔴 Xơ gan mất bù — Cần xử trí tích cực';
-            decompFlags.forEach(f => {
-              const li = document.createElement('li');
-              li.innerHTML = '<span class="flag">✦</span> ' + f;
-              listEl.appendChild(li);
-            });
-            if (!decompFlags.length) {
-              const li = document.createElement('li');
-              li.textContent = 'Dựa trên Child-Pugh ' + cpClass + ' / MELD-Na ' + meldScore;
-              listEl.appendChild(li);
-            }
-          } else if (cpClass === 'A' && decompFlags.length === 0) {
-            decompCard.className = 'decomp-card comp';
-            titleEl.textContent = '🟢 Xơ gan còn bù — Theo dõi định kỳ';
+        const decompFlags = [];
+        if (asc >= 2) decompFlags.push('Cổ trướng mức độ trung bình trở lên');
+        if (enc >= 2) decompFlags.push('Não gan từ Grade I trở lên');
+        if (varbleed) decompFlags.push('Xuất huyết tiêu hóa do giãn tĩnh mạch');
+        if (sbp) decompFlags.push('Nhiễm trùng dịch báng (SBP)');
+        if (hrs) decompFlags.push('AKI / Hội chứng gan thận nghi ngờ');
+        if (jaundice) decompFlags.push('Vàng da tiến triển rõ');
+        if (confusion) decompFlags.push('Lú lẫn cấp tính mới xuất hiện');
+
+        const redFlags = [];
+        if (hypotension) redFlags.push('Tụt huyết áp / sốc — nguy cơ tử vong cao');
+        if (fever && sbp) redFlags.push('Sốt + SBP nghi ngờ — cần kháng sinh sớm');
+        if (hrs) redFlags.push('HRS — hội chẩn và xem xét terlipressin/albumin');
+        if (varbleed) redFlags.push('Xuất huyết tiêu hóa cấp — nội soi và xử trí khẩn');
+
+        const decompCard = el('card_decomp');
+        const titleEl = el('decomp_title');
+        const listEl = el('decomp_list');
+        listEl.innerHTML = '';
+
+        const cpClass = cpResult ? cpResult.cls : null;
+        const isDecomp = decompFlags.length > 0 || (cpClass && cpClass !== 'A') || (meldScore && meldScore >= 15);
+
+        if (isDecomp) {
+          decompCard.className = 'decomp-card decomp';
+          titleEl.textContent = '🔴 Xơ gan mất bù — Cần xử trí tích cực';
+          decompFlags.forEach(f => {
             const li = document.createElement('li');
-            li.textContent = 'Chưa ghi nhận dấu mất bù lâm sàng. Duy trì theo dõi và điều trị nguyên nhân.';
+            li.innerHTML = '<span class="flag">✦</span> ' + f;
             listEl.appendChild(li);
-          } else {
-            decompCard.className = 'decomp-card unknown';
-            titleEl.textContent = '⬜ Trạng thái mất bù: Chưa đủ dữ liệu';
+          });
+          if (!decompFlags.length) {
+            const li = document.createElement('li');
+            li.textContent = 'Dựa trên Child-Pugh ' + cpClass + ' / MELD-Na ' + meldScore;
+            listEl.appendChild(li);
           }
-
-          // Alert đỏ
-          const alertEl = el('alertRed');
-          const alertContent = el('alertContent');
-          if (redFlags.length) {
-            alertEl.classList.add('show');
-            alertContent.innerHTML = redFlags.map(f => '⚡ ' + f).join('<br>');
-          } else {
-            alertEl.classList.remove('show');
-          }
+        } else if (cpClass === 'A' && decompFlags.length === 0) {
+          decompCard.className = 'decomp-card comp';
+          titleEl.textContent = '🟢 Xơ gan còn bù — Theo dõi định kỳ';
+          const li = document.createElement('li');
+          li.textContent = 'Chưa ghi nhận dấu mất bù lâm sàng. Duy trì theo dõi và điều trị nguyên nhân.';
+          listEl.appendChild(li);
+        } else {
+          decompCard.className = 'decomp-card unknown';
+          titleEl.textContent = '⬜ Trạng thái mất bù: Chưa đủ dữ liệu';
         }
 
-        /* ====== AUTO-CALCULATE (lắng nghe tất cả input) ====== */
-        function runAll() {
-          const cpResult = calcChildPugh();
-          const meldScore = calcMELD();
-          evalDecomp(cpResult, meldScore);
+        // Alert đỏ
+        const alertEl = el('alertRed');
+        const alertContent = el('alertContent');
+        if (redFlags.length) {
+          alertEl.classList.add('show');
+          alertContent.innerHTML = redFlags.map(f => '⚡ ' + f).join('<br>');
+        } else {
+          alertEl.classList.remove('show');
         }
+      }
 
-        // Gán sự kiện cho tất cả input/select/checkbox
-        document.querySelectorAll('#inputPanel input, #inputPanel select').forEach(el => {
-          el.addEventListener('input', runAll);
-          el.addEventListener('change', runAll);
-        });
+      /* ====== AUTO-CALCULATE (lắng nghe tất cả input) ====== */
+      function runAll() {
+        const cpResult = calcChildPugh();
+        const meldScore = calcMELD();
+        evalDecomp(cpResult, meldScore);
+      }
 
-        // Chạy lần đầu khi load
-        runAll();
-      })();
-    </script>
+      // Gán sự kiện cho tất cả input/select/checkbox
+      document.querySelectorAll('#inputPanel input, #inputPanel select').forEach(el => {
+        el.addEventListener('input', runAll);
+        el.addEventListener('change', runAll);
+      });
 
-    <!-- TÀI LIỆU LIÊN QUAN -->
-    <section class="related-links-section" style="max-width: 1200px; margin: 2rem auto; width: 100%; box-sizing: border-box; padding: 0 1.5rem;">
-        <h4 class="related-links-title">
-            <i class="fas fa-link"></i> Xem thêm các nội dung liên quan
-        </h4>
-        <div class="related-links-grid">
-            <a href="./DG_ptncHCC.html" class="related-link-card">
-                <div class="related-card-content">
-                    <span class="related-card-badge cong-cu">Công cụ</span>
-                    <h5>Phân Tầng Nguy Cơ Ung Thư Gan (HCC)</h5>
-                    <p>Đánh giá nguy cơ tiến triển ung thư biểu mô tế bào gan ở bệnh nhân xơ gan, viêm gan B/C mạn tính.</p>
-                </div>
-                <i class="fas fa-chevron-right related-card-arrow"></i>
-            </a>
-            <a href="../../Dược lý/Chuyên khoa/DL_Tiêuhoá.html" class="related-link-card">
-                <div class="related-card-content">
-                    <span class="related-card-badge duoc-ly">Dược lý</span>
-                    <h5>Dược Lý Lâm Sàng Tiêu Hóa</h5>
-                    <p>Tra cứu thuốc ức chế tiết acid (PPI, H2RA), thuốc nhuận tràng, điều hòa vận động ruột và bảo vệ niêm mạc.</p>
-                </div>
-                <i class="fas fa-chevron-right related-card-arrow"></i>
-            </a>
-            <a href="../../Kỹ năng/Cận lâm sàng/doc-sh-gan.html" class="related-link-card">
-                <div class="related-card-content">
-                    <span class="related-card-badge ky-nang">Kỹ năng lâm sàng</span>
-                    <h5>Đọc & Phân Tích Sinh Hóa Gan</h5>
-                    <p>Hướng dẫn biện giải các chỉ số AST, ALT, Bilirubin, Albumin và Alkaline Phosphatase trên lâm sàng.</p>
-                </div>
-                <i class="fas fa-chevron-right related-card-arrow"></i>
-            </a>
+      // Chạy lần đầu khi load
+      runAll();
+    })();
+  </script>
+
+  <!-- TÀI LIỆU LIÊN QUAN -->
+  <section class="related-links-section"
+    style="max-width: 1200px; margin: 2rem auto; width: 100%; box-sizing: border-box; padding: 0 1.5rem;">
+    <h4 class="related-links-title">
+      <i class="fas fa-link"></i> Xem thêm các nội dung liên quan
+    </h4>
+    <div class="related-links-grid">
+      <a href="./DG_ptncHCC.html" class="related-link-card">
+        <div class="related-card-content">
+          <span class="related-card-badge cong-cu">Công cụ</span>
+          <h5>Phân Tầng Nguy Cơ Ung Thư Gan (HCC)</h5>
+          <p>Đánh giá nguy cơ tiến triển ung thư biểu mô tế bào gan ở bệnh nhân xơ gan, viêm gan B/C mạn tính.</p>
         </div>
-    </section>
+        <i class="fas fa-chevron-right related-card-arrow"></i>
+      </a>
+      <a href="../../Dược lý/Chuyên khoa/DL_Tiêuhoá.html" class="related-link-card">
+        <div class="related-card-content">
+          <span class="related-card-badge duoc-ly">Dược lý</span>
+          <h5>Dược Lý Lâm Sàng Tiêu Hóa</h5>
+          <p>Tra cứu thuốc ức chế tiết acid (PPI, H2RA), thuốc nhuận tràng, điều hòa vận động ruột và bảo vệ niêm mạc.
+          </p>
+        </div>
+        <i class="fas fa-chevron-right related-card-arrow"></i>
+      </a>
+      <a href="../../Kỹ năng/Cận lâm sàng/doc-sh-gan.html" class="related-link-card">
+        <div class="related-card-content">
+          <span class="related-card-badge ky-nang">Kỹ năng lâm sàng</span>
+          <h5>Đọc & Phân Tích Sinh Hóa Gan</h5>
+          <p>Hướng dẫn biện giải các chỉ số AST, ALT, Bilirubin, Albumin và Alkaline Phosphatase trên lâm sàng.</p>
+        </div>
+        <i class="fas fa-chevron-right related-card-arrow"></i>
+      </a>
+    </div>
+  </section>
 
   <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
 </body>

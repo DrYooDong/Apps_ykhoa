@@ -55,32 +55,39 @@
       transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
       background: var(--color-surface);
     }
+
     .tool-card:hover {
       transform: translateY(-4px);
       box-shadow: 0 12px 24px -8px rgba(var(--part-color-rgb, 2, 132, 199), 0.25);
       border-color: rgba(var(--part-color-rgb, 2, 132, 199), 0.5);
     }
+
     .tool-card .specialty-icon {
       transition: transform 0.3s ease;
     }
+
     .tool-card:hover .specialty-icon {
       transform: scale(1.15) rotate(5deg);
     }
-    
+
     .search-box-container {
       transition: all 0.3s ease;
     }
+
     .search-box-container:focus-within {
       transform: translateY(-2px);
       box-shadow: 0 8px 15px -5px rgba(var(--color-primary-rgb), 0.2);
     }
+
     #lesson-search {
       border: 1.5px solid var(--color-border, #e2e8f0);
       transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
+
     [data-theme="dark"] #lesson-search {
       border-color: var(--color-divider);
     }
+
     #lesson-search:focus {
       border-color: var(--color-primary);
       box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.15);
@@ -248,9 +255,10 @@
                 <a href="#part1-section" class="part-nav-item p1 active" data-target="part1-section">
                   <span class="part-icon"><i class="fa-solid fa-file-lines"></i></span>
                   <span class="part-text">Phần 1: Chung</span>
-                  <span class="part-count-badge">3</span>
+                  <span class="part-count-badge">4</span>
                 </a>
               </li>
+
               <li>
                 <a href="#part2-section" class="part-nav-item p2" data-target="part2-section">
                   <span class="part-icon"><i class="fa-solid fa-virus"></i></span>
@@ -400,6 +408,22 @@
                     <i class="fa-solid fa-chevron-right"></i>
                   </div>
                 </a>
+
+                <!-- 4. Quy đổi liều tương đương lâm sàng -->
+                <a href="Chung/QuyDoi_LieuTuongDuong.html" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">⚖️</div>
+                    <div class="specialty-info">
+                      <h3>Bộ Quy Đổi Liều Thuốc Tương Đương</h3>
+                      <p>Quy đổi liều Corticoid, Opioid (OME), Statin, PPI, DOACs, Benzodiazepines chính xác</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Mở công cụ</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
 
               </div>
             </div>
@@ -809,9 +833,11 @@
           <section class="widget-card" aria-labelledby="lab-values-title">
             <div class="widget-card-title">
               <h3 id="lab-values-title"><i class="fa-solid fa-square-poll-horizontal"></i> Trị Số Xét Nghiệm</h3>
-              <span class="clock-current-time" style="background: var(--color-cyan-hl, #ecfeff); color: var(--color-cyan, #0891b2);">Lab Values</span>
+              <span class="clock-current-time"
+                style="background: var(--color-cyan-hl, #ecfeff); color: var(--color-cyan, #0891b2);">Lab Values</span>
             </div>
-            <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin-bottom: 1rem; line-height: 1.4;">
+            <p
+              style="font-size: var(--text-xs); color: var(--color-text-muted); margin-bottom: 1rem; line-height: 1.4;">
               Tra cứu nhanh khoảng tham chiếu sinh lý bình thường của các chỉ số cận lâm sàng tại giường bệnh.
             </p>
             <!-- Lab Categories Tabs -->
@@ -844,7 +870,7 @@
 
   <!-- ===================== LAB VALUES SCRIPT ===================== -->
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
       const labData = {
         hemato: [
           { key: "wbc", name: "WBC (Bạch cầu)", range: "4.0 - 10.0 G/L" },

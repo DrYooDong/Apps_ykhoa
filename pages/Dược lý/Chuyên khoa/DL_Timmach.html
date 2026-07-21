@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="../../../css/components/header.css">
   <link rel="stylesheet" href="../../../css/components/sidebar.css">
   <link rel="stylesheet" href="../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../css/components/pharmacology-tools.css">
 
   <script src="../../../components/header.js"></script>
   <script src="../../../components/footer.js"></script>
@@ -488,18 +489,28 @@
               <a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a>
             </li>
             <li class="breadcrumb-item">
-              <a href="../../Dược lý/duoc-ly.html" class="breadcrumb-link">Dược lý</a>
+              <a href="../duoc-ly.html" class="breadcrumb-link">Dược lý</a>
             </li>
             <li class="breadcrumb-item active" aria-current="page">Dược lý Tim mạch</li>
           </ol>
         </nav>
 
+        <!-- QUICK ACCESS TOOLBAR -->
+        <div class="subpage-pharma-toolbar">
+            <div class="subpage-toolbar-title">
+                <i class="fa-solid fa-pills"></i> Phân Hệ Dược Lý Lâm Sàng
+            </div>
+            <div class="subpage-toolbar-actions">
+                <a href="../duoc-ly.html" class="subpage-tool-btn" title="Trang tổng Dược lý"><i class="fa-solid fa-house-medical"></i> Trang tổng Dược lý</a>
+                <a href="../../Công cụ/Chung/QuyDoi_LieuTuongDuong.html" class="subpage-tool-btn" title="Bộ quy đổi liều tương đương lâm sàng (Corticoids, Opioids, Statins, PPIs, DOACs, Benzo)"><i class="fa-solid fa-arrows-rotate"></i> Quy đổi liều tương đương</a>
+            </div>
+        </div>
+
+
         <!-- WORKSPACE LAYOUT -->
         <div class="pillbox-workspace-layout">
-          
           <!-- LEFT: SELECTION COLUMN -->
           <div class="pillbox-selection-column">
-            
             <!-- Patient Clinical Profile Card -->
             <div class="form-section-card" style="border-left: 5px solid var(--color-primary);">
               <div class="section-card-header">
@@ -511,7 +522,7 @@
                 <div class="r-field">
                   <label><i class="fa-solid fa-calculator"></i> Chức năng thận (eGFR)</label>
                   <select id="patient-egfr" onchange="executeDdiMatrixEngine()">
-                    <option value="normal">Bình thường (eGFR ≥ 50 ml/phút)</option>
+
                     <option value="ckd_mod">Suy thận vừa (eGFR 30 - 49 ml/phút)</option>
                     <option value="ckd_severe">Suy thận nặng (eGFR &lt; 30 ml/phút)</option>
                   </select>
