@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sinh lý bệnh và Cơ chế bệnh sinh Hội chứng vành mạn (Chronic Coronary Syndromes Pathophysiology): Phân tích bất thường cấu trúc/chức năng động mạch thượng tâm mạc, rối loạn chức năng vi tuần hoàn vành (CMD), hội chứng ANOCA/INOCA và mất cân bằng cung-cầu oxy.">
+    <title>Sinh lý bệnh & Cơ chế bệnh sinh Hội chứng vành mạn – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal (Level 3 Paths) -->
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học dùng chung (Tải từ module Sinh lý - Sinh lý bệnh) -->
+    <link rel="stylesheet" href="../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../css/components/toc.css">
+
+    <!-- Scripts điều hướng hệ thống -->
+    <script src="../../../components/header.js" defer></script>
+    <script src="../../../components/footer.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+    
+    <!-- Script Sinh lý học dùng chung -->
+    <script src="../js/physio-shared.js" defer></script>
+    <script src="../../../js/toc.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../../../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh">
+                            <span class="nav-icon">🧬</span>
+                            <span class="nav-text">Sinh lý & Sinh lý bệnh</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng">
+                            <span class="nav-icon">🩺</span>
+                            <span class="nav-text">Kỹ năng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận">
+                            <span class="nav-icon">🤒</span>
+                            <span class="nav-text">Tiếp cận</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ">
+                            <span class="nav-icon">⚙️</span>
+                            <span class="nav-text">Công cụ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+                            <span class="nav-icon">💊</span>
+                            <span class="nav-text">Dược lý</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+                            <span class="nav-icon">📄</span>
+                            <span class="nav-text">Y học chứng cứ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Y học cổ truyền/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền">
+                            <span class="nav-icon">☯️</span>
+                            <span class="nav-text">Y học cổ truyền</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container" style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+                <ol class="breadcrumb-list" style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+                    <li><a href="../../../index.html">🏠 Home</a> &gt;</li>
+                    <li><a href="../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+                    <li style="color:var(--color-primary); font-weight:600;">Sinh lý bệnh &amp; Cơ chế bệnh sinh Hội chứng vành mạn</li>
+                </ol>
+            </nav>
+
+            <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+            <main class="visual-container">
+                <!-- CHAPTER HEADER CARD -->
+                <div class="chapter-header">
+                    <h1>SINH LÝ BỆNH & CƠ CHẾ BỆNH SINH HỘI CHỨNG VÀNH MẠN</h1>
+                    <p>Chronic Coronary Syndrome Pathophysiology & Pathogenesis — Phân tích sự mất cân bằng động học giữa cung và cầu oxy cơ tim, tích tụ mảng xơ vữa thượng tâm mạc, co thắt động mạch vành và rối loạn chức năng vi tuần hoàn vành (CMD) trong hội chứng ANOCA/INOCA.</p>
+                </div>
+
+                <p class="physio-lead">
+                    <span class="term-hl">Hội chứng vành mạn (Chronic Coronary Syndromes - CCS)</span> là một bệnh cảnh lâm sàng tiến triển đặc trưng bởi sự mất cân bằng giữa cung cấp và nhu cầu oxy cơ tim, dẫn đến các đợt thiếu máu cục bộ cơ tim thoáng qua và có thể hồi phục. Hiểu biết y học hiện đại đã chuyển dịch từ mô hình "đường ống nước" cơ học thuần túy sang mô hình kết hợp động học phức tạp giữa các bất thường về cả **cấu trúc** lẫn **chức năng** tại hai khoang: khoang động mạch lớn thượng tâm mạc và khoang vi tuần hoàn.
+                </p>
+
+                <div class="key-concept">
+                    🔑 <strong>Nền tảng sinh lý tuần hoàn vành: Khoang dẫn truyền vs. Khoang cản trở</strong><br>
+                    Tuần hoàn động mạch vành được chia thành 2 phân vùng sinh lý cốt lõi:
+                    <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0;">
+                        <li><strong>Khoang dẫn truyền (Động mạch thượng tâm mạc - Epicardial macrovasculature):</strong> Các động mạch lớn chạy trên bề mặt tim (đường kính &gt; 500 µm). Nơi đây chủ yếu chịu tác động của tình trạng hẹp cơ học do mảng xơ vữa ổn định và các rối loạn vận mạch lớn.</li>
+                        <li><strong>Khoang cản trở (Hệ thống vi tuần hoàn vành - Coronary microvasculature):</strong> Các tiểu động mạch nhỏ (đường kính &lt; 500 µm) và mạng lưới mao mạch đi sâu vào cơ tim. Phân vùng này quyết định 90% sức cản của toàn bộ hệ mạch vành và chịu trách nhiệm chính điều hòa lưu lượng tưới máu đáp ứng với nhu cầu oxy.</li>
+                    </ul>
+                </div>
+
+                <!-- PHẦN I: KHOANG THƯỢNG TÂM MẠC -->
+                <div class="physio-content">
+                    <h2 id="khoang-thuong-tam-mac" class="section-title">
+                        <span>Phần I: Cơ chế bệnh sinh tại Động mạch thượng tâm mạc (Macrovascular)</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Các bất thường xảy ra tại khoang động mạch lớn thượng tâm mạc bao gồm cả sự biến đổi về cấu trúc giải phẫu và các rối loạn chức năng vận mạch:</p>
+
+                        <h3 class="subsection-title">1. Bất thường cấu trúc: Hẹp xơ vữa cơ học</h3>
+                        <p>Sự hình thành và tiến triển của mảng xơ vữa làm lòng mạch bị thu hẹp dần một cách cố định.</p>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Sinh lý huyết động:</strong> Khi diện tích lòng mạch bị giảm trên 50-70% (tương đương hẹp trên 75% diện tích mặt cắt ngang), áp lực tưới máu ở phía sau chỗ hẹp sụt giảm đáng kể. Ở trạng thái nghỉ, các tiểu động mạch vi tuần hoàn phía sau sẽ tự giãn ra để bù trừ nhằm duy trì lưu lượng máu ổn định. Tuy nhiên, khi gắng sức, hệ vi mạch không còn khả năng giãn thêm được nữa (mất dự trữ giãn mạch), dòng máu tưới không tăng lên kịp so với nhu cầu tiêu thụ oxy tăng cao, bùng phát thiếu máu cục bộ cơ tim gây ra cơn đau thắt ngực ổn định.</li>
+                            <li><strong>Xơ vữa lan tỏa:</strong> Mảng xơ vữa phân bố rải rác, không gây hẹp khu trú nghiêm trọng trên phim chụp mạch vành nhưng vẫn tạo ra sự sụt giảm áp lực tưới máu lũy tiến dọc theo chiều dài mạch máu, làm giảm đáng kể khả năng cung cấp oxy khi gắng sức.</li>
+                            <li><strong>Bất thường cấu trúc khác:</strong> Cầu cơ tim (myocardial bridging - động mạch chạy ngầm trong cơ tim bị siết chặt ở kỳ tâm thu), phình động mạch vành hoặc chèn ép cơ học từ ngoài (do phì đại cơ tim, tăng áp lực cuối tâm trương thất trái trong suy tim).</li>
+                        </ul>
+
+                        <h3 class="subsection-title">2. Bất thường chức năng: Rối loạn vận mạch thượng tâm mạc</h3>
+                        <p>Ngay cả khi lòng mạch không hẹp cơ học rõ rệt, tình trạng rối loạn chức năng vận mạch vẫn có thể gây thiếu máu cơ tim:</p>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Rối loạn chức năng nội mạc:</strong> Tế bào nội mô bị tổn thương mất khả năng tiết ra chất giãn mạch Nitric Oxide (NO) dưới tác động của lực trượt dòng chảy (flow-mediated dilation).</li>
+                            <li><strong>Co thắt mạch vành ngoại mạc (Vasospasm):</strong> Sự tăng phản ứng quá mức của tế bào cơ trơn mạch máu (VSMC hyperreactivity) do rối loạn kênh canxi hoặc mất cân bằng thần kinh tự chủ (cường giao cảm/phó giao cảm bùng phát) gây co thắt đột ngột động mạch thượng tâm mạc. Đây là cơ chế cốt lõi của **cơn đau thắt ngực biến thể Prinzmetal** (co thắt gây tắc nghẽn hoàn toàn tạm thời, làm ST chênh lên thoáng qua trên ECG).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN II: VI TUẦN HOÀN VÀNH & ANOCA/INOCA -->
+                <div class="physio-content">
+                    <h2 id="vi-tuan-hoan-cmd" class="section-title">
+                        <span>Phần II: Rối loạn chức năng Vi tuần hoàn vành (CMD) & ANOCA/INOCA</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Rối loạn chức năng vi tuần hoàn vành (<span class="term-hl">Coronary Microvascular Dysfunction - CMD</span>) hiện được xác định là cơ chế sinh lý bệnh vô cùng quan trọng, chiếm tỷ lệ lớn ở những bệnh nhân đau ngực nghi do mạch vành nhưng chụp phim không phát hiện hẹp tắc cơ học (hội chứng <span class="term-hl-secondary">ANOCA/INOCA - Angina/Ischemia with Non-Obstructive Coronary Arteries</span>).</p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🧱 Biến đổi cấu trúc vi mạch (Structural CMD)</div>
+                                <p>Sự thay đổi cấu trúc thành mạch máu nhỏ dưới tác động của các bệnh lý đồng mắc (Tăng huyết áp, Đái tháo đường, Lão hóa):</p>
+                                <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0;">
+                                    <li><strong>Tái cấu trúc hướng vào trong:</strong> Lớp cơ trơn tiểu động mạch phì đại làm hẹp lòng vi mạch.</li>
+                                    <li><strong>Thưa thớt mao mạch (Capillary Rarefaction):</strong> Giảm mật độ mao mạch nuôi dưỡng cơ tim trên mỗi đơn vị thể tích mô.</li>
+                                    <li><strong>Xơ hóa quanh mạch:</strong> Tăng sinh collagen làm tăng độ cứng thành vi mạch, hạn chế khả năng co giãn.</li>
+                                </ul>
+                                <p style="margin-top: 0.5rem; font-weight: 500;">Hậu quả huyết động: Tăng sức cản tối thiểu của vi mạch cố định, làm giảm chỉ số Dự trữ lưu lượng vành (<span class="term-hl">CFR</span>) và tăng Chỉ số kháng lực vi tuần hoàn (<span class="term-hl">IMR</span>).</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">⚡ Rối loạn chức năng vi mạch (Functional CMD)</div>
+                                <p>Liên quan trực tiếp đến sự mất khả năng tự điều hòa vận mạch ở cấp độ tiểu động mạch nhỏ:</p>
+                                <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0;">
+                                    <li><strong>Suy giảm giãn mạch qua trung gian nội mạc:</strong> Các yếu tố nguy cơ phá hủy nội mạc, làm giảm sinh khả dụng của Nitric Oxide (NO). Khi cơ tim gắng sức, vi mạch không thể giãn nở để tăng tưới máu.</li>
+                                    <li><strong>Co thắt vi mạch (Microvascular Spasm):</strong> Co thắt nghịch lý các tiểu động mạch nhỏ dưới tác động của các chất co mạch nội sinh (như acetylcholine, endothelin-1).</li>
+                                </ul>
+                                <p style="margin-top: 0.5rem; font-weight: 500;">Hậu quả: Gây thiếu máu cục bộ cơ tim vùng dưới nội tâm mạc lan tỏa, biểu hiện đau ngực kéo dài, khó thở khi gắng sức dù chụp mạch vành bình thường.</p>
+                            </div>
+                        </div>
+
+                        <div class="clinical-note-box">
+                            <h4>👩 Khác biệt sinh lý bệnh theo giới tính trong CCS</h4>
+                            <p>Các nghiên cứu lâm sàng quy mô lớn đã chứng minh <strong>phụ nữ mắc CCS có tỷ lệ rối loạn chức năng vi mạch vành (CMD) và co thắt mạch vành cao hơn đáng kể so với nam giới</strong>. Sự sụt giảm estrogen thời kỳ tiền mãn kinh làm mất đi yếu tố bảo vệ nội mạc tự nhiên, thúc đẩy CMD tiến triển. Do đó, triệu chứng đau ngực ở phụ nữ thường không điển hình (mệt mỏi, khó thở, đau lan tỏa) và dễ bị bỏ sót nếu chỉ chẩn đoán dựa trên phim chụp hẹp giải phẫu động mạch lớn.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN III: YẾU TỐ TOÀN THÂN -->
+                <div class="physio-content">
+                    <h2 id="yeu-to-toan-than" class="section-title">
+                        <span>Phần III: Các Yếu tố Toàn thân & Ngoài mạch vành</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Trạng thái thiếu máu cục bộ trong CCS không chỉ được quyết định tại chỗ ở lòng mạch vành mà còn chịu sự chi phối mạnh mẽ của các yếu tố hệ thống làm thay đổi trực tiếp cán cân cung - cầu oxy:</p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card" style="border-left: 4px solid var(--color-danger);">
+                                <div class="physio-grid-title" style="color: var(--color-danger);"><i class="fa-solid fa-gauge-high"></i> Các yếu tố làm Tăng nhu cầu Oxy (Cầu)</div>
+                                <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0;">
+                                    <li><strong>Nhịp tim nhanh:</strong> Rút ngắn thời kỳ tâm trương (thời điểm tưới máu mạch vành chính), đồng thời làm tăng công cơ tim.</li>
+                                    <li><strong>Tăng huyết áp hệ thống:</strong> Làm tăng hậu tải thất trái, bắt buộc tim phải co bóp mạnh hơn để tống máu.</li>
+                                    <li><strong>Phì đại cơ tim (LVH):</strong> Tăng khối lượng cơ tim cần nuôi dưỡng, vượt quá khả năng cấp máu của mạng lưới mao mạch sẵn có.</li>
+                                </ul>
+                            </div>
+                            <div class="physio-grid-card" style="border-left: 4px solid var(--color-info);">
+                                <div class="physio-grid-title" style="color: var(--color-info);"><i class="fa-solid fa-droplet-slash"></i> Các yếu tố làm Giảm cung cấp Oxy (Cung)</div>
+                                <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0;">
+                                    <li><strong>Thiếu máu (Anemia):</strong> Giảm nồng độ hemoglobin vận chuyển oxy trong máu, làm giảm lượng oxy đến mô cơ tim dù lưu lượng dòng chảy bình thường.</li>
+                                    <li><strong>Tụt huyết áp hệ thống:</strong> Giảm trực tiếp áp lực tưới máu mạch vành (quyết định bởi huyết áp tâm trương hệ thống).</li>
+                                    <li><strong>Xơ hóa khoảng kẽ cơ tim:</strong> Làm tăng áp lực ép từ bên ngoài lên các mao mạch nhỏ đi xuyên qua lớp cơ tim, cản trở lưu thông dòng máu kỳ tâm trương.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN IV: ỨNG DỤNG LÂM SÀNG -->
+                <div class="physio-content">
+                    <h2 id="ung-dung-lam-sang" class="section-title">
+                        <span>Phần IV: Ứng dụng Sinh lý bệnh vào Thực hành Lâm sàng</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Thấu hiểu sinh lý huyết động giúp bác sĩ lâm sàng tối ưu hóa việc phân nhóm chẩn đoán và cá thể hóa phác đồ điều trị trúng đích:</p>
+
+                        <h3 class="subsection-title">1. Tiếp cận Chẩn đoán dựa trên Đánh giá Sinh lý học Dòng chảy</h3>
+                        <p>Mức độ hẹp trên hình ảnh giải phẫu 2D thường không phản ánh chính xác ảnh hưởng huyết động thực tế của tổn thương:</p>
+                        <ul class="physio-list-check">
+                            <li><strong>Đánh giá tổn thương thượng tâm mạc trung gian (hẹp 40-90%):</strong> Khuyến cáo đo áp lực nội mạch xâm lấn bằng dây dẫn để tính chỉ số <strong>Dự trữ lưu lượng phân đoạn (FFR)</strong> hoặc <strong>Tỷ lệ áp lực thời kỳ vô tâm thu (iFR)</strong>. Một tổn thương chỉ có chỉ định can thiệp đặt stent tái thông mạch khi FFR ≤ 0.80 hoặc iFR ≤ 0.89 (chứng minh tổn thương thực sự gây thiếu máu cơ tim).</li>
+                            <li><strong>Chẩn đoán hội chứng ANOCA/INOCA:</strong> Khi chụp mạch vành không thấy hẹp tắc đáng kể, cần thực hiện các test chức năng xâm lấn chuyên sâu trong phòng thông tim:
+                                <ul class="physio-list-arrow" style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                                    <li>Đo <strong>CFR (Coronary Flow Reserve)</strong> và <strong>IMR (Index of Microcirculatory Resistance)</strong> bằng phương pháp nhiệt pha loãng để xác định rối loạn chức năng vi mạch vành (CMD). CFR &lt; 2.0 hoặc IMR ≥ 25 khẳng định có bệnh lý vi tuần hoàn.</li>
+                                    <li>Truyền test kích thích bằng **Acetylcholine** để đánh giá tình trạng co thắt mạch vành thượng tâm mạc hoặc co thắt vi mạch.</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <h3 class="subsection-title">2. Lựa chọn Liệu pháp Điều trị Trúng đích theo Cơ chế (Tailored Therapy)</h3>
+                        <div class="table-responsive">
+                            <table class="physio-table physio-table-compare">
+                                <thead>
+                                    <tr>
+                                        <th>Kiểu hình Sinh lý bệnh</th>
+                                        <th>Cơ chế cốt lõi</th>
+                                        <th>Chiến lược Dược lý trúng đích</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Hẹp cơ học thượng tâm mạc</strong></td>
+                                        <td>Mảng xơ vữa cố định hạn chế dòng chảy tối đa khi gắng sức.</td>
+                                        <td><strong>Chẹn Beta / CCB non-DHP (Diltiazem, Verapamil):</strong> Làm giảm nhịp tim và sức co bóp (giảm cầu), kéo dài thời kỳ tâm trương để tăng tưới máu mạch vành (tăng cung). Phối hợp PCI/CABG khi điều trị nội khoa tối ưu thất bại.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Co thắt mạch vành (Prinzmetal)</strong></td>
+                                        <td>Tăng phản ứng tế bào cơ trơn gây co thắt động mạch lớn đột ngột.</td>
+                                        <td><strong>Thuốc chẹn kênh Canxi (CCB - Dihydropyridine) &amp; Nitrates:</strong> Giãn cơ trơn mạch vành, ngăn ngừa co thắt. <br><span class="term-hl" style="background-color: rgba(239, 68, 68, 0.1); color: var(--color-danger); padding: 0.1rem 0.3rem; border-radius: 3px;">⚠️ Chống chỉ định:</span> Thuốc chẹn beta đơn độc (vì ức chế beta-2 gây co thắt mạch dội ngược qua alpha-1).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Rối loạn chức năng vi tuần hoàn (CMD)</strong></td>
+                                        <td>Giảm khả năng giãn vi mạch, xơ cứng mao mạch và co thắt vi mạch nghịch lý.</td>
+                                        <td><strong>Thuốc ức chế men chuyển (ACEi) &amp; Statin liều cao:</strong> Phục hồi chức năng nội mạc, tăng tiết NO giãn mạch tự nhiên. Kết hợp chẹn Beta hoặc CCB để kiểm soát triệu chứng đau ngực do gắng sức.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TÀI LIỆU THAM KHẢO -->
+                <div class="physio-content">
+                    <h2 id="tai-lieu-tham-khao" class="section-title">
+                        <span>Tài liệu Tham khảo (References)</span>
+                    </h2>
+                    <div class="physio-text-block">
+                        <ol style="font-size: 0.9rem; line-height: 1.6; color: var(--color-text-muted);">
+                            <li>Knuuti J, Wijns W, Saraste A, et al. 2019 ESC Guidelines for the diagnosis and management of chronic coronary syndromes. <em>European Heart Journal</em>. 2020;41(3):407-477.</li>
+                            <li>Ford TJ, Stanley B, Good R, et al. Stratified medical therapy using invasive coronary function testing in angina with non-obstructive coronary artery disease: the CorMicA trial. <em>Journal of the American College of Cardiology</em>. 2018;72(25):3341-3353.</li>
+                            <li>Crea F, Camici PG, Bairey Merz CN. Coronary microvascular dysfunction: an update. <em>European Heart Journal</em>. 2014;35(17):1101-1111.</li>
+                            <li>Beltrame JF, Crea F, Kaski JC, et al. International standardization of diagnostic criteria for vasospastic angina. <em>European Heart Journal</em>. 2017;38(13):978-985.</li>
+                            <li>Bộ Y tế Việt Nam. <em>Hướng dẫn chẩn đoán và điều trị bệnh tim thiếu máu cục bộ mạn tính</em>. Quyết định số 1842/QĐ-BYT; Hà Nội, 2020.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- TÀI LIỆU LIÊN QUAN -->
+                <section class="related-links-section">
+                    <h4 class="related-links-title">
+                        <i class="fas fa-link"></i> Xem thêm các nội dung liên quan
+                    </h4>
+                    <div class="related-links-grid">
+                        <a href="SLB_CCBS_ACS.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge sinh-ly">Sinh lý bệnh</span>
+                                <h5>Sinh Lý Bệnh & Cơ Chế Bệnh Sinh Hội Chứng Vành Cấp</h5>
+                                <p>Phân tích mô hình bệnh nhân dễ tổn thương, cơ chế nứt vỡ/xói mòn mảng xơ vữa, hội chứng MINOCA và NMCT Týp 2.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                        <a href="SLB_CCBS_ST.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge sinh-ly">Sinh lý bệnh</span>
+                                <h5>Sinh Lý Bệnh & Cơ Chế Bệnh Sinh Suy Tim</h5>
+                                <p>Phân tích rối loạn huyết động, tái cấu trúc cơ tim lệch tâm vs đồng tâm, kích hoạt hệ SNS & RAAS, và nền tảng của Tứ trụ.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                        <a href="SLB_CCBS_THA.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge sinh-ly">Sinh lý bệnh</span>
+                                <h5>Sinh Lý Bệnh & Cơ Chế Bệnh Sinh Tăng Huyết Áp</h5>
+                                <p>Phân tích mạng lưới SNS, RAAS, cơ chế nhạy cảm muối, rối loạn chức năng nội mạc và xơ cứng thành mạch.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+    
+    <!-- Script điều khiển chung -->
+    <script src="../../../js/sidebar.js"></script>
+</body>
+
+</html>

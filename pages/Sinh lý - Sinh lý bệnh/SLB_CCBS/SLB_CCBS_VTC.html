@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sinh lý bệnh và Cơ chế bệnh sinh Viêm tụy cấp (Acute Pancreatitis Pathophysiology): Quá trình tự tiêu hủy (autodigestion) do trypsin, phản ứng viêm tại chỗ, rối loạn vi tuần hoàn, cơ chế thất thoát dịch gây SIRS/sốc và suy đa cơ quan, các nguyên nhân đặc thù như tăng Triglyceride, sau ERCP, tăng canxi và đột biến gen di truyền.">
+    <title>Sinh lý bệnh & Cơ chế bệnh sinh Viêm tụy cấp – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal (Level 3 Paths) -->
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học dùng chung (Tải từ module Sinh lý - Sinh lý bệnh) -->
+    <link rel="stylesheet" href="../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../css/components/toc.css">
+
+    <!-- Scripts điều hướng hệ thống -->
+    <script src="../../../components/header.js" defer></script>
+    <script src="../../../components/footer.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+    
+    <!-- Script Sinh lý học dùng chung -->
+    <script src="../js/physio-shared.js" defer></script>
+    <script src="../../../js/toc.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../../../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh">
+                            <span class="nav-icon">🧬</span>
+                            <span class="nav-text">Sinh lý & Sinh lý bệnh</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng">
+                            <span class="nav-icon">🩺</span>
+                            <span class="nav-text">Kỹ năng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận">
+                            <span class="nav-icon">🤒</span>
+                            <span class="nav-text">Tiếp cận</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ">
+                            <span class="nav-icon">⚙️</span>
+                            <span class="nav-text">Công cụ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+                            <span class="nav-icon">💊</span>
+                            <span class="nav-text">Dược lý</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+                            <span class="nav-icon">📄</span>
+                            <span class="nav-text">Y học chứng cứ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Y học cổ truyền/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền">
+                            <span class="nav-icon">☯️</span>
+                            <span class="nav-text">Y học cổ truyền</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container" style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+                <ol class="breadcrumb-list" style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+                    <li><a href="../../../index.html">🏠 Home</a> &gt;</li>
+                    <li><a href="../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+                    <li style="color:var(--color-primary); font-weight:600;">Sinh lý bệnh &amp; Cơ chế bệnh sinh Viêm tụy cấp</li>
+                </ol>
+            </nav>
+
+            <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+            <main class="visual-container">
+                <!-- CHAPTER HEADER CARD -->
+                <div class="chapter-header">
+                    <h1>SINH LÝ BỆNH & CƠ CHẾ BỆNH SINH VIÊM TỤY CẤP</h1>
+                    <p>Acute Pancreatitis Pathophysiology & Pathogenesis — Phân tích chi tiết hiện tượng tự tiêu hủy do hoạt hóa sớm Trypsinogen, rối loạn vi tuần hoàn cục bộ, hội chứng đáp ứng viêm hệ thống (SIRS), sự suy giảm hàng rào bảo vệ ruột và các nguyên nhân đặc thù.</p>
+                </div>
+
+                <p class="physio-lead">
+                    <span class="term-hl">Viêm tụy cấp (Acute Pancreatitis - VTC)</span> là một bệnh cảnh viêm cấp tính của tuyến tụy, khởi nguồn từ sự tổn thương nang tụy tại chỗ, tiến triển thành rối loạn vi tuần hoàn và có thể lan rộng thành hội chứng đáp ứng viêm toàn thân (SIRS) gây suy đa cơ quan nguy hiểm tính mạng. Diễn tiến lâm sàng cực kỳ đa dạng, từ thể phù nề tự giới hạn đến thể hoại tử nhiễm trùng nặng nề.
+                </p>
+
+                <!-- PHẦN I: SỰ HOẠT HÓA SỚM MEN TỤY -->
+                <div class="physio-content">
+                    <h2 id="hoat-hoa-men-tu-tieu" class="section-title">
+                        <span>Phần I: Sự hoạt hóa sớm men tiêu hóa & Quá trình tự tiêu hủy (Autodigestion)</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Cơ chế cốt lõi khởi phát viêm tụy cấp là tình trạng <span class="term-hl">tự tiêu hủy (autodigestion)</span> của nhu mô tụy bởi chính các men do tuyến tụy bài tiết ra:</p>
+
+                        <div class="key-concept">
+                            🔑 <strong>Cơ chế kích hoạt Trypsinogen thành Trypsin</strong><br>
+                            Ở trạng thái sinh lý bình thường, tuyến tụy tổng hợp và bài tiết các men tiêu hóa dưới dạng tiền men không hoạt động (zymogen) vào tá tràng. Tại ruột non, enzyme enterokinase của niêm mạc ruột mới cắt chuỗi peptide để chuyển trypsinogen thành trypsin hoạt động. Trypsin hoạt động tiếp tục kích hoạt chymotrypsinogen, proelastase và procarboxypeptidase.<br>
+                            Trong viêm tụy cấp, có sự **hoạt hóa sớm và sinh non của trypsinogen ngay bên trong tế bào nang tụy (acinar cells)**. Sự kích hoạt bất thường này được thúc đẩy bởi:
+                            <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0;">
+                                <li>Tắc nghẽn cơ học ống tụy (do sỏi kẹt nhú Vater) gây ứ trệ dịch tụy.</li>
+                                <li>Rối loạn tín hiệu Canxi nội bào (tăng canxi nội bào kéo dài kích hoạt lysosome cathepsin B).</li>
+                                <li>Nhiễm toan nội bào và rối loạn chức năng ty thể tế bào nang tụy.</li>
+                                <li>Stress lưới nội chất và khiếm khuyết trong con đường vận chuyển men nội bào.</li>
+                                <li>Suy giảm quá trình tự thực (impaired autophagy) của tế bào.</li>
+                            </ul>
+                        </div>
+
+                        <p>Khi trypsinogen bị hoạt hóa sớm thành <span class="term-hl">trypsin</span> hoạt động ngay tại nang tụy, nó sẽ khởi phát một dòng thác kích hoạt các men khác:</p>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Elastase:</strong> Phá hủy các sợi chun của thành mạch máu, gây xuất huyết nhu mô tụy.</li>
+                            <li><strong>Phospholipase A2:</strong> Phá hủy màng tế bào nang tụy, làm giải phóng các chất độc tế bào.</li>
+                            <li><strong>Lipase:</strong> Phá hủy các mô mỡ xung quanh tụy và trong ổ bụng, giải phóng các axit béo tự do. Các axit béo tự do này kết hợp với canxi huyết thanh tạo ra hiện tượng **xà phòng hóa mỡ** (saponification), làm trầm trọng thêm tổn thương hoại tử và gây hạ canxi máu trên lâm sàng.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN II: PHẢN ỨNG VIÊM & RỐI LOẠN VI TUẦN HOÀN -->
+                <div class="physio-content">
+                    <h2 id="phan-ung-viem-vi-tuan-hoan" class="section-title">
+                        <span>Phần II: Phản ứng Viêm tại chỗ & Rối loạn Vi tuần hoàn</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Sự tổn thương tế bào nang tụy ban đầu nhanh chóng kích hoạt mạng lưới cytokine viêm tại chỗ và làm sụp đổ hệ thống vi tuần hoàn tuyến tụy:</p>
+
+                        <ul class="physio-list-arrow">
+                            <li><strong>Khuếch đại phản ứng viêm:</strong> Tế bào nang tụy bị hoại tử giải phóng các phân tử báo động (DAMPs), kích hoạt đại thực bào tại chỗ tiết ra các cytokine tiền viêm mạnh như <span class="term-hl-secondary">IL-1, TNF-α, IL-6 và endothelin-1</span>. Các cytokine này chiêu mộ ồ ạt bạch cầu trung tính và đại thực bào từ tuần hoàn tụ về, giải phóng các gốc oxy hóa tự do (ROS) và các enzyme tiêu protein, phá hủy nhu mô tụy lan rộng.</li>
+                            <li><strong>Tổn thương nội mô và thoát dịch khoang kẽ:</strong> Cytokine tiền viêm phá hủy hàng rào liên kết của tế bào nội mô mao mạch tụy, làm tăng mạnh tính thấm thành mạch. Dịch giàu protein thoát ồ ạt từ lòng vi mạch vào khoảng kẽ quanh các tiểu nang tụy, gây phù nề tụy nghiêm trọng.</li>
+                            <li><strong>Huyết khối vi mạch và Thiếu máu cục bộ:</strong> Tình trạng viêm kích hoạt hệ thống đông máu tại chỗ (lâm sàng có tăng fibrinogen, D-dimer và tiểu cầu) kết hợp với tổn thương nội mô gây hình thành các huyết khối vi mạch. Sự phù nề chèn ép cơ học cùng với co thắt động mạch và huyết khối vi mạch gây thiếu máu cục bộ (ischemia) tuyến tụy. Đây là yếu tố quyết định đẩy tổn thương tụy chuyển từ **thể viêm phù nề** sang **thể viêm hoại tử** diện rộng.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN III: THẤT THOÁT DỊCH & SIRS -->
+                <div class="physio-content">
+                    <h2 id="that-thoat-dich-sirs-suy-da-co-quan" class="section-title">
+                        <span>Phần III: Mất dịch lượng lớn, Hội chứng SIRS & Suy đa cơ quan</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Tình trạng thất thoát dịch thể quy mô lớn là đặc điểm trọng tâm lý giải các biến chứng huyết động học cấp tính của viêm tụy cấp:</p>
+
+                        <ol class="physio-steps">
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">1. Giãn mạch toàn thân và Thoát dịch "Khoang thứ ba"</span>
+                                    Khi các cytokine tiền viêm (TNF-α, IL-1, IL-6) tràn vào hệ tuần hoàn, chúng kích hoạt **Hội chứng đáp ứng viêm toàn thân (SIRS)**. Tính thấm mao mạch tăng lên trên quy mô toàn cơ thể, gây thất thoát dịch và albumin ồ ạt từ lòng mạch vào "khoang thứ ba" như khoang sau phúc mạc, ổ bụng (gây cổ trướng) và màng phổi.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">2. Giảm thể tích tuần hoàn hiệu dụng & Cô đặc máu</span>
+                                    Sự thoát dịch khoang thứ ba kết hợp với lượng nước mất do sốt, nôn ói nhiều, tăng thông khí và sự ứ đọng dịch trong lòng ruột do liệt ruột cơ năng làm sụt giảm nghiêm trọng thể tích tuần hoàn hữu hiệu. Trên lâm sàng biểu hiện bằng tình trạng cô đặc máu (tăng hematocrit), tụt huyết áp và **sốc giảm thể tích**.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">3. Suy đa cơ quan (Multiorgan Failure)</span>
+                                    Sự kết hợp giữa sốc giảm thể tích (giảm tưới máu mô) và đáp ứng viêm SIRS dẫn tới tổn thương các cơ quan đích:
+                                    <ul class="physio-list-arrow" style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                                        <li><strong>Thận:</strong> Giảm tưới máu vỏ thận gây hoại tử ống thận cấp, dẫn đến **Suy thận cấp (AKI)**.</li>
+                                        <li><strong>Phổi:</strong> Tăng tính thấm vi mạch phổi và thoát dịch vào phế nang dưới tác dụng của men phospholipase A2 (phá hủy surfactant phế nang) gây phù phổi cấp tổn thương và **Hội chứng suy hô hấp cấp tiến triển (ARDS)**.</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN IV: HÀNG RÀO RUỘT & TRANSLOCATION -->
+                <div class="physio-content">
+                    <h2 id="hang-rao-ruot-nhiem-trung" class="section-title">
+                        <span>Phần IV: Rối loạn hàng rào ruột & Nhiễm trùng mô hoại tử thứ phát</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Trong viêm tụy cấp thể hoại tử, nhiễm trùng mô hoại tử tụy là nguyên nhân hàng đầu gây tử vong muộn (sau tuần thứ 2 của bệnh). Cơ chế sinh lý bệnh liên quan mật thiết đến ruột:</p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">⚠️ Suy giảm chức năng hàng rào biểu mô ruột</div>
+                                <p>Tình trạng giảm tưới máu tạng kéo dài do sốc và co mạch bù trừ làm tế bào niêm mạc ruột bị thiếu máu cục bộ. Kết hợp với việc nhịn ăn bằng đường miệng kéo dài gây teo các nhung mao ruột, làm suy yếu các liên kết vòng bịt (tight junctions) giữa các tế bào biểu mô ruột, đồng thời gây rối loạn hệ vi sinh vật ruột (tăng sinh vi khuẩn Gram âm hiếu khí).</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🦠 Sự dịch chuyển vi khuẩn (Bacterial Translocation)</div>
+                                <p>Khi hàng rào ruột bị phá hủy (gặp ở khoảng 60% bệnh nhân viêm tụy cấp nặng), vi khuẩn từ lòng ruột (đặc biệt là <em>E. coli, Klebsiella, Pseudomonas</em>) dịch chuyển xuyên thành ruột vào khoang sau phúc mạc. Chúng xâm nhập vào các ổ dịch tụy hoại tử vô trùng thông qua các con đường: di chuyển xuyên thành đại tràng trực tiếp, đường bạch huyết, đường máu, hoặc đi ngược dòng từ tá tràng lên ống tụy chính.</p>
+                            </div>
+                        </div>
+
+                        <div class="clinical-pearl">
+                            💎 <strong>Pearl Lâm Sàng về Dinh dưỡng tĩnh mạch vs. Dinh dưỡng qua ống thông (Enteral Nutrition):</strong><br>
+                            Trước đây, quan điểm truyền thống là bắt buộc cho bệnh nhân viêm tụy cấp "nhịn ăn hoàn toàn" để tụy được nghỉ ngơi. Tuy nhiên, sinh lý bệnh học hiện đại chứng minh nhịn ăn kéo dài làm trầm trọng thêm tình trạng teo niêm mạc ruột và thúc đẩy sự dịch chuyển vi khuẩn gây nhiễm trùng tụy hoại tử. Do đó, các hướng dẫn hiện nay khuyến cáo **nuôi ăn đường ruột sớm (Enteral Nutrition)** qua ống thông dạ dày/hỗng tràng trong vòng 24-48 giờ đầu ở bệnh nhân VTC nặng nhằm duy trì sự tưới máu ruột, bảo vệ tính toàn vẹn của hàng rào ruột và làm giảm rõ rệt tỷ lệ biến chứng nhiễm trùng thứ phát.
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN V: CƠ CHẾ NGUYÊN NHÂN ĐẶC THÙ -->
+                <div class="physio-content">
+                    <h2 id="nguyen-nhan-dac-thu" class="section-title">
+                        <span>Phần V: Cơ chế bệnh sinh theo một số Nguyên nhân Đặc thù</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Bên cạnh con đường chung, một số nguyên nhân gây viêm tụy cấp có các con đường bệnh lý riêng biệt khởi phát tổn thương nang tụy:</p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🥑 1. Viêm tụy cấp do Tăng Triglyceride (HTG-AP)</div>
+                                <p>Thường xảy ra khi nồng độ Triglyceride huyết thanh vượt ngưỡng 11.3 mmol/L (1000 mg/dL):</p>
+                                <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0;">
+                                    <li><strong>Tắc nghẽn vi mạch do Chylomicron:</strong> Các chylomicron có kích thước khổng lồ tích tụ trong hệ vi tuần hoàn tụy gây tắc nghẽn dòng chảy mao mạch, dẫn đến thiếu máu cục bộ cơ học và nhiễm toan tại chỗ.</li>
+                                    <li><strong>Độc tính của Axit béo tự do (FFA):** Men lipase tuyến tụy phân giải triglyceride dư thừa giải phóng lượng lớn FFA không liên kết albumin. FFA gây stress oxy hóa, hủy hoại trực tiếp màng tế bào nang tụy và lớp nội mạc vi mạch tụy.</li>
+                                </ul>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🩺 2. Viêm tụy cấp sau thủ thuật ERCP (PEP)</div>
+                                <p>Biến chứng sau nội soi mật tụy ngược dòng (phổ biến từ 3-10%):</p>
+                                <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0;">
+                                    <li><strong>Tăng áp lực ống tụy cơ học:</strong> Việc bơm thuốc cản quang quá mức hoặc lặp lại nhiều lần làm tăng áp lực thủy tĩnh trong lòng ống tụy, phá vỡ liên kết tế bào biểu mô ống tụy.</li>
+                                    <li><strong>Ứng chèn ép dịch:</strong> Tác động cơ học của dây dẫn hoặc đốt điện gây phù nề nhú Vater, cản trở lưu thông dịch tụy. Dịch tụy bị ứ trệ, cô đặc kích thích giải phóng cholecystokinin thúc đẩy tụy tiết thêm men, tạo vòng xoắn kích hoạt trypsinogen nội bào.</li>
+                                </ul>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">⚡ 3. Cường cận giáp & Tăng Canxi máu</div>
+                                <p>Canxi máu tăng cao kích hoạt trực tiếp viêm tụy cấp:</p>
+                                <p>Nồng độ Canxi ngoại bào tăng cao làm quá tải hệ thống bơm canxi của tế bào nang tụy, gây tích tụ canxi nội bào. Nồng độ canxi nội bào cao kích hoạt sớm enzyme cathepsin B trong lysosome, trực tiếp cắt đứt chuỗi trypsinogen thành trypsin hoạt động ngay tại nang tụy.</p>
+                            </div>
+                        </div>
+
+                        <h3 class="subsection-title">4. Các yếu tố di truyền (Genetic susceptibility)</h3>
+                        <p>Đột biến các gen kiểm soát hoạt tính men tụy và chức năng ống tụy làm tăng mạnh tính nhạy cảm với viêm tụy cấp và viêm tụy mạn:</p>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Gen PRSS1 (Cationic Trypsinogen):</strong> Đột biến gen mã hóa trypsinogen này làm trypsinogen dễ tự hoạt hóa thành trypsin hoặc làm phân tử trypsin kháng lại quá trình tự giáng hóa tự nhiên.</li>
+                            <li><strong>Gen SPINK1 (Serine Protease Inhibitor Kazal-type 1):</strong> SPINK1 là chất ức chế trypsin nội sinh chính của cơ thể. Đột biến gen SPINK1 làm mất khả năng ức chế phản hồi trypsin khi có viêm, khiến dòng thác tự tiêu hủy mô diễn ra liên tục không thể dừng lại.</li>
+                            <li><strong>Gen CFTR (Cystic Fibrosis Transmembrane Conductance Regulator):</strong> CFTR nằm ở tế bào ống tụy điều hòa bài tiết ion bicarbonate (HCO3-) và nước. Đột biến CFTR làm giảm bài tiết bicarbonate, dịch tụy bị axit hóa (pH thấp) và cô đặc lại gây tắc nghẽn các ống tụy nhỏ, tạo điều kiện thuận lợi cho trypsinogen tự hoạt hóa.</li>
+                            <li><strong>Gen CTRC (Chymotrypsin C) &amp; CASR (Calcium-Sensing Receptor):</strong> Đột biến CTRC làm giảm khả năng giáng hóa trypsin bị hoạt hóa sớm. Đột biến CASR làm rối loạn cảm biến canxi trong điều hòa bài tiết dịch tụy.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- BẢNG SO SÁNH THỂ LÂM SÀNG -->
+                <div class="physio-content">
+                    <h2 id="so-sanh-the-lam-sang" class="section-title">
+                        <span>Tóm tắt So sánh: Viêm tụy cấp Thể phù nề vs. Thể hoại tử</span>
+                    </h2>
+                    
+                    <div class="table-responsive">
+                        <table class="physio-table physio-table-compare">
+                            <thead>
+                                <tr>
+                                    <th>Tiêu chí sinh lý bệnh</th>
+                                    <th>Viêm tụy cấp Thể phù nề (Edematous)</th>
+                                    <th>Viêm tụy cấp Thể hoại tử (Necrotizing)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Mức độ tổn thương nhu mô</strong></td>
+                                    <td>Phù nề mô kẽ, thâm nhiễm tế bào viêm nhẹ. Tế bào nang tụy phần lớn còn nguyên vẹn.</td>
+                                    <td>Hoại tử nhu mô tụy và/hoặc mô mỡ quanh tụy diện rộng. Phá hủy mạch máu lớn gây xuất huyết.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Trạng thái vi tuần hoàn</strong></td>
+                                    <td>Phù nề chèn ép mạch máu tạm thời, chưa có tắc nghẽn hoàn toàn. Giãn mạch thích ứng.</td>
+                                    <td>Huyết khối vi mạch lan rộng, co thắt động mạch kéo dài gây hoại tử thiếu máu cục bộ không hồi phục.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Mất dịch &amp; Phản ứng SIRS</strong></td>
+                                    <td>Mất dịch mức độ nhẹ đến trung bình. Phản ứng SIRS thoáng qua hoặc không có.</td>
+                                    <td>Thoát dịch khoang thứ ba cực lớn. SIRS bùng phát kéo dài dẫn đến suy đa cơ quan (sốc, AKI, ARDS).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Biến chứng nhiễm trùng</strong></td>
+                                    <td>Không có biến chứng hoại tử nhiễm trùng.</td>
+                                    <td>Nguy cơ dịch chuyển vi khuẩn từ ruột gây nhiễm trùng mô hoại tử rất cao (tử vong 20-30%).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Tiên lượng &amp; Phục hồi</strong></td>
+                                    <td>Tiên lượng rất tốt, tự hồi phục hoàn toàn sau 3-7 ngày điều trị nâng đỡ.</td>
+                                    <td>Tiến triển nặng nề, cần điều trị hồi sức tích cực, can thiệp ngoại khoa/dẫn lưu ổ hoại tử muộn.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- TÀI LIỆU THAM KHẢO -->
+                <div class="physio-content">
+                    <h2 id="tai-lieu-tham-khao" class="section-title">
+                        <span>Tài liệu Tham khảo (References)</span>
+                    </h2>
+                    <div class="physio-text-block">
+                        <ol style="font-size: 0.9rem; line-height: 1.6; color: var(--color-text-muted);">
+                            <li>Swerdlow SJ, Campo E, Harris NL, et al. Pathophysiology of Acute Pancreatitis. <em>New England Journal of Medicine</em>. 2016;375(12):1134-1146.</li>
+                            <li>Singer M, Deutschman CS, Seymour CW, et al. The Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). <em>JAMA</em>. 2016;315(8):801-810. (Applied to SIRS/Organ failure in AP).</li>
+                            <li>Tenner S, Baillie J, DeWitt J, et al. American College of Gastroenterology guideline: management of acute pancreatitis. <em>American Journal of Gastroenterology</em>. 2013;108(9):1400-1415.</li>
+                            <li>Crockett SD, Wani S, Gardner TB, et al. American Gastroenterological Association Institute Guideline on Initial Management of Acute Pancreatitis. <em>Gastroenterology</em>. 2018;154(4):1096-1101.</li>
+                            <li>Bộ Y tế Việt Nam. <em>Hướng dẫn chẩn đoán và điều trị viêm tụy cấp</em>. Ban hành kèm theo Quyết định số 3939/QĐ-BYT; Hà Nội, 2021.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- TÀI LIỆU LIÊN QUAN -->
+                <section class="related-links-section">
+                    <h4 class="related-links-title">
+                        <i class="fas fa-link"></i> Xem thêm các nội dung liên quan
+                    </h4>
+                    <div class="related-links-grid">
+                        <a href="../../Dược lý/Chuyên khoa/DL_Tiêuhoá.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge duoc-ly">Dược lý</span>
+                                <h5>Dược Lý Lâm Sàng Tiêu Hóa</h5>
+                                <p>Tra cứu nhanh các nhóm thuốc tiêu hóa, cơ chế tác dụng, liều dùng các thuốc bảo vệ niêm mạc, giảm tiết acid và men tụy thay thế.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                        <a href="../../Dược lý/Triệu chứng/DL_Daubungcap.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge duoc-ly">Dược lý</span>
+                                <h5>Dược Lý Triệu Chứng: Đau Bụng Cấp</h5>
+                                <p>Tiếp cận sử dụng thuốc giảm đau, chống co thắt cơ trơn mạch máu và tiêu hóa trong các bệnh cảnh đau bụng cấp cấp cứu.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                        <a href="../../Công cụ/Tiêu hóa & Dinh dưỡng/DG_Xogan.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge cong-cu">Công cụ</span>
+                                <h5>Đánh Giá Xơ Gan &amp; Child-Pugh</h5>
+                                <p>Bộ công cụ đánh giá chức năng gan, phân loại Child-Pugh, thang điểm MELD và tính toán độ cổ trướng trong bệnh gan mật.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+    
+    <!-- Script điều khiển chung -->
+    <script src="../../../js/sidebar.js"></script>
+</body>
+
+</html>

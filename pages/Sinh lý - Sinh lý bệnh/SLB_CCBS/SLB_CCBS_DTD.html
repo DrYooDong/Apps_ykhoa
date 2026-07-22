@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sinh lý bệnh và Cơ chế bệnh sinh Đái tháo đường (Diabetes Mellitus Pathophysiology): Phân tích chi tiết cơ chế tự miễn ĐTĐ Típ 1, đề kháng insulin và suy kiệt tế bào beta ĐTĐ Típ 2, cơ chế IFG/IGT, các biến chứng cấp tính DKA và HHS, thuyết ngộ độc glucose gây biến chứng vi mạch-thần kinh, hiện tượng Trí nhớ chuyển hóa (Metabolic Memory), và mối liên quan với gan nhiễm mỡ MASLD.">
+    <title>Sinh lý bệnh & Cơ chế bệnh sinh Đái tháo đường – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal (Level 3 Paths) -->
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học dùng chung (Tải từ module Sinh lý - Sinh lý bệnh) -->
+    <link rel="stylesheet" href="../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../css/components/toc.css">
+
+    <!-- Scripts điều hướng hệ thống -->
+    <script src="../../../components/header.js" defer></script>
+    <script src="../../../components/footer.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+    
+    <!-- Script Sinh lý học dùng chung -->
+    <script src="../js/physio-shared.js" defer></script>
+    <script src="../../../js/toc.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../../../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh">
+                            <span class="nav-icon">🧬</span>
+                            <span class="nav-text">Sinh lý & Sinh lý bệnh</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng">
+                            <span class="nav-icon">🩺</span>
+                            <span class="nav-text">Kỹ năng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận">
+                            <span class="nav-icon">🤒</span>
+                            <span class="nav-text">Tiếp cận</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ">
+                            <span class="nav-icon">⚙️</span>
+                            <span class="nav-text">Công cụ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+                            <span class="nav-icon">💊</span>
+                            <span class="nav-text">Dược lý</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+                            <span class="nav-icon">📄</span>
+                            <span class="nav-text">Y học chứng cứ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Y học cổ truyền/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền">
+                            <span class="nav-icon">☯️</span>
+                            <span class="nav-text">Y học cổ truyền</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container" style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+                <ol class="breadcrumb-list" style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+                    <li><a href="../../../index.html">🏠 Home</a> &gt;</li>
+                    <li><a href="../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+                    <li style="color:var(--color-primary); font-weight:600;">Sinh lý bệnh &amp; Cơ chế bệnh sinh Đái tháo đường</li>
+                </ol>
+            </nav>
+
+            <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+            <main class="visual-container">
+                <!-- CHAPTER HEADER CARD -->
+                <div class="chapter-header">
+                    <h1>SINH LÝ BỆNH & CƠ CHẾ BỆNH SINH ĐÁI THÁO ĐƯỜNG</h1>
+                    <p>Diabetes Mellitus Pathophysiology & Pathogenesis (ICD-10: E11) — Phân tích chi tiết cơ chế tự miễn ĐTĐ Típ 1, đề kháng insulin và suy kiệt tế bào beta ĐTĐ Típ 2, cơ chế tiền ĐTĐ, biến chứng cấp tính (DKA/HHS), thuyết ngộ độc glucose và hiện tượng trí nhớ chuyển hóa, mối liên quan hai chiều với gan nhiễm mỡ MASLD.</p>
+                </div>
+
+                <p class="physio-lead">
+                    <span class="term-hl">Đái tháo đường (Diabetes Mellitus - ĐTĐ)</span> là một hội chứng rối loạn chuyển hóa carbohydrate, lipid và protein không đồng nhất, đặc trưng bởi tình trạng tăng glucose huyết mạn tính do khiếm khuyết trong bài tiết insulin, tác dụng của insulin hoặc cả hai.
+                </p>
+
+                <!-- PHẦN I: ĐTĐ TÍP 1 -->
+                <div class="physio-content">
+                    <h2 id="dai-thao-duong-tip-1" class="section-title">
+                        <span>Phần I: Đái tháo đường Típ 1 - Thiếu hụt Insulin tuyệt đối do tự miễn</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Đái tháo đường Típ 1 xảy ra do sự phá hủy chọn lọc các tế bào beta ($\beta$) của đảo tụy qua trung gian tế bào T tự miễn dịch, dẫn đến tình trạng thiếu hụt insulin tuyệt đối:</p>
+
+                        <div class="key-concept">
+                            🔑 <strong>Cơ chế Tự miễn và Nhạy cảm Di truyền</strong><br>
+                            Sự bùng phát ĐTĐ Típ 1 là sự tương tác giữa tính nhạy cảm di truyền và yếu tố kích hoạt môi trường:
+                            <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                                <li><strong>Hệ HLA nhạy cảm:</strong> Liên quan chặt chẽ đến các alen phức hợp hòa hợp tổ chức lớp II (MHC-II) là HLA-DR3-DQ2 và HLA-DR4-DQ8.</li>
+                                <li><strong>Yếu tố môi trường kích phát:</strong> Nhiễm vi rút (như Coxsackievirus B, Enterovirus, Rubella hoặc SARS-CoV-2) kích hoạt hiện tượng "bắt chước phân tử" (molecular mimicry), thúc đẩy hệ miễn dịch nhầm lẫn và tấn công tế bào tụy.</li>
+                                <li><strong>Các tự kháng thể đặc hiệu (Biomarkers):</strong> Sự hủy hoại được đánh dấu bởi sự xuất hiện của:
+                                    <br>- Kháng thể kháng glutamic acid decarboxylase (<strong>GAD65</strong>).
+                                    <br>- Kháng thể kháng tyrosine phosphatase (<strong>IA-2</strong>).
+                                    <br>- Kháng thể kháng kẽm ZnT8 (<strong>ZnT8A</strong>).
+                                    <br>- Kháng thể kháng insulin (<strong>IAA</strong>).
+                                </li>
+                            </ul>
+                        </div>
+
+                        <h3 class="subsection-title">Tiến trình bệnh sinh qua 3 giai đoạn rõ rệt</h3>
+                        <ol class="physio-steps">
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">Giai đoạn 1: Tự miễn thầm lặng</span>
+                                    Tồn tại từ 2 tự kháng thể kháng đảo tụy trở lên trong huyết thanh. Lúc này đường huyết của bệnh nhân hoàn toàn bình thường (chưa có IFG hay IGT). Nguy cơ tiến triển thành ĐTĐ có triệu chứng lâm sàng sau 5 năm khoảng 44%.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">Giai đoạn 2: Tự miễn kèm rối loạn đường huyết</span>
+                                    Tự kháng thể vẫn dương tính kèm theo sự suy sụp chức năng tế bào beta nhẹ, gây ra tình trạng rối loạn dung nạp glucose (tiền đái tháo đường). Giai đoạn này hoàn toàn chưa có triệu chứng lâm sàng. Nguy cơ tiến triển thành giai đoạn 3 sau 5 năm lên tới 75%.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">Giai đoạn 3: ĐTĐ lâm sàng kịch phát</span>
+                                    Đường huyết tăng cao vượt trội kèm các triệu chứng kinh điển ("4 nhiều") hoặc khởi phát đột ngột bằng biến chứng hôn mê nhiễm toan ceton (DKA), do phần lớn tế bào beta tụy (thường >80-90%) đã bị phá hủy hoàn toàn.
+                                </div>
+                            </li>
+                        </ol>
+
+                        <div class="clinical-pearl">
+                            💎 <strong>Pearl Lâm Sàng: Liệu pháp trì hoãn tiêm Insulin & LADA</strong><br>
+                            - <strong>Teplizumab:</strong> Sự phát hiện sớm giai đoạn 2 tự miễn cho phép sử dụng các thuốc kháng thể đơn dòng kháng CD3 (Teplizumab) để ức chế tế bào lympho T tự miễn, giúp bảo tồn lượng tế bào beta còn sót lại và trì hoãn thời gian khởi phát tiêm insulin trung bình hơn 2 năm.<br>
+                            - <strong>Thể LADA (Latent Autoimmune Diabetes in Adults):</strong> ĐTĐ tự miễn tiềm ẩn ở người lớn. LADA tiến triển âm thầm giống ĐTĐ típ 2 lúc ban đầu nên dễ bị chẩn đoán nhầm, tuy nhiên tự kháng thể GAD65 thường dương tính và tế bào beta sẽ suy kiệt hoàn toàn sau vài năm, đòi hỏi phải khởi động insulin sớm hơn ĐTĐ típ 2 thông thường.
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN II: ĐTĐ TÍP 2 -->
+                <div class="physio-content">
+                    <h2 id="dai-thao-duong-tip-2" class="section-title">
+                        <span>Phần II: Đái tháo đường Típ 2 - Vòng luẩn quẩn Đề kháng và Suy kiệt tế bào Beta</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>ĐTĐ Típ 2 được hình thành từ hai khiếm khuyết cơ bản tương tác qua lại lẫn nhau:</p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🛡️ 1. Hiện tượng Đề kháng Insulin ngoại vi</div>
+                                <p>Xảy ra tại các mô cơ vân, gan và mô mỡ:</p>
+                                <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0;">
+                                    <li><strong>Tại cơ:</strong> Giảm thu nhận glucose do lỗi dòng tín hiệu nội bào của thụ thể insulin (IRS-1), ngăn cản sự chuyển vị của kênh vận chuyển **GLUT-4** lên màng tế bào.</li>
+                                    <li><strong>Tại gan:</strong> Mất tín hiệu ức chế tân tạo đường, gan tiếp tục sản xuất glucose đói đổ vào máu.</li>
+                                    <li><strong>Động học mô mỡ:</strong> Béo phì tạng gây giải phóng lượng lớn các cytokine viêm (TNF-α, IL-6) và các acid béo tự do (FFA) vào máu, gây nhiễm độc mỡ và làm giảm hoạt tính của thụ thể insulin.</li>
+                                </ul>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🔋 2. Suy giảm bài tiết tế bào Beta tụy</div>
+                                <p>Tiến trình kiệt quệ năng lực bài tiết insulin của tụy:</p>
+                                <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0;">
+                                    <li><strong>Giai đoạn đầu:</strong> Tuyến tụy tăng sản tế bào beta và tăng tiết insulin bù trừ để kiểm soát đường huyết (tình trạng tăng insulin máu tương đối).</li>
+                                    <li><strong>Giai đoạn muộn:</strong> Tình trạng tăng đường huyết mạn tính (**glucotoxicity**) kết hợp với tăng acid béo tự do (**lipotoxicity**) tích tụ gây stress oxy hóa ty thể tế bào beta, làm giảm tổng hợp insulin và đẩy nhanh chu trình chết theo chương trình (apoptosis) của tế bào beta.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="clinical-note-box" style="margin-top: 2rem;">
+                            <h4>💡 Ứng dụng điều trị dựa trên Động học sinh lý bệnh: Thuyên giảm ĐTĐ Típ 2</h4>
+                            <p>Do đề kháng insulin liên quan chặt chẽ tới mỡ tạng, các nghiên cứu lâm sàng (như DIRECT trial) chứng minh rằng ở giai đoạn sớm của ĐTĐ típ 2, việc **giảm cân tích cực (>10-15% trọng lượng cơ thể)** thông qua thay đổi lối sống mạnh mẽ hoặc phẫu thuật chuyển hóa có thể đảo ngược hoàn toàn vòng xoáy bệnh sinh: giảm tải lượng lipotoxicity tại gan và tụy, giải phóng tế bào beta khỏi tình trạng glucotoxicity, khôi phục lại pha tiết insulin sớm và đưa bệnh vào trạng thái **thuyên giảm hoàn toàn (remission)** mà không cần dùng thuốc.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN III: TIỀN ĐÁI THÁO ĐƯỜNG -->
+                <div class="physio-content">
+                    <h2 id="tien-dai-thao-duong" class="section-title">
+                        <span>Phần III: Tiền đái tháo đường - Cơ chế IFG & IGT</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Tiền đái tháo đường đại diện cho trạng thái trung gian khi tuyến tụy bắt đầu mất khả năng tiết đủ insulin để bù trừ cho tình trạng đề kháng. Cơ chế sinh lý bệnh phân định rõ rệt giữa hai thể:</p>
+
+                        <ul class="physio-list-arrow">
+                            <li><strong>Rối loạn glucose huyết đói (Impaired Fasting Glucose - IFG):</strong> 
+                                <br>Cơ chế cốt lõi là **sự đề kháng insulin ưu thế tại gan** kết hợp với suy giảm bài tiết insulin pha cơ bản (basal insulin). Bình thường, insulin cơ bản tiết ra qua đêm để ức chế quá trình gan sản xuất glucose. Khi có IFG, sự đề kháng tại gan làm gan tự do thực hiện tân tạo glucose (gluconeogenesis) và phân giải glycogen qua đêm, dẫn đến đường huyết đói buổi sáng bị tăng cao.
+                            </li>
+                            <li><strong>Rối loạn dung nạp glucose (Impaired Glucose Tolerance - IGT):</strong>
+                                <br>Cơ chế cốt lõi là **sự đề kháng insulin nặng nề tại mô cơ vân** kết hợp với khiếu khuyết pha tiết insulin sớm của tuyến tụy khi ăn. Khi nạp thức ăn, tế bào beta không giải phóng kịp thời lượng insulin cần thiết, đồng thời cơ vân giảm nhạy cảm làm chậm hấp thu glucose, dẫn đến đường huyết sau ăn tăng cao kéo dài.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN IV: BIẾN CHỨNG CẤP TÍNH -->
+                <div class="physio-content">
+                    <h2 id="bien-chung-cap-tinh" class="section-title">
+                        <span>Phần IV: Sinh lý bệnh các Cơn kịch phát cấp tính - DKA & HHS</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Nhiễm toan ceton đái tháo đường (DKA) và Hội chứng tăng áp lực thẩm thấu (HHS) đều khởi phát từ sự mất cân bằng hormone trầm trọng:</p>
+
+                        <div class="key-concept">
+                            🔑 <strong>Mất cân bằng tỷ lệ Insulin / Hormone đối kháng</strong><br>
+                            Khi cơ thể thiếu hụt insulin (tuyệt đối ở DKA hoặc tương đối ở HHS) kết hợp với các stress cấp tính (nhiễm trùng, chấn thương) làm tăng vọt các hormone đối kháng (**Glucagon, Cortisol, Catecholamine, GH**):
+                            <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                                <li><strong>Trạng thái dị hóa:</strong> Gan tăng cường phân giải glycogen và tân tạo glucose đói; cơ vân giảm thu nhận glucose làm đường huyết tăng vọt.</li>
+                                <li><strong>Lợi niệu thẩm thấu:</strong> Nồng độ glucose huyết vượt quá ngưỡng tái hấp thu của ống thận (>180 mg/dL), gây kéo nước và các ion điện giải (Na+, K+, Cl-, Phosphate) ra nước tiểu, dẫn đến tình trạng mất nước tế bào dữ dội.</li>
+                            </ul>
+                        </div>
+
+                        <div class="physio-grid" style="margin-top: 2rem;">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title" style="color: var(--color-danger);">🧪 Nhiễm toan Ceton ĐTĐ (DKA)</div>
+                                <p>Thường xảy ra ở ĐTĐ Típ 1 do thiếu hụt insulin **tuyệt đối**:</p>
+                                <p>Sự vắng mặt hoàn toàn của insulin làm mất tín hiệu ức chế men lipase trong mô mỡ, hoạt hóa quá trình phân giải lipid giải phóng lượng lớn acid béo tự do (FFA) về gan. Tại gan, hormone glucagon tăng cao hoạt hóa enzyme **carnitine palmitoyltransferase (CPT-1)** đưa FFA vào ty thể để oxy hóa tạo thành các thể ceton acid ($\beta$-hydroxybutyrate và acetoacetate). Các thể ceton tích lũy vượt quá khả năng đệm của cơ thể gây ra toan chuyển hóa khoảng trống anion rộng.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title" style="color: var(--color-warning);">💧 Hội chứng Tăng áp lực thẩm thấu (HHS)</div>
+                                <p>Thường xảy ra ở ĐTĐ Típ 2 do thiếu hụt insulin **tương đối**:</p>
+                                <p>Bệnh nhân ĐTĐ típ 2 vẫn còn một lượng nhỏ insulin nội sinh. Lượng insulin này **đủ để ức chế sự ly giải mỡ và sinh ceton** ở gan, nhưng hoàn toàn **không đủ để giúp cơ vân thu nhận glucose**. Hệ quả là đường huyết tăng cực kỳ cao (>600 mg/dL), gây lợi niệu thẩm thấu kéo dài âm thầm dẫn đến mất nước ngoại bào cực kỳ nặng nề, làm tăng áp lực thẩm thấu huyết thanh (>320 mOsm/kg) gây hôn mê.</p>
+                            </div>
+                        </div>
+
+                        <div class="clinical-note-box" style="margin-top: 2rem; border-left: 4px solid var(--color-danger);">
+                            <h4>🚨 Chỉ điểm thực hành cấp cứu: Bù dịch tĩnh mạch & Bù Kali</h4>
+                            <p><strong>1. Bù dịch là ưu tiên số 1:</strong> Trong cả DKA và HHS, bù dịch bằng NaCl 0.9% là bước đầu tiên và quan trọng nhất. Bù dịch giúp nhanh chóng khôi phục thể tích tuần hoàn, hạ áp lực thẩm thấu huyết thanh, phục hồi mức lọc cầu thận để tăng đào thải đường/ceton qua nước tiểu, đồng thời làm loãng hormone đối kháng.</p>
+                            <p><strong>2. Cảnh giác hạ Kali máu do Insulin:</strong> Khi điều trị insulin, insulin sẽ kích hoạt bơm **Na+/K+-ATPase** đưa ion Kali di chuyển từ lòng mạch vào nội bào, gây sụt giảm Kali máu nhanh chóng. Nếu Kali máu ban đầu < 3.3 mEq/L, bác sĩ tuyệt đối không được truyền insulin mà phải bù Kali trước để phòng tránh rối loạn nhịp thất tử vong.</p>
+                            <p><strong>3. Khoảng trống Dextrose trong DKA:</strong> Khi điều trị DKA, nồng độ glucose huyết thường giảm về mức an toàn (<250 mg/dL) trước khi toan chuyển hóa được giải quyết hoàn toàn (ceton vẫn còn). Khi đó, bắt buộc phải truyền thêm dịch chứa đường (Dextrose 5% hoặc 10%) kết hợp duy trì truyền insulin tĩnh mạch liên tục nhằm tiếp tục ức chế sản sinh ceton mà không gây hạ đường huyết.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN V: BIẾN CHỨNG MẠN TÍNH -->
+                <div class="physio-content">
+                    <h2 id="bien-chung-man-tinh" class="section-title">
+                        <span>Phần V: Cơ chế bệnh sinh các Biến chứng Mạn tính</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Các tổn thương cơ quan đích trong đái tháo đường phát sinh từ hiện tượng ngộ độc glucose nội bào và mối liên hệ chuyển hóa gan ruột:</p>
+
+                        <h3 class="subsection-title">1. Biến chứng Vi mạch và Thần kinh: Thuyết Ngộ độc Glucose</h3>
+                        <p>Các tế bào đích bị tổn thương vi mạch (tế bào nội mô mao mạch võng mạc, tế bào gian mạch cầu thận, tế bào sừng thần kinh) có một đặc điểm chung: chúng **không có cơ chế giảm vận chuyển glucose** vào nội bào khi đường huyết tăng cao. Sự tràn ngập glucose nội bào gây ra chuỗi rối loạn:</p>
+                        
+                        <ol class="physio-steps">
+                            <li>
+                                <strong>Stress oxy hóa ty thể:</strong> Sự quá tải glucose làm dư thừa điện tử trong chuỗi hô hấp ty thể, sản sinh ồ ạt các gốc tự do (ROS). ROS gây tổn thương trực tiếp DNA tế bào và ức chế enzyme quan trọng của con đường đường phân là **GAPDH**.
+                            </li>
+                            <li>
+                                <strong>Kích hoạt 4 con đường bệnh lý:</strong> Việc ức chế GAPDH làm ứ đọng các chất chuyển hóa trung gian, ép chúng đi vào 4 con đường độc hại:
+                                <ul class="physio-list-arrow" style="margin-left: 1.5rem; margin-top: 0.25rem;">
+                                    <li><strong>Con đường Polyol:</strong> Glucose chuyển thành sorbitol dưới tác dụng của aldose reductase. Sorbitol tích tụ gây phù nề tế bào thần kinh và cạn kiệt NADPH (chất chống oxy hóa nội sinh).</li>
+                                    <li><strong>Con đường Hexosamine:</strong> Tạo ra các sản phẩm gắn đường vào protein tế bào, gây đề kháng insulin nội bào và xơ hóa mô kẽ.</li>
+                                    <li><strong>Hoạt hóa Protein Kinase C (PKC):</strong> Kích thích sản xuất VEGF gây tăng sinh mạch máu bất thường, tăng tính thấm mao mạch (gây phù hoàng điểm võng mạc, tổn thương màng đáy cầu thận).</li>
+                                    <li><strong>Hình thành các sản phẩm AGEs (Advanced Glycation End-products):</strong> Glucose gắn không enzym vào các protein cấu trúc thành mạch và myelin sợi thần kinh, gây xơ cứng thành mạch và hủy myelin.</li>
+                                </ul>
+                            </li>
+                        </ol>
+
+                        <div class="key-concept">
+                            🧬 <strong>Hiện tượng Trí nhớ chuyển hóa (Metabolic Memory)</strong><br>
+                            Hiện tượng này giải thích vì sao tình trạng tăng đường huyết trong những năm đầu khởi phát bệnh sẽ để lại những **biến đổi biểu sinh (epigenetic modifications)** kéo dài (như methylation hóa histone tiền viêm) và tích lũy AGEs bền vững tại chất nền ngoại bào. Do đó, ngay cả khi những năm sau đường huyết được kiểm soát lý tưởng, các biến chứng vi mạch vẫn tự tiến triển. Điều này nhấn mạnh tầm quan trọng của việc **kiểm soát glucose tích cực và nghiêm ngặt ngay từ giai đoạn mới chẩn đoán** để ngăn chặn di sản biểu sinh tiền viêm này.
+                        </div>
+
+                        <h3 class="subsection-title">2. Mối liên hệ hai chiều với Bệnh lý Gan nhiễm mỡ liên quan chuyển hóa (MASLD)</h3>
+                        <p>Gan nhiễm mỡ liên quan chuyển hóa (Metabolic Dysfunction-Associated Steatotic Liver Disease - MASLD, tên cũ NAFLD) và ĐTĐ Típ 2 có chung cội rễ bệnh học:</p>
+                        
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title" style="color: var(--color-danger);">Từ Kháng Insulin đến Gan thoái hóa mỡ (MASH)</div>
+                                <p>Sự đề kháng insulin ở mô mỡ làm mất tín hiệu ức chế men lipase nhạy cảm hormone (HSL), khiến mô mỡ liên tục ly giải và giải phóng ồ ạt acid béo tự do (FFA) vào máu. Dòng FFA đổ về gan vượt quá năng lực oxy hóa của ty thể gan, tích tụ lại dưới dạng triglyceride trong tế bào gan gây thoái hóa mỡ. Lipotoxicity tại gan hoạt hóa tế bào Kupffer tiết cytokine viêm gây viêm gan thoái hóa mỡ (MASH) và kích hoạt tế bào sao gây xơ hóa gan tiến triển.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title" style="color: var(--color-warning);">Từ Gan nhiễm mỡ đến Biến cố Tim mạch (ASCVD)</div>
+                                <p>Gan nhiễm mỡ làm trầm trọng thêm tình trạng đề kháng insulin toàn thân ở cơ và tụy do giải phóng các hepatokine độc hại. Đồng thời, gan nhiễm mỡ liên tục giải phóng các cytokine tiền viêm (IL-6, TNF-α) và các yếu tố đông máu (PAI-1, fibrinogen) vào hệ tuần hoàn, làm đẩy nhanh quá trình hình thành mảng xơ vữa động mạch và tăng nguy cơ biến cố tim mạch xơ vữa (ASCVD).</p>
+                            </div>
+                        </div>
+
+                        <div class="clinical-pearl" style="margin-top: 2rem;">
+                            💎 <strong>Lựa chọn thuốc bảo vệ đa cơ quan Tim - Thận - Gan:</strong><br>
+                            Vì cội rễ chung này, các hướng dẫn lâm sàng hiện đại (như ADA 2026) ưu tiên lựa chọn các nhóm thuốc mang lại **lợi ích đa đích**:
+                            <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0;">
+                                <li><strong>Đồng vận thụ thể GLP-1 (Semaglutide, Tirzepatide):</strong> Giúp giảm mỡ tạng mạnh mẽ, giảm dòng FFA về gan, có bằng chứng làm đảo ngược xơ hóa gan trong MASH và bảo vệ tim mạch vượt trội.</li>
+                                <li><strong>Pioglitazone (TZD):</strong> Hoạt hóa PPAR-$\gamma$ phân bố lại mỡ từ tạng và gan về dưới da, tăng độ nhạy insulin tại gan.</li>
+                                <li><strong>Ức chế SGLT2 (SGLT2i):</strong> Tăng đào thải đường qua nước tiểu, giảm tải calo giúp giảm mỡ gan.</li>
+                                <li><strong>Tầm soát FIB-4 mặc định:</strong> Bệnh nhân ĐTĐ típ 2 cần được sàng lọc xơ hóa gan định kỳ bằng chỉ số FIB-4 (tuổi, AST, ALT, tiểu cầu) để phát hiện sớm xơ gan tiềm ẩn.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BẢNG SO SÁNH TỔNG HỢP -->
+                <div class="physio-content">
+                    <h2 id="so-sanh-the-lam-sang" class="section-title">
+                        <span>Bảng tóm tắt So sánh các Thể ĐTĐ và Cơn kịch phát</span>
+                    </h2>
+                    
+                    <div class="table-responsive">
+                        <table class="physio-table physio-table-compare">
+                            <thead>
+                                <tr>
+                                    <th>Tiêu chí so sánh</th>
+                                    <th>Đái tháo đường Típ 1</th>
+                                    <th>Đái tháo đường Típ 2</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Cơ chế bệnh học chính</strong></td>
+                                    <td>Phá hủy tự miễn tế bào beta tụy dẫn đến thiếu hụt insulin tuyệt đối.</td>
+                                    <td>Đề kháng insulin ngoại vi phối hợp với suy giảm chức năng tế bào beta tiến triển.</td>
+                                </tr>
+                                <li><strong>Tự kháng thể (GAD65, ZnT8)</strong></li>
+                                    <td>Dương tính (ở 85-90% bệnh nhân mới chẩn đoán).</td>
+                                    <td>Âm tính.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Liên kết HLA</strong></td>
+                                    <td>Liên quan rất mạnh (HLA-DR3/DR4).</td>
+                                    <td>Không liên quan trực tiếp hệ HLA.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Biến chứng cấp tính điển hình</strong></td>
+                                    <td>Nhiễm toan ceton đái tháo đường (DKA).</td>
+                                    <td>Hội chứng tăng áp lực thẩm thấu (HHS).</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-responsive" style="margin-top: 2rem;">
+                        <table class="physio-table physio-table-compare">
+                            <thead>
+                                <tr>
+                                    <th>Đặc tính sinh lý bệnh</th>
+                                    <th>Nhiễm toan ceton đái tháo đường (DKA)</th>
+                                    <th>Hội chứng Tăng áp lực thẩm thấu (HHS)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Nồng độ Insulin nội sinh</strong></td>
+                                    <td>Vắng mặt hoàn toàn hoặc thiếu hụt tuyệt đối.</td>
+                                    <td>Còn sót lại một lượng nhỏ (đủ ức chế sinh ceton nhưng thiếu kiểm soát glucose).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Nguồn gốc Ceton máu</strong></td>
+                                    <td>Ly giải lipid ồ ạt giải phóng FFA làm gan sản sinh $\beta$-hydroxybutyrate.</td>
+                                    <td>Không có hoặc rất ít sản sinh ceton máu.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Mức độ tăng Glucose huyết</strong></td>
+                                    <td>Tăng trung bình (thường từ 250 - 600 mg/dL).</td>
+                                    <td>Tăng cực kỳ cao (thường > 600 mg/dL).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Mất nước và Áp lực thẩm thấu</strong></td>
+                                    <td>Mất nước trung bình. Áp lực thẩm thấu bình thường hoặc tăng nhẹ.</td>
+                                    <td>Mất nước cực kỳ nặng. Áp lực thẩm thấu máu tăng rất cao (>320 mOsm/kg).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Toan kiềm (pH &amp; HCO3-)</strong></td>
+                                    <td>Toan chuyển hóa nặng (pH < 7.30, Bicarbonate < 18 mEq/L). khoảng trống anion rộng.</td>
+                                    <td>pH thường bình thường (>7.30), Bicarbonate bình thường (>18 mEq/L).</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- TÀI LIỆU THAM KHẢO -->
+                <div class="physio-content">
+                    <h2 id="tai-lieu-tham-khao" class="section-title">
+                        <span>Tài liệu Tham khảo (References)</span>
+                    </h2>
+                    <div class="physio-text-block">
+                        <ol style="font-size: 0.9rem; line-height: 1.6; color: var(--color-text-muted);">
+                            <li>American Diabetes Association Professional Practice Committee. Standards of Care in Diabetes—2026. <em>Diabetes Care</em>. 2026;49(Suppl. 1):S1-S298.</li>
+                            <li>Brownlee M. Biochemistry and molecular cell biology of diabetic complications. <em>Nature</em>. 2001;414(6865):813-820. (Classic reference for 4 pathway theory).</li>
+                            <li>Rinella ME, Neuschwander-Tetri BA, Siddiqui MS, et al. MASH/MASLD Consensus Nomenclature. <em>Hepatology</em>. 2023;77(6):1797-1808.</li>
+                            <li>Bộ Y tế Việt Nam. <em>Hướng dẫn chẩn đoán và điều trị đái tháo đường típ 2</em>. Ban hành kèm theo Quyết định số 5481/QĐ-BYT; Hà Nội, 2020.</li>
+                            <li>Kitabchi AE, Umpierrez GE, Miles JM, Fisher JN. Hyperglycemic crises in adult patients with diabetes. <em>Diabetes Care</em>. 2009;32(7):1335-1343. (DKA/HHS pathology standard).</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- TÀI LIỆU LIÊN QUAN -->
+                <section class="related-links-section">
+                    <h4 class="related-links-title">
+                        <i class="fas fa-link"></i> Xem thêm các nội dung liên quan
+                    </h4>
+                    <div class="related-links-grid">
+                        <a href="../Sinhly/Phan7/SL_NT_Tuyentuy.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge sinh-ly">Sinh lý học</span>
+                                <h5>Sinh Lý Tuyến Tụy Nội Tiết</h5>
+                                <p>Tìm hiểu chi tiết cấu trúc đảo Langerhans, cơ chế tiết insulin qua kênh K-ATP nhạy cảm glucose và cơ chế gắn thụ thể tế bào.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                        <a href="../../Dược lý/Chuyên khoa/DL_Nộitiết.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge duoc-ly">Dược lý</span>
+                                <h5>Dược Lý Lâm Sàng Nội Tiết</h5>
+                                <p>Cơ chế tác động phân tử, dược động học và chỉ định thực hành lâm sàng các nhóm thuốc hạ đường huyết: Metformin, SGLT2i, GLP-1 RA, TZD, Insulin.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                        <a href="SLB_CCBS_THA.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge sinh-ly">Sinh lý bệnh</span>
+                                <h5>Sinh Lý Bệnh Tăng Huyết Áp</h5>
+                                <p>Khám phá mối tương quan giữa kháng insulin, béo phì tạng và con đường thần kinh thể dịch gây rối loạn chức năng nội mô thành mạch.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+    
+    <!-- Script điều khiển chung -->
+    <script src="../../../js/sidebar.js"></script>
+</body>
+
+</html>

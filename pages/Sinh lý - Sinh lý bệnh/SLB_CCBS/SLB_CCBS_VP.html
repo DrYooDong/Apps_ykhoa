@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sinh lý bệnh và Cơ chế bệnh sinh Viêm phổi (Pneumonia Pathophysiology): Phân tích 4 con đường xâm nhập nhu mô phổi, cơ chế viêm màng phế nang mao mạch, các giai đoạn giải phẫu bệnh thùy phổi, phế quản phế viêm, độc tố vi khuẩn (exotoxin, PVL), viêm phổi hoại tử, huyết khối vi mạch, tổn thương phế nang lan tỏa (DAD) và viêm phổi tổ chức hóa (Organizing Pneumonia).">
+    <title>Sinh lý bệnh & Cơ chế bệnh sinh Viêm phổi – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal (Level 3 Paths) -->
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học dùng chung (Tải từ module Sinh lý - Sinh lý bệnh) -->
+    <link rel="stylesheet" href="../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../css/components/toc.css">
+
+    <!-- Scripts điều hướng hệ thống -->
+    <script src="../../../components/header.js" defer></script>
+    <script src="../../../components/footer.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+    
+    <!-- Script Sinh lý học dùng chung -->
+    <script src="../js/physio-shared.js" defer></script>
+    <script src="../../../js/toc.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../../../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh">
+                            <span class="nav-icon">🧬</span>
+                            <span class="nav-text">Sinh lý & Sinh lý bệnh</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng">
+                            <span class="nav-icon">🩺</span>
+                            <span class="nav-text">Kỹ năng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận">
+                            <span class="nav-icon">🤒</span>
+                            <span class="nav-text">Tiếp cận</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ">
+                            <span class="nav-icon">⚙️</span>
+                            <span class="nav-text">Công cụ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+                            <span class="nav-icon">💊</span>
+                            <span class="nav-text">Dược lý</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+                            <span class="nav-icon">📄</span>
+                            <span class="nav-text">Y học chứng cứ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Y học cổ truyền/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền">
+                            <span class="nav-icon">☯️</span>
+                            <span class="nav-text">Y học cổ truyền</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container" style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+                <ol class="breadcrumb-list" style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+                    <li><a href="../../../index.html">🏠 Home</a> &gt;</li>
+                    <li><a href="../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+                    <li style="color:var(--color-primary); font-weight:600;">Sinh lý bệnh &amp; Cơ chế bệnh sinh Viêm phổi</li>
+                </ol>
+            </nav>
+
+            <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+            <main class="visual-container">
+                <!-- CHAPTER HEADER CARD -->
+                <div class="chapter-header">
+                    <h1>SINH LÝ BỆNH & CƠ CHẾ BỆNH SINH VIÊM PHỔI</h1>
+                    <p>Pneumonia Pathophysiology & Pathogenesis — Phân tích 4 con đường xâm nhập của mầm bệnh, chuỗi phản ứng miễn dịch cấp tế bào, tương quan giải phẫu bệnh lý học thùy và tiểu phế quản phế viêm, cơ chế hoại tử/huyết khối vi mạch, tổn thương phế nang lan tỏa (DAD) và viêm phổi tổ chức hóa.</p>
+                </div>
+
+                <p class="physio-lead">
+                    <span class="term-hl">Viêm phổi (Pneumonia)</span> là tình trạng nhiễm trùng cấp tính nhu mô phổi (bao gồm phế nang, túi phế nang, ống phế nang, tổ chức kẽ và tiểu phế quản tận cùng). Sự bùng phát bệnh lý là kết quả của sự mất cân bằng giữa khả năng đề kháng miễn dịch của vật chủ và độc lực, số lượng của vi sinh vật gây bệnh khi chúng xâm nhập và nhân lên trong hệ thống hô hấp dưới.
+                </p>
+
+                <!-- PHẦN I: CON ĐƯỜNG XÂM NHẬP -->
+                <div class="physio-content">
+                    <h2 id="con-duong-xam-nhap-mien-dich" class="section-title">
+                        <span>Phần I: Con đường Xâm nhập & Phản ứng hoạt hóa cấp tế bào</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Tác nhân gây bệnh có thể vượt qua các hàng rào cơ học của đường hô hấp trên và xâm nhập sâu vào nhu mô phổi qua 4 con đường chính:</p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🌬️ 1. Đường Hô hấp (Hít / Hít sặc)</div>
+                                <p>Đây là con đường phổ biến nhất trên lâm sàng. Bệnh nhân hít phải vi khuẩn/virus lơ lửng trong môi trường khí dung, hoặc phổ biến hơn là **hít sặc vi khuẩn từ dịch tiết hầu họng** trong lúc ngủ hoặc ở bệnh nhân rối loạn phản xạ nuốt, giảm tri giác.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🩸 2. Đường Máu (Hematogenous)</div>
+                                <p>Mầm bệnh di chuyển theo hệ tuần hoàn từ ổ nhiễm trùng xa đến phổi. Cơ chế này thường gặp trong bệnh cảnh **nhiễm khuẩn huyết** (do <em>Staphylococcus aureus</em>), viêm nội tâm mạc nhiễm khuẩn van 3 lá, hoặc viêm tĩnh mạch nhiễm khuẩn vùng chậu.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🟢 3. Đường Bạch huyết (Lymphatic)</div>
+                                <p>Vi khuẩn di chuyển qua các hạch bạch huyết vùng trung thất hoặc quanh phế quản phổi. Một số tác nhân có độc lực cực mạnh (như <em>Pseudomonas aeruginosa, Klebsiella pneumoniae</em>) lợi dụng con đường này gây ra các ổ viêm phổi hoại tử lan tỏa.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🚪 4. Kế cận trực tiếp (Direct extension)</div>
+                                <p>Mầm bệnh lan truyền trực tiếp từ các cấu trúc bị nhiễm trùng kế cận phổi như viêm màng ngoài tim, viêm trung thất, áp xe dưới hoành đâm xuyên qua cơ hoành vào màng phổi và nhu mô phổi (cơ chế này khá hiếm gặp).</p>
+                            </div>
+                        </div>
+
+                        <div class="key-concept" style="margin-top: 2rem;">
+                            🔑 <strong>Cơ chế Miễn dịch và Phản ứng Viêm cấp tính phế nang</strong><br>
+                            Khi vi sinh vật lọt vào tận cùng phế nang:
+                            <ol class="physio-steps" style="margin-top: 0.5rem; margin-bottom: 0;">
+                                <li>
+                                    <strong>Nhận diện tác nhân:</strong> Các **đại thực bào phế nang** (tuyến phòng thủ đầu tiên) nhận diện kháng nguyên vi sinh vật và giải phóng các cytokine tiền viêm mạnh: <span class="term-hl">TNF-α, IL-1β, và IL-8</span>.
+                                </li>
+                                <li>
+                                    <strong>Huy động bạch cầu:</strong> IL-8 đóng vai trò là chất hóa hướng động cực mạnh, thu hút ồ ạt **bạch cầu đa nhân trung tính (neutrophils)** từ lòng mao mạch phổi di chuyển xuyên vách phế nang vào lòng phế nang.
+                                </li>
+                                <li>
+                                    <strong>Đông đặc phế nang:</strong> Phản ứng viêm làm tăng tính thấm mao mạch phổi, giải phóng fibrin và dịch rỉ viêm chứa đầy xác vi khuẩn, hồng cầu và tế bào viêm lấp đầy lòng phế nang, làm mất khả năng chứa khí của túi phế nang (gây ra **hội chứng đông đặc phế nang**).
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN II: GIẢI PHẪU BỆNH -->
+                <div class="physio-content">
+                    <h2 id="giai-phau-benh-lam-sang" class="section-title">
+                        <span>Phần II: Giải phẫu bệnh học và Tương quan Lâm sàng</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Các tổn thương giải phẫu bệnh đại thể và vi thể trong viêm phổi tương quan trực tiếp với các triệu chứng thực thể phát hiện được khi thăm khám lâm sàng:</p>
+
+                        <h3 class="subsection-title">1. Viêm phổi thùy (Lobar Pneumonia)</h3>
+                        <p>Tổn thương viêm đông đặc đồng nhất, lan tỏa và khu trú trong phạm vi một phân thùy hoặc một thùy phổi (thường gặp do <em>Streptococcus pneumoniae</em>). Tiến triển mô bệnh học qua 4 giai đoạn kinh điển:</p>
+                        
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title" style="color: var(--color-info);">💧 Giai đoạn Sung huyết (Congestion)</div>
+                                <p>Phổi nặng, ứ dịch đỏ. Mao mạch vách phế nang giãn rộng, căng đầy máu. Lòng phế nang bắt đầu chứa dịch phù, nhiều vi khuẩn và rải rác hồng cầu, bạch cầu thoát mạch.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title" style="color: var(--color-danger);">🔴 Giai đoạn Gan hóa đỏ (Red hepatization)</div>
+                                <p>Nhu mô phổi đông đặc, màu đỏ sẫm, mặt cắt thô và chắc như mô gan. Lòng phế nang chứa đầy mạng lưới sợi fibrin đan xen dày đặc với hồng cầu, bạch cầu trung tính và vi khuẩn.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title" style="color: var(--color-text-muted);">⚫ Giai đoạn Gan hóa xám (Gray hepatization)</div>
+                                <p>Phổi chuyển sang màu nâu xám, khô và chắc. Hồng cầu trong phế nang bị ly giải, lòng phế nang bị nén chặt bởi dịch rỉ fibrin-bạch cầu trung tính, vi khuẩn giảm dần do bị thực bào.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title" style="color: var(--color-success);">🟢 Giai đoạn Lui bệnh (Resolution)</div>
+                                <p>Dịch rỉ viêm chứa fibrin bị tiêu hủy nhờ enzyme phân giải của bạch cầu trung tính. Mô kẽ phổi trở lại mềm mại, dịch lỏng được đại thực bào hấp thu hoặc tống xuất ra ngoài qua phản xạ ho.</p>
+                            </div>
+                        </div>
+
+                        <div class="clinical-note-box">
+                            <h4>🩺 Đối chiếu lâm sàng của Viêm phổi thùy</h4>
+                            <p>Sự lấp đầy phế nang bởi dịch rỉ và tế bào viêm ở các giai đoạn gan hóa giải thích rõ ràng sự hình thành <strong>Hội chứng đông đặc nhu mô phổi</strong> trên lâm sàng:</p>
+                            <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0;">
+                                <li><strong>Rung thanh tăng:</strong> Do tổ chức phổi đông đặc truyền rung động từ thanh quản ra thành ngực tốt hơn phổi chứa khí bình thường.</li>
+                                <li><strong>Gõ đục:</strong> Do phế nang không còn chứa khí mà chứa dịch đặc.</li>
+                                <li><strong>Rì rào phế nang giảm hoặc mất:</strong> Do luồng khí không thể đi vào phế nang đã bị lấp đầy.</li>
+                                <li><strong>Hình ảnh X-quang:</strong> Đám mờ phế nang thuần nhất chiếm một thùy hoặc phân thùy phổi, có **hình ảnh phế quản chứa khí (air bronchogram)** (do phế quản dẫn khí lớn vẫn thông thoáng nổi bật trên nền nhu mô đông đặc xung quanh).</li>
+                            </ul>
+                        </div>
+
+                        <h3 class="subsection-title">2. Phế quản phế viêm (Bronchopneumonia)</h3>
+                        <p>Tổn thương viêm không đồng đều, phân bố rải rác dưới dạng các ổ đông đặc nhỏ (đường kính 3-4 cm) tập trung quanh các tiểu phế quản, nằm xen kẽ với những vùng nhu mô phổi lành (thường gặp do <em>Staphylococcus aureus, Klebsiella</em>).</p>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Sinh lý bệnh:</strong> Tổn thương phế quản phế viêm phá hủy nặng nề cấu trúc tiểu phế quản tận cùng và phế nang lân cận. Do quá trình phá hủy xơ hóa không đồng đều, thể này rất dễ để lại các dải sẹo xơ phổi sau khi hồi phục.</li>
+                            <li><strong>Tương quan lâm sàng:</strong> Nghe phổi có nhiều ran ẩm, ran nổ rải rác cả hai phế trường (thay vì khu trú ở một thùy). Phim X-quang ngực biểu hiện bằng nhiều đám mờ rải rác cỡ vài centimet phân bố không đều ở hai phổi, tập trung nhiều ở hai vùng đáy phổi.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN III: CƠ CHẾ ĐỘC TỐ & BIẾN CHỨNG PHỨC TẠP -->
+                <div class="physio-content">
+                    <h2 id="doc-to-bien-chung-phuc-tap" class="section-title">
+                        <span>Phần III: Cơ chế Độc tố & Các thể Biến chứng Phức tạp</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Mức độ nghiêm trọng của viêm phổi chịu ảnh hưởng lớn từ các độc tố đặc hiệu của vi sinh vật và phản ứng mô học phức tạp tại màng phế nang mao mạch:</p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">☠️ 1. Tác động hủy hoại của Độc tố Vi khuẩn (Toxins)</div>
+                                <p>Một số chủng vi khuẩn có khả năng tiết ra các độc tố hủy hoại tế bào trực tiếp:</p>
+                                <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0;">
+                                    <li><strong>Exotoxin A (Pseudomonas aeruginosa):</strong> Ức chế tổng hợp protein của tế bào ký chủ, gây hoại tử mô phổi và phá hủy nhu mô nghiêm trọng.</li>
+                                    <li><strong>Panton-Valentine Leukocidin (PVL) (S. aureus chủng MRSA cộng đồng):</strong> Độc tố PVL đục lỗ màng tế bào bạch cầu trung tính, tiêu hủy bạch cầu ồ ạt, giải phóng các enzyme tiêu hủy mô kẽ phổi gây viêm phổi hoại tử xuất huyết nặng.</li>
+                                </ul>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🕳️ 2. Viêm phổi hoại tử (Necrotizing Pneumonia)</div>
+                                <p>Sự hoại tử hóa lỏng nhu mô phổi diễn ra do độc tố vi khuẩn và phản ứng viêm quá mức. Quá trình viêm mạch máu và huyết khối gây nhồi máu nhu mô cục bộ. Nhu mô hoại tử hóa lỏng thoát qua đường phế quản tạo thành các kén khí hoặc các **hang hoại tử nhiều vách mỏng** chứa dịch/khí trên phim CT. Biến chứng nguy hiểm là rò khí phế mạc hoặc tràn mủ màng phổi.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🩺 3. Huyết khối vi mạch & Tổn thương nội mạc</div>
+                                <p>Phản ứng viêm dữ dội kích hoạt trực tiếp dòng thác đông máu tại chỗ, gây ra **huyết khối vi mạch (microvascular thrombosis)** tại các mao mạch phổi lân cận. Huyết khối này chặn đứng dòng tuần hoàn mao mạch tại ổ viêm. Hệ quả huyết động học là ngăn cản sự thâm nhập của thuốc kháng sinh vào mô kẽ phổi bị tổn thương, lý giải tình trạng chậm đáp ứng điều trị dù kháng sinh đồ nhạy cảm.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">⚠️ 4. Tổn thương phế nang lan tỏa (DAD)</div>
+                                <p>DAD (Diffuse Alveolar Damage) là hình ảnh vi thể đặc trưng của hội chứng suy hô hấp cấp (ARDS). Sự phá hủy màng phế nang - mao mạch làm protein huyết tương thoát mạch, hình thành **màng hyaline (hyaline membrane)** lót dọc phế nang, làm mất hoàn toàn khả năng khuếch tán oxy và gây suy hô hấp cấp kháng trị với liệu pháp oxy thông thường.</p>
+                            </div>
+                        </div>
+
+                        <h3 class="subsection-title">5. Viêm phổi tổ chức hóa (Organizing Pneumonia)</h3>
+                        <div class="clinical-note-box">
+                            <h4>💡 Cơ chế hình thành nụ mô hạt (Masson bodies)</h4>
+                            <p>Trong viêm phổi thông thường, dịch rỉ fibrin trong phế nang sẽ được tiêu hủy hoàn toàn trong giai đoạn lui bệnh. Tuy nhiên, nếu có sự suy giảm hoạt tính tiêu fibrin tại chỗ (fibrinolysis impairment), lượng fibrin dư thừa sẽ hoạt động như một giàn giáo thu hút sự tăng sinh của nguyên bào sợi.</p>
+                            <p>Nguyên bào sợi tăng sinh biến đổi dịch rỉ đông đặc thành các nụ mô hạt liên kết (gọi là **thể Masson - Masson bodies**) lấp đầy phế nang và lòng các tiểu phế quản nhỏ. Thể nặng nhất của biến đổi này là viêm phổi tổ chức hóa và lắng đọng fibrin cấp tính (AFOP). Cơ chế xơ hóa/tổ chức hóa này giải thích tại sao nhiều bệnh nhân vẫn ho dai dẳng, khó thở kéo dài và phim X-quang vẫn còn đám mờ dù nuôi cấy đờm đã hoàn toàn sạch vi khuẩn.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN IV: PHÂN TÍCH KHOẢNG TRỐNG (GAP ANALYSIS) -->
+                <div class="physio-content">
+                    <h2 id="phan-tich-khoang-trong-lam-sang" class="section-title">
+                        <span>Phần IV: Phân tích khoảng trống trong Thực hành Lâm sàng (Gap Analysis)</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Đối chiếu giữa các tài liệu hướng dẫn lâm sàng hiện hành và y văn bệnh học hiện đại bộc lộ một khoảng trống quan trọng trong cách tiếp cận:</p>
+
+                        <ul class="physio-list-arrow">
+                            <li><strong>Hướng tiếp cận Lâm sàng kinh điển:</strong> Các hướng dẫn điều trị của Bộ Y tế Việt Nam tập trung phân tầng nguy cơ dựa trên các thang điểm lâm sàng (CURB-65, PSI) và lựa chọn kháng sinh theo kinh nghiệm dựa trên tác nhân đại thể phổ biến (phế cầu, vi khuẩn không điển hình). Cách tiếp cận này rất thực tế cho việc xử trí ban đầu nhưng thiếu đi sự lý giải cơ chế ở mức độ vi tuần hoàn.</li>
+                            <li><strong>Hướng tiếp cận Bệnh học vi thể/phân tử:</strong> Y văn quốc tế đương đại chỉ ra rằng các yếu tố mô bệnh học vi thể như **huyết khối vi mạch, tổn thương phế nang lan tỏa (DAD), và quá trình tổ chức hóa fibrin** mới là các yếu tố quyết định sự thất bại của kháng sinh (treatment failure) và thời gian phục hồi chức năng hô hấp của nhu mô phổi.</li>
+                            <li><strong>Hệ quả thực hành:</strong> Khi đối diện với một ca "viêm phổi chậm đáp ứng" (chưa cải thiện sau 72 giờ dùng kháng sinh đúng phổ), bác sĩ thường có xu hướng đổi kháng sinh phổ rộng hơn hoặc nghi ngờ vi khuẩn kháng thuốc. Tuy nhiên, sinh lý bệnh chứng minh nguyên nhân có thể do **huyết khối vi mạch ngăn cản kháng sinh đến ổ viêm** hoặc phản ứng **viêm phổi tổ chức hóa đang diễn ra** cần can thiệp bằng kháng viêm (corticosteroid) hơn là tăng liều kháng sinh.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- BẢNG SO SÁNH TỔNG HỢP -->
+                <div class="physio-content">
+                    <h2 id="so-sanh-the-viem-phoi" class="section-title">
+                        <span>Bảng so sánh: Viêm phổi thùy vs. Phế quản phế viêm vs. Viêm phổi kẽ</span>
+                    </h2>
+                    
+                    <div class="table-responsive">
+                        <table class="physio-table physio-table-compare">
+                            <thead>
+                                <tr>
+                                    <th>Đặc tính sinh lý bệnh</th>
+                                    <th>Viêm phổi thùy (Lobar)</th>
+                                    <th>Phế quản phế viêm (Bronchopneumonia)</th>
+                                    <th>Viêm phổi kẽ (Interstitial)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Vị trí tổn thương chính</strong></td>
+                                    <td>Đông đặc phế nang lan tỏa, đồng nhất chiếm toàn bộ một thùy/phân thùy phổi.</td>
+                                    <td>Đông đặc rải rác quanh các tiểu phế quản tận cùng, xen kẽ vùng nhu mô lành.</td>
+                                    <td>Viêm và phù nề giới hạn ở vách phế nang và tổ chức kẽ xung quanh. Lòng phế nang sạch dịch.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Tác nhân điển hình</strong></td>
+                                    <td><em>Streptococcus pneumoniae</em> (Phế cầu), <em>Klebsiella pneumoniae</em>.</td>
+                                    <td><em>Staphylococcus aureus</em>, <em>Pseudomonas aeruginosa</em>, vi khuẩn Gram âm.</td>
+                                    <td>Vi rút (Influenza, RSV, SARS-CoV-2), vi khuẩn không điển hình (<em>Mycoplasma</em>).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Triệu chứng thực thể</strong></td>
+                                    <td>Hội chứng đông đặc điển hình, khu trú (rung thanh tăng, gõ đục, rì rào phế nang mất). Rung thanh tăng rõ rệt.</td>
+                                    <td>Ran ẩm, ran nổ rải rác cả hai phế trường. Hội chứng đông đặc không đồng nhất.</td>
+                                    <td>Nghe phổi thường bình thường hoặc chỉ có ran nổ khô (ran nổ kiểu Velcro) ở đáy phổi. Rung thanh không tăng.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Hình ảnh X-quang ngực</strong></td>
+                                    <td>Đám mờ phế nang thuần nhất chiếm một thùy phổi, có dấu hiệu phế quản chứa khí (air bronchogram).</td>
+                                    <td>Nhiều đám mờ rải rác không đều kích thước vài centimet phân bố cả hai phế trường.</td>
+                                    <td>Tổn thương dạng lưới, nốt mờ nhỏ hoặc hình ảnh kính mờ (ground-glass) lan tỏa hai phổi.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Nguy cơ biến chứng xơ hóa</strong></td>
+                                    <td>Thường lui bệnh hoàn toàn, phục hồi cấu trúc phế nang nguyên vẹn.</td>
+                                    <td>Dễ để lại sẹo xơ phế quản do phá hủy cấu trúc tiểu phế quản.</td>
+                                    <td>Nguy cơ tiến triển thành xơ phổi mạn tính (Interstitial Lung Disease) nếu tổn thương kéo dài.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- TÀI LIỆU THAM KHẢO -->
+                <div class="physio-content">
+                    <h2 id="tai-lieu-tham-khao" class="section-title">
+                        <span>Tài liệu Tham khảo (References)</span>
+                    </h2>
+                    <div class="physio-text-block">
+                        <ol style="font-size: 0.9rem; line-height: 1.6; color: var(--color-text-muted);">
+                            <li>Bộ Y tế Việt Nam. <em>Hướng dẫn chẩn đoán và điều trị viêm phổi mắc phải cộng đồng ở người lớn</em>. Ban hành kèm theo Quyết định số 4815/QĐ-BYT; Hà Nội, 2020.</li>
+                            <li>Paleti KC, Nayak S, Mund K. A Systematic Review and Meta-analysis on Correlation Between Histopathological Lung Findings and Antibiotic Response in Bacterial Pneumonia. <em>International Journal of Drug Delivery Technology</em>. 2026;16(2):412-422.</li>
+                            <li>Daraghmeh DN, Abulriban RW, Nawawreh N, et al. Advancements in alternative approaches to address antimicrobial resistance in bacterial pneumonia: a comprehensive review. <em>Frontiers in Microbiology</em>. 2025;16:11028. doi:10.3389/fmicb.2025.11028.</li>
+                            <li>Masters IB, Isles AF, Grimwood K. Necrotizing pneumonia: an emerging problem in children? <em>Pneumonia</em>. 2017;9:11. doi:10.1186/s41479-017-0035-0.</li>
+                            <li>Korkmaz FT, Traber KE. Innate immune responses in pneumonia. <em>Pneumonia</em>. 2023;15:4. doi:10.1186/s41479-023-00106-9.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- TÀI LIỆU LIÊN QUAN -->
+                <section class="related-links-section">
+                    <h4 class="related-links-title">
+                        <i class="fas fa-link"></i> Xem thêm các nội dung liên quan
+                    </h4>
+                    <div class="related-links-grid">
+                        <a href="../../Dược lý/Chuyên khoa/DL_Khangsinh.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge duoc-ly">Dược lý</span>
+                                <h5>Dược Lý Lâm Sàng Kháng Sinh</h5>
+                                <p>Tra cứu nhanh cơ chế tác dụng, chỉ định, phổ kháng khuẩn và liều lượng các nhóm kháng sinh chính điều trị viêm phổi: Beta-lactam, Macrolide, Fluoroquinolone.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                        <a href="../../Kỹ năng/Quản lý điều trị/Luachon_Khangsinh.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge ky-nang">Kỹ năng</span>
+                                <h5>Lý Luận Lựa Chọn Kháng Sinh Trong Lâm Sàng</h5>
+                                <p>Quy trình tư duy lựa chọn kháng sinh theo kinh nghiệm (Empiric Therapy), đánh giá phổ vi khuẩn hướng tới và hiệu chỉnh liều theo chức năng gan thận.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                        <a href="../../Công cụ/Hô hấp & Lao/DG_Viem-phoi.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge cong-cu">Công cụ</span>
+                                <h5>Đánh Giá Viêm Phổi Mắc Phải Cộng Đồng (PSI / CURB-65)</h5>
+                                <p>Công cụ tính toán thang điểm tiên lượng tử vong PSI, thang điểm CURB-65 phân tầng mức độ nặng và đề xuất định hướng nơi điều trị (Ngoại trú, Nội trú thường, ICU).</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+    
+    <!-- Script điều khiển chung -->
+    <script src="../../../js/sidebar.js"></script>
+</body>
+
+</html>

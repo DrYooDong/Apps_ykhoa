@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sinh lý bệnh và Cơ chế bệnh sinh Hội chứng vành cấp (Acute Coronary Syndrome Pathophysiology): Khái niệm 'vulnerable patient', phân tích 3 cơ chế tại chỗ của MI Týp 1 (nứt vỡ mảng xơ vữa, xói mòn và nốt vôi hóa), các cơ chế không do xơ vữa trong hội chứng MINOCA (SCAD, co thắt, cầu cơ tim, Takotsubo) và MI Týp 2.">
+    <title>Sinh lý bệnh & Cơ chế bệnh sinh Hội chứng vành cấp – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal (Level 3 Paths) -->
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học dùng chung (Tải từ module Sinh lý - Sinh lý bệnh) -->
+    <link rel="stylesheet" href="../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../css/components/toc.css">
+
+    <!-- Scripts điều hướng hệ thống -->
+    <script src="../../../components/header.js" defer></script>
+    <script src="../../../components/footer.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+    
+    <!-- Script Sinh lý học dùng chung -->
+    <script src="../js/physio-shared.js" defer></script>
+    <script src="../../../js/toc.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../../../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh">
+                            <span class="nav-icon">🧬</span>
+                            <span class="nav-text">Sinh lý & Sinh lý bệnh</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng">
+                            <span class="nav-icon">🩺</span>
+                            <span class="nav-text">Kỹ năng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận">
+                            <span class="nav-icon">🤒</span>
+                            <span class="nav-text">Tiếp cận</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ">
+                            <span class="nav-icon">⚙️</span>
+                            <span class="nav-text">Công cụ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+                            <span class="nav-icon">💊</span>
+                            <span class="nav-text">Dược lý</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+                            <span class="nav-icon">📄</span>
+                            <span class="nav-text">Y học chứng cứ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Y học cổ truyền/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền">
+                            <span class="nav-icon">☯️</span>
+                            <span class="nav-text">Y học cổ truyền</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container" style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+                <ol class="breadcrumb-list" style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+                    <li><a href="../../../index.html">🏠 Home</a> &gt;</li>
+                    <li><a href="../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+                    <li style="color:var(--color-primary); font-weight:600;">Sinh lý bệnh &amp; Cơ chế bệnh sinh Hội chứng vành cấp</li>
+                </ol>
+            </nav>
+
+            <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+            <main class="visual-container">
+                <!-- CHAPTER HEADER CARD -->
+                <div class="chapter-header">
+                    <h1>SINH LÝ BỆNH & CƠ CHẾ BỆNH SINH HỘI CHỨNG VÀNH CẤP</h1>
+                    <p>Acute Coronary Syndrome Pathophysiology & Pathogenesis — Phân tích toàn diện mô hình "bệnh nhân dễ tổn thương", 3 cơ chế hình thành huyết khối tại chỗ trong Nhồi máu cơ tim Týp 1, các bệnh cảnh không do xơ vữa trong hội chứng MINOCA và sự mất cân bằng cung-cầu oxy trong Nhồi máu cơ tim Týp 2.</p>
+                </div>
+
+                <p class="physio-lead">
+                    <span class="term-hl">Hội chứng vành cấp (Acute Coronary Syndrome - ACS)</span> là một thuật ngữ lâm sàng bao trùm các tình trạng cấp tính gây ra do sự suy giảm đột ngột dòng máu tưới nuôi cơ tim, dẫn đến thiếu máu cục bộ hoặc hoại tử cơ tim, bao gồm: Nhồi máu cơ tim có ST chênh lên (STEMI), Nhồi máu cơ tim không có ST chênh lên (NSTEMI) và Đau thắt ngực không ổn định (Unstable Angina - UA).
+                </p>
+
+                <div class="key-concept">
+                    🔑 <strong>Dịch chuyển mô hình: Từ "Mảng xơ vữa dễ tổn thương" sang "Bệnh nhân dễ tổn thương" (Vulnerable Patient)</strong><br>
+                    Sinh lý bệnh học hiện đại nhìn nhận sự hình thành ACS không chỉ đơn thuần xuất phát từ một vị trí hẹp mạch vành tĩnh học, mà là kết quả của sự tương tác động lực học phức tạp giữa ba yếu tố cốt lõi:
+                    <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0;">
+                        <li><strong>Mảng xơ vữa dễ vỡ (Vulnerable Plaque):</strong> Có cấu trúc vỏ xơ mỏng, lõi lipid lớn và viêm hoạt động.</li>
+                        <li><strong>Dòng máu dễ tạo huyết khối (Vulnerable Blood):</strong> Rối loạn cân bằng giữa hệ đông máu và hệ tiêu sợi huyết/chống đông tự nhiên, tạo trạng thái tăng đông.</li>
+                        <li><strong>Cơ tim dễ bị tổn thương (Vulnerable Myocardium):</strong> Nhạy cảm với tình trạng thiếu máu cục bộ, dễ bất ổn định điện học dẫn đến các rối loạn nhịp tim đe dọa tính mạng.</li>
+                    </ul>
+                </div>
+
+                <!-- PHẦN I: HUYẾT KHỐI TRÊN NỀN XƠ VỮA (TÝP 1) -->
+                <div class="physio-content">
+                    <h2 id="nhoi-mau-typ-1" class="section-title">
+                        <span>Phần I: Cơ chế Huyết khối trên nền Xơ vữa (Nhồi máu cơ tim Týp 1)</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Nhồi máu cơ tim týp 1 là nguyên nhân hàng đầu của ACS, liên quan trực tiếp đến sự mất ổn định của mảng xơ vữa. Nhờ sự phát triển của các phương tiện hình ảnh học nội mạch như chụp cắt lớp quang kết mạch vành (<span class="term-hl">OCT</span>) và siêu âm trong lòng mạch (<span class="term-hl">IVUS</span>), 3 cơ chế bệnh sinh tại chỗ đã được xác định rõ ràng:</p>
+
+                        <h3 id="nut-vo-mang-xo-vua" class="subsection-title">1. Nứt vỡ mảng xơ vữa (Plaque Rupture)</h3>
+                        <p>Đây là cơ chế kinh điển và phổ biến nhất gây ra ACS, đặc biệt là trong bệnh cảnh <strong>STEMI</strong>.</p>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Sinh lý bệnh:</strong> Quá trình diễn ra trên các mảng xơ vữa có vỏ bao xơ mỏng (dưới 65 µm, gọi là <span class="term-hl-secondary">TCFA - thin-capped fibroatheroma</span>) bao bọc một lõi hoại tử khổng lồ chứa đầy lipid và đại thực bào. Khi đại thực bào bị kích hoạt bởi phản ứng viêm tại chỗ và toàn thân, chúng tiết ra các enzyme metalloproteinase (MMP-1, 8, 13) làm giáng hóa collagen, khiến vỏ bao xơ mỏng dần và nứt vỡ. Sự suy giảm của các tế bào T điều hòa (Tregs) mang tính bảo vệ và sự gia tăng các cytokine viêm làm trầm trọng thêm tình trạng này.</li>
+                            <li><strong>Đặc điểm huyết khối:</strong> Khi vỏ bao xơ nứt vỡ, các chất có tính sinh huyết khối cao bên trong lõi lipid (như yếu tố mô - tissue factor) tiếp xúc với máu, lập tức kích hoạt dòng thác đông máu tạo ra <strong>"huyết khối đỏ"</strong> rất giàu fibrin và hồng cầu. Huyết khối này thường gây tắc nghẽn hoàn toàn và đột ngột lòng mạch vành.</li>
+                            <li><strong>Ứng dụng lâm sàng:</strong> Tổn thương do nứt vỡ thường có gánh nặng mảng xơ vữa lớn. Can thiệp động mạch vành qua da (PCI) đặt stent là bắt buộc để khôi phục cấu trúc mạch máu. Sự tham gia của các con đường viêm (tăng hs-CRP) cũng mở ra hướng ứng dụng các liệu pháp kháng viêm mạnh (như colchicine liều thấp) trong dự phòng thứ phát.</li>
+                        </ul>
+
+                        <h3 id="xoi-mon-mang-xo-vua" class="subsection-title">2. Xói mòn mảng xơ vữa (Plaque Erosion)</h3>
+                        <p>Trong kỷ nguyên sử dụng statin tích cực, xói mòn mảng xơ vữa đang chiếm tỉ lệ ngày càng cao (khoảng 1/3 các ca ACS, đặc biệt là <strong>NSTEMI</strong>).</p>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Sinh lý bệnh:</strong> Xói mòn xảy ra trên các mảng xơ vữa có lớp vỏ xơ còn nguyên vẹn, ít lipid và đại thực bào, nhưng lại rất giàu tế bào cơ trơn mạch máu (VSMCs) và chất nền ngoại bào (hyaluronic acid và proteoglycan). Dòng máu cuộn xoáy tại vị trí hẹp kích hoạt thụ thể miễn dịch bẩm sinh <span class="term-hl-secondary">Toll-like receptor-2 (TLR2)</span>, gây chết và tróc lớp tế bào nội mạc. Khi lớp màng đáy bị bộc lộ, các bạch cầu trung tính được chiêu mộ và giải phóng <strong>bẫy ngoại bào bạch cầu trung tính (NETs)</strong>. NETs hoạt động như một lưới bắt giữ tiểu cầu.</li>
+                            <li><strong>Đặc điểm huyết khối:</strong> Huyết khối hình thành chủ yếu là <strong>"huyết khối trắng"</strong> giàu tiểu cầu, thường gây tắc nghẽn không hoàn toàn hoặc bán cấp lòng mạch vành.</li>
+                            <li><strong>Ứng dụng lâm sàng:</strong> Dịch tễ học thường gặp ở bệnh nhân nữ, trẻ tuổi, ít yếu tố nguy cơ tim mạch truyền thống. **Điểm mấu chốt trong thực hành (Nghiên cứu EROSION):** Vì cấu trúc mạch máu không bị phá vỡ hoàn toàn và huyết khối chủ yếu là tiểu cầu, bệnh nhân xói mòn mảng xơ vữa có thể được điều trị nội khoa bảo tồn bằng thuốc chống huyết khối/chống kết tập tiểu cầu kép mạnh (Aspirin + Ticagrelor) mà không cần đặt stent, giúp tránh biến chứng liên quan đến stent.</li>
+                        </ul>
+
+                        <h3 id="not-voi-hoa" class="subsection-title">3. Nốt vôi hóa (Calcified Nodules)</h3>
+                        <p>Đây là nguyên nhân ít gặp nhất nhưng lại phức tạp nhất và thách thức nhất khi can thiệp.</p>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Sinh lý bệnh:</strong> Bắt nguồn từ sự phân mảnh của nhân hoại tử vôi hóa dưới áp lực cơ học liên tục từ sự co bóp của cơ tim (đặc biệt ở động mạch vành phải). Các nốt canxi cứng đâm xuyên qua lớp vỏ xơ nhô vào lòng mạch, phá vỡ lớp nội mạc và kích hoạt hình thành huyết khối.</li>
+                            <li><strong>Ứng dụng lâm sàng:</strong> Bệnh nhân có nốt vôi hóa thường có nguy cơ thất bại cực cao khi can thiệp (nguy cơ stent nở không trọn vẹn hoặc rách mạch vành). Trong thực hành, bác sĩ cần sử dụng các kỹ thuật sửa chữa mảng xơ vữa chuyên dụng (plaque modification) như khoan cắt mảng xơ vữa (atherectomy), laser (ELCA), hoặc tán sỏi trong lòng mạch (IVL - Intravascular Lithotripsy) để bào mòn nốt vôi trước khi đặt stent.</li>
+                        </ul>
+
+                        <div class="clinical-note-box">
+                            <h4>🔍 Bảng so sánh 3 cơ chế hình thành huyết khối tại chỗ (Nhồi máu cơ tim Týp 1)</h4>
+                            <div class="table-responsive">
+                                <table class="physio-table physio-table-compare">
+                                    <thead>
+                                        <tr>
+                                            <th>Đặc tính</th>
+                                            <th>Nứt vỡ mảng xơ vữa</th>
+                                            <th>Xói mòn mảng xơ vữa</th>
+                                            <th>Nốt vôi hóa</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Vỏ bao xơ</strong></td>
+                                            <td>Bị nứt vỡ, mỏng (&lt; 65 µm)</td>
+                                            <td>Còn nguyên vẹn</td>
+                                            <td>Bị đâm thủng bởi mảnh vôi</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Thành phần mảng</strong></td>
+                                            <td>Lõi hoại tử lipid lớn, nhiều đại thực bào</td>
+                                            <td>Giàu tế bào cơ trơn, hyaluronic acid, proteoglycan</td>
+                                            <td>Nhân vôi hóa phân mảnh, cứng</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Cơ chế kích hoạt</strong></td>
+                                            <td>MMPs bào mòn vỏ, bộc lộ Tissue Factor</td>
+                                            <td>TLR2 kích hoạt tróc nội mạc, giải phóng NETs</td>
+                                            <td>Lực cơ học đẩy nốt vôi đâm thủng nội mạc</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Loại huyết khối</strong></td>
+                                            <td>Huyết khối đỏ (giàu fibrin và hồng cầu)</td>
+                                            <td>Huyết khối trắng (giàu tiểu cầu)</td>
+                                            <td>Huyết khối hỗn hợp</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Đối tượng điển hình</strong></td>
+                                            <td>Nam giới lớn tuổi, nhiều yếu tố nguy cơ</td>
+                                            <td>Nữ giới trẻ tuổi, ít yếu tố nguy cơ</td>
+                                            <td>Người rất lớn tuổi, bệnh thận mạn (CKD)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Xử trí can thiệp</strong></td>
+                                            <td>PCI đặt stent quy chuẩn</td>
+                                            <td>Có thể điều trị nội khoa bảo tồn (không stent)</td>
+                                            <td>Bắt buộc mài/tán sỏi (IVL, Atherectomy) trước PCI</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN II: CƠ CHẾ KHÔNG DO XƠ VỮA & MINOCA -->
+                <div class="physio-content">
+                    <h2 id="co-che-khong-xo-vua" class="section-title">
+                        <span>Phần II: Cơ chế Không do Xơ vữa & Hội chứng MINOCA</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Khoảng 1–14% bệnh nhân biểu hiện ACS nhưng khi chụp mạch vành lại không thấy tắc nghẽn có ý nghĩa (hẹp &lt; 50% lòng mạch). Tình trạng này được gọi là hội chứng <span class="term-hl">MINOCA (Myocardial Infarction with Non-Obstructive Coronary Arteries)</span>. Bác sĩ lâm sàng cần nắm rõ các cơ chế bệnh sinh không do xơ vữa sau:</p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🩸 Bóc tách động mạch vành tự phát (SCAD)</div>
+                                <p><strong>Sinh lý bệnh:</strong> Xuất hiện vết rách nội mạc tiên phát hoặc xuất huyết từ hệ mạch nuôi mạch (vasa vasorum), dẫn đến tụ máu trong lớp trung mạc (intramural hematoma). Điều này tạo ra một "lòng giả" (false lumen) chèn ép vào "lòng thật" (true lumen), gây cản trở dòng chảy và thiếu máu cơ tim.</p>
+                                <p><strong>Lâm sàng:</strong> Thường gặp ở phụ nữ trẻ, phụ nữ mang thai hoặc hậu sản. Can thiệp bằng bóng hay stent có nguy cơ làm vết rách lan rộng. Do đó, <strong>ưu tiên điều trị nội khoa bảo tồn</strong>; chỉ can thiệp khi có huyết động bất ổn hoặc thiếu máu cơ tim diện rộng đe dọa.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">⚡ Co thắt động mạch vành (Coronary Vasospasm)</div>
+                                <p><strong>Sinh lý bệnh:</strong> Co thắt động mạch vành thượng tâm mạc do sự tăng phản ứng của các tế bào cơ trơn mạch máu đối với các kích thích co mạch, hoặc rối loạn chức năng nội mạc làm giảm sản xuất chất giãn mạch tự nhiên Nitric Oxide (NO). Thường liên quan đến hội chứng đau thắt ngực biến thể (Prinzmetal).</p>
+                                <p><strong>Lâm sàng:</strong> Cơn đau thường xảy ra lúc nghỉ ngơi, nửa đêm về sáng. Nhóm thuốc chẹn kênh canxi (CCB) và nhóm Nitrate là nền tảng điều trị chính; chống chỉ định chẹn beta không chọn lọc.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🌪️ Bệnh cơ tim do stress (Hội chứng Takotsubo)</div>
+                                <p><strong>Sinh lý bệnh:</strong> Sự kích thích giao cảm cực độ do stress tâm lý hoặc sinh lý mạnh mẽ giải phóng lượng lớn catecholamine vào tuần hoàn. Cơn bão catecholamine gây co thắt hệ vi mạch vành, đồng thời gây độc trực tiếp lên cơ tim (qua quá tải canxi nội bào), gây rối loạn vận động vùng thất trái (vô động phình mỏm tim).</p>
+                                <p><strong>Lâm sàng:</strong> Triệu chứng và điện tâm đồ giả STEMI nhưng mạch vành bình thường. Điều trị chủ yếu là hỗ trợ và phục hồi chức năng tim sau vài tuần.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">✈️ Huyết khối thuyên tắc mạch vành (Coronary Embolism)</div>
+                                <p><strong>Sinh lý bệnh:</strong> Cục máu đông hoặc mảnh sùi di chuyển từ buồng tim trái (do rung nhĩ, huyết khối thất trái sau NMCT cũ), mảnh sùi van tim (viêm nội tâm mạc nhiễm trùng) hoặc thuyên tắc nghịch thường từ hệ tĩnh mạch sâu qua lỗ bầu dục (PFO).</p>
+                                <p><strong>Lâm sàng:</strong> Chiếm 3–5% các ca ACS. Hướng điều trị chủ chốt là hút huyết khối cơ học hoặc tiêu sợi huyết và điều trị chống đông máu kéo dài thay vì đặt stent.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">Bridge Cầu cơ tim (Myocardial Bridging)</div>
+                                <p><strong>Sinh lý bệnh:</strong> Một đoạn động mạch vành thay vì đi trên bề mặt quả tim lại đi ngầm trong lớp cơ tim. Khi tim co bóp trong thì tâm thu, đoạn cơ tim này siết chặt lấy mạch máu, gây cản trở dòng chảy. Hiện tượng này kéo dài có thể gây chấn thương nội mạc mạch máu tại chỗ và gây thiếu máu cục bộ cơ tim.</p>
+                                <p><strong>Lâm sàng:</strong> Điều trị ưu tiên bằng thuốc chẹn beta hoặc CCB để làm chậm nhịp tim, kéo dài thời kỳ tâm trương (thời điểm tưới máu vành chính).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN III: MẤT CÂN BẰNG CUNG - CẦU OXY (TÝP 2) -->
+                <div class="physio-content">
+                    <h2 id="nhoi-mau-typ-2" class="section-title">
+                        <span>Phần III: Mất cân bằng Cung - Cầu Oxy cơ tim (Nhồi máu cơ tim Týp 2)</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Nhồi máu cơ tim týp 2 xảy ra khi cơ tim bị tổn thương thiếu máu cục bộ do mất cân bằng giữa cung và cầu oxy, mà hoàn toàn <strong>không</strong> liên quan đến sự nứt vỡ mảng xơ vữa hay huyết khối động mạch vành cấp tính.</p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card" style="border-left: 4px solid var(--color-danger);">
+                                <div class="physio-grid-title" style="color: var(--color-danger);"><i class="fa-solid fa-arrow-up"></i> Tăng nhu cầu Oxy cơ tim</div>
+                                <p>Cơ tim bắt buộc phải hoạt động quá công suất trong các bệnh cảnh:</p>
+                                <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0;">
+                                    <li>Nhịp tim nhanh ác tính kéo dài (Rung nhĩ đáp ứng thất nhanh, nhịp nhanh kịch phát trên thất).</li>
+                                    <li>Cơn tăng huyết áp ác tính (tăng hậu tải thất trái đột ngột).</li>
+                                    <li>Sốt cao, nhiễm trùng nhiễm độc nặng, cường giáp.</li>
+                                </ul>
+                            </div>
+                            <div class="physio-grid-card" style="border-left: 4px solid var(--color-info);">
+                                <div class="physio-grid-title" style="color: var(--color-info);"><i class="fa-solid fa-arrow-down"></i> Giảm cung cấp Oxy cơ tim</div>
+                                <p>Nguồn máu mang oxy đến cơ tim bị suy giảm nghiêm trọng do:</p>
+                                <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0;">
+                                    <li>Tụt huyết áp kéo dài, sốc nhiễm khuẩn, sốc mất máu.</li>
+                                    <li>Thiếu máu cấp tính nặng (xuất huyết tiêu hóa ồ ạt, tan máu cấp).</li>
+                                    <li>Suy hô hấp cấp, giảm oxy máu nặng.</li>
+                                    <li>Co thắt nội mạc mạch máu hệ vi tuần hoàn vành.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="clinical-pearl">
+                            💎 <strong>Pearl Lâm Sàng về tiếp cận Nhồi máu cơ tim Týp 2:</strong><br>
+                            Bệnh nhân Nhồi máu cơ tim Týp 2 thường có nhiều bệnh đồng mắc và tiên lượng lâu dài rất xấu. Sinh lý bệnh của Týp 2 khác hoàn toàn với Týp 1. Do đó, các phác đồ kháng tiểu cầu kép mạnh (DAPT) và chụp mạch vành can thiệp khẩn cấp không mang lại lợi ích mà còn làm tăng nguy cơ xuất huyết. Việc điều trị bắt buộc phải tập trung giải quyết nguyên nhân nền (như truyền máu nếu thiếu máu cấp, kiểm soát tần số tim, hỗ trợ hô hấp, nâng huyết áp).
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN IV: ỨNG DỤNG LÂM SÀNG & PRECISION MEDICINE -->
+                <div class="physio-content">
+                    <h2 id="ung-dung-lam-sang" class="section-title">
+                        <span>Phần IV: Ứng dụng Sinh lý bệnh vào Y học Cá thể hóa (Precision Medicine)</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Hiểu biết sâu sắc về cơ chế bệnh sinh của Hội chứng vành cấp giúp dịch chuyển tư duy điều trị lâm sàng từ áp dụng phác đồ hàng loạt sang tiếp cận <strong>y học cá thể hóa</strong> nhằm tối ưu hóa hiệu quả và giảm thiểu biến chứng cho người bệnh:</p>
+
+                        <ol class="physio-steps">
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">1. Cá thể hóa chiến lược can thiệp mạch vành</span>
+                                    Sử dụng các công cụ chẩn đoán hình ảnh nội mạch tiên tiến như OCT và IVUS cho phép bác sĩ phân biệt mảng xơ vữa bị nứt vỡ (cần đặt stent) với mảng xơ vữa bị xói mòn (có thể điều trị bảo tồn bằng thuốc kháng tiểu cầu mạnh mà không cần đặt stent).
+                                </div>
+                            </li>
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">2. Tiếp cận tinh tế trong hội chứng MINOCA và SCAD</span>
+                                    Nhận diện sớm bệnh cảnh SCAD giúp bảo vệ bệnh nhân khỏi các can thiệp mạch vành nguy hiểm (đặt stent dễ làm rách lan rộng mạch máu). Việc chẩn đoán đúng co thắt mạch vành hay Takotsubo định hướng sử dụng thuốc giãn mạch (CCB, Nitrate) hoặc hỗ trợ chức năng thay vì dùng kháng đông hệ thống vô ích.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">3. Quản lý toàn diện theo kiểu hình và cơ chế viêm</span>
+                                    Nhận diện trạng thái "bệnh nhân dễ tổn thương" thúc đẩy việc tầm soát và điều trị đồng thời cả yếu tố tăng đông máu, xơ vữa mạch và tính bất ổn định điện học cơ tim. Sự ra đời của các thuốc kháng viêm trong tim mạch (như Colchicine liều thấp) là minh chứng cho việc ứng dụng cơ chế viêm mòn mảng xơ vữa vào lâm sàng.
+                                </div>
+                            </li>
+                        </ol>
+
+                        <div class="table-responsive" style="margin-top: 2rem;">
+                            <table class="physio-table physio-table-compare">
+                                <thead>
+                                    <tr>
+                                        <th>Tiêu chí so sánh</th>
+                                        <th>Nhồi máu cơ tim Týp 1</th>
+                                        <th>Nhồi máu cơ tim Týp 2</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Cơ chế cốt lõi</strong></td>
+                                        <td>Nứt vỡ, xói mòn mảng xơ vữa hoặc nốt vôi hóa gây huyết khối cấp tính tắc nghẽn mạch vành.</td>
+                                        <td>Mất cân bằng giữa cung cấp và nhu cầu oxy cơ tim, không liên quan huyết khối cấp tính.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Tổn thương mạch vành</strong></td>
+                                        <td>Có huyết khối tắc nghẽn thực thể tại lòng mạch vành.</td>
+                                        <td>Mạch vành có thể bình thường hoặc hẹp ổn định, không có huyết khối cấp.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Vai trò của DAPT / Chống đông</strong></td>
+                                        <td>Cực kỳ quan trọng, là nền tảng để hạn chế huyết khối lan rộng.</td>
+                                        <td>Không có vai trò rõ ràng, có thể làm tăng nguy cơ xuất huyết.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Can thiệp mạch vành (PCI)</strong></td>
+                                        <td>Tiêu chuẩn vàng để tái thông lòng mạch cấp cứu.</td>
+                                        <td>Không có chỉ định cấp cứu, ưu tiên kiểm soát bệnh nền gây mất cân bằng.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Tiên lượng lâu dài</strong></td>
+                                        <td>Phụ thuộc vào thời gian cửa-bóng và khả năng đảo ngược cơ tim.</td>
+                                        <td>Thường rất xấu do gánh nặng lớn từ các bệnh lý đồng mắc.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TÀI LIỆU THAM KHẢO -->
+                <div class="physio-content">
+                    <h2 id="tai-lieu-tham-khao" class="section-title">
+                        <span>Tài liệu Tham khảo (References)</span>
+                    </h2>
+                    <div class="physio-text-block">
+                        <ol style="font-size: 0.9rem; line-height: 1.6; color: var(--color-text-muted);">
+                            <li>Libby P. The changing landscape of acute coronary syndromes. <em>Circulation</em>. 2023;147(11):852-866.</li>
+                            <li>Jia H, Abtahian F, Al-Shegihan A, et al. In vivo diagnosis of plaque erosion and associated clinical outcomes: an intravascular optical coherence tomography study. <em>European Heart Journal</em>. 2025;46(3):289-299.</li>
+                            <li>Nghiên cứu EROSION: Xing L, Yamamoto E, Sugiyama T, et al. Efficacy of antiplatelet therapy without stenting for patients with acute coronary syndrome caused by plaque erosion. <em>European Heart Journal</em>. 2022;43(21):2045-2055.</li>
+                            <li>Tamarappoo B, Wijeysundera HC. Calcified Nodules: Intravascular Imaging and Management Strategies. <em>JACC: Cardiovascular Interventions</em>. 2024;17(4):412-424.</li>
+                            <li>AHA/ACC/ESC Expert Consensus Document: Fourth Universal Definition of Myocardial Infarction. <em>Journal of the American College of Cardiology</em>. 2018;72(18):2231-2264.</li>
+                            <li>Bộ Y tế Việt Nam. <em>Hướng dẫn chẩn đoán và xử trí Hội chứng vành cấp</em>. Quyết định số 89/QĐ-BYT; Hà Nội, 2020.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- TÀI LIỆU LIÊN QUAN -->
+                <section class="related-links-section">
+                    <h4 class="related-links-title">
+                        <i class="fas fa-link"></i> Xem thêm các nội dung liên quan
+                    </h4>
+                    <div class="related-links-grid">
+                        <a href="SLB_CCBS_ST.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge sinh-ly">Sinh lý bệnh</span>
+                                <h5>Sinh Lý Bệnh & Cơ Chế Bệnh Sinh Suy Tim</h5>
+                                <p>Phân tích rối loạn huyết động, tái cấu trúc cơ tim lệch tâm vs đồng tâm, kích hoạt hệ SNS & RAAS, và nền tảng của Tứ trụ.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                        <a href="SLB_CCBS_THA.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge sinh-ly">Sinh lý bệnh</span>
+                                <h5>Sinh Lý Bệnh & Cơ Chế Bệnh Sinh Tăng Huyết Áp</h5>
+                                <p>Phân tích mạng lưới SNS, RAAS, cơ chế nhạy cảm muối, rối loạn chức năng nội mô và xơ cứng thành mạch.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                        <a href="SLB_CCBS_CCS.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge sinh-ly">Sinh lý bệnh</span>
+                                <h5>Sinh Lý Bệnh & Cơ Chế Bệnh Sinh Hội Chứng Vành Mạn</h5>
+                                <p>Mất cân bằng cung-cầu oxy cơ tim, xơ vữa và co thắt thượng tâm mạc, rối loạn chức năng vi tuần hoàn (CMD) và ANOCA/INOCA.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                        <a href="../../Dược lý/Chuyên khoa/DL_Timmach.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge duoc-ly">Dược lý</span>
+                                <h5>Dược Lý Lâm Sàng Tim Mạch</h5>
+                                <p>Tra cứu nhanh chỉ định, chống chỉ định, liều lượng và cơ chế các nhóm thuốc tim mạch chính: BB, ACEi, ARB, SGLT2i, ARNI.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+    
+    <!-- Script điều khiển chung -->
+    <script src="../../../js/sidebar.js"></script>
+</body>
+
+</html>
