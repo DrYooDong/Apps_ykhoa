@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đánh giá Nguyên nhân AKI – CliniPortal</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+  <script src="../../../js/main.js" defer></script>
+
+  <style>
+    /* CSS Boilerplate cho Style 2 */
+    .assessment-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1rem; }
+    .input-column, .results-sidebar { display: flex; flex-direction: column; gap: 1.25rem; }
+    
+    .panel { background-color: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm); }
+    .panel-title { font-size: var(--text-md); font-weight: 700; color: var(--color-primary); margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--color-divider); display: flex; align-items: center; gap: 0.5rem; }
+    
+    .form-grid-2 { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+    .form-grid-3 { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+    .input-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .input-group label { font-size: var(--text-sm); font-weight: 600; }
+    .input-group.inline { flex-direction: row; align-items: center; justify-content: space-between; }
+    
+    input[type="number"], select { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background-color: var(--color-surface-offset); color: var(--color-text); }
+    input[type="number"]:focus, select:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px var(--color-primary-hl); }
+
+    .checkbox-group { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.5rem; }
+    .checkbox-item { display: flex; align-items: flex-start; gap: 0.5rem; cursor: pointer; font-size: var(--text-sm); }
+    .checkbox-item input[type="checkbox"] { margin-top: 0.2rem; width: 16px; height: 16px; accent-color: var(--color-primary); }
+
+    .score-row { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px dashed var(--color-divider); }
+    .score-lbl { font-weight: 600; font-size: var(--text-sm); }
+    .score-badge { font-weight: 700; font-size: var(--text-xs); padding: 0.3rem 0.8rem; border-radius: var(--radius-full); min-width: 60px; text-align: center; display: inline-block; }
+    
+    .badge-normal { background-color: var(--color-success-hl); color: var(--color-success); }
+    .badge-mild { background-color: var(--color-amber-hl); color: var(--color-amber); }
+    .badge-severe { background-color: var(--color-rose-hl); color: var(--color-rose); }
+    .badge-info { background-color: var(--color-blue-hl); color: var(--color-blue); }
+    .badge-gray { background-color: var(--color-surface-2); color: var(--color-text-muted); border: 1px solid var(--color-divider); }
+
+    .diagnostic-box { background-color: var(--color-surface-2); border-left: 4px solid var(--color-divider); padding: 1rem; border-radius: var(--radius-sm); font-size: var(--text-sm); margin-top: 0.75rem; }
+    .diagnostic-box.alert-active { border-left-color: var(--color-rose); background-color: var(--color-rose-hl); }
+    .diagnostic-box.alert-prerenal { border-left-color: var(--color-blue); background-color: var(--color-blue-hl); }
+    .diagnostic-box.alert-intrinsic { border-left-color: var(--color-amber); background-color: var(--color-amber-hl); }
+    .diagnostic-box h4 { margin-bottom: 0.35rem; font-weight: 700; font-size: 1.05em; }
+
+    .reset-btn { width: 100%; padding: 0.75rem; background-color: var(--color-surface-offset); border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-weight: 700; cursor: pointer; margin-top: 0.75rem; transition: all 0.2s; }
+    .reset-btn:hover { background-color: var(--color-divider); border-color: var(--color-primary); }
+
+    .section-title { font-size: 14px; font-weight: 600; color: var(--color-primary); margin: 15px 0 10px; padding-top: 10px; border-top: 1px dashed var(--color-divider); }
+    .section-title:first-child { border-top: none; margin-top: 0; padding-top: 0; }
+
+    .hint-text { font-size: 11px; color: var(--color-text-muted); margin-top: 2px; }
+    
+    .calculated-vals { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 1rem; }
+    .calc-box { text-align: center; padding: 10px; background: var(--color-surface-offset); border-radius: var(--radius-sm); border: 1px solid var(--color-border); }
+    .calc-label { font-size: 11px; color: var(--color-text-muted); font-weight: 600; margin-bottom: 4px; display: block; }
+    .calc-val { font-size: 16px; font-weight: 700; color: var(--color-primary); }
+    
+    .treatment-box { margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--color-divider); }
+    .treatment-box h5 { font-size: var(--text-sm); font-weight: 700; margin-bottom: 0.5rem; color: var(--color-success); }
+    .treatment-box ul { padding-left: 1.2rem; margin: 0; font-size: var(--text-sm); }
+    .treatment-box li { margin-bottom: 0.25rem; }
+
+    @media (min-width: 768px) {
+      .assessment-grid { grid-template-columns: 2fr 1fr; }
+      .form-grid-2 { grid-template-columns: repeat(2, 1fr); }
+      .form-grid-3 { grid-template-columns: repeat(3, 1fr); }
+      .sticky-card { position: sticky; top: calc(var(--header-height) + 1.25rem); }
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <aside class="app-sidebar" id="appSidebar"></aside>
+
+    <div class="main-wrapper">
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+            <li class="breadcrumb-item"><a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a></li>
+            <li class="breadcrumb-item"><a href="../../cong-cu.html" class="breadcrumb-link">Công cụ lâm sàng</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Đánh giá Nguyên nhân AKI</li>
+        </ol>
+      </nav>
+
+      <div class="assessment-grid">
+        <!-- CỘT TRÁI: NHẬP THÔNG SỐ -->
+        <div class="input-column">
+          <!-- BẢNG 1: THÔNG SỐ XÉT NGHIỆM ĐỊNH LƯỢNG -->
+          <div class="panel">
+            <div class="panel-title"><span>🧪 Sinh hoá Máu & Nước tiểu</span></div>
+            <p style="font-size: 13px; color: var(--color-text-muted); margin-bottom: 1rem;">Nhập các chỉ số để tự động tính toán FENa, FEUrea và tỷ lệ BUN/Cr. Để trống nếu không có dữ liệu.</p>
+            
+            <div class="section-title">Huyết thanh (Serum)</div>
+            <div class="form-grid-3">
+              <div class="input-group">
+                <label for="sCr">Creatinine (mg/dL)</label>
+                <input type="number" id="sCr" placeholder="VD: 1.5" step="0.01" oninput="runAnalysis()">
+              </div>
+              <div class="input-group">
+                <label for="sNa">Natri (mEq/L)</label>
+                <input type="number" id="sNa" placeholder="VD: 140" oninput="runAnalysis()">
+              </div>
+              <div class="input-group">
+                <label for="sBun">BUN (mg/dL)</label>
+                <input type="number" id="sBun" placeholder="VD: 30" oninput="runAnalysis()">
+                <div class="hint-text">BUN ≈ Ure(mmol/L) × 2.8</div>
+              </div>
+            </div>
+
+            <div class="section-title">Nước tiểu (Urine)</div>
+            <div class="form-grid-3">
+              <div class="input-group">
+                <label for="uCr">Creatinine (mg/dL)</label>
+                <input type="number" id="uCr" placeholder="VD: 120" oninput="runAnalysis()">
+              </div>
+              <div class="input-group">
+                <label for="uNa">Natri (mEq/L)</label>
+                <input type="number" id="uNa" placeholder="VD: 15" oninput="runAnalysis()">
+              </div>
+              <div class="input-group">
+                <label for="uUrea">Urea Nitrogen (mg/dL)</label>
+                <input type="number" id="uUrea" placeholder="VD: 500" oninput="runAnalysis()">
+              </div>
+            </div>
+          </div>
+
+          <!-- BẢNG 2: LÂM SÀNG & HÌNH ẢNH HỌC -->
+          <div class="panel">
+            <div class="panel-title"><span>📝 Lâm sàng & Hình ảnh học</span></div>
+            
+            <div class="section-title">1. Yếu tố gợi ý Trước thận (Pre-renal)</div>
+            <div class="checkbox-group">
+                <label class="checkbox-item"><input type="checkbox" id="chk_hypovolemia" onchange="runAnalysis()"> Mất dịch nội mạch (nôn, tiêu chảy, xuất huyết, bỏng, lợi tiểu)</label>
+                <label class="checkbox-item"><input type="checkbox" id="chk_low_co" onchange="runAnalysis()"> Giảm cung lượng tim (suy tim, nhồi máu cơ tim, sốc tim)</label>
+                <label class="checkbox-item"><input type="checkbox" id="chk_vasodilation" onchange="runAnalysis()"> Giãn mạch hệ thống (nhiễm trùng huyết, xơ gan/HRS, sốc phản vệ)</label>
+            </div>
+
+            <div class="section-title">2. Yếu tố gợi ý Sau thận (Post-renal)</div>
+            <div class="checkbox-group">
+                <label class="checkbox-item"><input type="checkbox" id="chk_obstruction_symptoms" onchange="runAnalysis()"> Vô niệu đột ngột, cầu bàng quang, đau quặn mạn sườn</label>
+                <label class="checkbox-item"><input type="checkbox" id="chk_obstruction_history" onchange="runAnalysis()"> Tiền sử sỏi tiết niệu, phì đại tuyến tiền liệt, u vùng chậu</label>
+            </div>
+
+            <div class="section-title">3. Yếu tố gợi ý Tại thận (Intrinsic)</div>
+            <div class="checkbox-group">
+                <label class="checkbox-item"><input type="checkbox" id="chk_toxin" onchange="runAnalysis()"> Dùng thuốc/Độc chất: Cản quang, NSAIDs, Aminoglycoside, ACEI/ARB</label>
+                <label class="checkbox-item"><input type="checkbox" id="chk_rhabdo" onchange="runAnalysis()"> Dấu hiệu tiêu cơ vân (đau cơ, nước tiểu đỏ sẫm) / HC ly giải u</label>
+                <label class="checkbox-item"><input type="checkbox" id="chk_ain_signs" onchange="runAnalysis()"> Sốt, phát ban, đau khớp (gợi ý Viêm mô kẽ - AIN)</label>
+                <label class="checkbox-item"><input type="checkbox" id="chk_gn_signs" onchange="runAnalysis()"> Ho ra máu, ban xuất huyết (gợi ý Viêm cầu thận/Vi mạch)</label>
+            </div>
+
+            <div class="section-title">4. Kết quả Cận lâm sàng khác</div>
+            <div class="form-grid-2">
+              <div class="input-group">
+                <label for="urine_sediment">Cặn lắng nước tiểu</label>
+                <select id="urine_sediment" onchange="runAnalysis()">
+                  <option value="unknown">Chưa rõ / Bình thường</option>
+                  <option value="muddy_brown">Trụ hạt bùn nâu (Muddy brown casts)</option>
+                  <option value="rbc_casts">Trụ hồng cầu / Biến dạng hồng cầu</option>
+                  <option value="wbc_eosinophils">Bạch cầu, trụ bạch cầu, Eosinophils</option>
+                  <option value="crystals">Tinh thể (Oxalate, Uric acid)</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label for="ultrasound">Siêu âm hệ niệu</label>
+                <select id="ultrasound" onchange="runAnalysis()">
+                  <option value="unknown">Chưa rõ / Bình thường</option>
+                  <option value="hydronephrosis">Thận ứ nước / Giãn đài bể thận</option>
+                  <option value="bladder_distended">Bàng quang căng to / Tồn dư > 100mL</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CỘT PHẢI: BẢNG ĐIỂM DOCKING BÁM DÍNH -->
+        <div class="results-sidebar">
+          <div class="panel sticky-card">
+            <div class="panel-title">📊 Kết quả Phân tích</div>
+            
+            <div class="calculated-vals">
+              <div class="calc-box">
+                <span class="calc-label">FENa (%)</span>
+                <span class="calc-val" id="val_fena">—</span>
+              </div>
+              <div class="calc-box">
+                <span class="calc-label">FEUrea (%)</span>
+                <span class="calc-val" id="val_feurea">—</span>
+              </div>
+              <div class="calc-box">
+                <span class="calc-label">BUN/Cr</span>
+                <span class="calc-val" id="val_buncr">—</span>
+              </div>
+            </div>
+
+            <div class="score-row">
+              <span class="score-lbl">Định hướng nguyên nhân</span>
+              <span id="aki-type-badge" class="score-badge badge-gray">Chưa đủ dữ liệu</span>
+            </div>
+            
+            <div id="diag-alert" class="diagnostic-box">
+              <h4>Lập luận & Giải thích:</h4>
+              <p id="diag-text">Vui lòng nhập các thông số xét nghiệm hoặc chọn dấu hiệu lâm sàng để công cụ phân tích tự động.</p>
+              
+              <div id="treatment-plan" class="treatment-box" style="display: none;">
+                <h5>Đề xuất xử trí:</h5>
+                <ul id="treatment-list"></ul>
+              </div>
+            </div>
+
+            <button type="button" class="reset-btn" onclick="resetForm()">🔄 Đặt lại (Reset)</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+  <script src="../../../js/sidebar.js"></script>
+  <script>
+    function calculateIndices() {
+      const sCr = parseFloat(document.getElementById('sCr').value);
+      const sNa = parseFloat(document.getElementById('sNa').value);
+      const sBun = parseFloat(document.getElementById('sBun').value);
+      const uCr = parseFloat(document.getElementById('uCr').value);
+      const uNa = parseFloat(document.getElementById('uNa').value);
+      const uUrea = parseFloat(document.getElementById('uUrea').value);
+
+      let fena = null;
+      let feurea = null;
+      let buncr = null;
+
+      if (sCr > 0 && sNa > 0 && uCr > 0 && uNa > 0) {
+        fena = (uNa * sCr) / (sNa * uCr) * 100;
+      }
+      if (sCr > 0 && sBun > 0 && uCr > 0 && uUrea > 0) {
+        feurea = (uUrea * sCr) / (sBun * uCr) * 100;
+      }
+      if (sBun > 0 && sCr > 0) {
+        buncr = sBun / sCr;
+      }
+
+      // Update UI
+      document.getElementById('val_fena').innerText = fena !== null ? fena.toFixed(1) + '%' : '—';
+      document.getElementById('val_feurea').innerText = feurea !== null ? feurea.toFixed(1) + '%' : '—';
+      document.getElementById('val_buncr').innerText = buncr !== null ? buncr.toFixed(1) : '—';
+
+      return { fena, feurea, buncr };
+    }
+
+    function runAnalysis() {
+      const indices = calculateIndices();
+      const fena = indices.fena;
+      const feurea = indices.feurea;
+      const buncr = indices.buncr;
+
+      // Lâm sàng
+      const pre_hypo = document.getElementById('chk_hypovolemia').checked;
+      const pre_co = document.getElementById('chk_low_co').checked;
+      const pre_vaso = document.getElementById('chk_vasodilation').checked;
+      
+      const post_symp = document.getElementById('chk_obstruction_symptoms').checked;
+      const post_hist = document.getElementById('chk_obstruction_history').checked;
+
+      const in_toxin = document.getElementById('chk_toxin').checked;
+      const in_rhabdo = document.getElementById('chk_rhabdo').checked;
+      const in_ain = document.getElementById('chk_ain_signs').checked;
+      const in_gn = document.getElementById('chk_gn_signs').checked;
+
+      // Cận lâm sàng
+      const sediment = document.getElementById('urine_sediment').value;
+      const usg = document.getElementById('ultrasound').value;
+
+      let score_pre = 0;
+      let score_in = 0;
+      let score_post = 0;
+
+      let reasoning = [];
+      let treatment = [];
+
+      // Phân tích SAU THẬN (Post-renal)
+      if (usg === 'hydronephrosis' || usg === 'bladder_distended') score_post += 10;
+      if (post_symp) score_post += 3;
+      if (post_hist) score_post += 1;
+
+      // Phân tích TRƯỚC THẬN (Pre-renal)
+      if (pre_hypo || pre_co || pre_vaso) score_pre += 3;
+      if (fena !== null && fena < 1) { score_pre += 5; reasoning.push("FENa < 1% phản ánh ống thận còn chức năng, tăng tái hấp thu Na+ do giảm tưới máu."); }
+      if (feurea !== null && feurea < 35) { score_pre += 4; reasoning.push("FEUrea < 35% ủng hộ nguyên nhân trước thận, đặc biệt hữu ích nếu bệnh nhân đang dùng lợi tiểu."); }
+      if (buncr !== null && buncr > 20) { score_pre += 3; reasoning.push("Tỷ lệ BUN/Cr > 20 cho thấy tăng tái hấp thu Urea tại ống thận do lưu lượng dòng chảy chậm (giảm tưới máu)."); }
+
+      // Phân tích TẠI THẬN (Intrinsic)
+      if (in_toxin || in_rhabdo || in_ain || in_gn) score_in += 3;
+      if (fena !== null && fena > 2) { score_in += 5; reasoning.push("FENa > 2% phản ánh tổn thương tế bào ống thận, mất khả năng tái hấp thu Na+."); }
+      if (feurea !== null && feurea > 50) { score_in += 4; reasoning.push("FEUrea > 50% gợi ý tổn thương thực thể tại thận."); }
+      if (buncr !== null && buncr < 15) { score_in += 2; reasoning.push("Tỷ lệ BUN/Cr < 15 phù hợp với tổn thương tại thận (giảm chức năng tái hấp thu)."); }
+      if (sediment !== 'unknown') {
+        score_in += 5;
+        if (sediment === 'muddy_brown') reasoning.push("Cặn lắng có trụ hạt bùn nâu (muddy brown casts) là dấu hiệu kinh điển của Hoại tử ống thận cấp (ATN).");
+        if (sediment === 'rbc_casts') reasoning.push("Trụ hồng cầu gợi ý viêm cầu thận cấp hoặc viêm mạch máu.");
+        if (sediment === 'wbc_eosinophils') reasoning.push("Bạch cầu/Eosinophils niệu gợi ý Viêm mô kẽ thận (AIN).");
+      }
+
+      // Tổng hợp chẩn đoán
+      let diagnosis = "Chưa đủ dữ liệu";
+      let badgeClass = "score-badge badge-gray";
+      let alertClass = "";
+
+      const maxScore = Math.max(score_pre, score_in, score_post);
+      
+      if (maxScore === 0 && reasoning.length === 0) {
+        reasoning.push("Vui lòng nhập thông số xét nghiệm hoặc chọn các dấu hiệu lâm sàng để công cụ tiến hành phân tích.");
+      } 
+      else if (score_post >= 5 || score_post === maxScore && score_post > 0) {
+        diagnosis = "AKI SAU THẬN (Post-renal)";
+        badgeClass = "score-badge badge-severe";
+        alertClass = "alert-active";
+        
+        if (usg === 'hydronephrosis') reasoning.unshift("Siêu âm có thận ứ nước/giãn đài bể thận, bằng chứng rõ ràng của tắc nghẽn.");
+        if (post_symp) reasoning.unshift("Lâm sàng có dấu hiệu tắc nghẽn đường tiểu cấp tính.");
+        
+        treatment = [
+          "Giải quyết tắc nghẽn ngay lập tức (đặt sonde tiểu Foley nếu bí tiểu).",
+          "Hội chẩn Ngoại niệu xem xét mở thông thận ra da hoặc đặt stent JJ nếu tắc nghẽn niệu quản.",
+          "Theo dõi sát tình trạng đa niệu sau giải áp (post-obstructive diuresis)."
+        ];
+      }
+      else if (score_in > score_pre && score_in > 0) {
+        diagnosis = "AKI TẠI THẬN (Intrinsic)";
+        badgeClass = "score-badge badge-mild";
+        alertClass = "alert-intrinsic";
+
+        if (in_toxin || sediment === 'muddy_brown' || in_rhabdo) {
+          diagnosis = "TẠI THẬN - Hoại tử ống thận cấp (ATN)";
+        } else if (in_gn || sediment === 'rbc_casts') {
+          diagnosis = "TẠI THẬN - Bệnh lý Cầu thận";
+        } else if (in_ain || sediment === 'wbc_eosinophils') {
+          diagnosis = "TẠI THẬN - Viêm kẽ thận (AIN)";
+        }
+        
+        treatment = [
+          "Loại bỏ ngay các nguyên nhân gây độc thận (ngưng NSAIDs, Aminoglycoside...).",
+          "Tối ưu hoá huyết động, duy trì MAP ≥ 65 mmHg.",
+          "Theo dõi và điều chỉnh điện giải (đặc biệt Kali máu).",
+          "Nếu có chỉ định (toan máu nặng, tăng K+, quá tải thể tích kháng trị), xem xét hội chẩn Lọc máu (RRT)."
+        ];
+      }
+      else if (score_pre >= score_in && score_pre > 0) {
+        diagnosis = "AKI TRƯỚC THẬN (Pre-renal)";
+        badgeClass = "score-badge badge-info";
+        alertClass = "alert-prerenal";
+
+        if (pre_hypo) reasoning.unshift("Lâm sàng có mất dịch / giảm thể tích nội mạch.");
+        if (pre_co) reasoning.unshift("Tưới máu thận giảm do suy tim / cung lượng tim thấp.");
+        if (pre_vaso) reasoning.unshift("Tưới máu thận giảm do giãn mạch hệ thống.");
+
+        treatment = [
+          "Đánh giá và bù dịch tinh thể (NaCl 0.9% hoặc Ringer Lactate) nếu có bằng chứng thiếu dịch.",
+          "Thận trọng bù dịch ở bệnh nhân suy tim/sung huyết; có thể cần dùng vận mạch (Norepinephrine) để nâng huyết áp.",
+          "Nếu đáp ứng bù dịch (nước tiểu tăng, Creatinine giảm), xác nhận chẩn đoán nguyên nhân trước thận."
+        ];
+      }
+      else {
+        diagnosis = "Chưa rõ ràng / Hỗn hợp";
+        badgeClass = "score-badge badge-gray";
+        reasoning.push("Các thông số chưa đủ phân biệt rõ ràng hoặc có tình trạng chồng lấp (Ví dụ: AKI Trước thận diễn tiến thành ATN).");
+        treatment = [
+          "Làm Test truyền dịch (nếu không có chống chỉ định) để đánh giá đáp ứng.",
+          "Chỉ định thêm cặn lắng nước tiểu, siêu âm thận, và theo dõi sinh hiệu sinh hóa sát sao."
+        ];
+      }
+
+      // Render Results
+      const badge = document.getElementById('aki-type-badge');
+      badge.innerText = diagnosis;
+      badge.className = badgeClass;
+
+      const alertBox = document.getElementById('diag-alert');
+      alertBox.className = "diagnostic-box " + alertClass;
+      
+      const text = document.getElementById('diag-text');
+      text.innerHTML = reasoning.length > 0 ? "• " + reasoning.join("<br>• ") : "";
+
+      const treatmentBox = document.getElementById('treatment-plan');
+      const treatmentList = document.getElementById('treatment-list');
+      
+      if (treatment.length > 0) {
+        treatmentBox.style.display = 'block';
+        treatmentList.innerHTML = treatment.map(item => `<li>${item}</li>`).join('');
+      } else {
+        treatmentBox.style.display = 'none';
+      }
+    }
+
+    function resetForm() {
+      // Inputs
+      document.querySelectorAll('input[type="number"]').forEach(el => el.value = '');
+      // Checkboxes
+      document.querySelectorAll('input[type="checkbox"]').forEach(el => el.checked = false);
+      // Selects
+      document.querySelectorAll('select').forEach(el => el.value = 'unknown');
+      
+      runAnalysis();
+    }
+    
+    // Initial run
+    document.addEventListener('DOMContentLoaded', runAnalysis);
+  </script>
+</body>
+</html>

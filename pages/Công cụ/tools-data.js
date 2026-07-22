@@ -28,6 +28,15 @@ const clinicalToolsData = [
     part: "part1-section",
     tags: ["chung", "nghiên cứu khoa học", "nckh", "cỡ mẫu", "thống kê"]
   },
+  {
+    id: "quy-doi-lieu",
+    title: "Bộ Quy Đổi Liều Thuốc Tương Đương",
+    description: "Quy đổi liều Corticoid, Opioid (OME), Statin, PPI, DOACs, Benzodiazepines chính xác",
+    icon: "⚖️",
+    link: "Chung/QuyDoi_LieuTuongDuong.html",
+    part: "part1-section",
+    tags: ["chung", "quy đổi", "liều lượng", "tương đương", "corticoid", "statin"]
+  },
   
   // Phần 2: Truyền Nhiễm
   {
@@ -163,6 +172,15 @@ const clinicalToolsData = [
     link: "Thận & Điện giải - toan kiềm/DG_Natri-Dich.html",
     part: "part6-section",
     tags: ["thận", "điện giải", "natri", "tbw", "dịch", "hạ natri"]
+  },
+  {
+    id: "danh-gia-nguyen-nhan-aki",
+    title: "Đánh giá Nguyên nhân AKI",
+    description: "Phân loại tổn thương thận cấp (Trước thận, Tại thận, Sau thận) dựa trên bệnh sử và xét nghiệm",
+    icon: "🔬",
+    link: "Thận & Điện giải - toan kiềm/danh-gia-nguyen-nhan-aki.html",
+    part: "part6-section",
+    tags: ["thận", "điện giải", "aki", "tổn thương thận cấp", "nguyên nhân", "trước thận", "tại thận", "sau thận"]
   },
 
   // Phần 7: Tim mạch & Huyết khối

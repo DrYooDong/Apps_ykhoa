@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sinh lý bệnh và Cơ chế bệnh sinh Bệnh thận mạn (Chronic Kidney Disease - CKD Pathophysiology): Sự thích ứng thích nghi phì đại cầu thận, cơ chế mất thăng bằng nội môi và cố định áp lực thẩm thấu nước tiểu (isosthenuria), tích tụ creatinin/urê, sương urê huyết (uremic frost), rối loạn điện giải (kali, natri) và kiềm toan, bệnh lý loạn dưỡng xương do thận (renal osteodystrophy) liên đới calcitriol và PTH, thiếu máu do giảm erythropoietin, cơ chế bệnh thận đái tháo đường (DKD, hyperfiltration, podocyte injury) và các liệu pháp SGLT2i/GLP-1 RA.">
+    <title>Sinh lý bệnh & Cơ chế bệnh sinh CKD – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal (Level 3 Paths) -->
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học dùng chung (Tải từ module Sinh lý - Sinh lý bệnh) -->
+    <link rel="stylesheet" href="../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../css/components/toc.css">
+
+    <!-- Scripts điều hướng hệ thống -->
+    <script src="../../../components/header.js" defer></script>
+    <script src="../../../components/footer.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+    
+    <!-- Script Sinh lý học dùng chung -->
+    <script src="../js/physio-shared.js" defer></script>
+    <script src="../../../js/toc.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../../../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh">
+                            <span class="nav-icon">🧬</span>
+                            <span class="nav-text">Sinh lý & Sinh lý bệnh</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng">
+                            <span class="nav-icon">🩺</span>
+                            <span class="nav-text">Kỹ năng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận">
+                            <span class="nav-icon">🤒</span>
+                            <span class="nav-text">Tiếp cận</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ">
+                            <span class="nav-icon">⚙️</span>
+                            <span class="nav-text">Công cụ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+                            <span class="nav-icon">💊</span>
+                            <span class="nav-text">Dược lý</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+                            <span class="nav-icon">📄</span>
+                            <span class="nav-text">Y học chứng cứ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Y học cổ truyền/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền">
+                            <span class="nav-icon">☯️</span>
+                            <span class="nav-text">Y học cổ truyền</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container" style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+                <ol class="breadcrumb-list" style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+                    <li><a href="../../../index.html">🏠 Home</a> &gt;</li>
+                    <li><a href="../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+                    <li style="color:var(--color-primary); font-weight:600;">Sinh lý bệnh &amp; Cơ chế bệnh sinh CKD</li>
+                </ol>
+            </nav>
+
+            <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+            <main class="visual-container">
+                <!-- CHAPTER HEADER CARD -->
+                <div class="chapter-header">
+                    <h1>SINH LÝ BỆNH & CƠ CHẾ BỆNH SINH BỆNH THẬN MẠN (CKD)</h1>
+                    <p>Chronic Kidney Disease Pathophysiology & Pathogenesis — Khảo sát cơ chế thích ứng thích nghi phì đại nephron, hiện tượng cố định áp lực thẩm thấu nước tiểu (isosthenuria), sương urê huyết (uremic frost), loạn dưỡng xương do thận do giảm calcitriol và tăng PTH, thiếu máu do giảm erythropoietin, cùng cơ chế huyết động & chuyển hóa bệnh thận đái tháo đường (DKD).</p>
+                </div>
+
+                <p class="physio-lead">
+                    <span class="term-hl">Bệnh thận mạn (Chronic Kidney Disease - CKD)</span> là tình trạng suy giảm kéo dài (>3 tháng) cấu trúc hoặc chức năng thận, biểu hiện bởi eGFR &lt; 60 mL/phút/1.73m² hoặc sự hiện diện của các dấu chứng tổn thương thận (như albumin niệu). Sinh lý bệnh của CKD xoay quanh sự mất mát nephron không phục hồi, kích hoạt các phản ứng bù trừ quá mức gây tăng áp lực lọc cầu thận, cuối cùng dẫn tới sự xơ hóa mô kẽ tiến triển và suy sụp hoàn toàn cân bằng nội môi.
+                </p>
+
+                <!-- PHẦN I: SỰ THÍCH ỨNG VÀ MẤT CÂN BẰNG NỘI MÔI -->
+                <div class="physio-content">
+                    <h2 id="thich-ung-suy-giam-noi-moi" class="section-title">
+                        <span>Phần I: Sự thích ứng chức năng thận & Cơ chế suy giảm nội môi</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Trong các giai đoạn sớm của CKD (giảm dự trữ thận hoặc suy thận nhẹ), người bệnh hoàn toàn không có triệu chứng lâm sàng. Đây là kết quả của **sự thích ứng chức năng thận (renal functional adaptation)**:</p>
+
+                        <div class="key-concept">
+                            🔑 <strong>Cơ chế Thích ứng Phì đại & Tăng lọc cầu thận</strong><br>
+                            Khi một số lượng nephron bị tiêu hủy do bệnh lý nguyên phát, các nephron lành còn sót lại sẽ tự bù trừ bằng cách phì đại kích thước và giãn tiểu động mạch vào để tăng dòng máu qua cầu thận, làm tăng áp lực lọc bên trong cầu thận. Nhờ sự **tăng lọc (hyperfiltration)** của từng nephron đơn độc này, độ lọc cầu thận tổng thể (GFR) của cơ thể vẫn được duy trì ở mức bình thường hoặc chỉ giảm nhẹ. 
+                            <br><br>
+                            Tuy nhiên, phản ứng thích nghi này là một **con dao hai lưỡi**. Áp lực lọc cao liên tục trong thời gian dài sẽ làm tổn thương cơ học các tế bào có chân (podocytes), phá hủy màng lọc cầu thận và thúc đẩy tiến trình xơ hóa cầu thận (glomerulosclerosis), tạo thành một vòng xoắn bệnh lý hủy hoại nốt những nephron còn lại.
+                        </div>
+
+                        <ul class="physio-list-arrow" style="margin-top: 2rem;">
+                            <li><strong>Cố định áp lực thẩm thấu nước tiểu (Isosthenuria):</strong> Khi số lượng nephron hoạt động giảm sâu, khả năng thiết lập gradient áp lực thẩm thấu ở tủy thận bị phá hủy. Thận mất hoàn toàn khả năng cô đặc hoặc pha loãng nước tiểu một cách linh hoạt. Áp lực thẩm thấu của nước tiểu bị cố định ở mức **300 - 320 mOsm/kg** (gần tương đương với áp lực thẩm thấu của huyết tương là 275 - 295 mOsm/kg). Lượng nước tiểu không thể điều chỉnh theo lượng nước nhập vào, dẫn đến tiểu đêm nhiều ở giai đoạn trung bình và thiểu niệu/vô niệu ở giai đoạn cuối (eGFR &lt; 15 mL/phút/1.73m²).</li>
+                            <li><strong>Tích tụ Creatinine và Urê huyết:</strong> Do creatinin và urê phụ thuộc chủ yếu vào sự lọc tại cầu thận, khi GFR giảm, nồng độ các chất này trong máu tăng lên theo **đường hyperbol**. Ở GFR &lt; 15 mL/phút/1.73m², urê và creatinin huyết tương tăng vọt, biểu hiện lâm sàng của **hội chứng urê huyết (uremic syndrome)**. Bản thân urê và creatinin ít gây độc trực tiếp, chúng chỉ đóng vai trò là dấu ấn đại diện cho hàng trăm độc tố urê huyết khác tích tụ (uremic toxins).</li>
+                        </ul>
+
+                        <div class="clinical-note-box" style="margin-top: 1.5rem;">
+                            <h4>❄️ Dấu chứng Lâm sàng: Sương urê huyết (Uremic frost)</h4>
+                            <p>Khi nồng độ urê trong máu tăng cao mạn tính nghiêm trọng, urê sẽ khuếch tán vào tuyến mồ hôi. Khi mồ hôi bay hơi trên bề mặt da, urê kết tinh lại tạo thành các vảy màu trắng mịn, dễ vỡ như sương tuyết lắng đọng trên da (thường thấy ở vùng trán, chân mày hoặc cổ). Đây là dấu hiệu của hội chứng urê huyết nặng chưa được kiểm soát bằng lọc máu.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN II: RỐI LOẠN DỊCH THỂ, KALI VÀ TOAN KIỀM -->
+                <div class="physio-content">
+                    <h2 id="roi-loan-dien-giai-toan-kiem" class="section-title">
+                        <span>Phần II: Rối loạn cân bằng dịch thể, Kali và Toan kiềm</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Sự suy giảm GFR tiến triển phá vỡ khả năng điều hòa bài tiết dịch vị và điện giải:</p>
+
+                        <ul class="physio-list-arrow">
+                            <li><strong>Cân bằng Natri và Nước:</strong> Dù GFR giảm, thận thích nghi bằng cách tăng phân số thải natri ($FE_{Na}$) trên mỗi nephron còn hoạt động. Nhờ đó, nồng độ natri máu vẫn bình thường và quá tải tuần hoàn ít xảy ra ở giai đoạn sớm. Tuy nhiên, nếu bệnh nhân nạp quá nhiều natri hoặc nước, hoặc có kèm theo suy tim, thận sẽ mất khả năng đáp ứng, dẫn đến quá tải thể tích tuần hoàn, phù nề nặng và **suy tim sung huyết**.</li>
+                            <li><strong>Tăng Kali máu (Hyperkalemia):</strong> Sự bài tiết kali ở ống lượn xa (qua bơm Na+/K+-ATPase chịu ảnh hưởng của aldosterone) được tăng cường tối đa ở các nephron còn lại để giữ kali máu bình thường. Tuy nhiên, khi GFR giảm sâu hoặc lượng kali nhập quá mức, kali máu sẽ tăng vọt đe dọa ngừng tim.
+                                <br><br>
+                                <span class="term-hl">⚠️ Yếu tố nguy cơ lâm sàng:</span> Bệnh nhân CKD nhẹ đến trung bình có thể bị tăng kali máu rất sớm và nguy hiểm nếu sử dụng các nhóm thuốc ức chế bài tiết kali như: **thuốc ức chế men chuyển (ACEi)**, **thuốc chẹn thụ thể (ARB)** (do ức chế aldosterone), **lợi tiểu giữ kali** (spironolactone), **thuốc chẹn beta**, hoặc **NSAIDs** (do ức chế prostaglandin giảm tưới máu thận và giảm aldosterone).
+                            </li>
+                            <li><strong>Toan chuyển hóa (Metabolic Acidosis):</strong> Thận suy giảm khả năng bài tiết các ion hydro ($H^+$) và tái hấp thu bicarbonate ($HCO_3^-$). Bệnh nhân CKD điển hình có toan chuyển hóa mức độ trung bình với $HCO_3^-$ huyết tương dao động từ **15 đến 20 mmol/L**. 
+                                <br><br>
+                                *Hậu quả hệ thống:* Toan máu kích hoạt quá trình dị hóa protein gây tiêu cơ vân, teo cơ; toan hóa kích thích hệ đệm của xương phải giải phóng canxi cacbonat để trung hòa axit, làm trầm trọng thêm tình trạng loãng xương; và toan hóa trực tiếp thúc đẩy xơ hóa kẽ thận làm CKD tiến triển nhanh hơn.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN III: LOẠN DƯỠNG XƯƠNG VÀ THIẾU MÁU -->
+                <div class="physio-content">
+                    <h2 id="loan-duong-xuong-va-thieu-mau" class="section-title">
+                        <span>Phần III: Loạn dưỡng xương do thận & Thiếu máu mạn tính</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Suy giảm chức năng nhu mô thận ảnh hưởng trực tiếp đến hoạt động nội tiết của cơ thể:</p>
+
+                        <h3 class="subsection-title">1. Rối loạn Canxi, Phospho & Tuyến cận giáp: Loạn dưỡng xương do thận</h3>
+                        <p>Các biến đổi sinh hóa này bắt đầu xuất hiện rất sớm (từ giai đoạn 2-3 của CKD):</p>
+                        <ol class="physio-steps">
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">Giảm sản xuất Calcitriol</span>
+                                    Nhu mô thận bị tổn thương làm giảm hoạt tính của men 1-alpha-hydroxylase, dẫn đến **sụt giảm sản sinh calcitriol ($1,25(OH)_2D$ - dạng hoạt động của Vitamin D)**. Thiếu calcitriol làm giảm hấp thu canxi ở ruột, trực tiếp gây ra chứng **hạ canxi máu**.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">Tăng Phospho máu</span>
+                                    Thận suy giảm khả năng lọc lọc và bài xuất phosphate qua nước tiểu, gây tích tụ phốt pho trong tuần hoàn (**tăng phospho máu**). Phosphate tăng cao sẽ liên kết với canxi tự do gây lắng đọng muối canxi phosphat ở mô mềm, càng làm hạ canxi máu trầm trọng.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">Cường cận giáp thứ phát</span>
+                                    Hạ canxi máu, tăng phospho máu và thiếu hụt calcitriol là bộ ba kích thích cực mạnh lên tuyến cận giáp. Tuyến cận giáp tăng tiết hormone **PTH** và phì đại tuyến cận giáp, dẫn đến hội chứng **cường cận giáp thứ phát (Secondary Hyperparathyroidism)**. PTH tăng cao huy động canxi từ xương vào máu để bình ổn canxi huyết.
+                                </div>
+                            </li>
+                        </ol>
+
+                        <div class="key-concept">
+                            🦴 <strong>Loạn dưỡng xương do thận (Renal Osteodystrophy):</strong><br>
+                            Là bệnh lý biến đổi cấu trúc xương do rối loạn chuyển hóa chất khoáng trong CKD:
+                            <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0;">
+                                <li><strong>Viêm xương xơ hóa (Osteitis fibrosa cystica):</strong> Do PTH quá cao kích thích hủy cốt bào hoạt động mạnh, làm tiêu xương và xơ hóa tủy xương (high-turnover bone disease).</li>
+                                <li><strong>Bệnh xương bất động (Adynamic bone disease):</strong> Do điều trị ức chế PTH quá mức hoặc do viêm mạn, tế bào xương ngừng hoạt động chuyển hóa (low-turnover bone disease).</li>
+                                <li><strong>Nhuyễn xương (Osteomalacia):</strong> Xương kém khoáng hóa do thiếu hụt calcitriol trầm trọng.</li>
+                            </ul>
+                        </div>
+
+                        <h3 class="subsection-title" style="margin-top: 2rem;">2. Thiếu máu trong Bệnh thận mạn (Anemia of CKD)</h3>
+                        <p>Thiếu máu đẳng sắc hồng cầu bình thường là biến chứng kinh điển khi CKD tiến triển sang giai đoạn 3 (eGFR &lt; 60 mL/phút/1.73m²), với hematocrit giảm xuống 20-30%:</p>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Cơ chế chính (Thiếu Erythropoietin):</strong> Erythropoietin (EPO) là hormone kích thích tủy xương sản sinh hồng cầu, được tổng hợp bởi các tế bào kẽ quanh ống thận ở vùng vỏ thận. Khi nhu mô thận bị xơ hóa và tổn thương tiến triển, số lượng tế bào sản xuất EPO giảm nặng nề, cơ thể thiếu hụt EPO trầm trọng.</li>
+                            <li><strong>Cơ chế thứ phát phối hợp:</strong>
+                                <br>- *Trạng thái viêm mạn tính:* Tăng nồng độ **hepcidin** (do cytokine viêm IL-6 kích thích gan sản xuất). Hepcidin làm phong tỏa kênh ferroportin ở tế bào ruột và đại thực bào, ngăn cản hấp thu sắt ở ruột và ngăn giải phóng sắt dự trữ, gây ra tình trạng thiếu sắt chức năng.
+                                <br>- *Độc tố ure huyết:* Làm rút ngắn đời sống của hồng cầu trong tuần hoàn (từ 120 ngày giảm xuống còn 60-80 ngày) và ức chế tủy xương đáp ứng với EPO.
+                                <br>- *Thiếu hụt dinh dưỡng:* Bệnh nhân ăn uống kém dẫn đến thiếu sắt thực sự, thiếu folate và vitamin B12.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN IV: BỆNH THẬN ĐÁI THÁO ĐƯỜNG -->
+                <div class="physio-content">
+                    <h2 id="benh-than-dai-thao-duong" class="section-title">
+                        <span>Phần IV: Cơ chế bệnh sinh Bệnh thận đái tháo đường (DKD)</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Bệnh thận đái tháo đường (Diabetic Kidney Disease - DKD) là nguyên nhân hàng đầu gây CKD giai đoạn cuối. Cơ chế bệnh sinh của DKD là sự tương tác phức tạp giữa các yếu tố chuyển hóa, huyết động học và phản ứng viêm:</p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🧪 1. Cơ chế Chuyển hóa và Căng thẳng tế bào</div>
+                                <p>Tình trạng tăng đường huyết mạn tính làm các tế bào thận (nội mạc, gian mạch, biểu mô) hấp thu lượng glucose không được kiểm soát. Quá trình này gây ra:</p>
+                                <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0;">
+                                    <li>Tăng sản xuất các **gốc tự do oxy hóa (ROS)** từ chuỗi hô hấp ty thể, gây tổn thương DNA và bào quan.</li>
+                                    <li>Kích hoạt các con đường chuyển hóa độc hại (Polyol, PKC, Hexosamine).</li>
+                                    <li>Tích tụ các **sản phẩm glycat hóa bền vững (AGEs)** trên màng đáy cầu thận, kích hoạt thụ thể RAGE thúc đẩy phản ứng viêm, apoptosis tế bào và xơ hóa mô.</li>
+                                </ul>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">⚡ 2. Cơ chế Huyết động học cầu thận (Tăng lọc cầu thận)</div>
+                                <p>Đường huyết cao kích hoạt hệ thống hormone và thay đổi phản hồi ống-cầu thận:</p>
+                                <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0;">
+                                    <li><strong>Tăng hoạt RAAS nội thận:</strong> Tăng sản sinh Angiotensin II tại chỗ gây **co thắt chọn lọc tiểu động mạch đi** (efferent arteriole), làm tăng áp lực thủy tĩnh bên trong cầu thận một cách dữ dội.</li>
+                                    <li><strong>Đảo lộn phản hồi ống - cầu thận:</strong> Sự tăng lọc glucose kéo theo natri được tái hấp thu quá mức ở ống lượn gần qua kênh **SGLT2**. Lượng natri đi đến phức hợp cạnh cầu thận (macula densa) giảm sút. Macula densa nhận diện sai lệch rằng GFR đang thấp, phát tín hiệu gây **giãn tiểu động mạch vào** (afferent arteriole).</li>
+                                    <li>*Hậu quả:* Sự kết hợp giữa giãn mạch vào và co mạch ra đẩy áp lực lọc trong cầu thận lên cực cao. Áp lực cơ học này kéo căng bao cầu thận, làm tổn thương tế bào có chân (podocytes) gây rách màng lọc, biểu hiện bằng **albumin niệu** tiến triển và xơ hóa cầu thận nốt đặc trưng (tổn thương Kimmelstiel-Wilson).</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="clinical-note-box" style="margin-top: 2rem; border-left: 4px solid var(--color-info);">
+                            <h4>🛡️ Ứng dụng điều trị bảo vệ thận của Thuốc ức chế SGLT2 (SGLT2i)</h4>
+                            <p>Dựa trên cơ chế phản hồi ống-cầu thận, thuốc ức chế SGLT2 ngăn cản sự tái hấp thu glucose và natri ở ống lượn gần. Lượng natri đi đến macula densa tăng lên bình thường, kích thích co tiểu động mạch vào. Nhờ đó, <strong>SGLT2i trực tiếp làm hạ áp lực lọc trong cầu thận</strong>, làm giảm albumin niệu và bảo vệ cấu trúc nephron khỏi bị xơ hóa tiến triển.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BẢNG SO SÁNH PHÂN LOẠI LÂM SÀNG -->
+                <div class="physio-content">
+                    <h2 id="so-sanh-aki-ckd" class="section-title">
+                        <span>Bảng so sánh: Tổn thương thận cấp (AKI) vs. Bệnh thận mạn (CKD)</span>
+                    </h2>
+                    
+                    <div class="table-responsive">
+                        <table class="physio-table physio-table-compare">
+                            <thead>
+                                <tr>
+                                    <th>Đặc điểm so sánh</th>
+                                    <th>Tổn thương thận cấp (AKI)</th>
+                                    <th>Bệnh thận mạn (CKD)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Thời gian tiến triển</strong></td>
+                                    <td>Nhanh chóng trong vài giờ đến vài ngày.</td>
+                                    <td>Kéo dài âm thầm trên 3 tháng.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Tính khả biến (Phục hồi)</strong></td>
+                                    <td>Có khả năng phục hồi hoàn toàn chức năng thận nếu giải quyết sớm nguyên nhân.</td>
+                                    <td>Không thể phục hồi hoàn toàn; tiến triển nặng dần theo thời gian do xơ hóa nhu mô.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Kích thước thận (Siêu âm)</strong></td>
+                                    <td>Bình thường hoặc sưng to (do phù nề mô kẽ).</td>
+                                    <td>**Teo nhỏ cả hai thận** (chiều dài &lt; 9 cm), mất phân biệt tủy-vỏ (ngoại trừ CKD do đái tháo đường, amyloidosis, thận đa nang thì kích thước thận có thể bình thường hoặc to).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Thiếu máu mạn tính</strong></td>
+                                    <td>Hiếm khi xuất hiện (trừ khi có xuất huyết cấp kèm theo).</td>
+                                    <td>Hầu như luôn xuất hiện ở giai đoạn ≥ 3 và tiến triển nặng dần do thiếu erythropoietin mạn tính.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Biến đổi xương & Tuyến cận giáp</strong></td>
+                                    <td>Không có (tiến triển quá nhanh để gây biến đổi xương).</td>
+                                    <td>Cường cận giáp thứ phát rõ rệt và loạn dưỡng xương do thận do thiếu vitamin D hoạt động kéo dài.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Lượng nước tiểu trên lâm sàng</strong></td>
+                                    <td>Dao động lớn (từ vô niệu, thiểu niệu đến không thiểu niệu).</td>
+                                    <td>Đa niệu và tiểu đêm ở giai đoạn trung bình; thiểu niệu chỉ xuất hiện ở giai đoạn cuối.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- TÀI LIỆU THAM KHẢO -->
+                <div class="physio-content">
+                    <h2 id="tai-lieu-tham-khao" class="section-title">
+                        <span>Tài liệu Tham khảo (References)</span>
+                    </h2>
+                    <div class="physio-text-block">
+                        <ol style="font-size: 0.9rem; line-height: 1.6; color: var(--color-text-muted);">
+                            <li>Malkina A. Bệnh thận mạn - Rối loạn di truyền - Cẩm nang MSD - Phiên bản dành cho chuyên gia. Cẩm nang MSD. Cập nhật lần cuối tháng 7 năm 2025.</li>
+                            <li>Kidney Disease: Improving Global Outcomes (KDIGO) CKD Work Group. KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease. <em>Kidney International</em>. 2024;105(4S):S117-S314.</li>
+                            <li>Inker LA, Grams ME, Levey AS, et al. Relationship of estimated GFR and albuminuria to concurrent laboratory abnormalities: an individual participant data meta-analysis in a Global Consortium. <em>American Journal of Kidney Diseases</em>. 2018;73(2):206-217.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- TÀI LIỆU LIÊN QUAN -->
+                <section class="related-links-section">
+                    <h4 class="related-links-title">
+                        <i class="fas fa-link"></i> Xem thêm các nội dung liên quan
+                    </h4>
+                    <div class="related-links-grid">
+                        <a href="../../Công cụ/Thận &amp; Điện giải/DG_GFR.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge cong-cu">Công cụ</span>
+                                <h5>Tính Toán Độ Lọc Cầu Thận (eGFR)</h5>
+                                <p>Công cụ hỗ trợ tính toán eGFR tự động dựa trên công thức MDRD, CKD-EPI 2009/2021 và Cockcroft-Gault phục vụ chẩn đoán giai đoạn CKD.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                        <a href="../../Dược lý/Chuyên khoa/DL_Timmach.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge duoc-ly">Dược lý</span>
+                                <h5>Dược Lý Lâm Sàng Tim Mạch</h5>
+                                <p>Cơ chế tác động, chỉ định bảo vệ thận và nguy cơ tăng kali máu của các thuốc ức chế hệ RAAS (ACEi, ARBs, MRA) ở bệnh nhân suy thận.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                        <a href="SLB_CCBS_AKI.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge sinh-ly">Sinh lý bệnh</span>
+                                <h5>Sinh Lý Bệnh Tổn Thương Thận Cấp (AKI)</h5>
+                                <p>Cơ chế giảm tưới máu thận trước thận, sung huyết trong cardiorenal syndrome và hoại tử ống thận cấp thực thể.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+    
+    <!-- Script điều khiển chung -->
+    <script src="../../../js/sidebar.js"></script>
+</body>
+
+</html>

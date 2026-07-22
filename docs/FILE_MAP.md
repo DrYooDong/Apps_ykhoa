@@ -112,6 +112,7 @@
 | `Công cụ/Thận & Điện giải - toan kiềm/DG_Kali-Canxi.html` | Rối loạn Kali/Canxi | — |
 | `Công cụ/Thận & Điện giải - toan kiềm/DG_Natri-Dich.html` | Rối loạn Natri/Dịch | — |
 | `Công cụ/Thận & Điện giải - toan kiềm/renal-function.html` | Chức năng thận | — |
+| `Công cụ/Thận & Điện giải - toan kiềm/danh-gia-nguyen-nhan-aki.html` | Đánh giá nguyên nhân AKI | — |
 | `Công cụ/Nội tiết & Chuyển hóa/DG_Insulin-ĐTĐ.html` | Chỉnh liều Insulin | `insulin-calculator.css` |
 | `Công cụ/Tim mạch & huyết khối/DG_LDLc.html` | Mục tiêu LDL-c | — |
 | `Công cụ/Tim mạch & huyết khối/DG_Suytim.html` | Đánh giá suy tim | — |
@@ -212,12 +213,17 @@
 | `Sinh lý .../Sinhly-sinhlybenh.html` | Hub tổng | Cấp 2 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_THA.html` | Sinh lý bệnh & Cơ chế bệnh sinh Tăng huyết áp | Cấp 3 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_ST.html` | Sinh lý bệnh & Cơ chế bệnh sinh Suy tim | Cấp 3 |
+| `Sinh lý .../SLB_CCBS/SLB_CCBS_AKI.html` | Sinh lý bệnh & Cơ chế bệnh sinh Tổn thương thận cấp | Cấp 3 |
+| `Sinh lý .../SLB_CCBS/SLB_CCBS_CKD.html` | Sinh lý bệnh & Cơ chế bệnh sinh Bệnh thận mạn | Cấp 3 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_ACS.html` | Sinh lý bệnh & Cơ chế bệnh sinh Hội chứng vành cấp | Cấp 3 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_CCS.html` | Sinh lý bệnh & Cơ chế bệnh sinh Hội chứng vành mạn | Cấp 3 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_DTD.html` | Sinh lý bệnh & Cơ chế bệnh sinh Đái tháo đường | Cấp 3 |
+| `Sinh lý .../SLB_CCBS/SLB_CCBS_GERD.html` | Sinh lý bệnh & Cơ chế bệnh sinh Trào ngược dạ dày thực quản | Cấp 3 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_COPD.html` | Sinh lý bệnh & Cơ chế bệnh sinh Bệnh phổi tắc nghẽn mạn tính | Cấp 3 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_SXHD.html` | Sinh lý bệnh & Cơ chế bệnh sinh Sốt xuất huyết Dengue | Cấp 3 |
+| `Sinh lý .../SLB_CCBS/SLB_CCBS_TSG.html` | Sinh lý bệnh & Cơ chế bệnh sinh Tiền sản giật | Cấp 3 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_VTC.html` | Sinh lý bệnh & Cơ chế bệnh sinh Viêm tụy cấp | Cấp 3 |
+| `Sinh lý .../SLB_CCBS/SLB_CCBS_XG.html` | Sinh lý bệnh & Cơ chế bệnh sinh Xơ gan | Cấp 3 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_VP.html` | Sinh lý bệnh & Cơ chế bệnh sinh Viêm phổi | Cấp 3 |
 | `Sinh lý .../Sinhly/HUONG_DAN_THIET_KE.md` | Design guide sinh lý | — |
 | `Sinh lý .../Sinhly/Phan1/SL_*.html` | Bài học sinh lý (Phần 1: TB) | Cấp 4 |

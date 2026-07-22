@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sinh lý bệnh và Cơ chế bệnh sinh Tổn thương thận cấp (Acute Kidney Injury - AKI Pathophysiology): Phân loại trước thận (suy giảm tưới máu, hội chứng tim thận và sung huyết tĩnh mạch thận), tại thận (hoại tử ống thận cấp ATN, nhiễm trùng huyết SA-AKI, rối loạn vi tuần hoàn glycocalyx, Warburg reprogramming, pyroptosis, ferroptosis), sau thận (tắc nghẽn cơ học), tiến trình maladaptive repair chuyển tiếp AKI sang CKD, phân độ KDIGO và vai trò của các dấu ấn sinh học mới TIMP-2, IGFBP7, NGAL, KIM-1.">
+    <title>Sinh lý bệnh & Cơ chế bệnh sinh AKI – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal (Level 3 Paths) -->
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học dùng chung (Tải từ module Sinh lý - Sinh lý bệnh) -->
+    <link rel="stylesheet" href="../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../css/components/toc.css">
+
+    <!-- Scripts điều hướng hệ thống -->
+    <script src="../../../components/header.js" defer></script>
+    <script src="../../../components/footer.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+    
+    <!-- Script Sinh lý học dùng chung -->
+    <script src="../js/physio-shared.js" defer></script>
+    <script src="../../../js/toc.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../../../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh">
+                            <span class="nav-icon">🧬</span>
+                            <span class="nav-text">Sinh lý & Sinh lý bệnh</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng">
+                            <span class="nav-icon">🩺</span>
+                            <span class="nav-text">Kỹ năng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận">
+                            <span class="nav-icon">🤒</span>
+                            <span class="nav-text">Tiếp cận</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ">
+                            <span class="nav-icon">⚙️</span>
+                            <span class="nav-text">Công cụ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+                            <span class="nav-icon">💊</span>
+                            <span class="nav-text">Dược lý</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+                            <span class="nav-icon">📄</span>
+                            <span class="nav-text">Y học chứng cứ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Y học cổ truyền/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền">
+                            <span class="nav-icon">☯️</span>
+                            <span class="nav-text">Y học cổ truyền</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container" style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+                <ol class="breadcrumb-list" style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+                    <li><a href="../../../index.html">🏠 Home</a> &gt;</li>
+                    <li><a href="../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+                    <li style="color:var(--color-primary); font-weight:600;">Sinh lý bệnh &amp; Cơ chế bệnh sinh AKI</li>
+                </ol>
+            </nav>
+
+            <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+            <main class="visual-container">
+                <!-- CHAPTER HEADER CARD -->
+                <div class="chapter-header">
+                    <h1>SINH LÝ BỆNH & CƠ CHẾ BỆNH SINH TỔN THƯƠNG THẬN CẤP (AKI)</h1>
+                    <p>Acute Kidney Injury Pathophysiology & Pathogenesis — Phân tích chi tiết ba cơ chế sinh bệnh học (trước thận, tại thận, sau thận), sinh lý bệnh vi tuần hoàn & chuyển hóa ty thể trong SA-AKI, tiến trình sửa chữa sai lệch (maladaptive repair) gây xơ hóa mô kẽ tiến triển thành bệnh thận mạn (CKD) và các dấu ấn sinh học mới.</p>
+                </div>
+
+                <p class="physio-lead">
+                    <span class="term-hl">Tổn thương thận cấp (Acute Kidney Injury - AKI)</span> là một hội chứng lâm sàng đặc trưng bởi sự suy giảm nhanh chóng chức năng lọc và bài tiết của thận trong vài giờ đến vài ngày, dẫn đến sự tích tụ các sản phẩm chuyển hóa chứa nitơ (ure, creatinin) và rối loạn thăng bằng nước - điện giải - toan kiềm. AKI là một tình trạng diễn tiến đa yếu tố, ảnh hưởng sâu sắc đến tỷ lệ tử vong ở bệnh nhân hồi sức tích cực.
+                </p>
+
+                <!-- PHẦN I: PHÂN LOẠI CƠ CHẾ BỆNH SINH -->
+                <div class="physio-content">
+                    <h2 id="phan-loai-co-che-benh-sinh" class="section-title">
+                        <span>Phần I: Phân loại cơ chế sinh bệnh học AKI (Trước thận, Tại thận, Sau thận)</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Dựa trên vị trí giải phẫu và cơ chế khởi phát, AKI truyền thống được chia làm 3 nhóm lớn:</p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🩺 1. AKI Trước thận (Pre-renal AKI)</div>
+                                <p>Xảy ra như một **đáp ứng sinh lý thích nghi** đối với tình trạng giảm tưới máu thận. Nhu mô thận hoàn toàn nguyên vẹn. Nguyên nhân bao gồm:</p>
+                                <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0;">
+                                    <li>Giảm thể tích tuần hoàn thực sự (xuất huyết, mất dịch tiêu hóa/nước tiểu, rò rỉ khoang thứ ba).</li>
+                                    <li>Giảm cung lượng tim (suy tim cấp, nhồi máu cơ tim dữ dội).</li>
+                                    <li>Giãn mạch hệ thống gây phân bố lại tuần hoàn (sốc nhiễm trùng, sốc phản vệ).</li>
+                                    <li>Sử dụng thuốc ức chế tự điều hòa cầu thận (NSAIDs làm co tiểu động mạch vào, ức chế men chuyển ACEi/ARBs làm giãn tiểu động mạch ra).</li>
+                                </ul>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🔬 2. AKI Tại thận (Intrinsic/Renal AKI)</div>
+                                <p>Xảy ra do tổn thương trực tiếp vào các cấu trúc của nhu mô thận, bao gồm:</p>
+                                <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0;">
+                                    <li><strong>Hoại tử ống thận cấp (ATN):</strong> Hậu quả của thiếu máu cục bộ kéo dài (trước thận nặng chuyển sang) hoặc nhiễm độc chất ống thận.</li>
+                                    <li><strong>Viêm thận kẽ cấp (AIN):</strong> Thường do phản ứng quá mẫn ứng phó với thuốc (kháng sinh, NSAIDs).</li>
+                                    <li><strong>Tổn thương cầu thận và vi mạch:</strong> Viêm cầu thận tiến triển nhanh (RPGN), huyết khối vi mạch (hội chứng HUS/TTP).</li>
+                                </ul>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🚧 3. AKI Sau thận (Post-renal/Obstructive AKI)</div>
+                                <p>Gây ra bởi sự **cản trở cơ học dòng nước tiểu** ở bất kỳ vị trí nào trên hệ tiết niệu (sỏi, u chèn ép, xơ hóa sau phúc mạc, phì đại tuyến tiền liệt). Sự tắc nghẽn làm tăng áp lực thủy tĩnh trong bể thận, truyền ngược lên ống lượn và bao Bowman. Khi áp lực thủy tĩnh bao Bowman tăng cao vượt quá áp lực thủy tĩnh mao mạch cầu thận, **gradient áp lực lọc động lực bị triệt tiêu**, dẫn đến sụt giảm nghiêm trọng GFR và suy giảm chức năng cô đặc của ống thận.</p>
+                            </div>
+                        </div>
+
+                        <div class="key-concept" style="margin-top: 2rem;">
+                            🫀⚡🧠 <strong>Hội chứng Tim Thận (Cardiorenal Syndrome - CRS): Vai trò của Sung huyết tĩnh mạch</strong><br>
+                            Trong bối cảnh suy tim cấp (CRS Típ 1), suy giảm chức năng thận không đơn thuần do cung lượng tim giảm (giảm dòng máu đi tới thận). 
+                            <br><br>
+                            Cơ chế huyết động học cốt lõi được chứng minh là do **sung huyết tĩnh mạch thận (tăng áp lực tĩnh mạch ngược dòng)**. Sự ứ máu làm tăng áp lực kẽ thận, trực tiếp chèn ép lòng mao mạch cầu thận và ống thận, làm giảm áp lực lọc GFR hiệu dụng. Sự ứ đọng này kích hoạt hệ thần kinh giao cảm (SNS) và hệ Renin-Angiotensin-Aldosterone (RAAS) dẫn đến tăng giữ muối nước, kháng thuốc lợi tiểu, co mạch thận mạnh mẽ và thúc đẩy tiến trình xơ hóa.
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN II: HOẠI TỬ ỐNG THẬN CẤP (ATN) -->
+                <div class="physio-content">
+                    <h2 id="hoai-tu-ong-than-cap" class="section-title">
+                        <span>Phần II: Cơ chế bệnh sinh Hoại tử ống thận cấp (ATN) & Độc chất</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Hoại tử ống thận cấp (Acute Tubular Necrosis - ATN) chiếm trên 90% các ca AKI tại thận trong đơn vị hồi sức cấp cứu. Hai nhóm nguyên nhân chính bao gồm:</p>
+
+                        <ul class="physio-list-arrow">
+                            <li><strong>Thiếu máu cục bộ kéo dài:</strong> Khi tưới máu thận giảm sâu hoặc kéo dài, tế bào biểu mô ống thận (nhất là đoạn S3 của ống lượn gần và ngành lên dày quai Henle - những nơi có hoạt động chuyển hóa tiêu thụ oxy rất cao) bị cạn kiệt năng lượng. Tế bào mất tính phân cực màng (enzym Na+/K+-ATPase di chuyển từ màng đáy-bên lên màng đỉnh), làm giảm tái hấp thu natri và rò rỉ dịch lọc ngược lại vào mô kẽ (back-leak). Các tế bào chết hoại tử bong tróc vào lòng ống kết tụ cùng glycoprotein Tamm-Horsfall tạo thành các **trụ hạt nhuộm màu nâu bùn (muddy brown casts)** gây tắc nghẽn lòng ống thận.</li>
+                            <li><strong>Độc chất ống thận:</strong>
+                                <br>- *Thuốc cản quang iod:* Trực tiếp gây co thắt động mạch thận dữ dội (thiếu máu cục bộ vùng tủy thận) và độc tính oxy hóa hủy hoại tế bào ống thận trực tiếp.
+                                <br>- *Kháng sinh Aminoglycosides (Gentamicin) và Amphotericin B:* Tích tụ tích điện dương liên kết màng tế bào biểu mô ống lượn gần, tích tụ trong lysosome gây vỡ lysosome giải phóng men thủy phân hủy hoại tế bào.
+                                <br>- *Sắc tố nội sinh:* **Myoglobin** giải phóng từ tế bào cơ bị hủy hoại trong hội chứng tiêu cơ vân (rhabdomyolysis) đi qua màng lọc cầu thận vào lòng ống. Tại môi trường axit của ống thận, myoglobin kết tủa tạo thành các trụ sắc tố gây tắc nghẽn cơ học, đồng thời sắt tự do giải phóng từ nhân heme kích hoạt phản ứng Fenton tạo gốc tự do ROS gây co mạch thận mạnh và độc tính trực tiếp biểu mô ống thận.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN III: SINH LÝ BỆNH SA-AKI -->
+                <div class="physio-content">
+                    <h2 id="sinh-ly-benh-sa-aki" class="section-title">
+                        <span>Phần III: Sinh lý bệnh hiện đại của AKI do Nhiễm trùng huyết (SA-AKI)</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Học thuyết cũ cho rằng AKI trong nhiễm trùng huyết do giảm dòng máu thận gây thiếu máu cục bộ. Tuy nhiên, các bằng chứng sinh lý bệnh hiện đại chỉ ra **SA-AKI có thể xuất hiện ngay cả khi lưu lượng máu thận bình thường hoặc tăng**. Cơ chế bao gồm bộ ba tương tác:</p>
+
+                        <div class="key-concept">
+                            🛡️ <strong>1. Rối loạn vi tuần hoàn và Hàng rào nội mạc</strong><br>
+                            Dưới tác động của các chất trung gian viêm (cytokine, nội độc tố vi khuẩn), lớp bảo vệ **glycocalyx** trên bề mặt tế bào nội mạc vi mạch thận bị cắt rời bởi các enzym metalloproteinase (MMP-9) và hyaluronidase. Mất lớp glycocalyx dẫn đến tăng tính thấm mao mạch dữ dội, thoát dịch ra mô kẽ thận gây phù nề, chèn ép trực tiếp lên các ống thận xung quanh. Đồng thời, bạch cầu trung tính kích hoạt giải phóng các bẫy ngoại bào (NETs) liên kết tiểu cầu gây kết tập, hình thành các vi huyết khối làm tắc nghẽn dòng máu mao mạch cục bộ, tạo ra các vùng thiếu máu loang lổ xen kẽ các vùng tưới máu bình thường.
+                        </div>
+
+                        <div class="key-concept" style="margin-top: 1.5rem;">
+                            ⚡ <strong>2. Tái lập trình chuyển hóa tế bào (Metabolic Reprogramming)</strong><br>
+                            Trước sự tấn công của các gốc tự do ROS và cytokine viêm, ty thể của tế bào biểu mô ống thận (TEC) bị tổn thương sâu sắc. Tế bào biểu mô ống thận kích hoạt phản ứng thích nghi sinh tồn thông qua **"tái lập trình chuyển hóa"**:
+                            <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0;">
+                                <li><strong>Pha viêm cấp:</strong> Tế bào chuyển từ quá trình phosphoryl hóa oxy hóa (OXPHOS) tại ty thể sang con đường đường phân hiếu khí ít tạo ATP hơn (Hiệu ứng Warburg), thúc đẩy bởi phức hợp Akt/mTORC1/HIF-1α. Quá trình này giúp tế bào hạn chế sự sản sinh thêm ROS từ ty thể bị hỏng và ưu tiên nguồn ATP ít ỏi còn lại cho sự sống còn cơ bản của tế bào, **tạm ngừng các hoạt động tiêu tốn nhiều năng lượng như vận chuyển ion tích cực qua màng (tái hấp thu)**. Điều này giải thích tại sao chức năng lọc và bài tiết giảm mạnh dù tế bào chưa chết hoại tử.</li>
+                                <li><strong>Pha phục hồi thích nghi:</strong> Kích hoạt AMPK, SIRT1 và SIRT6 để tắt con đường Warburg, chuyển hướng sang chuyển hóa axit béo oxy hóa và thúc đẩy sinh ty thể mới thông qua PGC-1α và CPT-1 để khôi phục cấu trúc và chức năng bình thường.</li>
+                            </ul>
+                        </div>
+
+                        <div class="key-concept" style="margin-top: 1.5rem;">
+                            💀 <strong>3. Con đường Chết tế bào theo chương trình mới: Pyroptosis & Ferroptosis</strong><br>
+                            - **Pyroptosis (Chết tế bào do viêm):** Các phân tử DAMPs/PAMPs gắn vào thụ thể TLR4 tế bào ống thận kích hoạt NLRP3 inflammasome. NLRP3 hoạt hóa caspase-1 cắt đôi protein **Gasdermin D (GSDMD)**. Phần đầu N của GSDMD di chuyển lên màng tế bào tạo ra các lỗ thủng màng, gây thoát dịch vị, vỡ tế bào giải phóng các cytokine viêm cực mạnh là IL-1β và IL-18 làm khuếch đại tổn thương mô xung quanh.
+                            <br>- **Ferroptosis (Chết tế bào do sắt):** Tổn thương màng tế bào do sự peroxy hóa các phospholipid chứa acid béo không bão hòa nhiều nối đôi (PUFAs) phụ thuộc sắt, kết hợp với suy kiệt hệ thống chống oxy hóa glutathione peroxidase 4 (GPX4).
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN IV: CHUYỂN TIẾP AKI SANG CKD -->
+                <div class="physio-content">
+                    <h2 id="chuyen-tiep-aki-sang-ckd" class="section-title">
+                        <span>Phần IV: Cơ chế chuyển tiếp từ AKI sang Bệnh thận mạn (CKD)</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Sau tổn thương cấp tính, thận có thể sửa chữa thích nghi để hồi phục hoàn toàn. Tuy nhiên, nếu tổn thương quá nặng hoặc lặp lại nhiều lần, thận sẽ chuyển sang con đường **sửa chữa sai lệch (maladaptive repair)**:</p>
+
+                        <ol class="physio-steps">
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">1. Bắt giữ chu kỳ tế bào ở pha G2/M</span>
+                                    Các tế bào biểu mô ống thận bị tổn thương nặng nề kích hoạt phản ứng sửa chữa DNA bị lỗi. Để bảo toàn tính toàn vẹn bộ gen, chu kỳ tế bào bị bắt giữ đứng yên tại pha $G_2/M$. Dù tế bào tránh được sự phân bào lỗi, việc bị kẹt lâu ở pha này khiến chúng liên tục chế tiết ra các chất gây viêm mạn tính và xơ hóa (yếu tố kiểu hình tiết liên quan đến lão hóa - SASP), nổi bật là **TGF-β1** và CTGF.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">2. Kích hoạt và chuyển đổi nguyên bào sợi</span>
+                                    Nồng độ TGF-β1 tăng cao liên tục kích thích các nguyên bào sợi tại chỗ và các tế bào ngoại mạch quanh mao mạch (pericytes) tăng sinh và chuyển đổi kiểu hình thành **nguyên bào sợi cơ (myofibroblasts)**. Đồng thời, tế bào biểu mô ống thận trải qua quá trình chuyển đổi biểu mô - trung mô (EMT) mất tính phân cực biểu mô.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">3. Lắng đọng chất nền ngoại bào (ECM) và teo ống thận</span>
+                                    Nguyên bào sợi cơ sản xuất và lắng đọng ồ ạt các sợi Collagen (típ I, III) và Fibronectin vào mô kẽ thận. Lớp xơ dày này bóp nghẹt các mao mạch quanh ống thận, gây thiếu máu cục bộ mô kẽ thứ phát dai dẳng, làm mất tế bào ống thận vĩnh viễn (tubular loss) và hình thành sẹo xơ hóa mô kẽ-teo ống thận không thể đảo ngược, đưa đến **Bệnh thận mạn (CKD)**.
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN V: GIAI ĐOẠN KDIGO & BIOMARKERS -->
+                <div class="physio-content">
+                    <h2 id="kdigo-va-biomarkers" class="section-title">
+                        <span>Phần V: Phân giai đoạn KDIGO & Các dấu ấn sinh học (Biomarkers) mới</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <h3 class="subsection-title">1. Bảng phân giai đoạn AKI theo KDIGO (Kidney Disease: Improving Global Outcomes)</h3>
+                        <p>Đánh giá dựa trên sự thay đổi nồng độ Creatinin huyết thanh và thể tích nước tiểu của bệnh nhân:</p>
+                        
+                        <div class="table-responsive">
+                            <table class="physio-table">
+                                <thead>
+                                    <tr>
+                                        <th>Giai đoạn</th>
+                                        <th>Creatinin huyết thanh (SCr)</th>
+                                        <th>Thể tích nước tiểu (Urine Output)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Giai đoạn 1</strong></td>
+                                        <td>Tăng gấp 1.5 - 1.9 lần SCr nền <br>HOẶC Tăng ≥ 0.3 mg/dL (≥ 26.5 µmol/L) trong vòng 48 giờ.</td>
+                                        <td>&lt; 0.5 mL/kg/giờ trong 6 - 12 giờ.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Giai đoạn 2</strong></td>
+                                        <td>Tăng gấp 2.0 - 2.9 lần SCr nền.</td>
+                                        <td>&lt; 0.5 mL/kg/giờ trong ≥ 12 giờ.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Giai đoạn 3</strong></td>
+                                        <td>Tăng gấp ≥ 3.0 lần SCr nền <br>HOẶC Tăng SCr lên ≥ 4.0 mg/dL (≥ 353.6 µmol/L) <br>HOẶC Khởi đầu điều trị thay thế thận (RRT/Lọc máu cấp cứu).</td>
+                                        <td>&lt; 0.3 mL/kg/giờ trong ≥ 24 giờ <br>HOẶC Vô niệu hoàn toàn trong ≥ 12 giờ.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3 class="subsection-title" style="margin-top: 2rem;">2. Sự thay đổi các dấu ấn sinh học mới trong chẩn đoán sớm</h3>
+                        <p>Do Creatinin huyết thanh là dấu ấn sinh học tăng muộn (chỉ tăng rõ rệt khi đã mất >50% chức năng GFR) và bị nhiễu bởi khối cơ/chế độ ăn, y học hiện đại phát triển các dấu ấn sinh học mới phản ánh trực tiếp tình trạng stress hoặc tổn thương cấu trúc ống thận:</p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">⚡ TIMP-2 & IGFBP7 (Dấu ấn Stress ống thận)</div>
+                                <p>Tissue Metalloproteinase-2 (tiết ra từ ống lượn xa) và Insulin-like Growth Factor Binding Protein 7 (tiết ra từ ống lượn gần). Khi tế bào biểu mô ống thận bị stress huyết động hoặc viêm, hai protein này được tiết ra để gây **bắt giữ chu kỳ tế bào ở pha G1 (G1 cell cycle arrest)**, ngăn tế bào phân chia khi DNA đang bị stress. Tích số [TIMP-2] x [IGFBP7] trong nước tiểu tăng rất sớm (12-24 giờ trước khi SCr tăng) giúp cảnh báo sớm nguy cơ AKI trung bình-nặng ở ICU.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🔬 NGAL (Neutrophil Gelatinase-Associated Lipocalin)</div>
+                                <p>Một glycoprotein 25 kDa tăng tiết cực mạnh từ tế bào biểu mô ống lượn xa và quai Henle khi có tổn thương hoại tử hoặc viêm. NGAL có thể định lượng trong máu hoặc nước tiểu, tăng rất sớm trong vòng 2-4 giờ sau khi có kích thích tổn thương thận, phản ánh chính xác tình trạng tổn thương thực thể (structural injury).</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🧪 KIM-1 & L-FABP (Dấu ấn tổn thương ống lượn gần)</div>
+                                <p>- <strong>KIM-1 (Kidney Injury Molecule-1):</strong> Glycoprotein màng tế bào biểu mô ống lượn gần, biểu hiện tăng vọt và giải phóng vào nước tiểu sau khi tế bào ống thận bị tổn thương thiếu máu hoặc độc chất (12-24 giờ).
+                                <br>- <strong>L-FABP (Liver-type Fatty Acid-Binding Protein):</strong> Protein vận chuyển axit béo nội bào ở ống lượn gần, thải vào nước tiểu chỉ 4-6 giờ sau tổn thương do thiếu oxy.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BẢNG SO SÁNH PHÂN LOẠI LÂM SÀNG -->
+                <div class="physio-content">
+                    <h2 id="so-sanh-truoc-va-tai-than" class="section-title">
+                        <span>Bảng so sánh: Tổn thương thận cấp trước thận vs. Hoại tử ống thận cấp (ATN) tại thận</span>
+                    </h2>
+                    
+                    <div class="table-responsive">
+                        <table class="physio-table physio-table-compare">
+                            <thead>
+                                <tr>
+                                    <th>Chỉ số đánh giá</th>
+                                    <th>Tổn thương thận cấp trước thận (Pre-renal AKI)</th>
+                                    <th>Hoại tử ống thận cấp (ATN - Intrinsic AKI)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Nguyên nhân sinh bệnh chính</strong></td>
+                                    <td>Giảm tưới máu thận chức năng (suy giảm thể tích, giảm cung lượng tim, co thắt mạch). Nhu mô còn nguyên vẹn.</td>
+                                    <td>Tổn thương thực thể tế bào biểu mô ống thận do thiếu máu cục bộ kéo dài hoặc độc chất (Aminoglycoside, sắc tố cơ).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Cặn lắng nước tiểu (Soi tươi)</strong></td>
+                                    <td>Bình thường hoặc chỉ có trụ trong suốt (hyaline casts) sinh lý.</td>
+                                    <td>Nhiều tế bào biểu mô ống thận rụng, **trụ hạt màu nâu bùn (muddy brown casts)** đặc trưng.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Phân số thải Natri (FENa)</strong></td>
+                                    <td><strong>&lt; 1%</strong> (Thận cố gắng giữ muối nước tối đa để bù trừ thể tích tuần hoàn).</td>
+                                    <td><strong>&gt; 1%</strong> (Ống thận tổn thương mất khả năng tái hấp thu Natri chủ động).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Phân số thải Ure (FEUrea)</strong></td>
+                                    <td><strong>&lt; 35%</strong>.</td>
+                                    <td><strong>&gt; 50%</strong>.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Áp lực thẩm thấu nước tiểu (UOsm)</strong></td>
+                                    <td><strong>&gt; 500 mOsm/kg H2O</strong> (Ống thận còn chức năng cô đặc nước tiểu tốt, tăng giữ nước).</td>
+                                    <td><strong>&lt; 350 mOsm/kg H2O</strong> (Ống thận tổn thương mất chức năng cô đặc, nước tiểu loãng).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Tỷ số Ure/Creatinin niệu so với máu</strong></td>
+                                    <td>Ure nước tiểu / Ure máu &gt; 8; Creatinin niệu / Creatinin máu &gt; 40.</td>
+                                    <td>Ure nước tiểu / Ure máu &lt; 3; Creatinin niệu / Creatinin máu &lt; 20.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Đáp ứng với bù dịch thử nghiệm</strong></td>
+                                    <td>Đáp ứng nhanh chóng (Huyết áp phục hồi, lượng nước tiểu tăng vọt nhanh, SCr giảm về bình thường).</td>
+                                    <td>Không đáp ứng (Lượng nước tiểu không tăng hoặc tăng ít, có nguy cơ quá tải thể tích dịch gây phù phổi).</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- TÀI LIỆU THAM KHẢO -->
+                <div class="physio-content">
+                    <h2 id="tai-lieu-tham-khao" class="section-title">
+                        <span>Tài liệu Tham khảo (References)</span>
+                    </h2>
+                    <div class="physio-text-block">
+                        <ol style="font-size: 0.9rem; line-height: 1.6; color: var(--color-text-muted);">
+                            <li>Edrees F, Vijayan A. Tổn thương thận cấp. Trong: <em>The Washington Manual of Critical Care</em> (BS. Hoàng Nam dịch).</li>
+                            <li>Peng X, Zhang HP. Acute Cardiorenal Syndrome: Epidemiology, Pathophysiology, Assessment, and Treatment. <em>Rev Cardiovasc Med</em>. 2023;24(2):40.</li>
+                            <li>Nian W, Tao W, Zhang H. Review of research progress in sepsis-associated acute kidney injury. <em>Front Mol Biosci</em>. 2025;12:1603392.</li>
+                            <li>Zhang T, Widdop RE, Ricardo SD. Transition from acute kidney injury to chronic kidney disease: mechanisms, models, and biomarkers. <em>Am J Physiol Renal Physiol</em>. 2024;327:F788-F805.</li>
+                            <li>KDIGO Acute Kidney Injury and Acute Kidney Disease Work Group. <em>KDIGO 2026 Clinical Practice Guideline for Acute Kidney Injury (AKI) and Acute Kidney Disease (AKD)</em>. Public Review Draft; March 2026.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- TÀI LIỆU LIÊN QUAN -->
+                <section class="related-links-section">
+                    <h4 class="related-links-title">
+                        <i class="fas fa-link"></i> Xem thêm các nội dung liên quan
+                    </h4>
+                    <div class="related-links-grid">
+                        <a href="../../Dược lý/Chuyên khoa/DL_Khangsinh.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge duoc-ly">Dược lý</span>
+                                <h5>Dược Lý Lâm Sàng Kháng Sinh</h5>
+                                <p>Cơ chế tác động, liều dùng các kháng sinh phổ biến và độc tính tích tụ thận của Aminoglycosides, Vancomycin, Amphotericin B cần chỉnh liều theo eGFR.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                        <a href="SLB_CCBS_TSG.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge sinh-ly">Sinh lý bệnh</span>
+                                <h5>Sinh Lý Bệnh Tiền Sản Giật (TSG)</h5>
+                                <p>Cơ chế sưng phồng tế bào nội mô glomerular endotheliosis cầu thận, tổn thương mạch thận và hội chứng rò rỉ mao mạch capillary leak trong thai kỳ.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                        <a href="SLB_CCBS_CKD.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge sinh-ly">Sinh lý bệnh</span>
+                                <h5>Sinh Lý Bệnh &amp; Cơ Thế Bệnh Sinh CKD</h5>
+                                <p>Cơ chế thích ứng tăng lọc cầu thận, loãng xương do thận, thiếu máu do thiếu EPO, và biến chứng cầu thận trong bệnh thận đái tháo đường.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                        <a href="../../Công cụ/Thận &amp; Điện giải/DG_GFR.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge cong-cu">Công cụ</span>
+                                <h5>Tính Toán Độ Lọc Cầu Thận (eGFR)</h5>
+                                <p>Công cụ hỗ trợ tính toán eGFR tự động dựa trên công thức MDRD, CKD-EPI 2009/2021 và Cockcroft-Gault để chỉnh liều thuốc lâm sàng.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+    
+    <!-- Script điều khiển chung -->
+    <script src="../../../js/sidebar.js"></script>
+</body>
+
+</html>

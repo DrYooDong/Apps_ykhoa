@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sinh lý bệnh và Cơ chế bệnh sinh Xơ gan (Liver Cirrhosis Pathophysiology): Phân tích chi tiết quá trình xơ hóa (fibrogenesis, Kupffer cells hoạt hóa, tế bào hình sao HSCs chuyển biệt hóa thành myofibroblasts), hội chứng rối loạn miễn dịch CAIDS, cơ chế báng bụng (ascites) và tuần hoàn tăng động, suy dinh dưỡng (teo cơ sarcopenia do starvation metabolism), hội chứng gan phổi (HPS, giãn mạch phế nang IPVD) và ung thư hóa tế bào gan (HCC).">
+    <title>Sinh lý bệnh & Cơ chế bệnh sinh Xơ gan – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal (Level 3 Paths) -->
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học dùng chung (Tải từ module Sinh lý - Sinh lý bệnh) -->
+    <link rel="stylesheet" href="../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../css/components/toc.css">
+
+    <!-- Scripts điều hướng hệ thống -->
+    <script src="../../../components/header.js" defer></script>
+    <script src="../../../components/footer.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+    
+    <!-- Script Sinh lý học dùng chung -->
+    <script src="../js/physio-shared.js" defer></script>
+    <script src="../../../js/toc.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../../../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh">
+                            <span class="nav-icon">🧬</span>
+                            <span class="nav-text">Sinh lý & Sinh lý bệnh</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng">
+                            <span class="nav-icon">🩺</span>
+                            <span class="nav-text">Kỹ năng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận">
+                            <span class="nav-icon">🤒</span>
+                            <span class="nav-text">Tiếp cận</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ">
+                            <span class="nav-icon">⚙️</span>
+                            <span class="nav-text">Công cụ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+                            <span class="nav-icon">💊</span>
+                            <span class="nav-text">Dược lý</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ">
+                            <span class="nav-icon">📄</span>
+                            <span class="nav-text">Y học chứng cứ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../Y học cổ truyền/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền">
+                            <span class="nav-icon">☯️</span>
+                            <span class="nav-text">Y học cổ truyền</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container" style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+                <ol class="breadcrumb-list" style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+                    <li><a href="../../../index.html">🏠 Home</a> &gt;</li>
+                    <li><a href="../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+                    <li style="color:var(--color-primary); font-weight:600;">Sinh lý bệnh &amp; Cơ chế bệnh sinh Xơ gan</li>
+                </ol>
+            </nav>
+
+            <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+            <main class="visual-container">
+                <!-- CHAPTER HEADER CARD -->
+                <div class="chapter-header">
+                    <h1>SINH LÝ BỆNH & CƠ CHẾ BỆNH SINH XƠ GAN</h1>
+                    <p>Liver Cirrhosis Pathophysiology & Pathogenesis — Nghiên cứu chi tiết cơ chế hoạt hóa tế bào Kupffer và tế bào hình sao (HSCs) gây xơ hóa (fibrogenesis), Hội chứng rối loạn chức năng miễn dịch CAIDS, cơ chế báng bụng (ascites) và tuần hoàn tăng động tạng, suy kiệt dinh dưỡng do starvation metabolism, Hội chứng Gan Phổi (HPS) và cơ chế sinh ung thư tế bào gan (HCC).</p>
+                </div>
+
+                <p class="physio-lead">
+                    <span class="term-hl">Xơ gan (Liver Cirrhosis)</span> là một bệnh lý gan mạn tính tiến triển giai đoạn cuối, đặc trưng bởi sự thay thế nhu mô gan lành bằng các dải xơ khuếch tán và các nốt tái tạo tân sinh (regenerative nodules). Tiến trình này phá hủy hoàn toàn cấu trúc tiểu thùy gan và hệ thống mạch máu gan, dẫn đến tăng áp lực tĩnh mạch cửa, suy giảm nghiêm trọng chức năng tổng hợp/chuyển hóa gan, và suy giảm miễn dịch đa hệ thống.
+                </p>
+
+                <!-- PHẦN I: TỔN THƯƠNG GAN VÀ FIBROGENESIS -->
+                <div class="physio-content">
+                    <h2 id="toan-thuong-gan-va-fibrogenesis" class="section-title">
+                        <span>Phần I: Tổn thương tế bào gan & Quá trình xơ hóa (Fibrogenesis)</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Tiến trình xơ hóa gan là một đáp ứng sửa chữa vết thương bệnh lý kéo dài do các kích thích có hại mạn tính (virus viêm gan B/C, chất chuyển hóa độc của rượu, acid mật ứ đọng, lắng đọng mỡ chuyển hóa):</p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">⚡ 1. Tổn thương tế bào gan & Giải phóng tín hiệu stress</div>
+                                <p>Các tác nhân gây độc tấn công trực tiếp vào tế bào nhu mô gan (Hepatocytes), gây chết tế bào theo chương trình (apoptosis) hoặc hoại tử lytic. Tế bào bị hủy hoại giải phóng các gốc tự do oxy hóa (ROS) và các phân tử nhận diện tổn thương nội sinh (**DAMPs**).</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🛡️ 2. Hoạt hóa tế bào Kupffer (KCs)</div>
+                                <p>Các đại thực bào thường trú tại gan (Kupffer cells) thu nhận DAMPs và ROS, kích hoạt dòng thác viêm thông qua tiết ra các chemokine mạnh mẽ, đặc biệt là **CCL2** và các cytokine tiền viêm (TNF-α, IL-1β). CCL2 hoạt động như một chất hấp dẫn, thu hút các bạch cầu đơn nhân (monocytes) từ tuần hoàn ngoại vi vào gan để khuếch đại phản ứng viêm.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">⭐ 3. Hoạt hóa Tế bào hình sao (HSCs - Tế bào hình sao gan)</div>
+                                <p>Đây là **trọng tâm của quá trình tạo xơ**. Ở gan bình thường, HSCs nằm ở khoảng Disse làm nhiệm vụ dự trữ Vitamin A dạng quiescent. 
+                                <br><br>
+                                Khi bị kích thích bởi ROS, DAMPs và đặc biệt là yếu tố tăng trưởng xơ hóa **TGF-β1** do Kupffer tiết ra, tế bào hình sao bị hoạt hóa và chuyển biệt hóa thành **nguyên bào sợi cơ (myofibroblasts)** có khả năng co thắt. Nguyên bào sợi cơ tăng sinh mạnh mẽ và bắt đầu sản xuất, lắng đọng quá mức các protein chất nền ngoại bào (ECM), bao gồm **Collagen típ I, III**, fibronectin và laminin vào khoảng Disse.</p>
+                            </div>
+                        </div>
+
+                        <div class="key-concept" style="margin-top: 2rem;">
+                            🔑 <strong>Hệ quả của sự lắng đọng ECM trong khoảng Disse:</strong>
+                            <br>Sự tích tụ collagen tạo thành một vách xơ cứng ngăn cách tế bào gan với xoang gan. Hiện tượng này làm mất các cửa sổ mao mạch (fenestrae) của tế bào nội mạc xoắn gan, được gọi là **hiện tượng mao mạch hóa xoang gan (capillarization of sinusoids)**. Sự mao mạch hóa làm mất đi khả năng trao đổi chất tự do giữa máu và tế bào gan, cản trở cơ học dòng máu chảy qua gan và gây tăng áp lực tĩnh mạch cửa.
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN II: HỘI CHỨNG MIỄN DỊCH CAIDS -->
+                <div class="physio-content">
+                    <h2 id="hoi-chung-mien-dich-caids" class="section-title">
+                        <span>Phần II: Hội chứng CAIDS & Viêm hệ thống mạn tính</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Xơ gan giai đoạn mất bù gây ra một tình trạng rối loạn miễn dịch sâu sắc mang tính nghịch lý:</p>
+
+                        <div class="key-concept">
+                            🧪 <strong>Hội chứng Rối loạn chức năng miễn dịch do xơ gan (Cirrhosis-Associated Immune Dysfunction Syndrome - CAIDS)</strong><br>
+                            CAIDS đặc trưng bởi sự tồn tại song song của hai trạng thái đối lập: **Kích hoạt miễn dịch liên tục gây viêm hệ thống** và **Liệt đáp ứng miễn dịch (immune paralysis) ngoại vi**.
+                            <br><br>
+                            <strong>Cơ chế sinh bệnh:</strong>
+                            <ol class="physio-steps" style="margin-top: 0.5rem; margin-bottom: 0;">
+                                <li>
+                                    <strong>Chuyển vị vi khuẩn (Bacterial Translocation - BT):</strong> Sự sung huyết tĩnh mạch cửa gây phù nề niêm mạc ruột, phá hủy các liên kết tight junctions bảo vệ biểu mô ruột. Vi khuẩn và các mảnh vỡ vách tế bào vi khuẩn (chứa nội độc tố LPS, gọi chung là **PAMPs**) liên tục chuyển vị đi qua hàng rào ruột bị hỏng vào tĩnh mạch cửa và hệ bạch huyết.
+                                </li>
+                                <li>
+                                    <strong>Kích hoạt viêm hệ thống:</strong> PAMPs từ ruột phối hợp với DAMPs phóng thích từ tế bào gan hoại tử đi thẳng vào tuần hoàn chung (do gan xơ hóa mất khả năng thanh lọc và có sự hiện diện của các shunt cửa-chủ). PAMPs/DAMPs gắn kết các thụ thể nhận diện kiểu hình (PRRs như TLR4) trên tế bào miễn dịch toàn thân, giải phóng ồ ạt các cytokine tiền viêm (TNF-α, IL-6), ROS và RNS tạo ra tình trạng **viêm hệ thống mạn tính**.
+                                </li>
+                                <li>
+                                    <strong>Liệt miễn dịch:</strong> Quá trình kích hoạt liên tục và độc tính tế bào dẫn đến kiệt quệ chức năng (exhaustion) của các tế bào đáp ứng miễn dịch (bạch cầu trung tính mất khả năng thực bào, bạch cầu đơn nhân giảm trình diện kháng nguyên, tế bào T và tế bào diệt tự nhiên NK bị bất hoạt). Hậu quả là bệnh nhân xơ gan cực kỳ nhạy cảm với nhiễm trùng (như viêm phúc mạc nhiễm khuẩn tự phát - SBP) và mất khả năng giám sát miễn dịch chống u.
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN III: SINH LÝ BỆNH CÁC BIẾN CHỨNG -->
+                <div class="physio-content">
+                    <h2 id="sinh-ly-benh-bien-chung" class="section-title">
+                        <span>Phần III: Sinh lý bệnh các Biến chứng lớn ở bệnh nhân xơ gan</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        
+                        <h3 class="subsection-title">1. Cơ chế hình thành Báng bụng (Ascites) & Rối loạn huyết động</h3>
+                        <p>Báng bụng là biến chứng mất bù phổ biến nhất, hình thành qua chuỗi phản ứng huyết động phức tạp:</p>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Tăng sức cản dòng chảy trong gan:</strong> 75% sức cản do thay đổi cấu trúc cứng xơ hóa ép xoang gan; **25% còn lại do co thắt chức năng mạch máu nội gan** từ sự sụt giảm tổng hợp Nitric Oxide (NO) tại chỗ do tế bào nội mô gan bị tổn thương. Tăng sức cản làm tăng áp lực tĩnh mạch cửa vượt quá ngưỡng **8 mmHg**.</li>
+                            <li><strong>Giãn mạch tạng và toàn thân:</strong> Áp lực cửa tăng cao kích thích giải phóng quá mức NO và các chất giãn mạch khác (prostacyclin) đi vào hệ tuần hoàn chung. Điều này gây giãn tiểu động mạch tạng và toàn thân dữ dội. Máu bị ứ đọng lại ở lòng mạch tạng giãn nở.</li>
+                            <li><strong>Giảm thể tích động mạch hiệu dụng:</strong> Việc máu bị ứ ở tuần hoàn tạng làm lượng máu lưu thông hữu hiệu đến các cơ quan đích (như thận) sụt giảm trầm trọng, cơ thể nhận diện đây là tình trạng thiếu dịch nội mạch giả tạo.</li>
+                            <li><strong>Bù trừ tại thận (Giữ muối nước):</strong> Sự sụt giảm thể tích hiệu dụng kích hoạt mạnh mẽ hệ Renin-Angiotensin-Aldosterone (RAAS), hệ thần kinh giao cảm (SNS) và kích thích thùy sau tuyến yên giải phóng hormone chống bài niệu (ADH/Vasopressin) không qua cơ chế thẩm thấu. Thận tăng cường tái hấp thu muối (tại ống lượn gần/xa do aldosterone) và giữ nước tự do (tại ống góp do ADH). Lượng dịch giữ lại vượt quá khả năng chứa của lòng mạch, kết hợp với áp lực thủy tĩnh tĩnh mạch cửa tăng cao và giảm áp lực keo huyết tương (suy chức năng gan giảm tổng hợp albumin), dịch thẩm thấu thoát vào ổ bụng hình thành **báng bụng**.</li>
+                        </ul>
+
+                        <h3 class="subsection-title">2. Hội Chức Gan Phổi (Hepatopulmonary Syndrome - HPS)</h3>
+                        <p>HPS là biến chứng hô hấp nguy hiểm, đặc trưng bởi sự rối loạn oxy hóa máu phổi do **giãn các vi mạch nội phổi (Intrapulmonary Vascular Dilatation - IPVD)** trong bệnh cảnh tăng áp cửa:</p>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Giãn mao mạch phế nang bất thường:</strong> Các mạch máu phế nang phổi bình thường có đường kính khoảng 8 µm (chỉ đủ cho một hồng cầu đi qua để tiếp xúc tối đa với khí phế nang) giãn rộng bất thường lên đến **100 - 500 µm** trong HPS. Đường kính mạch quá lớn khiến dòng hồng cầu chạy ở trung tâm lòng mạch không thể tiếp cận và trao đổi oxy với phế nang, gây ra tình trạng **bất tương hợp thông khí/tưới máu (V/Q mismatch)** và shunt chức năng nội phổi, dẫn đến thiếu oxy máu nghiêm trọng (biểu hiện lâm sàng bằng triệu chứng khó thở khi ngồi dậy - platypnea, và giảm oxy máu khi đổi tư thế đứng - orthodeoxia).</li>
+                            <li><strong>Động lực sinh học phân tử của giãn mạch & tạo mạch phổi:</strong>
+                                <br>- *Giãn mạch:* Sự tràn ngập Endothelin-1 (ET-1) từ gan xơ hóa vào tuần hoàn phổi kích thích tế bào nội mạc phổi thông qua thụ thể $ET_B$, hoạt hóa enzyme **eNOS** giải phóng lượng lớn **Nitric Oxide (NO)** gây giãn mạch. Đồng thời, sự chuyển vị vi khuẩn ruột kéo các đại thực bào tích tụ tại phổi; các tế bào này giải phóng enzyme iNOS và Heme oxygenase-1 (HO-1) tạo ra thêm NO và **Carbon Monoxide (CO)** tiếp tục gây giãn mạch phổi dữ dội.
+                                <br>- *Tạo mạch:* Tế bào nội mạc phổi bị kích hoạt tiết ra fractalkine (CX3CL1) tăng cường bám dính đại thực bào. Các đại thực bào này tiết ra **VEGF-A** kích thích tăng sinh tế bào nội mạc phổi, hình thành tân mạch phổi bệnh lý.
+                            </li>
+                        </ul>
+
+                        <h3 class="subsection-title">3. Suy dinh dưỡng và Teo cơ xơ gan (Sarcopenia)</h3>
+                        <p>Bệnh nhân xơ gan thường bị suy kiệt nặng nề do sự thay đổi chuyển hóa toàn diện:</p>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Chuyển hóa đói kịch phát (Starvation metabolism):</strong> Bình thường gan lưu trữ glycogen để giải phóng glucose khi đói. Gan xơ hóa mất khả năng dự trữ glycogen. Chỉ sau một thời gian nhịn ăn ngắn (như ngủ qua đêm), cơ thể bệnh nhân xơ gan đã rơi vào trạng thái chuyển hóa đói tương đương với một người bình thường nhịn ăn 3 ngày.</li>
+                            <li><strong>Dị hóa đạm cơ vân:</strong> Cơ thể buộc phải huy động acid amin từ cơ bắp thông qua quá trình phân hủy protein để làm nguyên liệu cho gan tân tạo đường (gluconeogenesis). Tiến trình dị hóa cơ liên tục này dẫn đến teo cơ xương mạn tính (**sarcopenia**).</li>
+                            <li><strong>Rối loạn hấp thu & Tiêu hóa:</strong> Sự chèn ép của báng bụng lên dạ dày gây cảm giác no sớm; tình trạng thiếu kẽm và Vitamin A làm thay đổi vị giác gây chán ăn; và sự giảm bài tiết muối mật do suy gan làm rối loạn hấp thu chất béo ở ruột.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN IV: CƠ CHẾ SINH UNG THƯ GAN (HCC) -->
+                <div class="physio-content">
+                    <h2 id="co-che-sinh-ung-thu-gan" class="section-title">
+                        <span>Phần IV: Cơ chế tiến triển từ Xơ gan sang Ung thư tế bào gan (HCC)</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Xơ gan là nền tảng khởi phát của hơn 80% trường hợp Ung thư biểu mô tế bào gan (Hepatocellular Carcinoma - HCC). Tiến trình chuyển dạng ác tính này chịu sự chi phối của vi môi trường viêm và biến đổi gen:</p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🧬 1. Biến đổi di truyền tích lũy & Chuyển đổi EMT</div>
+                                <p>Sự viêm mạn tính và tái tạo tế bào gan liên tục trong môi trường nhiều gốc tự do ROS gây tổn thương DNA. Các đột biến gen then chốt tích lũy:</p>
+                                <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0;">
+                                    <li><strong>Đột biến vùng khởi động TERT (Telomerase Reverse Transcriptase):</strong> Là đột biến sớm và phổ biến nhất (>60% HCC), giúp tái hoạt hóa enzym telomerase, cho phép tế bào gan tổn thương tránh được sự lão hóa và phân chia vô hạn.</li>
+                                    <li><strong>Đột biến gen TP53:</strong> Phá hủy điểm kiểm soát chu kỳ tế bào và ức chế quá trình chết theo chương trình của các tế bào lỗi.</li>
+                                    <li><strong>Chuyển đổi biểu mô - trung mô (EMT):</strong> Các tế bào biểu mô gan mất cực tính và liên kết liên tế bào, chuyển sang kiểu hình trung mô lỏng lẻo dễ xâm lấn.</li>
+                                </ul>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🚫 2. Sự kiệt quệ Tế bào T & Trốn thoát miễn dịch</div>
+                                <p>Hội chứng rối loạn chức năng miễn dịch CAIDS tạo điều kiện lý tưởng cho sự trốn thoát của tế bào u:</p>
+                                <p>Các tế bào T CD8+ kháng khối u bị kích thích kháng nguyên liên tục trong môi trường viêm mạn tính của xơ gan sẽ rơi vào trạng thái **kiệt quệ miễn dịch (T-cell exhaustion)**. Chúng biểu hiện tăng vọt các thụ thể ức chế chốt kiểm soát miễn dịch trên màng tế bào như **PD-1, CTLA-4, LAG-3** và TIM-3. Tế bào tiền ung thư biểu hiện các ligand tương ứng (như PD-L1) để bất hoạt tế bào T, giúp khối u trốn thoát hoàn toàn khỏi sự giám sát miễn dịch và tự do tăng sinh tạo mạch hình thành HCC.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BẢNG SO SÁNH PHÂN LOẠI LÂM SÀNG -->
+                <div class="physio-content">
+                    <h2 id="so-sanh-the-xo-gan" class="section-title">
+                        <span>Bảng so sánh: Xơ gan còn bù vs. Xơ gan mất bù</span>
+                    </h2>
+                    
+                    <div class="table-responsive">
+                        <table class="physio-table physio-table-compare">
+                            <thead>
+                                <tr>
+                                    <th>Đặc điểm lâm sàng & sinh lý</th>
+                                    <th>Xơ gan còn bù (Compensated Cirrhosis)</th>
+                                    <th>Xơ gan mất bù (Decompensated Cirrhosis)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Triệu chứng lâm sàng</strong></td>
+                                    <td>Không có triệu chứng rõ rệt hoặc chỉ mệt mỏi nhẹ không đặc hiệu.</td>
+                                    <td>Xuất hiện các biến chứng lớn: báng bụng, vàng da, xuất huyết tiêu hóa do vỡ giãn tĩnh mạch thực quản, bệnh não gan.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Áp lực tĩnh mạch cửa (HVPG)</strong></td>
+                                    <td>HVPG &gt; 5 mmHg (tăng áp cửa nhẹ) nhưng thường dưới 10-12 mmHg.</td>
+                                    <td>HVPG ≥ 10-12 mmHg (Tăng áp lực tĩnh mạch cửa có ý nghĩa lâm sàng - CSPH).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Huyết động hệ thống</strong></td>
+                                    <td>Bình thường hoặc biến đổi rất nhẹ, chưa có hiện tượng giãn mạch tạng rõ rệt.</td>
+                                    <td>Tuần hoàn tăng động: Giãn mạch tạng nặng, giảm sức cản ngoại biên, cung lượng tim tăng bù trừ, giảm thể tích động mạch hiệu dụng.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Đáp ứng của hormone giữ muối nước</strong></td>
+                                    <td>Hệ RAAS, SNS, ADH chưa bị kích hoạt hoặc chỉ tăng nhẹ không liên tục.</td>
+                                    <td>Kích hoạt liên tục và dữ dội hệ RAAS, SNS, ADH nhằm giữ muối và nước tại thận.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Trạng thái miễn dịch (CAIDS)</strong></td>
+                                    <td>Chức năng miễn dịch cơ bản còn được bảo tồn.</td>
+                                    <td>Rối loạn chức năng miễn dịch CAIDS rõ rệt: rò rỉ ruột giải phóng PAMPs gây viêm hệ thống mạn tính và liệt miễn dịch tế bào.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Thời gian sống trung bình (Tiên lượng)</strong></td>
+                                    <td>Kéo dài (thường &gt; 12 năm).</td>
+                                    <td>Rút ngắn nghiêm trọng (trung bình 1.5 - 2 năm nếu không được ghép gan).</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- TÀI LIỆU THAM KHẢO -->
+                <div class="physio-content">
+                    <h2 id="tai-lieu-tham-khao" class="section-title">
+                        <span>Tài liệu Tham khảo (References)</span>
+                    </h2>
+                    <div class="physio-text-block">
+                        <ol style="font-size: 0.9rem; line-height: 1.6; color: var(--color-text-muted);">
+                            <li>Alsudaney M, Ayoub W, Kosari K, et al. Pathophysiology of liver cirrhosis and risk correlation between immune status and the pathogenesis of hepatocellular carcinoma. <em>Hepatoma Res</em>. 2025;11:7.</li>
+                            <li>Amariței V, Gheorghita R-E, Caliman Sturdza OA. Nutritional Management in Liver Cirrhosis: A Combined Systematic Review and Observational Study. <em>Diseases</em>. 2025;13(9):278.</li>
+                            <li>European Association for the Study of the Liver. EASL Clinical Practice Guidelines for the management of patients with decompensated cirrhosis. <em>Journal of Hepatology</em>. 2018;69(2):406-460.</li>
+                            <li>Aithal GP, Palaniyappan N, China L, et al. Guidelines on the management of ascites in cirrhosis. <em>Gut</em>. 2020;70(1):9-29.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- TÀI LIỆU LIÊN QUAN -->
+                <section class="related-links-section">
+                    <h4 class="related-links-title">
+                        <i class="fas fa-link"></i> Xem thêm các nội dung liên quan
+                    </h4>
+                    <div class="related-links-grid">
+                        <a href="../../Công cụ/Tiêu hóa &amp; Dinh dưỡng/DG_Xogan.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge cong-cu">Công cụ</span>
+                                <h5>Đánh Giá Xơ Gan (Child-Pugh &amp; MELD)</h5>
+                                <p>Nhập chỉ số Albumin, Bilirubin, INR, Cổ trướng và Bệnh não gan để tính toán phân độ Child-Pugh, tính điểm MELD/MELD-Na tiên lượng tử vong.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                        <a href="../../Dược lý/Chuyên khoa/DL_Tiêuhoá.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge duoc-ly">Dược lý</span>
+                                <h5>Dược Lý Lâm Sàng Tiêu Hóa</h5>
+                                <p>Cơ chế tác động, liều dùng các thuốc lợi tiểu điều trị báng bụng (Spironolactone đối kháng aldosterone, Furosemide) và thuốc chẹn beta không chọn lọc dự phòng vỡ giãn.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                        <a href="SLB_CCBS_VTC.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge sinh-ly">Sinh lý bệnh</span>
+                                <h5>Sinh Lý Bệnh Viêm Tụy Cấp</h5>
+                                <p>Tìm hiểu cơ chế tự tiêu hủy mô kẽ, lipase và sự phá hủy mô mỡ nội tạng trong các bệnh cảnh cấp cứu tiêu hóa.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+    
+    <!-- Script điều khiển chung -->
+    <script src="../../../js/sidebar.js"></script>
+</body>
+
+</html>
