@@ -47,10 +47,14 @@
 | `components/toc.css` | Mục lục tự động (TOC) | `pages/Sinh lý/Sinhly/**` |
 | `components/pharmacology-symptoms.css` | Dược lý theo triệu chứng | `pages/Dược lý/Triệu chứng/**` |
 | `components/pharmacology-tools.css` | Ma trận tương tác, máy tính hiệu chỉnh liều | `pages/Dược lý/**` |
+| `components/pharmacology-global.css` | Styling Drug Passport, Emergency FAB & Modal, Flashcard 3D, Cross-links | `pages/Dược lý/**` |
+| `components/pharmacology-heatmap.css` | Styling 2D Heatmap Grid, Autocomplete Search, Spectrum 2.0 & Timeline | `pages/Dược lý/**` |
+| `components/moa-theater.css` | Styling MOA Theater SVG Animations, Scenario Simulator & PK Canvas | `pages/Dược lý/**` |
 | `components/abg-calculator.css` | Giao diện máy tính ABG | `DG_ABG.html` |
 | `components/insulin-calculator.css` | Giao diện máy tính Insulin | `DG_Insulin-ĐTĐ.html` |
 | `components/benh-an.css` | Mẫu bệnh án điện tử | `benh-an-noi-khoa.html` |
 | `components/paraclinical.css` | Đọc kết quả cận lâm sàng | `pages/Kỹ năng/Cận lâm sàng/**` |
+| `components/ecg-studio.css` | Giao diện ECG Pro Studio 12 chuyển đạo, Calipers, Checklist 10 bước | `pages/Công cụ/Cấp cứu & hồi sức/ECG_Studio.html` |
 | `components/homepage-effects.css` | Hiệu ứng trang chủ | `index.html` |
 | `components/homepage-widgets.css` | Widgets trang chủ | `index.html` |
 | `components/y-hoc-co-truyen.css` | Y học cổ truyền hub | `y-hoc-co-truyen.html` |
@@ -67,8 +71,22 @@
 | `approach-symptom.js` | Tự động tạo mục lục & ScrollSpy triệu chứng | `pages/Tiếp cận/2. Triệu chứng/**` |
 | `approach-hub.js` | Search + filter lưu đồ | `tiep-can.html` |
 | `clinical-skill-tabs.js` | Tab switching kỹ năng lâm sàng | `pages/Kỹ năng/**` |
+| `ecg-studio/ecg-modifiers.js` | Thư viện 35+ modifier bất thường ECG | `ECG_Interactive.html` |
+| `ecg-studio/ecg-scenarios.js` | Tình huống lâm sàng & bệnh nhân ảo ECG | `ECG_Interactive.html` |
+| `ecg-studio/ecg-leads.js` | Tổng hợp 12 chuyển đạo theo tam giác Einthoven | `ECG_Interactive.html` |
+| `ecg-studio/ecg-engine.js` | Động cơ Canvas sinh sóng ECG toán học Gaussian & Spline | `ECG_Interactive.html` |
+| `ecg-studio/ecg-studio.js` | UI Controller tổng hợp Studio, Calipers & Quiz | `ECG_Interactive.html` |
 | `pharmacology-symptoms.js` | Filter dược lý theo triệu chứng | `pages/Dược lý/Triệu chứng/**` |
 | `pharmacology-tools.js` | Logic tương tác đa thuốc, hiệu chỉnh liều gan thận, quy đổi liều tương đương & Antidote | `pages/Dược lý/**` |
+| `drug-passport.js` | Quản lý state bệnh nhân cá thể hóa toàn cục (localStorage) | `pages/Dược lý/**` |
+| `emergency-dosing.js` | Tra cứu nhanh 20 thuốc cấp cứu khẩn cấp & in pocket card | `pages/Dược lý/**` |
+| `cross-links-pharma.js` | Tự động chèn liên kết học thuật xuyên phân hệ | `pages/Dược lý/**` |
+| `pharmacology-flashcards.js` | Động cơ lật thẻ 3D ôn tập Dược lý Spaced Repetition | `pages/Dược lý/**` |
+| `pharmacology-heatmap.js` | 2D Interaction Heatmap Matrix, Search Autocomplete & History Tracker | `pages/Dược lý/**` |
+| `drug-timeline.js` | Biểu đồ mốc thời gian dùng thuốc phác đồ ACS & Suy tim | `pages/Dược lý/**` |
+| `moa-theater.js` | Đồ họa SVG Animated mô phỏng cơ chế tác dụng gắn receptor & cascade | `pages/Dược lý/**` |
+| `adr-bodymap.js` | Bản đồ cơ thể người SVG tương tác cảnh báo tác dụng phụ theo hệ cơ quan | `pages/Dược lý/**` |
+| `scenario-simulator.js` | Động cơ mô phỏng ca bệnh lâm sàng tương tác & chấm điểm tự động | `pages/Dược lý/**` |
 
 | `physio-patho.js` | Lightbox ảnh, lazyload | `pages/Sinh lý/**` |
 | `toc.js` | Tự động tạo mục lục sticky | `pages/Sinh lý/Sinhly/**` |
@@ -150,8 +168,12 @@
 
 | File | Vai trò |
 |------|---------|
-| `Kỹ năng/ky-nang.html` | Hub tổng Kỹ năng |
+| `Kỹ năng/ky-nang.html` | Hub tổng Kỹ năng (Tích hợp Anatomy Explorer & Skill Progress Tracker) |
 | `Kỹ năng/Bệnh án/KN_Benhan_Noikhoa.html` | Cách làm bệnh án nội khoa chuẩn |
+| `Kỹ năng/Bệnh nhân ảo/Benh_Nhan_Ao_Hub.html` | Hub Bệnh nhân ảo (Virtual Patient Hub) chọn ca lâm sàng |
+| `Kỹ năng/Bệnh nhân ảo/Case_DauNguc_Cap.html` | Giả lập ca bệnh Đau ngực cấp tương tác đa nhánh |
+| `Kỹ năng/Lâm sàng/Nghe_Am_Thanh.html` | Auscultation Trainer (Nghe âm thanh tim & phổi Web Audio API) |
+| `Kỹ năng/Cận lâm sàng/ECG_Interactive.html` | ECG Interactive Trainer (Thước Calipers kéo thả & Bazett QTc) |
 | `Kỹ năng/Cận lâm sàng/Doc_KQCLS.html` | Đọc kết quả CLS (overview) |
 | `Kỹ năng/Cận lâm sàng/doc-dien-giai-do.html` | Đọc điện giải đồ |
 | `Kỹ năng/Cận lâm sàng/doc-dong-mau.html` | Đọc đông máu |
@@ -169,8 +191,12 @@
 | `Kỹ năng/Hồi sức cấp cứu/KN_Sieuam_Capcuu.html` | Siêu âm cấp cứu |
 | `Kỹ năng/Hồi sức cấp cứu/KN_Triage.html` | Phân loại bệnh nhân (Triage) |
 | `Kỹ năng/Hồi sức cấp cứu/KN_Xutri_Ngodoc.html` | Xử trí ngộ độc |
+| `Kỹ năng/Quản lý điều trị/Clinical_Reasoning.html` | Clinical Reasoning Engine (Trình bệnh SBAR, SNAPPS, Semantic Qualifier Grid) |
 | `Kỹ năng/Quản lý điều trị/Luachon_Khangsinh.html` | Lựa chọn kháng sinh |
 | `Kỹ năng/Quản lý điều trị/Lyluan_DieutriNoikhoa.html` | Phương pháp lý luận điều trị và kê đơn thuốc nội khoa |
+| `Kỹ năng/Thủ thuật/Dat_NKQ.html` | Procedure Step-by-Step: Đặt Ống Nội Khí Quản |
+| `Kỹ năng/Thủ thuật/Choc_Dich_Mang_Phoi.html` | Procedure Step-by-Step: Chọc Dò Dịch Màng Phổi |
+| `Kỹ năng/Thủ thuật/Choc_Dich_Tuy_Song.html` | Procedure Step-by-Step: Chọc Dò Dịch Tủy Sống |
 
 ---
 
@@ -178,7 +204,12 @@
 
 | File | Vai trò |
 |------|---------|
-| `Tiếp cận/tiep-can.html` | Hub tổng Tiếp cận |
+| `Tiếp cận/tiep-can.html` | Hub tổng Tiếp cận (Stats, Daily Flashcard, Recently Viewed, On-Call mode) |
+| `Tiếp cận/ma-tran-trieu-chung.html` | Ma Trận Chẩn Đoán (Weighted Bayesian, SVG Radar Chart, Timeline Progression, URL params, Copy, Save/Load, Gap Analysis) |
+| `Tiếp cận/body-map.html` | Bản Đồ Giải Phẫu Tương Tác (SVG anatomy selector theo 5 vùng cơ thể) |
+| `Tiếp cận/case-simulator.html` | Mô Phỏng Ca Bệnh Lâm Sàng Tương Tác (Virtual Patient 4-step Reasoning Simulator) |
+| `Tiếp cận/knowledge-graph.html` | Đồ Thị Tri Thức Liên Phân Hệ (SVG Cross-Module Network Graph: Triệu chứng ↔ Bệnh ↔ CLS ↔ Thuốc) |
+| `Tiếp cận/1. HS-CC/emergency-quick-protocol.html` | Phác đồ Cấp cứu 60s (6 tình huống khẩn, CPR timer 2 phút, liều thuốc) |
 | `Tiếp cận/1. .../[Phân nhóm]/TC_*.html` | Lưu đồ tiếp cận cấp cứu |
 | `Tiếp cận/2. Triệu chứng/Than phiền Toàn thân/Sốt/TC_Sot.html` | Hub tiếp cận Sốt |
 | `Tiếp cận/2. Triệu chứng/Than phiền Toàn thân/Sốt/TC_Sot&Daudau.html` | Tiếp cận Sốt + Đau đầu |

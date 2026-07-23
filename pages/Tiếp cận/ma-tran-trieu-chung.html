@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Tra cứu đa triệu chứng và ma trận chẩn đoán phân biệt">
+  <meta name="description" content="Tra cứu đa triệu chứng, ma trận chẩn đoán phân biệt và gợi ý thu hẹp lâm sàng (Gap Analysis Engine)">
   <title>Ma Trận Triệu Chứng – CliniPortal</title>
 
   <!-- Google Fonts & FontAwesome -->
@@ -20,15 +20,69 @@
 <body>
   <div class="app-container" style="display: block;">
     <main class="main-wrapper" style="padding:0; background:transparent; margin-left:0; width: 100%;">
-      <div class="matrix-wrapper">
-        <a href="tiep-can.html" class="back-nav-btn">
+      <div class="matrix-wrapper" id="matrixWrapper">
+        <div class="top-nav-bar">
+          <a href="tiep-can.html" class="back-nav-btn">
             <i class="fa-solid fa-arrow-left"></i> Trở về Tiếp cận
-        </a>
+          </a>
+
+          <div class="matrix-actions-bar">
+            <!-- Quick Jumps -->
+            <div class="action-btn-group">
+              <button class="matrix-action-btn quick-jump-redflag" id="jumpRedFlagsBtn" title="Cuộn nhanh tới phần Cảnh báo đỏ Red Flags">
+                <i class="fa-solid fa-triangle-exclamation" style="color: var(--color-danger);"></i> <span>Red Flags</span>
+              </button>
+              <button class="matrix-action-btn quick-jump-diag" id="jumpDiagsBtn" title="Cuộn nhanh tới phần Chẩn đoán phân biệt">
+                <i class="fa-solid fa-stethoscope" style="color: var(--color-primary);"></i> <span>Chẩn Đoán</span>
+              </button>
+            </div>
+
+            <!-- On Call & Utilities -->
+            <div class="action-btn-group">
+              <button class="matrix-action-btn" id="onCallToggleBtn" title="Bật/tắt chế độ trực ban đêm (On-Call Mode)">
+                <i class="fa-solid fa-moon"></i> <span>Chế độ Trực</span>
+              </button>
+              <button class="matrix-action-btn" id="copySummaryBtn" title="Sao chép tóm tắt dữ liệu lâm sàng vào clipboard">
+                <i class="fa-solid fa-copy"></i> <span>Sao chép</span>
+              </button>
+              <button class="matrix-action-btn" id="saveCaseBtn" title="Lưu ca lâm sàng hiện tại">
+                <i class="fa-solid fa-bookmark"></i> <span>Lưu Ca</span>
+              </button>
+              <button class="matrix-action-btn" id="viewSavedCasesBtn" title="Xem danh sách các ca bệnh đã lưu">
+                <i class="fa-solid fa-folder-open"></i> <span>Đã Lưu (<span id="savedCasesCount">0</span>)</span>
+              </button>
+              <button class="matrix-action-btn" id="printReportBtn" title="In hoặc xuất PDF báo cáo 1 trang A4">
+                <i class="fa-solid fa-print"></i> <span>In A4</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
         <div class="matrix-container">
             
             <div class="matrix-header">
-                <h1><i class="fa-solid fa-network-wired"></i> Ma Trận Chẩn Đoán Cấp Cứu</h1>
-                <p>Công cụ hỗ trợ quyết định lâm sàng: Kết hợp đa triệu chứng để phát hiện tự động các <strong>Dấu hiệu cảnh báo đỏ</strong> và thu hẹp phổ <strong>Chẩn đoán phân biệt</strong>.</p>
+                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+                  <h1><i class="fa-solid fa-bolt-lightning" style="color: var(--color-warning);"></i> MA TRẬN CHẨN ĐOÁN CẤP CỨU STAT</h1>
+                  <div class="selected-counter-badge" id="selectedCounterBadge" style="background: rgba(2, 132, 199, 0.15); color: var(--color-primary); border: 1px solid rgba(2, 132, 199, 0.3); padding: 6px 16px; border-radius: 100px; font-weight: 800; font-size: 0.85rem;">
+                    <i class="fa-solid fa-circle-check"></i> Đã chọn: 0 triệu chứng
+                  </div>
+                </div>
+                <p style="margin-top: 6px;">Hệ thống hỗ trợ ra quyết định lâm sàng: Tự động sàng lọc <strong>Red Flags khẩn cấp</strong>, xếp hạng <strong>Chẩn đoán Bayesian</strong> và đưa ra <strong>Gợi ý thu hẹp lâm sàng (Gap Analysis)</strong>.</p>
+            </div>
+
+            <!-- TIMELINE PROGRESSION MODE BAR -->
+            <div class="timeline-progression-bar" style="display: flex; align-items: center; justify-content: space-between; background: var(--matrix-glass-bg); backdrop-filter: blur(12px); border: 1px solid var(--matrix-glass-border); border-radius: 16px; padding: 10px 18px; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+              <div style="font-weight: 800; font-size: 0.88rem; color: var(--color-primary); display: flex; align-items: center; gap: 8px;">
+                <i class="fa-solid fa-timeline"></i> Diễn Tiến Ca Bệnh (Progression):
+              </div>
+              <div class="phase-buttons-group" style="display: flex; gap: 6px; flex-wrap: wrap;">
+                <button class="phase-btn active" id="phase1Btn" data-phase="1" style="padding: 5px 12px; border-radius: 100px; font-size: 0.78rem; font-weight: 700; border: 1px solid var(--color-border); background: var(--color-primary); color: white; cursor: pointer;">Phase 1: Cấp cứu (0h)</button>
+                <button class="phase-btn" id="phase2Btn" data-phase="2" style="padding: 5px 12px; border-radius: 100px; font-size: 0.78rem; font-weight: 700; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); cursor: pointer;">Phase 2: CLS (2-6h)</button>
+                <button class="phase-btn" id="phase3Btn" data-phase="3" style="padding: 5px 12px; border-radius: 100px; font-size: 0.78rem; font-weight: 700; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); cursor: pointer;">Phase 3: Diễn tiến (12h)</button>
+              </div>
+              <button class="matrix-action-btn" id="replayProgressionBtn" title="Phát lại hoạt họa diễn tiến từ Phase 1 đến Phase 3" style="font-size: 0.78rem; padding: 5px 12px;">
+                <i class="fa-solid fa-play"></i> <span>Phát Lại Diễn Tiến</span>
+              </button>
             </div>
 
             <div class="matrix-layout">
@@ -36,13 +90,13 @@
                 <!-- LEFT PANEL: SELECTION -->
                 <div class="selector-panel">
                     <div class="patient-context-panel">
-                        <div class="panel-title" style="font-size: 0.95rem; margin-bottom: 12px; border:none; padding:0;">
-                            <i class="fa-solid fa-user-injured" style="color: var(--color-warning);"></i> Cơ địa / Bối cảnh (Tùy chọn)
+                        <div class="panel-title" style="font-size: 0.9rem; margin-bottom: 10px; border:none; padding:0;">
+                            <i class="fa-solid fa-user-injured" style="color: var(--color-warning);"></i> Bối cảnh / Cơ địa bệnh nhân
                         </div>
                         <div class="context-toggles">
                             <label class="context-toggle">
                                 <input type="checkbox" value="tuoi50" onchange="updateMatrix()">
-                                <span>Tuổi > 50</span>
+                                <span>> 50 tuổi</span>
                             </label>
                             <label class="context-toggle">
                                 <input type="checkbox" value="cothai" onchange="updateMatrix()">
@@ -59,9 +113,17 @@
                         </div>
                     </div>
 
-                    <div class="panel-title">
+                    <!-- Instant Symptom Search Filter -->
+                    <div class="symptom-search-box" style="margin-bottom: 16px;">
+                      <div style="position: relative;">
+                        <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--color-text-muted); font-size: 0.9rem;"></i>
+                        <input type="text" id="symptomSearchInput" placeholder="Tìm kiếm triệu chứng khẩn cấp (vd: đau ngực, sốt...)" style="width: 100%; padding: 10px 14px 10px 38px; border-radius: 12px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); font-size: 0.85rem; font-weight: 600; outline: none;">
+                      </div>
+                    </div>
+
+                    <div class="panel-title" style="font-size: 0.9rem;">
                         <i class="fa-solid fa-list-check" style="color: var(--color-primary);"></i> 
-                        Triệu chứng bệnh nhân (Chọn >= 1)
+                        Chọn Triệu Chứng Lâm Sàng
                     </div>
                     <div id="chipContainer" class="symptom-categories-container">
                         <!-- Chips generated by JS -->
@@ -84,6 +146,32 @@
         </div>
       </div>
     </main>
+  </div>
+
+  <!-- SAVED CASES MODAL -->
+  <div class="matrix-modal-overlay" id="savedCasesModal">
+    <div class="matrix-modal-card">
+      <div class="matrix-modal-header">
+        <h3><i class="fa-solid fa-folder-open"></i> Danh Sách Ca Bệnh Đã Lưu</h3>
+        <button class="matrix-modal-close" id="closeSavedCasesBtn">&times;</button>
+      </div>
+      <div class="matrix-modal-body" id="savedCasesList">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MOBILE FLOATING QUICK NAV BAR -->
+  <div class="mobile-matrix-nav" id="mobileMatrixNav">
+    <button class="mobile-nav-btn btn-redflag" id="mobileNavRedFlagBtn">
+      <i class="fa-solid fa-triangle-exclamation"></i> <span>Red Flags</span>
+    </button>
+    <button class="mobile-nav-btn btn-diag" id="mobileNavDiagBtn">
+      <i class="fa-solid fa-stethoscope"></i> <span>Chẩn Đoán</span>
+    </button>
+    <button class="mobile-nav-btn btn-gap" id="mobileNavGapBtn">
+      <i class="fa-solid fa-lightbulb"></i> <span>Gợi Ý CLS</span>
+    </button>
   </div>
 
   <div id="footer-placeholder" data-footer-path="../../components/footer.html"></div>

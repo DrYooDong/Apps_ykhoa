@@ -2054,28 +2054,76 @@
     </script>
 
     <!-- FLASHCARD MODAL -->
-    <div id="flashcard-modal" class="flashcard-modal-overlay">
+    <div id="flashcard-modal" class="flashcard-modal-overlay" aria-hidden="true" role="dialog" aria-labelledby="fc-modal-title">
         <div class="flashcard-modal-content">
-            <button id="close-flashcard" class="close-modal-btn">&times;</button>
-            <h2 class="fc-title">🧠 Flashcard Sinh Lý Cơ Bản</h2>
+            <button id="close-flashcard" class="close-modal-btn" aria-label="Đóng flashcard">&times;</button>
+
+            <div class="fc-modal-header">
+                <h2 class="fc-title" id="fc-modal-title">🧠 Flashcards Ôn Tập Sinh Lý & Sinh Lý Bệnh</h2>
+                <div class="fc-header-actions">
+                    <select id="fc-category-select" class="fc-select" aria-label="Chọn chủ đề ôn tập">
+                        <option value="all">🌟 Tất cả chủ đề</option>
+                        <optgroup label="🧬 Sinh Lý Học">
+                            <option value="physio-cell">Phần 1: Tế bào & Đại cương</option>
+                            <option value="physio-nerve">Phần 2: Thần kinh & Cơ</option>
+                            <option value="physio-blood">Phần 3: Máu & Miễn dịch</option>
+                            <option value="physio-cv-resp">Phần 4: Tim mạch & Hô hấp</option>
+                            <option value="physio-digestion">Phần 5: Tiêu hóa & Chuyển hóa</option>
+                            <option value="physio-renal">Phần 6: Thận & Dịch cơ thể</option>
+                            <option value="physio-endocrine">Phần 7: Nội tiết & Sinh sản</option>
+                        </optgroup>
+                        <optgroup label="🩺 Cơ Chế Bệnh Sinh (SLB)">
+                            <option value="patho-timmach">Tim mạch (ACS, ST, THA)</option>
+                            <option value="patho-hohap">Hô hấp (COPD, VP, SXHD)</option>
+                            <option value="patho-tieuhoa">Tiêu hóa (GERD, VTC, XG)</option>
+                            <option value="patho-thannieu">Thận niệu (AKI, CKD)</option>
+                            <option value="patho-noitiet">Nội tiết (Đái tháo đường T2)</option>
+                            <option value="patho-san-ngoai">Sản khoa & Ngoại khoa (TSG...)</option>
+                        </optgroup>
+                    </select>
+                    <button id="fc-shuffle" class="fc-icon-btn" title="Xáo trộn ngẫu nhiên" aria-label="Xáo trộn thẻ">
+                        <i class="fa-solid fa-shuffle"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Progress Track -->
+            <div class="fc-progress-track">
+                <div id="fc-progress-fill" class="fc-progress-fill" style="width: 0%;"></div>
+            </div>
+
             <div class="flashcard-container">
-                <div class="flashcard" id="physio-flashcard">
+                <div class="flashcard" id="physio-flashcard" tabindex="0" role="button" aria-label="Lật thẻ flashcard">
                     <div class="flashcard-inner">
                         <div class="flashcard-front">
-                            <h3 id="fc-question">Áp suất thẩm thấu huyết tương bình thường?</h3>
-                            <p class="fc-hint"><i class="fa-solid fa-rotate"></i> Bấm để lật thẻ</p>
+                            <span id="fc-topic-badge" class="fc-badge">🧬 Sinh lý học</span>
+                            <h3 id="fc-question">Đang tải câu hỏi...</h3>
+                            <p class="fc-hint"><i class="fa-solid fa-rotate"></i> Bấm hoặc ấn Spacebar để lật thẻ xem đáp án</p>
                         </div>
                         <div class="flashcard-back">
-                            <h3 id="fc-answer">280 - 295 mOsm/kg H2O</h3>
-                            <p class="fc-explanation" id="fc-explanation">Được quyết định chủ yếu bởi nồng độ Na+ máu.</p>
+                            <span class="fc-badge back-badge">💡 Đáp án & Cơ chế sinh lý</span>
+                            <h3 id="fc-answer">Đang tải đáp án...</h3>
+                            <p class="fc-explanation" id="fc-explanation"></p>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="flashcard-controls">
-                <button id="fc-prev" class="fc-btn"><i class="fa-solid fa-arrow-left"></i></button>
-                <span id="fc-counter">1 / 5</span>
-                <button id="fc-next" class="fc-btn"><i class="fa-solid fa-arrow-right"></i></button>
+                <button id="fc-prev" class="fc-btn" title="Thẻ trước (Phím ←)"><i class="fa-solid fa-arrow-left"></i> Trước</button>
+                <div class="fc-counter-wrapper">
+                    <span id="fc-counter">0 / 0</span>
+                    <button id="fc-toggle-known" class="fc-known-btn" title="Đánh dấu đã thuộc thẻ này">
+                        <i class="fa-regular fa-circle-check"></i> <span id="fc-known-text">Chưa thuộc</span>
+                    </button>
+                </div>
+                <button id="fc-next" class="fc-btn" title="Thẻ sau (Phím →)">Sau <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+
+            <div class="fc-keyboard-hints">
+                <span><kbd>←</kbd> <kbd>→</kbd> Chuyển thẻ</span>
+                <span><kbd>Space</kbd> Lật thẻ</span>
+                <span><kbd>Esc</kbd> Đóng</span>
             </div>
         </div>
     </div>

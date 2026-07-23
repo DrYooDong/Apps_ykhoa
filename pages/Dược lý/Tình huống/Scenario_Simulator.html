@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mô Phỏng Tình Huống Lâm Sàng Dược Lý — Đánh giá tương tác thuốc & ra quyết định phác đồ - CliniPortal">
+  <title>Mô Phỏng Ca Bệnh Dược Lý – CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../css/components/pharmacology-tools.css">
+  <link rel="stylesheet" href="../../../css/components/pharmacology-global.css">
+  <link rel="stylesheet" href="../../../css/components/moa-theater.css">
+
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+  <script src="../../../js/drug-passport.js" defer></script>
+  <script src="../../../js/emergency-dosing.js" defer></script>
+  <script src="../../../js/cross-links-pharma.js" defer></script>
+  <script src="../../../js/scenario-simulator.js" defer></script>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../duoc-ly.html" class="nav-item active" title="Dược lý">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-wrapper" id="mainContent">
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a></li>
+          <li class="breadcrumb-item"><a href="../duoc-ly.html" class="breadcrumb-link">Dược lý</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Mô Phỏng Ca Bệnh</li>
+        </ol>
+      </nav>
+
+      <section class="hero-dashboard" aria-labelledby="page-title">
+        <div class="hero-intro">
+          <h1 id="page-title">🏥 MÔ PHỎNG TÌNH HUỐNG LÂM SÀNG DƯỢC LÝ (SCENARIO SIMULATOR)</h1>
+          <p>Thực hành ra quyết định điều trị nội khoa, nhận diện tương tác thuốc nguy hiểm & cá thể hóa liều dùng qua các ca bệnh thực tế lâm sàng.</p>
+        </div>
+      </section>
+
+      <!-- SCENARIO MOUNT -->
+      <div id="scenario-app-mount"></div>
+    </main>
+  </div>
+
+  <footer class="global-footer">
+    <div class="footer-copyright"><p>CliniPortal © 2026. Công cụ mô phỏng ca bệnh tương tác.</p></div>
+  </footer>
+</body>
+</html>

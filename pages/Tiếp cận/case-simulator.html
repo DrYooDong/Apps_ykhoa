@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mô phỏng ca bệnh lâm sàng tương tác (Virtual Patient Case Simulator) – CliniPortal">
+  <title>Mô Phỏng Ca Bệnh Lâm Sàng – CliniPortal</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core CliniPortal -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/components/header.css">
+  <link rel="stylesheet" href="../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../css/components/footer.css">
+
+  <style>
+    .sim-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .sim-header {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: white;
+      border-radius: 24px;
+      padding: 30px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      box-shadow: 0 10px 30px rgba(2, 132, 199, 0.3);
+    }
+
+    .sim-header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .score-badge-box {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 12px 20px;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .score-number {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #fbbf24;
+    }
+
+    /* Cases Selector */
+    .case-selector-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .case-card {
+      background: var(--color-surface);
+      border: 2px solid var(--color-border);
+      border-radius: 20px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .case-card:hover {
+      border-color: var(--color-primary);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .case-card.active {
+      border-color: var(--color-primary);
+      background: rgba(2, 132, 199, 0.05);
+    }
+
+    .case-card h3 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--color-primary);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .case-desc {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+
+    /* Simulation Stepper & Work Area */
+    .sim-work-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 30px;
+    }
+
+    .stepper-nav {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      border-bottom: 2px solid var(--color-border);
+      padding-bottom: 16px;
+    }
+
+    .step-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .step-btn.active {
+      color: var(--color-primary);
+    }
+
+    .step-btn.completed {
+      color: var(--color-success);
+    }
+
+    .question-box {
+      margin-bottom: 24px;
+    }
+
+    .question-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--color-text);
+      margin-bottom: 16px;
+    }
+
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .opt-card {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      padding: 16px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--color-text);
+      transition: all 0.2s;
+    }
+
+    .opt-card:hover {
+      border-color: var(--color-primary);
+      background: rgba(2, 132, 199, 0.04);
+    }
+
+    .feedback-box {
+      margin-top: 20px;
+      padding: 16px;
+      border-radius: 14px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      font-weight: 600;
+      display: none;
+    }
+
+    .feedback-box.correct {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid var(--color-success);
+      color: var(--color-success);
+    }
+
+    .feedback-box.wrong {
+      background: rgba(225, 29, 72, 0.1);
+      border: 1px solid var(--color-danger);
+      color: var(--color-danger);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li><a href="../../index.html" class="nav-item" title="Trang chủ"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+          <li><a href="../Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item" title="S.lý - S.lý bệnh"><span class="nav-icon">🧬</span><span class="nav-text">S.lý - S.lý bệnh</span></a></li>
+          <li><a href="../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng"><span class="nav-icon">🩺</span><span class="nav-text">Kỹ năng</span></a></li>
+          <li><a href="tiep-can.html" class="nav-item active" aria-current="page" title="Tiếp cận"><span class="nav-icon">🤒</span><span class="nav-text">Tiếp cận</span></a></li>
+          <li><a href="../Công cụ/cong-cu.html" class="nav-item" title="Công cụ"><span class="nav-icon">⚙️</span><span class="nav-text">Công cụ</span></a></li>
+          <li><a href="../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý"><span class="nav-icon">💊</span><span class="nav-text">Dược lý</span></a></li>
+          <li><a href="../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ"><span class="nav-icon">📄</span><span class="nav-text">Y học chứng cứ</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-wrapper" id="mainContent">
+      <div class="sim-wrapper">
+
+        <!-- Simulator Header -->
+        <div class="sim-header">
+          <div>
+            <h1><i class="fa-solid fa-user-doctor"></i> MÔ PHỎNG CA BỆNH LÂM SÀNG</h1>
+            <p>Thử thách tư duy lâm sàng với Bệnh nhân ảo (Virtual Patient Case Simulator)</p>
+          </div>
+          <div class="score-badge-box">
+            <div style="font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Điểm Lý Luận</div>
+            <div class="score-number" id="simScoreDisplay">0 / 100</div>
+          </div>
+        </div>
+
+        <!-- Case Selector -->
+        <div class="case-selector-grid">
+          <div class="case-card active" data-case="sepsis">
+            <h3><i class="fa-solid fa-temperature-high"></i> Ca 1: Sốt & Đau bụng</h3>
+            <div class="case-desc">BN Nam 54 tuổi, nhập viện vì sốt cao rét run, đau hạ sườn P kèm huyết áp tụt.</div>
+          </div>
+          <div class="case-card" data-case="stemi">
+            <h3><i class="fa-solid fa-heart-pulse"></i> Ca 2: Đau ngực cấp</h3>
+            <div class="case-desc">BN Nữ 62 tuổi, đau đè nặng bóp nghẹt sau xương ức lan vai T kèm vã mồ hôi.</div>
+          </div>
+          <div class="case-card" data-case="asthma">
+            <h3><i class="fa-solid fa-wind"></i> Ca 3: Khó thở dữ dội</h3>
+            <div class="case-desc">BN Nam 28 tuổi, tiền sử hen, khó thở thì thở ra, lồng ngực im lặng (Silent chest).</div>
+          </div>
+        </div>
+
+        <!-- Simulation Work Card -->
+        <div class="sim-work-card">
+          <!-- Stepper Header -->
+          <div class="stepper-nav">
+            <div class="step-btn active" id="step1Nav"><i class="fa-solid fa-1"></i> Bệnh Sử</div>
+            <div class="step-btn" id="step2Nav"><i class="fa-solid fa-2"></i> Khám Lâm Sàng</div>
+            <div class="step-btn" id="step3Nav"><i class="fa-solid fa-3"></i> Cận Lâm Sàng</div>
+            <div class="step-btn" id="step4Nav"><i class="fa-solid fa-4"></i> Xử Trí</div>
+          </div>
+
+          <!-- Dynamic Question Area -->
+          <div class="question-box" id="questionArea">
+            <!-- Rendered by JS -->
+          </div>
+
+          <div class="feedback-box" id="feedbackArea">
+            <!-- Feedback Rendered by JS -->
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../components/footer.html"></div>
+
+  <!-- Scripts -->
+  <script src="../../js/main.js" defer></script>
+  <script src="../../components/header.js" defer></script>
+  <script src="../../components/footer.js" defer></script>
+  <script src="../../js/case-simulator.js" defer></script>
+</body>
+</html>

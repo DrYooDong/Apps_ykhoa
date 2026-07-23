@@ -278,6 +278,31 @@
         <div class="hero-pattern"></div>
       </section>
 
+      <!-- ===== APPROACH STATS BANNER ===== -->
+      <div class="approach-stats-banner" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 20px 0;">
+        <div class="stat-card" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 16px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; box-shadow: var(--shadow-sm);">
+          <div class="stat-icon" style="font-size: 2rem; color: var(--color-primary); background: rgba(2, 132, 199, 0.1); width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-book-medical"></i></div>
+          <div class="stat-info">
+            <span class="stat-number" id="totalApproachesCount" style="font-size: 1.4rem; font-weight: 800; color: var(--color-text); display: block;">42</span>
+            <span class="stat-label" style="font-size: 0.8rem; color: var(--color-text-muted); font-weight: 600;">Tổng Tiếp Cận</span>
+          </div>
+        </div>
+        <div class="stat-card" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 16px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; box-shadow: var(--shadow-sm);">
+          <div class="stat-icon" style="font-size: 2rem; color: var(--color-success); background: rgba(16, 185, 129, 0.1); width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-circle-check"></i></div>
+          <div class="stat-info">
+            <span class="stat-number" id="viewedApproachesCount" style="font-size: 1.4rem; font-weight: 800; color: var(--color-text); display: block;">0</span>
+            <span class="stat-label" style="font-size: 0.8rem; color: var(--color-text-muted); font-weight: 600;">Đã Học / Đã Xem</span>
+          </div>
+        </div>
+        <div class="stat-card" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 16px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; box-shadow: var(--shadow-sm);">
+          <div class="stat-icon" style="font-size: 2rem; color: var(--color-warning); background: rgba(245, 158, 11, 0.1); width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div class="stat-info">
+            <span class="stat-number" style="font-size: 1.4rem; font-weight: 800; color: var(--color-text); display: block;">27</span>
+            <span class="stat-label" style="font-size: 0.8rem; color: var(--color-text-muted); font-weight: 600;">Triệu Chứng Ma Trận</span>
+          </div>
+        </div>
+      </div>
+
       <!-- ===== TOOLBAR / CONTROL BAR ===== -->
       <div class="dashboard-controls">
         <div class="search-box-container">
@@ -301,6 +326,18 @@
           <button class="tag-filter-btn" data-tag="nhi-khoa">#nhi-khoa</button>
           <button class="tag-filter-btn" data-tag="san-khoa">#san-khoa</button>
           <button class="tag-filter-btn" data-tag="ngoai-khoa">#ngoai-khoa</button>
+          <a href="body-map.html" class="tag-filter-btn" style="background: rgba(139, 92, 246, 0.15); color: #8b5cf6; border-color: #8b5cf6; font-weight: 700; text-decoration: none;" title="Mở Bản Đồ Giải Phẫu Tương Tác">
+            <i class="fa-solid fa-child-reaching"></i> Bản Đồ Giải Phẫu
+          </a>
+          <a href="case-simulator.html" class="tag-filter-btn" style="background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: #10b981; font-weight: 700; text-decoration: none;" title="Mở Mô Phỏng Ca Bệnh Tương Tác">
+            <i class="fa-solid fa-user-doctor"></i> Ca Bệnh Ảo
+          </a>
+          <a href="knowledge-graph.html" class="tag-filter-btn" style="background: rgba(2, 132, 199, 0.15); color: #0284c7; border-color: #0284c7; font-weight: 700; text-decoration: none;" title="Mở Sơ Đồ Đồ Thị Tri Thức">
+            <i class="fa-solid fa-diagram-project"></i> Đồ Thị Tri Thức
+          </a>
+          <button id="hubOnCallBtn" class="tag-filter-btn" style="background: rgba(245, 158, 11, 0.15); color: var(--color-warning); border-color: var(--color-warning); font-weight: 700;" title="Bật/Tắt chế độ On-Call trực đêm">
+            <i class="fa-solid fa-moon"></i> On-Call Mode
+          </button>
         </div>
         <div class="view-toggle-container">
           <span class="toggle-label">Chế độ xem:</span>
@@ -416,17 +453,26 @@
                 <h3 id="part1-heading">Cấp cứu - Hồi sức</h3>
               </div>
               <div class="specialty-grid infographic-grid">
-                <!-- Card 1 -->
-                <a href="#" class="specialty-card info-card" data-tags="cap-cuu">
+                <!-- Card 1: Emergency Protocol -->
+                <a href="1. HS-CC/emergency-quick-protocol.html" class="specialty-card info-card" data-tags="cap-cuu" style="border-left-color: var(--color-danger) !important;">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
-                      <h3>Ngưng tuần hoàn</h3>
+                      <h3 style="color: var(--color-danger) !important;"><i class="fa-solid fa-bolt-lightning" style="margin-right: 6px;"></i> Phác Đồ Cấp Cứu 60s</h3>
+                    </div>
+                  </div>
+                </a>
+                <!-- Card 2: CPR -->
+                <a href="1. HS-CC/Hồi sức cơ bản & nâng cao/TC_HS_BLS-ALCS.html" class="specialty-card info-card" data-tags="cap-cuu">
+                  <div class="specialty-card-top">
+                    <div class="specialty-info">
+                      <h3>Ngưng tuần hoàn (BLS/ACLS)</h3>
                     </div>
                   </div>
                 </a>
               </div>
             </div>
           </section>
+
 
           <!-- PHẦN 2: TRIỆU CHỨNG - HỘI CHỨNG -->
           <section id="part2-section" aria-labelledby="part2-heading">
@@ -756,6 +802,35 @@
               <span style="font-size: 0.75rem; font-weight: 500; opacity: 0.95;">Công cụ phân tích đa triệu chứng đột phá</span>
             </a>
           </section>
+
+          <!-- DAILY RED FLAGS FLASHCARD WIDGET -->
+          <section class="widget-card daily-flashcard-card" style="margin-top: 20px;">
+            <div class="widget-card-title">
+              <h3><i class="fa-solid fa-fire" style="color: var(--color-danger);"></i> Red Flags Hôm Nay</h3>
+              <span class="clock-current-time" style="background: rgba(2, 132, 199, 0.1); color: var(--color-primary);">Flashcard</span>
+            </div>
+            <div class="flashcard-box" id="dailyFlashcardBox" style="background: var(--color-surface-2); border: 1px solid var(--color-border); border-radius: 12px; padding: 14px; text-align: center;">
+              <div class="flashcard-question" id="flashcardTitle" style="font-weight: 700; font-size: 1rem; color: var(--color-primary); margin-bottom: 8px;">Triệu chứng: Sốt</div>
+              <div class="flashcard-hint" id="flashcardHint" style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 12px; font-style: italic;">Thử nhớ các Dấu Hiệu Cảnh Báo Đỏ trước khi lật thẻ...</div>
+              <div class="flashcard-answer" id="flashcardAnswer" style="display: none; text-align: left; margin-bottom: 12px;">
+                <ul id="flashcardRedFlagsList" style="padding-left: 18px; margin: 0; font-size: 0.82rem; color: var(--color-text); line-height: 1.5;"></ul>
+              </div>
+              <button class="flashcard-toggle-btn" id="flashcardToggleBtn" style="background: var(--color-primary); color: white; border: none; padding: 8px 16px; border-radius: 100px; font-size: 0.8rem; font-weight: 700; cursor: pointer; transition: all 0.2s;">
+                <i class="fa-solid fa-rotate"></i> Lật Thẻ Xem Đáp Án
+              </button>
+            </div>
+          </section>
+
+          <!-- RECENTLY VIEWED WIDGET -->
+          <section class="widget-card recently-viewed-card" style="margin-top: 20px;">
+            <div class="widget-card-title">
+              <h3><i class="fa-solid fa-clock-rotate-left" style="color: var(--color-primary);"></i> Tiếp Cận Vừa Xem</h3>
+            </div>
+            <div id="recentlyViewedList" class="recently-viewed-list" style="display: flex; flex-direction: column; gap: 8px;">
+              <p style="font-size: 0.8rem; color: var(--color-text-muted); font-style: italic; margin: 0;">Chưa có lịch sử truy cập gần đây.</p>
+            </div>
+          </section>
+
         </aside>
       </div><!-- end dashboard-layout -->
     </div><!-- end main-wrapper -->
@@ -764,7 +839,9 @@
   <div id="footer-placeholder" data-footer-path="../../components/footer.html"></div>
 
   <!-- ===================== SCRIPT ===================== -->
+  <script src="../../js/ma-tran-trieu-chung-data.js" defer></script>
   <script src="../../js/module-dashboard.js" defer></script>
+
 
   <!-- ===================== SYMPTOM MATRIX SCRIPT ===================== -->
   <script>

@@ -435,8 +435,11 @@
   // ============================================================
   function tagRevealElements() {
     const selectors = [
+      '.emergency-section',
+      '.favorites-section',
       '.quick-access-section',
       '.main-content-grid',
+      '.updates-feed-section',
       '.announcement-banner',
       '.widget-card',
     ];

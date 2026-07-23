@@ -14,9 +14,8 @@
 .matrix-wrapper {
     background: var(--matrix-bg-gradient);
     min-height: 100vh;
-    padding: 80px 20px 40px 20px;
+    padding: 20px 20px 40px 20px;
     position: relative;
-    overflow: hidden;
 }
 .back-nav-btn {
     position: absolute;
@@ -119,9 +118,51 @@
 /* Layout */
 .matrix-layout {
     display: grid;
-    grid-template-columns: 450px 1fr;
-    gap: 30px;
+    grid-template-columns: 440px 1fr;
+    gap: 24px;
     align-items: start;
+}
+
+.action-btn-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+@media (max-width: 1100px) {
+    .matrix-layout {
+        grid-template-columns: 380px 1fr;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 992px) {
+    .matrix-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.results-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+}
+
+@media (min-width: 993px) {
+    .results-panel {
+        position: sticky;
+        top: 20px;
+    }
+}
+
+/* Custom Scrollbar for results panel */
+.results-panel::-webkit-scrollbar {
+    width: 6px;
+}
+.results-panel::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 10px;
 }
 
 /* Selector Panel */
@@ -131,7 +172,7 @@
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--matrix-glass-border);
     border-radius: 24px;
-    padding: 30px;
+    padding: 24px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.08);
     animation: fadeInLeft 0.8s ease-out;
 }
@@ -390,8 +431,10 @@
     transform: translateY(20px);
 }
 
-.result-card:nth-child(1) { animation-delay: 0.1s; }
-.result-card:nth-child(2) { animation-delay: 0.2s; }
+.result-card:nth-child(1) { animation-delay: 0.05s; }
+.result-card:nth-child(2) { animation-delay: 0.1s; }
+.result-card:nth-child(3) { animation-delay: 0.15s; }
+.result-card:nth-child(4) { animation-delay: 0.2s; }
 
 /* Top glowing bar */
 .result-card::before {
@@ -582,3 +625,356 @@
         font-size: 1.8rem;
     }
 }
+
+/* TOP NAV & ACTION BAR */
+.top-nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1280px;
+    margin: 0 auto 25px auto;
+    position: relative;
+    z-index: 1000;
+    flex-wrap: wrap;
+    gap: 15px;
+    transition: all 0.3s ease;
+}
+
+@media (min-width: 993px) {
+    .top-nav-bar {
+        position: sticky;
+        top: 12px;
+        background: var(--matrix-glass-bg);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--matrix-glass-border);
+        border-radius: 100px;
+        padding: 10px 20px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.top-nav-bar .back-nav-btn {
+    position: static;
+}
+.matrix-actions-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.matrix-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: var(--matrix-glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--matrix-glass-border);
+    border-radius: 100px;
+    color: var(--color-text);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.matrix-action-btn:hover {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
+    transform: translateY(-2px);
+}
+.matrix-action-btn.active {
+    background: var(--color-warning);
+    color: white;
+    border-color: var(--color-warning);
+}
+
+/* GAP ANALYSIS CARD */
+.card-purple::before {
+    background: #8b5cf6;
+}
+.title-purple {
+    color: #8b5cf6;
+}
+.title-purple .icon-wrapper {
+    background: rgba(139, 92, 246, 0.1);
+}
+.gap-sections-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+.gap-section {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 16px;
+}
+.gap-section-title {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #8b5cf6;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.gap-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.gap-list li {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: var(--color-text);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+.gap-list li i {
+    color: #8b5cf6;
+    margin-top: 3px;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+}
+
+/* MODAL STYLES */
+.matrix-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    padding: 20px;
+}
+.matrix-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+.matrix-modal-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 550px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+.matrix-modal-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.matrix-modal-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.matrix-modal-close {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--color-text-muted);
+    cursor: pointer;
+}
+.matrix-modal-body {
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.saved-case-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+.saved-case-info h4 {
+    margin: 0 0 4px 0;
+    font-size: 0.95rem;
+    color: var(--color-text);
+}
+.saved-case-meta {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    margin-bottom: 4px;
+}
+.saved-case-syms {
+    font-size: 0.8rem;
+    color: var(--color-text);
+}
+.saved-case-actions {
+    display: flex;
+    gap: 6px;
+}
+.saved-case-actions button {
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+}
+.load-case-btn {
+    background: var(--color-primary);
+    color: white;
+}
+.delete-case-btn {
+    background: rgba(225, 29, 72, 0.1);
+    color: var(--color-danger);
+}
+
+/* ON-CALL MODE STYLES (OLED HIGH CONTRAST DARK) */
+html.on-call-mode {
+    --color-bg: #020617;
+    --color-surface: #0f172a;
+    --color-text: #f8fafc;
+    --color-text-muted: #94a3b8;
+    --color-border: rgba(255, 255, 255, 0.2);
+    --matrix-bg-gradient: linear-gradient(135deg, #020617 0%, #090d16 100%);
+    --matrix-glass-bg: rgba(15, 23, 42, 0.95);
+    --matrix-glass-border: rgba(255, 255, 255, 0.25);
+}
+
+html.on-call-mode body {
+    background-color: #020617 !important;
+    color: #f8fafc !important;
+}
+
+html.on-call-mode .matrix-header p,
+html.on-call-mode .matrix-action-btn,
+html.on-call-mode .panel-title,
+html.on-call-mode .symptom-category-title,
+html.on-call-mode .symptom-chip .chip-text,
+html.on-call-mode .red-flag-text,
+html.on-call-mode .diff-diag-name,
+html.on-call-mode .gap-section-title,
+html.on-call-mode .gap-list li,
+html.on-call-mode .context-toggle span {
+    color: #f8fafc !important;
+}
+
+html.on-call-mode .symptom-chip {
+    background: #0f172a !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+html.on-call-mode .symptom-chip.active {
+    background: linear-gradient(135deg, var(--color-primary), #0369a1) !important;
+    border-color: var(--color-primary) !important;
+}
+
+html.on-call-mode .red-flag-item {
+    background: rgba(225, 29, 72, 0.2) !important;
+    border-color: rgba(225, 29, 72, 0.5) !important;
+}
+
+html.on-call-mode .diff-diag-item {
+    background: #0f172a !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+html.on-call-mode .gap-section {
+    background: #0f172a !important;
+    border-color: rgba(139, 92, 246, 0.3) !important;
+}
+
+html.on-call-mode .matrix-action-btn {
+    background: rgba(30, 41, 59, 0.9) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+html.on-call-mode #symptomSearchInput {
+    background: #0f172a !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* MOBILE FLOATING QUICK NAV BAR */
+.mobile-matrix-nav {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    background: var(--matrix-glass-bg);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--matrix-glass-border);
+    border-radius: 100px;
+    padding: 8px 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    gap: 8px;
+    align-items: center;
+}
+
+@media (max-width: 992px) {
+    .mobile-matrix-nav {
+        display: flex;
+    }
+}
+
+.mobile-nav-btn {
+    padding: 8px 14px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.mobile-nav-btn.btn-redflag {
+    background: rgba(225, 29, 72, 0.15);
+    color: var(--color-danger);
+    border: 1px solid rgba(225, 29, 72, 0.3);
+}
+
+.mobile-nav-btn.btn-diag {
+    background: rgba(2, 132, 199, 0.15);
+    color: var(--color-primary);
+    border: 1px solid rgba(2, 132, 199, 0.3);
+}
+
+.mobile-nav-btn.btn-gap {
+    background: rgba(139, 92, 246, 0.15);
+    color: #8b5cf6;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.mobile-nav-btn:active {
+    transform: scale(0.95);
+}
+

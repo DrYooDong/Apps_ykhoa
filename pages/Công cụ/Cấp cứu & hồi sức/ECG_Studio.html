@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="ECG Pro Studio — Công cụ sinh điện tâm đồ 12 chuyển đạo tương tác theo tình huống cấp cứu, phối hợp 35+ tổn thương, thước đo Calipers ảo và Quiz chẩn đoán – CliniPortal.">
+  <title>ECG Pro Studio – Công Cụ Cấp Cứu – CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../css/components/ecg-studio.css">
+
+  <script src="../../../js/main.js" defer></script>
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+  <script src="../../../js/ecg-studio/ecg-modifiers.js" defer></script>
+  <script src="../../../js/ecg-studio/ecg-scenarios.js" defer></script>
+  <script src="../../../js/ecg-studio/ecg-leads.js" defer></script>
+  <script src="../../../js/ecg-studio/ecg-engine.js" defer></script>
+  <script src="../../../js/ecg-studio/ecg-studio.js" defer></script>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li><a href="../../../index.html" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+          <li><a href="../../Kỹ năng/ky-nang.html" class="nav-item"><span class="nav-icon">🩺</span><span class="nav-text">Kỹ năng</span></a></li>
+          <li><a href="../../Tiếp cận/tiep-can.html" class="nav-item"><span class="nav-icon">🤒</span><span class="nav-text">Tiếp cận</span></a></li>
+          <li><a href="../cong-cu.html" class="nav-item active"><span class="nav-icon">⚙️</span><span class="nav-text">Công cụ</span></a></li>
+          <li><a href="../../Dược lý/duoc-ly.html" class="nav-item"><span class="nav-icon">💊</span><span class="nav-text">Dược lý</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="app-main">
+      <div class="ecg-studio-container">
+
+        <!-- Studio Header Card -->
+        <div class="studio-card">
+          <div class="studio-header-bar">
+            <div>
+              <span class="element-badge" style="background-color: var(--color-danger); margin-bottom: 0.5rem;">Công Cụ Cấp Cứu Tim Mạch High-Tech</span>
+              <h1 class="studio-title">ECG Pro Studio — Trình Giả Lập & Tạo ECG 12 Chuyển Đạo Cấp Cứu</h1>
+              <p style="color: var(--color-text-muted); font-size: 0.95rem; margin-top: 0.25rem;">
+                Công cụ hỗ trợ ra quyết định lâm sàng cấp cứu. Tạo ra điện tâm đồ 12 chuyển đạo từ tình huống bệnh nhân ảo cấp cứu, xếp chồng 35+ tổn thương và đo đạc chính xác với Calipers.
+              </p>
+            </div>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <button class="btn-proc btn-proc-secondary" id="btnResetStudio">
+                <i class="fa-solid fa-rotate-left"></i> Đặt Lại Mặc Định
+              </button>
+              <button class="btn-proc btn-proc-primary" id="btnStartStudioQuiz">
+                <i class="fa-solid fa-graduation-cap"></i> Thử Thách Quiz Chẩn Đoán
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3-Column Studio Grid Layout -->
+        <div class="studio-main-grid">
+
+          <!-- Left Column: Tabbed Control Panel (Scenarios vs Abnormality Mixer) -->
+          <div class="studio-card">
+            
+            <!-- Sidebar Panel Tabs Header -->
+            <div class="sidebar-tabs-header">
+              <button class="sidebar-tab-btn active" data-tab="tab_scenarios">
+                <i class="fa-solid fa-user-doctor"></i> Ca Bệnh Mẫu
+              </button>
+              <button class="sidebar-tab-btn" data-tab="tab_mixer">
+                <i class="fa-solid fa-sliders"></i> Abnormality Mixer
+              </button>
+            </div>
+
+            <!-- TAB 1: Scenarios & Patient Context -->
+            <div class="sidebar-tab-content" id="tab_scenarios" style="display: block;">
+              <!-- Patient Context Panel (Visible when scenario active) -->
+              <div class="patient-card" id="patientContextPanel" style="display: none;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                  <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--color-primary);">
+                    🏥 BỆNH NHÂN ẢO CẤP CỨU
+                  </h3>
+                  <span class="element-badge" style="font-size: 0.7rem; background: var(--color-primary);">Tình Huống</span>
+                </div>
+                <p style="font-size: 0.85rem; font-weight: 700; color: var(--color-text);" id="patDemographics">--</p>
+
+                <div class="patient-vitals-grid">
+                  <div class="vital-box">
+                    <span class="vital-label">MẠCH</span>
+                    <span class="vital-val" id="patHR">--</span>
+                  </div>
+                  <div class="vital-box">
+                    <span class="vital-label">HUYẾT ÁP</span>
+                    <span class="vital-val" id="patBP">--</span>
+                  </div>
+                  <div class="vital-box">
+                    <span class="vital-label">SpO2</span>
+                    <span class="vital-val" id="patSpO2">--</span>
+                  </div>
+                  <div class="vital-box">
+                    <span class="vital-label">NHIỆT ĐỘ</span>
+                    <span class="vital-val" id="patTemp">--</span>
+                  </div>
+                </div>
+
+                <p style="font-size: 0.85rem; color: var(--color-text); line-height: 1.45; margin-bottom: 0.5rem;" id="patContextDesc">--</p>
+                <ul style="font-size: 0.82rem; color: var(--color-text-muted); list-style: none; padding: 0;" id="patSymptomsList"></ul>
+              </div>
+
+              <!-- Scenarios Bank List -->
+              <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.75rem;">
+                📂 Danh Sách Ca Bệnh Cấp Cứu
+              </h3>
+              <div class="scenarios-scroll-list" id="scenarioListGrid"></div>
+            </div>
+
+            <!-- TAB 2: Abnormality Mixer with Search & Category Pills Filter -->
+            <div class="sidebar-tab-content" id="tab_mixer" style="display: none;">
+              <!-- Search Bar -->
+              <div class="mixer-search-box">
+                <i class="fa-solid fa-magnifying-glass mixer-search-icon"></i>
+                <input type="text" id="mixerSearchInput" class="mixer-search-input" placeholder="Tìm bất thường (STEMI, Kali, Block)...">
+              </div>
+
+              <!-- Category Pills Filter -->
+              <div class="cat-pills-scroll">
+                <button class="cat-pill-btn active" data-cat="ALL">Tất cả</button>
+                <button class="cat-pill-btn" data-cat="Rối loạn nhịp">Rối loạn nhịp</button>
+                <button class="cat-pill-btn" data-cat="Rối loạn dẫn truyền">Dẫn truyền</button>
+                <button class="cat-pill-btn" data-cat="Mạch vành">Mạch vành</button>
+                <button class="cat-pill-btn" data-cat="Dày buồng tim">Dày tim</button>
+                <button class="cat-pill-btn" data-cat="Điện giải & Khác">Điện giải/Khác</button>
+              </div>
+
+              <!-- Checkbox List Container -->
+              <div class="mixer-scroll-container" id="abnormalityMixerGrid"></div>
+            </div>
+
+          </div>
+
+          <!-- Middle Column: 12-Lead ECG Grid & Calipers -->
+          <div class="studio-card">
+
+            <!-- Active Modifiers Chips Bar -->
+            <div class="active-chips-bar-wrapper">
+              <span class="active-chips-label"><i class="fa-solid fa-layer-group"></i> Đang chọn:</span>
+              <div class="active-chips-list" id="activeModifiersChips"></div>
+            </div>
+
+            <!-- Studio Toolbar: Speed, Gain & Layout Controls -->
+            <div class="studio-controls-toolbar">
+              <div class="controls-group-left">
+                <!-- Tốc độ chạy giấy -->
+                <div class="control-select-item">
+                  <label for="selectPaperSpeed"><i class="fa-solid fa-gauge-high"></i> Tốc độ:</label>
+                  <select id="selectPaperSpeed">
+                    <option value="12.5">12.5 mm/s (Thu hẹp)</option>
+                    <option value="25" selected>25 mm/s (Standard Chuẩn)</option>
+                    <option value="50">50 mm/s (Phóng rộng 2x)</option>
+                  </select>
+                </div>
+
+                <!-- Biên độ / Gain -->
+                <div class="control-select-item">
+                  <label for="selectPaperGain"><i class="fa-solid fa-arrow-up-right-dots"></i> Biên độ (Gain):</label>
+                  <select id="selectPaperGain">
+                    <option value="5">5 mm/mV (N/2 Giảm cao)</option>
+                    <option value="10" selected>10 mm/mV (N Chuẩn)</option>
+                    <option value="20">20 mm/mV (2N Phóng to 2x)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Khổ hiển thị / Layout -->
+              <div class="control-select-item">
+                <label for="selectGridLayout"><i class="fa-solid fa-table-cells"></i> Khổ Lưới (Layout):</label>
+                <select id="selectGridLayout">
+                  <option value="4x3" selected>Lưới 4 × 3 (Chuẩn)</option>
+                  <option value="2x6">Lưới 2 × 6 (Khổ rộng)</option>
+                  <option value="1x12">Dải 1 × 12 (Toàn màn hình)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Parameter Badges Bar -->
+            <div class="param-badges-bar">
+              <div class="param-badge-item">Tần số: <strong id="dispHR">75 bpm</strong></div>
+              <div class="param-badge-item">Khoảng PR: <strong id="dispPR">160 ms</strong></div>
+              <div class="param-badge-item">QRS: <strong id="dispQRS">80 ms</strong></div>
+              <div class="param-badge-item">Khoảng QT: <strong id="dispQT">380 ms</strong></div>
+              <div class="param-badge-item">Trục điện tim: <strong id="dispAxis">60°</strong></div>
+            </div>
+
+            <!-- 12-Lead Canvas Grid -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; margin-bottom: 0.75rem;">
+              <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--color-text);">
+                📈 ECG 12 Chuyển Đạo Cấp Cứu
+              </h3>
+              <span style="font-size: 0.78rem; color: var(--color-text-muted);">
+                <i class="fa-solid fa-magnifying-glass-plus"></i> Bấm vào ô chuyển đạo để phóng to chi tiết
+              </span>
+            </div>
+
+            <div class="leads-12-grid layout-4x3" id="leads12Grid">
+              <div class="lead-canvas-box" title="Bấm để phóng to chuyển đạo I"><span class="lead-zoom-hint"><i class="fa-solid fa-expand"></i></span><canvas id="canvas_I"></canvas></div>
+              <div class="lead-canvas-box" title="Bấm để phóng to chuyển đạo aVR"><span class="lead-zoom-hint"><i class="fa-solid fa-expand"></i></span><canvas id="canvas_aVR"></canvas></div>
+              <div class="lead-canvas-box" title="Bấm để phóng to chuyển đạo V1"><span class="lead-zoom-hint"><i class="fa-solid fa-expand"></i></span><canvas id="canvas_V1"></canvas></div>
+              <div class="lead-canvas-box" title="Bấm để phóng to chuyển đạo V4"><span class="lead-zoom-hint"><i class="fa-solid fa-expand"></i></span><canvas id="canvas_V4"></canvas></div>
+
+              <div class="lead-canvas-box" title="Bấm để phóng to chuyển đạo II"><span class="lead-zoom-hint"><i class="fa-solid fa-expand"></i></span><canvas id="canvas_II"></canvas></div>
+              <div class="lead-canvas-box" title="Bấm để phóng to chuyển đạo aVL"><span class="lead-zoom-hint"><i class="fa-solid fa-expand"></i></span><canvas id="canvas_aVL"></canvas></div>
+              <div class="lead-canvas-box" title="Bấm để phóng to chuyển đạo V2"><span class="lead-zoom-hint"><i class="fa-solid fa-expand"></i></span><canvas id="canvas_V2"></canvas></div>
+              <div class="lead-canvas-box" title="Bấm để phóng to chuyển đạo V5"><span class="lead-zoom-hint"><i class="fa-solid fa-expand"></i></span><canvas id="canvas_V5"></canvas></div>
+
+              <div class="lead-canvas-box" title="Bấm để phóng to chuyển đạo III"><span class="lead-zoom-hint"><i class="fa-solid fa-expand"></i></span><canvas id="canvas_III"></canvas></div>
+              <div class="lead-canvas-box" title="Bấm để phóng to chuyển đạo aVF"><span class="lead-zoom-hint"><i class="fa-solid fa-expand"></i></span><canvas id="canvas_aVF"></canvas></div>
+              <div class="lead-canvas-box" title="Bấm để phóng to chuyển đạo V3"><span class="lead-zoom-hint"><i class="fa-solid fa-expand"></i></span><canvas id="canvas_V3"></canvas></div>
+              <div class="lead-canvas-box" title="Bấm để phóng to chuyển đạo V6"><span class="lead-zoom-hint"><i class="fa-solid fa-expand"></i></span><canvas id="canvas_V6"></canvas></div>
+            </div>
+
+            <!-- Rhythm Strip II + Virtual Calipers -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; margin-bottom: 0.5rem;">
+              <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--color-text);">
+                📊 Rhythm Strip Chuyển Đạo II & Thước Đo Calipers Ảo
+              </h3>
+              <span style="font-size: 0.8rem; color: var(--color-text-muted);">
+                <i class="fa-solid fa-arrows-left-right"></i> Kéo thả 2 chốt xanh dương để đo
+              </span>
+            </div>
+
+            <div class="rhythm-paper-grid" id="rhythmGridContainer">
+              <canvas id="canvas_rhythm"></canvas>
+              <svg class="rhythm-calipers-svg" viewBox="0 0 600 180" preserveAspectRatio="none">
+                <!-- Caliper 1 -->
+                <line id="caliperLine1" class="caliper-line" x1="120" y1="0" x2="120" y2="180"/>
+                <circle id="caliperHandle1" class="caliper-handle" cx="120" cy="20" r="10"/>
+
+                <!-- Caliper 2 -->
+                <line id="caliperLine2" class="caliper-line" x1="360" y1="0" x2="360" y2="180"/>
+                <circle id="caliperHandle2" class="caliper-handle" cx="360" cy="20" r="10"/>
+              </svg>
+            </div>
+
+            <!-- Caliper Live Stats -->
+            <div class="caliper-live-stats">
+              <div class="stat-mini-box">
+                <div class="stat-mini-label">KHOẢNG THỜI GIAN</div>
+                <div class="stat-mini-val" id="caliperIntervalDisp">240 ms (0.24s)</div>
+              </div>
+              <div class="stat-mini-box">
+                <div class="stat-mini-label">KHOẢNG CÁCH GIẤY</div>
+                <div class="stat-mini-val" id="caliperMMDisp">6.0 mm</div>
+              </div>
+              <div class="stat-mini-box">
+                <div class="stat-mini-label">TẦN SỐ TIM (60000/RR)</div>
+                <div class="stat-mini-val" id="caliperHRDisp">75 bpm</div>
+              </div>
+              <div class="stat-mini-box">
+                <div class="stat-mini-label">QTc (BAZETT)</div>
+                <div class="stat-mini-val" id="caliperQTcDisp">425 ms</div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: 10-Step Systematic Checklist -->
+          <div class="studio-card">
+            <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.75rem;">
+              🔬 Quy Trình Đọc ECG 10 Bước
+            </h3>
+            <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 1rem; line-height: 1.4;">
+              Phân tích điện tâm đồ hệ thống theo giáo trình "Đọc điện tâm đồ dễ hơn" - BS Nguyễn Tôn Kinh Thi.
+            </p>
+            <div class="checklist-container" id="systematicChecklist"></div>
+          </div>
+
+        </div>
+
+        <!-- Lead Zoom Modal Pop-up -->
+        <div class="lead-zoom-modal" id="leadZoomModal" style="display: none;">
+          <div class="zoom-modal-card">
+            <div class="zoom-modal-header">
+              <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--color-primary);" id="zoomLeadTitle">
+                Chi Tiết Chuyển Đạo Phóng Đại
+              </h3>
+              <button class="zoom-modal-close-btn" id="btnCloseZoomModal">&times;</button>
+            </div>
+            <div class="rhythm-paper-grid" style="min-height: 220px;">
+              <canvas id="canvas_lead_zoom" style="height: 220px;"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quiz Container (Hidden initially) -->
+        <div class="quiz-studio-card" id="quizStudioBox" style="display: none;">
+          <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--color-primary); margin-bottom: 0.5rem;">
+            🎯 THỬ THÁCH CHẨN ĐOÁN ĐIỆN TÂM ĐỒ LÂM SÀNG
+          </h3>
+          <p style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
+            Dựa trên thông tin bệnh nhân, biểu hiện ECG 12 chuyển đạo và bảng kiểm 10 bước, hãy chọn chẩn đoán chính xác nhất:
+          </p>
+          <div id="quizStudioOptions"></div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+</body>
+
+</html>

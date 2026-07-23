@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sơ đồ Đồ thị Mạng lưới Tri thức Y khoa Liên phân hệ (Cross-Module Knowledge Graph) – CliniPortal">
+  <title>Đồ Thị Tri Thức Liên Phân Hệ – CliniPortal</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core CliniPortal -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/components/header.css">
+  <link rel="stylesheet" href="../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../css/components/footer.css">
+
+  <style>
+    .graph-wrapper {
+      max-width: 1250px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .graph-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .graph-header h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--color-primary);
+      margin-bottom: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .graph-header p {
+      color: var(--color-text-muted);
+      font-size: 1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .graph-controls-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 14px 20px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .node-legend {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .graph-canvas-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .graph-svg-container {
+      width: 100%;
+      height: 550px;
+      background: var(--color-bg);
+      border-radius: 16px;
+      border: 1px solid var(--color-border);
+    }
+
+    /* Node & Link Styles */
+    .graph-link {
+      stroke: var(--color-border);
+      stroke-width: 1.5;
+      opacity: 0.6;
+      transition: all 0.3s;
+    }
+
+    .graph-link.active {
+      stroke: var(--color-primary);
+      stroke-width: 3;
+      opacity: 1;
+    }
+
+    .graph-node {
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .graph-node:hover {
+      filter: drop-shadow(0 0 10px rgba(2, 132, 199, 0.8));
+    }
+
+    .graph-node-circle {
+      stroke-width: 2;
+      stroke: white;
+    }
+
+    .graph-node-text {
+      font-size: 11px;
+      font-weight: 700;
+      fill: var(--color-text);
+      pointer-events: none;
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+
+    /* Node Detail Modal / Panel */
+    .node-detail-panel {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 20px;
+      padding: 20px;
+      max-width: 350px;
+      box-shadow: var(--shadow-xl);
+      display: none;
+      z-index: 100;
+    }
+
+    .node-detail-panel.active {
+      display: block;
+      animation: fadeInUp 0.3s ease;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li><a href="../../index.html" class="nav-item" title="Trang chủ"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+          <li><a href="../Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item" title="S.lý - S.lý bệnh"><span class="nav-icon">🧬</span><span class="nav-text">S.lý - S.lý bệnh</span></a></li>
+          <li><a href="../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng"><span class="nav-icon">🩺</span><span class="nav-text">Kỹ năng</span></a></li>
+          <li><a href="tiep-can.html" class="nav-item active" aria-current="page" title="Tiếp cận"><span class="nav-icon">🤒</span><span class="nav-text">Tiếp cận</span></a></li>
+          <li><a href="../Công cụ/cong-cu.html" class="nav-item" title="Công cụ"><span class="nav-icon">⚙️</span><span class="nav-text">Công cụ</span></a></li>
+          <li><a href="../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý"><span class="nav-icon">💊</span><span class="nav-text">Dược lý</span></a></li>
+          <li><a href="../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ"><span class="nav-icon">📄</span><span class="nav-text">Y học chứng cứ</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-wrapper" id="mainContent">
+      <div class="graph-wrapper">
+
+        <div class="graph-header">
+          <h1><i class="fa-solid fa-diagram-project"></i> ĐỒ THỊ TRI THỨC LIÊN PHÂN HỆ</h1>
+          <p>Mạng lưới kết nối đa chiều giữa Triệu chứng ↔ Bệnh lý ↔ Cận lâm sàng ↔ Thuốc điều trị trong CliniPortal</p>
+        </div>
+
+        <div class="graph-controls-bar">
+          <div class="node-legend">
+            <div class="legend-item"><span class="legend-dot" style="background: #0284c7;"></span> Triệu chứng</div>
+            <div class="legend-item"><span class="legend-dot" style="background: #e11d48;"></span> Bệnh lý</div>
+            <div class="legend-item"><span class="legend-dot" style="background: #10b981;"></span> Cận lâm sàng</div>
+            <div class="legend-item"><span class="legend-dot" style="background: #8b5cf6;"></span> Thuốc điều trị</div>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--color-text-muted); font-weight: 600;">
+            <i class="fa-solid fa-info-circle"></i> Nhấp vào Node để xem chi tiết & liên kết
+          </div>
+        </div>
+
+        <div class="graph-canvas-card">
+          <svg class="graph-svg-container" id="knowledgeGraphSvg" viewBox="0 0 900 550">
+            <!-- Rendered by JS -->
+          </svg>
+
+          <!-- Node Detail Panel -->
+          <div class="node-detail-panel" id="nodeDetailPanel">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../components/footer.html"></div>
+
+  <!-- Scripts -->
+  <script src="../../js/main.js" defer></script>
+  <script src="../../components/header.js" defer></script>
+  <script src="../../components/footer.js" defer></script>
+  <script src="../../js/knowledge-graph.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Hướng dẫn quy trình Đặt Ống Nội Khí Quản (Endotracheal Intubation) từng bước trực quan, chuẩn an toàn Hồi sức Cấp cứu - CliniPortal.">
+  <title>Đặt Ống Nội Khí Quản – CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../css/components/procedure-animator.css">
+
+  <script src="../../../js/main.js" defer></script>
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+  <script src="../../../js/procedure-animator.js" defer></script>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li><a href="../../../index.html" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+          <li><a href="../ky-nang.html" class="nav-item active"><span class="nav-icon">🩺</span><span class="nav-text">Kỹ năng</span></a></li>
+          <li><a href="../../Tiếp cận/tiep-can.html" class="nav-item"><span class="nav-icon">🤒</span><span class="nav-text">Tiếp cận</span></a></li>
+          <li><a href="../../Công cụ/cong-cu.html" class="nav-item"><span class="nav-icon">⚙️</span><span class="nav-text">Công cụ</span></a></li>
+          <li><a href="../../Dược lý/duoc-ly.html" class="nav-item"><span class="nav-icon">💊</span><span class="nav-text">Dược lý</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="app-main">
+      <div class="procedure-container">
+        <!-- Header Card -->
+        <div class="procedure-header-card">
+          <div class="procedure-badge-bar">
+            <span class="procedure-badge badge-emergency"><i class="fa-solid fa-triangle-exclamation"></i> Cấp Cứu Nâng Cao</span>
+            <span class="procedure-badge badge-level"><i class="fa-solid fa-graduation-cap"></i> Trực Quan Step-by-Step</span>
+            <span class="procedure-badge badge-duration"><i class="fa-solid fa-clock"></i> 7 Bước Chuẩn AHA</span>
+          </div>
+          <h1 class="procedure-title">Quy Trình Đặt Ống Nội Khí Quản (Endotracheal Intubation)</h1>
+          <p class="procedure-subtitle">
+            Kỹ thuật khai thông và bảo vệ đường thở nâng cao trong suy hô hấp cấp, ngừng tuần hoàn hô hấp, hoặc hôn mê sâu (GCS ≤ 8).
+          </p>
+        </div>
+
+        <!-- Stepper Bar -->
+        <div class="stepper-bar" id="stepperBar"></div>
+
+        <!-- Viewer Split Grid -->
+        <div class="procedure-viewer-grid">
+          <!-- Visual SVG Display -->
+          <div class="procedure-visual-card">
+            <div id="svgContainer" style="width: 100%; display: flex; justify-content: center; align-items: center;"></div>
+          </div>
+
+          <!-- Step Description & Info -->
+          <div class="procedure-info-card">
+            <div>
+              <div class="step-header">
+                <h2 class="step-title-text" id="stepTitle">Đang tải...</h2>
+                <span class="step-counter" id="stepCounter">Bước 1 / 7</span>
+              </div>
+              <div class="step-body-content" id="stepBody"></div>
+              <div id="safetyAlert" class="safety-alert-box"></div>
+            </div>
+
+            <!-- Controls -->
+            <div class="procedure-controls">
+              <button class="btn-proc btn-proc-outline" id="btnPrevStep"><i class="fa-solid fa-arrow-left"></i> Bước trước</button>
+              <button class="btn-proc btn-proc-primary" id="btnNextStep">Bước tiếp <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const steps = [
+        {
+          shortTitle: "1. Đánh giá & Dụng cụ",
+          title: "Bước 1: Đánh giá đường thở & Chuẩn bị dụng cụ (SOAP-ME)",
+          description: "Đánh giá tiên lượng đường thở khó (LEMON score). Chuẩn bị đầy đủ trang thiết bị cấp cứu đường thở trước khi bắt đầu.",
+          bullets: [
+            "Kiểm tra ống NKQ (cỡ 7.0 - 7.5 cho nữ, 7.5 - 8.0 cho nam), thử bóng cuff xem có xì không.",
+            "Lắp lưỡi đèn soi thanh quản (Laryngoscope), kiểm tra ánh sáng đèn (sáng trắng, cố định).",
+            "Máy hút đờm nhớt hoạt động tốt, sonde hút rigit (Yankauer).",
+            "Bóng Ambu nối nguồn Oxygen 100% (15L/phút)."
+          ],
+          safety: "Luôn có sẵn phương án dự phòng đường thở khó (Canul Guedel, Mặt nạ thanh quản LMA, Boogies hoặc bộ mở khí quản cấp cứu).",
+          safetyType: "danger",
+          svgContent: `
+            <svg viewBox="0 0 300 200" width="280" height="180">
+              <rect x="20" y="20" width="260" height="160" rx="12" fill="var(--color-surface)" stroke="var(--color-primary)" stroke-width="2" stroke-dasharray="4"/>
+              <text x="150" y="60" text-anchor="middle" fill="var(--color-primary)" font-weight="bold" font-size="16">BỘ DỤNG CỤ SOAP-ME</text>
+              <path d="M50 110 L110 110 L130 140" stroke="var(--color-primary)" stroke-width="6" fill="none" stroke-linecap="round"/>
+              <circle cx="130" cy="140" r="8" fill="#e11d48"/>
+              <rect x="170" y="90" width="80" height="20" rx="10" fill="#0ea5e9"/>
+              <text x="210" y="105" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="bold">Ống NKQ Cỡ 7.5</text>
+              <text x="150" y="170" text-anchor="middle" fill="var(--color-text-muted)" font-size="12">Đèn soi thanh quản & Ống NKQ sẵn sàng</text>
+            </svg>
+          `
+        },
+        {
+          shortTitle: "2. Cho oxy tiền mê",
+          title: "Bước 2: Cho Oxy tiền mê (Pre-oxygenation)",
+          description: "Cung cấp Oxy 100% qua mặt nạ trong 3 - 5 phút để dự trữ oxy trong phổi (FRC), kéo dài thời gian an toàn không thở lại (apnea time).",
+          bullets: [
+            "Giữ mặt nạ kín bằng kỹ thuật E-C clamp (ngón 1-2 tạo chữ C giữ mask, ngón 3-4-5 tạo chữ E nâng hàm).",
+            "Cho bệnh nhân hít thở oxy dòng cao (15 L/phút).",
+            "Mục tiêu SpO2 đạt 100% trước khi tiêm thuốc khởi mê."
+          ],
+          safety: "Tránh bóp bóng tăng áp lực quá mạnh gây căng dạ dày và tăng nguy cơ trào ngược dịch vị vào phổi.",
+          safetyType: "warning",
+          svgContent: `
+            <svg viewBox="0 0 300 200" width="280" height="180">
+              <circle cx="150" cy="90" r="50" fill="none" stroke="var(--color-border)" stroke-width="4"/>
+              <path d="M120 80 Q150 40 180 80 Q150 120 120 80" fill="rgba(14, 165, 233, 0.3)" stroke="#0ea5e9" stroke-width="3"/>
+              <text x="150" y="160" text-anchor="middle" fill="var(--color-primary)" font-weight="bold" font-size="14">Oxy 100% Qua Mặt Nạ (Kỹ thuật E-C)</text>
+            </svg>
+          `
+        },
+        {
+          shortTitle: "3. Tư thế Sniffing",
+          title: "Bước 3: Đặt tư thế đầu bệnh nhân (Sniffing Position)",
+          description: "Kê gối nhỏ dưới chẩm (cao 7-10 cm) và ngửa đầu nhẹ để làm thẳng 3 trục: Trục Miệng (Oral) - Trục Họng (Pharyngeal) - Trục Thanh Quản (Laryngeal).",
+          bullets: [
+            "Đưa lỗ tai ngoài ngang mức hõm ức (Ear-to-Sternal Notch alignment).",
+            "Ở bệnh nhân béo phì: Cần kê chêm nhiều gối dạng bậc thang (Ramped position).",
+            "Nếu nghi ngờ chấn thương cột sống cổ: KHÔNG ngửa đầu, chỉ thực hiện ấn góc hàm (Jaw thrust)."
+          ],
+          safety: "Chống chỉ định ngửa đầu xoay cổ ở bệnh nhân chấn thương nghi nứt/trượt đốt sống cổ C1-C2.",
+          safetyType: "danger",
+          svgContent: `
+            <svg viewBox="0 0 300 200" width="280" height="180">
+              <path d="M40 140 L100 140 L120 100 L240 100" stroke="var(--color-border)" stroke-width="6" fill="none"/>
+              <circle cx="200" cy="80" r="30" fill="none" stroke="var(--color-primary)" stroke-width="3"/>
+              <line x1="80" y1="80" x2="240" y2="80" stroke="#e11d48" stroke-width="2" stroke-dasharray="4"/>
+              <text x="160" y="170" text-anchor="middle" fill="var(--color-text)" font-weight="bold" font-size="13">Làm thẳng 3 Trục Đường Thở</text>
+            </svg>
+          `
+        },
+        {
+          shortTitle: "4. Đưa Laryngoscope",
+          title: "Bước 4: Đưa đèn soi thanh quản & Bộc lộ nắp thanh môn",
+          description: "Cầm tay cầm Laryngoscope bằng TAY TRÁI. Đưa lưỡi đèn vào bên phải miệng, gạt lưỡi bệnh nhân sang bên trái.",
+          bullets: [
+            "Trượt lưỡi đèn MacIntosh vào rãnh lưỡi - nắp thanh môn (Vallecula).",
+            "Nâng đèn theo hướng 45 độ lên phía trước và hướng về phía chân bệnh nhân.",
+            "Quan sát rõ dây thanh âm mở hình chữ V màu trắng."
+          ],
+          safety: "TUYỆT ĐỐI KHÔNG dùng răng cửa trên làm điểm đòn bẩy nâng đèn (tránh gãy răng bẹ/chấn thương hàm).",
+          safetyType: "danger",
+          svgContent: `
+            <svg viewBox="0 0 300 200" width="280" height="180">
+              <ellipse cx="150" cy="100" rx="60" ry="40" fill="none" stroke="var(--color-primary)" stroke-width="3"/>
+              <polygon points="135,90 165,90 150,120" fill="none" stroke="#22c55e" stroke-width="4"/>
+              <text x="150" y="75" text-anchor="middle" fill="#22c55e" font-weight="bold" font-size="12">Dây Thanh Âm Chữ V</text>
+              <text x="150" y="165" text-anchor="middle" fill="var(--color-text)" font-size="13">Bộc lộ rõ khe thanh môn</text>
+            </svg>
+          `
+        },
+        {
+          shortTitle: "5. Đưa ống NKQ",
+          title: "Bước 5: Đưa ống NKQ qua khe thanh môn",
+          description: "Tay phải cầm ống NKQ nhẹ nhàng đưa từ mép phải miệng vào khe thanh môn dưới sự quan sát trực tiếp của mắt.",
+          bullets: [
+            "Đưa đầu ống vượt qua dây thanh âm khoảng 2 - 3 cm (vạch 21-23 cm ở khóe miệng).",
+            "Rút nòng kim guidon (nếu có) ra ngoài.",
+            "Bơm bóng cuff bằng bơm tiêm 10ml với thể tích 5-8 ml khí (áp lực cuff 20 - 30 cmH2O)."
+          ],
+          safety: "Không đưa ống quá sâu tránh đi nhầm vào phế quản gốc bên phải gây thông khí một bên phổi.",
+          safetyType: "warning",
+          svgContent: `
+            <svg viewBox="0 0 300 200" width="280" height="180">
+              <path d="M80 50 C120 50, 160 120, 220 150" stroke="#0ea5e9" stroke-width="8" fill="none" stroke-linecap="round"/>
+              <circle cx="210" cy="145" r="10" fill="rgba(245, 158, 11, 0.5)" stroke="#f59e0b" stroke-width="2"/>
+              <text x="150" y="175" text-anchor="middle" fill="var(--color-primary)" font-weight="bold" font-size="13">Đưa Ống Qua Thanh Môn & Bơm Cuff</text>
+            </svg>
+          `
+        },
+        {
+          shortTitle: "6. Kiểm tra vị trí",
+          title: "Bước 6: Kiểm tra xác nhận vị trí ống NKQ chuẩn",
+          description: "Xác nhận ống nằm trong khí quản (không nhầm vào thực quản) bằng ngũ chẩn và EtCO2.",
+          bullets: [
+            "Gắn bóng Ambu bóp thở và quan sát lồng ngực di động di động đều 2 bên.",
+            "Nghe rì rào phế nang bằng ống nghe ở 5 vị trí: 2 đỉnh phổi, 2 đáy phổi và thượng vị.",
+            "Xem đường sóng EtCO2 (Capnography) có dạng hình chữ nhật ổn định."
+          ],
+          safety: "Nếu nghe thấy tiếng ọc ọc ở dạ dày và lồng ngực không di động -> Đặt nhầm vào thực quản! Rút ống ngay lập tức và cho bóp oxy lại.",
+          safetyType: "danger",
+          svgContent: `
+            <svg viewBox="0 0 300 200" width="280" height="180">
+              <rect x="50" y="50" width="200" height="80" rx="8" fill="none" stroke="#22c55e" stroke-width="3"/>
+              <path d="M60 100 L90 100 L100 70 L120 110 L130 100 L170 100 L180 70 L200 110 L210 100 L240 100" stroke="#22c55e" stroke-width="3" fill="none"/>
+              <text x="150" y="160" text-anchor="middle" fill="#22c55e" font-weight="bold" font-size="13">Sóng EtCO2 Dương Tính Hình Chữ Nhật</text>
+            </svg>
+          `
+        },
+        {
+          shortTitle: "7. Cố định & Thông khí",
+          title: "Bước 7: Cố định ống NKQ & Nối máy thở",
+          description: "Dùng băng dính hoặc dây cố định chuyên dụng giữ chặt ống NKQ vào mép miệng bệnh nhân.",
+          bullets: [
+            "Ghi nhận chỉ số vạch cắm ở khóe miệng (ví dụ: 22 cm).",
+            "Đặt Canul Guedel/Mayo ngáng miệng chống bệnh nhân cắn ống.",
+            "Nối ống NKQ vào máy thở hoặc hệ thống bóng thở.",
+            "Chụp X-quang ngực tại giường để kiểm tra vị trí đầu ống NKQ (cách cựa khí quản Carina 3-5 cm)."
+          ],
+          safety: "Thường xuyên kiểm tra áp lực bóng cuff (20-30 cmH2O) mỗi 8 giờ để tránh hoại tử niêm mạc khí quản.",
+          safetyType: "warning",
+          svgContent: `
+            <svg viewBox="0 0 300 200" width="280" height="180">
+              <circle cx="150" cy="100" r="60" fill="none" stroke="var(--color-primary)" stroke-width="4"/>
+              <path d="M120 100 L180 100 M150 70 L150 130" stroke="#22c55e" stroke-width="4"/>
+              <text x="150" y="180" text-anchor="middle" fill="var(--color-success)" font-weight="bold" font-size="14">✓ Hoàn Thành Đặt NKQ An Toàn</text>
+            </svg>
+          `
+        }
+      ];
+
+      new ProcedureAnimator({ steps: steps });
+    });
+  </script>
+</body>
+
+</html>

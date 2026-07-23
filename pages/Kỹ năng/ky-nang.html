@@ -26,6 +26,13 @@
   <script src="../../components/footer.js" defer></script>
 
   <link rel="stylesheet" href="../../css/components/module-dashboard.css">
+  <link rel="stylesheet" href="../../css/components/skill-tracker.css">
+  <link rel="stylesheet" href="../../css/components/skill-flashcards.css">
+  <link rel="stylesheet" href="../../css/components/clinical-reasoning.css">
+  <link rel="stylesheet" href="../../css/components/virtual-patient.css">
+  <link rel="stylesheet" href="../../css/components/auscultation-trainer.css">
+  <link rel="stylesheet" href="../../css/components/ecg-trainer.css">
+  <link rel="stylesheet" href="../../css/components/procedure-animator.css">
 </head>
 
 <body>
@@ -146,6 +153,41 @@
         <a href="OSCE_Randomizer.html" style="background: var(--color-primary); color: white; text-decoration: none; padding: 0.75rem 1.5rem; border-radius: var(--radius-md); font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: var(--shadow-sm); transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
           Thử ngay <i class="fa-solid fa-arrow-right"></i>
         </a>
+      </div>
+
+      <!-- INTERACTIVE ANATOMY EXPLORER -->
+      <div id="anatomy-explorer-container" class="dashboard-card" style="margin-bottom: 1.5rem; padding: 1.5rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+          <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--color-text); margin: 0;">
+            🧍 Interactive Anatomy Explorer — Lọc Bài Học Theo Vùng Cơ Thể
+          </h3>
+          <span style="font-size: 0.85rem; color: var(--color-text-muted);">Click vào từng vùng để lọc bài học kỹ năng tương ứng</span>
+        </div>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;" id="anatomy-region-btns">
+          <button class="btn-rhythm active" data-region="all">Tất cả vùng</button>
+          <button class="btn-rhythm" data-region="head">Đầu Mặt Cổ</button>
+          <button class="btn-rhythm" data-region="chest">Ngực (Tim - Phổi)</button>
+          <button class="btn-rhythm" data-region="abdomen">Bụng - Tiêu hóa</button>
+          <button class="btn-rhythm" data-region="neuro">Thần kinh</button>
+          <button class="btn-rhythm" data-region="limbs">Tứ chi & Cơ xương khớp</button>
+        </div>
+      </div>
+
+      <!-- SKILL PROGRESS OVERVIEW WIDGET -->
+      <div id="skill-progress-overview-widget" class="dashboard-card" style="margin-bottom: 1.5rem; padding: 1.5rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--color-text); margin: 0;">
+              📊 Tiến Độ Tự Đánh Giá Kỹ Năng (Skill Tracker)
+            </h3>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0.25rem 0 0;">Lưu giữ trạng thái học tập theo thuật toán ngắt quãng SM-2</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem; align-items: center;">
+            <button class="btn-proc btn-proc-primary" id="btnOpenFlashcards">
+              <i class="fa-solid fa-clone"></i> Ôn Flashcard OSCE (SM-2)
+            </button>
+          </div>
+        </div>
       </div>
 
       <!-- ===== TOOLBAR / CONTROL BAR ===== -->
@@ -339,13 +381,27 @@
                     <div class="specialty-icon">🚦</div>
                     <div class="specialty-info">
                       <h3>Đánh Giá & Phân Loại (Triage)</h3>
-                      <p>Nguyên lý phân loại cấp cứu ESI, đánh giá nhanh ABCDE, quy tắc SAMPLE và Triage trong thảm họa
-                        (START, JumpSTART).</p>
+                      <p>Nguyên lý phân loại cấp cứu ESI, đánh giá nhanh ABCDE, quy tắc SAMPLE và Triage trong thảm họa.</p>
                     </div>
                   </div>
                   <div class="specialty-card-action">
                     <span>Xem quy trình</span>
                     <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+                <!-- Virtual Patient Hub -->
+                <a href="Bệnh nhân ảo/Benh_Nhan_Ao_Hub.html" class="specialty-card" style="border: 2px solid var(--color-primary);">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">🩺</div>
+                    <div class="specialty-info">
+                      <h3>Giả Lập Bệnh Nhân Ảo</h3>
+                      <p>Nhập vai bác sĩ tiếp nhận ca cấp cứu tương tác đa nhánh. Ra quyết định & nhận feedback tức thì.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action" style="color: var(--color-primary); font-weight: 700;">
+                    <span>Vào Hub Ca Bệnh</span>
+                    <i class="fa-solid fa-play"></i>
                   </div>
                 </a>
 
@@ -654,12 +710,26 @@
                     <div class="specialty-icon">🔬</div>
                     <div class="specialty-info">
                       <h3>Đọc Kết Quả Cận Lâm Sàng</h3>
-                      <p>Hệ thống hướng dẫn phân tích kết quả xét nghiệm máu (tế bào máu, điện giải, chức năng gan thận)
-                        và hình ảnh học (X-quang ngực, bụng).</p>
+                      <p>Hệ thống hướng dẫn phân tích kết quả xét nghiệm máu và hình ảnh học.</p>
                     </div>
                   </div>
                   <div class="specialty-card-action">
                     <span>Vào trang đọc</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+                <!-- Hướng dẫn đọc ECG toàn diện -->
+                <a href="Cận lâm sàng/doc-ecg-toan-dien.html" class="specialty-card" style="border: 2px solid var(--color-primary);">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">📈</div>
+                    <div class="specialty-info">
+                      <h3>Hướng Dẫn Đo & Đọc ECG Toàn Diện</h3>
+                      <p>Kỹ thuật sử dụng máy ECG, gắn 10 điện cực chuẩn, khắc phục lỗi nhiễu sóng và quy trình 10 bước phân tích ECG hệ thống.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Xem bài hướng dẫn</span>
                     <i class="fa-solid fa-chevron-right"></i>
                   </div>
                 </a>
@@ -732,11 +802,26 @@
                     <div class="specialty-icon">🧠</div>
                     <div class="specialty-info">
                       <h3>Lý Luận Điều Trị Nội Khoa</h3>
-                      <p>Phương pháp xác định mục tiêu điều trị, lựa chọn biện pháp dùng thuốc/không dùng thuốc, viết y lệnh chuẩn và chế độ theo dõi.</p>
+                      <p>Phương pháp xác định mục tiêu điều trị, lựa chọn biện pháp dùng thuốc/không dùng thuốc.</p>
                     </div>
                   </div>
                   <div class="specialty-card-action">
                     <span>Xem hướng dẫn</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+
+                <!-- Clinical Reasoning Engine -->
+                <a href="Quản lý điều trị/Clinical_Reasoning.html" class="specialty-card" style="border: 2px solid var(--color-purple, #7c3aed);">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon">💡</div>
+                    <div class="specialty-info">
+                      <h3>Clinical Reasoning Engine</h3>
+                      <p>Công cụ hỗ trợ trình bệnh án SBAR, SNAPPS và ma trận Semantic Qualifier Grid.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action" style="color: var(--color-purple, #7c3aed); font-weight: 700;">
+                    <span>Mở Engine Tư Duy</span>
                     <i class="fa-solid fa-chevron-right"></i>
                   </div>
                 </a>
@@ -787,76 +872,46 @@
               <div class="specialty-grid">
 
                 <!-- 1. Đặt nội khí quản -->
-                <a href="#" class="specialty-card disabled">
+                <a href="Thủ thuật/Dat_NKQ.html" class="specialty-card">
                   <div class="specialty-card-top">
                     <div class="specialty-icon">🌬️</div>
                     <div class="specialty-info">
-                      <h3>Đặt Nội Khí Quản</h3>
-                      <p>Kỹ thuật đặt nội khí quản nhanh (RSI), chuẩn bị dụng cụ và các bước tiến hành.</p>
+                      <h3>Đặt Nội Khí Quản (NKQ)</h3>
+                      <p>Quy trình Đặt ống nội khí quản 7 bước chuẩn AHA, tư thế Sniffing và an toàn đường thở.</p>
                     </div>
                   </div>
                   <div class="specialty-card-action">
-                    <span>Đang cập nhật</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
-                <!-- 2. Đặt tĩnh mạch trung tâm -->
-                <a href="#" class="specialty-card disabled">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">💉</div>
-                    <div class="specialty-info">
-                      <h3>Đặt Tĩnh Mạch Trung Tâm (CVC)</h3>
-                      <p>Quy trình đặt CVC dưới hướng dẫn siêu âm hoặc mốc giải phẫu, kiểm soát áp lực tĩnh mạch trung tâm.</p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Đang cập nhật</span>
+                    <span>Xem quy trình step-by-step</span>
                     <i class="fa-solid fa-chevron-right"></i>
                   </div>
                 </a>
 
                 <!-- 3. Chọc dò dịch màng phổi -->
-                <a href="#" class="specialty-card disabled">
+                <a href="Thủ thuật/Choc_Dich_Mang_Phoi.html" class="specialty-card">
                   <div class="specialty-card-top">
                     <div class="specialty-icon">🫁</div>
                     <div class="specialty-info">
                       <h3>Chọc Dò Dịch Màng Phổi</h3>
-                      <p>Chỉ định, chống chỉ định, vị trí chọc dò an toàn và tai biến thường gặp.</p>
+                      <p>Quy trình chọc màng phổi khoang LS 7-8 bờ trên xương sườn dưới và tiêu chuẩn Light.</p>
                     </div>
                   </div>
                   <div class="specialty-card-action">
-                    <span>Đang cập nhật</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                </a>
-
-                <!-- 4. Chọc dò dịch ổ bụng -->
-                <a href="#" class="specialty-card disabled">
-                  <div class="specialty-card-top">
-                    <div class="specialty-icon">🤰</div>
-                    <div class="specialty-info">
-                      <h3>Chọc Dò Dịch Ổ Bụng</h3>
-                      <p>Kỹ thuật chọc tháo dịch cổ trướng, đánh giá dịch (SAAG) và phòng ngừa tai biến.</p>
-                    </div>
-                  </div>
-                  <div class="specialty-card-action">
-                    <span>Đang cập nhật</span>
+                    <span>Xem quy trình step-by-step</span>
                     <i class="fa-solid fa-chevron-right"></i>
                   </div>
                 </a>
 
                 <!-- 5. Chọc dò dịch não tủy -->
-                <a href="#" class="specialty-card disabled">
+                <a href="Thủ thuật/Choc_Dich_Tuy_Song.html" class="specialty-card">
                   <div class="specialty-card-top">
                     <div class="specialty-icon">🧠</div>
                     <div class="specialty-info">
-                      <h3>Chọc Dò Dịch Não Tủy</h3>
-                      <p>Kỹ thuật chọc thắt lưng (Lumbar Puncture), đo áp lực và phân tích kết quả DNT.</p>
+                      <h3>Chọc Dò Dịch Tủy Sống (Lumbar Puncture)</h3>
+                      <p>Quy trình chọc tủy L3-L4 tư thế con tôm, đo áp lực manometer và phân tích CSF.</p>
                     </div>
                   </div>
                   <div class="specialty-card-action">
-                    <span>Đang cập nhật</span>
+                    <span>Xem quy trình step-by-step</span>
                     <i class="fa-solid fa-chevron-right"></i>
                   </div>
                 </a>
@@ -1048,6 +1103,11 @@
       });
     });
   </script>
+  <script src="../../js/skill-tracker.js" defer></script>
+  <script src="../../js/anatomy-explorer.js" defer></script>
+  <script src="../../js/skill-flashcards.js" defer></script>
+  <script src="../../js/knowledge-map-data.js" defer></script>
+  <script src="../../js/knowledge-bridge.js" defer></script>
 </body>
 
 </html>

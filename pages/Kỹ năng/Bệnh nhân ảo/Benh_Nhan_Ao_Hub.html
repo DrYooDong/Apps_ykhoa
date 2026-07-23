@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Hub Giả Lập Bệnh Nhân Ảo (Virtual Patient Simulator) - Thực hành tư duy chẩn đoán và xử trí ca bệnh lâm sàng tương tác đa nhánh - CliniPortal.">
+  <title>Bệnh Nhân Ảo (Virtual Patient Hub) – CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../css/components/virtual-patient.css">
+
+  <script src="../../../js/main.js" defer></script>
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li><a href="../../../index.html" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+          <li><a href="../ky-nang.html" class="nav-item active"><span class="nav-icon">🩺</span><span class="nav-text">Kỹ năng</span></a></li>
+          <li><a href="../../Tiếp cận/tiep-can.html" class="nav-item"><span class="nav-icon">🤒</span><span class="nav-text">Tiếp cận</span></a></li>
+          <li><a href="../../Công cụ/cong-cu.html" class="nav-item"><span class="nav-icon">⚙️</span><span class="nav-text">Công cụ</span></a></li>
+          <li><a href="../../Dược lý/duoc-ly.html" class="nav-item"><span class="nav-icon">💊</span><span class="nav-text">Dược lý</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="app-main">
+      <div class="vp-container" style="max-width: 1100px; margin: 0 auto; padding: 1.5rem 1rem;">
+        <!-- Header Banner -->
+        <div class="vp-header-card" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 16px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 4px 16px rgba(0,0,0,0.05);">
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem;">
+            <span class="element-badge" style="background-color: var(--color-purple); color: #ffffff;">Gamification & Clinical Reasoning</span>
+            <span class="element-badge" style="background-color: var(--color-primary); color: #ffffff;">Narrative Branching Game</span>
+          </div>
+          <h1 style="font-size: 2rem; font-weight: 800; color: var(--color-text); margin-bottom: 0.5rem;">
+            🩺 Giả Lập Bệnh Nhân Ảo (Virtual Patient Simulator)
+          </h1>
+          <p style="color: var(--color-text-muted); font-size: 1.05rem; line-height: 1.6;">
+            Đặt mình vào vị trí bác sĩ lâm sàng trực tiếp tiếp nhận bệnh nhân. Nhận định triệu chứng, gọi cận lâm sàng, đưa ra chẩn đoán và xử trí khẩn cấp theo thời gian thực!
+          </p>
+        </div>
+
+        <!-- Case Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
+          
+          <!-- Case 1: Đau ngực cấp -->
+          <div class="vp-case-card" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 16px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 16px rgba(0,0,0,0.04);">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <span class="element-badge" style="background-color: rgba(225,29,72,0.15); color: #e11d48; font-weight: 700;">🚨 Cấp Cứu Tim Mạch</span>
+                <span style="font-size: 0.85rem; color: var(--color-text-muted); font-weight: 600;">Độ khó: ⭐⭐⭐</span>
+              </div>
+              <h2 style="font-size: 1.3rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.5rem;">
+                Ca 1: Đau Ngực Cấp Đột Ngột Sau Khi Leo Cầu Thang
+              </h2>
+              <p style="color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.25rem;">
+                Bệnh nhân nam 58 tuổi, tiền sử Tăng huyết áp & Đái tháo đường typ 2, nhập viện vì đau đè ép sau xương ức lan ra tay trái, vã mồ hôi hột.
+              </p>
+            </div>
+            <div>
+              <div style="display: flex; gap: 0.5rem; font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1rem; border-top: 1px solid var(--color-border); padding-top: 0.75rem;">
+                <span><i class="fa-solid fa-clock"></i> ~15 phút</span>
+                <span>•</span>
+                <span><i class="fa-solid fa-code-branch"></i> 5 nhánh quyết định</span>
+              </div>
+              <a href="Case_DauNguc_Cap.html" class="btn-proc btn-proc-primary" style="width: 100%; justify-content: center; text-decoration: none;">
+                Bắt Đầu Ca Bệnh <i class="fa-solid fa-play"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Case 2: Đột quỵ não cấp (Demo Card) -->
+          <div class="vp-case-card" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 16px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 16px rgba(0,0,0,0.04);">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <span class="element-badge" style="background-color: rgba(14,165,233,0.15); color: #0ea5e9; font-weight: 700;">🧠 Cấp Cứu Thần Kinh</span>
+                <span style="font-size: 0.85rem; color: var(--color-text-muted); font-weight: 600;">Độ khó: ⭐⭐⭐⭐</span>
+              </div>
+              <h2 style="font-size: 1.3rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.5rem;">
+                Ca 2: Méo Miệng, Yếu Nửa Người Giờ Thứ 2 (FAST)
+              </h2>
+              <p style="color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.25rem;">
+                Bệnh nhân nữ 67 tuổi đột ngột nói ngọng, méo miệng và yếu nửa người bên phải khi đang ăn sáng. Giờ cửa - kim (Door-to-Needle) đang đếm ngược!
+              </p>
+            </div>
+            <div>
+              <div style="display: flex; gap: 0.5rem; font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1rem; border-top: 1px solid var(--color-border); padding-top: 0.75rem;">
+                <span><i class="fa-solid fa-clock"></i> ~20 phút</span>
+                <span>•</span>
+                <span><i class="fa-solid fa-code-branch"></i> Cửa sổ rTPA</span>
+              </div>
+              <button class="btn-proc btn-proc-outline" style="width: 100%; justify-content: center;" onclick="alert('Ca bệnh này đang được cập nhật!');">
+                Xem Trước Kịch Bản <i class="fa-solid fa-lock"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Case 3: Sốc nhiễm trùng (Demo Card) -->
+          <div class="vp-case-card" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 16px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 16px rgba(0,0,0,0.04);">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <span class="element-badge" style="background-color: rgba(245,158,11,0.15); color: #f59e0b; font-weight: 700;">☣️ Hồi Sức Chống Độc</span>
+                <span style="font-size: 0.85rem; color: var(--color-text-muted); font-weight: 600;">Độ khó: ⭐⭐⭐⭐⭐</span>
+              </div>
+              <h2 style="font-size: 1.3rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.5rem;">
+                Ca 3: Sốt Cao Rét Run, Tụt Huyết Áp & Lơ Mơ
+              </h2>
+              <p style="color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.25rem;">
+                Bệnh nhân nam 72 tuổi tiền sử phì đại tuyến tiền liệt, sốt cao 39.5°C, HA 80/50 mmHg, Lactate máu 4.5 mmol/L. Áp dụng Gói Surviving Sepsis Hour-1!
+              </p>
+            </div>
+            <div>
+              <div style="display: flex; gap: 0.5rem; font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1rem; border-top: 1px solid var(--color-border); padding-top: 0.75rem;">
+                <span><i class="fa-solid fa-clock"></i> ~18 phút</span>
+                <span>•</span>
+                <span><i class="fa-solid fa-code-branch"></i> Bù dịch & Vận mạch</span>
+              </div>
+              <button class="btn-proc btn-proc-outline" style="width: 100%; justify-content: center;" onclick="alert('Ca bệnh này đang được cập nhật!');">
+                Xem Trước Kịch Bản <i class="fa-solid fa-lock"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+</body>
+
+</html>

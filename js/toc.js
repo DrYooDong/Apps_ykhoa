@@ -3,21 +3,43 @@
    ============================================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
-    const container = document.querySelector(".visual-container");
-    if (!container) return;
+    const visualContainer = document.querySelector(".visual-container");
+    const homepageWrapper = document.querySelector(".homepage-wrapper");
+    const mainContainer = visualContainer || homepageWrapper || document.querySelector("main");
 
-    // 1. Quét các tiêu đề h2 và h3 trong vùng nội dung
-    const headings = Array.from(container.querySelectorAll("h2, h3")).filter(h => {
-        return !h.closest(".chapter-header") && 
-               !h.closest(".image-placeholder-card") && 
-               !h.closest(".clinical-note-box") &&
-               !h.closest(".high-yield-card");
-    });
+    if (!mainContainer) return;
+
+    // 1. Quét các tiêu đề h1, h2, h3 trong vùng nội dung
+    let headings = [];
+    if (visualContainer) {
+        headings = Array.from(visualContainer.querySelectorAll("h2, h3")).filter(h => {
+            return !h.closest(".chapter-header") && 
+                   !h.closest(".image-placeholder-card") && 
+                   !h.closest(".clinical-note-box") &&
+                   !h.closest(".high-yield-card");
+        });
+    } else if (homepageWrapper) {
+        headings = Array.from(homepageWrapper.querySelectorAll(".homepage-left h1, .homepage-left h2, .homepage-left section[id], .homepage-right section[id]")).filter(h => {
+            // Pick section elements or headings that represent main blocks
+            if (h.tagName.startsWith('H')) {
+                return h.textContent.trim().length > 0 && !h.closest('.widget-card');
+            }
+            return h.id && (h.querySelector('h2, h3, .widget-title') !== null);
+        }).map(el => {
+            if (el.tagName.startsWith('H')) return el;
+            return el.querySelector('h2, h3, .widget-title') || el;
+        });
+    } else {
+        headings = Array.from(mainContainer.querySelectorAll("h2, h3"));
+    }
+
+    // Filter out duplicates and invalid headings
+    headings = Array.from(new Set(headings)).filter(h => h && h.textContent.trim().length > 0);
 
     if (headings.length < 2) return;
 
     // 2. Thêm class báo hiệu có TOC cho container
-    container.classList.add("has-toc");
+    mainContainer.classList.add("has-toc");
 
     // 3. Chuẩn hóa tiêu đề tiếng Việt thành ID không dấu làm neo liên kết (anchor link)
     const generateId = (text) => {
@@ -48,25 +70,27 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // 4. Tạo cấu trúc cột cho layout: visual-layout và visual-body
-    const header = container.querySelector(".chapter-header");
-    const children = Array.from(container.children);
+    // 4. Tạo cấu trúc layout (chỉ dành cho .visual-container)
+    let layoutWrapper = null;
+    if (visualContainer) {
+        const header = visualContainer.querySelector(".chapter-header");
+        const children = Array.from(visualContainer.children);
 
-    const layoutWrapper = document.createElement("div");
-    layoutWrapper.className = "visual-layout";
+        layoutWrapper = document.createElement("div");
+        layoutWrapper.className = "visual-layout";
 
-    const bodyWrapper = document.createElement("div");
-    bodyWrapper.className = "visual-body";
+        const bodyWrapper = document.createElement("div");
+        bodyWrapper.className = "visual-body";
 
-    // Di chuyển toàn bộ phần tử con (trừ chapter-header và breadcrumb) vào bodyWrapper
-    children.forEach(child => {
-        if (child !== header && !child.classList.contains("breadcrumb-container")) {
-            bodyWrapper.appendChild(child);
-        }
-    });
+        children.forEach(child => {
+            if (child !== header && !child.classList.contains("breadcrumb-container")) {
+                bodyWrapper.appendChild(child);
+            }
+        });
 
-    layoutWrapper.appendChild(bodyWrapper);
-    container.appendChild(layoutWrapper);
+        layoutWrapper.appendChild(bodyWrapper);
+        visualContainer.appendChild(layoutWrapper);
+    }
 
     // 5. Hàm tạo danh sách liên kết TOC
     const allLinks = [];
@@ -96,10 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         behavior: "smooth"
                     });
 
-                    // Cập nhật hash trên thanh địa chỉ
                     history.pushState(null, null, `#${heading.id}`);
-
-                    // Đóng mobile drawer nếu đang mở
                     closeDrawer();
                 }
             });
@@ -113,26 +134,50 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     // 6. Xây dựng sidebar cho Desktop
-    const desktopSidebar = document.createElement("aside");
-    desktopSidebar.className = "toc-sidebar";
-    
-    const desktopHeader = document.createElement("div");
-    desktopHeader.className = "toc-header";
-    desktopHeader.innerHTML = `<span class="toc-title">📍 Mục lục</span>`;
-    desktopSidebar.appendChild(desktopHeader);
+    if (visualContainer && layoutWrapper) {
+        const desktopSidebar = document.createElement("aside");
+        desktopSidebar.className = "toc-sidebar";
+        
+        const desktopHeader = document.createElement("div");
+        desktopHeader.className = "toc-header";
+        desktopHeader.innerHTML = `<span class="toc-title">📍 Mục lục bài viết</span>`;
+        desktopSidebar.appendChild(desktopHeader);
 
-    const desktopBody = document.createElement("div");
-    desktopBody.className = "toc-body";
-    desktopBody.appendChild(createTocList());
-    desktopSidebar.appendChild(desktopBody);
+        const desktopBody = document.createElement("div");
+        desktopBody.className = "toc-body";
+        desktopBody.appendChild(createTocList());
+        desktopSidebar.appendChild(desktopBody);
 
-    layoutWrapper.appendChild(desktopSidebar);
+        layoutWrapper.appendChild(desktopSidebar);
+    } else if (homepageWrapper) {
+        // Render desktop TOC widget into homepage-right top
+        const rightCol = homepageWrapper.querySelector(".homepage-right");
+        if (rightCol) {
+            const tocWidget = document.createElement("section");
+            tocWidget.className = "widget-card toc-widget";
+            tocWidget.setAttribute("aria-label", "Mục lục trang chủ");
+
+            tocWidget.innerHTML = `
+                <div class="widget-header">
+                    <h3 class="widget-title">
+                        <i class="fa-solid fa-list-ol"></i> Mục lục trang chủ
+                    </h3>
+                </div>
+                <div class="widget-body">
+                    <div class="toc-sidebar-inline"></div>
+                </div>
+            `;
+            const inlineBody = tocWidget.querySelector(".toc-sidebar-inline");
+            inlineBody.appendChild(createTocList());
+            rightCol.insertBefore(tocWidget, rightCol.firstChild);
+        }
+    }
 
     // 7. Xây dựng phần di động (Trigger Button, Overlay, Drawer Panel)
     const floatingBtn = document.createElement("button");
     floatingBtn.className = "toc-floating-btn";
     floatingBtn.innerHTML = "📋";
-    floatingBtn.title = "Mục lục bài học";
+    floatingBtn.title = "Mục lục trang (Phím T)";
     floatingBtn.setAttribute("aria-label", "Mục lục");
     document.body.appendChild(floatingBtn);
 
@@ -146,7 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const drawerHeader = document.createElement("div");
     drawerHeader.className = "toc-header";
     drawerHeader.innerHTML = `
-        <span class="toc-title">📍 Mục lục</span>
+        <span class="toc-title">📍 Mục lục điều hướng</span>
         <button class="toc-toggle-close" aria-label="Đóng mục lục">&times;</button>
     `;
     drawer.appendChild(drawerHeader);
@@ -168,17 +213,37 @@ document.addEventListener("DOMContentLoaded", () => {
         overlay.classList.remove("show");
     };
 
+    const toggleDrawer = () => {
+        if (drawer.classList.contains("open")) {
+            closeDrawer();
+        } else {
+            openDrawer();
+        }
+    };
+
     floatingBtn.addEventListener("click", openDrawer);
     closeBtn.addEventListener("click", closeDrawer);
     overlay.addEventListener("click", closeDrawer);
+
+    // Hotkey listener for 'T' key to toggle TOC
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "t" || e.key === "T") {
+            const activeEl = document.activeElement;
+            const isTyping = activeEl && (activeEl.tagName === "INPUT" || activeEl.tagName === "TEXTAREA" || activeEl.isContentEditable);
+            if (!isTyping && !e.ctrlKey && !e.altKey && !e.metaKey) {
+                e.preventDefault();
+                toggleDrawer();
+            }
+        }
+    });
 
     // 8. Cử chỉ vuốt chạm (Swipe Gestures) trên Mobile để đóng/mở
     let touchStartX = 0;
     let touchStartY = 0;
     let touchEndX = 0;
     let touchEndY = 0;
-    const swipeThreshold = 50; // khoảng cách vuốt tối thiểu (px)
-    const edgeThreshold = 40;  // vùng kích hoạt vuốt từ viền phải (px)
+    const swipeThreshold = 50;
+    const edgeThreshold = 40;
 
     document.addEventListener("touchstart", (e) => {
         touchStartX = e.changedTouches[0].screenX;
@@ -195,18 +260,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const diffX = touchEndX - touchStartX;
         const diffY = touchEndY - touchStartY;
 
-        // Chỉ xử lý vuốt ngang
         if (Math.abs(diffX) > Math.abs(diffY)) {
             const isDrawerOpen = drawer.classList.contains("open");
 
             if (!isDrawerOpen) {
-                // Vuốt từ viền màn hình bên phải sang trái để mở
                 const startedAtRightEdge = touchStartX > (window.innerWidth - edgeThreshold);
                 if (diffX < -swipeThreshold && startedAtRightEdge) {
                     openDrawer();
                 }
             } else {
-                // Vuốt từ trái sang phải ở bất kỳ đâu khi drawer mở để đóng
                 if (diffX > swipeThreshold) {
                     closeDrawer();
                 }
@@ -214,9 +276,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // 9. ScrollSpy Logic: tự động đổi màu mục lục và cuộn mục lục tương ứng vào tầm nhìn
+    // 9. ScrollSpy Logic
     const handleScroll = () => {
-        const scrollPosition = window.scrollY + 120; // 80px header + 40px bù đắp
+        const scrollPosition = window.scrollY + 120;
 
         let currentHeading = null;
         for (let i = 0; i < headings.length; i++) {
@@ -234,17 +296,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (link.getAttribute("href") === `#${activeId}`) {
                     link.classList.add("active");
                     
-                    // Tự động cuộn link đang active vào giữa vùng nhìn của container chứa nó (sidebar hoặc drawer)
-                    const scrollContainer = link.closest(".toc-sidebar, .toc-drawer .toc-body");
+                    const scrollContainer = link.closest(".toc-sidebar, .toc-drawer .toc-body, .toc-sidebar-inline");
                     if (scrollContainer) {
                         const containerScrollTop = scrollContainer.scrollTop;
                         const containerHeight = scrollContainer.clientHeight;
                         
-                        // Tính vị trí offset của link đối với container cuộn
                         const linkOffsetTop = link.getBoundingClientRect().top - scrollContainer.getBoundingClientRect().top + containerScrollTop;
                         const linkHeight = link.clientHeight;
                         
-                        // Nếu liên kết nằm ngoài tầm nhìn (phía trên hoặc phía dưới) thì cuộn
                         if (linkOffsetTop < containerScrollTop) {
                             scrollContainer.scrollTo({
                                 top: linkOffsetTop - 10,
@@ -271,5 +330,6 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Chạy khởi tạo ngay lúc tải trang
+    handleScroll();
 });
+

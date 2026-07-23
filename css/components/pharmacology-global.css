@@ -1,0 +1,629 @@
+/* ════════════════════════════════════════════════════════════════
+   CLINIPORTAL - PHARMACOLOGY GLOBAL STYLES
+   Styles cho: Smart Drug Passport, Emergency Dosing FAB & Modal,
+   Pharmacology Flashcard 3D Engine, Contextual Cross-Links & Hub Tabs
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── 0. HUB MAIN TAB SWITCHER (NEW) ── */
+.pharma-hub-tabs-container {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--color-divider, #e2e8f0);
+  padding-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.hub-tab-btn {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-divider, #cbd5e1);
+  color: var(--color-text-muted, #475569);
+  padding: 0.65rem 1.25rem;
+  font-size: var(--text-sm, 0.85rem);
+  font-weight: 700;
+  font-family: var(--font-body, sans-serif);
+  cursor: pointer;
+  transition: all var(--tr, 0.2s);
+  border-radius: var(--radius-md, 10px);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  user-select: none;
+}
+
+.hub-tab-btn:hover {
+  color: var(--color-primary, #0284c7);
+  border-color: var(--color-primary-hl, #bae6fd);
+  background: var(--color-surface-offset, #f1f5f9);
+}
+
+.hub-tab-btn.active {
+  background: linear-gradient(135deg, var(--color-primary, #0284c7), #0369a1);
+  color: #ffffff;
+  border-color: var(--color-primary, #0284c7);
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
+}
+
+[data-theme="dark"] .hub-tab-btn {
+  background: var(--color-surface-2, #162032);
+  border-color: #263a57;
+  color: var(--color-text-muted, #94a3b8);
+}
+
+[data-theme="dark"] .hub-tab-btn.active {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  color: #ffffff;
+}
+
+.hub-tab-panel {
+  display: none;
+}
+
+.hub-tab-panel.active {
+  display: block;
+  animation: pharmaTabFade 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes pharmaTabFade {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ── 1. FLOATING FAB CONTAINER (GÓC DƯỚI PHẢI) ── */
+.pharma-fab-container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  gap: 0.75rem;
+  z-index: 1050;
+  pointer-events: none;
+}
+
+.pharma-fab-btn {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.1rem;
+  border-radius: 999px;
+  font-family: var(--font-body, sans-serif);
+  font-size: var(--text-xs, 0.8rem);
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+  transition: transform var(--tr, 0.2s ease), box-shadow var(--tr, 0.2s ease), background var(--tr, 0.2s ease);
+  user-select: none;
+}
+
+.pharma-fab-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+}
+
+.pharma-fab-emergency {
+  background: linear-gradient(135deg, #dc2626, #e11d48);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  animation: pharmaPulseRed 2.5s infinite;
+}
+
+.pharma-fab-passport {
+  background: linear-gradient(135deg, var(--color-primary, #0284c7), #0d9488);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.passport-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 6px #34d399;
+}
+
+@keyframes pharmaPulseRed {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.5), 0 6px 20px rgba(0, 0, 0, 0.18); }
+  50% { box-shadow: 0 0 0 10px rgba(225, 29, 72, 0), 0 8px 24px rgba(0, 0, 0, 0.22); }
+}
+
+
+/* ── 2. MODAL & DRAWER OVERLAYS ── */
+.pharma-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.pharma-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.pharma-modal-card {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #cbd5e1);
+  border-radius: var(--radius-xl, 16px);
+  width: 100%;
+  max-width: 850px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  transform: scale(0.94) translateY(10px);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.pharma-modal-overlay.active .pharma-modal-card {
+  transform: scale(1) translateY(0);
+}
+
+[data-theme="dark"] .pharma-modal-card {
+  background: var(--color-surface, #101828);
+  border-color: var(--color-border, #263a57);
+}
+
+.pharma-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid var(--color-divider, #e2e8f0);
+  background: var(--color-surface-2, #f8fafc);
+}
+
+[data-theme="dark"] .pharma-modal-header {
+  background: var(--color-surface-2, #162032);
+}
+
+.pharma-modal-title {
+  margin: 0;
+  font-family: var(--font-display, sans-serif);
+  font-size: var(--text-md, 1.1rem);
+  font-weight: 700;
+  color: var(--color-text, #0f172a);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.pharma-modal-close {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--color-text-muted, #64748b);
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm, 6px);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.pharma-modal-close:hover {
+  background: var(--color-rose-hl, #ffe4e6);
+  color: var(--color-rose, #e11d48);
+}
+
+.pharma-modal-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* ── 3. EMERGENCY DOSING STYLES ── */
+.em-search-bar {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.em-search-input {
+  flex: 1 1 240px;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-md, 8px);
+  border: 1.5px solid var(--color-border, #cbd5e1);
+  background: var(--color-surface, #ffffff);
+  color: var(--color-text, #0f172a);
+  font-size: var(--text-sm, 0.85rem);
+  outline: none;
+}
+
+[data-theme="dark"] .em-search-input {
+  background: #080e1a;
+  border-color: #263a57;
+}
+
+.em-filter-tags {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.em-tag-btn {
+  padding: 0.4rem 0.8rem;
+  border-radius: 100px;
+  font-size: var(--text-xs, 0.75rem);
+  font-weight: 600;
+  border: 1px solid var(--color-divider, #e2e8f0);
+  background: var(--color-surface-offset, #f1f5f9);
+  color: var(--color-text-muted, #475569);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.em-tag-btn.active {
+  background: var(--color-rose, #e11d48);
+  color: #ffffff;
+  border-color: var(--color-rose, #e11d48);
+}
+
+.em-drug-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.em-drug-card {
+  background: var(--color-surface-2, #f8fafc);
+  border: 1.5px solid var(--color-border, #cbd5e1);
+  border-left: 5px solid var(--color-rose, #e11d48);
+  border-radius: var(--radius-md, 10px);
+  padding: 1rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.em-drug-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] .em-drug-card {
+  background: rgba(22, 32, 50, 0.6);
+  border-color: #263a57;
+}
+
+.em-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.em-drug-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--color-text, #0f172a);
+  margin: 0;
+}
+
+.em-drug-category {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  background: var(--color-rose-hl, #ffe4e6);
+  color: var(--color-rose, #e11d48);
+}
+
+.em-stat-row {
+  font-size: var(--text-xs, 0.8rem);
+  margin-bottom: 0.35rem;
+  line-height: 1.45;
+}
+
+.em-stat-label {
+  font-weight: 700;
+  color: var(--color-text-muted, #475569);
+}
+
+.em-alert-note {
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  background: rgba(217, 119, 6, 0.1);
+  border-left: 3px solid var(--color-warning, #d97706);
+  font-size: 0.75rem;
+  color: var(--color-warning, #d97706);
+  line-height: 1.35;
+}
+
+
+/* ── 4. SMART DRUG PASSPORT WIDGET & DRAWER STYLES ── */
+.passport-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.passport-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.passport-field label {
+  font-size: var(--text-xs, 0.78rem);
+  font-weight: 700;
+  color: var(--color-text-muted, #475569);
+}
+
+.passport-field select,
+.passport-field input {
+  padding: 0.55rem 0.75rem;
+  border-radius: var(--radius-md, 8px);
+  border: 1.5px solid var(--color-border, #cbd5e1);
+  background: var(--color-surface, #ffffff);
+  color: var(--color-text, #0f172a);
+  font-size: var(--text-xs, 0.82rem);
+  outline: none;
+}
+
+[data-theme="dark"] .passport-field select,
+[data-theme="dark"] .passport-field input {
+  background: #080e1a;
+  border-color: #263a57;
+}
+
+.passport-save-btn {
+  background: linear-gradient(135deg, var(--color-primary, #0284c7), #0369a1);
+  color: #ffffff;
+  border: none;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-md, 8px);
+  font-weight: 700;
+  font-size: var(--text-xs, 0.82rem);
+  cursor: pointer;
+  width: 100%;
+  transition: opacity 0.15s ease;
+}
+
+.passport-save-btn:hover {
+  opacity: 0.9;
+}
+
+.passport-alert-summary {
+  margin-top: 1.25rem;
+  padding: 1rem;
+  border-radius: var(--radius-md, 10px);
+  background: var(--color-surface-offset, #f1f5f9);
+  border: 1px solid var(--color-divider, #e2e8f0);
+}
+
+[data-theme="dark"] .passport-alert-summary {
+  background: rgba(22, 32, 50, 0.5);
+  border-color: #263a57;
+}
+
+
+/* ── 5. PHARMACOLOGY FLASHCARD 3D ENGINE ── */
+.flashcard-section-container {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--radius-xl, 16px);
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="dark"] .flashcard-section-container {
+  background: var(--color-surface, #101828);
+  border-color: var(--color-border, #263a57);
+}
+
+.flashcard-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.flashcard-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.flashcard-3d-wrapper {
+  perspective: 1000px;
+  width: 100%;
+  max-width: 580px;
+  height: 280px;
+  margin: 0 auto 1.25rem auto;
+  cursor: pointer;
+}
+
+.flashcard-3d-card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: var(--radius-xl, 16px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.flashcard-3d-wrapper.flipped .flashcard-3d-card {
+  transform: rotateY(180deg);
+}
+
+.flashcard-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--radius-xl, 16px);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid var(--color-primary-hl, #bae6fd);
+  background: linear-gradient(135deg, var(--color-surface, #ffffff), var(--color-surface-2, #f8fafc));
+}
+
+[data-theme="dark"] .flashcard-face {
+  background: linear-gradient(135deg, #101828, #162032);
+  border-color: #263a57;
+}
+
+.flashcard-face-back {
+  transform: rotateY(180deg);
+  border-color: var(--color-teal, #0d9488);
+}
+
+.flashcard-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: var(--color-primary-hl, #f0f9ff);
+  color: var(--color-primary, #0284c7);
+  width: fit-content;
+}
+
+.flashcard-question-text {
+  font-size: clamp(1rem, 1.2vw, 1.25rem);
+  font-weight: 800;
+  color: var(--color-text, #0f172a);
+  text-align: center;
+  margin: auto 0;
+}
+
+.flashcard-answer-text {
+  font-size: var(--text-sm, 0.88rem);
+  color: var(--color-text, #0f172a);
+  line-height: 1.6;
+  margin: auto 0;
+}
+
+.flashcard-hint-footer {
+  font-size: 0.75rem;
+  color: var(--color-text-muted, #64748b);
+  text-align: center;
+  font-style: italic;
+}
+
+.flashcard-controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.fc-rate-btn {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md, 8px);
+  border: 1.5px solid var(--color-divider, #e2e8f0);
+  font-size: var(--text-xs, 0.78rem);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.fc-rate-again { background: var(--color-rose-hl, #ffe4e6); color: var(--color-rose, #e11d48); }
+.fc-rate-hard { background: var(--color-warning-hl, #fef3c7); color: var(--color-warning, #d97706); }
+.fc-rate-good { background: var(--color-primary-hl, #e0f2fe); color: var(--color-primary, #0284c7); }
+.fc-rate-easy { background: var(--color-success-hl, #d1fae5); color: var(--color-success, #059669); }
+
+.fc-rate-btn:hover { transform: translateY(-2px); }
+
+
+/* ── 6. CONTEXTUAL CROSS-LINKS SECTION ── */
+.pharma-crosslinks-card {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--radius-xl, 16px);
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+[data-theme="dark"] .pharma-crosslinks-card {
+  background: var(--color-surface, #101828);
+  border-color: var(--color-border, #263a57);
+}
+
+.crosslinks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+
+.crosslink-item-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md, 10px);
+  background: var(--color-bg, #f8fafc);
+  border: 1px solid var(--color-divider, #e2e8f0);
+  text-decoration: none;
+  color: var(--color-text, #0f172a);
+  transition: all 0.15s ease;
+}
+
+.crosslink-item-card:hover {
+  border-color: var(--color-primary, #0284c7);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.1);
+}
+
+[data-theme="dark"] .crosslink-item-card {
+  background: var(--color-surface-2, #162032);
+  border-color: #263a57;
+}
+
+.crosslink-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--color-primary-hl, #e0f2fe);
+  color: var(--color-primary, #0284c7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+
+/* ── 7. PRINT STYLES FOR EMERGENCY POCKET CARDS ── */
+@media print {
+  body * { visibility: hidden; }
+  .pharma-modal-overlay.active,
+  .pharma-modal-overlay.active * { visibility: visible; }
+  .pharma-modal-overlay { position: absolute; left: 0; top: 0; width: 100%; background: none; }
+  .pharma-modal-card { max-width: 100%; box-shadow: none; border: none; }
+  .pharma-fab-container, .pharma-modal-header, .em-search-bar { display: none !important; }
+  .em-drug-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.5rem !important; }
+}
+
+@media (max-width: 768px) {
+  .pharma-fab-container { bottom: 1rem; right: 1rem; }
+  .pharma-fab-btn { padding: 0.5rem 0.85rem; font-size: 0.75rem; }
+  .em-drug-grid { grid-template-columns: 1fr; }
+  .pharma-hub-tabs-container { flex-direction: column; }
+  .hub-tab-btn { width: 100%; }
+}

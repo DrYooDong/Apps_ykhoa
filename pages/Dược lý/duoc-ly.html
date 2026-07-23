@@ -27,11 +27,21 @@
 
   <link rel="stylesheet" href="../../css/components/module-dashboard.css">
   <link rel="stylesheet" href="../../css/components/pharmacology-tools.css">
+  <link rel="stylesheet" href="../../css/components/pharmacology-global.css">
+  <link rel="stylesheet" href="../../css/components/pharmacology-heatmap.css">
+  <link rel="stylesheet" href="../../css/components/moa-theater.css">
 
   <script src="../../js/main.js" defer></script>
   <script src="../../components/header.js" defer></script>
   <script src="../../components/footer.js" defer></script>
   <script src="../../js/pharmacology-tools.js" defer></script>
+  <script src="../../js/drug-passport.js" defer></script>
+  <script src="../../js/emergency-dosing.js" defer></script>
+  <script src="../../js/cross-links-pharma.js" defer></script>
+  <script src="../../js/pharmacology-flashcards.js" defer></script>
+  <script src="../../js/pharmacology-heatmap.js" defer></script>
+  <script src="../../js/moa-theater.js" defer></script>
+  <script src="../../js/adr-bodymap.js" defer></script>
   <style>
     /* Styling for group main titles in content area */
     .group-main-title {
@@ -272,277 +282,279 @@
             </div>
           </section>
 
-          <!-- NHÓM: DƯỢC LÝ THEO CHUYÊN KHOA -->
-          <div class="main-section-group" id="group-specialty">
-            <h2 class="group-main-title"><i class="fa-solid fa-hospital"></i> Dược lý theo chuyên khoa</h2>
-            <section id="specialty-section" aria-labelledby="specialty-heading">
-              <div class="physio-group-container">
-                <div class="specialty-grid">
-                  <!-- 1. Tim mạch -->
-                  <a href="Chuyên khoa/DL_Timmach.html" class="specialty-card">
-                    <div class="specialty-card-top">
-                      <div class="specialty-icon">🫀</div>
-                      <div class="specialty-info">
-                        <h3>Dược lý Tim mạch</h3>
-                        <p>Kháng kết tập tiểu cầu (DAPT), DOACs, hệ RAASi, hạ lipid máu và quản lý các thuốc vận mạch trong suy tim cấp.</p>
-                      </div>
-                    </div>
-                    <div class="specialty-card-action">
-                      <span>Tra cứu phác đồ</span>
-                      <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                  </a>
-                  <!-- 2. Hô hấp -->
-                  <a href="#" class="specialty-card disabled">
-                    <div class="specialty-card-top">
-                      <div class="specialty-icon">🫁</div>
-                      <div class="specialty-info">
-                        <h3>Dược lý Hô hấp</h3>
-                        <p>Tối ưu hóa ICS/LABA/LAMA trong Hen/COPD, thuốc giãn phế quản đường tĩnh mạch, tăng áp ĐMP.</p>
-                      </div>
-                    </div>
-                    <div class="specialty-card-action">
-                      <span>Đang biên soạn</span>
-                      <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                  </a>
-                  <!-- 3. Nội tiết -->
-                  <a href="#" class="specialty-card disabled">
-                    <div class="specialty-card-top">
-                      <div class="specialty-icon">🩸</div>
-                      <div class="specialty-info">
-                        <h3>Dược lý Nội tiết & ĐTĐ</h3>
-                        <p>Phác đồ Insulin cá thể hóa tại ICU, SGLT2i, GLP-1 RA, quản lý cơn bão giáp.</p>
-                      </div>
-                    </div>
-                    <div class="specialty-card-action">
-                      <span>Đang biên soạn</span>
-                      <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                  </a>
-                  <!-- 4. Vận mạch -->
-                  <a href="Chuyên khoa/DL_Vanmach.html" class="specialty-card">
-                    <div class="specialty-card-top">
-                      <div class="specialty-icon">🫀</div>
-                      <div class="specialty-info">
-                        <h3>Dược lý Vận mạch</h3>
-                        <p>Phác đồ Vasopressor & inotrope, thuốc vận mạch, điều chỉnh liều theo chức năng thận.</p>
-                      </div>
-                    </div>
-                    <div class="specialty-card-action">
-                      <span>Xem danh mục thuốc</span>
-                      <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                  </a>
-                  <!-- 5. Kháng sinh -->
-                  <a href="Chuyên khoa/DL_khangsinh.html" class="specialty-card">
-                    <div class="specialty-card-top">
-                      <div class="specialty-icon">🦠</div>
-                      <div class="specialty-info">
-                        <h3>Dược lý Kháng sinh</h3>
-                        <p>Kháng sinh theo chuyên khoa, tối ưu hóa liều lượng thuốc, giảm nguy cơ kháng thuốc.</p>
-                      </div>
-                    </div>
-                    <div class="specialty-card-action">
-                      <span>Tra cứu phác đồ</span>
-                      <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </section>
+          <!-- ===== HUB TAB SWITCHER BAR ===== -->
+          <div class="pharma-hub-tabs-container" role="tablist" aria-label="Phân hệ Dược lý">
+            <button class="hub-tab-btn active" data-target="tab-pharma-clinical" role="tab" aria-selected="true">
+              <i class="fa-solid fa-stethoscope"></i> 1. Dược Lý Lâm Sàng (Chuyên Khoa & Triệu Chứng)
+            </button>
+            <button class="hub-tab-btn" data-target="tab-pharma-academic" role="tab" aria-selected="false">
+              <i class="fa-solid fa-microscope"></i> 2. Ma Trận Tương Tác & Đồ Họa Học Thuật
+            </button>
+            <button class="hub-tab-btn" data-target="tab-pharma-flashcards" role="tab" aria-selected="false">
+              <i class="fa-solid fa-brain"></i> 3. Ôn Tập Flashcards Dược Lý
+            </button>
           </div>
 
-          <!-- NHÓM: DƯỢC LÝ THEO TRIỆU CHỨNG -->
-          <div class="main-section-group" id="group-symptoms">
-            <h2 class="group-main-title"><i class="fa-solid fa-stethoscope"></i> Dược lý theo triệu chứng/vấn đề</h2>
-            <section id="symptom-section" aria-labelledby="symptom-heading">
-              <div class="physio-group-container">
-                <div class="specialty-grid">
-                  <!-- Đau ngực cấp -->
-                  <a href="Chuyên khoa/DL_Timmach.html" class="specialty-card">
-                    <div class="specialty-card-top">
-                      <div class="specialty-icon">🫀</div>
-                      <div class="specialty-info">
-                        <h3>Đau ngực cấp</h3>
-                        <p>Tổng hợp hướng dẫn sử dụng thuốc điều trị đau ngực cấp từ các hội đồng chuyên môn.</p>
+          <!-- TAB 1: DƯỢC LÝ LÂM SÀNG (CHUYÊN KHOA & TRIỆU CHỨNG) -->
+          <div id="tab-pharma-clinical" class="hub-tab-panel active">
+
+            <!-- NHÓM: DƯỢC LÝ THEO CHUYÊN KHOA -->
+            <div class="main-section-group" id="group-specialty">
+              <h2 class="group-main-title"><i class="fa-solid fa-hospital"></i> Dược lý theo chuyên khoa</h2>
+              <section id="specialty-section" aria-labelledby="specialty-heading">
+                <div class="physio-group-container">
+                  <div class="specialty-grid">
+                    <!-- 1. Tim mạch -->
+                    <a href="Chuyên khoa/DL_Timmach.html" class="specialty-card">
+                      <div class="specialty-card-top">
+                        <div class="specialty-icon">🫀</div>
+                        <div class="specialty-info">
+                          <h3>Dược lý Tim mạch</h3>
+                          <p>Kháng kết tập tiểu cầu (DAPT), DOACs, hệ RAASi, hạ lipid máu và quản lý các thuốc vận mạch trong suy tim cấp.</p>
+                        </div>
                       </div>
-                    </div>
-                    <div class="specialty-card-action">
-                      <span>Tiếp cận điều trị</span>
-                      <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                  </a>
-                  <!-- Ho khan -->
-                  <a href="Triệu chứng/DL_Ho.html" class="specialty-card">
-                    <div class="specialty-card-top">
-                      <div class="specialty-icon">🫁</div>
-                      <div class="specialty-info">
-                        <h3>Ho khan/Ho có đờm</h3>
-                        <p>Tổng hợp hướng dẫn điều trị ho khan/ho có đờm cấp tính từ các hội đồng chuyên môn.</p>
+                      <div class="specialty-card-action">
+                        <span>Tra cứu phác đồ</span>
+                        <i class="fa-solid fa-chevron-right"></i>
                       </div>
-                    </div>
-                    <div class="specialty-card-action">
-                      <span>Hướng dẫn kê đơn</span>
-                      <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                  </a>
-                  <!-- Khó thở cấp -->
-                  <a href="Chuyên khoa/DL_Hohap.html" class="specialty-card">
-                    <div class="specialty-card-top">
-                      <div class="specialty-icon">🫁</div>
-                      <div class="specialty-info">
-                        <h3>Khó thở cấp</h3>
-                        <p>Tổng hợp hướng dẫn điều trị khó thở cấp tính từ các hội đồng chuyên môn.</p>
+                    </a>
+                    <!-- 2. Hô hấp -->
+                    <a href="#" class="specialty-card disabled">
+                      <div class="specialty-card-top">
+                        <div class="specialty-icon">🫁</div>
+                        <div class="specialty-info">
+                          <h3>Dược lý Hô hấp</h3>
+                          <p>Tối ưu hóa ICS/LABA/LAMA trong Hen/COPD, thuốc giãn phế quản đường tĩnh mạch, tăng áp ĐMP.</p>
+                        </div>
                       </div>
-                    </div>
-                    <div class="specialty-card-action">
-                      <span>Tiếp cận điều trị</span>
-                      <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                  </a>
-                  <!-- Đau bụng cấp -->
-                  <a href="Triệu chứng/DL_Daubungcap.html" class="specialty-card">
-                    <div class="specialty-card-top">
-                      <div class="specialty-icon">🍹</div>
-                      <div class="specialty-info">
-                        <h3>Đau bụng cấp</h3>
-                        <p>Tổng hợp hướng dẫn điều trị đau bụng cấp từ các hội đồng chuyên môn.</p>
+                      <div class="specialty-card-action">
+                        <span>Đang biên soạn</span>
+                        <i class="fa-solid fa-chevron-right"></i>
                       </div>
-                    </div>
-                    <div class="specialty-card-action">
-                      <span>Tiếp cận điều trị</span>
-                      <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                  </a>
-                  <!-- Tiêu chảy cấp -->
-                  <a href="Chuyên khoa/DL_Tiêuhoá.html" class="specialty-card">
-                    <div class="specialty-card-top">
-                      <div class="specialty-icon">🍹</div>
-                      <div class="specialty-info">
-                        <h3>Tiêu chảy cấp</h3>
-                        <p>Tổng hợp hướng dẫn điều trị tiêu chảy cấp từ các hội đồng chuyên môn.</p>
+                    </a>
+                    <!-- 3. Nội tiết -->
+                    <a href="#" class="specialty-card disabled">
+                      <div class="specialty-card-top">
+                        <div class="specialty-icon">🩸</div>
+                        <div class="specialty-info">
+                          <h3>Dược lý Nội tiết & ĐTĐ</h3>
+                          <p>Phác đồ Insulin cá thể hóa tại ICU, SGLT2i, GLP-1 RA, quản lý cơn bão giáp.</p>
+                        </div>
                       </div>
-                    </div>
-                    <div class="specialty-card-action">
-                      <span>Hướng dẫn kê đơn</span>
-                      <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                  </a>
-                  <!-- Táo bón -->
-                  <a href="Chuyên khoa/DL_Tiêuhoá.html" class="specialty-card">
-                    <div class="specialty-card-top">
-                      <div class="specialty-icon">🍹</div>
-                      <div class="specialty-info">
-                        <h3>Táo bón</h3>
-                        <p>Tổng hợp hướng dẫn điều trị táo bón từ các hội đồng chuyên môn.</p>
+                      <div class="specialty-card-action">
+                        <span>Đang biên soạn</span>
+                        <i class="fa-solid fa-chevron-right"></i>
                       </div>
-                    </div>
-                    <div class="specialty-card-action">
-                      <span>Hướng dẫn kê đơn</span>
-                      <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                  </a>
-                  <!-- Nôn ói cấp -->
-                  <a href="Triệu chứng/DL_Nonoi.html" class="specialty-card">
-                    <div class="specialty-card-top">
-                      <div class="specialty-icon">🍹</div>
-                      <div class="specialty-info">
-                        <h3>Nôn ói cấp</h3>
-                        <p>Tổng hợp hướng dẫn điều trị nôn ói cấp từ các hội đồng chuyên môn.</p>
+                    </a>
+                    <!-- 4. Vận mạch -->
+                    <a href="Chuyên khoa/DL_Vanmach.html" class="specialty-card">
+                      <div class="specialty-card-top">
+                        <div class="specialty-icon">🫀</div>
+                        <div class="specialty-info">
+                          <h3>Dược lý Vận mạch</h3>
+                          <p>Phác đồ Vasopressor & inotrope, thuốc vận mạch, điều chỉnh liều theo chức năng thận.</p>
+                        </div>
                       </div>
-                    </div>
-                    <div class="specialty-card-action">
-                      <span>Hướng dẫn kê đơn</span>
-                      <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                  </a>
-                  <!-- Sốt -->
-                  <a href="Chuyên khoa/DL_Ttoan_than.html" class="specialty-card">
-                    <div class="specialty-card-top">
-                      <div class="specialty-icon">💊</div>
-                      <div class="specialty-info">
-                        <h3>Sốt ở người lớn</h3>
-                        <p>Tổng hợp hướng dẫn điều trị sốt ở người lớn từ các hội đồng chuyên môn.</p>
+                      <div class="specialty-card-action">
+                        <span>Xem danh mục thuốc</span>
+                        <i class="fa-solid fa-chevron-right"></i>
                       </div>
-                    </div>
-                    <div class="specialty-card-action">
-                      <span>Tiếp cận điều trị</span>
-                      <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                  </a>
-                  <!-- Đau do ung thư -->
-                  <a href="Chuyên khoa/DL_Ttoan_than.html" class="specialty-card">
-                    <div class="specialty-card-top">
-                      <div class="specialty-icon">💊</div>
-                      <div class="specialty-info">
-                        <h3>Đau do ung thư</h3>
-                        <p>Tổng hợp hướng dẫn điều trị đau do ung thư từ các hội đồng chuyên môn.</p>
+                    </a>
+                    <!-- 5. Kháng sinh -->
+                    <a href="Chuyên khoa/DL_khangsinh.html" class="specialty-card">
+                      <div class="specialty-card-top">
+                        <div class="specialty-icon">🦠</div>
+                        <div class="specialty-info">
+                          <h3>Dược lý Kháng sinh</h3>
+                          <p>Kháng sinh theo chuyên khoa, tối ưu hóa liều lượng thuốc, giảm nguy cơ kháng thuốc.</p>
+                        </div>
                       </div>
-                    </div>
-                    <div class="specialty-card-action">
-                      <span>Hướng dẫn kê đơn</span>
-                      <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                  </a>
-                  <!-- Chóng mặt -->
-                  <a href="Triệu chứng/DL_Chongmat.html" class="specialty-card">
-                    <div class="specialty-card-top">
-                      <div class="specialty-icon">💊</div>
-                      <div class="specialty-info">
-                        <h3>Chóng mặt</h3>
-                        <p>Tổng hợp hướng dẫn điều trị chóng mặt từ các hội đồng chuyên môn.</p>
+                      <div class="specialty-card-action">
+                        <span>Tra cứu phác đồ</span>
+                        <i class="fa-solid fa-chevron-right"></i>
                       </div>
-                    </div>
-                    <div class="specialty-card-action">
-                      <span>Tiếp cận điều trị</span>
-                      <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                  </a>
-                  <!-- Đau đầu -->
-                  <a href="Triệu chứng/DL_Daudau.html" class="specialty-card">
-                    <div class="specialty-card-top">
-                      <div class="specialty-icon">💊</div>
-                      <div class="specialty-info">
-                        <h3>Đau đầu</h3>
-                        <p>Tổng hợp hướng dẫn điều trị đau đầu từ các hội đồng chuyên môn.</p>
-                      </div>
-                    </div>
-                    <div class="specialty-card-action">
-                      <span>Tiếp cận điều trị</span>
-                      <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                  </a>
+                    </a>
+                  </div>
                 </div>
-              </div>
-            </section>
+              </section>
+            </div>
+
+            <!-- NHÓM: DƯỢC LÝ THEO TRIỆU CHỨNG -->
+            <div class="main-section-group" id="group-symptoms">
+              <h2 class="group-main-title"><i class="fa-solid fa-stethoscope"></i> Dược lý theo triệu chứng/vấn đề</h2>
+              <section id="symptom-section" aria-labelledby="symptom-heading">
+                <div class="physio-group-container">
+                  <div class="specialty-grid">
+                    <!-- Đau ngực cấp -->
+                    <a href="Chuyên khoa/DL_Timmach.html" class="specialty-card">
+                      <div class="specialty-card-top">
+                        <div class="specialty-icon">🫀</div>
+                        <div class="specialty-info">
+                          <h3>Đau ngực cấp</h3>
+                          <p>Tổng hợp hướng dẫn sử dụng thuốc điều trị đau ngực cấp từ các hội đồng chuyên môn.</p>
+                        </div>
+                      </div>
+                      <div class="specialty-card-action">
+                        <span>Tiếp cận điều trị</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                      </div>
+                    </a>
+                    <!-- Ho khan -->
+                    <a href="Triệu chứng/DL_Ho.html" class="specialty-card">
+                      <div class="specialty-card-top">
+                        <div class="specialty-icon">🫁</div>
+                        <div class="specialty-info">
+                          <h3>Ho khan/Ho có đờm</h3>
+                          <p>Tổng hợp hướng dẫn điều trị ho khan/ho có đờm cấp tính từ các hội đồng chuyên môn.</p>
+                        </div>
+                      </div>
+                      <div class="specialty-card-action">
+                        <span>Hướng dẫn kê đơn</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                      </div>
+                    </a>
+                    <!-- Khó thở cấp -->
+                    <a href="Chuyên khoa/DL_Hohap.html" class="specialty-card">
+                      <div class="specialty-card-top">
+                        <div class="specialty-icon">🫁</div>
+                        <div class="specialty-info">
+                          <h3>Khó thở cấp</h3>
+                          <p>Tổng hợp hướng dẫn điều trị khó thở cấp tính từ các hội đồng chuyên môn.</p>
+                        </div>
+                      </div>
+                      <div class="specialty-card-action">
+                        <span>Tiếp cận điều trị</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                      </div>
+                    </a>
+                    <!-- Đau bụng cấp -->
+                    <a href="Triệu chứng/DL_Daubungcap.html" class="specialty-card">
+                      <div class="specialty-card-top">
+                        <div class="specialty-icon">🍹</div>
+                        <div class="specialty-info">
+                          <h3>Đau bụng cấp</h3>
+                          <p>Tổng hợp hướng dẫn điều trị đau bụng cấp từ các hội đồng chuyên môn.</p>
+                        </div>
+                      </div>
+                      <div class="specialty-card-action">
+                        <span>Tiếp cận điều trị</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                      </div>
+                    </a>
+                    <!-- Tiêu chảy cấp -->
+                    <a href="Chuyên khoa/DL_Tiêuhoá.html" class="specialty-card">
+                      <div class="specialty-card-top">
+                        <div class="specialty-icon">🍹</div>
+                        <div class="specialty-info">
+                          <h3>Tiêu chảy cấp</h3>
+                          <p>Tổng hợp hướng dẫn điều trị tiêu chảy cấp từ các hội đồng chuyên môn.</p>
+                        </div>
+                      </div>
+                      <div class="specialty-card-action">
+                        <span>Hướng dẫn kê đơn</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                      </div>
+                    </a>
+                    <!-- Táo bón -->
+                    <a href="Chuyên khoa/DL_Tiêuhoá.html" class="specialty-card">
+                      <div class="specialty-card-top">
+                        <div class="specialty-icon">🍹</div>
+                        <div class="specialty-info">
+                          <h3>Táo bón</h3>
+                          <p>Tổng hợp hướng dẫn điều trị táo bón từ các hội đồng chuyên môn.</p>
+                        </div>
+                      </div>
+                      <div class="specialty-card-action">
+                        <span>Hướng dẫn kê đơn</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                      </div>
+                    </a>
+                    <!-- Nôn ói cấp -->
+                    <a href="Triệu chứng/DL_Nonoi.html" class="specialty-card">
+                      <div class="specialty-card-top">
+                        <div class="specialty-icon">🍹</div>
+                        <div class="specialty-info">
+                          <h3>Nôn ói cấp</h3>
+                          <p>Tổng hợp hướng dẫn điều trị nôn ói cấp từ các hội đồng chuyên môn.</p>
+                        </div>
+                      </div>
+                      <div class="specialty-card-action">
+                        <span>Hướng dẫn kê đơn</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                      </div>
+                    </a>
+                    <!-- Sốt -->
+                    <a href="Chuyên khoa/DL_Ttoan_than.html" class="specialty-card">
+                      <div class="specialty-card-top">
+                        <div class="specialty-icon">💊</div>
+                        <div class="specialty-info">
+                          <h3>Sốt ở người lớn</h3>
+                          <p>Tổng hợp hướng dẫn điều trị sốt ở người lớn từ các hội đồng chuyên môn.</p>
+                        </div>
+                      </div>
+                      <div class="specialty-card-action">
+                        <span>Tiếp cận điều trị</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                      </div>
+                    </a>
+                    <!-- Đau do ung thư -->
+                    <a href="Chuyên khoa/DL_Ttoan_than.html" class="specialty-card">
+                      <div class="specialty-card-top">
+                        <div class="specialty-icon">💊</div>
+                        <div class="specialty-info">
+                          <h3>Đau do ung thư</h3>
+                          <p>Tổng hợp hướng dẫn điều trị đau do ung thư từ các hội đồng chuyên môn.</p>
+                        </div>
+                      </div>
+                      <div class="specialty-card-action">
+                        <span>Hướng dẫn kê đơn</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                      </div>
+                    </a>
+                    <!-- Chóng mặt -->
+                    <a href="Triệu chứng/DL_Chongmat.html" class="specialty-card">
+                      <div class="specialty-card-top">
+                        <div class="specialty-icon">💊</div>
+                        <div class="specialty-info">
+                          <h3>Chóng mặt</h3>
+                          <p>Tổng hợp hướng dẫn điều trị chóng mặt từ các hội đồng chuyên môn.</p>
+                        </div>
+                      </div>
+                      <div class="specialty-card-action">
+                        <span>Tiếp cận điều trị</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                      </div>
+                    </a>
+                    <!-- Đau đầu -->
+                    <a href="Triệu chứng/DL_Daudau.html" class="specialty-card">
+                      <div class="specialty-card-top">
+                        <div class="specialty-icon">💊</div>
+                        <div class="specialty-info">
+                          <h3>Đau đầu</h3>
+                          <p>Tổng hợp hướng dẫn điều trị đau đầu từ các hội đồng chuyên môn.</p>
+                        </div>
+                      </div>
+                      <div class="specialty-card-action">
+                        <span>Tiếp cận điều trị</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </section>
+            </div>
           </div>
 
-          <!-- NHÓM: CÔNG CỤ & ĐỒ THỊ TRỰC QUAN -->
-          <div class="main-section-group" id="group-tools">
+          <!-- TAB 2: MA TRẬN TƯƠNG TÁC & ĐỒ HỌA HỌC THUẬT -->
+          <div id="tab-pharma-academic" class="hub-tab-panel">
+            <div id="pharma-heatmap-mount"></div>
+            <div id="pharma-moa-mount"></div>
+            <div id="pharma-bodymap-mount"></div>
+          </div>
 
-
-            <h2 class="group-main-title"><i class="fa-solid fa-chart-line"></i> Công cụ & Đồ thị trực quan</h2>
-            <section id="tools-section" aria-labelledby="tools-heading">
-              <div class="physio-group-container">
-                <div class="specialty-grid">
-                  <!-- Khí máu động mạch -->
-                  <a href="../Công cụ/Cấp cứu & hồi sức/ABG_Nomogram.html" class="specialty-card">
-                    <div class="specialty-card-top">
-                      <div class="specialty-icon">📈</div>
-                      <div class="specialty-info">
-                        <h3>Phân tích Khí máu (ABG) & Toan kiềm</h3>
-                        <p>Tích hợp Biểu đồ Siggaard-Andersen (Acid-Base Nomogram) động. Hiển thị kết quả điểm bệnh nhân trực tiếp trên biểu đồ để đánh giá mức độ bù trừ.</p>
-                      </div>
-                    </div>
-                    <div class="specialty-card-action">
-                      <span>Xem biểu đồ động</span>
-                      <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </section>
+          <!-- TAB 3: ÔN TẬP FLASHCARDS DƯỢC LÝ -->
+          <div id="tab-pharma-flashcards" class="hub-tab-panel">
+            <div id="pharma-flashcards-mount"></div>
           </div>
 
       </main>
@@ -587,6 +599,31 @@
 
   <!-- ===================== SCRIPT ===================== -->
   <script src="../../js/module-dashboard.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabBtns = document.querySelectorAll('.hub-tab-btn');
+      const tabPanels = document.querySelectorAll('.hub-tab-panel');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const targetId = btn.getAttribute('data-target');
+          
+          tabBtns.forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+          });
+          tabPanels.forEach(p => p.classList.remove('active'));
+
+          btn.classList.add('active');
+          btn.setAttribute('aria-selected', 'true');
+          const targetPanel = document.getElementById(targetId);
+          if (targetPanel) targetPanel.classList.add('active');
+        });
+      });
+    });
+  </script>
 </body>
+
+</html>
 
 </html>

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Hệ thống tình huống lâm sàng ngẫu nhiên OSCE">
-    <title>OSCE Randomizer – CliniPortal</title>
+    <meta name="description" content="OSCE Countdown Arena — Hệ thống luyện tập thi OSCE tương tác với 12 tình huống lâm sàng, 3 mức độ, Marathon Mode và theo dõi tiến trình.">
+    <title>OSCE Countdown Arena – CliniPortal</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="../../css/components/sidebar.css">
     <link rel="stylesheet" href="../../css/components/footer.css">
 
-    <!-- CSS riêng cho Randomizer -->
+    <!-- CSS riêng cho OSCE Arena -->
     <link rel="stylesheet" href="../../css/components/osce-randomizer.css">
 
     <!-- Scripts -->
@@ -71,25 +71,72 @@
                     <li class="breadcrumb-item">
                         <a href="ky-nang.html" class="breadcrumb-link">Kỹ năng lâm sàng</a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">OSCE Randomizer</li>
+                    <li class="breadcrumb-item active" aria-current="page">OSCE Countdown Arena</li>
                 </ol>
             </nav>
 
             <div class="osce-container">
+                <!-- HERO -->
                 <section class="osce-hero">
-                    <i class="fa-solid fa-user-doctor" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-                    <h1>Hệ Thống Tình Huống Lâm Sàng Ngẫu Nhiên</h1>
-                    <p>Giả lập tình huống cấp cứu và phòng khám để luyện tập phản xạ OSCE.</p>
+                    <i class="fa-solid fa-user-doctor" style="font-size: 2.5rem; margin-bottom: 0.75rem; display: block; position: relative;"></i>
+                    <h1>⏱️ OSCE Countdown Arena</h1>
+                    <p>Giả lập trạm thi OSCE thực tế — 8 phút, bảng kiểm tự chấm, chuông cảnh báo, phản hồi tức thì.</p>
+
+                    <!-- Controls -->
+                    <div class="osce-controls">
+                        <select id="difficulty-select" class="osce-select" aria-label="Chọn mức độ">
+                            <option value="all">🎯 Tất cả mức độ</option>
+                            <option value="basic">🟢 Cơ bản</option>
+                            <option value="intermediate">🟡 Trung bình</option>
+                            <option value="advanced">🔴 Nâng cao</option>
+                        </select>
+
+                        <select id="mode-select" class="osce-select" aria-label="Chọn chế độ">
+                            <option value="single">🎲 Đơn lẻ</option>
+                            <option value="marathon">🏁 Marathon (6 trạm)</option>
+                        </select>
+                    </div>
+
                     <button class="btn-generate" id="btn-generate">
-                        <i class="fa-solid fa-dice"></i> Tạo Tình Huống Mới
+                        <i class="fa-solid fa-dice"></i> Bắt Đầu Luyện Tập
                     </button>
                 </section>
 
+                <!-- HISTORY PANEL -->
+                <div class="history-container" id="history-container">
+                    <div class="history-title">
+                        <i class="fa-solid fa-chart-line"></i> Lịch sử luyện tập
+                    </div>
+                    <div class="history-chart" id="history-chart"></div>
+                    <div class="history-stats" id="history-stats"></div>
+                </div>
+
+                <!-- STATION INDICATOR (Marathon) -->
+                <div class="station-indicator" id="station-indicator"></div>
+
+                <!-- CASE DISPLAY -->
                 <section class="case-display" id="case-display">
                     <div class="case-header">
-                        <span class="case-category" id="case-category">Khoa Nội</span>
-                        <div class="case-timer" id="timer-display">
-                            <i class="fa-regular fa-clock"></i> 00:00
+                        <div class="case-header-left">
+                            <span class="case-category" id="case-category">Khoa Nội</span>
+                            <span class="difficulty-badge" id="difficulty-badge"></span>
+                        </div>
+
+                        <div class="timer-ring-container">
+                            <!-- Circular Progress Ring -->
+                            <div class="timer-ring">
+                                <svg viewBox="0 0 120 120">
+                                    <circle class="timer-ring-bg" cx="60" cy="60" r="54"/>
+                                    <circle class="timer-ring-progress" id="progress-ring-circle"
+                                        cx="60" cy="60" r="54"
+                                        stroke-dasharray="339.292"
+                                        stroke-dashoffset="0"/>
+                                </svg>
+                                <div class="timer-ring-text" id="timer-text">08:00</div>
+                            </div>
+                            <div class="case-timer" id="timer-display">
+                                <i class="fa-regular fa-clock"></i> 08:00
+                            </div>
                         </div>
                     </div>
                     
@@ -120,12 +167,24 @@
                         
                         <div class="controls-row">
                             <button class="btn-control btn-stop" id="btn-stop">
-                                <i class="fa-solid fa-pause"></i> Tạm dừng / Kết thúc
+                                <i class="fa-solid fa-flag-checkered"></i> Kết Thúc Trạm
                             </button>
                         </div>
                     </div>
                 </section>
-            </div>
+
+                <!-- FEEDBACK PANEL -->
+                <div class="feedback-panel" id="feedback-panel">
+                    <div class="feedback-panel-header">
+                        <i class="fa-solid fa-clipboard-check"></i> Đánh Giá & Phản Hồi
+                    </div>
+                    <div class="feedback-content" id="feedback-content"></div>
+                </div>
+
+                <!-- MARATHON PROGRESS (hidden by default) -->
+                <div id="marathon-progress" style="display: none;"></div>
+
+            </div><!-- end osce-container -->
         </main>
     </div>
 

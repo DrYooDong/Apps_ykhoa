@@ -95,6 +95,15 @@ const clinicalToolsData = [
     part: "part3-section",
     tags: ["cấp cứu", "hồi sức", "máy thở", "thở máy", "cai thở máy", "icu"]
   },
+  {
+    id: "ecg-studio",
+    title: "ECG Pro Studio 12 Chuyển Đạo",
+    description: "Giả lập sóng ECG 12 chuyển đạo tương tác, thước đo Calipers ảo & Quiz chẩn đoán cấp cứu",
+    icon: "⚡",
+    link: "Cấp cứu & hồi sức/ECG_Studio.html",
+    part: "part3-section",
+    tags: ["cấp cứu", "hồi sức", "ecg", "điện tâm đồ", "tim mạch", "stemi", "caliper", "studio"]
+  },
 
   // Phần 4: Hô hấp & Lao
   {

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Công cụ tư duy lâm sàng CliniPortal — Luyện tập tư duy theo framework SBAR, SNAPPS và Semantic Qualifier Grid cho sinh viên y khoa.">
+  <title>Công Cụ Tư Duy Lâm Sàng (Clinical Reasoning Engine) – CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../css/components/clinical-reasoning.css">
+
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+  <script src="../../../js/main.js" defer></script>
+  <script src="../../../js/clinical-reasoning.js" defer></script>
+</head>
+<body>
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../ky-nang.html" class="nav-item active" title="Kỹ năng lâm sàng">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng lâm sàng</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-wrapper">
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a></li>
+          <li class="breadcrumb-item"><a href="../ky-nang.html" class="breadcrumb-link">Kỹ năng lâm sàng</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Clinical Reasoning Engine</li>
+        </ol>
+      </nav>
+
+      <div class="reasoning-container">
+        <section class="reasoning-hero">
+          <i class="fa-solid fa-brain" style="font-size: 2.5rem; color: var(--color-primary); margin-bottom: 0.75rem;"></i>
+          <h1>🧠 Clinical Reasoning Engine</h1>
+          <p>Hệ thống hướng dẫn tư duy lâm sàng theo các chuẩn quốc tế SBAR & SNAPPS giúp sinh viên trình bệnh án & giao ban tự tin, chuẩn xác.</p>
+
+          <div class="framework-selector">
+            <button type="button" class="framework-tab active" data-framework="sbar">
+              <i class="fa-solid fa-phone-volume"></i> SBAR (Giao ban & Gọi hỗ trợ)
+            </button>
+            <button type="button" class="framework-tab" data-framework="snapps">
+              <i class="fa-solid fa-user-doctor"></i> SNAPPS (Trình Bệnh Án)
+            </button>
+          </div>
+        </section>
+
+        <!-- PANEL SBAR -->
+        <div id="panel-sbar" class="framework-panel">
+          <div class="reasoning-card">
+            <h3 class="reasoning-card-title"><i class="fa-solid fa-triangle-exclamation"></i> S - Situation (Tình huống hiện tại)</h3>
+            <div class="field-group">
+              <label class="field-label" for="sbar-situation">Bệnh nhân là ai? Vấn đề cấp bách ngay bây giờ là gì?</label>
+              <span class="field-hint">Mẫu: "Tôi là BS Nam, gọi về bệnh nhân Nguyễn Văn A (65 tuổi, phòng 302). Bệnh nhân đột ngột khó thở dữ dội, SpO₂ giảm còn 85%."</span>
+              <textarea id="sbar-situation" class="reasoning-textarea" rows="3" placeholder="Nhập tình huống..."></textarea>
+            </div>
+          </div>
+
+          <div class="reasoning-card">
+            <h3 class="reasoning-card-title"><i class="fa-solid fa-file-medical"></i> B - Background (Bối cảnh lâm sàng)</h3>
+            <div class="field-group">
+              <label class="field-label" for="sbar-background">Lý do nhập viện, tiền sử & diễn biến liên quan?</label>
+              <textarea id="sbar-background" class="reasoning-textarea" rows="3" placeholder="Nhập bối cảnh..."></textarea>
+            </div>
+          </div>
+
+          <div class="reasoning-card">
+            <h3 class="reasoning-card-title"><i class="fa-solid fa-stethoscopes"></i> A - Assessment (Đánh giá của bạn)</h3>
+            <div class="field-group">
+              <label class="field-label" for="sbar-assessment">Sinh hiệu hiện tại & Đánh giá mức độ nghi ngờ của bạn?</label>
+              <textarea id="sbar-assessment" class="reasoning-textarea" rows="3" placeholder="Nhập đánh giá..."></textarea>
+            </div>
+          </div>
+
+          <div class="reasoning-card">
+            <h3 class="reasoning-card-title"><i class="fa-solid fa-hand-holding-medical"></i> R - Recommendation (Đề xuất xử trí)</h3>
+            <div class="field-group">
+              <label class="field-label" for="sbar-recommendation">Bạn muốn bác sĩ chính/giảng viên chỉ định gì ngay?</label>
+              <textarea id="sbar-recommendation" class="reasoning-textarea" rows="3" placeholder="Nhập đề xuất..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANEL SNAPPS -->
+        <div id="panel-snapps" class="framework-panel" style="display: none;">
+          <div class="reasoning-card">
+            <h3 class="reasoning-card-title">1. Summarize — Tóm tắt bệnh án</h3>
+            <div class="field-group">
+              <textarea id="snapps-s" class="reasoning-textarea" rows="3" placeholder="Tóm tắt ngắn gọn bệnh sử và khám lâm sàng..."></textarea>
+            </div>
+          </div>
+
+          <div class="reasoning-card">
+            <h3 class="reasoning-card-title">2. Narrow — Bảng Chẩn đoán Phân biệt</h3>
+            <div class="field-group">
+              <textarea id="snapps-n" class="reasoning-textarea" rows="3" placeholder="Liệt kê 2-3 chẩn đoán khả thi nhất..."></textarea>
+            </div>
+          </div>
+
+          <div class="reasoning-card">
+            <h3 class="reasoning-card-title">3. Analyze — Phân tích so sánh</h3>
+            <div class="field-group">
+              <textarea id="snapps-a" class="reasoning-textarea" rows="3" placeholder="Đối chiếu triệu chứng ủng hộ / chống lại từng chẩn đoán..."></textarea>
+            </div>
+          </div>
+
+          <div class="reasoning-card">
+            <h3 class="reasoning-card-title">4. Probe — Thắc mắc chuyên môn</h3>
+            <div class="field-group">
+              <textarea id="snapps-p" class="reasoning-textarea" rows="2" placeholder="Nêu điểm chưa rõ muốn hỏi giảng viên..."></textarea>
+            </div>
+          </div>
+
+          <div class="reasoning-card">
+            <h3 class="reasoning-card-title">5. Plan — Kế hoạch điều trị & học tập</h3>
+            <div class="field-group">
+              <textarea id="snapps-plan" class="reasoning-textarea" rows="3" placeholder="Đề xuất CLS và hướng xử trí tiếp theo..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="action-bar">
+          <button type="button" id="btn-generate-output" class="btn-action">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Tạo Văn Bản Tổng Kết
+          </button>
+          <button type="button" id="btn-copy-output" class="btn-action btn-action-outline">
+            <i class="fa-solid fa-copy"></i> Sao Chép Clipboard
+          </button>
+        </div>
+
+        <div id="output-preview" class="output-preview" style="display: none;"></div>
+      </div>
+    </main>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+</body>
+</html>

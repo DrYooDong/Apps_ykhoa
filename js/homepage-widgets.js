@@ -59,6 +59,9 @@
     initClinicalPearl();
     initMedicalConverter();
     initScratchpad();
+    initFavoritesSystem();
+    initCategoryFilter();
+    initKeyboardShortcuts();
   });
 
   // ============================================================
@@ -548,4 +551,226 @@
     }
   }
 
+  // ============================================================
+  // FUNCTION: PINNED FAVORITES SYSTEM
+  // ============================================================
+  function initFavoritesSystem() {
+    const favoritesSection = document.getElementById('favoritesSection');
+    const favoritesGrid = document.getElementById('favoritesGrid');
+
+    function getFavorites() {
+      try {
+        return JSON.parse(localStorage.getItem('cliniportal_favorites') || '[]');
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveFavorites(favs) {
+      try {
+        localStorage.setItem('cliniportal_favorites', JSON.stringify(favs));
+      } catch (e) {
+        console.warn('Saving favorites failed', e);
+      }
+      renderFavorites();
+      updatePinButtons();
+    }
+
+    function renderFavorites() {
+      if (!favoritesSection || !favoritesGrid) return;
+      const favs = getFavorites();
+
+      if (favs.length === 0) {
+        favoritesSection.classList.remove('has-favorites');
+        favoritesGrid.innerHTML = '';
+        return;
+      }
+
+      favoritesSection.classList.add('has-favorites');
+      favoritesGrid.innerHTML = '';
+
+      favs.forEach(fav => {
+        const a = document.createElement('a');
+        a.href = fav.url;
+        a.className = 'fav-card';
+        a.innerHTML = `
+          <span class="fav-card-icon">${fav.icon || '⭐'}</span>
+          <div class="fav-card-info">
+            <span class="fav-card-title">${escapeHtml(fav.title)}</span>
+            <span class="fav-card-cat">${escapeHtml(fav.category || 'Công cụ')}</span>
+          </div>
+          <button class="pin-btn pinned" title="Bỏ ghim khỏi yêu thích" aria-label="Unpin">★</button>
+        `;
+
+        const unpinBtn = a.querySelector('.pin-btn');
+        unpinBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleFavorite(fav);
+        });
+
+        favoritesGrid.appendChild(a);
+      });
+    }
+
+    function toggleFavorite(item) {
+      let favs = getFavorites();
+      const existingIdx = favs.findIndex(f => f.url === item.url);
+
+      if (existingIdx !== -1) {
+        favs.splice(existingIdx, 1);
+      } else {
+        favs.push({
+          title: item.title,
+          url: item.url,
+          category: item.category || 'Công cụ',
+          icon: item.icon || '⭐'
+        });
+      }
+
+      saveFavorites(favs);
+    }
+
+    function updatePinButtons() {
+      const favs = getFavorites();
+      const pinBtns = document.querySelectorAll('.pin-btn[data-url]');
+
+      pinBtns.forEach(btn => {
+        const url = btn.getAttribute('data-url');
+        const isPinned = favs.some(f => f.url === url);
+        if (isPinned) {
+          btn.classList.add('pinned');
+          btn.innerHTML = '★';
+          btn.title = 'Bỏ ghim khỏi trang chủ';
+        } else {
+          btn.classList.remove('pinned');
+          btn.innerHTML = '☆';
+          btn.title = 'Ghim vào trang chủ';
+        }
+      });
+    }
+
+    // Attach click listeners to all pin-btn buttons with data-url attribute
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.pin-btn[data-url]');
+      if (!btn) return;
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      const url = btn.getAttribute('data-url');
+      const title = btn.getAttribute('data-title') || 'Công cụ';
+      const category = btn.getAttribute('data-category') || 'Lâm sàng';
+      const icon = btn.getAttribute('data-icon') || '⭐';
+
+      toggleFavorite({ url, title, category, icon });
+    });
+
+    renderFavorites();
+    updatePinButtons();
+  }
+
+  // ============================================================
+  // FUNCTION: CATEGORY FILTER & LIVE SEARCH
+  // ============================================================
+  function initCategoryFilter() {
+    const pills = document.querySelectorAll('.filter-pill');
+    const cards = document.querySelectorAll('.tool-card');
+    const searchInput = document.getElementById('categorySearchInput');
+
+    if (cards.length === 0) return;
+
+    let activeCategory = 'all';
+
+    function filterCards() {
+      const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
+
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-category') || '';
+        const title = card.querySelector('h3') ? card.querySelector('h3').textContent.toLowerCase() : '';
+        const desc = card.querySelector('p') ? card.querySelector('p').textContent.toLowerCase() : '';
+
+        const matchesCat = activeCategory === 'all' || cat === activeCategory;
+        const matchesQuery = !query || title.includes(query) || desc.includes(query);
+
+        if (matchesCat && matchesQuery) {
+          card.style.display = '';
+          card.style.opacity = '1';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        pills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        activeCategory = pill.getAttribute('data-filter') || 'all';
+        filterCards();
+      });
+    });
+
+    if (searchInput) {
+      searchInput.addEventListener('input', filterCards);
+    }
+  }
+
+  // ============================================================
+  // FUNCTION: KEYBOARD SHORTCUTS HELP MODAL
+  // ============================================================
+  function initKeyboardShortcuts() {
+    const overlay = document.getElementById('hotkeyModalOverlay');
+    const closeBtn = document.getElementById('hotkeyCloseBtn');
+    const triggerBtn = document.getElementById('hotkeyHelpBtn');
+
+    if (!overlay) return;
+
+    function openModal() {
+      overlay.classList.add('active');
+    }
+
+    function closeModal() {
+      overlay.classList.remove('active');
+    }
+
+    if (triggerBtn) {
+      triggerBtn.addEventListener('click', openModal);
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeModal);
+    }
+
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      // Press '?' key when not typing in input/textarea
+      if (e.key === '?') {
+        const active = document.activeElement;
+        const isTyping = active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.isContentEditable);
+        if (!isTyping) {
+          e.preventDefault();
+          overlay.classList.contains('active') ? closeModal() : openModal();
+        }
+      }
+
+      if (e.key === 'Escape' && overlay.classList.contains('active')) {
+        closeModal();
+      }
+    });
+  }
+
+  function escapeHtml(unsafe) {
+    return String(unsafe || '')
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
 })();
+

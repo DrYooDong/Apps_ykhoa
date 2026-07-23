@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Hướng dẫn toàn diện quy trình kỹ thuật sử dụng máy đo ECG, gắn 10 điện cực chuẩn, nhận biết mắc lộn điện cực và phân tích kết quả điện tâm đồ 10 bước theo sách 'Đọc điện tâm đồ dễ hơn' – CliniPortal.">
+  <title>Hướng Dẫn Sử Dụng Máy ECG & Đọc Điện Tâm Đồ Toàn Diện – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core CliniPortal -->
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../css/components/toc.css">
+  <link rel="stylesheet" href="../../../css/components/paraclinical.css">
+
+  <script src="../../../js/toc.js" defer></script>
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+  <script src="../../../js/main.js" defer></script>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li><a href="../../../index.html" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+          <li><a href="../ky-nang.html" class="nav-item active"><span class="nav-icon">🩺</span><span class="nav-text">Kỹ năng</span></a></li>
+          <li><a href="../../Tiếp cận/tiep-can.html" class="nav-item"><span class="nav-icon">🤒</span><span class="nav-text">Tiếp cận</span></a></li>
+          <li><a href="../../Công cụ/cong-cu.html" class="nav-item"><span class="nav-icon">⚙️</span><span class="nav-text">Công cụ</span></a></li>
+          <li><a href="../../Dược lý/duoc-ly.html" class="nav-item"><span class="nav-icon">💊</span><span class="nav-text">Dược lý</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN WRAPPER -->
+    <div class="main-wrapper" id="mainContent">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a></li>
+          <li class="breadcrumb-item"><a href="../ky-nang.html" class="breadcrumb-link">Kỹ năng lâm sàng</a></li>
+          <li class="breadcrumb-item"><a href="Doc_KQCLS.html" class="breadcrumb-link">Cận lâm sàng</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Hướng Dẫn ECG Toàn Diện</li>
+        </ol>
+      </nav>
+
+      <!-- VISUAL CONTAINER FOR TOC GENERATION -->
+      <main class="visual-container">
+        <!-- Chapter Header -->
+        <div class="para-header">
+          <span class="para-badge purple">📈 Thăm Giò Chức Năng Tim Mạch</span>
+          <h1>Hướng Dẫn Sử Dụng Máy ECG & Đọc Điện Tâm Đồ Toàn Diện</h1>
+          <p>Tài liệu giáo trình lâm sàng chuẩn — Hướng dẫn kỹ thuật đo, gắn 10 điện cực, khắc phục lỗi máy và quy trình 10 bước phân tích ECG hệ thống dựa trên cuốn <em>"Đọc điện tâm đồ dễ hơn"</em> (BS Nguyễn Tôn Kinh Thi).</p>
+        </div>
+
+        <div class="para-content">
+          
+
+          <!-- CHƯƠNG 1 -->
+          <section id="chuong-1">
+            <h2 class="para-section-title">Chương 1: Đại Cương & Thông Số Chuẩn Máy Đo ECG</h2>
+            <p class="para-lead">
+              Điện tâm đồ (Electrocardiogram - ECG) là đồ thị ghi lại các biến thiên của dòng điện sinh học do tim phát ra trong quá trình co bóp. Để đọc đúng, bác sĩ và điều dưỡng phải nắm vững các thông số chuẩn trên giấy đo.
+            </p>
+
+            <div class="para-grid">
+              <div class="para-grid-card">
+                <div class="para-grid-card-title">📐 Tốc Độ Giấy Chạy (Speed)</div>
+                <p>
+                  - Mặc định chuẩn: <strong>25 mm/giây</strong>.<br>
+                  - 1 ô nhỏ (1 mm) = <strong>0,04 giây (40 ms)</strong>.<br>
+                  - 1 ô lớn (5 mm) = <strong>0,20 giây (200 ms)</strong>.<br>
+                  - 5 ô lớn = 1,0 giây.<br>
+                  - <em>Trường hợp đặc biệt:</em> Chạy tốc độ <strong>50 mm/s</strong> để giãn rộng các sóng khi nhịp quá nhanh hoặc cần đo sóng P, ST chi tiết.
+                </p>
+              </div>
+
+              <div class="para-grid-card">
+                <div class="para-grid-card-title">⚡ Hiệu Chỉnh Điện Thế (Gain/Voltage)</div>
+                <p>
+                  - Mặc định chuẩn: <strong>1 mV = 10 mm (10 ô nhỏ = 2 ô lớn)</strong>.<br>
+                  - 1 ô nhỏ (1 mm) = <strong>0,1 mV</strong>.<br>
+                  - <em>Biên độ N/2 (5mm/mV):</em> Dùng khi sóng quá cao (QRS/ST chênh lớn) tránh tràn khổ giấy.<br>
+                  - <em>Biên độ 2N (20mm/mV):</em> Dùng khi điện thế quá thấp để phóng to quan sát sóng P/T.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- CHƯƠNG 2 -->
+          <section id="chuong-2" style="margin-top: 2.5rem;">
+            <h2 class="para-section-title">Chương 2: Quy Trình Kỹ Thuật Đo & Gắn 10 Điện Cực</h2>
+
+            <div class="para-card">
+              <h3 class="para-card-title">1. Vị Trí Gắn 4 Điện Cực Chi (Limb Leads)</h3>
+              <p>Mã màu chuẩn quốc tế (AHA / IEC) giúp gắn đúng vị trí các chi:</p>
+
+              <div class="para-table-wrapper">
+                <table class="para-table">
+                  <thead>
+                    <tr>
+                      <th>Điện cực</th>
+                      <th>Mã màu IEC (Châu Âu)</th>
+                      <th>Mã màu AHA (Mỹ)</th>
+                      <th>Vị trí gắn chuẩn</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Tay Phải (RA)</strong></td>
+                      <td>🔴 Đỏ (Red)</td>
+                      <td>⚪ Trắng (White)</td>
+                      <td>Cổ tay phải (mặt trước)</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Tay Trái (LA)</strong></td>
+                      <td>🟡 Vàng (Yellow)</td>
+                      <td>🔴 Đỏ (Red)</td>
+                      <td>Cổ tay trái (mặt trước)</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Chân Trái (LL)</strong></td>
+                      <td>🟢 Xanh lá (Green)</td>
+                      <td>🟢 Xanh lá (Green)</td>
+                      <td>Cổ chân trái (phía trên mắt cá trong)</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Chân Phải (RL)</strong></td>
+                      <td>⚫ Đen (Black)</td>
+                      <td>⚫ Đen (Black)</td>
+                      <td>Cổ chân phải (Điện cực trung tính/nối đất)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="para-card" style="margin-top: 1.5rem;">
+              <h3 class="para-card-title">2. Vị Trí Gắn 6 Điện Cực Trước Ngực (Precordial Leads)</h3>
+              <p>Xác định chính xác mốc giải phẫu khoang liên sườn (KLS):</p>
+              <ul style="line-height: 1.8;">
+                <li><strong>V1 (Đỏ):</strong> Khoảng liên sườn 4 bên PHẢI bờ xương ức.</li>
+                <li><strong>V2 (Vàng):</strong> Khoảng liên sườn 4 bên TRÁI bờ xương ức.</li>
+                <li><strong>V3 (Xanh lá):</strong> Điểm giữa nằm nối V2 và V4.</li>
+                <li><strong>V4 (Nâu):</strong> Khoảng liên sườn 5 bên TRÁI trên đường trung đòn (mid-clavicular line).</li>
+                <li><strong>V5 (Đen):</strong> Khoảng liên sườn 5 bên TRÁI trên đường nách trước.</li>
+                <li><strong>V6 (Tím):</strong> Khoảng liên sườn 5 bên TRÁI trên đường nách giữa (ngang hàng với V4, V5).</li>
+              </ul>
+            </div>
+
+            <div class="para-card" style="margin-top: 1.5rem;">
+              <h3 class="para-card-title">3. Các Lỗi Nhận Biết Mắc Lộn Điện Cực Chi</h3>
+              <div class="para-grid">
+                <div class="para-grid-card" style="border-left: 4px solid #ef4444;">
+                  <div class="para-grid-card-title">❌ Đảo Tay Trái / Tay Phải (LA / RA)</div>
+                  <p>
+                    - Chuyển đạo <strong>DI hoàn toàn âm</strong> (sóng P, QRS, T đều âm ngược).<br>
+                    - Chuyển đạo <strong>aVR trở thành dương</strong> (ngược với bình thường).<br>
+                    - Chuyển đạo DII và DIII hoán đổi vị trí cho nhau.
+                  </p>
+                </div>
+
+                <div class="para-grid-card" style="border-left: 4px solid #f59e0b;">
+                  <div class="para-grid-card-title">⚠️ Khắc Phục Nhiễu Sóng Khi Đo</div>
+                  <p>
+                    - <strong>Nhiễu cơ (Muscle tremor):</strong> Bệnh nhân lạnh/lắng lo -> Đắp chăn, giải thích, thả lỏng cơ.<br>
+                    - <strong>Nhiễu điện lưới (60Hz AC):</strong> Đường đẳng điện dày sọc -> Bật nút Filter 50/60Hz, kiểm tra dây tiếp địa.<br>
+                    - <strong>Đường đẳng điện dao động (Wandering baseline):</strong> Điện cực lỏng/da bẩn -> Lau cồn khô, bôi gel tiếp xúc.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- CHƯƠNG 3 -->
+          <section id="chuong-3" style="margin-top: 2.5rem;">
+            <h2 class="para-section-title">Chương 3: Chu Chuẩn Tim & Các Thành Phần Trên ECG</h2>
+            <div class="para-card">
+              <p>Mỗi nhịp tim tương ứng với một chu kỳ hoạt động điện trải qua 5 sóng và khoảng dẫn truyền cơ bản:</p>
+              <ul>
+                <li><strong>Sóng P:</strong> Quá trình khử cực 2 tâm nhĩ (Nút xoang → Nhĩ phải → Nhĩ trái).</li>
+                <li><strong>Khoảng PR (hoặc PQ):</strong> Thời gian dẫn truyền xung điện từ nhĩ qua nút nhĩ-thất xuống bó His.</li>
+                <li><strong>Phức bộ QRS:</strong> Quá trình khử cực 2 tâm thất (Vách liên thất → Thành tự do 2 thất).</li>
+                <li><strong>Đoạn ST:</strong> Giai đoạn tâm thất tái cực sớm (bắt đầu từ điểm J).</li>
+                <li><strong>Sóng T:</strong> Giai đoạn tâm thất tái cực muộn.</li>
+                <li><strong>Khoảng QT:</strong> Toàn bộ thời gian khử cực và tái cực tâm thất (QTc hiệu chỉnh theo tần số tim).</li>
+                <li><strong>Sóng U:</strong> Sóng tái cực cơ nhú/mạng Purkinje (nổi bật trong hạ Kali máu).</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- CHƯƠNG 4 -->
+          <section id="chuong-4" style="margin-top: 2.5rem;">
+            <h2 class="para-section-title">Chương 4: Quy Trình Đọc ECG Hệ Thống 10 Bước</h2>
+            
+            <ol class="para-step-list">
+              <li>
+                <div class="para-card">
+                  <h3 class="para-card-title">Bước 1: Tần Số Tim (Heart Rate)</h3>
+                  <p>Lấy <strong>300 / số ô lớn giữa 2 sóng R</strong> (nếu nhịp đều) hoặc lấy <strong>1500 / số ô nhỏ</strong>. Nếu nhịp không đều (như rung nhĩ), đếm số QRS trong 6 giây (30 ô lớn) rồi nhân 10. Bình thường: 60 - 100 bpm.</p>
+                </div>
+              </li>
+
+              <li>
+                <div class="para-card">
+                  <h3 class="para-card-title">Bước 2: Nhịp Tim & Tiêu Chuẩn Nhịp Xoang (Rhythm)</h3>
+                  <p>Xác định nhịp xoang chuẩn: 1) Có P đi trước mỗi QRS; 2) P dương ở DII, aVF, âm ở aVR; 3) Khoảng PP/RR đều đặn; 4) PR cố định.</p>
+                </div>
+              </li>
+
+              <li>
+                <div class="para-card">
+                  <h3 class="para-card-title">Bước 3: Trục Điện Tim (Axis & Góc Alpha)</h3>
+                  <p>Xác định theo chiều sóng QRS ở <strong>DI và aVF</strong>:</p>
+                  <table class="para-table">
+                    <thead>
+                      <tr><th>DI</th><th>aVF</th><th>Trục điện tim</th><th>Bối cảnh gợi ý</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>Dương (+)</td><td>Dương (+)</td><td>Trục Trung Gian (0° đến +90°)</td><td>Bình thường</td></tr>
+                      <tr><td>Dương (+)</td><td>Âm (-)</td><td>Trục Lệch Trái (0° đến -90°)</td><td>Dày thất trái, LAFB, NMCT cũ thành dưới</td></tr>
+                      <tr><td>Âm (-)</td><td>Dương (+)</td><td>Trục Lệch Phải (+90° đến +180°)</td><td>Dày thất phải, Tâm phế mạn, LPFB</td></tr>
+                      <tr><td>Âm (-)</td><td>Âm (-)</td><td>Trục Vô Định (Tây Bắc)</td><td>Nhịp nhanh thất (VT), khí phế thũng</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </li>
+
+              <li>
+                <div class="para-card">
+                  <h3 class="para-card-title">Bước 4: Khảo Sát Sóng P (P Wave)</h3>
+                  <p>Bình thường: Rộng &lt; 0.12s, cao &lt; 2.5mm.<br>
+                  - <strong>P phế (P pulmonale):</strong> P cao nhọn &ge; 2.5mm ở DII/III/aVF (Dày nhĩ phải - COPD).<br>
+                  - <strong>P hai lá (P mitrale):</strong> P rộng &ge; 0.12s có 2 đỉnh ở DII, P âm sâu ở V1 (Dày nhĩ trái - Hẹp van 2 lá).</p>
+                </div>
+              </li>
+
+              <li>
+                <div class="para-card">
+                  <h3 class="para-card-title">Bước 5: Khoảng PR / PQ (AV Conduction)</h3>
+                  <p>Bình thường: 0.12s - 0.20s (3 - 5 ô nhỏ).<br>
+                  - <strong>PR &gt; 0.20s:</strong> Block AV độ I.<br>
+                  - <strong>PR &lt; 0.12s:</strong> Hội chứng WPW (kèm sóng Delta) hoặc hội chứng LGL.</p>
+                </div>
+              </li>
+
+              <li>
+                <div class="para-card">
+                  <h3 class="para-card-title">Bước 6: Phức Bộ QRS & Dày Thất (QRS Complex)</h3>
+                  <p>Bình thường: 0.06s - 0.10s. QRS rộng &ge; 0.12s là Block nhánh (RBBB/LBBB) hoặc nhịp thất.<br>
+                  - <strong>Chỉ số Sokolow-Lyon Dày Thất Trái:</strong> SV1 + RV5 (hoặc RV6) &ge; 35 mm.<br>
+                  - <strong>Sóng Q hoại tử:</strong> Q rộng &ge; 0.04s, sâu &ge; 1/4 sóng R chỉ điểm Nhồi máu cơ tim cũ.</p>
+                </div>
+              </li>
+
+              <li>
+                <div class="para-card">
+                  <h3 class="para-card-title">Bước 7: Đoạn ST (Ischemia / Injury)</h3>
+                  <p>Bình thường nằm trùng đường đẳng điện.<br>
+                  - <strong>ST chênh lên vòm:</strong> STEMI cấp (Nhồi máu cơ tim chênh lên).<br>
+                  - <strong>ST chênh lên lõm lan tỏa:</strong> Viêm màng ngoài tim cấp (kèm PR chênh xuống).<br>
+                  - <strong>ST chênh xuống nằm ngang/dốc xuống:</strong> NSTEMI / Thiếu máu cơ tim dưới nội mạc.</p>
+                </div>
+              </li>
+
+              <li>
+                <div class="para-card">
+                  <h3 class="para-card-title">Bước 8: Sóng T (Repolarization)</h3>
+                  <p>Bình thường dương ở hầu hết các chuyển đạo (trừ aVR).<br>
+                  - <strong>T cao nhọn đối xứng:</strong> Tăng Kali máu nhẹ/vừa.<br>
+                  - <strong>T âm sâu cân đối:</strong> Thiếu máu cơ tim cục bộ (Hội chứng Wellens ở V2-V3).</p>
+                </div>
+              </li>
+
+              <li>
+                <div class="para-card">
+                  <h3 class="para-card-title">Bước 9: Khoảng QT / QTc & Sóng U</h3>
+                  <p><strong>QTc Bazett = QT / &radic;(RR):</strong> Bình thường &le; 440ms (nam), &le; 460ms (nữ). QTc kéo dài có nguy cơ cao gây <strong>Xoắn đỉnh (Torsades de pointes)</strong>.<br>
+                  - <strong>Sóng U dương cao (&gt;T) ở V2-V4:</strong> Dấu hiệu đặc trưng của <strong>Hạ Kali máu nặng</strong>.</p>
+                </div>
+              </li>
+
+              <li>
+                <div class="para-card">
+                  <h3 class="para-card-title">Bước 10: Tổng Hợp Chẩn Đoán & Thái Độ Xử Trí</h3>
+                  <p>Kết hợp 9 bước trên với bệnh cảnh lâm sàng (đau ngực, sốc, khó thở) để đưa ra chẩn đoán xác định và chỉ định can thiệp (PCI cấp cứu, sốc điện, thuốc chống loạn nhịp hoặc lọc máu).</p>
+                </div>
+              </li>
+            </ol>
+          </section>
+
+          <!-- TÀI LIỆU LIÊN QUAN -->
+          <section class="related-links-section" style="margin-top: 3rem;">
+            <h4 class="related-links-title">
+              <i class="fas fa-link"></i> Thực hành & Công cụ liên quan
+            </h4>
+            <div class="related-links-grid">
+              <a href="../../Công cụ/Cấp cứu & hồi sức/ECG_Studio.html" class="related-link-card">
+                <div class="related-card-content">
+                  <span class="related-card-badge cong-cu">Công cụ Cấp cứu</span>
+                  <h5>ECG Pro Studio 12 Chuyển Đạo</h5>
+                  <p>Trình sinh điện tâm đồ 12 chuyển đạo tương tác, xếp chồng 35+ tổn thương và thước đo Calipers ảo.</p>
+                </div>
+                <i class="fas fa-chevron-right related-card-arrow"></i>
+              </a>
+              <a href="Doc_KQCLS.html" class="related-link-card">
+                <div class="related-card-content">
+                  <span class="related-card-badge ky-nang">Cận Lâm Sàng</span>
+                  <h5>Hub Đọc Kết Quả Cận Lâm Sàng</h5>
+                  <p>Hệ thống bài đọc kết quả xét nghiệm máu, khí máu động mạch ABG, X-quang và siêu âm.</p>
+                </div>
+                <i class="fas fa-chevron-right related-card-arrow"></i>
+              </a>
+            </div>
+          </section>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+</body>
+
+</html>

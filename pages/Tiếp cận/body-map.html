@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tra cứu triệu chứng lâm sàng tương tác qua Bản Đồ Giải Phẫu Cơ Thể Người (Interactive Body Map) – CliniPortal">
+  <title>Bản Đồ Giải Phẫu Tương Tác – CliniPortal</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core CliniPortal -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/components/header.css">
+  <link rel="stylesheet" href="../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../css/components/footer.css">
+  <link rel="stylesheet" href="../../css/components/body-map.css">
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li><a href="../../index.html" class="nav-item" title="Trang chủ"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+          <li><a href="../Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item" title="S.lý - S.lý bệnh"><span class="nav-icon">🧬</span><span class="nav-text">S.lý - S.lý bệnh</span></a></li>
+          <li><a href="../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng"><span class="nav-icon">🩺</span><span class="nav-text">Kỹ năng</span></a></li>
+          <li><a href="tiep-can.html" class="nav-item active" aria-current="page" title="Tiếp cận"><span class="nav-icon">🤒</span><span class="nav-text">Tiếp cận</span></a></li>
+          <li><a href="../Công cụ/cong-cu.html" class="nav-item" title="Công cụ"><span class="nav-icon">⚙️</span><span class="nav-text">Công cụ</span></a></li>
+          <li><a href="../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý"><span class="nav-icon">💊</span><span class="nav-text">Dược lý</span></a></li>
+          <li><a href="../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ"><span class="nav-icon">📄</span><span class="nav-text">Y học chứng cứ</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-wrapper" id="mainContent">
+      <div class="body-map-wrapper">
+
+        <div class="body-map-header">
+          <h1><i class="fa-solid fa-child-reaching"></i> BẢN ĐỒ GIẢI PHẪU TƯƠNG TÁC</h1>
+          <p>Click chọn vùng vị trí tổn thương trên cơ thể để tra cứu triệu chứng và mở lưu đồ tiếp cận lâm sàng tương ứng.</p>
+        </div>
+
+        <div class="body-map-layout">
+
+          <!-- Left SVG Silhouette Card -->
+          <div class="body-svg-card">
+            <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;">
+              <i class="fa-solid fa-hand-pointer"></i> Nhấp vào vùng vị trí đau / tổn thương
+            </div>
+
+            <svg viewBox="0 0 200 450" class="body-svg-container">
+              <!-- Head & Neck -->
+              <path class="body-region active" data-region="head-neck" d="M80,30 C80,10 120,10 120,30 C120,50 110,65 110,75 L90,75 C90,65 80,50 80,30 Z" />
+              
+              <!-- Chest / Heart & Lungs -->
+              <path class="body-region" data-region="chest" d="M65,80 L135,80 C140,110 135,160 125,165 L75,165 C65,160 60,110 65,80 Z" />
+
+              <!-- Abdomen & Gastrointestinal -->
+              <path class="body-region" data-region="abdomen" d="M75,168 L125,168 C130,195 130,225 125,235 L75,235 C70,225 70,195 75,168 Z" />
+
+              <!-- Pelvis & Urinary -->
+              <path class="body-region" data-region="pelvis-urinary" d="M75,238 L125,238 C120,260 110,270 100,275 C90,270 80,260 75,238 Z" />
+
+              <!-- Left Arm -->
+              <path class="body-region" data-region="extremities" d="M60,82 L45,150 L35,220 L25,225 L40,150 L55,82 Z" />
+
+              <!-- Right Arm -->
+              <path class="body-region" data-region="extremities" d="M140,82 L155,150 L165,220 L175,225 L160,150 L145,82 Z" />
+
+              <!-- Legs -->
+              <path class="body-region" data-region="extremities" d="M78,276 L95,276 L92,360 L90,430 L75,430 L80,360 Z" />
+              <path class="body-region" data-region="extremities" d="M105,276 L122,276 L120,360 L125,430 L110,430 L108,360 Z" />
+
+              <!-- Region Labels -->
+              <text x="100" y="45" class="region-label" text-anchor="middle">Đầu - Mặt</text>
+              <text x="100" y="125" class="region-label" text-anchor="middle">Lồng Ngực</text>
+              <text x="100" y="200" class="region-label" text-anchor="middle">Vùng Bụng</text>
+              <text x="100" y="255" class="region-label" text-anchor="middle">Hạ Vị</text>
+              <text x="40" y="160" class="region-label" text-anchor="middle">Tay</text>
+              <text x="100" y="350" class="region-label" text-anchor="middle">Chân</text>
+            </svg>
+          </div>
+
+          <!-- Right Symptoms & Approaches Detail Panel -->
+          <div class="symptoms-panel-card" id="symptomsPanelCard">
+            <!-- Dynamic Content Rendered by JS -->
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../components/footer.html"></div>
+
+  <!-- Scripts -->
+  <script src="../../js/main.js" defer></script>
+  <script src="../../components/header.js" defer></script>
+  <script src="../../components/footer.js" defer></script>
+  <script src="../../js/ma-tran-trieu-chung-data.js" defer></script>
+  <script src="../../js/body-map.js" defer></script>
+</body>
+</html>

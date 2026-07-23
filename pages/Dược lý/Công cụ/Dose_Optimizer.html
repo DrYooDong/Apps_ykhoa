@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Trình Hướng Dẫn Tối Ưu Liều Thuốc Cá Thể Hóa 3 Bước — Hiệu chỉnh liều theo chức năng Thận & Gan - CliniPortal">
+  <title>Tối Ưu Liều Thuốc Cá Thể Hóa – CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../css/components/pharmacology-tools.css">
+  <link rel="stylesheet" href="../../../css/components/pharmacology-global.css">
+
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+  <script src="../../../js/drug-passport.js" defer></script>
+  <script src="../../../js/emergency-dosing.js" defer></script>
+  <script src="../../../js/cross-links-pharma.js" defer></script>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../duoc-ly.html" class="nav-item active" title="Dược lý">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-wrapper" id="mainContent">
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a></li>
+          <li class="breadcrumb-item"><a href="../duoc-ly.html" class="breadcrumb-link">Dược lý</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Tối Ưu Liều Cá Thể Hóa</li>
+        </ol>
+      </nav>
+
+      <section class="hero-dashboard" aria-labelledby="page-title">
+        <div class="hero-intro">
+          <h1 id="page-title">🧙‍♂️ TỐI ƯU LIỀU THUỐC CÁ THỂ HÓA (DOSE OPTIMIZER WIZARD)</h1>
+          <p>Trình hướng dẫn 3 bước giúp tính toán eGFR/Cockcroft-Gault, đánh giá chỉ số đào thải và xuất khuyến cáo hiệu chỉnh liều lượng thuốc chính xác theo suy thận & suy gan.</p>
+        </div>
+      </section>
+
+      <!-- WIZARD STEPPER -->
+      <div class="pharma-tool-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 1px solid var(--color-divider); padding-bottom: 0.75rem;">
+          <h3 style="margin: 0; font-size: var(--text-md); font-weight: 700; color: var(--color-primary);">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Quy Trình Tối Ưu 3 Bước
+          </h3>
+          <span id="wizard-step-badge" class="pharma-tool-badge">Bước 1 / 3: Nhập thông số bệnh nhân</span>
+        </div>
+
+        <form id="dose-optimizer-form">
+          <!-- STEP 1: PATIENT PROFILE -->
+          <div id="wizard-step-1">
+            <h4 style="font-size: var(--text-sm); font-weight: 700; margin-bottom: 1rem;">1️⃣ Nhập Thông Số Lâm Sàng Bệnh Nhân</h4>
+            <div class="calibrator-inputs">
+              <div class="input-field-group">
+                <label>Tuổi (năm)</label>
+                <input type="number" id="opt-age" value="68" min="18" max="120" required>
+              </div>
+              <div class="input-field-group">
+                <label>Giới tính</label>
+                <select id="opt-gender">
+                  <option value="male">Nam</option>
+                  <option value="female">Nữ</option>
+                </select>
+              </div>
+              <div class="input-field-group">
+                <label>Cân nặng (kg)</label>
+                <input type="number" id="opt-weight" value="60" min="30" max="200" required>
+              </div>
+              <div class="input-field-group">
+                <label>Creatinine Huyết Thanh (mg/dL)</label>
+                <input type="number" step="0.1" id="opt-scr" value="1.8" min="0.3" max="15.0" required>
+              </div>
+              <div class="input-field-group">
+                <label>Chức năng Gan (Child-Pugh)</label>
+                <select id="opt-liver">
+                  <option value="A">Child-Pugh A (Bình thường / Nhẹ)</option>
+                  <option value="B">Child-Pugh B (Suy gan vừa)</option>
+                  <option value="C">Child-Pugh C (Suy gan nặng)</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="background: var(--color-surface-offset); padding: 0.85rem 1rem; border-radius: var(--radius-md); font-size: var(--text-xs); color: var(--color-text-muted); margin-bottom: 1.25rem;">
+              💡 <strong>Kết quả tính nhanh:</strong> Độ thanh thải Creatinine (Cockcroft-Gault) dự kiến: <strong id="calc-crcl-text" style="color: var(--color-primary);">-- ml/phút</strong>.
+            </div>
+
+            <button type="button" id="btn-to-step-2" class="passport-save-btn" style="width: auto; padding: 0.6rem 2rem;">
+              Tiếp Tục: Chọn Thuốc Kê Đơn <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+
+          <!-- STEP 2: SELECT DRUGS -->
+          <div id="wizard-step-2" style="display: none;">
+            <h4 style="font-size: var(--text-sm); font-weight: 700; margin-bottom: 0.5rem;">2️⃣ Chọn Các Thuốc Cần Hiệu Chỉnh Liều</h4>
+            <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin-bottom: 1rem;">
+              Chọn một hoặc nhiều thuốc có nguy cơ tích lũy độc tính khi suy thận/gan.
+            </p>
+
+            <div class="drug-buttons-grid" style="margin-bottom: 1.5rem;">
+              <button type="button" class="drug-select-btn opt-drug-btn" data-drug="enoxaparin">Enoxaparin (Lovenox)</button>
+              <button type="button" class="drug-select-btn opt-drug-btn" data-drug="metformin">Metformin (Glucophage)</button>
+              <button type="button" class="drug-select-btn opt-drug-btn" data-drug="vancomycin">Vancomycin</button>
+              <button type="button" class="drug-select-btn opt-drug-btn" data-drug="digoxin">Digoxin</button>
+              <button type="button" class="drug-select-btn opt-drug-btn" data-drug="colchicine">Colchicine</button>
+              <button type="button" class="drug-select-btn opt-drug-btn" data-drug="rivaroxaban">Rivaroxaban (Xarelto)</button>
+              <button type="button" class="drug-select-btn opt-drug-btn" data-drug="allopurinol">Allopurinol</button>
+              <button type="button" class="drug-select-btn opt-drug-btn" data-drug="gabapentin">Gabapentin</button>
+            </div>
+
+            <div style="display: flex; gap: 0.75rem;">
+              <button type="button" id="btn-back-to-1" class="em-tag-btn" style="padding: 0.6rem 1.25rem;">
+                <i class="fa-solid fa-arrow-left"></i> Quay lại
+              </button>
+              <button type="button" id="btn-to-step-3" class="passport-save-btn" style="width: auto; padding: 0.6rem 2rem;">
+                Xuất Báo Cáo Khuyến Cáo Liều <i class="fa-solid fa-calculator"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 3: RESULTS REPORT -->
+          <div id="wizard-step-3" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+              <h4 style="font-size: var(--text-sm); font-weight: 700; color: var(--color-success); margin: 0;">
+                3️⃣ Báo Cáo Hiệu Chỉnh Liều Cá Thể Hóa
+              </h4>
+              <button type="button" onclick="window.print()" class="em-tag-btn">
+                <i class="fa-solid fa-print"></i> In Báo Cáo
+              </button>
+            </div>
+
+            <div id="opt-results-output" class="dose-result-grid">
+              <!-- Rendered by JS -->
+            </div>
+
+            <button type="button" id="btn-restart" class="em-tag-btn" style="margin-top: 1.5rem;">
+              🔄 Thực Hiện Tối Ưu Bệnh Nhân Khác
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <footer class="global-footer">
+    <div class="footer-copyright"><p>CliniPortal © 2026. Công cụ hỗ trợ ra quyết định lâm sàng cá thể hóa.</p></div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let selectedOptDrugs = [];
+
+      const DRUG_RECS = {
+        enoxaparin: {
+          name: 'Enoxaparin (LMWH)',
+          calc: (crcl) => {
+            if (crcl < 30) return { status: 'status-reduced', text: 'Giảm 50% liều: 1 mg/kg x 1 lần/ngày (thay vì 2 lần/ngày).', note: 'Thận trọng theo dõi chỉ số Anti-Xa.' };
+            return { status: 'status-normal', text: 'Dùng liều chuẩn: 1 mg/kg x 2 lần/ngày.', note: 'Không cần điều chỉnh liều.' };
+          }
+        },
+        metformin: {
+          name: 'Metformin',
+          calc: (crcl) => {
+            if (crcl < 30) return { status: 'status-contraindicated', text: 'CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI (eGFR < 30 ml/min).', note: 'Nguy cơ cao gây Toan Chuyển Hóa Lactic đe dọa tính mạng.' };
+            if (crcl < 45) return { status: 'status-reduced', text: 'Giảm liều tối đa 1000 mg/ngày.', note: 'Không khởi trị mới khi eGFR 30-45.' };
+            return { status: 'status-normal', text: 'Liều chuẩn 1500–2000 mg/ngày.', note: 'Theo dõi chức năng thận định kỳ.' };
+          }
+        },
+        vancomycin: {
+          name: 'Vancomycin',
+          calc: (crcl) => {
+            if (crcl < 30) return { status: 'status-reduced', text: 'Dùng liều nạp 20–35 mg/kg, sau đó chỉnh liều theo nồng độ đáy (Trough level).', note: 'Mục tiêu nồng độ đáy: 15–20 mcg/ml.' };
+            return { status: 'status-normal', text: 'Liều chuẩn 15–20 mg/kg mỗi 8–12h.', note: 'Giám sát độc tính trên thận.' };
+          }
+        },
+        digoxin: {
+          name: 'Digoxin',
+          calc: (crcl) => {
+            if (crcl < 30) return { status: 'status-reduced', text: 'Giảm 50% liều duy trì: 0.0625 mg cách ngày.', note: 'Đo nồng độ Digoxin máu sau 7 ngày.' };
+            return { status: 'status-normal', text: 'Liều 0.125–0.25 mg/ngày.', note: 'Duy trì Kali máu > 4.0 mEq/L.' };
+          }
+        },
+        colchicine: {
+          name: 'Colchicine',
+          calc: (crcl) => {
+            if (crcl < 30) return { status: 'status-reduced', text: 'Liều đợt gút cấp: 1.0 mg duy nhất, không lặp lại trong 2 tuần.', note: 'Tránh dùng chung với Verapamil/CYP3A4.' };
+            return { status: 'status-normal', text: 'Liều đợt gút: 1.0 mg, sau 1h uống thêm 0.5 mg.', note: 'Không dùng quá 1.5mg/đợt.' };
+          }
+        },
+        rivaroxaban: {
+          name: 'Rivaroxaban (Xarelto)',
+          calc: (crcl) => {
+            if (crcl < 15) return { status: 'status-contraindicated', text: 'Chống chỉ định khi CrCl < 15 ml/min.', note: 'Nguy cơ tích lũy xuất huyết nặng.' };
+            if (crcl < 50) return { status: 'status-reduced', text: 'Giảm liều Rung nhĩ xuống 15 mg x 1 lần/ngày.', note: 'Uống cùng bữa ăn tối.' };
+            return { status: 'status-normal', text: 'Liều chuẩn Rung nhĩ: 20 mg x 1 lần/ngày.', note: 'Không cần chỉnh liều.' };
+          }
+        },
+        allopurinol: {
+          name: 'Allopurinol',
+          calc: (crcl) => {
+            if (crcl < 30) return { status: 'status-reduced', text: 'Khởi đầu liều thấp 50–100 mg/ngày.', note: 'Tránh hội chứng dị ứng Stevens-Johnson.' };
+            return { status: 'status-normal', text: 'Khởi đầu 100 mg/ngày, dò liều đến Acid Uric < 6 mg/dL.', note: 'Uống nhiều nước.' };
+          }
+        },
+        gabapentin: {
+          name: 'Gabapentin',
+          calc: (crcl) => {
+            if (crcl < 30) return { status: 'status-reduced', text: 'Giảm liều: 300 mg x 1 lần/ngày hoặc cách ngày.', note: 'Đào thải 100% qua thận.' };
+            return { status: 'status-normal', text: 'Liều 300–900 mg x 3 lần/ngày.', note: 'Chỉnh liều tăng dần.' };
+          }
+        }
+      };
+
+      function calculateCrCl() {
+        const age = parseFloat(document.getElementById('opt-age').value) || 60;
+        const gender = document.getElementById('opt-gender').value;
+        const weight = parseFloat(document.getElementById('opt-weight').value) || 60;
+        const scr = parseFloat(document.getElementById('opt-scr').value) || 1.0;
+
+        let crcl = ((140 - age) * weight) / (72 * scr);
+        if (gender === 'female') crcl *= 0.85;
+
+        crcl = Math.round(crcl);
+        document.getElementById('calc-crcl-text').textContent = `${crcl} ml/phút`;
+        return crcl;
+      }
+
+      document.querySelectorAll('#opt-age, #opt-gender, #opt-weight, #opt-scr').forEach(el => {
+        el.addEventListener('input', calculateCrCl);
+        el.addEventListener('change', calculateCrCl);
+      });
+      calculateCrCl();
+
+      document.querySelectorAll('.opt-drug-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const key = btn.getAttribute('data-drug');
+          if (selectedOptDrugs.includes(key)) {
+            selectedOptDrugs = selectedOptDrugs.filter(k => k !== key);
+            btn.classList.remove('selected');
+          } else {
+            selectedOptDrugs.push(key);
+            btn.classList.add('selected');
+          }
+        });
+      });
+
+      document.getElementById('btn-to-step-2').onclick = () => {
+        document.getElementById('wizard-step-1').style.display = 'none';
+        document.getElementById('wizard-step-2').style.display = 'block';
+        document.getElementById('wizard-step-badge').textContent = 'Bước 2 / 3: Chọn thuốc kê đơn';
+      };
+
+      document.getElementById('btn-back-to-1').onclick = () => {
+        document.getElementById('wizard-step-2').style.display = 'none';
+        document.getElementById('wizard-step-1').style.display = 'block';
+        document.getElementById('wizard-step-badge').textContent = 'Bước 1 / 3: Nhập thông số bệnh nhân';
+      };
+
+      document.getElementById('btn-to-step-3').onclick = () => {
+        const crcl = calculateCrCl();
+        const output = document.getElementById('opt-results-output');
+
+        if (selectedOptDrugs.length === 0) {
+          alert('Vui lòng chọn ít nhất 1 thuốc ở Bước 2 để xuất báo cáo.');
+          return;
+        }
+
+        output.innerHTML = selectedOptDrugs.map(key => {
+          const item = DRUG_RECS[key];
+          const res = item.calc(crcl);
+          return `
+            <div class="dose-card">
+              <div class="dose-card-header">
+                <span class="dose-drug-name">💊 ${item.name}</span>
+                <span class="dose-status-badge ${res.status}">eGFR / CrCl: ${crcl} ml/min</span>
+              </div>
+              <div class="dose-value-text">${res.text}</div>
+              <div class="dose-note-text">💡 ${res.note}</div>
+            </div>
+          `;
+        }).join('');
+
+        document.getElementById('wizard-step-2').style.display = 'none';
+        document.getElementById('wizard-step-3').style.display = 'block';
+        document.getElementById('wizard-step-badge').textContent = 'Bước 3 / 3: Khuyến cáo hiệu chỉnh liều';
+      };
+
+      document.getElementById('btn-restart').onclick = () => {
+        selectedOptDrugs = [];
+        document.querySelectorAll('.opt-drug-btn').forEach(b => b.classList.remove('selected'));
+        document.getElementById('wizard-step-3').style.display = 'none';
+        document.getElementById('wizard-step-1').style.display = 'block';
+        document.getElementById('wizard-step-badge').textContent = 'Bước 1 / 3: Nhập thông số bệnh nhân';
+      };
+    });
+  </script>
+</body>
+</html>

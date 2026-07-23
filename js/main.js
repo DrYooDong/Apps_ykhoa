@@ -305,8 +305,77 @@
             console.error('Lỗi khi nạp dữ liệu mẫu:', err);
           }
         }
+      // ----------------------------------------------------
+      // PERSONAL NOTES & TEXT ANNOTATION ENGINE (#10)
+      // ----------------------------------------------------
+      const notePopupBtn = document.createElement('button');
+      notePopupBtn.className = 'personal-note-popup-btn';
+      notePopupBtn.innerHTML = '<i class="fa-solid fa-highlighter"></i> Ghi chú';
+      notePopupBtn.style.cssText = `
+        position: absolute;
+        display: none;
+        z-index: 10000;
+        background: #0284c7;
+        color: white;
+        border: none;
+        border-radius: 100px;
+        padding: 6px 14px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(2, 132, 199, 0.4);
+        transition: transform 0.2s;
+      `;
+      document.body.appendChild(notePopupBtn);
+
+      let currentSelectedText = '';
+
+      document.addEventListener('mouseup', (e) => {
+        if (e.target.closest('.personal-note-popup-btn')) return;
+
+        const selection = window.getSelection();
+        const selectedStr = selection ? selection.toString().trim() : '';
+
+        if (selectedStr.length >= 5) {
+          currentSelectedText = selectedStr;
+          const range = selection.getRangeAt(0);
+          const rect = range.getBoundingClientRect();
+
+          notePopupBtn.style.top = `${rect.top + window.scrollY - 40}px`;
+          notePopupBtn.style.left = `${rect.left + window.scrollX + (rect.width / 2) - 40}px`;
+          notePopupBtn.style.display = 'block';
+        } else {
+          notePopupBtn.style.display = 'none';
+        }
+      });
+
+      notePopupBtn.addEventListener('click', () => {
+        if (!currentSelectedText) return;
+
+        const userNote = prompt(`Ghi chú cho đoạn văn bản:\n"${currentSelectedText.slice(0, 60)}..."\n\nNhập nội dung ghi chú cá nhân của bạn:`);
+        if (userNote) {
+          try {
+            const notes = JSON.parse(localStorage.getItem('cliniportal_personal_notes') || '[]');
+            notes.unshift({
+              id: Date.now(),
+              quote: currentSelectedText,
+              note: userNote,
+              url: window.location.href,
+              pageTitle: document.title,
+              timestamp: new Date().toLocaleString('vi-VN')
+            });
+            localStorage.setItem('cliniportal_personal_notes', JSON.stringify(notes));
+            alert('✅ Đã lưu ghi chú cá nhân thành công!');
+          } catch(err) {
+            console.error('Lỗi khi lưu ghi chú:', err);
+          }
+        }
+
+        notePopupBtn.style.display = 'none';
+        window.getSelection()?.removeAllRanges();
       });
     })();
+
 
 
 
