@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CliniPortal - EBM Quiz Engine & Spaced Repetition (SM-2): Ôn luyện trắc nghiệm và lật thẻ ghi nhớ 3D Thống Kê Y Học">
+  <title>EBM Quiz & Spaced Repetition – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+
+  <style>
+    :root {
+      --ebm-primary: #0284c7;
+      --ebm-primary-dark: #0369a1;
+      --ebm-purple: #7c3aed;
+      --ebm-success: #10b981;
+      --ebm-danger: #ef4444;
+      --ebm-surface: var(--color-surface, #ffffff);
+      --ebm-surface-2: var(--color-surface-2, #f8fafc);
+      --ebm-border: var(--color-divider, #e2e8f0);
+      --ebm-text: var(--color-text, #0f172a);
+      --ebm-text-muted: var(--color-text-muted, #475569);
+      --ebm-radius: 18px;
+    }
+
+    .quiz-hero {
+      background: linear-gradient(135deg, #2e1065 0%, #6b21a8 50%, #0369a1 100%);
+      color: #ffffff;
+      padding: 2.5rem 2rem;
+      border-radius: 24px;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(107, 33, 168, 0.2);
+    }
+
+    .quiz-hero::after {
+      content: '🧠';
+      position: absolute;
+      right: 1rem;
+      bottom: -1rem;
+      font-size: 10rem;
+      opacity: 0.12;
+      pointer-events: none;
+      transform: rotate(10deg);
+    }
+
+    .quiz-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #e9d5ff;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      backdrop-filter: blur(5px);
+    }
+
+    .quiz-hero h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    /* MODE SWITCHER */
+    .mode-switcher {
+      display: flex;
+      gap: 0.5rem;
+      background: var(--ebm-surface);
+      border: 1px solid var(--ebm-border);
+      padding: 0.35rem;
+      border-radius: 16px;
+      margin-bottom: 2rem;
+      max-width: 420px;
+    }
+
+    .mode-btn {
+      flex: 1;
+      padding: 0.65rem 1rem;
+      border: none;
+      background: transparent;
+      color: var(--ebm-text-muted);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      border-radius: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 200ms;
+    }
+
+    .mode-btn.active {
+      background: var(--ebm-purple);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+    }
+
+    /* QUIZ CONTAINER CARDS */
+    .quiz-card {
+      background: var(--ebm-surface);
+      border: 1px solid var(--ebm-border);
+      border-radius: var(--ebm-radius);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 2rem;
+    }
+
+    .quiz-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .quiz-lesson-tag {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--ebm-purple);
+      background: #faf5ff;
+      border: 1px solid #e9d5ff;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+    }
+
+    .quiz-score-badge {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: var(--ebm-primary);
+    }
+
+    .quiz-question-text {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--ebm-text);
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .quiz-opt-btn {
+      width: 100%;
+      text-align: left;
+      padding: 1rem 1.25rem;
+      border: 1.5px solid var(--ebm-border);
+      border-radius: 12px;
+      background: var(--ebm-surface-2);
+      color: var(--ebm-text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      transition: all 200ms;
+    }
+
+    .quiz-opt-btn:hover:not(:disabled) {
+      border-color: var(--ebm-purple);
+      background: var(--ebm-surface);
+      transform: translateX(4px);
+    }
+
+    .quiz-opt-btn .opt-letter {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--ebm-surface);
+      border: 1px solid var(--ebm-border);
+      color: var(--ebm-text-muted);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .quiz-opt-btn.correct {
+      background: #dcfce7;
+      border-color: var(--ebm-success);
+      color: #065f46;
+    }
+
+    .quiz-opt-btn.correct .opt-letter {
+      background: var(--ebm-success);
+      color: #fff;
+      border-color: var(--ebm-success);
+    }
+
+    .quiz-opt-btn.incorrect {
+      background: #fee2e2;
+      border-color: var(--ebm-danger);
+      color: #991b1b;
+    }
+
+    .quiz-opt-btn.incorrect .opt-letter {
+      background: var(--ebm-danger);
+      color: #fff;
+      border-color: var(--ebm-danger);
+    }
+
+    .quiz-explanation-box {
+      background: var(--ebm-surface-2);
+      border: 1.5px solid var(--ebm-border);
+      border-radius: 14px;
+      padding: 1.25rem;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    .btn-next-q {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.5rem;
+      background: var(--ebm-purple);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: background 200ms;
+    }
+
+    .btn-next-q:hover {
+      background: #5b21b6;
+    }
+
+    /* PROGRESS BAR */
+    .quiz-progress-track {
+      height: 8px;
+      background: var(--ebm-border);
+      border-radius: 99px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+
+    .quiz-progress-fill {
+      height: 100%;
+      background: var(--ebm-purple);
+      width: 0%;
+      transition: width 300ms ease;
+    }
+
+    /* 3D FLASHCARD STYLING */
+    .flashcard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+      gap: 1.5rem;
+    }
+
+    .fc-card {
+      height: 240px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .fc-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+      border-radius: 18px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .fc-card.flipped .fc-inner {
+      transform: rotateY(180deg);
+    }
+
+    .fc-front, .fc-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 18px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid var(--ebm-border);
+    }
+
+    .fc-front {
+      background: var(--ebm-surface);
+      color: var(--ebm-text);
+      text-align: left;
+    }
+
+    .fc-back {
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+      color: var(--ebm-text);
+      transform: rotateY(180deg);
+      text-align: left;
+      border-color: #d8b4fe;
+    }
+
+    .fc-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--ebm-purple);
+      text-transform: uppercase;
+    }
+
+    .fc-question {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .fc-flip-hint {
+      font-size: 0.72rem;
+      color: var(--ebm-text-muted);
+      text-align: center;
+    }
+
+    .fc-answer-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: #6b21a8;
+      margin-bottom: 0.5rem;
+    }
+
+    .fc-explanation {
+      font-size: 0.82rem;
+      color: var(--ebm-text-muted);
+      line-height: 1.5;
+      flex: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li><a href="../../../index.html" class="nav-item" title="Trang chủ"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+          <li><a href="../../Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item" title="S.lý - S.lý bệnh"><span class="nav-icon">🧬</span><span class="nav-text">S.lý - S.lý bệnh</span></a></li>
+          <li><a href="../../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng"><span class="nav-icon">🩺</span><span class="nav-text">Kỹ năng</span></a></li>
+          <li><a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận"><span class="nav-icon">🤒</span><span class="nav-text">Tiếp cận</span></a></li>
+          <li><a href="../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ"><span class="nav-icon">⚙️</span><span class="nav-text">Công cụ</span></a></li>
+          <li><a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý"><span class="nav-icon">💊</span><span class="nav-text">Dược lý</span></a></li>
+          <li><a href="../yhcc.html" class="nav-item active" aria-current="page" title="Y học chứng cứ"><span class="nav-icon">📋</span><span class="nav-text">Y học chứng cứ</span></a></li>
+          <li><a href="../../Y học cổ truyền/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền"><span class="nav-icon">☯️</span><span class="nav-text">Y học cổ truyền</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="main-wrapper" id="mainContent">
+
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../../../index.html">🏠 Home</a></li>
+          <li class="breadcrumb-item"><a href="../yhcc.html">Y học chứng cứ</a></li>
+          <li class="breadcrumb-item"><a href="Thongkeyhoc.html">Thống kê y học</a></li>
+          <li class="breadcrumb-item active" aria-current="page">EBM Quiz & Spaced Repetition</li>
+        </ol>
+      </nav>
+
+      <!-- HERO BANNER -->
+      <section class="quiz-hero">
+        <div class="quiz-eyebrow"><i class="fa-solid fa-brain"></i> SPACED REPETITION ENGINE (SM-2)</div>
+        <h1>Ôn Luyện Quiz & Thẻ Flashcard Thống Kê Y Học</h1>
+        <p>Hệ thống trắc nghiệm tình huống lâm sàng 16+ câu bao phủ 4 bài thống kê y học tích hợp thuật toán SM-2 tự động tính toán thời gian lặp lại tối ưu để khắc phục đường cong quên kiến thức.</p>
+      </section>
+
+      <!-- MODE SWITCHER BUTTONS -->
+      <div class="mode-switcher" role="tablist">
+        <button class="mode-btn active" id="mode-btn-quiz" role="tab">
+          <i class="fa-solid fa-circle-question"></i> Chế Độ Quiz Trắc Nghiệm
+        </button>
+        <button class="mode-btn" id="mode-btn-flashcard" role="tab">
+          <i class="fa-solid fa-clone"></i> Thẻ Flashcard 3D
+        </button>
+      </div>
+
+      <!-- QUIZ PLAY CONTAINER -->
+      <div id="quiz-play-container">
+        <div class="quiz-card">
+          <div class="quiz-card-header">
+            <span class="quiz-lesson-tag" id="quiz-lesson-tag">Bài 1: Ý nghĩa thống kê</span>
+            <span class="quiz-score-badge" id="quiz-score-badge">Điểm: 0</span>
+          </div>
+
+          <div class="quiz-progress-track">
+            <div class="quiz-progress-fill" id="quiz-progress-bar-fill"></div>
+          </div>
+          <div style="font-size: 0.78rem; color: var(--ebm-text-muted); text-align: right; margin-top: -1rem; margin-bottom: 1rem;" id="quiz-progress-text">Câu 1 / 16</div>
+
+          <div class="quiz-question-text" id="quiz-question-text">
+            Đang tải câu hỏi...
+          </div>
+
+          <div class="quiz-options" id="quiz-options-container">
+            <!-- Rendered by JS -->
+          </div>
+
+          <div class="quiz-explanation-box" id="quiz-explanation-box">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- FLASHCARD CONTAINER -->
+      <div id="flashcard-play-container" style="display: none;">
+        <!-- Rendered by JS -->
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="global-footer">
+    <div class="footer-copyright">
+      <p>CliniPortal © 2026 · EBM Spaced Repetition Engine · Thuật toán SuperMemo 2 (SM-2)</p>
+    </div>
+  </footer>
+
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+  <!-- Scripts -->
+  <script src="../../../js/main.js" defer></script>
+  <script src="quiz.js" defer></script>
+</body>
+</html>

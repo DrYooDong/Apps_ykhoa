@@ -159,6 +159,46 @@
     .content-panel.active { display: flex; flex-direction: column; gap: 1.25rem; }
 
     /* ══════════════════════════
+    }
+    .detail-meta-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .detail-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--border-light);
+      margin-top: auto;
+    }
+    .btn-small {
+      padding: 0.4rem 0.85rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 900px) {
+      .detail-wrapper {
+        grid-template-columns: 1fr;
+        padding: 1.25rem;
+      }
+      .detail-sidebar {
+        border-left: none;
+        border-top: 1px solid var(--border-light);
+        padding-left: 0;
+        padding-top: 1.25rem;
+      }
+    }
+
+    /* ══════════════════════════
        CÓ GÌ MỚI (TOP)
     ══════════════════════════ */
     .updates-section {
@@ -641,16 +681,17 @@
       padding: 0;
     }
     .detail-wrapper {
-      padding: 1.25rem 2.5rem;
+      padding: 1.5rem 2rem;
       display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 1.5rem;
-      animation: expandRow 180ms ease-out forwards;
-      overflow: hidden;
+      grid-template-columns: 2.2fr 1fr;
+      gap: 1.75rem;
+      animation: expandRow 250ms ease-out forwards;
+      overflow: visible;
+      max-height: 4000px;
     }
     @keyframes expandRow {
       from { max-height: 0; opacity: 0; }
-      to { max-height: 500px; opacity: 1; }
+      to { max-height: 4000px; opacity: 1; }
     }
     .detail-main {
       display: flex;
@@ -702,12 +743,35 @@
     }
     .detail-actions {
       display: flex;
+      flex-wrap: wrap;
       gap: 0.5rem;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--border-light);
+      margin-top: auto;
     }
     .btn-small {
-      padding: 0.35rem 0.75rem;
-      font-size: 0.75rem;
-      border-radius: 6px;
+      padding: 0.4rem 0.85rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 900px) {
+      .detail-wrapper {
+        grid-template-columns: 1fr;
+        padding: 1.25rem;
+      }
+      .detail-sidebar {
+        border-left: none;
+        border-top: 1px solid var(--border-light);
+        padding-left: 0;
+        padding-top: 1.25rem;
+      }
     }
 
     /* ══════════════════════════

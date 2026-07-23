@@ -12,7 +12,6 @@
 | 2 | **Auscultation Trainer** | `pages/Kỹ năng/Lâm sàng/Nghe_Am_Thanh.html` + `js/auscultation-trainer.js` | ✅ Đã hoàn thành |
 | 3 | **OSCE Countdown Arena** | `pages/Kỹ năng/OSCE_Randomizer.html` + `js/osce-randomizer.js` | ✅ Đã hoàn thành |
 | 4 | **Skill Progress Tracker** | `js/skill-tracker.js` + dashboard `ky-nang.html` | ✅ Đã hoàn thành |
-| 5 | **Interactive Anatomy Explorer** | Interactive SVG Body Map trên `ky-nang.html` | ✅ Đã hoàn thành |
 | 6 | **Clinical Reasoning Engine** | `pages/Kỹ năng/Quản lý điều trị/Clinical_Reasoning.html` | ✅ Đã hoàn thành |
 | 7 | **ECG Interactive Trainer** | `pages/Kỹ năng/Cận lâm sàng/ECG_Interactive.html` + `js/ecg-trainer.js` | ✅ Đã hoàn thành |
 | 8 | **Procedure Step-by-Step Animator** | `pages/Kỹ năng/Thủ thuật/` (Đặt NKQ, Chọc MP, Chọc tủy) | ✅ Đã hoàn thành |
@@ -78,12 +77,6 @@
 - **Tính năng:**
   - Giả lập ca bệnh tương tác (narrative branching game), người dùng đưa ra lựa chọn Hỏi bệnh → Khám → CLS → Chẩn đoán → Điều trị.
   - Chấm điểm và feedback tức thì dựa trên tiêu chuẩn AHA/ACLS.
-
-#### 2.3 Interactive Anatomy Explorer (`#5`)
-- **[MODIFY]** `pages/Kỹ năng/ky-nang.html` (Thêm khối SVG Anatomy Explorer tương tác toàn thân)
-- **[NEW]** `js/anatomy-explorer.js`
-- **Tính năng:**
-  - SVG cơ thể người tương tác, hover/click vào từng vùng (Đầu mặt cổ, Ngực/Tim phổi, Bụng, Tứ chi, Thần kinh) để lọc bài học kỹ năng tương ứng.
 
 ---
 

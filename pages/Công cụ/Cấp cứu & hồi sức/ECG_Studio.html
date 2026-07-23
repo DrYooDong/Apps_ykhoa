@@ -26,6 +26,7 @@
   <script src="../../../components/header.js" defer></script>
   <script src="../../../components/footer.js" defer></script>
   <script src="../../../js/ecg-studio/ecg-modifiers.js" defer></script>
+  <script src="../../../js/ecg-studio/ecg-criteria.js" defer></script>
   <script src="../../../js/ecg-studio/ecg-scenarios.js" defer></script>
   <script src="../../../js/ecg-studio/ecg-leads.js" defer></script>
   <script src="../../../js/ecg-studio/ecg-engine.js" defer></script>
@@ -287,8 +288,8 @@
 
           </div>
 
-          <!-- Right Column: 10-Step Systematic Checklist -->
-          <div class="studio-card">
+          <!-- Right Column: 10-Step Systematic Checklist & Criteria -->
+          <div class="studio-card" style="margin-bottom: 1rem;">
             <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.75rem;">
               🔬 Quy Trình Đọc ECG 10 Bước
             </h3>
@@ -296,6 +297,18 @@
               Phân tích điện tâm đồ hệ thống theo giáo trình "Đọc điện tâm đồ dễ hơn" - BS Nguyễn Tôn Kinh Thi.
             </p>
             <div class="checklist-container" id="systematicChecklist"></div>
+          </div>
+
+          <div class="studio-card">
+            <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.75rem;">
+              📑 Tiêu Chuẩn Chẩn Đoán ECG
+            </h3>
+            <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 0.75rem; line-height: 1.4;">
+              Tiêu chuẩn chẩn đoán dựa vào lý thuyết lâm sàng.
+            </p>
+            <div id="diagnosticCriteriaBox" class="checklist-container">
+              <p style="color: var(--color-text-muted); font-style: italic; font-size: 0.85rem;">Chọn một bất thường để xem tiêu chuẩn chẩn đoán.</p>
+            </div>
           </div>
 
         </div>

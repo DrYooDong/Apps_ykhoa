@@ -271,6 +271,7 @@
       this.renderActiveChips();
       this.updateCaliperStats(combined);
       this.updateSystematicChecklist(combined);
+      this.updateDiagnosticCriteria();
     }
 
     bindEvents() {
@@ -571,6 +572,39 @@
           <p class="chk-note">${item.note}</p>
         </div>
       `).join('');
+    }
+
+    updateDiagnosticCriteria() {
+      const box = document.getElementById('diagnosticCriteriaBox');
+      if (!box) return;
+
+      if (this.selectedModifiers.size === 0) {
+        box.innerHTML = '<p style="color: var(--color-text-muted); font-style: italic; font-size: 0.85rem;">Chọn một bất thường để xem tiêu chuẩn chẩn đoán.</p>';
+        return;
+      }
+
+      let html = '';
+      this.selectedModifiers.forEach(id => {
+        const mod = window.ECGModifiers.MODIFIERS[id];
+        const criteriaList = window.ECGCriteria && window.ECGCriteria[id] ? window.ECGCriteria[id] : [];
+        
+        if (mod && criteriaList.length > 0) {
+          html += `
+            <div style="margin-bottom: 1rem; border-bottom: 1px dashed var(--color-border); padding-bottom: 0.75rem;">
+              <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--color-primary); margin-bottom: 0.5rem;"><i class="fa-solid fa-stethoscope"></i> ${mod.name}</h4>
+              <ul style="padding-left: 1.25rem; margin: 0; font-size: 0.85rem; color: var(--color-text); line-height: 1.5;">
+                ${criteriaList.map(item => `<li style="margin-bottom: 0.3rem;">${item}</li>`).join('')}
+              </ul>
+            </div>
+          `;
+        }
+      });
+
+      if (html === '') {
+        box.innerHTML = '<p style="color: var(--color-text-muted); font-style: italic; font-size: 0.85rem;">Không có dữ liệu tiêu chuẩn chẩn đoán chi tiết cho các mục đã chọn.</p>';
+      } else {
+        box.innerHTML = html;
+      }
     }
 
     startQuizMode() {

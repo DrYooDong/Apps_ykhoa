@@ -26,9 +26,14 @@
   <link rel="stylesheet" href="css/components/homepage-widgets.css">
   <link rel="stylesheet" href="css/components/homepage-effects.css">
   <link rel="stylesheet" href="css/components/toc.css">
+  <link rel="stylesheet" href="css/components/pulse.css">
+  <link rel="stylesheet" href="css/components/evidence-bridge.css">
 
   <script src="js/main.js" defer></script>
   <script src="components/footer.js" defer></script>
+  <script src="js/pulse.js" defer></script>
+  <script src="js/evidence-bridge.js" defer></script>
+  <script src="js/smart-recommender.js" defer></script>
 </head>
 
 <body>
@@ -124,6 +129,96 @@
             <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
             <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
             <div class="hero-pattern" aria-hidden="true"></div>
+          </section>
+
+          <!-- CLINIPORTAL PULSE — COMMAND CENTER DASHBOARD -->
+          <section class="pulse-dashboard" id="pulse-dashboard-section">
+            <h2 class="pulse-section-title"><i class="fa-solid fa-bolt" style="color: var(--pulse-amber);"></i> CliniPortal Pulse — Trung Tâm Điều Hành Lâm Sàng</h2>
+            
+            <!-- 1. DAILY EBM PEARL CARD -->
+            <div class="pearl-card">
+              <div class="pearl-header">
+                <span class="pearl-badge"><i class="fa-solid fa-gem"></i> Ngọc Ngọc Y Học Chứng Cứ Hôm Nay</span>
+                <span class="pearl-date" id="pearl-date">23/07/2026</span>
+              </div>
+              <div style="font-size: 0.78rem; font-weight: 700; color: #7dd3fc; margin-bottom: 0.25rem;" id="pearl-spec">Truyền Nhiễm / Hồi Sức</div>
+              <div class="pearl-title" id="pearl-title">Sốc Nhiễm Khuẩn: Dược Động Học Kháng Sinh ICU</div>
+              <div class="pearl-body" id="pearl-body">
+                Sốc nhiễm khuẩn gây biến đổi thể tích phân bố Vd và tăng thanh thải thận ARC. Luôn dùng LIỀU NẠP (Loading dose) đầy đủ và ưu tiên TRUYỀN KÉO DÀI Beta-lactam để đạt fT > MIC tối đa.
+              </div>
+              <div class="pearl-actions">
+                <span style="font-size: 0.75rem; opacity: 0.75;"><i class="fa-solid fa-bookmark"></i> Nguồn: <span id="pearl-source">Critical Care Clinics 2026</span></span>
+                <button class="btn-pearl-done" id="btn-pearl-done"><i class="fa-regular fa-circle-check"></i> Đã Ghi Nhớ Hôm Nay</button>
+              </div>
+            </div>
+
+            <!-- 2. STREAK & PROGRESS RINGS GRID -->
+            <div class="pulse-stats-grid">
+              <div class="pulse-stat-card">
+                <div style="font-size: 0.85rem; font-weight: 800; color: var(--color-text);"><i class="fa-solid fa-chart-pie" style="color: var(--pulse-primary);"></i> Tiến Độ Học Tập & Thực Hành:</div>
+                <div class="rings-wrapper">
+                  <div class="ring-item">
+                    <svg class="ring-svg"><circle class="ring-bg" cx="34" cy="34" r="30" /><circle class="ring-progress" id="ring-ebm" cx="34" cy="34" r="30" style="stroke: #0284c7;" /></svg>
+                    <div class="ring-text">Y Học Chứng Cứ<br><span id="ebm-pct-text">0%</span></div>
+                  </div>
+                  <div class="ring-item">
+                    <svg class="ring-svg"><circle class="ring-bg" cx="34" cy="34" r="30" /><circle class="ring-progress" id="ring-tools" cx="34" cy="34" r="30" style="stroke: #7c3aed;" /></svg>
+                    <div class="ring-text">Công Cụ Lâm Sàng<br><span id="tools-pct-text">85%</span></div>
+                  </div>
+                  <div class="ring-item">
+                    <svg class="ring-svg"><circle class="ring-bg" cx="34" cy="34" r="30" /><circle class="ring-progress" id="ring-skills" cx="34" cy="34" r="30" style="stroke: #10b981;" /></svg>
+                    <div class="ring-text">Kỹ Năng Lâm Sàng<br><span id="skills-pct-text">70%</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STREAK BOX -->
+              <div class="streak-box">
+                <div class="streak-flame">🔥</div>
+                <div>
+                  <div class="streak-num" id="streak-count-num">7</div>
+                  <div class="streak-lbl">Ngày liên tục học tập</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. QUICK ACTIONS GRID -->
+            <h3 class="pulse-section-title"><i class="fa-solid fa-fire-flame-curved" style="color: var(--pulse-rose);"></i> Thao Tác Nhanh Đột Phá</h3>
+            <div class="pulse-actions-grid">
+              <a href="pages/Y học chứng cứ/EBM Lab/ebm-lab.html" class="pulse-action-card">
+                <div class="pulse-action-icon" style="color: #0284c7;">🧪</div>
+                <div class="pulse-action-title">PICO & NNT Lab</div>
+                <div class="pulse-action-sub">Thực hành EBM tương tác</div>
+              </a>
+              <a href="pages/Y học chứng cứ/EBM Lab/forest-plot.html" class="pulse-action-card">
+                <div class="pulse-action-icon" style="color: #7c3aed;">📊</div>
+                <div class="pulse-action-title">Forest Plot Builder</div>
+                <div class="pulse-action-sub">Vẽ SVG Meta-analysis</div>
+              </a>
+              <a href="pages/Y học chứng cứ/Guideline Radar/radar.html" class="pulse-action-card">
+                <div class="pulse-action-icon" style="color: #10b981;">📡</div>
+                <div class="pulse-action-title">Guideline Diff Viewer</div>
+                <div class="pulse-action-sub">So sánh Trước & Sau</div>
+              </a>
+              <a href="pages/Y học chứng cứ/Thống kê y học/quiz.html" class="pulse-action-card">
+                <div class="pulse-action-icon" style="color: #f59e0b;">🧠</div>
+                <div class="pulse-action-title">Quiz Engine (SM-2)</div>
+                <div class="pulse-action-sub">Ôn tập Spaced Repetition</div>
+              </a>
+              <a href="pages/Y học chứng cứ/Guidelines/Guidelines.html" class="pulse-action-card">
+                <div class="pulse-action-icon" style="color: #ec4899;">🔍</div>
+                <div class="pulse-action-title">Kho Guidelines</div>
+                <div class="pulse-action-sub">Tra cứu Bộ Y tế & Quốc tế</div>
+              </a>
+              <a href="pages/Công cụ/cong-cu.html" class="pulse-action-card">
+                <div class="pulse-action-icon" style="color: #06b6d4;">⚙️</div>
+                <div class="pulse-action-title">Máy Tính Lâm Sàng</div>
+                <div class="pulse-action-sub">120+ công cụ hỗ trợ</div>
+              </a>
+            </div>
+
+            <!-- SMART RECOMMENDATIONS CONTAINER -->
+            <div id="smart-recommendations-container"></div>
           </section>
 
 

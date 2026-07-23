@@ -59,6 +59,8 @@
 | `components/homepage-widgets.css` | Widgets trang chủ | `index.html` |
 | `components/y-hoc-co-truyen.css` | Y học cổ truyền hub | `y-hoc-co-truyen.html` |
 | `components/ma-tran-trieu-chung.css` | Giao diện Ma Trận Triệu Chứng | `ma-tran-trieu-chung.html` |
+| `components/pulse.css` | Styling CliniPortal Pulse Command Center Dashboard | `index.html` |
+| `components/evidence-bridge.css` | Styling nhãn bằng chứng chứng cứ & Modal Tooltip | Xuyên phân hệ |
 
 ---
 
@@ -72,6 +74,7 @@
 | `approach-hub.js` | Search + filter lưu đồ | `tiep-can.html` |
 | `clinical-skill-tabs.js` | Tab switching kỹ năng lâm sàng | `pages/Kỹ năng/**` |
 | `ecg-studio/ecg-modifiers.js` | Thư viện 35+ modifier bất thường ECG | `ECG_Interactive.html` |
+| `ecg-studio/ecg-criteria.js` | Dữ liệu tiêu chuẩn chẩn đoán 35+ bất thường ECG | `ECG_Studio.html` |
 | `ecg-studio/ecg-scenarios.js` | Tình huống lâm sàng & bệnh nhân ảo ECG | `ECG_Interactive.html` |
 | `ecg-studio/ecg-leads.js` | Tổng hợp 12 chuyển đạo theo tam giác Einthoven | `ECG_Interactive.html` |
 | `ecg-studio/ecg-engine.js` | Động cơ Canvas sinh sóng ECG toán học Gaussian & Spline | `ECG_Interactive.html` |
@@ -87,6 +90,9 @@
 | `moa-theater.js` | Đồ họa SVG Animated mô phỏng cơ chế tác dụng gắn receptor & cascade | `pages/Dược lý/**` |
 | `adr-bodymap.js` | Bản đồ cơ thể người SVG tương tác cảnh báo tác dụng phụ theo hệ cơ quan | `pages/Dược lý/**` |
 | `scenario-simulator.js` | Động cơ mô phỏng ca bệnh lâm sàng tương tác & chấm điểm tự động | `pages/Dược lý/**` |
+| `pulse.js` | Logic Daily EBM Pearl (365 pearls), Progress rings & Streak counter | `index.html` |
+| `evidence-bridge.js` | Logic tự động gắn nhãn bằng chứng & Modal Tooltip tương tác | Xuyên phân hệ |
+| `smart-recommender.js` | Gợi ý tài liệu cá thể hóa theo chuyên khoa & lịch sử truy cập | `index.html` |
 
 | `physio-patho.js` | Lightbox ảnh, lazyload | `pages/Sinh lý/**` |
 | `toc.js` | Tự động tạo mục lục sticky | `pages/Sinh lý/Sinhly/**` |
@@ -270,12 +276,20 @@
 | File | Vai trò |
 |------|---------|
 | `Y học chứng cứ/yhcc.html` | Hub tổng EBM |
+| `Y học chứng cứ/EBM Lab/ebm-lab.html` | **[MỚI]** EBM Practice Lab (PICO Builder, CASP Critical Appraisal Checklist 11 câu, NNT/ARR Calculator & 100-Icon Array Visualizer) |
+| `Y học chứng cứ/EBM Lab/ebm-lab.css` | Styling riêng cho EBM Practice Lab |
+| `Y học chứng cứ/EBM Lab/ebm-lab.js` | Logic tương tác PICO search query generator, CASP Risk of Bias calculation & NNT math |
+| `Y học chứng cứ/Guideline Radar/radar.html` | **[NÂNG CẤP]** Guideline Radar Diff Viewer (So sánh GitHub-style Before/After, practice-changing badges, bộ lọc chuyên khoa) |
+| `Y học chứng cứ/EBM Lab/forest-plot.html` | **[MỚI]** Interactive Forest Plot Builder (Vẽ biểu đồ Forest Plot SVG tương tác, tính Pooled Diamond & I² heterogeneity) |
+| `Y học chứng cứ/EBM Lab/forest-plot.js` | Động cơ SVG Forest Plot renderer, preset datasets (EMPA-REG, DAPA-HF, ESC 2026) & data editor table |
 | `Y học chứng cứ/Guidelines/Guidelines.html` | Tra cứu guidelines |
 | `Y học chứng cứ/Guidelines/README.md` | Hướng dẫn sử dụng phân hệ Guidelines |
-| `Y học chứng cứ/Guidelines/Kho Guidelines/ks-cho-bn-nang.html` | **[MỚI]** Kháng sinh cho bệnh nhân nặng — Tổng quan Critical Care Clinics 2026 (Standalone, tự chứa CSS/inline) |
-| `Y học chứng cứ/Guidelines/Kho Guidelines/byt-copd-2026.html` | Hướng dẫn chẩn đoán và điều trị bệnh phổi tắc nghẽn mạn tính (COPD) Bộ Y tế 2026 (Standalone, tự chứa CSS/inline) |
+| `Y học chứng cứ/Guidelines/Kho Guidelines/ks-cho-bn-nang.html` | Kháng sinh cho bệnh nhân nặng — Tổng quan Critical Care Clinics 2026 (Standalone) |
+| `Y học chứng cứ/Guidelines/Kho Guidelines/byt-copd-2026.html` | Hướng dẫn chẩn đoán và điều trị bệnh phổi tắc nghẽn mạn tính (COPD) Bộ Y tế 2026 (Standalone) |
 | `Y học chứng cứ/Guidelines/Kho Guidelines/empa-reg.html` | EMPA-REG OUTCOME — Empagliflozin tim mạch (Standalone) |
 | `Y học chứng cứ/Thống kê y học/Thongkeyhoc.html` | Thống kê y học |
+| `Y học chứng cứ/Thống kê y học/quiz.html` | **[MỚI]** EBM Quiz Engine & Spaced Repetition (Thuật toán SM-2, Flashcard 3D & 16+ câu hỏi lâm sàng) |
+| `Y học chứng cứ/Thống kê y học/quiz.js` | Logic Spaced Repetition SM-2 (Interval & Ease Factor), lật thẻ 3D & ngân hàng 16 câu hỏi trắc nghiệm |
 | `Y học chứng cứ/Thống kê y học/danh-gia-cong-cu-chan-doan.html` | Đánh giá công cụ chẩn đoán |
 | `Y học chứng cứ/Thống kê y học/phan-tich-rct-meta-analysis.html` | Phân tích RCT & Meta-analysis |
 | `Y học chứng cứ/Thống kê y học/thiet-ke-nghien-cuu-khoa-hoc.html` | Thiết kế nghiên cứu |

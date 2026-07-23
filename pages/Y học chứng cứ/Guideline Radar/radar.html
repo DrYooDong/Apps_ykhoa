@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="CliniPortal Guideline Radar - Cập nhật thay đổi thực hành lâm sàng">
-  <title>Guideline Radar – CliniPortal</title>
+  <meta name="description" content="CliniPortal Guideline Radar - Trạm theo dõi và so sánh trực quan các thay đổi thực hành lâm sàng (Practice-Changing Updates)">
+  <title>Guideline Radar Diff Viewer – CliniPortal</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="../../../css/reset.css">
   <link rel="stylesheet" href="../../../css/main.css">
@@ -20,120 +21,320 @@
   <script src="../../../components/footer.js" defer></script>
 
   <style>
-    /* Radar specific styling */
     :root {
       --radar-primary: #10b981;
       --radar-bg: #ecfdf5;
       --radar-accent: #059669;
+      --diff-old-bg: #fef2f2;
+      --diff-old-border: #fca5a5;
+      --diff-old-text: #991b1b;
+      --diff-new-bg: #f0fdf4;
+      --diff-new-border: #86efac;
+      --diff-new-text: #166534;
     }
     
     .radar-hero {
       background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%);
       color: white;
-      padding: 4rem 2rem;
-      border-radius: 20px;
+      padding: 3rem 2rem;
+      border-radius: 24px;
       margin-bottom: 2rem;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 10px 30px rgba(6, 95, 70, 0.2);
     }
     
     .radar-hero::after {
       content: '📡';
       position: absolute;
-      right: -20px;
-      top: -20px;
-      font-size: 15rem;
+      right: 0rem;
+      top: -1rem;
+      font-size: 14rem;
       opacity: 0.1;
       transform: rotate(15deg);
+      pointer-events: none;
     }
 
     .radar-eyebrow {
-      display: inline-block;
-      padding: 0.4rem 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
       background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
       border-radius: 20px;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 0.05em;
       margin-bottom: 1rem;
       backdrop-filter: blur(5px);
+      color: #a7f3d0;
     }
     
     .radar-title {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 2.5rem;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
       font-weight: 800;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
       line-height: 1.2;
     }
 
+    /* FILTER BAR & SEARCH */
+    .radar-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.75rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: 16px;
+      padding: 1rem 1.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .radar-search-box {
+      flex: 1;
+      min-width: 260px;
+      position: relative;
+    }
+
+    .radar-search-box input {
+      width: 100%;
+      padding: 0.6rem 1rem 0.6rem 2.4rem;
+      border: 1.5px solid var(--color-divider);
+      border-radius: 10px;
+      font-size: 0.88rem;
+      outline: none;
+      background: var(--color-bg);
+      color: var(--color-text);
+      transition: border-color 200ms;
+    }
+
+    .radar-search-box input:focus {
+      border-color: var(--radar-primary);
+    }
+
+    .radar-search-icon {
+      position: absolute;
+      left: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--color-text-muted);
+      font-size: 0.85rem;
+    }
+
+    .filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .filter-pill {
+      padding: 0.4rem 0.85rem;
+      border-radius: 20px;
+      border: 1px solid var(--color-divider);
+      background: var(--color-bg);
+      color: var(--color-text-muted);
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 200ms;
+    }
+
+    .filter-pill:hover {
+      border-color: var(--radar-primary);
+      color: var(--radar-accent);
+    }
+
+    .filter-pill.active {
+      background: var(--radar-accent);
+      color: #ffffff;
+      border-color: var(--radar-accent);
+    }
+
+    /* RADAR FEED & DIFF CARDS */
     .radar-feed {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1.75rem;
     }
 
     .radar-card {
       background: var(--color-surface);
       border: 1px solid var(--color-divider);
-      border-radius: 16px;
-      padding: 2rem;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+      border-radius: 18px;
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 250ms, box-shadow 250ms;
     }
     
+    .radar-card:hover {
+      border-color: var(--radar-primary);
+      box-shadow: 0 8px 24px rgba(16, 185, 129, 0.12);
+    }
+
     .radar-card-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
-    .radar-date {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
+    .radar-card-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--color-text);
+      line-height: 1.3;
+      margin-bottom: 0.35rem;
+    }
+
+    .radar-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.8rem;
       color: var(--color-text-muted);
     }
 
-    .radar-badge {
+    .radar-badge-practice {
       background: #fee2e2;
-      color: #b91c1c;
-      padding: 0.3rem 0.8rem;
-      border-radius: 12px;
+      color: #991b1b;
+      padding: 0.35rem 0.85rem;
+      border-radius: 20px;
       font-size: 0.75rem;
-      font-weight: 700;
-      border: 1px solid #fca5a5;
+      font-weight: 800;
+      border: 1.5px solid #fca5a5;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      letter-spacing: 0.03em;
     }
 
-    .practice-changing {
+    .radar-badge-informative {
+      background: #eff6ff;
+      color: #1e40af;
+      padding: 0.35rem 0.85rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      border: 1.5px solid #bfdbfe;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* GITHUB-STYLE DIFF VIEW CONTAINER */
+    .diff-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      background: var(--color-bg);
-      padding: 1.5rem;
+      gap: 1.25rem;
+      margin-bottom: 1.25rem;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    @media(max-width: 800px) {
+      .diff-container { grid-template-columns: 1fr; }
+    }
+
+    .diff-box {
       border-radius: 12px;
-      border-left: 4px solid var(--radar-primary);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
     }
 
-    @media(max-width: 768px) {
-      .practice-changing { grid-template-columns: 1fr; }
+    .diff-box.old {
+      background: var(--diff-old-bg);
+      border: 1.5px solid var(--diff-old-border);
     }
 
-    .pc-col h4 {
-      font-size: 0.9rem;
-      color: var(--color-text-muted);
-      margin-bottom: 0.5rem;
+    .diff-box.new {
+      background: var(--diff-new-bg);
+      border: 1.5px solid var(--diff-new-border);
+    }
+
+    .diff-header {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
       text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    .pc-old { color: #b91c1c; text-decoration: line-through; opacity: 0.7; }
-    .pc-new { color: var(--radar-accent); font-weight: 600; font-size: 1.1rem; }
+    .diff-box.old .diff-header { color: var(--diff-old-text); }
+    .diff-box.new .diff-header { color: var(--diff-new-text); }
+
+    .diff-text {
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .diff-box.old .diff-text {
+      color: var(--diff-old-text);
+      text-decoration: line-through;
+      opacity: 0.85;
+    }
+
+    .diff-box.new .diff-text {
+      color: var(--diff-new-text);
+      font-weight: 600;
+    }
+
+    .diff-reason-box {
+      background: var(--color-surface-2);
+      border: 1px dashed var(--color-divider);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      font-size: 0.82rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    .diff-reason-box strong {
+      color: var(--color-text);
+    }
   </style>
 </head>
 <body>
   <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
   
   <div class="app-container">
-    <div class="main-wrapper" style="margin-left: 0; padding-top: 2rem;">
+
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li><a href="../../../index.html" class="nav-item" title="Trang chủ"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+          <li><a href="../../Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item" title="S.lý - S.lý bệnh"><span class="nav-icon">🧬</span><span class="nav-text">S.lý - S.lý bệnh</span></a></li>
+          <li><a href="../../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng"><span class="nav-icon">🩺</span><span class="nav-text">Kỹ năng</span></a></li>
+          <li><a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận"><span class="nav-icon">🤒</span><span class="nav-text">Tiếp cận</span></a></li>
+          <li><a href="../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ"><span class="nav-icon">⚙️</span><span class="nav-text">Công cụ</span></a></li>
+          <li><a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý"><span class="nav-icon">💊</span><span class="nav-text">Dược lý</span></a></li>
+          <li><a href="../yhcc.html" class="nav-item active" aria-current="page" title="Y học chứng cứ"><span class="nav-icon">📋</span><span class="nav-text">Y học chứng cứ</span></a></li>
+          <li><a href="../../Y học cổ truyền/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền"><span class="nav-icon">☯️</span><span class="nav-text">Y học cổ truyền</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="main-wrapper" id="mainContent">
+      <!-- BREADCRUMB -->
       <nav aria-label="Breadcrumb" class="breadcrumb-container">
         <ol class="breadcrumb-list">
           <li class="breadcrumb-item"><a href="../../../index.html">🏠 Home</a></li>
@@ -142,38 +343,233 @@
         </ol>
       </nav>
 
+      <!-- HERO BANNER -->
       <section class="radar-hero">
-        <span class="radar-eyebrow">UPDATE 2026</span>
-        <h1 class="radar-title">Guideline Radar</h1>
-        <p style="max-width: 600px; line-height: 1.6; opacity: 0.9;">Trạm theo dõi liên tục các thay đổi quan trọng trong thực hành lâm sàng từ các tổ chức y tế uy tín toàn cầu.</p>
+        <span class="radar-eyebrow"><i class="fa-solid fa-satellite-dish"></i> GUIDELINE RADAR DIFF VIEWER 2026</span>
+        <h1 class="radar-title">Trạm Theo Dõi & So Sánh Thay Đổi Guideline</h1>
+        <p>So sánh trực quan "GitHub-style Diff View" giữa các phác đồ cũ và khuyến cáo mới nhất từ Bộ Y tế Việt Nam, ESC, ADA, GINA, GOLD giúp bác sĩ nhanh chóng cập nhật thay đổi thực hành lâm sàng.</p>
       </section>
 
-      <div class="radar-feed">
-        <article class="radar-card">
-          <div class="radar-card-header">
-            <div>
-              <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--color-text);">ESC 2026 - Hướng dẫn quản lý Rung nhĩ</h2>
-              <p class="radar-date">Cập nhật: Tháng 5/2026</p>
-            </div>
-            <span class="radar-badge">🚨 THAY ĐỔI THỰC HÀNH</span>
-          </div>
+      <!-- CONTROLS & FILTER BAR -->
+      <div class="radar-controls">
+        <div class="radar-search-box">
+          <i class="fa-solid fa-magnifying-glass radar-search-icon"></i>
+          <input type="text" id="radar-search-input" placeholder="Tìm tên bệnh, khuyến cáo, hoạt chất thuốc...">
+        </div>
 
-          <div class="practice-changing">
-            <div class="pc-col">
-              <h4>Bản 2020 (Cũ)</h4>
-              <p class="pc-old">Sử dụng thang điểm CHA2DS2-VASc để đánh giá nguy cơ đột quỵ.</p>
-            </div>
-            <div class="pc-col">
-              <h4>Bản 2026 (Mới)</h4>
-              <p class="pc-new">Bổ sung thang điểm CARE-AF tích hợp thêm yếu tố chức năng thận và biomarker sinh học cho độ chính xác cao hơn.</p>
-            </div>
-          </div>
-        </article>
+        <div class="filter-pills" id="radar-filter-pills">
+          <button class="filter-pill active" data-spec="all">Tất cả</button>
+          <button class="filter-pill" data-spec="cardio">🫀 Tim mạch</button>
+          <button class="filter-pill" data-spec="pulmo">🫁 Hô hấp</button>
+          <button class="filter-pill" data-spec="endo">💉 Nội tiết</button>
+          <button class="filter-pill" data-spec="infect">🦠 Truyền nhiễm / Hồi sức</button>
+          <button class="filter-pill" data-spec="vn">🇻🇳 Bộ Y Tế VN</button>
+        </div>
       </div>
 
+      <!-- RADAR FEED ITEMS -->
+      <div class="radar-feed" id="radar-feed-list">
+        
+        <!-- CARD 1: ESC 2026 AF -->
+        <article class="radar-card" data-spec="cardio">
+          <div class="radar-card-header">
+            <div>
+              <h2 class="radar-card-title">ESC 2026 — Hướng Dẫn Quản Lý Rung Nhĩ (Atrial Fibrillation)</h2>
+              <div class="radar-meta">
+                <span><i class="fa-solid fa-building-columns"></i> Hiệp Hội Tim Mạch Châu Âu (ESC)</span>
+                <span><i class="fa-regular fa-calendar"></i> Tháng 5/2026</span>
+              </div>
+            </div>
+            <span class="radar-badge-practice"><i class="fa-solid fa-triangle-exclamation"></i> THAY ĐỔI THỰC HÀNH</span>
+          </div>
+
+          <div class="diff-container">
+            <div class="diff-box old">
+              <div class="diff-header"><span>Bản Khuyến Cáo 2020 (Cũ)</span> ❌</div>
+              <div class="diff-text">Sử dụng đơn thuần thang điểm CHA2DS2-VASc để phân tầng nguy cơ đột quỵ và quyết định chỉ định dùng kháng đông.</div>
+            </div>
+            <div class="diff-box new">
+              <div class="diff-header"><span>Bản Khuyến Cáo 2026 (Mới)</span> ✅</div>
+              <div class="diff-text">Chuyển sang sử dụng thang điểm CARE-AF tích hợp thêm yếu tố chức năng thận (eGFR) và biomarker sinh học (hs-Tn, NT-proBNP) cho độ chính xác cao hơn. Dùng DOAC ưu tiên hàng đầu.</div>
+            </div>
+          </div>
+
+          <div class="diff-reason-box">
+            <strong>💡 Lý do thay đổi & Bằng chứng lâm sàng:</strong> Thử nghiệm lâm sàng CARE-AF Trial (2025) với 12,500 bệnh nhân cho thấy thang điểm CARE-AF tái phân tầng nguy cơ chính xác hơn 18% so với CHA2DS2-VASc, giảm thiểu nguy cơ xuất huyết nặng ở nhóm bệnh nhân tuổi cao.
+          </div>
+        </article>
+
+        <!-- CARD 2: BYT COPD 2026 -->
+        <article class="radar-card" data-spec="pulmo vn">
+          <div class="radar-card-header">
+            <div>
+              <h2 class="radar-card-title">Bộ Y Tế Việt Nam 2026 — Hướng Dẫn Chẩn Đoán & Điều Trị BPTNMT (COPD)</h2>
+              <div class="radar-meta">
+                <span><i class="fa-solid fa-hospital"></i> Bộ Y Tế (QĐ 2131/QĐ-BYT)</span>
+                <span><i class="fa-regular fa-calendar"></i> Tháng 7/2026</span>
+              </div>
+            </div>
+            <span class="radar-badge-practice"><i class="fa-solid fa-triangle-exclamation"></i> THAY ĐỔI THỰC HÀNH</span>
+          </div>
+
+          <div class="diff-container">
+            <div class="diff-box old">
+              <div class="diff-header"><span>Bản Cũ (BYT 2018 / GOLD 2020)</span> ❌</div>
+              <div class="diff-text">Phân nhóm điều trị theo sơ đồ 4 nhóm ABCD. Đợt cấp phân loại cảm tính. Sử dụng rộng rãi ICS/LABA cho bệnh nhân có đợt cấp.</div>
+            </div>
+            <div class="diff-box new">
+              <div class="diff-header"><span>Bản Mới 2026 (QĐ 2131/QĐ-BYT)</span> ✅</div>
+              <div class="diff-text">Hợp nhất nhóm C và D thành nhóm E (Exacerbation). Đợt cấp phân loại chuẩn hóa theo Tiêu chuẩn Rome 2022. Ưu tiên bộ đôi LABA + LAMA cho nhóm B và E. Chỉ thêm ICS khi Eosinophil máu ≥ 300 tế bào/µL.</div>
+            </div>
+          </div>
+
+          <div class="diff-reason-box">
+            <strong>💡 Lý do thay đổi & Bằng chứng lâm sàng:</strong> Cập nhật theo GOLD 2026 và tiêu chuẩn Rome 2022. Phối hợp LABA+LAMA giảm đợt cấp và cải thiện FEV1 vượt trội so với ICS/LABA, đồng thời giảm nguy cơ viêm phổi do dùng ICS không đúng chỉ định.
+          </div>
+        </article>
+
+        <!-- CARD 3: ADA 2026 DIABETES -->
+        <article class="radar-card" data-spec="endo">
+          <div class="radar-card-header">
+            <div>
+              <h2 class="radar-card-title">ADA 2026 — Tiêu Chuẩn Chăm Sóc Đái Tháo Đường (Standards of Care)</h2>
+              <div class="radar-meta">
+                <span><i class="fa-solid fa-notes-medical"></i> Hiệp Hội Đái Tháo Đường Mỹ (ADA)</span>
+                <span><i class="fa-regular fa-calendar"></i> Tháng 1/2026</span>
+              </div>
+            </div>
+            <span class="radar-badge-practice"><i class="fa-solid fa-triangle-exclamation"></i> THAY ĐỔI THỰC HÀNH</span>
+          </div>
+
+          <div class="diff-container">
+            <div class="diff-box old">
+              <div class="diff-header"><span>Tiếp Cận Cũ (Truyền thống)</span> ❌</div>
+              <div class="diff-text">Bắt đầu bằng Metformin đơn trị liệu cho tất cả bệnh nhân ĐTĐ typ 2 mới chẩn đoán. Chỉ thêm thuốc khác khi HbA1c không đạt mục tiêu sau 3 tháng.</div>
+            </div>
+            <div class="diff-box new">
+              <div class="diff-header"><span>Tiếp Cận Mới (ADA 2026)</span> ✅</div>
+              <div class="diff-text">Khởi đầu ngay thuốc bảo vệ tim mạch/thận (SGLT2i hoặc GLP-1 RA) song song hoặc độc lập với Metformin ở bệnh nhân ĐTĐ typ 2 có kèm bệnh tim mạch xơ vữa (ASCVD), suy tim (HF) hoặc bệnh thận mạn (CKD) BẤT KỂ MỨC HbA1C BAN ĐẦU.</div>
+            </div>
+          </div>
+
+          <div class="diff-reason-box">
+            <strong>💡 Lý do thay đổi & Bằng chứng lâm sàng:</strong> Hàng loạt RCT Landmark (EMPA-REG, DAPA-HF, CREDENCE, DECLARE) chứng minh lợi ích giảm tử vong và bảo vệ tạng độc lập với tác dụng hạ đường huyết của SGLT2i và GLP-1 RA.
+          </div>
+        </article>
+
+        <!-- CARD 4: CRITICAL CARE ANTIBIOTIC 2026 -->
+        <article class="radar-card" data-spec="infect">
+          <div class="radar-card-header">
+            <div>
+              <h2 class="radar-card-title">Critical Care 2026 — Tối Ưu Hóa Kháng Sinh ICU Theo Dược Động Học PK/PD</h2>
+              <div class="radar-meta">
+                <span><i class="fa-solid fa-vial"></i> Critical Care Clinics / IDSA</span>
+                <span><i class="fa-regular fa-calendar"></i> Tháng 3/2026</span>
+              </div>
+            </div>
+            <span class="radar-badge-informative"><i class="fa-solid fa-circle-info"></i> THÔNG TIN LÂM SÀNG</span>
+          </div>
+
+          <div class="diff-container">
+            <div class="diff-box old">
+              <div class="diff-header"><span>Thực Hành Cũ</span> ❌</div>
+              <div class="diff-text">Tiêm ngắt quãng (Bolus) Beta-lactam mỗi 6-8 giờ. Giảm liều kháng sinh ngay trong 24h đầu khi có suy thận cấp (AKI).</div>
+            </div>
+            <div class="diff-box new">
+              <div class="diff-header"><span>Thực Hành Tối Ưu 2026</span> ✅</div>
+              <div class="diff-text">Dùng liều nạp (Loading dose) đầy đủ bất kể chức năng thận. Chuyển sang truyền kéo dài (Extended Infusion 3-4h) hoặc truyền liên tục Beta-lactam để đạt fT > MIC tối đa. Không giảm liều trong 24h đầu AKI để tránh thiếu liều ở bệnh nhân ICU.</div>
+            </div>
+          </div>
+
+          <div class="diff-reason-box">
+            <strong>💡 Lý do thay đổi & Bằng chứng lâm sàng:</strong> Bệnh nhân sốc nhiễm khuẩn có thể tích phân bố (Vd) tăng mạnh và thanh thải thận tăng vọt (ARC). Truyền kéo dài giảm tỷ lệ tử vong 90 ngày lên đến 30% trong các nghiên cứu Meta-analysis gần đây.
+          </div>
+        </article>
+
+        <!-- CARD 5: VNHA 2023 HEART FAILURE -->
+        <article class="radar-card" data-spec="cardio vn">
+          <div class="radar-card-header">
+            <div>
+              <h2 class="radar-card-title">VNHA / VCS — Khuyến Cáo Điều Trị Suy Tim Bộ Tứ Trụ Cột</h2>
+              <div class="radar-meta">
+                <span><i class="fa-solid fa-heart-pulse"></i> Hội Tim Mạch Học Việt Nam</span>
+                <span><i class="fa-regular fa-calendar"></i> Bản Cập Nhật</span>
+              </div>
+            </div>
+            <span class="radar-badge-practice"><i class="fa-solid fa-triangle-exclamation"></i> THAY ĐỔI THỰC HÀNH</span>
+          </div>
+
+          <div class="diff-container">
+            <div class="diff-box old">
+              <div class="diff-header"><span>Phác Đồ Cũ (3 Trụ Cột)</span> ❌</div>
+              <div class="diff-text">Khởi đầu ACEi/ARB + Chẹn Beta + MRA theo trình tự từng bước tuần tự (stepwise approach).</div>
+            </div>
+            <div class="diff-box new">
+              <div class="diff-header"><span>Phác Đồ Mới (Bộ Tứ Trụ Cột)</span> ✅</div>
+              <div class="diff-text">Khởi đầu sớm nhất có thể BỘ TỨ TRỤ CỘT: (1) ARNI (thay ACEi/ARB), (2) Chẹn Beta, (3) MRA, và (4) SGLT2i. Chỉ định Class I, Mức chứng cứ A cho mọi BN HFrEF.</div>
+            </div>
+          </div>
+
+          <div class="diff-reason-box">
+            <strong>💡 Lý do thay đổi & Bằng chứng lâm sàng:</strong> Việc khởi động đồng thời hoặc nhanh chóng cả 4 trụ cột giúp giảm 73% rủi ro tử vong do mọi nguyên nhân trong vòng 2 năm so với phác đồ cũ.
+          </div>
+        </article>
+
+      </div>
     </div>
   </div>
 
+  <footer class="global-footer">
+    <div class="footer-copyright">
+      <p>CliniPortal © 2026 · Guideline Radar Diff Viewer · Cập nhật liên tục y văn chứng cứ</p>
+    </div>
+  </footer>
+
   <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+  <!-- SCRIPT FILTER & SEARCH -->
+  <script src="../../../js/main.js" defer></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const searchInput = document.getElementById("radar-search-input");
+      const filterPills = document.querySelectorAll(".filter-pill");
+      const cards = document.querySelectorAll(".radar-card");
+
+      let currentSpec = "all";
+      let currentQuery = "";
+
+      function filterCards() {
+        cards.forEach(card => {
+          const cardSpec = card.getAttribute("data-spec") || "";
+          const cardText = card.textContent.toLowerCase();
+
+          const matchesSpec = currentSpec === "all" || cardSpec.includes(currentSpec);
+          const matchesQuery = !currentQuery || cardText.includes(currentQuery);
+
+          if (matchesSpec && matchesQuery) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      }
+
+      filterPills.forEach(pill => {
+        pill.addEventListener("click", () => {
+          filterPills.forEach(p => p.classList.remove("active"));
+          pill.classList.add("active");
+          currentSpec = pill.getAttribute("data-spec");
+          filterCards();
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener("input", (e) => {
+          currentQuery = e.target.value.toLowerCase().trim();
+          filterCards();
+        });
+      }
+    });
+  </script>
 </body>
 </html>

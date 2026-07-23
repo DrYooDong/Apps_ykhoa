@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CliniPortal - EBM Practice Lab: Phòng thực hành Y học chứng cứ tích hợp PICO Builder, Critical Appraisal Toolkit và NNT Calculator">
+  <title>EBM Practice Lab – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  <!-- Module CSS -->
+  <link rel="stylesheet" href="ebm-lab.css">
+
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item" title="S.lý - S.lý bệnh">
+              <span class="nav-icon">🧬</span>
+              <span class="nav-text">S.lý - S.lý bệnh</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý</span>
+            </a>
+          </li>
+          <li>
+            <a href="../yhcc.html" class="nav-item active" aria-current="page" title="Y học chứng cứ">
+              <span class="nav-icon">📋</span>
+              <span class="nav-text">Y học chứng cứ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Y học cổ truyền/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền">
+              <span class="nav-icon">☯️</span>
+              <span class="nav-text">Y học cổ truyền</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-wrapper" id="mainContent">
+
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../../../index.html" class="breadcrumb-link">🏠 Home</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="../yhcc.html" class="breadcrumb-link">Y học chứng cứ</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">EBM Practice Lab</li>
+        </ol>
+      </nav>
+
+      <!-- HERO BANNER -->
+      <section class="lab-hero">
+        <div class="lab-hero-eyebrow">
+          <i class="fa-solid fa-microscope"></i> EBM Interactive Practice Lab
+        </div>
+        <h1>Phòng Thực Hành Y Học Chứng Cứ</h1>
+        <p>Bộ công cụ thực hành tương tác giúp bác sĩ chuyển đổi tình huống lâm sàng thành câu hỏi PICO chuẩn xác, đánh giá phê bình chất lượng nghiên cứu (Critical Appraisal) và tính toán các chỉ số hiệu quả điều trị (NNT/ARR).</p>
+      </section>
+
+      <!-- TAB NAVIGATION BAR -->
+      <div class="lab-tabs" role="tablist">
+        <button class="lab-tab-btn active" data-tab="pico" role="tab">
+          <i class="fa-solid fa-pen-to-square"></i> 1. PICO Builder
+        </button>
+        <button class="lab-tab-btn" data-tab="casp" role="tab">
+          <i class="fa-solid fa-clipboard-check"></i> 2. Critical Appraisal
+        </button>
+        <button class="lab-tab-btn" data-tab="nnt" role="tab">
+          <i class="fa-solid fa-calculator"></i> 3. NNT & ARR Visualizer
+        </button>
+      </div>
+
+      <!-- ════════════════════ TAB 1: PICO BUILDER ════════════════════ -->
+      <div class="lab-panel active" id="panel-pico">
+        <div class="lab-card">
+          <h2 class="lab-card-title"><i class="fa-solid fa-diagram-project" style="color: var(--ebm-primary);"></i> Cấu Trúc Câu Hỏi Lâm Sàng (PICO Framework)</h2>
+          <p class="lab-card-desc">Điền các thành tố của câu hỏi PICO bên dưới để tự động tạo câu hỏi lâm sàng có cấu trúc và chuỗi từ khóa tìm kiếm tối ưu cho PubMed/Cochrane.</p>
+
+          <div class="pico-grid">
+            <!-- P: Patient -->
+            <div class="pico-field">
+              <label class="pico-label" for="pico-p">
+                <span class="pico-label-badge p">P</span> Patient / Population (Bệnh nhân)
+              </label>
+              <input type="text" id="pico-p" class="pico-input" placeholder="VD: Bệnh nhân đái tháo đường typ 2 có nguy cơ tim mạch cao">
+            </div>
+
+            <!-- I: Intervention -->
+            <div class="pico-field">
+              <label class="pico-label" for="pico-i">
+                <span class="pico-label-badge i">I</span> Intervention (Can thiệp)
+              </label>
+              <input type="text" id="pico-i" class="pico-input" placeholder="VD: Thuốc ức chế SGLT2 (Empagliflozin)">
+            </div>
+
+            <!-- C: Comparison -->
+            <div class="pico-field">
+              <label class="pico-label" for="pico-c">
+                <span class="pico-label-badge c">C</span> Comparison (So sánh)
+              </label>
+              <input type="text" id="pico-c" class="pico-input" placeholder="VD: Giả dược (Placebo) hoặc Điều trị chuẩn">
+            </div>
+
+            <!-- O: Outcome -->
+            <div class="pico-field">
+              <label class="pico-label" for="pico-o">
+                <span class="pico-label-badge o">O</span> Outcome (Kết cục)
+              </label>
+              <input type="text" id="pico-o" class="pico-input" placeholder="VD: Giảm tử vong do tim mạch và nhập viện do suy tim">
+            </div>
+          </div>
+
+          <!-- PICO OUTPUT BOX -->
+          <div class="pico-output-box">
+            <div class="pico-output-header">
+              <span class="pico-output-title"><i class="fa-solid fa-sparkles"></i> Câu Hỏi Lâm Sàng Hoàn Chỉnh:</span>
+            </div>
+            <div class="pico-question-preview" id="pico-question-preview">
+              Nhập thông tin PICO phía trên để xem câu hỏi hoàn chỉnh...
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-size: 0.8rem; font-weight: 700; color: var(--ebm-text-muted);">Chuỗi từ khóa tìm kiếm PubMed (Search Query):</span>
+              <button class="btn-copy" id="btn-copy-pico"><i class="fa-regular fa-copy"></i> Sao chép PubMed Query</button>
+            </div>
+            <div class="pico-search-string" id="pico-search-string">
+              Nhập thông tin PICO phía trên để tạo chuỗi tìm kiếm...
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════════════════════ TAB 2: CRITICAL APPRAISAL TOOLKIT ════════════════════ -->
+      <div class="lab-panel" id="panel-casp">
+        <div class="lab-card">
+          <h2 class="lab-card-title"><i class="fa-solid fa-list-check" style="color: var(--ebm-purple);"></i> Đánh Giá Phê Bình Bài Báo Lâm Sàng (CASP RCT Checklist)</h2>
+          <p class="lab-card-desc">Trả lời 11 câu hỏi tiêu chuẩn quốc tế để thẩm định giá trị khoa học (Internal Validity) và nguy cơ sai số (Risk of Bias) của bài báo nghiên cứu RCT.</p>
+
+          <div class="casp-grid">
+            <!-- Q1 -->
+            <div class="casp-item">
+              <div class="casp-num">1</div>
+              <div class="casp-content">
+                <div class="casp-q">Nghiên cứu có đặt ra câu hỏi rõ ràng và cụ thể (PICO) không?</div>
+                <div class="casp-hint">Xem xét: Đối tượng bệnh nhân, can thiệp, đối chứng và kết cục có được xác định rõ từ đầu?</div>
+                <div class="casp-options">
+                  <label class="casp-radio-label yes"><input type="radio" name="casp-q1" value="yes"> <span>Có (Yes)</span></label>
+                  <label class="casp-radio-label cant"><input type="radio" name="casp-q1" value="cant"> <span>Chưa rõ</span></label>
+                  <label class="casp-radio-label no"><input type="radio" name="casp-q1" value="no"> <span>Không (No)</span></label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="casp-item">
+              <div class="casp-num">2</div>
+              <div class="casp-content">
+                <div class="casp-q">Phân bố bệnh nhân vào các nhóm có ngẫu nhiên hóa (Randomization) đúng cách không?</div>
+                <div class="casp-hint">Xem xét: Quy trình tạo dãy ngẫu nhiên và giấu mã phân bón (Allocation Concealment) có đảm bảo bí mật không?</div>
+                <div class="casp-options">
+                  <label class="casp-radio-label yes"><input type="radio" name="casp-q2" value="yes"> <span>Có (Yes)</span></label>
+                  <label class="casp-radio-label cant"><input type="radio" name="casp-q2" value="cant"> <span>Chưa rõ</span></label>
+                  <label class="casp-radio-label no"><input type="radio" name="casp-q2" value="no"> <span>Không (No)</span></label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="casp-item">
+              <div class="casp-num">3</div>
+              <div class="casp-content">
+                <div class="casp-q">Tất cả bệnh nhân tham gia nghiên cứu có được theo dõi đầy đủ đến cuối cùng không?</div>
+                <div class="casp-hint">Xem xét: Tỷ lệ mất theo dõi (Loss to follow-up) có dưới 20%? Có phân tích theo ý định điều trị (Intention-to-treat)?</div>
+                <div class="casp-options">
+                  <label class="casp-radio-label yes"><input type="radio" name="casp-q3" value="yes"> <span>Có (Yes)</span></label>
+                  <label class="casp-radio-label cant"><input type="radio" name="casp-q3" value="cant"> <span>Chưa rõ</span></label>
+                  <label class="casp-radio-label no"><input type="radio" name="casp-q3" value="no"> <span>Không (No)</span></label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="casp-item">
+              <div class="casp-num">4</div>
+              <div class="casp-content">
+                <div class="casp-q">Bệnh nhân, bác sĩ lâm sàng và người đánh giá kết cục có được "làm mù" (Blinding) không?</div>
+                <div class="casp-hint">Xem xét: Thử nghiệm mù đôi (Double-blind) hay mù ba (Triple-blind) để tránh sai số đo lường?</div>
+                <div class="casp-options">
+                  <label class="casp-radio-label yes"><input type="radio" name="casp-q4" value="yes"> <span>Có (Yes)</span></label>
+                  <label class="casp-radio-label cant"><input type="radio" name="casp-q4" value="cant"> <span>Chưa rõ</span></label>
+                  <label class="casp-radio-label no"><input type="radio" name="casp-q4" value="no"> <span>Không (No)</span></label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="casp-item">
+              <div class="casp-num">5</div>
+              <div class="casp-content">
+                <div class="casp-q">Các nhóm bệnh nhân có tương đồng nhau tại thời điểm ban đầu (Baseline Features) không?</div>
+                <div class="casp-hint">Xem xét: Tuổi, giới, độ nặng bệnh lý và các yếu tố gây nhiễu giữa 2 nhóm có cân bằng không?</div>
+                <div class="casp-options">
+                  <label class="casp-radio-label yes"><input type="radio" name="casp-q5" value="yes"> <span>Có (Yes)</span></label>
+                  <label class="casp-radio-label cant"><input type="radio" name="casp-q5" value="cant"> <span>Chưa rõ</span></label>
+                  <label class="casp-radio-label no"><input type="radio" name="casp-q5" value="no"> <span>Không (No)</span></label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q6 -->
+            <div class="casp-item">
+              <div class="casp-num">6</div>
+              <div class="casp-content">
+                <div class="casp-q">Ngoài can thiệp nghiên cứu, các nhóm có được chăm sóc y tế hoàn toàn giống nhau không?</div>
+                <div class="casp-hint">Xem xét: Tránh trường hợp một nhóm được dùng thêm các thuốc ngoài phác đồ (Co-interventions).</div>
+                <div class="casp-options">
+                  <label class="casp-radio-label yes"><input type="radio" name="casp-q6" value="yes"> <span>Có (Yes)</span></label>
+                  <label class="casp-radio-label cant"><input type="radio" name="casp-q6" value="cant"> <span>Chưa rõ</span></label>
+                  <label class="casp-radio-label no"><input type="radio" name="casp-q6" value="no"> <span>Không (No)</span></label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q7 -->
+            <div class="casp-item">
+              <div class="casp-num">7</div>
+              <div class="casp-content">
+                <div class="casp-q">Hiệu quả điều trị được báo cáo như thế nào? (Kích thước hiệu quả)</div>
+                <div class="casp-hint">Xem xét: Có báo cáo đầy đủ chỉ số ARR, RRR, NNT hay chỉ báo cáo p-value đơn thuần?</div>
+                <div class="casp-options">
+                  <label class="casp-radio-label yes"><input type="radio" name="casp-q7" value="yes"> <span>Đầy đủ</span></label>
+                  <label class="casp-radio-label cant"><input type="radio" name="casp-q7" value="cant"> <span>Tương đối</span></label>
+                  <label class="casp-radio-label no"><input type="radio" name="casp-q7" value="no"> <span>Sơ sài</span></label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q8 -->
+            <div class="casp-item">
+              <div class="casp-num">8</div>
+              <div class="casp-content">
+                <div class="casp-q">Ước tính hiệu quả điều trị có chính xác không? (Khoảng tin cậy 95% CI)</div>
+                <div class="casp-hint">Xem xét: Khoảng tin cậy 95% hẹp hay rộng? Có chứa giá trị 1.0 (cho OR/RR) không?</div>
+                <div class="casp-options">
+                  <label class="casp-radio-label yes"><input type="radio" name="casp-q8" value="yes"> <span>Chính xác (CI hẹp)</span></label>
+                  <label class="casp-radio-label cant"><input type="radio" name="casp-q8" value="cant"> <span>Chấp nhận được</span></label>
+                  <label class="casp-radio-label no"><input type="radio" name="casp-q8" value="no"> <span>Kém chính xác</span></label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUMMARY & RISK OF BIAS SCORE -->
+          <div class="casp-summary-box">
+            <div>
+              <div style="font-size: 0.82rem; font-weight: 700; color: var(--ebm-text-muted);">Tổng điểm tiêu chuẩn đạt được:</div>
+              <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--ebm-primary-dark);" id="casp-score-value">0 / 11</div>
+            </div>
+            <div id="casp-risk-badge" class="casp-score-badge mod-risk">
+              <i class="fa-solid fa-circle-info"></i> Hãy tích chọn câu hỏi phía trên...
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════════════════════ TAB 3: NNT & ARR VISUAL CALCULATOR ════════════════════ -->
+      <div class="lab-panel" id="panel-nnt">
+        <div class="lab-card">
+          <h2 class="lab-card-title"><i class="fa-solid fa-calculator" style="color: var(--ebm-success);"></i> Máy Tính NNT (Number Needed to Treat) & Biểu Đồ Icon Array</h2>
+          <p class="lab-card-desc">Nhập tỷ lệ biến cố ở nhóm chứng (CER) và nhóm can thiệp (EER) để tính toán chính xác chỉ số NNT và trực quan hóa hiệu quả cứu sống 100 bệnh nhân.</p>
+
+          <div class="calc-grid">
+            <!-- Left: Inputs -->
+            <div>
+              <h3 style="font-size: 0.9rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--ebm-text);">1. Nhập Tỷ Lệ Biến Cố Nghiên Cứu (%):</h3>
+              
+              <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;">
+                <div class="pico-field">
+                  <label class="pico-label" for="calc-cer">Tỷ lệ biến cố nhóm chứng (CER - Control Event Rate %):</label>
+                  <input type="number" id="calc-cer" class="pico-input" value="20" min="0" max="100" step="0.1">
+                </div>
+
+                <div class="pico-field">
+                  <label class="pico-label" for="calc-eer">Tỷ lệ biến cố nhóm can thiệp (EER - Experimental Event Rate %):</label>
+                  <input type="number" id="calc-eer" class="pico-input" value="12" min="0" max="100" step="0.1">
+                </div>
+              </div>
+
+              <!-- Metrics Summary Cards -->
+              <div class="metrics-results-grid">
+                <div class="metric-card">
+                  <div class="metric-val" id="metric-arr">8.0%</div>
+                  <div class="metric-lbl">ARR (Giảm nguy cơ tuyệt đối)</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-val" id="metric-rrr">40.0%</div>
+                  <div class="metric-lbl">RRR (Giảm nguy cơ tương đối)</div>
+                </div>
+                <div class="metric-card" style="border-color: var(--ebm-success); background: var(--ebm-success-light);">
+                  <div class="metric-val" id="metric-nnt" style="color: #065f46;">13</div>
+                  <div class="metric-lbl" style="color: #065f46;">NNT (Số BN cần điều trị)</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-val" id="metric-or">0.55</div>
+                  <div class="metric-lbl">Tỷ số Chênh (Odds Ratio)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: 100 Icon Array Visualizer -->
+            <div>
+              <div class="icon-array-container">
+                <div class="icon-array-title">
+                  <span><i class="fa-solid fa-users"></i> Mô phỏng hiệu quả trên 100 bệnh nhân:</span>
+                </div>
+                
+                <div class="icon-array-grid" id="icon-array-grid">
+                  <!-- Rendered dynamically by JS -->
+                </div>
+
+                <div class="icon-array-legend">
+                  <div class="legend-item"><span class="legend-dot saved"></span> Cứu được (${arr}%)</div>
+                  <div class="legend-item"><span class="legend-dot event"></span> Vẫn bị biến cố (${eer}%)</div>
+                  <div class="legend-item"><span class="legend-dot unaffected"></span> Không bị ảnh hưởng</div>
+                </div>
+
+                <div style="font-size: 0.82rem; text-align: center; margin-top: 1rem; color: var(--ebm-text-muted);" id="icon-array-text">
+                  Đang tính toán...
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="global-footer">
+    <div class="footer-copyright">
+      <p>CliniPortal © 2026 · EBM Practice Lab · Tối ưu hóa trải nghiệm trên mọi thiết bị</p>
+    </div>
+  </footer>
+
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+  <!-- Scripts -->
+  <script src="../../../js/main.js" defer></script>
+  <script src="ebm-lab.js" defer></script>
+</body>
+
+</html>
