@@ -16,7 +16,7 @@
     { title: "Xử trí Sốt xuất huyết Dengue", category: "Tiếp cận lâm sàng", url: "pages/Tiếp cận/3. Quản lý bệnh lý mạn tính & hệ thống/Huyết học & Truyền nhiễm/TC_SXHD.html", keywords: "sot xuat huyet, dengue, muoi, truyen nhiem" },
     { title: "Lựa chọn kháng sinh kinh nghiệm ban đầu", category: "Quản lý điều trị", url: "pages/Kỹ năng/Quản lý điều trị/Luachon_Khangsinh.html", keywords: "khang sinh, nhiem khuan, vi khuan" },
     { title: "Phân tích Khí máu động mạch ABG", category: "Công cụ", url: "pages/Công cụ/Thận & Điện giải - toan kiểm/DG_ABG.html", keywords: "khi mau dong mach, toan kiem, ph, pco2, hco3" },
-    { title: "Tính toán bù dịch & điều chỉnh Natri máu", category: "Công cụ", url: "pages/Công cụ/Thận & Điện giải - toan kiểm/DG_Natri-Dich.html", keywords: "ha natri, tang natri, dich, bu dich" },
+    { title: "Electrolyte Pro Studio — Bù dịch & Điện giải (Na, K, Ca, Mg)", category: "Công cụ", url: "pages/Công cụ/Thận & Điện giải - toan kiềm/Electrolyte_Studio.html", keywords: "ha natri, tang natri, dich, bu dich, kali, canxi, dien giai" },
     { title: "Đánh giá chức năng thận & Clearance", category: "Công cụ", url: "pages/Công cụ/Thận & Điện giải - toan kiểm/renal-function.html", keywords: "suy than, cockcroft, gault, mdrd, egfr" },
     { title: "Đánh giá nguy cơ tim mạch & huyết khối", category: "Công cụ", url: "pages/Công cụ/Tim mạch & huyết khối/ptnctimmach.html", keywords: "tim mach, huyet khoi, cha2ds2, has bled" },
     { title: "Đánh giá Suy tim lâm sàng (NYHA, AHA)", category: "Công cụ", url: "pages/Công cụ/Tim mạch & huyết khối/DG_Suytim.html", keywords: "suy tim, nyha, phan do, tim" },

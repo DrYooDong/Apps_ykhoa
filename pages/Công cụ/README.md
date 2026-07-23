@@ -36,8 +36,7 @@ Công cụ/
 │   └── DG_Dotquy.html         # Thang điểm NIHSS và tính liều tPA tiêu sợi huyết
 ├── Thận & Điện giải - toan kiềm/ # Rối loạn toan kiềm, điện giải, suy chức năng thận
 │   ├── DG_ABG.html            # Phân tích khí máu động mạch (6 bước chẩn đoán rối loạn)
-│   ├── DG_Natri-Dich.html     # Tính toán bù dịch và tốc độ điều chỉnh Natri máu
-│   ├── DG_Kali-Canxi.html     # Lập kế hoạch bù Kali và Canxi an toàn theo kali niệu/máu
+│   ├── Electrolyte_Studio.html # Electrolyte Pro Studio: Xử trí cấp cứu điện giải (Na, K, Ca, Mg) & Động học dịch truyền
 │   └── renal-function.html    # Tính toán chức năng thận: eGFR (CKD-EPI), Cockcroft-Gault
 ├── Tim mạch & huyết khối/     # Thang điểm tim mạch, nguy cơ tắc mạch/chảy máu
 │   └── ptnctimmach.html       # Đánh giá ASVCD, CHA2DS2-VASc, HAS-BLED trong rung nhĩ

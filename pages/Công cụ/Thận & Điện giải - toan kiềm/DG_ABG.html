@@ -5,33 +5,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
-    content="Công cụ phân tích khí máu động mạch (ABG) tự động, đánh giá rối loạn toan kiềm phối hợp, đáp ứng bù trừ sinh lý (cấp vs mạn) và Anion Gap hiệu chỉnh." />
-  <title>Phân tích Khí máu Động mạch (ABG) – CliniPortal</title>
+    content="Blood Gas Pro Studio — Trình giả lập & phân tích khí máu động mạch (ABG) tương tác, Davenport Acid-Base Nomogram, đánh giá ARDS, gradient A-a DO2, Anion Gap hiệu chỉnh và Quiz chẩn đoán – CliniPortal." />
+  <title>Blood Gas Pro Studio – Phân Tích Khí Máu Động Mạch – CliniPortal</title>
 
   <!-- Preconnect fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
 
   <link rel="stylesheet" href="../../../css/reset.css">
   <link rel="stylesheet" href="../../../css/main.css">
   <link rel="stylesheet" href="../../../css/components/header.css">
   <link rel="stylesheet" href="../../../css/components/sidebar.css">
   <link rel="stylesheet" href="../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../css/components/abg-studio.css">
 
-  <script src="../../../components/header.js"></script>
-  <link rel="stylesheet" href="../../../css/components/abg-calculator.css">
+  <script src="../../../js/main.js" defer></script>
+  <script src="../../../components/header.js" defer></script>
   <script src="../../../components/footer.js" defer></script>
+  <script src="../../../js/abg-studio/abg-criteria.js" defer></script>
+  <script src="../../../js/abg-studio/abg-scenarios.js" defer></script>
+  <script src="../../../js/abg-studio/abg-davenport.js" defer></script>
+  <script src="../../../js/abg-studio/abg-engine.js" defer></script>
+  <script src="../../../js/abg-studio/abg-studio.js" defer></script>
 </head>
 
 <body>
-  <!-- Placeholder nạp header.html — đường dẫn tính từ vị trí cong-cu.html -->
+  <!-- Placeholder nạp header.html -->
   <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-  <!-- ===================== APP CONTAINER ===================== -->
+  <!-- APP CONTAINER -->
   <div class="app-container">
 
     <!-- SIDEBAR -->
@@ -61,228 +68,392 @@
       </nav>
     </aside>
 
-    <!--MAIN CONTENT-->
-    <div class="main-wrapper" id="mainContent">
+    <!-- MAIN CONTENT -->
+    <main class="app-main">
+      <div class="abg-studio-container">
 
-      <section class="hero-dashboard" aria-labelledby="hero-title">
-        <div class="hero-intro">
-          <h1 id="hero-title">PHÂN TÍCH KHÍ MÁU ĐỘNG MẠCH (ABG)</h1>
-          <p>Hệ thống tự động kiểm định kết quả, đánh giá rối loạn toan kiềm hỗn hợp và tính toán Delta Ratio theo
-            phương pháp Henderson-Hasselbalch.</p>
-        </div>
-      </section>
-
-      <!--BREADCRUMB-->
-      <nav aria-label="Breadcrumb" class="breadcrumb-container">
-        <ol class="breadcrumb-list">
-          <li class="breadcrumb-item">
-            <a href="../../../index.html" class="breadcrumb-link">
-              <span class="home-icon">🏠</span> Home
-            </a>
-          </li>
-
-          <li class="breadcrumb-item">
-            <a href="../cong-cu.html" class="breadcrumb-link" title="Công cụ lâm sàng">
-              <span class="home-icon">⚙️</span> Công cụ
-            </a>
-          </li>
-
-          <li class="breadcrumb-item" aria-current="page"> Thận & điện giải, toan kiềm
-          </li>
-
-          <li class="breadcrumb-item active" aria-current="page"> ABG
-          </li>
-        </ol>
-      </nav>
-
-      <div class="abg-grid">
-
-        <div class="panel">
-          <div class="panel-title"><span>🩸</span> Thông số Khí máu & Điện giải</div>
-
-          <div class="grid-2-col">
-            <div class="input-group">
-              <label for="abg-ph">pH máu</label>
-              <input type="number" id="abg-ph" value="7.20" step="0.01">
+        <!-- Studio Header Card -->
+        <div class="studio-card">
+          <div class="studio-header-bar">
+            <div>
+              <span class="element-badge" style="background-color: var(--color-danger); margin-bottom: 0.5rem;">Công Cụ Cấp Cứu High-Tech</span>
+              <h1 class="studio-title">Blood Gas Pro Studio — Giả Lập & Phân Tích Khí Máu Tương Tác</h1>
+              <p style="color: var(--color-text-muted); font-size: 0.95rem; margin-top: 0.25rem;">
+                Hệ thống hỗ trợ ra quyết định lâm sàng cấp cứu. Phân tích 7 bước tự động, vẽ biểu đồ Davenport Nomogram tương tác, đánh giá trao đổi khí A-a DO₂ & P/F Ratio, Anion Gap hiệu chỉnh và Thử thách Quiz.
+              </p>
             </div>
-            <div class="input-group">
-              <label for="abg-duration">Thời gian bệnh Hô hấp</label>
-              <select id="abg-duration">
-                <option value="acute">Cấp tính (Acute)</option>
-                <option value="chronic">Mạn tính (Chronic)</option>
-              </select>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <button class="btn-proc btn-proc-secondary" id="btnResetStudio">
+                <i class="fa-solid fa-rotate-left"></i> Đặt Lại Mặc Định
+              </button>
+              <button class="btn-proc btn-proc-primary" id="btnStartStudioQuiz">
+                <i class="fa-solid fa-graduation-cap"></i> Thử Thách Quiz Chẩn Đoán
+              </button>
             </div>
-          </div>
-
-          <div class="grid-2-col">
-            <div class="input-group">
-              <label for="abg-pco2">pCO₂ (mmHg)</label>
-              <input type="number" id="abg-pco2" value="25" step="0.1">
-            </div>
-            <div class="input-group">
-              <label for="abg-hco3">HCO₃⁻ (mEq/L)</label>
-              <input type="number" id="abg-hco3" value="9.6" step="0.1">
-            </div>
-          </div>
-
-          <div class="grid-2-col">
-            <div class="input-group">
-              <label for="abg-na">Na⁺ (mmol/L)</label>
-              <input type="number" id="abg-na" value="140" step="1">
-            </div>
-            <div class="input-group">
-              <label for="abg-cl">Cl⁻ (mmol/L)</label>
-              <input type="number" id="abg-cl" value="100" step="1">
-            </div>
-          </div>
-
-          <div class="input-group">
-            <label for="abg-alb">Albumin (g/dL) <span
-                style="font-weight: normal; font-size: 0.85rem; color: var(--color-text-muted);">(Dùng để hiệu chỉnh
-                AG)</span></label>
-            <input type="number" id="abg-alb" value="4.0" step="0.1">
-          </div>
-
-          <div class="grid-2-col">
-            <div class="input-group">
-              <label for="abg-lactate">Lactate (mmol/L) <span
-                  style="font-weight: normal; font-size: 0.85rem; color: var(--color-text-muted);">(BT:
-                  &lt;2)</span></label>
-              <input type="number" id="abg-lactate" value="1.2" step="0.1" placeholder="Nhập nếu có">
-            </div>
-            <div class="input-group">
-              <label for="abg-glucose">Glucose (mg/dL) <span
-                  style="font-weight: normal; font-size: 0.85rem; color: var(--color-text-muted);">(BT:
-                  70-100)</span></label>
-              <input type="number" id="abg-glucose" value="280" step="1" placeholder="Nhập nếu có">
-            </div>
-          </div>
-
-          <div class="grid-2-col">
-            <div class="input-group">
-              <label for="abg-ure">Ure (mmol/L) <span
-                  style="font-weight: normal; font-size: 0.85rem; color: var(--color-text-muted);">(BT:
-                  2.5-7.5)</span></label>
-              <input type="number" id="abg-ure" value="" step="0.1" placeholder="Nhập nếu có">
-            </div>
-            <div class="input-group">
-              <label for="abg-ketone">Ketone niệu/máu</label>
-              <select id="abg-ketone">
-                <option value="negative">Âm tính</option>
-                <option value="positive" selected>Dương tính</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="grid-2-col">
-            <div class="input-group">
-              <label for="abg-osm">Osmolal đo được (mOsm/kg) <span
-                  style="font-weight: normal; font-size: 0.75rem; color: var(--color-text-muted);">(Tính Osmolal
-                  Gap)</span></label>
-              <input type="number" id="abg-osm" value="" step="1" placeholder="Nhập nếu có">
-            </div>
-            <div class="input-group">
-              <label for="abg-urine-cl">Cl⁻ niệu (Urine Cl⁻, mEq/L) <span
-                  style="font-weight: normal; font-size: 0.75rem; color: var(--color-text-muted);">(Khóa Kiềm
-                  CH)</span></label>
-              <input type="number" id="abg-urine-cl" value="" step="1" placeholder="Nhập nếu có">
-            </div>
-          </div>
-
-          <button type="button" id="btn-reset" class="reset-btn">🔄 Làm mới dữ liệu</button>
-        </div>
-
-        <div class="panel sticky-panel">
-          <div class="panel-title"><span>🧠</span> Phân tích Logic Lâm sàng</div>
-
-          <div id="step1-validation" class="step-box">
-            <h4>Bước 1: Kiểm định mẫu (Henderson-Hasselbalch)</h4>
-            <p id="out-validation">Đang chờ dữ liệu...</p>
-          </div>
-
-          <div id="step2-primary" class="step-box">
-            <h4>Bước 2: Rối loạn Nguyên phát</h4>
-            <p id="out-primary">-</p>
-          </div>
-
-          <div id="step3-compensation" class="step-box">
-            <h4>Bước 3: Đáp ứng Bù trừ Sinh lý</h4>
-            <p id="out-compensation">-</p>
-          </div>
-
-          <div id="step4-aniongap" class="step-box">
-            <h4>Bước 4: Khoảng trống Anion (AG)</h4>
-            <p id="out-ag">-</p>
-          </div>
-
-          <div id="step5-delta" class="step-box" style="display: none;">
-            <h4>Bước 5: Tỷ lệ Delta (ΔGap / ΔHCO₃⁻)</h4>
-            <p id="out-delta">-</p>
-          </div>
-
-          <div id="step6-causes" class="step-box" style="display: none;">
-            <h4>Bước 6: Gợi ý Nguyên nhân Cụ thể</h4>
-            <div id="out-causes">Vui lòng nhập đầy đủ thông số...</div>
-          </div>
-
-          <div id="step7-warnings" class="step-box status-warning" style="display: none;">
-            <h4>🚨 Lưu ý Thực hành & Cảnh báo Nguy cơ</h4>
-            <div id="out-warnings">-</div>
-          </div>
-
-          <div id="nomogram-box" class="step-box" style="text-align: center; padding-bottom: 10px;">
-            <h4>📈 Biểu đồ Toan kiềm (Nomogram)</h4>
-            <canvas id="abgNomogram" width="400" height="300" style="width: 100%; max-width: 400px; display: block; margin: 10px auto; background: #ffffff; border: 1px solid var(--color-border); border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);"></canvas>
-          </div>
-
-          <div class="conclusion-box">
-            <h3>Kết luận Chẩn đoán:</h3>
-            <p id="out-conclusion" style="font-weight: 600; font-size: 1rem;">Vui lòng nhập đầy đủ thông số Khí máu.</p>
           </div>
         </div>
 
-      </div>
-      <!-- TÀI LIỆU LIÊN QUAN -->
-      <section class="related-links-section" style="max-width: 1200px; margin: 2rem auto 0 auto; width: 100%; box-sizing: border-box;">
+        <!-- BREADCRUMB -->
+        <nav aria-label="Breadcrumb" class="breadcrumb-container" style="margin-bottom: 1.25rem;">
+          <ol class="breadcrumb-list">
+            <li class="breadcrumb-item">
+              <a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="../cong-cu.html" class="breadcrumb-link" title="Công cụ lâm sàng"><span class="home-icon">⚙️</span> Công cụ</a>
+            </li>
+            <li class="breadcrumb-item">Thận & điện giải, toan kiềm</li>
+            <li class="breadcrumb-item active" aria-current="page">Blood Gas Pro Studio</li>
+          </ol>
+        </nav>
+
+        <!-- 3-COLUMN STUDIO MAIN GRID -->
+        <div class="studio-main-grid">
+
+          <!-- LEFT COLUMN: Tabbed Control Panel (Scenarios vs Parameter Mixer) -->
+          <div class="studio-card">
+            
+            <!-- Sidebar Panel Tabs Header -->
+            <div class="sidebar-tabs-header">
+              <button class="sidebar-tab-btn active" data-tab="tab_scenarios">
+                <i class="fa-solid fa-user-doctor"></i> Ca Bệnh Mẫu
+              </button>
+              <button class="sidebar-tab-btn" data-tab="tab_mixer">
+                <i class="fa-solid fa-sliders"></i> Parameter Mixer
+              </button>
+            </div>
+
+            <!-- TAB 1: Scenarios & Patient Context -->
+            <div class="sidebar-tab-content" id="tab_scenarios" style="display: block;">
+              <!-- Patient Context Panel -->
+              <div class="patient-card" id="patientContextPanel" style="display: none;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+                  <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--color-primary); margin: 0;">
+                    🏥 BỆNH NHÂN ẢO CẤP CỨU
+                  </h3>
+                  <span class="element-badge" style="font-size: 0.7rem; background: var(--color-primary);">Tình Huống</span>
+                </div>
+                <p style="font-size: 0.85rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.4rem;" id="patDemographics">--</p>
+
+                <div class="patient-vitals-grid">
+                  <div class="vital-box">
+                    <span class="vital-label">MẠCH</span>
+                    <span class="vital-val" id="patHR">--</span>
+                  </div>
+                  <div class="vital-box">
+                    <span class="vital-label">HUYẾT ÁP</span>
+                    <span class="vital-val" id="patBP">--</span>
+                  </div>
+                  <div class="vital-box">
+                    <span class="vital-label">SpO2</span>
+                    <span class="vital-val" id="patSpO2">--</span>
+                  </div>
+                  <div class="vital-box">
+                    <span class="vital-label">NHIỆT ĐỘ</span>
+                    <span class="vital-val" id="patTemp">--</span>
+                  </div>
+                  <div class="vital-box">
+                    <span class="vital-label">NHỊP THỞ</span>
+                    <span class="vital-val" id="patRR">--</span>
+                  </div>
+                  <div class="vital-box">
+                    <span class="vital-label">GCS</span>
+                    <span class="vital-val" id="patGCS">--</span>
+                  </div>
+                </div>
+
+                <p style="font-size: 0.82rem; color: var(--color-text); line-height: 1.45; margin-bottom: 0.4rem;" id="patContextDesc">--</p>
+                <ul style="font-size: 0.8rem; color: var(--color-text-muted); list-style: none; padding: 0; margin: 0;" id="patSymptomsList"></ul>
+              </div>
+
+              <!-- Scenarios Bank List -->
+              <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.75rem;">
+                📂 Ca Lâm Sàng Cấp Cứu Mẫu
+              </h3>
+              <div class="scenarios-scroll-list" id="scenarioListGrid"></div>
+            </div>
+
+            <!-- TAB 2: Parameter Mixer with Category Pills Filter -->
+            <div class="sidebar-tab-content" id="tab_mixer" style="display: none;">
+              <!-- Category Pills Filter -->
+              <div class="cat-pills-scroll">
+                <button class="cat-pill-btn active" data-cat="ALL">Tất cả</button>
+                <button class="cat-pill-btn" data-cat="Toan chuyển hóa">Toan CH</button>
+                <button class="cat-pill-btn" data-cat="Kiềm chuyển hóa">Kiềm CH</button>
+                <button class="cat-pill-btn" data-cat="Toan hô hấp">Toan HH</button>
+                <button class="cat-pill-btn" data-cat="Kiềm hô hấp">Kiềm HH</button>
+                <button class="cat-pill-btn" data-cat="Độc chất / Khác">Độc chất/Khác</button>
+              </div>
+
+              <!-- Quick Presets -->
+              <div class="preset-buttons-grid">
+                <button class="preset-btn" data-preset="dka">🧪 DKA Nặng</button>
+                <button class="preset-btn" data-preset="vomiting">🤮 Nôn ói kéo dài</button>
+                <button class="preset-btn" data-preset="copd">🫁 Đợt cấp COPD</button>
+                <button class="preset-btn" data-preset="panic">💨 Lo âu thở nhanh</button>
+                <button class="preset-btn" data-preset="sepsis">🦠 Sốc nhiễm trùng</button>
+                <button class="preset-btn" data-preset="ards">🫁 ARDS Nặng</button>
+              </div>
+
+              <!-- Sliders Input Section -->
+              <div class="abg-sliders-container">
+                
+                <!-- pH Slider -->
+                <div class="slider-group-box">
+                  <div class="slider-header">
+                    <span class="slider-title-label">pH Máu Động Mạch</span>
+                    <input type="number" id="inputPhNum" class="abg-number-input" value="7.12" step="0.01" min="6.8" max="7.8">
+                  </div>
+                  <input type="range" id="inputPhRange" class="abg-range-input" min="6.8" max="7.8" step="0.01" value="7.12">
+                </div>
+
+                <!-- PaCO2 Slider -->
+                <div class="slider-group-box">
+                  <div class="slider-header">
+                    <span class="slider-title-label">PaCO₂ (mmHg)</span>
+                    <input type="number" id="inputPco2Num" class="abg-number-input" value="18" step="0.5" min="10" max="110">
+                  </div>
+                  <input type="range" id="inputPco2Range" class="abg-range-input" min="10" max="110" step="0.5" value="18">
+                </div>
+
+                <!-- HCO3- Slider -->
+                <div class="slider-group-box">
+                  <div class="slider-header">
+                    <span class="slider-title-label">HCO₃⁻ (mEq/L)</span>
+                    <input type="number" id="inputHco3Num" class="abg-number-input" value="6" step="0.5" min="2" max="55">
+                  </div>
+                  <input type="range" id="inputHco3Range" class="abg-range-input" min="2" max="55" step="0.5" value="6">
+                </div>
+
+                <!-- PaO2 & FiO2 Sliders -->
+                <div class="slider-group-box">
+                  <div class="slider-header">
+                    <span class="slider-title-label">PaO₂ (mmHg)</span>
+                    <input type="number" id="inputPao2Num" class="abg-number-input" value="95" step="1" min="30" max="500">
+                  </div>
+                  <input type="range" id="inputPao2Range" class="abg-range-input" min="30" max="500" step="1" value="95">
+
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem;">
+                    <span style="font-size: 0.8rem; font-weight: 600; color: var(--color-text);">FiO₂ (%)</span>
+                    <input type="number" id="inputFio2Num" class="abg-number-input" value="21" min="21" max="100" step="1">
+                  </div>
+                </div>
+
+                <!-- Electrolytes & Lab Panel Grid -->
+                <div class="slider-group-box">
+                  <span class="slider-title-label" style="display:block; margin-bottom: 0.5rem; color: var(--color-primary);">🧪 Điện Giải & Sinh Hóa Máu</span>
+                  
+                  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;">
+                    <div>
+                      <label style="font-size: 0.72rem; color: var(--color-text-muted);">Na⁺ (mmol/L)</label>
+                      <input type="number" id="inputNaNum" class="abg-number-input" style="width: 100%;" value="135">
+                    </div>
+                    <div>
+                      <label style="font-size: 0.72rem; color: var(--color-text-muted);">Cl⁻ (mmol/L)</label>
+                      <input type="number" id="inputClNum" class="abg-number-input" style="width: 100%;" value="96">
+                    </div>
+                    <div>
+                      <label style="font-size: 0.72rem; color: var(--color-text-muted);">K⁺ (mmol/L)</label>
+                      <input type="number" id="inputKNum" class="abg-number-input" style="width: 100%;" value="5.4" step="0.1">
+                    </div>
+                    <div>
+                      <label style="font-size: 0.72rem; color: var(--color-text-muted);">Albumin (g/dL)</label>
+                      <input type="number" id="inputAlbNum" class="abg-number-input" style="width: 100%;" value="4.0" step="0.1">
+                    </div>
+                    <div>
+                      <label style="font-size: 0.72rem; color: var(--color-text-muted);">Lactate (mmol/L)</label>
+                      <input type="number" id="inputLactateNum" class="abg-number-input" style="width: 100%;" value="1.8" step="0.1">
+                    </div>
+                    <div>
+                      <label style="font-size: 0.72rem; color: var(--color-text-muted);">Glucose (mg/dL)</label>
+                      <input type="number" id="inputGlucoseNum" class="abg-number-input" style="width: 100%;" value="480">
+                    </div>
+                    <div>
+                      <label style="font-size: 0.72rem; color: var(--color-text-muted);">Ure (mmol/L)</label>
+                      <input type="number" id="inputUreNum" class="abg-number-input" style="width: 100%;" value="12.5" step="0.1">
+                    </div>
+                    <div>
+                      <label style="font-size: 0.72rem; color: var(--color-text-muted);">Cân nặng (kg)</label>
+                      <input type="number" id="inputWeightNum" class="abg-number-input" style="width: 100%;" value="60">
+                    </div>
+                  </div>
+
+                  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-top: 0.5rem;">
+                    <div>
+                      <label style="font-size: 0.72rem; color: var(--color-text-muted);">Thời Gian Bệnh HH</label>
+                      <select id="selectDuration" style="font-size: 0.78rem; padding: 0.35rem; border-radius: 6px;">
+                        <option value="acute" selected>Cấp tính (Acute)</option>
+                        <option value="chronic">Mạn tính (Chronic)</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label style="font-size: 0.72rem; color: var(--color-text-muted);">Ketone Máu/Niệu</label>
+                      <select id="selectKetone" style="font-size: 0.78rem; padding: 0.35rem; border-radius: 6px;">
+                        <option value="negative">Âm tính</option>
+                        <option value="positive" selected>Dương tính</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div style="margin-top: 0.5rem;">
+                    <label style="font-size: 0.72rem; color: var(--color-text-muted);">Urine Cl⁻ (mEq/L)</label>
+                    <input type="number" id="inputUrineClNum" class="abg-number-input" style="width: 100%;" placeholder="Nhập nếu có">
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          <!-- MIDDLE COLUMN: Davenport Acid-Base Nomogram Canvas & Gas Metrics -->
+          <div class="studio-card">
+
+            <!-- Active Chips Bar -->
+            <div class="active-chips-bar-wrapper">
+              <span class="active-chips-label"><i class="fa-solid fa-layer-group"></i> Thông số đang chọn:</span>
+              <div class="active-chips-list" id="activeModifiersChips"></div>
+            </div>
+
+            <!-- Davenport Canvas Plot Card -->
+            <div class="davenport-canvas-box">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--color-text); margin: 0;">
+                  📈 Davenport Acid-Base Nomogram (Tương Tác)
+                </h3>
+                <span style="font-size: 0.78rem; color: var(--color-text-muted);">
+                  <i class="fa-solid fa-hand-pointer"></i> Bấm hoặc kéo điểm trên biểu đồ
+                </span>
+              </div>
+              <canvas id="canvasDavenport" width="580" height="320"></canvas>
+            </div>
+
+            <!-- Gas Exchange & Metrics Cards Grid -->
+            <div class="metrics-cards-grid">
+              <div class="metric-card">
+                <div class="metric-header">
+                  <span>TỈ LỆ PaO₂ / FiO₂</span>
+                  <i class="fa-solid fa-lungs"></i>
+                </div>
+                <div class="metric-value" id="dispPfValue">452</div>
+                <span class="metric-status-badge badge-normal" id="dispPfBadge">Bình thường</span>
+              </div>
+
+              <div class="metric-card">
+                <div class="metric-header">
+                  <span>GRADIENT A-a DO₂</span>
+                  <i class="fa-solid fa-circle-nodes"></i>
+                </div>
+                <div class="metric-value" id="dispAaValue" style="font-size: 1.05rem;">12.5 mmHg</div>
+                <span style="font-size: 0.7rem; color: var(--color-text-muted);">Khuếch tán phế nang</span>
+              </div>
+
+              <div class="metric-card">
+                <div class="metric-header">
+                  <span>ANION GAP (AG)</span>
+                  <i class="fa-solid fa-scale-balanced"></i>
+                </div>
+                <div class="metric-value" id="dispAgValue">33.0</div>
+                <span style="font-size: 0.72rem; color: var(--color-text-muted);">Hiệu chỉnh Albumin: <strong id="dispAgCorrValue">33.0</strong></span>
+              </div>
+            </div>
+
+            <!-- Delta Ratio Gauge Bar Card -->
+            <div class="delta-gauge-container">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.85rem; font-weight: 700; color: var(--color-text);">
+                  ⚖️ Tỷ Lệ Delta Ratio (ΔGap / ΔHCO₃⁻): <strong id="dispDeltaRatioVal" style="color: var(--color-primary);">1.50</strong>
+                </span>
+                <span style="font-size: 0.78rem; color: var(--color-text-muted);">
+                  Cần bù HCO₃⁻: <strong id="dispBicarbDeficitVal" style="color: var(--color-danger);">216 mEq</strong>
+                </span>
+              </div>
+
+              <div class="delta-gauge-track">
+                <div class="delta-gauge-pin" id="deltaGaugePin" style="left: 60%;"></div>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--color-text-muted);">
+                <span>< 0.4 (Toan CH AG BT)</span>
+                <span>0.4 – 0.8 (Toan HH)</span>
+                <span>0.8 – 2.0 (Toan AG đơn)</span>
+                <span>> 2.0 (Kiềm CH)</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN: 7-Step Systematic Checklist & Criteria -->
+          <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+            
+            <div class="studio-card">
+              <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.5rem;">
+                🔬 Quy Trình Đọc ABG 7 Bước
+              </h3>
+              <p style="font-size: 0.78rem; color: var(--color-text-muted); margin-bottom: 0.75rem;">
+                Phân tích khí máu hệ thống theo tiêu chuẩn Hồi sức Cấp cứu (ICU/ED).
+              </p>
+              <div class="checklist-container" id="systematicChecklist"></div>
+            </div>
+
+            <div class="studio-card">
+              <div id="diagnosticCriteriaBox"></div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Quiz Studio Box -->
+        <div class="quiz-studio-card" id="quizStudioBox" style="display: none;">
+          <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--color-primary); margin-bottom: 0.5rem;">
+            🎯 THỬ THÁCH CHẨN ĐOÁN KHÍ MÁU LÂM SÀNG
+          </h3>
+          <p style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
+            Dựa trên thông tin sinh hiệu bệnh nhân, kết quả khí máu và biểu đồ Davenport, hãy chọn chẩn đoán chính xác nhất:
+          </p>
+          <div id="quizStudioOptions"></div>
+        </div>
+
+        <!-- TÀI LIỆU LIÊN QUAN -->
+        <section class="related-links-section" style="max-width: 1450px; margin: 2rem auto 0 auto; width: 100%; box-sizing: border-box;">
           <h4 class="related-links-title">
-              <i class="fas fa-link"></i> Xem thêm các nội dung liên quan
+            <i class="fas fa-link"></i> Xem thêm các nội dung liên quan
           </h4>
           <div class="related-links-grid">
-              <a href="../../Sinh lý - Sinh lý bệnh/Sinhly/Phan4/SL_Traodoikhi.html" class="related-link-card">
-                  <div class="related-card-content">
-                      <span class="related-card-badge sinh-ly">Sinh lý</span>
-                      <h5>Sinh Lý Trao Đổi & Vận Chuyển Khí</h5>
-                      <p>Khảo sát màng phế nang - mao mạch, các yếu tố ảnh hưởng đến sự khuếch tán khí O2/CO2 và đường cong phân ly HbO2.</p>
-                  </div>
-                  <i class="fas fa-chevron-right related-card-arrow"></i>
-              </a>
-              <a href="../../Dược lý/Chuyên khoa/DL_Ttoan_than.html" class="related-link-card">
-                      <div class="related-card-content">
-                          <span class="related-card-badge duoc-ly">Dược lý</span>
-                          <h5>Dược Lý Lâm Sàng Toan Thận</h5>
-                          <p>Tìm hiểu các nhóm thuốc tác động lên thăng bằng kiềm toan, thuốc lợi tiểu tác động tại các vị trí ống thận.</p>
-                      </div>
-                      <i class="fas fa-chevron-right related-card-arrow"></i>
-              </a>
-              <a href="../../Kỹ năng/Cận lâm sàng/doc-sh-than.html" class="related-link-card">
-                  <div class="related-card-content">
-                      <span class="related-card-badge ky-nang">Kỹ năng lâm sàng</span>
-                      <h5>Đọc & Phân Tích Sinh Hóa Thận</h5>
-                      <p>Hướng dẫn biện giải các chỉ số Ure, Creatinine máu, độ thanh thải Creatinine và công thức tính eGFR.</p>
-                  </div>
-                  <i class="fas fa-chevron-right related-card-arrow"></i>
-              </a>
+            <a href="../../Sinh lý - Sinh lý bệnh/Sinhly/Phan4/SL_Traodoikhi.html" class="related-link-card">
+              <div class="related-card-content">
+                <span class="related-card-badge sinh-ly">Sinh lý</span>
+                <h5>Sinh Lý Trao Đổi & Vận Chuyển Khí</h5>
+                <p>Khảo sát màng phế nang - mao mạch, các yếu tố ảnh hưởng đến sự khuếch tán khí O2/CO2 và đường cong phân ly HbO2.</p>
+              </div>
+              <i class="fas fa-chevron-right related-card-arrow"></i>
+            </a>
+            <a href="../../Dược lý/Chuyên khoa/DL_Ttoan_than.html" class="related-link-card">
+              <div class="related-card-content">
+                <span class="related-card-badge duoc-ly">Dược lý</span>
+                <h5>Dược Lý Lâm Sàng Toan Thận</h5>
+                <p>Tìm hiểu các nhóm thuốc tác động lên thăng bằng kiềm toan, thuốc lợi tiểu tác động tại các vị trí ống thận.</p>
+              </div>
+              <i class="fas fa-chevron-right related-card-arrow"></i>
+            </a>
+            <a href="../../Kỹ năng/Cận lâm sàng/doc-sh-than.html" class="related-link-card">
+              <div class="related-card-content">
+                <span class="related-card-badge ky-nang">Kỹ năng lâm sàng</span>
+                <h5>Đọc & Phân Tích Sinh Hóa Thận</h5>
+                <p>Hướng dẫn biện giải các chỉ số Ure, Creatinine máu, độ thanh thải Creatinine và công thức tính eGFR.</p>
+              </div>
+              <i class="fas fa-chevron-right related-card-arrow"></i>
+            </a>
           </div>
-      </section>
+        </section>
 
-    </div>
+      </div>
+    </main>
   </div>
 
-  <script src="../../../js/calculators/abg-nomogram.js" defer></script>
-  <script src="../../../js/calculators/abg-calculator.js" defer></script>
-
   <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
-  <script src="../../../js/main.js" defer></script>
 </body>
 
 </html>

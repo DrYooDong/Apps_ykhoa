@@ -50,7 +50,10 @@
 | `components/pharmacology-global.css` | Styling Drug Passport, Emergency FAB & Modal, Flashcard 3D, Cross-links | `pages/Dược lý/**` |
 | `components/pharmacology-heatmap.css` | Styling 2D Heatmap Grid, Autocomplete Search, Spectrum 2.0 & Timeline | `pages/Dược lý/**` |
 | `components/moa-theater.css` | Styling MOA Theater SVG Animations, Scenario Simulator & PK Canvas | `pages/Dược lý/**` |
-| `components/abg-calculator.css` | Giao diện máy tính ABG | `DG_ABG.html` |
+| `components/abg-calculator.css` | Giao diện máy tính ABG legacy | `DG_ABG.html` |
+| `components/abg-studio.css` | Giao diện Blood Gas Pro Studio, Davenport Nomogram, Vitals, Checklist 7 bước | `pages/Công cụ/Thận & Điện giải - toan kiềm/DG_ABG.html` |
+| `components/electrolyte-studio.css` | Giao diện Electrolyte Pro Studio (Na, K, Ca, Mg), Canvas Balance Plot, Directives | `pages/Công cụ/Thận & Điện giải - toan kiềm/Electrolyte_Studio.html` |
+| `components/cxr-studio.css` | Giao diện Chest X-Ray Pro Studio, SVG Radiograph Engine, CTR Ruler, ABCDE Checklist | `pages/Công cụ/Hô hấp & Lao/CXR_Studio.html` |
 | `components/insulin-calculator.css` | Giao diện máy tính Insulin | `DG_Insulin-ĐTĐ.html` |
 | `components/benh-an.css` | Mẫu bệnh án điện tử | `benh-an-noi-khoa.html` |
 | `components/paraclinical.css` | Đọc kết quả cận lâm sàng | `pages/Kỹ năng/Cận lâm sàng/**` |
@@ -79,6 +82,21 @@
 | `ecg-studio/ecg-leads.js` | Tổng hợp 12 chuyển đạo theo tam giác Einthoven | `ECG_Interactive.html` |
 | `ecg-studio/ecg-engine.js` | Động cơ Canvas sinh sóng ECG toán học Gaussian & Spline | `ECG_Interactive.html` |
 | `ecg-studio/ecg-studio.js` | UI Controller tổng hợp Studio, Calipers & Quiz | `ECG_Interactive.html` |
+| `abg-studio/abg-criteria.js` | Dữ liệu tiêu chuẩn chẩn đoán, P/F ratio, A-a DO2, Urine Cl- & Cảnh báo an toàn | `DG_ABG.html` |
+| `abg-studio/abg-scenarios.js` | Ngân hàng ca bệnh mẫu & bệnh nhân ảo ABG | `DG_ABG.html` |
+| `abg-studio/abg-davenport.js` | Động cơ Canvas vẽ biểu đồ Davenport Nomogram tương tác | `DG_ABG.html` |
+| `abg-studio/abg-engine.js` | Động cơ phân tích khí máu 7 bước tự động | `DG_ABG.html` |
+| `abg-studio/abg-studio.js` | UI Controller tổng hợp Blood Gas Pro Studio, Sliders, Preset, Metrics & Quiz | `DG_ABG.html` |
+| `electrolyte-studio/electrolyte-criteria.js` | Quy tắc sinh lý, công thức Adrogué-Madias, TBW, Ca_corr & Y lệnh UKKA | `Electrolyte_Studio.html` |
+| `electrolyte-studio/electrolyte-scenarios.js` | Ca cấp cứu bệnh nhân ảo điện giải (Na, K, Ca, Mg) | `Electrolyte_Studio.html` |
+| `electrolyte-studio/electrolyte-canvas.js` | Động cơ Canvas vẽ biểu đồ Electrolyte Balance Bar Chart | `Electrolyte_Studio.html` |
+| `electrolyte-studio/electrolyte-engine.js` | Động cơ tính toán động học dịch truyền & Y lệnh 3 cấp độ | `Electrolyte_Studio.html` |
+| `electrolyte-studio/electrolyte-studio.js` | UI Controller tổng hợp Electrolyte Pro Studio | `Electrolyte_Studio.html` |
+| `cxr-studio/cxr-criteria.js` | Quy tắc chẩn đoán, CTR, phân loại ARDS & Bảng kiểm ABCDE | `CXR_Studio.html` |
+| `cxr-studio/cxr-scenarios.js` | Ca bệnh lâm sàng & hình ảnh phim X-quang ngực cấp cứu | `CXR_Studio.html` |
+| `cxr-studio/cxr-svg-engine.js` | Động cơ SVG Vector dựng giải phẫu lồng ngực & các lớp tổn thương | `CXR_Studio.html` |
+| `cxr-studio/cxr-engine.js` | Động cơ phân tích phim X-quang 5 bước ABCDE tự động | `CXR_Studio.html` |
+| `cxr-studio/cxr-studio.js` | UI Controller tổng hợp Chest X-Ray Pro Studio, Ruler CTR, Invert & Quiz | `CXR_Studio.html` |
 | `pharmacology-symptoms.js` | Filter dược lý theo triệu chứng | `pages/Dược lý/Triệu chứng/**` |
 | `pharmacology-tools.js` | Logic tương tác đa thuốc, hiệu chỉnh liều gan thận, quy đổi liều tương đương & Antidote | `pages/Dược lý/**` |
 | `drug-passport.js` | Quản lý state bệnh nhân cá thể hóa toàn cục (localStorage) | `pages/Dược lý/**` |
@@ -127,7 +145,11 @@
 
 | File | Vai trò | CSS riêng |
 |------|---------|-----------|
-| `Công cụ/cong-cu.html` | Hub tổng Công cụ | — |
+| `Công cụ/cong-cu.html` | Hub tổng Công cụ | `cong-cu.css` |
+| `Công cụ/cong-cu.css` | Styling tùy chỉnh cho Hub Công cụ | — |
+| `Công cụ/tools-data.js` | Dữ liệu danh sách 27+ công cụ lâm sàng và partMetadata | — |
+| `Công cụ/cong-cu-logic.js` | Logic render động thẻ công cụ, lọc tìm kiếm & ghim yêu thích | — |
+| `Công cụ/lab-values.js` | Dữ liệu & Logic Widget Trị số xét nghiệm tham chiếu ở Sidebar | — |
 | `Công cụ/Chung/QuyDoi_LieuTuongDuong.html` | Bộ quy đổi liều thuốc tương đương (Corticoids, Opioids OME, Statins, PPIs, DOACs, Benzo) | `pharmacology-tools.css` |
 | `Công cụ/Chung/Tracuu_maICD10.html` | Tra cứu mã ICD-10 | — |
 | `Công cụ/Chung/Bệnh án/benh-an-noi-khoa.html` | Mẫu bệnh án nội khoa | `benh-an.css` |
@@ -139,10 +161,9 @@
 | `Công cụ/Cấp cứu & hồi sức/DG_AnthanICU.html` | An thần, giảm đau & mê sảng ICU (RASS, CPOT, CAM-ICU, Bơm tiêm điện) | — |
 | `Công cụ/Hô hấp & Lao/DG_Viem-phoi.html` | Đánh giá viêm phổi (PSI, CURB) | — |
 | `Công cụ/Thận & Điện giải - toan kiềm/DG_ABG.html` | Phân tích khí máu | `abg-calculator.css` |
-| `Công cụ/Thận & Điện giải - toan kiềm/DG_Kali-Canxi.html` | Rối loạn Kali/Canxi | — |
-| `Công cụ/Thận & Điện giải - toan kiềm/DG_Natri-Dich.html` | Rối loạn Natri/Dịch | — |
+| `Công cụ/Thận & Điện giải - toan kiềm/Electrolyte_Studio.html` | Electrolyte Pro Studio: Rối loạn điện giải (Na, K, Ca, Mg) & Động học dịch truyền | `electrolyte-studio.css` |
 | `Công cụ/Thận & Điện giải - toan kiềm/renal-function.html` | Chức năng thận | — |
-| `Công cụ/Thận & Điện giải - toan kiềm/danh-gia-nguyen-nhan-aki.html` | Đánh giá nguyên nhân AKI | — |
+| `Công cụ/Thận & Điện giải - toan kiềm/DG_nguyennhanAKI.html` | Đánh giá nguyên nhân AKI | — |
 | `Công cụ/Nội tiết & Chuyển hóa/DG_Insulin-ĐTĐ.html` | Chỉnh liều Insulin | `insulin-calculator.css` |
 | `Công cụ/Tim mạch & huyết khối/DG_LDLc.html` | Mục tiêu LDL-c | — |
 | `Công cụ/Tim mạch & huyết khối/DG_Suytim.html` | Đánh giá suy tim | — |
@@ -302,13 +323,17 @@
 | `Y học chứng cứ/Guidelines/Kho Guidelines/ks-cho-bn-nang.html` | Kháng sinh cho bệnh nhân nặng — Tổng quan Critical Care Clinics 2026 (Standalone) |
 | `Y học chứng cứ/Guidelines/Kho Guidelines/byt-copd-2026.html` | Hướng dẫn chẩn đoán và điều trị bệnh phổi tắc nghẽn mạn tính (COPD) Bộ Y tế 2026 (Standalone) |
 | `Y học chứng cứ/Guidelines/Kho Guidelines/empa-reg.html` | EMPA-REG OUTCOME — Empagliflozin tim mạch (Standalone) |
-| `Y học chứng cứ/Thống kê y học/Thongkeyhoc.html` | Thống kê y học |
+| `Y học chứng cứ/Thống kê y học/Thongkeyhoc.html` | Thống kê y học (Hub chính 8 bài học) |
 | `Y học chứng cứ/Thống kê y học/quiz.html` | **[MỚI]** EBM Quiz Engine & Spaced Repetition (Thuật toán SM-2, Flashcard 3D & 16+ câu hỏi lâm sàng) |
 | `Y học chứng cứ/Thống kê y học/quiz.js` | Logic Spaced Repetition SM-2 (Interval & Ease Factor), lật thẻ 3D & ngân hàng 16 câu hỏi trắc nghiệm |
-| `Y học chứng cứ/Thống kê y học/danh-gia-cong-cu-chan-doan.html` | Đánh giá công cụ chẩn đoán |
-| `Y học chứng cứ/Thống kê y học/phan-tich-rct-meta-analysis.html` | Phân tích RCT & Meta-analysis |
-| `Y học chứng cứ/Thống kê y học/thiet-ke-nghien-cuu-khoa-hoc.html` | Thiết kế nghiên cứu |
-| `Y học chứng cứ/Thống kê y học/y-nghia-thong-ke-va-lam-sang.html` | Ý nghĩa thống kê lâm sàng |
+| `Y học chứng cứ/Thống kê y học/1_Ynghia_Thongke&Lamsang.html` | Bài 1: Ý nghĩa thống kê & lâm sàng |
+| `Y học chứng cứ/Thống kê y học/2_DG_Congcu_Chandoan.html` | Bài 2: Đánh giá công cụ chẩn đoán |
+| `Y học chứng cứ/Thống kê y học/3_Thietke_NCKH.html` | Bài 3: Thiết kế nghiên cứu khoa học |
+| `Y học chứng cứ/Thống kê y học/4_PhantichNC_rct&meta-analysis.html` | Bài 4: Phân tích RCT & Meta-analysis |
+| `Y học chứng cứ/Thống kê y học/5_ANOVA_Phan_tich_Phuong_sai.html` | **[MỚI]** Bài 5: Phân tích phương sai (ANOVA) toàn diện & F-distribution Visualizer |
+| `Y học chứng cứ/Thống kê y học/6_Hoi_quy_Logistic_Da_thuc.html` | **[MỚI]** Bài 6: Hồi quy Logistic Đa thức (Multinomial Logistic) & RRR Calculator |
+| `Y học chứng cứ/Thống kê y học/7_Hoi_quy_Bayes.html` | **[MỚI]** Bài 7: Hồi quy Tuyến tính Bayes trong Y học & Prior-to-Posterior Animator |
+| `Y học chứng cứ/Thống kê y học/8_Phan_bien_Nghien_cuu.html` | **[MỚI]** Bài 8: Phản biện Nghiên cứu, MANOVA / MANCOVA & Reviewer Response Audit Checklist |
 
 ---
 

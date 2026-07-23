@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <i class="${starClass}"></i>
           </button>
         </div>
-        <a href="${tool.link}" class="specialty-card-action" style="text-decoration:none; display:flex; justify-content:space-between; align-items:center;">
+        <a href="${encodeURI(tool.link)}" class="specialty-card-action" style="text-decoration:none; display:flex; justify-content:space-between; align-items:center;">
           <span>Mở công cụ</span>
           <i class="fa-solid fa-chevron-right"></i>
         </a>

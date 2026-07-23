@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bài 6: Hồi quy Logistic Đa thức (Multinomial Logistic Regression) — CliniPortal">
+  <title>Bài 6: Hồi quy Logistic Đa thức — CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../css/components/toc.css">
+  <link rel="stylesheet" href="text-style.css">
+  <script src="../../../js/toc.js" defer></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #0369a1;
+      --accent-light: #e0f2fe;
+      --accent-mid: #0284c7;
+      --bg: #f0f9ff;
+      --surface: #ffffff;
+      --surface-2: #f8fafc;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --text-faint: #94a3b8;
+      --radius: 16px;
+      --tr: 260ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── TOPNAV ── */
+    .topnav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 1rem;
+      padding: 0 1.5rem; height: 54px;
+    }
+    .topnav-back {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      color: var(--accent); text-decoration: none;
+      font-size: 0.82rem; font-weight: 600;
+      padding: 0.35rem 0.75rem; border-radius: 8px;
+      transition: background var(--tr);
+    }
+    .topnav-back:hover { background: var(--accent-light); }
+    .topnav-divider { width: 1px; height: 20px; background: var(--border); }
+    .topnav-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700; font-size: 0.9rem; color: var(--text);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .topnav-pill {
+      padding: 0.2rem 0.65rem; border-radius: 20px;
+      background: var(--accent-light); color: var(--accent);
+      font-size: 0.7rem; font-weight: 700; margin-left: auto;
+    }
+
+    /* ── LAYOUT ── */
+    .main-container {
+      max-width: 800px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 2rem 1rem;
+      flex: 1;
+    }
+
+    /* ── LESSON HEADER ── */
+    .lesson-header {
+      margin-bottom: 2rem;
+    }
+    .lesson-meta {
+      display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;
+    }
+    .lesson-tag {
+      padding: 0.2rem 0.65rem; border-radius: 20px;
+      background: var(--accent-light); color: var(--accent);
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+    }
+    .lesson-readtime {
+      font-size: 0.78rem; color: var(--text-faint); display: flex; align-items: center; gap: 0.3rem;
+    }
+    .lesson-header h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.5rem, 1.2rem + 1vw, 2.1rem);
+      font-weight: 800; color: var(--text); line-height: 1.3; margin-bottom: 0.75rem;
+    }
+    .lesson-lead {
+      font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;
+    }
+
+    /* ── INTERACTIVE CALCULATOR ── */
+    .calc-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }
+    .calc-box h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.05rem; font-weight: 700; color: var(--accent);
+      margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;
+    }
+    .calc-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;
+    }
+    .input-group { display: flex; flex-direction: column; gap: 0.35rem; }
+    .input-group label { font-size: 0.8rem; font-weight: 600; color: var(--text); }
+    .input-group input, .input-group select {
+      padding: 0.5rem 0.75rem; border-radius: 8px; border: 1px solid var(--border);
+      font-size: 0.85rem; background: var(--surface-2); color: var(--text);
+      outline: none; transition: border-color var(--tr);
+    }
+    .calc-btn {
+      padding: 0.6rem 1.2rem; border-radius: 10px; background: var(--accent);
+      color: #fff; border: none; font-weight: 700; font-size: 0.85rem;
+      cursor: pointer; transition: background var(--tr);
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      margin-top: 1rem; width: 100%;
+    }
+    .calc-btn:hover { background: var(--accent-mid); }
+    .calc-result {
+      margin-top: 1.25rem; padding: 1rem; border-radius: 12px;
+      background: var(--accent-light); border: 1px solid rgba(2, 132, 199, 0.2);
+      display: none;
+    }
+    .calc-result.show { display: block; animation: fadeIn 300ms ease; }
+
+    /* ── MARK READ BUTTON ── */
+    .mark-read-section {
+      margin-top: 3rem; padding: 1.5rem; border-radius: var(--radius);
+      background: var(--surface); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+    }
+    .mark-read-info strong { display: block; font-size: 0.95rem; color: var(--text); }
+    .mark-read-info span { font-size: 0.8rem; color: var(--text-muted); }
+    .mark-read-btn {
+      padding: 0.6rem 1.25rem; border-radius: 10px; font-size: 0.85rem; font-weight: 700;
+      cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all var(--tr);
+    }
+    .mark-read-btn.unread { background: var(--accent); color: #fff; }
+    .mark-read-btn.unread:hover { background: var(--accent-mid); }
+    .mark-read-btn.done { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topnav" aria-label="Top navigation">
+    <a href="Thongkeyhoc.html" class="topnav-back">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <polyline points="15 18 9 12 15 6" />
+      </svg>
+      Thống kê Y học
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">
+      <span>Bài 6: Hồi Quy Logistic Đa Thức</span>
+    </div>
+    <span class="topnav-pill">Bài 6 / 8</span>
+  </nav>
+
+  <!-- MAIN CONTAINER -->
+  <div class="main-container visual-container">
+
+    <!-- HEADER -->
+    <header class="lesson-header">
+      <div class="lesson-meta">
+        <span class="lesson-tag">Mô-đun Nâng Cao</span>
+        <span class="lesson-readtime">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          22 phút đọc
+        </span>
+      </div>
+      <h1>Hồi Quy Logistic Đa Thức (Multinomial Logistic Regression)</h1>
+      <p class="lesson-lead">
+        Phương pháp mô hình hóa mạnh mẽ dành cho biến kết cục danh nghĩa có nhiều hơn 2 lựa chọn (ví dụ: Lựa chọn phác đồ thay thế thận: Bảo tồn vs Lọc máu vs Ghép thận).
+      </p>
+    </header>
+
+    <!-- THEORY CONTENT -->
+    <div class="theory-content">
+
+      <!-- CHƯƠNG 1 -->
+      <h2 id="chuong-1">1. Tổng Quan & Khi Nào Áp Dụng Hồi Quy Logistic Đa Thức?</h2>
+      <p>
+        Trong nghiên cứu y học, biến kết cục (dependent variable) không phải lúc nào cũng là biến liên tục (dùng Hồi quy tuyến tính) hay biến nhị phân 0/1 (dùng Hồi quy Logistic Nhị phân). Nhiều bài toán lâm sàng đòi hỏi dự đoán một kết cục danh nghĩa (nominal outcome) gồm <strong>K ≥ 3 nhóm không có thứ tự tự nhiên</strong>.
+      </p>
+
+      <div class="callout callout-info">
+        <strong>💡 Các ví dụ thực tế trong Y học:</strong>
+        <ul>
+          <li><strong>Lựa chọn điều trị bệnh thận mạn:</strong> 1 = Điều trị nội khoa bảo tồn, 2 = Lọc máu chu kỳ, 3 = Ghép thận.</li>
+          <li><strong>Phân loại thể đột quỵ não:</strong> 1 = Nhồi máu não, 2 = Xuất huyết não, 3 = Xuất huyết dưới nhện.</li>
+          <li><strong>Đáp ứng lâm sàng với thuốc:</strong> 1 = Thất bại, 2 = Thuyên giảm một phần, 3 = Thuyên giảm hoàn toàn.</li>
+        </ul>
+      </div>
+
+      <!-- CHƯƠNG 2 -->
+      <h2 id="chuong-2">2. Cơ Sở Toán Học & Phương Pháp Cực Đại Hợp Lý (MLE)</h2>
+      <p>
+        Hồi quy logistic đa thức xây dựng đồng thời <span class="formula-span">K - 1</span> phương trình logit so sánh từng nhóm kết cục với một <strong>Nhóm Tham Chiếu (Baseline / Reference Group)</strong> được chọn trước.
+      </p>
+
+      <h3>2.1. Phương Trình Logit Đa Thức</h3>
+      <p>Giả sử chọn nhóm 1 làm nhóm tham chiếu, xác suất bệnh nhân thuộc nhóm k (k = 2, ..., K) so với nhóm 1 được tính bằng:</p>
+      
+      <div class="callout callout-success">
+        <span class="formula-span">ln[ P(Y = k | X) / P(Y = 1 | X) ] = β₀_k + β₁_k * X₁ + β₂_k * X₂ + ... + βp_k * Xp</span>
+      </div>
+
+      <p>Xác suất dự báo tuyệt đối của bệnh nhân thuộc từng nhóm kết cục:</p>
+      <ul>
+        <li>Xác suất nhóm k (k ≥ 2): <span class="formula-span">P(Y = k | X) = exp(g_k(X)) / [ 1 + ∑ exp(g_j(X)) ]</span></li>
+        <li>Xác suất nhóm tham chiếu (k = 1): <span class="formula-span">P(Y = 1 | X) = 1 / [ 1 + ∑ exp(g_j(X)) ]</span></li>
+      </ul>
+
+      <h3>2.2. Ước Lượng Cực Đại Hợp Lý (MLE) & Hội Tụ Thuật Toán</h3>
+      <p>
+        Không giống như hồi quy tuyến tính có công thức đóng, các hệ số β trong hồi quy logistic đa thức không thể tính trực tiếp mà phải ước lượng bằng thuật toán lặp số như <strong>Newton-Raphson</strong> hoặc <strong>Fisher Scoring</strong> để cực đại hóa hàm Log-Likelihood:
+      </p>
+      <ul>
+        <li>Thuật toán bắt đầu từ bộ tham số ban đầu, cập nhật liên tục qua từng vòng lặp.</li>
+        <li>Quá trình dừng lại khi sự thay đổi của Log-Likelihood giữa 2 vòng lặp nhỏ hơn ngưỡng hội tụ (tolerance < 0.00001).</li>
+      </ul>
+
+      <!-- CHƯƠNG 3 -->
+      <h2 id="chuong-3">3. Kiểm Định Ý Nghĩa Thống Kê</h2>
+
+      <h3>3.1. Kiểm Định Tỷ Số Hợp Lý (Likelihood Ratio Test - LRT)</h3>
+      <p>
+        Đánh giá ý nghĩa của toàn bộ mô hình (hoặc từng biến độc lập trên toàn bộ các nhóm kết cục) bằng cách so sánh Log-Likelihood của Mô hình đầy đủ (Full Model) và Mô hình rút gọn (Reduced Model):
+      </p>
+      <div class="callout callout-info">
+        <span class="formula-span">G² = -2 * [ LL(mô hình rút gọn) - LL(mô hình đầy đủ) ] ~ χ²(df)</span>
+        <br><br>
+        Nếu p < 0.05, biến độc lập đó đóng góp có ý nghĩa thống kê vào mô hình dự báo tổng thể.
+      </div>
+
+      <h3>3.2. Thống Kê Wald</h3>
+      <p>Đánh giá ý nghĩa của từng hệ số hồi quy riêng biệt đối với từng so sánh nhóm:</p>
+      <span class="formula-span">W = (β_est / SE(β))² ~ χ²(1)</span>
+
+      <!-- CHƯƠNG 4 -->
+      <h2 id="chuong-4">4. Diễn Giải Tỷ Số Odds Tương Đối (Relative Risk Ratio - RRR)</h2>
+      <p>
+        Trong hồi quy logistic đa thức, exponentiated coefficient <span class="formula-span">RRR = exp(β)</span> biểu thị <strong>Tỷ số Odds Tương đối (Relative Risk Ratio)</strong>.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Giá Trị RRR</th>
+            <th>Ý Nghĩa Lâm Sàng (So với Nhóm Tham Chiếu)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>RRR > 1</strong></td>
+            <td>Yếu tố tăng nguy cơ bệnh nhân thuộc nhóm kết cục đang xét so với nhóm tham chiếu.</td>
+          </tr>
+          <tr>
+            <td><strong>RRR = 1</strong></td>
+            <td>Yếu tố không làm thay đổi tỷ số Odds giữa nhóm kết cục đang xét và nhóm tham chiếu.</td>
+          </tr>
+          <tr>
+            <td><strong>RRR < 1</strong></td>
+            <td>Yếu tố bảo vệ (giảm nguy cơ) bệnh nhân thuộc nhóm kết cục đang xét so với nhóm tham chiếu.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- INTERACTIVE DEMO: MULTINOMIAL RRR CALCULATOR -->
+      <div class="calc-box">
+        <h3>📊 Máy Tính Tỷ Số RRR & Mô Phỏng Xác Suất Đáp Ứng</h3>
+        <p style="font-size: 0.82rem; color: var(--text-muted);">Mô phỏng bài toán lựa chọn phác đồ điều trị (Bảo tồn vs Lọc máu vs Ghép thận) dựa trên tuổi và chỉ số eGFR.</p>
+
+        <div class="calc-grid">
+          <div class="input-group">
+            <label for="patient-age">Tuổi bệnh nhân (năm):</label>
+            <input type="number" id="patient-age" value="55" min="18" max="90">
+          </div>
+          <div class="input-group">
+            <label for="patient-egfr">eGFR (mL/phút/1.73m²):</label>
+            <input type="number" id="patient-egfr" value="12" min="3" max="30">
+          </div>
+          <div class="input-group">
+            <label for="diabetes">Tiền sử Đái tháo đường:</label>
+            <select id="diabetes">
+              <option value="1">Có đái tháo đường</option>
+              <option value="0">Không đái tháo đường</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="calc-btn" onclick="calcMultinomial()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          Tính Xác Suất Dự Báo Kết Cục
+        </button>
+
+        <div class="calc-result" id="multi-result">
+          <div id="multi-interp" style="font-size:0.88rem; line-height:1.6;"></div>
+        </div>
+      </div>
+
+      <!-- CHƯƠNG 5 -->
+      <h2 id="chuong-5">5. Giả Định & Các Bẫy Cần Tránh Khi Phân Tích</h2>
+      <ul>
+        <li><strong>Giả định Independence of Irrelevant Alternatives (IIA):</strong> Việc thêm hay bớt một lựa chọn kết cục khác không làm thay đổi tỷ lệ odds giữa hai kết cục ban đầu. Kiểm định bằng Hausman-McFadden test.</li>
+        <li><strong>Hiện tượng Phân tách Hoàn toàn (Complete Separation):</strong> Xuất hiện khi một biến độc lập dự đoán hoàn toàn chính xác nhóm kết cục (ví dụ: tất cả bệnh nhân ghép thận đều dưới 40 tuổi). Dẫn đến SE(β) tiến đến vô cực và mô hình không hội tụ. <em>Xử lý: Gộp nhóm hoặc dùng Firth penalized likelihood.</em></li>
+        <li><strong>Quy tắc EPV (Events Per Variable):</strong> Cần tối thiểu 10–20 bệnh nhân thuộc <strong>nhóm kết cục có tần suất nhỏ nhất</strong> cho mỗi biến độc lập đưa vào mô hình.</li>
+      </ul>
+
+      <!-- CHƯƠNG 6 -->
+      <h2 id="chuong-6">6. Tóm Tắt Ưu Nhược Điểm & Khuyên Nghị Thực Hành</h2>
+      <div class="callout callout-success">
+        <strong>✅ Ưu điểm:</strong> Linh hoạt, không đòi hỏi biến kết cục có thứ tự, ước lượng chính xác xác suất tuyệt đối cho từng nhóm.
+        <br><br>
+        <strong>⚠️ Nhược điểm:</strong> Số lượng tham số cần ước lượng tăng rất nhanh theo công thức <span class="formula-span">(K - 1) * (p + 1)</span>, đòi hỏi cỡ mẫu lớn và dễ vi phạm hiện tượng phân tách khi mẫu nhỏ.
+      </div>
+
+    </div>
+
+    <!-- MARK AS READ -->
+    <div class="mark-read-section">
+      <div class="mark-read-info">
+        <strong>Bạn đã đọc xong bài học này?</strong>
+        <span>Đánh dấu để theo dõi tiến độ học tập của bạn trên trang hub</span>
+      </div>
+      <button class="mark-read-btn unread" id="mark-read-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Đánh dấu đã đọc
+      </button>
+    </div>
+
+  </div>
+
+  <script>
+    // ── MULTINOMIAL SIMULATOR ──
+    function calcMultinomial() {
+      const age = parseFloat(document.getElementById('patient-age').value) || 50;
+      const egfr = parseFloat(document.getElementById('patient-egfr').value) || 10;
+      const dm = parseInt(document.getElementById('diabetes').value) || 0;
+
+      // Simulated coefficients based on clinical kidney study
+      // Baseline Group 1 = Conservative Care
+      // Group 2 = Dialysis: g2(X) = 2.1 + 0.02*age - 0.15*egfr + 0.8*dm
+      // Group 3 = Kidney Transplant: g3(X) = 3.5 - 0.08*age - 0.10*egfr - 0.5*dm
+
+      const g2 = 2.1 + (0.02 * age) - (0.15 * egfr) + (0.8 * dm);
+      const g3 = 3.5 - (0.08 * age) - (0.10 * egfr) - (0.5 * dm);
+
+      const exp2 = Math.exp(g2);
+      const exp3 = Math.exp(g3);
+      const denom = 1 + exp2 + exp3;
+
+      const p1 = (1 / denom) * 100;
+      const p2 = (exp2 / denom) * 100;
+      const p3 = (exp3 / denom) * 100;
+
+      // Relative Risk Ratios
+      const rrr_dialysis_egfr = Math.exp(-0.15); // for 1 unit increase in eGFR
+      const rrr_transplant_age = Math.exp(-0.08); // per 1 year increase in age
+
+      const res = document.getElementById('multi-result');
+      const interp = document.getElementById('multi-interp');
+
+      interp.innerHTML = `
+        <div style="font-weight:700; margin-bottom:0.5rem; color:var(--accent);">
+          📊 Xác suất dự báo phương án điều trị (Baseline = Điều trị Bảo tồn):
+        </div>
+        <div style="display:flex; flex-direction:column; gap:0.4rem; margin-bottom:0.75rem;">
+          <div style="display:flex; justify-content:space-between; background:#fff; padding:0.4rem 0.75rem; border-radius:6px;">
+            <span>1. Điều trị Nội khoa bảo tồn:</span>
+            <strong>${p1.toFixed(1)}%</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between; background:#fff; padding:0.4rem 0.75rem; border-radius:6px; border-left:4px solid var(--accent-mid);">
+            <span>2. Lọc máu chu kỳ (Dialysis):</span>
+            <strong>${p2.toFixed(1)}%</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between; background:#fff; padding:0.4rem 0.75rem; border-radius:6px; border-left:4px solid #059669;">
+            <span>3. Ghép thận (Transplant):</span>
+            <strong>${p3.toFixed(1)}%</strong>
+          </div>
+        </div>
+        <div style="font-size:0.82rem; color:var(--text-muted); background:rgba(255,255,255,0.7); padding:0.6rem; border-radius:6px;">
+          💡 <strong>Diễn giải RRR tiêu biểu:</strong><br>
+          - Mỗi tăng 1 mL/min eGFR giúp giảm nguy cơ phải lọc máu so với điều trị bảo tồn (RRR = ${rrr_dialysis_egfr.toFixed(3)}, p < 0.01).<br>
+          - Mỗi tăng 1 tuổi làm giảm khả năng được chỉ định ghép thận so với điều trị bảo tồn (RRR = ${rrr_transplant_age.toFixed(3)}, p < 0.001).
+        </div>
+      `;
+
+      res.classList.add('show');
+    }
+
+    // Initialize default simulation
+    window.addEventListener('DOMContentLoaded', () => {
+      calcMultinomial();
+    });
+
+    // ── PROGRESS TRACKING ──
+    const LESSON_KEY = 'thongke-bai6';
+    const btn = document.getElementById('mark-read-btn');
+
+    function syncBtn() {
+      const isDone = localStorage.getItem(LESSON_KEY) === 'done';
+      if (isDone) {
+        btn.className = 'mark-read-btn done';
+        btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Đã đọc xong`;
+      } else {
+        btn.className = 'mark-read-btn unread';
+        btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Đánh dấu đã đọc`;
+      }
+    }
+
+    btn.addEventListener('click', () => {
+      const isDone = localStorage.getItem(LESSON_KEY) === 'done';
+      if (isDone) {
+        localStorage.removeItem(LESSON_KEY);
+      } else {
+        localStorage.setItem(LESSON_KEY, 'done');
+      }
+      syncBtn();
+    });
+
+    syncBtn();
+  </script>
+
+</body>
+</html>

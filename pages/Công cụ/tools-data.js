@@ -124,6 +124,15 @@ const clinicalToolsData = [
     part: "part4-section",
     tags: ["hô hấp", "viêm phổi", "curb-65", "psi", "idsa", "sari"]
   },
+  {
+    id: "cxr-studio",
+    title: "CXR Pro Studio",
+    description: "Đọc phim X-quang ngực cấp cứu 12 bước, CTR ảo & 20+ bất thường",
+    icon: "🫁",
+    link: "Hô hấp & Lao/CXR_Studio.html",
+    part: "part4-section",
+    tags: ["hô hấp", "lao", "cxr", "x-quang", "phổi", "studio", "ctr"]
+  },
 
   // Phần 5: Tiêu hóa & Dinh dưỡng
   {
@@ -183,29 +192,20 @@ const clinicalToolsData = [
     tags: ["thận", "điện giải", "khí máu", "abg", "toan kiềm", "anion gap"]
   },
   {
-    id: "rl-kali-canxi",
-    title: "Xử trí rối loạn kali/canxi máu",
-    description: "Canxi hiệu chỉnh (Albumin), Phác đồ UKKA",
-    icon: "🔬",
-    link: "Thận & Điện giải - toan kiềm/DG_Kali-Canxi.html",
+    id: "electrolyte-studio",
+    title: "Electrolyte Pro Studio (Điện giải & Dịch truyền)",
+    description: "Giả lập & Xử trí Rối loạn Điện giải (Na, K, Ca, Mg), Adrogue-Madias & ODS Risk",
+    icon: "🧪",
+    link: "Thận & Điện giải - toan kiềm/Electrolyte_Studio.html",
     part: "part6-section",
-    tags: ["thận", "điện giải", "kali", "canxi", "hạ kali", "tăng kali"]
-  },
-  {
-    id: "rl-natri-dich",
-    title: "Xử trí rối loạn natri máu & dịch",
-    description: "Adrogue-Madias, TBW, Free Water Deficit, ODS Risk",
-    icon: "🔬",
-    link: "Thận & Điện giải - toan kiềm/DG_Natri-Dich.html",
-    part: "part6-section",
-    tags: ["thận", "điện giải", "natri", "tbw", "dịch", "hạ natri"]
+    tags: ["thận", "điện giải", "natri", "kali", "canxi", "magie", "dịch", "studio"]
   },
   {
     id: "danh-gia-nguyen-nhan-aki",
     title: "Đánh giá Nguyên nhân AKI",
     description: "Phân loại tổn thương thận cấp (Trước thận, Tại thận, Sau thận) dựa trên bệnh sử và xét nghiệm",
     icon: "🔬",
-    link: "Thận & Điện giải - toan kiềm/danh-gia-nguyen-nhan-aki.html",
+    link: "Thận & Điện giải - toan kiềm/DG_nguyennhanAKI.html",
     part: "part6-section",
     tags: ["thận", "điện giải", "aki", "tổn thương thận cấp", "nguyên nhân", "trước thận", "tại thận", "sau thận"]
   },
