@@ -351,6 +351,39 @@
       params: { hr: 42, qt: 520 },
       osbornNotch: true,
       description: 'Sóng Osborn (J wave notch) nhô lên tròn tại điểm J ở các chuyển đạo trước ngực trong hạ thân nhiệt.'
+    },
+    brugada_type1: {
+      id: 'brugada_type1',
+      name: 'Hội Chứng Brugada Type 1',
+      category: 'Cấp cứu loạn nhịp',
+      leadStElevations: { V1: 3.0, V2: 3.5 },
+      tInversions: ['V1', 'V2'],
+      covedStV1V2: true,
+      description: 'ST chênh lên dạng vòm (Coved-type) ≥ 2mm nối tiếp sóng T âm ở V1-V2. Cảnh báo nguy cơ đột tử ban đêm!'
+    },
+    lgl: {
+      id: 'lgl',
+      name: 'Hội Chứng Lown-Ganong-Levine (LGL)',
+      category: 'Rối loạn dẫn truyền',
+      params: { pr: 100, qrsWidth: 80 },
+      description: 'PR ngắn < 0.12s, QRS hẹp bình thường, KHÔNG CÓ sóng Delta (Dẫn truyền qua cầu James).'
+    },
+    cerebral_t_waves: {
+      id: 'cerebral_t_waves',
+      name: 'Sóng T Não (Xuất Huyết Dưới Nhện - SAH)',
+      category: 'Điện giải & Khác',
+      params: { qt: 520 },
+      tInversions: ['V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'DI', 'aVL'],
+      deepGiganticT: true,
+      description: 'Sóng T âm rất sâu và rộng đối xứng (Giant inverted T waves) ở nhiều chuyển đạo kèm QT kéo dài.'
+    },
+    prinzmetal_angina: {
+      id: 'prinzmetal_angina',
+      name: 'Đau Thắt Ngực Prinzmetal (Co Thắt Mạch Vành)',
+      category: 'Mạch vành',
+      leadStElevations: { V2: 3.0, V3: 3.5, V4: 3.0 },
+      transientSTE: true,
+      description: 'ST chênh lên vòm cấp tính ở V2-V4 trong lúc lên cơn đau ngực, biến mất hoàn toàn khi hết đau!'
     }
   };
 

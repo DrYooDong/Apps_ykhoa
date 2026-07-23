@@ -265,6 +265,41 @@
       'Sóng J (sóng Osborn): chỗ nhô lên lồi tại điểm J.',
       'Rõ nhất ở các chuyển đạo thành dưới và thành bên.',
       'Kèm theo nhịp chậm xoang, QT kéo dài, run cơ (nhiễu nền).'
+    ],
+    brugada_type1: [
+      'ST chênh lên dạng vòm (Coved-type) ≥ 2mm nối tiếp bằng sóng T âm ở V1, V2.',
+      'Điểm J chênh lên cao ≥ 2mm và dốc thẳng xuống đoạn ST.',
+      'Thường kèm hình ảnh Block nhánh phải không hoàn toàn ở V1-V2.',
+      'Triệu chứng lâm sàng: Ngất ban đêm, giật mình khi ngủ, gia đình có người đột tử.'
+    ],
+    lgl: [
+      'Khoảng PR ngắn < 0.12s (120ms).',
+      'Phức bộ QRS thời gian bình thường (< 0.12s), hẹp nhọn.',
+      'KHÔNG CÓ sóng Delta ở chân sóng R (khác biệt quan trọng với Hội chứng WPW).',
+      'Do xung điện dẫn truyền qua cầu James bỏ qua nút nhĩ thất.'
+    ],
+    cerebral_t_waves: [
+      'Sóng T âm rất sâu, rộng đối xứng (Giant inverted T waves) ở nhiều chuyển đạo (V1-V6, DI, aVL).',
+      'Khoảng QTc kéo dài đáng kể (> 500ms).',
+      'Thường kèm nhịp chậm xoang hoặc tăng huyết áp phản ứng.',
+      'Gặp trong tai biến mạch máu nội sọ (Xuất huyết dưới nhện SAH, xuất huyết não, tăng áp lực nội sọ cấp).'
+    ],
+    prinzmetal_angina: [
+      'ST chênh lên vòm cấp tính trong lúc đang lên cơn đau ngực.',
+      'Thường chênh ở các chuyển đạo V2-V4 hoặc DII, DIII, aVF.',
+      'ST trở về đường đẳng điện hoàn toàn khi hết đau ngực (không để lại sóng Q hoại tử).',
+      'Do co thắt cấp tính động mạch vành (Coronary vasospasm).'
+    ],
+    bifascicular_block: [
+      'Thỏa mãn tiêu chuẩn Block Nhánh Phải Hoàn Toàn (RBBB: QRS ≥ 0.12s, rsR\' ở V1).',
+      'Kèm theo tiêu chuẩn Block Phân Nhánh Trái Trước (LAFB: trục lệch trái < -30°) hoặc Block Phân Nhánh Trái Sau (LPFB: trục lệch phải > +90°).',
+      'Cảnh báo nguy cơ cao tiến triển thành Block AV Hoàn Toàn.'
+    ],
+    long_qt_syndrome: [
+      'Khoảng QTc kéo dài > 470ms ở Nam hoặc > 480ms ở Nữ (công thức Bazett).',
+      'Sóng T rộng, biến dạng hoặc chẻ đôi khuyết đỉnh (notched T).',
+      'Tiền sử ngất kịch phát khi nghe tiếng động mạnh, bơi lội hoặc tiền sử gia đình đột tử.',
+      'Nguy cơ cao kích hoạt cơn Xoắn Đỉnh (Torsades de Pointes).'
     ]
   };
 

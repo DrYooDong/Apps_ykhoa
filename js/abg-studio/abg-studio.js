@@ -49,11 +49,22 @@ document.addEventListener('DOMContentLoaded', () => {
   // State
   let activeScenarioId = null;
   let activeCategory = 'ALL';
+  let activeDdxTab = 'matched';
   let davenportNomogram = null;
+
+  // Helper to clear active scenario highlight when user manually modifies params or drags Nomogram
+  function clearActiveScenario() {
+    if (activeScenarioId !== null) {
+      activeScenarioId = null;
+      if (elPatientPanel) elPatientPanel.style.display = 'none';
+      renderScenariosList();
+    }
+  }
 
   // 1. Initialize Davenport Canvas Plot
   if (typeof ABGDavenportNomogram !== 'undefined') {
     davenportNomogram = new ABGDavenportNomogram('canvasDavenport', (newPh, newPco2) => {
+      clearActiveScenario();
       setInputValue(elPhRange, elPhNum, newPh.toFixed(2));
       setInputValue(elPco2Range, elPco2Num, newPco2.toFixed(1));
       triggerABGAnalysis();
@@ -69,10 +80,12 @@ document.addEventListener('DOMContentLoaded', () => {
   function syncPair(rangeEl, numEl) {
     if (!rangeEl || !numEl) return;
     rangeEl.addEventListener('input', () => {
+      clearActiveScenario();
       numEl.value = rangeEl.value;
       triggerABGAnalysis();
     });
     numEl.addEventListener('input', () => {
+      clearActiveScenario();
       rangeEl.value = numEl.value;
       triggerABGAnalysis();
     });
@@ -85,9 +98,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   [elFio2Num, elNaNum, elClNum, elKNum, elAlbNum, elLactateNum, elGlucoseNum, elUreNum, elDurationSelect, elKetoneSelect, elUrineClNum, elWeightNum].forEach(input => {
     if (input) {
-      input.addEventListener('input', triggerABGAnalysis);
-      input.addEventListener('change', triggerABGAnalysis);
+      input.addEventListener('input', () => {
+        clearActiveScenario();
+        triggerABGAnalysis();
+      });
+      input.addEventListener('change', () => {
+        clearActiveScenario();
+        triggerABGAnalysis();
+      });
     }
+  });
+
+  // Shortcut button to scroll to DDx
+  document.getElementById('btnScrollToDDx')?.addEventListener('click', () => {
+    const ddxSec = document.getElementById('differentialDiagnosisSection');
+    if (ddxSec) ddxSec.scrollIntoView({ behavior: 'smooth' });
   });
 
   // 2. Render Scenarios List
@@ -282,6 +307,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Render Diagnostic Criteria
     renderCriteria(res);
+
+    // Render Differential Diagnosis Studio Section
+    renderDifferentialDiagnosis(inputData, res);
   }
 
   function renderChecklist(res) {
@@ -368,6 +396,119 @@ document.addEventListener('DOMContentLoaded', () => {
         ${warningsHTML}
       </div>
     `;
+  }
+
+  // 6. Differential Diagnosis Renderer
+  function renderDifferentialDiagnosis(inputData, res) {
+    const elSummary = document.getElementById('ddxDynamicActiveSummary');
+    const elTabs = document.getElementById('ddxTabPillsList');
+    const elContent = document.getElementById('ddxCategoryContentBox');
+    if (!elContent) return;
+
+    if (typeof ABGEngine.getDifferentialDiagnoses !== 'function') return;
+    const categories = ABGEngine.getDifferentialDiagnoses(inputData, res);
+    const matchedCats = categories.filter(c => c.isMatched);
+
+    // 1. Dynamic Summary Alert Box
+    if (elSummary) {
+      if (matchedCats.length > 0) {
+        elSummary.innerHTML = `
+          <div class="ddx-active-alert">
+            <div style="font-size: 0.95rem; font-weight: 800; color: var(--color-primary); margin-bottom: 0.35rem;">
+              ⚡ PHÂN TÍCH CHẨN ĐOÁN PHÂN BIỆT ĐANG TƯƠNG THÍCH VỚI KẾT QUẢ KHÍ MÁU:
+            </div>
+            <div style="font-size: 0.88rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.4rem;">
+              ➔ Chẩn đoán chính: <span style="color: var(--color-danger);">${res.conclusions.join(' + ')}</span>
+            </div>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              ${matchedCats.map(c => `<span class="ddx-match-pill"><i class="fa-solid fa-circle-check"></i> ${c.title} (${c.badge})</span>`).join('')}
+            </div>
+          </div>
+        `;
+      } else {
+        elSummary.innerHTML = `
+          <div class="ddx-active-alert" style="border-left-color: #22c55e;">
+            <div style="font-size: 0.9rem; font-weight: 700; color: #15803d;">
+              ✅ Khí máu động mạch trong giới hạn bình thường. Tra cứu các bảng chẩn đoán phân biệt bên dưới nếu nghi ngờ rối loạn kiềm toan ẩn.
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    // 2. Render Tab Pills
+    if (elTabs) {
+      const tabOptions = [
+        { id: 'matched', label: '📌 Phù Hợp Hiện Tại', count: matchedCats.length },
+        { id: 'all', label: 'Tất Cả Rối Loạn' },
+        { id: 'highAG', label: '🧪 Toan CH Tăng AG' },
+        { id: 'normalAG', label: '💧 Toan CH AG BT' },
+        { id: 'metAlkalosis', label: '🤮 Kiềm CH' },
+        { id: 'respAcidosis', label: '🫁 Toan HH' },
+        { id: 'respAlkalosis', label: '💨 Kiềm HH' },
+        { id: 'mixedDisorders', label: '⚡ Ca Hỗn Hợp' }
+      ];
+
+      elTabs.innerHTML = tabOptions.map(t => `
+        <button class="ddx-tab-btn ${activeDdxTab === t.id ? 'active' : ''}" data-ddxtab="${t.id}">
+          ${t.label} ${t.count !== undefined ? `<span class="ddx-tab-badge">${t.count}</span>` : ''}
+        </button>
+      `).join('');
+
+      elTabs.querySelectorAll('.ddx-tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          activeDdxTab = btn.getAttribute('data-ddxtab');
+          renderDifferentialDiagnosis(inputData, res);
+        });
+      });
+    }
+
+    // 3. Render Categories Content
+    let displayCats = [];
+    if (activeDdxTab === 'matched') {
+      displayCats = matchedCats.length > 0 ? matchedCats : categories;
+    } else if (activeDdxTab === 'all') {
+      displayCats = categories;
+    } else {
+      displayCats = categories.filter(c => c.id === activeDdxTab);
+    }
+
+    if (displayCats.length === 0) {
+      elContent.innerHTML = `<div style="text-align:center; padding:2rem; color:var(--color-text-muted);">Không tìm thấy nhóm chẩn đoán phân biệt phù hợp.</div>`;
+      return;
+    }
+
+    elContent.innerHTML = displayCats.map(cat => `
+      <div class="ddx-category-box ${cat.isMatched ? 'is-matched' : ''}">
+        <div class="ddx-cat-header">
+          <div>
+            <h3 class="ddx-cat-title">
+              ${cat.isMatched ? '<i class="fa-solid fa-circle-exclamation" style="color:var(--color-danger);"></i>' : '<i class="fa-solid fa-book-medical"></i>'}
+              ${cat.title}
+            </h3>
+            <p class="ddx-cat-desc">${cat.description}</p>
+          </div>
+          <span class="ddx-cat-badge">${cat.badge}</span>
+        </div>
+
+        <div class="ddx-items-grid">
+          ${cat.items.map(item => `
+            <div class="ddx-item-card priority-${item.priority.toLowerCase()}">
+              <div class="ddx-item-header">
+                <span class="ddx-item-name">${item.name}</span>
+                <span class="ddx-priority-tag priority-${item.priority.toLowerCase()}">
+                  ${item.priority === 'CRITICAL' ? '🔴 NGUY CƠ CAO' : item.priority === 'HIGH' ? '🟠 ƯU TIÊN' : '🟡 THEO DÕI'}
+                </span>
+              </div>
+              <p class="ddx-item-clues"><strong>Manh mối:</strong> ${item.clues}</p>
+              <div class="ddx-item-lab">
+                <i class="fa-solid fa-vial"></i> <strong>Cận lâm sàng đề xuất:</strong> ${item.labSuggest}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `).join('');
   }
 
   // 5. Quiz Challenge Mode

@@ -43,12 +43,12 @@
 /* Three-Column Layout Grid */
 .studio-main-grid {
   display: grid;
-  grid-template-columns: 360px 1fr 360px;
+  grid-template-columns: 350px 1fr 420px;
   gap: 1.25rem;
   align-items: start;
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1380px) {
   .studio-main-grid {
     grid-template-columns: 1fr;
   }
@@ -517,3 +517,239 @@
   border-color: #ef4444 !important;
   color: #b91c1c !important;
 }
+
+/* ==========================================================================
+   Management Protocol Section Styles
+   ========================================================================== */
+.management-protocol-card {
+  margin-top: 1.5rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.management-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.management-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.management-tabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.mgmt-tab-btn {
+  padding: 0.55rem 0.95rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+}
+
+.mgmt-tab-btn:hover {
+  background: rgba(2, 132, 199, 0.08);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.mgmt-tab-btn.active {
+  background: var(--color-primary);
+  color: #ffffff;
+  border-color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3);
+}
+
+/* Management Stepper Cards Grid */
+.mgmt-stepper-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem;
+}
+
+.mgmt-card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.1rem;
+  position: relative;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.mgmt-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.mgmt-card-danger {
+  border-left: 4px solid #ef4444;
+  background: rgba(239, 68, 68, 0.04);
+}
+
+.mgmt-card-warning {
+  border-left: 4px solid #f59e0b;
+  background: rgba(245, 158, 11, 0.04);
+}
+
+.mgmt-card-info {
+  border-left: 4px solid #0ea5e9;
+  background: rgba(14, 165, 233, 0.04);
+}
+
+.mgmt-card-success {
+  border-left: 4px solid #22c55e;
+  background: rgba(34, 197, 94, 0.04);
+}
+
+.mgmt-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.mgmt-card-badge {
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mgmt-card-badge.danger {
+  background: rgba(239, 68, 68, 0.15);
+  color: #b91c1c;
+}
+
+.mgmt-card-badge.warning {
+  background: rgba(245, 158, 11, 0.15);
+  color: #b45309;
+}
+
+.mgmt-card-badge.info {
+  background: rgba(14, 165, 233, 0.15);
+  color: #0369a1;
+}
+
+.mgmt-card-badge.success {
+  background: rgba(34, 197, 94, 0.15);
+  color: #15803d;
+}
+
+.mgmt-card-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-text);
+  margin-bottom: 0.35rem;
+}
+
+.mgmt-card-desc {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+  line-height: 1.45;
+}
+
+.mgmt-actions-list {
+  padding-left: 1.1rem;
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--color-text);
+}
+
+.mgmt-actions-list li {
+  margin-bottom: 0.45rem;
+}
+
+@media (max-width: 768px) {
+  .management-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .management-tabs {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 0.4rem;
+  }
+  .mgmt-tab-btn {
+    white-space: nowrap;
+  }
+  .mgmt-stepper-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Right Column Management Section */
+.right-mgmt-box {
+  margin-top: 0.75rem;
+  padding-top: 0.85rem;
+  border-top: 1px dashed var(--color-border);
+}
+
+.right-mgmt-tabs-header {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+}
+
+.right-mgmt-tab-btn {
+  padding: 0.45rem 0.2rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text-muted);
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.right-mgmt-tab-btn:hover {
+  background: rgba(2, 132, 199, 0.08);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.right-mgmt-tab-btn.active {
+  background: var(--color-primary);
+  color: #ffffff;
+  border-color: var(--color-primary);
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.25);
+}
+
+.right-mgmt-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+

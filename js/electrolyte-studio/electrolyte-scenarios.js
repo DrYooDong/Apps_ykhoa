@@ -1,6 +1,6 @@
 /**
  * electrolyte-scenarios.js — Electrolyte Pro Studio
- * Ngân hàng ca lâm sàng cấp cứu điện giải (Na, K, Ca, Mg) với sinh hiệu & thông số phòng xét nghiệm.
+ * Ngân hàng ca lâm sàng cấp cứu điện giải (Na, K, Ca, Mg) với sinh hiệu, thông số lab & phác đồ xử trí chi tiết.
  */
 
 const ELECTROLYTE_SCENARIOS = [
@@ -239,6 +239,167 @@ const ELECTROLYTE_SCENARIOS = [
       weight: 55,
       age: 42,
       gender: "female",
+      symptoms: "mild",
+      odsRisks: []
+    }
+  },
+  /* --- 4 CA MẪU MỚI BỔ SUNG --- */
+  {
+    id: "sc_severe_hypernatremia_dehydration",
+    title: "Tăng Natri Máu Nặng Do Mất Nước Cấp (Na+ 168 mmol/L)",
+    category: "Natri (Na+)",
+    difficulty: "Khẩn cấp",
+    badgeColor: "#ef4444",
+    patient: {
+      demographics: "Nam, 78 tuổi — Tiền sử Đái tháo đường, Mất trí nhớ, Bỏ uống nước 3 ngày",
+      hr: "125 bpm",
+      bp: "85/55 mmHg",
+      spo2: "94% (Khí trời)",
+      temp: "38.2 °C",
+      rr: "24 lần/phút",
+      gcs: "11 điểm (Lơ mơ, niêm mạc khô đét, da nhăn)",
+      description: "Cụ ông nhập viện trong tình trạng sốt cao, mất nước nặng, môi lưỡi khô đét. Natri máu vọt lên 168 mmol/L.",
+      symptoms: [
+        "Tăng Natri máu cực nặng (Na+ 168 mmol/L)",
+        "Thiếu hụt nước tự do lớn (Water deficit > 6.5 Lít)",
+        "Tốc độ hạ Natri tối đa: ≤ 0.5 mmol/L/giờ để chống Phù Não cấp",
+        "Ưu tiên bù nước tự do qua sonde dạ dày hoặc Dextrose 5% tĩnh mạch"
+      ]
+    },
+    elyte: {
+      naCurrent: 168,
+      naTarget: 155,
+      naFluid: 0, // Dextrose 5% / Nước cất
+      kVal: 4.8,
+      kEcg: 0,
+      kSymp: 0,
+      caVal: 2.35,
+      caAlb: 42,
+      caSymp: 0,
+      mgVal: 0.9,
+      weight: 52,
+      age: 78,
+      gender: "male",
+      symptoms: "severe",
+      odsRisks: []
+    }
+  },
+  {
+    id: "sc_severe_hypomagnesemia_torsades",
+    title: "Hạ Magie Máu Nặng Kèm Nguy Cơ Xoắn Đỉnh (Mg2+ 0.38 mmol/L)",
+    category: "Kali (K+)",
+    difficulty: "Khẩn cấp",
+    badgeColor: "#ef4444",
+    patient: {
+      demographics: "Nữ, 61 tuổi — Tiền sử Dùng thuốc PPI kéo dài (Omeprazole) & Lợi tiểu Furosemide",
+      hr: "108 bpm",
+      bp: "105/65 mmHg",
+      spo2: "97% (Khí trời)",
+      temp: "36.8 °C",
+      rr: "20 lần/phút",
+      gcs: "14 điểm (Run tay, cơ giật rung, mệt nhiều)",
+      description: "Bệnh nhân có ECG QTc kéo dài 520ms, xuất hiện nhiều ngoại tâm thu thất đôi. Mg2+ máu 0.38 mmol/L, K+ 2.8 mmol/L.",
+      symptoms: [
+        "Hạ Mg2+ máu rất nặng (0.38 mmol/L) + Hạ K+ kháng trị",
+        "QTc kéo dài 520ms — Nguy cơ Xoắn đỉnh (Torsades de Pointes)",
+        "Truyền tĩnh mạch khẩn MgSO4 15% 2g trong 15-20 phút",
+        "Bắt buộc bù Magnesium trước/song song với bù Kali"
+      ]
+    },
+    elyte: {
+      naCurrent: 138,
+      naTarget: 138,
+      naFluid: 154,
+      kVal: 2.8,
+      kEcg: 1,
+      kSymp: 1,
+      caVal: 2.00,
+      caAlb: 36,
+      caSymp: 1,
+      mgVal: 0.38,
+      weight: 58,
+      age: 61,
+      gender: "female",
+      symptoms: "mild",
+      odsRisks: []
+    }
+  },
+  {
+    id: "sc_multi_electrolyte_ckd",
+    title: "Rối Loạn Đa Điện Giải Bệnh Thận Mạn (HyperK + HypoCa + HyperPhos)",
+    category: "Canxi (Ca2+)",
+    difficulty: "Nâng cao",
+    badgeColor: "#8b5cf6",
+    patient: {
+      demographics: "Nam, 56 tuổi — Tiền sử Bệnh thận mạn giai đoạn 4 (eGFR 18 mL/phút)",
+      hr: "88 bpm",
+      bp: "150/90 mmHg",
+      spo2: "96% (Khí trời)",
+      temp: "36.9 °C",
+      rr: "18 lần/phút",
+      gcs: "15 điểm",
+      description: "Bệnh nhân khám định kỳ: K+ 6.1 mmol/L (ECG T cao nhọn), Ca2+ toàn phần 1.80 mmol/L, Albumin 38 g/L.",
+      symptoms: [
+        "Rối loạn đa điện giải phức tạp ở bệnh nhân suy thận",
+        "Tăng K+ máu có biến đổi ECG nhẹ (T cao nhọn)",
+        "Tiêm Calcium Gluconate 10% giúp vừa bảo vệ tim do K+ tăng, vừa bù Canxi",
+        "Truyền Insulin-Dextrose & dùng thuốc gắn Phosphate /SZC"
+      ]
+    },
+    elyte: {
+      naCurrent: 137,
+      naTarget: 137,
+      naFluid: 154,
+      kVal: 6.1,
+      kEcg: 1, // T cao nhọn
+      kSymp: 0,
+      caVal: 1.80,
+      caAlb: 38,
+      caSymp: 1,
+      mgVal: 1.1,
+      weight: 68,
+      age: 56,
+      gender: "male",
+      symptoms: "mild",
+      odsRisks: []
+    }
+  },
+  {
+    id: "sc_siadh_hyponatremia",
+    title: "Hạ Na+ Máu Do Hội Chứng SIADH (Ung Thư Phổi Tế Bào Nhỏ)",
+    category: "Natri (Na+)",
+    difficulty: "Trung bình",
+    badgeColor: "#0ea5e9",
+    patient: {
+      demographics: "Nam, 67 tuổi — Tiền sử Ung thư phổi tế bào nhỏ (SCLC)",
+      hr: "76 bpm",
+      bp: "125/80 mmHg",
+      spo2: "95% (Khí trời)",
+      temp: "36.6 °C",
+      rr: "16 lần/phút",
+      gcs: "14 điểm (Chán ăn, mệt mỏi, chán chường)",
+      description: "Bệnh nhân đẳng thể tích, không phù, không tụt HA. Natri máu 121 mmol/L. Áp lực thẩm thấu niệu cao (> 300 mOsm/kg).",
+      symptoms: [
+        "Hạ Natri máu đẳng thể tích (Normovolemic Hyponatremia)",
+        "Hội chứng tiết ADH không thích hợp (SIADH)",
+        "Biện pháp hàng đầu: Hạn chế nước < 800 mL/ngày",
+        "Viên NaCl uống hoặc Tolvaptan (Vaptans)"
+      ]
+    },
+    elyte: {
+      naCurrent: 121,
+      naTarget: 128,
+      naFluid: 513,
+      kVal: 4.1,
+      kEcg: 0,
+      kSymp: 0,
+      caVal: 2.20,
+      caAlb: 40,
+      caSymp: 0,
+      mgVal: 0.85,
+      weight: 62,
+      age: 67,
+      gender: "male",
       symptoms: "mild",
       odsRisks: []
     }

@@ -15,6 +15,8 @@
       this.zoomEngine = null;
       this.activeCategoryFilter = 'ALL';
       this.searchQuery = '';
+      this.scenarioCategoryFilter = 'ALL';
+      this.scenarioSearchQuery = '';
 
       // Paper Grid Controls
       this.paperSpeed = 25; // 12.5, 25, 50 mm/s
@@ -62,20 +64,21 @@
 
       let hasResults = false;
       Object.keys(categories).forEach(catName => {
-        if (categories[catName].length === 0) return;
+        const mods = categories[catName];
+        if (mods.length === 0) return;
         hasResults = true;
 
         const groupEl = document.createElement('div');
         groupEl.className = 'mixer-category-group';
-        groupEl.innerHTML = `<h4 class="mixer-cat-title">${catName}</h4>`;
+        groupEl.innerHTML = `<div class="mixer-cat-title">${catName}</div>`;
 
         const itemsGrid = document.createElement('div');
         itemsGrid.className = 'mixer-items-grid';
 
-        categories[catName].forEach(mod => {
-          const label = document.createElement('label');
-          label.className = `mixer-checkbox-item ${this.selectedModifiers.has(mod.id) ? 'selected' : ''}`;
+        mods.forEach(mod => {
           const checked = this.selectedModifiers.has(mod.id) ? 'checked' : '';
+          const label = document.createElement('label');
+          label.className = 'mixer-checkbox-item';
           label.innerHTML = `
             <input type="checkbox" value="${mod.id}" ${checked}>
             <span>${mod.name}</span>
@@ -86,8 +89,10 @@
             } else {
               this.selectedModifiers.delete(mod.id);
             }
+            this.currentScenario = null;
             this.updateStudio();
             this.renderAbnormalityMixer();
+            this.renderScenarioButtons();
           });
           itemsGrid.appendChild(label);
         });
@@ -128,8 +133,10 @@
         `;
         chip.querySelector('button').addEventListener('click', () => {
           this.selectedModifiers.delete(id);
+          this.currentScenario = null;
           this.updateStudio();
           this.renderAbnormalityMixer();
+          this.renderScenarioButtons();
         });
         container.appendChild(chip);
       });
@@ -137,26 +144,55 @@
 
     renderScenarioButtons() {
       const container = document.getElementById('scenarioListGrid');
+      const countEl = document.getElementById('scenarioMatchCount');
       if (!container) return;
 
       container.innerHTML = '';
       const scenarios = window.ECGScenarios.SCENARIOS;
+      let matchedCount = 0;
+
+      const catFilter = this.scenarioCategoryFilter || 'ALL';
+      const searchQuery = (this.scenarioSearchQuery || '').toLowerCase().trim();
 
       scenarios.forEach(sc => {
-        const card = document.createElement('div');
-        card.className = `scenario-card ${this.currentScenario && this.currentScenario.id === sc.id ? 'active' : ''}`;
-        card.setAttribute('data-id', sc.id);
-        card.innerHTML = `
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
-            <span class="element-badge" style="background:var(--color-primary); font-size:0.75rem;">${sc.category}</span>
-            <span class="scenario-diff-badge">${sc.difficulty}</span>
-          </div>
-          <h4 style="font-size:0.95rem; font-weight:700; color:var(--color-text); margin-bottom:0.25rem;">${sc.title}</h4>
-          <p style="font-size:0.8rem; color:var(--color-text-muted); line-height:1.4;">${sc.patient.sex}, ${sc.patient.age} tuổi | ${sc.symptoms[0]}</p>
-        `;
-        card.addEventListener('click', () => this.loadScenario(sc.id));
-        container.appendChild(card);
+        const matchesCat = catFilter === 'ALL' || sc.category === catFilter;
+        const matchesQuery = !searchQuery || 
+          sc.title.toLowerCase().includes(searchQuery) ||
+          sc.goldAnswer.toLowerCase().includes(searchQuery) ||
+          sc.category.toLowerCase().includes(searchQuery) ||
+          sc.symptoms.some(s => s.toLowerCase().includes(searchQuery)) ||
+          sc.context.toLowerCase().includes(searchQuery);
+
+        if (matchesCat && matchesQuery) {
+          matchedCount++;
+          const card = document.createElement('div');
+          card.className = `scenario-card ${this.currentScenario && this.currentScenario.id === sc.id ? 'active' : ''}`;
+          card.setAttribute('data-id', sc.id);
+          card.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+              <span class="element-badge" style="background:var(--color-primary); font-size:0.75rem;">${sc.category}</span>
+              <span class="scenario-diff-badge">${sc.difficulty}</span>
+            </div>
+            <h4 style="font-size:0.95rem; font-weight:700; color:var(--color-text); margin-bottom:0.25rem;">${sc.title}</h4>
+            <p style="font-size:0.8rem; color:var(--color-text-muted); line-height:1.4;">${sc.patient.sex}, ${sc.patient.age} tuổi | ${sc.symptoms[0]}</p>
+          `;
+          card.addEventListener('click', () => this.loadScenario(sc.id));
+          container.appendChild(card);
+        }
       });
+
+      if (countEl) {
+        countEl.textContent = `${matchedCount}/${scenarios.length} ca bệnh`;
+      }
+
+      if (matchedCount === 0) {
+        container.innerHTML = `
+          <div style="text-align:center; padding:1.5rem; color:var(--color-text-muted); font-size:0.88rem;">
+            <i class="fa-solid fa-folder-open" style="font-size:1.5rem; margin-bottom:0.5rem; display:block;"></i>
+            Không có tình huống phù hợp với từ khóa tìm kiếm.
+          </div>
+        `;
+      }
     }
 
     loadScenario(id) {
@@ -289,8 +325,27 @@
         });
       });
 
+      // Scenario Search Input Filter
+      const scenSearchInput = document.getElementById('scenarioSearchInput');
+      if (scenSearchInput) {
+        scenSearchInput.addEventListener('input', (e) => {
+          this.scenarioSearchQuery = e.target.value;
+          this.renderScenarioButtons();
+        });
+      }
+
+      // Scenario Category Filter Pills
+      document.querySelectorAll('#scenarioCategoryPills .cat-pill-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('#scenarioCategoryPills .cat-pill-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          this.scenarioCategoryFilter = btn.getAttribute('data-scenariocat');
+          this.renderScenarioButtons();
+        });
+      });
+
       // Mixer Category Pills Filter
-      const pillBtns = document.querySelectorAll('.cat-pill-btn');
+      const pillBtns = document.querySelectorAll('#tab_mixer .cat-pill-btn');
       pillBtns.forEach(pill => {
         pill.addEventListener('click', () => {
           pillBtns.forEach(p => p.classList.remove('active'));
@@ -620,11 +675,16 @@
 
       if (this.currentScenario) {
         targetName = this.currentScenario.goldAnswer;
-        targetDesc = this.currentScenario.teachingPoints.join('\n');
+        targetDesc = '• ' + this.currentScenario.teachingPoints.join('\n• ');
         options.push(targetName);
-        options.push('Nhồi máu cơ tim thành Dưới cũ + Rung nhĩ');
-        options.push('Viêm màng ngoài tim cấp / Tái cực sớm lành tính');
-        options.push('Cơn Nhịp Nhanh Trên Thất (SVT) / Block Nhánh Phải');
+        const otherAnswers = window.ECGScenarios.SCENARIOS
+          .map(s => s.goldAnswer)
+          .filter(a => a !== targetName);
+        while (options.length < 4 && otherAnswers.length > 0) {
+          const randIdx = Math.floor(Math.random() * otherAnswers.length);
+          const picked = otherAnswers.splice(randIdx, 1)[0];
+          if (!options.includes(picked)) options.push(picked);
+        }
       } else {
         const currentModId = Array.from(this.selectedModifiers)[0];
         const targetMod = window.ECGModifiers.MODIFIERS[currentModId] || window.ECGModifiers.MODIFIERS.stemi_anterior;

@@ -29,6 +29,7 @@
   <script src="../../../js/cxr-studio/cxr-criteria.js" defer></script>
   <script src="../../../js/cxr-studio/cxr-scenarios.js" defer></script>
   <script src="../../../js/cxr-studio/cxr-svg-engine.js" defer></script>
+  <script src="../../../js/cxr-studio/cxr-canvas-engine.js" defer></script>
   <script src="../../../js/cxr-studio/cxr-engine.js" defer></script>
   <script src="../../../js/cxr-studio/cxr-studio.js" defer></script>
 </head>
@@ -234,14 +235,42 @@
             <!-- SVG Radiograph Viewer Card -->
             <div class="cxr-viewer-card">
               <div class="cxr-viewer-toolbar">
-                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                  <button class="btn-proc btn-proc-secondary" id="btnInvertXray" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;">
-                    <i class="fa-solid fa-circle-half-stroke"></i> Âm Bản X-Quang
+                <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                  <button class="btn-proc btn-proc-secondary" id="btnInvertXray" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;" title="Chuyển chế độ âm bản / dương bản">
+                    <i class="fa-solid fa-circle-half-stroke"></i> Âm Bản
+                  </button>
+                  <button class="btn-proc-toggle active" id="btnToggleVasculature" title="Bật/Tắt vân mạch máu phổi">
+                    <i class="fa-solid fa-code-branch"></i> Vân Mạch Phổi
+                  </button>
+                  <button class="btn-proc-toggle active" id="btnToggleAnnotations" title="Bật/Tắt nhãn DICOM & Marker">
+                    <i class="fa-solid fa-tag"></i> DICOM Tags
+                  </button>
+                  <button class="btn-proc-toggle" id="btnToggleSharpen" title="Tăng cường nét viền bờ xương & tổn thương (Sobel/Sharpen filter)">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Nét Nhu Mô/Xương
+                  </button>
+                  <button class="btn-proc-toggle" id="btnToggleBoneFilter" title="Bộ lọc nổi bật vỏ xương (Bone Filter)">
+                    <i class="fa-solid fa-bone"></i> Lọc Vỏ Xương
                   </button>
                 </div>
-                <div style="display: flex; align-items: center; gap: 0.75rem; font-size: 0.75rem; color: #94a3b8;">
-                  <label>Contrast: <input type="range" id="inputContrast" min="50" max="150" value="100" style="width: 70px;"></label>
-                  <label>Brightness: <input type="range" id="inputBrightness" min="50" max="150" value="100" style="width: 70px;"></label>
+
+                <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;">
+                  <div class="dicom-btn-group" title="Bảng màu hiển thị DICOM (Colormaps / LUT)">
+                    <span style="font-size: 0.72rem; color: #94a3b8; font-weight: 700;">Color LUT:</span>
+                    <button class="btn-lut-preset active" data-lut="grayscale">Trắng/Đen</button>
+                    <button class="btn-lut-preset" data-lut="bone">Amber Bone</button>
+                    <button class="btn-lut-preset" data-lut="hot">Hot Iron</button>
+                  </div>
+                  <div class="dicom-btn-group" title="Cửa sổ hiển thị DICOM (Windowing)">
+                    <span style="font-size: 0.72rem; color: #94a3b8; font-weight: 700;">Window:</span>
+                    <button class="btn-dicom-preset active" data-preset="normal">Mặc Định</button>
+                    <button class="btn-dicom-preset" data-preset="lung">Nhu Mô</button>
+                    <button class="btn-dicom-preset" data-preset="bone">Cửa Cửa Xương</button>
+                    <button class="btn-dicom-preset" data-preset="soft">Mô Mềm</button>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: #94a3b8;">
+                    <label>Contrast: <input type="range" id="inputContrast" min="50" max="170" value="100" style="width: 65px;"></label>
+                    <label>Bright: <input type="range" id="inputBrightness" min="50" max="150" value="100" style="width: 65px;"></label>
+                  </div>
                 </div>
               </div>
 

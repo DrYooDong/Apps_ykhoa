@@ -1,10 +1,10 @@
 /* ==========================================================================
-   Chest X-Ray Pro Studio Component CSS — CliniPortal
-   Modern 3-column studio layout, SVG Radiograph Viewer Engine, Invert X-Ray Mode,
-   Virtual CTR Ruler, ABCDE 5-Step Checklist & Interactive Quiz Challenge.
+   Microbiology Pro Studio Component CSS — CliniPortal
+   Modern 3-column studio layout, SVG Microscopy Viewer Engine, Culture Plate Viewer,
+   Identification Decision Tree, Antibiogram S/I/R Matrix & Interactive Quiz.
    ========================================================================== */
 
-.cxr-studio-container {
+.micro-studio-container {
   max-width: 1450px;
   margin: 0 auto;
   padding: 1.5rem 1rem;
@@ -43,7 +43,7 @@
 /* Three-Column Layout Grid */
 .studio-main-grid {
   display: grid;
-  grid-template-columns: 360px 1fr 350px;
+  grid-template-columns: 360px 1fr 380px;
   gap: 1.25rem;
   align-items: start;
 }
@@ -129,8 +129,8 @@
 
 /* Patient Context Card */
 .patient-card {
-  background: rgba(2, 132, 199, 0.05);
-  border: 1px solid var(--color-primary);
+  background: rgba(16, 185, 129, 0.05);
+  border: 1px solid #10b981;
   border-radius: 14px;
   padding: 1.1rem;
   margin-bottom: 1rem;
@@ -161,46 +161,104 @@
 .vital-val {
   font-size: 0.95rem;
   font-weight: 800;
-  color: var(--color-primary);
+  color: #10b981;
 }
 
-/* Scenario Cards List */
+/* Scenario Search & Category Filters */
+.scenario-search-box {
+  margin-bottom: 0.65rem;
+  position: relative;
+}
+
+.scenario-search-input {
+  width: 100%;
+  font-size: 0.82rem;
+  padding: 0.55rem 0.75rem 0.55rem 2.2rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  transition: all 0.2s ease;
+}
+
+.scenario-search-input:focus {
+  border-color: #10b981;
+  background: var(--color-surface);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+}
+
+.scenario-search-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+}
+
+/* Category Group Headers in Tab 1 */
+.scenario-group-header {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0.85rem 0 0.4rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.scenario-group-count {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.1rem 0.4rem;
+  border-radius: 12px;
+}
+
+/* Scenario Cards List (Compact) */
 .scenarios-scroll-list {
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
-  max-height: 480px;
+  gap: 0.5rem;
+  max-height: 440px;
   overflow-y: auto;
-  padding-right: 0.25rem;
+  padding-right: 0.35rem;
+  scrollbar-width: thin;
 }
 
 .scenario-card {
   background: var(--color-bg);
   border: 1px solid var(--color-border);
-  border-radius: 12px;
-  padding: 0.8rem 0.9rem;
+  border-radius: 10px;
+  padding: 0.65rem 0.8rem;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .scenario-card:hover,
 .scenario-card.active {
-  border-color: var(--color-primary);
-  background: rgba(2, 132, 199, 0.06);
-  transform: translateY(-2px);
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.06);
+  transform: translateY(-1px);
 }
 
 .scenario-card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.25rem;
 }
 
 .scenario-card-title {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 700;
   color: var(--color-text);
+  line-height: 1.3;
 }
 
 .scenario-diff-badge {
@@ -234,18 +292,18 @@
 }
 
 .cat-pill-btn:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
+  border-color: #10b981;
+  color: #10b981;
 }
 
 .cat-pill-btn.active {
-  background: var(--color-primary);
+  background: #10b981;
   color: #ffffff;
-  border-color: var(--color-primary);
+  border-color: #10b981;
 }
 
-/* Checkbox Mixer Layers List */
-.cxr-mixer-container {
+/* Organism Sliders & Controls */
+.micro-sliders-container {
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
@@ -254,43 +312,28 @@
   padding-right: 0.25rem;
 }
 
-.cxr-cat-group {
+.slider-group-box {
   background: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: 10px;
   padding: 0.75rem;
 }
 
-.cxr-cat-title {
-  font-size: 0.8rem;
-  font-weight: 800;
-  color: var(--color-primary);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 0.5rem;
-  border-bottom: 1px dashed var(--color-border);
-  padding-bottom: 0.25rem;
-}
-
-.cxr-checkbox-item {
+.slider-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--color-text);
-  cursor: pointer;
-  padding: 0.35rem 0.5rem;
+}
+
+.micro-select-input {
+  width: 100%;
+  font-size: 0.8rem;
+  padding: 0.4rem;
   border-radius: 6px;
-  transition: background 0.15s ease;
-}
-
-.cxr-checkbox-item:hover {
-  background: rgba(2, 132, 199, 0.08);
-}
-
-.cxr-checkbox-item input[type="checkbox"] {
-  accent-color: var(--color-primary);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  margin-top: 0.35rem;
 }
 
 /* Active Chips Bar */
@@ -324,225 +367,163 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  background: var(--color-primary);
+  background: #10b981;
   color: #ffffff;
   font-size: 0.78rem;
   font-weight: 700;
   padding: 0.25rem 0.65rem;
   border-radius: 20px;
-  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.25);
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.25);
 }
 
-/* SVG Radiograph Viewer Box */
-.cxr-viewer-card {
-  background: #0b1120;
+/* SVG Microscopy Viewer Container */
+.micro-viewer-card {
+  background: #090d16;
   border: 2px solid #1e293b;
   border-radius: 16px;
   padding: 1rem;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   margin-bottom: 1rem;
 }
 
-.cxr-viewer-toolbar {
+.micro-viewer-toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.75rem;
-  background: rgba(15, 23, 42, 0.9);
+  background: rgba(15, 23, 42, 0.85);
   padding: 0.5rem 0.75rem;
   border-radius: 10px;
   border: 1px solid #334155;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.dicom-btn-group {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.btn-dicom-preset,
-.btn-lut-preset {
-  background: #1e293b;
-  border: 1px solid #475569;
   color: #94a3b8;
-  padding: 0.3rem 0.6rem;
-  border-radius: 6px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  font-size: 0.78rem;
 }
 
-.btn-dicom-preset:hover,
-.btn-lut-preset:hover {
-  background: #334155;
-  color: #f8fafc;
-}
-
-.btn-dicom-preset.active,
-.btn-lut-preset.active {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  color: #ffffff;
-  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3);
-}
-
-.btn-proc-toggle {
-  background: #1e293b;
-  border: 1px solid #334155;
-  color: #cbd5e1;
-  padding: 0.35rem 0.65rem;
-  border-radius: 8px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.btn-proc-toggle:hover,
-.btn-proc-toggle.active {
-  background: #334155;
-  color: #ffffff;
-  border-color: #0ea5e9;
-}
-
-.cxr-svg-wrapper {
+.micro-svg-wrapper {
   width: 100%;
-  max-width: 620px;
-  height: 520px;
+  max-width: 540px;
+  height: 380px;
   margin: 0 auto;
   position: relative;
-  background: #03050a;
+  background: #020617;
   border-radius: 12px;
   border: 1px solid #1e293b;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: filter 0.2s ease;
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
 }
 
-.cxr-svg-wrapper.inverted {
-  filter: invert(1) hue-rotate(180deg);
-}
-
-.cxr-svg-wrapper svg {
+.micro-svg-wrapper svg {
   width: 100%;
   height: 100%;
   display: block;
 }
 
-/* Virtual CTR Ruler Layer */
-.cxr-ruler-svg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.ruler-line {
-  stroke: #0ea5e9;
-  stroke-width: 2;
-  stroke-dasharray: 4;
-}
-
-.ruler-handle {
-  fill: #0ea5e9;
-  cursor: ew-resize;
-  pointer-events: all;
-  transition: transform 0.15s ease;
-}
-
-.ruler-handle:hover {
-  transform: scale(1.3);
-  fill: #38bdf8;
-}
-
-/* CTR Live Display Bar */
-.ctr-stats-bar {
+/* Culture Plate Box */
+.culture-plate-wrapper {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 1rem;
   background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  padding: 0.75rem 1rem;
+  padding: 0.75rem;
   border-radius: 12px;
-  margin-bottom: 1rem;
+  border: 1px solid var(--color-border);
 }
 
-.ctr-value-display {
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: var(--color-primary);
+.plate-box {
+  flex: 1;
+  text-align: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 0.5rem;
 }
 
-/* Right Sidebar: ABCDE 5-Step Checklist */
-.checklist-container {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
+.plate-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  margin-bottom: 0.3rem;
 }
 
-.chk-item {
+/* Decision Tree Card */
+.tree-step-card {
   background: var(--color-bg);
   border: 1px solid var(--color-border);
-  border-left: 4px solid var(--color-border);
+  border-left: 4px solid #10b981;
   padding: 0.65rem 0.85rem;
   border-radius: 8px;
-  transition: all 0.2s ease;
+  margin-bottom: 0.5rem;
 }
 
-.chk-item.status-normal {
-  border-left-color: #22c55e;
-}
-
-.chk-item.status-abnormal {
-  border-left-color: #ef4444;
-}
-
-.chk-item.status-warning {
-  border-left-color: #f59e0b;
-}
-
-.chk-item.status-info {
-  border-left-color: #0ea5e9;
-}
-
-.chk-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.2rem;
-}
-
-.chk-num {
+.tree-step-title {
   font-size: 0.85rem;
   font-weight: 700;
   color: var(--color-text);
 }
 
-.chk-val {
+.tree-step-val {
   font-size: 0.85rem;
   font-weight: 800;
-  color: var(--color-primary);
+  color: #10b981;
 }
 
-.chk-note {
+/* Antibiogram Matrix Table */
+.antibiogram-table {
+  width: 100%;
+  border-collapse: collapse;
   font-size: 0.78rem;
-  color: var(--color-text-muted);
-  line-height: 1.35;
+  margin-top: 0.5rem;
+}
+
+.antibiogram-table th,
+.antibiogram-table td {
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.antibiogram-table th {
+  background: var(--color-bg);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.sir-badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 800;
+  font-size: 0.72rem;
+  text-align: center;
+  min-width: 24px;
+}
+
+.sir-badge.susceptible {
+  background: rgba(34, 197, 94, 0.2);
+  color: #15803d;
+  border: 1px solid #22c55e;
+}
+
+.sir-badge.intermediate {
+  background: rgba(245, 158, 11, 0.2);
+  color: #b45309;
+  border: 1px solid #f59e0b;
+}
+
+.sir-badge.resistant {
+  background: rgba(239, 68, 68, 0.2);
+  color: #b91c1c;
+  border: 1px solid #ef4444;
 }
 
 /* Quiz Box Studio */
 .quiz-studio-card {
   background: var(--color-surface);
-  border: 2px solid var(--color-primary);
+  border: 2px solid #10b981;
   border-radius: 16px;
   padding: 1.5rem;
   margin-top: 1.5rem;
@@ -563,8 +544,8 @@
 }
 
 .quiz-option-btn:hover {
-  background: rgba(2, 132, 199, 0.08);
-  border-color: var(--color-primary);
+  background: rgba(16, 185, 129, 0.08);
+  border-color: #10b981;
 }
 
 .quiz-option-btn.correct {

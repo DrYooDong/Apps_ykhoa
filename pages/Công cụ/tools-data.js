@@ -66,6 +66,15 @@ const clinicalToolsData = [
     part: "part2-section",
     tags: ["truyền nhiễm", "vancomycin", "mrsa", "kháng sinh", "trough"]
   },
+  {
+    id: "microbiology-studio",
+    title: "Microbiology Pro Studio (Vi sinh lâm sàng)",
+    description: "Giả lập kính hiển vi ảo, đĩa cấy, cây nhận diện vi khuẩn & Antibiogram S/I/R",
+    icon: "🔬",
+    link: "Truyền Nhiễm/Microbiology_Studio.html",
+    part: "part2-section",
+    tags: ["truyền nhiễm", "vi sinh", "nhuộm gram", "kháng sinh đồ", "antibiogram", "vi khuẩn", "studio"]
+  },
 
   // Phần 3: Cấp cứu & Hồi sức
   {
@@ -88,12 +97,12 @@ const clinicalToolsData = [
   },
   {
     id: "quan-ly-may-tho",
-    title: "Quản lý Bệnh nhân Máy thở",
-    description: "Thông khí cơ học, cai thở máy",
+    title: "Ventilator Pro Studio — Giả Lập & Xử Trí Máy Thở ICU",
+    description: "Workstation giả lập máy thở ICU 3 kênh sóng thở động, 5 chế độ thở (VCV, PCV, PSV, SIMV, CPAP), Bệnh nhân ảo & Quiz chẩn đoán",
     icon: "💨",
     link: "Cấp cứu & hồi sức/QL_Maytho.html",
     part: "part3-section",
-    tags: ["cấp cứu", "hồi sức", "máy thở", "thở máy", "cai thở máy", "icu"]
+    tags: ["cấp cứu", "hồi sức", "máy thở", "thở máy", "cai thở máy", "icu", "ventilator", "studio", "sóng thở", "ards", "copd"]
   },
   {
     id: "an-than-icu",
@@ -271,6 +280,15 @@ const clinicalToolsData = [
   },
 
   // Phần 10: Huyết học
+  {
+    id: "lab-pro-studio",
+    title: "Lab Pro Studio — Giả Lập & Phân Tích Xét Nghiệm Máu",
+    description: "Trình giả lập kết quả xét nghiệm máu tương tác PACS-style (CBC, Gan, Thận, Lipid, Đông máu), gauge bars, gợi ý chẩn đoán phân biệt & Quiz",
+    icon: "🧪",
+    link: "Huyết học/Lab_Studio.html",
+    part: "part10-section",
+    tags: ["huyết học", "xét nghiệm", "lab", "cbc", "sinh hóa", "đông máu", "studio", "pacs"]
+  },
   {
     id: "phan-tang-thieu-mau",
     title: "Phân tầng Thiếu máu & Thuật toán chẩn đoán",

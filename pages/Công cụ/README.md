@@ -47,6 +47,7 @@ Công cụ/
 │   └── thangdiemHCC.md        # Tóm tắt tài liệu các thang điểm nguy cơ ung thư biểu mô tế bào gan
 ├── Truyền Nhiễm/              # Công cụ phân tầng nhiễm trùng/sepsis, điều trị kháng sinh
 │   ├── SL_Nhiem-khuan.html    # Tính điểm qSOFA/SOFA và phác đồ Hour-1 Bundle xử trí sepsis
+│   ├── Microbiology_Studio.html # Microbiology Pro Studio: Giả lập vi sinh, kính hiển vi ảo & Antibiogram
 │   ├── QL_Vancomycin.html     # Phần mềm tính toán, quản lý liều và theo dõi nồng độ Vancomycin
 │   ├── QL Vancomycin.md       # Tài liệu lâm sàng về dược động học và giám sát trị liệu Vancomycin (TDM)
 │   ├── Chỉnh liều Vancomycin.md # Hướng dẫn điều chỉnh liều Vancomycin dựa trên AUC/MIC và Cmin

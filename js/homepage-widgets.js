@@ -25,6 +25,7 @@
     { title: "Chẩn đoán Đột quỵ cấp (NIHSS)", category: "Công cụ", url: "pages/Công cụ/Thần kinh/DG_Dotquy.html", keywords: "nihss, dot quy, tai bien, nao" },
     { title: "Phân tầng độ nặng Viêm phổi (CURB-65, PSI)", category: "Công cụ", url: "pages/Công cụ/Hô hấp & Lao/DG_Viem-phoi.html", keywords: "viem phoi, curb65, curb-65, psi" },
     { title: "Quản lý & chỉnh liều Vancomycin", category: "Công cụ", url: "pages/Công cụ/Truyền Nhiễm/QL_Vancomycin.html", keywords: "vancomycin, auc, mic, khang sinh" },
+    { title: "Microbiology Pro Studio — Vi sinh lâm sàng & Kháng sinh đồ", category: "Công cụ", url: "pages/Công cụ/Truyền Nhiễm/Microbiology_Studio.html", keywords: "vi sinh, nhuom gram, nhan dien vi khuan, antibiogram, khang sinh do" },
     { title: "Mẫu Bệnh án Nội khoa chuẩn", category: "Công cụ", url: "pages/Công cụ/Chung/Bệnh án/benh-an-noi-khoa.html", keywords: "benh an, benh an mau, kham benh" },
     { title: "Tiếp cận chẩn đoán Đau ngực cấp", category: "Tiếp cận lâm sàng", url: "pages/Tiếp cận/2. Tiếp cận chẩn đoán từ triệu chứng lâm sàng/Than phiền Hô hấp - Tim mạch/TC_Daunguc.html", keywords: "dau nguc, tim, mach vanh, phoi" },
     { title: "Tiếp cận chẩn đoán Khó thở cấp", category: "Tiếp cận lâm sàng", url: "pages/Tiếp cận/2. Tiếp cận chẩn đoán từ triệu chứng lâm sàng/Than phiền Hô hấp - Tim mạch/TC_Khotho.html", keywords: "kho tho, hen, copd, suy tim" },

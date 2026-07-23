@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Lab Pro Studio — Giả lập & phân tích phiếu xét nghiệm máu tương tác (Huyết học CBC, Sinh hóa Gan - Thận - Đường - Lipid, Đông cầm máu), PACS-style viewer, thước gauge bar, thuật toán gợi ý chẩn đoán phân biệt & Quiz lâm sàng – CliniPortal.">
+  <title>Lab Pro Studio – Giả Lập & Phân Tích Xét Nghiệm Máu – CliniPortal</title>
+
+  <!-- Preconnect Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../css/components/lab-studio.css">
+
+  <!-- Core & Studio JS -->
+  <script src="../../../js/main.js" defer></script>
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+  <script src="../../../js/lab-studio/lab-reference.js" defer></script>
+  <script src="../../../js/lab-studio/lab-scenarios.js" defer></script>
+  <script src="../../../js/lab-studio/lab-analyzer.js" defer></script>
+  <script src="../../../js/lab-studio/lab-studio.js" defer></script>
+</head>
+
+<body>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- App Container -->
+  <div class="app-container">
+
+    <!-- Sidebar Navigation -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận</span>
+            </a>
+          </li>
+          <li>
+            <a href="../cong-cu.html" class="nav-item active" aria-current="page" title="Công cụ">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="app-main">
+      <div class="lab-studio-container">
+
+        <!-- Studio Header Card -->
+        <div class="studio-card">
+          <div class="studio-header-bar">
+            <div>
+              <span class="element-badge" style="background-color: var(--color-primary); margin-bottom: 0.5rem;">Công Cụ Giả Lập Xét Nghiệm High-Tech</span>
+              <h1 class="studio-title">Lab Pro Studio — Giả Lập & Phân Tích Phiếu Xét Nghiệm Máu Lâm Sàng</h1>
+              <p style="color: var(--color-text-muted); font-size: 0.95rem; margin-top: 0.25rem;">
+                Trình giả lập kết quả xét nghiệm máu tương tác 5 nhóm chỉ số (CBC, Gan, Thận, Đường/Lipid, Đông máu). Đánh giá vị trí trị số bằng Gauge Bars, thuật toán gợi ý chẩn đoán phân biệt tự động và Quiz thử thách chẩn đoán lâm sàng.
+              </p>
+            </div>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <button class="btn-proc btn-proc-secondary" id="btnResetStudio">
+                <i class="fa-solid fa-rotate-left"></i> Đặt Lại Mặc Định
+              </button>
+              <button class="btn-proc btn-proc-primary" id="btnStartStudioQuiz">
+                <i class="fa-solid fa-graduation-cap"></i> Thử Thách Quiz Chẩn Đoán
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Breadcrumb Navigation -->
+        <nav aria-label="Breadcrumb" class="breadcrumb-container" style="margin-bottom: 1.25rem;">
+          <ol class="breadcrumb-list">
+            <li class="breadcrumb-item">
+              <a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="../cong-cu.html" class="breadcrumb-link" title="Công cụ lâm sàng"><span class="home-icon">⚙️</span> Công cụ</a>
+            </li>
+            <li class="breadcrumb-item">Huyết học</li>
+            <li class="breadcrumb-item active" aria-current="page">Lab Pro Studio</li>
+          </ol>
+        </nav>
+
+        <!-- 3-Column Studio Main Grid Layout -->
+        <div class="studio-main-grid">
+
+          <!-- LEFT COLUMN: Tabbed Control Panel (Scenarios vs Lab Mixer) -->
+          <div class="studio-card">
+            
+            <!-- Sidebar Panel Tabs Header -->
+            <div class="sidebar-tabs-header">
+              <button class="sidebar-tab-btn active" data-tab="tab_scenarios">
+                <i class="fa-solid fa-user-doctor"></i> Ca Bệnh Mẫu
+              </button>
+              <button class="sidebar-tab-btn" data-tab="tab_mixer">
+                <i class="fa-solid fa-sliders"></i> Lab Mixer
+              </button>
+            </div>
+
+            <!-- TAB 1: Scenarios & Patient Context -->
+            <div class="sidebar-tab-content" id="tab_scenarios" style="display: block;">
+              <!-- Patient Context Panel -->
+              <div class="patient-card" id="patientContextPanel" style="display: none;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+                  <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--color-primary); margin: 0;">
+                    🏥 BỆNH NHÂN ẢO LÂM SÀNG
+                  </h3>
+                  <span class="element-badge" style="font-size: 0.7rem; background: var(--color-primary);">Ca Bệnh</span>
+                </div>
+                <p style="font-size: 0.85rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.4rem;" id="patDemographics">--</p>
+
+                <div class="patient-vitals-grid">
+                  <div class="vital-box">
+                    <span class="vital-label">MẠCH</span>
+                    <span class="vital-val" id="patHR">--</span>
+                  </div>
+                  <div class="vital-box">
+                    <span class="vital-label">HUYẾT ÁP</span>
+                    <span class="vital-val" id="patBP">--</span>
+                  </div>
+                  <div class="vital-box">
+                    <span class="vital-label">SpO2</span>
+                    <span class="vital-val" id="patSpO2">--</span>
+                  </div>
+                  <div class="vital-box">
+                    <span class="vital-label">NHIỆT ĐỘ</span>
+                    <span class="vital-val" id="patTemp">--</span>
+                  </div>
+                </div>
+
+                <p style="font-size: 0.82rem; color: var(--color-text); line-height: 1.45; margin-bottom: 0.4rem;" id="patContextDesc">--</p>
+                <ul style="font-size: 0.8rem; color: var(--color-text-muted); list-style: none; padding: 0; margin: 0;" id="patSymptomsList"></ul>
+              </div>
+
+              <!-- Scenarios Search Box -->
+              <div class="mixer-search-box">
+                <i class="fa-solid fa-magnifying-glass mixer-search-icon"></i>
+                <input type="text" id="scenarioSearchInput" class="mixer-search-input" placeholder="Tìm ca bệnh (thiếu máu, DIC, viêm gan, DKA)...">
+              </div>
+
+              <!-- Category Pills Filter -->
+              <div class="cat-pills-scroll" id="scenarioCategoryPills">
+                <button class="cat-pill-btn active" data-scenariocat="ALL">Tất cả</button>
+                <button class="cat-pill-btn" data-scenariocat="Huyết học">Huyết học</button>
+                <button class="cat-pill-btn" data-scenariocat="Đông cầm máu">Đông máu</button>
+                <button class="cat-pill-btn" data-scenariocat="Sinh hóa gan">Gan</button>
+                <button class="cat-pill-btn" data-scenariocat="Sinh hóa thận">Thận</button>
+                <button class="cat-pill-btn" data-scenariocat="Chuyển hóa">Chuyển hóa</button>
+                <button class="cat-pill-btn" data-scenariocat="Nhiễm trùng">Nhiễm trùng</button>
+              </div>
+
+              <!-- Scenarios Bank List -->
+              <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.75rem;">
+                📂 Danh Sách Ca Bệnh Xét Nghiệm Mẫu
+              </h3>
+              <div class="scenarios-scroll-list" id="scenarioListGrid"></div>
+            </div>
+
+            <!-- TAB 2: Lab Mixer Custom Numerical Inputs -->
+            <div class="sidebar-tab-content" id="tab_mixer" style="display: none;">
+              <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 0.75rem;">
+                Tùy chỉnh trị số từng chỉ số xét nghiệm để giả lập phiếu xét nghiệm theo ý muốn.
+              </p>
+              <div class="lab-mixer-container" id="labMixerGrid"></div>
+            </div>
+
+          </div>
+
+          <!-- MIDDLE COLUMN: PACS Virtual Lab Report Document Viewer -->
+          <div class="studio-card">
+
+            <!-- Active Abnormality Chips Bar -->
+            <div class="active-chips-bar-wrapper">
+              <span class="active-chips-label"><i class="fa-solid fa-layer-group"></i> Bất thường phát hiện:</span>
+              <div class="active-chips-list" id="activeModifiersChips"></div>
+            </div>
+
+            <!-- Virtual Lab Report Card -->
+            <div class="lab-report-card">
+              <div class="lab-report-header">
+                <div>
+                  <div class="lab-facility-title">🏥 PHIẾU KẾT QUẢ XÉT NGHIỆM Y KHOA</div>
+                  <div style="font-size: 0.8rem; color: var(--color-text-muted); font-weight: 600;">Khoa Xét Nghiệm — CliniPortal PACS Studio</div>
+                </div>
+                <div class="lab-report-id">LAB-ID: #2026-LAB-8842</div>
+              </div>
+
+              <!-- Lab Values Table -->
+              <table class="lab-report-table">
+                <thead>
+                  <tr>
+                    <th>Tên Chỉ Số</th>
+                    <th>Kết Quả</th>
+                    <th>Đơn Vị</th>
+                    <th>Khoảng Tham Chiếu</th>
+                    <th>Đồ Thị Vị Trí (Gauge)</th>
+                  </tr>
+                </thead>
+                <tbody id="labReportTableBody"></tbody>
+              </table>
+            </div>
+
+            <!-- Automated Differential Diagnosis Suggestions -->
+            <div class="analysis-panel-box">
+              <div class="analysis-panel-title">
+                <i class="fa-solid fa-brain" style="color: var(--color-primary);"></i> Thuật Toán Gợi Ý Chẩn Đoán Phân Biệt & Hướng Xử Trí
+              </div>
+              <div id="ddxCardsContainer"></div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN: 6-Step Systematic Reading Checklist & Criteria -->
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <div class="studio-card">
+              <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.5rem;">
+                🔬 Quy Trình Đọc Phiếu Xét Nghiệm 6 Bước
+              </h3>
+              <p style="font-size: 0.78rem; color: var(--color-text-muted); margin-bottom: 0.75rem;">
+                Phân tích phiếu xét nghiệm hệ thống từ tế bào máu đến đông cầm máu & chức năng tạng (Bấm từng bước để xem hướng dẫn).
+              </p>
+              <div class="checklist-container" id="systematicChecklist"></div>
+            </div>
+
+            <!-- Detailed Criteria Box -->
+            <div class="studio-card">
+              <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--color-primary); margin-bottom: 0.5rem;">
+                📑 Hướng Dẫn Đọc Lâm Sàng Chi Tiết
+              </h3>
+              <div id="diagnosticCriteriaBox" class="checklist-container">
+                <p style="color: var(--color-text-muted); font-style: italic; font-size: 0.82rem;">
+                  Bấm chọn một bước trong quy trình 6 bước ở trên để xem hướng dẫn phân tích lý thuyết & thuật toán chi tiết.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Quiz Challenge Section -->
+        <div class="quiz-studio-card" id="quizStudioBox" style="display: none;">
+          <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--color-primary); margin-bottom: 0.5rem;">
+            🎯 THỬ THÁCH CHẨN ĐOÁN XÉT NGHIỆM LÂM SÀNG
+          </h3>
+          <p style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
+            Dựa trên thông tin bệnh nhân ảo, phiếu kết quả xét nghiệm và các bất thường quan sát được, hãy chọn chẩn đoán chính xác nhất:
+          </p>
+          <div id="quizStudioOptions"></div>
+        </div>
+
+        <!-- Related Links Section -->
+        <section class="related-links-section" style="max-width: 1450px; margin: 2rem auto 0 auto; width: 100%; box-sizing: border-box;">
+          <h4 class="related-links-title">
+            <i class="fas fa-link"></i> Xem thêm các nội dung liên quan
+          </h4>
+          <div class="related-links-grid">
+            <a href="DG_Thieumau.html" class="related-link-card">
+              <div class="related-card-content">
+                <span class="related-card-badge duoc-ly">Công cụ</span>
+                <h5>Phân Tầng Thiếu Máu</h5>
+                <p>Công cụ đánh giá mức độ và phân loại nguyên nhân thiếu máu dựa theo chỉ số MCV, MCH và RPI.</p>
+              </div>
+              <i class="fas fa-chevron-right related-card-arrow"></i>
+            </a>
+            <a href="../Thận & Điện giải - toan kiềm/DG_ABG.html" class="related-link-card">
+              <div class="related-card-content">
+                <span class="related-card-badge sinh-ly">Studio</span>
+                <h5>Blood Gas Pro Studio</h5>
+                <p>Trình giả lập & phân tích khí máu động mạch tương tác 7 bước kèm biểu đồ Davenport.</p>
+              </div>
+              <i class="fas fa-chevron-right related-card-arrow"></i>
+            </a>
+            <a href="../Cấp cứu & hồi sức/ECG_Studio.html" class="related-link-card">
+              <div class="related-card-content">
+                <span class="related-card-badge ky-nang">Studio</span>
+                <h5>ECG Pro Studio</h5>
+                <p>Trình giả lập & tạo điện tâm đồ 12 chuyển đạo tương tác theo ca bệnh cấp cứu.</p>
+              </div>
+              <i class="fas fa-chevron-right related-card-arrow"></i>
+            </a>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+</body>
+
+</html>

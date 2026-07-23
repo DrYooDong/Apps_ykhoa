@@ -54,6 +54,7 @@
 | `components/abg-studio.css` | Giao diện Blood Gas Pro Studio, Davenport Nomogram, Vitals, Checklist 7 bước | `pages/Công cụ/Thận & Điện giải - toan kiềm/DG_ABG.html` |
 | `components/electrolyte-studio.css` | Giao diện Electrolyte Pro Studio (Na, K, Ca, Mg), Canvas Balance Plot, Directives | `pages/Công cụ/Thận & Điện giải - toan kiềm/Electrolyte_Studio.html` |
 | `components/cxr-studio.css` | Giao diện Chest X-Ray Pro Studio, SVG Radiograph Engine, CTR Ruler, ABCDE Checklist | `pages/Công cụ/Hô hấp & Lao/CXR_Studio.html` |
+| `components/micro-studio.css` | Giao diện Microbiology Pro Studio, SVG Microscopy Viewer, Culture Plate, Antibiogram | `pages/Công cụ/Truyền Nhiễm/Microbiology_Studio.html` |
 | `components/insulin-calculator.css` | Giao diện máy tính Insulin | `DG_Insulin-ĐTĐ.html` |
 | `components/benh-an.css` | Mẫu bệnh án điện tử | `benh-an-noi-khoa.html` |
 | `components/paraclinical.css` | Đọc kết quả cận lâm sàng | `pages/Kỹ năng/Cận lâm sàng/**` |
@@ -91,12 +92,18 @@
 | `electrolyte-studio/electrolyte-scenarios.js` | Ca cấp cứu bệnh nhân ảo điện giải (Na, K, Ca, Mg) | `Electrolyte_Studio.html` |
 | `electrolyte-studio/electrolyte-canvas.js` | Động cơ Canvas vẽ biểu đồ Electrolyte Balance Bar Chart | `Electrolyte_Studio.html` |
 | `electrolyte-studio/electrolyte-engine.js` | Động cơ tính toán động học dịch truyền & Y lệnh 3 cấp độ | `Electrolyte_Studio.html` |
+| `electrolyte-studio/electrolyte-management.js` | Động cơ xử trí lâm sàng cá nhân hóa & tính liều thuốc theo thể trạng | `Electrolyte_Studio.html` |
 | `electrolyte-studio/electrolyte-studio.js` | UI Controller tổng hợp Electrolyte Pro Studio | `Electrolyte_Studio.html` |
 | `cxr-studio/cxr-criteria.js` | Quy tắc chẩn đoán, CTR, phân loại ARDS & Bảng kiểm ABCDE | `CXR_Studio.html` |
 | `cxr-studio/cxr-scenarios.js` | Ca bệnh lâm sàng & hình ảnh phim X-quang ngực cấp cứu | `CXR_Studio.html` |
 | `cxr-studio/cxr-svg-engine.js` | Động cơ SVG Vector dựng giải phẫu lồng ngực & các lớp tổn thương | `CXR_Studio.html` |
 | `cxr-studio/cxr-engine.js` | Động cơ phân tích phim X-quang 5 bước ABCDE tự động | `CXR_Studio.html` |
 | `cxr-studio/cxr-studio.js` | UI Controller tổng hợp Chest X-Ray Pro Studio, Ruler CTR, Invert & Quiz | `CXR_Studio.html` |
+| `micro-studio/micro-criteria.js` | Cây nhận diện vi khuẩn 5 bước, phản ứng sinh hóa & Antibiogram S/I/R | `Microbiology_Studio.html` |
+| `micro-studio/micro-scenarios.js` | Ca bệnh lâm sàng vi sinh & nhiễm khuẩn cấp cứu | `Microbiology_Studio.html` |
+| `micro-studio/micro-svg-engine.js` | Động cơ SVG Vector dựng kính hiển vi ảo (Gram, AFB, Yeast) & Đĩa cấy thạch | `Microbiology_Studio.html` |
+| `micro-studio/micro-engine.js` | Động cơ nhận diện tác nhân vi sinh & Antibiogram matching | `Microbiology_Studio.html` |
+| `micro-studio/micro-studio.js` | UI Controller tổng hợp Microbiology Pro Studio & Quiz | `Microbiology_Studio.html` |
 | `pharmacology-symptoms.js` | Filter dược lý theo triệu chứng | `pages/Dược lý/Triệu chứng/**` |
 | `pharmacology-tools.js` | Logic tương tác đa thuốc, hiệu chỉnh liều gan thận, quy đổi liều tương đương & Antidote | `pages/Dược lý/**` |
 | `drug-passport.js` | Quản lý state bệnh nhân cá thể hóa toàn cục (localStorage) | `pages/Dược lý/**` |
@@ -176,7 +183,9 @@
 | `Công cụ/Thần kinh/DG_Dotquy.html` | Đột quỵ (NIHSS, ABCD2) | — |
 | `Công cụ/Truyền Nhiễm/Chinhlieu_khangsinh.html` | Chỉnh liều kháng sinh | — |
 | `Công cụ/Truyền Nhiễm/QL_Vancomycin.html` | Quản lý Vancomycin | — |
+| `Công cụ/Truyền Nhiễm/Microbiology_Studio.html` | Microbiology Pro Studio: Kính hiển vi ảo, Đĩa cấy, Nhận diện vi khuẩn & Antibiogram | `micro-studio.css` |
 | `Công cụ/Truyền Nhiễm/SL_Nhiem-khuan.html` | Sơ lược nhiễm khuẩn | — |
+| `Công cụ/Huyết học/Lab_Studio.html` | Lab Pro Studio: Giả lập & phân tích phiếu xét nghiệm máu tương tác (CBC, Gan, Thận, Lipid, Đông máu) | `lab-studio.css` |
 | `Công cụ/Huyết học/DG_Thieumau.html` | Phân tầng Thiếu máu & Thuật toán chẩn đoán (CRI/RPI, MCV/MCH, Iron panel) | — |
 
 ---

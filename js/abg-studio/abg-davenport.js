@@ -236,10 +236,10 @@ class ABGDavenportNomogram {
     if (!this.canvas) return;
     let isDragging = false;
 
-    const updatePointFromMouse = (e) => {
+    const updatePointFromClientCoords = (clientX, clientY) => {
       const rect = this.canvas.getBoundingClientRect();
-      const mouseX = e.clientX - rect.left;
-      const mouseY = e.clientY - rect.top;
+      const mouseX = clientX - rect.left;
+      const mouseY = clientY - rect.top;
 
       let ph = this._phFromX(mouseX);
       let pco2 = this._pco2FromY(mouseY);
@@ -253,15 +253,35 @@ class ABGDavenportNomogram {
       }
     };
 
+    // Mouse Events
     this.canvas.addEventListener('mousedown', (e) => {
       isDragging = true;
-      updatePointFromMouse(e);
+      updatePointFromClientCoords(e.clientX, e.clientY);
     });
 
     this.canvas.addEventListener('mousemove', (e) => {
-      if (isDragging) updatePointFromMouse(e);
+      if (isDragging) updatePointFromClientCoords(e.clientX, e.clientY);
     });
 
     window.addEventListener('mouseup', () => { isDragging = false; });
+
+    // Touch Events
+    this.canvas.addEventListener('touchstart', (e) => {
+      if (e.touches && e.touches[0]) {
+        isDragging = true;
+        e.preventDefault();
+        updatePointFromClientCoords(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    }, { passive: false });
+
+    this.canvas.addEventListener('touchmove', (e) => {
+      if (isDragging && e.touches && e.touches[0]) {
+        e.preventDefault();
+        updatePointFromClientCoords(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    }, { passive: false });
+
+    window.addEventListener('touchend', () => { isDragging = false; });
   }
 }
+

@@ -86,6 +86,9 @@
               <button class="btn-proc btn-proc-secondary" id="btnResetStudio">
                 <i class="fa-solid fa-rotate-left"></i> Đặt Lại Mặc Định
               </button>
+              <button class="btn-proc btn-proc-secondary" id="btnScrollToDDx">
+                <i class="fa-solid fa-stethoscope"></i> Chẩn Đoán Phân Biệt
+              </button>
               <button class="btn-proc btn-proc-primary" id="btnStartStudioQuiz">
                 <i class="fa-solid fa-graduation-cap"></i> Thử Thách Quiz Chẩn Đoán
               </button>
@@ -403,6 +406,30 @@
 
           </div>
 
+        </div>
+
+        <!-- DIFFERENTIAL DIAGNOSIS STUDIO CARD -->
+        <div class="studio-card ddx-studio-card" id="differentialDiagnosisSection" style="margin-top: 1.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem; border-bottom: 2px solid var(--color-border); padding-bottom: 0.75rem;">
+            <div>
+              <span class="element-badge" style="background-color: var(--color-primary); margin-bottom: 0.35rem;">Hỗ Trợ Ra Quyết Định</span>
+              <h2 style="font-size: 1.35rem; font-weight: 800; color: var(--color-text); margin: 0;">
+                🩺 CHẨN ĐOÁN PHÂN BIỆT RỐI LOẠN KHÍ MÁU & KIỀM TOAN (DIFFERENTIAL DIAGNOSIS)
+              </h2>
+            </div>
+            <span style="font-size: 0.8rem; color: var(--color-text-muted);">
+              <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--color-primary);"></i> Cập nhật động theo kết quả khí máu
+            </span>
+          </div>
+
+          <!-- Dynamic Active DDx Summary Alert Box -->
+          <div id="ddxDynamicActiveSummary" style="margin-bottom: 1.25rem;"></div>
+
+          <!-- DDx Tab Filter Pills -->
+          <div class="ddx-tabs-container" id="ddxTabPillsList"></div>
+
+          <!-- DDx Main Content Display Grid -->
+          <div id="ddxCategoryContentBox" class="ddx-content-box"></div>
         </div>
 
         <!-- Quiz Studio Box -->

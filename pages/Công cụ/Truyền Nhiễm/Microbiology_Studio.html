@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Microbiology Pro Studio — Giả lập phòng xét nghiệm vi sinh lâm sàng tương tác, kính hiển vi ảo SVG, đĩa cấy thạch, cây nhận diện vi khuẩn 5 bước, bảng kháng sinh đồ S/I/R và Quiz chẩn đoán – CliniPortal." />
+  <title>Microbiology Pro Studio – Vi Sinh Học Lâm Sàng – CliniPortal</title>
+
+  <!-- Preconnect fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../css/components/micro-studio.css">
+
+  <script src="../../../js/main.js" defer></script>
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+  <script src="../../../js/micro-studio/micro-criteria.js" defer></script>
+  <script src="../../../js/micro-studio/micro-scenarios.js" defer></script>
+  <script src="../../../js/micro-studio/micro-svg-engine.js" defer></script>
+  <script src="../../../js/micro-studio/micro-engine.js" defer></script>
+  <script src="../../../js/micro-studio/micro-studio.js" defer></script>
+</head>
+
+<body>
+  <!-- Placeholder nạp header.html -->
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- APP CONTAINER -->
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../cong-cu.html" class="nav-item active" aria-current="page" title="Công cụ">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="app-main">
+      <div class="micro-studio-container">
+
+        <!-- Studio Header Card -->
+        <div class="studio-card">
+          <div class="studio-header-bar">
+            <div>
+              <span class="element-badge" style="background-color: #10b981; margin-bottom: 0.5rem;">Công Cụ Vi Sinh Lâm Sàng High-Tech</span>
+              <h1 class="studio-title">Microbiology Pro Studio — Giả Lập & Nhận Diện Vi Sinh Học Lâm Sàng</h1>
+              <p style="color: var(--color-text-muted); font-size: 0.95rem; margin-top: 0.25rem;">
+                Hệ thống hỗ trợ ra quyết định vi sinh & kháng sinh trị liệu. Giả lập soi kính hiển vi ảo SVG, đĩa cấy thạch, quy trình nhận diện vi khuẩn hệ thống (Decision Tree) và tra cứu Kháng Sinh Đồ S/I/R.
+              </p>
+            </div>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <button class="btn-proc btn-proc-secondary" id="btnResetStudio">
+                <i class="fa-solid fa-rotate-left"></i> Đặt Lại Mặc Định
+              </button>
+              <button class="btn-proc btn-proc-primary" id="btnStartStudioQuiz" style="background:#10b981;">
+                <i class="fa-solid fa-graduation-cap"></i> Thử Thách Quiz Vi Sinh
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- BREADCRUMB -->
+        <nav aria-label="Breadcrumb" class="breadcrumb-container" style="margin-bottom: 1.25rem;">
+          <ol class="breadcrumb-list">
+            <li class="breadcrumb-item">
+              <a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="../cong-cu.html" class="breadcrumb-link" title="Công cụ lâm sàng"><span class="home-icon">⚙️</span> Công cụ</a>
+            </li>
+            <li class="breadcrumb-item">Truyền Nhiễm</li>
+            <li class="breadcrumb-item active" aria-current="page">Microbiology Pro Studio</li>
+          </ol>
+        </nav>
+
+        <!-- 3-COLUMN STUDIO MAIN GRID -->
+        <div class="studio-main-grid">
+
+          <!-- LEFT COLUMN: Tabbed Control Panel (Scenarios vs Organism Mixer) -->
+          <div class="studio-card">
+            
+            <!-- Sidebar Panel Tabs Header -->
+            <div class="sidebar-tabs-header">
+              <button class="sidebar-tab-btn active" data-tab="tab_scenarios">
+                <i class="fa-solid fa-user-doctor"></i> Ca Bệnh Mẫu
+              </button>
+              <button class="sidebar-tab-btn" data-tab="tab_mixer">
+                <i class="fa-solid fa-sliders"></i> Organism Mixer
+              </button>
+            </div>
+
+            <!-- TAB 1: Scenarios & Patient Context -->
+            <div class="sidebar-tab-content" id="tab_scenarios" style="display: block;">
+              <!-- Patient Context Panel -->
+              <div class="patient-card" id="patientContextPanel" style="display: none;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+                  <h3 style="font-size: 1.05rem; font-weight: 800; color: #10b981; margin: 0;">
+                    🏥 BỆNH NHÂN ẢO NHIỄM KHUẨN
+                  </h3>
+                  <span class="element-badge" style="font-size: 0.7rem; background: #10b981;">Tình Huống</span>
+                </div>
+                <p style="font-size: 0.85rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.4rem;" id="patDemographics">--</p>
+
+                <div class="patient-vitals-grid">
+                  <div class="vital-box">
+                    <span class="vital-label">MẠCH</span>
+                    <span class="vital-val" id="patHR">--</span>
+                  </div>
+                  <div class="vital-box">
+                    <span class="vital-label">HUYẾT ÁP</span>
+                    <span class="vital-val" id="patBP">--</span>
+                  </div>
+                  <div class="vital-box">
+                    <span class="vital-label">SpO2</span>
+                    <span class="vital-val" id="patSpO2">--</span>
+                  </div>
+                  <div class="vital-box">
+                    <span class="vital-label">NHIỆT ĐỘ</span>
+                    <span class="vital-val" id="patTemp">--</span>
+                  </div>
+                  <div class="vital-box">
+                    <span class="vital-label">NHỊP THỞ</span>
+                    <span class="vital-val" id="patRR">--</span>
+                  </div>
+                  <div class="vital-box">
+                    <span class="vital-label">GCS</span>
+                    <span class="vital-val" id="patGCS">--</span>
+                  </div>
+                </div>
+
+                <p style="font-size: 0.82rem; color: var(--color-text); line-height: 1.45; margin-bottom: 0.4rem;" id="patContextDesc">--</p>
+                <ul style="font-size: 0.8rem; color: var(--color-text-muted); list-style: none; padding: 0; margin: 0;" id="patSymptomsList"></ul>
+              </div>
+
+              <!-- Scenarios Bank List -->
+              <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.5rem;">
+                📂 Ca Vi Sinh Nhiễm Khuẩn Cấp Cứu
+              </h3>
+              <!-- Scenario Search Box -->
+              <div class="scenario-search-box">
+                <i class="fa-solid fa-magnifying-glass scenario-search-icon"></i>
+                <input type="text" id="scenarioSearchInput" class="scenario-search-input" placeholder="Tìm ca bệnh, vi khuẩn, mẫu phẩm...">
+              </div>
+              <div class="scenarios-scroll-list" id="scenarioListGrid"></div>
+            </div>
+
+            <!-- TAB 2: Organism Mixer Controls with Category Pills Filter -->
+            <div class="sidebar-tab-content" id="tab_mixer" style="display: none;">
+              <!-- Category Pills Filter -->
+              <div class="cat-pills-scroll">
+                <button class="cat-pill-btn active" data-cat="ALL">Tất cả</button>
+                <button class="cat-pill-btn" data-cat="Gram dương">Gram (+)</button>
+                <button class="cat-pill-btn" data-cat="Gram âm">Gram (−)</button>
+                <button class="cat-pill-btn" data-cat="Vi nấm">Vi nấm</button>
+                <button class="cat-pill-btn" data-cat="Vi khuẩn đặc biệt">Khác</button>
+              </div>
+
+              <!-- Mixer Selects List -->
+              <div class="micro-sliders-container">
+                
+                <div class="slider-group-box">
+                  <span style="font-size: 0.78rem; font-weight: 700; color: #10b981;">🔬 Nhuộm & Hình Thái Kính Hiển Vi</span>
+                  <div style="margin-top: 0.4rem;">
+                    <label style="font-size: 0.72rem; color: var(--color-text-muted);">Hình thái vi khuẩn (Gram)</label>
+                    <select id="selectGramType" class="micro-select-input">
+                      <option value="gram_pos_cocci_clusters" selected>Gram (+) Cầu khuẩn tụ đám (Clusters)</option>
+                      <option value="gram_pos_cocci_chains">Gram (+) Cầu khuẩn xếp chuỗi (Chains)</option>
+                      <option value="gram_pos_diplococci_lancet">Gram (+) Song cầu ngọn giáo (Lancet)</option>
+                      <option value="gram_pos_spore_rods">Gram (+) Trực khuẩn có bào tử (Spore-forming)</option>
+                      <option value="gram_neg_rods">Gram (−) Trực khuẩn (Rods)</option>
+                      <option value="gram_neg_vibrio_comma">Gram (−) Phẩy khuẩn (Vibrio comma)</option>
+                      <option value="gram_neg_diplococci_intracellular">Gram (−) Song cầu hạt cà phê nội bào</option>
+                      <option value="afb_red_rods">Ziehl-Neelsen AFB Trực khuẩn đỏ</option>
+                      <option value="india_ink_cryptococcus">India Ink Nấm men có quầng sáng</option>
+                      <option value="yeast_budding">Nấm men nảy chồi (Budding yeast)</option>
+                    </select>
+                  </div>
+
+                  <div style="margin-top: 0.4rem;">
+                    <label style="font-size: 0.72rem; color: var(--color-text-muted);">Phương pháp Nhuộm</label>
+                    <select id="selectStainType" class="micro-select-input">
+                      <option value="gram" selected>Nhuộm Gram (Gram Stain)</option>
+                      <option value="ziehl_neelsen">Nhuộm Ziehl-Neelsen (AFB)</option>
+                      <option value="india_ink">Nhuộm Mực Tàu (India Ink)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="slider-group-box">
+                  <span style="font-size: 0.78rem; font-weight: 700; color: #10b981;">🧫 Đĩa Cấy & Phản Ứng Sinh Hóa</span>
+                  
+                  <div style="margin-top: 0.4rem;">
+                    <label style="font-size: 0.72rem; color: var(--color-text-muted);">Môi trường Đĩa Cấy</label>
+                    <select id="selectCulturePlate" class="micro-select-input">
+                      <option value="blood_agar_beta" selected>Thạch Máu — Tan máu Beta (β)</option>
+                      <option value="blood_agar_alpha">Thạch Máu — Tan máu Alpha (α)</option>
+                      <option value="macconkey_lactose_pos">MacConkey — Lactose (+)</option>
+                      <option value="macconkey_lactose_neg_green">MacConkey — Lactose (−) Sắc tố Xanh</option>
+                      <option value="chocolate_agar">Chocolate Agar (CO2 5%)</option>
+                    </select>
+                  </div>
+
+                  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.4rem; margin-top: 0.4rem;">
+                    <div>
+                      <label style="font-size: 0.68rem; color: var(--color-text-muted);">Catalase</label>
+                      <select id="selectCatalase" class="micro-select-input">
+                        <option value="positive" selected>Dương (+)</option>
+                        <option value="negative">Âm (−)</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label style="font-size: 0.68rem; color: var(--color-text-muted);">Coagulase</label>
+                      <select id="selectCoagulase" class="micro-select-input">
+                        <option value="positive" selected>Dương (+)</option>
+                        <option value="negative">Âm (−)</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.4rem; margin-top: 0.4rem;">
+                    <div>
+                      <label style="font-size: 0.68rem; color: var(--color-text-muted);">Oxidase</label>
+                      <select id="selectOxidase" class="micro-select-input">
+                        <option value="positive">Dương (+)</option>
+                        <option value="negative" selected>Âm (−)</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label style="font-size: 0.68rem; color: var(--color-text-muted);">Lactose</label>
+                      <select id="selectLactose" class="micro-select-input">
+                        <option value="positive">Lên men (+)</option>
+                        <option value="negative">Không (−)</option>
+                        <option value="none" selected>Không áp dụng</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          <!-- MIDDLE COLUMN: SVG Microscopy Viewer & Culture Plate -->
+          <div class="studio-card">
+
+            <!-- Active Chips Bar -->
+            <div class="active-chips-bar-wrapper">
+              <span class="active-chips-label"><i class="fa-solid fa-layer-group"></i> Tác nhân chọn:</span>
+              <div class="active-chips-list" id="activeModifiersChips"></div>
+            </div>
+
+            <!-- SVG Microscopy Viewer Card -->
+            <div class="micro-viewer-card">
+              <div class="micro-viewer-toolbar">
+                <span>🔬 KÍNH HIỂN VI ẢO (SVG MICROSCOPY)</span>
+                <span>Vật kính 100x Oil</span>
+              </div>
+
+              <!-- SVG Vector Microscopy Container -->
+              <div class="micro-svg-wrapper">
+                <div id="microSvgContainer" style="width: 100%; height: 100%;"></div>
+              </div>
+
+              <!-- Culture Plate Viewer Container -->
+              <div id="culturePlateContainer" class="culture-plate-wrapper"></div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN: Decision Tree & Antibiogram Table -->
+          <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+            
+            <div class="studio-card">
+              <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.5rem;">
+                🌲 Cây Nhận Diện Vi Khuẩn (Decision Tree)
+              </h3>
+              <p style="font-size: 0.78rem; color: var(--color-text-muted); margin-bottom: 0.75rem;">
+                Quy trình định danh hệ thống (Nhuộm Gram → Hình thái → Phản ứng sinh hóa).
+              </p>
+              <div id="decisionTreeContainer"></div>
+            </div>
+
+            <div class="studio-card">
+              <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.5rem;">
+                💊 Bảng Kháng Sinh Đồ (Antibiogram S/I/R)
+              </h3>
+              <table class="antibiogram-table">
+                <thead>
+                  <tr>
+                    <th>Kháng sinh</th>
+                    <th style="text-align:center;">S/I/R</th>
+                    <th>Gợi ý lâm sàng</th>
+                  </tr>
+                </thead>
+                <tbody id="antibiogramTableBody"></tbody>
+              </table>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Quiz Studio Box -->
+        <div class="quiz-studio-card" id="quizStudioBox" style="display: none;">
+          <h3 style="font-size: 1.3rem; font-weight: 800; color: #10b981; margin-bottom: 0.5rem;">
+            🎯 THỬ THÁCH CHẨN ĐOÁN VI SINH LÂM SÀNG
+          </h3>
+          <p style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
+            Dựa trên thông tin bệnh nhân, hình ảnh vi soi nhuộm Gram và sinh hóa, hãy chọn tác nhân vi sinh chính xác nhất:
+          </p>
+          <div id="quizStudioOptions"></div>
+        </div>
+
+        <!-- TÀI LIỆU LIÊN QUAN -->
+        <section class="related-links-section" style="max-width: 1450px; margin: 2rem auto 0 auto; width: 100%; box-sizing: border-box;">
+          <h4 class="related-links-title">
+            <i class="fas fa-link"></i> Xem thêm các nội dung liên quan
+          </h4>
+          <div class="related-links-grid">
+            <a href="Chinhlieu_khangsinh.html" class="related-link-card">
+              <div class="related-card-content">
+                <span class="related-card-badge duoc-ly">Công cụ</span>
+                <h5>Chỉnh Liều Kháng Sinh Theo eGFR</h5>
+                <p>Tra cứu & hiệu chỉnh liều kháng sinh trên bệnh nhân suy thận cấp & mạn.</p>
+              </div>
+              <i class="fas fa-chevron-right related-card-arrow"></i>
+            </a>
+            <a href="../../Kỹ năng/Cận lâm sàng/doc-nhuom-soi.html" class="related-link-card">
+              <div class="related-card-content">
+                <span class="related-card-badge ky-nang">Kỹ năng lâm sàng</span>
+                <h5>Đọc Nhuộm Soi Vi Sinh Thường Quy</h5>
+                <p>Hướng dẫn chi tiết quy trình nhuộm Gram, nhuộm ZN và kỹ thuật soi tươi vi nấm.</p>
+              </div>
+              <i class="fas fa-chevron-right related-card-arrow"></i>
+            </a>
+            <a href="QL_Vancomycin.html" class="related-link-card">
+              <div class="related-card-content">
+                <span class="related-card-badge sinh-ly">Công cụ</span>
+                <h5>Quản Lý Liều Vancomycin (AUC/MIC)</h5>
+                <p>Tính toán liều nạp, liều duy trì và theo dõi nồng độ Vancomycin đáy (Trough level).</p>
+              </div>
+              <i class="fas fa-chevron-right related-card-arrow"></i>
+            </a>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+</body>
+
+</html>

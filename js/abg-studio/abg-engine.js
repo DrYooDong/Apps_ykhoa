@@ -302,4 +302,221 @@ class ABGEngine {
 
     return result;
   }
+
+  static getDifferentialDiagnoses(data, result) {
+    const ddxCategories = [];
+
+    // 1. High AG Metabolic Acidosis (GOLDMARK / MUDPILES)
+    const isHighAG = result.hasHighAG;
+    ddxCategories.push({
+      id: "highAG",
+      title: "Toan Chuyển Hóa Tăng AG (High AG Metabolic Acidosis)",
+      badge: "GOLDMARK / MUDPILES",
+      isMatched: isHighAG,
+      description: "Do sự xuất hiện của các Anion bất thường không đo được (Lactate, Ketone, Urate, Độc chất).",
+      items: [
+        {
+          name: "Nhiễm Toan Ceton (DKA / AKA / Starvation)",
+          clues: "Glucose > 200 mg/dL hoặc Ketone máu/niệu dương tính. Tiền sử đái tháo đường, nghiện rượu hoặc nhịn ăn kéo dài.",
+          labSuggest: "Ketone máu (β-hydroxybutyrate), Glucose, HbA1c",
+          priority: (data.glucose > 200 || data.ketone === 'positive') ? "CRITICAL" : "HIGH"
+        },
+        {
+          name: "Nhiễm Toan Lactic (Type A vs Type B)",
+          clues: "Type A (Thiếu máu mô): Sốc, Sepsis, Ngừng tuần hoàn. Type B (Chuyển hóa): Dùng Metformin, Suy gan, Ngộ độc.",
+          labSuggest: "Lactate máu động mạch, Sinh hiệu, cTnI, Procalcitonin",
+          priority: data.lactate > 2.0 ? "CRITICAL" : "HIGH"
+        },
+        {
+          name: "Suy Thận / Uremia (Toan Urê Máu)",
+          clues: "Giảm độ thanh thải thận (eGFR < 15 mL/phút), Ure & Creatinine máu tăng cao kéo theo ứ đọng Phosphate/Sulfate.",
+          labSuggest: "Ure, Creatinine, Điện giải đồ, eGFR, Siêu âm thận",
+          priority: data.ure > 10.0 ? "HIGH" : "MEDIUM"
+        },
+        {
+          name: "Ngộ Độc Độc Chất (Methanol, Ethylene Glycol, Propylene Glycol)",
+          clues: "Có khoảng trống Áp suất Thẩm thấu (Osmolal Gap > 10 mOsm/kg). Methanol gây mờ mắt/mù; Ethylene Glycol gây suy thận, tinh thể Oxalate niệu.",
+          labSuggest: "Áp suất thẩm thấu máu, Soi cặn niệu (Oxalate), Định lượng độc chất",
+          priority: "HIGH"
+        },
+        {
+          name: "Ngộ Độc Salicylate (Aspirin)",
+          clues: "Kích thích trung tâm hô hấp (Kiềm hô hấp) kết hợp Toan chuyển hóa tăng AG. Thường kèm ù tai, sốt, nôn ói.",
+          labSuggest: "Nồng độ Salicylate máu, ABG lặp lại",
+          priority: "MEDIUM"
+        },
+        {
+          name: "Nhiễm Toan Acid Pyroglutamic (5-Oxoproline)",
+          clues: "Gặp ở bệnh nhân suy kiệt, suy gan/thận dùng Paracetamol (Acetaminophen) điều trị kéo dài.",
+          labSuggest: "5-oxoproline niệu, Nồng độ Acetaminophen",
+          priority: "LOW"
+        }
+      ]
+    });
+
+    // 2. Normal AG Metabolic Acidosis (NAGMA / Hyperchloremic)
+    const isNAGMA = result.disordersList.includes("metabolicAcidosis") && !result.hasHighAG;
+    ddxCategories.push({
+      id: "normalAG",
+      title: "Toan Chuyển Hóa AG Bình Thường (NAGMA / Tăng Cl- máu)",
+      badge: "Mất HCO3- qua Tiêu hóa vs Thận",
+      isMatched: isNAGMA,
+      description: "Do mất Bicarbonate trực tiếp hoặc thận giảm bài tiết H+, được bù trừ bằng tăng Clorua máu.",
+      items: [
+        {
+          name: "Mất HCO₃⁻ qua Đường Tiêu Hóa (Tiêu chảy cấp, Dẫn lưu mật/tụy)",
+          clues: "Anion Gap Niệu (UAG = Na+ + K+ - Cl-) ÂM (< 0). Thận đáp ứng bình thường bằng tăng bài tiết NH4+.",
+          labSuggest: "Điện giải đồ niệu (Na+, K+, Cl- niệu), Khảo sát dịch mất",
+          priority: data.cl > 105 ? "HIGH" : "MEDIUM"
+        },
+        {
+          name: "Toan Ống Thận (Renal Tubular Acidosis - RTA Type 1, 2, 4)",
+          clues: "Anion Gap Niệu (UAG) DƯƠNG (> 0). Thận giảm bài tiết NH4+. Type 1 (xa, pH niệu > 5.5, hạ K+), Type 2 (gần, hạ K+), Type 4 (giảm aldosterone, tăng K+).",
+          labSuggest: "pH niệu, UAG, K+ máu, Aldosterone & Renin",
+          priority: "HIGH"
+        },
+        {
+          name: "Thuốc Ức Chế Carbonic Anhydrase (Acetazolamide)",
+          clues: "Giảm tái hấp thu HCO3- tại ống góp gần.",
+          labSuggest: "Tiền sử dùng thuốc mắt/glocom/lợi tiểu",
+          priority: "MEDIUM"
+        },
+        {
+          name: "Truyền Dung Dịch Saline 0.9% Khối Lượng Lớn",
+          clues: "Tải lượng Cl- cao (154 mEq/L) gây pha loãng HCO3- và tăng Cl- máu.",
+          labSuggest: "Tiền sử dịch truyền trong 24h",
+          priority: data.cl > 110 ? "HIGH" : "LOW"
+        }
+      ]
+    });
+
+    // 3. Metabolic Alkalosis
+    const isMetAlk = result.disordersList.includes("metabolicAlkalosis");
+    ddxCategories.push({
+      id: "metAlkalosis",
+      title: "Kiềm Chuyển Hóa (Metabolic Alkalosis)",
+      badge: "Chloride Niệu (UCl-)",
+      isMatched: isMetAlk,
+      description: "Do mất H+ qua tiêu hóa/thận hoặc tích tụ Bicarbonate quá mức.",
+      items: [
+        {
+          name: "Kiềm CH ĐÁP ỨNG Chloride (Urine Cl⁻ < 20 mEq/L)",
+          clues: "Mất H+ & Cl- qua tiêu hóa (Nôn ói, Hút dịch dạ dày) hoặc dùng lợi tiểu cũ. Đáp ứng tốt với truyền NaCl 0.9%.",
+          labSuggest: "Chloride niệu (UCl-), K+ máu",
+          priority: (data.urineCl !== null && data.urineCl < 20) || data.cl < 98 ? "CRITICAL" : "HIGH"
+        },
+        {
+          name: "Kiềm CH KHÔNG ĐÁP ỨNG Chloride (Urine Cl⁻ ≥ 20 mEq/L)",
+          clues: "Cường Aldosterone nguyên phát (Conn), Cushing, Lợi tiểu quai/thiazide đang dùng, Hạ K+ máu nặng. Không đáp ứng truyền Saline thuần.",
+          labSuggest: "Chloride niệu, K+ máu, Cortisol, Aldosterone/Renin ratio",
+          priority: (data.urineCl !== null && data.urineCl >= 20) ? "CRITICAL" : "HIGH"
+        },
+        {
+          name: "Hội Chứng Bartter / Gitelman",
+          clues: "Bệnh lý di truyền tái hấp thu muối tại ống thận, gây hạ K+ máu, kiềm CH và UCl- cao.",
+          labSuggest: "Xét nghiệm di truyền, Canxi niệu",
+          priority: "MEDIUM"
+        }
+      ]
+    });
+
+    // 4. Respiratory Acidosis
+    const isRespAcid = result.disordersList.includes("respiratoryAcidosis");
+    ddxCategories.push({
+      id: "respAcidosis",
+      title: "Toan Hô Hấp (Respiratory Acidosis)",
+      badge: "Giảm Thông Khí Phế Nang (Ứ CO2)",
+      isMatched: isRespAcid,
+      description: "Do giảm thông khí phế nang dẫn đến tích tụ CO₂ trong máu.",
+      items: [
+        {
+          name: "Đợt Cấp COPD / Cơn Hen Phế Quản Nặng Kiệt Sức",
+          clues: "Ứ CO2 mạn hoặc cấp trên nền tắc nghẽn đường thở. HCO3- tăng bù trừ nếu mạn tính.",
+          labSuggest: "X-quang ngực (CXR), Đo chức năng hô hấp, SpO2",
+          priority: "CRITICAL"
+        },
+        {
+          name: "Ức Chế Trung Tâm Hô Hấp (Opioid, Sedative, Đột Quỵ Thân Não)",
+          clues: "Nhịp thở chậm (< 10 lần/phút), đồng tử co nhỏ (ngộ độc Opioid), GCS giảm.",
+          labSuggest: "Naloxone test, CT/MRI Não, Screening độc chất",
+          priority: "CRITICAL"
+        },
+        {
+          name: "Bệnh Lý Thần Kinh Cơ (Guillain-Barré, Nhược Cơ, ALS)",
+          clues: "Yếu cơ tiến triển, giảm dung tích sống (FVC < 15 mL/kg).",
+          labSuggest: "Đo FVC, NIF, Điện cơ (EMG)",
+          priority: "HIGH"
+        }
+      ]
+    });
+
+    // 5. Respiratory Alkalosis
+    const isRespAlk = result.disordersList.includes("respiratoryAlkalosis");
+    ddxCategories.push({
+      id: "respAlkalosis",
+      title: "Kiềm Hô Hấp (Respiratory Alkalosis)",
+      badge: "Tăng Thông Khí Phế Nang",
+      isMatched: isRespAlk,
+      description: "Do tăng thông khí quá mức thổi sạch CO₂ ra khỏi máu.",
+      items: [
+        {
+          name: "Cơn Lo Ẩu / Tăng Thông Khí Tâm Lý (Hyperventilation Syndrome)",
+          clues: "Thở nhanh nông, tê rần ngón tay/quanh miệng, co quắp cơ bàn tay (dấu Trousseau). PaO2 bình thường.",
+          labSuggest: "Loại trừ nguyên nhân thực thể trước khi chẩn đoán tâm lý",
+          priority: "HIGH"
+        },
+        {
+          name: "Nhiễm Trùng Huyết Sớm (Sepsis / Septic Shock)",
+          clues: "Kích thích trung tâm hô hấp trực tiếp do cytokine. Thường là dấu hiệu báo động sớm trước khi tụt HA.",
+          labSuggest: "Procalcitonin, Cấy máu, Lactate, Sinh hiệu",
+          priority: "CRITICAL"
+        },
+        {
+          name: "Thuyên Tắc Phổi Cấp (Pulmonary Embolism - PE)",
+          clues: "Khó thở đột ngột, đau ngực màng phổi, PaO2 giảm, Gradient A-a DO2 tăng cao.",
+          labSuggest: "D-Dimer, CT Angio Phổi (CTA Phổi), Siêu âm tim",
+          priority: "CRITICAL"
+        },
+        {
+          name: "Thiếu Oxy Máu (Hypoxia / ARDS / Độ Cao)",
+          clues: "Thụ thể ngoại biên nhận biết PaO2 giảm kích thích thở nhanh.",
+          labSuggest: "PaO2/FiO2 ratio, CXR",
+          priority: "HIGH"
+        }
+      ]
+    });
+
+    // 6. Mixed & Triple Acid-Base Disorders
+    const isMixed = result.conclusions.length > 1;
+    ddxCategories.push({
+      id: "mixedDisorders",
+      title: "Rối Loạn Kiềm Toan Hỗn Hợp & 3 Thành Phần (Mixed / Triple)",
+      badge: "Phối Hợp Phức Tạp",
+      isMatched: isMixed,
+      description: "Sự kết hợp đồng thời của 2 hoặc 3 rối loạn độc lập trên cùng một bệnh nhân.",
+      items: [
+        {
+          name: "DKA + Nôn Ói Kéo Dài (Toan AG + Kiềm CH)",
+          clues: "pH có thể gần bình thường, nhưng AG tăng cao (> 20) và Delta Ratio > 2.0.",
+          labSuggest: "Glucose, Ketone, UCl-, Điện giải đồ",
+          priority: "HIGH"
+        },
+        {
+          name: "Đợt Cấp COPD + Dùng Lợi Tiểu Quai (Toan HH + Kiềm CH)",
+          clues: "PaCO2 tăng cao và HCO3- tăng rất cao vượt mức bù trừ đơn thuần.",
+          labSuggest: "ABG, K+ máu, Tiền sử thuốc lợi tiểu",
+          priority: "HIGH"
+        },
+        {
+          name: "Sốc Nhiễm Trùng + Tăng Thông Khí (Toan Lactic + Kiềm HH)",
+          clues: "pH nghiêng về kiềm hoặc toan tùy mức độ bù, Lactate tăng cao và PaCO2 giảm nặng.",
+          labSuggest: "Lactate, Procalcitonin, Hemodynamic monitoring",
+          priority: "CRITICAL"
+        }
+      ]
+    });
+
+    return ddxCategories;
+  }
 }
+

@@ -36,10 +36,17 @@ document.addEventListener('DOMContentLoaded', () => {
   let activeScenarioId = null;
   let activeCategory = 'ALL';
   let svgEngine = null;
+  let canvasEngine = null;
 
   // Initialize SVG Engine
   if (typeof CXRSVGEngine !== 'undefined') {
     svgEngine = new CXRSVGEngine('cxrSvgContainer');
+  }
+
+  // Initialize Canvas DICOM Post-Processing Engine if container exists
+  const canvasContainer = document.getElementById('cxrCanvasContainer');
+  if (typeof CXRCanvasEngine !== 'undefined' && canvasContainer) {
+    canvasEngine = new CXRCanvasEngine('cxrCanvasContainer');
   }
 
   // Layer Checkbox Listeners
@@ -76,6 +83,80 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  const elBtnToggleVasculature = document.getElementById('btnToggleVasculature');
+  if (elBtnToggleVasculature) {
+    elBtnToggleVasculature.addEventListener('click', () => {
+      if (svgEngine) {
+        svgEngine.showVasculature = !svgEngine.showVasculature;
+        elBtnToggleVasculature.classList.toggle('active', svgEngine.showVasculature);
+        triggerCXRAnalysis();
+      }
+    });
+  }
+
+  const elBtnToggleAnnotations = document.getElementById('btnToggleAnnotations');
+  if (elBtnToggleAnnotations) {
+    elBtnToggleAnnotations.addEventListener('click', () => {
+      if (svgEngine) {
+        svgEngine.showAnnotations = !svgEngine.showAnnotations;
+        elBtnToggleAnnotations.classList.toggle('active', svgEngine.showAnnotations);
+        triggerCXRAnalysis();
+      }
+    });
+  }
+
+  const elBtnToggleSharpen = document.getElementById('btnToggleSharpen');
+  if (elBtnToggleSharpen) {
+    elBtnToggleSharpen.addEventListener('click', () => {
+      if (canvasEngine) {
+        canvasEngine.edgeEnhance = !canvasEngine.edgeEnhance;
+        elBtnToggleSharpen.classList.toggle('active', canvasEngine.edgeEnhance);
+        triggerCXRAnalysis();
+      } else {
+        elBtnToggleSharpen.classList.toggle('active');
+      }
+    });
+  }
+
+  const elBtnToggleBoneFilter = document.getElementById('btnToggleBoneFilter');
+  if (elBtnToggleBoneFilter) {
+    elBtnToggleBoneFilter.addEventListener('click', () => {
+      if (canvasEngine) {
+        canvasEngine.boneFilter = !canvasEngine.boneFilter;
+        elBtnToggleBoneFilter.classList.toggle('active', canvasEngine.boneFilter);
+        triggerCXRAnalysis();
+      } else {
+        elBtnToggleBoneFilter.classList.toggle('active');
+      }
+    });
+  }
+
+  document.querySelectorAll('.btn-lut-preset').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.btn-lut-preset').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const lut = btn.getAttribute('data-lut');
+      if (canvasEngine) {
+        canvasEngine.colormap = lut;
+        triggerCXRAnalysis();
+      }
+    });
+  });
+
+  document.querySelectorAll('.btn-dicom-preset').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.btn-dicom-preset').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const preset = btn.getAttribute('data-preset');
+      if (svgEngine) {
+        svgEngine.setWindowPreset(preset);
+        if (elSliderContrast) elSliderContrast.value = svgEngine.contrast;
+        if (elSliderBrightness) elSliderBrightness.value = svgEngine.brightness;
+        triggerCXRAnalysis();
+      }
+    });
+  });
 
   if (elSliderContrast) {
     elSliderContrast.addEventListener('input', () => {
@@ -189,6 +270,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // SVG Render
     if (svgEngine) {
       svgEngine.render(layersState, res.ctrData.ctr);
+      
+      // Optional Canvas DICOM Post-Processing (Sharpening, Bone Filter, Pseudocolors)
+      if (canvasEngine) {
+        const svgEl = document.getElementById('cxrSvgContainer')?.querySelector('svg');
+        if (svgEl) {
+          canvasEngine.processSVG(svgEl);
+        }
+      }
     }
 
     // Active Chips Bar

@@ -208,9 +208,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Trigger Analysis Engine
   function triggerAnalysis() {
     const elyteData = {
-      naCurrent: elNaCurrentNum ? elNaCurrentNum.value : 135,
-      naTarget: elNaTargetNum ? elNaTargetNum.value : 140,
-      naFluid: elNaFluidSelect ? elNaFluidSelect.value : 513,
+      naCurrent: elNaCurrentNum ? parseFloat(elNaCurrentNum.value) : 135,
+      naTarget: elNaTargetNum ? parseFloat(elNaTargetNum.value) : 140,
+      naFluid: elNaFluidSelect ? parseFloat(elNaFluidSelect.value) : 513,
       kVal: elKValNum ? parseFloat(elKValNum.value) : 4.0,
       kEcg: elKEcgSelect ? parseInt(elKEcgSelect.value) : 0,
       kSymp: elKSympSelect ? parseInt(elKSympSelect.value) : 0,
@@ -218,8 +218,8 @@ document.addEventListener('DOMContentLoaded', () => {
       caAlb: elCaAlbNum ? parseFloat(elCaAlbNum.value) : 40,
       caSymp: elCaSympSelect ? parseInt(elCaSympSelect.value) : 0,
       mgVal: elMgValNum ? parseFloat(elMgValNum.value) : 0.85,
-      weight: elWeightNum ? elWeightNum.value : 60,
-      age: elAgeNum ? elAgeNum.value : 50,
+      weight: elWeightNum ? parseFloat(elWeightNum.value) : 60,
+      age: elAgeNum ? parseInt(elAgeNum.value) : 50,
       gender: elGenderSelect ? elGenderSelect.value : 'male',
       symptoms: elSymptomsSelect ? elSymptomsSelect.value : 'severe',
       odsRisks: getCheckedOdsRisks()
@@ -283,7 +283,72 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Render Directives
     renderDirectives(res.directives);
+
+    // Render Detailed Management Protocols
+    renderManagementProtocols(elyteData);
   }
+
+  // Management Protocol Renderer
+  function renderManagementProtocols(elyteData) {
+    if (typeof ElectrolyteManagement === 'undefined') return;
+
+    const currentScenario = activeScenarioId ? ELECTROLYTE_SCENARIOS.find(s => s.id === activeScenarioId) : null;
+    const protocol = ElectrolyteManagement.generateProtocol(elyteData, currentScenario);
+
+    renderMgmtCards('mgmtImmediateList', protocol.immediate);
+    renderMgmtCards('mgmtShortTermList', protocol.shortTerm);
+    renderMgmtCards('mgmtMaintenanceList', protocol.maintenance);
+
+    // Combine monitoring and complications into monitoring list
+    const combinedMon = [...protocol.monitoring, ...protocol.complications];
+    renderMgmtCards('mgmtMonitoringList', combinedMon);
+  }
+
+  function renderMgmtCards(containerId, cardsData) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    if (!cardsData || cardsData.length === 0) {
+      container.innerHTML = `
+        <div class="mgmt-card mgmt-card-info" style="grid-column: 1 / -1;">
+          <div class="mgmt-card-title">ℹ️ Không Có Y Lệnh Đặc Thù Ở Giai Đoạn Này</div>
+          <p class="mgmt-card-desc">Các thông số điện giải hiện tại không yêu cầu xử trí can thiệp ở giai đoạn này. Tiếp tục theo dõi lâm sàng.</p>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = cardsData.map(item => `
+      <div class="mgmt-card mgmt-card-${item.type || 'info'}">
+        <div class="mgmt-card-header">
+          <span class="mgmt-card-badge ${item.type || 'info'}">${item.badge || 'Hướng Dẫn'}</span>
+        </div>
+        <div class="mgmt-card-title">${item.title}</div>
+        <div class="mgmt-card-desc">${item.desc}</div>
+        <ul class="mgmt-actions-list">
+          ${item.actions.map(act => `<li>${act}</li>`).join('')}
+        </ul>
+      </div>
+    `).join('');
+  }
+
+  // Management Sub-Tabs Event Listeners (both .right-mgmt-tab-btn and .mgmt-tab-btn)
+  document.querySelectorAll('.right-mgmt-tab-btn, .mgmt-tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const parentHeader = btn.closest('.right-mgmt-tabs-header, .management-tabs');
+      if (parentHeader) {
+        parentHeader.querySelectorAll('.right-mgmt-tab-btn, .mgmt-tab-btn').forEach(b => b.classList.remove('active'));
+      }
+      btn.classList.add('active');
+      const targetId = btn.getAttribute('data-right-tab') || btn.getAttribute('data-mgmt-tab');
+      const parentContainer = btn.closest('.right-mgmt-box, .management-protocol-card');
+      if (parentContainer) {
+        parentContainer.querySelectorAll('.right-mgmt-tab-content, .mgmt-tab-content').forEach(c => c.style.display = 'none');
+      }
+      const targetContent = document.getElementById(targetId);
+      if (targetContent) targetContent.style.display = 'block';
+    });
+  });
 
   function renderDirectives(directives) {
     if (!elDirectivesContainer) return;

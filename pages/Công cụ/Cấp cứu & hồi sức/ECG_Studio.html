@@ -84,83 +84,118 @@
         <!-- 3-Column Studio Grid Layout -->
         <div class="studio-main-grid">
 
-          <!-- Left Column: Tabbed Control Panel (Scenarios vs Abnormality Mixer) -->
-          <div class="studio-card">
-            
-            <!-- Sidebar Panel Tabs Header -->
-            <div class="sidebar-tabs-header">
-              <button class="sidebar-tab-btn active" data-tab="tab_scenarios">
-                <i class="fa-solid fa-user-doctor"></i> Ca Bệnh Mẫu
-              </button>
-              <button class="sidebar-tab-btn" data-tab="tab_mixer">
-                <i class="fa-solid fa-sliders"></i> Abnormality Mixer
-              </button>
-            </div>
+          <!-- Left Column: Tabbed Control Panel & Diagnostic Criteria -->
+          <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+            <div class="studio-card" style="margin-bottom: 0;">
+              
+              <!-- Sidebar Panel Tabs Header -->
+              <div class="sidebar-tabs-header">
+                <button class="sidebar-tab-btn active" data-tab="tab_scenarios">
+                  <i class="fa-solid fa-user-doctor"></i> Ca Bệnh Mẫu
+                </button>
+                <button class="sidebar-tab-btn" data-tab="tab_mixer">
+                  <i class="fa-solid fa-sliders"></i> Abnormality Mixer
+                </button>
+              </div>
 
-            <!-- TAB 1: Scenarios & Patient Context -->
-            <div class="sidebar-tab-content" id="tab_scenarios" style="display: block;">
-              <!-- Patient Context Panel (Visible when scenario active) -->
-              <div class="patient-card" id="patientContextPanel" style="display: none;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                  <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--color-primary);">
-                    🏥 BỆNH NHÂN ẢO CẤP CỨU
+              <!-- TAB 1: Scenarios & Patient Context -->
+              <div class="sidebar-tab-content" id="tab_scenarios" style="display: block;">
+                <!-- Patient Context Panel (Visible when scenario active) -->
+                <div class="patient-card" id="patientContextPanel" style="display: none;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--color-primary);">
+                      🏥 BỆNH NHÂN ẢO CẤP CỨU
+                    </h3>
+                    <span class="element-badge" style="font-size: 0.7rem; background: var(--color-primary);">Tình Huống</span>
+                  </div>
+                  <p style="font-size: 0.85rem; font-weight: 700; color: var(--color-text);" id="patDemographics">--</p>
+
+                  <div class="patient-vitals-grid">
+                    <div class="vital-box">
+                      <span class="vital-label">MẠCH</span>
+                      <span class="vital-val" id="patHR">--</span>
+                    </div>
+                    <div class="vital-box">
+                      <span class="vital-label">HUYẾT ÁP</span>
+                      <span class="vital-val" id="patBP">--</span>
+                    </div>
+                    <div class="vital-box">
+                      <span class="vital-label">SpO2</span>
+                      <span class="vital-val" id="patSpO2">--</span>
+                    </div>
+                    <div class="vital-box">
+                      <span class="vital-label">NHIỆT ĐỘ</span>
+                      <span class="vital-val" id="patTemp">--</span>
+                    </div>
+                  </div>
+
+                  <p style="font-size: 0.85rem; color: var(--color-text); line-height: 1.45; margin-bottom: 0.5rem;" id="patContextDesc">--</p>
+                  <ul style="font-size: 0.82rem; color: var(--color-text-muted); list-style: none; padding: 0;" id="patSymptomsList"></ul>
+                </div>
+
+                <!-- Scenarios Search & Filter Controls -->
+                <div class="mixer-search-box">
+                  <i class="fa-solid fa-magnifying-glass mixer-search-icon"></i>
+                  <input type="text" id="scenarioSearchInput" class="mixer-search-input" placeholder="Tìm tình huống (STEMI, ngất, Kali, nhịp nhanh)...">
+                </div>
+
+                <div class="cat-pills-scroll" id="scenarioCategoryPills">
+                  <button class="cat-pill-btn active" data-scenariocat="ALL">Tất cả</button>
+                  <button class="cat-pill-btn" data-scenariocat="Bệnh mạch vành">Mạch vành</button>
+                  <button class="cat-pill-btn" data-scenariocat="Rối loạn nhịp">Loạn nhịp</button>
+                  <button class="cat-pill-btn" data-scenariocat="Rối loạn dẫn truyền">Dẫn truyền</button>
+                  <button class="cat-pill-btn" data-scenariocat="Cấp cứu loạn nhịp">Cấp cứu</button>
+                  <button class="cat-pill-btn" data-scenariocat="Rối loạn điện giải">Điện giải</button>
+                  <button class="cat-pill-btn" data-scenariocat="Dày buồng tim">Dày tim</button>
+                  <button class="cat-pill-btn" data-scenariocat="Viêm màng tim">Màng ngoài tim</button>
+                </div>
+
+                <!-- Scenarios Bank List -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; margin-top: 0.5rem;">
+                  <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--color-text); margin: 0;">
+                    📂 Danh Sách Ca Bệnh Cấp Cứu
                   </h3>
-                  <span class="element-badge" style="font-size: 0.7rem; background: var(--color-primary);">Tình Huống</span>
+                  <span id="scenarioMatchCount" style="font-size: 0.75rem; color: var(--color-primary); font-weight: 700;">28 ca bệnh</span>
                 </div>
-                <p style="font-size: 0.85rem; font-weight: 700; color: var(--color-text);" id="patDemographics">--</p>
-
-                <div class="patient-vitals-grid">
-                  <div class="vital-box">
-                    <span class="vital-label">MẠCH</span>
-                    <span class="vital-val" id="patHR">--</span>
-                  </div>
-                  <div class="vital-box">
-                    <span class="vital-label">HUYẾT ÁP</span>
-                    <span class="vital-val" id="patBP">--</span>
-                  </div>
-                  <div class="vital-box">
-                    <span class="vital-label">SpO2</span>
-                    <span class="vital-val" id="patSpO2">--</span>
-                  </div>
-                  <div class="vital-box">
-                    <span class="vital-label">NHIỆT ĐỘ</span>
-                    <span class="vital-val" id="patTemp">--</span>
-                  </div>
-                </div>
-
-                <p style="font-size: 0.85rem; color: var(--color-text); line-height: 1.45; margin-bottom: 0.5rem;" id="patContextDesc">--</p>
-                <ul style="font-size: 0.82rem; color: var(--color-text-muted); list-style: none; padding: 0;" id="patSymptomsList"></ul>
+                <div class="scenarios-scroll-list" id="scenarioListGrid"></div>
               </div>
 
-              <!-- Scenarios Bank List -->
-              <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.75rem;">
-                📂 Danh Sách Ca Bệnh Cấp Cứu
+              <!-- TAB 2: Abnormality Mixer with Search & Category Pills Filter -->
+              <div class="sidebar-tab-content" id="tab_mixer" style="display: none;">
+                <!-- Search Bar -->
+                <div class="mixer-search-box">
+                  <i class="fa-solid fa-magnifying-glass mixer-search-icon"></i>
+                  <input type="text" id="mixerSearchInput" class="mixer-search-input" placeholder="Tìm bất thường (STEMI, Kali, Block)...">
+                </div>
+
+                <!-- Category Pills Filter -->
+                <div class="cat-pills-scroll">
+                  <button class="cat-pill-btn active" data-cat="ALL">Tất cả</button>
+                  <button class="cat-pill-btn" data-cat="Rối loạn nhịp">Rối loạn nhịp</button>
+                  <button class="cat-pill-btn" data-cat="Rối loạn dẫn truyền">Dẫn truyền</button>
+                  <button class="cat-pill-btn" data-cat="Mạch vành">Mạch vành</button>
+                  <button class="cat-pill-btn" data-cat="Dày buồng tim">Dày tim</button>
+                  <button class="cat-pill-btn" data-cat="Điện giải & Khác">Điện giải/Khác</button>
+                </div>
+
+                <!-- Checkbox List Container -->
+                <div class="mixer-scroll-container" id="abnormalityMixerGrid"></div>
+              </div>
+
+            </div>
+
+            <!-- Left Card 2: Tiêu Chuẩn Chẩn Đoán ECG -->
+            <div class="studio-card" style="margin-bottom: 0;">
+              <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.75rem;">
+                📑 Tiêu Chuẩn Chẩn Đoán ECG
               </h3>
-              <div class="scenarios-scroll-list" id="scenarioListGrid"></div>
-            </div>
-
-            <!-- TAB 2: Abnormality Mixer with Search & Category Pills Filter -->
-            <div class="sidebar-tab-content" id="tab_mixer" style="display: none;">
-              <!-- Search Bar -->
-              <div class="mixer-search-box">
-                <i class="fa-solid fa-magnifying-glass mixer-search-icon"></i>
-                <input type="text" id="mixerSearchInput" class="mixer-search-input" placeholder="Tìm bất thường (STEMI, Kali, Block)...">
+              <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 0.75rem; line-height: 1.4;">
+                Tiêu chuẩn chẩn đoán dựa vào lý thuyết lâm sàng.
+              </p>
+              <div id="diagnosticCriteriaBox" class="checklist-container">
+                <p style="color: var(--color-text-muted); font-style: italic; font-size: 0.85rem;">Chọn một bất thường để xem tiêu chuẩn chẩn đoán.</p>
               </div>
-
-              <!-- Category Pills Filter -->
-              <div class="cat-pills-scroll">
-                <button class="cat-pill-btn active" data-cat="ALL">Tất cả</button>
-                <button class="cat-pill-btn" data-cat="Rối loạn nhịp">Rối loạn nhịp</button>
-                <button class="cat-pill-btn" data-cat="Rối loạn dẫn truyền">Dẫn truyền</button>
-                <button class="cat-pill-btn" data-cat="Mạch vành">Mạch vành</button>
-                <button class="cat-pill-btn" data-cat="Dày buồng tim">Dày tim</button>
-                <button class="cat-pill-btn" data-cat="Điện giải & Khác">Điện giải/Khác</button>
-              </div>
-
-              <!-- Checkbox List Container -->
-              <div class="mixer-scroll-container" id="abnormalityMixerGrid"></div>
             </div>
-
           </div>
 
           <!-- Middle Column: 12-Lead ECG Grid & Calipers -->
@@ -288,8 +323,8 @@
 
           </div>
 
-          <!-- Right Column: 10-Step Systematic Checklist & Criteria -->
-          <div class="studio-card" style="margin-bottom: 1rem;">
+          <!-- Right Column: 10-Step Systematic Checklist -->
+          <div class="studio-card" style="margin-bottom: 0;">
             <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.75rem;">
               🔬 Quy Trình Đọc ECG 10 Bước
             </h3>
@@ -297,18 +332,6 @@
               Phân tích điện tâm đồ hệ thống theo giáo trình "Đọc điện tâm đồ dễ hơn" - BS Nguyễn Tôn Kinh Thi.
             </p>
             <div class="checklist-container" id="systematicChecklist"></div>
-          </div>
-
-          <div class="studio-card">
-            <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.75rem;">
-              📑 Tiêu Chuẩn Chẩn Đoán ECG
-            </h3>
-            <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 0.75rem; line-height: 1.4;">
-              Tiêu chuẩn chẩn đoán dựa vào lý thuyết lâm sàng.
-            </p>
-            <div id="diagnosticCriteriaBox" class="checklist-container">
-              <p style="color: var(--color-text-muted); font-style: italic; font-size: 0.85rem;">Chọn một bất thường để xem tiêu chuẩn chẩn đoán.</p>
-            </div>
           </div>
 
         </div>
