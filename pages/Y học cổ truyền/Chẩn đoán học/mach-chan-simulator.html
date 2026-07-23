@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CliniPortal - Mạch Chẩn Simulator: Động cơ giả lập 28 loại mạch tượng YHCT với dạng sóng SVG animated, áp lực ngón tay Thốn - Quan - Xích & đối chiếu lâm sàng Đông-Tây y.">
+  <title>Mạch Chẩn Simulator – CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../css/components/mach-chan-simulator.css">
+
+  <script src="../../../js/main.js" defer></script>
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+
+  <script src="data/mach-chan-data.js"></script>
+  <script src="js/mach-chan-simulator.js" defer></script>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- APP CONTAINER -->
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li><a href="../../../index.html" class="nav-item" title="Trang chủ"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+          <li><a href="../../Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item" title="Sinh lý"><span class="nav-icon">🧬</span><span class="nav-text">Sinh lý</span></a></li>
+          <li><a href="../../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng lâm sàng"><span class="nav-icon">🩺</span><span class="nav-text">Kỹ năng lâm sàng</span></a></li>
+          <li><a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận lâm sàng"><span class="nav-icon">🤒</span><span class="nav-text">Tiếp cận lâm sàng</span></a></li>
+          <li><a href="../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ lâm sàng"><span class="nav-icon">⚙️</span><span class="nav-text">Công cụ lâm sàng</span></a></li>
+          <li><a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý"><span class="nav-icon">💊</span><span class="nav-text">Dược lý lâm sàng</span></a></li>
+          <li><a href="../../Y học chứng cứ/yhcc.html" class="nav-item" title="Y học chứng cứ"><span class="nav-icon">📄</span><span class="nav-text">Y học chứng cứ</span></a></li>
+          <li><a href="../y-hoc-co-truyen.html" class="nav-item active" aria-current="page" title="Y học cổ truyền"><span class="nav-icon">☯️</span><span class="nav-text">Y học cổ truyền</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-wrapper" id="mainContent">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../../../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a></li>
+          <li class="breadcrumb-item"><a href="../y-hoc-co-truyen.html" class="breadcrumb-link">Y học cổ truyền</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Mạch Chẩn Simulator</li>
+        </ol>
+      </nav>
+
+      <!-- HERO SECTION -->
+      <section class="hero-dashboard" aria-labelledby="hero-title" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0d9488 100%); color:#fff; border-radius: var(--radius-lg); padding: 1.5rem 2rem; position:relative; overflow:hidden;">
+        <div class="hero-intro" style="position:relative; z-index:2;">
+          <h1 id="hero-title" style="font-size: var(--text-2xl); font-family: var(--font-display); font-weight:700; margin-bottom:0.5rem;">
+            🧘 MẠCH CHẨN SIMULATOR
+          </h1>
+          <p style="font-size: var(--text-sm); opacity:0.9; max-width:800px; margin:0;">
+            Giả lập bắt mạch ảo 28 loại mạch tượng Đông y: Mô phỏng sóng nhịp đập SVG real-time, áp lực ngón tay Thốn - Quan - Xích & đối chiếu lâm sàng Đông-Tây y.
+          </p>
+        </div>
+      </section>
+
+      <!-- MAIN SIMULATOR LAYOUT -->
+      <div class="machchan-container">
+        
+        <!-- COLUMN 1: SVG STAGE & CONTROLS -->
+        <div class="machchan-stage-card">
+          <!-- WAVEFORM CANVAS BOX -->
+          <div class="pulse-waveform-card">
+            <div class="pulse-waveform-header">
+              <span id="pulseStatusDisplay">Mạch Phù (FÚ MÀI)</span>
+              <span id="pulseBpmDisplay" style="color:var(--color-warning);">75 BPM</span>
+            </div>
+            
+            <div class="pulse-svg-box">
+              <svg id="pulseWaveformSVG" viewBox="0 0 600 180" preserveAspectRatio="none"></svg>
+            </div>
+          </div>
+
+          <!-- PRESSURE DEPTH CONTROLS -->
+          <div class="pressure-control-box">
+            <span style="font-size:var(--text-xs); font-weight:700; color:var(--color-text);">
+              🖐️ ĐIỀU CHỈNH ÁP LỰC ĐÈ NGÓN TAY (FINGER PRESSURE):
+            </span>
+            <div class="pressure-btns">
+              <button class="btn-pressure active" data-pressure="phu">Cử (Ấn Nhẹ - Nông)</button>
+              <button class="btn-pressure" data-pressure="trung">Tầm (Ấn Vừa - Trung)</button>
+              <button class="btn-pressure" data-pressure="tram">Án (Ấn Nặng - Sâu)</button>
+            </div>
+          </div>
+
+          <!-- WRIST POSITIONS CARD -->
+          <div class="wrist-position-grid">
+            <div class="wrist-card">
+              <h4>🖐️ Tay Trái (Tả Thủ)</h4>
+              <div>• <strong>Thốn:</strong> Tâm & Tiểu Trường</div>
+              <div>• <strong>Quan:</strong> Can & Đảm</div>
+              <div>• <strong>Xích:</strong> Thận (Âm) & Bàng Quang</div>
+            </div>
+            <div class="wrist-card">
+              <h4>🖐️ Tay Phải (Hữu Thủ)</h4>
+              <div>• <strong>Thốn:</strong> Phế & Đại Trường</div>
+              <div>• <strong>Quan:</strong> Tỳ & Vị</div>
+              <div>• <strong>Xích:</strong> Thận Dương (Mệnh Môn)</div>
+            </div>
+          </div>
+
+          <!-- PULSES SELECTION LIST -->
+          <div>
+            <span style="font-size:var(--text-xs); font-weight:700; color:var(--color-text-muted); display:block; margin-bottom:0.5rem;">
+              DANH SÁCH MẠCH TƯỢNG ĐÔNG Y:
+            </span>
+            <div class="pulses-grid-box" id="mcPulsesGrid">
+              <!-- Populated dynamically by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- COLUMN 2: DETAIL PANEL -->
+        <div class="machchan-detail-panel" id="mcDetailPanel">
+          <!-- Populated dynamically by JS -->
+        </div>
+
+      </div>
+
+      <!-- TÀI LIỆU LIÊN QUAN -->
+      <section class="related-links-section" style="margin-top: 2rem;">
+        <h4 class="related-links-title">
+          <i class="fas fa-link"></i> Xem thêm các nội dung liên quan
+        </h4>
+        <div class="related-links-grid">
+          <a href="thiet-chan-atlas.html" class="related-link-card">
+            <div class="related-card-content">
+              <span class="related-card-badge y-hoc-co-truyen">Y học cổ truyền</span>
+              <h5>Atlas Thiệt Chẩn Tương Tác</h5>
+              <p>Mô phỏng hình thái rêu & chất lưỡi, phân vùng tạng phủ & thử thách Quiz nhận diện thể bệnh.</p>
+            </div>
+            <i class="fas fa-chevron-right related-card-arrow"></i>
+          </a>
+          <a href="../Lý luận & Ngũ hành/ngu-hanh-studio.html" class="related-link-card">
+            <div class="related-card-content">
+              <span class="related-card-badge y-hoc-co-truyen">Y học cổ truyền</span>
+              <h5>Ngũ Hành Tương Tác Studio</h5>
+              <p>Động cơ trực quan hóa quy luật Ngũ Hành tương sinh, tương khắc và mô phỏng thể bệnh.</p>
+            </div>
+            <i class="fas fa-chevron-right related-card-arrow"></i>
+          </a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+  <script src="../../../js/sidebar.js"></script>
+</body>
+
+</html>

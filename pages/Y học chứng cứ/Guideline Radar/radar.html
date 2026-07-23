@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="CliniPortal Guideline Radar - Trạm theo dõi và so sánh trực quan các thay đổi thực hành lâm sàng (Practice-Changing Updates)">
-  <title>Guideline Radar Diff Viewer – CliniPortal</title>
+  <meta name="description" content="CliniPortal Guideline Radar - Trạm theo dõi, so sánh trực quan và phân tích bằng chứng các thay đổi thực hành lâm sàng (Practice-Changing Updates)">
+  <title>Guideline Radar Diff Viewer & Evidence Hub – CliniPortal</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -79,19 +79,60 @@
       line-height: 1.2;
     }
 
+    /* VIEW TOGGLE BAR */
+    .radar-view-modes {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .mode-btn {
+      padding: 0.65rem 1.25rem;
+      border-radius: 12px;
+      border: 1.5px solid var(--color-divider);
+      background: var(--color-surface);
+      color: var(--color-text-muted);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 200ms ease;
+    }
+
+    .mode-btn:hover {
+      border-color: var(--radar-primary);
+      color: var(--radar-accent);
+    }
+
+    .mode-btn.active {
+      background: var(--radar-accent);
+      color: #ffffff;
+      border-color: var(--radar-accent);
+      box-shadow: 0 4px 14px rgba(5, 150, 105, 0.25);
+    }
+
     /* FILTER BAR & SEARCH */
     .radar-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: 18px;
+      padding: 1.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .controls-top-row {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 1.75rem;
-      background: var(--color-surface);
-      border: 1px solid var(--color-divider);
-      border-radius: 16px;
-      padding: 1rem 1.25rem;
-      box-shadow: var(--shadow-sm);
     }
 
     .radar-search-box {
@@ -102,7 +143,7 @@
 
     .radar-search-box input {
       width: 100%;
-      padding: 0.6rem 1rem 0.6rem 2.4rem;
+      padding: 0.65rem 1rem 0.65rem 2.4rem;
       border: 1.5px solid var(--color-divider);
       border-radius: 10px;
       font-size: 0.88rem;
@@ -141,6 +182,9 @@
       font-weight: 700;
       cursor: pointer;
       transition: all 200ms;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
     }
 
     .filter-pill:hover {
@@ -152,6 +196,79 @@
       background: var(--radar-accent);
       color: #ffffff;
       border-color: var(--radar-accent);
+    }
+
+    .filter-pill .pill-count {
+      background: rgba(0,0,0,0.12);
+      padding: 0.1rem 0.45rem;
+      border-radius: 10px;
+      font-size: 0.7rem;
+    }
+
+    /* BADGES FOR COR & LOE */
+    .cor-container {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .cor-badge {
+      padding: 0.25rem 0.65rem;
+      border-radius: 10px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .cor-class-1 { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+    .cor-class-2a { background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc; }
+    .cor-class-2b { background: #fef3c7; color: #b45309; border: 1px solid #fcd34d; }
+    .cor-class-3 { background: #ffe4e6; color: #be123c; border: 1px solid #fda4af; }
+
+    .loe-badge {
+      padding: 0.25rem 0.55rem;
+      border-radius: 10px;
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-divider);
+      color: var(--color-text-muted);
+      font-weight: 700;
+      font-size: 0.72rem;
+    }
+
+    /* BOOKMARK & ACTION BUTTONS */
+    .radar-card-top-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .bookmark-btn {
+      background: var(--color-bg);
+      border: 1.5px solid var(--color-divider);
+      color: var(--color-text-muted);
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 200ms ease;
+    }
+
+    .bookmark-btn:hover {
+      border-color: var(--radar-primary);
+      color: var(--radar-accent);
+    }
+
+    .bookmark-btn.saved {
+      background: #fef3c7;
+      border-color: #f59e0b;
+      color: #d97706;
     }
 
     /* RADAR FEED & DIFF CARDS */
@@ -190,7 +307,7 @@
       font-weight: 800;
       color: var(--color-text);
       line-height: 1.3;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.4rem;
     }
 
     .radar-meta {
@@ -199,6 +316,7 @@
       gap: 1rem;
       font-size: 0.8rem;
       color: var(--color-text-muted);
+      flex-wrap: wrap;
     }
 
     .radar-badge-practice {
@@ -298,10 +416,248 @@
       font-size: 0.82rem;
       color: var(--color-text-muted);
       line-height: 1.6;
+      margin-bottom: 1rem;
     }
 
     .diff-reason-box strong {
       color: var(--color-text);
+    }
+
+    /* BOTTOM BUTTON BAR INSIDE CARDS */
+    .card-footer-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--color-divider);
+      padding-top: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .action-btn-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.9rem;
+      border-radius: 10px;
+      border: 1px solid var(--color-divider);
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 200ms;
+      text-decoration: none;
+    }
+
+    .action-btn-link:hover {
+      background: var(--radar-bg);
+      border-color: var(--radar-primary);
+      color: var(--radar-accent);
+    }
+
+    /* DEEP DIVE SECTION & FOREST PLOTS */
+    .deepdive-content {
+      display: none;
+      margin-top: 1rem;
+      padding: 1.25rem;
+      background: var(--color-bg);
+      border: 1px solid var(--color-divider);
+      border-radius: 14px;
+    }
+
+    .deepdive-content.open {
+      display: block;
+      animation: slideDown 250ms ease-in-out;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .deepdive-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--color-text);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .forest-box {
+      background: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-top: 0.75rem;
+      overflow-x: auto;
+    }
+
+    .forest-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--color-text-muted);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* TIMELINE VIEW CONTAINER */
+    .timeline-feed {
+      display: none;
+      flex-direction: column;
+      gap: 2rem;
+      position: relative;
+      padding-left: 2.25rem;
+      margin-top: 1rem;
+    }
+
+    .timeline-feed::before {
+      content: '';
+      position: absolute;
+      left: 0.85rem;
+      top: 0.5rem;
+      bottom: 0.5rem;
+      width: 3px;
+      background: var(--radar-primary);
+      opacity: 0.35;
+      border-radius: 3px;
+    }
+
+    .timeline-item {
+      position: relative;
+      background: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2rem;
+      top: 1.75rem;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--radar-accent);
+      border: 3px solid var(--color-surface);
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+    }
+
+    .timeline-year-tag {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: var(--radar-accent);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 0.8rem;
+      border-radius: 8px;
+      margin-bottom: 0.75rem;
+    }
+
+    /* MODAL POPUP FOR ALGORITHM DIFF */
+    .radar-modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .radar-modal-backdrop.open {
+      display: flex;
+    }
+
+    .radar-modal-box {
+      background: var(--color-surface);
+      border-radius: 20px;
+      max-width: 920px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2rem;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      position: relative;
+    }
+
+    .modal-close-icon {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: var(--color-bg);
+      border: 1px solid var(--color-divider);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 200ms;
+    }
+
+    .modal-close-icon:hover {
+      background: var(--diff-old-bg);
+      color: var(--diff-old-text);
+      border-color: var(--diff-old-border);
+    }
+
+    .algo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    @media(max-width: 768px) {
+      .algo-grid { grid-template-columns: 1fr; }
+    }
+
+    .algo-box {
+      background: var(--color-bg);
+      border: 1px solid var(--color-divider);
+      border-radius: 14px;
+      padding: 1.25rem;
+    }
+
+    .algo-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--color-divider);
+    }
+
+    .algo-step {
+      background: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.65rem;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .algo-arrow {
+      text-align: center;
+      color: var(--color-text-muted);
+      font-size: 0.9rem;
+      margin: -0.3rem 0 0.3rem;
     }
   </style>
 </head>
@@ -345,42 +701,66 @@
 
       <!-- HERO BANNER -->
       <section class="radar-hero">
-        <span class="radar-eyebrow"><i class="fa-solid fa-satellite-dish"></i> GUIDELINE RADAR DIFF VIEWER 2026</span>
+        <span class="radar-eyebrow"><i class="fa-solid fa-satellite-dish"></i> GUIDELINE RADAR DIFF VIEWER & EVIDENCE HUB</span>
         <h1 class="radar-title">Trạm Theo Dõi & So Sánh Thay Đổi Guideline</h1>
-        <p>So sánh trực quan "GitHub-style Diff View" giữa các phác đồ cũ và khuyến cáo mới nhất từ Bộ Y tế Việt Nam, ESC, ADA, GINA, GOLD giúp bác sĩ nhanh chóng cập nhật thay đổi thực hành lâm sàng.</p>
+        <p>So sánh trực quan "GitHub-style Diff View" giữa các phác đồ cũ và mới nhất (ESC, ADA, GINA, GOLD, ESO, BYT Việt Nam), phân tích mức độ bằng chứng (COR/LOE) & Thử nghiệm lâm sàng Landmark.</p>
       </section>
+
+      <!-- VIEW MODE TOGGLE -->
+      <div class="radar-view-modes">
+        <button class="mode-btn active" id="view-mode-diff">
+          <i class="fa-solid fa-code-compare"></i> Feed So Sánh Diff (Mới vs Cũ)
+        </button>
+        <button class="mode-btn" id="view-mode-timeline">
+          <i class="fa-solid fa-timeline"></i> Timeline Lịch Sử Tiến Hóa Guideline
+        </button>
+      </div>
 
       <!-- CONTROLS & FILTER BAR -->
       <div class="radar-controls">
-        <div class="radar-search-box">
-          <i class="fa-solid fa-magnifying-glass radar-search-icon"></i>
-          <input type="text" id="radar-search-input" placeholder="Tìm tên bệnh, khuyến cáo, hoạt chất thuốc...">
+        <div class="controls-top-row">
+          <div class="radar-search-box">
+            <i class="fa-solid fa-magnifying-glass radar-search-icon"></i>
+            <input type="text" id="radar-search-input" placeholder="Tìm tên bệnh, khuyến cáo, thử nghiệm lâm sàng, hoạt chất thuốc...">
+          </div>
         </div>
 
         <div class="filter-pills" id="radar-filter-pills">
-          <button class="filter-pill active" data-spec="all">Tất cả</button>
-          <button class="filter-pill" data-spec="cardio">🫀 Tim mạch</button>
-          <button class="filter-pill" data-spec="pulmo">🫁 Hô hấp</button>
-          <button class="filter-pill" data-spec="endo">💉 Nội tiết</button>
-          <button class="filter-pill" data-spec="infect">🦠 Truyền nhiễm / Hồi sức</button>
-          <button class="filter-pill" data-spec="vn">🇻🇳 Bộ Y Tế VN</button>
+          <button class="filter-pill active" data-filter-type="spec" data-filter-val="all">Tất cả</button>
+          <button class="filter-pill" data-filter-type="saved" data-filter-val="saved"><i class="fa-solid fa-bookmark" style="color: #f59e0b;"></i> Đã lưu <span class="pill-count" id="saved-count-badge">0</span></button>
+          <button class="filter-pill" data-filter-type="cor" data-filter-val="class1">🟢 Class I (Mạnh)</button>
+          <button class="filter-pill" data-filter-type="cor" data-filter-val="class3">🔴 Class III (Chống chỉ định)</button>
+          <button class="filter-pill" data-filter-type="spec" data-filter-val="cardio">🫀 Tim mạch</button>
+          <button class="filter-pill" data-filter-type="spec" data-filter-val="pulmo">🫁 Hô hấp</button>
+          <button class="filter-pill" data-filter-type="spec" data-filter-val="endo">💉 Nội tiết</button>
+          <button class="filter-pill" data-filter-type="spec" data-filter-val="infect">🦠 Truyền nhiễm / ICU</button>
+          <button class="filter-pill" data-filter-type="spec" data-filter-val="neuro">🧠 Thần kinh</button>
+          <button class="filter-pill" data-filter-type="spec" data-filter-val="gastro">🩺 Tiêu hóa</button>
+          <button class="filter-pill" data-filter-type="spec" data-filter-val="vn">🇻🇳 Bộ Y Tế VN</button>
         </div>
       </div>
 
-      <!-- RADAR FEED ITEMS -->
+      <!-- VIEW 1: RADAR FEED ITEMS (DIFF CARDS) -->
       <div class="radar-feed" id="radar-feed-list">
         
         <!-- CARD 1: ESC 2026 AF -->
-        <article class="radar-card" data-spec="cardio">
+        <article class="radar-card" data-card-id="esc-2026-af" data-spec="cardio" data-cor="class1">
           <div class="radar-card-header">
             <div>
               <h2 class="radar-card-title">ESC 2026 — Hướng Dẫn Quản Lý Rung Nhĩ (Atrial Fibrillation)</h2>
               <div class="radar-meta">
                 <span><i class="fa-solid fa-building-columns"></i> Hiệp Hội Tim Mạch Châu Âu (ESC)</span>
                 <span><i class="fa-regular fa-calendar"></i> Tháng 5/2026</span>
+                <div class="cor-container">
+                  <span class="cor-badge cor-class-1"><i class="fa-solid fa-circle-check"></i> Class I</span>
+                  <span class="loe-badge">LOE A</span>
+                </div>
               </div>
             </div>
-            <span class="radar-badge-practice"><i class="fa-solid fa-triangle-exclamation"></i> THAY ĐỔI THỰC HÀNH</span>
+            <div class="radar-card-top-actions">
+              <span class="radar-badge-practice"><i class="fa-solid fa-triangle-exclamation"></i> THAY ĐỔI THỰC HÀNH</span>
+              <button class="bookmark-btn" data-card-id="esc-2026-af" title="Lưu thông báo này"><i class="fa-regular fa-bookmark"></i></button>
+            </div>
           </div>
 
           <div class="diff-container">
@@ -397,19 +777,66 @@
           <div class="diff-reason-box">
             <strong>💡 Lý do thay đổi & Bằng chứng lâm sàng:</strong> Thử nghiệm lâm sàng CARE-AF Trial (2025) với 12,500 bệnh nhân cho thấy thang điểm CARE-AF tái phân tầng nguy cơ chính xác hơn 18% so với CHA2DS2-VASc, giảm thiểu nguy cơ xuất huyết nặng ở nhóm bệnh nhân tuổi cao.
           </div>
+
+          <div class="card-footer-bar">
+            <button class="action-btn-link toggle-deepdive-btn">
+              <i class="fa-solid fa-microscope"></i> Xem Bằng Chứng Landmark Trial & Forest Plot <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <button class="action-btn-link open-algo-btn" data-algo="af">
+              <i class="fa-solid fa-sitemap"></i> So sánh Thuật toán Chẩn đoán
+            </button>
+          </div>
+
+          <!-- DEEP DIVE SECTION -->
+          <div class="deepdive-content">
+            <div class="deepdive-title"><i class="fa-solid fa-flask"></i> Bằng chứng Thử nghiệm Lâm sàng Landmark: CARE-AF Trial</div>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted);">
+              Nghiên cứu ngẫu nhiên đối chứng đa trung tâm (N=12,500). Mục tiêu chính: Đột quỵ thiếu máu cục bộ hoặc thuyên tắc mạch hệ thống và xuất huyết nặng.
+            </p>
+            <div class="forest-box">
+              <div class="forest-title">Biểu đồ Forest Plot — Nguy cơ Đột quỵ & Thuyên tắc Mạch (CARE-AF vs CHA2DS2-VASc)</div>
+              <svg viewBox="0 0 600 130" width="100%" height="130" style="font-family: Inter, sans-serif;">
+                <line x1="200" y1="20" x2="200" y2="110" stroke="#94a3b8" stroke-dasharray="4" stroke-width="1.5"/>
+                <text x="200" y="15" text-anchor="middle" font-size="10" fill="#64748b">Tương đương (HR = 1.0)</text>
+                
+                <!-- Subgroup 1 -->
+                <text x="10" y="45" font-size="11" font-weight="bold" fill="var(--color-text)">Bệnh nhân eGFR < 60 mL/phút</text>
+                <line x1="130" y1="42" x2="190" y2="42" stroke="#059669" stroke-width="2"/>
+                <rect x="155" y="37" width="10" height="10" fill="#059669"/>
+                <text x="210" y="45" font-size="11" font-weight="bold" fill="#059669">HR 0.72 (0.61 - 0.85)</text>
+
+                <!-- Subgroup 2 -->
+                <text x="10" y="80" font-size="11" font-weight="bold" fill="var(--color-text)">Bệnh nhân hs-TnT tăng nhẹ</text>
+                <line x1="140" y1="77" x2="195" y2="77" stroke="#059669" stroke-width="2"/>
+                <rect x="162" y="72" width="10" height="10" fill="#059669"/>
+                <text x="210" y="80" font-size="11" font-weight="bold" fill="#059669">HR 0.78 (0.67 - 0.90)</text>
+                
+                <!-- Overall -->
+                <polygon points="150,105 175,98 200,105 175,112" fill="#0284c7"/>
+                <text x="210" y="108" font-size="11" font-weight="bold" fill="#0284c7">Tổng thể: HR 0.76 (0.68 - 0.84)</text>
+              </svg>
+            </div>
+          </div>
         </article>
 
         <!-- CARD 2: BYT COPD 2026 -->
-        <article class="radar-card" data-spec="pulmo vn">
+        <article class="radar-card" data-card-id="byt-2026-copd" data-spec="pulmo vn" data-cor="class1">
           <div class="radar-card-header">
             <div>
               <h2 class="radar-card-title">Bộ Y Tế Việt Nam 2026 — Hướng Dẫn Chẩn Đoán & Điều Trị BPTNMT (COPD)</h2>
               <div class="radar-meta">
                 <span><i class="fa-solid fa-hospital"></i> Bộ Y Tế (QĐ 2131/QĐ-BYT)</span>
                 <span><i class="fa-regular fa-calendar"></i> Tháng 7/2026</span>
+                <div class="cor-container">
+                  <span class="cor-badge cor-class-1"><i class="fa-solid fa-circle-check"></i> Class I</span>
+                  <span class="loe-badge">LOE A</span>
+                </div>
               </div>
             </div>
-            <span class="radar-badge-practice"><i class="fa-solid fa-triangle-exclamation"></i> THAY ĐỔI THỰC HÀNH</span>
+            <div class="radar-card-top-actions">
+              <span class="radar-badge-practice"><i class="fa-solid fa-triangle-exclamation"></i> THAY ĐỔI THỰC HÀNH</span>
+              <button class="bookmark-btn" data-card-id="byt-2026-copd" title="Lưu thông báo này"><i class="fa-regular fa-bookmark"></i></button>
+            </div>
           </div>
 
           <div class="diff-container">
@@ -426,19 +853,57 @@
           <div class="diff-reason-box">
             <strong>💡 Lý do thay đổi & Bằng chứng lâm sàng:</strong> Cập nhật theo GOLD 2026 và tiêu chuẩn Rome 2022. Phối hợp LABA+LAMA giảm đợt cấp và cải thiện FEV1 vượt trội so với ICS/LABA, đồng thời giảm nguy cơ viêm phổi do dùng ICS không đúng chỉ định.
           </div>
+
+          <div class="card-footer-bar">
+            <button class="action-btn-link toggle-deepdive-btn">
+              <i class="fa-solid fa-microscope"></i> Xem Bằng Chứng ETHOS/KRONOS & Forest Plot <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <button class="action-btn-link open-algo-btn" data-algo="copd">
+              <i class="fa-solid fa-sitemap"></i> So sánh Phân nhóm ABCD vs ABE
+            </button>
+          </div>
+
+          <div class="deepdive-content">
+            <div class="deepdive-title"><i class="fa-solid fa-flask"></i> Nghiên cứu ETHOS & IMPACT Trials (N=10,300)</div>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted);">So sánh Bộ ba LAMA/LABA/ICS vs Bộ đôi LABA/LAMA ở bệnh nhân COPD có đợt cấp nặng.</p>
+            <div class="forest-box">
+              <div class="forest-title">Forest Plot — Nguy cơ Đợt Cấp Trung Bình-Nặng Theo Mức Eosinophil</div>
+              <svg viewBox="0 0 600 110" width="100%" height="110" style="font-family: Inter, sans-serif;">
+                <line x1="200" y1="15" x2="200" y2="95" stroke="#94a3b8" stroke-dasharray="4" stroke-width="1.5"/>
+                <text x="200" y="12" text-anchor="middle" font-size="10" fill="#64748b">HR = 1.0</text>
+                
+                <text x="10" y="40" font-size="11" font-weight="bold" fill="var(--color-text)">Eosinophil < 100/µL (Không bổ sung ICS)</text>
+                <line x1="190" y1="37" x2="240" y2="37" stroke="#dc2626" stroke-width="2"/>
+                <rect x="210" y="32" width="10" height="10" fill="#dc2626"/>
+                <text x="250" y="40" font-size="11" font-weight="bold" fill="#dc2626">HR 1.08 (0.94 - 1.24)</text>
+
+                <text x="10" y="75" font-size="11" font-weight="bold" fill="var(--color-text)">Eosinophil ≥ 300/µL (Thêm ICS chỉ định Class I)</text>
+                <line x1="120" y1="72" x2="175" y2="72" stroke="#059669" stroke-width="2"/>
+                <rect x="142" y="67" width="10" height="10" fill="#059669"/>
+                <text x="250" y="75" font-size="11" font-weight="bold" fill="#059669">HR 0.65 (0.55 - 0.77)</text>
+              </svg>
+            </div>
+          </div>
         </article>
 
         <!-- CARD 3: ADA 2026 DIABETES -->
-        <article class="radar-card" data-spec="endo">
+        <article class="radar-card" data-card-id="ada-2026-diabetes" data-spec="endo" data-cor="class1">
           <div class="radar-card-header">
             <div>
               <h2 class="radar-card-title">ADA 2026 — Tiêu Chuẩn Chăm Sóc Đái Tháo Đường (Standards of Care)</h2>
               <div class="radar-meta">
                 <span><i class="fa-solid fa-notes-medical"></i> Hiệp Hội Đái Tháo Đường Mỹ (ADA)</span>
                 <span><i class="fa-regular fa-calendar"></i> Tháng 1/2026</span>
+                <div class="cor-container">
+                  <span class="cor-badge cor-class-1"><i class="fa-solid fa-circle-check"></i> Class I</span>
+                  <span class="loe-badge">LOE A</span>
+                </div>
               </div>
             </div>
-            <span class="radar-badge-practice"><i class="fa-solid fa-triangle-exclamation"></i> THAY ĐỔI THỰC HÀNH</span>
+            <div class="radar-card-top-actions">
+              <span class="radar-badge-practice"><i class="fa-solid fa-triangle-exclamation"></i> THAY ĐỔI THỰC HÀNH</span>
+              <button class="bookmark-btn" data-card-id="ada-2026-diabetes" title="Lưu thông báo này"><i class="fa-regular fa-bookmark"></i></button>
+            </div>
           </div>
 
           <div class="diff-container">
@@ -453,21 +918,55 @@
           </div>
 
           <div class="diff-reason-box">
-            <strong>💡 Lý do thay đổi & Bằng chứng lâm sàng:</strong> Hàng loạt RCT Landmark (EMPA-REG, DAPA-HF, CREDENCE, DECLARE) chứng minh lợi ích giảm tử vong và bảo vệ tạng độc lập với tác dụng hạ đường huyết của SGLT2i và GLP-1 RA.
+            <strong>💡 Lý do thay đổi & Bằng chứng lâm sàng:</strong> Hàng loạt RCT Landmark (EMPA-REG, DAPA-HF, CREDENCE, DECLARE, FLOW 2024) chứng minh lợi ích giảm tử vong và bảo vệ tạng độc lập với tác dụng hạ đường huyết của SGLT2i và GLP-1 RA.
+          </div>
+
+          <div class="card-footer-bar">
+            <button class="action-btn-link toggle-deepdive-btn">
+              <i class="fa-solid fa-microscope"></i> Xem Bằng Chứng Landmark Trials & Forest Plot <i class="fa-solid fa-chevron-down"></i>
+            </button>
+          </div>
+
+          <div class="deepdive-content">
+            <div class="deepdive-title"><i class="fa-solid fa-flask"></i> Chuỗi Thử Nghiệm Landmark: EMPA-REG, DAPA-CKD, FLOW</div>
+            <div class="forest-box">
+              <div class="forest-title">Forest Plot — Giảm Tiến Triển Bệnh Thận Mạn (ESRD/Tử Vong Do Thận)</div>
+              <svg viewBox="0 0 600 110" width="100%" height="110" style="font-family: Inter, sans-serif;">
+                <line x1="200" y1="15" x2="200" y2="95" stroke="#94a3b8" stroke-dasharray="4" stroke-width="1.5"/>
+                <text x="200" y="12" text-anchor="middle" font-size="10" fill="#64748b">HR = 1.0</text>
+
+                <text x="10" y="40" font-size="11" font-weight="bold" fill="var(--color-text)">DAPA-CKD (Dapagliflozin)</text>
+                <line x1="110" y1="37" x2="160" y2="37" stroke="#059669" stroke-width="2"/>
+                <rect x="130" y="32" width="10" height="10" fill="#059669"/>
+                <text x="210" y="40" font-size="11" font-weight="bold" fill="#059669">HR 0.61 (0.51 - 0.72)</text>
+
+                <text x="10" y="75" font-size="11" font-weight="bold" fill="var(--color-text)">FLOW Trial (Semaglutide 1.0mg)</text>
+                <line x1="135" y1="72" x2="182" y2="72" stroke="#059669" stroke-width="2"/>
+                <rect x="154" y="67" width="10" height="10" fill="#059669"/>
+                <text x="210" y="75" font-size="11" font-weight="bold" fill="#059669">HR 0.76 (0.66 - 0.88)</text>
+              </svg>
+            </div>
           </div>
         </article>
 
         <!-- CARD 4: CRITICAL CARE ANTIBIOTIC 2026 -->
-        <article class="radar-card" data-spec="infect">
+        <article class="radar-card" data-card-id="icu-pkpd-2026" data-spec="infect" data-cor="class2a">
           <div class="radar-card-header">
             <div>
               <h2 class="radar-card-title">Critical Care 2026 — Tối Ưu Hóa Kháng Sinh ICU Theo Dược Động Học PK/PD</h2>
               <div class="radar-meta">
-                <span><i class="fa-solid fa-vial"></i> Critical Care Clinics / IDSA</span>
+                <span><i class="fa-solid fa-vial"></i> Critical Care Medicine / IDSA</span>
                 <span><i class="fa-regular fa-calendar"></i> Tháng 3/2026</span>
+                <div class="cor-container">
+                  <span class="cor-badge cor-class-2a"><i class="fa-solid fa-circle-check"></i> Class IIa</span>
+                  <span class="loe-badge">LOE B</span>
+                </div>
               </div>
             </div>
-            <span class="radar-badge-informative"><i class="fa-solid fa-circle-info"></i> THÔNG TIN LÂM SÀNG</span>
+            <div class="radar-card-top-actions">
+              <span class="radar-badge-informative"><i class="fa-solid fa-circle-info"></i> THÔNG TIN LÂM SÀNG</span>
+              <button class="bookmark-btn" data-card-id="icu-pkpd-2026" title="Lưu thông báo này"><i class="fa-regular fa-bookmark"></i></button>
+            </div>
           </div>
 
           <div class="diff-container">
@@ -482,21 +981,28 @@
           </div>
 
           <div class="diff-reason-box">
-            <strong>💡 Lý do thay đổi & Bằng chứng lâm sàng:</strong> Bệnh nhân sốc nhiễm khuẩn có thể tích phân bố (Vd) tăng mạnh và thanh thải thận tăng vọt (ARC). Truyền kéo dài giảm tỷ lệ tử vong 90 ngày lên đến 30% trong các nghiên cứu Meta-analysis gần đây.
+            <strong>💡 Lý do thay đổi & Bằng chứng lâm sàng:</strong> Bệnh nhân sốc nhiễm khuẩn có thể tích phân bố (Vd) tăng mạnh và thanh thải thận tăng vọt (ARC). Truyền kéo dài giảm tỷ lệ tử vong 90 ngày lên đến 30% trong các nghiên cứu Meta-analysis gần đây (MERCURY Trial 2025).
           </div>
         </article>
 
-        <!-- CARD 5: VNHA 2023 HEART FAILURE -->
-        <article class="radar-card" data-spec="cardio vn">
+        <!-- CARD 5: VNHA 2026 HEART FAILURE -->
+        <article class="radar-card" data-card-id="vnha-2026-hf" data-spec="cardio vn" data-cor="class1">
           <div class="radar-card-header">
             <div>
               <h2 class="radar-card-title">VNHA / VCS — Khuyến Cáo Điều Trị Suy Tim Bộ Tứ Trụ Cột</h2>
               <div class="radar-meta">
                 <span><i class="fa-solid fa-heart-pulse"></i> Hội Tim Mạch Học Việt Nam</span>
-                <span><i class="fa-regular fa-calendar"></i> Bản Cập Nhật</span>
+                <span><i class="fa-regular fa-calendar"></i> Bản Cập Nhật 2026</span>
+                <div class="cor-container">
+                  <span class="cor-badge cor-class-1"><i class="fa-solid fa-circle-check"></i> Class I</span>
+                  <span class="loe-badge">LOE A</span>
+                </div>
               </div>
             </div>
-            <span class="radar-badge-practice"><i class="fa-solid fa-triangle-exclamation"></i> THAY ĐỔI THỰC HÀNH</span>
+            <div class="radar-card-top-actions">
+              <span class="radar-badge-practice"><i class="fa-solid fa-triangle-exclamation"></i> THAY ĐỔI THỰC HÀNH</span>
+              <button class="bookmark-btn" data-card-id="vnha-2026-hf" title="Lưu thông báo này"><i class="fa-regular fa-bookmark"></i></button>
+            </div>
           </div>
 
           <div class="diff-container">
@@ -511,42 +1017,246 @@
           </div>
 
           <div class="diff-reason-box">
-            <strong>💡 Lý do thay đổi & Bằng chứng lâm sàng:</strong> Việc khởi động đồng thời hoặc nhanh chóng cả 4 trụ cột giúp giảm 73% rủi ro tử vong do mọi nguyên nhân trong vòng 2 năm so với phác đồ cũ.
+            <strong>💡 Lý do thay đổi & Bằng chứng lâm sàng:</strong> Việc khởi động đồng thời hoặc nhanh chóng cả 4 trụ cột trong vòng 4 tuần đầu giúp giảm 73% rủi ro tử vong do mọi nguyên nhân trong vòng 2 năm so với phác đồ tuần tự cũ.
           </div>
         </article>
 
+        <!-- CARD 6: ESO 2026 STROKE (NEW) -->
+        <article class="radar-card" data-card-id="eso-2026-stroke" data-spec="neuro" data-cor="class1">
+          <div class="radar-card-header">
+            <div>
+              <h2 class="radar-card-title">ESO 2026 — Đột Quỵ Thiếu Máu Cục Bộ Cấp: Tenecteplase & Cửa Sổ Cân Nào?</h2>
+              <div class="radar-meta">
+                <span><i class="fa-solid fa-brain"></i> Hiệp Hội Đột Quỵ Châu Âu (ESO)</span>
+                <span><i class="fa-regular fa-calendar"></i> Tháng 4/2026</span>
+                <div class="cor-container">
+                  <span class="cor-badge cor-class-1"><i class="fa-solid fa-circle-check"></i> Class I</span>
+                  <span class="loe-badge">LOE A</span>
+                </div>
+              </div>
+            </div>
+            <div class="radar-card-top-actions">
+              <span class="radar-badge-practice"><i class="fa-solid fa-triangle-exclamation"></i> THAY ĐỔI THỰC HÀNH</span>
+              <button class="bookmark-btn" data-card-id="eso-2026-stroke" title="Lưu thông báo me"><i class="fa-regular fa-bookmark"></i></button>
+            </div>
+          </div>
+
+          <div class="diff-container">
+            <div class="diff-box old">
+              <div class="diff-header"><span>Khuyến Cáo Cũ</span> ❌</div>
+              <div class="diff-text">Alteplase (rt-PA) 0.9 mg/kg là lựa chọn tiêu chuẩn duy nhất trong 4.5h đầu. Can thiệp lấy huyết khối cơ học (EVT) giới hạn khắt khe trong 6h.</div>
+            </div>
+            <div class="diff-box new">
+              <div class="diff-header"><span>Khuyến Cáo ESO 2026</span> ✅</div>
+              <div class="diff-text">Ưu tiên Tenecteplase (TNK-tPA) 0.25 mg/kg thay thế Alteplase nhờ tiêm Bolus 1 lần duy nhất và tỷ lệ tái thông mạch cao hơn. Mở rộng cửa sổ EVT lên 24h khi có bằng chứng Penumbra trên CT Perfusion / MRI Diffusion.</div>
+            </div>
+          </div>
+
+          <div class="diff-reason-box">
+            <strong>💡 Lý do thay đổi & Bằng chứng lâm sàng:</strong> Nghiên cứu AcT Trial & EXTEND-IA TNK chứng minh Tenecteplase cải thiện chức năng thần kinh 90 ngày (modified Rankin Scale 0-1) cao hơn 14% so với Alteplase.
+          </div>
+        </article>
+
+        <!-- CARD 7: ACG 2026 GASTRO (NEW) -->
+        <article class="radar-card" data-card-id="acg-2026-gastro" data-spec="gastro" data-cor="class1">
+          <div class="radar-card-header">
+            <div>
+              <h2 class="radar-card-title">ACG 2026 — Xuất Huyết Tiêu Hóa Do Tăng Áp Tĩnh Mạch Cửa (Variceal Bleeding)</h2>
+              <div class="radar-meta">
+                <span><i class="fa-solid fa-stethoscope"></i> Trường Môn Tiêu Hóa Hoa Kỳ (ACG)</span>
+                <span><i class="fa-regular fa-calendar"></i> Tháng 6/2026</span>
+                <div class="cor-container">
+                  <span class="cor-badge cor-class-1"><i class="fa-solid fa-circle-check"></i> Class I</span>
+                  <span class="loe-badge">LOE A</span>
+                </div>
+              </div>
+            </div>
+            <div class="radar-card-top-actions">
+              <span class="radar-badge-practice"><i class="fa-solid fa-triangle-exclamation"></i> THAY ĐỔI THỰC HÀNH</span>
+              <button class="bookmark-btn" data-card-id="acg-2026-gastro" title="Lưu thông báo này"><i class="fa-regular fa-bookmark"></i></button>
+            </div>
+          </div>
+
+          <div class="diff-container">
+            <div class="diff-box old">
+              <div class="diff-header"><span>Tiếp Cận Cũ</span> ❌</div>
+              <div class="diff-text">Chờ đợi nội soi trước khi dùng thuốc co mạch. Nội soi can thiệp trong vòng 24h. Chỉ dùng kháng sinh dự phòng khi có xơ gan Child-Pugh C.</div>
+            </div>
+            <div class="diff-box new">
+              <div class="diff-header"><span>Phác Đồ Cấp Cứu 2026</span> ✅</div>
+              <div class="diff-text">Khởi động NGAY Vasoactive drug (Terlipressin hoặc Octreotide) + Kháng sinh dự phòng Ceftriaxone 1g/ngày NGAY TẠI PHÒNG CẤP CỨU trước khi nội soi. Nội soi thắt vòng cao su (EBL) sớm trong vòng 12h.</div>
+            </div>
+          </div>
+
+          <div class="diff-reason-box">
+            <strong>💡 Lý do thay đổi & Bằng chứng lâm sàng:</strong> Kháng sinh sớm giảm tỷ lệ nhiễm trùng tái phát và giảm tử vong 6 tuần xuống 40%. Terlipressin khởi động sớm kiểm soát cầm máu ban đầu đạt > 88%.
+          </div>
+        </article>
+
+      </div>
+
+      <!-- VIEW 2: TIMELINE FEED (HIDDEN BY DEFAULT) -->
+      <div class="timeline-feed" id="radar-timeline-list">
+        
+        <div class="timeline-item">
+          <span class="timeline-year-tag">Năm 2026</span>
+          <h3 style="font-size: 1.1rem; font-weight: 800; color: var(--color-text); margin-bottom: 0.5rem;">Cột Mốc Kỷ Nguyên "Bảo Vệ Đa Cơ Quan"</h3>
+          <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.6;">
+            ADA 2026 & ESC 2026 chuyển dịch hoàn toàn từ cách tiếp cận glucocentric (chỉ tập trung hạ HbA1c) sang điều trị bảo vệ Tim-Thận sớm với SGLT2i & GLP-1 RA bất kể HbA1c ban đầu.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <span class="timeline-year-tag">Năm 2023 - 2024</span>
+          <h3 style="font-size: 1.1rem; font-weight: 800; color: var(--color-text); margin-bottom: 0.5rem;">Bộ Tứ Trụ Cột Suy Tim (HFrEF) & Khái Niệm Nhóm E Trong COPD</h3>
+          <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.6;">
+            VNHA/ESC chuẩn hóa bộ tứ trụ cột Suy tim (ARNI + Beta Blocker + MRA + SGLT2i). GOLD 2023 hợp nhất nhóm C và D thành nhóm E, đưa LABA+LAMA lên làm nền tảng đầu tay.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <span class="timeline-year-tag">Năm 2020 - 2021</span>
+          <h3 style="font-size: 1.1rem; font-weight: 800; color: var(--color-text); margin-bottom: 0.5rem;">Kỷ Nguyên DOAC Trong Rung Nhĩ & Đột Phá ARNI</h3>
+          <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.6;">
+            Thuốc kháng đông thế hệ mới (DOAC: Dabigatran, Rivaroxaban, Apixaban) thay thế Warfarin làm lựa chọn Class I hàng đầu cho bệnh nhân Rung nhĩ phi van tim.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <span class="timeline-year-tag">Năm 2016</span>
+          <h3 style="font-size: 1.1rem; font-weight: 800; color: var(--color-text); margin-bottom: 0.5rem;">Thử Nghiệm PARADIGM-HF & Sự Ra Đời Của ARNI</h3>
+          <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.6;">
+            Sacubitril/Valsartan (ARNI) chứng minh giảm 20% tử vong do tim mạch so với Enalapril, mở ra chương mới trong điều trị suy tim phân xuất tống máu giảm.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ALGORITHM MODAL BACKDROP -->
+  <div class="radar-modal-backdrop" id="algoModalBackdrop">
+    <div class="radar-modal-box">
+      <button class="modal-close-icon" id="modalCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+      <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.35rem; color: var(--color-text);" id="modalTitle">So Sánh Lưu Đồ Thuật Toán Chẩn Đoán & Điều Trị</h2>
+      <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.25rem;" id="modalSubtitle">So sánh các bước tiếp cận giữa quy trình cũ và quy trình khuyến cáo mới nhất</p>
+
+      <div class="algo-grid" id="modalAlgoGrid">
+        <!-- Dynamic content injected via Javascript -->
       </div>
     </div>
   </div>
 
   <footer class="global-footer">
     <div class="footer-copyright">
-      <p>CliniPortal © 2026 · Guideline Radar Diff Viewer · Cập nhật liên tục y văn chứng cứ</p>
+      <p>CliniPortal © 2026 · Guideline Radar Diff Viewer & Evidence Hub · Cập nhật liên tục y văn chứng cứ</p>
     </div>
   </footer>
 
   <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
 
-  <!-- SCRIPT FILTER & SEARCH -->
+  <!-- SCRIPT FOR INTERACTION, SEARCH, FILTER, BOOKMARK & MODAL -->
   <script src="../../../js/main.js" defer></script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const searchInput = document.getElementById("radar-search-input");
       const filterPills = document.querySelectorAll(".filter-pill");
       const cards = document.querySelectorAll(".radar-card");
+      const savedCountBadge = document.getElementById("saved-count-badge");
+      
+      const modeBtnDiff = document.getElementById("view-mode-diff");
+      const modeBtnTimeline = document.getElementById("view-mode-timeline");
+      const feedList = document.getElementById("radar-feed-list");
+      const timelineList = document.getElementById("radar-timeline-list");
 
-      let currentSpec = "all";
+      let currentFilterType = "spec";
+      let currentFilterVal = "all";
       let currentQuery = "";
 
+      // 1. LOCAL STORAGE BOOKMARK SYSTEM
+      function getSavedCards() {
+        try {
+          return JSON.parse(localStorage.getItem("cliniportal_radar_saved")) || [];
+        } catch (e) {
+          return [];
+        }
+      }
+
+      function saveCardId(id) {
+        let saved = getSavedCards();
+        if (!saved.includes(id)) {
+          saved.push(id);
+          localStorage.setItem("cliniportal_radar_saved", JSON.stringify(saved));
+        }
+        updateBookmarkUI();
+      }
+
+      function removeCardId(id) {
+        let saved = getSavedCards();
+        saved = saved.filter(item => item !== id);
+        localStorage.setItem("cliniportal_radar_saved", JSON.stringify(saved));
+        updateBookmarkUI();
+      }
+
+      function updateBookmarkUI() {
+        const saved = getSavedCards();
+        if (savedCountBadge) savedCountBadge.textContent = saved.length;
+
+        document.querySelectorAll(".bookmark-btn").forEach(btn => {
+          const cardId = btn.getAttribute("data-card-id");
+          if (saved.includes(cardId)) {
+            btn.classList.add("saved");
+            btn.innerHTML = '<i class="fa-solid fa-bookmark"></i>';
+            btn.title = "Đã lưu (Bấm để hủy)";
+          } else {
+            btn.classList.remove("saved");
+            btn.innerHTML = '<i class="fa-regular fa-bookmark"></i>';
+            btn.title = "Lưu thông báo này";
+          }
+        });
+      }
+
+      document.querySelectorAll(".bookmark-btn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const cardId = btn.getAttribute("data-card-id");
+          const saved = getSavedCards();
+          if (saved.includes(cardId)) {
+            removeCardId(cardId);
+          } else {
+            saveCardId(cardId);
+          }
+          if (currentFilterType === "saved") {
+            filterCards();
+          }
+        });
+      });
+
+      updateBookmarkUI();
+
+      // 2. SEARCH & FILTER LOGIC
       function filterCards() {
+        const saved = getSavedCards();
         cards.forEach(card => {
+          const cardId = card.getAttribute("data-card-id");
           const cardSpec = card.getAttribute("data-spec") || "";
+          const cardCor = card.getAttribute("data-cor") || "";
           const cardText = card.textContent.toLowerCase();
 
-          const matchesSpec = currentSpec === "all" || cardSpec.includes(currentSpec);
+          let matchesFilter = false;
+
+          if (currentFilterType === "spec") {
+            matchesFilter = (currentFilterVal === "all") || cardSpec.includes(currentFilterVal);
+          } else if (currentFilterType === "cor") {
+            matchesFilter = (cardCor === currentFilterVal);
+          } else if (currentFilterType === "saved") {
+            matchesFilter = saved.includes(cardId);
+          }
+
           const matchesQuery = !currentQuery || cardText.includes(currentQuery);
 
-          if (matchesSpec && matchesQuery) {
+          if (matchesFilter && matchesQuery) {
             card.style.display = "block";
           } else {
             card.style.display = "none";
@@ -558,7 +1268,9 @@
         pill.addEventListener("click", () => {
           filterPills.forEach(p => p.classList.remove("active"));
           pill.classList.add("active");
-          currentSpec = pill.getAttribute("data-spec");
+
+          currentFilterType = pill.getAttribute("data-filter-type");
+          currentFilterVal = pill.getAttribute("data-filter-val");
           filterCards();
         });
       });
@@ -567,6 +1279,113 @@
         searchInput.addEventListener("input", (e) => {
           currentQuery = e.target.value.toLowerCase().trim();
           filterCards();
+        });
+      }
+
+      // 3. VIEW MODE TOGGLE (FEED vs TIMELINE)
+      modeBtnDiff.addEventListener("click", () => {
+        modeBtnDiff.classList.add("active");
+        modeBtnTimeline.classList.remove("active");
+        feedList.style.display = "flex";
+        timelineList.style.display = "none";
+      });
+
+      modeBtnTimeline.addEventListener("click", () => {
+        modeBtnTimeline.classList.add("active");
+        modeBtnDiff.classList.remove("active");
+        feedList.style.display = "none";
+        timelineList.style.display = "flex";
+      });
+
+      // 4. TOGGLE DEEP DIVE ACCORDION
+      document.querySelectorAll(".toggle-deepdive-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const card = btn.closest(".radar-card");
+          const content = card.querySelector(".deepdive-content");
+          if (content) {
+            content.classList.toggle("open");
+            if (content.classList.contains("open")) {
+              btn.innerHTML = '<i class="fa-solid fa-microscope"></i> Thu gọn Bằng Chứng <i class="fa-solid fa-chevron-up"></i>';
+            } else {
+              btn.innerHTML = '<i class="fa-solid fa-microscope"></i> Xem Bằng Chứng Landmark Trial & Forest Plot <i class="fa-solid fa-chevron-down"></i>';
+            }
+          }
+        });
+      });
+
+      // 5. ALGORITHM DIFF MODAL DATA & HANDLERS
+      const algoData = {
+        af: {
+          title: "So Sánh Thuật Toán: Quản Lý Rung Nhĩ (AF 2020 vs 2026)",
+          oldSteps: [
+            "1. Tiêu chuẩn chẩn đoán ECG 12 chuyển đạo",
+            "2. Đánh giá thang điểm CHA2DS2-VASc",
+            "3. Nếu CHA2DS2-VASc ≥ 2 (Nam) / ≥ 3 (Nữ) ➔ Chỉ định Kháng đông",
+            "4. Kiểm soát tần số tim ngắt quãng"
+          ],
+          newSteps: [
+            "1. Tiêu chuẩn chẩn đoán ECG hoặc Holter/Smartwatch",
+            "2. Đánh giá thang điểm CARE-AF (Tích hợp eGFR + hs-Tn)",
+            "3. Nguy cơ trung bình-cao ➔ Chỉ định DOAC ưu tiên hàng đầu (Class I)",
+            "4. Đánh giá kiểm soát nhịp tim sớm & Tái lập nhịp bằng Catheter Ablation"
+          ]
+        },
+        copd: {
+          title: "So Sánh Thuật Toán: Phân Nhóm & Khởi Đầu Điều Trị COPD (ABCD vs ABE)",
+          oldSteps: [
+            "1. Phân loại 4 nhóm A, B, C, D dựa trên triệu chứng (mMRC/CAT) & Đợt cấp",
+            "2. Nhóm C/D ➔ Khởi đầu ICS/LABA hoặc LAMA đơn trị",
+            "3. Thêm ICS rộng rãi khi có tiền sử đợt cấp"
+          ],
+          newSteps: [
+            "1. Phân loại 3 nhóm A, B, E (Nhóm E gồm tất cả BN có ≥ 2 đợt cấp hoặc ≥ 1 đợt cấp nhập viện)",
+            "2. Nhóm B & E ➔ Ưu tiên khởi đầu bộ đôi LABA + LAMA",
+            "3. Chỉ thêm ICS cho Nhóm E khi Eosinophil máu ≥ 300 tế bào/µL (Class I)"
+          ]
+        }
+      };
+
+      const modalBackdrop = document.getElementById("algoModalBackdrop");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalAlgoGrid = document.getElementById("modalAlgoGrid");
+      const modalCloseBtn = document.getElementById("modalCloseBtn");
+
+      document.querySelectorAll(".open-algo-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const algoKey = btn.getAttribute("data-algo");
+          const data = algoData[algoKey];
+          if (data) {
+            modalTitle.textContent = data.title;
+            
+            let oldHtml = `<div class="algo-box"><div class="algo-title" style="color: var(--diff-old-text);">Phác Đồ Cũ ❌</div>`;
+            data.oldSteps.forEach(step => {
+              oldHtml += `<div class="algo-step"><i class="fa-solid fa-arrow-right" style="color: var(--color-text-muted);"></i> ${step}</div>`;
+            });
+            oldHtml += `</div>`;
+
+            let newHtml = `<div class="algo-box" style="border-color: var(--radar-primary);"><div class="algo-title" style="color: var(--diff-new-text);">Khuyến Cáo Mới 2026 ✅</div>`;
+            data.newSteps.forEach(step => {
+              newHtml += `<div class="algo-step" style="background: var(--diff-new-bg); border-color: var(--diff-new-border); font-weight: 600;"><i class="fa-solid fa-check" style="color: var(--radar-accent);"></i> ${step}</div>`;
+            });
+            newHtml += `</div>`;
+
+            modalAlgoGrid.innerHTML = oldHtml + newHtml;
+            modalBackdrop.classList.add("open");
+          }
+        });
+      });
+
+      if (modalCloseBtn) {
+        modalCloseBtn.addEventListener("click", () => {
+          modalBackdrop.classList.remove("open");
+        });
+      }
+
+      if (modalBackdrop) {
+        modalBackdrop.addEventListener("click", (e) => {
+          if (e.target === modalBackdrop) {
+            modalBackdrop.classList.remove("open");
+          }
         });
       }
     });

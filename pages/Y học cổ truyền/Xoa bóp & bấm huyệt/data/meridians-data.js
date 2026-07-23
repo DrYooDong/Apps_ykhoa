@@ -7,7 +7,7 @@ const MERIDIANS = [
   {
     id: 'LU', name: 'Lung Meridian',
     name_vi: 'Kinh Thủ Thái Âm Phế', name_short: 'Phế',
-    element: 'Kim', organ: 'Phổi',
+    element: 'Kim', organ: 'Phổi', coupled_meridian: 'LI (Đại Trường)',
     color: '#8B9DAF',
     description: 'Từ ngực, chạy dọc mặt trước-trong cánh tay, đến ngón tay cái.',
     totalPoints: 11,
@@ -19,7 +19,7 @@ const MERIDIANS = [
   {
     id: 'LI', name: 'Large Intestine Meridian',
     name_vi: 'Kinh Thủ Dương Minh Đại Trường', name_short: 'Đại trường',
-    element: 'Kim', organ: 'Đại trường',
+    element: 'Kim', organ: 'Đại trường', coupled_meridian: 'LU (Phế)',
     color: '#A0AEC0',
     description: 'Từ ngón trỏ, lên mặt ngoài cánh tay, qua vai lên mặt.',
     totalPoints: 20,
@@ -31,19 +31,19 @@ const MERIDIANS = [
   {
     id: 'ST', name: 'Stomach Meridian',
     name_vi: 'Kinh Túc Dương Minh Vị', name_short: 'Vị',
-    element: 'Thổ', organ: 'Dạ dày',
+    element: 'Thổ', organ: 'Dạ dày', coupled_meridian: 'SP (Tỳ)',
     color: '#D4A843',
     description: 'Từ mắt xuống mặt, xuống ngực bụng, dọc mặt trước chân đến ngón chân thứ 2.',
     totalPoints: 45,
     front_waypoints: [
-      [234, 58], [230, 72], [225, 85], [222, 102], [228, 120], [230, 145], [232, 170], [230, 195], [228, 220], [225, 250], [224, 290], [225, 320], [225, 358], [222, 400], [220, 435], [218, 470], [218, 510], [218, 550], [218, 590], [216, 638], [215, 680], [212, 720], [210, 760], [208, 800], [210, 835], [210, 855]
+      [234, 58], [230, 72], [225, 85], [222, 102], [228, 120], [230, 145], [232, 170], [230, 195], [228, 220], [225, 250], [224, 290], [225, 320], [225, 358], [222, 400], [220, 435], [218, 470], [218, 510], [218, 590], [216, 638], [215, 680], [212, 720], [210, 760], [208, 800], [210, 835], [210, 855]
     ],
     back_waypoints: null
   },
   {
     id: 'SP', name: 'Spleen Meridian',
     name_vi: 'Kinh Túc Thái Âm Tỳ', name_short: 'Tỳ',
-    element: 'Thổ', organ: 'Lá lách',
+    element: 'Thổ', organ: 'Lá lách', coupled_meridian: 'ST (Vị)',
     color: '#C9985A',
     description: 'Từ ngón chân cái, lên mặt trong chân, qua bụng đến ngực bên.',
     totalPoints: 21,
@@ -55,7 +55,7 @@ const MERIDIANS = [
   {
     id: 'HT', name: 'Heart Meridian',
     name_vi: 'Kinh Thủ Thiếu Âm Tâm', name_short: 'Tâm',
-    element: 'Hỏa', organ: 'Tim',
+    element: 'Hỏa', organ: 'Tim', coupled_meridian: 'SI (Tiểu Trường)',
     color: '#E74C3C',
     description: 'Từ tim, dọc mặt trong cánh tay đến ngón út.',
     totalPoints: 9,
@@ -67,7 +67,7 @@ const MERIDIANS = [
   {
     id: 'SI', name: 'Small Intestine Meridian',
     name_vi: 'Kinh Thủ Thái Dương Tiểu Trường', name_short: 'Tiểu trường',
-    element: 'Hỏa', organ: 'Tiểu trường',
+    element: 'Hỏa', organ: 'Tiểu trường', coupled_meridian: 'HT (Tâm)',
     color: '#C0392B',
     description: 'Từ ngón út, lên mặt ngoài cánh tay, qua bả vai lên mặt.',
     totalPoints: 19,
@@ -81,7 +81,7 @@ const MERIDIANS = [
   {
     id: 'BL', name: 'Bladder Meridian',
     name_vi: 'Kinh Túc Thái Dương Bàng Quang', name_short: 'Bàng quang',
-    element: 'Thủy', organ: 'Bàng quang',
+    element: 'Thủy', organ: 'Bàng quang', coupled_meridian: 'KI (Thận)',
     color: '#2980B9',
     description: 'Từ mắt, qua đỉnh đầu, xuống lưng dọc cột sống, qua mông chân đến ngón chân út.',
     totalPoints: 67,
@@ -93,7 +93,7 @@ const MERIDIANS = [
   {
     id: 'KI', name: 'Kidney Meridian',
     name_vi: 'Kinh Túc Thiếu Âm Thận', name_short: 'Thận',
-    element: 'Thủy', organ: 'Thận',
+    element: 'Thủy', organ: 'Thận', coupled_meridian: 'BL (Bàng Quang)',
     color: '#1A5276',
     description: 'Từ lòng bàn chân, lên mặt trong chân, qua bụng đến ngực.',
     totalPoints: 27,
@@ -105,7 +105,7 @@ const MERIDIANS = [
   {
     id: 'PC', name: 'Pericardium Meridian',
     name_vi: 'Kinh Thủ Quyết Âm Tâm Bào', name_short: 'Tâm bào',
-    element: 'Hỏa', organ: 'Màng tim',
+    element: 'Hỏa', organ: 'Màng tim', coupled_meridian: 'TE (Tam Tiêu)',
     color: '#E67E22',
     description: 'Từ ngực, dọc giữa mặt trong cánh tay đến ngón giữa.',
     totalPoints: 9,
@@ -117,7 +117,7 @@ const MERIDIANS = [
   {
     id: 'TE', name: 'Triple Warmer Meridian',
     name_vi: 'Kinh Thủ Thiếu Dương Tam Tiêu', name_short: 'Tam tiêu',
-    element: 'Hỏa', organ: 'Tam tiêu',
+    element: 'Hỏa', organ: 'Tam tiêu', coupled_meridian: 'PC (Tâm Bào)',
     color: '#D35400',
     description: 'Từ ngón áp út, lên mặt ngoài cánh tay, qua vai lên tai.',
     totalPoints: 23,
@@ -131,7 +131,7 @@ const MERIDIANS = [
   {
     id: 'GB', name: 'Gallbladder Meridian',
     name_vi: 'Kinh Túc Thiếu Dương Đởm', name_short: 'Đởm',
-    element: 'Mộc', organ: 'Túi mật',
+    element: 'Mộc', organ: 'Túi mật', coupled_meridian: 'LR (Can)',
     color: '#27AE60',
     description: 'Từ mắt ngoài, vòng quanh đầu-tai, xuống bên hông-chân đến ngón chân thứ 4.',
     totalPoints: 44,
@@ -143,7 +143,7 @@ const MERIDIANS = [
   {
     id: 'LR', name: 'Liver Meridian',
     name_vi: 'Kinh Túc Quyết Âm Can', name_short: 'Can',
-    element: 'Mộc', organ: 'Gan',
+    element: 'Mộc', organ: 'Gan', coupled_meridian: 'GB (Đởm)',
     color: '#1E8449',
     description: 'Từ ngón chân cái, lên mặt trong chân, qua bụng dưới đến dưới núm vú.',
     totalPoints: 14,
@@ -155,7 +155,7 @@ const MERIDIANS = [
   {
     id: 'CV', name: 'Conception Vessel',
     name_vi: 'Nhâm Mạch', name_short: 'Nhâm',
-    element: 'N/A', organ: 'N/A',
+    element: 'N/A', organ: 'N/A', coupled_meridian: 'GV (Đốc Mạch)',
     color: '#8E44AD',
     description: 'Từ tầng sinh môn lên giữa mặt trước cơ thể đến cằm.',
     totalPoints: 24,

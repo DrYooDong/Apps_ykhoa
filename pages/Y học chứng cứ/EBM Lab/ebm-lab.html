@@ -130,6 +130,9 @@
         <button class="lab-tab-btn" data-tab="nnt" role="tab">
           <i class="fa-solid fa-calculator"></i> 3. NNT & ARR Visualizer
         </button>
+        <button class="lab-tab-btn" data-tab="charts" role="tab">
+          <i class="fa-solid fa-chart-column"></i> 4. SVG Plot Suite
+        </button>
       </div>
 
       <!-- ════════════════════ TAB 1: PICO BUILDER ════════════════════ -->
@@ -391,6 +394,62 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════════════════════ TAB 4: SVG STATISTICAL PLOT SUITE ════════════════════ -->
+      <div class="lab-panel" id="panel-charts">
+        <div class="lab-card">
+          <h2 class="lab-card-title"><i class="fa-solid fa-chart-line" style="color: var(--ebm-primary);"></i> Bộ Công Cụ Biểu Đồ Thống Kê Y Học (SVG Plot Engines)</h2>
+          <p class="lab-card-desc">Hệ thống các web con tương tác độc lập hỗ trợ nhập bảng dữ liệu y khoa và tự động render biểu đồ bằng đồ họa vector SVG thuần sắc nét, chuẩn xuất bản quốc tế.</p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 1rem;">
+
+            <!-- Card 1: Forest Plot -->
+            <a href="forest-plot.html" style="text-decoration: none; color: inherit; background: var(--ebm-surface-2); border: 1.5px solid var(--ebm-border); border-radius: 16px; padding: 1.25rem; transition: all 250ms;" onmouseover="this.style.borderColor='var(--ebm-primary)'; this.style.transform='translateY(-4px)';" onmouseout="this.style.borderColor='var(--ebm-border)'; this.style.transform='none';">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+                <span style="font-size: 2rem;">📊</span>
+                <span style="font-size: 0.72rem; font-weight: 800; background: var(--ebm-primary-light); color: var(--ebm-primary-dark); padding: 0.25rem 0.6rem; border-radius: 20px;">Meta-analysis</span>
+              </div>
+              <h3 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--ebm-text); margin-bottom: 0.4rem;">Forest Plot Builder</h3>
+              <p style="font-size: 0.82rem; color: var(--ebm-text-muted); line-height: 1.45; margin-bottom: 1rem;">Trực quan hóa kết quả tổng quan hệ thống, tính toán chỉ số dị biệt I² và hình thoi hiệu quả gộp Pooled Estimate Diamond.</p>
+              <span style="font-size: 0.8rem; font-weight: 700; color: var(--ebm-primary); display: inline-flex; align-items: center; gap: 0.3rem;">Mở công cụ <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+
+            <!-- Card 2: Kaplan-Meier -->
+            <a href="kaplan-meier.html" style="text-decoration: none; color: inherit; background: var(--ebm-surface-2); border: 1.5px solid var(--ebm-border); border-radius: 16px; padding: 1.25rem; transition: all 250ms;" onmouseover="this.style.borderColor='var(--ebm-purple)'; this.style.transform='translateY(-4px)';" onmouseout="this.style.borderColor='var(--ebm-border)'; this.style.transform='none';">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+                <span style="font-size: 2rem;">📈</span>
+                <span style="font-size: 0.72rem; font-weight: 800; background: #ede9fe; color: #7c3aed; padding: 0.25rem 0.6rem; border-radius: 20px;">Time-to-event</span>
+              </div>
+              <h3 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--ebm-text); margin-bottom: 0.4rem;">Kaplan-Meier Curve Builder</h3>
+              <p style="font-size: 0.82rem; color: var(--ebm-text-muted); line-height: 1.45; margin-bottom: 1rem;">Vẽ biểu đồ sống còn dạng bậc thang (step curve), tích hợp bảng Number at Risk và tính toán Hazard Ratio / Log-rank P-value.</p>
+              <span style="font-size: 0.8rem; font-weight: 700; color: var(--ebm-purple); display: inline-flex; align-items: center; gap: 0.3rem;">Mở công cụ <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+
+            <!-- Card 3: ROC Curve -->
+            <a href="roc-curve.html" style="text-decoration: none; color: inherit; background: var(--ebm-surface-2); border: 1.5px solid var(--ebm-border); border-radius: 16px; padding: 1.25rem; transition: all 250ms;" onmouseover="this.style.borderColor='#06b6d4'; this.style.transform='translateY(-4px)';" onmouseout="this.style.borderColor='var(--ebm-border)'; this.style.transform='none';">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+                <span style="font-size: 2rem;">🎯</span>
+                <span style="font-size: 0.72rem; font-weight: 800; background: #cffafe; color: #0891b2; padding: 0.25rem 0.6rem; border-radius: 20px;">Diagnostics</span>
+              </div>
+              <h3 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--ebm-text); margin-bottom: 0.4rem;">ROC Curve & AUC Calculator</h3>
+              <p style="font-size: 0.82rem; color: var(--ebm-text-muted); line-height: 1.45; margin-bottom: 1rem;">Đánh giá giá trị xét nghiệm chẩn đoán, tự động tính diện tích AUC và điểm cắt tối ưu Optimal Cut-off (Youden Index J).</p>
+              <span style="font-size: 0.8rem; font-weight: 700; color: #0891b2; display: inline-flex; align-items: center; gap: 0.3rem;">Mở công cụ <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+
+            <!-- Card 4: Funnel Plot -->
+            <a href="funnel-plot.html" style="text-decoration: none; color: inherit; background: var(--ebm-surface-2); border: 1.5px solid var(--ebm-border); border-radius: 16px; padding: 1.25rem; transition: all 250ms;" onmouseover="this.style.borderColor='#10b981'; this.style.transform='translateY(-4px)';" onmouseout="this.style.borderColor='var(--ebm-border)'; this.style.transform='none';">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+                <span style="font-size: 2rem;">🔻</span>
+                <span style="font-size: 0.72rem; font-weight: 800; background: #dcfce7; color: #047857; padding: 0.25rem 0.6rem; border-radius: 20px;">Publication Bias</span>
+              </div>
+              <h3 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--ebm-text); margin-bottom: 0.4rem;">Funnel Plot Builder</h3>
+              <p style="font-size: 0.82rem; color: var(--ebm-text-muted); line-height: 1.45; margin-bottom: 1rem;">Đánh giá sai số xuất bản (Publication Bias), vẽ khung phễu 95% Pseudo CI và kiểm định tính đối xứng Egger's Test.</p>
+              <span style="font-size: 0.8rem; font-weight: 700; color: #047857; display: inline-flex; align-items: center; gap: 0.3rem;">Mở công cụ <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+
           </div>
         </div>
       </div>

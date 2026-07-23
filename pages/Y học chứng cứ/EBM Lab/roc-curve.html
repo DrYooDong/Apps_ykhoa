@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CliniPortal - ROC Curve & AUC Calculator: Công cụ vẽ đường cong ROC bằng SVG engine, tính diện tích dưới đường cong (AUC), điểm cắt tối ưu Youden Index J cho các xét nghiệm y khoa">
+  <title>ROC Curve & AUC Calculator – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+
+  <style>
+    :root {
+      --roc-primary: #06b6d4;
+      --roc-primary-dark: #0891b2;
+      --roc-purple: #7c3aed;
+      --roc-success: #10b981;
+      --roc-surface: var(--color-surface, #ffffff);
+      --roc-surface-2: var(--color-surface-2, #f8fafc);
+      --roc-border: var(--color-divider, #e2e8f0);
+      --roc-text: var(--color-text, #0f172a);
+      --roc-text-muted: var(--color-text-muted, #475569);
+      --roc-radius: 18px;
+    }
+
+    .roc-hero {
+      background: linear-gradient(135deg, #0f172a 0%, #164e63 50%, #0891b2 100%);
+      color: #ffffff;
+      padding: 2.5rem 2rem;
+      border-radius: 24px;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(8, 145, 178, 0.25);
+    }
+
+    .roc-hero::after {
+      content: '🎯';
+      position: absolute;
+      right: 1rem;
+      bottom: -1rem;
+      font-size: 10rem;
+      opacity: 0.12;
+      pointer-events: none;
+      transform: rotate(-10deg);
+    }
+
+    .roc-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #67e8f9;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      backdrop-filter: blur(5px);
+    }
+
+    .roc-hero h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .roc-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .roc-card {
+      background: var(--roc-surface);
+      border: 1px solid var(--roc-border);
+      border-radius: var(--roc-radius);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .roc-card-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--roc-text);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .roc-card-desc {
+      font-size: 0.85rem;
+      color: var(--roc-text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .roc-preset-bar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      background: var(--roc-surface-2);
+      border: 1px solid var(--roc-border);
+      border-radius: 12px;
+      padding: 0.85rem 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .roc-preset-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--roc-text);
+      white-space: nowrap;
+    }
+
+    .roc-select {
+      padding: 0.45rem 0.9rem;
+      border: 1.5px solid var(--roc-border);
+      border-radius: 8px;
+      background: var(--roc-surface);
+      color: var(--roc-text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .roc-table-wrapper {
+      overflow-x: auto;
+      margin-bottom: 1rem;
+    }
+
+    .roc-editor-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      min-width: 600px;
+    }
+
+    .roc-editor-table th, .roc-editor-table td {
+      border: 1px solid var(--roc-border);
+      padding: 0.65rem 0.75rem;
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    .roc-editor-table th {
+      background: var(--roc-surface-2);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--roc-text);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .roc-inp {
+      width: 100%;
+      padding: 0.4rem 0.6rem;
+      border: 1px solid var(--roc-border);
+      border-radius: 6px;
+      background: var(--roc-surface);
+      color: var(--roc-text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      outline: none;
+      text-align: center;
+    }
+
+    .roc-inp:focus {
+      border-color: var(--roc-primary);
+    }
+
+    .roc-btn-del {
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #fca5a5;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 200ms;
+    }
+
+    .roc-btn-del:hover {
+      background: #fca5a5;
+    }
+
+    .roc-btn-add {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1rem;
+      background: var(--roc-surface-2);
+      border: 1.5px dashed var(--roc-border);
+      border-radius: 8px;
+      color: var(--roc-primary-dark);
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 200ms;
+    }
+
+    .roc-btn-add:hover {
+      background: #cffafe;
+      border-color: var(--roc-primary);
+    }
+
+    .roc-canvas-box {
+      background: var(--roc-surface-2);
+      border: 1.5px solid var(--roc-border);
+      border-radius: 16px;
+      padding: 1.25rem;
+      overflow-x: auto;
+    }
+
+    .roc-stats-bar {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--roc-text-muted);
+      border-top: 1px solid var(--roc-border);
+      padding-top: 0.85rem;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li><a href="../../../index.html" class="nav-item" title="Trang chủ"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+          <li><a href="../../Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item" title="S.lý - S.lý bệnh"><span class="nav-icon">🧬</span><span class="nav-text">S.lý - S.lý bệnh</span></a></li>
+          <li><a href="../../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng"><span class="nav-icon">🩺</span><span class="nav-text">Kỹ năng</span></a></li>
+          <li><a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận"><span class="nav-icon">🤒</span><span class="nav-text">Tiếp cận</span></a></li>
+          <li><a href="../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ"><span class="nav-icon">⚙️</span><span class="nav-text">Công cụ</span></a></li>
+          <li><a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý"><span class="nav-icon">💊</span><span class="nav-text">Dược lý</span></a></li>
+          <li><a href="../yhcc.html" class="nav-item active" aria-current="page" title="Y học chứng cứ"><span class="nav-icon">📋</span><span class="nav-text">Y học chứng cứ</span></a></li>
+          <li><a href="../../Y học cổ truyền/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền"><span class="nav-icon">☯️</span><span class="nav-text">Y học cổ truyền</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="main-wrapper" id="mainContent">
+
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../../../index.html">🏠 Home</a></li>
+          <li class="breadcrumb-item"><a href="../yhcc.html">Y học chứng cứ</a></li>
+          <li class="breadcrumb-item"><a href="ebm-lab.html">EBM Practice Lab</a></li>
+          <li class="breadcrumb-item active" aria-current="page">ROC Curve & AUC Calculator</li>
+        </ol>
+      </nav>
+
+      <!-- HERO BANNER -->
+      <section class="roc-hero">
+        <div class="roc-eyebrow"><i class="fa-solid fa-chart-area"></i> DIAGNOSTIC ACCURACY ENGINE</div>
+        <h1>ROC Curve & AUC Calculator</h1>
+        <p>Công cụ đánh giá giá trị chẩn đoán của xét nghiệm y khoa thông qua đường cong ROC (Receiver Operating Characteristic). Tự động vẽ đồ họa SVG, tính toán Diện tích dưới đường cong (AUC), xác định điểm cắt tối ưu (Optimal Cut-off Threshold) dựa trên chỉ số Youden Index J.</p>
+      </section>
+
+      <div class="roc-layout">
+
+        <!-- TOP CARD: SVG CANVAS -->
+        <div class="roc-card">
+          <div class="roc-card-title">
+            <span><i class="fa-solid fa-chart-line" style="color: var(--roc-primary-dark);"></i> Đồ Đồ Đường Cong ROC SVG & Vùng AUC</span>
+          </div>
+          <p class="roc-card-desc">Đường nét đứt 45° là đường ngẫu nhiên (AUC = 0.50). Vùng tô màu xanh ngọc thể hiện diện tích tích lũy AUC. Điểm màu đỏ nổi bật chính là Điểm cắt tối ưu (Youden Index Max).</p>
+
+          <div class="roc-canvas-box">
+            <svg id="roc-svg-canvas" style="display: block; margin: 0 auto; max-width: 100%;"></svg>
+          </div>
+
+          <div class="roc-stats-bar">
+            <div><strong>Diện tích dưới đường cong (AUC):</strong> <span id="roc-stat-auc" style="color: var(--roc-primary-dark); font-weight: 800;">0.94 (95% CI: 0.91 - 0.97)</span></div>
+            <div><strong>Điểm cắt tối ưu (Optimal Cut-off):</strong> <span id="roc-stat-cutoff" style="color: var(--roc-purple); font-weight: 800;">> 14 ng/L</span></div>
+            <div><strong>Youden Index (J max):</strong> <span id="roc-stat-youden" style="color: var(--roc-success); font-weight: 800;">0.78 (Se: 88%, Sp: 90%)</span></div>
+          </div>
+        </div>
+
+        <!-- BOTTOM CARD: DATA EDITOR TABLE & PRESETS -->
+        <div class="roc-card">
+          <div class="roc-card-title">
+            <span><i class="fa-solid fa-table" style="color: var(--roc-purple);"></i> Bảng Điểm Cắt Cut-off, Độ Nhạy & Độ Đặc Hiệu</span>
+          </div>
+
+          <!-- PRESET SELECTOR BAR -->
+          <div class="roc-preset-bar">
+            <span class="roc-preset-label"><i class="fa-solid fa-folder-open"></i> Nạp bộ dữ liệu xét nghiệm mẫu:</span>
+            <select class="roc-select" id="roc-preset-select">
+              <option value="troponin">hs-cTnI (Troponin I siêu nhạy) — Chẩn đoán Nhồi máu cơ tim cấp</option>
+              <option value="ntprobnp">NT-proBNP — Chẩn đoán Suy tim cấp tại Khoa Cấp cứu</option>
+              <option value="pct">Procalcitonin (PCT) — Chẩn đoán Nhiễm trùng huyết (Sepsis)</option>
+            </select>
+          </div>
+
+          <!-- TABLE EDITOR -->
+          <div class="roc-table-wrapper">
+            <table class="roc-editor-table">
+              <thead>
+                <tr>
+                  <th style="width: 25%;">Ngưỡng điểm cắt (Cut-off Value)</th>
+                  <th style="width: 25%;">Độ nhạy (Sensitivity - TPR %)</th>
+                  <th style="width: 25%;">Độ đặc hiệu (Specificity %)</th>
+                  <th style="width: 15%;">1 - Specificity (FPR %)</th>
+                  <th style="width: 10%;">Xóa</th>
+                </tr>
+              </thead>
+              <tbody id="roc-table-body">
+                <!-- Rendered dynamically -->
+              </tbody>
+            </table>
+          </div>
+
+          <button class="roc-btn-add" id="roc-btn-add-row"><i class="fa-solid fa-plus"></i> Thêm Ngưỡng Điểm Cắt Mới</button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="global-footer">
+    <div class="footer-copyright">
+      <p>CliniPortal © 2026 · ROC Curve & AUC Calculator · Đồ họa SVG thuần linh hoạt</p>
+    </div>
+  </footer>
+
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+  <!-- Scripts -->
+  <script src="../../../js/main.js" defer></script>
+  <script src="roc-curve.js" defer></script>
+</body>
+</html>

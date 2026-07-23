@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CliniPortal - Funnel Plot Builder: Công cụ vẽ biểu đồ phễu SVG đánh giá sai số xuất bản (Publication Bias) trong tổng quan hệ thống và phân tích gộp (Meta-analysis)">
+  <title>Funnel Plot Builder – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+
+  <style>
+    :root {
+      --fn-primary: #10b981;
+      --fn-primary-dark: #047857;
+      --fn-purple: #7c3aed;
+      --fn-warning: #f59e0b;
+      --fn-danger: #ef4444;
+      --fn-surface: var(--color-surface, #ffffff);
+      --fn-surface-2: var(--color-surface-2, #f8fafc);
+      --fn-border: var(--color-divider, #e2e8f0);
+      --fn-text: var(--color-text, #0f172a);
+      --fn-text-muted: var(--color-text-muted, #475569);
+      --fn-radius: 18px;
+    }
+
+    .fn-hero {
+      background: linear-gradient(135deg, #0f172a 0%, #064e3b 50%, #047857 100%);
+      color: #ffffff;
+      padding: 2.5rem 2rem;
+      border-radius: 24px;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(4, 120, 87, 0.25);
+    }
+
+    .fn-hero::after {
+      content: '🔻';
+      position: absolute;
+      right: 1rem;
+      bottom: -1rem;
+      font-size: 10rem;
+      opacity: 0.12;
+      pointer-events: none;
+      transform: rotate(-10deg);
+    }
+
+    .fn-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #6ee7b7;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      backdrop-filter: blur(5px);
+    }
+
+    .fn-hero h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .fn-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .fn-card {
+      background: var(--fn-surface);
+      border: 1px solid var(--fn-border);
+      border-radius: var(--fn-radius);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .fn-card-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--fn-text);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .fn-card-desc {
+      font-size: 0.85rem;
+      color: var(--fn-text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .fn-preset-bar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      background: var(--fn-surface-2);
+      border: 1px solid var(--fn-border);
+      border-radius: 12px;
+      padding: 0.85rem 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .fn-preset-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--fn-text);
+      white-space: nowrap;
+    }
+
+    .fn-select {
+      padding: 0.45rem 0.9rem;
+      border: 1.5px solid var(--fn-border);
+      border-radius: 8px;
+      background: var(--fn-surface);
+      color: var(--fn-text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .fn-table-wrapper {
+      overflow-x: auto;
+      margin-bottom: 1rem;
+    }
+
+    .fn-editor-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      min-width: 600px;
+    }
+
+    .fn-editor-table th, .fn-editor-table td {
+      border: 1px solid var(--fn-border);
+      padding: 0.65rem 0.75rem;
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    .fn-editor-table th {
+      background: var(--fn-surface-2);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--fn-text);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .fn-inp {
+      width: 100%;
+      padding: 0.4rem 0.6rem;
+      border: 1px solid var(--fn-border);
+      border-radius: 6px;
+      background: var(--fn-surface);
+      color: var(--fn-text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      outline: none;
+      text-align: center;
+    }
+
+    .fn-inp:focus {
+      border-color: var(--fn-primary);
+    }
+
+    .fn-btn-del {
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #fca5a5;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 200ms;
+    }
+
+    .fn-btn-del:hover {
+      background: #fca5a5;
+    }
+
+    .fn-btn-add {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1rem;
+      background: var(--fn-surface-2);
+      border: 1.5px dashed var(--fn-border);
+      border-radius: 8px;
+      color: var(--fn-primary-dark);
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 200ms;
+    }
+
+    .fn-btn-add:hover {
+      background: #dcfce7;
+      border-color: var(--fn-primary);
+    }
+
+    .fn-canvas-box {
+      background: var(--fn-surface-2);
+      border: 1.5px solid var(--fn-border);
+      border-radius: 16px;
+      padding: 1.25rem;
+      overflow-x: auto;
+    }
+
+    .fn-stats-bar {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--fn-text-muted);
+      border-top: 1px solid var(--fn-border);
+      padding-top: 0.85rem;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li><a href="../../../index.html" class="nav-item" title="Trang chủ"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+          <li><a href="../../Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" class="nav-item" title="S.lý - S.lý bệnh"><span class="nav-icon">🧬</span><span class="nav-text">S.lý - S.lý bệnh</span></a></li>
+          <li><a href="../../Kỹ năng/ky-nang.html" class="nav-item" title="Kỹ năng"><span class="nav-icon">🩺</span><span class="nav-text">Kỹ năng</span></a></li>
+          <li><a href="../../Tiếp cận/tiep-can.html" class="nav-item" title="Tiếp cận"><span class="nav-icon">🤒</span><span class="nav-text">Tiếp cận</span></a></li>
+          <li><a href="../../Công cụ/cong-cu.html" class="nav-item" title="Công cụ"><span class="nav-icon">⚙️</span><span class="nav-text">Công cụ</span></a></li>
+          <li><a href="../../Dược lý/duoc-ly.html" class="nav-item" title="Dược lý"><span class="nav-icon">💊</span><span class="nav-text">Dược lý</span></a></li>
+          <li><a href="../yhcc.html" class="nav-item active" aria-current="page" title="Y học chứng cứ"><span class="nav-icon">📋</span><span class="nav-text">Y học chứng cứ</span></a></li>
+          <li><a href="../../Y học cổ truyền/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền"><span class="nav-icon">☯️</span><span class="nav-text">Y học cổ truyền</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="main-wrapper" id="mainContent">
+
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../../../index.html">🏠 Home</a></li>
+          <li class="breadcrumb-item"><a href="../yhcc.html">Y học chứng cứ</a></li>
+          <li class="breadcrumb-item"><a href="ebm-lab.html">EBM Practice Lab</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Funnel Plot Builder</li>
+        </ol>
+      </nav>
+
+      <!-- HERO BANNER -->
+      <section class="fn-hero">
+        <div class="fn-eyebrow"><i class="fa-solid fa-filter"></i> META-ANALYSIS BIAS ENGINE</div>
+        <h1>Interactive Funnel Plot Builder</h1>
+        <p>Công cụ phát hiện sai số xuất bản (Publication Bias) và hiệu ứng nghiên cứu cỡ mẫu nhỏ (Small-study effects) trong Meta-analysis. Tự động vẽ khung phễu giả định 95% CI bằng SVG, phân bố các nghiên cứu xung quanh hiệu quả gộp $\theta_{pooled}$ và đánh giá tính đối xứng (Symmetry Test).</p>
+      </section>
+
+      <div class="fn-layout">
+
+        <!-- TOP CARD: SVG CANVAS -->
+        <div class="fn-card">
+          <div class="fn-card-title">
+            <span><i class="fa-solid fa-chart-area" style="color: var(--fn-primary-dark);"></i> Biểu Đồ Phễu Funnel Plot SVG & Khung 95% Pseudo CI</span>
+          </div>
+          <p class="fn-card-desc">Trục hoành là Kích thước hiệu quả (Effect Estimate - HR/OR). Trục tung ngược là Sai số chuẩn Standard Error (SE) - các nghiên cứu lớn nằm trên đỉnh phễu, nghiên cứu nhỏ nằm dưới đáy phễu.</p>
+
+          <div class="fn-canvas-box">
+            <svg id="fn-svg-canvas" style="display: block; margin: 0 auto; max-width: 100%;"></svg>
+          </div>
+
+          <div class="fn-stats-bar">
+            <div><strong>Hiệu quả gộp (Pooled Effect):</strong> <span id="fn-stat-pooled" style="color: var(--fn-primary-dark); font-weight: 800;">0.78</span></div>
+            <div><strong>Kiểm định Egger (Egger's Test):</strong> <span id="fn-stat-egger" style="color: var(--fn-primary-dark); font-weight: 800;">p = 0.42 (Không có sai số lệch)</span></div>
+            <div><strong>Đánh giá sai số xuất bản:</strong> <span id="fn-stat-bias" style="color: var(--fn-primary); font-weight: 800;">Nguy cơ Thấp (Phễu đối xứng)</span></div>
+          </div>
+        </div>
+
+        <!-- BOTTOM CARD: DATA EDITOR TABLE & PRESETS -->
+        <div class="fn-card">
+          <div class="fn-card-title">
+            <span><i class="fa-solid fa-table" style="color: var(--fn-purple);"></i> Bảng Dữ Liệu Các Nghiên Cứu Trong Meta-Analysis</span>
+          </div>
+
+          <!-- PRESET SELECTOR BAR -->
+          <div class="fn-preset-bar">
+            <span class="fn-preset-label"><i class="fa-solid fa-folder-open"></i> Nạp bộ dữ liệu Meta-analysis:</span>
+            <select class="fn-select" id="fn-preset-select">
+              <option value="doac">DOACs vs Warfarin (Cân bằng - Không có sai số xuất bản)</option>
+              <option value="herbal">Nghiên cứu Thuốc YHCT (Lệch phễu - Sai số xuất bản nghi ngờ)</option>
+              <option value="statin">Statin Phòng Ngừa Đột Quỵ (10 Nghiên cứu lâm sàng)</option>
+            </select>
+          </div>
+
+          <!-- TABLE EDITOR -->
+          <div class="fn-table-wrapper">
+            <table class="fn-editor-table">
+              <thead>
+                <tr>
+                  <th style="width: 40%;">Tên Nghiên Cứu</th>
+                  <th style="width: 25%;">Tỷ Số Hiệu Quả (HR / OR)</th>
+                  <th style="width: 25%;">Sai Số Chuẩn (Standard Error - SE)</th>
+                  <th style="width: 10%;">Xóa</th>
+                </tr>
+              </thead>
+              <tbody id="fn-table-body">
+                <!-- Rendered dynamically -->
+              </tbody>
+            </table>
+          </div>
+
+          <button class="fn-btn-add" id="fn-btn-add-row"><i class="fa-solid fa-plus"></i> Thêm Nghiên Cứu Mới</button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="global-footer">
+    <div class="footer-copyright">
+      <p>CliniPortal © 2026 · Funnel Plot Builder · Đồ họa SVG thuần linh hoạt</p>
+    </div>
+  </footer>
+
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+  <!-- Scripts -->
+  <script src="../../../js/main.js" defer></script>
+  <script src="funnel-plot.js" defer></script>
+</body>
+</html>

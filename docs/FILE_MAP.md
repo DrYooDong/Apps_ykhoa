@@ -95,6 +95,11 @@
 | `smart-recommender.js` | Gợi ý tài liệu cá thể hóa theo chuyên khoa & lịch sử truy cập | `index.html` |
 
 | `physio-patho.js` | Lightbox ảnh, lazyload | `pages/Sinh lý/**` |
+| `physio-quiz-engine.js` | Động cơ Micro-Quiz trắc nghiệm & Đúng/Sai tương tác | `pages/Sinh lý - Sinh lý bệnh/**` |
+| `physio-progress.js` | Tracker tiến trình học tập, % hoàn thành, streak & spaced repetition | `pages/Sinh lý - Sinh lý bệnh/**` |
+| `physio-mirror.js` | Động cơ Physio-Patho Mirror xem song song Sinh lý ↔ Sinh lý bệnh | `pages/Sinh lý - Sinh lý bệnh/**` |
+| `physio-clinical-bridge.js` | Cầu nối tự động liên kết Sinh lý với Dược lý, Công cụ & Kỹ năng | `pages/Sinh lý - Sinh lý bệnh/**` |
+| `physio-glossary.js` | Tooltip từ điển thuật ngữ y khoa thông minh | `pages/Sinh lý - Sinh lý bệnh/**` |
 | `toc.js` | Tự động tạo mục lục sticky | `pages/Sinh lý/Sinhly/**` |
 | `benh-an.js` | Form validation + print bệnh án | `benh-an-noi-khoa.html` |
 | `homepage-effects.js` | Particle effects, animations trang chủ | `index.html` |
@@ -131,6 +136,7 @@
 | `Công cụ/Cấp cứu & hồi sức/QL_Budich.html` | Quản lý bù dịch cấp cứu | — |
 | `Công cụ/Cấp cứu & hồi sức/QL_Vanmach.html` | Quản lý liều thuốc vận mạch & trợ tim | — |
 | `Công cụ/Cấp cứu & hồi sức/QL_Maytho.html` | Quản lý máy thở chuyên sâu | — |
+| `Công cụ/Cấp cứu & hồi sức/DG_AnthanICU.html` | An thần, giảm đau & mê sảng ICU (RASS, CPOT, CAM-ICU, Bơm tiêm điện) | — |
 | `Công cụ/Hô hấp & Lao/DG_Viem-phoi.html` | Đánh giá viêm phổi (PSI, CURB) | — |
 | `Công cụ/Thận & Điện giải - toan kiềm/DG_ABG.html` | Phân tích khí máu | `abg-calculator.css` |
 | `Công cụ/Thận & Điện giải - toan kiềm/DG_Kali-Canxi.html` | Rối loạn Kali/Canxi | — |
@@ -141,13 +147,16 @@
 | `Công cụ/Tim mạch & huyết khối/DG_LDLc.html` | Mục tiêu LDL-c | — |
 | `Công cụ/Tim mạch & huyết khối/DG_Suytim.html` | Đánh giá suy tim | — |
 | `Công cụ/Tim mạch & huyết khối/ptnctimmach.html` | Phân tầng nguy cơ tim mạch | — |
+| `Công cụ/Tim mạch & huyết khối/DG_VTE.html` | VTE Toolkit: Huyết khối DVT & Thuyên tắc phổi PE (Wells, sPESI) | — |
 | `Công cụ/Tiêu hóa & Dinh dưỡng/DG_Dinhduongnoitru.html` | Dinh dưỡng nội trú | — |
 | `Công cụ/Tiêu hóa & Dinh dưỡng/DG_Xogan.html` | Xơ gan / Child-Pugh | — |
 | `Công cụ/Tiêu hóa & Dinh dưỡng/DG_ptncHCC.html` | Ung thư gan | — |
+| `Công cụ/Tiêu hóa & Dinh dưỡng/DG_XHTH.html` | Phân tầng Xuất huyết Tiêu hóa cấp trên & dưới (GBS, Oakland, Truyền máu) | — |
 | `Công cụ/Thần kinh/DG_Dotquy.html` | Đột quỵ (NIHSS, ABCD2) | — |
 | `Công cụ/Truyền Nhiễm/Chinhlieu_khangsinh.html` | Chỉnh liều kháng sinh | — |
 | `Công cụ/Truyền Nhiễm/QL_Vancomycin.html` | Quản lý Vancomycin | — |
 | `Công cụ/Truyền Nhiễm/SL_Nhiem-khuan.html` | Sơ lược nhiễm khuẩn | — |
+| `Công cụ/Huyết học/DG_Thieumau.html` | Phân tầng Thiếu máu & Thuật toán chẩn đoán (CRI/RPI, MCV/MCH, Iron panel) | — |
 
 ---
 
@@ -282,6 +291,12 @@
 | `Y học chứng cứ/Guideline Radar/radar.html` | **[NÂNG CẤP]** Guideline Radar Diff Viewer (So sánh GitHub-style Before/After, practice-changing badges, bộ lọc chuyên khoa) |
 | `Y học chứng cứ/EBM Lab/forest-plot.html` | **[MỚI]** Interactive Forest Plot Builder (Vẽ biểu đồ Forest Plot SVG tương tác, tính Pooled Diamond & I² heterogeneity) |
 | `Y học chứng cứ/EBM Lab/forest-plot.js` | Động cơ SVG Forest Plot renderer, preset datasets (EMPA-REG, DAPA-HF, ESC 2026) & data editor table |
+| `Y học chứng cứ/EBM Lab/kaplan-meier.html` | **[MỚI]** Kaplan-Meier Survival Curve Builder (Vẽ biểu đồ sống còn Kaplan-Meier dạng bậc thang SVG, bảng Number at Risk & tính HR) |
+| `Y học chứng cứ/EBM Lab/kaplan-meier.js` | Động cơ SVG Kaplan-Meier step curve renderer, tính xác suất sống còn S(t) & preset thử nghiệm lâm sàng |
+| `Y học chứng cứ/EBM Lab/roc-curve.html` | **[MỚI]** ROC Curve & AUC Calculator (Vẽ đường cong ROC SVG, tính diện tích AUC & xác định điểm cắt tối ưu Youden Index J) |
+| `Y học chứng cứ/EBM Lab/roc-curve.js` | Động cơ SVG ROC Curve & AUC trapezoidal calculator, Youden Index J optimizer & preset xét nghiệm |
+| `Y học chứng cứ/EBM Lab/funnel-plot.html` | **[MỚI]** Interactive Funnel Plot Builder (Vẽ biểu đồ phễu SVG, khung 95% Pseudo CI & kiểm định sai số xuất bản Egger's Test) |
+| `Y học chứng cứ/EBM Lab/funnel-plot.js` | Động cơ SVG Funnel Plot renderer, tính hiệu quả gộp Pooled Effect & phân tích tính đối xứng phễu |
 | `Y học chứng cứ/Guidelines/Guidelines.html` | Tra cứu guidelines |
 | `Y học chứng cứ/Guidelines/README.md` | Hướng dẫn sử dụng phân hệ Guidelines |
 | `Y học chứng cứ/Guidelines/Kho Guidelines/ks-cho-bn-nang.html` | Kháng sinh cho bệnh nhân nặng — Tổng quan Critical Care Clinics 2026 (Standalone) |
@@ -302,8 +317,33 @@
 | File | Vai trò |
 |------|---------|
 | `Y học cổ truyền/y-hoc-co-truyen.html` | Hub tổng YHCT |
-| `Y học cổ truyền/Xoa bóp & bấm huyệt/ban-do-huyet-vi.html` | Bản đồ huyệt vị |
+| `Y học cổ truyền/Lý luận & Ngũ hành/ngu-hanh-studio.html` | **[MỚI]** Ngũ Hành Tương Tác Studio (SVG 5-elements diagram, Ngũ du huyệt & mô phỏng thể bệnh lý) |
+| `Y học cổ truyền/Lý luận & Ngũ hành/data/ngu-hanh-data.js` | Dữ liệu 5 hành, thuộc tính quy loại tạng phủ, ngũ du huyệt & 5 kịch bản thể bệnh |
+| `Y học cổ truyền/Lý luận & Ngũ hành/js/ngu-hanh-studio.js` | Động cơ SVG renderer, path animation & controller cho Ngũ Hành Studio |
+| `Y học cổ truyền/Chẩn đoán học/thiet-chan-atlas.html` | **[MỚI]** Atlas Thiệt Chẩn Tương Tác (Vọng chẩn qua lưỡi, 4 phân vùng tạng phủ, sắc/rêu/hình thể & Quiz challenge) |
+| `Y học cổ truyền/Chẩn đoán học/data/thiet-chan-data.js` | Dữ liệu thiệt chẩn: phân vùng tạng phủ, chất lưỡi, rêu lưỡi, hình thể & 5 câu hỏi Quiz |
+| `Y học cổ truyền/Chẩn đoán học/js/thiet-chan-atlas.js` | Động cơ SVG Tongue Renderer, zone selector & Quiz Engine |
+| `Y học cổ truyền/Chẩn đoán học/mach-chan-simulator.html` | **[MỚI]** Mạch Chẩn Simulator (Giả lập 28 mạch tượng, sóng SVG real-time, áp lực Thốn-Quan-Xích & đối chiếu Tây y) |
+| `Y học cổ truyền/Chẩn đoán học/data/mach-chan-data.js` | Dữ liệu 28 mạch tượng Đông y, vị trí xem mạch tả hữu & thông số sóng toán học |
+| `Y học cổ truyền/Chẩn đoán học/js/mach-chan-simulator.js` | Động cơ SVG Pulse Waveform Generator, bộ điều khiển lực ấn 3 cấp độ |
+| `Y học cổ truyền/Dược liệu & Cổ phương/phuong-te-studio.html` | **[MỚI]** Phương Tễ Học Studio (Sơ đồ Quân-Thần-Tá-Sứ 25+ bài thuốc cổ phương & giả lập gia giảm bài thuốc) |
+| `Y học cổ truyền/Dược liệu & Cổ phương/data/phuong-te-data.js` | Cơ sở dữ liệu 25+ bài thuốc cổ phương kinh điển với cấu trúc Quân-Thần-Tá-Sứ & gia giảm |
+| `Y học cổ truyền/Dược liệu & Cổ phương/js/phuong-te-studio.js` | Controller visualizer Quân-Thần-Tá-Sứ & động cơ gia giảm bài thuốc lâm sàng |
+| `Y học cổ truyền/Dược liệu & Cổ phương/duoc-thao-database.html` | **[MỚI]** Tra Cứu Dược Thảo YHCT (Atlas 30+ vị thuốc, bộ lọc đa tiêu chí, so sánh side-by-side & tương kỵ Thập bát phản / Thập cửu úy) |
+| `Y học cổ truyền/Dược liệu & Cổ phương/data/duoc-thao-data.js` | Cơ sở dữ liệu 30+ vị thuốc Đông y kinh điển với thuộc tính Tính vị, Quy kinh, Công năng & Tương kỵ |
+| `Y học cổ truyền/Dược liệu & Cổ phương/js/duoc-thao-engine.js` | Engine tìm kiếm real-time, bộ lọc multi-facet, drawer so sánh đối chiếu & popup modal dược liệu |
+| `Y học cổ truyền/Xoa bóp & bấm huyệt/ban-do-huyet-vi.html` | Bản đồ huyệt vị tương tác 14 đường kinh mạch (Tích hợp Cặp Kinh Biểu - Lý) |
+| `Y học cổ truyền/Dưỡng sinh & Game/yhct-quiz-arena.html` | **[MỚI]** YHCT Quiz Arena (Đấu trường trắc nghiệm game hóa 4 chế độ, streak combo & highscore) |
+| `Y học cổ truyền/Dưỡng sinh & Game/data/yhct-quiz-data.js` | Ngân hàng 40+ câu hỏi game hóa chia 4 chủ đề Thiệt chẩn, Mạch chẩn, Dược thảo & Phương tễ |
+| `Y học cổ truyền/Dưỡng sinh & Game/js/yhct-quiz-arena.js` | Controller game loop, sound effects synth, streak multiplier & local storage |
+| `Y học cổ truyền/Dưỡng sinh & Game/duong-sinh-dashboard.html` | **[MỚI]** Dưỡng Sinh Dashboard (Lịch 24 Tiết Khí, trắc nghiệm 9 Thể Chất YHCT & bấm huyệt tại nhà) |
+| `Y học cổ truyền/Dưỡng sinh & Game/data/duong-sinh-data.js` | Dữ liệu 24 Tiết Khí Dưỡng Sinh, 9 Thể Chất YHCT & 10 câu hỏi trắc nghiệm phân tích |
+| `Y học cổ truyền/Dưỡng sinh & Game/js/duong-sinh-dashboard.js` | Controller phân tích thể chất cá nhân hóa & gợi ý thực đơn / huyệt vị theo mùa |
+| `Y học cổ truyền/Dong-Tay-Y-Bridge/dong-tay-y-bridge.html` | **[MỚI]** Cầu Nối Đông - Tây Y (Ma trận đối chiếu Bệnh danh YHCT ↔ ICD-10 Tây y & Tương tác thuốc) |
+| `Y học cổ truyền/Dong-Tay-Y-Bridge/data/dong-tay-y-data.js` | Dữ liệu đối chiếu Y lý - ICD-10, phác đồ phối hợp an toàn & cảnh báo tương tác thuốc nguy hiểm |
+| `Y học cổ truyền/Dong-Tay-Y-Bridge/js/dong-tay-y-bridge.js` | Controller tra cứu ma trận đối chiếu Đông-Tây Y real-time |
 
 ---
 
 *Cập nhật file này mỗi khi thêm trang mới vào hệ thống.*
+

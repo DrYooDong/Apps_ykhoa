@@ -37,7 +37,7 @@ const clinicalToolsData = [
     part: "part1-section",
     tags: ["chung", "quy đổi", "liều lượng", "tương đương", "corticoid", "statin"]
   },
-  
+
   // Phần 2: Truyền Nhiễm
   {
     id: "sang-loc-nhiem-khuan",
@@ -96,9 +96,18 @@ const clinicalToolsData = [
     tags: ["cấp cứu", "hồi sức", "máy thở", "thở máy", "cai thở máy", "icu"]
   },
   {
+    id: "an-than-icu",
+    title: "An thần & Giảm đau ICU",
+    description: "RASS, CPOT, CAM-ICU & Máy tính bơm tiêm điện an thần ICU",
+    icon: "💊",
+    link: "Cấp cứu & hồi sức/DG_AnthanICU.html",
+    part: "part3-section",
+    tags: ["cấp cứu", "hồi sức", "an thần", "rass", "cpot", "cam-icu", "bơm tiêm điện"]
+  },
+  {
     id: "ecg-studio",
     title: "ECG Pro Studio 12 Chuyển Đạo",
-    description: "Giả lập sóng ECG 12 chuyển đạo tương tác, thước đo Calipers ảo & Quiz chẩn đoán cấp cứu",
+    description: "Giải lập sóng ECG 12 chuyển đạo tương tác, thước đo Calipers ảo & Quiz chẩn đoán cấp cứu",
     icon: "⚡",
     link: "Cấp cứu & hồi sức/ECG_Studio.html",
     part: "part3-section",
@@ -143,6 +152,15 @@ const clinicalToolsData = [
     link: "Tiêu hóa & Dinh dưỡng/DG_ptncHCC.html",
     part: "part5-section",
     tags: ["tiêu hóa", "xơ gan", "hcc", "ung thư gan", "aga"]
+  },
+  {
+    id: "xuat-huyet-tieu-hoa",
+    title: "Xuất huyết Tiêu hóa cấp (UGIB & LGIB)",
+    description: "Glasgow-Blatchford (GBS), Oakland Score & Phác đồ truyền máu, PPI",
+    icon: "🫀",
+    link: "Tiêu hóa & Dinh dưỡng/DG_XHTH.html",
+    part: "part5-section",
+    tags: ["tiêu hóa", "xuất huyết", "gbs", "blatchford", "oakland", "truyền máu"]
   },
 
   // Phần 6: Thận & Điện giải
@@ -220,6 +238,15 @@ const clinicalToolsData = [
     part: "part7-section",
     tags: ["tim mạch", "suy tim", "hfref", "hfpef", "phân độ suy tim"]
   },
+  {
+    id: "vte-toolkit",
+    title: "VTE Toolkit: DVT & Thuyên tắc Phổi",
+    description: "Wells DVT, Wells PE, sPESI, D-Dimer & CTPA Algorithm",
+    icon: "🩸",
+    link: "Tim mạch & huyết khối/DG_VTE.html",
+    part: "part7-section",
+    tags: ["tim mạch", "huyết khối", "vte", "dvt", "pe", "wells", "d-dimer"]
+  },
 
   // Phần 8: Nội tiết & Chuyển hóa
   {
@@ -241,6 +268,17 @@ const clinicalToolsData = [
     link: "Thần kinh/DG_Dotquy.html",
     part: "part9-section",
     tags: ["thần kinh", "đột quỵ", "nihss", "aspects", "abcd2"]
+  },
+
+  // Phần 10: Huyết học
+  {
+    id: "phan-tang-thieu-mau",
+    title: "Phân tầng Thiếu máu & Thuật toán chẩn đoán",
+    description: "CRI/RPI, MCV/MCH, Iron Panel & Thalassemia Guidance",
+    icon: "🔴",
+    link: "Huyết học/DG_Thieumau.html",
+    part: "part10-section",
+    tags: ["huyết học", "thiếu máu", "anemia", "mcv", "mch", "rpi", "ferritin"]
   }
 ];
 
@@ -254,5 +292,6 @@ const partMetadata = {
   "part6-section": { id: "part6", name: "Phần 6: Thận & Điện giải", icon: "fa-filter" },
   "part7-section": { id: "part7", name: "Phần 7: Tim mạch & Huyết khối", icon: "fa-heart-pulse" },
   "part8-section": { id: "part8", name: "Phần 8: Nội tiết & Chuyển hóa", icon: "fa-droplet" },
-  "part9-section": { id: "part9", name: "Phần 9: Thần kinh", icon: "fa-brain" }
+  "part9-section": { id: "part9", name: "Phần 9: Thần kinh", icon: "fa-brain" },
+  "part10-section": { id: "part10", name: "Phần 10: Huyết học", icon: "fa-vial" }
 };

@@ -151,6 +151,12 @@
             <button class="tcm-filter-btn active" data-filter="all">
               <i class="fa-solid fa-border-all"></i> Tất cả
             </button>
+            <button class="tcm-filter-btn" data-filter="theory">
+              <i class="fa-solid fa-yin-yang"></i> Lý luận & Ngũ hành
+            </button>
+            <button class="tcm-filter-btn" data-filter="diagnosis">
+              <i class="fa-solid fa-stetho"></i> Chẩn đoán học (Tứ chẩn)
+            </button>
             <button class="tcm-filter-btn" data-filter="therapy">
               <i class="fa-solid fa-hand-holding-medical"></i> Trị liệu & Huyệt vị
             </button>
@@ -161,6 +167,42 @@
 
           <!-- CATEGORY CONTAINER -->
           <div class="tcm-categories-container">
+            <!-- GROUP: Lý luận & Ngũ hành -->
+            <div class="tcm-category-group" data-category="theory">
+              <div class="tcm-group-header">
+                <i class="fa-solid fa-diagram-project"></i>
+                <h3>Lý luận Đông Y & Ngũ Hành</h3>
+              </div>
+              <div class="tcm-items-grid">
+                <a href="Lý luận & Ngũ hành/ngu-hanh-studio.html" class="tcm-item-card">
+                  <div class="tcm-card-icon">📊</div>
+                  <div class="tcm-card-title">Ngũ Hành Tương Tác Studio</div>
+                  <div class="tcm-card-desc">Sơ đồ 5 hành Mộc-Hỏa-Thổ-Kim-Thủy: Tương sinh, tương khắc, ngũ du huyết & mô phỏng thể bệnh.</div>
+                </a>
+              </div>
+            </div>
+
+            <!-- GROUP: Chẩn đoán học -->
+            <div class="tcm-category-group" data-category="diagnosis">
+              <div class="tcm-group-header">
+                <i class="fa-solid fa-eye"></i>
+                <h3>Chẩn Đoán Học YHCT (Tứ Chẩn)</h3>
+              </div>
+              <div class="tcm-items-grid">
+                <a href="Chẩn đoán học/thiet-chan-atlas.html" class="tcm-item-card">
+                  <div class="tcm-card-icon">👅</div>
+                  <div class="tcm-card-title">Atlas Thiệt Chẩn Tương Tác</div>
+                  <div class="tcm-card-desc">Bản đồ chẩn đoán qua lưỡi: Phân vùng tạng phủ, sắc lưỡi, rêu lưỡi & thử thách Quiz lâm sàng.</div>
+                </a>
+
+                <a href="Chẩn đoán học/mach-chan-simulator.html" class="tcm-item-card">
+                  <div class="tcm-card-icon">🧘</div>
+                  <div class="tcm-card-title">Mạch Chẩn Simulator</div>
+                  <div class="tcm-card-desc">Giả lập bắt mạch 28 mạch tượng: Sóng SVG real-time, áp lực ngón tay Thốn-Quan-Xích & đối chiếu Tây y.</div>
+                </a>
+              </div>
+            </div>
+
             <!-- GROUP: Xoa bóp & Bấm huyệt -->
             <div class="tcm-category-group" data-category="therapy">
               <div class="tcm-group-header">
@@ -213,18 +255,52 @@
                 <h3>Dược liệu - Cổ phương</h3>
               </div>
               <div class="tcm-items-grid">
-                <a href="#" class="tcm-item-card" onclick="return false;">
+                <a href="Dược liệu & Cổ phương/duoc-thao-database.html" class="tcm-item-card">
                   <div class="tcm-card-icon">🍵</div>
                   <div class="tcm-card-title">Tra cứu Dược thảo</div>
-                  <div class="tcm-card-desc">Cơ sở dữ liệu tính vị, quy kinh, công năng, chủ trị và cấm kỵ của thuốc Y học cổ truyền.</div>
-                  <span class="badge-dev">Đang phát triển</span>
+                  <div class="tcm-card-desc">Atlas tra cứu 30+ vị thuốc Đông y với bộ lọc Tính-Vị-Quy kinh, so sánh & tương kỵ Thập bát phản.</div>
                 </a>
                 
-                <a href="#" class="tcm-item-card" onclick="return false;">
+                <a href="Dược liệu & Cổ phương/phuong-te-studio.html" class="tcm-item-card">
                   <div class="tcm-card-icon">📜</div>
                   <div class="tcm-card-title">Phương tễ học (Bài thuốc)</div>
-                  <div class="tcm-card-desc">Các bài thuốc cổ phương tiêu biểu: Quân - Thần - Tá - Sứ và ứng dụng gia giảm lâm sàng.</div>
-                  <span class="badge-dev">Đang phát triển</span>
+                  <div class="tcm-card-desc">Sơ đồ phân tích Quân - Thần - Tá - Sứ của 25+ bài thuốc cổ phương & giả lập gia giảm bài thuốc.</div>
+                </a>
+              </div>
+            </div>
+
+            <!-- GROUP: Dưỡng sinh & Game -->
+            <div class="tcm-category-group" data-category="wellness">
+              <div class="tcm-group-header">
+                <i class="fa-solid fa-spa"></i>
+                <h3>Dưỡng Sinh & Ôn Tập Game</h3>
+              </div>
+              <div class="tcm-items-grid">
+                <a href="Dưỡng sinh & Game/yhct-quiz-arena.html" class="tcm-item-card">
+                  <div class="tcm-card-icon">🎮</div>
+                  <div class="tcm-card-title">YHCT Quiz Arena</div>
+                  <div class="tcm-card-desc">Đấu trường trắc nghiệm game hóa 4 chế độ Thiệt chẩn, Mạch chẩn, Dược thảo & Bài thuốc.</div>
+                </a>
+
+                <a href="Dưỡng sinh & Game/duong-sinh-dashboard.html" class="tcm-item-card">
+                  <div class="tcm-card-icon">🧘</div>
+                  <div class="tcm-card-title">Dưỡng Sinh & 24 Tiết Khí</div>
+                  <div class="tcm-card-desc">Lịch 24 tiết khí trong năm, trắc nghiệm 9 thể chất YHCT & gợi ý huyệt tự bấm tại nhà.</div>
+                </a>
+              </div>
+            </div>
+
+            <!-- GROUP: Cầu Nối Đông - Tây Y -->
+            <div class="tcm-category-group" data-category="bridge">
+              <div class="tcm-group-header">
+                <i class="fa-solid fa-handshake"></i>
+                <h3>Cầu Nối Đông - Tây Y</h3>
+              </div>
+              <div class="tcm-items-grid">
+                <a href="Dong-Tay-Y-Bridge/dong-tay-y-bridge.html" class="tcm-item-card">
+                  <div class="tcm-card-icon">🔗</div>
+                  <div class="tcm-card-title">Cầu Nối Đông - Tây Y (East-West Bridge)</div>
+                  <div class="tcm-card-desc">Ma trận đối chiếu Bệnh danh YHCT ↔ ICD-10 Tây y, phác đồ kết hợp an toàn & cảnh báo tương tác thuốc.</div>
                 </a>
               </div>
             </div>

@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CliniPortal – Bộ công cụ đánh giá An thần - Giảm đau - Mê sảng và Tính liều Bơm tiêm điện ICU" />
+  <title>An thần & Giảm đau ICU – CliniPortal</title>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+
+  <script src="../../../js/main.js" defer></script>
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+
+  <style>
+    .assessment-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 0.75rem;
+    }
+
+    .input-column, .results-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .panel {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.15rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .panel-title {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1.5px solid var(--color-divider);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .panel-title-text {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    .form-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .input-group label {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    .input-subtext {
+      font-size: 11px;
+      color: var(--color-text-muted);
+      line-height: 1.3;
+    }
+
+    input[type="number"], select {
+      width: 100%;
+      padding: 0.45rem 0.6rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      background-color: var(--color-surface-offset);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-size: var(--text-xs);
+    }
+
+    input[type="number"]:focus, select:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 2px var(--color-primary-hl);
+    }
+
+    .score-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px dashed var(--color-divider);
+    }
+
+    .score-lbl {
+      font-weight: 600;
+      font-size: var(--text-xs);
+      color: var(--color-text);
+    }
+
+    .score-badge {
+      font-weight: 700;
+      font-size: 11px;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-full);
+      min-width: 65px;
+      text-align: center;
+    }
+
+    .badge-normal { background-color: var(--color-success-hl, #dcfce7); color: var(--color-success, #16a34a); }
+    .badge-warn { background-color: var(--color-amber-hl, #fef3c7); color: var(--color-amber, #d97706); }
+    .badge-severe { background-color: var(--color-rose-hl, #ffe4e6); color: var(--color-rose, #e11d48); }
+    .badge-info { background-color: var(--color-cyan-hl, #cff4fc); color: var(--color-cyan, #0891b2); }
+
+    .diagnostic-box {
+      background-color: var(--color-surface-2);
+      border-left: 3px solid var(--color-primary);
+      padding: 0.75rem 0.9rem;
+      border-radius: var(--radius-sm);
+      font-size: var(--text-xs);
+      margin-top: 0.6rem;
+      line-height: 1.5;
+    }
+
+    .reset-btn {
+      width: 100%;
+      padding: 0.55rem;
+      background-color: var(--color-surface-offset);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: var(--text-xs);
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: all 0.2s ease;
+    }
+
+    .reset-btn:hover {
+      background-color: var(--color-divider);
+      border-color: var(--color-primary);
+    }
+
+    .drug-calc-card {
+      background: var(--color-surface-offset);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 0.9rem;
+      margin-top: 0.6rem;
+    }
+
+    .rate-display-compact {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--color-surface);
+      border: 1.5px solid var(--color-primary);
+      border-radius: var(--radius-sm);
+      padding: 0.4rem 0.8rem;
+    }
+
+    .rate-val-compact {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--color-primary);
+    }
+
+    .checkbox-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+      cursor: pointer;
+      font-size: var(--text-xs);
+      color: var(--color-text);
+      line-height: 1.4;
+    }
+
+    .checkbox-item input[type="checkbox"] {
+      margin-top: 0.15rem;
+      width: 14px;
+      height: 14px;
+      accent-color: var(--color-primary);
+      flex-shrink: 0;
+    }
+
+    @media (min-width: 768px) {
+      .assessment-grid { grid-template-columns: 2.2fr 1fr; }
+      .form-grid-2 { grid-template-columns: repeat(2, 1fr); }
+      .form-grid-4 { grid-template-columns: repeat(4, 1fr); }
+      .checkbox-grid-2 { grid-template-columns: repeat(2, 1fr); }
+      .sticky-card { position: sticky; top: calc(var(--header-height) + 1rem); }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <aside class="app-sidebar" id="appSidebar">
+      <nav class="sidebar-nav">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../cong-cu.html" class="nav-item active" title="Công cụ">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="main-wrapper" id="mainContent">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container" style="margin-bottom: 0.5rem;">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../../../index.html" class="breadcrumb-link">🏠 Home</a></li>
+          <li class="breadcrumb-item"><a href="../cong-cu.html" class="breadcrumb-link">Công cụ lâm sàng</a></li>
+          <li class="breadcrumb-item active" aria-current="page">An thần &amp; Giảm đau ICU</li>
+        </ol>
+      </nav>
+
+      <!-- HERO BANNER TINH GỌN -->
+      <section class="hero-dashboard" style="background: linear-gradient(135deg, #1e3a8a, #0284c7); color: #fff; padding: 1rem 1.25rem; border-radius: var(--radius-md); margin-bottom: 0.75rem;">
+        <div class="hero-intro">
+          <h1 style="color: #fff; font-size: 1.15rem; margin-bottom: 0.2rem;">💊 AN THẦN - GIẢM ĐAU - MÊ SẢNG &amp; LIỀU BƠM TIÊM ĐIỆN ICU</h1>
+          <p style="opacity: 0.9; font-size: var(--text-xs); margin: 0;">Đánh giá bộ ba RASS, CPOT, CAM-ICU &amp; Tính nhanh tốc độ truyền tĩnh mạch (mL/h) chuẩn PADIS 2018</p>
+        </div>
+      </section>
+
+      <div class="assessment-grid">
+        <!-- CỘT TRÁI: NHẬP THÔNG SỐ TINH GỌN -->
+        <div class="input-column">
+
+          <!-- 1. THANG ĐIỂM RASS (An thần) -->
+          <div class="panel">
+            <div class="panel-title">
+              <span class="panel-title-text"><i class="fa-solid fa-gauge-high"></i> 1. Thang điểm An thần Richmond (RASS)</span>
+              <span class="input-subtext">Mục tiêu chuẩn: -2 đến 0</span>
+            </div>
+            <div class="input-group">
+              <select id="rass-select" onchange="calculateICU()">
+                <option value="4">+4: Rất kích động (Hung dữ, nguy hiểm cho nhân viên)</option>
+                <option value="3">+3: Kích động (Kéo hoặc gỡ ống, ca-tê-te)</option>
+                <option value="2">+2: Kích động nhẹ (Cựa quậy, chống máy thở)</option>
+                <option value="1">+1: Bồn chồn (Lo lắng nhưng không hung hăng)</option>
+                <option value="0" selected>0: Tỉnh táo &amp; BÌNH THƯỜNG (Mục tiêu chuẩn)</option>
+                <option value="-1">-1: Drowsy (Ngủ gà, mở mắt theo tiếng nói &gt;10s)</option>
+                <option value="-2">-2: An thần nhẹ (Mở mắt ngắn theo tiếng nói &lt;10s)</option>
+                <option value="-3">-3: An thần vừa (Chỉ cử động/mở mắt khi gọi to/lay)</option>
+                <option value="-4">-4: An thần sâu (Không đáp ứng tiếng nói, chỉ đáp ứng véo đau)</option>
+                <option value="-5">-5: Mê sâu (Không đáp ứng với bất kỳ kích thích nào)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- 2. THANG ĐIỂM CPOT (Giảm đau) -->
+          <div class="panel">
+            <div class="panel-title">
+              <span class="panel-title-text"><i class="fa-solid fa-face-frown"></i> 2. Đánh giá Đau ICU (CPOT)</span>
+              <span class="input-subtext">CPOT &gt; 2: Cần can thiệp giảm đau</span>
+            </div>
+            <div class="form-grid-4">
+              <div class="input-group">
+                <label for="cpot-face">Biểu hiện mặt:</label>
+                <select id="cpot-face" onchange="calculateICU()">
+                  <option value="0">0: Thả lỏng</option>
+                  <option value="1">1: Căng thẳng</option>
+                  <option value="2">2: Nhăn nhó dữ dội</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label for="cpot-body">Cử động thân:</label>
+                <select id="cpot-body" onchange="calculateICU()">
+                  <option value="0">0: Tư thế chuẩn</option>
+                  <option value="1">1: Cử động chậm</option>
+                  <option value="2">2: Gồng/giật dây</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label for="cpot-vent">Thích ứng máy:</label>
+                <select id="cpot-vent" onchange="calculateICU()">
+                  <option value="0">0: Thở êm</option>
+                  <option value="1">1: Ho thỉnh thoảng</option>
+                  <option value="2">2: Chống máy/Phá</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label for="cpot-tension">Gồng cơ (Tay):</label>
+                <select id="cpot-tension" onchange="calculateICU()">
+                  <option value="0">0: Thả lỏng</option>
+                  <option value="1">1: Kháng nhẹ</option>
+                  <option value="2">2: Gồng cứng rất mạnh</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. ĐÁNH GIÁ MÊ SẢNG CAM-ICU -->
+          <div class="panel">
+            <div class="panel-title">
+              <span class="panel-title-text"><i class="fa-solid fa-brain"></i> 3. Đánh giá Mê sảng (CAM-ICU)</span>
+              <span class="input-subtext">Dương tính khi (F1 &amp; F2) &amp; (F3 hoặc F4)</span>
+            </div>
+            <div class="checkbox-grid-2">
+              <label class="checkbox-item">
+                <input type="checkbox" id="cam-f1" onchange="calculateICU()">
+                <span><strong>F1:</strong> Khởi phát cấp / biến đổi tri giác</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" id="cam-f2" onchange="calculateICU()">
+                <span><strong>F2:</strong> Giảm chú ý (Thất bại bóp tay)</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" id="cam-f3" onchange="calculateICU()">
+                <span><strong>F3:</strong> Tư duy không tổ chức</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" id="cam-f4" onchange="calculateICU()">
+                <span><strong>F4:</strong> Biến đổi mức tri giác (RASS ≠ 0)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- 4. MÁY TÍNH LIỀU BƠM TIÊM ĐIỆN ICU -->
+          <div class="panel">
+            <div class="panel-title">
+              <span class="panel-title-text"><i class="fa-solid fa-syringe"></i> 4. Máy tính Bơm tiêm điện An thần - Giảm đau</span>
+            </div>
+            <div class="form-grid-2">
+              <div class="input-group">
+                <label for="weight">Cân nặng (kg):</label>
+                <input type="number" id="weight" value="60" min="30" max="150" step="1" oninput="calculateICU()">
+              </div>
+              <div class="input-group">
+                <label for="drug-select">Thuốc an thần/giảm đau:</label>
+                <select id="drug-select" onchange="calculateICU()">
+                  <option value="propofol">Propofol 1% (10 mg/mL)</option>
+                  <option value="midazolam">Midazolam (1 mg/mL)</option>
+                  <option value="fentanyl">Fentanyl (10 mcg/mL)</option>
+                  <option value="dexmed">Dexmedetomidine (4 mcg/mL)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="drug-calc-card">
+              <div class="form-grid-2" style="align-items: center;">
+                <div class="input-group">
+                  <div style="display: flex; justify-content: space-between;">
+                    <label for="drug-dose-input">Liều cài đặt:</label>
+                    <span id="dose-unit-label" class="input-subtext" style="font-weight: 700;">mcg/kg/phút</span>
+                  </div>
+                  <input type="number" id="drug-dose-input" value="20" min="0" step="0.1" oninput="calculateICU()">
+                  <span id="drug-range-info" class="input-subtext">Khuyến cáo: 5 - 50 mcg/kg/min</span>
+                </div>
+                <div class="input-group">
+                  <label style="color: var(--color-primary); font-weight: 700;">Tốc độ Bơm tiêm điện:</label>
+                  <div class="rate-display-compact">
+                    <span class="rate-val-compact" id="pump-rate-result">12.0</span>
+                    <span style="font-size: 11px; font-weight: 700; color: var(--color-primary);">mL/giờ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- CỘT PHẢI: KẾT QUẢ DOCKING TINH GỌN -->
+        <div class="results-sidebar">
+          <div class="panel sticky-card">
+            <div class="panel-title">
+              <span class="panel-title-text"><i class="fa-solid fa-clipboard-check"></i> Đánh giá Tổng hợp</span>
+            </div>
+
+            <div class="score-row">
+              <span class="score-lbl">Mức An thần (RASS):</span>
+              <span id="res-rass-badge" class="score-badge badge-normal">0 (Tỉnh)</span>
+            </div>
+
+            <div class="score-row">
+              <span class="score-lbl">Mức Đau (CPOT):</span>
+              <span id="res-cpot-badge" class="score-badge badge-normal">0 / 8</span>
+            </div>
+
+            <div class="score-row">
+              <span class="score-lbl">Mê sảng (CAM-ICU):</span>
+              <span id="res-cam-badge" class="score-badge badge-normal">Âm tính</span>
+            </div>
+
+            <div id="diag-box" class="diagnostic-box">
+              <h4 id="diag-title" style="margin-bottom: 0.2rem; font-weight: 700;">🎯 Hướng xử trí lâm sàng:</h4>
+              <p id="diag-desc" style="margin: 0;">Đạt mục tiêu an thần nông (RASS -2 đến 0) &amp; không bị đau. Tiếp tục ngưng an thần hàng ngày (SAT) đánh giá cai máy.</p>
+            </div>
+
+            <button class="reset-btn" onclick="resetAll()"><i class="fa-solid fa-rotate"></i> Reset Đánh Giá</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+  <script>
+    function calculateICU() {
+      // 1. RASS
+      const rass = parseInt(document.getElementById('rass-select').value);
+      const rassBadge = document.getElementById('res-rass-badge');
+      rassBadge.innerText = (rass > 0 ? '+' : '') + rass;
+      if (rass >= 2 || rass <= -4) {
+        rassBadge.className = 'score-badge badge-severe';
+      } else if (rass === 1 || rass === -3) {
+        rassBadge.className = 'score-badge badge-warn';
+      } else {
+        rassBadge.className = 'score-badge badge-normal';
+      }
+
+      // 2. CPOT
+      const cpotFace = parseInt(document.getElementById('cpot-face').value);
+      const cpotBody = parseInt(document.getElementById('cpot-body').value);
+      const cpotVent = parseInt(document.getElementById('cpot-vent').value);
+      const cpotTen = parseInt(document.getElementById('cpot-tension').value);
+      const cpotTotal = cpotFace + cpotBody + cpotVent + cpotTen;
+
+      const cpotBadge = document.getElementById('res-cpot-badge');
+      cpotBadge.innerText = cpotTotal + ' / 8';
+      if (cpotTotal >= 3) {
+        cpotBadge.className = 'score-badge badge-severe';
+      } else if (cpotTotal > 0) {
+        cpotBadge.className = 'score-badge badge-warn';
+      } else {
+        cpotBadge.className = 'score-badge badge-normal';
+      }
+
+      // 3. CAM-ICU
+      const f1 = document.getElementById('cam-f1').checked;
+      const f2 = document.getElementById('cam-f2').checked;
+      const f3 = document.getElementById('cam-f3').checked;
+      const f4 = document.getElementById('cam-f4').checked || (rass !== 0);
+
+      const isDelirium = (f1 && f2) && (f3 || f4);
+      const camBadge = document.getElementById('res-cam-badge');
+      if (isDelirium) {
+        camBadge.innerText = 'DƯƠNG TÍNH';
+        camBadge.className = 'score-badge badge-severe';
+      } else {
+        camBadge.innerText = 'Âm tính';
+        camBadge.className = 'score-badge badge-normal';
+      }
+
+      // 4. Bơm tiêm điện
+      const weight = parseFloat(document.getElementById('weight').value) || 60;
+      const drug = document.getElementById('drug-select').value;
+      const dose = parseFloat(document.getElementById('drug-dose-input').value) || 0;
+
+      let pumpRate = 0;
+      const drugRange = document.getElementById('drug-range-info');
+      const doseUnitLabel = document.getElementById('dose-unit-label');
+
+      if (drug === 'propofol') {
+        drugRange.innerText = 'Khuyến cáo: 5 – 50 mcg/kg/phút';
+        doseUnitLabel.innerText = 'mcg/kg/phút';
+        pumpRate = (dose * weight * 60) / 10000;
+      } else if (drug === 'midazolam') {
+        drugRange.innerText = 'Khuyến cáo: 0.02 – 0.2 mg/kg/giờ';
+        doseUnitLabel.innerText = 'mg/kg/giờ';
+        pumpRate = (dose * weight) / 1.0;
+      } else if (drug === 'fentanyl') {
+        drugRange.innerText = 'Khuyến cáo: 0.7 – 10 mcg/kg/giờ';
+        doseUnitLabel.innerText = 'mcg/kg/giờ';
+        pumpRate = (dose * weight) / 10.0;
+      } else if (drug === 'dexmed') {
+        drugRange.innerText = 'Khuyến cáo: 0.2 – 1.4 mcg/kg/giờ';
+        doseUnitLabel.innerText = 'mcg/kg/giờ';
+        pumpRate = (dose * weight) / 4.0;
+      }
+
+      document.getElementById('pump-rate-result').innerText = pumpRate.toFixed(1);
+
+      // 5. Khuyến cáo Can thiệp
+      const diagTitle = document.getElementById('diag-title');
+      const diagDesc = document.getElementById('diag-desc');
+      const diagBox = document.getElementById('diag-box');
+
+      let advice = [];
+      if (cpotTotal >= 3) advice.push('⚠️ <strong>CPOT ≥ 3:</strong> Ưu tiên tăng liều Giảm đau (Fentanyl) trước khi tăng an thần.');
+      if (rass > 0) advice.push('⚠️ <strong>RASS > 0:</strong> Kiểm tra cựa quậy/chống máy, cân nhắc tăng nhẹ an thần nếu đã đủ giảm đau.');
+      else if (rass < -3) advice.push('🚨 <strong>RASS ≤ -4:</strong> An thần quá sâu! Giảm 25-50% liều hoặc tạm ngưng an thần (SAT).');
+      if (isDelirium) advice.push('🧠 <strong>CAM-ICU (+):</strong> Ưu tiên Dexmedetomidine, hạn chế Benzodiazepine.');
+
+      if (advice.length === 0) {
+        diagTitle.innerText = '🎯 Hướng xử trí lâm sàng:';
+        diagDesc.innerHTML = 'Đạt mục tiêu an thần nông (RASS -2 đến 0) & không bị đau. Tiếp tục ngưng an thần hàng ngày (SAT) đánh giá cai máy.';
+        diagBox.style.borderLeftColor = 'var(--color-primary)';
+      } else {
+        diagTitle.innerText = '⚠️ Khuyến cáo can thiệp ICU:';
+        diagDesc.innerHTML = advice.join('<br/>');
+        diagBox.style.borderLeftColor = 'var(--color-rose, #e11d48)';
+      }
+    }
+
+    function resetAll() {
+      document.getElementById('rass-select').value = '0';
+      document.getElementById('cpot-face').value = '0';
+      document.getElementById('cpot-body').value = '0';
+      document.getElementById('cpot-vent').value = '0';
+      document.getElementById('cpot-tension').value = '0';
+      document.getElementById('cam-f1').checked = false;
+      document.getElementById('cam-f2').checked = false;
+      document.getElementById('cam-f3').checked = false;
+      document.getElementById('cam-f4').checked = false;
+      document.getElementById('weight').value = '60';
+      document.getElementById('drug-select').value = 'propofol';
+      document.getElementById('drug-dose-input').value = '20';
+      calculateICU();
+    }
+
+    document.addEventListener('DOMContentLoaded', calculateICU);
+  </script>
+</body>
+</html>

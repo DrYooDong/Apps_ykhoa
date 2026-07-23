@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CliniPortal – Phân tầng nguy cơ Xuất huyết Tiêu hóa cấp Trên & Dưới (Glasgow-Blatchford, Oakland Score, Gợi ý truyền máu & PPI)" />
+  <title>Xuất huyết Tiêu hóa cấp – CliniPortal</title>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+
+  <script src="../../../js/main.js" defer></script>
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+
+  <style>
+    .assessment-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 0.75rem;
+    }
+
+    .input-column, .results-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .panel {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.15rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .panel-title {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1.5px solid var(--color-divider);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .panel-title-text {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .form-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .input-group label {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    .input-subtext {
+      font-size: 11px;
+      color: var(--color-text-muted);
+      line-height: 1.3;
+    }
+
+    input[type="number"], select {
+      width: 100%;
+      padding: 0.45rem 0.6rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      background-color: var(--color-surface-offset);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-size: var(--text-xs);
+    }
+
+    input[type="number"]:focus, select:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 2px var(--color-primary-hl);
+    }
+
+    .checkbox-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+      cursor: pointer;
+      font-size: var(--text-xs);
+      color: var(--color-text);
+      line-height: 1.4;
+    }
+
+    .checkbox-item input[type="checkbox"] {
+      margin-top: 0.15rem;
+      width: 14px;
+      height: 14px;
+      accent-color: var(--color-primary);
+      flex-shrink: 0;
+    }
+
+    .score-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px dashed var(--color-divider);
+    }
+
+    .score-lbl {
+      font-weight: 600;
+      font-size: var(--text-xs);
+      color: var(--color-text);
+    }
+
+    .score-badge {
+      font-weight: 700;
+      font-size: 11px;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-full);
+      min-width: 65px;
+      text-align: center;
+    }
+
+    .badge-normal { background-color: var(--color-success-hl, #dcfce7); color: var(--color-success, #16a34a); }
+    .badge-warn { background-color: var(--color-amber-hl, #fef3c7); color: var(--color-amber, #d97706); }
+    .badge-severe { background-color: var(--color-rose-hl, #ffe4e6); color: var(--color-rose, #e11d48); }
+
+    .diagnostic-box {
+      background-color: var(--color-surface-2);
+      border-left: 3px solid var(--color-primary);
+      padding: 0.75rem 0.9rem;
+      border-radius: var(--radius-sm);
+      font-size: var(--text-xs);
+      margin-top: 0.6rem;
+      line-height: 1.5;
+    }
+
+    .reset-btn {
+      width: 100%;
+      padding: 0.55rem;
+      background-color: var(--color-surface-offset);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: var(--text-xs);
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: all 0.2s ease;
+    }
+
+    .reset-btn:hover {
+      background-color: var(--color-divider);
+      border-color: var(--color-primary);
+    }
+
+    .tab-segmented {
+      display: inline-flex;
+      background: var(--color-surface-offset);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 3px;
+      gap: 3px;
+      margin-bottom: 0.75rem;
+    }
+
+    .tab-seg-btn {
+      padding: 0.4rem 0.9rem;
+      border: none;
+      border-radius: calc(var(--radius-sm) - 2px);
+      background: transparent;
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-seg-btn.active {
+      background: var(--color-surface);
+      color: var(--color-primary);
+      font-weight: 700;
+      box-shadow: var(--shadow-sm);
+    }
+
+    @media (min-width: 768px) {
+      .assessment-grid { grid-template-columns: 2.2fr 1fr; }
+      .form-grid-3 { grid-template-columns: repeat(3, 1fr); }
+      .checkbox-grid-2 { grid-template-columns: repeat(2, 1fr); }
+      .sticky-card { position: sticky; top: calc(var(--header-height) + 1rem); }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <aside class="app-sidebar" id="appSidebar">
+      <nav class="sidebar-nav">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../cong-cu.html" class="nav-item active" title="Công cụ">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="main-wrapper" id="mainContent">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container" style="margin-bottom: 0.5rem;">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../../../index.html" class="breadcrumb-link">🏠 Home</a></li>
+          <li class="breadcrumb-item"><a href="../cong-cu.html" class="breadcrumb-link">Công cụ lâm sàng</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Xuất huyết Tiêu hóa cấp</li>
+        </ol>
+      </nav>
+
+      <!-- HERO BANNER TINH GỌN -->
+      <section class="hero-dashboard" style="background: linear-gradient(135deg, #b91c1c, #dc2626); color: #fff; padding: 1rem 1.25rem; border-radius: var(--radius-md); margin-bottom: 0.75rem;">
+        <div class="hero-intro">
+          <h1 style="color: #fff; font-size: 1.15rem; margin-bottom: 0.2rem;">🫀 PHÂN TẦNG XUẤT HUYẾT TIÊU HÓA CẤP (UGIB &amp; LGIB)</h1>
+          <p style="opacity: 0.9; font-size: var(--text-xs); margin: 0;">Thang điểm Glasgow-Blatchford (GBS), Oakland Score &amp; Khuyến cáo truyền máu hạn chế ($Hb < 7.0\ g/dL$)</p>
+        </div>
+      </section>
+
+      <!-- SEGMENTED CONTROL TABS -->
+      <div class="tab-segmented">
+        <button id="tab-ugib" class="tab-seg-btn active" onclick="switchLocation('ugib')">
+          <i class="fa-solid fa-stomach"></i> XH Tiêu hóa TRÊN (UGIB)
+        </button>
+        <button id="tab-lgib" class="tab-seg-btn" onclick="switchLocation('lgib')">
+          <i class="fa-solid fa-disease"></i> XH Tiêu hóa DƯỚI (LGIB)
+        </button>
+      </div>
+
+      <div class="assessment-grid">
+        <!-- CỘT TRÁI: FORM NHẬP LIỆU -->
+        <div class="input-column">
+
+          <!-- PANEL BỆNH NHÂN CHUNG -->
+          <div class="panel">
+            <div class="panel-title">
+              <span class="panel-title-text"><i class="fa-solid fa-user-doctor"></i> 生 hiệu &amp; Xét nghiệm Ban đầu</span>
+            </div>
+            <div class="form-grid-3">
+              <div class="input-group">
+                <label for="gender">Giới tính:</label>
+                <select id="gender" onchange="calculateGIB()">
+                  <option value="male">Nam</option>
+                  <option value="female">Nữ</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label for="age">Tuổi:</label>
+                <input type="number" id="age" value="55" min="18" max="110" oninput="calculateGIB()">
+              </div>
+              <div class="input-group">
+                <label for="hb">Hemoglobin (g/dL):</label>
+                <input type="number" id="hb" value="9.5" min="3" max="20" step="0.1" oninput="calculateGIB()">
+              </div>
+              <div class="input-group">
+                <label for="sbp">HA Tâm thu (mmHg):</label>
+                <input type="number" id="sbp" value="105" min="40" max="220" oninput="calculateGIB()">
+              </div>
+              <div class="input-group">
+                <label for="pulse">Mạch (lần/phút):</label>
+                <input type="number" id="pulse" value="95" min="30" max="200" oninput="calculateGIB()">
+              </div>
+              <div class="input-group" id="group-bun">
+                <label for="bun">Ure máu (mmol/L):</label>
+                <input type="number" id="bun" value="8.5" min="1" max="60" step="0.1" oninput="calculateGIB()">
+              </div>
+            </div>
+          </div>
+
+          <!-- PANEL LÂM SÀNG RIÊNG CHO UGIB -->
+          <div class="panel" id="panel-ugib-features">
+            <div class="panel-title">
+              <span class="panel-title-text"><i class="fa-solid fa-notes-medical"></i> Lâm sàng UGIB (Glasgow-Blatchford)</span>
+            </div>
+            <div class="checkbox-grid-2">
+              <label class="checkbox-item">
+                <input type="checkbox" id="ugib-melena" onchange="calculateGIB()">
+                <span><strong>Phân đen (Melena)</strong> (+1)</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" id="ugib-syncope" onchange="calculateGIB()">
+                <span><strong>Ngất (Syncope)</strong> (+2)</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" id="ugib-liver" onchange="calculateGIB()">
+                <span><strong>Bệnh gan mạn tính</strong> (+2)</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" id="ugib-heart" onchange="calculateGIB()">
+                <span><strong>Suy tim</strong> (+2)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- PANEL LÂM SÀNG RIÊNG CHO LGIB -->
+          <div class="panel" id="panel-lgib-features" style="display: none;">
+            <div class="panel-title">
+              <span class="panel-title-text"><i class="fa-solid fa-notes-medical"></i> Lâm sàng LGIB (Oakland Score)</span>
+            </div>
+            <div class="checkbox-grid-2">
+              <label class="checkbox-item">
+                <input type="checkbox" id="lgib-prev-adm" onchange="calculateGIB()">
+                <span>Tiền sử nhập viện XHTH dưới</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" id="lgib-dre-blood" onchange="calculateGIB()">
+                <span>Khám trực tràng (DRE) thấy máu tươi</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- TIỀN SỬ BỆNH MẠCH VÀNH (Cho mục tiêu truyền máu) -->
+          <div class="panel">
+            <div class="panel-title">
+              <span class="panel-title-text"><i class="fa-solid fa-heart-circle-bolt"></i> Yếu tố Tim mạch (Cho Mục tiêu Truyền máu)</span>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="has-cad" onchange="calculateGIB()">
+              <span><strong>Hội chứng vành cấp / Thiếu máu cơ tim tiến triển:</strong> Cần duy trì ngưỡng Hb ≥ 8.0 g/dL</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- CỘT PHẢI: KẾT QUẢ PHÂN TẦNG DOCKING TINH GỌN -->
+        <div class="results-sidebar">
+          <div class="panel sticky-card">
+            <div class="panel-title">
+              <span class="panel-title-text"><i class="fa-solid fa-square-poll-vertical"></i> Kết quả Phân tầng</span>
+            </div>
+
+            <div class="score-row">
+              <span class="score-lbl" id="lbl-score-name">Glasgow-Blatchford (GBS):</span>
+              <span id="score-val-badge" class="score-badge badge-warn">4 / 23</span>
+            </div>
+
+            <div class="score-row">
+              <span class="score-lbl">Phân loại Nguy cơ:</span>
+              <span id="risk-cat-badge" class="score-badge badge-warn">Trung bình</span>
+            </div>
+
+            <div class="score-row">
+              <span class="score-lbl">Truyền máu ($Hb < 7$):</span>
+              <span id="transfusion-badge" class="score-badge badge-normal">Không chỉ định</span>
+            </div>
+
+            <div id="diag-box" class="diagnostic-box">
+              <h4 id="diag-title" style="margin-bottom: 0.2rem; font-weight: 700;">🏥 Chiến lược can thiệp:</h4>
+              <p id="diag-desc" style="margin: 0;">Nhập viện theo dõi, làm Nội soi tiêu hóa trên trong 24 giờ. Khởi động PPI tĩnh mạch.</p>
+            </div>
+
+            <button class="reset-btn" onclick="resetForm()"><i class="fa-solid fa-rotate"></i> Reset Form</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+  <script>
+    let activeMode = 'ugib';
+
+    function switchLocation(mode) {
+      activeMode = mode;
+      document.getElementById('tab-ugib').classList.toggle('active', mode === 'ugib');
+      document.getElementById('tab-lgib').classList.toggle('active', mode === 'lgib');
+
+      document.getElementById('panel-ugib-features').style.display = mode === 'ugib' ? 'block' : 'none';
+      document.getElementById('panel-lgib-features').style.display = mode === 'lgib' ? 'block' : 'none';
+      document.getElementById('group-bun').style.display = mode === 'ugib' ? 'flex' : 'none';
+
+      document.getElementById('lbl-score-name').innerText = mode === 'ugib' ? 'GBS Score:' : 'Oakland Score:';
+      calculateGIB();
+    }
+
+    function calculateGIB() {
+      const gender = document.getElementById('gender').value;
+      const age = parseInt(document.getElementById('age').value) || 50;
+      const hb = parseFloat(document.getElementById('hb').value) || 12;
+      const sbp = parseInt(document.getElementById('sbp').value) || 120;
+      const pulse = parseInt(document.getElementById('pulse').value) || 80;
+      const bun = parseFloat(document.getElementById('bun').value) || 5;
+      const hasCAD = document.getElementById('has-cad').checked;
+
+      let score = 0;
+      let maxScore = 23;
+
+      if (activeMode === 'ugib') {
+        if (bun >= 25) score += 6;
+        else if (bun >= 10) score += 4;
+        else if (bun >= 8) score += 3;
+        else if (bun >= 6.5) score += 2;
+
+        if (gender === 'male') {
+          if (hb < 10) score += 6;
+          else if (hb >= 10 && hb < 12) score += 3;
+          else if (hb >= 12 && hb < 13) score += 1;
+        } else {
+          if (hb < 10) score += 6;
+          else if (hb >= 10 && hb < 12) score += 1;
+        }
+
+        if (sbp < 90) score += 3;
+        else if (sbp >= 90 && sbp <= 99) score += 2;
+        else if (sbp >= 100 && sbp <= 109) score += 1;
+
+        if (pulse >= 100) score += 1;
+        if (document.getElementById('ugib-melena').checked) score += 1;
+        if (document.getElementById('ugib-syncope').checked) score += 2;
+        if (document.getElementById('ugib-liver').checked) score += 2;
+        if (document.getElementById('ugib-heart').checked) score += 2;
+
+        maxScore = 23;
+      } else {
+        if (age >= 70) score += 9;
+        else if (age >= 60) score += 7;
+        else if (age >= 50) score += 4;
+        else if (age >= 40) score += 2;
+
+        if (gender === 'male') score += 1;
+        if (document.getElementById('lgib-prev-adm').checked) score += 1;
+        if (document.getElementById('lgib-dre-blood').checked) score += 5;
+
+        if (pulse >= 110) score += 5;
+        else if (pulse >= 90) score += 3;
+        else if (pulse >= 70) score += 1;
+
+        if (sbp < 90) score += 5;
+        else if (sbp < 120) score += 4;
+        else if (sbp < 130) score += 2;
+
+        if (hb < 7) score += 22;
+        else if (hb < 9) score += 17;
+        else if (hb < 11) score += 13;
+        else if (hb < 13) score += 8;
+        else if (hb < 15) score += 4;
+
+        maxScore = 35;
+      }
+
+      document.getElementById('score-val-badge').innerText = `${score} / ${maxScore}`;
+
+      const riskBadge = document.getElementById('risk-cat-badge');
+      const transBadge = document.getElementById('transfusion-badge');
+      const diagTitle = document.getElementById('diag-title');
+      const diagDesc = document.getElementById('diag-desc');
+      const diagBox = document.getElementById('diag-box');
+
+      const transThreshold = hasCAD ? 8.0 : 7.0;
+      let needTransfusion = hb < transThreshold;
+
+      if (needTransfusion) {
+        transBadge.innerText = `CẦN TRUYỀN MÁU`;
+        transBadge.className = 'score-badge badge-severe';
+      } else {
+        transBadge.innerText = `Chưa chỉ định`;
+        transBadge.className = 'score-badge badge-normal';
+      }
+
+      if (activeMode === 'ugib') {
+        if (score <= 1) {
+          riskBadge.innerText = 'Rất Thấp (0-1)';
+          riskBadge.className = 'score-badge badge-normal';
+          diagTitle.innerText = '🟢 Ngoại trú An toàn:';
+          diagDesc.innerHTML = 'Bệnh nhân có nguy cơ rất thấp. Đủ điều kiện xuất viện an toàn &amp; hẹn soi dạ dày ngoại trú.';
+          diagBox.style.borderLeftColor = 'var(--color-success, #16a34a)';
+        } else if (score >= 6) {
+          riskBadge.innerText = 'CAO (≥ 6)';
+          riskBadge.className = 'score-badge badge-severe';
+          diagTitle.innerText = '🚨 NGUY CƠ CAO - Cấp cứu:';
+          diagDesc.innerHTML = '• Nội soi cấp cứu 12-24h.<br/>• PPI tĩnh mạch: Bolus 80mg Pantoprazole + duy trì 8mg/h (72h).<br/>• Terlipressin 2mg IV/4h hoặc Octreotide nếu nghi vỡ tĩnh mạch thực quản.';
+          diagBox.style.borderLeftColor = 'var(--color-rose, #e11d48)';
+        } else {
+          riskBadge.innerText = 'Trung bình (2-5)';
+          riskBadge.className = 'score-badge badge-warn';
+          diagTitle.innerText = '🟡 Nhập viện Nội soi:';
+          diagDesc.innerHTML = 'Nhập viện theo dõi sinh hiệu, thử lại Hb &amp; làm Nội soi tiêu hóa trên trong 24h.';
+          diagBox.style.borderLeftColor = 'var(--color-amber, #d97706)';
+        }
+      } else {
+        if (score <= 8) {
+          riskBadge.innerText = 'An toàn (≤ 8)';
+          riskBadge.className = 'score-badge badge-normal';
+          diagTitle.innerText = '🟢 Theo dõi Ngoại trú:';
+          diagDesc.innerHTML = 'Xác suất tự cầm cao (≥ 95%). Đủ điều kiện theo dõi ngoại trú &amp; hẹn soi đại tràng chương trình.';
+          diagBox.style.borderLeftColor = 'var(--color-success, #16a34a)';
+        } else {
+          riskBadge.innerText = 'Nguy cơ Cao (> 8)';
+          riskBadge.className = 'score-badge badge-severe';
+          diagTitle.innerText = '🚨 Cần Nhập viện Can thiệp:';
+          diagDesc.innerHTML = 'Nguy cơ cao cần truyền máu/nội soi cầm máu. Nhập viện làm sạch ruột soi đại tràng cấp cứu.';
+          diagBox.style.borderLeftColor = 'var(--color-rose, #e11d48)';
+        }
+      }
+    }
+
+    function resetForm() {
+      document.getElementById('gender').value = 'male';
+      document.getElementById('age').value = '55';
+      document.getElementById('hb').value = '9.5';
+      document.getElementById('sbp').value = '105';
+      document.getElementById('pulse').value = '95';
+      document.getElementById('bun').value = '8.5';
+      document.getElementById('has-cad').checked = false;
+      document.getElementById('ugib-melena').checked = false;
+      document.getElementById('ugib-syncope').checked = false;
+      document.getElementById('ugib-liver').checked = false;
+      document.getElementById('ugib-heart').checked = false;
+      document.getElementById('lgib-prev-adm').checked = false;
+      document.getElementById('lgib-dre-blood').checked = false;
+      calculateGIB();
+    }
+
+    document.addEventListener('DOMContentLoaded', calculateGIB);
+  </script>
+</body>
+</html>

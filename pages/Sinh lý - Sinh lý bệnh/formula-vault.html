@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kho Công Thức Sinh Lý Học & Máy Tính Tương Tác - CliniPortal">
+    <title>Kho Công Thức Sinh Lý Học – CliniPortal</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/components/header.css">
+    <link rel="stylesheet" href="../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../css/components/footer.css">
+
+    <link rel="stylesheet" href="css/physio-shared.css">
+
+    <!-- MathJax -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+
+    <script src="../../components/header.js" defer></script>
+    <script src="../../components/footer.js" defer></script>
+    <script src="../../js/main.js" defer></script>
+    <script src="js/physio-shared.js" defer></script>
+</head>
+
+<body>
+    <div id="header-placeholder" data-header-path="../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="Sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh">
+                            <span class="nav-icon">🧬</span>
+                            <span class="nav-text">Sinh lý & Sinh lý bệnh</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container" style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+                <ol class="breadcrumb-list" style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+                    <li><a href="../../index.html">🏠 Home</a> &gt;</li>
+                    <li><a href="Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+                    <li style="color:var(--color-primary); font-weight:600;">Kho Công thức Sinh lý</li>
+                </ol>
+            </nav>
+
+            <main class="visual-container" style="padding: 2rem;">
+                <div class="chapter-header">
+                    <h1>📐 Kho Công Thức Sinh Lý Học & Máy Tính Tương Tác</h1>
+                    <p>Tổng hợp đầy đủ các định luật vật lý, phương trình sinh lý và công thức tính toán lâm sàng chuẩn hóa, kèm công cụ tính toán tức thì.</p>
+                </div>
+
+                <div class="physio-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+                    <!-- 1. Định luật Fick -->
+                    <div class="formula-card physio-step-card">
+                        <span class="quiz-badge">Hô hấp / Tế bào</span>
+                        <h3 style="color: var(--color-primary); margin-top: 0.5rem;">Định luật Khuếch tán Fick</h3>
+                        <div class="formula-expr">$$J = \frac{D \cdot A \cdot \Delta P}{T}$$</div>
+                        <p class="formula-desc">
+                            <strong>Ý nghĩa:</strong> Tốc độ khuếch tán khí ($J$) tỷ lệ thuận với hệ số khuếch tán ($D$), diện tích màng ($A$) và chênh lệch phân áp ($\Delta P$); tỷ lệ nghịch với độ dày màng ($T$).
+                        </p>
+                    </div>
+
+                    <!-- 2. Nernst Equation -->
+                    <div class="formula-card physio-step-card">
+                        <span class="quiz-badge">Điện sinh lý</span>
+                        <h3 style="color: var(--color-primary); margin-top: 0.5rem;">Phương trình Nernst</h3>
+                        <div class="formula-expr">$$E_{ion} = \frac{61.5}{z} \log_{10} \left( \frac{[Ion]_{out}}{[Ion]_{in}} \right)$$</div>
+                        <p class="formula-desc">
+                            <strong>Ý nghĩa:</strong> Tính điện thế cân bằng (mV) cho một ion đơn lẻ tại nhiệt độ cơ thể $37^\circ\text{C}$ dựa trên tỷ lệ nồng độ hai bên màng.
+                        </p>
+                    </div>
+
+                    <!-- 3. Starling Equation -->
+                    <div class="formula-card physio-step-card">
+                        <span class="quiz-badge">Tim mạch / Thận</span>
+                        <h3 style="color: var(--color-primary); margin-top: 0.5rem;">Phương trình Lực Starling</h3>
+                        <div class="formula-expr">$$J_v = K_f \cdot \left[ (P_c - P_i) - \sigma (\pi_c - \pi_i) \right]$$</div>
+                        <p class="formula-desc">
+                            <strong>Ý nghĩa:</strong> Quyết định dòng dịch lọc ròng qua màng mao mạch dựa trên sự chênh lệch áp suất thủy tĩnh ($P$) và áp suất keo ($\pi$).
+                        </p>
+                    </div>
+
+                    <!-- 4. Henderson-Hasselbalch -->
+                    <div class="formula-card physio-step-card">
+                        <span class="quiz-badge">Toan Kiềm / Thận</span>
+                        <h3 style="color: var(--color-primary); margin-top: 0.5rem;">Phương trình Henderson-Hasselbalch</h3>
+                        <div class="formula-expr">$$\text{pH} = 6.1 + \log_{10} \left( \frac{[\text{HCO}_3^-]}{0.03 \cdot P_{\text{CO}_2}} \right)$$</div>
+                        <p class="formula-desc">
+                            <strong>Ý nghĩa:</strong> Xác định pH máu động mạch dựa trên nồng độ Bicarbonate hạch huyết tương và phân áp $\text{CO}_2$.
+                        </p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div id="footer-placeholder" data-footer-path="../../components/footer.html"></div>
+</body>
+
+</html>

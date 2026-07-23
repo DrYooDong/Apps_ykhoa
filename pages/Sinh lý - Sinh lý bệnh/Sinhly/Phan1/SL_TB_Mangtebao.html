@@ -86,165 +86,68 @@
       </nav>
     </aside>
 
-        <!-- MAIN WRAPPER -->
-        <div class="main-wrapper" id="mainContent">
-            <!-- BREADCRUMB -->
-            <nav aria-label="Breadcrumb" class="breadcrumb-container"
-                style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
-                <ol class="breadcrumb-list"
-                    style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
-                    <li><a href="../../../../index.html">🏠 Home</a> &gt;</li>
-                    <li><a href="../../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
-                    <li style="color:var(--color-primary); font-weight:600;">Chương 1: Sinh lý màng tế bào</li>
-                </ol>
-            </nav>
+    <!-- MAIN WRAPPER -->
+    <div class="main-wrapper" id="mainContent">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container" style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
+        <ol class="breadcrumb-list" style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
+          <li><a href="../../../../index.html">🏠 Home</a> &gt;</li>
+          <li><a href="../../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
+          <li style="color:var(--color-primary); font-weight:600;">Chương 1: Sinh lý màng tế bào</li>
+        </ol>
+      </nav>
 
-            <!-- MAIN CONTAINER -->
-            <main class="visual-container">
-                <!-- CHAPTER HERO CARD -->
-                <div class="chapter-header">
-                    <h1>Sinh lý Màng Tế bào & Vận chuyển chất qua màng</h1>
-                    <p>Hệ thống hóa cấu trúc màng lipid kép, động lực gradient điện hóa, và các cơ chế khuếch tán, thẩm
-                        thấu, vận chuyển chủ động, xuất nhập bào và vận chuyển qua biểu mô.</p>
-                </div>
+      <!-- MAIN CONTAINER -->
+      <main class="visual-container">
+        <!-- CHAPTER HERO CARD -->
+        <div class="chapter-header">
+          <h1>Sinh lý Màng Tế bào & Vận chuyển chất qua màng</h1>
+          <p>Hệ thống hóa cấu trúc màng lipid kép, động lực gradient điện hóa, và các cơ chế khuếch tán, thẩm thấu, vận chuyển chủ động, xuất nhập bào và vận chuyển qua biểu mô.</p>
+        </div>
 
-                <!-- CONTENT LAYOUT -->
-                <div class="physio-content-wrapper"
-                    style="display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 1.5rem;">
+        <p class="physio-lead">
+          Màng tế bào (plasma membrane) là một cấu trúc lipid kép mỏng manh (dày khoảng 5 nm) có khảm các protein, đóng vai trò ngăn cách môi trường nội bào và ngoại bào. Phần lõi kỵ nước của màng là một rào cản hiệu quả đối với hầu hết các chất hòa tan quan trọng. Quá trình trao đổi chất diễn ra nhờ các protein vận chuyển màng (membrane transport proteins).
+        </p>
 
-                    <!-- VÙNG NỘI DUNG CHÍNH -->
-                    <div class="physio-main-article">
+        <div class="physio-content">
+          <h2 id="sec-gradient-dien-hoa" class="section-title">
+            <span>Phần I: Gradient Điện Hóa (Động Lực Vận Chuyển)</span>
+          </h2>
 
-                        <p class="physio-lead">
-                            Màng tế bào (plasma membrane) là một cấu trúc lipid kép mỏng manh (dày khoảng <strong>5
-                                nm</strong>) có khảm các protein, đóng vai trò ngăn cách nghiêm ngặt môi trường nội bào
-                            và ngoại bào. Phần lõi kỵ nước của màng là một rào cản hiệu quả đối với hầu hết các chất hòa
-                            tan quan trọng. Sự sống của tế bào phụ thuộc vào việc trao đổi liên tục nước, ion, chất dinh
-                            dưỡng (glucose, acid amin) và các chất thải sinh học. Quá trình này được thực hiện một cách
-                            chính xác nhờ các <strong>protein vận chuyển màng</strong> (membrane transport proteins),
-                            chiếm tới khoảng <strong>10%</strong> toàn bộ hệ gen người.
-                        </p>
+          <div class="physio-text-block">
+            <p>
+              <strong>Gradient điện hóa (electrochemical gradient)</strong> là lực đẩy ròng quyết định xu hướng và tốc độ di chuyển của một chất hòa tan đi qua màng tế bào. Nó là sự hợp lực của hai thành phần độc lập:
+            </p>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem; list-style-type: square; line-height: 1.6;">
+              <li><strong>Gradient nồng độ (hóa học):</strong> Chênh lệch nồng độ chất hòa tan giữa hai bên màng ($C_{out} - C_{in}$).</li>
+              <li><strong>Gradient điện tích (điện học):</strong> Tác động của lực hút/đẩy tĩnh điện lên các phân tử mang điện (ion) khi đi qua màng có hiệu điện thế ($V_m$).</li>
+            </ul>
 
-                        <!-- PHẦN 1 -->
-                        <h2 id="sec-gradient-dien-hoa" class="section-title">
-                            <span>Phần I: Gradient Điện Hóa (Động Lực Vận Chuyển)</span>
-                        </h2>
+            <!-- MICRO-QUIZ INLINE COMPONENT -->
+            <div class="physio-quiz-block" data-quiz-id="quiz_mang_te_bao_1">
+              <script type="application/json">
+              {
+                "type": "mcq",
+                "question": "Yếu tố nào quyết định ròng chiều chuyển động của một ion qua màng tế bào?",
+                "options": [
+                  "Chỉ phụ thuộc gradient nồng độ ròng",
+                  "Chỉ phụ thuộc hiệu điện thế hai bên màng",
+                  "Sự hợp lực của cả Gradient Nồng độ và Gradient Điện tích (Gradient điện hóa)",
+                  "Tốc độ phân hủy của ATP tại bơm Na+/K+ ATPase"
+                ],
+                "correctIndex": 2,
+                "explanation": "Tốc độ và chiều di chuyển ròng của một ion mang điện tích được quyết định bởi Gradient Điện Hóa - hợp lực giữa độ chênh nồng độ hai bên màng và lực hút/đẩy tĩnh điện do hiệu điện thế màng (Vm) tạo ra."
+              }
+              </script>
+            </div>
 
-                        <div class="physio-text-block">
-                            <p>
-                                <strong>Gradient điện hóa (electrochemical gradient)</strong> là lực đẩy ròng quyết định
-                                xu hướng và tốc độ di chuyển của một chất hòa tan đi qua màng tế bào. Nó là sự hợp lực
-                                của hai thành phần độc lập:
-                            </p>
-                            <ul
-                                style="margin-left: 1.5rem; margin-top: 0.5rem; list-style-type: square; line-height: 1.6;">
-                                <li><strong>Gradient nồng độ (hóa học):</strong> Chênh lệch nồng độ chất hòa tan giữa
-                                    hai bên màng ($C_{out} - C_{in}$).</li>
-                                <li><strong>Gradient điện tích (điện học):</strong> Tác động của lực hút/đẩy tĩnh điện
-                                    lên các phân tử mang điện (ion) khi đi qua màng có hiệu điện thế ($V_m$, thường âm ở
-                                    bên trong tế bào, dao động từ $-60\text{ mV}$ đến $-90\text{ mV}$).</li>
-                            </ul>
-
-                            <!-- HÌNH 1: Electrochemical Gradient -->
-                            <div class="image-placeholder-card" style="margin-top: 1.5rem;">
-                                <div class="image-title">
-                                    <span style="font-size:1.2rem">🖼️</span> Hình 1: Động lực vận chuyển chất qua màng
-                                    (Fig. 1.6 Berne & Levy)
-                                </div>
-                                <div class="image-drop-text">
-                                    <div class="image-drop-area">
-                                        <img src="../../images/Phan1/MangTEbao_Hinh1.png"
-                                            alt="Động lực vận chuyển chất qua màng"
-                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                    </div>
-                                </div>
-                                <div class="image-description">
-                                    <strong>Mô tả chi tiết:</strong> So sánh động lực di chuyển. (A) Glucose phân cực
-                                    nhưng không tích điện, do đó di chuyển thuần túy theo gradient nồng độ vào trong.
-                                    (B) Ion Kali ($K^+$) mang điện dương, chênh lệch nồng độ cao đẩy $K^+$ ra ngoài (lực
-                                    hóa học) nhưng điện thế màng âm bên trong tế bào hút $K^+$ giữ lại (lực điện học).
-                                    Lực hóa học lớn hơn nên động lực ròng vẫn hướng ra ngoài.
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- PHẦN 2 -->
-                        <h2 id="sec-van-chuyen-thu-dong" class="section-title">
-                            <span>Phần II: Vận Chuyển Thụ Động (Passive Transport)</span>
-                        </h2>
-
-                        <div class="physio-text-block">
-                            <p>
-                                Vận chuyển thụ động là sự chuyển dịch của các chất đi theo chiều của gradient điện hóa
-                                hoặc hóa học ròng của chúng. Quá trình này diễn ra hoàn toàn tự nhiên và không tiêu hao
-                                năng lượng hóa học (ATP) của tế bào.
-                            </p>
-
-                            <div class="physio-grid">
-                                <div class="physio-grid-card">
-                                    <div class="physio-grid-title">💨 1. Khuếch tán đơn thuần (Simple Diffusion)</div>
-                                    <p>
-                                        Các chất tan không phân cực, có tính kỵ nước cao (như chất khí $O_2$, $N_2$,
-                                        $CO_2$) và các hormone steroid có thể hòa tan trực tiếp qua lớp màng lipid kép
-                                        để đi qua tế bào. Tốc độ khuếch tán qua màng tuân theo **định luật Fick**:
-                                        $$J = P \cdot A \cdot (C_1 - C_2)$$
-                                        Trong đó $J$ là dòng khuếch tán, $P$ là hệ số thấm, $A$ là diện tích màng, và
-                                        $C_1 - C_2$ là chênh lệch nồng độ.
-                                    </p>
-                                </div>
-                                <div class="physio-grid-card">
-                                    <div class="physio-grid-title">🤝 2. Khuếch tán tạo thuận lợi (Facilitated
-                                        Diffusion)</div>
-                                    <p>
-                                        Áp dụng cho các chất phân cực, tích điện không thể tự do đi qua lõi kỵ nước của
-                                        màng. Chúng đi qua nhờ các protein mang chuyên biệt:
-                                    </p>
-                                    <p style="margin-top:0.3rem; font-size:0.9rem;">
-                                        • <strong>Kênh ion (Ion channels):</strong> Ví dụ kênh rò rỉ $K^+$ hoặc kênh
-                                        cổng điện thế/phối tử.<br>
-                                        • <strong>Protein mang (Carriers/Uniporter):</strong> Thể hiện tính bão hòa,
-                                        cạnh tranh và đặc hiệu cao. Ví dụ tiêu biểu là kênh vận chuyển glucose
-                                        <strong>GLUT-1</strong> (hoặc GLUT-4 nhạy cảm với insulin).
-                                    </p>
-                                </div>
-                            </div>
-
-                            <h3 style="margin-top: 1.5rem; font-size: 1.1rem; color: var(--color-primary);">3. Thẩm thấu
-                                (Osmosis) & Áp suất thẩm thấu</h3>
-                            <p>
-                                Sự dịch chuyển của nước qua màng bán thấm là một quá trình thụ động từ nơi có nồng độ
-                                chất hòa tan thấp (nhiều nước tự do) sang nơi có nồng độ chất hòa tan cao (ít nước tự
-                                do). Các phân tử nước đi qua màng thông qua các kênh nước đặc hiệu gọi là **Aquaporin
-                                (AQP)**.
-                            </p>
-
-                            <!-- HÌNH 2: Osmosis -->
-                            <div class="image-placeholder-card" style="margin-top: 1.5rem;">
-                                <div class="image-title">
-                                    <span style="font-size:1.2rem">🖼️</span> Hình 2: Cơ chế thẩm thấu và sự phát sinh
-                                    áp suất thẩm thấu (Fig. 1.8 Berne & Levy)
-                                </div>
-                                <div class="image-drop-text">
-                                    <div class="image-drop-area">
-                                        <img src="../../images/Phan1/MangTEbao_Hinh2.png" alt="Cơ chế thẩm thấu và sự
-                                            phát sinh áp suất thẩm thấu"
-                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                    </div>
-                                </div>
-                                <div class="image-description">
-                                    <strong>Mô tả chi tiết:</strong> Ngăn A chứa các hạt chất tan không qua được màng
-                                    bán thấm, ngăn B chứa nước tinh khiết. Nước di chuyển từ B sang A theo gradient thẩm
-                                    thấu. Tại điểm cân bằng, áp suất thủy tĩnh của cột nước chênh lệch $h$ sẽ ngăn chặn
-                                    dòng nước thuần ròng tiếp tục chảy qua và có độ lớn bằng với áp suất thẩm thấu do
-                                    dung dịch trong ngăn A tạo ra.
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- PHẦN 3 -->
-                        <h2 id="sec-van-chuyen-chu-dong" class="section-title">
-                            <span>Phần III: Vận Chuyển Chủ Động (Active Transport)</span>
-                        </h2>
+            <!-- PHYSIO-PATHO MIRROR TRIGGER BUTTON -->
+            <div style="margin: 1.5rem 0;">
+              <button class="physio-step-card" style="width:100%; cursor:pointer; text-align:left; border-left: 4px solid var(--color-purple, #8b5cf6);" data-mirror-target="../../SLB_CCBS/SLB_CCBS_AKI.html" data-mirror-title="Cơ chế Bệnh lý: Rối loạn Màng Tế bào & Hoại tử Ống thận Cấp (AKI)">
+                <strong style="color: var(--color-purple, #8b5cf6);">🔄 Physio-Patho Mirror:</strong> Xem cơ chế tổn thương màng tế bào trong Hoại tử ống thận cấp (AKI) &rarr;
+              </button>
+            </div>
+          </div>
 
                         <div class="physio-text-block">
                             <p>

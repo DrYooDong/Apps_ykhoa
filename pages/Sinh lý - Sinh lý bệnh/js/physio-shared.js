@@ -6,7 +6,34 @@
 document.addEventListener('DOMContentLoaded', () => {
   initImageLazyLoading();
   initImageLightbox();
+  loadPhysioSubModules();
 });
+
+/**
+ * Auto-load Physiology Sub-Modules if not present
+ */
+function loadPhysioSubModules() {
+  const currentScript = document.currentScript || document.querySelector('script[src*="physio-shared.js"]');
+  if (!currentScript) return;
+  const basePath = currentScript.src.substring(0, currentScript.src.lastIndexOf('/') + 1);
+
+  const modules = [
+    'physio-quiz-engine.js',
+    'physio-progress.js',
+    'physio-mirror.js',
+    'physio-clinical-bridge.js',
+    'physio-glossary.js'
+  ];
+
+  modules.forEach(modName => {
+    if (!document.querySelector(`script[src*="${modName}"]`)) {
+      const script = document.createElement('script');
+      script.src = basePath + modName;
+      script.defer = true;
+      document.head.appendChild(script);
+    }
+  });
+}
 
 /**
  * 1. Image Lazy Loading with Smooth Transition

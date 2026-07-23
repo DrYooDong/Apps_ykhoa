@@ -497,6 +497,7 @@
         <h3><span class="section-icon">🔀</span> Kinh mạch: ${meridian.name_short}</h3>
         <p>${meridian.description}</p>
         <p style="margin-top:0.3rem"><strong>Ngũ hành:</strong> ${meridian.element} &nbsp;|&nbsp; <strong>Tạng phủ:</strong> ${meridian.organ}</p>
+        <p style="margin-top:0.3rem; color:var(--color-tcm-green); font-weight:600;"><strong>Cặp Kinh Biểu - Lý:</strong> ${meridian.coupled_meridian || 'Kỳ Kinh'}</p>
         <p><strong>Tổng số huyệt:</strong> ${meridian.totalPoints}</p>
       </div>` : ''}
     `;
