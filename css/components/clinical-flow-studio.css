@@ -1,0 +1,446 @@
+/* ════════════════════════════════════════════════════════════════════════════
+ *  CLINICAL FLOWCHART STUDIO & MEDICAL DRAW ENGINE STYLES (APPS_YKHOA)
+ *  Giao diện Studio trực quan & Bố cục lưu đồ y khoa vector
+ * ════════════════════════════════════════════════════════════════════════════ */
+
+:root {
+    --med-bg-canvas: #f8fafc;
+    --med-grid-color: #e2e8f0;
+    --med-node-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.08), 0 2px 4px -1px rgba(15, 23, 42, 0.04);
+    --med-node-hover-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.12), 0 8px 10px -6px rgba(15, 23, 42, 0.08);
+}
+
+/* Dark mode compatibility */
+.dark-mode {
+    --med-bg-canvas: #0f172a;
+    --med-grid-color: #1e293b;
+    --med-node-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.4);
+    --med-node-hover-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6);
+}
+
+/* Layout Studio Main Grid */
+.med-studio-container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 70px);
+    background: #f1f5f9;
+    overflow: hidden;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Studio Toolbar */
+.med-studio-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    z-index: 20;
+}
+
+.med-toolbar-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.med-btn-tool {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    color: #334155;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.med-btn-tool:hover {
+    background: #f8fafc;
+    border-color: #0284c7;
+    color: #0284c7;
+}
+
+.med-btn-tool.primary {
+    background: #0284c7;
+    border-color: #0284c7;
+    color: #ffffff;
+}
+
+.med-btn-tool.primary:hover {
+    background: #0369a1;
+}
+
+.med-btn-tool.danger {
+    background: #ef4444;
+    border-color: #ef4444;
+    color: #ffffff;
+}
+
+.med-btn-tool.danger:hover {
+    background: #dc2626;
+}
+
+.med-studio-workspace {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Left Palette Sidebar */
+.med-palette-sidebar {
+    width: 240px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.med-sidebar-title {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #64748b;
+    margin-bottom: 4px;
+}
+
+.med-palette-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.med-palette-item:hover {
+    border-color: #38bdf8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.med-palette-badge {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.med-palette-badge.start { background: #0ea5e9; }
+.med-palette-badge.question { background: #f59e0b; }
+.med-palette-badge.action { background: #10b981; }
+.med-palette-badge.danger { background: #ef4444; }
+.med-palette-badge.success { background: #06b6d4; }
+.med-palette-badge.dose { background: #8b5cf6; }
+
+/* Canvas Viewport */
+.med-draw-viewport {
+    flex: 1;
+    position: relative;
+    background-color: var(--med-bg-canvas);
+    background-image: radial-gradient(var(--med-grid-color) 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+    overflow: hidden;
+    cursor: grab;
+}
+
+.med-draw-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: 0 0;
+    will-change: transform;
+}
+
+.med-draw-svg-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2500px;
+    height: 2000px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.med-draw-svg-layer path,
+.med-draw-svg-layer g {
+    pointer-events: visiblePainted;
+}
+
+.med-draw-nodes-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2500px;
+    height: 2000px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.med-node {
+    position: absolute;
+    pointer-events: auto;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 2px solid #cbd5e1;
+    padding: 12px 16px;
+    box-shadow: var(--med-node-shadow);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+    cursor: pointer;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+.med-node:hover {
+    box-shadow: var(--med-node-hover-shadow);
+    transform: translateY(-2px);
+}
+
+.med-node.selected {
+    border-color: #0284c7 !important;
+    box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.25) !important;
+}
+
+.med-node.active-path-node {
+    border-color: #0284c7 !important;
+    box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.3) !important;
+    animation: medPulsePath 2s infinite ease-in-out;
+}
+
+@keyframes medPulsePath {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.3); }
+    50% { box-shadow: 0 0 0 8px rgba(2, 132, 199, 0.15); }
+}
+
+/* Node Types Styling */
+.med-node-start {
+    border-color: #0284c7;
+    background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+}
+.med-node-start .med-node-title { color: #0369a1; }
+
+.med-node-question {
+    border-color: #f59e0b;
+    background: linear-gradient(135deg, #fffbeb 0%, #ffffff 100%);
+    border-radius: 16px;
+}
+.med-node-question .med-node-title { color: #b45309; }
+
+.med-node-action {
+    border-color: #10b981;
+    background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 100%);
+}
+.med-node-action .med-node-title { color: #047857; }
+
+.med-node-danger {
+    border-color: #ef4444;
+    background: linear-gradient(135deg, #fef2f2 0%, #ffffff 100%);
+}
+.med-node-danger .med-node-title { color: #b91c1c; font-weight: 700; }
+
+.med-node-success {
+    border-color: #06b6d4;
+    background: linear-gradient(135deg, #ecfeff 0%, #ffffff 100%);
+}
+.med-node-success .med-node-title { color: #0e7490; }
+
+.med-node-dose {
+    border-color: #8b5cf6;
+    background: linear-gradient(135deg, #f5f3ff 0%, #ffffff 100%);
+}
+.med-node-dose .med-node-title { color: #6d28d9; }
+
+.med-node-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.med-node-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1e293b;
+    line-height: 1.3;
+}
+
+.med-node-subtitle {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 4px;
+    line-height: 1.4;
+}
+
+.med-node-badge {
+    position: absolute;
+    top: -10px;
+    right: 12px;
+    background: #334155;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+.med-node-details {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px stroke #e2e8f0;
+    font-size: 12px;
+    color: #475569;
+    max-height: 120px;
+    overflow-y: auto;
+    line-height: 1.4;
+}
+
+/* SVG Edges */
+.med-edge-line {
+    stroke: #64748b;
+    stroke-width: 2.5px;
+    fill: none;
+    transition: stroke 0.2s ease, stroke-width 0.2s ease;
+    cursor: pointer;
+}
+
+.med-edge-line:hover {
+    stroke: #0284c7;
+    stroke-width: 4px;
+}
+
+.med-edge-line.danger { stroke: #ef4444; }
+.med-edge-line.success { stroke: #10b981; }
+
+.med-edge-line.active-line {
+    stroke: #0284c7;
+    stroke-width: 4px;
+    stroke-dasharray: 8;
+    animation: medDashFlow 1s infinite linear;
+}
+
+@keyframes medDashFlow {
+    to { stroke-dashoffset: -16; }
+}
+
+.med-edge-line.selected {
+    stroke: #0284c7;
+    stroke-width: 4px;
+}
+
+/* Edge Connector Labels */
+.med-edge-label-group {
+    cursor: pointer;
+}
+
+.med-edge-label-bg {
+    fill: #ffffff;
+    stroke: #cbd5e1;
+    stroke-width: 1px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
+    transition: all 0.2s ease;
+}
+
+.med-edge-label-group:hover .med-edge-label-bg {
+    stroke: #0284c7;
+    fill: #f0f9ff;
+}
+
+.med-edge-label-group.active-path .med-edge-label-bg {
+    fill: #0284c7;
+    stroke: #0284c7;
+}
+
+.med-edge-label-group.active-path .med-edge-label-text {
+    fill: #ffffff;
+}
+
+.med-edge-label-text {
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 700;
+    fill: #334155;
+    user-select: none;
+}
+
+/* Right Property Inspector Sidebar */
+.med-property-sidebar {
+    width: 280px;
+    background: #ffffff;
+    border-left: 1px solid #e2e8f0;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.med-prop-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.med-prop-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #475569;
+}
+
+.med-prop-input,
+.med-prop-select,
+.med-prop-textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    font-size: 13px;
+    color: #1e293b;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.med-prop-input:focus,
+.med-prop-select:focus,
+.med-prop-textarea:focus {
+    border-color: #0284c7;
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.med-prop-textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* Floating Controls Overlay (Zoom buttons, etc.) */
+.med-floating-controls {
+    position: absolute;
+    bottom: 20px;
+    right: 310px;
+    display: flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+    padding: 6px;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    z-index: 15;
+}

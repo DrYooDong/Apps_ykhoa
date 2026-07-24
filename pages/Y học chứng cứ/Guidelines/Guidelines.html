@@ -26,6 +26,9 @@
     <div class="topnav-divider"></div>
     <div class="topnav-title">📊 Hướng Dẫn & Nghiên Cứu Lâm Sàng</div>
     <div class="topnav-right">
+      <a href="../Guideline Radar/radar.html" class="btn" style="padding: 0.35rem 0.65rem; display: flex; align-items: center; gap: 6px; border-radius: 8px; border: 1.5px solid #10b981; background: #ecfdf5; color: #047857; text-decoration: none; font-size: 0.72rem; font-weight: 700;" title="Trạm theo dõi và đối chiếu thay đổi khuyến cáo lâm sàng">
+        📡 Guideline Radar (Diff)
+      </a>
       <!-- Supabase Connection Indicator & Sync -->
       <button class="btn" id="supabase-status-btn" onclick="openSupabaseModal()" style="padding: 0.35rem 0.65rem; display: flex; align-items: center; gap: 6px; border-radius: 8px; border: 1.5px solid var(--border-light); cursor: pointer;">
         <span id="supabase-status-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #94a3b8; display: inline-block;"></span>
@@ -49,6 +52,9 @@
           <span>⭐ Đã lưu trữ</span>
           <span class="left-nav-link-badge" id="saved-count-sidebar">0</span>
         </button>
+        <a href="../Guideline Radar/radar.html" class="left-nav-link" style="text-decoration:none; color:inherit;">
+          <span>📡 Guideline Radar</span>
+        </a>
         <button class="left-nav-link" onclick="openAddModal()">
           <span>➕ Thêm tài liệu</span>
         </button>
@@ -61,6 +67,10 @@
         <div class="left-nav-label">Lọc nhanh chuyên khoa</div>
         <div id="spec-filter-list"></div>
         <div style="margin-top:0.5rem;padding-top:0.5rem;border-top:1px solid var(--border-light);">
+          <button class="left-nav-link" id="sidebar-btn-summary" onclick="filterByHasSummary()">
+            <span>📝 Có bài Tóm tắt</span>
+            <span class="left-nav-link-badge" id="summary-count-sidebar">0</span>
+          </button>
           <button class="left-nav-link" id="sidebar-btn-subgroup" onclick="filterBySubgroupData()">
             <span>🧬 Có dữ liệu Subgroup</span>
             <span class="left-nav-link-badge" id="subgroup-count-sidebar">0</span>
@@ -123,8 +133,8 @@
             </div>
             
             <div class="segmented-control">
-              <button class="segment-btn active" id="view-mode-full" onclick="setViewMode('full')">Full View</button>
-              <button class="segment-btn" id="view-mode-compact" onclick="setViewMode('compact')">Compact</button>
+              <button class="segment-btn" id="view-mode-full" onclick="setViewMode('full')">Full View</button>
+              <button class="segment-btn active" id="view-mode-compact" onclick="setViewMode('compact')">Compact</button>
             </div>
 
             <!-- Column dropdown -->
@@ -146,6 +156,10 @@
                 <label class="dropdown-item"><input type="checkbox" checked data-column="population" onchange="toggleColumnVisibility('population', this.checked)"> Đối tượng</label>
               </div>
             </div>
+
+            <button class="btn" id="filter-summary-btn" onclick="toggleHasSummaryFilter()" title="Lọc các nghiên cứu/hướng dẫn có bài tóm tắt chi tiết">
+              📝 Có Tóm tắt
+            </button>
 
             <button class="btn" id="advanced-filters-btn" onclick="toggleAdvancedFilters()">
               ⚙️ Lọc nâng cao
@@ -252,11 +266,21 @@
               <h3>Bảng đối chiếu hướng dẫn & nghiên cứu lâm sàng</h3>
               <p>Đang so sánh <span id="compare-selected-count">0</span> tài liệu được chọn</p>
             </div>
-            <button class="btn" onclick="clearComparison()">❌ Xóa tất cả so sánh</button>
+            <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+              <div class="segmented-control">
+                <button class="segment-btn active" id="compare-mode-grid-btn" onclick="setCompareMode('grid')">📋 Bảng Chi Tiết</button>
+                <button class="segment-btn" id="compare-mode-matrix-btn" onclick="setCompareMode('matrix')">📊 Ma Trận Chứng Cứ (Heatmap)</button>
+              </div>
+              <button class="btn" onclick="clearComparison()">❌ Xóa tất cả so sánh</button>
+            </div>
           </div>
           
           <div class="compare-grid" id="compare-grid-container">
             <!-- Dynamic comparison cards -->
+          </div>
+
+          <div class="compare-matrix-wrapper" id="compare-matrix-container" style="display: none;">
+            <!-- Dynamic Heatmap Matrix -->
           </div>
           
           <div class="empty-state" id="compare-empty-state">
@@ -347,6 +371,7 @@
                 <option value="rheum">Cơ xương khớp (Rheumatology)</option>
                 <option value="hema">Huyết học (Hematology)</option>
                 <option value="onco">Ung thư (Oncology)</option>
+                <option value="icu">Hồi sức cấp cứu (HSCC / ICU)</option>
               </select>
             </div>
             <div class="form-group">
@@ -508,6 +533,11 @@ create table clinical_guidelines (
   file text,
   "asianData" boolean,
   bookmarked boolean,
+  "matrixEndpoints" jsonb,
+  "decisionTree" jsonb,
+  "pocketCard" jsonb,
+  "citation" jsonb,
+  "radarUrl" text,
   "createdAt" timestamp with time zone default timezone('utc'::text, now())
 );</pre>
           </details>
@@ -551,31 +581,28 @@ create table clinical_guidelines (
 
         <!-- Way 2: Textarea copy-paste -->
         <div class="form-group">
-          <label for="json-text" style="font-weight: 700; margin-bottom: 0.5rem; display: block;">Cách 2: Dán mã JSON trực tiếp</label>
-          <textarea id="json-text" rows="8" placeholder='Ví dụ:
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <label for="json-text" style="font-weight: 700; display: block; margin: 0;">Cách 2: Dán mã JSON trực tiếp</label>
+            <button type="button" class="btn btn-small" onclick="fillSampleJSON()" style="font-size: 0.72rem; padding: 2px 8px; color: var(--accent); border-color: var(--accent-mid);">📋 Dán Mẫu JSON Chuẩn</button>
+          </div>
+          <div style="font-size: 0.72rem; color: var(--text-muted); background: var(--surface-2); padding: 6px 10px; border-radius: 6px; margin-bottom: 8px; border: 1px solid var(--border-light);">
+            💡 <strong>Hệ thống tự động vẽ Forest plot mini</strong> khi nhận chuỗi có chỉ số <code>OR</code>, <code>RR</code>, <code>HR</code>, <code>aOR</code>, <code>aHR</code>, <code>p-value</code> (ví dụ: <code>OR 0.75 (95% CI 0.65-0.86, p=0.002)</code>) hoặc JSON object subgroup.
+          </div>
+          <textarea id="json-text" rows="8" placeholder='Ví dụ dán mảng các đối tượng nghiên cứu JSON:
 [
   {
     "title": "EMPA-REG OUTCOME",
-    "author": "Zinman B et al.",
     "drug": "Empagliflozin",
     "sourceType": "intl-study",
     "specialty": "cardio",
     "design": "rct",
-    "intervention": "Empagliflozin 10/25mg QD vs Placebo",
-    "primaryEndpoint": "3-point MACE",
-    "keyResults": "HR 0.86 (95% CI 0.74-0.99); p=0.04",
-    "impact": "practice-changing",
+    "keyResults": "HR 0.86 (95% CI 0.74-0.99, p=0.04)",
     "year": 2015,
-    "organization": "NEJM / Boehringer Ingelheim",
-    "phase": "Phase III",
-    "sampleSize": 7020,
-    "population": "Bệnh nhân đái tháo đường typ 2...",
     "summary": "Mô tả tóm tắt...",
-    "detailedConclusion": "",
-    "fdaStatus": "Approved 2016",
-    "sourceUrl": "",
-    "file": "",
-    "asianData": true
+    "subgroups": {
+      "Châu Á": "HR 0.82 (95% CI 0.64-1.04, p=0.10)",
+      "Suy tim": "HR 0.65 (95% CI 0.50-0.85, p<0.001)"
+    }
   }
 ]' style="font-family: monospace; font-size: 0.78rem;"></textarea>
         </div>
@@ -588,6 +615,57 @@ create table clinical_guidelines (
     </div>
   </div>
 
+  <!-- POCKET CHEAT-SHEET MODAL -->
+  <div class="modal-overlay" id="pocket-modal">
+    <div class="modal" style="max-width: 650px;">
+      <div class="modal-header">
+        <h3 id="pocket-modal-title">⚡ Pocket Cheat-Sheet Tra Cứu Nhanh</h3>
+        <button class="modal-close" onclick="closePocketModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="pocket-modal-body">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- CITATION GENERATOR MODAL -->
+  <div class="modal-overlay" id="citation-modal">
+    <div class="modal" style="max-width: 620px;">
+      <div class="modal-header">
+        <h3>⚡ Trích Dẫn Y Khoa Chuẩn & Bệnh Án</h3>
+        <button class="modal-close" onclick="closeCitationModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="citation-modal-body">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE DECISION TREE MODAL -->
+  <div class="modal-overlay" id="decision-modal">
+    <div class="modal" style="max-width: 720px;">
+      <div class="modal-header">
+        <h3 id="decision-modal-title">🧩 Thuật Toán Động Cho Guideline</h3>
+        <button class="modal-close" onclick="closeDecisionModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="decision-modal-body">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+  <!-- SUBGROUP ANALYSIS MODAL -->
+  <div class="modal-overlay" id="subgroup-modal">
+    <div class="modal" style="max-width: 860px; width: 92%;">
+      <div class="modal-header">
+        <h3 id="subgroup-modal-title">🧬 Phân Tích Subgroup Lâm Sàng</h3>
+        <button class="modal-close" onclick="closeSubgroupModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="subgroup-modal-body" style="padding-top: 0.5rem;">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+  </div>
+
+  <script src="../../../js/cliniportal-sync.js"></script>
   <script src="GuidelinesData.js"></script>
   <script src="Guidelines.js"></script>
 </body>

@@ -73,6 +73,7 @@
 | File | Vai trò | Dùng cho |
 |------|---------|---------|
 | `main.js` | Theme switching, sidebar toggle, keyboard shortcuts | Mọi trang |
+| `cliniportal-sync.js` | Engine đồng bộ thời gian thực 4 module y khoa & kho Guidelines EBM | Xuyên phân hệ |
 | `flowchart.js` | switchPane, toggleNode, R-Ratio calculator | `pages/Tiếp cận/**` |
 | `approach-symptom.js` | Tự động tạo mục lục & ScrollSpy triệu chứng | `pages/Tiếp cận/2. Triệu chứng/**` |
 | `approach-hub.js` | Search + filter lưu đồ | `tiep-can.html` |
@@ -329,8 +330,10 @@
 | `Y học chứng cứ/EBM Lab/funnel-plot.js` | Động cơ SVG Funnel Plot renderer, tính hiệu quả gộp Pooled Effect & phân tích tính đối xứng phễu |
 | `Y học chứng cứ/Guidelines/Guidelines.html` | Tra cứu guidelines |
 | `Y học chứng cứ/Guidelines/README.md` | Hướng dẫn sử dụng phân hệ Guidelines |
-| `Y học chứng cứ/Guidelines/Kho Guidelines/ks-cho-bn-nang.html` | Kháng sinh cho bệnh nhân nặng — Tổng quan Critical Care Clinics 2026 (Standalone) |
+| `Y học chứng cứ/Guidelines/Kho Guidelines/index.html` | **[MỚI]** Mục lục tổng hợp thư mục Kho Guidelines & Bộ lọc tìm kiếm tài liệu HTML |
+| `Y học chứng cứ/Guidelines/Kho Guidelines/apasl-vgsvb-2026.html` | **[MỚI]** APASL 2026 CPGs — Hướng dẫn điều trị Viêm gan B mạn tính & so sánh BYT (Standalone) |
 | `Y học chứng cứ/Guidelines/Kho Guidelines/byt-copd-2026.html` | Hướng dẫn chẩn đoán và điều trị bệnh phổi tắc nghẽn mạn tính (COPD) Bộ Y tế 2026 (Standalone) |
+| `Y học chứng cứ/Guidelines/Kho Guidelines/ks-cho-bn-nang.html` | Kháng sinh cho bệnh nhân nặng — Tổng quan Critical Care Clinics 2026 (Standalone) |
 | `Y học chứng cứ/Guidelines/Kho Guidelines/empa-reg.html` | EMPA-REG OUTCOME — Empagliflozin tim mạch (Standalone) |
 | `Y học chứng cứ/Thống kê y học/Thongkeyhoc.html` | Thống kê y học (Hub chính 8 bài học) |
 | `Y học chứng cứ/Thống kê y học/quiz.html` | **[MỚI]** EBM Quiz Engine & Spaced Repetition (Thuật toán SM-2, Flashcard 3D & 16+ câu hỏi lâm sàng) |

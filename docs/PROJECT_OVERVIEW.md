@@ -18,6 +18,7 @@ Apps_ykhoa/                  ← Root thư mục dự án
 │   └── components/          ← CSS theo từng module (20+ files)
 ├── js/                      ← JavaScript logic
 │   ├── main.js              ← App controller (theme, sidebar, shortcuts)
+│   ├── cliniportal-sync.js  ← Engine đồng bộ 4 module & Guidelines EBM realtime
 │   ├── [module].js          ← JS theo từng module
 │   └── calculators/         ← JS cho bộ tính toán lâm sàng
 ├── templates/               ← 4 file HTML boilerplate mẫu

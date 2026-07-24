@@ -1,49 +1,39 @@
 ---
 name: flowchart-module
 description: >
-  Tạo và chỉnh sửa lưu đồ tiếp cận lâm sàng tương tác (Interactive Flowcharts) trong
-  phân hệ Tiếp cận của CliniPortal. Kích hoạt khi AI cần: tạo lưu đồ thuật toán chẩn đoán,
-  phác đồ xử trí cấp cứu, hoặc bất kỳ trang nào trong pages/Tiếp cận/.
+  Tạo, chỉnh sửa và vẽ lưu đồ tiếp cận lâm sàng tương tác (Interactive Clinical Flowcharts & Vector Studio)
+  trong phân hệ Tiếp cận của CliniPortal. Kích hoạt khi AI cần: tạo lưu đồ thuật toán chẩn đoán,
+  phác đồ xử trí cấp cứu, vẽ đường nối mũi tên vector, hoặc chỉnh sửa bất kỳ lưu đồ y khoa nào.
 ---
 
-# Flowchart Module Skill
+# Clinical Flowchart & Medical Draw Engine Skill
 
-## 📁 Cấu trúc Phân hệ
-
-```
-pages/Tiếp cận/
-├── tiep-can.html                         # Hub tổng (search + filter)
-├── HUONG_DAN_THIET_KE.md                 # Design guide chi tiết
-├── 1. Cấp cứu & Hồi sức chấn thương/
-│   ├── Cấp cứu Môi trường & Độc chất/
-│   ├── Cấp cứu Ngoại khoa & Chấn thương/
-│   ├── Cấp cứu Sản - Nhi/
-│   └── Hồi sức cơ bản & nâng cao/
-├── 2. Tiếp cận chẩn đoán từ triệu chứng lâm sàng/
-│   ├── Than phiền Hô hấp - Tim mạch/
-│   ├── Than phiền Thần kinh - Cơ xương khớp/
-│   ├── Than phiền Thận niệu - Sinh dục/
-│   ├── Than phiền Tiêu hóa - Bụng/
-│   └── Than phiền Toàn thân/
-├── 3. Quản lý bệnh lý mạn tính & hệ thống/
-│   ├── Chuyển hóa & Nội tiết/
-│   ├── Huyết học & Truyền nhiễm/
-│   ├── Sức khỏe Hành vi & Tâm thần/
-│   ├── Tim mạch & Thận/
-│   └── Tiêu hóa - Ngoại khoa/
-├── 4. Chăm sóc đặc biệt Sản Phụ khoa & Nhi khoa/
-└── 5. Y học dự phòng & Kỹ năng nền tảng/
-```
-
-## 📐 Đường dẫn Tương đối
-
-- File ở **gốc Tiếp cận** (cấp 2): prefix `../../`
-- File trong **thư mục con** (cấp 3): prefix `../../../`
-- File trong **thư mục con sâu hơn** (cấp 4): prefix `../../../../`
+Skill này quy định chuẩn kiến trúc, quy tắc bố cục (Layout & Edge Routing Rules), dữ liệu JSON Schema và quy trình tạo/chỉnh sửa lưu đồ y khoa trong `Apps_ykhoa`.
 
 ---
 
-## ⚡ CSS & JS Bắt buộc
+## 📁 Cấu trúc Hệ thống Lưu đồ Y khoa
+
+```
+Apps_ykhoa/
+├── js/
+│   ├── flowchart.js                      # DOM Accordion Flowchart Controller
+│   └── medical-draw-engine.js            # Vector SVG Edge Routing Engine & Canvas Builder
+├── css/components/
+│   ├── flowchart.css                     # Flowchart Card & DOM Node Styles
+│   └── clinical-flow-studio.css          # Studio Studio Workspace & Node Palette Styles
+├── pages/
+│   ├── clinical-flow-studio.html         # Visual Interactive Studio thiết kế lưu đồ
+│   └── Tiếp cận/                         # Thư viện lưu đồ phân loại theo chuyên khoa
+└── docs/
+    └── HUONG_DAN_THIET_KE_VA_VE_LUU_DO_YKHOA.md # Tài liệu hướng dẫn chi tiết
+```
+
+---
+
+## ⚡ Các Công nghệ & Script Bắt buộc
+
+Khi tạo một trang lưu đồ y khoa mới, bắt buộc nhúng các tài nguyên sau:
 
 ```html
 <!-- CSS -->
@@ -52,131 +42,107 @@ pages/Tiếp cận/
 <link rel="stylesheet" href="../../../css/components/header.css">
 <link rel="stylesheet" href="../../../css/components/sidebar.css">
 <link rel="stylesheet" href="../../../css/components/footer.css">
-<link rel="stylesheet" href="../../../css/components/flowchart.css">  <!-- BẮT BUỘC -->
+<link rel="stylesheet" href="../../../css/components/clinical-flow-studio.css"> <!-- BẮT BUỘC NẾU DÙNG VECTOR -->
 
 <!-- JS -->
 <script src="../../../js/main.js" defer></script>
-<script src="../../../components/header.js" defer></script>
-<script src="../../../components/footer.js" defer></script>
-<script src="../../../js/flowchart.js"></script>  <!-- Load KHÔNG defer để init ngay -->
+<script src="../../../js/medical-draw-engine.js"></script> <!-- Vector SVG Drawing Engine -->
+<script src="../../../js/flowchart.js"></script>          <!-- DOM Accordion Flowchart -->
 ```
 
 ---
 
-## 🔧 JavaScript API — flowchart.js
+## 🎨 Quy chuẩn Phân loại Node Y khoa (Node Types & Colors)
 
-### `switchPane(paneName)`
-Chuyển đổi giữa các sơ đồ con (pane). Ví dụ: từ "Chẩn đoán" sang "Xử trí".
-```html
-<button onclick="switchPane('chan-doan')">Chẩn đoán</button>
-<button onclick="switchPane('xu-tri')">Xử trí</button>
+| Loại Node | Tên chuyên môn | Màu sắc / CSS Class | Ý nghĩa Lâm sàng |
+| :--- | :--- | :--- | :--- |
+| `start` | Bệnh cảnh ban đầu | `med-node-start` (Xanh dương) | Tình huống tiếp cận ban đầu (Triệu chứng chính, Lý do vào viện). |
+| `question` | Câu hỏi phân nhánh | `med-node-question` (Cam/Vàng) | Điểm rẽ nhánh chẩn đoán (Có/Không, Tiêu chuẩn chẩn đoán). |
+| `action` | Can thiệp / Xử trí | `med-node-action` (Xanh lá) | Y lệnh điều trị, thủ thuật, cấp đơn thuốc. |
+| `danger` | Cảnh báo Cấp cứu | `med-node-danger` (Đỏ) | Tình trạng nguy kịch, dọa tử vong, cần hồi sức ngay. |
+| `success` | Tiên lượng tốt | `med-node-success` (Xanh ngọc) | Bệnh nhân ổn định, cho xuất viện hoặc chuyển phòng bệnh. |
+| `dose` | Cảnh báo Liều thuốc | `med-node-dose` (Tím) | Cảnh báo liều dùng, chống chỉ định, độc tính của thuốc. |
 
-<div class="flow-pane" id="chan-doan">...</div>
-<div class="flow-pane" id="xu-tri" style="display:none">...</div>
-```
+---
 
-### `toggleNode(nodeId)`
-Mở/đóng bảng thông tin chi tiết của node.
-```html
-<div class="fnode" onclick="toggleNode('node-1')">
-  <span class="fnode-title">Tiêu đề Node</span>
-  <i class="fa fa-chevron-down fnode-arrow"></i>
-</div>
-<div class="fnode-details" id="node-1">
-  <!-- Nội dung chi tiết -->
-</div>
+## 📐 Quy tắc Bố cục & Định tuyến Mũi tên (Edge Routing Rules)
+
+Khi AI sinh hoặc vẽ lưu đồ y khoa (qua JSON Schema hoặc SVG), bắt buộc tuân thủ 6 quy tắc sau (học tập từ `next-ai-draw-io`):
+
+### Rule 1: Giới hạn Viewport Đơn (Single Viewport Constraint)
+- Mọi node nằm trong khung tọa độ $X: 0 \rightarrow 1000px$, $Y: 0 \rightarrow 750px$.
+- Khoảng cách chiều dọc giữa các cấp node: $120 \rightarrow 160px$. Khoảng cách chiều ngang: $180 \rightarrow 240px$.
+
+### Rule 2: Neo Điểm Đi & Điểm Đến cố định (Explicit Anchors)
+- Mỗi đường nối phải có `exitX`, `exitY` (mép ra từ Node nguồn) và `entryX`, `entryY` (mép vào Node đích).
+- **Quy trình chảy từ trên xuống**: Xuất phát mép dưới (`exitX=0.5; exitY=1.0`), vào mép trên (`entryX=0.5; entryY=0.0`).
+- **Phân nhánh 2 bên**: Phân nhánh trái (`exitX=0.0; exitY=0.5`), Phân nhánh phải (`exitX=1.0; exitY=0.5`).
+
+### Rule 3: Tránh Chồng Tuyến Mũi tên Đôi (Bidirectional / Parallel Separation)
+- Nếu giữa 2 node có 2 đường nối ngược nhau, không dùng chung vị trí trung tâm. Dùng `exitY=0.3` cho đường đi và `exitY=0.7` cho đường về.
+
+### Rule 4: Điểm uốn Tránh Chướng ngại vật (Waypoints Obstacle Avoidance)
+- Khi đường nối đi qua node trung gian, khai báo danh sách điểm uốn `waypoints: [{x: 750, y: 80}, {x: 750, y: 200}]` để uốn mũi tên đi vòng xung quanh chu vi sơ đồ, tuyệt đối không cắt ngang qua khung nội dung của node khác.
+
+### Rule 5: Nhãn Mũi tên Rõ ràng (Connector Labels)
+- Các câu hỏi phân nhánh phải có nhãn rõ ràng: `"Có / Yes"`, `"Không / No"`, `"Độ II trở lên"`, `"HA vẫn tụt"`.
+
+### Rule 6: Highlight Lộ trình Lâm sàng Động (Interactive Path Highlighting)
+- Khi người dùng nhấp vào nhãn câu trả lời, engine tự động gọi `highlightPathFromEdge(edgeId)` để làm nổi bật tuyến cấp cứu/điều trị tương ứng.
+
+---
+
+## 📋 Chuẩn dữ liệu JSON Schema Lưu đồ Y khoa
+
+```json
+{
+  "version": "1.0",
+  "width": 1000,
+  "height": 750,
+  "nodes": [
+    {
+      "id": "node-1",
+      "type": "start",
+      "title": "NGHI NGỜ SỐC PHẢN VỆ",
+      "subtitle": "Biểu hiện Da, Niêm mạc, Hô hấp, Tuần hoàn",
+      "badge": "BƯỚC 1",
+      "x": 380,
+      "y": 40,
+      "width": 240
+    },
+    {
+      "id": "node-2",
+      "type": "action",
+      "title": "TIÊM ADRENALIN BẮP NGAY",
+      "subtitle": "Bắp đùi ngoài",
+      "badge": "KHẨN CẤP",
+      "x": 380,
+      "y": 200,
+      "width": 240,
+      "details": "<b>Liều dùng:</b> Người lớn 0.5 - 1mg. Trẻ em 0.01mg/kg."
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "node-1",
+      "target": "node-2",
+      "label": "Độ II trở lên",
+      "type": "danger",
+      "style": "orthogonal",
+      "exitX": 0.5,
+      "exitY": 1.0,
+      "entryX": 0.5,
+      "entryY": 0.0
+    }
+  ]
+}
 ```
 
 ---
 
-## 🎨 CSS Classes Hệ thống Lưu đồ (flowchart.css)
+## 📝 Hướng dẫn AI Tạo & Sửa Lưu đồ Y khoa
 
-### Layout
-```html
-<div class="flow-container">          <!-- Bao bọc toàn bộ lưu đồ -->
-  <div class="flow-pane-tabs">        <!-- Thanh tab chuyển sơ đồ con -->
-    <button class="fpane-btn active" onclick="switchPane('id')">Tab 1</button>
-  </div>
-  <div class="flow-pane active" id="id">  <!-- Một sơ đồ con -->
-    ...
-  </div>
-</div>
-```
-
-### Node Types (màu sắc)
-```html
-<!-- Node khởi đầu -->
-<div class="fnode fnode-start">Tiêu đề bệnh cảnh</div>
-
-<!-- Node câu hỏi / phân nhánh -->
-<div class="fnode fnode-question">
-  <div class="fnode-q">Câu hỏi chẩn đoán?</div>
-</div>
-
-<!-- Node hành động / xử trí -->
-<div class="fnode fnode-action">Thực hiện điều trị X</div>
-
-<!-- Node nguy cơ (đỏ) -->
-<div class="fnode fnode-danger">Nguy cơ cao — cần can thiệp ngay</div>
-
-<!-- Node kết quả tốt (xanh) -->
-<div class="fnode fnode-success">Tiên lượng tốt</div>
-
-<!-- Node có thể mở rộng (accordion) -->
-<div class="fnode fnode-expandable" onclick="toggleNode('id')">
-  <div class="fnode-header">
-    <span class="fnode-title">Tiêu đề</span>
-    <i class="fa fa-chevron-down fnode-arrow"></i>
-  </div>
-  <div class="fnode-details" id="id">
-    <!-- Chi tiết lâm sàng -->
-  </div>
-</div>
-```
-
-### Mũi tên kết nối
-```html
-<div class="flow-arrow">↓</div>
-<div class="flow-arrow flow-arrow-yes">Có / Yes</div>
-<div class="flow-arrow flow-arrow-no">Không / No</div>
-```
-
-### Hộp cảnh báo lâm sàng
-```html
-<div class="clinical-alert ca-danger">⚠️ Cảnh báo nguy hiểm</div>
-<div class="clinical-alert ca-warning">⚡ Thận trọng</div>
-<div class="clinical-alert ca-info">ℹ️ Thông tin</div>
-<div class="clinical-alert ca-success">✅ An toàn</div>
-```
-
----
-
-## 📋 Sidebar Navigation Chuẩn cho Phân hệ Tiếp cận
-
-```html
-<aside class="app-sidebar" id="appSidebar">
-  <div class="sidebar-header">
-    <span class="sidebar-title">Tiếp cận Lâm sàng</span>
-    <button class="sidebar-collapse-btn" id="sidebarCollapseBtn">
-      <i class="fas fa-chevron-left"></i>
-    </button>
-  </div>
-  <nav class="sidebar-nav">
-    <a href="../../../pages/Tiếp cận/tiep-can.html" class="sidebar-link">
-      <i class="fas fa-home"></i><span>Tổng quan</span>
-    </a>
-    <!-- Thêm các link tới trang trong phân hệ -->
-  </nav>
-</aside>
-```
-
----
-
-## 📝 Quy trình Tạo Lưu đồ Mới
-
-1. **Chọn vị trí** đúng trong cây thư mục (đúng nhóm phân loại)
-2. **Copy boilerplate** từ `templates/flowchart-template.html`
-3. **Điều chỉnh paths** theo cấp thư mục
-4. **Thiết kế flow**: Dùng `fnode-start` → `fnode-question` → `fnode-action/danger/success`
-5. **Thêm accordion** cho các node có chi tiết lâm sàng dài
-6. **Tham khảo** file `pages/Tiếp cận/HUONG_DAN_THIET_KE.md` để xem ví dụ đầy đủ
+1. **Khi tạo sơ đồ mới**: Khai báo đủ dữ liệu `nodes` & `edges` chuẩn JSON Schema trên.
+2. **Khi chỉnh sửa vi mô**: Chỉ sửa thông tin tiêu đề, liều thuốc hoặc tọa độ $x, y$ của node cần sửa, giữ nguyên các node khác (tương tự cơ chế `edit_diagram`).
+3. **Mở Studio**: Truy cập trang `pages/clinical-flow-studio.html` để vẽ trực quan hoặc xuất file ảnh SVG/PNG.

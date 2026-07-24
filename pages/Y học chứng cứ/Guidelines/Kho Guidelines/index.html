@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mục lục tổng hợp các tài liệu hướng dẫn lâm sàng và nghiên cứu y học chứng cứ trong Kho Guidelines - CliniPortal">
+  <title>Mục Lục Kho Guidelines – CliniPortal</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --accent: #0f6fb4;
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-badges { margin-left: auto; display: flex; gap: 0.5rem; flex-shrink: 0; }
+    .badge { padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.72rem; font-weight: 700; white-space: nowrap; }
+    .badge-blue { background: var(--blue-bg); color: #1e40af; border: 1px solid var(--blue-light); }
+
+    /* HERO Header */
+    .hero { background: linear-gradient(135deg, #0f172a 0%, #0f6fb4 50%, #0d9488 100%); color: #fff; padding: 3.5rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(56,189,248,0.2) 0%, transparent 60%); }
+    .hero-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; text-align: center; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.24); border-radius: 20px; padding: 0.35rem 1rem; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.25rem; color: #7dd3fc; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 1rem; }
+    .hero-subtitle { font-size: 1rem; opacity: 0.88; max-width: 720px; margin: 0 auto 2rem; line-height: 1.6; }
+
+    /* SEARCH & FILTER BAR */
+    .search-bar-container { max-width: 600px; margin: 0 auto; position: relative; }
+    .search-input { width: 100%; padding: 0.85rem 1.25rem 0.85rem 3rem; border-radius: 14px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.95); font-size: 0.92rem; font-family: inherit; outline: none; box-shadow: 0 8px 24px rgba(0,0,0,0.12); transition: all var(--tr); }
+    .search-input:focus { background: #fff; border-color: #38bdf8; box-shadow: 0 8px 30px rgba(56,189,248,0.25); }
+    .search-icon { position: absolute; left: 1.1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 1rem; }
+
+    /* MAIN CONTAINER */
+    .main-container { max-width: 1000px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    /* STATS SUMMARY */
+    .summary-bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding: 1.25rem 1.5rem; background: var(--surface); border: 1px solid var(--border-light); border-radius: 14px; font-size: 0.88rem; color: var(--text-muted); }
+    .summary-count { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--text); }
+    .summary-count span { color: var(--accent); font-weight: 800; }
+
+    /* CATEGORY TAGS FILTER */
+    .filter-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .filter-tag { padding: 0.4rem 0.9rem; border-radius: 20px; border: 1px solid var(--border-light); background: var(--surface-2); font-size: 0.78rem; font-weight: 600; color: var(--text-muted); cursor: pointer; transition: all var(--tr); }
+    .filter-tag:hover, .filter-tag.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    /* GRID OF HTML FILES */
+    .guidelines-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(450px, 100%), 1fr)); gap: 1.5rem; }
+
+    .toc-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; transition: all var(--tr); position: relative; }
+    .toc-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,0,0,0.08); border-color: var(--blue-light); }
+    
+    .toc-card-header { padding: 1.25rem 1.5rem 1rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+    .toc-card-type { display: inline-flex; align-items: center; gap: 6px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.2rem 0.6rem; border-radius: 6px; }
+    .type-byt { background: var(--blue-bg); color: #1e40af; border: 1px solid var(--blue-light); }
+    .type-apasl { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); }
+    .type-icu { background: var(--orange-bg); color: #92400e; border: 1px solid var(--orange-light); }
+    .type-rct { background: var(--purple-bg); color: #5b21b6; border: 1px solid var(--purple-light); }
+
+    .toc-card-file { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text-faint); }
+
+    .toc-card-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+    .toc-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--text); line-height: 1.35; margin-bottom: 0.6rem; text-decoration: none; }
+    .toc-card-title a { color: inherit; text-decoration: none; transition: color var(--tr); }
+    .toc-card-title a:hover { color: var(--accent); }
+
+    .toc-card-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.25rem; flex: 1; }
+
+    /* SECTIONS SUB-LIST (IN-PAGE TOC PREVIEW) */
+    .toc-sections-preview { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 0.85rem 1rem; margin-bottom: 1.25rem; font-size: 0.78rem; }
+    .toc-sections-title { font-weight: 700; color: var(--text); margin-bottom: 0.4rem; display: flex; align-items: center; gap: 6px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .toc-sections-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.35rem 0.75rem; }
+    .toc-sections-list li { display: inline-flex; align-items: center; gap: 4px; color: var(--text-muted); }
+    .toc-sections-list a { color: var(--accent); text-decoration: none; font-weight: 500; }
+    .toc-sections-list a:hover { text-decoration: underline; }
+
+    .toc-card-footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border-light); padding-top: 1rem; font-size: 0.8rem; color: var(--text-faint); }
+    .toc-btn { display: inline-flex; align-items: center; gap: 6px; padding: 0.45rem 1rem; border-radius: 8px; background: var(--accent); color: #fff; font-weight: 600; text-decoration: none; font-size: 0.8rem; transition: background var(--tr); }
+    .toc-btn:hover { background: #0c5a94; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border-light); padding: 2rem 1.5rem; text-align: center; font-size: 0.8rem; color: var(--text-muted); background: var(--surface); }
+
+    @media (max-width: 768px) {
+      .guidelines-grid { grid-template-columns: 1fr; }
+      .hero { padding: 2.5rem 1rem 3.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../Guidelines.html" class="topnav-back">
+      <i class="fa-solid fa-arrow-left"></i> Trang Tra Cứu Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">🗂️ Mục Lục Kho Guidelines</div>
+    <div class="topnav-badges">
+      <span class="badge badge-blue">📁 Kho Guidelines / index.html</span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge"><i class="fa-solid fa-book-bookmark"></i> Thư Thư Mục Y Học Chứng Cứ</div>
+      <h1 class="hero-title">Mục Lục Tóm Tắt Guidelines & RCT</h1>
+      <p class="hero-subtitle">
+        Tổng hợp các tài liệu tóm tắt hướng dẫn chẩn đoán điều trị Bộ Y tế Việt Nam, hiệp hội y khoa quốc tế và các thử nghiệm lâm sàng Landmark.
+      </p>
+
+      <!-- SEARCH BAR -->
+      <div class="search-bar-container">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="searchInput" class="search-input" placeholder="Tìm kiếm theo tiêu đề, chuyên khoa, từ khóa (ví dụ: COPD, HBV, ICU, SGLT2i)..." oninput="filterGuidelines()">
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-container">
+
+    <!-- SUMMARY BAR & FILTERS -->
+    <div class="summary-bar">
+      <div class="summary-count">Hiển thị <span id="visibleCount">4</span> / <span id="totalCount">4</span> file HTML tài liệu</div>
+      
+      <div class="filter-tags">
+        <button class="filter-tag active" onclick="setFilter('all', this)">Tất cả</button>
+        <button class="filter-tag" onclick="setFilter('byt', this)">Bộ Y tế VN</button>
+        <button class="filter-tag" onclick="setFilter('apasl', this)">APASL / Gan mật</button>
+        <button class="filter-tag" onclick="setFilter('icu', this)">ICU & Hồi sức</button>
+        <button class="filter-tag" onclick="setFilter('rct', this)">RCT Landmark</button>
+      </div>
+    </div>
+
+    <!-- GUIDELINES GRID -->
+    <div class="guidelines-grid" id="guidelinesGrid">
+
+      <!-- FILE 1: BYT COPD 2026 -->
+      <div class="toc-card" data-category="byt" data-keywords="copd phoi tac nghen man tinh byt bo y te hô hấp nhom abe 2026">
+        <div class="toc-card-header">
+          <span class="toc-card-type type-byt"><i class="fa-solid fa-hospital"></i> Bộ Y tế Việt Nam</span>
+          <span class="toc-card-file">byt-copd-2026.html</span>
+        </div>
+        <div class="toc-card-body">
+          <h2 class="toc-card-title">
+            <a href="byt-copd-2026.html">Hướng Dẫn Chẩn Đoán & Điều Trị Bệnh Phổi Tắc Nghẽn Mạn Tính (COPD)</a>
+          </h2>
+          <p class="toc-card-desc">
+            Cập nhật theo Quyết định 1742/QĐ-BYT. Tóm tắt tiêu chuẩn sàng lọc GOLD 2026, phân loại nhóm ABE, phác đồ cá thể hóa LABA/LAMA/ICS theo chỉ số Bạch cầu ái toan (Eos) và quản lý đợt cấp theo Tiêu chuẩn Rome 2022.
+          </p>
+
+          <!-- IN-PAGE TOC PREVIEW -->
+          <div class="toc-sections-preview">
+            <div class="toc-sections-title"><i class="fa-solid fa-list"></i> Các phần mục lục trong trang:</div>
+            <ul class="toc-sections-list">
+              <li>• <a href="byt-copd-2026.html#sec-dai-cuong">Đại cương & Sàng lọc</a></li>
+              <li>• <a href="byt-copd-2026.html#sec-abe">Phân loại ABE</a></li>
+              <li>• <a href="byt-copd-2026.html#sec-dieu-tri">Điều trị ổn định</a></li>
+              <li>• <a href="byt-copd-2026.html#sec-dot-cap">Đợt cấp & Kháng sinh</a></li>
+              <li>• <a href="byt-copd-2026.html#sec-dong-mac">Bệnh đồng mắc</a></li>
+              <li>• <a href="byt-copd-2026.html#sec-phcn">PHCN & Giảm nhẹ</a></li>
+            </ul>
+          </div>
+
+          <div class="toc-card-footer">
+            <span>📅 Cập nhật 2026 · Bộ Y Tế</span>
+            <a href="byt-copd-2026.html" class="toc-btn">Xem chi tiết <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FILE 2: APASL HBV 2026 -->
+      <div class="toc-card" data-category="apasl" data-keywords="apasl viem gan b man tinh hbv xogan hcc treat-all nuc taf tdf etv 2026">
+        <div class="toc-card-header">
+          <span class="toc-card-type type-apasl"><i class="fa-solid fa-virus-covid"></i> APASL Guidelines</span>
+          <span class="toc-card-file">apasl-vgsvb-2026.html</span>
+        </div>
+        <div class="toc-card-body">
+          <h2 class="toc-card-title">
+            <a href="apasl-vgsvb-2026.html">APASL 2026: Hướng Dẫn Lâm Sàng Viêm Gan B Mạn Tính</a>
+          </h2>
+          <p class="toc-card-desc">
+            Bản tóm tắt hướng dẫn thực hành lâm sàng APASL 2026. Mở rộng chiến lược "Treat-all", đánh giá xơ hóa bằng marker không xâm lấn (NITs), bộ 3 tầm soát HCC (Siêu âm + AFP + PIVKA-II) và so sánh chi tiết với BYT Việt Nam 2026.
+          </p>
+
+          <!-- IN-PAGE TOC PREVIEW -->
+          <div class="toc-sections-preview">
+            <div class="toc-sections-title"><i class="fa-solid fa-list"></i> Các phần mục lục trong trang:</div>
+            <ul class="toc-sections-list">
+              <li>• <a href="apasl-vgsvb-2026.html#sec-sinhbenhhoc">Sinh bệnh học & Chẩn đoán</a></li>
+              <li>• <a href="apasl-vgsvb-2026.html#sec-treat-all">Chiến lược Treat-all</a></li>
+              <li>• <a href="apasl-vgsvb-2026.html#sec-phacdo">Phác đồ NUCs / Peg-IFN</a></li>
+              <li>• <a href="apasl-vgsvb-2026.html#sec-hcc">Tầm soát ung thư gan HCC</a></li>
+              <li>• <a href="apasl-vgsvb-2026.html#sec-sosanh">So sánh APASL vs BYT</a></li>
+            </ul>
+          </div>
+
+          <div class="toc-card-footer">
+            <span>📅 Cập nhật 2026 · APASL CPGs</span>
+            <a href="apasl-vgsvb-2026.html" class="toc-btn">Xem chi tiết <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FILE 3: KS CHO BN NANG -->
+      <div class="toc-card" data-category="icu" data-keywords="khang sinh benh nhan nang icu sepsis septic shock pk pd tdm 2026 critical care clinics">
+        <div class="toc-card-header">
+          <span class="toc-card-type type-icu"><i class="fa-solid fa-notes-medical"></i> ICU & Hồi Sức</span>
+          <span class="toc-card-file">ks-cho-bn-nang.html</span>
+        </div>
+        <div class="toc-card-body">
+          <h2 class="toc-card-title">
+            <a href="ks-cho-bn-nang.html">Hướng Dẫn Sử Dụng Kháng Sinh Cho Bệnh Nhân Nặng (ICU)</a>
+          </h2>
+          <p class="toc-card-desc">
+            Tóm tắt tổng quan từ Critical Care Clinics 2026. Hướng dẫn chiến lược 3 trụ cột: Đúng thời điểm - Phổ phù hợp - Nồng độ đủ; đánh giá nguy cơ vi khuẩn đa kháng (MDR/XDR), tối ưu hóa dược động học PK/PD và bảng liều điều chỉnh lâm sàng.
+          </p>
+
+          <!-- IN-PAGE TOC PREVIEW -->
+          <div class="toc-sections-preview">
+            <div class="toc-sections-title"><i class="fa-solid fa-list"></i> Các phần mục lục trong trang:</div>
+            <ul class="toc-sections-list">
+              <li>• <a href="ks-cho-bn-nang.html#sec-timing">1. Thời điểm</a></li>
+              <li>• <a href="ks-cho-bn-nang.html#sec-risk">2. Vi khuẩn đa kháng</a></li>
+              <li>• <a href="ks-cho-bn-nang.html#sec-regimen">3. Phác đồ ổ nhiễm</a></li>
+              <li>• <a href="ks-cho-bn-nang.html#sec-updates">4. Điểm mới 2026</a></li>
+              <li>• <a href="ks-cho-bn-nang.html#sec-pkpd">5. PK/PD</a></li>
+              <li>• <a href="ks-cho-bn-nang.html#sec-dose">6. Bảng liều</a></li>
+              <li>• <a href="ks-cho-bn-nang.html#sec-conclusion">7. 21 Điểm tóm tắt</a></li>
+            </ul>
+          </div>
+
+          <div class="toc-card-footer">
+            <span>📅 Cập nhật 2026 · Critical Care Clinics</span>
+            <a href="ks-cho-bn-nang.html" class="toc-btn">Xem chi tiết <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FILE 4: EMPA-REG OUTCOME -->
+      <div class="toc-card" data-category="rct" data-keywords="empa reg outcome empagliflozin sglt2i rct landmark dai thao duong suy tim nejm">
+        <div class="toc-card-header">
+          <span class="toc-card-type type-rct"><i class="fa-solid fa-flask"></i> RCT Landmark</span>
+          <span class="toc-card-file">empa-reg.html</span>
+        </div>
+        <div class="toc-card-body">
+          <h2 class="toc-card-title">
+            <a href="empa-reg.html">EMPA-REG OUTCOME: Thử Nghiệm Lâm Sàng Landmark SGLT2i</a>
+          </h2>
+          <p class="toc-card-desc">
+            Phân tích thử nghiệm lâm sàng Phase III kinh điển trên N Engl J Med. Chứng minh Empagliflozin giảm 38% tử vong tim mạch và 35% nhập viện suy tim trên bệnh nhân ĐTĐ typ 2 nguy cơ tim mạch cao. Cấu trúc PICO, Forest plot SVG và bảng kết quả chi tiết.
+          </p>
+
+          <!-- IN-PAGE TOC PREVIEW -->
+          <div class="toc-sections-preview">
+            <div class="toc-sections-title"><i class="fa-solid fa-list"></i> Các phần mục lục trong trang:</div>
+            <ul class="toc-sections-list">
+              <li>• <a href="empa-reg.html#sec-pico">Cấu trúc PICO</a></li>
+              <li>• <a href="empa-reg.html#sec-findings">Kết quả chính</a></li>
+              <li>• <a href="empa-reg.html#sec-forest">Forest Plot SVG</a></li>
+              <li>• <a href="empa-reg.html#sec-results">Bảng kết quả</a></li>
+              <li>• <a href="empa-reg.html#sec-impact">Ảnh hưởng lâm sàng</a></li>
+              <li>• <a href="empa-reg.html#sec-safety">An toàn & TDBL</a></li>
+            </ul>
+          </div>
+
+          <div class="toc-card-footer">
+            <span>📅 NEJM Landmark RCT</span>
+            <a href="empa-reg.html" class="toc-btn">Xem chi tiết <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer>
+    <p><strong>CliniPortal — Hệ sinh thái Web Y khoa</strong></p>
+    <p style="margin-top:0.3rem;">Thư mục <code>pages/Y học chứng cứ/Guidelines/Kho Guidelines/</code> · Cập nhật 2026</p>
+  </footer>
+
+  <!-- SEARCH & FILTER SCRIPT -->
+  <script>
+    let currentFilter = 'all';
+
+    function setFilter(category, btn) {
+      currentFilter = category;
+      document.querySelectorAll('.filter-tag').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      filterGuidelines();
+    }
+
+    function filterGuidelines() {
+      const query = document.getElementById('searchInput').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.toc-card');
+      let visible = 0;
+
+      cards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        const keywords = card.getAttribute('data-keywords').toLowerCase();
+        const text = card.textContent.toLowerCase();
+
+        const matchesCategory = (currentFilter === 'all' || category === currentFilter);
+        const matchesQuery = !query || keywords.includes(query) || text.includes(query);
+
+        if (matchesCategory && matchesQuery) {
+          card.style.display = 'flex';
+          visible++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      document.getElementById('visibleCount').textContent = visible;
+    }
+  </script>
+
+</body>
+</html>

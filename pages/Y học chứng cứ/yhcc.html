@@ -848,30 +848,33 @@
             hành điều trị từ các tổ chức y tế uy tín.</p>
           <div class="hub-hero-stats">
             <div class="hub-hero-stat">
-              <span class="hub-hero-stat-value">30+</span>
+              <span class="hub-hero-stat-value" id="stat-total-guidelines">--</span>
               <span class="hub-hero-stat-label">Guidelines cập nhật</span>
             </div>
             <div class="hub-hero-stat-divider"></div>
             <div class="hub-hero-stat">
-              <span class="hub-hero-stat-value">10</span>
-              <span class="hub-hero-stat-label">Chuyên khoa</span>
+              <span class="hub-hero-stat-value" id="stat-moh-guidelines">--</span>
+              <span class="hub-hero-stat-label">Bộ Y tế & Hội VN</span>
             </div>
             <div class="hub-hero-stat-divider"></div>
             <div class="hub-hero-stat">
-              <span class="hub-hero-stat-value">15+</span>
-              <span class="hub-hero-stat-label">Thang điểm LS</span>
+              <span class="hub-hero-stat-value" id="stat-practice-changing">--</span>
+              <span class="hub-hero-stat-label">Practice-Changing</span>
             </div>
             <div class="hub-hero-stat-divider"></div>
             <div class="hub-hero-stat">
-              <span class="hub-hero-stat-value">4 Bài</span>
-              <span class="hub-hero-stat-label">Lý thuyết thống kê</span>
+              <span class="hub-hero-stat-value">4 Module</span>
+              <span class="hub-hero-stat-label">Hệ sinh thái liên kết</span>
             </div>
           </div>
 
           <!-- EBM SEARCH BAR -->
-          <div class="hub-hero-search">
-            <input type="text" id="ebm-global-search" placeholder="Tìm kiếm Guideline, Thống kê, Cập nhật mới..." aria-label="Tìm kiếm">
-            <button aria-label="Nút tìm kiếm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+          <div class="hub-hero-search-wrapper" style="position: relative; max-width: 600px; margin-top: 2rem;">
+            <div class="hub-hero-search" style="margin-top: 0;">
+              <input type="text" id="ebm-global-search" placeholder="Tìm kiếm Guideline, Thống kê, Cập nhật mới..." aria-label="Tìm kiếm" autocomplete="off">
+              <button aria-label="Nút tìm kiếm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+            </div>
+            <div id="ebm-search-results" style="display: none; position: absolute; top: calc(100% + 8px); left: 0; right: 0; background: var(--hub-surface, #fff); border: 1px solid var(--hub-border); border-radius: 16px; box-shadow: 0 12px 32px rgba(0,0,0,0.18); z-index: 300; max-height: 360px; overflow-y: auto; padding: 0.75rem;"></div>
           </div>
         </div>
       </section>
@@ -1015,10 +1018,6 @@
               </div>
               <div class="hub-module-feature">
                 <span class="hub-module-feature-dot"></span>
-                Critical Appraisal Toolkit (CASP 11 Tiêu Chí)
-              </div>
-              <div class="hub-module-feature">
-                <span class="hub-module-feature-dot"></span>
                 NNT/ARR Calculator & Biểu đồ 100 Bệnh Nhân
               </div>
             </div>
@@ -1033,164 +1032,7 @@
           </div>
         </a>
       </div>
-
-      <!-- CLINICAL GUIDELINES BY SPECIALTY -->
-      <h2 class="hub-section-title">🔍 Tra cứu Guidelines & Thử nghiệm Lâm sàng theo Chuyên khoa</h2>
-      <div class="hub-spec-lookup-grid">
-        
-        <!-- Tim mạch -->
-        <a href="Guidelines/Guidelines.html?specialty=cardio" class="hub-spec-lookup-card" style="--spec-color: #dc2626; --spec-bg: rgba(220, 38, 38, 0.1);">
-          <div class="hub-spec-icon-wrapper">🫀</div>
-          <div class="hub-spec-info">
-            <h4>Tim mạch</h4>
-            <p>Khuyến cáo điều trị suy tim, tăng huyết áp, bệnh mạch vành (VNHA, ESC, ACC/AHA...)</p>
-          </div>
-          <div class="hub-spec-arrow">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </div>
-        </a>
-
-        <!-- Hô hấp -->
-        <a href="Guidelines/Guidelines.html?specialty=pulmo" class="hub-spec-lookup-card" style="--spec-color: #2563eb; --spec-bg: rgba(37, 99, 235, 0.1);">
-          <div class="hub-spec-icon-wrapper">🫁</div>
-          <div class="hub-spec-info">
-            <h4>Hô hấp</h4>
-            <p>Hướng dẫn chẩn đoán và quản lý Hen phế quản, COPD, viêm phổi (GINA, GOLD, BTS...)</p>
-          </div>
-          <div class="hub-spec-arrow">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </div>
-        </a>
-
-        <!-- Tiêu hóa -->
-        <a href="Guidelines/Guidelines.html?specialty=gi" class="hub-spec-lookup-card" style="--spec-color: #ca8a04; --spec-bg: rgba(202, 138, 4, 0.1);">
-          <div class="hub-spec-icon-wrapper">🥗</div>
-          <div class="hub-spec-info">
-            <h4>Tiêu hóa</h4>
-            <p>Hướng dẫn điều trị xơ gan, xuất huyết tiêu hóa, viêm tụy cấp, loét dạ dày tá tràng</p>
-          </div>
-          <div class="hub-spec-arrow">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </div>
-        </a>
-
-        <!-- Nội tiết -->
-        <a href="Guidelines/Guidelines.html?specialty=endo" class="hub-spec-lookup-card" style="--spec-color: #7c3aed; --spec-bg: rgba(124, 58, 237, 0.1);">
-          <div class="hub-spec-icon-wrapper">💉</div>
-          <div class="hub-spec-info">
-            <h4>Nội tiết</h4>
-            <p>Tiêu chuẩn chăm sóc Đái tháo đường, bệnh lý tuyến giáp, suy thượng thận (ADA, AACE...)</p>
-          </div>
-          <div class="hub-spec-arrow">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </div>
-        </a>
-
-        <!-- Thần kinh -->
-        <a href="Guidelines/Guidelines.html?specialty=neuro" class="hub-spec-lookup-card" style="--spec-color: #c026d3; --spec-bg: rgba(192, 38, 211, 0.1);">
-          <div class="hub-spec-icon-wrapper">🧠</div>
-          <div class="hub-spec-info">
-            <h4>Thần kinh</h4>
-            <p>Xử trí đột quỵ não cấp, động kinh, đau đầu, sa sút trí tuệ (AHA/ASA, AAN...)</p>
-          </div>
-          <div class="hub-spec-arrow">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </div>
-        </a>
-
-        <!-- Truyền nhiễm -->
-        <a href="Guidelines/Guidelines.html?specialty=infect" class="hub-spec-lookup-card" style="--spec-color: #16a34a; --spec-bg: rgba(22, 163, 74, 0.1);">
-          <div class="hub-spec-icon-wrapper">🦠</div>
-          <div class="hub-spec-info">
-            <h4>Truyền nhiễm</h4>
-            <p>Khuyến cáo sử dụng kháng sinh, điều trị viêm gan B/C, nhiễm khuẩn nặng, Sepsis</p>
-          </div>
-          <div class="hub-spec-arrow">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </div>
-        </a>
-
-        <!-- Thận học -->
-        <a href="Guidelines/Guidelines.html?specialty=renal" class="hub-spec-lookup-card" style="--spec-color: #0891b2; --spec-bg: rgba(8, 145, 178, 0.1);">
-          <div class="hub-spec-icon-wrapper">💧</div>
-          <div class="hub-spec-info">
-            <h4>Thận học</h4>
-            <p>Quản lý bệnh thận mạn, tổn thương thận cấp, rối loạn điện giải (KDIGO, KDOQI...)</p>
-          </div>
-          <div class="hub-spec-arrow">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </div>
-        </a>
-
-        <!-- Cơ xương khớp -->
-        <a href="Guidelines/Guidelines.html?specialty=rheum" class="hub-spec-lookup-card" style="--spec-color: #ea580c; --spec-bg: rgba(234, 88, 12, 0.1);">
-          <div class="hub-spec-icon-wrapper">🦴</div>
-          <div class="hub-spec-info">
-            <h4>Cơ xương khớp</h4>
-            <p>Điều trị thoái hóa khớp, Gout, viêm khớp dạng thấp, loãng xương (ACR, EULAR...)</p>
-          </div>
-          <div class="hub-spec-arrow">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </div>
-        </a>
-
-        <!-- Huyết học -->
-        <a href="Guidelines/Guidelines.html?specialty=hema" class="hub-spec-lookup-card" style="--spec-color: #db2777; --spec-bg: rgba(219, 39, 119, 0.1);">
-          <div class="hub-spec-icon-wrapper">🩸</div>
-          <div class="hub-spec-info">
-            <h4>Huyết học</h4>
-            <p>Hướng dẫn truyền máu, xử trí xuất huyết giảm tiểu cầu, huyết khối, thiếu máu</p>
-          </div>
-          <div class="hub-spec-arrow">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </div>
-        </a>
-
-        <!-- Ung thư -->
-        <a href="Guidelines/Guidelines.html?specialty=onco" class="hub-spec-lookup-card" style="--spec-color: #be185d; --spec-bg: rgba(190, 24, 93, 0.1);">
-          <div class="hub-spec-icon-wrapper">🎗️</div>
-          <div class="hub-spec-info">
-            <h4>Ung thư</h4>
-            <p>Phác đồ hóa trị, điều trị đích, liệu pháp miễn dịch và chăm sóc giảm nhẹ (NCCN, ESMO...)</p>
-          </div>
-          <div class="hub-spec-arrow">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </div>
-        </a>
-
-      </div>
-
-        </div>
+    </div>
 
         <!-- RIGHT COLUMN: SIDEBAR WIDGET -->
         <aside class="layout-widget-sidebar">
@@ -1348,6 +1190,71 @@
 
       // Initialize with sector 0 (ASK)
       highlightSector(0);
+    });
+  </script>
+
+  <!-- ===================== CLINIPORTAL REALTIME SYNC & EBM ENGINE ===================== -->
+  <script src="../../js/cliniportal-sync.js"></script>
+  <script src="Guidelines/GuidelinesData.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      function renderEbmHubWidgets() {
+        if (!window.CliniPortalSync) return;
+
+        // 1. Render Stats
+        const stats = window.CliniPortalSync.getSummaryStats();
+        const totalEl = document.getElementById('stat-total-guidelines');
+        const mohEl = document.getElementById('stat-moh-guidelines');
+        const practiceEl = document.getElementById('stat-practice-changing');
+
+        if (totalEl) totalEl.textContent = stats.total + ' Bài';
+        if (mohEl) mohEl.textContent = (stats.mohCount + stats.associationCount) + ' Guideline';
+        if (practiceEl) practiceEl.textContent = stats.practiceChangingCount + ' Đổi mới';
+      }
+
+      // Initial render
+      renderEbmHubWidgets();
+
+      // Subscribe to real-time update events
+      window.addEventListener('cliniportal:guidelines-updated', renderEbmHubWidgets);
+
+      // 3. Search Bar Interactivity
+      const searchInput = document.getElementById('ebm-global-search');
+      const resultsContainer = document.getElementById('ebm-search-results');
+
+      if (searchInput && resultsContainer) {
+        searchInput.addEventListener('input', function() {
+          const query = searchInput.value.trim();
+          if (!query) {
+            resultsContainer.style.display = 'none';
+            return;
+          }
+
+          const matches = window.CliniPortalSync ? window.CliniPortalSync.searchGuidelines(query) : [];
+          if (matches.length === 0) {
+            resultsContainer.innerHTML = `<div style="font-size: 0.8rem; color: var(--hub-text-muted); padding: 0.5rem; text-align: center;">Không tìm thấy bài Guideline phù hợp</div>`;
+          } else {
+            let resHtml = `<div style="font-size: 0.72rem; font-weight: 700; color: var(--hub-text-muted); margin-bottom: 0.5rem; text-transform: uppercase;">Kết quả Guidelines (${matches.length})</div>`;
+            matches.slice(0, 5).forEach(m => {
+              const fileUrl = m.file ? ('Guidelines/' + m.file) : ('Guidelines/Guidelines.html');
+              resHtml += `
+                <a href="${fileUrl}" style="display: block; padding: 0.5rem; border-radius: 8px; text-decoration: none; color: var(--hub-text); font-size: 0.82rem; transition: background 0.15s;" onmouseover="this.style.background='var(--hub-surface-2)'" onmouseout="this.style.background='transparent'">
+                  <div style="font-weight: 700; color: var(--hub-blue);">${m.title}</div>
+                  <div style="font-size: 0.75rem; color: var(--hub-text-muted); text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">${m.organization || ''} · ${m.drug || ''}</div>
+                </a>
+              `;
+            });
+            resultsContainer.innerHTML = resHtml;
+          }
+          resultsContainer.style.display = 'block';
+        });
+
+        document.addEventListener('click', function(e) {
+          if (!searchInput.contains(e.target) && !resultsContainer.contains(e.target)) {
+            resultsContainer.style.display = 'none';
+          }
+        });
+      }
     });
   </script>
 </body>

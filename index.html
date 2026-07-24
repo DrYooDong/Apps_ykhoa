@@ -90,12 +90,12 @@
 
       <!-- MAIN CONTENT -->
       <div class="main-wrapper homepage-wrapper" id="mainContent">
-        <!-- Cột bên trái: Nội dung chính -->
+        <!-- Cột bên trái: NỘI DUNG CHÍNH (PRIMARY WORKSPACE) -->
         <div class="homepage-left">
-          <!-- HERO -->
+
+          <!-- 1. HERO MEDICAL COMMAND BAR -->
           <section class="hero-dashboard" id="hero-section" aria-labelledby="hero-title">
             <div class="hero-intro">
-              <!-- Live clock & greeting -->
               <div class="hero-meta-row">
                 <p class="hero-greeting" id="heroGreeting">
                   <span>🌅</span> Chào buổi sáng, Bác sĩ!
@@ -111,15 +111,15 @@
               <p>Hỗ trợ quyết định lâm sàng nhanh chóng, chính xác ngay tại giường bệnh.</p>
               <div class="hero-stats">
                 <div class="hero-stat">
-                  <span class="hero-stat-number" data-count="120" data-suffix="+">0+</span>
+                  <span class="hero-stat-number" data-count="120" data-suffix="+">120+</span>
                   <span class="hero-stat-label">Công cụ & Thang điểm</span>
                 </div>
                 <div class="hero-stat">
-                  <span class="hero-stat-number" data-count="50" data-suffix="+">0+</span>
+                  <span class="hero-stat-number" data-count="50" data-suffix="+">50+</span>
                   <span class="hero-stat-label">Phác đồ xử trí</span>
                 </div>
                 <div class="hero-stat">
-                  <span class="hero-stat-number" data-count="30" data-suffix="+">0+</span>
+                  <span class="hero-stat-number" data-count="30" data-suffix="+">30+</span>
                   <span class="hero-stat-label">Kỹ năng lâm sàng</span>
                 </div>
               </div>
@@ -131,17 +131,267 @@
             <div class="hero-pattern" aria-hidden="true"></div>
           </section>
 
-          <!-- CLINIPORTAL PULSE — COMMAND CENTER DASHBOARD -->
+          <!-- 2. EMERGENCY PROTOCOLS BAR (PHÁC ĐỒ CẤP CỨU KHẨN CẤP) -->
+          <section class="emergency-section" id="emergency-section" aria-labelledby="emergency-title">
+            <div class="emergency-header">
+              <h2 class="emergency-title" id="emergency-title">
+                <i class="fa-solid fa-truck-medical"></i> Phác đồ Cấp cứu Khẩn cấp
+              </h2>
+              <span class="emergency-badge-pulse">1-Click Fast Action</span>
+            </div>
+            <div class="emergency-grid">
+              <a href="pages/Tiếp cận/3. Quản lý bệnh lý mạn tính & hệ thống/Huyết học & Truyền nhiễm/TC_SXHD.html" class="emergency-chip">
+                <div class="emergency-chip-icon"><i class="fa-solid fa-mosquito"></i></div>
+                <span>Cấp cứu SXHD nặng</span>
+              </a>
+              <a href="pages/Kỹ năng/Cận lâm sàng/doc-ecg-co-ban.html" class="emergency-chip">
+                <div class="emergency-chip-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                <span>Cấp cứu Đau ngực & ACS</span>
+              </a>
+              <a href="pages/Công cụ/Thận & Điện giải - toan kiểm/DG_ABG.html" class="emergency-chip">
+                <div class="emergency-chip-icon"><i class="fa-solid fa-mask-ventilator"></i></div>
+                <span>Toan kiềm & Suy hô hấp</span>
+              </a>
+              <a href="pages/Kỹ năng/Quản lý điều trị/Luachon_Khangsinh.html" class="emergency-chip">
+                <div class="emergency-chip-icon"><i class="fa-solid fa-capsules"></i></div>
+                <span>Sốc nhiễm khuẩn & KS</span>
+              </a>
+            </div>
+          </section>
+
+          <!-- 3. 7 PHÂN NHÓM CHỨC NĂNG CỐT LÕI (CORE MODULE GRID) -->
+          <div class="main-content-grid" id="category-grid-section">
+            <div class="category-filter-wrapper">
+              <h2 class="section-heading">Phân nhóm chức năng chính</h2>
+              <div class="category-filter-top">
+                <div class="category-filter-pills">
+                  <button class="filter-pill active" data-filter="all">Tất cả (7)</button>
+                  <button class="filter-pill" data-filter="clinical">Lâm sàng</button>
+                  <button class="filter-pill" data-filter="tools">Công cụ</button>
+                  <button class="filter-pill" data-filter="pharma">Dược lý</button>
+                  <button class="filter-pill" data-filter="physio">Sinh lý</button>
+                  <button class="filter-pill" data-filter="ebm">Chứng cứ</button>
+                  <button class="filter-pill" data-filter="tcm">Đông y</button>
+                </div>
+                <div class="category-search-box">
+                  <i class="fa-solid fa-filter"></i>
+                  <input type="text" id="categorySearchInput" placeholder="Lọc nhóm ứng dụng..." aria-label="Lọc nhóm ứng dụng">
+                </div>
+              </div>
+            </div>
+
+            <div class="category-grid">
+              <!-- Card 1: Kỹ năng lâm sàng -->
+              <div class="tool-card card-rose" data-category="clinical">
+                <button class="pin-btn" data-url="pages/Kỹ năng/ky-nang.html" data-title="Kỹ năng Lâm sàng" data-category="Lâm sàng" data-icon="🩺" title="Ghim ứng dụng">☆</button>
+                <div class="card-top">
+                  <div class="tool-icon">🩺</div>
+                  <span class="tool-status active">Hoạt động</span>
+                </div>
+                <div class="tool-content">
+                  <h3>Kỹ năng Lâm sàng</h3>
+                  <p>Quy trình thăm khám 11 hệ cơ quan chuẩn y khoa, bảng kiểm bedside dựa trên Macleod.</p>
+                  <div class="tool-footer">
+                    <span class="tool-category">Clinical Skills</span>
+                    <a href="pages/Kỹ năng/ky-nang.html">Truy cập ứng dụng</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2: Tiếp cận vấn đề -->
+              <div class="tool-card card-green" data-category="clinical">
+                <button class="pin-btn" data-url="pages/Tiếp cận/tiep-can.html" data-title="Tiếp cận Lâm sàng" data-category="Lâm sàng" data-icon="📋" title="Ghim ứng dụng">☆</button>
+                <div class="card-top">
+                  <div class="tool-icon">📋</div>
+                  <span class="tool-status active">Hoạt động</span>
+                </div>
+                <div class="tool-content">
+                  <h3>Tiếp cận Lâm sàng</h3>
+                  <p>Phác đồ từng bước xử trí các hội chứng, triệu chứng cấp cứu và thường gặp.</p>
+                  <div class="tool-footer">
+                    <span class="tool-category">Algorithms</span>
+                    <a href="pages/Tiếp cận/tiep-can.html">Truy cập ứng dụng</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 3: Công cụ lâm sàng -->
+              <div class="tool-card card-blue" data-category="tools">
+                <button class="pin-btn" data-url="pages/Công cụ/cong-cu.html" data-title="Công cụ Lâm sàng" data-category="Công cụ" data-icon="🧮" title="Ghim ứng dụng">☆</button>
+                <div class="card-top">
+                  <div class="tool-icon">🧮</div>
+                  <span class="tool-status active">Hoạt động</span>
+                </div>
+                <div class="tool-content">
+                  <h3>Công cụ Lâm sàng</h3>
+                  <p>Tính toán các thang điểm nặng, tiên lượng và hỗ trợ chẩn đoán chính xác tại giường.</p>
+                  <div class="tool-footer">
+                    <span class="tool-category">Calculators</span>
+                    <a href="pages/Công cụ/cong-cu.html">Truy cập ứng dụng</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 4: Dược lý lâm sàng -->
+              <div class="tool-card card-purple" data-category="pharma">
+                <button class="pin-btn" data-url="pages/Dược lý/duoc-ly.html" data-title="Dược lý lâm sàng" data-category="Dược lý" data-icon="💊" title="Ghim ứng dụng">☆</button>
+                <div class="card-top">
+                  <div class="tool-icon">💊</div>
+                  <span class="tool-status active">Hoạt động</span>
+                </div>
+                <div class="tool-content">
+                  <h3>Dược lý lâm sàng</h3>
+                  <p>Tra cứu liều thuốc, chỉnh liều theo chức năng thận tối ưu PK/PD kháng sinh.</p>
+                  <div class="tool-footer">
+                    <span class="tool-category">Pharmacology</span>
+                    <a href="pages/Dược lý/duoc-ly.html">Truy cập ứng dụng</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 5: Sinh lý & Sinh lý bệnh -->
+              <div class="tool-card card-green" data-category="physio">
+                <button class="pin-btn" data-url="pages/Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" data-title="Sinh lý & Sinh lý bệnh" data-category="Sinh lý" data-icon="🧬" title="Ghim ứng dụng">☆</button>
+                <div class="card-top">
+                  <div class="tool-icon">🧬</div>
+                  <span class="tool-status active">Hoạt động</span>
+                </div>
+                <div class="tool-content">
+                  <h3>Sinh lý / sinh lý bệnh & cơ chế bệnh sinh</h3>
+                  <p>Trang tài liệu Sinh lý / sinh lý bệnh & cơ chế bệnh sinh.</p>
+                  <div class="tool-footer">
+                    <span class="tool-category">Physiology</span>
+                    <a href="pages/Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html">Truy cập ứng dụng</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 6: Y học chứng cứ -->
+              <div class="tool-card card-amber" data-category="ebm">
+                <button class="pin-btn" data-url="pages/Y học chứng cứ/yhcc.html" data-title="Y học chứng cứ" data-category="Chứng cứ" data-icon="📄" title="Ghim ứng dụng">☆</button>
+                <div class="card-top">
+                  <div class="tool-icon">📄</div>
+                  <span class="tool-status active">Hoạt động</span>
+                </div>
+                <div class="tool-content">
+                  <h3>Y học chứng cứ</h3>
+                  <p>Tra cứu các bằng chứng y học hỗ trợ quyết định điều trị.</p>
+                  <div class="tool-footer">
+                    <span class="tool-category">Evidence</span>
+                    <a href="pages/Y học chứng cứ/yhcc.html">Truy cập ứng dụng</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 7: Y học cổ truyền -->
+              <div class="tool-card card-teal" data-category="tcm">
+                <button class="pin-btn" data-url="pages/Y học cổ truyền/y-hoc-co-truyen.html" data-title="Y học cổ truyền" data-category="Đông y" data-icon="☯️" title="Ghim ứng dụng">☆</button>
+                <div class="card-top">
+                  <div class="tool-icon">☯️</div>
+                  <span class="tool-status active">Hoạt động</span>
+                </div>
+                <div class="tool-content">
+                  <h3>Y học cổ truyền</h3>
+                  <p>Kho lưu trữ kiến thức Y học cổ truyền: Xoa bóp, bấm huyệt, châm cứu và dược liệu.</p>
+                  <div class="tool-footer">
+                    <span class="tool-category">Traditional Med</span>
+                    <a href="pages/Y học cổ truyền/y-hoc-co-truyen.html">Truy cập ứng dụng</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. PINNED FAVORITES / MỤC YÊU THÍCH -->
+          <section class="favorites-section" id="favoritesSection" aria-labelledby="favorites-title">
+            <h2 class="section-heading" id="favorites-title">⭐ Ứng dụng đã ghim (Yêu thích)</h2>
+            <div class="favorites-grid" id="favoritesGrid"></div>
+          </section>
+
+          <!-- 5. QUICK ACCESS / APP THƯỜNG DÙNG -->
+          <section class="quick-access-section" id="quick-access-section" aria-labelledby="quick-access-title">
+            <h2 class="section-heading" id="quick-access-title">Ứng dụng thường dùng</h2>
+            <div class="quick-access-grid">
+              <!-- 1. Tra cứu mã ICD-10 -->
+              <a href="pages/Công cụ/Chung/Tracuu_maICD10.html" class="quick-access-card"
+                style="--card-accent: var(--color-primary); --card-accent-hl: var(--color-primary-hl); --card-accent-rgb: var(--color-primary-rgb)">
+                <button class="pin-btn" data-url="pages/Công cụ/Chung/Tracuu_maICD10.html" data-title="Tra cứu mã ICD-10" data-category="Công cụ" data-icon="🔍" title="Ghim ứng dụng">☆</button>
+                <div class="quick-access-icon">🔍</div>
+                <div class="quick-access-info">
+                  <h3>Tra cứu mã ICD-10</h3>
+                  <p>Tra cứu nhanh mã bệnh quốc tế nhanh chóng</p>
+                </div>
+              </a>
+
+              <!-- 2. Đọc Điện tâm đồ ECG -->
+              <a href="pages/Kỹ năng/Cận lâm sàng/doc-ecg-co-ban.html" class="quick-access-card"
+                style="--card-accent: var(--color-rose); --card-accent-hl: var(--color-rose-hl); --card-accent-rgb: var(--color-rose-rgb)">
+                <button class="pin-btn" data-url="pages/Kỹ năng/Cận lâm sàng/doc-ecg-co-ban.html" data-title="Đọc Điện tâm đồ ECG" data-category="Kỹ năng" data-icon="📈" title="Ghim ứng dụng">☆</button>
+                <div class="quick-access-icon">📈</div>
+                <div class="quick-access-info">
+                  <h3>Đọc Điện tâm đồ ECG</h3>
+                  <p>Hướng dẫn phân tích sóng và chẩn đoán ECG</p>
+                </div>
+              </a>
+
+              <!-- 3. Đọc phân tích tế bào máu CBC -->
+              <a href="pages/Kỹ năng/Cận lâm sàng/doc-tpttb-mau.html" class="quick-access-card"
+                style="--card-accent: var(--color-rose); --card-accent-hl: var(--color-rose-hl); --card-accent-rgb: var(--color-rose-rgb)">
+                <button class="pin-btn" data-url="pages/Kỹ năng/Cận lâm sàng/doc-tpttb-mau.html" data-title="Phân tích tế bào máu" data-category="Kỹ năng" data-icon="🩸" title="Ghim ứng dụng">☆</button>
+                <div class="quick-access-icon">🩸</div>
+                <div class="quick-access-info">
+                  <h3>Phân tích tế bào máu</h3>
+                  <p>Diễn giải kết quả tổng phân tích tế bào máu</p>
+                </div>
+              </a>
+
+              <!-- 4. Đọc sinh hóa chức năng Thận -->
+              <a href="pages/Kỹ năng/Cận lâm sàng/doc-sh-than.html" class="quick-access-card"
+                style="--card-accent: var(--color-teal); --card-accent-hl: var(--color-teal-hl); --card-accent-rgb: var(--color-teal-rgb)">
+                <button class="pin-btn" data-url="pages/Kỹ năng/Cận lâm sàng/doc-sh-than.html" data-title="Sinh hóa chức năng Thận" data-category="Kỹ năng" data-icon="🧪" title="Ghim ứng dụng">☆</button>
+                <div class="quick-access-icon">🧪</div>
+                <div class="quick-access-info">
+                  <h3>Sinh hóa chức năng Thận</h3>
+                  <p>Đánh giá Ure, Creatinin và độ lọc cầu thận eGFR</p>
+                </div>
+              </a>
+
+              <!-- 5. Xử trí Sốt xuất huyết Dengue -->
+              <a href="pages/Tiếp cận/3. Quản lý bệnh lý mạn tính & hệ thống/Huyết học & Truyền nhiễm/TC_SXHD.html"
+                class="quick-access-card"
+                style="--card-accent: var(--color-warning); --card-accent-hl: var(--color-warning-hl); --card-accent-rgb: var(--color-warning-rgb)">
+                <button class="pin-btn" data-url="pages/Tiếp cận/3. Quản lý bệnh lý mạn tính & hệ thống/Huyết học & Truyền nhiễm/TC_SXHD.html" data-title="Xử trí SXH Dengue" data-category="Tiếp cận" data-icon="🦟" title="Ghim ứng dụng">☆</button>
+                <div class="quick-access-icon">🦟</div>
+                <div class="quick-access-info">
+                  <h3>Xử trí SXH Dengue</h3>
+                  <p>Phác đồ tiếp cận, phân độ và điều trị SXHD</p>
+                </div>
+              </a>
+
+              <!-- 6. Lựa chọn kháng sinh kinh nghiệm -->
+              <a href="pages/Kỹ năng/Quản lý điều trị/Luachon_Khangsinh.html" class="quick-access-card"
+                style="--card-accent: var(--color-purple); --card-accent-hl: var(--color-purple-hl); --card-accent-rgb: var(--color-purple-rgb)">
+                <button class="pin-btn" data-url="pages/Kỹ năng/Quản lý điều trị/Luachon_Khangsinh.html" data-title="Kháng sinh kinh nghiệm" data-category="Dược lý" data-icon="💊" title="Ghim ứng dụng">☆</button>
+                <div class="quick-access-icon">💊</div>
+                <div class="quick-access-info">
+                  <h3>Kháng sinh kinh nghiệm</h3>
+                  <p>Hướng dẫn lựa chọn kháng sinh ban đầu theo đích</p>
+                </div>
+              </a>
+            </div>
+          </section>
+
+          <!-- 6. CLINIPORTAL PULSE — COMMAND CENTER DASHBOARD -->
           <section class="pulse-dashboard" id="pulse-dashboard-section">
             <h2 class="pulse-section-title"><i class="fa-solid fa-bolt" style="color: var(--pulse-amber);"></i> CliniPortal Pulse — Trung Tâm Điều Hành Lâm Sàng</h2>
             
             <!-- 1. DAILY EBM PEARL CARD -->
             <div class="pearl-card">
               <div class="pearl-header">
-                <span class="pearl-badge"><i class="fa-solid fa-gem"></i> Ngọc Ngọc Y Học Chứng Cứ Hôm Nay</span>
-                <span class="pearl-date" id="pearl-date">23/07/2026</span>
+                <span class="pearl-badge"><i class="fa-solid fa-gem"></i> Ngọc Y Học Chứng Cứ Hôm Nay</span>
+                <span class="pearl-date" id="pearl-date">--/--/----</span>
               </div>
-              <div style="font-size: 0.78rem; font-weight: 700; color: #7dd3fc; margin-bottom: 0.25rem;" id="pearl-spec">Truyền Nhiễm / Hồi Sức</div>
+              <div style="font-size: 0.78rem; font-weight: 700; color: #7dd3fc; margin-bottom: 0.25rem;" id="pearl-spec">Hồi Sức / Truyền Nhiễm</div>
               <div class="pearl-title" id="pearl-title">Sốc Nhiễm Khuẩn: Dược Động Học Kháng Sinh ICU</div>
               <div class="pearl-body" id="pearl-body">
                 Sốc nhiễm khuẩn gây biến đổi thể tích phân bố Vd và tăng thanh thải thận ARC. Luôn dùng LIỀU NẠP (Loading dose) đầy đủ và ưu tiên TRUYỀN KÉO DÀI Beta-lactam để đạt fT > MIC tối đa.
@@ -221,261 +471,9 @@
             <div id="smart-recommendations-container"></div>
           </section>
 
-
-          <!-- EMERGENCY PROTOCOLS BAR (PHÁC ĐỒ CẤP CỨU KHẨN CẤP) -->
-          <section class="emergency-section" id="emergency-section" aria-labelledby="emergency-title">
-            <div class="emergency-header">
-              <h2 class="emergency-title" id="emergency-title">
-                <i class="fa-solid fa-truck-medical"></i> Phác đồ Cấp cứu Khẩn cấp
-              </h2>
-              <span class="emergency-badge-pulse">1-Click Fast Action</span>
-            </div>
-            <div class="emergency-grid">
-              <a href="pages/Tiếp cận/3. Quản lý bệnh lý mạn tính & hệ thống/Huyết học & Truyền nhiễm/TC_SXHD.html" class="emergency-chip">
-                <div class="emergency-chip-icon"><i class="fa-solid fa-mosquito"></i></div>
-                <span>Cấp cứu SXHD nặng</span>
-              </a>
-              <a href="pages/Kỹ năng/Cận lâm sàng/doc-ecg-co-ban.html" class="emergency-chip">
-                <div class="emergency-chip-icon"><i class="fa-solid fa-heart-pulse"></i></div>
-                <span>Cấp cứu Đau ngực & ACS</span>
-              </a>
-              <a href="pages/Công cụ/Thận & Điện giải - toan kiểm/DG_ABG.html" class="emergency-chip">
-                <div class="emergency-chip-icon"><i class="fa-solid fa-mask-ventilator"></i></div>
-                <span>Toan kiềm & Suy hô hấp</span>
-              </a>
-              <a href="pages/Kỹ năng/Quản lý điều trị/Luachon_Khangsinh.html" class="emergency-chip">
-                <div class="emergency-chip-icon"><i class="fa-solid fa-capsules"></i></div>
-                <span>Sốc nhiễm khuẩn & KS</span>
-              </a>
-            </div>
-          </section>
-
-          <!-- PINNED FAVORITES / MỤC YÊU THÍCH -->
-          <section class="favorites-section" id="favoritesSection" aria-labelledby="favorites-title">
-            <h2 class="section-heading" id="favorites-title">⭐ Ứng dụng đã ghim (Yêu thích)</h2>
-            <div class="favorites-grid" id="favoritesGrid"></div>
-          </section>
-
-          <!-- QUICK ACCESS / APP THƯỜNG DÙNG -->
-          <section class="quick-access-section" id="quick-access-section" aria-labelledby="quick-access-title">
-            <h2 class="section-heading" id="quick-access-title">Ứng dụng thường dùng</h2>
-            <div class="quick-access-grid">
-              <!-- 1. Tra cứu mã ICD-10 -->
-              <a href="pages/Công cụ/Chung/Tracuu_maICD10.html" class="quick-access-card"
-                style="--card-accent: var(--color-primary); --card-accent-hl: var(--color-primary-hl); --card-accent-rgb: var(--color-primary-rgb)">
-                <button class="pin-btn" data-url="pages/Công cụ/Chung/Tracuu_maICD10.html" data-title="Tra cứu mã ICD-10" data-category="Công cụ" data-icon="🔍" title="Ghim ứng dụng">☆</button>
-                <div class="quick-access-icon">🔍</div>
-                <div class="quick-access-info">
-                  <h3>Tra cứu mã ICD-10</h3>
-                  <p>Tra cứu nhanh mã bệnh quốc tế nhanh chóng</p>
-                </div>
-              </a>
-
-              <!-- 2. Đọc Điện tâm đồ ECG -->
-              <a href="pages/Kỹ năng/Cận lâm sàng/doc-ecg-co-ban.html" class="quick-access-card"
-                style="--card-accent: var(--color-rose); --card-accent-hl: var(--color-rose-hl); --card-accent-rgb: var(--color-rose-rgb)">
-                <button class="pin-btn" data-url="pages/Kỹ năng/Cận lâm sàng/doc-ecg-co-ban.html" data-title="Đọc Điện tâm đồ ECG" data-category="Kỹ năng" data-icon="📈" title="Ghim ứng dụng">☆</button>
-                <div class="quick-access-icon">📈</div>
-                <div class="quick-access-info">
-                  <h3>Đọc Điện tâm đồ ECG</h3>
-                  <p>Hướng dẫn phân tích sóng và chẩn đoán ECG</p>
-                </div>
-              </a>
-
-              <!-- 3. Đọc phân tích tế bào máu CBC -->
-              <a href="pages/Kỹ năng/Cận lâm sàng/doc-tpttb-mau.html" class="quick-access-card"
-                style="--card-accent: var(--color-rose); --card-accent-hl: var(--color-rose-hl); --card-accent-rgb: var(--color-rose-rgb)">
-                <button class="pin-btn" data-url="pages/Kỹ năng/Cận lâm sàng/doc-tpttb-mau.html" data-title="Phân tích tế bào máu" data-category="Kỹ năng" data-icon="🩸" title="Ghim ứng dụng">☆</button>
-                <div class="quick-access-icon">🩸</div>
-                <div class="quick-access-info">
-                  <h3>Phân tích tế bào máu</h3>
-                  <p>Diễn giải kết quả tổng phân tích tế bào máu</p>
-                </div>
-              </a>
-
-              <!-- 4. Đọc sinh hóa chức năng Thận -->
-              <a href="pages/Kỹ năng/Cận lâm sàng/doc-sh-than.html" class="quick-access-card"
-                style="--card-accent: var(--color-teal); --card-accent-hl: var(--color-teal-hl); --card-accent-rgb: var(--color-teal-rgb)">
-                <button class="pin-btn" data-url="pages/Kỹ năng/Cận lâm sàng/doc-sh-than.html" data-title="Sinh hóa chức năng Thận" data-category="Kỹ năng" data-icon="🧪" title="Ghim ứng dụng">☆</button>
-                <div class="quick-access-icon">🧪</div>
-                <div class="quick-access-info">
-                  <h3>Sinh hóa chức năng Thận</h3>
-                  <p>Đánh giá Ure, Creatinin và độ lọc cầu thận eGFR</p>
-                </div>
-              </a>
-
-              <!-- 5. Xử trí Sốt xuất huyết Dengue -->
-              <a href="pages/Tiếp cận/3. Quản lý bệnh lý mạn tính & hệ thống/Huyết học & Truyền nhiễm/TC_SXHD.html"
-                class="quick-access-card"
-                style="--card-accent: var(--color-warning); --card-accent-hl: var(--color-warning-hl); --card-accent-rgb: var(--color-warning-rgb)">
-                <button class="pin-btn" data-url="pages/Tiếp cận/3. Quản lý bệnh lý mạn tính & hệ thống/Huyết học & Truyền nhiễm/TC_SXHD.html" data-title="Xử trí SXH Dengue" data-category="Tiếp cận" data-icon="🦟" title="Ghim ứng dụng">☆</button>
-                <div class="quick-access-icon">🦟</div>
-                <div class="quick-access-info">
-                  <h3>Xử trí SXH Dengue</h3>
-                  <p>Phác đồ tiếp cận, phân độ và điều trị SXHD</p>
-                </div>
-              </a>
-
-              <!-- 6. Lựa chọn kháng sinh kinh nghiệm -->
-              <a href="pages/Kỹ năng/Quản lý điều trị/Luachon_Khangsinh.html" class="quick-access-card"
-                style="--card-accent: var(--color-purple); --card-accent-hl: var(--color-purple-hl); --card-accent-rgb: var(--color-purple-rgb)">
-                <button class="pin-btn" data-url="pages/Kỹ năng/Quản lý điều trị/Luachon_Khangsinh.html" data-title="Kháng sinh kinh nghiệm" data-category="Dược lý" data-icon="💊" title="Ghim ứng dụng">☆</button>
-                <div class="quick-access-icon">💊</div>
-                <div class="quick-access-info">
-                  <h3>Kháng sinh kinh nghiệm</h3>
-                  <p>Hướng dẫn lựa chọn kháng sinh ban đầu theo đích</p>
-                </div>
-              </a>
-            </div>
-          </section>
-
-          <!-- TOOL GRID -->
-          <div class="main-content-grid" id="category-grid-section">
-            <div class="category-filter-wrapper">
-              <h2 class="section-heading">Phân nhóm chức năng chính</h2>
-              <div class="category-filter-top">
-                <div class="category-filter-pills">
-                  <button class="filter-pill active" data-filter="all">Tất cả (7)</button>
-                  <button class="filter-pill" data-filter="clinical">Lâm sàng</button>
-                  <button class="filter-pill" data-filter="tools">Công cụ</button>
-                  <button class="filter-pill" data-filter="pharma">Dược lý</button>
-                  <button class="filter-pill" data-filter="physio">Sinh lý</button>
-                  <button class="filter-pill" data-filter="ebm">Chứng cứ</button>
-                  <button class="filter-pill" data-filter="tcm">Đông y</button>
-                </div>
-                <div class="category-search-box">
-                  <i class="fa-solid fa-filter"></i>
-                  <input type="text" id="categorySearchInput" placeholder="Lọc nhóm ứng dụng..." aria-label="Lọc nhóm ứng dụng">
-                </div>
-              </div>
-            </div>
-
-            <div class="category-grid">
-
-              <!-- Card 1: Sinh lý & Sinh lý bệnh -->
-              <div class="tool-card card-green" data-category="physio">
-                <button class="pin-btn" data-url="pages/Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html" data-title="Sinh lý & Sinh lý bệnh" data-category="Sinh lý" data-icon="🧬" title="Ghim ứng dụng">☆</button>
-                <div class="card-top">
-                  <div class="tool-icon">🧬</div>
-                  <span class="tool-status active">Hoạt động</span>
-                </div>
-                <div class="tool-content">
-                  <h3>Sinh lý / sinh lý bệnh & cơ chế bệnh sinh</h3>
-                  <p>Trang tài liệu Sinh lý / sinh lý bệnh & cơ chế bệnh sinh.</p>
-                  <div class="tool-footer">
-                    <span class="tool-category">Physiology</span>
-                    <a href="pages/Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html">Truy cập ứng dụng</a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Card 2: Kỹ năng lâm sàng -->
-              <div class="tool-card card-rose" data-category="clinical">
-                <button class="pin-btn" data-url="pages/Kỹ năng/ky-nang.html" data-title="Kỹ năng Lâm sàng" data-category="Lâm sàng" data-icon="🩺" title="Ghim ứng dụng">☆</button>
-                <div class="card-top">
-                  <div class="tool-icon">🩺</div>
-                  <span class="tool-status active">Hoạt động</span>
-                </div>
-                <div class="tool-content">
-                  <h3>Kỹ năng Lâm sàng</h3>
-                  <p>Quy trình thăm khám 11 hệ cơ quan chuẩn y khoa, bảng kiểm bedside dựa trên Macleod.</p>
-                  <div class="tool-footer">
-                    <span class="tool-category">Clinical Skills</span>
-                    <a href="pages/Kỹ năng/ky-nang.html">Truy cập ứng dụng</a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Card 3: Tiếp cận vấn đề -->
-              <div class="tool-card card-green" data-category="clinical">
-                <button class="pin-btn" data-url="pages/Tiếp cận/tiep-can.html" data-title="Tiếp cận Lâm sàng" data-category="Lâm sàng" data-icon="📋" title="Ghim ứng dụng">☆</button>
-                <div class="card-top">
-                  <div class="tool-icon">📋</div>
-                  <span class="tool-status active">Hoạt động</span>
-                </div>
-                <div class="tool-content">
-                  <h3>Tiếp cận Lâm sàng</h3>
-                  <p>Phác đồ từng bước xử trí các hội chứng, triệu chứng cấp cứu và thường gặp.</p>
-                  <div class="tool-footer">
-                    <span class="tool-category">Algorithms</span>
-                    <a href="pages/Tiếp cận/tiep-can.html">Truy cập ứng dụng</a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Card 4: Công cụ lâm sàng -->
-              <div class="tool-card card-blue" data-category="tools">
-                <button class="pin-btn" data-url="pages/Công cụ/cong-cu.html" data-title="Công cụ Lâm sàng" data-category="Công cụ" data-icon="🧮" title="Ghim ứng dụng">☆</button>
-                <div class="card-top">
-                  <div class="tool-icon">🧮</div>
-                  <span class="tool-status active">Hoạt động</span>
-                </div>
-                <div class="tool-content">
-                  <h3>Công cụ Lâm sàng</h3>
-                  <p>Tính toán các thang điểm nặng, tiên lượng và hỗ trợ chẩn đoán chính xác tại giường.</p>
-                  <div class="tool-footer">
-                    <span class="tool-category">Calculators</span>
-                    <a href="pages/Công cụ/cong-cu.html">Truy cập ứng dụng</a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Card 5: Dược lý lâm sàng -->
-              <div class="tool-card card-purple" data-category="pharma">
-                <button class="pin-btn" data-url="pages/Dược lý/duoc-ly.html" data-title="Dược lý lâm sàng" data-category="Dược lý" data-icon="💊" title="Ghim ứng dụng">☆</button>
-                <div class="card-top">
-                  <div class="tool-icon">💊</div>
-                  <span class="tool-status active">Hoạt động</span>
-                </div>
-                <div class="tool-content">
-                  <h3>Dược lý lâm sàng</h3>
-                  <p>Tra cứu liều thuốc, chỉnh liều theo chức năng thận tối ưu PK/PD kháng sinh.</p>
-                  <div class="tool-footer">
-                    <span class="tool-category">Pharmacology</span>
-                    <a href="pages/Dược lý/duoc-ly.html">Truy cập ứng dụng</a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Card 6: Y học chứng cứ -->
-              <div class="tool-card card-amber" data-category="ebm">
-                <button class="pin-btn" data-url="pages/Y học chứng cứ/yhcc.html" data-title="Y học chứng cứ" data-category="Chứng cứ" data-icon="📄" title="Ghim ứng dụng">☆</button>
-                <div class="card-top">
-                  <div class="tool-icon">📄</div>
-                  <span class="tool-status active">Hoạt động</span>
-                </div>
-                <div class="tool-content">
-                  <h3>Y học chứng cứ</h3>
-                  <p>Tra cứu các bằng chứng y học hỗ trợ quyết định điều trị.</p>
-                  <div class="tool-footer">
-                    <span class="tool-category">Evidence</span>
-                    <a href="pages/Y học chứng cứ/yhcc.html">Truy cập ứng dụng</a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Card 7: Y học cổ truyền -->
-              <div class="tool-card card-teal" data-category="tcm">
-                <button class="pin-btn" data-url="pages/Y học cổ truyền/y-hoc-co-truyen.html" data-title="Y học cổ truyền" data-category="Đông y" data-icon="☯️" title="Ghim ứng dụng">☆</button>
-                <div class="card-top">
-                  <div class="tool-icon">☯️</div>
-                  <span class="tool-status active">Hoạt động</span>
-                </div>
-                <div class="tool-content">
-                  <h3>Y học cổ truyền</h3>
-                  <p>Kho lưu trữ kiến thức Y học cổ truyền: Xoa bóp, bấm huyệt, châm cứu và dược liệu.</p>
-                  <div class="tool-footer">
-                    <span class="tool-category">Traditional Med</span>
-                    <a href="pages/Y học cổ truyền/y-hoc-co-truyen.html">Truy cập ứng dụng</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
         </div>
 
-        <!-- Cột bên phải: Tiện ích mới -->
+        <!-- Cột bên phải: TIỆN ÍCH LÂM SÀNG (SECONDARY UTILITY PANEL) -->
         <aside class="homepage-right" id="widgets-section">
 
           <!-- Widget 1: Clinical Pearl of the Day -->
@@ -499,7 +497,7 @@
             </div>
           </section>
 
-          <!-- Widget: Recently Visited -->
+          <!-- Widget 2: Recently Visited -->
           <section class="widget-card" aria-label="Đã xem gần đây">
             <div class="widget-header">
               <h3 class="widget-title">
@@ -512,7 +510,7 @@
             </div>
           </section>
 
-          <!-- Widget 2: Medical Converter -->
+          <!-- Widget 3: Medical Converter -->
           <section class="widget-card converter-widget" aria-label="Chuyển đổi chỉ số y khoa">
             <div class="widget-header">
               <h3 class="widget-title">
@@ -573,7 +571,7 @@
             </div>
           </section>
 
-          <!-- Widget 3: Clinical Scratchpad -->
+          <!-- Widget 4: Clinical Scratchpad -->
           <section class="widget-card scratchpad-widget" aria-label="Ghi chú lâm sàng">
             <div class="widget-header">
               <h3 class="widget-title">

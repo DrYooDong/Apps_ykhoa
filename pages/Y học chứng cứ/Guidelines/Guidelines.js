@@ -4,7 +4,7 @@
     let isMobileView = window.innerWidth <= 768;
     
     // View state
-    let viewMode = 'full'; // 'full' or 'compact'
+    let viewMode = 'compact'; // 'full' or 'compact'
     let currentTab = 'list'; // 'list', 'saved', 'compare'
     let showAdvancedFilters = false;
 
@@ -37,7 +37,8 @@
       impact: null,
       period: null,
       asianData: false,
-      hasSubgroup: false
+      hasSubgroup: false,
+      hasSummary: false
     };
 
     let sortField = 'title';
@@ -507,6 +508,11 @@
         result = result.filter(s => s.subgroups && typeof s.subgroups === 'object' && Object.keys(s.subgroups).length > 0);
       }
 
+      // Has summary filter
+      if (filters.hasSummary) {
+        result = result.filter(s => s.file && s.file.trim() !== '');
+      }
+
       // Search filter
       if (filters.search) {
         const query = filters.search.toLowerCase().trim();
@@ -572,6 +578,25 @@
       renderTable();
     }
 
+    function toggleHasSummaryFilter() {
+      filters.hasSummary = !filters.hasSummary;
+      const btn = document.getElementById('filter-summary-btn');
+      const sideBtn = document.getElementById('sidebar-btn-summary');
+      if (btn) btn.classList.toggle('active', filters.hasSummary);
+      if (sideBtn) sideBtn.classList.toggle('active', filters.hasSummary);
+      renderTable();
+    }
+
+    function filterByHasSummary() {
+      document.querySelectorAll('.left-nav-link').forEach(l => l.classList.remove('active'));
+      const sideBtn = document.getElementById('sidebar-btn-summary');
+      if (sideBtn) sideBtn.classList.add('active');
+      filters.hasSummary = !filters.hasSummary;
+      const btn = document.getElementById('filter-summary-btn');
+      if (btn) btn.classList.toggle('active', filters.hasSummary);
+      renderTable();
+    }
+
     function resetFilters() {
       filters = {
         search: '',
@@ -580,10 +605,16 @@
         design: null,
         impact: null,
         period: null,
-        asianData: false
+        asianData: false,
+        hasSubgroup: false,
+        hasSummary: false
       };
       document.getElementById('search-input').value = '';
       document.getElementById('asian-data-filter').checked = false;
+      const btn = document.getElementById('filter-summary-btn');
+      const sideBtn = document.getElementById('sidebar-btn-summary');
+      if (btn) btn.classList.remove('active');
+      if (sideBtn) sideBtn.classList.remove('active');
       renderFilterPills();
       renderTable();
     }
@@ -742,6 +773,10 @@
         const forestData = parseForestData(study.keyResults);
         const forestPlotHtml = forestData ? `<div class="forest-plot-inline">${renderForestPlotSVG(forestData)}</div>` : '';
 
+        // Subgroup Count & inline button
+        const sgCount = (study.subgroups && typeof study.subgroups === 'object') ? Object.keys(study.subgroups).length : 0;
+        const sgInlineBtn = sgCount > 0 ? `<button type="button" class="badge-subgroup-inline" onclick="event.stopPropagation(); openSubgroupModal('${study.id}', event)" title="Xem phân tích ${sgCount} phân nhóm">🧬 Subgroup (${sgCount})</button>` : '';
+
         // Columns HTML segments
         const sourceTypeCell = columnVisibility.sourceType ? `<td><span class="badge badge-src-${study.sourceType}">${srcTypeConfig.name}</span></td>` : '';
         const specialtyCell = columnVisibility.specialty ? `<td><span class="badge badge-${study.specialty}">${spec.name}</span></td>` : '';
@@ -789,6 +824,8 @@
                 <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
                   <a class="study-title" href="#" onclick="event.preventDefault(); toggleExpandRow('${study.id}', event)">${escapeHtml(study.title)}</a>
                   ${staleInline}
+                  ${study.file ? `<a href="${study.file}" class="badge-summary-inline" onclick="event.stopPropagation()" title="Mở bài viết tóm tắt chi tiết">📝 Tóm tắt</a>` : ''}
+                  ${sgInlineBtn}
                 </div>
                 <span class="study-drug">${escapeHtml(study.drug || 'N/A')} • ${escapeHtml(study.organization || 'N/A')} (${study.year})</span>
               </div>
@@ -859,11 +896,7 @@
                     </div>
                   </div>
                   
-
-
-                    ${renderSubgroupPanel(study)}
-
-                                    <div class="detail-sidebar">
+                  <div class="detail-sidebar">
                     <div class="detail-meta-list">
                       <div class="detail-item">
                         <span class="detail-label">Phân loại & Thiết kế</span>
@@ -886,6 +919,7 @@
                     <div class="detail-actions">
                       ${study.sourceUrl ? `<a href="${study.sourceUrl}" target="_blank" class="btn btn-small">📄 Bài báo gốc</a>` : ''}
                       ${study.file ? `<a href="${study.file}" class="btn btn-small btn-primary">📝 Tóm tắt</a>` : ''}
+                      ${sgCount > 0 ? `<button class="btn btn-small" style="color:#0891b2;border-color:rgba(8,145,178,0.4);" onclick="event.stopPropagation();openSubgroupModal('${study.id}',event)">🧬 Subgroup (${sgCount})</button>` : ''}
                       <button class="btn btn-small" onclick="openEditModal('${study.id}', event)">✏️ Sửa</button>
                       <button class="btn btn-small" style="color: var(--color-practice-changing); border-color: rgba(220,38,38,0.3);" onclick="deleteStudy('${study.id}', event)">🗑️ Xóa</button>
                     </div>
@@ -1013,12 +1047,19 @@
 
     function updateBadges() {
       const savedCount = studies.filter(s => s.bookmarked).length;
-      document.getElementById('saved-count').textContent = savedCount;
+      const summaryCount = studies.filter(s => s.file && s.file.trim() !== '').length;
+      if (document.getElementById('saved-count')) document.getElementById('saved-count').textContent = savedCount;
       if (document.getElementById('saved-count-sidebar')) {
         document.getElementById('saved-count-sidebar').textContent = savedCount;
       }
       if (document.getElementById('total-count-sidebar')) {
         document.getElementById('total-count-sidebar').textContent = studies.length;
+      }
+      if (document.getElementById('summary-count-sidebar')) {
+        document.getElementById('summary-count-sidebar').textContent = summaryCount;
+      }
+      if (typeof updateSubgroupSidebarCount === 'function') {
+        updateSubgroupSidebarCount();
       }
     }
 
@@ -1354,6 +1395,10 @@
             file: item.file || '',
             asianData: item.asianData || false,
             bookmarked: item.bookmarked || false,
+            subgroups: (item.subgroups && typeof item.subgroups === 'object' && !Array.isArray(item.subgroups)) ? item.subgroups
+                       : (typeof item.subgroups === 'string' && item.subgroups ? (() => { try { return JSON.parse(item.subgroups); } catch(e) { return null; } })() : null),
+            matrixEndpoints: (item.matrixEndpoints && typeof item.matrixEndpoints === 'object') ? item.matrixEndpoints
+                       : (typeof item.matrixEndpoints === 'string' && item.matrixEndpoints ? (() => { try { return JSON.parse(item.matrixEndpoints); } catch(e) { return null; } })() : null),
             createdAt: item.createdAt || new Date().toISOString()
           };
           studies.push(study);
@@ -1375,6 +1420,40 @@
         alert(`✅ Đã nhập ${imported} tài liệu thành công!`);
       } else {
         alert('⚠️ Không tìm thấy tài liệu hợp lệ nào.');
+      }
+    }
+
+    function fillSampleJSON() {
+      const sample = [
+        {
+          "title": "Thử nghiệm DAPA-CKD (Dapagliflozin trên Bệnh Thận Mạn)",
+          "author": "Heerspink HJL et al.",
+          "drug": "Dapagliflozin 10mg QD",
+          "sourceType": "intl-study",
+          "specialty": "renal",
+          "design": "rct",
+          "intervention": "Dapagliflozin 10mg QD vs Placebo",
+          "primaryEndpoint": "Tiêu chí gộp: Giảm ≥50% eGFR, suy thận giai đoạn cuối, tử vong tim mạch/thận",
+          "keyResults": "HR 0.61 (95% CI 0.51-0.72, p < 0.001)",
+          "impact": "practice-changing",
+          "year": 2020,
+          "organization": "NEJM / AstraZeneca",
+          "sampleSize": 4304,
+          "population": "Bệnh nhân bệnh thận mạn (eGFR 25-75 mL/min/1.73m²)",
+          "summary": "Dapagliflozin giảm 39% nguy cơ suy thận tiến triển hoặc tử vong ở bệnh nhân CKD bất kể có bị ĐTĐ hay không.",
+          "subgroups": {
+            "Có Đái tháo đường": "HR 0.64 (95% CI 0.52-0.79, p<0.001)",
+            "Không Đái tháo đường": "HR 0.50 (95% CI 0.35-0.72, p<0.001)",
+            "Châu Á": "HR 0.60 (95% CI 0.43-0.82, p=0.002)",
+            "eGFR < 45 mL/min": "OR 0.63 (95% CI 0.51-0.78, p=0.001)"
+          },
+          "asianData": true
+        }
+      ];
+      const el = document.getElementById('json-text');
+      if (el) {
+        el.value = JSON.stringify(sample, null, 2);
+        el.focus();
       }
     }
 
@@ -1400,68 +1479,106 @@
      * Hỗ trợ format: HR 0.86 (95% CI 0.74-0.99) hoặc OR 0.75 [0.65, 0.86]
      * @returns { estimate, lower, upper, label } hoặc null nếu không parse được
      */
+    /**
+     * Parse HR/OR/RR/aHR/aOR/RD/ARR/MD/SMD/p-value + 95% CI
+     * Hỗ trợ cả dạng chuỗi (ví dụ: "OR 0.75 (95% CI 0.65-0.86, p=0.002)")
+     * lẫn dạng JSON Object trực tiếp (ví dụ: {"label":"OR", "estimate":0.75, "lower":0.65, "upper":0.86, "p":"0.002"})
+     * @returns { label, estimate, lower, upper, pValue, isSig } hoặc null
+     */
     function parseForestData(keyResults) {
-      if (!keyResults || typeof keyResults !== 'string') return null;
+      if (!keyResults) return null;
 
-      // 9 patterns hỗ trợ: HR/OR/RR/aHR/aOR/ARR/SMD/MD/WMD/IRR/PR
-      // Tất cả đều là regex literal đã kiểm tra, tránh lỗi escape.
-      const patterns = [
-        // 1a. "HR 0.86 (95% CI 0.74-0.99)" — ngoặc tròn, CI trong ngoặc, dấu gạch ngang
-        /\b(aHR|aOR|HR|OR|RR|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR)\s*[=:]?\s*(-?[\d.]+)\s*\([^)]{0,25}CI[^\d)]{0,6}(-?[\d.]+)\s*[-\u2013\u2014]\s*(-?[\d.]+)\s*\)/i,
-        // 1b. "OR 1.23 (95% CI: 1.05, 1.44)" — ngoặc tròn, dấu phẩy
-        /\b(aHR|aOR|HR|OR|RR|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR)\s*[=:]?\s*(-?[\d.]+)\s*\([^)]{0,25}CI[^\d)]{0,6}(-?[\d.]+)\s*,\s*(-?[\d.]+)\s*\)/i,
-        // 2. "HR 0.86 (0.74-0.99)" — ngoặc tròn thuần túy
-        /\b(aHR|aOR|HR|OR|RR|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR)\s*[=:]?\s*(-?[\d.]+)\s*\(\s*(-?[\d.]+)\s*[-\u2013\u2014]\s*(-?[\d.]+)\s*\)/i,
-        // 3. "HR 0.86 (0.74, 0.99)" — ngoặc tròn, dấu phẩy
-        /\b(aHR|aOR|HR|OR|RR|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR)\s*[=:]?\s*(-?[\d.]+)\s*\(\s*(-?[\d.]+)\s*,\s*(-?[\d.]+)\s*\)/i,
-        // 4. "HR 0.62 [0.49-0.77]" hoặc "[95% CI: 1.05, 1.44]"
-        /\b(aHR|aOR|HR|OR|RR|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR)\s*[=:]?\s*(-?[\d.]+)\s*\[\s*(?:[^\]]{0,20}?CI[^\d\]]{0,6})?(-?[\d.]+)\s*[-\u2013\u2014,]\s*(-?[\d.]+)\s*\]/i,
-        // 5. "RR 1.51, 95% CI 1.05-2.18" hoặc "RR 0.91; 95% CI 0.84-0.99"
-        /\b(aHR|aOR|HR|OR|RR|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR)\s*[=:]?\s*(-?[\d.]+)\s*[,;]\s*(?:95%\s*)?CI\s*[=:]?\s*(-?[\d.]+)\s*[-\u2013\u2014]\s*(-?[\d.]+)/i,
-        // 6. "RR 0.91; 95% CI (0.84-0.99)"
-        /\b(aHR|aOR|HR|OR|RR|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR)\s*[=:]?\s*(-?[\d.]+)\s*[,;]\s*(?:95%\s*)?CI\s*\(?\s*(-?[\d.]+)\s*[-\u2013\u2014]\s*(-?[\d.]+)\s*\)?/i,
-        // 7. "HR 0.86 95% CI 0.74-0.99" — phân cách khoảng trắng
-        /\b(aHR|aOR|HR|OR|RR|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR)\s*[=:]?\s*(-?[\d.]+)\s+(?:95%\s*)?CI\s*[=:]?\s*\[?\s*(-?[\d.]+)\s*[-\u2013\u2014]\s*(-?[\d.]+)\]?/i,
-        // 8. "HR=0.86; 95% CI [0.74-0.99]" hoặc "... to ..."
-        /\b(aHR|aOR|HR|OR|RR|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR)\s*=\s*(-?[\d.]+)[\s;,]+(?:95%\s*)?CI\s*\[?\s*(-?[\d.]+)\s*(?:[-\u2013\u2014]|to)\s*(-?[\d.]+)\]?/i,
-        // 9. "pooled RR = 0.91 (0.84-0.99)"
-        /(?:pooled|combined)?\s*(aHR|aOR|HR|OR|RR|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR)\s*=?\s*(-?[\d.]+)\s*\(\s*(-?[\d.]+)\s*[-\u2013\u2014]\s*(-?[\d.]+)\s*\)/i,
-      ];
+      let label = '', estimate = NaN, lower = NaN, upper = NaN, pValue = null;
 
-      for (const pattern of patterns) {
-        const match = keyResults.match(pattern);
-        if (!match) continue;
-        const label    = (match[1] || '').toUpperCase();
-        const estimate = parseFloat(match[2]);
-        const lower    = parseFloat(match[3]);
-        const upper    = parseFloat(match[4]);
-        if (isNaN(estimate) || isNaN(lower) || isNaN(upper)) continue;
-        // Sanity: lower ≤ estimate ≤ upper
-        if (lower > estimate || estimate > upper) continue;
-        // CI không quá rộng (tránh parse nhầm năm, tháng, số lớn)
-        if ((upper - lower) > 15) continue;
-        // MD/SMD/WMD cho phép âm; HR/OR/RR phải dương
-        const allowNeg = ['MD', 'SMD', 'WMD'].includes(label);
-        if (!allowNeg && lower < 0) continue;
-        if (!allowNeg && estimate === 0) continue;
-        return { label, estimate, lower, upper };
+      // 1. Nếu keyResults là JSON object hoặc chuỗi JSON
+      let jsonObj = null;
+      if (typeof keyResults === 'object') {
+        jsonObj = keyResults;
+      } else if (typeof keyResults === 'string' && keyResults.trim().startsWith('{')) {
+        try { jsonObj = JSON.parse(keyResults.trim()); } catch(e) {}
       }
-      return null;
+
+      if (jsonObj) {
+        label = (jsonObj.label || jsonObj.type || jsonObj.metric || 'OR').toUpperCase();
+        estimate = parseFloat(jsonObj.estimate ?? jsonObj.val ?? jsonObj.value ?? jsonObj.or ?? jsonObj.rr ?? jsonObj.hr);
+        lower = parseFloat(jsonObj.lower ?? (Array.isArray(jsonObj.ci) ? jsonObj.ci[0] : jsonObj.ciLower));
+        upper = parseFloat(jsonObj.upper ?? (Array.isArray(jsonObj.ci) ? jsonObj.ci[1] : jsonObj.ciUpper));
+        if (jsonObj.p !== undefined || jsonObj.pValue !== undefined) {
+          const rawP = jsonObj.p ?? jsonObj.pValue;
+          pValue = typeof rawP === 'number' ? (rawP < 0.001 ? '<0.001' : rawP.toString()) : String(rawP);
+        }
+      } else if (typeof keyResults === 'string') {
+        // Tách p-value trước nếu có trong chuỗi (ví dụ: p=0.04, p < 0.001, p=0.002, p < 0.05)
+        const pMatch = keyResults.match(/\bp\s*([<>=]=?)\s*([\d.]+)/i);
+        if (pMatch) {
+          const op = pMatch[1].replace('=', '');
+          pValue = op ? `${op}${pMatch[2]}` : pMatch[2];
+        }
+
+        // List các regex pattern hỗ trợ mở rộng cho OR, RR, HR, aOR, aHR, RD, ARR...
+        const patterns = [
+          // 1a. "HR 0.86 (95% CI 0.74-0.99)" hoặc "HR 0.64 (95% CI 0.52-0.79, p<0.001)"
+          /\b(aHR|aOR|HR|OR|RR|RD|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR|ORR|CR)\s*[=:]?\s*(-?[\d.]+)\s*\([^)]{0,35}CI[^\d)]{0,6}(-?[\d.]+)\s*[-\u2013\u2014,]\s*(-?[\d.]+)[^)]*\)/i,
+          // 1b. "OR 1.23 (95% CI: 1.05 to 1.44)"
+          /\b(aHR|aOR|HR|OR|RR|RD|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR|ORR|CR)\s*[=:]?\s*(-?[\d.]+)\s*\([^)]{0,35}CI[^\d)]{0,6}(-?[\d.]+)\s+to\s+(-?[\d.]+)[^)]*\)/i,
+          // 2. "HR 0.86 (0.74-0.99)" — ngoặc tròn thuần túy
+          /\b(aHR|aOR|HR|OR|RR|RD|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR|ORR|CR)\s*[=:]?\s*(-?[\d.]+)\s*\(\s*(-?[\d.]+)\s*[-\u2013\u2014,]\s*(-?[\d.]+)[^)]*\)/i,
+          // 3. "HR 0.62 [0.49-0.77]" hoặc "[95% CI: 1.05, 1.44]"
+          /\b(aHR|aOR|HR|OR|RR|RD|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR|ORR|CR)\s*[=:]?\s*(-?[\d.]+)\s*\[\s*(?:[^\]]{0,25}?CI[^\d\]]{0,6})?(-?[\d.]+)\s*[-\u2013\u2014,]\s*(-?[\d.]+)[^\]]*\]/i,
+          // 4. "RR 1.51, 95% CI 1.05-2.18" hoặc "RR 0.91; 95% CI 0.84-0.99"
+          /\b(aHR|aOR|HR|OR|RR|RD|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR|ORR|CR)\s*[=:]?\s*(-?[\d.]+)\s*[,;]\s*(?:95%\s*)?CI\s*[=:]?\s*(-?[\d.]+)\s*[-\u2013\u2014,]\s*(-?[\d.]+)/i,
+          // 5. "RR 0.91; 95% CI (0.84-0.99)"
+          /\b(aHR|aOR|HR|OR|RR|RD|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR|ORR|CR)\s*[=:]?\s*(-?[\d.]+)\s*[,;]\s*(?:95%\s*)?CI\s*\(?\s*(-?[\d.]+)\s*[-\u2013\u2014]\s*(-?[\d.]+)\s*\)?/i,
+          // 6. "HR 0.86 95% CI 0.74-0.99" — phân cách khoảng trắng
+          /\b(aHR|aOR|HR|OR|RR|RD|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR|ORR|CR)\s*[=:]?\s*(-?[\d.]+)\s+(?:95%\s*)?CI\s*[=:]?\s*\[?\s*(-?[\d.]+)\s*[-\u2013\u2014]\s*(-?[\d.]+)\]?/i,
+          // 7. "HR=0.86; 95% CI [0.74-0.99]" hoặc "... to ..."
+          /\b(aHR|aOR|HR|OR|RR|RD|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR|ORR|CR)\s*=\s*(-?[\d.]+)[\s;,]+(?:95%\s*)?CI\s*\[?\s*(-?[\d.]+)\s*(?:[-\u2013\u2014]|to)\s*(-?[\d.]+)\]?/i,
+          // 8. "pooled RR = 0.91 (0.84-0.99)"
+          /(?:pooled|combined)?\s*(aHR|aOR|HR|OR|RR|RD|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR|ORR|CR)\s*=?\s*(-?[\d.]+)\s*\(\s*(-?[\d.]+)\s*[-\u2013\u2014]\s*(-?[\d.]+)[^)]*\)/i,
+        ];
+
+        for (const pattern of patterns) {
+          const match = keyResults.match(pattern);
+          if (!match) continue;
+          label    = (match[1] || '').toUpperCase();
+          estimate = parseFloat(match[2]);
+          lower    = parseFloat(match[3]);
+          upper    = parseFloat(match[4]);
+          if (!isNaN(estimate) && !isNaN(lower) && !isNaN(upper)) break;
+        }
+      }
+
+      if (isNaN(estimate) || isNaN(lower) || isNaN(upper)) return null;
+      if (lower > estimate || estimate > upper) return null;
+      if ((upper - lower) > 25) return null;
+
+      const allowNeg = ['MD', 'SMD', 'WMD', 'RD'].includes(label);
+      if (!allowNeg && lower < 0) return null;
+      if (!allowNeg && estimate === 0) return null;
+
+      let isSig = false;
+      if (pValue) {
+        const numP = parseFloat(pValue.replace(/[^\d.]/g, ''));
+        if (!isNaN(numP)) {
+          isSig = numP < 0.05 || pValue.includes('<');
+        }
+      }
+
+      return { label, estimate, lower, upper, pValue, isSig };
     }
 
     /**
-     * Render SVG Forest Plot mini (width=260px, height=44px)
+     * Render SVG Forest Plot mini (width=270px, height=46px)
      */
     function renderForestPlotSVG(forestData) {
       if (!forestData) return '';
-      const { label, estimate, lower, upper } = forestData;
+      const { label, estimate, lower, upper, pValue, isSig } = forestData;
 
-      const W = 260, H = 44;
+      const W = 270, H = 46;
       const PAD_L = 10, PAD_R = 10;
       const plotW = W - PAD_L - PAD_R;
-      const cy = H / 2;
+      const cy = (H / 2) - 2;
 
-      // Determine axis range: centre around 1.0, extend to cover CI with 20% padding
       const maxDist = Math.max(Math.abs(upper - 1.0), Math.abs(1.0 - lower)) * 1.3 + 0.15;
       const axisMin = Math.max(0.05, 1.0 - maxDist);
       const axisMax = 1.0 + maxDist;
@@ -1470,21 +1587,17 @@
         return PAD_L + ((val - axisMin) / (axisMax - axisMin)) * plotW;
       }
 
-      const x0 = toX(1.0);          // null line x
-      const xE = toX(estimate);     // estimate x
-      const xL = toX(lower);        // lower CI x
-      const xU = toX(upper);        // upper CI x
+      const x0 = toX(1.0);
+      const xE = toX(estimate);
+      const xL = toX(lower);
+      const xU = toX(upper);
 
-      // Colour: green (benefit) if estimate < 1, red (harm) if > 1, grey if == 1
       const isGreen = estimate < 1.0;
       const dotColor = isGreen ? '#16a34a' : estimate > 1.0 ? '#dc2626' : '#6b7280';
       const ciColor  = isGreen ? '#86efac' : estimate > 1.0 ? '#fca5a5' : '#cbd5e1';
 
-      // Label shown: e.g. "HR 0.86 [0.74–0.99]"
-      const labelText = `${label} ${estimate.toFixed(2)} [${lower.toFixed(2)}–${upper.toFixed(2)}]`;
-
-      // Axis ticks
-      const ticks = [axisMin, 1.0, axisMax].map(v => Math.round(v * 100) / 100);
+      const pStr = pValue ? ` (p${pValue.startsWith('<') || pValue.startsWith('>') ? '' : '='}${pValue})` : '';
+      const labelText = `${label} ${estimate.toFixed(2)} [${lower.toFixed(2)}–${upper.toFixed(2)}]${pStr}`;
 
       return `
         <svg class="forest-plot-svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}"
@@ -1492,22 +1605,22 @@
           <!-- Axis line -->
           <line x1="${PAD_L}" y1="${cy}" x2="${W - PAD_R}" y2="${cy}" stroke="#cbd5e1" stroke-width="1"/>
           <!-- Null line at 1.0 -->
-          <line x1="${x0}" y1="${cy - 14}" x2="${x0}" y2="${cy + 14}" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3,2"/>
+          <line x1="${x0}" y1="${cy - 12}" x2="${x0}" y2="${cy + 12}" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3,2"/>
           <!-- CI whiskers -->
           <line x1="${xL}" y1="${cy}" x2="${xU}" y2="${cy}" stroke="${ciColor}" stroke-width="4" stroke-linecap="round"/>
           <!-- Tails -->
-          <line x1="${xL}" y1="${cy - 5}" x2="${xL}" y2="${cy + 5}" stroke="${dotColor}" stroke-width="2"/>
-          <line x1="${xU}" y1="${cy - 5}" x2="${xU}" y2="${cy + 5}" stroke="${dotColor}" stroke-width="2"/>
+          <line x1="${xL}" y1="${cy - 4}" x2="${xL}" y2="${cy + 4}" stroke="${dotColor}" stroke-width="2"/>
+          <line x1="${xU}" y1="${cy - 4}" x2="${xU}" y2="${cy + 4}" stroke="${dotColor}" stroke-width="2"/>
           <!-- Estimate diamond -->
-          <polygon points="${xE},${cy - 7} ${xE + 7},${cy} ${xE},${cy + 7} ${xE - 7},${cy}"
+          <polygon points="${xE},${cy - 6} ${xE + 6},${cy} ${xE},${cy + 6} ${xE - 6},${cy}"
                    fill="${dotColor}" opacity="0.95"/>
           <!-- Label text -->
-          <text x="${W / 2}" y="${H - 3}" text-anchor="middle"
+          <text x="${W / 2}" y="${H - 2}" text-anchor="middle"
                 font-family="monospace" font-size="9" fill="${dotColor}" font-weight="700">${labelText}</text>
           <!-- Axis ticks labels -->
-          <text x="${PAD_L}" y="${cy - 8}" font-family="monospace" font-size="8" fill="#94a3b8">${axisMin.toFixed(2)}</text>
-          <text x="${x0}" y="${cy - 8}" text-anchor="middle" font-family="monospace" font-size="8" fill="#94a3b8">1.0</text>
-          <text x="${W - PAD_R}" y="${cy - 8}" text-anchor="end" font-family="monospace" font-size="8" fill="#94a3b8">${axisMax.toFixed(2)}</text>
+          <text x="${PAD_L}" y="${cy - 6}" font-family="monospace" font-size="7.5" fill="#94a3b8">${axisMin.toFixed(2)}</text>
+          <text x="${x0}" y="${cy - 6}" text-anchor="middle" font-family="monospace" font-size="7.5" fill="#94a3b8">1.0</text>
+          <text x="${W - PAD_R}" y="${cy - 6}" text-anchor="end" font-family="monospace" font-size="7.5" fill="#94a3b8">${axisMax.toFixed(2)}</text>
         </svg>
       `;
     }
@@ -1952,45 +2065,78 @@
       if (!sg || typeof sg !== 'object' || Object.keys(sg).length === 0) return '';
       const entries = Object.entries(sg);
       const overall = parseForestData(study.keyResults);
-      const rows = entries.map(([name, result]) => {
+
+      const cards = entries.map(([name, result]) => {
         const fd = parseForestData(result);
         const hasAsia = /ch.u.+./i.test(name) || /asia/i.test(name);
-        const badge = hasAsia ? '<span class="sg-badge sg-badge-asia">\uD83C\uDF0F Ch\u00E2u \u00C1</span>' : '';
-        const rowClass = fd ? (fd.estimate < 1 ? 'sg-benefit' : fd.estimate > 1 ? 'sg-harm' : '') : '';
-        return `<tr class="sg-row ${rowClass}">
-            <td class="sg-name-cell">${badge}<span class="sg-name">${escapeHtml(name)}</span></td>
-            <td class="sg-result-cell"><code class="sg-result-code">${escapeHtml(result)}</code></td>
-            <td class="sg-plot-cell">${fd ? renderSubgroupForestRow(fd, overall) : '<span class="sg-no-data">—</span>'}</td>
-          </tr>`;
+        const asiaBadge = hasAsia ? '<span class="sg-badge sg-badge-asia">🌏 Châu Á</span>' : '';
+
+        let verdictBadge = '';
+        let cardStatusClass = '';
+        if (fd) {
+          if (fd.estimate < 1.0) {
+            const pct = Math.round((1.0 - fd.estimate) * 100);
+            verdictBadge = `<span class="sg-tag sg-tag-benefit">🟢 Lợi ích -${pct}%</span>`;
+            cardStatusClass = 'card-benefit';
+          } else if (fd.estimate > 1.0) {
+            const pct = Math.round((fd.estimate - 1.0) * 100);
+            verdictBadge = `<span class="sg-tag sg-tag-harm">🔴 Nguy cơ +${pct}%</span>`;
+            cardStatusClass = 'card-harm';
+          } else {
+            verdictBadge = `<span class="sg-tag sg-tag-neutral">⚪ Trung tính</span>`;
+            cardStatusClass = 'card-neutral';
+          }
+        }
+
+        const pBadge = (fd && fd.pValue) ? `<span class="sg-p-badge ${fd.isSig ? 'sig' : 'ns'}">p${fd.pValue.startsWith('<')||fd.pValue.startsWith('>')?'':'='}${fd.pValue}</span>` : '';
+
+        return `
+          <div class="sg-card ${cardStatusClass}">
+            <div class="sg-card-top">
+              <div class="sg-card-title">
+                ${asiaBadge}
+                <span>${escapeHtml(name)}</span>
+              </div>
+              ${verdictBadge}
+            </div>
+
+            <div class="sg-card-middle">
+              <div class="sg-card-code-wrap">
+                <code class="sg-card-code">${escapeHtml(result)}</code>
+                ${pBadge}
+              </div>
+            </div>
+
+            <div class="sg-card-bottom">
+              ${fd ? renderSubgroupForestRow(fd, overall) : '<span class="sg-no-data">Không có thông số sơ đồ</span>'}
+            </div>
+          </div>
+        `;
       }).join('');
-      return `<div class="sg-panel">
+
+      return `
+        <div class="sg-panel">
           <div class="sg-panel-header">
-            <span class="sg-panel-icon">\uD83E\uDDEC</span>
-            <span class="sg-panel-title">Ph\u00E2n t\u00EDch Subgroup</span>
-            <span class="sg-panel-count">${entries.length} ph\u00E2n nh\u00F3m</span>
+            <div class="sg-panel-title-group" style="display:flex;align-items:center;gap:6px;">
+              <span class="sg-panel-icon">🧬</span>
+              <span class="sg-panel-title">Phân tích Subgroup (${entries.length} phân nhóm)</span>
+            </div>
+            <div class="sg-legend">
+              <span class="sg-legend-item"><span class="sg-dot sg-dot-green"></span>Lợi ích (<1.0)</span>
+              <span class="sg-legend-item"><span class="sg-dot sg-dot-red"></span>Nguy cơ (>1.0)</span>
+              <span class="sg-legend-item"><span class="sg-dot sg-dot-grey"></span>Tổng thể (vạch nét đứt)</span>
+            </div>
           </div>
-          <div class="sg-table-wrapper">
-            <table class="sg-table">
-              <thead>
-                <tr>
-                  <th style="width:190px;">Ph\u00E2n nh\u00F3m</th>
-                  <th style="width:210px;">K\u1EBFt qu\u1EA3</th>
-                  <th>Forest Plot mini</th>
-                </tr>
-              </thead>
-              <tbody>${rows}</tbody>
-            </table>
+
+          <div class="sg-grid-container">
+            ${cards}
           </div>
-          <div class="sg-legend">
-            <span class="sg-legend-item"><span class="sg-dot sg-dot-green"></span>L\u1EE3i \u00EDch (estimate &lt; 1)</span>
-            <span class="sg-legend-item"><span class="sg-dot sg-dot-red"></span>H\u1EA1i (estimate &gt; 1)</span>
-            <span class="sg-legend-item"><span class="sg-dot sg-dot-grey"></span>T\u1ED5ng th\u1EC3 (overall)</span>
-          </div>
-        </div>`;
+        </div>
+      `;
     }
 
     function renderSubgroupForestRow(fd, overall) {
-      const W = 310, H = 36, PL = 8, PR = 8, cy = H / 2, plotW = W - PL - PR;
+      const W = 280, H = 38, PL = 8, PR = 8, cy = (H / 2) - 2, plotW = W - PL - PR;
       const allVals = [fd.lower, fd.estimate, fd.upper];
       if (overall) allVals.push(overall.lower, overall.estimate, overall.upper);
       const axisMin = Math.max(0.05, Math.min(...allVals) * 0.75);
@@ -2000,22 +2146,42 @@
       const x1 = toX(1.0), xE = toX(fd.estimate), xL = toX(fd.lower), xU = toX(fd.upper);
       const isGreen = fd.estimate < 1.0;
       const dotColor = isGreen ? '#16a34a' : fd.estimate > 1.0 ? '#dc2626' : '#6b7280';
-      const ciColor  = isGreen ? '#bbf7d0' : fd.estimate > 1.0 ? '#fecaca' : '#cbd5e1';
+      const ciColor  = isGreen ? '#86efac' : fd.estimate > 1.0 ? '#fca5a5' : '#cbd5e1';
       const overallLine = overall
         ? `<line x1="${toX(overall.estimate).toFixed(1)}" y1="${cy-10}" x2="${toX(overall.estimate).toFixed(1)}" y2="${cy+10}" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3,2"/>`
         : '';
-      return `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" class="sg-forest-svg" style="display:block;overflow:visible;">
-          <line x1="${PL}" y1="${cy}" x2="${W-PR}" y2="${cy}" stroke="#e2e8f0" stroke-width="1"/>
-          <line x1="${x1.toFixed(1)}" y1="${cy-12}" x2="${x1.toFixed(1)}" y2="${cy+12}" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,2"/>
+      return `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" class="sg-forest-svg" style="display:block;overflow:visible;">
+          <line x1="${PL}" y1="${cy}" x2="${W-PR}" y2="${cy}" stroke="#cbd5e1" stroke-width="1"/>
+          <line x1="${x1.toFixed(1)}" y1="${cy-10}" x2="${x1.toFixed(1)}" y2="${cy+10}" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,2"/>
           ${overallLine}
-          <line x1="${xL.toFixed(1)}" y1="${cy}" x2="${xU.toFixed(1)}" y2="${cy}" stroke="${ciColor}" stroke-width="5" stroke-linecap="round"/>
+          <line x1="${xL.toFixed(1)}" y1="${cy}" x2="${xU.toFixed(1)}" y2="${cy}" stroke="${ciColor}" stroke-width="4" stroke-linecap="round"/>
           <line x1="${xL.toFixed(1)}" y1="${cy-4}" x2="${xL.toFixed(1)}" y2="${cy+4}" stroke="${dotColor}" stroke-width="1.5"/>
           <line x1="${xU.toFixed(1)}" y1="${cy-4}" x2="${xU.toFixed(1)}" y2="${cy+4}" stroke="${dotColor}" stroke-width="1.5"/>
-          <polygon points="${xE.toFixed(1)},${(cy-6).toFixed(1)} ${(xE+6).toFixed(1)},${cy} ${xE.toFixed(1)},${(cy+6).toFixed(1)} ${(xE-6).toFixed(1)},${cy}" fill="${dotColor}" opacity="0.92"/>
-          <text x="${PL}" y="${H-2}" font-size="7" fill="#94a3b8" font-family="monospace">${axisMin.toFixed(2)}</text>
-          <text x="${x1.toFixed(1)}" y="${H-2}" text-anchor="middle" font-size="7" fill="#94a3b8" font-family="monospace">1.0</text>
-          <text x="${W-PR}" y="${H-2}" text-anchor="end" font-size="7" fill="#94a3b8" font-family="monospace">${axisMax.toFixed(2)}</text>
+          <polygon points="${xE.toFixed(1)},${(cy-6).toFixed(1)} ${(xE+6).toFixed(1)},${cy} ${xE.toFixed(1)},${(cy+6).toFixed(1)} ${(xE-6).toFixed(1)},${cy}" fill="${dotColor}" opacity="0.95"/>
+          <text x="${PL}" y="${H-2}" font-size="7.5" fill="#94a3b8" font-family="monospace">${axisMin.toFixed(2)}</text>
+          <text x="${x1.toFixed(1)}" y="${H-2}" text-anchor="middle" font-size="7.5" fill="#94a3b8" font-family="monospace">1.0</text>
+          <text x="${W-PR}" y="${H-2}" text-anchor="end" font-size="7.5" fill="#94a3b8" font-family="monospace">${axisMax.toFixed(2)}</text>
         </svg>`;
+    }
+
+    function openSubgroupModal(id, event) {
+      if (event) event.stopPropagation();
+      const study = studies.find(s => s.id === id);
+      if (!study) return;
+
+      const titleEl = document.getElementById('subgroup-modal-title');
+      const bodyEl = document.getElementById('subgroup-modal-body');
+      
+      if (titleEl) titleEl.innerHTML = `🧬 Phân Tích Subgroup: <span style="color:var(--accent);">${escapeHtml(study.title)}</span>`;
+      if (bodyEl) bodyEl.innerHTML = renderSubgroupPanel(study);
+      
+      const modal = document.getElementById('subgroup-modal');
+      if (modal) modal.classList.add('active');
+    }
+
+    function closeSubgroupModal() {
+      const modal = document.getElementById('subgroup-modal');
+      if (modal) modal.classList.remove('active');
     }
 
     function filterBySubgroupData() {
@@ -2166,6 +2332,7 @@
           closeAddModal();
           closeImportModal();
           closeSupabaseModal();
+          closeSubgroupModal();
         }
       });
     });

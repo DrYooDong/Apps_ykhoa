@@ -124,6 +124,13 @@
       .topnav-divider,.topnav-badge{display:none}
       .hero-title{font-size:1.7rem}
     }
+
+    /* STICKY QUICK LINKS MENU (MỤC LỤC) */
+    .quickmenu { position: sticky; top: 56px; z-index: 100; background: var(--surface); border-bottom: 1px solid var(--border-light); overflow-x: auto; display: flex; white-space: nowrap; -webkit-overflow-scrolling: touch; transition: background var(--tr), border-color var(--tr); }
+    .quickmenu-inner { max-width: 960px; margin: 0 auto; display: flex; width: 100%; padding: 0 1.5rem; }
+    .quickmenu-item { display: inline-block; padding: 0.9rem 1.1rem; color: var(--text-muted); text-decoration: none; font-size: 0.8rem; font-weight: 600; border-bottom: 3px solid transparent; transition: all var(--tr); }
+    .quickmenu-item:hover { color: var(--accent); }
+    .quickmenu-item.active { color: var(--accent); border-bottom-color: var(--accent); }
   </style>
 </head>
 <body>
@@ -169,11 +176,24 @@
   </div>
 </div>
 
+<!-- QUICK MENU (MỤC LỤC) -->
+<div class="quickmenu" id="quickmenu">
+  <div class="quickmenu-inner">
+    <a href="#sec-pico" class="quickmenu-item active">PICO</a>
+    <a href="#sec-findings" class="quickmenu-item">Kết quả chính</a>
+    <a href="#sec-forest" class="quickmenu-item">Forest Plot</a>
+    <a href="#sec-results" class="quickmenu-item">Bảng kết quả</a>
+    <a href="#sec-impact" class="quickmenu-item">Ảnh hưởng lâm sàng</a>
+    <a href="#sec-safety" class="quickmenu-item">An toàn & TDBL</a>
+    <a href="#sec-citation" class="quickmenu-item">Trích dẫn</a>
+  </div>
+</div>
+
 <!-- PAGE CONTENT -->
 <div class="page-content">
 
   <!-- PICO -->
-  <div class="sec-card">
+  <div class="sec-card" id="sec-pico">
     <div class="sec-hdr">
       <span>📋</span>
       <span class="sec-title">Cấu trúc PICO</span>
@@ -209,7 +229,7 @@
   </div>
 
   <!-- KEY FINDINGS -->
-  <div class="sec-card">
+  <div class="sec-card" id="sec-findings">
     <div class="sec-hdr">
       <span>🏆</span>
       <span class="sec-title">Kết quả Chính — Landmark Findings</span>
@@ -243,12 +263,7 @@
   </div>
 
   <!-- FOREST PLOT -->
-  <!--
-    Axis: 0.40 → 1.30 (range 0.90) mapped to x=20–280 (range 260)
-    toX(v) = 20 + (v-0.40)/0.90 * 260
-    Null line at 1.0 → x = 20 + (0.60/0.90)*260 = 193.3 ≈ 193
-  -->
-  <div class="sec-card">
+  <div class="sec-card" id="sec-forest">
     <div class="sec-hdr">
       <span>📐</span>
       <span class="sec-title">Forest Plot — Hazard Ratio (95% CI) · Empagliflozin vs Placebo</span>
@@ -278,7 +293,6 @@
         </div>
 
         <!-- Row 2: CV death: HR 0.62 [0.49–0.77] -->
-        <!-- 0.49→46, 0.62→84, 0.77→127 -->
         <div class="fp-row">
           <div class="fp-name"><strong>Tử vong Tim mạch</strong>CV Death</div>
           <div class="fp-svg">
@@ -299,7 +313,6 @@
         </div>
 
         <!-- Row 3: HF hosp: HR 0.65 [0.50–0.85] -->
-        <!-- 0.50→49, 0.65→92, 0.85→150 -->
         <div class="fp-row">
           <div class="fp-name"><strong>NV Suy tim</strong>HF Hospitalization</div>
           <div class="fp-svg">
@@ -320,7 +333,6 @@
         </div>
 
         <!-- Row 4: All-cause mortality: HR 0.68 [0.57–0.82] -->
-        <!-- 0.57→69, 0.68→101, 0.82→141 -->
         <div class="fp-row">
           <div class="fp-name"><strong>TV mọi nguyên nhân</strong>All-cause Mortality</div>
           <div class="fp-svg">
@@ -346,7 +358,7 @@
   </div>
 
   <!-- DETAILED RESULTS TABLE -->
-  <div class="sec-card">
+  <div class="sec-card" id="sec-results">
     <div class="sec-hdr"><span>📊</span><span class="sec-title">Bảng Kết quả Chi tiết</span></div>
     <div style="overflow-x:auto;">
       <table class="res-table">
@@ -416,7 +428,7 @@
   </div>
 
   <!-- CLINICAL IMPACT -->
-  <div class="sec-card">
+  <div class="sec-card" id="sec-impact">
     <div class="sec-hdr"><span>🏥</span><span class="sec-title">Ảnh hưởng Lâm sàng &amp; Thay đổi Thực hành</span></div>
     <div class="sec-body">
       <div class="impact-card">
@@ -437,7 +449,7 @@
   </div>
 
   <!-- SAFETY -->
-  <div class="sec-card">
+  <div class="sec-card" id="sec-safety">
     <div class="sec-hdr"><span>⚠️</span><span class="sec-title">An toàn &amp; Tác dụng Bất lợi Đáng chú ý</span></div>
     <div class="sec-body">
       <div class="safety-grid">
@@ -450,7 +462,7 @@
   </div>
 
   <!-- CITATION -->
-  <div class="sec-card">
+  <div class="sec-card" id="sec-citation">
     <div class="sec-hdr"><span>📖</span><span class="sec-title">Trích dẫn / Citation</span></div>
     <div class="sec-body">
       <div class="citation-box">
@@ -470,6 +482,36 @@
           ← Quay về Kho Guidelines
         </a>
       </div>
+
+      <!-- TÀI LIỆU LIÊN QUAN (4 MODULE HỆ SINH THÁI) -->
+      <section class="related-links-section" style="margin-top: 2rem; width: 100%; border-top: 1px dashed var(--border-light); padding-top: 1.5rem;">
+        <h4 class="related-links-title" style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.9rem; margin-bottom: 1rem; color: var(--text);">
+          🌐 Xem thêm trong Hệ sinh thái 4 Module CliniPortal
+        </h4>
+        <div class="related-links-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
+          <a href="../../../../Công cụ/Thận/CKD_EPI.html" class="related-link-card" style="display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border-light); background: var(--surface-2); padding: 1rem; border-radius: 12px; text-decoration: none; color: var(--text);">
+            <div class="related-card-content">
+              <span class="related-card-badge cong-cu" style="background: var(--blue-bg); color: var(--blue); padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; text-transform: uppercase;">🧮 Công cụ</span>
+              <h5 style="font-size: 13px; font-weight: 700; margin-top: 4px; margin-bottom: 2px;">Tính eGFR (CKD-EPI 2021)</h5>
+              <p style="font-size: 11px; color: var(--text-muted); margin: 0;">Đánh giá mức lọc cầu thận trước và trong khi dùng SGLT2i.</p>
+            </div>
+          </a>
+          <a href="../../../../Tiếp cận/tiep-can.html" class="related-link-card" style="display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border-light); background: var(--surface-2); padding: 1rem; border-radius: 12px; text-decoration: none; color: var(--text);">
+            <div class="related-card-content">
+              <span class="related-card-badge ky-nang" style="background: var(--green-bg); color: var(--green); padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; text-transform: uppercase;">🗺️ Tiếp cận</span>
+              <h5 style="font-size: 13px; font-weight: 700; margin-top: 4px; margin-bottom: 2px;">Lưu đồ Tiếp cận Đái Tháo Đường</h5>
+              <p style="font-size: 11px; color: var(--text-muted); margin: 0;">Thuật toán cá thể hóa phác đồ SGLT2i &amp; GLP-1 RA theo ADA/EASD.</p>
+            </div>
+          </a>
+          <a href="../../../../Dược lý/duoc-ly.html" class="related-link-card" style="display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border-light); background: var(--surface-2); padding: 1rem; border-radius: 12px; text-decoration: none; color: var(--text);">
+            <div class="related-card-content">
+              <span class="related-card-badge duoc-ly" style="background: var(--orange-bg); color: var(--orange); padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; text-transform: uppercase;">💊 Dược lý</span>
+              <h5 style="font-size: 13px; font-weight: 700; margin-top: 4px; margin-bottom: 2px;">Dược Lý Thuốc SGLT2i</h5>
+              <p style="font-size: 11px; color: var(--text-muted); margin: 0;">Cơ chế ức chế SGLT2 tại ống lượn gần, liều dùng &amp; cảnh báo DKA.</p>
+            </div>
+          </a>
+        </div>
+      </section>
     </div>
   </div>
 

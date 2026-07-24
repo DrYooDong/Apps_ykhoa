@@ -4,21 +4,86 @@
 .homepage-wrapper {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 1.25rem;
   align-items: start;
 }
 
 @media (min-width: 1200px) {
   .homepage-wrapper {
-    grid-template-columns: 1fr 360px;
+    grid-template-columns: 1fr 340px;
   }
 }
 
 .homepage-left {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 1.25rem;
   min-width: 0;
+}
+
+/* ============================================================
+   SLIM CLINICAL COMMAND HERO BANNER
+   ============================================================ */
+.hero-dashboard {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 50%, #0f172a 100%);
+  border-radius: var(--radius-xl);
+  padding: 1.25rem 1.5rem;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.3);
+}
+
+.hero-dashboard .hero-intro {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-dashboard h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  margin: 0.35rem 0 0.2rem 0;
+  text-transform: uppercase;
+}
+
+.hero-dashboard p {
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 0.75rem;
+}
+
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.hero-stat {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(8px);
+}
+
+.hero-stat-number {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 800;
+  color: #7dd3fc;
+}
+
+.hero-stat-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .homepage-right {

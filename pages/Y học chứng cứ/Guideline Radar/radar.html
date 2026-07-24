@@ -785,7 +785,10 @@
             <button class="action-btn-link open-algo-btn" data-algo="af">
               <i class="fa-solid fa-sitemap"></i> So sánh Thuật toán Chẩn đoán
             </button>
-          </div>
+          
+            <a href="../Guidelines/Guidelines.html?study=study_ks_bn_nang" class="action-btn-link" style="text-decoration:none; color: var(--radar-primary); font-weight:700;">
+              <i class="fa-solid fa-book-medical"></i> Xem Trong Kho Guidelines
+            </a></div>
 
           <!-- DEEP DIVE SECTION -->
           <div class="deepdive-content">
@@ -861,7 +864,10 @@
             <button class="action-btn-link open-algo-btn" data-algo="copd">
               <i class="fa-solid fa-sitemap"></i> So sánh Phân nhóm ABCD vs ABE
             </button>
-          </div>
+          
+            <a href="../Guidelines/Guidelines.html?study=study_byt_copd_2026" class="action-btn-link" style="text-decoration:none; color: var(--radar-primary); font-weight:700;">
+              <i class="fa-solid fa-book-medical"></i> Xem Trong Kho Guidelines
+            </a></div>
 
           <div class="deepdive-content">
             <div class="deepdive-title"><i class="fa-solid fa-flask"></i> Nghiên cứu ETHOS & IMPACT Trials (N=10,300)</div>
@@ -925,7 +931,10 @@
             <button class="action-btn-link toggle-deepdive-btn">
               <i class="fa-solid fa-microscope"></i> Xem Bằng Chứng Landmark Trials & Forest Plot <i class="fa-solid fa-chevron-down"></i>
             </button>
-          </div>
+          
+            <a href="../Guidelines/Guidelines.html?study=study_empareg" class="action-btn-link" style="text-decoration:none; color: var(--radar-primary); font-weight:700;">
+              <i class="fa-solid fa-book-medical"></i> Xem Trong Kho Guidelines
+            </a></div>
 
           <div class="deepdive-content">
             <div class="deepdive-title"><i class="fa-solid fa-flask"></i> Chuỗi Thử Nghiệm Landmark: EMPA-REG, DAPA-CKD, FLOW</div>
@@ -1369,7 +1378,7 @@
             });
             newHtml += `</div>`;
 
-            modalAlgoGrid.innerHTML = oldHtml + newHtml;
+            modalAlgoGrid.innerHTML = oldHtml + newHtml + '<div style="grid-column: 1 / -1; margin-top:1rem; text-align:right;"><a href="../Guidelines/Guidelines.html?mode=matrix" class="action-btn-link" style="display:inline-flex; align-items:center; gap:8px; text-decoration:none; padding:0.6rem 1.2rem; background:var(--radar-primary); color:white; border-radius:10px; font-weight:700;"><i class="fa-solid fa-table-cells"></i> Mở Bảng Ma Trận Chứng Cứ Heatmap trong Kho Guidelines &rarr;</a></div>';
             modalBackdrop.classList.add("open");
           }
         });

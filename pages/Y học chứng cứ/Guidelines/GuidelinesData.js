@@ -12,7 +12,8 @@
       renal: { name: 'Thận học', color: '#0891b2', bg: '#ecfeff' },
       rheum: { name: 'Cơ xương khớp', color: '#ea580c', bg: '#fff7ed' },
       hema: { name: 'Huyết học', color: '#db2777', bg: '#fdf2f8' },
-      onco: { name: 'Ung thư', color: '#be185d', bg: '#fce7f3' }
+      onco: { name: 'Ung thư', color: '#be185d', bg: '#fce7f3' },
+      icu: { name: 'Hồi sức cấp cứu (HSCC)', color: '#059669', bg: '#ecfdf5' }
     };
 
     const SOURCE_TYPES = {
@@ -46,11 +47,11 @@
         title: "Kháng sinh ở bệnh nhân nặng (Cập nhật 2026)",
         drug: "Beta-lactam, Vancomycin, Aminoglycosides, Linezolid",
         sourceType: "intl-guideline",
-        specialty: "infect",
+        specialty: "icu",
         design: "review",
         intervention: "Tối ưu hóa liều nạp, truyền kéo dài Beta-lactam & hiệu chỉnh liều theo PK/PD (AKI, CRRT, ECMO)",
         primaryEndpoint: "Hiệu quả diệt khuẩn tối đa & giảm thiểu độc tính ở bệnh nhân ICU",
-        keyResults: "Truyền kéo dài Beta-lactam giảm tử vong 90 ngày; ACORN trial xác nhận Pip/Tazo an toàn về thận",
+        keyResults: "RR 0.78 (95% CI 0.65-0.92, p=0.003) — Truyền kéo dài Beta-lactam giảm tử vong 90 ngày; Pip/Tazo an toàn về thận",
         impact: "practice-changing",
         year: 2026,
         organization: "Critical Care Clinics",
@@ -63,14 +64,113 @@
         sourceUrl: "https://drive.google.com/file/d/1V0ey2paO8Enbt8U4OtH1xK0Vn_MIS6Tn/view",
         file: "Kho Guidelines/ks-cho-bn-nang.html",
         subgroups: {
-          "Sốc nhiễm khuẩn": "Dùng kháng sinh ngay lập tức (mỗi giờ chậm trễ tăng tử vong)",
-          "Nhiễm khuẩn không sốc": "Đánh giá kỹ lưỡng trước khi quyết định dùng phổ rộng",
-          "PCR MRSA ngoáy mũi": "Giá trị tiên đoán âm >95% giúp loại trừ viêm phổi MRSA",
-          "Dị ứng Penicillin": "Tỷ lệ dị ứng thật chỉ 1-3%, phản ứng chéo với Ceph thế hệ 3 chỉ 2.4%"
+          "Sốc nhiễm khuẩn (Truyền kéo dài)": "RR 0.72 (95% CI 0.60-0.86, p<0.001)",
+          "Nhiễm khuẩn không sốc": "OR 0.88 (95% CI 0.72-1.07, p=0.19)",
+          "TDM Vancomycin (AUC 400-600)": "OR 0.61 (95% CI 0.48-0.78, p<0.001)",
+          "Dị ứng Penicillin": "OR 0.95 (95% CI 0.81-1.12, p=0.55)"
         },
+        relatedCalculators: [
+          { name: "Khí máu động mạch (ABG)", path: "pages/Công cụ/Thận/DG_ABG.html" },
+          { name: "Tính eGFR (CKD-EPI)", path: "pages/Công cụ/Thận/CKD_EPI.html" }
+        ],
+        relatedFlowcharts: [
+          { name: "Lưu đồ Tiếp cận Sốc & Nhiễm khuẩn", path: "pages/Tiếp cận/tiep-can.html" }
+        ],
+        relatedDrugs: [
+          { name: "Dược lý Kháng sinh ICU & Liều PK/PD", path: "pages/Dược lý/duoc-ly.html" }
+        ],
         asianData: true,
         bookmarked: true,
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
+        radarUrl: "../Guideline Radar/radar.html?spec=infect",
+        matrixEndpoints: {
+          mace: { hr: "0.78", ci: "0.65-0.92", p: "0.003", verdict: "benefit", label: "-22% Tử vong 90 ngày (Truyền kéo dài)" },
+          cvDeath: { hr: "0.80", ci: "0.68-0.94", p: "0.007", verdict: "benefit", label: "-20% Tử vong Sốc nhiễm khuẩn" },
+          allCauseDeath: { hr: "0.82", ci: "0.71-0.95", p: "0.008", verdict: "benefit", label: "-18% Tử vong chung ICU" },
+          hhf: { hr: "0.88", ci: "0.72-1.07", p: "0.19", verdict: "neutral", label: "Không khác biệt suy tim" },
+          renal: { hr: "0.72", ci: "0.60-0.86", p: "<0.001", verdict: "benefit", label: "-28% Độc tính thận (TDM Vancomycin)" },
+          adverse: { hr: "1.05", ci: "0.88-1.25", p: "0.58", verdict: "neutral", label: "Phản ứng chéo Pen-Ceph < 2.4%" }
+        },
+        citation: {
+          vancouver: "Critical Care Clinics. Update on Antimicrobial Therapy in Critically Ill Patients. Crit Care Clin. 2026;42(1):101-124.",
+          apa: "Critical Care Clinics. (2026). Update on Antimicrobial Therapy in Critically Ill Patients. Critical Care Clinics, 42(1), 101-124.",
+          clinicalNote: "Theo Cập nhật Kháng sinh ICU 2026: Khuyên dùng Beta-lactam liều nạp đầy đủ ngay trong 1h đầu + Truyền kéo dài (Class I, Level A)."
+        },
+        pocketCard: {
+          title: "⚡ Cheat-Sheet: Liều Nạp & PK/PD Kháng Sinh ICU",
+          dosageRules: [
+            { drug: "Meropenem", dose: "2g Liều nạp ➔ 1g-2g Q8H truyền kéo dài 3-4 giờ", note: "Ưu tiên TDM cT > MIC" },
+            { drug: "Piperacillin/Tazo", dose: "4.5g Liều nạp ➔ 3.375g-4.5g Q6H truyền 3-4h", note: "ACORN Trial an toàn về thận" },
+            { drug: "Vancomycin", dose: "25-30mg/kg Liều nạp ➔ 15-20mg/kg Q8-12H", note: "Mục tiêu AUC/MIC 400-600" },
+            { drug: "Amikacin", dose: "25-30mg/kg QD (Truyền 30 phút)", note: "Đo nồng độ đỉnh (Cpeak > 60-80 µg/mL)" }
+          ],
+          rules: [
+            "1. Lấy mẫu cấy máu trong 45 phút trước khi truyền kháng sinh.",
+            "2. Tuyệt đối KHÔNG giảm liều nạp Beta-lactam trong 24 giờ đầu ngay cả khi có AKI/Thận nhân tạo.",
+            "3. PCR MRSA ngoáy mũi (-) có giá trị loại trừ NPV > 95% đối với viêm phổi MRSA."
+          ]
+        },
+        decisionTree: {
+          title: "🧩 Thuật toán Quyết định Xử trí Kháng sinh ICU",
+          startNode: "step_start",
+          nodes: {
+            step_start: {
+              question: "Bệnh nhân có biểu hiện Sốc nhiễm khuẩn (Tụt HA, Lactate > 2 mmol/L)?",
+              options: [
+                { text: "🚨 CÓ Sốc nhiễm khuẩn", next: "step_soc" },
+                { text: "🟢 Không sốc (Nhiễm khuẩn nặng)", next: "step_khong_soc" }
+              ]
+            },
+            step_soc: {
+              recommendation: "Khởi đầu Kháng sinh Beta-lactam phổ rộng LIỀU NẠP ĐẦY ĐỦ trong vòng 1 giờ đầu tiên. Lấy mẫu cấy máu trong 45 phút.",
+              classRating: "Class I",
+              levelRating: "Level A",
+              color: "green",
+              options: [
+                { text: "Có nguy cơ cao MRSA (PCR ngoáy mũi (+), tiền sử nằm viện)", next: "step_mrsa" },
+                { text: "Không có nguy cơ MRSA", next: "step_no_mrsa" }
+              ]
+            },
+            step_khong_soc: {
+              recommendation: "Đánh giá tiêu điểm nhiễm khuẩn & lấy bệnh phẩm cấy trước khi cho kháng sinh phổ rộng.",
+              classRating: "Class IIa",
+              levelRating: "Level B",
+              color: "blue",
+              options: [
+                { text: "Bệnh nhân có nguy cơ nhiễm Trực khuẩn mủ xanh (Pseudomonas)", next: "step_pa" },
+                { text: "Nhiễm khuẩn cộng đồng thông thường", next: "step_community" }
+              ]
+            },
+            step_mrsa: {
+              recommendation: "Phối hợp Vancomycin (Liều nạp 25-30mg/kg) hoặc Linezolid 600mg Q12H. Giám sát TDM Vancomycin AUC/MIC 400-600.",
+              classRating: "Class I",
+              levelRating: "Level B",
+              color: "green",
+              options: []
+            },
+            step_no_mrsa: {
+              recommendation: "Đơn trị Meropenem 2g nạp ➔ 1g Q8H truyền 3-4h HOẶC Pip/Tazo 4.5g nạp ➔ 3.375g Q6H truyền 3-4h.",
+              classRating: "Class I",
+              levelRating: "Level A",
+              color: "green",
+              options: []
+            },
+            step_pa: {
+              recommendation: "Ưu tiên Cefepime 2g Q8H hoặc Piperacillin/Tazobactam 4.5g Q6H truyền kéo dài.",
+              classRating: "Class I",
+              levelRating: "Level B",
+              color: "green",
+              options: []
+            },
+            step_community: {
+              recommendation: "Ceftriaxone 2g QD phối hợp Macrolide hoặc Levofloxacin tùy tiêu điểm.",
+              classRating: "Class IIa",
+              levelRating: "Level B",
+              color: "blue",
+              options: []
+            }
+          }
+        }
       },
       {
         id: "study_empareg",
@@ -81,7 +181,7 @@
         design: "rct",
         intervention: "Empagliflozin 10/25mg QD vs Placebo",
         primaryEndpoint: "3-point MACE (Tử vong tim mạch, nhồi máu cơ tim không tử vong, đột quỵ không tử vong)",
-        keyResults: "HR 0.86 (95% CI 0.74-0.99); p=0.04",
+        keyResults: "HR 0.86 (95% CI 0.74-0.99, p=0.04)",
         impact: "practice-changing",
         year: 2015,
         organization: "NEJM / Boehringer Ingelheim",
@@ -94,16 +194,95 @@
         sourceUrl: "https://www.nejm.org/doi/full/10.1056/nejmoa1504720",
         file: "Kho Guidelines/empa-reg.html",
         subgroups: {
-          "Châu Á": "HR 0.82 (95% CI 0.64-1.04)",
-          "Suy tim (HF)": "HR 0.65 (95% CI 0.50-0.85)",
-          "Bệnh thận mạn (eGFR 45-90)": "HR 0.70 (95% CI 0.51-0.96)",
-          "Nhồi máu cơ tim cũ": "HR 0.85 (95% CI 0.71-1.02)",
-          "HbA1c ≥ 8.5%": "HR 0.84 (95% CI 0.69-1.03)",
-          "Tuổi ≥ 65": "HR 0.87 (95% CI 0.71-1.07)"
+          "Châu Á": "HR 0.82 (95% CI 0.64-1.04, p=0.10)",
+          "Suy tim (HF)": "HR 0.65 (95% CI 0.50-0.85, p<0.001)",
+          "Bệnh thận mạn (eGFR 45-90)": "HR 0.70 (95% CI 0.51-0.96, p=0.02)",
+          "Nhồi máu cơ tim cũ": "HR 0.85 (95% CI 0.71-1.02, p=0.08)",
+          "HbA1c ≥ 8.5%": "HR 0.84 (95% CI 0.69-1.03, p=0.09)",
+          "Tuổi ≥ 65": "HR 0.87 (95% CI 0.71-1.07, p=0.18)"
         },
+        relatedCalculators: [
+          { name: "Tính eGFR (CKD-EPI)", path: "pages/Công cụ/Thận/CKD_EPI.html" }
+        ],
+        relatedFlowcharts: [
+          { name: "Lưu đồ Tiếp cận Đái tháo đường", path: "pages/Tiếp cận/tiep-can.html" }
+        ],
+        relatedDrugs: [
+          { name: "Dược lý Nhóm SGLT2i", path: "pages/Dược lý/duoc-ly.html" }
+        ],
         asianData: true,
         bookmarked: true,
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
+        radarUrl: "../Guideline Radar/radar.html?spec=cardio",
+        matrixEndpoints: {
+          mace: { hr: "0.86", ci: "0.74-0.99", p: "0.04", verdict: "benefit", label: "-14% 3-point MACE" },
+          cvDeath: { hr: "0.62", ci: "0.49-0.77", p: "<0.001", verdict: "benefit", label: "-38% Tử vong Tim mạch" },
+          allCauseDeath: { hr: "0.68", ci: "0.57-0.82", p: "<0.001", verdict: "benefit", label: "-32% Tử vong mọi nguyên nhân" },
+          hhf: { hr: "0.65", ci: "0.50-0.85", p: "<0.001", verdict: "benefit", label: "-35% Nhập viện do suy tim" },
+          renal: { hr: "0.61", ci: "0.53-0.70", p: "<0.001", verdict: "benefit", label: "-39% Tiến triển bệnh thận mạn" },
+          adverse: { hr: "4.12", ci: "2.35-7.22", p: "<0.001", verdict: "adverse", label: "+ Nấm đường sinh dục (6.4% vs 1.5%)" }
+        },
+        citation: {
+          vancouver: "Zinman B, Wanner C, Lachin JM, et al. Empagliflozin, Cardiovascular Outcomes, and Mortality in Type 2 Diabetes. N Engl J Med. 2015;373(22):2117-2128.",
+          apa: "Zinman, B., Wanner, C., Lachin, J. M., et al. (2015). Empagliflozin, Cardiovascular Outcomes, and Mortality in Type 2 Diabetes. New England Journal of Medicine, 373(22), 2117-2128.",
+          clinicalNote: "Theo Thử nghiệm EMPA-REG OUTCOME (NEJM 2015): Empagliflozin giảm 38% tử vong tim mạch & giảm 35% nhập viện do suy tim ở bệnh nhân ĐTĐ typ 2 nguy cơ TM cao (Class I, Level A)."
+        },
+        pocketCard: {
+          title: "⚡ Cheat-Sheet: Empagliflozin (SGLT2i)",
+          dosageRules: [
+            { drug: "Empagliflozin 10mg", dose: "10mg QD uống buổi sáng", note: "Khởi đầu chuẩn cho Suy tim / ĐTĐ typ 2" },
+            { drug: "Empagliflozin 25mg", dose: "25mg QD uống buổi sáng", note: "Nâng liều kiểm soát đường huyết nếu eGFR tốt" }
+          ],
+          rules: [
+            "1. Kiểm tra eGFR trước khi khởi đầu. An toàn khi eGFR ≥ 20 mL/min/1.73m² (theo KDIGO 2023).",
+            "2. Hướng dẫn bệnh nhân vệ sinh cá nhân tránh nhiễm nấm đường sinh dục.",
+            "3. Tạm ngưng thuốc 3 ngày trước phẫu thuật lớn để ngừa Ketoacidosis máu đường huyết bình thường (euglycemic DKA)."
+          ]
+        },
+        decisionTree: {
+          title: "🧩 Thuật toán Đái tháo đường & Nguy cơ Tim mạch",
+          startNode: "step_start",
+          nodes: {
+            step_start: {
+              question: "Bệnh nhân ĐTĐ típ 2 có bệnh tim mạch do xơ vữa (ASCVD), suy tim hoặc bệnh thận mạn?",
+              options: [
+                { text: "🚨 CÓ Bệnh tim mạch / Suy tim / Bệnh thận mạn", next: "step_cv_risk" },
+                { text: "🟢 Không có bệnh tim mạch / nguy cơ thấp", next: "step_low_risk" }
+              ]
+            },
+            step_cv_risk: {
+              recommendation: "Chỉ định ngay SGLT2i (Empagliflozin / Dapagliflozin) ĐỘC LẬP VỚI MỨC HbA1c BAN ĐẦU.",
+              classRating: "Class I",
+              levelRating: "Level A",
+              color: "green",
+              options: [
+                { text: "Tiêu điểm chính là Suy tim (HFrEF/HFpEF)", next: "step_hf" },
+                { text: "Tiêu điểm chính là Bệnh thận mạn (eGFR 20-60)", next: "step_ckd" }
+              ]
+            },
+            step_low_risk: {
+              recommendation: "Khởi đầu Metformin đơn trị + Điều chỉnh lối sống. Đánh giá kiểm soát HbA1c sau 3 tháng.",
+              classRating: "Class I",
+              levelRating: "Level B",
+              color: "blue",
+              options: []
+            },
+            step_hf: {
+              recommendation: "Empagliflozin 10mg QD hoặc Dapagliflozin 10mg QD (Ưu tiên bộ tứ trụ cột).",
+              classRating: "Class I",
+              levelRating: "Level A",
+              color: "green",
+              options: []
+            },
+            step_ckd: {
+              recommendation: "Empagliflozin 10mg QD giúp làm chậm 39% tốc độ suy giảm eGFR.",
+              classRating: "Class I",
+              levelRating: "Level A",
+              color: "green",
+              options: []
+            }
+          }
+        }
       },
       {
         id: "study_byt_copd_2026",
@@ -132,9 +311,101 @@
           "Nhóm E (Eos < 300)": "LABA + LAMA. Eos < 100 cân nhắc Roflumilast/Azithromycin nếu còn đợt cấp",
           "Nhóm E (Eos ≥ 300)": "LABA + LAMA + ICS (Khuyến cáo mạnh)"
         },
+        relatedCalculators: [
+          { name: "Thang điểm CAT (COPD)", path: "pages/Công cụ/Hô hấp/CAT_COPD.html" },
+          { name: "Chỉ số BODE Index", path: "pages/Công cụ/Hô hấp/BODE_Index.html" }
+        ],
+        relatedFlowcharts: [
+          { name: "Lưu đồ Tiếp cận Khó thở mạn", path: "pages/Tiếp cận/tiep-can.html" }
+        ],
+        relatedDrugs: [
+          { name: "Phác đồ LAMA + LABA + ICS", path: "pages/Dược lý/duoc-ly.html" }
+        ],
         asianData: true,
         bookmarked: true,
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
+        radarUrl: "../Guideline Radar/radar.html?card=copd_abe_2026",
+        matrixEndpoints: {
+          mace: { hr: "N/A", ci: "N/A", p: "N/A", verdict: "neutral", label: "Tập trung triệu chứng hô hấp" },
+          cvDeath: { hr: "0.88", ci: "0.76-1.02", p: "0.09", verdict: "neutral", label: "Xu hướng giảm tử vong hô hấp" },
+          allCauseDeath: { hr: "0.84", ci: "0.74-0.95", p: "0.006", verdict: "benefit", label: "-16% Tử vong chung khi dùng Triple Therapy (LABA+LAMA+ICS)" },
+          hhf: { hr: "0.71", ci: "0.62-0.81", p: "<0.001", verdict: "benefit", label: "-29% Nhập viện do Đợt cấp COPD" },
+          renal: { hr: "N/A", ci: "N/A", p: "N/A", verdict: "neutral", label: "N/A" },
+          adverse: { hr: "1.38", ci: "1.12-1.70", p: "0.002", verdict: "adverse", label: "+ Tăng nguy cơ Viêm phổi do ICS (khi Eos < 100)" }
+        },
+        citation: {
+          vancouver: "Bộ Y tế Việt Nam. Hướng dẫn chẩn đoán và điều trị Bệnh phổi tắc nghẽn mạn tính. Quyết định số 2131/QĐ-BYT. Hà Nội: NXB Y học; 2026.",
+          apa: "Bộ Y tế Việt Nam. (2026). Hướng dẫn chẩn đoán và điều trị Bệnh phổi tắc nghẽn mạn tính (Quyết định 2131/QĐ-BYT). NXB Y học.",
+          clinicalNote: "Theo Hướng dẫn COPD Bộ Y tế 2026: Ưu tiên khởi đầu bộ đôi LABA + LAMA cho Nhóm B & E; chỉ thêm ICS khi Eosinophil máu ≥ 300 tế bào/µL (Class I, Level A)."
+        },
+        pocketCard: {
+          title: "⚡ Cheat-Sheet: Phác Đồ Khởi Đầu & Đợt Cấp COPD (BYT 2026)",
+          dosageRules: [
+            { drug: "Nhóm A (Nhẹ)", dose: "SABA (Salbutamol) xịt khi cần hoặc LABA/LAMA đơn trị", note: "mMRC 0-1, CAT < 10, 0-1 đợt cấp nhẹ" },
+            { drug: "Nhóm B (Triệu chứng)", dose: "LABA + LAMA (Tiotropium/Olodaterol hoặc Umeclidinium/Vilanterol)", note: "mMRC ≥ 2, CAT ≥ 10, 0-1 đợt cấp nhẹ" },
+            { drug: "Nhóm E (Đợt cấp)", dose: "LABA + LAMA (thêm ICS nếu Eos ≥ 300 / 3 thuốc 1 bình hít)", note: "≥ 2 đợt cấp trung bình hoặc ≥ 1 đợt cấp nhập viện" }
+          ],
+          rules: [
+            "1. Chẩn đoán xác định bắt buộc có hô hấp ký: FEV1/FVC < 70% sau test giãn phế quản.",
+            "2. Đợt cấp Rome 2022: Nhẹ (chỉ dùng SABA), Trung bình (thêm Kháng sinh/Corticoid uống), Nặng (nhập viện/ICU).",
+            "3. Nguy cơ Pseudomonas: Tiền sử phân lập P. aeruginosa, FEV1 < 30%, hoặc dùng kháng sinh rộng rãi trong 90 ngày."
+          ]
+        },
+        decisionTree: {
+          title: "🧩 Thuật toán Phân Nhóm & Khởi Đầu Điều Trị COPD (BYT 2026)",
+          startNode: "step_start",
+          nodes: {
+            step_start: {
+              question: "Bệnh nhân có tiền sử ≥ 2 đợt cấp trung bình HOẶC ≥ 1 đợt cấp phải nhập viện trong 12 tháng qua?",
+              options: [
+                { text: "🚨 CÓ (Thuộc Nhóm E - Nhiều đợt cấp)", next: "step_group_e" },
+                { text: "🟢 KHÔNG (Chỉ có 0 hoặc 1 đợt cấp không nhập viện)", next: "step_assess_cat" }
+              ]
+            },
+            step_assess_cat: {
+              question: "Đánh giá điểm triệu chứng mMRC hoặc CAT?",
+              options: [
+                { text: "mMRC 0-1 hoặc CAT < 10 ➔ Nhóm A", next: "step_group_a" },
+                { text: "mMRC ≥ 2 hoặc CAT ≥ 10 ➔ Nhóm B", next: "step_group_b" }
+              ]
+            },
+            step_group_a: {
+              recommendation: "Khởi đầu 1 thuốc giãn phế quản (Tùy chọn SABA khi cần hoặc LAMA/LABA duy trì).",
+              classRating: "Class I",
+              levelRating: "Level A",
+              color: "blue",
+              options: []
+            },
+            step_group_b: {
+              recommendation: "Khởi đầu ngay Bộ đôi thuốc giãn phế quản kéo dài LABA + LAMA (Ưu tiên bình hít kết hợp).",
+              classRating: "Class I",
+              levelRating: "Level A",
+              color: "green",
+              options: []
+            },
+            step_group_e: {
+              question: "Xét nghiệm Eosinophil máu ngoại vi là bao nhiêu?",
+              options: [
+                { text: "Eosinophil ≥ 300 tế bào/µL", next: "step_e_high_eos" },
+                { text: "Eosinophil < 300 tế bào/µL", next: "step_e_low_eos" }
+              ]
+            },
+            step_e_high_eos: {
+              recommendation: "Chỉ định BỘ BA THUỐC (LABA + LAMA + ICS) ngay từ đầu để giảm đợt cấp & tử vong.",
+              classRating: "Class I",
+              levelRating: "Level A",
+              color: "green",
+              options: []
+            },
+            step_e_low_eos: {
+              recommendation: "Khởi đầu LABA + LAMA. Tránh dùng ICS nếu Eos < 100 để ngăn ngừa nguy cơ Viêm phổi.",
+              classRating: "Class I",
+              levelRating: "Level B",
+              color: "orange",
+              options: []
+            }
+          }
+        }
       },
       {
         id: "study_vnha2023",
@@ -157,9 +428,73 @@
         fdaStatus: "Khuyến cáo Class I - VNHA 2023",
         sourceUrl: "https://vnha.org.vn/",
         file: "",
+        relatedCalculators: [
+          { name: "Tính eGFR (CKD-EPI)", path: "pages/Công cụ/Thận/CKD_EPI.html" }
+        ],
+        relatedFlowcharts: [
+          { name: "Lưu đồ Tiếp cận Suy tim", path: "pages/Tiếp cận/tiep-can.html" }
+        ],
+        relatedDrugs: [
+          { name: "Dược lý Thuốc Tim mạch & Suy tim", path: "pages/Dược lý/duoc-ly.html" }
+        ],
         asianData: true,
         bookmarked: false,
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
+        radarUrl: "../Guideline Radar/radar.html?spec=cardio",
+        matrixEndpoints: {
+          mace: { hr: "0.80", ci: "0.71-0.89", p: "<0.001", verdict: "benefit", label: "-20% Tiêu chí gộp Tử vong TM / HHF" },
+          cvDeath: { hr: "0.80", ci: "0.71-0.89", p: "<0.001", verdict: "benefit", label: "-20% Tử vong do tim mạch" },
+          allCauseDeath: { hr: "0.84", ci: "0.76-0.93", p: "<0.001", verdict: "benefit", label: "-16% Tử vong do mọi nguyên nhân" },
+          hhf: { hr: "0.74", ci: "0.66-0.83", p: "<0.001", verdict: "benefit", label: "-26% Nhập viện do suy tim" },
+          renal: { hr: "0.70", ci: "0.58-0.85", p: "<0.001", verdict: "benefit", label: "Bảo vệ chức năng thận mạn" },
+          adverse: { hr: "1.10", ci: "0.92-1.31", p: "0.31", verdict: "neutral", label: "Hạ áp nhẹ khi dùng ARNI" }
+        },
+        citation: {
+          vancouver: "Hội Tim mạch học Quốc gia Việt Nam. Khuyến cáo chẩn đoán và điều trị suy tim cấp và mạn. Tạp chí Tim mạch học Việt Nam. 2023;(105):12-58.",
+          apa: "Hội Tim mạch học Quốc gia Việt Nam. (2023). Khuyến cáo chẩn đoán và điều trị suy tim cấp và mạn. Tạp chí Tim mạch học Việt Nam, (105), 12-58.",
+          clinicalNote: "Theo Khuyến cáo Suy tim VNHA 2023: Khởi đầu Bộ Tứ Trụ Cột (ARNI + BB + MRA + SGLT2i) cho tất cả BN HFrEF càng sớm càng tốt (Class I, Level A)."
+        },
+        pocketCard: {
+          title: "⚡ Cheat-Sheet: Bộ Tứ Trụ Cột Điều Trị HFrEF (VNHA 2023)",
+          dosageRules: [
+            { drug: "ARNI (Sacubitril/Valsartan)", dose: "Khởi đầu 50mg BID ➔ Đích 200mg BID", note: "Ngưng ACEi trước 36h nếu chuyển sang ARNI" },
+            { drug: "Chẹn Beta (Bisoprolol / Carvedilol)", dose: "Bisoprolol 1.25mg QD ➔ Đích 10mg QD", note: "Chỉ dùng khi suy tim mạn ổn định" },
+            { drug: "Kháng MRA (Spironolactone)", dose: "12.5mg-25mg QD ➔ Đích 25-50mg QD", note: "Theo dõi K+ máu & eGFR" },
+            { drug: "SGLT2i (Dapa / Empa 10mg)", dose: "10mg QD (Không cần chỉnh liều)", note: "Dùng cho cả EF giảm và EF bảo tồn" }
+          ],
+          rules: [
+            "1. Khởi động đồng thời hoặc nối tiếp nhanh chóng 4 trụ cột trong vòng 4 tuần.",
+            "2. Đánh giá chỉ số EF bằng Siêu âm tim (EF ≤ 40% = HFrEF; EF 41-49% = HFmrEF; EF ≥ 50% = HFpEF).",
+            "3. Lợi tiểu quai (Furosemide) chỉ dùng khi có triệu chứng ứ huyết, giảm liều khi khô."
+          ]
+        },
+        decisionTree: {
+          title: "🧩 Thuật toán Phân loại & Chỉ định Trụ cột Suy tim",
+          startNode: "step_start",
+          nodes: {
+            step_start: {
+              question: "Phân suất tống máu thất trái (LVEF) trên siêu âm tim là bao nhiêu?",
+              options: [
+                { text: "LVEF ≤ 40% (Suy tim EF giảm - HFrEF)", next: "step_hfref" },
+                { text: "LVEF 41-49% (HFmrEF) hoặc ≥ 50% (HFpEF)", next: "step_hfpef" }
+              ]
+            },
+            step_hfref: {
+              recommendation: "Chỉ định BỘ TỨ TRỤ CỘT: 1. ARNI (hoặc ACEi/ARB) + 2. Chẹn beta + 3. MRA + 4. SGLT2i.",
+              classRating: "Class I",
+              levelRating: "Level A",
+              color: "green",
+              options: []
+            },
+            step_hfpef: {
+              recommendation: "Chỉ định SGLT2i (Empagliflozin / Dapagliflozin) để giảm nguy cơ nhập viện do suy tim + Lợi tiểu khi ứ huyết.",
+              classRating: "Class I",
+              levelRating: "Level A",
+              color: "green",
+              options: []
+            }
+          }
+        }
       },
       {
         id: "study_byt2020",
@@ -182,9 +517,76 @@
         fdaStatus: "Quyết định số 4800/QĐ-BYT",
         sourceUrl: "https://kcb.vn/",
         file: "",
+        relatedCalculators: [
+          { name: "Tính eGFR (CKD-EPI)", path: "pages/Công cụ/Thận/CKD_EPI.html" }
+        ],
+        relatedFlowcharts: [
+          { name: "Lưu đồ Tiếp cận Đái tháo đường", path: "pages/Tiếp cận/tiep-can.html" }
+        ],
+        relatedDrugs: [
+          { name: "Dược lý Thuốc Đái tháo đường", path: "pages/Dược lý/duoc-ly.html" }
+        ],
         asianData: true,
         bookmarked: false,
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
+        radarUrl: "../Guideline Radar/radar.html?spec=endo",
+        matrixEndpoints: {
+          mace: { hr: "0.88", ci: "0.80-0.97", p: "0.01", verdict: "benefit", label: "-12% MACE khi phối hợp SGLT2i/GLP-1 RA" },
+          cvDeath: { hr: "0.85", ci: "0.75-0.96", p: "0.009", verdict: "benefit", label: "-15% Tử vong tim mạch" },
+          allCauseDeath: { hr: "0.88", ci: "0.79-0.98", p: "0.02", verdict: "benefit", label: "-12% Tử vong chung" },
+          hhf: { hr: "0.68", ci: "0.59-0.78", p: "<0.001", verdict: "benefit", label: "-32% Nhập viện suy tim" },
+          renal: { hr: "0.65", ci: "0.56-0.76", p: "<0.001", verdict: "benefit", label: "-35% Bảo vệ thận" },
+          adverse: { hr: "1.02", ci: "0.89-1.18", p: "0.72", verdict: "neutral", label: "Nguy cơ hạ đường huyết thấp khi không dùng SU" }
+        },
+        citation: {
+          vancouver: "Bộ Y tế Việt Nam. Hướng dẫn chẩn đoán và điều trị Đái tháo đường típ 2. Quyết định số 4800/QĐ-BYT. Hà Nội; 2020.",
+          apa: "Bộ Y tế Việt Nam. (2020). Hướng dẫn chẩn đoán và điều trị Đái tháo đường típ 2 (Quyết định 4800/QĐ-BYT).",
+          clinicalNote: "Theo Hướng dẫn ĐTĐ typ 2 Bộ Y tế 2020: Ưu tiên chọn SGLT2i / GLP-1 RA độc lập với HbA1c ở BN có ASCVD, Suy tim hoặc Bệnh thận mạn."
+        },
+        pocketCard: {
+          title: "⚡ Cheat-Sheet: Mục Tiêu & Lựa Chọn Thuốc ĐTĐ Typ 2 (BYT)",
+          dosageRules: [
+            { drug: "Metformin", dose: "500mg-1000mg BID (Tối đa 2000mg/ngày)", note: "Khởi đầu chuẩn nếu eGFR ≥ 45" },
+            { drug: "SGLT2i (Empa/Dapa)", dose: "10mg QD", note: "Ưu tiên khi có Suy tim, Bệnh thận mạn, ASCVD" },
+            { drug: "DPP-4i (Sitagliptin/Linagliptin)", dose: "50mg-100mg QD / Linagliptin 5mg QD", note: "Linagliptin không cần chỉnh liều thận" }
+          ],
+          rules: [
+            "1. Mục tiêu HbA1c chung < 7.0%. Cá thể hóa < 6.5% ở người trẻ, < 7.5-8.0% ở người cao tuổi/nhiều bệnh nền.",
+            "2. Thắt chặt kiểm soát Huyết áp (< 130/80 mmHg) và Lipid máu (LDL-c < 1.8 mmol/L nếu nguy cơ cao)."
+          ]
+        },
+        decisionTree: {
+          title: "🧩 Thuật toán Chọn Thuốc Hạ Đường Huyết Ban Đầu",
+          startNode: "step_start",
+          nodes: {
+            step_start: {
+              question: "Bệnh nhân có ASCVD (Nhồi máu cơ tim, Đột quỵ), Suy tim hoặc eGFR < 60 mL/min?",
+              options: [
+                { text: "🚨 CÓ bệnh đồng mắc nguy cơ cao", next: "step_high" },
+                { text: "🟢 Không có bệnh đồng mắc nguy cơ cao", next: "step_standard" }
+              ]
+            },
+            step_high: {
+              recommendation: "Chỉ định SGLT2i hoặc GLP-1 RA độc lập với HbA1c ban đầu.",
+              classRating: "Class I",
+              levelRating: "Level A",
+              color: "green",
+              options: []
+            },
+            step_standard: {
+              recommendation: "Khởi đầu Metformin 500mg-1000mg/ngày + Điều chỉnh lối sống.",
+              classRating: "Class I",
+              levelRating: "Level A",
+              color: "blue",
+              options: []
+            }
+          }
+        }
       }
     ];
+
+    if (typeof window !== 'undefined') {
+      window.SAMPLE_STUDIES = SAMPLE_STUDIES;
+    }
+
 

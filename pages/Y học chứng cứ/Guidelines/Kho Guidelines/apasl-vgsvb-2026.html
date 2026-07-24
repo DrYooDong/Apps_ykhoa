@@ -128,6 +128,13 @@
     .btn:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
     .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
 
+    /* STICKY QUICK LINKS MENU (MỤC LỤC) */
+    .quickmenu { position: sticky; top: 56px; z-index: 100; background: var(--surface); border-bottom: 1px solid var(--border-light); overflow-x: auto; display: flex; white-space: nowrap; -webkit-overflow-scrolling: touch; transition: background var(--tr), border-color var(--tr); }
+    .quickmenu-inner { max-width: 960px; margin: 0 auto; display: flex; width: 100%; padding: 0 1.5rem; }
+    .quickmenu-item { display: inline-block; padding: 0.9rem 1.1rem; color: var(--text-muted); text-decoration: none; font-size: 0.8rem; font-weight: 600; border-bottom: 3px solid transparent; transition: all var(--tr); }
+    .quickmenu-item:hover { color: var(--accent); }
+    .quickmenu-item.active { color: var(--accent); border-bottom-color: var(--accent); }
+
     /* RESPONSIVE */
     @media (max-width: 768px) {
       .page-content { padding: 1.25rem 1rem; }
@@ -199,11 +206,22 @@
     </div>
   </div>
 
+  <!-- QUICK MENU (MỤC LỤC) -->
+  <div class="quickmenu" id="quickmenu">
+    <div class="quickmenu-inner">
+      <a href="#sec-sinhbenhhoc" class="quickmenu-item active">Sinh bệnh học & Chẩn đoán</a>
+      <a href="#sec-treat-all" class="quickmenu-item">Chiến lược Treat-all</a>
+      <a href="#sec-phacdo" class="quickmenu-item">Phác đồ & Cơ địa đặc biệt</a>
+      <a href="#sec-hcc" class="quickmenu-item">Tầm soát HCC</a>
+      <a href="#sec-sosanh" class="quickmenu-item">So sánh APASL vs BYT</a>
+    </div>
+  </div>
+
   <!-- CONTENT -->
   <div class="page-content">
   
     <!-- SECTION 1 -->
-    <div class="sec-card">
+    <div class="sec-card" id="sec-sinhbenhhoc">
       <div class="sec-hdr">
         <span class="sec-hdr-icon">🧬</span>
         <h2 class="sec-title">Quan Điểm Mới Về Sinh Bệnh Học & Chẩn Đoán</h2>
@@ -240,7 +258,7 @@
     </div>
 
     <!-- SECTION 2 -->
-    <div class="sec-card">
+    <div class="sec-card" id="sec-treat-all">
       <div class="sec-hdr">
         <span class="sec-hdr-icon">🎯</span>
         <h2 class="sec-title">Chỉ Định & Chiến Lược Điều Trị "Treat-all"</h2>
@@ -298,7 +316,7 @@
     </div>
 
     <!-- SECTION 3 -->
-    <div class="sec-card">
+    <div class="sec-card" id="sec-phacdo">
       <div class="sec-hdr">
         <span class="sec-hdr-icon">💊</span>
         <h2 class="sec-title">Phác Đồ Ưu Tiên & Cơ Địa Đặc Biệt</h2>
@@ -361,7 +379,7 @@
     </div>
     
     <!-- SECTION 4 -->
-    <div class="sec-card">
+    <div class="sec-card" id="sec-hcc">
       <div class="sec-hdr">
         <span class="sec-hdr-icon">📊</span>
         <h2 class="sec-title">Phân Tầng Nguy Cơ & Tầm Soát Ung Thư Gan (HCC)</h2>
@@ -401,7 +419,7 @@
     </div>
 
     <!-- SECTION 5: SO SÁNH -->
-    <div class="sec-card">
+    <div class="sec-card" id="sec-sosanh">
       <div class="sec-hdr">
         <span class="sec-hdr-icon">⚖️</span>
         <h2 class="sec-title">So Sánh Phác Đồ: APASL 2026 vs. BYT Việt Nam 2026</h2>
@@ -490,5 +508,29 @@
 
   </div>
 
+  <script>
+    const sections = document.querySelectorAll('.sec-card');
+    const navItems = document.querySelectorAll('.quickmenu-item');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      const offset = 180;
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (window.pageYOffset >= (sectionTop - offset)) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href') && item.getAttribute('href').slice(1) === current) {
+          item.classList.add('active');
+          item.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
