@@ -11,7 +11,31 @@
 | File | Vai trò | JS dùng | CSS dùng |
 |------|---------|---------|---------|
 | `index.html` | Trang chủ | `homepage-effects.js`, `homepage-widgets.js`, `main.js` | `homepage-effects.css`, `homepage-widgets.css` |
+| `manifest.json` | Cấu hình PWA (App Name, Icons, Shortcuts, Display) | `main.js`, `sw.js` | — |
+| `sw.js` | Service Worker PWA (Pre-caching, Offline Caching Strategy) | — | — |
+| `capacitor.config.json` | Cấu hình Capacitor Mobile App (Android/iOS Scheme, AppId, Splash) | — | — |
+| `package.json` | Cấu hình package Electron Desktop & Capacitor Mobile App | `desktop/main-electron.js` | — |
 | `icons-collection.html` | Demo thư viện icons SVG | — | — |
+
+---
+
+## 🖥️ desktop/
+
+| File | Vai trò |
+|------|---------|
+| `main-electron.js` | Script điều khiển chính Electron Desktop App (Main Process, Windows, Shortcuts, Menu) |
+| `launch-desktop.cmd` | File khởi chạy 1-Click cho Windows Desktop |
+
+---
+
+## 📱 mobile/
+
+| File | Vai trò |
+|------|---------|
+| `setup-capacitor.cmd` | Script 1-Click đồng bộ web & tạo dự án Android Studio bản địa |
+| `build-android-instructions.md` | Hướng dẫn chi tiết biên dịch ứng dụng Android (.apk) & iOS |
+
+
 
 ---
 

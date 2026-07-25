@@ -132,6 +132,17 @@
                     <span>Truy cập Thư viện Assets</span>
                   </a>
                 </div>
+
+                <div class="cp-modal-section" id="cpPwaSection">
+                  <h4 class="cp-section-title">📱 Ứng dụng Đa nền tảng (PWA App)</h4>
+                  <p class="cp-section-desc">Cài đặt CliniPortal làm ứng dụng độc lập trên máy tính hoặc điện thoại để dùng offline mượt mà.</p>
+                  <button class="cp-sync-btn" id="cpInstallPwaBtn" style="background: linear-gradient(135deg, #0284c7, #0369a1); border: none; margin-top: 8px;">
+                    <i class="fa-solid fa-download" style="margin-right: 6px;"></i> Cài đặt CliniPortal làm App
+                  </button>
+                  <div id="cpPwaInstalledStatus" style="display:none; color: var(--color-success); font-weight: 600; margin-top: 8px; font-size: 0.9rem;">
+                    ✅ Ứng dụng CliniPortal đã được cài đặt thành công!
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -143,6 +154,41 @@
         const syncBtn = document.getElementById('cpSyncBtn');
         const syncBtnText = document.getElementById('cpSyncBtnText');
         const syncTime = document.getElementById('cpSyncTime');
+        const installPwaBtn = document.getElementById('cpInstallPwaBtn');
+        const pwaStatus = document.getElementById('cpPwaInstalledStatus');
+
+        // Check if running in standalone PWA mode
+        if (window.matchMedia('(display-mode: standalone)').matches || navigator.standalone) {
+          if (installPwaBtn) installPwaBtn.style.display = 'none';
+          if (pwaStatus) pwaStatus.style.display = 'block';
+        }
+
+        let deferredInstallPrompt = null;
+        window.addEventListener('beforeinstallprompt', (e) => {
+          e.preventDefault();
+          deferredInstallPrompt = e;
+          if (installPwaBtn) installPwaBtn.style.display = 'inline-flex';
+        });
+
+        installPwaBtn?.addEventListener('click', async () => {
+          if (deferredInstallPrompt) {
+            deferredInstallPrompt.prompt();
+            const { outcome } = await deferredInstallPrompt.userChoice;
+            if (outcome === 'accepted') {
+              if (installPwaBtn) installPwaBtn.style.display = 'none';
+              if (pwaStatus) pwaStatus.style.display = 'block';
+            }
+            deferredInstallPrompt = null;
+          } else {
+            alert('💡 Để cài đặt CliniPortal:\n- Trên Trình duyệt PC (Chrome/Edge): Nhấn biểu tượng "Cài đặt" ở góc phải thanh địa chỉ.\n- Trên iPhone/iPad (Safari): Nhấn nút Chia sẻ (Share) -> chọn "Thêm vào Màn hình chính" (Add to Home Screen).\n- Trên Android (Chrome): Nhấn dấu 3 chấm -> chọn "Thêm vào Màn hình chính".');
+          }
+        });
+
+        window.addEventListener('appinstalled', () => {
+          deferredInstallPrompt = null;
+          if (installPwaBtn) installPwaBtn.style.display = 'none';
+          if (pwaStatus) pwaStatus.style.display = 'block';
+        });
 
         const openModal = () => modal.classList.add('show');
         const closeModal = () => modal.classList.remove('show');
