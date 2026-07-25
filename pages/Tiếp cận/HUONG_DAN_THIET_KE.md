@@ -262,3 +262,50 @@ Mỗi khối thông tin (Node) trong lưu đồ đại diện cho một trạng 
 - **Chuyển đổi sơ đồ (`switchPane`)**: Được thực hiện thông qua hàm `switchPane(paneId)`. Nút bấm tab chuyển tiếp phải gọi hàm này và truyền chính xác ID của `.flow-pane` tương ứng.
 - **Xem chi tiết (`toggleNode`)**: Thẻ nào muốn click mở rộng thông tin chi tiết bắt buộc phải có thuộc tính `class="... clickable" onclick="toggleNode(this)"`, đi kèm với cấu trúc `.fnode-expand-hint` và `.fnode-details` đặt bên trong nó.
 - Cả hai logic động này đều đã được đóng gói sẵn trong tệp `js/flowchart.js` của hệ thống, tuyệt đối không được viết đè hoặc định nghĩa lại hàm trong tệp nội dung.
+
+---
+
+## 📦 6. Kiến trúc Dữ liệu Phi HTML (Non-HTML File Formats Architecture)
+
+Để hiện đại hóa, giảm nợ kỹ thuật và tách biệt dữ liệu y khoa khỏi giao diện HTML, phân hệ **Tiếp cận** hỗ trợ bộ động cơ `js/approach-engine.js` cho phép đọc và render tự động các định dạng file sau tại thư mục `pages/Tiếp cận/data/`:
+
+### 1. File JSON Thuật toán Thuần (`emergency-pathways.json`)
+Cấu trúc chuẩn hóa cho các thuật toán cấp cứu & cây quyết định:
+```json
+{
+  "id": "pathway-soc-phan-ve",
+  "title": "Phác đồ Tiếp cận Sốc Phản vệ",
+  "category": "Cấp cứu",
+  "urgency": "High",
+  "tabs": [
+    {
+      "id": "chan-doan",
+      "label": "1. Chẩn đoán",
+      "nodes": [
+        {
+          "id": "n1",
+          "type": "start|question|danger|info|ok",
+          "tag": "Bước 1",
+          "title": "Tiêu đề node",
+          "body": "Nội dung tóm tắt",
+          "details": { "title": "Chi tiết", "items": ["Ý 1", "Ý 2"] }
+        }
+      ]
+    }
+  ]
+}
+```
+
+### 2. File CSV Ma trận Triệu chứng (`symptom-matrix.csv`)
+Lưu trữ bảng dữ liệu tra cứu đa triệu chứng, dấu hiệu cờ đỏ và chẩn đoán phân biệt:
+- Cột bắt buộc: `SymptomCode`, `SymptomName`, `Category`, `Urgency`, `RedFlags`, `PrimaryDiagnoses`, `FirstLineInvestigations`, `InitialManagement`.
+
+### 3. File Markdown Khuyến cáo Y học Chứng cứ (`clinical-pearls.md`)
+Chứa nội dung văn bản dài, các quy tắc cờ đỏ và tài liệu tham khảo. Được parse client-side thành HTML đẹp mắt với các alert box cảnh báo (`[!WARNING]`, `[!NOTE]`).
+
+### 4. File SVG Vector Schematics (`flowchart-schematic.svg`)
+Sơ đồ đồ họa vector tương tác với các thẻ `<g class="svg-node" data-node-id="...">` hỗ trợ zoom, hover effect và dark/light mode tự động.
+
+### 5. File Metadata & Taxonomy (`approach-taxonomy.json`)
+Bản đồ phân loại y khoa và chỉ mục liên kết chéo giữa các phân hệ (Tiếp cận - Cận lâm sàng - Dược lý - Công cụ).
+

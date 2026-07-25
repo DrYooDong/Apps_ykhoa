@@ -18,6 +18,7 @@ assets/
 ├── backgrounds/           # Dải màu gradients và hình nền Glassmorphism
 ├── charts/                # Thư viện và mẫu vẽ đồ thị y học thuần JS
 ├── demo-assets.html       # Trang cổng thư viện hiển thị và thử nghiệm assets
+├── icons-collection.html  # Bộ sưu tập demo hiển thị toàn bộ icons SVG chuyên khoa
 └── README.md              # Tài liệu hướng dẫn này
 ```
 

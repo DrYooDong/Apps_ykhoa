@@ -1,0 +1,286 @@
+/* ==========================================================================
+   CliniPortal - Pharmacology Engine CSS (Non-HTML Formats Modern UI)
+   ========================================================================== */
+
+/* Layout & Container */
+.pharm-engine-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Format Tabs Header */
+.pharm-format-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  background: var(--color-surface, #1e293b);
+  padding: 0.75rem;
+  border-radius: 12px;
+  border: 1px solid var(--color-border, #334155);
+}
+
+.format-tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted, #94a3b8);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.format-tab-btn:hover {
+  color: var(--color-text, #f8fafc);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.format-tab-btn.active {
+  background: var(--color-primary, #0284c7);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+}
+
+.format-badge {
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Card Showcase Panels */
+.pharm-panel {
+  display: none;
+  background: var(--color-surface, #1e293b);
+  border-radius: 12px;
+  border: 1px solid var(--color-border, #334155);
+  padding: 1.5rem;
+}
+
+.pharm-panel.active {
+  display: block;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Drug Grid & Cards */
+.pharm-search-bar {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.pharm-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border, #334155);
+  background: var(--color-bg, #0f172a);
+  color: var(--color-text, #f8fafc);
+  font-size: 0.95rem;
+}
+
+.pharm-input:focus {
+  outline: none;
+  border-color: var(--color-primary, #0284c7);
+}
+
+.pharm-drug-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1rem;
+}
+
+.pharm-drug-card {
+  background: var(--color-bg, #0f172a);
+  border: 1px solid var(--color-border, #334155);
+  border-radius: 10px;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.pharm-drug-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-primary, #0284c7);
+}
+
+.pharm-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.pharm-drug-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text, #f8fafc);
+  margin: 0;
+}
+
+.pharm-class-tag {
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(2, 132, 199, 0.15);
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+/* DDI Matrix & Severity Badges */
+.ddi-select-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.ddi-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 20px;
+  background: var(--color-bg, #0f172a);
+  border: 1px solid var(--color-border, #334155);
+  color: var(--color-text, #f8fafc);
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.88rem;
+  transition: all 0.2s ease;
+}
+
+.ddi-chip.selected {
+  background: var(--color-primary, #0284c7);
+  border-color: #38bdf8;
+  color: #ffffff;
+}
+
+.ddi-result-card {
+  border-radius: 10px;
+  padding: 1.2rem;
+  margin-top: 1rem;
+  border: 1px solid var(--color-border, #334155);
+  background: var(--color-bg, #0f172a);
+}
+
+.ddi-result-card.severity-contraindicated {
+  border-left: 5px solid #ef4444;
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.ddi-result-card.severity-major {
+  border-left: 5px solid #f97316;
+  background: rgba(249, 115, 22, 0.08);
+}
+
+.ddi-result-card.severity-minor {
+  border-left: 5px solid #eab308;
+  background: rgba(234, 179, 8, 0.08);
+}
+
+.ddi-result-card.severity-none {
+  border-left: 5px solid #22c55e;
+  background: rgba(34, 197, 94, 0.08);
+}
+
+.severity-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.severity-badge.contraindicated { background: #ef4444; color: #ffffff; }
+.severity-badge.major { background: #f97316; color: #ffffff; }
+.severity-badge.minor { background: #eab308; color: #000000; }
+.severity-badge.none { background: #22c55e; color: #ffffff; }
+
+/* Interactive SVG & Monograph Panels */
+.svg-interactive-wrapper {
+  background: var(--color-bg, #0f172a);
+  border-radius: 12px;
+  padding: 1rem;
+  border: 1px solid var(--color-border, #334155);
+}
+
+.moa-node {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.moa-node:hover {
+  opacity: 0.9;
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.6));
+}
+
+.monograph-preview-box {
+  background: var(--color-bg, #0f172a);
+  border: 1px solid var(--color-border, #334155);
+  border-radius: 10px;
+  padding: 1.5rem;
+  color: var(--color-text, #f8fafc);
+  line-height: 1.7;
+}
+
+.monograph-preview-box h1, .monograph-preview-box h2, .monograph-preview-box h3 {
+  color: var(--color-primary, #38bdf8);
+  margin-top: 1rem;
+}
+
+.monograph-preview-box blockquote {
+  border-left: 4px solid var(--color-primary, #0284c7);
+  background: rgba(2, 132, 199, 0.1);
+  padding: 0.6rem 1rem;
+  border-radius: 0 8px 8px 0;
+  margin: 1rem 0;
+}
+
+/* Modal Popover */
+.pharm-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.pharm-modal-content {
+  background: var(--color-surface, #1e293b);
+  border: 1px solid var(--color-border, #334155);
+  border-radius: 12px;
+  width: 90%;
+  max-width: 550px;
+  padding: 1.5rem;
+  position: relative;
+  color: var(--color-text, #f8fafc);
+}
+
+.pharm-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted, #94a3b8);
+  font-size: 1.2rem;
+  cursor: pointer;
+}

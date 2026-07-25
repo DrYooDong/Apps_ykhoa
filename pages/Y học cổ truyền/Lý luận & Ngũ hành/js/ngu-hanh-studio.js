@@ -3,13 +3,21 @@
  * SVG Engine, Node Interactivity, Relation Animation & Clinical Scenario Simulator
  */
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
   const svg = document.getElementById("nguhanhSVG");
   const detailPanel = document.getElementById("nguhanhDetailPanel");
   const scenarioSelect = document.getElementById("scenarioSelect");
   const modeBtns = document.querySelectorAll(".mode-btn");
 
-  if (!svg || typeof NGU_HANH_DATA === "undefined") return;
+  if (!svg) return;
+
+  let activeData = typeof NGU_HANH_DATA !== "undefined" ? NGU_HANH_DATA : null;
+  if (!activeData && window.YHCTDataLoader) {
+    activeData = await window.YHCTDataLoader.getNguHanhData('../');
+  }
+  if (!activeData) return;
+  window.NGU_HANH_DATA = activeData;
+  const NGU_HANH_DATA_ACTIVE = activeData;
 
   const width = 500;
   const height = 500;

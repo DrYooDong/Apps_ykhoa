@@ -2061,8 +2061,19 @@
     // ════════════════════════════════
 
     function renderSubgroupPanel(study) {
-      const sg = study.subgroups;
-      if (!sg || typeof sg !== 'object' || Object.keys(sg).length === 0) return '';
+      let sg = study ? study.subgroups : null;
+      if (typeof sg === 'string' && sg.trim()) {
+        try { sg = JSON.parse(sg.trim()); } catch(e) { sg = null; }
+      }
+      if (!sg || typeof sg !== 'object' || Object.keys(sg).length === 0) {
+        return `
+          <div style="padding: 2.5rem 1.5rem; text-align: center; color: var(--text-muted);">
+            <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🧬</div>
+            <div style="font-weight: 700; font-size: 1rem; color: var(--text); margin-bottom: 0.25rem;">Chưa có dữ liệu phân tích Subgroup</div>
+            <div style="font-size: 0.8rem; color: var(--text-faint);">Bấm "Sửa" tài liệu này để bổ sung dữ liệu phân nhóm JSON key-value.</div>
+          </div>
+        `;
+      }
       const entries = Object.entries(sg);
       const overall = parseForestData(study.keyResults);
 
@@ -2136,20 +2147,31 @@
     }
 
     function renderSubgroupForestRow(fd, overall) {
-      const W = 280, H = 38, PL = 8, PR = 8, cy = (H / 2) - 2, plotW = W - PL - PR;
-      const allVals = [fd.lower, fd.estimate, fd.upper];
-      if (overall) allVals.push(overall.lower, overall.estimate, overall.upper);
+      if (!fd) return '';
+      const W = 280, H = 34, PL = 12, PR = 12;
+      const cy = (H / 2) - 2;
+      const plotW = W - PL - PR;
+
+      const isGreen = fd.estimate < 1.0;
+      const dotColor = isGreen ? '#16a34a' : (fd.estimate > 1.0 ? '#dc2626' : '#6b7280');
+      const ciColor  = isGreen ? '#86efac' : (fd.estimate > 1.0 ? '#fca5a5' : '#cbd5e1');
+
+      const allVals = [fd.ciLow || fd.lower || fd.estimate, fd.estimate, fd.ciHigh || fd.upper || fd.estimate];
+      if (overall && overall.estimate) allVals.push(overall.estimate);
       const axisMin = Math.max(0.05, Math.min(...allVals) * 0.75);
       const axisMax = Math.max(...allVals) * 1.25;
       const axisRange = axisMax - axisMin || 1;
-      const toX = v => PL + ((v - axisMin) / axisRange) * plotW;
-      const x1 = toX(1.0), xE = toX(fd.estimate), xL = toX(fd.lower), xU = toX(fd.upper);
-      const isGreen = fd.estimate < 1.0;
-      const dotColor = isGreen ? '#16a34a' : fd.estimate > 1.0 ? '#dc2626' : '#6b7280';
-      const ciColor  = isGreen ? '#86efac' : fd.estimate > 1.0 ? '#fca5a5' : '#cbd5e1';
-      const overallLine = overall
+
+      const toX = v => PL + ((Math.max(axisMin, Math.min(axisMax, v)) - axisMin) / axisRange) * plotW;
+      const x1 = toX(1.0);
+      const xE = toX(fd.estimate);
+      const xL = toX(fd.ciLow || fd.lower || fd.estimate);
+      const xU = toX(fd.ciHigh || fd.upper || fd.estimate);
+
+      const overallLine = (overall && overall.estimate)
         ? `<line x1="${toX(overall.estimate).toFixed(1)}" y1="${cy-10}" x2="${toX(overall.estimate).toFixed(1)}" y2="${cy+10}" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3,2"/>`
         : '';
+
       return `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" class="sg-forest-svg" style="display:block;overflow:visible;">
           <line x1="${PL}" y1="${cy}" x2="${W-PR}" y2="${cy}" stroke="#cbd5e1" stroke-width="1"/>
           <line x1="${x1.toFixed(1)}" y1="${cy-10}" x2="${x1.toFixed(1)}" y2="${cy+10}" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,2"/>
@@ -2165,24 +2187,45 @@
     }
 
     function openSubgroupModal(id, event) {
-      if (event) event.stopPropagation();
-      const study = studies.find(s => s.id === id);
-      if (!study) return;
+      if (event && event.stopPropagation) event.stopPropagation();
+      let study = studies.find(s => s.id === id);
+      if (!study && typeof SAMPLE_STUDIES !== 'undefined') {
+        study = SAMPLE_STUDIES.find(s => s.id === id);
+      }
+      if (!study) {
+        console.warn('[SubgroupModal] Study not found:', id);
+        return;
+      }
 
       const titleEl = document.getElementById('subgroup-modal-title');
       const bodyEl = document.getElementById('subgroup-modal-body');
-      
+
       if (titleEl) titleEl.innerHTML = `🧬 Phân Tích Subgroup: <span style="color:var(--accent);">${escapeHtml(study.title)}</span>`;
-      if (bodyEl) bodyEl.innerHTML = renderSubgroupPanel(study);
-      
+      try {
+        if (bodyEl) bodyEl.innerHTML = renderSubgroupPanel(study);
+      } catch (err) {
+        console.error('[SubgroupModal] Error rendering subgroup panel:', err);
+        if (bodyEl) bodyEl.innerHTML = `<div style="padding:2rem;color:var(--color-danger);text-align:center;">Lỗi hiển thị dữ liệu Subgroup: ${err.message}</div>`;
+      }
+
       const modal = document.getElementById('subgroup-modal');
-      if (modal) modal.classList.add('active');
+      if (modal) {
+        modal.classList.add('active');
+        modal.style.display = 'flex';
+      }
     }
 
     function closeSubgroupModal() {
       const modal = document.getElementById('subgroup-modal');
-      if (modal) modal.classList.remove('active');
+      if (modal) {
+        modal.classList.remove('active');
+        modal.style.display = '';
+      }
     }
+
+    // Explicitly attach subgroup functions to global window object
+    window.openSubgroupModal = openSubgroupModal;
+    window.closeSubgroupModal = closeSubgroupModal;
 
     function filterBySubgroupData() {
       document.querySelectorAll('.left-nav-link').forEach(l => l.classList.remove('active'));

@@ -36,6 +36,7 @@
     <script src="../../components/footer.js" defer></script>
     <script src="../../js/main.js" defer></script>
     <script src="js/physio-shared.js" defer></script>
+    <script src="js/physio-formula-engine.js" defer></script>
 </head>
 
 <body>
@@ -76,49 +77,15 @@
 
             <main class="visual-container" style="padding: 2rem;">
                 <div class="chapter-header">
-                    <h1>📐 Kho Công Thức Sinh Lý Học & Máy Tính Tương Tác</h1>
-                    <p>Tổng hợp đầy đủ các định luật vật lý, phương trình sinh lý và công thức tính toán lâm sàng chuẩn hóa, kèm công cụ tính toán tức thì.</p>
+                    <h1>📐 Kho Công Thức Sinh Lý Học & Máy Tính Tương Tác Dynamic</h1>
+                    <p>Tổng hợp đầy đủ các định luật vật lý, phương trình sinh lý và công thức tính toán lâm sàng chuẩn hóa, tải trực tiếp từ <code>formula-vault.json</code> kèm công cụ tính toán tức thì.</p>
                 </div>
 
-                <div class="physio-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
-                    <!-- 1. Định luật Fick -->
-                    <div class="formula-card physio-step-card">
-                        <span class="quiz-badge">Hô hấp / Tế bào</span>
-                        <h3 style="color: var(--color-primary); margin-top: 0.5rem;">Định luật Khuếch tán Fick</h3>
-                        <div class="formula-expr">$$J = \frac{D \cdot A \cdot \Delta P}{T}$$</div>
-                        <p class="formula-desc">
-                            <strong>Ý nghĩa:</strong> Tốc độ khuếch tán khí ($J$) tỷ lệ thuận với hệ số khuếch tán ($D$), diện tích màng ($A$) và chênh lệch phân áp ($\Delta P$); tỷ lệ nghịch với độ dày màng ($T$).
-                        </p>
-                    </div>
-
-                    <!-- 2. Nernst Equation -->
-                    <div class="formula-card physio-step-card">
-                        <span class="quiz-badge">Điện sinh lý</span>
-                        <h3 style="color: var(--color-primary); margin-top: 0.5rem;">Phương trình Nernst</h3>
-                        <div class="formula-expr">$$E_{ion} = \frac{61.5}{z} \log_{10} \left( \frac{[Ion]_{out}}{[Ion]_{in}} \right)$$</div>
-                        <p class="formula-desc">
-                            <strong>Ý nghĩa:</strong> Tính điện thế cân bằng (mV) cho một ion đơn lẻ tại nhiệt độ cơ thể $37^\circ\text{C}$ dựa trên tỷ lệ nồng độ hai bên màng.
-                        </p>
-                    </div>
-
-                    <!-- 3. Starling Equation -->
-                    <div class="formula-card physio-step-card">
-                        <span class="quiz-badge">Tim mạch / Thận</span>
-                        <h3 style="color: var(--color-primary); margin-top: 0.5rem;">Phương trình Lực Starling</h3>
-                        <div class="formula-expr">$$J_v = K_f \cdot \left[ (P_c - P_i) - \sigma (\pi_c - \pi_i) \right]$$</div>
-                        <p class="formula-desc">
-                            <strong>Ý nghĩa:</strong> Quyết định dòng dịch lọc ròng qua màng mao mạch dựa trên sự chênh lệch áp suất thủy tĩnh ($P$) và áp suất keo ($\pi$).
-                        </p>
-                    </div>
-
-                    <!-- 4. Henderson-Hasselbalch -->
-                    <div class="formula-card physio-step-card">
-                        <span class="quiz-badge">Toan Kiềm / Thận</span>
-                        <h3 style="color: var(--color-primary); margin-top: 0.5rem;">Phương trình Henderson-Hasselbalch</h3>
-                        <div class="formula-expr">$$\text{pH} = 6.1 + \log_{10} \left( \frac{[\text{HCO}_3^-]}{0.03 \cdot P_{\text{CO}_2}} \right)$$</div>
-                        <p class="formula-desc">
-                            <strong>Ý nghĩa:</strong> Xác định pH máu động mạch dựa trên nồng độ Bicarbonate hạch huyết tương và phân áp $\text{CO}_2$.
-                        </p>
+                <!-- Dynamic Container for Formula Cards -->
+                <div id="formula-container" class="physio-grid" style="grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem;">
+                    <div style="text-align: center; padding: 2rem; color: var(--color-text-muted);">
+                        <i class="fas fa-spinner fa-spin fa-2x"></i>
+                        <p style="margin-top: 1rem;">Đang tải danh sách công thức từ <code>data/formula-vault.json</code>...</p>
                     </div>
                 </div>
             </main>
@@ -126,6 +93,14 @@
     </div>
 
     <div id="footer-placeholder" data-footer-path="../../components/footer.html"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.PhysioFormulaEngine) {
+                PhysioFormulaEngine.init('formula-container', 'data/formula-vault.json');
+            }
+        });
+    </script>
 </body>
 
 </html>

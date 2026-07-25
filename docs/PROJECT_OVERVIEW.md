@@ -9,8 +9,7 @@
 ```
 Apps_ykhoa/                  ← Root thư mục dự án
 ├── index.html               ← Trang chủ (Homepage)
-├── icons-collection.html    ← Demo thư viện icons
-├── assets/                  ← Tài nguyên tĩnh (fonts, images, icons, lottie, …)
+├── assets/                  ← Tài nguyên tĩnh (fonts, images, icons, lottie, icons-collection.html, …)
 ├── components/              ← Shared layout (header.html + header.js, footer.html + footer.js)
 ├── css/                     ← Hệ thống CSS
 │   ├── reset.css            ← CSS reset

@@ -577,7 +577,56 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // 6. PDF & ICS Exporter Integration
+  document.getElementById('btnExportABGPDF')?.addEventListener('click', () => {
+    if (typeof ClinicalExporter === 'undefined') return;
+    
+    const ph = elPhNum ? elPhNum.value : '7.40';
+    const pco2 = elPco2Num ? elPco2Num.value : '40';
+    const hco3 = elHco3Num ? elHco3Num.value : '24';
+    const pao2 = elPao2Num ? elPao2Num.value : '95';
+    const fio2 = elFio2Num ? elFio2Num.value : '21';
+    const pf = elPfValue ? elPfValue.innerText : 'N/A';
+
+    ClinicalExporter.exportClinicalPDF({
+      title: "BÁO CÁO PHÂN TÍCH KHÍ MÁU ĐỘNG MẠCH (ABG)",
+      patientName: activeScenarioId ? (ABG_SCENARIOS.find(s=>s.id===activeScenarioId)?.patient?.demographics || "Bệnh nhân Virtual") : "Bệnh nhân Cấp cứu",
+      sections: [
+        {
+          title: "1. Thông Số Khí Máu Nhập Vào",
+          items: [
+            { label: "pH Máu", value: ph, status: parseFloat(ph)<7.35 ? "Toan Máu" : parseFloat(ph)>7.45 ? "Kiềm Máu" : "Bình Thường", statusType: parseFloat(ph)<7.35||parseFloat(ph)>7.45 ? "danger" : "success" },
+            { label: "pCO₂", value: `${pco2} mmHg` },
+            { label: "HCO₃⁻", value: `${hco3} mEq/L` },
+            { label: "PaO₂", value: `${pao2} mmHg` },
+            { label: "FiO₂", value: `${fio2} %` }
+          ]
+        },
+        {
+          title: "2. Chỉ Số Trao Đổi Khí & Anion Gap",
+          items: [
+            { label: "Chỉ số P/F Ratio", value: pf },
+            { label: "SpO₂", value: "98 %" },
+            { label: "Anion Gap", value: elAgValue ? elAgValue.innerText : "12 mEq/L" },
+            { label: "Na / K / Cl", value: `${elNaNum?.value || 140} / ${elKNum?.value || 4.0} / ${elClNum?.value || 104}` }
+          ]
+        }
+      ]
+    });
+  });
+
+  document.getElementById('btnExportABGReminder')?.addEventListener('click', () => {
+    if (typeof ClinicalExporter === 'undefined') return;
+    ClinicalExporter.exportCalendarReminder({
+      title: "Tái Đánh Giá Khí Máu Động Mạch (ABG)",
+      description: "Đánh giá lại thông số ABG, pH, PaO2/FiO2 và thăng bằng kiềm toan sau can thiệp điều trị.",
+      startHoursFromNow: 4,
+      location: "Khoa Cấp Cứu / ICU"
+    });
+  });
+
   // Render initial scenario
   renderScenariosList();
   loadScenario('sc_dka_severe');
 });
+

@@ -16,7 +16,7 @@
 | `sw.js` | Service Worker PWA (Pre-caching, Offline Caching Strategy) | — | — |
 | `capacitor.config.json` | Cấu hình Capacitor Mobile App (Android/iOS Scheme, AppId, Splash) | — | — |
 | `package.json` | Cấu hình package Electron Desktop & Capacitor Mobile App | `desktop/main-electron.js` | — |
-| `icons-collection.html` | Demo thư viện icons SVG | — | — |
+| `assets/icons-collection.html` | Demo thư viện icons SVG | — | — |
 
 ---
 
@@ -83,6 +83,7 @@
 | `components/insulin-calculator.css` | Giao diện máy tính Insulin | `DG_Insulin-ĐTĐ.html` |
 | `components/benh-an.css` | Mẫu bệnh án điện tử | `benh-an-noi-khoa.html` |
 | `components/paraclinical.css` | Đọc kết quả cận lâm sàng | `pages/Kỹ năng/Cận lâm sàng/**` |
+| `components/clinical-skill-data.css` | Giao diện dynamic generated cho các file formats phi HTML (OSCE Evaluator, Lab Simulator) | `pages/Kỹ năng/**` |
 | `components/ecg-studio.css` | Giao diện ECG Pro Studio 12 chuyển đạo, Calipers, Checklist 10 bước | `pages/Công cụ/Cấp cứu & hồi sức/ECG_Studio.html` |
 | `components/homepage-effects.css` | Hiệu ứng trang chủ | `index.html` |
 | `components/homepage-widgets.css` | Widgets trang chủ | `index.html` |
@@ -106,6 +107,9 @@
 | `approach-symptom.js` | Tự động tạo mục lục & ScrollSpy triệu chứng | `pages/Tiếp cận/2. Triệu chứng/**` |
 | `approach-hub.js` | Search + filter lưu đồ | `tiep-can.html` |
 | `clinical-skill-tabs.js` | Tab switching kỹ năng lâm sàng | `pages/Kỹ năng/**` |
+| `Kỹ năng/js/osce-evaluator.js` | Core JS engine xử lý dữ liệu JSON Schema bảng chấm điểm OSCE & tính điểm động | `pages/Kỹ năng/**` |
+| `Kỹ năng/js/markdown-skill-parser.js` | Core JS parser biến file Markdown (.md) thành giao diện bài đọc kỹ năng | `pages/Kỹ năng/**` |
+| `Kỹ năng/js/lab-simulator.js` | Core JS engine giả lập chỉ số cận lâm sàng từ dữ liệu JSON Schema | `pages/Kỹ năng/**` |
 | `ecg-studio/ecg-modifiers.js` | Thư viện 35+ modifier bất thường ECG | `ECG_Interactive.html` |
 | `ecg-studio/ecg-criteria.js` | Dữ liệu tiêu chuẩn chẩn đoán 35+ bất thường ECG | `ECG_Studio.html` |
 | `ecg-studio/ecg-scenarios.js` | Tình huống lâm sàng & bệnh nhân ảo ECG | `ECG_Interactive.html` |
@@ -165,6 +169,9 @@
 | `lab-values.js` | Dữ liệu & Logic Widget Trị số xét nghiệm tham chiếu ở Sidebar | `cong-cu.html` |
 | `calculators/abg-calculator.js` | Logic 6-bước chẩn đoán toan kiềm | `DG_ABG.html` |
 | `calculators/insulin-calculator.js` | Logic chỉnh liều insulin | `DG_Insulin-ĐTĐ.html` |
+| `core/clinical-engine.js` | Engine CDSS cốt lõi (Strategy, Pipeline, State, Registry) | Phân hệ Công cụ |
+| `core/clinical-bridge.js` | Module Cầu nối & Đồng bộ Dữ liệu Lâm sàng giữa các Công cụ | Phân hệ Công cụ |
+| `calculators/renal-engine.js` | Logic tính toán & CDSS chức năng thận (CrCl, eGFR, BSA, KDIGO CKD/AKI) | `renal-function.html` |
 
 ---
 
@@ -226,7 +233,15 @@
 
 | File | Vai trò |
 |------|---------|
-| `Dược lý/duoc-ly.html` | Hub tổng Dược lý |
+| `Dược lý/duoc-ly.html` | Hub tổng Dược lý & Dynamic Engine Showcase |
+| `Dược lý/data/drugs_database.json` | JSON Schema danh mục thuốc & liều dùng |
+| `Dược lý/data/drug_interactions.json` | Ma trận tương tác thuốc (Pairwise DDI Matrix) |
+| `Dược lý/data/symptom_pathways.json` | Đồ thị thuật toán điều trị theo triệu chứng |
+| `Dược lý/data/dosage_rules.json` | Cấu hình quy tắc chỉnh liều (CrCl / Cân nặng) |
+| `Dược lý/data/interaction_matrix.csv` | Ma trận tương tác dạng CSV hỗ trợ Excel/Sheets |
+| `Dược lý/monographs/amoxicillin_clavulanate.md` | Hồ sơ thuốc chuyên sâu dạng Markdown (Augmentin) |
+| `Dược lý/monographs/metoprolol_succinate.md` | Hồ sơ thuốc chuyên sâu dạng Markdown (Metoprolol) |
+| `Dược lý/assets/moa_beta_lactam.svg` | Sơ đồ vector cơ chế tác dụng Beta-lactam |
 | `Dược lý/Triệu chứng/DL_Chongmat.html` | DL theo triệu chứng: Chóng mặt |
 | `Dược lý/Triệu chứng/DL_Daubungcap.html` | DL: Đau bụng cấp |
 | `Dược lý/Triệu chứng/DL_Daudau.html` | DL: Đau đầu |
@@ -274,6 +289,7 @@
 | `Kỹ năng/Thủ thuật/Dat_NKQ.html` | Procedure Step-by-Step: Đặt Ống Nội Khí Quản |
 | `Kỹ năng/Thủ thuật/Choc_Dich_Mang_Phoi.html` | Procedure Step-by-Step: Chọc Dò Dịch Màng Phổi |
 | `Kỹ năng/Thủ thuật/Choc_Dich_Tuy_Song.html` | Procedure Step-by-Step: Chọc Dò Dịch Tủy Sống |
+| `Kỹ năng/Kynang_DataFormats_Demo.html` | Demo Arena: Khai thác các File Formats Phi HTML/CSS/JS (JSON, Markdown, Lab Datasets) |
 
 ---
 
@@ -390,6 +406,18 @@
 | `Y học chứng cứ/Thống kê y học/6_Hoi_quy_Logistic_Da_thuc.html` | **[MỚI]** Bài 6: Hồi quy Logistic Đa thức (Multinomial Logistic) & RRR Calculator |
 | `Y học chứng cứ/Thống kê y học/7_Hoi_quy_Bayes.html` | **[MỚI]** Bài 7: Hồi quy Tuyến tính Bayes trong Y học & Prior-to-Posterior Animator |
 | `Y học chứng cứ/Thống kê y học/8_Phan_bien_Nghien_cuu.html` | **[MỚI]** Bài 8: Phản biện Nghiên cứu, MANOVA / MANCOVA & Reviewer Response Audit Checklist |
+| `Y học chứng cứ/js/ebm-format-loader.js` | **[MỚI]** Động cơ định dạng phi HTML (JSON parser, Markdown renderer, CSV parser, Citations exporter) |
+| `Y học chứng cứ/Guidelines/data/guidelines_db.json` | **[MỚI]** Cơ sở dữ liệu JSON quản lý danh sách Hướng dẫn điều trị & RCT Landmark |
+| `Y học chứng cứ/Guidelines/content/empa_reg_summary.md` | **[MỚI]** Tóm tắt nghiên cứu EMPA-REG dạng Markdown + YAML metadata |
+| `Y học chứng cứ/Guidelines/citations/ebm_references.bib` | **[MỚI]** Tập tin trích dẫn chuẩn BibTeX cho các nghiên cứu lâm sàng |
+| `Y học chứng cứ/Guidelines/citations/ebm_references.ris` | **[MỚI]** Tập tin trích dẫn chuẩn RIS xuất dữ liệu Zotero/EndNote |
+| `Y học chứng cứ/Thống kê y học/data/ebm_quiz_db.json` | **[MỚI]** Ngân hàng câu hỏi trắc nghiệm Thống kê Y học chuẩn định dạng JSON |
+| `Y học chứng cứ/Thống kê y học/content/01_p_value_and_nnt.md` | **[MỚI]** Bài học P-value & NNT định dạng Markdown |
+| `Y học chứng cứ/EBM Lab/data/meta_analysis_presets.json` | **[MỚI]** Dữ liệu mẫu Meta-Analysis cho Forest plot, Funnel plot, Kaplan-Meier |
+| `Y học chứng cứ/EBM Lab/data/sample_meta_analysis.csv` | **[MỚI]** Tập dữ liệu dạng bảng CSV nạp trực tiếp vào Forest plot builder |
+| `Y học chứng cứ/Guideline Radar/data/radar_alerts.json` | **[MỚI]** Dữ liệu cảnh báo thay đổi khuyến cáo lâm sàng real-time dạng JSON |
+| `Y học chứng cứ/assets/svg/evidence_pyramid.svg` | **[MỚI]** Sơ đồ Vector SVG Tháp Bằng Chứng Y Học tương tác |
+| `Y học chứng cứ/assets/svg/diagnostic_matrix_2x2.svg` | **[MỚI]** Sơ đồ Vector SVG Ma Trận Chẩn Đoán 2x2 tương tác |
 
 ---
 
@@ -422,7 +450,33 @@
 | `Y học cổ truyền/Dưỡng sinh & Game/js/duong-sinh-dashboard.js` | Controller phân tích thể chất cá nhân hóa & gợi ý thực đơn / huyệt vị theo mùa |
 | `Y học cổ truyền/Dong-Tay-Y-Bridge/dong-tay-y-bridge.html` | **[MỚI]** Cầu Nối Đông - Tây Y (Ma trận đối chiếu Bệnh danh YHCT ↔ ICD-10 Tây y & Tương tác thuốc) |
 | `Y học cổ truyền/Dong-Tay-Y-Bridge/data/dong-tay-y-data.js` | Dữ liệu đối chiếu Y lý - ICD-10, phác đồ phối hợp an toàn & cảnh báo tương tác thuốc nguy hiểm |
-| `Y học cổ truyền/Dong-Tay-Y-Bridge/js/dong-tay-y-bridge.js` | Controller tra cứu ma trận đối chiếu Đông-Tây Y real-time |
+| `Y học cổ truyền/config/yhct-module-manifest.yaml` | **[MỚI]** Manifest YAML cấu hình toàn bộ phân hệ YHCT & Submodules |
+| `Y học cổ truyền/js/yhct-data-loader.js` | **[MỚI]** Engine nạp và parse bất đồng bộ JSON/CSV/MD/SVG/YAML cho YHCT |
+| `Y học cổ truyền/data/json/*.json` | **[MỚI]** 11 JSON Schemas lưu trữ dữ liệu y học (Ngũ hành, Dược thảo, Cổ phương, Huyệt vị, 28 Mạch, Thiệt chẩn, Đông-Tây y) |
+| `Y học cổ truyền/data/csv/*.csv` | **[MỚI]** 3 Bảng ma trận CSV tra cứu siêu tốc (Tính vị quy kinh, Huyệt vị giải phẫu, Tương tác thuốc) |
+| `Y học cổ truyền/docs/monographs/*.md` | **[MỚI]** 5 Chuyên khảo y học lâm sàng định dạng Markdown (Ngũ hành, Tứ chẩn, Bấm huyệt, Cổ phương, Bát đoạn cẩm) |
+| `Y học cổ truyền/assets/svg/*.svg` | **[MỚI]** 4 Sơ đồ vectơ SVG sắc nét (Ngũ hành cycle, Đồng hồ Tý ngọ lưu chu, 28 Hình thái sóng mạch, Phân vùng lưỡi) |
+
+---
+
+## 🧬 pages/ — Sinh lý & Sinh lý bệnh
+
+| File | Vai trò |
+|------|---------|
+| `Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html` | Hub tổng phân hệ Sinh lý & Sinh lý bệnh |
+| `Sinh lý - Sinh lý bệnh/formula-vault.html` | **[NÂNG CẤP]** Kho Công Thức Sinh Lý Định Lượng (Tải động từ `formula-vault.json` kèm Máy tính Tức thì) |
+| `Sinh lý - Sinh lý bệnh/reader.html` | **[MỚI]** Universal Physiology Markdown Reader (Trình đọc bài học Markdown chuẩn hóa, MathJax TeX & Lightbox) |
+| `Sinh lý - Sinh lý bệnh/data/physio-catalog.json` | **[MỚI]** Master Catalog quản lý danh mục toàn bộ bài học Sinh lý (Phần 1 - 7) & Sinh lý bệnh CCBS |
+| `Sinh lý - Sinh lý bệnh/data/formula-vault.json` | **[MỚI]** Cơ sở dữ liệu công thức sinh lý định lượng (Nernst, GHK, Fick, Starling, Henderson-Hasselbalch, GFR...) |
+| `Sinh lý - Sinh lý bệnh/data/physio-pathways.json` | **[MỚI]** Sơ đồ chuỗi cơ chế sinh lý bệnh (Điện thế hoạt động, Hệ ACS, RAAS...) |
+| `Sinh lý - Sinh lý bệnh/data/lab-reference-values.csv` | **[MỚI]** Tập dữ liệu hằng số sinh lý & khoảng tham chiếu xét nghiệm chuẩn hóa |
+| `Sinh lý - Sinh lý bệnh/data/ion-kinetics.csv` | **[MỚI]** Tập dữ liệu nồng độ Ion Nội/Ngoại bào & điện thế Nernst tương ứng |
+| `Sinh lý - Sinh lý bệnh/content/sinhly/phan1/SL_TB_Diensinhly.md` | **[MỚI]** Bài học Sinh lý Điện thế sinh lý chuẩn dạng Markdown + YAML Frontmatter |
+| `Sinh lý - Sinh lý bệnh/content/slb_ccbs/SLB_CCBS_ACS.md` | **[MỚI]** Bài học Sinh lý bệnh Hội chứng vương cấp dạng Markdown + Medical Callouts |
+| `Sinh lý - Sinh lý bệnh/diagrams/action-potential.svg` | **[MỚI]** Sơ đồ Vector SVG tương tác mô phỏng Điện thế hoạt động thần kinh - cơ |
+| `Sinh lý - Sinh lý bệnh/js/physio-md-engine.js` | **[MỚI]** Dynamic Vanilla JS Markdown Engine (Parser YAML, Medical Callouts & MathJax) |
+| `Sinh lý - Sinh lý bệnh/js/physio-formula-engine.js` | **[MỚI]** Engine máy tính công thức sinh lý định lượng tương tác |
+| `Sinh lý - Sinh lý bệnh/js/physio-pathway-viewer.js` | **[MỚI]** Trình diễn sơ đồ chuỗi cơ chế sinh lý bệnh từ JSON |
 
 ---
 

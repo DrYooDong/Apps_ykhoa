@@ -26,6 +26,7 @@
   <script src="../../../js/main.js" defer></script>
   <script src="../../../components/header.js" defer></script>
   <script src="../../../components/footer.js" defer></script>
+  <script src="../../../js/utils/clinical-exporter.js" defer></script>
   <script src="../../../js/abg-studio/abg-criteria.js" defer></script>
   <script src="../../../js/abg-studio/abg-scenarios.js" defer></script>
   <script src="../../../js/abg-studio/abg-davenport.js" defer></script>
@@ -79,18 +80,21 @@
               <span class="element-badge" style="background-color: var(--color-danger); margin-bottom: 0.5rem;">Công Cụ Cấp Cứu High-Tech</span>
               <h1 class="studio-title">Blood Gas Pro Studio — Giả Lập & Phân Tích Khí Máu Tương Tác</h1>
               <p style="color: var(--color-text-muted); font-size: 0.95rem; margin-top: 0.25rem;">
-                Hệ thống hỗ trợ ra quyết định lâm sàng cấp cứu. Phân tích 7 bước tự động, vẽ biểu đồ Davenport Nomogram tương tác, đánh giá trao đổi khí A-a DO₂ & P/F Ratio, Anion Gap hiệu chỉnh và Thử thách Quiz.
+                Hệ thống hỗ trợ ra quyết định lâm sàng cấp cứu. Phân tích 7 bước tự động, biểu đồ Davenport SVG / Nomogram tương tác, đánh giá A-a DO₂ & P/F Ratio, Anion Gap hiệu chỉnh.
               </p>
             </div>
             <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <button class="btn-proc btn-proc-secondary" id="btnExportABGPDF">
+                <i class="fa-solid fa-file-pdf"></i> Xuất Báo Cáo PDF
+              </button>
+              <button class="btn-proc btn-proc-secondary" id="btnExportABGReminder">
+                <i class="fa-solid fa-calendar-plus"></i> Nhắc Lịch Tái Đánh Giá (.ics)
+              </button>
               <button class="btn-proc btn-proc-secondary" id="btnResetStudio">
                 <i class="fa-solid fa-rotate-left"></i> Đặt Lại Mặc Định
               </button>
-              <button class="btn-proc btn-proc-secondary" id="btnScrollToDDx">
-                <i class="fa-solid fa-stethoscope"></i> Chẩn Đoán Phân Biệt
-              </button>
               <button class="btn-proc btn-proc-primary" id="btnStartStudioQuiz">
-                <i class="fa-solid fa-graduation-cap"></i> Thử Thách Quiz Chẩn Đoán
+                <i class="fa-solid fa-graduation-cap"></i> Thử Thách Quiz
               </button>
             </div>
           </div>

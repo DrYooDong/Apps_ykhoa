@@ -2006,3 +2006,136 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* ════════════════════════════════════════════════════════════
+   MOBILE & RESPONSIVE ACTION BUTTONS STYLING
+   ════════════════════════════════════════════════════════════ */
+.detail-actions,
+.mc-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--border-light, #e2e8f0);
+}
+
+.detail-actions .btn,
+.mc-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 38px;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid var(--border-light, #cbd5e1);
+  background: var(--surface, #ffffff);
+  color: var(--text-muted, #475569);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 180ms ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.detail-actions .btn:hover,
+.mc-actions .btn:hover {
+  background: var(--blue-bg, #eff6ff);
+  border-color: var(--accent, #0284c7);
+  color: var(--accent, #0284c7);
+}
+
+.detail-actions .btn:active,
+.mc-actions .btn:active {
+  transform: scale(0.98);
+}
+
+/* Inline subgroup badge button */
+.badge-subgroup-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0.3rem 0.65rem;
+  min-height: 32px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #0891b2;
+  background: #ecfeff;
+  border: 1px solid #a5f3fc;
+  cursor: pointer;
+  transition: all 180ms ease;
+  user-select: none;
+}
+
+.badge-subgroup-inline:hover {
+  background: #cffaff;
+  border-color: #06b6d4;
+  box-shadow: 0 2px 8px rgba(8, 145, 178, 0.15);
+}
+
+/* 📱 TABLET & MOBILE RESPONSIVE (≤ 768px) */
+@media (max-width: 768px) {
+  .detail-actions,
+  .mc-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .detail-actions .btn,
+  .mc-actions .btn {
+    width: 100%;
+    min-height: 42px;
+    font-size: 0.82rem;
+    padding: 0.5rem 0.75rem;
+    text-align: center;
+  }
+
+  #subgroup-modal .modal {
+    width: 95%;
+    max-width: 100%;
+    max-height: 92vh;
+    border-radius: 16px;
+    margin: 0.5rem;
+  }
+
+  .sg-grid-container {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem;
+  }
+
+  .sg-card {
+    padding: 0.85rem;
+  }
+
+  .sg-panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+/* 📱 SMALL MOBILE PHONE (≤ 480px) */
+@media (max-width: 480px) {
+  .detail-actions,
+  .mc-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-actions .btn,
+  .mc-actions .btn {
+    min-height: 44px;
+    font-size: 0.85rem;
+  }
+
+  .topnav-badges {
+    display: none;
+  }
+}
+
+

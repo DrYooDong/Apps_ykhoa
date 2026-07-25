@@ -14,7 +14,6 @@ fs.mkdirSync(wwwDir, { recursive: true });
 
 const itemsToCopy = [
   'index.html',
-  'icons-collection.html',
   'manifest.json',
   'sw.js',
   'assets',

@@ -1,0 +1,202 @@
+/* ==========================================================================
+   Clinical Skill Data Engine Components (JSON, Markdown, SVG Dynamic Styles)
+   ========================================================================== */
+
+.card-box {
+    background: var(--color-surface, #ffffff);
+    border: 1px solid var(--color-border, #e2e8f0);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    transition: all 0.2s ease-in-out;
+}
+
+[data-theme="dark"] .card-box {
+    background: var(--color-surface, #1e293b);
+    border-color: var(--color-border, #334155);
+}
+
+/* OSCE Evaluator Styles */
+.osce-eval-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 2px solid var(--color-border, #f1f5f9);
+    padding-bottom: 1rem;
+}
+
+.osce-eval-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--color-primary, #0284c7);
+    margin: 0;
+    flex: 1 1 100%;
+}
+
+.osce-eval-timer-box {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #e11d48;
+    background: rgba(225, 29, 72, 0.08);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+}
+
+.osce-patient-box {
+    background: var(--color-bg, #f8fafc);
+    border-left: 4px solid var(--color-primary, #0284c7);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.osce-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.osce-table th, 
+.osce-table td {
+    padding: 0.85rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border, #e2e8f0);
+    font-size: 0.95rem;
+}
+
+.osce-table th {
+    background: var(--color-bg, #f1f5f9);
+    font-weight: 600;
+    color: var(--color-text, #334155);
+}
+
+.critical-row {
+    background: rgba(239, 68, 68, 0.04);
+}
+
+.btn-group-score {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-score {
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid var(--color-border, #cbd5e1);
+    background: var(--color-surface, #ffffff);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.btn-score.btn-pass.active {
+    background: #10b981;
+    color: #ffffff;
+    border-color: #10b981;
+}
+
+.btn-score.btn-fail.active {
+    background: #ef4444;
+    color: #ffffff;
+    border-color: #ef4444;
+}
+
+.osce-summary-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 2px dashed var(--color-border, #e2e8f0);
+}
+
+.osce-score-board {
+    font-size: 1.15rem;
+    font-weight: 700;
+
+}
+
+/* Feedback Panel */
+.feedback-card {
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.feedback-card.pass-card {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid #10b981;
+}
+
+.feedback-card.fail-card {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid #ef4444;
+}
+
+/* Lab Simulator Styles */
+.lab-table-wrapper {
+    overflow-x: auto;
+}
+
+.lab-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.lab-table th, .lab-table td {
+    padding: 0.9rem;
+    border-bottom: 1px solid var(--color-border, #e2e8f0);
+}
+
+.lab-input-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.lab-input {
+    width: 90px;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    border: 1px solid var(--color-border, #cbd5e1);
+    background: var(--color-surface, #ffffff);
+    color: var(--color-text, #0f172a);
+
+}
+
+.lab-output {
+    font-size: 0.9rem;
+}
+
+.critical-alert {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+
+/* Badges */
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+
+}
+.badge-primary { background: var(--color-primary, #0284c7); color: #fff; }
+.badge-info { background: #06b6d4; color: #fff; }
+.badge-warning { background: #f59e0b; color: #fff; }
+.badge-danger { background: #ef4444; color: #fff; }
+.badge-success { background: #10b981; color: #fff; }
+.badge-secondary { background: #64748b; color: #fff; }

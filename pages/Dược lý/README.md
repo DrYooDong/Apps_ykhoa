@@ -28,20 +28,31 @@ Phân hệ Dược lý Lâm sàng được thiết kế nhằm hỗ trợ các b
 
 ```
 Dược lý/
-├── Chuyên khoa/               # [Phần 1] Tương tác thuốc theo chuyên khoa/nhóm cụ thể
-│   ├── DL_Timmach.html        # Tương tác thuốc tim mạch (THA, suy tim, mạch vành...)
-│   ├── DL_Vanmach.html        # Dược lý & tương tác các thuốc vận mạch, bù dịch hồi sức
-│   ├── DL_Hohap.html          # Tương tác thuốc hô hấp (hen, COPD, giãn phế quản...)
-│   ├── DL_Tiêuhoá.html        # Tương tác thuốc tiêu hóa (PPI, kháng H2, prokinetics...)
-│   ├── DL_Ttoan_than.html     # Các tương tác thuốc toàn thân kinh điển cần lưu ý
-│   └── DL_Khangsinh.html      # Tương tác chi tiết nhóm Kháng sinh (đặc hiệu nhóm thuốc)
-├── Triệu chứng/               # [Phần 2] Dược lý tiếp cận từ triệu chứng dạng Flowchart
-│   ├── DL_Daubungcap.html     # Thuật toán xử trí thuốc trong đau bụng cấp ngoại/nội khoa
-│   ├── DL_Ho.html             # Sơ đồ tiếp cận thuốc ho (ho khan, ho đàm, giảm ho, long đàm)
-│   ├── DL_Nonoi.html          # Hướng dẫn dùng thuốc kháng tiết, chống nôn theo cơ chế triệu chứng
-│   ├── DL_Chongmat.html       # Dược lý điều trị chóng mặt (tiền đình, trung ương) dạng lưu đồ
-│   └── DL_Daudau.html         # Tiếp cận thuốc giảm đau và cắt cơn trong đau đầu/migraine
-└── duoc-ly.html               # Trang Hub điều hướng chính của phân hệ Dược lý
+├── data/                      # [Phi HTML] Repository dữ liệu chuyên sâu
+│   ├── drugs_database.json    # JSON Schema danh mục thuốc & liều lượng
+│   ├── drug_interactions.json # Ma trận tương tác thuốc (Pairwise DDI Matrix)
+│   ├── symptom_pathways.json  # Đồ thị thuật toán điều trị theo triệu chứng
+│   ├── dosage_rules.json      # Cấu hình quy tắc chỉnh liều (CrCl / Cân nặng)
+│   └── interaction_matrix.csv # Ma trận tương tác dạng CSV hỗ trợ Excel/Sheets
+├── monographs/                # [Phi HTML] Hồ sơ thuốc chuyên sâu dạng Markdown
+│   ├── amoxicillin_clavulanate.md
+│   └── metoprolol_succinate.md
+├── assets/                    # [Phi HTML] Sơ đồ vector cơ chế phân tử & Media
+│   └── moa_beta_lactam.svg    # Interactive SVG Mechanism of Action
+├── Chuyên khoa/               # [Phần 1] Tương tác thuốc theo chuyên khoa
+│   ├── DL_Timmach.html
+│   ├── DL_Vanmach.html
+│   ├── DL_Hohap.html
+│   ├── DL_Tiêuhoá.html
+│   ├── DL_Ttoan_than.html
+│   └── DL_Khangsinh.html
+├── Triệu chứng/               # [Phần 2] Dược lý tiếp cận từ triệu chứng
+│   ├── DL_Daubungcap.html
+│   ├── DL_Ho.html
+│   ├── DL_Nonoi.html
+│   ├── DL_Chongmat.html
+│   └── DL_Daudau.html
+└── duoc-ly.html               # Trang Hub điều hướng chính & Dynamic Pharmacology Engine
 ```
 
 ---

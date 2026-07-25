@@ -66,3 +66,68 @@ Dành cho các công cụ tra cứu mã bệnh y tế, kiểm tra quy tắc than
 - **Tệp CSS**: Đặt trong `css/components/[tên-công-cụ].css`.
 - **Tệp JS**: Đặt trong `js/[tên-công-cụ].js`.
 - **Dữ liệu Tĩnh (nếu có)**: Đặt trong `js/data/[tên-dữ-liệu].js` và hỗ trợ tính năng Xuất CSV để hoạt động độc lập vĩnh viễn.
+
+---
+
+## 🏛️ 5. Kiến trúc Engine Lâm sàng Tách biệt (Clinical Engine Architecture Pattern)
+
+Đối với các công cụ có **thuật toán tính toán đa công thức, nhiều bước xử lý hoặc phân tầng rủi ro phức tạp**, bắt buộc phải áp dụng bộ 3 Design Patterns thông qua thư viện core dùng chung `js/core/clinical-engine.js`:
+
+### 1. Thành phần Cốt lõi (`js/core/clinical-engine.js`)
+* **`ClinicalEngine.Strategy`**: Đóng gói các công thức y khoa độc lập (`calculate(context)`). Khi thêm phương pháp tính toán mới, chỉ cần tạo Strategy mới mà không làm ảnh hưởng các công thức hiện tại.
+* **`ClinicalEngine.PipelineStep`**: Mỗi mắt xích xử lý 1 nhiệm vụ riêng biệt trong chuỗi (`setNext()`, `process(context)`).
+* **`ClinicalEngine.Pipeline`**: Trình điều phối chạy chuỗi Pipeline (`addStep()`, `execute(context)`).
+* **`ClinicalEngine.StateManager`**: Quản lý Form nhập liệu linh hoạt theo đối tượng (Nhi khoa vs Người lớn, Đơn vị SI vs Đơn vị Truyền thống).
+
+### 2. Cấu trúc Tệp Chuẩn cho Công cụ Tính toán Mới
+```
+js/
+├── core/
+│   └── clinical-engine.js          # Module core dùng chung toàn hệ thống
+└── calculators/
+    └── [tên-công-cụ]-engine.js     # Engine đóng gói các Strategies & Pipeline Steps
+```
+
+### 3. Tích hợp trong HTML (`pages/Công cụ/[Phân nhóm]/file.html`)
+```html
+<!-- Load core engine và engine công cụ ở phần head với defer -->
+<script src="../../../js/core/clinical-engine.js" defer></script>
+<script src="../../../js/calculators/[tên-công-cụ]-engine.js" defer></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    async function calculate() {
+        const context = await window.[TenEngine].pipeline.execute({
+            // Input data từ UI
+        });
+        // Render kết quả lên UI từ context
+    }
+});
+</script>
+```
+
+### 4. Công cụ Mẫu Chuẩn Tham chiếu
+* **File HTML**: `pages/Công cụ/Thận & Điện giải - toan kiềm/renal-function.html`
+* **File Engine**: `js/calculators/renal-engine.js`
+
+---
+
+## 🔗 6. Quy chuẩn Liên kết Dữ liệu Lâm sàng giữa các Công cụ (Inter-Tool Clinical Bridge)
+
+Để tránh việc bác sĩ phải nhập lại các thông số nhân khẩu học và xét nghiệm (Tuổi, Giới tính, Cân nặng, Creatinine, eGFR...) khi di chuyển qua lại giữa các công cụ trong hệ sinh thái CliniPortal, các ứng dụng phải tích hợp module **`js/core/clinical-bridge.js`**:
+
+### 1. Đồng bộ Session Bệnh nhân (`ClinicalBridge.updateSession`)
+* Khi một công cụ tính toán hoàn tất (ở bước cuối của Pipeline), tự động gọi `ClinicalBridge.updateSession(context)` để lưu thông số bệnh nhân vào `sessionStorage`.
+* Dữ liệu được xóa tự động khi đóng trình duyệt, đảm bảo an toàn và bảo mật thông tin.
+
+### 2. Banner Nạp Dữ liệu Thông minh (`ClinicalBridge.renderAutoFillBanner`)
+* Trong sự kiện `DOMContentLoaded` của trang công cụ, gọi `ClinicalBridge.renderAutoFillBanner((session) => { ... })`.
+* Nếu hệ thống phát hiện có dữ liệu ca bệnh đã tính ở công cụ trước, một Banner thông minh sẽ tự động xuất hiện hỏi bác sĩ có muốn nạp nhanh thông số hay không.
+
+### 3. Nút Điều hướng Chuyển tiếp Nhanh (`ClinicalBridge.renderActionChips`)
+* Tại khối Kết quả hoặc Khung Cảnh báo Thuốc của công cụ, gọi `ClinicalBridge.renderActionChips(container, actions)` để sinh ra các nút chip điều hướng truyền sẵn tham số query string (`?age=68&weight=70&crcl=32...`).
+* **Ví dụ các liên kết lâm sàng tiêu biểu**:
+  * Từ `renal-function.html` $\rightarrow$ Chuyển tiếp sang `Chinhlieu_khangsinh.html`, `QL_Vancomycin.html`, `Electrolyte_Studio.html`.
+  * Từ `DG_VTE.html` (Thuyên tắc huyết khối) $\rightarrow$ Chuyển tiếp sang `renal-function.html` (Đánh giá chức năng thận để chọn liều DOACs/Enoxaparin).
+
+

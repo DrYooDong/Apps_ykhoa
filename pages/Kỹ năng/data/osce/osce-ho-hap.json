@@ -1,0 +1,66 @@
+{
+  "$schema": "https://cliniportal.org/schemas/osce-rubric.v1.json",
+  "id": "osce-ho-hap-1",
+  "title": "Khám Bệnh Nhân Khó Thở Cấp (Cơn Hen Nặng)",
+  "category": "Hô hấp",
+  "difficulty": "basic",
+  "durationSeconds": 480,
+  "maxScore": 12,
+  "passScore": 8,
+  "patientInfo": {
+    "name": "Trần Thị B",
+    "age": 45,
+    "gender": "Nữ",
+    "vitals": "Mạch 120 l/p, HA 130/80 mmHg, SpO₂ 88%, Nhịp thở 28 l/p"
+  },
+  "scenario": "Bệnh nhân có tiền sử hen phế quản, vào viện vì khó thở dữ dội, khò khè nghe rõ từ xa. Bạn có 8 phút để thực hiện khám hô hấp, đánh giá mức độ nặng và xử trí ban đầu.",
+  "checklist": [
+    {
+      "id": "step-1",
+      "text": "Chào hỏi nhanh, gọi hỗ trợ điều dưỡng khẩn cấp",
+      "pts": 1,
+      "critical": false,
+      "category": "Chuẩn bị"
+    },
+    {
+      "id": "step-2",
+      "text": "Đo SpO₂ và cho thở oxy ngay (mục tiêu SpO₂ ≥ 94%)",
+      "pts": 2,
+      "critical": true,
+      "category": "Xử trí khẩn"
+    },
+    {
+      "id": "step-3",
+      "text": "NHÌN: Quan sát tư thế ngồi (chống 3 chân?), co kéo cơ hô hấp phụ, tím môi",
+      "pts": 2,
+      "critical": false,
+      "category": "Thực hiện"
+    },
+    {
+      "id": "step-4",
+      "text": "GÕ: Đánh giá ứ khí phế nang 2 bên phổi",
+      "pts": 1,
+      "critical": false,
+      "category": "Thực hiện"
+    },
+    {
+      "id": "step-5",
+      "text": "NGHE: Phổi 2 bên: Ran rít, ran ngáy, rì rào phế nang giảm?",
+      "pts": 3,
+      "critical": true,
+      "category": "Thực hiện"
+    },
+    {
+      "id": "step-6",
+      "text": "Chỉ định phun khí dung Salbutamol 5mg + Ipratropium khẩn",
+      "pts": 3,
+      "critical": true,
+      "category": "Đánh giá & Xử trí"
+    }
+  ],
+  "keyPoints": [
+    "SpO₂ < 92% = Hen phế quản cơn nặng, phải xử trí oxy và cường beta-2 ngắt quãng ngay",
+    "Hiện tượng Silent Chest (phổi câm) = dấu hiệu nguy kịch, dọa ngừng thở",
+    "Liều Salbutamol: 5mg phun khí dung lặp lại mỗi 20 phút trong giờ đầu"
+  ]
+}

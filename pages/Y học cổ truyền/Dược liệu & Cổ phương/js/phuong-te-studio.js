@@ -3,12 +3,19 @@
  * Quan - Than - Ta - Su Hierarchical Visualizer & Dynamic Formula Modification Engine
  */
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
   const formulasListBox = document.getElementById("ptFormulasList");
   const searchInput = document.getElementById("ptSearchInput");
   const detailPanel = document.getElementById("ptDetailPanel");
 
-  if (!formulasListBox || typeof PHUONG_TE_DATA === "undefined") return;
+  if (!formulasListBox) return;
+
+  let activeData = typeof PHUONG_TE_DATA !== "undefined" ? PHUONG_TE_DATA : null;
+  if (!activeData && window.YHCTDataLoader) {
+    activeData = await window.YHCTDataLoader.getPhuongTeData('../');
+    window.PHUONG_TE_DATA = activeData;
+  }
+  if (!activeData) return;
 
   let activeFormulaId = "luc-vi-dia-hoang-hoan";
   let searchQuery = "";

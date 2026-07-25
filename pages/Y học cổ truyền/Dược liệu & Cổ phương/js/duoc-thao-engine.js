@@ -3,7 +3,7 @@
  * Real-time Search, Multi-Facet Filters, Herb Detail Modal & Side-by-Side Comparison Engine
  */
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
   const cardsGrid = document.getElementById("dtCardsGrid");
   const searchInput = document.getElementById("dtSearchInput");
   const filterChips = document.querySelectorAll(".dt-chip");
@@ -14,7 +14,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const btnClearCompare = document.getElementById("btnClearCompare");
   const modalContainer = document.getElementById("dtModalContainer");
 
-  if (!cardsGrid || typeof DUOC_THAO_DATA === "undefined") return;
+  if (!cardsGrid) return;
+
+  let activeData = typeof DUOC_THAO_DATA !== "undefined" ? DUOC_THAO_DATA : null;
+  if (!activeData && window.YHCTDataLoader) {
+    activeData = await window.YHCTDataLoader.getDuocThaoData('../');
+    window.DUOC_THAO_DATA = activeData;
+  }
+  if (!activeData) return;
 
   let activeFilters = {
     nature: [],

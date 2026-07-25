@@ -24,6 +24,9 @@
   <link rel="stylesheet" href="../../../css/components/sidebar.css">
   <link rel="stylesheet" href="../../../css/components/footer.css">
   <link rel="stylesheet" href="../../../css/components/ventilator-studio.css">
+  <link rel="stylesheet" href="../../../css/components/markdown-rendered.css">
+
+  <script src="../../../js/utils/markdown-renderer.js" defer></script>
 
   <style>
     /* Inline helper adjustments for legacy compat */
@@ -419,7 +422,11 @@
           <button class="tab-btn" onclick="switchTab('tab-trouble', this)">
             <i class="fa-solid fa-triangle-exclamation"></i> Báo Động &amp; Gói VAP
           </button>
+          <button class="tab-btn" id="btnTabGuideline" onclick="switchTab('tab-guideline-md', this)">
+            <i class="fa-solid fa-file-lines"></i> Hướng Dẫn Lâm Sàng (.md)
+          </button>
         </div>
+
 
         <!-- ════════════════════════════════════════════════════════════════ -->
         <!-- UNIFIED MASTER TAB 1: WORKSTATION + CONTROLS + VIRTUAL PATIENTS -->
@@ -1132,9 +1139,22 @@
           </div>
         </div>
 
+        <!-- TAB 4: CLINICAL GUIDELINE MARKDOWN RENDERER -->
+        <div id="tab-guideline-md" class="tab-content">
+          <div class="panel-card" style="background: var(--color-surface); padding: 24px;">
+            <div class="panel-title" style="margin-bottom: 16px;">
+              <i class="fa-solid fa-book-medical"></i> <span>Tài Liệu Hướng Dẫn Cài Đặt Máy Thở ICU (.md)</span>
+            </div>
+            <div id="guideline-md-container">
+              <div class="md-loading"><i class="fa-solid fa-spinner fa-spin"></i> Đang nạp file Quản lý máy thở.md...</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </main>
   </div>
+
 
   <!-- FOOTER PLACEHOLDER -->
   <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
@@ -1878,13 +1898,19 @@
       document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
 
-      document.getElementById(tabId).classList.add('active');
-      btn.classList.add('active');
+      const targetTab = document.getElementById(tabId);
+      if (targetTab) targetTab.classList.add('active');
+      if (btn) btn.classList.add('active');
 
       if (tabId === 'tab-master-studio') {
         setTimeout(initCanvases, 50);
+      } else if (tabId === 'tab-guideline-md') {
+        if (typeof CliniMarkdown !== 'undefined') {
+          CliniMarkdown.renderFromFile('Quản lý máy thở.md', '#guideline-md-container');
+        }
       }
     }
+
 
     function toggleAccordion(header) {
       const item = header.parentElement;

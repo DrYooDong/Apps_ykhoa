@@ -291,8 +291,16 @@ class SM2Engine {
 }
 
 /* ── QUIZ APP CONTROLLER ── */
-function initQuizEngine() {
-  let currentQuestions = [...EBM_QUESTIONS];
+async function initQuizEngine() {
+  let questionsToUse = [...EBM_QUESTIONS];
+  if (window.EBMFormatLoader) {
+    const loadedData = await window.EBMFormatLoader.fetchOrFallback('data/ebm_quiz_db.json', 'json', 'ebm_quiz_db');
+    if (loadedData && loadedData.questions && loadedData.questions.length > 0) {
+      questionsToUse = loadedData.questions;
+    }
+  }
+
+  let currentQuestions = questionsToUse;
   let currentIndex = 0;
   let score = 0;
   let srData = SM2Engine.getData();
