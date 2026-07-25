@@ -152,7 +152,7 @@
 
     // Quick action items (always shown when empty)
     const quickActions = [
-      { icon: '🔍', title: 'Tra cứu mã ICD-10',       desc: 'Tìm mã bệnh quốc tế',           url: 'pages/Công cụ/Chung/Tracuu_maICD10.html' },
+      { icon: '🔍', title: 'Tra cứu mã ICD-10',       desc: 'Tìm mã bệnh quốc tế',           url: 'pages/Công cụ/Chung/Tra cứu mã ICD10/Tracuu_maICD10.html' },
       { icon: '📈', title: 'Đọc ECG cơ bản',           desc: 'Phân tích sóng và chẩn đoán',    url: 'pages/Kỹ năng/Cận lâm sàng/doc-ecg-co-ban.html' },
       { icon: '🩸', title: 'Phân tích tế bào máu CBC', desc: 'Diễn giải kết quả huyết học',   url: 'pages/Kỹ năng/Cận lâm sàng/doc-tpttb-mau.html' },
       { icon: '🧪', title: 'Sinh hóa chức năng Thận',  desc: 'Ure, Creatinine, eGFR',          url: 'pages/Kỹ năng/Cận lâm sàng/doc-sh-than.html' },

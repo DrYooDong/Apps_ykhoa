@@ -54,6 +54,10 @@
                     <button class="med-btn-tool" id="btnAddEdge"><i class="fa-solid fa-link"></i> Nối Mũi tên</button>
                     <button class="med-btn-tool danger" id="btnDeleteSelected"><i class="fa-solid fa-trash"></i> Xóa Chọn</button>
                     <div style="width:1px; height:20px; background:#cbd5e1; margin:0 4px;"></div>
+                    <button class="med-btn-tool outline" id="btnAutoLayout" title="Tự động xếp cây phân nhánh"><i class="fa-solid fa-wand-magic-sparkles"></i> Căn Chỉnh</button>
+                    <button class="med-btn-tool outline" id="btnAiGenerate" title="Tự sinh lưu đồ từ văn bản phác đồ"><i class="fa-solid fa-robot"></i> AI Sinh Sơ Đồ</button>
+                    <button class="med-btn-tool outline" id="btnEmbedCode" title="Tạo mã nhúng iframe"><i class="fa-solid fa-code"></i> Mã Nhúng</button>
+                    <div style="width:1px; height:20px; background:#cbd5e1; margin:0 4px;"></div>
                     <button class="med-btn-tool" id="btnExportSVG"><i class="fa-solid fa-file-code"></i> Xuất SVG</button>
                     <button class="med-btn-tool" id="btnExportPNG"><i class="fa-solid fa-file-image"></i> Xuất PNG</button>
                     <button class="med-btn-tool" id="btnExportJSON"><i class="fa-solid fa-download"></i> Tải JSON</button>
@@ -116,6 +120,38 @@
                         </div>
                     </div>
 
+                    <div class="med-palette-item" data-type="alert">
+                        <span class="med-palette-badge alert"></span>
+                        <div>
+                            <div style="font-size:13px; font-weight:700; color:#e11d48;">Khối Cấp cứu Khẩn</div>
+                            <div style="font-size:11px; color:#64748b;">Dấu hiệu cần xử trí ngay 🚨</div>
+                        </div>
+                    </div>
+
+                    <div class="med-palette-item" data-type="comparison">
+                        <span class="med-palette-badge comparison"></span>
+                        <div>
+                            <div style="font-size:13px; font-weight:700; color:#0d9488;">Bảng So sánh 2 cột</div>
+                            <div style="font-size:11px; color:#64748b;">Phân loại vị trí / Nguy cơ ⚖️</div>
+                        </div>
+                    </div>
+
+                    <div class="med-palette-item" data-type="dose-table">
+                        <span class="med-palette-badge dose-table"></span>
+                        <div>
+                            <div style="font-size:13px; font-weight:700; color:#4f46e5;">Bảng Thuốc Chi Tiết</div>
+                            <div style="font-size:11px; color:#64748b;">Liều khởi đầu & Lưu ý 💊</div>
+                        </div>
+                    </div>
+
+                    <div class="med-palette-item" data-type="pipeline">
+                        <span class="med-palette-badge pipeline"></span>
+                        <div>
+                            <div style="font-size:13px; font-weight:700; color:#0284c7;">Chuỗi Quy trình</div>
+                            <div style="font-size:11px; color:#64748b;">Tóm tắt icon nối tiếp ➔</div>
+                        </div>
+                    </div>
+
                     <div style="margin-top:auto; padding:10px; background:#f8fafc; border-radius:8px; border:1px solid #e2e8f0; font-size:11px; color:#64748b; line-height:1.4;">
                         💡 <strong>Mẹo:</strong> Kéo thả hoặc bấm vào câu trả lời trên đường nối để làm nổi bật lộ trình lâm sàng downstream!
                     </div>
@@ -155,6 +191,54 @@
                                 <option value="danger">Nguy hiểm (Danger)</option>
                                 <option value="success">Ổn định (Success)</option>
                                 <option value="dose">Cảnh báo liều (Dose Warning)</option>
+                                <option value="alert">Khối Cấp cứu Khẩn (Alert Banner)</option>
+                                <option value="comparison">Bảng So sánh 2 cột (Comparison Card)</option>
+                                <option value="dose-table">Bảng Thuốc Chi tiết (Dose Table)</option>
+                                <option value="pipeline">Chuỗi Quy trình (Process Pipeline)</option>
+                            </select>
+                        </div>
+
+                        <div class="med-prop-group">
+                            <label class="med-prop-label">Hình Khối Node (Shape):</label>
+                            <select id="propNodeShape" class="med-prop-select">
+                                <option value="rectangle">Chữ nhật bo góc (Mặc định)</option>
+                                <option value="diamond">Hình thoi (Câu hỏi rẽ nhánh)</option>
+                                <option value="pill">Hình Ô-van (Huy hiệu)</option>
+                                <option value="octagon">Bát giác (Cảnh báo dừng)</option>
+                            </select>
+                        </div>
+
+                        <div class="med-prop-group">
+                            <label class="med-prop-label">Biểu Tượng Y Khoa (Icon):</label>
+                            <select id="propNodeIcon" class="med-prop-select">
+                                <option value="">Không dùng icon</option>
+                                <option value="fa-stethoscope">🩺 Ống nghe (Khám lâm sàng)</option>
+                                <option value="fa-heart-pulse">🫀 Tim mạch / Mạch</option>
+                                <option value="fa-brain">🧠 Thần kinh / Não</option>
+                                <option value="fa-lungs">🫁 Hô hấp / Phổi</option>
+                                <option value="fa-pills">💊 Thuốc / Dược phẩm</option>
+                                <option value="fa-syringe">💉 Tiêm bắp / Truyền dịch</option>
+                                <option value="fa-truck-medical">🚑 Xe Cấp cứu / Hồi sức</option>
+                                <option value="fa-triangle-exclamation">⚠️ Cảnh báo khẩn</option>
+                                <option value="fa-vial">🧪 Xét nghiệm / D-dimer</option>
+                                <option value="fa-calculator">🧮 Máy tính lâm sàng</option>
+                                <option value="fa-user-doctor">👨‍⚕️ Bác sĩ chỉ định</option>
+                                <option value="fa-shield-halved">🛡️ Bảo vệ / Tiên lượng</option>
+                            </select>
+                        </div>
+
+                        <div class="med-prop-group">
+                            <label class="med-prop-label">🔗 Nhúng Công Cụ Lâm Sàng CliniPortal:</label>
+                            <select id="propNodeToolUrl" class="med-prop-select">
+                                <option value="">-- Không nhúng công cụ --</option>
+                                <option value="../Công cụ/Truyền Nhiễm/SL_Nhiem-khuan.html">🦠 Sàng lọc Nhiễm Khuẩn (SOFA/qSOFA/NEWS2)</option>
+                                <option value="../Công cụ/Truyền Nhiễm/Chinhlieu_khangsinh.html">🦠 Chỉnh liều kháng sinh theo eGFR</option>
+                                <option value="../Công cụ/Chung/QuyDoi_LieuTuongDuong.html">⚖️ Quy đổi Liều thuốc tương đương (Corticoid/Statin)</option>
+                                <option value="../Công cụ/Cấp cứu & hồi sức/QL_Vanmach.html">⚡ Quản lý Vận mạch & Trợ tim BPTĐ</option>
+                                <option value="../Công cụ/Cấp cứu & hồi sức/QL_Budich.html">💧 Quản lý & Tính liều Bù dịch</option>
+                                <option value="../Công cụ/Thận & Điện giải - toan kiềm/PT_Khimau.html">🧪 Phân tích Khí máu động mạch (ABG)</option>
+                                <option value="../Công cụ/Thận & Điện giải - toan kiềm/Danhgia_Chucnangthan.html">🧮 Đánh giá Chức năng thận (CKD-EPI / Cockcroft)</option>
+                                <option value="../Công cụ/Tim mạch & huyết khối/Danhgia_Nguyco_VTE.html">🩸 Đánh giá Nguy cơ Huyết khối VTE / Wells</option>
                             </select>
                         </div>
 
@@ -171,6 +255,11 @@
                         <div class="med-prop-group">
                             <label class="med-prop-label">Huy hiệu (Badge Top):</label>
                             <input type="text" id="propNodeBadge" class="med-prop-input" placeholder="VD: BƯỚC 1, HOT">
+                        </div>
+
+                        <div class="med-prop-group">
+                            <label class="med-prop-label">Chiều rộng ô (px):</label>
+                            <input type="number" id="propNodeWidth" class="med-prop-input" min="180" max="600" step="10" placeholder="240">
                         </div>
 
                         <div class="med-prop-group">
@@ -361,9 +450,13 @@
 
                 document.getElementById('propNodeId').value = node.id;
                 document.getElementById('propNodeType').value = node.type || 'action';
+                document.getElementById('propNodeShape').value = node.shape || 'rectangle';
+                document.getElementById('propNodeIcon').value = node.icon || '';
+                document.getElementById('propNodeToolUrl').value = node.toolUrl || '';
                 document.getElementById('propNodeTitle').value = node.title || '';
                 document.getElementById('propNodeSubtitle').value = node.subtitle || '';
                 document.getElementById('propNodeBadge').value = node.badge || '';
+                document.getElementById('propNodeWidth').value = node.width || 240;
                 document.getElementById('propNodeDetails').value = node.details || '';
             }
 
@@ -398,6 +491,19 @@
             document.getElementById('propNodeType').addEventListener('change', (e) => {
                 if (engine.selectedNodeId) engine.updateNode(engine.selectedNodeId, { type: e.target.value });
             });
+            document.getElementById('propNodeShape').addEventListener('change', (e) => {
+                if (engine.selectedNodeId) engine.updateNode(engine.selectedNodeId, { shape: e.target.value });
+            });
+            document.getElementById('propNodeIcon').addEventListener('change', (e) => {
+                if (engine.selectedNodeId) engine.updateNode(engine.selectedNodeId, { icon: e.target.value });
+            });
+            document.getElementById('propNodeToolUrl').addEventListener('change', (e) => {
+                if (engine.selectedNodeId) {
+                    const sel = e.target;
+                    const toolTitle = sel.options[sel.selectedIndex].text;
+                    engine.updateNode(engine.selectedNodeId, { toolUrl: sel.value, toolTitle: sel.value ? toolTitle : '' });
+                }
+            });
             document.getElementById('propNodeTitle').addEventListener('input', (e) => {
                 if (engine.selectedNodeId) engine.updateNode(engine.selectedNodeId, { title: e.target.value });
             });
@@ -407,8 +513,30 @@
             document.getElementById('propNodeBadge').addEventListener('input', (e) => {
                 if (engine.selectedNodeId) engine.updateNode(engine.selectedNodeId, { badge: e.target.value });
             });
+            document.getElementById('propNodeWidth').addEventListener('input', (e) => {
+                if (engine.selectedNodeId) {
+                    const w = parseInt(e.target.value) || 240;
+                    engine.updateNode(engine.selectedNodeId, { width: w });
+                }
+            });
             document.getElementById('propNodeDetails').addEventListener('input', (e) => {
                 if (engine.selectedNodeId) engine.updateNode(engine.selectedNodeId, { details: e.target.value });
+            });
+
+            // Auto-layout, AI Generator & Embed Buttons
+            document.getElementById('btnAutoLayout').addEventListener('click', () => {
+                engine.autoLayout();
+            });
+
+            document.getElementById('btnAiGenerate').addEventListener('click', () => {
+                document.getElementById('ai-gen-text').value = '';
+                document.getElementById('ai-gen-modal').classList.add('active');
+            });
+
+            document.getElementById('btnEmbedCode').addEventListener('click', () => {
+                const embedSnippet = `<iframe src="${window.location.origin}/pages/clinical-flow-studio.html" width="100%" height="600" frameborder="0" allowfullscreen></iframe>`;
+                document.getElementById('embed-code-text').value = embedSnippet;
+                document.getElementById('embed-modal').classList.add('active');
             });
 
             // Real-time Edge Form Binding
@@ -440,6 +568,112 @@
                 }
             });
         });
+
+        function closeAiModal() {
+            document.getElementById('ai-gen-modal').classList.remove('active');
+        }
+
+        function generateAiDiagram() {
+            const raw = document.getElementById('ai-gen-text').value.trim();
+            if (!raw) return;
+
+            // Simple Protocol Parser (Split lines by arrows -> or numbers)
+            const lines = raw.split(/\n|->|→/).map(s => s.trim()).filter(Boolean);
+            const nodes = [];
+            const edges = [];
+
+            lines.forEach((line, idx) => {
+                const id = `node-ai-${idx + 1}`;
+                let type = 'action';
+                let icon = 'fa-stethoscope';
+                if (idx === 0) { type = 'start'; icon = 'fa-notes-medical'; }
+                else if (line.toLowerCase().includes('nếu') || line.toLowerCase().includes('?') || line.toLowerCase().includes('kiểm tra')) { type = 'question'; icon = 'fa-vial'; }
+                else if (line.toLowerCase().includes('cấp cứu') || line.toLowerCase().includes('nguy') || line.toLowerCase().includes('adrenalin')) { type = 'danger'; icon = 'fa-truck-medical'; }
+                else if (line.toLowerCase().includes('ổn định') || line.toLowerCase().includes('cho về')) { type = 'success'; icon = 'fa-shield-halved'; }
+                else if (line.toLowerCase().includes('liều') || line.toLowerCase().includes('mg')) { type = 'dose'; icon = 'fa-pills'; }
+
+                nodes.push({
+                    id: id,
+                    type: type,
+                    title: line.substr(0, 45),
+                    subtitle: line.length > 45 ? line.substr(45, 60) : '',
+                    icon: icon,
+                    badge: `BƯỚC ${idx + 1}`,
+                    x: 240,
+                    y: 40 + idx * 130,
+                    width: 280
+                });
+
+                if (idx > 0) {
+                    edges.push({
+                        id: `edge-ai-${idx}`,
+                        source: `node-ai-${idx}`,
+                        target: id,
+                        type: type === 'danger' ? 'danger' : 'normal'
+                    });
+                }
+            });
+
+            engine.loadDiagram({ nodes, edges });
+            engine.autoLayout();
+            closeAiModal();
+        }
+
+        function closeEmbedModal() {
+            document.getElementById('embed-modal').classList.remove('active');
+        }
+
+        function copyEmbedCode() {
+            const copyText = document.getElementById('embed-code-text');
+            copyText.select();
+            document.execCommand('copy');
+            alert('📋 Đã sao chép mã nhúng embed code vào Clipboard!');
+            closeEmbedModal();
+        }
     </script>
+
+    <!-- AI GENERATOR MODAL -->
+    <div class="modal-overlay" id="ai-gen-modal">
+        <div class="modal" style="max-width: 550px;">
+            <div class="modal-header">
+                <h3>🤖 AI Sinh Lưu Đồ Từ Phác Đồ Y Khoa</h3>
+                <button class="modal-close" onclick="closeAiModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="font-size: 12px; color: var(--color-text-muted);">
+                    Dán văn bản các bước xử trí lâm sàng (mỗi bước cách nhau bằng xuống dòng hoặc dấu mũi tên ->). AI sẽ tự động phân loại ô và nối mũi tên.
+                </p>
+                <div class="form-group">
+                    <textarea id="ai-gen-text" rows="7" placeholder="Ví dụ:&#10;Nghi ngờ Sốc Phản Vệ&#10;Tiêm Adrenalin bắp ngay lập tức 0.5mg&#10;Nếu Huyết áp vẫn tụt -> Bù dịch Ringer Lactate 1000ml&#10;Theo dõi SpO2 và duy trì tư thế nằm ngửa..." style="font-size:13px;"></textarea>
+                </div>
+                <div style="display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1rem;">
+                    <button type="button" class="med-btn-tool outline" onclick="closeAiModal()">Hủy</button>
+                    <button type="button" class="med-btn-tool primary" onclick="generateAiDiagram()"><i class="fa-solid fa-wand-magic-sparkles"></i> Tạo Lưu Đồ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EMBED CODE MODAL -->
+    <div class="modal-overlay" id="embed-modal">
+        <div class="modal" style="max-width: 550px;">
+            <div class="modal-header">
+                <h3>🔗 Mã Nhúng Flowchart Embed Code</h3>
+                <button class="modal-close" onclick="closeEmbedModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="font-size: 12px; color: var(--color-text-muted);">
+                    Sao chép đoạn mã iframe dưới đây để nhúng sơ đồ tương tác vào website, blog y khoa hoặc trang tổng quan:
+                </p>
+                <div class="form-group">
+                    <textarea id="embed-code-text" rows="4" readonly style="font-family: monospace; font-size:12px;"></textarea>
+                </div>
+                <div style="display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1rem;">
+                    <button type="button" class="med-btn-tool outline" onclick="closeEmbedModal()">Hủy</button>
+                    <button type="button" class="med-btn-tool primary" onclick="copyEmbedCode()"><i class="fa-solid fa-copy"></i> Sao Chép Mã</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

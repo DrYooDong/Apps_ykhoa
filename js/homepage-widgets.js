@@ -8,7 +8,7 @@
   // DATABASE: SEARCH INDEX FOR LIVE SEARCH
   // ============================================================
   const searchIndex = [
-    { title: "Tra cứu mã ICD-10 nhanh", category: "Công cụ", url: "pages/Công cụ/Chung/Tracuu_maICD10.html", keywords: "icd10, icd 10, ma benh, tra cuu" },
+    { title: "Tra cứu mã ICD-10 nhanh", category: "Công cụ", url: "pages/Công cụ/Chung/Tra cứu mã ICD10/Tracuu_maICD10.html", keywords: "icd10, icd 10, ma benh, tra cuu" },
     { title: "Đọc Điện tâm đồ ECG cơ bản", category: "Cận lâm sàng", url: "pages/Kỹ năng/Cận lâm sàng/doc-ecg-co-ban.html", keywords: "ecg, dien tam do, tim, nhip tim, song dien tim" },
     { title: "Đọc Điện tâm đồ ECG nâng cao", category: "Cận lâm sàng", url: "pages/Kỹ năng/Cận lâm sàng/doc-ecg-nang-cao.html", keywords: "ecg, dien tam do nang cao, block, loan nhip" },
     { title: "Phân tích tế bào máu CBC", category: "Cận lâm sàng", url: "pages/Kỹ năng/Cận lâm sàng/doc-tpttb-mau.html", keywords: "mau, cong thuc mau, tieu cau, bach cau, hong cau" },

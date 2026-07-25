@@ -24,6 +24,12 @@ class MedicalDrawEngine {
         this.activePathNodeIds = new Set();
         this.activePathEdgeIds = new Set();
 
+        // Undo / Redo & Clipboard stacks
+        this.historyStack = [];
+        this.redoStack = [];
+        this.maxHistory = 50;
+        this.clipboardNode = null;
+
         // Canvas transform
         this.scale = 1;
         this.translateX = 0;
@@ -97,17 +103,28 @@ class MedicalDrawEngine {
             this.container.style.cursor = 'grabbing';
         });
 
+        let panAnimFrameId = null;
         window.addEventListener('mousemove', (e) => {
             if (!this.isDraggingCanvas) return;
             this.translateX = e.clientX - this.dragStartX;
             this.translateY = e.clientY - this.dragStartY;
-            this.updateTransform();
+            if (!panAnimFrameId) {
+                panAnimFrameId = requestAnimationFrame(() => {
+                    this.updateTransform();
+                    panAnimFrameId = null;
+                });
+            }
         });
 
         window.addEventListener('mouseup', () => {
             if (this.isDraggingCanvas) {
                 this.isDraggingCanvas = false;
                 this.container.style.cursor = 'grab';
+                if (panAnimFrameId) {
+                    cancelAnimationFrame(panAnimFrameId);
+                    panAnimFrameId = null;
+                }
+                this.updateTransform();
             }
         });
 
@@ -119,6 +136,81 @@ class MedicalDrawEngine {
             this.scale = Math.min(Math.max(0.4, this.scale + delta), 2.2);
             this.updateTransform();
         }, { passive: false });
+
+        // Keyboard Shortcuts (Ctrl+Z, Ctrl+Y, Ctrl+C, Ctrl+V, Ctrl+D, Delete/Backspace)
+        window.addEventListener('keydown', (e) => {
+            // Skip shortcuts when editing text inputs / textareas / contenteditables
+            const activeEl = document.activeElement;
+            if (activeEl && (
+                ['INPUT', 'TEXTAREA', 'SELECT'].includes(activeEl.tagName) ||
+                activeEl.isContentEditable
+            )) {
+                return;
+            }
+
+            // Skip if studio overlay is inactive (if applicable)
+            const studioOverlay = document.getElementById('studioOverlay');
+            if (studioOverlay && !studioOverlay.classList.contains('active')) {
+                return;
+            }
+
+            const isCtrlOrCmd = e.ctrlKey || e.metaKey;
+
+            // Undo: Ctrl + Z
+            if (isCtrlOrCmd && e.key.toLowerCase() === 'z' && !e.shiftKey) {
+                e.preventDefault();
+                this.undo();
+                return;
+            }
+
+            // Redo: Ctrl + Shift + Z or Ctrl + Y
+            if ((isCtrlOrCmd && e.key.toLowerCase() === 'z' && e.shiftKey) || (isCtrlOrCmd && e.key.toLowerCase() === 'y')) {
+                e.preventDefault();
+                this.redo();
+                return;
+            }
+
+            // Copy: Ctrl + C
+            if (isCtrlOrCmd && e.key.toLowerCase() === 'c') {
+                if (this.selectedNodeId) {
+                    e.preventDefault();
+                    this.copy();
+                }
+                return;
+            }
+
+            // Paste: Ctrl + V
+            if (isCtrlOrCmd && e.key.toLowerCase() === 'v') {
+                if (this.clipboardNode) {
+                    e.preventDefault();
+                    this.paste();
+                }
+                return;
+            }
+
+            // Duplicate: Ctrl + D
+            if (isCtrlOrCmd && e.key.toLowerCase() === 'd') {
+                if (this.selectedNodeId) {
+                    e.preventDefault();
+                    this.duplicate();
+                }
+                return;
+            }
+
+            // Delete / Backspace: Delete selected Node or Edge
+            if (e.key === 'Delete' || e.key === 'Backspace') {
+                if (this.selectedNodeId) {
+                    e.preventDefault();
+                    this.deleteNode(this.selectedNodeId);
+                    if (this.onNodeSelect) this.onNodeSelect(null);
+                } else if (this.selectedEdgeId) {
+                    e.preventDefault();
+                    this.deleteEdge(this.selectedEdgeId);
+                    if (this.onEdgeSelect) this.onEdgeSelect(null);
+                }
+                return;
+            }
+        });
     }
 
     updateTransform() {
@@ -146,6 +238,117 @@ class MedicalDrawEngine {
     }
 
     /**
+     * Lưu snapshot trạng thái sơ đồ vào History Stack
+     */
+    saveStateHistory() {
+        const snapshot = {
+            nodes: JSON.parse(JSON.stringify(this.nodes)),
+            edges: JSON.parse(JSON.stringify(this.edges))
+        };
+        this.historyStack.push(snapshot);
+        if (this.historyStack.length > this.maxHistory) {
+            this.historyStack.shift();
+        }
+        this.redoStack = []; // Xóa redo stack khi có thao tác mới
+    }
+
+    /**
+     * Lùi lại thao tác vừa làm (Undo)
+     */
+    undo() {
+        if (this.historyStack.length === 0) return false;
+        
+        const currentSnapshot = {
+            nodes: JSON.parse(JSON.stringify(this.nodes)),
+            edges: JSON.parse(JSON.stringify(this.edges))
+        };
+        this.redoStack.push(currentSnapshot);
+
+        const previousState = this.historyStack.pop();
+        this.nodes = previousState.nodes;
+        this.edges = previousState.edges;
+
+        if (!this.nodes.some(n => n.id === this.selectedNodeId)) {
+            this.selectedNodeId = null;
+        }
+        if (!this.edges.some(e => e.id === this.selectedEdgeId)) {
+            this.selectedEdgeId = null;
+        }
+
+        this.render();
+        return true;
+    }
+
+    /**
+     * Làm lại thao tác vừa lùi (Redo)
+     */
+    redo() {
+        if (this.redoStack.length === 0) return false;
+
+        const currentSnapshot = {
+            nodes: JSON.parse(JSON.stringify(this.nodes)),
+            edges: JSON.parse(JSON.stringify(this.edges))
+        };
+        this.historyStack.push(currentSnapshot);
+
+        const nextState = this.redoStack.pop();
+        this.nodes = nextState.nodes;
+        this.edges = nextState.edges;
+
+        this.render();
+        return true;
+    }
+
+    canUndo() {
+        return this.historyStack.length > 0;
+    }
+
+    canRedo() {
+        return this.redoStack.length > 0;
+    }
+
+    /**
+     * Sao chép Node đang chọn vào Clipboard (Copy)
+     */
+    copy() {
+        if (!this.selectedNodeId) return false;
+        const node = this.nodes.find(n => n.id === this.selectedNodeId);
+        if (node) {
+            this.clipboardNode = JSON.parse(JSON.stringify(node));
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Dán Node từ Clipboard ra Canvas (Paste)
+     */
+    paste() {
+        if (!this.clipboardNode) return null;
+        this.saveStateHistory();
+
+        const newNode = JSON.parse(JSON.stringify(this.clipboardNode));
+        newNode.id = `node-${Date.now()}_${Math.floor(Math.random() * 1000)}`;
+        newNode.x += 30;
+        newNode.y += 30;
+
+        this.nodes.push(newNode);
+        this.selectNode(newNode.id);
+        this.render();
+        return newNode;
+    }
+
+    /**
+     * Nhân bản Node đang chọn (Duplicate)
+     */
+    duplicate() {
+        if (this.copy()) {
+            return this.paste();
+        }
+        return null;
+    }
+
+    /**
      * Nạp dữ liệu Sơ đồ từ cấu trúc JSON Schema
      */
     loadDiagram(data) {
@@ -156,6 +359,8 @@ class MedicalDrawEngine {
         this.selectedEdgeId = null;
         this.activePathNodeIds.clear();
         this.activePathEdgeIds.clear();
+        this.historyStack = [];
+        this.redoStack = [];
         this.render();
     }
 
@@ -188,11 +393,12 @@ class MedicalDrawEngine {
         this.nodesLayer.innerHTML = '';
         this.nodes.forEach(node => {
             const nodeEl = document.createElement('div');
-            nodeEl.className = `med-node med-node-${node.type || 'action'} ${this.selectedNodeId === node.id ? 'selected' : ''} ${this.activePathNodeIds.has(node.id) ? 'active-path-node' : ''}`;
+            const shapeClass = node.shape ? `med-shape-${node.shape}` : '';
+            nodeEl.className = `med-node med-node-${node.type || 'action'} ${shapeClass} ${this.selectedNodeId === node.id ? 'selected' : ''} ${this.activePathNodeIds.has(node.id) ? 'active-path-node' : ''}`;
             nodeEl.dataset.id = node.id;
             nodeEl.style.left = `${node.x}px`;
             nodeEl.style.top = `${node.y}px`;
-            nodeEl.style.width = `${node.width || 180}px`;
+            nodeEl.style.width = `${node.width || 320}px`;
             if (node.height) nodeEl.style.minHeight = `${node.height}px`;
 
             let badgeHtml = '';
@@ -209,13 +415,21 @@ class MedicalDrawEngine {
                 `;
             }
 
+            let iconHtml = node.icon ? `<i class="fa-solid ${node.icon} med-node-icon"></i> ` : '';
+            let toolBtnHtml = node.toolUrl ? `
+                <button class="med-node-tool-btn" onclick="event.stopPropagation(); MedicalDrawEngine.launchTool('${node.toolUrl}', '${(node.toolTitle || 'Công cụ').replace(/'/g, "\\'")}')">
+                    <i class="fa-solid fa-calculator"></i> ${node.toolTitle || 'Mở Công Cụ'}
+                </button>
+            ` : '';
+
             nodeEl.innerHTML = `
                 ${badgeHtml}
                 <div class="med-node-header">
-                    <span class="med-node-title">${node.title || 'Node'}</span>
+                    <span class="med-node-title">${iconHtml}${node.title || 'Node'}</span>
                 </div>
                 ${node.subtitle ? `<div class="med-node-subtitle">${node.subtitle}</div>` : ''}
                 ${detailsHtml}
+                ${toolBtnHtml}
             `;
 
             // Node Click Event
@@ -240,17 +454,8 @@ class MedicalDrawEngine {
         let isDragging = false;
         let startX = 0, startY = 0;
         let initialX = 0, initialY = 0;
-
-        nodeEl.addEventListener('mousedown', (e) => {
-            if (e.target.closest('.med-node-details')) return; // Cho phép cuộn text trong details
-            isDragging = true;
-            startX = e.clientX;
-            startY = e.clientY;
-            initialX = nodeObj.x;
-            initialY = nodeObj.y;
-            nodeEl.classList.add('dragging');
-            e.stopPropagation();
-        });
+        let preDragSnapshot = null;
+        let dragAnimFrameId = null;
 
         const onMouseMove = (e) => {
             if (!isDragging) return;
@@ -260,19 +465,54 @@ class MedicalDrawEngine {
             nodeObj.y = Math.round(initialY + dy);
             nodeEl.style.left = `${nodeObj.x}px`;
             nodeEl.style.top = `${nodeObj.y}px`;
-            this.renderEdges(); // Render lại dây nối ngay lập tức
+
+            if (!dragAnimFrameId) {
+                dragAnimFrameId = requestAnimationFrame(() => {
+                    this.renderEdges();
+                    dragAnimFrameId = null;
+                });
+            }
         };
 
         const onMouseUp = () => {
             if (isDragging) {
                 isDragging = false;
                 nodeEl.classList.remove('dragging');
+                window.removeEventListener('mousemove', onMouseMove);
+                window.removeEventListener('mouseup', onMouseUp);
+
+                if (dragAnimFrameId) {
+                    cancelAnimationFrame(dragAnimFrameId);
+                    dragAnimFrameId = null;
+                }
+                this.renderEdges();
+
+                if (preDragSnapshot && (initialX !== nodeObj.x || initialY !== nodeObj.y)) {
+                    this.historyStack.push(preDragSnapshot);
+                    if (this.historyStack.length > this.maxHistory) this.historyStack.shift();
+                    this.redoStack = [];
+                }
+                preDragSnapshot = null;
                 if (this.onChange) this.onChange();
             }
         };
 
-        window.addEventListener('mousemove', onMouseMove);
-        window.addEventListener('mouseup', onMouseUp);
+        nodeEl.addEventListener('mousedown', (e) => {
+            if (e.target.closest('.med-node-details') || e.target.closest('.med-node-tool-btn')) return;
+            isDragging = true;
+            startX = e.clientX;
+            startY = e.clientY;
+            initialX = nodeObj.x;
+            initialY = nodeObj.y;
+            preDragSnapshot = {
+                nodes: JSON.parse(JSON.stringify(this.nodes)),
+                edges: JSON.parse(JSON.stringify(this.edges))
+            };
+            nodeEl.classList.add('dragging');
+            window.addEventListener('mousemove', onMouseMove);
+            window.addEventListener('mouseup', onMouseUp);
+            e.stopPropagation();
+        });
     }
 
     /**
@@ -294,10 +534,13 @@ class MedicalDrawEngine {
             const entryX = edge.entryX !== undefined ? edge.entryX : 0.5;
             const entryY = edge.entryY !== undefined ? edge.entryY : 0.0; // Vào mép trên
 
-            const srcW = sourceNode.width || 180;
-            const srcH = sourceNode.height || 60;
-            const tgtW = targetNode.width || 180;
-            const tgtH = targetNode.height || 60;
+            const srcEl = this.nodesLayer.querySelector(`[data-id="${sourceNode.id}"]`);
+            const tgtEl = this.nodesLayer.querySelector(`[data-id="${targetNode.id}"]`);
+
+            const srcW = srcEl ? srcEl.offsetWidth : (sourceNode.width || 240);
+            const srcH = srcEl ? srcEl.offsetHeight : (sourceNode.height || 60);
+            const tgtW = tgtEl ? tgtEl.offsetWidth : (targetNode.width || 240);
+            const tgtH = tgtEl ? tgtEl.offsetHeight : (targetNode.height || 60);
 
             const startX = sourceNode.x + srcW * exitX;
             const startY = sourceNode.y + srcH * exitY;
@@ -375,8 +618,15 @@ class MedicalDrawEngine {
                 labelGroup.appendChild(rectEl);
                 labelGroup.appendChild(textEl);
 
-                // Tính kích thước background động theo text
-                setTimeout(() => {
+                // Tính kích thước background động theo text bằng estimation đồng bộ + rAF
+                const approxW = Math.max(40, edge.label.length * 8 + 16);
+                const approxH = 22;
+                rectEl.setAttribute('x', `${-approxW / 2}`);
+                rectEl.setAttribute('y', `${-approxH / 2}`);
+                rectEl.setAttribute('width', `${approxW}`);
+                rectEl.setAttribute('height', `${approxH}`);
+
+                requestAnimationFrame(() => {
                     try {
                         const bbox = textEl.getBBox();
                         rectEl.setAttribute('x', `${bbox.x - 8}`);
@@ -384,12 +634,9 @@ class MedicalDrawEngine {
                         rectEl.setAttribute('width', `${bbox.width + 16}`);
                         rectEl.setAttribute('height', `${bbox.height + 8}`);
                     } catch (err) {
-                        rectEl.setAttribute('x', '-25');
-                        rectEl.setAttribute('y', '-10');
-                        rectEl.setAttribute('width', '50');
-                        rectEl.setAttribute('height', '20');
+                        // Fallback đã có sẵn ở trên
                     }
-                }, 0);
+                });
 
                 // Click label -> Highlight lộ trình lâm sàng downstream
                 labelGroup.addEventListener('click', (e) => {
@@ -464,6 +711,7 @@ class MedicalDrawEngine {
      * Thêm Node mới
      */
     addNode(nodeData) {
+        this.saveStateHistory();
         const id = nodeData.id || `node-${Date.now()}`;
         const newNode = {
             id,
@@ -486,6 +734,7 @@ class MedicalDrawEngine {
     updateNode(nodeId, newData) {
         const idx = this.nodes.findIndex(n => n.id === nodeId);
         if (idx !== -1) {
+            this.saveStateHistory();
             this.nodes[idx] = { ...this.nodes[idx], ...newData };
             this.render();
         }
@@ -495,6 +744,7 @@ class MedicalDrawEngine {
      * Xóa Node (Tự động xóa các Edge liên quan - Cascade Delete tương tự edit_diagram)
      */
     deleteNode(nodeId) {
+        this.saveStateHistory();
         this.nodes = this.nodes.filter(n => n.id !== nodeId);
         this.edges = this.edges.filter(e => e.source !== nodeId && e.target !== nodeId);
         if (this.selectedNodeId === nodeId) this.selectedNodeId = null;
@@ -505,6 +755,7 @@ class MedicalDrawEngine {
      * Thêm đường nối Edge mới
      */
     addEdge(edgeData) {
+        this.saveStateHistory();
         const id = edgeData.id || `edge-${Date.now()}`;
         const newEdge = {
             id,
@@ -527,6 +778,7 @@ class MedicalDrawEngine {
      * Xóa đường nối Edge
      */
     deleteEdge(edgeId) {
+        this.saveStateHistory();
         this.edges = this.edges.filter(e => e.id !== edgeId);
         if (this.selectedEdgeId === edgeId) this.selectedEdgeId = null;
         this.render();

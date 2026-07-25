@@ -63,6 +63,7 @@
 | `components/homepage-widgets.css` | Widgets trang chủ | `index.html` |
 | `components/y-hoc-co-truyen.css` | Y học cổ truyền hub | `y-hoc-co-truyen.html` |
 | `components/ma-tran-trieu-chung.css` | Giao diện Ma Trận Triệu Chứng | `ma-tran-trieu-chung.html` |
+| `components/cong-cu.css` | Styling tùy chỉnh cho Hub Công cụ | `cong-cu.html` |
 | `components/pulse.css` | Styling CliniPortal Pulse Command Center Dashboard | `index.html` |
 | `components/evidence-bridge.css` | Styling nhãn bằng chứng chứng cứ & Modal Tooltip | Xuyên phân hệ |
 
@@ -73,6 +74,8 @@
 | File | Vai trò | Dùng cho |
 |------|---------|---------|
 | `main.js` | Theme switching, sidebar toggle, keyboard shortcuts | Mọi trang |
+| `data/icd10-data.js` | Cơ sở dữ liệu 15.844+ mã ICD-10 theo Thông tư 06/2026/TT-BYT | `Tracuu_maICD10.html` |
+| `data/bhyt-mapping.js` | Cơ sở dữ liệu Ánh xạ Dịch vụ kỹ thuật (CLS, Thuốc, PTTT) BHYT với ICD-10 | `Tracuu_maICD10.html` |
 | `cliniportal-sync.js` | Engine đồng bộ thời gian thực 4 module y khoa & kho Guidelines EBM | Xuyên phân hệ |
 | `flowchart.js` | switchPane, toggleNode, R-Ratio calculator | `pages/Tiếp cận/**` |
 | `approach-symptom.js` | Tự động tạo mục lục & ScrollSpy triệu chứng | `pages/Tiếp cận/2. Triệu chứng/**` |
@@ -132,6 +135,9 @@
 | `homepage-widgets.js` | Widget logic trang chủ | `index.html` |
 | `ma-tran-trieu-chung-data.js` | Dữ liệu triệu chứng, cờ đỏ, chẩn đoán phân biệt | `ma-tran-trieu-chung.html` |
 | `ma-tran-trieu-chung.js` | Logic ma trận triệu chứng & render giao diện | `ma-tran-trieu-chung.html` |
+| `tools-data.js` | Dữ liệu danh sách 27+ công cụ lâm sàng và partMetadata | `cong-cu.html` |
+| `cong-cu-logic.js` | Logic render động thẻ công cụ, lọc tìm kiếm & ghim yêu thích | `cong-cu.html` |
+| `lab-values.js` | Dữ liệu & Logic Widget Trị số xét nghiệm tham chiếu ở Sidebar | `cong-cu.html` |
 | `calculators/abg-calculator.js` | Logic 6-bước chẩn đoán toan kiềm | `DG_ABG.html` |
 | `calculators/insulin-calculator.js` | Logic chỉnh liều insulin | `DG_Insulin-ĐTĐ.html` |
 
@@ -153,13 +159,13 @@
 
 | File | Vai trò | CSS riêng |
 |------|---------|-----------|
-| `Công cụ/cong-cu.html` | Hub tổng Công cụ | `cong-cu.css` |
-| `Công cụ/cong-cu.css` | Styling tùy chỉnh cho Hub Công cụ | — |
-| `Công cụ/tools-data.js` | Dữ liệu danh sách 27+ công cụ lâm sàng và partMetadata | — |
-| `Công cụ/cong-cu-logic.js` | Logic render động thẻ công cụ, lọc tìm kiếm & ghim yêu thích | — |
-| `Công cụ/lab-values.js` | Dữ liệu & Logic Widget Trị số xét nghiệm tham chiếu ở Sidebar | — |
+| `Công cụ/cong-cu.html` | Hub tổng Công cụ | `css/components/cong-cu.css` |
+| `css/components/cong-cu.css` | Styling tùy chỉnh cho Hub Công cụ | — |
+| `js/tools-data.js` | Dữ liệu danh sách 27+ công cụ lâm sàng và partMetadata | — |
+| `js/cong-cu-logic.js` | Logic render động thẻ công cụ, lọc tìm kiếm & ghim yêu thích | — |
+| `js/lab-values.js` | Dữ liệu & Logic Widget Trị số xét nghiệm tham chiếu ở Sidebar | — |
 | `Công cụ/Chung/QuyDoi_LieuTuongDuong.html` | Bộ quy đổi liều thuốc tương đương (Corticoids, Opioids OME, Statins, PPIs, DOACs, Benzo) | `pharmacology-tools.css` |
-| `Công cụ/Chung/Tracuu_maICD10.html` | Tra cứu mã ICD-10 | — |
+| `Công cụ/Chung/Tra cứu mã ICD10/Tracuu_maICD10.html` | Tra cứu mã ICD-10 & Thẩm định BHYT | `css/components/tracuu-icd10.css` | `js/tracuu-icd10.js`, `js/data/icd10-data.js`, `js/data/bhyt-mapping.js` |
 | `Công cụ/Chung/Bệnh án/benh-an-noi-khoa.html` | Mẫu bệnh án nội khoa | `benh-an.css` |
 | `Công cụ/Chung/NCKH/NCKH_Tinhcomau.html` | Tính cỡ mẫu nghiên cứu | — |
 
@@ -251,10 +257,10 @@
 | File | Vai trò |
 |------|---------|
 | `Tiếp cận/tiep-can.html` | Hub tổng Tiếp cận (Stats, Daily Flashcard, Recently Viewed, On-Call mode) |
-| `Tiếp cận/ma-tran-trieu-chung.html` | Ma Trận Chẩn Đoán (Weighted Bayesian, SVG Radar Chart, Timeline Progression, URL params, Copy, Save/Load, Gap Analysis) |
-| `Tiếp cận/body-map.html` | Bản Đồ Giải Phẫu Tương Tác (SVG anatomy selector theo 5 vùng cơ thể) |
-| `Tiếp cận/case-simulator.html` | Mô Phỏng Ca Bệnh Lâm Sàng Tương Tác (Virtual Patient 4-step Reasoning Simulator) |
-| `Tiếp cận/knowledge-graph.html` | Đồ Thị Tri Thức Liên Phân Hệ (SVG Cross-Module Network Graph: Triệu chứng ↔ Bệnh ↔ CLS ↔ Thuốc) |
+| `Tiếp cận/6. Công cụ tương tác/ma-tran-trieu-chung.html` | Ma Trận Chẩn Đoán (Weighted Bayesian, SVG Radar Chart, Timeline Progression, URL params, Copy, Save/Load, Gap Analysis) |
+| `Tiếp cận/6. Công cụ tương tác/body-map.html` | Bản Đồ Giải Phẫu Tương Tác (SVG anatomy selector theo 5 vùng cơ thể) |
+| `Tiếp cận/6. Công cụ tương tác/case-simulator.html` | Mô Phỏng Ca Bệnh Lâm Sàng Tương Tác (Virtual Patient 4-step Reasoning Simulator) |
+| `Tiếp cận/6. Công cụ tương tác/knowledge-graph.html` | Đồ Thị Tri Thức Liên Phân Hệ (SVG Cross-Module Network Graph: Triệu chứng ↔ Bệnh ↔ CLS ↔ Thuốc) |
 | `Tiếp cận/1. HS-CC/emergency-quick-protocol.html` | Phác đồ Cấp cứu 60s (6 tình huống khẩn, CPR timer 2 phút, liều thuốc) |
 | `Tiếp cận/1. .../[Phân nhóm]/TC_*.html` | Lưu đồ tiếp cận cấp cứu |
 | `Tiếp cận/2. Triệu chứng/Than phiền Toàn thân/Sốt/TC_Sot.html` | Hub tiếp cận Sốt |
@@ -280,6 +286,19 @@
 | `Tiếp cận/5. Dược lý/TC_DL_Khangsinh.html` | Tiếp cận Dược lý Kháng sinh |
 | `Tiếp cận/5. Dược lý/TC_DL_Ttoan_than.html` | Tiếp cận Dược lý Toan thận |
 | `Tiếp cận/5. Dược lý/TC_DL_Noitiet.html` | Tiếp cận Dược lý Nội tiết & ĐTĐ |
+| `Tiếp cận/4. Bệnh lý/benh-ly.html` | Pathology Hub & Infographic Poster View |
+| `Tiếp cận/4. Bệnh lý/benh-ly.js` | Controller tổng hợp phân hệ Bệnh lý & Poster Controller |
+| `Tiếp cận/4. Bệnh lý/benh-ly.css` | Custom styling cho Pathology Hub & Modals |
+| `Tiếp cận/4. Bệnh lý/benh-ly-simulator.js` | Động cơ Mô phỏng Ca Bệnh Lâm Sàng tương tác (Case Simulator) |
+| `Tiếp cận/4. Bệnh lý/benh-ly-csv-engine.js` | Động cơ nạp, dựng & xuất Ma trận Tra cứu CSV |
+| `Tiếp cận/4. Bệnh lý/benh-ly-markdown.js` | Động cơ đọc & hiển thị Tài liệu Guideline YHC Markdown (.md) |
+| `Tiếp cận/4. Bệnh lý/benh-ly-print.css` | Layout in ấn Poster A4/A3 & Chế độ Thẻ Bỏ Túi (Pocket Cards) |
+| `Tiếp cận/4. Bệnh lý/data/dvt-pathway.json` | JSON Preset: Phác đồ & Kịch bản Mô phỏng DVT Chi dưới |
+| `Tiếp cận/4. Bệnh lý/data/stemi-pathway.json` | JSON Preset: Phác đồ & Kịch bản Mô phỏng STEMI |
+| `Tiếp cận/4. Bệnh lý/data/dvt-dosing-matrix.csv` | CSV Data: Ma trận liều dùng chống đông DVT |
+| `Tiếp cận/4. Bệnh lý/data/differential-diagnosis.csv` | CSV Data: Ma trận chẩn đoán phân biệt DVT |
+| `Tiếp cận/4. Bệnh lý/data/dvt-evidence-summary.md` | MD Evidence: Tóm tắt YHC chẩn đoán & điều trị DVT |
+| `Tiếp cận/4. Bệnh lý/data/stemi-guideline-2026.md` | MD Evidence: Tóm tắt Khuyến cáo ESC/AHA STEMI |
 
 ---
 

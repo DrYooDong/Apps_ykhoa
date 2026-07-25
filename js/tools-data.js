@@ -15,7 +15,7 @@ const clinicalToolsData = [
     title: "Tra cứu mã ICD10 hưởng BHYT",
     description: "Tra cứu mã ICD10 hưởng Bảo hiểm y tế nhanh chóng",
     icon: "📝",
-    link: "Chung/Tracuu_maICD10.html",
+    link: "Chung/Tra cứu mã ICD10/Tracuu_maICD10.html",
     part: "part1-section",
     tags: ["chung", "icd10", "bhyt", "bảo hiểm", "tra cứu"]
   },

@@ -1,0 +1,131 @@
+{
+  "id": "path_dvt_poster",
+  "name": "Phác Đồ Tiếp Cận DVT Chi Dưới",
+  "subtitle": "Cập nhật thực hành 2026 — áp dụng cho người lớn nghi DVT",
+  "icd": "I80.2",
+  "specialty": "cap-cuu",
+  "category": "ca-hai",
+  "guidelines": ["NICE NG158 (2023)", "ASH Diagnosis (2018)", "CHEST 2021", "ESC 2022"],
+  "csvMatrixFile": "data/dvt-dosing-matrix.csv",
+  "differentialCsvFile": "data/differential-diagnosis.csv",
+  "markdownDocFile": "data/dvt-evidence-summary.md",
+  
+  "urgentAlert": {
+    "step": 1,
+    "title": "ĐÁNH GIÁ NGAY TÌNH TRẠNG CẦN XỬ TRÍ KHẨN",
+    "items": [
+      "Khó thở, đau ngực, ngất, giảm SpO2, tụt huyết áp → nghi PE kèm theo",
+      "Chân sưng căng toàn bộ, tím tái, đau dữ dội → nghi Phlegmasia Cerulea Dolens",
+      "Chảy máu đang hoạt động / nguy cơ chảy máu rất cao → cá thể hóa chống đông"
+    ],
+    "actionText": "NẾU CÓ DẤU HIỆU TRÊN: XỬ TRÍ CẤP CỨU / HỘI CHẨN NGAY"
+  },
+
+  "flowchart": {
+    "title": "LƯU ĐỒ CHẨN ĐOÁN CHÍNH DVT CHI DƯỚI",
+    "width": 750,
+    "height": 480,
+    "nodes": [
+      { "id": "fn1", "type": "start", "title": "NGHI NGỜ DVT CHI DƯỚI", "subtitle": "TÍNH WELLS DVT 2 MỨC", "icon": "fa-vial", "shape": "rectangle", "toolUrl": "../../Công cụ/Tim mạch & huyết khối/Danhgia_Nguyco_VTE.html", "toolTitle": "Tính Thang Điểm Wells DVT", "badge": "BƯỚC 1", "x": 260, "y": 30, "width": 260 },
+      { "id": "fn2", "type": "question", "title": "WELLS ≤ 1 (Ít khả năng)", "subtitle": "Thực hiện xét nghiệm D-dimer", "icon": "fa-stethoscope", "shape": "diamond", "x": 80, "y": 160, "width": 220, "targetCardId": "dose-table-card-section" },
+      { "id": "fn3", "type": "question", "title": "WELLS ≥ 2 (Có khả năng)", "subtitle": "Siêu âm ép tĩnh mạch trong 4h", "icon": "fa-vial", "shape": "diamond", "x": 440, "y": 160, "width": 220, "targetCardId": "dose-table-card-section" },
+      { "id": "fn4", "type": "success", "title": "LOẠI TRỪ DVT", "subtitle": "D-dimer âm tính", "icon": "fa-shield-halved", "shape": "pill", "badge": "ỔN ĐỊNH", "x": 80, "y": 320, "width": 200 },
+      { "id": "fn5", "type": "danger", "title": "XÁC ĐỊNH DVT", "subtitle": "Siêu âm dương tính / D-dimer (+)", "icon": "fa-truck-medical", "shape": "octagon", "badge": "KHẨN", "x": 440, "y": 320, "width": 220, "targetCardId": "comparison-card-section" }
+    ],
+    "edges": [
+      { "id": "fe1", "source": "fn1", "target": "fn2", "label": "Wells ≤ 1", "type": "normal" },
+      { "id": "fe2", "source": "fn1", "target": "fn3", "label": "Wells ≥ 2", "type": "danger" },
+      { "id": "fe3", "source": "fn2", "target": "fn4", "label": "D-dimer (-)", "type": "success" },
+      { "id": "fe4", "source": "fn3", "target": "fn5", "label": "Siêu âm (+)", "type": "danger" }
+    ]
+  },
+
+  "comparisonSection": {
+    "step": 3,
+    "title": "ĐÃ XÁC ĐỊNH DVT → PHÂN LOẠI VỊ TRÍ HUYẾT KHỐI",
+    "columns": [
+      {
+        "title": "DVT ĐOẠN GẦN (khoeo trở lên)",
+        "theme": "navy",
+        "icon": "fa-bone",
+        "bullets": [
+          "Chống đông ít nhất 3 tháng",
+          "Ưu tiên điều trị ngoại trú nếu bệnh nhân ổn định",
+          "Đánh giá nguy cơ chảy máu, chức năng thận, tương tác thuốc"
+        ]
+      },
+      {
+        "title": "DVT ĐOẠN XA ĐƠN ĐỘC",
+        "theme": "teal",
+        "icon": "fa-shoe-prints",
+        "subColumns": [
+          { "subtitle": "A. \"Chống đông\" khi:", "bullets": ["Triệu chứng nặng", "Huyết khối gần khoeo / lan rộng", "Ung thư hoạt động", "Tiền sử VTE"] },
+          { "subtitle": "B. \"Theo dõi siêu âm 2 tuần\" khi:", "bullets": ["Triệu chứng nhẹ", "Nguy cơ lan rộng thấp", "Có thể tái khám đầy đủ"] }
+        ]
+      }
+    ]
+  },
+
+  "dosingSection": {
+    "step": 4,
+    "title": "LỰA CHỌN CHỐNG ĐÔNG & LIỀU DÙNG",
+    "drugs": [
+      { "name": "Apixaban (DOAC)", "dose": "10 mg x 2 lần/ngày x 7 ngày → 5 mg x 2 lần/ngày" },
+      { "name": "Rivaroxaban (DOAC)", "dose": "15 mg x 2 lần/ngày x 21 ngày → 20 mg/ngày cùng thức ăn" },
+      { "name": "Dabigatran / Edoxaban", "dose": "Dùng sau 5–10 ngày chống đông đường tiêm" },
+      { "name": "Warfarin + LMWH/UFH", "dose": "Chỉ định khi có chống chỉ định DOAC (như APS nguy cơ cao)" }
+    ],
+    "specialNotices": [
+      "Thai kỳ: Dùng phác đồ riêng, thường ưu tiên LMWH",
+      "APS nguy cơ cao hoặc suy thận rất nặng: Cân nhắc Heparin / VKA theo chuyên khoa"
+    ]
+  },
+
+  "processRibbon": [
+    { "icon": "fa-user-doctor", "label": "1. Xác suất LS", "targetId": "urgent-alert-card" },
+    { "icon": "fa-vial", "label": "2. D-dimer / SA", "targetId": "poster-draw-canvas-container" },
+    { "icon": "fa-map-pin", "label": "3. Vị trí DVT", "targetId": "comparison-card-section" },
+    { "icon": "fa-shield-halved", "label": "4. Nguy cơ chảy máu", "targetId": "dose-table-card-section" },
+    { "icon": "fa-pills", "label": "5. Chọn thuốc", "targetId": "dose-table-card-section" }
+  ],
+
+  "takeaway": {
+    "title": "THÔNG ĐỆP THỰC HÀNH",
+    "content": "Không chẩn đoán DVT chỉ vì D-dimer tăng. Không chống đông mọi DVT đoạn xa một cách máy móc. Đánh giá kỹ nguy cơ chảy máu trước khi kê đơn."
+  },
+
+  "simulationScenario": {
+    "title": "Mô phỏng Ca Bệnh: Bệnh nhân Nam 58 tuổi sưng bắp chân trái",
+    "description": "Bệnh nhân nam 58 tuổi, vừa đi máy bay đường dài 10 tiếng, đến khám vì chân trái sưng to hơn chân phải 3.5cm, đau căng bắp chân.",
+    "vitals": { "BP": "125/80 mmHg", "HR": "82 bpm", "SpO2": "98%", "Temp": "36.8°C" },
+    "steps": [
+      {
+        "stepId": 1,
+        "question": "Bạn cần thực hiện bước đánh giá lâm sàng nào đầu tiên?",
+        "options": [
+          { "text": "A. Cho tiêm ngay LMWH liều điều trị", "isCorrect": false, "rationale": "Chưa có chẩn đoán hoặc xác suất lâm sàng, chưa thể tiêm thuốc ngay." },
+          { "text": "B. Tính Thang Điểm Wells DVT", "isCorrect": true, "rationale": "Chính xác! Cần phân tầng nguy cơ lâm sàng Wells DVT 2 mức trước." },
+          { "text": "C. Cho về nhà chườm ấm bắp chân", "isCorrect": false, "rationale": "Bệnh nhân có nguy cơ cao DVT, chườm ấm/massage có thể gây bắn huyết khối." }
+        ]
+      },
+      {
+        "stepId": 2,
+        "question": "Điểm Wells của bệnh nhân = 3 (Wells ≥ 2: Khả năng DVT cao). Bước tiếp theo tốt nhất là gì?",
+        "options": [
+          { "text": "A. Làm xét nghiệm D-dimer để loại trừ", "isCorrect": false, "rationale": "Khi Wells ≥ 2, D-dimer âm tính vẫn không đủ an toàn để loại trừ. Bắt buộc Siêu âm Doppler." },
+          { "text": "B. Chỉ định ngay Siêu âm Doppler tĩnh mạch chi dưới", "isCorrect": true, "rationale": "Chính xác! Với Wells ≥ 2, chỉ định hàng đầu là Siêu âm Doppler tĩnh mạch ép (CUS)." },
+          { "text": "C. Chụp CT lồng ngực tìm PE", "isCorrect": false, "rationale": "Bệnh nhân không có triệu chứng hô hấp (SpO2 98%, không khó thở)." }
+        ]
+      },
+      {
+        "stepId": 3,
+        "question": "Siêu âm Doppler phát hiện Huyết khối Tĩnh mạch Khoeo trái (DVT đoạn gần). Bệnh nhân không ung thư, CrCl 85 ml/phút. Phác đồ điều trị ban đầu phù hợp nhất?",
+        "options": [
+          { "text": "A. Apixaban 10mg x 2 lần/ngày trong 7 ngày, sau đó 5mg x 2 lần/ngày", "isCorrect": true, "rationale": "Chính xác! DOACs (Apixaban / Rivaroxaban) là lựa chọn hàng đầu cho DVT đoạn gần." },
+          { "text": "B. Aspirin 81mg/ngày kéo dài", "isCorrect": false, "rationale": "Aspirin không đủ hiệu quả điều trị DVT cấp." },
+          { "text": "C. Chỉ mang vớ y khoa áp lực", "isCorrect": false, "rationale": "DVT đoạn gần bắt buộc dùng thuốc chống đông ít nhất 3 tháng." }
+        ]
+      }
+    ]
+  }
+}
