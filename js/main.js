@@ -1,3 +1,15 @@
+    // Auto-load Clinical Tools & Universal Web Components
+    (function loadGlobalComponents() {
+      if (!document.querySelector('script[src*="tool-components.js"]')) {
+        const currentScript = document.currentScript || document.querySelector('script[src*="main.js"]');
+        const basePath = currentScript ? currentScript.src.substring(0, currentScript.src.lastIndexOf('/') + 1) : '../../../js/';
+        const script = document.createElement('script');
+        script.src = basePath + 'components/tool-components.js';
+        script.defer = true;
+        document.head.appendChild(script);
+      }
+    })();
+
     (function () {
       // --- Theme toggle ---
       const html = document.documentElement;

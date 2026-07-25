@@ -18,6 +18,7 @@ function loadPhysioSubModules() {
   const basePath = currentScript.src.substring(0, currentScript.src.lastIndexOf('/') + 1);
 
   const modules = [
+    'components/physio-components.js',
     'physio-quiz-engine.js',
     'physio-progress.js',
     'physio-mirror.js',

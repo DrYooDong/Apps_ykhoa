@@ -88,14 +88,12 @@
 
     <!-- MAIN WRAPPER -->
     <div class="main-wrapper" id="mainContent">
-      <!-- BREADCRUMB -->
-      <nav aria-label="Breadcrumb" class="breadcrumb-container" style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
-        <ol class="breadcrumb-list" style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
-          <li><a href="../../../../index.html">🏠 Home</a> &gt;</li>
-          <li><a href="../../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
-          <li style="color:var(--color-primary); font-weight:600;">Chương 1: Sinh lý màng tế bào</li>
-        </ol>
-      </nav>
+      <!-- BREADCRUMB WEB COMPONENT -->
+      <clini-breadcrumb items='[
+        {"label":"🏠 Home","url":"../../../../index.html"},
+        {"label":"Sinh lý & sinh lý bệnh","url":"../../Sinhly-sinhlybenh.html"},
+        {"label":"Chương 1: Sinh lý màng tế bào"}
+      ]'></clini-breadcrumb>
 
       <!-- MAIN CONTAINER -->
       <main class="visual-container">
@@ -123,11 +121,10 @@
               <li><strong>Gradient điện tích (điện học):</strong> Tác động của lực hút/đẩy tĩnh điện lên các phân tử mang điện (ion) khi đi qua màng có hiệu điện thế ($V_m$).</li>
             </ul>
 
-            <!-- MICRO-QUIZ INLINE COMPONENT -->
-            <div class="physio-quiz-block" data-quiz-id="quiz_mang_te_bao_1">
+            <!-- MICRO-QUIZ WEB COMPONENT -->
+            <physio-quiz quiz-id="quiz_mang_te_bao_1">
               <script type="application/json">
               {
-                "type": "mcq",
                 "question": "Yếu tố nào quyết định ròng chiều chuyển động của một ion qua màng tế bào?",
                 "options": [
                   "Chỉ phụ thuộc gradient nồng độ ròng",
@@ -139,14 +136,10 @@
                 "explanation": "Tốc độ và chiều di chuyển ròng của một ion mang điện tích được quyết định bởi Gradient Điện Hóa - hợp lực giữa độ chênh nồng độ hai bên màng và lực hút/đẩy tĩnh điện do hiệu điện thế màng (Vm) tạo ra."
               }
               </script>
-            </div>
+            </physio-quiz>
 
-            <!-- PHYSIO-PATHO MIRROR TRIGGER BUTTON -->
-            <div style="margin: 1.5rem 0;">
-              <button class="physio-step-card" style="width:100%; cursor:pointer; text-align:left; border-left: 4px solid var(--color-purple, #8b5cf6);" data-mirror-target="../../SLB_CCBS/SLB_CCBS_AKI.html" data-mirror-title="Cơ chế Bệnh lý: Rối loạn Màng Tế bào & Hoại tử Ống thận Cấp (AKI)">
-                <strong style="color: var(--color-purple, #8b5cf6);">🔄 Physio-Patho Mirror:</strong> Xem cơ chế tổn thương màng tế bào trong Hoại tử ống thận cấp (AKI) &rarr;
-              </button>
-            </div>
+            <!-- PHYSIO-PATHO MIRROR WEB COMPONENT -->
+            <physio-mirror-button target="../../SLB_CCBS/SLB_CCBS_AKI.html" title="Cơ chế Bệnh lý: Rối loạn Màng Tế bào & Hoại tử Ống thận Cấp (AKI)"></physio-mirror-button>
           </div>
 
                         <div class="physio-text-block">

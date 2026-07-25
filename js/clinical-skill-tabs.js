@@ -1,3 +1,15 @@
+// Auto-load Clinical Skill Web Components
+(function loadSkillComponents() {
+  if (!document.querySelector('script[src*="skill-components.js"]')) {
+    const currentScript = document.currentScript || document.querySelector('script[src*="clinical-skill-tabs.js"]');
+    const basePath = currentScript ? currentScript.src.substring(0, currentScript.src.lastIndexOf('/') + 1) : '../../../js/';
+    const script = document.createElement('script');
+    script.src = basePath + 'components/skill-components.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  }
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   // Tab switcher logic
   document.querySelectorAll('.tab-btn').forEach((button) => {

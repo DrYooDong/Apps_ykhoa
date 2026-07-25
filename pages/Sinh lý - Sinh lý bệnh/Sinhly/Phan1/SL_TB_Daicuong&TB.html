@@ -71,16 +71,12 @@
 
         <!-- KHUNG CHỨA NỘI DUNG CHÍNH -->
         <div class="main-wrapper" id="mainContent">
-            <!-- BREADCRUMB -->
-            <nav aria-label="Breadcrumb" class="breadcrumb-container"
-                style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
-                <ol class="breadcrumb-list"
-                    style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
-                    <li><a href="../../../../index.html">🏠 Home</a> &gt;</li>
-                    <li><a href="../../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
-                    <li style="color:var(--color-primary); font-weight:600;">Bài: Đại cương Sinh lý &amp; Nội môi</li>
-                </ol>
-            </nav>
+      <!-- BREADCRUMB WEB COMPONENT -->
+      <clini-breadcrumb items='[
+        {"label":"🏠 Home","url":"../../../../index.html"},
+        {"label":"Sinh lý & sinh lý bệnh","url":"../../Sinhly-sinhlybenh.html"},
+        {"label":"Bài: Đại cương Sinh lý & Nội môi"}
+      ]'></clini-breadcrumb>
 
             <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
             <main class="visual-container">
@@ -221,10 +217,24 @@
                                 </div>
                                 <p
                                     style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0; line-height: 1.5;">
-                                    Thường gây mất ổn định (vòng luẩn quẩn). Kích thích ban đầu tạo ra thêm nhiều phản ứng cùng loại. Ví dụ: Suy tim nặng mất máu. (Trừ 1 số có ích: Đông máu, chuyển dạ).
-                                </p>
-                            </div>
                         </div>
+
+                        <!-- MICRO-QUIZ WEB COMPONENT -->
+                        <physio-quiz quiz-id="quiz_noi_moi_1">
+                          <script type="application/json">
+                          {
+                            "question": "Cơ chế điều hòa nào là chủ đạo giúp duy trì sự hằng định nội môi trong cơ thể?",
+                            "options": [
+                              "Phản hồi dương tính (Positive Feedback)",
+                              "Phản hồi âm tính (Negative Feedback)",
+                              "Cơ chế điều khiển mở (Feed-forward control)",
+                              "Sự khuếch tán tự do của ion"
+                            ],
+                            "correctIndex": 1,
+                            "explanation": "Phản hồi âm tính (Negative Feedback) là cơ chế chủ đạo của cơ thể. Khi một chỉ số nội môi lệch khỏi ngưỡng bình thường, hệ thống sẽ tạo ra phản ứng đối lập để kéo chỉ số đó trở lại vị trí chuẩn (Set-point)."
+                          }
+                          </script>
+                        </physio-quiz>
 
                         <div class="image-placeholder-card">
                             <div class="image-title">

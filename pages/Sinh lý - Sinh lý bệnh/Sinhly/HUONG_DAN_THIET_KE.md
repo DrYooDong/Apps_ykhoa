@@ -242,7 +242,57 @@ Dùng để phân tích ứng dụng lâm sàng hoặc cơ chế bệnh. Thiết
 
 ---
 
-## 🛠️ 4. Tích hợp Lightbox Phóng to ảnh
-Mọi hình ảnh đặt trong `.image-drop-area img` sẽ tự động kế thừa tính năng phóng to (lightbox zoom) cao cấp từ kịch bản `physio-shared.js`.
-- Không cần viết thêm bất kỳ kịch bản phóng to nào khác ở file con.
-- Khi người dùng click vào ảnh phế nang/chu kỳ hô hấp, một màn đêm mờ (lightbox overlay) sẽ hiện lên kèm theo tiêu đề hình lấy từ `.image-title` và phần mô tả lấy từ `.image-description`.
+---
+
+## 🧩 5. Hệ thống Vanilla Web Components (Khuyên dùng)
+
+Phân hệ Sinh lý học đã được tích hợp bộ linh kiện **Vanilla Web Components (Native Custom Elements)** giúp viết bài học nhanh hơn, tái sử dụng code tốt hơn và giảm thiểu viết HTML lặp lại:
+
+### A. Breadcrumb (`<clini-breadcrumb>`)
+```html
+<clini-breadcrumb items='[
+  {"label":"🏠 Home","url":"../../../../index.html"},
+  {"label":"Sinh lý & sinh lý bệnh","url":"../../Sinhly-sinhlybenh.html"},
+  {"label":"Chương 1: Sinh lý màng tế bào"}
+]'></clini-breadcrumb>
+```
+
+### B. Hộp thông tin / Pearl lâm sàng (`<physio-alert>`)
+* `type`: `info` (xanh dương), `warning` (vàng), `danger` (đỏ), `pearl` (tím), `concept` (ngọc)
+```html
+<physio-alert type="pearl" title="Clinical Pearl">
+  Nồng độ Na+ ngoại bào cao gấp 10 lần nội bào, tạo gradient động lực cho các bơm thứ phát.
+</physio-alert>
+```
+
+### C. Nút kết nối Sinh lý - Bệnh lý (`<physio-mirror-button>`)
+```html
+<physio-mirror-button 
+  target="../../SLB_CCBS/SLB_CCBS_AKI.html" 
+  title="Cơ chế Bệnh lý: Rối loạn Màng Tế bào & AKI">
+</physio-mirror-button>
+```
+
+### D. Trắc nghiệm kiểm tra nhanh (`<physio-quiz>`)
+```html
+<physio-quiz quiz-id="quiz_mang_te_bao_1">
+  <script type="application/json">
+  {
+    "question": "Yếu tố nào quyết định chiều chuyển động của ion?",
+    "options": ["Gradient nồng độ", "Gradient điện thế", "Gradient điện hóa", "Hoạt độ ATP"],
+    "correctIndex": 2,
+    "explanation": "Gradient Điện Hóa hợp lực giữa gradient nồng độ và điện thế."
+  }
+  </script>
+</physio-quiz>
+```
+
+### E. Hình ảnh kèm Lightbox (`<physio-figure>`)
+```html
+<physio-figure 
+  src="../../images/Phan1/ten-hinh.png" 
+  alt="Mô tả hình" 
+  caption="Hình 1: Cấu trúc màng tế bào lipid kép">
+</physio-figure>
+```
+

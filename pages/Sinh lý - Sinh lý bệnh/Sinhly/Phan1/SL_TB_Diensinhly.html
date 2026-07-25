@@ -88,16 +88,12 @@
 
     <!-- KHUNG CHỨA NỘI DUNG CHÍNH -->
     <div class="main-wrapper" id="mainContent">
-      <!-- BREADCRUMB -->
-      <nav aria-label="Breadcrumb" class="breadcrumb-container"
-        style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
-        <ol class="breadcrumb-list"
-          style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0;">
-          <li><a href="../../../../index.html">🏠 Home</a> &gt;</li>
-          <li><a href="../../Sinhly-sinhlybenh.html">Sinh lý &amp; sinh lý bệnh</a> &gt;</li>
-          <li style="color:var(--color-primary); font-weight:600;">Chương 2: Điện thế màng &amp; Điện thế hoạt động</li>
-        </ol>
-      </nav>
+      <!-- BREADCRUMB WEB COMPONENT -->
+      <clini-breadcrumb items='[
+        {"label":"🏠 Home","url":"../../../../index.html"},
+        {"label":"Sinh lý & sinh lý bệnh","url":"../../Sinhly-sinhlybenh.html"},
+        {"label":"Chương 2: Điện thế màng & Điện thế hoạt động"}
+      ]'></clini-breadcrumb>
 
       <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
       <main class="visual-container">
@@ -165,6 +161,28 @@
               $$E_{ion} = \frac{RT}{zF} \ln \frac{[Ion]_{out}}{[Ion]_{in}}$$
               Điện thế màng nghỉ có giá trị xấp xỉ điện thế cân bằng của Kali ($E_K \approx -93\text{ mV}$) do màng lúc nghỉ thấm chủ yếu với $K^+$. Sự phân bố ion thụ động còn chịu ảnh hưởng bởi các protein tích điện âm lớn không thể đi qua màng (Hiệu ứng Gibbs-Donnan).
             </p>
+
+            <!-- PHYSIO-ALERT WEB COMPONENT -->
+            <physio-alert type="pearl" title="Ý nghĩa Lâm sàng: Tăng Kali máu & Điện thế nghỉ">
+              Khi K+ ngoại bào tăng (Tăng Kali máu), gradient nồng độ K+ giảm làm cho điện thế cân bằng EK bớt âm hơn (ví dụ từ -93 mV lên -70 mV). Điều này làm điện thế màng nghỉ bị khử cực nhẹ, làm tăng tính kích thích ban đầu của cơ tim nhưng dễ gây trơ cơ tim và loạn nhịp thất nguy hiểm.
+            </physio-alert>
+
+            <!-- PHYSIO-QUIZ WEB COMPONENT -->
+            <physio-quiz quiz-id="quiz_diensinhly_1">
+              <script type="application/json">
+              {
+                "question": "Điện thế màng nghỉ của tế bào xấp xỉ điện thế cân bằng của ion nào nhất?",
+                "options": [
+                  "Ion Na+ (+71 mV)",
+                  "Ion Ca2+ (+129 mV)",
+                  "Ion K+ (-93 mV)",
+                  "Ion Cl- (-50 mV)"
+                ],
+                "correctIndex": 2,
+                "explanation": "Ở trạng thái nghỉ, tính thấm của màng tế bào đối với K+ qua các kênh rò rỉ là cao nhất, do đó điện thế màng nghỉ bị chi phối mạnh nhất và xấp xỉ điện thế cân bằng của K+ (EK ≈ -93 mV)."
+              }
+              </script>
+            </physio-quiz>
 
             <!-- Bảng nồng độ ion tế bào cơ tim -->
             <div class="table-responsive" style="margin-top: 1.5rem;">
