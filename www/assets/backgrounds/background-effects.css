@@ -1,0 +1,61 @@
+/* ============================================================
+   CLINIPORTAL BACKGROUND EFFECTS LIBRARY
+   ============================================================ */
+
+/* 1. Medical Themed Gradients */
+.bg-cardio {
+  background: linear-gradient(135deg, #ffe4e6 0%, #fecdd3 100%);
+}
+.dark .bg-cardio {
+  background: linear-gradient(135deg, #881337 0%, #4c0519 100%);
+}
+
+.bg-nephro {
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+}
+.dark .bg-nephro {
+  background: linear-gradient(135deg, #0c4a6e 0%, #082f49 100%);
+}
+
+.bg-pharm {
+  background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+}
+.dark .bg-pharm {
+  background: linear-gradient(135deg, #581c87 0%, #3b0764 100%);
+}
+
+/* 2. Advanced Mesh Gradient */
+.bg-mesh {
+  background-color: #f8fafc;
+  background-image: 
+    radial-gradient(at 0% 0%, hsla(199,98%,48%,0.15) 0px, transparent 50%),
+    radial-gradient(at 50% 0%, hsla(262,83%,58%,0.1) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(142,71%,45%,0.1) 0px, transparent 50%);
+}
+
+.dark .bg-mesh {
+  background-color: #0f172a;
+  background-image: 
+    radial-gradient(at 0% 0%, hsla(199,98%,48%,0.2) 0px, transparent 50%),
+    radial-gradient(at 50% 0%, hsla(262,83%,58%,0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(142,71%,45%,0.15) 0px, transparent 50%);
+}
+
+/* 3. Animated Shifting Background */
+.bg-animated-mesh {
+  background: linear-gradient(270deg, #e0f2fe, #f3e8ff, #f0fdf4);
+  background-size: 600% 600%;
+  animation: meshShift 16s ease infinite;
+}
+
+.dark .bg-animated-mesh {
+  background: linear-gradient(270deg, #0f172a, #1e1b4b, #022c22);
+  background-size: 600% 600%;
+  animation: meshShift 16s ease infinite;
+}
+
+@keyframes meshShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

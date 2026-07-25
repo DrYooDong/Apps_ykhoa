@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Trang mẫu thiết lập lưu đồ tiếp cận lâm sàng chuẩn CliniPortal">
+    <title>Flowchart Template – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components/header.css">
+    <link rel="stylesheet" href="../css/components/sidebar.css">
+    <link rel="stylesheet" href="../css/components/footer.css">
+
+    <!-- CSS Flowchart dùng chung -->
+    <link rel="stylesheet" href="../css/components/flowchart.css">
+
+    <!-- Script điều hướng hệ thống -->
+    <script src="../components/header.js" defer></script>
+    <script src="../components/footer.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../pages/Tiếp cận/tiep-can.html" class="nav-item active" title="Tiếp cận lâm sàng">
+                            <span class="nav-icon">🤒</span>
+                            <span class="nav-text">Tiếp cận lâm sàng</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <main class="main-wrapper flow-page">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container">
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item">
+                        <a href="../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="../pages/Tiếp cận/tiep-can.html" class="breadcrumb-link">Tiếp cận</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Flowchart mẫu</li>
+                </ol>
+            </nav>
+
+            <!-- HERO BANNER -->
+            <div class="flow-hero">
+                <div class="hero-badge">📋 Mẫu Lưu Đồ Tương Tác</div>
+                <h1>HƯỚNG DẪN THIẾT LẬP FLOWCHART</h1>
+                <p>Khung sườn giao diện chuẩn giúp dễ dàng tạo lưu đồ phân tầng chẩn đoán, xử trí lâm sàng. Nhấp vào các thẻ có biểu tượng mũi tên để xem chi tiết.</p>
+            </div>
+
+            <!-- TABS SWITCHER -->
+            <div class="flow-tabs">
+                <button class="flow-tab-btn active" id="tab-btn-chan-doan" onclick="switchPane('chan-doan')">
+                    <span class="tab-dot"></span> Sơ đồ 1: Tầm soát & Chẩn đoán
+                </button>
+                <button class="flow-tab-btn tab-danger" id="tab-btn-xu-tri" onclick="switchPane('xu-tri')">
+                    <span class="tab-dot"></span> Sơ đồ 2: Phác đồ Xử trí cấp cứu
+                </button>
+            </div>
+
+            <!-- LEGEND / CHÚ GIẢI -->
+            <div class="flow-legend">
+                <div class="legend-item"><div class="legend-dot" style="background:linear-gradient(135deg, #1e3a5f, #3f51b5)"></div> Bắt đầu</div>
+                <div class="legend-item"><div class="legend-dot" style="background:var(--c-danger-b)"></div> Khẩn cấp / Cấp cứu</div>
+                <div class="legend-item"><div class="legend-dot" style="background:var(--c-warn-b)"></div> Cảnh báo / Theo dõi</div>
+                <div class="legend-item"><div class="legend-dot" style="background:var(--c-info-b)"></div> Nghi vấn / Xét nghiệm</div>
+                <div class="legend-item"><div class="legend-dot" style="background:var(--c-ok-b)"></div> Ổn định / Ngoại trú</div>
+            </div>
+
+            <!-- FLOW CANVAS -->
+            <div class="flow-canvas-wrapper">
+
+                <!-- PANE 1: CHẨN ĐOÁN -->
+                <div class="flow-pane active" id="pane-chan-doan">
+                    <div class="flow-col">
+                        
+                        <!-- 1. Node Bắt đầu -->
+                        <div class="fnode fnode-start">
+                            <div class="fnode-tag">Bước 1 • Tiếp nhận</div>
+                            <div class="fnode-title">Đánh giá ban đầu bệnh nhân nghi ngờ</div>
+                            <p class="fnode-body">
+                                Đo sinh hiệu, kiểm tra SpO2 và tri giác ngay khi tiếp nhận.
+                            </p>
+                        </div>
+
+                        <!-- Mũi tên kết nối -->
+                        <div class="flow-connector">
+                            <div class="flow-connector-line"></div>
+                            <div class="flow-connector-arrow"></div>
+                        </div>
+
+                        <!-- 2. Node Quyết định (Dạng Câu hỏi) -->
+                        <div class="fnode fnode-question clickable" onclick="toggleNode(this)">
+                            <div class="fnode-tag">Bước 2 • Phân tầng</div>
+                            <div class="fnode-title">
+                                Có dấu hiệu cảnh báo đỏ (Red Flags) không?
+                            </div>
+                            <p class="fnode-body">
+                                📌 Dấu hiệu nguy kịch cần xử trí nhanh. Nhấn để xem các dấu hiệu cảnh báo đỏ cụ thể.
+                            </p>
+                            <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Nhấp để xem danh sách cảnh báo</div>
+                            
+                            <!-- Bảng thông tin xổ xuống -->
+                            <div class="fnode-details">
+                                <div class="detail-box">
+                                    <div class="detail-box-title">🚨 Danh sách Cảnh báo Đỏ:</div>
+                                    <ul>
+                                        <li><strong>Suy hô hấp:</strong> Thở nhanh > 30 l/p, SpO2 &lt; 92%</li>
+                                        <li><strong>Huyết động:</strong> HA kẹp, HA tụt (HAtt &lt; 90 mmHg), mạch nhanh nhẹ</li>
+                                        <li><strong>Thần kinh:</strong> Glasgow &lt; 15 điểm, lơ mơ, kích thích</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mũi tên kết nối phân nhánh -->
+                        <div class="flow-connector">
+                            <div class="flow-connector-line"></div>
+                            <div class="flow-connector-arrow"></div>
+                        </div>
+
+                        <!-- RẼ NHÁNH (CÓ / KHÔNG) -->
+                        <div class="flow-branch">
+                            
+                            <!-- Nhánh bên TRÁI: CÓ DẤU HIỆU CẢNH BÁO ĐỎ -->
+                            <div class="flow-branch-side">
+                                <div class="flow-connector-label fc-yes">CÓ</div>
+                                <div class="flow-connector">
+                                    <div class="flow-connector-line"></div>
+                                    <div class="flow-connector-arrow"></div>
+                                </div>
+                                
+                                <div class="fnode fnode-danger pulse-danger clickable" onclick="toggleNode(this)">
+                                    <div class="fnode-tag">Xử trí cấp cứu</div>
+                                    <div class="fnode-title">🚑 Báo động đỏ - Cấp cứu khẩn</div>
+                                    <p class="fnode-body">
+                                        Chuyển ngay đến phòng Hồi sức cấp cứu (ICU), thiết lập đường truyền tĩnh mạch và cấy máu.
+                                    </p>
+                                    <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Xem hướng dẫn cấp cứu nhanh</div>
+                                    <div class="fnode-details">
+                                        <div class="detail-box">
+                                            <div class="detail-box-title">⚡ Phác đồ Giờ đầu tiên (Hour-1 Bundle):</div>
+                                            <ul>
+                                                <li>Thở oxy qua mask 10-15 l/p để đạt SpO2 > 94%.</li>
+                                                <li>Truyền dịch nhanh Lactate Ringer 30ml/kg.</li>
+                                                <li>Kháng sinh phổ rộng đường tĩnh mạch trong vòng 1 giờ.</li>
+                                            </ul>
+                                            <button class="btn-flow btn-danger" style="margin-top: 10px;" onclick="switchPane('xu-tri')">
+                                                Mở Phác đồ cấp cứu chi tiết
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Nhánh bên PHẢI: KHÔNG CÓ DẤU HIỆU CẢNH BÁO ĐỎ -->
+                            <div class="flow-branch-side">
+                                <div class="flow-connector-label fc-no">KHÔNG</div>
+                                <div class="flow-connector">
+                                    <div class="flow-connector-line"></div>
+                                    <div class="flow-connector-arrow"></div>
+                                </div>
+
+                                <div class="fnode fnode-ok clickable" onclick="toggleNode(this)">
+                                    <div class="fnode-tag">Theo dõi thường quy</div>
+                                    <div class="fnode-title">🏥 Chăm sóc thông thường</div>
+                                    <p class="fnode-body">
+                                        Bệnh nhân ổn định. Cho làm xét nghiệm bilan cơ bản và điều trị triệu chứng, ngoại trú nếu đủ điều kiện.
+                                    </p>
+                                    <div class="fnode-expand-hint"><span class="expand-icon">▼</span> Xem tiêu chuẩn xuất viện</div>
+                                    <div class="fnode-details">
+                                        <div class="detail-box">
+                                            <div class="detail-box-title">✅ Tiêu chuẩn điều trị ngoại trú:</div>
+                                            <ul>
+                                                <li>Sinh hiệu ổn định, ăn uống bình thường.</li>
+                                                <li>Có người nhà chăm sóc và có khả năng quay lại viện trong vòng 15-30 phút nếu có biến cố.</li>
+                                                <li>Hẹn tái khám mỗi 24 - 48 giờ.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div><!-- End Flow Branch -->
+
+                    </div>
+                </div><!-- End Pane 1 -->
+
+                <!-- PANE 2: XỬ TRÍ -->
+                <div class="flow-pane" id="pane-xu-tri">
+                    <div class="flow-col">
+                        <div class="fnode fnode-danger">
+                            <div class="fnode-tag">🚨 Phác đồ ICU</div>
+                            <div class="fnode-title">Bù dịch hồi sức & Vận mạch</div>
+                            <p class="fnode-body">
+                                Đánh giá lượng dịch truyền dựa trên áp lực tĩnh mạch trung tâm (CVP) hoặc siêu âm tim tại giường (POCUS).
+                            </p>
+                        </div>
+                    </div>
+                </div><!-- End Pane 2 -->
+
+            </div><!-- End Flow Canvas Wrapper -->
+        </main>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer-placeholder" data-footer-path="../components/footer.html"></div>
+
+    <!-- Scripts dùng chung -->
+    <script src="../js/sidebar.js"></script>
+    <script src="../js/flowchart.js"></script>
+</body>
+
+</html>

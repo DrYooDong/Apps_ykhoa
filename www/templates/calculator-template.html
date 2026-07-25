@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Trang công cụ tính điểm số/phân tầng nguy cơ lâm sàng mẫu chuẩn CliniPortal">
+    <title>Calculator Template – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components/header.css">
+    <link rel="stylesheet" href="../css/components/sidebar.css">
+    <link rel="stylesheet" href="../css/components/footer.css">
+
+    <!-- CSS riêng cho Calculators (có thể tùy biến thêm trong file HTML nếu cần) -->
+    <style>
+        .calc-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        @media (min-width: 1024px) {
+            .calc-container {
+                grid-template-columns: 3fr 2fr;
+            }
+        }
+
+        .form-section-card {
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-divider);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+            border-bottom: 1px solid var(--color-divider);
+            padding-bottom: 0.75rem;
+        }
+
+        .step-badge {
+            background-color: var(--color-primary);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: var(--text-sm);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section-card-header h3 {
+            font-size: var(--text-md);
+            font-weight: 700;
+            color: var(--color-text);
+            margin: 0;
+        }
+
+        .form-grid-2col {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .form-grid-2col {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.375rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            font-size: var(--text-sm);
+            color: var(--color-text);
+        }
+
+        .input-with-unit {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-with-unit input, .input-with-unit select {
+            width: 100%;
+            padding: 0.625rem 1rem;
+            padding-right: 4.5rem;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            background-color: var(--color-surface);
+            color: var(--color-text);
+            font-family: inherit;
+            font-size: var(--text-sm);
+            transition: border-color var(--tr);
+        }
+
+        .input-with-unit input:focus, .input-with-unit select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        .input-unit {
+            position: absolute;
+            right: 1rem;
+            font-size: var(--text-xs);
+            color: var(--color-text-muted);
+            font-weight: 500;
+            pointer-events: none;
+        }
+
+        /* Checkbox list */
+        .checkbox-group-vertical {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .custom-checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            cursor: pointer;
+        }
+
+        .custom-checkbox-label input[type="checkbox"] {
+            margin-top: 0.25rem;
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        .checkbox-text {
+            font-size: var(--text-sm);
+            color: var(--color-text);
+            line-height: 1.4;
+        }
+
+        /* Result Panel */
+        .result-panel {
+            position: sticky;
+            top: 2rem;
+            height: fit-content;
+        }
+
+        .calc-result-box {
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-divider);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            transition: all var(--tr);
+        }
+
+        .result-score-wrapper {
+            margin: 1.5rem 0;
+        }
+
+        .result-score {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--color-text-muted);
+            line-height: 1;
+        }
+
+        .result-score span {
+            font-size: var(--text-lg);
+            font-weight: 500;
+            color: var(--color-text-faint);
+        }
+
+        .result-status-alert {
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            font-size: var(--text-md);
+            margin-top: 1rem;
+            background-color: var(--color-surface-offset);
+            color: var(--color-text-muted);
+            transition: all var(--tr);
+        }
+
+        /* Risk Levels style mappings */
+        .risk-low {
+            background-color: var(--color-success-hl);
+            color: var(--color-success);
+            border: 1px solid rgba(5, 150, 105, 0.2);
+        }
+
+        .risk-medium {
+            background-color: var(--color-warning-hl);
+            color: var(--color-warning);
+            border: 1px solid rgba(217, 119, 6, 0.2);
+        }
+
+        .risk-high {
+            background-color: var(--color-rose-hl);
+            color: var(--color-rose);
+            border: 1px solid rgba(225, 29, 72, 0.2);
+            animation: pulseHigh 2s infinite;
+        }
+
+        @keyframes pulseHigh {
+            0% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(225, 29, 72, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0); }
+        }
+    </style>
+
+    <!-- Script điều hướng hệ thống -->
+    <script src="../components/header.js" defer></script>
+    <script src="../components/footer.js" defer></script>
+    <script src="../js/main.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../pages/Công cụ/cong-cu.html" class="nav-item active" title="Công cụ lâm sàng">
+                            <span class="nav-icon">⚙️</span>
+                            <span class="nav-text">Công cụ lâm sàng</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <main class="main-wrapper">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container">
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item">
+                        <a href="../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="../pages/Công cụ/cong-cu.html" class="breadcrumb-link">Công cụ</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Calculator mẫu</li>
+                </ol>
+            </nav>
+
+            <!-- HERO BANNER -->
+            <div class="flow-hero" style="background: var(--gradient-accent); color: white; padding: 1.75rem; border-radius: var(--radius-lg); margin-bottom: 1.5rem;">
+                <div class="hero-badge" style="background: rgba(255,255,255,0.2); display: inline-block; padding: 0.25rem 0.75rem; border-radius: var(--radius-full); font-size: var(--text-xs); font-weight: 700; margin-bottom: 0.5rem;">🧮 CÔNG CỤ TÍNH ĐIỂM</div>
+                <h1 style="margin: 0; font-size: var(--text-xl); font-weight: 800;">BỘ TÍNH ĐIỂM LÂM SÀNG MẪU</h1>
+                <p style="margin: 0.5rem 0 0; font-size: var(--text-sm); opacity: 0.9;">Nhập các chỉ số lâm sàng của bệnh nhân dưới đây để tự động phân tầng nguy cơ.</p>
+            </div>
+
+            <!-- CALCULATOR BODY CONTAINER -->
+            <div class="calc-container">
+
+                <!-- LEFT COLUMN: INPUT FORMS -->
+                <div class="calc-inputs">
+                    
+                    <!-- Card 1: Chỉ số sinh lý -->
+                    <div class="form-section-card">
+                        <div class="section-card-header">
+                            <div class="step-badge">1</div>
+                            <h3>Chỉ số Sinh hiệu & Sinh hóa</h3>
+                        </div>
+                        
+                        <div class="form-grid-2col">
+                            <div class="form-group">
+                                <label for="calc-age">Tuổi bệnh nhân</label>
+                                <div class="input-with-unit">
+                                    <input type="number" id="calc-age" placeholder="Nhập số tuổi" min="0" max="120" oninput="runCalculator()">
+                                    <span class="input-unit">tuổi</span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="calc-sbp">Huyết áp tâm thu</label>
+                                <div class="input-with-unit">
+                                    <input type="number" id="calc-sbp" placeholder="Ví dụ: 120" min="40" max="250" oninput="runCalculator()">
+                                    <span class="input-unit">mmHg</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Tiền sử & Yếu tố nguy cơ -->
+                    <div class="form-section-card">
+                        <div class="section-card-header">
+                            <div class="step-badge">2</div>
+                            <h3>Tiền sử bệnh lý (Chọn các ô áp dụng)</h3>
+                        </div>
+                        
+                        <div class="checkbox-group-vertical">
+                            <label class="custom-checkbox-label">
+                                <input type="checkbox" id="chk-diabetes" onchange="runCalculator()" value="2">
+                                <span class="checkbox-text">
+                                    Đái tháo đường (+2 điểm)
+                                    <small>Được chẩn đoán trước đó hoặc đang dùng thuốc hạ đường huyết.</small>
+                                </span>
+                            </label>
+
+                            <label class="custom-checkbox-label">
+                                <input type="checkbox" id="chk-smoking" onchange="runCalculator()" value="1">
+                                <span class="checkbox-text">
+                                    Hút thuốc lá hiện tại (+1 điểm)
+                                    <small>Sử dụng thuốc lá thường xuyên trong vòng 1 năm qua.</small>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT COLUMN: RESULTS PANEL -->
+                <div class="result-panel">
+                    <div class="calc-result-box" id="resultCard">
+                        <h3 style="margin: 0; font-size: var(--text-md); color: var(--color-text);">KẾT QUẢ PHÂN TẦNG</h3>
+                        
+                        <div class="result-score-wrapper">
+                            <div class="result-score" id="totalScore">0<span>/5 điểm</span></div>
+                        </div>
+
+                        <p id="resultDetails" style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0 0 1rem;">
+                            Nhập các thông số lâm sàng để bắt đầu tính toán nguy cơ.
+                        </p>
+
+                        <div class="result-status-alert" id="riskStatus">
+                            Chưa đủ thông tin
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder" data-footer-path="../components/footer.html"></div>
+
+    <!-- Scripts dùng chung -->
+    <script src="../js/sidebar.js"></script>
+    
+    <!-- Script Logic Tính Toán -->
+    <script>
+        function runCalculator() {
+            // Lấy dữ liệu
+            const age = parseInt(document.getElementById('calc-age').value) || 0;
+            const sbp = parseInt(document.getElementById('calc-sbp').value) || 0;
+            const hasDiabetes = document.getElementById('chk-diabetes').checked;
+            const isSmoking = document.getElementById('chk-smoking').checked;
+
+            const scoreText = document.getElementById('totalScore');
+            const detailsText = document.getElementById('resultDetails');
+            const riskStatus = document.getElementById('riskStatus');
+            const resultCard = document.getElementById('resultCard');
+
+            // Nếu chưa nhập dữ liệu cơ bản
+            if (age === 0 || sbp === 0) {
+                scoreText.innerHTML = "0<span>/5 điểm</span>";
+                detailsText.innerText = "Vui lòng nhập Tuổi và Huyết áp tâm thu để tính điểm.";
+                riskStatus.innerText = "Chưa đủ thông tin";
+                riskStatus.className = "result-status-alert";
+                return;
+            }
+
+            // Tính toán điểm số mẫu
+            let score = 0;
+
+            // 1. Điểm tuổi
+            if (age >= 65) score += 2;
+            else if (age >= 45) score += 1;
+
+            // 2. Điểm huyết áp
+            if (sbp >= 140) score += 1;
+
+            // 3. Điểm tiền sử
+            if (hasDiabetes) score += 2;
+            if (isSmoking) score += 1;
+
+            // Đảm bảo không quá max lý thuyết của thang điểm mẫu này
+            score = Math.min(score, 5);
+
+            // Cập nhật giao diện điểm số
+            scoreText.innerHTML = score + "<span>/5 điểm</span>";
+
+            // Phân loại nguy cơ
+            riskStatus.className = "result-status-alert";
+            if (score <= 1) {
+                riskStatus.innerText = "Nguy cơ THẤP";
+                riskStatus.classList.add("risk-low");
+                detailsText.innerText = "Bệnh nhân có mức nguy cơ tim mạch thấp. Khuyến nghị duy trì lối sống lành mạnh và theo dõi định kỳ.";
+            } else if (score <= 3) {
+                riskStatus.innerText = "Nguy cơ TRUNG BÌNH";
+                riskStatus.classList.add("risk-medium");
+                detailsText.innerText = "Nguy cơ trung bình. Cần hướng dẫn điều chỉnh chế độ ăn uống, tập luyện, và xem xét kiểm soát huyết áp nếu cần.";
+            } else {
+                riskStatus.innerText = "Nguy cơ CAO";
+                riskStatus.classList.add("risk-high");
+                detailsText.innerText = "Nguy cơ cao xảy ra biến cố. Khuyến cáo kiểm soát chặt chẽ huyết áp, đường huyết, và xem xét điều trị bằng thuốc kết hợp thăm khám chuyên khoa.";
+            }
+        }
+    </script>
+</body>
+
+</html>

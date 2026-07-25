@@ -10,6 +10,7 @@
 
 | File | Vai trò | JS dùng | CSS dùng |
 |------|---------|---------|---------|
+| `README.md` | Tài liệu giới thiệu tổng quan hệ thống & hướng dẫn cài đặt Laptop/Di động | — | — |
 | `index.html` | Trang chủ | `homepage-effects.js`, `homepage-widgets.js`, `main.js` | `homepage-effects.css`, `homepage-widgets.css` |
 | `manifest.json` | Cấu hình PWA (App Name, Icons, Shortcuts, Display) | `main.js`, `sw.js` | — |
 | `sw.js` | Service Worker PWA (Pre-caching, Offline Caching Strategy) | — | — |
@@ -425,5 +426,17 @@
 
 ---
 
+## 📚 docs/
+
+| File | Vai trò |
+|------|---------|
+| `PROJECT_OVERVIEW.md` | Tổng quan kiến trúc & quy tắc toàn bộ hệ thống |
+| `FILE_MAP.md` | Bản đồ file & cấu trúc cây thư mục |
+| `DESIGN_TO_CODE.md` | **[MỚI]** Hướng dẫn quy trình chuyển đổi thiết kế từ Figma sang Vanilla CSS |
+| `HUONG_DAN_THIET_KE_VA_VE_LUU_DO_YKHOA.md` | Quy chuẩn thiết kế lưu đồ thuật toán y khoa |
+
+---
+
 *Cập nhật file này mỗi khi thêm trang mới vào hệ thống.*
+
 

@@ -1,0 +1,107 @@
+/* ============================================================
+   EAST-WEST MEDICINE BRIDGE - COMPONENT STYLES
+   ============================================================ */
+
+.bridge-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+}
+
+.bridge-search-bar {
+  display: flex;
+  gap: 1rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.bridge-search-input {
+  flex: 1;
+  padding: 0.65rem 1rem 0.65rem 2.5rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-offset);
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  outline: none;
+}
+
+/* Matrix Cards List */
+.matrix-cards-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.matrix-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: all var(--tr);
+}
+
+.matrix-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-tcm-green);
+}
+
+.matrix-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  background: var(--color-surface-offset);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  border: 1px solid var(--color-divider);
+}
+
+@media (max-width: 768px) {
+  .matrix-header {
+    grid-template-columns: 1fr;
+  }
+}
+
+.matrix-tcm-side {
+  border-right: 1px solid var(--color-divider);
+  padding-right: 1rem;
+}
+
+@media (max-width: 768px) {
+  .matrix-tcm-side {
+    border-right: none;
+    border-bottom: 1px solid var(--color-divider);
+    padding-right: 0;
+    padding-bottom: 0.75rem;
+  }
+}
+
+.matrix-title {
+  font-size: var(--text-base);
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.matrix-title.tcm { color: var(--color-tcm-green); }
+.matrix-title.west { color: var(--color-primary); }
+
+/* Safety Warning Banner */
+.safety-alert-banner {
+  background: var(--color-tcm-red-hl);
+  border: 1px solid rgba(225, 29, 72, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  color: var(--color-tcm-red);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: var(--text-xs);
+}

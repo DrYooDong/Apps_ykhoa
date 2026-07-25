@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CliniPortal Geometry & Shapes Preview</title>
+  <link rel="stylesheet" href="geometry-shapes.css">
+  <style>
+    :root {
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-color: #1e293b;
+      --border-color: #e2e8f0;
+      --primary: #0ea5e9;
+    }
+
+    body.dark {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --text-color: #f1f5f9;
+      --border-color: #334155;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      transition: all 0.3s ease;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0.75rem 1.5rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      z-index: 100;
+    }
+
+    .section-preview {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .preview-title {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      border-left: 5px solid var(--primary);
+      padding-left: 10px;
+    }
+
+    .grid-shapes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .box-sample {
+      width: 120px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      border-radius: 8px;
+    }
+
+    .pattern-box {
+      width: 100%;
+      height: 150px;
+      border-radius: 12px;
+      border: 1px dashed var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+    }
+  </style>
+  <script src="../../components/footer.js" defer></script>
+</head>
+<body>
+  <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+
+  <div class="container">
+    <header>
+      <h1>🔷 CliniPortal Geometry & Shapes</h1>
+      <p>Thư viện hình dạng CSS, Dividers và hoa văn lưới cho giao diện lâm sàng</p>
+    </header>
+
+    <!-- Glassmorphic Cards -->
+    <section class="section-preview">
+      <div class="preview-title">1. Glassmorphism Containers</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+        <div class="card-glass" style="padding: 2rem; text-align: center;">
+          <h3 style="margin-top: 0;">Glassmorphic Card 1</h3>
+          <p style="font-size: 0.9rem; opacity: 0.85;">Hộp chứa mờ đục với hiệu ứng phản chiếu cao cấp.</p>
+        </div>
+        <div class="card-glass" style="padding: 2rem; text-align: center;">
+          <h3 style="margin-top: 0;">Glassmorphic Card 2</h3>
+          <p style="font-size: 0.9rem; opacity: 0.85;">Thích hợp cho bảng điều khiển dashboard.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Custom Shapes -->
+    <section class="section-preview">
+      <div class="preview-title">2. Clip-path Geometric Shapes</div>
+      <div class="grid-shapes">
+        <div class="shape-hexagon">Hexagon</div>
+        <div class="shape-hexagon" style="background: #10b981;">Green</div>
+        <div class="shape-hexagon" style="background: #8b5cf6;">Purple</div>
+      </div>
+    </section>
+
+    <!-- Patterns -->
+    <section class="section-preview">
+      <div class="preview-title">3. Repeating Medical Patterns</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+        <div class="pattern-box pattern-dots">Lưới chấm hạt (Dot Grid)</div>
+        <div class="pattern-box pattern-grid">Lưới tọa độ (Coordinate Grid)</div>
+      </div>
+    </section>
+
+    <!-- Dividers -->
+    <section class="section-preview">
+      <div class="preview-title">4. Layout Section Dividers</div>
+      <div style="display: flex; flex-direction: column; gap: 2rem;">
+        <div>
+          <h4 style="margin-bottom: 0.5rem;">Wave Divider (Sóng mềm)</h4>
+          <div class="divider-wave"></div>
+        </div>
+        <div>
+          <h4 style="margin-bottom: 0.5rem;">Slant Divider (Đường xiên chéo)</h4>
+          <div class="divider-slant"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      const btn = document.querySelector('.theme-toggle');
+      btn.textContent = document.body.classList.contains('dark') ? '☀️ Light Mode' : '🌙 Dark Mode';
+    }
+  </script>
+
+  <div id="footer-placeholder" data-footer-path="../../components/footer.html"></div>
+</body>
+</html>

@@ -1,0 +1,182 @@
+/* ============================================================
+   YHCT QUIZ ARENA - COMPONENT STYLES
+   ============================================================ */
+
+.arena-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Mode Selector Grid */
+.arena-mode-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.arena-mode-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--tr);
+  box-shadow: var(--shadow-sm);
+}
+
+.arena-mode-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-tcm-green);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.arena-mode-card.active {
+  background: var(--color-tcm-green-hl);
+  border-color: var(--color-tcm-green);
+}
+
+.arena-mode-icon {
+  font-size: 2.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.arena-mode-title {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.25rem;
+}
+
+.arena-mode-desc {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+/* HUD Top Bar */
+.arena-hud-bar {
+  background: #0f172a;
+  color: #fff;
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-md);
+}
+
+.hud-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hud-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+}
+
+.hud-val {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  font-family: var(--font-display);
+}
+
+.hud-streak {
+  color: #f59e0b;
+}
+
+.hud-score {
+  color: #2dd4bf;
+}
+
+.hud-timer {
+  color: #ef4444;
+}
+
+/* Question Stage Card */
+.arena-stage-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.arena-q-text {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.arena-opts-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.arena-opt-btn {
+  background: var(--color-surface-offset);
+  border: 1px solid var(--color-divider);
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--tr);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.arena-opt-btn:hover {
+  border-color: var(--color-tcm-green);
+  background: var(--color-surface);
+  transform: translateX(4px);
+}
+
+.arena-opt-btn.correct {
+  background: var(--color-success-hl) !important;
+  border-color: var(--color-success) !important;
+  color: var(--color-success) !important;
+  font-weight: 700;
+}
+
+.arena-opt-btn.wrong {
+  background: var(--color-danger-hl) !important;
+  border-color: var(--color-danger) !important;
+  color: var(--color-danger) !important;
+}
+
+/* Feedback & Explanation */
+.arena-explanation-box {
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  margin-top: 0.5rem;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}

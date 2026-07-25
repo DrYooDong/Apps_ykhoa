@@ -22,6 +22,7 @@
 | Bất kỳ task nào | `docs/PROJECT_OVERVIEW.md` |
 | Tìm file cụ thể | `docs/FILE_MAP.md` |
 | Thêm CSS/JS mới | `css/README.md`, `js/README.md` |
+| Chuyển đổi Figma → CSS | `docs/DESIGN_TO_CODE.md` |
 | Tạo trang mới (tổng quát) | `pages/README.md` |
 | Tạo lưu đồ tiếp cận | `pages/Tiếp cận/HUONG_DAN_THIET_KE.md` |
 | Tạo công cụ lâm sàng | `pages/Công cụ/HUONG_DAN_THIET_KE.md` |

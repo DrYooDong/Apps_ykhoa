@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <!-- Shadows & Gradients -->
+    <filter id="drop-shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000000" flood-opacity="0.08" />
+    </filter>
+    
+    <!-- Gradients for blood tube -->
+    <linearGradient id="plasma-tube" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="50%" stop-color="#fde047" />
+      <stop offset="100%" stop-color="#eab308" />
+    </linearGradient>
+    <linearGradient id="buffy-coat" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f1f5f9" />
+      <stop offset="50%" stop-color="#cbd5e1" />
+      <stop offset="100%" stop-color="#94a3b8" />
+    </linearGradient>
+    <linearGradient id="rbc-tube" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ef4444" />
+      <stop offset="50%" stop-color="#b91c1c" />
+      <stop offset="100%" stop-color="#7f1d1d" />
+    </linearGradient>
+    <linearGradient id="glass-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.6" />
+      <stop offset="30%" stop-color="#ffffff" stop-opacity="0.1" />
+      <stop offset="90%" stop-color="#ffffff" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#94a3b8" stop-opacity="0.4" />
+    </linearGradient>
+  </defs>
+
+  <style>
+    .title { font-family: 'Inter', system-ui, -apple-system, sans-serif; font-weight: 700; font-size: 18px; fill: #1e293b; }
+    .subtitle { font-family: 'Inter', system-ui, -apple-system, sans-serif; font-weight: 500; font-size: 13px; fill: #64748b; }
+    .section-title { font-family: 'Inter', system-ui, -apple-system, sans-serif; font-weight: 700; font-size: 14px; fill: #475569; }
+    .label { font-family: 'Inter', system-ui, -apple-system, sans-serif; font-weight: 600; font-size: 12px; fill: #1e293b; }
+    .val-text { font-family: 'Inter', system-ui, -apple-system, sans-serif; font-weight: 700; font-size: 12px; fill: #2563eb; }
+    .desc-text { font-family: 'Inter', system-ui, -apple-system, sans-serif; font-weight: 400; font-size: 10px; fill: #64748b; }
+    .axis-label { font-family: 'Inter', system-ui, -apple-system, sans-serif; font-weight: 500; font-size: 10px; fill: #94a3b8; }
+    
+    @media (prefers-color-scheme: dark) {
+      .title { fill: #f8fafc; }
+      .subtitle { fill: #94a3b8; }
+      .section-title { fill: #cbd5e1; }
+      .label { fill: #f1f5f9; }
+      .desc-text { fill: #94a3b8; }
+    }
+  </style>
+
+  <!-- TITLE -->
+  <text x="20" y="35" class="title">THÀNH PHẦN MÁU &amp; ĐIỆN DI PROTEIN HUYẾT TƯƠNG</text>
+  <text x="20" y="53" class="subtitle">Trực quan hóa tỷ lệ các thành phần của máu toàn phần và biểu đồ điện di protein</text>
+
+  <!-- LEFT SECTION: BLOOD CENTRIFUGATION (1/2 WIDTH) -->
+  <g transform="translate(20, 80)">
+    <text x="0" y="20" class="section-title">I. Tỷ lệ thành phần máu (Ly tâm)</text>
+    
+    <!-- Test Tube Drawing -->
+    <!-- Shadow for tube -->
+    <rect x="55" y="45" width="50" height="260" rx="25" fill="#000000" opacity="0.05" />
+    
+    <!-- 1. Plasma Layer (55%) -->
+    <path d="M 55,90 L 105,90 L 105,200 L 55,200 Z" fill="url(#plasma-tube)" />
+    <!-- 2. Buffy Coat Layer (<1%) -->
+    <rect x="55" y="200" width="50" height="5" fill="url(#buffy-coat)" />
+    <!-- 3. Red Blood Cells Layer (45%) -->
+    <path d="M 55,205 L 105,205 L 105,275 C 105,290 95,300 80,300 C 65,300 55,290 55,275 Z" fill="url(#rbc-tube)" />
+    
+    <!-- Tube Glass Outline & Reflection -->
+    <rect x="55" y="45" width="50" height="255" rx="25" fill="url(#glass-grad)" stroke="#94a3b8" stroke-width="2.5" />
+    <!-- Tube Cap -->
+    <rect x="50" y="30" width="60" height="20" rx="4" fill="#ef4444" />
+    <rect x="55" y="25" width="50" height="5" rx="1" fill="#b91c1c" />
+
+    <!-- Labels & Pointers for Tube -->
+    <!-- Plasma Pointer -->
+    <path d="M 105,145 L 140,145" stroke="#94a3b8" stroke-width="1.5" />
+    <circle cx="105" cy="145" r="3" fill="#eab308" />
+    <text x="150" y="142" class="label">Huyết tương (Plasma)</text>
+    <text x="150" y="157" class="val-text" fill="#d97706">55% thể tích máu</text>
+    <text x="150" y="172" class="desc-text">Nước (91.5%), Protein (7%), Khác (1.5%)</text>
+
+    <!-- Buffy Coat Pointer -->
+    <path d="M 105,202 L 140,202" stroke="#94a3b8" stroke-width="1.5" />
+    <circle cx="105" cy="202" r="3" fill="#cbd5e1" />
+    <text x="150" y="200" class="label" font-size="11px">Lớp đệm bạch cầu &amp; tiểu cầu</text>
+    <text x="150" y="213" class="val-text" fill="#64748b" font-size="10px">&lt;1% thể tích</text>
+
+    <!-- RBC Pointer -->
+    <path d="M 105,250 L 140,250" stroke="#94a3b8" stroke-width="1.5" />
+    <circle cx="105" cy="250" r="3" fill="#b91c1c" />
+    <text x="150" y="247" class="label">Tế bào máu (Hematocrit)</text>
+    <text x="150" y="262" class="val-text" fill="#b91c1c">45% thể tích máu</text>
+    <text x="150" y="277" class="desc-text">Hồng cầu chiếm &gt;99% lượng tế bào</text>
+  </g>
+
+  <!-- RIGHT SECTION: PROTEIN ELECTROPHORESIS CURVE (1/2 WIDTH) -->
+  <g transform="translate(380, 80)">
+    <text x="20" y="20" class="section-title">II. Điện di Protein Huyết tương (SPEP)</text>
+    
+    <!-- Electrophoresis Plot Area -->
+    <!-- Grid/Axes -->
+    <line x1="40" y1="280" x2="380" y2="280" stroke="#cbd5e1" stroke-width="1.5" />
+    <line x1="40" y1="60" x2="40" y2="280" stroke="#cbd5e1" stroke-width="1.5" />
+    <text x="380" y="295" class="axis-label" text-anchor="end">Chiều di chuyển điện di (+ &gt; -)</text>
+    <text x="35" y="55" class="axis-label" text-anchor="end" transform="rotate(-90 35 55)">Nồng độ Protein</text>
+
+    <!-- Area shading under SPEP curves -->
+    <!-- 1. Albumin (Big Peak) -->
+    <path d="M 40,280 L 40,280 C 45,280 50,280 55,240 C 65,160 75,70 85,70 C 95,70 105,160 115,240 C 120,280 125,280 130,280 Z" fill="#3b82f6" fill-opacity="0.15" />
+    <!-- 2. Alpha-1 -->
+    <path d="M 130,280 L 130,280 C 135,280 140,265 145,250 C 150,235 155,235 160,250 C 165,265 170,280 175,280 Z" fill="#8b5cf6" fill-opacity="0.15" />
+    <!-- 3. Alpha-2 -->
+    <path d="M 175,280 L 175,280 C 180,280 185,260 190,230 C 195,200 200,200 205,230 C 210,260 215,280 220,280 Z" fill="#10b981" fill-opacity="0.15" />
+    <!-- 4. Beta -->
+    <path d="M 220,280 L 220,280 C 225,280 230,250 235,225 C 242,190 250,190 258,225 C 263,250 268,280 273,280 Z" fill="#f43f5e" fill-opacity="0.15" />
+    <!-- 5. Gamma (Broad Peak) -->
+    <path d="M 273,280 L 273,280 C 285,280 295,240 310,210 C 325,180 340,180 355,210 C 370,240 380,280 380,280 Z" fill="#eab308" fill-opacity="0.15" />
+
+    <!-- SPEP Curve Line -->
+    <path d="M 40,280 
+             C 55,280 65,160 85,70 
+             C 105,160 115,280 130,280 
+             C 140,280 145,235 160,250 
+             C 170,265 175,280 175,280
+             C 185,280 190,200 205,230
+             C 215,260 220,280 220,280
+             C 230,280 238,190 258,225
+             C 268,250 273,280 273,280
+             C 295,280 310,180 332,190
+             C 355,200 370,280 380,280" 
+          fill="none" stroke="#1e293b" stroke-width="2.5" />
+
+    <!-- Labels for peaks -->
+    <!-- Albumin -->
+    <text x="85" y="60" class="label" font-size="11px" text-anchor="middle">Albumin</text>
+    <text x="85" y="73" class="val-text" font-size="10px" text-anchor="middle">54-60%</text>
+    
+    <!-- Alpha-1 -->
+    <text x="153" y="220" class="label" font-size="10px" text-anchor="middle">α₁</text>
+    <text x="153" y="230" class="val-text" font-size="9px" text-anchor="middle">~4%</text>
+
+    <!-- Alpha-2 -->
+    <text x="202" y="185" class="label" font-size="10px" text-anchor="middle">α₂</text>
+    <text x="202" y="195" class="val-text" font-size="9px" text-anchor="middle">~8%</text>
+
+    <!-- Beta -->
+    <text x="249" y="175" class="label" font-size="10px" text-anchor="middle">β</text>
+    <text x="249" y="185" class="val-text" font-size="9px" text-anchor="middle">~12%</text>
+
+    <!-- Gamma -->
+    <text x="332" y="165" class="label" font-size="11px" text-anchor="middle">γ (Globulin)</text>
+    <text x="332" y="178" class="val-text" font-size="10px" text-anchor="middle">~16%</text>
+  </g>
+</svg>

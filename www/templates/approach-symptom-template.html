@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Trang mẫu tiếp cận triệu chứng chuẩn CliniPortal theo sơ đồ 7 bước">
+  <title>Symptom Approach Template – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core CliniPortal -->
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/components/header.css">
+  <link rel="stylesheet" href="../css/components/sidebar.css">
+  <link rel="stylesheet" href="../css/components/footer.css">
+
+  <!-- CSS Layout tiếp cận triệu chứng -->
+  <link rel="stylesheet" href="../css/components/approach-symptom.css">
+</head>
+
+<body>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder" data-header-path="../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../pages/Tiếp cận/tiep-can.html" class="nav-item active" title="Tiếp cận lâm sàng">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+        </ul>
+        
+        <!-- Mục lục tự động (TOC) sẽ được JS tự động chèn vào đây -->
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="main-wrapper">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="../pages/Tiếp cận/tiep-can.html" class="breadcrumb-link">Tiếp cận</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Mẫu Tiếp cận Triệu chứng</li>
+        </ol>
+      </nav>
+
+      <!-- HERO BANNER -->
+      <section class="hero-dashboard">
+        <div class="hero-intro">
+          <h1>🌡️ TIẾP CẬN BỆNH NHÂN [TRIỆU CHỨNG]</h1>
+          <p>Mô tả ngắn gọn về triệu chứng học, dịch tễ học và định hướng lâm sàng sơ bộ hỗ trợ quá trình chẩn đoán và phân loại bệnh nhân tại giường.</p>
+        </div>
+      </section>
+
+      <!-- SYMPTOM GRID LAYOUT (BƯỚC 1 -> 7) -->
+      <div class="symptom-grid">
+        
+        <!-- BƯỚC 1: 50% width (border-danger thể hiện red flags/cấp cứu) -->
+        <div class="symptom-step-card border-danger symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-danger">Bước 1</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-exclamation-triangle"></i> Loại trừ các Dấu hiệu Cờ đỏ (Red Flags)</h3>
+          <div class="step-card-body">
+            <p>Đánh giá ngay lập tức các dấu hiệu đe dọa tính mạng hoặc chỉ định cấp cứu khẩn cấp:</p>
+            <ul>
+              <li><strong>Huyết động:</strong> Sốc, huyết áp tụt, mạch nhanh nhỏ.</li>
+              <li><strong>Hô hấp:</strong> Suy hô hấp, thở co kéo, SpO2 &lt; 90%.</li>
+              <li><strong>Tri giác:</strong> Hôn mê, lơ mơ, co giật cấp tính.</li>
+            </ul>
+            <div class="step-alert-box">
+              <i class="fas fa-ambulance"></i>
+              <span><strong>Xử trí cấp cứu:</strong> Nếu có bất kỳ dấu hiệu đỏ nào, kích hoạt quy trình cấp cứu, hỗ trợ ABC ngay lập tức và hội chẩn chuyên khoa.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 2: 50% width -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 2</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-history"></i> Khai thác Tiền sử & Bệnh sử</h3>
+          <div class="step-card-body">
+            <p>Thu thập các đặc điểm triệu chứng để khoanh vùng chẩn đoán nguyên nhân:</p>
+            <ul>
+              <li><strong>Thời gian khởi phát:</strong> Cấp tính, bán cấp hay kéo dài mãn tính.</li>
+              <li><strong>Hoàn cảnh xuất hiện:</strong> Thay đổi thời tiết, sau chấn thương, sau dùng thuốc.</li>
+              <li><strong>Tính chất chi tiết:</strong> Cường độ, vị trí lan, yếu tố tăng/giảm triệu chứng.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 3: 100% width (Hàng ngang đầy đủ) -->
+        <div class="symptom-step-card border-warning symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-warning">Bước 3</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-user-md"></i> Khám Lâm sàng Hệ thống</h3>
+          <div class="step-card-body">
+            <p>Thực hiện thăm khám thực thể toàn diện tập trung vào hệ thống cơ quan nghi ngờ:</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 0.5rem;">
+              <div>
+                <h5>🔍 Khám Toàn thân</h5>
+                <ul>
+                  <li>Đo dấu hiệu sinh tồn: Mạch, Nhiệt độ, Huyết áp, Nhịp thở.</li>
+                  <li>Đánh giá tình trạng da niêm mạc (nhợt nhạt, vàng da, xuất huyết).</li>
+                </ul>
+              </div>
+              <div>
+                <h5>🫁 Khám Cơ quan</h5>
+                <ul>
+                  <li>Nghe tim, phổi tìm tiếng bất thường.</li>
+                  <li>Khám bụng (chướng bụng, phản ứng thành bụng, gan lách to).</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 4: 50% width -->
+        <div class="symptom-step-card border-info symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bước 4</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-vials"></i> Chỉ định Cận lâm sàng ban đầu</h3>
+          <div class="step-card-body">
+            <p>Các xét nghiệm và thăm dò cơ bản phục vụ định hướng sơ bộ:</p>
+            <ul>
+              <li><strong>Xét nghiệm máu:</strong> Công thức máu (CTM), CRP, Sinh hóa cơ bản.</li>
+              <li><strong>Xét nghiệm nước tiểu:</strong> Tổng phân tích nước tiểu (TPTNT).</li>
+              <li><strong>Hình ảnh học:</strong> X-quang ngực thẳng, siêu âm bụng tổng quát.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 5: 50% width -->
+        <div class="symptom-step-card border-success symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-success">Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-filter"></i> Phân nhóm & Biện luận Chẩn đoán</h3>
+          <div class="step-card-body">
+            <p>Tổng hợp thông tin lâm sàng và cận lâm sàng để thiết lập chẩn đoán:</p>
+            <ul>
+              <li><strong>Chẩn đoán xác định:</strong> Dựa trên tiêu chuẩn vàng chẩn đoán.</li>
+              <li><strong>Chẩn đoán phân biệt:</strong> Loại trừ các bệnh lý có triệu chứng tương đồng.</li>
+              <li><strong>Đánh giá mức độ nặng:</strong> Phân độ nhẹ, trung bình, nặng theo thang điểm chuẩn.</li>
+            </ul>
+
+            <!-- Ví dụ Hộp trích dẫn hình ảnh / lưu đồ chẩn đoán (nếu có từ tài liệu nguồn) -->
+            <div class="image-placeholder-card">
+              <div class="image-title">
+                <span>🖼️</span> Sơ đồ 1: Thuật toán chẩn đoán phân biệt và phân nhóm bệnh lý
+              </div>
+              <div class="image-drop-area">
+                <div class="image-drop-text">
+                  <!-- Thay path hình ảnh thật tại src -->
+                  <img src="../../images/TC_Symptom_Hinh1.png" alt="Sơ đồ chẩn đoán"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <!-- Fallback nét đứt khi chưa có file ảnh vật lý trên đĩa -->
+                  <div class="fallback-placeholder" style="display: none;">
+                    <i class="fa-regular fa-image"></i>
+                    <p>Hình ảnh/Lưu đồ minh họa đang được cập nhật</p>
+                  </div>
+                </div>
+              </div>
+              <div class="image-description">
+                <strong>Mô tả sơ đồ:</strong> Phân nhánh chẩn đoán từ triệu chứng lâm sàng đến các cận lâm sàng xác định nguyên nhân.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 6: 50% width -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 6</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-capsules"></i> Nguyên tắc Điều trị ban đầu</h3>
+          <div class="step-card-body">
+            <p>Phác đồ can thiệp và xử trí tối khẩn cấp trong khi chờ nguyên nhân rõ ràng:</p>
+            <ul>
+              <li><strong>Hạ sốt/Giảm đau:</strong> Paracetamol 10-15 mg/kg truyền tĩnh mạch hoặc uống.</li>
+              <li><strong>Bồi phụ dịch và điện giải:</strong> Bù nước bằng dung dịch đẳng trương nếu mất dịch.</li>
+              <li><strong>Tránh tự ý dùng kháng sinh:</strong> Trừ khi nghi ngờ nhiễm khuẩn nặng.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 7: 50% width -->
+        <div class="symptom-step-card border-primary symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 7</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-stethoscope"></i> Kế hoạch Theo dõi & Tái khám</h3>
+          <div class="step-card-body">
+            <p>Tiêu chuẩn theo dõi động học lâm sàng của bệnh nhân:</p>
+            <ul>
+              <li><strong>Đo sinh hiệu:</strong> Mỗi 4-6 giờ tùy mức độ nặng lâm sàng.</li>
+              <li><strong>Dấu hiệu cảnh báo muộn:</strong> Hướng dẫn bệnh nhân tự theo dõi tại nhà.</li>
+              <li><strong>Hẹn tái khám:</strong> Sau 24-48 giờ hoặc ngay khi xuất hiện dấu hiệu bất thường.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- TAKE HOME MESSAGES (100% width) -->
+      <section class="take-home-card">
+        <div class="take-home-title">
+          <i class="fas fa-lightbulb"></i> Thông điệp Cốt lõi (Take-home Messages)
+        </div>
+        <div class="take-home-body">
+          <ul>
+            <li>Luôn ưu tiên đánh giá sinh hiệu và loại trừ cờ đỏ đầu tiên trước khi đi sâu vào tìm nguyên nhân.</li>
+            <li>Theo dõi sát động học của triệu chứng là chìa khóa tránh bỏ sót các biến chứng nguy hiểm.</li>
+            <li>Tư vấn và giáo dục người bệnh về các dấu hiệu trở nặng để họ quay lại cơ sở y tế kịp thời.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TÀI LIỆU THAM KHẢO (100% width) -->
+      <section class="references-card">
+        <div class="references-title">
+          <i class="fas fa-book"></i> Tài liệu Tham khảo
+        </div>
+        <ol class="references-list">
+          <li>Bộ Y tế Việt Nam. <em>Hướng dẫn chẩn đoán và điều trị bệnh nội khoa</em>. Nhà xuất bản Y học, 2023.</li>
+          <li>Harrison's Principles of Internal Medicine, 21st Edition. McGraw-Hill Education, 2022.</li>
+        </ol>
+      </section>
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <div id="footer-placeholder" data-footer-path="../components/footer.html"></div>
+
+  <!-- JS Core -->
+  <script src="../js/main.js" defer></script>
+  <script src="../components/header.js" defer></script>
+  <script src="../components/footer.js" defer></script>
+
+  <!-- JS Layout tiếp cận triệu chứng -->
+  <script src="../js/approach-symptom.js" defer></script>
+</body>
+
+</html>

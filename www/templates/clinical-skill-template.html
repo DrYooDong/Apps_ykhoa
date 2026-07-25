@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Trang hướng dẫn quy trình và bảng kiểm thực hành kỹ năng lâm sàng mẫu chuẩn CliniPortal">
+    <title>Clinical Skill Template – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components/header.css">
+    <link rel="stylesheet" href="../css/components/sidebar.css">
+    <link rel="stylesheet" href="../css/components/footer.css">
+
+    <!-- CSS riêng cho Kỹ năng Lâm sàng -->
+    <link rel="stylesheet" href="../css/components/clinical-skill.css">
+
+    <!-- Script điều hướng hệ thống -->
+    <script src="../components/header.js" defer></script>
+    <script src="../components/footer.js" defer></script>
+    <script src="../js/main.js" defer></script>
+    <!-- Script xử lý chuyển Tab & checklist -->
+    <script src="../js/clinical-skill-tabs.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../pages/Kỹ năng/ky-nang.html" class="nav-item active" title="Kỹ năng lâm sàng">
+                            <span class="nav-icon">🩺</span>
+                            <span class="nav-text">Kỹ năng lâm sàng</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <main class="main-wrapper">
+            <!-- BREADCRUMB -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container">
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item">
+                        <a href="../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="../pages/Kỹ năng/ky-nang.html" class="breadcrumb-link">Kỹ năng lâm sàng</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Kỹ năng lâm sàng mẫu</li>
+                </ol>
+            </nav>
+
+            <!-- HERO SECTION -->
+            <section class="hero" style="background: var(--gradient-accent); color: white; padding: 2rem; border-radius: var(--radius-lg); margin-bottom: 1.5rem;">
+                <h1 style="margin: 0; font-size: var(--text-xl); font-weight: 800;">QUY TRÌNH HƯỚNG DẪN LÂM SÀNG MẪU</h1>
+                <p style="margin: 0.5rem 0 1rem; opacity: 0.9;">Tài liệu hướng dẫn tiếp cận từng bước, thực hành thăm khám lâm sàng chuẩn y khoa và bảng kiểm OSCE tương tác.</p>
+                <div class="quick" style="display: flex; flex-wrap: wrap; gap: 1rem; font-size: var(--text-xs); margin-top: 1rem;">
+                    <div class="qi" style="background: rgba(255,255,255,0.15); padding: 0.5rem 1rem; border-radius: var(--radius-md);">
+                        <b>Tư thế bệnh nhân:</b> Nằm ngửa thoải mái, bộc lộ vùng khám.
+                    </div>
+                    <div class="qi" style="background: rgba(255,255,255,0.15); padding: 0.5rem 1rem; border-radius: var(--radius-md);">
+                        <b>Dụng cụ:</b> Ống nghe, đèn soi phản xạ, thước dây.
+                    </div>
+                </div>
+            </section>
+
+            <!-- TABS SWITCHER -->
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="prep">Chuẩn bị</button>
+                <button class="tab-btn" data-tab="steps">Tiến hành Khám</button>
+                <button class="tab-btn" data-tab="osce">Bảng kiểm OSCE</button>
+            </div>
+
+            <!-- TAB 1: PREPARATION -->
+            <section class="tab active" id="prep">
+                <div class="card" style="background-color: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-sm);">
+                    <h2>1. Chuẩn bị Người bệnh & Bác sĩ</h2>
+                    <ul>
+                        <li>Giải thích kỹ cho bệnh nhân về mục đích cuộc thăm khám để nhận được sự đồng thuận và hợp tác.</li>
+                        <li>Đảm bảo phòng khám ấm áp, đủ ánh sáng, kín đáo và tôn trọng sự riêng tư của bệnh nhân.</li>
+                        <li>Vệ sinh tay thường quy theo quy chuẩn kiểm soát nhiễm khuẩn của Bộ Y tế.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- TAB 2: EXAMINATION STEPS -->
+            <section class="tab" id="steps">
+                <div class="card" style="background-color: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-sm); margin-bottom: 1rem;">
+                    <h2>Quy trình Thăm khám (Nhìn - Sờ - Gõ - Nghe)</h2>
+                    <p>Thực hiện khám theo thứ tự chuẩn hóa để tránh bỏ sót các triệu chứng thực thể quan trọng.</p>
+                </div>
+                
+                <div class="card" style="background-color: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-sm);">
+                    <h3>2.1 Nhìn (Inspection)</h3>
+                    <p>Quan sát hình dáng chung, sự cân đối, tìm sẹo mổ cũ, tuần hoàn bàng hệ, hay các biến dạng lồng ngực.</p>
+                    
+                    <h3>2.2 Sờ (Palpation)</h3>
+                    <p>Đánh giá nhiệt độ da, độ co giãn cơ thành bụng/ngực, xác định vị trí mỏm tim hoặc các điểm đau chói.</p>
+                </div>
+            </section>
+
+            <!-- TAB 3: OSCE CHECKLIST -->
+            <section class="tab" id="osce">
+                <div class="card" style="background-color: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-sm);">
+                    <h2>Bảng kiểm Kỹ năng Thực hành OSCE</h2>
+                    <p style="color: var(--color-text-muted); font-size: var(--text-sm); margin-bottom: 1rem;">
+                        Nhấn vào các dòng bên dưới để đánh dấu hoàn thành nhiệm vụ trong quá trình tập luyện hoặc chấm thi thử.
+                    </p>
+                    
+                    <ul class="check" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">
+                        <li style="border: 1px solid var(--color-border); padding: 0.75rem 1rem; border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center; gap: 0.75rem; transition: background var(--tr);">
+                            <input type="checkbox" style="pointer-events: none;">
+                            <span class="checkbox-text">Chào hỏi bệnh nhân, tự giới thiệu bản thân và giải thích quy trình khám (+1đ)</span>
+                        </li>
+                        <li style="border: 1px solid var(--color-border); padding: 0.75rem 1rem; border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center; gap: 0.75rem; transition: background var(--tr);">
+                            <input type="checkbox" style="pointer-events: none;">
+                            <span class="checkbox-text">Rửa tay sạch trước khi tiếp xúc bệnh nhân (+1đ)</span>
+                        </li>
+                        <li style="border: 1px solid var(--color-border); padding: 0.75rem 1rem; border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center; gap: 0.75rem; transition: background var(--tr);">
+                            <input type="checkbox" style="pointer-events: none;">
+                            <span class="checkbox-text">Bộc lộ vùng ngực/bụng bệnh nhân đúng cách và đặt tư thế phù hợp (+1đ)</span>
+                        </li>
+                        <li style="border: 1px solid var(--color-border); padding: 0.75rem 1rem; border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center; gap: 0.75rem; transition: background var(--tr);">
+                            <input type="checkbox" style="pointer-events: none;">
+                            <span class="checkbox-text">Tiến hành kỹ thuật khám chính xác theo thứ tự chuyên khoa (+5đ)</span>
+                        </li>
+                        <li style="border: 1px solid var(--color-border); padding: 0.75rem 1rem; border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center; gap: 0.75rem; transition: background var(--tr);">
+                            <input type="checkbox" style="pointer-events: none;">
+                            <span class="checkbox-text">Thông báo hoàn thành cuộc khám, cảm ơn bệnh nhân và rửa tay (+2đ)</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder" data-footer-path="../components/footer.html"></div>
+
+    <!-- Scripts dùng chung -->
+    <script src="../js/sidebar.js"></script>
+</body>
+
+</html>

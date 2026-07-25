@@ -1,0 +1,776 @@
+/* ============================================================
+   PREMIUM CLINICAL READING LAYOUT DESIGN SYSTEM (paraclinical.css)
+   ============================================================ */
+
+/* Import Outfit font for titles if not already imported */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+
+/* Main Container Override */
+.visual-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2.5rem;
+  background-color: var(--color-background);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Glassmorphism Header */
+.para-header {
+  position: relative;
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.04) 0%, rgba(6, 182, 212, 0.04) 50%, rgba(13, 148, 136, 0.02) 100%);
+  border: 1px solid rgba(30, 58, 138, 0.08);
+  border-radius: 24px;
+  padding: 3rem 2.5rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.03), inset 0 1px 1px 0 rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+}
+
+[data-theme="dark"] .para-header {
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.2) 0%, rgba(6, 182, 212, 0.15) 50%, rgba(13, 148, 136, 0.1) 100%);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.3), inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Glowing accent lines inside header */
+.para-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--color-primary) 0%, #06b6d4 50%, #0d9488 100%);
+}
+
+.para-header::after {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, transparent 70%);
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+.para-header h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(to right, var(--color-primary), #0d9488);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.85rem;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+[data-theme="dark"] .para-header h1 {
+  background: linear-gradient(to right, #60a5fa, #2dd4bf);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.para-header p {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  max-width: 850px;
+}
+
+/* Premium Badges */
+.para-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+  border: 1px solid transparent;
+}
+
+.para-badge.blue {
+  background: rgba(37, 99, 235, 0.05);
+  color: #2563eb;
+  border-color: rgba(37, 99, 235, 0.1);
+}
+.para-badge.teal {
+  background: rgba(13, 148, 136, 0.05);
+  color: #0d9488;
+  border-color: rgba(13, 148, 136, 0.1);
+}
+.para-badge.purple {
+  background: rgba(147, 51, 234, 0.05);
+  color: #9333ea;
+  border-color: rgba(147, 51, 234, 0.1);
+}
+.para-badge.orange {
+  background: rgba(217, 119, 6, 0.05);
+  color: #d97706;
+  border-color: rgba(217, 119, 6, 0.1);
+}
+
+[data-theme="dark"] .para-badge.blue { background: rgba(96, 165, 250, 0.1); color: #60a5fa; border-color: rgba(96, 165, 250, 0.2); }
+[data-theme="dark"] .para-badge.teal { background: rgba(45, 212, 191, 0.1); color: #2dd4bf; border-color: rgba(45, 212, 191, 0.2); }
+[data-theme="dark"] .para-badge.purple { background: rgba(192, 132, 252, 0.1); color: #c084fc; border-color: rgba(192, 132, 252, 0.2); }
+[data-theme="dark"] .para-badge.orange { background: rgba(251, 191, 36, 0.1); color: #fbbf24; border-color: rgba(251, 191, 36, 0.2); }
+
+/* Premium Lead Intro */
+.para-lead {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--color-text);
+  margin-bottom: 3.5rem;
+  padding: 1.5rem 2rem;
+  background-color: var(--color-surface);
+  border-radius: 16px;
+  border: 1px dashed var(--color-divider);
+  position: relative;
+}
+
+/* Sections */
+.para-section {
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--color-divider);
+  position: relative;
+}
+
+.para-section h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.para-section::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 80px;
+  height: 2px;
+  background: var(--color-primary);
+}
+
+/* Custom layout steps list (Timeline effect) */
+.para-step-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  position: relative;
+}
+
+.para-step-list::before {
+  content: '';
+  position: absolute;
+  top: 1.5rem;
+  bottom: 1.5rem;
+  left: 1.75rem;
+  width: 2px;
+  background: linear-gradient(to bottom, rgba(30, 64, 175, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
+  pointer-events: none;
+}
+
+.para-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  border-radius: 20px;
+  padding: 2.25rem 2.25rem 2.25rem 4.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+/* Timeline Glowing Node */
+.para-card::before {
+  content: '';
+  position: absolute;
+  top: 2.5rem;
+  left: 1.35rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--color-primary);
+  border: 3px solid var(--color-surface);
+  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.2);
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.para-card:hover {
+  transform: translateX(4px);
+  border-color: rgba(30, 64, 175, 0.3);
+  box-shadow: 0 12px 24px rgba(30, 64, 175, 0.05);
+}
+
+.para-card:hover::before {
+  background: #06b6d4;
+  box-shadow: 0 0 0 5px rgba(6, 182, 212, 0.3);
+}
+
+.para-card-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 1.25rem;
+  line-height: 1.3;
+}
+
+/* Grids inside cards */
+.para-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin: 1.75rem 0;
+}
+
+@media (min-width: 768px) {
+  .para-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.para-grid-card {
+  background-color: var(--color-background);
+  border: 1px solid var(--color-divider);
+  border-radius: 14px;
+  padding: 1.5rem;
+  transition: border-color 0.25s ease;
+}
+
+.para-grid-card:hover {
+  border-color: rgba(6, 182, 212, 0.4);
+}
+
+.para-grid-card-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--color-text);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Callout block (Warning / Critical Flag) */
+.para-callout {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.01) 0%, rgba(239, 68, 68, 0.03) 100%);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+  border-left: 4px solid #ef4444;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.02);
+}
+
+[data-theme="dark"] .para-callout {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.05) 0%, rgba(239, 68, 68, 0.08) 100%);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.para-callout h4 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ef4444;
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Tables styling */
+.para-table-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--color-divider);
+  border-radius: 16px;
+  margin: 2rem 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+}
+
+.para-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.para-table th {
+  background-color: rgba(30, 64, 175, 0.03);
+  color: var(--color-primary);
+  font-weight: 700;
+  text-align: left;
+  padding: 1rem 1.25rem;
+  border-bottom: 2px solid var(--color-divider);
+  font-family: 'Outfit', sans-serif;
+}
+
+[data-theme="dark"] .para-table th {
+  background-color: rgba(30, 64, 175, 0.15);
+}
+
+.para-table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--color-divider);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.para-table tr:last-child td {
+  border-bottom: none;
+}
+
+.para-table tr:hover td {
+  background-color: rgba(30, 64, 175, 0.015);
+}
+
+[data-theme="dark"] .para-table tr:hover td {
+  background-color: rgba(255, 255, 255, 0.015);
+}
+
+/* Property Lists */
+.para-property-list {
+  background-color: var(--color-surface);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border: 1px solid var(--color-divider);
+  list-style: none !important;
+  padding-left: 0 !important;
+}
+
+.para-property-list li {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0.5rem;
+  border-bottom: 1px solid var(--color-divider);
+  gap: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.para-property-list li:hover {
+  background-color: rgba(30, 64, 175, 0.015);
+}
+
+.para-property-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.para-property-list li:first-child {
+  padding-top: 0;
+}
+
+.para-property-name {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  color: var(--color-primary);
+  font-size: 1rem;
+}
+
+.para-property-desc {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  .para-property-list li {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 1rem 1rem;
+  }
+
+  .para-property-name {
+    width: 250px;
+    flex-shrink: 0;
+  }
+
+  .para-property-desc {
+    flex: 1;
+  }
+}
+
+/* Custom Collapsible Block details */
+.para-details {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  border-radius: 14px;
+  margin: 2rem 0;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s ease;
+}
+
+.para-details[open] {
+  border-color: var(--color-primary);
+  box-shadow: 0 10px 15px -3px rgba(30, 64, 175, 0.05);
+}
+
+.para-details summary {
+  padding: 1.25rem 1.5rem;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--color-text);
+  cursor: pointer;
+  background-color: rgba(30, 64, 175, 0.02);
+  user-select: none;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.25s ease;
+}
+
+.para-details summary:hover {
+  background-color: rgba(30, 64, 175, 0.05);
+}
+
+.para-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.para-details summary::after {
+  content: '▼';
+  font-size: 0.8rem;
+  transition: transform 0.25s ease;
+  color: var(--color-text-secondary);
+}
+
+.para-details[open] summary::after {
+  transform: rotate(180deg);
+  color: var(--color-primary);
+}
+
+.para-details-content {
+  padding: 1.5rem;
+  border-top: 1px solid var(--color-divider);
+  background-color: var(--color-surface);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  line-height: 1.65;
+}
+
+/* Highlight tags inside texts */
+.term-hl {
+  color: #2563eb;
+  background-color: rgba(37, 99, 235, 0.06);
+  padding: 0.15em 0.35em;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.term-hl-secondary {
+  color: #0d9488;
+  background-color: rgba(13, 148, 136, 0.06);
+  padding: 0.15em 0.35em;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .term-hl {
+  color: #60a5fa;
+  background-color: rgba(96, 165, 250, 0.15);
+}
+
+[data-theme="dark"] .term-hl-secondary {
+  color: #2dd4bf;
+  background-color: rgba(45, 212, 191, 0.15);
+}
+
+/* ============================================================
+   FLOATING GLASS TABLE OF CONTENTS (TOC) WIDGET STYLING
+   ============================================================ */
+
+.visual-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  position: relative;
+}
+
+@media (min-width: 1200px) {
+  .visual-container.has-toc {
+    max-width: 1360px !important;
+  }
+
+  .visual-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .visual-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* Sticky floating glass TOC Sidebar */
+  .toc-sidebar {
+    position: sticky !important;
+    top: calc(var(--header-height) + 2rem) !important;
+    max-height: calc(100vh - var(--header-height) - 4rem) !important;
+    overflow-y: auto !important;
+    padding: 1.75rem !important;
+    background: rgba(255, 255, 255, 0.4) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.04) !important;
+    z-index: 10 !important;
+    transition: all 0.3s ease !important;
+  }
+
+  [data-theme="dark"] .toc-sidebar {
+    background: rgba(15, 23, 42, 0.4) !important;
+    border-color: rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.25) !important;
+  }
+
+  .toc-header {
+    border-bottom: 1px solid var(--color-divider) !important;
+    padding-bottom: 0.75rem !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .toc-title {
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    color: var(--color-primary) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+  }
+
+  .toc-list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+
+  .toc-link {
+    display: block !important;
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.875rem !important;
+    color: var(--color-text-secondary) !important;
+    text-decoration: none !important;
+    border-radius: 8px !important;
+    border-left: 2px solid transparent !important;
+    transition: all 0.2s ease !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .toc-link:hover {
+    color: var(--color-primary) !important;
+    background-color: rgba(30, 64, 175, 0.03) !important;
+  }
+
+  [data-theme="dark"] .toc-link:hover {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+  }
+
+  .toc-item-h3 {
+    padding-left: 1rem !important;
+  }
+
+  .toc-item-h3 .toc-link {
+    font-size: 0.8rem !important;
+  }
+
+  /* Active Scrollspy state */
+  .toc-link.active {
+    color: var(--color-primary) !important;
+    font-weight: 600 !important;
+    background-color: rgba(30, 64, 175, 0.05) !important;
+    border-left-color: var(--color-primary) !important;
+  }
+
+  [data-theme="dark"] .toc-link.active {
+    background-color: rgba(96, 165, 250, 0.1) !important;
+  }
+}
+
+/* ============================================================
+   SHARED TYPOGRAPHY & LAYOUT EXTENSIONS FOR PARACLINICAL PAGES
+   ============================================================ */
+
+/* Breadcrumb override alignment with main layout */
+.main-wrapper > .breadcrumb-container {
+  padding: 1rem 2.5rem;
+  border-bottom: 1px solid var(--color-divider);
+  margin-bottom: 1.5rem;
+}
+
+/* Generic typography inside paraclinical readings */
+.para-content p {
+  font-size: var(--text-base);
+  line-height: 1.65;
+  color: var(--color-text);
+  margin-bottom: 1.25rem;
+}
+
+.para-content p:last-child {
+  margin-bottom: 0;
+}
+
+.para-content strong {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+/* Standard lists styling */
+.para-content ul,
+.para-card ul,
+.para-grid-card ul,
+.para-callout ul {
+  margin: 0.75rem 0 1.25rem 0;
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+.para-content ol,
+.para-card ol,
+.para-grid-card ol {
+  margin: 0.75rem 0 1.25rem 0;
+  padding-left: 1.5rem;
+  list-style-type: decimal;
+}
+
+.para-content li,
+.para-card li,
+.para-grid-card li,
+.para-callout li {
+  margin-bottom: 0.5rem;
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.para-content li:last-child,
+.para-card li:last-child,
+.para-grid-card li:last-child,
+.para-callout li:last-child {
+  margin-bottom: 0;
+}
+
+/* Muted notes / helper text */
+.para-text-muted {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+/* Muted sub-lists for technical footnotes */
+.para-list-muted {
+  margin: 0.5rem 0 0 0 !important;
+  padding-left: 1.25rem !important;
+}
+
+.para-list-muted li {
+  font-size: var(--text-xs) !important;
+  color: var(--color-text-muted) !important;
+  line-height: 1.5 !important;
+}
+
+/* Premium Information & Formula Box */
+.para-formula-box {
+  background-color: var(--color-surface-offset);
+  border: 1px solid var(--color-divider);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+  font-size: var(--text-sm);
+  line-height: 1.65;
+  color: var(--color-text);
+}
+
+.para-formula-box strong {
+  color: var(--color-primary);
+}
+
+.para-formula-box code {
+  display: inline-block;
+  margin: 0.5rem 0;
+  padding: 0.35rem 0.65rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  border-radius: 6px;
+  font-family: Consolas, Monaco, monospace;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 0.95em;
+}
+
+[data-theme="dark"] .para-formula-box code {
+  background-color: var(--color-bg);
+}
+
+/* Custom headings inside cards */
+.para-card h3,
+.para-content h3 {
+  font-family: var(--font-display);
+  color: var(--color-primary);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.para-card h3:first-child {
+  margin-top: 0;
+}
+
+/* Content Section Headers (Heading 2) */
+.para-content h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-top: 3.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--color-divider);
+  position: relative;
+}
+
+.para-content h2::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 80px;
+  height: 2px;
+  background: var(--color-primary);
+}
+
+

@@ -1,0 +1,241 @@
+/* ════════════════════════════════════════════════════════════════
+   CLINIPORTAL - MOA THEATER, SCENARIO SIMULATOR & PK SIMULATOR CSS
+   Styles cho: Animated SVG Mechanism of Action, Interactive Case
+   Scenario Engine & HTML5 Canvas PK Curve Simulator
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── 1. MOA THEATER ANIMATED SVG STYLES ── */
+.moa-theater-container {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--radius-xl, 16px);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="dark"] .moa-theater-container {
+  background: var(--color-surface, #101828);
+  border-color: var(--color-border, #263a57);
+}
+
+.moa-stage-wrapper {
+  background: linear-gradient(135deg, var(--color-surface-2, #f8fafc), var(--color-surface-offset, #f1f5f9));
+  border: 1.5px solid var(--color-divider, #e2e8f0);
+  border-radius: var(--radius-lg, 12px);
+  padding: 1.5rem;
+  margin: 1rem 0;
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .moa-stage-wrapper {
+  background: linear-gradient(135deg, #101828, #162032);
+  border-color: #263a57;
+}
+
+.moa-svg-canvas {
+  width: 100%;
+  max-width: 540px;
+  height: 180px;
+}
+
+/* MOA SVG Keyframe Animations */
+@keyframes moaPulseRing {
+  0% { r: 12px; opacity: 0.8; stroke-width: 2px; }
+  100% { r: 28px; opacity: 0; stroke-width: 1px; }
+}
+
+@keyframes moaFlowParticle {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(45px); opacity: 0.2; }
+}
+
+.moa-pulse-circle {
+  animation: moaPulseRing 2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.moa-flow-dot {
+  animation: moaFlowParticle 1.5s infinite linear;
+}
+
+.moa-stepper-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.moa-step-btn {
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius-md, 8px);
+  border: 1px solid var(--color-divider, #e2e8f0);
+  background: var(--color-surface, #ffffff);
+  color: var(--color-text, #0f172a);
+  font-size: var(--text-xs, 0.78rem);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.moa-step-btn.active {
+  background: var(--color-primary, #0284c7);
+  color: #ffffff;
+  border-color: var(--color-primary, #0284c7);
+}
+
+
+/* ── 2. CLINICAL SCENARIO SIMULATOR STYLES ── */
+.scenario-card-container {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--radius-xl, 16px);
+  padding: 1.75rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="dark"] .scenario-card-container {
+  background: var(--color-surface, #101828);
+  border-color: var(--color-border, #263a57);
+}
+
+.patient-profile-box {
+  background: var(--color-surface-offset, #f1f5f9);
+  border-left: 5px solid var(--color-primary, #0284c7);
+  border-radius: var(--radius-md, 8px);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+[data-theme="dark"] .patient-profile-box {
+  background: rgba(22, 32, 50, 0.6);
+}
+
+.scenario-option-btn {
+  width: 100%;
+  text-align: left;
+  padding: 1rem 1.2rem;
+  border-radius: var(--radius-md, 10px);
+  border: 1.5px solid var(--color-divider, #e2e8f0);
+  background: var(--color-surface, #ffffff);
+  color: var(--color-text, #0f172a);
+  font-size: var(--text-xs, 0.85rem);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  line-height: 1.5;
+}
+
+.scenario-option-btn:hover {
+  border-color: var(--color-primary, #0284c7);
+  background: var(--color-primary-hl, #f0f9ff);
+  transform: translateX(4px);
+}
+
+[data-theme="dark"] .scenario-option-btn {
+  background: var(--color-surface-2, #162032);
+  border-color: #263a57;
+}
+
+.scenario-option-btn.opt-correct {
+  border-color: var(--color-success, #059669) !important;
+  background: rgba(5, 150, 105, 0.12) !important;
+  color: var(--color-success, #059669) !important;
+}
+
+.scenario-option-btn.opt-incorrect {
+  border-color: var(--color-rose, #e11d48) !important;
+  background: rgba(225, 29, 72, 0.12) !important;
+  color: var(--color-rose, #e11d48) !important;
+}
+
+
+/* ── 3. PK CURVE CANVAS SIMULATOR STYLES ── */
+.pk-canvas-wrapper {
+  background: var(--color-surface-2, #f8fafc);
+  border: 1.5px solid var(--color-border, #cbd5e1);
+  border-radius: var(--radius-lg, 12px);
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+[data-theme="dark"] .pk-canvas-wrapper {
+  background: #080e1a;
+  border-color: #263a57;
+}
+
+.pk-canvas {
+  width: 100%;
+  max-width: 720px;
+  height: 320px;
+  border-radius: 8px;
+}
+
+.pk-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.pk-stat-card {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-divider, #e2e8f0);
+  border-radius: var(--radius-md, 8px);
+  padding: 0.65rem 0.85rem;
+  text-align: center;
+}
+
+[data-theme="dark"] .pk-stat-card {
+  background: var(--color-surface-2, #162032);
+  border-color: #263a57;
+}
+
+.pk-stat-val {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-primary, #0284c7);
+}
+
+.pk-stat-lbl {
+  font-size: 0.7rem;
+  color: var(--color-text-muted, #64748b);
+  font-weight: 600;
+}
+
+
+/* ── 4. ADR BODYMAP RADAR STYLES ── */
+.bodymap-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.bodymap-svg-box {
+  flex: 0 0 220px;
+  text-align: center;
+}
+
+.bodymap-info-box {
+  flex: 1 1 300px;
+}
+
+.organ-path {
+  cursor: pointer;
+  transition: fill 0.2s ease, filter 0.2s ease;
+}
+
+.organ-path:hover {
+  filter: drop-shadow(0 0 6px var(--color-primary));
+}

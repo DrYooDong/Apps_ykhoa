@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bài 7: Hồi quy Tuyến tính Bayes trong Nghiên cứu Y học — CliniPortal">
+  <title>Bài 7: Hồi quy Bayes trong Y học — CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../css/components/toc.css">
+  <link rel="stylesheet" href="text-style.css">
+  <script src="../../../js/toc.js" defer></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #0369a1;
+      --accent-light: #e0f2fe;
+      --accent-mid: #0284c7;
+      --bg: #f0f9ff;
+      --surface: #ffffff;
+      --surface-2: #f8fafc;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --text-faint: #94a3b8;
+      --radius: 16px;
+      --tr: 260ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── TOPNAV ── */
+    .topnav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 1rem;
+      padding: 0 1.5rem; height: 54px;
+    }
+    .topnav-back {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      color: var(--accent); text-decoration: none;
+      font-size: 0.82rem; font-weight: 600;
+      padding: 0.35rem 0.75rem; border-radius: 8px;
+      transition: background var(--tr);
+    }
+    .topnav-back:hover { background: var(--accent-light); }
+    .topnav-divider { width: 1px; height: 20px; background: var(--border); }
+    .topnav-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700; font-size: 0.9rem; color: var(--text);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .topnav-pill {
+      padding: 0.2rem 0.65rem; border-radius: 20px;
+      background: var(--accent-light); color: var(--accent);
+      font-size: 0.7rem; font-weight: 700; margin-left: auto;
+    }
+
+    /* ── LAYOUT ── */
+    .main-container {
+      max-width: 800px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 2rem 1rem;
+      flex: 1;
+    }
+
+    /* ── LESSON HEADER ── */
+    .lesson-header {
+      margin-bottom: 2rem;
+    }
+    .lesson-meta {
+      display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;
+    }
+    .lesson-tag {
+      padding: 0.2rem 0.65rem; border-radius: 20px;
+      background: var(--accent-light); color: var(--accent);
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+    }
+    .lesson-readtime {
+      font-size: 0.78rem; color: var(--text-faint); display: flex; align-items: center; gap: 0.3rem;
+    }
+    .lesson-header h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.5rem, 1.2rem + 1vw, 2.1rem);
+      font-weight: 800; color: var(--text); line-height: 1.3; margin-bottom: 0.75rem;
+    }
+    .lesson-lead {
+      font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;
+    }
+
+    /* ── INTERACTIVE VISUALIZER ── */
+    .calc-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }
+    .calc-box h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.05rem; font-weight: 700; color: var(--accent);
+      margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;
+    }
+    .calc-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;
+    }
+    .input-group { display: flex; flex-direction: column; gap: 0.35rem; }
+    .input-group label { font-size: 0.8rem; font-weight: 600; color: var(--text); }
+    .input-group input {
+      padding: 0.5rem 0.75rem; border-radius: 8px; border: 1px solid var(--border);
+      font-size: 0.85rem; background: var(--surface-2); color: var(--text); outline: none;
+    }
+    .calc-btn {
+      padding: 0.6rem 1.2rem; border-radius: 10px; background: var(--accent);
+      color: #fff; border: none; font-weight: 700; font-size: 0.85rem;
+      cursor: pointer; transition: background var(--tr);
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      margin-top: 1rem; width: 100%;
+    }
+    .calc-btn:hover { background: var(--accent-mid); }
+
+    .calc-result {
+      margin-top: 1.25rem; padding: 1rem; border-radius: 12px;
+      background: var(--accent-light); border: 1px solid rgba(2, 132, 199, 0.2);
+      display: none;
+    }
+    .calc-result.show { display: block; animation: fadeIn 300ms ease; }
+
+    /* ── MARK READ BUTTON ── */
+    .mark-read-section {
+      margin-top: 3rem; padding: 1.5rem; border-radius: var(--radius);
+      background: var(--surface); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+    }
+    .mark-read-info strong { display: block; font-size: 0.95rem; color: var(--text); }
+    .mark-read-info span { font-size: 0.8rem; color: var(--text-muted); }
+    .mark-read-btn {
+      padding: 0.6rem 1.25rem; border-radius: 10px; font-size: 0.85rem; font-weight: 700;
+      cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all var(--tr);
+    }
+    .mark-read-btn.unread { background: var(--accent); color: #fff; }
+    .mark-read-btn.unread:hover { background: var(--accent-mid); }
+    .mark-read-btn.done { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topnav" aria-label="Top navigation">
+    <a href="Thongkeyhoc.html" class="topnav-back">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <polyline points="15 18 9 12 15 6" />
+      </svg>
+      Thống kê Y học
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">
+      <span>Bài 7: Hồi Quy Tuyến Tính Bayes Trong Y Học</span>
+    </div>
+    <span class="topnav-pill">Bài 7 / 8</span>
+  </nav>
+
+  <!-- MAIN CONTAINER -->
+  <div class="main-container visual-container">
+
+    <!-- HEADER -->
+    <header class="lesson-header">
+      <div class="lesson-meta">
+        <span class="lesson-tag">Mô-đun Nâng Cao</span>
+        <span class="lesson-readtime">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          28 phút đọc
+        </span>
+      </div>
+      <h1>Hồi Quy Tuyến Tính Bayes Trong Nghiên Cứu Y Học</h1>
+      <p class="lesson-lead">
+        Chuyển đổi tư duy thống kê: Kết hợp niềm tin tiên nghiệm (Prior Beliefs) với bằng chứng dữ liệu (Likelihood) để tạo ra Phân bố hậu nghiệm (Posterior Distribution) chính xác và trực quan.
+      </p>
+    </header>
+
+    <!-- THEORY CONTENT -->
+    <div class="theory-content">
+
+      <!-- CHƯƠNG 1 -->
+      <h2 id="chuong-1">1. Cuộc Cách Mạng Thống Kê Bayes Trong Y Học</h2>
+      <p>
+        Trong nhiều thập kỷ, thống kê Tần suất (Frequentist) thống trị nghiên cứu y học với khái niệm p-value và khoảng tin cậy 95%. Tuy nhiên, cách tiếp cận này coi các tham số cần nghiên cứu (như hiệu quả thực sự của một thuốc mới θ) là một hằng số cố định duy nhất nhưng chưa biết.
+      </p>
+
+      <div class="callout callout-info">
+        <strong>💡 Tại sao Thống kê Bayes lại ưu việt hơn trong Y học?</strong>
+        <ul>
+          <li><strong>Coi tham số là đại lượng ngẫu nhiên:</strong> Mô tả sự không chắc chắn bằng <strong>Phân bố Xác suất (Probability Distribution)</strong>.</li>
+          <li><strong>Tích hợp tri thức cũ (Prior):</strong> Cho phép đưa trực tiếp kết quả từ các nghiên cứu tiền lâm sàng, phân tích gộp hoặc thử nghiệm trước đó vào nghiên cứu mới.</li>
+          <li><strong>Diễn giải trực quan:</strong> Khoảng tin cậy Bayes (Credible Interval 95%) cho phép phát biểu thẳng: <em>"Có đúng 95% xác suất hiệu quả của thuốc nằm trong khoảng từ A đến B."</em> (điều mà p-value hay CI của Frequentist không bao giờ được phép phát biểu!).</li>
+        </ul>
+      </div>
+
+      <!-- CHƯƠNG 2 -->
+      <h2 id="chuong-2">2. Định Lý Bayes & Ba Thành Phần Cốt Lõi</h2>
+      <p>Mọi suy luận Bayes đều dựa trên công thức cơ bản:</p>
+
+      <div class="callout callout-success">
+        <span class="formula-span">Posterior ∝ Likelihood × Prior</span>
+        <br><br>
+        <span class="formula-span">P(θ | Data) = [ P(Data | θ) × P(θ) ] / P(Data)</span>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Thành Phần</th>
+            <th>Tên Tiếng Anh</th>
+            <th>Bản Chất Trong Nghiên Cứu Y Học</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Tiên nghiệm</strong></td>
+            <td>Prior Distribution <span class="formula-span">P(θ)</span></td>
+            <td>Tri thức, dữ liệu đã biết về hiệu quả điều trị trước khi tiến hành nghiên cứu mới.</td>
+          </tr>
+          <tr>
+            <td><strong>Hàm Hợp lý</strong></td>
+            <td>Likelihood <span class="formula-span">P(Data | θ)</span></td>
+            <td>Bằng chứng thu được trực tiếp từ bộ dữ liệu của nghiên cứu hiện tại.</td>
+          </tr>
+          <tr>
+            <td><strong>Hậu nghiệm</strong></td>
+            <td>Posterior Distribution <span class="formula-span">P(θ | Data)</span></td>
+            <td>Tri thức mới đã được cập nhật, kết hợp cả bằng chứng lịch sử và dữ liệu thực nghiệm mới.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- INTERACTIVE DEMO: PRIOR TO POSTERIOR ANIMATOR -->
+      <div class="calc-box">
+        <h3>📊 Mô Phỏng Cập Nhật Tri Thức Bayes (Prior → Likelihood → Posterior)</h3>
+        <p style="font-size: 0.82rem; color: var(--text-muted);">Thay đổi niềm tin ban đầu (Prior) và dữ liệu thực nghiệm (Data) để quan sát sự dịch chuyển của đường phân bố Hậu nghiệm.</p>
+
+        <div class="calc-grid">
+          <div class="input-group">
+            <label for="prior-mean">Trung bình Tiên nghiệm (μ_prior):</label>
+            <input type="number" id="prior-mean" value="120" step="1">
+          </div>
+          <div class="input-group">
+            <label for="prior-sd">Độ lệch chuẩn Prior (σ_prior):</label>
+            <input type="number" id="prior-sd" value="10" min="1" step="1">
+          </div>
+          <div class="input-group">
+            <label for="data-mean">Trung bình Dữ liệu mới (x̄_data):</label>
+            <input type="number" id="data-mean" value="135" step="1">
+          </div>
+          <div class="input-group">
+            <label for="data-n">Cỡ mẫu dữ liệu mới (n):</label>
+            <input type="number" id="data-n" value="30" min="5" step="5">
+          </div>
+        </div>
+
+        <button class="calc-btn" onclick="updateBayesianCurves()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+          Cập Nhật Phân Bố Hậu Nghiệm (Posterior)
+        </button>
+
+        <div class="calc-result" id="bayes-result">
+          <svg id="bayes-svg" width="100%" height="220" viewBox="0 0 500 220" style="background:#fff; border-radius:8px; border:1px solid #e2e8f0;"></svg>
+          <div id="bayes-interp" style="margin-top:0.75rem; font-size:0.85rem; line-height:1.5;"></div>
+        </div>
+      </div>
+
+      <!-- CHƯƠNG 3 -->
+      <h2 id="chuong-3">3. Thuật Toán Lấy Mẫu MCMC, HMC & NUTS</h2>
+      <p>
+        Trong mô hình hồi quy Bayes phức tạp có nhiều biến, phân bố hậu nghiệm không có dạng công thức toán học giải tích. Do đó, các nhà thống kê sử dụng thuật toán mô phỏng lấy mẫu chuỗi <strong>Markov Chain Monte Carlo (MCMC)</strong>:
+      </p>
+      <ul>
+        <li><strong>Gibbs Sampling / Metropolis-Hastings:</strong> Thuật toán MCMC truyền thống, lấy mẫu từng bước.</li>
+        <li><strong>Hamiltonian Monte Carlo (HMC) & NUTS (No-U-Turn Sampler):</strong> Thuật toán hiện đại nhất (dùng trong phần mềm <strong>Stan, R-brms, JASP</strong>), tận dụng thông tin độ dốc vector năng lượng để duyệt không gian tham số cực nhanh và chính xác.</li>
+      </ul>
+
+      <h3>3.1. Đánh Giá Sự Hội Tụ Của Chuỗi MCMC</h3>
+      <p>Trước khi đọc kết quả Bayes, bắt buộc phải kiểm tra chuỗi MCMC đã hội tụ chưa:</p>
+      <ul>
+        <li><strong>Chỉ số Gelman-Rubin (<span class="formula-span">R̂</span>):</strong> Phải <span class="formula-span">R̂ < 1.05</span> (tốt nhất là < 1.01).</li>
+        <li><strong>Cỡ mẫu hiệu dụng (Effective Sample Size - ESS):</strong> Cần ESS > 400 để đảm bảo ước lượng khoảng tin cậy HDI 95% chính xác.</li>
+        <li><strong>Trace Plot:</strong> Chuỗi mẫu nhìn phải giống "con sâu róm" nén chặt (caterpillar plot).</li>
+      </ul>
+
+      <!-- CHƯƠNG 4 -->
+      <h2 id="chuong-4">4. Diễn Giải Kết Quả Bayes & Khoảng Tin Cậy HDI</h2>
+      
+      <h3>4.1. Khoảng Tin Cậy Mật Độ Cao Nhất (95% HDI / Credible Interval)</h3>
+      <p>
+        <strong>95% Highest Density Interval (HDI)</strong> chứa 95% khối lượng xác suất của phân bố hậu nghiệm, trong đó mọi điểm bên trong HDI đều có mật độ xác suất cao hơn bất kỳ điểm nào bên ngoài.
+      </p>
+
+      <h3>4.2. Hệ Số Bayes (Bayes Factor - BF)</h3>
+      <p>So sánh khả năng giải thích dữ liệu giữa hai giả thuyết <span class="formula-span">BF₁₀ = P(Data | H₁) / P(Data | H₀)</span>:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Giá Trị BF₁₀</th>
+            <th>Mức Độ Bằng Chứng Ủng Hộ H₁</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1 – 3</strong></td>
+            <td>Bằng chứng rất yếu (Anecdotal)</td>
+          </tr>
+          <tr>
+            <td><strong>3 – 10</strong></td>
+            <td>Bằng chứng vừa phải (Moderate evidence)</td>
+          </tr>
+          <tr>
+            <td><strong>10 – 30</strong></td>
+            <td>Bằng chứng mạnh (Strong evidence)</td>
+          </tr>
+          <tr>
+            <td><strong>> 100</strong></td>
+            <td>Bằng chứng cực kỳ mạnh mẽ (Decisive evidence)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- CHƯƠNG 5 -->
+      <h2 id="chuong-5">5. Xu Hướng Ứng Dụng Trong Y Học Dựa Trên Bằng Chứng</h2>
+      <div class="callout callout-success">
+        <strong>✅ Ứng dụng đột phá của Thống kê Bayes trong Y học:</strong>
+        <ul>
+          <li><strong>Thử nghiệm lâm sàng thích ứng (Adaptive Clinical Trials):</strong> Dừng sớm nếu thuốc quá hiệu quả hoặc hủy bỏ sớm nếu vô hiệu dựa trên phân tích hậu nghiệm trung gian.</li>
+          <li><strong>Nghiên cứu Bệnh hiếm (Rare Diseases):</strong> Cỡ mẫu nhỏ n < 20 vẫn cho suy luận tin cậy nhờ tích hợp Prior từ nghiên cứu cơ bản.</li>
+          <li><strong>Y học chính xác (Precision Medicine):</strong> Tích hợp đa tầng dữ liệu Gen + Lâm sàng + Lịch sử bệnh án.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- MARK AS READ -->
+    <div class="mark-read-section">
+      <div class="mark-read-info">
+        <strong>Bạn đã đọc xong bài học này?</strong>
+        <span>Đánh dấu để theo dõi tiến độ học tập của bạn trên trang hub</span>
+      </div>
+      <button class="mark-read-btn unread" id="mark-read-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Đánh dấu đã đọc
+      </button>
+    </div>
+
+  </div>
+
+  <script>
+    // ── BAYES CURVE ANIMATOR ──
+    function updateBayesianCurves() {
+      const mu_prior = parseFloat(document.getElementById('prior-mean').value) || 120;
+      const sd_prior = parseFloat(document.getElementById('prior-sd').value) || 10;
+      const xbar_data = parseFloat(document.getElementById('data-mean').value) || 135;
+      const n = parseInt(document.getElementById('data-n').value) || 30;
+
+      // Data likelihood variance (assuming population sigma = 15)
+      const sigma_pop = 15;
+      const sd_data = sigma_pop / Math.sqrt(n);
+
+      // Analytical Gaussian-Gaussian conjugacy update for mean
+      const prec_prior = 1 / (sd_prior * sd_prior);
+      const prec_data = 1 / (sd_data * sd_data);
+      const prec_post = prec_prior + prec_data;
+
+      const mu_post = (mu_prior * prec_prior + xbar_data * prec_data) / prec_post;
+      const sd_post = Math.sqrt(1 / prec_post);
+
+      const svg = document.getElementById('bayes-svg');
+      const res = document.getElementById('bayes-result');
+      const interp = document.getElementById('bayes-interp');
+
+      const width = 500;
+      const height = 220;
+      const margin = 30;
+
+      // Range for x-axis
+      const minX = Math.min(mu_prior - 3*sd_prior, xbar_data - 3*sd_data) - 5;
+      const maxX = Math.max(mu_prior + 3*sd_prior, xbar_data + 3*sd_data) + 5;
+
+      function normalPdf(x, mu, sd) {
+        return (1 / (sd * Math.sqrt(2 * Math.PI))) * Math.exp(-0.5 * Math.pow((x - mu) / sd, 2));
+      }
+
+      // Generate paths
+      let pathPrior = "", pathData = "", pathPost = "";
+      let maxPdf = 0;
+
+      for (let px = 0; px <= width - 2*margin; px += 2) {
+        let xVal = minX + (px / (width - 2*margin)) * (maxX - minX);
+        let yPrior = normalPdf(xVal, mu_prior, sd_prior);
+        let yData = normalPdf(xVal, xbar_data, sd_data);
+        let yPost = normalPdf(xVal, mu_post, sd_post);
+
+        maxPdf = Math.max(maxPdf, yPrior, yData, yPost);
+      }
+
+      for (let px = 0; px <= width - 2*margin; px += 2) {
+        let xVal = minX + (px / (width - 2*margin)) * (maxX - minX);
+        let cx = margin + px;
+
+        let pyPrior = (height - margin) - (normalPdf(xVal, mu_prior, sd_prior) / maxPdf) * (height - 2*margin - 20);
+        let pyData = (height - margin) - (normalPdf(xVal, xbar_data, sd_data) / maxPdf) * (height - 2*margin - 20);
+        let pyPost = (height - margin) - (normalPdf(xVal, mu_post, sd_post) / maxPdf) * (height - 2*margin - 20);
+
+        pathPrior += (px === 0 ? `M ${cx} ${pyPrior}` : ` L ${cx} ${pyPrior}`);
+        pathData += (px === 0 ? `M ${cx} ${pyData}` : ` L ${cx} ${pyData}`);
+        pathPost += (px === 0 ? `M ${cx} ${pyPost}` : ` L ${cx} ${pyPost}`);
+      }
+
+      svg.innerHTML = `
+        <!-- Curves -->
+        <path d="${pathPrior}" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+        <path d="${pathData}" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="2,2" />
+        <path d="${pathPost}" fill="none" stroke="#0284c7" stroke-width="3.5" />
+
+        <!-- Baseline -->
+        <line x1="${margin}" y1="${height - margin}" x2="${width - margin}" y2="${height - margin}" stroke="#64748b" stroke-width="1.5" />
+
+        <!-- Legend -->
+        <g transform="translate(35, 25)">
+          <line x1="0" y1="0" x2="20" y2="0" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4"/>
+          <text x="25" y="4" font-size="11" fill="#475569">Tiên nghiệm (Prior)</text>
+
+          <line x1="140" y1="0" x2="160" y2="0" stroke="#d97706" stroke-width="2" stroke-dasharray="2,2"/>
+          <text x="165" y="4" font-size="11" fill="#475569">Bằng chứng (Likelihood)</text>
+
+          <line x1="300" y1="0" x2="320" y2="0" stroke="#0284c7" stroke-width="3"/>
+          <text x="325" y="4" font-size="11" font-weight="bold" fill="#0284c7">Hậu nghiệm (Posterior)</text>
+        </g>
+      `;
+
+      const hdiLow = mu_post - 1.96 * sd_post;
+      const hdiHigh = mu_post + 1.96 * sd_post;
+
+      interp.innerHTML = `
+        🎯 <strong>Kết quả Hậu nghiệm Bayes (Updated Knowledge):</strong><br>
+        - Trung bình Hậu nghiệm <span class="formula-span">μ_posterior = ${mu_post.toFixed(2)}</span> (dịch chuyển từ ${mu_prior} về phía bằng chứng mới ${xbar_data}).<br>
+        - Độ lệch chuẩn Hậu nghiệm <span class="formula-span">σ_posterior = ${sd_post.toFixed(2)}</span> (nhỏ hơn cả Prior và Data => Độ chính xác tăng lên!).<br>
+        - <strong>Khoảng tin cậy Bayes 95% HDI:</strong> <strong>[${hdiLow.toFixed(2)} đến ${hdiHigh.toFixed(2)}]</strong>. Có đúng 95% xác suất giá trị thực sự nằm trong khoảng này.
+      `;
+
+      res.classList.add('show');
+    }
+
+    // Initialize default visualization
+    window.addEventListener('DOMContentLoaded', () => {
+      updateBayesianCurves();
+    });
+
+    // ── PROGRESS TRACKING ──
+    const LESSON_KEY = 'thongke-bai7';
+    const btn = document.getElementById('mark-read-btn');
+
+    function syncBtn() {
+      const isDone = localStorage.getItem(LESSON_KEY) === 'done';
+      if (isDone) {
+        btn.className = 'mark-read-btn done';
+        btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Đã đọc xong`;
+      } else {
+        btn.className = 'mark-read-btn unread';
+        btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Đánh dấu đã đọc`;
+      }
+    }
+
+    btn.addEventListener('click', () => {
+      const isDone = localStorage.getItem(LESSON_KEY) === 'done';
+      if (isDone) {
+        localStorage.removeItem(LESSON_KEY);
+      } else {
+        localStorage.setItem(LESSON_KEY, 'done');
+      }
+      syncBtn();
+    });
+
+    syncBtn();
+  </script>
+
+</body>
+</html>

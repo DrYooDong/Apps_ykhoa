@@ -114,6 +114,7 @@ Dark mode: toggle `data-theme="dark"` trên thẻ `<html>`. Lưu vào `localStor
 | Kiến trúc tổng | file này (`docs/PROJECT_OVERVIEW.md`) |
 | Bản đồ file | `docs/FILE_MAP.md` |
 | CSS guide | `css/README.md` |
+| Design-to-Code guide | `docs/DESIGN_TO_CODE.md` |
 | JS guide | `js/README.md` |
 | Pages guide | `pages/README.md` |
 | Assets guide | `assets/README.md` |

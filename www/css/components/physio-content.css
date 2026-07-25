@@ -1,0 +1,235 @@
+/* ============================================================
+   PHYSIOLOGY KNOWLEDGE CONTENT TYPOGRAPHY & LAYOUT (physio-content.css)
+   ============================================================ */
+
+/* Content block spacing */
+.physio-content {
+  margin-bottom: 2rem;
+}
+
+/* Core Reading Content Typography */
+.physio-text-block p {
+  margin-bottom: 1.25rem;
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--color-text);
+  text-align: justify;
+}
+
+.physio-text-block ul, 
+.physio-text-block ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.physio-text-block ul {
+  list-style-type: disc;
+}
+
+.physio-text-block ol {
+  list-style-type: decimal;
+}
+
+.physio-text-block li {
+  margin-bottom: 0.5rem;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.physio-text-block strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* Specialized Tables */
+.physio-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.75rem 0;
+  font-size: var(--text-sm);
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.physio-table th, 
+.physio-table td {
+  padding: 0.85rem 1.25rem;
+  text-align: left;
+}
+
+.physio-table th {
+  background: var(--color-primary-hl);
+  color: var(--color-primary);
+  font-weight: 600;
+  border-bottom: 2px solid var(--color-divider);
+  font-family: var(--font-display);
+}
+
+.physio-table td {
+  border-bottom: 1px solid var(--color-divider);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.physio-table tr:last-child td {
+  border-bottom: none;
+}
+
+.physio-table tr:nth-child(even) {
+  background: var(--color-surface-2);
+}
+
+/* Concept Cards and Grid layout */
+.concept-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin: 1.75rem 0;
+}
+
+.concept-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  transition: all var(--tr);
+}
+
+.concept-card:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.concept-card p {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Clinical Callout and Warning Boxes */
+.clinical-note-box {
+  margin: 1.75rem 0;
+  padding: 1.25rem;
+  background: var(--color-rose-hl);
+  border-left: 4px solid var(--color-rose);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.clinical-note-box p {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Badges for Medical Terms categorization */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  margin-right: 0.25rem;
+}
+
+.badge-primary {
+  background: var(--color-primary-hl);
+  color: var(--color-primary);
+}
+
+.badge-success {
+  background: var(--color-success-hl);
+  color: var(--color-success);
+}
+
+.badge-rose {
+  background: var(--color-rose-hl);
+  color: var(--color-rose);
+}
+
+.badge-warning {
+  background: var(--color-warning-hl);
+  color: var(--color-warning);
+}
+
+.badge-purple {
+  background: var(--color-purple-hl);
+  color: var(--color-purple);
+}
+
+.badge-teal {
+  background: var(--color-teal-hl);
+  color: var(--color-teal);
+}
+
+/* ============================================================
+   FORMULA CARDS (.formula-card)
+   ============================================================ */
+.formula-card {
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-divider);
+  border-left: 4px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  margin: 1.75rem 0;
+  text-align: center;
+  transition: all var(--tr);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle background accent glow on hover */
+.formula-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-card-glow);
+  opacity: 0;
+  transition: opacity var(--tr);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.formula-card:hover::before {
+  opacity: 1;
+}
+
+.formula-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.formula-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.formula-card .formula-expr {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  display: block;
+  margin: 0.5rem 0;
+}
+
+.formula-card .formula-desc {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
