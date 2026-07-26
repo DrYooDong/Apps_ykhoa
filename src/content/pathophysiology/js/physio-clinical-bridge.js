@@ -13,16 +13,16 @@
             keywords: ['huyết áp', 'RAAS', 'renin', 'angiotensin', 'aldosterone'],
             title: 'Điều hòa Huyết áp & RAAS',
             links: [
-                { icon: '⚙️', text: 'Công cụ: Máy tính Huyết áp động mạch trung bình (MAP)', url: '../../../../pages/Công cụ/' },
-                { icon: '💊', text: 'Dược lý: Thuốc ức chế men chuyển & ARB', url: '../../../../pages/Dược lý/Chuyên khoa/DL_Timmach.html' },
-                { icon: '🤒', text: 'Tiếp cận: Cơn tăng huyết áp cấp cứu', url: '../../../../pages/Tiếp cận/2. Triệu chứng/' }
+                { icon: '⚙️', text: 'Công cụ: Máy tính Huyết áp động mạch trung bình (MAP)', url: '../../../../src/content/calculators/' },
+                { icon: '💊', text: 'Dược lý: Thuốc ức chế men chuyển & ARB', url: '../../../../src/content/pharmacology/specialties/DL_Timmach.html' },
+                { icon: '🤒', text: 'Tiếp cận: Cơn tăng huyết áp cấp cứu', url: '../../../../src/content/approaches/symptoms/' }
             ]
         },
         {
             keywords: ['lọc cầu thận', 'GFR', 'thận', 'nephron', 'creatinine'],
             title: 'Chức năng Thận & Lọc Cầu thận',
             links: [
-                { icon: '⚙️', text: 'Công cụ: Tính mức lọc cầu thận eGFR (CKD-EPI)', url: '../../../../pages/Công cụ/' },
+                { icon: '⚙️', text: 'Công cụ: Tính mức lọc cầu thận eGFR (CKD-EPI)', url: '../../../../src/content/calculators/' },
                 { icon: '🩺', text: 'Cơ chế bệnh sinh: Tổn thương thận cấp (AKI)', url: '../../SLB_CCBS/SLB_CCBS_AKI.html' },
                 { icon: '🩺', text: 'Cơ chế bệnh sinh: Bệnh thận mạn (CKD)', url: '../../SLB_CCBS/SLB_CCBS_CKD.html' }
             ]
@@ -31,18 +31,18 @@
             keywords: ['ECG', 'điện tâm đồ', 'điện thế hoạt động cơ tim', 'chu kỳ tim'],
             title: 'Điện học Tim & Điện tâm đồ',
             links: [
-                { icon: '⚙️', text: 'Công cụ: ECG Studio Interactive Trainer', url: '../../../../pages/Công cụ/' },
+                { icon: '⚙️', text: 'Công cụ: ECG Studio Interactive Trainer', url: '../../../../src/content/calculators/' },
                 { icon: '🩺', text: 'Cơ chế bệnh sinh: Hội chứng vành cấp (ACS)', url: '../../SLB_CCBS/SLB_CCBS_ACS.html' },
-                { icon: '🩺', text: 'Kỹ năng: Đọc Điện tâm đồ cơ bản', url: '../../../../pages/Kỹ năng/' }
+                { icon: '🩺', text: 'Kỹ năng: Đọc Điện tâm đồ cơ bản', url: '../../../../src/content/skills/' }
             ]
         },
         {
             keywords: ['trao đổi khí', 'phế nang', 'oxy', 'co2', 'thông khí', 'phổi'],
             title: 'Hô hấp & Khí máu',
             links: [
-                { icon: '⚙️', text: 'Công cụ: Phân tích Khí máu động mạch (ABG)', url: '../../../../pages/Công cụ/' },
+                { icon: '⚙️', text: 'Công cụ: Phân tích Khí máu động mạch (ABG)', url: '../../../../src/content/calculators/' },
                 { icon: '🩺', text: 'Cơ chế bệnh sinh: COPD & Bệnh phổi tắc nghẽn', url: '../../SLB_CCBS/SLB_CCBS_COPD.html' },
-                { icon: '💊', text: 'Dược lý: Thuốc giãn phế quản & Corticoid xịt', url: '../../../../pages/Dược lý/' }
+                { icon: '💊', text: 'Dược lý: Thuốc giãn phế quản & Corticoid xịt', url: '../../../../src/content/pharmacology/' }
             ]
         }
     ];
