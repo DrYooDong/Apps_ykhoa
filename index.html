@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CliniPortal - Hệ sinh thái công cụ hỗ trợ lâm sàng dành cho bác sĩ nội khoa">
+  <title>CliniPortal – Hệ sinh thái Y khoa & Công cụ Lâm sàng</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- PWA Manifest & App Tags -->
+  <link rel="manifest" href="./assets/manifest-ChmEdgD7.json">
+  <meta name="theme-color" content="#0284c7">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="CliniPortal">
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon-BuSp8Sxg.png">
+  <link rel="icon" type="image/svg+xml" href="./assets/app-icon-CXYWDfPs.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="./assets/icon-192x192-Ds0UNcjT.png">
+
+
+  <script src="js/main.js" defer></script>
+  <script src="components/footer.js" defer></script>
+  <script type="module" crossorigin src="./assets/main-C5qAbPn8.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/main-tU07ZDjv.css">
+</head>
+
+<body>
+  <!-- ===================== GLOBAL HEADER ===================== -->
+  <header class="global-header">
+    <div class="header-left" style="display: flex; align-items: center; gap: 0.75rem;">
+      <a href="#/" class="logo-brand" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.5rem;">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+          <rect width="28" height="28" rx="7" fill="#0284c7" />
+          <path d="M14 6v16M8 11h12M8 17h8" stroke="white" stroke-width="2" stroke-linecap="round" />
+        </svg>
+        <span class="logo-text" style="font-weight: 700; font-size: 1.25rem;">CliniPortal</span>
+      </a>
+
+      <!-- Nút Quay Lại -->
+      <button class="btn-back-nav" id="globalBackBtn" onclick="window.history.back()" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.35rem 0.75rem; font-size: 0.825rem; font-weight: 600; border-radius: 2rem; border: 1px solid var(--color-border, #e2e8f0); background: var(--color-surface, #fff); color: var(--color-text-muted, #64748b); cursor: pointer; transition: all 0.2s;" title="Quay lại trang trước">
+        <i class="fa-solid fa-arrow-left"></i> Quay lại
+      </button>
+    </div>
+
+    <div class="search-bar-container">
+      <div class="search-container">
+        <svg viewBox="0 0 24 24" class="search__icon" aria-hidden="true">
+          <g>
+            <path
+              d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z" />
+          </g>
+        </svg>
+        <input class="input" type="search" placeholder="Tìm công cụ, phác đồ… (Phím /)" aria-label="Tìm kiếm">
+      </div>
+      <div class="search-results-dropdown" id="searchResultsDropdown"></div>
+    </div>
+
+    <div class="header-actions">
+      <!-- Command Palette trigger -->
+      <button class="header-cmd-hint" id="cmdPaletteTrigger" title="Mở Command Palette (Ctrl+K)"
+        aria-label="Command Palette">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span>Tìm nhanh</span>
+        <kbd>Ctrl K</kbd>
+      </button>
+
+      <!-- Hotkey Help trigger -->
+      <button class="header-cmd-hint" id="hotkeyHelpBtn" title="Bảng phím tắt (?)"
+        aria-label="Keyboard Shortcuts">
+        <i class="fa-solid fa-keyboard"></i>
+        <span>Phím tắt</span>
+        <kbd>?</kbd>
+      </button>
+
+      <button id="theme-toggle-btn" title="Chuyển đổi Sáng/Tối" aria-label="Toggle Theme">🌓</button>
+    </div>
+  </header>
+
+  <!-- ===================== APP CONTAINER (SPA DYNAMIC MOUNT) ===================== -->
+  <div class="app-container">
+    <!-- GLOBAL SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="#/" class="nav-item active" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="#/pathophysiology" class="nav-item" title="S.lý - S.lý bệnh">
+              <span class="nav-icon">🧬</span>
+              <span class="nav-text">S.lý - S.lý bệnh</span>
+            </a>
+          </li>
+          <li>
+            <a href="#/skills" class="nav-item" title="Kỹ năng">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng</span>
+            </a>
+          </li>
+          <li>
+            <a href="#/approaches" class="nav-item" title="Tiếp cận">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận</span>
+            </a>
+          </li>
+          <li>
+            <a href="#/calculators" class="nav-item" title="Công cụ">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ</span>
+            </a>
+          </li>
+          <li>
+            <a href="#/pharmacology" class="nav-item" title="Dược lý">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý</span>
+            </a>
+          </li>
+          <li>
+            <a href="#/ebm" class="nav-item" title="Y học chứng cứ">
+              <span class="nav-icon">📄</span>
+              <span class="nav-text">Y học chứng cứ</span>
+            </a>
+          </li>
+          <li>
+            <a href="#/tcm" class="nav-item" title="Y học cổ truyền">
+              <span class="nav-icon">☯️</span>
+              <span class="nav-text">Y học cổ truyền</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-wrapper" id="app" style="flex: 1; min-width: 0; padding: 0;">
+      <!-- SPA views (HomeView, ArticleView, CategoryView) mounted dynamically by src/index.ts -->
+    </main>
+  </div>
+
+  <!-- Placeholder nạp footer.html -->
+  <div id="footer-placeholder" data-footer-path="components/footer.html"></div>
+
+  <!-- ========== GLOBAL UI OVERLAYS ========== -->
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress-bar" id="scrollProgressBar" aria-hidden="true"></div>
+
+  <!-- Back-to-Top Button -->
+  <button class="back-to-top" id="backToTopBtn" title="Về đầu trang" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Scripts Entry Point -->
+</body>
+
+</html>
