@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lưu đồ dược lý tương tác xử trí Chóng Mặt – CliniPortal">
+    <title>Dược lý Chóng Mặt – CliniPortal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+    <link rel="stylesheet" href="../../../../css/components/pharmacology-symptoms.css">
+    <link rel="stylesheet" href="../../../../css/components/pharmacology-tools.css">
+    <script src="../../../../components/header.js" defer></script>
+    <script src="../../../../js/pharmacology-symptoms.js" defer></script>
+    <script src="../../../../components/footer.js" defer></script>
+</head>
+<body>
+<div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../ebm/guidelines/kho-guidelines/index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../duoc-ly.html" class="nav-item active" aria-current="page" title="Dược lý">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main-wrapper flow-page">
+        <clini-breadcrumb items='[{"label": "🏠 Home", "url": "../../../index.html"}, {"label": "Dược lý", "url": "../duoc-ly.html"}, {"label": "Triệu chứng", "url": "#"}, {"label": "Chóng mặt"}]'></clini-breadcrumb>
+
+        <!-- HERO -->
+        <div class="flow-hero">
+            <div class="hero-badge">💊 Dược lý lâm sàng • 2026</div>
+            <h1>Lưu đồ Dược lý Xử trí Chóng Mặt</h1>
+            <p>Nhấn vào từng nút lưu đồ để tra cứu phác đồ thuốc, chống chỉ định và tương tác dược lý</p>
+        </div>
+
+        <!-- QUICK ACCESS TOOLBAR -->
+        <div class="subpage-pharma-toolbar">
+            <div class="subpage-toolbar-title">
+                <i class="fa-solid fa-pills"></i> Phân Hệ Dược Lý Lâm Sàng
+            </div>
+            <div class="subpage-toolbar-actions">
+                <a href="../duoc-ly.html" class="subpage-tool-btn" title="Trang tổng Dược lý"><i class="fa-solid fa-house-medical"></i> Trang tổng Dược lý</a>
+                <a href="../../Công cụ/Chung/QuyDoi_LieuTuongDuong.html" class="subpage-tool-btn" title="Bộ quy đổi liều tương đương lâm sàng (Corticoids, Opioids, Statins, PPIs, DOACs, Benzo)"><i class="fa-solid fa-arrows-rotate"></i> Quy đổi liều tương đương</a>
+            </div>
+        </div>
+
+
+        <!-- LEGEND -->
+        <div class="fc-legend">
+            <div class="fc-legend-item"><div class="fc-legend-dot" style="background:var(--fc-danger)"></div> Khẩn cấp / Chuyển tuyến</div>
+            <div class="fc-legend-item"><div class="fc-legend-dot" style="background:var(--fc-warn)"></div> Ngoại biên / Phân loại</div>
+            <div class="fc-legend-item"><div class="fc-legend-dot" style="background:var(--fc-teal)"></div> Phác đồ thuốc</div>
+            <div class="fc-legend-item" style="font-style:italic;">💡 Nhấn nút để xem chi tiết bên dưới</div>
+        </div>
+
+        <!-- FLOWCHART TREE -->
+        <div class="fc-tree">
+            <!-- Row 1: ROOT -->
+            <div class="fc-row">
+                <div class="fc-node nc-root" style="max-width:280px;">
+                    <div class="fc-node-tag">🎯 Điểm khởi đầu</div>
+                    <div class="fc-node-title">TIẾP CẬN BỆNH NHÂN CHÓNG MẶT</div>
+                    <div class="fc-node-sub">Bước 1: Phân loại nguyên nhân trung ương vs ngoại biên</div>
+                </div>
+            </div>
+
+            <!-- Arrow -->
+            <div class="fc-arrow-down"><div class="fc-arrow-line"></div><div class="fc-arrow-head"></div></div>
+
+            <!-- Row 2: Phân loại mức độ -->
+            <div class="fc-row">
+                <div class="fc-node nc-danger pulse-danger" id="node-severe" onclick="selectPath('SEVERE')">
+                    <div class="fc-node-tag">🚨 Nguy cơ cao</div>
+                    <div class="fc-node-title">CHÓNG MẶT DO TỔN THƯƠNG TẠI NÃO</div>
+                    <div class="fc-node-sub">Liệt khu trú, tăng HA ác tính, nystagmus đa hướng...</div>
+                </div>
+                <div class="fc-node nc-warn" id="node-mild" onclick="selectPath('MILD')">
+                    <div class="fc-node-tag">✅ Nội khoa</div>
+                    <div class="fc-node-title">CHÓNG MẶT KHÔNG DO TỔN THƯƠNG NÃO</div>
+                    <div class="fc-node-sub">Phân loại căn nguyên ngoại biên / tư thế</div>
+                </div>
+            </div>
+
+            <!-- Row 3: Phân loại ngoại biên (khóa ban đầu) -->
+            <div id="layer-types" class="fc-layer-disabled">
+                <hr class="fc-sep">
+                <div class="fc-row" style="gap:10px;">
+                    <div class="fc-node nc-teal" id="node-peripheral" onclick="selectCategory('PERIPHERAL')">
+                        <div class="fc-node-tag">👂 Ngoại biên</div>
+                        <div class="fc-node-title">Hội chứng Tiền đình Ngoại biên</div>
+                    </div>
+                    <div class="fc-node nc-teal" id="node-orthostatic" onclick="selectCategory('ORTHOSTATIC')">
+                        <div class="fc-node-tag">⬆️ Tư thế</div>
+                        <div class="fc-node-title">Hạ huyết áp Tư thế đứng</div>
+                    </div>
+                    <div class="fc-node nc-warn" id="node-ototoxicity" onclick="selectCategory('OTOTOXICITY')">
+                        <div class="fc-node-tag">💊 Độc tính</div>
+                        <div class="fc-node-title">Độc tính Tai do Thuốc</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 4: Scenarios (ẩn ban đầu) -->
+            <div id="layer-scenarios" style="display:none;">
+                <hr class="fc-sep">
+                <div class="fc-row" id="row-scenarios"></div>
+            </div>
+        </div>
+
+        <!-- PROTOCOL PANEL -->
+        <div id="proto-panel" style="display:none;"></div>
+    </main>
+</div>
+
+<footer class="global-footer">
+    <div class="footer-copyright"><p>CliniPortal © 2026 · Công cụ lâm sàng · Chỉ mang tính hỗ trợ tham khảo, không thay thế phán xét lâm sàng của bác sĩ.</p></div>
+</footer>
+<!-- Legacy sidebar.js replaced by main.js -->
+  <script src="../../../../js/main.js" defer></script>
+<script>
+// ══ DATA ══
+const DB = {
+    emergency:{
+        source:"QĐ số 2919/QĐ-BYT (Trang 82) & Harrison's Manual of Medicine",
+        redFlags:[
+            "Liệt khu trú, yếu nửa người, méo miệng hoặc nuốt sặc.",
+            "Đau đầu dữ dội mới xuất hiện hoặc đau gáy, cứng gáy (nghi xuất huyết dưới nhện, TBMMN).",
+            "Chóng mặt kèm tăng HA ác tính hoặc nystagmus đa hướng liên tục.",
+            "Chênh lệch HATT > 20 mmHg giữa hai tay (nghi Subclavian Steal Syndrome)."
+        ]
+    },
+    categories:{
+        PERIPHERAL:[
+            {key:'bppv', tag:'🌀 Tư thế', title:'BPPV (Chóng mặt tư thế kịch phát lành tính)', cls:'nc-teal'},
+            {key:'vestibular_neuritis', tag:'🦠 Viêm thần kinh', title:'Viêm Thần kinh Tiền đình / Viêm mê đạo', cls:'nc-teal'},
+            {key:'meniere', tag:'🌊 Meniere', title:'Bệnh Menière (Tăng ứ dịch tai trong)', cls:'nc-purple'}
+        ],
+        ORTHOSTATIC:[
+            {key:'ortho_hypo', tag:'🩸 Hạ HA tư thế', title:'Hạ Huyết áp Tư thế đứng do Dược lý / Mất nước', cls:'nc-warn'}
+        ],
+        OTOTOXICITY:[
+            {key:'drug_ototoxic', tag:'💊 Độc tính tai', title:'Ngộ độc tai do Aminoglycoside / Furosemide / Cisplatin', cls:'nc-warn'}
+        ]
+    },
+    scenarios:{
+        bppv:{
+            title:"Chóng mặt tư thế kịch phát lành tính (BPPV)",
+            drugs:[
+                {name:"Thủ thuật tái định vị sỏi tai (Epley maneuver)", dose:"Thực hiện 1–2 lần tại phòng khám", duration:"Ngay lập tức (Ưu tiên số 1)"},
+                {name:"Betahistine (Serc)", dose:"16–24 mg x 2 lần/ngày (PO)", duration:"3–5 ngày (ngắn hạn)"},
+                {name:"Cinarizin (Stugeron)", dose:"25 mg x 2–3 lần/ngày (PO)", duration:"Tối đa 5–7 ngày (tránh an thần)"}
+            ],
+            ci:"Không dùng ức chế tiền đình kéo dài > 1-2 tuần vì làm chậm quá trình bù trừ tiền đình của não bộ.",
+            warn:"Thủ thuật Epley là điều trị triệt để chính. Thuốc chỉ hỗ trợ giảm triệu chứng cấp trong 24-48 giờ đầu.",
+            ia:"Tránh phối hợp Cinarizin với thuốc an thần/kháng Histamin khác làm tăng ngủ gà nặng.",
+            source:"Hướng dẫn Chẩn đoán & Điều trị Bệnh Tiền đình - Bộ Y tế"
+        },
+        vestibular_neuritis:{
+            title:"Viêm Thần kinh Tiền đình Cấp tính",
+            drugs:[
+                {name:"Methylprednisolone", dose:"1 mg/kg/ngày (PO) x 5 ngày, sau đó giảm liều dần", duration:"7–10 ngày"},
+                {name:"Dimenhydrinate (Vomex)", dose:"50 mg x 2–3 lần/ngày (PO/IM)", duration:"3–5 ngày cấp"},
+                {name:"Betahistine", dose:"24 mg x 2 lần/ngày (PO)", duration:"2–4 tuần"}
+            ],
+            ci:"Chống chỉ định Corticoid ở bệnh nhân đang nhiễm trùng toàn thân chưa kiểm soát.",
+            warn:"Cần tập phục hồi chức năng tiền đình (Vestibular Rehabilitation Therapy) sớm ngay khi qua giai đoạn cấp.",
+            ia:"Thận trọng khi dùng Corticoid ở bệnh nhân đái tháo đường (gây tăng đường huyết).",
+            source:"Harrison's Principles of Internal Medicine - Vestibular Neuritis Management"
+        },
+        meniere:{
+            title:"Bệnh Menière (Hội chứng ứ dịch tai trong)",
+            drugs:[
+                {name:"Betahistine (Serc)", dose:"24 mg x 2 lần/ngày (PO)", duration:"Duy trì 1–3 tháng"},
+                {name:"Hydrochlorothiazide / Triamterene", dose:"25 mg / 50 mg x 1 lần/ngày (PO)", duration:"Duy trì ngắt quãng"},
+                {name:"Chế độ ăn giảm Muối", dose:"< 2g Muối (Na) / ngày", duration:"Liên tục"}
+            ],
+            ci:"Tránh dùng thuốc lợi niệu nếu có hạ Kali máu nặng hoặc suy thận cấp.",
+            warn:"Hạn chế tối đa Cà phê, Rượu bia, Thuốc lá vì gây co mạch tai trong.",
+            ia:"Lợi niệu Thiazide có thể làm tăng nhẹ nồng độ Acid Uric huyết thanh.",
+            source:"AAO-HNS Guidelines for Meniere's Disease"
+        },
+        ortho_hypo:{
+            title:"Hạ Huyết áp Tư thế đứng do Dược lý",
+            drugs:[
+                {name:"Rà soát & Giảm liều Thuốc Hạ áp", dose:"Đánh giá nhóm Alpha-blocker, Lợi tiểu, Vasodilator", duration:"Ngay lập tức"},
+                {name:"Bổ sung Nước & Muối", dose:"1.5 – 2.0 Lít nước/ngày + Đeo tất áp lực", duration:"Duy trì"},
+                {name:"Midodrine (Thuốc cường Alpha-1)", dose:"2.5 – 5 mg x 3 lần/ngày (dùng ban ngày)", duration:"Khi nặng"}
+            ],
+            ci:"Không uống Midodrine trước khi nằm ngủ (nguy cơ tăng HA tư thế nằm).",
+            warn:"Kiểm tra HA ở 2 tư thế: Nằm 5 phút và Đứng 1 và 3 phút (giảm HATT >= 20mmHg hoặc HATTr >= 10mmHg).",
+            ia:"Midodrine phối hợp với thuốc trợ tim gây tăng nguy cơ nhịp chậm.",
+            source:"ESC Guidelines on Syncope & Orthostatic Hypotension"
+        },
+        drug_ototoxic:{
+            title:"Độc tính Tai do Thuốc (Ototoxicity)",
+            drugs:[
+                {name:"Ngừng ngay thuốc gây độc tai", dose:"Thay Aminoglycoside sang Cephalosporin/Fluoroquinolone", duration:"Ngay lập tức"},
+                {name:"Duy trì Hydrat hóa tốt", dose:"Truyền NaCl 0.9% đảm bảo nồng độ thuốc giảm nhanh", duration:"Giai đoạn cấp"}
+            ],
+            ci:"Không phối hợp Aminoglycoside (Gentamicin, Amikacin) với Lợi tiểu quai (Furosemide) vì tăng gấp bội độc tính tai.",
+            warn:"Theo dõi thính lực đồ và độc tính tiền đình ở bệnh nhân dùng kháng sinh Aminoglycoside kéo dài > 7 ngày.",
+            ia:"Furosemide liều cao tĩnh mạch nhanh làm tăng nguy cơ điếc vĩnh viễn.",
+            source:"WHO Guidelines on Ototoxic Medications"
+        }
+    }
+};
+
+function selectPath(path) {
+    resetAll();
+    const nodeSevere = document.getElementById('node-severe');
+    const nodeMild = document.getElementById('node-mild');
+    if (path === 'SEVERE') {
+        if (nodeSevere) nodeSevere.classList.add('active');
+        showEmergency('Tổn thương thần kinh trung ương (Đột quỵ não / Xuất huyết não / Khối u góc cầu tiểu não)');
+    } else {
+        if (nodeMild) nodeMild.classList.add('active');
+        const layerTypes = document.getElementById('layer-types');
+        if (layerTypes) layerTypes.className = 'fc-layer-enabled';
+    }
+}
+
+function selectCategory(catKey) {
+    document.querySelectorAll('#layer-types .fc-node').forEach(n => n.classList.remove('active'));
+    
+    let clickId = '';
+    if (catKey === 'PERIPHERAL') clickId = 'node-peripheral';
+    if (catKey === 'ORTHOSTATIC') clickId = 'node-orthostatic';
+    if (catKey === 'OTOTOXICITY') clickId = 'node-ototoxicity';
+    
+    const clickNode = document.getElementById(clickId);
+    if (clickNode) clickNode.classList.add('active');
+    
+    const layerScenarios = document.getElementById('layer-scenarios');
+    const rowScenarios = document.getElementById('row-scenarios');
+    const protoPanel = document.getElementById('proto-panel');
+    
+    if (protoPanel) protoPanel.style.display = 'none';
+    
+    const list = DB.categories[catKey] || [];
+    rowScenarios.innerHTML = list.map(item => `
+        <div class="fc-node ${item.cls}" onclick="displayProtocol('${item.key}', 'var(--fc-teal)')">
+            <div class="fc-node-tag">${item.tag}</div>
+            <div class="fc-node-title">${item.title}</div>
+        </div>
+    `).join('');
+    
+    if (layerScenarios) layerScenarios.style.display = 'block';
+}
+</script>
+</body>
+</html>

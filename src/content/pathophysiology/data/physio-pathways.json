@@ -1,0 +1,92 @@
+{
+  "version": "1.0.0",
+  "title": "Sơ đồ Đường lối & Cơ chế Sinh lý bệnh CliniPortal",
+  "pathways": [
+    {
+      "id": "action_potential_pathway",
+      "name": "Chu trình Điện thế Hoạt động Thần kinh - Cơ",
+      "category": "Điện sinh lý",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Trạng thái Nghỉ (Resting State)",
+          "desc": "Kênh K+ mở rò rỉ, kênh Na+ và Ca2+ đóng. Điện thế màng duy trì ở mức -70 mV nhờ bơm Na+-K+-ATPase.",
+          "ion_flux": "K+ ra ngoài, Bơm 3 Na+ ra / 2 K+ vào",
+          "color": "#0284c7"
+        },
+        {
+          "step": 2,
+          "title": "Khử cực Nhanh (Pha 0)",
+          "desc": "Kích thích đạt ngưỡng (-55 mV) mở kênh Na+ phụ thuộc điện thế. Na+ tràn nhanh vào nội bào, điện thế vọt lên +30 mV.",
+          "ion_flux": "Na+ tràn vào nội bào áp đảo",
+          "color": "#ef4444"
+        },
+        {
+          "step": 3,
+          "title": "Tái cực Sớm (Pha 1 - ở cơ tim)",
+          "desc": "Kênh Na+ bất hoạt, kênh K+ thoáng qua mở xuất K+ làm điện thế giảm nhẹ.",
+          "ion_flux": "K+ thoát ra nhẹ",
+          "color": "#f59e0b"
+        },
+        {
+          "step": 4,
+          "title": "Cao nguyên (Pha 2 - Plateau ở cơ tim)",
+          "desc": "Kênh Ca2+ L-type mở cho Ca2+ vào cân bằng với K+ đi ra, kéo dài thời gian co cơ tim.",
+          "ion_flux": "Ca2+ vào cân bằng K+ ra",
+          "color": "#10b981"
+        },
+        {
+          "step": 5,
+          "title": "Tái cực Nhanh (Pha 3)",
+          "desc": "Kênh Ca2+ đóng, kênh K+ trì hoãn mở rộng đưa K+ ra ngoài đưa điện thế màng về âm trở lại.",
+          "ion_flux": "K+ ra mạnh mẽ",
+          "color": "#6366f1"
+        },
+        {
+          "step": 6,
+          "title": "Ưu cực & Phục hồi (Pha 4)",
+          "desc": "Bơm Na+-K+-ATPase tái lập lại nồng độ ion ban đầu chuẩn bị cho điện thế hoạt động tiếp theo.",
+          "ion_flux": "Na+-K+-ATPase khôi phục độ chênh nồng độ",
+          "color": "#8b5cf6"
+        }
+      ]
+    },
+    {
+      "id": "acs_pathway",
+      "name": "Chuỗi Cơ chế Sinh lý bệnh Hội chứng Vành cấp (ACS)",
+      "category": "Tim mạch",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Hình thành Mảng Xơ vữa Động mạch Vành",
+          "desc": "LDL-C đọng lại thành mạch, bị oxy hóa kích hoạt đại thực bào tạo Foam cells tạo vỏ xơ bọc lõi hoại tử.",
+          "color": "#f59e0b"
+        },
+        {
+          "step": 2,
+          "title": "Nứt vỡ Mảng Xơ vữa (Plaque Rupture)",
+          "desc": "Stress dòng chảy hoặc viêm làm mỏng vỏ xơ, mảng xơ vữa bị rách bộc lộ chất nền dưới nội mạc Collagen và Tissue Factor.",
+          "color": "#ef4444"
+        },
+        {
+          "step": 3,
+          "title": "Kích hoạt Tiểu cầu & Chuỗi Đông máu",
+          "desc": "Tiểu cầu bám dính via vWF, kết tập qua GP IIb/IIIa. Chuỗi đông máu tạo Fibrin bẫy hồng cầu tạo huyết khối tắc mạch.",
+          "color": "#dc2626"
+        },
+        {
+          "step": 4,
+          "title": "Thiếu máu Cơ tim Cục bộ (Ischemia)",
+          "desc": "Dòng máu và O2 nuôi cơ tim giảm >90%, chuyển hóa hiếu khí chuyển sang yếm khí tích tụ Acid Lactic gây đau ngực thắt ngực.",
+          "color": "#9333ea"
+        },
+        {
+          "step": 5,
+          "title": "Hoại tử Tế bào Cơ tim & Phóng thích Troponin",
+          "desc": "Mất ATP kéo dài >20 phút làm hoại tử hoại tử tế bào cơ tim, vỡ màng phóng thích Troponin I/T và CK-MB vào máu.",
+          "color": "#7f1d1d"
+        }
+      ]
+    }
+  ]
+}
