@@ -368,6 +368,24 @@
                     sourceTool: 'renal-function.html'
                 });
             }
+            if (typeof window !== 'undefined' && window.CliniStorage) {
+                try {
+                    await window.CliniStorage.saveCalculation({
+                        toolId: 'renal-function',
+                        toolName: 'Đánh giá Chức năng Thận (CrCl & eGFR)',
+                        category: 'Thận & Điện giải',
+                        inputs: { Tuoi: context.age, Gioitinh: context.gender, Scr: context.scrMgDl, Cannang: context.weight },
+                        outputs: { 
+                            CrCl: context.cgResult ? `${context.cgResult.value} mL/min` : 'N/A', 
+                            eGFR: context.epiResult ? `${context.epiResult.value} mL/min/1.73m²` : 'N/A' 
+                        },
+                        interpretation: context.ckdStaging ? `Phân độ CKD: ${context.ckdStaging.stage}` : '',
+                        recommendations: context.dosingAlerts ? context.dosingAlerts.map(a => a.message || a) : []
+                    });
+                } catch (e) {
+                    console.warn('RenalEngine: Lỗi lưu CliniStorage', e);
+                }
+            }
             return super.process(context);
         }
     }

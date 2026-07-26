@@ -1,0 +1,225 @@
+/* ============================================================
+   CLINIPORTAL CORE SPA DESIGN SYSTEM & COMPONENT STYLES
+   ============================================================ */
+
+/* Import Root Design Tokens & Global CSS */
+@import url("../../css/main.css");
+
+/* Import Core Layout Component Styles */
+@import url("../../css/components/header.css");
+@import url("../../css/components/sidebar.css");
+@import url("../../css/components/footer.css");
+
+/* Import SPA Views Component Styles */
+@import url("../../css/components/homepage-widgets.css");
+@import url("../../css/components/homepage-effects.css");
+@import url("../../css/components/module-dashboard.css");
+@import url("../../css/components/article-reader.css");
+@import url("../../css/components/toc.css");
+@import url("../../css/components/pulse.css");
+
+/* ============================================================
+   SPA DASHBOARD (HOME VIEW) STYLES
+   ============================================================ */
+.homepage-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.hero-banner {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 50%, #0f172a 100%);
+  border-radius: 16px;
+  padding: 2.25rem 2.5rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-banner::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+}
+
+.hero-title {
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+  font-weight: 800;
+  margin: 0.75rem 0 0.5rem;
+  line-height: 1.25;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.hero-desc {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 650px;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.btn-primary {
+  background: #ffffff;
+  color: #0284c7;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+  background: #f8fafc;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.modules-section {
+  margin-top: 0.5rem;
+}
+
+.section-header {
+  margin-bottom: 1.25rem;
+}
+
+.section-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+}
+
+.modules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.module-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--color-text);
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.module-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -4px rgba(0, 0, 0, 0.08);
+  border-color: var(--color-primary);
+}
+
+.module-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+}
+
+.bg-blue { background: #e0f2fe; color: #0284c7; }
+.bg-emerald { background: #d1fae5; color: #059669; }
+.bg-rose { background: #ffe4e6; color: #e11d48; }
+.bg-amber { background: #fef3c7; color: #d97706; }
+.bg-purple { background: #ede9fe; color: #7c3aed; }
+.bg-sky { background: #e0f2fe; color: #0369a1; }
+.bg-orange { background: #ffedd5; color: #ea580c; }
+
+[data-theme="dark"] .bg-blue { background: rgba(2, 132, 199, 0.2); color: #38bdf8; }
+[data-theme="dark"] .bg-emerald { background: rgba(5, 150, 105, 0.2); color: #34d399; }
+[data-theme="dark"] .bg-rose { background: rgba(225, 29, 72, 0.2); color: #fb7185; }
+[data-theme="dark"] .bg-amber { background: rgba(217, 119, 6, 0.2); color: #fbbf24; }
+[data-theme="dark"] .bg-purple { background: rgba(124, 58, 237, 0.2); color: #a78bfa; }
+[data-theme="dark"] .bg-sky { background: rgba(3, 105, 161, 0.2); color: #38bdf8; }
+[data-theme="dark"] .bg-orange { background: rgba(234, 88, 12, 0.2); color: #fb923c; }
+
+.module-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.module-info h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 0.25rem 0;
+}
+
+.module-info p {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.module-arrow {
+  font-size: 0.9375rem;
+  color: var(--color-text-faint, #94a3b8);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.module-card:hover .module-arrow {
+  transform: translateX(4px);
+  color: var(--color-primary);
+}

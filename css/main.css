@@ -1433,3 +1433,67 @@ h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.2; text-wrap: bal
   color: var(--color-primary);
   transform: translateX(4px);
 }
+
+/* ============================================================
+   EMBEDDED IFRAME MODE (Tránh Lồng giao diện / Duplicate App Shell)
+   Khi một trang HTML được nạp bên trong iframe của CliniPortal SPA:
+   - Ẩn hoàn toàn Header, Sidebar, Footer, Breadcrumb lặp lại
+   - Tối ưu hóa vùng hiển thị nội dung chính để vừa vặn 100% iframe
+============================================================ */
+html.in-iframe #header-placeholder,
+html[data-embedded="true"] #header-placeholder,
+html.in-iframe .global-header,
+html[data-embedded="true"] .global-header,
+html.in-iframe #appSidebar,
+html[data-embedded="true"] #appSidebar,
+html.in-iframe .app-sidebar,
+html[data-embedded="true"] .app-sidebar,
+html.in-iframe #footer-placeholder,
+html[data-embedded="true"] #footer-placeholder,
+html.in-iframe .global-footer,
+html[data-embedded="true"] .global-footer,
+html.in-iframe .sidebar-overlay,
+html[data-embedded="true"] .sidebar-overlay,
+html.in-iframe #sidebar-toggle-arrow,
+html[data-embedded="true"] #sidebar-toggle-arrow,
+html.in-iframe clini-breadcrumb,
+html[data-embedded="true"] clini-breadcrumb,
+html.in-iframe .breadcrumb-container,
+html[data-embedded="true"] .breadcrumb-container,
+html.in-iframe .scroll-progress-bar,
+html[data-embedded="true"] .scroll-progress-bar,
+html.in-iframe #scrollProgress,
+html[data-embedded="true"] #scrollProgress {
+  display: none !important;
+}
+
+html.in-iframe .app-container,
+html[data-embedded="true"] .app-container {
+  padding-top: 0 !important;
+  min-height: auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  display: block !important;
+}
+
+html.in-iframe .main-wrapper,
+html[data-embedded="true"] .main-wrapper,
+html.in-iframe .app-content,
+html[data-embedded="true"] .app-content {
+  padding: 1rem 1.5rem !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  flex: none !important;
+  overflow: visible !important;
+}
+
+html.in-iframe body,
+html[data-embedded="true"] body {
+  background: var(--color-surface, #ffffff) !important;
+  min-height: auto !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow-x: hidden !important;
+}

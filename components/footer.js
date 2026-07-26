@@ -4,6 +4,19 @@
  */
 
 async function loadFooter() {
+  // Ngăn nạp footer nếu đang được nhúng trong iframe của CliniPortal SPA
+  try {
+    if (window.self !== window.top || window.location.search.includes('embedded=1')) {
+      document.documentElement.classList.add('in-iframe');
+      document.documentElement.setAttribute('data-embedded', 'true');
+      return;
+    }
+  } catch (e) {
+    document.documentElement.classList.add('in-iframe');
+    document.documentElement.setAttribute('data-embedded', 'true');
+    return;
+  }
+
   const holder = document.getElementById('footer-placeholder');
   if (!holder) return;
 

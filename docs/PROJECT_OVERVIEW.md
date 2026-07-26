@@ -9,27 +9,26 @@
 ```
 Apps_ykhoa/                  ← Root thư mục dự án
 ├── index.html               ← Trang chủ (Homepage)
-├── assets/                  ← Tài nguyên tĩnh (fonts, images, icons, lottie, icons-collection.html, …)
-├── components/              ← Shared layout (header.html + header.js, footer.html + footer.js)
-├── css/                     ← Hệ thống CSS
-│   ├── reset.css            ← CSS reset
-│   ├── main.css             ← Design System cốt lõi (tokens, layout, utilities)
-│   └── components/          ← CSS theo từng module (20+ files)
-├── js/                      ← JavaScript logic
-│   ├── main.js              ← App controller (theme, sidebar, shortcuts)
-│   ├── cliniportal-sync.js  ← Engine đồng bộ 4 module & Guidelines EBM realtime
-│   ├── [module].js          ← JS theo từng module
-│   └── calculators/         ← JS cho bộ tính toán lâm sàng
-├── templates/               ← 4 file HTML boilerplate mẫu
-├── pages/                   ← Toàn bộ nội dung y khoa (6 phân hệ)
-│   ├── Công cụ/
-│   ├── Dược lý/
-│   ├── Kỹ năng/
-│   ├── Sinh lý - Sinh lý bệnh/
-│   ├── Tiếp cận/
-│   ├── Y học chứng cứ/
-│   └── Y học cổ truyền/
-└── docs/                    ← Tài liệu dự án (file này)
+├── knowledge-vault/         ← Obsidian Knowledge Vault (.md)
+├── src/                     ← Source code chuẩn (Vite + TypeScript)
+│   ├── assets/              ← Images, Icons, Fonts
+│   ├── components/          ← UI Components dùng chung
+│   ├── content/             ← Nội dung Y khoa (100% ASCII Kebab-case)
+│   │   ├── calculators/     ← Máy tính lâm sàng
+│   │   ├── pharmacology/    ← Dược lý
+│   │   ├── pathophysiology/ ← Sinh lý - Sinh lý bệnh
+│   │   ├── skills/          ← Kỹ năng lâm sàng
+│   │   ├── approaches/      ← Lưu đồ tiếp cận
+│   │   ├── ebm/             ← Y học chứng cứ
+│   │   └── tcm/             ← Y học cổ truyền
+│   ├── core/                ← Router, Markdown Engine, Category Mapper
+│   └── styles/              ← Design Tokens & Modular CSS
+├── data/                    ← Categories mapping (categories.json - map slug -> Tiếng Việt)
+├── components/              ← Shared layout static fallback
+├── css/                     ← Styling static fallback
+├── js/                      ← JS logic static fallback
+├── templates/               ← HTML boilerplate mẫu
+└── docs/                    ← Tài liệu dự án
 ```
 
 ---

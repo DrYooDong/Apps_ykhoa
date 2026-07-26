@@ -43,7 +43,7 @@ ${assessment || '(Chưa nhập)'}
 ${recommendation || '(Chưa nhập)'}`;
   }
 
-  function generateSNAPPS Text() {
+  function generateSNAPPSText() {
     const s = document.getElementById('snapps-s')?.value || '';
     const n = document.getElementById('snapps-n')?.value || '';
     const a = document.getElementById('snapps-a')?.value || '';
@@ -70,7 +70,7 @@ ${pl || '(Chưa nhập)'}`;
   function generateOutput() {
     let text = '';
     if (currentFramework === 'sbar') text = generateSBARText();
-    else if (currentFramework === 'snapps') text = generateSNAPPS Text();
+    else if (currentFramework === 'snapps') text = generateSNAPPSText();
 
     const outputEl = document.getElementById('output-preview');
     if (outputEl) {

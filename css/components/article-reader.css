@@ -1,0 +1,283 @@
+/* ============================================================================
+   CliniPortal — Article Reader Component Styling
+   ============================================================================ */
+
+.article-reader-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+/* Header Banner */
+.article-header-card {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--radius-lg, 12px);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.05));
+}
+
+.article-meta-badges {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.article-badge {
+  background: rgba(2, 132, 199, 0.1);
+  color: var(--color-primary, #0284c7);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.article-title-main {
+  font-size: 2.1rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--color-text, #0f172a);
+  margin-bottom: 1.25rem;
+}
+
+.article-meta-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border, #f1f5f9);
+  font-size: 0.875rem;
+  color: var(--color-text-muted, #64748b);
+}
+
+.article-author-info {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.article-actions-bar {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.article-action-btn {
+  background: var(--color-bg, #f8fafc);
+  border: 1px solid var(--color-border, #cbd5e1);
+  color: var(--color-text, #334155);
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius-sm, 6px);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+}
+
+.article-action-btn:hover {
+  background: var(--color-surface, #ffffff);
+  border-color: var(--color-primary, #0284c7);
+  color: var(--color-primary, #0284c7);
+}
+
+.article-action-btn.bookmarked {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: var(--color-warning, #f59e0b);
+  color: var(--color-warning, #d97706);
+}
+
+/* 2-Column Grid Layout */
+.article-grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 992px) {
+  .article-grid-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Main Reading Content Area */
+.article-main-paper {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--radius-lg, 12px);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.05));
+  line-height: 1.75;
+  font-size: 1rem;
+  color: var(--color-text, #1e293b);
+}
+
+/* Headings in Markdown Content */
+.md-rendered-body .md-h1,
+.md-rendered-body .md-h2,
+.md-rendered-body .md-h3,
+.md-rendered-body .md-h4 {
+  color: var(--color-text, #0f172a);
+  font-weight: 700;
+  scroll-margin-top: 90px; /* offset for sticky header */
+}
+
+.md-rendered-body .md-h1 {
+  font-size: 1.75rem;
+  border-bottom: 2px solid rgba(2, 132, 199, 0.15);
+  padding-bottom: 0.5rem;
+  margin: 2rem 0 1rem 0;
+}
+
+.md-rendered-body .md-h2 {
+  font-size: 1.45rem;
+  margin: 1.75rem 0 0.85rem 0;
+}
+
+.md-rendered-body .md-h3 {
+  font-size: 1.2rem;
+  margin: 1.5rem 0 0.75rem 0;
+}
+
+/* Figures & Images */
+.md-figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.md-img {
+  max-width: 100%;
+  border-radius: var(--radius-md, 8px);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+}
+
+.md-figcaption {
+  font-size: 0.85rem;
+  color: var(--color-text-muted, #64748b);
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* Sidebar Sticky Widget */
+.article-sidebar-sticky {
+  position: sticky;
+  top: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Table of Contents (TOC) Card */
+.toc-card {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--radius-lg, 12px);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.toc-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-primary, #0284c7);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border, #f1f5f9);
+}
+
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.toc-item {
+  margin-bottom: 0.4rem;
+}
+
+.toc-item.toc-h2 { padding-left: 0; font-weight: 600; }
+.toc-item.toc-h3 { padding-left: 1rem; font-size: 0.9em; }
+.toc-item.toc-h4 { padding-left: 1.75rem; font-size: 0.85em; }
+
+.toc-link {
+  color: var(--color-text-muted, #64748b);
+  text-decoration: none;
+  display: block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.toc-link:hover, .toc-link.active {
+  color: var(--color-primary, #0284c7);
+  background: rgba(2, 132, 199, 0.08);
+  font-weight: 600;
+}
+
+/* Personal Notes Widget */
+.notes-card {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--radius-lg, 12px);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.note-textarea {
+  width: 100%;
+  height: 80px;
+  border: 1px solid var(--color-border, #cbd5e1);
+  border-radius: var(--radius-sm, 6px);
+  padding: 0.5rem;
+  font-family: inherit;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  background: var(--color-bg, #f8fafc);
+  color: var(--color-text);
+  resize: vertical;
+}
+
+.note-item {
+  background: var(--color-bg, #f8fafc);
+  border-left: 3px solid var(--color-primary, #0284c7);
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.note-time {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.2rem;
+}
+
+/* Print Rules */
+@media print {
+  #header-placeholder, #footer-placeholder, .article-actions-bar, .article-sidebar-sticky {
+    display: none !important;
+  }
+  .article-grid-layout {
+    display: block !important;
+  }
+  .article-main-paper {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+}
