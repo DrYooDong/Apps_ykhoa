@@ -32,34 +32,6 @@ Apps_ykhoa/
 ├── manifest.json            # Cấu hình Web App Manifest (PWA)
 ├── sw.js                    # Service Worker hỗ trợ Offline Caching
 ├── capacitor.config.json    # Cấu hình Capacitor Mobile App
-<<<<<<< HEAD
-├── package.json             # Cấu hình Npm / Vite / Electron / Capacitor
-├── assets/                  # Tài nguyên tĩnh (Fonts, Images, Icons, Lottie)
-├── components/              # Shared Layout (Header, Footer, Navigation)
-├── css/                     # Reset CSS, Design System Tokens (main.css) & Module CSS
-├── js/                      # Logic điều hướng, Engine đồng bộ & Calculators
-├── templates/               # Boilerplate HTML mẫu cho lập trình viên
-├── src/                     # Mã nguồn & Phân hệ nội dung Y khoa chính:
-│   ├── components/          # UI Components & Application Views
-│   ├── core/                # Clinical Engine, Search & Content Loaders
-│   ├── styles/              # Core Stylesheets
-│   └── content/             # Phân hệ nội dung Y khoa chính:
-│       ├── calculators/     # Máy tính & Chỉ số lâm sàng
-│       ├── pharmacology/    # Tra cứu thuốc & Phác đồ điều trị
-│       ├── skills/          # Kỹ năng lâm sàng & Đọc cận lâm sàng
-│       ├── pathophysiology/ # Bài đọc Sinh lý học & Sinh lý bệnh
-│       ├── approaches/      # Lưu đồ & Thuật toán chẩn đoán
-│       ├── ebm/             # Guidelines & Evidence-Based Medicine
-│       └── tcm/             # Kiến thức Y học cổ truyền
-├── archive/                  # Lưu trữ file nén (pages_backup.zip)
-├── desktop/                 # Script & Electron Main Process (Laptop App)
-│   ├── launch-desktop.cmd
-│   └── main-electron.js
-├── mobile/                  # Script & Hướng dẫn Đóng gói Mobile (Android/iOS)
-│   ├── setup-capacitor.cmd
-│   └── build-android-instructions.md
-└── docs/                    # Tài liệu hệ thống & Kiến trúc phần mềm
-=======
 ├── vite.config.js           # Cấu hình Vite Build System & Path Aliasing (@/)
 ├── package.json             # Cấu hình NPM Dependencies & Build Scripts
 ├── tsconfig.json            # Cấu hình TypeScript compiler
@@ -93,7 +65,6 @@ Apps_ykhoa/
 ├── docs/                    # Tài liệu hệ thống, kiến trúc & hướng dẫn phát triển
 ├── desktop/                 # Electron Desktop Wrapper (launch-desktop.cmd, main-electron.js)
 └── mobile/                  # Mobile Build Scripts (setup-capacitor.cmd, build-www.js)
->>>>>>> 118f471dfcbd10fbe0d37531863cff5d8bfb2edb
 ```
 
 ---

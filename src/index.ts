@@ -39,15 +39,52 @@ declare global {
 }
 
 /**
+ * Đồng bộ trạng thái active của Sidebar với Hash URL hiện tại
+ */
+function syncSidebarActiveState(): void {
+  const hash = window.location.hash.slice(1) || '/';
+  const category = hash.split('/')[1] || '';
+
+  document.querySelectorAll<HTMLElement>('#appSidebar .nav-item').forEach(item => {
+    const itemPath = item.getAttribute('data-path');
+    const isMatch = (category === '' && itemPath === '') || (category !== '' && itemPath === category);
+    if (isMatch) {
+      item.classList.add('active');
+      item.setAttribute('aria-current', 'page');
+    } else {
+      item.classList.remove('active');
+      item.removeAttribute('aria-current');
+    }
+  });
+}
+
+/**
  * Hàm hỗ trợ mount HTML vào container #app
+ * Tự động chuyển đổi giữa trang chủ Dashboard (#mainContent) và SPA View (#app)
  */
 function mountToApp(html: string): void {
   const appContainer = document.getElementById('app');
-  if (appContainer) {
-    appContainer.innerHTML = html;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const mainContent = document.getElementById('mainContent');
+
+  const rawHash = window.location.hash || '#/';
+  const cleanHash = rawHash.replace(/^#/, '').trim();
+  const isHomePage = cleanHash === '' || cleanHash === '/' || cleanHash === '#';
+
+  if (isHomePage) {
+    if (mainContent) mainContent.style.display = '';
+    if (appContainer) {
+      appContainer.style.display = 'none';
+      appContainer.innerHTML = '';
+    }
   } else {
-    console.error('[CliniPortal] Container element <main id="app"> not found in DOM.');
+    if (mainContent) mainContent.style.display = 'none';
+    if (appContainer) {
+      appContainer.style.display = 'block';
+      appContainer.innerHTML = html;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      console.error('[CliniPortal] Container element #app not found in DOM.');
+    }
   }
 }
 
