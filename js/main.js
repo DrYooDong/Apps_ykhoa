@@ -1,5 +1,27 @@
-    // Auto-load Clinical Tools & Universal Web Components
-    (function loadGlobalComponents() {
+// ============================================================================
+// CHẾ ĐỘ IFRAME EMBEDDED (Ngăn lỗi Lồng giao diện / Duplicate App Shell)
+// Khi trang .html được mở bên trong iframe của CliniPortal SPA, tự động 
+// ẩn Header, Sidebar, Footer và các thành phần khung lặp lại.
+// ============================================================================
+(function initIframeEmbeddedMode() {
+  try {
+    const isEmbedded = window.self !== window.top || window.location.search.includes('embedded=1');
+    if (isEmbedded) {
+      document.documentElement.classList.add('in-iframe');
+      document.documentElement.setAttribute('data-embedded', 'true');
+      window.addEventListener('DOMContentLoaded', () => {
+        document.body?.classList.add('in-iframe');
+        document.body?.setAttribute('data-embedded', 'true');
+      });
+    }
+  } catch (e) {
+    document.documentElement.classList.add('in-iframe');
+    document.documentElement.setAttribute('data-embedded', 'true');
+  }
+})();
+
+// Auto-load Clinical Tools & Universal Web Components
+(function loadGlobalComponents() {
       if (!document.querySelector('script[src*="tool-components.js"]')) {
         const currentScript = document.currentScript || document.querySelector('script[src*="main.js"]');
         const basePath = currentScript ? currentScript.src.substring(0, currentScript.src.lastIndexOf('/') + 1) : '../../../js/';
@@ -364,6 +386,10 @@
           }
         }
       });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 118f471dfcbd10fbe0d37531863cff5d8bfb2edb
       // ----------------------------------------------------
       // PERSONAL NOTES & TEXT ANNOTATION ENGINE (#10)
       // ----------------------------------------------------

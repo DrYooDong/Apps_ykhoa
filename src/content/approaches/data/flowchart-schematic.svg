@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="100%" height="100%" class="flowchart-svg-root">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="grad-start" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a5f" />
+      <stop offset="100%" stop-color="#3f51b5" />
+    </linearGradient>
+    <linearGradient id="grad-danger" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e11d48" />
+      <stop offset="100%" stop-color="#be123c" />
+    </linearGradient>
+    <linearGradient id="grad-info" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0369a1" />
+    </linearGradient>
+    <linearGradient id="grad-ok" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8" />
+    </marker>
+    <marker id="arrow-danger" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#f43f5e" />
+    </marker>
+  </defs>
+
+  <style>
+    .svg-node { cursor: pointer; transition: transform 0.2s ease, filter 0.2s ease; }
+    .svg-node:hover { filter: drop-shadow(0px 8px 16px rgba(0,0,0,0.25)); transform: translateY(-2px); }
+    .node-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 14px; fill: #ffffff; }
+    .node-sub { font-family: 'Inter', sans-serif; font-size: 11px; fill: #e2e8f0; }
+    .connector-line { stroke: #94a3b8; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+    .connector-danger { stroke: #f43f5e; stroke-width: 2.5; stroke-dasharray: 6 3; fill: none; marker-end: url(#arrow-danger); }
+    .branch-label { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700; }
+    .label-yes { fill: #ef4444; }
+    .label-no { fill: #3b82f6; }
+  </style>
+
+  <!-- Connectors -->
+  <path d="M 450 75 L 450 135" class="connector-line" />
+  <path d="M 330 175 L 200 245" class="connector-danger" />
+  <path d="M 570 175 L 700 245" class="connector-line" />
+  <path d="M 200 315 L 200 375" class="connector-line" />
+  <path d="M 700 315 L 700 375" class="connector-line" />
+
+  <!-- Labels -->
+  <text x="240" y="200" class="branch-label label-yes">CÓ (Dấu hiệu Nguy cơ)</text>
+  <text x="610" y="200" class="branch-label label-no">KHÔNG (Tình trạng Ổn định)</text>
+
+  <!-- Node 1: Start -->
+  <g class="svg-node" id="svg-node-1" data-node-id="n1">
+    <rect x="300" y="20" width="300" height="55" rx="12" fill="url(#grad-start)" />
+    <text x="450" y="42" text-anchor="middle" class="node-title">🚨 BỆNH NHÂN TIẾP NHẬN CẤP CỨU</text>
+    <text x="450" y="59" text-anchor="middle" class="node-sub">Đánh giá Sinh hiệu, ABCDE & SpO2</text>
+  </g>
+
+  <!-- Node 2: Question -->
+  <g class="svg-node" id="svg-node-2" data-node-id="n2">
+    <polygon points="450,115 600,175 450,235 300,175" fill="#1e293b" stroke="#3b82f6" stroke-width="2" />
+    <text x="450" y="170" text-anchor="middle" class="node-title">Có Dấu hiệu Cờ đỏ (Red Flags)?</text>
+    <text x="450" y="187" text-anchor="middle" class="node-sub">Sốc / Khó thở nặng / Tri giác giảm</text>
+  </g>
+
+  <!-- Node 3: Danger Branch (Left) -->
+  <g class="svg-node" id="svg-node-danger" data-node-id="n3_yes">
+    <rect x="50" y="245" width="300" height="70" rx="10" fill="url(#grad-danger)" />
+    <text x="200" y="272" text-anchor="middle" class="node-title">🚨 KÍCH HOẠT PHÁC ĐỒ HỒI SỨC</text>
+    <text x="200" y="292" text-anchor="middle" class="node-sub">Thở Oxy + Tiêm Adrenaline/Truyền dịch ngay</text>
+  </g>
+
+  <!-- Node 4: Info Branch (Right) -->
+  <g class="svg-node" id="svg-node-info" data-node-id="n3_no">
+    <rect x="550" y="245" width="300" height="70" rx="10" fill="url(#grad-info)" />
+    <text x="700" y="272" text-anchor="middle" class="node-title">🔬 KHẢO SÁT CẬN LÂM SÀNG BẬC THANG</text>
+    <text x="700" y="292" text-anchor="middle" class="node-sub">Đo ECG, Xét nghiệm Máu, X-quang, Siêu âm</text>
+  </g>
+
+  <!-- Node 5: ICU (Left Bottom) -->
+  <g class="svg-node" id="svg-node-icu">
+    <rect x="50" y="375" width="300" height="60" rx="10" fill="#881337" stroke="#f43f5e" stroke-width="1.5" />
+    <text x="200" y="402" text-anchor="middle" class="node-title">🏥 CHUYỂN ICU / KHOA CẤP CỨU</text>
+    <text x="200" y="420" text-anchor="middle" class="node-sub">Theo dõi liên tục & Can thiệp chuyên khoa</text>
+  </g>
+
+  <!-- Node 6: Discharge (Right Bottom) -->
+  <g class="svg-node" id="svg-node-ok">
+    <rect x="550" y="375" width="300" height="60" rx="10" fill="url(#grad-ok)" />
+    <text x="700" y="402" text-anchor="middle" class="node-title">✅ ĐIỀU TRỊ NGOẠI TRÚ & KHÁM LẠI</text>
+    <text x="700" y="420" text-anchor="middle" class="node-sub">Kê đơn thuốc, Tư vấn theo dõi tại nhà</text>
+  </g>
+</svg>

@@ -23,7 +23,10 @@ function createMainWindow() {
     }
   });
 
-  const entryHtml = path.join(__dirname, '../index.html');
+  const fs = require('fs');
+  const distEntryHtml = path.join(__dirname, '../dist/index.html');
+  const sourceEntryHtml = path.join(__dirname, '../index.html');
+  const entryHtml = fs.existsSync(distEntryHtml) ? distEntryHtml : sourceEntryHtml;
   mainWindow.loadFile(entryHtml);
 
   mainWindow.once('ready-to-show', () => {

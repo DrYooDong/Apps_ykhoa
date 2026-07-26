@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  function toggleFavorite(id) {
+  async function toggleFavorite(id) {
     if (favorites.includes(id)) {
       favorites = favorites.filter(fav => fav !== id);
     } else {
@@ -113,6 +113,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
     
+    // Đồng bộ vào CliniStorage (IndexedDB)
+    if (window.CliniStorage) {
+      const tool = clinicalToolsData.find(t => t.id === id);
+      await window.CliniStorage.toggleBookmark({
+        id: id,
+        title: tool ? tool.title : id,
+        module: 'calculators'
+      });
+    }
+
     // Cập nhật lại UI
     renderFavorites();
     
@@ -189,6 +199,16 @@ document.addEventListener("DOMContentLoaded", () => {
       searchInput.value = "";
       handleSearch("");
       searchInput.focus();
+    });
+  }
+
+  // Sự kiện mở Modal Lịch sử Tính toán
+  const openHistoryBtn = document.getElementById("btn-open-calc-history");
+  if (openHistoryBtn) {
+    openHistoryBtn.addEventListener("click", () => {
+      if (window.CalculationHistoryModal) {
+        window.CalculationHistoryModal.open();
+      }
     });
   }
 });

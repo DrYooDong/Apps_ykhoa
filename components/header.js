@@ -3,6 +3,19 @@ function goBack() {
 }
 
 async function loadHeader() {
+  // Ngăn nạp header nếu đang được nhúng trong iframe của CliniPortal SPA (tránh Lồng giao diện / Duplicate App Shell)
+  try {
+    if (window.self !== window.top || window.location.search.includes('embedded=1')) {
+      document.documentElement.classList.add('in-iframe');
+      document.documentElement.setAttribute('data-embedded', 'true');
+      return;
+    }
+  } catch (e) {
+    document.documentElement.classList.add('in-iframe');
+    document.documentElement.setAttribute('data-embedded', 'true');
+    return;
+  }
+
   const holder = document.getElementById('header-placeholder');
   if (!holder) return;
 

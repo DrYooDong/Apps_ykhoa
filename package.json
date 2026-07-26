@@ -1,10 +1,13 @@
 {
-  "name": "cliniportal-desktop",
-  "version": "1.0.0",
-  "description": "Hệ sinh thái công cụ hỗ trợ lâm sàng dành cho bác sĩ nội khoa - Desktop Application",
+  "name": "cliniportal",
+  "version": "2.0.0",
+  "description": "CliniPortal — Hệ sinh thái Web & App Y khoa Offline Đa nền tảng",
   "main": "desktop/main-electron.js",
   "scripts": {
-    "start": "electron .",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "electron desktop/main-electron.js",
     "desktop": "electron desktop/main-electron.js",
     "cap:sync": "npx cap sync",
     "cap:android": "npx cap add android",
@@ -13,15 +16,21 @@
   "keywords": [
     "medical",
     "cliniportal",
+    "calculators",
+    "guidelines",
+    "ebm",
+    "offline-first",
     "electron",
-    "desktop-app",
-    "clinical-tools"
+    "capacitor",
+    "pwa"
   ],
   "author": "CliniPortal Team",
   "license": "ISC",
   "devDependencies": {
     "@capacitor/android": "^8.4.2",
     "@capacitor/cli": "^8.4.2",
-    "@capacitor/core": "^8.4.2"
+    "@capacitor/core": "^8.4.2",
+    "typescript": "^5.0.0",
+    "vite": "^5.0.0"
   }
 }

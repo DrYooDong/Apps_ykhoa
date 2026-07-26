@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lưu đồ dược lý tương tác xử trí Đau Bụng Cấp – CliniPortal">
+    <title>Dược lý Đau Bụng Cấp – CliniPortal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+    <link rel="stylesheet" href="../../../../css/components/pharmacology-symptoms.css">
+    <link rel="stylesheet" href="../../../../css/components/pharmacology-tools.css">
+    <script src="../../../../components/header.js" defer></script>
+    <script src="../../../../js/pharmacology-symptoms.js" defer></script>
+    <script src="../../../../components/footer.js" defer></script>
+</head>
+<body>
+<div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div class="app-container">
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../ebm/guidelines/kho-guidelines/index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../duoc-ly.html" class="nav-item active" title="Dược lý">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-wrapper flow-page">
+        <clini-breadcrumb items='[{"label": "🏠 Home", "url": "../../../index.html"}, {"label": "Dược lý", "url": "../duoc-ly.html"}, {"label": "Triệu chứng", "url": "#"}, {"label": "Đau bụng cấp"}]'></clini-breadcrumb>
+
+        <div class="flow-hero">
+            <div class="hero-badge">💊 Dược lý lâm sàng • 2026</div>
+            <h1>Lưu đồ Dược lý Xử trí Đau Bụng Cấp</h1>
+            <p>Nhấn vào từng nút lưu đồ để tra cứu phác đồ thuốc theo từng kịch bản lâm sàng</p>
+        </div>
+
+        <!-- QUICK ACCESS TOOLBAR -->
+        <div class="subpage-pharma-toolbar">
+            <div class="subpage-toolbar-title">
+                <i class="fa-solid fa-pills"></i> Phân Hệ Dược Lý Lâm Sàng
+            </div>
+            <div class="subpage-toolbar-actions">
+                <a href="../duoc-ly.html" class="subpage-tool-btn" title="Trang tổng Dược lý"><i class="fa-solid fa-house-medical"></i> Trang tổng Dược lý</a>
+                <a href="../../Công cụ/Chung/QuyDoi_LieuTuongDuong.html" class="subpage-tool-btn" title="Bộ quy đổi liều tương đương lâm sàng (Corticoids, Opioids, Statins, PPIs, DOACs, Benzo)"><i class="fa-solid fa-arrows-rotate"></i> Quy đổi liều tương đương</a>
+            </div>
+        </div>
+
+
+        <div class="fc-legend">
+            <div class="fc-legend-item"><div class="fc-legend-dot" style="background:var(--fc-danger)"></div> Ngoại khoa / Khẩn cấp</div>
+            <div class="fc-legend-item"><div class="fc-legend-dot" style="background:var(--fc-warn)"></div> Phân vùng giải phẫu</div>
+            <div class="fc-legend-item"><div class="fc-legend-dot" style="background:var(--fc-teal)"></div> Phác đồ nội khoa</div>
+            <div class="fc-legend-item" style="font-style:italic;">💡 Nhấn nút để xem chi tiết bên dưới</div>
+        </div>
+
+        <div class="fc-tree">
+            <!-- Row 1: ROOT -->
+            <div class="fc-row">
+                <div class="fc-node nc-root" style="max-width:280px;">
+                    <div class="fc-node-tag">🎯 Khởi đầu</div>
+                    <div class="fc-node-title">ĐAU BỤNG CẤP TÍNH</div>
+                    <div class="fc-node-sub">Bước 1: Sàng lọc dấu hiệu bụng ngoại khoa</div>
+                </div>
+            </div>
+
+            <!-- Arrow -->
+            <div class="fc-arrow-down"><div class="fc-arrow-line"></div><div class="fc-arrow-head"></div></div>
+
+            <!-- Row 2: Phân loại mức độ -->
+            <div class="fc-row">
+                <div class="fc-node nc-danger pulse-danger" id="node-surgical" onclick="selectPath('SURGICAL')">
+                    <div class="fc-node-tag">🚨 Ngoại khoa</div>
+                    <div class="fc-node-title">BỤNG NGOẠI KHOA / CẤP CỨU</div>
+                    <div class="fc-node-sub">Cứng cơ bụng, cảm ứng phúc mạc, sốc...</div>
+                </div>
+                <div class="fc-node nc-warn" id="node-medical" onclick="selectPath('MEDICAL')">
+                    <div class="fc-node-tag">✅ Nội khoa</div>
+                    <div class="fc-node-title">ĐAU BỤNG NỘI KHOA</div>
+                    <div class="fc-node-sub">Phân loại theo vị trí đau giải phẫu</div>
+                </div>
+            </div>
+
+            <!-- Row 3: Phân loại vị trí (khóa ban đầu) -->
+            <div id="layer-types" class="fc-layer-disabled">
+                <hr class="fc-sep">
+                <div class="fc-row" style="gap:10px;">
+                    <div class="fc-node nc-purple" id="node-epigastric" onclick="selectCategory('EPIGASTRIC')">
+                        <div class="fc-node-tag">🫀 Thượng vị</div>
+                        <div class="fc-node-title">Vùng Thượng vị (Epigastric)</div>
+                    </div>
+                    <div class="fc-node nc-teal" id="node-ruq" onclick="selectCategory('RUQ')">
+                        <div class="fc-node-tag">🟡 Hạ sườn phải</div>
+                        <div class="fc-node-title">Hạ sườn Phải (RUQ)</div>
+                    </div>
+                    <div class="fc-node nc-warn" id="node-colic" onclick="selectCategory('COLIC')">
+                        <div class="fc-node-tag">⚡ Cơn đau co thắt</div>
+                        <div class="fc-node-title">Cơn đau Quặn ruột / Quặn thận</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 4: Scenarios (ẩn ban đầu) -->
+            <div id="layer-scenarios" style="display:none;">
+                <hr class="fc-sep">
+                <div class="fc-row" id="row-scenarios"></div>
+            </div>
+        </div>
+
+        <!-- PROTOCOL PANEL -->
+        <div id="proto-panel" style="display:none;"></div>
+    </main>
+</div>
+
+<footer class="global-footer">
+    <div class="footer-copyright"><p>CliniPortal © 2026 · Công cụ lâm sàng · Chỉ mang tính hỗ trợ tham khảo, không thay thế phán xét lâm sàng của bác sĩ.</p></div>
+</footer>
+<!-- Legacy sidebar.js replaced by main.js -->
+  <script src="../../../../js/main.js" defer></script>
+<script>
+const DB = {
+    categories:{
+        EPIGASTRIC:[
+            {key:'pud', tag:'🔥 Loét dạ dày', title:'Viêm/Loét Dạ dày - Tá tràng cấp', cls:'nc-purple'},
+            {key:'gerd', tag:'🫀 Trào ngược', title:'Trào ngược Dược lý / Cấp tính (GERD)', cls:'nc-purple'}
+        ],
+        RUQ:[
+            {key:'biliary', tag:'🟡 Mật', title:'Viêm Túi mật cấp / Cơn đau quặn mật', cls:'nc-teal'}
+        ],
+        COLIC:[
+            {key:'ibs_spasm', tag:'🌀 Co thắt', title:'Hội chứng Ruột kích thích / Co thắt ruột', cls:'nc-warn'},
+            {key:'renal_colic', tag:'💎 Quặn thận', title:'Cơn đau Quặn thận do Sỏi', cls:'nc-warn'}
+        ]
+    },
+    scenarios:{
+        pud:{
+            title:"Loét Dạ Dày - Tá Tràng Cấp Tính",
+            drugs:[
+                {name:"Esomeprazole / Pantoprazole", dose:"40 mg x 1–2 lần/ngày (IV/PO)", duration:"4–8 tuần"},
+                {name:"Drotaverine (No-Spa)", dose:"40–80 mg x 2–3 lần/ngày (PO/IM)", duration:"Khi đau cấp"},
+                {name:"Sucralfate (Gel)", dose:"1 g x 3–4 lần/ngày (trước ăn 1h)", duration:"2–4 tuần"}
+            ],
+            ci:"Chống chỉ định tuyệt đối NSAIDs và Corticoid đường uống.",
+            warn:"Nếu có nôn ra máu hoặc đi ngoài phân đen, chuyển tuyến nội soi cấp cứu ngay.",
+            ia:"PPI làm giảm hấp thu Ciprofloxacin, Ketoconazole và làm mất tác dụng Clopidogrel (với Omeprazole).",
+            source:"ACG Clinical Guideline: Management of Peptic Ulcer Disease"
+        },
+        gerd:{
+            title:"Trào Ngược Dạ Dày Thực Quản Cấp (GERD)",
+            drugs:[
+                {name:"Rabeprazole / Pantoprazole", dose:"20 mg x 1–2 lần/ngày (PO)", duration:"4–8 tuần"},
+                {name:"Domperidone (Motilium)", dose:"10 mg x 3 lần/ngày (trước ăn 15p)", duration:"Tối đa 7 ngày"}
+            ],
+            ci:"Domperidone chống chỉ định khi có kéo dài khoảng QTc hoặc bệnh tim nặng.",
+            warn:"Nằm kê cao đầu 15-20 độ; không ăn trước khi ngủ 3 tiếng.",
+            ia:"Antacid làm giảm hấp thu PPI nếu uống cùng lúc (cách nhau 2h).",
+            source:"World Gastroenterology Organisation Global Guidelines"
+        },
+        biliary:{
+            title:"Cơn Đau Quặn Mật / Viêm Túi Mật Nội Khoa",
+            drugs:[
+                {name:"Hyoscine N-butylbromide (Buscopan)", dose:"20 mg IV/IM hoặc PO x 3 lần/ngày", duration:"Giai đoạn cấp"},
+                {name:"Paracetamol IV (Perfalgan)", dose:"1000 mg IV truyền trong 15p q6h", duration:"Giai đoạn cấp"},
+                {name:"Ceftriaxone", dose:"1–2 g/ngày (IV)", duration:"5–7 ngày (nếu nghi nhiễm trùng)"}
+            ],
+            ci:"Tránh dùng Morphine đơn thuần vì có thể gây co thắt cơ vòng Oddi.",
+            warn:"Theo dõi Dấu hiệu Murphy và siêu âm ổ bụng khẩn.",
+            ia:"Ceftriaxone phối hợp Canxi IV gây kết tủa nguy hiểm.",
+            source:"Tokyo Guidelines (TG18) for Acute Cholecystitis"
+        },
+        ibs_spasm:{
+            title:"Co Thắt Ruột Cấp Tính (IBS)",
+            drugs:[
+                {name:"Mebeverine (Duspatalin)", dose:"135 mg x 3 lần/ngày (PO)", duration:"1–2 tuần"},
+                {name:"Otilonium Bromide", dose:"40 mg x 2–3 lần/ngày (PO)", duration:"Duy trì ngắn"}
+            ],
+            ci:"Chống chỉ định ở bệnh nhân tắc ruột cơ học.",
+            warn:"Loại trừ các nguyên nhân nhiễm trùng hoặc viêm ruột trước khi dùng thuốc giảm co thắt.",
+            ia:"Không dùng cùng thuốc kháng Cholinergic khác tránh khô miệng, bí tiểu nặng.",
+            source:"WGO Guidelines for Irritable Bowel Syndrome"
+        },
+        renal_colic:{
+            title:"Cơn Đau Quặn Thận Cấp do Sỏi Thận - Niệu Quản",
+            drugs:[
+                {name:"Diclofenac IV/IM", dose:"75 mg IM x 1 lần/ngày", duration:"1–2 ngày (Ưu tiên số 1)"},
+                {name:"Tamsulosin (Harnal OCAS)", dose:"0.4 mg x 1 lần/ngày (PO)", duration:"2–4 tuần (giúp tống sỏi)"},
+                {name:"Morphine", dose:"2.5–5 mg IV", duration:"Khi đau dữ dội không đỡ NSAID"}
+            ],
+            ci:"NSAID chống chỉ định ở bệnh nhân suy thận cấp, suy tim nặng hoặc loét dạ dày tiến triển.",
+            warn:"Theo dõi khả năng đái máu và dấu hiệu nhiễm trùng đường tiết niệu phối hợp (Sốt, rét run).",
+            ia:"NSAID làm giảm hiệu quả thuốc hạ huyết áp và tăng nguy cơ độc thận khi dùng cùng ACEi.",
+            source:"EAU Guidelines on Urolithiasis"
+        }
+    }
+};
+
+function selectPath(path) {
+    resetAll();
+    const nodeSurgical = document.getElementById('node-surgical');
+    const nodeMedical = document.getElementById('node-medical');
+    if (path === 'SURGICAL') {
+        if (nodeSurgical) nodeSurgical.classList.add('active');
+        showEmergency('Bụng ngoại khoa (Viêm ruột thừa cấp / Thủng ổ loét dạ dày / Tắc ruột cấp / Thủng ruột / Viêm tụy cấp nặng)');
+    } else {
+        if (nodeMedical) nodeMedical.classList.add('active');
+        const layerTypes = document.getElementById('layer-types');
+        if (layerTypes) layerTypes.className = 'fc-layer-enabled';
+    }
+}
+
+function selectCategory(catKey) {
+    document.querySelectorAll('#layer-types .fc-node').forEach(n => n.classList.remove('active'));
+    
+    let clickId = '';
+    if (catKey === 'EPIGASTRIC') clickId = 'node-epigastric';
+    if (catKey === 'RUQ') clickId = 'node-ruq';
+    if (catKey === 'COLIC') clickId = 'node-colic';
+    
+    const clickNode = document.getElementById(clickId);
+    if (clickNode) clickNode.classList.add('active');
+    
+    const layerScenarios = document.getElementById('layer-scenarios');
+    const rowScenarios = document.getElementById('row-scenarios');
+    const protoPanel = document.getElementById('proto-panel');
+    
+    if (protoPanel) protoPanel.style.display = 'none';
+    
+    const list = DB.categories[catKey] || [];
+    rowScenarios.innerHTML = list.map(item => `
+        <div class="fc-node ${item.cls}" onclick="displayProtocol('${item.key}', 'var(--fc-purple)')">
+            <div class="fc-node-tag">${item.tag}</div>
+            <div class="fc-node-title">${item.title}</div>
+        </div>
+    `).join('');
+    
+    if (layerScenarios) layerScenarios.style.display = 'block';
+}
+</script>
+</body>
+</html>

@@ -109,6 +109,8 @@ Mỗi khi phát hiện và khắc phục một lỗi nghiêm trọng trong hệ 
 | :--- | :--- | :--- | :--- | :--- |
 | 15/07/2026 | `DG_Natri-Dich.html` | Toàn bộ trang bị co xẹp thành dải dọc 40px, màn hình đen ngòm. | Thiếu thẻ đóng `</div>` của `.app-container` làm Footer bị chui vào trong flex-box. | Thêm thẻ đóng `</div>` cho `.app-container` ngay trước thẻ `<script>`. |
 | 15/07/2026 | `DG_Kali-Canxi.html` | Lỗi cú pháp HTML nhỏ trong Breadcrumb. | Có thẻ đóng `</a>` dư thừa ở dòng 266 của Breadcrumb item. | Loại bỏ thẻ đóng `</a>` dư thừa. |
+| 26/07/2026 | `js/main.js` | Lỗi cú pháp `SyntaxError: Unexpected end of input` khiến toàn bộ nút bấm và tính năng trên web không hoạt động. | Thiếu dấu đóng `});` cho event listener `click` của `.sample-case-btn` (dòng 388). | Thêm dấu đóng `});` ngay sau block xử lý sự kiện `click` của `.sample-case-btn`. |
+| 26/07/2026 | `js/clinical-reasoning.js` | Lỗi cú pháp `SyntaxError: Unexpected identifier 'Text'`. | Tên hàm có khoảng trắng không hợp lệ `generateSNAPPS Text()`. | Sửa tên hàm thành `generateSNAPPSText()` ở định nghĩa và nơi gọi hàm. |
 
 ---
 > [!IMPORTANT]

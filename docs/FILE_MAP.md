@@ -480,6 +480,24 @@
 
 ---
 
+## 🚀 src/content/ & src/components/ — CliniPortal 2.0 Content Engine & Components Migration
+
+> Thư mục lưu trữ toàn bộ dữ liệu 7 phân hệ y khoa và các công cụ standalone được di chuyển từ `pages/` sang chuẩn **ASCII Kebab-Case Naming** và đăng ký trong Master Catalog Index.
+
+| File / Subfolder | Vai trò |
+|------------------|---------|
+| `src/content/calculators/` | **[MỚI]** Phân hệ Công cụ Lâm sàng & Master Catalog `index.json` (43 items) |
+| `src/content/pharmacology/` | **[MỚI]** Phân hệ Dược lý học & Master Catalog `index.json` (18 items) |
+| `src/content/skills/` | **[MỚI]** Phân hệ Kỹ năng Lâm sàng & Master Catalog `index.json` (73 items) |
+| `src/content/pathophysiology/` | **[MỚI]** Phân hệ Sinh lý & Sinh lý bệnh & Master Catalog `index.json` (60 items) |
+| `src/content/approaches/` | **[MỚI]** Phân hệ Tiếp cận Triệu chứng & Bệnh lý & Master Catalog `index.json` (58 items) |
+| `src/content/ebm/` | **[MỚI]** Phân hệ Y học Chứng cứ & Guidelines & Master Catalog `index.json` (32 items) |
+| `src/content/tcm/` | **[MỚI]** Phân hệ Y học Cổ truyền & Master Catalog `index.json` (17 items) |
+| `src/components/article-reader.html` | **[MỚI]** Standalone Article Reader Component Engine |
+| `src/components/clinical-flow-studio.html` | **[MỚI]** Standalone Clinical Flow Studio Studio Component Engine |
+
+---
+
 ## 📚 docs/
 
 | File | Vai trò |
@@ -492,5 +510,6 @@
 ---
 
 *Cập nhật file này mỗi khi thêm trang mới vào hệ thống.*
+
 
 

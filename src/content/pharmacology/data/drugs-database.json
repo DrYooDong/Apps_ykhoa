@@ -1,0 +1,143 @@
+{
+  "version": "1.0.0",
+  "updatedAt": "2026-07-25",
+  "drugs": [
+    {
+      "id": "amox_clav",
+      "name": "Amoxicillin / Clavulanate",
+      "brandNames": ["Augmentin", "Clavulin", "Amoksiklav"],
+      "drugClass": "Kháng sinh (Penicillin + Î²-lactamase inhibitor)",
+      "category": "Kháng sinh",
+      "routes": ["PO", "IV"],
+      "pregnancyCategory": "B",
+      "mechanism": "Amoxicillin ức chế tổng hợp thành tế bào vi khuẩn bằng cách gắn với PBP; Acid Clavulanic bẫy và bất hoạt enzym Beta-lactamase.",
+      "indications": ["Nhiễm khuẩn hô hấp trên/dưới", "Viêm tai giữa", "Nhiễm khuẩn da và mô mềm", "Nhiễm khuẩn tiết niệu"],
+      "dosage": {
+        "standardAdult": "875/125mg PO q12h hoặc 500/125mg PO q8h",
+        "maxAdultDaily": "2000mg/day (tính theo Amoxicillin)",
+        "pediatric": "25-45mg/kg/ngày chia 2 lần (dựa trên Amoxicillin)"
+      },
+      "renalAdjustment": {
+        "formula": "Cockcroft-Gault",
+        "brackets": [
+          { "crcl": ">50", "recommendation": "Không cần chỉnh liều (875/125mg q12h)" },
+          { "crcl": "10-30", "recommendation": "500/125mg PO mỗi 12 giờ. Không dùng viên 875mg" },
+          { "crcl": "<10", "recommendation": "500/125mg PO mỗi 24 giờ" },
+          { "dialysis": "HD", "recommendation": "500/125mg PO mỗi 24h + 1 liều bổ sung sau lọc máu" }
+        ]
+      },
+      "hepaticWarning": "Thận trọng: Có nguy cơ gây ứ mật/viêm gan do Clavulanate (đặc biệt ở nam giới cao tuổi).",
+      "blackBoxWarning": null,
+      "adverseEffects": ["Tiêu chảy (phổ biến)", "Buồn nôn/Nôn", "Phát ban da", "Tăng men gan", "Viêm đại tràng giả mạc (C. difficile)"],
+      "contraindications": ["Tiền sử dị ứng Severe Penicillin/Cephalosporin", "Tiền sử vàng da/suy gan do Amox/Clav"]
+    },
+    {
+      "id": "metoprolol_succ",
+      "name": "Metoprolol Succinate ER",
+      "brandNames": ["Toprol-XL", "Betaloc ZOK"],
+      "drugClass": "Chẹn beta-1 chọn lọc (Beta-blocker)",
+      "category": "Tim mạch",
+      "routes": ["PO"],
+      "pregnancyCategory": "C",
+      "mechanism": "Ức chế cạnh tranh chọn lọc thụ thể Beta-1 adrenergic ở cơ tim, giảm nhịp tim, sức co bóp tim và lưu lượng tim.",
+      "indications": ["Tăng huyết áp", "Bệnh động mạch vành", "Suy tim mạn tính (HFrEF)", "Rung nhĩ kiểm soát tần số"],
+      "dosage": {
+        "standardAdult": "25-100mg PO 1 lần/ngày (Khởi đầu 12.5-25mg trong suy tim)",
+        "maxAdultDaily": "200mg/ngày",
+        "pediatric": "1mg/kg PO 1 lần/ngày (khởi đầu)"
+      },
+      "renalAdjustment": {
+        "formula": "Cockcroft-Gault",
+        "brackets": [
+          { "crcl": "All", "recommendation": "Không cần điều chỉnh liều ở bệnh nhân suy thận" }
+        ]
+      },
+      "hepaticWarning": "Chuyển hóa qua gan mạnh (CYP2D6). Giảm liều ở bệnh nhân xơ gan nặng.",
+      "blackBoxWarning": "Tránh ngừng thuốc đột ngột. Có thể gây bùng phát cơn đau thắt ngực hoặc nhồi máu cơ tim.",
+      "adverseEffects": ["Chậm nhịp tim", "Hạ huyết áp", "Mệt mỏi/Chóng mặt", "Lạnh đầu chi", "Co thắt phế quản (ở liều cao)"],
+      "contraindications": ["Nhịp chậm xoang <45 bpm", "Block AV độ II/III", "Sốc tim", "Suy tim mất bù cấp"]
+    },
+    {
+      "id": "paracetamol",
+      "name": "Paracetamol (Acetaminophen)",
+      "brandNames": ["Panadol", "Efferalgan", "Tylenol", "Hapacol"],
+      "drugClass": "Giảm đau - Hạ sốt (Analgesic/Antipyretic)",
+      "category": "Giảm đau",
+      "routes": ["PO", "IV", "PR"],
+      "pregnancyCategory": "B",
+      "mechanism": "Ức chế tổng hợp Prostaglandin ở hệ thần kinh trung ương (trực tiếp qua COX-3/POX); tác dụng hạ sốt qua trung tâm điều nhiệt vùng dưới đồi.",
+      "indications": ["Hạ sốt", "Đau nhẹ đến trung bình (Đau đầu, đau răng, đau cơ, đau khớp)"],
+      "dosage": {
+        "standardAdult": "500-1000mg PO/IV mỗi 4-6h khi cần",
+        "maxAdultDaily": "4000mg/ngày (Người lớn khỏe mạnh); 2000-3000mg/ngày (Nghiện rượu/Bệnh gan/Cao tuổi)",
+        "pediatric": "10-15mg/kg PO/PR mỗi 4-6h (Tối đa 5 lần/ngày)"
+      },
+      "renalAdjustment": {
+        "formula": "Cockcroft-Gault",
+        "brackets": [
+          { "crcl": ">50", "recommendation": "Mỗi 4-6 giờ" },
+          { "crcl": "10-50", "recommendation": "Mỗi 6 giờ" },
+          { "crcl": "<10", "recommendation": "Mỗi 8 giờ" }
+        ]
+      },
+      "hepaticWarning": "Nguy cơ ngộ độc gan nặng/hoại tử tế bào gan khi quá liều hoặc dùng cùng cồn/rượu.",
+      "blackBoxWarning": "Nguy cơ ngộ độc gan (Hepatotoxicity) khi tổng liều vượt quá 4g/ngày hoặc phối hợp nhiều chế phẩm chứa Paracetamol.",
+      "adverseEffects": ["Tăng men gan nhẹ", "Phát ban da/Mày đay (hiếm)", "Hội chứng Stevens-Johnson (rất hiếm)"],
+      "contraindications": ["Suy gan nặng / Bệnh gan tiến triển", "Quá mẫn với Paracetamol"]
+    },
+    {
+      "id": "verapamil",
+      "name": "Verapamil Hydrochloride",
+      "brandNames": ["Isoptin", "Calan"],
+      "drugClass": "Thuốc chẹn kênh Canxi nhóm Non-Dihydropyridine (CCB)",
+      "category": "Tim mạch",
+      "routes": ["PO", "IV"],
+      "pregnancyCategory": "C",
+      "mechanism": "Ức chế dòng ion Canxi đi vào tế bào cơ tim và cơ trơn mạch máu, làm giảm sức co bóp cơ tim, chậm dẫn truyền nút AV và giãn mạch ngoại vi.",
+      "indications": ["Cơn tim nhanh trên thất (PSVT)", "Rung nhĩ/Cuồng nhĩ kiểm soát tần số", "Tăng huyết áp", "Đau thắt ngực"],
+      "dosage": {
+        "standardAdult": "80-120mg PO 3 lần/ngày hoặc 2.5-5mg IV tiêm chậm trong 2 phút",
+        "maxAdultDaily": "480mg/ngày PO",
+        "pediatric": "0.1-0.2mg/kg IV tiêm chậm (theo dõi sát EKG)"
+      },
+      "renalAdjustment": {
+        "formula": "Cockcroft-Gault",
+        "brackets": [
+          { "crcl": "<10", "recommendation": "Giảm 25-50% liều tiêu chuẩn" }
+        ]
+      },
+      "hepaticWarning": "Chuyển hóa qua gan mạnh (CYP3A4). Giảm liều 70% ở bệnh nhân suy gan nặng.",
+      "blackBoxWarning": null,
+      "adverseEffects": ["Táo bón nặng (phổ biến)", "Chậm nhịp tim", "Block AV", "Hạ huyết áp", "Bộc phát suy tim"],
+      "contraindications": ["Suy tim EF thấp (HFrEF)", "Block AV độ II/III", "Hội chứng WPW kèm rung nhĩ", "Hạ huyết áp nặng (SBP < 90 mmHg)"]
+    },
+    {
+      "id": "ciprofloxacin",
+      "name": "Ciprofloxacin",
+      "brandNames": ["Cipro", "Ciprobay"],
+      "drugClass": "Kháng sinh nhóm Fluoroquinolone",
+      "category": "Kháng sinh",
+      "routes": ["PO", "IV"],
+      "pregnancyCategory": "C",
+      "mechanism": "Ức chế enzym DNA Gyrase (Topoisomerase II) và Topoisomerase IV của vi khuẩn, ngăn cản sự tháo xoắn và tái bản DNA.",
+      "indications": ["Nhiễm khuẩn tiết niệu phức tạp", "Viêm thận bể thận", "Tiêu chảy nhiễm khuẩn", "Viêm tuyến tiền liệt"],
+      "dosage": {
+        "standardAdult": "500-750mg PO q12h hoặc 400mg IV q12h",
+        "maxAdultDaily": "1500mg/ngày PO",
+        "pediatric": "Tránh dùng thường quy; chỉ dùng khi nhiễm trùng nặng không có thay thế (10-20mg/kg q12h)"
+      },
+      "renalAdjustment": {
+        "formula": "Cockcroft-Gault",
+        "brackets": [
+          { "crcl": ">50", "recommendation": "Liều chuẩn (500mg q12h)" },
+          { "crcl": "30-50", "recommendation": "250-500mg PO mỗi 12 giờ" },
+          { "crcl": "5-29", "recommendation": "250-500mg PO mỗi 18-24 giờ" }
+        ]
+      },
+      "hepaticWarning": "Theo dõi men gan; nguy cơ tổn thương gan acute hiếm gặp.",
+      "blackBoxWarning": "Nguy cơ viêm gân/đứt gân Achilles, bệnh thần kinh ngoại biên, tác dụng phụ trên TKTƯ và làm trầm trọng bệnh Nhược cơ (Myasthenia gravis). Tránh dùng trong viêm cơ gân.",
+      "adverseEffects": ["Đau gân/Viêm gân Achilles", "Bệnh thần kinh ngoại biên", "Kéo dài khoảng QT", "Tiêu chảy / Nôn", "Nhạy cảm ánh sáng"],
+      "contraindications": ["Tiền sử đứt/viêm gân do Quinolone", "Dùng đồng thời với Tizanidine", "Bệnh nhược cơ"]
+    }
+  ]
+}

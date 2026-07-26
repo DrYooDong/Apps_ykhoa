@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Trình đọc bài viết & khuyến cáo y học chứng cứ - CliniPortal">
+  <title>Tài liệu Y khoa – CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/components/header.css">
+  <link rel="stylesheet" href="../../css/components/footer.css">
+  <link rel="stylesheet" href="../../css/components/article-reader.css">
+
+  <script src="../../js/main.js" defer></script>
+  <script src="../../components/header.js" defer></script>
+  <script src="../../components/footer.js" defer></script>
+  <script src="../../js/core/storage-service.js" defer></script>
+  <script src="../../js/utils/markdown-renderer.js" defer></script>
+  <script src="../../js/core/article-reader-engine.js" defer></script>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../components/header.html"></div>
+
+  <main class="article-reader-container">
+    <!-- Header Card -->
+    <header class="article-header-card">
+      <div class="article-meta-badges">
+        <span class="article-badge" id="article-category">Guidelines</span>
+        <span style="font-size: 0.85rem; color: var(--color-text-muted);"><i class="fa-regular fa-clock"></i> <span id="article-readtime">-- phút đọc</span></span>
+      </div>
+
+      <h1 class="article-title-main" id="article-title">Đang tải bài viết...</h1>
+
+      <div class="article-meta-bar">
+        <div class="article-author-info">
+          <span><i class="fa-solid fa-user-doctor" style="color: var(--color-primary);"></i> Tác giả: <strong id="article-author">CliniPortal</strong></span>
+          <span><i class="fa-regular fa-calendar-check"></i> Cập nhật: <span id="article-date">--</span></span>
+        </div>
+
+        <div class="article-actions-bar">
+          <button class="article-action-btn" id="btn-font-dec" title="Giảm cỡ chữ">A-</button>
+          <button class="article-action-btn" id="btn-font-inc" title="Tăng cỡ chữ">A+</button>
+          <button class="article-action-btn" id="btn-article-bookmark">
+            <i class="fa-regular fa-bookmark"></i> Lưu bài viết
+          </button>
+          <button class="article-action-btn" id="btn-article-print">
+            <i class="fa-solid fa-print"></i> In / PDF
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content & Sidebar Grid -->
+    <div class="article-grid-layout">
+      <!-- Left Main Article Paper -->
+      <article class="article-main-paper" id="article-content-container">
+        <!-- Markdown content rendered dynamically -->
+      </article>
+
+      <!-- Right Sticky Sidebar -->
+      <aside class="article-sidebar-sticky">
+        <!-- Interactive Table of Contents (TOC) -->
+        <div class="toc-card">
+          <div class="toc-card-title">
+            <i class="fa-solid fa-list-ul"></i> Mục Lục Bài Viết
+          </div>
+          <ul class="toc-list" id="article-toc-list">
+            <!-- TOC items rendered dynamically -->
+          </ul>
+        </div>
+
+        <!-- Personal Notes Widget -->
+        <div class="notes-card">
+          <div class="toc-card-title" style="color: var(--color-text);">
+            <i class="fa-regular fa-pen-to-square" style="color: var(--color-primary);"></i> Ghi Chú Cá Nhân
+          </div>
+          <textarea class="note-textarea" id="article-note-input" placeholder="Viết ghi chú ngắn cho bài học này..."></textarea>
+          <button class="article-action-btn" id="btn-save-article-note" style="width: 100%; justify-content: center; background: var(--color-primary); color: white; border: none;">
+            <i class="fa-solid fa-floppy-disk"></i> Lưu ghi chú
+          </button>
+          <div id="article-notes-list" style="margin-top: 0.75rem;">
+            <!-- Saved notes list -->
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <div id="footer-placeholder" data-footer-path="../../components/footer.html"></div>
+</body>
+
+</html>
