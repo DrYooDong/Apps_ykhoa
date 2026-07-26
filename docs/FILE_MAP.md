@@ -92,6 +92,8 @@
 | `components/cong-cu.css` | Styling tùy chỉnh cho Hub Công cụ | `cong-cu.html` |
 | `components/pulse.css` | Styling CliniPortal Pulse Command Center Dashboard | `index.html` |
 | `components/evidence-bridge.css` | Styling nhãn bằng chứng chứng cứ & Modal Tooltip | Xuyên phân hệ |
+| `components/chinh-lieu-khang-sinh.css` | Styling giao diện Chỉnh liều kháng sinh & Tra cứu KSĐ | `pages/Công cụ/Truyền Nhiễm/chinh-lieu-khang-sinh.html` |
+| `components/studio-system.css` | Studio Design System CSS chuẩn cho tất cả công cụ Studio | `pages/Công cụ/**` |
 
 ---
 
@@ -136,6 +138,7 @@
 | `micro-studio/micro-scenarios.js` | Ca bệnh lâm sàng vi sinh & nhiễm khuẩn cấp cứu | `Microbiology_Studio.html` |
 | `micro-studio/micro-svg-engine.js` | Động cơ SVG Vector dựng kính hiển vi ảo (Gram, AFB, Yeast) & Đĩa cấy thạch | `Microbiology_Studio.html` |
 | `micro-studio/micro-engine.js` | Động cơ nhận diện tác nhân vi sinh & Antibiogram matching | `Microbiology_Studio.html` |
+| `calculators/chinh-lieu-khang-sinh.js` | Core JS Engine & Database tính toán liều kháng sinh theo Cockcroft-Gault, PK/PD & Tra cứu KSĐ | `pages/Công cụ/Truyền Nhiễm/chinh-lieu-khang-sinh.html` |
 | `micro-studio/micro-studio.js` | UI Controller tổng hợp Microbiology Pro Studio & Quiz | `Microbiology_Studio.html` |
 | `pharmacology-symptoms.js` | Filter dược lý theo triệu chứng | `pages/Dược lý/Triệu chứng/**` |
 | `pharmacology-tools.js` | Logic tương tác đa thuốc, hiệu chỉnh liều gan thận, quy đổi liều tương đương & Antidote | `pages/Dược lý/**` |

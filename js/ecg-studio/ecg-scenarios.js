@@ -827,6 +827,279 @@
         'Pha âm của sóng P ở V1 rộng và sâu > 1mm × 0.04s (Chỉ số Morris).',
         'Cơ chế: Khử cực nhĩ trái bị kéo dài do buồng nhĩ trái bị giãn to. Thường gặp trong Hẹp/Hở van 2 lá, Tăng huyết áp mạn, Suy tim trái.'
       ]
+    },
+
+    // ═══════════════════════════════════════════════════════════════
+    // TÌNH HUỐNG MỚI — Nguồn: 150 ECG Problems (Hampton, 4th ed.)
+    // ═══════════════════════════════════════════════════════════════
+
+    {
+      id: 'sinus_arrhythmia_student_case',
+      title: 'Khám Sức Khỏe — Sinh Viên Y Khoa ECG "Bất Thường"',
+      category: 'Rối loạn nhịp',
+      difficulty: 'Dễ',
+      patient: { age: 20, sex: 'Nam', weight: 65, occupation: 'Sinh viên Y khoa' },
+      vitals: { hr: 70, sbp: 115, dbp: 70, spo2: 99, temp: 36.6, rr: 14 },
+      symptoms: [
+        'Không có triệu chứng gì',
+        'ECG được ghi trong buổi thực hành lâm sàng',
+        'Nhịp tim dao động từ 60-80 l/phút theo chu kỳ thở'
+      ],
+      context: 'Sinh viên y khoa được ghi ECG trong buổi thực hành tại khoa Tim mạch. Nghe tim hoàn toàn bình thường. Nhịp tim thấy không đều khi đếm mạch. Giáo viên yêu cầu sinh viên tự đọc ECG của chính mình.',
+      modifiers: ['sinus_arrhythmia'],
+      goldAnswer: 'ECG Bình Thường với Loạn Nhịp Xoang Hô Hấp (Sinus Arrhythmia) — Biến thể sinh lý bình thường',
+      teachingPoints: [
+        'Loạn nhịp xoang: Khoảng PP/RR thay đổi theo chu kỳ hô hấp — nhanh hơn khi hít vào, chậm hơn khi thở ra.',
+        'Hình dạng sóng P hoàn toàn bình thường và đồng nhất (phân biệt với Ngoại tâm thu nhĩ có sóng P biến dạng).',
+        'Cơ chế: Tăng trương lực dây X trong thì thở ra làm chậm nhịp. Rất phổ biến ở người trẻ và vận động viên.',
+        'Không cần điều trị! Biến mất khi gắng sức. Không nhầm với Hội chứng nút xoang bệnh lý.'
+      ]
+    },
+    {
+      id: 'dextrocardia_case',
+      title: 'Khám Sức Khỏe Định Kỳ — ECG Đảo Ngược Lạ Kỳ (Dextrocardia)',
+      category: 'Rối loạn dẫn truyền',
+      difficulty: 'Trung bình',
+      patient: { age: 25, sex: 'Nam', weight: 68, occupation: 'Nhân viên ngân hàng' },
+      vitals: { hr: 70, sbp: 120, dbp: 75, spo2: 99, temp: 36.7, rr: 16 },
+      symptoms: [
+        'Khám sức khỏe định kỳ đi làm',
+        'Hoàn toàn khỏe mạnh, không triệu chứng'
+      ],
+      context: 'Khám sức khỏe định kỳ. ECG ghi nhận hình ảnh rất bất thường: sóng P âm ở DI, trục lệch phải, sóng R ưu thế ở aVR và QRS giảm dần từ V1 sang V6. Nghe tim thấy mỏm tim bên PHẢI lồng ngực.',
+      modifiers: ['lpfb'],
+      goldAnswer: 'Tim Vị Phải (Dextrocardia) — Tim nằm ở ngực phải thay vì ngực trái bình thường',
+      teachingPoints: [
+        'Dấu hiệu ECG điển hình của Dextrocardia: Sóng P âm ở DI (đảo cực điện trục), Trục lệch phải mạnh, Sóng R giảm dần từ V1 sang V6 (ngược bình thường).',
+        'Sóng R ưu thế ở aVR (thay vì aVL như bình thường).',
+        'Loại trừ nguyên nhân kỹ thuật: Đổi chuyển đạo tay phải-trái làm sóng P trở lại dương ở DI. Chest leads V1-V6 không bị ảnh hưởng nếu chỉ đổi chuyển đạo tay.',
+        'Nhiều bệnh nhân Dextrocardia sống hoàn toàn bình thường. Siêu âm tim đánh giá xem có kèm tim bẩm sinh (Situs Inversus Totalis) hay không.'
+      ]
+    },
+    {
+      id: 'rbbb_asd_case',
+      title: 'Khám Nhi Tim Mạch — Tim Thông Liên Nhĩ (ASD) Phát Hiện Tình Cờ',
+      category: 'Rối loạn dẫn truyền',
+      difficulty: 'Trung bình',
+      patient: { age: 15, sex: 'Nam', weight: 48, occupation: 'Học sinh' },
+      vitals: { hr: 83, sbp: 110, dbp: 65, spo2: 98, temp: 36.8, rr: 16 },
+      symptoms: [
+        'Không triệu chứng cơ năng, phát hiện tình cờ qua thăm khám',
+        'Cha mẹ lo lắng vì nghe tim có tiếng lạ'
+      ],
+      context: 'Khám nhi vì phát hiện tiếng thổi tim tâm thu ở bờ trái xương ức. Tiếng T2 tách đôi rộng CỐ ĐỊNH không thay đổi theo hô hấp (khác với tách đôi sinh lý). ECG ghi nhận dạng RBBB với trục lệch phải nhẹ, RSR\' ở V1-V3.',
+      modifiers: ['rbbb'],
+      goldAnswer: 'Block Nhánh Phải (RBBB) do Thông Liên Nhĩ (Atrial Septal Defect - ASD)',
+      teachingPoints: [
+        'RBBB dạng RSR\' ở V1-V3 với sóng S rộng sâu ở V5-V6 và DI. QRS >= 120ms.',
+        'Thông liên nhĩ (ASD): Lỗ thông nối nhĩ phải và nhĩ trái, tăng lưu lượng máu qua phổi, giãn thất phải, dẫn đến RBBB.',
+        'Tiếng T2 tách đôi CỐ ĐỊNH (không thay đổi hô hấp) là đặc trưng của ASD — khác với tách đôi sinh lý thay đổi theo hô hấp.',
+        'Siêu âm tim với Doppler màu để xác định chẩn đoán. Điều trị: Đóng lỗ thông qua da (catheter "umbrella") hoặc phẫu thuật tim hở.'
+      ]
+    },
+    {
+      id: 'poor_r_wave_old_anterior_mi_case',
+      title: 'Khám Nội Tim Mạch — Khó Thở & Đau Ngực Gắng Sức Mạn Tính',
+      category: 'Bệnh mạch vành',
+      difficulty: 'Trung bình',
+      patient: { age: 65, sex: 'Nam', weight: 72, occupation: 'Hưu trí' },
+      vitals: { hr: 48, sbp: 130, dbp: 80, spo2: 97, temp: 36.6, rr: 16 },
+      symptoms: [
+        'Khó thở khi leo cầu thang và đi bộ nhanh',
+        'Đau ngực kiểu thắt tăng khi gắng sức, nghỉ tự hết',
+        'Không nhớ có đau ngực cấp tính nào trong quá khứ'
+      ],
+      context: 'Khám ngoại trú. ECG ghi nhận nhịp chậm xoang (48 l/phút), sóng R rất nhỏ ở V2-V4 và xuất hiện R bình thường đột ngột ở V5 — "Poor R wave progression". Không có sóng Q rõ ràng.',
+      modifiers: ['sinus_brady', 'nstemi'],
+      goldAnswer: 'Tiến Triển R Kém (Poor R Wave Progression) — Gợi ý Nhồi Máu Cơ Tim Thành Trước Cũ Im Lặng',
+      teachingPoints: [
+        '"Poor R wave progression": Sóng R ở V2-V4 rất nhỏ (< 3mm), sau đó đột ngột R bình thường ở V5 — không có sự tăng dần sinh lý.',
+        'Không nhất thiết phải có sóng Q hoại tử mới nghĩ đến nhồi máu cũ — tiến triển R kém là dấu hiệu tương đương.',
+        'Chẩn đoán phân biệt: Đặt điện cực ngực không đúng vị trí (cần đặt lại), Phì đại thất phải (RBBB), COPD (lồng ngực hình thùng xoay ngược).',
+        'Cần: Lặp lại ECG đặt điện cực đúng vị trí. Siêu âm tim + Stress test/Xạ hình cơ tim để khảo sát chức năng và thiếu máu.'
+      ]
+    },
+    {
+      id: 'aortic_dissection_mi_case',
+      title: 'Cấp Cứu Tim Mạch — Đau Ngực-Lưng Đột Ngột Như Dao Xé',
+      category: 'Bệnh mạch vành',
+      difficulty: 'Nâng cao',
+      patient: { age: 50, sex: 'Nam', weight: 82, occupation: 'Nhân viên văn phòng' },
+      vitals: { hr: 88, sbp: 160, dbp: 90, spo2: 95, temp: 36.8, rr: 20 },
+      symptoms: [
+        'Đau ngực dữ dội NGAY TỨC KHẮC như dao xé từ trước ra sau lưng',
+        'Đau lan ra sau lưng và bụng dưới',
+        'Huyết áp tay phải 160mmHg, tay trái 140mmHg (chênh 20mmHg)'
+      ],
+      context: 'Cấp cứu đau ngực-lưng đột ngột. ECG ghi nhận dấu hiệu STEMI thành dưới (ST chênh lên DII, DIII, aVF). X-quang ngực thấy trung thất giãn rộng. Tiền sử tăng huyết áp không điều trị nhiều năm.',
+      modifiers: ['sinus_normal', 'stemi_inferior'],
+      goldAnswer: 'Phình Tách Động Mạch Chủ (Aortic Dissection) TYPE A Gây Nhồi Máu Cơ Tim Thứ Phát',
+      teachingPoints: [
+        'Bóc tách ĐM chủ type A có thể lan tới lỗ vào ĐM vành phải (RCA) gây STEMI thành dưới thứ phát — KHÔNG phải STEMI nguyên phát!',
+        'Dấu hiệu phân biệt: Đau lan ra LƯNG ngay lập tức (như dao xé), Huyết áp chênh lệch 2 tay > 20mmHg, Trung thất rộng trên Xquang, Tiền sử THA nặng.',
+        'TUYỆT ĐỐI CHỐNG CHỈ ĐỊNH Thrombolysis / Heparin liều cao khi nghi bóc tách ĐM chủ — Gây chảy máu ào ạt vào khoang bóc tách gây tử vong!',
+        'Chẩn đoán xác định: CT ĐM chủ có cản quang khẩn cấp. Điều trị: Phẫu thuật tim hở khẩn cấp (Type A) hoặc can thiệp nội mạch (Type B).'
+      ]
+    },
+
+    // ═══════════════════════════════════════════════════════════════
+    // TÌNH HUỐNG MỚI — Nguồn: International Criteria 2017 (704.full.md)
+    // ECG Vận Động Viên: Biến Thể Bình Thường & Bất Thường
+    // ═══════════════════════════════════════════════════════════════
+
+    {
+      id: 'athlete_sinus_brady_case',
+      title: 'Tầm Soát VĐV — Nhịp Chậm Xoang Sinh Lý',
+      category: 'Rối loạn nhịp',
+      difficulty: 'Dễ',
+      patient: { age: 24, sex: 'Nam', weight: 72, occupation: 'Vận động viên chạy marathon chuyên nghiệp' },
+      vitals: { hr: 42, sbp: 110, dbp: 65, spo2: 99, temp: 36.5, rr: 12 },
+      symptoms: [
+        'Không triệu chứng gì bất thường',
+        'Tập luyện 6-8 giờ/ngày, 6 ngày/tuần trong 5 năm',
+        'Khám tầm soát tim mạch trước mùa thi đấu quốc tế'
+      ],
+      context: 'Tầm soát tim mạch theo tiêu chuẩn UEFA/IOC. VĐV marathon chuyên nghiệp tập luyện cường độ cao kéo dài. ECG nghỉ ghi nhận nhịp chậm xoang 42 l/phút. Không tiền sử ngất, không gia đình đột tử trẻ. Khi đi bộ nhanh 3 phút, nhịp tim tăng về 80 l/phút bình thường.',
+      modifiers: ['sinus_brady'],
+      goldAnswer: 'Nhịp Chậm Xoang Sinh Lý ở Vận Động Viên (Athlete\'s Sinus Bradycardia) — Biến thể bình thường',
+      teachingPoints: [
+        'Theo tiêu chuẩn quốc tế 2017 (BJSM): Nhịp chậm xoang >= 30 bpm ở VĐV khỏe mạnh là BÌNH THƯỜNG sinh lý — không cần khảo sát thêm.',
+        'Cơ chế: Tập luyện bền bỉ tăng trương lực dây X mạn tính; thất trái to, thể tích nhát bóp tăng, giảm tần số tim để duy trì cung lượng tim.',
+        'Phân biệt với Bệnh nút xoang bệnh lý: VĐV khỏe mạnh nhịp PHẢI tăng bình thường khi gắng sức; không ngất; PR < 400ms; không nhịp ngừng > 3 giây.',
+        'Chỉ cần thêm khảo sát khi: HR < 30 bpm, Ngất/tiền ngất, Nhịp ngừng dài bất thường, Không đáp ứng nhịp khi gắng sức.'
+      ]
+    },
+    {
+      id: 'early_repolarization_athlete_case',
+      title: 'Tầm Soát VĐV — Tái Cực Sớm Lành Tính',
+      category: 'Rối loạn nhịp',
+      difficulty: 'Dễ',
+      patient: { age: 22, sex: 'Nam', weight: 80, occupation: 'Cầu thủ bóng đá chuyên nghiệp' },
+      vitals: { hr: 58, sbp: 115, dbp: 65, spo2: 99, temp: 36.6, rr: 14 },
+      symptoms: [
+        'Không có triệu chứng tim mạch nào',
+        'Tập bóng đá chuyên nghiệp 5-6 buổi/tuần',
+        'Khám tầm soát tim trước mùa giải'
+      ],
+      context: 'Tầm soát tim mạch trước mùa giải bóng đá. ECG 12 chuyển đạo: Nhịp chậm 58 bpm, J-point chênh lên 1-2mm kèm ST lõm (concave) và sóng T cao nhọn ở DII, aVF, V4-V6. Điện thế QRS cao đáp ứng tiêu chuẩn Sokolow-Lyon.',
+      modifiers: ['sinus_brady', 'lvh'],
+      goldAnswer: 'Tim Vận Động Viên (Athlete\'s Heart) — Tái Cực Sớm (Early Repolarization) & Tăng Điện Thế QRS',
+      teachingPoints: [
+        'Tái cực sớm (Early Repolarization): J-point chênh lên >= 1mm, ST lõm lên (concave), T cao nhọn ở DI/DII/aVF/V4-V6. Gặp ở 45% VĐV da trắng.',
+        'Tăng điện thế QRS đơn độc ở VĐV là BÌNH THƯỜNG — phản ánh tăng thể tích thất trái do tập luyện, KHÔNG phải bệnh lý HCM.',
+        'LVH lành tính: T thuận chiều cao. LVH bệnh lý: T âm/ST chênh xuống ở V5-V6 (Strain pattern) — cần khảo sát thêm.',
+        'Theo tiêu chuẩn QT 2017: Isolated voltage criteria for LVH ở VĐV KHÔNG cần khảo sát nếu KHÔNG có T âm/ST chênh xuống/Q bệnh lý đi kèm.'
+      ]
+    },
+    {
+      id: 'junctional_rhythm_athlete_case',
+      title: 'Tầm Soát VĐV — Nhịp Bộ Nối Khi Nghỉ',
+      category: 'Rối loạn nhịp',
+      difficulty: 'Trung bình',
+      patient: { age: 28, sex: 'Nam', weight: 75, occupation: 'Vận động viên chèo thuyền' },
+      vitals: { hr: 48, sbp: 110, dbp: 65, spo2: 99, temp: 36.7, rr: 14 },
+      symptoms: [
+        'Không triệu chứng, khám định kỳ bắt buộc',
+        'Tập chèo thuyền đua 4-6 giờ/ngày',
+        'Không thấy sóng P rõ trên monitor theo dõi'
+      ],
+      context: 'Tầm soát tim mạch VĐV chuyên nghiệp. ECG ghi nhận nhịp đều 48 bpm, QRS hẹp bình thường. Sóng P không rõ ràng hoặc P âm xuất hiện ngay trước/sau QRS. Sau 3 phút đi bộ nhanh, nhịp tim chuyển về nhịp xoang 82 bpm bình thường.',
+      modifiers: ['junctional'],
+      goldAnswer: 'Nhịp Bộ Nối Khi Nghỉ (Junctional Escape Rhythm) ở Vận Động Viên — Biến thể sinh lý',
+      teachingPoints: [
+        'Nhịp bộ nối ở VĐV: QRS hẹp đều (KHÔNG phải VT!), tần số 40-60 bpm. P âm hoặc ẩn — nút AV chủ nhịp thay vì nút xoang.',
+        'Cơ chế: Trương lực dây X tăng mạn tính làm nút xoang chậm hơn nút AV — nút AV "thay thế" làm chủ nhịp bù trừ.',
+        'Theo tiêu chuẩn 2017: Junctional escape rhythm ở VĐV là BÌNH THƯỜNG khi nhịp tự chuyển về xoang khi gắng sức. Gặp khoảng 8% VĐV thi đấu.',
+        'Cần đánh giá thêm nếu: Không chuyển về xoang khi gắng sức, QRS rộng bất thường, Tần số < 35 bpm, Triệu chứng ngất/tiền ngất.'
+      ]
+    },
+    {
+      id: 'rbbb_athlete_benign_case',
+      title: 'Tầm Soát VĐV — Block Nhánh Phải Không Hoàn Toàn Sinh Lý',
+      category: 'Rối loạn dẫn truyền',
+      difficulty: 'Dễ',
+      patient: { age: 20, sex: 'Nam', weight: 85, occupation: 'Vận động viên bơi lội' },
+      vitals: { hr: 52, sbp: 115, dbp: 68, spo2: 99, temp: 36.6, rr: 14 },
+      symptoms: [
+        'Hoàn toàn không triệu chứng',
+        'Khám tầm soát trước mùa thi đấu quốc tế',
+        'Tập luyện bơi lội 7-8 giờ/ngày'
+      ],
+      context: 'Tầm soát tim mạch VĐV. ECG ghi nhận dạng rSR\' ở V1 với QRS < 120ms (chưa hoàn toàn), sóng S rộng nhẹ ở DI và V6. Không có ST-T bất thường. Siêu âm tim: Thất phải giãn nhẹ (thể tích tăng sinh lý), chức năng bơm máu hoàn toàn bình thường.',
+      modifiers: ['rbbb'],
+      goldAnswer: 'Block Nhánh Phải KHÔNG Hoàn Toàn (Incomplete RBBB) ở Vận Động Viên — Biến thể bình thường',
+      teachingPoints: [
+        'Incomplete RBBB: QRS < 120ms với dạng rSR\' ở V1 và sóng S rộng ở DI/V6.',
+        'Theo tiêu chuẩn Quốc tế 2017: Incomplete RBBB là BÌNH THƯỜNG ở VĐV — phản ánh thất phải tái cấu trúc sinh lý (giãn thể tích), không phải bệnh lý dẫn truyền.',
+        'Complete RBBB (QRS >= 120ms) ở VĐV cần khảo sát thêm để loại trừ: ASD, ARVC (bệnh cơ tim thất phải dạng sinh loạn nhịp), Brugada.',
+        'Cơ chế incomplete RBBB ở VĐV: Thất phải giãn to sinh lý làm thời gian dẫn truyền tăng nhẹ → rSR\' ở V1. Có thể tự hồi phục khi ngừng tập luyện.'
+      ]
+    },
+    {
+      id: 'wpw_young_athlete_risk_case',
+      title: 'Tầm Soát VĐV — WPW Nguy Cơ Cao Cần Triệt Đốt',
+      category: 'Rối loạn dẫn truyền',
+      difficulty: 'Nâng cao',
+      patient: { age: 18, sex: 'Nam', weight: 65, occupation: 'Vận động viên điền kinh' },
+      vitals: { hr: 68, sbp: 115, dbp: 70, spo2: 99, temp: 36.8, rr: 16 },
+      symptoms: [
+        'Tiền sử 2 cơn tim đập nhanh > 200 l/phút tự hết trong 6 tháng qua',
+        'Ngất 1 lần khi đang thi chạy 800m',
+        'Hiện tại hoàn toàn bình thường khi khám'
+      ],
+      context: 'VĐV điền kinh trẻ với tiền sử nhịp nhanh và ngất 1 lần khi gắng sức. ECG 12 chuyển đạo ghi nhận PR ngắn 100ms, sóng Delta rõ và QRS giãn rộng 130ms điển hình. Không triệu chứng hiện tại. Cần đánh giá nguy cơ đột tử.',
+      modifiers: ['wpw'],
+      goldAnswer: 'Hội Chứng WPW ở Vận Động Viên — Nguy Cơ CAO Cần Triệt Đốt Đường Phụ Ngay',
+      teachingPoints: [
+        'WPW ở VĐV là ECG BẤT THƯỜNG theo tiêu chuẩn Quốc tế 2017 — cần đánh giá điện sinh lý (EPS) bắt buộc.',
+        'Cơ chế nguy hiểm: Rung nhĩ dẫn truyền nhanh qua đường phụ Kent (bỏ qua nút AV) → QRS rộng tần số 250-300 bpm → Rung thất → Đột tử!',
+        'Yếu tố nguy cơ CAO: (1) Ngất khi gắng sức, (2) Cơn AVRT có triệu chứng, (3) Khoảng RR ngắn nhất < 250ms trong rung nhĩ (EPS).',
+        'Chỉ định: Triệt đốt đường phụ qua catheter (RF Catheter Ablation) trước khi cho phép thi đấu. VĐV WPW có triệu chứng PHẢI ngừng thi đấu đến khi được ablation thành công.'
+      ]
+    },
+    {
+      id: 'black_athlete_ecg_variant_case',
+      title: 'Tầm Soát VĐV — Biến Thể Tái Cực VĐV Da Đen',
+      category: 'Rối loạn nhịp',
+      difficulty: 'Khó',
+      patient: { age: 21, sex: 'Nam', weight: 88, occupation: 'Cầu thủ bóng rổ người Mỹ gốc Phi' },
+      vitals: { hr: 55, sbp: 120, dbp: 70, spo2: 99, temp: 36.7, rr: 14 },
+      symptoms: [
+        'Hoàn toàn không triệu chứng',
+        'Tập bóng rổ chuyên nghiệp 5-6 giờ/ngày',
+        'Lo lắng vì bị báo "ECG bất thường"'
+      ],
+      context: 'Tầm soát tim mạch VĐV bóng rổ chuyên nghiệp. ECG: Điện thế QRS cao (Sokolow-Lyon > 40mm), J-point elevation và ST chênh lên dạng vòm (convex/domed) ở V1-V4, tiếp theo là sóng T âm ở V1-V4. Không triệu chứng, không gia đình đột tử. Siêu âm tim: Hoàn toàn bình thường.',
+      modifiers: ['sinus_brady', 'rvh'],
+      goldAnswer: 'Biến Thể Tái Cực Bình Thường ở VĐV Da Đen (Black Athlete\'s ECG) — Không phải bệnh lý!',
+      teachingPoints: [
+        'Tiêu chuẩn Quốc tế 2017: T âm ở V1-V4 SAU J-point elevation và ST dạng vòm (convex/domed) ở VĐV da đen là BIẾN THE BINH THUONG — KHÔNG cần khảo sát thêm.',
+        'Dịch tễ học: Gặp ở 13% VĐV da đen nam (so với 4% người da đen không tập luyện) — phản ánh đặc điểm tái cực di truyền + thích nghi tập luyện.',
+        'Phân biệt với BỆNH LÝ nguy hiểm: T âm KHÔNG có J-elevation đứng trước gợi ý ARVC hoặc HCM. T âm lan rộng V5-V6 cần khảo sát MRI tim.',
+        'Nguyên tắc "Seattle 2017": T âm kèm J-elevation + convex ST → Bình thường ở VĐV da đen. T âm đơn thuần không có J-elevation hoặc lan V5-V6 → Cần MRI tim.'
+      ]
+    },
+    {
+      id: 'wenckebach_inferior_stemi_case',
+      title: 'Cấp Cứu Tim Mạch — STEMI Thành Dưới Kèm Block Wenckebach Lành Tính',
+      category: 'Bệnh mạch vành',
+      difficulty: 'Khó',
+      patient: { age: 70, sex: 'Nam', weight: 68, occupation: 'Cán bộ hưu trí' },
+      vitals: { hr: 52, sbp: 100, dbp: 60, spo2: 94, temp: 37.0, rr: 20 },
+      symptoms: [
+        'Đau thắt ngực dữ dội vùng thượng vị kéo dài 2 giờ',
+        'Buồn nôn, nôn mửa, vã mồ hôi lạnh',
+        'Tim đập chậm, thỉnh thoảng cảm giác hẫng nhịp'
+      ],
+      context: 'Cấp cứu đau ngực thượng vị. ECG: ST chênh lên ở DII, DIII, aVF kèm soi gương ST chênh xuống ở DI, aVL. Trên dải nhịp: PR dài dần rồi bị mất một nhịp QRS lặp đi lặp lại (chu kỳ Wenckebach). HR 52 bpm. Troponin đang chờ kết quả.',
+      modifiers: ['sinus_brady', 'stemi_inferior', 'av_block_2_wenckebach'],
+      goldAnswer: 'STEMI Thành Dưới Cấp Kèm Block AV Độ II Mobitz I (Wenckebach) / Nhịp Chậm Xoang',
+      teachingPoints: [
+        'Block Wenckebach (Mobitz I) kèm STEMI thành dưới là LÀNH TÍNH — cùng nguồn máu từ RCA cấp cho nút AV và thành dưới thất trái.',
+        'Mobitz I vs Mobitz II: Mobitz I: PR dài dần rồi mất 1 QRS — lành tính; Mobitz II: PR cố định rồi đột ngột mất QRS — ác tính, cần pacemaker!',
+        'Xử trí STEMI: Ưu tiên PCI cấp cứu ngay lập tức cho STEMI thành dưới. Block Wenckebach thường TỰ PHỤC HỒI sau tái tưới máu — không cần pacemaker ngay.',
+        'Monitoring bắt buộc! Có thể tiến triển tạm thời thành Block AV hoàn toàn trong 24-48h đầu — cần sẵn sàng pacemaker tạm thời nếu huyết động xấu.'
+      ]
     }
   ];
 
