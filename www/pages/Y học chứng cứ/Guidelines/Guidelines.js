@@ -8,6 +8,11 @@
     let currentTab = 'list'; // 'list', 'saved', 'compare'
     let showAdvancedFilters = false;
 
+    function resolveStudyFile(filePath) {
+      if (!filePath) return '';
+      return filePath.replace(/^Kho Guidelines\//i, 'kho-guidelines/');
+    }
+
     // Supabase state
     let supabaseClient = null;
     let supabaseConfig = { url: '', key: '' };
@@ -824,7 +829,7 @@
                 <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
                   <a class="study-title" href="#" onclick="event.preventDefault(); toggleExpandRow('${study.id}', event)">${escapeHtml(study.title)}</a>
                   ${staleInline}
-                  ${study.file ? `<a href="${study.file}" class="badge-summary-inline" onclick="event.stopPropagation()" title="Mở bài viết tóm tắt chi tiết">📝 Tóm tắt</a>` : ''}
+                  ${study.file ? `<a href="${resolveStudyFile(study.file)}" class="badge-summary-inline" onclick="event.stopPropagation()" title="Mở bài viết tóm tắt chi tiết">📝 Tóm tắt</a>` : ''}
                   ${sgInlineBtn}
                 </div>
                 <span class="study-drug">${escapeHtml(study.drug || 'N/A')} • ${escapeHtml(study.organization || 'N/A')} (${study.year})</span>
@@ -918,7 +923,7 @@
                     
                     <div class="detail-actions">
                       ${study.sourceUrl ? `<a href="${study.sourceUrl}" target="_blank" class="btn btn-small">📄 Bài báo gốc</a>` : ''}
-                      ${study.file ? `<a href="${study.file}" class="btn btn-small btn-primary">📝 Tóm tắt</a>` : ''}
+                      ${study.file ? `<a href="${resolveStudyFile(study.file)}" class="btn btn-small btn-primary">📝 Tóm tắt</a>` : ''}
                       ${sgCount > 0 ? `<button class="btn btn-small" style="color:#0891b2;border-color:rgba(8,145,178,0.4);" onclick="event.stopPropagation();openSubgroupModal('${study.id}',event)">🧬 Subgroup (${sgCount})</button>` : ''}
                       <button class="btn btn-small" onclick="openEditModal('${study.id}', event)">✏️ Sửa</button>
                       <button class="btn btn-small" style="color: var(--color-practice-changing); border-color: rgba(220,38,38,0.3);" onclick="deleteStudy('${study.id}', event)">🗑️ Xóa</button>
@@ -1161,7 +1166,7 @@
 
             <div class="compare-row" style="display: flex; gap: 8px; border-bottom: none; margin-top: auto; padding-top: 0.5rem;">
               ${study.sourceUrl ? `<a href="${study.sourceUrl}" target="_blank" class="btn btn-small" style="flex: 1; text-align: center; justify-content: center;">📄 Nguồn</a>` : ''}
-              ${study.file ? `<a href="${study.file}" class="btn btn-small btn-primary" style="flex: 1; text-align: center; justify-content: center;">📝 Tóm tắt</a>` : ''}
+              ${study.file ? `<a href="${resolveStudyFile(study.file)}" class="btn btn-small btn-primary" style="flex: 1; text-align: center; justify-content: center;">📝 Tóm tắt</a>` : ''}
             </div>
           </div>
         `;

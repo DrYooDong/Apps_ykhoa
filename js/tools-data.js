@@ -6,7 +6,7 @@ const clinicalToolsData = [
     title: "Mẫu bệnh án nội khoa",
     description: "Hướng dẫn viết bệnh án nội khoa chuẩn hóa",
     icon: "📝",
-    link: "Chung/Bệnh án/benh-an-noi-khoa.html",
+    link: "general/benh-an-noi-khoa.html",
     part: "part1-section",
     tags: ["chung", "bệnh án", "hành chính", "mẫu"]
   },
@@ -15,7 +15,7 @@ const clinicalToolsData = [
     title: "Tra cứu mã ICD10 hưởng BHYT",
     description: "Tra cứu mã ICD10 hưởng Bảo hiểm y tế nhanh chóng",
     icon: "📝",
-    link: "Chung/Tra cứu mã ICD10/Tracuu_maICD10.html",
+    link: "general/tracuu-ma-icd10.html",
     part: "part1-section",
     tags: ["chung", "icd10", "bhyt", "bảo hiểm", "tra cứu"]
   },
@@ -24,7 +24,7 @@ const clinicalToolsData = [
     title: "Tính toán cỡ mẫu trong nghiên cứu",
     description: "Hướng dẫn tính toán cỡ mẫu trong nghiên cứu khoa học",
     icon: "🧮",
-    link: "Chung/NCKH/NCKH_Tinhcomau.html",
+    link: "general/nckh-tinh-co-mau.html",
     part: "part1-section",
     tags: ["chung", "nghiên cứu khoa học", "nckh", "cỡ mẫu", "thống kê"]
   },
@@ -33,7 +33,7 @@ const clinicalToolsData = [
     title: "Bộ Quy Đổi Liều Thuốc Tương Đương",
     description: "Quy đổi liều Corticoid, Opioid (OME), Statin, PPI, DOACs, Benzodiazepines chính xác",
     icon: "⚖️",
-    link: "Chung/QuyDoi_LieuTuongDuong.html",
+    link: "general/quy-doi-lieu-tuong-duong.html",
     part: "part1-section",
     tags: ["chung", "quy đổi", "liều lượng", "tương đương", "corticoid", "statin"]
   },
@@ -44,7 +44,7 @@ const clinicalToolsData = [
     title: "Sàng lọc Nhiễm khuẩn",
     description: "NEWS2, SOFA, qSOFA, SIRS, MEDS",
     icon: "🦠",
-    link: "Truyền Nhiễm/SL_Nhiem-khuan.html",
+    link: "infectious/sl-nhiem-khuan.html",
     part: "part2-section",
     tags: ["truyền nhiễm", "nhiễm khuẩn", "sepsis", "sofa", "qsofa", "news2"]
   },
@@ -53,7 +53,7 @@ const clinicalToolsData = [
     title: "Chỉnh liều kháng sinh",
     description: "Tra cứu kháng sinh đồ và chỉnh liều dựa trên chức năng thận",
     icon: "🦠",
-    link: "Truyền Nhiễm/Chinhlieu_khangsinh.html",
+    link: "infectious/chinh-lieu-khang-sinh.html",
     part: "part2-section",
     tags: ["truyền nhiễm", "kháng sinh", "chỉnh liều", "chức năng thận", "egfr"]
   },
@@ -62,7 +62,7 @@ const clinicalToolsData = [
     title: "Quản lý sử dụng Vancomycin",
     description: "Khởi liều, theo dõi MRSA, Vancomycin",
     icon: "🦠",
-    link: "Truyền Nhiễm/QL_Vancomycin.html",
+    link: "infectious/ql-vancomycin.html",
     part: "part2-section",
     tags: ["truyền nhiễm", "vancomycin", "mrsa", "kháng sinh", "trough"]
   },
@@ -71,7 +71,7 @@ const clinicalToolsData = [
     title: "Microbiology Pro Studio (Vi sinh lâm sàng)",
     description: "Giả lập kính hiển vi ảo, đĩa cấy, cây nhận diện vi khuẩn & Antibiogram S/I/R",
     icon: "🔬",
-    link: "Truyền Nhiễm/Microbiology_Studio.html",
+    link: "infectious/microbiology-studio.html",
     part: "part2-section",
     tags: ["truyền nhiễm", "vi sinh", "nhuộm gram", "kháng sinh đồ", "antibiogram", "vi khuẩn", "studio"]
   },
@@ -82,7 +82,7 @@ const clinicalToolsData = [
     title: "Bù dịch",
     description: "Mini-fluid challenge, Bolus, Mục tiêu CO, Cân bằng nước.",
     icon: "💧",
-    link: "Cấp cứu & hồi sức/QL_Budich.html",
+    link: "emergency/ql-bu-dich.html",
     part: "part3-section",
     tags: ["cấp cứu", "hồi sức", "bù dịch", "bolus", "sốc", "fluid"]
   },
@@ -91,7 +91,7 @@ const clinicalToolsData = [
     title: "Quản lý Vận mạch & Trợ tim",
     description: "Tính liều bơm tiêm điện, hướng dẫn chỉnh liều và chuyển đổi vận mạch an toàn",
     icon: "⚡",
-    link: "Cấp cứu & hồi sức/QL_Vanmach.html",
+    link: "emergency/ql-van-mach.html",
     part: "part3-section",
     tags: ["cấp cứu", "hồi sức", "vận mạch", "trợ tim", "noradrenaline", "adrenaline"]
   },
@@ -100,7 +100,7 @@ const clinicalToolsData = [
     title: "Ventilator Pro Studio — Giả Lập & Xử Trí Máy Thở ICU",
     description: "Workstation giả lập máy thở ICU 3 kênh sóng thở động, 5 chế độ thở (VCV, PCV, PSV, SIMV, CPAP), Bệnh nhân ảo & Quiz chẩn đoán",
     icon: "💨",
-    link: "Cấp cứu & hồi sức/QL_Maytho.html",
+    link: "emergency/ql-may-tho.html",
     part: "part3-section",
     tags: ["cấp cứu", "hồi sức", "máy thở", "thở máy", "cai thở máy", "icu", "ventilator", "studio", "sóng thở", "ards", "copd"]
   },
@@ -109,7 +109,7 @@ const clinicalToolsData = [
     title: "An thần & Giảm đau ICU",
     description: "RASS, CPOT, CAM-ICU & Máy tính bơm tiêm điện an thần ICU",
     icon: "💊",
-    link: "Cấp cứu & hồi sức/DG_AnthanICU.html",
+    link: "emergency/dg-an-than-icu.html",
     part: "part3-section",
     tags: ["cấp cứu", "hồi sức", "an thần", "rass", "cpot", "cam-icu", "bơm tiêm điện"]
   },
@@ -118,7 +118,7 @@ const clinicalToolsData = [
     title: "ECG Pro Studio 12 Chuyển Đạo",
     description: "Giải lập sóng ECG 12 chuyển đạo tương tác, thước đo Calipers ảo & Quiz chẩn đoán cấp cứu",
     icon: "⚡",
-    link: "Cấp cứu & hồi sức/ECG_Studio.html",
+    link: "emergency/ecg-studio.html",
     part: "part3-section",
     tags: ["cấp cứu", "hồi sức", "ecg", "điện tâm đồ", "tim mạch", "stemi", "caliper", "studio"]
   },
@@ -129,7 +129,7 @@ const clinicalToolsData = [
     title: "Đánh giá Viêm phổi",
     description: "CURB-65, PSI, IDSA/ATS, MDR Risk, SARI",
     icon: "🫁",
-    link: "Hô hấp & Lao/DG_Viem-phoi.html",
+    link: "respiratory/dg-viem-phoi.html",
     part: "part4-section",
     tags: ["hô hấp", "viêm phổi", "curb-65", "psi", "idsa", "sari"]
   },
@@ -138,7 +138,7 @@ const clinicalToolsData = [
     title: "CXR Pro Studio",
     description: "Đọc phim X-quang ngực cấp cứu 12 bước, CTR ảo & 20+ bất thường",
     icon: "🫁",
-    link: "Hô hấp & Lao/CXR_Studio.html",
+    link: "respiratory/cxr-studio.html",
     part: "part4-section",
     tags: ["hô hấp", "lao", "cxr", "x-quang", "phổi", "studio", "ctr"]
   },
@@ -149,7 +149,7 @@ const clinicalToolsData = [
     title: "Đánh giá Dinh dưỡng nội viện",
     description: "Nhu cầu năng lượng, Đạm (Protein), Dịch, Carbohydrate, Lipid",
     icon: "🍽️",
-    link: "Tiêu hóa & Dinh dưỡng/DG_Dinhduongnoitru.html",
+    link: "gastroenterology/dg-dinh-duong-noi-tru.html",
     part: "part5-section",
     tags: ["tiêu hóa", "dinh dưỡng", "nội viện", "calo", "protein", "năng lượng"]
   },
@@ -158,7 +158,7 @@ const clinicalToolsData = [
     title: "Đánh giá & Phân độ Xơ gan",
     description: "Child-Pugh, MELD-Na",
     icon: "🫗",
-    link: "Tiêu hóa & Dinh dưỡng/DG_Xogan.html",
+    link: "gastroenterology/dg-xo-gan.html",
     part: "part5-section",
     tags: ["tiêu hóa", "xơ gan", "child-pugh", "meld-na", "gan"]
   },
@@ -167,7 +167,7 @@ const clinicalToolsData = [
     title: "Phân tầng nguy cơ HCC",
     description: "Phân tầng nguy cơ mắc ung thư biểu mô tế bào gan (HCC) theo guideline AGA 2026",
     icon: "🫗",
-    link: "Tiêu hóa & Dinh dưỡng/DG_ptncHCC.html",
+    link: "gastroenterology/dg-ptnc-hcc.html",
     part: "part5-section",
     tags: ["tiêu hóa", "xơ gan", "hcc", "ung thư gan", "aga"]
   },
@@ -176,7 +176,7 @@ const clinicalToolsData = [
     title: "Xuất huyết Tiêu hóa cấp (UGIB & LGIB)",
     description: "Glasgow-Blatchford (GBS), Oakland Score & Phác đồ truyền máu, PPI",
     icon: "🫀",
-    link: "Tiêu hóa & Dinh dưỡng/DG_XHTH.html",
+    link: "gastroenterology/dg-xhth.html",
     part: "part5-section",
     tags: ["tiêu hóa", "xuất huyết", "gbs", "blatchford", "oakland", "truyền máu"]
   },
@@ -187,7 +187,7 @@ const clinicalToolsData = [
     title: "Chức năng thận",
     description: "Cockcroft-Gault, CKD-EPI 2021, KDIGO, KDIGO AKI",
     icon: "🔬",
-    link: "Thận & Điện giải - toan kiềm/renal-function.html",
+    link: "renal/renal-function.html",
     part: "part6-section",
     tags: ["thận", "điện giải", "egfr", "ckd", "aki", "cockcroft-gault"]
   },
@@ -196,7 +196,7 @@ const clinicalToolsData = [
     title: "Phân tích khí máu động mạch",
     description: "Henderson-Hasselbalch, Winters, Anion Gap, Delta Ratio",
     icon: "🔬",
-    link: "Thận & Điện giải - toan kiềm/DG_ABG.html",
+    link: "renal/dg-abg.html",
     part: "part6-section",
     tags: ["thận", "điện giải", "khí máu", "abg", "toan kiềm", "anion gap"]
   },
@@ -205,7 +205,7 @@ const clinicalToolsData = [
     title: "Electrolyte Pro Studio (Điện giải & Dịch truyền)",
     description: "Giả lập & Xử trí Rối loạn Điện giải (Na, K, Ca, Mg), Adrogue-Madias & ODS Risk",
     icon: "🧪",
-    link: "Thận & Điện giải - toan kiềm/Electrolyte_Studio.html",
+    link: "renal/electrolyte-studio.html",
     part: "part6-section",
     tags: ["thận", "điện giải", "natri", "kali", "canxi", "magie", "dịch", "studio"]
   },
@@ -214,7 +214,7 @@ const clinicalToolsData = [
     title: "Đánh giá Nguyên nhân AKI",
     description: "Phân loại tổn thương thận cấp (Trước thận, Tại thận, Sau thận) dựa trên bệnh sử và xét nghiệm",
     icon: "🔬",
-    link: "Thận & Điện giải - toan kiềm/DG_nguyennhanAKI.html",
+    link: "renal/dg-nguyen-nhan-aki.html",
     part: "part6-section",
     tags: ["thận", "điện giải", "aki", "tổn thương thận cấp", "nguyên nhân", "trước thận", "tại thận", "sau thận"]
   },
@@ -225,7 +225,7 @@ const clinicalToolsData = [
     title: "Phân tầng nguy cơ tim mạch toàn bộ",
     description: "SCORE2, SCORE2-OP, SCORE2-Diabetes, PREVENT",
     icon: "📊",
-    link: "Tim mạch & huyết khối/ptnctimmach.html",
+    link: "cardiology/ptnc-tim-mach.html",
     part: "part7-section",
     tags: ["tim mạch", "huyết khối", "score2", "nguy cơ tim mạch", "prevent"]
   },
@@ -234,7 +234,7 @@ const clinicalToolsData = [
     title: "Đánh giá mục tiêu LDL-c",
     description: "Xác định mục tiêu LDL-c theo phân tầng nguy cơ tim mạch ESC/VNHA và so sánh thực tế.",
     icon: "🩸",
-    link: "Tim mạch & huyết khối/DG_LDLc.html",
+    link: "cardiology/dg-ldl-c.html",
     part: "part7-section",
     tags: ["tim mạch", "huyết khối", "mỡ máu", "ldl-c", "esc", "statin"]
   },
@@ -243,7 +243,7 @@ const clinicalToolsData = [
     title: "Đánh giá & Phân loại Suy tim",
     description: "Phân tầng nguy cơ toàn diện – Áp dụng trực tiếp cho thực hành lâm sàng tại Việt Nam.",
     icon: "❤️",
-    link: "Tim mạch & huyết khối/DG_Suytim.html",
+    link: "cardiology/dg-suy-tim.html",
     part: "part7-section",
     tags: ["tim mạch", "suy tim", "hfref", "hfpef", "phân độ suy tim"]
   },
@@ -252,7 +252,7 @@ const clinicalToolsData = [
     title: "VTE Toolkit: DVT & Thuyên tắc Phổi",
     description: "Wells DVT, Wells PE, sPESI, D-Dimer & CTPA Algorithm",
     icon: "🩸",
-    link: "Tim mạch & huyết khối/DG_VTE.html",
+    link: "cardiology/dg-vte.html",
     part: "part7-section",
     tags: ["tim mạch", "huyết khối", "vte", "dvt", "pe", "wells", "d-dimer"]
   },
@@ -263,7 +263,7 @@ const clinicalToolsData = [
     title: "Chỉnh liều Insulin nội trú",
     description: "Basal-Bolus, CII (ICU)",
     icon: "💉",
-    link: "Nội tiết & Chuyển hóa/DG_Insulin-ĐTĐ.html",
+    link: "endocrinology/dg-insulin-dtd.html",
     part: "part8-section",
     tags: ["nội tiết", "chuyển hóa", "tiểu đường", "đái tháo đường", "insulin"]
   },
@@ -274,7 +274,7 @@ const clinicalToolsData = [
     title: "Sàng lọc & Phân tầng Đột quỵ cấp",
     description: "NIHSS, ASPECTS, ABCD2, ICH, VAN",
     icon: "🫀",
-    link: "Thần kinh/DG_Dotquy.html",
+    link: "neurology/dg-dot-quy.html",
     part: "part9-section",
     tags: ["thần kinh", "đột quỵ", "nihss", "aspects", "abcd2"]
   },
@@ -285,7 +285,7 @@ const clinicalToolsData = [
     title: "Lab Pro Studio — Giả Lập & Phân Tích Xét Nghiệm Máu",
     description: "Trình giả lập kết quả xét nghiệm máu tương tác PACS-style (CBC, Gan, Thận, Lipid, Đông máu), gauge bars, gợi ý chẩn đoán phân biệt & Quiz",
     icon: "🧪",
-    link: "Huyết học/Lab_Studio.html",
+    link: "hematology/lab-studio.html",
     part: "part10-section",
     tags: ["huyết học", "xét nghiệm", "lab", "cbc", "sinh hóa", "đông máu", "studio", "pacs"]
   },
@@ -294,7 +294,7 @@ const clinicalToolsData = [
     title: "Phân tầng Thiếu máu & Thuật toán chẩn đoán",
     description: "CRI/RPI, MCV/MCH, Iron Panel & Thalassemia Guidance",
     icon: "🔴",
-    link: "Huyết học/DG_Thieumau.html",
+    link: "hematology/dg-thieu-mau.html",
     part: "part10-section",
     tags: ["huyết học", "thiếu máu", "anemia", "mcv", "mch", "rpi", "ferritin"]
   }

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="CliniPortal - Hệ sinh thái công cụ hỗ trợ lâm sàng dành cho bác sĩ nội khoa">
   <title>CliniPortal – Công cụ Lâm sàng</title>
+  <script>window.location.replace('../cong-cu.html');</script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -143,10 +144,10 @@
             style="display: none;">&times;</button>
         </div>
         <div class="view-toggle-container">
-          <button id="btn-open-calc-history" class="toggle-btn" title="Nhật ký tính toán lâm sàng" style="display:flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border-radius:var(--radius-sm); font-size:0.85rem; font-weight:600; background:var(--color-surface); border:1px solid var(--color-border); color:var(--color-primary); cursor:pointer;">
-            <i class="fa-solid fa-clock-rotate-left"></i> Nhật ký tính toán
+          <button id="btn-open-calc-history" class="calc-history-btn" title="Nhật ký tính toán lâm sàng" aria-label="Mở nhật ký tính toán">
+            <i class="fa-solid fa-clock-rotate-left"></i> <span>Nhật ký tính toán</span>
           </button>
-          <span class="toggle-label" style="margin-left:0.5rem;">Chế độ xem:</span>
+          <span class="toggle-label">Chế độ xem:</span>
           <div class="toggle-buttons">
             <button id="view-grid-btn" class="toggle-btn active" title="Dạng lưới" aria-label="Xem dạng lưới">
               <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"

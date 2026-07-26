@@ -13,21 +13,21 @@ const EVIDENCE_DATABASE = {
     badgeClass: "class-1a",
     title: "Mức Chỉ Định Class I — Bằng Chứng Mức A",
     body: "Khuyến cáo có hiệu quả cao và bắt buộc áp dụng cho tất cả bệnh nhân phù hợp tiêu chuẩn (trừ khi có chống chỉ định tuyệt đối). Được chứng minh từ nhiều Thử nghiệm lâm sàng ngẫu nhiên ngẫu nhiên (RCT) lớn.",
-    linkUrl: "pages/Y học chứng cứ/Guidelines/Guidelines.html"
+    linkUrl: "src/content/ebm/guidelines/guidelines.html"
   },
   "byt-2026": {
     badgeText: "🇻🇳 QĐ 2131/QĐ-BYT 2026",
     badgeClass: "byt-2026",
     title: "Hướng Dẫn Lâm Sàng Bộ Y Tế Việt Nam 2026",
     body: "Khuyến cáo chính thức của Bộ Y tế Việt Nam ban hành kèm theo Quyết định số 2131/QĐ-BYT ngày 14/07/2026 về chẩn đoán và điều trị bệnh lý tại Việt Nam.",
-    linkUrl: "pages/Y học chứng cứ/Guidelines/Kho Guidelines/byt-copd-2026.html"
+    linkUrl: "src/content/ebm/guidelines/kho-guidelines/byt-copd-2026.html"
   },
   "esc-2026": {
     badgeText: "🇪🇺 ESC 2026 Update",
     badgeClass: "esc-2026",
     title: "Khuyến Cáo Hiệp Hội Tim Mạch Châu Âu (ESC 2026)",
     body: "Cập nhật thay đổi thực hành lâm sàng mới nhất năm 2026 từ ESC, tối ưu hóa phân tầng nguy cơ và sử dụng các thuốc thế hệ mới.",
-    linkUrl: "pages/Y học chứng cứ/Guideline Radar/radar.html"
+    linkUrl: "src/content/ebm/guideline-radar/radar.html"
   }
 };
 
@@ -110,6 +110,9 @@ function openEvidenceModal(key) {
 
 function getPathDepthPrefix() {
   const path = window.location.pathname;
+  if (path.includes("/src/content/ebm/guidelines/kho-guidelines/")) return "../../../../";
+  if (path.includes("/src/content/ebm/ebm-lab/") || path.includes("/src/content/ebm/guideline-radar/")) return "../../../";
+  if (path.includes("/src/content/")) return "../../";
   if (path.includes("/pages/Y học chứng cứ/Guidelines/Kho Guidelines/")) return "../../../../";
   if (path.includes("/pages/Y học chứng cứ/EBM Lab/") || path.includes("/pages/Y học chứng cứ/Guideline Radar/")) return "../../../";
   if (path.includes("/pages/")) return "../../";

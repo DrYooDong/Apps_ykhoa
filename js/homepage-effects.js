@@ -152,11 +152,11 @@
 
     // Quick action items (always shown when empty)
     const quickActions = [
-      { icon: '🔍', title: 'Tra cứu mã ICD-10',       desc: 'Tìm mã bệnh quốc tế',           url: 'pages/Công cụ/Chung/Tra cứu mã ICD10/Tracuu_maICD10.html' },
-      { icon: '📈', title: 'Đọc ECG cơ bản',           desc: 'Phân tích sóng và chẩn đoán',    url: 'pages/Kỹ năng/Cận lâm sàng/doc-ecg-co-ban.html' },
-      { icon: '🩸', title: 'Phân tích tế bào máu CBC', desc: 'Diễn giải kết quả huyết học',   url: 'pages/Kỹ năng/Cận lâm sàng/doc-tpttb-mau.html' },
-      { icon: '🧪', title: 'Sinh hóa chức năng Thận',  desc: 'Ure, Creatinine, eGFR',          url: 'pages/Kỹ năng/Cận lâm sàng/doc-sh-than.html' },
-      { icon: '💊', title: 'Kháng sinh kinh nghiệm',   desc: 'Lựa chọn kháng sinh ban đầu',    url: 'pages/Kỹ năng/Quản lý điều trị/Luachon_Khangsinh.html' },
+      { icon: '🔍', title: 'Tra cứu mã ICD-10',       desc: 'Tìm mã bệnh quốc tế',           url: 'src/content/calculators/general/tracuu-ma-icd10.html' },
+      { icon: '📈', title: 'Đọc ECG cơ bản',           desc: 'Phân tích sóng và chẩn đoán',    url: 'src/content/skills/can-lam-sang/doc-ecg-co-ban.html' },
+      { icon: '🩸', title: 'Phân tích tế bào máu CBC', desc: 'Diễn giải kết quả huyết học',   url: 'src/content/skills/can-lam-sang/doc-tpttb-mau.html' },
+      { icon: '🧪', title: 'Sinh hóa chức năng Thận',  desc: 'Ure, Creatinine, eGFR',          url: 'src/content/skills/can-lam-sang/doc-sh-than.html' },
+      { icon: '💊', title: 'Kháng sinh kinh nghiệm',   desc: 'Lựa chọn kháng sinh ban đầu',    url: 'src/content/skills/treatment-management/luachon-khangsinh.html' },
     ];
 
     // Master index — try to borrow from homepage-widgets.js via window, or use built-in

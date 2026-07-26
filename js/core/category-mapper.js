@@ -42,7 +42,12 @@
                 if (!targetPath) {
                     // Tự động đoán đường dẫn relative dựa trên vị trí trang hiện tại
                     const path = window.location.pathname;
-                    if (path.includes('/pages/')) {
+                    if (path.includes('/src/content/')) {
+                        const segments = path.split('/src/content/')[1].split('/').filter(Boolean);
+                        const depth = segments.length + 1; // +1 cho src/content/
+                        const prefix = '../'.repeat(depth);
+                        targetPath = `${prefix}data/categories.json`;
+                    } else if (path.includes('/pages/')) {
                         const segments = path.split('/pages/')[1].split('/').filter(Boolean);
                         const depth = segments.length; // 1 -> ../, 2 -> ../../
                         const prefix = '../'.repeat(depth);

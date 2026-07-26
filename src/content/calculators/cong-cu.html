@@ -14,24 +14,24 @@
     rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="../../../../css/reset.css">
-  <link rel="stylesheet" href="../../../../css/main.css">
-  <link rel="stylesheet" href="../../../../css/components/header.css">
-  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
-  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
 
-  <script src="../../../../js/main.js" defer></script>
-  <script src="../../../../components/header.js" defer></script>
-  <script src="../../../../components/footer.js" defer></script>
+  <script src="../../../js/main.js" defer></script>
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
 
   <link rel="manifest" href="app.webmanifest">
-  <link rel="stylesheet" href="../../../../css/components/module-dashboard.css">
-  <link rel="stylesheet" href="../../../../css/components/cong-cu.css">
+  <link rel="stylesheet" href="../../../css/components/module-dashboard.css">
+  <link rel="stylesheet" href="../../../css/components/cong-cu.css">
 </head>
 
 
 <body>
-  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
   <!-- ===================== APP CONTAINER ===================== -->
@@ -49,49 +49,49 @@
       <nav class="sidebar-nav" aria-label="Điều hướng chính">
         <ul class="nav-list" role="list">
           <li>
-            <a href="../../ebm/guidelines/kho-guidelines/index.html" class="nav-item" title="Trang chủ">
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
               <span class="nav-icon">🏠</span>
               <span class="nav-text">Trang chủ</span>
             </a>
           </li>
           <li>
-            <a href="../../tcm/readme.md" class="nav-item" title="S.lý - S.lý bệnh">
+            <a href="../pathophysiology/sinhly-sinhlybenh.html" class="nav-item" title="S.lý - S.lý bệnh">
               <span class="nav-icon">🧬</span>
               <span class="nav-text">S.lý - S.lý bệnh</span>
             </a>
           </li>
           <li>
-            <a href="../../skills/ky-nang.html" class="nav-item" title="Kỹ năng">
+            <a href="../skills/ky-nang.html" class="nav-item" title="Kỹ năng">
               <span class="nav-icon">🩺</span>
               <span class="nav-text">Kỹ năng</span>
             </a>
           </li>
           <li>
-            <a href="../../approaches/tiep-can.html" class="nav-item" title="Tiếp cận">
+            <a href="../approaches/tiep-can.html" class="nav-item" title="Tiếp cận">
               <span class="nav-icon">🤒</span>
               <span class="nav-text">Tiếp cận</span>
             </a>
           </li>
           <li>
-            <a href="calculators-hub.html" class="nav-item active" aria-current="page" title="Công cụ">
+            <a href="cong-cu.html" class="nav-item active" aria-current="page" title="Công cụ">
               <span class="nav-icon">⚙️</span>
               <span class="nav-text">Công cụ</span>
             </a>
           </li>
           <li>
-            <a href="../../pharmacology/duoc-ly.html" class="nav-item" title="Dược lý">
+            <a href="../pharmacology/duoc-ly.html" class="nav-item" title="Dược lý">
               <span class="nav-icon">💊</span>
               <span class="nav-text">Dược lý</span>
             </a>
           </li>
           <li>
-            <a href="../../ebm/yhcc.html" class="nav-item" title="Y học chứng cứ">
+            <a href="../ebm/yhcc.html" class="nav-item" title="Y học chứng cứ">
               <span class="nav-icon">📄</span>
               <span class="nav-text">Y học chứng cứ</span>
             </a>
           </li>
           <li>
-            <a href="../../tcm/readme.md" class="nav-item" title="Y học cổ truyền">
+            <a href="../tcm/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền">
               <span class="nav-icon">☯️</span>
               <span class="nav-text">Y học cổ truyền</span>
             </a>
@@ -104,7 +104,8 @@
     <div class="main-wrapper" id="mainContent">
 
       <!--BREADCRUMB-->
-      <clini-breadcrumb items='[{"label": "🏠 Home", "url": "../../index.html"}, {"label": "Công cụ lâm sàng"}]'></clini-breadcrumb>
+      <clini-breadcrumb
+        items='[{"label": "🏠 Home", "url": "../../index.html"}, {"label": "Công cụ lâm sàng"}]'></clini-breadcrumb>
 
       <section class="hero-dashboard hero-tools" aria-labelledby="hero-title">
         <div class="tcm-hero-content">
@@ -143,10 +144,10 @@
             style="display: none;">&times;</button>
         </div>
         <div class="view-toggle-container">
-          <button id="btn-open-calc-history" class="toggle-btn" title="Nhật ký tính toán lâm sàng" style="display:flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border-radius:var(--radius-sm); font-size:0.85rem; font-weight:600; background:var(--color-surface); border:1px solid var(--color-border); color:var(--color-primary); cursor:pointer;">
-            <i class="fa-solid fa-clock-rotate-left"></i> Nhật ký tính toán
+          <button id="btn-open-calc-history" class="calc-history-btn" title="Nhật ký tính toán lâm sàng" aria-label="Mở nhật ký tính toán">
+            <i class="fa-solid fa-clock-rotate-left"></i> <span>Nhật ký tính toán</span>
           </button>
-          <span class="toggle-label" style="margin-left:0.5rem;">Chế độ xem:</span>
+          <span class="toggle-label">Chế độ xem:</span>
           <div class="toggle-buttons">
             <button id="view-grid-btn" class="toggle-btn active" title="Dạng lưới" aria-label="Xem dạng lưới">
               <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
@@ -325,16 +326,16 @@
     </div><!-- end main-wrapper -->
   </div><!-- end app-container -->
 
-  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
 
   <!-- ===================== SCRIPT ===================== -->
-  <script src="../../../../js/core/storage-service.js" defer></script>
-  <script src="../../../../js/core/clinical-calculator-base.js" defer></script>
-  <script src="../../../../js/components/calculation-history-modal.js" defer></script>
-  <script src="../../../../js/module-dashboard.js" defer></script>
-  <script src="../../../../js/tools-data.js" defer></script>
-  <script src="../../../../js/cong-cu-logic.js" defer></script>
-  <script src="../../../../js/lab-values.js" defer></script>
+  <script src="../../../js/core/storage-service.js" defer></script>
+  <script src="../../../js/core/clinical-calculator-base.js" defer></script>
+  <script src="../../../js/components/calculation-history-modal.js" defer></script>
+  <script src="../../../js/module-dashboard.js" defer></script>
+  <script src="../../../js/tools-data.js" defer></script>
+  <script src="../../../js/cong-cu-logic.js" defer></script>
+  <script src="../../../js/lab-values.js" defer></script>
 </body>
 
 </html>

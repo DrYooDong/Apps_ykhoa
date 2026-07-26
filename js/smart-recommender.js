@@ -14,28 +14,28 @@ const RECOMMENDATION_CATALOG = [
     specialty: "infect",
     specName: "Truyền Nhiễm / Hồi Sức",
     desc: "Tối ưu hóa liều nạp, truyền kéo dài Beta-lactam & hiệu chỉnh liều theo PK/PD.",
-    url: "pages/Y học chứng cứ/Guidelines/Kho Guidelines/ks-cho-bn-nang.html"
+    url: "src/content/ebm/guidelines/kho-guidelines/ks-cho-bn-nang.html"
   },
   {
     title: "Bộ Tứ Trụ Cột Điều Trị Suy Tim (VNHA/VCS)",
     specialty: "cardio",
     specName: "Tim Mạch",
     desc: "Khuyến cáo Class I-A cho ARNI, Chẹn beta, MRA & SGLT2i.",
-    url: "pages/Y học chứng cứ/Guideline Radar/radar.html"
+    url: "src/content/ebm/guideline-radar/radar.html"
   },
   {
     title: "Hướng Dẫn BPTNMT (COPD) Bộ Y Tế 2026",
     specialty: "pulmo",
     specName: "Hô Hấp",
     desc: "Quyết định 2131/QĐ-BYT, phân nhóm ABE và tiêu chuẩn Rome 2022.",
-    url: "pages/Y học chứng cứ/Guidelines/Kho Guidelines/byt-copd-2026.html"
+    url: "src/content/ebm/guidelines/kho-guidelines/byt-copd-2026.html"
   },
   {
     title: "Thử Nghiệm EMPA-REG OUTCOME",
     specialty: "cardio",
     specName: "Tim Mạch / Nội Tiết",
     desc: "Empagliflozin giảm 38% tử vong do tim mạch ở BN đái tháo đường.",
-    url: "pages/Y học chứng cứ/Guidelines/Kho Guidelines/empa-reg.html"
+    url: "src/content/ebm/guidelines/kho-guidelines/empa-reg.html"
   }
 ];
 

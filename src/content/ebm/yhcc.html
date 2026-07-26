@@ -700,8 +700,13 @@
       color: #fff;
     }
 
-    .ebm-badge.level { background: var(--hub-blue); }
-    .ebm-badge.recommend { background: var(--hub-purple); }
+    .ebm-badge.level {
+      background: var(--hub-blue);
+    }
+
+    .ebm-badge.recommend {
+      background: var(--hub-purple);
+    }
 
     .meridian-detail-row {
       margin-bottom: 0.65rem;
@@ -731,19 +736,23 @@
       margin: 1.25rem 0;
       position: relative;
     }
+
     .ebm-svg {
       width: 170px;
       height: 170px;
       transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
       filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
     }
+
     .ebm-sector {
       cursor: pointer;
       transition: opacity 0.2s, stroke-width 0.2s;
     }
+
     .ebm-sector:hover {
       opacity: 1 !important;
     }
+
     .ebm-sector.active {
       opacity: 1 !important;
     }
@@ -768,13 +777,13 @@
       <nav class="sidebar-nav" aria-label="Điều hướng chính">
         <ul class="nav-list" role="list">
           <li>
-            <a href="guidelines/kho-guidelines/index.html" class="nav-item" title="Trang chủ">
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
               <span class="nav-icon">🏠</span>
               <span class="nav-text">Trang chủ</span>
             </a>
           </li>
           <li>
-            <a href="../tcm/readme.md" class="nav-item" title="S.lý - S.lý bệnh">
+            <a href="../pathophysiology/sinhly-sinhlybenh.html" class="nav-item" title="S.lý - S.lý bệnh">
               <span class="nav-icon">🧬</span>
               <span class="nav-text">S.lý - S.lý bệnh</span>
             </a>
@@ -810,7 +819,7 @@
             </a>
           </li>
           <li>
-            <a href="../tcm/readme.md" class="nav-item" title="Y học cổ truyền">
+            <a href="../tcm/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền">
               <span class="nav-icon">☯️</span>
               <span class="nav-text">Y học cổ truyền</span>
             </a>
@@ -823,7 +832,8 @@
     <div class="main-wrapper" id="mainContent">
 
       <!-- BREADCRUMB -->
-      <clini-breadcrumb items='[{"label": "🏠 Home", "url": "../../index.html"}, {"label": "Y học chứng cứ"}]'></clini-breadcrumb>
+      <clini-breadcrumb
+        items='[{"label": "🏠 Home", "url": "../../index.html"}, {"label": "Y học chứng cứ"}]'></clini-breadcrumb>
 
       <!-- HERO -->
       <section class="hub-hero" aria-labelledby="hub-hero-title">
@@ -863,17 +873,24 @@
           <!-- EBM SEARCH BAR -->
           <div class="hub-hero-search-wrapper" style="position: relative; max-width: 600px; margin-top: 2rem;">
             <div class="hub-hero-search" style="margin-top: 0;">
-              <input type="text" id="ebm-global-search" placeholder="Tìm kiếm Guideline, Thống kê, Cập nhật mới..." aria-label="Tìm kiếm" autocomplete="off">
-              <button aria-label="Nút tìm kiếm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+              <input type="text" id="ebm-global-search" placeholder="Tìm kiếm Guideline, Thống kê, Cập nhật mới..."
+                aria-label="Tìm kiếm" autocomplete="off">
+              <button aria-label="Nút tìm kiếm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg></button>
             </div>
-            <div id="ebm-search-results" style="display: none; position: absolute; top: calc(100% + 8px); left: 0; right: 0; background: var(--hub-surface, #fff); border: 1px solid var(--hub-border); border-radius: 16px; box-shadow: 0 12px 32px rgba(0,0,0,0.18); z-index: 300; max-height: 360px; overflow-y: auto; padding: 0.75rem;"></div>
+            <div id="ebm-search-results"
+              style="display: none; position: absolute; top: calc(100% + 8px); left: 0; right: 0; background: var(--hub-surface, #fff); border: 1px solid var(--hub-border); border-radius: 16px; box-shadow: 0 12px 32px rgba(0,0,0,0.18); z-index: 300; max-height: 360px; overflow-y: auto; padding: 0.75rem;">
+            </div>
           </div>
         </div>
       </section>
 
       <!-- TWO COLUMN LAYOUT -->
       <div class="ebm-layout-grid">
-        
+
         <!-- LEFT COLUMN: MODULES & SPECIALTY GRID -->
         <div style="display: flex; flex-direction: column; gap: 1rem; width: 100%; min-width: 0;">
 
@@ -881,185 +898,200 @@
           <h2 class="hub-section-title" style="margin-top: 0;">📦 Các Mô-đun Chính</h2>
           <div class="hub-modules">
 
-        <!-- Card 1: Thống kê y học -->
-        <a href="medical-statistics/thongkeyhoc.html" class="hub-module-card stat" id="card-thongke"
-          aria-label="Mở Thống kê y học">
-          <div class="hub-module-card-bg"></div>
-          <div class="hub-module-card-bg2"></div>
-          <div class="hub-module-icon">📊</div>
-          <div class="hub-module-card-content">
-            <div class="hub-module-tag">Mô-đun 1</div>
-            <h2>Thống Kê Y Học & Nghiên Cứu</h2>
-            <p>Học tập tư duy thống kê, các phương pháp thiết kế nghiên cứu khoa học, đọc hiểu và phân tích bằng chứng
-              lâm sàng.</p>
-            <div class="hub-module-features">
-              <div class="hub-module-feature">
-                <span class="hub-module-feature-dot"></span>
-                Bài 1: Ý nghĩa thống kê và ý nghĩa lâm sàng
+            <!-- Card 1: Thống kê y học -->
+            <a href="medical-statistics/thongkeyhoc.html" class="hub-module-card stat" id="card-thongke"
+              aria-label="Mở Thống kê y học">
+              <div class="hub-module-card-bg"></div>
+              <div class="hub-module-card-bg2"></div>
+              <div class="hub-module-icon">📊</div>
+              <div class="hub-module-card-content">
+                <div class="hub-module-tag">Mô-đun 1</div>
+                <h2>Thống Kê Y Học & Nghiên Cứu</h2>
+                <p>Học tập tư duy thống kê, các phương pháp thiết kế nghiên cứu khoa học, đọc hiểu và phân tích bằng
+                  chứng
+                  lâm sàng.</p>
+                <div class="hub-module-features">
+                  <div class="hub-module-feature">
+                    <span class="hub-module-feature-dot"></span>
+                    Bài 1: Ý nghĩa thống kê và ý nghĩa lâm sàng
+                  </div>
+                  <div class="hub-module-feature">
+                    <span class="hub-module-feature-dot"></span>
+                    Bài 2: Đánh giá giá trị các công cụ chẩn đoán
+                  </div>
+                  <div class="hub-module-feature">
+                    <span class="hub-module-feature-dot"></span>
+                    Bài 3: Thiết kế nghiên cứu khoa học y học
+                  </div>
+                  <div class="hub-module-feature">
+                    <span class="hub-module-feature-dot"></span>
+                    Bài 4: Phân tích bằng chứng RCT và Meta-analysis
+                  </div>
+                </div>
+                <span class="hub-module-cta">
+                  Vào học ngay
+                  <svg class="hub-cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </span>
               </div>
-              <div class="hub-module-feature">
-                <span class="hub-module-feature-dot"></span>
-                Bài 2: Đánh giá giá trị các công cụ chẩn đoán
-              </div>
-              <div class="hub-module-feature">
-                <span class="hub-module-feature-dot"></span>
-                Bài 3: Thiết kế nghiên cứu khoa học y học
-              </div>
-              <div class="hub-module-feature">
-                <span class="hub-module-feature-dot"></span>
-                Bài 4: Phân tích bằng chứng RCT và Meta-analysis
-              </div>
-            </div>
-            <span class="hub-module-cta">
-              Vào học ngay
-              <svg class="hub-cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2.5">
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </span>
-          </div>
-        </a>
+            </a>
 
-        <!-- Card 2: Guidelines -->
-        <a href="guidelines/guidelines.html" class="hub-module-card guide" id="card-guidelines"
-          aria-label="Mở Hướng dẫn & Nghiên cứu">
-          <div class="hub-module-card-bg"></div>
-          <div class="hub-module-card-bg2"></div>
-          <div class="hub-module-icon">📋</div>
-          <div class="hub-module-card-content">
-            <div class="hub-module-tag">Mô-đun 2</div>
-            <h2>Guidelines & Nghiên Cứu</h2>
-            <p>Hướng dẫn lâm sàng từ Bộ Y tế, Sở Y tế Việt Nam, hiệp hội y khoa và thử nghiệm lâm sàng quốc tế.</p>
-            <div class="hub-module-features">
-              <div class="hub-module-feature">
-                <span class="hub-module-feature-dot"></span>
-                Tài liệu Việt Nam (BYT, VNHA...) & Quốc tế (ESC, ADA...)
+            <!-- Card 2: Guidelines -->
+            <a href="guidelines/guidelines.html" class="hub-module-card guide" id="card-guidelines"
+              aria-label="Mở Hướng dẫn & Nghiên cứu">
+              <div class="hub-module-card-bg"></div>
+              <div class="hub-module-card-bg2"></div>
+              <div class="hub-module-icon">📋</div>
+              <div class="hub-module-card-content">
+                <div class="hub-module-tag">Mô-đun 2</div>
+                <h2>Guidelines & Nghiên Cứu</h2>
+                <p>Hướng dẫn lâm sàng từ Bộ Y tế, Sở Y tế Việt Nam, hiệp hội y khoa và thử nghiệm lâm sàng quốc tế.</p>
+                <div class="hub-module-features">
+                  <div class="hub-module-feature">
+                    <span class="hub-module-feature-dot"></span>
+                    Tài liệu Việt Nam (BYT, VNHA...) & Quốc tế (ESC, ADA...)
+                  </div>
+                  <div class="hub-module-feature">
+                    <span class="hub-module-feature-dot"></span>
+                    Bộ lọc phân loại nguồn & thiết kế nghiên cứu lâm sàng
+                  </div>
+                  <div class="hub-module-feature">
+                    <span class="hub-module-feature-dot"></span>
+                    Công cụ tính thang điểm lâm sàng tích hợp
+                  </div>
+                  <div class="hub-module-feature">
+                  </div>
+                </div>
+                <span class="hub-module-cta">
+                  Khám phá ngay
+                  <svg class="hub-cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </span>
               </div>
-              <div class="hub-module-feature">
-                <span class="hub-module-feature-dot"></span>
-                Bộ lọc phân loại nguồn & thiết kế nghiên cứu lâm sàng
-              </div>
-              <div class="hub-module-feature">
-                <span class="hub-module-feature-dot"></span>
-                Công cụ tính thang điểm lâm sàng tích hợp
-              </div>
-              <div class="hub-module-feature">
-              </div>
-            </div>
-            <span class="hub-module-cta">
-              Khám phá ngay
-              <svg class="hub-cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2.5">
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </span>
-          </div>
-        </a>
+            </a>
 
-        <!-- Card 3: Guideline Radar -->
-        <a href="guideline-radar/radar.html" class="hub-module-card radar" id="card-radar"
-          aria-label="Mở Guideline Radar">
-          <div class="hub-module-card-bg"></div>
-          <div class="hub-module-card-bg2"></div>
-          <div class="hub-module-icon">📡</div>
-          <div class="hub-module-card-content">
-            <div class="hub-module-tag">Cập nhật</div>
-            <h2>Guideline Radar</h2>
-            <p>Trạm theo dõi các cập nhật y khoa mới nhất và những thay đổi ảnh hưởng đến thực hành lâm sàng.</p>
-            <div class="hub-module-features">
-              <div class="hub-module-feature">
-                <span class="hub-module-feature-dot"></span>
-                So sánh "Trước & Sau" GitHub-style Diff View
+            <!-- Card 3: Guideline Radar -->
+            <a href="guideline-radar/radar.html" class="hub-module-card radar" id="card-radar"
+              aria-label="Mở Guideline Radar">
+              <div class="hub-module-card-bg"></div>
+              <div class="hub-module-card-bg2"></div>
+              <div class="hub-module-icon">📡</div>
+              <div class="hub-module-card-content">
+                <div class="hub-module-tag">Cập nhật</div>
+                <h2>Guideline Radar</h2>
+                <p>Trạm theo dõi các cập nhật y khoa mới nhất và những thay đổi ảnh hưởng đến thực hành lâm sàng.</p>
+                <div class="hub-module-features">
+                  <div class="hub-module-feature">
+                    <span class="hub-module-feature-dot"></span>
+                    So sánh "Trước & Sau" GitHub-style Diff View
+                  </div>
+                  <div class="hub-module-feature">
+                    <span class="hub-module-feature-dot"></span>
+                    Huy hiệu Practice-Changing vs Informative
+                  </div>
+                  <div class="hub-module-feature">
+                    <span class="hub-module-feature-dot"></span>
+                    Điểm tin ESC, ADA, GINA, GOLD & Bộ Y tế
+                  </div>
+                </div>
+                <span class="hub-module-cta">
+                  Xem diff view
+                  <svg class="hub-cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </span>
               </div>
-              <div class="hub-module-feature">
-                <span class="hub-module-feature-dot"></span>
-                Huy hiệu Practice-Changing vs Informative
-              </div>
-              <div class="hub-module-feature">
-                <span class="hub-module-feature-dot"></span>
-                Điểm tin ESC, ADA, GINA, GOLD & Bộ Y tế
-              </div>
-            </div>
-            <span class="hub-module-cta">
-              Xem diff view
-              <svg class="hub-cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2.5">
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </span>
-          </div>
-        </a>
+            </a>
 
-        <!-- Card 4: EBM Practice Lab -->
-        <a href="ebm-lab/ebm-lab.html" class="hub-module-card lab" id="card-ebm-lab"
-          aria-label="Mở EBM Practice Lab" style="background: linear-gradient(145deg, #0e7490 0%, #06b6d4 100%); box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3);">
-          <div class="hub-module-card-bg"></div>
-          <div class="hub-module-card-bg2"></div>
-          <div class="hub-module-icon">🧪</div>
-          <div class="hub-module-card-content">
-            <div class="hub-module-tag" style="background: rgba(255,255,255,0.25);">Thực Hành</div>
-            <h2>EBM Practice Lab</h2>
-            <p>Phòng thực hành tương tác giúp cấu trúc PICO, thẩm định sai số nghiên cứu và tính toán NNT.</p>
-            <div class="hub-module-features">
-              <div class="hub-module-feature">
-                <span class="hub-module-feature-dot"></span>
-                PICO Builder & Máy tạo PubMed Search String
+            <!-- Card 4: EBM Practice Lab -->
+            <a href="ebm-lab/ebm-lab.html" class="hub-module-card lab" id="card-ebm-lab"
+              aria-label="Mở EBM Practice Lab"
+              style="background: linear-gradient(145deg, #0e7490 0%, #06b6d4 100%); box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3);">
+              <div class="hub-module-card-bg"></div>
+              <div class="hub-module-card-bg2"></div>
+              <div class="hub-module-icon">🧪</div>
+              <div class="hub-module-card-content">
+                <div class="hub-module-tag" style="background: rgba(255,255,255,0.25);">Thực Hành</div>
+                <h2>EBM Practice Lab</h2>
+                <p>Phòng thực hành tương tác giúp cấu trúc PICO, thẩm định sai số nghiên cứu và tính toán NNT.</p>
+                <div class="hub-module-features">
+                  <div class="hub-module-feature">
+                    <span class="hub-module-feature-dot"></span>
+                    PICO Builder & Máy tạo PubMed Search String
+                  </div>
+                  <div class="hub-module-feature">
+                    <span class="hub-module-feature-dot"></span>
+                    NNT/ARR Calculator & Biểu đồ 100 Bệnh Nhân
+                  </div>
+                </div>
+                <span class="hub-module-cta">
+                  Vào thực hành
+                  <svg class="hub-cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </span>
               </div>
-              <div class="hub-module-feature">
-                <span class="hub-module-feature-dot"></span>
-                NNT/ARR Calculator & Biểu đồ 100 Bệnh Nhân
-              </div>
-            </div>
-            <span class="hub-module-cta">
-              Vào thực hành
-              <svg class="hub-cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2.5">
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </span>
+            </a>
           </div>
-        </a>
-      </div>
-    </div>
+        </div>
 
         <!-- RIGHT COLUMN: SIDEBAR WIDGET -->
         <aside class="layout-widget-sidebar">
           <section class="widget-card" aria-labelledby="ebm-wheel-title">
             <div class="widget-card-title">
               <h3 id="ebm-wheel-title"><i class="fa-solid fa-rotate"></i> Chu Trình EBM</h3>
-              <span class="clock-current-time" style="background: var(--hub-purple-light, rgba(124, 58, 237, 0.15)); color: var(--hub-purple, #7c3aed);">EBM 5 As</span>
+              <span class="clock-current-time"
+                style="background: var(--hub-purple-light, rgba(124, 58, 237, 0.15)); color: var(--hub-purple, #7c3aed);">EBM
+                5 As</span>
             </div>
             <p style="font-size: var(--text-xs); color: var(--hub-text-muted); margin-bottom: 1rem; line-height: 1.4;">
-              Nhấp chọn từng bước trong chu trình thực hành Y học chứng cứ (5 As) trên vòng xoay để tra cứu mục tiêu và công cụ hỗ trợ.
+              Nhấp chọn từng bước trong chu trình thực hành Y học chứng cứ (5 As) trên vòng xoay để tra cứu mục tiêu và
+              công cụ hỗ trợ.
             </p>
-            
+
             <div class="ebm-wheel-container">
               <svg viewBox="0 0 200 200" class="ebm-svg" id="ebmSvg" xmlns="http://www.w3.org/2000/svg">
                 <!-- Sector 1: ASK (Hỏi) - Angle -90 to -18 (active) -->
-                <path class="ebm-sector active" data-index="0" d="M 100 100 L 100 20 A 80 80 0 0 1 176.08 75.28 Z" fill="#7c3aed" opacity="0.85" stroke="#fff" stroke-width="1.5" />
+                <path class="ebm-sector active" data-index="0" d="M 100 100 L 100 20 A 80 80 0 0 1 176.08 75.28 Z"
+                  fill="#7c3aed" opacity="0.85" stroke="#fff" stroke-width="1.5" />
                 <!-- Sector 2: ACQUIRE (Tìm) - Angle -18 to 54 -->
-                <path class="ebm-sector" data-index="1" d="M 100 100 L 176.08 75.28 A 80 80 0 0 1 147.02 164.72 Z" fill="#06b6d4" opacity="0.85" stroke="#fff" stroke-width="1.5" />
+                <path class="ebm-sector" data-index="1" d="M 100 100 L 176.08 75.28 A 80 80 0 0 1 147.02 164.72 Z"
+                  fill="#06b6d4" opacity="0.85" stroke="#fff" stroke-width="1.5" />
                 <!-- Sector 3: APPRAISE (Đánh giá) - Angle 54 to 126 -->
-                <path class="ebm-sector" data-index="2" d="M 100 100 L 147.02 164.72 A 80 80 0 0 1 52.98 164.72 Z" fill="#3b82f6" opacity="0.85" stroke="#fff" stroke-width="1.5" />
+                <path class="ebm-sector" data-index="2" d="M 100 100 L 147.02 164.72 A 80 80 0 0 1 52.98 164.72 Z"
+                  fill="#3b82f6" opacity="0.85" stroke="#fff" stroke-width="1.5" />
                 <!-- Sector 4: APPLY (Áp dụng) - Angle 126 to 198 -->
-                <path class="ebm-sector" data-index="3" d="M 100 100 L 52.98 164.72 A 80 80 0 0 1 23.92 75.28 Z" fill="#10b981" opacity="0.85" stroke="#fff" stroke-width="1.5" />
+                <path class="ebm-sector" data-index="3" d="M 100 100 L 52.98 164.72 A 80 80 0 0 1 23.92 75.28 Z"
+                  fill="#10b981" opacity="0.85" stroke="#fff" stroke-width="1.5" />
                 <!-- Sector 5: ASSESS (Đánh giá lại) - Angle 198 to 270 (which is -90) -->
-                <path class="ebm-sector" data-index="4" d="M 100 100 L 23.92 75.28 A 80 80 0 0 1 100 20 Z" fill="#f59e0b" opacity="0.85" stroke="#fff" stroke-width="1.5" />
-                
+                <path class="ebm-sector" data-index="4" d="M 100 100 L 23.92 75.28 A 80 80 0 0 1 100 20 Z"
+                  fill="#f59e0b" opacity="0.85" stroke="#fff" stroke-width="1.5" />
+
                 <!-- Center Donut cutout overlay -->
-                <circle cx="100" cy="100" r="40" fill="var(--hub-surface)" stroke="var(--hub-border)" stroke-width="1.5" />
+                <circle cx="100" cy="100" r="40" fill="var(--hub-surface)" stroke="var(--hub-border)"
+                  stroke-width="1.5" />
                 <!-- Center text indicators -->
-                <text x="100" y="96" text-anchor="middle" id="ebmCenterLabel" font-size="8px" font-weight="700" fill="var(--hub-text-muted)" style="letter-spacing: 0.5px; text-transform: uppercase;">Chu trình</text>
-                <text x="100" y="112" text-anchor="middle" id="ebmCenterName" font-size="10px" font-weight="800" fill="var(--hub-text)">ASK</text>
+                <text x="100" y="96" text-anchor="middle" id="ebmCenterLabel" font-size="8px" font-weight="700"
+                  fill="var(--hub-text-muted)" style="letter-spacing: 0.5px; text-transform: uppercase;">Chu
+                  trình</text>
+                <text x="100" y="112" text-anchor="middle" id="ebmCenterName" font-size="10px" font-weight="800"
+                  fill="var(--hub-text)">ASK</text>
               </svg>
             </div>
 
             <!-- Details Panel -->
-            <div class="physio-details-card" id="ebmDetailsCard" style="background: var(--hub-surface-2); border-radius: 12px; border: 1px solid var(--hub-border); margin-top: 0.5rem;">
+            <div class="physio-details-card" id="ebmDetailsCard"
+              style="background: var(--hub-surface-2); border-radius: 12px; border: 1px solid var(--hub-border); margin-top: 0.5rem;">
               <!-- Populated dynamically by JS -->
             </div>
           </section>
@@ -1081,7 +1113,7 @@
 
   <!-- ===================== EBM CYCLE WHEEL SCRIPT ===================== -->
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
       const ebmData = [
         {
           abbr: "ASK",
@@ -1145,7 +1177,7 @@
         });
 
         const data = ebmData[index];
-        
+
         // Update SVG center text
         centerName.innerText = data.abbr;
         centerName.setAttribute("fill", data.color);
@@ -1189,7 +1221,7 @@
   <script src="../../../js/cliniportal-sync.js"></script>
   <script src="guidelines/guidelinesdata.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
       function renderEbmHubWidgets() {
         if (!window.CliniPortalSync) return;
 
@@ -1215,7 +1247,7 @@
       const resultsContainer = document.getElementById('ebm-search-results');
 
       if (searchInput && resultsContainer) {
-        searchInput.addEventListener('input', function() {
+        searchInput.addEventListener('input', function () {
           const query = searchInput.value.trim();
           if (!query) {
             resultsContainer.style.display = 'none';
@@ -1241,7 +1273,7 @@
           resultsContainer.style.display = 'block';
         });
 
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
           if (!searchInput.contains(e.target) && !resultsContainer.contains(e.target)) {
             resultsContainer.style.display = 'none';
           }

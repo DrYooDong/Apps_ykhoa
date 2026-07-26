@@ -62,7 +62,7 @@
         detailedConclusion: "Sốc nhiễm khuẩn cần dùng kháng sinh ngay lập tức (trong vòng 1 giờ, lấy cấy máu trong 45 phút). Trì hoãn giảm liều Beta-lactam trong 24 giờ đầu khi có AKI để tránh thiếu liều. Dùng liều nạp đầy đủ cho kháng sinh ưa nước bất kể chức năng thận. TDM khuyên dùng cho Vancomycin (AUC/MIC 400-600) và Aminoglycosides.",
         fdaStatus: "Cập nhật y văn ICU 2026",
         sourceUrl: "https://drive.google.com/file/d/1V0ey2paO8Enbt8U4OtH1xK0Vn_MIS6Tn/view",
-        file: "Kho Guidelines/ks-cho-bn-nang.html",
+        file: "kho-guidelines/ks-cho-bn-nang.html",
         subgroups: {
           "Sốc nhiễm khuẩn (Truyền kéo dài)": "RR 0.72 (95% CI 0.60-0.86, p<0.001)",
           "Nhiễm khuẩn không sốc": "OR 0.88 (95% CI 0.72-1.07, p=0.19)",
@@ -192,7 +192,7 @@
         detailedConclusion: "Thử nghiệm lâm sàng ngẫu nhiên, mù đôi, đối chứng giả dược. Kết quả cho thấy tỷ lệ nhập viện do suy tim giảm 35%, tử vong do mọi nguyên nhân giảm 32%. Đây là thuốc điều trị đái tháo đường đầu tiên chứng minh được lợi ích bảo vệ tim mạch vượt trội.",
         fdaStatus: "FDA Approved 2016 (chỉ định giảm tử vong tim mạch)",
         sourceUrl: "https://www.nejm.org/doi/full/10.1056/nejmoa1504720",
-        file: "Kho Guidelines/empa-reg.html",
+        file: "kho-guidelines/empa-reg.html",
         subgroups: {
           "Châu Á": "HR 0.82 (95% CI 0.64-1.04, p=0.10)",
           "Suy tim (HF)": "HR 0.65 (95% CI 0.50-0.85, p<0.001)",
@@ -304,7 +304,7 @@
         detailedConclusion: "Chẩn đoán xác định khi FEV1/FVC < 70% sau test giãn phế quản. Phân nhóm điều trị ABE (A: 1 thuốc giãn phế quản, B: LABA+LAMA, E: LABA+LAMA; thêm ICS nếu Eos >= 300). Đợt cấp phân loại theo Rome 2022 (Nhẹ, Trung bình, Nặng). Chỉ định kháng sinh đợt cấp dựa trên triệu chứng Anthonisen và nguy cơ nhiễm P. aeruginosa. Sử dụng Morphin liều thấp kiểm soát khó thở giai đoạn cuối đời.",
         fdaStatus: "Quyết định số 2131/QĐ-BYT",
         sourceUrl: "https://kcb.vn/",
-        file: "Kho Guidelines/byt-copd-2026.html",
+        file: "kho-guidelines/byt-copd-2026.html",
         subgroups: {
           "Nhóm A": "1 thuốc giãn phế quản (SABA, LABA, LAMA, SAMA)",
           "Nhóm B": "Phối hợp LABA + LAMA duy trì",

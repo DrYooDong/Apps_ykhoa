@@ -24,96 +24,11 @@
   <script src="../../../js/main.js" defer></script>
   <script src="../../../components/header.js" defer></script>
   <script src="../../../components/footer.js" defer></script>
-  <script src="../../../js/approach-engine.js" defer></script>
 
   <link rel="stylesheet" href="../../../css/components/module-dashboard.css">
   <style>
-    /* Non-HTML Data Format Engine Styles */
-    .data-engine-section {
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: 16px;
-      padding: 24px;
-      margin: 24px 0;
-      box-shadow: var(--shadow-sm);
-    }
-    .engine-tab-nav {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      border-bottom: 2px solid var(--color-border);
-      padding-bottom: 12px;
-      margin-bottom: 20px;
-    }
-    .engine-tab-btn {
-      background: var(--color-bg);
-      border: 1px solid var(--color-border);
-      color: var(--color-text);
-      padding: 10px 18px;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.2s ease;
-    }
-    .engine-tab-btn.active, .engine-tab-btn:hover {
-      background: var(--color-primary);
-      color: #ffffff;
-      border-color: var(--color-primary);
-      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
-    }
-    .engine-pane { display: none; }
-    .engine-pane.active { display: block; animation: fadeIn 0.3s ease; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* JSON Flowchart Styles */
-    .json-flowchart-card { background: var(--color-bg); border-radius: 12px; padding: 20px; border: 1px solid var(--color-border); }
-    .json-flowchart-header h3 { margin: 8px 0; font-size: 1.25rem; color: var(--color-primary); }
-    .json-flow-tabs { display: flex; gap: 8px; margin: 16px 0; }
-    .json-tab-btn { padding: 8px 14px; border-radius: 8px; background: var(--color-surface); border: 1px solid var(--color-border); cursor: pointer; font-weight: 600; font-size: 0.85rem; }
-    .json-tab-btn.active { background: var(--color-primary); color: white; border-color: var(--color-primary); }
-    .json-pane { display: none; }
-    .json-pane.active { display: block; }
-    .fnode { background: var(--color-surface); border-radius: 10px; padding: 14px 18px; margin-bottom: 12px; border-left: 4px solid var(--color-primary); box-shadow: var(--shadow-sm); position: relative; }
-    .fnode.clickable { cursor: pointer; }
-    .fnode.clickable:hover { border-color: var(--color-primary-dark); }
-    .fnode-start { border-left-color: #3b82f6; background: rgba(59, 130, 246, 0.05); }
-    .fnode-question { border-left-color: #8b5cf6; background: rgba(139, 92, 246, 0.05); }
-    .fnode-danger { border-left-color: #ef4444; background: rgba(239, 68, 68, 0.05); }
-    .fnode-info { border-left-color: #0284c7; background: rgba(2, 132, 199, 0.05); }
-    .fnode-ok { border-left-color: #10b981; background: rgba(16, 185, 129, 0.05); }
-    .fnode-tag { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 4px; }
-    .fnode-title { font-weight: 700; font-size: 1rem; color: var(--color-text); margin-bottom: 4px; }
-    .fnode-body { font-size: 0.875rem; color: var(--color-text-muted); margin: 0; }
-    .fnode-expand-hint { font-size: 0.75rem; color: var(--color-primary); margin-top: 8px; font-weight: 600; }
-    .fnode-details { margin-top: 12px; padding: 12px; background: var(--color-surface); border-radius: 8px; border: 1px solid var(--color-border); }
-    .flow-connector { display: flex; flex-direction: column; align-items: center; margin: -6px 0 6px 0; }
-    .flow-connector-line { width: 2px; height: 16px; background: var(--color-border); }
-    .flow-connector-arrow { width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 6px solid var(--color-border); }
 
-    /* CSV Table Styles */
-    .csv-search-input { width: 100%; padding: 10px 16px; border-radius: 10px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); margin-bottom: 16px; font-size: 0.9rem; }
-    .badge-category { background: rgba(2, 132, 199, 0.1); color: var(--color-primary); padding: 4px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
-    .badge-urgency { padding: 4px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
-    .badge-urgency.critical, .badge-urgency.high { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
-    .badge-urgency.medium { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
-
-    /* Markdown Styles */
-    .md-container { background: var(--color-bg); border-radius: 12px; padding: 24px; border: 1px solid var(--color-border); line-height: 1.6; }
-    .md-h2 { font-size: 1.3rem; color: var(--color-primary); margin: 20px 0 12px 0; padding-bottom: 6px; border-bottom: 2px solid var(--color-border); }
-    .md-h3 { font-size: 1.1rem; color: var(--color-text); margin: 16px 0 8px 0; }
-    .md-paragraph { margin-bottom: 12px; color: var(--color-text); }
-    .md-list { padding-left: 20px; margin-bottom: 16px; }
-    .alert { padding: 12px 16px; border-radius: 10px; margin: 16px 0; font-size: 0.9rem; }
-    .alert-warning { background: rgba(239, 68, 68, 0.1); border-left: 4px solid #ef4444; color: var(--color-text); }
-    .alert-info { background: rgba(2, 132, 199, 0.1); border-left: 4px solid #0284c7; color: var(--color-text); }
-
-    /* SVG Schematic Wrapper */
-    .svg-schematic-wrapper { background: var(--color-bg); border-radius: 12px; padding: 20px; border: 1px solid var(--color-border); text-align: center; }
-  <style>
     /* Modern List-Item Mode Styles (Upgraded) */
     .infographic-grid {
       grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
@@ -273,13 +188,13 @@
       <nav class="sidebar-nav" aria-label="Điều hướng chính">
         <ul class="nav-list" role="list">
           <li>
-            <a href="../ebm/guidelines/kho-guidelines/index.html" class="nav-item" title="Trang chủ">
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
               <span class="nav-icon">🏠</span>
               <span class="nav-text">Trang chủ</span>
             </a>
           </li>
           <li>
-            <a href="../tcm/readme.md" class="nav-item" title="S.lý - S.lý bệnh">
+            <a href="../pathophysiology/sinhly-sinhlybenh.html" class="nav-item" title="S.lý - S.lý bệnh">
               <span class="nav-icon">🧬</span>
               <span class="nav-text">S.lý - S.lý bệnh</span>
             </a>
@@ -315,7 +230,7 @@
             </a>
           </li>
           <li>
-            <a href="../tcm/readme.md" class="nav-item" title="Y học cổ truyền">
+            <a href="../tcm/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền">
               <span class="nav-icon">☯️</span>
               <span class="nav-text">Y học cổ truyền</span>
             </a>
@@ -328,7 +243,8 @@
     <div class="main-wrapper" id="mainContent">
 
       <!--BREADCRUMB-->
-      <clini-breadcrumb items='[{"label": "🏠 Home", "url": "../../index.html"}, {"label": "Tiếp cận lâm sàng"}]'></clini-breadcrumb>
+      <clini-breadcrumb
+        items='[{"label": "🏠 Home", "url": "../../../index.html"}, {"label": "Tiếp cận lâm sàng"}]'></clini-breadcrumb>
 
       <section class="hero-dashboard hero-approach" aria-labelledby="hero-title">
         <div class="tcm-hero-content">
@@ -357,26 +273,45 @@
       </section>
 
       <!-- ===== APPROACH STATS BANNER ===== -->
-      <div class="approach-stats-banner" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 20px 0;">
-        <div class="stat-card" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 16px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; box-shadow: var(--shadow-sm);">
-          <div class="stat-icon" style="font-size: 2rem; color: var(--color-primary); background: rgba(2, 132, 199, 0.1); width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-book-medical"></i></div>
+      <div class="approach-stats-banner"
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 20px 0;">
+        <div class="stat-card"
+          style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 16px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; box-shadow: var(--shadow-sm);">
+          <div class="stat-icon"
+            style="font-size: 2rem; color: var(--color-primary); background: rgba(2, 132, 199, 0.1); width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+            <i class="fa-solid fa-book-medical"></i>
+          </div>
           <div class="stat-info">
-            <span class="stat-number" id="totalApproachesCount" style="font-size: 1.4rem; font-weight: 800; color: var(--color-text); display: block;">42</span>
-            <span class="stat-label" style="font-size: 0.8rem; color: var(--color-text-muted); font-weight: 600;">Tổng Tiếp Cận</span>
+            <span class="stat-number" id="totalApproachesCount"
+              style="font-size: 1.4rem; font-weight: 800; color: var(--color-text); display: block;">42</span>
+            <span class="stat-label" style="font-size: 0.8rem; color: var(--color-text-muted); font-weight: 600;">Tổng
+              Tiếp Cận</span>
           </div>
         </div>
-        <div class="stat-card" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 16px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; box-shadow: var(--shadow-sm);">
-          <div class="stat-icon" style="font-size: 2rem; color: var(--color-success); background: rgba(16, 185, 129, 0.1); width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-circle-check"></i></div>
+        <div class="stat-card"
+          style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 16px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; box-shadow: var(--shadow-sm);">
+          <div class="stat-icon"
+            style="font-size: 2rem; color: var(--color-success); background: rgba(16, 185, 129, 0.1); width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
           <div class="stat-info">
-            <span class="stat-number" id="viewedApproachesCount" style="font-size: 1.4rem; font-weight: 800; color: var(--color-text); display: block;">0</span>
-            <span class="stat-label" style="font-size: 0.8rem; color: var(--color-text-muted); font-weight: 600;">Đã Học / Đã Xem</span>
+            <span class="stat-number" id="viewedApproachesCount"
+              style="font-size: 1.4rem; font-weight: 800; color: var(--color-text); display: block;">0</span>
+            <span class="stat-label" style="font-size: 0.8rem; color: var(--color-text-muted); font-weight: 600;">Đã Học
+              / Đã Xem</span>
           </div>
         </div>
-        <div class="stat-card" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 16px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; box-shadow: var(--shadow-sm);">
-          <div class="stat-icon" style="font-size: 2rem; color: var(--color-warning); background: rgba(245, 158, 11, 0.1); width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-triangle-exclamation"></i></div>
+        <div class="stat-card"
+          style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 16px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; box-shadow: var(--shadow-sm);">
+          <div class="stat-icon"
+            style="font-size: 2rem; color: var(--color-warning); background: rgba(245, 158, 11, 0.1); width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+          </div>
           <div class="stat-info">
-            <span class="stat-number" style="font-size: 1.4rem; font-weight: 800; color: var(--color-text); display: block;">27</span>
-            <span class="stat-label" style="font-size: 0.8rem; color: var(--color-text-muted); font-weight: 600;">Triệu Chứng Ma Trận</span>
+            <span class="stat-number"
+              style="font-size: 1.4rem; font-weight: 800; color: var(--color-text); display: block;">27</span>
+            <span class="stat-label" style="font-size: 0.8rem; color: var(--color-text-muted); font-weight: 600;">Triệu
+              Chứng Ma Trận</span>
           </div>
         </div>
       </div>
@@ -404,16 +339,24 @@
           <button class="tag-filter-btn" data-tag="nhi-khoa">#nhi-khoa</button>
           <button class="tag-filter-btn" data-tag="san-khoa">#san-khoa</button>
           <button class="tag-filter-btn" data-tag="ngoai-khoa">#ngoai-khoa</button>
-          <a href="interactive-tools/body-map.html" class="tag-filter-btn" style="background: rgba(139, 92, 246, 0.15); color: #8b5cf6; border-color: #8b5cf6; font-weight: 700; text-decoration: none;" title="Mở Bản Đồ Giải Phẫu Tương Tác">
+          <a href="interactive-tools/body-map.html" class="tag-filter-btn"
+            style="background: rgba(139, 92, 246, 0.15); color: #8b5cf6; border-color: #8b5cf6; font-weight: 700; text-decoration: none;"
+            title="Mở Bản Đồ Giải Phẫu Tương Tác">
             <i class="fa-solid fa-child-reaching"></i> Bản Đồ Giải Phẫu
           </a>
-          <a href="interactive-tools/case-simulator.html" class="tag-filter-btn" style="background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: #10b981; font-weight: 700; text-decoration: none;" title="Mở Mô Phỏng Ca Bệnh Tương Tác">
+          <a href="interactive-tools/case-simulator.html" class="tag-filter-btn"
+            style="background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: #10b981; font-weight: 700; text-decoration: none;"
+            title="Mở Mô Phỏng Ca Bệnh Tương Tác">
             <i class="fa-solid fa-user-doctor"></i> Ca Bệnh Ảo
           </a>
-          <a href="interactive-tools/knowledge-graph.html" class="tag-filter-btn" style="background: rgba(2, 132, 199, 0.15); color: #0284c7; border-color: #0284c7; font-weight: 700; text-decoration: none;" title="Mở Sơ Đồ Đồ Thị Tri Thức">
+          <a href="interactive-tools/knowledge-graph.html" class="tag-filter-btn"
+            style="background: rgba(2, 132, 199, 0.15); color: #0284c7; border-color: #0284c7; font-weight: 700; text-decoration: none;"
+            title="Mở Sơ Đồ Đồ Thị Tri Thức">
             <i class="fa-solid fa-diagram-project"></i> Đồ Thị Tri Thức
           </a>
-          <button id="hubOnCallBtn" class="tag-filter-btn" style="background: rgba(245, 158, 11, 0.15); color: var(--color-warning); border-color: var(--color-warning); font-weight: 700;" title="Bật/Tắt chế độ On-Call trực đêm">
+          <button id="hubOnCallBtn" class="tag-filter-btn"
+            style="background: rgba(245, 158, 11, 0.15); color: var(--color-warning); border-color: var(--color-warning); font-weight: 700;"
+            title="Bật/Tắt chế độ On-Call trực đêm">
             <i class="fa-solid fa-moon"></i> On-Call Mode
           </button>
         </div>
@@ -481,12 +424,7 @@
                   <span class="part-text">Dược lý lâm sàng</span>
                 </a>
               </li>
-              <li>
-                <a href="#non-html-engine-section" class="part-nav-item p-engine" data-target="non-html-engine-section">
-                  <span class="part-icon"><i class="fa-solid fa-database"></i></span>
-                  <span class="part-text">Động Cơ Dữ Liệu</span>
-                </a>
-              </li>
+
             </ul>
           </div>
         </aside>
@@ -529,63 +467,7 @@
           </section>
 
 
-          <!-- ===== NON-HTML DATA ENGINE SHOWCASE ===== -->
-          <section id="non-html-engine-section" class="data-engine-section" aria-labelledby="data-engine-heading">
-            <div class="physio-group-header" style="margin-bottom: 16px;">
-              <span class="physio-group-icon" style="color: var(--color-primary);"><i class="fa-solid fa-cube"></i></span>
-              <h3 id="data-engine-heading">Động Cơ Dữ Liệu Phi HTML (Non-HTML Formats Hub)</h3>
-            </div>
-            <p style="font-size: 0.875rem; color: var(--color-text-muted); margin-bottom: 20px;">
-              Tự động parse & render dữ liệu cấu trúc từ các định dạng <strong>JSON, CSV, Markdown, và SVG Schematics</strong> độc lập với HTML.
-            </p>
 
-            <div class="engine-tab-nav">
-              <button class="engine-tab-btn active" onclick="switchEngineTab(this, 'pane-json')">
-                <i class="fa-solid fa-code"></i> Flowcharts (JSON)
-              </button>
-              <button class="engine-tab-btn" onclick="switchEngineTab(this, 'pane-csv')">
-                <i class="fa-solid fa-table"></i> Ma Trận Triệu Chứng (CSV)
-              </button>
-              <button class="engine-tab-btn" onclick="switchEngineTab(this, 'pane-md')">
-                <i class="fa-solid fa-file-lines"></i> Chứng Cứ & Pearls (Markdown)
-              </button>
-              <button class="engine-tab-btn" onclick="switchEngineTab(this, 'pane-svg')">
-                <i class="fa-solid fa-diagram-project"></i> Sơ Đồ Vector (SVG)
-              </button>
-              <button class="engine-tab-btn" onclick="switchEngineTab(this, 'pane-taxonomy')">
-                <i class="fa-solid fa-sitemap"></i> Phân Loại (Taxonomy)
-              </button>
-            </div>
-
-            <div class="engine-pane-wrapper">
-              <!-- Pane 1: JSON Flowchart -->
-              <div class="engine-pane active" id="pane-json">
-                <div id="json-flowchart-container">Đang tải thuật toán JSON...</div>
-              </div>
-
-              <!-- Pane 2: CSV Matrix -->
-              <div class="engine-pane" id="pane-csv">
-                <div id="csv-matrix-container">Đang tải ma trận triệu chứng CSV...</div>
-              </div>
-
-              <!-- Pane 3: Markdown Pearls -->
-              <div class="engine-pane" id="pane-md">
-                <div class="md-container" id="md-pearls-container">Đang tải tài liệu Markdown...</div>
-              </div>
-
-              <!-- Pane 4: SVG Schematic -->
-              <div class="engine-pane" id="pane-svg">
-                <div class="svg-schematic-wrapper" id="svg-schematic-container">
-                  <div id="svg-render-box">Đang tải SVG sơ đồ...</div>
-                </div>
-              </div>
-
-              <!-- Pane 5: Taxonomy -->
-              <div class="engine-pane" id="pane-taxonomy">
-                <div id="taxonomy-container">Đang tải phân loại Taxonomy JSON...</div>
-              </div>
-            </div>
-          </section>
 
           <!-- PHẦN 1: CẤP CỨU - HỒI SỨC -->
           <section id="part1-section" aria-labelledby="part1-heading">
@@ -596,15 +478,18 @@
               </div>
               <div class="specialty-grid infographic-grid">
                 <!-- Card 1: Emergency Protocol -->
-                <a href="1. hs-cc/emergency-quick-protocol.html" class="specialty-card info-card" data-tags="cap-cuu" style="border-left-color: var(--color-danger) !important;">
+                <a href="1. hs-cc/emergency-quick-protocol.html" class="specialty-card info-card" data-tags="cap-cuu"
+                  style="border-left-color: var(--color-danger) !important;">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
-                      <h3 style="color: var(--color-danger) !important;"><i class="fa-solid fa-bolt-lightning" style="margin-right: 6px;"></i> Phác Đồ Cấp Cứu 60s</h3>
+                      <h3 style="color: var(--color-danger) !important;"><i class="fa-solid fa-bolt-lightning"
+                          style="margin-right: 6px;"></i> Phác Đồ Cấp Cứu 60s</h3>
                     </div>
                   </div>
                 </a>
                 <!-- Card 2: CPR -->
-                <a href="1. hs-cc/hoi-suc-co-ban-nang-cao/tc-hs-bls-alcs.html" class="specialty-card info-card" data-tags="cap-cuu">
+                <a href="1. hs-cc/hoi-suc-co-ban-nang-cao/tc-hs-bls-alcs.html" class="specialty-card info-card"
+                  data-tags="cap-cuu">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Ngưng tuần hoàn (BLS/ACLS)</h3>
@@ -625,7 +510,8 @@
               </div>
               <div class="specialty-grid infographic-grid">
                 <!-- C1 -->
-                <a href="symptoms/systemic-symptoms/fever/tc-sot.html" class="specialty-card info-card" data-tags="noi-khoa nhi-khoa">
+                <a href="symptoms/systemic-symptoms/fever/tc-sot.html" class="specialty-card info-card"
+                  data-tags="noi-khoa nhi-khoa">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Sốt</h3>
@@ -633,8 +519,8 @@
                   </div>
                 </a>
                 <!-- C2 -->
-                <a href="symptoms/gastro-symptoms/abdominal-pain/tc-daubung.html"
-                  class="specialty-card info-card" data-tags="ngoai-khoa noi-khoa">
+                <a href="symptoms/gastro-symptoms/abdominal-pain/tc-daubung.html" class="specialty-card info-card"
+                  data-tags="ngoai-khoa noi-khoa">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Đau bụng</h3>
@@ -642,7 +528,8 @@
                   </div>
                 </a>
                 <!-- C3: Khó thở -->
-                <a href="symptoms/than-phien-ho-hap-tim-mach/tc-khotho.html" class="specialty-card info-card" data-tags="cap-cuu noi-khoa">
+                <a href="symptoms/than-phien-ho-hap-tim-mach/tc-khotho.html" class="specialty-card info-card"
+                  data-tags="cap-cuu noi-khoa">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Khó thở</h3>
@@ -650,7 +537,8 @@
                   </div>
                 </a>
                 <!-- C4: Đau ngực -->
-                <a href="symptoms/than-phien-ho-hap-tim-mach/tc-daunguc.html" class="specialty-card info-card" data-tags="cap-cuu noi-khoa">
+                <a href="symptoms/than-phien-ho-hap-tim-mach/tc-daunguc.html" class="specialty-card info-card"
+                  data-tags="cap-cuu noi-khoa">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Đau ngực</h3>
@@ -658,7 +546,8 @@
                   </div>
                 </a>
                 <!-- C5: Vàng da -->
-                <a href="symptoms/systemic-symptoms/tc-vangda.html" class="specialty-card info-card" data-tags="noi-khoa ngoai-khoa">
+                <a href="symptoms/systemic-symptoms/tc-vangda.html" class="specialty-card info-card"
+                  data-tags="noi-khoa ngoai-khoa">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Vàng da</h3>
@@ -732,14 +621,19 @@
                 <span class="physio-group-icon"><i class="fa-solid fa-bed-pulse"></i></span>
                 <h3 id="part4-heading">Bệnh lý</h3>
               </div>
-              
-              <div style="background: linear-gradient(135deg, rgba(2, 132, 199, 0.05) 0%, rgba(14, 165, 233, 0.05) 100%); border: 1px solid var(--border-light); border-radius: 16px; padding: 24px; text-align: center; margin-top: 16px;">
+
+              <div
+                style="background: linear-gradient(135deg, rgba(2, 132, 199, 0.05) 0%, rgba(14, 165, 233, 0.05) 100%); border: 1px solid var(--border-light); border-radius: 16px; padding: 24px; text-align: center; margin-top: 16px;">
                 <div style="font-size: 3rem; margin-bottom: 16px;">🗂️</div>
-                <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--text-base); margin-bottom: 8px;">Dashboard Tiếp Cận Bệnh Lý</h4>
-                <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto;">
-                  Hệ thống quản lý, tra cứu và tự xây dựng các lưu đồ tiếp cận chẩn đoán, điều trị bệnh lý y khoa. Dữ liệu được đồng bộ hóa và hỗ trợ thiết kế flowchart trực quan.
+                <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--text-base); margin-bottom: 8px;">Dashboard
+                  Tiếp Cận Bệnh Lý</h4>
+                <p
+                  style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                  Hệ thống quản lý, tra cứu và tự xây dựng các lưu đồ tiếp cận chẩn đoán, điều trị bệnh lý y khoa. Dữ
+                  liệu được đồng bộ hóa và hỗ trợ thiết kế flowchart trực quan.
                 </p>
-                <a href="pathology/benh-ly.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; font-size: 1rem; padding: 12px 24px; border-radius: 12px;">
+                <a href="pathology/benh-ly.html" class="btn btn-primary"
+                  style="display: inline-flex; align-items: center; gap: 8px; font-size: 1rem; padding: 12px 24px; border-radius: 12px;">
                   Mở Dashboard Bệnh Lý <i class="fa-solid fa-arrow-right"></i>
                 </a>
               </div>
@@ -750,54 +644,63 @@
           <!-- PHẦN 5: DƯỢC LÝ LÂM SÀNG -->
           <section id="part5-section" aria-labelledby="part5-heading">
             <div class="physio-group-container" style="border-left-color: #ec4899;">
-              <div class="physio-group-header" style="background: linear-gradient(90deg, rgba(236, 72, 153, 0.1) 0%, transparent 100%);">
-                <span class="physio-group-icon" style="color: #ec4899; border-color: rgba(236, 72, 153, 0.2);"><i class="fa-solid fa-pills"></i></span>
+              <div class="physio-group-header"
+                style="background: linear-gradient(90deg, rgba(236, 72, 153, 0.1) 0%, transparent 100%);">
+                <span class="physio-group-icon" style="color: #ec4899; border-color: rgba(236, 72, 153, 0.2);"><i
+                    class="fa-solid fa-pills"></i></span>
                 <h3 id="part5-heading">Dược lý lâm sàng (Định hướng lý thuyết)</h3>
               </div>
               <div class="specialty-grid infographic-grid">
-                <a href="pharmacology/tc-dl-timmach.html" class="specialty-card info-card" style="border-left-color: #ec4899 !important;">
+                <a href="pharmacology/tc-dl-timmach.html" class="specialty-card info-card"
+                  style="border-left-color: #ec4899 !important;">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Dược lý Tim mạch</h3>
                     </div>
                   </div>
                 </a>
-                <a href="pharmacology/tc-dl-hohap.html" class="specialty-card info-card" style="border-left-color: #ec4899 !important;">
+                <a href="pharmacology/tc-dl-hohap.html" class="specialty-card info-card"
+                  style="border-left-color: #ec4899 !important;">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Dược lý Hô hấp</h3>
                     </div>
                   </div>
                 </a>
-                <a href="pharmacology/tc-dl-tieuhoa.html" class="specialty-card info-card" style="border-left-color: #ec4899 !important;">
+                <a href="pharmacology/tc-dl-tieuhoa.html" class="specialty-card info-card"
+                  style="border-left-color: #ec4899 !important;">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Dược lý Tiêu hóa</h3>
                     </div>
                   </div>
                 </a>
-                <a href="pharmacology/tc-dl-vanmach.html" class="specialty-card info-card" style="border-left-color: #ec4899 !important;">
+                <a href="pharmacology/tc-dl-vanmach.html" class="specialty-card info-card"
+                  style="border-left-color: #ec4899 !important;">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Dược lý Vận mạch & Trợ tim</h3>
                     </div>
                   </div>
                 </a>
-                <a href="pharmacology/tc-dl-khangsinh.html" class="specialty-card info-card" style="border-left-color: #ec4899 !important;">
+                <a href="pharmacology/tc-dl-khangsinh.html" class="specialty-card info-card"
+                  style="border-left-color: #ec4899 !important;">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Dược lý Kháng sinh</h3>
                     </div>
                   </div>
                 </a>
-                <a href="pharmacology/tc-dl-ttoan-than.html" class="specialty-card info-card" style="border-left-color: #ec4899 !important;">
+                <a href="pharmacology/tc-dl-ttoan-than.html" class="specialty-card info-card"
+                  style="border-left-color: #ec4899 !important;">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Dược lý Toan thận</h3>
                     </div>
                   </div>
                 </a>
-                <a href="pharmacology/tc-dl-noitiet.html" class="specialty-card info-card" style="border-left-color: #ec4899 !important;">
+                <a href="pharmacology/tc-dl-noitiet.html" class="specialty-card info-card"
+                  style="border-left-color: #ec4899 !important;">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Dược lý Nội tiết & ĐTĐ</h3>
@@ -813,10 +716,14 @@
           <section class="widget-card" aria-labelledby="symptom-checker-title">
             <div class="widget-card-title">
               <h3 id="symptom-checker-title"><i class="fa-solid fa-triangle-exclamation"></i> Ma Trận Triệu Chứng</h3>
-              <span class="clock-current-time" style="background: var(--color-danger-hl, #ffe4e6); color: var(--color-danger, #e11d48);">Cấp Cứu Red Flags</span>
+              <span class="clock-current-time"
+                style="background: var(--color-danger-hl, #ffe4e6); color: var(--color-danger, #e11d48);">Cấp Cứu Red
+                Flags</span>
             </div>
-            <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin-bottom: 1rem; line-height: 1.4;">
-              Chọn một triệu chứng chính để tra cứu nhanh các <strong>Dấu hiệu cảnh báo đỏ (Red Flags)</strong> nguy hiểm tính mạng và hướng xử trí.
+            <p
+              style="font-size: var(--text-xs); color: var(--color-text-muted); margin-bottom: 1rem; line-height: 1.4;">
+              Chọn một triệu chứng chính để tra cứu nhanh các <strong>Dấu hiệu cảnh báo đỏ (Red Flags)</strong> nguy
+              hiểm tính mạng và hướng xử trí.
             </p>
             <div class="symptom-select-container">
               <select id="symptomSelect" class="symptom-select" aria-label="Lựa chọn triệu chứng lâm sàng">
@@ -847,16 +754,23 @@
               </ul>
             </div>
             <!-- Next Step Action Link -->
-            <a href="#" class="specialty-card-action" id="symptomActionBtn" style="display: flex; justify-content: space-between; align-items: center; text-decoration: none; background: var(--color-surface-2); padding: 0.75rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--color-divider); color: var(--color-primary); font-size: var(--text-xs); font-weight: 700; transition: all var(--tr); margin-bottom: 8px;">
+            <a href="#" class="specialty-card-action" id="symptomActionBtn"
+              style="display: flex; justify-content: space-between; align-items: center; text-decoration: none; background: var(--color-surface-2); padding: 0.75rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--color-divider); color: var(--color-primary); font-size: var(--text-xs); font-weight: 700; transition: all var(--tr); margin-bottom: 8px;">
               <span id="symptomActionText">Mở lưu đồ tiếp cận Sốt</span>
               <i class="fa-solid fa-arrow-right"></i>
             </a>
-            <a href="interactive-tools/ma-tran-trieu-chung.html" class="specialty-card-action matrix-premium-btn" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-decoration: none; background: linear-gradient(135deg, var(--color-primary) 0%, #3b82f6 100%); padding: 1.25rem 1rem; border-radius: 16px; color: white; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 8px 20px rgba(2, 132, 199, 0.3); margin-top: 15px; border: 1px solid rgba(255,255,255,0.2); position: relative; overflow: hidden; text-align: center;">
-              <span style="position: absolute; top: -20px; right: -20px; width: 60px; height: 60px; background: rgba(255,255,255,0.15); border-radius: 50%;"></span>
-              <span style="position: absolute; bottom: -15px; left: -15px; width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 50%;"></span>
+            <a href="interactive-tools/ma-tran-trieu-chung.html" class="specialty-card-action matrix-premium-btn"
+              style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-decoration: none; background: linear-gradient(135deg, var(--color-primary) 0%, #3b82f6 100%); padding: 1.25rem 1rem; border-radius: 16px; color: white; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 8px 20px rgba(2, 132, 199, 0.3); margin-top: 15px; border: 1px solid rgba(255,255,255,0.2); position: relative; overflow: hidden; text-align: center;">
+              <span
+                style="position: absolute; top: -20px; right: -20px; width: 60px; height: 60px; background: rgba(255,255,255,0.15); border-radius: 50%;"></span>
+              <span
+                style="position: absolute; bottom: -15px; left: -15px; width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 50%;"></span>
               <div style="font-size: 1.6rem; margin-bottom: 8px;"><i class="fa-solid fa-network-wired"></i></div>
-              <span style="font-size: 0.95rem; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 4px; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">MỞ MA TRẬN CHẨN ĐOÁN</span>
-              <span style="font-size: 0.75rem; font-weight: 500; opacity: 0.95;">Công cụ phân tích đa triệu chứng đột phá</span>
+              <span
+                style="font-size: 0.95rem; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 4px; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">MỞ
+                MA TRẬN CHẨN ĐOÁN</span>
+              <span style="font-size: 0.75rem; font-weight: 500; opacity: 0.95;">Công cụ phân tích đa triệu chứng đột
+                phá</span>
             </a>
           </section>
 
@@ -864,15 +778,25 @@
           <section class="widget-card daily-flashcard-card" style="margin-top: 20px;">
             <div class="widget-card-title">
               <h3><i class="fa-solid fa-fire" style="color: var(--color-danger);"></i> Red Flags Hôm Nay</h3>
-              <span class="clock-current-time" style="background: rgba(2, 132, 199, 0.1); color: var(--color-primary);">Flashcard</span>
+              <span class="clock-current-time"
+                style="background: rgba(2, 132, 199, 0.1); color: var(--color-primary);">Flashcard</span>
             </div>
-            <div class="flashcard-box" id="dailyFlashcardBox" style="background: var(--color-surface-2); border: 1px solid var(--color-border); border-radius: 12px; padding: 14px; text-align: center;">
-              <div class="flashcard-question" id="flashcardTitle" style="font-weight: 700; font-size: 1rem; color: var(--color-primary); margin-bottom: 8px;">Triệu chứng: Sốt</div>
-              <div class="flashcard-hint" id="flashcardHint" style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 12px; font-style: italic;">Thử nhớ các Dấu Hiệu Cảnh Báo Đỏ trước khi lật thẻ...</div>
-              <div class="flashcard-answer" id="flashcardAnswer" style="display: none; text-align: left; margin-bottom: 12px;">
-                <ul id="flashcardRedFlagsList" style="padding-left: 18px; margin: 0; font-size: 0.82rem; color: var(--color-text); line-height: 1.5;"></ul>
+            <div class="flashcard-box" id="dailyFlashcardBox"
+              style="background: var(--color-surface-2); border: 1px solid var(--color-border); border-radius: 12px; padding: 14px; text-align: center;">
+              <div class="flashcard-question" id="flashcardTitle"
+                style="font-weight: 700; font-size: 1rem; color: var(--color-primary); margin-bottom: 8px;">Triệu chứng:
+                Sốt</div>
+              <div class="flashcard-hint" id="flashcardHint"
+                style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 12px; font-style: italic;">Thử
+                nhớ các Dấu Hiệu Cảnh Báo Đỏ trước khi lật thẻ...</div>
+              <div class="flashcard-answer" id="flashcardAnswer"
+                style="display: none; text-align: left; margin-bottom: 12px;">
+                <ul id="flashcardRedFlagsList"
+                  style="padding-left: 18px; margin: 0; font-size: 0.82rem; color: var(--color-text); line-height: 1.5;">
+                </ul>
               </div>
-              <button class="flashcard-toggle-btn" id="flashcardToggleBtn" style="background: var(--color-primary); color: white; border: none; padding: 8px 16px; border-radius: 100px; font-size: 0.8rem; font-weight: 700; cursor: pointer; transition: all 0.2s;">
+              <button class="flashcard-toggle-btn" id="flashcardToggleBtn"
+                style="background: var(--color-primary); color: white; border: none; padding: 8px 16px; border-radius: 100px; font-size: 0.8rem; font-weight: 700; cursor: pointer; transition: all 0.2s;">
                 <i class="fa-solid fa-rotate"></i> Lật Thẻ Xem Đáp Án
               </button>
             </div>
@@ -881,10 +805,13 @@
           <!-- RECENTLY VIEWED WIDGET -->
           <section class="widget-card recently-viewed-card" style="margin-top: 20px;">
             <div class="widget-card-title">
-              <h3><i class="fa-solid fa-clock-rotate-left" style="color: var(--color-primary);"></i> Tiếp Cận Vừa Xem</h3>
+              <h3><i class="fa-solid fa-clock-rotate-left" style="color: var(--color-primary);"></i> Tiếp Cận Vừa Xem
+              </h3>
             </div>
-            <div id="recentlyViewedList" class="recently-viewed-list" style="display: flex; flex-direction: column; gap: 8px;">
-              <p style="font-size: 0.8rem; color: var(--color-text-muted); font-style: italic; margin: 0;">Chưa có lịch sử truy cập gần đây.</p>
+            <div id="recentlyViewedList" class="recently-viewed-list"
+              style="display: flex; flex-direction: column; gap: 8px;">
+              <p style="font-size: 0.8rem; color: var(--color-text-muted); font-style: italic; margin: 0;">Chưa có lịch
+                sử truy cập gần đây.</p>
             </div>
           </section>
 
@@ -902,7 +829,7 @@
 
   <!-- ===================== SYMPTOM MATRIX SCRIPT ===================== -->
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
       const symptomData = {
         sot: {
           redFlags: [
@@ -919,7 +846,7 @@
             "Sốt rét ác tính thể não (nếu có yếu tố dịch tễ)"
           ],
           actionText: "Mở lưu đồ tiếp cận Sốt",
-          actionUrl: "2. Triệu chứng/Than phiền Toàn thân/Sốt/TC_Sot.html"
+          actionUrl: "symptoms/systemic-symptoms/fever/tc-sot.html"
         },
         daubung: {
           redFlags: [
@@ -936,7 +863,7 @@
             "Thai ngoài tử cung vỡ (ở nữ độ tuổi sinh sản)"
           ],
           actionText: "Mở lưu đồ tiếp cận Đau bụng",
-          actionUrl: "2. Triệu chứng/Than phiền Tiêu hóa - Bụng/Đau bụng/TC_Daubung.html"
+          actionUrl: "symptoms/gastro-symptoms/abdominal-pain/tc-daubung.html"
         },
         khotho: {
           redFlags: [
@@ -953,7 +880,7 @@
             "Dị vật đường thở lớn hoặc phản vệ mức độ nặng"
           ],
           actionText: "Mở lưu đồ tiếp cận Khó thở",
-          actionUrl: "2. Triệu chứng/Than phiền Hô hấp - Tim mạch/TC_Khotho.html"
+          actionUrl: "symptoms/than-phien-ho-hap-tim-mach/tc-khotho.html"
         },
         daunguc: {
           redFlags: [
@@ -970,7 +897,7 @@
             "Tràn khí màng phổi áp lực gây chèn ép tim cấp"
           ],
           actionText: "Mở lưu đồ tiếp cận Đau ngực",
-          actionUrl: "2. Triệu chứng/Than phiền Hô hấp - Tim mạch/TC_Daunguc.html"
+          actionUrl: "symptoms/than-phien-ho-hap-tim-mach/tc-daunguc.html"
         },
         vangda: {
           redFlags: [
@@ -987,7 +914,7 @@
             "Sơ gan mất bù giai đoạn cuối"
           ],
           actionText: "Mở lưu đồ tiếp cận Vàng da",
-          actionUrl: "2. Triệu chứng/Than phiền Toàn thân/TC_Vangda.html"
+          actionUrl: "symptoms/systemic-symptoms/tc-vangda.html"
         },
         phu: {
           redFlags: [
@@ -1003,7 +930,7 @@
             "Hội chứng thận hư cấp hoặc đợt cấp suy thận mạn"
           ],
           actionText: "Mở lưu đồ tiếp cận Phù",
-          actionUrl: "2. Triệu chứng/Than phiền Toàn thân/TC_Phu.html"
+          actionUrl: "symptoms/systemic-symptoms/tc-phu.html"
         }
       };
 
@@ -1044,86 +971,7 @@
       });
     });
 
-    // Engine Tab Switching Function
-    function switchEngineTab(btnEl, paneId) {
-      const section = btnEl.closest('.data-engine-section');
-      if (!section) return;
-      section.querySelectorAll('.engine-tab-btn').forEach(b => b.classList.remove('active'));
-      btnEl.classList.add('active');
 
-      section.querySelectorAll('.engine-pane').forEach(p => p.classList.remove('active'));
-      const targetPane = section.querySelector(`#${paneId}`);
-      if (targetPane) targetPane.classList.add('active');
-    }
-
-    // Initialize Non-HTML Data Loading
-    document.addEventListener("DOMContentLoaded", async function() {
-      if (typeof CliniPortalApproachEngine === "undefined") return;
-
-      // 1. Load JSON Emergency Pathway
-      try {
-        const jsonText = await CliniPortalApproachEngine.fetchResource('data/emergency-pathways.json', 'emergency-pathways.json');
-        const jsonObj = JSON.parse(jsonText);
-        if (jsonObj.pathways && jsonObj.pathways[0]) {
-          CliniPortalApproachEngine.renderJSONFlowchart(jsonObj.pathways[0], document.getElementById('json-flowchart-container'));
-        }
-      } catch (err) {
-        console.error('Error rendering JSON flowchart:', err);
-      }
-
-      // 2. Load CSV Symptom Matrix
-      try {
-        const csvText = await CliniPortalApproachEngine.fetchResource('data/symptom-matrix.csv', 'symptom-matrix.csv');
-        const csvData = CliniPortalApproachEngine.parseCSV(csvText);
-        CliniPortalApproachEngine.renderCSVMatrix(csvData, document.getElementById('csv-matrix-container'));
-      } catch (err) {
-        console.error('Error rendering CSV matrix:', err);
-      }
-
-      // 3. Load Markdown Clinical Pearls
-      try {
-        const mdText = await CliniPortalApproachEngine.fetchResource('data/clinical-pearls.md', 'clinical-pearls.md');
-        const mdHtml = CliniPortalApproachEngine.parseMarkdown(mdText);
-        document.getElementById('md-pearls-container').innerHTML = mdHtml;
-      } catch (err) {
-        console.error('Error rendering Markdown pearls:', err);
-      }
-
-      // 4. Load SVG Visual Schematic
-      try {
-        const svgText = await CliniPortalApproachEngine.fetchResource('data/flowchart-schematic.svg', 'flowchart-schematic.svg');
-        document.getElementById('svg-render-box').innerHTML = svgText;
-      } catch (err) {
-        console.error('Error rendering SVG schematic:', err);
-      }
-
-      // 5. Load Taxonomy JSON
-      try {
-        const taxText = await CliniPortalApproachEngine.fetchResource('data/approach-taxonomy.json', 'approach-taxonomy.json');
-        const taxObj = JSON.parse(taxText);
-        if (taxObj.categories) {
-          let html = `<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">`;
-          taxObj.categories.forEach(cat => {
-            html += `
-              <div style="background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 12px; padding: 16px;">
-                <div style="display:flex; align-items:center; gap: 10px; margin-bottom: 8px;">
-                  <i class="fa-solid ${cat.icon}" style="color: var(--color-primary); font-size: 1.2rem;"></i>
-                  <strong style="color: var(--color-text);">${cat.name}</strong>
-                </div>
-                <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 12px;">${cat.description}</p>
-                <div style="display:flex; flex-wrap:wrap; gap: 6px;">
-                  ${(cat.subgroups || []).map(sub => `<span style="font-size: 0.75rem; background: var(--color-surface); border: 1px solid var(--color-border); padding: 2px 8px; border-radius: 6px;">${sub}</span>`).join('')}
-                </div>
-              </div>
-            `;
-          });
-          html += `</div>`;
-          document.getElementById('taxonomy-container').innerHTML = html;
-        }
-      } catch (err) {
-        console.error('Error rendering Taxonomy JSON:', err);
-      }
-    });
   </script>
 </body>
 

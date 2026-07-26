@@ -52,10 +52,20 @@ document.addEventListener("DOMContentLoaded", () => {
     attachFavoriteEvents();
   }
 
+  function resolveToolLink(rawLink) {
+    if (!rawLink) return "#";
+    const path = window.location.pathname.replace(/\\/g, '/');
+    if (path.includes('/calculators/general/')) {
+      return '../' + rawLink;
+    }
+    return rawLink;
+  }
+
   function createToolCard(tool, isFavoriteView = false) {
     const isFav = favorites.includes(tool.id);
     const starClass = isFav ? "fa-solid fa-star" : "fa-regular fa-star";
     const starColor = isFav ? "var(--color-warning)" : "var(--color-text-muted)";
+    const toolLink = resolveToolLink(tool.link);
     
     return `
       <div class="specialty-card tool-card" data-tool-id="${tool.id}" data-tags="${tool.tags.join(" ")}">
@@ -69,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <i class="${starClass}"></i>
           </button>
         </div>
-        <a href="${encodeURI(tool.link)}" class="specialty-card-action" style="text-decoration:none; display:flex; justify-content:space-between; align-items:center;">
+        <a href="${encodeURI(toolLink)}" class="specialty-card-action" style="text-decoration:none; display:flex; justify-content:space-between; align-items:center;">
           <span>Mở công cụ</span>
           <i class="fa-solid fa-chevron-right"></i>
         </a>

@@ -614,15 +614,51 @@
       <nav class="sidebar-nav" aria-label="Điều hướng chính">
         <ul class="nav-list" role="list">
           <li>
-            <a href="../../ebm/guidelines/kho-guidelines/index.html" class="nav-item" title="Trang chủ">
+            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
               <span class="nav-icon">🏠</span>
               <span class="nav-text">Trang chủ</span>
             </a>
           </li>
           <li>
-            <a href="../general/calculators-hub.html" class="nav-item active" aria-current="page" title="Công cụ">
+            <a href="../../pathophysiology/sinhly-sinhlybenh.html" class="nav-item" title="S.lý - S.lý bệnh">
+              <span class="nav-icon">🧬</span>
+              <span class="nav-text">S.lý - S.lý bệnh</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../skills/ky-nang.html" class="nav-item" title="Kỹ năng">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../approaches/tiep-can.html" class="nav-item" title="Tiếp cận">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận</span>
+            </a>
+          </li>
+          <li>
+            <a href="../cong-cu.html" class="nav-item active" aria-current="page" title="Công cụ">
               <span class="nav-icon">⚙️</span>
               <span class="nav-text">Công cụ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../pharmacology/duoc-ly.html" class="nav-item" title="Dược lý">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../ebm/yhcc.html" class="nav-item" title="Y học chứng cứ">
+              <span class="nav-icon">📄</span>
+              <span class="nav-text">Y học chứng cứ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../tcm/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền">
+              <span class="nav-icon">☯️</span>
+              <span class="nav-text">Y học cổ truyền</span>
             </a>
           </li>
         </ul>
@@ -637,7 +673,7 @@
         <p>Tính toán lượng dịch, tốc độ truyền và y lệnh chi tiết theo từng bệnh cảnh lâm sàng cụ thể</p>
       </section>
 
-      <clini-breadcrumb items='[{"label": "🏠 Home", "url": "../../../index.html"}, {"label": "Công cụ", "url": "../cong-cu.html"}, {"label": "Cấp cứu & hồi sức", "url": "#"}, {"label": "Bù dịch"}]'></clini-breadcrumb>
+      <clini-breadcrumb items='[{"label": "🏠 Home", "url": "../../../../index.html"}, {"label": "Công cụ", "url": "../cong-cu.html"}, {"label": "Cấp cứu & hồi sức", "url": "#"}, {"label": "Bù dịch"}]'></clini-breadcrumb>
 
       <!-- BƯỚC 1: CHỌN BỆNH CẢNH -->
       <div style="margin-bottom:16px;">
@@ -697,9 +733,9 @@
           <div class="inp-group" id="group-diarrhea-grade" style="display:none;">
             <label for="diarrhea-grade">Mức độ mất nước</label>
             <select id="diarrhea-grade" onchange="calculate()">
-              <option value="mild">Nhẹ (< 5%) – Tỉnh, uống được</option>
+              <option value="mild">Nhẹ (&lt; 5%) – Tỉnh, uống được</option>
               <option value="moderate" selected>Vừa (5–10%) – Mắt trũng, khô môi</option>
-              <option value="severe">Nặng (> 10%) – Vật vã, mạch nhanh</option>
+              <option value="severe">Nặng (&gt; 10%) – Vật vã, mạch nhanh</option>
             </select>
           </div>
           <!-- SXHD -->
@@ -717,7 +753,7 @@
           <div class="inp-group" id="group-dhf-age" style="display:none;">
             <label for="dhf-age-group">Nhóm tuổi</label>
             <select id="dhf-age-group" onchange="calculate()">
-              <option value="child">Trẻ em (< 13 tuổi)</option>
+              <option value="child">Trẻ em (&lt; 13 tuổi)</option>
               <option value="adolescent">Thiếu niên (13–16 tuổi)</option>
               <option value="adult" selected>Người lớn (≥ 16 tuổi)</option>
             </select>
@@ -928,7 +964,7 @@
           deficit = weight * 0.04 * 1000;
           html = `
             <div class="fluid-card fc-green">
-                <div class="fluid-card-title" style="color:var(--bd-green);">🟢 Mất nước nhẹ (< 5%) – Bù qua đường uống</div>
+                <div class="fluid-card-title" style="color:var(--bd-green);">🟢 Mất nước nhẹ (&lt; 5%) – Bù qua đường uống</div>
                 <div class="fluid-card-body">
                     <strong>Ước lượng lượng nước thiếu hụt:</strong> ~${r(deficit)} mL<br>
                     <strong>Phác đồ:</strong> Bổ sung qua đường uống (PO). KHÔNG cần truyền TM.<br>
@@ -970,7 +1006,7 @@
           const tc2 = timeCol(0.5, 3, rt);
           html = `
             <div class="fluid-card fc-red">
-                <div class="fluid-card-title" style="color:var(--bd-red);">🔴 Mất nước nặng (> 10%) – Cấp cứu TM khẩn cấp (Phác đồ C)</div>
+                <div class="fluid-card-title" style="color:var(--bd-red);">🔴 Mất nước nặng (&gt; 10%) – Cấp cứu TM khẩn cấp (Phác đồ C)</div>
                 <div class="fluid-card-body">
                     <strong>Ước lượng thiếu hụt:</strong> ~${r(deficit)} mL<br>
                     <strong>Dịch:</strong> Ringer Lactate (RL) – Chạy nhanh nhất có thể
@@ -1094,7 +1130,7 @@
             </div>
             <div class="ab ab-warn"><strong>⚠️ Đánh giá lại sau 1 giờ:</strong><br>
                 ✅ Cải thiện → Giảm dần theo bảng bên dưới<br>
-                ❌ Không cải thiện + Hct tăng/không đổi/giảm < 20% → Cao phân tử 10–15 mL/kg/h trong 1h<br>
+                ❌ Không cải thiện + Hct tăng/không đổi/giảm &lt; 20% → Cao phân tử 10–15 mL/kg/h trong 1h<br>
                 ❌ Không cải thiện + Hct giảm > 20% hoặc < 35% → Truyền máu/chế phẩm máu</div>`;
             stepdownTable = `
             <table class="fluid-table">
@@ -1135,7 +1171,7 @@
         }
 
         let hctNote = '';
-        if (hct < 35) hctNote = `<div class="ab ab-danger"><strong>🚨 HCT < 35% kèm sốc:</strong> Nghĩ đến XUẤT HUYẾT NỘI. Truyền hồng cầu lắng ${isChild ? '5 mL/kg' : '5–10 mL/kg'} hoặc máu toàn phần ${isChild ? '10 mL/kg' : '10 mL/kg'}. Tìm ổ chảy máu ẩn (XHTH, xuất huyết ổ bụng).</div>`;
+        if (hct < 35) hctNote = `<div class="ab ab-danger"><strong>🚨 HCT &lt; 35% kèm sốc:</strong> Nghĩ đến XUẤT HUYẾT NỘI. Truyền hồng cầu lắng ${isChild ? '5 mL/kg' : '5–10 mL/kg'} hoặc máu toàn phần ${isChild ? '10 mL/kg' : '10 mL/kg'}. Tìm ổ chảy máu ẩn (XHTH, xuất huyết ổ bụng).</div>`;
 
         html = `
         <div class="ab ab-danger"><strong>🚨 Phân loại:</strong> <strong>Sốc bù:</strong> Mạch nhanh nhẹ, HA kẹt (hiệu áp ≤ 20mmHg). <strong>Sốc mất bù:</strong> Mạch không bắt được, HA không đo được.</div>
@@ -1176,7 +1212,7 @@
         <div class="fluid-card fc-red">
             <div class="fluid-card-title" style="color:var(--bd-red);">Phác đồ Bù dịch Sốc Nhiễm khuẩn (SSC 2021 / ESICM 2025)</div>
             <div class="fluid-card-body">
-                <strong>Tình trạng hiện tại:</strong> MAP ${map} mmHg ${map < 65 ? '<span style="color:var(--bd-red);font-weight:700;">(< 65 mmHg – Đang sốc)</span>' : ''} | Lactate ${lac} mmol/L ${lac >= 4 ? '<span style="color:var(--bd-red);font-weight:700;">(≥ 4 – Tưới máu kém nặng)</span>' : lac >= 2 ? '<span style="color:var(--bd-amber);font-weight:700;">(2–4 – Cần hành động)</span>' : ''}<br>
+                <strong>Tình trạng hiện tại:</strong> MAP ${map} mmHg ${map < 65 ? '<span style="color:var(--bd-red);font-weight:700;">(&lt; 65 mmHg – Đang sốc)</span>' : ''} | Lactate ${lac} mmol/L ${lac >= 4 ? '<span style="color:var(--bd-red);font-weight:700;">(≥ 4 – Tưới máu kém nặng)</span>' : lac >= 2 ? '<span style="color:var(--bd-amber);font-weight:700;">(2–4 – Cần hành động)</span>' : ''}<br>
                 <strong>Dịch ưu tiên:</strong> Balanced crystalloids – Ringer Lactate hoặc Plasma-Lyte. <span style="color:var(--bd-red);font-weight:600;">HẠN CHẾ NaCl 0.9%</span> (gây toan tăng Cl máu).
             </div>
         </div>
@@ -1217,7 +1253,7 @@
         let ratePhase1 = isFragile ? '250 mL bolus × lặp lại' : '500–1000 mL/giờ';
         let ratePhase1Num = isFragile ? 250 : 750;
         let glucoseStatus = '';
-        if (glucose < 250) glucoseStatus = '<span style="color:var(--bd-amber);font-weight:700;">< 250 mg/dL → CẦN THÊM DEXTROSE</span>';
+        if (glucose < 250) glucoseStatus = '<span style="color:var(--bd-amber);font-weight:700;">&lt; 250 mg/dL → CẦN THÊM DEXTROSE</span>';
         else if (glucose > 600) glucoseStatus = '<span style="color:var(--bd-red);font-weight:700;">> 600 mg/dL – Tăng đường huyết nặng</span>';
         else glucoseStatus = `${glucose} mg/dL`;
 
@@ -1225,7 +1261,7 @@
         if (isEuglycemic || glucose < 250) {
           dextrose = `
           <div class="fluid-card fc-amber">
-              <div class="fluid-card-title" style="color:var(--bd-amber);">⚠️ CHỈ ĐỊNH DEXTROSE ${isEuglycemic ? '– NGAY TỪ ĐẦU (Euglycemic DKA)' : '– GLUCOSE < 250 mg/dL'}</div>
+              <div class="fluid-card-title" style="color:var(--bd-amber);">⚠️ CHỈ ĐỊNH DEXTROSE ${isEuglycemic ? '– NGAY TỪ ĐẦU (Euglycemic DKA)' : '– GLUCOSE &lt; 250 mg/dL'}</div>
               <div class="fluid-card-body">
                   <strong>Dịch:</strong> Dextrose 5% hoặc 10% (pha trong RL hoặc NaCl 0.9%)<br>
                   <strong>Lý do:</strong> ${isEuglycemic ? 'Euglycemic DKA (do SGLT2i, nhịn ăn, thai kỳ) – ĐH bình thường nhưng toan ceton nặng. Phải truyền Dextrose đồng thời với Insulin để ức chế sinh ceton mà không gây hạ ĐH.' : 'Cung cấp glucose ngoại sinh phòng hạ ĐH, cho phép duy trì Insulin 0.05 đv/kg/h để ức chế hoàn toàn sinh ceton.'}<br>
@@ -1265,7 +1301,7 @@
                 <tr><td>Giờ 0–4</td><td>Hồi sức thể tích</td><td>${ratePhase1} tinh thể cân bằng${isFragile ? '. Đánh giá JVP, phổi sau mỗi bolus' : ''}</td>${timeCol(0, 4, rt)}</tr>
                 <tr><td>Giờ 4–12</td><td>Bù dịch duy trì</td><td>Bù 50% thiếu hụt trong 8–12h đầu. Đánh giá Na hiệu chỉnh</td>${timeCol(4, 12, rt)}</tr>
                 <tr><td>Giờ 12–48</td><td>Bù phần còn lại</td><td>50% thiếu hụt còn lại trong 24–48h tiếp theo</td>${timeCol(12, 48, rt)}</tr>
-                <tr><td>Khi ĐH < 250</td><td><strong>Thêm Dextrose 5–10%</strong></td><td>Duy trì Insulin 0.05 đv/kg/h để ức chế sinh ceton</td><td></td></tr>
+                <tr><td>Khi ĐH &lt; 250</td><td><strong>Thêm Dextrose 5–10%</strong></td><td>Duy trì Insulin 0.05 đv/kg/h để ức chế sinh ceton</td><td></td></tr>
             </tbody>
         </table>
         <div class="ab ab-info"><strong>💡 Bù dịch đơn thuần:</strong> Có thể giảm ĐH 50–70 mg/dL/giờ (2.8–3.9 mmol/L/giờ) ngay cả khi chưa dùng insulin, nhờ tăng tưới máu thận và đào thải glucose qua nước tiểu.</div>
@@ -1317,7 +1353,7 @@
             <div class="fluid-card-title" style="color:var(--bd-teal);">📏 CHUẨN ĐỘ THEO NƯỚC TIỂU (UOP) – MỖI GIỜ</div>
             <div class="fluid-card-body">
                 <strong>Mục tiêu UOP:</strong> 0.5 mL/kg/giờ = <strong>${uopTarget} mL/giờ</strong> (30–50 mL/giờ ở người lớn)<br>
-                • UOP < 30 mL/giờ → <strong style="color:var(--bd-red);">Tăng tốc độ 20–30%</strong><br>
+                • UOP &lt; 30 mL/giờ → <strong style="color:var(--bd-red);">Tăng tốc độ 20–30%</strong><br>
                 • UOP > 50 mL/giờ → <strong style="color:var(--bd-amber);">Giảm tốc độ 20–30%</strong>
             </div>
         </div>
@@ -1326,7 +1362,7 @@
             • Đo <strong>Áp lực ổ bụng (IAP)</strong> qua sonde tiểu mỗi 4h. IAP > 20 mmHg + suy tạng → Báo phẫu thuật (ACS)<br>
             • Đo <strong>Áp lực nội nhãn (IOP)</strong> nếu bỏng sâu quanh hốc mắt hoặc lồi mắt</div>` : ''}
         <div class="ab ab-info"><strong>💡 Chống chỉ định Vitamin C liều cao:</strong> ABA 2023 KHÔNG khuyến cáo thường quy. Nguy cơ bệnh thận do oxalate, lợi tiểu thẩm thấu gây mất nước, sai lệch thông số UOP.</div>
-        <div class="ab ab-info"><strong>💡 Vận mạch:</strong> Nếu MAP < 65 dù bù đủ dịch → Norepinephrine (hoặc Vasopressin). Không có đủ bằng chứng ưu tiên loại nào.</div>
+        <div class="ab ab-info"><strong>💡 Vận mạch:</strong> Nếu MAP &lt; 65 dù bù đủ dịch → Norepinephrine (hoặc Vasopressin). Không có đủ bằng chứng ưu tiên loại nào.</div>
         <span class="src-badge">📚 ABA Clinical Practice Guidelines on Burn Shock Resuscitation 2023</span>`;
       }
 
@@ -1357,14 +1393,14 @@
                   <strong>Theo dõi:</strong> Arterial line, CVC, lactate mỗi 2–4h, siêu âm tim đánh giá EF/CO
               </div>
           </div>
-          <div class="ab ab-warn"><strong>⚠️ Lưu ý Inotrope:</strong> Phải phối hợp với vận mạch nếu MAP < 65 mmHg vì Inotropes có thể gây giãn mạch làm tụt HA nặng hơn.</div>`;
+          <div class="ab ab-warn"><strong>⚠️ Lưu ý Inotrope:</strong> Phải phối hợp với vận mạch nếu MAP &lt; 65 mmHg vì Inotropes có thể gây giãn mạch làm tụt HA nặng hơn.</div>`;
         } else if (plr === 'negative') {
           /* KHÔNG SUNG HUYẾT + PLR ÂM TÍNH → KHÔNG BÙ DỊCH */
           html = `
           <div class="fluid-card fc-amber">
               <div class="fluid-card-title" style="color:var(--bd-amber);">⚠️ PLR ÂM TÍNH – Không đáp ứng bù dịch</div>
               <div class="fluid-card-body">
-                  <strong>Nghiệm pháp PLR:</strong> CO/SV tăng < 10% → Bệnh nhân <strong>KHÔNG đáp ứng bù dịch</strong><br>
+                  <strong>Nghiệm pháp PLR:</strong> CO/SV tăng &lt; 10% → Bệnh nhân <strong>KHÔNG đáp ứng bù dịch</strong><br>
                   <strong>Hướng xử trí:</strong> Chuyển sang chiến lược vận mạch + inotrope. KHÔNG truyền thêm dịch.
               </div>
           </div>
@@ -1384,7 +1420,7 @@
               <div class="fluid-card-title" style="color:var(--bd-blue);">Nghiệm pháp truyền dịch (Fluid Challenge) – Sốc tim</div>
               <div class="fluid-card-body">
                   <strong>Điều kiện:</strong> Không có sung huyết ${plr === 'positive' ? '+ PLR dương tính (CO tăng ≥ 10%)' : '+ PLR chưa thực hiện (nên làm PLR trước)'}<br>
-                  <strong>MAP hiện tại:</strong> ${cMap} mmHg ${cMap < 65 ? '<span style="color:var(--bd-red);font-weight:700;">(< 65 – Cần vận mạch song song)</span>' : ''}
+                  <strong>MAP hiện tại:</strong> ${cMap} mmHg ${cMap < 65 ? '<span style="color:var(--bd-red);font-weight:700;">(&lt; 65 – Cần vận mạch song song)</span>' : ''}
               </div>
           </div>
           <div class="rate-display rate-teal">
@@ -1394,7 +1430,7 @@
           <div class="ab ab-warn"><strong>⚠️ Đánh giá SAU KHI TRUYỀN 250 mL:</strong><br>
               • Đo lại CO hoặc VTI trên siêu âm tim ngay<br>
               • ✅ CO/SV tăng > 10–15% → Có đáp ứng, xem xét lặp lại bolus 250 mL (thận trọng)<br>
-              • ❌ CO/SV tăng < 10% → <strong>Ngừng hoàn toàn bù dịch</strong>. Chuyển inotrope/vận mạch<br>
+              • ❌ CO/SV tăng &lt; 10% → <strong>Ngừng hoàn toàn bù dịch</strong>. Chuyển inotrope/vận mạch<br>
               • ❌ Xuất hiện sung huyết (ran phổi, JVP tăng, đường B siêu âm) → Lập tức ngừng dịch</div>
           ${plr === 'pending' ? '<div class="ab ab-info"><strong>💡 Khuyến cáo:</strong> Nên thực hiện nghiệm pháp PLR (nâng chân thụ động 45°) hoặc EEOT (tắc nghẽn cuối thì thở ra) TRƯỚC KHI truyền dịch để đánh giá fluid responsiveness an toàn hơn.</div>' : ''}`;
         }
