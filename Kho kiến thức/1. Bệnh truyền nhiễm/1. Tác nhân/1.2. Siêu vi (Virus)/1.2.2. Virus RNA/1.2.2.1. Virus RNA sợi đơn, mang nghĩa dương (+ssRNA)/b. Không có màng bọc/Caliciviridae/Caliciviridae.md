@@ -1,6 +1,0 @@
----
-tags:
-  - Tacnhan
----
-[[Norovirus]]
-[[Sapovirus]]

@@ -120,20 +120,25 @@ Apps_ykhoa/
 ├── manifest.json            # Cấu hình Web App Manifest (PWA)
 ├── sw.js                    # Service Worker hỗ trợ Caching Offline
 ├── capacitor.config.json    # Cấu hình Capacitor Mobile App
-├── package.json             # Cấu hình Npm / Electron / Capacitor
+├── package.json             # Cấu hình Npm / Vite / Electron / Capacitor
 ├── assets/                  # Tài nguyên tĩnh (Fonts, Images, Icons, Lottie)
 ├── components/              # Shared Layout (Header, Footer, Navigation)
 ├── css/                     # Reset CSS, Design System Tokens (main.css) & Module CSS
 ├── js/                      # Logic điều hướng, Engine đồng bộ & Calculators
 ├── templates/               # Boilerplate HTML mẫu cho lập trình viên
-├── pages/                   # Phân hệ nội dung Y khoa chính:
-│   ├── Công cụ/             # Máy tính & Chỉ số lâm sàng
-│   ├── Dược lý/             # Tra cứu thuốc & Phác đồ điều trị
-│   ├── Kỹ năng/             # Kỹ năng lâm sàng & Đọc cận lâm sàng
-│   ├── Sinh lý - Sinh lý bệnh/ # Bài đọc Sinh lý học trực quan
-│   ├── Tiếp cận/            # Lưu đồ & Thuật toán chẩn đoán
-│   ├── Y học chứng cứ/      # Guidelines & Evidence-Based Medicine
-│   └── Y học cổ truyền/     # Kiến thức Y học cổ truyền
+├── src/                     # Mã nguồn & Phân hệ nội dung Y khoa chính:
+│   ├── components/          # UI Components & Application Views
+│   ├── core/                # Clinical Engine, Search & Content Loaders
+│   ├── styles/              # Core Stylesheets
+│   └── content/             # Phân hệ nội dung Y khoa chính:
+│       ├── calculators/     # Máy tính & Chỉ số lâm sàng
+│       ├── pharmacology/    # Tra cứu thuốc & Phác đồ điều trị
+│       ├── skills/          # Kỹ năng lâm sàng & Đọc cận lâm sàng
+│       ├── pathophysiology/ # Bài đọc Sinh lý học & Sinh lý bệnh
+│       ├── approaches/      # Lưu đồ & Thuật toán chẩn đoán
+│       ├── ebm/             # Guidelines & Evidence-Based Medicine
+│       └── tcm/             # Kiến thức Y học cổ truyền
+├── archive/                  # Lưu trữ file nén (pages_backup.zip)
 ├── desktop/                 # Script & Electron Main Process (Laptop App)
 │   ├── launch-desktop.cmd
 │   └── main-electron.js

@@ -1,6 +1,0 @@
----
-tags:
-  - Tacnhan
----
-[[Ebola]]
-[[Marburg]]
