@@ -1,0 +1,79 @@
+{
+  "version": "2026.1",
+  "updatedAt": "2026-07-25T15:30:00Z",
+  "specialties": {
+    "cardio": { "name": "Tim mạch", "color": "#dc2626", "bg": "#fef2f2" },
+    "pulmo": { "name": "Hô hấp", "color": "#2563eb", "bg": "#eff6ff" },
+    "gi": { "name": "Tiêu hóa", "color": "#ca8a04", "bg": "#fefce8" },
+    "endo": { "name": "Nội tiết", "color": "#7c3aed", "bg": "#faf5ff" },
+    "neuro": { "name": "Thần kinh", "color": "#c026d3", "bg": "#fdf4ff" },
+    "infect": { "name": "Truyền nhiễm", "color": "#16a34a", "bg": "#f0fdf4" },
+    "renal": { "name": "Thận học", "color": "#0891b2", "bg": "#ecfeff" },
+    "rheum": { "name": "Cơ xương khớp", "color": "#ea580c", "bg": "#fff7ed" },
+    "hema": { "name": "Huyết học", "color": "#db2777", "bg": "#fdf2f8" },
+    "onco": { "name": "Ung thư", "color": "#be185d", "bg": "#fce7f3" },
+    "icu": { "name": "Hồi sức cấp cứu (HSCC)", "color": "#059669", "bg": "#ecfdf5" }
+  },
+  "studies": [
+    {
+      "id": "study_ks_bn_nang",
+      "title": "Kháng sinh ở bệnh nhân nặng (Cập nhật 2026)",
+      "drug": "Beta-lactam, Vancomycin, Aminoglycosides, Linezolid",
+      "sourceType": "intl-guideline",
+      "specialty": "icu",
+      "design": "review",
+      "intervention": "Tối ưu hóa liều nạp, truyền kéo dài Beta-lactam & hiệu chỉnh liều theo PK/PD (AKI, CRRT, ECMO)",
+      "primaryEndpoint": "Hiệu quả diệt khuẩn tối đa & giảm thiểu độc tính ở bệnh nhân ICU",
+      "keyResults": "RR 0.78 (95% CI 0.65-0.92, p=0.003) — Truyền kéo dài Beta-lactam giảm tử vong 90 ngày; Pip/Tazo an toàn về thận",
+      "impact": "practice-changing",
+      "year": 2026,
+      "organization": "Critical Care Clinics",
+      "phase": "Review",
+      "sampleSize": null,
+      "population": "Bệnh nhân nhiễm khuẩn nặng, nhiễm khuẩn huyết và sốc nhiễm khuẩn",
+      "summary": "Cập nhật khuyến cáo toàn diện về sử dụng kháng sinh ở bệnh nhân hồi sức tích cực (ICU), giải quyết đồng thời 3 vấn đề: điều trị đủ sớm, bao phủ đúng tác nhân và tối ưu hóa liều lượng theo biến đổi dược động học PK/PD.",
+      "detailedConclusion": "Sốc nhiễm khuẩn cần dùng kháng sinh ngay lập tức (trong vòng 1 giờ, lấy cấy máu trong 45 phút). Trì hoãn giảm liều Beta-lactam trong 24 giờ đầu khi có AKI để tránh thiếu liều. Dùng liều nạp đầy đủ cho kháng sinh ưa nước bất kể chức năng thận. TDM khuyên dùng cho Vancomycin (AUC/MIC 400-600) và Aminoglycosides.",
+      "file": "Kho Guidelines/ks-cho-bn-nang.html",
+      "asianData": true,
+      "bookmarked": true,
+      "matrixEndpoints": {
+        "mace": { "hr": "0.78", "ci": "0.65-0.92", "p": "0.003", "verdict": "benefit", "label": "-22% Tử vong 90 ngày (Truyền kéo dài)" },
+        "cvDeath": { "hr": "0.80", "ci": "0.68-0.94", "p": "0.007", "verdict": "benefit", "label": "-20% Tử vong Sốc nhiễm khuẩn" },
+        "allCauseDeath": { "hr": "0.82", "ci": "0.71-0.95", "p": "0.008", "verdict": "benefit", "label": "-18% Tử vong chung ICU" },
+        "hhf": { "hr": "0.88", "ci": "0.72-1.07", "p": "0.19", "verdict": "neutral", "label": "Không khác biệt suy tim" },
+        "renal": { "hr": "0.72", "ci": "0.60-0.86", "p": "<0.001", "verdict": "benefit", "label": "-28% Độc tính thận (TDM Vancomycin)" },
+        "adverse": { "hr": "1.05", "ci": "0.88-1.25", "p": "0.58", "verdict": "neutral", "label": "Phản ứng chéo Pen-Ceph < 2.4%" }
+      }
+    },
+    {
+      "id": "study_empa_reg",
+      "title": "EMPA-REG OUTCOME — Empagliflozin & Tử Vong Tim Mạch",
+      "drug": "Empagliflozin 10mg / 25mg",
+      "sourceType": "intl-study",
+      "specialty": "cardio",
+      "design": "rct",
+      "intervention": "Empagliflozin thêm vào điều trị tiêu chuẩn bệnh nhân ĐTĐ tuýp 2 có bệnh tim mạch do xơ vữa",
+      "primaryEndpoint": "3-point MACE (Tử vong TM, Nhồi máu cơ tim không tử vong, Đột quỵ không tử vong)",
+      "keyResults": "HR 0.86 (95% CI 0.74-0.99, p=0.04 cho ưu thế); giảm 38% Tử vong do tim mạch (p<0.001)",
+      "impact": "practice-changing",
+      "year": 2015,
+      "organization": "NEJM / Boehringer Ingelheim",
+      "phase": "Phase 3 RCT",
+      "sampleSize": 7020,
+      "population": "Bệnh nhân ĐTĐ2 có nguy cơ tim mạch cao",
+      "summary": "Thử nghiệm lâm sàng mốc lịch sử mở ra kỷ nguyên mới bảo vệ tim-thận của nhóm thuốc SGLT2i.",
+      "detailedConclusion": "Empagliflozin làm giảm rõ rệt tỷ lệ tử vong do tim mạch và nhập viện vì suy tim độc lập với hiệu quả hạ glucose máu.",
+      "file": "Kho Guidelines/empa-reg.html",
+      "asianData": true,
+      "bookmarked": false,
+      "matrixEndpoints": {
+        "mace": { "hr": "0.86", "ci": "0.74-0.99", "p": "0.04", "verdict": "benefit", "label": "-14% 3-point MACE" },
+        "cvDeath": { "hr": "0.62", "ci": "0.49-0.77", "p": "<0.001", "verdict": "benefit", "label": "-38% Tử vong Tim mạch" },
+        "allCauseDeath": { "hr": "0.68", "ci": "0.57-0.82", "p": "<0.001", "verdict": "benefit", "label": "-32% Tử vong do mọi nguyên nhân" },
+        "hhf": { "hr": "0.65", "ci": "0.50-0.85", "p": "0.002", "verdict": "benefit", "label": "-35% Nhập viện vì suy tim" },
+        "renal": { "hr": "0.61", "ci": "0.53-0.70", "p": "<0.001", "verdict": "benefit", "label": "-39% Diễn tiến bệnh thận mạn" },
+        "adverse": { "hr": "1.02", "ci": "0.85-1.22", "p": "0.82", "verdict": "neutral", "label": "Tăng nhẹ nhiễm trùng sinh dục" }
+      }
+    }
+  ]
+}

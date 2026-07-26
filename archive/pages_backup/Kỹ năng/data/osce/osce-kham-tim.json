@@ -1,0 +1,80 @@
+{
+  "$schema": "https://cliniportal.org/schemas/osce-rubric.v1.json",
+  "id": "osce-kham-tim-1",
+  "title": "Khám Bệnh Nhân Đau Ngực Cấp (Nghi Thừa STEMI)",
+  "category": "Tim mạch",
+  "difficulty": "basic",
+  "durationSeconds": 480,
+  "maxScore": 13,
+  "passScore": 9,
+  "patientInfo": {
+    "name": "Nguyễn Văn A",
+    "age": 65,
+    "gender": "Nam",
+    "vitals": "Mạch 110 l/p, HA 160/90 mmHg, SpO₂ 96%, Nhịp thở 22 l/p"
+  },
+  "scenario": "Bệnh nhân vào viện vì đau tức ngực trái lan ra tay trái, kéo dài 30 phút không đỡ. Bệnh nhân vã mồ hôi. Bạn có 8 phút để thực hiện khám tim mạch lâm sàng (nhìn, sờ, gõ, nghe) và đề xuất cận lâm sàng ban đầu.",
+  "checklist": [
+    {
+      "id": "step-1",
+      "text": "Chào hỏi, giới thiệu bản thân và giải thích thủ thuật",
+      "pts": 1,
+      "critical": false,
+      "category": "Chuẩn bị"
+    },
+    {
+      "id": "step-2",
+      "text": "Sát khuẩn tay nhanh / Rửa tay chuẩn y khoa",
+      "pts": 1,
+      "critical": false,
+      "category": "Chuẩn bị"
+    },
+    {
+      "id": "step-3",
+      "text": "Bộc lộ vùng ngực đúng cách, giữ kín đáo cho bệnh nhân",
+      "pts": 1,
+      "critical": false,
+      "category": "Thực hiện"
+    },
+    {
+      "id": "step-4",
+      "text": "NHÌN: Tuần hoàn bàng hệ, sẹo mổ cũ, mỏm tim đập bất thường",
+      "pts": 2,
+      "critical": false,
+      "category": "Thực hiện"
+    },
+    {
+      "id": "step-5",
+      "text": "SỜ: Mỏm tim, vị trí mỏm tim, rung miêu (thrill), dấu Harzer",
+      "pts": 2,
+      "critical": false,
+      "category": "Thực hiện"
+    },
+    {
+      "id": "step-6",
+      "text": "NGHE: Tim tại 4 ổ van cơ bản (ĐMC, ĐMP, 3 lá, 2 lá)",
+      "pts": 3,
+      "critical": true,
+      "category": "Thực hiện"
+    },
+    {
+      "id": "step-7",
+      "text": "Đo huyết áp cả 2 tay và bắt mạch ngoại vi",
+      "pts": 1,
+      "critical": false,
+      "category": "Thực hiện"
+    },
+    {
+      "id": "step-8",
+      "text": "Đề xuất ECG 12 chuyển đạo + Men tim (Troponin hs) khẩn",
+      "pts": 2,
+      "critical": true,
+      "category": "Đánh giá & Chỉ định"
+    }
+  ],
+  "keyPoints": [
+    "Đau ngực cấp kèm vã mồ hôi → Phải nghĩ STEMI trước tiên",
+    "ECG 12 chuyển đạo + Troponin phải được thực hiện trong vòng 10 phút đầu",
+    "Vị trí nghe tim 4 ổ van: Aortic (KLS 2 phải) → Pulmonic (KLS 2 trái) → Tricuspid (bờ trái xương ức) → Mitral (mỏm tim KLS 5 đường trung đòn trái)"
+  ]
+}

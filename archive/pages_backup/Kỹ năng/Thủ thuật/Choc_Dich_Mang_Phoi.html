@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Hướng dẫn quy trình Chọc Dò Dịch Màng Phổi (Thoracentesis) từng bước chuẩn y khoa, an toàn cận lâm sàng & điều trị - CliniPortal.">
+  <title>Chọc Dò Dịch Màng Phổi – CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../css/components/procedure-animator.css">
+
+  <script src="../../../js/main.js" defer></script>
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+  <script src="../../../js/procedure-animator.js" defer></script>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li><a href="../../../index.html" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+          <li><a href="../ky-nang.html" class="nav-item active"><span class="nav-icon">🩺</span><span class="nav-text">Kỹ năng</span></a></li>
+          <li><a href="../../Tiếp cận/tiep-can.html" class="nav-item"><span class="nav-icon">HN</span><span class="nav-text">Tiếp cận</span></a></li>
+          <li><a href="../../Công cụ/cong-cu.html" class="nav-item"><span class="nav-icon">⚙️</span><span class="nav-text">Công cụ</span></a></li>
+          <li><a href="../../Dược lý/duoc-ly.html" class="nav-item"><span class="nav-icon">💊</span><span class="nav-text">Dược lý</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="app-main">
+      <div class="procedure-container">
+        <!-- Header Card -->
+        <div class="procedure-header-card">
+          <div class="procedure-badge-bar">
+            <span class="procedure-badge badge-emergency"><i class="fa-solid fa-syringe"></i> Thủ Thuật Lâm Sàng</span>
+            <span class="procedure-badge badge-level"><i class="fa-solid fa-lungs"></i> Hô Hấp / Chẩn Đoán</span>
+            <span class="procedure-badge badge-duration"><i class="fa-solid fa-clock"></i> 6 Bước Chuẩn BTC</span>
+          </div>
+          <h1 class="procedure-title">Quy Trình Chọc Dò Dịch Màng Phổi (Thoracentesis)</h1>
+          <p class="procedure-subtitle">
+            Chẩn đoán nguyên nhân tràn dịch màng phổi (tiêu chuẩn Light) hoặc tháo dịch giải áp trong tràn dịch lượng lớn gây khó thở.
+          </p>
+        </div>
+
+        <!-- Stepper Bar -->
+        <div class="stepper-bar" id="stepperBar"></div>
+
+        <!-- Viewer Split Grid -->
+        <div class="procedure-viewer-grid">
+          <!-- Visual SVG Display -->
+          <div class="procedure-visual-card">
+            <div id="svgContainer" style="width: 100%; display: flex; justify-content: center; align-items: center;"></div>
+          </div>
+
+          <!-- Step Description & Info -->
+          <div class="procedure-info-card">
+            <div>
+              <div class="step-header">
+                <h2 class="step-title-text" id="stepTitle">Đang tải...</h2>
+                <span class="step-counter" id="stepCounter">Bước 1 / 6</span>
+              </div>
+              <div class="step-body-content" id="stepBody"></div>
+              <div id="safetyAlert" class="safety-alert-box"></div>
+            </div>
+
+            <!-- Controls -->
+            <div class="procedure-controls">
+              <button class="btn-proc btn-proc-outline" id="btnPrevStep"><i class="fa-solid fa-arrow-left"></i> Bước trước</button>
+              <button class="btn-proc btn-proc-primary" id="btnNextStep">Bước tiếp <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const steps = [
+        {
+          shortTitle: "1. Xác định vị trí",
+          title: "Bước 1: Tư thế bệnh nhân & Xác định vị trí chọc",
+          description: "Cho bệnh nhân ngồi tựa vào bàn (tư thế cưỡi ngựa), hai tay khoanh trước ngực đặt trên bàn.",
+          bullets: [
+            "Khám lâm sàng: Gõ đục vùng thấp màng phổi, nghe rì rào phế nang giảm hoặc mất.",
+            "Siêu âm tại giường (POCUS): Đánh dấu chính xác vị trí khoang liên sườn có dịch (thường ở khoang liên sườn 7-8 đường nách sau hoặc đường dưới vai).",
+            "Mục tiêu vị trí: Dưới mức dịch nhưng trên cơ hoành."
+          ],
+          safety: "Không chọn vị trí quá thấp (dưới khoang liên sườn 8) để tránh chọc thủng cơ hoành vào gan hoặc lách.",
+          safetyType: "danger",
+          svgContent: `
+            <svg viewBox="0 0 300 200" width="280" height="180">
+              <path d="M100 40 L100 160 M140 40 L140 160 M180 40 L180 160" stroke="var(--color-border)" stroke-width="4"/>
+              <path d="M100 110 Q140 110 180 130 L180 160 L100 160 Z" fill="rgba(14, 165, 233, 0.3)" stroke="#0ea5e9" stroke-width="2"/>
+              <circle cx="140" cy="125" r="8" fill="#e11d48"/>
+              <text x="150" y="180" text-anchor="middle" fill="var(--color-primary)" font-weight="bold" font-size="13">Điểm Chọc Khoang LS 7-8</text>
+            </svg>
+          `
+        },
+        {
+          shortTitle: "2. Sát khuẩn & Gây tê",
+          title: "Bước 2: Sát khuẩn vô khuẩn & Gây tê từng lớp",
+          description: "Đảm bảo nguyên tắc vô khuẩn tuyệt đối và gây tê phong bế từ da đến màng phổi thành.",
+          bullets: [
+            "Sát khuẩn rộng vùng lưng bằng Povidone-Iodine 10% hoặc Chlorhexidine 2%. Trải khăn vô khuẩn.",
+            "Tiêm Lidocaine 1-2% tạo nốt phồng cam ở da tại BỜ TRÊN XƯƠNG SƯỜN DƯỚI.",
+            "Luồn kim gây tê vuông góc, vừa đi vừa hút âm thử nghiệm, gây tê màng phổi thành khi thấy dịch xuất hiện."
+          ],
+          safety: "LUÔN CHỌN BỜ TRÊN XƯƠNG SƯỜN DƯỚI để tránh đâm trúng bó mạch - thần kinh liên sườn nằm ở bờ dưới xương sườn trên.",
+          safetyType: "danger",
+          svgContent: `
+            <svg viewBox="0 0 300 200" width="280" height="180">
+              <rect x="50" y="40" width="200" height="30" rx="6" fill="#cbd5e1"/>
+              <rect x="50" y="110" width="200" height="30" rx="6" fill="#cbd5e1"/>
+              <circle cx="90" cy="75" r="6" fill="#e11d48"/>
+              <text x="130" y="79" fill="#e11d48" font-size="11" font-weight="bold">Bó mạch bờ dưới (TRÁNH)</text>
+              <line x1="160" y1="160" x2="160" y2="105" stroke="#22c55e" stroke-width="3"/>
+              <text x="160" y="180" text-anchor="middle" fill="#22c55e" font-weight="bold" font-size="12">✓ Đi ở Bờ Trên Xương Sườn Dưới</text>
+            </svg>
+          `
+        },
+        {
+          shortTitle: "3. Chọc dò & Rút dịch",
+          title: "Bước 3: Chọc kim/catheter & Rút dịch màng phổi",
+          description: "Sử dụng kim chọc màng phổi (18G-20G) gắn van 3 chạc nối xilanh 50ml hoặc túi dẫn lưu.",
+          bullets: [
+            "Đưa kim qua vị trí đã gây tê theo bờ trên xương sườn dưới cho tới khi dịch màng phổi trào ra.",
+            "Chuyển van 3 chạc sang vị trí xilanh để rút dịch chẩn đoán (50-100ml) bơm vào các ống xét nghiệm.",
+            "Nếu là chọc tháo điều trị: Nối van 3 chạc với túi dẫn lưu âm."
+          ],
+          safety: "Không rút quá 1.500ml dịch màng phổi trong một lần chọc để tránh biến chứng Phù phổi cấp do xả áp quá nhanh (Re-expansion pulmonary edema).",
+          safetyType: "warning",
+          svgContent: `
+            <svg viewBox="0 0 300 200" width="280" height="180">
+              <rect x="60" y="60" width="100" height="100" rx="10" fill="none" stroke="#0ea5e9" stroke-width="3"/>
+              <line x1="160" y1="110" x2="240" y2="110" stroke="var(--color-primary)" stroke-width="4"/>
+              <rect x="200" y="90" width="40" height="40" rx="4" fill="#0ea5e9"/>
+              <text x="150" y="180" text-anchor="middle" fill="var(--color-primary)" font-weight="bold" font-size="13">Rút Dịch Qua Van 3 Chạc</text>
+            </svg>
+          `
+        },
+        {
+          shortTitle: "4. Lấy mẫu xét nghiệm",
+          title: "Bước 4: Phân chia ống xét nghiệm dịch màng phổi",
+          description: "Phân bổ dịch vừa rút vào các ống nghiệm chuẩn để phân tích dịch thấm / dịch thấm theo Tiêu chuẩn Light.",
+          bullets: [
+            "Ống EDTA (Nắp tím): Đếm tế bào & Phân loại bạch cầu.",
+            "Ống Sinh hóa (Nắp đỏ/vàng): Protein, LDH, Glucose, pH dịch, Amylase.",
+            "Ống Vi sinh (Vô khuẩn): Nhuộm Gram, cấy vi khuẩn & BK lao (GeneXpert).",
+            "Ống Giải phẫu bệnh: Tìm tế bào ung thư (Cell block)."
+          ],
+          safety: "Rút song song máu tĩnh mạch cùng thời điểm để lấy chỉ số Protein & LDH máu phục vụ Tiêu chuẩn Light.",
+          safetyType: "warning",
+          svgContent: `
+            <svg viewBox="0 0 300 200" width="280" height="180">
+              <rect x="60" y="80" width="30" height="80" rx="6" fill="#a855f7"/>
+              <rect x="110" y="80" width="30" height="80" rx="6" fill="#e11d48"/>
+              <rect x="160" y="80" width="30" height="80" rx="6" fill="#0ea5e9"/>
+              <rect x="210" y="80" width="30" height="80" rx="6" fill="#22c55e"/>
+              <text x="150" y="50" text-anchor="middle" fill="var(--color-text)" font-weight="bold" font-size="13">4 Bộ Ống Xét Nghiệm Dịch</text>
+            </svg>
+          `
+        },
+        {
+          shortTitle: "5. Rút kim & Đăng gạc",
+          title: "Bước 5: Rút kim, Băng vô khuẩn & Theo dõi ngay",
+          description: "Kéo kim ra nhanh trong lúc bệnh nhân nín thở cuối thì thở ra, băng ép gạc vô khuẩn.",
+          bullets: [
+            "Yêu cầu bệnh nhân nín thở hoặc thở ra hết sức khi rút kim.",
+            "Ấn gạc vô khuẩn 3-5 phút tại vị trí chọc, dán băng dính chắc chắn.",
+            "Cho bệnh nhân nằm nghỉ ở tư thế nghiêng về bên lành trong 30-60 phút."
+          ],
+          safety: "Theo dõi sát Mạch, Huyết áp, SpO2 và dặn bệnh nhân báo ngay nếu có ho đau ngực dữ dội hoặc khó thở.",
+          safetyType: "warning",
+          svgContent: `
+            <svg viewBox="0 0 300 200" width="280" height="180">
+              <rect x="100" y="60" width="100" height="80" rx="8" fill="#ffffff" stroke="var(--color-border)" stroke-width="3"/>
+              <path d="M120 100 L180 100 M150 70 L150 130" stroke="#e11d48" stroke-width="4"/>
+              <text x="150" y="170" text-anchor="middle" fill="var(--color-text)" font-weight="bold" font-size="13">Băng Ép Vô Khuẩn Vùng Lưng</text>
+            </svg>
+          `
+        },
+        {
+          shortTitle: "6. Theo dõi biến chứng",
+          title: "Bước 6: Theo dõi biến chứng & Chụp X-quang kiểm tra",
+          description: "Phát hiện sớm các biến chứng: Tràn khí màng phổi, Chảy máu màng phổi, Nhiễm trùng.",
+          bullets: [
+            "Chụp X-quang ngực thẳng sau chọc nếu: Bệnh nhân xuất hiện khó thở/ho rát, hoặc chọc ra khí/chọc khó nhiều lần.",
+            "Đánh giá tiêu chuẩn Light dịch thấm vs dịch tiết:",
+            "  1. Protein dịch / Protein máu > 0.5",
+            "  2. LDH dịch / LDH máu > 0.6",
+            "  3. LDH dịch > 2/3 giới hạn trên LDH máu."
+          ],
+          safety: "Nếu nghi ngờ Tràn khí màng phổi áp lực (khó thở cấp, tụt HA, tĩnh mạch cổ nổi) -> Cần chọc hút khí giải áp khẩn cấp!",
+          safetyType: "danger",
+          svgContent: `
+            <svg viewBox="0 0 300 200" width="280" height="180">
+              <rect x="80" y="40" width="140" height="120" rx="10" fill="none" stroke="var(--color-primary)" stroke-width="3"/>
+              <text x="150" y="90" text-anchor="middle" fill="var(--color-primary)" font-weight="bold" font-size="14">X-Quang Kiểm Tra</text>
+              <text x="150" y="120" text-anchor="middle" fill="#22c55e" font-size="12">✓ Phổi Nở Tốt - Không Tràn Khí</text>
+            </svg>
+          `
+        }
+      ];
+
+      new ProcedureAnimator({ steps: steps });
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bài 5: Phân tích phương sai (ANOVA) toàn diện — CliniPortal">
+  <title>Bài 5: Phân tích Phương sai (ANOVA) toàn diện — CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../css/components/toc.css">
+  <link rel="stylesheet" href="text-style.css">
+  <script src="../../../js/toc.js" defer></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #0369a1;
+      --accent-light: #e0f2fe;
+      --accent-mid: #0284c7;
+      --bg: #f0f9ff;
+      --surface: #ffffff;
+      --surface-2: #f8fafc;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --text-faint: #94a3b8;
+      --radius: 16px;
+      --tr: 260ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── TOPNAV ── */
+    .topnav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 1rem;
+      padding: 0 1.5rem; height: 54px;
+    }
+    .topnav-back {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      color: var(--accent); text-decoration: none;
+      font-size: 0.82rem; font-weight: 600;
+      padding: 0.35rem 0.75rem; border-radius: 8px;
+      transition: background var(--tr);
+    }
+    .topnav-back:hover { background: var(--accent-light); }
+    .topnav-divider { width: 1px; height: 20px; background: var(--border); }
+    .topnav-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700; font-size: 0.9rem; color: var(--text);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .topnav-pill {
+      padding: 0.2rem 0.65rem; border-radius: 20px;
+      background: var(--accent-light); color: var(--accent);
+      font-size: 0.7rem; font-weight: 700; margin-left: auto;
+    }
+
+    /* ── LAYOUT ── */
+    .main-container {
+      max-width: 800px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 2rem 1rem;
+      flex: 1;
+    }
+
+    /* ── LESSON HEADER ── */
+    .lesson-header {
+      margin-bottom: 2rem;
+    }
+    .lesson-meta {
+      display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;
+    }
+    .lesson-tag {
+      padding: 0.2rem 0.65rem; border-radius: 20px;
+      background: var(--accent-light); color: var(--accent);
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+    }
+    .lesson-readtime {
+      font-size: 0.78rem; color: var(--text-faint); display: flex; align-items: center; gap: 0.3rem;
+    }
+    .lesson-header h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.5rem, 1.2rem + 1vw, 2.1rem);
+      font-weight: 800; color: var(--text); line-height: 1.3; margin-bottom: 0.75rem;
+    }
+    .lesson-lead {
+      font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;
+    }
+
+    /* ── INTERACTIVE TOOL BOX ── */
+    .calc-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }
+    .calc-box h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.05rem; font-weight: 700; color: var(--accent);
+      margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;
+    }
+    .calc-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;
+    }
+    .input-group { display: flex; flex-direction: column; gap: 0.35rem; }
+    .input-group label { font-size: 0.8rem; font-weight: 600; color: var(--text); }
+    .input-group input, .input-group select {
+      padding: 0.5rem 0.75rem; border-radius: 8px; border: 1px solid var(--border);
+      font-size: 0.85rem; background: var(--surface-2); color: var(--text);
+      outline: none; transition: border-color var(--tr);
+    }
+    .input-group input:focus, .input-group select:focus { border-color: var(--accent-mid); }
+
+    .calc-btn {
+      padding: 0.6rem 1.2rem; border-radius: 10px; background: var(--accent);
+      color: #fff; border: none; font-weight: 700; font-size: 0.85rem;
+      cursor: pointer; transition: background var(--tr), transform var(--tr);
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      margin-top: 1rem; width: 100%;
+    }
+    .calc-btn:hover { background: var(--accent-mid); transform: translateY(-1px); }
+
+    .calc-result {
+      margin-top: 1.25rem; padding: 1rem; border-radius: 12px;
+      background: var(--accent-light); border: 1px solid rgba(2, 132, 199, 0.2);
+      display: none;
+    }
+    .calc-result.show { display: block; animation: fadeIn 300ms ease; }
+
+    /* Decision wizard */
+    .wizard-step {
+      padding: 1rem; background: var(--surface-2); border-radius: 12px; margin-top: 0.75rem; border: 1px solid var(--border);
+    }
+    .wizard-options {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem;
+    }
+    .wizard-opt-btn {
+      padding: 0.4rem 0.85rem; border-radius: 20px; border: 1px solid var(--border);
+      background: var(--surface); color: var(--text); font-size: 0.82rem; font-weight: 600;
+      cursor: pointer; transition: all var(--tr);
+    }
+    .wizard-opt-btn:hover, .wizard-opt-btn.active {
+      background: var(--accent); color: #fff; border-color: var(--accent);
+    }
+
+    /* ── MARK READ BUTTON ── */
+    .mark-read-section {
+      margin-top: 3rem; padding: 1.5rem; border-radius: var(--radius);
+      background: var(--surface); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+    }
+    .mark-read-info strong { display: block; font-size: 0.95rem; color: var(--text); }
+    .mark-read-info span { font-size: 0.8rem; color: var(--text-muted); }
+    .mark-read-btn {
+      padding: 0.6rem 1.25rem; border-radius: 10px; font-size: 0.85rem; font-weight: 700;
+      cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all var(--tr);
+    }
+    .mark-read-btn.unread { background: var(--accent); color: #fff; }
+    .mark-read-btn.unread:hover { background: var(--accent-mid); }
+    .mark-read-btn.done { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topnav" aria-label="Top navigation">
+    <a href="Thongkeyhoc.html" class="topnav-back">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <polyline points="15 18 9 12 15 6" />
+      </svg>
+      Thống kê Y học
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">
+      <span>Bài 5: Phân Tích Phương Sai (ANOVA) Toàn Diện</span>
+    </div>
+    <span class="topnav-pill">Bài 5 / 8</span>
+  </nav>
+
+  <!-- MAIN CONTAINER -->
+  <div class="main-container visual-container">
+
+    <!-- HEADER -->
+    <header class="lesson-header">
+      <div class="lesson-meta">
+        <span class="lesson-tag">Mô-đun Nâng Cao</span>
+        <span class="lesson-readtime">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          25 phút đọc
+        </span>
+      </div>
+      <h1>Phân Tích Phương Sai (ANOVA) Trong Nghiên Cứu Y Học</h1>
+      <p class="lesson-lead">
+        Từ nguyên lý phân rã tổng biến thiên trong One-way & Two-way ANOVA đến các thiết kế đo lặp, ANOVA hỗn hợp, phép kiểm phi tham số và chuẩn mực báo cáo quốc tế.
+      </p>
+    </header>
+
+    <!-- THEORY CONTENT -->
+    <div class="theory-content">
+
+      <!-- CHƯƠNG 1 -->
+      <h2 id="chuong-1">1. Nguyên Lý Cốt Lõi Và One-Way ANOVA</h2>
+      <p>
+        Phân tích phương sai (Analysis of Variance, ANOVA) do Sir Ronald Fisher phát triển là phương pháp thống kê suy luận được sử dụng rộng rãi nhất để so sánh giá trị trung bình từ <strong>3 nhóm nghiên cứu trở lên</strong>. Mặc dù mục tiêu là so sánh các giá trị trung bình, nguyên lý của ANOVA không phải là so sánh trực tiếp từng cặp mà là <strong>phân tích nguồn gốc của sự biến thiên</strong> trong bộ dữ liệu.
+      </p>
+
+      <div class="callout callout-info">
+        <strong>💡 Tại sao không dùng nhiều phép kiểm t (t-test)?</strong><br>
+        Nếu có 4 nhóm điều trị, số cặp cần so sánh là <span class="formula-span">C(4,2) = 6</span> phép kiểm t. Với mức ý nghĩa α = 0.05, xác suất mắc ít nhất một sai lầm Loại I (Dương tính giả) trên toàn bộ nghiên cứu tăng lên tới:
+        <br>
+        <span class="formula-span">α_familywise = 1 - (1 - 0.05)^6 ≈ 26.5%</span>! ANOVA giải quyết triệt để bẫy này bằng cách thực hiện 1 kiểm định tổng thể (Omnibus Test) duy nhất.
+      </div>
+
+      <h3>1.1. Phân Rã Tổng Biến Thiên (SS Total)</h3>
+      <p>ANOVA chia tổng độ lệch bình phương trong toàn bộ mẫu thành hai thành phần độc lập:</p>
+      <ul>
+        <li><strong>SS_between (Tổng bình phương giữa các nhóm):</strong> Phản ánh biến thiên tạo ra bởi tác động của yếu tố nghiên cứu (phác đồ điều trị, liều thuốc...).</li>
+        <li><strong>SS_within (Tổng bình phương trong nội bộ nhóm):</strong> Phản ánh sai số ngẫu nhiên, khác biệt sinh học tự nhiên giữa các cá thể.</li>
+      </ul>
+
+      <p>Thống kê kiểm định F được xác định bằng tỷ số giữa Phương sai trung bình giữa các nhóm (MS_between) và Phương sai trung bình nội bộ nhóm (MS_within):</p>
+
+      <div class="callout callout-success">
+        <span class="formula-span">F = MS_between / MS_within = (SS_between / df_between) / (SS_within / df_within)</span>
+        <br><br>
+        Trong đó: <span class="formula-span">df_between = k - 1</span> (k là số nhóm), <span class="formula-span">df_within = N - k</span> (N là tổng số bệnh nhân).
+      </div>
+
+      <h3>1.2. Các Giả Định Bắt Buộc Của ANOVA Một Yếu Tố</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Giả Định</th>
+            <th>Ý Nghĩa Lâm Sàng</th>
+            <th>Công Cụ Kiểm Tra</th>
+            <th>Xử Lý Khi Vi Phạm</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Độc lập quan sát</strong></td>
+            <td>Các đo lường không chịu ảnh hưởng lẫn nhau</td>
+            <td>Thiết kế nghiên cứu ngẫu nhiên</td>
+            <td>Chuyển sang Repeated Measures ANOVA nếu đo lặp</td>
+          </tr>
+          <tr>
+            <td><strong>Phân phối chuẩn</strong></td>
+            <td>Phần dư (residuals) tuân theo Gaussian</td>
+            <td>Shapiro-Wilk test, Q-Q Plot</td>
+            <td>Kruskal-Wallis test hoặc Biến đổi log/sqrt</td>
+          </tr>
+          <tr>
+            <td><strong>Đồng nhất phương sai</strong></td>
+            <td>Phương sai giữa các nhóm tương đương</td>
+            <td>Levene's Test (p > 0.05)</td>
+            <td><strong>Welch ANOVA</strong> + Hậu kiểm Games-Howell</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- CHƯƠNG 2 -->
+      <h2 id="chuong-2">2. ANOVA Hai Yếu Tố (Two-Way ANOVA) & Hiệu Ứng Tương Tác</h2>
+      <p>
+        Trong lâm sàng, hiệu quả của một can thiệp ít khi đứng độc lập mà thường phụ thuộc đồng thời vào các yếu tố khác như giới tính, nhóm tuổi, kiểu gen hay mức độ nặng ban đầu. ANOVA hai yếu tố cho phép đánh giá đồng thời hai yếu tố phân loại và đặc biệt là <strong>Hiệu ứng Tương tác (Interaction Effect)</strong> giữa chúng.
+      </p>
+
+      <h3>2.1. Phân Tích Cấu Trúc Hiệu Ứng</h3>
+      <ul>
+        <li><strong>Hiệu ứng chính (Main Effect A & B):</strong> Tác động độc lập của từng yếu tố lên biến phụ thuộc sau khi đã kiểm soát yếu tố còn lại.</li>
+        <li><strong>Hiệu ứng tương tác (Interaction A × B):</strong> Xuất hiện khi tác động của yếu tố A thay đổi tùy theo mức độ của yếu tố B.</li>
+      </ul>
+
+      <div class="callout callout-warning">
+        <strong>⚠️ Quy tắc vàng khi diễn giải tương tác:</strong><br>
+        Nếu kiểm định tương tác có ý nghĩa thống kê (p_interaction < 0.05), <strong>KHÔNG ĐƯỢC</strong> diễn giải các hiệu ứng chính một cách đơn lẻ. Thay vào đó, phải thực hiện <strong>Phân tích Hiệu ứng Đơn giản (Simple Effects Analysis)</strong> — so sánh tác động của yếu tố A tại từng mức cụ thể của yếu tố B.
+      </div>
+
+      <!-- INTERACTIVE DEMO 1: F-DISTRIBUTION VISUALIZER -->
+      <div class="calc-box">
+        <h3>📊 Công Cụ Trực Quan Hóa Phân Phối F & Vùng Bác Bỏ H₀</h3>
+        <p style="font-size: 0.82rem; color: var(--text-muted);">Nhập giá trị F tính toán và bậc tự do để xem trực quan vị trí bác bỏ giả thuyết H₀.</p>
+        <div class="calc-grid">
+          <div class="input-group">
+            <label for="f-val">Giá trị F tính toán (F-value):</label>
+            <input type="number" id="f-val" value="3.45" step="0.1" min="0">
+          </div>
+          <div class="input-group">
+            <label for="df1">df1 (k - 1, số nhóm - 1):</label>
+            <input type="number" id="df1" value="2" min="1">
+          </div>
+          <div class="input-group">
+            <label for="df2">df2 (N - k, tổng số mẫu - k):</label>
+            <input type="number" id="df2" value="57" min="1">
+          </div>
+        </div>
+        <button class="calc-btn" onclick="visualizeF()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+          Mô Phỏng Phân Phối F
+        </button>
+
+        <div class="calc-result" id="f-result">
+          <svg id="f-svg" width="100%" height="180" viewBox="0 0 500 180" style="background:#fff; border-radius:8px; border:1px solid #e2e8f0;"></svg>
+          <div id="f-interp" style="margin-top:0.75rem; font-size:0.85rem; line-height:1.5;"></div>
+        </div>
+      </div>
+
+      <!-- CHƯƠNG 3 -->
+      <h2 id="chuong-3">3. ANOVA Đo Lặp (Repeated Measures) & ANOVA Hỗn Hợp</h2>
+      <p>
+        Khi theo dõi cùng một tập hợp bệnh nhân tại nhiều thời điểm khác nhau (ví dụ: Huyết áp tại thời điểm Ban đầu, 4 tuần, 8 tuần, 12 tuần), các quan sát thu được trên cùng một cá thể có mối tương quan chặt chẽ. ANOVA đo lặp được thiết kế để loại bỏ biến thiên giữa các cá thể (Between-Subjects Variance) ra khỏi sai số ngẫu nhiên, giúp tăng đáng kể sức mạnh thống kê (Statistical Power).
+      </p>
+
+      <h3>3.1. Giả Định Cầu Phương (Sphericity) & Kiểm Định Mauchly</h3>
+      <p>
+        Giả định quan trọng nhất của ANOVA đo lặp là <strong>Tính cầu phương (Sphericity)</strong> — phương sai của các hiệu số giữa mọi cặp thời điểm đo lặp phải bằng nhau.
+      </p>
+      <ul>
+        <li><strong>Kiểm định Mauchly:</strong> Nếu p > 0.05, dữ liệu thỏa mãn giả định cầu phương.</li>
+        <li><strong>Khi vi phạm (p < 0.05):</strong> Bắt buộc áp dụng hệ số hiệu chỉnh bậc tự do:
+          <ul>
+            <li><strong>Greenhouse-Geisser (ε < 0.75):</strong> Phương pháp hiệu chỉnh bảo thủ hơn.</li>
+            <li><strong>Huynh-Feldt (ε > 0.75):</strong> Phương pháp hiệu chỉnh ít bảo thủ hơn.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3>3.2. ANOVA Hỗn Hợp (Mixed-Design ANOVA)</h3>
+      <p>
+        Được áp dụng trong các thử nghiệm lâm sàng ngẫu nhiên có nhóm chứng (RCT) theo dõi theo thời gian. Mô hình này chứa đồng thời:
+      </p>
+      <ul>
+        <li><strong>Yếu tố giữa các nhóm (Between-Subjects Factor):</strong> Nhóm Thuốc mới vs Nhóm Giả dược.</li>
+        <li><strong>Yếu tố trong nhóm (Within-Subjects Factor):</strong> Thời điểm đo (T0, T1, T2, T3).</li>
+      </ul>
+
+      <!-- CHƯƠNG 4 -->
+      <h2 id="chuong-4">4. Các Phương Pháp Thay Thế ANOVA Khi Vi Phạm Giả Định</h2>
+      <p>
+        Khi dữ liệu không tuân theo phân phối chuẩn hoặc có biến thiên không đồng nhất, các phép kiểm tham số sẽ tạo ra kết luận sai lệch. Dưới đây là cây công cụ thay thế:
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Bối Cảnh Thiết Kế</th>
+            <th>Phép Kiểm Tham Số (Chuẩn)</th>
+            <th>Thay Thế Phi Tham Số</th>
+            <th>Hậu Kiểm Phi Tham Số</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>≥ 3 nhóm độc lập (Chuẩn, Đồng phương sai)</strong></td>
+            <td>One-way ANOVA</td>
+            <td>—</td>
+            <td>Tukey HSD / Bonferroni</td>
+          </tr>
+          <tr>
+            <td><strong>≥ 3 nhóm độc lập (Vi phạm đồng phương sai)</strong></td>
+            <td><strong>Welch ANOVA</strong></td>
+            <td>—</td>
+            <td>Games-Howell</td>
+          </tr>
+          <tr>
+            <td><strong>≥ 3 nhóm độc lập (Không phân phối chuẩn)</strong></td>
+            <td>—</td>
+            <td><strong>Kruskal-Wallis Test</strong></td>
+            <td>Dunn's Test (Bonferroni adj)</td>
+          </tr>
+          <tr>
+            <td><strong>≥ 3 lần đo lặp (Không phân phối chuẩn)</strong></td>
+            <td>—</td>
+            <td><strong>Friedman Test</strong></td>
+            <td>Nemenyi Test / Conover Test</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- CHƯƠNG 5 -->
+      <h2 id="chuong-5">5. Phân Tích Hậu Kiểm (Post-Hoc) & Cỡ Ảnh Hưởng (Effect Size)</h2>
+      
+      <h3>5.1. So Sánh Hậu Kiểm (Post-hoc Tests)</h3>
+      <p>Khi ANOVA trả về kết quả có ý nghĩa (p < 0.05), chúng ta mới thực hiện hậu kiểm để xác định cụ thể cặp nhóm nào khác biệt:</p>
+      <ul>
+        <li><strong>Tukey HSD (Honestly Significant Difference):</strong> Lựa chọn tối ưu khi các nhóm có cỡ mẫu bằng nhau và phương sai đồng nhất.</li>
+        <li><strong>Bonferroni:</strong> Bảo thủ, kiểm soát nghiêm ngặt sai lầm Loại I nhưng giảm sức mạnh thống kê khi số cặp so sánh quá nhiều.</li>
+        <li><strong>Scheffé:</strong> Linh hoạt nhất, dùng khi muốn so sánh kết hợp phức tạp giữa các nhóm.</li>
+        <li><strong>Games-Howell:</strong> Sử dụng bắt buộc khi phương sai giữa các nhóm không đồng nhất.</li>
+      </ul>
+
+      <h3>5.2. Định Lượng Cỡ Ảnh Hưởng (Effect Size)</h3>
+      <p>Giá trị p chỉ cho biết sự khác biệt có xuất hiện ngẫu nhiên hay không, nhưng không cho biết mức độ lớn của hiệu quả điều trị. Trong ANOVA, cỡ ảnh hưởng được đo bằng:</p>
+      <ul>
+        <li><strong>Eta-squared (η²):</strong> Tỷ lệ phần trăm tổng biến thiên được giải thích bởi yếu tố nghiên cứu. (<span class="formula-span">η² = SS_between / SS_total</span>). Quy ước Cohen: 0.01 (nhỏ), 0.06 (vừa), 0.14 (lớn).</li>
+        <li><strong>Partial Eta-squared (η²_p):</strong> Sử dụng trong ANOVA 2 yếu tố và đo lặp. (<span class="formula-span">η²_p = SS_factor / (SS_factor + SS_error)</span>).</li>
+        <li><strong>Omega-squared (ω²):</strong> Ước lượng không chệch cho quần thể, được các tạp chí y khoa quốc tế uy tín ưu tiên.</li>
+      </ul>
+
+      <!-- CHƯƠNG 6 -->
+      <h2 id="chuong-6">6. Tiêu Chuẩn Báo Cáo Kết Quả ANOVA Chuẩn Quốc Tế</h2>
+      <p>Theo hướng dẫn SAMPL (Statistical Analyses and Methods in Published Literature) và APA 7th, một báo cáo ANOVA hoàn chỉnh phải bao gồm:</p>
+      
+      <div class="callout callout-info">
+        <strong>📝 Mẫu báo cáo kết quả ANOVA chuẩn câu lệnh quốc tế:</strong><br>
+        <em>"Phân tích ANOVA một yếu tố cho thấy sự khác biệt có ý nghĩa thống kê về nồng độ cholesterol giữa 3 phác đồ điều trị, <strong>F(2, 147) = 8.45, p < 0.001, η²_p = 0.103</strong>. Kiểm định hậu kiểm Tukey HSD ghi nhận nhóm Atorvastatin 40mg hạ cholesterol trung bình nhiều hơn 1.25 mmol/L (95% CI: 0.45 đến 2.05, p = 0.002) so với nhóm Simvastatin 20mg."</em>
+      </div>
+
+      <!-- INTERACTIVE TOOL BOX 2: DECISION WIZARD -->
+      <div class="calc-box">
+        <h3>🧙 Trợ Lý Độc Quyền: Lựa Chọn Phép Kiểm Thống Kê Phù Hợp</h3>
+        <p style="font-size: 0.82rem; color: var(--text-muted);">Trả lời 3 câu hỏi nhanh dưới đây để nhận khuyến nghị phép kiểm chính xác nhất cho bộ dữ liệu của bạn.</p>
+
+        <div class="wizard-step">
+          <label style="font-size:0.85rem; font-weight:700;">1. Số lượng nhóm / thời điểm so sánh?</label>
+          <div class="wizard-options">
+            <button class="wizard-opt-btn active" onclick="setWiz(1, '3plus')">≥ 3 nhóm / thời điểm</button>
+            <button class="wizard-opt-btn" onclick="setWiz(1, '2groups')">2 nhóm</button>
+          </div>
+        </div>
+
+        <div class="wizard-step">
+          <label style="font-size:0.85rem; font-weight:700;">2. Thiết kế đo lường?</label>
+          <div class="wizard-options">
+            <button class="wizard-opt-btn active" onclick="setWiz(2, 'indep')">Độc lập (Between-subjects)</button>
+            <button class="wizard-opt-btn" onclick="setWiz(2, 'paired')">Đo lặp / Phụ thuộc (Within-subjects)</button>
+          </div>
+        </div>
+
+        <div class="wizard-step">
+          <label style="font-size:0.85rem; font-weight:700;">3. Thỏa mãn phân phối chuẩn & đồng nhất phương sai?</label>
+          <div class="wizard-options">
+            <button class="wizard-opt-btn active" onclick="setWiz(3, 'yes')">Có (Thỏa mãn cả hai)</button>
+            <button class="wizard-opt-btn" onclick="setWiz(3, 'hetero')">Phân phối chuẩn nhưng Vi phạm đồng phương sai</button>
+            <button class="wizard-opt-btn" onclick="setWiz(3, 'no')">Không (Phân phối lệch / Phi tham số)</button>
+          </div>
+        </div>
+
+        <button class="calc-btn" onclick="evaluateWizard()" style="margin-top:1rem;">
+          💡 Xem Phép Kiểm Được Khuyên Dùng
+        </button>
+
+        <div class="calc-result" id="wiz-result">
+          <div id="wiz-interp" style="font-size:0.88rem; line-height:1.6;"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- MARK AS READ -->
+    <div class="mark-read-section">
+      <div class="mark-read-info">
+        <strong>Bạn đã đọc xong bài học này?</strong>
+        <span>Đánh dấu để theo dõi tiến độ học tập của bạn trên trang hub</span>
+      </div>
+      <button class="mark-read-btn unread" id="mark-read-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Đánh dấu đã đọc
+      </button>
+    </div>
+
+  </div>
+
+  <script>
+    // ── F-DISTRIBUTION VISUALIZER ──
+    function visualizeF() {
+      const fval = parseFloat(document.getElementById('f-val').value) || 0;
+      const df1 = parseInt(document.getElementById('df1').value) || 1;
+      const df2 = parseInt(document.getElementById('df2').value) || 1;
+
+      const svg = document.getElementById('f-svg');
+      const res = document.getElementById('f-result');
+      const interp = document.getElementById('f-interp');
+
+      // Draw simplified F-like density curve
+      let points = [];
+      const width = 500;
+      const height = 180;
+      const margin = 30;
+
+      // F distribution approximation curve
+      for (let x = 0.1; x <= 6; x += 0.05) {
+        // Pseudo F density shape
+        let y = Math.pow(x, (df1/2)-1) * Math.exp(-x * (df1/df2) * 1.2);
+        if (isNaN(y) || y < 0) y = 0;
+        points.push({ x: x, y: y });
+      }
+
+      // Max y for scaling
+      let maxY = Math.max(...points.map(p => p.y)) || 1;
+
+      let pathD = `M ${margin} ${height - margin}`;
+      points.forEach(p => {
+        let px = margin + (p.x / 6) * (width - 2 * margin);
+        let py = (height - margin) - (p.y / maxY) * (height - 2 * margin - 10);
+        pathD += ` L ${px} ${py}`;
+      });
+
+      // Calculate critical F approx (e.g. for alpha = 0.05)
+      const fCrit = 3.0 + (5 / df2);
+      let critPx = margin + (fCrit / 6) * (width - 2 * margin);
+      let calcPx = margin + (fval / 6) * (width - 2 * margin);
+
+      let isSig = fval >= fCrit;
+
+      svg.innerHTML = `
+        <path d="${pathD}" fill="none" stroke="#0284c7" stroke-width="2.5" />
+        <!-- Rejection Region -->
+        <rect x="${critPx}" y="10" width="${width - margin - critPx}" height="${height - margin - 10}" fill="rgba(225, 29, 72, 0.15)" />
+        <line x1="${critPx}" y1="10" x2="${critPx}" y2="${height - margin}" stroke="#e11d48" stroke-dasharray="4,4" stroke-width="2" />
+        <text x="${critPx + 5}" y="25" fill="#e11d48" font-size="11" font-weight="bold">F_crit ≈ ${fCrit.toFixed(2)} (α=0.05)</text>
+
+        <!-- Calc F marker -->
+        <line x1="${calcPx}" y1="10" x2="${calcPx}" y2="${height - margin}" stroke="${isSig ? '#059669' : '#d97706'}" stroke-width="3" />
+        <circle cx="${calcPx}" cy="${height - margin}" r="5" fill="${isSig ? '#059669' : '#d97706'}" />
+        <text x="${Math.min(calcPx + 5, width - 110)}" y="60" fill="${isSig ? '#059669' : '#d97706'}" font-size="12" font-weight="bold">F_tính = ${fval.toFixed(2)}</text>
+
+        <!-- Baseline -->
+        <line x1="${margin}" y1="${height - margin}" x2="${width - margin}" y2="${height - margin}" stroke="#94a3b8" stroke-width="1.5" />
+      `;
+
+      interp.innerHTML = isSig
+        ? `🎉 <strong>Giá trị F = ${fval.toFixed(2)} ≥ F_thời điểm ngưỡng (${fCrit.toFixed(2)})</strong>.<br>
+           => Bác bỏ giả thuyết H₀ (p < 0.05). Có sự khác biệt có ý nghĩa thống kê giữa giá trị trung bình của các nhóm! Tiến hành làm Hậu kiểm (Post-hoc).`
+        : `⚠️ <strong>Giá trị F = ${fval.toFixed(2)} < F_thời điểm ngưỡng (${fCrit.toFixed(2)})</strong>.<br>
+           => Chưa đủ bằng chứng bác bỏ H₀ (p ≥ 0.05). Chưa nhận thấy sự khác biệt có ý nghĩa thống kê giữa các nhóm.`;
+
+      res.classList.add('show');
+    }
+
+    // ── DECISION WIZARD ──
+    const wizState = { q1: '3plus', q2: 'indep', q3: 'yes' };
+
+    function setWiz(q, val) {
+      wizState['q' + q] = val;
+      const btns = event.target.parentElement.querySelectorAll('.wizard-opt-btn');
+      btns.forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+
+    function evaluateWizard() {
+      const res = document.getElementById('wiz-result');
+      const interp = document.getElementById('wiz-interp');
+
+      let rec = '';
+      if (wizState.q1 === '2groups') {
+        if (wizState.q2 === 'indep') {
+          rec = wizState.q3 === 'no' ? '📌 Khuyên dùng: <strong>Kiểm định Mann-Whitney U</strong> (Phi tham số cho 2 nhóm độc lập).' : '📌 Khuyên dùng: <strong>Independent Samples t-test</strong> (Kiểm định t 2 mẫu độc lập).';
+        } else {
+          rec = wizState.q3 === 'no' ? '📌 Khuyên dùng: <strong>Kiểm định Wilcoxon Signed-Rank</strong> (Phi tham số cho 2 lần đo lặp).' : '📌 Khuyên dùng: <strong>Paired Samples t-test</strong> (Kiểm định t cặp).';
+        }
+      } else {
+        if (wizState.q2 === 'indep') {
+          if (wizState.q3 === 'yes') {
+            rec = '📌 Khuyên dùng: <strong>One-Way ANOVA</strong> (Phân tích phương sai 1 yếu tố) + <strong>Hậu kiểm Tukey HSD</strong>.';
+          } else if (wizState.q3 === 'hetero') {
+            rec = '📌 Khuyên dùng: <strong>Welch ANOVA</strong> (Xử lý vi phạm phương sai đồng nhất) + <strong>Hậu kiểm Games-Howell</strong>.';
+          } else {
+            rec = '📌 Khuyên dùng: <strong>Kruskal-Wallis Test</strong> (Phi tham số cho ≥ 3 nhóm độc lập) + <strong>Hậu kiểm Dunn (điều chỉnh Bonferroni)</strong>.';
+          }
+        } else {
+          if (wizState.q3 === 'yes') {
+            rec = '📌 Khuyên dùng: <strong>Repeated Measures ANOVA</strong> (Kiểm tra giả định Cầu phương bằng Mauchly test).';
+          } else {
+            rec = '📌 Khuyên dùng: <strong>Friedman Test</strong> (Phi tham số cho ≥ 3 lần đo lặp) + <strong>Hậu kiểm Nemenyi hoặc Conover</strong>.';
+          }
+        }
+      }
+
+      interp.innerHTML = `<div style="padding:0.5rem; background:#fff; border-radius:8px; border-left:4px solid var(--accent-mid);">${rec}</div>`;
+      res.classList.add('show');
+    }
+
+    // Initialize default demo
+    window.addEventListener('DOMContentLoaded', () => {
+      visualizeF();
+    });
+
+    // ── PROGRESS TRACKING ──
+    const LESSON_KEY = 'thongke-bai5';
+    const btn = document.getElementById('mark-read-btn');
+
+    function syncBtn() {
+      const isDone = localStorage.getItem(LESSON_KEY) === 'done';
+      if (isDone) {
+        btn.className = 'mark-read-btn done';
+        btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Đã đọc xong`;
+      } else {
+        btn.className = 'mark-read-btn unread';
+        btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Đánh dấu đã đọc`;
+      }
+    }
+
+    btn.addEventListener('click', () => {
+      const isDone = localStorage.getItem(LESSON_KEY) === 'done';
+      if (isDone) {
+        localStorage.removeItem(LESSON_KEY);
+      } else {
+        localStorage.setItem(LESSON_KEY, 'done');
+      }
+      syncBtn();
+    });
+
+    syncBtn();
+  </script>
+
+</body>
+</html>

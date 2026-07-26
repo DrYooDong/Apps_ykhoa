@@ -1,0 +1,107 @@
+/* ════════════════════════════════════════════════════════════════════════════
+ *  PATHOLOGY PRINT & POCKET CARD STYLESHEET — CLINI-PORTAL (APPS_YKHOA)
+ *  Giao diện tối ưu in ấn Poster A4/A3 & Thẻ bỏ túi Pocket Cards
+ * ════════════════════════════════════════════════════════════════════════════ */
+
+/* ===================== POCKET CARD MODE (ON SCREEN) ===================== */
+.pocket-card-mode .infographic-poster-board {
+    max-width: 100% !important;
+    background: var(--color-bg) !important;
+    box-shadow: none !important;
+    padding: 1rem !important;
+}
+
+.pocket-card-mode .poster-hybrid-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1rem !important;
+}
+
+.pocket-card-mode .dose-table-card,
+.pocket-card-mode .urgent-alert-banner,
+.pocket-card-mode .comparison-card-grid {
+    border-radius: 8px !important;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06) !important;
+    padding: 0.75rem !important;
+}
+
+.pocket-card-mode .poster-flowchart-wrapper {
+    display: none !important; /* Thu gọn flowchart trong Pocket View để tập trung vào bảng liều & cảnh báo */
+}
+
+/* ===================== PRINT MODE (@media print) ===================== */
+@media print {
+    /* Hide Navigation, Header, Sidebar, Footer, Buttons */
+    header,
+    footer,
+    .app-sidebar,
+    .breadcrumb-container,
+    .hero-dashboard,
+    .pathology-stats-grid,
+    .pathology-filter-section,
+    .path-btn,
+    .sim-modal-container,
+    .poster-hero-actions,
+    #sidebarOverlay {
+        display: none !important;
+    }
+
+    body,
+    .main-wrapper,
+    .app-container {
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #ffffff !important;
+        color: #000000 !important;
+    }
+
+    .infographic-poster-board {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+        page-break-inside: avoid;
+    }
+
+    .poster-hero-banner {
+        background: #f8fafc !important;
+        color: #0f172a !important;
+        border: 2px solid #0284c7 !important;
+        padding: 1rem !important;
+        border-radius: 6px !important;
+    }
+
+    .poster-hero-title {
+        color: #0284c7 !important;
+        font-size: 1.5rem !important;
+    }
+
+    .urgent-alert-banner {
+        background: #fef2f2 !important;
+        border: 2px solid #dc2626 !important;
+        color: #991b1b !important;
+        page-break-inside: avoid;
+    }
+
+    .dose-table-card,
+    .comparison-card-grid {
+        border: 1px solid #cbd5e1 !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+    }
+
+    .poster-hybrid-grid {
+        display: block !important;
+    }
+
+    .poster-main-col,
+    .poster-side-col {
+        width: 100% !important;
+    }
+
+    @page {
+        size: A4 portrait;
+        margin: 10mm;
+    }
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "https://cliniportal.org/schemas/lab-reference.v1.json",
+  "category": "Cận lâm sàng - Sinh hóa",
+  "title": "Bảng Chỉ Số Tham Chiếu & Giải Diễn Sinh Hóa Gan Máu",
+  "parameters": [
+    {
+      "code": "ALT",
+      "name": "Alanine Aminotransferase (GPT)",
+      "unitSI": "U/L",
+      "normalRange": { "min": 7, "max": 56 },
+      "criticalHigh": 1000,
+      "description": "Enzyme nội bào có nồng độ cao nhất ở tế bào gan.",
+      "clinicalInterpretations": [
+        {
+          "range": "56 - 300 U/L",
+          "severity": "mild",
+          "meaning": "Tăng nhẹ-vừa: Viêm gan mạn, gan nhiễm mỡ (MASLD), nghiện rượu, tổn thương do thuốc."
+        },
+        {
+          "range": "300 - 1000 U/L",
+          "severity": "moderate",
+          "meaning": "Tăng trung bình: Viêm gan vi-rút cấp, viêm gan tự miễn, đợt cấp viêm gan mạn."
+        },
+        {
+          "range": "> 1000 U/L",
+          "severity": "critical",
+          "meaning": "Tăng rất cao (Cấp tính): Hoại tử tế bào gan ồ ạt do Ngộ độc Paracetamol, Viêm gan vi-rút cấp, Sốc gan / Phế hoại tử do thiếu máu."
+        }
+      ]
+    },
+    {
+      "code": "AST",
+      "name": "Aspartate Aminotransferase (GOT)",
+      "unitSI": "U/L",
+      "normalRange": { "min": 10, "max": 40 },
+      "criticalHigh": 1000,
+      "description": "Enzyme có ở gan, cơ tim, cơ xương, thận.",
+      "clinicalInterpretations": [
+        {
+          "range": "AST/ALT > 2",
+          "severity": "warning",
+          "meaning": "Tỷ lệ De Ritis AST/ALT > 2 gợi ý mạnh Viêm gan do Rượu (Alcoholic Hepatitis) hoặc Xơ gan."
+        }
+      ]
+    },
+    {
+      "code": "BILI_TOTAL",
+      "name": "Bilirubin Toàn Phần",
+      "unitSI": "µmol/L",
+      "unitConv": "mg/dL",
+      "convFactor": 17.1,
+      "normalRange": { "min": 5.1, "max": 20.5 },
+      "criticalHigh": 340,
+      "description": "Sản phẩm chuyển hóa của Heme từ hồng cầu.",
+      "clinicalInterpretations": [
+        {
+          "range": "> 34 µmol/L (> 2.0 mg/dL)",
+          "severity": "warning",
+          "meaning": "Vàng da lâm sàng (Clinical Jaundice) bắt đầu xuất hiện ở mắt và dưới lưỡi."
+        }
+      ]
+    }
+  ]
+}

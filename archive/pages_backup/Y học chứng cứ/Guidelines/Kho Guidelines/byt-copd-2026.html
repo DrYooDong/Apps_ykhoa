@@ -1,0 +1,2343 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Tóm tắt Hướng dẫn chẩn đoán và điều trị Bệnh phổi tắc nghẽn mạn tính (BPTNMT/COPD) 2026 của Bộ Y tế Việt Nam. Tích hợp bộ câu hỏi tầm soát GOLD, phân nhóm ABE, tiêu chuẩn Rome 2022 và phác đồ sử dụng kháng sinh, morphin.">
+  <title>Hướng Dẫn Chẩn Đoán & Điều Trị COPD BYT 2026 – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --green: #059669;
+      --green-bg: #f0fdf4;
+      --green-light: #a7f3d0;
+      --orange: #d97706;
+      --orange-bg: #fffbeb;
+      --orange-light: #fde68a;
+      --red: #dc2626;
+      --red-bg: #fef2f2;
+      --red-light: #fca5a5;
+      --blue: #2563eb;
+      --blue-bg: #eff6ff;
+      --blue-light: #bfdbfe;
+      --teal: #0d9488;
+      --teal-bg: #f0fdfa;
+      --teal-light: #99f6e4;
+      --purple: #7c3aed;
+      --purple-bg: #faf5ff;
+      --purple-light: #ddd6fe;
+      --accent: #0f6fb4;
+      --bg: #f0f4f8;
+      --surface: #ffffff;
+      --surface-2: #f8fafc;
+      --border: #cbd5e1;
+      --border-light: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --text-faint: #94a3b8;
+      --radius: 16px;
+      --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --green: #10b981;
+      --green-bg: #064e3b;
+      --green-light: #047857;
+      --orange: #f59e0b;
+      --orange-bg: #78350f;
+      --orange-light: #b45309;
+      --red: #ef4444;
+      --red-bg: #7f1d1d;
+      --red-light: #b91c1c;
+      --blue: #3b82f6;
+      --blue-bg: #1e3a8a;
+      --blue-light: #1d4ed8;
+      --teal: #14b8a6;
+      --teal-bg: #115e59;
+      --teal-light: #0f766e;
+      --purple: #8b5cf6;
+      --purple-bg: #4c1d95;
+      --purple-light: #6d28d9;
+      --accent: #38bdf8;
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-2: #0f172a;
+      --border: #334155;
+      --border-light: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #cbd5e1;
+      --text-faint: #64748b;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      min-height: 100vh;
+      transition: background var(--tr), color var(--tr);
+    }
+
+    /* TOP NAV */
+    .topnav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0 1.5rem;
+      height: 56px;
+      transition: background var(--tr), border-color var(--tr);
+    }
+
+    [data-theme="dark"] .topnav {
+      background: rgba(30, 41, 59, 0.9);
+    }
+
+    .topnav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.3rem 0.75rem;
+      border-radius: 8px;
+      transition: background var(--tr);
+      white-space: nowrap;
+    }
+
+    .topnav-back:hover {
+      background: var(--blue-bg);
+    }
+
+    .topnav-divider {
+      width: 1px;
+      height: 18px;
+      background: var(--border-light);
+      flex-shrink: 0;
+    }
+
+    .topnav-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .topnav-theme-toggle {
+      margin-left: auto;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1.1rem;
+      padding: 0.5rem;
+      border-radius: 50%;
+      transition: background var(--tr);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+    }
+
+    .topnav-theme-toggle:hover {
+      background: var(--surface-2);
+      color: var(--accent);
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #0c4a6e 0%, #0f6fb4 40%, #0d9488 100%);
+      color: #fff;
+      padding: 3.5rem 1.5rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 15% 60%, rgba(56, 189, 248, 0.2) 0%, transparent 55%), radial-gradient(ellipse at 85% 20%, rgba(20, 184, 166, 0.15) 0%, transparent 50%);
+    }
+
+    .hero-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 1rem;
+      color: #7dd3fc;
+    }
+
+    .hero-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title span {
+      display: block;
+      background: linear-gradient(90deg, #7dd3fc, #6ee7b7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 0.65em;
+      font-weight: 600;
+      letter-spacing: 0;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-subtitle {
+      font-size: 0.95rem;
+      opacity: 0.88;
+      max-width: 720px;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* PILLARS STRIP */
+    .pillars {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border-light);
+      padding: 1.5rem;
+      transition: background var(--tr), border-color var(--tr);
+    }
+
+    .pillars-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .pillar {
+      background: var(--surface-2);
+      border: 1px solid var(--border-light);
+      border-radius: 14px;
+      padding: 1.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow var(--tr), background var(--tr), border-color var(--tr);
+    }
+
+    .pillar::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      border-radius: 4px 0 0 4px;
+    }
+
+    .pillar.p1::before {
+      background: var(--blue);
+    }
+
+    .pillar.p2::before {
+      background: var(--teal);
+    }
+
+    .pillar.p3::before {
+      background: var(--orange);
+    }
+
+    .pillar:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    }
+
+    .pillar-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .pillar-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .pillar-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* STICKY QUICK LINKS MENU */
+    .quickmenu {
+      position: sticky;
+      top: 56px;
+      z-index: 100;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border-light);
+      overflow-x: auto;
+      display: flex;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      transition: background var(--tr), border-color var(--tr);
+    }
+
+    .quickmenu-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      width: 100%;
+      padding: 0 1.5rem;
+    }
+
+    .quickmenu-item {
+      display: inline-block;
+      padding: 0.9rem 1.1rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-bottom: 3px solid transparent;
+      transition: all var(--tr);
+    }
+
+    .quickmenu-item:hover {
+      color: var(--accent);
+    }
+
+    .quickmenu-item.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* PAGE CONTENT */
+    .page-content {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    /* SECTION CARDS */
+    .sec-card {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: background var(--tr), border-color var(--tr), box-shadow var(--tr);
+    }
+
+    .sec-card:hover {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    }
+
+    .sec-hdr {
+      padding: 1.1rem 1.5rem;
+      border-bottom: 1px solid var(--border-light);
+      background: var(--surface-2);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transition: background var(--tr), border-color var(--tr);
+    }
+
+    .sec-hdr-icon {
+      font-size: 1.15rem;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: var(--blue-bg);
+      border-radius: 8px;
+    }
+
+    .sec-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .sec-body {
+      padding: 1.75rem;
+    }
+
+    .sec-subtitle {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sec-subtitle:first-child {
+      margin-top: 0;
+    }
+
+    /* TEXT CONTENT */
+    p {
+      margin-bottom: 1rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    strong {
+      color: var(--text);
+    }
+
+    /* INFO BOXES */
+    .infobox {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      padding: 1rem 1.25rem;
+      border-radius: 12px;
+      margin-bottom: 1.25rem;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      border: 1px solid transparent;
+    }
+
+    .infobox:last-child {
+      margin-bottom: 0;
+    }
+
+    .infobox-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      line-height: 1.2;
+    }
+
+    .infobox.danger {
+      background: var(--red-bg);
+      border-color: var(--red-light);
+      border-left: 4px solid var(--red);
+      color: var(--text);
+    }
+
+    .infobox.danger .infobox-icon {
+      color: var(--red);
+    }
+
+    .infobox.success {
+      background: var(--green-bg);
+      border-color: var(--green-light);
+      border-left: 4px solid var(--green);
+      color: var(--text);
+    }
+
+    .infobox.success .infobox-icon {
+      color: var(--green);
+    }
+
+    .infobox.warning {
+      background: var(--orange-bg);
+      border-color: var(--orange-light);
+      border-left: 4px solid var(--orange);
+      color: var(--text);
+    }
+
+    .infobox.warning .infobox-icon {
+      color: var(--orange);
+    }
+
+    .infobox.info {
+      background: var(--blue-bg);
+      border-color: var(--blue-light);
+      border-left: 4px solid var(--blue);
+      color: var(--text);
+    }
+
+    .infobox.info .infobox-icon {
+      color: var(--blue);
+    }
+
+    .infobox.teal {
+      background: var(--teal-bg);
+      border-color: var(--teal-light);
+      border-left: 4px solid var(--teal);
+      color: var(--text);
+    }
+
+    .infobox.teal .infobox-icon {
+      color: var(--teal);
+    }
+
+    .infobox strong {
+      display: block;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.88rem;
+      margin-bottom: 0.25rem;
+      color: var(--text);
+    }
+
+    /* TABLES */
+    .table-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      margin-bottom: 1.25rem;
+    }
+
+    .regimen-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      min-width: 650px;
+      text-align: left;
+    }
+
+    .regimen-table thead th {
+      padding: 0.8rem 1rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-muted);
+    }
+
+    .regimen-table td {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid var(--border-light);
+      vertical-align: top;
+      line-height: 1.55;
+      color: var(--text-muted);
+    }
+
+    .regimen-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .regimen-table tbody tr:hover td {
+      background: var(--surface-2);
+    }
+
+    .cell-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    /* WIDGET: INTERACTIVE SCREENING */
+    .screening-widget {
+      background: var(--surface-2);
+      border: 1px solid var(--border-light);
+      border-radius: 14px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .screening-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .screening-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .screening-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      transition: background var(--tr);
+    }
+
+    .screening-item:hover {
+      background: var(--surface-2);
+    }
+
+    .screening-text {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text);
+      padding-right: 1rem;
+    }
+
+    .screening-btns {
+      display: flex;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .btn-toggle {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.3rem 0.8rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 150ms ease;
+    }
+
+    .btn-toggle.active-yes {
+      background: var(--red);
+      border-color: var(--red);
+      color: #fff;
+    }
+
+    .btn-toggle.active-no {
+      background: var(--green);
+      border-color: var(--green);
+      color: #fff;
+    }
+
+    .screening-result {
+      margin-top: 1.25rem;
+      padding: 1rem;
+      border-radius: 10px;
+      display: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .screening-result.positive {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      background: var(--red-bg);
+      border: 1px solid var(--red-light);
+      color: var(--text);
+    }
+
+    .screening-result.negative {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      background: var(--green-bg);
+      border: 1px solid var(--green-light);
+      color: var(--text);
+    }
+
+    /* WIDGET: ROME 2022 CALCULATOR */
+    .rome-widget {
+      background: var(--surface-2);
+      border: 1px solid var(--border-light);
+      border-radius: 14px;
+      padding: 1.5rem;
+    }
+
+    .rome-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .rome-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .rome-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .rome-card {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      padding: 0.85rem;
+      cursor: pointer;
+      transition: all var(--tr);
+      position: relative;
+    }
+
+    .rome-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .rome-card.selected {
+      border-color: var(--accent);
+      background: var(--blue-bg);
+    }
+
+    .rome-card-label {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.78rem;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .rome-card-val {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .rome-result-box {
+      padding: 1rem 1.25rem;
+      border-radius: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      font-size: 0.82rem;
+    }
+
+    .rome-verdict {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .rome-verdict-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-faint);
+      margin-bottom: 0.2rem;
+    }
+
+    /* SCHEMATICS / FLOWCHARTS (CSS GRID/FLEX) */
+    .flow-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin: 1.25rem 0;
+    }
+
+    .flow-step {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+    }
+
+    .flow-step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .flow-step-text {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .flow-step-text strong {
+      display: block;
+      font-size: 0.82rem;
+      margin-bottom: 0.15rem;
+      color: var(--text);
+    }
+
+    .flow-arrow-down {
+      text-align: center;
+      color: var(--text-faint);
+      font-size: 0.9rem;
+      margin: -0.25rem 0;
+    }
+
+    /* GRID ABE */
+    .abe-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin: 1.25rem 0;
+    }
+
+    .abe-block {
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      padding: 1.25rem;
+      background: var(--surface-2);
+      position: relative;
+      transition: all var(--tr);
+    }
+
+    .abe-block.group-e {
+      grid-column: span 2;
+      border-left: 5px solid var(--red);
+      background: var(--red-bg);
+    }
+
+    .abe-block.group-b {
+      border-left: 5px solid var(--orange);
+      background: var(--orange-bg);
+    }
+
+    .abe-block.group-a {
+      border-left: 5px solid var(--green);
+      background: var(--green-bg);
+    }
+
+    .abe-block-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .abe-block.group-e .abe-block-title {
+      color: var(--red);
+    }
+
+    .abe-block.group-b .abe-block-title {
+      color: var(--orange);
+    }
+
+    .abe-block.group-a .abe-block-title {
+      color: var(--green);
+    }
+
+    .abe-block-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid currentColor;
+    }
+
+    .abe-block-cond {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+      line-height: 1.4;
+    }
+
+    .abe-block-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* INTERACTIVE FLOWCHART: TREATMENT SHIFT */
+    .treatment-chart {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+    }
+
+    .treatment-branch {
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      padding: 1.25rem;
+      background: var(--surface-2);
+    }
+
+    .treatment-branch-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 0.85rem;
+      color: var(--text);
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .treatment-node {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 0.75rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.78rem;
+      position: relative;
+    }
+
+    .treatment-node:last-child {
+      margin-bottom: 0;
+    }
+
+    .treatment-node.preferred {
+      border-left: 3px solid var(--green);
+    }
+
+    .treatment-node.alternative {
+      border-left: 3px solid var(--blue);
+    }
+
+    .treatment-node-label {
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.2.rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .treatment-node-desc {
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* DRUG TAGS */
+    .rx-tag {
+      display: inline-block;
+      background: var(--border-light);
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 0.15rem 0.5rem;
+      border-radius: 5px;
+      margin: 0.15rem 0.1rem 0.15rem 0;
+      font-weight: 500;
+    }
+
+    .rx-tag.preferred {
+      background: var(--green-bg);
+      color: #065f46;
+      border: 1px solid var(--green-light);
+      font-weight: 600;
+    }
+
+    [data-theme="dark"] .rx-tag.preferred {
+      color: #34d399;
+    }
+
+    .rx-tag.warn {
+      background: var(--orange-bg);
+      color: #92400e;
+      border: 1px solid var(--orange-light);
+    }
+
+    [data-theme="dark"] .rx-tag.warn {
+      color: #fbbf24;
+    }
+
+    .rx-tag.danger {
+      background: var(--red-bg);
+      color: #991b1b;
+      border: 1px solid var(--red-light);
+    }
+
+    [data-theme="dark"] .rx-tag.danger {
+      color: #f87171;
+    }
+
+    /* TIMELINE PATHWAY FOR MORPHINE */
+    .timeline {
+      position: relative;
+      margin: 1.5rem 0;
+      padding-left: 1.75rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border-light);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-marker {
+      position: absolute;
+      left: -1.75rem;
+      top: 2px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 3px solid var(--accent);
+      transition: background var(--tr);
+    }
+
+    .timeline-item.active .timeline-marker {
+      background: var(--accent);
+    }
+
+    .timeline-item-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 0.82rem;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .timeline-item-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* CARD GRID FOR COMORBIDITIES */
+    .comor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .comor-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      padding: 1.25rem;
+      transition: transform var(--tr), box-shadow var(--tr);
+    }
+
+    .comor-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .comor-card-hdr {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.6rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    .comor-card-icon {
+      font-size: 1.2rem;
+      color: var(--accent);
+    }
+
+    .comor-card-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* CITATION BOX */
+    .citation-box {
+      background: var(--surface-2);
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      padding: 1.25rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    .citation-box a {
+      color: var(--accent);
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    .citation-box a:hover {
+      text-decoration: underline;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 1.25rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0.55rem 1.1rem;
+      border-radius: 10px;
+      border: 1.5px solid var(--border-light);
+      background: var(--surface);
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all var(--tr);
+    }
+
+    .btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--blue-bg);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: #0c5a94;
+      color: #fff;
+      border-color: #0c5a94;
+    }
+
+    /* RELATED LINKS SECTION */
+    .related-links-section {
+      margin-top: 2.5rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .related-links-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .related-links-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      display: grid;
+    }
+
+    .related-link-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid var(--border-light);
+      background: var(--surface-2);
+      padding: 1.25rem;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all var(--tr);
+    }
+
+    .related-link-card:hover {
+      border-color: var(--accent);
+      background: var(--surface);
+      transform: translateY(-2px);
+    }
+
+    .related-card-content h5 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      margin-top: 4px;
+      margin-bottom: 2px;
+    }
+
+    .related-card-content p {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .related-card-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .related-card-badge.cong-cu {
+      background: var(--blue-bg);
+      color: var(--blue);
+    }
+
+    .related-card-badge.duoc-ly {
+      background: var(--orange-bg);
+      color: var(--orange);
+    }
+
+    .related-card-badge.ky-nang {
+      background: var(--purple-bg);
+      color: var(--purple);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .page-content {
+        padding: 1.25rem 1rem;
+        gap: 1.75rem;
+      }
+
+      .sec-body {
+        padding: 1.25rem;
+      }
+
+      .abe-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .abe-block.group-e {
+        grid-column: span 1;
+      }
+
+      .treatment-chart {
+        grid-template-columns: 1fr;
+      }
+
+      .comor-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .rome-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../Guidelines.html" class="topnav-back">
+      <i class="fa-solid fa-chevron-left"></i> Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">BYT COPD 2026</div>
+    <button class="topnav-theme-toggle" id="theme-toggle" aria-label="Đổi giao diện">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">🔬 BỘ Y TẾ VIỆT NAM</div>
+      <h1 class="hero-title">
+        <span>Ministry of Health COPD Guidelines 2026</span>
+        Hướng Dẫn Chẩn Đoán & Điều Trị BPTNMT 2026
+      </h1>
+      <p class="hero-subtitle">
+        Văn bản pháp lý cập nhật toàn diện nhất của Bộ Y tế Việt Nam ban hành kèm theo Quyết định số 2131/QĐ-BYT ngày
+        14/07/2026, thay thế các phiên bản cũ nhằm chuẩn hóa quản lý bệnh nhân COPD nội và ngoại trú.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><i class="fa-solid fa-file-signature"></i> QĐ 2131/QĐ-BYT</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-calendar-days"></i> 14 tháng 7, 2026</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-capsules"></i> Cập nhật: GOLD 2026 & Rome 2022</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLARS -->
+  <div class="pillars">
+    <div class="pillars-inner">
+      <div class="pillar p1">
+        <div class="pillar-icon">🔍</div>
+        <div>
+          <div class="pillar-title">Sàng Lọc & Phân Loại</div>
+          <div class="pillar-desc">Tầm soát cộng đồng bằng câu hỏi GOLD & phân loại tắc nghẽn, đợt cấp GOLD 1-4, nhóm
+            ABE.</div>
+        </div>
+      </div>
+      <div class="pillar p2">
+        <div class="pillar-icon">💊</div>
+        <div>
+          <div class="pillar-title">Điều Trị Cá Thể Hóa</div>
+          <div class="pillar-desc">Cá thể hóa phác đồ LABA/LAMA/ICS theo chỉ số Bạch cầu ái toan (Eos) và sơ đồ chuyển
+            đổi.</div>
+        </div>
+      </div>
+      <div class="pillar p3">
+        <div class="pillar-icon">🚨</div>
+        <div>
+          <div class="pillar-title">Đợt Cấp & Đồng Mắc</div>
+          <div class="pillar-desc">Đánh giá đợt cấp theo Rome 2022, sử dụng kháng sinh Pseudomonas, PHCN và morphin cuối
+            đời.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUICK MENU -->
+  <div class="quickmenu" id="quickmenu">
+    <div class="quickmenu-inner">
+      <a href="#sec-dai-cuong" class="quickmenu-item active">Đại cương & Sàng lọc</a>
+      <a href="#sec-abe" class="quickmenu-item">Phân loại ABE</a>
+      <a href="#sec-dieu-tri" class="quickmenu-item">Điều trị ổn định</a>
+      <a href="#sec-dot-cap" class="quickmenu-item">Đợt cấp & Kháng sinh</a>
+      <a href="#sec-dong-mac" class="quickmenu-item">Bệnh đồng mắc & Hô hấp</a>
+      <a href="#sec-phcn" class="quickmenu-item">PHCN & Giảm nhẹ</a>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="page-content">
+
+    <!-- 1. ĐẠI CƯƠNG & SÀNG LỌC -->
+    <div class="sec-card" id="sec-dai-cuong">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon"><i class="fa-solid fa-stethoscope"></i></span>
+        <span class="sec-title">Đại Cương & Sàng Lọc Lâm Sàng</span>
+      </div>
+      <div class="sec-body">
+        <div class="infobox info">
+          <div class="infobox-icon"><i class="fa-solid fa-circle-info"></i></div>
+          <div>
+            <strong>Định nghĩa BPTNMT (COPD) 2026</strong>
+            Bệnh phổi tắc nghẽn mạn tính là bệnh hô hấp phổ biến có thể phòng và điều trị được. Bệnh đặc trưng bởi các
+            triệu chứng hô hấp mạn tính (khó thở, ho, khạc đờm) do bất thường đường thở (viêm phế quản/tiểu phế quản)
+            và/hoặc phế nang (khí phế thũng) gây tắc nghẽn luồng khí dai dẳng, tiến triển nặng dần.
+          </div>
+        </div>
+
+        <p>
+          <strong>Căn nguyên chính:</strong> Liên quan chặt chẽ với phơi nhiễm các hạt/khí độc hại (khói thuốc lá, thuốc
+          lào, ô nhiễm bụi mịn) kết hợp các yếu tố chủ thể (phổi kém phát triển từ nhỏ, lão hóa phổi nhanh, hoặc đột
+          biến gen <em>SERPINA1</em> gây thiếu hụt alpha-1-antitrypsin).
+        </p>
+
+        <!-- WIDGET: INTERACTIVE SCREENING -->
+        <div class="screening-widget">
+          <div class="screening-title">
+            <i class="fa-solid fa-filter-list"></i> Bộ câu hỏi tầm soát COPD ở cộng đồng (GOLD)
+          </div>
+          <p style="font-size: 0.75rem; margin-bottom: 1rem;">
+            Áp dụng để phát hiện chủ động các đối tượng nguy cơ cao tại cộng đồng trước khi đo chức năng hô hấp.
+          </p>
+          <ul class="screening-list">
+            <li class="screening-item">
+              <span class="screening-text">1. Ông/bà có ho vài lần trong ngày ở hầu hết các ngày không?</span>
+              <div class="screening-btns">
+                <button class="btn-toggle q-yes" onclick="setQuestion(0, true)">Có</button>
+                <button class="btn-toggle q-no" onclick="setQuestion(0, false)">Không</button>
+              </div>
+            </li>
+            <li class="screening-item">
+              <span class="screening-text">2. Ông/bà có khạc đờm ở hầu hết các ngày không?</span>
+              <div class="screening-btns">
+                <button class="btn-toggle q-yes" onclick="setQuestion(1, true)">Có</button>
+                <button class="btn-toggle q-no" onclick="setQuestion(1, false)">Không</button>
+              </div>
+            </li>
+            <li class="screening-item">
+              <span class="screening-text">3. Ông/bà có dễ bị khó thở hơn những người cùng độ tuổi không?</span>
+              <div class="screening-btns">
+                <button class="btn-toggle q-yes" onclick="setQuestion(2, true)">Có</button>
+                <button class="btn-toggle q-no" onclick="setQuestion(2, false)">Không</button>
+              </div>
+            </li>
+            <li class="screening-item">
+              <span class="screening-text">4. Ông/bà có trên 40 tuổi không?</span>
+              <div class="screening-btns">
+                <button class="btn-toggle q-yes" onclick="setQuestion(3, true)">Có</button>
+                <button class="btn-toggle q-no" onclick="setQuestion(3, false)">Không</button>
+              </div>
+            </li>
+            <li class="screening-item">
+              <span class="screening-text">5. Ông/bà vẫn còn hút thuốc lá/thuốc lào hoặc đã từng hút không?</span>
+              <div class="screening-btns">
+                <button class="btn-toggle q-yes" onclick="setQuestion(4, true)">Có</button>
+                <button class="btn-toggle q-no" onclick="setQuestion(4, false)">Không</button>
+              </div>
+            </li>
+          </ul>
+          <div class="screening-result positive" id="screen-pos">
+            <i class="fa-solid fa-circle-exclamation" style="font-size: 1.2rem; flex-shrink: 0;"></i>
+            <div>
+              <strong>Kết quả: Đánh giá NGUY CƠ CAO (Có <span id="score-pos">0</span>/5 câu trả lời CÓ)</strong>
+              Khuyến nghị giới thiệu bệnh nhân tới cơ sở y tế có thực hiện đo chức năng hô hấp (Hô hấp ký) để tiến hành
+              làm test phục hồi phế quản nhằm chủ động chẩn đoán xác định bệnh.
+            </div>
+          </div>
+          <div class="screening-result negative" id="screen-neg">
+            <i class="fa-solid fa-circle-check" style="font-size: 1.2rem; flex-shrink: 0;"></i>
+            <div>
+              <strong>Kết quả: Nguy cơ thấp (Có <span id="score-neg">0</span>/5 câu trả lời CÓ)</strong>
+              Chưa có chỉ định tầm soát bắt buộc tại cộng đồng. Tiếp tục theo dõi các triệu chứng hô hấp và kiểm soát
+              các yếu tố nguy cơ (cai thuốc lá, bảo vệ đường hô hấp).
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-diagram-project"></i> Quy trình sàng lọc & tiếp cận BPTNMT</div>
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="flow-step-num">1</div>
+            <div class="flow-step-text">
+              <strong>Sàng lọc ban đầu</strong>
+              Tầm soát chủ động đối tượng ≥ 35 tuổi phơi nhiễm yếu tố nguy cơ (khói bụi, gen, sinh non) hoặc sàng lọc cơ
+              hội (hình ảnh X-quang ngực bất thường).
+            </div>
+          </div>
+          <div class="flow-arrow-down"><i class="fa-solid fa-arrow-down"></i></div>
+          <div class="flow-step">
+            <div class="flow-step-num">2</div>
+            <div class="flow-step-text">
+              <strong>Trả lời bộ câu hỏi chuẩn hóa &amp; Đo lưu lượng đỉnh</strong>
+              Thực hiện bộ câu hỏi (LFQ, CDQ, COPD-PS...) kết hợp đo lưu lượng đỉnh (PEF) tại y tế cơ sở.
+            </div>
+          </div>
+          <div class="flow-arrow-down"><i class="fa-solid fa-arrow-down"></i></div>
+          <div class="flow-step">
+            <div class="flow-step-num">3</div>
+            <div class="flow-step-text">
+              <strong>Đo chức năng hô hấp chuyên sâu (Hô hấp ký)</strong>
+              Nếu test sàng lọc dương tính, chuyển cơ sở chuyên khoa để thực hiện hô hấp ký. Chẩn đoán xác định khi:
+              <strong>FEV1/FVC &lt; 70%</strong> sau test phục hồi phế quản.
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-code-compare"></i> Chẩn đoán phân biệt với hen phế quản</div>
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th>Tiêu chí so sánh</th>
+                <th>Hen phế quản (Asthma)</th>
+                <th>Bệnh phổi tắc nghẽn mạn tính (COPD)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="cell-title">Tuổi khởi phát</td>
+                <td>Thường bắt đầu từ khi còn nhỏ.</td>
+                <td>Xuất hiện muộn hơn, thường ở người &gt; 40 tuổi.</td>
+              </tr>
+              <tr>
+                <td class="cell-title">Tính chất triệu chứng</td>
+                <td>Biến đổi từng ngày, có khoảng hoàn toàn bình thường.</td>
+                <td>Dai dẳng và tiến triển nặng dần theo thời gian.</td>
+              </tr>
+              <tr>
+                <td class="cell-title">Yếu tố nguy cơ</td>
+                <td>Tiền sử dị ứng (thời tiết, thức ăn), chàm, gia đình mắc hen.</td>
+                <td>Tiền sử hút thuốc lá, thuốc lào, tiếp xúc chất độc lâu năm.</td>
+              </tr>
+              <tr>
+                <td class="cell-title">Khó thở</td>
+                <td>Xuất hiện đột ngột theo cơn, thường về đêm/sáng sớm.</td>
+                <td>Khó thở tăng khi gắng sức, sau đó khó thở liên tục.</td>
+              </tr>
+              <tr>
+                <td class="cell-title">Hô hấp ký sau test phục hồi</td>
+                <td><strong>Hồi phục hoàn toàn:</strong> FEV1/FVC ≥ 70% hoặc FEV1 tăng &gt; 12% và &gt; 200ml.</td>
+                <td><strong>Không hồi phục hoàn toàn:</strong> FEV1/FVC &lt; 70% sau test giãn phế quản.</td>
+              </tr>
+              <tr>
+                <td class="cell-title">Biến chứng muộn</td>
+                <td>Hiếm khi biến chứng tâm phế mạn ở giai đoạn sớm.</td>
+                <td>Tâm phế mạn, suy hô hấp mạn thường gặp ở giai đoạn cuối.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. PHÂN LOẠI MỨC ĐỘ & PHÂN NHÓM ABE -->
+    <div class="sec-card" id="sec-abe">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon"><i class="fa-solid fa-layer-group"></i></span>
+        <span class="sec-title">Đánh Giá Mức Độ Tắc Nghẽn &amp; Phân Nhóm ABE</span>
+      </div>
+      <div class="sec-body">
+        <p>
+          Sau khi chẩn đoán xác định dựa vào hô hấp ký, quá trình đánh giá bệnh nhân COPD bao gồm 2 bước độc lập: đánh
+          giá mức độ tắc nghẽn đường thở (GOLD 1-4) và phân nhóm điều trị lâm sàng (ABE).
+        </p>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-gauge-high"></i> Phân loại mức độ tắc nghẽn luồng khí (Dựa vào
+          FEV1)</div>
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th>Giai đoạn GOLD</th>
+                <th>Mức độ tắc nghẽn</th>
+                <th>Giá trị FEV1 (% trị số lý thuyết sau test giãn phế quản)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="cell-title" style="color: var(--green);">GOLD 1</td>
+                <td>Nhẹ (Mild)</td>
+                <td>FEV1 ≥ 80% trị số lý thuyết</td>
+              </tr>
+              <tr>
+                <td class="cell-title" style="color: var(--blue);">GOLD 2</td>
+                <td>Trung bình (Moderate)</td>
+                <td>50% ≤ FEV1 &lt; 80% trị số lý thuyết</td>
+              </tr>
+              <tr>
+                <td class="cell-title" style="color: var(--orange);">GOLD 3</td>
+                <td>Nặng (Severe)</td>
+                <td>30% ≤ FEV1 &lt; 50% trị số lý thuyết</td>
+              </tr>
+              <tr>
+                <td class="cell-title" style="color: var(--red);">GOLD 4</td>
+                <td>Rất nặng (Very Severe)</td>
+                <td>FEV1 &lt; 30% trị số lý thuyết</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-boxes-stacked"></i> Phân nhóm điều trị ABE theo GOLD 2026</div>
+        <p style="font-size: 0.78rem; margin-bottom: 0.5rem;">
+          Đánh giá dựa trên triệu chứng lâm sàng (CAT, mMRC) và tiền sử tần suất đợt cấp trung bình/nặng trong 12 tháng
+          qua.
+        </p>
+
+        <div class="abe-grid">
+          <div class="abe-block group-e">
+            <div class="abe-block-title">
+              Nhóm E (Exacerbator)
+              <span class="abe-block-badge">Nguy cơ cao đợt cấp</span>
+            </div>
+            <div class="abe-block-cond">Tiền sử: ≥ 2 đợt cấp trung bình HOẶC ≥ 1 đợt cấp nặng phải nhập viện</div>
+            <div class="abe-block-desc">
+              Bất kể mức độ triệu chứng khó thở (CAT hay mMRC). Nhóm này có nguy cơ biến cố tim phổi và tử vong cao
+              nhất, cần được điều trị duy trì tích cực bằng thuốc phối hợp tác dụng kéo dài dạng hít.
+            </div>
+          </div>
+          <div class="abe-block group-a">
+            <div class="abe-block-title">
+              Nhóm A
+              <span class="abe-block-badge">Ít triệu chứng</span>
+            </div>
+            <div class="abe-block-cond">mMRC 0 - 1 hoặc CAT &lt; 10</div>
+            <div class="abe-block-desc">
+              Đồng thời có 0 hoặc 1 đợt cấp mức độ trung bình trong năm trước (không nhập viện). Triệu chứng cơ năng tối
+              thiểu.
+            </div>
+          </div>
+          <div class="abe-block group-b">
+            <div class="abe-block-title">
+              Nhóm B
+              <span class="abe-block-badge">Nhiều triệu chứng</span>
+            </div>
+            <div class="abe-block-cond">mMRC ≥ 2 hoặc CAT ≥ 10</div>
+            <div class="abe-block-desc">
+              Đồng thời có 0 hoặc 1 đợt cấp mức độ trung bình trong năm trước (không nhập viện). Triệu chứng khó thở ảnh
+              hưởng nhiều đến sinh hoạt.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. ĐIỀU TRỊ GIAI ĐOẠN ỔN ĐỊNH & CHUYỂN ĐỔI -->
+    <div class="sec-card" id="sec-dieu-tri">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon"><i class="fa-solid fa-pills"></i></span>
+        <span class="sec-title">Điều Trị COPD Giai Đoạn Ổn Định</span>
+      </div>
+      <div class="sec-body">
+        <div class="sec-subtitle"><i class="fa-solid fa-prescription"></i> Lựa chọn thuốc điều trị ban đầu (Chưa từng
+          điều trị thuốc duy trì)</div>
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th>Phân Nhóm</th>
+                <th>Triệu chứng &amp; Đợt cấp</th>
+                <th>Lựa chọn thuốc điều trị ưu tiên (Khởi đầu)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="cell-title" style="color: var(--green);">Nhóm A</td>
+                <td>mMRC 0-1, CAT &lt; 10 <br> ≤ 1 đợt cấp trung bình (không nhập viện)</td>
+                <td>
+                  <span class="rx-tag preferred">Một thuốc giãn phế quản</span> (SABA/SAMA dùng khi cần, hoặc bắt đầu
+                  LABA hay LAMA)
+                </td>
+              </tr>
+              <tr>
+                <td class="cell-title" style="color: var(--orange);">Nhóm B</td>
+                <td>mMRC ≥ 2, CAT ≥ 10 <br> ≤ 1 đợt cấp trung bình (không nhập viện)</td>
+                <td>
+                  <span class="rx-tag preferred">LAMA + LABA</span> <br>
+                  <p style="font-size: 0.72rem; margin-top: 0.25rem; margin-bottom: 0;">* Ưu tiên phối hợp trong cùng
+                    một dụng cụ hít (Single-Inhaler Triple/Double Therapy) để tăng tuân thủ.</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cell-title" style="color: var(--red);">Nhóm E</td>
+                <td>Có ≥ 2 đợt cấp trung bình <br> HOẶC ≥ 1 đợt cấp nhập viện</td>
+                <td>
+                  <strong>Tùy thuộc vào Bạch cầu ái toan (Eos) máu:</strong><br>
+                  - <span class="rx-tag preferred">LAMA + LABA</span> (Nếu Eos &lt; 300 tế bào/µl)<br>
+                  - <span class="rx-tag preferred">LAMA + LABA + ICS</span> (Nếu Eos ≥ 300 tế bào/µl hoặc tiền sử hen)
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-arrows-spin"></i> Sơ đồ chuyển đổi điều trị thuốc (Follow-up
+          Treatment)</div>
+        <p style="font-size: 0.78rem;">
+          Nếu người bệnh đã điều trị nhưng triệu chứng kiểm soát kém, áp dụng sơ đồ điều chỉnh dựa trên kiểu hình khó
+          thở dai dẳng hoặc đợt cấp tái phát.
+        </p>
+
+        <div class="treatment-chart">
+          <!-- NHÁNH KHÓ THỞ DAI DẲNG -->
+          <div class="treatment-branch">
+            <div class="treatment-branch-title"><i class="fa-solid fa-wind"></i> Kiểu hình Khó thở dai dẳng</div>
+
+            <div class="treatment-node alternative">
+              <div class="treatment-node-label">1. Đang dùng Đơn trị (LABA hoặc LAMA)</div>
+              <div class="treatment-node-desc">Nếu vẫn khó thở nhiều, tiến hành nâng bậc điều trị.</div>
+            </div>
+
+            <div class="treatment-arrow-down" style="text-align:center; margin: 0.25rem 0; color:var(--text-faint);"><i
+                class="fa-solid fa-arrow-down"></i></div>
+
+            <div class="treatment-node preferred">
+              <div class="treatment-node-label">2. Nâng bậc: LABA + LAMA</div>
+              <div class="treatment-node-desc">Sử dụng phối hợp kép. Đánh giá lại việc sử dụng dụng cụ hít và kỹ thuật
+                hít của người bệnh.</div>
+            </div>
+
+            <div class="treatment-arrow-down" style="text-align:center; margin: 0.25rem 0; color:var(--text-faint);"><i
+                class="fa-solid fa-arrow-down"></i></div>
+
+            <div class="treatment-node alternative">
+              <div class="treatment-node-label">3. Điều chỉnh nâng cao</div>
+              <div class="treatment-node-desc">Nếu vẫn còn khó thở: Chuyển đổi dụng cụ hít, chuyển đổi hoạt chất thuốc
+                hoặc cân nhắc điều trị không dùng thuốc (PHCN hô hấp). Cực kỳ hạn chế thêm ICS nếu không có đợt cấp.
+              </div>
+            </div>
+          </div>
+
+          <!-- NHÁNH ĐỢT CẤP TÁI PHÁT -->
+          <div class="treatment-branch">
+            <div class="treatment-branch-title"><i class="fa-solid fa-truck-medical"></i> Kiểu hình Đợt cấp tái phát
+            </div>
+
+            <div class="treatment-node alternative">
+              <div class="treatment-node-label">1. Đang dùng Đơn trị (LABA hoặc LAMA)</div>
+              <div class="treatment-node-desc">Nếu xuất hiện đợt cấp trung bình/nặng, cần điều chỉnh thuốc.</div>
+            </div>
+
+            <div class="treatment-arrow-down" style="text-align:center; margin: 0.25rem 0; color:var(--text-faint);"><i
+                class="fa-solid fa-arrow-down"></i></div>
+
+            <div class="treatment-node preferred">
+              <div class="treatment-node-label">2. Nâng bậc trung gian: LABA + LAMA</div>
+              <div class="treatment-node-desc">Phối hợp kép nếu Eos &lt; 300. Nếu Eos ≥ 300 ngay từ đầu, cân nhắc nhảy
+                bậc thẳng lên LABA+LAMA+ICS.</div>
+            </div>
+
+            <div class="treatment-arrow-down" style="text-align:center; margin: 0.25rem 0; color:var(--text-faint);"><i
+                class="fa-solid fa-arrow-down"></i></div>
+
+            <div class="treatment-node preferred">
+              <div class="treatment-node-label">3. Nâng bậc tối đa: LABA + LAMA + ICS</div>
+              <div class="treatment-node-desc">Chỉ định khi <strong>Eos ≥ 100 tế bào/µl</strong> kết hợp có nhất 1 đợt
+                cấp trung bình/nặng.</div>
+            </div>
+
+            <div class="treatment-arrow-down" style="text-align:center; margin: 0.25rem 0; color:var(--text-faint);"><i
+                class="fa-solid fa-arrow-down"></i></div>
+
+            <div class="treatment-node alternative">
+              <div class="treatment-node-label">4. Lựa chọn thay thế nếu Eos &lt; 100</div>
+              <div class="treatment-node-desc">
+                - Thêm <span class="rx-tag">Roflumilast</span> (nếu FEV1 &lt; 50% &amp; viêm phế quản mạn).<br>
+                - Thêm <span class="rx-tag">Azithromycin</span> dài hạn (ưu tiên người từng hút thuốc).
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="infobox warning" style="margin-top: 1.25rem;">
+          <div class="infobox-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div>
+            <strong>Lưu ý về rút Corticosteroid dạng hít (ICS)</strong>
+            Cân nhắc rút/ngừng ICS nếu người bệnh xuất hiện các tác dụng phụ nghiêm trọng (như viêm phổi tái diễn, lao
+            phổi tiến triển, khàn tiếng nặng). Trường hợp BCAT máu ≥ 300 tế bào/µl, việc rút ICS có nguy cơ cao bùng
+            phát đợt cấp COPD trở lại.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. ĐỢT CẤP COPD & TIÊU CHUẨN ROME 2022 -->
+    <div class="sec-card" id="sec-dot-cap">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon"><i class="fa-solid fa-kit-medical"></i></span>
+        <span class="sec-title">Đợt Cấp COPD &amp; Hướng Dẫn Điều Trị Cấp Tính</span>
+      </div>
+      <div class="sec-body">
+        <p>
+          Đợt cấp BPTNMT là tình trạng thay đổi cấp tính của các triệu chứng hô hấp (khó thở, ho, khạc đờm tăng) diễn ra
+          trong vòng 14 ngày, đòi hỏi phải thay đổi điều trị thông thường. Nguyên nhân chủ yếu là nhiễm trùng (vi khuẩn,
+          virus) hoặc ô nhiễm môi trường.
+        </p>
+
+        <!-- WIDGET: ROME 2022 CALCULATOR -->
+        <div class="rome-widget" style="margin-top: 1rem; margin-bottom: 1.5rem;">
+          <div class="rome-title">
+            <i class="fa-solid fa-calculator"></i> Phân loại độ nặng đợt cấp theo Đề xuất Rome (năm 2022)
+          </div>
+          <div class="rome-desc">
+            Chọn các tiêu chí lâm sàng ghi nhận trên bệnh nhân để đánh giá mức độ đợt cấp.
+          </div>
+          <div class="rome-grid">
+            <div class="rome-card" id="rc-dyspnea" onclick="toggleRome('dyspnea')">
+              <div class="rome-card-label"><i class="fa-solid fa-lungs"></i> Khó thở nặng (VAS &gt; 5)</div>
+              <div class="rome-card-val">Thang điểm VAS từ 5 trở lên (Khó thở trung bình đến dữ dội nhất)</div>
+            </div>
+            <div class="rome-card" id="rc-rr" onclick="toggleRome('rr')">
+              <div class="rome-card-label"><i class="fa-solid fa-gauge"></i> Nhịp thở ≥ 24 l/phút</div>
+              <div class="rome-card-val">Tần số thở nhanh hoặc co kéo cơ hô hấp phụ</div>
+            </div>
+            <div class="rome-card" id="rc-hr" onclick="toggleRome('hr')">
+              <div class="rome-card-label"><i class="fa-solid fa-heart-pulse"></i> Nhịp tim ≥ 95 ck/phút</div>
+              <div class="rome-card-val">Nhịp tim nhanh khi nghỉ ngơi</div>
+            </div>
+            <div class="rome-card" id="rc-sao2" onclick="toggleRome('sao2')">
+              <div class="rome-card-label"><i class="fa-solid fa-hand-holding-droplet"></i> SaO2 &lt; 92%</div>
+              <div class="rome-card-val">SaO2 khí trời lúc nghỉ ngơi giảm &gt; 3% so với nền của bệnh nhân</div>
+            </div>
+            <div class="rome-card" id="rc-crp" onclick="toggleRome('crp')">
+              <div class="rome-card-label"><i class="fa-solid fa-vial"></i> CRP ≥ 10 mg/L</div>
+              <div class="rome-card-val">Chỉ số viêm CRP tăng (đặc biệt khi kèm đờm mủ)</div>
+            </div>
+            <div class="rome-card" id="rc-abg" onclick="toggleRome('abg')">
+              <div class="rome-card-label"><i class="fa-solid fa-file-medical"></i> Toan hô hấp cấp</div>
+              <div class="rome-card-val">Khí máu động mạch: PaCO2 &gt; 45 mmHg và pH &lt; 7.35</div>
+            </div>
+          </div>
+          <div class="rome-result-box">
+            <div class="rome-verdict-title">Kết luận phân loại độ nặng:</div>
+            <div class="rome-verdict" id="rome-verdict-text">
+              <i class="fa-solid fa-circle-check" style="color:var(--green);"></i> ĐỢT CẤP MỨC ĐỘ NHẸ
+            </div>
+            <p id="rome-verdict-desc" style="font-size: 0.78rem; margin: 0; padding-top: 0.25rem;">
+              Bệnh nhân chỉ thỏa mãn &lt; 3 tiêu chuẩn của mức độ trung bình. Thường chỉ cần điều trị ngoại trú bằng
+              tăng liều thuốc giãn phế quản tác dụng ngắn (SABA/SAMA).
+            </p>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-prescription-bottle-medical"></i> Hướng dẫn sử dụng Kháng sinh
+          trong đợt cấp nặng nhập viện</div>
+        <div class="infobox success">
+          <div class="infobox-icon"><i class="fa-solid fa-check-double"></i></div>
+          <div>
+            <strong>Chỉ định Kháng sinh (Theo Anthonisen cải tiến)</strong>
+            Kháng sinh được chỉ định bắt buộc trong các trường hợp:
+            <br>1. Người bệnh có đủ 3 triệu chứng chính: Tăng khó thở, tăng số lượng đờm, và đờm chuyển mủ.
+            <br>2. Người bệnh có 2 triệu chứng chính (trong đó bắt buộc phải có triệu chứng <strong>đờm mủ</strong>).
+            <br>3. Tất cả các trường hợp đợt cấp nặng có chỉ định thông khí cơ học (xâm nhập hoặc không xâm nhập).
+          </div>
+        </div>
+
+        <p style="margin-top: 1rem; margin-bottom: 0.75rem;">
+          Khi có chỉ định dùng kháng sinh, bác sĩ cần tiến hành phân tầng nguy cơ nhiễm <em>Pseudomonas aeruginosa</em>
+          để lựa chọn kháng sinh kinh nghiệm ban đầu:
+        </p>
+
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th>Nhóm nguy cơ</th>
+                <th>Tiêu chí xác định</th>
+                <th>Kháng sinh kinh nghiệm khuyến cáo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="cell-title" style="color: var(--blue);">Không có nguy cơ nhiễm Pseudomonas</td>
+                <td>Không có bất kỳ yếu tố nguy cơ nào của nhóm có nguy cơ dưới đây.</td>
+                <td>
+                  <span class="rx-tag">Amoxicillin/Acid Clavulanic</span> hoặc <span class="rx-tag">Cephalosporin thế hệ
+                    3</span> (Cefotaxime, Ceftriaxone) hoặc <span class="rx-tag">Levofloxacin</span>.
+                </td>
+              </tr>
+              <tr>
+                <td class="cell-title" style="color: var(--orange);">Có nguy cơ nhiễm Pseudomonas aeruginosa</td>
+                <td>
+                  Có ít nhất một trong các tiêu chuẩn sau:<br>
+                  - Mới nhập viện gần đây.<br>
+                  - Sử dụng kháng sinh thường xuyên (≥ 4 đợt trong vòng 1 năm qua).<br>
+                  - BPTNMT rất nặng (GOLD 4), đồng mắc giãn phế quản.<br>
+                  - Tìm thấy trực khuẩn mủ xanh trong đợt cấp trước hoặc cư trú.
+                </td>
+                <td>
+                  Sử dụng kháng sinh có hoạt tính kháng Pseudomonas:<br>
+                  - <span class="rx-tag">Ceftazidime</span> hoặc <span class="rx-tag">Cefepime</span> hoặc <span
+                    class="rx-tag">Piperacillin/Tazobactam</span>.<br>
+                  - Nếu dị ứng nặng với Beta-lactam, có thể thay thế bằng <span class="rx-tag">Ciprofloxacin</span> hoặc
+                  <span class="rx-tag">Levofloxacin</span>.
+                </td>
+              </tr>
+              <tr>
+                <td class="cell-title" style="color: var(--red);">Có nguy cơ nhiễm Pseudomonas đa kháng (MDR)</td>
+                <td>
+                  Có yếu tố nguy cơ nhiễm Pseudomonas trên, kèm theo:<br>
+                  - Tiền sử phân lập vi khuẩn đa kháng.<br>
+                  - Mới điều trị kháng sinh phổ rộng (Cephalosporin phổ rộng, Aminoglycoside, hoặc Carbapenem).
+                </td>
+                <td>
+                  Phối hợp thuốc hoặc dùng Carbapenem kháng Pseudomonas:<br>
+                  - <span class="rx-tag">Imipenem/Cilastatin</span> hoặc <span class="rx-tag">Meropenem</span>.<br>
+                  - Xem xét phối hợp thêm <span class="rx-tag">Aminoglycoside</span> hoặc <span
+                    class="rx-tag">Colistin</span> nếu nghi ngờ kháng cao.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. BỆNH ĐỒNG MẮC & CAN THIỆP HỖ TRỢ HÔ HẤP -->
+    <div class="sec-card" id="sec-dong-mac">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon"><i class="fa-solid fa-heart-pulse"></i></span>
+        <span class="sec-title">Bệnh Đồng Mắc &amp; Hỗ Trợ Hô Hấp</span>
+      </div>
+      <div class="sec-body">
+        <div class="sec-subtitle"><i class="fa-solid fa-shield-heart"></i> Nguy cơ tim phổi (Cardiopulmonary Risk)</div>
+        <p>
+          BPTNMT và các bệnh lý tim mạch chia sẻ các con đường sinh lý bệnh chung. Tình trạng viêm mạn tính ở phổi kích
+          hoạt phản ứng viêm hệ thống, thúc đẩy xơ vữa mạch máu và hình thành huyết khối. Bên cạnh đó, tình trạng căng
+          phồng phổi quá mức cơ học chèn ép các buồng tim, gây cản trở hồi lưu tĩnh mạch và giảm cung lượng tim, dẫn tới
+          suy tim phải và các biến cố tim mạch cấp tính (nhồi máu cơ tim, loạn nhịp).
+        </p>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-circle-nodes"></i> Các bệnh đồng mắc quan trọng khác ngoài tim
+          mạch</div>
+        <div class="comor-grid">
+          <div class="comor-card">
+            <div class="comor-card-hdr">
+              <span class="comor-card-icon"><i class="fa-solid fa-dna"></i></span>
+              <span>Ung thư phổi</span>
+            </div>
+            <div class="comor-card-desc">
+              COPD và khí phế thũng là yếu tố nguy cơ độc lập đối với ung thư phổi. Khuyến cáo <strong>tầm soát hàng năm
+                bằng CT ngực liều thấp (LDCT)</strong> cho bệnh nhân 50-80 tuổi có tiền sử hút thuốc ≥ 20 bao-năm.
+            </div>
+          </div>
+          <div class="comor-card">
+            <div class="comor-card-hdr">
+              <span class="comor-card-icon"><i class="fa-solid fa-lungs-virus"></i></span>
+              <span>Giãn phế quản</span>
+            </div>
+            <div class="comor-card-desc">
+              Làm tăng tiết đờm nhầy mủ dai dẳng, gia tăng tần suất xuất hiện đợt cấp, đẩy nhanh tốc độ suy giảm chức
+              năng hô hấp và dễ bị cư trú bởi trực khuẩn mủ xanh <em>P. aeruginosa</em>.
+            </div>
+          </div>
+          <div class="comor-card">
+            <div class="comor-card-hdr">
+              <span class="comor-card-icon"><i class="fa-solid fa-bed"></i></span>
+              <span>Hội chứng chồng lấp (COPD + OSAS)</span>
+            </div>
+            <div class="comor-card-desc">
+              Đồng mắc ngừng thở tắc nghẽn khi ngủ làm gia tăng tình trạng giảm oxy máu sâu vào ban đêm, thúc đẩy nhanh
+              biến biến chứng tăng áp phổi và suy tim phải so với từng bệnh đơn độc.
+            </div>
+          </div>
+          <div class="comor-card">
+            <div class="comor-card-hdr">
+              <span class="comor-card-icon"><i class="fa-solid fa-bone"></i></span>
+              <span>Loãng xương &amp; Rối loạn cơ khớp</span>
+            </div>
+            <div class="comor-card-desc">
+              Thường không được chẩn đoán, liên quan suy giảm khối lượng cơ, ít vận động và tác dụng phụ của việc sử
+              dụng corticoid kéo dài đường toàn thân trong đợt cấp.
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-mask-ventilator"></i> Liệu pháp hỗ trợ hô hấp chuyên sâu</div>
+        <p>
+          Các biện pháp hỗ trợ hô hấp không dùng thuốc đóng vai trò sống còn trong việc cải thiện tiên lượng sống ở giai
+          đoạn muộn:
+        </p>
+        <ul
+          style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.5rem; font-size: 0.82rem;">
+          <li style="padding-left: 1.25rem; position: relative;">
+            <i class="fa-solid fa-check" style="position: absolute; left: 0; top: 3px; color: var(--accent);"></i>
+            <strong>Liệu pháp oxy dài hạn tại nhà (LTOT):</strong> Chỉ định khi $PaO_2 \le 55$ mmHg hoặc $SaO_2 \le
+            88\%$ khí trời khi nghỉ. Hoặc $PaO_2$ 56-59 mmHg nếu có kèm tâm phế mạn, đa hồng cầu ($Hb > 17$ g/dL ở nam,
+            $15$ g/dL ở nữ), hoặc tăng áp phổi. Thời gian tối thiểu từ <strong>16 - 18 giờ/ngày</strong> với lưu lượng
+            duy trì 1 - 3 lít/phút.
+          </li>
+          <li style="padding-left: 1.25rem; position: relative;">
+            <i class="fa-solid fa-check" style="position: absolute; left: 0; top: 3px; color: var(--accent);"></i>
+            <strong>Thở máy không xâm nhập (BiPAP):</strong> Chỉ định trong đợt cấp khi có toan hô hấp cấp (pH $\le$
+            7.35, $PaCO_2$ >= 45$ mmHg) hoặc giảm oxy dai dẳng bất chấp liệu pháp oxy thường quy. Trong giai đoạn ổn
+            định, chỉ định khi có tình trạng tăng $CO_2$ máu mạn tính ban ngày ($PaCO_2$ >= 53$ mmHg).
+          </li>
+          <li style="padding-left: 1.25rem; position: relative;">
+            <i class="fa-solid fa-check" style="position: absolute; left: 0; top: 3px; color: var(--accent);"></i>
+            <strong>Nội soi can thiệp &amp; Phẫu thuật:</strong> Xem xét phẫu thuật giảm thể tích phổi (LVRS) hoặc
+            <strong>đặt van một chiều nội phế quản (EBV)</strong> ở bệnh nhân khí phế thũng nặng ưu thế thùy trên có
+            tình trạng căng phồng phổi tĩnh mức độ nặng mà không đáp ứng tối ưu nội khoa. Ghép phổi là giải pháp cuối
+            cùng cho bệnh nhân rất nặng tiến triển.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 6. PHỤC HỒI CHỨC NĂNG, DINH DƯỠNG & CHĂM SÓC GIẢM NHẸ -->
+    <div class="sec-card" id="sec-phcn">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon"><i class="fa-solid fa-hand-holding-heart"></i></span>
+        <span class="sec-title">PHCN Hô Hấp, Dinh Dưỡng &amp; Chăm Sóc Giảm Nhẹ</span>
+      </div>
+      <div class="sec-body">
+        <div class="sec-subtitle"><i class="fa-solid fa-person-running"></i> Hiệu quả chứng cứ của Phục hồi chức năng hô
+          hấp</div>
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th>Lợi ích lâm sàng</th>
+                <th>Mức độ bằng chứng</th>
+                <th>Khuyến cáo của BYT</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="cell-title">Cải thiện triệu chứng khó thở, thể lực và chất lượng sống ở giai đoạn ổn định.
+                </td>
+                <td><span class="rx-tag preferred">Bằng chứng Loại A</span></td>
+                <td>Chỉ định rộng rãi cho tất cả bệnh nhân có triệu chứng khó thở dai dẳng.</td>
+              </tr>
+              <tr>
+                <td class="cell-title">Giảm tỷ lệ tái nhập viện ở bệnh nhân vừa ra khỏi đợt cấp dưới 4 tuần.</td>
+                <td><span class="rx-tag preferred">Bằng chứng Loại B</span></td>
+                <td>Khởi động sớm chương trình PHCN hô hấp ngay sau đợt cấp.</td>
+              </tr>
+              <tr>
+                <td class="cell-title">Cải thiện triệu chứng trầm cảm và lo âu đi kèm.</td>
+                <td><span class="rx-tag preferred">Bằng chứng Loại A</span></td>
+                <td>Tích hợp đánh giá tâm lý trong quy trình PHCN.</td>
+              </tr>
+              <tr>
+                <td class="cell-title">Giáo dục sức khỏe đơn thuần không đem lại hiệu quả thay đổi hành vi dài hạn.</td>
+                <td><span class="rx-tag warn">Bằng chứng Loại C</span></td>
+                <td>Cần phối hợp tập vận động thể lực dưới giám sát chuyên khoa.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-apple-whole"></i> Hỗ trợ Dinh dưỡng lâm sàng</div>
+        <p>
+          Bệnh nhân COPD giai đoạn tiến triển thường có biểu hiện suy kiệt cơ do tăng công hô hấp. Chế độ dinh dưỡng cần
+          đảm bảo mức năng lượng cao: <strong>28 - 35 kcal/kg/ngày</strong>, phối hợp lượng protein cao từ <strong>1.2 -
+            1.7 g/kg/ngày</strong> để duy trì và tăng cường khối lượng, sức mạnh cơ hô hấp.
+        </p>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-heart"></i> Phác đồ giảm khó thở bằng Morphin ở bệnh nhân giai
+          đoạn cuối đời</div>
+        <p style="font-size: 0.78rem;">
+          Khi các liệu pháp điều trị nội khoa và oxy tối đa không còn hiệu quả kiểm soát khó thở, việc sử dụng opioid
+          liều thấp giúp cải thiện đáng kể cảm giác khó thở kháng trị.
+        </p>
+
+        <div class="timeline">
+          <div class="timeline-item active">
+            <div class="timeline-marker"></div>
+            <div class="timeline-item-title">Bước 1: Liều khởi đầu (Tuần 1)</div>
+            <div class="timeline-item-desc">
+              Khởi đầu với <strong>Morphin uống 0.5mg x 2 lần/ngày</strong> trong 2 ngày đầu tiên để cơ thể dung nạp,
+              sau đó tăng lên <strong>0.5mg uống mỗi 4 giờ</strong> trong phần còn lại của tuần thứ nhất.
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-item-title">Bước 2: Tăng liều (Tuần 2 trở đi)</div>
+            <div class="timeline-item-desc">
+              Nếu dung nạp tốt nhưng vẫn còn khó thở, tăng liều lên <strong>1mg uống mỗi 4 giờ</strong> trong tuần thứ
+              hai. Tiếp tục tăng thêm 1mg/tuần cho đến khi đạt liều tối thiểu có hiệu quả giảm khó thở lâm sàng.
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-item-title">Bước 3: Chuyển đổi duy trì dài hạn</div>
+            <div class="timeline-item-desc">
+              Khi đã xác định được liều ổn định đạt hiệu quả giảm khó thở tốt (không đổi liều trong 2 tuần), thực hiện
+              chuyển sang <strong>Morphin dạng phóng thích chậm</strong> (sustained-release) với tổng liều tương đương
+              trong ngày để tiện lợi cho bệnh nhân.
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-item-title">Bước 4: Kiểm soát tác dụng phụ &amp; Thay thế</div>
+            <div class="timeline-item-desc">
+              Luôn chỉ định kèm thuốc chống táo bón và mềm phân. Nếu bệnh nhân gặp nhiều tác dụng phụ nặng (nôn ói, lú
+              lẫn), thay thế bằng <strong>Hydromorphin uống</strong> với tỷ lệ chuyển đổi: <strong>1mg Hydromorphin =
+                5mg Morphin</strong>.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NGUỒN TÀI LIỆU & LIÊN KẾT LIÊN QUAN -->
+    <div class="sec-card" id="sec-citation">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">📖</span>
+        <span class="sec-title">Nguồn Tài liệu &amp; Trích Dẫn</span>
+      </div>
+      <div class="sec-body">
+        <div class="citation-box">
+          <strong style="font-style:normal;display:block;margin-bottom:0.5rem;color:var(--text);">Tài liệu văn bản
+            gốc:</strong>
+          Bộ Y tế Việt Nam. <em>Hướng dẫn chẩn đoán và điều trị bệnh phổi tắc nghẽn mạn tính</em>. Ban hành kèm theo
+          Quyết định số 2131/QĐ-BYT ngày 14 tháng 7 năm 2026. Hà Nội, Việt Nam.
+          <br><br>
+          <strong style="font-style:normal;color:var(--text);">Tham chiếu quốc tế tích hợp:</strong><br>
+          • Global Initiative for Chronic Obstructive Lung Disease (GOLD) Guidelines 2026.<br>
+          • Rome Proposal for definition of COPD exacerbations (Am J Respir Crit Care Med, 2022).<br>
+          • AMA Citation: Ministry of Health (Vietnam). *Hướng dẫn chẩn đoán và điều trị bệnh phổi tắc nghẽn mạn tính*.
+          Ban hành kèm theo Quyết định số 2131/QĐ-BYT ngày 14 tháng 7 năm 2026. Hanoi, Vietnam; 2026.
+        </div>
+        <div class="btn-row">
+          <a href="https://kcb.vn/" target="_blank" rel="noopener noreferrer" class="btn">
+            <i class="fa-solid fa-earth-asia"></i> Cục Quản lý Khám chữa bệnh (kcb.vn)
+          </a>
+          <a href="../Guidelines.html" class="btn btn-primary">
+            <i class="fa-solid fa-arrow-left"></i> Quay về Kho Guidelines
+          </a>
+        </div>
+
+        <!-- RELATIVE LINKS -->
+        <section class="related-links-section">
+          <h4 class="related-links-title">
+            <i class="fa-solid fa-link"></i> Xem thêm các nội dung liên quan
+          </h4>
+          <div class="related-links-grid">
+            <a href="../../../../Công cụ/Truyền Nhiễm/Chinhlieu_khangsinh.html" class="related-link-card">
+              <div class="related-card-content">
+                <span class="related-card-badge cong-cu">Công cụ</span>
+                <h5>Tính Liều Kháng Sinh Theo Chức Năng Thận</h5>
+                <p>Hiệu chỉnh liều kháng sinh dựa trên chức năng thận và đặc tính PK/PD cho bệnh nhân nặng.</p>
+              </div>
+              <i class="fa-solid fa-chevron-right" style="color: var(--text-faint);"></i>
+            </a>
+            <a href="../../../../Dược lý/Chuyên khoa/DL_Khangsinh.html" class="related-link-card">
+              <div class="related-card-content">
+                <span class="related-card-badge duoc-ly">Dược lý</span>
+                <h5>Dược Lý Lâm Sàng Kháng Sinh</h5>
+                <p>Tra cứu phổ tác động, cơ chế hoạt động và tương tác thuốc kháng sinh toàn diện.</p>
+              </div>
+              <i class="fa-solid fa-chevron-right" style="color: var(--text-faint);"></i>
+            </a>
+            <a href="../../../../Dược lý/Chuyên khoa/DL_Hohap.html" class="related-link-card">
+              <div class="related-card-content">
+                <span class="related-card-badge duoc-ly">Dược lý</span>
+                <h5>Dược Lý Lâm Sàng Thuốc Hô Hấp</h5>
+                <p>Thông tin cơ chế tác dụng, liều dùng các thuốc giãn phế quản (LABA, LAMA, SABA, SAMA) và ICS.</p>
+              </div>
+              <i class="fa-solid fa-chevron-right" style="color: var(--text-faint);"></i>
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>
+
+  </div>
+
+  <footer
+    style="border-top:1px solid var(--border-light);padding:1.5rem;text-align:center;font-size:0.75rem;color:var(--text-faint);background:var(--surface); transition: background var(--tr), border-color var(--tr);">
+    CliniPortal © 2026 · Hướng dẫn này mang tính chất tóm tắt phục vụ tra cứu nhanh lâm sàng, không thay thế văn bản
+    pháp lý chính thức của Bộ Y tế và phán quyết lâm sàng trực tiếp của bác sĩ điều trị.
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    // 1. THEME SWITCHER
+    const themeBtn = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    // Check saved theme or preference
+    const savedTheme = localStorage.getItem('ebm-theme') || 'light';
+    html.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+
+    themeBtn.addEventListener('click', () => {
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('ebm-theme', newTheme);
+      updateThemeIcon(newTheme);
+    });
+
+    function updateThemeIcon(theme) {
+      const icon = themeBtn.querySelector('i');
+      if (theme === 'dark') {
+        icon.className = 'fa-solid fa-sun';
+      } else {
+        icon.className = 'fa-solid fa-moon';
+      }
+    }
+
+    // 2. STICKY MENU ACTIVE STATE ON SCROLL
+    const sections = document.querySelectorAll('.sec-card');
+    const navItems = document.querySelectorAll('.quickmenu-item');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      const offset = 180; // Offset for header + topnav + buffer
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= (sectionTop - offset)) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href').slice(1) === current) {
+          item.classList.add('active');
+          // Smooth scroll sub-menu on mobile
+          item.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      });
+    });
+
+    // 3. WIDGET: INTERACTIVE SCREENING
+    let answers = [null, null, null, null, null];
+
+    function setQuestion(index, value) {
+      answers[index] = value;
+
+      // Update UI buttons styling
+      const item = document.querySelectorAll('.screening-item')[index];
+      const yesBtn = item.querySelector('.q-yes');
+      const noBtn = item.querySelector('.q-no');
+
+      if (value === true) {
+        yesBtn.classList.add('active-yes');
+        noBtn.classList.remove('active-no');
+      } else {
+        yesBtn.classList.remove('active-yes');
+        noBtn.classList.add('active-no');
+      }
+
+      evaluateScreening();
+    }
+
+    function evaluateScreening() {
+      // Check if all answered
+      const allAnswered = answers.every(ans => ans !== null);
+      if (!allAnswered) return;
+
+      const score = answers.filter(ans => ans === true).length;
+      const posBox = document.getElementById('screen-pos');
+      const negBox = document.getElementById('screen-neg');
+
+      if (score >= 3) {
+        posBox.style.display = 'flex';
+        negBox.style.display = 'none';
+        document.getElementById('score-pos').textContent = score;
+      } else {
+        posBox.style.display = 'none';
+        negBox.style.display = 'flex';
+        document.getElementById('score-neg').textContent = score;
+      }
+    }
+
+    // 4. WIDGET: ROME 2022 CALCULATOR
+    let selectedRomeCriteria = {
+      dyspnea: false,
+      rr: false,
+      hr: false,
+      sao2: false,
+      crp: false,
+      abg: false
+    };
+
+    function toggleRome(criteriaId) {
+      selectedRomeCriteria[criteriaId] = !selectedRomeCriteria[criteriaId];
+      const element = document.getElementById('rc-' + criteriaId);
+      if (selectedRomeCriteria[criteriaId]) {
+        element.classList.add('selected');
+      } else {
+        element.classList.remove('selected');
+      }
+      evaluateRome();
+    }
+
+    function evaluateRome() {
+      const vText = document.getElementById('rome-verdict-text');
+      const vDesc = document.getElementById('rome-verdict-desc');
+
+      // Rome 2022 definitions:
+      // - Severe: Moderate criteria met AND acidosis (pH < 7.35 and PaCO2 > 45) -> which is 'abg'
+      // - Moderate: At least 3 of 5 moderate criteria: dyspnea, rr, hr, sao2, crp
+      // - Light: Doesn't meet moderate criteria (<3 moderate criteria and no acidosis)
+
+      const modCount = (selectedRomeCriteria.dyspnea ? 1 : 0) +
+        (selectedRomeCriteria.rr ? 1 : 0) +
+        (selectedRomeCriteria.hr ? 1 : 0) +
+        (selectedRomeCriteria.sao2 ? 1 : 0) +
+        (selectedRomeCriteria.crp ? 1 : 0);
+
+      const hasAcidosis = selectedRomeCriteria.abg;
+
+      if (hasAcidosis && modCount >= 3) {
+        vText.innerHTML = '<i class="fa-solid fa-triangle-exclamation" style="color:var(--red);"></i> ĐỢT CẤP MỨC ĐỘ NẶNG';
+        vDesc.textContent = 'Bệnh nhân thỏa mãn tiêu chuẩn trung bình và có biểu hiện toan hô hấp (pH < 7.35, PaCO2 > 45 mmHg). Cần nhập viện điều trị cấp cứu ngay lập tức, chỉ định thở máy không xâm nhập (BiPAP) và cân nhắc truyền kháng sinh, corticoid tĩnh mạch.';
+      } else if (modCount >= 3) {
+        vText.innerHTML = '<i class="fa-solid fa-circle-exclamation" style="color:var(--orange);"></i> ĐỢT CẤP MỨC ĐỘ TRUNG BÌNH';
+        vDesc.textContent = 'Bệnh nhân thỏa mãn ít nhất 3 trong 5 tiêu chí lâm sàng (nhưng chưa bị toan hô hấp). Chỉ định nhập viện hoặc điều trị theo dõi sát tại lưu bệnh xá, sử dụng thuốc giãn phế quản phun khí dung phối hợp và cân nhắc bắt đầu dùng kháng sinh, corticoid uống.';
+      } else {
+        vText.innerHTML = '<i class="fa-solid fa-circle-check" style="color:var(--green);"></i> ĐỢT CẤP MỨC ĐỘ NHẸ';
+        vDesc.textContent = 'Bệnh nhân thỏa mãn < 3 tiêu chuẩn của mức độ trung bình và không có suy hô hấp nặng. Thường có thể quản lý an toàn tại nhà bằng cách tăng liều thuốc giãn phế quản tác dụng ngắn (SABA/SAMA).';
+      }
+    }
+  </script>
+</body>
+
+</html>
