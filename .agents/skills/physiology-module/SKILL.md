@@ -12,9 +12,11 @@ description: >
 ## 📁 Cấu trúc Phân hệ
 
 ```
-pages/Sinh lý - Sinh lý bệnh/
-├── Sinhly-sinhlybenh.html              # Hub tổng
-├── README.md                           # Giới thiệu phân hệ
+src/content/pathophysiology/
+├── sinh-ly-hoc.html                    # [Web con 1] Hub Sinh lý học
+├── co-che-benh-sinh.html               # [Web con 2] Hub Cơ chế bệnh sinh - Sinh lý bệnh
+├── sinhly-sinhlybenh.html              # Trang tổng hợp & Chuyển hướng tự động
+├── readme.md                           # Giới thiệu phân hệ
 ├── Sinhly/                             # Sinh lý học chuẩn
 │   ├── HUONG_DAN_THIET_KE.md          # ⭐ Design guide chi tiết
 │   ├── Note sinh lý.md                 # Ghi chú phát triển

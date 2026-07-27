@@ -23,10 +23,10 @@ const SUGGESTED_LINKS: QuickLink[] = [
   { id: 'abdo-pain',  label: 'Tiếp cận Đau bụng cấp',       href: '#/approaches/symptoms-gastro-symptoms-abdominal-pain-tc-daubung', icon: 'fa-solid fa-stomach',  category: 'approaches',     isPinned: false },
   { id: 'bls-alcs',   label: 'Hồi sức BLS & ACLS',          href: '#/approaches/1.%20hs-cc-hoi-suc-co-ban-nang-cao-tc-hs-bls-alcs', icon: 'fa-solid fa-bolt', category: 'approaches',     isPinned: false },
   // Pharmacology
-  { id: 'antibiotic', label: 'Dược lý Kháng sinh',          href: '#/pharmacology/specialties-dl-khangsinh',         icon: 'fa-solid fa-pills',                category: 'pharmacology',   isPinned: false },
-  { id: 'vasopressor',label: 'Dược lý Thuốc Vận mạch',      href: '#/pharmacology/specialties-dl-vanmach',           icon: 'fa-solid fa-syringe',              category: 'pharmacology',   isPinned: false },
-  { id: 'resp-pharm', label: 'Dược lý Hô hấp',              href: '#/pharmacology/specialties-dl-hohap',              icon: 'fa-solid fa-lungs',                category: 'pharmacology',   isPinned: false },
-  { id: 'card-pharm', label: 'Dược lý Tim mạch',            href: '#/pharmacology/specialties-dl-timmach',            icon: 'fa-solid fa-heart',                category: 'pharmacology',   isPinned: false },
+  { id: 'drug-lookup',label: 'Tra cứu Thuốc',              href: '#/pharmacology/tools-tra-cuu-thuoc',         icon: 'fa-solid fa-pills',                category: 'pharmacology',   isPinned: false },
+  { id: 'ddi-matrix',  label: 'Ma trận Tương tác 2D',       href: '#/pharmacology/tools-ma-tran-tuong-tac',     icon: 'fa-solid fa-chart-line',           category: 'pharmacology',   isPinned: false },
+  { id: 'dose-opt',   label: 'Tối ưu Liều Thuốc',          href: '#/pharmacology/tools-dose-optimizer',        icon: 'fa-solid fa-calculator',           category: 'pharmacology',   isPinned: false },
+  { id: 'pk-sim',      label: 'Mô phỏng Dược động học',     href: '#/pharmacology/tools-pk-simulator',         icon: 'fa-solid fa-chart-area',           category: 'pharmacology',   isPinned: false },
   // Skills
   { id: 'ecg-basic',  label: 'Đọc ECG Cơ bản',              href: '#/skills/can-lam-sang-doc-ecg-co-ban',              icon: 'fa-solid fa-heart-pulse',          category: 'skills',         isPinned: false },
   { id: 'ecg-adv',    label: 'Đọc ECG Nâng cao',            href: '#/skills/can-lam-sang-doc-ecg-nang-cao',            icon: 'fa-solid fa-chart-line',           category: 'skills',         isPinned: false },

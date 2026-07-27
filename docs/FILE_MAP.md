@@ -252,12 +252,6 @@
 | `Dược lý/Triệu chứng/DL_Daudau.html` | DL: Đau đầu |
 | `Dược lý/Triệu chứng/DL_Ho.html` | DL: Ho |
 | `Dược lý/Triệu chứng/DL_Nonoi.html` | DL: Nôn nao/buồn nôn |
-| `Dược lý/Chuyên khoa/DL_Hohap.html` | DL: Hô hấp |
-| `Dược lý/Chuyên khoa/DL_Khangsinh.html` | DL: Kháng sinh (toàn diện) |
-| `Dược lý/Chuyên khoa/DL_Timmach.html` | DL: Tim mạch |
-| `Dược lý/Chuyên khoa/DL_Tiêuhoá.html` | DL: Tiêu hóa |
-| `Dược lý/Chuyên khoa/DL_Ttoan_than.html` | DL: Toan thận |
-| `Dược lý/Chuyên khoa/DL_Vanmach.html` | DL: Vận mạch |
 
 ---
 
@@ -352,7 +346,9 @@
 
 | File | Vai trò | Cấp thư mục |
 |------|---------|------------|
-| `Sinh lý .../Sinhly-sinhlybenh.html` | Hub tổng | Cấp 2 |
+| `Sinh lý .../sinh-ly-hoc.html` | Web con 1: Hub Sinh lý học (Phần 1 - Phần 7) | Cấp 2 |
+| `Sinh lý .../co-che-benh-sinh.html` | Web con 2: Hub Cơ chế bệnh sinh & Sinh lý bệnh (Chuyên khoa) | Cấp 2 |
+| `Sinh lý .../Sinhly-sinhlybenh.html` | Trang tổng hợp & Chuyển hướng tự động | Cấp 2 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_THA.html` | Sinh lý bệnh & Cơ chế bệnh sinh Tăng huyết áp | Cấp 3 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_ST.html` | Sinh lý bệnh & Cơ chế bệnh sinh Suy tim | Cấp 3 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_AKI.html` | Sinh lý bệnh & Cơ chế bệnh sinh Tổn thương thận cấp | Cấp 3 |

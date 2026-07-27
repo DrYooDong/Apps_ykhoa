@@ -2,6 +2,16 @@
 <html lang="vi" data-theme="light">
 
 <head>
+    <script>
+        (function() {
+            const hash = window.location.hash || '';
+            if (hash.includes('patho') || hash.includes('sinh-ly-benh')) {
+                window.location.replace('co-che-benh-sinh.html' + hash);
+            } else {
+                window.location.replace('sinh-ly-hoc.html' + hash);
+            }
+        })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="CliniPortal - Module Sinh lý & Sinh lý bệnh Song song (Physio-Patho Mirror)">
@@ -20,6 +30,7 @@
     <link rel="stylesheet" href="../../../css/components/sidebar.css">
     <link rel="stylesheet" href="../../../css/components/footer.css">
 
+    <script src="../../../js/main.js" defer></script>
     <script src="../../../components/header.js" defer></script>
 
     <link rel="stylesheet" href="../../../css/components/module-dashboard.css">
@@ -142,41 +153,6 @@
                 <div class="hero-pattern"></div>
             </section>
 
-            <!-- NON-HTML FORMATS FEATURE BANNER -->
-            <section class="physio-grid"
-                style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin: 1.5rem 0;">
-                <a href="reader.html?article=content/sinhly/phan1/SL_TB_Diensinhly.md" class="physio-step-card"
-                    style="display:flex; align-items:center; gap:1rem; text-decoration:none; transition: transform 0.2s;"
-                    onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
-                    <div
-                        style="font-size:2.2rem; background:rgba(2,132,199,0.1); width:56px; height:56px; display:flex; align-items:center; justify-content:center; border-radius:12px; flex-shrink:0;">
-                        ⚡</div>
-                    <div>
-                        <span class="quiz-badge"
-                            style="background:rgba(2,132,199,0.15); color:var(--color-primary);">Format Mới: Markdown +
-                            SVG</span>
-                        <h4 style="margin:0.2rem 0; color:var(--color-text);">Trình Đọc Markdown & Visual Diagram</h4>
-                        <p style="margin:0; font-size:0.85rem; color:var(--color-text-muted);">Đọc bài viết sinh lý
-                            chuẩn hóa có YAML metadata, công thức TeX và sơ đồ vector SVG tương tác.</p>
-                    </div>
-                </a>
-
-                <a href="../calculators/general/formula-vault.html" class="physio-step-card"
-                    style="display:flex; align-items:center; gap:1rem; text-decoration:none; transition: transform 0.2s;"
-                    onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
-                    <div
-                        style="font-size:2.2rem; background:rgba(16,185,129,0.1); width:56px; height:56px; display:flex; align-items:center; justify-content:center; border-radius:12px; flex-shrink:0;">
-                        📐</div>
-                    <div>
-                        <span class="quiz-badge"
-                            style="background:rgba(16,185,129,0.15); color:var(--color-success);">Format Mới: JSON
-                            Vault</span>
-                        <h4 style="margin:0.2rem 0; color:var(--color-text);">Kho Công Thức Sinh Lý Định Lượng</h4>
-                        <p style="margin:0; font-size:0.85rem; color:var(--color-text-muted);">Cơ sở dữ liệu JSON công
-                            thức Nernst, Fick, Starling, GHK kèm máy tính tính toán tức thì.</p>
-                    </div>
-                </a>
-            </section>
 
             <!-- HUB TABS -->
             <div class="hub-tabs-container">

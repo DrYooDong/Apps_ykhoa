@@ -181,6 +181,6 @@ export const DEFAULT_QUICK_LINKS: QuickLink[] = [
   { id: 'egfr',       label: 'eGFR',             href: '#/calculators/renal-renal-function',                                 icon: 'fa-solid fa-kidney',     category: 'calculators',  isPinned: true },
   { id: 'sepsis',     label: 'Sốc Nhiễm khuẩn', href: '#/ebm/guidelines-kho-guidelines-phac-do-soc-nhiem-khuan-sepsis3', icon: 'fa-solid fa-bacterium',  category: 'ebm',          isPinned: true },
   { id: 'dyspnea',    label: 'Khó thở cấp',     href: '#/approaches/symptoms-than-phien-ho-hap-tim-mach-tc-khotho',        icon: 'fa-solid fa-wind',       category: 'approaches',   isPinned: false },
-  { id: 'antibiotic', label: 'Kháng sinh',      href: '#/pharmacology/specialties-dl-khangsinh',                           icon: 'fa-solid fa-pills',      category: 'pharmacology', isPinned: false },
+  { id: 'antibiotic', label: 'Kháng sinh',      href: '#/pharmacology/tools-tra-cuu-thuoc',                           icon: 'fa-solid fa-pills',      category: 'pharmacology', isPinned: false },
   { id: 'ecg',        label: 'Đọc ECG',          href: '#/skills/can-lam-sang-doc-ecg-co-ban',                              icon: 'fa-solid fa-heart-pulse',category: 'skills',       isPinned: false },
 ];

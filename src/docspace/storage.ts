@@ -96,8 +96,8 @@ const URL_MIGRATION_MAP: Record<string, string> = {
   '#/approaches/soc-nhiem-khuan': '#/ebm/guidelines-kho-guidelines-phac-do-soc-nhiem-khuan-sepsis3',
   '#/approaches/kho-tho-cap': '#/approaches/symptoms-than-phien-ho-hap-tim-mach-tc-khotho',
   '#/approaches/dau-nguc-cap': '#/approaches/symptoms-than-phien-ho-hap-tim-mach-tc-daunguc',
-  '#/pharmacology/khang-sinh': '#/pharmacology/specialties-dl-khangsinh',
-  '#/pharmacology/van-mach': '#/pharmacology/specialties-dl-vanmach',
+  '#/pharmacology/khang-sinh': '#/pharmacology/tools-tra-cuu-thuoc',
+  '#/pharmacology/van-mach': '#/pharmacology/tools-ma-tran-tuong-tac',
   '#/skills/dat-duong-tm-trung-tam': '#/skills/can-lam-sang-doc-ecg-co-ban',
   '#/skills/dat-tm-trung-tam': '#/skills/can-lam-sang-doc-ecg-co-ban',
 };

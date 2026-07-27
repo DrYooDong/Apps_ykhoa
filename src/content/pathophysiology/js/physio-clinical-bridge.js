@@ -14,7 +14,7 @@
             title: 'Điều hòa Huyết áp & RAAS',
             links: [
                 { icon: '⚙️', text: 'Công cụ: Máy tính Huyết áp động mạch trung bình (MAP)', url: '../../../../src/content/calculators/' },
-                { icon: '💊', text: 'Dược lý: Thuốc ức chế men chuyển & ARB', url: '../../../../src/content/pharmacology/specialties/DL_Timmach.html' },
+                { icon: '💊', text: 'Dược lý: Tra cứu Dược lý Lâm sàng', url: '../../../../src/content/pharmacology/duoc-ly.html' },
                 { icon: '🤒', text: 'Tiếp cận: Cơn tăng huyết áp cấp cứu', url: '../../../../src/content/approaches/symptoms/' }
             ]
         },

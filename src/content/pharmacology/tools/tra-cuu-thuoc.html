@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Tra cứu thông tin thuốc: công dụng, liều dùng, tác dụng phụ, chống chỉ định — CliniPortal Dược lý Lâm sàng.">
+  <title>Tra Cứu Thuốc – CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../css/components/pharmacology-tools.css">
+  <link rel="stylesheet" href="../../../../css/components/pharmacology-global.css">
+
+  <script src="../../../../js/main.js" defer></script>
+  <script src="../../../../components/header.js" defer></script>
+  <script src="../../../../components/footer.js" defer></script>
+
+  <style>
+    /* ============================================================
+       TRA CỨU THUỐC — Custom Styles
+    ============================================================ */
+
+    /* ── Hero ── */
+    .dl-hero {
+      background: linear-gradient(135deg, var(--color-primary) 0%, #0ea5e9 55%, #38bdf8 100%);
+      border-radius: var(--radius-xl, 1rem);
+      padding: 2.5rem 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .dl-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .dl-hero-text { position: relative; z-index: 1; }
+
+    .dl-hero-text h1 {
+      font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 0.5rem;
+    }
+
+    .dl-hero-text p {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    .dl-hero-icon {
+      font-size: 4rem;
+      filter: drop-shadow(0 4px 16px rgba(0,0,0,0.25));
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Search Bar ── */
+    .dl-search-wrap {
+      position: relative;
+      margin-bottom: 1.25rem;
+    }
+
+    .dl-search-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--color-text-muted);
+      font-size: 1rem;
+      pointer-events: none;
+    }
+
+    #dl-search {
+      width: 100%;
+      padding: 0.85rem 3rem 0.85rem 2.75rem;
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius-lg, 0.75rem);
+      background: var(--color-surface);
+      color: var(--color-text);
+      font-size: 1rem;
+      font-family: var(--font-body, 'Inter', sans-serif);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      box-sizing: border-box;
+    }
+
+    #dl-search:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+    }
+
+    #dl-clear-btn {
+      position: absolute;
+      right: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      font-size: 1.1rem;
+      padding: 0.25rem;
+      border-radius: 50%;
+      display: none;
+      transition: color 0.15s, background 0.15s;
+      line-height: 1;
+    }
+
+    #dl-clear-btn:hover { color: var(--color-danger); background: var(--color-danger-bg, rgba(220,38,38,0.08)); }
+    #dl-clear-btn.visible { display: flex; align-items: center; }
+
+    /* ── Alphabet Filter ── */
+    .dl-alpha-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-bottom: 1rem;
+      align-items: center;
+    }
+
+    .dl-alpha-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-right: 0.25rem;
+      flex-shrink: 0;
+    }
+
+    .alpha-btn {
+      padding: 0.3rem 0.55rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: 1.5px solid var(--color-border);
+      border-radius: 0.4rem;
+      background: var(--color-surface);
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+      line-height: 1;
+    }
+
+    .alpha-btn:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      background: var(--color-primary-bg, rgba(2,132,199,0.06));
+    }
+
+    .alpha-btn.active {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      color: #fff;
+    }
+
+    /* ── Category Chips ── */
+    .dl-chips-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 1.5rem;
+      align-items: center;
+    }
+
+    .dl-chips-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      flex-shrink: 0;
+    }
+
+    .cat-chip {
+      padding: 0.35rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      border: 1.5px solid var(--color-border);
+      border-radius: 99px;
+      background: var(--color-surface);
+      color: var(--color-text);
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+
+    .cat-chip:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    .cat-chip.active {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(2,132,199,0.3);
+    }
+
+    /* ── Result count ── */
+    .dl-result-info {
+      font-size: 0.83rem;
+      color: var(--color-text-muted);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .dl-result-count {
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    /* ── Drug Card Grid ── */
+    #dl-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .drug-card {
+      background: var(--color-surface);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-lg, 0.75rem);
+      padding: 1.25rem;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .drug-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--card-accent, var(--color-primary));
+      border-radius: var(--radius-lg, 0.75rem) var(--radius-lg, 0.75rem) 0 0;
+    }
+
+    .drug-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      border-color: var(--color-primary);
+    }
+
+    .drug-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .drug-name {
+      font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--color-text);
+      line-height: 1.3;
+    }
+
+    .drug-preg-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.2rem 0.45rem;
+      border-radius: 0.3rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .preg-B { background: rgba(34,197,94,0.15); color: #15803d; }
+    .preg-C { background: rgba(234,179,8,0.15); color: #a16207; }
+    .preg-D { background: rgba(239,68,68,0.15); color: #b91c1c; }
+
+    .drug-class-name {
+      font-size: 0.78rem;
+      color: var(--color-text-muted);
+      margin-bottom: 0.6rem;
+      font-style: italic;
+    }
+
+    .drug-brand-list {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .drug-brand-list span {
+      background: var(--color-bg, #f8fafc);
+      border: 1px solid var(--color-border);
+      border-radius: 0.3rem;
+      padding: 0.1rem 0.4rem;
+      margin-right: 0.25rem;
+      display: inline-block;
+      margin-bottom: 0.2rem;
+    }
+
+    .drug-card-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .route-badges { display: flex; gap: 0.25rem; flex-wrap: wrap; }
+
+    .route-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.15rem 0.45rem;
+      border-radius: 0.3rem;
+      letter-spacing: 0.03em;
+    }
+
+    .route-PO { background: rgba(99,102,241,0.12); color: #4338ca; }
+    .route-IV { background: rgba(239,68,68,0.12); color: #b91c1c; }
+    .route-IM { background: rgba(245,158,11,0.12); color: #92400e; }
+    .route-PR { background: rgba(20,184,166,0.12); color: #0f766e; }
+
+    .bbw-flag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #b91c1c;
+      background: rgba(239,68,68,0.1);
+      border: 1px solid rgba(239,68,68,0.25);
+      padding: 0.15rem 0.45rem;
+      border-radius: 0.3rem;
+    }
+
+    .drug-card-cta {
+      margin-top: 0.9rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--color-border);
+      font-size: 0.78rem;
+      color: var(--color-primary);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    /* No results */
+    .dl-empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--color-text-muted);
+    }
+    .dl-empty i { font-size: 3rem; margin-bottom: 1rem; display: block; opacity: 0.4; }
+
+    /* ── Modal Overlay ── */
+    #dl-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
+      z-index: 9000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+
+    #dl-modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    #dl-modal {
+      background: var(--color-surface);
+      border-radius: var(--radius-xl, 1rem);
+      width: 100%;
+      max-width: 680px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.25);
+      transform: scale(0.95) translateY(12px);
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      position: relative;
+    }
+
+    #dl-modal-overlay.open #dl-modal {
+      transform: scale(1) translateY(0);
+    }
+
+    /* Modal header */
+    .modal-head {
+      background: linear-gradient(135deg, var(--color-primary), #0ea5e9);
+      color: #fff;
+      padding: 1.5rem 1.75rem 1.25rem;
+      border-radius: var(--radius-xl, 1rem) var(--radius-xl, 1rem) 0 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .modal-drug-name {
+      font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin: 0 0 0.25rem;
+    }
+
+    .modal-drug-class {
+      font-size: 0.85rem;
+      opacity: 0.85;
+      margin: 0;
+    }
+
+    .modal-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.75rem;
+    }
+
+    .modal-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 99px;
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+      letter-spacing: 0.03em;
+    }
+
+    .modal-badge.bbw {
+      background: rgba(239,68,68,0.8);
+      animation: pulse-bbw 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-bbw {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: #fff;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+    }
+
+    .modal-close:hover { background: rgba(255,255,255,0.35); }
+
+    /* Modal body */
+    .modal-body {
+      padding: 1.5rem 1.75rem;
+    }
+
+    /* BBW Banner */
+    .bbw-banner {
+      background: rgba(239,68,68,0.08);
+      border: 2px solid rgba(239,68,68,0.4);
+      border-radius: 0.75rem;
+      padding: 0.9rem 1.1rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+
+    .bbw-banner-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+
+    .bbw-banner-text { font-size: 0.85rem; color: var(--color-danger, #dc2626); }
+    .bbw-banner-title { font-weight: 700; margin-bottom: 0.25rem; }
+
+    /* Accordion sections */
+    .info-section {
+      border: 1.5px solid var(--color-border);
+      border-radius: 0.75rem;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+    }
+
+    .info-section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 1.1rem;
+      cursor: pointer;
+      background: var(--color-bg, #f8fafc);
+      transition: background 0.15s;
+      user-select: none;
+    }
+
+    [data-theme="dark"] .info-section-header { background: var(--color-surface-2, #1e293b); }
+
+    .info-section-header:hover { background: var(--color-primary-bg, rgba(2,132,199,0.06)); }
+
+    .info-section-header.open { background: var(--color-primary-bg, rgba(2,132,199,0.07)); }
+
+    .info-section-title {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--color-text);
+    }
+
+    .info-section-icon {
+      width: 1.7rem;
+      height: 1.7rem;
+      border-radius: 0.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .icon-green { background: rgba(34,197,94,0.12); color: #15803d; }
+    .icon-blue  { background: rgba(59,130,246,0.12); color: #1d4ed8; }
+    .icon-amber { background: rgba(245,158,11,0.12); color: #92400e; }
+    .icon-red   { background: rgba(239,68,68,0.12); color: #b91c1c; }
+
+    .info-arrow {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      transition: transform 0.25s;
+    }
+
+    .info-section-header.open .info-arrow { transform: rotate(180deg); }
+
+    .info-section-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .info-section-body.open { max-height: 500px; }
+
+    .info-section-content {
+      padding: 1rem 1.1rem 1.1rem;
+      font-size: 0.88rem;
+      color: var(--color-text);
+      line-height: 1.7;
+    }
+
+    .info-section-content ul {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    .info-section-content ul li {
+      margin-bottom: 0.35rem;
+    }
+
+    .info-section-content ul li:last-child { margin-bottom: 0; }
+
+    .dosage-row {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.3rem 0.75rem;
+      align-items: baseline;
+    }
+
+    .dosage-label-text {
+      font-weight: 600;
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      white-space: nowrap;
+    }
+
+    .dosage-val-text { font-size: 0.88rem; color: var(--color-text); }
+
+    /* Brand names in modal */
+    .modal-brands {
+      font-size: 0.78rem;
+      color: var(--color-text-muted);
+      margin-top: 0.5rem;
+    }
+
+    .modal-brands strong { color: var(--color-text); }
+    .brand-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      border-radius: 0.3rem;
+      padding: 0.05rem 0.45rem;
+      margin-left: 0.25rem;
+      margin-bottom: 0.15rem;
+      color: rgba(255,255,255,0.9);
+    }
+
+    /* Cross-link widget */
+    .cross-link-widget {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: linear-gradient(135deg, rgba(99,102,241,0.06), rgba(139,92,246,0.06));
+      border: 1.5px solid rgba(99,102,241,0.2);
+      border-radius: 0.75rem;
+      padding: 0.9rem 1.1rem;
+      margin-top: 1.25rem;
+      text-decoration: none;
+      color: var(--color-text);
+      transition: all 0.2s;
+    }
+
+    .cross-link-widget:hover {
+      border-color: #6366f1;
+      box-shadow: 0 4px 16px rgba(99,102,241,0.15);
+      transform: translateY(-1px);
+    }
+
+    .cross-link-icon { font-size: 1.6rem; }
+
+    .cross-link-text strong {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #4f46e5;
+    }
+
+    .cross-link-text span {
+      font-size: 0.77rem;
+      color: var(--color-text-muted);
+    }
+
+    .cross-link-arrow {
+      margin-left: auto;
+      color: #6366f1;
+      font-size: 0.85rem;
+    }
+
+    /* Disclaimer */
+    .disclaimer {
+      font-size: 0.73rem;
+      color: var(--color-text-muted);
+      text-align: center;
+      padding: 0.75rem 1rem 0;
+      border-top: 1px solid var(--color-border);
+      line-height: 1.6;
+      margin-top: 1.25rem;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .dl-hero { padding: 1.5rem 1.25rem; }
+      .dl-hero-icon { font-size: 2.5rem; }
+      #dl-grid { grid-template-columns: 1fr; }
+      .modal-body { padding: 1.1rem 1.1rem; }
+      .dosage-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ===================== APP CONTAINER ===================== -->
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../pathophysiology/sinhly-sinhlybenh.html" class="nav-item" title="S.lý - S.lý bệnh">
+              <span class="nav-icon">🧬</span>
+              <span class="nav-text">S.lý - S.lý bệnh</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../skills/ky-nang.html" class="nav-item" title="Kỹ năng">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../approaches/tiep-can.html" class="nav-item" title="Tiếp cận">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../calculators/cong-cu.html" class="nav-item" title="Công cụ">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../duoc-ly.html" class="nav-item active" aria-current="page" title="Dược lý">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../ebm/yhcc.html" class="nav-item" title="Y học chứng cứ">
+              <span class="nav-icon">📄</span>
+              <span class="nav-text">Y học chứng cứ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../tcm/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền">
+              <span class="nav-icon">☯️</span>
+              <span class="nav-text">Y học cổ truyền</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- ===================== MAIN CONTENT ===================== -->
+    <main class="main-wrapper" id="mainContent">
+
+      <!-- BREADCRUMB -->
+      <clini-breadcrumb
+        items='[{"label": "🏠 Home", "url": "../../../../index.html"}, {"label": "Dược lý", "url": "../duoc-ly.html"}, {"label": "Tra Cứu Thuốc"}]'>
+      </clini-breadcrumb>
+
+      <!-- HERO -->
+      <div class="dl-hero" aria-labelledby="dl-hero-title">
+        <div class="dl-hero-text">
+          <h1 id="dl-hero-title">💊 Tra Cứu Thuốc</h1>
+          <p id="dl-drug-count-hero"><span id="hero-count">...</span> hoạt chất · Tìm theo tên, biệt dược, nhóm thuốc</p>
+        </div>
+        <div class="dl-hero-icon" aria-hidden="true">🔍</div>
+      </div>
+
+      <!-- SEARCH -->
+      <div class="dl-search-wrap" role="search">
+        <i class="fas fa-search dl-search-icon" aria-hidden="true"></i>
+        <input
+          type="search"
+          id="dl-search"
+          placeholder="Tìm hoạt chất, biệt dược... (VD: Paracetamol, Augmentin)"
+          autocomplete="off"
+          aria-label="Tìm kiếm thuốc"
+        >
+        <button id="dl-clear-btn" aria-label="Xóa tìm kiếm">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <!-- ALPHABET FILTER -->
+      <div class="dl-alpha-wrap" role="group" aria-label="Lọc theo chữ cái">
+        <span class="dl-alpha-label">A-Z:</span>
+        <button class="alpha-btn active" data-alpha="all" id="alpha-all">Tất cả</button>
+        <!-- Dynamically inserted by JS -->
+      </div>
+
+      <!-- CATEGORY CHIPS -->
+      <div class="dl-chips-wrap" role="group" aria-label="Lọc theo nhóm thuốc">
+        <span class="dl-chips-label">Nhóm:</span>
+        <!-- Dynamically inserted by JS -->
+      </div>
+
+      <!-- RESULT INFO -->
+      <div class="dl-result-info" id="dl-result-info" aria-live="polite">
+        Hiển thị <span class="dl-result-count" id="dl-count">5</span> thuốc
+      </div>
+
+      <!-- DRUG GRID -->
+      <div id="dl-grid" role="list" aria-label="Danh sách thuốc">
+        <!-- Dynamically rendered -->
+      </div>
+
+      <!-- BACK LINK -->
+      <div style="text-align: center; margin-top: 1rem; margin-bottom: 2rem;">
+        <a href="../duoc-ly.html"
+          style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.65rem 1.4rem;
+                 background: var(--color-primary); color: #fff; text-decoration: none;
+                 border-radius: var(--radius-md); font-weight: 600; font-size: 0.88rem;
+                 transition: opacity 0.15s;">
+          <i class="fas fa-arrow-left"></i> Quay lại Dược lý Lâm sàng
+        </a>
+      </div>
+
+    </main>
+  </div><!-- /app-container -->
+
+  <!-- ===================== MODAL ===================== -->
+  <div id="dl-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-drug-name-heading">
+    <div id="dl-modal">
+      <!-- Header -->
+      <div class="modal-head">
+        <button class="modal-close" id="dl-modal-close" aria-label="Đóng">
+          <i class="fas fa-times"></i>
+        </button>
+        <p class="modal-drug-name" id="modal-drug-name-heading">—</p>
+        <p class="modal-drug-class" id="modal-drug-class">—</p>
+        <div id="modal-brand-tags" class="modal-brands" style="margin-top:0.35rem;"></div>
+        <div class="modal-badges" id="modal-badges"></div>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body" id="modal-body-content">
+        <!-- Dynamically rendered -->
+      </div>
+    </div>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+
+  <!-- ===================== DRUG DATA (external) ===================== -->
+  <!-- Ẫch rời để giảm tải HTML. Tương thích file:/// và localhost -->
+  <script src="../data/drugs-db.js"></script>
+
+  <!-- ===================== DRUG LOOKUP JS ===================== -->
+  <script>
+    // ── State ──
+    let activeAlpha = 'all';
+    let activeCategory = 'all';
+    let searchQuery = '';
+    let currentDrug = null;
+
+    // ── DOM refs ──
+    const grid = document.getElementById('dl-grid');
+    const searchInput = document.getElementById('dl-search');
+    const clearBtn = document.getElementById('dl-clear-btn');
+    const countEl = document.getElementById('dl-count');
+    const alphaWrap = document.querySelector('.dl-alpha-wrap');
+    const chipsWrap = document.querySelector('.dl-chips-wrap');
+    const overlay = document.getElementById('dl-modal-overlay');
+    const modalClose = document.getElementById('dl-modal-close');
+
+    // ── Helpers ──
+    function normalize(str) {
+      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    }
+
+    function getCategories() {
+      const cats = [...new Set(window.DRUGS_DB.map(d => d.category))];
+      return cats.sort();
+    }
+
+    function getAlphas() {
+      const letters = [...new Set(window.DRUGS_DB.map(d => d.name[0].toUpperCase()))];
+      return letters.sort();
+    }
+
+    function filterDrugs() {
+      return window.DRUGS_DB.filter(drug => {
+        const q = normalize(searchQuery.trim());
+        const matchSearch = !q ||
+          normalize(drug.name).includes(q) ||
+          drug.brandNames.some(b => normalize(b).includes(q)) ||
+          normalize(drug.drugClass).includes(q) ||
+          normalize(drug.category).includes(q);
+        const matchAlpha = activeAlpha === 'all' ||
+          drug.name[0].toUpperCase() === activeAlpha;
+        const matchCat = activeCategory === 'all' ||
+          drug.category === activeCategory;
+        return matchSearch && matchAlpha && matchCat;
+      });
+    }
+
+    // ── Build Alphabet filter ──
+    function buildAlphaFilter() {
+      const letters = getAlphas();
+      letters.forEach(letter => {
+        const btn = document.createElement('button');
+        btn.className = 'alpha-btn';
+        btn.dataset.alpha = letter;
+        btn.textContent = letter;
+        btn.id = `alpha-${letter}`;
+        btn.addEventListener('click', () => {
+          activeAlpha = letter;
+          activeCategory = 'all';
+          searchQuery = '';
+          searchInput.value = '';
+          clearBtn.classList.remove('visible');
+          updateAlphaUI(btn);
+          updateCatUI(null);
+          renderGrid();
+        });
+        alphaWrap.appendChild(btn);
+      });
+
+      document.getElementById('alpha-all').addEventListener('click', () => {
+        activeAlpha = 'all';
+        updateAlphaUI(document.getElementById('alpha-all'));
+        renderGrid();
+      });
+    }
+
+    function updateAlphaUI(activeBtn) {
+      document.querySelectorAll('.alpha-btn').forEach(b => b.classList.remove('active'));
+      activeBtn.classList.add('active');
+    }
+
+    // ── Build Category chips ──
+    function buildCatChips() {
+      const allChip = document.createElement('button');
+      allChip.className = 'cat-chip active';
+      allChip.dataset.cat = 'all';
+      allChip.textContent = 'Tất cả';
+      allChip.id = 'cat-all';
+      chipsWrap.appendChild(allChip);
+
+      getCategories().forEach(cat => {
+        const count = window.DRUGS_DB.filter(d => d.category === cat).length;
+        const chip = document.createElement('button');
+        chip.className = 'cat-chip';
+        chip.dataset.cat = cat;
+        chip.textContent = `${cat} (${count})`;
+        chip.id = `cat-${cat.replace(/\s/g,'-')}`;
+        chipsWrap.appendChild(chip);
+      });
+
+      chipsWrap.addEventListener('click', (e) => {
+        const chip = e.target.closest('.cat-chip');
+        if (!chip) return;
+        activeCategory = chip.dataset.cat;
+        if (activeCategory !== 'all') {
+          activeAlpha = 'all';
+          updateAlphaUI(document.getElementById('alpha-all'));
+        }
+        updateCatUI(chip);
+        renderGrid();
+      });
+    }
+
+    function updateCatUI(activeChip) {
+      document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+      if (activeChip) {
+        activeChip.classList.add('active');
+      } else {
+        document.getElementById('cat-all').classList.add('active');
+      }
+    }
+
+    // ── Card accent color by category ──
+    const ACCENT_MAP = {
+      'Kháng sinh': '#10b981',
+      'Tim mạch': '#ef4444',
+      'Giảm đau': '#8b5cf6',
+      'Nội tiết': '#f59e0b',
+    };
+
+    function getAccent(cat) {
+      return ACCENT_MAP[cat] || 'var(--color-primary)';
+    }
+
+    // ── Render Grid ──
+    function renderGrid() {
+      const filtered = filterDrugs();
+      countEl.textContent = filtered.length;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="dl-empty">
+            <i class="fas fa-pills"></i>
+            <p style="font-weight:600;margin-bottom:0.25rem;">Không tìm thấy thuốc nào</p>
+            <p style="font-size:0.82rem;">Thử tìm bằng tên biệt dược hoặc nhóm thuốc khác.</p>
+          </div>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(drug => {
+        const accent = getAccent(drug.category);
+        const routeBadges = drug.routes.map(r =>
+          `<span class="route-badge route-${r}">${r}</span>`).join('');
+        const brandTags = drug.brandNames.slice(0, 3).map(b =>
+          `<span>${b}</span>`).join('');
+        const pregClass = `preg-${drug.pregnancyCategory}`;
+
+        return `
+          <div class="drug-card" role="listitem" data-id="${drug.id}"
+               style="--card-accent: ${accent};"
+               tabindex="0"
+               aria-label="Xem thông tin ${drug.name}">
+            <div class="drug-card-header">
+              <span class="drug-name">${drug.name}</span>
+              <span class="drug-preg-badge ${pregClass}" title="Phân loại thai kỳ FDA">
+                Thai: ${drug.pregnancyCategory}
+              </span>
+            </div>
+            <div class="drug-class-name">${drug.drugClass}</div>
+            <div class="drug-brand-list">${brandTags}</div>
+            <div class="drug-card-footer">
+              <div class="route-badges">${routeBadges}</div>
+              ${drug.blackBoxWarning ? '<span class="bbw-flag">⚫ BBW</span>' : ''}
+            </div>
+            <div class="drug-card-cta">
+              <i class="fas fa-info-circle"></i> Xem chi tiết
+            </div>
+          </div>`;
+      }).join('');
+
+      // Attach click events
+      grid.querySelectorAll('.drug-card').forEach(card => {
+        const open = () => openModal(card.dataset.id);
+        card.addEventListener('click', open);
+        card.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
+        });
+      });
+    }
+
+    // ── Modal ──
+    function openModal(drugId) {
+      const drug = window.DRUGS_DB.find(d => d.id === drugId);
+      if (!drug) return;
+      currentDrug = drug;
+
+      // Header
+      document.getElementById('modal-drug-name-heading').textContent = drug.name;
+      document.getElementById('modal-drug-class').textContent = drug.drugClass;
+
+      // Brand names
+      const brandsEl = document.getElementById('modal-brand-tags');
+      brandsEl.innerHTML = `<span style="opacity:0.75;">Biệt dược:</span>` +
+        drug.brandNames.map(b => `<span class="brand-tag">${b}</span>`).join('');
+
+      // Badges
+      const badgesEl = document.getElementById('modal-badges');
+      badgesEl.innerHTML = '';
+      drug.routes.forEach(r => {
+        const b = document.createElement('span');
+        b.className = 'modal-badge';
+        b.textContent = r;
+        badgesEl.appendChild(b);
+      });
+      const pregBadge = document.createElement('span');
+      pregBadge.className = 'modal-badge';
+      pregBadge.textContent = `Thai kỳ: ${drug.pregnancyCategory}`;
+      badgesEl.appendChild(pregBadge);
+      if (drug.blackBoxWarning) {
+        const bbwBadge = document.createElement('span');
+        bbwBadge.className = 'modal-badge bbw';
+        bbwBadge.textContent = '⚫ Black Box Warning';
+        badgesEl.appendChild(bbwBadge);
+      }
+
+      // Body
+      const body = document.getElementById('modal-body-content');
+      let html = '';
+
+      // BBW Banner
+      if (drug.blackBoxWarning) {
+        html += `
+          <div class="bbw-banner">
+            <span class="bbw-banner-icon">⚫</span>
+            <div class="bbw-banner-text">
+              <div class="bbw-banner-title">BLACK BOX WARNING (Cảnh báo hộp đen FDA)</div>
+              <div>${drug.blackBoxWarning}</div>
+            </div>
+          </div>`;
+      }
+
+      // 4 core sections
+      const sections = [
+        {
+          id: 'sec-ind',
+          icon: 'fa-stethoscope',
+          iconClass: 'icon-green',
+          title: 'Công dụng (Chỉ định)',
+          content: `<ul>${drug.indications.map(i => `<li>${i}</li>`).join('')}</ul>`,
+          open: true
+        },
+        {
+          id: 'sec-dos',
+          icon: 'fa-syringe',
+          iconClass: 'icon-blue',
+          title: 'Liều dùng',
+          content: `
+            <div class="dosage-row">
+              <span class="dosage-label-text">Người lớn:</span>
+              <span class="dosage-val-text">${drug.dosage.standardAdult}</span>
+              <span class="dosage-label-text">Liều tối đa:</span>
+              <span class="dosage-val-text">${drug.dosage.maxDaily}</span>
+              <span class="dosage-label-text">Trẻ em:</span>
+              <span class="dosage-val-text">${drug.dosage.pediatric}</span>
+              <span class="dosage-label-text">Suy thận:</span>
+              <span class="dosage-val-text">${drug.dosage.renalNote}</span>
+            </div>`,
+          open: true
+        },
+        {
+          id: 'sec-adr',
+          icon: 'fa-triangle-exclamation',
+          iconClass: 'icon-amber',
+          title: 'Tác dụng phụ',
+          content: `<ul>${drug.adverseEffects.map(e => `<li>${e}</li>`).join('')}</ul>`,
+          open: false
+        },
+        {
+          id: 'sec-ci',
+          icon: 'fa-ban',
+          iconClass: 'icon-red',
+          title: 'Chống chỉ định',
+          content: `<ul>${drug.contraindications.map(c => `<li>${c}</li>`).join('')}</ul>`,
+          open: false
+        }
+      ];
+
+      sections.forEach(s => {
+        html += `
+          <div class="info-section">
+            <div class="info-section-header ${s.open ? 'open' : ''}" data-target="${s.id}"
+                 role="button" aria-expanded="${s.open}" aria-controls="${s.id}">
+              <span class="info-section-title">
+                <span class="info-section-icon ${s.iconClass}">
+                  <i class="fas ${s.icon}"></i>
+                </span>
+                ${s.title}
+              </span>
+              <i class="fas fa-chevron-down info-arrow"></i>
+            </div>
+            <div class="info-section-body ${s.open ? 'open' : ''}" id="${s.id}">
+              <div class="info-section-content">${s.content}</div>
+            </div>
+          </div>`;
+      });
+
+      // Cross-link to interaction matrix
+      html += `
+        <a href="./ma-tran-tuong-tac.html" class="cross-link-widget" target="_blank">
+          <span class="cross-link-icon">🧊</span>
+          <span class="cross-link-text">
+            <strong>Kiểm tra Tương tác Thuốc</strong>
+            <span>Mở Ma Trận Tương Tác 2D để kiểm tra cặp thuốc phối hợp</span>
+          </span>
+          <i class="fas fa-arrow-right cross-link-arrow"></i>
+        </a>`;
+
+      // Disclaimer
+      html += `
+        <p class="disclaimer">
+          ⚕️ Thông tin mang tính chất tham khảo lâm sàng. Không thay thế tư vấn từ bác sĩ, dược sĩ hoặc
+          hướng dẫn sử dụng chính thức. Luôn đối chiếu với tờ hướng dẫn sử dụng thuốc gốc.
+        </p>`;
+
+      body.innerHTML = html;
+
+      // Accordion listeners inside modal
+      body.querySelectorAll('.info-section-header').forEach(header => {
+        header.addEventListener('click', () => {
+          const targetId = header.dataset.target;
+          const bodyEl = document.getElementById(targetId);
+          const isOpen = header.classList.contains('open');
+          header.classList.toggle('open', !isOpen);
+          header.setAttribute('aria-expanded', String(!isOpen));
+          bodyEl.classList.toggle('open', !isOpen);
+        });
+      });
+
+      // Show modal
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      modalClose.focus();
+    }
+
+    function closeModal() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+      currentDrug = null;
+    }
+
+    // ── Search ──
+    searchInput.addEventListener('input', () => {
+      searchQuery = searchInput.value;
+      clearBtn.classList.toggle('visible', searchQuery.length > 0);
+      // Reset alpha when searching
+      if (searchQuery) {
+        activeAlpha = 'all';
+        updateAlphaUI(document.getElementById('alpha-all'));
+      }
+      renderGrid();
+    });
+
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      searchQuery = '';
+      clearBtn.classList.remove('visible');
+      searchInput.focus();
+      renderGrid();
+    });
+
+    // ── Modal close ──
+    modalClose.addEventListener('click', closeModal);
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay) closeModal();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+    });
+
+    // ── Init ──
+    document.getElementById('hero-count').textContent = window.DRUGS_DB.length;
+    buildAlphaFilter();
+    buildCatChips();
+    renderGrid();
+  </script>
+
+</body>
+</html>

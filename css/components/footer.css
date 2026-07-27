@@ -2,10 +2,10 @@
        GLOBAL FOOTER
     ============================================================ */
     .global-footer {
-      margin-left: var(--sidebar-w);
+      margin-left: 0;
       border-top: 1px solid var(--color-divider);
       background: var(--color-surface);
-      transition: margin-left 0.28s cubic-bezier(0.4,0,0.2,1);
+      transition: background var(--tr);
     }
 
     /* Footer main content - Grid 4 cột */
@@ -188,10 +188,10 @@
    FOOTER — RESPONSIVE
 ============================================================ */
 
-/* Tablet: sidebar thu nhỏ → margin-left theo sidebar-col-w */
+/* Tablet: footer full width */
 @media (max-width: 1023px) and (min-width: 768px) {
   .global-footer {
-    margin-left: var(--sidebar-col-w);
+    margin-left: 0;
   }
   
   .footer-main-content {

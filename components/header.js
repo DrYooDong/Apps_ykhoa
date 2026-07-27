@@ -37,6 +37,9 @@ async function loadHeader() {
 }
 
 function initHeader() {
+  if (typeof window.initSinhLyDropdown === 'function') {
+    window.initSinhLyDropdown();
+  }
   const themeToggleBtn = document.getElementById('theme-toggle-btn');
   const mobileMenuBtn  = document.getElementById('mobileMenuBtn');
   const sidebar        = document.getElementById('appSidebar');

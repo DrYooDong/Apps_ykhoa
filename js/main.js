@@ -45,45 +45,122 @@
         themeBtn.textContent = theme === 'dark' ? '☀️' : '🌓';
       });
 
-      // --- Sidebar: desktop collapse ---
+      // --- Horizontal Subnav Bar & Active item scroll ---
       const sidebar   = document.getElementById('appSidebar');
       const arrowBtn  = document.getElementById('sidebar-toggle-arrow');
       const menuBtn   = document.getElementById('mobileMenuBtn');
       const overlay   = document.getElementById('sidebarOverlay');
-      const footer    = document.querySelector('.global-footer');
       const isMobile  = () => window.innerWidth < 768;
 
-      arrowBtn?.addEventListener('click', () => {
-        if (!isMobile() && sidebar) {
-          const collapsed = sidebar.classList.toggle('collapsed');
-          if (footer) footer.style.marginLeft = collapsed ? 'var(--sidebar-col-w)' : 'var(--sidebar-w)';
-        }
-      });
+      // Auto scroll active item into center view on load
+      const activeNavItem = sidebar?.querySelector('.nav-item.active');
+      if (activeNavItem) {
+        setTimeout(() => {
+          activeNavItem.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }, 150);
+      }
 
-      // --- Sidebar: mobile slide ---
-      menuBtn?.addEventListener('click', () => {
-        if (isMobile()) {
-          const open = sidebar?.classList.toggle('open');
-          overlay?.classList.toggle('show', open);
-        } else if (sidebar) {
-          const collapsed = sidebar.classList.toggle('collapsed');
-          if (footer) footer.style.marginLeft = collapsed ? 'var(--sidebar-col-w)' : 'var(--sidebar-w)';
-        }
-      });
+      // --- Dynamic Dropdown for S.lý - S.lý bệnh ---
+      // Hàm này được gọi ngay và cũng có thể được gọi lại từ header.js sau khi inject sidebar
+      function initSinhLyDropdown() {
+        document.querySelectorAll('.nav-item').forEach(item => {
+          if (item.closest('.nav-dropdown-wrapper')) return; // đã xử lý rồi, bỏ qua
+          const text = item.textContent || '';
+          const href = item.getAttribute('href') || '';
 
-      overlay?.addEventListener('click', () => {
-        sidebar?.classList.remove('open');
-        overlay?.classList.remove('show');
-      });
+          if (!(text.includes('S.lý') || href.includes('sinhly-sinhlybenh.html') || href.includes('sinh-ly-hoc.html') || href.includes('co-che-benh-sinh.html'))) return;
 
-      window.addEventListener('resize', () => {
-        if (!isMobile()) {
-          sidebar.classList.remove('open');
-          overlay.classList.remove('show');
-        }
-      });
+          const parentLi = item.parentElement;
+          if (!parentLi) return;
 
-      // --- Active nav ---
+          const wrapper = document.createElement('div');
+          wrapper.className = 'nav-dropdown-wrapper';
+
+          parentLi.insertBefore(wrapper, item);
+          wrapper.appendChild(item);
+          item.classList.add('has-dropdown');
+
+          if (!item.querySelector('.dropdown-chevron-svg')) {
+            const chevron = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            chevron.setAttribute('class', 'dropdown-chevron-svg');
+            chevron.setAttribute('viewBox', '0 0 24 24');
+            chevron.setAttribute('fill', 'none');
+            chevron.setAttribute('stroke', 'currentColor');
+            chevron.setAttribute('stroke-width', '2.5');
+            chevron.innerHTML = '<path d="M6 9l6 6 6-6"></path>';
+            item.appendChild(chevron);
+          }
+
+          let physioUrl = href.replace(/sinhly-sinhlybenh\.html|co-che-benh-sinh\.html/, 'sinh-ly-hoc.html');
+          let pathoUrl = href.replace(/sinhly-sinhlybenh\.html|sinh-ly-hoc\.html/, 'co-che-benh-sinh.html');
+          if (!physioUrl.includes('sinh-ly-hoc.html')) {
+            const baseDir = href.includes('/') ? href.substring(0, href.lastIndexOf('/') + 1) : '';
+            physioUrl = baseDir + 'sinh-ly-hoc.html';
+            pathoUrl = baseDir + 'co-che-benh-sinh.html';
+          }
+
+          const menu = document.createElement('div');
+          menu.className = 'nav-dropdown-menu';
+          menu.innerHTML = `
+            <a href="${physioUrl}" class="nav-dropdown-item">
+              <span class="dropdown-item-icon">🧬</span>
+              <span>Sinh lý học</span>
+            </a>
+            <a href="${pathoUrl}" class="nav-dropdown-item">
+              <span class="dropdown-item-icon">🔬</span>
+              <span>Cơ chế bệnh sinh - SLB</span>
+            </a>
+          `;
+          wrapper.appendChild(menu);
+          // Append menu to body để thoát khỏi mọi overflow:hidden của sidebar
+          document.body.appendChild(menu);
+
+          const updateMenuPos = () => {
+            const rect = item.getBoundingClientRect();
+            menu.style.position = 'fixed';
+            menu.style.top = (rect.bottom + 6) + 'px';
+            menu.style.left = Math.max(10, Math.min(window.innerWidth - 270, rect.left)) + 'px';
+          };
+
+          wrapper.addEventListener('mouseenter', () => { updateMenuPos(); });
+          wrapper.addEventListener('mouseleave', () => { /* CSS handles hide */ });
+          window.addEventListener('resize', updateMenuPos);
+          window.addEventListener('scroll', updateMenuPos, { capture: true, passive: true });
+
+          item.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const isOpen = menu.classList.contains('open');
+            // Đóng mọi menu đang mở khác
+            document.querySelectorAll('.nav-dropdown-menu.open').forEach(m => m.classList.remove('open'));
+            document.querySelectorAll('.nav-dropdown-wrapper.open').forEach(w => w.classList.remove('open'));
+            if (!isOpen) {
+              updateMenuPos();
+              menu.classList.add('open');
+              wrapper.classList.add('open');
+            }
+          });
+
+          document.addEventListener('click', (e) => {
+            if (!wrapper.contains(e.target) && !menu.contains(e.target)) {
+              menu.classList.remove('open');
+              wrapper.classList.remove('open');
+            }
+          });
+        });
+      }
+
+      // Export để header.js có thể gọi lại
+      window.initSinhLyDropdown = initSinhLyDropdown;
+
+      // Gọi ngay khi DOM đã sẵn sàng
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSinhLyDropdown);
+      } else {
+        initSinhLyDropdown();
+      }
+
+      // --- Active nav item click handler ---
       document.querySelectorAll('.nav-item').forEach(item => {
         item.addEventListener('click', function () {
           document.querySelectorAll('.nav-item').forEach(n => {
@@ -92,10 +169,7 @@
           });
           this.classList.add('active');
           this.setAttribute('aria-current', 'page');
-          if (isMobile()) {
-            sidebar.classList.remove('open');
-            overlay.classList.remove('show');
-          }
+          this.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
         });
       });
 

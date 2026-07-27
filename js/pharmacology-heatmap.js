@@ -1,29 +1,68 @@
 // ════════════════════════════════════════════════════════════════
 //  CLINIPORTAL - PHARMACOLOGY HEATMAP & SEARCH ENGINE
-//  Render ma trận tương tác 2D 10x10, Autocomplete search & History
+//  Render ma trận tương tác 2D cho các chuyên khoa
 // ════════════════════════════════════════════════════════════════
 
 (function () {
   'use strict';
 
-  const RECENT_STORAGE_KEY = 'cliniportal_recently_explored_v1';
+  // Định nghĩa các nhóm thuốc cho từng chuyên khoa
+  const SPECIALTY_MATRICES = {
+    'timmach': [
+      { id: 'acei', name: 'ACEi / ARB' },
+      { id: 'arni', name: 'ARNI' },
+      { id: 'bb', name: 'Beta-Blockers' },
+      { id: 'ccb', name: 'Non-DHP CCB' },
+      { id: 'statin', name: 'Statin' },
+      { id: 'doac', name: 'DOACs / VKA' },
+      { id: 'amiodarone', name: 'Amiodarone' },
+      { id: 'thiazide', name: 'Thiazide' },
+      { id: 'nsaid', name: 'NSAIDs' }
+    ],
+    'vanmach': [
+      { id: 'adr', name: 'Adrenaline' },
+      { id: 'noradr', name: 'Noradrenaline' },
+      { id: 'dopa', name: 'Dopamine' },
+      { id: 'dobu', name: 'Dobutamine' },
+      { id: 'vaso', name: 'Vasopressin' },
+      { id: 'amiodarone', name: 'Amiodarone' }
+    ],
+    'khangsinh': [
+      { id: 'betalactam', name: 'Beta-lactam' },
+      { id: 'macro', name: 'Macrolides' },
+      { id: 'quinolone', name: 'Quinolone' },
+      { id: 'amino', name: 'Aminoglycoside' },
+      { id: 'vanco', name: 'Vancomycin' },
+      { id: 'linezolid', name: 'Linezolid' },
+      { id: 'metro', name: 'Metronidazole' }
+    ],
+    'hohap': [
+      { id: 'ics', name: 'ICS' },
+      { id: 'saba_laba', name: 'SABA / LABA' },
+      { id: 'lama', name: 'LAMA' },
+      { id: 'theo', name: 'Theophylline' },
+      { id: 'corticoid', name: 'Systemic CS' },
+      { id: 'macro', name: 'Macrolides' }
+    ],
+    'tieuhoa': [
+      { id: 'ppi', name: 'PPI' },
+      { id: 'h2ra', name: 'H2RA' },
+      { id: 'prokinetic', name: 'Prokinetic' },
+      { id: 'bismuth', name: 'Bismuth' },
+      { id: 'nsaid', name: 'NSAIDs' }
+    ],
+    'toanthan': [
+      { id: 'para', name: 'Paracetamol' },
+      { id: 'nsaid', name: 'NSAIDs' },
+      { id: 'opioid', name: 'Opioid' },
+      { id: 'corticoid', name: 'Corticosteroid' },
+      { id: 'ppi', name: 'PPI' }
+    ]
+  };
 
-  // 10 Major Drug Classes for 2D Heatmap Matrix
-  const DRUG_CLASSES = [
-    { id: 'acei', name: 'ACEi / ARB' },
-    { id: 'arni', name: 'ARNI' },
-    { id: 'bb', name: 'Beta-Blockers' },
-    { id: 'ccb', name: 'Non-DHP CCB' },
-    { id: 'statin', name: 'Statin (CYP3A4)' },
-    { id: 'nsaid', name: 'NSAIDs' },
-    { id: 'doac', name: 'DOACs / VKA' },
-    { id: 'macro', name: 'Macrolides' },
-    { id: 'ppi', name: 'Omeprazole' },
-    { id: 'amiodarone', name: 'Amiodarone' }
-  ];
-
-  // 2D Interaction Database Matrix (Key format: 'classA:classB')
+  // CSDL Tương tác chung
   const HEATMAP_DB = {
+    // Tim mach & Chung
     'acei:arni': { level: 'severe', code: '⛔ CCĐ', title: 'ACEi + ARNI', text: 'Tích tụ Bradykinin gây bùng phát phù mạch nguy hiểm tính mạng. Cần rửa thuốc tối thiểu 36h khi chuyển đổi.' },
     'bb:ccb': { level: 'severe', code: '⛔ CCĐ', title: 'Beta-Blocker + Non-DHP CCB', text: 'Hiệp đồng ức chế cực mạnh nút xoang & dẫn truyền nhĩ thất. Nguy cơ block AV độ nặng / vô tâm thu.' },
     'statin:macro': { level: 'severe', code: '⛔ CCĐ', title: 'Statin (CYP3A4) + Macrolides', text: 'Macrolides ức chế CYP3A4 tại gan làm nồng độ Statin tăng vọt gây tiêu cơ vân cấp & suy thận.' },
@@ -32,41 +71,41 @@
     'arni:bb': { level: 'synergy', code: '✅ GDMT', title: 'ARNI + Beta-Blocker', text: 'Hai trụ cột cốt lõi trong phác đồ suy tim HFrEF giúp giảm tử vong và tái nhập viện.' },
     'amiodarone:statin': { level: 'moderate', code: '⚠️ Chỉnh liều', title: 'Amiodarone + Statin', text: 'Amiodarone ức chế CYP3A4 nhẹ, cần giới hạn liều Simvastatin ≤ 20mg/ngày hoặc Atorvastatin ≤ 40mg/ngày.' },
     'nsaid:acei': { level: 'moderate', code: '⚠️ Thận trọng', title: 'NSAID + ACEi/ARB', text: 'NSAID làm co động mạch vào, ACEi làm giãn động mạch ra → Suy giảm áp lực lọc cầu thận (Suy thận cấp).' },
-    'amiodarone:ccb': { level: 'severe', code: '⛔ CCĐ', title: 'Amiodarone + Non-DHP CCB', text: 'Hiệp đồng làm chậm nhịp tim nặng và kéo dài khoảng QT.' }
+    'amiodarone:ccb': { level: 'severe', code: '⛔ CCĐ', title: 'Amiodarone + Non-DHP CCB', text: 'Hiệp đồng làm chậm nhịp tim nặng và kéo dài khoảng QT.' },
+    
+    // Khang sinh
+    'macro:quinolone': { level: 'severe', code: '⛔ CCĐ', title: 'Macrolide + Quinolone', text: 'Cả hai đều kéo dài khoảng QT, tăng nguy cơ xoắn đỉnh nguy hiểm tính mạng.' },
+    'betalactam:amino': { level: 'synergy', code: '✅ Hiệp đồng', title: 'Beta-lactam + Aminoglycoside', text: 'Beta-lactam phá vỡ vách tế bào giúp Aminoglycoside dễ dàng xâm nhập, tăng hiệu quả diệt khuẩn (vd: Viêm nội tâm mạc).' },
+    'vanco:amino': { level: 'severe', code: '⛔ Độc Thận', title: 'Vancomycin + Aminoglycoside', text: 'Phối hợp làm tăng đáng kể nguy cơ độc tính trên thận. Cần theo dõi sát chức năng thận.' },
+    
+    // Ho hap
+    'saba_laba:lama': { level: 'synergy', code: '✅ Hiệp đồng', title: 'SABA/LABA + LAMA', text: 'Giãn phế quản tối ưu thông qua 2 cơ chế khác nhau. Nền tảng điều trị COPD.' },
+    'theo:macro': { level: 'moderate', code: '⚠️ Thận trọng', title: 'Theophylline + Macrolide', text: 'Macrolide ức chế chuyển hóa Theophylline làm tăng nồng độ và độc tính (loạn nhịp, co giật).' },
+    
+    // Tieu hoa
+    'ppi:nsaid': { level: 'synergy', code: '✅ Bảo vệ', title: 'PPI + NSAIDs', text: 'PPI giúp bảo vệ niêm mạc dạ dày, giảm nguy cơ loét và xuất huyết do NSAID.' },
+    'ppi:prokinetic': { level: 'synergy', code: '✅ Hiệp đồng', title: 'PPI + Prokinetic', text: 'Tăng cường hiệu quả điều trị trào ngược dạ dày thực quản (GERD).' },
+    
+    // Toan than
+    'nsaid:corticoid': { level: 'severe', code: '⛔ CCĐ', title: 'NSAIDs + Corticosteroid', text: 'Tăng mạnh nguy cơ loét và thủng dạ dày-tá tràng. Tránh phối hợp hoặc bắt buộc dùng kèm PPI.' },
+    'opioid:para': { level: 'synergy', code: '✅ Hiệp đồng', title: 'Opioid + Paracetamol', text: 'Kết hợp giúp tăng hiệu quả giảm đau đa cơ chế và giảm liều lượng Opioid.' }
   };
-
-  // Comprehensive Global Search Catalog
-  const SEARCH_CATALOG = [
-    { name: 'Paracetamol (Acetaminophen)', cat: 'Giảm đau - Hạ sốt', url: 'Triệu chứng/DL_Daubungcap.html' },
-    { name: 'Aspirin (Kháng kết tập tiểu cầu)', cat: 'Tim mạch', url: 'Chuyên khoa/DL_Timmach.html' },
-    { name: 'Clopidogrel (Plavix)', cat: 'Tim mạch', url: 'Chuyên khoa/DL_Timmach.html' },
-    { name: 'Sacubitril / Valsartan (ARNI)', cat: 'Suy tim', url: 'Chuyên khoa/DL_Timmach.html' },
-    { name: 'Bisoprolol / Carvedilol', cat: 'Chẹn beta', url: 'Chuyên khoa/DL_Timmach.html' },
-    { name: 'Noradrenaline (Norepinephrine)', cat: 'Vận mạch', url: 'Chuyên khoa/DL_Vanmach.html' },
-    { name: 'Adrenaline (Epinephrine)', cat: 'Cấp cứu', url: 'Chuyên khoa/DL_Vanmach.html' },
-    { name: 'Amoxicillin / Clavulanate (Augmentin)', cat: 'Kháng sinh', url: 'Chuyên khoa/DL_Khangsinh.html' },
-    { name: 'Vancomycin / Linezolid', cat: 'Kháng sinh MRSA', url: 'Chuyên khoa/DL_Khangsinh.html' },
-    { name: 'Ciprofloxacin / Levofloxacin', cat: 'Quinolone', url: 'Chuyên khoa/DL_Khangsinh.html' },
-    { name: 'Meropenem / Imipenem', cat: 'Carbapenem', url: 'Chuyên khoa/DL_Khangsinh.html' },
-    { name: 'Dextromethorphan (Giảm ho)', cat: 'Hô hấp', url: 'Triệu chứng/DL_Ho.html' },
-    { name: 'N-Acetylcysteine (NAC)', cat: 'Long đờm / Antidote', url: 'Triệu chứng/DL_Ho.html' },
-    { name: 'Omeprazole / Pantoprazole', cat: 'Tiêu hóa (PPI)', url: 'Chuyên khoa/DL_Tiêuhoá.html' },
-    { name: 'Ondansetron (Kháng 5-HT3)', cat: 'Chống nôn', url: 'Triệu chứng/DL_Nonoi.html' },
-    { name: 'Betahistine / Cinnarizine', cat: 'Chóng mặt', url: 'Triệu chứng/DL_Chongmat.html' }
-  ];
 
   /**
    * Render 2D Interaction Heatmap Matrix into mount element
    */
-  function renderHeatmapMatrix(mountEl) {
+  function renderHeatmapMatrix(mountEl, specialtyKey) {
     if (!mountEl) return;
+    
+    const drugClasses = SPECIALTY_MATRICES[specialtyKey];
+    if (!drugClasses) return;
 
     let tableHtml = `
-      <div class="heatmap-card-container">
+      <div class="heatmap-card-container" style="animation: fadeIn 0.3s ease-in-out;">
         <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
           <div>
             <h3 style="margin: 0; font-size: var(--text-md); font-weight: 700; color: var(--color-primary); display: flex; align-items: center; gap: 0.5rem;">
-              <i class="fa-solid fa-border-all"></i> Ma Trận Tương Tác 2D Đa Nhóm Thuốc (Heatmap)
+              <i class="fa-solid fa-border-all"></i> Ma Trận Tương Tác 2D Đa Nhóm Thuốc
             </h3>
             <p style="margin: 0.2rem 0 0 0; font-size: 0.8rem; color: var(--color-text-muted);">
               Nhấp vào ô bất kỳ trên ma trận để xem chi tiết cơ chế tương tác & hướng dẫn lâm sàng.
@@ -84,16 +123,16 @@
             <thead>
               <tr>
                 <th class="header-left">Nhóm Thuốc</th>
-                ${DRUG_CLASSES.map(c => `<th>${c.name}</th>`).join('')}
+                ${drugClasses.map(c => `<th>${c.name}</th>`).join('')}
               </tr>
             </thead>
             <tbody>
     `;
 
-    DRUG_CLASSES.forEach((rowClass, rIdx) => {
+    drugClasses.forEach((rowClass, rIdx) => {
       tableHtml += `<tr><th class="header-left">${rowClass.name}</th>`;
 
-      DRUG_CLASSES.forEach((colClass, cIdx) => {
+      drugClasses.forEach((colClass, cIdx) => {
         if (rIdx === cIdx) {
           tableHtml += `<td class="heatmap-cell cell-disabled">—</td>`;
         } else {
@@ -184,120 +223,41 @@
     overlay.onclick = (e) => { if (e.target === overlay) closeFn(); };
   }
 
-  /**
-   * Setup Autocomplete Search Engine
-   */
-  function setupAutocompleteSearch() {
-    const input = document.getElementById('lesson-search');
-    if (!input) return;
-
-    const parent = input.closest('.search-box-container') || input.parentElement;
-    if (!parent) return;
-
-    parent.classList.add('pharma-search-wrapper');
-
-    let dropdown = document.getElementById('pharma-autocomplete-list');
-    if (!dropdown) {
-      dropdown = document.createElement('div');
-      dropdown.id = 'pharma-autocomplete-list';
-      dropdown.className = 'pharma-autocomplete-list';
-      parent.appendChild(dropdown);
-    }
-
-    input.addEventListener('input', () => {
-      const q = input.value.toLowerCase().trim();
-      if (q.length < 2) {
-        dropdown.classList.remove('active');
-        return;
-      }
-
-      const matches = SEARCH_CATALOG.filter(s => s.name.toLowerCase().includes(q) || s.cat.toLowerCase().includes(q));
-
-      if (matches.length === 0) {
-        dropdown.classList.remove('active');
-        return;
-      }
-
-      dropdown.innerHTML = matches.map(m => `
-        <a href="${m.url}" class="autocomplete-item">
-          <span class="autocomplete-name">💊 ${m.name}</span>
-          <span class="autocomplete-cat">${m.cat}</span>
-        </a>
-      `).join('');
-
-      dropdown.classList.add('active');
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!parent.contains(e.target)) {
-        dropdown.classList.remove('active');
-      }
-    });
-  }
-
-  /**
-   * Recently Explored History Logger
-   */
-  function logExploredPage() {
-    const title = document.title.replace('– CliniPortal', '').trim();
-    const url = window.location.pathname;
-
-    try {
-      const stored = localStorage.getItem(RECENT_STORAGE_KEY);
-      let list = stored ? JSON.parse(stored) : [];
-
-      list = list.filter(item => item.url !== url);
-      list.unshift({ title, url, time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
-
-      if (list.length > 6) list.pop();
-
-      localStorage.setItem(RECENT_STORAGE_KEY, JSON.stringify(list));
-    } catch (e) {
-      console.warn('[RecentlyExplored] Error:', e);
-    }
-  }
-
-  function renderRecentlyExploredCarousel(mountEl) {
-    if (!mountEl) return;
-
-    try {
-      const stored = localStorage.getItem(RECENT_STORAGE_KEY);
-      const list = stored ? JSON.parse(stored) : [];
-
-      if (list.length === 0) return;
-
-      mountEl.innerHTML = `
-        <div class="recently-viewed-container">
-          <div style="font-size: var(--text-xs); font-weight: 700; color: var(--color-text-muted); text-transform: uppercase; margin-bottom: 0.5rem;">
-            🕒 Bài Học / Trang Vừa Khám Phá
-          </div>
-          <div class="recently-viewed-scroll">
-            ${list.map(item => `
-              <a href="${item.url}" class="recently-card">
-                <div class="recently-card-title">📖 ${item.title}</div>
-                <div class="recently-card-time">Xem lúc ${item.time}</div>
-              </a>
-            `).join('')}
-          </div>
-        </div>
-      `;
-    } catch (e) {}
-  }
-
-  // Export API
-  window.PharmaHeatmap = {
-    renderHeatmap: renderHeatmapMatrix,
-    renderRecently: renderRecentlyExploredCarousel
-  };
+  // --- INIT LOGIC ---
+  // When DOM loads, we don't render a single matrix anymore.
+  // Instead, the tab switching logic in ma-tran-tuong-tac.html will trigger rendering.
+  // To keep things clean, we will render the active tab automatically on load.
 
   document.addEventListener('DOMContentLoaded', () => {
-    logExploredPage();
-    setupAutocompleteSearch();
+    // Expose renderHeatmapMatrix to global scope so HTML script can call it if needed
+    window.renderHeatmapMatrix = renderHeatmapMatrix;
 
-    const heatmapMount = document.getElementById('pharma-heatmap-mount');
-    if (heatmapMount) renderHeatmapMatrix(heatmapMount);
+    // Setup search if needed (stubbed or kept from original)
+    // ...
 
-    const recentlyMount = document.getElementById('pharma-recently-mount');
-    if (recentlyMount) renderRecentlyExploredCarousel(recentlyMount);
+    // Identify active tab on load
+    const activeTabBtn = document.querySelector('.tab-btn.active');
+    if (activeTabBtn) {
+      const targetId = activeTabBtn.dataset.target; // e.g. "tab-timmach"
+      const specId = targetId.replace('tab-', ''); // "timmach"
+      const mountEl = document.getElementById('pharma-heatmap-mount-' + specId);
+      if (mountEl) {
+        renderHeatmapMatrix(mountEl, specId);
+      }
+    }
+
+    // Intercept tab clicks to render
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const specId = btn.dataset.target.replace('tab-', '');
+        const mountEl = document.getElementById('pharma-heatmap-mount-' + specId);
+        if (mountEl && !mountEl.innerHTML.trim()) {
+          // Render only if empty
+          renderHeatmapMatrix(mountEl, specId);
+        }
+      });
+    });
   });
+
 })();

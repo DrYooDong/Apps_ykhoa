@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Ma trận tương tác thuốc 2D đa nhóm tương tác (Heatmap Matrix) — Tra cứu lâm sàng trực quan cấp độ CCĐ, Thận trọng và Hiệp đồng điều trị - CliniPortal.">
+    content="Trung tâm Tương tác Thuốc 2D Chuyên Khoa — Tra cứu lâm sàng trực quan cấp độ CCĐ, Thận trọng và Hiệp đồng điều trị - CliniPortal.">
   <title>Ma Trận Tương Tác Thuốc 2D – CliniPortal</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,6 +28,48 @@
   <script src="../../../../components/header.js" defer></script>
   <script src="../../../../components/footer.js" defer></script>
   <script src="../../../../js/pharmacology-heatmap.js" defer></script>
+
+  <style>
+    .quick-tabs-container {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--color-divider);
+      padding-bottom: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--color-text-muted);
+      padding: 0.625rem 1.25rem;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: all 0.2s;
+      border-radius: 6px;
+    }
+    .tab-btn:hover {
+      color: var(--color-text);
+      background-color: var(--color-divider);
+    }
+    .tab-btn.active {
+      background-color: var(--color-divider);
+      color: var(--color-primary);
+    }
+    .tab-pane {
+      display: none;
+    }
+    .tab-pane.active {
+      display: block;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
 </head>
 
 <body>
@@ -111,8 +153,8 @@
       <section class="hero-dashboard hero-pharm" aria-labelledby="hero-title" style="margin-bottom: 2rem;">
         <div class="tcm-hero-content">
           <div class="hero-intro">
-            <h1 id="hero-title">📊 MA TRẬN TƯƠNG TÁC THUỐC 2D</h1>
-            <p>Trực quan hóa ma trận 10x10 tương tác giữa các nhóm thuốc lâm sàng chính (ACEi, ARNI, Beta-Blocker, CCB, Statin, Macrolide, NSAID, DOAC, PPI, Amiodarone). Nhấp vào ô bất kỳ để tra cứu phân tích cơ chế chi tiết &amp; hướng dẫn kê đơn an toàn.</p>
+            <h1 id="hero-title">📊 MA TRẬN TƯƠNG TÁC THUỐC 2D THEO CHUYÊN KHOA</h1>
+            <p>Trực quan hóa ma trận tương tác 2D giữa các nhóm thuốc lâm sàng theo từng chuyên khoa (Tim mạch, Vận mạch, Kháng sinh, Hô hấp, Tiêu hóa, Toàn thân). Nhấp vào ô bất kỳ để tra cứu phân tích cơ chế chi tiết &amp; hướng dẫn kê đơn an toàn.</p>
           </div>
           <div class="tcm-hero-decor">
             <div style="font-size: 3.5rem; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));">🧊</div>
@@ -136,8 +178,35 @@
         </div>
       </div>
 
-      <!-- MAIN HEATMAP MOUNT -->
-      <div id="pharma-heatmap-mount"></div>
+      <!-- QUICK TABS -->
+      <div class="quick-tabs-container">
+        <button class="tab-btn active" data-target="tab-timmach">🫀 Tim mạch</button>
+        <button class="tab-btn" data-target="tab-vanmach">🩸 Vận mạch</button>
+        <button class="tab-btn" data-target="tab-khangsinh">🦠 Kháng sinh</button>
+        <button class="tab-btn" data-target="tab-hohap">🫁 Hô hấp</button>
+        <button class="tab-btn" data-target="tab-tieuhoa">🧪 Tiêu hóa</button>
+        <button class="tab-btn" data-target="tab-toanthan">💊 Toàn thân</button>
+      </div>
+
+      <!-- TAB PANES (PURE 2D HEATMAP MATRICES ONLY) -->
+      <div id="tab-timmach" class="tab-pane active">
+        <div id="pharma-heatmap-mount-timmach"></div>
+      </div>
+      <div id="tab-vanmach" class="tab-pane">
+        <div id="pharma-heatmap-mount-vanmach"></div>
+      </div>
+      <div id="tab-khangsinh" class="tab-pane">
+        <div id="pharma-heatmap-mount-khangsinh"></div>
+      </div>
+      <div id="tab-hohap" class="tab-pane">
+        <div id="pharma-heatmap-mount-hohap"></div>
+      </div>
+      <div id="tab-tieuhoa" class="tab-pane">
+        <div id="pharma-heatmap-mount-tieuhoa"></div>
+      </div>
+      <div id="tab-toanthan" class="tab-pane">
+        <div id="pharma-heatmap-mount-toanthan"></div>
+      </div>
 
       <!-- RECENTLY VIEWED MOUNT -->
       <div id="pharma-recently-mount" style="margin-top: 2rem;"></div>
@@ -153,6 +222,41 @@
   </div>
 
   <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabPanes = document.querySelectorAll('.tab-pane');
+
+      function switchTab(targetId) {
+        tabBtns.forEach(btn => btn.classList.remove('active'));
+        tabPanes.forEach(pane => pane.classList.remove('active'));
+
+        const targetBtn = document.querySelector(`.tab-btn[data-target="${targetId}"]`);
+        const targetPane = document.getElementById(targetId);
+
+        if (targetBtn && targetPane) {
+          targetBtn.classList.add('active');
+          targetPane.classList.add('active');
+        }
+      }
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          switchTab(btn.dataset.target);
+          window.history.replaceState(null, null, `#${btn.dataset.target}`);
+        });
+      });
+
+      if (window.location.hash) {
+        const hash = window.location.hash.substring(1);
+        if (document.getElementById(hash)) {
+          switchTab(hash);
+        }
+      }
+    });
+  </script>
+
 </body>
 
 </html>
