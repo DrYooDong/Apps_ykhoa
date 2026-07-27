@@ -89,6 +89,15 @@ export function renderHomeView(): string {
             <i class="fa-solid fa-arrow-right module-arrow"></i>
           </a>
 
+          <a href="#/docspace" class="module-card module-card--docspace">
+            <div class="module-icon bg-indigo"><i class="fa-solid fa-id-badge"></i></div>
+            <div class="module-info">
+              <h3>DocSpace — Không gian Riêng</h3>
+              <p>SBAR, ca trực, ca bệnh cá nhân & liên kết nhanh cross-module.</p>
+            </div>
+            <i class="fa-solid fa-arrow-right module-arrow"></i>
+          </a>
+
         </div>
       </section>
     </div>

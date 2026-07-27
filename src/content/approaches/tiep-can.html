@@ -252,6 +252,24 @@
             <h1 id="hero-title">🤒 TIẾP CẬN LÂM SÀNG</h1>
             <p>Hệ thống sơ đồ tiếp cận chẩn đoán phân biệt theo triệu chứng, hội chứng, bệnh lý và bất thường cận lâm
               sàng dựa trên y học chứng cứ.</p>
+            <div class="hero-quick-tools" style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; align-items: center;">
+              <a href="interactive-tools/body-map.html" class="hero-tool-btn"
+                title="Mở Bản Đồ Giải Phẫu Tương Tác">
+                <i class="fa-solid fa-child-reaching" style="color: #c4b5fd;"></i> Bản Đồ Giải Phẫu
+              </a>
+              <a href="interactive-tools/case-simulator.html" class="hero-tool-btn"
+                title="Mở Mô Phỏng Ca Bệnh Tương Tác">
+                <i class="fa-solid fa-user-doctor" style="color: #6ee7b7;"></i> Ca Bệnh Ảo
+              </a>
+              <a href="interactive-tools/knowledge-graph.html" class="hero-tool-btn"
+                title="Mở Sơ Đồ Đồ Thị Tri Thức">
+                <i class="fa-solid fa-diagram-project" style="color: #7dd3fc;"></i> Đồ Thị Tri Thức
+              </a>
+              <button id="hubOnCallBtn" class="hero-tool-btn"
+                title="Bật/Tắt chế độ On-Call trực đêm">
+                <i class="fa-solid fa-moon" style="color: #fde047;"></i> On-Call Mode
+              </button>
+            </div>
           </div>
           <div class="tcm-hero-decor">
             <!-- Decision Tree SVG -->
@@ -272,50 +290,6 @@
         <div class="hero-pattern"></div>
       </section>
 
-      <!-- ===== APPROACH STATS BANNER ===== -->
-      <div class="approach-stats-banner"
-        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 20px 0;">
-        <div class="stat-card"
-          style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 16px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; box-shadow: var(--shadow-sm);">
-          <div class="stat-icon"
-            style="font-size: 2rem; color: var(--color-primary); background: rgba(2, 132, 199, 0.1); width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-            <i class="fa-solid fa-book-medical"></i>
-          </div>
-          <div class="stat-info">
-            <span class="stat-number" id="totalApproachesCount"
-              style="font-size: 1.4rem; font-weight: 800; color: var(--color-text); display: block;">42</span>
-            <span class="stat-label" style="font-size: 0.8rem; color: var(--color-text-muted); font-weight: 600;">Tổng
-              Tiếp Cận</span>
-          </div>
-        </div>
-        <div class="stat-card"
-          style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 16px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; box-shadow: var(--shadow-sm);">
-          <div class="stat-icon"
-            style="font-size: 2rem; color: var(--color-success); background: rgba(16, 185, 129, 0.1); width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-            <i class="fa-solid fa-circle-check"></i>
-          </div>
-          <div class="stat-info">
-            <span class="stat-number" id="viewedApproachesCount"
-              style="font-size: 1.4rem; font-weight: 800; color: var(--color-text); display: block;">0</span>
-            <span class="stat-label" style="font-size: 0.8rem; color: var(--color-text-muted); font-weight: 600;">Đã Học
-              / Đã Xem</span>
-          </div>
-        </div>
-        <div class="stat-card"
-          style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 16px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; box-shadow: var(--shadow-sm);">
-          <div class="stat-icon"
-            style="font-size: 2rem; color: var(--color-warning); background: rgba(245, 158, 11, 0.1); width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-            <i class="fa-solid fa-triangle-exclamation"></i>
-          </div>
-          <div class="stat-info">
-            <span class="stat-number"
-              style="font-size: 1.4rem; font-weight: 800; color: var(--color-text); display: block;">27</span>
-            <span class="stat-label" style="font-size: 0.8rem; color: var(--color-text-muted); font-weight: 600;">Triệu
-              Chứng Ma Trận</span>
-          </div>
-        </div>
-      </div>
-
       <!-- ===== TOOLBAR / CONTROL BAR ===== -->
       <div class="dashboard-controls">
         <div class="search-box-container">
@@ -330,35 +304,6 @@
             aria-label="Tìm kiếm vấn đề lâm sàng">
           <button id="clear-search" class="clear-search-btn" aria-label="Xóa tìm kiếm"
             style="display: none;">&times;</button>
-        </div>
-        <!-- Thêm bộ lọc Tags -->
-        <div class="filter-tags-container" style="display: flex; gap: 8px; flex-wrap: wrap; margin-left: 16px;">
-          <button class="tag-filter-btn active" data-tag="all">Tất cả</button>
-          <button class="tag-filter-btn" data-tag="cap-cuu">#cap-cuu</button>
-          <button class="tag-filter-btn" data-tag="noi-khoa">#noi-khoa</button>
-          <button class="tag-filter-btn" data-tag="nhi-khoa">#nhi-khoa</button>
-          <button class="tag-filter-btn" data-tag="san-khoa">#san-khoa</button>
-          <button class="tag-filter-btn" data-tag="ngoai-khoa">#ngoai-khoa</button>
-          <a href="interactive-tools/body-map.html" class="tag-filter-btn"
-            style="background: rgba(139, 92, 246, 0.15); color: #8b5cf6; border-color: #8b5cf6; font-weight: 700; text-decoration: none;"
-            title="Mở Bản Đồ Giải Phẫu Tương Tác">
-            <i class="fa-solid fa-child-reaching"></i> Bản Đồ Giải Phẫu
-          </a>
-          <a href="interactive-tools/case-simulator.html" class="tag-filter-btn"
-            style="background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: #10b981; font-weight: 700; text-decoration: none;"
-            title="Mở Mô Phỏng Ca Bệnh Tương Tác">
-            <i class="fa-solid fa-user-doctor"></i> Ca Bệnh Ảo
-          </a>
-          <a href="interactive-tools/knowledge-graph.html" class="tag-filter-btn"
-            style="background: rgba(2, 132, 199, 0.15); color: #0284c7; border-color: #0284c7; font-weight: 700; text-decoration: none;"
-            title="Mở Sơ Đồ Đồ Thị Tri Thức">
-            <i class="fa-solid fa-diagram-project"></i> Đồ Thị Tri Thức
-          </a>
-          <button id="hubOnCallBtn" class="tag-filter-btn"
-            style="background: rgba(245, 158, 11, 0.15); color: var(--color-warning); border-color: var(--color-warning); font-weight: 700;"
-            title="Bật/Tắt chế độ On-Call trực đêm">
-            <i class="fa-solid fa-moon"></i> On-Call Mode
-          </button>
         </div>
         <div class="view-toggle-container">
           <button id="flashcard-btn" class="flashcard-btn" title="Flashcard Red Flags Ôn tập">

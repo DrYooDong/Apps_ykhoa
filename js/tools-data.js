@@ -37,6 +37,16 @@ const clinicalToolsData = [
     part: "part1-section",
     tags: ["chung", "quy đổi", "liều lượng", "tương đương", "corticoid", "statin"]
   },
+  {
+    id: "kho-cong-thuc-sinh-ly",
+    title: "Kho Công Thức Sinh Lý Định Lượng",
+    description: "Cơ sở dữ liệu công thức sinh lý (Nernst, GHK, Fick, Starling, HH, PAO2, eGFR) kèm máy tính tức thì",
+    icon: "📐",
+    link: "general/formula-vault.html",
+    part: "part1-section",
+    tags: ["chung", "sinh lý", "công thức", "nernst", "ghk", "fick", "starling", "mathjax", "định lượng"]
+  },
+
 
   // Phần 2: Truyền Nhiễm
   {

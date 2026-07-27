@@ -4,6 +4,7 @@
  */
 
 import './styles/main.css';
+import './docspace/styles/docspace.css';
 
 import { storageCore } from './core/storage';
 import { markdownCoreEngine } from './core/markdown-engine';
@@ -13,6 +14,7 @@ import { router, CliniRouter } from './core/router';
 import { searchEngine, CliniSearchEngine } from './core/search-engine';
 import { contentLoaderEngine, ContentLoaderEngine } from './core/content-loader';
 import * as components from './components';
+import { initDocSpaceRoutes } from './docspace/index';
 
 export interface CliniPortalCore {
   version: string;
@@ -270,6 +272,8 @@ window.CliniPortalCore = {
 };
 
 // Bootup SPA Routes & Indexes
+// IMPORTANT: DocSpace specific routes must be registered BEFORE wildcard routes (/:category, /:category/:slug)
+initDocSpaceRoutes();
 initializeRoutes();
 router.init();
 setupGlobalQuickSearch();

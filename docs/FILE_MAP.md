@@ -237,6 +237,8 @@
 | File | Vai trò |
 |------|---------|
 | `Dược lý/duoc-ly.html` | Hub tổng Dược lý & Dynamic Engine Showcase |
+| `Dược lý/tools/ma-tran-tuong-tac.html` | Web con Ma trận tương tác thuốc 2D đa nhóm tương tác (Heatmap) |
+| `archive/pharmacology_academic_graphics_backup/` | Kho lưu trữ các component đồ họa MoA Theater & ADR BodyMap Radar |
 | `Dược lý/data/drugs_database.json` | JSON Schema danh mục thuốc & liều dùng |
 | `Dược lý/data/drug_interactions.json` | Ma trận tương tác thuốc (Pairwise DDI Matrix) |
 | `Dược lý/data/symptom_pathways.json` | Đồ thị thuật toán điều trị theo triệu chứng |
@@ -467,7 +469,7 @@
 | File | Vai trò |
 |------|---------|
 | `Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html` | Hub tổng phân hệ Sinh lý & Sinh lý bệnh |
-| `Sinh lý - Sinh lý bệnh/formula-vault.html` | **[NÂNG CẤP]** Kho Công Thức Sinh Lý Định Lượng (Tải động từ `formula-vault.json` kèm Máy tính Tức thì) |
+| `src/content/calculators/general/formula-vault.html` | **[CHUYỂN MODULE]** Kho Công Thức Sinh Lý Định Lượng (Thuộc Phân hệ Công cụ - Phần Chung, cuộn TeX dài, tải động `formula-vault.json`) |
 | `Sinh lý - Sinh lý bệnh/reader.html` | **[MỚI]** Universal Physiology Markdown Reader (Trình đọc bài học Markdown chuẩn hóa, MathJax TeX & Lightbox) |
 | `Sinh lý - Sinh lý bệnh/data/physio-catalog.json` | **[MỚI]** Master Catalog quản lý danh mục toàn bộ bài học Sinh lý (Phần 1 - 7) & Sinh lý bệnh CCBS |
 | `Sinh lý - Sinh lý bệnh/data/formula-vault.json` | **[MỚI]** Cơ sở dữ liệu công thức sinh lý định lượng (Nernst, GHK, Fick, Starling, Henderson-Hasselbalch, GFR...) |

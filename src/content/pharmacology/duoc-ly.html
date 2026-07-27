@@ -297,21 +297,61 @@
             </div>
           </section>
 
-          <!-- ===== HUB TAB SWITCHER BAR ===== -->
-          <div class="pharma-hub-tabs-container" role="tablist" aria-label="Phân hệ Dược lý">
-            <button class="hub-tab-btn active" data-target="tab-pharma-clinical" role="tab" aria-selected="true">
-              <i class="fa-solid fa-stethoscope"></i> 1. Dược Lý Lâm Sàng (Chuyên Khoa & Triệu Chứng)
-            </button>
-            <button class="hub-tab-btn" data-target="tab-pharma-academic" role="tab" aria-selected="false">
-              <i class="fa-solid fa-microscope"></i> 2. Ma Trận Tương Tác & Đồ Họa Học Thuật
-            </button>
-            <button class="hub-tab-btn" data-target="tab-pharma-flashcards" role="tab" aria-selected="false">
-              <i class="fa-solid fa-brain"></i> 3. Ôn Tập Flashcards Dược Lý
-            </button>
-          </div>
-
-          <!-- TAB 1: DƯỢC LÝ LÂM SÀNG (CHUYÊN KHOA & TRIỆU CHỨNG) -->
+          <!-- TAB 1: DƯỢC LÝ LÂM SÀNG & CÔNG CỤ TRA CỨU -->
           <div id="tab-pharma-clinical" class="hub-tab-panel active">
+
+            <!-- NHÓM: CÔNG CỤ TRA CỨU & MA TRẬN TƯƠNG TÁC -->
+            <div class="main-section-group" id="group-tools">
+              <h2 class="group-main-title"><i class="fa-solid fa-calculator"></i> Công cụ tra cứu & Ma trận tương tác</h2>
+              <section id="tools-section" aria-labelledby="tools-heading">
+                <div class="physio-group-container">
+                  <div class="specialty-grid">
+                    <!-- Ma trận tương tác 2D -->
+                    <a href="tools/ma-tran-tuong-tac.html" class="specialty-card" style="border-left: 4px solid var(--color-primary);">
+                      <div class="specialty-card-top">
+                        <div class="specialty-icon">📊</div>
+                        <div class="specialty-info">
+                          <h3>Ma trận Tương tác Thuốc 2D</h3>
+                          <p>Tra cứu trực quan ma trận 10x10 tương tác giữa các nhóm thuốc lâm sàng (CCĐ, Thận trọng & Hiệp đồng).</p>
+                        </div>
+                      </div>
+                      <div class="specialty-card-action">
+                        <span style="color: var(--color-primary); font-weight: 700;">Mở Ma trận 2D</span>
+                        <i class="fa-solid fa-chevron-right" style="color: var(--color-primary);"></i>
+                      </div>
+                    </a>
+                    <!-- Tối ưu liều lượng cá thể hóa -->
+                    <a href="tools/dose-optimizer.html" class="specialty-card">
+                      <div class="specialty-card-top">
+                        <div class="specialty-icon">🧙‍♂️</div>
+                        <div class="specialty-info">
+                          <h3>Tối ưu Liều Thuốc (Dose Optimizer)</h3>
+                          <p>Trình hướng dẫn 3 bước hiệu chỉnh liều lượng thuốc cá thể hóa theo eGFR/CrCl và chức năng gan.</p>
+                        </div>
+                      </div>
+                      <div class="specialty-card-action">
+                        <span>Mở Trình tối ưu</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                      </div>
+                    </a>
+                    <!-- Mô phỏng Dược động học PK -->
+                    <a href="tools/pk-simulator.html" class="specialty-card">
+                      <div class="specialty-card-top">
+                        <div class="specialty-icon">📈</div>
+                        <div class="specialty-info">
+                          <h3>Mô phỏng Dược động học (PK Simulator)</h3>
+                          <p>Mô phỏng đồ thị nồng độ thuốc trong máu Cmax, Cmin, t1/2 và cửa sổ điều trị.</p>
+                        </div>
+                      </div>
+                      <div class="specialty-card-action">
+                        <span>Mở Mô phỏng</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </section>
+            </div>
 
             <!-- NHÓM: DƯỢC LÝ THEO CHUYÊN KHOA -->
             <div class="main-section-group" id="group-specialty">
@@ -562,153 +602,6 @@
             </div>
           </div>
 
-          <!-- TAB 2: MA TRẬN TƯƠNG TÁC & ĐỒ HỌA HỌC THUẬT -->
-          <div id="tab-pharma-academic" class="hub-tab-panel">
-            <div id="pharma-heatmap-mount"></div>
-            <div id="pharma-moa-mount"></div>
-            <div id="pharma-bodymap-mount"></div>
-          </div>
-
-          <!-- TAB 3: ÔN TẬP FLASHCARDS DƯỢC LÝ -->
-          <div id="tab-pharma-flashcards" class="hub-tab-panel">
-            <div id="pharma-flashcards-mount"></div>
-          </div>
-
-          <!-- ===== SECTION 4: PHÂN HỆ KIẾN TRÚC PHI HTML (JSON/MD/SVG/CSV) ===== -->
-          <div class="main-section-group" id="non-html-suite-section" style="margin-top: 2rem;">
-            <h2 class="group-main-title">
-              <i class="fa-solid fa-cubes"></i> Phân Hệ Dược Lý Phi HTML (Modern Data Architecture)
-            </h2>
-            <p style="color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.6;">
-              Hệ thống được bóc tách và hiện đại hóa hoàn toàn bằng các định dạng file phi HTML/CSS/JS (JSON Schema,
-              Markdown Monograph, Interactive SVG, CSV Interoperability), giúp tra cứu tương tác thuốc thời gian thực,
-              tự động tính liều thận (CrCl) và trực quan hóa cơ chế tác dụng phân tử.
-            </p>
-
-            <div class="pharm-engine-wrapper">
-              <!-- Navigation Format Tabs -->
-              <div class="pharm-format-nav" role="tablist">
-                <button class="format-tab-btn active" data-panel="panel-json-db">
-                  <i class="fa-solid fa-database"></i> JSON Drugs DB <span class="format-badge">.json</span>
-                </button>
-                <button class="format-tab-btn" data-panel="panel-ddi-checker">
-                  <i class="fa-solid fa-bolt"></i> DDI Checker <span class="format-badge">.json / .csv</span>
-                </button>
-                <button class="format-tab-btn" data-panel="panel-md-monograph">
-                  <i class="fa-solid fa-file-medical"></i> Markdown Monographs <span class="format-badge">.md</span>
-                </button>
-                <button class="format-tab-btn" data-panel="panel-svg-moa">
-                  <i class="fa-solid fa-diagram-project"></i> SVG MoA Visualizer <span class="format-badge">.svg</span>
-                </button>
-                <button class="format-tab-btn" data-panel="panel-renal-calc">
-                  <i class="fa-solid fa-calculator"></i> Rule Engine CrCl <span class="format-badge">.json</span>
-                </button>
-              </div>
-
-              <!-- PANEL 1: JSON DRUGS DB -->
-              <div class="pharm-panel active" id="panel-json-db">
-                <h3 style="margin-top:0; color: var(--color-primary);"><i class="fa-solid fa-database"></i> Danh Mục
-                  Thuốc Động từ JSON Schema</h3>
-                <div class="pharm-search-bar">
-                  <input type="text" id="json-drug-search" class="pharm-input"
-                    placeholder="🔍 Tìm theo tên thuốc, biệt dược, nhóm..." />
-                  <select id="json-category-filter" class="pharm-input" style="max-width: 200px;">
-                    <option value="all">Tất cả phân loại</option>
-                    <option value="Kháng sinh">Kháng sinh</option>
-                    <option value="Tim mạch">Tim mạch</option>
-                    <option value="Giảm đau">Giảm đau</option>
-                  </select>
-                </div>
-                <div class="pharm-drug-grid" id="json-drug-grid-container">
-                  <!-- Rendered dynamically from drugs_database.json -->
-                </div>
-              </div>
-
-              <!-- PANEL 2: REAL-TIME DDI CHECKER -->
-              <div class="pharm-panel" id="panel-ddi-checker">
-                <h3 style="margin-top:0; color: var(--color-primary);"><i class="fa-solid fa-bolt"></i> Tra Cứu Tương
-                  Tác Thuốc (Drug-Drug Interaction)</h3>
-                <p style="font-size: 0.9rem; color: var(--color-text-muted);">
-                  Chọn từ 2 thuốc trở lên để kiểm tra tương tác sinh học và cảnh báo lâm sàng từ dữ liệu <code
-                    style="color:#38bdf8;">drug_interactions.json</code> &amp; <code
-                    style="color:#38bdf8;">interaction_matrix.csv</code>.
-                </p>
-                <div class="ddi-select-group" id="ddi-chips-container">
-                  <!-- Generated chips dynamically -->
-                </div>
-                <div id="ddi-results-container">
-                  <div style="text-align: center; color: var(--color-text-muted); padding: 2rem;">
-                    <em>Nhấp chọn các thuốc phía trên để bắt đầu kiểm tra tương tác...</em>
-                  </div>
-                </div>
-              </div>
-
-              <!-- PANEL 3: MARKDOWN MONOGRAPH VIEWER -->
-              <div class="pharm-panel" id="panel-md-monograph">
-                <h3 style="margin-top:0; color: var(--color-primary);"><i class="fa-solid fa-file-medical"></i> Hồ Sơ
-                  Chuyên Sâu Thuốc (.md Monograph Source)</h3>
-                <div style="margin-bottom: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                  <button class="pharm-input" style="cursor:pointer; max-width:260px; background:var(--color-surface);"
-                    onclick="window.loadMonograph('amoxicillin_clavulanate')">📖 Augmentin (Amoxicillin/Clav)</button>
-                  <button class="pharm-input" style="cursor:pointer; max-width:260px; background:var(--color-surface);"
-                    onclick="window.loadMonograph('metoprolol_succinate')">📖 Metoprolol Succinate ER</button>
-                </div>
-                <div class="monograph-preview-box" id="monograph-content-box">
-                  <p style="color: var(--color-text-muted);">Chọn một hồ sơ phía trên để đọc nội dung từ file
-                    Markdown...</p>
-                </div>
-              </div>
-
-              <!-- PANEL 4: SVG MECHANISM VISUALIZER -->
-              <div class="pharm-panel" id="panel-svg-moa">
-                <h3 style="margin-top:0; color: var(--color-primary);"><i class="fa-solid fa-diagram-project"></i> Sơ Đồ
-                  Cơ Chế Phân Tử Vector (SVG Interactive)</h3>
-                <p style="font-size:0.9rem; color: var(--color-text-muted); margin-bottom: 1rem;">
-                  Nhấp vào các node trong hình minh họa vector bên dưới để xem mô tả tác động sinh học:
-                </p>
-                <div class="svg-interactive-wrapper" id="svg-moa-mount">
-                  <!-- SVG loaded here -->
-                </div>
-              </div>
-
-              <!-- PANEL 5: RENAL DOSE ENGINE -->
-              <div class="pharm-panel" id="panel-renal-calc">
-                <h3 style="margin-top:0; color: var(--color-primary);"><i class="fa-solid fa-calculator"></i> Quy Tắc
-                  Chỉnh Liều Thận (CrCl Rules Engine)</h3>
-                <div
-                  style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
-                  <div>
-                    <label style="font-size:0.85rem; color:var(--color-text-muted);">Tuổi (Năm)</label>
-                    <input type="number" id="crcl-age" class="pharm-input" value="65" />
-                  </div>
-                  <div>
-                    <label style="font-size:0.85rem; color:var(--color-text-muted);">Cân nặng (kg)</label>
-                    <input type="number" id="crcl-weight" class="pharm-input" value="60" />
-                  </div>
-                  <div>
-                    <label style="font-size:0.85rem; color:var(--color-text-muted);">Creatinine (mg/dL)</label>
-                    <input type="number" id="crcl-scr" step="0.1" class="pharm-input" value="1.8" />
-                  </div>
-                  <div>
-                    <label style="font-size:0.85rem; color:var(--color-text-muted);">Giới tính</label>
-                    <select id="crcl-gender" class="pharm-input">
-                      <option value="male">Nam</option>
-                      <option value="female">Nữ</option>
-                    </select>
-                  </div>
-                </div>
-                <div id="crcl-result-box"
-                  style="background: var(--color-bg); padding: 1.2rem; border-radius: 10px; border: 1px solid var(--color-border);">
-                  <div style="font-size: 1.1rem; font-weight: bold; color: var(--color-primary);">Kết quả độ thanh thải
-                    Creatinine (Cockcroft-Gault):</div>
-                  <div id="crcl-value" style="font-size: 1.8rem; font-weight: 800; color: #38bdf8; margin: 0.5rem 0;">--
-                    mL/min</div>
-                  <div id="crcl-recommendation" style="font-size: 0.95rem; color: var(--color-text);">Vui lòng kiểm tra
-                    thông tin thông số...</div>
-                </div>
-              </div>
-            </div>
-          </div>
 
         </main>
         <!-- SIDEBAR WIDGET -->
@@ -775,186 +668,6 @@
         });
       });
 
-      // --- Non-HTML Formats Architecture Engine Initialization ---
-      if (typeof PharmacologyEngine !== 'undefined') {
-        const engine = new PharmacologyEngine({ basePath: './' });
-        await engine.init();
-
-        // 1. Format Tab Switcher
-        const formatBtns = document.querySelectorAll('.format-tab-btn');
-        const formatPanels = document.querySelectorAll('.pharm-panel');
-        formatBtns.forEach(btn => {
-          btn.addEventListener('click', () => {
-            const panelId = btn.getAttribute('data-panel');
-            formatBtns.forEach(b => b.classList.remove('active'));
-            formatPanels.forEach(p => p.classList.remove('active'));
-            btn.classList.add('active');
-            const target = document.getElementById(panelId);
-            if (target) target.classList.add('active');
-          });
-        });
-
-        // 2. Render JSON Drugs DB
-        const gridContainer = document.getElementById('json-drug-grid-container');
-        const renderDrugs = () => {
-          if (!gridContainer) return;
-          const searchVal = document.getElementById('json-drug-search')?.value || '';
-          const catVal = document.getElementById('json-category-filter')?.value || 'all';
-          const filtered = engine.searchDrugs(searchVal, catVal);
-
-          gridContainer.innerHTML = filtered.map(drug => `
-            <div class="pharm-drug-card">
-              <div class="pharm-card-header">
-                <h4 class="pharm-drug-title">${drug.name}</h4>
-                <span class="pharm-class-tag">${drug.category}</span>
-              </div>
-              <div style="font-size:0.85rem; color:var(--color-text-muted);">
-                <strong>Biệt dược:</strong> ${drug.brandNames ? drug.brandNames.join(', ') : 'N/A'}<br/>
-                <strong>Đường dùng:</strong> ${drug.routes ? drug.routes.map(r => `<span style="background:rgba(2,132,199,0.2); color:#38bdf8; padding:2px 6px; border-radius:4px; font-size:0.75rem;">${r}</span>`).join(' ') : ''} | <strong>FDA:</strong> ${drug.pregnancyCategory}
-              </div>
-              <div style="font-size:0.88rem; color:var(--color-text); line-height:1.4;">
-                ${drug.mechanism}
-              </div>
-              <div style="font-size:0.82rem; background:rgba(255,255,255,0.04); padding:8px; border-radius:6px;">
-                <strong>Liều chuẩn:</strong> ${drug.dosage ? drug.dosage.standardAdult : 'N/A'}
-              </div>
-            </div>
-          `).join('') || '<div style="color:var(--color-text-muted);">Không tìm thấy thuốc phù hợp...</div>';
-        };
-
-        renderDrugs();
-        document.getElementById('json-drug-search')?.addEventListener('input', renderDrugs);
-        document.getElementById('json-category-filter')?.addEventListener('change', renderDrugs);
-
-        // 3. Render DDI Checker Chips & Logic
-        const chipsContainer = document.getElementById('ddi-chips-container');
-        const resultsContainer = document.getElementById('ddi-results-container');
-        let selectedDrugIds = ['metoprolol_succ', 'verapamil']; // Default selected
-
-        const renderDDI = () => {
-          if (!chipsContainer || !resultsContainer) return;
-          chipsContainer.innerHTML = engine.drugs.map(drug => {
-            const isSelected = selectedDrugIds.includes(drug.id);
-            return `
-              <div class="ddi-chip ${isSelected ? 'selected' : ''}" data-id="${drug.id}">
-                <span>${isSelected ? '✓' : '+'}</span> ${drug.name}
-              </div>
-            `;
-          }).join('');
-
-          // Attach chip clicks
-          chipsContainer.querySelectorAll('.ddi-chip').forEach(chip => {
-            chip.addEventListener('click', () => {
-              const id = chip.getAttribute('data-id');
-              if (selectedDrugIds.includes(id)) {
-                selectedDrugIds = selectedDrugIds.filter(x => x !== id);
-              } else {
-                selectedDrugIds.push(id);
-              }
-              renderDDI();
-            });
-          });
-
-          // Check interactions
-          if (selectedDrugIds.length < 2) {
-            resultsContainer.innerHTML = `
-              <div style="text-align: center; color: var(--color-text-muted); padding: 2rem;">
-                <em>Vui lòng chọn ít nhất 2 thuốc từ danh sách trên để kiểm tra tương tác...</em>
-              </div>
-            `;
-            return;
-          }
-
-          const interactions = engine.checkInteractions(selectedDrugIds);
-          resultsContainer.innerHTML = interactions.map(item => `
-            <div class="ddi-result-card severity-${item.severity}">
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
-                <h4 style="margin:0; color:var(--color-text); font-size:1rem;">
-                  🔀 ${item.drugA} ⟷ ${item.drugB}
-                </h4>
-                <span class="severity-badge ${item.severity}">${item.severityLabel || item.severity}</span>
-              </div>
-              <p style="margin:0.2rem 0; font-size:0.9rem; font-weight:600; color:var(--color-text);">${item.summary}</p>
-              <div style="font-size:0.85rem; color:var(--color-text-muted); margin-top:0.4rem;">
-                <strong>Cơ chế:</strong> ${item.mechanism}<br/>
-                <strong>Xử trí lâm sàng:</strong> ${item.clinicalManagement}
-              </div>
-            </div>
-          `).join('');
-        };
-
-        renderDDI();
-
-        // 4. Markdown Monograph Loader
-        window.loadMonograph = async (name) => {
-          const box = document.getElementById('monograph-content-box');
-          if (!box) return;
-          box.innerHTML = '<p style="color:var(--color-text-muted);">Đang tải file Markdown từ Monographs...</p>';
-          try {
-            const res = await fetch(`./monographs/${name}.md`);
-            if (!res.ok) throw new Error('File not found');
-            const mdText = await res.text();
-            box.innerHTML = engine.parseMarkdown(mdText);
-          } catch (err) {
-            box.innerHTML = `<p style="color:var(--color-danger);">Không thể mở file Markdown: ${err.message}. (Sử dụng dữ liệu tĩnh offline)</p>`;
-          }
-        };
-
-        // Load default monograph
-        window.loadMonograph('amoxicillin_clavulanate');
-
-        // 5. SVG Mechanism Visualizer Fetch & Embed
-        const svgMount = document.getElementById('svg-moa-mount');
-        if (svgMount) {
-          try {
-            const res = await fetch('./assets/moa_beta_lactam.svg');
-            if (res.ok) {
-              const svgText = await res.text();
-              svgMount.innerHTML = svgText;
-              engine.attachSvgInteractions(svgMount, (nodeData) => {
-                alert(`🧬 ${nodeData.title}\n\n${nodeData.desc}`);
-              });
-            }
-          } catch (e) {
-            console.log('SVG fetch fallback initialized.');
-          }
-        }
-
-        // 6. Cockcroft-Gault CrCl Calculator
-        const updateCrCl = () => {
-          const age = parseFloat(document.getElementById('crcl-age')?.value);
-          const weight = parseFloat(document.getElementById('crcl-weight')?.value);
-          const scr = parseFloat(document.getElementById('crcl-scr')?.value);
-          const isFemale = document.getElementById('crcl-gender')?.value === 'female';
-
-          const crcl = engine.calculateCrCl(age, weight, scr, isFemale);
-          const valEl = document.getElementById('crcl-value');
-          const recEl = document.getElementById('crcl-recommendation');
-
-          if (crcl !== null) {
-            valEl.textContent = `${crcl} mL/min`;
-            if (crcl >= 90) {
-              recEl.innerHTML = '<span style="color:#22c55e;">✅ Chức năng thận bình thường (CrCl ≥ 90 mL/min). Liều dùng tiêu chuẩn.</span>';
-            } else if (crcl >= 50) {
-              recEl.innerHTML = '<span style="color:#38bdf8;">ℹ️ Suy thận nhẹ (CrCl 50-89 mL/min). Theo dõi sát liều các thuốc độc cho thận.</span>';
-            } else if (crcl >= 30) {
-              recEl.innerHTML = '<span style="color:#eab308;">⚠️ Suy thận trung bình (CrCl 30-49 mL/min). Cần giảm 25-50% liều hoặc kéo dài khoảng cách dùng cho nhiều nhóm thuốc (VD: Quinolone, Aminoglycoside).</span>';
-            } else {
-              recEl.innerHTML = '<span style="color:#ef4444;">⛔ Suy thận nặng (CrCl < 30 mL/min). Bắt buộc chỉnh liều chuyên sâu theo bảng dược lý hoặc ngưng thuốc tích lũy qua thận.</span>';
-            }
-          } else {
-            valEl.textContent = '-- mL/min';
-            recEl.textContent = 'Vui lòng nhập đủ các thông số.';
-          }
-        };
-
-        ['crcl-age', 'crcl-weight', 'crcl-scr', 'crcl-gender'].forEach(id => {
-          document.getElementById(id)?.addEventListener('input', updateCrCl);
-          document.getElementById(id)?.addEventListener('change', updateCrCl);
-        });
-
-        updateCrCl();
-      }
     });
   </script>
 

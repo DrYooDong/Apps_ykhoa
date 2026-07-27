@@ -1,0 +1,323 @@
+/* ============================================================
+   KHO CÔNG THỨC SINH LÝ ĐỊNH LƯỢNG - FORMULA VAULT CSS
+   ============================================================ */
+
+/* 1. Filter & Search Control Bar */
+.vault-control-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg, 12px);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.vault-search-box {
+  position: relative;
+  flex: 1 1 280px;
+}
+
+.vault-search-box i {
+  position: absolute;
+  left: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.vault-search-input {
+  width: 100%;
+  padding: 0.55rem 0.85rem 0.55rem 2.4rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.vault-search-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb, 2, 132, 199), 0.15);
+}
+
+.vault-filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.filter-chip {
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.filter-chip:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.filter-chip.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(var(--color-primary-rgb, 2, 132, 199), 0.3);
+}
+
+/* 2. Grid Container for Formula Cards */
+.formula-vault-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (max-width: 480px) {
+  .formula-vault-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 3. Formula Card Structure */
+.formula-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg, 12px);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.formula-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md, 0 8px 20px rgba(0, 0, 0, 0.08));
+}
+
+.formula-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.formula-category-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  background: rgba(var(--color-primary-rgb, 2, 132, 199), 0.12);
+  color: var(--color-primary);
+  letter-spacing: 0.02em;
+}
+
+.formula-id-tag {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  font-family: monospace;
+}
+
+.formula-title {
+  color: var(--color-primary);
+  font-family: var(--font-display, inherit);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0.25rem 0;
+  line-height: 1.35;
+}
+
+.formula-subtitle {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.85rem;
+  line-height: 1.4;
+}
+
+/* 4. Formula Expression Container (MathJax TeX Display & Overflow Handling) */
+.formula-expr {
+  background: rgba(var(--color-primary-rgb, 2, 132, 199), 0.05);
+  border: 1px solid rgba(var(--color-primary-rgb, 2, 132, 199), 0.15);
+  border-radius: 8px;
+  padding: 0.85rem 0.75rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+  transition: background 0.2s ease;
+}
+
+[data-theme="dark"] .formula-expr {
+  background: rgba(2, 132, 199, 0.12);
+  border-color: rgba(2, 132, 199, 0.25);
+}
+
+/* Styling custom scrollbar for formula expression container */
+.formula-expr::-webkit-scrollbar {
+  height: 5px;
+}
+
+.formula-expr::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 4px;
+}
+
+.formula-expr::-webkit-scrollbar-thumb {
+  background: rgba(var(--color-primary-rgb, 2, 132, 199), 0.3);
+  border-radius: 4px;
+}
+
+.formula-expr::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Ensure MathJax TeX doesn't break layout */
+.formula-expr .mjx-chtml,
+.formula-expr .MathJax,
+.formula-expr .MathJax_Display {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: inline-block !important;
+  max-width: 100%;
+  font-size: clamp(0.85rem, 2.5vw, 1.05rem) !important;
+}
+
+/* 5. Calculator Input Box */
+.calculator-box {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.calc-box-title {
+  font-weight: 600;
+  font-size: 0.88rem;
+  margin-bottom: 0.65rem;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.inputs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem;
+}
+
+.input-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.input-label {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.calc-input-elem {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.88rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.calc-input-elem:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb, 2, 132, 199), 0.2);
+}
+
+.result-bar {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.result-label-text {
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--color-primary);
+}
+
+.result-value-text {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-success);
+}
+
+/* 6. Formula Explanation & Clinical Pearl */
+.formula-explanation {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  margin-bottom: 0.75rem;
+}
+
+.clinical-pearl-box {
+  background: rgba(16, 185, 129, 0.08);
+  border-left: 3px solid var(--color-success, #10b981);
+  padding: 0.65rem 0.85rem;
+  border-radius: 0 6px 6px 0;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  margin-top: 0.5rem;
+}
+
+.clinical-pearl-title {
+  font-weight: 700;
+  color: var(--color-success, #10b981);
+  display: inline-block;
+  margin-right: 0.25rem;
+}
+
+/* 7. Empty State */
+.vault-empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg, 12px);
+  color: var(--color-text-muted);
+}
+
+.vault-empty-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+}
