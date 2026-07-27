@@ -1,6 +1,6 @@
 /* ============================================================
    EBM QUIZ ENGINE & SPACED REPETITION (SM-2 ALGORITHM)
-   Location: pages/Y học chứng cứ/Thống kê y học/quiz.js
+   Location: src/content/ebm/Thống kê y học/quiz.js
 ============================================================ */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -402,36 +402,90 @@ async function initQuizEngine() {
   /* ── 3D FLASHCARD RENDERER ── */
   function renderFlashcards() {
     if (!panelFlashcards) return;
-    panelFlashcards.innerHTML = "";
 
-    const cardWrapper = document.createElement("div");
-    cardWrapper.className = "flashcard-grid";
+    let fcIndex = 0;
+    let fcQuestions = [...currentQuestions];
 
-    currentQuestions.forEach((q, idx) => {
-      const card = document.createElement("div");
-      card.className = "fc-card";
-      card.innerHTML = `
-        <div class="fc-inner">
-          <div class="fc-front">
-            <div class="fc-tag">${q.lessonTitle}</div>
-            <div class="fc-question">${q.question}</div>
-            <div class="fc-flip-hint"><i class="fa-solid fa-rotate"></i> Chạm để lật xem đáp án</div>
+    function updateCardUI() {
+      if (!fcQuestions || fcQuestions.length === 0) return;
+      const q = fcQuestions[fcIndex];
+
+      panelFlashcards.innerHTML = `
+        <div class="flashcard-section-container" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 1.5rem; max-width: 650px; margin: 0 auto;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+            <h3 style="margin: 0; font-size: 1.1rem; font-weight: 700; color: var(--color-text);">🧠 Flashcards Thống Kê Y Học</h3>
+            <button id="stats-fc-shuffle" class="fc-icon-btn" title="Xáo trộn ngẫu nhiên"><i class="fa-solid fa-shuffle"></i></button>
           </div>
-          <div class="fc-back">
-            <div class="fc-answer-title">Đáp án đúng: ${String.fromCharCode(65 + q.answer)}. ${q.options[q.answer]}</div>
-            <div class="fc-explanation">${q.explanation}</div>
+
+          <div class="fc-progress-track" style="margin-bottom: 1rem;">
+            <div id="stats-fc-progress-fill" class="fc-progress-fill" style="width: ${Math.round(((fcIndex + 1) / fcQuestions.length) * 100)}%;"></div>
+          </div>
+
+          <div class="flashcard-container" style="perspective: 1000px; margin: 1rem 0;">
+            <div class="flashcard" id="stats-fc-card" tabindex="0" role="button" aria-label="Lật thẻ flashcard">
+              <div class="flashcard-inner" id="stats-fc-inner">
+                <div class="flashcard-front">
+                  <span class="fc-badge">${q.lessonTitle || "📊 Thống kê Y học"}</span>
+                  <h3>${q.question}</h3>
+                  <p class="fc-hint"><i class="fa-solid fa-rotate"></i> Bấm hoặc ấn Spacebar để lật xem đáp án</p>
+                </div>
+                <div class="flashcard-back">
+                  <span class="fc-badge back-badge">💡 Đáp án chính xác</span>
+                  <h3>${String.fromCharCode(65 + q.answer)}. ${q.options[q.answer]}</h3>
+                  <p class="fc-explanation">${q.explanation}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flashcard-controls">
+            <button id="stats-fc-prev" class="fc-btn" ${fcIndex === 0 ? 'disabled' : ''} title="Thẻ trước (Phím ←)"><i class="fa-solid fa-arrow-left"></i> Trước</button>
+            <div class="fc-counter-wrapper">
+              <span>${fcIndex + 1} / ${fcQuestions.length}</span>
+            </div>
+            <button id="stats-fc-next" class="fc-btn" ${fcIndex === fcQuestions.length - 1 ? 'disabled' : ''} title="Thẻ sau (Phím →)">Sau <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+
+          <div class="fc-keyboard-hints" style="margin-top: 1rem; justify-content: center;">
+            <span><kbd>←</kbd> <kbd>→</kbd> Chuyển thẻ</span>
+            <span><kbd>Space</kbd> Lật thẻ</span>
           </div>
         </div>
       `;
 
-      card.addEventListener("click", () => {
-        card.classList.toggle("flipped");
+      const card = document.getElementById("stats-fc-card");
+      if (card) {
+        card.addEventListener("click", () => {
+          const inner = document.getElementById("stats-fc-inner");
+          if (inner) inner.classList.toggle("flipped");
+        });
+      }
+
+      document.getElementById("stats-fc-prev")?.addEventListener("click", () => {
+        if (fcIndex > 0) {
+          fcIndex--;
+          updateCardUI();
+        }
       });
 
-      cardWrapper.appendChild(card);
-    });
+      document.getElementById("stats-fc-next")?.addEventListener("click", () => {
+        if (fcIndex < fcQuestions.length - 1) {
+          fcIndex++;
+          updateCardUI();
+        }
+      });
 
-    panelFlashcards.appendChild(cardWrapper);
+      document.getElementById("stats-fc-shuffle")?.addEventListener("click", () => {
+        for (let i = fcQuestions.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [fcQuestions[i], fcQuestions[j]] = [fcQuestions[j], fcQuestions[i]];
+        }
+        fcIndex = 0;
+        updateCardUI();
+      });
+    }
+
+    updateCardUI();
   }
 
   if (modeBtnFlashcard && modeBtnQuiz) {
@@ -453,3 +507,4 @@ async function initQuizEngine() {
 
   renderQuestion();
 }
+

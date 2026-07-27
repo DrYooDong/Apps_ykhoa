@@ -6,19 +6,49 @@ description: >
   CSS/JS, cấu hình đường dẫn, hoặc làm bất kỳ tác vụ nào trong project CliniPortal.
 ---
 
-# CliniPortal Architecture Skill
+# CliniPortal Architecture & Knowledge Graph Skill
 
-## 📌 Project Identity
+## 📌 Project Identity & Core Paradigm
 
-- **Tên**: CliniPortal
+- **Tên**: CliniPortal — Hệ sinh thái Web Y khoa Tĩnh
 - **Loại**: Static web app — pure HTML/CSS/JS, NO framework, NO build tools
 - **Giao thức**: Chạy qua `file:///` (offline) hoặc web server cục bộ
-- **Thư mục gốc**: `i:\Drive của tôi\apps\Apps_ykhoa\`
+- **Thư mục gốc**: `d:\Apps_ykhoa\` (hoặc `i:\Drive của tôi\apps\Apps_ykhoa\`)
 - **Tài liệu tổng**: `docs/PROJECT_OVERVIEW.md`, `docs/FILE_MAP.md`
+- **Đồ thị Mã nguồn**: `graphify-out/` (Knowledge Graph Index với 3,444 nodes & 6,068 edges)
 
 ---
 
-## 🏗️ Cấu trúc Thư mục Gốc
+## 🔍 Tích hợp Đồ thị Mã nguồn (`graphify-out`) & Tra cứu Nhanh (Fast Task Understanding)
+
+Để tăng tốc độ hiểu công việc và không phải quét thủ công hàng trăm file, AI phải áp dụng quy trình tra cứu Đồ thị Kiến trúc mã nguồn qua `graphify-out`:
+
+### 1. Công cụ Tra cứu Đồ thị CLI (`scratch/query_graph.js`)
+Khi bắt đầu một tác vụ liên quan đến module hoặc file JS/HTML bất kỳ, hãy chạy lệnh:
+```bash
+node scratch/query_graph.js <tên_file_hoặc_hàm>
+```
+**Kết quả thu được**:
+- **Inbound Dependencies (Fan-in)**: Số lượng file/hàm đang gọi hoặc phụ thuộc vào file này.
+- **Outbound Dependencies (Fan-out)**: Các thư viện/hàm mà file này sử dụng.
+- **Cấp độ Rủi ro (Risk Assessment)**: `LOW`, `MEDIUM`, `HIGH RISK`, hoặc `CRITICAL HUB`.
+
+### 2. Danh mục Hub Modules Cốt lõi (High-Fan-in Centrality)
+Dựa trên kết quả phân tích Graphify, các file sau đây có chỉ số liên kết cực cao, **mọi thay đổi trên chúng đều phải được kiểm thử tác động dây chuyền (side-effects)**:
+
+| Hub Module | Vị trí | Tác dụng | Chỉ số Fan-in | Cấp độ Rủi ro |
+|------------|--------|----------|---------------|---------------|
+| `main.js` | `js/main.js` | Controller toàn app, quản lý theme, sidebar, modal, routing | >500 | **CRITICAL HUB** |
+| `guidelines.js` | `pages/Y học chứng cứ/Guidelines/Guidelines.js` | Engine xử lý dữ liệu khuyến cáo lâm sàng & Supabase | 570 | **CRITICAL HUB** |
+| `benh-ly.js` | `pages/Tiếp cận/4. Bệnh lý/benh-ly.js` | Engine hiển thị Ma trận & Phác đồ Bệnh lý | >200 | **CRITICAL HUB** |
+| `clinical-engine.js` | `js/clinical-engine.js` | Engine tính toán lâm sàng chung cho phân hệ Công cụ | >150 | **HIGH RISK** |
+| `physio-components.js` | `pages/Sinh lý.../js/components/physio-components.js` | Web Component render bài giảng sinh lý bệnh | >120 | **HIGH RISK** |
+| `tracuu-icd10.js` | `js/tracuu-icd10.js` | Tra cứu mã ICD-10 toàn hệ thống | >100 | **HIGH RISK** |
+| `abg-studio.js` | `js/abg-studio/abg-studio.js` | Studio phân tích khí máu động mạch | >80 | **HIGH RISK** |
+
+---
+
+## 🏗️ Cấu trúc Thư mục Gốc & Phân vùng
 
 ```
 Apps_ykhoa/
@@ -35,6 +65,8 @@ Apps_ykhoa/
 │   └── calculators/
 ├── templates/               # 4 boilerplate HTML mẫu
 ├── pages/                   # 7 phân hệ nội dung
+├── graphify-out/            # Knowledge Graph Analysis (graph.json, GRAPH_REPORT.md)
+├── scratch/                 # Tooling tự động (query_graph.js, check_tags.js)
 └── docs/                    # Tài liệu hệ thống
 ```
 
@@ -55,7 +87,7 @@ var(--color-text-muted)   /* Chữ phụ */
 var(--color-border)       /* Viền */
 ```
 
-### Typography
+### Typography & Spacing
 ```css
 var(--text-xs)   /* 0.75rem */
 var(--text-sm)   /* 0.875rem */
@@ -64,28 +96,16 @@ var(--text-lg)   /* 1.125rem */
 var(--text-xl)   /* 1.25rem */
 var(--text-2xl)  /* 1.5rem */
 var(--text-3xl)  /* 1.875rem */
-var(--text-4xl)  /* 2.25rem */
-```
-
-### Bo góc & Đổ bóng
-```css
-var(--radius-sm) var(--radius-md) var(--radius-lg) var(--radius-full)
-var(--shadow-sm) var(--shadow-md) var(--shadow-lg) var(--shadow-xl)
 ```
 
 ### Dark Mode
 Toggle `data-theme="dark"` trên `<html>`. JavaScript tự lưu vào `localStorage`.
-```javascript
-// Bật dark mode:
-document.documentElement.setAttribute('data-theme', 'dark');
-localStorage.setItem('theme', 'dark');
-```
 
 ---
 
 ## 📐 CRITICAL: Quy tắc Đường dẫn Tương đối
 
-**Đây là nguồn lỗi phổ biến nhất.** Đếm số cấp thư mục từ file đến root:
+Đếm số cấp thư mục từ file đến root để tính prefix chính xác:
 
 | Vị trí file | Prefix |
 |-------------|--------|
@@ -95,7 +115,7 @@ localStorage.setItem('theme', 'dark');
 | `pages/Module/Sub/page.html` (cấp 3) | `../../../` |
 | `pages/Module/Sub/Sub2/page.html` (cấp 4) | `../../../../` |
 
-### Ví dụ cho file ở cấp 3 (pages/Công cụ/Thận/DG_ABG.html):
+### Ví dụ cho file ở cấp 3 (`pages/Công cụ/Thận/DG_ABG.html`):
 ```html
 <link rel="stylesheet" href="../../../css/reset.css">
 <link rel="stylesheet" href="../../../css/main.css">
@@ -104,13 +124,11 @@ localStorage.setItem('theme', 'dark');
 <script src="../../../components/header.js" defer></script>
 ```
 
-> ⚠️ **Ngoại lệ Sinh lý học**: Bài viết ở cấp 4 (`pages/Sinh lý .../Sinhly/PhanX/`) còn có tài nguyên riêng ở `../../css/physio-shared.css` (relative đến thư mục `Sinh lý/`).
-
 ---
 
 ## 🧱 Layout HTML Chuẩn (Boilerplate)
 
-Mọi trang nội dung đều dùng cấu trúc này:
+Mọi trang nội dung đều tuân thủ cấu trúc khung chuẩn:
 
 ```html
 <!DOCTYPE html>
@@ -121,9 +139,8 @@ Mọi trang nội dung đều dùng cấu trúc này:
   <meta name="description" content="[Mô tả trang]">
   <title>[Tên trang] – CliniPortal</title>
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts & FontAwesome -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- FontAwesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
   <!-- CSS Core (thay [PATH] theo cấp thư mục) -->
@@ -132,7 +149,6 @@ Mọi trang nội dung đều dùng cấu trúc này:
   <link rel="stylesheet" href="[PATH]/css/components/header.css">
   <link rel="stylesheet" href="[PATH]/css/components/sidebar.css">
   <link rel="stylesheet" href="[PATH]/css/components/footer.css">
-  <!-- CSS riêng của module (nếu có) -->
 </head>
 <body>
   <div id="header-placeholder" data-header-path="[PATH]/components/header.html"></div>
@@ -140,7 +156,7 @@ Mọi trang nội dung đều dùng cấu trúc này:
 
   <div class="app-container">
     <aside class="app-sidebar" id="appSidebar">
-      <!-- COPY sidebar nav từ trang cùng phân hệ -->
+      <!-- Sidebar nav của phân hệ -->
     </aside>
 
     <main class="main-wrapper">
@@ -154,7 +170,6 @@ Mọi trang nội dung đều dùng cấu trúc này:
   <script src="[PATH]/js/main.js" defer></script>
   <script src="[PATH]/components/header.js" defer></script>
   <script src="[PATH]/components/footer.js" defer></script>
-  <!-- JS riêng của module (nếu có) -->
 </body>
 </html>
 ```
@@ -170,15 +185,15 @@ Mọi trang nội dung đều dùng cấu trúc này:
 | Kỹ năng | `pages/Kỹ năng/ky-nang.html` | `clinical-skills-module` |
 | Sinh lý | `pages/Sinh lý .../Sinhly-sinhlybenh.html` | `physiology-module` |
 | Tiếp cận | `pages/Tiếp cận/tiep-can.html` | `flowchart-module` |
-| EBM | `pages/Y học chứng cứ/yhcc.html` | — |
-| YHCT | `pages/Y học cổ truyền/y-hoc-co-truyen.html` | — |
+| EBM | `pages/Y học chứng cứ/yhcc.html` | `guideline-summary-module` |
+| Bệnh lý | `pages/Tiếp cận/4. Bệnh lý/` | `pathology-approach-module` |
 
 ---
 
-## ⚠️ Các lỗi thường gặp — Cần tránh
+## ⚠️ Quy tắc Giảm thiểu Rủi ro (Risk Mitigation Rules)
 
-1. **Sai đường dẫn tương đối** — Luôn đếm cấp thư mục trước khi viết path
-2. **Hardcode màu** — Dùng `var(--color-primary)` thay vì `#0284c7`
-3. **Không load `main.js`** — File này bắt buộc để theme/sidebar hoạt động
-4. **Quên `data-header-path`** — Thiếu attribute này thì header không load được
-5. **Thêm thư viện ngoài** — CliniPortal dùng Vanilla JS thuần, không jQuery/React
+1. **Trước khi sửa bất kỳ file JS/CSS nào**: Chạy `node scratch/query_graph.js <filename>` để xem đồ thị phụ thuộc. Nếu Rủi ro là `HIGH RISK` hoặc `CRITICAL HUB`, phải tạo plan và khoanh vùng tác động.
+2. **Sai đường dẫn tương đối**: Đếm lại số cấp thư mục và dùng đúng prefix `../`.
+3. **Hardcode màu**: Luôn dùng `var(--color-primary)` hoặc tokens sẵn có.
+4. **Bảo tồn HTML Integrity**: Chạy `node scratch/check_tags.js <file.html>` trước và sau khi chỉnh sửa HTML.
+

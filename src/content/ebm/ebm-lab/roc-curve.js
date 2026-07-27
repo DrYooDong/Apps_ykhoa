@@ -1,6 +1,6 @@
-/* ============================================================
+﻿/* ============================================================
    ROC CURVE & AUC CALCULATOR (SVG ENGINE)
-   Location: pages/Y học chứng cứ/EBM Lab/roc-curve.js
+   Location: src/content/ebm/EBM Lab/roc-curve.js
 ============================================================ */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -277,3 +277,4 @@ function initRocCurveBuilder() {
   renderTable();
   renderSvgRocPlot();
 }
+

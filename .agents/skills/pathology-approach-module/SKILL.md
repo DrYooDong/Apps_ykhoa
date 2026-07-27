@@ -186,8 +186,11 @@ Mỗi bài bệnh lý đầy đủ định dạng Poster được lưu trữ the
 ## 📝 Quy Trình AI Tạo & Cập Nhật Bài Bệnh Lý
 
 1. **Đọc kỹ thông tin khuyến cáo Y học chứng cứ mới nhất** (NICE, ACC/AHA, ESC, GINA, GOLD...).
-2. **Tạo khối dữ liệu JSON** theo đúng Schema `pathology-approach-module` ở trên.
-3. **Thêm hoặc cập nhật vào danh sách bệnh lý** qua `benh-ly.js` hoặc nút **Nhập JSON** trên giao diện Pathology Dashboard.
-4. **Kiểm tra hiển thị**:
+2. **Kiểm tra tác động Graphify trên Hub `benh-ly.js`**: `benh-ly.js` là **CRITICAL HUB** (>200 liên kết). Trước khi sửa đổi engine bệnh lý, hãy chạy `node scratch/query_graph.js benh-ly.js` để đánh giá bán kính ảnh hưởng.
+3. **Bảo tồn tính toàn vẹn HTML**: Chạy `node scratch/check_tags.js path/to/file.html` khi tạo/sửa trang HTML thuộc phân hệ Bệnh lý.
+4. **Tạo khối dữ liệu JSON** theo đúng Schema `pathology-approach-module` ở trên.
+5. **Thêm hoặc cập nhật vào danh sách bệnh lý** qua `benh-ly.js` hoặc nút **Nhập JSON** trên giao diện Pathology Dashboard.
+6. **Kiểm tra hiển thị**:
    - Bấm nút **"👁️ Xem Poster"** để kiểm tra bản Poster Infographic Board.
    - Bấm nút **"Studio"** để điều chỉnh vị trí tọa độ $x, y$ của các Node Flowchart nếu cần.
+

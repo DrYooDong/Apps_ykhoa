@@ -1,6 +1,6 @@
-/* ============================================================
+﻿/* ============================================================
    KAPLAN-MEIER SURVIVAL CURVE BUILDER (SVG ENGINE)
-   Location: pages/Y học chứng cứ/EBM Lab/kaplan-meier.js
+   Location: src/content/ebm/EBM Lab/kaplan-meier.js
 ============================================================ */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -313,3 +313,4 @@ function initKaplanMeierBuilder() {
   renderTable();
   renderSvgKmPlot();
 }
+

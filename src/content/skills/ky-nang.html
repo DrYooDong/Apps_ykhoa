@@ -27,7 +27,6 @@
 
   <link rel="stylesheet" href="../../../css/components/module-dashboard.css">
   <link rel="stylesheet" href="../../../css/components/skill-tracker.css">
-  <link rel="stylesheet" href="../../../css/components/skill-flashcards.css">
   <link rel="stylesheet" href="../../../css/components/clinical-reasoning.css">
   <link rel="stylesheet" href="../../../css/components/virtual-patient.css">
   <link rel="stylesheet" href="../../../css/components/auscultation-trainer.css">
@@ -150,26 +149,6 @@
           onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
           Thử ngay <i class="fa-solid fa-arrow-right"></i>
         </a>
-      </div>
-
-
-      <!-- SKILL PROGRESS OVERVIEW WIDGET -->
-      <div id="skill-progress-overview-widget" class="dashboard-card"
-        style="margin-bottom: 1.5rem; padding: 1.5rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg);">
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-          <div>
-            <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--color-text); margin: 0;">
-              📊 Tiến Độ Tự Đánh Giá Kỹ Năng (Skill Tracker)
-            </h3>
-            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0.25rem 0 0;">Lưu giữ trạng thái học
-              tập theo thuật toán ngắt quãng SM-2</p>
-          </div>
-          <div style="display: flex; gap: 0.75rem; align-items: center;">
-            <button class="btn-proc btn-proc-primary" id="btnOpenFlashcards">
-              <i class="fa-solid fa-clone"></i> Ôn Flashcard OSCE (SM-2)
-            </button>
-          </div>
-        </div>
       </div>
 
       <!-- ===== TOOLBAR / CONTROL BAR ===== -->
@@ -1095,8 +1074,8 @@
       });
     });
   </script>
+
   <script src="../../../js/skill-tracker.js" defer></script>
-  <script src="../../../js/skill-flashcards.js" defer></script>
   <script src="../../../js/knowledge-map-data.js" defer></script>
   <script src="../../../js/knowledge-bridge.js" defer></script>
 </body>

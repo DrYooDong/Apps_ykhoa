@@ -5,7 +5,7 @@ Tài liệu này phân tích chi tiết cấu trúc giao diện (HTML/CSS) và l
 ---
 
 ## 📁 1. Thông tin chung
-* **Đường dẫn tệp:** [Chinhlieu_khangsinh.html](../../../../pages/Công cụ/Truyền Nhiễm/Chinhlieu_khangsinh.html)
+* **Đường dẫn tệp:** [Chinhlieu_khangsinh.html](../../../../src/content/calculators/infectious/Chinhlieu_khangsinh.html)
 * **Chức năng chính:** 
   1. Tính toán mức lọc cầu thận (eGFR/ClCr) theo công thức Cockcroft-Gault.
   2. Gợi ý liều nạp (LD), liều duy trì (MD), khoảng cách liều, cách pha truyền (số giọt/phút hoặc SE ml/h), và lịch trình dùng thuốc cụ thể cho 25 loại kháng sinh/kháng nấm.

@@ -70,14 +70,14 @@
           "Dị ứng Penicillin": "OR 0.95 (95% CI 0.81-1.12, p=0.55)"
         },
         relatedCalculators: [
-          { name: "Khí máu động mạch (ABG)", path: "pages/Công cụ/Thận/DG_ABG.html" },
-          { name: "Tính eGFR (CKD-EPI)", path: "pages/Công cụ/Thận/CKD_EPI.html" }
+          { name: "Khí máu động mạch (ABG)", path: "src/content/calculators/renal/DG_ABG.html" },
+          { name: "Tính eGFR (CKD-EPI)", path: "src/content/calculators/renal/CKD_EPI.html" }
         ],
         relatedFlowcharts: [
-          { name: "Lưu đồ Tiếp cận Sốc & Nhiễm khuẩn", path: "pages/Tiếp cận/tiep-can.html" }
+          { name: "Lưu đồ Tiếp cận Sốc & Nhiễm khuẩn", path: "src/content/approaches/tiep-can.html" }
         ],
         relatedDrugs: [
-          { name: "Dược lý Kháng sinh ICU & Liều PK/PD", path: "pages/Dược lý/duoc-ly.html" }
+          { name: "Dược lý Kháng sinh ICU & Liều PK/PD", path: "src/content/pharmacology/duoc-ly.html" }
         ],
         asianData: true,
         bookmarked: true,
@@ -202,13 +202,13 @@
           "Tuổi ≥ 65": "HR 0.87 (95% CI 0.71-1.07, p=0.18)"
         },
         relatedCalculators: [
-          { name: "Tính eGFR (CKD-EPI)", path: "pages/Công cụ/Thận/CKD_EPI.html" }
+          { name: "Tính eGFR (CKD-EPI)", path: "src/content/calculators/renal/CKD_EPI.html" }
         ],
         relatedFlowcharts: [
-          { name: "Lưu đồ Tiếp cận Đái tháo đường", path: "pages/Tiếp cận/tiep-can.html" }
+          { name: "Lưu đồ Tiếp cận Đái tháo đường", path: "src/content/approaches/tiep-can.html" }
         ],
         relatedDrugs: [
-          { name: "Dược lý Nhóm SGLT2i", path: "pages/Dược lý/duoc-ly.html" }
+          { name: "Dược lý Nhóm SGLT2i", path: "src/content/pharmacology/duoc-ly.html" }
         ],
         asianData: true,
         bookmarked: true,
@@ -312,14 +312,14 @@
           "Nhóm E (Eos ≥ 300)": "LABA + LAMA + ICS (Khuyến cáo mạnh)"
         },
         relatedCalculators: [
-          { name: "Thang điểm CAT (COPD)", path: "pages/Công cụ/Hô hấp/CAT_COPD.html" },
-          { name: "Chỉ số BODE Index", path: "pages/Công cụ/Hô hấp/BODE_Index.html" }
+          { name: "Thang điểm CAT (COPD)", path: "src/content/calculators/respiratory/CAT_COPD.html" },
+          { name: "Chỉ số BODE Index", path: "src/content/calculators/respiratory/BODE_Index.html" }
         ],
         relatedFlowcharts: [
-          { name: "Lưu đồ Tiếp cận Khó thở mạn", path: "pages/Tiếp cận/tiep-can.html" }
+          { name: "Lưu đồ Tiếp cận Khó thở mạn", path: "src/content/approaches/tiep-can.html" }
         ],
         relatedDrugs: [
-          { name: "Phác đồ LAMA + LABA + ICS", path: "pages/Dược lý/duoc-ly.html" }
+          { name: "Phác đồ LAMA + LABA + ICS", path: "src/content/pharmacology/duoc-ly.html" }
         ],
         asianData: true,
         bookmarked: true,
@@ -429,13 +429,13 @@
         sourceUrl: "https://vnha.org.vn/",
         file: "",
         relatedCalculators: [
-          { name: "Tính eGFR (CKD-EPI)", path: "pages/Công cụ/Thận/CKD_EPI.html" }
+          { name: "Tính eGFR (CKD-EPI)", path: "src/content/calculators/renal/CKD_EPI.html" }
         ],
         relatedFlowcharts: [
-          { name: "Lưu đồ Tiếp cận Suy tim", path: "pages/Tiếp cận/tiep-can.html" }
+          { name: "Lưu đồ Tiếp cận Suy tim", path: "src/content/approaches/tiep-can.html" }
         ],
         relatedDrugs: [
-          { name: "Dược lý Thuốc Tim mạch & Suy tim", path: "pages/Dược lý/duoc-ly.html" }
+          { name: "Dược lý Thuốc Tim mạch & Suy tim", path: "src/content/pharmacology/duoc-ly.html" }
         ],
         asianData: true,
         bookmarked: false,
@@ -518,13 +518,13 @@
         sourceUrl: "https://kcb.vn/",
         file: "",
         relatedCalculators: [
-          { name: "Tính eGFR (CKD-EPI)", path: "pages/Công cụ/Thận/CKD_EPI.html" }
+          { name: "Tính eGFR (CKD-EPI)", path: "src/content/calculators/renal/CKD_EPI.html" }
         ],
         relatedFlowcharts: [
-          { name: "Lưu đồ Tiếp cận Đái tháo đường", path: "pages/Tiếp cận/tiep-can.html" }
+          { name: "Lưu đồ Tiếp cận Đái tháo đường", path: "src/content/approaches/tiep-can.html" }
         ],
         relatedDrugs: [
-          { name: "Dược lý Thuốc Đái tháo đường", path: "pages/Dược lý/duoc-ly.html" }
+          { name: "Dược lý Thuốc Đái tháo đường", path: "src/content/pharmacology/duoc-ly.html" }
         ],
         asianData: true,
         bookmarked: false,

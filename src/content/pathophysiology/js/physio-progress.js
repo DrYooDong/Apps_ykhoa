@@ -10,60 +10,60 @@
     const PROGRESS_KEY = 'cliniportal_physio_progress';
 
     // List of all lessons mapped by section ID
-    const LESSON_CATALOG = {
-        'part1': [
-            'SL_TB_Daicuong&TB.html',
-            'SL_TB_Mangtebao.html',
-            'SL_TB_Diensinhly.html'
+        const LESSON_CATALOG = {
+        "part1": [
+                "sl-tb-daicuong-tb.html",
+                "sl-tb-diensinhly.html",
+                "sl-tb-mangtebao.html"
         ],
-        'part2': [
-            'SL_Coxuong.html',
-            'SL_Cotron&Cotim.html',
-            'SL_Synapse.html',
-            'SL_Thankinh-tuchu.html',
-            'SL_Tuygai.html',
-            'SL_Thannao&Tieunao&Hangnen.html',
-            'SL_Vonao&ChucnangTKcaocap.html',
-            'SL_Giacquan.html'
+        "part2": [
+                "sl-cotron-cotim.html",
+                "sl-coxuong.html",
+                "sl-giacquan.html",
+                "sl-synapse.html",
+                "sl-thankinh-tuchu.html",
+                "sl-thannao-tieunao-hachnen.html",
+                "sl-tuygai.html",
+                "sl-vonao-chucnangtkcaocap.html"
         ],
-        'part3': [
-            'SL_HeMau&Huyethoc.html',
-            'SL_Hongcau.html',
-            'SL_Tieucaucammau.html',
-            'SL_Bachcau_Mien dich.html',
-            'SL_Nhommau&Truyenmau.html'
+        "part3": [
+                "sl-bachcau-mien-dich.html",
+                "sl-hemau-huyethoc.html",
+                "sl-hongcau.html",
+                "sl-nhommau-truyenmau.html",
+                "sl-tieucaucammau.html"
         ],
-        'part4': [
-            'SL_CoTim&HoatdongDien.html',
-            'SL_Cktim&Cungluongtim.html',
-            'SL_HeMach&DieuhoaHA.html',
-            'SL_CoHohap&Thongkhi.html',
-            'SL_Traodoikhi.html',
-            'SL_Vanchuyen&DieuhoaHH.html'
+        "part4": [
+                "sl-cktim-cungluongtim.html",
+                "sl-cohohap-thongkhi.html",
+                "sl-cotim-hoatdongdien.html",
+                "sl-hemach-dieuhoaha.html",
+                "sl-traodoikhi.html",
+                "sl-vanchuyen-dieuhoahh.html"
         ],
-        'part5': [
-            'SL_TH_Mieng&TQ.html',
-            'SL_TH_Daday.html',
-            'SL_TH_GanTuy.html',
-            'SL_TH_Ruotnon.html',
-            'SL_TH_Ruotgia.html',
-            'SL_ChuyenhoaNL&Dieuhoanhiet.html'
+        "part5": [
+                "sl-chuyenhoanl-dieuhoanhiet.html",
+                "sl-th-daday.html",
+                "sl-th-gantuy.html",
+                "sl-th-mieng-tq.html",
+                "sl-th-ruotgia.html",
+                "sl-th-ruotnon.html"
         ],
-        'part6': [
-            'SL_Than_Cauthan.html',
-            'SL_Than_Ongthan.html',
-            'SL_Than_Phaloang&Dieuhoadich.html',
-            'SL_Than_Toankiem.html'
+        "part6": [
+                "sl-than-cauthan.html",
+                "sl-than-ongthan.html",
+                "sl-than-phaloang-dieuhoadich.html",
+                "sl-than-toankiem.html"
         ],
-        'part7': [
-            'SL_NT_Tongquat.html',
-            'SL_NT_GH.html',
-            'SL_NT_Tuyengiap.html',
-            'SL_NT_VoThuongthan.html',
-            'SL_NT_Tuyentuy.html',
-            'SL_SS_Sinhsan.html'
+        "part7": [
+                "sl-nt-gh.html",
+                "sl-nt-tongquat.html",
+                "sl-nt-tuyengiap.html",
+                "sl-nt-tuyentuy.html",
+                "sl-nt-vothuongthan.html",
+                "sl-ss-sinhsan.html"
         ]
-    };
+};
 
     function getProgressData() {
         try {

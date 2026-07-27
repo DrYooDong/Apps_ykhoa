@@ -1,6 +1,6 @@
-/* ============================================================
+﻿/* ============================================================
    EBM PRACTICE LAB — INTERACTIVE LOGIC
-   Location: pages/Y học chứng cứ/EBM Lab/ebm-lab.js
+   Location: src/content/ebm/EBM Lab/ebm-lab.js
 ============================================================ */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -232,3 +232,4 @@ function initNntCalculator() {
 
   calculateNnt();
 }
+

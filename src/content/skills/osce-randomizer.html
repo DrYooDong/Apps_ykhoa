@@ -20,6 +20,7 @@
 
     <!-- CSS riêng cho OSCE Arena -->
     <link rel="stylesheet" href="../../../css/components/osce-randomizer.css">
+    <link rel="stylesheet" href="../../../css/components/module-dashboard.css">
 
     <!-- Scripts -->
     <script src="../../../components/header.js" defer></script>
@@ -85,6 +86,10 @@
                             <option value="single">🎲 Đơn lẻ</option>
                             <option value="marathon">🏁 Marathon (6 trạm)</option>
                         </select>
+
+                        <button id="flashcard-btn" class="osce-select" style="background: rgba(2, 132, 199, 0.15); color: var(--color-primary); border-color: var(--color-primary); font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;" title="Ôn Flashcard OSCE">
+                            <i class="fa-solid fa-clone"></i> <span>Flashcards OSCE</span>
+                        </button>
                     </div>
 
                     <button class="btn-generate" id="btn-generate">
@@ -178,7 +183,72 @@
         </main>
     </div>
 
+    <!-- FLASHCARD MODAL -->
+    <div id="flashcard-modal" class="flashcard-modal-overlay" aria-hidden="true" role="dialog"
+        aria-labelledby="fc-modal-title">
+        <div class="flashcard-modal-content">
+            <button id="close-flashcard" class="close-modal-btn" aria-label="Đóng flashcard">&times;</button>
+
+            <div class="fc-modal-header">
+                <h2 class="fc-title" id="fc-modal-title">🧠 Flashcards Ôn Tập Kỹ Năng OSCE</h2>
+                <div class="fc-header-actions">
+                    <select id="fc-category-select" class="fc-select" aria-label="Chọn chủ đề ôn tập">
+                        <option value="all">🌟 Tất cả chuyên khoa</option>
+                        <option value="Tim mạch">🩺 Tim mạch (Nghe tim, ECG...)</option>
+                        <option value="Hô hấp">🫁 Hô hấp (Nghe phổi, Hen...)</option>
+                        <option value="Tiêu hóa">🥗 Tiêu hóa (Khám bụng...)</option>
+                        <option value="Cấp cứu">🚑 Cấp cứu (CPR, Hồi sức...)</option>
+                        <option value="Cận lâm sàng">📊 Cận lâm sàng & X-quang</option>
+                    </select>
+                    <button id="fc-shuffle" class="fc-icon-btn" title="Xáo trộn ngẫu nhiên" aria-label="Xáo trộn thẻ">
+                        <i class="fa-solid fa-shuffle"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Progress Track -->
+            <div class="fc-progress-track">
+                <div id="fc-progress-fill" class="fc-progress-fill" style="width: 0%;"></div>
+            </div>
+
+            <div class="flashcard-container">
+                <div class="flashcard" id="skill-flashcard" tabindex="0" role="button" aria-label="Lật thẻ flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <span id="fc-topic-badge" class="fc-badge">🩺 Kỹ năng OSCE</span>
+                            <h3 id="fc-question">Đang tải câu hỏi...</h3>
+                            <p class="fc-hint"><i class="fa-solid fa-rotate"></i> Bấm hoặc ấn Spacebar để lật thẻ xem đáp án</p>
+                        </div>
+                        <div class="flashcard-back">
+                            <span class="fc-badge back-badge">💡 Đáp án & Quy trình chuẩn</span>
+                            <h3 id="fc-answer">Đang tải đáp án...</h3>
+                            <p class="fc-explanation" id="fc-explanation"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flashcard-controls">
+                <button id="fc-prev" class="fc-btn" title="Thẻ trước (Phím ←)"><i class="fa-solid fa-arrow-left"></i> Trước</button>
+                <div class="fc-counter-wrapper">
+                    <span id="fc-counter">0 / 0</span>
+                    <button id="fc-toggle-known" class="fc-known-btn" title="Đánh dấu đã thuộc thẻ này">
+                        <i class="fa-regular fa-circle-check"></i> <span id="fc-known-text">Chưa thuộc</span>
+                    </button>
+                </div>
+                <button id="fc-next" class="fc-btn" title="Thẻ sau (Phím →)">Sau <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+
+            <div class="fc-keyboard-hints">
+                <span><kbd>←</kbd> <kbd>→</kbd> Chuyển thẻ</span>
+                <span><kbd>Space</kbd> Lật thẻ</span>
+                <span><kbd>Esc</kbd> Đóng</span>
+            </div>
+        </div>
+    </div>
+
     <!-- FOOTER PLACEHOLDER -->
     <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+    <script src="../../../js/skill-flashcards.js" defer></script>
 </body>
 </html>

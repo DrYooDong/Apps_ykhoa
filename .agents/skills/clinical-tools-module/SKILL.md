@@ -157,11 +157,14 @@ CSS riêng: `css/components/abg-calculator.css` hoặc `insulin-calculator.css`
 
 ---
 
-## 📝 Quy trình Tạo Công cụ Mới
+## 📝 Quy trình Tạo & Chỉnh sửa Công cụ Mới
 
 1. **Xác định Style** — Phác đồ/Bù dịch → Style 1; Máy tính điểm → Style 2
 2. **Chọn thư mục** đúng chuyên khoa
 3. **Copy boilerplate** từ `templates/calculator-template.html`
 4. **Đọc** `pages/Công cụ/HUONG_DAN_THIET_KE.md` để xem ví dụ đầy đủ của cả 2 Style
-5. **JavaScript**: Viết inline trong `<script>` tag hoặc file riêng trong thư mục công cụ
-6. **Cập nhật** `docs/FILE_MAP.md` sau khi tạo xong
+5. **Kiểm tra đồ thị phụ thuộc Graphify**: Khi liên kết với engine tính toán (`js/clinical-engine.js` hoặc file calculator JS chung), hãy chạy `node scratch/query_graph.js <engine_name>` để phòng ngừa rủi ro tác động dây chuyền.
+6. **Bảo tồn tính toàn vẹn HTML**: Chạy `node scratch/check_tags.js path/to/file.html` để đảm bảo thẻ `.app-container` và `.main-wrapper` đóng mở cân bằng.
+7. **JavaScript**: Viết inline trong `<script>` tag hoặc file riêng trong thư mục công cụ.
+8. **Cập nhật** `docs/FILE_MAP.md` sau khi hoàn thành.
+

@@ -1,6 +1,6 @@
-/* ============================================================
+﻿/* ============================================================
    INTERACTIVE FOREST PLOT BUILDER (SVG ENGINE)
-   Location: pages/Y học chứng cứ/EBM Lab/forest-plot.js
+   Location: src/content/ebm/EBM Lab/forest-plot.js
 ============================================================ */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -270,3 +270,4 @@ function initForestPlotBuilder() {
   renderTable();
   renderSvgForestPlot();
 }
+

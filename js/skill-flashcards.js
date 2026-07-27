@@ -1,186 +1,289 @@
 /**
- * Spaced Repetition Flashcard Engine (SuperMemo SM-2) — CliniPortal
- * Thuật toán ôn tập ngắt quãng kiến thức kỹ năng lâm sàng
+ * Spaced Repetition Flashcard Engine — CliniPortal (Kỹ năng Lâm sàng)
+ * Đồng bộ chuẩn giao diện, lật thẻ 3D, thanh tiến độ, bộ lọc & phím tắt theo sinhly-sinhlybenh.html
  */
 
 (function () {
   'use strict';
 
-  const STORAGE_KEY = 'cliniportal_skill_flashcards';
+  const STORAGE_KEY = 'cliniportal_skill_fc_known';
 
   const FLASHCARD_BANK = [
     {
-      id: "fc1",
+      id: "fc-sk-1",
       category: "Tim mạch",
+      topicName: "🩺 Khám Tim mạch",
       question: "Nêu vị trí 4 ổ van tim cơ bản khi nghe tim trên thành ngực?",
-      answer: "1. Ổ van ĐMC: KLS 2 bờ phải xương ức<br>2. Ổ van ĐMP: KLS 2 bờ trái xương ức<br>3. Ổ van 3 lá: KLS 4-5 bờ trái xương ức<br>4. Ổ van 2 lá: KLS 5 đường trung đòn trái (mỏm tim)"
+      answer: "1. Ổ van ĐMC: KLS 2 bờ phải ức | 2. Ổ van ĐMP: KLS 2 bờ trái ức | 3. Ổ 3 lá: KLS 4-5 bờ trái ức | 4. Ổ 2 lá: KLS 5 đường trung đòn trái (mỏm tim).",
+      explanation: "Ổ Erb-Phys (KLS 3 bờ trái xương ức) là vị trí nghe rõ tiếng thổi của hở van động mạch chủ."
     },
     {
-      id: "fc2",
+      id: "fc-sk-2",
       category: "Hô hấp",
+      topicName: "🫁 Khám Hô hấp",
       question: "Hiện tượng 'Phổi câm' (Silent Chest) trong cơn hen phế quản có ý nghĩa gì?",
-      answer: "Là dấu hiệu <b>nguy kịch</b> — đường thở bị tắc nghẽn gần như hoàn toàn khiến không khí không di chuyển được, không phải là bệnh nhân đang đỡ khò khè."
+      answer: "Là dấu hiệu nguy kịch — đường thở bị tắc nghẽn gần như hoàn toàn khiến không khí không di chuyển được.",
+      explanation: "Phổi câm không phải là bệnh nhân đang đỡ khò khè mà là dấu hiệu suy hô hấp nặng, cần cấp cứu mở đường thở khẩn cấp."
     },
     {
-      id: "fc3",
+      id: "fc-sk-3",
       category: "Tiêu hóa",
+      topicName: "🥗 Khám Bụng",
       question: "Dấu hiệu Blumberg (Phản ứng dội) dương tính gợi ý điều gì?",
-      answer: "Gợi ý có <b>viêm phúc mạc</b> khu trú hoặc toàn thể (đau tăng đột ngột khi buông tay nhanh sau khi ấn sâu)."
+      answer: "Gợi ý có viêm phúc mạc khu trú hoặc toàn thể.",
+      explanation: "Thực hiện bằng cách ấn sâu từ từ vào thành bụng rồi buông tay ra đột ngột. Đau tăng dữ dội khi buông tay do màng bụng bị kích thích."
     },
     {
-      id: "fc4",
+      id: "fc-sk-4",
       category: "Cấp cứu",
-      question: "Tần số ấn ngực chuẩn trong Hồi sinh tim phổi (CPR) là bao nhiêu?",
-      answer: "<b>100 – 120 lần/phút</b>, độ sâu 5 – 6 cm, để ngực nở hoàn toàn sau mỗi lần ấn."
+      topicName: "🚑 Hồi sức Cấp cứu",
+      question: "Tần số ấn ngực và độ sâu chuẩn trong Hồi sinh tim phổi (CPR) là bao nhiêu?",
+      answer: "Tần số 100 – 120 lần/phút, độ sâu 5 – 6 cm ở người trưởng thành.",
+      explanation: "Đảm bảo để lồng ngực tái dãn hoàn toàn sau mỗi lần ấn và hạn chế tối đa thời gian gián đoạn ấn ngực."
     },
     {
-      id: "fc5",
+      id: "fc-sk-5",
       category: "Cận lâm sàng",
+      topicName: "📊 Điện tâm đồ (ECG)",
       question: "Tiêu chuẩn chẩn đoán STEMI trên ECG 12 chuyển đạo là gì?",
-      answer: "ST chênh lên ≥ 1mm ở ≥ 2 chuyển đạo liên tiếp (hoặc ≥ 2mm ở V2-V3 nam, ≥ 1.5mm ở nữ)."
+      answer: "ST chênh lên ≥ 1mm ở ≥ 2 chuyển đạo liên tiếp (hoặc ≥ 2mm ở V2-V3 nam, ≥ 1.5mm ở nữ).",
+      explanation: "Cần đánh giá kèm dấu hiệu soi gương (reciprocal changes) ở các chuyển đạo đối diện."
+    },
+    {
+      id: "fc-sk-6",
+      category: "Tim mạch",
+      topicName: "🩺 Khám Tim mạch",
+      question: "Tiếng T3 (Tiếng ngựa phi tâm trương) có cơ chế và ý nghĩa lâm sàng gì?",
+      answer: "Do dòng máu dồn nhanh từ nhĩ xuống thất trái dãn rộng ở đầu tâm trương, gợi ý Suy tim thất trái.",
+      explanation: "Tiếng T3 sinh lý có thể gặp ở trẻ em hoặc thanh niên vận động viên, nhưng ở người >40 tuổi là dấu hiệu suy tim."
+    },
+    {
+      id: "fc-sk-7",
+      category: "Cấp cứu",
+      topicName: "🚑 Cấp cứu Đường thở",
+      question: "Nêu 3 dấu hiệu chẩn đoán Tắc nghẽn đường thở do dị vật cấp tính?",
+      answer: "1. Ôm cổ (Dấu hiệu quốc tế) | 2. Không nói, không ho được | 3. Tím tái cấp tính.",
+      explanation: "Xử trí ngay lập tức bằng thủ thuật Heimlich (ấn bụng) hoặc vỗ lưng ấn ngực ở trẻ nhỏ."
     }
   ];
 
-  function getCardStates() {
+  function getKnownCards() {
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      return raw ? JSON.parse(raw) : {};
+      return new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"));
     } catch (e) {
-      return {};
+      return new Set();
     }
   }
 
-  function saveCardStates(states) {
+  function saveKnownCards(knownSet) {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(states));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(knownSet)));
     } catch (e) {
-      console.error('SkillFlashcards: Error saving states', e);
+      console.warn('[SkillFlashcards] Error saving known state:', e);
     }
   }
 
-  function calculateSM2(cardState, quality) {
-    let { repetitions = 0, interval = 1, easeFactor = 2.5 } = cardState || {};
+  function initFlashcardEngine() {
+    const flashcardModal = document.getElementById("flashcard-modal");
+    if (!flashcardModal) return;
 
-    if (quality >= 3) {
-      if (repetitions === 0) interval = 1;
-      else if (repetitions === 1) interval = 6;
-      else interval = Math.round(interval * easeFactor);
-      repetitions++;
-    } else {
-      repetitions = 0;
-      interval = 1;
+    const openBtns = [
+      document.getElementById("flashcard-btn"),
+      document.getElementById("btnOpenFlashcards")
+    ].filter(Boolean);
+
+    const closeBtn = document.getElementById("close-flashcard");
+    const cardEl = document.getElementById("skill-flashcard");
+
+    const categorySelect = document.getElementById("fc-category-select");
+    const shuffleBtn = document.getElementById("fc-shuffle");
+    const progressFill = document.getElementById("fc-progress-fill");
+    const topicBadge = document.getElementById("fc-topic-badge");
+    const questionEl = document.getElementById("fc-question");
+    const answerEl = document.getElementById("fc-answer");
+    const explanationEl = document.getElementById("fc-explanation");
+    const prevBtn = document.getElementById("fc-prev");
+    const nextBtn = document.getElementById("fc-next");
+    const counterEl = document.getElementById("fc-counter");
+    const toggleKnownBtn = document.getElementById("fc-toggle-known");
+    const knownTextEl = document.getElementById("fc-known-text");
+
+    let activeCards = [...FLASHCARD_BANK];
+    let currentIndex = 0;
+
+    function renderCurrentCard() {
+      if (!activeCards || activeCards.length === 0) {
+        if (topicBadge) topicBadge.textContent = "⚠️ Trống";
+        if (questionEl) questionEl.textContent = "Không có thẻ nào thuộc chuyên khoa này.";
+        if (answerEl) answerEl.textContent = "";
+        if (explanationEl) explanationEl.textContent = "";
+        if (counterEl) counterEl.textContent = "0 / 0";
+        if (progressFill) progressFill.style.width = "0%";
+        if (prevBtn) prevBtn.disabled = true;
+        if (nextBtn) nextBtn.disabled = true;
+        return;
+      }
+
+      if (currentIndex < 0) currentIndex = 0;
+      if (currentIndex >= activeCards.length) currentIndex = activeCards.length - 1;
+
+      const card = activeCards[currentIndex];
+
+      if (cardEl) cardEl.classList.remove("flipped");
+
+      if (topicBadge) topicBadge.textContent = card.topicName || "🩺 Kỹ năng lâm sàng";
+      if (questionEl) questionEl.innerHTML = card.question || "";
+      if (answerEl) answerEl.innerHTML = card.answer || "";
+      if (explanationEl) explanationEl.innerHTML = card.explanation || "";
+
+      if (counterEl) counterEl.textContent = `${currentIndex + 1} / ${activeCards.length}`;
+      if (progressFill) {
+        const percentage = Math.round(((currentIndex + 1) / activeCards.length) * 100);
+        progressFill.style.width = `${percentage}%`;
+      }
+
+      if (prevBtn) prevBtn.disabled = currentIndex === 0;
+      if (nextBtn) nextBtn.disabled = currentIndex === activeCards.length - 1;
+
+      const knownSet = getKnownCards();
+      const isKnown = knownSet.has(card.id);
+      if (toggleKnownBtn && knownTextEl) {
+        const icon = toggleKnownBtn.querySelector("i");
+        if (isKnown) {
+          toggleKnownBtn.classList.add("active");
+          if (icon) icon.className = "fa-solid fa-circle-check";
+          knownTextEl.textContent = "Đã thuộc";
+        } else {
+          toggleKnownBtn.classList.remove("active");
+          if (icon) icon.className = "fa-regular fa-circle-check";
+          knownTextEl.textContent = "Chưa thuộc";
+        }
+      }
     }
 
-    easeFactor = easeFactor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02));
-    if (easeFactor < 1.3) easeFactor = 1.3;
-
-    const nextReview = new Date();
-    nextReview.setDate(nextReview.getDate() + interval);
-
-    return {
-      repetitions,
-      interval,
-      easeFactor,
-      nextReviewDate: nextReview.toISOString()
-    };
-  }
-
-  let currentIndex = 0;
-  let isFlipped = false;
-
-  function openFlashcardModal() {
-    let overlay = document.getElementById('flashcard-modal-overlay');
-    if (!overlay) {
-      overlay = document.createElement('div');
-      overlay.id = 'flashcard-modal-overlay';
-      overlay.className = 'flashcard-modal-overlay';
-      document.body.appendChild(overlay);
+    function openModal() {
+      flashcardModal.classList.add("active");
+      flashcardModal.setAttribute("aria-hidden", "false");
+      currentIndex = 0;
+      renderCurrentCard();
+      document.addEventListener("keydown", handleKeyDown);
     }
 
-    currentIndex = 0;
-    isFlipped = false;
-    renderCurrentCard(overlay);
-    overlay.classList.add('active');
-  }
-
-  function closeFlashcardModal() {
-    const overlay = document.getElementById('flashcard-modal-overlay');
-    if (overlay) overlay.classList.remove('active');
-  }
-
-  function renderCurrentCard(overlay) {
-    const card = FLASHCARD_BANK[currentIndex];
-    if (!card) {
-      overlay.innerHTML = `
-        <div class="flashcard-modal">
-          <div class="flashcard-header">
-            <h3 class="flashcard-title">🎉 Hoàn Thành Ôn Tập!</h3>
-            <button class="flashcard-close-btn" onclick="SkillFlashcards.close()">&times;</button>
-          </div>
-          <p style="text-align:center; color: var(--color-text-muted); margin: 2rem 0;">Bạn đã ôn tập xong tất cả flashcard của buổi học hôm nay!</p>
-          <button class="btn-rating btn-rating-good" style="width: 100%;" onclick="SkillFlashcards.close()">Đóng lại</button>
-        </div>
-      `;
-      return;
+    function closeModal() {
+      flashcardModal.classList.remove("active");
+      flashcardModal.setAttribute("aria-hidden", "true");
+      if (cardEl) cardEl.classList.remove("flipped");
+      document.removeEventListener("keydown", handleKeyDown);
     }
 
-    overlay.innerHTML = `
-      <div class="flashcard-modal">
-        <div class="flashcard-header">
-          <h3 class="flashcard-title">🧠 Flashcard Ôn Tập (${currentIndex + 1}/${FLASHCARD_BANK.length})</h3>
-          <button class="flashcard-close-btn" id="fc-close-btn">&times;</button>
-        </div>
+    function handleKeyDown(e) {
+      if (!flashcardModal.classList.contains("active")) return;
 
-        <div class="flashcard-viewport ${isFlipped ? 'flipped' : ''}" id="fc-viewport">
-          <div class="flashcard-flipper">
-            <div class="flashcard-face flashcard-front">
-              <span class="card-tag">${card.category}</span>
-              <div class="card-question">${card.question}</div>
-              <span class="card-hint">💡 Click để xem đáp án</span>
-            </div>
-            <div class="flashcard-face flashcard-back">
-              <span class="card-tag">Đáp án chuẩn</span>
-              <div class="card-answer">${card.answer}</div>
-            </div>
-          </div>
-        </div>
+      if (e.key === "Escape") {
+        closeModal();
+      } else if (e.key === "ArrowLeft") {
+        if (currentIndex > 0) {
+          currentIndex--;
+          renderCurrentCard();
+        }
+      } else if (e.key === "ArrowRight") {
+        if (currentIndex < activeCards.length - 1) {
+          currentIndex++;
+          renderCurrentCard();
+        }
+      } else if (e.key === " " || e.code === "Space") {
+        e.preventDefault();
+        if (cardEl) cardEl.classList.toggle("flipped");
+      }
+    }
 
-        <div class="flashcard-controls" style="display: ${isFlipped ? 'grid' : 'none'};">
-          <button class="btn-rating btn-rating-again" data-quality="1"><span>🔴 Lặp lại</span><small>1 ngày</small></button>
-          <button class="btn-rating btn-rating-hard" data-quality="2"><span>🟠 Khó</span><small>2 ngày</small></button>
-          <button class="btn-rating btn-rating-good" data-quality="4"><span>🔵 Tốt</span><small>4 ngày</small></button>
-          <button class="btn-rating btn-rating-easy" data-quality="5"><span>🟢 Dễ</span><small>7 ngày</small></button>
-        </div>
-      </div>
-    `;
+    // Event listeners
+    openBtns.forEach(btn => btn.addEventListener("click", openModal));
+    if (closeBtn) closeBtn.addEventListener("click", closeModal);
 
-    document.getElementById('fc-close-btn').addEventListener('click', closeFlashcardModal);
-
-    const viewport = document.getElementById('fc-viewport');
-    viewport.addEventListener('click', function () {
-      isFlipped = !isFlipped;
-      viewport.classList.toggle('flipped', isFlipped);
-      const controls = overlay.querySelector('.flashcard-controls');
-      if (controls) controls.style.display = isFlipped ? 'grid' : 'none';
+    flashcardModal.addEventListener("click", (e) => {
+      if (e.target === flashcardModal) closeModal();
     });
 
-    overlay.querySelectorAll('.btn-rating').forEach(btn => {
-      btn.addEventListener('click', function (e) {
-        e.stopPropagation();
-        const q = parseInt(this.getAttribute('data-quality'), 10);
-        const states = getCardStates();
-        states[card.id] = calculateSM2(states[card.id], q);
-        saveCardStates(states);
-
-        currentIndex++;
-        isFlipped = false;
-        renderCurrentCard(overlay);
+    if (cardEl) {
+      cardEl.addEventListener("click", () => {
+        cardEl.classList.toggle("flipped");
       });
-    });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          renderCurrentCard();
+        }
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => {
+        if (currentIndex < activeCards.length - 1) {
+          currentIndex++;
+          renderCurrentCard();
+        }
+      });
+    }
+
+    if (categorySelect) {
+      categorySelect.addEventListener("change", (e) => {
+        const val = e.target.value;
+        if (val === "all") {
+          activeCards = [...FLASHCARD_BANK];
+        } else {
+          activeCards = FLASHCARD_BANK.filter(c => c.category === val);
+        }
+        currentIndex = 0;
+        renderCurrentCard();
+      });
+    }
+
+    if (shuffleBtn) {
+      shuffleBtn.addEventListener("click", () => {
+        for (let i = activeCards.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [activeCards[i], activeCards[j]] = [activeCards[j], activeCards[i]];
+        }
+        currentIndex = 0;
+        renderCurrentCard();
+      });
+    }
+
+    if (toggleKnownBtn) {
+      toggleKnownBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (!activeCards[currentIndex]) return;
+        const currentId = activeCards[currentIndex].id;
+        const knownSet = getKnownCards();
+        if (knownSet.has(currentId)) {
+          knownSet.delete(currentId);
+        } else {
+          knownSet.add(currentId);
+        }
+        saveKnownCards(knownSet);
+        renderCurrentCard();
+      });
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initFlashcardEngine);
+  } else {
+    initFlashcardEngine();
   }
 
   window.SkillFlashcards = {
-    open: openFlashcardModal,
-    close: closeFlashcardModal
+    open: function () {
+      const modal = document.getElementById("flashcard-modal");
+      if (modal) modal.classList.add("active");
+    },
+    close: function () {
+      const modal = document.getElementById("flashcard-modal");
+      if (modal) modal.classList.remove("active");
+    }
   };
 })();

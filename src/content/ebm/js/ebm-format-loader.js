@@ -1,6 +1,6 @@
-/* ============================================================
+﻿/* ============================================================
    CLINIPORTAL — EBM FORMAT LOADER & ENGINE (VANILLA JS)
-   Location: pages/Y học chứng cứ/js/ebm-format-loader.js
+   Location: src/content/ebm/js/ebm-format-loader.js
    Supports: JSON Schemas, Markdown (.md), CSV Data, BibTeX/RIS Citations, SVG Diagrams
    Offline Dual-Mode: Fetch API + Embedded Fallback Storage
 ============================================================ */
@@ -174,3 +174,4 @@ window.EBMFormatLoader = (function () {
     copyCitation: copyCitation
   };
 })();
+

@@ -361,6 +361,9 @@
           </button>
         </div>
         <div class="view-toggle-container">
+          <button id="flashcard-btn" class="flashcard-btn" title="Flashcard Red Flags Ôn tập">
+            <i class="fa-solid fa-clone"></i> <span>Flashcards</span>
+          </button>
           <span class="toggle-label">Chế độ xem:</span>
           <div class="toggle-buttons">
             <button id="view-grid-btn" class="toggle-btn active" title="Dạng lưới" aria-label="Xem dạng lưới">
@@ -965,14 +968,248 @@
       // Initialize
       updateSymptom("sot");
 
+      // Initialize
+      updateSymptom("sot");
+
       // Event listener
       selectEl.addEventListener("change", (e) => {
         updateSymptom(e.target.value);
       });
     });
 
+    // ==========================================
+    // RED FLAGS FLASHCARD ENGINE (MATCHING SINH LÝ)
+    // ==========================================
+    document.addEventListener("DOMContentLoaded", () => {
+      const redFlagsCards = [
+        {
+          id: "rf-1",
+          category: "Sốt",
+          topicName: "🚩 Dấu Hiệu Cảnh Báo Đỏ: Sốt",
+          question: "Các dấu hiệu Red Flags nguy kịch bắt buộc loại trừ ngay ở bệnh nhân Sốt?",
+          answer: "1. Cổ cứng / Dấu màng não<br>2. Tụt huyết áp / Sốc nhiễm trùng<br>3. Ban xuất huyết hoại tử dạng sao (Nhiễm não mô cầu)<br>4. Suy giảm miễn dịch nặng / Tế bào T CD4 < 200.",
+          explanation: "Bệnh nhân có Red Flags Sốt cần được chọc dò dịch não tủy, cấy máu và dùng kháng sinh phổ rộng liều đầu trong vòng 1 giờ."
+        },
+        {
+          id: "rf-2",
+          category: "Đau ngực",
+          topicName: "🚩 Dấu Hiệu Cảnh Báo Đỏ: Đau Ngực",
+          question: "4 nguyên nhân đau ngực đe dọa tính mạng (4 Big Red Flags) cần loại trừ khẩn cấp?",
+          answer: "1. Hội chứng mạch vành cấp (STEMI/NSTEMI)<br>2. Bóc tách động mạch chủ ngực<br>3. Thuyên tắc động mạch phổi cấp<br>4. Tràn khí màng phổi áp lực.",
+          explanation: "Làm ngay ECG 12 chuyển đạo, Troponin T/I siêu nhạy và X-quang ngực thẳng tại giường."
+        },
+        {
+          id: "rf-3",
+          category: "Khó thở",
+          topicName: "🚩 Dấu Hiệu Cảnh Báo Đỏ: Khó Thở",
+          question: "Dấu hiệu cảnh báo suy hô hấp nguy kịch trong Khó Thở cấp tính?",
+          answer: "1. Thở ngáp / Phổi câm (Silent chest trong hen)<br>2. SpO₂ < 90% dù thở oxy hỗ trợ<br>3. Rối loạn tri giác / Vật vã lơ mơ<br>4. Co kéo cơ hô hấp phụ mức độ nặng.",
+          explanation: "Cần chuẩn bị ngay dụng cụ đặt nội khí quản và thông khí nhân tạo xâm nhập."
+        },
+        {
+          id: "rf-4",
+          category: "Đau bụng",
+          topicName: "🚩 Dấu Hiệu Cảnh Báo Đỏ: Đau Bụng",
+          question: "Các dấu hiệu Red Flags gợi ý Ngoại khoa / Viêm phúc mạc trong Đau Bụng?",
+          answer: "1. Bụng cứng như gỗ / Phản ứng thành bụng (+)<br>2. Phản ứng dội Blumberg (+)<br>3. Nôn ra máu hoặc đi cầu phân đen như bã cà phê<br>4. Khối u bụng đập theo nhịp tim (Phình ĐMC bụng).",
+          explanation: "Mời hội chẩn Ngoại khoa khẩn và thực hiện Siêu âm FAST / CT Bụng có thuốc."
+        },
+        {
+          id: "rf-5",
+          category: "Đau đầu",
+          topicName: "🚩 Dấu Hiệu Cảnh Báo Đỏ: Đau Đầu",
+          question: "Quy tắc SNOOP4 đánh giá Red Flags Đau Đầu gồm những yếu tố nào?",
+          answer: "S: Systemic symptoms (Sốt, sụt cân) | N: Neurologic deficits (Thần kinh khu trú) | O: Onset sudden (Búa bổ) | O: Older (>50 tuổi) | P: Pattern change (Thay đổi tính chất).",
+          explanation: "Đau đầu xuất hiện đột ngột như búa bổ gợi ý Xuất huyết dưới nhện (SAH) do vỡ túi cùng phình động mạch não."
+        }
+      ];
 
+      const modal = document.getElementById("flashcard-modal");
+      const openBtn = document.getElementById("flashcard-btn");
+      const closeBtn = document.getElementById("close-flashcard");
+      const cardEl = document.getElementById("approach-flashcard");
+
+      const selectEl = document.getElementById("fc-category-select");
+      const shuffleBtn = document.getElementById("fc-shuffle");
+      const progressFill = document.getElementById("fc-progress-fill");
+      const topicBadge = document.getElementById("fc-topic-badge");
+      const questionEl = document.getElementById("fc-question");
+      const answerEl = document.getElementById("fc-answer");
+      const explanationEl = document.getElementById("fc-explanation");
+      const prevBtn = document.getElementById("fc-prev");
+      const nextBtn = document.getElementById("fc-next");
+      const counterEl = document.getElementById("fc-counter");
+      const toggleKnownBtn = document.getElementById("fc-toggle-known");
+      const knownTextEl = document.getElementById("fc-known-text");
+
+      let activeCards = [...redFlagsCards];
+      let currentIndex = 0;
+      const knownCards = new Set();
+
+      function renderCard() {
+        if (!activeCards || activeCards.length === 0) return;
+        if (currentIndex < 0) currentIndex = 0;
+        if (currentIndex >= activeCards.length) currentIndex = activeCards.length - 1;
+
+        const card = activeCards[currentIndex];
+        if (cardEl) cardEl.classList.remove("flipped");
+
+        if (topicBadge) topicBadge.textContent = card.topicName;
+        if (questionEl) questionEl.innerHTML = card.question;
+        if (answerEl) answerEl.innerHTML = card.answer;
+        if (explanationEl) explanationEl.innerHTML = card.explanation;
+
+        if (counterEl) counterEl.textContent = `${currentIndex + 1} / ${activeCards.length}`;
+        if (progressFill) {
+          progressFill.style.width = `${Math.round(((currentIndex + 1) / activeCards.length) * 100)}%`;
+        }
+
+        if (prevBtn) prevBtn.disabled = currentIndex === 0;
+        if (nextBtn) nextBtn.disabled = currentIndex === activeCards.length - 1;
+
+        const isKnown = knownCards.has(card.id);
+        if (toggleKnownBtn && knownTextEl) {
+          const icon = toggleKnownBtn.querySelector("i");
+          if (isKnown) {
+            toggleKnownBtn.classList.add("active");
+            if (icon) icon.className = "fa-solid fa-circle-check";
+            knownTextEl.textContent = "Đã thuộc";
+          } else {
+            toggleKnownBtn.classList.remove("active");
+            if (icon) icon.className = "fa-regular fa-circle-check";
+            knownTextEl.textContent = "Chưa thuộc";
+          }
+        }
+      }
+
+      function openModal() {
+        if (!modal) return;
+        modal.classList.add("active");
+        currentIndex = 0;
+        renderCard();
+        document.addEventListener("keydown", handleKeyDown);
+      }
+
+      function closeModal() {
+        if (!modal) return;
+        modal.classList.remove("active");
+        if (cardEl) cardEl.classList.remove("flipped");
+        document.removeEventListener("keydown", handleKeyDown);
+      }
+
+      function handleKeyDown(e) {
+        if (!modal.classList.contains("active")) return;
+        if (e.key === "Escape") closeModal();
+        else if (e.key === "ArrowLeft" && currentIndex > 0) { currentIndex--; renderCard(); }
+        else if (e.key === "ArrowRight" && currentIndex < activeCards.length - 1) { currentIndex++; renderCard(); }
+        else if (e.key === " " || e.code === "Space") { e.preventDefault(); if (cardEl) cardEl.classList.toggle("flipped"); }
+      }
+
+      if (openBtn) openBtn.addEventListener("click", openModal);
+      if (closeBtn) closeBtn.addEventListener("click", closeModal);
+      if (modal) modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+
+      if (cardEl) cardEl.addEventListener("click", () => cardEl.classList.toggle("flipped"));
+      if (prevBtn) prevBtn.addEventListener("click", () => { if (currentIndex > 0) { currentIndex--; renderCard(); } });
+      if (nextBtn) nextBtn.addEventListener("click", () => { if (currentIndex < activeCards.length - 1) { currentIndex++; renderCard(); } });
+
+      if (selectEl) {
+        selectEl.addEventListener("change", (e) => {
+          const val = e.target.value;
+          if (val === "all") activeCards = [...redFlagsCards];
+          else activeCards = redFlagsCards.filter(c => c.category === val);
+          currentIndex = 0;
+          renderCard();
+        });
+      }
+
+      if (shuffleBtn) {
+        shuffleBtn.addEventListener("click", () => {
+          for (let i = activeCards.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [activeCards[i], activeCards[j]] = [activeCards[j], activeCards[i]];
+          }
+          currentIndex = 0;
+          renderCard();
+        });
+      }
+
+      if (toggleKnownBtn) {
+        toggleKnownBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const card = activeCards[currentIndex];
+          if (!card) return;
+          if (knownCards.has(card.id)) knownCards.delete(card.id);
+          else knownCards.add(card.id);
+          renderCard();
+        });
+      }
+    });
   </script>
+
+  <!-- FLASHCARD MODAL -->
+  <div id="flashcard-modal" class="flashcard-modal-overlay" aria-hidden="true" role="dialog"
+    aria-labelledby="fc-modal-title">
+    <div class="flashcard-modal-content">
+      <button id="close-flashcard" class="close-modal-btn" aria-label="Đóng flashcard">&times;</button>
+
+      <div class="fc-modal-header">
+        <h2 class="fc-title" id="fc-modal-title">🧠 Flashcards Red Flags — Cảnh Báo Đỏ Lâm Sàng</h2>
+        <div class="fc-header-actions">
+          <select id="fc-category-select" class="fc-select" aria-label="Chọn triệu chứng">
+            <option value="all">🌟 Tất cả Red Flags</option>
+            <option value="Sốt">🔥 Red Flags Sốt</option>
+            <option value="Đau ngực">🫀 Red Flags Đau ngực</option>
+            <option value="Khó thở">🫁 Red Flags Khó thở</option>
+            <option value="Đau bụng">🥖 Red Flags Đau bụng</option>
+            <option value="Đau đầu">🧠 Red Flags Đau đầu</option>
+          </select>
+          <button id="fc-shuffle" class="fc-icon-btn" title="Xáo trộn ngẫu nhiên" aria-label="Xáo trộn thẻ">
+            <i class="fa-solid fa-shuffle"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Progress Track -->
+      <div class="fc-progress-track">
+        <div id="fc-progress-fill" class="fc-progress-fill" style="width: 0%;"></div>
+      </div>
+
+      <div class="flashcard-container">
+        <div class="flashcard" id="approach-flashcard" tabindex="0" role="button" aria-label="Lật thẻ flashcard">
+          <div class="flashcard-inner">
+            <div class="flashcard-front">
+              <span id="fc-topic-badge" class="fc-badge">🚩 Red Flags Lâm sàng</span>
+              <h3 id="fc-question">Đang tải câu hỏi...</h3>
+              <p class="fc-hint"><i class="fa-solid fa-rotate"></i> Bấm hoặc ấn Spacebar để lật thẻ xem đáp án</p>
+            </div>
+            <div class="flashcard-back">
+              <span class="fc-badge back-badge">💡 Dấu hiệu & Xử trí nguy kịch</span>
+              <h3 id="fc-answer">Đang tải đáp án...</h3>
+              <p class="fc-explanation" id="fc-explanation"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flashcard-controls">
+        <button id="fc-prev" class="fc-btn" title="Thẻ trước (Phím ←)"><i class="fa-solid fa-arrow-left"></i> Trước</button>
+        <div class="fc-counter-wrapper">
+          <span id="fc-counter">0 / 0</span>
+          <button id="fc-toggle-known" class="fc-known-btn" title="Đánh dấu đã thuộc thẻ này">
+            <i class="fa-regular fa-circle-check"></i> <span id="fc-known-text">Chưa thuộc</span>
+          </button>
+        </div>
+        <button id="fc-next" class="fc-btn" title="Thẻ sau (Phím →)">Sau <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+
+      <div class="fc-keyboard-hints">
+        <span><kbd>←</kbd> <kbd>→</kbd> Chuyển thẻ</span>
+        <span><kbd>Space</kbd> Lật thẻ</span>
+        <span><kbd>Esc</kbd> Đóng</span>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>

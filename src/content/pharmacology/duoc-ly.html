@@ -191,6 +191,9 @@
             style="display: none;">&times;</button>
         </div>
         <div class="view-toggle-container">
+          <button id="flashcard-btn" class="flashcard-btn" title="Flashcard Ôn tập Dược lý">
+            <i class="fa-solid fa-clone"></i> <span>Flashcards</span>
+          </button>
           <span class="toggle-label">Chế độ xem:</span>
           <div class="toggle-buttons">
             <button id="view-grid-btn" class="toggle-btn active" title="Dạng lưới" aria-label="Xem dạng lưới">
@@ -456,7 +459,7 @@
                       </div>
                     </a>
                     <!-- Tiêu chảy cấp -->
-                    <a href="Chuyên khoa/DL_Tiêuhoá.html" class="specialty-card">
+                    <a href="specialties/dl-tieuhoa.html" class="specialty-card">
                       <div class="specialty-card-top">
                         <div class="specialty-icon">🍹</div>
                         <div class="specialty-info">
@@ -470,7 +473,7 @@
                       </div>
                     </a>
                     <!-- Táo bón -->
-                    <a href="Chuyên khoa/DL_Tiêuhoá.html" class="specialty-card">
+                    <a href="specialties/dl-tieuhoa.html" class="specialty-card">
                       <div class="specialty-card-top">
                         <div class="specialty-icon">🍹</div>
                         <div class="specialty-info">
@@ -954,6 +957,70 @@
       }
     });
   </script>
+
+  <!-- FLASHCARD MODAL -->
+  <div id="flashcard-modal" class="flashcard-modal-overlay" aria-hidden="true" role="dialog"
+    aria-labelledby="fc-modal-title">
+    <div class="flashcard-modal-content">
+      <button id="close-flashcard" class="close-modal-btn" aria-label="Đóng flashcard">&times;</button>
+
+      <div class="fc-modal-header">
+        <h2 class="fc-title" id="fc-modal-title">🧠 Flashcards Ôn Tập Dược Lý Học</h2>
+        <div class="fc-header-actions">
+          <select id="fc-category-select" class="fc-select" aria-label="Chọn nhóm dược lý">
+            <option value="all">🌟 Tất cả chủ đề</option>
+            <option value="Tim mạch">🫀 Tim mạch & Vận mạch</option>
+            <option value="Kháng sinh">💊 Kháng sinh & Tương tác</option>
+            <option value="Hồi sức">🚑 Hồi sức & Cấp cứu</option>
+            <option value="Độc chất">🧪 Độc chất & Giải độc</option>
+            <option value="Tiêu hóa">🥗 Tiêu hóa & Chuyển hóa</option>
+          </select>
+          <button id="fc-shuffle" class="fc-icon-btn" title="Xáo trộn ngẫu nhiên" aria-label="Xáo trộn thẻ">
+            <i class="fa-solid fa-shuffle"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Progress Track -->
+      <div class="fc-progress-track">
+        <div id="fc-progress-fill" class="fc-progress-fill" style="width: 0%;"></div>
+      </div>
+
+      <div class="flashcard-container">
+        <div class="flashcard" id="pharma-flashcard" tabindex="0" role="button" aria-label="Lật thẻ flashcard">
+          <div class="flashcard-inner">
+            <div class="flashcard-front">
+              <span id="fc-topic-badge" class="fc-badge">💊 Dược lý học</span>
+              <h3 id="fc-question">Đang tải câu hỏi...</h3>
+              <p class="fc-hint"><i class="fa-solid fa-rotate"></i> Bấm hoặc ấn Spacebar để lật thẻ xem đáp án</p>
+            </div>
+            <div class="flashcard-back">
+              <span class="fc-badge back-badge">💡 Đáp án & Giải thích</span>
+              <h3 id="fc-answer">Đang tải đáp án...</h3>
+              <p class="fc-explanation" id="fc-explanation"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flashcard-controls">
+        <button id="fc-prev" class="fc-btn" title="Thẻ trước (Phím ←)"><i class="fa-solid fa-arrow-left"></i> Trước</button>
+        <div class="fc-counter-wrapper">
+          <span id="fc-counter">0 / 0</span>
+          <button id="fc-toggle-known" class="fc-known-btn" title="Đánh dấu đã thuộc thẻ này">
+            <i class="fa-regular fa-circle-check"></i> <span id="fc-known-text">Chưa thuộc</span>
+          </button>
+        </div>
+        <button id="fc-next" class="fc-btn" title="Thẻ sau (Phím →)">Sau <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+
+      <div class="fc-keyboard-hints">
+        <span><kbd>←</kbd> <kbd>→</kbd> Chuyển thẻ</span>
+        <span><kbd>Space</kbd> Lật thẻ</span>
+        <span><kbd>Esc</kbd> Đóng</span>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>

@@ -1,6 +1,6 @@
-/* ============================================================
+﻿/* ============================================================
    INTERACTIVE FUNNEL PLOT BUILDER (SVG ENGINE)
-   Location: pages/Y học chứng cứ/EBM Lab/funnel-plot.js
+   Location: src/content/ebm/EBM Lab/funnel-plot.js
 ============================================================ */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -267,3 +267,4 @@ function initFunnelPlotBuilder() {
   renderTable();
   renderSvgFunnelPlot();
 }
+

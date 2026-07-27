@@ -240,6 +240,13 @@ Mỗi khi tạo trang tóm tắt Guideline mới, hãy sử dụng khung cấu t
     <!-- Thêm sec-card tại đây -->
   </div>
 
+  <!-- 💡 GRAPHIFY & INTEGRITY CHECKLIST -->
+  <!-- 
+    1. Graphify Risk Check: guidelines.js là CRITICAL HUB (570 fan-in dependencies).
+       Nếu chỉnh sửa logic chung hoặc Supabase sync của Kho Guidelines, chạy `node scratch/query_graph.js guidelines.js`.
+    2. HTML Integrity Check: Chạy `node scratch/check_tags.js path/to/guideline_file.html` để đảm bảo thẻ đóng mở chuẩn xác.
+  -->
 </body>
 </html>
 ```
+
