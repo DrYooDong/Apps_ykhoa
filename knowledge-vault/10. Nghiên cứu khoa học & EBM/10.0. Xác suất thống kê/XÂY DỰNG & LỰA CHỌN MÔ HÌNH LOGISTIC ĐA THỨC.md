@@ -1,3 +1,9 @@
+---
+title: "XÂY DỰNG & LỰA CHỌN MÔ HÌNH LOGISTIC ĐA THỨC"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
+last_updated: "2026-07-28"
+---
 𝐗𝐚̂𝐲 𝐝𝐮̛̣𝐧𝐠 𝐯𝐚̀ 𝐥𝐮̛̣𝐚 𝐜𝐡𝐨̣𝐧 𝐦𝐨̂ 𝐡𝐢̀𝐧𝐡 𝐡𝐨̂̀𝐢 𝐪𝐮𝐲 𝐥𝐨𝐠𝐢𝐬𝐭𝐢𝐜 đ𝐚 𝐭𝐡𝐮̛́𝐜 (𝐏𝐡𝐚̂̀𝐧 𝟓 𝐜𝐮̉𝐚 𝐛𝐚̀𝐢 𝐇𝐨̂̀𝐢 𝐪𝐮𝐲 𝐥𝐨𝐠𝐢𝐬𝐭𝐢𝐜 đ𝐚 𝐭𝐡𝐮̛́𝐜)
 
 TS. Đào Hồng Nam

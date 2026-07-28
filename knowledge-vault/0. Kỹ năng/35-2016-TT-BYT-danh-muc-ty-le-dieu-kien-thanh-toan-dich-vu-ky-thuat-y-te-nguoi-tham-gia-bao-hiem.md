@@ -1,3 +1,9 @@
+---
+title: "TT-BYT-danh-muc-ty-le-dieu-kien-thanh-toan-dich-vu-ky-thuat-y-te-nguoi-tham-gia-bao-hiem"
+specialty: "Kỹ năng"
+tags: ["Kỹ năng"]
+last_updated: "2026-07-28"
+---
 BỘ Y TẾ CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM ------- Độc lập - Tự do - Hạnh phúc ---------------
 Số: 35/2016/TT-BYT Hà Nội, ngày 28 tháng 9 năm 2016
 THÔNG TƯ

@@ -1,3 +1,9 @@
+---
+title: "Cch-lm-bnh-n-PGS-S"
+specialty: "Kỹ năng"
+tags: ["Kỹ năng", "Bệnh án"]
+last_updated: "2026-07-28"
+---
 # CÁCH LÀM
 # BỆNH ÁN NỘI KHOA
 # PGS.TS.BS. Hoàng Văn Sỹ

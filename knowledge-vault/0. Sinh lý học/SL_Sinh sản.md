@@ -1,3 +1,9 @@
+---
+title: "SL_Sinh sản"
+specialty: "Sinh lý học"
+tags: ["Sinh lý học"]
+last_updated: "2026-07-28"
+---
 ### 1. PHÂN HÓA VÀ PHÁT TRIỂN GIỚI TÍNH (SEX DIFFERENTIATION & DEVELOPMENT)
 
 Giới tính của một cá thể được xác định về mặt di truyền bởi hai nhiễm sắc thể giới tính: XX ở nữ và XY ở nam. Sự phát triển giới tính phụ thuộc vào sự hiện diện của nhiễm sắc thể Y, mang gen SRY (sex-determining region of the Y chromosome). Gen SRY mã hóa một protein hoạt động như yếu tố phiên mã, khởi động chuỗi gen cần thiết cho sự biệt hóa tinh hoàn. 

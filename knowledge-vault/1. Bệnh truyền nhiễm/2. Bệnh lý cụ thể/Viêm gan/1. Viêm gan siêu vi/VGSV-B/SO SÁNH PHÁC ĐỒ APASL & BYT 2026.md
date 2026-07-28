@@ -1,3 +1,9 @@
+---
+title: "SO SÁNH PHÁC ĐỒ APASL & BYT 2026"
+specialty: "Bệnh truyền nhiễm"
+tags: ["Bệnh truyền nhiễm", "Bệnh lý cụ thể", "Viêm gan", "Viêm gan siêu vi", "VGSV-B"]
+last_updated: "2026-07-28"
+---
 
 
 # 

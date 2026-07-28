@@ -7,6 +7,7 @@ import { getAllSBARs, saveSBAR, updateSBAR, deleteSBAR, getSBARById } from '../s
 import { SBARRecord } from '../types';
 import { renderSidebar, formatRelativeDate } from '../docspace-view';
 import { getActiveProfile } from '../storage';
+import { generateSBAR } from '../ai/llm-client';
 
 const SBAR_STEPS = [
   { key: 'situation',     label: 'S — Situation (Tình huống)',     color: 'var(--dsp-sbar-s)', icon: 'fa-solid fa-triangle-exclamation', placeholder: 'Bệnh nhân X, tuổi Y, giường Z. Lý do liên hệ: ...' },
@@ -65,6 +66,18 @@ export function renderSBARView(profileId: string, editId?: string): string {
         <input class="dsp-input" type="text" id="dspSBARTitle"
           placeholder="VD: BN suy hô hấp phòng 5 lúc 2h sáng"
           value="${escapeHtml(editRecord?.title || '')}" maxlength="100" />
+      </div>
+
+      <!-- AI Assistant -->
+      <div class="dsp-card" style="background: var(--color-surface); margin-bottom: 1.5rem; border: 1px dashed #8b5cf6; padding: 1rem; border-radius: 8px;">
+        <h3 style="margin-top:0; font-size: 1rem; color: #8b5cf6;"><i class="fa-solid fa-wand-magic-sparkles"></i> Trợ lý AI: Dịch sang SBAR</h3>
+        <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 0.5rem;">Dán đoạn ghi chú lộn xộn hoặc ghi âm vào đây, AI sẽ tự động phân loại thành các trường S-B-A-R bên dưới.</p>
+        <textarea class="dsp-textarea" id="dspSBAR_RawNotes" rows="3" placeholder="Ví dụ: Bn nam 65t, vô vì đau ngực. Tiền sử THA. Khám thấy tim đều, huyết áp 160/90. Cho làm ECG gấp..."></textarea>
+        <div style="text-align: right; margin-top: 0.5rem;">
+          <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-primary" id="btnAIGenerateSBAR" style="background-color: #8b5cf6; border-color: #8b5cf6;">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Phân tích
+          </button>
+        </div>
       </div>
 
       ${SBAR_STEPS.map(step => `
@@ -179,6 +192,37 @@ export function renderSBARPreviewHtml(record: SBARRecord): string {
 export function mountSBARController(profileId: string): void {
   const form = document.getElementById('dspSBARForm') as HTMLFormElement;
   if (!form) return;
+
+  // AI SBAR Generation
+  document.getElementById('btnAIGenerateSBAR')?.addEventListener('click', async () => {
+    const rawNotes = (document.getElementById('dspSBAR_RawNotes') as HTMLTextAreaElement)?.value.trim();
+    if (!rawNotes) return;
+    
+    const profile = getActiveProfile();
+    if (!profile || !profile.aiSettings) {
+      alert('Vui lòng cấu hình và bật AI trong Cài đặt AI trước.');
+      return;
+    }
+
+    const btn = document.getElementById('btnAIGenerateSBAR') as HTMLButtonElement;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Đang xử lý...';
+    btn.disabled = true;
+
+    try {
+      const result = await generateSBAR(rawNotes, profile.aiSettings);
+      
+      if (result.situation) (document.getElementById('dspSBAR_situation') as HTMLTextAreaElement).value = result.situation;
+      if (result.background) (document.getElementById('dspSBAR_background') as HTMLTextAreaElement).value = result.background;
+      if (result.assessment) (document.getElementById('dspSBAR_assessment') as HTMLTextAreaElement).value = result.assessment;
+      if (result.recommendation) (document.getElementById('dspSBAR_recommendation') as HTMLTextAreaElement).value = result.recommendation;
+      
+    } catch (err: any) {
+      alert(err.message);
+    } finally {
+      btn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> Phân tích';
+      btn.disabled = false;
+    }
+  });
 
   // Save SBAR
   form.addEventListener('submit', (e) => {

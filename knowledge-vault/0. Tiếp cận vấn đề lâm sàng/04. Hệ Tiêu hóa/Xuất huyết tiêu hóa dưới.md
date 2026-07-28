@@ -1,3 +1,9 @@
+---
+title: "Xuất huyết tiêu hóa dưới"
+specialty: "Hệ Tiêu hóa"
+tags: ["Tiếp cận vấn đề lâm sàng", "Hệ Tiêu hóa"]
+last_updated: "2026-07-28"
+---
 # 1. Cơ chế bệnh sinh:
 Xuất huyết tiêu hóa dưới (XHTHD) được định nghĩa là tình trạng chảy máu xuất phát từ một vị trí nằm ở đoạn xa của **góc Treitz** (dây chằng Treitz) cho đến hậu môn. 
 Cơ chế sinh lý bệnh gây chảy máu rất đa dạng, bao gồm:

@@ -1,3 +1,9 @@
+---
+title: "Mẫu bệnh án nội khoa chuẩn - BSCKI Trần Thanh Tuấn 166248885f6c81ca8c5ee8033542906e"
+specialty: "Kỹ năng"
+tags: ["Kỹ năng", "Bệnh án"]
+last_updated: "2026-07-28"
+---
 # Mẫu bệnh án nội khoa chuẩn - BSCKI. Trần Thanh Tuấn
 
 # **MẪU BỆNH ÁN**

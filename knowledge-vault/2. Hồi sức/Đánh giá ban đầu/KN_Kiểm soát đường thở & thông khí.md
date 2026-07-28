@@ -1,3 +1,9 @@
+---
+title: "KN_Kiểm soát đường thở & thông khí"
+specialty: "Hồi sức"
+tags: ["Hồi sức", "Đánh giá ban đầu"]
+last_updated: "2026-07-28"
+---
 ### 1. CƠ SỞ SINH LÝ BỆNH VÀ ĐÁNH GIÁ BAN ĐẦU
 Trong cấp cứu, đảm bảo đường thở (Airway - A) và thông khí (Breathing - B) thông thoáng là ưu tiên hàng đầu, nền tảng của nguyên tắc ABCDE. Về mặt sinh lý bệnh, đường thở trên là một cấu trúc động, chủ yếu cấu tạo bằng mô mềm và rất dễ bị xẹp khi bệnh nhân mất trương lực cơ (như trong tình trạng bất tỉnh), dẫn đến hiện tượng lưỡi tụt ra sau và nắp thanh quản che lấp lối vào khí quản. Tắc nghẽn đường thở nhanh chóng gây thiếu oxy não, tổn thương không hồi phục và làm thất bại các nỗ lực hồi sức khác.
 

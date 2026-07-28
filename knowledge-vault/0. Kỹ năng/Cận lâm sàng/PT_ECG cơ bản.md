@@ -1,3 +1,9 @@
+---
+title: "PT_ECG cơ bản"
+specialty: "Kỹ năng"
+tags: ["Kỹ năng", "Cận lâm sàng"]
+last_updated: "2026-07-28"
+---
 Để đọc và phân tích một bản điện tâm đồ (ECG) một cách chính xác và không bỏ sót tổn thương, bạn cần tuân thủ một quy trình phân tích có hệ thống. Trước khi bắt đầu, hãy luôn kiểm tra **chuẩn hóa (calibration)** của máy: tốc độ giấy chạy chuẩn là $25~mm/gi\hat{a}y$ (1 ô nhỏ = 0,04 giây, 1 ô lớn = 0,20 giây) và test điện thế chuẩn là $1~mV=10~mm$ (2 ô lớn).
 
 Dưới đây là 9 bước cơ bản để đọc và phân tích ECG:

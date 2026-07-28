@@ -1,3 +1,9 @@
+---
+title: "Biện luận - BSCKI Trần Thanh Tuấn 167248885f6c81cdb3a9fb0c11c9cd10"
+specialty: "Kỹ năng"
+tags: ["Kỹ năng", "Bệnh án"]
+last_updated: "2026-07-28"
+---
 # Biện luận - BSCKI. Trần Thanh Tuấn
 
 Nguồn: **SINH VIÊN Y KHOA**

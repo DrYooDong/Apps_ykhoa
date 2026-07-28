@@ -1,3 +1,9 @@
+---
+title: "Cohort study"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM", "Phương pháp luận & Thiết kế nghiên cứu"]
+last_updated: "2026-07-28"
+---
 Dưới góc độ của một chuyên gia Y học chứng cứ (EBM), tôi xin trình bày bản phân tích chuyên sâu về thiết kế **Nghiên cứu đoàn hệ** (hay còn gọi là **Nghiên cứu thuần tập** - _Cohort study_) dựa trên các tài liệu đã được cung cấp.
 
 ### 1. KHÁI NIỆM VÀ ĐẶC ĐIỂM THIẾT KẾ CỐT LÕI

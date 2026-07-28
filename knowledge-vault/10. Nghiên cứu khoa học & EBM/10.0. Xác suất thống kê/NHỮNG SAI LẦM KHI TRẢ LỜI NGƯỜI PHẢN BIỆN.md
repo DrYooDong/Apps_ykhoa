@@ -1,3 +1,9 @@
+---
+title: "NHỮNG SAI LẦM KHI TRẢ LỜI NGƯỜI PHẢN BIỆN"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
+last_updated: "2026-07-28"
+---
 𝐍𝐡𝐮̛̃𝐧𝐠 𝐬𝐚𝐢 𝐥𝐚̂̀𝐦 𝐤𝐡𝐢 𝐭𝐫𝐚̉ 𝐥𝐨̛̀𝐢 𝐧𝐠𝐮̛𝐨̛̀𝐢 𝐩𝐡𝐚̉𝐧 𝐛𝐢𝐞̣̂𝐧 (𝐏𝐞𝐞𝐫 𝐑𝐞𝐯𝐢𝐞𝐰): 𝐊𝐢𝐧𝐡 𝐧𝐠𝐡𝐢𝐞̣̂𝐦 𝐭𝐮̛̀ 𝐭𝐡𝐮̛̣𝐜 𝐡𝐚̀𝐧𝐡 𝐜𝐨̂𝐧𝐠 𝐛𝐨̂́ 𝐪𝐮𝐨̂́𝐜 𝐭𝐞̂́ (𝐁𝐚̀𝐢 𝟏𝟒 - 𝐁𝐚̀𝐢 𝐜𝐮𝐨̂́𝐢 𝐭𝐫𝐨𝐧𝐠 𝐥𝐨𝐚̣𝐭 𝐛𝐚̀𝐢 𝐯𝐞̂̀ 𝐩𝐡𝐚̂𝐧 𝐭𝐢́𝐜𝐡 𝐠𝐨̣̂𝐩)
 
 TS. Đào Hồng Nam

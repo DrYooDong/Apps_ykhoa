@@ -1,3 +1,9 @@
+---
+title: "Sốt + Hội chứng nhiễm trùng"
+specialty: "Tiếp cận vấn đề lâm sàng"
+tags: ["Tiếp cận vấn đề lâm sàng", "Vấn đề Toàn thân & Cấp cứu", "Sốt (Fever)"]
+last_updated: "2026-07-28"
+---
 # Tiếp cận lâm sàng cho vấn đề/triệu chứng [SỐT + HỘI CHỨNG NHIỄM TRÙNG]
 
 Hội chứng nhiễm trùng bao gồm các biểu hiện toàn thân do vi sinh vật sinh mủ hoặc độc tố của chúng xâm nhập vào cơ thể, đặc trưng bởi sốt, môi khô, lưỡi bẩn, hơi thở hôi, mệt mỏi, nhịp tim nhanh. Trong các trường hợp nặng, hội chứng này có thể tiến triển thành nhiễm khuẩn huyết và sốc nhiễm khuẩn.

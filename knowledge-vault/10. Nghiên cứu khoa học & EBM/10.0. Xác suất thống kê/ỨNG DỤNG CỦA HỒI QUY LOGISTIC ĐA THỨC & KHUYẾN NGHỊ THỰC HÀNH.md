@@ -1,3 +1,9 @@
+---
+title: "ỨNG DỤNG CỦA HỒI QUY LOGISTIC ĐA THỨC & KHUYẾN NGHỊ THỰC HÀNH"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
+last_updated: "2026-07-28"
+---
 𝐔̛́𝐧𝐠 𝐝𝐮̣𝐧𝐠 𝐜𝐮̉𝐚 𝐡𝐨̂̀𝐢 𝐪𝐮𝐲 𝐥𝐨𝐠𝐢𝐬𝐭𝐢𝐜 đ𝐚 𝐭𝐡𝐮̛́𝐜 𝐯𝐚̀ 𝐤𝐡𝐮𝐲𝐞̂́𝐧 𝐧𝐠𝐡𝐢̣ 𝐭𝐡𝐮̛̣𝐜 𝐡𝐚̀𝐧𝐡 (𝐏𝐡𝐚̂̀𝐧 𝟔 𝐜𝐮̉𝐚 𝐛𝐚̀𝐢 𝐇𝐨̂̀𝐢 𝐪𝐮𝐲 𝐥𝐨𝐠𝐢𝐬𝐭𝐢𝐜 đ𝐚 𝐭𝐡𝐮̛́𝐜)
 
 TS. Đào Hồng Nam

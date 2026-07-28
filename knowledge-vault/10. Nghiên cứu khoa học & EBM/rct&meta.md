@@ -1,3 +1,9 @@
+---
+title: "rct&meta"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM"]
+last_updated: "2026-07-28"
+---
 Chào bạn, dưới góc độ của một nhà nghiên cứu lâm sàng (Clinical Researcher) và bác sĩ chuyên khoa sâu, Thử nghiệm Lâm sàng Ngẫu nhiên có đối chứng (RCT) và Phân tích gộp (Meta-analysis) chính là "tiêu chuẩn vàng" và đỉnh cao của tháp bằng chứng y khoa. Tuy nhiên, việc đọc hiểu và phân tích chúng không đơn thuần là nhìn vào kết luận của tác giả, mà đòi hỏi một tư duy bóc tách dữ liệu nghiêm ngặt để xác định giá trị thực sự mang lại cho người bệnh.
 
 Dưới đây là phân tích chuyên sâu về cách đánh giá bằng chứng từ RCT và Meta-analysis.

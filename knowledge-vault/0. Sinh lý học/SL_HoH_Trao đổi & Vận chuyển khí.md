@@ -1,3 +1,9 @@
+---
+title: "SL_HoH_Trao đổi & Vận chuyển khí"
+specialty: "Sinh lý học"
+tags: ["Sinh lý học"]
+last_updated: "2026-07-28"
+---
 ### 1. NGUYÊN LÝ VẬT LÝ VÀ CƠ HỌC CỦA SỰ KHUẾCH TÁN KHÍ
 
 Sự trao đổi khí trong cơ thể dựa trên nguyên lý khuếch tán thụ động từ nơi có áp suất (hoặc nồng độ) cao đến nơi có áp suất (hoặc nồng độ) thấp. Quá trình này được chi phối bởi các định luật vật lý cơ bản:

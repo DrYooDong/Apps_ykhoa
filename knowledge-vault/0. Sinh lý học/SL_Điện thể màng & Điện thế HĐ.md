@@ -1,3 +1,9 @@
+---
+title: "SL_Điện thể màng & Điện thế HĐ"
+specialty: "Sinh lý học"
+tags: ["Sinh lý học"]
+last_updated: "2026-07-28"
+---
 Nội Dung Sinh Lý Học Chi Tiết:
 
 ### Điện Thế Màng Nghỉ (Resting Membrane Potential)

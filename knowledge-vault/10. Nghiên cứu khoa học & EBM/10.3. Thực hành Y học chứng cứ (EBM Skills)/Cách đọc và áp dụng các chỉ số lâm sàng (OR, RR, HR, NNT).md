@@ -1,3 +1,9 @@
+---
+title: "Cách đọc và áp dụng các chỉ số lâm sàng (OR, RR, HR, NNT)"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM", "Thực hành Y học chứng cứ (EBM Skills)"]
+last_updated: "2026-07-28"
+---
 Dưới góc độ của một chuyên gia về Y học chứng cứ (EBM) và Thống kê y học, tôi xin phân tích chi tiết cách đọc hiểu, diễn dịch và áp dụng các chỉ số thống kê lâm sàng cốt lõi: **Tỷ số chênh (OR)**, **Tỷ số nguy cơ (RR)**, **Tỷ số rủi ro (HR)** và **Số bệnh nhân cần điều trị (NNT)** dựa trên các tài liệu đã cung cấp.
 
 Trong Y học chứng cứ, việc lựa chọn và diễn giải đúng các chỉ số này quyết định việc một bác sĩ có đánh giá chính xác lợi ích thực sự của phương pháp điều trị hay không.

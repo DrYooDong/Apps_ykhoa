@@ -1,3 +1,9 @@
+---
+title: "Chiến lược tìm kiếm tài liệu chuyên sâu (MeSH & Boolean)"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM", "Thực hành Y học chứng cứ (EBM Skills)"]
+last_updated: "2026-07-28"
+---
 Dưới góc độ của một chuyên gia về Y học chứng cứ (EBM) và Phương pháp luận nghiên cứu khoa học, tôi xin trình bày bản phân tích chuyên sâu về **Chiến lược tìm kiếm tài liệu (Literature Search Strategies)**, tập trung vào việc ứng dụng Hệ thống từ vựng kiểm soát (MeSH) và Toán tử logic (Boolean) dựa trên các tài liệu đã được cung cấp.
 
 Trong Y học thực chứng, việc tìm kiếm y văn không chỉ là một thao tác công nghệ thông tin đơn thuần, mà là một quy trình khoa học có hệ thống, minh bạch và có thể lặp lại (reproducible) nhằm giảm thiểu tối đa các sai lệch chọn lựa (selection bias) ngay từ giai đoạn thu thập dữ liệu.

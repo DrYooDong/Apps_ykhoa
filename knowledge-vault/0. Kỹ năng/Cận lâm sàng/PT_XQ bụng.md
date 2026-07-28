@@ -1,3 +1,9 @@
+---
+title: "PT_XQ bụng"
+specialty: "Kỹ năng"
+tags: ["Kỹ năng", "Cận lâm sàng"]
+last_updated: "2026-07-28"
+---
 Tương tự như X-quang ngực, việc đọc X-quang bụng không chuẩn bị (AXR - Abdominal X-ray) cũng cần một phương pháp tiếp cận có hệ thống để không bỏ sót tổn thương. 
 
 Cần lưu ý rằng X-quang bụng có liều lượng tia bức xạ tương đương khoảng 50 lần chụp X-quang ngực. Hiện nay, CT scan thường được ưu tiên hơn do có độ chính xác cao, tuy nhiên X-quang bụng vẫn có giá trị đặc biệt trong các trường hợp: nghi ngờ tắc ruột, đợt cấp của bệnh viêm ruột (để tìm phình đại tràng độc tính), sỏi thận, hoặc nuốt phải dị vật.

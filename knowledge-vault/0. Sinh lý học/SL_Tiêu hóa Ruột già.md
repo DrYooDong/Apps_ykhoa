@@ -1,3 +1,9 @@
+---
+title: "SL_Tiêu hóa Ruột già"
+specialty: "Sinh lý học"
+tags: ["Sinh lý học"]
+last_updated: "2026-07-28"
+---
 Dưới đây là bài tổng hợp chi tiết về **Sinh lý Tiêu hóa tại Ruột già (Colonic Physiology)**, được biên soạn bám sát các tài liệu nguồn đã cung cấp và trình bày theo cấu trúc yêu cầu.
 
 ---

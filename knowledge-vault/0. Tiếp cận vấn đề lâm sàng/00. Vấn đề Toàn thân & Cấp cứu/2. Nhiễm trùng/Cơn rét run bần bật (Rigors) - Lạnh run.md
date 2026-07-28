@@ -1,3 +1,9 @@
+---
+title: "Cơn rét run bần bật (Rigors) - Lạnh run"
+specialty: "Tiếp cận vấn đề lâm sàng"
+tags: ["Tiếp cận vấn đề lâm sàng", "Vấn đề Toàn thân & Cấp cứu", "Nhiễm trùng"]
+last_updated: "2026-07-28"
+---
 # **1. Cơ chế bệnh sinh**
 
 + Cơn rét run bần bật (Rigors), được định nghĩa là tình trạng *run rẩy có thể nhìn thấy rõ bằng mắt thường* hoặc *đánh bò cạp* (hai hàm răng va vào nhau). 

@@ -1,3 +1,9 @@
+---
+title: "SL_TK_TK tự chủ"
+specialty: "Sinh lý học"
+tags: ["Sinh lý học"]
+last_updated: "2026-07-28"
+---
 Dưới đây là nội dung chi tiết về Sinh lý Hệ thần kinh tự chủ, được biên soạn bám sát các tài liệu nguồn, trích xuất hình ảnh minh họa và trích dẫn theo chuẩn AMA.
 
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT

@@ -1,3 +1,9 @@
+---
+title: "PT_ECG nâng cao"
+specialty: "Kỹ năng"
+tags: ["Kỹ năng", "Cận lâm sàng"]
+last_updated: "2026-07-28"
+---
 Để đọc và phân tích điện tâm đồ (ECG) ở mức độ nâng cao, bạn không chỉ dừng lại ở việc nhận diện các sóng đơn lẻ mà phải phân tích mối tương quan phức tạp giữa chúng, sử dụng các thuật toán chuyên sâu để chẩn đoán nguyên nhân loạn nhịp, định khu chính xác tổn thương nhồi máu, và nhận diện các rối loạn dẫn truyền hoặc bất thường cấu trúc. 
 
 Dưới đây là các bước phân tích ECG nâng cao được hệ thống hóa:

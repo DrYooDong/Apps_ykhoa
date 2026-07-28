@@ -1,3 +1,9 @@
+---
+title: "BAO GIỜ CÓ THỂ TIN VÀO KẾT QUẢ HỒI QUY BAYES"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
+last_updated: "2026-07-28"
+---
 𝐁𝐚𝐨 𝐠𝐢𝐨̛̀ 𝐜𝐨́ 𝐭𝐡𝐞̂̉ 𝐭𝐢𝐧 𝐯𝐚̀𝐨 𝐤𝐞̂́𝐭 𝐪𝐮𝐚̉ 𝐡𝐨̂̀𝐢 𝐪𝐮𝐲 𝐁𝐚𝐲𝐞𝐬? Đ𝐚́𝐧𝐡 𝐠𝐢𝐚́ 𝐡𝐨̣̂𝐢 𝐭𝐮̣ 𝐭𝐫𝐨𝐧𝐠 𝐧𝐠𝐡𝐢𝐞̂𝐧 𝐜𝐮̛́𝐮 𝐜𝐡𝐮̛́𝐜 𝐧𝐚̆𝐧𝐠 𝐭𝐡𝐚̣̂𝐧.
 
 TS. Đào Hồng Nam

@@ -1,3 +1,9 @@
+---
+title: "KN_Đánh giá & Phân loại (Triage)"
+specialty: "Hồi sức"
+tags: ["Hồi sức", "Đánh giá ban đầu"]
+last_updated: "2026-07-28"
+---
 ### 1. BẢN CHẤT VÀ NGUYÊN LÝ SINH LÝ BỆNH CỦA TRIAGE
 Phân loại bệnh nhân (Triage) không phải là quá trình nhằm đưa ra chẩn đoán xác định, mà là một quá trình đánh giá chủ động, liên tục và có hệ thống nhằm xác định mức độ khẩn cấp của tình trạng bệnh, từ đó ưu tiên điều trị và phân bổ nguồn lực y tế. Nguyên lý cốt lõi của Triage là đảm bảo "đúng bệnh nhân, đúng thời điểm, đúng nơi chốn và đúng nguồn lực". 
 

@@ -1,3 +1,9 @@
+---
+title: "Antibiotics Basics for Clinicians - P3"
+specialty: "Bệnh truyền nhiễm"
+tags: ["Bệnh truyền nhiễm", "Dược lý - Nhiễm", "Cập nhật"]
+last_updated: "2026-07-28"
+---
 ### 1. Nội Dung Bệnh Lý Học Chi Tiết: Tối Ưu Hóa Phác Đồ Trị Liệu Cho Các Hội Chứng Nhiễm Khuẩn Khác
 
 Tiếp nối các cập nhật về kháng sinh mới và liệu pháp kinh nghiệm cho các bệnh lý hô hấp, tiêu hóa, thần kinh và tim mạch, phần này sẽ bổ sung chi tiết về các hội chứng lâm sàng quan trọng còn lại bao gồm: nhiễm khuẩn da - mô mềm, viêm tai giữa cấp, viêm vùng chậu, nhiễm khuẩn do catheter và bệnh lao.

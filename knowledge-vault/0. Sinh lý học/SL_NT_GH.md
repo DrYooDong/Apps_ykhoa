@@ -1,3 +1,9 @@
+---
+title: "SL_NT_GH"
+specialty: "Sinh lý học"
+tags: ["Sinh lý học"]
+last_updated: "2026-07-28"
+---
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT
 
 #### 1.1. Bản chất và Cấu trúc của Hormone Tăng trưởng (GH)

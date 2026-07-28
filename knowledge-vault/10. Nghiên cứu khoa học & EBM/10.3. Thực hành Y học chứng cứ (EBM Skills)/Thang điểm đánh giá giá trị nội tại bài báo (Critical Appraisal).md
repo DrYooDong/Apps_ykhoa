@@ -1,3 +1,9 @@
+---
+title: "Thang điểm đánh giá giá trị nội tại bài báo (Critical Appraisal)"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM", "Thực hành Y học chứng cứ (EBM Skills)"]
+last_updated: "2026-07-28"
+---
 Dưới góc độ của một chuyên gia về Y học chứng cứ (EBM) và Phương pháp luận nghiên cứu khoa học, tôi xin trình bày phân tích chuyên sâu về **Các công cụ/Thang điểm đánh giá giá trị nội tại bài báo (Critical Appraisal Tools/Checklists)** dựa trên các tài liệu đã được cung cấp.
 
 Trong Y học thực chứng, quá trình thẩm định y văn (Critical Appraisal) nhằm mục đích đánh giá độ tin cậy (tính hợp lệ nội tại - Internal Validity), kết quả và tính ứng dụng (tính hợp lệ ngoại suy - External Validity) của các bài báo xuất bản để quyết định xem chúng có đáng tin và hữu ích hay không.

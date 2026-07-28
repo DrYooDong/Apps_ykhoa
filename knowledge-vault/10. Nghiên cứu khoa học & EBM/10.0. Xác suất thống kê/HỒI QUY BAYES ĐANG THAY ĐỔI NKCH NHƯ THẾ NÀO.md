@@ -1,3 +1,9 @@
+---
+title: "HỒI QUY BAYES ĐANG THAY ĐỔI NKCH NHƯ THẾ NÀO"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
+last_updated: "2026-07-28"
+---
 Đ𝐚́𝐧𝐡 𝐠𝐢𝐚́ 𝐜𝐚́𝐜 𝐲𝐞̂́𝐮 𝐭𝐨̂́ 𝐚̉𝐧𝐡 𝐡𝐮̛𝐨̛̉𝐧𝐠 đ𝐞̂́𝐧 𝐡𝐮𝐲𝐞̂́𝐭 𝐚́𝐩 𝐭𝐚̂𝐦 𝐭𝐡𝐮 𝐯𝐚̀ 𝐃𝐮̛̣ 𝐛𝐚́𝐨 đ𝐚́𝐩 𝐮̛́𝐧𝐠 đ𝐢𝐞̂̀𝐮 𝐭𝐫𝐢̣ 𝐮𝐧𝐠 𝐭𝐡𝐮̛ 𝐯𝐮́.
 
 TS. Đào Hồng Nam

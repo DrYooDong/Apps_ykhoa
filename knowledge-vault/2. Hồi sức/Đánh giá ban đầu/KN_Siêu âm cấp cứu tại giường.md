@@ -1,3 +1,9 @@
+---
+title: "KN_Siêu âm cấp cứu tại giường"
+specialty: "Hồi sức"
+tags: ["Hồi sức", "Đánh giá ban đầu"]
+last_updated: "2026-07-28"
+---
 ### 1. CƠ SỞ SINH LÝ HỌC VÀ VAI TRÒ CỦA SIÊU ÂM CẤP CỨU TẠI GIƯỜNG (POCUS)
 Siêu âm cấp cứu tại giường (POCUS - Point-of-Care Ultrasound) là một công cụ chẩn đoán tuyến đầu, được thực hiện và diễn giải trực tiếp bởi bác sĩ lâm sàng ngay trong quá trình hồi sức để định hướng chẩn đoán, thu hẹp các chẩn đoán phân biệt và hỗ trợ can thiệp thủ thuật. Nguyên lý sinh lý học của siêu âm dựa trên sự khác biệt về trở kháng âm giữa các loại mô: dịch tự do (máu, dịch tiết) ít phản xạ sóng âm nên hiển thị dưới dạng vùng trống âm (anechoic) màu đen, trong khi mô đặc và khí tạo ra các mức độ phản xạ khác nhau. Ưu điểm cốt lõi của POCUS là có thể thực hiện nhanh, lặp lại nhiều lần, không xâm lấn và không cần di chuyển bệnh nhân đang trong tình trạng huyết động không ổn định.
 

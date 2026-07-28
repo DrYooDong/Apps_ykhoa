@@ -1,3 +1,9 @@
+---
+title: "Note điểm chính - VGSVB"
+specialty: "Bệnh truyền nhiễm"
+tags: ["Bệnh truyền nhiễm", "Bệnh lý cụ thể", "Viêm gan", "Viêm gan siêu vi", "VGSV-B"]
+last_updated: "2026-07-28"
+---
 # Cập Nhật Hướng Dẫn Điều Trị Viêm Gan Siêu Vi B Theo APASL 2026: Phân Tích Cơ Chế Bệnh Sinh Và Ứng Dụng Lâm Sàng
 
 Dưới góc độ chuyên môn lâm sàng, Hướng dẫn thực hành lâm sàng của Hiệp hội Nghiên cứu Bệnh Gan Châu Á - Thái Bình Dương (APASL) năm 2026 mang đến những bước tiến mang tính bước ngoặt, đặc biệt trong việc đánh giá lại lịch sử tự nhiên của bệnh và mở rộng chỉ định điều trị. Dưới đây là phân tích chi tiết các điểm cập nhật cốt lõi, gắn liền với cơ chế bệnh sinh và hướng dẫn áp dụng vào thực hành lâm sàng.

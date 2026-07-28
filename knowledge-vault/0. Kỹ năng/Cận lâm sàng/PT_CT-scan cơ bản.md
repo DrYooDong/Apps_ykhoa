@@ -1,3 +1,9 @@
+---
+title: "PT_CT-scan cơ bản"
+specialty: "Kỹ năng"
+tags: ["Kỹ năng", "Cận lâm sàng"]
+last_updated: "2026-07-28"
+---
 Chụp cắt lớp vi tính (CT-scan) về bản chất là hình ảnh X-quang 3D, trong đó tia X đi qua cơ thể và được bộ phận thu nhận tín hiệu ghi lại để tạo ra các lát cắt ngang chi tiết. Để đọc và phân tích CT-scan một cách chính xác, bạn cần nắm vững các nguyên lý vật lý cơ bản và áp dụng một quy trình có hệ thống để không bỏ sót tổn thương.
 
 Dưới đây là các bước hệ thống để đọc và phân tích kết quả CT-scan:

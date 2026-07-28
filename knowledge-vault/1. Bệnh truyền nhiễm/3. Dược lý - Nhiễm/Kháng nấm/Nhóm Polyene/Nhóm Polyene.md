@@ -1,3 +1,9 @@
+---
+title: "Nhóm Polyene"
+specialty: "Bệnh truyền nhiễm"
+tags: ["Bệnh truyền nhiễm", "Dược lý - Nhiễm", "Kháng nấm", "Nhóm Polyene"]
+last_updated: "2026-07-28"
+---
 ### 1. Tổng quan & Phân loại (Classification)
 
 - **Tên nhóm:** Kháng nấm nhóm Polyene. Đây là một trong những nhóm thuốc kháng nấm lâu đời nhất với hơn 70 năm lịch sử.

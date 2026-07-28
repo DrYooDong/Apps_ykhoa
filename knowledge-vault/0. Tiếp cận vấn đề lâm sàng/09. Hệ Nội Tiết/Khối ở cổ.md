@@ -1,3 +1,9 @@
+---
+title: "Khối ở cổ"
+specialty: "Hệ Nội Tiết"
+tags: ["Tiếp cận vấn đề lâm sàng", "Hệ Nội Tiết"]
+last_updated: "2026-07-28"
+---
 **1. Cơ chế bệnh sinh** Khối ở cổ là một triệu chứng phổ biến trên lâm sàng, xuất phát từ sự tăng sinh, viêm nhiễm hoặc các bất thường bẩm sinh của các cấu trúc giải phẫu vùng cổ. Các cơ chế sinh lý bệnh chính bao gồm:
 
 - **Viêm/Nhiễm trùng:** Phản ứng viêm của hạch bạch huyết (viêm hạch phản ứng, lao hạch), áp xe phần mềm, hoặc nhiễm trùng từ các vùng lân cận lan xuống (áp xe răng lan rộng thành Angina Ludwig).

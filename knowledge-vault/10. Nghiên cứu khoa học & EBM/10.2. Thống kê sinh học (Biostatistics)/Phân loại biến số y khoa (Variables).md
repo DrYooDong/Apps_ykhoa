@@ -1,3 +1,9 @@
+---
+title: "Phân loại biến số y khoa (Variables)"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM", "Thống kê sinh học (Biostatistics)"]
+last_updated: "2026-07-28"
+---
 Dưới góc độ của một chuyên gia về Y học chứng cứ (EBM) và Phương pháp luận nghiên cứu khoa học, tôi xin trình bày hệ thống phân loại biến số (Variables) trong nghiên cứu y khoa và dịch tễ học dựa trên các tài liệu đã được cung cấp.
 
 ### 1. KHÁI NIỆM CƠ BẢN VỀ BIẾN SỐ

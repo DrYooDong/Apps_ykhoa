@@ -14,6 +14,14 @@ export interface DoctorProfile {
   createdAt: string;    // ISO string
   lastActiveAt: string; // ISO string
   quickLinks: QuickLink[];
+  aiSettings?: AISettings;
+}
+
+export interface AISettings {
+  enabled: boolean;
+  endpoint: string;
+  model: string;
+  apiKey?: string;
 }
 
 export interface QuickLink {

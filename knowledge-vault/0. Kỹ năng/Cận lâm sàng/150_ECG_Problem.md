@@ -1,3 +1,9 @@
+---
+title: "_ECG_Problem"
+specialty: "Kỹ năng"
+tags: ["Kỹ năng", "Cận lâm sàng"]
+last_updated: "2026-07-28"
+---
 Preface
 # 150
 # ECG

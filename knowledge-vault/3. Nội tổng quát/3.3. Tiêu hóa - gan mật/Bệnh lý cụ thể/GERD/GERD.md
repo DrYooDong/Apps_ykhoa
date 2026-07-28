@@ -1,0 +1,6 @@
+---
+title: "GERD"
+specialty: "Tiêu hóa - gan mật"
+tags: ["Nội tổng quát", "Tiêu hóa - gan mật", "Bệnh lý cụ thể", "GERD"]
+last_updated: "2026-07-28"
+---

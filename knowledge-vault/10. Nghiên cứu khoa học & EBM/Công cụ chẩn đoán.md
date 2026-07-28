@@ -1,3 +1,9 @@
+---
+title: "Công cụ chẩn đoán"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM"]
+last_updated: "2026-07-28"
+---
 Chào bạn, dưới góc độ của một bác sĩ chuyên khoa sâu và nhà nghiên cứu lâm sàng (Clinical Researcher), việc đánh giá giá trị của một công cụ chẩn đoán không chỉ đơn thuần là nhìn vào kết quả "dương tính" hay "âm tính". Để áp dụng một xét nghiệm vào thực hành, chúng ta phải hiểu rõ bản chất thống kê, sai số, và giá trị thực sự của nó trên từng quần thể bệnh nhân chuyên biệt. 
 
 Dưới đây là phân tích chuyên sâu về các chỉ số xác suất và giá trị của công cụ chẩn đoán trong y học thực chứng.

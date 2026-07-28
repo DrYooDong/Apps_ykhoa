@@ -1,3 +1,9 @@
+---
+title: "Nuốt khó"
+specialty: "Hệ Tiêu hóa"
+tags: ["Tiếp cận vấn đề lâm sàng", "Hệ Tiêu hóa"]
+last_updated: "2026-07-28"
+---
 **1. Cơ chế bệnh sinh** Nuốt khó (Dysphagia) là cảm giác chủ quan của bệnh nhân về sự cản trở sự di chuyển của thức ăn (đặc hoặc lỏng) từ miệng xuống dạ dày. Cơ chế sinh lý bệnh của nuốt khó được chia thành hai nhóm chính:
 
 - **Tắc nghẽn cơ học (Mechanical obstruction):** Xảy ra do thu hẹp lòng thực quản, có thể do nguyên nhân trong lòng thực quản (dị vật, cục thức ăn lớn), tại thành thực quản (viêm, màng/vòng thực quản, hẹp do sẹo loét, khối u ác tính) hoặc do chèn ép từ bên ngoài (cột sống cổ thoái hóa, tuyến giáp to, khối u trung thất, chèn ép mạch máu).

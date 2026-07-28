@@ -1,3 +1,9 @@
+---
+title: "Antibiotics Basics for Clinicians - P2"
+specialty: "Bệnh truyền nhiễm"
+tags: ["Bệnh truyền nhiễm", "Dược lý - Nhiễm", "Cập nhật"]
+last_updated: "2026-07-28"
+---
 ### 1. Nội Dung Bệnh Lý Học Chi Tiết: Các Cập Nhật Mới Về Phác Đồ Kinh Nghiệm (Empiric Therapy)
 
 Trong phần 2 của đợt cập nhật, bên cạnh các thuốc kháng sinh mới, tài liệu nhấn mạnh vào việc tối ưu hóa các phác đồ điều trị theo kinh nghiệm (empiric therapy) đối với các hội chứng nhiễm khuẩn lâm sàng phổ biến, đặc biệt trong bối cảnh tỷ lệ vi khuẩn đa kháng thuốc ngày càng gia tăng.

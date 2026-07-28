@@ -1,3 +1,9 @@
+---
+title: "Đau lưng"
+specialty: "Tiếp cận vấn đề lâm sàng"
+tags: ["Tiếp cận vấn đề lâm sàng", "Hệ Cơ xương khớp"]
+last_updated: "2026-07-28"
+---
 # 1. Cơ chế bệnh sinh 
 Đau lưng là một triệu chứng cực kỳ phổ biến, có thể phát sinh từ cấu trúc giải phẫu tại chỗ hoặc là biểu hiện của các bệnh lý toàn thân, nội tạng. Các cơ chế sinh lý bệnh chính gây đau lưng bao gồm,:
 

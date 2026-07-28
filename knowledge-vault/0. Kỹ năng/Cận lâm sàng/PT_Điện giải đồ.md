@@ -1,3 +1,9 @@
+---
+title: "PT_Điện giải đồ"
+specialty: "Kỹ năng"
+tags: ["Kỹ năng", "Cận lâm sàng"]
+last_updated: "2026-07-28"
+---
 **Bước 1: Nhận diện các giá trị đe dọa tính mạng (Cờ đỏ) và loại trừ sai số**
 Trước khi phân tích sâu, cần kiểm tra ngay xem có bất kỳ chỉ số điện giải nào nằm trong ngưỡng nguy hiểm cần xử trí cấp cứu không.
 *   **Các ngưỡng nguy hiểm cấp tính:** Natri (Na+) < 120 mmol/L hoặc > 155 mmol/L; Kali (K+) < 2.5 mmol/L hoặc > 6.5 mmol/L; Canxi hiệu chỉnh (Ca2+) < 2.0 mmol/L hoặc > 3.5 mmol/L.

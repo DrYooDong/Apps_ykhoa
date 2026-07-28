@@ -1,3 +1,9 @@
+---
+title: "HẬU KIỂM NEMENYI VÀ CONOVER SAU FRIEDMAN"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
+last_updated: "2026-07-28"
+---
 TS. Đào Hồng Nam
 
 Khi kiểm định Friedman cho kết quả p < 0,05, chúng ta chỉ biết rằng có sự khác biệt chung giữa các thời điểm. Nhưng kiểm định Friedman không cho biết cụ thể thời điểm nào khác biệt với thời điểm nào. Vì vậy, bước tiếp theo bắt buộc là thực hiện phân tích hậu kiểm (post-hoc test).

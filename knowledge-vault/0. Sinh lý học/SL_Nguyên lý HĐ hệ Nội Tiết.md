@@ -1,3 +1,9 @@
+---
+title: "SL_Nguyên lý HĐ hệ Nội Tiết"
+specialty: "Sinh lý học"
+tags: ["Sinh lý học"]
+last_updated: "2026-07-28"
+---
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT
 
 #### 1.1. ĐẠI CƯƠNG VỀ HỆ NỘI TIẾT VÀ GIAO TIẾP TẾ BÀO

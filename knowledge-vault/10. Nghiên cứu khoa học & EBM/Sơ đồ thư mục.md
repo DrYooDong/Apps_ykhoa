@@ -1,3 +1,9 @@
+---
+title: "Sơ đồ thư mục"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM"]
+last_updated: "2026-07-28"
+---
 10. Nghiên cứu khoa học & EBM
 │       ├── 10.1. Phương pháp luận & Thiết kế nghiên cứu
 │       │   ├── Báo cáo ca bệnh & Loạt ca bệnh (Case report & Case series).md

@@ -1,3 +1,9 @@
+---
+title: "SL_TK_Vỏ não & các CN TKCC"
+specialty: "Sinh lý học"
+tags: ["Sinh lý học"]
+last_updated: "2026-07-28"
+---
 ### 1. CẤU TRÚC VÀ TỔ CHỨC CỦA VỎ NÃO (CEREBRAL CORTEX)
 
 Vỏ não là một lớp tế bào thần kinh mỏng bao phủ bề mặt các nếp gấp của đại não, có độ dày từ 2 đến 5 mm và chứa khoảng 100 tỷ neuron. Phần lớn vỏ não ở người là tân vỏ não (neocortex), bao gồm 6 lớp tế bào phân biệt từ ngoài vào trong:

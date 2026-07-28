@@ -1,3 +1,9 @@
+---
+title: "SL_Tuyến tụy"
+specialty: "Sinh lý học"
+tags: ["Sinh lý học"]
+last_updated: "2026-07-28"
+---
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT
 
 #### I. Cấu Trúc Đảo Tụy (Islets of Langerhans)

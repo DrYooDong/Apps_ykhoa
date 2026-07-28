@@ -127,3 +127,13 @@ var(--color-info)           /* Xanh ngọc */
 - [ ] Header/Footer load thành công
 - [ ] Responsive trên mobile (kiểm tra width ≤ 768px)
 - [ ] `docs/FILE_MAP.md` đã được cập nhật nếu có file mới
+
+---
+
+## 🧠 Tối ưu hóa Context (Tiết kiệm Token)
+
+- **Hạn chế lệnh quét toàn bộ dự án**: Không dùng các công cụ tìm kiếm trên toàn bộ codebase nếu không thật sự cần thiết.
+- **Sử dụng Context hẹp (Targeted Scoping)**: Chỉ định chính xác file hoặc hàm/symbol cần làm việc.
+- **Chỉ cung cấp Interface/Signature**: Khi cần tương tác với module khác, chỉ cần đọc/gửi phần định nghĩa kiểu, struct, hoặc tên hàm/params thay vì đọc toàn bộ file dài.
+- **Chuyển sang Chat mới khi đổi Task**: Bắt đầu một session mới (/clear hoặc New Chat) khi hoàn thành một tính năng hoặc bài toán refactor để tránh lưu trữ lịch sử trò chuyện quá dài.
+- **File Ignore**: Hệ thống đã được thiết lập các file `.cursorignore`, `.clineignore`, `.aiderignore` để tự động bỏ qua các file/thư mục không cần thiết (node_modules, logs, ảnh, lock files, file dữ liệu lớn).

@@ -1,3 +1,9 @@
+---
+title: "Sốt + Hội chứng nhiễm siêu vi"
+specialty: "Tiếp cận vấn đề lâm sàng"
+tags: ["Tiếp cận vấn đề lâm sàng", "Vấn đề Toàn thân & Cấp cứu", "Sốt (Fever)"]
+last_updated: "2026-07-28"
+---
 # Tiếp cận lâm sàng cho vấn đề/triệu chứng [SỐT + HỘI CHỨNG NHIỄM SIÊU VI]
 
 Hội chứng nhiễm siêu vi (nhiễm virus) thường biểu hiện bằng các triệu chứng toàn thân không đặc hiệu như sốt, đau mỏi cơ khớp, phát ban, viêm long đường hô hấp hoặc rối loạn tiêu hóa. Tuy phần lớn là lành tính, một số căn nguyên có thể diễn tiến ác tính, đe dọa tính mạng.

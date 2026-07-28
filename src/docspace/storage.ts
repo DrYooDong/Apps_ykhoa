@@ -18,6 +18,7 @@ import {
   PatientFlag,
   DEFAULT_QUICK_LINKS,
   DOCSPACE_VERSION,
+  AISettings,
 } from './types';
 
 // ─────────────────────────────────────────────
@@ -156,6 +157,13 @@ export function updateQuickLinks(profileId: string, links: QuickLink[]): void {
   const profile = getProfile(profileId);
   if (!profile) return;
   profile.quickLinks = links;
+  saveProfile(profile);
+}
+
+export function updateAISettings(profileId: string, settings: AISettings): void {
+  const profile = getProfile(profileId);
+  if (!profile) return;
+  profile.aiSettings = settings;
   saveProfile(profile);
 }
 

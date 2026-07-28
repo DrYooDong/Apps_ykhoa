@@ -1,3 +1,9 @@
+---
+title: "SL_Cơ học HH & Thông khí PN"
+specialty: "Sinh lý học"
+tags: ["Sinh lý học"]
+last_updated: "2026-07-28"
+---
 Dưới đây là nội dung chi tiết về Sinh lý Cơ học Hô hấp và Thông khí phế nang, được biên soạn bám sát các tài liệu (Ganong, Berne & Levy, Color Atlas, và bài giảng video), loại trừ hoàn toàn các nguồn không được yêu cầu. Các hình ảnh/biểu đồ được trích xuất và giải thích chi tiết theo đúng định dạng.
 
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT

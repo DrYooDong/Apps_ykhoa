@@ -1,3 +1,9 @@
+---
+title: "SL_Tiêu hóa Dạ dày"
+specialty: "Sinh lý học"
+tags: ["Sinh lý học"]
+last_updated: "2026-07-28"
+---
 **1. Nội Dung Sinh Lý Học Chi Tiết Về Tiêu Hóa Tại Dạ Dày**
 
 ### I. Cấu Trúc Giải Phẫu và Chức Năng Cơ Bản

@@ -1,3 +1,9 @@
+---
+title: "KN_Xử trí ngộ độc cấp tính"
+specialty: "Hồi sức"
+tags: ["Hồi sức"]
+last_updated: "2026-07-28"
+---
 Chào bạn, dưới góc độ của một bác sĩ chuyên ngành Hồi sức - Cấp cứu và Chống độc (Toxicology), tôi sẽ phân tích chi tiết về kỹ năng xử trí ngộ độc cấp tính. Xử trí ngộ độc không chỉ đơn thuần là tìm kiếm thuốc giải độc, mà là một quá trình tư duy hệ thống dựa trên sinh lý bệnh, dược động học của độc chất và các biện pháp hồi sức sống còn. 
 
 Dưới đây là các kỹ năng và chiến lược cốt lõi được áp dụng trong thực hành lâm sàng:

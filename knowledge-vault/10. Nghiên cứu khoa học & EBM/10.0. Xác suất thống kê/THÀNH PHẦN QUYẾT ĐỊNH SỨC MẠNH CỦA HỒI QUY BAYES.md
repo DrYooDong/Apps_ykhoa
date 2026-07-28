@@ -1,3 +1,9 @@
+---
+title: "THÀNH PHẦN QUYẾT ĐỊNH SỨC MẠNH CỦA HỒI QUY BAYES"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
+last_updated: "2026-07-28"
+---
 𝐁𝐚̣𝐧 đ𝐚̃ 𝐭𝐡𝐮̛̣𝐜 𝐬𝐮̛̣ 𝐡𝐢𝐞̂̉𝐮 𝐁𝐚𝐲𝐞𝐬 𝐥𝐚̀ 𝐠𝐢̀ 𝐜𝐡𝐮̛𝐚? 𝟑 𝐭𝐡𝐚̀𝐧𝐡 𝐩𝐡𝐚̂̀𝐧 𝐪𝐮𝐲𝐞̂́𝐭 đ𝐢̣𝐧𝐡 𝐬𝐮̛́𝐜 𝐦𝐚̣𝐧𝐡 𝐜𝐮̉𝐚 𝐡𝐨̂̀𝐢 𝐪𝐮𝐲 𝐁𝐚𝐲𝐞𝐬 𝐥𝐚̀ 𝐠𝐢̀?
 
 TS. Đào Hồng Nam

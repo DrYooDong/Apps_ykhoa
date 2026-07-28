@@ -1,3 +1,9 @@
+---
+title: "KN_Hồi sức huyết động & chống sốc"
+specialty: "Hồi sức"
+tags: ["Hồi sức", "Đánh giá ban đầu"]
+last_updated: "2026-07-28"
+---
 ### 1. CƠ SỞ SINH LÝ BỆNH CỦA HUYẾT ĐỘNG VÀ HỘI CHỨNG SỐC
 
 Sốc tuần hoàn không chỉ đơn thuần là tình trạng tụt huyết áp, mà bản chất sinh lý bệnh cốt lõi là sự mất cân bằng giữa cung cấp oxy (DO2) và nhu cầu tiêu thụ oxy của tế bào (VO2), dẫn đến tình trạng thiếu oxy mô (dysoxia), chuyển hóa yếm khí và suy đa cơ quan.

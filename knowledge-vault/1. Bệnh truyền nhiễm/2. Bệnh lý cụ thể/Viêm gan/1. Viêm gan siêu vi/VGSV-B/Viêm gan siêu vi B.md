@@ -1,3 +1,9 @@
+---
+title: "Viêm gan siêu vi B"
+specialty: "Bệnh truyền nhiễm"
+tags: ["Bệnh truyền nhiễm", "Bệnh lý cụ thể", "Viêm gan", "Viêm gan siêu vi", "VGSV-B"]
+last_updated: "2026-07-28"
+---
 [[1. Areas/1. Bệnh truyền nhiễm/2. Bệnh lý cụ thể/Viêm gan/1. Viêm gan siêu vi/VGSV-B/1. Định nghĩa & dịch tễ học|1. Định nghĩa & dịch tễ học]]
 [[1. Areas/1. Bệnh truyền nhiễm/2. Bệnh lý cụ thể/Viêm gan/1. Viêm gan siêu vi/VGSV-B/2. Sinh lý bệnh|2. Sinh lý bệnh]]
 [[1. Areas/1. Bệnh truyền nhiễm/2. Bệnh lý cụ thể/Viêm gan/1. Viêm gan siêu vi/VGSV-B/3. Nguyên nhân|3. Nguyên nhân]]

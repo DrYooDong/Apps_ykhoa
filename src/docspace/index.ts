@@ -21,6 +21,8 @@ import { renderNotepadView, mountNotepadController } from './features/notepad-vi
 import { renderDrugJournalView, mountDrugJournalController } from './features/drug-journal-view';
 import { renderProtocolView, mountProtocolController } from './features/protocol-view';
 import { initGlobalQuickSaveHook } from './features/quick-save';
+import { renderAISettings } from './features/ai-settings-view';
+import { loadRAGIndex } from './ai/rag-engine';
 
 // ─── Mount helper ─────────────────────────────────────────────────
 
@@ -139,6 +141,7 @@ export function initDocSpaceRoutes(): void {
       mountDocSpace(renderSBARView(pid, editId));
       mountSBARController(pid);
       mountSidebarFooterControls(pid);
+      loadRAGIndex(); // Load index in background
     });
   });
 
@@ -158,6 +161,7 @@ export function initDocSpaceRoutes(): void {
       mountDocSpace(renderCaseLoggerView(pid));
       mountCaseLoggerController(pid);
       mountSidebarFooterControls(pid);
+      loadRAGIndex(); // Load index in background
     });
   });
 
@@ -197,6 +201,14 @@ export function initDocSpaceRoutes(): void {
       mountDocSpace(renderProtocolView(pid, editId));
       mountProtocolController(pid);
       mountSidebarFooterControls(pid);
+    });
+  });
+
+  // AI Settings
+  router.register('/docspace/ai-settings', 'DocSpace — Cấu hình AI', () => {
+    requireProfile(() => {
+      mountDocSpace('<div id="ai-settings-placeholder"></div>'); // Placeholder will be replaced by renderAISettings
+      renderAISettings();
     });
   });
 }

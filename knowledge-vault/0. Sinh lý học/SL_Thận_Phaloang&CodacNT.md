@@ -1,3 +1,9 @@
+---
+title: "SL_Thận_Phaloang&CodacNT"
+specialty: "Sinh lý học"
+tags: ["Sinh lý học"]
+last_updated: "2026-07-28"
+---
 Dưới đây là bài tổng hợp chi tiết về **Sinh lý Sự Pha loãng và Cô đặc Nước tiểu – Điều hòa Dịch cơ thể**, được biên soạn dựa trên các tài liệu y khoa bạn đã cung cấp.
 
 ---

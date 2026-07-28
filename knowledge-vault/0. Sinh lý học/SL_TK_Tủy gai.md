@@ -1,3 +1,9 @@
+---
+title: "SL_TK_Tủy gai"
+specialty: "Sinh lý học"
+tags: ["Sinh lý học"]
+last_updated: "2026-07-28"
+---
 1. Nội Dung Sinh Lý Học Chi Tiết:
 
 ### Cấu Trúc Đại Cương Của Tủy Gai

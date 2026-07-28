@@ -1,3 +1,9 @@
+---
+title: "PT_TPTTBM"
+specialty: "Kỹ năng"
+tags: ["Kỹ năng", "Cận lâm sàng"]
+last_updated: "2026-07-28"
+---
 **Bước 1: Đánh giá Dòng Hồng cầu (Red Blood Cells) và Hemoglobin (Hb)**
 Xác định tình trạng thiếu máu khi lượng Hemoglobin < 130g/L ở nam và < 120g/L ở nữ không mang thai (ngưỡng bình thường là 130-180g/L ở nam và 115-160g/L ở nữ). Bước tiếp theo là sử dụng **Thể tích trung bình hồng cầu (MCV)** (bình thường 76-96 fL) để phân nhóm nguyên nhân:
 *   **MCV thấp (< 76 fL - Hồng cầu nhỏ):** Thường gặp nhất do thiếu máu thiếu sắt, Thalassemia, hoặc thiếu máu nguyên bào sắt (sideroblastic).

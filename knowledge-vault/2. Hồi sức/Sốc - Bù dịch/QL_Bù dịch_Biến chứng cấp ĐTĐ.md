@@ -1,3 +1,9 @@
+---
+title: "QL_Bù dịch_Biến chứng cấp ĐTĐ"
+specialty: "Hồi sức"
+tags: ["Hồi sức", "Sốc - Bù dịch"]
+last_updated: "2026-07-28"
+---
 Chào đồng nghiệp. Dựa trên các báo cáo đồng thuận mới nhất của Hiệp hội Đái tháo đường Hoa Kỳ (ADA 2024), Báo cáo về Khủng hoảng Tăng đường huyết (2025), và các đánh giá hệ thống về hồi sức tích cực (2025), phác đồ xử trí bù dịch trong biến chứng cấp nhiễm toan ceton (DKA) và hội chứng tăng áp lực thẩm thấu (HHS) đã có những bước chuyển dịch quan trọng so với các hướng dẫn cũ. 
 
 Dưới đây là phân tích chi tiết về cơ chế, cập nhật lựa chọn dịch truyền và phác đồ ứng dụng trên lâm sàng.

@@ -1,3 +1,9 @@
+---
+title: "QL_Bù dịch_sốc SXHD"
+specialty: "Hồi sức"
+tags: ["Hồi sức", "Sốc - Bù dịch"]
+last_updated: "2026-07-28"
+---
 # Cơ Chế Bệnh Sinh Của Sốc Sốt Xuất Huyết Dengue (SXHD)
 Sốc trong SXHD chủ yếu là sốc giảm thể tích, hệ quả của tình trạng thoát huyết tương qua không gian ngoại bào. Cơ chế cốt lõi nằm ở sự rối loạn chức năng tế bào nội mạc mạch máu, làm tăng tính thấm mao mạch chứ không phải do tổn thương cấu trúc vĩnh viễn. Sự gia tăng nồng độ các cytokine tiền viêm (như TNF-alpha, IL-6, IL-8, IFN-gamma) và sự hoạt hóa bổ thể (C3a, C5a) phá vỡ lớp glycocalyx của tế bào nội mạc, gây rò rỉ huyết tương. 
 

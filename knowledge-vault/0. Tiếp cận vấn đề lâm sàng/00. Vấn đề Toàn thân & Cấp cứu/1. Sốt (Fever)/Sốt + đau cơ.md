@@ -1,3 +1,9 @@
+---
+title: "Sốt + đau cơ"
+specialty: "Tiếp cận vấn đề lâm sàng"
+tags: ["Tiếp cận vấn đề lâm sàng", "Vấn đề Toàn thân & Cấp cứu", "Sốt (Fever)"]
+last_updated: "2026-07-28"
+---
 Dưới đây là bài học tiếp cận lâm sàng cho vấn đề Sốt kết hợp Đau cơ, được biên soạn bám sát các tài liệu nguồn đã cung cấp.
 
 # Tiếp cận lâm sàng cho vấn đề/triệu chứng [SỐT + ĐAU CƠ]

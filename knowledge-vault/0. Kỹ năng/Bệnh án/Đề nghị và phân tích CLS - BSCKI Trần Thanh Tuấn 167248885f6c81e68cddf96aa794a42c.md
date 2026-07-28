@@ -1,3 +1,9 @@
+---
+title: "Đề nghị và phân tích CLS - BSCKI Trần Thanh Tuấn 167248885f6c81e68cddf96aa794a42c"
+specialty: "Kỹ năng"
+tags: ["Kỹ năng", "Bệnh án"]
+last_updated: "2026-07-28"
+---
 # Đề nghị và phân tích CLS - BSCKI. Trần Thanh Tuấn
 
 Nguồn: **SINH VIÊN Y KHOA**

@@ -1,3 +1,9 @@
+---
+title: "ƯU, NHƯỢC ĐIỂM CỦA HỒI QUY LOGISTIC ĐA THỨC VÀ KHUYẾN NGHỊ KHI SỬ DỤNG"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
+last_updated: "2026-07-28"
+---
 𝐔̛𝐮, 𝐧𝐡𝐮̛𝐨̛̣𝐜 đ𝐢𝐞̂̉𝐦 𝐜𝐮̉𝐚 𝐡𝐨̂̀𝐢 𝐪𝐮𝐲 𝐥𝐨𝐠𝐢𝐬𝐭𝐢𝐜 đ𝐚 𝐭𝐡𝐮̛́𝐜 𝐯𝐚̀ 𝐤𝐡𝐮𝐲𝐞̂́𝐧 𝐧𝐠𝐡𝐢̣ 𝐤𝐡𝐢 𝐬𝐮̛̉ 𝐝𝐮̣𝐧𝐠 (𝐏𝐡𝐚̂̀𝐧 𝟕 - 𝐩𝐡𝐚̂̀𝐧 𝐜𝐮𝐨̂́𝐢)
 
 𝐓𝐒. Đ𝐚̀𝐨 𝐇𝐨̂̀𝐧𝐠 𝐍𝐚𝐦

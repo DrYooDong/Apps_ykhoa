@@ -1,3 +1,9 @@
+---
+title: "PT_Đông máu"
+specialty: "Kỹ năng"
+tags: ["Kỹ năng", "Cận lâm sàng"]
+last_updated: "2026-07-28"
+---
 **Bước 1: Đánh giá chất lượng mẫu và xem xét bối cảnh lâm sàng**
 Trước khi đọc kết quả, cần đảm bảo mẫu máu được lấy đúng kỹ thuật. Mẫu máu khảo sát đông máu phải được lấy vào ống chứa chất chống đông Citrate; nếu ống máu lấy không đủ thể tích yêu cầu (under-filled) sẽ dẫn đến kết quả sai lệch. 
 Luôn kết hợp với tình trạng lâm sàng của bệnh nhân: Bệnh nhân có đang chảy máu không, vị trí chảy máu ở đâu (chảy máu niêm mạc hay tụ máu trong khớp), có bệnh lý gan, nhiễm trùng huyết, hoặc có đang sử dụng các thuốc chống đông (như Warfarin, Heparin, DOACs) hay không.

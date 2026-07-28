@@ -1,3 +1,9 @@
+---
+title: "QL_Phản vệ"
+specialty: "Hồi sức"
+tags: ["Hồi sức", "Phản vệ"]
+last_updated: "2026-07-28"
+---
 Dưới đây là bài học chi tiết về Xử trí các mức độ Phản vệ, được biên soạn bám sát tuyệt đối vào các tài liệu y khoa và Hướng dẫn của Bộ Y tế (Thông tư 51/2017/TT-BYT).
 
 ### 1. NGUYÊN TẮC CHUNG TRONG XỬ TRÍ CẤP CỨU PHẢN VỆ

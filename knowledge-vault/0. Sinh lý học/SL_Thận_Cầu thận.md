@@ -1,3 +1,9 @@
+---
+title: "SL_Thận_Cầu thận"
+specialty: "Sinh lý học"
+tags: ["Sinh lý học"]
+last_updated: "2026-07-28"
+---
 Dưới đây là phần tóm tắt ngắn gọn, trọng tâm về **Chức năng Lọc tại Cầu thận (Glomerular Filtration)** kèm theo sự giải thích các hình ảnh, lưu đồ minh họa được trích xuất từ các tài liệu sinh lý học y khoa:
 
 ### I. MÀNG LỌC CẦU THẬN VÀ TÍNH THẤM

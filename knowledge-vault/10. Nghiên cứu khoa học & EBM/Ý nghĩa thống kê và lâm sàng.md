@@ -1,3 +1,9 @@
+---
+title: "Ý nghĩa thống kê và lâm sàng"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM"]
+last_updated: "2026-07-28"
+---
 Chào bạn, dưới góc độ của một bác sĩ chuyên khoa sâu và nhà nghiên cứu lâm sàng (Clinical Researcher), việc phân định rạch ròi giữa **Ý nghĩa Lâm sàng (Clinical Significance)** và **Ý nghĩa Thống kê (Statistical Significance)** là một trong những kỹ năng phân tích dữ liệu quan trọng nhất. Sự nhầm lẫn giữa hai khái niệm này có thể dẫn đến việc đưa ra các quyết định điều trị sai lầm, lãng phí nguồn lực y tế, hoặc bỏ qua những liệu pháp thực sự có giá trị cho người bệnh.
 
 Dưới đây là phân tích chuyên sâu về sự khác biệt, cơ chế, và cách áp dụng tư duy này vào thực hành lâm sàng.

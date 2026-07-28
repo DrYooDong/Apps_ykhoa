@@ -1,3 +1,9 @@
+---
+title: "KS cho BN nặng (Y chính)"
+specialty: "Bệnh truyền nhiễm"
+tags: ["Bệnh truyền nhiễm", "Dược lý - Nhiễm", "Cập nhật"]
+last_updated: "2026-07-28"
+---
 NÓNG HỔI: KHÁNG SINH Ở BỆNH NHÂN NẶNG
 Link: [Kháng sinh ở bệnh nhân nặng.pdf - Google Drive](https://drive.google.com/file/d/1V0ey2paO8Enbt8U4OtH1xK0Vn_MIS6Tn/view?ts=6a58efa8)
 

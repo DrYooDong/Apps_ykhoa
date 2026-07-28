@@ -1,3 +1,9 @@
+---
+title: "NÊN CHỌN PHÉP KIỂM NÀO KHI ĐO LƯỜNG LẶP LẠI THEO THỜI GIAN"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
+last_updated: "2026-07-28"
+---
 ​Khi đánh giá hiệu quả của một phác đồ điều trị (ví dụ: đo nồng độ Cholesterol máu trên cùng một nhóm 40 bệnh nhân tại 3 thời điểm: Trước điều trị - Sau 1 tháng - Sau 3 tháng), rất nhiều bạn băn khoăn không biết chọn kỹ thuật thống kê nào cho đúng.
 
 ​Dưới đây là so sánh nhanh 3 lựa chọn phổ biến nhất từ cơ bản đến nâng cao để các bạn áp dụng vào bài báo cáo hay luận văn của mình:

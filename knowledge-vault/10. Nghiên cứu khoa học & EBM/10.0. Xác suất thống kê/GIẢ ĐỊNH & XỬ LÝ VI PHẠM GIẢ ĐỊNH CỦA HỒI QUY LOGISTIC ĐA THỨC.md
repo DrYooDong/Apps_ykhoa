@@ -1,3 +1,9 @@
+---
+title: "GIẢ ĐỊNH & XỬ LÝ VI PHẠM GIẢ ĐỊNH CỦA HỒI QUY LOGISTIC ĐA THỨC"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
+last_updated: "2026-07-28"
+---
 𝐂𝐚́𝐜 𝐠𝐢𝐚̉ đ𝐢̣𝐧𝐡 𝐯𝐚̀ 𝐱𝐮̛̉ 𝐥𝐲́ 𝐯𝐢 𝐩𝐡𝐚̣𝐦 𝐠𝐢𝐚̉ đ𝐢̣𝐧𝐡 𝐜𝐮̉𝐚 𝐡𝐨̂̀𝐢 𝐪𝐮𝐲 𝐥𝐨𝐠𝐢𝐬𝐭𝐢𝐜 đ𝐚 𝐭𝐡𝐮̛́𝐜: 𝐏𝐡𝐚̂̀𝐧 𝟑- 𝐇𝐨̂̀𝐢 𝐪𝐮𝐲 𝐥𝐨𝐠𝐢𝐬𝐭𝐢𝐜 đ𝐚 𝐭𝐡𝐮̛́𝐜 đ𝐨̂́𝐢 𝐯𝐨̛́𝐢 𝐛𝐢𝐞̂́𝐧 𝐤𝐞̂́𝐭 𝐜𝐮̣𝐜 𝐝𝐚𝐧𝐡 𝐧𝐠𝐡𝐢̃𝐚
 
 TS. Đào Hồng Nam

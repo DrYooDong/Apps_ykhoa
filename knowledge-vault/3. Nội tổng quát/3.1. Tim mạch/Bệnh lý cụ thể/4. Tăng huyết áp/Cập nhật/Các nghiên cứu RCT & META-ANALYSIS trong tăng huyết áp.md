@@ -1,3 +1,9 @@
+---
+title: "Các nghiên cứu RCT & META-ANALYSIS trong tăng huyết áp"
+specialty: "Tim mạch"
+tags: ["Nội tổng quát", "Tim mạch", "Bệnh lý cụ thể", "Tăng huyết áp", "Cập nhật"]
+last_updated: "2026-07-28"
+---
 # TỔNG QUAN VỀ CÁC THỬ NGHIỆM LÂM SÀNG NGẪU NHIÊN CÓ ĐỐI CHỨNG (RCT) VÀ PHÂN TÍCH GỘP (META-ANALYSIS) TRONG TĂNG HUYẾT ÁP
 
 Trong thực hành tim mạch học hiện đại, Y học dựa trên bằng chứng (EBM) là nền tảng cốt lõi để đưa ra các quyết định lâm sàng. Đối với bệnh lý tăng huyết áp (THA), các Thử nghiệm lâm sàng ngẫu nhiên có đối chứng (RCT) và các Phân tích gộp (Meta-analysis) đóng vai trò định hình lại các hướng dẫn điều trị quốc tế, từ việc xác định ngưỡng huyết áp mục tiêu, chiến lược phối hợp thuốc, đến các can thiệp thay đổi lối sống. Dưới đây là phân tích chuyên sâu về các bằng chứng bản lề này, ứng dụng lâm sàng và cơ chế bệnh sinh liên quan.

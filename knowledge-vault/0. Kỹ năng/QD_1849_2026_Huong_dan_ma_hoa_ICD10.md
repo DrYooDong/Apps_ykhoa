@@ -1,3 +1,9 @@
+---
+title: "QD_1849_2026_Huong_dan_ma_hoa_ICD10"
+specialty: "Kỹ năng"
+tags: ["Kỹ năng"]
+last_updated: "2026-07-28"
+---
 BỘ Y TẾ CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM Độc lập - Tự do - Hạnh phúc 1849 23 6 Số: /QĐ - B YT Hà Nội, ngày tháng năm 202 6
 QUYẾT ĐỊNH
 Ban hành t ài liệu hướng dẫn kỹ thuật mã hoá bệnh tật, nguyên nhân tử vong theo ICD - 10

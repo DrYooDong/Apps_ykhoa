@@ -1,3 +1,9 @@
+---
+title: "PT_CT-scan ngực"
+specialty: "Kỹ năng"
+tags: ["Kỹ năng", "Cận lâm sàng"]
+last_updated: "2026-07-28"
+---
 Mặc dù các tài liệu được cung cấp có đề cập đến vai trò, chỉ định và các loại CT-scan ngực chuyên biệt (như HRCT, CTPA), chúng không cung cấp một quy trình giải phẫu từng bước chi tiết để đọc phim ngực. **Xin lưu ý rằng các bước phân tích giải phẫu hệ thống dưới đây được bổ sung từ kiến thức y khoa bên ngoài** nhằm kết hợp với các dữ kiện từ tài liệu để đáp ứng yêu cầu đọc "chuyên sâu" của bạn. Bạn có thể cần tham khảo thêm các giáo trình chẩn đoán hình ảnh chuyên ngành để đối chiếu.
 
 Dưới đây là các bước đọc và phân tích CT-scan ngực chuyên sâu:

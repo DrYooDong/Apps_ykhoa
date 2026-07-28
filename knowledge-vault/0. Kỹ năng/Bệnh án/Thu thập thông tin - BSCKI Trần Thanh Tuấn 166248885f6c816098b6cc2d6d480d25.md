@@ -1,3 +1,9 @@
+---
+title: "Thu thập thông tin - BSCKI Trần Thanh Tuấn 166248885f6c816098b6cc2d6d480d25"
+specialty: "Kỹ năng"
+tags: ["Kỹ năng", "Bệnh án"]
+last_updated: "2026-07-28"
+---
 # Thu thập thông tin - BSCKI. Trần Thanh Tuấn
 
 Nguồn: **SINH VIÊN Y KHOA**

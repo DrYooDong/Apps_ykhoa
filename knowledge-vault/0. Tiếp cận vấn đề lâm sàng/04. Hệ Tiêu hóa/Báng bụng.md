@@ -1,3 +1,9 @@
+---
+title: "Báng bụng"
+specialty: "Hệ Tiêu hóa"
+tags: ["Tiếp cận vấn đề lâm sàng", "Hệ Tiêu hóa"]
+last_updated: "2026-07-28"
+---
 # 1. Cơ chế bệnh sinh 
 *Bụng to hay báng bụng* (abdominal swelling / ascites) có thể do sự tăng thể tích trong ổ bụng từ nhiều thành phần khác nhau, kinh điển được mô tả bằng **quy tắc "5 F"**: 
 + Fat (mỡ), 

@@ -1,3 +1,9 @@
+---
+title: "Ngất"
+specialty: "Tiếp cận vấn đề lâm sàng"
+tags: ["Tiếp cận vấn đề lâm sàng", "Vấn đề Toàn thân & Cấp cứu", "Triệu chứng khác"]
+last_updated: "2026-07-28"
+---
 # 1. Cơ chế bệnh sinh 
 
 Ngất (Syncope) được định nghĩa là tình trạng mất ý thức thoáng qua (transient loss of consciousness - TLoC) kèm theo mất trương lực tư thế, sau đó bệnh nhân tự hồi phục hoàn toàn và nhanh chóng.

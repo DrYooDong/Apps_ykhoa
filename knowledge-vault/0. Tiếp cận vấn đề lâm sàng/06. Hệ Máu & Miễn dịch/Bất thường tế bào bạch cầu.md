@@ -1,3 +1,9 @@
+---
+title: "Bất thường tế bào bạch cầu"
+specialty: "Tiếp cận vấn đề lâm sàng"
+tags: ["Tiếp cận vấn đề lâm sàng", "Hệ Máu & Miễn dịch"]
+last_updated: "2026-07-28"
+---
 # 1. Cơ chế bệnh sinh 
 Bất thường tế bào bạch cầu (WBC) bao gồm tình trạng tăng hoặc giảm số lượng bạch cầu, phản ánh sự thay đổi trong quá trình sản xuất, phân bố, hoặc phá hủy tế bào.
 

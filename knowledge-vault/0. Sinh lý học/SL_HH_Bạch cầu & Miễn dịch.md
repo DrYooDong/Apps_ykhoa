@@ -1,3 +1,9 @@
+---
+title: "SL_HH_Bạch cầu & Miễn dịch"
+specialty: "Sinh lý học"
+tags: ["Sinh lý học"]
+last_updated: "2026-07-28"
+---
 Dưới đây là nội dung chi tiết về Sinh lý học Bạch cầu và Miễn dịch, được tổng hợp và biên soạn dựa trên các tài liệu y khoa bạn đã cung cấp:
 
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT

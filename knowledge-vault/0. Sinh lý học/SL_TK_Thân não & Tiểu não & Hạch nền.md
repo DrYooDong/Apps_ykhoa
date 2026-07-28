@@ -1,3 +1,9 @@
+---
+title: "SL_TK_Thân não & Tiểu não & Hạch nền"
+specialty: "Sinh lý học"
+tags: ["Sinh lý học"]
+last_updated: "2026-07-28"
+---
 ### 1. SINH LÝ THÂN NÃO (BRAIN STEM) TRONG ĐIỀU HÒA VẬN ĐỘNG
 
 Thân não bao gồm hành não (medulla), cầu não (pons), và trung não (midbrain). Đây là cấu trúc mở rộng của tủy sống đi lên hộp sọ, chứa các nhân vận động và cảm giác thực hiện chức năng cho vùng mặt và đầu. Ngoài ra, thân não đóng vai trò như một trạm trung chuyển cho các tín hiệu chỉ huy từ các trung tâm thần kinh cao hơn và cung cấp các chức năng kiểm soát đặc biệt như: hô hấp, hệ tim mạch, tiêu hóa, chuyển động dập khuôn, thăng bằng và chuyển động của mắt.

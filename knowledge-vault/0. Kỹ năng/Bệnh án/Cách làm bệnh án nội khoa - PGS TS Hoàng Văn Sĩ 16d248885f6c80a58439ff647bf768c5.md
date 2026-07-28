@@ -1,3 +1,9 @@
+---
+title: "Cách làm bệnh án nội khoa - PGS TS Hoàng Văn Sĩ 16d248885f6c80a58439ff647bf768c5"
+specialty: "Kỹ năng"
+tags: ["Kỹ năng", "Bệnh án"]
+last_updated: "2026-07-28"
+---
 # Cách làm bệnh án nội khoa - PGS.TS. Hoàng Văn Sĩ
 
 [Cách-làm-bệnh-án-PGS-Sỹ.pdf](Cch-lm-bnh-n-PGS-S.pdf)

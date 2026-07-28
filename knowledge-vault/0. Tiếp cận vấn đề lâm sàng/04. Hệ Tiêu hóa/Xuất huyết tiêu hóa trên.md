@@ -1,3 +1,9 @@
+---
+title: "Xuất huyết tiêu hóa trên"
+specialty: "Hệ Tiêu hóa"
+tags: ["Tiếp cận vấn đề lâm sàng", "Hệ Tiêu hóa"]
+last_updated: "2026-07-28"
+---
 # 1. Cơ chế bệnh sinh 
 Xuất huyết tiêu hóa trên (UGIB) được định nghĩa là tình trạng chảy máu xuất phát từ các tổn thương nằm phía trên dây chằng Treitz. Các cơ chế sinh lý bệnh chính bao gồm:
 

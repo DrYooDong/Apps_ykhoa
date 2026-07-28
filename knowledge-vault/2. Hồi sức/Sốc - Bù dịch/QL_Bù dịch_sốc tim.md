@@ -1,3 +1,9 @@
+---
+title: "QL_Bù dịch_sốc tim"
+specialty: "Hồi sức"
+tags: ["Hồi sức", "Sốc - Bù dịch"]
+last_updated: "2026-07-28"
+---
 **I. Nguyên Tắc Cốt Lõi Về Bù Dịch Trong Sốc Tim**
 
 Khác với sốc giảm thể tích hay sốc nhiễm trùng, liệu pháp truyền dịch **không phải là phương pháp điều trị đầu tay** đối với sốc tim (đặc biệt là sốc tim trái). Việc truyền dịch ở bệnh nhân sốc tim tiềm ẩn nguy cơ rất cao làm trầm trọng thêm tình trạng suy tim, tăng áp lực đổ đầy và dẫn đến phù phổi cấp. 

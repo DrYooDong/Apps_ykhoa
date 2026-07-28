@@ -1,3 +1,9 @@
+---
+title: "HỒI QUY TUYẾN TÍNH BAYES TRONG NGHIÊN CỨU Y HỌC"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
+last_updated: "2026-07-28"
+---
 𝐇𝐨̂̀𝐢 𝐪𝐮𝐲 𝐭𝐮𝐲𝐞̂́𝐧 𝐭𝐢́𝐧𝐡 𝐁𝐚𝐲𝐞𝐬 𝐭𝐫𝐨𝐧𝐠 𝐧𝐠𝐡𝐢𝐞̂𝐧 𝐜𝐮̛́𝐮 𝐲 𝐡𝐨̣𝐜: 𝐂𝐨̛ 𝐬𝐨̛̉ 𝐥𝐲́ 𝐭𝐡𝐮𝐲𝐞̂́𝐭, 𝐩𝐡𝐮̛𝐨̛𝐧𝐠 𝐩𝐡𝐚́𝐩 𝐬𝐮𝐲 𝐥𝐮𝐚̣̂𝐧 𝐯𝐚̀ 𝐮̛́𝐧𝐠 𝐝𝐮̣𝐧𝐠 - 𝐏𝐡𝐚̂̀𝐧 𝟏
 
 TS. Đào Hồng Nam

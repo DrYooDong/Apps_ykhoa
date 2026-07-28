@@ -1,3 +1,9 @@
+---
+title: "Sốt do thuốc"
+specialty: "Tiếp cận vấn đề lâm sàng"
+tags: ["Tiếp cận vấn đề lâm sàng", "Vấn đề Toàn thân & Cấp cứu", "Sốt (Fever)"]
+last_updated: "2026-07-28"
+---
 # Các bước tiếp cận lâm sàng (Clinical approach)
 
 ### Bước 1: Ổn định ban đầu – sàng lọc nguy cơ

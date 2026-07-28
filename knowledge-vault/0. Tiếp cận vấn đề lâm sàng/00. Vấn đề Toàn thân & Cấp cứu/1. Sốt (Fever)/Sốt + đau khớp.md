@@ -1,3 +1,9 @@
+---
+title: "Sốt + đau khớp"
+specialty: "Tiếp cận vấn đề lâm sàng"
+tags: ["Tiếp cận vấn đề lâm sàng", "Vấn đề Toàn thân & Cấp cứu", "Sốt (Fever)"]
+last_updated: "2026-07-28"
+---
 # Tiếp cận lâm sàng cho vấn đề/triệu chứng [SỐT + ĐAU KHỚP]
 
 Các bước tiếp cận lâm sàng (Clinical approach)

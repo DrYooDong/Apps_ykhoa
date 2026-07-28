@@ -1,3 +1,9 @@
+---
+title: "SL_Tuyến giáp"
+specialty: "Sinh lý học"
+tags: ["Sinh lý học"]
+last_updated: "2026-07-28"
+---
 Dưới đây là bài học chi tiết về Sinh lý học Tuyến giáp, được biên soạn dựa trên các tài liệu y khoa và bài giảng đã cung cấp.
 
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT

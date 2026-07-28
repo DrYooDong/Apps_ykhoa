@@ -1,3 +1,9 @@
+---
+title: "APASL_VGSVB_2026"
+specialty: "Bệnh truyền nhiễm"
+tags: ["Bệnh truyền nhiễm", "Bệnh lý cụ thể", "Viêm gan", "Viêm gan siêu vi", "VGSV-B"]
+last_updated: "2026-07-28"
+---
 **TÓM TẮT HƯỚNG DẪN LÂM SÀNG**
 
 **APASL CLINICAL PRACTICE GUIDELINES ON THE MANAGEMENT OF**

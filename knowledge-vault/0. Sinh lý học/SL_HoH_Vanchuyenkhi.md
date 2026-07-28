@@ -1,3 +1,9 @@
+---
+title: "SL_HoH_Vanchuyenkhi"
+specialty: "Sinh lý học"
+tags: ["Sinh lý học"]
+last_updated: "2026-07-28"
+---
 Dưới đây là nội dung chi tiết về Sinh lý Vận chuyển khí trong máu và Điều hòa hô hấp, được biên soạn bám sát các tài liệu nguồn, trích xuất hình ảnh minh họa và trích dẫn theo chuẩn AMA.
 
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT

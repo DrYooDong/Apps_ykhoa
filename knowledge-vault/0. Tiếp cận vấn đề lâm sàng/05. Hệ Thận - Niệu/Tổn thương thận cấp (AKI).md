@@ -1,3 +1,9 @@
+---
+title: "Tổn thương thận cấp (AKI)"
+specialty: "Hệ Thận - Niệu"
+tags: ["Tiếp cận vấn đề lâm sàng", "Hệ Thận - Niệu"]
+last_updated: "2026-07-28"
+---
 **1. Cơ chế bệnh sinh** Tổn thương thận cấp (AKI) – trước đây gọi là suy thận cấp (ARF) – là một hội chứng lâm sàng đặc trưng bởi sự suy giảm đột ngột chức năng lọc của cầu thận trong vài giờ đến vài ngày, dẫn đến ứ đọng các chất thải nitơ, mất cân bằng nước, điện giải và toan kiềm,. Theo tiêu chuẩn KDIGO, AKI được chẩn đoán khi có một trong các dấu hiệu: tăng creatinine huyết thanh (SCr) $\ge$ 0.3 mg/dL trong vòng 48 giờ, hoặc SCr tăng $\ge$ 1.5 lần so với mức nền trong vòng 7 ngày, hoặc thể tích nước tiểu < 0.5 mL/kg/giờ trong ít nhất 6 giờ,. Cơ chế sinh lý bệnh được chia thành ba nhóm chính:
 
 - **Trước thận (Prerenal):** Xảy ra do tình trạng giảm tưới máu thận. Ban đầu, cơ chế tự điều hòa (autoregulation) của thận cố gắng duy trì áp lực lọc bằng cách co tiểu động mạch ra và giãn tiểu động mạch vào. Khi tình trạng giảm tưới máu kéo dài hoặc nghiêm trọng (do sốc, xuất huyết, mất nước, hoặc suy tim), hoặc khi cơ chế tự điều hòa bị suy yếu (do dùng thuốc NSAID, ACEI/ARB), áp lực lọc cầu thận sẽ giảm mạnh,. Nếu tưới máu không được khôi phục, tình trạng thiếu máu cục bộ kéo dài sẽ dẫn đến hoại tử tế bào ống thận.

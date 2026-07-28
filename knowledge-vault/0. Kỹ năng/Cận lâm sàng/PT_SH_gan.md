@@ -1,3 +1,9 @@
+---
+title: "PT_SH_gan"
+specialty: "Kỹ năng"
+tags: ["Kỹ năng", "Cận lâm sàng"]
+last_updated: "2026-07-28"
+---
 Thuật ngữ "xét nghiệm chức năng gan" (Liver Function Tests - LFTs) thực ra chưa hoàn toàn chính xác, vì phần lớn các chỉ số này (như men gan) phản ánh vị trí và mức độ tổn thương của tế bào gan hoặc đường mật, chứ không đo lường chức năng thực sự của gan.
 
 Để đọc và phân tích các kết quả sinh hóa gan một cách toàn diện và hệ thống, bạn cần thực hiện theo các bước sau:

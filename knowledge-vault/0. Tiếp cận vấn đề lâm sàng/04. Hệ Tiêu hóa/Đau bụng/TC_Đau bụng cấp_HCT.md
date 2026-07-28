@@ -1,3 +1,9 @@
+---
+title: "TC_Đau bụng cấp_HCT"
+specialty: "Hệ Tiêu hóa"
+tags: ["Tiếp cận vấn đề lâm sàng", "Hệ Tiêu hóa", "Đau bụng"]
+last_updated: "2026-07-28"
+---
 Dưới đây là bài học tiếp cận lâm sàng cho vấn đề Đau bụng cấp ở hố chậu trái, được biên soạn bám sát các tài liệu nguồn đã cung cấp.
 
 # Tiếp cận lâm sàng cho vấn đề/triệu chứng [ĐAU BỤNG CẤP Ở HỐ CHẬU TRÁI]

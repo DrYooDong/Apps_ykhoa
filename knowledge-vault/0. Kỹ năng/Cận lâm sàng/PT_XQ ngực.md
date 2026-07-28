@@ -1,3 +1,9 @@
+---
+title: "PT_XQ ngực"
+specialty: "Kỹ năng"
+tags: ["Kỹ năng", "Cận lâm sàng"]
+last_updated: "2026-07-28"
+---
 Giống như khi đọc các xét nghiệm máu, việc đọc X-quang ngực cũng đòi hỏi một cách tiếp cận có hệ thống để đảm bảo bạn không bỏ sót bất kỳ tổn thương quan trọng nào. 
 
 Dưới đây là các bước chi tiết để đọc và phân tích một phim X-quang ngực một cách toàn diện dựa trên phương pháp **ABCDE**,:

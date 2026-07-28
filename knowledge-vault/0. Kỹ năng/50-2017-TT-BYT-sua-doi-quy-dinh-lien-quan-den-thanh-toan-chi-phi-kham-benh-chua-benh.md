@@ -1,3 +1,9 @@
+---
+title: "TT-BYT-sua-doi-quy-dinh-lien-quan-den-thanh-toan-chi-phi-kham-benh-chua-benh"
+specialty: "Kỹ năng"
+tags: ["Kỹ năng"]
+last_updated: "2026-07-28"
+---
 BỘ Y TẾ CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM -------- Độc lập - Tự do - Hạnh phúc ---------------
 Số: 50/2017/TT-BYT Hà Nội, ngày 29 tháng 12 năm 2017
 THÔNG TƯ

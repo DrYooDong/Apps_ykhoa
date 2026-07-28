@@ -1,3 +1,9 @@
+---
+title: "CÁC KỸ THUẬT HẬU KIỂM, CỠ ẢNH HƯỞNG VÀ SAI SÓT THƯỜNG GẶP KHI BÁO CÁO KẾT QUẢ TRONG ANOVA"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
+last_updated: "2026-07-28"
+---
 𝐂𝐚́𝐜 𝐤𝐲̃ 𝐭𝐡𝐮𝐚̣̂𝐭 𝐡𝐚̣̂𝐮 𝐤𝐢𝐞̂̉𝐦, 𝐜𝐨̛̃ 𝐚̉𝐧𝐡 𝐡𝐮̛𝐨̛̉𝐧𝐠 𝐯𝐚̀ 𝐬𝐚𝐢 𝐬𝐨́𝐭 𝐭𝐡𝐮̛𝐨̛̀𝐧𝐠 𝐠𝐚̣̆𝐩 𝐤𝐡𝐢 𝐛𝐚́𝐨 𝐜𝐚́𝐨 𝐤𝐞̂́𝐭 𝐪𝐮𝐚̉ 𝐭𝐫𝐨𝐧𝐠 𝐀𝐧𝐨𝐯𝐚 - 𝐏𝐡𝐚̂̀𝐧 𝟔 𝐜𝐮̉𝐚 𝐜𝐡𝐮̉ đ𝐞̂̀ 𝐏𝐡𝐚̂𝐧 𝐭𝐢́𝐜𝐡 𝐩𝐡𝐮̛𝐨̛𝐧𝐠 𝐬𝐚𝐢 𝐭𝐡𝐞𝐨 𝐠𝐨́𝐜 𝐧𝐡𝐢̀𝐧 𝐜𝐮̉𝐚 𝐜𝐚́𝐜 𝐛𝐚̀𝐢 𝐛𝐚́𝐨 𝐜𝐡𝐮𝐚̂̉𝐧 𝐪𝐮𝐨̂́𝐜 𝐭𝐞̂́
 
 TS. Đào Hồng Nam

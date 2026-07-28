@@ -1,3 +1,9 @@
+---
+title: "Cập nhật 2026"
+specialty: "Tim mạch"
+tags: ["Nội tổng quát", "Tim mạch", "Bệnh lý cụ thể", "Suy tim", "Cập nhật"]
+last_updated: "2026-07-28"
+---
 Suy tim tiếp tục là một trong những thách thức lớn nhất của y học hiện đại, nhưng những năm 2025-2026 đã đánh dấu các bước ngoặt bản lề trong cả tư duy sinh lý bệnh lẫn thực hành lâm sàng. 
 
 Sự ra đời của các bản đồng thuận và khuyến cáo mới nhất, điển hình như Khuyến cáo của Cụm hiệp hội AHA/ACC/ADA/ASN năm 2026 về **Hội chứng Tim mạch - Thận - Chuyển hóa (CKM)** và Khuyến cáo của Hội Tim mạch Canada (CCS/CHFS) 2025, đã làm thay đổi hoàn toàn cục diện chẩn đoán và điều trị.

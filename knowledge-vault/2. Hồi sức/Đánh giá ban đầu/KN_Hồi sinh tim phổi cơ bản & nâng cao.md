@@ -1,3 +1,9 @@
+---
+title: "KN_Hồi sinh tim phổi cơ bản & nâng cao"
+specialty: "Hồi sức"
+tags: ["Hồi sức", "Đánh giá ban đầu"]
+last_updated: "2026-07-28"
+---
 ### 1. CƠ SỞ SINH LÝ BỆNH CỦA NGƯNG TUẦN HOÀN VÀ MỤC TIÊU HỒI SỨC
 Ngưng hô hấp tuần hoàn là tình trạng tim ngừng cung cấp máu cho cơ thể, dẫn đến thiếu oxy mô cấp tính và hoại tử tế bào không hồi phục, đặc biệt là ở não, chỉ trong vòng 4-5 phút. Quá trình ngưng tim, điển hình là do Rung thất (VF), diễn biến qua 3 pha sinh lý bệnh học quyết định đến chiến lược can thiệp:
 *   **Pha điện học (0 - 4 phút đầu):** Cơ tim còn dự trữ năng lượng (ATP) nhưng rối loạn về điện thế. Khử rung (sốc điện) ngay lập tức là can thiệp tối ưu nhất với tỷ lệ thành công cao.

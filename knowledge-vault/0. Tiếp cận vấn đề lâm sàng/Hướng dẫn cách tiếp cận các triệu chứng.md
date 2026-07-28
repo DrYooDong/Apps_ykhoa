@@ -1,3 +1,9 @@
+---
+title: "Hướng dẫn cách tiếp cận các triệu chứng"
+specialty: "Tiếp cận vấn đề lâm sàng"
+tags: ["Tiếp cận vấn đề lâm sàng"]
+last_updated: "2026-07-28"
+---
 Cấu trúc chuẩn tiếp cận một triệu chứng dành cho bác sĩ lâm sàng, đi từ khai thác triệu chứng đến chẩn đoán và xử trí:
 
 ## 1) Định nghĩa triệu chứng và đặc tính then chốt

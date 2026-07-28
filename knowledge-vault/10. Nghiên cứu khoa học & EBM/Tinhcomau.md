@@ -1,3 +1,9 @@
+---
+title: "Tinhcomau"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM"]
+last_updated: "2026-07-28"
+---
 Là một nhà nghiên cứu lâm sàng (Clinical Researcher), việc thiết kế nghiên cứu (Study Design) và tính toán cỡ mẫu (Sample Size Calculation) là hai bước mang tính "sống còn" quyết định đến độ giá trị (validity) và độ tin cậy (reliability) của một công trình y khoa. Nếu cỡ mẫu quá nhỏ, nghiên cứu sẽ không đủ sức mạnh thống kê để phát hiện ra sự khác biệt lâm sàng (sai lầm loại II); ngược lại, nếu cỡ mẫu quá lớn, chúng ta sẽ lãng phí tài nguyên, thời gian, và vi phạm nguyên lý đạo đức nghiên cứu khi phơi nhiễm những rủi ro không cần thiết cho quá nhiều bệnh nhân,.
 
 Dưới đây là phân tích chuyên sâu về sự liên hệ giữa các mô hình thiết kế và cách tính toán cỡ mẫu tương ứng trong thực hành lâm sàng.

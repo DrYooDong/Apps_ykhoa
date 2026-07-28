@@ -1,3 +1,9 @@
+---
+title: "QL_Bù dịch_sốc bỏng"
+specialty: "Hồi sức"
+tags: ["Hồi sức", "Sốc - Bù dịch"]
+last_updated: "2026-07-28"
+---
 **I. Nguyên Tắc Cốt Lõi Trong Xử Trí Sốc Bỏng**
 
 Phác đồ xử trí sốc bỏng cấp tính dưới đây được xây dựng dựa trên Hướng dẫn Thực hành Lâm sàng năm 2023 của Hiệp hội Bỏng Hoa Kỳ (ABA), áp dụng cho bệnh nhân người lớn bị bỏng từ 20% diện tích bề mặt cơ thể (TBSA) trở lên trong 48 giờ đầu tiên sau bỏng. 

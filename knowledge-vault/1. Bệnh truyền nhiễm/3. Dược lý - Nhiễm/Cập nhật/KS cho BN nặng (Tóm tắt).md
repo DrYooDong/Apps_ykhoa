@@ -1,3 +1,9 @@
+---
+title: "KS cho BN nặng (Tóm tắt)"
+specialty: "Bệnh truyền nhiễm"
+tags: ["Bệnh truyền nhiễm", "Dược lý - Nhiễm", "Cập nhật"]
+last_updated: "2026-07-28"
+---
 ### 1. Nguyên Tắc Thời Điểm Và Cấy Vi Sinh Trong Lựa Chọn Kháng Sinh Kinh Nghiệm
 
 **Thời điểm bắt đầu kháng sinh:** Việc điều trị nhiễm khuẩn ở bệnh nhân nặng cần cân bằng giữa nguy cơ điều trị dưới mức (dẫn đến tử vong có thể phòng ngừa) và điều trị quá mức (gây độc tính, kháng thuốc và bội nhiễm). Đối với bệnh nhân có sốc nhiễm khuẩn, không được chậm trễ trong việc dùng kháng sinh, vì mỗi giờ trì hoãn đều làm tăng tỷ lệ tử vong. Tuy nhiên, ở bệnh nhân nhiễm khuẩn nhưng không có sốc, hoặc nghi ngờ nhiễm khuẩn nhưng không có rối loạn chức năng cơ quan, các bác sĩ nên dành thời gian để xác nhận chẩn đoán trước khi sử dụng kháng sinh phổ rộng. Việc sử dụng bừa bãi kháng sinh phổ rộng làm tăng nguy cơ nhiễm _Clostridioides difficile_, độc tính thận, phá vỡ hệ vi sinh vật đường ruột và tăng tỷ lệ tử vong.

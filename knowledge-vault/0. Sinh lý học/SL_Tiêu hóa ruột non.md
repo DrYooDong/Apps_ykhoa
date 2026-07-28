@@ -1,3 +1,9 @@
+---
+title: "SL_Tiêu hóa ruột non"
+specialty: "Sinh lý học"
+tags: ["Sinh lý học"]
+last_updated: "2026-07-28"
+---
 Ruột non là cơ quan quan trọng nhất của ống tiêu hóa, đảm nhận vai trò thiết yếu trong việc tiêu hóa triệt để thức ăn và hấp thu phần lớn các chất dinh dưỡng, nước và điện giải vào cơ thể. Quá trình này đòi hỏi sự phối hợp nhịp nhàng của bốn hoạt động sinh lý cơ bản: cơ học, bài tiết, tiêu hóa và hấp thu. Nhờ cấu trúc đặc biệt với các nếp gấp niêm mạc, nhung mao (villi) và vi nhung mao (microvilli) tạo thành bờ bàn chải, diện tích hấp thu của ruột non được tăng lên gấp 600 lần, đạt khoảng $250~m^{2}$.
 
 **1. Hoạt động cơ học của ruột non**

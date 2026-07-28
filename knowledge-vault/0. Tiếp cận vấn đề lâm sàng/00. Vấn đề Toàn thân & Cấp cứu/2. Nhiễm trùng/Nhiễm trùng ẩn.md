@@ -1,3 +1,9 @@
+---
+title: "Nhiễm trùng ẩn"
+specialty: "Tiếp cận vấn đề lâm sàng"
+tags: ["Tiếp cận vấn đề lâm sàng", "Vấn đề Toàn thân & Cấp cứu", "Nhiễm trùng"]
+last_updated: "2026-07-28"
+---
 # **1. Cơ chế bệnh sinh** 
 
 Nhiễm trùng "ẩn" (occult infection) hay Sốt chưa rõ nguyên nhân (Fever of Unknown Origin - FUO) là thách thức lớn trên lâm sàng, xảy ra khi vi sinh vật khu trú tại các cơ quan sâu hoặc tạo màng sinh học (biofilm) trên các thiết bị nhân tạo, né tránh được sự thanh thải của hệ miễn dịch nhưng vẫn liên tục phóng thích cytokine viêm vào tuần hoàn.

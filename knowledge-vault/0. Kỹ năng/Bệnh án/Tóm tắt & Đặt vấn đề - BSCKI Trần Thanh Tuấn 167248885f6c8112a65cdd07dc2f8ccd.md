@@ -1,3 +1,9 @@
+---
+title: "Tóm tắt & Đặt vấn đề - BSCKI Trần Thanh Tuấn 167248885f6c8112a65cdd07dc2f8ccd"
+specialty: "Kỹ năng"
+tags: ["Kỹ năng", "Bệnh án"]
+last_updated: "2026-07-28"
+---
 # Tóm tắt & Đặt vấn đề - BSCKI. Trần Thanh Tuấn
 
 Nguồn: **SINH VIÊN Y KHOA**

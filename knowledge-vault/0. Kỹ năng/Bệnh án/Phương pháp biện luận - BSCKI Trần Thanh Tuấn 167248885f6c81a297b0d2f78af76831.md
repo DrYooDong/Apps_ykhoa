@@ -1,3 +1,9 @@
+---
+title: "Phương pháp biện luận - BSCKI Trần Thanh Tuấn 167248885f6c81a297b0d2f78af76831"
+specialty: "Kỹ năng"
+tags: ["Kỹ năng", "Bệnh án"]
+last_updated: "2026-07-28"
+---
 # Phương pháp biện luận - BSCKI. Trần Thanh Tuấn
 
 Nguồn: **SINH VIÊN Y KHOA**

@@ -1,3 +1,9 @@
+---
+title: "Xuất huyết bất thường (Chảy máu_Bầm máu)"
+specialty: "Tiếp cận vấn đề lâm sàng"
+tags: ["Tiếp cận vấn đề lâm sàng", "Hệ Máu & Miễn dịch"]
+last_updated: "2026-07-28"
+---
 # 1. Cơ chế bệnh sinh 
 Quá trình cầm máu và đông máu bình thường đòi hỏi sự phối hợp của ==3 thành tố==: 
 	1. thành mạch, 

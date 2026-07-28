@@ -1,3 +1,9 @@
+---
+title: "PT_Nhuộm soi"
+specialty: "Kỹ năng"
+tags: ["Kỹ năng", "Cận lâm sàng"]
+last_updated: "2026-07-28"
+---
 Đọc và phân tích tiêu bản soi tươi cũng như nhuộm Gram là một trong những kỹ năng vi sinh cơ bản và quan trọng nhất để định hướng chẩn đoán tác nhân gây bệnh. Dưới đây là các bước thực hiện và phân tích chi tiết dựa trên các tài liệu vi sinh và hướng dẫn thực hành lâm sàng chuẩn.
 
 ### PHẦN 1: CÁC BƯỚC ĐỌC VÀ PHÂN TÍCH NHUỘM GRAM

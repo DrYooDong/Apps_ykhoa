@@ -1,3 +1,9 @@
+---
+title: "SL_Cơ tim & HĐ điện"
+specialty: "Sinh lý học"
+tags: ["Sinh lý học"]
+last_updated: "2026-07-28"
+---
 Dưới đây là bài tổng hợp chi tiết về **Sinh lý Cơ tim và Hoạt động điện của Tim (Cardiac Electrophysiology)**, được biên soạn bám sát các tài liệu y khoa đã cung cấp và trình bày theo cấu trúc yêu cầu.
 
 ---

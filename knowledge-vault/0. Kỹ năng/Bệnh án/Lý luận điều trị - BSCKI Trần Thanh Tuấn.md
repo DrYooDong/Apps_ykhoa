@@ -1,3 +1,9 @@
+---
+title: "Lý luận điều trị - BSCKI Trần Thanh Tuấn"
+specialty: "Kỹ năng"
+tags: ["Kỹ năng", "Bệnh án"]
+last_updated: "2026-07-28"
+---
 Mục tiêu
 Sau khi đọc bài này người đọc có thể
 - Xác định mục tiêu điều trị phù hợp

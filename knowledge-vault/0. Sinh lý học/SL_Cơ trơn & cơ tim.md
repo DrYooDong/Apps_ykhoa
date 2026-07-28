@@ -1,3 +1,9 @@
+---
+title: "SL_Cơ trơn & cơ tim"
+specialty: "Sinh lý học"
+tags: ["Sinh lý học"]
+last_updated: "2026-07-28"
+---
 ### 1. SINH LÝ CƠ TIM (CARDIAC MUSCLE PHYSIOLOGY)
 
 **Đặc điểm Cấu trúc và Tính Hợp bào (Syncytium)**

@@ -1,3 +1,9 @@
+---
+title: "RCT"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM", "Phương pháp luận & Thiết kế nghiên cứu"]
+last_updated: "2026-07-28"
+---
 ### 1. KHÁI NIỆM VÀ ĐẶC ĐIỂM THIẾT KẾ CỐT LÕI
 
 Thử nghiệm lâm sàng ngẫu nhiên (Randomized Controlled Trial - RCT) là một thiết kế nghiên cứu thực nghiệm trong đó các cá thể (hoặc các đơn vị quần thể) được phân bổ ngẫu nhiên vào hai hoặc nhiều nhóm để nhận các can thiệp y tế khác nhau (thường là một nhóm nhận can thiệp thử nghiệm và một nhóm chứng nhận giả dược, chăm sóc chuẩn, hoặc không can thiệp),,,.

@@ -1,3 +1,9 @@
+---
+title: "byt-kem"
+specialty: "Kỹ năng"
+tags: ["Kỹ năng"]
+last_updated: "2026-07-28"
+---
 Page 1 of 1271
 Phụ lục Danh mục mã bệnh theo phân loại quốc tế bệnh tật, nguyên nhân tử vong theo ICD-10 (Ban hành kèm theo Thông tư số /2026/TT-BYT ngày tháng năm 2026 của Bộ trưởng Bộ Y tế) STT STT PHẠM CHAPTER NAME TÊN CHƯƠNG MÃ KHỐI BLOCK NAME TÊN KHỐI MÃ TIỂU FIRST SUB- TÊN TIỂU MÃ SECOND TÊN TIỂU MÃ 3-CHARACTER TÊN NHÓM MÃ MÃ DISEASE NAME ADDITIONAL CODING TÊN BỆNH HƯỚNG DẪN MÃ MÃ KHÔNG MÃ KHÔNG MÃ KHÔNG CHỈ SỬ CÁC MÃ CÁC MÃ CHƯƠNG VI MÃ KHỐI DIVISION KHỐI CẤP TIỂU SUB- KHỐI CẤP NHÓM SUB-CATEGORY BỆNH 3 KÝ TỰ BỆNH BỆNH WHO 2019 GUIDANCE WHO 2019 HÓA BỔ SUNG ĐƯỢC KHUYẾN ĐƯỢC SỬ DỤNG MÃ BỆNH CHỈ BỆNH CHỈ NHÓM CẤP 1 NAME 1 KHỐI DIVISION 2 BỆNH 3 NAME KHÔNG (ENGLISH) (ENGLISH) CỦA WHO 2019 DÙNG LÀ KHÍCH DỤNG VÌ CÓ HÓA CÓ HOẶC CÓ HOẶC BỆNH CẤP 2 NAME KÝ TỰ DẤU BỆNH CHÍNH DÙNG LÀ MÃ 4 HOẶC NGUYÊN CHỦ YẾU CHỦ YẾU BỆNH CHÍNH 5 KÝ TỰ CỤ NHÂN TỬ CÓ Ở NỮ CÓ Ở NAM THỂ HƠN VONG GIỚI GIỚI
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29

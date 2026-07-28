@@ -1,3 +1,9 @@
+---
+title: "SL_Hệ mạch & Điều hòa HA"
+specialty: "Sinh lý học"
+tags: ["Sinh lý học"]
+last_updated: "2026-07-28"
+---
 Dựa vào các tài liệu sinh lý học đã cung cấp, dưới đây là bài tổng hợp chi tiết về **Sinh lý Hệ Mạch và Điều hòa Huyết áp**, được chia thành các phần rõ ràng và minh họa bằng các sơ đồ/lưu đồ cơ chế.
 
 ---

@@ -1,3 +1,9 @@
+---
+title: "BYT_COPD 2026"
+specialty: "Hô hấp"
+tags: ["Nội tổng quát", "Hô hấp", "Bệnh lý cụ thể", "COPD"]
+last_updated: "2026-07-28"
+---
 
 **Đại Cương và Bệnh Lý Học Bệnh Phổi Tắc Nghẽn Mạn Tính (BPTNMT)**
 Bệnh phổi tắc nghẽn mạn tính (BPTNMT) là bệnh hô hấp phổ biến có thể phòng và điều trị được, đặc trưng bởi các triệu chứng hô hấp mạn tính (khó thở, ho, khạc đờm) và các đợt cấp do tình trạng bất thường của đường thở (viêm phế quản, viêm tiểu phế quản) và/hoặc phế nang (khí phế thũng) gây ra tắc nghẽn đường thở dai dẳng và thường tiến triển nặng dần. Nguyên nhân gây BPTNMT liên quan phơi nhiễm với các hạt hoặc khí độc hại (khói thuốc lá, thuốc lào, ô nhiễm không khí) và các yếu tố chủ thể bao gồm phổi kém phát triển khi còn nhỏ, lão hóa phổi nhanh, đột biến gen SERPINA1 gây ra thiếu hụt alpha-1-antitrysin. Bệnh đồng mắc và đợt kịch phát làm nặng thêm tình trạng bệnh và tăng tử vong.

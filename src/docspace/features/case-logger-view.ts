@@ -7,6 +7,8 @@ import { getAllCases, saveCase, deleteCase } from '../storage';
 import { CaseRecord, CaseContext } from '../types';
 import { renderSidebar, formatDate } from '../docspace-view';
 import { getActiveProfile } from '../storage';
+import { analyzeCase } from '../ai/llm-client';
+import { searchContext } from '../ai/rag-engine';
 
 const CONTEXT_OPTIONS: { value: CaseContext; label: string; icon: string }[] = [
   { value: 'duty',    label: 'Ca trực',      icon: 'fa-solid fa-moon' },
@@ -137,7 +139,20 @@ export function renderCaseLoggerView(profileId: string): string {
                       placeholder="VD: #/ebm/guidelines/cap hoặc URL bên ngoài" maxlength="300" />
                   </div>
 
+                  <!-- AI Analysis Output -->
+                  <div id="dspCaseAIOutput" style="display: none; padding: 1rem; border: 1px solid #8b5cf6; border-radius: 8px; background: rgba(139, 92, 246, 0.05); margin-bottom: 1rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(139, 92, 246, 0.2); padding-bottom: 0.5rem; margin-bottom: 0.5rem;">
+                      <h4 style="margin:0; color: #8b5cf6;"><i class="fa-solid fa-brain"></i> Phân tích từ AI (RAG)</h4>
+                      <button type="button" class="dsp-icon-btn" id="btnHideAIOutput"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                    <div id="dspCaseAIContent" style="font-size: 0.95rem; white-space: pre-wrap; line-height: 1.6;"></div>
+                  </div>
+
                   <div class="dsp-form-actions">
+                    <button type="button" class="dsp-btn dsp-btn-outline" id="btnAIAnalyzeCase" style="color: #8b5cf6; border-color: #8b5cf6;">
+                      <i class="fa-solid fa-brain"></i> Phân tích AI
+                    </button>
+                    <div style="flex-grow: 1;"></div>
                     <button type="reset" class="dsp-btn dsp-btn-ghost">
                       <i class="fa-solid fa-rotate-left"></i> Xóa trắng
                     </button>
@@ -200,6 +215,55 @@ export function mountCaseLoggerController(profileId: string): void {
 
     // Refresh list
     window.location.hash = '#/docspace/cases';
+  });
+
+  // Hide AI output
+  document.getElementById('btnHideAIOutput')?.addEventListener('click', () => {
+    const el = document.getElementById('dspCaseAIOutput');
+    if (el) el.style.display = 'none';
+  });
+
+  // Analyze with AI
+  document.getElementById('btnAIAnalyzeCase')?.addEventListener('click', async () => {
+    const chiefComplaint = (document.getElementById('dspCaseComplaint') as HTMLInputElement).value.trim();
+    const management = (document.getElementById('dspCaseMgmt') as HTMLTextAreaElement).value.trim();
+    const caseData = \`Lý do/Triệu chứng: \${chiefComplaint}\nQuản lý/Xử trí: \${management}\`;
+
+    if (!chiefComplaint && !management) {
+      alert('Vui lòng nhập ít nhất Triệu chứng hoặc Xử trí để AI có dữ liệu phân tích.');
+      return;
+    }
+
+    const profile = getActiveProfile();
+    if (!profile || !profile.aiSettings) {
+      alert('Vui lòng bật AI trong phần Cấu hình AI trước.');
+      return;
+    }
+
+    const btn = document.getElementById('btnAIAnalyzeCase') as HTMLButtonElement;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Đang tìm kiếm & phân tích...';
+    btn.disabled = true;
+
+    try {
+      // 1. Tìm kiếm trong RAG Index (chọn top 3 chunks)
+      const chunks = searchContext(chiefComplaint + " " + management, 3);
+      
+      // 2. Gửi request cho LLM
+      const result = await analyzeCase(caseData, profile.aiSettings, chunks);
+      
+      // 3. Hiển thị
+      const outputBox = document.getElementById('dspCaseAIOutput');
+      const contentBox = document.getElementById('dspCaseAIContent');
+      if (outputBox && contentBox) {
+        outputBox.style.display = 'block';
+        contentBox.innerHTML = result.replace(/\\n/g, '<br/>').replace(/\\*\\*(.*?)\\*\\*/g, '<b>$1</b>');
+      }
+    } catch (err: any) {
+      alert(err.message);
+    } finally {
+      btn.innerHTML = '<i class="fa-solid fa-brain"></i> Phân tích AI';
+      btn.disabled = false;
+    }
   });
 
   // Delete case

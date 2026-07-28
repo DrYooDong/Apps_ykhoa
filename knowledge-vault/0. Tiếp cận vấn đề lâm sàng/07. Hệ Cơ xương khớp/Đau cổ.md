@@ -1,3 +1,9 @@
+---
+title: "Đau cổ"
+specialty: "Tiếp cận vấn đề lâm sàng"
+tags: ["Tiếp cận vấn đề lâm sàng", "Hệ Cơ xương khớp"]
+last_updated: "2026-07-28"
+---
 **1. Cơ chế bệnh sinh**
 Đau cổ thường phát sinh từ các cấu trúc giải phẫu tại chỗ hoặc là biểu hiện của bệnh lý rễ thần kinh, tủy sống, hay bệnh lý hệ thống/nội tạng. Các cơ chế sinh lý bệnh chính bao gồm:
 

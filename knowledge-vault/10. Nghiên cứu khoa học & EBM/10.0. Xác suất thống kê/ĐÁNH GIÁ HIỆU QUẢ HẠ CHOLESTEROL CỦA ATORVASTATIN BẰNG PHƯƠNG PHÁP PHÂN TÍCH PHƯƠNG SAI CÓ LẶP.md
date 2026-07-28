@@ -1,3 +1,9 @@
+---
+title: "ĐÁNH GIÁ HIỆU QUẢ HẠ CHOLESTEROL CỦA ATORVASTATIN BẰNG PHƯƠNG PHÁP PHÂN TÍCH PHƯƠNG SAI CÓ LẶP"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
+last_updated: "2026-07-28"
+---
 
 Đ𝐚́𝐧𝐡 𝐠𝐢𝐚́ 𝐡𝐢𝐞̣̂𝐮 𝐪𝐮𝐚̉ 𝐡𝐚̣ 𝐂𝐡𝐨𝐥𝐞𝐬𝐭𝐞𝐫𝐨𝐥 𝐜𝐮̉𝐚 𝐀𝐭𝐨𝐫𝐯𝐚𝐬𝐭𝐚𝐭𝐢𝐧 𝐛𝐚̆̀𝐧𝐠 𝐩𝐡𝐮̛𝐨̛𝐧𝐠 𝐩𝐡𝐚́𝐩 𝐩𝐡𝐚̂𝐧 𝐭𝐢́𝐜𝐡 𝐩𝐡𝐮̛𝐨̛𝐧𝐠 𝐬𝐚𝐢 𝐜𝐨́ 𝐥𝐚̣̆𝐩 (𝐑𝐞𝐩𝐞𝐚𝐭𝐞𝐝 𝐀𝐧𝐨𝐯𝐚)
 

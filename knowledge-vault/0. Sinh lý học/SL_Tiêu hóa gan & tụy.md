@@ -1,3 +1,9 @@
+---
+title: "SL_Tiêu hóa gan & tụy"
+specialty: "Sinh lý học"
+tags: ["Sinh lý học"]
+last_updated: "2026-07-28"
+---
 **1. Sinh lý tiêu hóa tại Tụy (Tụy ngoại tiết)**
 
 Tuyến tụy đóng vai trò trung tâm trong việc tiêu hóa các đại phân tử thức ăn và trung hòa acid dạ dày. Phần tụy ngoại tiết (chiếm 80% khối lượng tụy) có cấu trúc gồm hai thành phần tế bào với chức năng bài tiết khác biệt:

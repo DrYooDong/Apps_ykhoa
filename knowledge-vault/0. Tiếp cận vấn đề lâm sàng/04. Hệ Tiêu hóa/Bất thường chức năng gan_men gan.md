@@ -1,3 +1,9 @@
+---
+title: "Bất thường chức năng gan_men gan"
+specialty: "Hệ Tiêu hóa"
+tags: ["Tiếp cận vấn đề lâm sàng", "Hệ Tiêu hóa"]
+last_updated: "2026-07-28"
+---
 # 1. Cơ chế bệnh sinh 
 Bất thường chức năng gan và men gan trên lâm sàng phản ánh tình trạng tổn thương tế bào gan, ứ mật hoặc suy giảm chức năng tổng hợp của gan. Cơ chế sinh lý bệnh được phản ánh qua các nhóm xét nghiệm chính:
 

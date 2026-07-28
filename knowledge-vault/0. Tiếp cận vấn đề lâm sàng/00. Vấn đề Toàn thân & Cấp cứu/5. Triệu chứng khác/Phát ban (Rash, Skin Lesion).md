@@ -1,3 +1,9 @@
+---
+title: "Phát ban (Rash, Skin Lesion)"
+specialty: "Tiếp cận vấn đề lâm sàng"
+tags: ["Tiếp cận vấn đề lâm sàng", "Vấn đề Toàn thân & Cấp cứu", "Triệu chứng khác"]
+last_updated: "2026-07-28"
+---
 **Tiếp cận vấn đề lâm sàng: Bệnh nhân có phát ban (Rash / Skin Lesion)**
 
 # **1. Nguyên tắc khám và Cơ chế bệnh sinh**

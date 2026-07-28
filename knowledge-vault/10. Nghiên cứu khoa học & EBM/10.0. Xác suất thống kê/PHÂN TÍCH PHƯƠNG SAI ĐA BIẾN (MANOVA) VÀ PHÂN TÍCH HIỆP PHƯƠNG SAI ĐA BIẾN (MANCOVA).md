@@ -1,3 +1,9 @@
+---
+title: "PHÂN TÍCH PHƯƠNG SAI ĐA BIẾN (MANOVA) VÀ PHÂN TÍCH HIỆP PHƯƠNG SAI ĐA BIẾN (MANCOVA)"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
+last_updated: "2026-07-28"
+---
 𝐏𝐡𝐚̂𝐧 𝐭𝐢́𝐜𝐡 𝐩𝐡𝐮̛𝐨̛𝐧𝐠 𝐬𝐚𝐢 đ𝐚 𝐛𝐢𝐞̂́𝐧 (𝐌𝐀𝐍𝐎𝐕𝐀) 𝐯𝐚̀ 𝐩𝐡𝐚̂𝐧 𝐭𝐢́𝐜𝐡 𝐡𝐢𝐞̣̂𝐩 𝐩𝐡𝐮̛𝐨̛𝐧𝐠 𝐬𝐚𝐢 đ𝐚 𝐛𝐢𝐞̂́𝐧 (𝐌𝐀𝐍𝐂𝐎𝐕𝐀) (𝐏𝐡𝐚̂̀𝐧 8 𝐜𝐮̉𝐚 𝐜𝐡𝐮̉ đ𝐞̂̀ 𝐏𝐡𝐚̂𝐧 𝐭𝐢́𝐜𝐡 𝐩𝐡𝐮̛𝐨̛𝐧𝐠 𝐬𝐚𝐢 𝐭𝐡𝐞𝐨 𝐠𝐨́𝐜 𝐧𝐡𝐢̀𝐧 𝐜𝐮̉𝐚 𝐜𝐚́𝐜 𝐛𝐚̀𝐢 𝐛𝐚́𝐨 𝐜𝐡𝐮𝐚̂̉𝐧 𝐪𝐮𝐨̂́𝐜 𝐭𝐞̂́)
 
 TS. Đào Hồng Nam

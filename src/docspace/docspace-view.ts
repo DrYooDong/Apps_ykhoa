@@ -274,6 +274,10 @@ export function renderSidebar(profile: DoctorProfile, activeId: string): string 
       </nav>
 
       <div class="dsp-sidebar-footer">
+        <a href="#/docspace/ai-settings" class="dsp-nav-item dsp-nav-item--footer" id="dspSidebarAI">
+          <i class="fa-solid fa-microchip"></i>
+          <span>Cấu hình AI</span>
+        </a>
         <button class="dsp-nav-item dsp-nav-item--footer" id="dspSidebarExport">
           <i class="fa-solid fa-file-export"></i>
           <span>Xuất dữ liệu</span>

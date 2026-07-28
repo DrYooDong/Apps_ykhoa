@@ -1,3 +1,9 @@
+---
+title: "Thăm khám - BSCKI Trần Thanh Tuấn 166248885f6c81fc8444d723897a0cc5"
+specialty: "Kỹ năng"
+tags: ["Kỹ năng", "Bệnh án"]
+last_updated: "2026-07-28"
+---
 # Thăm khám - BSCKI. Trần Thanh Tuấn
 
 [https://thanhtuan.edubit.vn/blog/huong-dan-viet-benh-an-noi-khoa-kham](https://thanhtuan.edubit.vn/blog/huong-dan-viet-benh-an-noi-khoa-kham)

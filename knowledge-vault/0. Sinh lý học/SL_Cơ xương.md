@@ -1,3 +1,9 @@
+---
+title: "SL_Cơ xương"
+specialty: "Sinh lý học"
+tags: ["Sinh lý học"]
+last_updated: "2026-07-28"
+---
 Dựa vào các tài liệu nguồn đã cung cấp, dưới đây là bài học chi tiết về Sinh lý học Cơ xương, được biên soạn theo đúng cấu trúc yêu cầu:
 
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT

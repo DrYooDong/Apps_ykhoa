@@ -1,3 +1,9 @@
+---
+title: "Thống kê suy luận (Inferential Statistics & p-value)"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM", "Thống kê sinh học (Biostatistics)"]
+last_updated: "2026-07-28"
+---
 Chào bạn, dưới góc độ của một chuyên gia Y học chứng cứ (EBM) và Thống kê y học, tôi xin trình bày bản phân tích chuyên sâu về **Thống kê suy luận (Inferential Statistics)** và **Giá trị p (p-value)**. Đây là những công cụ cốt lõi nhất nhưng cũng thường bị diễn giải sai lệch nhiều nhất trong việc đọc hiểu y văn.
 
 ### 1. BẢN CHẤT CỦA THỐNG KÊ SUY LUẬN

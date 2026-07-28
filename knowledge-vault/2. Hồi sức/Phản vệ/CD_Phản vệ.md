@@ -1,3 +1,9 @@
+---
+title: "CD_Phản vệ"
+specialty: "Hồi sức"
+tags: ["Hồi sức", "Phản vệ"]
+last_updated: "2026-07-28"
+---
 ### 1. TRIỆU CHỨNG GỢI Ý PHẢN VỆ
 Cần nghĩ đến phản vệ khi người bệnh xuất hiện ít nhất một trong các triệu chứng sau:
 *   Mày đay, phù mạch diễn biến nhanh.

@@ -1,3 +1,9 @@
+---
+title: "Thống kê mô tả (Descriptive Statistics)"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM", "Thống kê sinh học (Biostatistics)"]
+last_updated: "2026-07-28"
+---
 Dưới góc độ của một chuyên gia về Y học chứng cứ (EBM) và Thống kê y học, tôi xin trình bày phân tích chi tiết về **Thống kê mô tả (Descriptive Statistics)**. Thống kê mô tả là nền tảng cơ bản nhất trong phân tích dữ liệu, giúp tóm tắt, trình bày đặc tính của một bộ số liệu thông qua các chỉ số về độ tập trung, độ phân tán và hình dáng phân bố dữ liệu.
 
 ### 1. ĐO LƯỜNG ĐỘ TẬP TRUNG (MEASURES OF CENTRAL TENDENCY)

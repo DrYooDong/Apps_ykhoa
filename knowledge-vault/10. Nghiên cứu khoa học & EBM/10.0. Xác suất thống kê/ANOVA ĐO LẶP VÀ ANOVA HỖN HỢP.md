@@ -1,3 +1,9 @@
+---
+title: "ANOVA ĐO LẶP VÀ ANOVA HỖN HỢP"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
+last_updated: "2026-07-28"
+---
 𝐀𝐧𝐨𝐯𝐚 đ𝐨 𝐥𝐚̣̆𝐩 (𝐑𝐞𝐩𝐞𝐚𝐭𝐞𝐝 𝐀𝐧𝐨𝐯𝐚) 𝐯𝐚̀ 𝐀𝐧𝐨𝐯𝐚 𝐡𝐨̂̃𝐧 𝐡𝐨̛̣𝐩 - 𝐏𝐡𝐚̂̀𝐧 𝟒 𝐜𝐮̉𝐚 𝐜𝐡𝐮̉ đ𝐞̂̀ 𝐏𝐡𝐚̂𝐧 𝐭𝐢́𝐜𝐡 𝐩𝐡𝐮̛𝐨̛𝐧𝐠 𝐬𝐚𝐢 𝐭𝐡𝐞𝐨 𝐠𝐨́𝐜 𝐧𝐡𝐢̀𝐧 𝐜𝐮̉𝐚 𝐜𝐚́𝐜 𝐛𝐚̀𝐢 𝐛𝐚́𝐨 𝐜𝐡𝐮𝐚̂̉𝐧 𝐪𝐮𝐨̂́𝐜 𝐭𝐞̂́
 
 TS. Đào Hồng Nam

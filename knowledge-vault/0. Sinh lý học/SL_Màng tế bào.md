@@ -1,3 +1,9 @@
+---
+title: "SL_Màng tế bào"
+specialty: "Sinh lý học"
+tags: ["Sinh lý học"]
+last_updated: "2026-07-28"
+---
 Dưới đây là nội dung sinh lý học chi tiết về sự vận chuyển chất qua màng tế bào, được biên soạn bám sát các tài liệu nguồn đã cung cấp, bao gồm các hình ảnh/sơ đồ minh họa theo đúng yêu cầu của bạn:
 
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT

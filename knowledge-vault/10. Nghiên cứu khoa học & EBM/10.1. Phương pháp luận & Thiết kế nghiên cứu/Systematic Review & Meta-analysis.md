@@ -1,3 +1,9 @@
+---
+title: "Systematic Review & Meta-analysis"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM", "Phương pháp luận & Thiết kế nghiên cứu"]
+last_updated: "2026-07-28"
+---
 Dưới góc độ của một chuyên gia về Y học chứng cứ (EBM) và Phương pháp luận nghiên cứu khoa học, tôi xin trình bày bản phân tích chuyên sâu về hai thiết kế nghiên cứu đỉnh cao: **Tổng quan hệ thống (Systematic Review)** và **Phân tích gộp (Meta-analysis)** dựa trên các tài liệu đã được cung cấp.
 
 # 1. KHÁI NIỆM VÀ ĐẶC ĐIỂM CỐT LÕI

@@ -1,3 +1,9 @@
+---
+title: "ĐỌC KẾT QUẢ HỒI QUY BAYES NHƯ THẾ NÀO CHO ĐÚNG"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
+last_updated: "2026-07-28"
+---
 TS. Đào Hồng Nam
 
 Chạy được mô hình hồi quy Bayes mới chỉ là bước đầu của quá trình phân tích hồi quy Bayes. Giá trị thực sự nằm ở cách diễn giải các kết quả hậu nghiệm để trả lời câu hỏi nghiên cứu và hỗ trợ ra quyết định.

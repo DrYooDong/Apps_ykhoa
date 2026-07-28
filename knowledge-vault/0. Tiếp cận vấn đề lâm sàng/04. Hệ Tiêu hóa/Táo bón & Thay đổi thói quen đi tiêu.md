@@ -1,3 +1,9 @@
+---
+title: "Táo bón & Thay đổi thói quen đi tiêu"
+specialty: "Hệ Tiêu hóa"
+tags: ["Tiếp cận vấn đề lâm sàng", "Hệ Tiêu hóa"]
+last_updated: "2026-07-28"
+---
 **1. Cơ chế bệnh sinh** Táo bón được định nghĩa là sự suy giảm tần suất đi tiêu (thường < 1 lần/tuần) hoặc khó khăn trong việc tống xuất phân, đi kèm với việc phải rặn nhiều, phân cứng, và cảm giác đi tiêu không hết,. Cơ chế sinh lý bệnh bao gồm:
 
 - **Rối loạn vận động đại tràng (Colonic dysmotility):** Thường do tổn thương thần kinh tự chủ (bệnh đái tháo đường, chấn thương tủy sống), suy giảm nội tiết tố (suy giáp), hoặc tác dụng phụ của thuốc (đặc biệt là thuốc nhóm opioid và kháng cholinergic) làm chậm thời gian vận chuyển phân,,.

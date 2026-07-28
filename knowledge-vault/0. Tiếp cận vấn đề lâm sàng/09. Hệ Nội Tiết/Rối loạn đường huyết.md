@@ -1,3 +1,9 @@
+---
+title: "Rối loạn đường huyết"
+specialty: "Hệ Nội Tiết"
+tags: ["Tiếp cận vấn đề lâm sàng", "Hệ Nội Tiết"]
+last_updated: "2026-07-28"
+---
 **1. Cơ chế bệnh sinh** Rối loạn đường huyết là sự mất cân bằng trong việc duy trì nồng độ glucose máu ở mức sinh lý, biểu hiện ở hai thái cực: tăng đường huyết và hạ đường huyết.
 
 - **Tăng đường huyết (Hyperglycemia) và các biến chứng cấp tính:** Đặc trưng bởi sự thiếu hụt insulin (tuyệt đối ở ĐTĐ type 1 hoặc tương đối ở ĐTĐ type 2) kết hợp với sự tăng tiết các hormone đối kháng (counterregulatory hormones) như glucagon, cortisol, catecholamine, và growth hormone.

@@ -1,3 +1,9 @@
+---
+title: "Tiền căn - BSCKI Trần Thanh Tuấn 166248885f6c81cab938f16d27054466"
+specialty: "Kỹ năng"
+tags: ["Kỹ năng", "Bệnh án"]
+last_updated: "2026-07-28"
+---
 # Tiền căn - BSCKI. Trần Thanh Tuấn
 
 Nguồn: **SINH VIÊN Y KHOA**

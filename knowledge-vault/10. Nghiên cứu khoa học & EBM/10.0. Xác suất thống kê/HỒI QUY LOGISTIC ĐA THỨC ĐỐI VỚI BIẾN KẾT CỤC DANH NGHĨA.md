@@ -1,3 +1,9 @@
+---
+title: "HỒI QUY LOGISTIC ĐA THỨC ĐỐI VỚI BIẾN KẾT CỤC DANH NGHĨA"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
+last_updated: "2026-07-28"
+---
 𝐏𝐡𝐚̂̀𝐧 𝟐- 𝐇𝐨̂̀𝐢 𝐪𝐮𝐲 𝐥𝐨𝐠𝐢𝐬𝐭𝐢𝐜 đ𝐚 𝐭𝐡𝐮̛́𝐜 đ𝐨̂́𝐢 𝐯𝐨̛́𝐢 𝐛𝐢𝐞̂́𝐧 𝐤𝐞̂́𝐭 𝐜𝐮̣𝐜 𝐝𝐚𝐧𝐡 𝐧𝐠𝐡𝐢̃𝐚: 𝐂𝐨̛ 𝐬𝐨̛̉ 𝐥𝐲́ 𝐭𝐡𝐮𝐲𝐞̂́𝐭, 𝐩𝐡𝐮̛𝐨̛𝐧𝐠 𝐩𝐡𝐚́𝐩 𝐱𝐚̂𝐲 𝐝𝐮̛̣𝐧𝐠 𝐦𝐨̂ 𝐡𝐢̀𝐧𝐡 𝐯𝐚̀ 𝐮̛́𝐧𝐠 𝐝𝐮̣𝐧𝐠 𝐭𝐫𝐨𝐧𝐠 𝐧𝐠𝐡𝐢𝐞̂𝐧 𝐜𝐮̛́𝐮
 
 TS. Đào Hồng Nam

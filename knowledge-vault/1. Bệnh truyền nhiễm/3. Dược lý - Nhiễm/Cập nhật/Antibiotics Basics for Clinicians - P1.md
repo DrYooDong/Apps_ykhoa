@@ -1,3 +1,9 @@
+---
+title: "Antibiotics Basics for Clinicians - P1"
+specialty: "Bệnh truyền nhiễm"
+tags: ["Bệnh truyền nhiễm", "Dược lý - Nhiễm", "Cập nhật"]
+last_updated: "2026-07-28"
+---
 ### 1. Nội Dung Bệnh Lý Học Chi Tiết: Các Cập Nhật Mới Nhất Về Kháng Sinh
 
 Theo phiên bản cập nhật lần thứ 4 của tài liệu "Antibiotics Basics for Clinicians" (xuất bản năm 2026), các nội dung được cập nhật mới nhất tập trung vào sự xuất hiện của các nhóm kháng sinh mới ra mắt trong vòng 5 năm qua, cũng như những thay đổi trong hướng dẫn điều trị đối với các bệnh lý như viêm phổi và bệnh lao.

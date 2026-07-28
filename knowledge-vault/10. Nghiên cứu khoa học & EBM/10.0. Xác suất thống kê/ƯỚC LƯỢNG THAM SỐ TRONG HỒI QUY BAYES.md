@@ -1,3 +1,9 @@
+---
+title: "ƯỚC LƯỢNG THAM SỐ TRONG HỒI QUY BAYES"
+specialty: "Nghiên cứu khoa học & EBM"
+tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
+last_updated: "2026-07-28"
+---
 𝐔̛𝐨̛́𝐜 𝐥𝐮̛𝐨̛̣𝐧𝐠 𝐭𝐡𝐚𝐦 𝐬𝐨̂́ 𝐭𝐫𝐨𝐧𝐠 𝐡𝐨̂̀𝐢 𝐪𝐮𝐲 𝐁𝐚𝐲𝐞𝐬. 𝐋𝐚̀𝐦 𝐭𝐡𝐞̂́ 𝐧𝐚̀𝐨 đ𝐞̂̉ 𝐡𝐨̂̀𝐢 𝐪𝐮𝐲 𝐁𝐚𝐲𝐞𝐬 𝐭𝐢̀𝐦 𝐫𝐚 𝐥𝐨̛̀𝐢 𝐠𝐢𝐚̉𝐢?
 
 TS. Đào Hồng Nam

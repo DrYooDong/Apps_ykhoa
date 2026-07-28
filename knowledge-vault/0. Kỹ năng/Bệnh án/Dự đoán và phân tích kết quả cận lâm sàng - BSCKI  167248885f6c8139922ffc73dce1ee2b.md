@@ -1,3 +1,9 @@
+---
+title: "Dự đoán và phân tích kết quả cận lâm sàng - BSCKI  167248885f6c8139922ffc73dce1ee2b"
+specialty: "Kỹ năng"
+tags: ["Kỹ năng", "Bệnh án"]
+last_updated: "2026-07-28"
+---
 # Dự đoán và phân tích kết quả cận lâm sàng - BSCKI. Trần Thanh Tuấn
 
 Nguồn: **SINH VIÊN Y KHOA**
