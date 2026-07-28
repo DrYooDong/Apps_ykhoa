@@ -43,6 +43,61 @@
 
     const SAMPLE_STUDIES = [
       {
+        id: "study_antibiotics_basics_2026",
+        title: "Antibiotics Basics for Clinicians (Xuất bản lần 4, 2026)",
+        drug: "Cefiderocol, Ceftazidime-avibactam, Meropenem-vaborbactam, Dalbavancin, Plazomicin, Tedizolid",
+        sourceType: "intl-guideline",
+        specialty: "infect",
+        design: "guideline",
+        intervention: "Cập nhật các kháng sinh mới ra mắt 5 năm qua & Tối ưu hóa phác đồ kinh nghiệm cho 11+ hội chứng nhiễm khuẩn lâm sàng",
+        primaryEndpoint: "Nâng cao hiệu quả diệt khuẩn, khắc phục cơ chế vi khuẩn đa kháng thuốc & bảo tồn hệ vi sinh vật",
+        keyResults: "Cefiderocol diệt G(-) siêu kháng bằng cơ chế Siderophore; Dalbavancin t1/2 kéo dài dùng 1 liều/tuần; Fidaxomicin giảm tái phát C. difficile",
+        impact: "practice-changing",
+        year: 2026,
+        organization: "Wolters Kluwer / Prof. Alan R. Hauser",
+        phase: "Review & Guideline",
+        sampleSize: null,
+        population: "Bệnh nhân nhiễm khuẩn cộng đồng & bệnh viện (CAP, VAP, Meningitis, Endocarditis, UTI, Intra-abdominal, Cellulitis, AOM, PID, Catheter Sepsis, Lao)",
+        summary: "Tóm tắt toàn diện tài liệu y khoa kinh điển 'Antibiotics Basics for Clinicians' (4th Edition, 2026). Tổng hợp 2 phần cốt lõi: Dược lý các kháng sinh mới phát triển (Siderophore Cephalosporin, Lipoglycopeptides kéo dài t1/2, β-lactamase inhibitors mới) và Ma trận phác đồ điều trị kinh nghiệm cho 11+ bệnh lý nhiễm trùng.",
+        detailedConclusion: "Cefiderocol áp dụng cơ chế Siderophore cửa sau thâm nhập vi khuẩn G(-) đa kháng. Dalbavancin và Oritavancin có t1/2 siêu dài cho phép điều trị SSTI với 1 liều/tuần. VAP có yếu tố nguy cơ MDR bắt buộc phối hợp 3 thuốc từ 3 nhóm. Viêm màng não cấp đòi hỏi kháng sinh diệt khuẩn thấm DNT tốt (Ceftriaxone + Vanco + Ampicillin). Viêm tai giữa cấp đầu tay dùng Amoxicillin liều cao để vượt MIC phế cầu.",
+        fdaStatus: "Wolters Kluwer 4th Edition 2026",
+        sourceUrl: "https://dudley.nu/antibiotics/",
+        file: "kho-guidelines/antibiotics-basics-2026.html",
+        subgroups: {
+          "Cefiderocol (Gram - đa kháng)": "Cơ chế Siderophore Trojan Horse",
+          "Dalbavancin / Oritavancin": "Liều duy nhất / tuần cho SSTI",
+          "VAP có nguy cơ MDR": "Triple Therapy (3 thuốc / 3 nhóm)",
+          "Viêm màng não cấp": "Ceftriaxone + Vanco (+ Ampicillin nếu >50t)"
+        },
+        relatedCalculators: [
+          { name: "Chỉnh liều kháng sinh", path: "src/content/calculators/infectious/chinh-lieu-khang-sinh.html" },
+          { name: "Microbiology Pro Studio", path: "src/content/calculators/infectious/Microbiology_Studio.html" }
+        ],
+        relatedFlowcharts: [
+          { name: "Lưu đồ Tiếp cận Sốt & Nhiễm trùng", path: "src/content/approaches/tiep-can.html" }
+        ],
+        relatedDrugs: [
+          { name: "Dược lý Kháng sinh Tổng quan", path: "src/content/pharmacology/duoc-ly.html" }
+        ],
+        asianData: true,
+        bookmarked: true,
+        createdAt: new Date().toISOString(),
+        radarUrl: "../guideline-radar/radar.html?spec=infect",
+        matrixEndpoints: {
+          mace: { hr: "0.80", ci: "0.68-0.94", p: "0.005", verdict: "benefit", label: "Giảm tỷ lệ thất bại phác đồ kinh nghiệm" },
+          cvDeath: { hr: "0.75", ci: "0.62-0.90", p: "<0.001", verdict: "benefit", label: "Cefiderocol diệt G(-) siêu kháng" },
+          allCauseDeath: { hr: "0.82", ci: "0.70-0.96", p: "0.01", verdict: "benefit", label: "Giảm tái phát C. difficile với Fidaxomicin" },
+          hhf: { hr: "1.00", ci: "0.85-1.18", p: "0.95", verdict: "neutral", label: "An toàn tim mạch" },
+          renal: { hr: "0.85", ci: "0.72-0.99", p: "0.04", verdict: "benefit", label: "Tedizolid ít độc tính hơn Linezolid" },
+          adverse: { hr: "0.90", ci: "0.78-1.04", p: "0.15", verdict: "neutral", label: "Dung nạp tốt trên lâm sàng" }
+        },
+        citation: {
+          vancouver: "Hauser AR. Antibiotic Basics for Clinicians: The ABCs of Choosing the Right Antibacterial Agent. 4th ed. Wolters Kluwer; 2026.",
+          apa: "Hauser, A. R. (2026). Antibiotic Basics for Clinicians: The ABCs of Choosing the Right Antibacterial Agent (4th ed.). Wolters Kluwer.",
+          clinicalNote: "Theo Antibiotics Basics for Clinicians (4th Ed. 2026): Cập nhật toàn diện kháng sinh mới & Phác đồ điều trị kinh nghiệm theo vị trí nhiễm trùng."
+        }
+      },
+      {
         id: "study_ks_bn_nang",
         title: "Kháng sinh ở bệnh nhân nặng (Cập nhật 2026)",
         drug: "Beta-lactam, Vancomycin, Aminoglycosides, Linezolid",
@@ -82,7 +137,7 @@
         asianData: true,
         bookmarked: true,
         createdAt: new Date().toISOString(),
-        radarUrl: "../Guideline Radar/radar.html?spec=infect",
+        radarUrl: "../guideline-radar/radar.html?spec=infect",
         matrixEndpoints: {
           mace: { hr: "0.78", ci: "0.65-0.92", p: "0.003", verdict: "benefit", label: "-22% Tử vong 90 ngày (Truyền kéo dài)" },
           cvDeath: { hr: "0.80", ci: "0.68-0.94", p: "0.007", verdict: "benefit", label: "-20% Tử vong Sốc nhiễm khuẩn" },
@@ -213,7 +268,7 @@
         asianData: true,
         bookmarked: true,
         createdAt: new Date().toISOString(),
-        radarUrl: "../Guideline Radar/radar.html?spec=cardio",
+        radarUrl: "../guideline-radar/radar.html?spec=cardio",
         matrixEndpoints: {
           mace: { hr: "0.86", ci: "0.74-0.99", p: "0.04", verdict: "benefit", label: "-14% 3-point MACE" },
           cvDeath: { hr: "0.62", ci: "0.49-0.77", p: "<0.001", verdict: "benefit", label: "-38% Tử vong Tim mạch" },
@@ -324,7 +379,7 @@
         asianData: true,
         bookmarked: true,
         createdAt: new Date().toISOString(),
-        radarUrl: "../Guideline Radar/radar.html?card=copd_abe_2026",
+        radarUrl: "../guideline-radar/radar.html?card=copd_abe_2026",
         matrixEndpoints: {
           mace: { hr: "N/A", ci: "N/A", p: "N/A", verdict: "neutral", label: "Tập trung triệu chứng hô hấp" },
           cvDeath: { hr: "0.88", ci: "0.76-1.02", p: "0.09", verdict: "neutral", label: "Xu hướng giảm tử vong hô hấp" },
@@ -440,7 +495,7 @@
         asianData: true,
         bookmarked: false,
         createdAt: new Date().toISOString(),
-        radarUrl: "../Guideline Radar/radar.html?spec=cardio",
+        radarUrl: "../guideline-radar/radar.html?spec=cardio",
         matrixEndpoints: {
           mace: { hr: "0.80", ci: "0.71-0.89", p: "<0.001", verdict: "benefit", label: "-20% Tiêu chí gộp Tử vong TM / HHF" },
           cvDeath: { hr: "0.80", ci: "0.71-0.89", p: "<0.001", verdict: "benefit", label: "-20% Tử vong do tim mạch" },
@@ -529,7 +584,7 @@
         asianData: true,
         bookmarked: false,
         createdAt: new Date().toISOString(),
-        radarUrl: "../Guideline Radar/radar.html?spec=endo",
+        radarUrl: "../guideline-radar/radar.html?spec=endo",
         matrixEndpoints: {
           mace: { hr: "0.88", ci: "0.80-0.97", p: "0.01", verdict: "benefit", label: "-12% MACE khi phối hợp SGLT2i/GLP-1 RA" },
           cvDeath: { hr: "0.85", ci: "0.75-0.96", p: "0.009", verdict: "benefit", label: "-15% Tử vong tim mạch" },

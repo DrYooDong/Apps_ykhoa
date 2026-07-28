@@ -797,7 +797,7 @@
                 <text x="200" y="15" text-anchor="middle" font-size="10" fill="#64748b">Tương đương (HR = 1.0)</text>
                 
                 <!-- Subgroup 1 -->
-                <text x="10" y="45" font-size="11" font-weight="bold" fill="var(--color-text)">Bệnh nhân eGFR < 60 mL/phút</text>
+                <text x="10" y="45" font-size="11" font-weight="bold" fill="var(--color-text)">Bệnh nhân eGFR &lt; 60 mL/phút</text>
                 <line x1="130" y1="42" x2="190" y2="42" stroke="#059669" stroke-width="2"/>
                 <rect x="155" y="37" width="10" height="10" fill="#059669"/>
                 <text x="210" y="45" font-size="11" font-weight="bold" fill="#059669">HR 0.72 (0.61 - 0.85)</text>
@@ -872,7 +872,7 @@
                 <line x1="200" y1="15" x2="200" y2="95" stroke="#94a3b8" stroke-dasharray="4" stroke-width="1.5"/>
                 <text x="200" y="12" text-anchor="middle" font-size="10" fill="#64748b">HR = 1.0</text>
                 
-                <text x="10" y="40" font-size="11" font-weight="bold" fill="var(--color-text)">Eosinophil < 100/µL (Không bổ sung ICS)</text>
+                <text x="10" y="40" font-size="11" font-weight="bold" fill="var(--color-text)">Eosinophil &lt; 100/µL (Không bổ sung ICS)</text>
                 <line x1="190" y1="37" x2="240" y2="37" stroke="#dc2626" stroke-width="2"/>
                 <rect x="210" y="32" width="10" height="10" fill="#dc2626"/>
                 <text x="250" y="40" font-size="11" font-weight="bold" fill="#dc2626">HR 1.08 (0.94 - 1.24)</text>
@@ -1160,12 +1160,13 @@
   <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
 
   <!-- SCRIPT FOR INTERACTION, SEARCH, FILTER, BOOKMARK & MODAL -->
+  <script src="../../../../js/cliniportal-sync.js"></script>
+  <script src="../guidelines/guidelinesdata.js"></script>
   <script src="../../../../js/main.js" defer></script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const searchInput = document.getElementById("radar-search-input");
       const filterPills = document.querySelectorAll(".filter-pill");
-      const cards = document.querySelectorAll(".radar-card");
       const savedCountBadge = document.getElementById("saved-count-badge");
       
       const modeBtnDiff = document.getElementById("view-mode-diff");
@@ -1220,27 +1221,34 @@
         });
       }
 
-      document.querySelectorAll(".bookmark-btn").forEach(btn => {
-        btn.addEventListener("click", (e) => {
-          e.stopPropagation();
-          const cardId = btn.getAttribute("data-card-id");
-          const saved = getSavedCards();
-          if (saved.includes(cardId)) {
-            removeCardId(cardId);
-          } else {
-            saveCardId(cardId);
-          }
-          if (currentFilterType === "saved") {
-            filterCards();
+      function bindRadarCardEvents() {
+        document.querySelectorAll(".bookmark-btn").forEach(btn => {
+          if (!btn.dataset.bound) {
+            btn.dataset.bound = "true";
+            btn.addEventListener("click", (e) => {
+              e.stopPropagation();
+              const cardId = btn.getAttribute("data-card-id");
+              const saved = getSavedCards();
+              if (saved.includes(cardId)) {
+                removeCardId(cardId);
+              } else {
+                saveCardId(cardId);
+              }
+              if (currentFilterType === "saved") {
+                filterCards();
+              }
+            });
           }
         });
-      });
+        updateBookmarkUI();
+      }
 
-      updateBookmarkUI();
+      bindRadarCardEvents();
 
       // 2. SEARCH & FILTER LOGIC
       function filterCards() {
         const saved = getSavedCards();
+        const cards = document.querySelectorAll(".radar-card");
         cards.forEach(card => {
           const cardId = card.getAttribute("data-card-id");
           const cardSpec = card.getAttribute("data-spec") || "";
@@ -1391,6 +1399,120 @@
           }
         });
       }
+
+      // 6. REALTIME DYNAMIC SYNC FROM CLINIPORTAL-SYNC / GUIDELINES
+      function syncDynamicGuidelinesToRadar() {
+        if (!window.CliniPortalSync) return;
+        const studies = window.CliniPortalSync.getStudies();
+        if (!feedList) return;
+
+        // Remove previously rendered dynamic cards
+        document.querySelectorAll('.radar-card[data-dynamic="true"]').forEach(el => el.remove());
+
+        studies.forEach(study => {
+          if (!study || !study.id) return;
+          // Skip if card with this ID already exists
+          if (document.querySelector(`.radar-card[data-card-id="${study.id}"]`)) return;
+
+          const isPractice = study.impact === 'practice-changing';
+          const specClass = study.specialty || 'cardio';
+          const corClass = isPractice ? 'class1' : 'class2a';
+
+          const article = document.createElement('article');
+          article.className = 'radar-card';
+          article.setAttribute('data-card-id', study.id);
+          article.setAttribute('data-spec', specClass + ' ' + (study.sourceType || ''));
+          article.setAttribute('data-cor', corClass);
+          article.setAttribute('data-dynamic', 'true');
+
+          const rawFile = study.file || '';
+          const fileUrl = rawFile ? ('../guidelines/' + (rawFile.startsWith('kho-guidelines/') ? rawFile : rawFile)) : '../guidelines/guidelines.html';
+
+          const oldText = study.oldRegimen || study.intervention || 'Quy trình thực hành truyền thống hoặc chưa cập nhật bằng chứng y khoa mới nhất.';
+          const newText = study.newRegimen || study.keyResults || study.summary || 'Khuyến cáo mới cập nhật phân tầng nguy cơ và phác đồ ưu tiên hàng đầu.';
+          const reasonText = study.detailedConclusion || study.summary || study.primaryEndpoint || '';
+
+          // Subgroups bullet list
+          let subgroupsHtml = '';
+          if (study.subgroups && typeof study.subgroups === 'object') {
+            const entries = Object.entries(study.subgroups);
+            if (entries.length > 0) {
+              subgroupsHtml = entries.map(([key, val]) => `<li><strong>${key}:</strong> ${val}</li>`).join('');
+            }
+          }
+
+          article.innerHTML = `
+            <div class="radar-card-header">
+              <div>
+                <h2 class="radar-card-title">${study.title || ''}</h2>
+                <div class="radar-meta">
+                  <span><i class="fa-solid fa-building-columns"></i> ${study.organization || 'Bộ Y Tế / Hội Chuyên Khoa'}</span>
+                  <span><i class="fa-regular fa-calendar"></i> ${study.year || '2026'}</span>
+                  <div class="cor-container">
+                    <span class="cor-badge ${isPractice ? 'cor-class-1' : 'cor-class-2a'}"><i class="fa-solid fa-circle-check"></i> ${isPractice ? 'Class I' : 'Class IIa'}</span>
+                    <span class="loe-badge">LOE A</span>
+                  </div>
+                </div>
+              </div>
+              <div class="radar-card-top-actions">
+                <span class="radar-badge-practice" style="${isPractice ? '' : 'background:#eff6ff; color:#1e40af; border-color:#bfdbfe;'}">
+                  <i class="fa-solid ${isPractice ? 'fa-triangle-exclamation' : 'fa-bell'}"></i> ${isPractice ? 'THAY ĐỔI THỰC HÀNH' : 'CẬP NHẬT GUIDELINE'}
+                </span>
+                <button class="bookmark-btn" data-card-id="${study.id}" title="Lưu thông báo này"><i class="fa-regular fa-bookmark"></i></button>
+              </div>
+            </div>
+
+            <!-- GIAO DIỆN SO SÁNH DIFF SIDE-BY-SIDE (CŨ ❌ vs MỚI ✅) -->
+            <div class="diff-container">
+              <div class="diff-box old">
+                <div class="diff-header"><span>Bản Khuyến Cáo / Phác Đồ Cũ</span> ❌</div>
+                <div class="diff-text">${oldText}</div>
+              </div>
+              <div class="diff-box new">
+                <div class="diff-header"><span>Khuyến Cáo &amp; Thay Đổi Mới (2026)</span> ✅</div>
+                <div class="diff-text">${newText}</div>
+              </div>
+            </div>
+
+            ${reasonText ? `
+              <div class="diff-reason-box">
+                <strong>💡 Lý do thay đổi &amp; Bằng chứng lâm sàng:</strong> ${reasonText}
+              </div>
+            ` : ''}
+
+            ${subgroupsHtml ? `
+              <div style="background: var(--diff-new-bg, #f0fdf4); border: 1px solid var(--diff-new-border, #bbf7d0); border-radius: 10px; padding: 0.75rem 1rem; margin-top: 0.75rem;">
+                <strong style="font-size: 0.82rem; color: var(--color-text);"><i class="fa-solid fa-list-check"></i> Các Điểm Đồng Thuận Thay Đổi Cụ Thể:</strong>
+                <ul style="margin: 0.4rem 0 0 1.2rem; padding: 0; font-size: 0.8rem; color: var(--color-text-muted); display: flex; flex-direction: column; gap: 0.25rem;">
+                  ${subgroupsHtml}
+                </ul>
+              </div>
+            ` : ''}
+
+            <div class="card-footer-bar">
+              <a href="${fileUrl}" class="action-btn-link" style="text-decoration:none;">
+                <i class="fa-solid fa-book-medical"></i> Xem Tóm Tắt &amp; Phác Đồ Chi Tiết <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          `;
+
+          feedList.prepend(article);
+        });
+
+        bindRadarCardEvents();
+        filterCards();
+      }
+
+      // Initial sync render
+      syncDynamicGuidelinesToRadar();
+
+      // Listen to real-time events
+      window.addEventListener('cliniportal:guidelines-updated', syncDynamicGuidelinesToRadar);
+      window.addEventListener('storage', function (e) {
+        if (e.key === 'internalMedicineStudies') {
+          syncDynamicGuidelinesToRadar();
+        }
+      });
     });
   </script>
 </body>

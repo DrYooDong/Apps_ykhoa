@@ -17,23 +17,19 @@ src/content/pathophysiology/
 ├── co-che-benh-sinh.html               # [Web con 2] Hub Cơ chế bệnh sinh - Sinh lý bệnh
 ├── sinhly-sinhlybenh.html              # Trang tổng hợp & Chuyển hướng tự động
 ├── readme.md                           # Giới thiệu phân hệ
-├── Sinhly/                             # Sinh lý học chuẩn
-│   ├── HUONG_DAN_THIET_KE.md          # ⭐ Design guide chi tiết
-│   ├── Note sinh lý.md                 # Ghi chú phát triển
+├── pathophysiology-cases/              # ⭐ Phân hệ các bài Sinh lý bệnh & Cơ chế bệnh sinh (18+ trang)
+│   ├── HUONG_DAN_THIET_KE.md          # ⭐ Design guide chi tiết cho pathophysiology-cases
+│   ├── slb-ccbs-soc.html               # Sốc (Shock)
+│   ├── slb-ccbs-bach-hau.html          # Bạch hầu
+│   ├── slb-ccbs-acs.html               # Hội chứng vành cấp
+│   └── ...                             # (Các bài bệnh lý lâm sàng khác)
+├── Sinhly/                             # Sinh lý học chuẩn theo hệ cơ quan
+│   ├── HUONG_DAN_THIET_KE.md          # ⭐ Design guide chi tiết cho Sinh lý học
 │   ├── css/
 │   │   └── physio-shared.css           # CSS RIÊNG của module Sinh lý
 │   ├── js/
 │   │   └── physio-shared.js            # JS RIÊNG của module Sinh lý
-│   ├── images/                         # Ảnh minh họa theo Phần
-│   │   ├── Phan1/ ... Phan7/
-│   │   └── co2_transport_blood.png
-│   ├── Phan1/                          # Phần 1: Tế bào học
-│   │   ├── SL_TB_Daicuong&TB.html
-│   │   ├── SL_TB_Diensinhly.html
-│   │   └── SL_TB_Mangtebao.html
-│   ├── Phan2/ ... Phan7/
-│   └── [Các phần khác đang phát triển]
-└── [Sinh lý bệnh — chưa có nội dung]
+│   └── Phan1/ ... Phan7/
 ```
 
 ---

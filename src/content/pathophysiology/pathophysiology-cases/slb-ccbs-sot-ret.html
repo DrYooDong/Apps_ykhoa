@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sinh lý bệnh và Cơ chế bệnh sinh Bệnh Sốt rét (Malaria Pathophysiology): Phân tích chu kỳ sinh học 5 loài Plasmodium (falciparum, vivax, ovale, malariae, knowlesi), thể ngủ hypnozoite, hiện tượng kết dính tế bào cyto-adherence và ẩn trú sequestration qua PfEMP1, biến chứng sốt rét thể não, toan chuyển hóa, thiếu máu nặng, sốt rét nhau thai và bảng hướng dẫn xử trí cấp cứu tức thời WHO 2025.">
+    <title>Sinh lý bệnh & Cơ chế bệnh sinh Bệnh Sốt rét – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal (Level 3 Paths) -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học dùng chung -->
+    <link rel="stylesheet" href="../../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+    <!-- Scripts điều hướng hệ thống -->
+    <script src="../../../../components/header.js" defer></script>
+    <script src="../../../../components/footer.js" defer></script>
+    <script src="../../../../js/main.js" defer></script>
+    
+    <!-- Script Sinh lý học dùng chung -->
+    <script src="../js/physio-shared.js" defer></script>
+    <script src="../../../../js/toc.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li>
+                        <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh">
+                            <span class="nav-icon">🧬</span>
+                            <span class="nav-text">Sinh lý & Sinh lý bệnh</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../skills/ky-nang.html" class="nav-item" title="Kỹ năng">
+                            <span class="nav-icon">🩺</span>
+                            <span class="nav-text">Kỹ năng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../approaches/tiep-can.html" class="nav-item" title="Tiếp cận">
+                            <span class="nav-icon">🤒</span>
+                            <span class="nav-text">Tiếp cận</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../calculators/cong-cu.html" class="nav-item" title="Công cụ">
+                            <span class="nav-icon">⚙️</span>
+                            <span class="nav-text">Công cụ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../pharmacology/duoc-ly.html" class="nav-item" title="Dược lý">
+                            <span class="nav-icon">💊</span>
+                            <span class="nav-text">Dược lý</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../ebm/yhcc.html" class="nav-item" title="Y học chứng cứ">
+                            <span class="nav-icon">📄</span>
+                            <span class="nav-text">Y học chứng cứ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../tcm/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền">
+                            <span class="nav-icon">☯️</span>
+                            <span class="nav-text">Y học cổ truyền</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <clini-breadcrumb items='[{"label": "🏠 Home", "url": "../../../../index.html"}, {"label": "Sinh lý & sinh lý bệnh", "url": "../sinhly-sinhlybenh.html"}, {"label": "Sinh lý bệnh & Cơ chế bệnh sinh Sốt rét"}]'></clini-breadcrumb>
+
+            <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+            <main class="visual-container">
+                <!-- CHAPTER HEADER CARD -->
+                <div class="chapter-header">
+                    <h1>SINH LÝ BỆNH & CƠ CHẾ BỆNH SINH BỆNH SỐT RÉT</h1>
+                    <p>Malaria Pathophysiology & Pathogenesis — Phân tích chu kỳ sinh học 5 loài Plasmodium, thể ngủ hypnozoite, hiện tượng kết dính tế bào (Cyto-adherence) và ẩn trú (Sequestration) vi mạch qua protein PfEMP1, cơ chế sốt rét thể não, toan chuyển hóa, thiếu máu nặng, sốt rét nhau thai và hướng dẫn xử trí cấp cứu tức thời theo WHO 2025.</p>
+                </div>
+
+                <p class="physio-lead">
+                    <span class="term-hl">Bệnh sốt rét (Malaria)</span> là một bệnh truyền nhiễm do ký sinh trùng đơn bào thuộc giống <span class="term-hl-secondary">Plasmodium</span> gây ra, lây truyền chủ yếu qua vết đốt của muỗi cái <em>Anopheles</em> bị nhiễm bệnh. Bệnh sinh học sốt rét đặc trưng bởi các đợt tán huyết đồng loạt có tính chu kỳ, hiện tượng ẩn trú vi mạch gây thiếu máu cục bộ cơ quan (đặc biệt ở <em>P. falciparum</em>), tổn thương nhau thai ở phụ nữ có thai và nguy cơ tiến triển thành sốt rét ác tính đe dọa tính mạng với tỷ lệ tử vong cao nếu không được can thiệp kịp thời.
+                </p>
+
+                <!-- PHẦN I: TỔNG QUAN TÁC NHÂN & CHU KỲ SINH HỌC -->
+                <div class="physio-content">
+                    <h2 id="tac-nhan-chu-ky-sinh-hoc" class="section-title">
+                        <span>Phần I: Tổng quan Tác nhân Gây bệnh & Chu kỳ Sinh học 5 loài Plasmodium</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Có 5 loài ký sinh trùng sốt rét chính gây bệnh ở người với đặc điểm sinh học và bệnh học khác biệt:</p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🔴 1. Plasmodium falciparum</div>
+                                <p>Loại nguy hiểm nhất, là tác nhân chính gây nên sốt rét ác tính và các biến chứng đe dọa tính mạng (thể não, toan chuyển hóa, suy đa tạng). Có khả năng xâm nhập mọi lứa tuổi hồng cầu và gây ra hiện tượng ẩn trú vi mạch mạnh mẽ.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🟢 2. Plasmodium vivax</div>
+                                <p>Phổ biến rộng rãi, ưu tiên xâm nhập vào hồng cầu lưới (hồng cầu non). Có thể ngủ (hypnozoite) nằm im lìm trong tế bào gan gây sốt rét tái phát. Có thể tiến triển thành thể nặng gây thiếu máu nghiêm trọng và vỡ lách.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🟡 3. Plasmodium ovale</div>
+                                <p>Tương tự <em>P. vivax</em>, cũng hình thành thể ngủ (hypnozoite) tại gan gây tái phát. Chu kỳ hồng cầu 48 giờ, mức độ bệnh lâm sàng thường nhẹ hơn.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🔵 4. Plasmodium malariae</div>
+                                <p>Ưu tiên xâm nhập hồng cầu già. Chu kỳ hồng cầu dài nhất (72 giờ) tạo nên cơn sốt ba ngày một lần (Sốt rét cách 2 ngày). Có thể tồn tại mạn tính trong cơ thể hàng chục năm và gây biến chứng hội chứng thận hư.</p>
+                            </div>
+                            <div class="physio-grid-card" style="grid-column: span 2;">
+                                <div class="physio-grid-title">🐵 5. Plasmodium knowlesi (Sốt rét nguồn gốc Zoonotic)</div>
+                                <p>Ký sinh trùng lây truyền từ khỉ sang người qua muỗi <em>Anopheles</em>. Đặc biệt có <strong>chu kỳ sinh sản vô tính trong hồng cầu cực ngắn (chỉ 24 giờ)</strong>, dẫn đến tốc độ nhân lên nhanh chóng và mật độ ký sinh trùng trong máu (parasitemia) cực cao, gây ra bệnh cảnh ác tính nguy hiểm giống <em>P. falciparum</em>.</p>
+                            </div>
+                        </div>
+
+                        <h3 class="subsection-title">2. Các Giai đoạn Chu kỳ Phát triển Sinh học</h3>
+                        <p>Vòng đời ký sinh trùng sốt rét trải qua 2 cơ thể chủ: sinh sản vô tính ở người và sinh sản hữu tính trong muỗi <em>Anopheles</em>:</p>
+
+                        <ul class="physio-list-arrow">
+                            <li><strong>Giai đoạn Trước hồng cầu (Tại Gan - Exoerythrocytic Stage):</strong> Muỗi cái <em>Anopheles</em> đốt bơm <strong>thoa trùng (sporozoite)</strong> vào máu người. Thoa trùng di chuyển nhanh chóng đến gan, xâm nhập tế bào gan và phát triển thành <strong>thể phân liệt tại gan (hepatic schizont)</strong>. Sau vài ngày, schizont vỡ giải phóng hàng ngàn <strong>mảnh trùng (merozoite)</strong> vào dòng máu.</li>
+                            <li><strong>Giai đoạn Hồng cầu (Erythrocytic Stage):</strong> Mảnh trùng xâm nhập tế bào hồng cầu, phát triển qua các dạng: <span class="term-hl">Thể tư dưỡng non (Ring stage - dạng nhẫn)</span> $\rightarrow$ <span class="term-hl">Thể tư dưỡng già (Trophozoite)</span> $\rightarrow$ <span class="term-hl">Thể phân liệt hồng cầu (Erythrocytic Schizont)</span>. Khi schizont chín vỡ ra, làm tan hồng cầu và phóng thích lứa merozoite mới tiếp tục xâm nhiễm hồng cầu khác.</li>
+                            <li><strong>Giai đoạn Thể giao bào (Gametocyte Stage):</strong> Một số merozoite biệt hóa thành giao bào đực và giao bào cái lưu hành trong máu người, sẵn sàng lây sang muỗi khi muỗi hút máu để thực hiện chu kỳ sinh sản hữu tính.</li>
+                        </ul>
+
+                        <div class="key-concept">
+                            🔑 <strong>Cơ chế Thể Ngủ (Hypnozoite) và Sốt rét Tái phát:</strong><br>
+                            Ở loài <em>P. vivax</em> và <em>P. ovale</em>, một số thoa trùng sau khi vào tế bào gan không phát triển ngay thành thể phân liệt mà chuyển sang trạng thái ngủ đông gọi là <span class="term-hl-secondary">Thể ngủ (Hypnozoite)</span>. Thể ngủ có thể nằm yên từ vài tuần, vài tháng đến nhiều năm mà không gây triệu chứng. Khi gặp điều kiện thuận lợi (miễn dịch giảm, stress), thể ngủ tái hoạt động, phát triển thành thể phân liệt và giải phóng merozoite vào máu, gây ra <strong>Cơn sốt rét tái phát (Relapse)</strong> dù bệnh nhân không bị muỗi đốt thêm.
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN II: CƠ CHẾ CƠN SỐT RÉT & ẨN TRÚ VI MẠCH -->
+                <div class="physio-content">
+                    <h2 id="con-sot-chu-ky-an-tru-vi-mach" class="section-title">
+                        <span>Phần II: Sinh lý Bệnh Cơn Sốt Rét Chu Kỳ & Hiện tượng Ẩn trú Vi mạch</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Cơn sốt rét điển hình với 3 giai đoạn mang tính chu kỳ liên quan trực tiếp đến sự vỡ đồng loạt của các thể phân liệt hồng cầu giải phóng độc tố sốt rét (GPI anchor - Glycosylphosphatidylinositol):</p>
+
+                        <ol class="physio-steps">
+                            <li>
+                                <strong>Giai đoạn Rét run (Cold Stage / Rigor - 15 đến 60 phút):</strong>
+                                Thể phân liệt vỡ giải phóng sắc tố sốt rét (hemozoin), GPI và mảnh vụn tế bào. Đại thực bào nhận diện GPI và tiết ồ ạt các cytokine tiền viêm: <span class="term-hl">TNF-α, IL-1, IL-6</span>. Các cytokine này tác động lên trung tâm điều nhiệt ở vùng hạ đồi (hypothalamus), đẩy điểm đặt nhiệt độ (set-point) lên cao. Cơ thể phản ứng bằng co mạch ngoại biên dữ dội và co cơ toàn thân gây rét run bần bật, da tái lạnh.
+                            </li>
+                            <li>
+                                <strong>Giai đoạn Sốt cao (Hot Stage / Fever - 2 đến 6 giờ):</strong>
+                                Thân nhiệt tăng vọt nhanh chóng lên 39–41&deg;C. Co mạch ngoại biên nhường chỗ cho giãn mạch. Bệnh nhân sốt cao bừng bừng, da khô nóng, mạch nhanh, đau đầu dữ dội, nôn nao và có thể có sảng/co giật ở trẻ nhỏ.
+                            </li>
+                            <li>
+                                <strong>Giai đoạn Vã mồ hôi & Lui cơn (Sweating Stage - 2 đến 4 giờ):</strong>
+                                Trung tâm điều nhiệt hạ điểm đặt nhiệt độ trở về bình thường. Hệ thần kinh giao cảm kích hoạt tuyến mồ hôi hoạt động tối đa. Bệnh nhân vã mồ hôi như tắm, thân nhiệt hạ nhanh về bình thường, mệt mỏi lả đi và đi vào giấc ngủ sâu.
+                            </li>
+                        </ol>
+
+                        <h3 class="subsection-title">2. Hiện tượng Kết dính Tế bào (Cyto-adherence) & Ẩn trú Vi mạch (Sequestration)</h3>
+                        <p>Đây là cơ chế bệnh sinh trung tâm quyết định mức độ nặng và độc tính nội tạng của <em>Plasmodium falciparum</em>:</p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title" style="color: var(--color-danger);">🧫 1. Biểu hiện Protein PfEMP1 trên màng hồng cầu</div>
+                                <p>Hồng cầu nhiễm <em>P. falciparum</em> đoạn tư dưỡng già xuất hiện các hạt nhô (knobs) trên màng, mang protein độc lực <span class="term-hl">PfEMP1 (P. falciparum Erythrocyte Membrane Protein 1)</span> do gen <em>var</em> mã hóa.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title" style="color: var(--color-warning);">🩸 2. Gắn kết thụ thể nội mạc (Cyto-adherence)</div>
+                                <p>Protein PfEMP1 gắn đặc hiệu vào các thụ thể trên tế bào nội mạc mạch máu như <strong>ICAM-1, CD36, VCAM-1, E-selectin, Thrombospondin</strong>, khiến hồng cầu bệnh bám chặt vào vách mao mạch nội tạng.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title" style="color: var(--color-info);">🌸 3. Tự tạo hoa hồng (Rosetting)</div>
+                                <p>Hồng cầu nhiễm bệnh sử dụng PfEMP1 và glycosaminoglycan kết dính với các <strong>hồng cầu lành xung quanh</strong>, tạo thành các cụm hoa hồng lớn bít kín lòng vi mạch.</p>
+                            </div>
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title" style="color: var(--color-purple);">🔒 4. Sự Ẩn trú vi mạch (Sequestration)</div>
+                                <p>Hồng cầu nhiễm bệnh cuộn lại và ẩn trú sâu trong vi tuần hoàn của <strong>não, thận, nhau thai, ruột, tim</strong>, thoát khỏi sự theo dõi và thanh thải của lách nhưng gây <strong>tắc nghẽn vi mạch, thiếu máu cục bộ mô và suy tạng</strong>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN III: SINH LÝ BỆNH SỐT RÉT ÁC TÍNH & BẢNG THANG ĐIỂM -->
+                <div class="physio-content">
+                    <h2 id="sot-ret-ac-tinh-bien-chung" class="section-title">
+                        <span>Phần III: Sinh lý Bệnh Sốt Rét Ác Tính (Severe Malaria) & Bảng Thang điểm</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Sốt rét ác tính xảy ra khi sự nhân lên của ký sinh trùng gây rối loạn nghiêm trọng các cơ quan trọng yếu:</p>
+
+                        <h3 class="subsection-title">1. Sốt rét thể Não (Cerebral Malaria)</h3>
+                        <p>Hiện tượng ẩn trú vi mạch máu脑 làm tắc nghẽn các mao mạch vỏ não và các nhân xám trung ương. Tổn thương nội mạc mạch máu não gây ra phù脑, xuất huyết vi mạch xung quanh lòng mạch (ring hemorrhages) và thiếu máu cục bộ mô não, dẫn đến rối loạn tri giác và hôn mê sâu.</p>
+
+                        <!-- BẢNG GLASGOW -->
+                        <div class="physio-table-wrapper" style="margin-top: 1rem;">
+                            <h4>📋 Thang điểm Glasgow Đánh giá Hôn mê (Người lớn & Trẻ > 5 tuổi) — Bộ Y tế QĐ 3377/2023</h4>
+                            <table class="physio-table">
+                                <thead>
+                                    <tr>
+                                        <th>Dấu hiệu lâm sàng</th>
+                                        <th>Đáp ứng</th>
+                                        <th>Điểm</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td rowspan="4"><strong>1. Đáp ứng bằng mắt</strong></td>
+                                        <td>Mở mắt tự phát</td>
+                                        <td>4</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mở mắt khi nghe gọi</td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mở mắt khi kích thích đau</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Không đáp ứng</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="6"><strong>2. Đáp ứng bằng vận động</strong></td>
+                                        <td>Đáp ứng chính xác theo yêu cầu, lời nói</td>
+                                        <td>6</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gạt đúng vị trí khi kích thích đau</td>
+                                        <td>5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Co chi khi kích thích đau (không chính xác)</td>
+                                        <td>4</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tư thế co cứng mất vỏ</td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tư thế duỗi cứng mất não</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Không đáp ứng</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="5"><strong>3. Đáp ứng bằng lời nói</strong></td>
+                                        <td>Định hướng tốt, chính xác tên/ngày/giờ/địa điểm</td>
+                                        <td>5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nói mạch lạc nhưng sai thông tin</td>
+                                        <td>4</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nói từ đơn, không thành câu</td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Phát âm từ vô nghĩa, rên rỉ</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Không phát âm</td>
+                                        <td>1</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.3rem;">* Chẩn đoán Sốt rét thể não ở người lớn khi Glasgow &lt; 11 điểm.</p>
+                        </div>
+
+                        <!-- BẢNG BLANTYRE -->
+                        <div class="physio-table-wrapper" style="margin-top: 1.5rem;">
+                            <h4>👶 Thang điểm Blantyre Đánh giá Hôn mê ở Trẻ em &lt; 5 tuổi — Bộ Y tế QĐ 3377/2023</h4>
+                            <table class="physio-table">
+                                <thead>
+                                    <tr>
+                                        <th>Dấu hiệu lâm sàng</th>
+                                        <th>Phân loại đáp ứng</th>
+                                        <th>Điểm</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td rowspan="2"><strong>1. Cử động mắt</strong></td>
+                                        <td>Mắt nhìn theo hướng (ví dụ: nhìn theo mặt mẹ)</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Không nhìn theo</td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="3"><strong>2. Đáp ứng vận động</strong></td>
+                                        <td>Gạt đúng vị trí kích thích đau</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Co chi khi kích thích đau</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Không đặc hiệu hoặc không đáp ứng</td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="3"><strong>3. Đáp ứng lời nói</strong></td>
+                                        <td>Khóc to bình thường</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Khóc yếu, rên rỉ</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Không đáp ứng</td>
+                                        <td>0</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.3rem;">* Chẩn đoán Sốt rét thể não ở trẻ &lt; 5 tuổi khi Thang điểm Blantyre &lt; 3 điểm.</p>
+                        </div>
+
+                        <h3 class="subsection-title" style="margin-top: 1.5rem;">2. Các Biến chứng Sinh lý Bệnh Toàn thân Khác</h3>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Thiếu máu nặng (Severe Anaemia):</strong> Do sự kết hợp của 4 cơ chế: (1) Tán huyết hồng cầu nhiễm do ký sinh trùng vỡ, (2) Tán huyết hồng cầu chưa nhiễm qua trung gian tự kháng thể và stress oxy hóa, (3) Lách tăng bắt giữ thanh thải hồng cầu biến dạng và (4) Ức chế tủy xương do cytokine viêm. Tiêu chuẩn: Hb &le; 5 g/dL ở trẻ em, &lt; 7 g/dL ở người lớn.</li>
+                            <li><strong>Toan chuyển hóa (Metabolic Acidosis):</strong> Do hiện tượng ẩn trú vi mạch gây thiếu máu cục bộ mô, làm tăng chuyển hóa yếm khí $\rightarrow$ tích tụ <strong>Lactate máu &ge; 5 mmol/L</strong> và kiềm dư &gt; 8 mEq/L. Ở trẻ em, toan chuyển hóa gây biểu hiện <strong>thở sâu Kussmaul, thở rút lõm lồng ngực</strong>.</li>
+                            <li><strong>Hạ đường huyết (Hypoglycaemia):</strong> Đường huyết &lt; 2.2 mmol/L (&lt; 40 mg/dL). Nguyên nhân do ký sinh trùng tiêu thụ lượng lớn glucose, giảm tân tạo đường tại gan và do <strong>thuốc Quinine kích thích tế bào beta tụy tăng tiết Insulin</strong>.</li>
+                            <li><strong>Tổn thương Thận cấp (AKI):</strong> Do hoại tử ống thận cấp (ATN) vì tắc nghẽn vi mạch thận, lắng đọng Hb (đái huyết cầu tố) và phù nề mô kẽ (Creatinine &gt; 3 mg/dL).</li>
+                            <li><strong>Phù phổi cấp (Acute Pulmonary Oedema):</strong> Tăng tính thấm mao mạch phổi qua trung gian cytokine và quá tải dịch truyền.</li>
+                        </ul>
+
+                        <!-- BẢNG WHO 2025 IMMEDIATE MANAGEMENT -->
+                        <div class="physio-table-wrapper" style="margin-top: 1.5rem;">
+                            <h4>🚨 Bảng Hướng dẫn Xử trí Cấp cứu Tức thời các Biến chứng Sốt rét Ác tính — Khuyến cáo WHO 2025</h4>
+                            <table class="physio-table">
+                                <thead>
+                                    <tr>
+                                        <th>Biểu hiện / Biến chứng</th>
+                                        <th>Biện pháp Xử trí Cấp cứu Tức thời (Immediate Management)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Hôn mê (Sốt rét thể não)</strong></td>
+                                        <td>Duy trì đường thở, đặt bệnh nhân nằm nghiêng, loại trừ nguyên nhân hôn mê khác (hạ đường huyết, viêm màng nào), tránh can thiệp thô bạo, đặt NKQ nếu suy hô hấp.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Sốt cao ác tính (Hyperpyrexia)</strong></td>
+                                        <td>Chườm ấm, quạt mát, dùng chăn làm mát và cho Paracetamol.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Co giật (Convulsions)</strong></td>
+                                        <td>Duy trì đường thở; cắt cơn giật nhanh bằng Diazepam/Midazolam tĩnh mạch hoặc trực tràng. Kiểm tra đường huyết tức thì.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Hạ đường huyết (Hypoglycaemia)</strong></td>
+                                        <td>Xác định đường huyết, tiêm tĩnh mạch Glucose ưu trương (Dextrose 20% hoặc 30%), sau đó duy trì bằng truyền dịch chứa Glucose 5-10%. Ngưỡng can thiệp &lt; 3 mmol/L ở trẻ &lt; 5 tuổi và &lt; 2.2 mmol/L ở người lớn.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Thiếu máu nặng (Severe anaemia)</strong></td>
+                                        <td>Truyền hồng cầu lắng hoặc máu toàn phần tươi đã sàng lọc an toàn.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Phù phổi cấp (Pulmonary oedema)</strong></td>
+                                        <td>Cho bệnh nhân ngồi 45&deg;, thở oxy, dùng thuốc lợi tiểu Furosemide, ngừng ngay truyền dịch, đặt NKQ và hỗ trợ thở máy PEEP/CPAP nếu thiếu oxy nặng.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Tổn thương thận cấp (AKI)</strong></td>
+                                        <td>Loại trừ nguyên nhân trước thận (bù dịch), theo dõi natri niệu; nếu suy thận thực tổn cần chỉ định lọc máu liên tục (CRRT), chạy thận nhân tạo (HD) hoặc lọc màng bụng.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Chảy máu & Rối loạn đông máu</strong></td>
+                                        <td>Truyền máu tươi toàn phần, huyết tương tươi đông lạnh (FFP), tủa lạnh, tiểu cầu; tiêm Vitamin K1.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Toan chuyển hóa (Metabolic acidosis)</strong></td>
+                                        <td>Điều trị hạ đường huyết, bù thể tích tuần hoàn và kháng sinh nghi nhiễm trùng huyết. Lọc máu liên tục nếu toan nặng.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Sốc sốt rét (Algid malaria / Shock)</strong></td>
+                                        <td>Cấy máu, dùng kháng sinh phổ rộng đường tĩnh mạch chống nhiễm trùng huyết kết hợp, điều chỉnh huyết động bằng dịch truyền và vận mạch.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN IV: SINH LÝ BỆNH SỐT RÉT NHAU THAI -->
+                <div class="physio-content">
+                    <h2 id="sot-ret-nhau-thai-phu-nu-mang-thai" class="section-title">
+                        <span>Phần IV: Sinh lý Bệnh Sốt Rét Ở Phụ Nữ Có Thai (Placental Malaria)</span>
+                    </h2>
+                    
+                    <div class="physio-text-block">
+                        <p>Phụ nữ mang thai (đặc biệt là người mang thai lần đầu - primigravidae) là nhóm đối tượng chịu ảnh hưởng nặng nề nhất do sự thay đổi nội tiết Progesterone và hệ miễn dịch bị điều hòa giảm:</p>
+
+                        <h3 class="subsection-title">1. Cơ chế Bệnh sinh Sốt rét Nhau thai (Placental Malaria)</h3>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Cơ chế Ẩn trú tại Nhau thai:</strong> Hồng cầu nhiễm <em>P. falciparum</em> biểu hiện biến thể protein <span class="term-hl">VAR2CSA</span>. Protein này gắn kết đặc hiệu với <span class="term-hl-secondary">Chondroitin Sulfate A (CSA)</span> trên bề mặt tế bào lá nuôi hợp bào (syncytiotrophoblast) tại khoảng gian nhung mao nhau thai.</li>
+                            <li><strong>Phản ứng Viêm & Cản trở Trao đổi chất:</strong> Hồng cầu nhiễm bám dính thành khối chật chội tại khoảng gian nhung mao, kích hoạt đại thực bào giải phóng các cytokine tiền viêm (TNF-α, IFN-γ). Phản ứng viêm gây stress oxy hóa, hủy hoại vi nhung mao và phá vỡ sự hình thành mạch máu (angiogenesis), cản trở nghiêm trọng việc vận chuyển oxy và chất dinh dưỡng từ mẹ sang thai nhi.</li>
+                            <li><strong>Phá vỡ Hàng rào Ruột người Mẹ:</strong> Nhiễm <em>P. falciparum</em> làm tăng tính thấm hàng rào niêm mạc ruột của mẹ, làm gia tăng sự chuyển vị vi khuẩn ruột vào máu (tăng dấu ấn sCD14 và LBP), kích hoạt phản ứng viêm toàn thân thúc đẩy quá trình chuyển dạ sinh non.</li>
+                        </ul>
+
+                        <!-- BẢNG GRADE SỐT RÉT NHAU THAI -->
+                        <div class="physio-table-wrapper" style="margin-top: 1rem;">
+                            <h4>📊 Đánh giá Nguy cơ Sức khỏe Mẹ & Thai nhi do Sốt rét Thai kỳ (GRADE Evidence — J Curr Health Sci 2025)</h4>
+                            <table class="physio-table">
+                                <thead>
+                                    <tr>
+                                        <th>Phân loại Biến cố</th>
+                                        <th>Rủi ro & Nguy cơ LÂM SÀNG</th>
+                                        <th>Độ mạnh Bằng chứng</th>
+                                        <th>Mô tả Cơ chế Bệnh sinh</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td rowspan="3"><strong>Nguy cơ với Mẹ (Maternal Risks)</strong></td>
+                                        <td>Thiếu máu nặng (Severe anemia)</td>
+                                        <td>Trung bình (Moderate)</td>
+                                        <td>Tán huyết ồ ạt kết hợp nhu cầu sắt tăng cao trong thai kỳ làm sụt giảm nghiêm trọng huyết sắc tố.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sốt rét nhau thai (Placental malaria)</td>
+                                        <td>Trung bình đến Cao</td>
+                                        <td>Tích tụ ký sinh trùng tại khoảng gian nhung mao gây suy nhau thai, giảm oxy hóa thai nhi.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Biến chứng nặng (Não, Phù phổi)</td>
+                                        <td>Trung bình (Moderate)</td>
+                                        <td>Tăng gấp 2-3 lần nguy cơ phù phổi cấp và hạ đường huyết so với phụ nữ không mang thai.</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="3"><strong>Nguy cơ với Thai nhi (Fetal Risks)</strong></td>
+                                        <td>Sẩy thai (Miscarriage)</td>
+                                        <td>Thấp đến Trung bình</td>
+                                        <td>Nhiễm trùng hoại tử nhau thai 3 tháng đầu kích hoạt co bóp tử cung gây sẩy thai.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nhẹ cân (LBW) & Tử vong sơ sinh</td>
+                                        <td>Cao (High)</td>
+                                        <td>Suy dinh dưỡng thai nhi do suy nhau thai (IUGR) làm giảm cân nặng lúc sinh (&lt; 2500 g) và tăng tử vong sơ sinh.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sinh non (Prematurity)</td>
+                                        <td>Thấp đến Trung bình</td>
+                                        <td>Cytokine viêm (TNF-α, IL-6) và sự chuyển vị vi khuẩn ruột kích hoạt chuyển dạ sớm.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN V: BẢNG SO SÁNH 5 LOẠI & GAP ANALYSIS -->
+                <div class="physio-content">
+                    <h2 id="so-sanh-5-loai-gap-analysis" class="section-title">
+                        <span>Phần V: Bảng So sánh 5 Loài Plasmodium & Phân tích Khoảng trống Lâm sàng</span>
+                    </h2>
+                    
+                    <div class="table-responsive">
+                        <table class="physio-table physio-table-compare">
+                            <thead>
+                                <tr>
+                                    <th>Đặc tính Bệnh học</th>
+                                    <th>P. falciparum</th>
+                                    <th>P. vivax</th>
+                                    <th>P. ovale</th>
+                                    <th>P. malariae</th>
+                                    <th>P. knowlesi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Chu kỳ Hồng cầu</strong></td>
+                                    <td>48 giờ</td>
+                                    <td>48 giờ</td>
+                                    <td>48 giờ</td>
+                                    <td>72 giờ</td>
+                                    <td><strong>24 giờ (Rất ngắn)</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Loại Hồng cầu xâm nhập</strong></td>
+                                    <td>Mọi lứa tuổi hồng cầu</td>
+                                    <td>Hồng cầu lưới (non)</td>
+                                    <td>Hồng cầu lưới (non)</td>
+                                    <td>Hồng cầu già</td>
+                                    <td>Mọi lứa tuổi hồng cầu</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Thể ngủ tại Gan (Hypnozoite)</strong></td>
+                                    <td>Không có</td>
+                                    <td><strong>Có (Gây tái phát)</strong></td>
+                                    <td><strong>Có (Gây tái phát)</strong></td>
+                                    <td>Không có</td>
+                                    <td>Không có</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Mức độ Ký sinh trùng máu</strong></td>
+                                    <td>Rất cao (&gt; 5%)</td>
+                                    <td>Thấp - Trung bình</td>
+                                    <td>Thấp</td>
+                                    <td>Thấp (&lt; 1%)</td>
+                                    <td><strong>Cực cao (&gt; 100.000/&mu;L)</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Hiện tượng Ẩn trú vi mạch</strong></td>
+                                    <td>Rất mạnh (PfEMP1)</td>
+                                    <td>Nhẹ / Hiếm gặp</td>
+                                    <td>Không</td>
+                                    <td>Không</td>
+                                    <td>Có</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Nguy cơ Sốt rét Ác tính</strong></td>
+                                    <td>Rất cao (Hàng đầu)</td>
+                                    <td>Có (Thường do thiếu máu/vỡ lách)</td>
+                                    <td>Rất thấp</td>
+                                    <td>Rất thấp (Gây thận hư)</td>
+                                    <td>Rất cao (Tiến triển cực nhanh)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="clinical-note-box" style="margin-top: 1.5rem;">
+                        <h4>🩺 Phân tích Khoảng trống Lâm sàng (Gap Analysis): Thách thức Soi lam máu & Bẫy Ẩn trú Vi mạch</h4>
+                        <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0;">
+                            <li><strong>Khoảng trống Chẩn đoán Vi sinh:</strong> Trên lam máu nhuộm Giemsa ngoại vi, bác sĩ chỉ quan sát được thể tư dưỡng non (dạng nhẫn - ring form) của <em>P. falciparum</em>. Các thể tư dưỡng già và phân liệt <strong>hoàn toàn biến mất khỏi máu ngoại vi</strong> do chúng đã bám dính ẩn trú chật chội trong vi mạch các cơ quan nội tạng. Do đó, mật độ ký sinh trùng trên lam máu ngoại vi có thể không phản ánh đúng tổng tải lượng ký sinh trùng ẩn trú cực lớn bên trong cơ thể.</li>
+                            <li><strong>Khoảng trống Điều trị Tái phát:</strong> Khi điều trị sốt rét do <em>P. vivax</em> hoặc <em>P. ovale</em>, việc dùng các thuốc diệt thể máu (Artesunate, Chloroquine) chỉ làm sạch ký sinh trùng trong máu nhưng <strong>KHÔNG diệt được thể ngủ (hypnozoite) trong tế bào gan</strong>. Bệnh nhân bắt buộc phải được điều trị phối hợp với thuốc diệt thể ngủ trong gan (<span class="term-hl">Primaquine</span> hoặc <span class="term-hl">Tafenoquine</span>) đủ liệu trình để chống sốt rét tái phát xa.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- TÀI LIỆU THAM KHẢO -->
+                <div class="physio-content">
+                    <h2 id="tai-lieu-tham-khao" class="section-title">
+                        <span>Tài liệu Tham khảo (References - Standard AMA Style)</span>
+                    </h2>
+                    <div class="physio-text-block">
+                        <ol style="font-size: 0.9rem; line-height: 1.6; color: var(--color-text-muted);">
+                            <li>World Health Organization. <em>WHO guidelines for malaria</em>. Geneva: World Health Organization; 13 August 2025.</li>
+                            <li>Bộ Y tế Việt Nam. <em>Hướng dẫn chẩn đoán và điều trị bệnh Sốt rét</em>. Ban hành kèm theo Quyết định số 3377/QĐ-BYT; Hà Nội, 2023.</li>
+                            <li>Bộ Y tế Việt Nam. <em>Hướng dẫn giám sát và phòng chống bệnh sốt rét</em>. Ban hành kèm theo Quyết định số 4922/QĐ-BYT; Hà Nội, 2021.</li>
+                            <li>Ahmar H, Malik A, Tariq S, et al. Malaria in Pregnancy: Systematic Review of Maternal and Fetal Outcomes and Effectiveness of Preventive Strategies. <em>Journal of Current Health Sciences</em>. 2025;5(1):88-102.</li>
+                            <li>White NJ, Pukrittayakamee S, Hien TT, et al. Malaria. <em>Lancet</em>. 2014;383(9918):723-735. doi:10.1016/S0140-6736(13)60024-0.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- TÀI LIỆU LIÊN QUAN -->
+                <section class="related-links-section">
+                    <h4 class="related-links-title">
+                        <i class="fas fa-link"></i> Xem thêm các nội dung liên quan
+                    </h4>
+                    <div class="related-links-grid">
+                        <a href="../../pharmacology/tools/dose-optimizer.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge duoc-ly">Dược lý</span>
+                                <h5>Dược Lý Lâm Sàng Thuốc Điều Trị Sốt Rét</h5>
+                                <p>Tra cứu liều lượng, cơ chế diệt thể máu và diệt thể ngủ của nhóm Artemisinin (Artesunate, Dihydroartemisinin), Piperaquine, Quinine và Primaquine/Tafenoquine.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                        <a href="../../skills/paraclinical/doc-nhuom-soi.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge ky-nang">Kỹ năng</span>
+                                <h5>Kỹ Năng Đọc Lam Máu Nhuộm Giemsa Tìm Sốt Rét</h5>
+                                <p>Hướng dẫn nhận diện hình thái thể tư dưỡng nhẫn, thể phân liệt, giao bào lưỡi liềm của <em>P. falciparum</em> và thể tư dưỡng nhẫn đĩa <em>P. vivax</em> trên giọt đặc và giọt mỏng.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                        <a href="../../approaches/emergency/tc-sot-con.html" class="related-link-card">
+                            <div class="related-card-content">
+                                <span class="related-card-badge tiep-can">Tiếp cận</span>
+                                <h5>Lưu Đồ Tiếp Cận Chẩn Đoán Sốt Rét Ác Tính</h5>
+                                <p>Thuật toán tiếp cận nhanh phát hiện các cờ đỏ sốt rét ác tính (rối loạn tri giác, vàng da, đái huyết cầu tố, tụt huyết áp) và quy trình xử trí cấp cứu ban đầu.</p>
+                            </div>
+                            <i class="fas fa-chevron-right related-card-arrow"></i>
+                        </a>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+    
+    <!-- Script điều khiển chung -->
+    <script src="../../../../js/main.js" defer></script>
+</body>
+
+</html>

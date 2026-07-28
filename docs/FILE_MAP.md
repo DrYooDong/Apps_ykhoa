@@ -363,6 +363,8 @@
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_VTC.html` | Sinh lý bệnh & Cơ chế bệnh sinh Viêm tụy cấp | Cấp 3 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_XG.html` | Sinh lý bệnh & Cơ chế bệnh sinh Xơ gan | Cấp 3 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_VP.html` | Sinh lý bệnh & Cơ chế bệnh sinh Viêm phổi | Cấp 3 |
+| `Sinh lý .../SLB_CCBS/SLB_CCBS_BACH_HAU.html` | Sinh lý bệnh & Cơ chế bệnh sinh Bệnh Bạch hầu | Cấp 3 |
+| `Sinh lý .../SLB_CCBS/SLB_CCBS_SOT_RET.html` | Sinh lý bệnh & Cơ chế bệnh sinh Bệnh Sốt rét | Cấp 3 |
 | `Sinh lý .../Sinhly/HUONG_DAN_THIET_KE.md` | Design guide sinh lý | — |
 | `Sinh lý .../Sinhly/Phan1/SL_*.html` | Bài học sinh lý (Phần 1: TB) | Cấp 4 |
 | `Sinh lý .../Sinhly/Phan4/SL_Traodoikhi.html` | Sinh lý Trao đổi & Vận chuyển khí | Cấp 4 |

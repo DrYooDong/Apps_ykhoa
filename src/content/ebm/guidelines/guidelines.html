@@ -87,9 +87,15 @@
 
       <!-- ══ CÓ GÌ MỚI ══ -->
       <section class="updates-section" id="section-recent-updates">
-        <div class="updates-header">
-          <h2>🆕 Có Gì Mới</h2>
-          <p>Cập nhật hướng dẫn lâm sàng và nghiên cứu mới nhất</p>
+        <div class="updates-header" style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; cursor: pointer;" onclick="toggleRecentUpdatesSec()">
+          <div>
+            <h2>🆕 Có Gì Mới</h2>
+            <p>Cập nhật hướng dẫn lâm sàng và nghiên cứu mới nhất</p>
+          </div>
+          <button id="btn-toggle-recent-updates" style="background: var(--surface-2, #f8fafc); border: 1px solid var(--border-light, #e2e8f0); border-radius: 20px; padding: 0.3rem 0.8rem; font-size: 0.76rem; font-weight: 700; color: var(--text-muted, #475569); cursor: pointer; display: flex; align-items: center; gap: 5px; transition: all 0.2s;" aria-label="Thu gọn hoặc mở rộng phần Có Gì Mới">
+            <span id="recent-updates-toggle-label">Thu gọn</span>
+            <span id="recent-updates-toggle-icon">▲</span>
+          </button>
         </div>
         <div class="updates-list" id="updates-list">
           <!-- Dynamic content -->
@@ -406,6 +412,17 @@
             <div class="form-group">
               <label for="study-primary-endpoint">Tiêu chí đánh giá chính</label>
               <input type="text" id="study-primary-endpoint" placeholder="Ví dụ: Tử vong do tim mạch hoặc nhập viện do suy tim">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="study-old-regimen">❌ Phác đồ / Khuyến cáo CŨ (Dùng cho Guideline Radar Diff)</label>
+              <input type="text" id="study-old-regimen" placeholder="Ví dụ: Dùng CHA2DS2-VASc đơn thuần phân tầng đột quỵ">
+            </div>
+            <div class="form-group">
+              <label for="study-new-regimen">✅ Khuyến cáo / Phác đồ MỚI (Dùng cho Guideline Radar Diff)</label>
+              <input type="text" id="study-new-regimen" placeholder="Ví dụ: Ưu tiên thang điểm CARE-AF tích hợp eGFR và Troponin">
             </div>
           </div>
 

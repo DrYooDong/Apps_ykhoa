@@ -1062,3 +1062,220 @@ physio-quiz {
 physio-mirror-button, physio-figure, clini-breadcrumb {
   display: block;
 }
+
+/* ============================================================
+   MODULE HERO SECTION (.module-hero)
+   ============================================================ */
+
+.module-hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  padding: 2.25rem 2.5rem;
+  margin-bottom: 2rem;
+  background: var(--hero-bg-gradient, linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.08) 0%, rgba(var(--color-purple-rgb), 0.08) 100%));
+  border: 1px solid var(--hero-border-color, var(--color-border));
+  box-shadow: var(--shadow-md);
+  transition: all var(--tr);
+}
+
+.module-hero::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -10%;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: var(--hero-glow-primary, rgba(var(--color-primary-rgb), 0.12));
+  filter: blur(55px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.module-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -45%;
+  left: 15%;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: var(--hero-glow-secondary, rgba(var(--color-purple-rgb), 0.08));
+  filter: blur(50px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Theme Variant 1: Pathophysiology (Cơ chế bệnh sinh & Sinh lý bệnh) */
+.module-hero.hero-patho {
+  --hero-bg-gradient: linear-gradient(135deg, rgba(var(--color-rose-rgb), 0.08) 0%, rgba(var(--color-purple-rgb), 0.08) 50%, rgba(var(--color-primary-rgb), 0.05) 100%);
+  --hero-border-color: rgba(var(--color-rose-rgb), 0.2);
+  --hero-badge-bg: var(--color-rose-hl);
+  --hero-badge-color: var(--color-rose);
+  --hero-badge-border: rgba(var(--color-rose-rgb), 0.3);
+  --hero-glow-primary: rgba(var(--color-rose-rgb), 0.15);
+  --hero-glow-secondary: rgba(var(--color-purple-rgb), 0.12);
+  --hero-icon-color: var(--color-rose);
+}
+
+[data-theme="dark"] .module-hero.hero-patho {
+  --hero-bg-gradient: linear-gradient(135deg, rgba(225, 29, 72, 0.18) 0%, rgba(124, 58, 237, 0.16) 100%);
+  --hero-border-color: rgba(225, 29, 72, 0.35);
+  --hero-badge-bg: rgba(225, 29, 72, 0.25);
+  --hero-badge-color: #fda4af;
+  --hero-badge-border: rgba(244, 63, 94, 0.4);
+  --hero-glow-primary: rgba(225, 29, 72, 0.25);
+  --hero-glow-secondary: rgba(124, 58, 237, 0.2);
+  --hero-icon-color: #fb7185;
+}
+
+/* Theme Variant 2: Physiology (Sinh lý học) */
+.module-hero.hero-physio {
+  --hero-bg-gradient: linear-gradient(135deg, rgba(var(--color-success-rgb), 0.08) 0%, rgba(var(--color-primary-rgb), 0.08) 50%, rgba(var(--color-teal-rgb), 0.05) 100%);
+  --hero-border-color: rgba(var(--color-success-rgb), 0.2);
+  --hero-badge-bg: var(--color-success-hl);
+  --hero-badge-color: var(--color-success);
+  --hero-badge-border: rgba(var(--color-success-rgb), 0.3);
+  --hero-glow-primary: rgba(var(--color-success-rgb), 0.15);
+  --hero-glow-secondary: rgba(var(--color-primary-rgb), 0.12);
+  --hero-icon-color: var(--color-success);
+}
+
+[data-theme="dark"] .module-hero.hero-physio {
+  --hero-bg-gradient: linear-gradient(135deg, rgba(5, 150, 105, 0.18) 0%, rgba(2, 132, 199, 0.16) 100%);
+  --hero-border-color: rgba(52, 211, 153, 0.35);
+  --hero-badge-bg: rgba(52, 211, 153, 0.25);
+  --hero-badge-color: #6ee7b7;
+  --hero-badge-border: rgba(52, 211, 153, 0.4);
+  --hero-glow-primary: rgba(52, 211, 153, 0.25);
+  --hero-glow-secondary: rgba(56, 189, 248, 0.2);
+  --hero-icon-color: #34d399;
+}
+
+.module-hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.module-hero-text {
+  flex: 1;
+  max-width: 800px;
+}
+
+.module-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.38rem 0.95rem;
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: var(--hero-badge-bg);
+  color: var(--hero-badge-color);
+  border: 1px solid var(--hero-badge-border);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--tr);
+}
+
+.module-hero-badge i {
+  font-size: 0.9em;
+}
+
+.module-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--color-text);
+  margin: 0.85rem 0 0.6rem 0;
+  letter-spacing: -0.01em;
+}
+
+.module-hero-desc {
+  font-size: var(--text-base);
+  line-height: 1.65;
+  color: var(--color-text-muted);
+  margin: 0;
+  max-width: 720px;
+}
+
+.module-hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.1rem;
+  flex-wrap: wrap;
+}
+
+.module-hero-stat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.32rem 0.8rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  box-shadow: var(--shadow-sm);
+}
+
+.module-hero-stat-pill strong {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.module-hero-decor {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  border: 1px solid var(--hero-border-color);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  transition: transform var(--tr-slow), box-shadow var(--tr);
+}
+
+.module-hero-decor:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: var(--shadow-lg);
+}
+
+.module-hero-decor i {
+  font-size: 2.75rem;
+  color: var(--hero-icon-color);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12));
+}
+
+@media (max-width: 768px) {
+  .module-hero {
+    padding: 1.5rem 1.25rem;
+    margin-bottom: 1.5rem;
+    border-radius: var(--radius-lg);
+  }
+  
+  .module-hero-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .module-hero-title {
+    font-size: 1.45rem;
+  }
+
+  .module-hero-decor {
+    display: none;
+  }
+}

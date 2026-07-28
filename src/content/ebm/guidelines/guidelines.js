@@ -979,7 +979,39 @@
           </div>
         `;
       }).join('');
+
+      // Restore collapsed state preference
+      if (localStorage.getItem('guidelines_updates_collapsed') === 'true') {
+        const container = document.getElementById('updates-list');
+        const label = document.getElementById('recent-updates-toggle-label');
+        const icon = document.getElementById('recent-updates-toggle-icon');
+        if (container) {
+          container.style.display = 'none';
+          if (label) label.textContent = 'Mở rộng';
+          if (icon) icon.textContent = '▼';
+        }
+      }
     }
+
+    window.toggleRecentUpdatesSec = function () {
+      const container = document.getElementById('updates-list');
+      const label = document.getElementById('recent-updates-toggle-label');
+      const icon = document.getElementById('recent-updates-toggle-icon');
+      if (!container) return;
+
+      const isHidden = container.style.display === 'none';
+      if (isHidden) {
+        container.style.display = 'grid';
+        if (label) label.textContent = 'Thu gọn';
+        if (icon) icon.textContent = '▲';
+        localStorage.setItem('guidelines_updates_collapsed', 'false');
+      } else {
+        container.style.display = 'none';
+        if (label) label.textContent = 'Mở rộng';
+        if (icon) icon.textContent = '▼';
+        localStorage.setItem('guidelines_updates_collapsed', 'true');
+      }
+    };
 
     // ════════════════════════════
     // INTERACTIVE ACTIONS
@@ -1201,6 +1233,8 @@
       const design = document.getElementById('study-design').value;
       const intervention = document.getElementById('study-intervention').value.trim();
       const primaryEndpoint = document.getElementById('study-primary-endpoint').value.trim();
+      const oldRegimen = document.getElementById('study-old-regimen') ? document.getElementById('study-old-regimen').value.trim() : '';
+      const newRegimen = document.getElementById('study-new-regimen') ? document.getElementById('study-new-regimen').value.trim() : '';
       const keyResults = document.getElementById('study-key-results').value.trim();
       const impact = document.getElementById('study-impact').value;
       const organization = document.getElementById('study-organization').value.trim();
@@ -1230,7 +1264,7 @@
         if (index !== -1) {
           studies[index] = {
             ...studies[index],
-            title, author, drug, sourceType, specialty, design, intervention, primaryEndpoint, keyResults,
+            title, author, drug, sourceType, specialty, design, intervention, primaryEndpoint, oldRegimen, newRegimen, keyResults,
             impact, organization, year, phase, sampleSize,
             population, summary, detailedConclusion, fdaStatus, sourceUrl, file, asianData, subgroups
           };
@@ -1241,7 +1275,7 @@
         // Add mode
         const newStudy = {
           id: generateId(),
-          title, author, drug, sourceType, specialty, design, intervention, primaryEndpoint, keyResults,
+          title, author, drug, sourceType, specialty, design, intervention, primaryEndpoint, oldRegimen, newRegimen, keyResults,
           impact, organization, year, phase, sampleSize,
           population, summary, detailedConclusion, fdaStatus, sourceUrl, file, asianData, subgroups,
           bookmarked: false,
