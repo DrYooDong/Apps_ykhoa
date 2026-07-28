@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Tiếp cận toàn diện Tim bẩm sinh ở trẻ em và trẻ sơ sinh: Thuật toán 5T tương tác, tầm soát SpO2 24h và Phác đồ Prostaglandin E1 cấp cứu">
+  <title>Tiếp cận trẻ có tim bẩm sinh – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core (5 levels up) -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../../css/components/approach-symptom.css">
+
+  <style>
+    /* ==========================================================================
+       PEDIATRIC CARDIOLOGY ADVANCED INTERACTIVE LAYOUT STYLES
+       ========================================================================== */
+    
+    :root {
+      --cardio-primary: #0284c7;
+      --cardio-primary-dark: #0369a1;
+      --cardio-accent: #ec4899;
+      --cardio-purple: #8b5cf6;
+      --cardio-danger: #ef4444;
+      --cardio-warning: #f59e0b;
+      --cardio-success: #10b981;
+      --cardio-info: #06b6d4;
+    }
+
+    /* Hero Banner */
+    .hero-cardio {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311b92 100%);
+      border-radius: 20px;
+      padding: 32px;
+      color: #ffffff;
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.25);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .hero-cardio::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(236, 72, 153, 0.25) 0%, rgba(139, 92, 246, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-cardio-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .hero-title-group h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      font-family: var(--font-display);
+      margin: 8px 0 12px 0;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+
+    .hero-badges-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .hero-badge-pill {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #e0e7ff;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Interactive Navigation Bar (Tabs) */
+    .cardio-tabs-nav {
+      display: flex;
+      gap: 8px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      padding: 6px;
+      border-radius: 16px;
+      margin-bottom: 24px;
+      overflow-x: auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .cardio-tab-btn {
+      flex: 1;
+      min-width: 170px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      border: none;
+      background: transparent;
+      color: var(--color-text-muted);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .cardio-tab-btn:hover {
+      color: var(--color-primary);
+      background: rgba(2, 132, 199, 0.06);
+    }
+
+    .cardio-tab-btn.active {
+      background: var(--color-primary);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+    }
+
+    /* Tab Content Section Controls */
+    .tab-content-panel {
+      display: none;
+      animation: fadeInTab 0.35s ease forwards;
+    }
+
+    .tab-content-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeInTab {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 5T Interactive Steps Cards */
+    .steps-5t-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .step-5t-btn-card {
+      background: var(--color-surface);
+      border: 2px solid var(--color-border);
+      border-radius: 16px;
+      padding: 16px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .step-5t-btn-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--color-primary);
+      box-shadow: 0 8px 20px rgba(2, 132, 199, 0.15);
+    }
+
+    .step-5t-btn-card.active {
+      background: linear-gradient(135deg, rgba(2, 132, 199, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+      border-color: var(--color-primary);
+      box-shadow: 0 8px 20px rgba(2, 132, 199, 0.2);
+    }
+
+    .step-5t-number {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      color: white;
+      font-weight: 800;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px auto;
+    }
+
+    .step-5t-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--color-text);
+      line-height: 1.3;
+      margin: 0;
+    }
+
+    .step-5t-subtitle {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      margin-top: 4px;
+    }
+
+    /* 5T Step Detail Display Card */
+    .step-detail-box {
+      background: var(--color-surface);
+      border: 2px solid var(--color-primary);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+      margin-bottom: 24px;
+      animation: fadeInTab 0.3s ease forwards;
+    }
+
+    /* Interactive Widget Box */
+    .interactive-widget-box {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+    }
+
+    .widget-box-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--color-border);
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
+
+    .widget-box-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--color-text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+    }
+
+    /* AAP SpO2 Decision Tool */
+    .spo2-checker-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      background: linear-gradient(135deg, rgba(2, 132, 199, 0.04) 0%, rgba(139, 92, 246, 0.04) 100%);
+      border: 1px dashed var(--color-primary);
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .spo2-checker-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .spo2-input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .spo2-input-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .spo2-input-field label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--color-text);
+    }
+
+    .spo2-input-field input {
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-text);
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .spo2-result-display {
+      background: var(--color-surface);
+      border-radius: 12px;
+      border: 2px solid var(--color-border);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .result-badge {
+      font-size: 1.25rem;
+      font-weight: 800;
+      padding: 8px 16px;
+      border-radius: 100px;
+      display: inline-block;
+      margin: 8px auto;
+    }
+
+    .result-badge.fail {
+      background: rgba(239, 68, 68, 0.15);
+      color: #dc2626;
+      border: 1px solid #fca5a5;
+    }
+
+    .result-badge.repeat {
+      background: rgba(245, 158, 11, 0.15);
+      color: #d97706;
+      border: 1px solid #fcd34d;
+    }
+
+    .result-badge.pass {
+      background: rgba(16, 185, 129, 0.15);
+      color: #059669;
+      border: 1px solid #6ee7b7;
+    }
+
+    /* Matrix Comparison Tables */
+    .matrix-table-wrapper {
+      overflow-x: auto;
+      margin-top: 14px;
+      border-radius: 12px;
+      border: 1px solid var(--color-border);
+    }
+
+    .matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    .matrix-table th {
+      background: var(--color-surface-2);
+      color: var(--color-text);
+      font-weight: 700;
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 2px solid var(--color-border);
+    }
+
+    .matrix-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--color-border);
+      color: var(--color-text);
+      vertical-align: top;
+    }
+
+    .matrix-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .matrix-table tr:hover td {
+      background: rgba(2, 132, 199, 0.02);
+    }
+
+    /* Hide auto-generated sidebar TOC because page uses custom top Tabs */
+    .sidebar-toc {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ===================== APP CONTAINER ===================== -->
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../tiep-can.html" class="nav-item" title="Tiếp cận">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="nhi-khoa.html" class="nav-item" title="Nhi khoa">
+              <span class="nav-icon">👶</span>
+              <span class="nav-text">Chuyên khoa Nhi</span>
+            </a>
+          </li>
+          <li>
+            <a href="tc-tim-bam-sinh.html" class="nav-item active" aria-current="page" title="Tim bẩm sinh">
+              <span class="nav-icon">❤️</span>
+              <span class="nav-text">Tim bẩm sinh trẻ em</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-wrapper" id="mainContent">
+      <clini-breadcrumb
+        items='[{"label": "🏠 Trang chủ", "url": "../../../../../index.html"}, {"label": "Tiếp cận lâm sàng", "url": "../../tiep-can.html"}, {"label": "Nhi khoa", "url": "nhi-khoa.html"}, {"label": "Tim bẩm sinh"}]'></clini-breadcrumb>
+
+      <!-- HERO BANNER -->
+      <section class="hero-cardio">
+        <div class="hero-cardio-header">
+          <div class="hero-title-group">
+            <div class="hero-badges-group">
+              <span class="hero-badge-pill"><i class="fa-solid fa-baby"></i> Nhi Khoa & Sơ Sinh</span>
+              <span class="hero-badge-pill"><i class="fa-solid fa-heart-pulse"></i> Tim Mạch Lâm Sàng</span>
+              <span class="hero-badge-pill" style="background: rgba(239, 68, 68, 0.25); border-color: #ef4444; color: #fca5a5;"><i class="fa-solid fa-bolt"></i> Cấp Cứu PDA</span>
+            </div>
+            <h1>Tiếp Cận Trẻ Có Tim Bẩm Sinh</h1>
+            <p style="margin: 0; opacity: 0.9; font-size: 0.95rem; max-width: 750px;">
+              Hệ thống hóa thuật toán 5T ở trẻ em, quy trình tầm soát SpO2 24h sơ sinh và phác đồ Prostaglandin E1 cấp cứu. Ấn vào từng bước dưới đây để xem chi tiết!
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- DIEU HUONG TAB TUONG TAC (5T DUA LEN ĐẦU) -->
+      <div class="cardio-tabs-nav">
+        <button class="cardio-tab-btn active" onclick="switchCardioTab('tab-5t')">
+          <i class="fa-solid fa-diagram-project"></i> 🧭 Thuật Toán 5T (Trẻ Em)
+        </button>
+        <button class="cardio-tab-btn" onclick="switchCardioTab('tab-neonatal')">
+          <i class="fa-solid fa-baby-carriage"></i> 🚨 Sơ Sinh & Tầm Soát SpO2
+        </button>
+        <button class="cardio-tab-btn" onclick="switchCardioTab('tab-treatment')">
+          <i class="fa-solid fa-syringe"></i> 🚑 Cấp Cứu Prostaglandin E1
+        </button>
+      </div>
+
+      <!-- ==========================================================================
+           TAB 1: THUẬT TOÁN 5T TRẺ EM (TAB ĐẦU TIÊN!)
+           ========================================================================== -->
+      <div id="tab-5t" class="tab-content-panel active">
+        
+        <div style="margin-bottom: 16px;">
+          <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--color-text); margin-bottom: 6px;">
+            <i class="fa-solid fa-hand-pointer" style="color: var(--cardio-primary);"></i> Chọn Bước Trong Quy Trình 5T Để Xem Chi Tiết Vấn Đề:
+          </h3>
+          <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0;">
+            Quy tắc 5T giúp bác sĩ lâm sàng định hướng tổn thương giải phẫu và chẩn đoán phân biệt chính xác.
+          </p>
+        </div>
+
+        <!-- 5 BUTTON CARDS -->
+        <div class="steps-5t-grid">
+          
+          <div class="step-5t-btn-card active" id="btn-step-1" onclick="select5TStep(1)">
+            <div class="step-5t-number" style="background: #ef4444;">1</div>
+            <h4 class="step-5t-title">TÍM TRUNG ƯƠNG?</h4>
+            <div class="step-5t-subtitle">Test Oxy &amp; SpO<sub>2</sub></div>
+          </div>
+
+          <div class="step-5t-btn-card" id="btn-step-2" onclick="select5TStep(2)">
+            <div class="step-5t-number" style="background: #0284c7;">2</div>
+            <h4 class="step-5t-title">LƯU LƯỢNG PHỔI?</h4>
+            <div class="step-5t-subtitle">Tăng vs Giảm ($Qp$)</div>
+          </div>
+
+          <div class="step-5t-btn-card" id="btn-step-3" onclick="select5TStep(3)">
+            <div class="step-5t-number" style="background: #8b5cf6;">3</div>
+            <h4 class="step-5t-title">TIM NÀO ẢNH HƯỞNG?</h4>
+            <div class="step-5t-subtitle">Buồng tim &amp; Bóng X-quang</div>
+          </div>
+
+          <div class="step-5t-btn-card" id="btn-step-4" onclick="select5TStep(4)">
+            <div class="step-5t-number" style="background: #f59e0b;">4</div>
+            <h4 class="step-5t-title">TĂNG ÁP PHỔI?</h4>
+            <div class="step-5t-subtitle">Kháng lực Rp &amp; Cắt cụt</div>
+          </div>
+
+          <div class="step-5t-btn-card" id="btn-step-5" onclick="select5TStep(5)">
+            <div class="step-5t-number" style="background: #10b981;">5</div>
+            <h4 class="step-5t-title">TAT TIM Ở ĐÂU?</h4>
+            <div class="step-5t-subtitle">Ma Trận Chẩn Đoán</div>
+          </div>
+
+        </div>
+
+        <!-- BẢNG CHI TIẾT NỘI DUNG TỪNG BƯỚC (HIỂN THỊ THEO BƯỚC ĐƯỢC CHỌN) -->
+        <div id="step-detail-container">
+          
+          <!-- BƯỚC 1 DETAIL -->
+          <div class="step-detail-box" id="detail-step-1" style="border-color: #ef4444;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+              <span style="background: #ef4444; color: white; padding: 4px 12px; border-radius: 8px; font-weight: 800;">BƯỚC 1</span>
+              <h3 style="margin: 0; font-size: 1.2rem; font-weight: 700; color: #ef4444;"><i class="fa-solid fa-face-frown"></i> Xác Định Tím Trung Vương &amp; Nghiệm Pháp Oxy</h3>
+            </div>
+            
+            <div style="line-height: 1.6; font-size: 0.92rem;">
+              <p>Khám da niêm (miệng, lưỡi, sinh dục), đầu chi, móng khum/dùi trống và đo SpO<sub>2</sub> (&lt; 94%). Tím bộc lộ rõ trên lâm sàng khi SpO<sub>2</sub> &lt; 80% (hoặc Hemoglobin khử &ge; 5g/dL).</p>
+              
+              <div style="background: var(--color-surface-2); padding: 16px; border-radius: 12px; border-left: 4px solid #ef4444; margin: 14px 0;">
+                <h4 style="font-weight: 700; color: #dc2626; margin: 0 0 8px 0;"><i class="fa-solid fa-vial"></i> Sơ đồ 59.1: Nghiệm Pháp Oxy 100% (Test Oxy 10 phút)</h4>
+                <p style="margin: 0 0 8px 0;">Cho bệnh nhân thở Oxy 100% trong 10 phút để phân biệt nguyên nhân tím:</p>
+                <ul>
+                  <li><strong style="color: #16a34a;">SpO<sub>2</sub> / PaO<sub>2</sub> tăng tốt:</strong> Hướng tới bệnh lý Hô hấp (đường thở, nhu mô phổi), Thần kinh, Toan chuyển hóa hoặc Thiếu máu nặng.</li>
+                  <li><strong style="color: #dc2626;">SpO<sub>2</sub> / PaO<sub>2</sub> không tăng (hoặc tăng rất ít):</strong> Tim bẩm sinh TÍM có Luồng Thông Phải - Trái (Shunt P-T).</li>
+                </ul>
+              </div>
+
+              <h4 style="font-weight: 700; color: var(--color-primary); margin-top: 14px;"><i class="fa-solid fa-arrows-left-right"></i> Tím Chuyên Biệt (Differential Cyanosis):</h4>
+              <ul>
+                <li><strong>Chi trên tím, chi dưới hồng:</strong> Hoán vị đại động mạch (d-TGA) + Còn ống động mạch (PDA) + Tăng áp phổi.</li>
+                <li><strong>Chi trên hồng, chi dưới tím:</strong> Còn ống động mạch luồng thông Phải-Trái, Đứt đoạn cung ĐMC, Hẹp eo ĐMC nặng, hoặc Tăng áp phổi tồn tại ở trẻ sơ sinh.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- BƯỚC 2 DETAIL -->
+          <div class="step-detail-box" id="detail-step-2" style="border-color: #0284c7; display: none;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+              <span style="background: #0284c7; color: white; padding: 4px 12px; border-radius: 8px; font-weight: 800;">BƯỚC 2</span>
+              <h3 style="margin: 0; font-size: 1.2rem; font-weight: 700; color: #0284c7;"><i class="fa-solid fa-lungs"></i> Đánh Giá Lưu Lượng Máu Lên Phổi (Qp)</h3>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+              <div style="background: rgba(2, 132, 199, 0.06); padding: 16px; border-radius: 12px; border: 1px solid #0284c7;">
+                <h4 style="font-weight: 700; color: #0284c7; margin: 0 0 8px 0;">Tăng Lưu Lượng Phổi (Qp &uarr;)</h4>
+                <ul>
+                  <li><strong>Triệu chứng:</strong> Viêm phổi tái diễn nhiều lần, thở nhanh, rút lõm ngực, mệt khi bú, suy tim, chậm tăng trưởng.</li>
+                  <li><strong>X-quang ngực:</strong> Phổi mờ, tuần hoàn phổi tăng (mạch máu phổi ra 1/3 ngoài phế trường), cung ĐMP phồng.</li>
+                </ul>
+              </div>
+
+              <div style="background: rgba(245, 158, 11, 0.06); padding: 16px; border-radius: 12px; border: 1px solid #f59e0b;">
+                <h4 style="font-weight: 700; color: #d97706; margin: 0 0 8px 0;">Giảm Lưu Lượng Phổi (Qp &darr;)</h4>
+                <ul>
+                  <li><strong>Triệu chứng:</strong> Hay có cơn khó thở tím, thở nhanh sâu (kiểu tăng thông khí), phế âm thô, đa hồng cầu.</li>
+                  <li><strong>X-quang ngực:</strong> Phổi sáng, tuần hoàn phổi giảm, cung ĐMP lõm (hoặc phồng do giãn sau hẹp).</li>
+                  <li><strong>ECG:</strong> Dày thất phải dạng tăng gánh tâm thu.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- BƯỚC 3 DETAIL -->
+          <div class="step-detail-box" id="detail-step-3" style="border-color: #8b5cf6; display: none;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+              <span style="background: #8b5cf6; color: white; padding: 4px 12px; border-radius: 8px; font-weight: 800;">BƯỚC 3</span>
+              <h3 style="margin: 0; font-size: 1.2rem; font-weight: 700; color: #8b5cf6;"><i class="fa-solid fa-heart-pulse"></i> Xác Định Buồng Tim Bị Ảnh Hưởng &amp; Dấu Hiệu Bóng Tim</h3>
+            </div>
+
+            <p style="font-size: 0.9rem; color: var(--color-text-muted);">Kết hợp khám lâm sàng (diện đục tim, mỏm tim, dấu Harzer), Điện tâm đồ (ECG lớn nhĩ/thất) và Hình ảnh X-quang bóng tim:</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-top: 14px;">
+              <div style="background: var(--color-surface-2); padding: 14px; border-radius: 10px; border-left: 4px solid #dc2626;">
+                <strong style="color: #dc2626;"><i class="fa-solid fa-shoe-prints"></i> Bóng Tim "Hình Chiếc Giày":</strong><br>
+                Gặp trong <strong>Tứ chứng Fallot (TOF)</strong> do mỏm tim hếch lên vì phì đại thất phải kèm khuyết cung ĐMP.
+              </div>
+
+              <div style="background: var(--color-surface-2); padding: 14px; border-radius: 10px; border-left: 4px solid #d97706;">
+                <strong style="color: #d97706;"><i class="fa-solid fa-egg"></i> Bóng Tim "Hình Quả Trứng":</strong><br>
+                Gặp trong <strong>Hoán vị đại động mạch (d-TGA)</strong> do cuống tim hẹp vì 2 đại động mạch nằm trước-sau.
+              </div>
+
+              <div style="background: var(--color-surface-2); padding: 14px; border-radius: 10px; border-left: 4px solid #0284c7;">
+                <strong style="color: #0284c7;"><i class="fa-solid fa-snowman"></i> Bóng Tim "Hình Người Tuyết":</strong><br>
+                Gặp trong <strong>Bất thường hồi lưu TMP toàn phần thể trên tim (TAPVR)</strong>.
+              </div>
+            </div>
+          </div>
+
+          <!-- BƯỚC 4 DETAIL -->
+          <div class="step-detail-box" id="detail-step-4" style="border-color: #f59e0b; display: none;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+              <span style="background: #f59e0b; color: white; padding: 4px 12px; border-radius: 8px; font-weight: 800;">BƯỚC 4</span>
+              <h3 style="margin: 0; font-size: 1.2rem; font-weight: 700; color: #f59e0b;"><i class="fa-solid fa-gauge-high"></i> Đánh Giá Tăng Áp Động Mạch Phổi (Rp)</h3>
+            </div>
+
+            <div class="matrix-table-wrapper">
+              <h4 style="font-weight: 700; margin: 10px; font-size: 0.92rem;">Bảng 59.2: Tiến Triển Hình Ảnh X-Quang Dựa Trên Kháng Lực Mạch Máu Phổi (Rp)</h4>
+              <table class="matrix-table">
+                <thead>
+                  <tr>
+                    <th>Giai Đoạn Kháng Lực Mạch Máu Phổi (Rp)</th>
+                    <th>Cung Động Mạch Phổi</th>
+                    <th>Phân Bố Tuần Hoàn Phổi</th>
+                    <th>Dấu Hiệu Cắt Cụt (Pruning)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Rp &lt; R<sub>hệ thống</sub></strong> (Giai đoạn đầu, độ đàn hồi mạch tốt)</td>
+                    <td>Cung ĐMP Phồng (+)</td>
+                    <td>Tăng ra 1/3 ngoài phế trường (&uarr;)</td>
+                    <td>Không có (-)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Rp &ge; R<sub>hệ thống</sub></strong> (Bệnh lý mạch máu phổi tắc nghẽn)</td>
+                    <td>Cung ĐMP Phồng to (+)</td>
+                    <td>Giảm ở vùng ngoại vi, Phổi sáng</td>
+                    <td><strong style="color: #dc2626;">Dấu cắt cụt phế trường ngoài (+) (Eisenmenger)</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- BƯỚC 5 DETAIL -->
+          <div class="step-detail-box" id="detail-step-5" style="border-color: #10b981; display: none;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+              <span style="background: #10b981; color: white; padding: 4px 12px; border-radius: 8px; font-weight: 800;">BƯỚC 5</span>
+              <h3 style="margin: 0; font-size: 1.2rem; font-weight: 700; color: #10b981;"><i class="fa-solid fa-table-cells"></i> Ma Trận Phân Nhóm Chẩn Đoán Tật Tim Bẩm Sinh (YDS 59.2 &amp; 59.3)</h3>
+            </div>
+
+            <div class="matrix-table-wrapper">
+              <table class="matrix-table">
+                <thead>
+                  <tr>
+                    <th>Tím / Phổi</th>
+                    <th>Buồng Tim Ảnh Hưởng</th>
+                    <th>Chẩn Đoán Phân Biệt Hàng Đầu</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- KHÔNG TÍM + TĂNG PHỔI -->
+                  <tr>
+                    <td rowspan="2"><strong style="color: #0284c7;">KHÔNG TÍM<br>+ Tăng lưu lượng phổi (Qp &uarr;)</strong></td>
+                    <td><strong>Lớn Thất Trái / Hai thất</strong></td>
+                    <td>Thông liên thất (VSD), Còn ống động mạch (PDA), Kênh nhĩ thất (ECD/AVSD).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Lớn Thất Phải</strong></td>
+                    <td>Thông liên nhĩ (ASD), Bất thường hồi lưu tĩnh mạch phổi bán phần (PAPVR).</td>
+                  </tr>
+
+                  <!-- KHÔNG TÍM + PHỔI BÌNH THƯỜNG -->
+                  <tr>
+                    <td rowspan="2"><strong style="color: #6b7280;">KHÔNG TÍM<br>+ Lưu lượng phổi bình thường</strong></td>
+                    <td><strong>Lớn Thất Trái</strong></td>
+                    <td>Hẹp van ĐMC, Hở van ĐMC, Hẹp eo ĐMC (CoAo), Hở van 2 lá, Bệnh cơ tim.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Lớn Thất Phải</strong></td>
+                    <td>Hẹp van động mạch phổi (PS), Hẹp van 2 lá.</td>
+                  </tr>
+
+                  <!-- TÍM + TĂNG PHỔI -->
+                  <tr>
+                    <td rowspan="2"><strong style="color: #dc2626;">TÍM TRUNG ƯƠNG<br>+ Tăng lưu lượng phổi (Qp &uarr;)</strong></td>
+                    <td><strong>Lớn Thất Trái / Hai thất</strong></td>
+                    <td>Thân chung động mạch (Truncus Arteriosus), Tim 1 thất, Hoán vị đại ĐM + VSD (d-TGA + VSD).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Lớn Thất Phải</strong></td>
+                    <td>Hoán vị đại động mạch (d-TGA), Bất thường hồi lưu TMP toàn phần (TAPVR).</td>
+                  </tr>
+
+                  <!-- TÍM + GIẢM PHỔI -->
+                  <tr>
+                    <td rowspan="2"><strong style="color: #d97706;">TÍM TRUNG ƯƠNG<br>+ Giảm lưu lượng phổi (Qp &darr;)</strong></td>
+                    <td><strong>Lớn Thất Phải</strong></td>
+                    <td>Tứ chứng Fallot (TOF), Tật Ebstein, Hội chứng Eisenmenger.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Lớn Thất Trái / Teo thất P</strong></td>
+                    <td>Teo van 3 lá (Tricuspid Atresia), Teo van ĐMP vách liên thất nguyên vẹn (PA-IVS).</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div><!-- End Step Detail Container -->
+
+      </div>
+
+      <!-- ==========================================================================
+           TAB 2: TẦM SOÁT SƠ SINH & PHÂN LOẠI ỐNG ĐỘNG MẠCH
+           ========================================================================== -->
+      <div id="tab-neonatal" class="tab-content-panel">
+        
+        <!-- CARD INTERACTIVE SPO2 CHECKER -->
+        <div class="interactive-widget-box">
+          <div class="widget-box-header">
+            <h3 class="widget-box-title">
+              <i class="fa-solid fa-heart-circle-check" style="color: var(--cardio-primary);"></i>
+              Công Cụ Kiểm Tra Sàng Lọc SpO2 24h Sau Sinh (Theo AAP)
+            </h3>
+            <span class="badge-ready">Tương tác</span>
+          </div>
+
+          <div class="spo2-checker-container">
+            <div class="spo2-input-group">
+              <div class="spo2-input-field">
+                <label for="spo2Hand">SpO2 Tay Phải (Trước ống động mạch):</label>
+                <input type="number" id="spo2Hand" placeholder="Nhập % (ví dụ: 96)" min="50" max="100" value="96" oninput="calculateSpO2AAP()">
+              </div>
+              <div class="spo2-input-field">
+                <label for="spo2Foot">SpO2 Bàn Chân (Sau ống động mạch):</label>
+                <input type="number" id="spo2Foot" placeholder="Nhập % (ví dụ: 95)" min="50" max="100" value="95" oninput="calculateSpO2AAP()">
+              </div>
+              <p style="font-size: 0.8rem; color: var(--color-text-muted); margin: 0;">
+                <i class="fa-solid fa-circle-info"></i> Thực hiện đo lúc 24 giờ tuổi ở trẻ sơ sinh đủ tháng hoặc cận đủ tháng trước khi xuất viện.
+              </p>
+            </div>
+
+            <div class="spo2-result-display" id="spo2ResultBox">
+              <span style="font-size: 0.85rem; font-weight: 700; color: var(--color-text-muted);">KẾT QUẢ SÀNG LỌC</span>
+              <div id="spo2Badge" class="result-badge pass">ĐẠT (PASS)</div>
+              <p id="spo2Advice" style="font-size: 0.88rem; color: var(--color-text); margin: 4px 0 0 0;">
+                SpO2 hợp lệ (Chênh lệch &le; 3% và cả 2 nơi &ge; 95%). Chuyển chăm sóc sơ sinh bình thường.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- BẢNG PHÂN LOẠI TIM BẨM SINH NẶNG SƠ SINH -->
+        <div class="symptom-step-card border-danger symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-danger">Phân loại YDS 50.1</span>
+          </div>
+          <h3 class="step-card-title"><i class="fa-solid fa-layer-group"></i> Phân Loại Tim Bẩm Sinh Nặng Ở Trẻ Sơ Sinh</h3>
+          <div class="step-card-body">
+            <p>Tim bẩm sinh gặp ở <strong>8 – 10 / 1.000 trẻ sống</strong>. Phân loại lâm sàng cốt lõi dựa trên sự phụ thuộc vào <strong>Ống Động Mạch (PDA)</strong>:</p>
+
+            <div class="matrix-table-wrapper">
+              <table class="matrix-table">
+                <thead>
+                  <tr>
+                    <th>Nhóm Tổn Thương</th>
+                    <th>Cơ Chế Bệnh Sinh Phụ thuộc PDA</th>
+                    <th>Các Dị Tật Điển Hình</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong style="color: #dc2626;"><i class="fa-solid fa-arrows-split-up-and-left"></i> Tuần hoàn Hệ thống phụ thuộc PDA</strong></td>
+                    <td>Máu nuôi cơ thể (ĐMC) phụ thuộc luồng thông T-P hoặc P-T qua ống động mạch. Khi PDA đóng lại, trẻ rơi vào <strong>Sốc Tim nặng</strong> nguy hiểm tính mạng.</td>
+                    <td>
+                      <ul>
+                        <li>Thiểu sản tim trái (HLHS)</li>
+                        <li>Gián đoạn cung động mạch chủ (IAA)</li>
+                        <li>Thiểu sản cung động mạch chủ</li>
+                        <li>Hẹp eo động mạch chủ nặng (CoAo)</li>
+                        <li>Hẹp van động mạch chủ nặng (Critical AS)</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong style="color: #d97706;"><i class="fa-solid fa-lungs"></i> Tuần hoàn Phổi phụ thuộc PDA</strong></td>
+                    <td>Máu lên phổi nhận oxy phụ thuộc hoàn toàn vào luồng thông qua PDA. Khi PDA đóng lại, trẻ xuất hiện <strong>Tím tái nặng &amp; Toan chuyển hóa</strong>.</td>
+                    <td>
+                      <ul>
+                        <li>Tứ chứng Fallot hẹp phổi nặng (TOF)</li>
+                        <li>Không lỗ van ĐMP - Vách liên thất nguyên vẹn (PA-IVS)</li>
+                        <li>Không lỗ van ĐMP - Thông liên thất (PA-VSD)</li>
+                        <li>Hẹp khít van động mạch phổi (Critical PS)</li>
+                        <li>Teo van 3 lá kèm hẹp phổi nặng (TA + PS)</li>
+                        <li>Hoán vị đại động mạch vách liên thất nguyên vẹn (d-TGA + IVS)</li>
+                        <li>Tật Ebstein nặng</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong style="color: var(--color-primary);"><i class="fa-solid fa-circle-notch"></i> Không phụ thuộc PDA</strong></td>
+                    <td>Dị tật nặng gây trộn máu hoặc chèn ép ngay sau sinh mà không phụ thuộc sự đóng mở của ống động mạch.</td>
+                    <td>
+                      <ul>
+                        <li>Bất thường hồi lưu tĩnh mạch phổi hoàn toàn (TAPVR)</li>
+                        <li>Thân chung động mạch (Truncus Arteriosus)</li>
+                        <li>Tứ chứng Fallot kèm không lá van ĐMP</li>
+                      </ul>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div style="background: linear-gradient(90deg, rgba(239, 68, 68, 0.08) 0%, transparent 100%); border-left: 4px solid #ef4444; padding: 14px; border-radius: 0 10px 10px 0; margin-top: 16px;">
+              <strong style="color: #dc2626;"><i class="fa-solid fa-clock"></i> Phân loại Theo Thời Gian Xuất Hiện Triệu Chứng:</strong>
+              <ul style="margin: 6px 0 0 0; padding-left: 18px; font-size: 0.88rem;">
+                <li><strong>Sốc ngay phòng sinh:</strong> Thiểu sản tim trái không ASD hoặc Hoán vị đại ĐM vách LTT nguyên vẹn không ASD.</li>
+                <li><strong>Những ngày đầu sau sinh:</strong> Bệnh gây chèn ép đường thở (Ebstein nặng, TOF không lá van ĐMP, vòng mạch máu) hoặc tắc nghẽn tĩnh mạch (TAPVR có tắc nghẽn).</li>
+                <li><strong>Trong tuần đầu sau sinh:</strong> Bệnh phụ thuộc PDA bộc lộ Sốc hoặc Tím nặng khi PDA đóng lại; hoặc các tật tim có shunt T-P lớn (Truncus Arteriosus, VSD lớn kèm CoAo).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- KHÁM LÂM SÀNG & KHAI THÁC BỆNH SỬ -->
+        <div class="symptom-step-card border-primary symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag">Lâm sàng &amp; Tiền sử</span>
+          </div>
+          <h3 class="step-card-title"><i class="fa-solid fa-clipboard-user"></i> Khai Thác Bệnh Sử &amp; Khám Tứ Chi Sơ Sinh</h3>
+          <div class="step-card-body">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+              
+              <div>
+                <h4 style="font-weight: 700; color: var(--color-primary); margin-bottom: 8px;"><i class="fa-solid fa-dna"></i> Tiền Sử &amp; Yếu Tố Nguy Cơ</h4>
+                <ul>
+                  <li><strong>Tiền căn gia đình:</strong> Nguy cơ mắc TBS là <strong>6%</strong> nếu mẹ bị TBS, và <strong>2%</strong> nếu bố hoặc anh chị em mắc. Dấu hiệu các hội chứng Marfan, Ehlers-Danlos, Noonan.</li>
+                  <li><strong>Yếu tố thai kỳ của mẹ:</strong>
+                    <ul>
+                      <li>Sinh non &lt; 37 tuần (nguy cơ gấp 2-3 lần).</li>
+                      <li>Tiểu đường thai kỳ, Phenylketon niệu, Lupus ban đỏ, Sjogren.</li>
+                      <li>Dùng thuốc: Isotretinoin, Lithium, Phenytoin, Acid Valproic...</li>
+                      <li>Nhiễm trùng 3 tháng đầu: Rubella, CMV, Toxoplasma...</li>
+                    </ul>
+                  </li>
+                  <li><strong>Siêu âm tim thai:</strong> Phát hiện dị tật từ tuần 16 – 17 thai kỳ ở nhóm nguy cơ cao.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 style="font-weight: 700; color: var(--cardio-purple); margin-bottom: 8px;"><i class="fa-solid fa-hand-holding-medical"></i> Bắt Mạch Tứ Chi &amp; Dấu Suy Tim</h4>
+                <ul>
+                  <li><strong>Bắt mạch tứ chi:</strong>
+                    <ul>
+                      <li><strong style="color: #dc2626;">Mạch chi dưới yếu hơn chi trên:</strong> Gợi ý Hẹp eo ĐMC (CoAo) hoặc Đứt đoạn cung ĐMC (IAA).</li>
+                      <li><strong style="color: #dc2626;">Mạch tứ chi đều yếu:</strong> Gợi ý Thiểu sản tim trái (HLHS).</li>
+                    </ul>
+                  </li>
+                  <li><strong>Dấu hiệu Suy tim ở sơ sinh:</strong> Thở nhanh, rút lõm ngực, vã mồ hôi khi bú, bú ngắt quãng, bú không đủ cử, chậm tăng cân, nhịp tim nhanh và gan to.</li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ==========================================================================
+           TAB 3: PHÁC ĐỒ XỬ TRÍ CẤP CỨU & PROSTAGLANDIN E1
+           ========================================================================== -->
+      <div id="tab-treatment" class="tab-content-panel">
+        
+        <div class="symptom-step-card border-danger symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-danger">Cấp cứu Sơ sinh</span>
+          </div>
+          <h3 class="step-card-title"><i class="fa-solid fa-truck-medical"></i> Phác Đồ 4 Bước Xử Trí Cấp Cứu Cứu Sống Trẻ Sơ Sinh</h3>
+          <div class="step-card-body">
+            
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+              
+              <!-- STEP 1 -->
+              <div style="background: var(--color-surface-2); border-left: 4px solid #0284c7; padding: 16px; border-radius: 0 12px 12px 0;">
+                <h4 style="font-weight: 700; color: #0284c7; margin: 0 0 6px 0;">BƯỚC 1: OXY LIỆU PHÁP THẬN TRỌNG</h4>
+                <p style="font-size: 0.88rem; color: var(--color-text); margin: 0;">
+                  Thực hiện Test Oxy 100% trong 10 phút. Nếu là TBS tím phụ thuộc PDA, SaO<sub>2</sub> tăng rất ít. 
+                  <br><strong style="color: #dc2626;">Cảnh báo:</strong> Oxy làm giãn mạch phổi và có thể kích thích đóng ống động mạch cấp tính! Ở trẻ nghi ngờ TBS phụ thuộc PDA, chỉ duy trì SaO<sub>2</sub> khoảng <strong>80 – 85%</strong> để giữ cân bằng lưu lượng Qp : Qs = 1 : 1.
+                </p>
+              </div>
+
+              <!-- STEP 2 -->
+              <div style="background: var(--color-surface-2); border-left: 4px solid #8b5cf6; padding: 16px; border-radius: 0 12px 12px 0;">
+                <h4 style="font-weight: 700; color: #8b5cf6; margin: 0 0 6px 0;">BƯỚC 2: THIẾT LẬP ĐƯỜNG TRUYỀN RỐN</h4>
+                <p style="font-size: 0.88rem; color: var(--color-text); margin: 0;">
+                  Đặt ngay ống thông Động mạch rốn và Tĩnh mạch rốn. Truyền duy trì Dextrose 5-10% hoặc Normal Saline pha thêm Heparin (0.5 – 1 đơn vị/mL) để tránh tắc đường truyền.
+                </p>
+              </div>
+
+              <!-- STEP 3 -->
+              <div style="background: var(--color-surface-2); border-left: 4px solid #dc2626; padding: 16px; border-radius: 0 12px 12px 0;">
+                <h4 style="font-weight: 700; color: #dc2626; margin: 0 0 6px 0;">BƯỚC 3: TRUYỀN TĨNH MẠCH PROSTAGLANDIN E1 (PGE1) - THUỐC CỨU MẠNG</h4>
+                <p style="font-size: 0.88rem; color: var(--color-text); margin: 0 0 8px 0;">
+                  Nhằm giữ ống động mạch tiếp tục mở rộng hoặc mở lại ống đã bị co thắt.
+                </p>
+                <div style="background: var(--color-surface); padding: 12px; border-radius: 8px; border: 1px solid var(--color-border); font-size: 0.85rem;">
+                  <ul>
+                    <li><strong>Liều khởi đầu (Trẻ không toan máu):</strong> <strong>5 – 10 ng/kg/phút</strong> truyền tĩnh mạch liên tục.</li>
+                    <li><strong>Liều tấn công (Trẻ Sốc tim / Toan máu nặng):</strong> Tăng lên <strong>50 – 100 ng/kg/phút</strong> (có thể lên tới 200 ng/kg/phút) cho đến khi mở lại được PDA.</li>
+                    <li><strong style="color: #dc2626;">Tác dụng phụ nguy hiểm cần sẵn sàng Đặt Nội Khí Quản:</strong> Ngưng thở (Apnea gặp ở 10-12% bệnh nhi), Hạ huyết áp, Sốt cao, Co giật.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- STEP 4 -->
+              <div style="background: var(--color-surface-2); border-left: 4px solid #10b981; padding: 16px; border-radius: 0 12px 12px 0;">
+                <h4 style="font-weight: 700; color: #10b981; margin: 0 0 6px 0;">BƯỚC 4: BÙ DỊCH &amp; THUỐC VẬN MẠCH CHỐNG SỐC</h4>
+                <p style="font-size: 0.88rem; color: var(--color-text); margin: 0;">
+                  Nếu trẻ có biểu hiện Sốc tim (bứt rứt, da nổi bông, CRT &gt; 3 giây, mạch yếu): Tiến hành bù dịch Lactate Ringer / Normal Saline 10mL/kg nhẹ nhàng, kết hợp truyền tĩnh mạch liên tục <strong>Dopamin 3 – 5 µg/kg/phút</strong>.
+                </p>
+              </div>
+
+            </div>
+
+            <div style="margin-top: 20px; background: rgba(139, 92, 246, 0.08); border: 1px solid #8b5cf6; padding: 16px; border-radius: 12px;">
+              <h4 style="font-weight: 700; color: #8b5cf6; margin: 0 0 6px 0;"><i class="fa-solid fa-hand-holding-hand"></i> Can Thiệp Tim Mạch &amp; Phẫu Thuật</h4>
+              <p style="font-size: 0.88rem; color: var(--color-text); margin: 0;">
+                Liên hệ ngay trung tâm Phẫu thuật Tim trẻ em để chuẩn bị can thiệp khẩn cấp: <strong>Thủ thuật Rashkind</strong> (xé vách liên nhĩ bằng bóng cho TGA/HLHS), đặt Stent ống động mạch, Nong van ĐMC/ĐMP bằng bóng, hoặc phẫu thuật sửa chữa triệt để (Phẫu thuật Jatene cho TGA, phẫu thuật sửa chữa Thân chung ĐM / Đứt đoạn cung ĐMC).
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- TAKE HOME MESSAGES -->
+      <section class="take-home-card" style="margin-top: 24px;">
+        <div class="take-home-title">
+          <i class="fas fa-lightbulb"></i> Thông điệp Cốt lõi (Take-home Messages)
+        </div>
+        <div class="take-home-body">
+          <ul>
+            <li>Khám lâm sàng trẻ sơ sinh bắt buộc phải sàng lọc SpO<sub>2</sub> tay phải và chân lúc 24h tuổi cùng với bắt mạch tứ chi để không bỏ sót các dị tật tim phụ thuộc ống động mạch.</li>
+            <li>Ở trẻ sơ sinh tím tái nặng hoặc sốc tim, nghĩ ngay đến tim bẩm sinh phụ thuộc PDA và dùng ngay Prostaglandin E1 cấp cứu trước khi có kết quả Siêu âm tim.</li>
+            <li>Áp dụng quy tắc 5T ở trẻ em: Tím trung ương &rarr; Tăng lưu lượng phổi &rarr; Buồng Tim ảnh hưởng &rarr; Tăng áp động mạch phổi &rarr; Định vị Tật tim.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TÀI LIỆU THAM KHẢO -->
+      <section class="references-card">
+        <div class="references-title">
+          <i class="fas fa-book"></i> Tài liệu Tham khảo Chuẩn AMA
+        </div>
+        <ol class="references-list">
+          <li>Hoàng Quốc Tưởng, Vũ Minh Phúc. Bài 50: Tiếp cận tim bẩm sinh nặng ở trẻ sơ sinh. Trong: <em>Nhi khoa YDS - Tập 4</em>. Bệnh viện Đại học Y Dược TP.HCM. 2020:474-493.</li>
+          <li>Hoàng Quốc Tưởng, Vũ Minh Phúc. Bài 59: Tiếp cận tim bẩm sinh ở trẻ em. Trong: <em>Nhi khoa YDS - Tập 2 (Tim mạch)</em>. Bộ môn Nhi - Đại học Y Dược Thành phố Hồ Chí Minh; 2020:44-51.</li>
+        </ol>
+      </section>
+
+    </main>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+  <!-- SCRIPTS -->
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+  <script src="../../../../../js/approach-symptom.js" defer></script>
+
+  <!-- INTERACTIVE LOGIC SCRIPT FOR PEDIATRIC CARDIOLOGY -->
+  <script>
+    // Tab switching functionality
+    function switchCardioTab(tabId) {
+      document.querySelectorAll('.cardio-tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.querySelectorAll('.tab-content-panel').forEach(panel => {
+        panel.classList.remove('active');
+      });
+
+      const activeBtn = Array.from(document.querySelectorAll('.cardio-tab-btn')).find(b => b.getAttribute('onclick').includes(tabId));
+      if (activeBtn) activeBtn.classList.add('active');
+
+      const targetPanel = document.getElementById(tabId);
+      if (targetPanel) targetPanel.classList.add('active');
+    }
+
+    // Interactive 5T Step Selector
+    function select5TStep(stepNum) {
+      document.querySelectorAll('.step-5t-btn-card').forEach(card => {
+        card.classList.remove('active');
+      });
+      document.querySelectorAll('[id^="detail-step-"]').forEach(detailBox => {
+        detailBox.style.display = 'none';
+      });
+
+      const activeCard = document.getElementById(`btn-step-${stepNum}`);
+      if (activeCard) activeCard.classList.add('active');
+
+      const activeDetail = document.getElementById(`detail-step-${stepNum}`);
+      if (activeDetail) activeDetail.style.display = 'block';
+    }
+
+    // AAP SpO2 Calculator logic
+    function calculateSpO2AAP() {
+      const hand = parseFloat(document.getElementById('spo2Hand').value);
+      const foot = parseFloat(document.getElementById('spo2Foot').value);
+      const badge = document.getElementById('spo2Badge');
+      const advice = document.getElementById('spo2Advice');
+
+      if (isNaN(hand) || isNaN(foot)) {
+        badge.className = "result-badge repeat";
+        badge.innerText = "CHỜ NHẬP SỐ";
+        advice.innerText = "Vui lòng nhập giá trị SpO2 của cả Tay Phải và Bàn Chân.";
+        return;
+      }
+
+      const diff = Math.abs(hand - foot);
+
+      if (hand <= 89 || foot <= 89) {
+        badge.className = "result-badge fail";
+        badge.innerText = "KHÔNG ĐẠT (FAIL)";
+        advice.innerHTML = "<strong style='color:#dc2626;'>SpO2 &le; 89%:</strong> CẦN ĐÁNH GIÁ LÂM SÀNG KHẨN VÀ SIÊU ÂM TIM NGAY! Không lặp lại tầm soát.";
+      } else if ((hand >= 90 && hand <= 94) || (foot >= 90 && foot <= 94) || diff >= 4) {
+        badge.className = "result-badge repeat";
+        badge.innerText = "ĐO LẠI (REPEAT)";
+        advice.innerHTML = "SpO2 từ 90 - 94% HOẶC chênh lệch &ge; 4%. <strong>Đo lại sau 1 giờ</strong> (Tối đa 3 lần). Nếu sau 3 lần vẫn nằm trong khoảng này &rarr; FAIL (Khám ngay).";
+      } else if (hand >= 95 && foot >= 95 && diff <= 3) {
+        badge.className = "result-badge pass";
+        badge.innerText = "ĐẠT (PASS)";
+        advice.innerHTML = "SpO2 &ge; 95% ở cả 2 vị trí và chênh lệch &le; 3%. <strong>Đạt yêu cầu sàng lọc</strong>, chuyển chăm sóc sơ sinh bình thường.";
+      } else {
+        badge.className = "result-badge repeat";
+        badge.innerText = "ĐO LẠI (REPEAT)";
+        advice.innerText = "Vui lòng kiểm tra lại vị trí dán đầu dò và đo lại.";
+      }
+    }
+  </script>
+</body>
+
+</html>

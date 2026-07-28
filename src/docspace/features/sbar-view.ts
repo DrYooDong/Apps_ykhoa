@@ -27,7 +27,11 @@ export function renderSBARView(profileId: string, editId?: string): string {
     ? sbars.map(s => `
         <div class="dsp-list-item" data-sbar-id="${s.id}">
           <div class="dsp-list-item-body">
-            <div class="dsp-list-item-title">${escapeHtml(s.title) || '(Chưa đặt tên)'}</div>
+            <div class="dsp-list-item-title">
+              ${escapeHtml(s.title) || '(Chưa đặt tên)'}
+              ${s.isLocked ? '<i class="fa-solid fa-lock dsp-text-primary" title="Đã Khóa & Ký"></i>' : ''}
+              ${s.isTampered ? '<i class="fa-solid fa-triangle-exclamation dsp-text-danger" title="Dữ liệu bị can thiệp!"></i>' : ''}
+            </div>
             <div class="dsp-list-item-meta">
               ${s.isDraft ? '<span class="dsp-badge dsp-badge--draft">Nháp</span>' : ''}
               <span>${formatRelativeDate(s.updatedAt)}</span>
@@ -38,15 +42,22 @@ export function renderSBARView(profileId: string, editId?: string): string {
             </div>
           </div>
           <div class="dsp-list-item-actions">
+            <button class="dsp-icon-btn" style="color:var(--color-primary)" data-action="sandbox-sbar" data-id="${s.id}" title="Đưa vào Sandbox (Mô phỏng)">
+              <i class="fa-solid fa-flask"></i>
+            </button>
             <button class="dsp-icon-btn" data-action="view-sbar" data-id="${s.id}" title="Xem & In">
               <i class="fa-solid fa-eye"></i>
             </button>
-            <button class="dsp-icon-btn" data-action="edit-sbar" data-id="${s.id}" title="Chỉnh sửa">
-              <i class="fa-solid fa-pen"></i>
-            </button>
-            <button class="dsp-icon-btn dsp-icon-btn--danger" data-action="delete-sbar" data-id="${s.id}" title="Xóa">
-              <i class="fa-solid fa-trash"></i>
-            </button>
+            ${!s.isLocked ? `
+              <button class="dsp-icon-btn" data-action="edit-sbar" data-id="${s.id}" title="Chỉnh sửa">
+                <i class="fa-solid fa-pen"></i>
+              </button>
+              <button class="dsp-icon-btn dsp-icon-btn--danger" data-action="delete-sbar" data-id="${s.id}" title="Xóa">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            ` : `
+              <button class="dsp-icon-btn" disabled title="Bản ghi đã khóa"><i class="fa-solid fa-lock"></i></button>
+            `}
           </div>
         </div>
       `).join('')
@@ -56,16 +67,23 @@ export function renderSBARView(profileId: string, editId?: string): string {
        </div>`;
 
   const formTitle = editRecord ? `Chỉnh sửa: ${editRecord.title || 'SBAR'}` : 'Tạo SBAR mới';
-
+  const isLocked = editRecord?.isLocked === true;
+  
   const formHtml = `
     <form class="dsp-sbar-form" id="dspSBARForm" novalidate>
       <input type="hidden" id="dspSBAREditId" value="${editRecord?.id || ''}" />
+      
+      ${isLocked ? `
+        <div class="dsp-alert dsp-alert-warning dsp-mb-4" style="background: #fff3cd; color: #856404; padding: 10px; border-radius: 4px;">
+          <i class="fa-solid fa-lock"></i> SBAR này đã được ký số và khóa. Bạn không thể chỉnh sửa.
+        </div>
+      ` : ''}
 
       <div class="dsp-form-group">
         <label class="dsp-label" for="dspSBARTitle">Tiêu đề (tùy chọn)</label>
         <input class="dsp-input" type="text" id="dspSBARTitle"
           placeholder="VD: BN suy hô hấp phòng 5 lúc 2h sáng"
-          value="${escapeHtml(editRecord?.title || '')}" maxlength="100" />
+          value="${escapeHtml(editRecord?.title || '')}" maxlength="100" ${isLocked ? 'disabled' : ''} />
       </div>
 
       <!-- AI Assistant -->
@@ -87,11 +105,12 @@ export function renderSBARView(profileId: string, editId?: string): string {
             ${step.label}
           </label>
           <textarea class="dsp-textarea" id="dspSBAR_${step.key}"
-            placeholder="${step.placeholder}" rows="3"
+            placeholder="${step.placeholder}" rows="3" ${isLocked ? 'disabled' : ''}
             >${escapeHtml(editRecord ? (editRecord as any)[step.key] : '')}</textarea>
         </div>
       `).join('')}
 
+      ${!isLocked ? `
       <div class="dsp-form-actions">
         <button type="button" class="dsp-btn dsp-btn-ghost" id="dspSBARSaveDraft">
           <i class="fa-regular fa-floppy-disk"></i> Lưu nháp
@@ -99,7 +118,13 @@ export function renderSBARView(profileId: string, editId?: string): string {
         <button type="submit" class="dsp-btn dsp-btn-primary" id="dspSBARSave">
           <i class="fa-solid fa-check"></i> Lưu SBAR
         </button>
+        ${editRecord ? `
+        <button type="button" class="dsp-btn dsp-btn-danger" id="dspSBARLock" style="background:#dc2626; color:#fff; border:none;" title="Ký số bằng Audit Trail và Khóa vĩnh viễn bản ghi này">
+          <i class="fa-solid fa-lock"></i> Ký & Khóa
+        </button>
+        ` : ''}
       </div>
+      ` : ''}
     </form>
   `;
 
@@ -174,6 +199,17 @@ export function renderSBARPreviewHtml(record: SBARRecord): string {
         <div class="dsp-sbar-print-logo"><i class="fa-solid fa-hospital"></i> CliniPortal · DocSpace</div>
         <div class="dsp-sbar-print-date">${new Date(record.updatedAt).toLocaleString('vi-VN')}</div>
       </div>
+      
+      <!-- Trạng thái Legal Shield -->
+      <div class="dsp-mb-4 dsp-p-2 dsp-rounded-md dsp-text-sm" style="background: ${record.isTampered ? '#fef2f2' : (record.isLocked ? '#f0fdf4' : '#f8fafc')}; border: 1px solid ${record.isTampered ? '#fca5a5' : (record.isLocked ? '#86efac' : '#e2e8f0')};">
+        ${record.isTampered 
+          ? '<i class="fa-solid fa-triangle-exclamation dsp-text-danger"></i> <span class="dsp-text-danger dsp-font-bold">CẢNH BÁO: Dữ liệu đã bị can thiệp. Mã băm không khớp.</span>'
+          : record.isLocked 
+            ? '<i class="fa-solid fa-shield-halved" style="color:#16a34a"></i> <span style="color:#16a34a" class="dsp-font-bold">Hồ sơ đã được Khóa & Ký số an toàn.</span>'
+            : '<i class="fa-solid fa-circle-info" style="color:#64748b"></i> <span style="color:#64748b">Hồ sơ này chưa được khóa.</span>'
+        }
+      </div>
+
       <h2 class="dsp-sbar-print-title">${escapeHtml(record.title || 'Báo cáo SBAR')}</h2>
       ${SBAR_STEPS.map(step => `
         <div class="dsp-sbar-block" style="--step-color: ${step.color}">
@@ -235,11 +271,19 @@ export function mountSBARController(profileId: string): void {
     submitSBAR(profileId, true);
   });
 
+  // Lock
+  document.getElementById('dspSBARLock')?.addEventListener('click', () => {
+    if (confirm('Sau khi khóa, bạn sẽ không thể chỉnh sửa SBAR này nữa. Hệ thống sẽ sinh mã băm lưu vết. Tiếp tục?')) {
+      submitSBAR(profileId, false, true);
+    }
+  });
+
   // Delete
   document.getElementById('dspSBARList')?.addEventListener('click', (e) => {
     const target = e.target as HTMLElement;
-    const btn = target.closest('[data-action]') as HTMLElement;
+    const btn = target.closest('[data-action]') as HTMLButtonElement;
     if (!btn) return;
+    if (btn.disabled) return;
     const action = btn.getAttribute('data-action');
     const id = btn.getAttribute('data-id') || '';
 
@@ -248,6 +292,8 @@ export function mountSBARController(profileId: string): void {
         deleteSBAR(profileId, id);
         window.location.hash = '#/docspace/sbar';
       }
+    } else if (action === 'sandbox-sbar') {
+      window.location.hash = `#/docspace/sandbox?source=sbar&id=${id}`;
     } else if (action === 'view-sbar') {
       showSBARPreview(profileId, id);
     } else if (action === 'edit-sbar') {
@@ -281,7 +327,7 @@ export function mountSBARController(profileId: string): void {
   });
 }
 
-function submitSBAR(profileId: string, isDraft: boolean): void {
+function submitSBAR(profileId: string, isDraft: boolean, isLockAction = false): void {
   const editId = (document.getElementById('dspSBAREditId') as HTMLInputElement)?.value;
   const title = (document.getElementById('dspSBARTitle') as HTMLInputElement)?.value || '';
   const situation = (document.getElementById('dspSBAR_situation') as HTMLTextAreaElement)?.value || '';
@@ -295,7 +341,7 @@ function submitSBAR(profileId: string, isDraft: boolean): void {
   }
 
   if (editId) {
-    updateSBAR(profileId, editId, { title, situation, background, assessment, recommendation, isDraft });
+    updateSBAR(profileId, editId, { title, situation, background, assessment, recommendation, isDraft, isLocked: isLockAction }, isLockAction);
   } else {
     saveSBAR(profileId, { title, situation, background, assessment, recommendation, isDraft });
   }

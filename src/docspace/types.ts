@@ -34,6 +34,16 @@ export interface QuickLink {
 }
 
 // ─────────────────────────────────────────────
+// REGULATORY & LEGAL SHIELD (Phase 3)
+// ─────────────────────────────────────────────
+
+export interface AuditTrail {
+  timestamp: string;          // ISO time
+  action: 'create' | 'update' | 'lock';
+  snapshotHash: string;       // SHA-256
+}
+
+// ─────────────────────────────────────────────
 // SBAR
 // ─────────────────────────────────────────────
 
@@ -48,6 +58,11 @@ export interface SBARRecord {
   createdAt: string;
   updatedAt: string;
   isDraft: boolean;
+  
+  // Phase 3: Legal Shield
+  auditLogs?: AuditTrail[];
+  isLocked?: boolean;   // Đã ký số & khóa (không thể sửa)
+  isTampered?: boolean; // Bị chỉnh sửa lậu ngoài ứng dụng
 }
 
 // ─────────────────────────────────────────────
@@ -94,6 +109,11 @@ export interface CaseRecord {
   lesson?: string;       // Bài học rút ra
   relatedUrl?: string;   // Link tới guideline trong app
   createdAt: string;
+  
+  // Phase 3: Legal Shield
+  auditLogs?: AuditTrail[];
+  isLocked?: boolean;
+  isTampered?: boolean;
 }
 
 export type CaseContext = 'duty' | 'opd' | 'clinic' | 'consult' | 'other';
@@ -116,7 +136,7 @@ export interface DrugJournalEntry {
 }
 
 // ─────────────────────────────────────────────
-// PERSONAL PROTOCOL (Phase 2)
+// LIVING PROTOCOL ENGINE (Phase 3) & PERSONAL PROTOCOL (Phase 2)
 // ─────────────────────────────────────────────
 
 export interface PersonalProtocol {
@@ -137,6 +157,32 @@ export interface ProtocolStep {
   isAlert?: boolean;
 }
 
+export type ProtocolNodeType = 'action' | 'branch' | 'calculation' | 'guideline_sync';
+
+export interface LivingProtocolNode {
+  id: string;
+  type: ProtocolNodeType;
+  text: string;               // Nội dung hiển thị
+  
+  // Dành cho 'calculation'
+  formula?: string;           // VD: "weight * 15"
+  unit?: string;              // VD: "mg/kg"
+  
+  // Dành cho 'branch'
+  condition?: string;         // VD: "egfr < 30"
+  trueBranchId?: string;
+  falseBranchId?: string;
+  
+  // Dành cho 'guideline_sync'
+  ebmReference?: string;      // ID bài Guideline
+}
+
+export interface LivingProtocol extends PersonalProtocol {
+  variables: string[];        // Các biến yêu cầu nhập: ['weight', 'age', 'egfr']
+  nodes: LivingProtocolNode[]; 
+  startNodeId: string;
+}
+
 // ─────────────────────────────────────────────
 // PERSONAL NOTEPAD (Phase 2)
 // ─────────────────────────────────────────────
@@ -154,6 +200,38 @@ export interface PersonalNote {
 }
 
 // ─────────────────────────────────────────────
+// SIMULATION SANDBOX (Phase 3)
+// ─────────────────────────────────────────────
+
+export interface SimulationSession {
+  id: string;
+  doctorId: string;
+  sourceId?: { type: 'sbar' | 'oncall' | 'custom', id: string };
+  patientContext: {
+    age?: number;
+    weight?: number;
+    egfr?: number;
+    comorbidities: string[];
+    currentMeds: string[];
+    labs: Record<string, string>;
+  };
+  proposedRegimen: {
+    drugName: string;
+    dose: string;
+    route: string;
+  }[];
+  simulationResult?: SimulationResult;
+  createdAt: string;
+}
+
+export interface SimulationResult {
+  interactions: { severity: 'high'|'mod'|'low', description: string }[];
+  clinicalWarnings: string[]; 
+  outcomePrediction: string;  
+  safetyScore: number;        
+}
+
+// ─────────────────────────────────────────────
 // DOCSPACE STORAGE SNAPSHOT (Export/Import)
 // ─────────────────────────────────────────────
 
@@ -167,6 +245,8 @@ export interface DocSpaceSnapshot {
   notes: PersonalNote[];
   drugJournal: DrugJournalEntry[];
   protocols: PersonalProtocol[];
+  livingProtocols?: LivingProtocol[]; // Phase 3
+  simulations?: SimulationSession[];  // Phase 3
 }
 
 // ─────────────────────────────────────────────
@@ -179,7 +259,7 @@ export interface DocSpaceNavItem {
   href: string;
   icon: string;
   badge?: number;        // Số lượng items (VD: 3 SBARs)
-  phase?: 1 | 2;
+  phase?: 1 | 2 | 3;
 }
 
 export const DOCSPACE_VERSION = '1.0';

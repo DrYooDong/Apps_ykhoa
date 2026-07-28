@@ -492,7 +492,7 @@
 | `src/content/calculators/` | **[MỚI]** Phân hệ Công cụ Lâm sàng & Master Catalog `index.json` (43 items) |
 | `src/content/pharmacology/` | **[MỚI]** Phân hệ Dược lý học & Master Catalog `index.json` (18 items) |
 | `src/content/skills/` | **[MỚI]** Phân hệ Kỹ năng Lâm sàng & Master Catalog `index.json` (73 items) |
-| `src/content/pathophysiology/` | **[MỚI]** Phân hệ Sinh lý & Sinh lý bệnh & Master Catalog `index.json` (60 items) |
+| `src/content/pathophysiology/` | **[MỚI]** Phân hệ Sinh lý & Sinh lý bệnh & Master Catalog `index.json` (64 items, bao gồm `slb-ccbs-lao.html`, `slb-ccbs-sepsis.html`, `WORKFLOW_TAO_TRANG_SINH_LY_BENH.md`) |
 | `src/content/approaches/` | **[MỚI]** Phân hệ Tiếp cận Triệu chứng & Bệnh lý & Master Catalog `index.json` (58 items) |
 | `src/content/ebm/` | **[MỚI]** Phân hệ Y học Chứng cứ & Guidelines & Master Catalog `index.json` (32 items) |
 | `src/content/tcm/` | **[MỚI]** Phân hệ Y học Cổ truyền & Master Catalog `index.json` (17 items) |
@@ -509,6 +509,7 @@
 | `FILE_MAP.md` | Bản đồ file & cấu trúc cây thư mục |
 | `DESIGN_TO_CODE.md` | **[MỚI]** Hướng dẫn quy trình chuyển đổi thiết kế từ Figma sang Vanilla CSS |
 | `HUONG_DAN_THIET_KE_VA_VE_LUU_DO_YKHOA.md` | Quy chuẩn thiết kế lưu đồ thuật toán y khoa |
+| `src/content/pathophysiology/pathophysiology-cases/WORKFLOW_TAO_TRANG_SINH_LY_BENH.md` | **[MỚI]** Quy trình Workflow 6 bước khởi tạo bài học Sinh lý bệnh & Cơ chế bệnh sinh chuẩn Y khoa |
 
 ---
 

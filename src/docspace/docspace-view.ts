@@ -14,6 +14,8 @@ export const DSP_NAV_ITEMS: DocSpaceNavItem[] = [
   { id: 'notes',     label: 'Ghi chú',        href: '#/docspace/notes',    icon: 'fa-solid fa-note-sticky',      phase: 1 },
   { id: 'drugs',     label: 'Nhật ký Thuốc',  href: '#/docspace/drugs',    icon: 'fa-solid fa-pills',            phase: 1 },
   { id: 'protocol',  label: 'Phác đồ Riêng',  href: '#/docspace/protocol', icon: 'fa-solid fa-clipboard-list',   phase: 1 },
+  { id: 'living-protocols', label: 'Phác đồ Động', href: '#/docspace/living-protocols', icon: 'fa-solid fa-network-wired', phase: 3 },
+  { id: 'sandbox',   label: 'Sandbox Mô phỏng', href: '#/docspace/sandbox', icon: 'fa-solid fa-flask',            phase: 3 },
   { id: 'links',     label: 'Liên kết nhanh', href: '#/docspace/links',    icon: 'fa-solid fa-link',             phase: 1 },
 ];
 
@@ -237,14 +239,17 @@ export function renderSidebar(profile: DoctorProfile, activeId: string): string 
   const navItems = DSP_NAV_ITEMS.map(item => {
     const isActive = item.id === activeId;
     const isPhase2 = item.phase === 2;
+    const isPhase3 = item.phase === 3;
+    const badgeHtml = isPhase2 ? '<span class="dsp-soon-badge">Soon</span>' : isPhase3 ? '<span class="dsp-soon-badge dsp-bg-primary dsp-text-white" style="background:var(--color-primary);color:#fff;">Ph3</span>' : '';
+    
     return `
       <a href="${item.href}"
-         class="dsp-nav-item${isActive ? ' dsp-nav-item--active' : ''}${isPhase2 ? ' dsp-nav-item--soon' : ''}"
+         class="dsp-nav-item${isActive ? ' dsp-nav-item--active' : ''}${(isPhase2 || isPhase3) ? ' dsp-nav-item--soon' : ''}"
          id="dspNav-${item.id}"
-         ${isPhase2 ? 'title="Sắp ra mắt"' : ''}>
+         ${(isPhase2 || isPhase3) ? 'title="Tính năng nâng cao"' : ''}>
         <i class="${item.icon}"></i>
         <span>${item.label}</span>
-        ${isPhase2 ? '<span class="dsp-soon-badge">Soon</span>' : ''}
+        ${badgeHtml}
       </a>
     `;
   }).join('');

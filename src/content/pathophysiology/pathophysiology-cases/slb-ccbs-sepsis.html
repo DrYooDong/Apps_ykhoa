@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sinh lý bệnh và Cơ chế bệnh sinh Sepsis và Shock Sepsis (Septic Shock): Phân tích chi tiết mô hình Sepsis-3, rối loạn ty thể PDH, tổn thương vi tuần hoàn NO/S1P, immunoparalysis, TAMOF và dược động học PK.">
+    <title>Sinh lý bệnh &amp; Cơ chế bệnh sinh Sepsis &amp; Shock Sepsis – CliniPortal</title>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS Core CliniPortal (Level 4 Paths) -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học & TOC -->
+    <link rel="stylesheet" href="../../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+    <!-- Scripts -->
+    <script src="../../../../components/header.js" defer></script>
+    <script src="../../../../components/footer.js" defer></script>
+    <script src="../../../../js/main.js" defer></script>
+    <script src="../js/physio-shared.js" defer></script>
+    <script src="../../../../js/toc.js" defer></script>
+
+    <!-- Custom Scoped Styles -->
+    <style>
+        .term-hl { background: rgba(2, 132, 199, 0.12); color: #0284c7; padding: 0.1rem 0.4rem; border-radius: 4px; font-weight: 600; }
+        .term-hl-secondary { background: rgba(147, 51, 234, 0.12); color: #9333ea; padding: 0.1rem 0.4rem; border-radius: 4px; font-weight: 600; }
+        
+        .val-high { color: #dc2626; font-weight: 700; }
+        .val-low { color: #2563eb; font-weight: 700; }
+        
+        .pathway-chain { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; margin: 0.85rem 0; }
+        .pathway-node { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 8px; padding: 0.4rem 0.75rem; font-size: 0.82rem; font-weight: 500; white-space: nowrap; }
+        .pathway-node.red { background: rgba(220,38,38,0.08); border-color: rgba(220,38,38,0.3); color: #dc2626; font-weight: 600; }
+        .pathway-node.orange { background: rgba(234,88,12,0.08); border-color: rgba(234,88,12,0.3); color: #ea580c; font-weight: 600; }
+        .pathway-node.purple { background: rgba(147,51,234,0.08); border-color: rgba(147,51,234,0.3); color: #9333ea; font-weight: 600; }
+        .pathway-arrow { color: var(--color-text-muted); font-size: 0.95rem; flex-shrink: 0; }
+        
+        .vicious-cycle { background: linear-gradient(135deg, rgba(99,102,241,0.06) 0%, rgba(99,102,241,0.02) 100%); border: 1px solid rgba(99,102,241,0.25); border-radius: 14px; padding: 1.5rem; margin: 1.25rem 0; }
+        .vicious-cycle-title { font-size: 0.92rem; font-weight: 700; color: #6366f1; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .cycle-steps { display: flex; flex-direction: column; gap: 0.6rem; }
+        .cycle-step { display: flex; align-items: flex-start; gap: 0.75rem; }
+        .cycle-step-num { width: 28px; height: 28px; min-width: 28px; background: #6366f1; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 700; }
+        .cycle-step-text { font-size: 0.875rem; padding-top: 0.15rem; line-height: 1.5; }
+        
+        .formula-box { background: linear-gradient(135deg, rgba(16,185,129,0.08) 0%, rgba(16,185,129,0.03) 100%); border: 1px solid rgba(16,185,129,0.25); border-left: 4px solid #10b981; border-radius: 10px; padding: 1rem 1.25rem; margin: 1rem 0; }
+        .formula-box .formula-label { font-size: 0.75rem; color: #059669; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem; }
+        .formula-box .formula-main { color: var(--color-text); font-weight: 600; margin-bottom: 0.4rem; font-size: 0.92rem; }
+        .formula-box .formula-note { font-size: 0.78rem; color: var(--color-text-muted); font-style: italic; }
+
+        .tamof-box { background: linear-gradient(135deg, rgba(220,38,38,0.08) 0%, rgba(146,64,14,0.05) 100%); border: 2px solid rgba(220,38,38,0.25); border-radius: 14px; padding: 1.5rem; margin: 1.25rem 0; }
+        .tamof-title { font-size: 1rem; font-weight: 800; color: #dc2626; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+        .tamof-acronym { background: rgba(220,38,38,0.06); border-radius: 8px; padding: 0.75rem 1rem; margin-bottom: 0.75rem; border: 1px solid rgba(220,38,38,0.15); }
+        .tamof-acronym-row { display: flex; align-items: baseline; gap: 0.5rem; font-size: 0.85rem; margin-bottom: 0.3rem; }
+        .tamof-acronym-row .letter { font-size: 1.1rem; font-weight: 800; color: #dc2626; min-width: 24px; }
+
+        .pk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 1.25rem 0; }
+        .pk-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.15rem; transition: transform 0.2s, box-shadow 0.2s; }
+        .pk-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+        .pk-card-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem; }
+        .pk-card-body { font-size: 0.83rem; color: var(--color-text-muted); line-height: 1.55; }
+        
+        .sepsis3-flow { background: linear-gradient(135deg, rgba(2,132,199,0.06) 0%, rgba(2,132,199,0.02) 100%); border: 1px solid rgba(2,132,199,0.25); border-radius: 14px; padding: 1.5rem; margin: 1.25rem 0; }
+        .sepsis3-flow-title { font-size: 0.95rem; font-weight: 700; color: #0284c7; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .flow-node-container { display: flex; flex-direction: column; gap: 0.75rem; }
+        .flow-step-node { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 10px; padding: 1rem 1.25rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+        .flow-step-node.active-alert { border-color: rgba(220,38,38,0.4); background: rgba(220,38,38,0.03); }
+        .flow-step-left { display: flex; align-items: center; gap: 0.75rem; }
+        .flow-badge { width: 32px; height: 32px; min-width: 32px; border-radius: 8px; background: #0284c7; color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; }
+        .flow-badge.danger { background: #dc2626; }
+        .flow-text-main { font-size: 0.88rem; font-weight: 700; color: var(--color-text); }
+        .flow-text-sub { font-size: 0.8rem; color: var(--color-text-muted); margin-top: 0.15rem; }
+
+        .ref-section { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.25rem 1.5rem; margin-top: 2rem; }
+        .ref-section h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 1rem; color: var(--color-text); }
+        .ref-list { list-style: none; padding: 0; margin: 0; }
+        .ref-list li { font-size: 0.8rem; color: var(--color-text-muted); padding: 0.45rem 0; border-bottom: 1px dashed var(--color-border); line-height: 1.55; }
+        .ref-list li:last-child { border-bottom: none; }
+        .ref-list li span { font-weight: 700; color: var(--color-text); }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li><a href="../../../../index.html" class="nav-item" title="Trang chủ"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+                    <li><a href="../sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh"><span class="nav-icon">🧬</span><span class="nav-text">Sinh lý & Sinh lý bệnh</span></a></li>
+                    <li><a href="../../skills/ky-nang.html" class="nav-item" title="Kỹ năng"><span class="nav-icon">🩺</span><span class="nav-text">Kỹ năng</span></a></li>
+                    <li><a href="../../approaches/tiep-can.html" class="nav-item" title="Tiếp cận"><span class="nav-icon">🤒</span><span class="nav-text">Tiếp cận</span></a></li>
+                    <li><a href="../../calculators/cong-cu.html" class="nav-item" title="Công cụ"><span class="nav-icon">⚙️</span><span class="nav-text">Công cụ</span></a></li>
+                    <li><a href="../../pharmacology/duoc-ly.html" class="nav-item" title="Dược lý"><span class="nav-icon">💊</span><span class="nav-text">Dược lý</span></a></li>
+                    <li><a href="../../ebm/yhcc.html" class="nav-item" title="Y học chứng cứ"><span class="nav-icon">📄</span><span class="nav-text">Y học chứng cứ</span></a></li>
+                    <li><a href="../../tcm/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền"><span class="nav-icon">☯️</span><span class="nav-text">Y học cổ truyền</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <clini-breadcrumb items='[{"label": "🏠 Trang chủ", "url": "../../../../index.html"}, {"label": "Sinh lý & sinh lý bệnh", "url": "../sinhly-sinhlybenh.html"}, {"label": "Cơ chế bệnh sinh Sepsis & Shock Sepsis"}]'></clini-breadcrumb>
+
+            <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN (toc.js nhận diện visual-container) -->
+            <main class="visual-container">
+                <!-- CHAPTER HEADER CARD -->
+                <div class="chapter-header">
+                    <h1>SINH LÝ BỆNH & CƠ CHẾ BỆNH SINH SEPSIS VÀ SHOCK SEPSIS</h1>
+                    <p>Sepsis & Septic Shock Pathophysiology — Phân tích chi tiết mô hình đồng thuận Sepsis-3, rối loạn chuyển hóa ty thể PDH, suy giảm miễn dịch mắc phải (Immunoparalysis), rò rỉ vi tuần hoàn S1P/NO, hội chứng TAMOF và biến đổi Dược động học (PK) trong hồi sức nguy kịch.</p>
+                </div>
+
+                <!-- LEAD PARAGRAPH -->
+                <p class="physio-lead">
+                    <span class="term-hl">Sepsis (Nhiễm khuẩn huyết)</span> được định nghĩa là tình trạng rối loạn chức năng cơ quan đe dọa tính mạng gây ra bởi sự đáp ứng mất điều hòa của ký chủ (<span class="term-hl-secondary">dysregulated host response</span>) đối với tình trạng nhiễm khuẩn. <span class="term-hl">Shock Sepsis (Sốc nhiễm khuẩn)</span> là một phân nhóm nghiêm trọng của Sepsis, trong đó các bất thường sâu sắc về tuần hoàn và chuyển hóa tế bào/nền tảng làm tăng đáng kể tỷ lệ tử vong lâm sàng.
+                </p>
+
+                <!-- PHẦN I -->
+                <div class="physio-content">
+                    <h2 id="phan-1-dinh-nghia-dich-chuyen-mo-hinh" class="section-title">
+                        <span>Phần I: Định Nghĩa & Sự Thay Đổi Trong Mô Hình Bệnh Sinh (Sepsis-3)</span>
+                    </h2>
+
+                    <p>
+                        Trước đây, mô hình sinh lý bệnh của Sepsis chủ yếu tập trung vào <span class="term-hl">Hội chứng đáp ứng viêm hệ thống (SIRS)</span> do phản ứng viêm quá mức. Tuy nhiên, tính hợp lệ của SIRS với tư cách là công cụ mô tả bệnh sinh của Sepsis đã bị bác bỏ hoàn toàn trong hệ thống định nghĩa đồng thuận quốc tế Sepsis-3.
+                    </p>
+
+                    <div class="key-concept">
+                        🔑 <strong>Dịch chuyển mô hình (Paradigm Shift): Từ SIRS đến Đáp ứng mất điều hòa của Ký chủ</strong><br>
+                        Hiện nay, Sepsis được công nhận là một quá trình đa diện phức tạp, bao gồm sự kích hoạt đồng thời ngay từ giai đoạn sớm của cả hai con đường <strong>tiền viêm (pro-inflammatory)</strong> và <strong>kháng viêm (anti-inflammatory)</strong>, đi kèm với những biến đổi sâu sắc trong các hệ thống ngoài miễn dịch như: tim mạch, thần kinh tự chủ, nội tiết, sinh năng lượng tế bào, chuyển hóa và hệ thống đông máu. Điều phân biệt giữa Sepsis và một nhiễm khuẩn thông thường chính là sự đáp ứng bất thường của ký chủ và sự hiện diện của <strong>rối loạn chức năng cơ quan</strong>.
+                    </div>
+
+                    <div class="info-box">
+                        ℹ️ <strong>Khái niệm Chìa khóa & Tiêu chuẩn Chẩn đoán Mới (Sepsis-3 Consensus)</strong>
+                        <ul style="margin-top: 0.5rem; padding-left: 1.2rem; margin-bottom: 0;">
+                            <li><strong>Sepsis:</strong> Rối loạn chức năng cơ quan đe dọa tính mạng do đáp ứng mất điều hòa của ký chủ đối với nhiễm khuẩn.</li>
+                            <li><strong>Rối loạn chức năng cơ quan (Organ Dysfunction):</strong> Được xác định bằng sự gia tăng điểm số <strong>SOFA (Sequential Organ Failure Assessment) &ge; 2 điểm</strong> so với mức cơ bản do hậu quả của nhiễm khuẩn.</li>
+                            <li><strong>Sốc nhiễm khuẩn (Septic Shock):</strong> Bệnh nhân Sepsis có tình trạng tụt huyết áp cần dùng <strong>thuốc vận mạch để duy trì Huyết áp trung bình (MAP) &ge; 65 mmHg</strong> VÀ có <strong>nồng độ Lactate huyết thanh &gt; 2 mmol/L</strong> mặc dù đã được hồi sức dịch đầy đủ. Tỷ lệ tử vong trong bệnh viện vượt quá 40%.</li>
+                            <li><strong>Rối loạn cơ quan bị che lấp (Occult Organ Dysfunction):</strong> Rối loạn chức năng cơ quan có thể diễn ra âm thầm, không triệu chứng rầm rộ; do đó cần chủ động tầm soát ở mọi bệnh nhân bị nhiễm khuẩn.</li>
+                        </ul>
+                    </div>
+
+                    <div class="warning-box">
+                        ⚠️ <strong>Các yếu tố ảnh hưởng đến Kiểu hình Lâm sàng:</strong> Kiểu hình lâm sàng và sinh học của Sepsis bị biến đổi mạnh mẽ bởi mầm bệnh (tải lượng vi khuẩn, độc tố) và các yếu tố ký chủ (tuổi tác, giới tính, chủng tộc, di truyền, bệnh đồng mắc mạn tính, trạng thái miễn dịch và các can thiệp y khoa trước đó).
+                    </div>
+                </div>
+
+                <!-- PHẦN II -->
+                <div class="physio-content">
+                    <h2 id="phan-2-ty-the-chuyen-hoa-yem-khi" class="section-title">
+                        <span>Phần II: Rối Loạn Ty Thể & Chuyển Hóa Yếm Khí Cấp Tế Bào</span>
+                    </h2>
+
+                    <p>
+                        Trong Sepsis và Shock Sepsis, tình trạng thiếu oxy mô (tissue hypoxia) không phải là nguyên nhân duy nhất gây ra tăng lactate máu. Sự rối loạn chức năng hô hấp tế bào và suy ty thể (<span class="term-hl-secondary">mitochondrial & metabolic dysfunction</span>) đóng vai trò then chốt trong hiện tượng trệ nội bào.
+                    </p>
+
+                    <div class="physio-grid">
+                        <div class="physio-grid-card">
+                            <div class="physio-grid-title">🧪 1. Ức chế Enzyme Pyruvate Dehydrogenase (PDH)</div>
+                            <p>
+                                Enzyme <span class="term-hl">Pyruvate Dehydrogenase (PDH)</span> là cầu nối thiết yếu chuyển Pyruvate thành Acetyl-CoA đi vào chu trình Krebs (hô hấp hiếu khí). Trong Sepsis, cả hoạt tính và số lượng protein enzyme PDH đều bị sụt giảm nghiêm trọng và kéo dài (ngay từ 0h đến 72h). Sự thiếu hụt PDH buộc tế bào chuyển sang đường phân kỵ khí, biến Pyruvate thành <strong>Lactic Acid</strong>.
+                            </p>
+                        </div>
+                        <div class="physio-grid-card">
+                            <div class="physio-grid-title">⚡ 2. Tổn thương Phức hợp Hô hấp IV (Complex IV - CIV)</div>
+                            <p>
+                                Hệ thống phosphoryl hóa oxy hóa (<span class="term-hl-secondary">OXPHOS</span>) tại ty thể bị suy thoái. Hoạt tính Phức hợp IV (Cytochrome c oxidase) giảm mạnh ngay từ ngày đầu nhập viện. Mức độ sụt giảm hoạt tính CIV ở nhóm tử vong cao hơn rõ rệt nhóm sống sót, phản ánh rối loạn ty thể liên quan trực tiếp đến nguy cơ tử vong.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="pathway-chain">
+                        <span class="pathway-node red">Nhiễm khuẩn hệ thống / Cytokine storm</span>
+                        <span class="pathway-arrow">➔</span>
+                        <span class="pathway-node orange">Ức chế PDH & CIV Ty thể</span>
+                        <span class="pathway-arrow">➔</span>
+                        <span class="pathway-node purple">Tắc nghẽn hô hấp hiếu khí (Krebs)</span>
+                        <span class="pathway-arrow">➔</span>
+                        <span class="pathway-node red">Tăng đường phân kỵ khí &rarr; Lactate máu &gt; 2 mmol/L</span>
+                    </div>
+
+                    <div class="clinical-pearl">
+                        💎 <strong>Pearl lâm sàng về Động học Lactate:</strong> Tăng lactate máu trong Sepsis có cơ chế đa dạng: (1) Thiếu oxy mô do giảm tưới máu vi tuần hoàn; (2) Tăng đường phân hiếu khí qua kích thích adrenaline &beta;<sub>2</sub>-adrenergic; (3) Suy giảm chuyển hóa PDH tại ty thể; và (4) Giảm thanh thải lactate tại gan do giảm dòng chảy tĩnh mạch cửa.
+                    </div>
+                </div>
+
+                <!-- PHẦN III -->
+                <div class="physio-content">
+                    <h2 id="phan-3-vi-tuan-hoan-noi-mac-nitric-oxide" class="section-title">
+                        <span>Phần III: Rối Loạn Vi Tuần Hoàn, Chức Năng Nội Mạc & Nitric Oxide (NO)</span>
+                    </h2>
+
+                    <p>
+                        Tổn thương tế bào nội mạc vi mạch (<span class="term-hl">endothelial dysfunction</span>) và mất đồng nhất dòng chảy vi tuần hoàn là đặc trưng cốt lõi của Shock Sepsis, xảy ra độc lập hoặc song hành với tụt huyết áp động mạch hệ thống.
+                    </p>
+
+                    <div class="physio-grid">
+                        <div class="physio-grid-card">
+                            <div class="physio-grid-title">🩸 1. Tương tác Bạch cầu - Nội mạc</div>
+                            <p>
+                                Ngay từ giai đoạn sớm, tương tác giữa bạch cầu trung tính và tế bào nội mạc tăng vọt. Quan sát vi tuần hoàn dưới lưỡi ghi nhận số lượng bạch cầu lăn (<span class="term-hl-secondary">rolling leukocytes</span>) và bạch cầu bám dính (<span class="term-hl-secondary">adhered leukocytes</span>) tăng cao, làm cản trở dòng lưu thông hồng cầu.
+                            </p>
+                        </div>
+                        <div class="physio-grid-card">
+                            <div class="physio-grid-title">🛡️ 2. Sụt giảm Sphingosine-1-Phosphate (S1P)</div>
+                            <p>
+                                S1P là lipid sinh học giữ vai trò duy trì liên kết chặt tế bào nội mạc và trương lực mạch. Trong Sepsis nặng, nồng độ S1P huyết thanh sụt giảm thảm hại và có mối tương quan nghịch với điểm SOFA (S1P càng thấp, mức độ suy đa tạng càng nặng).
+                            </p>
+                        </div>
+                        <div class="physio-grid-card">
+                            <div class="physio-grid-title">🧪 3. Tổn thương Glycocalyx & Giải phóng Endocan</div>
+                            <p>
+                                Lớp bảo vệ Glycocalyx bề mặt nội mạc bị bong tróc do các gốc tự do ROS và enzyme protease. Proteoglycan nội mạc <strong>Endocan</strong> phóng thích mạnh mẽ vào máu, phản ánh trực tiếp mức độ phá hủy hàng rào nội mạc và rò rỉ huyết tương.
+                            </p>
+                        </div>
+                        <div class="physio-grid-card">
+                            <div class="physio-grid-title">💥 4. Quá tải Nitric Oxide (iNOS Con đường)</div>
+                            <p>
+                                Cytokine tiền viêm kích hoạt enzyme <span class="term-hl">iNOS (inducible NO synthase)</span> tổng hợp lượng lớn Nitric Oxide (NO). NO gây giãn cơ trơn mạch máu diện rộng, trơ với các chất co mạch nội sinh (Catecholamine), dẫn đến tụt huyết áp ngoan cố.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PHẦN IV -->
+                <div class="physio-content">
+                    <h2 id="phan-4-mien-dich-immunoparalysis-apoptosis" class="section-title">
+                        <span>Phần IV: Ức Chế Miễn Dịch (Immunoparalysis) & Apoptosis Tế Bào</span>
+                    </h2>
+
+                    <p>
+                        Song hành với phản ứng viêm ban đầu, tình trạng suy giảm miễn dịch mắc phải (<span class="term-hl">Immunoparalysis</span>) nhanh chóng chiếm ưu thế, khiến cơ thể mất khả năng tiêu diệt mầm bệnh và dễ bị nhiễm khuẩn thứ phát.
+                    </p>
+
+                    <div class="vicious-cycle">
+                        <div class="vicious-cycle-title">🔄 Đặc trưng Cơ chế Suy Giảm Miễn Dịch (Immunoparalysis) trong Sepsis</div>
+                        <div class="cycle-steps">
+                            <div class="cycle-step">
+                                <div class="cycle-step-num">1</div>
+                                <div class="cycle-step-text"><strong>Giảm trình diện kháng nguyên:</strong> Mức độ biểu hiện HLA-DR trên bề mặt bạch cầu đơn nhân (monocytes) giảm mạnh (&lt; 30%). Giảm biểu hiện dấu ấn đại thực bào M1 (CD86, HLA-DR) và tăng đại thực bào M2 (CD163, CD206).</div>
+                            </div>
+                            <div class="cycle-step">
+                                <div class="cycle-step-num">2</div>
+                                <div class="cycle-step-text"><strong>Ức chế sản xuất Cytokine tiền viêm:</strong> Bạch cầu giảm đáp ứng với độc tố LPS ex vivo, sụt giảm khả năng tiết TNF-&alpha;, IL-1&beta; và IL-6.</div>
+                            </div>
+                            <div class="cycle-step">
+                                <div class="cycle-step-num">3</div>
+                                <div class="cycle-step-text"><strong>Suy giảm chức năng diệt khuẩn của Neutrophil:</strong> Khả năng tạo Bẫy ngoại bào bạch cầu trung tính (<span class="term-hl-secondary">NETs - Neutrophil Extracellular Traps</span>) bị suy trệ.</div>
+                            </div>
+                            <div class="cycle-step">
+                                <div class="cycle-step-num">4</div>
+                                <div class="cycle-step-text"><strong>Giảm bạch cầu Lympho T & B toàn thể:</strong> Apoptosis hàng loạt tế bào T-helper, Cytotoxic T và B; kiệt quệ đáp ứng miễn dịch thích ứng.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p>
+                        <strong>Cơ chế Apoptosis (Chết tế bào theo chương trình):</strong> Rối loạn chức năng cơ quan trong Sepsis không do hoại tử tế bào diện rộng mà do quá trình Apoptosis kích hoạt qua enzyme <strong>Caspase-3</strong>. Sự phân cắt Cytokeratin 18 (CCCK-18) tăng vọt trong máu bệnh nhân tử vong. Ngược lại, quá trình apoptosis của Neutrophil lại bị <em>trì hoãn bất thường</em> (do thay đổi biểu hiện Apolipoprotein L1-L6), kéo dài sự tồn tại của bạch cầu trung tính rối loạn và duy trì tổn thương mô nội sinh.
+                    </p>
+                </div>
+
+                <!-- PHẦN V -->
+                <div class="physio-content">
+                    <h2 id="phan-5-huyet-khoi-vi-mach-tieu-cau-tamof" class="section-title">
+                        <span>Phần V: Huyết Khối Vi Mạch, Kích Hoạt Tiểu Cầu & Hội Chứng TAMOF</span>
+                    </h2>
+
+                    <p>
+                        Tiểu cầu không chỉ đóng vai trò đông máu mà còn là các tế bào điều hòa miễn dịch-viêm trong Sepsis. Sự kích hoạt tiểu cầu quá mức thúc đẩy bệnh lý vi mạch huyết khối.
+                    </p>
+
+                    <div class="tamof-box">
+                        <div class="tamof-title">🩸 Hội Chứng Suy Đa Tạng Liên Quan Đến Giảm Tiểu Cầu (TAMOF)</div>
+                        <div class="tamof-acronym">
+                            <div class="tamof-acronym-row"><span class="letter">T</span><strong>Thrombocytopenia-Associated</strong> — Giảm tiểu cầu mới khởi phát</div>
+                            <div class="tamof-acronym-row"><span class="letter">M</span><strong>Multiple Organ Failure</strong> — Suy đa tạng tiến triển tiến triển</div>
+                        </div>
+                        <p style="font-size: 0.85rem; line-height: 1.55; margin-bottom: 0;">
+                            <strong>Cơ chế bệnh sinh TAMOF:</strong> Sepsis gây suy giảm nghiêm trọng hoạt tính enzyme metalloprotease <span class="term-hl">ADAMTS-13</span> (enzyme cắt nhỏ vWF), kết hợp với sự tăng giải phóng các chuỗi Yếu tố von Willebrand siêu lớn (<span class="term-hl-secondary">UL-VWF multimers</span>) từ tế bào nội mạc tổn thương. Các chuỗi UL-VWF không được phân cắt sẽ bẫy dính tiểu cầu, hình thành hàng loạt <strong>vi huyết khối (microvascular thrombosis)</strong> trong vi tuần hoàn các cơ quan (thận, não, phổi, ruột), gây suy đa tạng (MODS) nguy kịch.
+                        </p>
+                    </div>
+
+                    <div class="clinical-pearl">
+                        💎 <strong>Dấu ấn Kích hoạt Tiểu cầu & Tiên lượng:</strong> Sự tăng biểu hiện P-selectin (<span class="term-hl">CD62P</span>) trên bề mặt tiểu cầu và mức liên kết Fibrinogen gia tăng ở Ngày 1 nhập viện là dấu hiệu sớm của trạng thái tăng đông (hypercoagulable state trên TEG). Nồng độ CD62P cơ bản cao liên quan mật thiết với nguy cơ tử vong trong 90 ngày (Hazard Ratio = 13.6).
+                    </div>
+                </div>
+
+                <!-- PHẦN VI -->
+                <div class="physio-content">
+                    <h2 id="phan-6-bien-doi-pk-suy-co-quan" class="section-title">
+                        <span>Phần VI: Biến Đổi Dược Động Học (PK) & Suy Chức Năng Cơ Quan Đặc Hiệu</span>
+                    </h2>
+
+                    <p>
+                        Sepsis tác động đa hệ thống, gây tổn thương đặc thù lên các cơ quan quan trọng đồng thời làm xáo trộn hoàn toàn các thông số Dược động học (PK) của thuốc (đặc biệt là kháng sinh hồi sức).
+                    </p>
+
+                    <h3 class="subsection-title">1. Rối loạn Chức năng Cơ quan Đặc hiệu</h3>
+                    <ul style="font-size: 0.88rem; line-height: 1.6; margin-bottom: 1.25rem;">
+                        <li><strong>Hệ Tim mạch (Sepsis-Induced Myocardial Dysfunction):</strong> Gặp ở ~40% bệnh nhân Sepsis. Sự kết hợp của Cytokine (TNF-&alpha;, IL-1&beta;), NO và rối loạn canxi nội bào làm giảm co bóp cơ tim thất trái/thất phải, giảm đáp ứng với catecholamine.</li>
+                        <li><strong>Hệ Thần kinh (Septic Encephalopathy):</strong> Căng thẳng oxy hóa phá vỡ hàng rào máu não (BBB), rò rỉ chất độc nội sinh và cytokine vào mô não gây Bệnh não do Sepsis với các biểu hiện mê sảng, lú lẫn, rối loạn nhận thức.</li>
+                        <li><strong>Hệ Nội tiết (Suy Thượng thận Tương đối):</strong> Sự suy giảm sản xuất cortisol của tuyến thượng thận và giảm nhạy cảm thụ thể glucocorticoid làm rối loạn trục Hạ đồi - Tuyến yên - Thượng thận (HPA axis).</li>
+                    </ul>
+
+                    <h3 class="subsection-title">2. Biến đổi 4 Thông số Dược động học (PK) ở Bệnh nhân Nguy kịch</h3>
+                    <div class="pk-grid">
+                        <div class="pk-card">
+                            <div class="pk-card-title">💊 Hấp Thu (Absorption)</div>
+                            <div class="pk-card-body">
+                                Phù nề niêm mạc ruột, giảm tưới máu tạng, sử dụng Opioid và thuốc vận mạch làm giảm hấp thu qua đường tiêu hóa &rarr; <strong>Bắt buộc ưu tiên sử dụng đường Tĩnh mạch (IV)</strong>.
+                            </div>
+                        </div>
+                        <div class="pk-card">
+                            <div class="pk-card-title">💧 Phân Bố (Distribution - <i>V</i><sub>d</sub>)</div>
+                            <div class="pk-card-body">
+                                Hồi sức dịch thể tích lớn + rò rỉ mao mạch + giảm albumin máu làm tăng mạnh Thể tích phân bố (<i>V</i><sub>d</sub>) của các thuốc tan trong nước (Aminoglycosides, Vancomycin, &beta;-lactams) &rarr; <strong>Giảm nồng độ đỉnh huyết thanh, cần tăng liều nạp ban đầu (Loading dose)</strong>.
+                            </div>
+                        </div>
+                        <div class="pk-card">
+                            <div class="pk-card-title">🧪 Chuyển Hóa (Metabolism)</div>
+                            <div class="pk-card-body">
+                                Suy giảm dòng chảy máu qua gan và ức chế enzyme Cytochrome P450 (Pha 1) do cytokine làm giảm thanh thải gan &rarr; <strong>Tăng nguy cơ tích lũy độc tính của thuốc chuyển hóa qua gan</strong>.
+                            </div>
+                        </div>
+                        <div class="pk-card">
+                            <div class="pk-card-title">🌊 Thải Trừ (Elimination & ARC)</div>
+                            <div class="pk-card-body">
+                                - Trong Tổn thương thận cấp (AKI): Thanh thải giảm &rarr; Tích lũy thuốc.<br>
+                                - Trạng thái Tăng động (Hyperdynamic state): Cung lượng tim tăng gây <strong>Tăng thanh thải qua thận (Augmented Renal Clearance - ARC)</strong> &rarr; Nguy cơ thiếu liều điều trị kháng sinh.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PHẦN VII -->
+                <div class="physio-content">
+                    <h2 id="phan-7-so-do-nhan-dien-lam-sang-sepsis-3" class="section-title">
+                        <span>Phần VII: Sơ Đồ Quy Trình Nhận Diện Lâm Sàng Theo Sepsis-3</span>
+                    </h2>
+
+                    <div class="sepsis3-flow">
+                        <div class="sepsis3-flow-title">🩺 Quy trình Thao tác Lâm sàng Nhận diện Sepsis & Septic Shock</div>
+                        <div class="flow-node-container">
+                            <div class="flow-step-node">
+                                <div class="flow-step-left">
+                                    <div class="flow-badge">1</div>
+                                    <div>
+                                        <div class="flow-text-main">BỆNH NHÂN NGHI NGỜ NHIỄM KHUẨN</div>
+                                        <div class="flow-text-sub">Có ổ nhiễm khuẩn lâm sàng (phổi, bụng, tiết niệu, da dính, dòng máu...)</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flow-step-node">
+                                <div class="flow-step-left">
+                                    <div class="flow-badge">2</div>
+                                    <div>
+                                        <div class="flow-text-main">ĐÁNH GIÁ NHANH SỬ DỤNG BỘ TIÊU CHÍ qSOFA</div>
+                                        <div class="flow-text-sub">1. Thay đổi ý thức (GCS &lt; 15) | 2. Huyết áp tâm thu &le; 100 mmHg | 3. Nhịp thở &ge; 22 lần/phút</div>
+                                    </div>
+                                </div>
+                                <span style="font-size: 0.8rem; font-weight: 700; color: #ea580c;">NẾU qSOFA &ge; 2 điểm &rarr; NGUY CƠ CAO</span>
+                            </div>
+
+                            <div class="flow-step-node">
+                                <div class="flow-step-left">
+                                    <div class="flow-badge">3</div>
+                                    <div>
+                                        <div class="flow-text-main">ĐÁNH GIÁ RỐI LOẠN CHỨC NĂNG CƠ QUAN QUA ĐIỂM SOFA</div>
+                                        <div class="flow-text-sub">Đánh giá 6 hệ cơ quan (Hô hấp, Đông máu, Gan, Tim mạch, Thần kinh, Thận)</div>
+                                    </div>
+                                </div>
+                                <span style="font-size: 0.8rem; font-weight: 700; color: #0284c7;">SOFA tăng &ge; 2 điểm &rarr; CHẨN ĐOÁN SEPSIS</span>
+                            </div>
+
+                            <div class="flow-step-node active-alert">
+                                <div class="flow-step-left">
+                                    <div class="flow-badge danger">4</div>
+                                    <div>
+                                        <div class="flow-text-main" style="color: #dc2626;">CHẨN ĐOÁN SỐC NHIỄM KHUẨN (SEPTIC SHOCK)</div>
+                                        <div class="flow-text-sub">Mặc dù đã hồi sức dịch đầy đủ nhưng vẫn: (1) Cần dùng Vận mạch để duy trì MAP &ge; 65 mmHg VÀ (2) Lactate máu &gt; 2 mmol/L</div>
+                                    </div>
+                                </div>
+                                <span style="font-size: 0.8rem; font-weight: 800; color: #dc2626;">TỬ VONG &gt; 40% &rarr; ICU CẤP CỨU NGAY</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TÀI LIỆU THAM KHẢO -->
+                <div class="ref-section">
+                    <h3>📚 Tài liệu Tham khảo Chuẩn AMA</h3>
+                    <ul class="ref-list">
+                        <li><span>1. Singer M, Deutschman CS, Seymour CW, et al.</span> The Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). <em>JAMA</em>. 2016;315(8):801-810.</li>
+                        <li><span>2. Evans L, Rhodes A, Alhazzani W, et al.</span> Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021. <em>Crit Care Med</em>. 2021;49(11):e1063-e1143.</li>
+                        <li><span>3. Prescott HC, Antonelli M, Alhazzani W, et al.</span> Surviving Sepsis Campaign: international guidelines for management of sepsis and septic shock 2026. <em>Intensive Care Med</em>. 2026.</li>
+                        <li><span>4. Tabah A, De Waele J, Ssi Yan Kai N, et al.</span> Source control in bloodstream infections in patients with sepsis, septic shock, or requiring ICU admission: a scoping review. <em>Intensive Care Med</em>. 2025;51:1462-1475.</li>
+                        <li><span>5. Gillett EM, Dube KM, Rhee C.</span> Antibiotic Considerations in the Critically Ill: Empiric Choices and Dosing. <em>Crit Care Clin</em>. 2026;42:585-609.</li>
+                        <li><span>6. 35th International Symposium on Intensive Care and Emergency Medicine.</span> Abstracts: P23, P26, P29, P33, P35, P36, P38, P44, P53, P54. <em>Crit Care</em>. 2015;19(Suppl 1):1-144.</li>
+                        <li><span>7. Hager DN, Hooper MH, Bernard GR, et al.</span> The VICTAS Protocol: a prospective, randomized, placebo-controlled trial. <em>Trials</em>. 2019;20:197.</li>
+                        <li><span>8. Weiss SL, Peters MJ, Alhazzani W, et al.</span> Surviving Sepsis Campaign International Guidelines for Pediatric Septic Shock. <em>Pediatr Crit Care Med</em>. 2026;27(4):379-434.</li>
+                    </ul>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

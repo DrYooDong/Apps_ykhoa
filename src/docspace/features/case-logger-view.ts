@@ -227,7 +227,7 @@ export function mountCaseLoggerController(profileId: string): void {
   document.getElementById('btnAIAnalyzeCase')?.addEventListener('click', async () => {
     const chiefComplaint = (document.getElementById('dspCaseComplaint') as HTMLInputElement).value.trim();
     const management = (document.getElementById('dspCaseMgmt') as HTMLTextAreaElement).value.trim();
-    const caseData = \`Lý do/Triệu chứng: \${chiefComplaint}\nQuản lý/Xử trí: \${management}\`;
+    const caseData = `Lý do/Triệu chứng: ${chiefComplaint}\nQuản lý/Xử trí: ${management}`;
 
     if (!chiefComplaint && !management) {
       alert('Vui lòng nhập ít nhất Triệu chứng hoặc Xử trí để AI có dữ liệu phân tích.');

@@ -20,6 +20,8 @@ import { renderQuickLinksView, mountQuickLinksController } from './features/quic
 import { renderNotepadView, mountNotepadController } from './features/notepad-view';
 import { renderDrugJournalView, mountDrugJournalController } from './features/drug-journal-view';
 import { renderProtocolView, mountProtocolController } from './features/protocol-view';
+import { renderLivingProtocolView, mountLivingProtocolController } from './features/living-protocol-view';
+import { renderSimulationView, mountSimulationController } from './features/simulation-view';
 import { initGlobalQuickSaveHook } from './features/quick-save';
 import { renderAISettings } from './features/ai-settings-view';
 import { loadRAGIndex } from './ai/rag-engine';
@@ -200,6 +202,26 @@ export function initDocSpaceRoutes(): void {
       const editId = new URLSearchParams(window.location.hash.split('?')[1] || '').get('edit') || undefined;
       mountDocSpace(renderProtocolView(pid, editId));
       mountProtocolController(pid);
+      mountSidebarFooterControls(pid);
+    });
+  });
+
+  // Phase 3: Living Protocol Engine
+  router.register('/docspace/living-protocols', 'DocSpace — Phác Đồ Động', () => {
+    requireProfile((pid) => {
+      const editId = new URLSearchParams(window.location.hash.split('?')[1] || '').get('edit') || undefined;
+      mountDocSpace(renderLivingProtocolView(pid, editId));
+      mountLivingProtocolController(pid);
+      mountSidebarFooterControls(pid);
+    });
+  });
+
+  // Phase 3: Simulation Sandbox
+  router.register('/docspace/sandbox', 'DocSpace — Sandbox Mô phỏng', () => {
+    requireProfile((pid) => {
+      const sessionId = new URLSearchParams(window.location.hash.split('?')[1] || '').get('session') || undefined;
+      mountDocSpace(renderSimulationView(pid, sessionId));
+      mountSimulationController(pid);
       mountSidebarFooterControls(pid);
     });
   });

@@ -20,6 +20,7 @@ import {
   DOCSPACE_VERSION,
   AISettings,
 } from './types';
+import { signRecord, verifyRecordIntegrity } from './features/audit-shield';
 
 // ─────────────────────────────────────────────
 // HELPERS
@@ -172,30 +173,35 @@ export function updateAISettings(profileId: string, settings: AISettings): void 
 // ─────────────────────────────────────────────
 
 export function getAllSBARs(profileId: string): SBARRecord[] {
-  return load<SBARRecord>(profileId, 'sbars').sort(
+  const records = load<SBARRecord>(profileId, 'sbars').sort(
     (a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
   );
+  return records.map(r => ({ ...r, isTampered: !verifyRecordIntegrity(r) }));
 }
 
-export function saveSBAR(profileId: string, data: Omit<SBARRecord, 'id' | 'doctorId' | 'createdAt' | 'updatedAt'>): SBARRecord {
+export function saveSBAR(profileId: string, data: Omit<SBARRecord, 'id' | 'doctorId' | 'createdAt' | 'updatedAt' | 'auditLogs' | 'isLocked' | 'isTampered'>): SBARRecord {
   const records = load<SBARRecord>(profileId, 'sbars');
-  const record: SBARRecord = {
+  const record: SBARRecord = signRecord({
     ...data,
     id: uuid(),
     doctorId: profileId,
     createdAt: now(),
     updatedAt: now(),
-  };
+    isLocked: false,
+  }, 'create');
   records.unshift(record);
   save(profileId, 'sbars', records);
   return record;
 }
 
-export function updateSBAR(profileId: string, id: string, data: Partial<SBARRecord>): void {
+export function updateSBAR(profileId: string, id: string, data: Partial<SBARRecord>, isLockAction = false): void {
   const records = load<SBARRecord>(profileId, 'sbars');
   const idx = records.findIndex(r => r.id === id);
   if (idx >= 0) {
-    records[idx] = { ...records[idx], ...data, updatedAt: now() };
+    if (records[idx].isLocked) return; // Prevent modifying locked records
+    let updatedRecord = { ...records[idx], ...data, updatedAt: now() };
+    updatedRecord = signRecord(updatedRecord, isLockAction ? 'lock' : 'update');
+    records[idx] = updatedRecord;
     save(profileId, 'sbars', records);
   }
 }
@@ -206,7 +212,11 @@ export function deleteSBAR(profileId: string, id: string): void {
 }
 
 export function getSBARById(profileId: string, id: string): SBARRecord | null {
-  return load<SBARRecord>(profileId, 'sbars').find(r => r.id === id) || null;
+  const record = load<SBARRecord>(profileId, 'sbars').find(r => r.id === id) || null;
+  if (record) {
+    record.isTampered = !verifyRecordIntegrity(record);
+  }
+  return record;
 }
 
 // ─────────────────────────────────────────────
@@ -309,14 +319,15 @@ export function getAllCases(profileId: string): CaseRecord[] {
   );
 }
 
-export function saveCase(profileId: string, data: Omit<CaseRecord, 'id' | 'doctorId' | 'createdAt'>): CaseRecord {
+export function saveCase(profileId: string, data: Omit<CaseRecord, 'id' | 'doctorId' | 'createdAt' | 'auditLogs' | 'isLocked' | 'isTampered'>): CaseRecord {
   const records = load<CaseRecord>(profileId, 'cases');
-  const record: CaseRecord = {
+  const record: CaseRecord = signRecord({
     ...data,
     id: uuid(),
     doctorId: profileId,
     createdAt: now(),
-  };
+    isLocked: false,
+  }, 'create');
   records.unshift(record);
   save(profileId, 'cases', records);
   return record;

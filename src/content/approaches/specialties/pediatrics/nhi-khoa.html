@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="CliniPortal - Phân hệ Tiếp cận Nhi khoa: Sơ đồ tiếp cận chẩn đoán và điều trị bệnh lý Nhi khoa & Sơ sinh">
+  <title>Tiếp Cận Nhi Khoa – CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../../css/components/module-dashboard.css">
+
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+
+  <style>
+    .infographic-grid {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+      gap: 16px !important;
+    }
+
+    .pediatric-card {
+      padding: 20px !important;
+      border-radius: 14px !important;
+      background: var(--color-surface) !important;
+      border: 1px solid var(--color-border) !important;
+      border-left: 4px solid #8b5cf6 !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-decoration: none;
+      color: var(--color-text);
+      min-height: 140px;
+    }
+
+    .pediatric-card:hover {
+      transform: translateY(-4px) !important;
+      box-shadow: 0 10px 24px rgba(139, 92, 246, 0.15) !important;
+      border-color: #8b5cf6 !important;
+    }
+
+    .pediatric-card.disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
+    .pediatric-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .pediatric-card-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: rgba(139, 92, 246, 0.12);
+      color: #8b5cf6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .pediatric-card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin: 0;
+      line-height: 1.35;
+    }
+
+    .pediatric-card:hover .pediatric-card-title {
+      color: #8b5cf6;
+    }
+
+    .pediatric-card-desc {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .pediatric-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--color-border);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #8b5cf6;
+    }
+
+    .badge-ready {
+      background: rgba(34, 197, 94, 0.1);
+      color: #16a34a;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+    }
+
+    .badge-updating {
+      background: rgba(156, 163, 175, 0.15);
+      color: #6b7280;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ===================== APP CONTAINER ===================== -->
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../tiep-can.html" class="nav-item active" title="Tiếp cận">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- ===================== MAIN CONTENT ===================== -->
+    <div class="main-wrapper" id="mainContent">
+
+      <!-- BREADCRUMB -->
+      <clini-breadcrumb
+        items='[{"label": "🏠 Trang chủ", "url": "../../../../../index.html"}, {"label": "Tiếp cận lâm sàng", "url": "../../tiep-can.html"}, {"label": "Chuyên khoa"}, {"label": "Nhi khoa"}]'></clini-breadcrumb>
+
+      <!-- HERO BANNER -->
+      <section class="hero-dashboard" style="background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); padding: 32px; border-radius: 20px; color: white; margin-bottom: 24px; position: relative; overflow: hidden;">
+        <div style="position: relative; z-index: 2; max-width: 700px;">
+          <span style="background: rgba(255, 255, 255, 0.2); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;">Chuyên Khoa Lâm Sàng</span>
+          <h1 style="font-size: 2rem; font-weight: 800; margin: 12px 0 8px 0; font-family: var(--font-display);">👶 TIẾP CẬN NHI KHOA</h1>
+          <p style="font-size: 0.95rem; opacity: 0.95; line-height: 1.5; margin: 0;">
+            Hệ thống bài giảng và sơ đồ tiếp cận chẩn đoán các vấn đề lâm sàng thường gặp ở trẻ em và trẻ sơ sinh dựa trên khuyến cáo Nhi khoa YDS và AHA/AAP.
+          </p>
+        </div>
+        <div style="position: absolute; right: -20px; bottom: -20px; font-size: 10rem; opacity: 0.15; pointer-events: none;">
+          👶
+        </div>
+      </section>
+
+      <!-- DASHBOARD LAYOUT -->
+      <div class="dashboard-layout" style="grid-template-columns: 1fr;">
+        <main class="layout-content-area">
+          <div class="physio-group-container" style="border-left-color: #8b5cf6;">
+            <div class="physio-group-header" style="background: linear-gradient(90deg, rgba(139, 92, 246, 0.1) 0%, transparent 100%);">
+              <span class="physio-group-icon" style="color: #8b5cf6; border-color: rgba(139, 92, 246, 0.2);"><i class="fa-solid fa-child"></i></span>
+              <h3 style="margin: 0; font-size: 1.15rem; font-weight: 700;">Danh mục bài tiếp cận Nhi khoa</h3>
+            </div>
+
+            <div class="specialty-grid infographic-grid" style="padding: 16px 0;">
+              
+              <!-- CARD 1: TIM BẨM SINH -->
+              <a href="tc-tim-bam-sinh.html" class="pediatric-card">
+                <div>
+                  <div class="pediatric-card-header">
+                    <div class="pediatric-card-icon">
+                      <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <div>
+                      <h3 class="pediatric-card-title">Tiếp cận trẻ có tim bẩm sinh</h3>
+                      <span class="badge-ready">Sẵn sàng</span>
+                    </div>
+                  </div>
+                  <p class="pediatric-card-desc">
+                    Sàng lọc SpO2 sơ sinh 24h, khám lâm sàng, phân loại phụ thuộc ống động mạch và tiếp cận 5T.
+                  </p>
+                </div>
+                <div class="pediatric-card-footer">
+                  <span>Xem chi tiết bài học</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </div>
+              </a>
+
+              <!-- CARD 2: SỐT Ở TRẺ EM -->
+              <div class="pediatric-card disabled">
+                <div>
+                  <div class="pediatric-card-header">
+                    <div class="pediatric-card-icon" style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">
+                      <i class="fa-solid fa-temperature-arrow-up"></i>
+                    </div>
+                    <div>
+                      <h3 class="pediatric-card-title">Tiếp cận sốt ở trẻ em</h3>
+                      <span class="badge-updating">Đang cập nhật</span>
+                    </div>
+                  </div>
+                  <p class="pediatric-card-desc">
+                    Đánh giá dấu hiệu cảnh báo đỏ (Red Flags), phân loại sốt không rõ nguyên nhân (FUO) và nhiễm trùng nặng.
+                  </p>
+                </div>
+                <div class="pediatric-card-footer" style="color: var(--color-text-muted);">
+                  <span>Sắp ra mắt</span>
+                  <i class="fa-solid fa-lock"></i>
+                </div>
+              </div>
+
+              <!-- CARD 3: SUY HÔ HẤP SƠ SINH -->
+              <div class="pediatric-card disabled">
+                <div>
+                  <div class="pediatric-card-header">
+                    <div class="pediatric-card-icon" style="background: rgba(14, 165, 233, 0.1); color: #0ea5e9;">
+                      <i class="fa-solid fa-lungs"></i>
+                    </div>
+                    <div>
+                      <h3 class="pediatric-card-title">Tiếp cận suy hô hấp sơ sinh</h3>
+                      <span class="badge-updating">Đang cập nhật</span>
+                    </div>
+                  </div>
+                  <p class="pediatric-card-desc">
+                    Chẩn đoán phân biệt bệnh màng trong, chậm hấp thu dịch phổi, hít nước ối phân su và vi trùng.
+                  </p>
+                </div>
+                <div class="pediatric-card-footer" style="color: var(--color-text-muted);">
+                  <span>Sắp ra mắt</span>
+                  <i class="fa-solid fa-lock"></i>
+                </div>
+              </div>
+
+              <!-- CARD 4: CO GIẬT TRẺ EM -->
+              <div class="pediatric-card disabled">
+                <div>
+                  <div class="pediatric-card-header">
+                    <div class="pediatric-card-icon" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">
+                      <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <div>
+                      <h3 class="pediatric-card-title">Tiếp cận co giật ở trẻ em</h3>
+                      <span class="badge-updating">Đang cập nhật</span>
+                    </div>
+                  </div>
+                  <p class="pediatric-card-desc">
+                    Xử trí co giật do sốt đơn thuần/phức tạp, trạng thái động kinh và viêm màng não.
+                  </p>
+                </div>
+                <div class="pediatric-card-footer" style="color: var(--color-text-muted);">
+                  <span>Sắp ra mắt</span>
+                  <i class="fa-solid fa-lock"></i>
+                </div>
+              </div>
+
+              <!-- CARD 5: VÀNG DA SƠ SINH -->
+              <div class="pediatric-card disabled">
+                <div>
+                  <div class="pediatric-card-header">
+                    <div class="pediatric-card-icon" style="background: rgba(234, 179, 8, 0.1); color: #eab308;">
+                      <i class="fa-solid fa-baby"></i>
+                    </div>
+                    <div>
+                      <h3 class="pediatric-card-title">Tiếp cận vàng da sơ sinh</h3>
+                      <span class="badge-updating">Đang cập nhật</span>
+                    </div>
+                  </div>
+                  <p class="pediatric-card-desc">
+                    Phân biệt vàng da tăng Bilirubin gián tiếp vs trực tiếp, chỉ định chiếu đèn và thay máu.
+                  </p>
+                </div>
+                <div class="pediatric-card-footer" style="color: var(--color-text-muted);">
+                  <span>Sắp ra mắt</span>
+                  <i class="fa-solid fa-lock"></i>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </main>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+</body>
+
+</html>
