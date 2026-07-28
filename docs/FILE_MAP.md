@@ -494,7 +494,7 @@
 | `src/content/skills/` | **[MỚI]** Phân hệ Kỹ năng Lâm sàng & Master Catalog `index.json` (73 items) |
 | `src/content/pathophysiology/` | **[MỚI]** Phân hệ Sinh lý & Sinh lý bệnh & Master Catalog `index.json` (64 items, bao gồm `slb-ccbs-lao.html`, `slb-ccbs-sepsis.html`, `WORKFLOW_TAO_TRANG_SINH_LY_BENH.md`) |
 | `src/content/approaches/` | **[MỚI]** Phân hệ Tiếp cận Triệu chứng & Bệnh lý & Master Catalog `index.json` (58 items) |
-| `src/content/ebm/` | **[MỚI]** Phân hệ Y học Chứng cứ & Guidelines & Master Catalog `index.json` (32 items) |
+| `src/content/ebm/` | **[MỚI]** Phân hệ Y học Chứng cứ & Guidelines & Master Catalog `index.json` (bao gồm `guidelinesdata.js`, `kho-guidelines/ca-the-hoa-beta-lactam-2026.html` - Hướng dẫn đồng thuận cá thể hóa liều Beta-lactam ở bệnh nhân nặng 2026) |
 | `src/content/tcm/` | **[MỚI]** Phân hệ Y học Cổ truyền & Master Catalog `index.json` (17 items) |
 | `src/components/article-reader.html` | **[MỚI]** Standalone Article Reader Component Engine |
 | `src/components/clinical-flow-studio.html` | **[MỚI]** Standalone Clinical Flow Studio Studio Component Engine |

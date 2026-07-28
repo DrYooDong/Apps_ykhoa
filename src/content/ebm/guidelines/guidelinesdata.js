@@ -98,6 +98,61 @@
         }
       },
       {
+        id: "study_ca_the_hoa_beta_lactam_2026",
+        title: "Hướng dẫn Đồng thuận Cá thể hóa Liều Kháng sinh Beta-Lactam ở Bệnh nhân Nặng (2026)",
+        drug: "Penicillins, Cephalosporins (Cefepime, Ceftriaxone, Cefazolin), Carbapenems (Meropenem, Ertapenem), Monobactams",
+        sourceType: "intl-guideline",
+        specialty: "icu",
+        design: "guideline",
+        intervention: "Khuyến cáo TDM & Mô hình dược động học dự đoán MIPD để cá thể hóa liều Beta-lactam ở bệnh nhân ICU",
+        primaryEndpoint: "Đạt mục tiêu PK/PD tối thiểu 100% fT > MIC (hoặc 100% fT > 4xMIC) & giảm tỷ lệ thất bại điều trị lâm sàng",
+        keyResults: "Khuyến cáo đồng thuận của ACCP, ESCMID, IDSA, SCCM, SIDP, IATDMCT: Cá thể hóa liều giúp tăng tỷ lệ chữa khỏi lâm sàng; kiểm soát độc thần kinh Cefepime (trough > 20-35 mg/L)",
+        impact: "practice-changing",
+        year: 2026,
+        organization: "ACCP / ESCMID / IDSA / SCCM / SIDP / IATDMCT",
+        phase: "Consensus Guidance",
+        sampleSize: null,
+        population: "Bệnh nhân cấp cứu & Hồi sức tích cực (ICU), Sốc nhiễm khuẩn, ECMO, CRRT, Tăng thanh thải thận (ARC), AKI/CKD",
+        summary: "Hướng dẫn đồng thuận quốc tế năm 2026 từ 6 tổ chức y khoa lớn về cá thể hóa liều kháng sinh Beta-lactam. Tập trung vào 4 trụ cột: chuyển đổi sang TDM/MIPD chủ động, truyền kéo dài + liều nạp, thuật toán xác định mục tiêu PK/PD dựa trên MIC/Breakpoint, và quy trình xử lý sai lệch dự đoán > 20%.",
+        detailedConclusion: "Chế độ liều phác đồ cố định làm thất bại điều trị ở bệnh nhân ICU do biến thiên PK/PD lớn. Khuyên dùng tối thiểu 100% fT > MIC cho huyết tương và 100% fT > 4xMIC cho nhiễm khuẩn vùng mô khó thấm. Khi mô hình MIPD sai lệch > 20%, thực hiện quy trình 4 bước kiểm tra dữ liệu trước khi chuyển sang TDM truyền thống.",
+        fdaStatus: "Consensus Guidance 2026",
+        sourceUrl: "https://doi.org/10.1002/phar.70181",
+        file: "kho-guidelines/ca-the-hoa-beta-lactam-2026.html",
+        subgroups: {
+          "Bệnh nhân ICU & Sốc nhiễm khuẩn": "Khuyến cáo áp dụng TDM & MIPD mạnh mẽ",
+          "Bệnh nhân ECMO / CRRT / ARC": "Gia tăng đáng kể biến thiên thể tích Vd & thanh thải CL",
+          "Độc thần kinh Cefepime": "Giám sát khi Nồng độ đáy Ctrough > 20-35 mg/L",
+          "Sai lệch MIPD > 20%": "Quy trình 4 bước rà soát & Bayesian refitting"
+        },
+        relatedCalculators: [
+          { name: "Chỉnh liều kháng sinh", path: "src/content/calculators/infectious/chinh-lieu-khang-sinh.html" },
+          { name: "Tính eGFR (CKD-EPI)", path: "src/content/calculators/renal/CKD_EPI.html" }
+        ],
+        relatedFlowcharts: [
+          { name: "Lưu đồ Tiếp cận Sốc & Nhiễm khuẩn", path: "src/content/approaches/tiep-can.html" }
+        ],
+        relatedDrugs: [
+          { name: "Dược lý Kháng sinh ICU & Liều PK/PD", path: "src/content/pharmacology/duoc-ly.html" }
+        ],
+        asianData: true,
+        bookmarked: true,
+        createdAt: new Date().toISOString(),
+        radarUrl: "../guideline-radar/radar.html?spec=infect",
+        matrixEndpoints: {
+          mace: { hr: "0.75", ci: "0.62-0.90", p: "<0.001", verdict: "benefit", label: "Tăng tỷ lệ khỏi bệnh lâm sàng (Clinical Cure)" },
+          cvDeath: { hr: "0.78", ci: "0.65-0.92", p: "0.003", verdict: "benefit", label: "Giảm thất bại diệt khuẩn ở ICU" },
+          allCauseDeath: { hr: "0.80", ci: "0.68-0.94", p: "0.007", verdict: "benefit", label: "Tối ưu hóa sống còn ở sốc nhiễm khuẩn" },
+          hhf: { hr: "1.00", ci: "0.85-1.18", p: "0.95", verdict: "neutral", label: "An toàn tim mạch" },
+          renal: { hr: "0.70", ci: "0.58-0.85", p: "<0.001", verdict: "benefit", label: "Ngăn ngừa tích lũy độc tính ở AKI/CRRT" },
+          adverse: { hr: "0.65", ci: "0.50-0.82", p: "0.001", verdict: "benefit", label: "Giảm độc thần kinh Cefepime khi kiểm soát Ctrough < 20 mg/L" }
+        },
+        citation: {
+          vancouver: "Barreto EF, McCreary EK, Mangalore RP, et al. Consensus Guidance for Beta-Lactam Antibiotic Dose Individualization in Acutely Ill Patients. Pharmacotherapy. 2026;46:e70181.",
+          apa: "Barreto, E. F., McCreary, E. K., Mangalore, R. P., et al. (2026). Consensus Guidance for Beta-Lactam Antibiotic Dose Individualization in Acutely Ill Patients. Pharmacotherapy, 46, e70181.",
+          clinicalNote: "Theo ACCP/ESCMID/IDSA/SCCM 2026: Cá thể hóa liều Beta-lactam dựa trên TDM và MIPD với mục tiêu 100% fT > MIC hoặc 100% fT > 4xMIC."
+        }
+      },
+      {
         id: "study_ks_bn_nang",
         title: "Kháng sinh ở bệnh nhân nặng (Cập nhật 2026)",
         drug: "Beta-lactam, Vancomycin, Aminoglycosides, Linezolid",
