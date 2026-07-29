@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Hướng dẫn quy trình kỹ thuật khám đánh giá phát triển thể chất ở trẻ em: Kỹ thuật đo nhân trắc, nhận diện thể suy dinh dưỡng Marasmus & Kwashiorkor, tra cứu Z-score WHO, bộ tính toán tương tác và bài tập lâm sàng.">
+  <title>Khám Đánh Giá Phát Triển Thể Chất Ở Trẻ Em – CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../../css/components/clinical-skill.css">
+  <link rel="stylesheet" href="../../../../../css/components/paraclinical.css">
+  <link rel="stylesheet" href="../../../../../css/components/physio-headings.css">
+
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../js/clinical-skill-tabs.js" defer></script>
+
+  <style>
+    :root {
+      --ped-primary: #0284c7;
+      --ped-primary-dark: #0369a1;
+      --ped-accent: #06b6d4;
+      --ped-bg-soft: #f0f9ff;
+    }
+
+    .skill-hero-growth {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: white;
+      padding: 1.75rem;
+      border-radius: var(--radius-lg, 12px);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 20px rgba(2, 132, 199, 0.2);
+    }
+
+    .skill-hero-growth h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-hero-growth p {
+      font-size: 0.95rem;
+      opacity: 0.95;
+      line-height: 1.6;
+    }
+
+    /* Grid & Cards for Tech Specs */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+      margin: 1rem 0;
+    }
+
+    .tech-card {
+      background: var(--color-surface, #ffffff);
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius-md, 10px);
+      padding: 1.25rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    }
+
+    .tech-card h3 {
+      font-size: 1.1rem;
+      color: var(--color-primary, #0284c7);
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Malnutrition Comparison Cards */
+    .malnutrition-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .mal-card {
+      border-radius: var(--radius-lg, 12px);
+      padding: 1.5rem;
+      border: 2px solid transparent;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      background: var(--color-surface, #ffffff);
+    }
+
+    .mal-card.marasmus {
+      border-color: #38bdf8;
+      background: linear-gradient(180deg, #f0f9ff 0%, var(--color-surface, #ffffff) 100%);
+    }
+
+    .mal-card.kwashiorkor {
+      border-color: #f43f5e;
+      background: linear-gradient(180deg, #fff1f2 0%, var(--color-surface, #ffffff) 100%);
+    }
+
+    .mal-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--color-border, #e2e8f0);
+    }
+
+    .mal-header h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .mal-card.marasmus .mal-header h3 { color: #0284c7; }
+    .mal-card.kwashiorkor .mal-header h3 { color: #e11d48; }
+
+    .mal-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .mal-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .mal-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0.5rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .mal-card.marasmus .mal-list li::before { color: #0284c7; }
+    .mal-card.kwashiorkor .mal-list li::before { color: #e11d48; }
+
+    /* Interactive Calculator Styling */
+    .calc-container {
+      background: var(--color-surface, #ffffff);
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius-lg, 12px);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    }
+
+    .calc-form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .calc-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .calc-group label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--color-text, #0f172a);
+    }
+
+    .calc-group input, .calc-group select {
+      padding: 0.6rem 0.8rem;
+      border: 1px solid var(--color-border, #cbd5e1);
+      border-radius: 6px;
+      font-size: 0.95rem;
+      background: var(--color-bg, #ffffff);
+      color: var(--color-text, #0f172a);
+    }
+
+    .calc-btn {
+      background: var(--color-primary, #0284c7);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+
+    .calc-btn:hover {
+      background: #0369a1;
+    }
+
+    .calc-result-box {
+      margin-top: 1.25rem;
+      padding: 1.25rem;
+      border-radius: 8px;
+      background: var(--color-bg-soft, #f0f9ff);
+      border: 1px solid #bae6fd;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .result-card {
+      background: white;
+      padding: 1rem;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+      text-align: center;
+    }
+
+    .result-card .res-title {
+      font-size: 0.8rem;
+      color: var(--color-text-muted, #64748b);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .result-card .res-val {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--color-primary, #0284c7);
+      margin: 0.3rem 0;
+    }
+
+    .result-card .res-status {
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.2rem 0.5rem;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .badge-normal { background: #dcfce7; color: #166534; }
+    .badge-warn { background: #fef9c3; color: #854d0e; }
+    .badge-danger { background: #ffe4e6; color: #9f1239; }
+
+    /* Tables */
+    .zscore-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+    }
+
+    .zscore-table th, .zscore-table td {
+      border: 1px solid var(--color-border, #e2e8f0);
+      padding: 0.75rem;
+      text-align: left;
+    }
+
+    .zscore-table th {
+      background: var(--color-primary-hl, #e0f2fe);
+      color: var(--color-primary, #0284c7);
+      font-weight: 700;
+    }
+
+    /* Steps list for Clinical Case */
+    .case-step {
+      background: var(--color-surface, #ffffff);
+      border-left: 4px solid var(--color-primary, #0284c7);
+      padding: 1rem 1.25rem;
+      margin-bottom: 1rem;
+      border-radius: 0 8px 8px 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    .case-step h4 {
+      margin: 0 0 0.5rem 0;
+      color: var(--color-primary, #0284c7);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../../index.html" class="nav-item">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../ky-nang.html" class="nav-item active">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../approaches/tiep-can.html" class="nav-item">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../calculators/cong-cu.html" class="nav-item">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ lâm sàng</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-wrapper" id="mainContent">
+      <clini-breadcrumb
+        items='[{"label": "🏠 Home", "url": "../../../../../index.html"}, {"label": "Kỹ năng lâm sàng", "url": "../../ky-nang.html"}, {"label": "Khám Nhi Khoa", "url": "kn-khamnhi.html"}, {"label": "Khám Phát Triển Thể Chất"}]'></clini-breadcrumb>
+
+      <section class="skill-hero-growth">
+        <h1>📏 Khám & Đánh Giá Phát Triển Thể Chất Ở Trẻ Em</h1>
+        <p>Quy trình kỹ thuật đo đạc các chỉ số nhân trắc chuẩn (Cân nặng, Chiều dài/Chiều cao, Vòng đầu, BMI), nhận diện lâm sàng thể suy dinh dưỡng cấp nặng Marasmus & Kwashiorkor, phân tích Z-score & đường tăng trưởng WHO, kết hợp Bộ tính toán nhân trắc tương tác & bài tập tình huống lâm sàng.</p>
+      </section>
+
+      <!-- TAB BUTTONS -->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="quy-trinh">1. Kỹ thuật đo & Quy trình</button>
+        <button class="tab-btn" data-tab="suy-dinh-duong">2. Thể suy dinh dưỡng cấp nặng</button>
+        <button class="tab-btn" data-tab="who-zscore">3. Biểu đồ WHO & Z-Score</button>
+        <button class="tab-btn" data-tab="calculator-case">4. Tool Z-Score & Case Bé An</button>
+        <button class="tab-btn" data-tab="osce-ref">5. Bảng kiểm OSCE & Tham khảo</button>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- TAB 1: KỸ THUẬT ĐO & QUY TRÌNH -->
+      <!-- ========================================== -->
+      <section class="tab active" id="quy-trinh">
+        <div class="card">
+          <h2><i class="fa-solid fa-clipboard-list" style="color: var(--color-primary);"></i> 1. Quy Định Xác Định Tuổi Của Trẻ</h2>
+          <p>Xác định tuổi chính xác là bước đầu tiên và bắt buộc trong quy trình đánh giá phát triển thể chất ở trẻ em:</p>
+
+          <div class="tech-grid">
+            <div class="tech-card">
+              <h3><i class="fa-solid fa-cake-candles"></i> Trẻ &gt; 1 tuổi</h3>
+              <p>Ghi nhận chính xác <strong>số năm và số tháng tuổi</strong> mà trẻ đã đạt được.</p>
+            </div>
+            <div class="tech-card">
+              <h3><i class="fa-solid fa-baby"></i> Trẻ 3 tháng – 1 tuổi</h3>
+              <p>Ghi nhận <strong>số tháng tuổi</strong> tròn mà trẻ đã đạt được.</p>
+            </div>
+            <div class="tech-card">
+              <h3><i class="fa-solid fa-calendar-week"></i> Trẻ &lt; 3 tháng tuổi</h3>
+              <p>Ghi nhận <strong>số tuần tuổi</strong> mà trẻ đã đạt được.</p>
+              <div class="skill-note note-info" style="margin-top: 0.5rem; padding: 0.5rem 0.75rem;">
+                <i class="fa-solid fa-circle-info"></i> <strong>Quy đổi:</strong> Mốc <strong>13 tuần tuổi</strong> được tính tương đương là <strong>3 tháng tuổi</strong>.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 1.5rem;">
+          <h2><i class="fa-solid fa-weight-scale" style="color: var(--color-primary);"></i> 2. Kỹ Thuật Cân Trẻ Em Và Ghi Nhận Cân Nặng</h2>
+          
+          <ul class="step-list">
+            <li class="step-item">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <strong>Dụng cụ & Chuẩn bị</strong>
+                <p>Dùng cân có độ chính xác đến <strong>0,1 kg</strong> (lý tưởng là cân điện tử đã chỉnh về vạch 0). Cởi bỏ quần áo dày, đối với trẻ lớn chỉ mặc đồ lót mỏng nhẹ.</p>
+              </div>
+            </li>
+            <li class="step-item">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <strong>Thao tác cân theo lứa tuổi</strong>
+                <p><strong>Trẻ &lt; 2 tuổi (chưa tự đứng vững):</strong> Tiến hành cân mẹ trước rồi Tare vạch "0", sau đó bế trẻ lên cân; hoặc cân cả mẹ lẫn trẻ rồi trừ đi cân nặng mẹ.</p>
+                <p style="margin-top: 0.4rem;"><strong>Trẻ ≥ 2 tuổi (đã đứng vững):</strong> Cho trẻ tự đứng 1 mình vào trung tâm bàn cân.</p>
+              </div>
+            </li>
+            <li class="step-item">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <strong>Đọc và ghi nhận kết quả</strong>
+                <p>Đọc số đo trên cân và ghi nhận kết quả cân nặng làm tròn chính xác đến <strong>0,1 kg</strong>.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card" style="margin-top: 1.5rem;">
+          <h2><i class="fa-solid fa-ruler-vertical" style="color: var(--color-primary);"></i> 3. Kỹ Thuật Đo Chiều Dài Nằm & Chiều Cao Đứng</h2>
+
+          <div class="skill-note note-warning" style="margin-bottom: 1.25rem;">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <strong>Quy tắc hiệu chỉnh sinh lý 0,7 cm:</strong> Chiều cao đứng thường <strong>nhỏ hơn chiều dài nằm 0,7 cm</strong>.
+            <br><em>Ví dụ:</em> Nếu trẻ &lt; 2 tuổi không chịu nằm đo mà đo đứng, lấy kết quả chiều cao đứng <strong>cộng thêm 0,7 cm</strong> để quy đổi ra chiều dài nằm. (WHO đã tính đến sự chênh lệch này trên các biểu đồ).
+          </div>
+
+          <div class="tech-grid">
+            <!-- Đo nằm -->
+            <div class="tech-card" style="border-top: 4px solid #0284c7;">
+              <h3><i class="fa-solid fa-bed"></i> Chiều Dài Nằm (Trẻ &lt; 2 tuổi)</h3>
+              <p><strong>Dụng cụ:</strong> Thước đo nằm (0 – 85 cm), tấm để đầu cố định và tấm để chân di động.</p>
+              <p style="margin-top: 0.5rem;"><strong>Kỹ thuật (2 người phối hợp):</strong></p>
+              <ul style="margin-left: 1.2rem; font-size: 0.9rem; line-height: 1.5;">
+                <li>Đặt trẻ nằm ngửa, đầu áp sát vào tấm đầu cố định, mắt nhìn thẳng lên trời, vai chạm nền thước, giữ cột sống thẳng.</li>
+                <li>Người thứ hai dùng 1 tay giữ duỗi thẳng 2 đầu gối trẻ, tay còn lại đẩy tấm chân áp sát cả 2 gót chân.</li>
+              </ul>
+              <p style="margin-top: 0.5rem;"><strong>Đọc số đo:</strong> Chính xác đến <strong>0,1 cm</strong>.</p>
+            </div>
+
+            <!-- Đo đứng -->
+            <div class="tech-card" style="border-top: 4px solid #0d9488;">
+              <h3><i class="fa-solid fa-child"></i> Chiều Cao Đứng (Trẻ ≥ 2 tuổi)</h3>
+              <p><strong>Dụng cụ:</strong> Thước đo đứng gắn cố định tường, có tấm chạm đỉnh đầu di chuyển.</p>
+              <p style="margin-top: 0.5rem;"><strong>Kỹ thuật 5 điểm chạm chuẩn:</strong></p>
+              <ul style="margin-left: 1.2rem; font-size: 0.9rem; line-height: 1.5;">
+                <li>Trẻ đi chân trần, đứng thẳng, mở nhẹ 2 bàn chân song song.</li>
+                <li>Đảm bảo <strong>5 điểm chạm thân thước</strong>: <em>Gót chân, Bắp chân, Mông, Vai, và Ụ chẩm</em>.</li>
+                <li>Đầu giữ thẳng, mắt nhìn ngang. Kéo tấm chạm sát đỉnh đầu.</li>
+              </ul>
+              <p style="margin-top: 0.5rem;"><strong>Đọc số đo:</strong> Chính xác đến <strong>0,1 cm</strong>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 1.5rem;">
+          <h2><i class="fa-solid fa-tape" style="color: var(--color-primary);"></i> 4. Đo Vòng Đầu & Tính Chỉ Số BMI</h2>
+          <div class="tech-grid">
+            <div class="tech-card">
+              <h3><i class="fa-solid fa-circle"></i> Kỹ thuật đo vòng đầu</h3>
+              <p>Dùng thước dây không đàn hồi quấn quanh đầu trẻ sao cho thu được vòng chu vi lớn nhất:</p>
+              <ul style="margin-left: 1.2rem; font-size: 0.9rem; line-height: 1.5; margin-top: 0.4rem;">
+                <li><strong>Phía trước:</strong> Đi ngay trên lông mày.</li>
+                <li><strong>Hai bên:</strong> Đi phía trên vành tai.</li>
+                <li><strong>Phía sau:</strong> Đi qua ụ chẩm.</li>
+              </ul>
+            </div>
+
+            <div class="tech-card">
+              <h3><i class="fa-solid fa-calculator"></i> Chỉ số khối cơ thể (BMI)</h3>
+              <p>Công thức tính BMI ở trẻ em:</p>
+              <div style="background: var(--color-bg-soft); padding: 0.75rem; text-align: center; border-radius: 8px; font-weight: 700; font-size: 1.1rem; color: var(--color-primary); margin: 0.5rem 0;">
+                $$\text{BMI} = \frac{\text{Cân nặng (kg)}}{[\text{Chiều cao / Chiều dài (m)}]^2}$$
+              </div>
+              <p style="font-size: 0.88rem; color: var(--color-text-muted);">Kết quả được làm tròn đến <strong>1 chữ số thập phân (0,1)</strong>.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- TAB 2: THỂ SUY DINH DƯỠNG CẤP NẶNG -->
+      <!-- ========================================== -->
+      <section class="tab" id="suy-dinh-duong">
+        <div class="card">
+          <h2><i class="fa-solid fa-triangle-exclamation" style="color: #e11d48;"></i> Nhận Diện Lâm Sàng Trẻ Suy Dinh Dưỡng Cấp Nặng</h2>
+          <p>Trẻ bị suy dinh dưỡng thể Marasmus hoặc Kwashiorkor thuộc nhóm đối tượng nguy cơ cao tử vong, cần nhanh chóng nhận biết các dấu hiệu đặc trưng để có chế độ cấp cứu và chăm sóc đặc biệt ngay lập tức.</p>
+
+          <div class="malnutrition-container">
+            <!-- MARASMUS -->
+            <div class="mal-card marasmus">
+              <div class="mal-header">
+                <div style="font-size: 2rem;">🦴</div>
+                <div>
+                  <h3>Thể Marasmus (Thể Teo Đét)</h3>
+                  <span style="font-size: 0.82rem; color: #0369a1; font-weight: 600;">Thiếu hụt toàn bộ năng lượng & vi chất</span>
+                </div>
+              </div>
+              <ul class="mal-list">
+                <li><strong>Hình thái tổng quát:</strong> Trẻ cực kỳ gầy gò, chỉ còn <em>"da bọc xương"</em> do mất toàn bộ mô cơ và mô mỡ dưới da.</li>
+                <li><strong>Khuôn mặt:</strong> Trông giống <em>"mặt người già"</em> do mất mỡ dưới da mặt, tuy nhiên <strong>ánh mắt vẫn tinh anh</strong>.</li>
+                <li><strong>Lồng ngực & Chi:</strong> Các xương sườn lộ rõ ra ngoài. Xuất hiện các nếp da nhăn nheo xếp lớp ở bụng và đùi (dấu hiệu <em>"mặc quần thụng"</em>).</li>
+                <li><strong>Chỉ số nhân trắc:</strong> Chỉ số CN/T và CN/CD(CC) thường rất thấp (&lt; -3 SD).</li>
+              </ul>
+            </div>
+
+            <!-- KWASHIORKOR -->
+            <div class="mal-card kwashiorkor">
+              <div class="mal-header">
+                <div style="font-size: 2rem;">💧</div>
+                <div>
+                  <h3>Thể Kwashiorkor (Thể Phù)</h3>
+                  <span style="font-size: 0.82rem; color: #be123c; font-weight: 600;">Thiếu hụt Protein nặng nề</span>
+                </div>
+              </div>
+              <ul class="mal-list">
+                <li><strong>Hình thái tổng quát:</strong> Mất khối cơ nhưng <strong>bị phù toàn thân</strong> (bắt đầu ở mu chân, cẳng chân rồi đến mặt/toàn thân). Phù làm che lấp đi mức độ sụt cân thực sự.</li>
+                <li><strong>Triệu chứng thần kinh - ăn uống:</strong> Trẻ bứt rứt, thờ ơ, vẻ mặt mệt mỏi bệnh tật và ăn uống rất kém.</li>
+                <li><strong>Biến đổi da & Tóc:</strong> Khuôn mặt sưng phù tròn. Tóc thưa, mỏng, dễ gãy rụng và thỉnh thoảng bị bạc màu. Da xuất hiện các mảng tăng/giảm sắc tố, tiến triển nứt và tróc da (da nổ gấm).</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- COMPARISON MATRIX TABLE -->
+          <h3 style="margin-top: 1.5rem; color: var(--color-text);">Bảng So Sánh Đối Chiếu 2 Thể Suy Dinh Dưỡng Cấp Nặng</h3>
+          <div class="lab-table-wrapper">
+            <table class="zscore-table">
+              <thead>
+                <tr>
+                  <th>Đặc tính lâm sàng</th>
+                  <th style="color: #0284c7;">Thể Marasmus (Teo đét)</th>
+                  <th style="color: #e11d48;">Thể Kwashiorkor (Phù)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Nguyên nhân chính</strong></td>
+                  <td>Thiếu hụt toàn bộ Calo (năng lượng)</td>
+                  <td>Thiếu hụt trầm trọng Protein</td>
+                </tr>
+                <tr>
+                  <td><strong>Phù lâm sàng</strong></td>
+                  <td><strong>KHÔNG</strong> phù</td>
+                  <td><strong>CÓ PHÙ</strong> toàn thân (ấn lõm)</td>
+                </tr>
+                <tr>
+                  <td><strong>Lớp mỡ dưới da</strong></td>
+                  <td>Mất hoàn toàn (mặt người già)</td>
+                  <td>Còn một phần (bị che lấp bởi phù)</td>
+                </tr>
+                <tr>
+                  <td><strong>Khối cơ</strong></td>
+                  <td>Teo đét rất nặng</td>
+                  <td>Teo cơ bị phù che lấp</td>
+                </tr>
+                <tr>
+                  <td><strong>Tâm trạng / Ánh mắt</strong></td>
+                  <td>Thường tỉnh táo, mắt tinh anh</td>
+                  <td>Thờ ơ, bứt rứt, buồn ủ rũ</td>
+                </tr>
+                <tr>
+                  <td><strong>Biến đổi Da & Tóc</strong></td>
+                  <td>Da khô nhăn nheo "quần thụng"</td>
+                  <td>Tóc thưa bạc màu, da nứt tróc rỉ dịch</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- TAB 3: BIỂU ĐỒ WHO & Z-SCORE -->
+      <!-- ========================================== -->
+      <section class="tab" id="who-zscore">
+        <div class="card">
+          <h2><i class="fa-solid fa-chart-line" style="color: var(--color-primary);"></i> 1. Phân Tích Kết Quả Theo Z-Score Chuẩn WHO</h2>
+          <p>Bác sĩ tiến hành chấm tọa độ số đo của trẻ lên 4 biểu đồ chuẩn theo tuổi và giới tính để phân tích ý nghĩa lâm sàng:</p>
+
+          <div class="lab-table-wrapper" style="margin-top: 1rem;">
+            <table class="zscore-table">
+              <thead>
+                <tr>
+                  <th>Z-score (Bách phân vị)</th>
+                  <th>CD(CC)/T<br><small>Chiều dài/cao theo tuổi</small></th>
+                  <th>CN/T<br><small>Cân nặng theo tuổi</small></th>
+                  <th>CN/CD(CC)<br><small>Cân nặng/Chiều dài</small></th>
+                  <th>BMI/T<br><small>BMI theo tuổi</small></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="background: #fff1f2;">
+                  <td><strong>&gt; +3 SD (99th)</strong></td>
+                  <td>Rất cao <em>(Hội chẩn Nội tiết)</em></td>
+                  <td>Sử dụng BMI</td>
+                  <td><strong style="color: #be123c;">Béo phì</strong></td>
+                  <td><strong style="color: #be123c;">Béo phì</strong></td>
+                </tr>
+                <tr style="background: #fef2f2;">
+                  <td><strong>&gt; +2 SD (97th)</strong></td>
+                  <td>Bình thường</td>
+                  <td>Sử dụng BMI</td>
+                  <td><strong style="color: #e11d48;">Thừa cân</strong></td>
+                  <td><strong style="color: #e11d48;">Thừa cân</strong></td>
+                </tr>
+                <tr style="background: #fefce8;">
+                  <td><strong>&gt; +1 SD (85th)</strong></td>
+                  <td>Bình thường</td>
+                  <td>Sử dụng BMI</td>
+                  <td>Nguy cơ thừa cân</td>
+                  <td>Nguy cơ thừa cân</td>
+                </tr>
+                <tr style="background: #f0fdf4;">
+                  <td><strong>0 (50th - Trung vị)</strong></td>
+                  <td><strong style="color: #166534;">Bình thường</strong></td>
+                  <td><strong style="color: #166534;">Bình thường</strong></td>
+                  <td><strong style="color: #166534;">Bình thường</strong></td>
+                  <td><strong style="color: #166534;">Bình thường</strong></td>
+                </tr>
+                <tr style="background: #fefce8;">
+                  <td><strong>&lt; -1 SD (15th)</strong></td>
+                  <td>Bình thường</td>
+                  <td>Bình thường</td>
+                  <td>Bình thường</td>
+                  <td>Bình thường</td>
+                </tr>
+                <tr style="background: #fff7ed;">
+                  <td><strong>&lt; -2 SD (3rd)</strong></td>
+                  <td><strong style="color: #c2410c;">Thấp còi</strong></td>
+                  <td><strong style="color: #c2410c;">Nhẹ cân</strong></td>
+                  <td><strong style="color: #c2410c;">Gầy còm</strong></td>
+                  <td><strong style="color: #c2410c;">Gầy còm</strong></td>
+                </tr>
+                <tr style="background: #fef2f2;">
+                  <td><strong>&lt; -3 SD</strong></td>
+                  <td><strong style="color: #9f1239;">Thấp còi nặng</strong></td>
+                  <td><strong style="color: #9f1239;">Rất nhẹ cân</strong></td>
+                  <td><strong style="color: #9f1239;">Gầy còm nặng</strong></td>
+                  <td><strong style="color: #9f1239;">Gầy còm nặng</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="skill-note note-info" style="margin-top: 1rem;">
+            <i class="fa-solid fa-lightbulb"></i>
+            <strong>Quy tắc điểm ranh giới (Borderline Rule):</strong> Nếu tọa độ chấm khám nằm ngay đúng trên đường Z-score ranh giới (ví dụ đúng vạch -2 SD hoặc +2 SD), trẻ sẽ được xếp vào <strong>phân loại nhẹ hơn</strong>.
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 1.5rem;">
+          <h2><i class="fa-solid fa-arrow-trend-up" style="color: var(--color-primary);"></i> 2. Phân Tích Khuynh Hướng Đường Tăng Trưởng (Growth Trend)</h2>
+          <p>Đánh giá tăng trưởng qua <strong>1 thời điểm duy nhất không có giá trị bằng việc theo dõi khuynh hướng đường tăng trưởng</strong> qua nhiều tháng liên tiếp:</p>
+
+          <div class="tech-grid">
+            <div class="tech-card" style="border-left: 4px solid #16a34a;">
+              <h3 style="color: #16a34a;"><i class="fa-solid fa-circle-check"></i> Đường tăng trưởng Bình thường</h3>
+              <p>Nối các điểm chấm khám qua các tháng tạo thành đường đi lên và nằm <strong>song song với đường trung vị (đường 0)</strong>. Đường này có thể nằm trên hoặc dưới đường 0.</p>
+            </div>
+
+            <div class="tech-card" style="border-left: 4px solid #dc2626;">
+              <h3 style="color: #dc2626;"><i class="fa-solid fa-triangle-exclamation"></i> 4 Dấu hiệu Bất thường Cần Truy Tìm</h3>
+              <ol style="margin-left: 1.2rem; font-size: 0.9rem; line-height: 1.6;">
+                <li><strong>Thoải dốc / Đi xuống:</strong> Cân nặng hoặc chiều cao sụt giảm so với lần khám trước.</li>
+                <li><strong>Đi ngang:</strong> Trẻ đứng cân, không tăng chiều cao trong nhiều tháng.</li>
+                <li><strong>Biến đổi đột ngột:</strong> Đường dốc lên hoặc tụt xuống quá nhanh so với quỹ đạo cũ.</li>
+                <li><strong>Cắt ngang đường Z-score:</strong> Đường tăng trưởng cắt qua các đường ranh giới (+2 SD, +1 SD, -1 SD, -2 SD).</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- TAB 4: TOOL Z-SCORE & CASE BÉ AN -->
+      <!-- ========================================== -->
+      <section class="tab" id="calculator-case">
+        <!-- INTERACTIVE CALCULATOR -->
+        <div class="calc-container">
+          <h2 style="margin-top: 0; color: var(--color-primary); font-size: 1.3rem;">
+            <i class="fa-solid fa-calculator"></i> Máy Tính Nhân Trắc & Tra Cứu Z-Score Nhi Khoa Tương Tác
+          </h2>
+          <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: 1.25rem;">
+            Nhập các thông số của trẻ để máy tính tự động quy đổi chiều dài hiệu chỉnh, tính chỉ số BMI và đánh giá sơ bộ các chỉ số phát triển thể chất.
+          </p>
+
+          <div class="calc-form-grid">
+            <div class="calc-group">
+              <label for="ped-gender">Giới tính trẻ:</label>
+              <select id="ped-gender">
+                <option value="female">Bé Gái (Girl)</option>
+                <option value="male">Bé Trai (Boy)</option>
+              </select>
+            </div>
+
+            <div class="calc-group">
+              <label for="ped-age-months">Tuổi của trẻ (tháng):</label>
+              <input type="number" id="ped-age-months" value="13" min="0" max="60" step="1">
+            </div>
+
+            <div class="calc-group">
+              <label for="ped-height">Chiều dài / Chiều cao đo được (cm):</label>
+              <input type="number" id="ped-height" value="75.4" min="30" max="130" step="0.1">
+            </div>
+
+            <div class="calc-group">
+              <label for="ped-position">Tư thế đo thực tế:</label>
+              <select id="ped-position">
+                <option value="standing">Đo đứng (Chiều cao)</option>
+                <option value="supine">Đo nằm (Chiều dài)</option>
+              </select>
+            </div>
+
+            <div class="calc-group">
+              <label for="ped-weight">Cân nặng (kg):</label>
+              <input type="number" id="ped-weight" value="8.0" min="1" max="50" step="0.1">
+            </div>
+          </div>
+
+          <button class="calc-btn" id="btn-calc-ped"><i class="fa-solid fa-play"></i> Tính Toán & Đánh Giá Z-Score</button>
+
+          <div class="calc-result-box" id="ped-calc-results" style="display: none;">
+            <h3 style="margin-top: 0; color: var(--color-primary); font-size: 1.1rem;">
+              <i class="fa-solid fa-square-poll-vertical"></i> Kết Quả Đánh Giá Nhân Trắc
+            </h3>
+            
+            <div class="result-grid">
+              <div class="result-card">
+                <div class="res-title">Chiều dài hiệu chỉnh</div>
+                <div class="res-val" id="res-adj-length">-- cm</div>
+                <div class="res-status badge-normal" id="res-adj-note">Hiệu chỉnh +0.7 cm</div>
+              </div>
+
+              <div class="result-card">
+                <div class="res-title">Chỉ số BMI</div>
+                <div class="res-val" id="res-bmi">-- kg/m²</div>
+                <div class="res-status badge-normal" id="res-bmi-status">Bình thường</div>
+              </div>
+
+              <div class="result-card">
+                <div class="res-title">Chiều dài / Tuổi (CD/T)</div>
+                <div class="res-val" id="res-hfa">Bình thường</div>
+                <div class="res-status badge-normal">Không thấp còi</div>
+              </div>
+
+              <div class="result-card">
+                <div class="res-title">Cân nặng / Tuổi (CN/T)</div>
+                <div class="res-val" id="res-wfa">Bình thường</div>
+                <div class="res-status badge-normal">Không nhẹ cân</div>
+              </div>
+            </div>
+
+            <div style="margin-top: 1rem; padding: 0.75rem; background: white; border-radius: 6px; border-left: 4px solid #0284c7; font-size: 0.9rem;">
+              <strong>Lời khuyên lâm sàng:</strong> <span id="res-clinical-advice">Trẻ có sự phát triển thể chất cân đối tại thời điểm khám. Tiếp tục duy trì chế độ dinh dưỡng hợp lý và chủng ngừa theo lịch.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CLINICAL CASE STUDY BÉ AN -->
+        <div class="card" style="margin-top: 1.5rem;">
+          <h2><i class="fa-solid fa-user-doctor" style="color: var(--color-primary);"></i> Tình Huống Lâm Sàng Thực Hành: Bé An</h2>
+          
+          <div class="skill-note note-info" style="margin-bottom: 1.25rem;">
+            <strong>Dữ kiện bài tập:</strong> Bé An (giới tính: <strong>Nữ</strong>) đến phòng khám chủng ngừa ngày <strong>20/03/2018</strong>. Ngày sinh của bé là <strong>10/02/2017</strong>. Khi đo nhân trắc, bé An không chịu nằm nên bác sĩ đo chiều cao đứng thu được <strong>75,4 cm</strong> và cân nặng <strong>8,0 kg</strong>.
+          </div>
+
+          <h3 style="color: var(--color-primary);">4 Bước Lần Lượt Xử Lý Tình Huống Lâm Sàng</h3>
+
+          <div class="case-step">
+            <h4>Bước 1: Tính chính xác tuổi của trẻ</h4>
+            <p>Từ ngày sinh 10/02/2017 đến ngày khám 20/03/2018: Trẻ đạt được <strong>1 năm và 1 tháng tuổi tròn</strong> (tương đương <strong>13 tháng tuổi</strong>).</p>
+          </div>
+
+          <div class="case-step">
+            <h4>Bước 2: Hiệu chỉnh chiều dài nằm & Tính chỉ số BMI</h4>
+            <p>• <strong>Hiệu chỉnh chiều dài nằm:</strong> Do trẻ &lt; 2 tuổi (13 tháng) nhưng đo đứng (75,4 cm), áp dụng quy tắc hiệu chỉnh: Chiều dài nằm (CD) = 75,4 + 0,7 = <strong>76,1 cm</strong> (<strong>0,761 m</strong>).</p>
+            <p>• <strong>Tính BMI:</strong></p>
+            <div style="background: var(--color-bg-soft); padding: 0.5rem 0.75rem; border-radius: 6px; font-weight: 700; font-size: 0.95rem; color: var(--color-primary); display: inline-block; margin: 0.3rem 0;">BMI = 8,0 / (0,754)² ≈ 13,8 kg/m²</div>
+          </div>
+
+          <div class="case-step">
+            <h4>Bước 3: Lựa chọn bộ biểu đồ WHO chuẩn</h4>
+            <p>Bác sĩ chọn bộ <strong>4 biểu đồ chuẩn dành cho Bé Gái (Girls 0-2 tuổi)</strong>: CD/T, CN/T, CN/CD, và BMI/T.</p>
+          </div>
+
+          <div class="case-step">
+            <h4>Bước 4: Đánh dấu tọa độ Z-score & Kết luận</h4>
+            <ul style="margin-left: 1.2rem; font-size: 0.9rem; line-height: 1.6;">
+              <li><strong>Biểu đồ CD/T (76,1 cm, 13 tháng):</strong> Tọa độ nằm giữa -2 SD và +2 SD → <strong>Chiều dài bình thường</strong> (Không thấp còi).</li>
+              <li><strong>Biểu đồ CN/T (8,0 kg, 13 tháng):</strong> Tọa độ nằm giữa -2 SD và +2 SD → <strong>Cân nặng bình thường</strong> (Không nhẹ cân).</li>
+              <li><strong>Biểu đồ CN/CD (8,0 kg, 76,1 cm):</strong> Tọa độ nằm giữa -2 SD và +2 SD → <strong>CN/CD bình thường</strong> (Không gầy còm, không thừa cân).</li>
+              <li><strong>Biểu đồ BMI/T (BMI = 13,8, 13 tháng):</strong> Tọa độ nằm giữa -2 SD và +2 SD → <strong>BMI bình thường</strong>.</li>
+            </ul>
+            <p style="margin-top: 0.5rem; font-weight: 700; color: #166534;">⇒ KẾT LUẬN: Bé An có sự phát triển thể chất HOÀN TOÀN BÌNH THƯỜNG tại thời điểm 13 tháng tuổi.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- TAB 5: BẢNG KIỂM OSCE & THAM KHẢO -->
+      <!-- ========================================== -->
+      <section class="tab" id="osce-ref">
+        <!-- WIDGET TIMER OSCE -->
+        <div class="card">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <h2><i class="fa-solid fa-stopwatch" style="color: var(--color-primary);"></i> Bảng Kiểm Trạm Thi OSCE (7 Phút)</h2>
+            
+            <div id="osce-timer-widget" style="display: flex; align-items: center; gap: 0.75rem; background: var(--color-bg-soft); padding: 0.5rem 1rem; border-radius: 20px; border: 1px solid #bae6fd;">
+              <span id="osce-timer-display" style="font-family: monospace; font-size: 1.3rem; font-weight: 700; color: var(--color-primary);">07:00</span>
+              <button class="calc-btn" id="osce-timer-start" style="padding: 0.3rem 0.8rem; font-size: 0.85rem;">Bắt đầu</button>
+              <button class="calc-btn" id="osce-timer-reset" style="padding: 0.3rem 0.8rem; font-size: 0.85rem; background: #64748b;">Reset</button>
+            </div>
+          </div>
+
+          <!-- PROGRESS BAR -->
+          <div style="margin-top: 1rem;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.88rem; font-weight: 600; margin-bottom: 0.3rem;">
+              <span>Tiến độ thực hiện:</span>
+              <span id="skill-progress-text">Tiến độ: 0/12 bước (0%)</span>
+            </div>
+            <div style="width: 100%; height: 8px; background: #e2e8f0; border-radius: 4px; overflow: hidden;">
+              <div id="skill-progress-bar" style="width: 0%; height: 100%; background: var(--color-primary); transition: width 0.3s;"></div>
+            </div>
+          </div>
+
+          <!-- CHECKLIST -->
+          <ul class="check" style="margin-top: 1.25rem;">
+            <li class="step-item">
+              <input type="checkbox" id="chk-1">
+              <label for="chk-1"><strong>1. Chào hỏi & Giải thích:</strong> Giao tiếp thân thiện với phụ huynh và trẻ, giải thích mục đích thăm khám nhân trắc.</label>
+            </li>
+            <li class="step-item">
+              <input type="checkbox" id="chk-2">
+              <label for="chk-2"><strong>2. Xác định tuổi tròn:</strong> Hỏi ngày sinh và ngày khám, ghi nhận số tuần (&lt;3 tháng), số tháng (3m-1t) hoặc năm+tháng (&gt;1t). Áp dụng 13 tuần = 3 tháng.</label>
+            </li>
+            <li class="step-item">
+              <input type="checkbox" id="chk-3">
+              <label for="chk-3"><strong>3. Tầm soát suy dinh dưỡng cấp nặng:</strong> Khám nhận diện các dấu hiệu thể Marasmus (gầy đét da bọc xương, quần thụng) vs Kwashiorkor (phù toàn thân, da nổ gấm, tóc thưa).</label>
+            </li>
+            <li class="step-item">
+              <input type="checkbox" id="chk-4">
+              <label for="chk-4"><strong>4. Chuẩn bị cân:</strong> Kiểm tra cân điện tử vạch 0. Dặn phụ huynh cởi bỏ quần áo dày/giày vớ của trẻ.</label>
+            </li>
+            <li class="step-item">
+              <input type="checkbox" id="chk-5">
+              <label for="chk-5"><strong>5. Kỹ thuật cân:</strong> Chọn đúng phương pháp (cân bế mẹ/Tare 0 cho trẻ &lt;2 tuổi vs cho trẻ tự đứng giữa bàn cân cho trẻ ≥2 tuổi).</label>
+            </li>
+            <li class="step-item">
+              <input type="checkbox" id="chk-6">
+              <label for="chk-6"><strong>6. Đọc kết quả cân:</strong> Đọc và ghi nhận chỉ số cân nặng làm tròn chính xác đến 0,1 kg.</label>
+            </li>
+            <li class="step-item">
+              <input type="checkbox" id="chk-7">
+              <label for="chk-7"><strong>7. Chọn thước đo chiều dài/cao:</strong> Dùng thước đo nằm cho trẻ &lt;2 tuổi và thước đo đứng cho trẻ ≥2 tuổi.</label>
+            </li>
+            <li class="step-item">
+              <input type="checkbox" id="chk-8">
+              <label for="chk-8"><strong>8. Kỹ thuật đo chuẩn:</strong> Thực hiện đúng thao tác (2 người giữ đầu/gối khi đo nằm; đảm bảo 5 điểm chạm gót/bắp chân/mông/vai/ụ chẩm khi đo đứng).</label>
+            </li>
+            <li class="step-item">
+              <input type="checkbox" id="chk-9">
+              <label for="chk-9"><strong>9. Áp dụng hiệu chỉnh 0,7 cm:</strong> Cộng thêm 0,7 cm nếu trẻ &lt;2 tuổi đo đứng (hoặc trừ 0,7 cm nếu trẻ ≥2 tuổi đo nằm).</label>
+            </li>
+            <li class="step-item">
+              <input type="checkbox" id="chk-10">
+              <label for="chk-10"><strong>10. Đo vòng đầu:</strong> Dùng thước dây không đàn hồi quấn qua trán (trên lông mày), trên vành tai và ụ chẩm.</label>
+            </li>
+            <li class="step-item">
+              <input type="checkbox" id="chk-11">
+              <label for="chk-11"><strong>11. Tính BMI & Chấm tọa độ WHO:</strong> Tính BMI (kg/m²). Lựa chọn đúng bộ 4 biểu đồ WHO theo giới tính và chấm tọa độ Z-score.</label>
+            </li>
+            <li class="step-item">
+              <input type="checkbox" id="chk-12">
+              <label for="chk-12"><strong>12. Kết luận & Tư vấn:</strong> Đánh giá phân loại Z-score, phân tích khuynh hướng đường tăng trưởng và tư vấn chế độ chăm sóc cho phụ huynh.</label>
+            </li>
+          </ul>
+        </div>
+
+        <!-- REFERENCES -->
+        <div class="card" style="margin-top: 1.5rem;">
+          <h2><i class="fa-solid fa-book-bookmark" style="color: var(--color-primary);"></i> Tài Liệu Tham Khảo Chuẩn (AMA Format)</h2>
+          <ol style="margin-left: 1.25rem; line-height: 1.8; color: var(--color-text);">
+            <li>Vũ Thị Mai Uyên, Bùi Quang Vinh. Bài 36: Khám đánh giá phát triển thể chất trẻ em. Trong: <em>Nhi khoa - Tập 1</em>. Bộ môn Nhi - Đại học Y Dược TP. Hồ Chí Minh. NXB Y học; 2020:456-464.</li>
+            <li>Nguyễn Thụy Minh Thư. Bài 2: Sự tăng trưởng thể chất ở trẻ em. Trong: <em>Nhi khoa - Tập 1</em>. Bộ môn Nhi - Đại học Y Dược TP. Hồ Chí Minh. NXB Y học; 2020:29-45.</li>
+            <li>Vũ Thị Mai Uyên, Bùi Quang Vinh. Bài 36: Khám đánh giá phát triển thể chất trẻ em. Trong: <em>Nhi khoa - Tập 1</em>. Bộ môn Nhi - Đại học Y Dược TP. Hồ Chí Minh. NXB Đại học Quốc gia TP.HCM; 2025:456-464.</li>
+          </ol>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer class="global-footer">
+    <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+  </footer>
+
+  <!-- SCRIPT FOR CALCULATOR -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const btnCalc = document.getElementById('btn-calc-ped');
+      if (btnCalc) {
+        btnCalc.addEventListener('click', function () {
+          const ageMonths = parseFloat(document.getElementById('ped-age-months').value) || 0;
+          const measuredH = parseFloat(document.getElementById('ped-height').value) || 0;
+          const pos = document.getElementById('ped-position').value;
+          const weight = parseFloat(document.getElementById('ped-weight').value) || 0;
+
+          // Adjustment logic:
+          // If age < 24 months (< 2 years) and measured standing -> add 0.7cm for supine length
+          // If age >= 24 months and measured supine -> subtract 0.7cm for standing height
+          let adjH = measuredH;
+          let adjNote = "Không cần hiệu chỉnh";
+
+          if (ageMonths < 24 && pos === 'standing') {
+            adjH = measuredH + 0.7;
+            adjNote = "Đã cộng +0.7 cm (Trẻ &lt;2t đo đứng)";
+          } else if (ageMonths >= 24 && pos === 'supine') {
+            adjH = measuredH - 0.7;
+            adjNote = "Đã trừ -0.7 cm (Trẻ ≥2t đo nằm)";
+          }
+
+          // Calculate BMI
+          const heightM = measuredH / 100;
+          const bmi = (weight / (heightM * heightM)).toFixed(1);
+
+          document.getElementById('res-adj-length').textContent = adjH.toFixed(1) + ' cm';
+          document.getElementById('res-adj-note').textContent = adjNote;
+          document.getElementById('res-bmi').textContent = bmi + ' kg/m²';
+
+          // Simplified evaluation demo based on 13-month values (e.g. Bé An)
+          document.getElementById('ped-calc-results').style.display = 'block';
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

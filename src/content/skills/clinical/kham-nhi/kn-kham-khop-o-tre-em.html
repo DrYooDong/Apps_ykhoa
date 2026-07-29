@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Hướng dẫn kỹ thuật khám cơ xương khớp ở trẻ em toàn diện: 6 triệu chứng bất thường chung, khám khớp chi trên, chi dưới, cột sống, tra cứu & mô phỏng 7 nghiệm pháp lâm sàng đặc biệt và lưu đồ tiếp cận chẩn đoán.">
+  <title>Khám Cơ Xương Khớp Ở Trẻ Em – CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../../css/components/clinical-skill.css">
+  <link rel="stylesheet" href="../../../../../css/components/paraclinical.css">
+  <link rel="stylesheet" href="../../../../../css/components/physio-headings.css">
+
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../js/clinical-skill-tabs.js" defer></script>
+
+  <style>
+    :root {
+      --joint-primary: #0284c7;
+      --joint-accent: #0d9488;
+      --joint-bg-soft: #f0f9ff;
+    }
+
+    .skill-hero-joint {
+      background: linear-gradient(135deg, #0284c7 0%, #0f766e 100%);
+      color: white;
+      padding: 1.75rem;
+      border-radius: var(--radius-lg, 12px);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 20px rgba(2, 132, 199, 0.2);
+    }
+
+    .skill-hero-joint h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-hero-joint p {
+      font-size: 0.95rem;
+      opacity: 0.95;
+      line-height: 1.6;
+    }
+
+    /* Grid layout for symptoms & joints */
+    .joint-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+      margin: 1rem 0;
+    }
+
+    .joint-card {
+      background: var(--color-surface, #ffffff);
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius-md, 10px);
+      padding: 1.25rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    }
+
+    .joint-card h3 {
+      font-size: 1.1rem;
+      color: var(--color-primary, #0284c7);
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Tables */
+    .joint-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+    }
+
+    .joint-table th, .joint-table td {
+      border: 1px solid var(--color-border, #e2e8f0);
+      padding: 0.75rem;
+      text-align: left;
+    }
+
+    .joint-table th {
+      background: var(--color-primary-hl, #e0f2fe);
+      color: var(--color-primary, #0284c7);
+      font-weight: 700;
+    }
+
+    /* Test Simulator Box */
+    .test-sim-container {
+      background: var(--color-surface, #ffffff);
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius-lg, 12px);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    }
+
+    .test-selector {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .test-btn {
+      background: var(--color-bg-alt, #f1f5f9);
+      border: 1px solid var(--color-border, #cbd5e1);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--color-text, #0f172a);
+      transition: all 0.2s;
+    }
+
+    .test-btn.active {
+      background: var(--color-primary, #0284c7);
+      color: white;
+      border-color: var(--color-primary, #0284c7);
+    }
+
+    .test-detail-card {
+      background: var(--color-bg-soft, #f0f9ff);
+      border: 1px solid #bae6fd;
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+
+    .test-detail-card h3 {
+      margin-top: 0;
+      color: var(--color-primary, #0284c7);
+      font-size: 1.2rem;
+    }
+
+    .badge-pos {
+      background: #ffe4e6;
+      color: #9f1239;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    /* Flowchart Section Box */
+    .flow-box {
+      background: var(--color-surface, #ffffff);
+      border-left: 4px solid #0d9488;
+      border-radius: 0 10px 10px 0;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    .flow-box h4 {
+      margin: 0 0 0.5rem 0;
+      color: #0f766e;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../../index.html" class="nav-item">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../ky-nang.html" class="nav-item active">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../approaches/tiep-can.html" class="nav-item">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../calculators/cong-cu.html" class="nav-item">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ lâm sàng</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-wrapper" id="mainContent">
+      <clini-breadcrumb
+        items='[{"label": "🏠 Home", "url": "../../../../../index.html"}, {"label": "Kỹ năng lâm sàng", "url": "../../ky-nang.html"}, {"label": "Khám Nhi Khoa", "url": "kn-khamnhi.html"}, {"label": "Khám Cơ Xương Khớp Ở Trẻ"}]'></clini-breadcrumb>
+
+      <section class="skill-hero-joint">
+        <h1>🦴 Khám Cơ Xương Khớp Ở Trẻ Em</h1>
+        <p>Nguyên tắc thăm khám hệ cơ xương khớp nhi khoa, nhận diện 6 triệu chứng bất thường chung, kỹ thuật khám khớp chi trên, chi dưới, cột sống & khớp cùng chậu, kết hợp Bộ mô phỏng 7 Nghiệm pháp lâm sàng đặc biệt và Lưu đồ tiếp cận chẩn đoán.</p>
+      </section>
+
+      <!-- TAB BUTTONS -->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="nguyen-tac">1. Nguyên tắc & 6 Triệu chứng</button>
+        <button class="tab-btn" data-tab="chi-tren">2. Khám Chi Trên & Khớp Nhỏ</button>
+        <button class="tab-btn" data-tab="chi-duoi-cot-song">3. Chi Dưới & Cột Sống</button>
+        <button class="tab-btn" data-tab="nghiem-phap-luu-do">4. Nghiệm pháp & Lưu đồ</button>
+        <button class="tab-btn" data-tab="osce-ref">5. Bảng kiểm OSCE & Tham khảo</button>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- TAB 1: NGUYÊN TẮC & 6 TRIỆU CHỨNG -->
+      <!-- ========================================== -->
+      <section class="tab active" id="nguyen-tac">
+        <div class="card">
+          <h2><i class="fa-solid fa-user-doctor" style="color: var(--color-primary);"></i> 1. Nguyên Tắc Thăm Khám Hệ Cơ Xương Khớp Nhi Khoa</h2>
+          
+          <div class="joint-grid">
+            <div class="joint-card">
+              <h3><i class="fa-solid fa-couch"></i> Môi trường & Tư thế khám</h3>
+              <ul style="margin-left: 1.2rem; font-size: 0.9rem; line-height: 1.6;">
+                <li>Phòng khám riêng biệt, yên tĩnh và đủ ấm áp.</li>
+                <li><strong>Trẻ lớn:</strong> Cho ngồi trên ghế tựa thoải mái.</li>
+                <li><strong>Trẻ nhỏ:</strong> Cho ngồi trong lòng cha mẹ. Thứ tự khám linh hoạt, các thao tác gây đau/khó chịu thực hiện sau cùng.</li>
+              </ul>
+            </div>
+
+            <div class="joint-card">
+              <h3><i class="fa-solid fa-hands-holding"></i> Kỹ thuật nâng đỡ khi thao tác</h3>
+              <p style="font-size: 0.9rem; line-height: 1.6;">
+                Khi đánh giá biên độ cử động của khớp viêm, bác sĩ cần <strong>nâng đỡ chi bị đau ở phía trên hoặc phía dưới khớp</strong>, tránh giữ chặt trực tiếp vào khớp đang viêm. Cử động phải từ từ, nhẹ nhàng.
+              </p>
+            </div>
+
+            <div class="joint-card">
+              <h3><i class="fa-solid fa-heart-pulse"></i> Khám toàn thân & Sinh hiệu</h3>
+              <p style="font-size: 0.9rem; line-height: 1.6;">
+                Đo mạch, nhiệt độ, nhịp thở, huyết áp. Đặc biệt chú ý dấu hiệu <strong>sụt cân</strong> (gợi ý nhiễm trùng mạn, bệnh lý viêm mạn tính JIA hoặc bệnh lý ác tính). Cởi bỏ bớt quần áo để bộc lộ hoàn toàn vùng khám.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 1.5rem;">
+          <h2><i class="fa-solid fa-triangle-exclamation" style="color: var(--color-primary);"></i> 2. Sáu Triệu Chứng Bất Thường Chung Của Khớp</h2>
+
+          <div class="joint-grid">
+            <!-- 1. SƯNG KHỚP -->
+            <div class="joint-card" style="border-top: 4px solid #0284c7;">
+              <h3><i class="fa-solid fa-expand"></i> 1. Sưng Khớp (Swelling)</h3>
+              <p style="font-size: 0.9rem; line-height: 1.5;">Được đánh giá bằng nhìn và sờ trực tiếp quanh khớp. Do rối loạn tăng trưởng xương, tràn dịch trong ổ khớp hoặc tình trạng tăng sinh bao hoạt dịch.</p>
+            </div>
+
+            <!-- 2. ĐAU KHỚP -->
+            <div class="joint-card" style="border-top: 4px solid #e11d48;">
+              <h3><i class="fa-solid fa-hand-holding-hand"></i> 2. Đau Khớp (Pain / Tenderness)</h3>
+              <p style="font-size: 0.9rem; line-height: 1.5;">
+                Ấn chẩn bằng 2 tay quanh khớp. <strong>Tiêu chuẩn áp lực ấn:</strong> Áp lực ấn vừa đủ khi <strong>màu sắc ở móng tay ngón trỏ và ngón cái của người khám trở nên tái nhợt đi</strong>. Đánh giá mức độ qua nét mặt và phản ứng của trẻ.
+              </p>
+            </div>
+
+            <!-- 3. NÓNG KHỚP -->
+            <div class="joint-card" style="border-top: 4px solid #f59e0b;">
+              <h3><i class="fa-solid fa-temperature-arrow-up"></i> 3. Nóng Khớp & Đỏ Da</h3>
+              <p style="font-size: 0.9rem; line-height: 1.5;">So sánh cảm giác nhiệt tại khớp bị tổn thương với khớp đối diện tương ứng bằng mu bàn tay người khám.</p>
+            </div>
+
+            <!-- 4. TIẾNG LẠO XẠO -->
+            <div class="joint-card" style="border-top: 4px solid #8b5cf6;">
+              <h3><i class="fa-solid fa-volume-high"></i> 4. Tiếng Lạo Xạo / Lắc Rắc (Crepitus)</h3>
+              <p style="font-size: 0.9rem; line-height: 1.5;">Sờ hoặc nghe thấy khi cử động khớp do hai mặt khớp gồ ghề cọ sát vào nhau. Tiếng lạo xạo lớn thường liên quan đến thoái hóa khớp / tổn thương sụn.</p>
+            </div>
+
+            <!-- 5. GIỚI HẠN CỬ ĐỘNG -->
+            <div class="joint-card" style="border-top: 4px solid #0d9488;">
+              <h3><i class="fa-solid fa-lock"></i> 5. Giới Hạn Cử Động Khớp</h3>
+              <p style="font-size: 0.9rem; line-height: 1.5;">
+                Đánh giá biên độ <strong>chủ động</strong> (trẻ tự vận động) và <strong>thụ động</strong> (bác sĩ thực hiện). Đánh giá <strong>biên độ thụ động sẽ chính xác hơn</strong> vì trẻ thường hạn chế chủ động do tâm lý sợ đau.
+              </p>
+            </div>
+
+            <!-- 6. BIẾN DẠNG -->
+            <div class="joint-card" style="border-top: 4px solid #dc2626;">
+              <h3><i class="fa-solid fa-bone"></i> 6. Biến Dạng Khớp (Deformity)</h3>
+              <p style="font-size: 0.9rem; line-height: 1.5;">Sự không thẳng hàng hoặc lệch trục của khớp do xương phì đại, bán trật khớp, co thắt cơ hoặc phá hủy hệ thống dây chằng nâng đỡ quanh khớp.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- TAB 2: KHÁM CHI TRÊN & KHỚP NHỎ -->
+      <!-- ========================================== -->
+      <section class="tab" id="chi-tren">
+        <div class="card">
+          <h2><i class="fa-solid fa-hand" style="color: var(--color-primary);"></i> 1. Khám Các Khớp Nhỏ Trán - Mặt & Ngực</h2>
+          
+          <div class="joint-grid">
+            <div class="joint-card">
+              <h3><i class="fa-solid fa-face-smile"></i> Khớp Thái Dương Hàm (TM Joint)</h3>
+              <p style="font-size: 0.9rem; line-height: 1.5;">Sờ xung quanh khớp tìm điểm sưng đau.</p>
+              <p style="font-size: 0.9rem; line-height: 1.5; margin-top: 0.4rem;">
+                <strong>Nghiệm pháp tiếng lạo xạo:</strong> Đút ngón trỏ vào ống tai ngoài của trẻ, kéo nhẹ ra trước và bảo trẻ há - ngậm miệng.
+              </p>
+              <p style="font-size: 0.9rem; line-height: 1.5; margin-top: 0.4rem;">
+                <strong>Đánh giá biên độ mở miệng:</strong> Đạt tiêu chuẩn nếu trẻ đút vừa <strong>2 ngón tay</strong> của chính trẻ vào miệng.
+              </p>
+            </div>
+
+            <div class="joint-card">
+              <h3><i class="fa-solid fa-ribbon"></i> Khớp AC, SC và Sternomanubrial (SM)</h3>
+              <p style="font-size: 0.9rem; line-height: 1.5;">
+                <strong>Khớp mỏm quạ - xương đòn (AC):</strong> Vuốt dọc xương đòn ra ngoài phía mỏm quạ tìm sưng đau. Cử động khớp AC được đánh giá bằng kéo cánh tay xuống.
+              </p>
+              <p style="font-size: 0.9rem; line-height: 1.5; margin-top: 0.4rem;">
+                <strong>Khớp ức đòn (SC) & Sườn ức (SM):</strong> Sờ nắn trực tiếp đầu trong xương đòn và rãnh sườn ức.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 1.5rem;">
+          <h2><i class="fa-solid fa-hand-holding" style="color: var(--color-primary);"></i> 2. Khám Khớp Vai & Khớp Khuỷu</h2>
+
+          <div class="joint-grid">
+            <!-- KHỚP VAI -->
+            <div class="joint-card">
+              <h3 style="color: #0284c7;"><i class="fa-solid fa-child"></i> Khớp Vai (Shoulder Joint)</h3>
+              <p style="font-size: 0.9rem; line-height: 1.5;">Sờ nắn các mốc xương (mỏm quạ, củ lớn, củ nhỏ) và bao khớp vai.</p>
+              <p style="font-size: 0.9rem; line-height: 1.5; margin-top: 0.5rem;"><strong>Đánh giá chức năng nhanh:</strong></p>
+              <ul style="margin-left: 1.2rem; font-size: 0.88rem; line-height: 1.5;">
+                <li><strong>Chải đầu:</strong> Đánh giá động tác dạng và xoay ngoài.</li>
+                <li><strong>Đưa tay ra sau lưng:</strong> Đánh giá động tác xoay trong và khép vai.</li>
+              </ul>
+            </div>
+
+            <!-- KHỚP KHUỶU -->
+            <div class="joint-card">
+              <h3 style="color: #0d9488;"><i class="fa-solid fa-arm-warmer"></i> Khớp Khuỷu (Elbow Joint)</h3>
+              <p style="font-size: 0.9rem; line-height: 1.5;">Sờ nắn khớp lý tưởng nhất ở tư thế <strong>gập khuỷu 70°</strong>.</p>
+              <p style="font-size: 0.9rem; line-height: 1.5; margin-top: 0.4rem;">
+                Kén bao hoạt dịch thường khám thấy ở <strong>rãnh khuỷu bên</strong> (<em>medial paraolecranon groove</em>). Quan sát tìm nốt thấp dưới da hoặc nốt tophi.
+              </p>
+              <div style="background: var(--color-bg-soft); padding: 0.6rem; border-radius: 6px; font-size: 0.88rem; margin-top: 0.5rem;">
+                <strong>Biên độ chuẩn:</strong> Duỗi 0 – 5°, Gập ≥ 135°. Viêm mạn tính gây mất khả năng duỗi thẳng 0° (co rút gập).
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 1.5rem;">
+          <h2><i class="fa-solid fa-hand-sparkles" style="color: var(--color-primary);"></i> 3. Khám Khớp Cổ Tay & Bàn Tay</h2>
+
+          <div class="joint-grid">
+            <div class="joint-card">
+              <h3><i class="fa-solid fa-hand-back-fist"></i> Nghiệm Pháp Finkelstein (Viêm Gân Ngón Cái)</h3>
+              <p style="font-size: 0.9rem; line-height: 1.5;">
+                <strong>Thao tác:</strong> Cho trẻ gập ngón cái vào lòng bàn tay, nắm các ngón khác trùm lên ngón cái, rồi gập bàn tay xuống hướng về phía xương trụ.
+              </p>
+              <p style="font-size: 0.9rem; line-height: 1.5; margin-top: 0.4rem;">
+                <strong>Kết quả:</strong> Đau tột độ xuất hiện ở <strong>đầu dưới xương quay</strong> $\rightarrow$ Viêm gân - bao hoạt dịch ngón cái (<em>De Quervain tenosynovitis</em>).
+              </p>
+            </div>
+
+            <div class="joint-card">
+              <h3><i class="fa-solid fa-hand-dots"></i> Các Biến Dạng Đặc Trưng Trong JIA & Nốt Gai Xương</h3>
+              <ul style="margin-left: 1.2rem; font-size: 0.88rem; line-height: 1.6;">
+                <li><strong>Biến dạng cổ thiên nga (Swan neck):</strong> Duỗi quá mức khớp PIP + Gập khớp DIP.</li>
+                <li><strong>Biến dạng nút áo (Boutonnière):</strong> Gập co thắt khớp PIP + Duỗi quá mức khớp DIP.</li>
+                <li><strong>Nốt Bouchard:</strong> Vị trí khớp liên đốt gần (PIP).</li>
+                <li><strong>Nốt Heberden:</strong> Vị trí khớp liên đốt xa (DIP).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- TAB 3: CHI DƯỚI & CỘT SỐNG -->
+      <!-- ========================================== -->
+      <section class="tab" id="chi-duoi-cot-song">
+        <div class="card">
+          <h2><i class="fa-solid fa-person-walking" style="color: var(--color-primary);"></i> 1. Khám Khớp Háng (Hip Joint)</h2>
+          <p>Khớp háng nằm sâu dưới khối cơ dày của đùi và mông, do đó sưng hoặc tràn dịch rất khó phát hiện qua sờ nắn bề mặt.</p>
+
+          <div class="skill-note note-warning" style="margin-bottom: 1rem;">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <strong>Dấu hiệu nhạy sớm nhất:</strong> Tình trạng <strong>hạn chế động tác xoay trong và dạng háng</strong> là triệu chứng sớm nhất báo hiệu viêm bao hoạt dịch khớp háng.
+          </div>
+
+          <div class="lab-table-wrapper">
+            <table class="joint-table">
+              <thead>
+                <tr>
+                  <th>Động tác</th>
+                  <th>Biên độ cử động sinh lý chuẩn</th>
+                  <th>Gợi ý bất thường</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Gập háng</strong></td>
+                  <td><strong>135°</strong></td>
+                  <td>Hạn chế trong viêm khớp, hoại tử chỏm xương đùi (Perthes)</td>
+                </tr>
+                <tr>
+                  <td><strong>Duỗi háng</strong></td>
+                  <td><strong>20 – 30°</strong></td>
+                  <td>Co rút gập háng (phát hiện qua Thomas test)</td>
+                </tr>
+                <tr>
+                  <td><strong>Dạng háng</strong></td>
+                  <td><strong>45 – 50°</strong></td>
+                  <td>Giảm sớm trong viêm khớp háng, trật khớp háng bẩm sinh DDH</td>
+                </tr>
+                <tr>
+                  <td><strong>Khép háng</strong></td>
+                  <td><strong>30°</strong></td>
+                  <td>Co cứng cơ khép</td>
+                </tr>
+                <tr>
+                  <td><strong>Xoay trong</strong></td>
+                  <td><strong>40 – 45°</strong></td>
+                  <td><strong>Giảm rất sớm</strong> trong tổn thương bao hoạt dịch háng</td>
+                </tr>
+                <tr>
+                  <td><strong>Xoay ngoài</strong></td>
+                  <td><strong>45°</strong></td>
+                  <td>Hạn chế trong trượt bao gối chỏm xương đùi SCFE</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 1.5rem;">
+          <h2><i class="fa-solid fa-shoe-prints" style="color: var(--color-primary);"></i> 2. Khám Khớp Gối, Cổ Chân & Bàn Chân</h2>
+
+          <div class="joint-grid">
+            <div class="joint-card">
+              <h3><i class="fa-solid fa-child-reaching"></i> Khớp Gối (Knee Joint)</h3>
+              <p style="font-size: 0.9rem; line-height: 1.5;">Biên độ chuẩn: Duỗi 0°, Gập 135°.</p>
+              <p style="font-size: 0.9rem; line-height: 1.5; margin-top: 0.4rem;"><strong>Các biến dạng thường gặp:</strong></p>
+              <ul style="margin-left: 1.2rem; font-size: 0.88rem; line-height: 1.5;">
+                <li><strong>Chân vòng kiềng:</strong> <em>Genu varum</em> (Bow legs).</li>
+                <li><strong>Chân chữ X:</strong> <em>Genu valgum</em> (Knock knees).</li>
+                <li><strong>Kén Baker:</strong> Kén bao hoạt dịch vùng nhượng chân.</li>
+              </ul>
+            </div>
+
+            <div class="joint-card">
+              <h3><i class="fa-solid fa-socks"></i> Khớp Cổ Chân & Bàn Chân</h3>
+              <p style="font-size: 0.9rem; line-height: 1.5;">
+                <strong>Biên độ cổ chân:</strong> Gập lòng 50°, Gập lưng 20°. Khớp dưới sên: Lộn trong 5°, Lộn ngoài 5°.
+              </p>
+              <p style="font-size: 0.9rem; line-height: 1.5; margin-top: 0.4rem;">
+                <strong>Tràn dịch cổ chân:</strong> Bề mặt cổ chân đầy phồng, mất các rãnh tự nhiên quanh mắt cá nhưng <strong>không ấn lõm</strong>.
+              </p>
+              <p style="font-size: 0.9rem; line-height: 1.5; margin-top: 0.4rem;">
+                <strong>Biến dạng:</strong> Ngón cái vẹo ngoài (<em>Hallux valgus</em>), Ngón chân hình búa (<em>Hammer toe</em>).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 1.5rem;">
+          <h2><i class="fa-solid fa-child-combat" style="color: var(--color-primary);"></i> 3. Khám Cột Sống & Khớp Cùng Chậu</h2>
+
+          <div class="joint-grid">
+            <div class="joint-card">
+              <h3><i class="fa-solid fa-arrows-up-down-left-right"></i> Biến dạng & Biên độ Cột sống</h3>
+              <ul style="margin-left: 1.2rem; font-size: 0.88rem; line-height: 1.6;">
+                <li><strong>Vẹo cột sống (Scoliosis):</strong> Lệch sang bên trên mặt phẳng trán.</li>
+                <li><strong>Gù (Kyphosis):</strong> Tăng độ cong ra sau ở đoạn ngực.</li>
+                <li><strong>Ưỡn (Lordosis):</strong> Tăng độ cong ra trước ở thắt lưng.</li>
+                <li><strong>Biên độ cột sống toàn bộ:</strong> Gập 90°, Ngửa 30°, Nghiêng bên 50°.</li>
+                <li><strong>Biên độ cột sống cổ:</strong> Gập 45°, Ngửa 50 – 60°, Xoay 60 – 80°.</li>
+              </ul>
+              <div class="skill-note note-warning" style="margin-top: 0.5rem; padding: 0.4rem 0.6rem; font-size: 0.82rem;">
+                <i class="fa-solid fa-triangle-exclamation"></i> <strong>Cảnh báo JIA:</strong> Bệnh nhi Viêm khớp tự phát thiếu niên có nguy cơ <strong>bán trật đốt sống cổ C1 - C2</strong>.
+              </div>
+            </div>
+
+            <div class="joint-card">
+              <h3><i class="fa-solid fa-location-crosshairs"></i> Khớp Cùng Chậu (Sacroiliac Joint)</h3>
+              <p style="font-size: 0.9rem; line-height: 1.5;">
+                Viêm khớp cùng chậu (<em>Sacroiliitis</em>) là triệu chứng đặc trưng của nhóm bệnh lý <strong>Viêm cột sống dính khớp thiếu niên</strong> và bệnh lý viêm điểm bám gân.
+              </p>
+              <p style="font-size: 0.9rem; line-height: 1.5; margin-top: 0.4rem;">
+                Khám bằng <strong>ép khung chậu</strong> hoặc <strong>nghiệm pháp Patrick (FABER test)</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- TAB 4: NGHIỆM PHÁP & LƯU ĐỒ -->
+      <!-- ========================================== -->
+      <section class="tab" id="nghiem-phap-luu-do">
+        <!-- TEST SIMULATOR SUITE -->
+        <div class="test-sim-container">
+          <h2 style="margin-top: 0; color: var(--color-primary); font-size: 1.3rem;">
+            <i class="fa-solid fa-stethoscope"></i> Tra Cứu & Mô Phỏng 7 Nghiệm Pháp Lâm Sàng Đặc Biệt
+          </h2>
+          <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: 1rem;">
+            Nhấp chọn tên nghiệm pháp lâm sàng bên dưới để xem mô tả thao tác kỹ thuật, tiêu chuẩn dương tính và ý nghĩa chẩn đoán bệnh lý:
+          </p>
+
+          <!-- TEST SELECTOR BUTTONS -->
+          <div class="test-selector">
+            <button class="test-btn active" data-test="thomas">1. Thomas Test (Co rút háng)</button>
+            <button class="test-btn" data-test="schober">2. Wright-Schöber Test (Giãn thắt lưng)</button>
+            <button class="test-btn" data-test="patrick">3. Patrick / FABER Test (Cùng chậu)</button>
+            <button class="test-btn" data-test="drawer">4. Drawer Sign (Kéo xe dây chằng)</button>
+            <button class="test-btn" data-test="patellar_tap">5. Patellar Tap (Tràn dịch vừa-nhiều)</button>
+            <button class="test-btn" data-test="bulge_sign">6. Bulge Sign (Tràn dịch ít)</button>
+            <button class="test-btn" data-test="finkelstein">7. Finkelstein Test (Gân ngón cái)</button>
+          </div>
+
+          <!-- TEST DETAIL DISPLAY CARD -->
+          <div class="test-detail-card" id="test-detail-display">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+              <h3 id="test-name" style="margin: 0;">Nghiệm pháp Thomas (Thomas Test)</h3>
+              <span class="badge-pos" id="test-joint-tag">Khớp Háng</span>
+            </div>
+            
+            <p style="font-size: 0.92rem; margin-bottom: 0.75rem;"><strong>Mục đích:</strong> <span id="test-purpose">Phát hiện tình trạng co rút cơ gập háng hoặc biến dạng gập khớp háng bị che lấp bởi sự ưỡn cột sống thắt lưng bù trừ.</span></p>
+            
+            <div style="background: white; padding: 0.85rem; border-radius: 6px; border-left: 4px solid #0284c7; margin-bottom: 0.75rem;">
+              <strong style="color: #0284c7;">Thao tác thực hiện:</strong>
+              <p id="test-technique" style="font-size: 0.9rem; margin-top: 0.3rem; margin-bottom: 0;">Cho bệnh nhân nằm ngửa trên mặt phẳng cứng. Bác sĩ gập háng và gối bên lành (bên không đau) tối đa áp sát vào ngực bệnh nhân để làm phẳng hoàn toàn độ ưỡn cột sống thắt lưng.</p>
+            </div>
+
+            <div style="background: #fff1f2; padding: 0.85rem; border-radius: 6px; border-left: 4px solid #e11d48;">
+              <strong style="color: #be123c;">Tiêu chuẩn Dương tính (+):</strong>
+              <p id="test-positive" style="font-size: 0.9rem; margin-top: 0.3rem; margin-bottom: 0;">Đùi bên chân bệnh (bị tổn thương) tự động nâng hổng lên khỏi mặt bàn khám $\rightarrow$ Chứng tỏ có co rút gập khớp háng.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FLOWCHARTS SECTION -->
+        <div class="card" style="margin-top: 1.5rem;">
+          <h2><i class="fa-solid fa-sitemap" style="color: var(--color-primary);"></i> Lưu Đồ Tiếp Cận Chẩn Đoán Trẻ Đau Chi / Rối Loạn Vận Động</h2>
+
+          <!-- FLOWCHART 1 -->
+          <div class="flow-box">
+            <h4><i class="fa-solid fa-code-branch"></i> Lưu đồ 1: Tiếp cận trẻ đau chi / rối loạn vận động KHÔNG SỐT</h4>
+            <ul style="margin-left: 1.2rem; font-size: 0.9rem; line-height: 1.6;">
+              <li><strong>Kiểm tra tiền căn chấn thương:</strong> Nếu có chấn thương bất thường → Tầm soát chấn thương không tai nạn / ngược đãi trẻ em.</li>
+              <li><strong>Kiểm tra tiền căn nhiễm trùng trong 1 tháng:</strong> Nếu có (viêm họng, tiêu chảy) → Hướng đến **Viêm khớp phản ứng**.</li>
+              <li><strong>Khảo sát vị trí đau ở khớp háng / đùi:</strong> Tầm soát các bệnh lý khớp háng (Viêm bao hoạt dịch thoáng qua, Perthes, SCFE).</li>
+              <li><strong>Kiểm tra sưng khớp, đau cử động, cứng khớp buổi sáng:</strong> Hướng đến **Viêm khớp tự phát thiếu niên (JIA)** hoặc bệnh lý mô liên kết mạn tính.</li>
+            </ul>
+          </div>
+
+          <!-- FLOWCHART 2 -->
+          <div class="flow-box" style="border-left-color: #dc2626;">
+            <h4 style="color: #dc2626;"><i class="fa-solid fa-kit-medical"></i> Lưu đồ 2: Tiếp cận trẻ đau chi SAU CHẤN THƯƠNG (Hemarthrosis Alert)</h4>
+            <ul style="margin-left: 1.2rem; font-size: 0.9rem; line-height: 1.6;">
+              <li>Đánh giá sưng khớp, lỏng lẻo khớp, điểm đau chói, vết bầm → Chỉ định X-quang, CT/MRI tìm gãy xương, trật khớp hoặc **Tràn máu khớp (Hemarthrosis)**.</li>
+              <li style="color: #dc2626; font-weight: 600;">
+                <i class="fa-solid fa-triangle-exclamation"></i> Chú ý lâm sàng: Nếu xuất hiện tràn máu trong khớp sau chấn thương nhẹ, bắt buộc phải tầm soát ngay bệnh Hemophilia hoặc rối loạn đông máu nền!
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- TAB 5: BẢNG KIỂM OSCE & THAM KHẢO -->
+      <!-- ========================================== -->
+      <section class="tab" id="osce-ref">
+        <div class="card">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <h2><i class="fa-solid fa-stopwatch" style="color: var(--color-primary);"></i> Bảng Kiểm Trạm Thi OSCE (7 Phút)</h2>
+            
+            <div id="osce-timer-widget" style="display: flex; align-items: center; gap: 0.75rem; background: var(--color-bg-soft); padding: 0.5rem 1rem; border-radius: 20px; border: 1px solid #bae6fd;">
+              <span id="osce-timer-display" style="font-family: monospace; font-size: 1.3rem; font-weight: 700; color: var(--color-primary);">07:00</span>
+              <button class="calc-btn" id="osce-timer-start" style="padding: 0.3rem 0.8rem; font-size: 0.85rem;">Bắt đầu</button>
+              <button class="calc-btn" id="osce-timer-reset" style="padding: 0.3rem 0.8rem; font-size: 0.85rem; background: #64748b;">Reset</button>
+            </div>
+          </div>
+
+          <!-- PROGRESS BAR -->
+          <div style="margin-top: 1rem;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.88rem; font-weight: 600; margin-bottom: 0.3rem;">
+              <span>Tiến độ thực hiện:</span>
+              <span id="skill-progress-text">Tiến độ: 0/12 bước (0%)</span>
+            </div>
+            <div style="width: 100%; height: 8px; background: #e2e8f0; border-radius: 4px; overflow: hidden;">
+              <div id="skill-progress-bar" style="width: 0%; height: 100%; background: var(--color-primary); transition: width 0.3s;"></div>
+            </div>
+          </div>
+
+          <!-- CHECKLIST -->
+          <ul class="check" style="margin-top: 1.25rem;">
+            <li class="step-item">
+              <input type="checkbox" id="chk-j1">
+              <label for="chk-j1"><strong>1. Chào hỏi & Giải thích:</strong> Giao tiếp thân thiện với phụ huynh và trẻ, giải thích mục đích thăm khám hệ cơ xương khớp.</label>
+            </li>
+            <li class="step-item">
+              <input type="checkbox" id="chk-j2">
+              <label for="chk-j2"><strong>2. Chuẩn bị tư thế:</strong> Cho trẻ ngồi ghế tựa (trẻ lớn) hoặc ngồi trong lòng cha mẹ (trẻ nhỏ). Giữ phòng ấm và bộc lộ vùng khám.</label>
+            </li>
+            <li class="step-item">
+              <input type="checkbox" id="chk-j3">
+              <label for="chk-j3"><strong>3. Tầm soát sụt cân & Da niêm:</strong> Kiểm tra sinh hiệu, tình trạng sụt cân, tổn thương da, nốt thấp hoặc nốt tophi dưới da.</label>
+            </li>
+            <li class="step-item">
+              <input type="checkbox" id="chk-j4">
+              <label for="chk-j4"><strong>4. Khám sưng & Nóng khớp:</strong> Nhìn tìm sưng/mất rãnh tự nhiên. Sờ so sánh nhiệt độ khớp bằng mu bàn tay với bên đối diện.</label>
+            </li>
+            <li class="step-item">
+              <input type="checkbox" id="chk-j5">
+              <label for="chk-j5"><strong>5. Kỹ thuật ấn chẩn tìm điểm đau:</strong> Ấn chẩn 2 tay quanh khớp với áp lực vừa đủ làm <strong>tái móng tay ngón trỏ/cái</strong> người khám.</label>
+            </li>
+            <li class="step-item">
+              <input type="checkbox" id="chk-j6">
+              <label for="chk-j6"><strong>6. Đánh giá biên độ vận động:</strong> Đánh giá vận động chủ động và thụ động (nâng đỡ chi ở phía trên/dưới khớp viêm).</label>
+            </li>
+            <li class="step-item">
+              <input type="checkbox" id="chk-j7">
+              <label for="chk-j7"><strong>7. Khám chi trên & khớp nhỏ:</strong> Khám khớp TM (nghiệm pháp 2 ngón tay), khớp vai, khuỷu (70°) và cổ tay (Finkelstein test).</label>
+            </li>
+            <li class="step-item">
+              <input type="checkbox" id="chk-j8">
+              <label for="chk-j8"><strong>8. Khám khớp háng & Thomas Test:</strong> Đánh giá biên độ háng (xoay trong & dạng). Thực hiện nghiệm pháp Thomas tìm co rút gập háng.</label>
+            </li>
+            <li class="step-item">
+              <input type="checkbox" id="chk-j9">
+              <label for="chk-j9"><strong>9. Khám khớp gối & Tràn dịch:</strong> Thực hiện Bập bềnh xương bánh chè (dịch nhiều) hoặc Bulge sign (dịch ít), kiểm tra dấu kéo xe (Drawer sign).</label>
+            </li>
+            <li class="step-item">
+              <input type="checkbox" id="chk-j10">
+              <label for="chk-j10"><strong>10. Khám cổ chân & Bàn chân:</strong> Khám ở tư thế chịu sức nặng & không chịu sức nặng, tìm tràn dịch cổ chân không ấn lõm.</label>
+            </li>
+            <li class="step-item">
+              <input type="checkbox" id="chk-j11">
+              <label for="chk-j11"><strong>11. Khám cột sống & Schöber Test:</strong> Quan sát vẹo/gù/ưỡn. Đo độ giãn thắt lưng bằng nghiệm pháp Wright - Schöber và nghiệm pháp Patrick.</label>
+            </li>
+            <li class="step-item">
+              <input type="checkbox" id="chk-j12">
+              <label for="chk-j12"><strong>12. Tổng hợp & Tổng kết:</strong> Phân loại tổn thương khớp (viêm khớp JIA, chấn thương, tràn máu khớp) và tư vấn hướng xử trí tiếp theo.</label>
+            </li>
+          </ul>
+        </div>
+
+        <!-- REFERENCES -->
+        <div class="card" style="margin-top: 1.5rem;">
+          <h2><i class="fa-solid fa-book-bookmark" style="color: var(--color-primary);"></i> Tài Liệu Tham Khảo Chuẩn (AMA Format)</h2>
+          <ol style="margin-left: 1.25rem; line-height: 1.8; color: var(--color-text);">
+            <li>Tôn Thất Hoàng, Nguyễn Thị Thanh Lan. Bài 69: Khám khớp ở trẻ em. Trong: <em>Nhi khoa - Tập 2</em>. Bộ môn Nhi - Đại học Y Dược TP. Hồ Chí Minh. NXB Y học; 2020:183-191.</li>
+            <li>Tôn Thất Hoàng, Nguyễn Thị Thanh Lan. Bài 58: Tiếp cận đau khớp đau chi ở trẻ em. Trong: <em>Nhi khoa - Tập 2</em>. Bộ môn Nhi - Đại học Y Dược TP. Hồ Chí Minh. NXB Y học; 2020:38-43.</li>
+            <li>Tôn Thất Hoàng, Nguyễn Thị Thanh Lan. Bài 67: Viêm khớp tự phát thiếu niên. Trong: <em>Nhi khoa - Tập 2</em>. Bộ môn Nhi - Đại học Y Dược TP. Hồ Chí Minh. NXB Y học; 2020:161-170.</li>
+          </ol>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer class="global-footer">
+    <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+  </footer>
+
+  <!-- SCRIPT FOR SPECIAL TEST SIMULATOR -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const testsData = {
+        thomas: {
+          name: "Nghiệm pháp Thomas (Thomas Test)",
+          joint: "Khớp Háng",
+          purpose: "Phát hiện tình trạng co rút cơ gập háng hoặc biến dạng gập khớp háng bị che lấp bởi sự ưỡn cột sống thắt lưng bù trừ.",
+          technique: "Cho bệnh nhân nằm ngửa trên mặt phẳng cứng. Bác sĩ gập háng và gối bên lành (bên không đau) tối đa áp sát vào ngực bệnh nhân nhằm làm phẳng hoàn toàn độ ưỡn cột sống thắt lưng.",
+          positive: "Đùi bên chân bệnh (bị tổn thương) tự động nâng hổng lên khỏi mặt bàn khám → Dương tính, chứng tỏ trẻ bị co rút gập khớp háng."
+        },
+        schober: {
+          name: "Nghiệm pháp Wright – Schöber (Schöber Test)",
+          joint: "Cột Sống Thắt Lưng",
+          purpose: "Đánh giá mức độ hạn chế vận động gập của cột sống thắt lưng, tiêu chuẩn vàng trong chẩn đoán Viêm cột sống dính khớp thiếu niên.",
+          technique: "Trẻ đứng thẳng. Kẻ đường ngang qua 2 mào chậu sau trên cắt cột sống ở L5 (đường mốc 1). Đo ngược lên trên 10 cm kẻ đường mốc 2. Yêu cầu trẻ gập lưng tối đa ra trước (gối thẳng), đo lại khoảng cách giữa 2 đường kẻ.",
+          positive: "Khoảng cách chỉ tăng thêm &lt; 4 cm (tổng khoảng cách lúc gập &lt; 14 cm) → Dương tính, chứng tỏ bị cứng / giảm độ di động thắt lưng (Bình thường tăng &gt; 5 cm, tổng &gt; 15 cm)."
+        },
+        patrick: {
+          name: "Nghiệm pháp Patrick (FABER Test)",
+          joint: "Khớp Cùng Chậu",
+          purpose: "Tìm điểm đau viêm khớp cùng chậu (Sacroiliitis) – triệu chứng đặc trưng của nhóm bệnh lý viêm điểm bám gân / Viêm cột sống dính khớp.",
+          technique: "Trẻ nằm ngửa, gập gối và háng bên khám, đặt gót chân bên khám lên trên đầu gối chân đối diện (tạo hình số 4). Bác sĩ 1 tay giữ mào chậu đối diện, tay kia ấn nhẹ đầu gối bên khám xuống mặt bàn.",
+          positive: "Cảm giác đau xuất hiện khu trú sâu ở vùng khớp cùng chậu (mông sau) → Dương tính với viêm khớp cùng chậu."
+        },
+        drawer: {
+          name: "Dấu Hiệu Kéo Xe (Drawer Sign - Anterior / Posterior)",
+          joint: "Khớp Gối (Dây chằng chéo)",
+          purpose: "Đánh giá sự vẹn toàn của dây chằng chéo trước (ACL) và dây chằng chéo sau (PCL) khớp gối.",
+          technique: "Trẻ nằm ngửa, gập háng 45° và gập gối 90°, bàn chân cố định trên bàn. Bác sĩ ngồi giữ bàn chân, 2 tay ôm lấy mâm chày cẳng chân, kéo mạnh cẳng chân ra trước (Anterior) hoặc đẩy ra sau (Posterior).",
+          positive: "Mâm chày di lệch ra trước bất thường (Anterior Drawer + → Rách dây chằng chéo trước ACL) hoặc di lệch ra sau bất thường (Posterior Drawer + → Rách dây chằng chéo sau PCL)."
+        },
+        patellar_tap: {
+          name: "Nghiệm pháp Bập Bềnh Xương Bánh Chè (Patellar Tap Test)",
+          joint: "Khớp Gối",
+          purpose: "Phát hiện tràn dịch khớp gối lượng vừa đến lượng nhiều.",
+          technique: "Trẻ nằm ngửa duỗi gối. Dùng 1 tay ép dồn dịch từ ngách hoạt dịch trên xương bánh chè xuống, tay kia dùng ngón tay ấn mạnh xương bánh chè xuống rãnh liên củ đùi.",
+          positive: "Xương bánh chè chìm xuống chạm vào xương đùi và bật dội lại ngón tay khi buông ra → Có tràn dịch ổ khớp gối lượng vừa - nhiều."
+        },
+        bulge_sign: {
+          name: "Dấu Hiệu Gợn Phồng (Bulge Sign)",
+          joint: "Khớp Gối",
+          purpose: "Phát hiện tràn dịch khớp gối lượng ít (dịch kín đáo).",
+          technique: "Trẻ nằm ngửa duỗi gối completely. Dùng bàn tay vuốt dồn dịch từ mặt trong khớp gối lên ngách trên, sau đó đập nhẹ vào mặt ngoài khớp gối.",
+          positive: "Quan sát thấy làn sóng dịch gợn phồng lên ở rãnh phía trong đường giữa gối → Có tràn dịch khớp gối lượng ít."
+        },
+        finkelstein: {
+          name: "Nghiệm pháp Finkelstein",
+          joint: "Cổ Tay & Ngón Cái",
+          purpose: "Phát hiện tình trạng viêm gân - bao hoạt dịch cơ ngón cái (De Quervain Tenosynovitis).",
+          technique: "Cho trẻ gập ngón cái vào lòng bàn tay, nắm các ngón khác trùm lên ngón cái, sau đó gập bàn tay xuống nghiêng về phía xương trụ.",
+          positive: "Xuất hiện cảm giác đau tột độ ở đầu dưới xương quay → Dương tính với viêm gân bao hoạt dịch ngón cái."
+        }
+      };
+
+      const buttons = document.querySelectorAll('.test-btn');
+      const testName = document.getElementById('test-name');
+      const testJointTag = document.getElementById('test-joint-tag');
+      const testPurpose = document.getElementById('test-purpose');
+      const testTechnique = document.getElementById('test-technique');
+      const testPositive = document.getElementById('test-positive');
+
+      buttons.forEach(btn => {
+        btn.addEventListener('click', function () {
+          buttons.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+
+          const key = this.getAttribute('data-test');
+          const data = testsData[key];
+          if (data) {
+            testName.textContent = data.name;
+            testJointTag.textContent = data.joint;
+            testPurpose.textContent = data.purpose;
+            testTechnique.textContent = data.technique;
+            testPositive.textContent = data.positive;
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -13,7 +13,8 @@ description: >
 
 ```
 src/content/pathophysiology/
-├── sinh-ly-hoc.html                    # [Web con 1] Hub Sinh lý học
+├── giai-phau-sinh-ly.html               # [Web con 1] Hub Giải phẫu & Sinh lý
+├── sinh-ly-hoc.html                    # Trang chuyển hướng tương thích sang giai-phau-sinh-ly.html
 ├── co-che-benh-sinh.html               # [Web con 2] Hub Cơ chế bệnh sinh - Sinh lý bệnh
 ├── sinhly-sinhlybenh.html              # Trang tổng hợp & Chuyển hướng tự động
 ├── readme.md                           # Giới thiệu phân hệ

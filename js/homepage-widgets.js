@@ -5,51 +5,85 @@
   'use strict';
 
   // ============================================================
-  // DATABASE: SEARCH INDEX FOR LIVE SEARCH
+  // DATABASE: SEARCH INDEX FOR LIVE CLINICAL SEARCH 2.0
   // ============================================================
   const searchIndex = [
-    { title: "Tra cứu mã ICD-10 nhanh", category: "Công cụ", url: "#/calculators", keywords: "icd10, icd 10, ma benh, tra cuu" },
-    { title: "Đọc Điện tâm đồ ECG cơ bản", category: "Cận lâm sàng", url: "#/skills", keywords: "ecg, dien tam do, tim, nhip tim, song dien tim" },
-    { title: "Đọc Điện tâm đồ ECG nâng cao", category: "Cận lâm sàng", url: "#/skills", keywords: "ecg, dien tam do nang cao, block, loan nhip" },
-    { title: "Phân tích tế bào máu CBC", category: "Cận lâm sàng", url: "#/skills", keywords: "mau, cong thuc mau, tieu cau, bach cau, hong cau" },
-    { title: "Sinh hóa chức năng Thận (Ure, Creatinin, eGFR)", category: "Cận lâm sàng", url: "#/skills", keywords: "than, creatinine, urea, egfr, suy than" },
-    { title: "Xử trí Sốt xuất huyết Dengue", category: "Tiếp cận lâm sàng", url: "#/approaches", keywords: "sot xuat huyet, dengue, muoi, truyen nhiem" },
-    { title: "Lựa chọn kháng sinh kinh nghiệm ban đầu", category: "Quản lý điều trị", url: "#/pharmacology", keywords: "khang sinh, nhiem khuan, vi khuan" },
-    { title: "Phân tích Khí máu động mạch ABG", category: "Công cụ", url: "#/calculators", keywords: "khi mau dong mach, toan kiem, ph, pco2, hco3" },
-    { title: "Electrolyte Pro Studio — Bù dịch & Điện giải (Na, K, Ca, Mg)", category: "Công cụ", url: "#/calculators", keywords: "ha natri, tang natri, dich, bu dich, kali, canxi, dien giai" },
-    { title: "Đánh giá chức năng thận & Clearance", category: "Công cụ", url: "#/calculators", keywords: "suy than, cockcroft, gault, mdrd, egfr" },
-    { title: "Đánh giá nguy cơ tim mạch & huyết khối", category: "Công cụ", url: "#/calculators", keywords: "tim mach, huyet khoi, cha2ds2, has bled" },
-    { title: "Đánh giá Suy tim lâm sàng (NYHA, AHA)", category: "Công cụ", url: "#/calculators", keywords: "suy tim, nyha, phan do, tim" },
-    { title: "Sinh hóa & Đánh giá chức năng Gan", category: "Cận lâm sàng", url: "#/skills", keywords: "gan, ast, alt, bilirubin, men gan" },
-    { title: "Phân tầng Xơ gan & Cổ trướng (Child-Pugh, MELD)", category: "Công cụ", url: "#/calculators", keywords: "xo gan, co truong, child pugh, meld" },
-    { title: "Chẩn đoán Đột quỵ cấp (NIHSS)", category: "Công cụ", url: "#/calculators", keywords: "nihss, dot quy, tai bien, nao" },
-    { title: "Phân tầng độ nặng Viêm phổi (CURB-65, PSI)", category: "Công cụ", url: "#/calculators", keywords: "viem phoi, curb65, curb-65, psi" },
-    { title: "Quản lý & chỉnh liều Vancomycin", category: "Công cụ", url: "#/calculators", keywords: "vancomycin, auc, mic, khang sinh" },
-    { title: "Microbiology Pro Studio — Vi sinh lâm sàng & Kháng sinh đồ", category: "Công cụ", url: "#/calculators", keywords: "vi sinh, nhuom gram, nhan dien vi khuan, antibiogram, khang sinh do" },
-    { title: "Mẫu Bệnh án Nội khoa chuẩn", category: "Công cụ", url: "#/calculators", keywords: "benh an, benh an mau, kham benh" },
-    { title: "Tiếp cận chẩn đoán Đau ngực cấp", category: "Tiếp cận lâm sàng", url: "#/approaches", keywords: "dau nguc, tim, mach vanh, phoi" },
-    { title: "Tiếp cận chẩn đoán Khó thở cấp", category: "Tiếp cận lâm sàng", url: "#/approaches", keywords: "kho tho, hen, copd, suy tim" },
-    { title: "Tiếp cận chẩn đoán Đau bụng cấp", category: "Tiếp cận lâm sàng", url: "#/approaches", keywords: "dau bung, ngoai khoa, viem ruot thua" },
-    { title: "Khám Tim mạch chuẩn Bedside", category: "Lâm sàng", url: "#/skills", keywords: "kham tim, tim mach, tieng tim, thoi tam thu" },
-    { title: "Khám Hô hấp chuẩn Bedside", category: "Lâm sàng", url: "#/skills", keywords: "kham phoi, ran, ri rao phe nang" },
-    { title: "Đọc X-quang ngực (Chest X-ray)", category: "Cận lâm sàng", url: "#/skills", keywords: "xquang phoi, cxr, bong tim" },
-    { title: "Bản đồ huyệt vị & Châm cứu Đông y", category: "Y học cổ truyền", url: "#/tcm", keywords: "huyet vi, dong y, bam huyet, xoa bop, cham cuu" }
+    { title: "Tra cứu mã ICD-10 nhanh", category: "Công cụ", url: "src/content/calculators/general/tracuu-ma-icd10.html", keywords: "icd10, icd 10, ma benh, tra cuu, ma quoc te" },
+    { title: "Sốc nhiễm khuẩn (Sepsis) & Phác đồ kháng sinh", category: "Cấp cứu", url: "src/content/skills/treatment-management/luachon-khangsinh.html", keywords: "sot cao, tut huyet ap, soc nhiem khuan, sepsis, qsofa, sofa, khang sinh, bu dich, mach nhanh" },
+    { title: "Cấp cứu Đau ngực cấp & ACS (Nhồi máu cơ tim)", category: "Cấp cứu", url: "src/content/skills/can-lam-sang/doc-ecg-co-ban.html", keywords: "dau nguc, nhoi mau co tim, st chenh, ecg, troponin, acs, tim mach, con đau thắt ngực" },
+    { title: "Đọc Điện tâm đồ ECG cơ bản & Nâng cao", category: "Cận lâm sàng", url: "src/content/skills/can-lam-sang/doc-ecg-co-ban.html", keywords: "ecg, dien tam do, tim, nhip tim, song dien tim, block, loan nhip, st chenh" },
+    { title: "Cấp cứu Khí máu động mạch (ABG) & Toan kiềm", category: "Công cụ", url: "src/content/calculators/renal/dg-abg.html", keywords: "khi mau dong mach, toan kiem, ph, pco2, hco3, abg, suy ho hap, kho tho, anion gap" },
+    { title: "Cấp cứu & Xử trí Sốt xuất huyết Dengue nặng", category: "Cấp cứu", url: "src/content/calculators/emergency/ql-bu-dich.html", keywords: "sot xuat huyet, dengue, muoi, truyen nhiem, soc sxh, bu dich, xuat huyet, phan do" },
+    { title: "Toan Ceton đái tháo đường (DKA) — Bù dịch & Insulin", category: "Nội tiết", url: "src/content/calculators/emergency/ql-bu-dich.html", keywords: "dka, dai thao duong, tieu duong, toan ceton, insulin, kali, glucose, sot cao, tho kussmaul" },
+    { title: "Lựa chọn kháng sinh kinh nghiệm ban đầu", category: "Quản lý điều trị", url: "src/content/skills/treatment-management/luachon-khangsinh.html", keywords: "khang sinh, nhiem khuan, vi khuan, vancomycin, carbapenem, viem phoi, sot" },
+    { title: "Electrolyte Pro Studio — Bù dịch & Điện giải (Na, K, Ca, Mg)", category: "Công cụ", url: "src/content/calculators/cong-cu.html", keywords: "ha natri, tang natri, dich, bu dich, kali, canxi, dien giai, hạ kali, tăng kali" },
+    { title: "Phân tích tế bào máu CBC (Công thức máu)", category: "Cận lâm sàng", url: "src/content/skills/can-lam-sang/doc-tpttb-mau.html", keywords: "mau, cong thuc mau, tieu cau, bach cau, hong cau, cbc, thieu mau, sot" },
+    { title: "Sinh hóa chức năng Thận (Ure, Creatinin, eGFR)", category: "Cận lâm sàng", url: "src/content/skills/can-lam-sang/doc-sh-than.html", keywords: "than, creatinine, urea, egfr, suy than, cockcroft, gault, mdrd, clearance" },
+    { title: "Khó thở cấp, rên ngáy rên rít (COPD / Hen phế quản)", category: "Hô hấp", url: "src/content/approaches/tiep-can.html", keywords: "kho tho, hen phe quan, copd, khi mau, spo2, ran ngay, ran rit, viem phoi" },
+    { title: "Mê sảng, rối loạn ý thức, đánh giá điểm GCS", category: "Thần kinh", url: "src/content/calculators/cong-cu.html", keywords: "tri giac, me sang, glasgow, gcs, hon me, coi giuc, dot quy, nihss" },
+    { title: "Chẩn đoán Đột quỵ cấp (NIHSS & Thang điểm)", category: "Thần kinh", url: "src/content/calculators/cong-cu.html", keywords: "nihss, dot quy, tai bien, nao, me sang, yeu me" },
+    { title: "Phân tầng độ nặng Viêm phổi (CURB-65, PSI)", category: "Hô hấp", url: "src/content/calculators/cong-cu.html", keywords: "viem phoi, curb65, curb-65, psi, sot, ho, kho tho" },
+    { title: "Đánh giá Suy tim lâm sàng (NYHA, AHA)", category: "Tim mạch", url: "src/content/calculators/cong-cu.html", keywords: "suy tim, nyha, phan do, tim, phu chan, kho tho nam, bnp" },
+    { title: "Sinh hóa & Đánh giá chức năng Gan", category: "Cận lâm sàng", url: "src/content/skills/ky-nang.html", keywords: "gan, ast, alt, bilirubin, men gan, vang da" },
+    { title: "Phân tầng Xơ gan & Cổ trướng (Child-Pugh, MELD)", category: "Tiêu hóa", url: "src/content/calculators/cong-cu.html", keywords: "xo gan, co truong, child pugh, meld, ascites, albumin" },
+    { title: "Thuyên tắc phổi (Pulmonary Embolism, Wells Score)", category: "Tim mạch", url: "src/content/calculators/cong-cu.html", keywords: "thuyen tac phoi, pe, wells, ddimer, d-dimer, dau nguc, kho tho" },
+    { title: "Bản đồ huyệt vị & Châm cứu Đông y", category: "Y học cổ truyền", url: "src/content/tcm/y-hoc-co-truyen.html", keywords: "huyet vi, dong y, bam huyet, xoa bop, cham cuu" },
+    { title: "DocSpace — Trình bệnh SBAR & Ca trực cá nhân", category: "DocSpace", url: "#/docspace", keywords: "docspace, sbar, ca truc, trinh benh, ghi chu, ca benh, nhat ky" }
   ];
 
   // ============================================================
-  // DATABASE: CLINICAL PEARLS
+  // DATABASE: INTERACTIVE CLINICAL FLASHCARDS & PEARLS
   // ============================================================
-  const clinicalPearls = [
-    "Hãy luôn kiểm tra và bù Kali máu trước khi bắt đầu truyền insulin trong cấp cứu DKA (nhiễm toan ceton do đái tháo đường) nếu Kali < 3.3 mEq/L.",
-    "Ở bệnh nhân COPD đợt cấp, đích SpO2 khuyến cáo duy trì ở mức 88-92% để tránh ức chế phản xạ thông khí do tăng CO2 máu.",
-    "Khi chẩn đoán đau ngực cấp nghi do hội chứng mạch vành cấp (ACS), phải hoàn thành đo và đọc ECG 12 chuyển đạo trong vòng 10 phút đầu tiên.",
-    "Thang điểm CURB-65 giúp phân tầng nguy cơ nhanh cho viêm phổi cộng đồng: C (Ý thức), U (Ure > 7 mmol/L), R (Tần số thở >= 30), B (Huyết áp < 90/60), 65 (Tuổi >= 65).",
-    "Tránh dùng thuốc ức chế men chuyển (ACEi) hoặc chẹn thụ thể (ARB) ở bệnh nhân hẹp động mạch thận hai bên vì có nguy cơ gây suy thận cấp nặng.",
-    "Bù Natri quá nhanh ở bệnh nhân hạ Natri máu mạn tính có thể dẫn đến Hội chứng hủy myelin cầu não do thẩm thấu (ODS). Tốc độ an toàn là dưới 8-10 mmol/L trong 24 giờ đầu.",
-    "Tam chứng Beck của chèn ép tim cấp bao gồm: Huyết áp kẹt/thấp, Tiếng tim mờ xa xăm, và Tĩnh mạch cổ nổi.",
-    "Kháng sinh Aminoglycoside có tính chất diệt khuẩn phụ thuộc nồng độ đỉnh (Concentration-dependent killing), do đó phác đồ dùng 1 liều lớn duy nhất mỗi ngày (Once-daily dosing) thường tối ưu hơn.",
-    "Ở bệnh nhân xơ gan cổ trướng, trước khi chọc tháo dịch lượng lớn (> 5 lít), cần bù Albumin liều 8g cho mỗi lít dịch tháo ra để phòng ngừa hội chứng rối loạn tuần hoàn sau chọc dịch.",
-    "Quy tắc chẩn đoán Thuyên tắc phổi (Pulmonary Embolism): Nếu nghi ngờ lâm sàng, sử dụng thang điểm Wells. Nếu Wells thấp, xét nghiệm D-Dimer có giá trị loại trừ cao nhờ độ nhạy lớn."
+  const flashcardPearls = [
+    {
+      id: 1,
+      spec: "Đái tháo đường / Cấp cứu",
+      question: "Trước khi bắt đầu truyền insulin trong cấp cứu DKA (Nhiễm toan ceton), chỉ số điện giải nào bắt buộc phải kiểm tra và xử trí trước nếu bị hạ nặng?",
+      answer: "Bắt buộc bù KALI (K+) trước nếu K+ < 3.3 mEq/L. Truyền insulin khi Kali hạ nặng sẽ đẩy thêm Kali vào tế bào, gây tụt Kali máu trầm trọng dẫn đến loạn nhịp thất tử vong.",
+      source: "ADA Guidelines / UpToDate DKA Management"
+    },
+    {
+      id: 2,
+      spec: "Hô hấp / ICU",
+      question: "Ở bệnh nhân COPD đợt cấp có ứ CO2 mạn tính, đích SpO2 khuyến cáo duy trì ở mức bao nhiêu và tại sao?",
+      answer: "Đích SpO2 duy trì ở mức 88 - 92%. Thở oxy liều cao nâng SpO2 > 95% sẽ làm mất phản xạ kích thích thông khí do giảm oxy máu (Hypoxic Drive), gây tăng CO2 máu nặng hơn.",
+      source: "GOLD Guidelines 2026"
+    },
+    {
+      id: 3,
+      spec: "Tim mạch / Cấp cứu",
+      question: "Bệnh nhân nghi ngờ Hội chứng mạch vành cấp (ACS) vào viện, thời gian chuẩn để hoàn thành đo và đọc Điện tâm đồ (ECG) 12 chuyển đạo là bao lâu?",
+      answer: "Trong vòng 10 PHÚT ĐẦU TIÊN kể từ lúc tiếp cận y tế (Door-to-ECG < 10 phút) để chẩn đoán phân biệt ngay STEMI và kích hoạt phòng Can thiệp mạch vành.",
+      source: "ESC / AHA STEMI Guidelines"
+    },
+    {
+      id: 4,
+      spec: "Thận - Điện giải / Cấp cứu",
+      question: "Ở bệnh nhân hạ Natri máu mạn tính, tốc độ nâng Natri máu tối đa trong 24 giờ đầu để tránh biến chứng Hội chứng hủy myelin cầu noã (ODS) là bao nhiêu?",
+      answer: "Tốc độ nâng Natri an toàn là dưới 8 - 10 mmol/L trong 24 giờ đầu (không quá 0.5 mmol/L/giờ). Nâng Natri quá nhanh làm tế bào não teo do thẩm thấu gây tổn thương thần kinh vĩnh viễn.",
+      source: "European Society of Endocrinology Guidelines"
+    },
+    {
+      id: 5,
+      spec: "Tiêu hóa / Xơ gan",
+      question: "Khi chọc tháo dịch cổ trướng lượng lớn (> 5 lít) ở bệnh nhân xơ gan, cần bù Albumin với liều bao nhiêu cho mỗi lít dịch tháo ra?",
+      answer: "Bù 8 gam Albumin ưu trương (20%) cho MỖI LÍT DỊCH tháo ra để phòng ngừa rối loạn tuần hoàn sau chọc dịch (PICD) và suy thận cấp.",
+      source: "EASL Clinical Practice Guidelines"
+    },
+    {
+      id: 6,
+      spec: "Cấp cứu / Tim mạch",
+      question: "Tam chứng Beck nổi tiếng gợi ý chẩn đoán Chèn ép tim cấp (Cardiac Tamponade) gồm những dấu hiệu lâm sàng nào?",
+      answer: "1. Huyết áp tụt / Huyết áp kẹt.\n2. Tiếng tim mờ xa xăm.\n3. Tĩnh mạch cổ nổi căng.",
+      source: "Macleod Clinical Examination / Tintinalli's Emergency Medicine"
+    },
+    {
+      id: 7,
+      spec: "Truyền nhiễm / Thần kinh",
+      question: "Trong nghi ngờ Viêm màng não mủ ở người lớn, thứ tự xử trí đúng giữa Cho kháng sinh và Chọc dò tủy sống (LP) khi phải chờ chụp CT sọ não là gì?",
+      answer: "Cho KHÁNG SINH KINH NGHIỆM + DEXAMETHASONE NGAY LẬP TỨC trước khi đi chụp CT và chọc dò tủy sống. Tuyệt đối không trì hoãn kháng sinh vì chờ chụp phim.",
+      source: "IDSA Bacterial Meningitis Guidelines"
+    }
   ];
 
   // ============================================================
@@ -57,7 +91,8 @@
   // ============================================================
   document.addEventListener('DOMContentLoaded', () => {
     initLiveSearch();
-    initClinicalPearl();
+    initClinicalPearlFlashcard();
+    initShiftChecklist();
     initMedicalConverter();
     initScratchpad();
     initFavoritesSystem();
@@ -257,12 +292,60 @@
       }
     });
 
-    // Close dropdown on click outside
-    document.addEventListener('click', (e) => {
-      if (!searchContainer.contains(e.target)) {
-        dropdown.classList.remove('show');
+    // Voice search initialization
+    initVoiceSearch(searchInput, performSearch);
+  }
+
+  // Voice Search Helper (Web Speech API)
+  function initVoiceSearch(searchInput, performSearch) {
+    const voiceBtn = document.getElementById('voiceSearchBtn');
+    if (!voiceBtn) return;
+
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      voiceBtn.title = "Trình duyệt không hỗ trợ nhận diện giọng nói (Dùng Chrome/Edge)";
+      voiceBtn.style.opacity = '0.5';
+      return;
+    }
+
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'vi-VN';
+    recognition.continuous = false;
+    recognition.interimResults = false;
+
+    voiceBtn.addEventListener('click', () => {
+      if (voiceBtn.classList.contains('listening')) {
+        recognition.stop();
+      } else {
+        try {
+          recognition.start();
+        } catch (e) {
+          console.warn('Speech recognition failed to start', e);
+        }
       }
     });
+
+    recognition.onstart = () => {
+      voiceBtn.classList.add('listening');
+      voiceBtn.title = "Đang lắng nghe y khoa... (Click để dừng)";
+    };
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      searchInput.value = transcript;
+      performSearch(transcript);
+      searchInput.focus();
+    };
+
+    recognition.onerror = (event) => {
+      console.warn('Voice recognition error:', event.error);
+      voiceBtn.classList.remove('listening');
+    };
+
+    recognition.onend = () => {
+      voiceBtn.classList.remove('listening');
+      voiceBtn.title = "Tìm kiếm bằng giọng nói y khoa (Click để nói)";
+    };
   }
 
   // Save to recent list (optional tracking helper)
@@ -282,45 +365,163 @@
   }
 
   // ============================================================
-  // FUNCTION: CLINICAL PEARL OF THE DAY
+  // FUNCTION: CLINICAL PEARL 3D INTERACTIVE FLASHCARD QUIZ
   // ============================================================
-  function initClinicalPearl() {
-    const pearlText = document.getElementById('pearlText');
-    const refreshBtn = document.getElementById('pearlRefreshBtn');
-    
-    if (!pearlText || !refreshBtn) return;
+  function initClinicalPearlFlashcard() {
+    const card = document.getElementById('flashcardCard');
+    const questionEl = document.getElementById('flashcardQuestion');
+    const answerEl = document.getElementById('flashcardAnswer');
+    const specEl = document.getElementById('flashcardSpec');
+    const sourceEl = document.getElementById('flashcardSource');
+    const flipBtn = document.getElementById('flashcardFlipBtn');
+    const nextBtn = document.getElementById('flashcardNextBtn');
 
-    let currentIdx = -1;
+    if (!card || !questionEl || !answerEl || !flipBtn) return;
 
-    function showRandomPearl() {
-      let idx;
-      do {
-        idx = Math.floor(Math.random() * clinicalPearls.length);
-      } while (idx === currentIdx && clinicalPearls.length > 1);
+    let currentIndex = -1;
 
-      currentIdx = idx;
-      
-      // Smooth transition
-      pearlText.style.opacity = 0;
+    function renderFlashcard(index) {
+      const pearl = flashcardPearls[index];
+      if (!pearl) return;
+
+      if (card.classList.contains('flipped')) {
+        card.classList.remove('flipped');
+        if (flipBtn && flipBtn.querySelector('span')) {
+          flipBtn.querySelector('span').textContent = 'Lật thẻ xem đáp án';
+        }
+      }
+
       setTimeout(() => {
-        pearlText.textContent = clinicalPearls[currentIdx];
-        pearlText.style.opacity = 1;
-      }, 150);
+        if (specEl) specEl.textContent = pearl.spec;
+        if (questionEl) questionEl.textContent = pearl.question;
+        if (answerEl) answerEl.textContent = pearl.answer;
+        if (sourceEl) sourceEl.textContent = `Nguồn: ${pearl.source}`;
+      }, card.classList.contains('flipped') ? 250 : 0);
     }
 
-    refreshBtn.addEventListener('click', () => {
-      const icon = refreshBtn.querySelector('i');
-      if (icon) icon.classList.add('spinning');
-      
-      showRandomPearl();
-      
-      setTimeout(() => {
-        if (icon) icon.classList.remove('spinning');
-      }, 800);
+    function loadRandomFlashcard() {
+      let nextIdx;
+      do {
+        nextIdx = Math.floor(Math.random() * flashcardPearls.length);
+      } while (nextIdx === currentIndex && flashcardPearls.length > 1);
+
+      currentIndex = nextIdx;
+      renderFlashcard(currentIndex);
+    }
+
+    flipBtn.addEventListener('click', () => {
+      card.classList.toggle('flipped');
+      const isFlipped = card.classList.contains('flipped');
+      const label = isFlipped ? 'Quay lại câu hỏi' : 'Lật thẻ xem đáp án';
+      if (flipBtn.querySelector('span')) {
+        flipBtn.querySelector('span').textContent = label;
+      }
     });
 
-    // Set initial
-    showRandomPearl();
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        loadRandomFlashcard();
+      });
+    }
+
+    // Initial load
+    loadRandomFlashcard();
+  }
+
+  // ============================================================
+  // FUNCTION: DOCSPACE SHIFT CHECKLIST & HANDOVER
+  // ============================================================
+  function initShiftChecklist() {
+    const todoInput = document.getElementById('shiftTodoInput');
+    const addBtn = document.getElementById('shiftAddBtn');
+    const todoList = document.getElementById('shiftTodoList');
+    const counter = document.getElementById('shiftCounter');
+    const clearBtn = document.getElementById('shiftClearBtn');
+
+    if (!todoList) return;
+
+    function getShiftData() {
+      try {
+        return JSON.parse(localStorage.getItem('cliniportal_shift_todos') || '[]');
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveShiftData(data) {
+      try {
+        localStorage.setItem('cliniportal_shift_todos', JSON.stringify(data));
+      } catch (e) {
+        console.warn('Save shift data failed', e);
+      }
+      renderShiftTodos();
+    }
+
+    function renderShiftTodos() {
+      const todos = getShiftData();
+      todoList.innerHTML = '';
+
+      if (todos.length === 0) {
+        todoList.innerHTML = `<li style="font-size: 11px; color: var(--color-text-faint); text-align: center; padding: 0.5rem 0;">Chưa có việc ca trực. Thêm mới ở trên!</li>`;
+        if (counter) counter.textContent = '0 việc';
+        return;
+      }
+
+      let doneCount = 0;
+      todos.forEach((item, index) => {
+        if (item.done) doneCount++;
+        const li = document.createElement('li');
+        li.className = `shift-todo-item ${item.done ? 'done' : ''}`;
+        li.innerHTML = `
+          <label>
+            <input type="checkbox" ${item.done ? 'checked' : ''} data-index="${index}">
+            <span>${escapeHtml(item.text)}</span>
+          </label>
+          <button class="shift-todo-del" data-index="${index}" title="Xóa"><i class="fa-solid fa-xmark"></i></button>
+        `;
+
+        li.querySelector('input').addEventListener('change', (e) => {
+          todos[index].done = e.target.checked;
+          saveShiftData(todos);
+        });
+
+        li.querySelector('.shift-todo-del').addEventListener('click', () => {
+          todos.splice(index, 1);
+          saveShiftData(todos);
+        });
+
+        todoList.appendChild(li);
+      });
+
+      if (counter) {
+        counter.textContent = `${todos.length - doneCount}/${todos.length} còn lại`;
+      }
+    }
+
+    function addTodo() {
+      const text = todoInput ? todoInput.value.trim() : '';
+      if (!text) return;
+      const todos = getShiftData();
+      todos.push({ text, done: false, time: new Date().toISOString() });
+      saveShiftData(todos);
+      if (todoInput) todoInput.value = '';
+    }
+
+    if (addBtn) addBtn.addEventListener('click', addTodo);
+    if (todoInput) {
+      todoInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') addTodo();
+      });
+    }
+
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        const todos = getShiftData().filter(t => !t.done);
+        saveShiftData(todos);
+      });
+    }
+
+    renderShiftTodos();
   }
 
   // ============================================================

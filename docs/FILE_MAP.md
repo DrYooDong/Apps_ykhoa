@@ -354,7 +354,8 @@
 
 | File | Vai trò | Cấp thư mục |
 |------|---------|------------|
-| `Sinh lý .../sinh-ly-hoc.html` | Web con 1: Hub Sinh lý học (Phần 1 - Phần 7) | Cấp 2 |
+| `src/content/pathophysiology/giai-phau-sinh-ly.html` | Web con 1: Hub Giải phẫu & Sinh lý (Phần 1 - Phần 7) | Cấp 2 |
+| `src/content/pathophysiology/sinh-ly-hoc.html` | Trang chuyển hướng tương thích (Redirect sang giai-phau-sinh-ly.html) | Cấp 2 |
 | `Sinh lý .../co-che-benh-sinh.html` | Web con 2: Hub Cơ chế bệnh sinh & Sinh lý bệnh (Chuyên khoa) | Cấp 2 |
 | `Sinh lý .../Sinhly-sinhlybenh.html` | Trang tổng hợp & Chuyển hướng tự động | Cấp 2 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_THA.html` | Sinh lý bệnh & Cơ chế bệnh sinh Tăng huyết áp | Cấp 3 |
@@ -499,7 +500,7 @@
 |------------------|---------|
 | `src/content/calculators/` | **[MỚI]** Phân hệ Công cụ Lâm sàng & Master Catalog `index.json` (43 items) |
 | `src/content/pharmacology/` | **[MỚI]** Phân hệ Dược lý học & Master Catalog `index.json` (18 items) |
-| `src/content/skills/` | **[MỚI]** Phân hệ Kỹ năng Lâm sàng & Master Catalog `index.json` (73 items) |
+| `src/content/skills/` | **[MỚI]** Phân hệ Kỹ năng Lâm sàng & Master Catalog `index.json` (bao gồm `kn-kham-danh-gia-phat-trien-the-chat-tre-em.html` - Khám Đánh Giá Phát Triển Thể Chất ở Trẻ Em, `kn-kham-khop-o-tre-em.html` - Khám Cơ Xương Khớp Ở Trẻ Em) |
 | `src/content/pathophysiology/` | **[MỚI]** Phân hệ Sinh lý & Sinh lý bệnh & Master Catalog `index.json` (64 items, bao gồm `slb-ccbs-lao.html`, `slb-ccbs-sepsis.html`, `WORKFLOW_TAO_TRANG_SINH_LY_BENH.md`) |
 | `src/content/approaches/` | **[MỚI]** Phân hệ Tiếp cận Triệu chứng & Bệnh lý & Master Catalog `index.json` (58 items) |
 | `src/content/ebm/` | **[MỚI]** Phân hệ Y học Chứng cứ & Guidelines & Master Catalog `index.json` (bao gồm `guidelinesdata.js`, `kho-guidelines/ca-the-hoa-beta-lactam-2026.html` - Hướng dẫn đồng thuận cá thể hóa liều Beta-lactam ở bệnh nhân nặng 2026) |

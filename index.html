@@ -66,6 +66,9 @@
           </g>
         </svg>
         <input class="input" type="search" placeholder="Tìm công cụ, phác đồ… (Phím /)" aria-label="Tìm kiếm">
+        <button class="voice-search-btn" id="voiceSearchBtn" title="Tìm kiếm bằng giọng nói y khoa (Click để nói)" aria-label="Voice Search">
+          <i class="fa-solid fa-microphone"></i>
+        </button>
       </div>
       <div class="search-results-dropdown" id="searchResultsDropdown"></div>
     </div>
@@ -543,22 +546,65 @@
         <!-- Cột bên phải: TIỆN ÍCH LÂM SÀNG (SECONDARY UTILITY PANEL) -->
         <aside class="homepage-right" id="widgets-section">
 
-          <!-- Widget 1: Clinical Pearl of the Day -->
-          <section class="widget-card pearl-widget" aria-label="Hạt ngọc lâm sàng">
+          <!-- Widget 1: Interactive Clinical Pearl Flashcard Quiz -->
+          <section class="widget-card pearl-widget" aria-label="Hạt ngọc lâm sàng Quiz">
             <div class="widget-header">
               <h3 class="widget-title">
-                <i class="fa-solid fa-lightbulb"></i> Hạt ngọc lâm sàng
+                <i class="fa-solid fa-graduation-cap"></i> Hạt ngọc & Flashcard
               </h3>
+              <span class="pearl-mode-badge" style="font-size: 10px; font-weight: 700; background: var(--color-warning-hl); color: var(--color-warning); padding: 2px 8px; border-radius: 10px;">Interactive Quiz</span>
             </div>
             <div class="widget-body">
-              <div class="pearl-container">
-                <div class="pearl-content-box">
-                  <p class="pearl-text" id="pearlText">Đang tải hạt ngọc lâm sàng...</p>
+              <div class="flashcard-container" id="flashcardContainer">
+                <div class="flashcard-card" id="flashcardCard">
+                  <!-- Front: Question / Clinical Challenge -->
+                  <div class="flashcard-face flashcard-front">
+                    <div>
+                      <div class="flashcard-badge"><i class="fa-solid fa-circle-question"></i> Thách thức lâm sàng</div>
+                      <div class="flashcard-spec" id="flashcardSpec">Chuyên khoa</div>
+                    </div>
+                    <p class="flashcard-text" id="flashcardQuestion">Đang tải câu hỏi lâm sàng...</p>
+                    <div class="flashcard-hint"><i class="fa-solid fa-rotate"></i> Bấm "Lật thẻ" bên dưới để xem đáp án</div>
+                  </div>
+                  <!-- Back: Answer & Evidence Pearl -->
+                  <div class="flashcard-face flashcard-back">
+                    <div>
+                      <div class="flashcard-badge success"><i class="fa-solid fa-circle-check"></i> Đáp án & Hạt ngọc</div>
+                    </div>
+                    <p class="flashcard-text" id="flashcardAnswer">Đang tải đáp án...</p>
+                    <div class="flashcard-source" id="flashcardSource">Nguồn y học chứng cứ</div>
+                  </div>
                 </div>
-                <div class="pearl-footer">
-                  <button class="btn-pearl-refresh" id="pearlRefreshBtn" title="Xem hạt ngọc khác">
-                    <i class="fa-solid fa-rotate"></i> Đổi ngẫu nhiên
+                <div class="flashcard-actions">
+                  <button class="btn-flashcard-flip" id="flashcardFlipBtn">
+                    <i class="fa-solid fa-rotate"></i> <span>Lật thẻ xem đáp án</span>
                   </button>
+                  <button class="btn-flashcard-next" id="flashcardNextBtn" title="Đổi câu hỏi khác">
+                    <i class="fa-solid fa-forward"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Widget 1.5: DocSpace Shift Checklist & Handover -->
+          <section class="widget-card shift-widget" aria-label="Ca trực & Handover">
+            <div class="widget-header">
+              <h3 class="widget-title">
+                <i class="fa-solid fa-clipboard-check"></i> Checklist Ca Trực
+              </h3>
+              <a href="#/docspace" title="Mở DocSpace Workspace" style="font-size: 11px; font-weight: 600; color: var(--color-primary); text-decoration: none;">DocSpace <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+            <div class="widget-body">
+              <div class="shift-container">
+                <div class="shift-add-row">
+                  <input type="text" id="shiftTodoInput" placeholder="Thêm việc ca trực (VD: BGA 22h)..." aria-label="Việc cần làm ca trực">
+                  <button id="shiftAddBtn" title="Thêm việc"><i class="fa-solid fa-plus"></i></button>
+                </div>
+                <ul class="shift-todo-list" id="shiftTodoList"></ul>
+                <div class="shift-footer">
+                  <span class="shift-counter" id="shiftCounter">0 việc</span>
+                  <button class="shift-clear-btn" id="shiftClearBtn" title="Xóa mục đã hoàn thành"><i class="fa-regular fa-trash-can"></i> Xóa mục xong</button>
                 </div>
               </div>
             </div>

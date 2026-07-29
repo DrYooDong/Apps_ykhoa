@@ -68,7 +68,7 @@
           const text = item.textContent || '';
           const href = item.getAttribute('href') || '';
 
-          if (!(text.includes('S.lý') || href.includes('sinhly-sinhlybenh.html') || href.includes('sinh-ly-hoc.html') || href.includes('co-che-benh-sinh.html'))) return;
+          if (!(text.includes('S.lý') || text.includes('G.phẫu') || text.includes('Cơ sở') || href.includes('giai-phau-sinh-ly.html') || href.includes('sinhly-sinhlybenh.html') || href.includes('sinh-ly-hoc.html') || href.includes('co-che-benh-sinh.html'))) return;
 
           const parentLi = item.parentElement;
           if (!parentLi) return;
@@ -91,11 +91,11 @@
             item.appendChild(chevron);
           }
 
-          let physioUrl = href.replace(/sinhly-sinhlybenh\.html|co-che-benh-sinh\.html/, 'sinh-ly-hoc.html');
-          let pathoUrl = href.replace(/sinhly-sinhlybenh\.html|sinh-ly-hoc\.html/, 'co-che-benh-sinh.html');
-          if (!physioUrl.includes('sinh-ly-hoc.html')) {
+          let physioUrl = href.replace(/sinhly-sinhlybenh\.html|sinh-ly-hoc\.html|co-che-benh-sinh\.html/, 'giai-phau-sinh-ly.html');
+          let pathoUrl = href.replace(/sinhly-sinhlybenh\.html|sinh-ly-hoc\.html|giai-phau-sinh-ly\.html/, 'co-che-benh-sinh.html');
+          if (!physioUrl.includes('giai-phau-sinh-ly.html')) {
             const baseDir = href.includes('/') ? href.substring(0, href.lastIndexOf('/') + 1) : '';
-            physioUrl = baseDir + 'sinh-ly-hoc.html';
+            physioUrl = baseDir + 'giai-phau-sinh-ly.html';
             pathoUrl = baseDir + 'co-che-benh-sinh.html';
           }
 
@@ -104,7 +104,7 @@
           menu.innerHTML = `
             <a href="${physioUrl}" class="nav-dropdown-item">
               <span class="dropdown-item-icon">🧬</span>
-              <span>Sinh lý học</span>
+              <span>Giải phẫu & Sinh lý</span>
             </a>
             <a href="${pathoUrl}" class="nav-dropdown-item">
               <span class="dropdown-item-icon">🔬</span>
