@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Hướng dẫn quy trình Khám & Phân loại trẻ bệnh (Triage nhi khoa) chi tiết: 3 nhóm phân loại Triage, Mã 3TPR MOB, Quy trình ABCDE, Thang điểm AVPU, Thang điểm hôn mê Glasgow (GCS) nhi khoa và Bảng kiểm OSCE.">
+  <title>Khám & Phân Loại Trẻ Bệnh (Triage Nhi) – CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../../css/components/clinical-skill.css">
+  <link rel="stylesheet" href="../../../../../css/components/paraclinical.css">
+  <link rel="stylesheet" href="../../../../../css/components/physio-headings.css">
+
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../js/clinical-skill-tabs.js" defer></script>
+
+  <style>
+    .skill-hero-triage {
+      background: linear-gradient(135deg, #e11d48 0%, #0284c7 100%);
+      color: white;
+      padding: 1.75rem;
+      border-radius: var(--radius-lg, 12px);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 15px rgba(225, 29, 72, 0.25);
+    }
+
+    .skill-hero-triage h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-hero-triage p {
+      font-size: 0.95rem;
+      opacity: 0.95;
+      line-height: 1.6;
+    }
+
+    .triage-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+
+    .triage-table th, .triage-table td {
+      border: 1px solid var(--color-border, #e2e8f0);
+      padding: 0.75rem;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    .triage-table th {
+      background-color: var(--color-bg-alt, #f8fafc);
+      font-weight: 600;
+      color: var(--color-text, #0f172a);
+    }
+
+    .osce-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .osce-table th, .osce-table td {
+      border: 1px solid var(--color-border, #e2e8f0);
+      padding: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .osce-table th {
+      background: var(--color-primary-hl, #e0f2fe);
+      color: var(--color-primary, #0284c7);
+      text-align: left;
+    }
+
+    .triage-code-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .triage-code-card {
+      background: var(--color-surface, #ffffff);
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius-md, 10px);
+      padding: 1rem;
+    }
+
+    .triage-code-card strong {
+      color: var(--color-primary, #0284c7);
+      font-size: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../../index.html" class="nav-item">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../ky-nang.html" class="nav-item active">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../approaches/tiep-can.html" class="nav-item">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../calculators/cong-cu.html" class="nav-item">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ lâm sàng</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-wrapper" id="mainContent">
+      <clini-breadcrumb
+        items='[{"label": "🏠 Home", "url": "../../../../../index.html"}, {"label": "Kỹ năng lâm sàng", "url": "../../ky-nang.html"}, {"label": "Khám Nhi Khoa", "url": "kn-khamnhi.html"}, {"label": "Khám & Phân Loại Trẻ Bệnh"}]'></clini-breadcrumb>
+
+      <section class="skill-hero-triage">
+        <h1>🚦 Khám & Phân Loại Trẻ Bệnh (Triage Nhi Khoa)</h1>
+        <p>Quy trình phân loại và tiếp cận ban đầu tại khoa Cấp cứu / Phòng khám theo chuẩn Nhi khoa YDS (Bài 98 - ĐHYD TP.HCM): Sàng lọc nhanh 3 nhóm Triage, Nhớ mã ưu tiên 3TPR MOB, Ấn tượng ban đầu, Đánh giá hệ thống ABCDE, Thang điểm AVPU & Hôn mê Glasgow (GCS) nhi khoa.</p>
+      </section>
+
+      <!-- TABS -->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="triage-3nhom">1. Phân loại Triage (3 Nhóm)</button>
+        <button class="tab-btn" data-tab="ma-3tprmob">2. Mã Ưu Tiên 3TPR MOB</button>
+        <button class="tab-btn" data-tab="an-tuong">3. Ấn Tượng Ban Đầu</button>
+        <button class="tab-btn" data-tab="abcde">4. Đánh giá ABCDE</button>
+        <button class="tab-btn" data-tab="avpu-gcs">5. Tri giác AVPU & GCS</button>
+        <button class="tab-btn" data-tab="osce">6. Bảng kiểm OSCE</button>
+      </div>
+
+      <!-- TAB 1: PHÂN LOẠI TRIAGE (3 NHÓM) -->
+      <section class="tab active" id="triage-3nhom">
+        <div class="card">
+          <h2><i class="fa-solid fa-filter" style="color: var(--color-primary);"></i> 1. Đại Cương & 3 Nhóm Phân Loại Trẻ Bệnh Khi Lọc Bệnh</h2>
+
+          <div class="skill-note note-info">
+            <i class="fa-solid fa-circle-info"></i>
+            <strong>Tầm quan trọng của Lọc bệnh (Triage):</strong> Ở trẻ em, ngưng tim ngưng thở phần lớn do diễn tiến nặng của suy hô hấp hoặc sốc. Tử vong thường xảy ra trong 24 giờ đầu sau nhập viện nhưng có thể ngăn ngừa được nếu trẻ được nhận diện sớm và can thiệp ngay lập tức.
+          </div>
+
+          <h3 style="margin-top: 1.5rem; font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-layer-group" style="color: var(--color-primary);"></i> Phân loại nhanh 3 nhóm trẻ bệnh:</h3>
+
+          <ol class="step-list">
+            <li class="step-item" style="border-left: 5px solid #e11d48;">
+              <div class="step-number" style="background: linear-gradient(135deg, #e11d48, #be123c);">1</div>
+              <div class="step-content">
+                <strong style="color: #e11d48;">1. Trẻ Có Dấu Hiệu Cấp Cứu (Emergency Signs) — CẤP CỨU NGAY LẬP TỨC</strong>
+                <p>Trẻ đe dọa tính mạng, cần được xử trí và cấp cứu khẩn cấp không trì hoãn. Bao gồm các dấu hiệu:</p>
+                <ul style="margin-left: 1.25rem; line-height: 1.6;">
+                  <li><strong>Tắc nghẽn đường thở:</strong> Thở rít nặng, không nói/khóc được, hô hấp gắng sức vô hiệu.</li>
+                  <li><strong>Suy hô hấp nặng:</strong> Thở nhanh nghiêm trọng, co lõm ngực sâu, thở rên, gật gù.</li>
+                  <li><strong>Tím trung ương:</strong> Tím môi, niêm mạc miệng, thân mình.</li>
+                  <li><strong>Dấu hiệu sốc:</strong> Tay chân lạnh, thời gian phục hồi màu da (CRT) &gt; 3 giây, mạch nhanh nhẹ/mất mạch.</li>
+                  <li><strong>Hôn mê:</strong> Không đáp ứng với kích thích.</li>
+                  <li><strong>Co giật:</strong> Đang co giật toàn thân hoặc cục bộ.</li>
+                  <li><strong>Dấu mất nước nặng ở trẻ tiêu chảy:</strong> Có ≥ 2 trong 3 dấu hiệu (li bì/khó đánh thức, mắt trũng, nếp véo da mất rất chậm &gt; 2 giây).</li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="step-item" style="border-left: 5px solid #eab308;">
+              <div class="step-number" style="background: linear-gradient(135deg, #eab308, #ca8a04);">2</div>
+              <div class="step-content">
+                <strong style="color: #ca8a04;">2. Trẻ Có Dấu Hiệu Ưu Tiên (Priority Signs) — ƯU TIÊN KHÁM TRƯỚC</strong>
+                <p>Trẻ có nguy cơ cao diễn tiến nặng hoặc tử vong, cần được <strong>ưu tiên khám trước</strong> mà không phải xếp hàng theo thứ tự thông thường (sử dụng Mã nhớ <strong>3TPR MOB</strong>).</p>
+              </div>
+            </li>
+
+            <li class="step-item" style="border-left: 5px solid #16a34a;">
+              <div class="step-number" style="background: linear-gradient(135deg, #16a34a, #15803d);">3</div>
+              <div class="step-content">
+                <strong style="color: #16a34a;">3. Trẻ Không Có Dấu Hiệu Cấp Cứu Hoặc Ưu Tiên — KHÁM THƯỜNG QUY</strong>
+                <p>Trẻ thuộc nhóm này sẽ được xếp hàng chờ khám bệnh lần lượt theo thứ tự số thứ tự thường quy.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- TAB 2: MÃ ƯU TIÊN 3TPR MOB -->
+      <section class="tab" id="ma-3tprmob">
+        <div class="card">
+          <h2><i class="fa-solid fa-list-check" style="color: var(--color-primary);"></i> 2. Bảng Mã Ghi Nhớ Dấu Hiệu Ưu Tiên: 3TPR MOB</h2>
+          <p>Mã nhớ <strong>3TPR MOB</strong> giúp nhân viên y tế phản xạ nhanh 12 dấu hiệu ưu tiên khám trước tại phòng lọc bệnh (Triage):</p>
+
+          <div class="triage-code-grid">
+            <div class="triage-code-card">
+              <strong>👶 Tiny baby</strong>
+              <p style="margin: 0.35rem 0 0; font-size: 0.88rem; color: var(--color-text-muted);">Trẻ nhỏ dưới 2 tháng tuổi.</p>
+            </div>
+            <div class="triage-code-card">
+              <strong>🌡️ Temperature</strong>
+              <p style="margin: 0.35rem 0 0; font-size: 0.88rem; color: var(--color-text-muted);">Trẻ sốt rất cao (≥ 39.5°C).</p>
+            </div>
+            <div class="triage-code-card">
+              <strong>🩹 Trauma</strong>
+              <p style="margin: 0.35rem 0 0; font-size: 0.88rem; color: var(--color-text-muted);">Trẻ chấn thương hoặc có vấn đề ngoại khoa khẩn khác.</p>
+            </div>
+            <div class="triage-code-card">
+              <strong>⚪ Pallor</strong>
+              <p style="margin: 0.35rem 0 0; font-size: 0.88rem; color: var(--color-text-muted);">Tái xanh / nhợt nặng da niêm.</p>
+            </div>
+            <div class="triage-code-card">
+              <strong>🧪 Poisoning</strong>
+              <p style="margin: 0.35rem 0 0; font-size: 0.88rem; color: var(--color-text-muted);">Trẻ bị ngộ độc cấp tính.</p>
+            </div>
+            <div class="triage-code-card">
+              <strong>⚡ Pain</strong>
+              <p style="margin: 0.35rem 0 0; font-size: 0.88rem; color: var(--color-text-muted);">Trẻ đau dữ dội / đau nhiều.</p>
+            </div>
+            <div class="triage-code-card">
+              <strong>🫁 Respiratory distress</strong>
+              <p style="margin: 0.35rem 0 0; font-size: 0.88rem; color: var(--color-text-muted);">Trẻ suy hô hấp (thở nhanh, co kéo).</p>
+            </div>
+            <div class="triage-code-card">
+              <strong>😣 Restless</strong>
+              <p style="margin: 0.35rem 0 0; font-size: 0.88rem; color: var(--color-text-muted);">Trẻ bứt rứt, kích thích liên tục hay li bì.</p>
+            </div>
+            <div class="triage-code-card">
+              <strong>📄 Referral</strong>
+              <p style="margin: 0.35rem 0 0; font-size: 0.88rem; color: var(--color-text-muted);">Trẻ có giấy chuyển viện tuyến trên.</p>
+            </div>
+            <div class="triage-code-card">
+              <strong>🦴 Malnutrition</strong>
+              <p style="margin: 0.35rem 0 0; font-size: 0.88rem; color: var(--color-text-muted);">Trẻ suy dinh dưỡng gầy mòn nặng rõ (Marasmus).</p>
+            </div>
+            <div class="triage-code-card">
+              <strong>🦶 Oedema</strong>
+              <p style="margin: 0.35rem 0 0; font-size: 0.88rem; color: var(--color-text-muted);">Phù hai bàn chân (Kwashiorkor / thận / tim).</p>
+            </div>
+            <div class="triage-code-card">
+              <strong>🔥 Burns</strong>
+              <p style="margin: 0.35rem 0 0; font-size: 0.88rem; color: var(--color-text-muted);">Trẻ bị bỏng.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: ẤN TƯỢNG BAN ĐẦU -->
+      <section class="tab" id="an-tuong">
+        <div class="card">
+          <h2><i class="fa-solid fa-eye-low-vision" style="color: var(--color-primary);"></i> 3. Đánh Giá Ấn Tượng Ban Đầu (Initial Assessment)</h2>
+
+          <p style="line-height: 1.6;">Khi vừa tiếp cận trẻ tại phòng cấp cứu, bác sĩ quan sát nhanh "ngay từ hành lang" trong vòng <strong>vài giây</strong> dựa trên tam giác đánh giá nhi khoa (Pediatric Assessment Triangle): <strong>Tri giác</strong>, <strong>Cách thở</strong> và <strong>Màu da</strong>.</p>
+
+          <div class="skill-note note-danger" style="margin-top: 1rem;">
+            <i class="fa-solid fa-heart-pulse"></i>
+            <strong>Lưu đồ xử trí theo Ấn tượng ban đầu (Lưu đồ 98.1 - YDS):</strong>
+            <ol style="margin-left: 1.25rem; margin-top: 0.5rem; line-height: 1.7;">
+              <li><strong>Trường hợp 1: Trẻ Mê, Tím, Ngưng thở hoặc Thở ngáp:</strong>
+                <ul>
+                  <li>Đánh giá ngay xem trẻ có mạch hay không:</li>
+                  <li><em>Không có mạch:</em> Tiến hành **Hồi sức tim phổi (CPR)** ngay lập tức.</li>
+                  <li><em>Có mạch:</em> Khai thông đường thở, hỗ trợ thông khí bóp bóng, thở $O_2$, chuyển sang chuỗi "Đánh giá – Xác định – Can thiệp".</li>
+                </ul>
+              </li>
+              <li><strong>Trường hợp 2: Trẻ Tỉnh táo, không ngưng thở/mê:</strong>
+                <ul>
+                  <li>Thực hiện ngay chuỗi quy trình tiếp cận theo hệ thống **"Đánh giá – Xác định – Can thiệp"** (ABCDE).</li>
+                </ul>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: ĐÁNH GIÁ ABCDE -->
+      <section class="tab" id="abcde">
+        <div class="card">
+          <h2><i class="fa-solid fa-list-ol" style="color: var(--color-primary);"></i> 4. Quy Trình Thăm Khám Theo Hệ Thống ABCDE</h2>
+
+          <h3 style="font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-lungs" style="color: var(--color-primary);"></i> A & B: Đường thở (Airway) & Hô hấp (Breathing):</h3>
+          <ul style="margin-left: 1.25rem; line-height: 1.7; color: var(--color-text); margin-top: 0.5rem;">
+            <li><strong>Đường thở (Airway - A):</strong> Nhận biết tắc nghẽn đường thở trên qua dấu hiệu thở co kéo, thở ngáy, thở rít (stridor) hoặc <em>không nghe âm thở</em> dù trẻ đang cố gắng thở.</li>
+            <li><strong>Hô hấp (Breathing - B):</strong> Đếm tần số thở khi trẻ nằm yên, quan sát phập phồng cánh mũi, co lõm ngực, thở rên (grunting), đầu gật gù theo nhịp thở.</li>
+          </ul>
+
+          <h4 style="margin-top: 1rem; color: var(--color-primary);">📊 Bảng 98.1: Tần số thở bình thường theo tuổi (YDS):</h4>
+          <table class="triage-table">
+            <thead>
+              <tr>
+                <th>Lứa tuổi</th>
+                <th>Tần số thở bình thường (lần/phút)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Nhũ nhi (&lt; 1 tuổi)</strong></td>
+                <td>30 – 60 lần/phút</td>
+              </tr>
+              <tr>
+                <td><strong>Nhà trẻ (1 – 3 tuổi)</strong></td>
+                <td>24 – 40 lần/phút</td>
+              </tr>
+              <tr>
+                <td><strong>Mẫu giáo (4 – 5 tuổi)</strong></td>
+                <td>22 – 34 lần/phút</td>
+              </tr>
+              <tr>
+                <td><strong>Học đường (6 – 12 tuổi)</strong></td>
+                <td>18 – 30 lần/phút</td>
+              </tr>
+              <tr>
+                <td><strong>Vị thành niên (13 – 18 tuổi)</strong></td>
+                <td>12 – 16 lần/phút</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+          <h3 style="font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-heart-pulse" style="color: var(--color-primary);"></i> C: Tuần hoàn (Circulation):</h3>
+          <p style="line-height: 1.6;">Đánh giá dựa vào: Tần số & nhịp tim, bắt mạch trung ương (mạch bẹn/cảnh) và ngoại biên (mạch quay/mu chân), thời gian phục hồi màu da ($CRT \le 2\text{ giây}$), màu sắc/nhiệt độ da (lạnh ẩm, nổi bông), huyết áp và lượng nước tiểu.</p>
+
+          <h4 style="margin-top: 1rem; color: var(--color-primary);">📊 Bảng 98.2: Tần số tim bình thường theo tuổi (YDS):</h4>
+          <table class="triage-table">
+            <thead>
+              <tr>
+                <th>Lứa tuổi</th>
+                <th>Lúc thức (Khoảng & Trung bình)</th>
+                <th>Lúc ngủ (Khoảng)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Mới sinh – 3 tháng</strong></td>
+                <td>85 – 205 lần/phút (Trung bình 140)</td>
+                <td>80 – 160 lần/phút</td>
+              </tr>
+              <tr>
+                <td><strong>3 tháng – 2 tuổi</strong></td>
+                <td>100 – 190 lần/phút (Trung bình 130)</td>
+                <td>75 – 160 lần/phút</td>
+              </tr>
+              <tr>
+                <td><strong>2 tuổi – 10 tuổi</strong></td>
+                <td>60 – 140 lần/phút (Trung bình 80)</td>
+                <td>60 – 90 lần/phút</td>
+              </tr>
+              <tr>
+                <td><strong>Trên 10 tuổi</strong></td>
+                <td>60 – 140 lần/phút (Trung bình 75)</td>
+                <td>50 – 90 lần/phút</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+          <h3 style="font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-shirt" style="color: var(--color-primary);"></i> E: Bộc lộ toàn thể (Exposure):</h3>
+          <p style="line-height: 1.6;">Cởi bỏ quần áo trẻ để thăm khám toàn diện vùng đầu, thân mình, lưng, tứ chi nhằm tìm các dấu hiệu chấn thương, bỏng, tử ban hoặc đốm xuất huyết da niêm (dấu hiệu gợi ý sốc nhiễm trùng). <em>Luôn giữ ấm phòng ngừa hạ thân nhiệt.</em></p>
+        </div>
+      </section>
+
+      <!-- TAB 5: TRI GIÁC AVPU & GCS -->
+      <section class="tab" id="avpu-gcs">
+        <div class="card">
+          <h2><i class="fa-solid fa-brain" style="color: var(--color-primary);"></i> 5. Đánh Giá Tri Giác: Thang Điểm AVPU & Glasgow (GCS)</h2>
+
+          <h3 style="font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-list" style="color: var(--color-primary);"></i> 1. Thang điểm đánh giá nhanh tri giác AVPU:</h3>
+          
+          <table class="triage-table">
+            <thead>
+              <tr>
+                <th style="width: 15%;">Cấp độ</th>
+                <th>Mô tả trạng thái nhận thức</th>
+                <th>Ý nghĩa lâm sàng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong style="color: #16a34a; font-size: 1.1rem;">A (Alert)</strong></td>
+                <td>Trẻ <strong>Tỉnh táo</strong>, linh hoạt, đáp ứng phù hợp với ngoại cảnh và cha mẹ.</td>
+                <td>Bình thường</td>
+              </tr>
+              <tr>
+                <td><strong style="color: #0284c7; font-size: 1.1rem;">V (Voice)</strong></td>
+                <td>Trẻ đáp ứng khi gọi tên hoặc <strong>Âm thanh</strong> lớn tiếng.</td>
+                <td>Rối loạn nhẹ</td>
+              </tr>
+              <tr>
+                <td><strong style="color: #eab308; font-size: 1.1rem;">P (Pain)</strong></td>
+                <td>Trẻ chỉ đáp ứng khi làm kích thích <strong>Đau</strong> (ấn nền móng).</td>
+                <td>Rối loạn nặng</td>
+              </tr>
+              <tr>
+                <td><strong style="color: #e11d48; font-size: 1.1rem;">U (Unresponsive)</strong></td>
+                <td>Trẻ <strong>Không đáp ứng</strong> với bất kỳ kích thích nào.</td>
+                <td>Hôn mê (GCS ≤ 8, cần đặt NKQ)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+          <h3 style="font-size: 1.1rem; color: var(--color-text);">📊 2. Bảng 98.4: Thang điểm Hôn mê Glasgow (GCS) hiệu chỉnh Nhi khoa</h3>
+
+          <table class="triage-table">
+            <thead>
+              <tr>
+                <th>Phản ứng</th>
+                <th>Trẻ lớn (&gt; 2 tuổi)</th>
+                <th>Nhũ nhi (&lt; 2 tuổi)</th>
+                <th style="width: 10%;">Điểm</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan="4"><strong>Mở mắt (E)</strong></td>
+                <td>Tự nhiên</td>
+                <td>Tự nhiên</td>
+                <td><strong>4</strong></td>
+              </tr>
+              <tr>
+                <td>Khi nghe lời nói</td>
+                <td>Khi nghe lời nói/âm thanh</td>
+                <td><strong>3</strong></td>
+              </tr>
+              <tr>
+                <td>Khi kích thích đau</td>
+                <td>Khi kích thích đau</td>
+                <td><strong>2</strong></td>
+              </tr>
+              <tr>
+                <td>Không mở mắt</td>
+                <td>Không mở mắt</td>
+                <td><strong>1</strong></td>
+              </tr>
+              <tr>
+                <td rowspan="5"><strong>Đáp ứng lời nói (V)</strong></td>
+                <td>Định hướng tốt, trả lời đúng</td>
+                <td>Bập bẹ, bi bô, nói được từ</td>
+                <td><strong>5</strong></td>
+              </tr>
+              <tr>
+                <td>Trả lời nhầm lẫn, hỗn loạn</td>
+                <td>Khóc dễ kích thích</td>
+                <td><strong>4</strong></td>
+              </tr>
+              <tr>
+                <td>Dùng từ không thích hợp</td>
+                <td>Khóc khi đau</td>
+                <td><strong>3</strong></td>
+              </tr>
+              <tr>
+                <td>Âm thanh vô nghĩa, rên rỉ</td>
+                <td>Rên rỉ khi đau</td>
+                <td><strong>2</strong></td>
+              </tr>
+              <tr>
+                <td>Không đáp ứng</td>
+                <td>Không đáp ứng</td>
+                <td><strong>1</strong></td>
+              </tr>
+              <tr>
+                <td rowspan="6"><strong>Đáp ứng vận động (M)</strong></td>
+                <td>Làm theo yêu cầu</td>
+                <td>Cử động tự nhiên, linh hoạt</td>
+                <td><strong>6</strong></td>
+              </tr>
+              <tr>
+                <td>Định vị đúng vị trí đau</td>
+                <td>Rụt người lại khi bị sờ</td>
+                <td><strong>5</strong></td>
+              </tr>
+              <tr>
+                <td>Rụt người lại khi đau</td>
+                <td>Rụt người lại khi đau</td>
+                <td><strong>4</strong></td>
+              </tr>
+              <tr>
+                <td>Gồng mất vỏ (gấp cứng)</td>
+                <td>Gồng mất vỏ khi đau</td>
+                <td><strong>3</strong></td>
+              </tr>
+              <tr>
+                <td>Gồng mất não (duỗi cứng)</td>
+                <td>Gồng mất não khi đau</td>
+                <td><strong>2</strong></td>
+              </tr>
+              <tr>
+                <td>Không đáp ứng</td>
+                <td>Không đáp ứng</td>
+                <td><strong>1</strong></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="skill-note note-warning" style="margin-top: 1rem;">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <strong>Phân độ tri giác theo GCS (Tổng điểm 3 – 15):</strong>
+            <ul style="margin-left: 1.25rem; margin-top: 0.5rem; line-height: 1.6;">
+              <li><strong>GCS 13 – 15 điểm:</strong> Rối loạn tri giác mức độ nhẹ.</li>
+              <li><strong>GCS 9 – 12 điểm:</strong> Rối loạn tri giác mức độ trung bình.</li>
+              <li><strong>GCS ≤ 8 điểm:</strong> Hôn mê nặng ➔ <em>Cần đặt nội khí quản khẩn cấp để bảo vệ đường thở.</em></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 6: BẢNG KIỂM OSCE -->
+      <section class="tab" id="osce">
+        <div class="card">
+          <h2><i class="fa-solid fa-square-check" style="color: var(--color-primary);"></i> 6. Bảng Kiểm Chấm Thi OSCE Lọc Bệnh (Triage Nhi Khoa)</h2>
+
+          <table class="osce-table">
+            <thead>
+              <tr>
+                <th style="width: 8%;">STT</th>
+                <th>Bước thực hiện</th>
+                <th style="width: 15%;">Đạt / Không đạt</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Quan sát nhanh <strong>Ấn tượng ban đầu</strong> (Tri giác, Cách thở, Màu da) trong vài giây khi tiếp cận trẻ.</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Kiểm tra trẻ mê/tím/ngưng thở ➔ Bắt mạch bẹn/cảnh (Nếu mất mạch: CPR ngay; nếu có mạch: đặt nội khí quản/bóp bóng $O_2$).</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Sàng lọc tìm các <strong>Dấu hiệu Cấp cứu (Emergency Signs)</strong>: Tắc nghẽn đường thở, tím trung ương, sốc, co giật, mất nước nặng.</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Kiểm tra danh mục Dấu hiệu Ưu tiên theo <strong>Mã 3TPR MOB</strong> để xếp khám trước.</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Thực hiện quy trình ABCDE: Đánh giá đường thở (A) tìm tiếng stridor / ngáy.</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Đánh giá Hô hấp (B): Đếm tần số thở lúc nghỉ và so sánh Bảng 98.1 theo tuổi.</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>Đánh giá Tuần hoàn (C): Đếm tần số tim (Bảng 98.2), bắt mạch trung ương/ngoại biên, kiểm tra $CRT \le 2\text{s}$.</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>Đánh giá Thần kinh (D): Phân loại tri giác theo <strong>thang điểm AVPU</strong>.</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>Chấm <strong>Thang điểm Hôn mê Glasgow (GCS)</strong> hiệu chỉnh nhi khoa (đặc biệt GCS ≤ 8 đặt NKQ).</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td>Bộc lộ toàn thể (E): Cởi bỏ quần áo kiểm tra tổn thương xuất huyết/bỏng/chấn thương và giữ ấm cho trẻ.</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>11</td>
+                <td>Tiến hành <strong>Đánh giá thứ cấp (Secondary Assessment)</strong>: Khai thác bệnh sử chi tiết & khám toàn diện các hệ cơ quan.</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>12</td>
+                <td>Phân loại phân phòng điều trị (Phòng Cấp cứu / Khám ưu tiên / Khám thường quy) và báo cáo bác sĩ trưởng ca.</td>
+                <td><input type="checkbox"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+          <h3 style="font-size: 1rem; color: var(--color-text-muted);"><i class="fa-solid fa-book" style="color: var(--color-primary);"></i> Trích dẫn tài liệu tham khảo chuẩn AMA:</h3>
+          <p style="font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.6; margin-top: 0.25rem;">
+            1. Lê Phước Truyền, Nguyễn Huy Luân. Bài 98: Khám và phân loại trẻ bệnh. Trong: <em>Nhi khoa YDS - Tập 4 (Hồi sức cấp cứu)</em>. Bộ môn Nhi - Đại học Y Dược Thành phố Hồ Chí Minh; 2020:718-731.
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer class="global-footer">
+    <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+  </footer>
+</body>
+
+</html>

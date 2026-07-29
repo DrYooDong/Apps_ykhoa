@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Tiếp cận lâm sàng trẻ tím ở Nhi khoa: Sinh lý Hb khử, Phân loại Tím Trung Vương - Ngoại Biên - Chuyên Biệt, Hyperoxia Test 100% O2, PGE1 và Sơ đồ 59.1 YDS">
+  <title>Tiếp Cận Trẻ Tím – CliniPortal</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@500;600&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core (5 levels up) -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../../css/components/approach-symptom.css">
+
+  <style>
+    /* ==========================================================================
+       CYANOTIC CHILD ADVANCED STYLES & INTERACTIVE UI
+       ========================================================================== */
+    :root {
+      --cyan-primary: #0284c7;
+      --cyan-dark: #0f172a;
+      --cyan-navy: #1e1b4b;
+      --cyan-purple: #7c3aed;
+      --cyan-accent: #0ea5e9;
+      --cyan-danger: #ef4444;
+      --cyan-warning: #f59e0b;
+      --cyan-success: #10b981;
+      --cyan-info: #06b6d4;
+    }
+
+    /* Hero Banner Theme */
+    .hero-cyanosis {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #2e1065 100%);
+      border-radius: 20px;
+      padding: 32px;
+      color: #ffffff;
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.25);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .hero-cyanosis::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -10%;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.25) 0%, rgba(124, 58, 237, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-cyanosis-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .hero-title-group h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      font-family: var(--font-display);
+      margin: 8px 0 12px 0;
+      color: #ffffff;
+      line-height: 1.25;
+    }
+
+    .hero-badges-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .hero-badge-pill {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #e0e7ff;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-badge-pill.alert {
+      background: rgba(239, 68, 68, 0.25);
+      border-color: rgba(239, 68, 68, 0.4);
+      color: #fca5a5;
+    }
+
+    .hero-quick-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .stat-box {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+
+    .stat-box .stat-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #cbd5e1;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .stat-box .stat-val {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #38bdf8;
+      font-family: var(--font-display);
+    }
+
+    .stat-box .stat-sub {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+
+    /* Override parent container overflow so position: sticky works */
+    html, body,
+    .app-container,
+    .main-wrapper,
+    .layout-content-area {
+      overflow: visible !important;
+    }
+
+    /* Quick Nav Sticky Bar (Đóng băng khi cuộn trang) */
+    .quick-nav-bar {
+      position: sticky !important;
+      top: calc(var(--header-height, 60px) + 8px) !important;
+      z-index: 150 !important;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      padding: 10px 14px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      white-space: nowrap;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+    }
+
+    .quick-nav-btn {
+      background: transparent;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .quick-nav-btn:hover,
+    .quick-nav-btn.active {
+      background: rgba(2, 132, 199, 0.1);
+      color: var(--cyan-primary);
+    }
+
+    /* Section Card Wrappers */
+    .section-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+      scroll-margin-top: 130px;
+    }
+
+    .section-title-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid rgba(2, 132, 199, 0.15);
+    }
+
+    .section-icon-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(2, 132, 199, 0.12);
+      color: var(--cyan-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .section-title-group h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin: 0;
+    }
+
+    /* Interactive Hb Calculator Box */
+    .hb-sim-container {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border: 1px solid #cbd5e1;
+      border-radius: 16px;
+      padding: 24px;
+      margin: 20px 0;
+    }
+
+    [data-theme="dark"] .hb-sim-container {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border-color: #334155;
+    }
+
+    .sim-controls-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .sim-controls-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .preset-btns {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .preset-btn {
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-text);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .preset-btn.active,
+    .preset-btn:hover {
+      background: var(--cyan-primary);
+      color: white;
+      border-color: var(--cyan-primary);
+    }
+
+    .slider-group {
+      margin-top: 16px;
+    }
+
+    .slider-group input[type="range"] {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      accent-color: var(--cyan-primary);
+      cursor: pointer;
+    }
+
+    .hb-result-box {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .saO2-meter-bar {
+      height: 16px;
+      border-radius: 8px;
+      background: #e2e8f0;
+      position: relative;
+      overflow: hidden;
+      margin: 12px 0 8px 0;
+    }
+
+    .saO2-meter-fill {
+      height: 100%;
+      width: 75%;
+      background: linear-gradient(90deg, #ef4444 0%, #f59e0b 40%, #10b981 100%);
+      transition: width 0.3s ease;
+      border-radius: 8px;
+    }
+
+    .cyanosis-state-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    /* Tabs Styling */
+    .tab-nav {
+      display: flex;
+      gap: 10px;
+      border-bottom: 2px solid var(--color-border);
+      margin-bottom: 20px;
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      padding: 10px 18px;
+      background: transparent;
+      border: none;
+      border-bottom: 3px solid transparent;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-bottom: -2px;
+      white-space: nowrap;
+    }
+
+    .tab-btn.active {
+      color: var(--cyan-primary);
+      border-bottom-color: var(--cyan-primary);
+    }
+
+    .tab-content-panel {
+      display: none;
+    }
+
+    .tab-content-panel.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Feature Grid & Cards */
+    .features-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .cyan-info-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      padding: 18px;
+      border-top: 4px solid var(--cyan-primary);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .cyan-info-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .cyan-info-card.danger {
+      border-top-color: var(--cyan-danger);
+    }
+
+    .cyan-info-card.warning {
+      border-top-color: var(--cyan-warning);
+    }
+
+    .cyan-info-card.purple {
+      border-top-color: var(--cyan-purple);
+    }
+
+    .cyan-info-card h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 0 0 10px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Callout & Alert Box */
+    .clinical-alert-box {
+      border-radius: 14px;
+      padding: 18px 22px;
+      margin: 20px 0;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .clinical-alert-box.danger {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1.5px solid rgba(239, 68, 68, 0.3);
+      color: #991b1b;
+    }
+
+    [data-theme="dark"] .clinical-alert-box.danger {
+      background: rgba(239, 68, 68, 0.15);
+      color: #fca5a5;
+    }
+
+    .clinical-alert-box.info {
+      background: rgba(2, 132, 199, 0.08);
+      border: 1.5px solid rgba(2, 132, 199, 0.3);
+      color: #075985;
+    }
+
+    [data-theme="dark"] .clinical-alert-box.info {
+      background: rgba(2, 132, 199, 0.15);
+      color: #7dd3fc;
+    }
+
+    .clinical-alert-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .clinical-alert-content h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 0 0 6px 0;
+    }
+
+    .clinical-alert-content p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Comparison Table */
+    .comparison-table-wrapper {
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid var(--color-border);
+      margin: 16px 0;
+    }
+
+    .clinical-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      text-align: left;
+    }
+
+    .clinical-table th,
+    .clinical-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .clinical-table th {
+      background: rgba(2, 132, 199, 0.08);
+      font-weight: 700;
+      color: var(--color-text);
+    }
+
+    .clinical-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Interactive Hyperoxia Test Component */
+    .hyperoxia-tester {
+      background: var(--color-surface);
+      border: 2px dashed var(--cyan-primary);
+      border-radius: 16px;
+      padding: 22px;
+      margin: 20px 0;
+    }
+
+    .test-step-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    .test-step-card {
+      background: rgba(2, 132, 199, 0.04);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .test-step-card .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--cyan-primary);
+      color: white;
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+    }
+
+    /* SVG Graph Container */
+    .svg-graph-container {
+      width: 100%;
+      max-width: 650px;
+      margin: 20px auto;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Interactive Flowchart Decision Tree */
+    .tree-step-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-left: 4px solid var(--cyan-primary);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      transition: all 0.2s;
+    }
+
+    .tree-step-card:hover {
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    }
+
+    .tree-step-card.success { border-left-color: var(--cyan-success); }
+    .tree-step-card.danger { border-left-color: var(--cyan-danger); }
+    .tree-step-card.warning { border-left-color: var(--cyan-warning); }
+
+    .citation-list {
+      font-size: 0.88rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      padding-left: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- APP CONTAINER -->
+  <div class="app-container">
+
+
+
+    <!-- MAIN WRAPPER -->
+    <div class="main-wrapper" id="mainContent">
+
+
+      <!-- HERO BANNER -->
+      <section class="hero-cyanosis">
+        <div class="hero-cyanosis-header">
+          <div class="hero-title-group">
+            <div class="hero-badges-group">
+              <span class="hero-badge-pill"><i class="fa-solid fa-child"></i> Nhi Khoa &amp; Sơ Sinh</span>
+              <span class="hero-badge-pill"><i class="fa-solid fa-heart-pulse"></i> Tim Mạch - Hô Hấp</span>
+              <span class="hero-badge-pill alert"><i class="fa-solid fa-triangle-exclamation"></i> Cấp Cứu Nhi</span>
+            </div>
+            <h1>🫁 TIẾP CẬN TRẺ TÍM (Approach to Cyanotic Child)</h1>
+            <p style="font-size: 0.98rem; opacity: 0.92; max-width: 750px; line-height: 1.5; margin: 8px 0 0 0;">
+              Hướng dẫn toàn diện về sinh lý học Hb khử, phân loại 3 dạng tím (Trung vương, Ngoại biên, Chuyên biệt), cơ chế bệnh sinh, Nghiệm pháp thở Oxy liều cao (Hyperoxia Test), lưu ý Prostaglandin E<sub>1</sub> (PGE<sub>1</sub>) và sơ đồ chẩn đoán phân biệt Tim vs Phổi chuẩn YDS.
+            </p>
+          </div>
+        </div>
+
+        <div class="hero-quick-stats">
+          <div class="stat-box">
+            <div class="stat-label">Ngưỡng Hb khử gây tím</div>
+            <div class="stat-val">&gt; 3.0 - 5.0 g/dL</div>
+            <div class="stat-sub">Tại giường mao mạch nông</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">SaO2 tím (Hb bình thường 15g/dL)</div>
+            <div class="stat-val">70% - 80%</div>
+            <div class="stat-sub">SaO2 bắt đầu xuất hiện tím</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Hyperoxia Test (100% O2)</div>
+            <div class="stat-val">PaO2 &gt; 150 mmHg</div>
+            <div class="stat-sub">Đáp ứng tốt = Nguyên nhân Phổi</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Duy trì ống động mạch</div>
+            <div class="stat-val">Prostaglandin E1</div>
+            <div class="stat-sub">Cấp cứu tím phụ thuộc PDA</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- QUICK NAV STICKY BAR -->
+      <div class="quick-nav-bar" id="quickNavBar">
+        <button class="quick-nav-btn active" onclick="scrollToSec('sec-sinhly')"><i class="fa-solid fa-microscope"></i> 1. Sinh lý Hb &amp; Ngưỡng tím</button>
+        <button class="quick-nav-btn" onclick="scrollToSec('sec-phanloai')"><i class="fa-solid fa-list-check"></i> 2. Phân loại Tím Lâm sàng</button>
+        <button class="quick-nav-btn" onclick="scrollToSec('sec-coche')"><i class="fa-solid fa-stethoscopes"></i> 3. Cơ chế bệnh sinh</button>
+        <button class="quick-nav-btn" onclick="scrollToSec('sec-hyperoxia')"><i class="fa-solid fa-vial"></i> 4. Test Oxy &amp; Tim vs Phổi</button>
+        <button class="quick-nav-btn" onclick="scrollToSec('sec-sodo')"><i class="fa-solid fa-diagram-project"></i> 5. Sơ đồ 59.1 YDS</button>
+        <button class="quick-nav-btn" onclick="scrollToSec('sec-thamkhao')"><i class="fa-solid fa-book-medical"></i> 6. Tham khảo</button>
+      </div>
+
+      <!-- SECTION 1: SINH LÝ HỌC CHI TIẾT & GIẢ LẬP Hb -->
+      <section class="section-card" id="sec-sinhly">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-microscope"></i></div>
+          <div>
+            <h2>1. Nội Dung Sinh Lý Học Chi Tiết &amp; Cơ Chế Xuất Hiện Tím</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Mối tương quan giữa nồng độ Hemoglobin toàn phần, Hb khử và độ bão hòa Oxy máu động mạch (SaO<sub>2</sub>)</span>
+          </div>
+        </div>
+
+        <p style="line-height: 1.6; margin-bottom: 16px;">
+          <strong>Tím (Cyanosis)</strong> là biểu hiện màu tím của da và niêm mạc do <strong>tăng nồng độ hemoglobin (Hb) khử</strong> (Hb không được bão hòa oxy) trong máu mao mạch. Tím dễ quan sát nhất ở các vị trí có giường mao mạch nằm nông gần bề mặt da và niêm mạc như: <em>giường móng, niêm mạc miệng, niêm mạc má, dưới lưỡi, vành tai, kết mạc mắt và chóp mũi</em>.
+        </p>
+
+        <div class="clinical-alert-box info">
+          <div class="clinical-alert-icon"><i class="fa-solid fa-circle-info"></i></div>
+          <div class="clinical-alert-content">
+            <h4>Quy Tắc Sinh Lý Quan Trọng</h4>
+            <p>
+              Trên lâm sàng, triệu chứng tím xuất hiện khi <strong>nồng độ Hb khử trong máu mao mạch đạt từ 3 đến 5 g/dL</strong>. Sự xuất hiện của triệu chứng tím phụ thuộc trực tiếp vào <strong>nồng độ tuyệt đối của Hb khử</strong> chứ không chỉ thuần túy dựa vào chỉ số SaO<sub>2</sub> hay SpO<sub>2</sub>.
+            </p>
+          </div>
+        </div>
+
+        <!-- INTERACTIVE HB SIMULATION CALCULATOR -->
+        <div class="hb-sim-container">
+          <h3 style="margin: 0 0 12px 0; font-size: 1.1rem; font-weight: 700; color: var(--cyan-primary); display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-calculator"></i> Công Cụ Giả Lập Ngưỡng Xuất Hiện Tím Theo Nồng Độ Hb (YDS Demo)
+          </h3>
+          <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 16px;">
+            Thay đổi nồng độ Hemoglobin toàn phần để quan sát ngưỡng SaO<sub>2</sub> làm xuất hiện triệu chứng tím trên lâm sàng (giả định nồng độ Hb khử đạt ngưỡng tím 5 g/dL).
+          </p>
+
+          <div class="sim-controls-grid">
+            <div>
+              <label style="font-weight: 700; font-size: 0.9rem; display: block; margin-bottom: 6px;">
+                Chọn Thể Trạng Bệnh Nhân:
+              </label>
+              <div class="preset-btns">
+                <button class="preset-btn" onclick="setHbPreset(10, this)">Thiếu máu (Hb = 10 g/dL)</button>
+                <button class="preset-btn active" onclick="setHbPreset(15, this)">Bình thường (Hb = 15 g/dL)</button>
+                <button class="preset-btn" onclick="setHbPreset(20, this)">Đa hồng cầu (Hb = 20 g/dL)</button>
+              </div>
+
+              <div class="slider-group">
+                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600; margin-bottom: 4px;">
+                  <span>Nồng độ Hb toàn phần:</span>
+                  <span id="hbValDisp" style="color: var(--cyan-primary); font-weight: 800;">15.0 g/dL</span>
+                </div>
+                <input type="range" id="hbSlider" min="6" max="24" step="0.5" value="15" oninput="updateHbSim(this.value)">
+                <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--color-text-muted); margin-top: 4px;">
+                  <span>6 g/dL (Thiếu máu nặng)</span>
+                  <span>15 g/dL (Chuẩn)</span>
+                  <span>24 g/dL (Sơ sinh/Đa hồng cầu)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hb-result-box">
+              <div style="font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; color: var(--color-text-muted);">
+                Kết quả giả lập ngưỡng SaO2 xuất hiện tím:
+              </div>
+              <div style="font-size: 2rem; font-weight: 800; color: var(--cyan-primary); font-family: var(--font-display); margin: 6px 0;" id="saO2Result">
+                70.0% - 80.0%
+              </div>
+
+              <div class="saO2-meter-bar">
+                <div class="saO2-meter-fill" id="meterFill" style="width: 75%;"></div>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px;">
+                <span class="cyanosis-state-badge" id="cyanBadge" style="background: rgba(2, 132, 199, 0.15); color: var(--cyan-primary);">
+                  Tím xuất hiện ở mức SaO2 thông thường
+                </span>
+                <span style="font-size: 0.8rem; font-weight: 600; color: var(--color-text-muted);" id="hbKhudisp">
+                  Hb khử: 5.0 g/dL
+                </span>
+              </div>
+
+              <p style="font-size: 0.83rem; line-height: 1.45; margin: 10px 0 0 0; color: var(--color-text);" id="simExplanation">
+                Ở trẻ có Hb bình thường (15 g/dL), tím xuất hiện khi SaO2 giảm xuống khoảng 70-80% (khi nồng độ Hb khử đạt 3-5 g/dL).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- VISUAL GRAPH CARD (Mô phỏng Hình 57.1 Nhi khoa YDS) -->
+        <div class="svg-graph-container">
+          <h4 style="margin: 0 0 8px 0; font-size: 0.95rem; font-weight: 700; text-align: center; color: var(--color-text);">
+            📊 Đồ thị Tương quan nồng độ Hb toàn phần, Hb khử và SaO<sub>2</sub> tại thời điểm xuất hiện tím (Hình 57.1 YDS)
+          </h4>
+          <svg viewBox="0 0 500 240" style="width: 100%; height: auto;">
+            <!-- Axes -->
+            <line x1="50" y1="200" x2="460" y2="200" stroke="var(--color-border)" stroke-width="2" />
+            <line x1="50" y1="200" x2="50" y2="20" stroke="var(--color-border)" stroke-width="2" />
+            
+            <!-- Axis Labels -->
+            <text x="255" y="232" font-size="11" font-weight="600" fill="var(--color-text)" text-anchor="middle">Nồng độ Hb toàn phần (g/dL)</text>
+            <text x="18" y="110" font-size="11" font-weight="600" fill="var(--color-text)" text-anchor="middle" transform="rotate(-90 18,110)">SaO2 động mạch (%)</text>
+            
+            <!-- Grid Lines -->
+            <line x1="50" y1="150" x2="460" y2="150" stroke="var(--color-border)" stroke-linecap="round" stroke-dasharray="3,3" />
+            <text x="42" y="154" font-size="10" fill="var(--color-text-muted)" text-anchor="end">50%</text>
+
+            <line x1="50" y1="100" x2="460" y2="100" stroke="var(--color-border)" stroke-dasharray="3,3" />
+            <text x="42" y="104" font-size="10" fill="var(--color-text-muted)" text-anchor="end">75%</text>
+
+            <line x1="50" y1="50" x2="460" y2="50" stroke="var(--color-border)" stroke-dasharray="3,3" />
+            <text x="42" y="54" font-size="10" fill="var(--color-text-muted)" text-anchor="end">100%</text>
+
+            <!-- Curve representing SaO2 threshold at 5g/dL Hb khử -->
+            <path d="M 120,150 Q 250,110 400,100" fill="none" stroke="#0284c7" stroke-width="3" />
+
+            <!-- Points & Annotations -->
+            <circle cx="120" cy="150" r="5" fill="#ef4444" />
+            <text x="120" y="172" font-size="10" font-weight="700" fill="#ef4444" text-anchor="middle">Thiếu máu (10g/dL)</text>
+            <text x="120" y="140" font-size="10" font-weight="700" fill="#ef4444" text-anchor="middle">SaO2 = 50%</text>
+
+            <circle cx="250" cy="115" r="5" fill="#0284c7" />
+            <text x="250" y="137" font-size="10" font-weight="700" fill="#0284c7" text-anchor="middle">Bình thường (15g/dL)</text>
+            <text x="250" y="105" font-size="10" font-weight="700" fill="#0284c7" text-anchor="middle">SaO2 = 70-80%</text>
+
+            <circle cx="400" cy="100" r="5" fill="#7c3aed" />
+            <text x="400" y="122" font-size="10" font-weight="700" fill="#7c3aed" text-anchor="middle">Đa hồng cầu (20g/dL)</text>
+            <text x="400" y="90" font-size="10" font-weight="700" fill="#7c3aed" text-anchor="middle">SaO2 = 75%</text>
+          </svg>
+          <p style="font-size: 0.8rem; color: var(--color-text-muted); text-align: center; margin: 6px 0 0 0;">
+            <em>Ghi chú: Ở trẻ thiếu máu, triệu chứng tím xuất hiện rất muộn (SaO2 rơi xuống 50%). Ở trẻ đa hồng cầu, tím xuất hiện rất sớm (khi SaO2 còn ở mức 75%).</em>
+          </p>
+        </div>
+      </section>
+
+      <!-- SECTION 2: PHÂN LOẠI TÍM TÊN LÂM SÀNG -->
+      <section class="section-card" id="sec-phanloai">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-list-check"></i></div>
+          <div>
+            <h2>2. Phân Loại Tím Trên Lâm Sàng</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Dựa vào vị trí da niêm bị ảnh hưởng và thông số khí máu huyết động (3 loại tím chính)</span>
+          </div>
+        </div>
+
+        <!-- TAB BUTTONS -->
+        <div class="tab-nav">
+          <button class="tab-btn active" onclick="switchTab('tab-trungvuong', this)">
+            <i class="fa-solid fa-lungs"></i> 1. Tím Trung Vương (Central)
+          </button>
+          <button class="tab-btn" onclick="switchTab('tab-ngoaibien', this)">
+            <i class="fa-solid fa-hand"></i> 2. Tím Ngoại Biên (Peripheral)
+          </button>
+          <button class="tab-btn" onclick="switchTab('tab-chuyenbiet', this)">
+            <i class="fa-solid fa-arrows-split-up-and-left"></i> 3. Tím Chuyên Biệt (Differential)
+          </button>
+        </div>
+
+        <!-- TAB 1: TÍM TRUNG VƯƠNG -->
+        <div class="tab-content-panel active" id="tab-trungvuong">
+          <div class="features-grid-3">
+            <div class="cyan-info-card danger">
+              <h4><i class="fa-solid fa-gears" style="color: var(--cyan-danger);"></i> Cơ Chế Sinh Lý Bệnh</h4>
+              <p style="font-size: 0.9rem; line-height: 1.5; margin: 0;">
+                Xảy ra khi <strong>giảm độ bão hòa oxy máu động mạch (SaO<sub>2</sub>)</strong> do bệnh lý tổn thương tại phổi hoặc do có luồng thông (shunt) Phải – Trái làm máu động mạch nhận một phần máu chưa được oxy hóa từ tĩnh mạch.
+              </p>
+            </div>
+
+            <div class="cyan-info-card warning">
+              <h4><i class="fa-solid fa-stethoscope" style="color: var(--cyan-warning);"></i> Lâm Sàng &amp; Khí Máu</h4>
+              <p style="font-size: 0.9rem; line-height: 1.5; margin: 0;">
+                Tím xuất hiện ở <strong>cả da và niêm mạc</strong> (lưỡi, niêm mạc miệng, niêm mạc má). Khí máu động mạch ghi nhận PaO<sub>2</sub>, SaO<sub>2</sub> và SpO<sub>2</sub> giảm nặng (&lt; 94%).
+              </p>
+            </div>
+
+            <div class="cyan-info-card purple">
+              <h4><i class="fa-solid fa-notes-medical" style="color: var(--cyan-purple);"></i> Nhóm Nguyên Nhân Chính</h4>
+              <ul style="font-size: 0.88rem; line-height: 1.5; margin: 0; padding-left: 18px;">
+                <li>Bệnh lý nhu mô &amp; thông khí phổi (V/Q mismatch, giảm khuếch tán).</li>
+                <li>Bệnh tim bẩm sinh có shunt Phải – Trái (trong hoặc ngoài tim).</li>
+                <li>Methemoglobinemia bẩm sinh hoặc mắc phải.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: TÍM NGOẠI BIÊN -->
+        <div class="tab-content-panel" id="tab-ngoaibien">
+          <div class="features-grid-3">
+            <div class="cyan-info-card">
+              <h4><i class="fa-solid fa-gears" style="color: var(--cyan-primary);"></i> Cơ Chế Sinh Lý Bệnh</h4>
+              <p style="font-size: 0.9rem; line-height: 1.5; margin: 0;">
+                Máu rời tim và phổi vẫn được bão hòa oxy hoàn toàn (SaO<sub>2</sub>, PaO<sub>2</sub> bình thường), nhưng do <strong>sử dụng oxy ở mô quá mức</strong> hoặc do <strong>máu di chuyển quá chậm</strong> ở giường mao mạch ngoại biên khiến máu tĩnh mạch bị mất bão hòa oxy nặng.
+              </p>
+            </div>
+
+            <div class="cyan-info-card warning">
+              <h4><i class="fa-solid fa-user-doctor" style="color: var(--cyan-warning);"></i> Biểu Hiện Đặc Trưng</h4>
+              <p style="font-size: 0.9rem; line-height: 1.5; margin: 0;">
+                Tím <strong>chỉ xuất hiện ở da đầu chi</strong> (ngón tay, ngón chân, chóp mũi), trong khi <strong>niêm mạc (lưỡi, niêm mạc má) VẪN HỒNG</strong>. Khí máu động mạch SaO<sub>2</sub> và PaO<sub>2</sub> hoàn toàn bình thường.
+              </p>
+            </div>
+
+            <div class="cyan-info-card danger">
+              <h4><i class="fa-solid fa-triangle-exclamation" style="color: var(--cyan-danger);"></i> Nguyên Nhân Thường Gặp</h4>
+              <ul style="font-size: 0.88rem; line-height: 1.5; margin: 0; padding-left: 18px;">
+                <li>Tiếp xúc với môi trường lạnh (co mạch ngoại biên).</li>
+                <li>Sốc (sốc nhiễm trùng, sốc giảm thể tích, sốc tim).</li>
+                <li>Suy tim nặng, giảm cung lượng tim.</li>
+                <li>Hạ đường huyết, bệnh Raynaud.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: TÍM CHUYÊN BIỆT -->
+        <div class="tab-content-panel" id="tab-chuyenbiet">
+          <p style="line-height: 1.5; margin-bottom: 16px;">
+            <strong>Tím Chuyên Biệt (Differential Cyanosis)</strong> xảy ra khi máu nuôi các chi có độ bão hòa oxy khác nhau giữa chi trên và chi dưới do sự hiện diện của luồng thông qua ống động mạch (PDA) kèm theo bất thường cấu trúc tim hoặc tăng áp động mạch phổi.
+          </p>
+
+          <div class="features-grid-3">
+            <div class="cyan-info-card danger">
+              <h4><i class="fa-solid fa-arrow-down-long"></i> Chi Dưới Tím Hơn Chi Trên</h4>
+              <p style="font-size: 0.88rem; line-height: 1.5; margin: 0 0 8px 0;">
+                (Hoặc Tay phải hồng, Tay trái &amp; Chi dưới tím): Máu nuôi chi dưới bị thiếu Oxy do nhận máu từ ĐM phổi qua PDA có shunt Phải - Trái đảo chiều.
+              </p>
+              <div style="font-size: 0.82rem; background: rgba(239, 68, 68, 0.08); padding: 8px; border-radius: 6px;">
+                <strong>Gặp trong:</strong> PDA kèm tăng áp phổi nặng đảo shunt; Hẹp eo ĐMC nặng; Đứt đoạn cung ĐMC; Thiểu sản tim trái (HLHS).
+              </div>
+            </div>
+
+            <div class="cyan-info-card purple">
+              <h4><i class="fa-solid fa-arrow-up-long"></i> Chi Trên Tím Hơn Chi Dưới</h4>
+              <p style="font-size: 0.88rem; line-height: 1.5; margin: 0 0 8px 0;">
+                Máu nuôi chi trên bị tím nặng hơn chi dưới.
+              </p>
+              <div style="font-size: 0.82rem; background: rgba(124, 58, 237, 0.08); padding: 8px; border-radius: 6px;">
+                <strong>Gặp trong:</strong> Hoán vị đại động mạch (TGA) kèm Còn ống động mạch (PDA) và có Tăng áp động mạch phổi nặng.
+              </div>
+            </div>
+
+            <div class="cyan-info-card info">
+              <h4><i class="fa-solid fa-heart-pulse"></i> 3 Tật Tim Phụ Thuộc Ống ĐMC</h4>
+              <ul style="font-size: 0.82rem; line-height: 1.45; margin: 0; padding-left: 16px;">
+                <li><strong>HLHS (Type A):</strong> Thất trái &amp; ĐMC lên thiểu sản nặng, máu nuôi cơ thể phụ thuộc PDA.</li>
+                <li><strong>Đứt đoạn cung ĐMC (Type B):</strong> Cung ĐMC bị đứt đoạn hoàn toàn, chi dưới nhận máu từ PDA.</li>
+                <li><strong>Hẹp eo ĐMC khít (Type C):</strong> Đoạn eo Hẹp khít, tưới máu chi dưới phụ thuộc shunt P-T qua PDA.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: CƠ CHẾ BỆNH SINH TÍM TRUNG VƯƠNG -->
+      <section class="section-card" id="sec-coche">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-stethoscopes"></i></div>
+          <div>
+            <h2>3. Cơ Chế Bệnh Sinh Của Tím Trung Vương</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Phân tích 3 nhóm cơ chế lớn gây giảm độ bão hòa Oxy máu động mạch hệ thống</span>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+          <!-- CARD 1: DO PHỔI -->
+          <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 14px; padding: 20px;">
+            <h3 style="margin: 0 0 12px 0; font-size: 1.1rem; color: var(--cyan-primary); font-weight: 700; display: flex; align-items: center; gap: 8px;">
+              <i class="fa-solid fa-lungs"></i> 1. Cơ Chế Tím Do Bệnh Lý Phổi
+            </h3>
+            <p style="font-size: 0.88rem; line-height: 1.5; margin-bottom: 12px;">
+              Ở người bình thường, khoảng 98% máu từ phổi về nhĩ trái được bão hòa oxy đầy đủ qua mao mạch phế nang (PaO<sub>2</sub> &approx; 104 mmHg). Khi phổi bị tổn thương, máu không được oxy hóa đầy đủ do <strong>5 cơ chế sinh lý bệnh</strong>:
+            </p>
+            <ol style="font-size: 0.88rem; line-height: 1.55; margin: 0; padding-left: 18px;">
+              <li><strong>Bất cân xứng thông khí – tưới máu (V/Q mismatch):</strong> Cơ chế thường gặp nhất trên lâm sàng.</li>
+              <li><strong>Luồng thông (shunt) động – tĩnh mạch trong phổi.</strong></li>
+              <li><strong>Giảm thông khí phế nang</strong> (do bệnh thần kinh cơ, ức chế trung khu hô hấp).</li>
+              <li><strong>Tắc nghẽn khuếch tán oxy</strong> qua màng phế nang – mao mạch.</li>
+              <li><strong>Pha trộn khí thiếu oxy khi thở</strong> (môi trường thiếu oxy).</li>
+            </ol>
+          </div>
+
+          <!-- CARD 2: DO TIM BẨM SINH -->
+          <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 14px; padding: 20px;">
+            <h3 style="margin: 0 0 12px 0; font-size: 1.1rem; color: var(--cyan-danger); font-weight: 700; display: flex; align-items: center; gap: 8px;">
+              <i class="fa-solid fa-heart-crack"></i> 2. Cơ Chế Tím Do Tật Tim Bẩm Sinh
+            </h3>
+            <p style="font-size: 0.88rem; line-height: 1.5; margin-bottom: 12px;">
+              Máu tĩnh mạch hệ thống không được qua phổi để trao đổi khí mà trộn trực tiếp vào máu động mạch hệ thống qua <strong>luồng thông (shunt) Phải – Trái</strong> (trong tim hoặc ngoài tim), hoặc do <strong>lưu lượng máu lên phổi bị hạn chế nặng</strong>.
+            </p>
+            <div style="background: rgba(239, 68, 68, 0.06); padding: 12px; border-radius: 8px; border-left: 3px solid var(--cyan-danger); font-size: 0.85rem; line-height: 1.45;">
+              <strong>Các tật tim phụ thuộc ống động mạch (Ductal-dependent lesions):</strong> Thiểu sản tim trái (HLHS), Đứt đoạn cung động mạch chủ, Hẹp eo động mạch chủ nặng, Tứ chứng Fallot nặng, Không lỗ van động mạch phổi.
+            </div>
+          </div>
+
+          <!-- CARD 3: METHEMOGLOBINEMIA -->
+          <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 14px; padding: 20px;">
+            <h3 style="margin: 0 0 12px 0; font-size: 1.1rem; color: var(--cyan-purple); font-weight: 700; display: flex; align-items: center; gap: 8px;">
+              <i class="fa-solid fa-dna"></i> 3. Do Methemoglobinemia
+            </h3>
+            <p style="font-size: 0.88rem; line-height: 1.5; margin-bottom: 12px;">
+              Xảy ra khi sắt trong nhân heme bị oxy hóa từ dạng Fe<sup>2+</sup> (Ferrous) thành dạng Fe<sup>3+</sup> (Ferric), khiến Hb mất khả năng gắn kết và vận chuyển oxy cho mô.
+            </p>
+            <ul style="font-size: 0.88rem; line-height: 1.5; margin: 0; padding-left: 18px;">
+              <li><strong>Nguyên nhân:</strong> Bẩm sinh (thiếu enzyme Methemoglobin reductase) hoặc mắc phải (tiếp xúc chất oxy hóa như Nitrat, Nitrit, Dapsone, Benzocaine).</li>
+              <li>Máu bệnh nhân có màu sô-cô-la đặc trưng và không đổi màu khi tiếp xúc oxy khí phòng.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: PHÂN BIỆT TÍM DO TIM VS DO PHỔI & HYPEROXIA TEST -->
+      <section class="section-card" id="sec-hyperoxia">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-vial"></i></div>
+          <div>
+            <h2>4. Phân Biệt Tím Do Tim Hay Do Phổi &amp; Nghiệm Pháp Thở Oxy Liều Cao</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Đánh giá lâm sàng, X-quang và kết quả Hyperoxia Test (Thở 100% O2 trong 10 phút)</span>
+          </div>
+        </div>
+
+        <!-- BẢNG SO SÁNH -->
+        <h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 10px;">Bảng So Sánh Đặc Điểm Lâm Sàng &amp; Cận Lâm Sàng</h3>
+        <div class="comparison-table-wrapper">
+          <table class="clinical-table">
+            <thead>
+              <tr>
+                <th>Đặc điểm đánh giá</th>
+                <th>Tím Trung Vương do Bệnh Lý Phổi</th>
+                <th>Tím Trung Vương do Tim Bẩm Sinh (Shunt P-T)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Biểu hiện Hô hấp</strong></td>
+                <td>Thở nhanh sâu, co lõm ngực nặng, phập phồng cánh mũi, thở rên rõ rệt.</td>
+                <td>Thường không có triệu chứng hô hấp hoặc mức độ nhẹ hơn so với mức độ tím.</td>
+              </tr>
+              <tr>
+                <td><strong>Thăm khám Tim</strong></td>
+                <td>Tiếng tim bình thường, không có âm thổi ở tim.</td>
+                <td>Tiếng tim bất thường (T2 đơn độc/mạnh), âm thổi ở tim gợi ý bệnh tim bẩm sinh.</td>
+              </tr>
+              <tr>
+                <td><strong>X-quang Ngực</strong></td>
+                <td>Bóng tim bình thường, có tổn thương nhu mô phổi (viêm phổi, màng trong, ứ khí).</td>
+                <td>Bóng tim to, hình dáng bất thường (hình giày, hình quả trứng), tuần hoàn phổi tăng hoặc giảm rõ.</td>
+              </tr>
+              <tr>
+                <td><strong>Thở Oxy 100% (Hyperoxia Test)</strong></td>
+                <td>PaO<sub>2</sub> tăng rõ rệt (thường &gt; 150 mmHg), SpO<sub>2</sub> và tím cải thiện tốt.</td>
+                <td>PaO<sub>2</sub> và SpO<sub>2</sub> tăng rất ít hoặc không tăng đáng kể (PaO<sub>2</sub> &lt; 100 - 150 mmHg).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- INTERACTIVE HYPEROXIA TESTER TOOL -->
+        <div class="hyperoxia-tester">
+          <h3 style="margin: 0 0 10px 0; font-size: 1.1rem; font-weight: 700; color: var(--cyan-primary); display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-flask-vial"></i> Mô Phỏng Nghiệm Pháp Thở Oxy Liều Cao (Hyperoxia Test 100% O2)
+          </h3>
+          <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 14px;">
+            Thực hiện nghiệm pháp cho trẻ thở Oxy 100% trong 10 phút để đánh giá khả năng tăng PaO<sub>2</sub> động mạch.
+          </p>
+
+          <div class="test-step-grid">
+            <div class="test-step-card">
+              <div class="step-num">1</div>
+              <div style="font-weight: 700; font-size: 0.88rem; margin-bottom: 4px;">Đo Khí Máu Ban Đầu</div>
+              <div style="font-size: 0.8rem; color: var(--color-text-muted);">Khí phòng (FiO2 21%)<br>SpO2 ~ 72%, PaO2 ~ 42 mmHg</div>
+            </div>
+
+            <div class="test-step-card">
+              <div class="step-num">2</div>
+              <div style="font-weight: 700; font-size: 0.88rem; margin-bottom: 4px;">Thở Oxy 100%</div>
+              <div style="font-size: 0.8rem; color: var(--color-text-muted);">Qua hood hoặc nội khí quản trong 10 phút</div>
+            </div>
+
+            <div class="test-step-card">
+              <div class="step-num">3</div>
+              <div style="font-weight: 700; font-size: 0.88rem; margin-bottom: 4px;">Chọn Bệnh Lý Giả Lập</div>
+              <select id="hyperoxiaSelect" style="width: 100%; padding: 6px; border-radius: 6px; border: 1px solid var(--color-border); font-size: 0.82rem;" onchange="runHyperoxiaTest()">
+                <option value="lung">Suy hô hấp do bệnh Phổi (V/Q Mismatch)</option>
+                <option value="chd">Tim bẩm sinh có Shunt Phải - Trái (Tứ chứng Fallot / TGA)</option>
+                <option value="methb">Hội chứng Methemoglobinemia</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 16px; margin-top: 14px;" id="hyperoxiaResultBox">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+              <div>
+                <span style="font-size: 0.8rem; text-transform: uppercase; font-weight: 700; color: var(--color-text-muted);">Kết quả PaO2 sau thở 100% O2:</span>
+                <div style="font-size: 1.8rem; font-weight: 800; color: var(--cyan-success);" id="pao2ResultVal">&gt; 220 mmHg (ĐÁP ỨNG TỐT)</div>
+              </div>
+              <div id="hyperoxiaStatusBadge" style="background: rgba(16, 185, 129, 0.15); color: var(--cyan-success); padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 0.85rem;">
+                HƯỚNG TỚI NGUYÊN NHÂN DO PHỔI
+              </div>
+            </div>
+            <p style="font-size: 0.88rem; line-height: 1.5; margin: 10px 0 0 0;" id="hyperoxiaAnalysisText">
+              Ở bệnh nhân tổn thương nhu mô phổi, thở Oxy 100% giúp tăng đáng kể áp lực riêng phần Oxy trong các phế nang thông khí tốt, đưa PaO2 vọt lên trên 150 - 200 mmHg.
+            </p>
+          </div>
+        </div>
+
+        <!-- CLINICAL EMERGENCY RED FLAG ALERT BANNER -->
+        <div class="clinical-alert-box danger">
+          <div class="clinical-alert-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div class="clinical-alert-content">
+            <h4 style="color: #dc2626;">🚨 CẢNH BÁO NGUY CẤP LÂM SÀNG KHI THỰC HIỆN TEST OXY</h4>
+            <p style="margin-bottom: 8px;">
+              Cần cực kỳ <strong>thận trọng khi làm test Oxy ở trẻ nghi ngờ tim bẩm sinh phụ thuộc ống động mạch (PDA-dependent lesions)</strong>. Nồng độ Oxy cao trong máu động mạch có thể kích thích <strong>co thắt và đóng ống động mạch (PDA) khẩn cấp</strong>, làm ngưng trệ dòng máu nuôi cơ thể hoặc dòng máu lên phổi, dẫn đến tình trạng tím tái diễn tiến nặng hơn hoặc sốc trụy mạch tử vong!
+            </p>
+            <p style="margin: 0; font-weight: 700;">
+              💊 CHỈ ĐỊNH CẤP CỨU: Chuẩn bị sẵn và cân nhắc truyền duy trì Prostaglandin E<sub>1</sub> (PGE<sub>1</sub>) liều 0.01 - 0.1 mcg/kg/phút để duy trì mở ống động mạch trước khi chuyển tuyến phẫu thuật tim.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: SƠ ĐỒ THUẬT TOÁN TIẾP CẬN TÍM TRUNG VƯƠNG (SƠ ĐỒ 59.1 YDS) -->
+      <section class="section-card" id="sec-sodo">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-diagram-project"></i></div>
+          <div>
+            <h2>5. Thuật Toán Tiếp Cận Chẩn Đoán Phân Biệt Tím Trung Vương (Sơ Đồ 59.1 YDS)</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Sơ đồ quyết định lâm sàng phân biệt Tim bẩm sinh có luồng thông Phải - Trái và Suy hô hấp do các nguyên nhân khác</span>
+          </div>
+        </div>
+
+        <div style="max-width: 800px; margin: 0 auto;">
+          <div class="tree-step-card" style="border-left-color: var(--cyan-purple); background: rgba(124, 58, 237, 0.04);">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+              <span style="background: var(--cyan-purple); color: white; padding: 2px 10px; border-radius: 12px; font-weight: 700; font-size: 0.8rem;">BƯỚC 1</span>
+              <h4 style="margin: 0; font-size: 1.05rem;">Xác Định Trẻ Có Triệu Chứng TÍM TRUNG VƯƠNG (Tím da + niêm mạc)</h4>
+            </div>
+            <p style="font-size: 0.88rem; margin: 0; color: var(--color-text-muted);">
+              Khí máu động mạch hoặc SpO2 giảm (&lt; 94%). Đã loại trừ tím ngoại biên (niêm mạc hồng).
+            </p>
+          </div>
+
+          <div style="text-align: center; color: var(--cyan-primary); font-size: 1.2rem; margin: 4px 0;"><i class="fa-solid fa-arrow-down"></i></div>
+
+          <div class="tree-step-card" style="border-left-color: var(--cyan-primary); background: rgba(2, 132, 199, 0.04);">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+              <span style="background: var(--cyan-primary); color: white; padding: 2px 10px; border-radius: 12px; font-weight: 700; font-size: 0.8rem;">BƯỚC 2</span>
+              <h4 style="margin: 0; font-size: 1.05rem;">Thực Hiện Nghiệm Pháp Thở Oxy Liều Cao (100% O2 trong 10 phút)</h4>
+            </div>
+            <p style="font-size: 0.88rem; margin: 0; color: var(--color-text-muted);">
+              Theo dõi biến đổi triệu chứng tím, SpO2 và lấy khí máu động mạch đo PaO2.
+            </p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px;">
+            <!-- NHÁNH 1: CẢI THIỆN -->
+            <div>
+              <div style="text-align: center; color: var(--cyan-success); font-size: 1.2rem; margin-bottom: 4px;">
+                <i class="fa-solid fa-arrow-down-long"></i> Tím Cải Thiện (+ / +/-)
+              </div>
+              <div class="tree-step-card success">
+                <h4 style="color: var(--cyan-success); font-size: 0.98rem; margin: 0 0 6px 0;">
+                  <i class="fa-solid fa-circle-check"></i> Suy Hô Hấp (SHH) Do Các Nguyên Nhân Khác
+                </h4>
+                <ul style="font-size: 0.83rem; line-height: 1.45; margin: 0; padding-left: 16px; color: var(--color-text);">
+                  <li>Bệnh lý Đường Hô Hấp (Nhu mô, đường thở).</li>
+                  <li>Bệnh lý Thần Kinh (Ức chế trung khu hô hấp).</li>
+                  <li>Toan chuyển hóa nặng.</li>
+                  <li>Thiếu máu nặng.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- NHÁNH 2: KHÔNG CẢI THIỆN -->
+            <div>
+              <div style="text-align: center; color: var(--cyan-danger); font-size: 1.2rem; margin-bottom: 4px;">
+                <i class="fa-solid fa-arrow-down-long"></i> Tím Không Cải Thiện (-)
+              </div>
+              <div class="tree-step-card danger">
+                <h4 style="color: var(--cyan-danger); font-size: 0.98rem; margin: 0 0 6px 0;">
+                  <i class="fa-solid fa-heart-crack"></i> Tim Bẩm Sinh Có Shunt Phải - Trái (TBS P-T)
+                </h4>
+                <ul style="font-size: 0.83rem; line-height: 1.45; margin: 0; padding-left: 16px; color: var(--color-text);">
+                  <li>Tim bẩm sinh tím có luồng thông Phải - Trái (Fallot 4, TGA, TAPVR, HLHS).</li>
+                  <li>Hoặc kết hợp Suy hô hấp nặng kèm Tim bẩm sinh.</li>
+                  <li><strong>Hành động:</strong> Siêu âm tim cấp cứu + Chuẩn bị Prostaglandin E<sub>1</sub> (PGE<sub>1</sub>).</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6: TÀI LIỆU THAM KHẢO CHUẨN AMA -->
+      <section class="section-card" id="sec-thamkhao">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-book-medical"></i></div>
+          <div>
+            <h2>6. Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Tài liệu giảng dạy chính thức Đại học Y Dược TP. Hồ Chí Minh</span>
+          </div>
+        </div>
+
+        <ol class="citation-list">
+          <li>
+            Nguyễn Thị Liên Chi, Vũ Minh Phúc. <em>Bài 57: Tiếp cận trẻ tím</em>. Trong: <strong>Nhi khoa YDS - Tập 2 (Tim mạch)</strong>. Bộ môn Nhi - Đại học Y Dược Thành phố Hồ Chí Minh; 2020:29-37.
+          </li>
+          <li>
+            Hoàng Quốc Tưởng, Vũ Minh Phúc. <em>Bài 59: Tiếp cận tim bẩm sinh ở trẻ em</em>. Trong: <strong>Nhi khoa YDS - Tập 2 (Tim mạch)</strong>. Bộ môn Nhi - Đại học Y Dược Thành phố Hồ Chí Minh; 2020:44-51.
+          </li>
+        </ol>
+      </section>
+
+      <!-- Footer Placeholder -->
+      <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+    </div>
+  </div>
+
+  <!-- JS Core Scripts (5 levels up) -->
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+
+  <!-- INTERACTIVE LOGIC SCRIPT -->
+  <script>
+    // Smooth Scroll Helper
+    function scrollToSec(secId) {
+      const el = document.getElementById(secId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.querySelectorAll('.quick-nav-btn').forEach(btn => btn.classList.remove('active'));
+        if (event && event.currentTarget) {
+          event.currentTarget.classList.add('active');
+        }
+      }
+    }
+
+    // Interactive Hb Cyanosis Threshold Simulator
+    function updateHbSim(hbVal) {
+      hbVal = parseFloat(hbVal);
+      document.getElementById('hbValDisp').innerText = hbVal.toFixed(1) + ' g/dL';
+      
+      let saO2Lower = Math.max(20, Math.round((1 - 5 / hbVal) * 100));
+      let saO2Upper = Math.max(30, Math.round((1 - 3.5 / hbVal) * 100));
+
+      const resElem = document.getElementById('saO2Result');
+      const meterElem = document.getElementById('meterFill');
+      const badgeElem = document.getElementById('cyanBadge');
+      const explElem = document.getElementById('simExplanation');
+
+      resElem.innerText = saO2Lower + '% - ' + saO2Upper + '%';
+      meterElem.style.width = saO2Lower + '%';
+
+      if (hbVal <= 10.5) {
+        badgeElem.style.background = 'rgba(239, 68, 68, 0.15)';
+        badgeElem.style.color = '#ef4444';
+        badgeElem.innerText = 'Tím xuất hiện rất muộn (Thiếu máu nặng)';
+        explElem.innerHTML = `Ở trẻ thiếu máu (Hb = ${hbVal} g/dL), nồng độ Hb khử chỉ đạt 5 g/dL khi độ bão hòa oxy SaO<sub>2</sub> giảm rất sâu xuống <strong>${saO2Lower}%</strong>. Do đó trẻ có thể bị thiếu oxy mô nặng mà lâm sàng chưa thấy tím rõ!`;
+      } else if (hbVal >= 18) {
+        badgeElem.style.background = 'rgba(124, 58, 237, 0.15)';
+        badgeElem.style.color = '#7c3aed';
+        badgeElem.innerText = 'Tím xuất hiện rất sớm (Đa hồng cầu)';
+        explElem.innerHTML = `Ở trẻ đa hồng cầu (Hb = ${hbVal} g/dL), nồng độ Hb khử đã đạt 5 g/dL ngay cả khi độ bão hòa oxy SaO<sub>2</sub> còn cao ở mức <strong>${saO2Lower}%</strong>. Trẻ rất dễ có biểu hiện tím lâm sàng.`;
+      } else {
+        badgeElem.style.background = 'rgba(2, 132, 199, 0.15)';
+        badgeElem.style.color = '#0284c7';
+        badgeElem.innerText = 'Tím xuất hiện ở ngưỡng thông thường';
+        explElem.innerHTML = `Ở trẻ có nồng độ Hb bình thường (Hb = ${hbVal} g/dL), triệu chứng tím bắt đầu được quan sát rõ trên da niêm khi SaO<sub>2</sub> giảm xuống khoảng <strong>${saO2Lower}% - ${saO2Upper}%</strong>.`;
+      }
+    }
+
+    function setHbPreset(hbVal, btnElem) {
+      document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+      btnElem.classList.add('active');
+      document.getElementById('hbSlider').value = hbVal;
+      updateHbSim(hbVal);
+    }
+
+    // Tabs Switcher
+    function switchTab(tabId, btnElem) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content-panel').forEach(p => p.classList.remove('active'));
+      
+      btnElem.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    // Hyperoxia Test Simulator Logic
+    function runHyperoxiaTest() {
+      const type = document.getElementById('hyperoxiaSelect').value;
+      const resVal = document.getElementById('pao2ResultVal');
+      const badge = document.getElementById('hyperoxiaStatusBadge');
+      const text = document.getElementById('hyperoxiaAnalysisText');
+
+      if (type === 'lung') {
+        resVal.innerText = '> 200 - 300 mmHg (TĂNG MẠNH)';
+        resVal.style.color = 'var(--cyan-success)';
+        badge.style.background = 'rgba(16, 185, 129, 0.15)';
+        badge.style.color = 'var(--cyan-success)';
+        badge.innerText = 'NGUYÊN NHÂN DO BỆNH PHỔI';
+        text.innerHTML = 'Ở bệnh nhân tổn thương nhu mô phổi, thở Oxy 100% giúp tăng đáng kể áp lực riêng phần Oxy trong các phế nang thông khí tốt, đưa PaO2 vọt lên trên 150 - 200 mmHg.';
+      } else if (type === 'chd') {
+        resVal.innerText = '&lt; 100 - 150 mmHg (KHÔNG TĂNG)';
+        resVal.style.color = 'var(--cyan-danger)';
+        badge.style.background = 'rgba(239, 68, 68, 0.15)';
+        badge.style.color = 'var(--cyan-danger)';
+        badge.innerText = 'TIM BẨM SINH SHUNT PHẢI - TRÁI';
+        text.innerHTML = 'Ở trẻ có tật tim bẩm sinh tím (Shunt Phải - Trái), máu tĩnh mạch trộn trực tiếp vào hệ tuần hoàn động mạch mà không qua phổi. Do đó cho dù thở Oxy 100% thì PaO2 động mạch vẫn không thể tăng lên cao (&lt; 100-150 mmHg). <strong>Chỉ định siêu âm tim khẩn cấp &amp; Prostaglandin E1!</strong>';
+      } else if (type === 'methb') {
+        resVal.innerText = 'PaO2 bình thường nhưng SpO2 thấp';
+        resVal.style.color = 'var(--cyan-purple)';
+        badge.style.background = 'rgba(124, 58, 237, 0.15)';
+        badge.style.color = 'var(--cyan-purple)';
+        badge.innerText = 'HỘI CHỨNG METHEMOGLOBIN';
+        text.innerHTML = 'Khí máu hòa tan PaO2 có thể bình thường nhưng độ bão hòa SpO2 giảm và triệu chứng tím không cải thiện với 100% O2. Máu bệnh nhân có màu sô-cô-la đặc trưng. Điều trị bằng Methylene Blue.';
+      }
+    }
+  </script>
+</body>
+
+</html>

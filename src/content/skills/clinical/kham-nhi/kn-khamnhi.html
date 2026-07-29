@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Trang điều hướng các kỹ năng khám lâm sàng nhi khoa: Khám hô hấp ở trẻ em và Khám tim mạch ở trẻ em theo chuẩn Macleod & Nhi khoa YDS.">
+  <title>Khám Nhi Khoa – CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../../css/components/clinical-skill.css">
+  <link rel="stylesheet" href="../../../../../css/components/physio-headings.css">
+
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../js/clinical-skill-tabs.js" defer></script>
+
+  <style>
+    :root {
+      --ped-primary: #0284c7;
+      --ped-accent: #06b6d4;
+      --ped-bg-soft: #f0f9ff;
+    }
+
+    .hero-pediatrics {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: white;
+      border-radius: var(--radius-lg, 12px);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 20px rgba(2, 132, 199, 0.2);
+    }
+
+    .hero-pediatrics h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #ffffff;
+    }
+
+    .hero-pediatrics p {
+      font-size: 1rem;
+      opacity: 0.95;
+      max-width: 800px;
+      line-height: 1.6;
+    }
+
+    .ped-principles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    .ped-principle-card {
+      background: var(--color-surface, #ffffff);
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius-md, 8px);
+      padding: 1.25rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    }
+
+    .ped-principle-card h3 {
+      font-size: 1.05rem;
+      color: var(--color-text, #0f172a);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .ped-principle-card p {
+      font-size: 0.9rem;
+      color: var(--color-text-muted, #64748b);
+      line-height: 1.5;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../../index.html" class="nav-item">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../ky-nang.html" class="nav-item active">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../approaches/tiep-can.html" class="nav-item">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../calculators/cong-cu.html" class="nav-item">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ lâm sàng</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-wrapper" id="mainContent">
+      <clini-breadcrumb
+        items='[{"label": "🏠 Home", "url": "../../../../../index.html"}, {"label": "Kỹ năng lâm sàng", "url": "../../ky-nang.html"}, {"label": "Khám Nhi Khoa"}]'></clini-breadcrumb>
+
+      <section class="hero-pediatrics">
+        <h1>👶 Khám Nhi Khoa</h1>
+        <p>Hệ thống kỹ năng thăm khám lâm sàng chuyên khoa Nhi: Đánh giá hô hấp, tim mạch, các dấu hiệu sinh tồn tham chiếu theo tuổi và nguyên tắc giao tiếp - tạo sự hợp tác ở trẻ em dựa trên Nhi khoa YDS & Macleod's Clinical Examination.</p>
+      </section>
+
+      <!-- TABS -->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="pick">Chọn bài khám nhi</button>
+        <button class="tab-btn" data-tab="ov">Tổng quan nguyên tắc</button>
+        <button class="tab-btn" data-tab="ref">Tài liệu tham khảo</button>
+      </div>
+
+      <!-- TAB 1: CHỌN BÀI KHÁM NHI -->
+      <section class="tab active" id="pick">
+        <div class="card" style="margin-bottom: 1.5rem;">
+          <h2><i class="fa-solid fa-stethoscope" style="color: var(--color-primary);"></i> Các bài kỹ năng khám nhi</h2>
+          <p>Lựa chọn bài thăm khám chuyên khoa chi tiết bên dưới để xem hướng dẫn từng bước chuẩn bedside và bảng kiểm thi OSCE.</p>
+        </div>
+
+        <div class="grid2">
+          <!-- CARD 1: KHÁM HÔ HẤP Ở TRẺ -->
+          <a class="link-card" href="kn-kham-ho-hap-tre.html" style="padding: 1.5rem; text-decoration: none;">
+            <div style="font-size: 2.2rem; margin-bottom: 0.75rem;">🫁</div>
+            <h3 style="font-size: 1.2rem; color: var(--color-primary); margin-bottom: 0.5rem;">Khám Hô Hấp Ở Trẻ Em</h3>
+            <p style="font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.5;">
+              Nguyên tắc hỏi bệnh nhi khoa hô hấp, kỹ thuật đếm nhịp thở 1 phút theo tuổi, nhận diện 5 dấu hiệu khó thở (co lõm ngực, phập phồng cánh mũi, thở rên), sờ vị trí khí quản, nghe và phân loại âm phổi (khò khè, stridor, ran ẩm).
+            </p>
+            <div style="margin-top: 1rem; color: var(--color-primary); font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span>Vào bài học</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+
+          <!-- CARD 2: KHÁM TIM MẠCH Ở TRẺ -->
+          <a class="link-card" href="kn-kham-tim-mach-tre.html" style="padding: 1.5rem; text-decoration: none;">
+            <div style="font-size: 2.2rem; margin-bottom: 0.75rem;">🫀</div>
+            <h3 style="font-size: 1.2rem; color: var(--color-primary); margin-bottom: 0.5rem;">Khám Tim Mạch Ở Trẻ Em</h3>
+            <p style="font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.5;">
+              Khai thác triệu chứng mệt khi bú, mệt khi khóc, bắt mạch 4 chi (tìm hẹp eo ĐMC), vị trí mỏm tim chuẩn theo lứa tuổi, sờ T2 mạnh & rung miêu, nghe T2 tách đôi rộng cố định (ASD) và phân tích âm thổi tim bẩm sinh.
+            </p>
+            <div style="margin-top: 1rem; color: var(--color-primary); font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span>Vào bài học</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+
+          <!-- CARD 3: KHÁM TRẺ SƠ SINH -->
+          <a class="link-card" href="kn-kham-tre-so-sinh.html" style="padding: 1.5rem; text-decoration: none;">
+            <div style="font-size: 2.2rem; margin-bottom: 0.75rem;">👶</div>
+            <h3 style="font-size: 1.2rem; color: var(--color-primary); margin-bottom: 0.5rem;">Khám Trẻ Sơ Sinh</h3>
+            <p style="font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.5;">
+              Đánh giá 4 thời điểm khám chuẩn, chỉ số nhân trắc & sinh hiệu, bảng điểm Silverman, sàng lọc tim bẩm sinh SpO2, phân biệt Omphalocele vs Gastroschisis, các phản xạ thần kinh & tầm soát DDH.
+            </p>
+            <div style="margin-top: 1rem; color: var(--color-primary); font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span>Vào bài học</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+
+          <!-- CARD 4: KHÁM & PHÂN LOẠI TRẺ BỆNH (TRIAGE) -->
+          <a class="link-card" href="kn-kham-phan-loai-tre-benh.html" style="padding: 1.5rem; text-decoration: none;">
+            <div style="font-size: 2.2rem; margin-bottom: 0.75rem;">🚦</div>
+            <h3 style="font-size: 1.2rem; color: var(--color-primary); margin-bottom: 0.5rem;">Khám & Phân Loại Trẻ Bệnh (Triage)</h3>
+            <p style="font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.5;">
+              Sàng lọc nhanh 3 nhóm Triage, nhớ mã ưu tiên 3TPR MOB, Ấn tượng ban đầu, Quy trình thăm khám hệ thống ABCDE, Thang điểm AVPU & Hôn mê Glasgow (GCS) nhi khoa.
+            </p>
+            <div style="margin-top: 1rem; color: var(--color-primary); font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span>Vào bài học</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- TAB 2: TỔNG QUAN NGUYÊN TẮC -->
+      <section class="tab" id="ov">
+        <div class="card">
+          <h2><i class="fa-solid fa-lightbulb" style="color: var(--color-warning);"></i> 4 Nguyên Tắc Vàng Khi Thăm Khám Nhi Khoa</h2>
+          <p>Trẻ em không phải là "người lớn thu nhỏ". Việc thăm khám đòi hỏi kỹ năng tiếp cận tâm lý linh hoạt và đánh giá các chỉ số sinh hiệu theo đúng mốc tăng trưởng phát triển.</p>
+
+          <div class="ped-principles-grid">
+            <div class="ped-principle-card">
+              <h3><i class="fa-solid fa-heart-circle-check" style="color: #e11d48;"></i> 1. Tạo sự hợp tác & thân thiện</h3>
+              <p>Thám khám khi trẻ nằm yên hoặc ngồi trong lòng mẹ. Bác sĩ cần làm ấm bàn tay & ống nghe trước khi đặt lên người trẻ. Ưu tiên quan sát và nghe phổi/tim trước khi làm trẻ khóc.</p>
+            </div>
+
+            <div class="ped-principle-card">
+              <h3><i class="fa-solid fa-stopwatch" style="color: #0284c7;"></i> 2. Đo sinh hiệu đủ 1 phút</h3>
+              <p>Nhịp thở và nhịp tim ở trẻ nhỏ có sự biến thiên lớn theo hô hấp và cảm xúc. Cần đếm nhịp thở và bắt mạch trọn vẹn trong 1 phút (lý tưởng là lúc trẻ ngủ hoặc nghỉ ngơi).</p>
+            </div>
+
+            <div class="ped-principle-card">
+              <h3><i class="fa-solid fa-chart-line" style="color: #16a34a;"></i> 3. Đánh giá theo lứa tuổi</h3>
+              <p>Các chỉ số sinh hiệu (nhịp thở, tần số tim, huyết áp), vị trí đập mỏm tim và kiểu thở biến đổi liên tục từ lứa tuổi sơ sinh, nhũ nhi đến thiếu niên.</p>
+            </div>
+
+            <div class="ped-principle-card">
+              <h3><i class="fa-solid fa-hands-holding-child" style="color: #9333ea;"></i> 4. Quan sát tổng thể toàn thân</h3>
+              <p>Khám nhi luôn kết hợp đánh giá sự phát triển thể chất (cân nặng, chiều cao, vòng đầu), màu sắc da niêm (tím, tái, vàng da), và các dị tật bẩm sinh kèm theo.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: TÀI LIỆU THAM KHẢO -->
+      <section class="tab" id="ref">
+        <div class="card">
+          <h2><i class="fa-solid fa-book-bookmark" style="color: var(--color-primary);"></i> Tài liệu tham khảo chuẩn</h2>
+          <ol style="margin-left: 1.25rem; line-height: 1.8; color: var(--color-text);">
+            <li><strong>Bộ môn Nhi – ĐHYD TP.HCM (2020)</strong>: <em>Nhi khoa YDS - Tập 1 & Tập 2</em>. NXB Y học.</li>
+            <li><strong>Innes JA, Dover AR, Fairhurst K (2018)</strong>: <em>Macleod's Clinical Examination</em>. 14th Edition, Elsevier.</li>
+            <li><strong>Lissauer T, Carroll W (2018)</strong>: <em>Illustrated Textbook of Paediatrics</em>. 5th Edition, Elsevier.</li>
+          </ol>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer class="global-footer">
+    <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+  </footer>
+</body>
+
+</html>

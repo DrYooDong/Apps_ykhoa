@@ -782,6 +782,11 @@
         const sgCount = (study.subgroups && typeof study.subgroups === 'object') ? Object.keys(study.subgroups).length : 0;
         const sgInlineBtn = sgCount > 0 ? `<button type="button" class="badge-subgroup-inline" onclick="event.stopPropagation(); openSubgroupModal('${study.id}', event)" title="Xem phân tích ${sgCount} phân nhóm">🧬 Subgroup (${sgCount})</button>` : '';
 
+        // Drug Interaction Linker Badge
+        const drugInterBadge = (window.CliniPortalDrugLinker && typeof window.CliniPortalDrugLinker.renderDrugInteractionBadge === 'function')
+          ? window.CliniPortalDrugLinker.renderDrugInteractionBadge(study)
+          : '';
+
         // Columns HTML segments
         const sourceTypeCell = columnVisibility.sourceType ? `<td><span class="badge badge-src-${study.sourceType}">${srcTypeConfig.name}</span></td>` : '';
         const specialtyCell = columnVisibility.specialty ? `<td><span class="badge badge-${study.specialty}">${spec.name}</span></td>` : '';
@@ -832,7 +837,10 @@
                   ${study.file ? `<a href="${resolveStudyFile(study.file)}" class="badge-summary-inline" onclick="event.stopPropagation()" title="Mở bài viết tóm tắt chi tiết">📝 Tóm tắt</a>` : ''}
                   ${sgInlineBtn}
                 </div>
-                <span class="study-drug">${escapeHtml(study.drug || 'N/A')} • ${escapeHtml(study.organization || 'N/A')} (${study.year})</span>
+                <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:2px;">
+                  <span class="study-drug">${escapeHtml(study.drug || 'N/A')} • ${escapeHtml(study.organization || 'N/A')} (${study.year})</span>
+                  ${drugInterBadge}
+                </div>
               </div>
             </td>
             ${sourceTypeCell}
@@ -925,6 +933,7 @@
                       ${study.sourceUrl ? `<a href="${study.sourceUrl}" target="_blank" class="btn btn-small">📄 Bài báo gốc</a>` : ''}
                       ${study.file ? `<a href="${resolveStudyFile(study.file)}" class="btn btn-small btn-primary">📝 Tóm tắt</a>` : ''}
                       ${sgCount > 0 ? `<button class="btn btn-small" style="color:#0891b2;border-color:rgba(8,145,178,0.4);" onclick="event.stopPropagation();openSubgroupModal('${study.id}',event)">🧬 Subgroup (${sgCount})</button>` : ''}
+                      <button class="btn btn-small" style="color:#7c3aed;border-color:rgba(124,58,237,0.4);" onclick="event.stopPropagation();window.CliniPortalDrugLinker.openModal('${study.id}')">💊 Tương tác thuốc</button>
                       <button class="btn btn-small" onclick="openEditModal('${study.id}', event)">✏️ Sửa</button>
                       <button class="btn btn-small" style="color: var(--color-practice-changing); border-color: rgba(220,38,38,0.3);" onclick="deleteStudy('${study.id}', event)">🗑️ Xóa</button>
                     </div>
@@ -1554,33 +1563,37 @@
           pValue = op ? `${op}${pMatch[2]}` : pMatch[2];
         }
 
-        // List các regex pattern hỗ trợ mở rộng cho OR, RR, HR, aOR, aHR, RD, ARR...
+        // Regex patterns hỗ trợ OR, RR, HR, aOR, aHR, RD, ARR, MD, SMD, WMD...
+        // Hỗ trợ đơn vị tính (kg, mmol/L, %, ...) và từ nối "đến" / "dến" / "dên" / "to" / "-"
+        const sep = '(?:đến|dến|dên|to|[-\u2013\u2014,])';
+        const unit = '(?:\\s+[a-zA-Z%°µμ/-]+)?';
+        const metric = '(aHR|aOR|HR|OR|RR|RD|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR|ORR|CR)';
+
         const patterns = [
-          // 1a. "HR 0.86 (95% CI 0.74-0.99)" hoặc "HR 0.64 (95% CI 0.52-0.79, p<0.001)"
-          /\b(aHR|aOR|HR|OR|RR|RD|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR|ORR|CR)\s*[=:]?\s*(-?[\d.]+)\s*\([^)]{0,35}CI[^\d)]{0,6}(-?[\d.]+)\s*[-\u2013\u2014,]\s*(-?[\d.]+)[^)]*\)/i,
-          // 1b. "OR 1.23 (95% CI: 1.05 to 1.44)"
-          /\b(aHR|aOR|HR|OR|RR|RD|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR|ORR|CR)\s*[=:]?\s*(-?[\d.]+)\s*\([^)]{0,35}CI[^\d)]{0,6}(-?[\d.]+)\s+to\s+(-?[\d.]+)[^)]*\)/i,
-          // 2. "HR 0.86 (0.74-0.99)" — ngoặc tròn thuần túy
-          /\b(aHR|aOR|HR|OR|RR|RD|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR|ORR|CR)\s*[=:]?\s*(-?[\d.]+)\s*\(\s*(-?[\d.]+)\s*[-\u2013\u2014,]\s*(-?[\d.]+)[^)]*\)/i,
-          // 3. "HR 0.62 [0.49-0.77]" hoặc "[95% CI: 1.05, 1.44]"
-          /\b(aHR|aOR|HR|OR|RR|RD|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR|ORR|CR)\s*[=:]?\s*(-?[\d.]+)\s*\[\s*(?:[^\]]{0,25}?CI[^\d\]]{0,6})?(-?[\d.]+)\s*[-\u2013\u2014,]\s*(-?[\d.]+)[^\]]*\]/i,
-          // 4. "RR 1.51, 95% CI 1.05-2.18" hoặc "RR 0.91; 95% CI 0.84-0.99"
-          /\b(aHR|aOR|HR|OR|RR|RD|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR|ORR|CR)\s*[=:]?\s*(-?[\d.]+)\s*[,;]\s*(?:95%\s*)?CI\s*[=:]?\s*(-?[\d.]+)\s*[-\u2013\u2014,]\s*(-?[\d.]+)/i,
-          // 5. "RR 0.91; 95% CI (0.84-0.99)"
-          /\b(aHR|aOR|HR|OR|RR|RD|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR|ORR|CR)\s*[=:]?\s*(-?[\d.]+)\s*[,;]\s*(?:95%\s*)?CI\s*\(?\s*(-?[\d.]+)\s*[-\u2013\u2014]\s*(-?[\d.]+)\s*\)?/i,
-          // 6. "HR 0.86 95% CI 0.74-0.99" — phân cách khoảng trắng
-          /\b(aHR|aOR|HR|OR|RR|RD|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR|ORR|CR)\s*[=:]?\s*(-?[\d.]+)\s+(?:95%\s*)?CI\s*[=:]?\s*\[?\s*(-?[\d.]+)\s*[-\u2013\u2014]\s*(-?[\d.]+)\]?/i,
-          // 7. "HR=0.86; 95% CI [0.74-0.99]" hoặc "... to ..."
-          /\b(aHR|aOR|HR|OR|RR|RD|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR|ORR|CR)\s*=\s*(-?[\d.]+)[\s;,]+(?:95%\s*)?CI\s*\[?\s*(-?[\d.]+)\s*(?:[-\u2013\u2014]|to)\s*(-?[\d.]+)\]?/i,
-          // 8. "pooled RR = 0.91 (0.84-0.99)"
-          /(?:pooled|combined)?\s*(aHR|aOR|HR|OR|RR|RD|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR|ORR|CR)\s*=?\s*(-?[\d.]+)\s*\(\s*(-?[\d.]+)\s*[-\u2013\u2014]\s*(-?[\d.]+)[^)]*\)/i,
+          // 1a. "MD -1.30 kg (95% CI -2.02 đến -0.57, p<0.01)" hoặc "HR 0.86 (95% CI 0.74-0.99)"
+          new RegExp(`\\b${metric}\\s*[=:]?\\s*(-?[\\d.]+${unit})\\s*\\([^)]*?CI[^\\d-]*(-?[\\d.]+)\\s*${sep}\\s*(-?[\\d.]+)[^)]*\\)`, 'i'),
+          // 1b. "MD -1.30 kg (95% CI: -2.02 to -0.57)"
+          new RegExp(`\\b${metric}\\s*[=:]?\\s*(-?[\\d.]+${unit})\\s*\\([^)]*?CI[^\\d-]*(-?[\\d.]+)\\s+to\\s+(-?[\\d.]+)[^)]*\\)`, 'i'),
+          // 2. "MD -1.30 kg (-2.02 đến -0.57)" — ngoặc tròn thuần túy
+          new RegExp(`\\b${metric}\\s*[=:]?\\s*(-?[\\d.]+${unit})\\s*\\(\\s*(-?[\\d.]+)\\s*${sep}\\s*(-?[\\d.]+)[^)]*\\)`, 'i'),
+          // 3. "MD -1.30 kg [95% CI: -2.02 đến -0.57]" — ngoặc vuông
+          new RegExp(`\\b${metric}\\s*[=:]?\\s*(-?[\\d.]+${unit})\\s*\\[[^\\]]*?CI[^\\d\\]]*(-?[\\d.]+)\\s*${sep}\\s*(-?[\\d.]+)[^\\]]*\\]`, 'i'),
+          // 4. "MD -1.30 kg, 95% CI -2.02 đến -0.57"
+          new RegExp(`\\b${metric}\\s*[=:]?\\s*(-?[\\d.]+${unit})\\s*[,;]\\s*(?:95%\\s*)?CI\\s*[=:]?\\s*(-?[\\d.]+)\\s*${sep}\\s*(-?[\\d.]+)`, 'i'),
+          // 5. "MD -1.30 kg 95% CI -2.02 đến -0.57" — phân cách khoảng trắng
+          new RegExp(`\\b${metric}\\s*[=:]?\\s*(-?[\\d.]+${unit})\\s+(?:95%\\s*)?CI\\s*[=:]?\\s*\\[?\\s*(-?[\\d.]+)\\s*${sep}\\s*(-?[\\d.]+)\\]?`, 'i'),
+          // 6. "MD = -1.30 kg; 95% CI [-2.02 đến -0.57]"
+          new RegExp(`\\b${metric}\\s*=\\s*(-?[\\d.]+${unit})[\\s;,]+(?:95%\\s*)?CI\\s*\\[?\\s*(-?[\\d.]+)\\s*(?:${sep}|to)\\s*(-?[\\d.]+)\\]?`, 'i'),
+          // 7. "pooled MD = -1.30 kg (-2.02 đến -0.57)"
+          new RegExp(`(?:pooled|combined)?\\s*${metric}\\s*=?\\s*(-?[\\d.]+${unit})\\s*\\(\\s*(-?[\\d.]+)\\s*${sep}\\s*(-?[\\d.]+)[^)]*\\)`, 'i')
         ];
 
         for (const pattern of patterns) {
           const match = keyResults.match(pattern);
           if (!match) continue;
           label    = (match[1] || '').toUpperCase();
-          estimate = parseFloat(match[2]);
+          const rawEst = match[2].trim().split(/\s+/)[0];
+          estimate = parseFloat(rawEst);
           lower    = parseFloat(match[3]);
           upper    = parseFloat(match[4]);
           if (!isNaN(estimate) && !isNaN(lower) && !isNaN(upper)) break;
@@ -1589,9 +1602,9 @@
 
       if (isNaN(estimate) || isNaN(lower) || isNaN(upper)) return null;
       if (lower > estimate || estimate > upper) return null;
-      if ((upper - lower) > 25) return null;
+      if (Math.abs(upper - lower) > 500) return null;
 
-      const allowNeg = ['MD', 'SMD', 'WMD', 'RD'].includes(label);
+      const allowNeg = ['MD', 'SMD', 'WMD', 'RD', 'ARR'].includes(label);
       if (!allowNeg && lower < 0) return null;
       if (!allowNeg && estimate === 0) return null;
 
@@ -1618,22 +1631,26 @@
       const plotW = W - PAD_L - PAD_R;
       const cy = (H / 2) - 2;
 
-      const maxDist = Math.max(Math.abs(upper - 1.0), Math.abs(1.0 - lower)) * 1.3 + 0.15;
-      const axisMin = Math.max(0.05, 1.0 - maxDist);
-      const axisMax = 1.0 + maxDist;
+      const isDiff = ['MD', 'SMD', 'WMD', 'RD', 'ARR'].includes(label);
+      const nullVal = isDiff ? 0.0 : 1.0;
+
+      const maxDist = Math.max(Math.abs(upper - nullVal), Math.abs(nullVal - lower)) * 1.3 + 0.15;
+      const axisMin = isDiff ? (nullVal - maxDist) : Math.max(0.05, nullVal - maxDist);
+      const axisMax = nullVal + maxDist;
 
       function toX(val) {
         return PAD_L + ((val - axisMin) / (axisMax - axisMin)) * plotW;
       }
 
-      const x0 = toX(1.0);
+      const x0 = toX(nullVal);
       const xE = toX(estimate);
       const xL = toX(lower);
       const xU = toX(upper);
 
-      const isGreen = estimate < 1.0;
-      const dotColor = isGreen ? '#16a34a' : estimate > 1.0 ? '#dc2626' : '#6b7280';
-      const ciColor  = isGreen ? '#86efac' : estimate > 1.0 ? '#fca5a5' : '#cbd5e1';
+      const isGreen = isDiff ? estimate < 0.0 : estimate < 1.0;
+      const isHarm  = isDiff ? estimate > 0.0 : estimate > 1.0;
+      const dotColor = isGreen ? '#16a34a' : isHarm ? '#dc2626' : '#6b7280';
+      const ciColor  = isGreen ? '#86efac' : isHarm ? '#fca5a5' : '#cbd5e1';
 
       const pStr = pValue ? ` (p${pValue.startsWith('<') || pValue.startsWith('>') ? '' : '='}${pValue})` : '';
       const labelText = `${label} ${estimate.toFixed(2)} [${lower.toFixed(2)}–${upper.toFixed(2)}]${pStr}`;
@@ -1643,7 +1660,7 @@
              xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Forest plot: ${labelText}">
           <!-- Axis line -->
           <line x1="${PAD_L}" y1="${cy}" x2="${W - PAD_R}" y2="${cy}" stroke="#cbd5e1" stroke-width="1"/>
-          <!-- Null line at 1.0 -->
+          <!-- Null line -->
           <line x1="${x0}" y1="${cy - 12}" x2="${x0}" y2="${cy + 12}" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3,2"/>
           <!-- CI whiskers -->
           <line x1="${xL}" y1="${cy}" x2="${xU}" y2="${cy}" stroke="${ciColor}" stroke-width="4" stroke-linecap="round"/>
@@ -1658,7 +1675,7 @@
                 font-family="monospace" font-size="9" fill="${dotColor}" font-weight="700">${labelText}</text>
           <!-- Axis ticks labels -->
           <text x="${PAD_L}" y="${cy - 6}" font-family="monospace" font-size="7.5" fill="#94a3b8">${axisMin.toFixed(2)}</text>
-          <text x="${x0}" y="${cy - 6}" text-anchor="middle" font-family="monospace" font-size="7.5" fill="#94a3b8">1.0</text>
+          <text x="${x0}" y="${cy - 6}" text-anchor="middle" font-family="monospace" font-size="7.5" fill="#94a3b8">${nullVal.toFixed(1)}</text>
           <text x="${W - PAD_R}" y="${cy - 6}" text-anchor="end" font-family="monospace" font-size="7.5" fill="#94a3b8">${axisMax.toFixed(2)}</text>
         </svg>
       `;
@@ -2121,16 +2138,20 @@
         const hasAsia = /ch.u.+./i.test(name) || /asia/i.test(name);
         const asiaBadge = hasAsia ? '<span class="sg-badge sg-badge-asia">🌏 Châu Á</span>' : '';
 
+        const isDiff = fd && ['MD', 'SMD', 'WMD', 'RD', 'ARR'].includes(fd.label);
         let verdictBadge = '';
         let cardStatusClass = '';
         if (fd) {
-          if (fd.estimate < 1.0) {
-            const pct = Math.round((1.0 - fd.estimate) * 100);
-            verdictBadge = `<span class="sg-tag sg-tag-benefit">🟢 Lợi ích -${pct}%</span>`;
+          const isBenefit = isDiff ? fd.estimate < 0.0 : fd.estimate < 1.0;
+          const isHarm = isDiff ? fd.estimate > 0.0 : fd.estimate > 1.0;
+          
+          if (isBenefit) {
+            const val = isDiff ? Math.abs(fd.estimate).toFixed(2) : Math.round((1.0 - fd.estimate) * 100) + '%';
+            verdictBadge = `<span class="sg-tag sg-tag-benefit">🟢 Lợi ích ${isDiff ? '' : '-'}${val}</span>`;
             cardStatusClass = 'card-benefit';
-          } else if (fd.estimate > 1.0) {
-            const pct = Math.round((fd.estimate - 1.0) * 100);
-            verdictBadge = `<span class="sg-tag sg-tag-harm">🔴 Nguy cơ +${pct}%</span>`;
+          } else if (isHarm) {
+            const val = isDiff ? fd.estimate.toFixed(2) : Math.round((fd.estimate - 1.0) * 100) + '%';
+            verdictBadge = `<span class="sg-tag sg-tag-harm">🔴 Nguy cơ ${isDiff ? '+' : ''}${val}</span>`;
             cardStatusClass = 'card-harm';
           } else {
             verdictBadge = `<span class="sg-tag sg-tag-neutral">⚪ Trung tính</span>`;
@@ -2172,8 +2193,8 @@
               <span class="sg-panel-title">Phân tích Subgroup (${entries.length} phân nhóm)</span>
             </div>
             <div class="sg-legend">
-              <span class="sg-legend-item"><span class="sg-dot sg-dot-green"></span>Lợi ích (<1.0)</span>
-              <span class="sg-legend-item"><span class="sg-dot sg-dot-red"></span>Nguy cơ (>1.0)</span>
+              <span class="sg-legend-item"><span class="sg-dot sg-dot-green"></span>Lợi ích</span>
+              <span class="sg-legend-item"><span class="sg-dot sg-dot-red"></span>Nguy cơ</span>
               <span class="sg-legend-item"><span class="sg-dot sg-dot-grey"></span>Tổng thể (vạch nét đứt)</span>
             </div>
           </div>

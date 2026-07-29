@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Tiếp cận lâm sàng trẻ bị ho (Cấp tính, Bán cấp, Mạn tính): Sinh lý phản xạ ho (Thụ thể, Dây IX-X, Thân não), Phân loại nguyên nhân theo tuổi (Bảng 7.1), Nhận diện âm sắc ho đặc trưng (Ho chó sủa, Ho gà, Ho ngỗng kêu), Thuật toán Sơ đồ 7.1 & 7.2 Nhi khoa YDS 2020 và Tool CDSS tương tác.">
+  <title>Tiếp Cận Trẻ Ho – CliniPortal</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@500;600&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core (5 levels up to root) -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../../css/components/approach-symptom.css">
+
+  <style>
+    /* ==========================================================================
+       PEDIATRIC COUGH APPROACH STYLES & INTERACTIVE UI SYSTEM
+       ========================================================================== */
+    :root {
+      --cough-primary: #d97706;
+      --cough-dark: #0f172a;
+      --cough-navy: #1e1b4b;
+      --cough-amber: #f59e0b;
+      --cough-danger: #dc2626;
+      --cough-success: #10b981;
+      --cough-purple: #7c3aed;
+      --cough-cyan: #06b6d4;
+      --cough-blue: #0284c7;
+    }
+
+    /* Override parent container overflow so position: sticky works */
+    html, body,
+    .app-container,
+    .main-wrapper,
+    .layout-content-area {
+      overflow: visible !important;
+    }
+
+    /* Hero Banner Theme */
+    .hero-cough {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #78350f 100%);
+      border-radius: 20px;
+      padding: 32px;
+      color: #ffffff;
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.25);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .hero-cough::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -10%;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.25) 0%, rgba(124, 58, 237, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-cough-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .hero-title-group h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      font-family: var(--font-display);
+      margin: 8px 0 12px 0;
+      color: #ffffff;
+      line-height: 1.25;
+    }
+
+    .hero-badges-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .hero-badge-pill {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #e0e7ff;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-badge-pill.alert {
+      background: rgba(239, 68, 68, 0.25);
+      border-color: rgba(239, 68, 68, 0.4);
+      color: #fca5a5;
+    }
+
+    .hero-quick-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .stat-box {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+
+    .stat-box .stat-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #cbd5e1;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .stat-box .stat-val {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #fbbf24;
+      font-family: var(--font-display);
+    }
+
+    .stat-box .stat-sub {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+
+    /* Quick Nav Sticky Bar */
+    .quick-nav-bar {
+      position: sticky !important;
+      top: calc(var(--header-height, 60px) + 8px) !important;
+      z-index: 150 !important;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      padding: 10px 14px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      white-space: nowrap;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+    }
+
+    .quick-nav-btn {
+      background: transparent;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .quick-nav-btn:hover,
+    .quick-nav-btn.active {
+      background: rgba(217, 119, 6, 0.12);
+      color: var(--cough-primary);
+    }
+
+    /* Section Card Wrappers */
+    .section-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+      scroll-margin-top: 130px;
+    }
+
+    .section-title-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid rgba(217, 119, 6, 0.2);
+    }
+
+    .section-icon-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(217, 119, 6, 0.12);
+      color: var(--cough-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .section-title-group h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin: 0;
+    }
+
+    /* Clinical Tables & Grids */
+    .clinical-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 16px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+    }
+
+    .clinical-table th {
+      background: rgba(217, 119, 6, 0.08);
+      color: var(--color-text);
+      padding: 12px 16px;
+      font-weight: 700;
+      text-align: left;
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .clinical-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: var(--color-text);
+    }
+
+    .clinical-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Sound Cards Grid */
+    .sound-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    .sound-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      padding: 18px;
+      border-top: 4px solid var(--cough-primary);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+
+    .sound-card-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Red Flag Box & Alerts */
+    .clinical-alert-box {
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin: 18px 0;
+      border-left: 5px solid;
+    }
+
+    .clinical-alert-box.danger {
+      background: rgba(239, 68, 68, 0.08);
+      border-color: #ef4444;
+      color: var(--color-text);
+    }
+
+    .clinical-alert-box.warning {
+      background: rgba(245, 158, 11, 0.08);
+      border-color: #f59e0b;
+      color: var(--color-text);
+    }
+
+    .clinical-alert-box.info {
+      background: rgba(2, 132, 199, 0.08);
+      border-color: #0284c7;
+      color: var(--color-text);
+    }
+
+    .clinical-alert-title {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Flowchart Visualizer */
+    .flow-step-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .flow-node {
+      background: var(--color-surface);
+      border: 2px solid var(--color-border);
+      border-radius: 14px;
+      padding: 18px 20px;
+      position: relative;
+      transition: all 0.2s;
+    }
+
+    .flow-node.red-flag-node {
+      border-color: #ef4444;
+      background: rgba(239, 68, 68, 0.04);
+    }
+
+    .flow-node.decision-node {
+      border-color: #0284c7;
+      background: rgba(2, 132, 199, 0.04);
+    }
+
+    .flow-node.treatment-node {
+      border-color: #10b981;
+      background: rgba(16, 185, 129, 0.04);
+    }
+
+    .flow-tag {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .flow-tag.danger { background: #ef4444; color: white; }
+    .flow-tag.info { background: #0284c7; color: white; }
+    .flow-tag.success { background: #10b981; color: white; }
+    .flow-tag.warning { background: #f59e0b; color: white; }
+
+    /* Interactive CDSS Simulators */
+    .sim-container {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border: 1px solid #cbd5e1;
+      border-radius: 16px;
+      padding: 24px;
+      margin: 20px 0;
+    }
+
+    [data-theme="dark"] .sim-container {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border-color: #334155;
+    }
+
+    .sim-grid-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 868px) {
+      .sim-grid-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .custom-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: all 0.15s;
+    }
+
+    .custom-checkbox:hover {
+      border-color: var(--cough-primary);
+    }
+
+    .custom-checkbox input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--cough-primary);
+      cursor: pointer;
+    }
+
+    .sim-result-card {
+      background: var(--color-surface);
+      border: 2px solid var(--color-border);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .sim-result-status {
+      padding: 14px;
+      border-radius: 10px;
+      font-weight: 700;
+      text-align: center;
+      font-size: 1.05rem;
+      margin-bottom: 14px;
+    }
+
+    .sim-result-status.red {
+      background: rgba(239, 68, 68, 0.15);
+      color: #dc2626;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .sim-result-status.yellow {
+      background: rgba(245, 158, 11, 0.15);
+      color: #d97706;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .sim-result-status.green {
+      background: rgba(16, 185, 129, 0.15);
+      color: #059669;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+  </style>
+
+  <!-- JS Core (5 levels up) -->
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+  <script src="../../../../../js/approach-symptom.js" defer></script>
+</head>
+
+<body>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- App Container -->
+  <div class="app-container">
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <div class="main-wrapper" id="mainContent" style="padding: 20px 24px;">
+
+      <!-- HERO BANNER -->
+      <section class="hero-cough">
+        <div class="hero-cough-header">
+          <div class="hero-title-group">
+            <div class="hero-badges-group">
+              <span class="hero-badge-pill"><i class="fa-solid fa-head-side-cough"></i> Nhi khoa YDS 2020</span>
+              <span class="hero-badge-pill"><i class="fa-solid fa-brain"></i> Dây IX &amp; X - Thân Não</span>
+              <span class="hero-badge-pill alert"><i class="fa-solid fa-diagram-project"></i> Sơ đồ 7.1 &amp; 7.2 YDS</span>
+            </div>
+            <h1>👶 TIẾP CẬN TRẺ BỊ HO</h1>
+            <p style="font-size: 0.95rem; opacity: 0.9; margin: 0; max-width: 750px; line-height: 1.5;">
+              Chiến lược chẩn đoán và phân loại ho ở trẻ em: Giải phẫu sinh lý phản xạ ho, phân loại theo mốc thời gian (Cấp tính / Bán cấp / Mạn tính), nhận diện âm sắc ho đặc trưng (Sủa chó, Ho gà, Ngỗng kêu), bảng nguyên nhân theo tuổi và bộ công cụ CDSS tương tác.
+            </p>
+          </div>
+        </div>
+
+        <!-- HERO QUICK STATS -->
+        <div class="hero-quick-stats">
+          <div class="stat-box">
+            <div class="stat-label">Cơ chế Phản xạ</div>
+            <div class="stat-val">IX &amp; X</div>
+            <div class="stat-sub">Thụ thể cơ học / hóa học → Thân não</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Phân Loại Thời Gian</div>
+            <div class="stat-val">3 Mốc</div>
+            <div class="stat-sub">Cấp (&lt; 2w) / Bán cấp (2-4w) / Mạn (&gt; 4w)</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Âm Sắc Ho Đặc Trưng</div>
+            <div class="stat-val">4 Kiểu</div>
+            <div class="stat-sub">Sủa chó (Croup) / Ho gà / Ngỗng kêu / Khan-Đàm</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Lưu Đồ Tiếp Cận</div>
+            <div class="stat-val" style="color: #fbbf24;">Sơ đồ 7.1 &amp; 7.2</div>
+            <div class="stat-sub">Thuật toán Ho Cấp &amp; Mạn tính YDS 2020</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STICKY QUICK NAV BAR -->
+      <nav class="quick-nav-bar" id="quickNav">
+        <button class="quick-nav-btn active" onclick="scrollToSection('reflex-physiology')">
+          <i class="fa-solid fa-brain"></i> Sinh lý Phản xạ Ho
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('classification')">
+          <i class="fa-solid fa-clock"></i> Phân loại &amp; Nguyên nhân
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('age-table')">
+          <i class="fa-solid fa-list-ol"></i> Bảng Nguyên nhân Tuổi
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('cough-sounds')">
+          <i class="fa-solid fa-volume-high"></i> Âm sắc Ho Đặc trưng
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('diagnostic-steps')">
+          <i class="fa-solid fa-user-doctor"></i> 3 Bước Tiếp cận
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('flowcharts')">
+          <i class="fa-solid fa-diagram-project"></i> Sơ đồ 7.1 &amp; 7.2 YDS
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('cdss-evaluator')">
+          <i class="fa-solid fa-calculator"></i> Tool CDSS Tương tác
+        </button>
+      </nav>
+
+      <!-- SECTION 1: REFLEX PHYSIOLOGY -->
+      <section class="section-card" id="reflex-physiology">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-brain"></i></div>
+          <div>
+            <h2>1. Cơ Chế Sinh Lý Bệnh Của Phản Xạ Ho</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Phản xạ bảo vệ đường thở &amp; Các con đường thần kinh</span>
+          </div>
+        </div>
+
+        <div style="line-height: 1.6; font-size: 0.9rem;">
+          <p>
+            <strong>Định nghĩa:</strong> Ho là triệu chứng hô hấp phổ biến nhất ở trẻ em. Về sinh lý, ho là <strong>phản xạ bảo vệ tự nhiên</strong> nhằm tống xuất đàm nhầy, chất tiết và vật lạ ra khỏi đường hô hấp.
+          </p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 16px 0;">
+            <div style="background: rgba(217, 119, 6, 0.06); border: 1px solid rgba(217, 119, 6, 0.2); padding: 16px; border-radius: 12px;">
+              <h3 style="margin-top: 0; color: #d97706; font-size: 1rem;"><i class="fa-solid fa-bullseye"></i> 1. Phân bố Thụ Thể Ho</h3>
+              <p style="margin: 0; font-size: 0.86rem; line-height: 1.5;">
+                • <strong>Thụ thể nhạy cảm cơ học:</strong> Phân bố chủ yếu ở hầu và khí quản (phản ứng với co kéo, vật lạ, dị vật).
+                <br>• <strong>Thụ thể nhạy cảm hóa học:</strong> Phân bố chủ yếu ở đường dẫn khí xa (phản ứng với chất kích thích, khói bụi, dịch vị trào ngược).
+              </p>
+            </div>
+
+            <div style="background: rgba(124, 58, 237, 0.06); border: 1px solid rgba(124, 58, 237, 0.2); padding: 16px; border-radius: 12px;">
+              <h3 style="margin-top: 0; color: #7c3aed; font-size: 1rem;"><i class="fa-solid fa-route"></i> 2. Đường Dẫn Truyền Thần Kinh</h3>
+              <p style="margin: 0; font-size: 0.86rem; line-height: 1.5;">
+                • <strong>Hướng tâm:</strong> Dây thần kinh Thiệt hầu (IX) và Dây thần kinh Lang thang (X) dẫn truyền về <strong>Trung khu ho</strong> (nằm ở hành não &amp; cầu não).
+                <br>• <strong>Ly tâm:</strong> Dây X, thần kinh hoành, thần kinh vận động tủy sống đến thanh quản, cơ hoành, cơ thành ngực/bụng.
+              </p>
+            </div>
+
+            <div style="background: rgba(2, 132, 199, 0.06); border: 1px solid rgba(2, 132, 199, 0.2); padding: 16px; border-radius: 12px;">
+              <h3 style="margin-top: 0; color: #0284c7; font-size: 1rem;"><i class="fa-solid fa-sliders"></i> 3. Vỏ Não &amp; Vị Trí Kích Thích</h3>
+              <p style="margin: 0; font-size: 0.86rem; line-height: 1.5;">
+                • Vỏ não có khả năng <strong>khởi phát chủ động</strong> hoặc <strong>ức chế</strong> phản xạ ho.
+                <br>• Kích thích gây ho có thể từ: <em>Trung ương</em> (tâm lý), <em>Tại phổi</em> (từ đường thở đến nhu mô), <em>Ngoài phổi</em> (màng phổi, cơ hoành, màng ngoài tim, hoặc nhánh Arnold dây X do ráy tai/dị vật tai).
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: CLASSIFICATION & CAUSES -->
+      <section class="section-card" id="classification">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-clock"></i></div>
+          <div>
+            <h2>2. Phân Loại &amp; Nguyên Nhân Gây Ho Ở Trẻ Em</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Phân loại theo mốc thời gian (Cấp tính / Bán cấp / Mạn tính)</span>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+          <!-- ACUTE COUGH -->
+          <div style="background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 12px; padding: 18px;">
+            <h3 style="margin-top: 0; color: #dc2626; font-size: 1.05rem;"><i class="fa-solid fa-bolt"></i> 1. Ho Cấp Tính (&lt; 2 tuần)</h3>
+            <ul style="padding-left: 18px; font-size: 0.88rem; line-height: 1.5; margin: 0;">
+              <li>Nhiễm trùng hô hấp cấp (Viêm mũi họng, Viêm thanh khí quản, Viêm phế quản, Viêm phổi).</li>
+              <li>Hít sặc / Dị vật đường thở cấp.</li>
+              <li>Cơn hen phế quản cấp.</li>
+              <li>Hít khí độc, khói thuốc lá, khí CO, ô nhiễm không khí.</li>
+            </ul>
+          </div>
+
+          <!-- SUBACUTE COUGH -->
+          <div style="background: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 12px; padding: 18px;">
+            <h3 style="margin-top: 0; color: #d97706; font-size: 1.05rem;"><i class="fa-solid fa-hourglass-half"></i> 2. Ho Bán Cấp (2 – 4 tuần)</h3>
+            <ul style="padding-left: 18px; font-size: 0.88rem; line-height: 1.5; margin: 0;">
+              <li>Hậu nhiễm siêu vi hô hấp (Post-viral cough).</li>
+              <li>Nhiễm vi khuẩn không điển hình (<em>Mycoplasma pneumoniae</em>).</li>
+              <li>Bệnh Ho gà (<em>Bordetella pertussis</em>) giai đoạn hồi phục.</li>
+              <li>Viêm phế quản cấp diễn tiến kéo dài.</li>
+            </ul>
+          </div>
+
+          <!-- CHRONIC COUGH -->
+          <div style="background: rgba(124, 58, 237, 0.05); border: 1px solid rgba(124, 58, 237, 0.2); border-radius: 12px; padding: 18px;">
+            <h3 style="margin-top: 0; color: #7c3aed; font-size: 1.05rem;"><i class="fa-solid fa-rotate"></i> 3. Ho Mạn Tính (&gt; 4 tuần)</h3>
+            <ul style="padding-left: 18px; font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              <li>Nhiễm trùng hô hấp kéo dài / Nhiễm Lao (TB).</li>
+              <li>Hội chứng chảy mũi sau (Upper Airway Cough Syndrome).</li>
+              <li>Trào ngược dạ dày – thực quản (GERD) / Rò khí-thực quản.</li>
+              <li>Hen phế quản (Cơn hen ẩn / Ho dạng hen).</li>
+              <li>Giãn phế quản, Xơ nang (CF), Rối loạn vận động lông chuyển (PCD).</li>
+              <li>Dị vật phế quản bỏ quên.</li>
+              <li>Bệnh lý tim mạch (Suy tim sung huyết), U trung thất.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: AGE TABLE -->
+      <section class="section-card" id="age-table">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-list-ol"></i></div>
+          <div>
+            <h2>3. Bảng Nguyên Nhân Ho Mạn Tính Theo Nhóm Tuổi</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Bảng 7.1 - Nhi khoa YDS (2020)</span>
+          </div>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="clinical-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Nhóm Tuổi Trẻ</th>
+                <th style="width: 75%;">Các Nguyên Nhân Ho Mạn Tính Hàng Đầu</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Nhũ Nhi (&lt; 1 tuổi)</strong></td>
+                <td>Bất thường bẩm sinh đường thở (Mềm sụn khí phế quản, Vòng mạch), Rò khí – thực quản, Bệnh lý tổn thương thần kinh (nguy cơ hít sặc), Nhiễm trùng (Virus, <em>Chlamydia trachomatis</em>, Vi khuẩn ho gà), Xơ nang (Cystic Fibrosis).</td>
+              </tr>
+              <tr>
+                <td><strong>Tiền Học Đường (1 – 5 tuổi)</strong></td>
+                <td>Dị vật đường thở bỏ quên, Nhiễm trùng (Virus, <em>Mycoplasma</em>, Ho gà), Phản ứng đường thở (Hen phế quản), Xơ nang, Kích thích môi trường (Hút thuốc lá thụ động trong gia đình).</td>
+              </tr>
+              <tr>
+                <td><strong>Học Đường &amp; Vị Thành Niên (&gt; 6 tuổi)</strong></td>
+                <td>Phản ứng (Hen phế quản, Hội chứng chảy mũi sau), Nhiễm trùng (<em>Mycoplasma pneumoniae</em>, Lao phổi), Kích thích (Hút thuốc lá chủ động/thụ động, Ô nhiễm không khí), Ho tâm lý (Psychogenic / Habit cough).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECTION 4: COUGH SOUNDS -->
+      <section class="section-card" id="cough-sounds">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-volume-high"></i></div>
+          <div>
+            <h2>4. Nhận Diện Âm Sắc Ho Đặc Trưng &amp; Tính Chất Đàm</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Định hướng nguyên nhân qua tiếng ho &amp; Giải mã màu đàm</span>
+          </div>
+        </div>
+
+        <div class="sound-grid">
+          <!-- BARKING COUGH -->
+          <div class="sound-card" style="border-top-color: #ef4444;">
+            <div class="sound-card-title">
+              <span>1. Ho "Ông Ổng" Sủa Chó (Barking)</span>
+              <i class="fa-solid fa-dog" style="color: #ef4444;"></i>
+            </div>
+            <p style="font-size: 0.85rem; line-height: 1.5; color: var(--color-text-muted); margin: 4px 0 0 0;">
+              <strong>Gợi ý:</strong> <strong>Viêm thanh khí quản cấp (Croup)</strong> hoặc Phù nề vùng hạ thanh môn. Thường kèm thở rít (Stridor) thì hít vào.
+            </p>
+          </div>
+
+          <!-- STACCATO COUGH -->
+          <div class="sound-card" style="border-top-color: #0284c7;">
+            <div class="sound-card-title">
+              <span>2. Ho Ngắt Quãng (Staccato)</span>
+              <i class="fa-solid fa-wave-square" style="color: #0284c7;"></i>
+            </div>
+            <p style="font-size: 0.85rem; line-height: 1.5; color: var(--color-text-muted); margin: 4px 0 0 0;">
+              <strong>Gợi ý:</strong> Nhiễm vi khuẩn không điển hình (<em>Chlamydia trachomatis</em> ở trẻ nhỏ) hoặc siêu vi hô hấp.
+            </p>
+          </div>
+
+          <!-- WHOOPING COUGH -->
+          <div class="sound-card" style="border-top-color: #7c3aed;">
+            <div class="sound-card-title">
+              <span>3. Ho Kịch Phát Từng Cơn (Whooping)</span>
+              <i class="fa-solid fa-virus" style="color: #7c3aed;"></i>
+            </div>
+            <p style="font-size: 0.85rem; line-height: 1.5; color: var(--color-text-muted); margin: 4px 0 0 0;">
+              <strong>Gợi ý:</strong> <strong>Bệnh Ho gà (Pertussis)</strong>. Cơn ho dài kịch phát làm trẻ đỏ mặt/tím tái, kết thúc bằng tiếng thở rít ngút vào ("whoop") và nôn đàm.
+            </p>
+          </div>
+
+          <!-- HONKING COUGH -->
+          <div class="sound-card" style="border-top-color: #d97706;">
+            <div class="sound-card-title">
+              <span>4. Ho Tiếng Ngỗng Kêu (Honking)</span>
+              <i class="fa-solid fa-head-side-virus" style="color: #d97706;"></i>
+            </div>
+            <p style="font-size: 0.85rem; line-height: 1.5; color: var(--color-text-muted); margin: 4px 0 0 0;">
+              <strong>Gợi ý:</strong> <strong>Ho tâm lý (Habit / Psychogenic cough)</strong>. Ho biến mất hoàn toàn khi trẻ ngủ tập trung chơi.
+            </p>
+          </div>
+        </div>
+
+        <div class="clinical-alert-box info">
+          <div class="clinical-alert-title"><i class="fa-solid fa-droplet"></i> Giải mã ý nghĩa màu sắc đàm nhầy ở trẻ em</div>
+          <p style="margin: 0; font-size: 0.88rem; line-height: 1.5;">
+            • <strong>Đàm màu vàng/xanh:</strong> Là do bạch cầu đa nhân trung tính chết phóng thích enzyme <strong>Myeloperoxidase</strong>. Tính chất này thể hiện đàm bị ứ đọng trong đường thở chứ <strong>KHÔNG khẳng định chắc chắn nhiễm vi khuẩn</strong> (không tự ý dùng kháng sinh nếu không có chỉ định).
+            <br>• <strong>Đàm có vệt máu / Ói máu:</strong> Cần loại trừ sước niêm mạc họng do ho nhiều, hoặc tổn thương lao, giãn phế quản, dị vật.
+          </p>
+        </div>
+      </section>
+
+      <!-- SECTION 5: DIAGNOSTIC STEPS -->
+      <section class="section-card" id="diagnostic-steps">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-user-doctor"></i></div>
+          <div>
+            <h2>5. Quy Trình 3 Bước Tiếp Cận Chẩn Đoán Lâm Sàng &amp; CLS</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Bệnh sử, Khám thực thể &amp; Cận lâm sàng hướng định</span>
+          </div>
+        </div>
+
+        <!-- STEP 1 -->
+        <h3 style="font-size: 1.05rem; color: var(--cough-primary); margin-top: 0;"><i class="fa-solid fa-clipboard-question"></i> Bước 1: Khai Thác Bệnh Sử Chi Tiết</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; font-size: 0.88rem; margin-bottom: 18px;">
+          <div style="background: var(--color-bg); padding: 12px; border-radius: 10px; border: 1px solid var(--color-border);">
+            <strong style="color: var(--cough-primary);">⏱️ 1. Thời gian &amp; Tuổi khởi phát:</strong> Ho cấp, bán cấp hay mạn tính. Ho từ lúc sinh (bẩm sinh) hay ho nặng dần (Lao, U chèn ép).
+          </div>
+          <div style="background: var(--color-bg); padding: 12px; border-radius: 10px; border: 1px solid var(--color-border);">
+            <strong style="color: var(--cough-primary);">⚡ 2. Hoàn cảnh khởi phát:</strong> Đột ngột (dị vật, sặc); Sau gắng sức / lạnh (hen); Trong khi bú/ăn (hít sặc, rò khí-thực quản).
+          </div>
+          <div style="background: var(--color-bg); padding: 12px; border-radius: 10px; border: 1px solid var(--color-border);">
+            <strong style="color: var(--cough-primary);">🌙 3. Thời điểm ho nặng:</strong> Về đêm gần sáng (hen); Sau khi nằm ngửa (chảy mũi sau, GERD); Sáng sớm đàm nhiều (giãn phế quản).
+          </div>
+          <div style="background: var(--color-bg); padding: 12px; border-radius: 10px; border: 1px solid var(--color-border);">
+            <strong style="color: var(--cough-primary);">🏡 4. Môi trường &amp; Tiền căn:</strong> Khói thuốc lá, thú nuôi, chàm da dị ứng gia đình, tiền căn tiếp xúc Lao.
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <h3 style="font-size: 1.05rem; color: var(--cough-primary);"><i class="fa-solid fa-stethoscope"></i> Bước 2: Thăm Khám Thực Thể</h3>
+        <div style="line-height: 1.6; font-size: 0.9rem;">
+          <ul>
+            <li><strong>Sinh hiệu &amp; Cấp cứu:</strong> Đo $SpO_2$, nhịp thở, dấu hiệu gắng sức (rút lõm lồng ngực, phập phồng cánh mũi).</li>
+            <li><strong>Khám Hô Hấp &amp; Tim Mạch:</strong> Nghe rale ngáy, rale rít, rale ẩm/nổ, giảm phế âm khu trú; khám tiếng tim bất thường.</li>
+            <li><strong>Khám Toàn Thân &amp; Tai Mũi Họng:</strong> Khám họng (dịch chảy xông sau), soi tai (loại trừ dị vật/ráy tai kích thích nhánh Arnold dây X), chàm da, ngón tay dùi trống, phù.</li>
+          </ul>
+        </div>
+
+        <!-- STEP 3 -->
+        <h3 style="font-size: 1.05rem; color: var(--cough-primary); margin-top: 18px;"><i class="fa-solid fa-vial"></i> Bước 3: Chỉ Định Cận Lâm Sàng</h3>
+        <div style="overflow-x: auto;">
+          <table class="clinical-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Cận Lâm Sàng</th>
+                <th style="width: 75%;">Chỉ Định &amp; Giá Trị Chẩn Đoán</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Công thức máu (CBC)</strong></td>
+                <td>Bạch cầu Lympho tăng cao đột biến gợi ý <strong>Bệnh Ho gà</strong>. Bạch cầu ái toan (Eosinophil) tăng gợi ý hen / dị ứng.</td>
+              </tr>
+              <tr>
+                <td><strong>X-quang ngực thẳng</strong></td>
+                <td>Chỉ định đầu tay khi ho mạn tính hoặc ho cấp nghi viêm phổi, xẹp phổi, ứ khí, dị vật cản quang.</td>
+              </tr>
+              <tr>
+                <td><strong>Đo chức năng hô hấp (CNHH)</strong></td>
+                <td>Hỗ trợ chẩn đoán Hen phế quản ở trẻ $\ge 6$ tuổi (Rối loạn thông khí tắc nghẽn hồi phục với thuốc GPQ).</td>
+              </tr>
+              <tr>
+                <td><strong>Nội soi phế quản / Tai Mũi Họng</strong></td>
+                <td>Chỉ định vàng khi nghi ngờ Dị vật đường thở bỏ quên, polyp mũi, bất thường thanh quản.</td>
+              </tr>
+              <tr>
+                <td><strong>Khảo sát GERD / Lao</strong></td>
+                <td>Chụp X-quang nuốt Barium, đo pH thực quản 24h khi nghi GERD; Xét nghiệm IDR / Mantoux / GeneXpert khi nghi Lao.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECTION 6: FLOWCHARTS -->
+      <section class="section-card" id="flowcharts">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-diagram-project"></i></div>
+          <div>
+            <h2>6. Lưu Đồ Thuật Toán Tiếp Cận Ho Cấp Tính &amp; Mạn Tính</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Sơ đồ 7.1 &amp; Sơ đồ 7.2 - Nhi khoa YDS (2020)</span>
+          </div>
+        </div>
+
+        <div class="flow-step-container">
+          <!-- FLOWCHART 7.2 ACUTE COUGH -->
+          <div class="flow-node decision-node">
+            <span class="flow-tag info">SƠ ĐỒ 7.2: TIẾP CẬN HO CẤP TÍNH (&lt; 2 TUẦN)</span>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-top: 10px; font-size: 0.88rem;">
+              <div style="background: rgba(239, 68, 68, 0.08); padding: 12px; border-radius: 8px; border-left: 3px solid #ef4444;">
+                <strong style="color: #dc2626;">1. Khởi phát ĐỘT NGỘT (Có):</strong>
+                <p style="margin: 4px 0 0 0;">Hướng đến <strong>Dị vật đường thở</strong>, Hít khí độc, Kích thích môi trường.</p>
+              </div>
+              <div style="background: rgba(16, 185, 129, 0.08); padding: 12px; border-radius: 8px; border-left: 3px solid #10b981;">
+                <strong style="color: #059669;">2. Không đột ngột + KHÔNG Sốt:</strong>
+                <p style="margin: 4px 0 0 0;">Hướng đến <strong>Cơn Hen phế quản cấp</strong>.</p>
+              </div>
+              <div style="background: rgba(2, 132, 199, 0.08); padding: 12px; border-radius: 8px; border-left: 3px solid #0284c7;">
+                <strong style="color: #0284c7;">3. Có Sốt + Khám phổi Bình thường:</strong>
+                <p style="margin: 4px 0 0 0;">Viêm mũi họng, Viêm xoang, Viêm thanh khí quản (Croup).</p>
+              </div>
+              <div style="background: rgba(124, 58, 237, 0.08); padding: 12px; border-radius: 8px; border-left: 3px solid #7c3aed;">
+                <strong style="color: #7c3aed;">4. Có Sốt + Khám phổi BẤT THƯỜNG:</strong>
+                <p style="margin: 4px 0 0 0;">Chẩn đoán <strong>Viêm phổi</strong> (Rale ẩm/nổ, giảm phế âm) → Chụp X-quang ngực.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FLOWCHART 7.1 CHRONIC COUGH -->
+          <div class="flow-node treatment-node">
+            <span class="flow-tag warning">SƠ ĐỒ 7.1: TIẾP CẬN HO MẠN TÍNH (&gt; 4 TUẦN)</span>
+            <p style="font-size: 0.88rem; margin: 6px 0;">Đánh giá dựa trên triệu chứng gợi ý đặc hiệu vs không đặc hiệu:</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; font-size: 0.88rem;">
+              <div style="background: rgba(16, 185, 129, 0.08); padding: 12px; border-radius: 8px;">
+                <strong style="color: #059669;">Khám lâm sàng BÌNH THƯỜNG:</strong>
+                <p style="margin: 4px 0 0 0;">Trấn an gia đình, tránh khói thuốc lá, theo dõi 2–4 tuần.</p>
+              </div>
+              <div style="background: rgba(245, 158, 11, 0.08); padding: 12px; border-radius: 8px;">
+                <strong style="color: #d97706;">Gợi ý nguyên nhân ĐẶC HIỆU:</strong>
+                <p style="margin: 4px 0 0 0;">Nghi Xơ nang (Test mồ hôi); Nghi Hen (Đo CNHH); Nghi Tai Mũi Họng (Nội soi TMH); X-quang ngực.</p>
+              </div>
+              <div style="background: rgba(239, 68, 68, 0.08); padding: 12px; border-radius: 8px;">
+                <strong style="color: #dc2626;">KHÔNG gợi ý nguyên nhân đặc hiệu:</strong>
+                <p style="margin: 4px 0 0 0;">Nội soi phế quản (dị vật bỏ quên); Cấy đàm/CT-scan (nhiễm trùng mủ); pH 24h (GERD); Huyết thanh (Ho gà/Chlamydia); IDR (Lao).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 7: INTERACTIVE CDSS EVALUATOR -->
+      <section class="section-card" id="cdss-evaluator">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-laptop-medical"></i></div>
+          <div>
+            <h2>7. Bộ Công Cụ CDSS Đánh Giá &amp; Triage Phân Loại Ho</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Mô phỏng thuật toán chẩn đoán ho Nhi khoa</span>
+          </div>
+        </div>
+
+        <div class="sim-container">
+          <h3 style="margin-top: 0; font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-sliders"></i> CDSS: Evaluator Phân Loại Nguyên Nhân Trẻ Bị Ho</h3>
+
+          <div class="sim-grid-layout">
+            <div>
+              <label style="font-weight: 700; font-size: 0.88rem;">1. Thời Gian Ho:</label>
+              <select id="simCoughDuration" onchange="runCoughCdss()" style="width: 100%; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); margin-top: 4px; font-weight: 600;">
+                <option value="acute" selected>Ho Cấp tính (&lt; 2 tuần)</option>
+                <option value="subacute">Ho Bán cấp (2 – 4 tuần)</option>
+                <option value="chronic">Ho Mạn tính (&gt; 4 tuần)</option>
+              </select>
+
+              <label style="font-weight: 700; font-size: 0.88rem; display: block; margin-top: 12px;">2. Âm Sắc &amp; Tính Chất Tiếng Ho:</label>
+              <select id="simCoughSound" onchange="runCoughCdss()" style="width: 100%; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); margin-top: 4px; font-weight: 600;">
+                <option value="normal">Ho thông thường (Khan hoặc có Đàm)</option>
+                <option value="barking">Ho "Ông ổng" sủa chó (Barking cough)</option>
+                <option value="whooping">Ho kịch phát dài cơn đỏ mặt (Whooping)</option>
+                <option value="honking">Ho ngỗng kêu (Honking cough)</option>
+              </select>
+
+              <label style="font-weight: 700; font-size: 0.88rem; display: block; margin-top: 12px;">3. Triệu Chứng Kèm Theo:</label>
+              <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 6px;">
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="chkSuddenOnset" onchange="runCoughCdss()">
+                  <span>Khởi phát đột ngột sau khi chơi/ăn (HC Sặc)</span>
+                </label>
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="chkFever" onchange="runCoughCdss()">
+                  <span>Trẻ có Sốt</span>
+                </label>
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="chkLungAbnormal" onchange="runCoughCdss()">
+                  <span>Khám phổi BẤT THƯỜNG (Rale ẩm/nổ/ngáy hoặc giảm phế âm)</span>
+                </label>
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="chkNightCough" onchange="runCoughCdss()">
+                  <span>Ho nặng về đêm gần sáng / Sau gắng sức</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- RESULT CARD -->
+            <div class="sim-result-card">
+              <div>
+                <div style="font-size: 0.8rem; text-transform: uppercase; font-weight: 700; color: var(--color-text-muted); margin-bottom: 6px;">HƯỚNG CHẨN ĐOÁN &amp; XỬ TRÍ CDSS:</div>
+                <div id="simCoughStatus" class="sim-result-status green">
+                  🟢 VIÊM ĐƯỜNG HÔ HẤP TRÊN CẤP TÍNH
+                </div>
+                <div id="simCoughDetails" style="font-size: 0.88rem; line-height: 1.5; color: var(--color-text);">
+                  Ho cấp tính có sốt, khám phổi bình thường. Hướng đến viêm mũi họng / cảm lạnh thông thường.
+                </div>
+              </div>
+
+              <div style="margin-top: 16px; padding-top: 12px; border-top: 1px dashed var(--color-border); font-size: 0.82rem; color: var(--color-text-muted);">
+                <strong>Lưu ý:</strong> Đánh giá dấu hiệu suy hô шар (thở nhanh, co kéo) để quyết định chỉ định chụp X-quang ngực.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- REFERENCES -->
+        <div style="margin-top: 24px; padding-top: 14px; border-top: 1px dashed var(--color-border); font-size: 0.82rem; color: var(--color-text-muted);">
+          <strong>📚 Tài Liệu Tham Khảo Chuẩn AMA:</strong>
+          <br>1. Nguyễn Thái Sơn. Bài 7: Tiếp cận ho ở trẻ em. Trong: <em>Nhi khoa YDS - Tập 1</em>. Bộ môn Nhi - Đại học Y Dược Thành phố Hồ Chí Minh; 2020:105-110.
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+  <!-- INLINE CDSS JAVASCRIPT LOGIC -->
+  <script>
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        document.querySelectorAll('.quick-nav-btn').forEach(btn => btn.classList.remove('active'));
+        const activeBtn = Array.from(document.querySelectorAll('.quick-nav-btn')).find(b => b.getAttribute('onclick').includes(id));
+        if (activeBtn) activeBtn.classList.add('active');
+      }
+    }
+
+    function runCoughCdss() {
+      const duration = document.getElementById('simCoughDuration').value;
+      const sound = document.getElementById('simCoughSound').value;
+      const sudden = document.getElementById('chkSuddenOnset').checked;
+      const fever = document.getElementById('chkFever').checked;
+      const lungAbnormal = document.getElementById('chkLungAbnormal').checked;
+      const nightCough = document.getElementById('chkNightCough').checked;
+
+      const statusEl = document.getElementById('simCoughStatus');
+      const detailsEl = document.getElementById('simCoughDetails');
+
+      // 1. Sudden Onset Foreign Body
+      if (sudden) {
+        statusEl.className = 'sim-result-status red';
+        statusEl.innerHTML = '🔴 NGUY CƠ DỊ VẬT ĐƯỜNG THỞ / HÍT SẶC CẤP TÍNH';
+        detailsEl.innerHTML = `
+          Khởi phát ho đột ngột sau khi ăn/chơi.<br>
+          👉 <strong>Xử trí:</strong> Cho trẻ nhập viện ngay. Không can thiệp làm trẻ khóc hoảng. Hội chẩn Tai Mũi Họng / Hô hấp để <strong>Nội soi phế quản gắp dị vật</strong>.
+        `;
+        return;
+      }
+
+      // 2. Barking Cough (Croup)
+      if (sound === 'barking') {
+        statusEl.className = 'sim-result-status yellow';
+        statusEl.innerHTML = '🟡 HƯỚNG CHẨN ĐOÁN: VIÊM THANH KHÍ QUẢN CẤP (CROUP)';
+        detailsEl.innerHTML = `
+          Tiếng ho "ông ổng" sủa chó đặc trưng do phù nề hạ thanh môn.<br>
+          👉 <strong>Xử trí:</strong> Đánh giá độ nặng bằng thang điểm Westley. Sử dụng Dexamethasone uống/tiêm và Adrenaline khí dung nếu có thở rít khi nằm yên.
+        `;
+        return;
+      }
+
+      // 3. Whooping Cough (Pertussis)
+      if (sound === 'whooping') {
+        statusEl.className = 'sim-result-status yellow';
+        statusEl.innerHTML = '🟡 NGHI NGỜ BỆNH HO GÀ (PERTUSSIS)';
+        detailsEl.innerHTML = `
+          Cơn ho kịch phát dài đỏ mặt kết thúc bằng tiếng thở rít ngút vào.<br>
+          👉 <strong>Xử trí:</strong> Làm công thức máu (tìm bạch cầu Lympho tăng cao), xét nghiệm PCR/Huyết thanh ho gà. Cách ly và điều trị kháng sinh Macrolide (Azithromycin).
+        `;
+        return;
+      }
+
+      // 4. Honking Cough (Psychogenic)
+      if (sound === 'honking') {
+        statusEl.className = 'sim-result-status green';
+        statusEl.innerHTML = '🟢 HƯỚNG CHẨN ĐOÁN: HO TÂM LÝ (HABIT / PSYCHOGENIC COUGH)';
+        detailsEl.innerHTML = `
+          Ho tiếng ngỗng kêu đặc trưng, ho nhiều khi chú ý nhưng biến mất hoàn toàn khi trẻ tập trung chơi hoặc ngủ.<br>
+          👉 <strong>Xử trí:</strong> Trấn an gia đình, giải thích cơ chế tâm lý, tư vấn tâm lý hành vi.
+        `;
+        return;
+      }
+
+      // 5. Chronic Cough Branch
+      if (duration === 'chronic') {
+        if (nightCough) {
+          statusEl.className = 'sim-result-status yellow';
+          statusEl.innerHTML = '🟡 HO MẠN TÍNH - NGHI NGỜ HEN PHẾ QUẢN / GERD';
+          detailsEl.innerHTML = `
+            Ho mạn tính &gt; 4 tuần, ho tăng về đêm gần sáng hoặc sau vận động.<br>
+            👉 <strong>Xử trí:</strong> Làm Chức năng hô hấp (CNHH) cho trẻ &ge; 6 tuổi, chụp X-quang ngực thẳng, làm test dị ứng hoặc thăm dò GERD (đo pH 24h).
+          `;
+        } else {
+          statusEl.className = 'sim-result-status yellow';
+          statusEl.innerHTML = '🟡 HO MẠN TÍNH - TẦM SOÁT BỆNH LÝ HÔ HẤP MẠN TÍNH';
+          detailsEl.innerHTML = `
+            Ho kéo dài &gt; 4 tuần.<br>
+            👉 <strong>Xử trí:</strong> Chụp X-quang ngực thẳng. Loại trừ Nhiễm Lao (IDR/Mantoux), Hội chứng chảy mũi sau (khám TMH), Xơ nang hoặc Bất thường cấu trúc bẩm sinh.
+          `;
+        }
+        return;
+      }
+
+      // 6. Acute Cough Branch
+      if (fever) {
+        if (lungAbnormal) {
+          statusEl.className = 'sim-result-status red';
+          statusEl.innerHTML = '🔴 HO CẤP TÍNH CÓ SỐT - HƯỚNG CHẨN ĐOÁN: VIÊM PHỔI';
+          detailsEl.innerHTML = `
+            Ho cấp tính kèm sốt và khám phổi bất thường (rale ẩm/nổ hoặc phế âm giảm).<br>
+            👉 <strong>Xử trí:</strong> Chỉ định X-quang ngực thẳng. Đánh giá nhịp thở theo tuổi để phân loại Viêm phổi nhẹ (điều trị kháng sinh ngoại trú) hay Viêm phổi nặng (nhập viện).
+          `;
+        } else {
+          statusEl.className = 'sim-result-status green';
+          statusEl.innerHTML = '🟢 VIÊM ĐƯỜNG HÔ HẤP TRÊN CẤP TÍNH (VIÊM MŨI HỌNG)';
+          detailsEl.innerHTML = `
+            Ho cấp tính có sốt, khám phổi bình thường.<br>
+            👉 <strong>Xử trí:</strong> Điều trị triệu chứng (hạ sốt, giảm ho an toàn), giữ ấm họng, bù nước. Tái khám sau 48h hoặc khi thở nhanh.
+          `;
+        }
+      } else {
+        if (nightCough) {
+          statusEl.className = 'sim-result-status green';
+          statusEl.innerHTML = '🟢 HO CẤP TÍNH - HƯỚNG CHẨN ĐOÁN: CƠN HEN PHẾ QUẢN';
+          detailsEl.innerHTML = `
+            Ho cấp tính không sốt, tăng về đêm / sau gắng sức.<br>
+            👉 <strong>Xử trí:</strong> Làm Test dãn phế quản (Salbutamol khí dung). Nếu đáp ứng tốt → Khởi đầu điều trị cơn hen phế quản cấp.
+          `;
+        } else {
+          statusEl.className = 'sim-result-status green';
+          statusEl.innerHTML = '🟢 HO CẤP TÍNH DO KÍCH THÍCH / KÍCH ỨNG DỊ NGUYÊN';
+          detailsEl.innerHTML = `
+            Ho nhẹ không sốt, khám phổi bình thường.<br>
+            👉 <strong>Xử trí:</strong> Khuyên gia đình tránh khói thuốc lá, ẩm mốc, giữ môi trường sạch sẽ.
+          `;
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

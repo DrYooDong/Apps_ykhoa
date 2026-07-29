@@ -68,7 +68,7 @@
 | `components/clinical-skill.css` | Tab kỹ năng lâm sàng | `pages/Kỹ năng/**` |
 | `components/physio-patho.css` | Hub sinh lý bệnh | `Sinhly-sinhlybenh.html` |
 | `components/physio-content.css` | Nội dung bài học sinh lý | `pages/Sinh lý/**` |
-| `components/physio-headings.css` | Tiêu đề bài học sinh lý | `pages/Sinh lý/**` |
+| `components/physio-headings.css` | Styling tiêu đề (H2, H3, H4) chuẩn cho các phân hệ Bài học & Kỹ năng | `pages/Sinh lý/**`, `src/content/skills/**` |
 | `components/toc.css` | Mục lục tự động (TOC) | `pages/Sinh lý/Sinhly/**` |
 | `components/pharmacology-symptoms.css` | Dược lý theo triệu chứng | `pages/Dược lý/Triệu chứng/**` |
 | `components/pharmacology-tools.css` | Ma trận tương tác, máy tính hiệu chỉnh liều | `pages/Dược lý/**` |
@@ -260,6 +260,11 @@
 | File | Vai trò |
 |------|---------|
 | `Kỹ năng/ky-nang.html` | Hub tổng Kỹ năng (Tích hợp Anatomy Explorer & Skill Progress Tracker) |
+| `src/content/skills/clinical/kham-nhi/kn-khamnhi.html` | Hub điều hướng phân hệ Khám Nhi Khoa |
+| `src/content/skills/clinical/kham-nhi/kn-kham-ho-hap-tre.html` | Kỹ năng Khám Hô Hấp Ở Trẻ Em chuẩn OSCE & Bedside |
+| `src/content/skills/clinical/kham-nhi/kn-kham-tim-mach-tre.html` | Kỹ năng Khám Tim Mạch Ở Trẻ Em chuẩn OSCE & Bedside |
+| `src/content/skills/clinical/kham-nhi/kn-kham-tre-so-sinh.html` | Kỹ năng Khám Trẻ Sơ Sinh chuẩn OSCE & Bedside (Bài 75 YDS) |
+| `src/content/skills/clinical/kham-nhi/kn-kham-phan-loai-tre-benh.html` | Kỹ năng Khám & Phân loại trẻ bệnh (Triage Nhi khoa - Bài 98 YDS) |
 | `Kỹ năng/Bệnh án/KN_Benhan_Noikhoa.html` | Cách làm bệnh án nội khoa chuẩn |
 | `Kỹ năng/Bệnh nhân ảo/Benh_Nhan_Ao_Hub.html` | Hub Bệnh nhân ảo (Virtual Patient Hub) chọn ca lâm sàng |
 | `Kỹ năng/Bệnh nhân ảo/Case_DauNguc_Cap.html` | Giả lập ca bệnh Đau ngực cấp tương tác đa nhánh |
@@ -297,6 +302,9 @@
 | File | Vai trò |
 |------|---------|
 | `Tiếp cận/tiep-can.html` | Hub tổng Tiếp cận (Stats, Daily Flashcard, Recently Viewed, On-Call mode) |
+| `src/content/approaches/specialties/pediatrics/nhi-khoa.html` | Hub Tiếp cận Nhi khoa |
+| `src/content/approaches/specialties/pediatrics/tc-nuoi-duong-tre-em.html` | Tiếp cận các vấn đề nuôi dưỡng ở trẻ em (Bú mẹ, IMCI, Khó nuôi ăn, ARFID & Refeeding CDSS) |
+| `src/content/approaches/specialties/pediatrics/tc-tim-bam-sinh.html` | Tiếp cận trẻ có tim bẩm sinh |
 | `Tiếp cận/6. Công cụ tương tác/ma-tran-trieu-chung.html` | Ma Trận Chẩn Đoán (Weighted Bayesian, SVG Radar Chart, Timeline Progression, URL params, Copy, Save/Load, Gap Analysis) |
 | `Tiếp cận/6. Công cụ tương tác/body-map.html` | Bản Đồ Giải Phẫu Tương Tác (SVG anatomy selector theo 5 vùng cơ thể) |
 | `Tiếp cận/6. Công cụ tương tác/case-simulator.html` | Mô Phỏng Ca Bệnh Lâm Sàng Tương Tác (Virtual Patient 4-step Reasoning Simulator) |

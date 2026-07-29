@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Tiếp cận chẩn đoán thiếu máu ở trẻ em: Định nghĩa bách phân vị 5th theo tuổi, Phân loại MCV & Hồng cầu lưới (HCL) hiệu chỉnh, Bảng chuẩn MCV (Bảng 38.4), Lưu đồ 38.1 & 38.2 Nhi khoa YDS 2020, Bilan sắt, Điện di Hb và Bộ công cụ CDSS tương tác.">
+  <title>Tiếp Cận Thiếu Máu Ở Trẻ Em – CliniPortal</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@500;600&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core (5 levels up to root) -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../../css/components/approach-symptom.css">
+
+  <style>
+    /* ==========================================================================
+       PEDIATRIC ANEMIA APPROACH STYLES & INTERACTIVE UI SYSTEM
+       ========================================================================== */
+    :root {
+      --anemia-primary: #dc2626;
+      --anemia-red: #ef4444;
+      --anemia-dark: #0f172a;
+      --anemia-navy: #1e1b4b;
+      --anemia-amber: #d97706;
+      --anemia-purple: #7c3aed;
+      --anemia-cyan: #06b6d4;
+      --anemia-success: #10b981;
+    }
+
+    /* Override parent container overflow so position: sticky works */
+    html, body,
+    .app-container,
+    .main-wrapper,
+    .layout-content-area {
+      overflow: visible !important;
+    }
+
+    /* Hero Banner Theme */
+    .hero-anemia {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #450a0a 100%);
+      border-radius: 20px;
+      padding: 32px;
+      color: #ffffff;
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.25);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .hero-anemia::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -10%;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(239, 68, 68, 0.25) 0%, rgba(124, 58, 237, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-anemia-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .hero-title-group h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      font-family: var(--font-display);
+      margin: 8px 0 12px 0;
+      color: #ffffff;
+      line-height: 1.25;
+    }
+
+    .hero-badges-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .hero-badge-pill {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #e0e7ff;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-badge-pill.alert {
+      background: rgba(239, 68, 68, 0.25);
+      border-color: rgba(239, 68, 68, 0.4);
+      color: #fca5a5;
+    }
+
+    .hero-quick-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .stat-box {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+
+    .stat-box .stat-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #cbd5e1;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .stat-box .stat-val {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #f87171;
+      font-family: var(--font-display);
+    }
+
+    .stat-box .stat-sub {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+
+    /* Quick Nav Sticky Bar */
+    .quick-nav-bar {
+      position: sticky !important;
+      top: calc(var(--header-height, 60px) + 8px) !important;
+      z-index: 150 !important;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      padding: 10px 14px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      white-space: nowrap;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+    }
+
+    .quick-nav-btn {
+      background: transparent;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .quick-nav-btn:hover,
+    .quick-nav-btn.active {
+      background: rgba(220, 38, 38, 0.12);
+      color: var(--anemia-primary);
+    }
+
+    /* Section Card Wrappers */
+    .section-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+      scroll-margin-top: 130px;
+    }
+
+    .section-title-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid rgba(220, 38, 38, 0.2);
+    }
+
+    .section-icon-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(220, 38, 38, 0.12);
+      color: var(--anemia-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .section-title-group h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin: 0;
+    }
+
+    /* Clinical Tables & Grids */
+    .clinical-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 16px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+    }
+
+    .clinical-table th {
+      background: rgba(220, 38, 38, 0.08);
+      color: var(--color-text);
+      padding: 12px 16px;
+      font-weight: 700;
+      text-align: left;
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .clinical-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: var(--color-text);
+    }
+
+    .clinical-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Red Flag Box & Alerts */
+    .clinical-alert-box {
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin: 18px 0;
+      border-left: 5px solid;
+    }
+
+    .clinical-alert-box.danger {
+      background: rgba(239, 68, 68, 0.08);
+      border-color: #ef4444;
+      color: var(--color-text);
+    }
+
+    .clinical-alert-box.warning {
+      background: rgba(245, 158, 11, 0.08);
+      border-color: #f59e0b;
+      color: var(--color-text);
+    }
+
+    .clinical-alert-box.info {
+      background: rgba(2, 132, 199, 0.08);
+      border-color: #0284c7;
+      color: var(--color-text);
+    }
+
+    .clinical-alert-title {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Flowchart Visualizer */
+    .flow-step-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .flow-node {
+      background: var(--color-surface);
+      border: 2px solid var(--color-border);
+      border-radius: 14px;
+      padding: 18px 20px;
+      position: relative;
+      transition: all 0.2s;
+    }
+
+    .flow-node.red-flag-node {
+      border-color: #ef4444;
+      background: rgba(239, 68, 68, 0.04);
+    }
+
+    .flow-node.decision-node {
+      border-color: #0284c7;
+      background: rgba(2, 132, 199, 0.04);
+    }
+
+    .flow-node.treatment-node {
+      border-color: #10b981;
+      background: rgba(16, 185, 129, 0.04);
+    }
+
+    .flow-tag {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .flow-tag.danger { background: #ef4444; color: white; }
+    .flow-tag.info { background: #0284c7; color: white; }
+    .flow-tag.success { background: #10b981; color: white; }
+    .flow-tag.warning { background: #f59e0b; color: white; }
+
+    /* Interactive CDSS Simulators */
+    .sim-container {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border: 1px solid #cbd5e1;
+      border-radius: 16px;
+      padding: 24px;
+      margin: 20px 0;
+    }
+
+    [data-theme="dark"] .sim-container {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border-color: #334155;
+    }
+
+    .sim-grid-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 868px) {
+      .sim-grid-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .custom-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: all 0.15s;
+    }
+
+    .custom-checkbox:hover {
+      border-color: var(--anemia-primary);
+    }
+
+    .custom-checkbox input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--anemia-primary);
+      cursor: pointer;
+    }
+
+    .sim-result-card {
+      background: var(--color-surface);
+      border: 2px solid var(--color-border);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .sim-result-status {
+      padding: 14px;
+      border-radius: 10px;
+      font-weight: 700;
+      text-align: center;
+      font-size: 1.05rem;
+      margin-bottom: 14px;
+    }
+
+    .sim-result-status.red {
+      background: rgba(239, 68, 68, 0.15);
+      color: #dc2626;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .sim-result-status.yellow {
+      background: rgba(245, 158, 11, 0.15);
+      color: #d97706;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .sim-result-status.green {
+      background: rgba(16, 185, 129, 0.15);
+      color: #059669;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+  </style>
+
+  <!-- JS Core (5 levels up) -->
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+  <script src="../../../../../js/approach-symptom.js" defer></script>
+</head>
+
+<body>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- App Container -->
+  <div class="app-container">
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <div class="main-wrapper" id="mainContent" style="padding: 20px 24px;">
+
+      <!-- HERO BANNER -->
+      <section class="hero-anemia">
+        <div class="hero-anemia-header">
+          <div class="hero-title-group">
+            <div class="hero-badges-group">
+              <span class="hero-badge-pill"><i class="fa-solid fa-droplet"></i> Nhi khoa YDS 2020</span>
+              <span class="hero-badge-pill"><i class="fa-solid fa-microscope"></i> Phân Loại MCV &amp; HCL</span>
+              <span class="hero-badge-pill alert"><i class="fa-solid fa-diagram-project"></i> Sơ Đồ 38.1 &amp; 38.2</span>
+            </div>
+            <h1>👶 TIẾP CẬN THIẾU MÁU Ở TRẺ EM</h1>
+            <p style="font-size: 0.95rem; opacity: 0.9; margin: 0; max-width: 750px; line-height: 1.5;">
+              Chiến lược chẩn đoán toàn diện thiếu máu ở trẻ em: Phân định ngầm định thiếu máu theo tuổi, phân tích chỉ số MCV &amp; Hồng cầu lưới hiệu chỉnh (HCL), nhận diện dấu hiệu thực thể định hướng (Bảng 38.3), sơ đồ thuật toán xử trí xanh xao khẩn cấp và công cụ CDSS hỗ trợ quyết định lâm sàng.
+            </p>
+          </div>
+        </div>
+
+        <!-- HERO QUICK STATS -->
+        <div class="hero-quick-stats">
+          <div class="stat-box">
+            <div class="stat-label">Ngưỡng Chẩn Đoán</div>
+            <div class="stat-val">&lt; Percentile 5</div>
+            <div class="stat-sub">Hb &lt; Bách phân vị 5th hoặc &lt; 2 SD theo tuổi</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Tỷ Lệ Việt Nam</div>
+            <div class="stat-val">27.8%</div>
+            <div class="stat-sub">Trẻ &lt; 5 tuổi (45% ở trẻ &lt; 12 tháng)</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Phân Loại Kích Thước</div>
+            <div class="stat-val">MCV chuẩn</div>
+            <div class="stat-sub">Hồng cầu Nhỏ / Bình thường / To theo tuổi</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Đáp Ứng Tủy Xương</div>
+            <div class="stat-val" style="color: #f87171;">HCL Hiệu Chỉnh</div>
+            <div class="stat-sub">&gt; 2% hoặc &gt; 100 K/µL = Tán huyết / Mất máu</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STICKY QUICK NAV BAR -->
+      <nav class="quick-nav-bar" id="quickNav">
+        <button class="quick-nav-btn active" onclick="scrollToSection('overview')">
+          <i class="fa-solid fa-shield-halved"></i> Định nghĩa &amp; Tỷ lệ
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('history')">
+          <i class="fa-solid fa-clipboard-question"></i> Bệnh sử &amp; Bảng 38.2
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('physical-exam')">
+          <i class="fa-solid fa-user-doctor"></i> Dấu hiệu Bảng 38.3
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('mcv-table')">
+          <i class="fa-solid fa-table"></i> Bảng MCV Bảng 38.4
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('flowcharts')">
+          <i class="fa-solid fa-diagram-project"></i> Sơ đồ 38.1 &amp; 38.2 YDS
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('cdss-evaluator')">
+          <i class="fa-solid fa-calculator"></i> Tool CDSS Tương tác
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('primary-care')">
+          <i class="fa-solid fa-prescription"></i> Chăm sóc Ban đầu
+        </button>
+      </nav>
+
+      <!-- SECTION 1: OVERVIEW -->
+      <section class="section-card" id="overview">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-shield-halved"></i></div>
+          <div>
+            <h2>1. Định Nghĩa &amp; Đại Cương Thiếu Máu Ở Trẻ Em</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Tiêu chuẩn chẩn đoán &amp; Dịch tễ học tại Việt Nam</span>
+          </div>
+        </div>
+
+        <div style="line-height: 1.6; font-size: 0.9rem;">
+          <p>
+            <strong>Định nghĩa:</strong> Thiếu máu ở trẻ em là tình trạng giảm khối lượng huyết sắc tố (Hemoglobin - Hb) <strong>dưới bách phân vị thứ 5 (5th percentile)</strong> theo tuổi, hoặc <strong>dưới 2 độ lệch chuẩn (SD)</strong> so với giá trị bình thường của trẻ khỏe mạnh cùng lứa tuổi.
+          </p>
+
+          <div class="clinical-alert-box info">
+            <div class="clinical-alert-title"><i class="fa-solid fa-chart-line"></i> Dịch tễ học Thiếu máu trẻ em tại Việt Nam (Viện Dinh Dưỡng 2014–2015)</div>
+            <p style="margin: 0; font-size: 0.88rem; line-height: 1.5;">
+              • Tỷ lệ thiếu máu chung ở trẻ em &lt; 5 tuổi tại Việt Nam là <strong>27,8%</strong>.
+              <br>• Đỉnh điểm cao nhất thuộc nhóm <strong>trẻ &lt; 12 tháng tuổi (45,0%)</strong> và nhóm <strong>12–23 tháng tuổi (42,7%)</strong> do nhu cầu tăng trưởng cao trong khi chế độ ăn dặm chưa bù đủ sắt.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: HISTORY & ANTECEDENTS -->
+      <section class="section-card" id="history">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-clipboard-question"></i></div>
+          <div>
+            <h2>2. Khai Thác Bệnh Sử &amp; Tiền Căn Chi Tiết</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Bảng 38.2 - Gợi ý nguyên nhân từ bệnh sử &amp; thói quen ăn uống</span>
+          </div>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="clinical-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Yếu Tố Bệnh Sử / Tiền Căn</th>
+                <th style="width: 75%;">Nguyên Nhân &amp; Bệnh Lý Gợi Ý Tương Ứng (Bảng 38.2 YDS)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Tuổi &amp; Giới tính</strong></td>
+                <td>
+                  • <em>Sinh non / Nhẹ cân:</em> Thiếu máu thiếu sắt (TMTS) sớm do giảm dự trữ sắt.
+                  <br>• <em>Thalassemia:</em> Thường khởi phát sau 4–6 tháng tuổi khi $HbF$ chuyển dần sang $HbA$.
+                  <br>• <em>Tuổi ăn dặm (6–24 tháng):</em> TMTS do chế độ ăn không cân đối.
+                  <br>• <em>TMTS ở trẻ &gt; 8 tuổi:</em> Cần truy tìm xuất huyết tiêu hóa mạn tính.
+                  <br>• <em>Nữ tuổi dậy thì:</em> TMTS do rong kinh / mất máu.
+                  <br>• <em>Trẻ Nam + Tán huyết:</em> Thiếu men G6PD (di truyền liên kết X).
+                  <br>• <em>Trẻ Nữ + Tán huyết:</em> Tán huyết tự miễn, Lupus đỏ hệ thống (SLE).
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Chế Độ Dinh Dưỡng &amp; Tiêu Hóa</strong></td>
+                <td>
+                  • <em>Uống sữa bò tươi &gt; 600 mL/ngày:</em> Viêm ruột mất máu ẩn, gây TMTS nặng.
+                  <br>• <em>Trẻ ăn chay nghiêm ngặt:</em> Thiếu Vitamin $B_{12}$ và thiếu sắt.
+                  <br>• <em>Uống sữa dê hoàn toàn:</em> Thiếu Acid Folic (sữa dê rất nghèo folate).
+                  <br>• <em>Hội chứng PICA (thích ăn đất/vôi):</em> Ngộ độc chì, Thiếu máu thiếu sắt.
+                  <br>• <em>Tắc mật mạn / Kém hấp thu:</em> Thiếu Vitamin E, Sắt, $B_{12}$.
+                  <br>• <em>Bệnh IBD / Dị ứng đạm sữa bò / Viêm loét dạ dày:</em> TMTS do mất máu mạn rỉ rả.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Nhiễm Trùng &amp; Dùng Thuốc</strong></td>
+                <td>
+                  • <em>Nhiễm giun móc / Vi khuẩn ruột:</em> Mất máu mạn / Thiếu $B_{12}$.
+                  <br>• <em>Nhiễm siêu vi (EBV, CMV, Parvovirus B19):</em> Ức chế tủy xương / Giảm sản hồng cầu (TEC).
+                  <br>• <em>Mycoplasma / Sốt Rét:</em> Tán huyết cấp tính.
+                  <br>• <em>Thuốc oxy hóa (Sulfonamide, Primaquine):</em> Khởi phát tán huyết ở trẻ thiếu G6PD.
+                  <br>• <em>Phenytoin:</em> Tăng nhu cầu Folate.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Tiền Căn Gia Đình</strong></td>
+                <td>Di truyền lặn/trội NST: Hồng cầu hình cầu bẩm sinh, Thalassemia, Thiếu máu Fanconi, tiền căn có người thân bị sỏi mật hoặc đã phẫu thuật cắt lách.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECTION 3: PHYSICAL EXAM & SIGNS -->
+      <section class="section-card" id="physical-exam">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-user-doctor"></i></div>
+          <div>
+            <h2>3. Thăm Khám Lâm Sàng &amp; Dấu Hiệu Đặc Thụ</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Bảng 38.3 - Các dấu hiệu thực thể định hướng nguyên nhân thiếu máu</span>
+          </div>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="clinical-table">
+            <thead>
+              <tr>
+                <th style="width: 22%;">Cơ Quan Thăm Khám</th>
+                <th style="width: 78%;">Dấu Hiệu Lâm Sàng &amp; Định Hướng Nguyên Nhân Bệnh Lý</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Da &amp; Niêm Mạc</strong></td>
+                <td>
+                  • <em>Tăng sắc tố / Dát cà phê sữa:</em> Thiếu máu Fanconi.
+                  <br>• <em>Bạch biến (Vitiligo):</em> Thiếu Vitamin $B_{12}$ (bệnh tự miễn).
+                  <br>• <em>Vàng da niêm:</em> Tán huyết (cấp/mạn), viêm gan.
+                  <br>• <em>Chấm / Đốm xuất huyết:</em> Xâm lấn tủy (Leukemia), Giảm 3 dòng tủy, Tán huyết miễn dịch kèm giảm tiểu cầu (Hội chứng Evans), HUS.
+                  <br>• <em>Hồng ban cánh bướm mặt:</em> Lupus đỏ hệ thống (SLE).
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Đầu, Mắt &amp; Miệng</strong></td>
+                <td>
+                  • <em>Bước trán, nhô xương gò má:</em> Thalassemia thể nặng, Thiếu máu thiếu sắt nặng kéo dài.
+                  <br>• <em>Mắt nhỏ, thiếu ngón cái, dị tật thận:</em> Hội chứng thiếu máu Fanconi.
+                  <br>• <em>Viêm lưỡi, nứt khóe miệng, móng tay dẹt hình muỗng:</em> Thiếu máu thiếu sắt, Thiếu $B_{12}$.
+                  <br>• <em>Chẻ môi, ngực hình khiên:</em> Hội chứng Diamond-Blackfan (DBA).
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Bụng &amp; Trực Tràng</strong></td>
+                <td>
+                  • <em>Gan lách to:</em> Tán huyết mạn (Thalassemia), U xâm lấn (Leukemia, Lymphoma), Sốt rét, EBV, Tăng áp lực tĩnh mạch cửa, Bệnh tích tụ.
+                  <br>• <em>Tiêu phân máu / Trĩ:</em> Xuất huyết tiêu hóa mạn, tăng áp cửa.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Thần Kinh</strong></td>
+                <td>
+                  • <em>Kích thích, thờ ơ, giảm chú ý:</em> Thiếu máu thiếu sắt.
+                  <br>• <em>Bệnh thần kinh ngoại biên, thất điều, giảm trí nhớ:</em> Thiếu Vitamin $B_{12}$, Thiếu Vitamin E, Ngộ độc chì.
+                  <br>• <em>Đột quỵ / Tai biến mạch máu não:</em> Bệnh hồng cầu hình liềm (SCD), Tiểu huyết cầu tố phát ban đêm (PNH).
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECTION 4: MCV TABLE & PARACLINICAL -->
+      <section class="section-card" id="mcv-table">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-microscope"></i></div>
+          <div>
+            <h2>4. Cận Lâm Sàng &amp; Bảng MCV Bình Thường Theo Tuổi</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Bảng 38.4 YDS - Giá trị MCV trung bình &amp; ngưỡng dưới theo mốc tuổi</span>
+          </div>
+        </div>
+
+        <p style="font-size: 0.9rem; line-height: 1.5;">
+          Chỉ số MCV (Thể tích trung bình hồng cầu) biến đổi rất lớn theo lứa tuổi nhi khoa. Bắt buộc phải so sánh MCV của trẻ với <strong>ngưỡng dưới theo tuổi</strong> để chẩn đoán chính xác hồng cầu nhỏ:
+        </p>
+
+        <!-- TABLE 38.4 -->
+        <div style="overflow-x: auto;">
+          <table class="clinical-table">
+            <thead>
+              <tr>
+                <th style="width: 30%;">Nhóm Tuổi Trẻ</th>
+                <th style="width: 35%;">MCV Trung Bình (fL)</th>
+                <th style="width: 35%;">Ngưỡng Dưới MCV (&lt; Percentile 2.5)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>6 tháng – 2 tuổi</strong></td>
+                <td>77 fL</td>
+                <td><strong style="color: #dc2626;">70 fL</strong></td>
+              </tr>
+              <tr>
+                <td><strong>2 – 4 tuổi</strong></td>
+                <td>79 fL</td>
+                <td><strong style="color: #dc2626;">73 fL</strong></td>
+              </tr>
+              <tr>
+                <td><strong>5 – 7 tuổi</strong></td>
+                <td>81 fL</td>
+                <td><strong style="color: #dc2626;">75 fL</strong></td>
+              </tr>
+              <tr>
+                <td><strong>8 – 11 tuổi</strong></td>
+                <td>83 fL</td>
+                <td><strong style="color: #dc2626;">76 fL</strong></td>
+              </tr>
+              <tr>
+                <td><strong>12 – 14 tuổi</strong></td>
+                <td>Nữ: 85 fL / Nam: 84 fL</td>
+                <td>Nữ: <strong>78 fL</strong> / Nam: <strong>77 fL</strong></td>
+              </tr>
+              <tr>
+                <td><strong>15 – 17 tuổi</strong></td>
+                <td>Nữ: 87 fL / Nam: 86 fL</td>
+                <td>Nữ: <strong>79 fL</strong> / Nam: <strong>78 fL</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- RETICULOCYTE FORMULA BOX -->
+        <div class="clinical-alert-box warning">
+          <div class="clinical-alert-title"><i class="fa-solid fa-calculator"></i> Công thức Hiệu Chỉnh Hồng Cầu Lưới (Reticulocyte Index)</div>
+          <p style="margin: 0; font-size: 0.88rem; line-height: 1.5;">
+            Khi có thiếu máu, số lượng hồng cầu lưới đếm (%) bị thổi phồng do tổng số hồng cầu giảm. Cần tính <strong>HCL hiệu chỉnh</strong>:
+            <br>
+            $$\text{HCL hiệu chỉnh (\%)} = \frac{\text{HCL đếm (\%)} \times \text{Hb bệnh nhân}}{\text{Hb bình thường theo tuổi}}$$
+            <br>
+            • <strong>HCL hiệu chỉnh &gt; 2\%</strong> (hoặc HCL tuyệt đối $> 100 \times 10^9/\text{L}$ [$100\text{ K/}\mu\text{L}$]): Tủy xương đáp ứng tăng sinh tốt → Gợi ý <strong>Tán huyết</strong> hoặc <strong>Mất máu cấp</strong>.
+            <br>
+            • <strong>HCL hiệu chỉnh &lt; 2\%</strong> (hoặc HCL tuyệt đối &lt; 100 K/µL [$100\text{ K/}\mu\text{L}$]): Tủy xương giảm sản xuất → Gợi ý <strong>Suy tủy, Thiếu sắt/B12, Thâm nhiễm tủy</strong>.
+          </p>
+        </div>
+      </section>
+
+      <!-- SECTION 5: FLOWCHARTS -->
+      <section class="section-card" id="flowcharts">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-diagram-project"></i></div>
+          <div>
+            <h2>5. Lưu Đồ Thuật Toán Tiếp Cận &amp; Phân Loại Thiếu Máu</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Sơ đồ 38.1 (Phân tầng Xanh xao) &amp; Sơ đồ 38.2 (Phân loại MCV/HCL) - Nhi khoa YDS (2020)</span>
+          </div>
+        </div>
+
+        <div class="flow-step-container">
+          <!-- FLOWCHART 38.1 TRIAGE -->
+          <div class="flow-node red-flag-node">
+            <span class="flow-tag danger">SƠ ĐỒ 38.1: LƯU ĐỒ XỬ TRÍ BỆNH NHI XANH XAO</span>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 10px; font-size: 0.88rem;">
+              <div style="background: rgba(239, 68, 68, 0.08); padding: 12px; border-radius: 8px;">
+                <strong style="color: #dc2626;">A. Bệnh Cấp Tính Nặng (Cấp cứu):</strong>
+                <p style="margin: 4px 0 0 0;">Đánh giá nhanh sinh hiệu, khám tập trung, TPTTBM khẩn. Gợi ý: Tụt HA, Nhiễm trùng huyết, Sốc, Xuất huyết cấp, Hạ đường huyết, Thiếu máu nặng đe dọa sinh hiệu.</p>
+              </div>
+              <div style="background: rgba(16, 185, 129, 0.08); padding: 12px; border-radius: 8px;">
+                <strong style="color: #059669;">B. Bệnh Nhẹ / Kéo Dài / Trẻ Khỏe:</strong>
+                <p style="margin: 4px 0 0 0;">Khai thác bệnh sử &amp; khám hoàn chỉnh, TPTTBM &amp; Bilan sắt/HCL. Gợi ý: Thiếu máu dinh dưỡng, Bệnh mạn tính, Màu da di truyền, Thalassemia thể nhẹ.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FLOWCHART 38.2 DIAGNOSTIC ALGORITHM -->
+          <div class="flow-node decision-node">
+            <span class="flow-tag info">SƠ ĐỒ 38.2: THUẬT TOÁN PHÂN LOẠI THIẾU MÁU DỰA TRÊN MCV &amp; HCL</span>
+            <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 10px; font-size: 0.88rem;">
+              <!-- MICROCYTIC -->
+              <div style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 14px; border-radius: 10px; border-left: 4px solid #dc2626;">
+                <strong style="color: #dc2626; font-size: 0.95rem;">1. MCV Giảm (Hồng Cầu Nhỏ):</strong>
+                <ul style="margin: 4px 0 0 0; padding-left: 18px;">
+                  <li><strong>Ferritin Giảm (&lt; 12-15 ng/mL):</strong> Chẩn đoán xác định <strong>THIẾU MÁU THIẾU SẮT (IDA)</strong>.</li>
+                  <li><strong>Ferritin Bình Thường / Tăng:</strong> Hướng đến <strong>Thalassemia (thể ẩn/nhẹ)</strong> hoặc Bệnh lý Hemoglobin ($HbE$). Làm Điện di Hemoglobin.</li>
+                </ul>
+              </div>
+
+              <!-- RETICULOCYTE EVALUATION -->
+              <div style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 14px; border-radius: 10px; border-left: 4px solid #0284c7;">
+                <strong style="color: #0284c7; font-size: 0.95rem;">2. MCV Bình Thường Hoặc Tăng (Hồng Cầu Đẳng Sắc / Hồng Cầu To):</strong>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px;">
+                  <div style="background: rgba(245, 158, 11, 0.08); padding: 10px; border-radius: 8px;">
+                    <strong style="color: #d97706;">HCL &lt; 100 K/µL (Tủy Giảm Sản Xoay):</strong>
+                    <br>• <em>Bạch cầu &amp; Tiểu cầu GIẢM:</em> Suy tủy xương, Leukemia, Thiếu $B_{12}$/Folate, HIV, DBA/TEC.
+                    <br>• <em>Bạch cầu &amp; Tiểu cầu BÌNH THƯỜNG:</em> Nhiễm siêu vi, Bệnh thận mạn, Suy giáp, Bệnh gan mạn.
+                  </div>
+                  <div style="background: rgba(239, 68, 68, 0.08); padding: 10px; border-radius: 8px;">
+                    <strong style="color: #dc2626;">HCL &gt; 100 K/µL (Tủy Tăng Sản Phản Ứng):</strong>
+                    <br>• <strong>Mất máu cấp tính</strong>.
+                    <br>• <strong>Tán huyết miễn dịch</strong> (Coombs test +).
+                    <br>• <strong>Tán huyết bẩm sinh:</strong> Bệnh màng hồng cầu (cầu/elip), Thiếu men G6PD, Bệnh mạch máu nhỏ, PNH.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6: INTERACTIVE CDSS EVALUATOR -->
+      <section class="section-card" id="cdss-evaluator">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-laptop-medical"></i></div>
+          <div>
+            <h2>6. Bộ Công Cụ CDSS Đánh Giá &amp; Phân Loại Tương Tác</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Tính HCL hiệu chỉnh &amp; So sánh MCV chuẩn theo tuổi</span>
+          </div>
+        </div>
+
+        <div class="sim-container">
+          <h3 style="margin-top: 0; font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-calculator"></i> CDSS 1: Evaluator Tính Hồng Cầu Lưới Hiệu Chỉnh &amp; Phân Loại MCV</h3>
+
+          <div class="sim-grid-layout">
+            <div>
+              <label style="font-weight: 700; font-size: 0.88rem;">1. Độ Tuổi Của Trẻ:</label>
+              <select id="cdssAge" onchange="runAnemiaCdss()" style="width: 100%; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); margin-top: 4px; font-weight: 600;">
+                <option value="6m_2y" selected>6 tháng – 2 tuổi (MCV chuẩn ≥ 70 fL)</option>
+                <option value="2y_4y">2 – 4 tuổi (MCV chuẩn ≥ 73 fL)</option>
+                <option value="5y_7y">5 – 7 tuổi (MCV chuẩn ≥ 75 fL)</option>
+                <option value="8y_11y">8 – 11 tuổi (MCV chuẩn ≥ 76 fL)</option>
+                <option value="12y_14y">12 – 14 tuổi (MCV chuẩn ≥ 77-78 fL)</option>
+                <option value="15y_17y">15 – 17 tuổi (MCV chuẩn ≥ 78-79 fL)</option>
+              </select>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px;">
+                <div>
+                  <label style="font-weight: 700; font-size: 0.85rem;">Hemoglobin (g/dL):</label>
+                  <input type="number" id="cdssHb" value="7.5" step="0.1" onchange="runAnemiaCdss()" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); margin-top: 4px;">
+                </div>
+                <div>
+                  <label style="font-weight: 700; font-size: 0.85rem;">MCV Đo Được (fL):</label>
+                  <input type="number" id="cdssMcv" value="64" step="1" onchange="runAnemiaCdss()" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); margin-top: 4px;">
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
+                <div>
+                  <label style="font-weight: 700; font-size: 0.85rem;">HCL Đếm (%):</label>
+                  <input type="number" id="cdssRetic" value="1.2" step="0.1" onchange="runAnemiaCdss()" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); margin-top: 4px;">
+                </div>
+                <div>
+                  <label style="font-weight: 700; font-size: 0.85rem;">Ferritin (ng/mL):</label>
+                  <input type="number" id="cdssFerritin" value="8" step="1" onchange="runAnemiaCdss()" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); margin-top: 4px;">
+                </div>
+              </div>
+
+              <label style="font-weight: 700; font-size: 0.88rem; display: block; margin-top: 12px;">Các Dấu Hiệu Kèm Theo:</label>
+              <div style="display: flex; flex-direction: column; gap: 6px; margin-top: 4px;">
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="chkCytopenia" onchange="runAnemiaCdss()">
+                  <span>Có giảm Bạch cầu hoặc Giảm Tiểu cầu (Giảm 2-3 dòng)</span>
+                </label>
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="chkJaundice" onchange="runAnemiaCdss()">
+                  <span>Trẻ có Vàng da niêm / Gan lách to / Nước tiểu tiểu màu trà</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- RESULT CARD -->
+            <div class="sim-result-card">
+              <div>
+                <div style="font-size: 0.8rem; text-transform: uppercase; font-weight: 700; color: var(--color-text-muted); margin-bottom: 6px;">KẾT QUẢ PHÂN LOẠI CDSS:</div>
+                <div id="simAnemiaStatus" class="sim-result-status red">
+                  🔴 THIẾU MÁU HỒNG CẦU NHỎ NHƯỢC SẮC (Nghi Thiếu Sắt)
+                </div>
+                <div id="simAnemiaDetails" style="font-size: 0.88rem; line-height: 1.5; color: var(--color-text);">
+                  Đang tính toán...
+                </div>
+              </div>
+
+              <div style="margin-top: 16px; padding-top: 12px; border-top: 1px dashed var(--color-border); font-size: 0.82rem; color: var(--color-text-muted);">
+                <strong>Lưu ý:</strong> Ferritin &lt; 12 ng/mL ở trẻ &lt; 5 tuổi là tiêu chuẩn vàng chẩn đoán Thiếu máu thiếu sắt.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 7: PRIMARY CARE -->
+      <section class="section-card" id="primary-care">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-prescription"></i></div>
+          <div>
+            <h2>7. Khuyến Cáo Chăm Sóc Ban Đầu (WHO / Tuyến Cơ Sở)</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Tầm soát, điều trị thử nghiệm sắt &amp; tiêu chuẩn chuyển tuyến</span>
+          </div>
+        </div>
+
+        <div style="line-height: 1.6; font-size: 0.9rem;">
+          <ol style="padding-left: 20px;">
+            <li><strong>Chủ động Tầm soát:</strong> Nhân viên y tế cần chủ động khám <strong>lòng bàn tay nhợt</strong> và đánh giá chế độ ăn ở tất cả trẻ dưới 5 tuổi khi đến khám.</li>
+            <li><strong>Xử trí thiếu máu mức độ nhẹ/trung bình tại tuyến cơ sở:</strong>
+              <ul style="padding-left: 18px; margin-top: 4px;">
+                <li>Bổ sung Sắt uống với liều <strong>$3\text{ mg/kg/ngày}$ sắt nguyên tố</strong> trong 2–4 tuần.</li>
+                <li>Cho uống thuốc xổ giun nếu trẻ $\ge 12$ tháng chưa xổ giun trong 6 tháng qua.</li>
+                <li>Tư vấn chế độ ăn dặm cân đối giàu sắt (thịt đỏ, gan, trứng) phối hợp Vitamin C (cam, chanh) để tăng hấp thu sắt. Hạn chế sữa bò tươi &gt; 600 mL/ngày.</li>
+                <li>Tái khám sau 2–4 tuần: Nếu $Hb$ tăng $\ge 1\text{ g/dL}$ → Tiếp tục duy trì bù sắt đủ 2–3 tháng để củng cố dự trữ.</li>
+              </ul>
+            </li>
+            <li><strong>Chuyển tuyến gấp:</strong> Khi trẻ có lòng bàn tay rất nhợt, $Hb &lt; 7\text{ g/dL}$, có dấu hiệu suy tim/lừ đừ, hoặc thử nghiệm điều trị sắt 4 tuần không cải thiện.</li>
+          </ol>
+
+          <!-- REFERENCES -->
+          <div style="margin-top: 24px; padding-top: 14px; border-top: 1px dashed var(--color-border); font-size: 0.82rem; color: var(--color-text-muted);">
+            <strong>📚 Tài Liệu Tham Khảo Chuẩn AMA:</strong>
+            <br>1. Đào Thị Thanh An, Lâm Thị Mỹ. Bài 38: Tiếp cận chẩn đoán thiếu máu ở trẻ em. Trong: <em>Nhi khoa YDS - Tập 1</em>. Bộ môn Nhi - Đại học Y Dược Thành phố Hồ Chí Minh; 2020:478-488.
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+  <!-- INLINE CDSS JAVASCRIPT LOGIC -->
+  <script>
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        document.querySelectorAll('.quick-nav-btn').forEach(btn => btn.classList.remove('active'));
+        const activeBtn = Array.from(document.querySelectorAll('.quick-nav-btn')).find(b => b.getAttribute('onclick').includes(id));
+        if (activeBtn) activeBtn.classList.add('active');
+      }
+    }
+
+    function runAnemiaCdss() {
+      const ageGroup = document.getElementById('cdssAge').value;
+      const hb = parseFloat(document.getElementById('cdssHb').value) || 0;
+      const mcv = parseFloat(document.getElementById('cdssMcv').value) || 0;
+      const retic = parseFloat(document.getElementById('cdssRetic').value) || 0;
+      const ferritin = parseFloat(document.getElementById('cdssFerritin').value) || 0;
+      const cytopenia = document.getElementById('chkCytopenia').checked;
+      const jaundice = document.getElementById('chkJaundice').checked;
+
+      const statusEl = document.getElementById('simAnemiaStatus');
+      const detailsEl = document.getElementById('simAnemiaDetails');
+
+      // Reference normal MCV & Hb for age
+      let normalHb = 12.0;
+      let mcvCutoff = 70;
+
+      if (ageGroup === '6m_2y') { normalHb = 11.5; mcvCutoff = 70; }
+      else if (ageGroup === '2y_4y') { normalHb = 12.0; mcvCutoff = 73; }
+      else if (ageGroup === '5y_7y') { normalHb = 12.5; mcvCutoff = 75; }
+      else if (ageGroup === '8y_11y') { normalHb = 13.0; mcvCutoff = 76; }
+      else if (ageGroup === '12y_14y') { normalHb = 13.5; mcvCutoff = 77; }
+      else if (ageGroup === '15y_17y') { normalHb = 14.0; mcvCutoff = 78; }
+
+      // Calculate Corrected Retic %
+      const reticCorrected = (retic * hb) / normalHb;
+
+      // Classify MCV
+      const isMicrocytic = mcv < mcvCutoff;
+      const isMacrocytic = mcv > 95;
+
+      let mcvType = isMicrocytic ? 'Hồng cầu Nhỏ' : (isMacrocytic ? 'Hồng cầu To' : 'Hồng cầu Đẳng sắc');
+
+      // Diagnostic decision logic
+      if (cytopenia) {
+        statusEl.className = 'sim-result-status red';
+        statusEl.innerHTML = '🔴 NGUY CƠ SUY TỦY XƯƠNG / XÂM LẤN TỦY (GIẢM NHIỀU DÒNG)';
+        detailsEl.innerHTML = `
+          Ghi nhận giảm 2-3 dòng tế bào máu.<br>
+          • <strong>HCL hiệu chỉnh:</strong> ${reticCorrected.toFixed(2)}% (Thường giảm &lt; 2%).<br>
+          👉 <strong>Xử trí ngay:</strong> Cho nhập viện Chuyên khoa Huyết học. Chỉ định làm <strong>Phết máu ngoại biên &amp; Tủy đồ / Sinh thiết tủy</strong> để loại trừ Bạch cầu cấp (Leukemia) hoặc Suy tủy xương.
+        `;
+        return;
+      }
+
+      if (jaundice || reticCorrected > 2.0) {
+        statusEl.className = 'sim-result-status red';
+        statusEl.innerHTML = '🔴 THIẾU MÁU TÁN HUYẾT (HCL HIỆU CHỈNH TĂNG)';
+        detailsEl.innerHTML = `
+          • <strong>HCL hiệu chỉnh:</strong> ${reticCorrected.toFixed(2)}% (&gt; 2.0% - Tủy tăng sản phản ứng tốt).<br>
+          • <strong>Loại hồng cầu:</strong> ${mcvType} (MCV = ${mcv} fL).<br>
+          👉 <strong>Hướng chẩn đoán:</strong> Tán huyết tự miễn (Coombs test), Thalassemia thể nặng/trung bình, Thiếu G6PD, hoặc Bệnh màng hồng cầu. Chỉ định Coombs test, Điện di Hb &amp; Men G6PD.
+        `;
+        return;
+      }
+
+      if (isMicrocytic) {
+        if (ferritin < 12) {
+          statusEl.className = 'sim-result-status red';
+          statusEl.innerHTML = '🔴 CHẨN ĐOÁN: THIẾU MÁU THIẾU SẮT (IDA)';
+          detailsEl.innerHTML = `
+            • <strong>Chỉ số MCV:</strong> ${mcv} fL (&lt; ngưỡng chuẩn ${mcvCutoff} fL) → Hồng cầu nhỏ.<br>
+            • <strong>Ferritin:</strong> ${ferritin} ng/mL (&lt; 12 ng/mL) → Khẳng định thiếu sắt.<br>
+            • <strong>HCL hiệu chỉnh:</strong> ${reticCorrected.toFixed(2)}%.<br>
+            👉 <strong>Điều trị:</strong> Uống Sắt $3\text{ mg/kg/ngày}$ sắt nguyên tố x 2-3 tháng. Tư vấn chế độ ăn dặm giàu sắt.
+          `;
+        } else {
+          statusEl.className = 'sim-result-status yellow';
+          statusEl.innerHTML = '🟡 THIẾU MÁU HỒNG CẦU NHỎ - NGHI THALASSEMIA THỂ ẨN';
+          detailsEl.innerHTML = `
+            • <strong>Chỉ số MCV:</strong> ${mcv} fL (&lt; ngưỡng ${mcvCutoff} fL).<br>
+            • <strong>Ferritin:</strong> ${ferritin} ng/mL (Bình thường / Tăng).<br>
+            👉 <strong>Hướng xử trí:</strong> Làm <strong>Điện di Hemoglobin</strong> cho trẻ và bố mẹ để chẩn đoán thể ẩn Thalassemia ($\alpha$ hoặc $\beta$-Thalassemia trait). KHÔNG tự ý bổ sung sắt.
+          `;
+        }
+        return;
+      }
+
+      if (isMacrocytic) {
+        statusEl.className = 'sim-result-status yellow';
+        statusEl.innerHTML = '🟡 THIẾU MÁU HỒNG CẦU TO (MACROCYTIC ANEMIA)';
+        detailsEl.innerHTML = `
+          • <strong>Chỉ số MCV:</strong> ${mcv} fL (&gt; 95 fL).<br>
+          👉 <strong>Hướng xử trí:</strong> Định lượng <strong>Vitamin B12</strong> &amp; <strong>Acid Folic</strong> máu, tầm soát hội chứng kém hấp thu hoặc suy giáp.
+        `;
+        return;
+      }
+
+      // Default Normocytic
+      statusEl.className = 'sim-result-status green';
+      statusEl.innerHTML = '🟢 THIẾU MÁU ĐẲNG SẮC HỒNG CẦU BÌNH THƯỜNG';
+      detailsEl.innerHTML = `
+        • <strong>Chỉ số MCV:</strong> ${mcv} fL (Bình thường theo tuổi).<br>
+        • <strong>HCL hiệu chỉnh:</strong> ${reticCorrected.toFixed(2)}%.<br>
+        👉 <strong>Hướng xử trí:</strong> Tầm soát bệnh lý mạn tính (viêm mạn, bệnh thận mạn, suy giáp) hoặc nhiễm siêu vi làm ức chế tủy tạm thời.
+      `;
+    }
+
+    // Run on init
+    window.addEventListener('DOMContentLoaded', runAnemiaCdss);
+  </script>
+</body>
+
+</html>

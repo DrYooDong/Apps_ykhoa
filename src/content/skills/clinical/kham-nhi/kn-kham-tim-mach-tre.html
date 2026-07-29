@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Hướng dẫn quy trình khám tim mạch ở trẻ em chi tiết: Khai thác mệt khi bú/khóc, bắt mạch 4 chi, xác định mỏm tim theo tuổi, nghe T2 tách đôi cố định, phân tích âm thổi tim bẩm sinh và bảng kiểm OSCE dựa trên Nhi khoa YDS.">
+  <title>Khám Tim Mạch Ở Trẻ Em – CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../../css/components/clinical-skill.css">
+  <link rel="stylesheet" href="../../../../../css/components/paraclinical.css">
+  <link rel="stylesheet" href="../../../../../css/components/physio-headings.css">
+
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../js/clinical-skill-tabs.js" defer></script>
+
+  <style>
+    .skill-hero-cardio {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: white;
+      padding: 1.75rem;
+      border-radius: var(--radius-lg, 12px);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 15px rgba(2, 132, 199, 0.25);
+    }
+
+    .skill-hero-cardio h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-hero-cardio p {
+      font-size: 0.95rem;
+      opacity: 0.95;
+      line-height: 1.6;
+    }
+
+    .cardio-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+
+    .cardio-table th, .cardio-table td {
+      border: 1px solid var(--color-border, #e2e8f0);
+      padding: 0.75rem;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    .cardio-table th {
+      background-color: var(--color-bg-alt, #f8fafc);
+      font-weight: 600;
+      color: var(--color-text, #0f172a);
+    }
+
+    .osce-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .osce-table th, .osce-table td {
+      border: 1px solid var(--color-border, #e2e8f0);
+      padding: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .osce-table th {
+      background: var(--color-primary-hl, #e0f2fe);
+      color: var(--color-primary, #0284c7);
+      text-align: left;
+    }
+
+    .neonatal-box {
+      background: #fefce8;
+      border-left: 4px solid #eab308;
+      padding: 1rem 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin: 1rem 0;
+    }
+
+    .organ-box {
+      background: var(--color-bg-soft, #f0f9ff);
+      border-left: 4px solid var(--color-primary, #0284c7);
+      padding: 1rem 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../../index.html" class="nav-item">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../ky-nang.html" class="nav-item active">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../approaches/tiep-can.html" class="nav-item">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../calculators/cong-cu.html" class="nav-item">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ lâm sàng</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-wrapper" id="mainContent">
+      <clini-breadcrumb
+        items='[{"label": "🏠 Home", "url": "../../../../../index.html"}, {"label": "Kỹ năng lâm sàng", "url": "../../ky-nang.html"}, {"label": "Khám Nhi Khoa", "url": "kn-khamnhi.html"}, {"label": "Khám Tim Mạch Ở Trẻ Em"}]'></clini-breadcrumb>
+
+      <section class="skill-hero-cardio">
+        <h1>🫀 Kỹ Năng Khám Tim Mạch Ở Trẻ Em</h1>
+        <p>Hướng dẫn quy trình thăm khám tim mạch nhi khoa toàn diện chuẩn Nhi khoa YDS (ĐHYD TP.HCM): Khai thác triệu chứng mệt khi bú/khóc, bắt mạch 4 chi tầm soát hẹp eo ĐMC, vị trí mỏm tim chuẩn theo lứa tuổi, sờ rung miêu/Harzer, nghe T2 tách đôi rộng cố định và phân tích âm thổi tim bẩm sinh.</p>
+      </section>
+
+      <!-- TABS -->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="hoi-benh">1. Bệnh sử & Tiền căn</button>
+        <button class="tab-btn" data-tab="sinh-hieu">2. Dụng cụ & Sinh hiệu</button>
+        <button class="tab-btn" data-tab="nhin-so">3. Nhìn & Sờ tim</button>
+        <button class="tab-btn" data-tab="nghe-tim">4. Nghe tim & Âm thổi</button>
+        <button class="tab-btn" data-tab="so-sinh">5. Tim sơ sinh & Cơ quan</button>
+        <button class="tab-btn" data-tab="osce">6. Bảng kiểm OSCE</button>
+      </div>
+
+      <!-- TAB 1: BỆNH SỬ & TIỀN CĂN -->
+      <section class="tab active" id="hoi-benh">
+        <div class="card">
+          <h2><i class="fa-solid fa-notes-medical" style="color: var(--color-primary);"></i> 1. Khai Thác Bệnh Sử & Tiền Căn Tim Mạch Ở Trẻ Em</h2>
+
+          <h3 style="font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-circle-exclamation" style="color: #e11d48;"></i> 4 Nhóm triệu chứng chức năng cốt lõi:</h3>
+          
+          <ol class="step-list" style="margin-top: 0.75rem;">
+            <li class="step-item">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <strong>Triệu chứng Giảm cung lượng tim:</strong>
+                <p>Trẻ thường bứt rứt, quấy khóc, ngủ ít hơn trẻ bình thường. Mệt khi hoạt động gắng sức (hoạt động gắng sức chủ yếu ở trẻ nhỏ là <em>bú và khóc</em>).</p>
+                <ul style="margin-left: 1rem; margin-top: 0.35rem; font-size: 0.9rem; line-height: 1.6;">
+                  <li><em>Mệt khi bú:</em> Trẻ khỏe mạnh bú một cữ khoảng 10 – 15 phút rồi ngủ 2 – 3 tiếng. Trẻ bị bệnh tim thường bú kém, bú yếu, <strong>cữ bú kéo dài trên 30 phút</strong>, bú ngắt quãng (phải dừng lại để thở), bú xong vẫn còn đói do không mút đủ lực và lượng sữa; trẻ đổ mồ hôi nhiều mỗi khi bú.</li>
+                  <li><em>Mệt khi khóc:</em> Trẻ khóc yếu, đổ mồ hôi nhiều khi khóc, tím khi khóc; khi ngừng khóc trẻ thở mệt, bỏ bú hoặc bú yếu.</li>
+                </ul>
+              </div>
+            </li>
+            <li class="step-item">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <strong>Triệu chứng Ứ trệ máu ở phổi:</strong>
+                <p>Trẻ hay bị ho, khò khè, thở nhanh, thở mạnh/thở khác thường ngay những lúc không bị bệnh hô hấp; trẻ luôn đòi ẵm bồng (do dễ thở hơn khi ở tư thế đứng/ẵm) và thường bị nhiễm trùng hô hấp tái đi tái lại nhiều lần.</p>
+              </div>
+            </li>
+            <li class="step-item">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <strong>Triệu chứng Giảm lưu lượng máu lên phổi:</strong>
+                <p>Trẻ thường bị tím trung ương (tím niêm mạc), tím liên tục, tím tăng lên khi gắng sức (khi khóc, khi bú). Cần khai thác chính xác thời điểm xuất hiện tím để phân biệt với các nguyên nhân ngoài tim.</p>
+              </div>
+            </li>
+            <li class="step-item">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <strong>Triệu chứng Giao cảm & Trẻ lớn (Thanh thiếu niên):</strong>
+                <p>Hay đổ mồ hôi nhiều khi bú và ngay cả khi ngủ. Ở trẻ lớn: Khai thác các triệu chứng xuất hiện muộn gồm đau ngực, hồi hộp, đánh trống ngực, ngất, giảm khả năng hoạt động thể lực (leo cầu thang, đi bộ), khó thở về đêm, ngủ phải nằm đầu cao.</p>
+              </div>
+            </li>
+          </ol>
+
+          <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+          <h3 style="font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-person-pregnant" style="color: var(--color-primary);"></i> Tiền căn sản khoa & Tiền căn gia đình:</h3>
+          
+          <ul style="margin-left: 1.25rem; line-height: 1.7; color: var(--color-text); margin-top: 0.5rem;">
+            <li><strong>Tiền căn sản khoa:</strong>
+              <ul>
+                <li>Mẹ bị đái tháo đường thai kỳ (tăng nguy cơ bệnh tim bẩm sinh).</li>
+                <li>Mẹ bị Lupus ban đỏ hệ thống (trẻ có nguy cơ bị block nhĩ - thất bẩm sinh).</li>
+                <li>Mẹ nghiện thuốc lá, rượu (tăng tần suất dị tật VSD, PDA, ASD, Tứ chứng Fallot, hội chứng rượu bào thai).</li>
+                <li>Mẹ nhiễm Rubella, CMV, Herpes virus, Coxsackie virus B trong thai kỳ (Rubella gây hẹp ĐMP, PDA; các virus khác gây dị dạng thai hoặc viêm cơ tim sơ sinh).</li>
+                <li>Mẹ sử dụng các thuốc trong thai kỳ: Amphetamine, Phenytoin, Trimethadione, thuốc ức chế men chuyển (ACEi), Lithium, Retinoic acid, Acid Valproic, Progesterone/Estrogen.</li>
+                <li>Cân nặng lúc sinh: Trẻ nhẹ cân đủ tháng (thai chậm phát triển trong tử cung) hoặc trẻ quá cân có nguy cơ bị dị tật tim cao hơn.</li>
+              </ul>
+            </li>
+            <li style="margin-top: 0.5rem;"><strong>Tiền căn gia đình:</strong>
+              <ul>
+                <li>Trẻ có anh/chị em sinh đôi bị tim bẩm sinh (đặc biệt hội chứng thiểu sản tim trái có tỷ lệ mắc lại trong gia đình đến 3 – 10%).</li>
+                <li>Gia đình có người mắc hội chứng Marfan, Holt-Oram, hội chứng QT kéo dài, đột tử, van động mạch chủ hai mảnh, bệnh cơ tim phì đại.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB 2: DỤNG CỤ & SINH HIỆU -->
+      <section class="tab" id="sinh-hieu">
+        <div class="card">
+          <h2><i class="fa-solid fa-heart-pulse" style="color: var(--color-primary);"></i> 2. Chuẩn Bị, Dấu Hiệu Sinh Tồn & Bắt Mạch Tứ Chi</h2>
+
+          <h3 style="font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-toolbox" style="color: var(--color-primary);"></i> Nguyên tắc khám & Dụng cụ:</h3>
+          <ul style="margin-left: 1.25rem; line-height: 1.6; color: var(--color-text); margin-bottom: 1rem;">
+            <li>Tạo môi trường ấm áp, kiên nhẫn, nhờ sự trợ giúp của bà mẹ (cho bú, dỗ dành) để trẻ nằm yên hợp tác.</li>
+            <li>Sử dụng ống nghe có bản nhỏ thích hợp cho trẻ em; nếu dùng ống nghe lớn cần đặt đúng vị trí, áp sát thành ngực hoặc dùng phần chuông (bell) để nghe rõ hơn ở các khe liên sườn hẹp.</li>
+            <li>Sử dụng băng quấn huyết áp kế có kích thước phù hợp và thiết bị đo SpO2 (Pulse-oximeter) có sensor phù hợp với đầu chi của trẻ.</li>
+            <li><strong>Thực hiện đo cân nặng, chiều cao, vòng đầu</strong> ở tất cả trẻ nghi ngờ có bệnh tim.</li>
+          </ul>
+
+          <h3 style="font-size: 1.1rem; color: var(--color-text);">📊 Bảng 55.1 & 55.2: Nhịp tim & Huyết áp tham chiếu ở trẻ em (YDS)</h3>
+          <table class="cardio-table">
+            <thead>
+              <tr>
+                <th>Lứa tuổi</th>
+                <th>Nhịp tim lúc nghỉ (Khoảng & Trung bình)</th>
+                <th>Huyết áp ước tính (HATT / HATTr)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Sơ sinh (Ngày 1)</strong></td>
+                <td>70 – 190 lần/phút (Trung bình 125)</td>
+                <td>HATT 60–70 mmHg, HATTr 31–45 mmHg</td>
+              </tr>
+              <tr>
+                <td><strong>Sơ sinh 1 tháng</strong></td>
+                <td>80 – 160 lần/phút (Trung bình 120)</td>
+                <td>HATT 74–94 mmHg, HATTr 37–55 mmHg</td>
+              </tr>
+              <tr>
+                <td><strong>2 tuổi</strong></td>
+                <td>80 – 130 lần/phút (Trung bình 110)</td>
+                <td>HATT = 90 + 2n, HATTr = 60 + 2n (mmHg)</td>
+              </tr>
+              <tr>
+                <td><strong>4 – 6 tuổi</strong></td>
+                <td>75 – 115 lần/phút (Trung bình 100)</td>
+                <td>HATT = 90 + 2n (với n là số tuổi)</td>
+              </tr>
+              <tr>
+                <td><strong>8 – 10 tuổi</strong></td>
+                <td>70 – 110 lần/phút (Trung bình 90)</td>
+                <td>Đo bằng băng quấn đúng kích thước chi</td>
+              </tr>
+              <tr>
+                <td><strong>12 – 18 tuổi</strong></td>
+                <td>50 – 110 lần/phút (Tùy giới tính)</td>
+                <td>Đo tham chiếu bảng bách phân vị (Percentile)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="skill-note note-danger" style="margin-top: 1rem;">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <strong>Bắt mạch tứ chi (Tầm soát Hẹp eo ĐMC & Takayasu):</strong>
+            Phải thực hiện bắt mạch ở cả 4 chi. Mạch chi dưới nhẹ/trễ hơn chi trên gợi ý <strong>hẹp eo động mạch chủ</strong>, hẹp động mạch chủ ngực, viêm mạch Takayasu. Mạch tay mất hoặc yếu hơn mạch cảnh/chân gợi ý hẹp tắc mạch dưới đòn.
+          </div>
+
+          <h3 style="margin-top: 1.5rem; font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-vial-circle-check" style="color: var(--color-primary);"></i> Khám tổng trạng, Tưới máu & SpO2 4 chi:</h3>
+          <ul style="margin-left: 1.25rem; line-height: 1.7; color: var(--color-text); margin-top: 0.5rem;">
+            <li><strong>Đánh giá tri giác & Dinh dưỡng:</strong> Tỉnh táo, bứt rứt, lừ đừ, lơ mơ; đánh giá tình trạng dinh dưỡng (suy dinh dưỡng do tim).</li>
+            <li><strong>Đo SpO<sub>2</sub> tứ chi:</strong> Thực hiện đo ở tứ chi để phát hiện tím chuyên biệt.</li>
+            <li><strong>Thời gian phục hồi màu da (CRT):</strong> Dấu da xanh xao, lạnh, ẩm, CRT &gt; 2 giây chứng tỏ có giảm tưới máu mô (sốc tim, suy tim).</li>
+            <li><strong>Mạch đặc biệt:</strong> 
+              <ul>
+                <li><em>Mạch Corrigan (Nảy mạnh chìm nhanh):</em> Gặp trong hở van động mạch chủ, còn ống động mạch (PDA), rò động - tĩnh mạch.</li>
+                <li><em>Mạch nghịch (Pulsus paradoxus):</em> Huyết áp tâm thu giảm <strong>&gt; 10 mmHg</strong> trong thì hít vào, gợi ý chẹn tim cấp (tràn dịch màng tim) hoặc viêm màng ngoài tim co thắt.</li>
+              </ul>
+            </li>
+            <li><strong>Dị tật ngoài tim kèm theo:</strong> Quan sát kiểu thở và dị tật ngoài tim (hội chứng Down, Rubella, gù vẹo cột sống).</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB 3: NHÌN & SỜ TIM -->
+      <section class="tab" id="nhin-so">
+        <div class="card">
+          <h2><i class="fa-solid fa-hand-holding-heart" style="color: var(--color-primary);"></i> 3. Kỹ Thuật Nhìn & Sờ Vùng Trước Tim</h2>
+
+          <h3 style="font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-eye" style="color: var(--color-primary);"></i> 1. Nhìn lồng ngực, tĩnh mạch cổ & Phù:</h3>
+          <ul style="margin-left: 1.25rem; line-height: 1.7; color: var(--color-text); margin-top: 0.5rem;">
+            <li><strong>Phù:</strong> Phù do tim ở trẻ nhỏ thường kín đáo; do trẻ nằm ngửa nên <em>phù xuất hiện trước ở vùng xương cùng cụt</em> (phù chi dưới chỉ thấy ở trẻ lớn). Phát hiện phù tốt nhất bằng cách theo dõi cân nặng hàng ngày.</li>
+            <li><strong>Tĩnh mạch cổ nổi:</strong> Chỉ khám được ở trẻ <strong>&gt; 3 tuổi</strong> (trẻ nhỏ cổ ngắn, nhiều mỡ dưới da). Tĩnh mạch cổ nổi đập đều đặn theo nhịp tim gợi ý hở van 3 lá nặng; đập không đều theo nhịp tim gợi ý mất đồng bộ nhĩ - thất (block nhĩ thất độ III, nhịp nhanh thất).</li>
+            <li><strong>Dị dạng lồng ngực & Sẹo mổ cũ:</strong>
+              <ul>
+                <li>Lồng ngực gồ dạng ức gà ở xương ức do thất phải lớn đẩy xương ức ra trước.</li>
+                <li>Lồng ngực gồ ở nửa lồng ngực trái do thất trái lớn đẩy thất phải và thành ngực trái nhô ra trước.</li>
+                <li>Tìm sẹo mổ cũ phẫu thuật tim/lồng ngực và đánh giá gù vẹo cột sống.</li>
+              </ul>
+            </li>
+            <li><strong>Ổ đập bất thường:</strong> Ổ đập ngoài vị trí mỏm tim (bờ trái xương ức trong lớn thất phải sơ sinh; hõm trên ức trong PDA, hẹp eo ĐMC; mũi ức trong giãn thất phải). Xuất hiện nhiều ổ đập bất thường (tăng động vùng trước tim) gặp trong tăng gánh tâm trương thất trái (PDA, VSD, hở chủ, hở 2 lá) hoặc tăng gánh tâm trương thất phải (ASD).</li>
+          </ul>
+
+          <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+          <h3 style="font-size: 1.1rem; color: var(--color-text);">📊 Vị trí mỏm tim bình thường theo tuổi ở trẻ em (YDS - Bài 55 & 68)</h3>
+          <table class="cardio-table">
+            <thead>
+              <tr>
+                <th>Lứa tuổi</th>
+                <th>Khoảng gian sườn (KGS)</th>
+                <th>Vị trí so với đường trung đòn trái (ĐTD)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Sơ sinh – 2 tuổi</strong></td>
+                <td>KGS IV trái</td>
+                <td>Ngoài ĐTD trái 1 – 2 cm</td>
+              </tr>
+              <tr>
+                <td><strong>2 – 7 tuổi</strong></td>
+                <td>KGS V trái</td>
+                <td>Ngoài ĐTD trái 1 cm</td>
+              </tr>
+              <tr>
+                <td><strong>7 – 12 tuổi</strong></td>
+                <td>KGS V trái</td>
+                <td>Trùng ĐTD hoặc trong ĐTD trái 1 cm</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 style="margin-top: 1.5rem; font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-hand" style="color: var(--color-primary);"></i> 2. Sờ mỏm tim & Các dấu hiệu đặc biệt:</h3>
+          <ul style="margin-left: 1.25rem; line-height: 1.7; color: var(--color-text);">
+            <li><strong>Đánh giá bất thường mỏm tim:</strong>
+              <ul>
+                <li><em>Vị trí:</em> Mỏm tim lệch xuống dưới và ra ngoài đường trung đòn gặp trong giãn thất trái (tăng gánh tâm trương: VSD, PDA, hở ĐMC, hở 2 lá). Mỏm tim lệch ra ngoài và hếch lên trên gặp trong lớn thất phải (Tứ chứng Fallot, hẹp ĐMP).</li>
+                <li><em>Diện đập:</em> Bình thường nằm trong 1 khoang gian sườn; diện đập rộng khi lan từ 2 KGS trở lên.</li>
+                <li><em>Kiểu đập:</em> Nảy mạnh chìm nhanh (tăng gánh tâm trương thất trái); nảy mạnh kéo dài (tăng gánh tâm thu thất trái); nảy yếu (suy tim, tràn dịch màng tim, thành ngực dày).</li>
+              </ul>
+            </li>
+            <li><strong>Dấu Harzer:</strong> Sờ thấy thất phải đập ở vùng mũi ức, thể hiện lớn thất phải (rõ nhất trong lớn thất phải kiểu tăng gánh tâm trương).</li>
+            <li><strong>Dấu hiệu Rung miêu (Thrill):</strong> Rung miêu là biểu hiện cảm nhận bằng tay của âm thổi có cường độ lớn (<strong>≥ 4/6</strong>).</li>
+            <li><strong>Sờ tiếng T2 mạnh:</strong> Sờ được ở ổ van động mạch phổi (gian sườn II bờ trái ức) trong tăng áp động mạch phổi.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB 4: NGHE TIM & ÂM THỔI -->
+      <section class="tab" id="nghe-tim">
+        <div class="card">
+          <h2><i class="fa-solid fa-stethoscope" style="color: var(--color-primary);"></i> 4. Kỹ Thuật Nghe Tim & Phân Tích Âm Thổi</h2>
+
+          <h3 style="font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-wave-square" style="color: var(--color-primary);"></i> 1. Tần số, nhịp điệu & Tiếng T1, T2:</h3>
+          <ul style="margin-left: 1.25rem; line-height: 1.7; color: var(--color-text); margin-top: 0.5rem;">
+            <li><strong>Xác định T1 và T2:</strong> T1 nghe rõ ở mỏm tim (trầm, đơn âm); T2 nghe rõ ở đáy tim (cao, tách đôi theo hô hấp).</li>
+            <li><strong>Tiếng T1:</strong> Cường độ mờ/yếu trong suy tim nặng, hở 2 lá nặng, tràn dịch màng tim; T1 đanh (mạnh, gọn) trong hẹp van 2 lá. T1 tách đôi thuận (M<sub>1</sub> - T<sub>1</sub>) trong van 2 lá đóng sớm/van 3 lá đóng trễ; T1 tách đôi nghịch (T<sub>1</sub> - M<sub>1</sub>) trong van 2 lá đóng trễ (hẹp 2 lá, VSD, PDA).</li>
+            <li><strong>Tiếng T2:</strong>
+              <ul>
+                <li><em>Cường độ:</em> T2 mờ/yếu trong suy tim nặng, hẹp/hở van ĐMC nặng; T2 đanh/mạnh trong tăng áp động mạch phổi, tăng huyết áp.</li>
+                <li><em>Tách đôi:</em> <strong>T2 tách đôi rộng và cố định</strong> là dấu hiệu đặc trưng của <strong>Thông liên nhĩ (ASD)</strong>. T2 đơn âm gợi ý teo van ĐMP, teo van ĐMC, hoán vị đại động mạch (TGA), tăng áp ĐMP nặng.</li>
+              </ul>
+            </li>
+            <li><strong>Các tiếng tim bất thường:</strong> Tiếng T3, T4, tiếng clăng (click) tống máu, tiếng clăng mở van 2 lá (opening snap), tiếng cọ màng ngoài tim (thô ráp 2 thì).</li>
+          </ul>
+
+          <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+          <h3 style="font-size: 1.1rem; color: var(--color-text);">📊 2. Phân tích Âm thổi (Murmur) tim bẩm sinh:</h3>
+          <ul style="margin-left: 1.25rem; line-height: 1.7; color: var(--color-text); margin-bottom: 1rem;">
+            <li><strong>Thì & Thời gian:</strong> Đầu tâm thu (VSD lỗ lớn, PDA lớn có tăng áp phổi); Giữa tâm thu (hẹp chủ, hẹp phổi); Cuối tâm thu (sa van 2 lá); Toàn tâm thu (VSD lỗ nhỏ, hở 2 lá, hở 3 lá).</li>
+            <li><strong>Vị trí:</strong> Gian sườn II bờ trái ức (ổ van ĐMP), Gian sườn II bờ phải ức (ổ van ĐMC), Gian sườn IV-V bờ trái ức (ổ van 3 lá / VSD), Mỏm tim (ổ van 2 lá).</li>
+            <li><strong>Cường độ:</strong> Phân độ từ <strong>1/6 đến 6/6</strong> (cường độ ≥ 4/6 kèm rung miêu).</li>
+            <li><strong>Dạng âm thổi:</strong> Dạng phụt (dòng máu qua chỗ hẹp áp lực cao như hẹp chủ, hẹp phổi, VSD nhỏ); Dạng tràn (hở 2 lá, hở 3 lá, VSD lỗ rộng).</li>
+            <li><strong>Hướng lan:</strong> Lan hình nan hoa (VSD), Lan ra sau lưng / dưới xương đòn trái (PDA, hẹp eo ĐMC), Lan ra nách (hở 2 lá).</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB 5: TIM SƠ SINH & CƠ QUAN -->
+      <section class="tab" id="so-sinh">
+        <div class="card">
+          <h2><i class="fa-solid fa-baby" style="color: var(--color-primary);"></i> 5. Đặc Điểm Khám Tim Mạch Trẻ Sơ Sinh & Cơ Quan Liên Quan</h2>
+
+          <div class="neonatal-box">
+            <h3 style="margin: 0; color: #854d0e; font-size: 1.05rem;"><i class="fa-solid fa-lightbulb"></i> Khám Tim Mạch Ở Trẻ Sơ Sinh (Đặc Điểm Riêng):</h3>
+            <ul style="margin-left: 1.25rem; margin-top: 0.5rem; line-height: 1.7; color: #713f12;">
+              <li>Nồng độ PaO<sub>2</sub> ở trẻ sơ sinh bình thường có thể thấp hơn trẻ lớn (≈ 60 mmHg) do phổi chưa giãn nở hoàn toàn và còn luồng thông sinh lý qua lỗ bầu dục/ống động mạch.</li>
+              <li>Thất phải còn ưu thế sinh lý nên sờ/nhìn thấy thất phải tăng động ở bờ trái xương ức.</li>
+              <li>Tiếng T2 có thể nghe đơn âm trong vài ngày đầu sau sinh. Tiếng click tống máu có thể nghe được trong vài giờ đầu do áp lực động mạch phổi còn cao.</li>
+              <li>Âm thổi vô tội thường gặp do tăng lưu lượng máu qua động mạch phổi hoặc do ống động mạch chưa đóng hoàn toàn.</li>
+              <li><strong>Dấu hiệu báo động nguy hiểm:</strong> Giảm hoặc mất mạch chi dưới kèm sốc, toan chuyển hóa, suy thận là dấu hiệu báo động <strong>Hẹp eo động mạch chủ nặng</strong> ở trẻ sơ sinh.</li>
+            </ul>
+          </div>
+
+          <div class="organ-box">
+            <h3 style="margin: 0; color: var(--color-primary); font-size: 1.05rem;"><i class="fa-solid fa-lungs" style="color: var(--color-primary);"></i> Khám Các Cơ Quan Liên Quan:</h3>
+            <ul style="margin-left: 1.25rem; margin-top: 0.5rem; line-height: 1.7; color: var(--color-text);">
+              <li><strong>Phổi:</strong> Dấu hiệu ứ trệ máu ở phổi (tăng tuần hoàn phổi thụ động) hoặc tăng lưu lượng máu lên phổi (tăng tuần hoàn phổi chủ động) làm trẻ khò khè, phổi có ran ẩm, ran ngáy, ran rít.</li>
+              <li><strong>Gan:</strong> Gan to kiểu "gan tim", gan đập theo nhịp tim là biểu hiện của hở van 3 lá nặng (tăng áp ĐMP nặng, bệnh Ebstein).</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 6: BẢNG KIỂM OSCE -->
+      <section class="tab" id="osce">
+        <div class="card">
+          <h2><i class="fa-solid fa-square-check" style="color: var(--color-primary);"></i> 6. Bảng Kiểm Chấm Thi OSCE Khám Tim Mạch Nhi Khoa</h2>
+          <p>Bảng kiểm 12 bước chấm thi thực hành bedside chuẩn Bộ môn Nhi - ĐHYD TP.HCM.</p>
+
+          <table class="osce-table">
+            <thead>
+              <tr>
+                <th style="width: 8%;">STT</th>
+                <th>Bước thực hiện</th>
+                <th style="width: 15%;">Đạt / Không đạt</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Chào hỏi phụ huynh, làm quen tạo thiện cảm với trẻ và giữ trẻ nằm yên hợp tác.</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Khai thác triệu chứng mệt khi bú (&gt; 30 phút), mệt khi khóc, ho khò khè tái phát và vã mồ hôi.</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Đếm tần số tim trong 1 phút và so sánh với khoảng giá trị sinh lý bình thường theo tuổi (Bảng 55.1).</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td><strong>Bắt đồng thời mạch cánh tay và mạch bẹn 2 bên</strong> để tìm dấu hiệu hẹp eo động mạch chủ.</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Đo SpO<sub>2</sub> tứ chi và kiểm tra CRT ở đầu chi (&gt; 2 giây gợi ý suy tuần hoàn).</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Quan sát lồng ngực tìm biến dạng (gồ ức gà, gồ ngực trái), tĩnh mạch cổ nổi (&gt;3t) và vị trí phù (xương cùng).</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>Xác định <strong>vị trí đập mỏm tim</strong> chính xác theo lứa tuổi của trẻ (Bảng 55.2/68).</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>Sờ tìm dấu Harzer (lớn thất phải), sờ T2 mạnh tại ổ van ĐMP và sờ dấu Rung miêu (Thrill ≥ 4/6).</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>Đặt ống nghe đúng các vị trí van tim (2 lá, 3 lá, ĐMC, ĐMP).</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td>Xác định tiếng T1, T2 và đánh giá tiếng <strong>T2 tách đôi rộng cố định</strong> (ASD) hoặc T2 đơn âm.</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>11</td>
+                <td>Mô tả âm thổi (thì tâm thu/liên tục, vị trí, cường độ 1/6-6/6, hình dạng và hướng lan).</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>12</td>
+                <td>Mặc lại quần áo cho trẻ, rửa tay và tổng hợp kết luận khám tim mạch nhi khoa.</td>
+                <td><input type="checkbox"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+          <h3 style="font-size: 1rem; color: var(--color-text-muted);"><i class="fa-solid fa-book" style="color: var(--color-primary);"></i> Trích dẫn tài liệu tham khảo chuẩn AMA:</h3>
+          <p style="font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.6; margin-top: 0.25rem;">
+            1. Đỗ Nguyên Tín, Vũ Minh Phúc. Bài 68: Khám tim mạch ở trẻ em. Trong: <em>Nhi khoa YDS - Tập 2 (Tim mạch)</em>. Bộ môn Nhi - Đại học Y Dược Thành phố Hồ Chí Minh; 2020:171-182.<br>
+            2. Nguyễn Thị Liên Chi, Vũ Minh Phúc. Bài 55: Đặc điểm hệ tuần hoàn trẻ em. Trong: <em>Nhi khoa YDS - Tập 2 (Tim mạch)</em>. Bộ môn Nhi - Đại học Y Dược Thành phố Hồ Chí Minh; 2020:12-20.<br>
+            3. Phạm Diệp Thùy Dương. Bài 75: Khám trẻ sơ sinh. Trong: <em>Nhi khoa YDS - Tập 2 (Sơ sinh)</em>. Bộ môn Nhi - Đại học Y Dược Thành phố Hồ Chí Minh; 2020:300-317.
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer class="global-footer">
+    <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+  </footer>
+</body>
+
+</html>

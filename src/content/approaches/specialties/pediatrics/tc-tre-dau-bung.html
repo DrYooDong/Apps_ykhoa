@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Tiếp cận lâm sàng đau bụng ở trẻ em (Đau bụng cấp & mạn): Phân loại nguyên nhân theo nhóm tuổi, Dấu hiệu Cờ đỏ (Red Flags), Test Carnett, Tiêu chuẩn Rome IV, Thuật toán Bụng cấp Nhi khoa YDS 2020 và Bộ công cụ CDSS phân tầng nguy cơ tương tác.">
+  <title>Tiếp Cận Đau Bụng Ở Trẻ Em – CliniPortal</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@500;600&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core (5 levels up to root) -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../../css/components/approach-symptom.css">
+
+  <style>
+    /* ==========================================================================
+       PEDIATRIC ABDOMINAL PAIN APPROACH STYLES & UI SYSTEM
+       ========================================================================== */
+    :root {
+      --abd-primary: #059669;
+      --abd-dark: #0f172a;
+      --abd-navy: #064e3b;
+      --abd-amber: #d97706;
+      --abd-danger: #dc2626;
+      --abd-purple: #7c3aed;
+      --abd-info: #0284c7;
+      --abd-surface: var(--color-surface);
+    }
+
+    /* Override parent container overflow so position: sticky works */
+    html, body,
+    .app-container,
+    .main-wrapper,
+    .layout-content-area {
+      overflow: visible !important;
+    }
+
+    /* Hero Banner Theme */
+    .hero-abdominal {
+      background: linear-gradient(135deg, #0f172a 0%, #064e3b 40%, #1e1b4b 100%);
+      border-radius: 20px;
+      padding: 32px;
+      color: #ffffff;
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.25);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .hero-abdominal::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -10%;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, rgba(124, 58, 237, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-abdominal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .hero-title-group h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      font-family: var(--font-display);
+      margin: 8px 0 12px 0;
+      color: #ffffff;
+      line-height: 1.25;
+    }
+
+    .hero-badges-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .hero-badge-pill {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #e0e7ff;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-badge-pill.alert {
+      background: rgba(239, 68, 68, 0.25);
+      border-color: rgba(239, 68, 68, 0.4);
+      color: #fca5a5;
+    }
+
+    .hero-quick-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .stat-box {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+
+    .stat-box .stat-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #cbd5e1;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .stat-box .stat-val {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #34d399;
+      font-family: var(--font-display);
+    }
+
+    .stat-box .stat-sub {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+
+    /* Quick Nav Sticky Bar */
+    .quick-nav-bar {
+      position: sticky !important;
+      top: calc(var(--header-height, 60px) + 8px) !important;
+      z-index: 150 !important;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      padding: 10px 14px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      white-space: nowrap;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+    }
+
+    .quick-nav-btn {
+      background: transparent;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .quick-nav-btn:hover,
+    .quick-nav-btn.active {
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--abd-primary);
+    }
+
+    /* Section Card Wrappers */
+    .section-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+      scroll-margin-top: 130px;
+    }
+
+    .section-title-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .section-icon-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--abd-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .section-title-group h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin: 0;
+    }
+
+    /* Clinical Tables & Grids */
+    .clinical-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 16px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+    }
+
+    .clinical-table th {
+      background: rgba(16, 185, 129, 0.08);
+      color: var(--color-text);
+      padding: 12px 16px;
+      font-weight: 700;
+      text-align: left;
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .clinical-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: var(--color-text);
+    }
+
+    .clinical-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .age-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .age-neonatal { background: rgba(139, 92, 246, 0.15); color: #7c3aed; }
+    .age-infant { background: rgba(2, 132, 199, 0.15); color: #0284c7; }
+    .age-child { background: rgba(16, 185, 129, 0.15); color: #059669; }
+    .age-adolescent { background: rgba(217, 119, 6, 0.15); color: #d97706; }
+
+    .tag-common {
+      font-size: 0.72rem;
+      background: rgba(239, 68, 68, 0.12);
+      color: #dc2626;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+      margin-left: 4px;
+    }
+
+    /* Red Flag Box & Alerts */
+    .clinical-alert-box {
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin: 18px 0;
+      border-left: 5px solid;
+    }
+
+    .clinical-alert-box.danger {
+      background: rgba(239, 68, 68, 0.08);
+      border-color: #ef4444;
+      color: var(--color-text);
+    }
+
+    .clinical-alert-box.warning {
+      background: rgba(245, 158, 11, 0.08);
+      border-color: #f59e0b;
+      color: var(--color-text);
+    }
+
+    .clinical-alert-box.info {
+      background: rgba(2, 132, 199, 0.08);
+      border-color: #0284c7;
+      color: var(--color-text);
+    }
+
+    .clinical-alert-title {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Flowchart Visualizer */
+    .flow-step-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .flow-node {
+      background: var(--color-surface);
+      border: 2px solid var(--color-border);
+      border-radius: 14px;
+      padding: 18px 20px;
+      position: relative;
+      transition: all 0.2s;
+    }
+
+    .flow-node.red-flag-node {
+      border-color: #ef4444;
+      background: rgba(239, 68, 68, 0.04);
+    }
+
+    .flow-node.decision-node {
+      border-color: #0284c7;
+      background: rgba(2, 132, 199, 0.04);
+    }
+
+    .flow-node.treatment-node {
+      border-color: #10b981;
+      background: rgba(16, 185, 129, 0.04);
+    }
+
+    .flow-tag {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .flow-tag.danger { background: #ef4444; color: white; }
+    .flow-tag.info { background: #0284c7; color: white; }
+    .flow-tag.success { background: #10b981; color: white; }
+    .flow-tag.warning { background: #f59e0b; color: white; }
+
+    /* Interactive CDSS Simulators */
+    .sim-container {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border: 1px solid #cbd5e1;
+      border-radius: 16px;
+      padding: 24px;
+      margin: 20px 0;
+    }
+
+    [data-theme="dark"] .sim-container {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border-color: #334155;
+    }
+
+    .sim-grid-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 868px) {
+      .sim-grid-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .custom-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: all 0.15s;
+    }
+
+    .custom-checkbox:hover {
+      border-color: var(--abd-primary);
+    }
+
+    .custom-checkbox input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--abd-primary);
+      cursor: pointer;
+    }
+
+    .sim-result-card {
+      background: var(--color-surface);
+      border: 2px solid var(--color-border);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .sim-result-status {
+      padding: 14px;
+      border-radius: 10px;
+      font-weight: 700;
+      text-align: center;
+      font-size: 1.05rem;
+      margin-bottom: 14px;
+    }
+
+    .sim-result-status.red {
+      background: rgba(239, 68, 68, 0.15);
+      color: #dc2626;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .sim-result-status.yellow {
+      background: rgba(245, 158, 11, 0.15);
+      color: #d97706;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .sim-result-status.green {
+      background: rgba(16, 185, 129, 0.15);
+      color: #059669;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    /* Rome IV Cards */
+    .rome-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    .rome-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      padding: 18px;
+      border-top: 4px solid var(--abd-primary);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+
+    .rome-card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .rome-card-list {
+      padding-left: 20px;
+      margin: 8px 0;
+      font-size: 0.86rem;
+      line-height: 1.5;
+      color: var(--color-text-muted);
+    }
+
+    .rome-card-list li {
+      margin-bottom: 6px;
+    }
+  </style>
+
+  <!-- JS Core (5 levels up) -->
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+  <script src="../../../../../js/approach-symptom.js" defer></script>
+</head>
+
+<body>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- App Container -->
+  <div class="app-container">
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <div class="main-wrapper" id="mainContent" style="padding: 20px 24px;">
+
+      <!-- HERO BANNER -->
+      <section class="hero-abdominal">
+        <div class="hero-abdominal-header">
+          <div class="hero-title-group">
+            <div class="hero-badges-group">
+              <span class="hero-badge-pill"><i class="fa-solid fa-stethoscope"></i> Nhi khoa YDS 2020</span>
+              <span class="hero-badge-pill"><i class="fa-solid fa-triangle-exclamation"></i> Cờ đỏ Bụng Cấp</span>
+              <span class="hero-badge-pill alert"><i class="fa-solid fa-clock-rotate-left"></i> Rome IV Criteria</span>
+            </div>
+            <h1>👶 TIẾP CẬN ĐAU BỤNG Ở TRẺ EM</h1>
+            <p style="font-size: 0.95rem; opacity: 0.9; margin: 0; max-width: 750px; line-height: 1.5;">
+              Chiến lược chẩn đoán toàn diện đau bụng cấp và mạn ở trẻ em: Phân loại nguyên nhân theo lứa tuổi, nhận diện các cấp cứu Ngoại khoa, kỹ thuật khám Test Carnett, tiêu chuẩn Rome IV và thuật toán xử trí lâm sàng chuẩn y khoa.
+            </p>
+          </div>
+        </div>
+
+        <!-- HERO QUICK STATS -->
+        <div class="hero-quick-stats">
+          <div class="stat-box">
+            <div class="stat-label">Cấp cứu Bụng cấp</div>
+            <div class="stat-val">&lt; 6 Giờ</div>
+            <div class="stat-sub">Cần đánh giá khẩn &amp; theo dõi sát</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Cảnh báo Đau mạn</div>
+            <div class="stat-val">≥ 2 Tháng</div>
+            <div class="stat-sub">Tầm soát bệnh lý thực thể</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Tiêu chuẩn Rome IV</div>
+            <div class="stat-val">4 Dạng</div>
+            <div class="stat-sub">Khó tiêu, Migraine, IBS, Chưa XĐ</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Hội chẩn Ngoại khoa</div>
+            <div class="stat-val" style="color: #f87171;">Khẩn cấp</div>
+            <div class="stat-sub">Phản ứng phúc mạc / Ói mật / Tiêu máu</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STICKY QUICK NAV BAR -->
+      <nav class="quick-nav-bar" id="quickNav">
+        <button class="quick-nav-btn active" onclick="scrollToSection('overview')">
+          <i class="fa-solid fa-bookmark"></i> Tổng quan
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('acute-causes')">
+          <i class="fa-solid fa-list-ol"></i> Bảng Nguyên nhân Tuổi
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('acute-approach')">
+          <i class="fa-solid fa-user-doctor"></i> Tiếp cận Đau cấp
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('acute-flowchart')">
+          <i class="fa-solid fa-diagram-project"></i> Lưu đồ Bụng cấp
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('chronic-causes')">
+          <i class="fa-solid fa-triangle-exclamation"></i> Đau mạn &amp; Red Flags
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('rome-iv')">
+          <i class="fa-solid fa-clipboard-check"></i> Tiêu chuẩn Rome IV
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('cdss-evaluator')">
+          <i class="fa-solid fa-calculator"></i> Tool CDSS Tương tác
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('treatment-prognosis')">
+          <i class="fa-solid fa-pills"></i> Điều trị &amp; Tiên lượng
+        </button>
+      </nav>
+
+      <!-- SECTION 1: OVERVIEW -->
+      <section class="section-card" id="overview">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-shield-halved"></i></div>
+          <div>
+            <h2>1. Định Nghĩa &amp; Phân Loại Đau Bụng Nhi Khoa</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Phân định rõ Đau bụng cấp, Đau bụng mạn và Đau bụng chức năng</span>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+          <div style="background: rgba(239, 68, 68, 0.06); border: 1px solid rgba(239, 68, 68, 0.2); padding: 18px; border-radius: 12px;">
+            <h3 style="margin-top: 0; color: #dc2626; font-size: 1.05rem;"><i class="fa-solid fa-bolt"></i> Đau Bụng Cấp (Acute Abdominal Pain)</h3>
+            <p style="font-size: 0.88rem; line-height: 1.5; margin: 0;">
+              Là tình trạng đau bụng <strong>mới khởi phát</strong> cần phải được đánh giá khẩn cấp, chẩn đoán xác định và điều trị kịp thời để ngăn ngừa biến chứng đe dọa tính mạng (thủng ruột, xoắn ruột, lồng ruột, hoại tử tạng).
+            </p>
+          </div>
+
+          <div style="background: rgba(245, 158, 11, 0.06); border: 1px solid rgba(245, 158, 11, 0.2); padding: 18px; border-radius: 12px;">
+            <h3 style="margin-top: 0; color: #d97706; font-size: 1.05rem;"><i class="fa-solid fa-hourglass-half"></i> Đau Bụng Mạn (Chronic Abdominal Pain)</h3>
+            <p style="font-size: 0.88rem; line-height: 1.5; margin: 0;">
+              Tình trạng đau bụng kéo dài <strong>ít nhất 2 tháng</strong>. Mục tiêu quan trọng nhất trong tiếp cận là phân biệt giữa bệnh lý thực thể (Organic) và đau bụng chức năng (Functional).
+            </p>
+          </div>
+
+          <div style="background: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.2); padding: 18px; border-radius: 12px;">
+            <h3 style="margin-top: 0; color: #059669; font-size: 1.05rem;"><i class="fa-solid fa-brain"></i> Đau Bụng Chức Năng (Functional Abdominal Pain)</h3>
+            <p style="font-size: 0.88rem; line-height: 1.5; margin: 0;">
+              Cơn đau kéo dài không tìm thấy tổn thương cấu trúc, sinh hóa hay vi sinh vật sau khi đã đánh giá đầy đủ. Thường liên quan đến trục Não - Ruột (Brain-Gut Axis) và tiêu chuẩn Rome IV.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: ACUTE CAUSES BY AGE -->
+      <section class="section-card" id="acute-causes">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-users"></i></div>
+          <div>
+            <h2>2. Phân Loại Nguyên Nhân Đau Bụng Cấp Theo Nhóm Tuổi</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Bảng 27.1 &amp; Bảng 27.2 - Nhi khoa YDS (2020)</span>
+          </div>
+        </div>
+
+        <p style="font-size: 0.9rem; line-height: 1.5; margin-bottom: 16px;">
+          Mô hình bệnh lý gây đau bụng cấp thay đổi rõ rệt theo từng mốc phát triển của trẻ. Việc định hướng theo lứa tuổi giúp bác sĩ nhanh chóng khoanh vùng nguyên nhân nguy kịch.
+        </p>
+
+        <!-- TABLE 27.1 -->
+        <div style="overflow-x: auto;">
+          <table class="clinical-table">
+            <thead>
+              <tr>
+                <th style="width: 22%;">Nhóm Tuổi</th>
+                <th style="width: 78%;">Các Nguyên Nhân Thường Gặp &amp; Bệnh Lý Quan Trọng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="age-badge age-neonatal">Sơ Sinh</span></td>
+                <td>
+                  <strong>Viêm ruột hoại tử (NEC)</strong><span class="tag-common">Thường gặp</span>, 
+                  <strong>Tắc ruột</strong><span class="tag-common">Thường gặp</span>, 
+                  <strong>Xoắn ruột do ruột xoay bất toàn</strong><span class="tag-common">Thường gặp</span>, 
+                  Thủng ruột, Thoát vị nghẹt, Viêm manh tràng, Viêm túi thừa Meckel, Hội chứng động mạch mạc treo tràng trên, Viêm hạch mạc treo, Viêm phúc mạc nhiễm khuẩn nguyên phát, Đái tháo đường nhiễm ceton (DKA), Viêm họng do Streptococcus, Vô căn<span class="tag-common">Thường gặp</span>.
+                </td>
+              </tr>
+              <tr>
+                <td><span class="age-badge age-infant">Trẻ &lt; 2 Tuổi</span></td>
+                <td>
+                  <strong>Lồng ruột</strong><span class="tag-common">Thường gặp</span>, 
+                  <strong>Thoát vị nghẹt</strong><span class="tag-common">Thường gặp</span>, 
+                  <strong>Nhiễm trùng tiểu (UTI)</strong><span class="tag-common">Thường gặp</span>, 
+                  <strong>Viêm dạ dày ruột</strong><span class="tag-common">Thường gặp</span>, 
+                  Tắc ruột, Xoắn ruột do ruột xoay bất toàn, Chấn thương, Viêm phổi thùy dưới, Bệnh Hirschsprung, Nuốt hơi, Viêm phúc mạc nhiễm khuẩn nguyên phát, Trào ngược dạ dày thực quản (GERD).
+                </td>
+              </tr>
+              <tr>
+                <td><span class="age-badge age-child">Trẻ 2–11 Tuổi</span></td>
+                <td>
+                  <strong>Viêm ruột thừa cấp</strong><span class="tag-common">Thường gặp</span>, 
+                  <strong>Viêm dạ dày ruột</strong><span class="tag-common">Thường gặp</span>, 
+                  Chấn thương, Viêm mạch máu IgA (Hội chứng Henoch-Schönlein), Hội chứng urê huyết cao (HUS), Viêm gan, Loét dạ dày tá tràng, Thiếu máu hồng cầu hình liềm, Viêm tụy, Viêm phổi thùy dưới, U bụng, Viêm bể thận/viêm bàng quang, Xoắn tinh hoàn / Xoắn tinh hoàn ẩn.
+                </td>
+              </tr>
+              <tr>
+                <td><span class="age-badge age-adolescent">Trẻ 12–19 Tuổi</span></td>
+                <td>
+                  <strong>Viêm ruột thừa cấp</strong><span class="tag-common">Thường gặp</span>, 
+                  <strong>Viêm vùng chậu (PID)</strong><span class="tag-common">Thường gặp</span>, 
+                  <strong>Chấn thương</strong><span class="tag-common">Thường gặp</span>, 
+                  Áp-xe vòi trứng, Hội chứng Fitz-Hugh-Curtis, Đau đẻ, Viêm gan, Viêm tụy, Thai ngoài tử cung, Bệnh Crohn, Nang buồng trứng / Đau giữa kỳ kinh (Mittelschmerz), Thiếu máu hồng cầu liềm tắc mạch, Loét dạ dày tá tràng, Xoắn mạc nối, Áp-xe cơ Psoas, Viêm hạch mạc treo, Nhiễm trùng tiểu, Đau cơ thành bụng, Đái tháo đường nhiễm ceton, Xoắn tinh hoàn, Vô căn<span class="tag-common">Thường gặp</span>.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- TABLE 27.2: SEVERE SUDDEN PAIN -->
+        <div class="clinical-alert-box danger">
+          <div class="clinical-alert-title"><i class="fa-solid fa-skull-crossbones"></i> Bảng 27.2: Nguyên Nhân Đau Bụng Cấp Dữ Dội Đột Ngột (Cấp Cứu Cực Khẩn)</div>
+          <p style="font-size: 0.88rem; line-height: 1.5; margin: 0;">
+            Cần tầm soát lập tức các bệnh lý đe dọa tính mạng: 
+            <strong>Thủng ruột</strong>, <strong>Loét đường tiêu hóa thủng</strong>, <strong>Viêm ruột thừa hoại tử vỡ</strong>, <strong>Xoắn ruột</strong>, <strong>Tắc mạch mạc treo</strong>, <strong>Thuyên tắc mạch</strong>, <strong>Viêm nội tâm mạc</strong>, <strong>Xoắn buồng trứng</strong>, <strong>Xoắn tinh hoàn</strong>, <strong>Tắc tạng rỗng</strong> (Sỏi thận, Sỏi mật, Thoát vị nghẹt), <strong>Xuất huyết trong bụng</strong> (Thai ngoài tử cung vỡ, Vỡ phình động mạch chủ, Vỡ lách do chấn thương).
+          </p>
+        </div>
+      </section>
+
+      <!-- SECTION 3: ACUTE APPROACH -->
+      <section class="section-card" id="acute-approach">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-stethoscope"></i></div>
+          <div>
+            <h2>3. Trình Tự Tiếp Cận Lâm Sàng Đau Bụng Cấp</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Khai thác bệnh sử, Thăm khám thực thể, Test Carnett &amp; Cận lâm sàng</span>
+          </div>
+        </div>
+
+        <!-- HISTORY TAKING -->
+        <h3 style="font-size: 1.1rem; color: var(--abd-primary); margin-top: 0;"><i class="fa-solid fa-clipboard-question"></i> A. Hỏi Bệnh Sử Chi Tiết</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-bottom: 20px;">
+          <div style="background: var(--color-bg); padding: 14px; border-radius: 10px; border: 1px solid var(--color-border);">
+            <strong style="color: var(--abd-primary);">⏱️ Thời gian đau:</strong>
+            <ul style="padding-left: 18px; margin: 6px 0 0 0; font-size: 0.85rem; line-height: 1.45;">
+              <li>Đau &lt; 6 giờ kèm dấu hiệu không đặc trưng: Cần theo dõi rất cẩn trọng.</li>
+              <li>Đau kéo dài 6–48 giờ: Khuynh hướng cao cần can thiệp y tế/ngoại khoa.</li>
+            </ul>
+          </div>
+
+          <div style="background: var(--color-bg); padding: 14px; border-radius: 10px; border: 1px solid var(--color-border);">
+            <strong style="color: var(--abd-primary);">⚡ Cách khởi phát:</strong>
+            <ul style="padding-left: 18px; margin: 6px 0 0 0; font-size: 0.85rem; line-height: 1.45;">
+              <li><strong>Đột ngột:</strong> Thủng loét dạ dày, viêm tụy cấp, tắc ruột, lồng ruột, sỏi mật/thận.</li>
+              <li><strong>Từ từ:</strong> Viêm dạ dày ruột, viêm ruột thừa giai đoạn đầu.</li>
+              <li><strong>Liên quan bữa ăn:</strong> Sau ăn (GERD, viêm tụy); lúc đói (loét dạ dày tá tràng).</li>
+            </ul>
+          </div>
+
+          <div style="background: var(--color-bg); padding: 14px; border-radius: 10px; border: 1px solid var(--color-border);">
+            <strong style="color: var(--abd-primary);">📍 Vị trí &amp; Hướng lan:</strong>
+            <ul style="padding-left: 18px; margin: 6px 0 0 0; font-size: 0.85rem; line-height: 1.45;">
+              <li><strong>Đau tạng (không chính xác):</strong> Trên rốn (gan mật tụy, dạ dày); Quanh rốn (ruột non, ruột thừa đầu); Dưới rốn (đại tràng, niệu dục).</li>
+              <li><strong>Đau thành (chính xác):</strong> Tương ứng vùng phúc mạc thành bị kích thích.</li>
+            </ul>
+          </div>
+
+          <div style="background: var(--color-bg); padding: 14px; border-radius: 10px; border: 1px solid var(--color-border);">
+            <strong style="color: var(--abd-primary);">🔄 Kiểu đau &amp; Tư thế:</strong>
+            <ul style="padding-left: 18px; margin: 6px 0 0 0; font-size: 0.85rem; line-height: 1.45;">
+              <li><strong>Đau tăng khi ho/cử động:</strong> Gợi ý đau thành / Viêm phúc mạc.</li>
+              <li><strong>Đau quặn từng cơn, lăn lộn:</strong> Tắc tạng rỗng / Lồng ruột / Sỏi.</li>
+              <li><strong>Tư thế giảm đau:</strong> Gập đùi (Viêm tụy), Chổng mông (Giun chui ống mật).</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- PHYSICAL EXAM & CARNETT TEST -->
+        <h3 style="font-size: 1.1rem; color: var(--abd-primary);"><i class="fa-solid fa-user-doctor"></i> B. Thăm Khám Thực Thể &amp; Nghiệm Pháp Carnett</h3>
+        <div style="line-height: 1.6; font-size: 0.9rem;">
+          <ul>
+            <li><strong>Đánh giá Sinh hiệu &amp; Tổng trạng:</strong> Phát hiện sớm dấu hiệu Sốc (mạch nhanh nhẹ, HA tụt, CRT &gt; 2s), Suy hô hấp, hoặc Nhiễm trùng toàn thân.</li>
+            <li><strong>Trình tự khám bụng:</strong> Nhìn (chướng bụng, quai ruột nổi, di động theo nhịp thở) → Nghe (nhu động ruột tăng trong tắc ruột, mất trong liệt ruột/viêm phúc mạc) → Sờ (sờ từ chỗ KHÔNG đau đến chỗ đau, phát hiện đề kháng thành bụng, phản ứng dội, khối lồng, u bụng) → Gõ (vang trong hơi tự do/chướng hơi, đục trong dịch/khối u).</li>
+          </ul>
+
+          <!-- CARNETT TEST BOX -->
+          <div style="background: rgba(2, 132, 199, 0.08); border-left: 4px solid #0284c7; padding: 16px; border-radius: 10px; margin: 14px 0;">
+            <h4 style="margin: 0 0 6px 0; color: #0284c7; font-size: 0.98rem;"><i class="fa-solid fa-hand-dots"></i> Kỹ thuật Nghiệm pháp Carnett (Carnett Test)</h4>
+            <p style="margin: 0; font-size: 0.87rem; line-height: 1.5;">
+              Bệnh nhân nằm ngửa, yêu cầu trẻ nâng đầu và vai lên khỏi mặt giường (hoặc nâng 2 chân) để làm <strong>căng cơ thành bụng</strong>. Bác sĩ ấn vào điểm đau:
+              <br>• <strong>Carnett (+):</strong> Đau TĂNG LÊN hoặc KHÔNG ĐỔI → Nguyên nhân đau xuất phát từ <strong>THÀNH BỤNG</strong> (chấn thương cơ, tụ máu cơ nếp bụng, thần kinh).
+              <br>• <strong>Carnett (-):</strong> Đau GIẢM ĐI (do cơ thành bụng gồng bảo vệ tạng bên trong) → Nguyên nhân đau nằm <strong>TRONG Ổ BỤNG</strong> (tạng rỗng/tạng đặc).
+            </p>
+          </div>
+
+          <ul>
+            <li><strong>Khám Vùng chậu, Sinh dục ngoài &amp; Hậu môn:</strong> Bắt buộc tìm thoát vị bẹn nghẹt, xoắn tinh hoàn ở bé trai; khám hậu môn tìm nứt hậu môn, hẹp hậu môn, ứ phân hoặc máu theo găng.</li>
+          </ul>
+        </div>
+
+        <!-- PARACLINICAL WORKUP -->
+        <h3 style="font-size: 1.1rem; color: var(--abd-primary); margin-top: 20px;"><i class="fa-solid fa-vial"></i> C. Chỉ Định Cận Lâm Sàng Tầm Soát</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; font-size: 0.88rem;">
+          <div style="background: var(--color-bg); padding: 12px; border-radius: 8px; border: 1px solid var(--color-border);">
+            <strong>1. Công thức máu &amp; CRP/ESR:</strong> Đánh giá phản ứng viêm, bạch cầu chuyển trái, thiếu máu.
+          </div>
+          <div style="background: var(--color-bg); padding: 12px; border-radius: 8px; border: 1px solid var(--color-border);">
+            <strong>2. Tổng phân tích nước tiểu (TPTNT):</strong> Tìm bạch cầu, hồng cầu, nitrite (UTI, sỏi thận, viêm ruột thừa kích thích bàng quang).
+          </div>
+          <div style="background: var(--color-bg); padding: 12px; border-radius: 8px; border: 1px solid var(--color-border);">
+            <strong>3. Siêu âm bụng tổng quát:</strong> Đầu tay tầm soát lồng ruột, viêm ruột thừa, sỏi mật/thận, dịch tự do, u bụng.
+          </div>
+          <div style="background: var(--color-bg); padding: 12px; border-radius: 8px; border: 1px solid var(--color-border);">
+            <strong>4. X-quang bụng không sửa soạn:</strong> Đánh giá liềm hơi dưới cơ hoành (thủng ruột), mức nước hơi (tắc ruột).
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: FLOWCHART -->
+      <section class="section-card" id="acute-flowchart">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-diagram-project"></i></div>
+          <div>
+            <h2>4. Lưu Đồ Thuật Toán Tiếp Cận Bụng Cấp Ở Trẻ Em</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Sơ đồ 27.1 - Nhi khoa YDS (2020)</span>
+          </div>
+        </div>
+
+        <div class="flow-step-container">
+          <!-- STEP 1: ACUTE ABDOMEN CHECK -->
+          <div class="flow-node red-flag-node">
+            <span class="flow-tag danger">BƯỚC 1: ĐÁNH GIÁ DẤU HIỆU "BỤNG CẤP" (RED FLAGS)</span>
+            <h4 style="margin: 6px 0; font-size: 1rem; color: #dc2626;">Kiểm tra các dấu hiệu nguy kịch:</h4>
+            <ul style="margin: 0; padding-left: 20px; font-size: 0.88rem; line-height: 1.5; color: var(--color-text);">
+              <li>Điểm đau khu trú rõ rệt (McBurney, Hạ vị, Hạ sườn).</li>
+              <li>Cảm ứng phúc mạc / Đề kháng thành bụng không chủ ý.</li>
+              <li>Khối u bụng bất thường / Khối lồng.</li>
+              <li>Chướng bụng tiến triển, Nôn ói dịch mật (xanh/vàng), Tiêu phân máu/phân sô-cô-la.</li>
+            </ul>
+            <div style="margin-top: 12px; padding: 10px; background: rgba(239, 68, 68, 0.12); border-radius: 8px; font-weight: 700; color: #dc2626;">
+              👉 CÓ DẤU HIỆU BỤNG CẤP → HỘI CHẨN NGOẠI KHOA KHẨN CẤP! (Cho ruột nghỉ NPO, lập đường truyền TM).
+            </div>
+          </div>
+
+          <!-- STEP 2: NO SPECIFIC RED FLAGS -->
+          <div class="flow-node decision-node">
+            <span class="flow-tag info">BƯỚC 2: KHÔNG CÓ DẤU HIỆU BỤNG CẤP ĐẶC HIỆU</span>
+            <p style="margin: 6px 0; font-size: 0.88rem; line-height: 1.5;">
+              Khám không phản ứng thành bụng, không chướng bụng. Phân nhánh chẩn đoán:
+            </p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 10px;">
+              <div style="background: var(--color-surface); padding: 12px; border-radius: 8px; border: 1px solid var(--color-border);">
+                <strong style="color: #0284c7;">A. Bệnh ngoài ổ bụng (Nhiễm siêu vi...):</strong>
+                <p style="font-size: 0.82rem; margin: 4px 0 0 0;">Sốt, ói, tiêu chảy nhẹ, tai mũi họng viêm.</p>
+                <div style="font-size: 0.8rem; margin-top: 6px; color: #059669;">
+                  • Không mất nước, uống được → <em>Điều trị ngoại trú</em>.
+                  <br>• Mất nước, uống kém → <em>Nhập viện bù dịch TM, cho ruột nghỉ</em>.
+                </div>
+              </div>
+
+              <div style="background: var(--color-surface); padding: 12px; border-radius: 8px; border: 1px solid var(--color-border);">
+                <strong style="color: #d97706;">B. Không rõ chẩn đoán:</strong>
+                <p style="font-size: 0.82rem; margin: 4px 0 0 0;">Cần theo dõi sát tại viện.</p>
+                <div style="font-size: 0.8rem; margin-top: 6px; color: #d97706;">
+                  • Nhập viện theo dõi sát, thăm khám lại nhiều lần.
+                  <br>• NPO, bù dịch tĩnh mạch.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 3: MONITORING & OUTCOME -->
+          <div class="flow-node treatment-node">
+            <span class="flow-tag success">BƯỚC 3: ĐÁNH GIÁ LẠI SAU 24 GIỜ THEO DÕI</span>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; font-size: 0.88rem;">
+              <div style="background: rgba(16, 185, 129, 0.1); padding: 10px; border-radius: 8px;">
+                <strong style="color: #059669;">✅ Cải thiện trong 24 giờ:</strong>
+                <p style="margin: 4px 0 0 0;">Chuyển chăm sóc ngoại trú, hẹn tái khám khi cần.</p>
+              </div>
+              <div style="background: rgba(239, 68, 68, 0.1); padding: 10px; border-radius: 8px;">
+                <strong style="color: #dc2626;">❌ Nặng hơn hoặc Không cải thiện trong 24 giờ:</strong>
+                <p style="margin: 4px 0 0 0;">Mời HỘI CHẨN NGOẠI KHOA ngay lập tức (nguy cơ viêm ruột thừa ẩn, tắc ruột muộn).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: CHRONIC PAIN & RED FLAGS -->
+      <section class="section-card" id="chronic-causes">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div>
+            <h2>5. Đau Bụng Mạn &amp; Dấu Hiệu Cảnh Báo Bệnh Thực Thể (Red Flags)</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Bảng 27.4 &amp; Các yếu tố nguy cơ - Nhi khoa YDS (2020)</span>
+          </div>
+        </div>
+
+        <!-- RED FLAGS BOX -->
+        <div class="clinical-alert-box danger">
+          <div class="clinical-alert-title"><i class="fa-solid fa-flag"></i> DẤU HIỆU CỜ ĐỎ (RED FLAGS) TẦM SOÁT BỆNH LÝ THỰC THỂ Ở TRẺ ĐAU BỤNG MẠN</div>
+          <p style="font-size: 0.88rem; line-height: 1.5; margin-bottom: 10px;">
+            Khi tiếp cận trẻ đau bụng mạn (≥ 2 tháng), nếu xuất hiện <strong>bất kỳ dấu hiệu nào</strong> dưới đây, bắt buộc phải làm cận lâm sàng chuyên sâu để tìm nguyên nhân thực thể:
+          </p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; font-size: 0.85rem;">
+            <div>
+              <strong>📋 Bệnh sử nguy cơ:</strong>
+              <ul style="padding-left: 16px; margin: 4px 0 0 0;">
+                <li>Trẻ &lt; 5 tuổi.</li>
+                <li>Đau ngoài vùng quanh rốn (Thượng vị, Hạ vị, Hố chậu).</li>
+                <li>Đau lan ra lưng, vai hoặc hai chi.</li>
+                <li>Đau gây thức giấc ban đêm.</li>
+                <li>Khó nuốt, ói mật hoặc ói máu, tiêu máu.</li>
+                <li>Tiểu đục, tiểu máu, tiểu gắt buốt.</li>
+                <li>Sốt kéo dài, sụt cân, đau khớp, loét miệng tái diễn.</li>
+                <li>Tiền căn gia đình: IBD, Celiac, Loét dạ dày.</li>
+              </ul>
+            </div>
+            <div>
+              <strong>🩺 Khám thực thể &amp; CLS:</strong>
+              <ul style="padding-left: 16px; margin: 4px 0 0 0;">
+                <li>Chậm tăng trưởng, sụt cân, chậm dậy thì.</li>
+                <li>Vàng da, xanh xao (thiếu máu).</li>
+                <li>Phản ứng dội, đề kháng, gan lách to.</li>
+                <li>Bất thường quanh hậu môn (mẫu da thừa, rò, nứt hậu môn).</li>
+                <li>CLS: Bạch cầu tăng, VS/CRP tăng, giảm Albumin máu, Máu ẩn trong phân (+).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- ORGANIC CAUSES TABLE 27.4 -->
+        <h3 style="font-size: 1.05rem; color: var(--color-text); margin-top: 20px;">Bảng 27.4: Các Nguyên Nhân Thực Thể Gây Đau Bụng Mạn</h3>
+        <div style="overflow-x: auto;">
+          <table class="clinical-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Phân Hệ Cơ Quan</th>
+                <th style="width: 75%;">Bệnh Lý Thực Thể Chi Tiết</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Dạ dày - Ruột</strong></td>
+                <td>Viêm thực quản, Viêm dạ dày, Loét dạ dày tá tràng, Bệnh Celiac, Ruột xoay bất toàn, Ruột đôi, Polyp ruột, Viêm ruột mạn (IBD - Crohn, Viêm loét đại tràng), Táo bón mạn, Nhiễm ký sinh trùng ruột, Bezoar/Dị vật, Lồng ruột tái diễn, U ruột (Lymphoma).</td>
+              </tr>
+              <tr>
+                <td><strong>Gan - Mật - Tụy</strong></td>
+                <td>Nang ống mật chủ, Viêm tụy mạn, Nang giả tụy, Rối loạn vận động đường mật, Rối loạn chức năng cơ vòng Oddi, Viêm gan mạn, Sỏi mật, Viêm túi mật.</td>
+              </tr>
+              <tr>
+                <td><strong>Niệu - Sinh Dục</strong></td>
+                <td>Tắc nghẽn khúc nối bể thận - niệu quản, Thận ứ nước, Sỏi thận, Viêm bể thận/viêm bàng quang mạn, Ứ máu âm đạo, Đau giữa kỳ kinh (Mittelschmerz), Lạc nội mạc tử cung.</td>
+              </tr>
+              <tr>
+                <td><strong>Chuyển Hóa &amp; Khác</strong></td>
+                <td>Bất dung nạp carbohydrate (Lactose, Fructose), Rối loạn chuyển hóa porphyrin, Phù mạch di truyền, Đái tháo đường, Ngộ độc chì, Thiếu máu hồng cầu hình liềm, Bệnh mạch máu collagen, Chấn thương/u/nhiễm trùng cột sống.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECTION 6: ROME IV CRITERIA -->
+      <section class="section-card" id="rome-iv">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-clipboard-check"></i></div>
+          <div>
+            <h2>6. Tiêu Chuẩn Chẩn Đoán Đau Bụng Mạn Chức Năng (Rome IV)</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Bảng 27.5 - Áp dụng khi ĐÃ LOẠI TRỪ các Dấu hiệu Cờ đỏ (Red Flags)</span>
+          </div>
+        </div>
+
+        <div class="rome-grid">
+          <!-- CARD 1: FUNCTIONAL DYSPEPSIA -->
+          <div class="rome-card" style="border-top-color: #0284c7;">
+            <div class="rome-card-title">
+              <span>1. Khó Tiêu Chức Năng</span>
+              <i class="fa-solid fa-utensils" style="color: #0284c7;"></i>
+            </div>
+            <p style="font-size: 0.82rem; color: var(--color-text-muted); margin: 4px 0;">Có ít nhất 1 trong 4 triệu chứng (≥ 4 lần/tháng, kéo dài ≥ 2 tháng):</p>
+            <ul class="rome-card-list">
+              <li>Đầy bụng khó chịu sau khi ăn.</li>
+              <li>Mau no (không ăn hết suất ăn bình thường).</li>
+              <li>Đau vùng thượng vị không liên quan đi tiêu.</li>
+              <li>Nóng rát vùng thượng vị.</li>
+            </ul>
+          </div>
+
+          <!-- CARD 2: ABDOMINAL MIGRAINE -->
+          <div class="rome-card" style="border-top-color: #7c3aed;">
+            <div class="rome-card-title">
+              <span>2. Đau Bụng Migraine</span>
+              <i class="fa-solid fa-brain" style="color: #7c3aed;"></i>
+            </div>
+            <p style="font-size: 0.82rem; color: var(--color-text-muted); margin: 4px 0;">Thỏa tất cả tiêu chí (xảy ra ≥ 2 lần trong 6 tháng):</p>
+            <ul class="rome-card-list">
+              <li>Cơn đau cấp quanh rốn/đường giữa/lan tỏa ≥ 1 giờ.</li>
+              <li>Các đợt đau cách nhau vài tuần đến vài tháng.</li>
+              <li>Đau dữ dội ảnh hưởng sinh hoạt bình thường.</li>
+              <li>Kèm ≥ 2 triệu chứng: Chán ăn, buồn nôn, nôn, đau đầu, sợ ánh sáng, xanh tái.</li>
+            </ul>
+          </div>
+
+          <!-- CARD 3: IBS -->
+          <div class="rome-card" style="border-top-color: #10b981;">
+            <div class="rome-card-title">
+              <span>3. Hội Chứng Ruột Kích Thích (IBS)</span>
+              <i class="fa-solid fa-toilet" style="color: #10b981;"></i>
+            </div>
+            <p style="font-size: 0.82rem; color: var(--color-text-muted); margin: 4px 0;">Đau bụng ít nhất 4 ngày/tháng trong ≥ 2 tháng, kèm ≥ 1 dấu hiệu:</p>
+            <ul class="rome-card-list">
+              <li>Đau liên quan đến đi tiêu (giảm hoặc tăng sau khi đi tiêu).</li>
+              <li>Thay đổi tần suất đi phân (táo bón hoặc tiêu chảy).</li>
+              <li>Thay đổi hình dạng phân (phân cứng viên hoặc phân lỏng nước).</li>
+            </ul>
+          </div>
+
+          <!-- CARD 4: FAP-NOS -->
+          <div class="rome-card" style="border-top-color: #d97706;">
+            <div class="rome-card-title">
+              <span>4. Đau Bụng Chức Năng Chưa XĐ</span>
+              <i class="fa-solid fa-circle-question" style="color: #d97706;"></i>
+            </div>
+            <p style="font-size: 0.82rem; color: var(--color-text-muted); margin: 4px 0;">Đau bụng từng cơn hoặc liên tục kéo dài ≥ 2 tháng:</p>
+            <ul class="rome-card-list">
+              <li>Không xảy ra đơn độc với hiện tượng sinh lý.</li>
+              <li>Không đủ tiêu chuẩn chẩn đoán khó tiêu chức năng, Migraine bụng hay IBS.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 7: INTERACTIVE CDSS EVALUATOR -->
+      <section class="section-card" id="cdss-evaluator">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-laptop-medical"></i></div>
+          <div>
+            <h2>7. Bộ Công Cụ CDSS Đánh Giá &amp; Phân Tầng Tương Tác</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Giả lập lâm sàng &amp; Phân tầng nguy cơ khẩn cấp</span>
+          </div>
+        </div>
+
+        <div class="sim-container">
+          <h3 style="margin-top: 0; font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-sliders"></i> CDSS 1: Evaluator Phân Tầng Nguy Cơ Bụng Cấp &amp; Xử Trí Khẩn</h3>
+          <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 16px;">Tích hợp thuật toán Bụng cấp &amp; Dấu hiệu cảnh báo lâm sàng:</p>
+
+          <div class="sim-grid-layout">
+            <div>
+              <label style="font-weight: 700; font-size: 0.88rem;">1. Chọn Nhóm Tuổi Của Trẻ:</label>
+              <select id="simAgeGroup" onchange="runCdssEvaluation()" style="width: 100%; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); margin-top: 6px; font-weight: 600;">
+                <option value="neonatal">Trẻ Sơ sinh (&lt; 28 ngày)</option>
+                <option value="infant">Trẻ &lt; 2 tuổi</option>
+                <option value="child" selected>Trẻ 2 – 11 tuổi</option>
+                <option value="adolescent">Trẻ 12 – 19 tuổi</option>
+              </select>
+
+              <label style="font-weight: 700; font-size: 0.88rem; display: block; margin-top: 14px;">2. Thời Gian Khởi Phát Đau Bụng:</label>
+              <select id="simDuration" onchange="runCdssEvaluation()" style="width: 100%; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); margin-top: 6px; font-weight: 600;">
+                <option value="acute_short">Đau &lt; 6 giờ</option>
+                <option value="acute_med">Đau 6 – 48 giờ</option>
+                <option value="chronic">Đau kéo dài ≥ 2 tháng (Đau mạn)</option>
+              </select>
+
+              <label style="font-weight: 700; font-size: 0.88rem; display: block; margin-top: 14px;">3. Tích Chọn Các Dấu Hiệu Lâm Sàng Hiện Có:</label>
+              <div class="checkbox-group">
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="chkRebound" onchange="runCdssEvaluation()">
+                  <span>Cảm ứng phúc mạc / Đề kháng thành bụng không chủ ý</span>
+                </label>
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="chkBiliousVomiting" onchange="runCdssEvaluation()">
+                  <span>Nôn ói dịch mật (xanh/vàng) hoặc ói máu</span>
+                </label>
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="chkMelena" onchange="runCdssEvaluation()">
+                  <span>Tiêu phân máu / Phân sô-cô-la / Tiêu bọt máu</span>
+                </label>
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="chkMass" onchange="runCdssEvaluation()">
+                  <span>Khối u bụng bất thường / Khối lồng ruột</span>
+                </label>
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="chkCarnettPos" onchange="runCdssEvaluation()">
+                  <span>Carnett Test (+) [Đau tăng khi gồng cơ thành bụng]</span>
+                </label>
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="chkNightPain" onchange="runCdssEvaluation()">
+                  <span>Đau gây thức giấc ban đêm / Sụt cân / Sốt kéo dài</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- RESULT CARD -->
+            <div class="sim-result-card">
+              <div>
+                <div style="font-size: 0.8rem; text-transform: uppercase; font-weight: 700; color: var(--color-text-muted); margin-bottom: 6px;">KẾT QUẢ ĐÁNH GIÁ CDSS:</div>
+                <div id="simResultStatus" class="sim-result-status green">
+                  🟢 NGUY CƠ THẤP - KHÔNG CÓ BỤNG CẤP
+                </div>
+                <div id="simResultDetails" style="font-size: 0.88rem; line-height: 1.5; color: var(--color-text);">
+                  Chưa ghi nhận dấu hiệu bụng cấp khẩn cấp. Tiếp tục theo dõi triệu chứng và khám toàn thân.
+                </div>
+              </div>
+
+              <div style="margin-top: 16px; padding-top: 12px; border-top: 1px dashed var(--color-border); font-size: 0.82rem; color: var(--color-text-muted);">
+                <strong>Khuyên dùng:</strong> Luôn kiểm tra lại sinh hiệu và thăm khám bụng nhiều lần trong vòng 24h.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 8: TREATMENT & PROGNOSIS -->
+      <section class="section-card" id="treatment-prognosis">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-pills"></i></div>
+          <div>
+            <h2>8. Nguyên Tắc Điều Trị &amp; Yếu Tố Tiên Lượng</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Quản lý Đau bụng mạn chức năng &amp; Bảng 27.7 - Nhi khoa YDS (2020)</span>
+          </div>
+        </div>
+
+        <h3 style="font-size: 1.05rem; color: var(--abd-primary); margin-top: 0;">A. 5 Nguyên Tắc Xử Trí Đau Bụng Chức Năng</h3>
+        <ol style="padding-left: 20px; font-size: 0.9rem; line-height: 1.6;">
+          <li><strong>Trấn an bệnh nhân và gia đình:</strong> Giải thích rõ cơ chế đau bụng chức năng (trục Não-Ruột), khẳng định cơn đau của trẻ là CÓ THỰC (không phải giả vờ). Cho gia đình xem biểu đồ tăng trưởng bình thường của trẻ để giải tỏa lo âu.</li>
+          <li><strong>Thiết lập mục tiêu thực tế:</strong> Giảm căng thẳng, giúp trẻ duy trì sinh hoạt học tập bình thường; hướng dẫn trẻ cách ứng phó với cơn đau tại trường.</li>
+          <li><strong>Ghi nhật ký cơn đau:</strong> Theo dõi thời gian, vị trí, mức độ đau, yếu tố stress và tính chất phân.</li>
+          <li><strong>Chế độ ăn phù hợp:</strong> Hạn chế thực phẩm kích thích (lactose, fructose, caffein, đồ béo cay, nước ngọt có gas, rau sinh hơi).</li>
+          <li><strong>Điều trị thuốc hỗ trợ:</strong>
+            <ul style="padding-left: 18px; margin-top: 4px;">
+              <li><em>Kháng thụ thể H₂ / PPI:</em> Dùng ngắn hạn trong Khó tiêu chức năng.</li>
+              <li><em>Cyproheptadine (Kháng H₁):</em> Giúp giảm đau bụng chức năng ở trẻ em.</li>
+              <li><em>Thuốc điều hòa nhu động (Domperidone) &amp; Dầu bạc hà:</em> Trong IBS.</li>
+            </ul>
+          </li>
+        </ol>
+
+        <!-- PROGNOSIS TABLE 27.7 -->
+        <h3 style="font-size: 1.05rem; color: var(--color-text); margin-top: 20px;">Bảng 27.7: Các Yếu Tố Tiên Lượng Đau Bụng Chức Năng</h3>
+        <div style="overflow-x: auto;">
+          <table class="clinical-table">
+            <thead>
+              <tr>
+                <th style="width: 50%; background: rgba(16, 185, 129, 0.12); color: #059669;">🟢 Yếu Tố Tiên Lượng TỐT</th>
+                <th style="width: 50%; background: rgba(239, 68, 68, 0.12); color: #dc2626;">🔴 Yếu Tố Tiên Lượng XẤU</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>• Giới nữ</td>
+                <td>• Giới nam</td>
+              </tr>
+              <tr>
+                <td>• Tuổi khởi phát &gt; 6 tuổi</td>
+                <td>• Tuổi khởi phát &lt; 6 tuổi</td>
+              </tr>
+              <tr>
+                <td>• Gia đình bình thường, thấu hiểu</td>
+                <td>• Gia đình "đau khổ", mâu thuẫn/căng thẳng</td>
+              </tr>
+              <tr>
+                <td>• Thời gian bệnh &lt; 6 tháng</td>
+                <td>• Thời gian bệnh &gt; 6 tháng</td>
+              </tr>
+              <tr>
+                <td>• Mức kinh tế - xã hội trung bình đến cao</td>
+                <td>• Trình độ học vấn / Kinh tế thấp</td>
+              </tr>
+              <tr>
+                <td>• KHÔNG có tiền căn phẫu thuật trước đó</td>
+                <td>• Tiền căn phẫu thuật nhiều lần (cắt ruột thừa, cắt amidan...)</td>
+              </tr>
+              <tr>
+                <td>• KHÔNG có tâm lý bất thường</td>
+                <td>• Có kèm rối loạn tâm lý (Lo âu, Trầm cảm)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- REFERENCES -->
+        <div style="margin-top: 24px; padding-top: 14px; border-top: 1px dashed var(--color-border); font-size: 0.82rem; color: var(--color-text-muted);">
+          <strong>📚 Tài Liệu Tham Khảo (Chuẩn AMA):</strong>
+          <br>1. Huỳnh Ngọc Thanh, Nguyễn Anh Tuấn. Bài 27: Tiếp cận đau bụng ở trẻ em. Trong: <em>Nhi khoa YDS - Tập 1</em>. Bộ môn Nhi - Đại học Y Dược Thành phố Hồ Chí Minh; 2020:359-370.
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+  <!-- INLINE CDSS JAVASCRIPT LOGIC -->
+  <script>
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        // Update active quick-nav button
+        document.querySelectorAll('.quick-nav-btn').forEach(btn => btn.classList.remove('active'));
+        const activeBtn = Array.from(document.querySelectorAll('.quick-nav-btn')).find(b => b.getAttribute('onclick').includes(id));
+        if (activeBtn) activeBtn.classList.add('active');
+      }
+    }
+
+    function runCdssEvaluation() {
+      const age = document.getElementById('simAgeGroup').value;
+      const duration = document.getElementById('simDuration').value;
+      const rebound = document.getElementById('chkRebound').checked;
+      const bilious = document.getElementById('chkBiliousVomiting').checked;
+      const melena = document.getElementById('chkMelena').checked;
+      const mass = document.getElementById('chkMass').checked;
+      const carnett = document.getElementById('chkCarnettPos').checked;
+      const nightPain = document.getElementById('chkNightPain').checked;
+
+      const resultStatus = document.getElementById('simResultStatus');
+      const resultDetails = document.getElementById('simResultDetails');
+
+      // Check Red Flag Surgical Abdomen
+      if (rebound || bilious || melena || mass) {
+        resultStatus.className = 'sim-result-status red';
+        resultStatus.innerHTML = '🔴 NGUY CƠ RẤT CAO - NGHĨ NHIỀU BỤNG CẤP NGOẠI KHOA!';
+        
+        let reasons = [];
+        if (rebound) reasons.push('Cảm ứng phúc mạc / Đề kháng thành bụng');
+        if (bilious) reasons.push('Nôn dịch mật/máu');
+        if (melena) reasons.push('Tiêu phân máu/sô-cô-la');
+        if (mass) reasons.push('Khối lồng/U bụng');
+
+        resultDetails.innerHTML = `
+          <strong>Phát hiện Cờ đỏ Bụng cấp:</strong> ${reasons.join(', ')}.<br>
+          👉 <strong>Xử trí ngay:</strong>
+          <ul style="margin: 6px 0 0 0; padding-left: 18px;">
+            <li>Hội chẩn Ngoại khoa khẩn cấp!</li>
+            <li>Cho trẻ nhịn ăn uống hoàn toàn (NPO).</li>
+            <li>Lập đường truyền tĩnh mạch bù dịch.</li>
+            <li>Chỉ định Siêu âm bụng / X-quang bụng không sửa soạn khẩn.</li>
+          </ul>
+        `;
+        return;
+      }
+
+      // Check Carnett (+) Abdominal Wall pain
+      if (carnett) {
+        resultStatus.className = 'sim-result-status yellow';
+        resultStatus.innerHTML = '🟡 CARNETT TEST (+) - ĐAU THÀNH BỤNG';
+        resultDetails.innerHTML = `
+          Đau tăng lên khi căng cơ bụng (Carnett test positive).<br>
+          Gợi ý nguyên nhân đau xuất phát từ <strong>thành bụng</strong> (chấn thương cơ, nếp bụng, dây thần kinh thành bụng), thường không phải cấp cứu tạng nội tạng. Khám loại trừ khối thoát vị.
+        `;
+        return;
+      }
+
+      // Check Chronic / Red Flag Night Pain
+      if (nightPain || duration === 'chronic') {
+        resultStatus.className = 'sim-result-status yellow';
+        resultStatus.innerHTML = '🟡 ĐAU BỤNG MẠN / CÓ DẤU HIỆU THỰC THỂ';
+        resultDetails.innerHTML = `
+          Đau bụng kéo dài hoặc có dấu hiệu gợi ý thực thể (thức giấc ban đêm, sốt, sụt cân).<br>
+          👉 <strong>Xử trí:</strong> Chỉ định xét nghiệm tầm soát thực thể (Công thức máu, VS/CRP, Siêu âm, Máu ẩn trong phân). Nếu âm tính, đánh giá tiêu chuẩn Rome IV.
+        `;
+        return;
+      }
+
+      // Neonatal special alert
+      if (age === 'neonatal') {
+        resultStatus.className = 'sim-result-status yellow';
+        resultStatus.innerHTML = '🟡 SƠ SINH ĐAU BỤNG / THỦNG / NEC';
+        resultDetails.innerHTML = `
+          Trẻ sơ sinh có biểu hiện đau bụng / chướng bụng cần được loại trừ Viêm ruột hoại tử (NEC) và Xoắn ruột xoay bất toàn. Theo dõi sát tại bệnh viện.
+        `;
+        return;
+      }
+
+      // Low Risk
+      resultStatus.className = 'sim-result-status green';
+      resultStatus.innerHTML = '🟢 NGUY CƠ THẤP - THEO DÕI NGUYÊN NHÂN NỘI KHOA';
+      resultDetails.innerHTML = `
+        Chưa thấy dấu hiệu bụng cấp ngoại khoa hay cờ đỏ nguy hiểm.<br>
+        Theo dõi các nguyên nhân thường gặp: Viêm dạ dày ruột, Nhiễm trùng tiểu, Táo bón. Dặn dò gia đình tái khám ngay nếu xuất hiện nôn ói mật, tiêu máu hoặc đau bụng tăng dần.
+      `;
+    }
+  </script>
+</body>
+
+</html>

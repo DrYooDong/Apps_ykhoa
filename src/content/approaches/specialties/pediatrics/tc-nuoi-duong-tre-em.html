@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Tiếp cận các vấn đề nuôi dưỡng ở trẻ em: Chẩn đoán &amp; phân loại trẻ khó nuôi ăn (Feeding Difficulties), phiền đoái bú mẹ/bú bình, tham vấn IMCI, rối loạn ăn ARFID &amp; CDSS tầm soát nguy cơ hội chứng nuôi ăn lại (Refeeding Syndrome).">
+  <title>Tiếp cận các vấn đề nuôi dưỡng ở trẻ em – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core (5 levels up) -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../../css/components/approach-symptom.css">
+
+  <!-- JS Core (5 levels up) -->
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+  <script src="../../../../../js/approach-symptom.js" defer></script>
+
+  <style>
+    /* ==========================================================================
+       PEDIATRIC NUTRITION & FEEDING APPROACH CUSTOM STYLES
+       ========================================================================== */
+
+    html, body, .app-container, .main-wrapper, .layout-content-area {
+      overflow: visible !important;
+    }
+
+    :root {
+      --nutri-primary: #10b981;
+      --nutri-primary-dark: #059669;
+      --nutri-accent: #f59e0b;
+      --nutri-purple: #8b5cf6;
+      --nutri-danger: #ef4444;
+      --nutri-info: #06b6d4;
+    }
+
+    /* Hero Banner */
+    .hero-nutrition {
+      background: linear-gradient(135deg, #064e3b 0%, #047857 40%, #065f46 100%);
+      border-radius: 20px;
+      padding: 32px;
+      color: #ffffff;
+      box-shadow: 0 12px 32px rgba(6, 78, 59, 0.25);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .hero-nutrition::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -10%;
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(52, 211, 153, 0.2) 0%, rgba(6, 78, 59, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-nutrition-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .hero-title-group h1 {
+      font-size: 2.1rem;
+      font-weight: 800;
+      font-family: var(--font-display);
+      margin: 8px 0 12px 0;
+      color: #ffffff;
+      line-height: 1.25;
+    }
+
+    .hero-badges-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .hero-badge-pill {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #ecfdf5;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-badge-pill.alert {
+      background: rgba(239, 68, 68, 0.25);
+      border-color: rgba(248, 113, 113, 0.4);
+      color: #fef2f2;
+    }
+
+    .hero-description {
+      font-size: 0.95rem;
+      opacity: 0.95;
+      line-height: 1.6;
+      max-width: 850px;
+      margin-top: 10px;
+    }
+
+    /* Hero Quick Stats */
+    .hero-quick-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .stat-box {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .stat-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: #a7f3d0;
+      flex-shrink: 0;
+    }
+
+    .stat-val {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+
+    .stat-lbl {
+      font-size: 0.75rem;
+      color: #d1fae5;
+      margin-top: 2px;
+    }
+
+    /* Sticky Quick Nav */
+    .quick-nav-bar {
+      position: sticky !important;
+      top: calc(var(--header-height, 60px) + 8px) !important;
+      z-index: 150 !important;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      padding: 10px 14px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      white-space: nowrap;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+    }
+
+    .quick-nav-btn {
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.83rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      border: 1px solid transparent;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .quick-nav-btn:hover,
+    .quick-nav-btn.active {
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--nutri-primary-dark);
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    /* Section Cards */
+    .section-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+      scroll-margin-top: 130px;
+    }
+
+    .section-title-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid var(--color-border);
+    }
+
+    .section-icon-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--nutri-primary-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .section-title-group h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin: 0;
+    }
+
+    .section-subtitle {
+      display: block;
+      font-size: 0.83rem;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      margin-top: 2px;
+    }
+
+    /* Tables & Cards */
+    .custom-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      margin: 16px 0;
+      font-size: 0.9rem;
+    }
+
+    .custom-table th {
+      background: rgba(16, 185, 129, 0.08);
+      color: var(--color-text);
+      font-weight: 700;
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .custom-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--color-border);
+      color: var(--color-text);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    .custom-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .custom-table tr:nth-child(even) td {
+      background: rgba(0, 0, 0, 0.015);
+    }
+
+    /* Clinical Alerts */
+    .clinical-alert-box {
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin: 16px 0;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      border-left: 4px solid;
+    }
+
+    .clinical-alert-box.danger {
+      background: rgba(239, 68, 68, 0.08);
+      border-color: #ef4444;
+      color: var(--color-text);
+    }
+
+    .clinical-alert-box.warning {
+      background: rgba(245, 158, 11, 0.08);
+      border-color: #f59e0b;
+      color: var(--color-text);
+    }
+
+    .clinical-alert-box.info {
+      background: rgba(6, 182, 212, 0.08);
+      border-color: #06b6d4;
+      color: var(--color-text);
+    }
+
+    .clinical-alert-box.success {
+      background: rgba(16, 185, 129, 0.08);
+      border-color: #10b981;
+      color: var(--color-text);
+    }
+
+    .alert-icon {
+      font-size: 1.3rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .clinical-alert-box.danger .alert-icon { color: #ef4444; }
+    .clinical-alert-box.warning .alert-icon { color: #f59e0b; }
+    .clinical-alert-box.info .alert-icon { color: #06b6d4; }
+    .clinical-alert-box.success .alert-icon { color: #10b981; }
+
+    .alert-content h4 {
+      margin: 0 0 4px 0;
+      font-size: 0.98rem;
+      font-weight: 700;
+    }
+
+    .alert-content p {
+      margin: 0;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    /* Simulators / Interactive CDSS */
+    .sim-container {
+      background: rgba(16, 185, 129, 0.04);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      border-radius: 16px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+
+    .sim-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .sim-header h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--nutri-primary-dark);
+    }
+
+    .sim-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .sim-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .sim-field label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    .sim-select, .sim-input {
+      padding: 9px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-text);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .sim-select:focus, .sim-input:focus {
+      border-color: var(--nutri-primary);
+    }
+
+    .sim-result-box {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .sim-result-header {
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--color-text-muted);
+      margin-bottom: 8px;
+    }
+
+    .sim-result-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .sim-result-desc {
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--color-text);
+    }
+
+    /* Grid cards for 4 parental styles / feeding behaviors */
+    .behavior-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    .behavior-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 16px;
+      border-top: 4px solid var(--nutri-primary);
+    }
+
+    .behavior-card.controlling { border-top-color: #ef4444; }
+    .behavior-card.indulgent { border-top-color: #f59e0b; }
+    .behavior-card.neglectful { border-top-color: #6b7280; }
+    .behavior-card.responsive { border-top-color: #10b981; }
+
+    .behavior-card h4 {
+      margin: 0 0 6px 0;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .behavior-card p {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      margin: 0;
+      line-height: 1.45;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ===================== APP CONTAINER ===================== -->
+  <div class="app-container">
+
+    <!-- ===================== MAIN CONTENT ===================== -->
+    <div class="main-wrapper" id="mainContent">
+
+      <!-- HERO BANNER -->
+      <section class="hero-nutrition">
+        <div class="hero-nutrition-header">
+          <div class="hero-title-group">
+            <div class="hero-badges-group">
+              <span class="hero-badge-pill"><i class="fa-solid fa-baby-carriage"></i> Nhi khoa Lâm sàng</span>
+              <span class="hero-badge-pill"><i class="fa-solid fa-utensils"></i> Dinh dưỡng &amp; Phát triển</span>
+              <span class="hero-badge-pill"><i class="fa-solid fa-book-medical"></i> YDS 2025 &amp; IMCI</span>
+              <span class="hero-badge-pill alert"><i class="fa-solid fa-triangle-exclamation"></i> CDSS Refeeding</span>
+            </div>
+            <h1>🍼 TIẾP CẬN CÁC VẤN ĐỀ NUÔI DƯỠNG Ở TRẺ EM</h1>
+          </div>
+        </div>
+        <p class="hero-description">
+          Hướng dẫn tiếp cận lâm sàng toàn diện về dinh dưỡng trẻ em: Xử trí các phiền đoái bú mẹ &amp; bú bình, Tham vấn nuôi dưỡng theo chuẩn IMCI, Thuật toán phân loại Khó nuôi ăn (Feeding Difficulties), Tầm soát Rối loạn ăn (ARFID, Anorexia, Bulimia) và Phác đồ phòng ngừa Hội chứng Nuôi ăn lại (Refeeding Syndrome).
+        </p>
+
+        <!-- HERO QUICK STATS -->
+        <div class="hero-quick-stats">
+          <div class="stat-box">
+            <div class="stat-icon"><i class="fa-solid fa-weight-scale"></i></div>
+            <div>
+              <div class="stat-val">&le; 7 &ndash; 10%</div>
+              <div class="stat-lbl">Sụt cân sinh lý tối đa ở sơ sinh</div>
+            </div>
+          </div>
+
+          <div class="stat-box">
+            <div class="stat-icon"><i class="fa-solid fa-clock"></i></div>
+            <div>
+              <div class="stat-val">20 &ndash; 30 Phút</div>
+              <div class="stat-lbl">Thời gian tối đa chuẩn cho 1 bữa ăn</div>
+            </div>
+          </div>
+
+          <div class="stat-box">
+            <div class="stat-icon"><i class="fa-solid fa-rotate-right"></i></div>
+            <div>
+              <div class="stat-val">8 &ndash; 15 Lần</div>
+              <div class="stat-lbl">Số lần tập lại khi giới thiệu món mới</div>
+            </div>
+          </div>
+
+          <div class="stat-box">
+            <div class="stat-icon"><i class="fa-solid fa-hospital-user"></i></div>
+            <div>
+              <div class="stat-val">&lt; 80% IBW</div>
+              <div class="stat-lbl">Chỉ định nhập viện ở rối loạn ăn</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STICKY QUICK NAV BAR -->
+      <nav class="quick-nav-bar" id="quickNav">
+        <a href="#sec-nhu-nhi" class="quick-nav-btn active"><i class="fa-solid fa-baby"></i> 1. Trẻ &lt; 1 Tuổi</a>
+        <a href="#sec-tre-nho-va-lon" class="quick-nav-btn"><i class="fa-solid fa-child"></i> 2. Trẻ 1-6T &amp; Đi Học</a>
+        <a href="#sec-imci-counseling" class="quick-nav-btn"><i class="fa-solid fa-list-check"></i> 3. Tham Vấn IMCI</a>
+        <a href="#sec-kho-nuoi-an" class="quick-nav-btn"><i class="fa-solid fa-route"></i> 4. Tiếp Cận Khó Ăn</a>
+        <a href="#sec-cdss-feeding-engine" class="quick-nav-btn"><i class="fa-solid fa-microchip"></i> 5. CDSS Khó Nuôi Ăn</a>
+        <a href="#sec-roi-loan-an" class="quick-nav-btn"><i class="fa-solid fa-brain"></i> 6. Rối Loạn Ăn &amp; ARFID</a>
+        <a href="#sec-cdss-refeeding" class="quick-nav-btn"><i class="fa-solid fa-triangle-exclamation"></i> 7. CDSS Refeeding</a>
+        <a href="#sec-tai-lieu-tham-khao" class="quick-nav-btn"><i class="fa-solid fa-book"></i> 8. Tham Khảo AMA</a>
+      </nav>
+
+      <!-- ===================== SECTION 1: TRẺ DƯỚI 1 TUỔI ===================== -->
+      <section class="section-card" id="sec-nhu-nhi">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-baby"></i></div>
+          <div>
+            <h2>1. Nuôi Ăn Ở Trẻ Dưới 1 Tuổi (Nhũ Nhi)</h2>
+            <span class="section-subtitle">Phiền đoái từ phía bà mẹ, từ phía trẻ, bảo quản sữa mẹ và sữa công thức</span>
+          </div>
+        </div>
+
+        <h3>1.1. Các Vấn Đề Từ Phía Bà Mẹ</h3>
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th style="width: 25%;">Vấn đề lâm sàng</th>
+              <th style="width: 35%;">Biểu hiện &amp; Nguyên nhân</th>
+              <th style="width: 40%;">Hướng xử trí chuẩn YDS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Đau đầu vú</strong></td>
+              <td>Than phiền rất thường gặp ngay sau sinh. Do tư thế cho bú / ngậm bắt vú sai, hoặc nhiễm nấm <em>Candida</em> đầu vú.</td>
+              <td>
+                &bull; Cho bú thời gian ngắn hơn, bắt đầu từ bên vú ít đau hơn.<br>
+                &bull; Hong khô và thoa kem lanolin sau mỗi cữ bú.<br>
+                &bull; Nấm vú: Thoa nấm tại chỗ (lau sạch trước khi bú) + trẻ uống kháng nấm đường uống.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Căng tức vú</strong></td>
+              <td>Ứ đọng sữa nhiều do tiết sữa quá nhiều, kỹ thuật cho bú sai hoặc trẻ bệnh bú kém.</td>
+              <td>
+                &bull; Cho bú thường xuyên đủ cữ giúp lưu thông mạch sữa.<br>
+                &bull; Vắt bỏ lượng sữa dư, chườm lạnh giữa các cữ bú.<br>
+                &bull; Mặc áo rộng rãi và dùng thuốc giảm đau nếu cần.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Viêm vú (Mastitis)</strong></td>
+              <td>Thường 1 bên vú: Sốt, sưng nóng đỏ đau tại chỗ, mệt mỏi, đau đầu/cơ. Tác nhân: <em>S. aureus, E. coli, Str.</em> nhóm A, <em>H. influenzae, K. pneumoniae, Bacteroides</em>.</td>
+              <td>
+                &bull; Kháng sinh + Giảm đau.<br>
+                &bull; <strong>Tiếp tục cho bú</strong> nếu chưa tạo thành áp-xe vú.<br>
+                &bull; Rửa tay sạch trước khi cho bú/hút sữa và sau khi thay tã.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Thuốc mẹ dùng</strong></td>
+              <td>Chuyển qua sữa mẹ gây độc cho trẻ sơ sinh.</td>
+              <td>
+                &bull; <strong>Chống chỉ định tuyệt đối:</strong> Chất phóng xạ, chất chống chuyển hóa, lithium, thuốc kháng giáp, thuốc gây nghiện.<br>
+                &bull; Bắt buộc ngưng cho con bú khi mẹ phải dùng các thuốc này.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>1.2. Các Vấn Đề Từ Phía Trẻ</h3>
+        <p>
+          Trẻ sơ sinh cần được cho bú mẹ ít nhất <strong>8 cữ/ngày</strong>.
+        </p>
+
+        <div class="clinical-alert-box warning">
+          <div class="alert-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div class="alert-content">
+            <h4>Dấu hiệu gợi ý trẻ UỐNG KHÔNG ĐỦ SỮA:</h4>
+            <p>
+              &bull; Trẻ li bì, khóc không dỗ được, mau đói.<br>
+              &bull; Ít đi tiêu, giảm lượng nước tiểu (&lt; 6 tã ướt/ngày).<br>
+              &bull; <strong>Sụt cân &gt; 7 &ndash; 10%</strong> cân nặng lúc sinh hoặc mất nước ưu trương.<br>
+              <em>Nguyên nhân:</em> Mẹ thiếu sữa (béo phì, ĐTĐ, xuất huyết sau sinh, bú ít cữ), thiếu kỹ năng hoặc trẻ bú mút kém.
+            </p>
+          </div>
+        </div>
+
+        <div class="custom-table" style="margin-top: 14px;">
+          <table style="width: 100%;">
+            <thead>
+              <tr>
+                <th style="width: 30%;">Tình trạng</th>
+                <th style="width: 70%;">Chi tiết lâm sàng &amp; Xử trí</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Dính thắng lưỡi (Ankyloglossia)</strong></td>
+                <td>Liên quan đến ngậm bắt vú kém và đau đầu vú ở mẹ. Tuy nhiên, hầu hết trẻ dính thắng lưỡi vẫn bú tốt &rarr; <strong>Tránh chỉ định cắt thắng lưỡi không cần thiết</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>Vàng da do bú mẹ (Breastfeeding jaundice)</strong></td>
+                <td>Xuất hiện <strong>tuần đầu sau sinh</strong> do bú không đủ sữa, chậm đi phân su &rarr; Tăng tái hấp thu Bilirubin gián tiếp từ chu trình gan - ruột. Xử trí: Tăng số cữ bú mẹ.</td>
+              </tr>
+              <tr>
+                <td><strong>Vàng da sữa mẹ (Breast milk jaundice)</strong></td>
+                <td>Xuất hiện <strong>ngày 5 &ndash; 7 sau sinh</strong>, kéo dài 2 &ndash; 3 tuần. Do chất ức chế men glucuronyl transferase trong sữa mẹ. Trẻ bú tốt, không ứ mật. Xử trí: Tiếp tục bú mẹ. Nếu nặng: Chiếu đèn hoặc đổi sữa công thức tạm thời 24-48h (mẹ vắt sữa duy trì).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>1.3. Bảo Quản Sữa Mẹ &amp; Nuôi Bằng Sữa Công Thức</h3>
+        <ul style="line-height: 1.6; padding-left: 20px; font-size: 0.92rem;">
+          <li><strong>Bảo quản sữa mẹ:</strong> Trữ trong bình thủy tinh hoặc nhựa sạch (bPA-free). Ngăn mát tủ lạnh ($4^\circ C$): Dùng trong <strong>24 &ndash; 48 giờ</strong>. Tủ đông đá ($-18^\circ C$): Dùng trong <strong>6 tháng</strong>.</li>
+          <li><strong>Rã đông:</strong> Để dưới dòng nước ấm đang chảy. <strong>Không hâm bằng lò vi sóng</strong> (gây hủy hoại kháng thể và nguy cơ bỏng nhiệt). Sữa đã rã đông phải dùng trong vòng 24 giờ.</li>
+          <li><strong>Nuôi bằng sữa công thức:</strong> Trẻ bú bình (kể cả sữa mẹ vắt ra hay sữa công thức) có nguy cơ <strong>tăng cân quá mức</strong> cao hơn trẻ bú mẹ trực tiếp.</li>
+        </ul>
+      </section>
+
+      <!-- ===================== SECTION 2: TRẺ 1-6 TUỔI & ĐI HỌC ===================== -->
+      <section class="section-card" id="sec-tre-nho-va-lon">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-child"></i></div>
+          <div>
+            <h2>2. Nuôi Ăn Ở Trẻ 1 &ndash; 6 Tuổi &amp; Tuổi Đi Học</h2>
+            <span class="section-subtitle">Kỹ năng cho ăn, phòng tránh sặc nghẹn, mô hình MyPlate và ăn chay</span>
+          </div>
+        </div>
+
+        <h3>2.1. Thực Hành Cho Ăn Theo Lứa Tuổi</h3>
+        <ul style="line-height: 1.6; padding-left: 20px; font-size: 0.92rem;">
+          <li><strong>6 &ndash; 15 tháng:</strong> Rèn luyện kỹ năng tự ăn (cầm thức ăn bốc, dùng muỗng, uống cốc). Cho ăn chung cữ bữa ăn gia đình.</li>
+          <li><strong>12 &ndash; 15 tháng:</strong> Nên cai bú bình, không bú đêm để phòng ngừa sâu răng do sữa.</li>
+          <li><strong>2 tuổi:</strong> Ăn thức ăn mềm cắt nhỏ.</li>
+        </ul>
+
+        <div class="clinical-alert-box danger">
+          <div class="alert-icon"><i class="fa-solid fa-ban"></i></div>
+          <div class="alert-content">
+            <h4>Cảnh báo Thức Ăn Dễ Gây Sặc / Nghẹn Ở Trẻ &lt; 4 Tuổi:</h4>
+            <p>
+              Tuyệt đối tránh trước 4 tuổi: <strong>Kẹo cứng, các loại hạt (lạc, điều), cà rốt sống, xúc xích nguyên miếng, quả nho nguyên trái</strong> (nếu ăn phải cắt đôi/cắt bổ tư chiều dọc).
+            </p>
+          </div>
+        </div>
+
+        <p style="font-size: 0.92rem;">
+          &bull; <strong>Giới thiệu thức ăn mới:</strong> Cần kiên nhẫn giới thiệu lặp lại <strong>8 &ndash; 15 lần</strong> trước khi kết luận trẻ không thích món đó. Cho ăn rau củ vào đầu bữa khi trẻ đang đói.<br>
+          &bull; <strong>Khẩu phần ăn:</strong> Trái cây/rau/ngũ cốc &approx; kích thước nắm tay trẻ. Protein &approx; lòng bàn tay trẻ.<br>
+          &bull; <strong>Môi trường bữa ăn:</strong> Tắt tivi, điện thoại, máy tính bảng khi ăn. Giới hạn bữa ăn trong 20 &ndash; 30 phút.
+        </p>
+
+        <h3>2.2. Mô Hình Bữa Ăn Lành Mạnh (MyPlate - Bảng 22.1 / 5.1 YDS)</h3>
+        <p style="font-size: 0.9rem; color: var(--color-text-muted);">
+          Chia đĩa ăn thành 4 phần chính kết hợp sữa ít béo:
+        </p>
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>Nhóm Thực Phẩm</th>
+              <th>Khuyên Dùng Chuẩn EBM</th>
+              <th>Cần Hạn Chế</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Ngũ cốc</strong></td>
+              <td>Ưu tiên ngũ cốc nguyên cám chiếm <strong>&ge; 1/2</strong> tổng lượng ngũ cốc (gạo lứt, yến mạch, bánh mì đen).</td>
+              <td>Ngũ cốc tinh chế (bánh mì trắng, xôi, bánh ngọt).</td>
+            </tr>
+            <tr>
+              <td><strong>Trái cây</strong></td>
+              <td>Đa dạng trái cây tươi, đóng hộp không đường, trái cây khô (1/4 cốc khô = 1 cốc tươi).</td>
+              <td>Nước ép trái cây đóng chai thêm đường.</td>
+            </tr>
+            <tr>
+              <td><strong>Rau củ</strong></td>
+              <td>Đa dạng rau xanh đậm, rau đỏ cam, các loại đậu, củ có tinh bột.</td>
+              <td>Rau củ đóng hộp nhiều muối/gia vị.</td>
+            </tr>
+            <tr>
+              <td><strong>Sữa &amp; Sản phẩm sữa</strong></td>
+              <td>Sữa không béo hoặc ít béo 1% (sữa tươi, yogurt, phô mai, sữa đậu nành tăng cường Ca/Vit D).</td>
+              <td>Sữa nguyên kem ở trẻ &gt; 2 tuổi có nguy cơ thừa cân, sữa có đường.</td>
+            </tr>
+            <tr>
+              <td><strong>Chất béo &amp; Gia vị</strong></td>
+              <td>Dầu thực vật (olive, cải, hướng dương), quả bơ, hạt, hải sản giàu Omega-3.</td>
+              <td>Chất béo bão hòa (thịt đỏ, mỡ động vật), trans-fat, đường bổ sung và muối.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>2.3. Chế Độ Ăn Chay Ở Trẻ Em (Vegetarianism)</h3>
+        <div class="clinical-alert-box info">
+          <div class="alert-icon"><i class="fa-solid fa-seedling"></i></div>
+          <div class="alert-content">
+            <h4>Các Nguy Cơ Thiếu Hụt Vi Chất Cần Bổ Sung Khi Trẻ Ăn Chay:</h4>
+            <p>
+              &bull; <strong>Sắt &amp; Kẽm:</strong> Sinh khả dụng từ thực vật thấp và bị phytate/xơ giảm hấp thu &rarr; Cần bổ sung thực phẩm giàu Vitamin C để tăng hấp thu Sắt.<br>
+              &bull; <strong>Vitamin $B_{12}$:</strong> Bắt buộc bổ sung từ sữa, trứng hoặc viên uống bổ sung (thực vật không có $B_{12}$).<br>
+              &bull; <strong>Acid béo EPA/DHA:</strong> Bổ sung qua acid linoleic (óc chó, hạt lanh, dầu cải, sản phẩm đậu nành).<br>
+              &bull; <strong>Calci &amp; Vitamin D:</strong> Tăng cường từ rau xanh đậm, hạnh nhân, sữa đậu nành bổ sung.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== SECTION 3: THAM VẤN IMCI ===================== -->
+      <section class="section-card" id="sec-imci-counseling">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-list-check"></i></div>
+          <div>
+            <h2>3. Tham Vấn Cho Bà Mẹ Về Vấn Đề Nuôi DƯỠNG (Theo IMCI)</h2>
+            <span class="section-subtitle">Các vấn đề chưa hợp lý thường gặp trên lâm sàng và lời khuyên chuẩn Bảng 22.2 / 5.2 YDS</span>
+          </div>
+        </div>
+
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th style="width: 30%;">Vấn Đề Chưa Hợp Lý</th>
+              <th style="width: 70%;">Lời Khuyên &amp; Hướng Xử Trí Chuẩn IMCI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Khó khăn khi cho bú mẹ</strong></td>
+              <td>Đánh giá trực tiếp một bữa bú: Kiểm tra tư thế bế và kỹ thuật ngậm bắt vú của trẻ (cằm chạm vú, miệng mở rộng, môi dưới hướng ra ngoài, quầng vú phía trên thấy nhiều hơn phía dưới). Hướng dẫn mẹ chỉnh lại tư thế.</td>
+            </tr>
+            <tr>
+              <td><strong>2. Trẻ &lt; 6 tháng uống sữa khác / ăn dầm</strong></td>
+              <td>
+                &bull; Xây dựng niềm tin cho mẹ rằng mẹ ĐỦ SỮA cho con.<br>
+                &bull; Giải thích sữa mẹ đã đầy đủ nước &amp; chất dinh dưỡng, không cần uống thêm nước lọc hay nước trái cây.<br>
+                &bull; Hướng dẫn bú nhiều và lâu hơn, giảm dần rồi ngưng hẳn thức ăn/sữa khác.<br>
+                &bull; Nếu bắt buộc dùng sữa công thức: Pha đúng tỉ lệ hướng dẫn, hợp vệ sinh, chỉ dùng trong vòng 1 giờ sau khi pha.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>3. Mẹ sợ sữa không đủ / không tốt</strong></td>
+              <td>Giải thích chất lượng sữa của các bà mẹ đều tốt như nhau. Mẹ cần ăn uống đủ chất, ngủ nghỉ hợp lý, giữ tinh thần thoải mái và cho bú thường xuyên hơn để kích thích phản xạ tiết sữa.</td>
+            </tr>
+            <tr>
+              <td><strong>4. Bú bình</strong></td>
+              <td>Hướng dẫn mẹ nguy cơ nhiễm trùng tiêu chảy và biến dạng cung hàm do bú bình. Hướng dẫn thay bình bằng chén (cốc) và cách cho trẻ ăn/uống bằng chén sạch.</td>
+            </tr>
+            <tr>
+              <td><strong>5. Mẹ đi làm xa</strong></td>
+              <td>Tìm giải pháp đưa trẻ đến nơi làm việc cùng mẹ hoặc mang sữa về. Hướng dẫn kỹ thuật vắt sữa bằng tay/máy và cách bảo quản sữa vắt an toàn.</td>
+            </tr>
+            <tr>
+              <td><strong>6. Kiêng cữ quá mức / Không thêm dầu mỡ</strong></td>
+              <td>
+                &bull; Trẻ 4 &ndash; 12 tháng: Thức ăn phải được băm/nghiền nhỏ phù hợp.<br>
+                &bull; <strong>Bắt buộc thêm 1 &ndash; 2 muỗng dầu/mỡ</strong> vào bát bột/cháo (dầu mỡ giúp hòa tan vitamin A,D,E,K và cung cấp năng lượng, <em>không gây tiêu chảy</em>).<br>
+                &bull; Trẻ chưa mọc răng vẫn tập ăn thức ăn mềm bằng nướu.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>7. Trẻ biếng ăn khi bị bệnh</strong></td>
+              <td>Cho bú mẹ thường xuyên hơn và lâu hơn. Cho ăn thức ăn mềm, đa dạng, chia thành nhiều bữa nhỏ trong ngày. Làm sạch thông thoáng mũi trước khi ăn nếu trẻ bị nghẹt mũi. Khen ngợi và kiên nhẫn khi trẻ ăn. Trẻ sẽ ăn ngon trở lại khi bệnh thuyên giảm.</td>
+            </tr>
+            <tr>
+              <td><strong>8. Thiếu tích cực cho ăn / Không đủ số lần</strong></td>
+              <td>Hướng dẫn người nuôi ăn ngồi cùng giúp đỡ, khuyến khích trẻ; múc phần ăn riêng ra bát/đĩa riêng để kiểm soát lượng ăn. Dặn dò số lượng và số lần ăn chính xác theo tháng tuổi.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ===================== SECTION 4: TIẾP CẬN KHÓ NUÔI ĂN ===================== -->
+      <section class="section-card" id="sec-kho-nuoi-an">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-route"></i></div>
+          <div>
+            <h2>4. Tiếp Cận Trẻ Khó Nuôi Ăn (Feeding Difficulties)</h2>
+            <span class="section-subtitle">Dấu hiệu cảnh báo thực thể - hành vi, Thuật toán Lưu đồ 22.1 / 5.1 và 9 Nguyên tắc nuôi ăn chuẩn</span>
+          </div>
+        </div>
+
+        <h3>4.1. Khái Niệm &amp; Dấu Hiệu Cảnh Báo (Red Flags)</h3>
+        <p style="font-size: 0.92rem;">
+          <strong>Khó nuôi ăn:</strong> Bao gồm tất cả các trở ngại liên quan giữa người nuôi ăn và trẻ trong quá trình cho ăn (gặp ở cả trẻ suy dinh dưỡng lẫn thừa cân/béo phì).
+        </p>
+
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th style="width: 33%;">Cờ Đỏ Thực Thể (Organic Red Flags)</th>
+              <th style="width: 33%;">Cờ Đỏ Hành Vi (Behavioral Red Flags)</th>
+              <th style="width: 34%;">Dấu Chậm Vận Động Miệng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                &bull; Khó nuốt, nấc hít sặc.<br>
+                &bull; Đau khi ăn, nôn ói nhiều.<br>
+                &bull; Tiêu chảy mạn tính, sụt cân.<br>
+                &bull; Chậm phát triển nhân trắc.<br>
+                &bull; Bệnh tim/phổi mạn tính.
+              </td>
+              <td>
+                &bull; Cố định loại thức ăn khắt khe.<br>
+                &bull; Cho ăn độc hại (ngược đãi).<br>
+                &bull; Ngưng hoàn toàn việc nuôi ăn.<br>
+                &bull; Nhợn ói ngay khi thấy thức ăn.
+              </td>
+              <td>
+                &bull; Chảy nước dãi quá mức.<br>
+                &bull; Tăng hoặc giảm trương lực cơ.<br>
+                &bull; Trớ / nghẹn liên tục khi ăn.<br>
+                &bull; Thất bại khi chuyển sang ăn đặc.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>4.2. Phân Loại Trẻ Khó Ăn Theo Lưu Đồ 22.1 / 5.1 YDS</h3>
+        <p style="font-size: 0.9rem; color: var(--color-text-muted);">
+          Dựa vào Bệnh sử, Nhân trắc và Khám lâm sàng để phân loại nhóm hành vi của trẻ và kiểu nuôi ăn của cha mẹ:
+        </p>
+
+        <div class="custom-table">
+          <table style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Nhóm Hành Vi Ở Trẻ</th>
+                <th>Phân Loại Chi Tiết &amp; Đặc Điểm Lâm Sàng</th>
+                <th>Hướng Xử Trí Khuyên Cáo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan="4"><strong>1. ÂN ÍT</strong></td>
+                <td><strong>Nhận thức sai:</strong> Trẻ tăng trưởng bình thường nhưng cha mẹ lo lắng.</td>
+                <td>Trấn an, hướng dẫn nhu cầu năng lượng chuẩn theo tuổi.</td>
+              </tr>
+              <tr>
+                <td><strong>Trẻ năng động:</strong> Thích chơi/nói hơn ăn, mải khám phá xung quanh.</td>
+                <td>Khen ngợi khi ăn tốt, phớt lờ hành vi xấu, bổ sung thực phẩm giàu năng lượng.</td>
+              </tr>
+              <tr>
+                <td><strong>Trẻ thờ ơ:</strong> Không thích ăn, ít giao tiếp, thường kèm trầm cảm/SDD.</td>
+                <td>Cung cấp dinh dưỡng đầy đủ, hỗ trợ tương tác tích cực từ người cho ăn có kinh nghiệm.</td>
+              </tr>
+              <tr>
+                <td><strong>Bệnh thực thể:</strong> Viêm thực quản, GERD, tim mạch, hô hấp, thần kinh.</td>
+                <td>Điều trị triệt để bệnh lý nguyên nhân, hỗ trợ nuôi sonde/tĩnh mạch nếu cần.</td>
+              </tr>
+              <tr>
+                <td rowspan="4"><strong>2. KÉN ĂN</strong></td>
+                <td><strong>Nhận thức sai:</strong> Đạt đỉnh lúc 18 &ndash; 24 tháng (tính độc lập của trẻ).</td>
+                <td>Giới thiệu thức ăn mới lặp lại 8 &ndash; 15 lần.</td>
+              </tr>
+              <tr>
+                <td><strong>Kén ăn nhẹ:</strong> Giới hạn một số món nhưng vẫn tăng trưởng bình thường.</td>
+                <td>Tránh gây xung đột bữa ăn, không ép ăn.</td>
+              </tr>
+              <tr>
+                <td><strong>Kén ăn nhiều:</strong> Giới hạn thức ăn &lt; 10 &ndash; 15 loại (90% trẻ tự kỷ gặp phải).</td>
+                <td>Liệu pháp hành vi (kỹ thuật <em>fading</em> và <em>shaping</em>).</td>
+              </tr>
+              <tr>
+                <td><strong>Bệnh thực thể:</strong> Rối loạn cảm giác (kén đồ đặc) hoặc rối loạn vận động miệng.</td>
+                <td>Tập luyện vận động miệng, gây đói nhẹ trước bữa, điều chỉnh cảm giác.</td>
+              </tr>
+              <tr>
+                <td rowspan="4"><strong>3. SỢ ĂN</strong></td>
+                <td><strong>Nhận thức sai:</strong> Nhầm lẫn tiếng khóc quấy khác là đói.</td>
+                <td>Giải thích và trấn an cha mẹ.</td>
+              </tr>
+              <tr>
+                <td><strong>Sợ ăn ở nhũ nhi:</strong> Từ chối ăn khi tỉnh nhưng bú bình thường khi buồn ngủ.</td>
+                <td>Tìm nguyên nhân gây đau khi nuốt, cho ăn khi buồn ngủ hoặc đổi sang cốc.</td>
+              </tr>
+              <tr>
+                <td><strong>Sợ ăn ở trẻ lớn:</strong> Sợ bị nghẹn, nôn ói hoặc hậu quả ép ăn thô bạo.</td>
+                <td>Trấn an, dùng phần thưởng hành vi, thuốc chống lo âu nếu severe.</td>
+              </tr>
+              <tr>
+                <td><strong>Bệnh thực thể:</strong> Đau do viêm dạ dày thực quản, ám ảnh nuôi sonde.</td>
+                <td>Điều trị tổn thương niêm mạc, gây đói, khử nhạy vận động miệng.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>4.3. 4 Kiểu Nuôi Ăn Của Cha Mẹ (Parental Feeding Styles)</h3>
+        <div class="behavior-grid">
+          <div class="behavior-card responsive">
+            <h4><i class="fa-solid fa-circle-check" style="color: #10b981;"></i> 1. Đáp Ứng (Responsive)</h4>
+            <p><strong>Kiểu lý tưởng:</strong> Phân chia trách nhiệm chuẩn (Cha mẹ quyết định <em>ăn ở đâu, khi nào, món gì</em>; Trẻ quyết định <em>ăn bao nhiêu</em>). Nhận biết chính xác tín hiệu đói/no của trẻ.</p>
+          </div>
+
+          <div class="behavior-card controlling">
+            <h4><i class="fa-solid fa-circle-xmark" style="color: #ef4444;"></i> 2. Kiểm Soát (Controlling)</h4>
+            <p><strong>Phổ biến nhất (&approx; 50%):</strong> Cha mẹ dùng hình phạt, ép ăn hoặc dùng phần thưởng thức ăn, phớt lờ tín hiệu của trẻ &rarr; Phản tác dụng, gây nguy cơ SDD hoặc béo phì.</p>
+          </div>
+
+          <div class="behavior-card indulgent">
+            <h4><i class="fa-solid fa-triangle-exclamation" style="color: #f59e0b;"></i> 3. Nuông Chiều (Indulgent)</h4>
+            <p>Cho ăn bất kỳ lúc nào và bất kỳ món gì trẻ đòi hỏi &rarr; Trẻ dễ tiêu thụ thực phẩm giàu năng lượng/chất béo gây béo phì và thiếu hụt vi chất.</p>
+          </div>
+
+          <div class="behavior-card neglectful">
+            <h4><i class="fa-solid fa-ban" style="color: #6b7280;"></i> 4. Thờ Ơ / Bỏ Bể (Neglectful)</h4>
+            <p>Phớt lờ hoàn toàn tín hiệu đói và nhu cầu dinh dưỡng của trẻ. Thường gặp ở người nuôi ăn bị trầm cảm, chậm phát triển hoặc rối loạn tâm thần.</p>
+          </div>
+        </div>
+
+        <h3>4.4. 9 Nguyên Tắc Nuôi Ăn Chuẩn (Bảng 22.3 / 5.3 YDS)</h3>
+        <ol style="line-height: 1.65; padding-left: 20px; font-size: 0.92rem;">
+          <li>Tránh các yếu tố gây xao lãng bữa ăn (tivi, điện thoại, máy tính bảng).</li>
+          <li>Giữ thái độ trung tính, thoải mái khi cho ăn (không khen quá lời, không quát mắng).</li>
+          <li>Khuyến khích sự thèm ăn bằng cách gây đói nhẹ giữa các bữa.</li>
+          <li>Giới hạn thời gian mỗi bữa ăn trong vòng <strong>20 &ndash; 30 phút</strong>.</li>
+          <li>Sắp xếp lịch ăn cố định 4 &ndash; 6 bữa (bữa chính + bữa phụ)/ngày.</li>
+          <li>Thức ăn phải phù hợp với giai đoạn phát triển và tuổi của trẻ.</li>
+          <li>Kiên nhẫn giới thiệu thức ăn mới lặp lại <strong>8 &ndash; 15 lần</strong>.</li>
+          <li>Khuyến khích trẻ tự cầm nắm/dùng dụng cụ ăn độc lập.</li>
+          <li>Chấp nhận sự bừa bộn khi ăn phù hợp với lứa tuổi của trẻ.</li>
+        </ol>
+      </section>
+
+      <!-- ===================== SECTION 5: CDSS KHÓ NUÔI ĂN ===================== -->
+      <section class="section-card" id="sec-cdss-feeding-engine">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-microchip"></i></div>
+          <div>
+            <h2>5. CDSS Tương Tác: Bộ Phân Loại Khó Nuôi Ăn &amp; Kiểu Cha Mẹ</h2>
+            <span class="section-subtitle">Chẩn đoán phân loại tức thì và đưa ra khuyến cáo hành vi cá thể hóa dựa trên YDS CDSS Engine</span>
+          </div>
+        </div>
+
+        <div class="sim-container">
+          <div class="sim-header">
+            <i class="fa-solid fa-sliders" style="color: var(--nutri-primary-dark); font-size: 1.2rem;"></i>
+            <h3>Nhập Thông Tin Bệnh Sử &amp; Hành Vi Bữa Ăn</h3>
+          </div>
+
+          <div class="sim-grid">
+            <div class="sim-field">
+              <label for="cdss-age">Lứa tuổi của trẻ:</label>
+              <select id="cdss-age" class="sim-select" onchange="runFeedingEngine()">
+                <option value="infant">&lt; 12 tháng (Nhũ nhi)</option>
+                <option value="toddler" selected>12 &ndash; 36 tháng (Trẻ chập chững)</option>
+                <option value="preschool">3 &ndash; 6 tuổi (Mẫu giáo)</option>
+                <option value="school">&gt; 6 tuổi (Đi học)</option>
+              </select>
+            </div>
+
+            <div class="sim-field">
+              <label for="cdss-behavior">Biểu hiện ăn của trẻ:</label>
+              <select id="cdss-behavior" class="sim-select" onchange="runFeedingEngine()">
+                <option value="little_norm">Ăn ít nhưng tăng trưởng bình thường (Lo lắng thái quá)</option>
+                <option value="little_active">Ăn ít, mải chơi, năng động khám phá</option>
+                <option value="picky_light">Chỉ ăn một số món quen thuộc, từ chối món mới</option>
+                <option value="picky_severe">Kén ăn cực đoan (&lt; 10 món, nhạy cảm mùi/cấu trúc)</option>
+                <option value="fear_infant">Từ chối bú khi tỉnh, bú bình thường khi buồn ngủ</option>
+                <option value="fear_older">Khóc thét, sợ nghẹn, nôn ói khi thấy bát ăn</option>
+                <option value="organic_flag">Đau khi nuốt, nôn nhiều, sụt cân, chậm lớn (Cờ đỏ thực thể)</option>
+              </select>
+            </div>
+
+            <div class="sim-field">
+              <label for="cdss-parent">Kiểu cho ăn của cha mẹ:</label>
+              <select id="cdss-parent" class="sim-select" onchange="runFeedingEngine()">
+                <option value="responsive">Đáp ứng (Tôn trọng tín hiệu no/đó, phân chia trách nhiệm)</option>
+                <option value="controlling" selected>Kiểm soát (Ép ăn, đe dọa, thưởng đồ chơi/bánh)</option>
+                <option value="indulgent">Nuông chiều (Nấu món riêng theo ý trẻ, ăn tự do)</option>
+                <option value="neglectful">Thờ ơ (Bỏ mặc, không quan tâm bữa ăn)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- RESULT BOX -->
+          <div class="sim-result-box" id="feeding-result">
+            <div class="sim-result-header">Kết Quả Phân Loại &amp; Phác Đồ Xử Trí</div>
+            <div class="sim-result-title" id="res-diag-title" style="color: var(--nutri-primary-dark);">
+              Đang tính toán...
+            </div>
+            <div class="sim-result-desc" id="res-diag-desc">
+              Vui lòng chọn thông số trên thanh công cụ để xem khuyến cáo.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== SECTION 6: RỐI LOẠN ĂN & ARFID ===================== -->
+      <section class="section-card" id="sec-roi-loan-an">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-brain"></i></div>
+          <div>
+            <h2>6. Rối Loạn Nuôi Ăn (ARFID) &amp; Rối Loạn Ăn Ở Trẻ Lớn</h2>
+            <span class="section-subtitle">Chẩn đoán DSM-5, Chán ăn tâm thần (Anorexia), Cuồng ăn tâm thần (Bulimia) &amp; Dấu hiệu thực thể</span>
+          </div>
+        </div>
+
+        <h3>6.1. Rối Loạn Thu Nhận Thức Ăn Hạn Chế / Né Tránh (ARFID - DSM-5)</h3>
+        <p style="font-size: 0.92rem;">
+          Là rối loạn nuôi ăn (do không thích ăn, do cảm giác về đặc tính thức ăn, hoặc do sợ phản ứng bất lợi) gây thiếu hụt năng lượng/dinh dưỡng kéo dài dẫn đến <strong>&ge; 1 tiêu chuẩn</strong>:
+        </p>
+        <ul style="line-height: 1.6; padding-left: 20px; font-size: 0.9rem;">
+          <li>Sụt cân đáng kể (hoặc không tăng cân/tăng trưởng chậm lại theo biểu đồ).</li>
+          <li>Thiếu hụt dinh dưỡng lâm sàng đáng kể.</li>
+          <li>Lệ thuộc vào nuôi ăn bổ sung (sonde dạ dày hoặc dinh dưỡng tĩnh mạch).</li>
+          <li>Cản trở rõ rệt chức năng tâm lý xã hội.<br>
+            <em>(Lưu ý: Không do thiếu thức ăn, không do văn hóa, không lo âu về cân nặng/ngoại hình).</em>
+          </li>
+        </ul>
+
+        <div class="custom-table" style="margin-top: 12px;">
+          <table style="width: 100%;">
+            <thead>
+              <tr>
+                <th style="width: 35%;">Hội Chứng Liên Quan</th>
+                <th style="width: 65%;">Đặc Điểm Tiêu Chuẩn DSM-5</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Hội chứng PICA</strong></td>
+                <td>Ăn liên tục các chất không phải thức ăn (đất, phấn, tóc, giấy...) kéo dài <strong>&ge; 1 tháng</strong> ở trẻ <strong>&gt; 2 tuổi</strong>. Thường liên quan đến thiếu Sắt / Kẽm hoặc tự kỷ.</td>
+              </tr>
+              <tr>
+                <td><strong>Hội chứng Nhai Lại (Rumination)</strong></td>
+                <td>Trào ngược thức ăn đã nuốt lên miệng để nhai lại rồi nuốt hoặc nhổ ra, kéo dài <strong>&ge; 1 tháng</strong>.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>6.2. Rối Loạn Ăn Ở Trẻ Lớn / Thanh Thiếu Niên</h3>
+        <div class="custom-table">
+          <table style="width: 100%;">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Bệnh Lý</th>
+                <th style="width: 40%;">Đặc Điểm &amp; Phân Nhóm</th>
+                <th style="width: 35%;">Dấu Hiệu Lâm Sàng Thường Gặp</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Chán ăn tâm thần<br>(Anorexia Nervosa)</strong></td>
+                <td>
+                  Nhận thức sai lệch về ngoại hình, sợ béo phì cực độ.<br>
+                  &bull; <em>Nhóm hạn chế:</em> Tiết chế ăn nghiêm ngặt + tập thể dục quá sức.<br>
+                  &bull; <em>Nhóm ăn nhiều - tẩy rửa:</em> Ăn nhiều đợt rồi tự móc nôn, dùng thuốc nhuận trường.
+                </td>
+                <td>
+                  Gầy sút nặng, teo cơ, da khô, rụng tóc.<br>
+                  <strong>Dấu Russell</strong> (chai đốt ngón tay do móc nôn).<br>
+                  Sưng tuyến mang tai, nhịp chậm, tím đầu chi (Raynaud), mất kinh mạn tính.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Cuồng ăn tâm thần<br>(Bulimia Nervosa)</strong></td>
+                <td>
+                  Đợt ăn vô độ lặp lại (ăn lượng lớn trong thời gian ngắn, mất kiểm soát) + hành vi bù trừ (móc nôn, thuốc giảm cân, nhịn ăn).<br>
+                  Tần suất: <strong>&ge; 1 lần/tuần trong 3 tháng</strong>.
+                </td>
+                <td>
+                  Cân nặng thường bình thường hoặc hơi thừa cân.<br>
+                  <strong>Mòn men răng mặt lưỡi</strong> do acid dạ dày.<br>
+                  Hạ Kali máu, kiềm chuyển hóa do nôn kéo dài.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>6.3. Bảng Câu Hỏi Gợi Ý Khai Thác Rối Loạn Ăn (Bảng 22.6 / 5.4 YDS)</h3>
+        <ul style="line-height: 1.6; padding-left: 20px; font-size: 0.9rem;">
+          <li>Cân nặng cao nhất / thấp nhất là bao nhiêu? Chiều cao lúc đó? Khi nào?</li>
+          <li>Cân nặng mong muốn của em là bao nhiêu? Dành bao nhiêu thời gian mỗi ngày để suy nghĩ về cân nặng?</li>
+          <li>Có sử dụng các hành vi bù trừ không (tự móc nôn, dùng thuốc giảm cân, thuốc nhuận trường, lợi tiểu)?</li>
+          <li>Khẩu phần ăn ngày hôm trước như thế nào? Có loại thức ăn nào em tuyệt đối không chạm vào hoặc sợ ăn không?</li>
+          <li>Kinh nguyệt cuối khi nào? Có bị bạn bè chọc ghẹo về ngoại hình không?</li>
+        </ul>
+      </section>
+
+      <!-- ===================== SECTION 7: CDSS REFEEDING & HOSPITALIZATION ===================== -->
+      <section class="section-card" id="sec-cdss-refeeding">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div>
+            <h2>7. CDSS Tương Tác: Tầm Soát Nhập Viện &amp; Nguy Cơ Hội Chứng Nuôi Ăn Lại</h2>
+            <span class="section-subtitle">Đánh giá tiêu chuẩn nhập viện cấp cứu và phòng ngừa tử vong do Refeeding Syndrome</span>
+          </div>
+        </div>
+
+        <div class="sim-container" style="background: rgba(239, 68, 68, 0.04); border-color: rgba(239, 68, 68, 0.2);">
+          <div class="sim-header">
+            <i class="fa-solid fa-heart-pulse" style="color: #ef4444; font-size: 1.2rem;"></i>
+            <h3 style="color: #b91c1c;">Đánh Giá Sinh Hiệu &amp; Chỉ Số Sinh Hóa Bệnh Nhân</h3>
+          </div>
+
+          <div class="sim-grid">
+            <div class="sim-field">
+              <label for="ref-hr">Mạch (nhịp/phút):</label>
+              <input type="number" id="ref-hr" class="sim-input" value="65" placeholder="Ví dụ: 48" oninput="runRefeedingEngine()">
+            </div>
+
+            <div class="sim-field">
+              <label for="ref-sbp">Huyết áp tâm thu (mmHg):</label>
+              <input type="number" id="ref-sbp" class="sim-input" value="100" placeholder="Ví dụ: 85" oninput="runRefeedingEngine()">
+            </div>
+
+            <div class="sim-field">
+              <label for="ref-temp">Thân nhiệt ($^\circ C$):</label>
+              <input type="number" step="0.1" id="ref-temp" class="sim-input" value="36.8" placeholder="Ví dụ: 35.8" oninput="runRefeedingEngine()">
+            </div>
+
+            <div class="sim-field">
+              <label for="ref-ibw">% Cân nặng so với cân nặng lý tưởng (% IBW):</label>
+              <input type="number" id="ref-ibw" class="sim-input" value="88" placeholder="Ví dụ: 75" oninput="runRefeedingEngine()">
+            </div>
+
+            <div class="sim-field">
+              <label for="ref-k">Kali máu (mmol/L):</label>
+              <input type="number" step="0.1" id="ref-k" class="sim-input" value="4.0" placeholder="Ví dụ: 2.9" oninput="runRefeedingEngine()">
+            </div>
+
+            <div class="sim-field">
+              <label for="ref-phos">Phosphate máu (mmol/L):</label>
+              <input type="number" step="0.1" id="ref-phos" class="sim-input" value="1.1" placeholder="Ví dụ: 0.6" oninput="runRefeedingEngine()">
+            </div>
+          </div>
+
+          <!-- RESULT BOX -->
+          <div class="sim-result-box" id="refeeding-result">
+            <div class="sim-result-header">Kết Quả Phân Tầng Phác Đồ &amp; Chỉ Định Nhập Viện</div>
+            <div class="sim-result-title" id="ref-res-title" style="color: #10b981;">
+              Chưa phát hiện tiêu chuẩn nhập viện cấp cứu
+            </div>
+            <div class="sim-result-desc" id="ref-res-desc">
+              Bệnh nhân có thể tiếp tục theo dõi và điều trị ngoại trú tâm lý - dinh dưỡng.
+            </div>
+          </div>
+        </div>
+
+        <div class="clinical-alert-box danger">
+          <div class="alert-icon"><i class="fa-solid fa-skull-crossbones"></i></div>
+          <div class="alert-content">
+            <h4>Cảnh Báo Tử Vong: HỘI CHỨNG NUÔI ĂN LẠI (REFEEDING SYNDROME)</h4>
+            <p>
+              Xảy ra khi bắt đầu cho trẻ suy dinh dưỡng nặng / nhịn ăn kéo dài ăn trở lại quá nhanh. Insulin tăng đột ngột thúc đẩy glucose, Phosphate, Kali và Magie vào trong tế bào &rarr; <strong>Hạ Phosphate máu cấp, Hạ Kali máu, Hạ Magie máu severe</strong> &rarr; Dẫn đến suy tim cấp, loạn nhịp thất, suy hô hấp và tử vong.<br>
+              <strong>Cần làm:</strong> Xét nghiệm điện giải (P, K, Mg) trước khi cho ăn, bắt đầu năng lượng thấp (10&ndash;20 kcal/kg/ngày) và bổ sung Phosphate/Thiamine chủ động.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== SECTION 8: TÀI LIỆU THAM KHẢO ===================== -->
+      <section class="section-card" id="sec-tai-lieu-tham-khao">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-book"></i></div>
+          <div>
+            <h2>8. Tài Liệu Tham Khảo Chuẩn AMA</h2>
+            <span class="section-subtitle">Trích dẫn tài liệu giảng dạy chính thức từ Bộ môn Nhi - ĐHYD TP.HCM</span>
+          </div>
+        </div>
+
+        <ol style="line-height: 1.7; padding-left: 20px; font-size: 0.9rem; color: var(--color-text-muted);">
+          <li>Huỳnh Ngọc Thanh, Bùi Quang Vinh. Bài 22: Các vấn đề về nuôi dưỡng ở trẻ em. Trong: <em>Nhi khoa YDS - Tập 1</em>. Bộ môn Nhi - Đại học Y Dược Thành phố Hồ Chí Minh; 2020:274-291.</li>
+          <li>Huỳnh Ngọc Thanh, Bùi Quang Vinh. Bài 5: Các vấn đề về nuôi dưỡng ở trẻ em. Trong: <em>Nhi khoa YDS - Tập 2 (2025) - P1a</em>. Bộ môn Nhi - Đại học Y Dược Thành phố Hồ Chí Minh; 2025:44-62.</li>
+        </ol>
+      </section>
+
+    </div>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+  <!-- ===================== INTERACTIVE JS LOGIC ===================== -->
+  <script>
+    // CDSS ENGINE 1: FEEDING DIFFICULTY CLASSIFIER
+    function runFeedingEngine() {
+      const age = document.getElementById('cdss-age').value;
+      const behavior = document.getElementById('cdss-behavior').value;
+      const parent = document.getElementById('cdss-parent').value;
+
+      const titleEl = document.getElementById('res-diag-title');
+      const descEl = document.getElementById('res-diag-desc');
+
+      let diagTitle = "";
+      let diagDesc = "";
+      let colorClass = "var(--nutri-primary-dark)";
+
+      // Logic classification
+      if (behavior === 'organic_flag') {
+        diagTitle = "🚨 CHẨN ĐOÁN: KHÓ NUÔI ĂN DO BỆNH LÝ THỰC THỂ (ORGANIC CAUSE)";
+        diagDesc = "<strong>Khuyến cáo:</strong> Cần thăm khám chuyên khoa khẩn cấp tầm soát bất thường giải phẫu (dính thắng lưỡi nặng, hẹp thực quản), bệnh lý tiêu hóa (GERD, viêm thực quản), tim mạch hoặc thần kinh. Điều trị bệnh gốc trước khi can thiệp hành vi.";
+        colorClass = "#ef4444";
+      } else if (behavior === 'little_norm') {
+        diagTitle = "✅ CHẨN ĐOÁN: ĂN ÍT DO NHẬN THỨC SAI CỦA CHA MẸ (MISPERCEIVED)";
+        diagDesc = "<strong>Khuyến cáo:</strong> Trẻ tăng trưởng hoàn toàn bình thường. Cần giải thích, trấn an cha mẹ về nhu cầu năng lượng sinh lý; tránh ép ăn gây căng thẳng bữa ăn.";
+        colorClass = "#10b981";
+      } else if (behavior === 'little_active') {
+        diagTitle = "🧒 CHẨN ĐOÁN: ĂN ÍT Ở TRẺ NĂNG ĐỘNG (VIGOROUS & ACTIVE)";
+        diagDesc = "<strong>Khuyến cáo:</strong> Trẻ thích khám phá xung quanh hơn ăn. Áp dụng 9 nguyên tắc nuôi ăn: Tắt tivi/điện thoại, khen ngợi khi trẻ ăn tốt, phớt lờ khi quấy khóc, giới hạn bữa ăn 20-30 phút và bổ sung thực phẩm giàu năng lượng.";
+        colorClass = "#06b6d4";
+      } else if (behavior === 'picky_light' || behavior === 'picky_severe') {
+        if (behavior === 'picky_severe') {
+          diagTitle = "⚠️ CHẨN ĐOÁN: KÉN ĂN NẶNG / NGHĨ TỚI RỐI LOẠN PHÁT TRIỂN (AUTISM / SENSORY)";
+          diagDesc = "<strong>Khuyến cáo:</strong> Trẻ giới hạn &lt; 10 món. Cần phối hợp chuyên gia tâm lý / vận động trị liệu. Áp dụng kỹ thuật hành vi (fading & shaping), giới thiệu món mới kiên nhẫn 8-15 lần.";
+          colorClass = "#f59e0b";
+        } else {
+          diagTitle = "🥗 CHẨN ĐOÁN: KÉN ĂN NHẸ SINH LÝ (PICKY EATER)";
+          diagDesc = "<strong>Khuyến cáo:</strong> Thường gặp ở độ tuổi 18-24 tháng. Tôn trọng sở thích trẻ, không ép ăn. Giới thiệu món mới lặp lại 8-15 lần khi trẻ đang đói vào đầu bữa.";
+          colorClass = "#8b5cf6";
+        }
+      } else if (behavior === 'fear_infant' || behavior === 'fear_older') {
+        diagTitle = "😨 CHẨN ĐOÁN: SỢ ĂN (FEAR OF FEEDING)";
+        diagDesc = "<strong>Khuyến cáo:</strong> Tìm tổn thương gây đau khi nuốt. Nếu sợ ăn sau ép ăn thô bạo/sặc: Dùng liệu pháp giải mẫn cảm, tạo không khí thoải mái, không đe dọa.";
+        colorClass = "#ef4444";
+      }
+
+      // Parental Style modifier
+      if (parent === 'controlling') {
+        diagDesc += "<br><br><span style='color: #ef4444;'><strong>Cảnh báo Kiểu Cha Mẹ:</strong> Kiểu 'Kiểm soát' ép ăn làm trầm trọng thêm tình trạng gồng chống của trẻ. Cần chuyển sang mô hình 'Đáp ứng' (Phân chia trách nhiệm).</span>";
+      } else if (parent === 'indulgent') {
+        diagDesc += "<br><br><span style='color: #f59e0b;'><strong>Gợi ý Kiểu Cha Mẹ:</strong> Kiểu 'Nuông chiều' dễ dẫn tới béo phì và thiếu hụt vi chất. Cần lập lịch bữa ăn cố định.</span>";
+      }
+
+      titleEl.innerText = diagTitle;
+      titleEl.style.color = colorClass;
+      descEl.innerHTML = diagDesc;
+    }
+
+    // CDSS ENGINE 2: REFEEDING & HOSPITALIZATION SCREENER
+    function runRefeedingEngine() {
+      const hr = parseFloat(document.getElementById('ref-hr').value) || 0;
+      const sbp = parseFloat(document.getElementById('ref-sbp').value) || 0;
+      const temp = parseFloat(document.getElementById('ref-temp').value) || 0;
+      const ibw = parseFloat(document.getElementById('ref-ibw').value) || 0;
+      const k = parseFloat(document.getElementById('ref-k').value) || 0;
+      const phos = parseFloat(document.getElementById('ref-phos').value) || 0;
+
+      const titleEl = document.getElementById('ref-res-title');
+      const descEl = document.getElementById('ref-res-desc');
+
+      let reasons = [];
+
+      if (hr > 0 && hr < 50) reasons.push("Mạch chậm severe (&lt; 50 nhịp/phút)");
+      if (sbp > 0 && sbp < 90) reasons.push("Hạ huyết áp (&lt; 90 mmHg)");
+      if (temp > 0 && temp < 36.1) reasons.push("Hạ thân nhiệt (&lt; 36.1°C)");
+      if (ibw > 0 && ibw < 80) reasons.push("Sụt cân nặng (&lt; 80% cân nặng lý tưởng)");
+      if (k > 0 && k < 3.0) reasons.push("Hạ Kali máu nặng (&lt; 3.0 mmol/L)");
+      if (phos > 0 && phos < 0.8) reasons.push("Hạ Phosphate máu nặng (&lt; 0.8 mmol/L) - Cảnh báo Refeeding!");
+
+      if (reasons.length > 0) {
+        titleEl.innerText = "🚨 BẮT BUỘC NHẬP VIỆN CẤP CỨU (" + reasons.length + " TIÊU CHUẨN NGUY CƠ)";
+        titleEl.style.color = "#ef4444";
+        
+        let html = "<ul style='margin: 4px 0; padding-left: 18px; color: #b91c1c;'>";
+        reasons.forEach(r => { html += "<li><strong>" + r + "</strong></li>"; });
+        html += "</ul>";
+        html += "<strong>HƯỚNG XỬ TRÍ CẤP CỨU:</strong><br>";
+        html += "&bull; Nhập viện theo dõi điện tim liên tục.<br>";
+        html += "&bull; Bắt đầu nuôi ăn lại từ từ (10-20 kcal/kg/ngày), không tăng calo quá nhanh.<br>";
+        html += "&bull; Bổ sung Thiamine và bù Phosphate/Kali đường tĩnh mạch/uống trước khi tăng calo.";
+        
+        descEl.innerHTML = html;
+      } else {
+        titleEl.innerText = "✅ CHƯA THẤY TIÊU CHUẨN NHẬP VIỆN CẤP CỨU";
+        titleEl.style.color = "#10b981";
+        descEl.innerHTML = "Bệnh nhân đủ điều kiện theo dõi và can thiệp ngoại trú dinh dưỡng &amp; tâm lý. Tiếp tục tái khám định kỳ theo dõi biểu đồ tăng trưởng.";
+      }
+    }
+
+    // Initialize engines on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      runFeedingEngine();
+      runRefeedingEngine();
+    });
+  </script>
+</body>
+
+</html>

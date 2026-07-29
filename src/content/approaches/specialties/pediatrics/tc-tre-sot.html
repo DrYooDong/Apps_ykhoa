@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Tiếp cận lâm sàng trẻ sốt ở Nhi khoa: Sinh lý vùng hạ đồi, Cờ đỏ Red Flags, Phân tầng nguy cơ NICE 2007 (Đỏ/Vàng/Xanh), Tiêu chuẩn Rochester, Công cụ tính liều hạ sốt Paracetamol & Ibuprofen, và Thuật toán Sốt kéo dài FUO.">
+  <title>Tiếp Cận Trẻ Sốt – CliniPortal</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@500;600&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core (5 levels up to root) -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../../css/components/approach-symptom.css">
+
+  <style>
+    /* ==========================================================================
+       PEDIATRIC FEVER APPROACH ADVANCED STYLES & INTERACTIVE UI SYSTEM
+       ========================================================================== */
+    :root {
+      --fever-primary: #ef4444;
+      --fever-dark: #0f172a;
+      --fever-navy: #1e1b4b;
+      --fever-purple: #8b5cf6;
+      --fever-accent: #f97316;
+      --fever-danger: #dc2626;
+      --fever-warning: #f59e0b;
+      --fever-success: #10b981;
+      --fever-info: #0284c7;
+    }
+
+    /* Hero Banner Theme */
+    .hero-fever {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #431407 100%);
+      border-radius: 20px;
+      padding: 32px;
+      color: #ffffff;
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.25);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .hero-fever::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -10%;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(239, 68, 68, 0.25) 0%, rgba(139, 92, 246, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-fever-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .hero-title-group h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      font-family: var(--font-display);
+      margin: 8px 0 12px 0;
+      color: #ffffff;
+      line-height: 1.25;
+    }
+
+    .hero-badges-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .hero-badge-pill {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #e0e7ff;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-badge-pill.alert {
+      background: rgba(239, 68, 68, 0.25);
+      border-color: rgba(239, 68, 68, 0.4);
+      color: #fca5a5;
+    }
+
+    .hero-quick-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .stat-box {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+
+    .stat-box .stat-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #cbd5e1;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .stat-box .stat-val {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #f87171;
+      font-family: var(--font-display);
+    }
+
+    .stat-box .stat-sub {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+
+    /* Override parent container overflow so position: sticky works */
+    html, body,
+    .app-container,
+    .main-wrapper,
+    .layout-content-area {
+      overflow: visible !important;
+    }
+
+    /* Quick Nav Sticky Bar (Đóng băng khi cuộn trang) */
+    .quick-nav-bar {
+      position: sticky !important;
+      top: calc(var(--header-height, 60px) + 8px) !important;
+      z-index: 150 !important;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      padding: 10px 14px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      white-space: nowrap;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+    }
+
+    .quick-nav-btn {
+      background: transparent;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .quick-nav-btn:hover,
+    .quick-nav-btn.active {
+      background: rgba(239, 68, 68, 0.1);
+      color: var(--fever-primary);
+    }
+
+    /* Section Card Wrappers */
+    .section-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+      scroll-margin-top: 130px;
+    }
+
+    .section-title-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid rgba(239, 68, 68, 0.15);
+    }
+
+    .section-icon-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(239, 68, 68, 0.12);
+      color: var(--fever-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .section-title-group h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin: 0;
+    }
+
+    /* Interactive Simulators & Calculators */
+    .sim-container {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border: 1px solid #cbd5e1;
+      border-radius: 16px;
+      padding: 24px;
+      margin: 20px 0;
+    }
+
+    [data-theme="dark"] .sim-container {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border-color: #334155;
+    }
+
+    .sim-controls-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .sim-controls-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .preset-btns {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .preset-btn {
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-text);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .preset-btn.active,
+    .preset-btn:hover {
+      background: var(--fever-primary);
+      color: white;
+      border-color: var(--fever-primary);
+    }
+
+    .slider-group {
+      margin-top: 16px;
+    }
+
+    .slider-group input[type="range"] {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      accent-color: var(--fever-primary);
+      cursor: pointer;
+    }
+
+    .sim-result-box {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .temp-meter-bar {
+      height: 16px;
+      border-radius: 8px;
+      background: #e2e8f0;
+      position: relative;
+      overflow: hidden;
+      margin: 12px 0 8px 0;
+    }
+
+    .temp-meter-fill {
+      height: 100%;
+      width: 50%;
+      background: linear-gradient(90deg, #10b981 0%, #f59e0b 50%, #ef4444 100%);
+      transition: width 0.3s ease;
+      border-radius: 8px;
+    }
+
+    .fever-state-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    /* Tabs Styling */
+    .tab-nav {
+      display: flex;
+      gap: 10px;
+      border-bottom: 2px solid var(--color-border);
+      margin-bottom: 20px;
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      padding: 10px 18px;
+      background: transparent;
+      border: none;
+      border-bottom: 3px solid transparent;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-bottom: -2px;
+      white-space: nowrap;
+    }
+
+    .tab-btn.active {
+      color: var(--fever-primary);
+      border-bottom-color: var(--fever-primary);
+    }
+
+    .tab-content-panel {
+      display: none;
+    }
+
+    .tab-content-panel.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Feature Grid & Cards */
+    .features-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .fever-info-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      padding: 18px;
+      border-top: 4px solid var(--fever-primary);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .fever-info-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .fever-info-card.danger {
+      border-top-color: var(--fever-danger);
+    }
+
+    .fever-info-card.warning {
+      border-top-color: var(--fever-warning);
+    }
+
+    .fever-info-card.purple {
+      border-top-color: var(--fever-purple);
+    }
+
+    .fever-info-card.info {
+      border-top-color: var(--fever-info);
+    }
+
+    .fever-info-card h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 0 0 10px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Callout & Alert Box */
+    .clinical-alert-box {
+      border-radius: 14px;
+      padding: 18px 22px;
+      margin: 20px 0;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .clinical-alert-box.danger {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1.5px solid rgba(239, 68, 68, 0.3);
+      color: #991b1b;
+    }
+
+    [data-theme="dark"] .clinical-alert-box.danger {
+      background: rgba(239, 68, 68, 0.15);
+      color: #fca5a5;
+    }
+
+    .clinical-alert-box.info {
+      background: rgba(2, 132, 199, 0.08);
+      border: 1.5px solid rgba(2, 132, 199, 0.3);
+      color: #075985;
+    }
+
+    [data-theme="dark"] .clinical-alert-box.info {
+      background: rgba(2, 132, 199, 0.15);
+      color: #7dd3fc;
+    }
+
+    .clinical-alert-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .clinical-alert-content h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 0 0 6px 0;
+    }
+
+    .clinical-alert-content p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Comparison Table */
+    .comparison-table-wrapper {
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid var(--color-border);
+      margin: 16px 0;
+    }
+
+    .clinical-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      text-align: left;
+    }
+
+    .clinical-table th,
+    .clinical-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .clinical-table th {
+      background: rgba(239, 68, 68, 0.08);
+      font-weight: 700;
+      color: var(--color-text);
+    }
+
+    .clinical-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Form Controls */
+    .form-control-custom {
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--color-border);
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+    }
+
+    .form-control-custom:focus {
+      outline: none;
+      border-color: var(--fever-primary);
+    }
+
+    /* NICE Badges */
+    .risk-badge-red {
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #fca5a5;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .risk-badge-amber {
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fcd34d;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .risk-badge-green {
+      background: #d1fae5;
+      color: #065f46;
+      border: 1px solid #6ee7b7;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Checkboxes */
+    .check-list-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 10px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 8px 12px;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.88rem;
+    }
+
+    .checkbox-item input {
+      margin-top: 3px;
+    }
+
+    /* Step Card Tree */
+    .tree-step-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-left: 4px solid var(--fever-primary);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      transition: all 0.2s;
+    }
+
+    .tree-step-card:hover {
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    }
+
+    .tree-step-card.success { border-left-color: var(--fever-success); }
+    .tree-step-card.danger { border-left-color: var(--fever-danger); }
+    .tree-step-card.warning { border-left-color: var(--fever-warning); }
+    .tree-step-card.purple { border-left-color: var(--fever-purple); }
+  </style>
+</head>
+
+<body>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- APP CONTAINER -->
+  <div class="app-container">
+
+
+
+    <!-- MAIN WRAPPER -->
+    <div class="main-wrapper" id="mainContent">
+
+
+      <!-- HERO BANNER -->
+      <section class="hero-fever">
+        <div class="hero-fever-header">
+          <div class="hero-title-group">
+            <div class="hero-badges-group">
+              <span class="hero-badge-pill"><i class="fa-solid fa-child"></i> Nhi Khoa &amp; Truyền Nhiễm</span>
+              <span class="hero-badge-pill"><i class="fa-solid fa-microscope"></i> Hướng dẫn NICE 2007 &amp; YDS</span>
+              <span class="hero-badge-pill alert"><i class="fa-solid fa-triangle-exclamation"></i> Cấp Cứu Sốt Trẻ Em</span>
+            </div>
+            <h1>🌡️ TIẾP CẬN TRẺ SỐT (Approach to Pediatric Fever)</h1>
+            <p style="font-size: 0.98rem; opacity: 0.92; max-width: 850px; line-height: 1.5; margin: 8px 0 0 0;">
+              Hướng dẫn toàn diện về sinh lý điểm điều nhiệt vùng hạ đồi, phân biệt Sốt vs Tăng thân nhiệt ác tính, sàng lọc Dấu hiệu Cờ đỏ (Red Flags), Phân tầng nguy cơ NICE 2007 (Đỏ - Vàng - Xanh), Tiêu chuẩn ngoại trú Rochester, Máy tính liều Paracetamol &amp; Ibuprofen chuẩn kg, và Thuật toán Tiếp cận Sốt kéo dài không rõ nguyên nhân (FUO).
+            </p>
+          </div>
+        </div>
+
+        <div class="hero-quick-stats">
+          <div class="stat-box">
+            <div class="stat-label">Định nghĩa Sốt (Hậu môn)</div>
+            <div class="stat-val">T &ge; 38.0°C</div>
+            <div class="stat-sub">Chuẩn đo hậu môn (Gold standard)</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Trẻ nhỏ &lt; 2 tháng sốt</div>
+            <div class="stat-val">Nhập viện ngay</div>
+            <div class="stat-sub">Bilan nhiễm trùng sơ sinh bắt buộc</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Phân tầng nguy cơ NICE</div>
+            <div class="stat-val">🔴 🟡 🟢 3 Mức</div>
+            <div class="stat-sub">Hệ thống Đèn giao thông 2007</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Liều hạ sốt Paracetamol</div>
+            <div class="stat-val">10 - 15 mg/kg</div>
+            <div class="stat-sub">Mỗi 4 - 6 giờ (Max 60mg/kg/ngày)</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- QUICK NAV STICKY BAR (Đóng băng khi cuộn trang) -->
+      <div class="quick-nav-bar" id="quickNavBar">
+        <button class="quick-nav-btn active" onclick="scrollToSec('sec-sinhly')"><i class="fa-solid fa-microscope"></i> 1. Sinh lý &amp; Điểm Điều Nhiệt</button>
+        <button class="quick-nav-btn" onclick="scrollToSec('sec-codo')"><i class="fa-solid fa-triangle-exclamation"></i> 2. Cờ Đỏ &amp; Nhập Viện Khẩn</button>
+        <button class="quick-nav-btn" onclick="scrollToSec('sec-cdss')"><i class="fa-solid fa-laptop-medical"></i> 3. Giả Lập &amp; Máy Tính Liều</button>
+        <button class="quick-nav-btn" onclick="scrollToSec('sec-nice')"><i class="fa-solid fa-traffic-light"></i> 4. Phân Tầng NICE &amp; Rochester</button>
+        <button class="quick-nav-btn" onclick="scrollToSec('sec-phanloai')"><i class="fa-solid fa-list-check"></i> 5. Phân Loại &amp; Nguyên Nhân</button>
+        <button class="quick-nav-btn" onclick="scrollToSec('sec-fuo')"><i class="fa-solid fa-diagram-project"></i> 6. Thuật Toán Sốt FUO</button>
+        <button class="quick-nav-btn" onclick="scrollToSec('sec-thamkhao')"><i class="fa-solid fa-book-medical"></i> 7. Tham Khảo</button>
+      </div>
+
+      <!-- SECTION 1: SINH LÝ HỌC CHI TIẾT & ĐIỂM ĐIỀU NHIỆT HẠ ĐỒI -->
+      <section class="section-card" id="sec-sinhly">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-microscope"></i></div>
+          <div>
+            <h2>1. Nội Dung Sinh Lý Học Chi Tiết &amp; Điểm Điều Nhiệt Hạ Đồi</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Bản chất sinh lý có lợi của phản ứng sốt, Pyrogen nội sinh PG-E2 và phân biệt Tăng thân nhiệt ác tính</span>
+          </div>
+        </div>
+
+        <p style="line-height: 1.6; margin-bottom: 16px;">
+          <strong>Sốt (Fever)</strong> là một phản ứng sinh lý thích nghi có lợi cho cơ thể, xảy ra do sự <strong>gia tăng ngưỡng điểm điều nhiệt (set-point) tại vùng hạ đồi</strong> dưới tác dụng của các chất gây sốt nội sinh (Pyrogens) như <em>IL-1, IL-6, TNF-α, Interferon</em> và đặc biệt là <strong>Prostaglandin E2 (PGE2)</strong>.
+        </p>
+
+        <div class="clinical-alert-box info">
+          <div class="clinical-alert-icon"><i class="fa-solid fa-circle-info"></i></div>
+          <div class="clinical-alert-content">
+            <h4>Lợi Ích Sinh Lý Của Phản Ứng Sốt</h4>
+            <p>
+              1. Khả năng tiêu diệt vi khuẩn của bạch cầu gia tăng.<br>
+              2. Tăng cường hệ miễn dịch: tăng thực bào, tăng tổng hợp Interferon và kháng thể.<br>
+              3. Giảm lượng sắt tự do trong huyết thanh (do tăng hấp thu vào hệ võng nội mô), làm giảm khả năng nhân lên của vi khuẩn.
+            </p>
+          </div>
+        </div>
+
+        <!-- BẢNG PHÂN BIỆT SỐT VS TĂNG THÂN NHIỆT ÁC TÍNH -->
+        <h4 style="font-size: 1.05rem; font-weight: 700; margin: 20px 0 10px 0;">Bảng Phân Biệt Sốt Phản Ứng vs Tăng Thân Nhiệt Ác Tính / Nhiễm Nóng (Hyperthermia)</h4>
+        <div class="comparison-table-wrapper">
+          <table class="clinical-table">
+            <thead>
+              <tr>
+                <th>Tiêu chí Phân biệt</th>
+                <th>Sốt Phản Ứng (Fever)</th>
+                <th>Tăng Thân Nhiệt Ác Tính / Nhiễm Nóng (Hyperthermia)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Ngưỡng Hạ Đồi (Set-point)</strong></td>
+                <td><span style="color: #ef4444; font-weight: 700;">Tăng ngưỡng</span> (vd từ 37°C lên 39°C do PG-E2)</td>
+                <td><span style="color: #10b981; font-weight: 700;">KHÔNG THAY ĐỔI</span> (vẫn ở mức 37°C)</td>
+              </tr>
+              <tr>
+                <td><strong>Cơ chế tạo nhiệt</strong></td>
+                <td>Co mạch ngoại biên (lạnh tay chân) &amp; run cơ tạo nhiệt để đạt ngưỡng mới.</td>
+                <td>Quá tải khả năng thải nhiệt (môi trường nóng, ngộ độc Salicylate...).</td>
+              </tr>
+              <tr>
+                <td><strong>Đáp ứng Hạ Sốt</strong></td>
+                <td><span style="color: #10b981; font-weight: 700;">Đáp ứng tốt</span> với Paracetamol / Ibuprofen</td>
+                <td><span style="color: #ef4444; font-weight: 700;">KHÔNG ĐÁP ỨNG</span> với thuốc hạ sốt, tử vong nhanh</td>
+              </tr>
+              <tr>
+                <td><strong>Thải nhiệt khi lui sốt</strong></td>
+                <td>Giãn mạch ngoại biên &amp; đổ mồ hôi khi hạ đồi đặt lại ngưỡng 37°C.</td>
+                <td>Cần <strong>làm mát cơ học khẩn cấp</strong> (chườm mát, nước đá, truyền dịch lạnh).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- DEMO SIMULATOR: THÂN NHIỆT & QUY ĐỔI VỊ TRÍ ĐO -->
+        <div class="sim-container">
+          <h3 style="margin: 0 0 12px 0; font-size: 1.1rem; font-weight: 700; color: var(--fever-primary); display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-temperature-arrow-up"></i> Mô Phỏng Thân Nhiệt &amp; Quy Đổi Vị Trí Đo Lâm Sàng
+          </h3>
+          <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 16px;">
+            Chọn vị trí đo và điều chỉnh giá trị nhiệt độ để quy đổi về chuẩn Hậu môn (Gold standard):
+          </p>
+
+          <div class="sim-controls-grid">
+            <div>
+              <label style="font-weight: 700; font-size: 0.9rem; display: block; margin-bottom: 6px;">
+                Chọn Vị Trí Đo Thân Nhiệt:
+              </label>
+              <div class="preset-btns">
+                <button class="preset-btn active" onclick="setSitePreset('rectal', this)">Hậu môn (Chuẩn)</button>
+                <button class="preset-btn" onclick="setSitePreset('oral', this)">Miệng (-0.4°C)</button>
+                <button class="preset-btn" onclick="setSitePreset('axillary', this)">Trán / Nách (-0.5°C)</button>
+                <button class="preset-btn" onclick="setSitePreset('tympanic', this)">Ống tai (-0.8°C)</button>
+              </div>
+
+              <div class="slider-group">
+                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600; margin-bottom: 4px;">
+                  <span>Nhiệt độ đo được tại chỗ:</span>
+                  <span id="tempValDisp" style="color: var(--fever-primary); font-weight: 800;">38.5 °C</span>
+                </div>
+                <input type="range" id="tempSlider" min="35.5" max="42.5" step="0.1" value="38.5" oninput="updateTempSim(this.value)">
+                <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--color-text-muted); margin-top: 4px;">
+                  <span>35.5°C (Hạ thân nhiệt)</span>
+                  <span>38.0°C (Ngưỡng Sốt)</span>
+                  <span>42.5°C (Sốt cực cao)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="sim-result-box">
+              <div style="font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; color: var(--color-text-muted);">
+                Nhiệt Độ Hậu Môn Quy Đổi Tương Đương:
+              </div>
+              <div style="font-size: 2rem; font-weight: 800; color: var(--fever-primary); font-family: var(--font-display); margin: 6px 0;" id="rectalResultVal">
+                38.5 °C
+              </div>
+
+              <div class="temp-meter-bar">
+                <div class="temp-meter-fill" id="tempMeterFill" style="width: 50%;"></div>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px;">
+                <span class="fever-state-badge" id="feverBadge" style="background: rgba(245, 158, 11, 0.15); color: #d97706;">
+                  SỐT VỪA (38.0°C - 38.9°C)
+                </span>
+                <span style="font-size: 0.8rem; font-weight: 600; color: var(--color-text-muted);" id="siteDiffDisp">
+                  Đo Hậu môn (Chuẩn)
+                </span>
+              </div>
+
+              <p style="font-size: 0.83rem; line-height: 1.45; margin: 10px 0 0 0; color: var(--color-text);" id="tempSimExplanation">
+                Sốt vừa: Không bắt buộc cho uống hạ sốt nếu trẻ vẫn chơi đùa, tươi tỉnh.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: CỜ ĐỎ & CHỈ ĐỊNH NHẬP VIỆN KHẨN -->
+      <section class="section-card" id="sec-codo">
+        <div class="section-title-group">
+          <div class="section-icon-badge" style="background: rgba(239, 68, 68, 0.15); color: #dc2626;"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div>
+            <h2>2. Sàng Lọc Dấu Hiệu Cờ Đỏ (Red Flags) &amp; Chỉ Định Nhập Viện Khẩn</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Các tình huống đe dọa tính mạng đòi hỏi củng cố sinh hiệu và nhập viện ngay lập tức</span>
+          </div>
+        </div>
+
+        <div class="clinical-alert-box danger">
+          <div class="clinical-alert-icon"><i class="fa-solid fa-bell-concierge"></i></div>
+          <div class="clinical-alert-content">
+            <h4>CHỈ ĐỊNH NHẬP VIỆN CẤP CỨU KHẨN CẤP</h4>
+            <p>
+              1. <strong>Trẻ nhỏ dưới 2 tháng tuổi (&lt; 2 tháng):</strong> Nhiệt độ đo hậu môn &ge; 38,0°C (bất kể vẻ mặt). Nguy cơ nhiễm trùng sơ sinh nặng, GBS, E. coli, Listeria, Gram âm.<br>
+              2. <strong>Trẻ &ge; 2 tháng tuổi:</strong> Kèm bất kỳ dấu hiệu báo động: không uống được/bỏ bú, nôn ói tất cả, co giật, li bì khó đánh thức, cổ gượng, thóp phồng, sốc, xuất huyết da niêm.
+            </p>
+          </div>
+        </div>
+
+        <div class="features-grid-3">
+          <div class="fever-info-card danger">
+            <h4><i class="fa-solid fa-baby"></i> Báo Động Trẻ &lt; 2 Tháng</h4>
+            <ul style="margin: 0 0 0 16px; padding: 0; font-size: 0.88rem; line-height: 1.5;">
+              <li>Ngủ gà, lừ đừ, giảm vận động.</li>
+              <li>Bỏ bú, bú kém, nôn trớ liên tục.</li>
+              <li>Vẻ mặt nhiễm độc / Nhiễm trùng nặng.</li>
+              <li>Suy hô hấp: Thở rên, thở nhanh &gt; 60 lần/phút, rút lõm ngực.</li>
+              <li>Quấy khóc vô cớ không thể dỗ nín được.</li>
+            </ul>
+          </div>
+
+          <div class="fever-info-card danger">
+            <h4><i class="fa-solid fa-brain"></i> Dấu Hiệu Thần Kinh &amp; Màng Não</h4>
+            <ul style="margin: 0 0 0 16px; padding: 0; font-size: 0.88rem; line-height: 1.5;">
+              <li>Co giật (Sốt co giật phức tạp hoặc Viêm màng não).</li>
+              <li>Cổ gượng (Cổ cứng ở trẻ lớn).</li>
+              <li>Thóp phồng (Trẻ nhũ nhi &lt; 18 tháng).</li>
+              <li>Giật mình chới với (Gợi ý Tay chân miệng EV71).</li>
+              <li>Rối loạn tri giác, hôn mê, li bì.</li>
+            </ul>
+          </div>
+
+          <div class="fever-info-card danger">
+            <h4><i class="fa-solid fa-heart-crack"></i> Dấu Hiệu Sốc &amp; Trụy Mạch</h4>
+            <ul style="margin: 0 0 0 16px; padding: 0; font-size: 0.88rem; line-height: 1.5;">
+              <li>Mạch nhanh nhẹ khó bắt, CRT &gt; 2 giây.</li>
+              <li>Bàn tay, bàn chân lạnh ẩm, nổi bông tím.</li>
+              <li>Tử ban xuất huyết (Petechiae / Purpura - nghi Meningococcus / Dengue).</li>
+              <li>Huyết áp kẹp hoặc tụt theo tuổi.</li>
+              <li>Thiểu niệu / Vô niệu.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: GIẢ LẬP CDSS & MÁY TÍNH LIỀU HẠ SỐT -->
+      <section class="section-card" id="sec-cdss">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-laptop-medical"></i></div>
+          <div>
+            <h2>3. Máy Tính Liều Hạ Sốt &amp; Quy Đổi Dạng Hàm Lượng Siro/Gói</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Tính chính xác mg/kg và thể tích mL uống cho Paracetamol &amp; Ibuprofen</span>
+          </div>
+        </div>
+
+        <!-- MÁY TÍNH LIỀU HẠ SỐT INTERACTIVE -->
+        <div class="sim-container" style="background: var(--color-surface); border-color: var(--fever-primary);">
+          <h3 style="margin: 0 0 14px 0; font-size: 1.1rem; font-weight: 700; color: var(--fever-primary); display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-calculator"></i> Máy Tính Liều Hạ Sốt Nhi Khoa Chuẩn Cân Nặng (Kg)
+          </h3>
+
+          <div class="sim-controls-grid">
+            <div>
+              <label style="font-weight: 700; font-size: 0.9rem; display: block; margin-bottom: 6px;">
+                Nhập hoặc Chọn Cân Nặng Trẻ (Kg):
+              </label>
+              <div class="preset-btns">
+                <button class="preset-btn" onclick="setWeightPreset(5, this)">5 kg</button>
+                <button class="preset-btn" onclick="setWeightPreset(8, this)">8 kg</button>
+                <button class="preset-btn active" onclick="setWeightPreset(10, this)">10 kg</button>
+                <button class="preset-btn" onclick="setWeightPreset(12, this)">12 kg</button>
+                <button class="preset-btn" onclick="setWeightPreset(15, this)">15 kg</button>
+                <button class="preset-btn" onclick="setWeightPreset(20, this)">20 kg</button>
+              </div>
+
+              <div class="slider-group">
+                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600; margin-bottom: 4px;">
+                  <span>Cân nặng thực tế:</span>
+                  <span id="wtValDisp" style="color: var(--fever-primary); font-weight: 800;">10.0 kg</span>
+                </div>
+                <input type="range" id="wtSlider" min="3" max="40" step="0.5" value="10" oninput="updateDoseCalc(this.value)">
+              </div>
+
+              <div style="margin-top: 14px;">
+                <label for="ageMonthsInput" style="font-weight: 700; font-size: 0.85rem; display: block; margin-bottom: 4px;">
+                  Tuổi của trẻ (Tháng):
+                </label>
+                <input type="number" id="ageMonthsInput" class="form-control-custom" value="12" min="0" max="180" style="width: 100%;" oninput="updateDoseCalc(document.getElementById('wtSlider').value)">
+              </div>
+            </div>
+
+            <!-- RESULT DISPLAY BOX -->
+            <div class="sim-result-box" style="border-left: 4px solid var(--fever-primary);">
+              <div style="font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; color: var(--color-text-muted);">
+                Kết Quả Tính Liều Với Cân Nặng <span id="wtDispBox">10.0 kg</span>:
+              </div>
+
+              <div style="margin-top: 10px; display: flex; flex-direction: column; gap: 12px;">
+                <!-- PARACETAMOL RESULT -->
+                <div style="background: rgba(2, 132, 199, 0.08); padding: 12px; border-radius: 10px; border: 1px solid #0284c7;">
+                  <strong style="color: #0284c7; font-size: 0.95rem;"><i class="fa-solid fa-capsules"></i> PARACETAMOL (10 - 15 mg/kg):</strong>
+                  <div style="font-size: 1.25rem; font-weight: 800; color: #0284c7; margin: 4px 0;" id="paraDoseMg">
+                    100 - 150 mg / lần
+                  </div>
+                  <div style="font-size: 0.85rem; color: var(--color-text);" id="paraSyrupVol">
+                    Siro (160mg/5ml): <strong>~4.7 ml</strong> | Gói 150mg: <strong>1 gói</strong>
+                  </div>
+                  <div style="font-size: 0.78rem; color: var(--color-text-muted); margin-top: 2px;" id="paraMaxDay">
+                    Dùng mỗi 4–6 giờ | Tối đa: 600 mg/ngày
+                  </div>
+                </div>
+
+                <!-- IBUPROFEN RESULT -->
+                <div style="background: rgba(245, 158, 11, 0.08); padding: 12px; border-radius: 10px; border: 1px solid #d97706;">
+                  <strong style="color: #d97706; font-size: 0.95rem;"><i class="fa-solid fa-tablets"></i> IBUPROFEN (5 - 10 mg/kg):</strong>
+                  <div style="font-size: 1.25rem; font-weight: 800; color: #d97706; margin: 4px 0;" id="ibuDoseMg">
+                    50 - 100 mg / lần
+                  </div>
+                  <div style="font-size: 0.85rem; color: var(--color-text);" id="ibuSyrupVol">
+                    Siro (100mg/5ml): <strong>~5.0 ml</strong> / lần
+                  </div>
+                  <div style="font-size: 0.78rem; color: var(--color-text-muted); margin-top: 2px;" id="ibuMaxDay">
+                    Dùng mỗi 6–8 giờ | Tối đa: 400 mg/ngày
+                  </div>
+                  <div id="ibuAgeAlert" style="font-size: 0.8rem; color: #dc2626; font-weight: 700; margin-top: 4px; display: none;">
+                    <i class="fa-solid fa-triangle-exclamation"></i> Trẻ &lt; 6 tháng tuổi: KHÔNG khuyến cáo dùng Ibuprofen!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="clinical-alert-box danger" style="margin-top: 16px;">
+          <div class="clinical-alert-icon"><i class="fa-solid fa-ban"></i></div>
+          <div class="clinical-alert-content">
+            <h4>Tuyệt Đối KHÔNG Dùng Aspirin Để Hạ Sốt Ở Trẻ Em</h4>
+            <p>
+              Aspirin dùng ở trẻ nhiễm siêu vi (như Cúm, Thủy đậu...) gây ra <strong>Hội chứng Reye</strong> tiến triển suy gan cấp và phù não tử vong cực cao. Chỉ dùng Paracetamol hoặc Ibuprofen theo đúng chỉ định.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: PHÂN TẦNG NGUY CƠ NICE 2007 & ROCHESTER -->
+      <section class="section-card" id="sec-nice">
+        <div class="section-title-group">
+          <div class="section-icon-badge" style="background: rgba(245, 158, 11, 0.15); color: #d97706;"><i class="fa-solid fa-traffic-light"></i></div>
+          <div>
+            <h2>4. Phân Tầng Nguy Cơ NICE 2007 (Đèn Giao Thông) &amp; Tiêu Chuẩn Rochester</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Đánh giá nguy cơ nhiễm trùng nặng và điều kiện theo dõi ngoại trú an toàn</span>
+          </div>
+        </div>
+
+        <!-- TABS NAV FOR NICE VS ROCHESTER -->
+        <div class="tab-nav">
+          <button class="tab-btn active" onclick="switchMainTab('tab-nice-sys', this)"><i class="fa-solid fa-traffic-light"></i> Đèn Giao Thông NICE 2007</button>
+          <button class="tab-btn" onclick="switchMainTab('tab-rochester-sys', this)"><i class="fa-solid fa-user-check"></i> Tiêu Chuẩn Rochester Ngoại Trú</button>
+        </div>
+
+        <!-- TAB CONTENT 1: NICE 2007 -->
+        <div class="tab-content-panel active" id="tab-nice-sys">
+          <p style="font-size: 0.9rem; line-height: 1.5; margin-bottom: 16px;">
+            Hướng dẫn NICE 2007 phân loại trẻ sốt cấp tính không triệu chứng định vị thành 3 mức nguy cơ để đưa ra chiến lược xét nghiệm cận lâm sàng thích hợp:
+          </p>
+
+          <div class="comparison-table-wrapper">
+            <table class="clinical-table">
+              <thead>
+                <tr>
+                  <th>Phân Tầng Nguy Cơ</th>
+                  <th>Dấu Hiệu Lâm Sàng Nhận Diện</th>
+                  <th>Chỉ Định Cận Lâm Sàng &amp; Xử Trí</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="background: rgba(239, 68, 68, 0.06);">
+                  <td><span class="risk-badge-red">🔴 NGUY CƠ CAO (Đỏ)</span></td>
+                  <td>
+                    - Không phản ứng, li bì, khó đánh thức.<br>
+                    - Thóp phồng, cổ gượng, co giật.<br>
+                    - Tử ban phát ban petechiae.<br>
+                    - Khóc thét không dỗ nín được.<br>
+                    - Suy hô hấp nặng, thở ngắt ngứ.
+                  </td>
+                  <td>
+                    - <strong>Bắt buộc:</strong> CTM, CRP/PCT, Cấy máu, TPTNT + Cấy nước tiểu.<br>
+                    - <strong>Tùy lâm sàng:</strong> Chọc dò thắt lưng (LP), XQ ngực, Khí máu.<br>
+                    - <strong>Nhập viện cấp cứu khẩn.</strong> Cấy bệnh phẩm TRƯỚC KHI cho kháng sinh IV.
+                  </td>
+                </tr>
+                <tr style="background: rgba(245, 158, 11, 0.06);">
+                  <td><span class="risk-badge-amber">🟡 TRUNG BÌNH (Vàng)</span></td>
+                  <td>
+                    - Thở nhanh theo tuổi, rút lõm lồng ngực nhẹ.<br>
+                    - Da nhợt tái, giảm tương tác môi trường.<br>
+                    - Sốt &ge; 39°C ở trẻ 3–6 tháng.<br>
+                    - Sốt kéo dài &ge; 5 ngày.
+                  </td>
+                  <td>
+                    - Xét nghiệm nước tiểu (TPTNT). CTM, CRP.<br>
+                    - Cấy máu &amp; XQ ngực nếu sốt &gt; 39°C &amp; BC &gt; 20.000/μL.<br>
+                    - Chọc dò thắt lưng nếu trẻ &lt; 1 tuổi quấy khóc dai dẳng.<br>
+                    - Theo dõi sát, tái khám sau 24h.
+                  </td>
+                </tr>
+                <tr style="background: rgba(16, 185, 129, 0.06);">
+                  <td><span class="risk-badge-green">🟢 NGUY CƠ THẤP (Xanh)</span></td>
+                  <td>
+                    - Trẻ tươi tỉnh, giao tiếp mắt tốt, mỉm cười.<br>
+                    - Uống được, bú tốt.<br>
+                    - Hồng hào, không dấu báo động.
+                  </td>
+                  <td>
+                    - TPTNT tìm nhiễm trùng tiểu ẩn.<br>
+                    - Khám kỹ tai mũi họng, phổi.<br>
+                    - <strong>KHÔNG CẦN</strong> xét nghiệm máu &amp; XQ ngực nếu lâm sàng khỏe mạnh.<br>
+                    - Theo dõi ngoại trú.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- TAB CONTENT 2: ROCHESTER CRITERIA -->
+        <div class="tab-content-panel" id="tab-rochester-sys">
+          <div class="fever-info-card purple" style="margin-bottom: 16px;">
+            <h4><i class="fa-solid fa-clipboard-check"></i> Tiêu Chuẩn Ngoại Trú Rochester Trẻ 29 – 90 Ngày Tuổi</h4>
+            <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 12px;">
+              Trẻ sốt 1 – 3 tháng tuổi không có triệu chứng định vị chỉ được theo dõi ngoại trú khi thỏa mãn <strong>ĐẦY ĐỦ 5 nhóm tiêu chuẩn</strong>:
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+              <div class="tree-step-card success">
+                <strong>1. Vẻ mặt lâm sàng:</strong> Trẻ tươi tỉnh, khỏe mạnh, phản ứng tốt.
+              </div>
+              <div class="tree-step-card success">
+                <strong>2. Khám thực thể:</strong> Không có bất kỳ dấu nhiễm trùng định vị nào.
+              </div>
+              <div class="tree-step-card success">
+                <strong>3. Tiền căn:</strong> Sinh đủ tháng (&ge; 37 tuần), không dùng kháng sinh trước đó, không bệnh mạn tính.
+              </div>
+              <div class="tree-step-card success">
+                <strong>4. Xét nghiệm an toàn:</strong><br>
+                - CTM BC: 5.000 - 15.000 /μL.<br>
+                - BC đũa (Band): &lt; 1.500 /μL.<br>
+                - TPTNT: &lt; 10 BC/quang trường.<br>
+                - Soi phân: &lt; 5 BC/quang trường (nếu tiêu chảy).
+              </div>
+              <div class="tree-step-card success">
+                <strong>5. Gia đình:</strong> Người nuôi dưỡng tin cậy, tái khám sau 24h.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: PHÂN LOẠI & NGUYÊN NHÂN GÂY SỐT -->
+      <section class="section-card" id="sec-phanloai">
+        <div class="section-title-group">
+          <div class="section-icon-badge" style="background: rgba(139, 92, 246, 0.15); color: var(--fever-purple);"><i class="fa-solid fa-list-check"></i></div>
+          <div>
+            <h2>5. Phân Loại 3 Nhóm Sốt &amp; Ma Trận Nguyên Nhân Bệnh Lý</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Nhiễm trùng (Siêu vi, Vi khuẩn, Lao, Sốt rét) vs Bệnh lý không do nhiễm trùng</span>
+          </div>
+        </div>
+
+        <div class="features-grid-3">
+          <div class="fever-info-card info">
+            <h4><i class="fa-solid fa-virus"></i> 1. Nhiễm Siêu Vi (Hàng Đầu)</h4>
+            <p style="font-size: 0.88rem; line-height: 1.5;">
+              Nguyên nhân phổ biến nhất (&gt; 60%). Thường tự giới hạn sau 5 - 7 ngày:
+            </p>
+            <ul style="margin: 0 0 0 16px; padding: 0; font-size: 0.85rem; line-height: 1.5;">
+              <li>Sốt xuất huyết Dengue (Sốt 2-7 ngày, cảnh báo sốc từ ngày 3-7).</li>
+              <li>Tay chân miệng (EV71, CA16 - giật mình chới với).</li>
+              <li>Cúm A/B, Adenovirus, RSV, Sởi, HHV-6 (Phát ban đào).</li>
+            </ul>
+          </div>
+
+          <div class="fever-info-card danger">
+            <h4><i class="fa-solid fa-bacteria"></i> 2. Nhiễm Vi Khuẩn Nặng</h4>
+            <p style="font-size: 0.88rem; line-height: 1.5;">
+              Cần phát hiện sớm và điều trị kháng sinh trúng đích:
+            </p>
+            <ul style="margin: 0 0 0 16px; padding: 0; font-size: 0.85rem; line-height: 1.5;">
+              <li>Viêm màng não mủ (GBS, Pneumococcus, Meningococcus).</li>
+              <li>Viêm phổi vi khuẩn (Phế cầu, Tụ cầu, Hib).</li>
+              <li>Nhiễm trùng tiểu cấp (E. coli, Klebsiella).</li>
+              <li>Nhiễm khuẩn huyết ẩn (Occult bacteremia ở trẻ 3-36 tháng).</li>
+            </ul>
+          </div>
+
+          <div class="fever-info-card warning">
+            <h4><i class="fa-solid fa-shield-virus"></i> 3. Không Do Nhiễm Trùng</h4>
+            <p style="font-size: 0.88rem; line-height: 1.5;">
+              Các bệnh lý miễn dịch, ung thư và rối loạn chuyển hóa:
+            </p>
+            <ul style="margin: 0 0 0 16px; padding: 0; font-size: 0.85rem; line-height: 1.5;">
+              <li>Bệnh Kawasaki (Sốt &ge; 5 ngày, mắt đỏ, môi đỏ nứt, lưỡi dâu tây, sưng hạch).</li>
+              <li>Viêm khớp thiếu niên tự phát (Still), Lupus.</li>
+              <li>Sốt do thuốc (Dị ứng, Phenothiazine).</li>
+              <li>Ung thư máu: Leukemia, Lymphoma, Neuroblastoma.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6: THUẬT TOÁN TIẾP CẬN SỐT FUO -->
+      <section class="section-card" id="sec-fuo">
+        <div class="section-title-group">
+          <div class="section-icon-badge" style="background: rgba(139, 92, 246, 0.15); color: var(--fever-purple);"><i class="fa-solid fa-diagram-project"></i></div>
+          <div>
+            <h2>6. Thuật Toán Tiếp Cận Sốt Kéo Dài Chưa Rõ Nguyên Nhân (FUO)</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Sốt &gt; 38.0°C hàng ngày kéo dài từ 8 đến 14 ngày chưa rõ nguyên nhân</span>
+          </div>
+        </div>
+
+        <p style="line-height: 1.6; margin-bottom: 16px;">
+          Quy trình tiếp cận chẩn đoán 3 bước bậc thang ở trẻ sốt FUO:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 20px;">
+          <div class="tree-step-card">
+            <h4 style="color: var(--fever-info); margin: 0 0 8px 0;"><i class="fa-solid fa-vial"></i> BƯỚC 1: XN Ban Đầu</h4>
+            <ul style="margin: 0 0 0 16px; padding: 0; font-size: 0.85rem; line-height: 1.5;">
+              <li>CTM, Tốc độ máu lắng (VS - có giá trị hơn CRP trong bệnh mạn).</li>
+              <li>AST/ALT, TPTNT, Cấy nước tiểu, Cấy máu.</li>
+              <li>X-quang ngực thẳng.</li>
+              <li>Miễn dịch: ANA, RF, C3, C4, CH50.</li>
+            </ul>
+          </div>
+
+          <div class="tree-step-card warning">
+            <h4 style="color: var(--fever-warning); margin: 0 0 8px 0;"><i class="fa-solid fa-microscope"></i> BƯỚC 2: XN Mở Rộng</h4>
+            <ul style="margin: 0 0 0 16px; padding: 0; font-size: 0.85rem; line-height: 1.5;">
+              <li>Cấy họng, cấy phân.</li>
+              <li>IDR Tuberculin test (Mantoux).</li>
+              <li>Huyết thanh chẩn đoán Thương hàn, HBV, EBV, CMV, HIV.</li>
+              <li>Siêu âm bụng tổng quát tìm ổ mủ ẩn.</li>
+            </ul>
+          </div>
+
+          <div class="tree-step-card purple">
+            <h4 style="color: var(--fever-purple); margin: 0 0 8px 0;"><i class="fa-solid fa-dna"></i> BƯỚC 3: Chẩn Đoán Chuyên Sâu</h4>
+            <ul style="margin: 0 0 0 16px; padding: 0; font-size: 0.85rem; line-height: 1.5;">
+              <li>Chọc dò thắt lưng (XN &amp; cấy DNT).</li>
+              <li>Chụp CT-scan / MRI Ngực - Bụng.</li>
+              <li>Chọc hút &amp; sinh thiết Tủy đồ (Bone marrow aspirate).</li>
+              <li>Hội chẩn chuyên khoa Nhiễm, Huyết học.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="clinical-alert-box info">
+          <div class="clinical-alert-icon"><i class="fa-solid fa-hand-holding-medical"></i></div>
+          <div class="clinical-alert-content">
+            <h4>Chiến Lược Quyết Định Điều Trị Sốt FUO</h4>
+            <p>
+              - <strong>Sinh hiệu KHÔNG ỔN ĐỊNH:</strong> Điều trị ngay theo kinh nghiệm các bệnh nguy hiểm dịch tễ (Sốt rét, Thương hàn, Lao, kháng sinh IV phổ rộng, hoặc Corticoid nếu nghi Kawasaki/Still).<br>
+              - <strong>Sinh hiệu ỔN ĐỊNH:</strong> Tạm hoãn điều trị kháng sinh bao vằn, tiếp tục theo dõi sát và làm trọn bộ xét nghiệm tìm nguyên nhân đặc hiệu.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 7: THÔNG ĐIỆP CỐT LÕI & TÀI LIỆU THAM KHẢO -->
+      <section class="section-card" id="sec-thamkhao">
+        <div class="section-title-group">
+          <div class="section-icon-badge" style="background: rgba(16, 185, 129, 0.15); color: var(--fever-success);"><i class="fa-solid fa-book-medical"></i></div>
+          <div>
+            <h2>7. Thông Điệp Lâm Sàng Cốt Lõi &amp; Tài Liệu Tham Khảo</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Tóm tắt clinical pearls và trích dẫn tài liệu tham khảo chuẩn AMA</span>
+          </div>
+        </div>
+
+        <!-- TAKE HOME CARD -->
+        <div class="take-home-card" style="margin-bottom: 20px;">
+          <div class="take-home-title">
+            <i class="fas fa-lightbulb"></i> Thông Điệp Lâm Sàng Cốt Lõi (Take-Home Pearls)
+          </div>
+          <div class="take-home-body">
+            <ul style="margin: 0 0 0 18px; padding: 0; line-height: 1.6;">
+              <li>Sốt ở trẻ em ($T \ge 38,0^\circ C$ hậu môn) là phản ứng sinh lý có lợi; không bắt buộc hạ sốt nếu sốt &lt; 39°C và trẻ vẫn chơi đùa bình thường.</li>
+              <li>Trẻ &lt; 2 tháng tuổi sốt $\ge 38,0^\circ C$ phải được <strong>nhập viện cấp cứu ngay lập tức</strong> và làm bilan nhiễm trùng sơ sinh toàn diện.</li>
+              <li>Luôn kiểm tra các Dấu hiệu Cờ đỏ (Red Flags): Li bì, quấy khóc không dỗ được, thóp phồng, cổ gượng, tử ban, nôn ói tất cả, sốc.</li>
+              <li>Liều hạ sốt chuẩn: Paracetamol 10–15 mg/kg/lần (q4-6h), Ibuprofen 5–10 mg/kg/lần (q6-8h). Tuyệt đối KHÔNG dùng Aspirin.</li>
+              <li>Đối với Sốt kéo dài chưa rõ nguyên nhân (FUO &ge; 8-14 ngày), tiến hành cận lâm sàng theo 3 bước bậc thang và chỉ điều trị kinh nghiệm khi sinh hiệu không ổn định.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- REFERENCES CARD -->
+        <div class="references-card">
+          <div class="references-title">
+            <i class="fas fa-book"></i> Tài Liệu Tham Khảo (AMA Style)
+          </div>
+          <ol class="citation-list">
+            <li>Nguyễn An Nghĩa, Trần Diệp Tuấn. Bài 79: Tiếp cận sốt ở trẻ em. Trong: <em>Nhi khoa YDS - Tập 2 (Nhiễm &amp; Thần kinh)</em>. Bộ môn Nhi - Đại học Y Dược Thành phố Hồ Chí Minh; 2020:370-384.</li>
+            <li>National Institute for Health and Care Excellence (NICE). <em>Fever in under 5s: assessment and initial management (NICE Guideline NG143)</em>. Published 2019 (Updated 2021).</li>
+          </ol>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- FOOTER PLACEHOLDER -->
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+  <!-- JS CORE -->
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+  <script src="../../../../../js/approach-symptom.js" defer></script>
+
+  <!-- ADVANCED CDSS & SIMULATOR CONTROLLER JAVASCRIPT -->
+  <script>
+    // 1. Smooth Scroll to Section
+    function scrollToSec(secId) {
+      const el = document.getElementById(secId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+
+        // Update Quick Nav Active State
+        document.querySelectorAll('.quick-nav-btn').forEach(btn => btn.classList.remove('active'));
+        if (event && event.currentTarget) {
+          event.currentTarget.classList.add('active');
+        }
+      }
+    }
+
+    // 2. Tab Switcher
+    function switchMainTab(tabId, btnEl) {
+      const container = btnEl.closest('.section-card');
+      container.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      container.querySelectorAll('.tab-content-panel').forEach(p => p.classList.remove('active'));
+
+      btnEl.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    // 3. Temperature & Site Conversion Simulator
+    let currentSite = 'rectal';
+
+    function setSitePreset(site, btnEl) {
+      document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+      btnEl.classList.add('active');
+      currentSite = site;
+      updateTempSim(document.getElementById('tempSlider').value);
+    }
+
+    function updateTempSim(val) {
+      val = parseFloat(val);
+      document.getElementById('tempValDisp').innerText = val.toFixed(1) + ' °C';
+
+      let rectal = val;
+      let siteName = 'Hậu môn (Chuẩn)';
+
+      if (currentSite === 'oral') {
+        rectal = val + 0.4;
+        siteName = 'Miệng (+0.4°C)';
+      } else if (currentSite === 'axillary') {
+        rectal = val + 0.5;
+        siteName = 'Trán / Nách (+0.5°C)';
+      } else if (currentSite === 'tympanic') {
+        rectal = val + 0.8;
+        siteName = 'Ống tai (+0.8°C)';
+      }
+
+      document.getElementById('rectalResultVal').innerText = rectal.toFixed(1) + ' °C';
+      document.getElementById('siteDiffDisp').innerText = siteName;
+
+      // Fill Bar & Badge Status
+      const fillPct = Math.min(100, Math.max(0, ((rectal - 35.5) / 7.0) * 100));
+      document.getElementById('tempMeterFill').style.width = fillPct + '%';
+
+      const badge = document.getElementById('feverBadge');
+      const explanation = document.getElementById('tempSimExplanation');
+
+      if (rectal >= 41.5) {
+        badge.innerText = 'SỐT CỰC CAO (HYPERPYREXIA ≥ 41.5°C)';
+        badge.style.background = 'rgba(239, 68, 68, 0.2)';
+        badge.style.color = '#dc2626';
+        explanation.innerText = 'Sốt cực cao: Cảnh báo nguy cơ tổn thương CNS hoặc nhiễm trùng/xuất huyết não nặng!';
+      } else if (rectal >= 39.0) {
+        badge.innerText = 'SỐT CAO (39.0°C - 41.4°C)';
+        badge.style.background = 'rgba(239, 68, 68, 0.15)';
+        badge.style.color = '#ef4444';
+        explanation.innerText = 'Sốt cao: Cân nhắc dùng thuốc hạ sốt (Paracetamol / Ibuprofen) để giảm quấy khóc, khó chịu.';
+      } else if (rectal >= 38.0) {
+        badge.innerText = 'SỐT VỪA / SỐT NHẸ (38.0°C - 38.9°C)';
+        badge.style.background = 'rgba(245, 158, 11, 0.15)';
+        badge.style.color = '#d97706';
+        explanation.innerText = 'Sốt nhẹ/vừa: Phản ứng sinh lý có lợi, không bắt buộc dùng hạ sốt nếu trẻ chơi đùa bình thường.';
+      } else {
+        badge.innerText = 'KHÔNG SỐT / THÂN NHIỆT BÌNH THƯỜNG (&lt; 38.0°C)';
+        badge.style.background = 'rgba(16, 185, 129, 0.15)';
+        badge.style.color = '#10b981';
+        explanation.innerText = 'Thân nhiệt trong giới hạn bình thường.';
+      }
+    }
+
+    // 4. Antipyretic Calculator Logic
+    function setWeightPreset(wt, btnEl) {
+      document.querySelectorAll('#sec-cdss .preset-btn').forEach(b => b.classList.remove('active'));
+      btnEl.classList.add('active');
+      document.getElementById('wtSlider').value = wt;
+      updateDoseCalc(wt);
+    }
+
+    function updateDoseCalc(wt) {
+      wt = parseFloat(wt);
+      document.getElementById('wtValDisp').innerText = wt.toFixed(1) + ' kg';
+      document.getElementById('wtDispBox').innerText = wt.toFixed(1) + ' kg';
+
+      // Paracetamol: 10 - 15 mg/kg
+      const pMin = Math.round(wt * 10);
+      const pMax = Math.round(wt * 15);
+      const pDay = Math.round(wt * 60);
+      const pSyr = (pMax / 160 * 5).toFixed(1);
+
+      document.getElementById('paraDoseMg').innerText = `${pMin} - ${pMax} mg / lần`;
+      document.getElementById('paraSyrupVol').innerHTML = `Siro (160mg/5ml): <strong>~${pSyr} ml</strong> | Gói 150mg: <strong>${(pMax/150).toFixed(1)} gói</strong>`;
+      document.getElementById('paraMaxDay').innerText = `Dùng mỗi 4–6 giờ | Tối đa: ${pDay} mg/ngày`;
+
+      // Ibuprofen: 5 - 10 mg/kg
+      const iMin = Math.round(wt * 5);
+      const iMax = Math.round(wt * 10);
+      const iDay = Math.round(wt * 40);
+      const iSyr = (iMax / 100 * 5).toFixed(1);
+
+      document.getElementById('ibuDoseMg').innerText = `${iMin} - ${iMax} mg / lần`;
+      document.getElementById('ibuSyrupVol').innerHTML = `Siro (100mg/5ml): <strong>~${iSyr} ml</strong> / lần`;
+      document.getElementById('ibuMaxDay').innerText = `Dùng mỗi 6–8 giờ | Tối đa: ${iDay} mg/ngày`;
+
+      // Age check for Ibuprofen
+      const ageM = parseFloat(document.getElementById('ageMonthsInput').value) || 12;
+      const ibuAlert = document.getElementById('ibuAgeAlert');
+      if (ageM < 6) {
+        ibuAlert.style.display = 'block';
+      } else {
+        ibuAlert.style.display = 'none';
+      }
+    }
+
+    // Initialize Simulators on Load
+    document.addEventListener('DOMContentLoaded', () => {
+      updateTempSim(38.5);
+      updateDoseCalc(10);
+    });
+  </script>
+</body>
+
+</html>

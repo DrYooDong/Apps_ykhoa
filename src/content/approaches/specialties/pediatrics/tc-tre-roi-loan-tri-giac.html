@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Tiếp cận chẩn đoán & cấp cứu trẻ rối loạn tri giác / hôn mê: Thang điểm AVPU & GCS hiệu chỉnh nhi khoa, Học thuyết Monro-Kellie, Áp lực tưới máu não (CPP = MAP - ICP), Phân loại kích thích vs ức chế, Tiếp cận ABCDE & Thuật toán chống phù nội Nhi khoa YDS 2020.">
+  <title>Tiếp Cận Trẻ Rối Loạn Tri Giác – CliniPortal</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@500;600&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core (5 levels up to root) -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../../css/components/approach-symptom.css">
+
+  <style>
+    /* ==========================================================================
+       PEDIATRIC ALTERED CONSCIOUSNESS APPROACH STYLES & UI SYSTEM
+       ========================================================================== */
+    :root {
+      --neuro-primary: #7c3aed;
+      --neuro-purple: #8b5cf6;
+      --neuro-dark: #0f172a;
+      --neuro-navy: #1e1b4b;
+      --neuro-red: #ef4444;
+      --neuro-amber: #d97706;
+      --neuro-cyan: #06b6d4;
+      --neuro-success: #10b981;
+    }
+
+    /* Override parent container overflow so position: sticky works */
+    html, body,
+    .app-container,
+    .main-wrapper,
+    .layout-content-area {
+      overflow: visible !important;
+    }
+
+    /* Hero Banner Theme */
+    .hero-neuro {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #4c1d95 100%);
+      border-radius: 20px;
+      padding: 32px;
+      color: #ffffff;
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.25);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .hero-neuro::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -10%;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, rgba(239, 68, 68, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-neuro-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .hero-title-group h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      font-family: var(--font-display);
+      margin: 8px 0 12px 0;
+      color: #ffffff;
+      line-height: 1.25;
+    }
+
+    .hero-badges-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .hero-badge-pill {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #e0e7ff;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-badge-pill.alert {
+      background: rgba(239, 68, 68, 0.25);
+      border-color: rgba(239, 68, 68, 0.4);
+      color: #fca5a5;
+    }
+
+    .hero-quick-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .stat-box {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+
+    .stat-box .stat-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #cbd5e1;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .stat-box .stat-val {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #c084fc;
+      font-family: var(--font-display);
+    }
+
+    .stat-box .stat-sub {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+
+    /* Quick Nav Sticky Bar */
+    .quick-nav-bar {
+      position: sticky !important;
+      top: calc(var(--header-height, 60px) + 8px) !important;
+      z-index: 150 !important;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      padding: 10px 14px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      white-space: nowrap;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+    }
+
+    .quick-nav-btn {
+      background: transparent;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .quick-nav-btn:hover,
+    .quick-nav-btn.active {
+      background: rgba(124, 58, 237, 0.12);
+      color: var(--neuro-primary);
+    }
+
+    /* Section Card Wrappers */
+    .section-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+      scroll-margin-top: 130px;
+    }
+
+    .section-title-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid rgba(124, 58, 237, 0.2);
+    }
+
+    .section-icon-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(124, 58, 237, 0.12);
+      color: var(--neuro-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .section-title-group h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin: 0;
+    }
+
+    /* Clinical Tables & Grids */
+    .clinical-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 16px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+    }
+
+    .clinical-table th {
+      background: rgba(124, 58, 237, 0.08);
+      color: var(--color-text);
+      padding: 12px 16px;
+      font-weight: 700;
+      text-align: left;
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .clinical-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: var(--color-text);
+    }
+
+    .clinical-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Red Flag Box & Alerts */
+    .clinical-alert-box {
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin: 18px 0;
+      border-left: 5px solid;
+    }
+
+    .clinical-alert-box.danger {
+      background: rgba(239, 68, 68, 0.08);
+      border-color: #ef4444;
+      color: var(--color-text);
+    }
+
+    .clinical-alert-box.warning {
+      background: rgba(245, 158, 11, 0.08);
+      border-color: #f59e0b;
+      color: var(--color-text);
+    }
+
+    .clinical-alert-box.info {
+      background: rgba(2, 132, 199, 0.08);
+      border-color: #0284c7;
+      color: var(--color-text);
+    }
+
+    .clinical-alert-title {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Flowchart Visualizer */
+    .flow-step-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .flow-node {
+      background: var(--color-surface);
+      border: 2px solid var(--color-border);
+      border-radius: 14px;
+      padding: 18px 20px;
+      position: relative;
+      transition: all 0.2s;
+    }
+
+    .flow-node.red-flag-node {
+      border-color: #ef4444;
+      background: rgba(239, 68, 68, 0.04);
+    }
+
+    .flow-node.decision-node {
+      border-color: #0284c7;
+      background: rgba(2, 132, 199, 0.04);
+    }
+
+    .flow-node.treatment-node {
+      border-color: #10b981;
+      background: rgba(16, 185, 129, 0.04);
+    }
+
+    .flow-tag {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .flow-tag.danger { background: #ef4444; color: white; }
+    .flow-tag.info { background: #0284c7; color: white; }
+    .flow-tag.success { background: #10b981; color: white; }
+    .flow-tag.warning { background: #f59e0b; color: white; }
+
+    /* Interactive CDSS Simulators */
+    .sim-container {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border: 1px solid #cbd5e1;
+      border-radius: 16px;
+      padding: 24px;
+      margin: 20px 0;
+    }
+
+    [data-theme="dark"] .sim-container {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border-color: #334155;
+    }
+
+    .sim-grid-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 868px) {
+      .sim-grid-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .sim-result-card {
+      background: var(--color-surface);
+      border: 2px solid var(--color-border);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .sim-result-status {
+      padding: 14px;
+      border-radius: 10px;
+      font-weight: 700;
+      text-align: center;
+      font-size: 1.05rem;
+      margin-bottom: 14px;
+    }
+
+    .sim-result-status.red {
+      background: rgba(239, 68, 68, 0.15);
+      color: #dc2626;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .sim-result-status.yellow {
+      background: rgba(245, 158, 11, 0.15);
+      color: #d97706;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .sim-result-status.green {
+      background: rgba(16, 185, 129, 0.15);
+      color: #059669;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+  </style>
+
+  <!-- JS Core (5 levels up) -->
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+  <script src="../../../../../js/approach-symptom.js" defer></script>
+</head>
+
+<body>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- App Container -->
+  <div class="app-container">
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <div class="main-wrapper" id="mainContent" style="padding: 20px 24px;">
+
+      <!-- HERO BANNER -->
+      <section class="hero-neuro">
+        <div class="hero-neuro-header">
+          <div class="hero-title-group">
+            <div class="hero-badges-group">
+              <span class="hero-badge-pill"><i class="fa-solid fa-brain"></i> Nhi khoa YDS Tập 2 (2020)</span>
+              <span class="hero-badge-pill"><i class="fa-solid fa-scale-balanced"></i> Thang AVPU &amp; GCS Hiệu Chỉnh</span>
+              <span class="hero-badge-pill alert"><i class="fa-solid fa-syringe"></i> Cấp Cứu ABCDE &amp; Chống Phù Não</span>
+            </div>
+            <h1>👶 TIẾP CẬN TRẺ RỐI LOẠN TRI GIÁC &amp; HÔN MÊ</h1>
+            <p style="font-size: 0.95rem; opacity: 0.9; margin: 0; max-width: 750px; line-height: 1.5;">
+              Chiến lược tiếp cận chẩn đoán và cấp cứu rối loạn tri giác ở trẻ em: Sinh lý hệ ARAS và vỏ não, phân loại kích thích vs ức chế, thang điểm AVPU &amp; GCS hiệu chỉnh nhi khoa, sinh lý tưới máu não CPP/ICP, quy trình cấp cứu ABCDE và thuật toán chống phù não YDS.
+            </p>
+          </div>
+        </div>
+
+        <!-- HERO QUICK STATS -->
+        <div class="hero-quick-stats">
+          <div class="stat-box">
+            <div class="stat-label">Cấu Trúc Sinh Lý</div>
+            <div class="stat-val">ARAS &amp; Vỏ Não</div>
+            <div class="stat-sub">Hệ lưới hoạt hóa &amp; Mạng lưới nhận thức</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Chỉ Định Đặt NKN</div>
+            <div class="stat-val">GCS ≤ 8 Điểm</div>
+            <div class="stat-sub">Hoặc mức độ P / U trên thang AVPU</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Áp Lực Tưới Máu</div>
+            <div class="stat-val">CPP = MAP - ICP</div>
+            <div class="stat-sub">Duy trì CPP &gt; 50 mmHg &amp; PaCO₂ 30-40</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Chống Phù Não</div>
+            <div class="stat-val" style="color: #f87171;">NaCl 3% / Mannitol</div>
+            <div class="stat-sub">Đầu cao 30° + Thở máy tăng thông khí</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STICKY QUICK NAV BAR -->
+      <nav class="quick-nav-bar" id="quickNav">
+        <button class="quick-nav-btn active" onclick="scrollToSection('overview')">
+          <i class="fa-solid fa-brain"></i> Sinh lý ARAS
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('classification')">
+          <i class="fa-solid fa-list-check"></i> Phân loại Kích thích vs Ức chế
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('avpu-gcs')">
+          <i class="fa-solid fa-scale-balanced"></i> Thang AVPU &amp; GCS
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('monro-kellie')">
+          <i class="fa-solid fa-gauge-high"></i> Monro-Kellie &amp; CPP/ICP
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('abcde-triage')">
+          <i class="fa-solid fa-kit-medical"></i> Cấp cứu Ban đầu ABCDE
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('icp-treatment')">
+          <i class="fa-solid fa-prescription"></i> Thuật toán Chống Phù Não
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('cdss-evaluator')">
+          <i class="fa-solid fa-calculator"></i> Tool CDSS Tương tác
+        </button>
+      </nav>
+
+      <!-- SECTION 1: PHYSIOLOGY -->
+      <section class="section-card" id="overview">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-brain"></i></div>
+          <div>
+            <h2>1. Đại Cương &amp; Sinh Lý Học Cơ Bản Của Tri Giác</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Sự toàn vẹn của Vỏ não &amp; Hệ lưới hoạt hóa hướng lên (ARAS)</span>
+          </div>
+        </div>
+
+        <div style="line-height: 1.6; font-size: 0.9rem;">
+          <p>
+            <strong>Định nghĩa:</strong> Tri giác tỉnh táo của trẻ phụ thuộc hoàn toàn vào sự toàn vẹn chức năng của <strong>vỏ não</strong> và <strong>hệ lưới hoạt hóa hướng lên (ARAS - Ascending Reticular Activating System)</strong> đến các cơ quan đích ở vùng dưới đồi và đồi thị.
+          </p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 16px 0;">
+            <div style="background: rgba(124, 58, 237, 0.06); border: 1px solid rgba(124, 58, 237, 0.2); padding: 18px; border-radius: 12px;">
+              <h3 style="margin-top: 0; color: #7c3aed; font-size: 1.02rem;"><i class="fa-solid fa-bolt"></i> 1. Tỉnh Thức (Arousal)</h3>
+              <p style="margin: 0; font-size: 0.88rem; line-height: 1.5;">
+                Do hệ lưới ARAS ở thân não điều chỉnh đáp ứng mở mắt và phản ứng với các tín hiệu kích thích từ môi trường ngoại cảnh.
+              </p>
+            </div>
+
+            <div style="background: rgba(2, 132, 199, 0.06); border: 1px solid rgba(2, 132, 199, 0.2); padding: 18px; border-radius: 12px;">
+              <h3 style="margin-top: 0; color: #0284c7; font-size: 1.02rem;"><i class="fa-solid fa-lightbulb"></i> 2. Nhận Thức (Awareness)</h3>
+              <p style="margin: 0; font-size: 0.88rem; line-height: 1.5;">
+                Phụ thuộc vào mạng lưới kết nối phân bố rộng rãi giữa các cấu trúc vỏ não và các nhân dưới vỏ (định hướng bản thân, không gian, thời gian).
+              </p>
+            </div>
+          </div>
+
+          <div class="clinical-alert-box warning">
+            <div class="clinical-alert-title"><i class="fa-solid fa-triangle-exclamation"></i> Diễn tiến các mức độ suy giảm tri giác</div>
+            <p style="margin: 0; font-size: 0.88rem; line-height: 1.5;">
+              Rối loạn tri giác diễn tiến liên tục theo thang độ: <strong>Bứt rứt → Kích thích → Ngủ gà → Li bì → Lơ mơ → Hôn mê</strong>. Hôn mê là tình trạng rối loạn tri giác nặng nhất, đe dọa tính mạng cấp bách do tổn thương hệ ARAS hoặc tổn thương diện rộng cả 2 bán cầu não.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: CLASSIFICATION -->
+      <section class="section-card" id="classification">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-list-check"></i></div>
+          <div>
+            <h2>2. Phân Loại Rối Loạn Tri Giác (Kích Thích vs Ức Chế)</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Biểu hiện lâm sàng &amp; nguyên nhân gợi ý</span>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <!-- AGITATED TYPE -->
+          <div style="background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 12px; padding: 18px;">
+            <h3 style="margin-top: 0; color: #dc2626; font-size: 1.05rem;"><i class="fa-solid fa-fire"></i> 1. Rối Loạn Tri Giác Dạng Kích Thích</h3>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 8px;">Thường gặp ở trẻ lớn, ít gặp ở trẻ nhỏ. Nguyên nhân: ngộ độc, sốt cao, rối loạn chuyển hóa, động kinh.</p>
+            <ul style="padding-left: 18px; font-size: 0.88rem; line-height: 1.5; margin: 0;">
+              <li><strong>Ảo giác (Hallucinations):</strong> Tri giác hoàn toàn không có đối tượng cảm nhận thật.</li>
+              <li><strong>Ảo tưởng (Illusions):</strong> Tri giác sai lệch về một sự vật có thật.</li>
+              <li><strong>Mê sảng (Delirium):</strong> Mất định hướng, sợ hãi, kích thích (ví dụ: ngộ độc Atropin do điều trị quá liều phospho hữu cơ).</li>
+            </ul>
+          </div>
+
+          <!-- INHIBITORY TYPE -->
+          <div style="background: rgba(124, 58, 237, 0.05); border: 1px solid rgba(124, 58, 237, 0.2); border-radius: 12px; padding: 18px;">
+            <h3 style="margin-top: 0; color: #7c3aed; font-size: 1.05rem;"><i class="fa-solid fa-bed"></i> 2. Rối Loạn Tri Giác Dạng Ức Chế</h3>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 8px;">Là dạng phổ biến nhất ở trẻ em khi có bệnh lý thần kinh/toàn thân:</p>
+            <ul style="padding-left: 18px; font-size: 0.88rem; line-height: 1.5; margin: 0;">
+              <li><strong>Ngủ gà (Somnolence):</strong> Giảm hứng thú với môi trường, phản ứng chậm chạp, luôn buồn ngủ nhưng lay thức được.</li>
+              <li><strong>Lơ mơ (Stupor):</strong> Đáp ứng kém hoặc chỉ đáp ứng khi có kích thích mạnh và lặp lại.</li>
+              <li><strong>Hôn mê (Coma):</strong> Không đáp ứng với kích thích đau, mất phản xạ bảo vệ đường thở.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: AVPU & PEDIATRIC GCS -->
+      <section class="section-card" id="avpu-gcs">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-scale-balanced"></i></div>
+          <div>
+            <h2>3. Thang Điểm Đánh Giá Tri Giác AVPU &amp; GCS Nhi Khoa</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Bảng 86.1 &amp; Bảng 86.2 - Nhi khoa YDS Tập 2 (2020)</span>
+          </div>
+        </div>
+
+        <!-- AVPU TABLE 86.1 -->
+        <h3 style="font-size: 1.05rem; color: var(--neuro-primary); margin-top: 0;">Bảng 86.1: Thang Điểm Đánh Giá Nhanh AVPU</h3>
+        <div style="overflow-x: auto; margin-bottom: 24px;">
+          <table class="clinical-table">
+            <thead>
+              <tr>
+                <th style="width: 15%;">Ký Hiệu</th>
+                <th style="width: 25%;">Mức Độ Tri Giác</th>
+                <th style="width: 60%;">Mô Tả Đáp Ứng Lâm Sàng Của Trẻ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong style="color: #10b981; font-size: 1.1rem;">A</strong></td>
+                <td><strong>Alert (Tỉnh táo)</strong></td>
+                <td>Trẻ thức, linh hoạt, đáp ứng phù hợp với kích thích từ cha mẹ và ngoại cảnh.</td>
+              </tr>
+              <tr>
+                <td><strong style="color: #0284c7; font-size: 1.1rem;">V</strong></td>
+                <td><strong>Voice (Đáp ứng âm thanh)</strong></td>
+                <td>Trẻ chỉ đáp ứng khi gọi tên hoặc nói lớn tiếng.</td>
+              </tr>
+              <tr>
+                <td><strong style="color: #d97706; font-size: 1.1rem;">P</strong></td>
+                <td><strong>Painful (Đáp ứng đau)</strong></td>
+                <td>Trẻ chỉ đáp ứng khi bị kích thích gây đau (bấm nền móng, ấn hốc mắt). <span style="color: #dc2626; font-weight: 700;">👉 Nguy cơ mất phản xạ bảo vệ đường thở!</span></td>
+              </tr>
+              <tr>
+                <td><strong style="color: #dc2626; font-size: 1.1rem;">U</strong></td>
+                <td><strong>Unresponsive (Không đáp ứng)</strong></td>
+                <td>Trẻ hoàn toàn không đáp ứng với bất kỳ kích thích nào. <span style="color: #dc2626; font-weight: 700;">👉 Bắt buộc Đặt Nội Khí Quản!</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- PEDIATRIC GCS TABLE 86.2 -->
+        <h3 style="font-size: 1.05rem; color: var(--neuro-primary);">Bảng 86.2: Thang Điểm Hôn Mê Glasgow (GCS) Hiệu Chỉnh Nhi Khoa</h3>
+        <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 12px;">
+          Trẻ $\le 2$ tuổi bắt buộc dùng tiêu chuẩn hiệu chỉnh dành cho Nhũ nhi:
+        </p>
+
+        <div style="overflow-x: auto;">
+          <table class="clinical-table">
+            <thead>
+              <tr>
+                <th style="width: 10%;">Điểm</th>
+                <th style="width: 30%;">Mở Mắt (E - Eye)</th>
+                <th style="width: 30%;">Lời Nói (V - Verbal) [&le; 2y vs &gt; 2y]</th>
+                <th style="width: 30%;">Vận Động (M - Motor) [&le; 2y vs &gt; 2y]</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>6</strong></td>
+                <td>—</td>
+                <td>—</td>
+                <td>• <em>&le; 2y:</em> Vận động tự nhiên / có chủ đích
+                  <br>• <em>&gt; 2y:</em> Thực hiện đúng y lệnh</td>
+              </tr>
+              <tr>
+                <td><strong>5</strong></td>
+                <td>—</td>
+                <td>• <em>&le; 2y:</em> Bập bẹ, phát âm phù hợp
+                  <br>• <em>&gt; 2y:</em> Định hướng đúng, nói rõ</td>
+                <td>• <em>&le; 2y:</em> Rút chi khi sờ / Định vị đau
+                  <br>• <em>&gt; 2y:</em> Định vị đau đúng</td>
+              </tr>
+              <tr>
+                <td><strong>4</strong></td>
+                <td>Mở mắt tự nhiên</td>
+                <td>• <em>&le; 2y:</em> Khóc dỗ nín được
+                  <br>• <em>&gt; 2y:</em> Nói lú lẫn, không nhất quán</td>
+                <td>• <em>&le; 2y:</em> Rụt người / Đau không chính xác
+                  <br>• <em>&gt; 2y:</em> Đáp ứng đau không chính xác</td>
+              </tr>
+              <tr>
+                <td><strong>3</strong></td>
+                <td>Mở mắt khi gọi / nghe tiếng động</td>
+                <td>• <em>&le; 2y:</em> Khóc không dỗ được
+                  <br>• <em>&gt; 2y:</em> Nói từ không thích hợp</td>
+                <td>• Gồng mất vỏ (Decorticate) [Gập cứng 2 tay]</td>
+              </tr>
+              <tr>
+                <td><strong>2</strong></td>
+                <td>Mở mắt khi kích thích đau</td>
+                <td>• <em>&le; 2y:</em> Rên rỉ / Âm thanh vô nghĩa
+                  <br>• <em>&gt; 2y:</em> Phát âm vô nghĩa</td>
+                <td>• Gồng mất não (Decerebrate) [Duỗi cứng 2 tay]</td>
+              </tr>
+              <tr>
+                <td><strong>1</strong></td>
+                <td>Không mở mắt</td>
+                <td>Không đáp ứng</td>
+                <td>Không đáp ứng</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 14px; text-align: center; font-weight: 700;">
+          <div style="background: rgba(16, 185, 129, 0.1); padding: 12px; border-radius: 8px; color: #059669;">
+            GCS 13 – 15 Điểm: Rối loạn tri giác nhẹ
+          </div>
+          <div style="background: rgba(245, 158, 11, 0.1); padding: 12px; border-radius: 8px; color: #d97706;">
+            GCS 9 – 12 Điểm: Rối loạn trung bình
+          </div>
+          <div style="background: rgba(239, 68, 68, 0.1); padding: 12px; border-radius: 8px; color: #dc2626;">
+            GCS ≤ 8 Điểm: HÔN MÊ NẶNG (Đặt NKN khẩn)
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: MONRO-KELLIE & CPP/ICP -->
+      <section class="section-card" id="monro-kellie">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-gauge-high"></i></div>
+          <div>
+            <h2>4. Sinh Lý Áp Lực Nội Sọ (ICP) &amp; Tưới Máu Não (CPP)</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Học thuyết Monro-Kellie &amp; Các yếu tố ảnh hưởng lưu lượng máu não (CBF)</span>
+          </div>
+        </div>
+
+        <div style="line-height: 1.6; font-size: 0.9rem;">
+          <div class="clinical-alert-box info">
+            <div class="clinical-alert-title"><i class="fa-solid fa-calculator"></i> Công thức Áp Lực Tưới Máu Não (Cerebral Perfusion Pressure - CPP)</div>
+            <p style="margin: 0; font-size: 0.95rem; font-weight: 700; color: #0284c7;">
+              $$CPP = MAP - ICP$$
+            </p>
+            <p style="margin: 4px 0 0 0; font-size: 0.86rem;">
+              Trong đó: $MAP$ là Huyết áp trung bình ($\frac{Systolic + 2 \times Diastolic}{3}$), $ICP$ là Áp lực nội sọ. Mục tiêu điều trị cấp cứu là <strong>duy trì $CPP &gt; 50\text{ mmHg}$</strong> để tránh thiếu máu cục bộ não gây tử vong.
+            </p>
+          </div>
+
+          <h3 style="font-size: 1.05rem; color: var(--color-text); margin-top: 16px;">Học Thuyết Monro – Kellie &amp; Đồ Thị Thể Tích - Áp Lực (Hình 86.2)</h3>
+          <p>
+            Hộp sọ nhi khoa sau khi đóng thóp là một bình cứng cố định thể tích gồm 3 thành phần: <strong>Nhu mô não (80%)</strong>, <strong>Dịch não tủy CSF (10%)</strong> và <strong>Máu (10%)</strong>.
+            <br>• <strong>Giai đoạn bù trừ:</strong> Khối chèn ép tăng thể tích được bù bằng cách đẩy dịch não tủy và máu tĩnh mạch ra khỏi hộp sọ → $ICP$ tăng rất ít.
+            <br>• <strong>Giai đoạn mất bù:</strong> Khi đã kiệt khả năng bù trừ, chỉ cần một lượng thể tích nhỏ tăng thêm cũng làm $ICP$ tăng vọt vượt ngưỡng $20 - 50\text{ mmHg}$, gây thoát vị não nguy kịch.
+          </p>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px;">
+            <div style="background: var(--color-bg); padding: 14px; border-radius: 10px; border: 1px solid var(--color-border);">
+              <strong style="color: #7c3aed;">Ảnh hưởng của $PaCO_2$ động mạch:</strong>
+              <p style="margin: 4px 0 0 0; font-size: 0.86rem;">
+                Tăng $PaCO_2$ gây dãn mạch não cực mạnh → Tăng dòng máu tưới não ($CBF$) → <strong>Tăng $ICP$ cấp</strong>.
+                <br>Do đó, <strong>TĂNG THÔNG KHÍ (duy trì $PaCO_2\ 30 - 40\text{ mmHg}$)</strong> làm co nhẹ mạch não, được dùng làm biện pháp cấp cứu khẩn cấp làm giảm $ICP$.
+              </p>
+            </div>
+
+            <div style="background: var(--color-bg); padding: 14px; border-radius: 10px; border: 1px solid var(--color-border);">
+              <strong style="color: #7c3aed;">Giá trị ICP chuẩn theo tuổi:</strong>
+              <p style="margin: 4px 0 0 0; font-size: 0.86rem;">
+                • Sơ sinh: $\approx 6\text{ mmHg}$ ($82\text{ mmH}_2\text{O}$).
+                <br>• Trẻ 1 – 7 tuổi: $9 - 21\text{ mmHg}$ ($12 - 28\text{ cmH}_2\text{O}$).
+                <br>• <strong style="color: #dc2626;">Bất thường: $ICP &gt; 20\text{ mmHg}$ kéo dài &gt; 5 phút</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: ABCDE TRIAGE -->
+      <section class="section-card" id="abcde-triage">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-kit-medical"></i></div>
+          <div>
+            <h2>5. Quy Trình Cấp Cứu Ban Đầu Theo Chuẩn ABCDE</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Ưu tiên bảo vệ tính mạng &amp; Loại trừ ngay hạ đường huyết</span>
+          </div>
+        </div>
+
+        <div class="flow-step-container">
+          <div class="flow-node red-flag-node">
+            <span class="flow-tag danger">A - AIRWAY (ĐƯỜNG THỞ)</span>
+            <p style="margin: 4px 0; font-size: 0.88rem;">
+              • Thông thoáng đường thở (ngửa đầu - nâng cằm, nâng hàm).
+              <br>• <strong style="color: #dc2626;">CHỈ ĐỊNH ĐẶT NỘI KHÍ QUẢN (ETT):</strong> Khi trẻ ở mức độ P hoặc U (thang AVPU), GCS $\le 8$ điểm, hoặc mất phản xạ ho/nôn để bảo vệ đường thở tránh hít sặc.
+            </p>
+          </div>
+
+          <div class="flow-node decision-node">
+            <span class="flow-tag info">B - BREATHING (HÔ HẤP)</span>
+            <p style="margin: 4px 0; font-size: 0.88rem;">
+              • Thở oxy lưu lượng cao qua mask có túi dự trữ.
+              <br>• Nếu giảm thông khí → Thở máy hỗ trợ, duy trì $SpO_2\ 96 - 99\%$ và $PaCO_2\ 30 - 40\text{ mmHg}$ (tránh ứ $CO_2$ gây dãn mạch não).
+            </p>
+          </div>
+
+          <div class="flow-node decision-node">
+            <span class="flow-tag info">C - CIRCULATION (TUẦN HOÀN)</span>
+            <p style="margin: 4px 0; font-size: 0.88rem;">
+              • Đánh giá nhịp tim, huyết áp, CRT. Nhịp tim chậm + Tăng HA gợi ý <strong>Tam chứng Cushing (tăng ICP nặng)</strong>.
+              <br>• Nếu tụt HA / Sốc → Truyền dịch Normal Saline 0,9% và dùng thuốc vận mạch (Adrenaline/Noradrenaline) để duy trì $CPP &gt; 50\text{ mmHg}$.
+            </p>
+          </div>
+
+          <div class="flow-node treatment-node">
+            <span class="flow-tag warning">D - DISABILITY (THẦN KINH &amp; ĐƯỜNG HUYẾT)</span>
+            <p style="margin: 4px 0; font-size: 0.88rem;">
+              • Đánh giá nhanh AVPU, GCS, phản xạ đồng tử, dấu gồng mất vỏ/mất não.
+              <br>• <strong style="color: #d97706;">BẮT BUỘC KIỂM TRA ĐƯỜNG HUYẾT MAO MẠCH TẠI GIƯỜNG NGAY LẬP TỨC:</strong> Nếu $Glucose &lt; 40 - 50\text{ mg/dL}$ → Tiêm tĩnh mạch Dextrose 10% ($2\text{ mL/kg}$) cấp cứu.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6: ICP TREATMENT ALGORITHM -->
+      <section class="section-card" id="icp-treatment">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-prescription"></i></div>
+          <div>
+            <h2>6. Thuật Toán Xử Trí Tăng Áp Lực Nội Sọ (ICP)</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Quy trình chống phù não Nhi khoa YDS Tập 2 (2020)</span>
+          </div>
+        </div>
+
+        <div class="clinical-alert-box danger">
+          <div class="clinical-alert-title"><i class="fa-solid fa-triangle-exclamation"></i> Dấu hiệu dọa thoát vị não / Tăng áp lực nội sọ cấp</div>
+          <p style="margin: 0; font-size: 0.88rem; line-height: 1.5;">
+            Đồng tử giãn cố định 1 hoặc 2 bên, thóp phồng căng, tư thế duỗi cứng mất não, hoặc <strong>Tam chứng Cushing</strong> (Mạch chậm, Tăng huyết áp, Rối loạn nhịp thở).
+          </p>
+        </div>
+
+        <div style="background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 12px; padding: 20px; font-size: 0.9rem; line-height: 1.6;">
+          <h3 style="margin-top: 0; color: var(--neuro-primary); font-size: 1.05rem;">Quy Trình 4 Bước Chống Phù Não Bắt Buộc:</h3>
+          <ol style="padding-left: 20px; margin-bottom: 0;">
+            <li><strong>Tư thế &amp; Chăm sóc:</strong> Đặt trẻ nằm nâng đầu cao <strong>$30^\circ$</strong>, giữ đầu ở tư thế <strong>thẳng trục</strong> (tránh gập/xoay cổ làm cản trở dòng máu tĩnh mạch cảnh trở về). An thần đầy đủ khi làm thủ thuật.</li>
+            <li><strong>Thông khí hỗ trợ:</strong> Duy trì $PaCO_2\ 30 - 40\text{ mmHg}$ (tăng thông khí nhẹ) và $SpO_2\ 96 - 99\%$. Hạ sốt tích cực (thân nhiệt &lt; 37,5°C).</li>
+            <li><strong>Chụp CT-Scan Sọ Não Khẩn:</strong> Tìm khối máu tụ, phù não, lệch đường giữa để hội chẩn Ngoại thần kinh mổ giải áp.</li>
+            <li><strong>Liệu Pháp Thẩm Thấu Chống Phù Não:</strong>
+              <ul style="padding-left: 18px; margin-top: 4px;">
+                <li><strong>Natri Ưu Trương 3% (NaCl 3%):</strong> Truyền tĩnh mạch $2 - 5\text{ mL/kg}$ trong 10-15 phút (Duy trì $Na$ máu &lt; 155 mEq/L, Áp lực thẩm thấu &lt; 360 mOsmol/L).</li>
+                <li><strong>Mannitol 20%:</strong> Truyền $0.5 - 1.0\text{ g/kg}$ trong 20-30 phút (khi huyết áp ổn định).</li>
+                <li><strong>Dexamethasone:</strong> Chỉ định khi phù não do khối u não chèn ép.</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- SECTION 7: INTERACTIVE CDSS EVALUATOR -->
+      <section class="section-card" id="cdss-evaluator">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-laptop-medical"></i></div>
+          <div>
+            <h2>7. Bộ Công Cụ CDSS Tính Điểm GCS &amp; Đánh Giá ICP Tương Tác</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Mô phỏng GCS nhi khoa &amp; Đánh giá áp lực tưới máu CPP</span>
+          </div>
+        </div>
+
+        <div class="sim-container">
+          <h3 style="margin-top: 0; font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-calculator"></i> CDSS 1: Calculator Điểm GCS Nhi Khoa &amp; Triage Khẩn</h3>
+
+          <div class="sim-grid-layout">
+            <div>
+              <label style="font-weight: 700; font-size: 0.88rem;">1. Nhóm Tuổi Của Trẻ:</label>
+              <select id="gcsAge" onchange="runGcsCdss()" style="width: 100%; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); margin-top: 4px; font-weight: 600;">
+                <option value="infant" selected>Nhũ Nhi (≤ 2 tuổi)</option>
+                <option value="child">Trẻ Lớn (&gt; 2 tuổi)</option>
+              </select>
+
+              <!-- EYE -->
+              <label style="font-weight: 700; font-size: 0.88rem; display: block; margin-top: 12px;">2. Đáp Ứng Mở Mắt (E):</label>
+              <select id="gcsEye" onchange="runGcsCdss()" style="width: 100%; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); margin-top: 4px;">
+                <option value="4">4 điểm - Mở mắt tự nhiên</option>
+                <option value="3">3 điểm - Mở mắt khi gọi / nghe tiếng động</option>
+                <option value="2">2 điểm - Mở mắt khi kích thích đau</option>
+                <option value="1">1 điểm - Không mở mắt</option>
+              </select>
+
+              <!-- VERBAL -->
+              <label style="font-weight: 700; font-size: 0.88rem; display: block; margin-top: 12px;">3. Đáp Ứng Lời Nói (V):</label>
+              <select id="gcsVerbal" onchange="runGcsCdss()" style="width: 100%; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); margin-top: 4px;">
+                <option value="5">5 điểm - Bập bẹ / Định hướng tốt</option>
+                <option value="4">4 điểm - Khóc dỗ nín / Nói lú lẫn</option>
+                <option value="3">3 điểm - Khóc không dỗ được / Từ không thích hợp</option>
+                <option value="2">2 điểm - Rên rỉ / Phát âm vô nghĩa</option>
+                <option value="1">1 điểm - Không đáp ứng</option>
+              </select>
+
+              <!-- MOTOR -->
+              <label style="font-weight: 700; font-size: 0.88rem; display: block; margin-top: 12px;">4. Đáp Ứng Vận Động (M):</label>
+              <select id="gcsMotor" onchange="runGcsCdss()" style="width: 100%; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); margin-top: 4px;">
+                <option value="6">6 điểm - Cử động có chủ đích / Theo y lệnh</option>
+                <option value="5">5 điểm - Rút chi khi sờ / Định vị đau đúng</option>
+                <option value="4">4 điểm - Rụt người / Kích thích đau không chính xác</option>
+                <option value="3">3 điểm - Gồng mất vỏ (Decorticate - gập 2 tay)</option>
+                <option value="2">2 điểm - Gồng mất não (Decerebrate - duỗi 2 tay)</option>
+                <option value="1">1 điểm - Không đáp ứng</option>
+              </select>
+            </div>
+
+            <!-- RESULT CARD -->
+            <div class="sim-result-card">
+              <div>
+                <div style="font-size: 0.8rem; text-transform: uppercase; font-weight: 700; color: var(--color-text-muted); margin-bottom: 6px;">KẾT QUẢ ĐÁNH GIÁ GCS:</div>
+                <div id="simGcsStatus" class="sim-result-status green">
+                  🟢 GCS 15 ĐIỂM - TRI GIÁC TỈNH TÁO
+                </div>
+                <div id="simGcsDetails" style="font-size: 0.88rem; line-height: 1.5; color: var(--color-text);">
+                  Đang tính toán...
+                </div>
+              </div>
+
+              <div style="margin-top: 16px; padding-top: 12px; border-top: 1px dashed var(--color-border); font-size: 0.82rem; color: var(--color-text-muted);">
+                <strong>Lưu ý:</strong> Mọi trường hợp GCS ≤ 8 điểm đều cần chuẩn bị sẵn sàng dụng cụ Đặt Nội Khí Quản.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- REFERENCES -->
+        <div style="margin-top: 24px; padding-top: 14px; border-top: 1px dashed var(--color-border); font-size: 0.82rem; color: var(--color-text-muted);">
+          <strong>📚 Tài Liệu Tham Khảo Chuẩn AMA:</strong>
+          <br>1. Lê Phước Truyền. Bài 86: Tiếp cận trẻ rối loạn tri giác. Trong: <em>Nhi khoa YDS - Tập 2 (Hồi sức cấp cứu)</em>. Bộ môn Nhi - Đại học Y Dược Thành phố Hồ Chí Minh; 2020:452-468.
+          <br>2. Lê Phước Truyền, Nguyễn Huy Luân. Bài 98: Khám và phân loại trẻ bệnh. Trong: <em>Nhi khoa YDS - Tập 4 (Hồi sức cấp cứu)</em>. Bộ môn Nhi - Đại học Y Dược Thành phố Hồ Chí Minh; 2020:718-731.
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+  <!-- INLINE CDSS JAVASCRIPT LOGIC -->
+  <script>
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        document.querySelectorAll('.quick-nav-btn').forEach(btn => btn.classList.remove('active'));
+        const activeBtn = Array.from(document.querySelectorAll('.quick-nav-btn')).find(b => b.getAttribute('onclick').includes(id));
+        if (activeBtn) activeBtn.classList.add('active');
+      }
+    }
+
+    function runGcsCdss() {
+      const e = parseInt(document.getElementById('gcsEye').value) || 4;
+      const v = parseInt(document.getElementById('gcsVerbal').value) || 5;
+      const m = parseInt(document.getElementById('gcsMotor').value) || 6;
+
+      const totalGcs = e + v + m;
+      const statusEl = document.getElementById('simGcsStatus');
+      const detailsEl = document.getElementById('simGcsDetails');
+
+      if (totalGcs <= 8) {
+        statusEl.className = 'sim-result-status red';
+        statusEl.innerHTML = `🔴 GCS ${totalGcs} ĐIỂM - HÔN MÊ NẶNG (CHỈ ĐỊNH ĐẶT NKN)`;
+        detailsEl.innerHTML = `
+          • <strong>Thành phần:</strong> E${e} V${v} M${m}.<br>
+          👉 <strong>HÀNH ĐỘNG CẤP CỨU NGAY:</strong><br>
+          1. <strong>Chỉ định Đặt Nội Khí Quản (ETT)</strong> để bảo vệ đường thở, phòng ngừa hít sặc.<br>
+          2. Thở máy hỗ trợ, duy trì $SpO_2\ 96-99\%$ và $PaCO_2\ 30-40\text{ mmHg}$.<br>
+          3. Kiểm tra ngay <strong>Đường huyết mao mạch tại giường</strong>.<br>
+          4. Chuẩn bị chụp CT-scan sọ não khẩn và liệu pháp chống phù não (NaCl 3% / Mannitol).
+        `;
+      } else if (totalGcs <= 12) {
+        statusEl.className = 'sim-result-status yellow';
+        statusEl.innerHTML = `🟡 GCS ${totalGcs} ĐIỂM - RỐI LOẠN TRI GIÁC TRUNG BÌNH`;
+        detailsEl.innerHTML = `
+          • <strong>Thành phần:</strong> E${e} V${v} M${m}.<br>
+          👉 <strong>Xử trí:</strong> Cho thở Oxy qua mask, nằm đầu cao 30°, theo dõi sát GCS mỗi 15-30 phút. Kiểm tra đường huyết, điện giải và làm xét nghiệm tầm soát nguyên nhân.
+        `;
+      } else {
+        statusEl.className = 'sim-result-status green';
+        statusEl.innerHTML = `🟢 GCS ${totalGcs} ĐIỂM - RỐI LOẠN TRI GIÁC NHẸ / TỈNH TÁO`;
+        detailsEl.innerHTML = `
+          • <strong>Thành phần:</strong> E${e} V${v} M${m}.<br>
+          👉 Trẻ còn tỉnh táo/rối loạn nhẹ. Tiếp tục theo dõi dấu hiệu sinh tồn và khám tìm nguyên nhân gốc (nhiễm trùng, sốt, ngộ độc).
+        `;
+      }
+    }
+
+    // Init run
+    window.addEventListener('DOMContentLoaded', runGcsCdss);
+  </script>
+</body>
+
+</html>

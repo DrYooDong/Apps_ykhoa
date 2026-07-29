@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Tiếp cận lâm sàng trẻ khò khè: Cơ chế giải phẫu đường thở trung tâm vs ngoại biên, Phân loại khò khè cấp & mạn/tái phát, Quy trình 3 bước chẩn đoán, Test dãn phế quản Salbutamol, Chỉ số dự đoán Hen (API), Lưu đồ 9.1 Nhi khoa YDS 2020 và Bộ công cụ CDSS tương tác.">
+  <title>Tiếp Cận Trẻ Khò Khè – CliniPortal</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@500;600&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core (5 levels up to root) -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../../css/components/approach-symptom.css">
+
+  <style>
+    /* ==========================================================================
+       PEDIATRIC WHEEZING APPROACH STYLES & INTERACTIVE UI SYSTEM
+       ========================================================================== */
+    :root {
+      --wheeze-primary: #0284c7;
+      --wheeze-dark: #0f172a;
+      --wheeze-navy: #1e1b4b;
+      --wheeze-cyan: #06b6d4;
+      --wheeze-amber: #d97706;
+      --wheeze-danger: #dc2626;
+      --wheeze-success: #10b981;
+      --wheeze-purple: #7c3aed;
+    }
+
+    /* Override parent container overflow so position: sticky works */
+    html, body,
+    .app-container,
+    .main-wrapper,
+    .layout-content-area {
+      overflow: visible !important;
+    }
+
+    /* Hero Banner Theme */
+    .hero-wheeze {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #0369a1 100%);
+      border-radius: 20px;
+      padding: 32px;
+      color: #ffffff;
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.25);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .hero-wheeze::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -10%;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.25) 0%, rgba(124, 58, 237, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-wheeze-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .hero-title-group h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      font-family: var(--font-display);
+      margin: 8px 0 12px 0;
+      color: #ffffff;
+      line-height: 1.25;
+    }
+
+    .hero-badges-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .hero-badge-pill {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #e0e7ff;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-badge-pill.alert {
+      background: rgba(239, 68, 68, 0.25);
+      border-color: rgba(239, 68, 68, 0.4);
+      color: #fca5a5;
+    }
+
+    .hero-quick-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .stat-box {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+
+    .stat-box .stat-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #cbd5e1;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .stat-box .stat-val {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #38bdf8;
+      font-family: var(--font-display);
+    }
+
+    .stat-box .stat-sub {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+
+    /* Quick Nav Sticky Bar */
+    .quick-nav-bar {
+      position: sticky !important;
+      top: calc(var(--header-height, 60px) + 8px) !important;
+      z-index: 150 !important;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      padding: 10px 14px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      white-space: nowrap;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+    }
+
+    .quick-nav-btn {
+      background: transparent;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .quick-nav-btn:hover,
+    .quick-nav-btn.active {
+      background: rgba(2, 132, 199, 0.12);
+      color: var(--wheeze-primary);
+    }
+
+    /* Section Card Wrappers */
+    .section-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+      scroll-margin-top: 130px;
+    }
+
+    .section-title-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid rgba(2, 132, 199, 0.2);
+    }
+
+    .section-icon-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(2, 132, 199, 0.12);
+      color: var(--wheeze-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .section-title-group h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin: 0;
+    }
+
+    /* Comparison & Mechanism Cards */
+    .mech-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    @media (max-width: 768px) {
+      .mech-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .mech-card {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 18px;
+    }
+
+    .mech-card-title {
+      font-weight: 700;
+      font-size: 1.02rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Clinical Tables & Grids */
+    .clinical-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 16px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+    }
+
+    .clinical-table th {
+      background: rgba(2, 132, 199, 0.08);
+      color: var(--color-text);
+      padding: 12px 16px;
+      font-weight: 700;
+      text-align: left;
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .clinical-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: var(--color-text);
+    }
+
+    .clinical-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Red Flag Box & Alerts */
+    .clinical-alert-box {
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin: 18px 0;
+      border-left: 5px solid;
+    }
+
+    .clinical-alert-box.danger {
+      background: rgba(239, 68, 68, 0.08);
+      border-color: #ef4444;
+      color: var(--color-text);
+    }
+
+    .clinical-alert-box.warning {
+      background: rgba(245, 158, 11, 0.08);
+      border-color: #f59e0b;
+      color: var(--color-text);
+    }
+
+    .clinical-alert-box.info {
+      background: rgba(2, 132, 199, 0.08);
+      border-color: #0284c7;
+      color: var(--color-text);
+    }
+
+    .clinical-alert-title {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Flowchart Visualizer */
+    .flow-step-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .flow-node {
+      background: var(--color-surface);
+      border: 2px solid var(--color-border);
+      border-radius: 14px;
+      padding: 18px 20px;
+      position: relative;
+      transition: all 0.2s;
+    }
+
+    .flow-node.red-flag-node {
+      border-color: #ef4444;
+      background: rgba(239, 68, 68, 0.04);
+    }
+
+    .flow-node.decision-node {
+      border-color: #0284c7;
+      background: rgba(2, 132, 199, 0.04);
+    }
+
+    .flow-node.treatment-node {
+      border-color: #10b981;
+      background: rgba(16, 185, 129, 0.04);
+    }
+
+    .flow-tag {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .flow-tag.danger { background: #ef4444; color: white; }
+    .flow-tag.info { background: #0284c7; color: white; }
+    .flow-tag.success { background: #10b981; color: white; }
+    .flow-tag.warning { background: #f59e0b; color: white; }
+
+    /* Interactive CDSS Simulators */
+    .sim-container {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border: 1px solid #cbd5e1;
+      border-radius: 16px;
+      padding: 24px;
+      margin: 20px 0;
+    }
+
+    [data-theme="dark"] .sim-container {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border-color: #334155;
+    }
+
+    .sim-grid-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 868px) {
+      .sim-grid-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .custom-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: all 0.15s;
+    }
+
+    .custom-checkbox:hover {
+      border-color: var(--wheeze-primary);
+    }
+
+    .custom-checkbox input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--wheeze-primary);
+      cursor: pointer;
+    }
+
+    .sim-result-card {
+      background: var(--color-surface);
+      border: 2px solid var(--color-border);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .sim-result-status {
+      padding: 14px;
+      border-radius: 10px;
+      font-weight: 700;
+      text-align: center;
+      font-size: 1.05rem;
+      margin-bottom: 14px;
+    }
+
+    .sim-result-status.red {
+      background: rgba(239, 68, 68, 0.15);
+      color: #dc2626;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .sim-result-status.yellow {
+      background: rgba(245, 158, 11, 0.15);
+      color: #d97706;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .sim-result-status.green {
+      background: rgba(16, 185, 129, 0.15);
+      color: #059669;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+  </style>
+
+  <!-- JS Core (5 levels up) -->
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+  <script src="../../../../../js/approach-symptom.js" defer></script>
+</head>
+
+<body>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- App Container -->
+  <div class="app-container">
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <div class="main-wrapper" id="mainContent" style="padding: 20px 24px;">
+
+      <!-- HERO BANNER -->
+      <section class="hero-wheeze">
+        <div class="hero-wheeze-header">
+          <div class="hero-title-group">
+            <div class="hero-badges-group">
+              <span class="hero-badge-pill"><i class="fa-solid fa-lungs"></i> Nhi khoa YDS 2020</span>
+              <span class="hero-badge-pill"><i class="fa-solid fa-stethoscope"></i> Khò khè Đơn âm / Đa âm</span>
+              <span class="hero-badge-pill alert"><i class="fa-solid fa-syringe"></i> Test Dãn Phế Quản &amp; API</span>
+            </div>
+            <h1>👶 TIẾP CẬN TRẺ KHÒ KHÈ</h1>
+            <p style="font-size: 0.95rem; opacity: 0.9; margin: 0; max-width: 750px; line-height: 1.5;">
+              Chiến lược chẩn đoán và xử trí lâm sàng khò khè ở trẻ em: Giải phẫu sinh lý tác động áp lực màng phổi, phân biệt khò khè cấp tính vs mạn tính/tái phát, test dãn phế quản Salbutamol, tiêu chuẩn API và lưu đồ thuật toán Nhi khoa YDS.
+            </p>
+          </div>
+        </div>
+
+        <!-- HERO QUICK STATS -->
+        <div class="hero-quick-stats">
+          <div class="stat-box">
+            <div class="stat-label">Cơ chế Âm Thanh</div>
+            <div class="stat-val">1 &amp; 2 Thì</div>
+            <div class="stat-sub">Đơn âm (Trung tâm) / Đa âm (Ngoại biên)</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Phân Loại Nguyên Nhân</div>
+            <div class="stat-val">Cấp vs Mạn</div>
+            <div class="stat-sub">Cấp tính vs Bất thường Cấu trúc/Chức năng</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Test Dãn Phế Quản</div>
+            <div class="stat-val">0.15 mg/kg</div>
+            <div class="stat-sub">Salbutamol khí dung x 3 lần (cách 20 phút)</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Chỉ Định Nhập Viện</div>
+            <div class="stat-val" style="color: #f87171;">4 Nhóm</div>
+            <div class="stat-sub">Suy hô hấp / Dị vật / Trẻ &lt; 3 tháng / Mạn tính</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STICKY QUICK NAV BAR -->
+      <nav class="quick-nav-bar" id="quickNav">
+        <button class="quick-nav-btn active" onclick="scrollToSection('overview')">
+          <i class="fa-solid fa-lungs"></i> Sinh lý &amp; Cơ chế
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('causes')">
+          <i class="fa-solid fa-list-check"></i> Phân loại Nguyên nhân
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('steps')">
+          <i class="fa-solid fa-user-doctor"></i> 3 Bước Tiếp cận
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('flowchart')">
+          <i class="fa-solid fa-diagram-project"></i> Lưu đồ 9.1 YDS
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('cdss-evaluator')">
+          <i class="fa-solid fa-calculator"></i> Tool CDSS Tương tác
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('bronchodilator-api')">
+          <i class="fa-solid fa-vial-circle-check"></i> Test GPQ &amp; API
+        </button>
+        <button class="quick-nav-btn" onclick="scrollToSection('admission-criteria')">
+          <i class="fa-solid fa-hospital"></i> Chỉ định Nhập viện
+        </button>
+      </nav>
+
+      <!-- SECTION 1: ANATOMY & MECHANISM -->
+      <section class="section-card" id="overview">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-lungs"></i></div>
+          <div>
+            <h2>1. Giải Phẫu, Sinh Lý &amp; Cơ Chế Tạo Tiếng Khò Khè</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Hình 9.1 &amp; Hình 9.2 - Nhi khoa YDS (2020)</span>
+          </div>
+        </div>
+
+        <div style="line-height: 1.6; font-size: 0.9rem;">
+          <p>
+            <strong>Định nghĩa khò khè (Wheezing):</strong> Khò khè là tiếng thở có <strong>âm sắc nhạc liên tục</strong> được tạo ra khi dòng khí đi qua đường dẫn khí trong lồng ngực bị hẹp. Khò khè chủ yếu nghe ở <strong>thì thở ra</strong>, nhưng có thể nghe ở cả 2 thì nếu tắc nghẽn đường dẫn khí trung tâm hoặc tắc nghẽn nặng đường dẫn khí ngoại biên.
+          </p>
+
+          <!-- MECHANISM COMPARISON GRID -->
+          <div class="mech-grid">
+            <!-- CENTRAL AIRWAYS -->
+            <div class="mech-card" style="border-left: 4px solid #0284c7;">
+              <div class="mech-card-title" style="color: #0284c7;">
+                <i class="fa-solid fa-circle-dot"></i> ĐƯỜNG THỞ TRUNG TÂM (Ngoài phổi)
+              </div>
+              <ul style="padding-left: 18px; margin: 6px 0 0 0; font-size: 0.86rem; line-height: 1.5;">
+                <li><strong>Cấu trúc:</strong> Đoạn khí quản trong lồng ngực, phế quản gốc. Được bao quanh bởi <strong>sụn cứng</strong>.</li>
+                <li><strong>Ảnh hưởng áp lực màng phổi:</strong> Ít bị ảnh hưởng bởi sự thay đổi áp lực khoang màng phổi.</li>
+                <li><strong>Cơ chế âm:</strong> Chênh áp qua chỗ hẹp làm dòng khí hít vào - thở ra bị xoáy, gây rung động thành đường thở cả 2 thì.</li>
+                <li><strong>Đặc điểm âm:</strong> <strong>Khò khè ĐƠN ÂM (Monophonic), nghe ở 2 THÌ.</strong></li>
+              </ul>
+            </div>
+
+            <!-- PERIPHERAL AIRWAYS -->
+            <div class="mech-card" style="border-left: 4px solid #7c3aed;">
+              <div class="mech-card-title" style="color: #7c3aed;">
+                <i class="fa-solid fa-tree"></i> ĐƯỜNG THỞ NGOẠI BIÊN (Trong phổi)
+              </div>
+              <ul style="padding-left: 18px; margin: 6px 0 0 0; font-size: 0.86rem; line-height: 1.5;">
+                <li><strong>Cấu trúc:</strong> Phân nhánh phế quản nhỏ, tiểu phế quản. Vòng sụn rất mỏng hoặc không có sụn.</li>
+                <li><strong>Hình 9.2A (Thì hít vào):</strong> Áp lực âm màng phổi kéo mở đường thở → Giảm tắc nghẽn.</li>
+                <li><strong>Hình 9.2B (Thì thở ra):</strong> Áp lực dương màng phổi ép xẹp đường thở → Tăng tắc nghẽn.</li>
+                <li><strong>Đặc điểm âm:</strong> <strong>Khò khè ĐA ÂM (Polyphonic), chủ yếu THÌ THỞ RA.</strong></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="clinical-alert-box info">
+            <div class="clinical-alert-title"><i class="fa-solid fa-brain"></i> Chi phối thần kinh đường thở</div>
+            <p style="margin: 0; font-size: 0.86rem; line-height: 1.5;">
+              • <strong>Hệ phó giao cảm (Dây X - Acetylcholine):</strong> Gây co thắt cơ trơn phế quản và tăng tiết nhầy.
+              <br>• <strong>Hệ giao cảm (Epinephrine tác động thụ thể β₂):</strong> Gây dãn cơ trơn phế quản (Cơ sở điều trị của Salbutamol).
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: CAUSES CLASSIFICATION -->
+      <section class="section-card" id="causes">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-list-check"></i></div>
+          <div>
+            <h2>2. Phân Loại Nguyên Nhân Gây Khò Khè Ở Trẻ Em</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Khò khè cấp tính vs Khò khè mạn tính / tái phát</span>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <!-- ACUTE WHEEZING -->
+          <div style="background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 12px; padding: 18px;">
+            <h3 style="margin-top: 0; color: #dc2626; font-size: 1.05rem;"><i class="fa-solid fa-fire"></i> 1. Khò Khè Cấp Tính</h3>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 8px;">Khởi phát đột ngột, thường do nhiễm trùng hoặc dị vật:</p>
+            <ul style="padding-left: 18px; font-size: 0.88rem; line-height: 1.5; margin: 0; color: var(--color-text);">
+              <li><strong>Hen phế quản (Cơn hen cấp)</strong></li>
+              <li><strong>Viêm tiểu phế quản cấp</strong> (Thường gặp ở trẻ &lt; 2 tuổi)</li>
+              <li><strong>Viêm phế quản cấp</strong></li>
+              <li><strong>Viêm thanh khí phế quản (Croup)</strong></li>
+              <li><strong>Viêm khí quản do vi trùng</strong></li>
+              <li><strong>Dị vật đường thở cấp</strong> (Hội chứng sặc, ngạt thở đột ngột)</li>
+            </ul>
+          </div>
+
+          <!-- CHRONIC / RECURRENT WHEEZING -->
+          <div style="background: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 12px; padding: 18px;">
+            <h3 style="margin-top: 0; color: #d97706; font-size: 1.05rem;"><i class="fa-solid fa-rotate"></i> 2. Khò Khè Mạn Tính / Tái Phát</h3>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 8px;">Phân thành 2 nhóm nguyên nhân chính:</p>
+            
+            <strong style="color: #7c3aed; font-size: 0.88rem;">A. Bất thường cấu trúc:</strong>
+            <ul style="padding-left: 18px; font-size: 0.85rem; margin: 4px 0 8px 0;">
+              <li>Mềm sụn khí quản / phế quản (Tracheo/bronchomalacia).</li>
+              <li>Vòng mạch máu chèn ép khí quản.</li>
+              <li>Hẹp khí quản bẩm sinh / Màng ngăn khí quản.</li>
+              <li>Nang trung thất, khối u, hạch trung thất chèn ép.</li>
+              <li>Tim to chèn ép phế quản (Tim bẩm sinh).</li>
+            </ul>
+
+            <strong style="color: #0284c7; font-size: 0.88rem;">B. Bất thường chức năng:</strong>
+            <ul style="padding-left: 18px; font-size: 0.85rem; margin: 4px 0 0 0;">
+              <li>Hen phế quản (Asthma).</li>
+              <li>Trào ngược dạ dày – thực quản (GERD).</li>
+              <li>Hội chứng hít sặc tái phát (Rò khí – thực quản).</li>
+              <li>Suy giảm miễn dịch bẩm sinh / mắc phải.</li>
+              <li>Rối loạn vận động lông chuyển bẩm sinh (PCD).</li>
+              <li>Loạn sản phế quản phổi (BPD ở trẻ sinh thiếu tháng).</li>
+              <li>Dị vật phế quản bỏ quên.</li>
+              <li>Bệnh phổi mô kẽ.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: 3-STEP DIAGNOSIS -->
+      <section class="section-card" id="steps">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-user-doctor"></i></div>
+          <div>
+            <h2>3. Trình Tự 3 Bước Tiếp Cận Chẩn Đoán Trẻ Khò Khè</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Bệnh sử, Khám lâm sàng &amp; Cận lâm sàng hướng định</span>
+          </div>
+        </div>
+
+        <!-- STEP 1: HISTORY -->
+        <h3 style="font-size: 1.05rem; color: var(--wheeze-primary); margin-top: 0;"><i class="fa-solid fa-clipboard-question"></i> Bước 1: Hỏi Bệnh Sử &amp; Tiền Căn Chi Tiết</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; font-size: 0.88rem; margin-bottom: 20px;">
+          <div style="background: var(--color-bg); padding: 14px; border-radius: 10px; border: 1px solid var(--color-border);">
+            <strong style="color: var(--wheeze-primary);">🔍 1. Xác định khò khè thực sự:</strong>
+            <p style="margin: 4px 0 0 0;">Phân biệt khò khè với <strong>Thở rít (Stridor)</strong> [tắc nghẽn ngoài lồng ngực] hoặc <strong>Khụt khịt</strong> [nghẹt mũi]. Khò khè là tiếng nhạc thì thở ra.</p>
+          </div>
+          <div style="background: var(--color-bg); padding: 14px; border-radius: 10px; border: 1px solid var(--color-border);">
+            <strong style="color: var(--wheeze-primary);">👶 2. Tuổi khởi phát:</strong>
+            <p style="margin: 4px 0 0 0;">Bẩm sinh (nghi ngờ dị tật cấu trúc) hay mắc phải muộn hơn.</p>
+          </div>
+          <div style="background: var(--color-bg); padding: 14px; border-radius: 10px; border: 1px solid var(--color-border);">
+            <strong style="color: var(--wheeze-primary);">⚡ 3. Cách khởi phát:</strong>
+            <p style="margin: 4px 0 0 0;">Đột ngột (dị vật, hen cấp, hít sặc) vs Tiến triển mạn tính/tái phát (cấu trúc, GERD, hen).</p>
+          </div>
+          <div style="background: var(--color-bg); padding: 14px; border-radius: 10px; border: 1px solid var(--color-border);">
+            <strong style="color: var(--wheeze-primary);">🔄 4. Yếu tố tăng / giảm:</strong>
+            <p style="margin: 4px 0 0 0;">Thay đổi theo tư thế (mềm sụn khí quản, vòng mạch); tăng khi bú/sau ăn (GERD, rò khí-thực quản).</p>
+          </div>
+        </div>
+
+        <!-- STEP 2: PHYSICAL EXAM -->
+        <h3 style="font-size: 1.05rem; color: var(--wheeze-primary);"><i class="fa-solid fa-stethoscope"></i> Bước 2: Thăm Khám Lâm Sàng Toàn Diện</h3>
+        <div style="line-height: 1.6; font-size: 0.9rem;">
+          <ul>
+            <li><strong>Sinh hiệu &amp; Tổng trạng:</strong> Đánh giá mức độ suy hô hấp (Thở nhanh, co kéo cơ hô hấp phụ, phập phồng cánh mũi, SpO₂), đánh giá dinh dưỡng (chậm tăng cân).</li>
+            <li><strong>Khám Da Niêm:</strong> Tìm dấu hiệu tím tái, ngón tay dùi trống (bệnh phổi mô kẽ), chàm da / viêm da cơ địa (cơ địa dị ứng hen), hạch ngoại vi (lao, lymphoma).</li>
+            <li><strong>Nghe Tim - Phổi:</strong> Ran ngáy, ran rít, giảm phế âm khu trú (dị vật phế quản), thông khí kéo dài thì thở ra, tiếng tim bất thường / âm thổi (tim bẩm sinh).</li>
+            <li><strong>Khám Bụng:</strong> Tìm dấu hiệu <strong>gan to</strong> (do ứ khí phổi đẩy gan xuống, hoặc suy tim sung huyết).</li>
+          </ul>
+        </div>
+
+        <!-- STEP 3: PARACLINICAL WORKUP -->
+        <h3 style="font-size: 1.05rem; color: var(--wheeze-primary); margin-top: 18px;"><i class="fa-solid fa-vial"></i> Bước 3: Chỉ Định Cận Lâm Sàng Hướng Định</h3>
+        <div style="overflow-x: auto;">
+          <table class="clinical-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Cận Lâm Sàng</th>
+                <th style="width: 75%;">Chỉ Định &amp; Giá Trị Chẩn Đoán</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>X-quang ngực thẳng</strong></td>
+                <td>Chỉ định khi khò khè lần đầu chưa rõ nguyên nhân hoặc khò khè mạn tính không đáp ứng điều trị. Phát hiện ứ khí, xẹp phổi, dị vật cản quang, tim to.</td>
+              </tr>
+              <tr>
+                <td><strong>CT-scan ngực (Cột dựng)</strong></td>
+                <td>Chỉ định khi nghi ngờ dị tật đường thở bẩm sinh, vòng mạch máu, hẹp khí quản hoặc khối u trung thất chèn ép.</td>
+              </tr>
+              <tr>
+                <td><strong>Nội soi đường thở</strong></td>
+                <td>Chỉ định vàng khi nghi ngờ dị vật đường thở bỏ quên, mềm sụn khí phế quản, hoặc lấy dị vật cấp cứu.</td>
+              </tr>
+              <tr>
+                <td><strong>Test Dãn Phế Quản (GPQ)</strong></td>
+                <td>Phun khí dung Salbutamol $0.15\text{ mg/kg}$ ở trẻ $\ge 6$ tháng tuổi để đánh giá mức độ đáp ứng (độ hồi phục đường thở trong hen).</td>
+              </tr>
+              <tr>
+                <td><strong>Khảo sát GERD / Miễn dịch</strong></td>
+                <td>Siêu âm bụng lúc no, đo pH thực quản 24h khi nghi GERD; Định lượng IgG, IgA, IgM, CD4/CD8 khi nghi suy giảm miễn dịch.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECTION 4: FLOWCHART -->
+      <section class="section-card" id="flowchart">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-diagram-project"></i></div>
+          <div>
+            <h2>4. Lưu Đồ Thuật Toán Tiếp Cận Chẩn Đoán Trẻ Khò Khè</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Sơ đồ 9.1 - Nhi khoa YDS (2020)</span>
+          </div>
+        </div>
+
+        <div class="flow-step-container">
+          <!-- BRANCH 1: ACUTE WHEEZING -->
+          <div class="flow-node decision-node">
+            <span class="flow-tag info">NHÁNH 1: KHÒ KHÈ CẤP TÍNH / LẦN ĐẦU</span>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-top: 10px; font-size: 0.88rem;">
+              <div style="background: rgba(239, 68, 68, 0.08); padding: 12px; border-radius: 8px; border-left: 3px solid #ef4444;">
+                <strong style="color: #dc2626;">1. Có Sốt (+):</strong>
+                <p style="margin: 4px 0 0 0;">Hướng đến Viêm tiểu phế quản cấp, Viêm phổi, Viêm phế quản cấp.</p>
+              </div>
+              <div style="background: rgba(245, 158, 11, 0.08); padding: 12px; border-radius: 8px; border-left: 3px solid #f59e0b;">
+                <strong style="color: #d97706;">2. KHÔNG Sốt + Hội chứng Sặc (+):</strong>
+                <p style="margin: 4px 0 0 0;">Khởi phát đột ngột → Hướng đến <strong>Dị vật đường thở</strong> (Nội soi gắp khẩn).</p>
+              </div>
+              <div style="background: rgba(16, 185, 129, 0.08); padding: 12px; border-radius: 8px; border-left: 3px solid #10b981;">
+                <strong style="color: #059669;">3. API (+) + Đáp ứng Test GPQ (+):</strong>
+                <p style="margin: 4px 0 0 0;">Khởi phát cấp tính → Hướng đến <strong>Cơn Hen cấp lần đầu</strong>.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- BRANCH 2: CHRONIC / RECURRENT WHEEZING -->
+          <div class="flow-node treatment-node">
+            <span class="flow-tag warning">NHÁNH 2: KHÒ KHÈ MẠN TÍNH / TÁI PHÁT</span>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-top: 10px; font-size: 0.88rem;">
+              <div style="background: rgba(16, 185, 129, 0.08); padding: 12px; border-radius: 8px;">
+                <strong style="color: #059669;">API (+) + Đáp ứng GPQ (+):</strong>
+                <p style="margin: 4px 0 0 0;">Chẩn đoán xác định <strong>HEN TRẺ EM</strong>.</p>
+              </div>
+              <div style="background: rgba(2, 132, 199, 0.08); padding: 12px; border-radius: 8px;">
+                <strong style="color: #0284c7;">API (-) + Đáp ứng GPQ (+):</strong>
+                <p style="margin: 4px 0 0 0;">Chẩn đoán <strong>Hen</strong> ± Tầm soát thêm nguyên nhân phối hợp.</p>
+              </div>
+              <div style="background: rgba(239, 68, 68, 0.08); padding: 12px; border-radius: 8px;">
+                <strong style="color: #dc2626;">Không đáp ứng GPQ (-):</strong>
+                <p style="margin: 4px 0 0 0;">Tầm soát nguyên nhân Bất thường Cấu trúc hoặc Bất thường Chức năng khác.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: INTERACTIVE CDSS EVALUATOR -->
+      <section class="section-card" id="cdss-evaluator">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-laptop-medical"></i></div>
+          <div>
+            <h2>5. Bộ Công Cụ CDSS Đánh Giá &amp; Triage Tương Tác</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Hỗ trợ chẩn đoán phân biệt khò khè &amp; Tính liều Salbutamol</span>
+          </div>
+        </div>
+
+        <div class="sim-container">
+          <h3 style="margin-top: 0; font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-sliders"></i> CDSS 1: Evaluator Chẩn Đoán Phân Loại Khò Khè</h3>
+
+          <div class="sim-grid-layout">
+            <div>
+              <label style="font-weight: 700; font-size: 0.88rem;">1. Độ Tuổi Trẻ:</label>
+              <select id="simAge" onchange="runWheezingCdss()" style="width: 100%; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); margin-top: 4px; font-weight: 600;">
+                <option value="under3m">Trẻ &lt; 3 tháng tuổi</option>
+                <option value="3m_2y" selected>Trẻ 3 tháng – 2 tuổi</option>
+                <option value="over2y">Trẻ &gt; 2 tuổi</option>
+              </select>
+
+              <label style="font-weight: 700; font-size: 0.88rem; display: block; margin-top: 12px;">2. Diễn Tiến Khởi Phát:</label>
+              <select id="simOnset" onchange="runWheezingCdss()" style="width: 100%; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); margin-top: 4px; font-weight: 600;">
+                <option value="acute_fever">Cấp tính kèm Sốt (Viêm nhiễm)</option>
+                <option value="sudden_choke">Đột ngột + Có HC Sặc (Nghi Dị vật)</option>
+                <option value="recurrent">Tái phát / Mạn tính</option>
+              </select>
+
+              <label style="font-weight: 700; font-size: 0.88rem; display: block; margin-top: 12px;">3. Tiêu Chí Lâm Sàng &amp; Dấu Hiệu Kèm Theo:</label>
+              <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 6px;">
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="chkRespDistress" onchange="runWheezingCdss()">
+                  <span>Dấu hiệu Suy Hô Hấp (Thở nhanh, Co kéo cơ hô hấp, SpO₂ &lt; 95%)</span>
+                </label>
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="chkApiPositive" onchange="runWheezingCdss()">
+                  <span>Chỉ số dự đoán Hen API (+): Tiền căn dị ứng gia đình / Chàm da</span>
+                </label>
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="chkBronchoResp" onchange="runWheezingCdss()">
+                  <span>Đáp ứng tốt với Test Dãn Phế Quản Salbutamol (Giảm khò khè)</span>
+                </label>
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="chkStridor" onchange="runWheezingCdss()">
+                  <span>Có Thở rít (Stridor) thì hít vào / Tiếng khàn giọng</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- RESULT CARD -->
+            <div class="sim-result-card">
+              <div>
+                <div style="font-size: 0.8rem; text-transform: uppercase; font-weight: 700; color: var(--color-text-muted); margin-bottom: 6px;">HƯỚNG CHẨN ĐOÁN &amp; XỬ TRÍ CDSS:</div>
+                <div id="simWheezeStatus" class="sim-result-status green">
+                  🟢 NGHĨ NHIỀU VIÊM TIỂU PHẾ QUẢN CẤP
+                </div>
+                <div id="simWheezeDetails" style="font-size: 0.88rem; line-height: 1.5; color: var(--color-text);">
+                  Trẻ trong độ tuổi 3 tháng - 2 tuổi, khò khè cấp tính có sốt. Theo dõi sát dấu hiệu suy hô hấp.
+                </div>
+              </div>
+
+              <div style="margin-top: 16px; padding-top: 12px; border-top: 1px dashed var(--color-border); font-size: 0.82rem; color: var(--color-text-muted);">
+                <strong>Lưu ý:</strong> Luôn đánh giá SpO₂ và nhịp thở theo tuổi để quyết định nhập viện.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6: BRONCHODILATOR & API -->
+      <section class="section-card" id="bronchodilator-api">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-vial-circle-check"></i></div>
+          <div>
+            <h2>6. Quy Trình Test Dãn Phế Quản &amp; Chỉ Số Dự Đoán Hen (API)</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">Đánh giá mức độ hồi phục đường thở &amp; Tiêu chuẩn API</span>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 20px;">
+          <!-- SALBUTAMOL TEST -->
+          <div style="background: rgba(2, 132, 199, 0.06); border: 1px solid rgba(2, 132, 199, 0.2); padding: 18px; border-radius: 12px;">
+            <h3 style="margin-top: 0; color: #0284c7; font-size: 1.05rem;"><i class="fa-solid fa-syringe"></i> Quy Trình Test Dãn Phế Quản (Salbutamol)</h3>
+            <ul style="padding-left: 18px; font-size: 0.88rem; line-height: 1.5; margin: 0;">
+              <li><strong>Đối tượng:</strong> Chỉ định ở trẻ khò khè $\ge 6$ tháng tuổi.</li>
+              <li><strong>Liều Salbutamol khí dung:</strong> <strong>$0.15\text{ mg/kg}$</strong> (Liều tối thiểu: $2.5\text{ mg}$, Liều tối đa: $5.0\text{ mg}$).</li>
+              <li><strong>Liệu trình:</strong> Phun khí dung tối đa <strong>3 lần cách nhau 20 phút</strong>.</li>
+              <li><strong>Đánh giá đáp ứng Test (+):</strong> Giảm nhịp thở, giảm co kéo cơ hô hấp phụ, nghe giảm hoặc mất tiếng khò khè, SpO₂ cải thiện.</li>
+            </ul>
+          </div>
+
+          <!-- API CRITERIA -->
+          <div style="background: rgba(124, 58, 237, 0.06); border: 1px solid rgba(124, 58, 237, 0.2); padding: 18px; border-radius: 12px;">
+            <h3 style="margin-top: 0; color: #7c3aed; font-size: 1.05rem;"><i class="fa-solid fa-clipboard-list"></i> Chỉ Số Dự Đoán Hen (Loose API Criteria)</h3>
+            <p style="font-size: 0.84rem; color: var(--color-text-muted); margin: 0 0 6px 0;">Áp dụng ở trẻ &lt; 3 tuổi khò khè tái phát ≥ 4 lần/năm:</p>
+            <strong style="font-size: 0.85rem; color: #7c3aed;">Tiêu chuẩn CHÍNH (Cần ≥ 1):</strong>
+            <ul style="padding-left: 18px; font-size: 0.84rem; margin: 2px 0 6px 0;">
+              <li>Cha hoặc mẹ mắc bệnh Hen phế quản.</li>
+              <li>Trẻ được chẩn đoán Viêm da cơ địa (Chàm skin/Eczema).</li>
+              <li>Dị ứng với dị nguyên không khí.</li>
+            </ul>
+            <strong style="font-size: 0.85rem; color: #7c3aed;">Tiêu chuẩn PHỤ (Cần ≥ 2):</strong>
+            <ul style="padding-left: 18px; font-size: 0.84rem; margin: 2px 0 0 0;">
+              <li>Dị ứng thức ăn (sữa, trứng, đậu phộng).</li>
+              <li>Khò khè không liên quan đến cảm lạnh / cảm cúm.</li>
+              <li>Tăng bạch cầu ái toan máu ngoại biên (Eosinophil $\ge 4\%$).</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 7: ADMISSION CRITERIA -->
+      <section class="section-card" id="admission-criteria">
+        <div class="section-title-group">
+          <div class="section-icon-badge"><i class="fa-solid fa-hospital"></i></div>
+          <div>
+            <h2>7. Chỉ Định Nhập Viện &amp; Tài Liệu Tham Khảo</h2>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);">4 Cảnh báo bắt buộc nhập viện &amp; Chuẩn AMA</span>
+          </div>
+        </div>
+
+        <div class="clinical-alert-box danger">
+          <div class="clinical-alert-title"><i class="fa-solid fa-triangle-exclamation"></i> 4 CHỈ ĐỊNH BẮT BUỘC NHẬP VIỆN Ở TRẺ KHÒ KHÈ</div>
+          <ol style="margin: 6px 0 0 0; padding-left: 20px; font-size: 0.9rem; line-height: 1.55;">
+            <li><strong>Trẻ có dấu hiệu Suy Hô Hấp:</strong> Thở nhanh theo tuổi, co kéo lồng ngực nặng, phập phồng cánh mũi, thở rên, SpO₂ &lt; 95% hoặc tím tái.</li>
+            <li><strong>Khò khè cấp tính đột ngột nghi Dị vật đường thở:</strong> Có hội chứng sặc, ngạt thở, giảm phế âm khu trú.</li>
+            <li><strong>Khò khè xảy ra ở trẻ &lt; 3 tháng tuổi:</strong> Nguy cơ cao diễn tiến nặng nhanh do dị tật bẩm sinh hoặc nhiễm trùng nguy kịch.</li>
+            <li><strong>Khò khè tái đi tái lại hoặc mạn tính chưa rõ nguyên nhân:</strong> Cần nhập viện để làm các cận lâm sàng chuyên sâu (CT-scan, Nội soi, pH 24h).</li>
+          </ol>
+        </div>
+
+        <!-- REFERENCES -->
+        <div style="margin-top: 24px; padding-top: 14px; border-top: 1px dashed var(--color-border); font-size: 0.82rem; color: var(--color-text-muted);">
+          <strong>📚 Tài Liệu Tham Khảo Chuẩn AMA:</strong>
+          <br>1. Phan Hữu Nguyệt Diễm. Bài 9: Tiếp cận khò khè ở trẻ em. Trong: <em>Nhi khoa YDS - Tập 1</em>. Bộ môn Nhi - Đại học Y Dược Thành phố Hồ Chí Minh; 2020:117-122.
+          <br>2. Phạm Thị Minh Hồng. Bài 11: Viêm tiểu phế quản cấp. Trong: <em>Nhi khoa YDS - Tập 1</em>. Bộ môn Nhi - Đại học Y Dược Thành phố Hồ Chí Minh; 2020:147-156.
+          <br>3. Nguyễn Thùy Vân Thảo, Nguyễn Thái Sơn. Bài 13: Hen trẻ em. Trong: <em>Nhi khoa YDS - Tập 1</em>. Bộ môn Nhi - Đại học Y Dược Thành phố Hồ Chí Minh; 2020:176-191.
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+  <!-- INLINE CDSS JAVASCRIPT LOGIC -->
+  <script>
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        document.querySelectorAll('.quick-nav-btn').forEach(btn => btn.classList.remove('active'));
+        const activeBtn = Array.from(document.querySelectorAll('.quick-nav-btn')).find(b => b.getAttribute('onclick').includes(id));
+        if (activeBtn) activeBtn.classList.add('active');
+      }
+    }
+
+    function runWheezingCdss() {
+      const age = document.getElementById('simAge').value;
+      const onset = document.getElementById('simOnset').value;
+      const respDistress = document.getElementById('chkRespDistress').checked;
+      const apiPos = document.getElementById('chkApiPositive').checked;
+      const bronchoResp = document.getElementById('chkBronchoResp').checked;
+      const stridor = document.getElementById('chkStridor').checked;
+
+      const statusEl = document.getElementById('simWheezeStatus');
+      const detailsEl = document.getElementById('simWheezeDetails');
+
+      // Check Foreign Body Emergency
+      if (onset === 'sudden_choke') {
+        statusEl.className = 'sim-result-status red';
+        statusEl.innerHTML = '🔴 NGUY CƠ RẤT CAO - DỊ VẬT ĐƯỜNG THỞ (CẤP CỨU)';
+        detailsEl.innerHTML = `
+          Khởi phát đột ngột + Hội chứng sặc (+).<br>
+          👉 <strong>Xử trí ngay:</strong> Cho nhập viện gấp, không thăm khám làm trẻ hoảng sợ. Hội chẩn Tai Mũi Họng / Hô hấp để <strong>Nội soi gắp dị vật khẩn cấp</strong>.
+        `;
+        return;
+      }
+
+      // Check Stridor / Upper Airway
+      if (stridor) {
+        statusEl.className = 'sim-result-status yellow';
+        statusEl.innerHTML = '🟡 TẮC NGHẼN ĐƯỜNG THỞ TẦNG TRÊN (CROUP / VIÊM THANH KHÍ QUẢN)';
+        detailsEl.innerHTML = `
+          Ghi nhận tiếng Thở rít (Stridor) thì hít vào.<br>
+          👉 Tắc nghẽn đường thở ngoài lồng ngực. Đánh giá độ nặng theo bảng điểm Westley. Phun Dexamethasone / Adrenaline khí dung khi có chỉ định.
+        `;
+        return;
+      }
+
+      // Check Under 3 Months
+      if (age === 'under3m') {
+        statusEl.className = 'sim-result-status red';
+        statusEl.innerHTML = '🔴 CẢNH BÁO TRẺ &lt; 3 THÁNG TUỔI KHÒ KHÈ - CHỈ ĐỊNH NHẬP VIỆN';
+        detailsEl.innerHTML = `
+          Trẻ dưới 3 tháng tuổi bị khò khè có nguy cơ diễn tiến suy hô hấp nhanh hoặc dị tật bẩm sinh (Mềm sụn khí quản, Vòng mạch).<br>
+          👉 <strong>Xử trí:</strong> Cho trẻ nhập viện theo dõi sát và làm X-quang ngực / Siêu âm tầm soát.
+        `;
+        return;
+      }
+
+      // Check Asthma vs Bronchiolitis
+      if (onset === 'recurrent' || apiPos || bronchoResp) {
+        statusEl.className = 'sim-result-status green';
+        statusEl.innerHTML = '🟢 HƯỚNG CHẨN ĐOÁN: HEN TRẺ EM (ASTHMA)';
+        detailsEl.innerHTML = `
+          Ghi nhận khò khè tái phát, API (+) hoặc đáp ứng tốt với Test Dãn Phế Quản Salbutamol.<br>
+          👉 <strong>Xử trí:</strong> Đánh giá mức độ nặng cơn hen cấp. Điều trị Salbutamol phun khí dung + Corticoid đường toàn thân nếu cơn trung bình/nặng. Lập kế hoạch dự phòng Hen.
+        `;
+        return;
+      }
+
+      // Default Bronchiolitis / Bronchitis
+      if (respDistress) {
+        statusEl.className = 'sim-result-status red';
+        statusEl.innerHTML = '🔴 VIÊM TIỂU PHẾ QUẢN CẤP CÓ SUY HÔ HẤP - CHỈ ĐỊNH NHẬP VIỆN';
+        detailsEl.innerHTML = `
+          Ghi nhận thở nhanh / co kéo lồng ngực / SpO₂ &lt; 95%.<br>
+          👉 <strong>Xử trí:</strong> Nhập viện ngay. Thở oxy qua cannula, hút đàm nhầy, hỗ trợ dinh dưỡng.
+        `;
+      } else {
+        statusEl.className = 'sim-result-status green';
+        statusEl.innerHTML = '🟢 VIÊM TIỂU PHẾ QUẢN CẤP / VIÊM PHẾ QUẢN CẤP (MỨC ĐỘ NHẸ)';
+        detailsEl.innerHTML = `
+          Trẻ khò khè cấp tính có sốt, không dấu suy hô hấp.<br>
+          👉 <strong>Xử trí:</strong> Điều trị triệu chứng ngoại trú, vệ sinh mũi họng, tái khám sau 24-48h hoặc khi có dấu hiệu thở nhanh, bỏ bú.
+        `;
+      }
+    }
+  </script>
+</body>
+
+</html>

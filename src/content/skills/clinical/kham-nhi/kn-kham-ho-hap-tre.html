@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Hướng dẫn quy trình khám hô hấp ở trẻ em chi tiết, đếm nhịp thở chuẩn 1 phút, nhận biết dấu hiệu khó thở, sờ vị trí khí quản, nghe âm phổi bệnh lý và bảng kiểm OSCE dựa trên Nhi khoa YDS.">
+  <title>Khám Hô Hấp Ở Trẻ Em – CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../../css/components/clinical-skill.css">
+  <link rel="stylesheet" href="../../../../../css/components/paraclinical.css">
+  <link rel="stylesheet" href="../../../../../css/components/physio-headings.css">
+
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../js/clinical-skill-tabs.js" defer></script>
+
+  <style>
+    .skill-hero-ped {
+      background: linear-gradient(135deg, #0284c7 0%, #0891b2 100%);
+      color: white;
+      padding: 1.75rem;
+      border-radius: var(--radius-lg, 12px);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 15px rgba(2, 132, 199, 0.25);
+    }
+
+    .skill-hero-ped h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-hero-ped p {
+      font-size: 0.95rem;
+      opacity: 0.95;
+      line-height: 1.6;
+    }
+
+    .vitals-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+
+    .vitals-table th, .vitals-table td {
+      border: 1px solid var(--color-border, #e2e8f0);
+      padding: 0.75rem;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    .vitals-table th {
+      background-color: var(--color-bg-alt, #f8fafc);
+      font-weight: 600;
+      color: var(--color-text, #0f172a);
+    }
+
+    .osce-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .osce-table th, .osce-table td {
+      border: 1px solid var(--color-border, #e2e8f0);
+      padding: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .osce-table th {
+      background: var(--color-primary-hl, #e0f2fe);
+      color: var(--color-primary, #0284c7);
+      text-align: left;
+    }
+
+    .trachea-box {
+      background: var(--color-bg-soft, #f0f9ff);
+      border-left: 4px solid var(--color-primary, #0284c7);
+      padding: 1rem 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin: 1rem 0;
+    }
+
+    .trachea-box ul {
+      margin-left: 1.25rem;
+      margin-top: 0.5rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../../index.html" class="nav-item">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../ky-nang.html" class="nav-item active">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../approaches/tiep-can.html" class="nav-item">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../calculators/cong-cu.html" class="nav-item">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ lâm sàng</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-wrapper" id="mainContent">
+      <clini-breadcrumb
+        items='[{"label": "🏠 Home", "url": "../../../../../index.html"}, {"label": "Kỹ năng lâm sàng", "url": "../../ky-nang.html"}, {"label": "Khám Nhi Khoa", "url": "kn-khamnhi.html"}, {"label": "Khám Hô Hấp Ở Trẻ Em"}]'></clini-breadcrumb>
+
+      <section class="skill-hero-ped">
+        <h1>🫁 Kỹ Năng Khám Hô Hấp Ở Trẻ Em</h1>
+        <p>Quy trình thăm khám lâm sàng hệ hô hấp nhi khoa chi tiết theo chuẩn Nhi khoa YDS & Macleod's Clinical Examination: Khai thác bệnh sử chuẩn, kỹ thuật nhìn đếm nhịp thở 1 phút, nhận diện các dấu hiệu khó thở, sờ vị trí khí quản, nghe và phân loại âm bệnh lý của phổi.</p>
+      </section>
+
+      <!-- TABS -->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="hoi-benh">1. Bệnh sử & Tiền căn</button>
+        <button class="tab-btn" data-tab="nhin">2. Nhìn & Đánh giá khó thở</button>
+        <button class="tab-btn" data-tab="so-go">3. Sờ & Gõ lồng ngực</button>
+        <button class="tab-btn" data-tab="nghe">4. Nghe & Âm bệnh lý</button>
+        <button class="tab-btn" data-tab="nem-ngui">5. Nếm & Ngửi</button>
+        <button class="tab-btn" data-tab="osce">6. Bảng kiểm OSCE</button>
+      </div>
+
+      <!-- TAB 1: BỆNH SỬ & TIỀN CĂN -->
+      <section class="tab active" id="hoi-benh">
+        <div class="card">
+          <h2><i class="fa-solid fa-clipboard-question" style="color: var(--color-primary);"></i> 1. Nguyên Tắc Khai Thác Bệnh Sử Hô Hấp Ở Trẻ Em</h2>
+          
+          <div class="skill-note note-info" style="margin-top: 1rem;">
+            <i class="fa-solid fa-info-circle"></i>
+            <strong>Nguyên tắc chung:</strong>
+            <ul style="margin-left: 1.25rem; margin-top: 0.5rem; line-height: 1.6;">
+              <li>Tạo môi trường giao tiếp thoải mái, riêng tư và nên thăm khám từng bé.</li>
+              <li>Ghi chép đầy đủ thông tin: Tên, địa chỉ, số điện thoại người giám hộ, tên bác sĩ giới thiệu, thông tin nhà trẻ hoặc trường học.</li>
+              <li>Khuyến khích thân nhân hoặc trẻ kể lại bệnh sử theo thứ tự thời gian; ưu tiên sử dụng <em>câu hỏi mở</em> và tóm tắt lại thông tin để khẳng định.</li>
+            </ul>
+          </div>
+
+          <h3 style="margin-top: 1.5rem; font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-sitemap" style="color: var(--color-primary);"></i> Cấu trúc bệnh sử nhi khoa hô hấp:</h3>
+          
+          <ol class="step-list" style="margin-top: 0.75rem;">
+            <li class="step-item">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <strong>Lý do chính yếu đến khám:</strong>
+                <p>Lý do chính đưa trẻ đến khám (hoặc lý do và nơi chuyển viện): Ho, khò khè, khó thở, thở nhanh, sốt, bứt rứt hoặc bỏ bú.</p>
+              </div>
+            </li>
+            <li class="step-item">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <strong>Bệnh sử chi tiết (Tập trung vào triệu chứng chính):</strong>
+                <ul style="margin-left: 1rem; line-height: 1.6; margin-top: 0.5rem;">
+                  <li><strong>Tuổi khởi phát:</strong> Khởi phát sớm sau sinh thường do di truyền hoặc bất thường bẩm sinh. Khởi phát ở trẻ nhỏ gợi ý nhiễm siêu vi, viêm tiểu phế quản.</li>
+                  <li><strong>Tính chất khởi phát:</strong> Từ từ (viêm tiểu phế quản, viêm phổi) hoặc đột ngột (dị vật đường thở).</li>
+                  <li><strong>Hoàn cảnh khởi phát:</strong> Tự nhiên, sau gắng sức, sau tiếp xúc dị nguyên hô hấp (mùi nồng, khói thuốc lá...), sau triệu chứng nhiễm siêu vi hô hấp trên, sau bú/ăn (nghi trào ngược/sặc), hoặc thay đổi theo mùa.</li>
+                  <li><strong>Thời gian xuất hiện:</strong> Cấp tính (&lt; 3 tuần), bán cấp (3 tuần – 3 tháng), mạn tính (&gt; 3 tháng) hoặc tái phát thành đợt.</li>
+                  <li><strong>Triệu chứng kèm theo:</strong> Sốt, nôn ói, tiêu chảy, phát ban da và các can thiệp điều trị tuyến trước.</li>
+                </ul>
+              </div>
+            </li>
+            <li class="step-item">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <strong>Tiền căn bản thân & Gia đình:</strong>
+                <ul style="margin-left: 1rem; line-height: 1.6; margin-top: 0.5rem;">
+                  <li><strong>Bản thân:</strong> Tuổi thai, cân nặng lúc sinh, suy hô hấp sau sinh, bệnh lý mắc phải, tình trạng chủng ngừa (lao, phế cầu, 6in1), phát triển thể chất – tâm vận, tiền căn dị ứng, dùng thuốc kéo dài (corticoid, kháng sinh).</li>
+                  <li><strong>Gia đình:</strong> Tiền căn nhiễm trùng hô hấp cấp, lao, hen phế quản, cơ địa dị ứng (chàm, viêm mũi dị ứng).</li>
+                </ul>
+              </div>
+            </li>
+            <li class="step-item">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <strong>Môi trường sống:</strong>
+                <p>Nhà ở đông đúc, nuôi thú cưng (chó, mèo), cây trồng, sử dụng máy điều hòa nhiệt độ, tiếp xúc khói thuốc lá thụ động, nhang khói.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- TAB 2: NHÌN & ĐÁNH GIÁ KHÓ THỞ -->
+      <section class="tab" id="nhin">
+        <div class="card">
+          <h2><i class="fa-solid fa-eye" style="color: var(--color-primary);"></i> 2. Kỹ Thuật Nhìn Trong Khám Hô Hấp (Inspection)</h2>
+
+          <p style="line-height: 1.6;">Bộc lộ toàn bộ lồng ngực của trẻ trong điều kiện đủ ánh sáng và yên tĩnh để quan sát các thông số hô hấp chính:</p>
+
+          <h3 style="margin-top: 1.25rem; font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-stopwatch" style="color: var(--color-primary);"></i> Đánh giá nhịp thở & Ngưỡng thở nhanh:</h3>
+          <p style="margin-bottom: 0.5rem;">Đếm tần số, nhịp điệu và sự gắng công hô hấp. Nhịp thở cần được <strong>đếm trong ít nhất 1 phút</strong> (lý tưởng là đếm lặp lại nhiều lần và lấy giá trị trung bình) khi trẻ đang nghỉ hoặc ngủ yên.</p>
+
+          <table class="vitals-table">
+            <thead>
+              <tr>
+                <th>Nhóm tuổi</th>
+                <th>Tần số thở bình thường lúc nghỉ</th>
+                <th>Ngưỡng thở nhanh theo WHO</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Dưới 2 tháng tuổi</strong></td>
+                <td>30 – 60 lần/phút</td>
+                <td><span class="lab-badge badge-critical">≥ 60 lần/phút</span></td>
+              </tr>
+              <tr>
+                <td><strong>Từ 2 – 11 tháng tuổi</strong></td>
+                <td>30 – 50 lần/phút</td>
+                <td><span class="lab-badge badge-high">≥ 50 lần/phút</span></td>
+              </tr>
+              <tr>
+                <td><strong>Từ 1 – 5 tuổi</strong></td>
+                <td>20 – 40 lần/phút</td>
+                <td><span class="lab-badge badge-high">≥ 40 lần/phút</span></td>
+              </tr>
+              <tr>
+                <td><strong>Trên 5 tuổi</strong></td>
+                <td>15 – 25 lần/phút</td>
+                <td><span class="lab-badge badge-high">≥ 30 lần/phút</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+          <h3 style="font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-lungs" style="color: #e11d48;"></i> Đánh giá các dấu hiệu khó thở & Co kéo cơ hô hấp:</h3>
+          <ul style="margin-left: 1.25rem; line-height: 1.7; color: var(--color-text);">
+            <li><strong>Co lõm ngực (Chest indrawing):</strong> Quan sát 1/3 dưới lồng ngực bị lõm vào trong thì hít vào. Co lõm ngực rất dễ thấy ở trẻ nhỏ do cơ gian sườn còn mỏng và mềm.</li>
+            <li><strong>Co kéo cơ hô hấp phụ:</strong> 
+              <p style="margin: 0.25rem 0 0.5rem 0; color: var(--color-text-muted);">Dấu hiệu co kéo cơ ức đòn chũm và lõm hõm trên ức trong thì hít vào là <strong>dấu hiệu đáng tin cậy nhất</strong> chứng tỏ có tắc nghẽn đường hô hấp ngoài lồng ngực (như viêm thanh quản cấp, dị vật đường thở).</p>
+            </li>
+            <li><strong>Phập phồng cánh mũi & Hô hấp ngược chiều:</strong> Phập phồng cánh mũi rõ theo nhịp thở; khó thở khi nằm hay hô hấp ngực - bụng ngược chiều (bụng phồng ngực xẹp khi hít vào - kiệt sức cơ hô hấp).</li>
+            <li><strong>Sự cân xứng của lồng ngực:</strong> Quan sát tỷ số đường kính ngang và đường kính trước - sau của lồng ngực (lồng ngực hình thùng trong ứ khí mạn).</li>
+            <li><strong>Dấu hiệu ngoài phổi:</strong> Quầng thâm dưới mắt (cơ địa dị ứng), màu sắc & kích thước niêm mạc mũi (tìm polyp mũi), đầu chi dùi trống (bệnh phổi mô kẽ, giãn phế quản), thăm khám hầu họng (chẻ vòm, amidan to), sẹo lao BCG trên tay.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB 3: SỜ & GÕ LỒNG NGỰC -->
+      <section class="tab" id="so-go">
+        <div class="card">
+          <h2><i class="fa-solid fa-hand-holding-medical" style="color: var(--color-primary);"></i> 3. Kỹ Thuật Sờ & Gõ Trong Khám Hô Hấp</h2>
+
+          <h3 style="font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-hand" style="color: var(--color-primary);"></i> Kỹ thuật Sờ (Palpation):</h3>
+          
+          <div class="skill-note note-warning">
+            <i class="fa-solid fa-hand-sparkles"></i>
+            <strong>Lưu ý bắt buộc:</strong> Bác sĩ cần <strong>làm ấm bàn tay</strong> trước khi thăm khám để tránh làm trẻ giật mình hoặc khóc.
+          </div>
+
+          <p style="margin-top: 1rem; font-weight: 600;">Trình tự thăm khám sờ:</p>
+          <ul style="margin-left: 1.25rem; line-height: 1.7; color: var(--color-text);">
+            <li><strong>Sờ phần đầu cổ:</strong> Tìm hạch cổ (kích thước, mật độ, độ di động), sưng đau vùng xoang quanh mũi.</li>
+            <li><strong>Sờ vùng hầu mũi:</strong> Phát hiện bất thường giải phẫu như chẻ vòm dưới niêm mạc hoặc nguyên nhân gây tắc nghẽn hô hấp trên.</li>
+            <li><strong>Đánh giá vị trí khí quản:</strong> Xác định vị trí khí quản tại hõm trên ức (bình thường khí quản lệch nhẹ sang phải):
+              <div class="trachea-box">
+                <ul>
+                  <li><strong>Khí quản bị kéo lệch về bên tổn thương:</strong> Gặp trong xẹp phổi diện rộng, xơ hóa màng phổi.</li>
+                  <li><strong>Khí quản bị đẩy lệch sang bên đối diện:</strong> Gặp trong tràn khí màng phổi áp lực, tràn dịch màng phổi lượng nhiều.</li>
+                  <li><strong>Khí quản di động dạng lắc:</strong> Di động giữa thì hít vào và thở ra gợi ý tắc nghẽn ở phế quản gốc.</li>
+                  <li><strong>Khí quản lệch về sau:</strong> Do u trung thất trước hoặc biến dạng lồng ngực; <strong>lệch về trước</strong> do viêm trung thất.</li>
+                  <li><strong>Lõm hõm ức & kéo mạnh khí quản:</strong> Xuất hiện khi hít vào ở trẻ bị tắc nghẽn đường thở nặng.</li>
+                </ul>
+              </div>
+            </li>
+            <li><strong>Sờ rung thanh:</strong> Thực hiện ở trẻ lớn (yêu cầu trẻ nói "mười một") để phát hiện bất thường truyền âm giọng nói qua lồng ngực (tăng trong đông đặc phổi, giảm trong tràn dịch/tràn khí).</li>
+          </ul>
+
+          <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+          <h3 style="font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-drum" style="color: var(--color-primary);"></i> Kỹ thuật Gõ (Percussion):</h3>
+          <ul style="margin-left: 1.25rem; line-height: 1.7; color: var(--color-text); margin-top: 0.5rem;">
+            <li>Đặt ngón tay lên kẽ gian sườn, gõ nhẹ nhàng và so sánh đối xứng hai bên lồng ngực.</li>
+            <li><strong>Âm gõ bình thường:</strong> Phát ra tiếng trong (Resonant). Thành ngực trẻ mỏng nên âm gõ có xu hướng vang hơn người lớn.</li>
+            <li><strong>Gõ đục (Dullness):</strong> Gặp khi có hội chứng đông đặc phổi (viêm phổi thùy) hoặc tràn dịch màng phổi.</li>
+            <li><strong>Gõ vang / Gõ trống (Hyperresonant):</strong> Gặp khi có ứ khí phế nang (cơn hen, viêm tiểu phế quản) hoặc tràn khí màng phổi.</li>
+            <li><em>Lưu ý:</em> Kỹ thuật vừa gõ vừa nghe (gõ nhẹ lên xương ức trong quá trình nghe phổi) ít có giá trị lâm sàng ở trẻ em.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB 4: NGHE & ÂM BỆNH LÝ -->
+      <section class="tab" id="nghe">
+        <div class="card">
+          <h2><i class="fa-solid fa-stethoscope" style="color: var(--color-primary);"></i> 4. Kỹ Thuật Nghe Phổi & Bảng Phân Loại Âm Thanh (YDS)</h2>
+
+          <div class="skill-note note-info">
+            <i class="fa-solid fa-lightbulb"></i>
+            <strong>Nguyên tắc nghe phổi nhi khoa:</strong>
+            <ul style="margin-left: 1.25rem; margin-top: 0.5rem; line-height: 1.6;">
+              <li>Nghe trên lồng ngực là <strong>kỹ thuật quan trọng nhất</strong>. Thực hiện ở tư thế thẳng (trẻ sơ sinh nằm trên mặt phẳng, trẻ nhỏ ngồi trong lòng mẹ, trẻ lớn ngồi thẳng).</li>
+              <li><strong>Nên nghe sau lưng trước</strong> để tránh tạo sự sợ hãi, lo lắng cho trẻ.</li>
+              <li>Yêu cầu trẻ lớn hít bằng miệng chậm và sâu. Ở trẻ nhỏ, nghe tiếng thở sâu khi trẻ thở dài hoặc các lần hít sâu giữa những tiếng khóc.</li>
+            </ul>
+          </div>
+
+          <h3 style="margin-top: 1.5rem; font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-wind" style="color: var(--color-primary);"></i> 1. Tiếng thở khí quản (Tracheal breath sound):</h3>
+          <p style="line-height: 1.6;">Nghe tại hõm trên ức, có phổ tần số từ <strong>&lt; 100 Hz đến &gt; 2.000 Hz</strong>, sinh ra do luồng khí đi qua khe hẹp vùng thanh môn và hạ thanh môn.</p>
+
+          <h3 style="margin-top: 1.5rem; font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-wave-square" style="color: var(--color-primary);"></i> 2. Các âm bệnh lý của phổi:</h3>
+          <ul style="margin-left: 1.25rem; line-height: 1.7; color: var(--color-text);">
+            <li><strong>Khò khè (Wheezing) / Ran ngáy (Rhonchi):</strong> Âm thanh liên tục dạng nhạc (thường kéo dài <strong>&gt; 80 ms</strong>), sinh ra do khí dao động trong đường dẫn khí bị hẹp.</li>
+            <li><strong>Ran ngáy:</strong> Do vỡ màng dịch hoặc dao động thành ở đường dẫn khí lớn hơn (tần số <strong>&lt; 300 Hz</strong>, kéo dài <strong>&lt; 100 ms</strong>).</li>
+            <li><strong>Ran ẩm (Crackles):</strong> Âm thanh không liên tục (kéo dài <strong>&lt; 20 ms</strong>), xuất hiện do luồng khí đi qua chỗ có dịch tiết hoặc sự mở đột ngột của đường dẫn khí bị xẹp:
+              <ul>
+                <li><em>Ran ẩm nhỏ hạt (mịn):</em> Xuất hiện ở cuối thì hít vào, gặp trong bệnh phổi hạn chế hoặc suy tim ứ huyết giai đoạn đầu.</li>
+                <li><em>Ran ẩm to hạt (thô):</em> Xuất hiện ở đầu thì hít vào và thở ra, gặp trong bệnh phổi tắc nghẽn mạn tính, viêm phế quản.</li>
+              </ul>
+            </li>
+            <li><strong>Các tiếng ngoài lồng ngực:</strong>
+              <ul>
+                <li><em>Tiếng thở rít (Stridor):</em> do khí đi qua vùng rất hẹp của đường thở ngoài lồng ngực, nghe chủ yếu ở thì hít vào.</li>
+                <li><em>Thở rên (Grunting):</em> thì thở ra do khép dây thanh âm tạo áp lực dương cuối kỳ thở ra (PEEP).</li>
+                <li><em>Tiếng ngáy:</em> do rung cơ vùng hầu.</li>
+                <li><em>Tiếng cọ màng phổi (Pleural rub):</em> nghe thô ráp liên quan hô hấp.</li>
+              </ul>
+            </li>
+          </ul>
+
+          <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+          <h3 style="font-size: 1.1rem; color: var(--color-text);">📊 Bảng 14.1: Các âm thanh của hô hấp (Bộ môn Nhi - ĐHYD TP.HCM)</h3>
+          <table class="vitals-table">
+            <thead>
+              <tr>
+                <th>Loại âm</th>
+                <th>Phân loại</th>
+                <th>Cơ chế & Đặc điểm âm học</th>
+                <th>Ý nghĩa lâm sàng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan="2"><strong>Âm cơ bản</strong></td>
+                <td><strong>Âm phế nang (Phổi)</strong></td>
+                <td>Dòng khí xoáy ở trung tâm (thở ra), đường dẫn khí trung gian (hít vào). Tần số thấp không ồn (&lt; 100 và &gt; 1.000 Hz).</td>
+                <td>Liên quan đến thông khí tại chỗ và đường kính đường thở.</td>
+              </tr>
+              <tr>
+                <td><strong>Âm khí quản</strong></td>
+                <td>Dòng khí va chạm trên thành hầu, thanh quản, khí quản. Ồn và cộng hưởng (&lt; 100 và &gt; 3.000 Hz).</td>
+                <td>Liên quan đến cấu trúc đường thở trên.</td>
+              </tr>
+              <tr>
+                <td rowspan="3"><strong>Âm bệnh lý</strong></td>
+                <td><strong>Khò khè (Wheezing)</strong></td>
+                <td>Dao động thành đường dẫn khí nhỏ & trung tâm. Thanh âm dạng sin (&lt; 100 hoặc &gt; 1.000 Hz, kéo dài &gt; 80 ms).</td>
+                <td>Liên quan tắc nghẽn đường thở, hạn chế dòng khí (hen, VTPQ).</td>
+              </tr>
+              <tr>
+                <td><strong>Ran ngáy (Rhonchi)</strong></td>
+                <td>Vỡ màng dịch, dao động thành đường thở lớn. Nhiều thanh âm sin giảm dần (&lt; 300 Hz, kéo dài &lt; 100 ms).</td>
+                <td>Liên quan đường thở xuất tiết đờm dịch, hẹp bất thường.</td>
+              </tr>
+              <tr>
+                <td><strong>Ran ẩm (Crackles)</strong></td>
+                <td>Thành đường dẫn khí nhỏ & trung tâm co giãn đột ngột. Sóng phản xạ mất nhanh (&lt; 20 ms).</td>
+                <td>Liên quan đường thở kín, chứa dịch tiết (viêm phổi, suy tim).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB 5: NẾM & NGỬI -->
+      <section class="tab" id="nem-ngui">
+        <div class="card">
+          <h2><i class="fa-solid fa-head-side-cough" style="color: var(--color-primary);"></i> 5. Kỹ Thuật Nếm & Ngửi Trong Khám Hô Hấp</h2>
+          <p style="line-height: 1.6;">Khác với khám ở người lớn, giác quan ngửi và nếm mang lại các gợi ý chẩn đoán quan trọng trong thăm khám hô hấp nhi khoa:</p>
+
+          <div class="grid2" style="margin-top: 1.25rem;">
+            <div class="card" style="border: 1px solid var(--color-border); background: var(--color-surface);">
+              <h3 style="color: var(--color-primary); font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fa-solid fa-smell" style="color: var(--color-warning);"></i> 1. Kỹ Thuật Ngửi (Mùi hơi thở)
+              </h3>
+              <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--color-text); line-height: 1.6;">
+                Hơi thở hôi mạn tính ở trẻ em là dấu hiệu gợi ý cần thăm khám cẩn thận các bệnh lý:
+              </p>
+              <ul style="margin-left: 1.25rem; font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.6;">
+                <li>Viêm nhiễm vùng mũi/miệng (viêm xoang mạn, viêm amidan hốc mủ).</li>
+                <li>Dị vật đường thở hoặc dị vật mũi bỏ quên.</li>
+                <li>Áp-xe răng hoặc áp-xe phổi, giãn phế quản.</li>
+                <li>Trào ngược dạ dày - thực quản (GERD).</li>
+              </ul>
+            </div>
+
+            <div class="card" style="border: 1px solid var(--color-border); background: var(--color-surface);">
+              <h3 style="color: var(--color-primary); font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fa-solid fa-cookie-bite" style="color: #16a34a;"></i> 2. Kỹ Thuật Nếm (Vị mặn trên da)
+              </h3>
+              <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--color-text); line-height: 1.6;">
+                Mẹ của trẻ bị bệnh <strong>Xơ nang (Cystic Fibrosis)</strong> thường mô tả hoặc nếm thấy <strong>vị mặn bất thường trên da</strong> của con mình mỗi khi hôn bé.
+              </p>
+              <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.5rem;">
+                <em>Cơ chế:</em> Bất thường kênh <strong>CFTR</strong> làm giảm hấp thu lại Na<sup>+</sup> và Cl<sup>-</sup> tại tuyến mồ hôi, dẫn đến nồng độ muối tăng cao trong mồ hôi.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 6: BẢNG KIỂM OSCE -->
+      <section class="tab" id="osce">
+        <div class="card">
+          <h2><i class="fa-solid fa-square-check" style="color: var(--color-primary);"></i> 6. Bảng Kiểm Chấm Thi OSCE Khám Hô Hấp Nhi Khoa</h2>
+          <p>Bảng kiểm chuẩn 10 bước chấm thi thực hành lâm sàng bedside (Bộ môn Nhi - ĐHYD TP.HCM & Macleod's Examination).</p>
+
+          <table class="osce-table">
+            <thead>
+              <tr>
+                <th style="width: 8%;">STT</th>
+                <th>Bước thực hiện</th>
+                <th style="width: 15%;">Đạt / Không đạt</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Chào hỏi phụ huynh, giải thích mục đích thăm khám và làm quen tạo cảm giác an toàn cho trẻ.</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Bộc lộ lồng ngực trẻ đúng cách trong phòng đủ ấm và ánh sáng.</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td><strong>Đếm nhịp thở trọn vẹn 1 phút</strong> khi trẻ nằm yên/ngủ và so sánh với ngưỡng thở nhanh theo tuổi (WHO).</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Quan sát tìm <strong>dấu hiệu co lõm ngực</strong> (1/3 dưới thành ngực) và các vị trí co kéo cơ hô hấp phụ (lõm hõm ức, gian sườn).</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Tìm các dấu hiệu khó thở khác: Phập phồng cánh mũi, thở rên (grunting), hô hấp ngực-bụng ngược chiều, tím da niêm.</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Làm ấm hai bàn tay, sờ xác định <strong>vị trí khí quản</strong> tại hõm trên ức (tìm lệch khí quản).</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>Gõ nhẹ đối xứng lồng ngực 2 bên (phân biệt gõ trong, đục, hay gõ vang ứ khí phế nang).</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>Đặt ống nghe nhẹ nhàng, nghe lần lượt từ <strong>mặt sau lưng trước</strong> sang hai bên phế trường đối xứng.</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>Phân định chính xác âm thở phế nang và các âm bệnh lý (khò khè, ran ngáy, ran ẩm mịn/thô, stridor).</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td>Cảm ơn phụ huynh, mặc lại quần áo cho trẻ, rửa tay và tổng hợp kết luận thăm khám.</td>
+                <td><input type="checkbox"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+          <h3 style="font-size: 1rem; color: var(--color-text-muted);"><i class="fa-solid fa-book" style="color: var(--color-primary);"></i> Trích dẫn tài liệu tham khảo chuẩn AMA:</h3>
+          <p style="font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.6; margin-top: 0.25rem;">
+            1. Nguyễn Thái Sơn. Bài 14: Khám hô hấp trẻ em. Trong: <em>Nhi khoa YDS - Tập 1</em>. Bộ môn Nhi - Đại học Y Dược Thành phố Hồ Chí Minh; 2020:192-197.
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer class="global-footer">
+    <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+  </footer>
+</body>
+
+</html>

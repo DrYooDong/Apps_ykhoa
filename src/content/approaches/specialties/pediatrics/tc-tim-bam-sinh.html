@@ -101,8 +101,16 @@
       gap: 6px;
     }
 
-    /* Interactive Navigation Bar (Tabs) */
+    /* Override parent container overflow to allow position: sticky to work */
+    html, body, .app-container, .main-wrapper, .layout-content-area {
+      overflow: visible !important;
+    }
+
+    /* Interactive Navigation Bar (Tabs) - Sticky Freeze */
     .cardio-tabs-nav {
+      position: sticky !important;
+      top: calc(var(--header-height, 60px) + 8px) !important;
+      z-index: 150 !important;
       display: flex;
       gap: 8px;
       background: var(--color-surface);
@@ -111,7 +119,9 @@
       border-radius: 16px;
       margin-bottom: 24px;
       overflow-x: auto;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
     }
 
     .cardio-tab-btn {
@@ -239,6 +249,12 @@
       box-shadow: 0 6px 18px rgba(0,0,0,0.04);
     }
 
+    .interactive-widget-box.spo2-widget-compact {
+      padding: 14px 18px;
+      margin-bottom: 20px;
+      border-radius: 14px;
+    }
+
     .widget-box-header {
       display: flex;
       align-items: center;
@@ -246,6 +262,11 @@
       border-bottom: 2px solid var(--color-border);
       padding-bottom: 12px;
       margin-bottom: 18px;
+    }
+
+    .spo2-widget-compact .widget-box-header {
+      padding-bottom: 8px;
+      margin-bottom: 12px;
     }
 
     .widget-box-title {
@@ -258,15 +279,20 @@
       margin: 0;
     }
 
-    /* AAP SpO2 Decision Tool */
+    .spo2-widget-compact .widget-box-title {
+      font-size: 0.98rem;
+    }
+
+    /* AAP SpO2 Decision Tool - Compact */
     .spo2-checker-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      gap: 14px;
       background: linear-gradient(135deg, rgba(2, 132, 199, 0.04) 0%, rgba(139, 92, 246, 0.04) 100%);
       border: 1px dashed var(--color-primary);
-      border-radius: 14px;
-      padding: 20px;
+      border-radius: 12px;
+      padding: 12px 14px;
+      align-items: center;
     }
 
     @media (max-width: 768px) {
@@ -275,52 +301,96 @@
       }
     }
 
-    .spo2-input-group {
+    .spo2-inputs-inline {
       display: flex;
-      flex-direction: column;
-      gap: 12px;
+      gap: 10px;
+    }
+
+    @media (max-width: 480px) {
+      .spo2-inputs-inline {
+        flex-direction: column;
+      }
     }
 
     .spo2-input-field {
+      flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
     }
 
     .spo2-input-field label {
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       font-weight: 700;
       color: var(--color-text);
+      white-space: nowrap;
     }
 
-    .spo2-input-field input {
-      padding: 10px 14px;
-      border-radius: 10px;
-      border: 1px solid var(--color-border);
+    .input-with-unit {
+      display: flex;
+      align-items: center;
       background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 2px 8px;
+      transition: border-color 0.2s;
+    }
+
+    .input-with-unit:focus-within {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.15);
+    }
+
+    .input-with-unit input {
+      width: 100%;
+      border: none;
+      background: transparent;
+      padding: 6px 2px;
+      font-size: 0.95rem;
+      font-weight: 700;
       color: var(--color-text);
-      font-size: 1rem;
-      font-weight: 600;
+      outline: none;
+      text-align: center;
+    }
+
+    .input-with-unit .unit {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--color-text-muted);
     }
 
     .spo2-result-display {
       background: var(--color-surface);
-      border-radius: 12px;
-      border: 2px solid var(--color-border);
-      padding: 16px;
+      border-radius: 10px;
+      border: 1.5px solid var(--color-border);
+      padding: 10px 14px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      text-align: center;
+      gap: 4px;
+    }
+
+    .spo2-result-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .spo2-result-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: var(--color-text-muted);
     }
 
     .result-badge {
-      font-size: 1.25rem;
+      font-size: 0.85rem;
       font-weight: 800;
-      padding: 8px 16px;
-      border-radius: 100px;
+      padding: 3px 10px;
+      border-radius: 6px;
       display: inline-block;
-      margin: 8px auto;
+      margin: 0;
+      white-space: nowrap;
     }
 
     .result-badge.fail {
@@ -393,49 +463,10 @@
   <!-- ===================== APP CONTAINER ===================== -->
   <div class="app-container">
 
-    <!-- SIDEBAR -->
-    <aside class="app-sidebar" id="appSidebar">
-      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
-        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
-          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
-          <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
-      </button>
 
-      <nav class="sidebar-nav" aria-label="Điều hướng chính">
-        <ul class="nav-list" role="list">
-          <li>
-            <a href="../../../../../index.html" class="nav-item" title="Trang chủ">
-              <span class="nav-icon">🏠</span>
-              <span class="nav-text">Trang chủ</span>
-            </a>
-          </li>
-          <li>
-            <a href="../../tiep-can.html" class="nav-item" title="Tiếp cận">
-              <span class="nav-icon">🤒</span>
-              <span class="nav-text">Tiếp cận lâm sàng</span>
-            </a>
-          </li>
-          <li>
-            <a href="nhi-khoa.html" class="nav-item" title="Nhi khoa">
-              <span class="nav-icon">👶</span>
-              <span class="nav-text">Chuyên khoa Nhi</span>
-            </a>
-          </li>
-          <li>
-            <a href="tc-tim-bam-sinh.html" class="nav-item active" aria-current="page" title="Tim bẩm sinh">
-              <span class="nav-icon">❤️</span>
-              <span class="nav-text">Tim bẩm sinh trẻ em</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </aside>
 
     <!-- MAIN CONTENT -->
     <main class="main-wrapper" id="mainContent">
-      <clini-breadcrumb
-        items='[{"label": "🏠 Trang chủ", "url": "../../../../../index.html"}, {"label": "Tiếp cận lâm sàng", "url": "../../tiep-can.html"}, {"label": "Nhi khoa", "url": "nhi-khoa.html"}, {"label": "Tim bẩm sinh"}]'></clini-breadcrumb>
 
       <!-- HERO BANNER -->
       <section class="hero-cardio">
@@ -710,8 +741,8 @@
            ========================================================================== -->
       <div id="tab-neonatal" class="tab-content-panel">
         
-        <!-- CARD INTERACTIVE SPO2 CHECKER -->
-        <div class="interactive-widget-box">
+        <!-- CARD INTERACTIVE SPO2 CHECKER (COMPACT) -->
+        <div class="interactive-widget-box spo2-widget-compact">
           <div class="widget-box-header">
             <h3 class="widget-box-title">
               <i class="fa-solid fa-heart-circle-check" style="color: var(--cardio-primary);"></i>
@@ -721,26 +752,76 @@
           </div>
 
           <div class="spo2-checker-container">
-            <div class="spo2-input-group">
+            <div class="spo2-inputs-inline">
               <div class="spo2-input-field">
-                <label for="spo2Hand">SpO2 Tay Phải (Trước ống động mạch):</label>
-                <input type="number" id="spo2Hand" placeholder="Nhập % (ví dụ: 96)" min="50" max="100" value="96" oninput="calculateSpO2AAP()">
+                <label for="spo2Hand">SpO2 Tay Phải (Trước PDA):</label>
+                <div class="input-with-unit">
+                  <input type="number" id="spo2Hand" placeholder="96" min="50" max="100" value="96" oninput="calculateSpO2AAP()">
+                  <span class="unit">%</span>
+                </div>
               </div>
               <div class="spo2-input-field">
-                <label for="spo2Foot">SpO2 Bàn Chân (Sau ống động mạch):</label>
-                <input type="number" id="spo2Foot" placeholder="Nhập % (ví dụ: 95)" min="50" max="100" value="95" oninput="calculateSpO2AAP()">
+                <label for="spo2Foot">SpO2 Bàn Chân (Sau PDA):</label>
+                <div class="input-with-unit">
+                  <input type="number" id="spo2Foot" placeholder="95" min="50" max="100" value="95" oninput="calculateSpO2AAP()">
+                  <span class="unit">%</span>
+                </div>
               </div>
-              <p style="font-size: 0.8rem; color: var(--color-text-muted); margin: 0;">
-                <i class="fa-solid fa-circle-info"></i> Thực hiện đo lúc 24 giờ tuổi ở trẻ sơ sinh đủ tháng hoặc cận đủ tháng trước khi xuất viện.
-              </p>
             </div>
 
             <div class="spo2-result-display" id="spo2ResultBox">
-              <span style="font-size: 0.85rem; font-weight: 700; color: var(--color-text-muted);">KẾT QUẢ SÀNG LỌC</span>
-              <div id="spo2Badge" class="result-badge pass">ĐẠT (PASS)</div>
-              <p id="spo2Advice" style="font-size: 0.88rem; color: var(--color-text); margin: 4px 0 0 0;">
+              <div class="spo2-result-header">
+                <span class="spo2-result-label">KẾT QUẢ SÀNG LỌC</span>
+                <div id="spo2Badge" class="result-badge pass">ĐẠT (PASS)</div>
+              </div>
+              <p id="spo2Advice" class="spo2-advice-text">
                 SpO2 hợp lệ (Chênh lệch &le; 3% và cả 2 nơi &ge; 95%). Chuyển chăm sóc sơ sinh bình thường.
               </p>
+            </div>
+          </div>
+          <p class="spo2-footnote">
+            <i class="fa-solid fa-circle-info"></i> Thực hiện đo lúc 24 giờ tuổi ở trẻ sơ sinh đủ tháng hoặc cận đủ tháng trước khi xuất viện.
+          </p>
+        </div>
+
+        <!-- KHÁM LÂM SÀNG & KHAI THÁC BỆNH SỬ -->
+        <div class="symptom-step-card border-primary symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag">Lâm sàng &amp; Tiền sử</span>
+          </div>
+          <h3 class="step-card-title"><i class="fa-solid fa-clipboard-user"></i> Khai Thác Bệnh Sử &amp; Khám Tứ Chi Sơ Sinh</h3>
+          <div class="step-card-body">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+              
+              <div>
+                <h4 style="font-weight: 700; color: var(--color-primary); margin-bottom: 8px;"><i class="fa-solid fa-dna"></i> Tiền Sử &amp; Yếu Tố Nguy Cơ</h4>
+                <ul>
+                  <li><strong>Tiền căn gia đình:</strong> Nguy cơ mắc TBS là <strong>6%</strong> nếu mẹ bị TBS, và <strong>2%</strong> nếu bố hoặc anh chị em mắc. Dấu hiệu các hội chứng Marfan, Ehlers-Danlos, Noonan.</li>
+                  <li><strong>Yếu tố thai kỳ của mẹ:</strong>
+                    <ul>
+                      <li>Sinh non &lt; 37 tuần (nguy cơ gấp 2-3 lần).</li>
+                      <li>Tiểu đường thai kỳ, Phenylketon niệu, Lupus ban đỏ, Sjogren.</li>
+                      <li>Dùng thuốc: Isotretinoin, Lithium, Phenytoin, Acid Valproic...</li>
+                      <li>Nhiễm trùng 3 tháng đầu: Rubella, CMV, Toxoplasma...</li>
+                    </ul>
+                  </li>
+                  <li><strong>Siêu âm tim thai:</strong> Phát hiện dị tật từ tuần 16 – 17 thai kỳ ở nhóm nguy cơ cao.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 style="font-weight: 700; color: var(--cardio-purple); margin-bottom: 8px;"><i class="fa-solid fa-hand-holding-medical"></i> Bắt Mạch Tứ Chi &amp; Dấu Suy Tim</h4>
+                <ul>
+                  <li><strong>Bắt mạch tứ chi:</strong>
+                    <ul>
+                      <li><strong style="color: #dc2626;">Mạch chi dưới yếu hơn chi trên:</strong> Gợi ý Hẹp eo ĐMC (CoAo) hoặc Đứt đoạn cung ĐMC (IAA).</li>
+                      <li><strong style="color: #dc2626;">Mạch tứ chi đều yếu:</strong> Gợi ý Thiểu sản tim trái (HLHS).</li>
+                    </ul>
+                  </li>
+                  <li><strong>Dấu hiệu Suy tim ở sơ sinh:</strong> Thở nhanh, rút lõm ngực, vã mồ hôi khi bú, bú ngắt quãng, bú không đủ cử, chậm tăng cân, nhịp tim nhanh và gan to.</li>
+                </ul>
+              </div>
+
             </div>
           </div>
         </div>
@@ -814,48 +895,6 @@
                 <li><strong>Những ngày đầu sau sinh:</strong> Bệnh gây chèn ép đường thở (Ebstein nặng, TOF không lá van ĐMP, vòng mạch máu) hoặc tắc nghẽn tĩnh mạch (TAPVR có tắc nghẽn).</li>
                 <li><strong>Trong tuần đầu sau sinh:</strong> Bệnh phụ thuộc PDA bộc lộ Sốc hoặc Tím nặng khi PDA đóng lại; hoặc các tật tim có shunt T-P lớn (Truncus Arteriosus, VSD lớn kèm CoAo).</li>
               </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- KHÁM LÂM SÀNG & KHAI THÁC BỆNH SỬ -->
-        <div class="symptom-step-card border-primary symptom-col-12">
-          <div class="step-card-header">
-            <span class="step-card-tag">Lâm sàng &amp; Tiền sử</span>
-          </div>
-          <h3 class="step-card-title"><i class="fa-solid fa-clipboard-user"></i> Khai Thác Bệnh Sử &amp; Khám Tứ Chi Sơ Sinh</h3>
-          <div class="step-card-body">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-              
-              <div>
-                <h4 style="font-weight: 700; color: var(--color-primary); margin-bottom: 8px;"><i class="fa-solid fa-dna"></i> Tiền Sử &amp; Yếu Tố Nguy Cơ</h4>
-                <ul>
-                  <li><strong>Tiền căn gia đình:</strong> Nguy cơ mắc TBS là <strong>6%</strong> nếu mẹ bị TBS, và <strong>2%</strong> nếu bố hoặc anh chị em mắc. Dấu hiệu các hội chứng Marfan, Ehlers-Danlos, Noonan.</li>
-                  <li><strong>Yếu tố thai kỳ của mẹ:</strong>
-                    <ul>
-                      <li>Sinh non &lt; 37 tuần (nguy cơ gấp 2-3 lần).</li>
-                      <li>Tiểu đường thai kỳ, Phenylketon niệu, Lupus ban đỏ, Sjogren.</li>
-                      <li>Dùng thuốc: Isotretinoin, Lithium, Phenytoin, Acid Valproic...</li>
-                      <li>Nhiễm trùng 3 tháng đầu: Rubella, CMV, Toxoplasma...</li>
-                    </ul>
-                  </li>
-                  <li><strong>Siêu âm tim thai:</strong> Phát hiện dị tật từ tuần 16 – 17 thai kỳ ở nhóm nguy cơ cao.</li>
-                </ul>
-              </div>
-
-              <div>
-                <h4 style="font-weight: 700; color: var(--cardio-purple); margin-bottom: 8px;"><i class="fa-solid fa-hand-holding-medical"></i> Bắt Mạch Tứ Chi &amp; Dấu Suy Tim</h4>
-                <ul>
-                  <li><strong>Bắt mạch tứ chi:</strong>
-                    <ul>
-                      <li><strong style="color: #dc2626;">Mạch chi dưới yếu hơn chi trên:</strong> Gợi ý Hẹp eo ĐMC (CoAo) hoặc Đứt đoạn cung ĐMC (IAA).</li>
-                      <li><strong style="color: #dc2626;">Mạch tứ chi đều yếu:</strong> Gợi ý Thiểu sản tim trái (HLHS).</li>
-                    </ul>
-                  </li>
-                  <li><strong>Dấu hiệu Suy tim ở sơ sinh:</strong> Thở nhanh, rút lõm ngực, vã mồ hôi khi bú, bú ngắt quãng, bú không đủ cử, chậm tăng cân, nhịp tim nhanh và gan to.</li>
-                </ul>
-              </div>
-
             </div>
           </div>
         </div>

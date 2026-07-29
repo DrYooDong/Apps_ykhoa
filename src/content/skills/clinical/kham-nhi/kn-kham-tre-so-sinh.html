@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Hướng dẫn quy trình khám trẻ sơ sinh toàn diện chi tiết: 4 thời điểm khám chuẩn, chỉ số Silverman, sàng lọc tim bẩm sinh SpO2, phân biệt Omphalocele vs Gastroschisis, các phản xạ thần kinh & bảng kiểm OSCE.">
+  <title>Khám Trẻ Sơ Sinh – CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../../css/components/clinical-skill.css">
+  <link rel="stylesheet" href="../../../../../css/components/paraclinical.css">
+  <link rel="stylesheet" href="../../../../../css/components/physio-headings.css">
+
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../js/clinical-skill-tabs.js" defer></script>
+
+  <style>
+    .skill-hero-neo {
+      background: linear-gradient(135deg, #0284c7 0%, #0d9488 100%);
+      color: white;
+      padding: 1.75rem;
+      border-radius: var(--radius-lg, 12px);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 15px rgba(2, 132, 199, 0.25);
+    }
+
+    .skill-hero-neo h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-hero-neo p {
+      font-size: 0.95rem;
+      opacity: 0.95;
+      line-height: 1.6;
+    }
+
+    .neo-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+
+    .neo-table th, .neo-table td {
+      border: 1px solid var(--color-border, #e2e8f0);
+      padding: 0.75rem;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    .neo-table th {
+      background-color: var(--color-bg-alt, #f8fafc);
+      font-weight: 600;
+      color: var(--color-text, #0f172a);
+    }
+
+    .osce-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .osce-table th, .osce-table td {
+      border: 1px solid var(--color-border, #e2e8f0);
+      padding: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .osce-table th {
+      background: var(--color-primary-hl, #e0f2fe);
+      color: var(--color-primary, #0284c7);
+      text-align: left;
+    }
+
+    .compare-box {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin: 1rem 0;
+    }
+
+    .compare-card {
+      background: var(--color-surface, #ffffff);
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius-md, 12px);
+      padding: 1.25rem;
+    }
+
+    .compare-card h4 {
+      color: var(--color-primary, #0284c7);
+      margin-top: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../../index.html" class="nav-item">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../ky-nang.html" class="nav-item active">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../approaches/tiep-can.html" class="nav-item">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../calculators/cong-cu.html" class="nav-item">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ lâm sàng</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-wrapper" id="mainContent">
+      <clini-breadcrumb
+        items='[{"label": "🏠 Home", "url": "../../../../../index.html"}, {"label": "Kỹ năng lâm sàng", "url": "../../ky-nang.html"}, {"label": "Khám Nhi Khoa", "url": "kn-khamnhi.html"}, {"label": "Khám Trẻ Sơ Sinh"}]'></clini-breadcrumb>
+
+      <section class="skill-hero-neo">
+        <h1>👶 Kỹ Năng Khám Trẻ Sơ Sinh</h1>
+        <p>Hướng dẫn thăm khám toàn diện trẻ sơ sinh theo chuẩn Nhi khoa YDS (Bài 75 - ĐHYD TP.HCM): 4 thời điểm khám chuẩn, đánh giá sinh hiệu & nhân trắc, bảng điểm Silverman suy hô hấp, sàng lọc SpO2 tim bẩm sinh, phân biệt thoát vị rốn & thành bụng, khám thần kinh & tầm soát trật khớp háng (DDH).</p>
+      </section>
+
+      <!-- TABS -->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="thoi-diem">1. Thời điểm & Sinh hiệu</button>
+        <button class="tab-btn" data-tab="da-dau-mat">2. Da & Đầu Mặt Cổ</button>
+        <button class="tab-btn" data-tab="ho-hap">3. Hô hấp & Silverman</button>
+        <button class="tab-btn" data-tab="tim-tieuhoa">4. Tim mạch & Tiêu hóa</button>
+        <button class="tab-btn" data-tab="than-kinh">5. Thần kinh & Cơ xương</button>
+        <button class="tab-btn" data-tab="osce">6. Bảng kiểm OSCE</button>
+      </div>
+
+      <!-- TAB 1: THỜI ĐIỂM & SINH HIỆU -->
+      <section class="tab active" id="thoi-diem">
+        <div class="card">
+          <h2><i class="fa-solid fa-clock" style="color: var(--color-primary);"></i> 1. Các Thời Điểm Khám Trẻ Sơ Sinh & Mục Tiêu</h2>
+
+          <ol class="step-list">
+            <li class="step-item">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <strong>Ngay sau sinh:</strong>
+                <p>Đánh giá sinh hiệu, chỉ số Apgar và khả năng thích nghi của trẻ với cuộc sống ngoài tử cung.</p>
+              </div>
+            </li>
+            <li class="step-item">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <strong>Giờ thứ 4 – 6 sau sinh:</strong>
+                <p>Khám nhanh tình trạng lâm sàng của trẻ nhằm đảm bảo can thiệp kịp thời các bất thường phát sinh (suy hô hấp, hạ thân nhiệt, hạ đường huyết).</p>
+              </div>
+            </li>
+            <li class="step-item">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <strong>Đánh giá toàn diện trong 24 giờ đầu:</strong>
+                <p>Khám toàn thân chi tiết nhằm phát hiện những bất thường có thể làm trẻ không thích nghi được hoặc các bệnh lý cần giải quyết ngoại khoa/nội khoa sớm.</p>
+              </div>
+            </li>
+            <li class="step-item">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <strong>Khám mỗi khi có bất thường:</strong>
+                <p>Thăm khám lại ngay khi ghi nhận dấu hiệu nguy hiểm (sốt/hạ thân nhiệt, bỏ bú, lừ đừ, chướng bụng, vàng da sớm).</p>
+              </div>
+            </li>
+          </ol>
+
+          <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+          <h3 style="font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-shield-heart" style="color: var(--color-primary);"></i> Nguyên tắc chung khi khám trẻ sơ sinh:</h3>
+          <ul style="margin-left: 1.25rem; line-height: 1.7; color: var(--color-text); margin-top: 0.5rem;">
+            <li>Thăm khám ở nơi ấm áp, kín gió để tránh hạ thân nhiệt.</li>
+            <li>Rửa tay và sát khuẩn đầu ống nghe bằng dung dịch sát khuẩn trước và sau khi khám mỗi trẻ.</li>
+            <li><strong>Đếm nhịp thở và nhịp tim ngay khi bắt đầu khám</strong> (khi chưa cởi quần áo/khăn quấn) để tránh làm trẻ khóc.</li>
+            <li>Tránh để trẻ khóc trong giai đoạn đầu thăm khám; giữ bàn tay và đầu ống nghe ấm áp, nhẹ nhàng.</li>
+            <li>Thăm khám toàn diện; khi phát hiện một dị tật cần chủ động tìm các dị tật kết hợp (phối hợp X-quang, siêu âm) và đánh giá hội chứng dị dạng.</li>
+            <li>Nắm rõ tiền sử thai kỳ và tiền căn gia đình trước khi thăm khám.</li>
+          </ul>
+
+          <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+          <h3 style="font-size: 1.1rem; color: var(--color-text);">📊 Bảng Sinh hiệu & Chỉ số Nhân trắc sơ sinh bình thường</h3>
+          <table class="neo-table">
+            <thead>
+              <tr>
+                <th>Thông số</th>
+                <th>Giá trị sinh lý bình thường</th>
+                <th>Quy tắc & Cách đo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Nhiệt độ</strong></td>
+                <td>36.5°C – 37.5°C</td>
+                <td>Đo ở nách trong 3 phút. Kẹp nách giữ tay trẻ khép sát thân.</td>
+              </tr>
+              <tr>
+                <td><strong>Nhịp tim (Mạch)</strong></td>
+                <td>100 – 160 lần/phút (Lúc nghỉ)</td>
+                <td>Lúc khóc/kích thích: 160–180 lần/phút; lúc ngủ: 80–100 lần/phút.</td>
+              </tr>
+              <tr>
+                <td><strong>Nhịp thở</strong></td>
+                <td>40 – 60 lần/phút</td>
+                <td>Đếm khi trẻ nằm yên ít nhất 5 phút, đếm <strong>tròn trong 1 phút</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>Nhân trắc</strong></td>
+                <td>Cân nặng, Chiều dài, Vòng đầu</td>
+                <td>Đo cân nặng (đã trừ tã), chiều dài nằm ngửa và vòng đầu qua thóp/chẩm.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB 2: DA & ĐẦU MẶT CỔ -->
+      <section class="tab" id="da-dau-mat">
+        <div class="card">
+          <h2><i class="fa-solid fa-child" style="color: var(--color-primary);"></i> 2. Khám Da, Đầu, Mặt, Mắt, Mũi, Tai, Miệng & Cổ</h2>
+
+          <h3 style="font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-palette" style="color: var(--color-primary);"></i> 1. Màu sắc da & Dấu hiệu da liễu:</h3>
+          <ul style="margin-left: 1.25rem; line-height: 1.7; color: var(--color-text); margin-top: 0.5rem;">
+            <li><strong>Tấm nhuộm phân su:</strong> Da và dây rốn dính phân su màu xanh/vàng.</li>
+            <li><strong>Bong nứt da:</strong> Thường gặp ở trẻ suy thoái bánh nhau (già tháng).</li>
+            <li><strong>Đỏ sậm:</strong> Gặp trong đa hồng cầu hoặc ủ ấm quá mức.</li>
+            <li><strong>Vàng da:</strong> Đánh giá mức độ theo phân vùng Kramer dưới ánh sáng trắng tự nhiên.</li>
+            <li><strong>Da xanh, lòng bàn tay nhợt:</strong> Gợi ý thiếu máu, giảm thể tích tuần hoàn hoặc sốc.</li>
+            <li><strong>CRT (Thời gian phục hồi màu da):</strong> Bình thường ≤ 3 giây.</li>
+            <li><strong>Tím:</strong> Tím ngoại biên (đầu chi) gặp sinh lý trong 24 giờ đầu; <em>Tím trung ương</em> (lưỡi, niêm mạc miệng, thân mình) là bất thường bệnh lý.</li>
+            <li><strong>Collodion baby:</strong> Rối loạn sừng hóa da bẩm sinh khiến da bóng như bọc màng keo.</li>
+            <li><strong>Phù cứng bì (Sclerema):</strong> Da cứng ở đầu chi, gặp trong nhiễm trùng nặng hoặc sinh non.</li>
+          </ul>
+
+          <h4 style="margin-top: 1rem; color: var(--color-primary);">Các tổn thương da khu trú lành tính & Bệnh lý:</h4>
+          <ul style="margin-left: 1.25rem; line-height: 1.6; color: var(--color-text);">
+            <li><em>Vết Mông Cổ:</em> Dát sắc tố xanh đen vùng mông/lưng, lành tính, mất dần khi lớn.</li>
+            <li><em>Hạt kê (Milia):</em> Nang chứa keratin màu trắng ở mũi, cằm, trán, tự hết sau vài tuần.</li>
+            <li><em>Ban đỏ nhiễm độc (Erythema toxicum):</em> Sẩn đỏ có mụn mủ nhỏ trung tâm, xuất hiện từ ngày 2 sau sinh, tự hết sau 7–10 ngày.</li>
+            <li><em>Blueberry muffin baby:</em> Các nốt cục tím sậm dưới da do ổ tạo máu ngoài tủy (nhiễm trùng bào thai TORCH).</li>
+            <li><em>Nevus & Bất thường mạch máu:</em> U mạch máu (Hemangioma) — chú ý hội chứng Kasabach-Merritt nếu kèm giảm tiểu cầu; Vết cá hồi (Salmon patch) ở trán, mi mắt tự mờ.</li>
+          </ul>
+
+          <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+          <h3 style="font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-head-side-virus" style="color: var(--color-primary);"></i> 2. Đầu, Sọ, Mặt, Mắt, Mũi, Miệng, Tai & Cổ:</h3>
+
+          <div class="compare-box">
+            <div class="compare-card">
+              <h4>Bướu huyết thanh (Caput succedaneum)</h4>
+              <ul style="font-size: 0.9rem; line-height: 1.6; margin-left: 1rem;">
+                <li>Tụ dịch phù ở mô mềm dưới da đầu do áp lực sinh âm đạo.</li>
+                <li><strong>VƯỢT QUA đường liên khớp sọ</strong>.</li>
+                <li>Mềm, ấn lõm, xuất hiện ngay sau sinh và <em>tự biến mất sau vài ngày</em>.</li>
+              </ul>
+            </div>
+            <div class="compare-card">
+              <h4>Bướu máu gian màng xương (Cephalohematoma)</h4>
+              <ul style="font-size: 0.9rem; line-height: 1.6; margin-left: 1rem;">
+                <li>Tụ máu dưới màng xương sọ.</li>
+                <li><strong>KHÔNG VƯỢT QUA đường liên khớp sọ</strong>.</li>
+                <li>Căng, xuất hiện vài giờ sau sinh, <em>lâu tan hơn</em> (nhiều tuần/tháng), nguy cơ tăng bilirubin máu.</li>
+              </ul>
+            </div>
+          </div>
+
+          <ul style="margin-left: 1.25rem; line-height: 1.7; color: var(--color-text); margin-top: 1rem;">
+            <li><strong>Thóp:</strong> Thóp trước (kích thước 1–4 cm, đóng lúc 9–18 tháng); Thóp sau (đóng lúc 2–3 tháng). Thóp phồng gợi ý tăng áp lực nội sọ/viêm màng nội sọ; thóp lõm gợi ý mất nước.</li>
+            <li><strong>Mặt:</strong> Đánh giá sự cân xứng khi khóc (liệt dây VII ngoại biên do sinh kềm).</li>
+            <li><strong>Mắt:</strong> Phản xạ đồng tử có từ tuổi thai ≥ 32 tuần. Phát hiện đục thủy tinh thể bẩm sinh (mất phản xạ đỏ đáy mắt), tăng nhãn áp bẩm sinh (đường kính giác mạc &gt; 13 mm) hoặc khuyết mống mắt (Coloboma).</li>
+            <li><strong>Mũi: Hẹp mũi sau (Choanal atresia):</strong> Trẻ nguy kịch hô hấp sớm, tím tái khi bú, giảm tím khi khóc, <em>không đặt được sonde 8F qua 5.5 cm</em>.</li>
+            <li><strong>Miệng:</strong> Hạt Epstein (kén bì lành tính vòm miệng), Răng sơ sinh (nhổ sớm tránh hít sặc), Lưỡi to (suy giáp bẩm sinh, Beckwith-Wiedemann). <strong>Tam chứng Pierre-Robin:</strong> Cằm nhỏ/tụt ra sau, chẻ vòm hầu và lưỡi tụt sau gây tắc nghẽn đường thở.</li>
+            <li><strong>Tai & Cổ:</strong> Tai đóng thấp (vành tai dưới đường khóe mắt ngoài) thường kèm dị tật tiết niệu. Tầm soát thính lực OAE. Cổ: Sờ u cơ ức đòn chũm, cystic hygroma. <strong>Gãy xương đòn:</strong> Cử động tay giảm, có dấu "phím đàn dương cầm" và tiếng lạo xạo xương.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB 3: HÔ HẤP & SILVERMAN -->
+      <section class="tab" id="ho-hap">
+        <div class="card">
+          <h2><i class="fa-solid fa-lungs" style="color: var(--color-primary);"></i> 3. Khám Hô Hấp & Đánh Giá Chỉ Số Silverman</h2>
+
+          <p style="line-height: 1.6;">Quan sát sự cân xứng lồng ngực (bất đối xứng gợi ý tràn khí màng phổi hoặc thoát vị hoành). Đường kính mầm vú ở trẻ đủ tháng khoảng 1 cm.</p>
+
+          <h3 style="margin-top: 1.25rem; font-size: 1.1rem; color: var(--color-text);">📊 Bảng 75.1: Chỉ số Silverman đánh giá mức độ suy hô hấp sơ sinh (YDS)</h3>
+          <table class="neo-table">
+            <thead>
+              <tr>
+                <th>Thông số quan sát</th>
+                <th>0 điểm</th>
+                <th>1 điểm</th>
+                <th>2 điểm</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1. Di động ngực - bụng</strong></td>
+                <td>Cùng chiều (Ngực bụng nhịp nhàng)</td>
+                <td>Chênh lệch (Ngực thở yếu)</td>
+                <td>Ngược chiều (Bụng phồng ngực xẹp)</td>
+              </tr>
+              <tr>
+                <td><strong>2. Co kéo hạ sườn</strong></td>
+                <td>Không co kéo</td>
+                <td>Co kéo nhẹ/ít</td>
+                <td>Co kéo rõ/nhiều</td>
+              </tr>
+              <tr>
+                <td><strong>3. Lõm mũi ức</strong></td>
+                <td>Không lõm</td>
+                <td>Lõm nhẹ/ít</td>
+                <td>Lõm sâu/nhiều</td>
+              </tr>
+              <tr>
+                <td><strong>4. Phập phồng cánh mũi</strong></td>
+                <td>Không phập phồng</td>
+                <td>Kín đáo/ít</td>
+                <td>Rõ/nhiều</td>
+              </tr>
+              <tr>
+                <td><strong>5. Thở rên (Grunting)</strong></td>
+                <td>Không thở rên</td>
+                <td>Nghe được bằng ống nghe</td>
+                <td>Nghe được bằng tai thường</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="skill-note note-warning" style="margin-top: 1rem;">
+            <i class="fa-solid fa-chart-simple"></i>
+            <strong>Đánh giá chỉ số Silverman (Tổng điểm 0 – 10):</strong>
+            <ul style="margin-left: 1.25rem; margin-top: 0.5rem; line-height: 1.6;">
+              <li><strong>≤ 2 điểm:</strong> Trẻ không suy hô hấp / bình thường.</li>
+              <li><strong>3 – 6 điểm:</strong> Suy hô hấp mức độ trung bình (cần hỗ trợ thở $O_2$ / CPAP).</li>
+              <li><strong>≥ 6 điểm:</strong> Suy hô hấp mức độ nặng (nguy cơ kiệt sức, cần đặt nội khí quản).</li>
+            </ul>
+          </div>
+
+          <h3 style="margin-top: 1.5rem; font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-stethoscope" style="color: var(--color-primary);"></i> Tiêu chuẩn chẩn đoán Suy hô hấp sơ sinh:</h3>
+          <p style="line-height: 1.6;">Chẩn đoán khi trẻ sơ sinh xuất hiện <strong>≥ 1 dấu hiệu</strong> sau:</p>
+          <ul style="margin-left: 1.25rem; line-height: 1.7; color: var(--color-text);">
+            <li>Chỉ số Silverman &gt; 2 điểm.</li>
+            <li>Tím da niêm khi thở khí trời (SpO<sub>2</sub> &lt; 92% ở trẻ &gt; 28 tuần).</li>
+            <li>Rối loạn nhịp thở: Thở nhanh &gt; 60 lần/phút, thở chậm &lt; 30 lần/phút hoặc có các cơn ngưng thở bệnh lý (&gt; 20 giây hoặc kèm nhịp chậm/tím).</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB 4: TIM MẠCH & TIÊU HÓA -->
+      <section class="tab" id="tim-tieuhoa">
+        <div class="card">
+          <h2><i class="fa-solid fa-heart-pulse" style="color: var(--color-primary);"></i> 4. Khám Tim Mạch, Tiêu Hóa & Thành Bụng</h2>
+
+          <h3 style="font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-heart" style="color: var(--color-primary);"></i> 1. Khám Tim mạch & Sàng lọc SpO2:</h3>
+          <ul style="margin-left: 1.25rem; line-height: 1.7; color: var(--color-text); margin-top: 0.5rem;">
+            <li><strong>Mỏm tim:</strong> Vị trí bình thường ở khoang gian sườn 4 ngay đường trung đòn trái. Thất phải ưu thế sinh lý ở trẻ sơ sinh.</li>
+            <li><strong>Âm thổi:</strong> Phân biệt âm thổi vô tội (1/6–2/6, ngắn, không kèm click) với âm thổi bệnh lý (&gt; 3/6, toàn tâm thu, âm sắc thô).</li>
+            <li><strong>Mạch & Huyết áp:</strong> Bắt mạch đùi và mạch tứ chi. Mạch chi dưới yếu hoặc mất gợi ý <strong>Hẹp eo động mạch chủ</strong>. Thời gian phục hồi màu da (CRT) bình thường ≤ 3 giây.</li>
+            <li><strong>Sàng lọc tim bẩm sinh bằng SpO2 tứ chi:</strong> Đo SpO<sub>2</sub> ở <em>tay phải</em> (trước ống động mạch) và <em>chân</em> (sau ống động mạch). Sự chênh lệch SpO<sub>2</sub> &gt; 5 – 10% giữa tay phải và chân gợi ý luồng thông đảo chiều hoặc cao áp phổi tồn tại.</li>
+          </ul>
+
+          <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+          <h3 style="font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-stomach" style="color: var(--color-primary);"></i> 2. Tiêu hóa, Dây rốn & Thành bụng:</h3>
+          <ul style="margin-left: 1.25rem; line-height: 1.7; color: var(--color-text); margin-top: 0.5rem;">
+            <li><strong>Mạch máu dây rốn:</strong> Bình thường có 2 động mạch, 1 tĩnh mạch. <em>Chỉ có 1 động mạch rốn</em> thường kèm dị tật hệ tiết niệu.</li>
+          </ul>
+
+          <div class="compare-box">
+            <div class="compare-card" style="border-left: 4px solid var(--color-primary);">
+              <h4>Thoát vị cuống rốn (Omphalocele)</h4>
+              <ul style="font-size: 0.9rem; line-height: 1.6; margin-left: 1rem;">
+                <li>Khối thoát vị nằm ngay chân dây rốn.</li>
+                <li><strong>CÓ MÀNG BAO PHỦ</strong> nội tạng.</li>
+                <li><em>Xử trí:</em> Bao phủ túi nylon vô trùng để giữ nhiệt/nước, chuyển ngoại khoa.</li>
+              </ul>
+            </div>
+            <div class="compare-card" style="border-left: 4px solid #e11d48;">
+              <h4>Thoát vị thành bụng (Gastroschisis)</h4>
+              <ul style="font-size: 0.9rem; line-height: 1.6; margin-left: 1rem;">
+                <li>Khối thoát vị nằm bên phải dây rốn.</li>
+                <li><strong>KHÔNG CÓ MÀNG BAO PHỦ</strong>.</li>
+                <li><em>Xử trí:</em> Quấn gạc ẩm vô trùng, đặt sonde dạ dày, giữ ấm, chuyển ngoại khẩn.</li>
+              </ul>
+            </div>
+          </div>
+
+          <ul style="margin-left: 1.25rem; line-height: 1.7; color: var(--color-text); margin-top: 0.5rem;">
+            <li><strong>Bụng lõm lòng thuyền:</strong> Dấu hiệu gợi ý kinh điển của <strong>Thoát vị hoành bẩm sinh</strong>.</li>
+            <li><strong>Sờ nắn ổ bụng:</strong> Bờ dưới gan bình thường &lt; 2 cm dưới bờ sườn phải; lách mấp mé ≤ 1 cm dưới bờ sườn trái. Bụng chướng gợi ý tắc ruột, viêm phúc mạc phân su.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB 5: THẦN KINH & CƠ XƯƠNG -->
+      <section class="tab" id="than-kinh">
+        <div class="card">
+          <h2><i class="fa-solid fa-brain" style="color: var(--color-primary);"></i> 5. Khám Thần Kinh, Cơ Xương Khớp & Sinh Dục Sơ Sinh</h2>
+
+          <h3 style="font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-person-dots-from-line" style="color: var(--color-primary);"></i> 1. Thần kinh & Phản xạ sơ sinh:</h3>
+          <ul style="margin-left: 1.25rem; line-height: 1.7; color: var(--color-text); margin-top: 0.5rem;">
+            <li><strong>Tư thế tự nhiên:</strong> Trẻ đủ tháng nằm tư thế co 4 chi chống lại trọng lực.</li>
+          </ul>
+
+          <div class="compare-box">
+            <div class="compare-card">
+              <h4>Rung chi sinh lý (Jitteriness)</h4>
+              <p style="font-size: 0.9rem; line-height: 1.5;">Cử động rung biên độ nhỏ, nhịp nhanh, <strong>dừng lại khi giữ chi nhẹ nhàng</strong>, không kèm bất thường vận nhãn.</p>
+            </div>
+            <div class="compare-card" style="border-color: #e11d48;">
+              <h4 style="color: #e11d48;">Co giật sơ sinh (Seizure)</h4>
+              <p style="font-size: 0.9rem; line-height: 1.5;">Biến đổi biên độ lớn, giật chậm hơn, <strong>không mất khi giữ chi</strong>, kèm trợn mắt, tím tái, rối loạn tri giác.</p>
+            </div>
+          </div>
+
+          <h4 style="margin-top: 1rem; color: var(--color-primary);">Thủ thuật đánh giá trương lực cơ:</h4>
+          <ul style="margin-left: 1.25rem; line-height: 1.7; color: var(--color-text);">
+            <li><strong>Thủ thuật kéo ngồi (Traction test):</strong> Nắm 2 cổ tay kéo trẻ ngồi dậy; trẻ đủ tháng gấp nhẹ khuỷu tay và giữ đầu cùng trục với thân trong 2–3 giây.</li>
+            <li><strong>Thủ thuật treo sấp (Ventral suspension):</strong> Đặt bàn tay dưới ngực nâng trẻ nằm sấp; trẻ đủ tháng giữ được đầu phẳng cùng trục cơ thể và co 4 chi.</li>
+          </ul>
+
+          <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+          <h3 style="font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-bone" style="color: var(--color-primary);"></i> 2. Cơ xương khớp & Tầm soát trật khớp háng (DDH):</h3>
+          <ul style="margin-left: 1.25rem; line-height: 1.7; color: var(--color-text); margin-top: 0.5rem;">
+            <li><strong>Tổn thương đám rối thần kinh cánh tay do sang chấn sản khoa:</strong>
+              <ul>
+                <li><em>Liệt Erb-Duchenne (C5 – C6):</em> Tay bên tổn thương khép, xoay trong, cẳng tay sấp (tư thế "đòi tiền bồi dưỡng").</li>
+                <li><em>Liệt Klumpke (C8 – T1):</em> Liệt bàn tay và các ngón tay.</li>
+              </ul>
+            </li>
+            <li><strong>Trật khớp háng phát triển (DDH):</strong> Bất đối xứng nếp gấp da bẹn/mông, chi bên trật ngắn hơn.
+              <p style="margin: 0.25rem 0;"><em>Nghiệm pháp Ortolani:</em> Gấp khớp háng 90°, dang đùi và nâng mấu chuyển lớn ➔ cảm giác trượt nẩy "cách" (biến trật khớp thành khớp về vị trí).</p>
+              <p style="margin: 0.25rem 0;"><em>Nghiệm pháp Barlow:</em> Khép đùi và đẩy ra sau ➔ gây trật khớp háng ra ngoài.</p>
+            </li>
+          </ul>
+
+          <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+          <h3 style="font-size: 1.1rem; color: var(--color-text);"><i class="fa-solid fa-restroom" style="color: var(--color-primary);"></i> 3. Sinh dục, Hậu môn & Cột sống:</h3>
+          <ul style="margin-left: 1.25rem; line-height: 1.7; color: var(--color-text); margin-top: 0.5rem;">
+            <li><strong>Tiểu tiện & Tiêu phân su:</strong> Hầu hết trẻ đủ tháng đi tiểu và tiêu phân su trong 24 giờ đầu.</li>
+            <li><strong>Sinh dục nam:</strong> Lỗ tiểu, chiều dài dương vật (2.5–5 cm), tinh hoàn trong túi bìu (tìm tinh hoàn ẩn, tràn dịch tinh mạc).</li>
+            <li><strong>Sinh dục nữ:</strong> Lỗ âm đạo mở 3–4 mm, âm vật rộng 2–6 mm; có thể xuất tiết dịch trắng hoặc ra máu kinh sinh lý nhẹ do sụt giảm estrogen từ mẹ.</li>
+            <li><strong>Hậu môn:</strong> Đặt ống thông mềm kiểm tra tính thông suốt của hậu môn (đưa nhẹ nhàng 3 cm); phát hiện dị dạng màng hậu môn.</li>
+            <li><strong>Cột sống:</strong> Khám dọc đường giữa cột sống tìm hốc sâu, chỗ phình, búi lông ➔ gợi ý dị tật <strong>Gai sống chẻ đôi (Spina bifida)</strong>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB 6: BẢNG KIỂM OSCE -->
+      <section class="tab" id="osce">
+        <div class="card">
+          <h2><i class="fa-solid fa-square-check" style="color: var(--color-primary);"></i> 6. Bảng Kiểm Chấm Thi OSCE Khám Trẻ Sơ Sinh</h2>
+          <p>Bảng kiểm 12 bước chấm thi thực hành bedside chuẩn Bộ môn Nhi - ĐHYD TP.HCM (Bài 75).</p>
+
+          <table class="osce-table">
+            <thead>
+              <tr>
+                <th style="width: 8%;">STT</th>
+                <th>Bước thực hiện</th>
+                <th style="width: 15%;">Đạt / Không đạt</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Rửa tay sát khuẩn, giữ phòng khám ấm áp, kín gió và làm ấm đầu ống nghe/bàn tay.</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td><strong>Đếm nhịp thở & nhịp tim trọn vẹn 1 phút</strong> ngay từ đầu khi trẻ nằm yên (chưa bộc lộ khăn).</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Đo thân nhiệt nách (36.5–37.5°C) và thực hiện đo nhân trắc (cân nặng, chiều dài, vòng đầu).</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Bộc lộ toàn thân, đánh giá màu sắc da (tím trung ương/ngoại biên, vàng da Kramer, CRT ≤ 3s).</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Sờ thóp trước/sau, phân biệt Bướu huyết thanh (vượt đường khớp) và Bướu máu gian màng xương.</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Kiểm tra mắt, mũi (hẹp mũi sau), miệng ( Pierre-Robin, chẻ vòm), tai và sờ gãy xương đòn.</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>Đánh giá <strong>Chỉ số Silverman (0–10 điểm)</strong> chẩn đoán suy hô hấp sơ sinh.</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>Nghe tim (mỏm tim KGS 4), bắt mạch đùi/tứ chi và <strong>đo SpO<sub>2</sub> tay phải - chân</strong> sàng lọc tim bẩm sinh.</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>Khám thành bụng & rốn (đếm 3 mạch máu rốn, phân biệt Omphalocele vs Gastroschisis).</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td>Khám sinh dục, thử tính thông suốt hậu môn (thông 3cm) và kiểm tra cột sống tìm gai sống chẻ đôi.</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>11</td>
+                <td>Đánh giá tư thế co 4 chi, phản xạ kéo ngồi, treo sấp và <strong>thủ thuật Ortolani/Barlow</strong> tầm soát DDH.</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>12</td>
+                <td>Ủ ấm cho trẻ, bàn giao kết quả với thân nhân và rửa tay kết thúc thăm khám.</td>
+                <td><input type="checkbox"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+          <h3 style="font-size: 1rem; color: var(--color-text-muted);"><i class="fa-solid fa-book" style="color: var(--color-primary);"></i> Trích dẫn tài liệu tham khảo chuẩn AMA:</h3>
+          <p style="font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.6; margin-top: 0.25rem;">
+            1. Phạm Diệp Thùy Dương. Bài 75: Khám trẻ sơ sinh. Trong: <em>Nhi khoa YDS - Tập 2 (Sơ sinh)</em>. Bộ môn Nhi - Đại học Y Dược Thành phố Hồ Chí Minh; 2020:300-317.
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer class="global-footer">
+    <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+  </footer>
+</body>
+
+</html>

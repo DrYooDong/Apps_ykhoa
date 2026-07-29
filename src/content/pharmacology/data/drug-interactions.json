@@ -1,9 +1,13 @@
 {
   "version": "1.0.0",
+  "updatedAt": "2026-07-29",
   "interactions": [
     {
+      "id": "inter_bb_non_dhp_ccb",
       "drug1": "metoprolol_succ",
       "drug2": "verapamil",
+      "group1": "beta_blockers",
+      "group2": "non_dhp_ccb",
       "severity": "contraindicated",
       "severityLabel": "Chống chỉ định / Nguy hiểm cao",
       "summary": "Tăng đáng kể nguy cơ chậm nhịp tim nặng, block AV độ III và suy tim cấp.",
@@ -11,22 +15,52 @@
       "clinicalManagement": "Tránh dùng phối hợp đường uống hoặc tiêm tĩnh mạch. Nếu bắt buộc cần phối hợp chẹn beta, hãy cân nhắc chọn nhóm Dihydropyridine CCB (như Amlodipine) và theo dõi sát mạch, huyết áp."
     },
     {
-      "drug1": "ciprofloxacin",
-      "drug2": "paracetamol",
-      "severity": "minor",
-      "severityLabel": "Tương tác nhẹ / Cần theo dõi",
-      "summary": "Ciprofloxacin có thể làm tăng nhẹ nồng độ Paracetamol trong huyết tương do ức chế nhẹ enzym chuyển hóa.",
-      "mechanism": "Ciprofloxacin ức chế nhẹ isoenzym CYP1A2 ở gan, enzym tham gia một phần nhỏ vào chuyển hóa Paracetamol.",
-      "clinicalManagement": "Có thể sử dụng đồng thời an toàn ở liều Paracetamol thông thường. Không cần điều chỉnh liều."
+      "id": "inter_arni_acei",
+      "drug1": "sacubitril_valsartan",
+      "drug2": "enalapril",
+      "group1": "arni",
+      "group2": "acei",
+      "severity": "contraindicated",
+      "severityLabel": "Chống chỉ định Tuyệt đối",
+      "summary": "Nguy cơ phù mạch nghiêm trọng (Angioedema) đe dọa tính mạng.",
+      "mechanism": "Ức chế đồng thời Neprilysin và ACE enzyme làm tích lũy Bradykinin mức độ rất cao ở mô phế quản và niêm mạc.",
+      "clinicalManagement": "Tắm rửa thời gian chờ (washout period) ít nhất 36 giờ sau liều ACEi cuối cùng trước khi khởi đầu ARNI."
     },
     {
-      "drug1": "amox_clav",
-      "drug2": "metoprolol_succ",
-      "severity": "none",
-      "severityLabel": "Không có tương tác lâm sàng đáng kể",
-      "summary": "Không ghi nhận tương tác dược lực học hoặc dược động học bất lợi.",
-      "mechanism": "Hai thuốc được chuyển hóa và thải trừ qua các con đường hoàn toàn độc lập.",
-      "clinicalManagement": "Có thể dùng phối hợp bình thường khi có chỉ định."
+      "id": "inter_sglt2i_mra",
+      "drug1": "empagliflozin",
+      "drug2": "finerenone",
+      "group1": "sglt2i",
+      "group2": "mra",
+      "severity": "synergistic",
+      "severityLabel": "Phối hợp Hiệp đồng Lợi ích (Bảo vệ Thận - Tim)",
+      "summary": "Phối hợp ưu tiên theo KDIGO 2026: SGLT2i giảm nguy cơ tăng Kali máu do MRA gây ra.",
+      "mechanism": "SGLT2i làm tăng dòng Natri và nước tới ống lượn xa, kích thích bài tiết Kali, đối kháng nhẹ hiệu ứng giữ Kali của MRA.",
+      "clinicalManagement": "Khuyên dùng phối hợp ở bệnh nhân CKD/Suy tim. Cần kiểm tra Kali máu sau 2-4 tuần khởi đầu."
+    },
+    {
+      "id": "inter_vanco_piptazo",
+      "drug1": "vancomycin",
+      "drug2": "pip_tazo",
+      "group1": "glycopeptides",
+      "group2": "penicillins",
+      "severity": "major",
+      "severityLabel": "Tương tác Nặng / Nguy cơ Tổn thương Thận cấp (AKI)",
+      "summary": "Tăng tỷ lệ tổn thương thận cấp AKI gấp 2-3 lần so với phối hợp Vancomycin + Cefepime.",
+      "mechanism": "Độc tính hiệp đồng trên tế bào ống thận và gây viêm thận kẽ cấp.",
+      "clinicalManagement": "Hạn chế phối hợp kéo dài quá 48-72h. Xem xét chuyển Pip/Tazo sang Cefepime hoặc Meropenem nếu bệnh nhân có nguy cơ suy thận cao."
+    },
+    {
+      "id": "inter_cipro_paracetamol",
+      "drug1": "ciprofloxacin",
+      "drug2": "paracetamol",
+      "group1": "quinolones",
+      "group2": null,
+      "severity": "minor",
+      "severityLabel": "Tương tác nhẹ / Cần theo dõi",
+      "summary": "Ciprofloxacin có thể làm tăng nhẹ nồng độ Paracetamol trong huyết tương.",
+      "mechanism": "Ciprofloxacin ức chế nhẹ isoenzym CYP1A2 ở gan, enzym tham gia một phần nhỏ vào chuyển hóa Paracetamol.",
+      "clinicalManagement": "Có thể sử dụng đồng thời an toàn ở liều Paracetamol thông thường. Không cần điều chỉnh liều."
     }
   ]
 }

@@ -734,3 +734,84 @@
   margin-bottom: 8px;
   line-height: 1.5;
 }
+
+/* Step-by-step Process List (OSCE & Bedside Steps) */
+.step-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 1.25rem 0;
+}
+
+.step-item {
+  display: flex;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--radius-md, 14px);
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.step-item:hover {
+  border-color: var(--color-primary, #0284c7);
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.1);
+  transform: translateY(-2px);
+}
+
+.step-number {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  background: linear-gradient(135deg, var(--color-primary, #0284c7), #0369a1);
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.15rem;
+  box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3);
+  margin-top: 0.15rem;
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-content strong {
+  font-size: 1.05rem;
+  color: var(--color-primary, #0284c7);
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 700;
+}
+
+.step-content p {
+  margin: 0.25rem 0 0.5rem 0;
+  line-height: 1.6;
+  color: var(--color-text, #0f172a);
+}
+
+.step-content ul {
+  margin-top: 0.65rem;
+  padding-left: 0;
+  list-style: none;
+}
+
+.step-content ul li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.45rem;
+  line-height: 1.6;
+  color: var(--color-text, #0f172a);
+}
+
+.step-content ul li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--color-primary, #0284c7);
+  font-weight: 700;
+}

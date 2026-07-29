@@ -1,21 +1,23 @@
 /* ============================================================
-   PHYSIOLOGY & PATHOPHYSIOLOGY HEADINGS (physio-headings.css)
+   PHYSIOLOGY, PATHOPHYSIOLOGY & CLINICAL HEADINGS (physio-headings.css)
    ============================================================ */
 
 /* H2 Section Titles (main sections in chapter) */
 h2.section-title,
 .visual-container h2.section-title,
-.physio-content h2.section-title {
+.physio-content h2.section-title,
+.card h2 {
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
   font-size: var(--text-lg, 1.25rem);
   font-weight: 700;
   color: var(--color-primary, #0284c7);
-  margin: 2.5rem 0 1.5rem 0;
+  margin: 1.5rem 0 1.25rem 0;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
   border-bottom: 2px solid var(--color-primary-hl, rgba(2, 132, 199, 0.15));
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.6rem;
+  position: relative;
 }
 
 h2.section-title span,
@@ -27,13 +29,14 @@ h2.section-title span,
 /* Accent indicator line for H2 sections */
 h2.section-title span::after,
 .visual-container h2.section-title span::after,
-.physio-content h2.section-title span::after {
+.physio-content h2.section-title span::after,
+.card h2::after {
   content: '';
   position: absolute;
-  bottom: -0.65rem;
+  bottom: -2px;
   left: 0;
-  width: 100%;
-  height: 4px;
+  width: 80px;
+  height: 3px;
   background: var(--color-primary, #0284c7);
   border-radius: var(--radius-full, 9999px);
 }
@@ -43,16 +46,17 @@ h3.subsection-title,
 .subsection-title,
 .physio-content h3,
 .physio-text-block h3,
-.visual-container h3 {
+.visual-container h3,
+.card h3 {
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: 1.15rem;
+  font-size: 1.08rem;
   font-weight: 700;
   color: var(--color-primary, #0284c7);
-  margin: 1.75rem 0 1rem 0;
-  padding: 0.35rem 0.75rem;
+  margin: 1.5rem 0 1rem 0;
+  padding: 0.4rem 0.85rem;
   border-left: 4px solid var(--color-primary, #0284c7);
   background: linear-gradient(90deg, var(--color-primary-hl, rgba(2, 132, 199, 0.08)) 0%, transparent 100%);
-  border-radius: 0 6px 6px 0;
+  border-radius: 0 8px 8px 0;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -64,7 +68,8 @@ h4,
 .physio-content h4,
 .physio-text-block h4,
 .concept-card h4,
-.clinical-note-box h4 {
+.clinical-note-box h4,
+.card h4 {
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
   font-size: var(--text-sm, 0.95rem);
   font-weight: 700;
