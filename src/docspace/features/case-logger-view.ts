@@ -18,11 +18,11 @@ const CONTEXT_OPTIONS: { value: CaseContext; label: string; icon: string }[] = [
   { value: 'other',   label: 'Khác',         icon: 'fa-solid fa-ellipsis' },
 ];
 
-export function renderCaseLoggerView(profileId: string): string {
+export async function renderCaseLoggerView(profileId: string): Promise<string> {
   const profile = getActiveProfile();
   if (!profile) return '';
 
-  const cases = getAllCases(profileId);
+  const cases = await getAllCases(profileId);
 
   const listHtml = cases.length
     ? cases.map(c => {
@@ -164,8 +164,20 @@ export function renderCaseLoggerView(profileId: string): string {
               </div>
             </div>
 
-            <!-- Right: List -->
+            <!-- Right: EBM Panel & List -->
             <div class="dsp-col-side">
+              
+              <!-- EBM Panel -->
+              <div class="dsp-card dsp-mb-6" id="dspEbmPanel" style="display: none;">
+                <div class="dsp-card-header">
+                  <h2 class="dsp-card-title"><i class="fa-solid fa-book-medical dsp-text-primary"></i> Bằng chứng liên quan</h2>
+                </div>
+                <div class="dsp-card-body dsp-p-4" id="dspEbmContent">
+                  <div class="dsp-text-center dsp-text-muted dsp-text-sm dsp-py-4">Đang tra cứu...</div>
+                </div>
+              </div>
+
+              <!-- Case List -->
               <div class="dsp-card">
                 <div class="dsp-card-header">
                   <h2 class="dsp-card-title">Đã ghi (${cases.length})</h2>
@@ -186,7 +198,7 @@ export function renderCaseLoggerView(profileId: string): string {
 // ─── Controller ───────────────────────────────────────────────────
 
 export function mountCaseLoggerController(profileId: string): void {
-  document.getElementById('dspCaseForm')?.addEventListener('submit', (e) => {
+  document.getElementById('dspCaseForm')?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const date = (document.getElementById('dspCaseDate') as HTMLInputElement).value;
@@ -204,7 +216,7 @@ export function mountCaseLoggerController(profileId: string): void {
       return;
     }
 
-    saveCase(profileId, {
+    await saveCase(profileId, {
       date, context, chiefComplaint, icd10Code, icd10Label,
       management, outcome, lesson, relatedUrl,
     });
@@ -246,7 +258,8 @@ export function mountCaseLoggerController(profileId: string): void {
 
     try {
       // 1. Tìm kiếm trong RAG Index (chọn top 3 chunks)
-      const chunks = searchContext(chiefComplaint + " " + management, 3);
+      const icdInput = (document.getElementById('dspCaseICD10') as HTMLInputElement).value.trim();
+      const chunks = searchContext(chiefComplaint + " " + management, [icdInput], 3);
       
       // 2. Gửi request cho LLM
       const result = await analyzeCase(caseData, profile.aiSettings, chunks);
@@ -265,6 +278,48 @@ export function mountCaseLoggerController(profileId: string): void {
       btn.disabled = false;
     }
   });
+
+  // AI EBM Auto-search (Debounce 500ms)
+  let ebmTimeout: any = null;
+  const triggerEbmSearch = () => {
+    if (ebmTimeout) clearTimeout(ebmTimeout);
+    ebmTimeout = setTimeout(() => {
+      const query = (document.getElementById('dspCaseComplaint') as HTMLInputElement).value.trim();
+      const icdCode = (document.getElementById('dspCaseICD10') as HTMLInputElement).value.trim();
+      
+      const ebmPanel = document.getElementById('dspEbmPanel');
+      const ebmContent = document.getElementById('dspEbmContent');
+      if (!ebmPanel || !ebmContent) return;
+
+      if (!query && !icdCode) {
+        ebmPanel.style.display = 'none';
+        return;
+      }
+
+      ebmPanel.style.display = 'block';
+      ebmContent.innerHTML = '<div class="dsp-text-center dsp-text-muted dsp-text-sm dsp-py-4"><i class="fa-solid fa-spinner fa-spin"></i> Đang tra cứu EBM...</div>';
+
+      // Tra cứu với Boost từ ICD-10
+      const results = searchContext(query || icdCode, [icdCode].filter(Boolean), 3);
+      
+      if (results.length === 0) {
+        ebmContent.innerHTML = '<div class="dsp-text-center dsp-text-muted dsp-text-sm dsp-py-4">Không tìm thấy tài liệu phù hợp.</div>';
+        return;
+      }
+
+      ebmContent.innerHTML = results.map(r => `
+        <a href="#/content/${r.file}" target="_blank" class="dsp-list-item dsp-list-item--btn" style="text-decoration: none; padding: 0.75rem; border-radius: 6px; margin-bottom: 0.5rem; background: var(--color-bg);">
+          <div class="dsp-list-item-body">
+            <div class="dsp-list-item-title" style="font-size: 0.9rem;">${r.title}</div>
+            <div class="dsp-text-xs dsp-text-muted dsp-mt-1">${r.heading}</div>
+          </div>
+        </a>
+      `).join('');
+    }, 500);
+  };
+
+  document.getElementById('dspCaseComplaint')?.addEventListener('input', triggerEbmSearch);
+  document.getElementById('dspCaseICD10')?.addEventListener('input', triggerEbmSearch);
 
   // Delete case
   document.getElementById('dspCaseList')?.addEventListener('click', (e) => {

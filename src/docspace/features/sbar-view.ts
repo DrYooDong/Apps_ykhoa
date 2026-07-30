@@ -16,12 +16,12 @@ const SBAR_STEPS = [
   { key: 'recommendation',label: 'R — Recommendation (Đề xuất)', color: 'var(--dsp-sbar-r)', icon: 'fa-solid fa-check-circle',         placeholder: 'Đề xuất xử trí, cần hội chẩn, y lệnh bổ sung...' },
 ];
 
-export function renderSBARView(profileId: string, editId?: string): string {
+export async function renderSBARView(profileId: string, editId?: string): Promise<string> {
   const profile = getActiveProfile();
   if (!profile) return '';
 
-  const sbars = getAllSBARs(profileId);
-  const editRecord = editId ? getSBARById(profileId, editId) : null;
+  const sbars = await getAllSBARs(profileId);
+  const editRecord = editId ? await getSBARById(profileId, editId) : null;
 
   const listHtml = sbars.length
     ? sbars.map(s => `
@@ -88,7 +88,14 @@ export function renderSBARView(profileId: string, editId?: string): string {
 
       <!-- AI Assistant -->
       <div class="dsp-card" style="background: var(--color-surface); margin-bottom: 1.5rem; border: 1px dashed #8b5cf6; padding: 1rem; border-radius: 8px;">
-        <h3 style="margin-top:0; font-size: 1rem; color: #8b5cf6;"><i class="fa-solid fa-wand-magic-sparkles"></i> Trợ lý AI: Dịch sang SBAR</h3>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <h3 style="margin-top:0; font-size: 1rem; color: #8b5cf6;"><i class="fa-solid fa-wand-magic-sparkles"></i> Trợ lý AI: Dịch sang SBAR</h3>
+          ${editRecord && editRecord.versions && editRecord.versions.length > 0 ? `
+            <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-outline" id="btnViewSBARHistory" style="color: #8b5cf6; border-color: #8b5cf6;">
+              <i class="fa-solid fa-clock-rotate-left"></i> Lịch sử sinh AI (${editRecord.versions.length})
+            </button>
+          ` : ''}
+        </div>
         <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 0.5rem;">Dán đoạn ghi chú lộn xộn hoặc ghi âm vào đây, AI sẽ tự động phân loại thành các trường S-B-A-R bên dưới.</p>
         <textarea class="dsp-textarea" id="dspSBAR_RawNotes" rows="3" placeholder="Ví dụ: Bn nam 65t, vô vì đau ngực. Tiền sử THA. Khám thấy tim đều, huyết áp 160/90. Cho làm ECG gấp..."></textarea>
         <div style="text-align: right; margin-top: 0.5rem;">
@@ -184,6 +191,30 @@ export function renderSBARView(profileId: string, editId?: string): string {
             </div>
           </div>
 
+          <!-- History Modal -->
+          <div class="dsp-modal" id="dspSBARHistoryModal" style="display:none">
+            <div class="dsp-modal-backdrop" id="dspSBARHistoryModalBackdrop"></div>
+            <div class="dsp-modal-box dsp-modal-box--lg">
+              <div class="dsp-modal-header">
+                <h2 class="dsp-modal-title"><i class="fa-solid fa-clock-rotate-left"></i> Lịch sử AI sinh SBAR</h2>
+                <div class="dsp-modal-actions">
+                  <button class="dsp-icon-btn" id="dspCloseHistory"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+              </div>
+              <div class="dsp-modal-body" id="dspSBARHistoryContent" style="max-height: 60vh; overflow-y: auto;">
+                ${editRecord && editRecord.versions ? editRecord.versions.map((v, i) => `
+                  <div class="dsp-card dsp-mb-4 dsp-p-4">
+                    <div class="dsp-font-bold dsp-mb-2 dsp-text-primary">Bản sinh lúc: ${new Date(v.timestamp).toLocaleString('vi-VN')}</div>
+                    <pre style="white-space: pre-wrap; font-family: inherit; font-size: 0.9rem; margin: 0; padding: 10px; background: var(--color-bg); border-radius: 4px;">${escapeHtml(v.content)}</pre>
+                    <div class="dsp-mt-4 dsp-text-right">
+                      <button class="dsp-btn dsp-btn-sm dsp-btn-outline dsp-restore-version-btn" data-content="${encodeURIComponent(v.content)}">Phục hồi bản này</button>
+                    </div>
+                  </div>
+                `).join('') : '<div class="dsp-empty-state"><p>Chưa có lịch sử sinh AI nào.</p></div>'}
+              </div>
+            </div>
+          </div>
+
         </div>
       </main>
     </div>
@@ -247,10 +278,28 @@ export function mountSBARController(profileId: string): void {
     try {
       const result = await generateSBAR(rawNotes, profile.aiSettings);
       
-      if (result.situation) (document.getElementById('dspSBAR_situation') as HTMLTextAreaElement).value = result.situation;
-      if (result.background) (document.getElementById('dspSBAR_background') as HTMLTextAreaElement).value = result.background;
-      if (result.assessment) (document.getElementById('dspSBAR_assessment') as HTMLTextAreaElement).value = result.assessment;
-      if (result.recommendation) (document.getElementById('dspSBAR_recommendation') as HTMLTextAreaElement).value = result.recommendation;
+      const situationStr = result.situation || '';
+      const backgroundStr = result.background || '';
+      const assessmentStr = result.assessment || '';
+      const recommendationStr = result.recommendation || '';
+
+      (document.getElementById('dspSBAR_situation') as HTMLTextAreaElement).value = situationStr;
+      (document.getElementById('dspSBAR_background') as HTMLTextAreaElement).value = backgroundStr;
+      (document.getElementById('dspSBAR_assessment') as HTMLTextAreaElement).value = assessmentStr;
+      (document.getElementById('dspSBAR_recommendation') as HTMLTextAreaElement).value = recommendationStr;
+      
+      // Save version if editId exists
+      const editId = (document.getElementById('dspSBAREditId') as HTMLInputElement)?.value;
+      if (editId) {
+        const record = await getSBARById(profileId, editId);
+        if (record) {
+          const versions = record.versions || [];
+          const content = `S: ${situationStr}\nB: ${backgroundStr}\nA: ${assessmentStr}\nR: ${recommendationStr}`;
+          versions.unshift({ timestamp: new Date().toISOString(), content });
+          if (versions.length > 5) versions.pop();
+          await updateSBAR(profileId, editId, { versions });
+        }
+      }
       
     } catch (err: any) {
       alert(err.message);
@@ -260,26 +309,67 @@ export function mountSBARController(profileId: string): void {
     }
   });
 
+  // View History
+  document.getElementById('btnViewSBARHistory')?.addEventListener('click', () => {
+    const modal = document.getElementById('dspSBARHistoryModal');
+    if (modal) modal.style.display = 'flex';
+  });
+
+  document.getElementById('dspCloseHistory')?.addEventListener('click', () => {
+    const modal = document.getElementById('dspSBARHistoryModal');
+    if (modal) modal.style.display = 'none';
+  });
+
+  document.getElementById('dspSBARHistoryModalBackdrop')?.addEventListener('click', () => {
+    const modal = document.getElementById('dspSBARHistoryModal');
+    if (modal) modal.style.display = 'none';
+  });
+
+  // Restore version
+  document.getElementById('dspSBARHistoryContent')?.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest('.dsp-restore-version-btn') as HTMLElement;
+    if (!btn) return;
+    const content = decodeURIComponent(btn.getAttribute('data-content') || '');
+    if (!content) return;
+    
+    const lines = content.split('\n');
+    let s = '', b = '', a = '', r = '';
+    lines.forEach(line => {
+      if (line.startsWith('S: ')) s = line.substring(3);
+      else if (line.startsWith('B: ')) b = line.substring(3);
+      else if (line.startsWith('A: ')) a = line.substring(3);
+      else if (line.startsWith('R: ')) r = line.substring(3);
+    });
+
+    (document.getElementById('dspSBAR_situation') as HTMLTextAreaElement).value = s;
+    (document.getElementById('dspSBAR_background') as HTMLTextAreaElement).value = b;
+    (document.getElementById('dspSBAR_assessment') as HTMLTextAreaElement).value = a;
+    (document.getElementById('dspSBAR_recommendation') as HTMLTextAreaElement).value = r;
+    
+    const modal = document.getElementById('dspSBARHistoryModal');
+    if (modal) modal.style.display = 'none';
+  });
+
   // Save SBAR
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    submitSBAR(profileId, false);
+    await submitSBAR(profileId, false);
   });
 
   // Save Draft
-  document.getElementById('dspSBARSaveDraft')?.addEventListener('click', () => {
-    submitSBAR(profileId, true);
+  document.getElementById('dspSBARSaveDraft')?.addEventListener('click', async () => {
+    await submitSBAR(profileId, true);
   });
 
   // Lock
-  document.getElementById('dspSBARLock')?.addEventListener('click', () => {
+  document.getElementById('dspSBARLock')?.addEventListener('click', async () => {
     if (confirm('Sau khi khóa, bạn sẽ không thể chỉnh sửa SBAR này nữa. Hệ thống sẽ sinh mã băm lưu vết. Tiếp tục?')) {
-      submitSBAR(profileId, false, true);
+      await submitSBAR(profileId, false, true);
     }
   });
 
   // Delete
-  document.getElementById('dspSBARList')?.addEventListener('click', (e) => {
+  document.getElementById('dspSBARList')?.addEventListener('click', async (e) => {
     const target = e.target as HTMLElement;
     const btn = target.closest('[data-action]') as HTMLButtonElement;
     if (!btn) return;
@@ -295,7 +385,7 @@ export function mountSBARController(profileId: string): void {
     } else if (action === 'sandbox-sbar') {
       window.location.hash = `#/docspace/sandbox?source=sbar&id=${id}`;
     } else if (action === 'view-sbar') {
-      showSBARPreview(profileId, id);
+      await showSBARPreview(profileId, id);
     } else if (action === 'edit-sbar') {
       window.location.hash = `#/docspace/sbar?edit=${id}`;
     }
@@ -327,7 +417,7 @@ export function mountSBARController(profileId: string): void {
   });
 }
 
-function submitSBAR(profileId: string, isDraft: boolean, isLockAction = false): void {
+async function submitSBAR(profileId: string, isDraft: boolean, isLockAction = false): Promise<void> {
   const editId = (document.getElementById('dspSBAREditId') as HTMLInputElement)?.value;
   const title = (document.getElementById('dspSBARTitle') as HTMLInputElement)?.value || '';
   const situation = (document.getElementById('dspSBAR_situation') as HTMLTextAreaElement)?.value || '';
@@ -341,16 +431,16 @@ function submitSBAR(profileId: string, isDraft: boolean, isLockAction = false): 
   }
 
   if (editId) {
-    updateSBAR(profileId, editId, { title, situation, background, assessment, recommendation, isDraft, isLocked: isLockAction }, isLockAction);
+    await updateSBAR(profileId, editId, { title, situation, background, assessment, recommendation, isDraft, isLocked: isLockAction }, isLockAction);
   } else {
-    saveSBAR(profileId, { title, situation, background, assessment, recommendation, isDraft });
+    await saveSBAR(profileId, { title, situation, background, assessment, recommendation, isDraft });
   }
 
   window.location.hash = '#/docspace/sbar';
 }
 
-function showSBARPreview(profileId: string, id: string): void {
-  const record = getSBARById(profileId, id);
+async function showSBARPreview(profileId: string, id: string): Promise<void> {
+  const record = await getSBARById(profileId, id);
   if (!record) return;
   const modal = document.getElementById('dspSBARPreviewModal');
   const content = document.getElementById('dspSBARPreviewContent');

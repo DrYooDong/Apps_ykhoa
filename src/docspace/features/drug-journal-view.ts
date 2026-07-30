@@ -7,6 +7,8 @@ import { getAllDrugEntries, saveDrugEntry, updateDrugEntry, deleteDrugEntry, get
 import { DrugJournalEntry } from '../types';
 import { renderSidebar, formatDate } from '../docspace-view';
 import { getActiveProfile } from '../storage';
+import { analyzeDrugRegimen } from '../ai/llm-client';
+import { searchContext } from '../ai/rag-engine';
 
 export function renderDrugJournalView(profileId: string, editId?: string): string {
   const profile = getActiveProfile();
@@ -52,6 +54,9 @@ export function renderDrugJournalView(profileId: string, editId?: string): strin
           </div>
 
           <div class="dsp-list-item-actions">
+            <button class="dsp-icon-btn dsp-text-primary" data-action="analyze-drug" data-id="${e.id}" title="Phân tích Phác đồ (AI)">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </button>
             <button class="dsp-icon-btn" data-action="edit-drug" data-id="${e.id}" title="Sửa">
               <i class="fa-solid fa-pen"></i>
             </button>
@@ -231,7 +236,7 @@ export function mountDrugJournalController(profileId: string): void {
   });
 
   // List actions
-  document.getElementById('dspDrugList')?.addEventListener('click', (e) => {
+  document.getElementById('dspDrugList')?.addEventListener('click', async (e) => {
     const btn = (e.target as HTMLElement).closest('[data-action]') as HTMLElement;
     if (!btn) return;
     const action = btn.getAttribute('data-action');
@@ -244,6 +249,33 @@ export function mountDrugJournalController(profileId: string): void {
       }
     } else if (action === 'edit-drug') {
       window.location.hash = `#/docspace/drugs?edit=${id}`;
+    } else if (action === 'analyze-drug') {
+      const entry = getDrugEntryById(profileId, id);
+      const profile = getActiveProfile();
+      if (!entry || !profile || !profile.aiSettings?.enabled) {
+        alert("Tính năng yêu cầu cấu hình AI. Vui lòng bật AI trong Cài đặt.");
+        return;
+      }
+      
+      const analyzeBtn = btn as HTMLButtonElement;
+      const originalHtml = analyzeBtn.innerHTML;
+      analyzeBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
+      analyzeBtn.disabled = true;
+
+      try {
+        const chunks = searchContext(entry.drugs.join(" ") + " " + (entry.indication || ""), [], 3);
+        const analysis = await analyzeDrugRegimen(entry.drugs, entry.indication || "Không rõ", profile.aiSettings, chunks);
+        
+        let msg = "Phân tích AI:\n\n";
+        msg += "⚠️ Tương tác:\n" + analysis.interactions.map(x => "- " + x).join("\n") + "\n\n";
+        msg += "💡 Thay thế:\n" + analysis.alternatives.map(x => "- " + x).join("\n");
+        alert(msg);
+      } catch (err: any) {
+        alert(err.message);
+      } finally {
+        analyzeBtn.innerHTML = originalHtml;
+        analyzeBtn.disabled = false;
+      }
     }
   });
 

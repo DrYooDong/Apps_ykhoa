@@ -142,7 +142,8 @@ export function getActiveProfile(): DoctorProfile | null {
 }
 
 export function deleteProfile(id: string): void {
-  // Remove all data stores for this profile
+  // Thực tế có thể nên dùng soft delete hoặc confirm dialog từ UI.
+  // Xóa cứng theo yêu cầu gốc, nhưng trong Phase 0 UI sẽ có window.confirm.
   const keys = Object.keys(localStorage).filter(k => k.startsWith(`dsp_${id}_`));
   keys.forEach(k => localStorage.removeItem(k));
   // Remove from profile list
@@ -172,16 +173,21 @@ export function updateAISettings(profileId: string, settings: AISettings): void 
 // SBAR
 // ─────────────────────────────────────────────
 
-export function getAllSBARs(profileId: string): SBARRecord[] {
-  const records = load<SBARRecord>(profileId, 'sbars').sort(
-    (a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
-  );
-  return records.map(r => ({ ...r, isTampered: !verifyRecordIntegrity(r) }));
+export async function getAllSBARs(profileId: string, includeDeleted = false): Promise<SBARRecord[]> {
+  const records = load<SBARRecord>(profileId, 'sbars')
+    .filter(r => includeDeleted || !r.deletedAt)
+    .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
+  
+  const results = [];
+  for (const r of records) {
+    results.push({ ...r, isTampered: !(await verifyRecordIntegrity(r)) });
+  }
+  return results;
 }
 
-export function saveSBAR(profileId: string, data: Omit<SBARRecord, 'id' | 'doctorId' | 'createdAt' | 'updatedAt' | 'auditLogs' | 'isLocked' | 'isTampered'>): SBARRecord {
+export async function saveSBAR(profileId: string, data: Omit<SBARRecord, 'id' | 'doctorId' | 'createdAt' | 'updatedAt' | 'auditLogs' | 'isLocked' | 'isTampered' | 'deletedAt'>): Promise<SBARRecord> {
   const records = load<SBARRecord>(profileId, 'sbars');
-  const record: SBARRecord = signRecord({
+  const record: SBARRecord = await signRecord({
     ...data,
     id: uuid(),
     doctorId: profileId,
@@ -194,27 +200,32 @@ export function saveSBAR(profileId: string, data: Omit<SBARRecord, 'id' | 'docto
   return record;
 }
 
-export function updateSBAR(profileId: string, id: string, data: Partial<SBARRecord>, isLockAction = false): void {
+export async function updateSBAR(profileId: string, id: string, data: Partial<SBARRecord>, isLockAction = false): Promise<void> {
   const records = load<SBARRecord>(profileId, 'sbars');
   const idx = records.findIndex(r => r.id === id);
   if (idx >= 0) {
     if (records[idx].isLocked) return; // Prevent modifying locked records
     let updatedRecord = { ...records[idx], ...data, updatedAt: now() };
-    updatedRecord = signRecord(updatedRecord, isLockAction ? 'lock' : 'update');
+    updatedRecord = await signRecord(updatedRecord, isLockAction ? 'lock' : 'update');
     records[idx] = updatedRecord;
     save(profileId, 'sbars', records);
   }
 }
 
 export function deleteSBAR(profileId: string, id: string): void {
-  const records = load<SBARRecord>(profileId, 'sbars').filter(r => r.id !== id);
-  save(profileId, 'sbars', records);
+  // Soft delete
+  const records = load<SBARRecord>(profileId, 'sbars');
+  const idx = records.findIndex(r => r.id === id);
+  if (idx >= 0) {
+    records[idx].deletedAt = now();
+    save(profileId, 'sbars', records);
+  }
 }
 
-export function getSBARById(profileId: string, id: string): SBARRecord | null {
+export async function getSBARById(profileId: string, id: string): Promise<SBARRecord | null> {
   const record = load<SBARRecord>(profileId, 'sbars').find(r => r.id === id) || null;
   if (record) {
-    record.isTampered = !verifyRecordIntegrity(record);
+    record.isTampered = !(await verifyRecordIntegrity(record));
   }
   return record;
 }
@@ -313,15 +324,21 @@ export function deleteShift(profileId: string, shiftId: string): void {
 // CASE LOGGER
 // ─────────────────────────────────────────────
 
-export function getAllCases(profileId: string): CaseRecord[] {
-  return load<CaseRecord>(profileId, 'cases').sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+export async function getAllCases(profileId: string, includeDeleted = false): Promise<CaseRecord[]> {
+  const records = load<CaseRecord>(profileId, 'cases')
+    .filter(r => includeDeleted || !r.deletedAt)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    
+  const results = [];
+  for (const r of records) {
+    results.push({ ...r, isTampered: !(await verifyRecordIntegrity(r)) });
+  }
+  return results;
 }
 
-export function saveCase(profileId: string, data: Omit<CaseRecord, 'id' | 'doctorId' | 'createdAt' | 'auditLogs' | 'isLocked' | 'isTampered'>): CaseRecord {
+export async function saveCase(profileId: string, data: Omit<CaseRecord, 'id' | 'doctorId' | 'createdAt' | 'auditLogs' | 'isLocked' | 'isTampered' | 'deletedAt'>): Promise<CaseRecord> {
   const records = load<CaseRecord>(profileId, 'cases');
-  const record: CaseRecord = signRecord({
+  const record: CaseRecord = await signRecord({
     ...data,
     id: uuid(),
     doctorId: profileId,
@@ -334,25 +351,30 @@ export function saveCase(profileId: string, data: Omit<CaseRecord, 'id' | 'docto
 }
 
 export function deleteCase(profileId: string, id: string): void {
-  const records = load<CaseRecord>(profileId, 'cases').filter(r => r.id !== id);
-  save(profileId, 'cases', records);
+  // Soft delete
+  const records = load<CaseRecord>(profileId, 'cases');
+  const idx = records.findIndex(r => r.id === id);
+  if (idx >= 0) {
+    records[idx].deletedAt = now();
+    save(profileId, 'cases', records);
+  }
 }
 
 // ─────────────────────────────────────────────
 // PERSONAL NOTEPAD (Phase 2)
 // ─────────────────────────────────────────────
 
-export function getAllNotes(profileId: string): PersonalNote[] {
-  return load<PersonalNote>(profileId, 'notes').sort(
-    (a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
-  );
+export function getAllNotes(profileId: string, includeDeleted = false): PersonalNote[] {
+  return load<PersonalNote>(profileId, 'notes')
+    .filter(r => includeDeleted || !r.deletedAt)
+    .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
 }
 
 export function getNoteById(profileId: string, id: string): PersonalNote | null {
-  return load<PersonalNote>(profileId, 'notes').find(n => n.id === id) || null;
+  return load<PersonalNote>(profileId, 'notes').find(n => n.id === id && !n.deletedAt) || null;
 }
 
-export function saveNote(profileId: string, data: Omit<PersonalNote, 'id' | 'doctorId' | 'createdAt' | 'updatedAt'>): PersonalNote {
+export function saveNote(profileId: string, data: Omit<PersonalNote, 'id' | 'doctorId' | 'createdAt' | 'updatedAt' | 'deletedAt'>): PersonalNote {
   const records = load<PersonalNote>(profileId, 'notes');
   const record: PersonalNote = {
     ...data,
@@ -376,25 +398,29 @@ export function updateNote(profileId: string, id: string, data: Partial<Personal
 }
 
 export function deleteNote(profileId: string, id: string): void {
-  const records = load<PersonalNote>(profileId, 'notes').filter(n => n.id !== id);
-  save(profileId, 'notes', records);
+  const records = load<PersonalNote>(profileId, 'notes');
+  const idx = records.findIndex(r => r.id === id);
+  if (idx >= 0) {
+    records[idx].deletedAt = now();
+    save(profileId, 'notes', records);
+  }
 }
 
 // ─────────────────────────────────────────────
 // DRUG JOURNAL (Phase 2)
 // ─────────────────────────────────────────────
 
-export function getAllDrugEntries(profileId: string): DrugJournalEntry[] {
-  return load<DrugJournalEntry>(profileId, 'drugs').sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-  );
+export function getAllDrugEntries(profileId: string, includeDeleted = false): DrugJournalEntry[] {
+  return load<DrugJournalEntry>(profileId, 'drugs')
+    .filter(r => includeDeleted || !r.deletedAt)
+    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
 }
 
 export function getDrugEntryById(profileId: string, id: string): DrugJournalEntry | null {
-  return load<DrugJournalEntry>(profileId, 'drugs').find(d => d.id === id) || null;
+  return load<DrugJournalEntry>(profileId, 'drugs').find(d => d.id === id && !d.deletedAt) || null;
 }
 
-export function saveDrugEntry(profileId: string, data: Omit<DrugJournalEntry, 'id' | 'doctorId' | 'createdAt'>): DrugJournalEntry {
+export function saveDrugEntry(profileId: string, data: Omit<DrugJournalEntry, 'id' | 'doctorId' | 'createdAt' | 'deletedAt'>): DrugJournalEntry {
   const records = load<DrugJournalEntry>(profileId, 'drugs');
   const record: DrugJournalEntry = { ...data, id: uuid(), doctorId: profileId, createdAt: now() };
   records.unshift(record);
@@ -412,25 +438,29 @@ export function updateDrugEntry(profileId: string, id: string, data: Partial<Dru
 }
 
 export function deleteDrugEntry(profileId: string, id: string): void {
-  const records = load<DrugJournalEntry>(profileId, 'drugs').filter(d => d.id !== id);
-  save(profileId, 'drugs', records);
+  const records = load<DrugJournalEntry>(profileId, 'drugs');
+  const idx = records.findIndex(r => r.id === id);
+  if (idx >= 0) {
+    records[idx].deletedAt = now();
+    save(profileId, 'drugs', records);
+  }
 }
 
 // ─────────────────────────────────────────────
 // PERSONAL PROTOCOL (Phase 2)
 // ─────────────────────────────────────────────
 
-export function getAllProtocols(profileId: string): PersonalProtocol[] {
-  return load<PersonalProtocol>(profileId, 'protocols').sort(
-    (a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
-  );
+export function getAllProtocols(profileId: string, includeDeleted = false): PersonalProtocol[] {
+  return load<PersonalProtocol>(profileId, 'protocols')
+    .filter(r => includeDeleted || !r.deletedAt)
+    .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
 }
 
 export function getProtocolById(profileId: string, id: string): PersonalProtocol | null {
-  return load<PersonalProtocol>(profileId, 'protocols').find(p => p.id === id) || null;
+  return load<PersonalProtocol>(profileId, 'protocols').find(p => p.id === id && !p.deletedAt) || null;
 }
 
-export function saveProtocol(profileId: string, data: Omit<PersonalProtocol, 'id' | 'doctorId' | 'createdAt' | 'updatedAt'>): PersonalProtocol {
+export function saveProtocol(profileId: string, data: Omit<PersonalProtocol, 'id' | 'doctorId' | 'createdAt' | 'updatedAt' | 'deletedAt'>): PersonalProtocol {
   const records = load<PersonalProtocol>(profileId, 'protocols');
   const record: PersonalProtocol = {
     ...data,
@@ -454,28 +484,38 @@ export function updateProtocol(profileId: string, id: string, data: Partial<Pers
 }
 
 export function deleteProtocol(profileId: string, id: string): void {
-  const records = load<PersonalProtocol>(profileId, 'protocols').filter(p => p.id !== id);
-  save(profileId, 'protocols', records);
+  const records = load<PersonalProtocol>(profileId, 'protocols');
+  const idx = records.findIndex(r => r.id === id);
+  if (idx >= 0) {
+    records[idx].deletedAt = now();
+    save(profileId, 'protocols', records);
+  }
 }
 
 // ─────────────────────────────────────────────
 // EXPORT / IMPORT
 // ─────────────────────────────────────────────
 
-export function exportProfile(profileId: string): void {
+export async function exportProfile(profileId: string): Promise<void> {
   const profile = getProfile(profileId);
   if (!profile) return;
+  
+  // Create a safe copy of profile to exclude apiKey
+  const safeProfile = { ...profile };
+  if (safeProfile.aiSettings) {
+    safeProfile.aiSettings = { ...safeProfile.aiSettings, apiKey: '' };
+  }
 
   const snapshot: DocSpaceSnapshot = {
     version: DOCSPACE_VERSION,
     exportedAt: now(),
-    profile,
-    sbars: getAllSBARs(profileId),
+    profile: safeProfile,
+    sbars: await getAllSBARs(profileId, true), // export cả bản xóa mềm để backup
     shifts: getAllShifts(profileId),
-    cases: getAllCases(profileId),
-    notes: getAllNotes(profileId),
-    drugJournal: getAllDrugEntries(profileId),
-    protocols: getAllProtocols(profileId),
+    cases: await getAllCases(profileId, true),
+    notes: getAllNotes(profileId, true),
+    drugJournal: getAllDrugEntries(profileId, true),
+    protocols: getAllProtocols(profileId, true),
   };
 
   const blob = new Blob([JSON.stringify(snapshot, null, 2)], { type: 'application/json' });
@@ -485,6 +525,16 @@ export function exportProfile(profileId: string): void {
   a.download = `docspace_${profileId}_${new Date().toISOString().split('T')[0]}.json`;
   a.click();
   URL.revokeObjectURL(url);
+  
+  // Record export time
+  localStorage.setItem(`dsp_last_export_${profileId}`, now());
+}
+
+function validateSnapshot(data: any): boolean {
+  if (!data || typeof data !== 'object') return false;
+  if (!data.version || !data.profile?.id || !data.profile?.displayName) return false;
+  if (!Array.isArray(data.sbars) || !Array.isArray(data.cases) || !Array.isArray(data.shifts)) return false;
+  return true;
 }
 
 export function importProfile(file: File): Promise<DoctorProfile> {
@@ -493,6 +543,10 @@ export function importProfile(file: File): Promise<DoctorProfile> {
     reader.onload = (e) => {
       try {
         const snapshot: DocSpaceSnapshot = JSON.parse(e.target?.result as string);
+        if (!validateSnapshot(snapshot)) {
+          reject(new Error('File không đúng định dạng DocSpace Snapshot.'));
+          return;
+        }
 
         // Restore profile
         saveProfile(snapshot.profile);
@@ -531,14 +585,20 @@ export interface DocSpaceStats {
   lastBackupDays: number | null;
 }
 
-export function getStats(profileId: string): DocSpaceStats {
+export async function getStats(profileId: string): Promise<DocSpaceStats> {
+  const lastExport = localStorage.getItem(`dsp_last_export_${profileId}`);
+  let daysSince = null;
+  if (lastExport) {
+    daysSince = Math.floor((Date.now() - new Date(lastExport).getTime()) / (1000 * 60 * 60 * 24));
+  }
+
   return {
-    sbarCount: getAllSBARs(profileId).length,
+    sbarCount: (await getAllSBARs(profileId)).length,
     shiftCount: getAllShifts(profileId).length,
-    caseCount: getAllCases(profileId).length,
+    caseCount: (await getAllCases(profileId)).length,
     noteCount: getAllNotes(profileId).length,
     drugCount: getAllDrugEntries(profileId).length,
     protocolCount: getAllProtocols(profileId).length,
-    lastBackupDays: null,
+    lastBackupDays: daysSince,
   };
 }

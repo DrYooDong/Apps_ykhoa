@@ -848,6 +848,36 @@
 
   <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
   <script src="../../../../js/main.js" defer></script>
+  <script>
+    // CLINICAL BRIDGE AUTO-FILL
+    (function initDocspaceAutoFill() {
+      const raw = localStorage.getItem('cp_clinical_session');
+      const urlParams = new URLSearchParams(window.location.hash.split('?')[1] || window.location.search);
+      
+      let session = null;
+      try { if (raw) session = JSON.parse(raw); } catch(e) {}
+      
+      // Ưu tiên URL params (deep-link) > localStorage session
+      const age    = urlParams.get('age')    ?? session?.patient?.age;
+      const weight = urlParams.get('weight') ?? session?.patient?.weight;
+      const scr    = urlParams.get('scr')    ?? session?.patient?.scr;
+      
+      function setInputSafe(id, value) {
+        const el = document.getElementById(id);
+        if (el && value != null) {
+          el.value = value;
+          // Trigger input event to update calculated fields if any
+          el.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        if (age)    setInputSafe('age', age);
+        if (weight) setInputSafe('weight', weight);
+        if (scr)    setInputSafe('scr', scr);
+      });
+    })();
+  </script>
 </body>
 
 </html>

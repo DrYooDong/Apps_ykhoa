@@ -10,7 +10,7 @@ import {
 } from './storage';
 import {
   renderProfileSelector, renderDashboard, renderSidebar,
-  DSP_NAV_ITEMS
+  DSP_NAV_ITEMS, renderFeatureUnavailable
 } from './docspace-view';
 import { renderSBARView, mountSBARController } from './features/sbar-view';
 import { renderOnCallView, mountOnCallController } from './features/oncall-view';
@@ -127,20 +127,33 @@ export function initDocSpaceRoutes(): void {
   // Boot Global Quick-Save Hook
   initGlobalQuickSaveHook();
 
+  // Export Reminder on Window Close
+  window.addEventListener('beforeunload', () => {
+    const profile = getActiveProfile();
+    if (!profile) return;
+    const lastExport = localStorage.getItem(`dsp_last_export_${profile.id}`);
+    const daysSince = lastExport
+      ? (Date.now() - new Date(lastExport).getTime()) / 86400000
+      : Infinity;
+    if (daysSince > 3) {
+      console.warn(`[DocSpace] Chưa sao lưu dữ liệu trong ${Math.floor(daysSince)} ngày. Bác sĩ nhớ export nhé!`);
+    }
+  });
+
   // Hub / Dashboard
   router.register('/docspace', 'DocSpace — Không gian Riêng', () => {
-    requireProfile((pid) => {
+    requireProfile(async (pid) => {
       const profile = getActiveProfile()!;
-      mountDocSpace(renderDashboard(profile));
+      mountDocSpace(await renderDashboard(profile));
       mountDashboardController(pid);
     });
   });
 
   // SBAR
   router.register('/docspace/sbar', 'DocSpace — SBAR', () => {
-    requireProfile((pid) => {
+    requireProfile(async (pid) => {
       const editId = new URLSearchParams(window.location.hash.split('?')[1] || '').get('edit') || undefined;
-      mountDocSpace(renderSBARView(pid, editId));
+      mountDocSpace(await renderSBARView(pid, editId));
       mountSBARController(pid);
       mountSidebarFooterControls(pid);
       loadRAGIndex(); // Load index in background
@@ -149,9 +162,9 @@ export function initDocSpaceRoutes(): void {
 
   // On-Call
   router.register('/docspace/oncall', 'DocSpace — Ca Trực', () => {
-    requireProfile((pid) => {
+    requireProfile(async (pid) => {
       const shiftId = new URLSearchParams(window.location.hash.split('?')[1] || '').get('shift') || undefined;
-      mountDocSpace(renderOnCallView(pid, shiftId));
+      mountDocSpace(await renderOnCallView(pid, shiftId));
       mountOnCallController(pid, shiftId);
       mountSidebarFooterControls(pid);
     });
@@ -159,8 +172,8 @@ export function initDocSpaceRoutes(): void {
 
   // Case Logger
   router.register('/docspace/cases', 'DocSpace — Ca Bệnh', () => {
-    requireProfile((pid) => {
-      mountDocSpace(renderCaseLoggerView(pid));
+    requireProfile(async (pid) => {
+      mountDocSpace(await renderCaseLoggerView(pid));
       mountCaseLoggerController(pid);
       mountSidebarFooterControls(pid);
       loadRAGIndex(); // Load index in background
@@ -169,8 +182,8 @@ export function initDocSpaceRoutes(): void {
 
   // Quick Links
   router.register('/docspace/links', 'DocSpace — Liên kết Nhanh', () => {
-    requireProfile((pid) => {
-      mountDocSpace(renderQuickLinksView(pid));
+    requireProfile(async (pid) => {
+      mountDocSpace(await renderQuickLinksView(pid));
       mountQuickLinksController(pid);
       mountSidebarFooterControls(pid);
     });
@@ -178,9 +191,9 @@ export function initDocSpaceRoutes(): void {
 
   // Phase 2: Personal Notepad
   router.register('/docspace/notes', 'DocSpace — Ghi Chú Cá Nhân', () => {
-    requireProfile((pid) => {
+    requireProfile(async (pid) => {
       const editId = new URLSearchParams(window.location.hash.split('?')[1] || '').get('edit') || undefined;
-      mountDocSpace(renderNotepadView(pid, editId));
+      mountDocSpace(await renderNotepadView(pid, editId));
       mountNotepadController(pid);
       mountSidebarFooterControls(pid);
     });
@@ -188,9 +201,9 @@ export function initDocSpaceRoutes(): void {
 
   // Phase 2: Drug Interaction Journal
   router.register('/docspace/drugs', 'DocSpace — Nhật Ký Thuốc', () => {
-    requireProfile((pid) => {
+    requireProfile(async (pid) => {
       const editId = new URLSearchParams(window.location.hash.split('?')[1] || '').get('edit') || undefined;
-      mountDocSpace(renderDrugJournalView(pid, editId));
+      mountDocSpace(await renderDrugJournalView(pid, editId));
       mountDrugJournalController(pid);
       mountSidebarFooterControls(pid);
     });
@@ -198,29 +211,37 @@ export function initDocSpaceRoutes(): void {
 
   // Phase 2: Personal Protocol
   router.register('/docspace/protocol', 'DocSpace — Phác Đồ Cá Nhân', () => {
-    requireProfile((pid) => {
+    requireProfile(async (pid) => {
       const editId = new URLSearchParams(window.location.hash.split('?')[1] || '').get('edit') || undefined;
-      mountDocSpace(renderProtocolView(pid, editId));
+      mountDocSpace(await renderProtocolView(pid, editId));
       mountProtocolController(pid);
       mountSidebarFooterControls(pid);
     });
   });
 
-  // Phase 3: Living Protocol Engine
   router.register('/docspace/living-protocols', 'DocSpace — Phác Đồ Động', () => {
-    requireProfile((pid) => {
+    requireProfile(async (pid) => {
+      const profile = getActiveProfile();
+      if (!profile?.aiSettings?.labModeEnabled) {
+        mountDocSpace(renderFeatureUnavailable('Phác Đồ Động', 'lab'));
+        return;
+      }
       const editId = new URLSearchParams(window.location.hash.split('?')[1] || '').get('edit') || undefined;
-      mountDocSpace(renderLivingProtocolView(pid, editId));
+      mountDocSpace(await renderLivingProtocolView(pid, editId));
       mountLivingProtocolController(pid);
       mountSidebarFooterControls(pid);
     });
   });
 
-  // Phase 3: Simulation Sandbox
   router.register('/docspace/sandbox', 'DocSpace — Sandbox Mô phỏng', () => {
-    requireProfile((pid) => {
+    requireProfile(async (pid) => {
+      const profile = getActiveProfile();
+      if (!profile?.aiSettings?.labModeEnabled) {
+        mountDocSpace(renderFeatureUnavailable('Sandbox Mô Phỏng', 'lab'));
+        return;
+      }
       const sessionId = new URLSearchParams(window.location.hash.split('?')[1] || '').get('session') || undefined;
-      mountDocSpace(renderSimulationView(pid, sessionId));
+      mountDocSpace(await renderSimulationView(pid, sessionId));
       mountSimulationController(pid);
       mountSidebarFooterControls(pid);
     });

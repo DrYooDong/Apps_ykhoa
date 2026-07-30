@@ -1,6 +1,6 @@
 import { getActiveProfile, updateAISettings } from '../storage';
 import { AISettings } from '../types';
-import { navigateTo } from '../index';
+
 
 export function renderAISettings(): void {
   const profile = getActiveProfile();
@@ -29,6 +29,11 @@ export function renderAISettings(): void {
         <div class="dsp-form-group checkbox-group">
           <input type="checkbox" id="aiEnabled" ${currentSettings.enabled ? 'checked' : ''} />
           <label for="aiEnabled">Bật tính năng AI (Context-Aware Clinical Memory)</label>
+        </div>
+
+        <div class="dsp-form-group checkbox-group" style="margin-top: 1rem; padding: 10px; background: rgba(255, 171, 0, 0.1); border: 1px solid var(--color-warning); border-radius: 8px;">
+          <input type="checkbox" id="labModeEnabled" ${currentSettings.labModeEnabled ? 'checked' : ''} />
+          <label for="labModeEnabled" style="color: var(--color-warning);">Bật Lab Mode (Mở khóa tính năng đang thử nghiệm)</label>
         </div>
 
         <div class="dsp-form-group">
@@ -69,6 +74,7 @@ export function renderAISettings(): void {
     e.preventDefault();
     const newSettings: AISettings = {
       enabled: (document.getElementById('aiEnabled') as HTMLInputElement).checked,
+      labModeEnabled: (document.getElementById('labModeEnabled') as HTMLInputElement).checked,
       endpoint: (document.getElementById('aiEndpoint') as HTMLInputElement).value.trim(),
       model: (document.getElementById('aiModel') as HTMLInputElement).value.trim(),
       apiKey: (document.getElementById('aiApiKey') as HTMLInputElement).value.trim(),
@@ -76,7 +82,7 @@ export function renderAISettings(): void {
     
     updateAISettings(profile.id, newSettings);
     alert('Đã lưu cấu hình AI thành công!');
-    navigateTo('#/docspace');
+    window.location.hash = '#/docspace';
   });
 
   document.getElementById('btnTestConn')?.addEventListener('click', async () => {

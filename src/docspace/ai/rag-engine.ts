@@ -31,7 +31,15 @@ export async function loadRAGIndex(): Promise<void> {
     searchIndex = await response.json();
     console.log(`[RAG] Đã tải thành công ${searchIndex.length} khối kiến thức.`);
   } catch (error) {
-    console.error('[RAG] Lỗi khi tải search-index.json:', error);
+    console.warn('[RAG] Lỗi khi tải search-index.json qua fetch:', error);
+    // Fallback: đọc từ inline bundle đã preload vào window
+    const fallback = (window as any).CLINIPORTAL_SEARCH_INDEX;
+    if (Array.isArray(fallback) && fallback.length > 0) {
+      searchIndex = fallback;
+      console.warn('[RAG] Offline fallback — using inline bundle. Đã tải', searchIndex.length, 'khối kiến thức.');
+    } else {
+      console.error('[RAG] Không có dữ liệu bundle inline — search disabled.');
+    }
   } finally {
     isLoading = false;
   }
@@ -56,8 +64,8 @@ function removeVietnameseTones(str: string): string {
     return str;
 }
 
-// Hàm tìm kiếm đơn giản bằng chấm điểm từ khóa
-export function searchContext(query: string, topK: number = 5): RAGChunk[] {
+// Hàm tìm kiếm đơn giản bằng chấm điểm từ khóa, hỗ trợ Boost bằng mã ICD-10
+export function searchContext(query: string, icd10Codes: string[] = [], topK: number = 5): RAGChunk[] {
   if (!searchIndex.length || !query) return [];
   
   const cleanQuery = removeVietnameseTones(query.toLowerCase());
@@ -82,6 +90,18 @@ export function searchContext(query: string, topK: number = 5): RAGChunk[] {
         if (headingLower.includes(kw)) score += 3;
       }
     }
+    
+    // ICD-10 tag boost
+    if (icd10Codes && icd10Codes.length > 0) {
+      for (const code of icd10Codes) {
+        if (!code) continue;
+        const codeLower = code.toLowerCase();
+        if (chunk.tags.some(t => t.toLowerCase().startsWith(codeLower))) {
+          score += 10; // Boost rất mạnh cho tài liệu khớp mã ICD-10
+        }
+      }
+    }
+    
     return { chunk, score };
   });
   

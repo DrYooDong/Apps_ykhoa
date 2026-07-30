@@ -474,6 +474,30 @@
   </div>
 
   <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+  <script>
+    // CLINICAL BRIDGE AUTO-FILL
+    (function initDocspaceAutoFill() {
+      const raw = localStorage.getItem('cp_clinical_session');
+      const urlParams = new URLSearchParams(window.location.hash.split('?')[1] || window.location.search);
+      
+      let session = null;
+      try { if (raw) session = JSON.parse(raw); } catch(e) {}
+      
+      const na = urlParams.get('na') ?? session?.patient?.na;
+      
+      function setInputSafe(id, value) {
+        const el = document.getElementById(id);
+        if (el && value != null) {
+          el.value = value;
+          el.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        if (na) setInputSafe('na', na);
+      });
+    })();
+  </script>
 </body>
 
 </html>

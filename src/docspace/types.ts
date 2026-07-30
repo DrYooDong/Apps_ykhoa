@@ -22,6 +22,7 @@ export interface AISettings {
   endpoint: string;
   model: string;
   apiKey?: string;
+  labModeEnabled?: boolean;
 }
 
 export interface QuickLink {
@@ -63,6 +64,8 @@ export interface SBARRecord {
   auditLogs?: AuditTrail[];
   isLocked?: boolean;   // Đã ký số & khóa (không thể sửa)
   isTampered?: boolean; // Bị chỉnh sửa lậu ngoài ứng dụng
+  deletedAt?: string;
+  versions?: { timestamp: string; content: string }[]; // Lịch sử sinh SBAR (tối đa 5 bản)
 }
 
 // ─────────────────────────────────────────────
@@ -114,6 +117,7 @@ export interface CaseRecord {
   auditLogs?: AuditTrail[];
   isLocked?: boolean;
   isTampered?: boolean;
+  deletedAt?: string;
 }
 
 export type CaseContext = 'duty' | 'opd' | 'clinic' | 'consult' | 'other';
@@ -133,6 +137,7 @@ export interface DrugJournalEntry {
   rating: 1 | 2 | 3 | 4 | 5;
   clinicalNote: string;
   createdAt: string;
+  deletedAt?: string;
 }
 
 // ─────────────────────────────────────────────
@@ -149,6 +154,7 @@ export interface PersonalProtocol {
   references?: string[];
   createdAt: string;
   updatedAt: string;
+  deletedAt?: string;
 }
 
 export interface ProtocolStep {
@@ -157,30 +163,38 @@ export interface ProtocolStep {
   isAlert?: boolean;
 }
 
-export type ProtocolNodeType = 'action' | 'branch' | 'calculation' | 'guideline_sync';
+export type ProtocolNodeType = 'lookup' | 'branch' | 'result' | 'action';
+
+export interface BranchPath {
+  condition: string; // VD: 'gte_50', 'lt_10'
+  label: string;
+  go_to: string;
+}
 
 export interface LivingProtocolNode {
   id: string;
   type: ProtocolNodeType;
-  text: string;               // Nội dung hiển thị
+  label: string;
   
-  // Dành cho 'calculation'
-  formula?: string;           // VD: "weight * 15"
-  unit?: string;              // VD: "mg/kg"
-  
+  // Dành cho 'lookup'
+  lookup_var?: string | null;
+  formula_static?: string; // VD: 'weight_x_25'
+  unit?: string;
+  note?: string;
+
   // Dành cho 'branch'
-  condition?: string;         // VD: "egfr < 30"
-  trueBranchId?: string;
-  falseBranchId?: string;
-  
-  // Dành cho 'guideline_sync'
-  ebmReference?: string;      // ID bài Guideline
+  branch_var?: string;
+  branches?: BranchPath[];
+
+  // Dành cho 'result'
+  lookup_table?: Record<string, string>; // VD: { "weight_40_59": "600-750 mg" }
 }
 
-export interface LivingProtocol extends PersonalProtocol {
-  variables: string[];        // Các biến yêu cầu nhập: ['weight', 'age', 'egfr']
-  nodes: LivingProtocolNode[]; 
-  startNodeId: string;
+export interface LivingProtocol {
+  id: string;
+  title: string;
+  inputs: string[];
+  steps: LivingProtocolNode[];
 }
 
 // ─────────────────────────────────────────────
@@ -197,6 +211,7 @@ export interface PersonalNote {
   sourceTitle?: string;
   createdAt: string;
   updatedAt: string;
+  deletedAt?: string;
 }
 
 // ─────────────────────────────────────────────
@@ -247,6 +262,32 @@ export interface DocSpaceSnapshot {
   protocols: PersonalProtocol[];
   livingProtocols?: LivingProtocol[]; // Phase 3
   simulations?: SimulationSession[];  // Phase 3
+}
+
+// ─────────────────────────────────────────────
+// CLINICAL BRIDGE (Phase 3)
+// ─────────────────────────────────────────────
+
+export interface PatientContext {
+  id?: string;
+  name?: string;
+  age?: number;
+  weight?: number;
+  height?: number;
+  egfr?: number;
+  scr?: number;
+  na?: number;
+  comorbidities?: string[];
+  currentMeds?: string[];
+}
+
+export interface ClinicalSession {
+  source: {
+    module: 'oncall' | 'sbar' | 'sandbox' | 'case';
+    id: string; // ID của OnCall Patient hoặc SBAR
+  };
+  patient: PatientContext;
+  timestamp: string;
 }
 
 // ─────────────────────────────────────────────

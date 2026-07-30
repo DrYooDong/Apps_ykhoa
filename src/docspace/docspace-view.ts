@@ -102,9 +102,24 @@ export function renderProfileSelector(): string {
 
 // ─── Dashboard (after profile selected) ──────────────────────────
 
-export function renderDashboard(profile: DoctorProfile): string {
-  const stats = getStats(profile.id);
+export async function renderDashboard(profile: DoctorProfile): Promise<string> {
+  const stats = await getStats(profile.id);
   const activeShiftInfo = ''; // Could show active shift if any
+
+  let backupBanner = '';
+  if (stats.lastBackupDays !== null && stats.lastBackupDays > 3) {
+    backupBanner = `
+      <div style="background: var(--color-warning); color: #000; padding: 12px 20px; border-radius: 8px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <strong><i class="fa-solid fa-triangle-exclamation"></i> Cảnh báo sao lưu:</strong> 
+          Đã ${stats.lastBackupDays} ngày chưa sao lưu dữ liệu. Hãy xuất dữ liệu để đảm bảo an toàn.
+        </div>
+        <button class="dsp-btn dsp-btn-sm" onclick="document.getElementById('dspExportBtn').click()" style="background: #000; color: #fff;">
+          Sao lưu ngay
+        </button>
+      </div>
+    `;
+  }
 
   return `
     <div class="dsp-layout" id="dspLayout">
@@ -115,6 +130,7 @@ export function renderDashboard(profile: DoctorProfile): string {
       <main class="dsp-main" id="dspMain">
         <div class="dsp-page-content">
 
+          ${backupBanner}
           <!-- Greeting -->
           <div class="dsp-greeting">
             <div class="dsp-greeting-text">
@@ -318,4 +334,25 @@ export function formatRelativeDate(iso: string): string {
 
 export function formatDate(iso: string): string {
   return new Date(iso).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' });
+}
+
+export function renderFeatureUnavailable(title: string, type: 'lab' | 'wip'): string {
+  return `
+    <div class="dsp-layout" id="dspLayout">
+      <main class="dsp-main" style="margin-left:0; display:flex; align-items:center; justify-content:center; min-height: 100vh;">
+        <div style="text-align:center; padding: 40px; background: var(--color-surface); border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); max-width: 500px;">
+          <i class="fa-solid fa-flask" style="font-size: 48px; color: var(--color-warning); margin-bottom: 20px;"></i>
+          <h2 style="margin: 0 0 10px 0; font-size: 24px;">${title}</h2>
+          <p style="color: var(--color-text-muted); line-height: 1.5;">
+            ${type === 'lab' 
+              ? 'Tính năng này đang trong giai đoạn thử nghiệm (Lab Mode). Vui lòng bật Lab Mode trong phần cấu hình AI để sử dụng.' 
+              : 'Tính năng này đang được phát triển và chưa sẵn sàng.'}
+          </p>
+          <a href="#/docspace" class="dsp-btn dsp-btn-primary" style="margin-top: 24px; display:inline-flex; align-items:center; gap: 8px;">
+            <i class="fa-solid fa-arrow-left"></i> Về tổng quan
+          </a>
+        </div>
+      </main>
+    </div>
+  `;
 }

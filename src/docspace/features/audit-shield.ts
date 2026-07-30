@@ -26,32 +26,24 @@ function serializeRecordForHash(record: any): string {
 }
 
 /**
- * Tính mã băm SHA-256 đồng bộ (hoặc async giả lập đồng bộ).
- * Vì localStorage là đồng bộ, nhưng Web Crypto là async,
- * ở bản Pure JS này, để đơn giản và offline hoàn toàn, 
- * ta có thể dùng hàm tự viết hoặc TextEncoder thuần,
- * nhưng tốt nhất là dùng crypto.subtle và trả về Promise,
- * hoặc trong trường hợp cấp bách, dùng thuật toán băm đồng bộ (MurmurHash/Cypher32)
- * Ở đây ta giả lập hàm băm SHA-256 cơ bản (chỉ demo) chạy đồng bộ 
- * để tương thích với localStorage sync API hiện có.
+ * Tính mã băm SHA-256 (Web Crypto API)
  */
-function syncHashString(str: string): string {
-  // Simple hash function for synchronous usage (DJB2)
-  // Thực tế nên dùng thư viện SHA-256 đồng bộ nếu cần bảo mật cao.
-  let hash = 5381;
-  for (let i = 0; i < str.length; i++) {
-    const char = str.charCodeAt(i);
-    hash = ((hash << 5) + hash) + char; /* hash * 33 + c */
-  }
-  return hash.toString(16);
+async function sha256(str: string): Promise<string> {
+  const buffer = await crypto.subtle.digest(
+    'SHA-256',
+    new TextEncoder().encode(str)
+  );
+  return Array.from(new Uint8Array(buffer))
+    .map(b => b.toString(16).padStart(2, '0'))
+    .join('');
 }
 
 /**
  * Ký mới một bản ghi (Thêm Audit Trail).
  */
-export function signRecord(record: any, action: 'create' | 'update' | 'lock'): any {
+export async function signRecord(record: any, action: 'create' | 'update' | 'lock'): Promise<any> {
   const contentString = serializeRecordForHash(record);
-  const hash = syncHashString(contentString);
+  const hash = await sha256(contentString);
   
   const trail: AuditTrail = {
     timestamp: new Date().toISOString(),
@@ -71,7 +63,7 @@ export function signRecord(record: any, action: 'create' | 'update' | 'lock'): a
  * Kiểm tra tính vẹn toàn (Integrity) của một bản ghi.
  * @returns true nếu an toàn, false nếu bị tampered.
  */
-export function verifyRecordIntegrity(record: any): boolean {
+export async function verifyRecordIntegrity(record: any): Promise<boolean> {
   if (!record.auditLogs || record.auditLogs.length === 0) {
     return true; // Các record cũ chưa có tính năng này
   }
@@ -81,7 +73,7 @@ export function verifyRecordIntegrity(record: any): boolean {
   
   // Tính hash hiện tại
   const currentString = serializeRecordForHash(record);
-  const currentHash = syncHashString(currentString);
+  const currentHash = await sha256(currentString);
   
   return lastTrail.snapshotHash === currentHash;
 }

@@ -90,3 +90,59 @@ Trình bày rõ ràng, súc tích bằng Tiếng Việt. Format bằng Markdown.
 
   return fetchOpenAI(messages, settings, 0.3);
 }
+
+export async function analyzeDrugRegimen(drugs: string[], indication: string, settings: AISettings, contextChunks: RAGChunk[]): Promise<{ interactions: string[]; alternatives: string[] }> {
+  if (!settings.enabled || !settings.endpoint) {
+    throw new Error("AI chưa được cấu hình hoặc chưa bật. Vui lòng vào Cài đặt AI.");
+  }
+
+  let contextStr = "Không tìm thấy bằng chứng liên quan.";
+  if (contextChunks.length > 0) {
+    contextStr = contextChunks.map((c, i) => `[Tài liệu ${i+1}] ${c.title}: ${c.content}`).join('\n\n');
+  }
+
+  const prompt = `Bạn là một Dược sĩ lâm sàng. Hãy phân tích phác đồ thuốc sau đây:
+Thuốc: ${drugs.join(', ')}
+Chỉ định: ${indication}
+
+[BẰNG CHỨNG HỖ TRỢ]:
+${contextStr}
+
+Nhiệm vụ:
+1. Đánh giá tương tác thuốc (nếu có) và mức độ nghiêm trọng.
+2. Đề xuất lựa chọn thay thế (nếu cần).
+Trả về JSON với format chính xác: {"interactions": ["...", "..."], "alternatives": ["...", "..."]}`;
+
+  const messages = [
+    { role: 'system', content: 'You only output valid JSON.' },
+    { role: 'user', content: prompt }
+  ];
+
+  try {
+    const content = await fetchOpenAI(messages, settings, 0.2);
+    const cleanJson = content.replace(/```json/g, '').replace(/```/g, '').trim();
+    return JSON.parse(cleanJson);
+  } catch (err: any) {
+    console.error('analyzeDrugRegimen Error', err);
+    throw new Error("AI lỗi: " + err.message);
+  }
+}
+
+export async function generateHandoverSummary(shiftData: string, settings: AISettings): Promise<string> {
+  if (!settings.enabled || !settings.endpoint) {
+    throw new Error("AI chưa được cấu hình hoặc chưa bật. Vui lòng vào Cài đặt AI.");
+  }
+
+  const prompt = `Bạn là một bác sĩ nội trú đang cần bàn giao ca trực. Hãy tổng hợp danh sách bệnh nhân sau thành báo cáo bàn giao.
+Danh sách:
+${shiftData}
+
+Hãy viết tóm tắt ngắn gọn thành các gạch đầu dòng, tập trung vào những bệnh nhân nặng (Critical) và những việc cần làm tiếp theo. Dùng format Markdown.`;
+
+  const messages = [
+    { role: 'system', content: 'You are an expert medical assistant. Answer in Vietnamese Markdown.' },
+    { role: 'user', content: prompt }
+  ];
+
+  return fetchOpenAI(messages, settings, 0.4);
+}

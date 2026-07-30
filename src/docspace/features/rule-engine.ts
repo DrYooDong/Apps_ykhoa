@@ -1,6 +1,6 @@
 /**
- * Living Protocol — Rule Engine
- * Chạy Offline bằng Vanilla JS (Evaluator)
+ * Living Protocol — Static Rule Engine (v2)
+ * Pure Data-Driven. Zero eval() or new Function().
  */
 
 export interface RuleEvaluationResult {
@@ -9,46 +9,81 @@ export interface RuleEvaluationResult {
 }
 
 /**
- * Đánh giá một công thức toán học tĩnh (VD: "weight * 15")
- * Dùng new Function để đảm bảo an toàn hơn eval() nguyên bản, 
- * và chỉ truyền các biến số có sẵn trong context.
+ * Đánh giá điều kiện rẽ nhánh tĩnh (VD: "gte_50")
  */
-export function evaluateFormula(formula: string, context: Record<string, number>): RuleEvaluationResult {
-  try {
-    // Tạo danh sách biến từ context
-    const keys = Object.keys(context);
-    const values = Object.values(context);
-    
-    // Viết hàm động có tham số là các keys, và trả về formula
-    const func = new Function(...keys, `return ${formula};`);
-    
-    // Gọi hàm với các values
-    const result = func(...values);
-    
-    if (typeof result !== 'number' || isNaN(result)) {
-       return { value: null, error: 'Kết quả tính toán không hợp lệ' };
-    }
-    
-    return { value: result };
-  } catch (err: any) {
-    return { value: null, error: err.message };
+export function evaluateBranch(condition: string, value: number): boolean {
+  if (!condition) return false;
+  
+  const parts = condition.split('_');
+  const op = parts[0];
+  const threshold = parseFloat(parts[1]);
+
+  if (isNaN(threshold)) return false;
+
+  switch (op) {
+    case 'gte': return value >= threshold;
+    case 'gt':  return value > threshold;
+    case 'lte': return value <= threshold;
+    case 'lt':  return value < threshold;
+    case 'eq':  return value === threshold;
+    default:    return false;
   }
 }
 
 /**
- * Đánh giá một điều kiện rẽ nhánh (VD: "egfr < 30")
- * Trả về true hoặc false
+ * Tra cứu giá trị trong bảng theo một biến số
+ * VD: table = { "weight_40_59": "600-750 mg", "weight_60_79": "900-1000 mg" }
+ * Trả về string hoặc undefined
  */
-export function evaluateCondition(condition: string, context: Record<string, number>): RuleEvaluationResult {
-  try {
-    const keys = Object.keys(context);
-    const values = Object.values(context);
-    
-    const func = new Function(...keys, `return Boolean(${condition});`);
-    const result = func(...values);
-    
-    return { value: result };
-  } catch (err: any) {
-    return { value: null, error: err.message };
+export function lookupValue(table: Record<string, string>, value: number): string | undefined {
+  for (const [key, resultStr] of Object.entries(table)) {
+    // Tách "weight_40_59" -> ["weight", "40", "59"]
+    const parts = key.split('_');
+    if (parts.length >= 3) {
+      const min = parseFloat(parts[parts.length - 2]);
+      const max = parseFloat(parts[parts.length - 1]);
+      if (!isNaN(min) && !isNaN(max)) {
+        if (value >= min && value <= max) {
+          return resultStr;
+        }
+      }
+    } else if (parts.length === 2 && parts[0] === 'gte') {
+      const min = parseFloat(parts[1]);
+      if (value >= min) return resultStr;
+    } else if (parts.length === 2 && parts[0] === 'lt') {
+      const max = parseFloat(parts[1]);
+      if (value < max) return resultStr;
+    }
   }
+  return undefined;
+}
+
+/**
+ * Đánh giá một công thức tĩnh (hardcoded formula types)
+ * VD: "weight_x_25" -> weight * 25
+ */
+export function evaluateStaticFormula(formula: string, context: Record<string, number>): RuleEvaluationResult {
+  if (!formula) return { value: null, error: 'Không có công thức' };
+  
+  const parts = formula.split('_');
+  if (parts.length !== 3) return { value: null, error: 'Định dạng công thức tĩnh không hợp lệ' };
+
+  const [varName, op, valStr] = parts;
+  const ctxVal = context[varName];
+  const operand = parseFloat(valStr);
+
+  if (ctxVal === undefined || isNaN(ctxVal)) return { value: null, error: `Biến ${varName} không tồn tại hoặc không hợp lệ` };
+  if (isNaN(operand)) return { value: null, error: `Toán hạng ${valStr} không hợp lệ` };
+
+  let result = 0;
+  switch (op) {
+    case 'x': 
+    case 'mul': result = ctxVal * operand; break;
+    case 'div': result = ctxVal / operand; break;
+    case 'add': result = ctxVal + operand; break;
+    case 'sub': result = ctxVal - operand; break;
+    default: return { value: null, error: `Phép toán ${op} không được hỗ trợ` };
+  }
+
+  return { value: result };
 }

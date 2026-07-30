@@ -9,7 +9,10 @@ import {
 } from '../storage';
 import { OnCallShift, OnCallPatient, PatientFlag } from '../types';
 import { renderSidebar, formatDate, formatRelativeDate } from '../docspace-view';
-import { getActiveProfile } from '../storage';
+import { getActiveProfile, saveSBAR } from '../storage';
+import { ClinicalSession } from '../types';
+import { publishSession, buildDeepLink } from '../core/clinical-bridge';
+import { generateHandoverSummary } from '../ai/llm-client';
 
 const FLAG_CONFIG: Record<PatientFlag, { label: string; icon: string; cls: string }> = {
   critical: { label: 'Nặng',   icon: 'fa-solid fa-circle-exclamation', cls: 'dsp-flag--critical' },
@@ -202,6 +205,9 @@ function renderShiftDetail(shift: OnCallShift): string {
             <button class="dsp-btn dsp-btn-primary dsp-btn-sm" id="dspAddPatientBtn">
               <i class="fa-solid fa-plus"></i> Thêm BN
             </button>
+            <button class="dsp-btn dsp-btn-sm" id="dspAIHandoverBtn" style="background-color: #8b5cf6; border-color: #8b5cf6; color: white;">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> Tóm tắt AI
+            </button>
           ` : ''}
           <button class="dsp-btn dsp-btn-ghost dsp-btn-sm" id="dspExportReportBtn">
             <i class="fa-solid fa-file-export"></i> Xuất báo cáo
@@ -240,6 +246,19 @@ function renderPatientCard(patient: OnCallPatient, isClosed: boolean): string {
         <span class="dsp-patient-time">Thêm lúc ${formatRelativeDate(patient.addedAt)}</span>
         ${!isClosed ? `
           <div class="dsp-patient-actions">
+            <div class="dsp-dropdown-container">
+              <button class="dsp-icon-btn dsp-text-primary" data-action="toggle-tools" title="Phân tích / Tính toán">
+                <i class="fa-solid fa-calculator"></i>
+              </button>
+              <div class="dsp-dropdown-menu" style="display: none;">
+                <a href="#" class="dsp-dropdown-item" data-action="launch-tool" data-tool="#/calculators/renal-dg-abg" data-id="${patient.id}">
+                  <i class="fa-solid fa-lungs dsp-mr-2"></i> Khí máu Động mạch
+                </a>
+                <a href="#" class="dsp-dropdown-item" data-action="launch-tool" data-tool="#/calculators/renal-renal-function" data-id="${patient.id}">
+                  <i class="fa-solid fa-kidney dsp-mr-2"></i> Chức năng Thận (eGFR)
+                </a>
+              </div>
+            </div>
             <button class="dsp-icon-btn" data-action="edit-patient" data-id="${patient.id}" title="Cập nhật">
               <i class="fa-solid fa-pen"></i>
             </button>
@@ -347,6 +366,37 @@ export function mountOnCallController(profileId: string, shiftId?: string): void
       const shift = getShiftById(profileId, _activeShiftId);
       const patient = shift?.patients.find(p => p.id === patientId);
       if (patient) openPatientModal(patient);
+    } else if (action === 'toggle-tools') {
+      const dropdown = btn.nextElementSibling as HTMLElement;
+      if (dropdown) {
+        dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+      }
+    } else if (action === 'launch-tool') {
+      e.preventDefault();
+      const shift = getShiftById(profileId, _activeShiftId);
+      const patient = shift?.patients.find(p => p.id === patientId);
+      const tool = btn.getAttribute('data-tool');
+      if (patient && tool) {
+        // Parse a mock age and weight for demo purposes, or from patient.note if possible
+        // In a real app we would have dedicated fields for them
+        const session: ClinicalSession = {
+          source: { module: 'oncall', id: patient.id },
+          patient: {
+            id: patient.id,
+            name: `BN Giường ${patient.bed}`,
+            age: 65, // Demo dummy data
+            weight: 50 // Demo dummy data
+          },
+          timestamp: new Date().toISOString()
+        };
+        publishSession(session);
+        const deepLink = buildDeepLink(tool, session);
+        window.open(deepLink, '_blank');
+      }
+      
+      // Close dropdown
+      const dropdown = btn.closest('.dsp-dropdown-menu') as HTMLElement;
+      if (dropdown) dropdown.style.display = 'none';
     }
   });
 
@@ -382,6 +432,49 @@ export function mountOnCallController(profileId: string, shiftId?: string): void
     const notes = prompt('Ghi chú cuối ca (tùy chọn):') || undefined;
     closeShift(profileId, _activeShiftId, notes);
     window.location.hash = `#/docspace/oncall?shift=${_activeShiftId}`;
+  });
+
+  // AI Handover Summary
+  document.getElementById('dspAIHandoverBtn')?.addEventListener('click', async () => {
+    if (!_activeShiftId) return;
+    const shift = getShiftById(profileId, _activeShiftId);
+    if (!shift || shift.patients.length === 0) {
+      alert('Không có bệnh nhân nào để tóm tắt.');
+      return;
+    }
+
+    const profile = getActiveProfile();
+    if (!profile || !profile.aiSettings?.enabled) {
+      alert('Vui lòng bật AI trong Cài đặt trước khi dùng tính năng này.');
+      return;
+    }
+
+    const btn = document.getElementById('dspAIHandoverBtn') as HTMLButtonElement;
+    const originalHtml = btn.innerHTML;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Đang tổng hợp...';
+    btn.disabled = true;
+
+    try {
+      const shiftData = shift.patients.map(p => `- Giường ${p.bed} [${p.flag}]: ${p.diagnosis}. ${p.note}`).join('\n');
+      const summary = await generateHandoverSummary(shiftData, profile.aiSettings);
+      
+      if (confirm("Kết quả phân tích bàn giao (AI):\n\n" + summary + "\n\nBạn có muốn lưu thành SBAR nháp không?")) {
+        saveSBAR(profileId, {
+          title: `Bàn giao ca trực ${formatDate(shift.date)}`,
+          situation: 'Bàn giao ca trực',
+          background: `Ca trực ngày ${formatDate(shift.date)} - Đơn vị: ${shift.unit}\nTổng số BN: ${shift.patients.length}`,
+          assessment: summary,
+          recommendation: 'Xem chi tiết trong hồ sơ.',
+          isDraft: true
+        });
+        window.location.hash = '#/docspace/sbar';
+      }
+    } catch (err: any) {
+      alert(err.message);
+    } finally {
+      btn.innerHTML = originalHtml;
+      btn.disabled = false;
+    }
   });
 
   // Export report
