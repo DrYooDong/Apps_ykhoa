@@ -8,27 +8,47 @@
   // DATABASE: SEARCH INDEX FOR LIVE CLINICAL SEARCH 2.0
   // ============================================================
   const searchIndex = [
-    { title: "Tra cứu mã ICD-10 nhanh", category: "Công cụ", url: "src/content/calculators/general/tracuu-ma-icd10.html", keywords: "icd10, icd 10, ma benh, tra cuu, ma quoc te" },
+    // --- 1. CÔNG CỤ & CẤP CỨU HÀNG ĐẦU ---
+    { title: "Tra cứu mã ICD-10 nhanh", category: "Công cụ", url: "src/content/calculators/general/tracuu-ma-icd10.html", keywords: "icd10, icd 10, ma benh, tra cuu, ma quoc te, benh tat" },
     { title: "Sốc nhiễm khuẩn (Sepsis) & Phác đồ kháng sinh", category: "Cấp cứu", url: "src/content/skills/treatment-management/luachon-khangsinh.html", keywords: "sot cao, tut huyet ap, soc nhiem khuan, sepsis, qsofa, sofa, khang sinh, bu dich, mach nhanh" },
     { title: "Cấp cứu Đau ngực cấp & ACS (Nhồi máu cơ tim)", category: "Cấp cứu", url: "src/content/skills/can-lam-sang/doc-ecg-co-ban.html", keywords: "dau nguc, nhoi mau co tim, st chenh, ecg, troponin, acs, tim mach, con đau thắt ngực" },
-    { title: "Đọc Điện tâm đồ ECG cơ bản & Nâng cao", category: "Cận lâm sàng", url: "src/content/skills/can-lam-sang/doc-ecg-co-ban.html", keywords: "ecg, dien tam do, tim, nhip tim, song dien tim, block, loan nhip, st chenh" },
+    { title: "Đọc Điện tâm đồ ECG cơ bản & Nâng cao", category: "Kỹ năng", url: "src/content/skills/can-lam-sang/doc-ecg-co-ban.html", keywords: "ecg, dien tam do, tim, nhip tim, song dien tim, block, loan nhip, st chenh" },
     { title: "Cấp cứu Khí máu động mạch (ABG) & Toan kiềm", category: "Công cụ", url: "src/content/calculators/renal/dg-abg.html", keywords: "khi mau dong mach, toan kiem, ph, pco2, hco3, abg, suy ho hap, kho tho, anion gap" },
     { title: "Cấp cứu & Xử trí Sốt xuất huyết Dengue nặng", category: "Cấp cứu", url: "src/content/calculators/emergency/ql-bu-dich.html", keywords: "sot xuat huyet, dengue, muoi, truyen nhiem, soc sxh, bu dich, xuat huyet, phan do" },
-    { title: "Toan Ceton đái tháo đường (DKA) — Bù dịch & Insulin", category: "Nội tiết", url: "src/content/calculators/emergency/ql-bu-dich.html", keywords: "dka, dai thao duong, tieu duong, toan ceton, insulin, kali, glucose, sot cao, tho kussmaul" },
-    { title: "Lựa chọn kháng sinh kinh nghiệm ban đầu", category: "Quản lý điều trị", url: "src/content/skills/treatment-management/luachon-khangsinh.html", keywords: "khang sinh, nhiem khuan, vi khuan, vancomycin, carbapenem, viem phoi, sot" },
+    { title: "Toan Ceton đái tháo đường (DKA) — Bù dịch & Insulin", category: "Cấp cứu", url: "src/content/calculators/emergency/ql-bu-dich.html", keywords: "dka, dai thao duong, tieu duong, toan ceton, insulin, kali, glucose, sot cao, tho kussmaul" },
+    
+    // --- 2. CÔNG CỤ TÍNH TOÁN LÂM SÀNG (CDSS) ---
+    { title: "Máy tính Lâm sàng & 120+ Thang điểm", category: "Công cụ", url: "src/content/calculators/cong-cu.html", keywords: "thang diem, may tinh, cdss, tinh toan, egfr, gcs, nihss, grace, timi, curb65" },
     { title: "Electrolyte Pro Studio — Bù dịch & Điện giải (Na, K, Ca, Mg)", category: "Công cụ", url: "src/content/calculators/cong-cu.html", keywords: "ha natri, tang natri, dich, bu dich, kali, canxi, dien giai, hạ kali, tăng kali" },
-    { title: "Phân tích tế bào máu CBC (Công thức máu)", category: "Cận lâm sàng", url: "src/content/skills/can-lam-sang/doc-tpttb-mau.html", keywords: "mau, cong thuc mau, tieu cau, bach cau, hong cau, cbc, thieu mau, sot" },
-    { title: "Sinh hóa chức năng Thận (Ure, Creatinin, eGFR)", category: "Cận lâm sàng", url: "src/content/skills/can-lam-sang/doc-sh-than.html", keywords: "than, creatinine, urea, egfr, suy than, cockcroft, gault, mdrd, clearance" },
-    { title: "Khó thở cấp, rên ngáy rên rít (COPD / Hen phế quản)", category: "Hô hấp", url: "src/content/approaches/tiep-can.html", keywords: "kho tho, hen phe quan, copd, khi mau, spo2, ran ngay, ran rit, viem phoi" },
-    { title: "Mê sảng, rối loạn ý thức, đánh giá điểm GCS", category: "Thần kinh", url: "src/content/calculators/cong-cu.html", keywords: "tri giac, me sang, glasgow, gcs, hon me, coi giuc, dot quy, nihss" },
-    { title: "Chẩn đoán Đột quỵ cấp (NIHSS & Thang điểm)", category: "Thần kinh", url: "src/content/calculators/cong-cu.html", keywords: "nihss, dot quy, tai bien, nao, me sang, yeu me" },
-    { title: "Phân tầng độ nặng Viêm phổi (CURB-65, PSI)", category: "Hô hấp", url: "src/content/calculators/cong-cu.html", keywords: "viem phoi, curb65, curb-65, psi, sot, ho, kho tho" },
-    { title: "Đánh giá Suy tim lâm sàng (NYHA, AHA)", category: "Tim mạch", url: "src/content/calculators/cong-cu.html", keywords: "suy tim, nyha, phan do, tim, phu chan, kho tho nam, bnp" },
-    { title: "Sinh hóa & Đánh giá chức năng Gan", category: "Cận lâm sàng", url: "src/content/skills/ky-nang.html", keywords: "gan, ast, alt, bilirubin, men gan, vang da" },
-    { title: "Phân tầng Xơ gan & Cổ trướng (Child-Pugh, MELD)", category: "Tiêu hóa", url: "src/content/calculators/cong-cu.html", keywords: "xo gan, co truong, child pugh, meld, ascites, albumin" },
-    { title: "Thuyên tắc phổi (Pulmonary Embolism, Wells Score)", category: "Tim mạch", url: "src/content/calculators/cong-cu.html", keywords: "thuyen tac phoi, pe, wells, ddimer, d-dimer, dau nguc, kho tho" },
-    { title: "Bản đồ huyệt vị & Châm cứu Đông y", category: "Y học cổ truyền", url: "src/content/tcm/y-hoc-co-truyen.html", keywords: "huyet vi, dong y, bam huyet, xoa bop, cham cuu" },
-    { title: "DocSpace — Trình bệnh SBAR & Ca trực cá nhân", category: "DocSpace", url: "#/docspace", keywords: "docspace, sbar, ca truc, trinh benh, ghi chu, ca benh, nhat ky" }
+    { title: "Sinh hóa chức năng Thận (Ure, Creatinin, eGFR)", category: "Kỹ năng", url: "src/content/skills/can-lam-sang/doc-sh-than.html", keywords: "than, creatinine, urea, egfr, suy than, cockcroft, gault, mdrd, clearance" },
+    { title: "Mê sảng, rối loạn ý thức, đánh giá điểm GCS", category: "Công cụ", url: "src/content/calculators/cong-cu.html", keywords: "tri giac, me sang, glasgow, gcs, hon me, coi giuc, dot quy, nihss" },
+    { title: "Chẩn đoán Đột quỵ cấp (NIHSS & Thang điểm)", category: "Công cụ", url: "src/content/calculators/cong-cu.html", keywords: "nihss, dot quy, tai bien, nao, me sang, yeu me" },
+    { title: "Phân tầng độ nặng Viêm phổi (CURB-65, PSI)", category: "Công cụ", url: "src/content/calculators/cong-cu.html", keywords: "viem phoi, curb65, curb-65, psi, sot, ho, kho tho" },
+    { title: "Đánh giá Suy tim lâm sàng (NYHA, AHA)", category: "Công cụ", url: "src/content/calculators/cong-cu.html", keywords: "suy tim, nyha, phan do, tim, phu chan, kho tho nam, bnp" },
+    { title: "Phân tầng Xơ gan & Cổ trướng (Child-Pugh, MELD)", category: "Công cụ", url: "src/content/calculators/cong-cu.html", keywords: "xo gan, co truong, child pugh, meld, ascites, albumin" },
+    { title: "Thuyên tắc phổi (Pulmonary Embolism, Wells Score)", category: "Công cụ", url: "src/content/calculators/cong-cu.html", keywords: "thuyen tac phoi, pe, wells, ddimer, d-dimer, dau nguc, kho tho" },
+
+    // --- 3. DƯỢC LÝ & KHÁNG SINH ---
+    { title: "Dược lý Lâm sàng & Tra cứu thuốc", category: "Dược lý", url: "src/content/pharmacology/duoc-ly.html", keywords: "duoc ly, thuoc, lieu dung, duoc dong hoc, pk pd, khang sinh, chinh lieu" },
+    { title: "Lựa chọn kháng sinh kinh nghiệm ban đầu", category: "Dược lý", url: "src/content/skills/treatment-management/luachon-khangsinh.html", keywords: "khang sinh, nhiem khuan, vi khuan, vancomycin, carbapenem, viem phoi, sot" },
+
+    // --- 4. KỸ NĂNG LÂM SÀNG & CẬN LÂM SÀNG ---
+    { title: "Kỹ năng Lâm sàng & Bảng kiểm Bedside (Macleod)", category: "Kỹ năng", url: "src/content/skills/ky-nang.html", keywords: "ky nang, macleod, tham kham, 11 he co quan, bedside, osce, kham tim, kham phoi" },
+    { title: "Phân tích tế bào máu CBC (Công thức máu)", category: "Kỹ năng", url: "src/content/skills/can-lam-sang/doc-tpttb-mau.html", keywords: "mau, cong thuc mau, tieu cau, bach cau, hong cau, cbc, thieu mau, sot" },
+    { title: "Sinh hóa & Đánh giá chức năng Gan", category: "Kỹ năng", url: "src/content/skills/ky-nang.html", keywords: "gan, ast, alt, bilirubin, men gan, vang da" },
+
+    // --- 5. TIẾP CẬN LÂM SÀNG ---
+    { title: "Tiếp cận Lâm sàng & Lưu đồ thuật toán", category: "Tiếp cận", url: "src/content/approaches/tiep-can.html", keywords: "tiep can, thuat toan, phac do, trieu chung, hoi chung, thuat toan chanthuong" },
+    { title: "Khó thở cấp, rên ngáy rên rít (COPD / Hen phế quản)", category: "Tiếp cận", url: "src/content/approaches/tiep-can.html", keywords: "kho tho, hen phe quan, copd, khi mau, spo2, ran ngay, ran rit, viem phoi" },
+
+    // --- 6. SINH LÝ & Y HỌC CHỨC CỨ ---
+    { title: "Sinh lý / Sinh lý bệnh & Cơ chế bệnh sinh", category: "Sinh lý", url: "src/content/pathophysiology/sinhly-sinhlybenh.html", keywords: "sinh ly, sinh ly benh, co che benh sinh, tim mach, ho hap, than" },
+    { title: "Y học chứng cứ & PICO / NNT Lab", category: "Chứng cứ", url: "src/content/ebm/yhcc.html", keywords: "y hoc chung cu, ebm, pico, nnt, forest plot, meta analysis, guideline" },
+    { title: "Kho Guidelines Bộ Y tế & Quốc tế", category: "Chứng cứ", url: "src/content/ebm/yhcc.html", keywords: "guidelines, bo y te, khuyen cao, phac do, dieu tri" },
+
+    // --- 7. Y HỌC CỔ TRUYỀN & DOCSPACE ---
+    { title: "Y học cổ truyền — Bản đồ huyệt vị & Châm cứu", category: "Đông y", url: "src/content/tcm/y-hoc-co-truyen.html", keywords: "huyet vi, dong y, bam huyet, xoa bop, cham cuu, duoc lieu" },
+    { title: "DocSpace — Không gian Riêng & Trình bệnh SBAR", category: "DocSpace", url: "#/docspace", keywords: "docspace, sbar, ca truc, trinh benh, ghi chu, ca benh, nhat ky" }
   ];
 
   // ============================================================
@@ -197,11 +217,16 @@
     function performSearch(query) {
       const cleanQuery = removeAccents(query).trim().toLowerCase();
       if (!cleanQuery) {
-        dropdown.classList.remove('show');
+        // Show top suggested apps when query is empty
+        const topSuggestions = searchIndex.slice(0, 6);
+        renderResults(topSuggestions, '');
+        const header = dropdown.querySelector('.search-results-header');
+        if (header) header.textContent = 'Gợi ý ứng dụng hệ sinh thái CliniPortal';
+        dropdown.classList.add('show');
         return;
       }
 
-      // Filter index
+      // Filter index across all ecosystem categories
       const results = searchIndex.filter(item => {
         const cleanTitle = removeAccents(item.title).toLowerCase();
         const cleanKeywords = removeAccents(item.keywords).toLowerCase();
@@ -209,7 +234,7 @@
         return cleanTitle.includes(cleanQuery) || 
                cleanKeywords.includes(cleanQuery) || 
                cleanCat.includes(cleanQuery);
-      }).slice(0, 8); // Limit to top 8 results
+      }).slice(0, 10); // Limit to top 10 results
 
       renderResults(results, query);
       dropdown.classList.add('show');
@@ -246,8 +271,33 @@
 
     // Focus event
     searchInput.addEventListener('focus', () => {
-      if (searchInput.value.trim() !== '') {
+      performSearch(searchInput.value);
+    });
+
+    // Global shortcut triggers (Ctrl+K or /) for single unified search
+    const kbdHint = document.getElementById('searchKbdHint');
+    if (kbdHint) {
+      kbdHint.addEventListener('click', () => {
+        searchInput.focus();
+        searchInput.select();
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        searchInput.focus();
+        searchInput.select();
         performSearch(searchInput.value);
+      } else if (e.key === '/') {
+        const active = document.activeElement;
+        const isTyping = active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.isContentEditable);
+        if (!isTyping) {
+          e.preventDefault();
+          searchInput.focus();
+          searchInput.select();
+          performSearch(searchInput.value);
+        }
       }
     });
 

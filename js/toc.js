@@ -4,7 +4,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
     const visualContainer = document.querySelector(".visual-container");
-    const homepageWrapper = document.querySelector(".homepage-wrapper");
+    const homepageWrapper = document.querySelector(".bento-homepage") || document.querySelector(".homepage-wrapper");
     const mainContainer = visualContainer || homepageWrapper || document.querySelector("main");
 
     if (!mainContainer) return;
@@ -19,15 +19,14 @@ document.addEventListener("DOMContentLoaded", () => {
                    !h.closest(".high-yield-card");
         });
     } else if (homepageWrapper) {
-        headings = Array.from(homepageWrapper.querySelectorAll(".homepage-left h1, .homepage-left h2, .homepage-left section[id], .homepage-right section[id]")).filter(h => {
-            // Pick section elements or headings that represent main blocks
+        headings = Array.from(homepageWrapper.querySelectorAll("h1[id], h2[id], section[id]")).filter(h => {
             if (h.tagName.startsWith('H')) {
-                return h.textContent.trim().length > 0 && !h.closest('.widget-card');
+                return h.textContent.trim().length > 0 && !h.closest('.widget-card') && !h.closest('.bento-cell');
             }
-            return h.id && (h.querySelector('h2, h3, .widget-title') !== null);
+            return h.id && (h.querySelector('h2, h3, .widget-title, .bento-cell-title') !== null);
         }).map(el => {
             if (el.tagName.startsWith('H')) return el;
-            return el.querySelector('h2, h3, .widget-title') || el;
+            return el.querySelector('h2, h3, .widget-title, .bento-cell-title') || el;
         });
     } else {
         headings = Array.from(mainContainer.querySelectorAll("h2, h3"));

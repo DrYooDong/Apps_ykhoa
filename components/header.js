@@ -1,5 +1,16 @@
 function goBack() {
-  window.history.back();
+  if (window.history.length > 1 && document.referrer && !document.referrer.includes(window.location.pathname)) {
+    window.history.back();
+  } else {
+    const holder = document.getElementById('header-placeholder');
+    const headerPath = holder ? holder.dataset.headerPath : '';
+    if (headerPath) {
+      const depth = (headerPath.match(/\.\.\//g) || []).length;
+      window.location.href = '../'.repeat(depth) + 'index.html';
+    } else {
+      window.location.href = 'index.html';
+    }
+  }
 }
 
 async function loadHeader() {

@@ -346,15 +346,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 const favorites = getFavorites();
                 
                 if (favorites.length === 0) {
-                    const placeholderText = favoriteType === "approaches" ? "tiếp cận" : (favoriteType === "skills" ? "kỹ năng" : (favoriteType === "pharma" ? "dược lý" : (favoriteType === "physio" ? "bài học" : "công cụ")));
-                    favoritesGrid.innerHTML = `
-                        <div class="no-favorites-placeholder">
-                            <i class="fa-regular fa-star"></i>
-                            <p>Chưa có ${favoriteType === "approaches" ? "tiếp cận" : (favoriteType === "skills" ? "kỹ năng" : (favoriteType === "pharma" ? "dược lý" : (favoriteType === "physio" ? "bài học" : "công cụ")))} thường dùng</p>
-                            <span>Nhấn nút ngôi sao ⭐ trên bất kỳ ${placeholderText} nào bên dưới để ghim vào đây.</span>
-                        </div>
-                    `;
+                    favoritesSection.style.display = "none";
+                    favoritesGrid.innerHTML = "";
                 } else {
+                    favoritesSection.style.display = "block";
                     favoritesGrid.innerHTML = "";
                     
                     favorites.forEach(href => {
