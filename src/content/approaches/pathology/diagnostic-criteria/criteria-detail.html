@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Chi tiết Tiêu chuẩn Chẩn đoán – CliniPortal">
-  <title>Chi tiết Tiêu chuẩn – CliniPortal</title>
+  <meta name="description" content="Chi tiết tiêu chuẩn chẩn đoán tương tác – CliniPortal">
+  <title>Tiêu chuẩn Chẩn đoán – CliniPortal</title>
 
   <!-- Google Fonts & FontAwesome -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,30 +29,27 @@
     <div class="dc-topbar-left">
       <a href="index.html" class="dc-back-btn" title="Trở về Ngân hàng Tiêu chuẩn">
         <i class="fa-solid fa-arrow-left"></i>
-        <span>Ngân hàng</span>
+        <span>Ngân hàng TC</span>
       </a>
       <div class="dc-brand">
         <span class="dc-brand-icon">📋</span>
         <span class="dc-brand-name" id="topbar-title-display">Tiêu chuẩn Chẩn đoán</span>
       </div>
     </div>
-
     <div class="dc-topbar-right">
-      <button class="pm-btn-icon" id="themeToggleBtn" onclick="toggleTheme()" title="Đổi chế độ Sáng / Tối" style="width:36px;height:36px;border-radius:9px;border:1px solid var(--color-border);background:var(--color-surface);color:var(--color-text);cursor:pointer;">
-        <i class="fa-solid fa-moon"></i>
+      <button class="dc-theme-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Đổi chế độ Sáng / Tối">
+        <i class="fa-solid fa-moon" id="theme-icon"></i>
       </button>
     </div>
   </header>
 
-  <!-- MAIN APP BODY -->
+  <!-- DETAIL CONTAINER -->
   <div class="dc-app-body">
-    <div class="dc-container">
-      <div class="dc-detail-wrapper" id="criteria-detail-container">
-        <!-- Rendered by JS -->
-        <div class="loading-state">
-          <i class="fa-solid fa-spinner fa-spin fa-2x" style="color: var(--color-primary);"></i>
-          <p>Đang tải dữ liệu tiêu chuẩn chẩn đoán...</p>
-        </div>
+    <div class="dc-detail-container" id="criteria-detail-container">
+      <!-- Loading state -->
+      <div class="dc-empty-state">
+        <i class="fa-solid fa-spinner fa-spin dc-empty-state-icon" style="color:var(--color-primary)"></i>
+        <p class="dc-empty-state-text">Đang tải tiêu chuẩn chẩn đoán...</p>
       </div>
     </div>
   </div>

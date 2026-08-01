@@ -285,12 +285,14 @@
 | `Kỹ năng/Hồi sức cấp cứu/KN_Hoisuc_Huyetdong.html` | Hồi sức huyết động |
 | `Kỹ năng/Hồi sức cấp cứu/KN_Kiemsoat_Duongtho.html` | Kiểm soát đường thở |
 | `Kỹ năng/Hồi sức cấp cứu/KN_Sieuam_Capcuu.html` | Siêu âm cấp cứu |
-| `Kỹ năng/Hồi sức cấp cứu/KN_Triage.html` | Phân loại bệnh nhân (Triage) |
+| `src/content/skills/resuscitation/kn-triage.html` | Đánh giá & Phân loại bệnh nhân (Triage chuẩn Bộ Y tế 4 màu, START Triage Calculator tương tác, ESI v4, ABCDE & kỹ thuật CRT) |
 | `Kỹ năng/Hồi sức cấp cứu/KN_Xutri_Ngodoc.html` | Xử trí ngộ độc |
 | `Kỹ năng/Quản lý điều trị/Clinical_Reasoning.html` | Clinical Reasoning Engine (Trình bệnh SBAR, SNAPPS, Semantic Qualifier Grid) |
 | `Kỹ năng/Quản lý điều trị/Luachon_Khangsinh.html` | Lựa chọn kháng sinh |
 | `Kỹ năng/Quản lý điều trị/Lyluan_DieutriNoikhoa.html` | Phương pháp lý luận điều trị và kê đơn thuốc nội khoa |
-| `Kỹ năng/Thủ thuật/Dat_NKQ.html` | Procedure Step-by-Step: Đặt Ống Nội Khí Quản |
+| `src/content/skills/treatment-management/ke-toa-tham-van-thuoc-tre-em.html` | Kê toa và tham vấn sử dụng thuốc ở trẻ em (Bộ Y tế & Nhi khoa YDS) |
+| `src/content/skills/procedures/dat-nkq.html` | Quy trình Đặt Ống Nội Khí Quản (7 bước trực quan, Tra cứu cỡ ống/lưỡi đèn YDS, Máy tính liều RSI, Quy trình rút ống an toàn) |
+| `src/content/skills/procedures/so-cuu-cam-mau-bang-bo.html` | Sơ cứu cầm máu & Kỹ thuật băng bó vết thương (7 kỹ thuật cầm máu, 5 kỹ thuật băng bó, xử trí vết thương đặc biệt, MCQ Quiz) |
 | `Kỹ năng/Thủ thuật/Choc_Dich_Mang_Phoi.html` | Procedure Step-by-Step: Chọc Dò Dịch Màng Phổi |
 | `Kỹ năng/Thủ thuật/Choc_Dich_Tuy_Song.html` | Procedure Step-by-Step: Chọc Dò Dịch Tủy Sống |
 | `Kỹ năng/Kynang_DataFormats_Demo.html` | Demo Arena: Khai thác các File Formats Phi HTML/CSS/JS (JSON, Markdown, Lab Datasets) |
@@ -501,9 +503,9 @@
 | `src/content/calculators/` | **[MỚI]** Phân hệ Công cụ Lâm sàng & Master Catalog `index.json` (43 items) |
 | `src/content/pharmacology/` | **[MỚI]** Phân hệ Dược lý học & Master Catalog `index.json` (18 items) |
 | `src/content/skills/` | **[MỚI]** Phân hệ Kỹ năng Lâm sàng & Master Catalog `index.json` (bao gồm `kn-kham-danh-gia-phat-trien-the-chat-tre-em.html` - Khám Đánh Giá Phát Triển Thể Chất ở Trẻ Em, `kn-kham-khop-o-tre-em.html` - Khám Cơ Xương Khớp Ở Trẻ Em) |
-| `src/content/pathophysiology/` | **[MỚI]** Phân hệ Sinh lý & Sinh lý bệnh & Master Catalog `index.json` (64 items, bao gồm `slb-ccbs-lao.html`, `slb-ccbs-sepsis.html`, `WORKFLOW_TAO_TRANG_SINH_LY_BENH.md`) |
+| `src/content/pathophysiology/` | **[MỚI]** Phân hệ Sinh lý & Sinh lý bệnh & Master Catalog `index.json` (67 items, bao gồm `slb-ccbs-hemophilia.html` - Bệnh Hemophilia ở trẻ em, `slb-ccbs-henpq.html` - Hen phế quản ở trẻ em, `slb-ccbs-vtpq.html` - Viêm tiểu phế quản cấp ở trẻ, `WORKFLOW_TAO_TRANG_SINH_LY_BENH.md`) |
 | `src/content/approaches/` | **[MỚI]** Phân hệ Tiếp cận Triệu chứng & Bệnh lý & Master Catalog `index.json` (58 items) |
-| `src/content/ebm/` | **[MỚI]** Phân hệ Y học Chứng cứ & Guidelines & Master Catalog `index.json` (bao gồm `guidelinesdata.js`, `kho-guidelines/ca-the-hoa-beta-lactam-2026.html` - Hướng dẫn đồng thuận cá thể hóa liều Beta-lactam ở bệnh nhân nặng 2026) |
+| `src/content/ebm/` | **[MỚI]** Phân hệ Y học Chứng cứ & Guidelines & Master Catalog `index.json` (bao gồm `guidelinesdata.js`, `kho-guidelines/ca-the-hoa-beta-lactam-2026.html` - Hướng dẫn đồng thuận cá thể hóa liều Beta-lactam ở bệnh nhân nặng 2026, `kho-guidelines/idsa-amr-2026.html` - Hướng dẫn IDSA 2026 điều trị nhiễm khuẩn Gram-âm kháng thuốc AMR) |
 | `src/content/tcm/` | **[MỚI]** Phân hệ Y học Cổ truyền & Master Catalog `index.json` (17 items) |
 | `src/components/article-reader.html` | **[MỚI]** Standalone Article Reader Component Engine |
 | `src/components/clinical-flow-studio.html` | **[MỚI]** Standalone Clinical Flow Studio Studio Component Engine |

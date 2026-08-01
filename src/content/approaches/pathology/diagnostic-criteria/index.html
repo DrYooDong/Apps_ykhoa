@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Ngân hàng Tiêu chuẩn Chẩn đoán – CliniPortal: Tra cứu nhanh và tương tác tính điểm các tiêu chuẩn chẩn đoán y khoa.">
-  <title>Ngân hàng Tiêu chuẩn Chẩn đoán – CliniPortal</title>
+  <meta name="description" content="Ngân hàng Tiêu chuẩn Chẩn đoán – CliniPortal: Tra cứu tương tác và tính điểm tức thì các tiêu chuẩn chẩn đoán bệnh lý, hội chứng và thang điểm lâm sàng.">
+  <title>Tiêu chuẩn Chẩn đoán – CliniPortal</title>
 
   <!-- Google Fonts & FontAwesome -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,17 +24,19 @@
 
 <body class="dc-workspace-body">
 
-  <!-- TOPBAR -->
+  <!-- ╔══════════════════════════════════════════════════╗ -->
+  <!-- ║  TOPBAR                                          ║ -->
+  <!-- ╚══════════════════════════════════════════════════╝ -->
   <header class="dc-topbar">
     <div class="dc-topbar-left">
-      <a href="../benh-ly.html" class="dc-back-btn" title="Trở về Pathology Matrix">
+      <a href="../benh-ly.html" class="dc-back-btn" id="dc-back-btn" title="Trở về Pathology Matrix">
         <i class="fa-solid fa-arrow-left"></i>
         <span>Bệnh lý</span>
       </a>
       <div class="dc-brand">
         <span class="dc-brand-icon">📋</span>
         <span class="dc-brand-name">Tiêu chuẩn Chẩn đoán</span>
-        <span class="dc-brand-badge">v2.0</span>
+        <span class="dc-brand-badge">v3.0</span>
       </div>
     </div>
 
@@ -42,59 +44,123 @@
       <div class="dc-search-wrap">
         <i class="fa-solid fa-magnifying-glass dc-search-icon"></i>
         <input type="text" id="criteria-search" class="dc-search-input"
-          placeholder="Tìm tiêu chuẩn, bệnh lý, mã ICD-10... (Gõ '/' để tìm)"
-          oninput="handleCriteriaSearch()">
+          placeholder="Tìm tiêu chuẩn, bệnh, mã ICD-10... (Gõ '/' để tìm nhanh)"
+          oninput="handleCriteriaSearch()" autocomplete="off">
         <span class="dc-search-count" id="criteria-display-count">0</span>
+        <button class="dc-search-clear" id="search-clear-btn" onclick="clearSearch()" title="Xóa tìm kiếm" style="display:none;">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
       </div>
     </div>
 
     <div class="dc-topbar-right">
-      <button class="pm-btn-icon" id="themeToggleBtn" onclick="toggleTheme()" title="Đổi chế độ Sáng / Tối" style="width:36px;height:36px;border-radius:9px;border:1px solid var(--color-border);background:var(--color-surface);color:var(--color-text);cursor:pointer;">
-        <i class="fa-solid fa-moon"></i>
+      <button class="dc-theme-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Đổi chế độ Sáng / Tối">
+        <i class="fa-solid fa-moon" id="theme-icon"></i>
       </button>
     </div>
   </header>
 
-  <!-- MAIN APP BODY -->
+  <!-- ╔══════════════════════════════════════════════════╗ -->
+  <!-- ║  HERO SECTION                                    ║ -->
+  <!-- ╚══════════════════════════════════════════════════╝ -->
+  <div class="dc-hero">
+    <div class="dc-hero-bg-orb dc-orb-1"></div>
+    <div class="dc-hero-bg-orb dc-orb-2"></div>
+    <div class="dc-hero-bg-orb dc-orb-3"></div>
+    <div class="dc-hero-content">
+      <div class="dc-hero-eyebrow">
+        <span class="dc-eyebrow-dot"></span>
+        Ngân hàng Tiêu chuẩn Chẩn đoán — CliniPortal
+      </div>
+      <h1 class="dc-hero-title">Tính điểm <span class="dc-hero-accent">tức thì</span></h1>
+      <p class="dc-hero-subtitle">Tra cứu & tương tác với các bộ tiêu chuẩn chẩn đoán bệnh lý, phân loại hội chứng và thang điểm lâm sàng cập nhật theo khuyến cáo quốc tế mới nhất.</p>
+
+      <!-- STATS ROW -->
+      <div class="dc-hero-stats">
+        <div class="dc-hero-stat">
+          <span class="dc-hero-stat-val" id="stat-total-count">0</span>
+          <span class="dc-hero-stat-lbl">Bộ tiêu chuẩn</span>
+        </div>
+        <div class="dc-hero-stat-sep"></div>
+        <div class="dc-hero-stat">
+          <span class="dc-hero-stat-val" id="stat-spec-count">0</span>
+          <span class="dc-hero-stat-lbl">Chuyên khoa</span>
+        </div>
+        <div class="dc-hero-stat-sep"></div>
+        <div class="dc-hero-stat">
+          <span class="dc-hero-stat-val" id="stat-type-count">0</span>
+          <span class="dc-hero-stat-lbl">Loại tiêu chuẩn</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ╔══════════════════════════════════════════════════╗ -->
+  <!-- ║  MAIN APP BODY                                   ║ -->
+  <!-- ╚══════════════════════════════════════════════════╝ -->
   <div class="dc-app-body">
     <div class="dc-container">
 
-      <!-- STATS HERO STRIP -->
-      <div class="dc-stats-strip">
-        <div class="dc-stat-item">
-          <div class="dc-stat-icon blue"><i class="fa-solid fa-clipboard-list"></i></div>
-          <div class="dc-stat-body">
-            <span class="dc-stat-value" id="stat-total-count">0</span>
-            <span class="dc-stat-label">Bộ tiêu chuẩn</span>
-          </div>
-        </div>
-        <div class="dc-stat-sep"></div>
-        <div class="dc-stat-item">
-          <div class="dc-stat-icon rose"><i class="fa-solid fa-heart-pulse"></i></div>
-          <div class="dc-stat-body">
-            <span class="dc-stat-value" id="stat-spec-count">0</span>
-            <span class="dc-stat-label">Chuyên khoa</span>
-          </div>
-        </div>
-        <div class="dc-stat-sep"></div>
-        <div class="dc-stat-item">
-          <div class="dc-stat-icon amber"><i class="fa-solid fa-bolt"></i></div>
-          <div class="dc-stat-body">
-            <span class="dc-stat-value">Tương tác</span>
-            <span class="dc-stat-label">Tính điểm tức thì</span>
-          </div>
+      <!-- CATEGORY TYPE TABS -->
+      <div class="dc-type-tabs-wrap">
+        <div class="dc-type-tabs" id="type-tabs-container" role="tablist">
+          <!-- Rendered by JS -->
         </div>
       </div>
 
       <!-- SPECIALTY FILTER PILLS -->
-      <div class="dc-filter-bar" id="criteria-filter-pills">
-        <!-- Rendered by JS -->
+      <div class="dc-filter-row">
+        <div class="dc-filter-pills" id="criteria-filter-pills" role="group" aria-label="Lọc theo chuyên khoa">
+          <!-- Rendered by JS -->
+        </div>
+        <div class="dc-filter-right">
+          <span class="dc-results-text"><span id="criteria-display-count-2">0</span> kết quả</span>
+        </div>
       </div>
 
-      <!-- CARDS GRID -->
-      <section class="dc-hub-grid" id="criteria-hub-container">
+      <!-- FEATURED SECTION (visible when no search/filter) -->
+      <div class="dc-featured-wrap" id="featured-section">
+        <div class="dc-section-header">
+          <div class="dc-section-icon-wrap featured">
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <div>
+            <h2 class="dc-section-title-h2">Thông dụng nhất</h2>
+            <p class="dc-section-subtitle">Các bộ tiêu chuẩn được sử dụng thường xuyên trên lâm sàng</p>
+          </div>
+        </div>
+        <div class="dc-featured-grid" id="featured-container">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- MAIN CARDS GRID -->
+      <div class="dc-section-header" id="all-criteria-header">
+        <div class="dc-section-icon-wrap all">
+          <i class="fa-solid fa-clipboard-list"></i>
+        </div>
+        <div>
+          <h2 class="dc-section-title-h2" id="grid-section-title">Tất cả tiêu chuẩn</h2>
+          <p class="dc-section-subtitle" id="grid-section-subtitle">Danh sách đầy đủ các bộ tiêu chuẩn chẩn đoán</p>
+        </div>
+      </div>
+
+      <section class="dc-hub-grid" id="criteria-hub-container" role="list">
         <!-- Rendered by JS -->
       </section>
+
+      <!-- RECENTLY VIEWED -->
+      <div class="dc-recent-wrap" id="recently-viewed-section" style="display:none;">
+        <div class="dc-section-header">
+          <div class="dc-section-icon-wrap recent">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+          </div>
+          <div>
+            <h2 class="dc-section-title-h2">Đã xem gần đây</h2>
+          </div>
+        </div>
+        <div class="dc-recent-grid" id="recently-viewed-container"></div>
+      </div>
 
     </div>
   </div>

@@ -5,13 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Hướng dẫn quy trình Đặt Ống Nội Khí Quản (Endotracheal Intubation) từng bước trực quan, chuẩn an toàn Hồi sức Cấp cứu - CliniPortal.">
-  <title>Đặt Ống Nội Khí Quản – CliniPortal</title>
+    content="Hướng dẫn Quy trình Đặt Ống Nội Khí Quản (Endotracheal Intubation), máy tính cỡ ống & lưỡi đèn, liều thuốc RSI và quy trình rút ống an toàn chuẩn Bộ môn Nội ĐHYD TP.HCM – CliniPortal.">
+  <title>Đặt Ống Nội Khí Quản Cấp Cứu – CliniPortal</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
     rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
@@ -21,18 +21,329 @@
   <link rel="stylesheet" href="../../../../css/components/sidebar.css">
   <link rel="stylesheet" href="../../../../css/components/footer.css">
   <link rel="stylesheet" href="../../../../css/components/procedure-animator.css">
+  <link rel="stylesheet" href="../../../../css/components/clinical-skill.css">
 
   <script src="../../../../js/main.js" defer></script>
   <script src="../../../../components/header.js" defer></script>
   <script src="../../../../components/footer.js" defer></script>
   <script src="../../../../js/procedure-animator.js" defer></script>
+
+  <style>
+    /* === DESIGN SYSTEM CUSTOM OVERRIDES === */
+    .hero-ett {
+      background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 45%, #1e3a5f 100%);
+      color: #ffffff;
+      padding: 2.25rem 2rem;
+      border-radius: var(--radius-lg);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-ett::after {
+      content: '🫁🩺';
+      position: absolute;
+      right: 1.5rem;
+      bottom: -0.5rem;
+      font-size: 5.5rem;
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+    .hero-ett h1 {
+      margin: 0 0 0.5rem;
+      font-size: var(--text-2xl, 1.75rem);
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-ett p {
+      margin: 0 0 1.25rem;
+      opacity: 0.92;
+      font-size: var(--text-sm);
+      max-width: 880px;
+      line-height: 1.6;
+    }
+
+    .hero-badge-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .hero-badge {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 0.45rem 0.85rem;
+      border-radius: var(--radius-md);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #ffffff;
+    }
+
+    /* Tab Navigation Sticky */
+    .tab-navigation {
+      position: sticky;
+      top: var(--header-height, 60px);
+      z-index: 100;
+      background: var(--color-surface);
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 2px solid var(--color-border);
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+      padding: 0.5rem 0.5rem 4px 0.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      border-radius: 0 0 var(--radius-md) var(--radius-md);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      padding: 0.75rem 1.25rem;
+      font-family: inherit;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+    }
+
+    .tab-btn:hover {
+      color: var(--color-primary);
+      background: rgba(2, 132, 199, 0.05);
+    }
+
+    .tab-btn.active {
+      color: var(--color-primary);
+      border-bottom-color: var(--color-primary);
+      background: rgba(2, 132, 199, 0.08);
+    }
+
+    .tab-pane {
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .tab-pane.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Section & Cards */
+    .section-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.05));
+    }
+
+    .section-card h2 {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--color-text);
+      margin: 0 0 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .section-card h2 i {
+      color: var(--color-primary);
+    }
+
+    /* Interactive Calculator Widgets */
+    .calc-box {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.06) 0%, rgba(2, 132, 199, 0.06) 100%);
+      border: 2px solid var(--color-primary);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .calc-input-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+
+    .calc-input-group label {
+      font-weight: 700;
+      font-size: var(--text-sm);
+      color: var(--color-text);
+    }
+
+    .calc-select, .calc-input {
+      padding: 0.6rem 1rem;
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-md);
+      font-family: inherit;
+      font-size: var(--text-sm);
+      background: var(--color-surface);
+      color: var(--color-text);
+      font-weight: 600;
+      outline: none;
+    }
+
+    .calc-select:focus, .calc-input:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+    }
+
+    .result-card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .result-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1.15rem;
+      border-top: 4px solid var(--color-primary);
+    }
+
+    .result-card h4 {
+      margin: 0 0 0.4rem;
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .result-card .val {
+      font-size: var(--text-xl, 1.4rem);
+      font-weight: 800;
+      color: var(--color-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .result-card .note {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      line-height: 1.4;
+    }
+
+    /* Tables */
+    .table-responsive {
+      overflow-x: auto;
+      margin-top: 1rem;
+    }
+
+    .custom-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-sm);
+      text-align: left;
+    }
+
+    .custom-table th {
+      background: rgba(2, 132, 199, 0.08);
+      color: var(--color-text);
+      font-weight: 700;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--color-border);
+    }
+
+    .custom-table td {
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--color-border);
+      color: var(--color-text);
+    }
+
+    .custom-table tr:nth-child(even) {
+      background: rgba(0, 0, 0, 0.02);
+    }
+
+    [data-theme="dark"] .custom-table tr:nth-child(even) {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* Step Timeline */
+    .ext-stepper {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .ext-step {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1.15rem;
+    }
+
+    .ext-step-num {
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 576px) {
+      .hero-ett {
+        padding: 1.5rem 1.15rem;
+      }
+      .hero-ett h1 {
+        font-size: 1.35rem;
+      }
+      .hero-ett::after {
+        display: none;
+      }
+      .section-card, .calc-box {
+        padding: 1.15rem;
+      }
+      .tab-btn {
+        padding: 0.65rem 0.85rem;
+        font-size: 0.82rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <!-- Header Placeholder -->
   <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
+  <!-- App Container -->
   <div class="app-container">
+
+    <!-- Sidebar Navigation -->
     <aside class="app-sidebar" id="appSidebar">
       <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
         <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
@@ -43,7 +354,7 @@
 
       <nav class="sidebar-nav" aria-label="Điều hướng chính">
         <ul class="nav-list" role="list">
-          <li><a href="../../ebm/guidelines/kho-guidelines/index.html" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+          <li><a href="../../../../index.html" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
           <li><a href="../ky-nang.html" class="nav-item active"><span class="nav-icon">🩺</span><span class="nav-text">Kỹ năng</span></a></li>
           <li><a href="../../approaches/tiep-can.html" class="nav-item"><span class="nav-icon">🤒</span><span class="nav-text">Tiếp cận</span></a></li>
           <li><a href="../../calculators/general/calculators-hub.html" class="nav-item"><span class="nav-icon">⚙️</span><span class="nav-text">Công cụ</span></a></li>
@@ -52,98 +363,482 @@
       </nav>
     </aside>
 
+    <!-- Main Content -->
     <main class="app-main">
-      <div class="procedure-container">
-        <!-- Header Card -->
-        <div class="procedure-header-card">
-          <div class="procedure-badge-bar">
-            <span class="procedure-badge badge-emergency"><i class="fa-solid fa-triangle-exclamation"></i> Cấp Cứu Nâng Cao</span>
-            <span class="procedure-badge badge-level"><i class="fa-solid fa-graduation-cap"></i> Trực Quan Step-by-Step</span>
-            <span class="procedure-badge badge-duration"><i class="fa-solid fa-clock"></i> 7 Bước Chuẩn AHA</span>
+
+      <!-- Breadcrumb -->
+      <clini-breadcrumb
+        items='[{"label": "🏠 Home", "url": "../../../../index.html"}, {"label": "Kỹ năng thủ thuật", "url": "../ky-nang.html"}, {"label": "Đặt Ống Nội Khí Quản"}]'></clini-breadcrumb>
+
+      <!-- HERO SECTION -->
+      <section class="hero-ett">
+        <h1>KỸ THUẬT ĐẶT NỘI KHÍ QUẢN CẤP CỨU (ENDOTRACHEAL INTUBATION)</h1>
+        <p>Quy trình kỹ thuật khai thông &amp; bảo vệ đường thở nâng cao, bảng tra cứu cỡ ống/lưỡi đèn theo lứa tuổi, máy tính liều thuốc RSI và hướng dẫn rút ống an toàn chuẩn Bộ môn Nội – Đại học Y Dược TP.HCM.</p>
+
+        <div class="hero-badge-strip">
+          <div class="hero-badge"><i class="fas fa-stethoscope"></i> Cụm Chuyên Chế: ThS.BS. Dương Minh Ngọc &amp; PGS.TS.BS. Trần Văn Ngọc</div>
+          <div class="hero-badge"><i class="fas fa-ruler-horizontal"></i> Độ sâu: Nam 23 cm | Nữ 21-22 cm</div>
+          <div class="hero-badge"><i class="fas fa-gauge"></i> Áp lực Cuff: 20 - 30 cmH2O</div>
+          <div class="hero-badge"><i class="fas fa-stopwatch"></i>CPR Pause: &le; 10 giây</div>
+        </div>
+      </section>
+
+      <!-- TAB NAVIGATION -->
+      <nav class="tab-navigation" aria-label="Các phần nội dung">
+        <button class="tab-btn active" data-tab="tab-viewer">
+          <i class="fas fa-play-circle"></i> 1. Quy Trình 7 Bước Trực Quan
+        </button>
+        <button class="tab-btn" data-tab="tab-size-calc">
+          <i class="fas fa-ruler"></i> 2. Máy Tính Cỡ Ống &amp; Lưỡi Đèn
+        </button>
+        <button class="tab-btn" data-tab="tab-rsi">
+          <i class="fas fa-pills"></i> 3. Dược Lý &amp; Liều Thuốc RSI
+        </button>
+        <button class="tab-btn" data-tab="tab-complications">
+          <i class="fas fa-triangle-exclamation"></i> 4. Biến Chứng &amp; Rút Ống NKQ
+        </button>
+      </nav>
+
+      <!-- ==================== TAB 1: quy trình 7 BƯỚC ==================== -->
+      <div class="tab-pane active" id="tab-viewer">
+
+        <!-- Indications Card -->
+        <div class="section-card">
+          <h2><i class="fas fa-clipboard-check"></i> Chỉ Định Đặt Nội Khí Quản Cấp Cứu</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+            <div style="background: var(--color-bg); padding: 1rem; border-radius: var(--radius-md); border-left: 4px solid var(--color-danger, #ef4444);">
+              <h4 style="margin: 0 0 0.5rem; color: var(--color-text); font-size: var(--text-sm); font-weight: 700;">🚨 Chỉ Định Cấp Cứu Tuyệt Đối:</h4>
+              <ul style="margin: 0; padding-left: 1.2rem; font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.6;">
+                <li>Tắc nghẽn đường thở cấp tính (chấn thương, dị vật, bỏng đường hô hấp trên, phù nề/co thắt thanh quản).</li>
+                <li>Mất phản xạ bảo vệ đường thở (GCS &le; 8 do chấn thương đầu, ngộ độc thuốc, stroke, nhiễm trùng TKTW).</li>
+                <li>Suy hô hấp nặng giảm O2 máu hoặc tăng CO2 máu không đáp ứng thở không xâm lấn.</li>
+                <li><strong>Ngừng hô hấp tuần hoàn (CPR)</strong>.</li>
+              </ul>
+            </div>
+
+            <div style="background: var(--color-bg); padding: 1rem; border-radius: var(--radius-md); border-left: 4px solid var(--color-warning, #f59e0b);">
+              <h4 style="margin: 0 0 0.5rem; color: var(--color-text); font-size: var(--text-sm); font-weight: 700;">⚠️ Tiêu Chuẩn Trong Chấn Thương Đầu &amp; Di Chuyển:</h4>
+              <ul style="margin: 0; padding-left: 1.2rem; font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.6;">
+                <li>Chấn thương đầu có: <code>GCS &le; 8</code>, mất phản xạ bảo vệ, suy hô hấp, tăng thông khí tự phát hoặc loạn nhịp thở/ngưng thở.</li>
+                <li>Trước khi di chuyển bệnh nhân: Suy giảm ý thức đáng kể, gãy xương hàm cả 2 bên, chảy máu nhiều vào khoang miệng/họng, co giật cơn lớn.</li>
+              </ul>
+            </div>
           </div>
-          <h1 class="procedure-title">Quy Trình Đặt Ống Nội Khí Quản (Endotracheal Intubation)</h1>
-          <p class="procedure-subtitle">
-            Kỹ thuật khai thông và bảo vệ đường thở nâng cao trong suy hô hấp cấp, ngừng tuần hoàn hô hấp, hoặc hôn mê sâu (GCS ≤ 8).
-          </p>
         </div>
 
-        <!-- Stepper Bar -->
-        <div class="stepper-bar" id="stepperBar"></div>
+        <!-- Interactive Procedure Animator Component -->
+        <div class="procedure-container">
+          <div class="stepper-bar" id="stepperBar"></div>
 
-        <!-- Viewer Split Grid -->
-        <div class="procedure-viewer-grid">
-          <!-- Visual SVG Display -->
-          <div class="procedure-visual-card">
-            <div id="svgContainer" style="width: 100%; display: flex; justify-content: center; align-items: center;"></div>
-          </div>
+          <div class="procedure-viewer-grid">
+            <!-- SVG Card -->
+            <div class="procedure-visual-card">
+              <div id="svgContainer" style="width: 100%; display: flex; justify-content: center; align-items: center;"></div>
+            </div>
 
-          <!-- Step Description & Info -->
-          <div class="procedure-info-card">
-            <div>
-              <div class="step-header">
-                <h2 class="step-title-text" id="stepTitle">Đang tải...</h2>
-                <span class="step-counter" id="stepCounter">Bước 1 / 7</span>
+            <!-- Info & Controls -->
+            <div class="procedure-info-card">
+              <div>
+                <div class="step-header">
+                  <h2 class="step-title-text" id="stepTitle">Đang tải...</h2>
+                  <span class="step-counter" id="stepCounter">Bước 1 / 7</span>
+                </div>
+                <div class="step-body-content" id="stepBody"></div>
+                <div id="safetyAlert" class="safety-alert-box"></div>
               </div>
-              <div class="step-body-content" id="stepBody"></div>
-              <div id="safetyAlert" class="safety-alert-box"></div>
-            </div>
 
-            <!-- Controls -->
-            <div class="procedure-controls">
-              <button class="btn-proc btn-proc-outline" id="btnPrevStep"><i class="fa-solid fa-arrow-left"></i> Bước trước</button>
-              <button class="btn-proc btn-proc-primary" id="btnNextStep">Bước tiếp <i class="fa-solid fa-arrow-right"></i></button>
+              <div class="procedure-controls">
+                <button class="btn-proc btn-proc-outline" id="btnPrevStep"><i class="fa-solid fa-arrow-left"></i> Bước trước</button>
+                <button class="btn-proc btn-proc-primary" id="btnNextStep">Bước tiếp <i class="fa-solid fa-arrow-right"></i></button>
+              </div>
             </div>
           </div>
         </div>
+
       </div>
+
+      <!-- ==================== TAB 2: MÁY TÍNH CỠ ỐNG & LƯỠI ĐÈN ==================== -->
+      <div class="tab-pane" id="tab-size-calc">
+
+        <div class="calc-box">
+          <h2 style="margin: 0 0 1rem; color: var(--color-primary); font-size: var(--text-md); font-weight: 700;">
+            <i class="fas fa-calculator"></i> Công Cụ Tra Cứu Kích Thước Ống NKQ &amp; Lưỡi Đèn Soi Thanh Quản
+          </h2>
+          <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: 1.25rem;">
+            Chọn nhóm tuổi/giới tính của bệnh nhân để xác định cỡ ống NKQ (ID mm) và lưỡi đèn McIntosh/Miller tương ứng (Trích Bảng 1 YDS):
+          </p>
+
+          <div class="calc-input-group">
+            <label for="ageSelector"><i class="fas fa-user"></i> Đối tượng Bệnh nhân:</label>
+            <select id="ageSelector" class="calc-select">
+              <option value="preterm">Trẻ sinh non</option>
+              <option value="neonatal">Trẻ sơ sinh</option>
+              <option value="6m">Trẻ 6 tháng tuổi</option>
+              <option value="1-2y">Trẻ 1 - 2 tuổi</option>
+              <option value="4-6y">Trẻ 4 - 6 tuổi</option>
+              <option value="8-12y">Trẻ 8 - 12 tuổi</option>
+              <option value="adult-female">Người lớn - Nữ</option>
+              <option value="adult-male" selected>Người lớn - Nam</option>
+            </select>
+          </div>
+
+          <div class="result-card-grid" id="sizeCalcResult">
+            <div class="result-card">
+              <h4>Cỡ Ống Nội Khí Quản (ID)</h4>
+              <div class="val" id="resTubeSize">7.5 - 8.0 mm</div>
+              <div class="note">Đường kính trong (Internal Diameter). Chuẩn người lớn nam.</div>
+            </div>
+
+            <div class="result-card">
+              <h4>Cỡ Lưỡi Đèn Soi (Blade Size)</h4>
+              <div class="val" id="resBladeSize">Cỡ 4 - 5</div>
+              <div class="note">Lưỡi cong (Macintosh) hoặc thẳng (Miller).</div>
+            </div>
+
+            <div class="result-card">
+              <h4>Độ Sâu Cắm Ống Chuẩn</h4>
+              <div class="val" id="resDepth">23 cm</div>
+              <div class="note">Tính từ vạch cắm ở khóe miệng/cung răng. X-quang: 4-7 cm trên Carina.</div>
+            </div>
+
+            <div class="result-card">
+              <h4>Áp Lực Bóng Chèn (Cuff)</h4>
+              <div class="val" id="resCuffPress">20 - 30 cmH2O</div>
+              <div class="note">Bơm 5-10 mL không khí. Kiểm tra 2 lần/ngày.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full Table 1 -->
+        <div class="section-card">
+          <h2><i class="fas fa-table"></i> Bảng Tổng Hợp Kích Cỡ Ống NKQ &amp; Lưỡi Đèn (Bảng 1 - YDS)</h2>
+          <div class="table-responsive">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>Độ tuổi</th>
+                  <th>Sinh non</th>
+                  <th>Sơ sinh</th>
+                  <th>6 tháng</th>
+                  <th>1 - 2 tuổi</th>
+                  <th>4 - 6 tuổi</th>
+                  <th>8 - 12 tuổi</th>
+                  <th>Người lớn (Nữ)</th>
+                  <th>Người lớn (Nam)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Cỡ ống NKQ (mm ID)</strong></td>
+                  <td>2.5</td>
+                  <td>3.0 - 3.5</td>
+                  <td>3.5 - 4.0</td>
+                  <td>4.0 - 5.0</td>
+                  <td>5.0 - 5.5</td>
+                  <td>6.0 - 7.0</td>
+                  <td><strong>7.0 (7.0 - 7.5)</strong></td>
+                  <td><strong>8.0 (7.5 - 8.0)</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>Cỡ lưỡi đèn</strong></td>
+                  <td>0</td>
+                  <td>0 - 1</td>
+                  <td>1</td>
+                  <td>1 - 2</td>
+                  <td>2</td>
+                  <td>2 - 3</td>
+                  <td>4 - 5</td>
+                  <td>4 - 5</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ==================== TAB 3: DƯỢC LÝ & THUỐC RSI ==================== -->
+      <div class="tab-pane" id="tab-rsi">
+
+        <!-- Calculator RSI Dosing -->
+        <div class="calc-box">
+          <h2 style="margin: 0 0 1rem; color: var(--color-primary); font-size: var(--text-md); font-weight: 700;">
+            <i class="fas fa-calculator"></i> Máy Tính Liều Thuốc Khởi Mê Đặt Nội Khí Quản (RSI Dosing Calculator)
+          </h2>
+          <div class="calc-input-group">
+            <label for="weightInput"><i class="fas fa-weight-scale"></i> Cân nặng Bệnh nhân (kg):</label>
+            <input type="number" id="weightInput" class="calc-input" value="60" min="1" max="200" style="width: 110px;">
+            <span style="font-size: var(--text-xs); color: var(--color-text-muted);">(Nhập cân nặng để tự động tính liều chuẩn cho người lớn)</span>
+          </div>
+
+          <div class="table-responsive">
+            <table class="custom-table" id="rsiTable">
+              <thead>
+                <tr>
+                  <th>Tên Thuốc</th>
+                  <th>Liều Người Đã Khai Báo</th>
+                  <th>Liều Chuẩn / kg</th>
+                  <th>Khởi Phát</th>
+                  <th>Kéo Dài</th>
+                  <th>Ưu Điểm Clinical</th>
+                  <th>Thận Trọng / Chống Chỉ Định</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Atropine</strong></td>
+                  <td><span class="rsi-calc-val" id="valAtropine">0.6 mg</span></td>
+                  <td>0.01 mg/kg IV</td>
+                  <td>2 phút</td>
+                  <td>5 phút</td>
+                  <td>Ngăn ngừa nhịp chậm mạch do phản xạ phó giao cảm.</td>
+                  <td>Thận trọng khi nhịp nhanh.</td>
+                </tr>
+                <tr>
+                  <td><strong>Etomidate</strong></td>
+                  <td><span class="rsi-calc-val" id="valEtomidate">18.0 mg</span></td>
+                  <td>0.3 mg/kg IV bolus</td>
+                  <td>0.5 - 1 phút</td>
+                  <td>3 - 5 phút</td>
+                  <td>Không thay đổi huyết áp &amp; áp lực nội sọ; không ngưng thở; lý tưởng cho đa chấn thương / tụt HA.</td>
+                  <td>Rối loạn chức năng vỏ thượng thận thoáng qua, co giật cơ, buồn nôn.</td>
+                </tr>
+                <tr>
+                  <td><strong>Fentanyl</strong></td>
+                  <td><span class="rsi-calc-val" id="valFentanyl">60 - 120 mcg</span></td>
+                  <td>1 - 2 mcg/kg IV</td>
+                  <td>1 phút</td>
+                  <td>30 phút</td>
+                  <td>Giảm đáp ứng tăng áp lực nội sọ (ICP) khi đặt NKQ.</td>
+                  <td>Tụt huyết áp, nhịp chậm.</td>
+                </tr>
+                <tr>
+                  <td><strong>Lidocain</strong></td>
+                  <td><span class="rsi-calc-val" id="valLidocain">90 - 120 mg</span></td>
+                  <td>1.5 - 2.0 mg/kg IV bolus (dùng trước 2 phút)</td>
+                  <td>1 - 2 phút</td>
+                  <td>10 - 20 phút</td>
+                  <td>Rất tốt cho bệnh nhân Hen / COPD để giảm co thắt phế quản &amp; giảm tăng áp lực nội sọ/HATT.</td>
+                  <td>Tụt huyết áp nhẹ.</td>
+                </tr>
+                <tr>
+                  <td><strong>Morphine</strong></td>
+                  <td><span class="rsi-calc-val" id="valMorphine">3.0 mg</span> (Max 15mg)</td>
+                  <td>0.05 mg/kg IV (tiêm trong 2 phút)</td>
+                  <td>3 - 5 phút</td>
+                  <td>3 - 5 giờ</td>
+                  <td>Thời gian giảm đau tác dụng kéo dài.</td>
+                  <td>Tụt HA (HATT 70-90 mmHg). Cần bù dịch trước khi dùng.</td>
+                </tr>
+                <tr>
+                  <td><strong>Midazolam</strong></td>
+                  <td><span class="rsi-calc-val" id="valMidazolam">0.6 mg</span></td>
+                  <td>0.01 mg/kg IV (Max 0.1 mg/kg)</td>
+                  <td>1 - 5 phút</td>
+                  <td>2 - 5 phút</td>
+                  <td>Tác dụng nhanh, an thần quên tốt.</td>
+                  <td>Giảm liều nếu HATT &lt; 100 mmHg hoặc tuổi &gt; 60. Giảm co bóp cơ tim.</td>
+                </tr>
+                <tr>
+                  <td><strong>Propofol</strong></td>
+                  <td><span class="rsi-calc-val" id="valPropofol">120 - 180 mg</span></td>
+                  <td>2 - 3 mg/kg IV bolus</td>
+                  <td>&lt; 1 phút</td>
+                  <td>3 - 10 phút</td>
+                  <td>Bảo vệ não: giảm áp lực nội sọ (ICP), an thần quên mạnh.</td>
+                  <td>Gây tụt huyết áp mạnh &amp; ức chế hô hấp phụ thuộc liều.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="skill-note note-warning">
+          <i class="fas fa-exclamation-triangle"></i>
+          <strong>LƯU Ý VỀ THUỐC GIÃN CƠ (NEUROMUSCULAR BLOCKERS):</strong> Các thuốc giãn cơ như <em>Suxamethonium (Succinylcholine), Rocuronium, Vecuronium, Atracurium</em> BẮT BUỘC chỉ được sử dụng bởi Bác sĩ có nhiều kinh nghiệm về đặt nội khí quản và có sẵn phương án thông khí dự phòng.
+        </div>
+
+      </div>
+
+      <!-- ==================== TAB 4: BIẾN CHỨNG & RÚT ỐNG NKQ ==================== -->
+      <div class="tab-pane" id="tab-complications">
+
+        <div class="section-card">
+          <h2><i class="fas fa-triangle-exclamation"></i> Các Biến Chứng Liên Quan Đặt Nội Khí Quản</h2>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+            <div style="background: var(--color-bg); border: 1px solid var(--color-border); border-top: 4px solid var(--color-danger, #ef4444); border-radius: var(--radius-md); padding: 1.15rem;">
+              <h3 style="font-size: var(--text-sm); font-weight: 700; color: var(--color-text); margin: 0 0 0.6rem;">(a) Trong khi đặt NKQ:</h3>
+              <ul style="margin: 0; padding-left: 1.2rem; font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.6;">
+                <li><strong>Đặt nhầm vào thực quản:</strong> Không được thông khí/oxy hóa. Nguy cơ tổn thương não vĩnh viễn / tử vong nếu không phát hiện kịp.</li>
+                <li><strong>Chấn thương cơ học:</strong> Rách môi/lưỡi/họng, gãy răng, di lệch sụn phễu, rách khí quản, thủng thực quản.</li>
+                <li>Tràn khí màng phổi, tổn thương 2 dây thanh.</li>
+                <li>Ói và hít sặc dịch dạ dày vào phổi.</li>
+                <li>Tăng HĐTN (tăng HA &gt; 35 mmHg, nhịp nhanh &gt; 30 bpm). Tụt HA &amp; nhịp chậm do kích thích phó giao cảm. Tăng áp lực nội sọ.</li>
+                <li><strong>Đặt quá sâu:</strong> Đút nhầm vào phế quản gốc bên phải.</li>
+              </ul>
+            </div>
+
+            <div style="background: var(--color-bg); border: 1px solid var(--color-border); border-top: 4px solid var(--color-warning, #f59e0b); border-radius: var(--radius-md); padding: 1.15rem;">
+              <h3 style="font-size: var(--text-sm); font-weight: 700; color: var(--color-text); margin: 0 0 0.6rem;">(b) Tại chỗ / Lưu ống NKQ:</h3>
+              <ul style="margin: 0; padding-left: 1.2rem; font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.6;">
+                <li>Hít sặc dịch hầu họng.</li>
+                <li>Liệt dây thanh hoặc liệt thần kinh thoáng qua.</li>
+                <li>Loét và tạo u hạt trong khí quản / dây thanh.</li>
+                <li>Dính khí quản (tracheal synechiae), hẹp hạ thanh môn, màng thanh quản.</li>
+                <li>Nhuyễn khí quản (tracheomalacia).</li>
+                <li><strong>Rò nguy hiểm:</strong> Rò khí quản-thực quản, rò khí quản-động mạch vô danh / động mạch cảnh.</li>
+              </ul>
+            </div>
+
+            <div style="background: var(--color-bg); border: 1px solid var(--color-border); border-top: 4px solid var(--color-primary); border-radius: var(--radius-md); padding: 1.15rem;">
+              <h3 style="font-size: var(--text-sm); font-weight: 700; color: var(--color-text); margin: 0 0 0.6rem;">(c) Sau khi rút ống NKQ:</h3>
+              <ul style="margin: 0; padding-left: 1.2rem; font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.6;">
+                <li>Hẹp hạ thanh môn.</li>
+                <li>Tổn thương dây thanh âm.</li>
+                <li>Khàn tiếng, khò khè, thở rít sau rút.</li>
+                <li>Co thắt thanh quàn cấp gây suy hô hấp lại.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Extubation Protocol -->
+        <div class="section-card">
+          <h2><i class="fas fa-door-open"></i> Quy Trình Rút Ống Nội Khí Quản An Toàn (Extubation Protocol)</h2>
+
+          <div class="ext-stepper">
+            <div class="ext-step">
+              <div class="ext-step-num">1</div>
+              <div>
+                <h4 style="margin: 0 0 0.3rem; font-size: var(--text-sm); font-weight: 700; color: var(--color-text);">Thời điểm &amp; Đánh giá sinh hiệu</h4>
+                <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Thường rút vào buổi sáng. Kiểm tra đầy đủ dấu hiệu sinh tồn, SpO2, ý thức và sức cơ hô hấp bệnh nhân.</p>
+              </div>
+            </div>
+
+            <div class="ext-step">
+              <div class="ext-step-num">2</div>
+              <div>
+                <h4 style="margin: 0 0 0.3rem; font-size: var(--text-sm); font-weight: 700; color: var(--color-text);">Chuẩn bị bộ dụng cụ đặt lại NKQ dự phòng</h4>
+                <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Luôn có sẵn bộ đèn soi thanh quản, ống NKQ mới, bóng Ambu và máy hút sẵn sàng phòng trường hợp suy hô hấp cấp tái phát sau rút.</p>
+              </div>
+            </div>
+
+            <div class="ext-step">
+              <div class="ext-step-num">3</div>
+              <div>
+                <h4 style="margin: 0 0 0.3rem; font-size: var(--text-sm); font-weight: 700; color: var(--color-text);">Tăng Oxy 100% &amp; Hút đờm sạch</h4>
+                <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Tăng thở O2 100% trước 2 - 3 phút. Hút sạch đờm nhớt đọng ở khoang miệng, hầu họng và bên trong ống NKQ.</p>
+              </div>
+            </div>
+
+            <div class="ext-step">
+              <div class="ext-step-num">4</div>
+              <div>
+                <h4 style="margin: 0 0 0.3rem; font-size: var(--text-sm); font-weight: 700; color: var(--color-text);">XẢ XẸP HOÀN TOÀN BÓNG CHÈN (CUFF)</h4>
+                <p style="margin: 0; font-size: var(--text-xs); color: #ef4444; font-weight: bold;">TUYỆT ĐỐI BẮT BUỘC: Dùng bơm tiêm rút hết khí làm xẹp hoàn toàn bóng chèn rồi mới tiến hành rút ống ra ngoài (tránh rách dây thanh).</p>
+              </div>
+            </div>
+
+            <div class="ext-step">
+              <div class="ext-step-num">5</div>
+              <div>
+                <h4 style="margin: 0 0 0.3rem; font-size: var(--text-sm); font-weight: 700; color: var(--color-text);">Rút ống &amp; Cho thở Oxy ngay</h4>
+                <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Rút ống nhẹ nhàng dứt khoát vào thì hít vào. Cho bệnh nhân thở Oxy ngay qua canula hoặc mặt nạ.</p>
+              </div>
+            </div>
+
+            <div class="ext-step">
+              <div class="ext-step-num">6</div>
+              <div>
+                <h4 style="margin: 0 0 0.3rem; font-size: var(--text-sm); font-weight: 700; color: var(--color-text);">Theo dõi sát sau rút</h4>
+                <p style="margin: 0; font-size: var(--text-xs); color: var(--color-text-muted);">Đo lại dấu hiệu sinh tồn. Theo dõi sát phát hiện dấu hiệu co thắt thanh quản (thở rít ho stridor), khàn tiếng hoặc suy hô hấp tái phát.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- REFERENCES FOOTER -->
+      <section class="section-card" style="margin-top: 2rem;">
+        <h2><i class="fas fa-book-bookmark"></i> Tài Liệu Tham Khảo Chuẩn AMA</h2>
+        <ol style="margin: 0; padding-left: 1.2rem; font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.7;">
+          <li>Dương Minh Ngọc, Trần Văn Ngọc. Kỹ thuật đặt nội khí quản cấp cứu. <em>Thời sự Y học</em>. 10/2017;Chuyên đề Hô hấp thực hành:53-58.</li>
+          <li>American Heart Association. <em>ACLS Provider Manual Supplementary Material</em>. AHA; 2011.</li>
+          <li>Christian S, Manji M. Indications for endotracheal intubation and ventilation. <em>Trauma</em>. 2004;6:249-254.</li>
+          <li>Carin AH. Endotracheal Tube and Respiratory Care. In: Hagberg CA, ed. <em>Benumof and Hagberg’s Airway Management</em>. 2nd ed. Elsevier Saunders; 2013:957-980.</li>
+        </ol>
+      </section>
+
     </main>
   </div>
 
+  <!-- Footer Placeholder -->
   <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
 
+  <!-- SCRIPT LOGIC -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
+      // 1. Tab Switching
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabPanes = document.querySelectorAll('.tab-pane');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+          const target = this.getAttribute('data-tab');
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabPanes.forEach(p => p.classList.remove('active'));
+
+          this.classList.add('active');
+          const targetPane = document.getElementById(target);
+          if (targetPane) targetPane.classList.add('active');
+        });
+      });
+
+      // 2. Step-by-Step Procedure Animator Data
       const steps = [
         {
           shortTitle: "1. Đánh giá & Dụng cụ",
           title: "Bước 1: Đánh giá đường thở & Chuẩn bị dụng cụ (SOAP-ME)",
-          description: "Đánh giá tiên lượng đường thở khó (LEMON score). Chuẩn bị đầy đủ trang thiết bị cấp cứu đường thở trước khi bắt đầu.",
+          description: "Đánh giá tiên lượng đường thở khó (LEMON score & giải phẫu). Chuẩn bị đầy đủ thiết bị cấp cứu đường thở trước khi bắt đầu.",
           bullets: [
-            "Kiểm tra ống NKQ (cỡ 7.0 - 7.5 cho nữ, 7.5 - 8.0 cho nam), thử bóng cuff xem có xì không.",
-            "Lắp lưỡi đèn soi thanh quản (Laryngoscope), kiểm tra ánh sáng đèn (sáng trắng, cố định).",
-            "Máy hút đờm nhớt hoạt động tốt, sonde hút rigit (Yankauer).",
-            "Bóng Ambu nối nguồn Oxygen 100% (15L/phút)."
+            "Kiểm tra cỡ ống NKQ: Nam chọn cỡ 7.5 - 8.0 mm, Nữ chọn 7.0 - 7.5 mm. Thử bơm bóng cuff xem có xì không.",
+            "Lắp lưỡi đèn Laryngoscope (Macintosh cong hoặc Miller thẳng), kiểm tra ánh sáng đèn (sáng trắng, cố định). Cỡ lưỡi 4-5 cho người lớn.",
+            "Máy hút đờm hoạt động tốt, sonde hút rigid (Yankauer).",
+            "Bóng Ambu nối nguồn Oxygen 100% (15 L/phút)."
           ],
-          safety: "Luôn có sẵn phương án dự phòng đường thở khó (Canul Guedel, Mặt nạ thanh quản LMA, Boogies hoặc bộ mở khí quản cấp cứu).",
+          safety: "Luôn có sẵn phương án dự phòng đường thở khó (Canul Guedel, LMA, Boogies hoặc bộ mở khí quản cấp cứu).",
           safetyType: "danger",
           svgContent: `
             <svg viewBox="0 0 300 200" width="280" height="180">
               <rect x="20" y="20" width="260" height="160" rx="12" fill="var(--color-surface)" stroke="var(--color-primary)" stroke-width="2" stroke-dasharray="4"/>
-              <text x="150" y="60" text-anchor="middle" fill="var(--color-primary)" font-weight="bold" font-size="16">BỘ DỤNG CỤ SOAP-ME</text>
+              <text x="150" y="55" text-anchor="middle" fill="var(--color-primary)" font-weight="bold" font-size="15">BỘ DỤNG CỤ SOAP-ME</text>
               <path d="M50 110 L110 110 L130 140" stroke="var(--color-primary)" stroke-width="6" fill="none" stroke-linecap="round"/>
               <circle cx="130" cy="140" r="8" fill="#e11d48"/>
-              <rect x="170" y="90" width="80" height="20" rx="10" fill="#0ea5e9"/>
-              <text x="210" y="105" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="bold">Ống NKQ Cỡ 7.5</text>
-              <text x="150" y="170" text-anchor="middle" fill="var(--color-text-muted)" font-size="12">Đèn soi thanh quản & Ống NKQ sẵn sàng</text>
+              <rect x="160" y="90" width="95" height="24" rx="6" fill="#0ea5e9"/>
+              <text x="207" y="106" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="bold">Ống NKQ Cỡ 7.5 - 8.0</text>
+              <text x="150" y="165" text-anchor="middle" fill="var(--color-text-muted)" font-size="12">Đèn soi & Ống NKQ sẵn sàng</text>
             </svg>
           `
         },
         {
           shortTitle: "2. Cho oxy tiền mê",
-          title: "Bước 2: Cho Oxy tiền mê (Pre-oxygenation)",
-          description: "Cung cấp Oxy 100% qua mặt nạ trong 3 - 5 phút để dự trữ oxy trong phổi (FRC), kéo dài thời gian an toàn không thở lại (apnea time).",
+          title: "Bước 2: Cung cấp Oxy tiền mê (Pre-oxygenation)",
+          description: "Cung cấp Oxy nồng độ cao (FiO2 gần 1.0) trước khi đặt để dự trữ oxy trong phổi (FRC), kéo dài thời gian an toàn không thở lại.",
           bullets: [
-            "Giữ mặt nạ kín bằng kỹ thuật E-C clamp (ngón 1-2 tạo chữ C giữ mask, ngón 3-4-5 tạo chữ E nâng hàm).",
-            "Cho bệnh nhân hít thở oxy dòng cao (15 L/phút).",
-            "Mục tiêu SpO2 đạt 100% trước khi tiêm thuốc khởi mê."
+            "Cho thở oxy dòng cao (15 L/phút) với <strong>thể tích lưu thông bình thường trong 3 phút</strong>.",
+            "HOẶC cho thực hiện <strong>8 nhịp thở sâu (dung tích sống) trong 1.5 phút</strong>.",
+            "Giữ mặt nạ kín bằng kỹ thuật E-C clamp (ngón 1-2 tạo chữ C giữ mask, ngón 3-4-5 tạo chữ E nâng góc hàm).",
+            "Mục tiêu SpO2 đạt > 95% (tối ưu 100%) trước khi tiêm thuốc khởi mê."
           ],
-          safety: "Tránh bóp bóng tăng áp lực quá mạnh gây căng dạ dày và tăng nguy cơ trào ngược dịch vị vào phổi.",
+          safety: "Tránh bóp bóng quá mạnh gây bơm khí vào dạ dày làm tăng nguy cơ trào ngược dịch vị vào phổi.",
           safetyType: "warning",
           svgContent: `
             <svg viewBox="0 0 300 200" width="280" height="180">
               <circle cx="150" cy="90" r="50" fill="none" stroke="var(--color-border)" stroke-width="4"/>
               <path d="M120 80 Q150 40 180 80 Q150 120 120 80" fill="rgba(14, 165, 233, 0.3)" stroke="#0ea5e9" stroke-width="3"/>
-              <text x="150" y="160" text-anchor="middle" fill="var(--color-primary)" font-weight="bold" font-size="14">Oxy 100% Qua Mặt Nạ (Kỹ thuật E-C)</text>
+              <text x="150" y="160" text-anchor="middle" fill="var(--color-primary)" font-weight="bold" font-size="13">O2 100%: 3 min (thường) / 1.5 min (8 nhịp sâu)</text>
             </svg>
           `
         },
@@ -154,7 +849,7 @@
           bullets: [
             "Đưa lỗ tai ngoài ngang mức hõm ức (Ear-to-Sternal Notch alignment).",
             "Ở bệnh nhân béo phì: Cần kê chêm nhiều gối dạng bậc thang (Ramped position).",
-            "Nếu nghi ngờ chấn thương cột sống cổ: KHÔNG ngửa đầu, chỉ thực hiện ấn góc hàm (Jaw thrust)."
+            "Nếu nghi ngờ chấn thương cột sống cổ C1-C2: KHÔNG ngửa đầu, chỉ thực hiện ấn góc hàm (Jaw thrust)."
           ],
           safety: "Chống chỉ định ngửa đầu xoay cổ ở bệnh nhân chấn thương nghi nứt/trượt đốt sống cổ C1-C2.",
           safetyType: "danger",
@@ -172,11 +867,11 @@
           title: "Bước 4: Đưa đèn soi thanh quản & Bộc lộ nắp thanh môn",
           description: "Cầm tay cầm Laryngoscope bằng TAY TRÁI. Đưa lưỡi đèn vào bên phải miệng, gạt lưỡi bệnh nhân sang bên trái.",
           bullets: [
-            "Trượt lưỡi đèn MacIntosh vào rãnh lưỡi - nắp thanh môn (Vallecula).",
+            "Trượt đầu lưỡi đèn MacIntosh vào rãnh lưỡi - nắp thanh môn (Vallecula). Nâng nắp thanh môn lên.",
             "Nâng đèn theo hướng 45 độ lên phía trước và hướng về phía chân bệnh nhân.",
-            "Quan sát rõ dây thanh âm mở hình chữ V màu trắng."
+            "Quan sát rõ 2 dây thanh âm mở hình chữ V màu trắng."
           ],
-          safety: "TUYỆT ĐỐI KHÔNG dùng răng cửa trên làm điểm đòn bẩy nâng đèn (tránh gãy răng bẹ/chấn thương hàm).",
+          safety: "TUYỆT ĐỐI KHÔNG dùng răng cửa trên làm điểm đòn bẩy nâng đèn (tránh gãy/mẻ răng bệnh nhân).",
           safetyType: "danger",
           svgContent: `
             <svg viewBox="0 0 300 200" width="280" height="180">
@@ -188,34 +883,37 @@
           `
         },
         {
-          shortTitle: "5. Đưa ống NKQ",
-          title: "Bước 5: Đưa ống NKQ qua khe thanh môn",
-          description: "Tay phải cầm ống NKQ nhẹ nhàng đưa từ mép phải miệng vào khe thanh môn dưới sự quan sát trực tiếp của mắt.",
+          shortTitle: "5. Luồn ống NKQ",
+          title: "Bước 5: Luồn ống NKQ qua dây thanh & Bơm bóng chèn",
+          description: "Tay phải cầm ống NKQ nhẹ nhàng đưa từ mép phải miệng vào khe thanh môn dưới quan sát trực tiếp.",
           bullets: [
-            "Đưa đầu ống vượt qua dây thanh âm khoảng 2 - 3 cm (vạch 21-23 cm ở khóe miệng).",
-            "Rút nòng kim guidon (nếu có) ra ngoài.",
-            "Bơm bóng cuff bằng bơm tiêm 10ml với thể tích 5-8 ml khí (áp lực cuff 20 - 30 cmH2O)."
+            "Đưa đầu ống qua 2 dây thanh. Độ sâu cắm ống tại khóe miệng: <strong>Nam 23 cm</strong>, <strong>Nữ 21 - 22 cm</strong>.",
+            "Rút que dẫn đường (Stylet/Guidon) bằng tay kia.",
+            "Bơm bóng chèn (Cuff) 5 - 10 mL khí. Áp lực bóng chèn tối ưu: <strong>20 - 30 cmH2O</strong>.",
+            "<strong>Khi bệnh nhân đang CPR:</strong> Gián đoạn xoa bóp tim để luồn ống <strong>KHÔNG QUÁ 10 GIÂY</strong>.",
+            "<strong>Thời hạn thử:</strong> Nếu không đặt được trong vòng <strong>30 giây</strong>, dừng lại, bóp bóng mask O2 100% trong 20-30s giữ SpO2 > 95% trước khi thử lại."
           ],
-          safety: "Không đưa ống quá sâu tránh đi nhầm vào phế quản gốc bên phải gây thông khí một bên phổi.",
+          safety: "Không đút ống quá sâu tránh đi nhầm vào phế quản gốc bên phải (thông khí 1 bên).",
           safetyType: "warning",
           svgContent: `
             <svg viewBox="0 0 300 200" width="280" height="180">
               <path d="M80 50 C120 50, 160 120, 220 150" stroke="#0ea5e9" stroke-width="8" fill="none" stroke-linecap="round"/>
               <circle cx="210" cy="145" r="10" fill="rgba(245, 158, 11, 0.5)" stroke="#f59e0b" stroke-width="2"/>
-              <text x="150" y="175" text-anchor="middle" fill="var(--color-primary)" font-weight="bold" font-size="13">Đưa Ống Qua Thanh Môn & Bơm Cuff</text>
+              <text x="150" y="175" text-anchor="middle" fill="var(--color-primary)" font-weight="bold" font-size="13">Đưa Ống Qua Thanh Môn & Bơm Cuff (20-30 cmH2O)</text>
             </svg>
           `
         },
         {
           shortTitle: "6. Kiểm tra vị trí",
           title: "Bước 6: Kiểm tra xác nhận vị trí ống NKQ chuẩn",
-          description: "Xác nhận ống nằm trong khí quản (không nhầm vào thực quản) bằng ngũ chẩn và EtCO2.",
+          description: "Xác nhận ống nằm trong khí quản (không nhầm vào thực quản) bằng ngũ chẩn, EtCO2 và X-quang.",
           bullets: [
-            "Gắn bóng Ambu bóp thở và quan sát lồng ngực di động di động đều 2 bên.",
-            "Nghe rì rào phế nang bằng ống nghe ở 5 vị trí: 2 đỉnh phổi, 2 đáy phổi và thượng vị.",
-            "Xem đường sóng EtCO2 (Capnography) có dạng hình chữ nhật ổn định."
+            "Bóp bóng Ambu và quan sát lồng ngực di động đều 2 bên.",
+            "Nghe rì rào phế nang ở 5 vị trí: 2 đỉnh phổi, 2 đáy phổi và Thượng vị (không nghe tiếng ọc ọc dạ dày).",
+            "Xem đường sóng EtCO2 (Capnography) dạng hình chữ nhật dương tính.",
+            "Phim X-quang ngực: Đầu ống NKQ ở vị trí <strong>từ 4 - 7 cm trên Carina</strong> khi đầu cổ ở tư thế trung tính."
           ],
-          safety: "Nếu nghe thấy tiếng ọc ọc ở dạ dày và lồng ngực không di động -> Đặt nhầm vào thực quản! Rút ống ngay lập tức và cho bóp oxy lại.",
+          safety: "Nếu nghe tiếng ọc ọc ở thượng vị & lồng ngực không di động -> Đặt nhầm thực quản! Rút ống ngay lập tức và bóp bóng O2 100% lại.",
           safetyType: "danger",
           svgContent: `
             <svg viewBox="0 0 300 200" width="280" height="180">
@@ -227,15 +925,15 @@
         },
         {
           shortTitle: "7. Cố định & Thông khí",
-          title: "Bước 7: Cố định ống NKQ & Nối máy thở",
-          description: "Dùng băng dính hoặc dây cố định chuyên dụng giữ chặt ống NKQ vào mép miệng bệnh nhân.",
+          title: "Bước 7: Cố định ống NKQ & Chăm sóc đường thở",
+          description: "Dùng băng dính/dây vải cố định giữ chặt ống NKQ vào khóe miệng bệnh nhân.",
           bullets: [
-            "Ghi nhận chỉ số vạch cắm ở khóe miệng (ví dụ: 22 cm).",
-            "Đặt Canul Guedel/Mayo ngáng miệng chống bệnh nhân cắn ống.",
-            "Nối ống NKQ vào máy thở hoặc hệ thống bóng thở.",
-            "Chụp X-quang ngực tại giường để kiểm tra vị trí đầu ống NKQ (cách cựa khí quản Carina 3-5 cm)."
+            "Ghi nhận chỉ số vạch cắm ở khóe miệng (ví dụ: 23 cm ở nam, 21 cm ở nữ).",
+            "Đặt Canul Guedel/Mayo ngáng miệng chống cắn ống.",
+            "Nối ống NKQ vào máy thở hoặc hệ thống bóp bóng.",
+            "Kiểm tra áp lực bóng chèn (20 - 30 cmH2O) <strong>2 lần/ngày</strong>. Vệ sinh răng miệng 2 lần/ngày."
           ],
-          safety: "Thường xuyên kiểm tra áp lực bóng cuff (20-30 cmH2O) mỗi 8 giờ để tránh hoại tử niêm mạc khí quản.",
+          safety: "Thường xuyên kiểm tra áp lực bóng chèn và xả bóng chèn đúng kỹ thuật để tránh loét/hoại tử niêm mạc khí quản.",
           safetyType: "warning",
           svgContent: `
             <svg viewBox="0 0 300 200" width="280" height="180">
@@ -248,6 +946,62 @@
       ];
 
       new ProcedureAnimator({ steps: steps });
+
+      // 3. Calculator: Tube & Blade Size Selector
+      const ageSelector = document.getElementById('ageSelector');
+      const resTubeSize = document.getElementById('resTubeSize');
+      const resBladeSize = document.getElementById('resBladeSize');
+      const resDepth = document.getElementById('resDepth');
+      const resCuffPress = document.getElementById('resCuffPress');
+
+      const sizeDatabase = {
+        'preterm': { tube: '2.5 mm', blade: 'Cỡ 0', depth: '9 - 10 cm', cuff: 'Không bóng (Uncuffed)' },
+        'neonatal': { tube: '3.0 - 3.5 mm', blade: 'Cỡ 0 - 1', depth: '10 - 11 cm', cuff: 'Không bóng' },
+        '6m': { tube: '3.5 - 4.0 mm', blade: 'Cỡ 1', depth: '11 - 12 cm', cuff: 'Không bóng / Có bóng' },
+        '1-2y': { tube: '4.0 - 5.0 mm', blade: 'Cỡ 1 - 2', depth: '12 - 14 cm', cuff: '15 - 20 cmH2O' },
+        '4-6y': { tube: '5.0 - 5.5 mm', blade: 'Cỡ 2', depth: '14 - 16 cm', cuff: '15 - 20 cmH2O' },
+        '8-12y': { tube: '6.0 - 7.0 mm', blade: 'Cỡ 2 - 3', depth: '16 - 19 cm', cuff: '20 cmH2O' },
+        'adult-female': { tube: '7.0 mm (7.0 - 7.5)', blade: 'Cỡ 4 - 5', depth: '21 - 22 cm', cuff: '20 - 30 cmH2O' },
+        'adult-male': { tube: '7.5 - 8.0 mm', blade: 'Cỡ 4 - 5', depth: '23 cm', cuff: '20 - 30 cmH2O' }
+      };
+
+      if (ageSelector) {
+        ageSelector.addEventListener('change', function () {
+          const val = this.value;
+          const data = sizeDatabase[val];
+          if (data) {
+            if (resTubeSize) resTubeSize.textContent = data.tube;
+            if (resBladeSize) resBladeSize.textContent = data.blade;
+            if (resDepth) resDepth.textContent = data.depth;
+            if (resCuffPress) resCuffPress.textContent = data.cuff;
+          }
+        });
+      }
+
+      // 4. Calculator: RSI Dosing
+      const weightInput = document.getElementById('weightInput');
+
+      function calculateRSIDoses() {
+        const w = parseFloat(weightInput.value) || 60;
+
+        document.getElementById('valAtropine').textContent = (w * 0.01).toFixed(2) + ' mg';
+        document.getElementById('valEtomidate').textContent = (w * 0.3).toFixed(1) + ' mg';
+        document.getElementById('valFentanyl').textContent = Math.round(w * 1) + ' - ' + Math.round(w * 2) + ' mcg';
+        document.getElementById('valLidocain').textContent = Math.round(w * 1.5) + ' - ' + Math.round(w * 2) + ' mg';
+        
+        const morph = Math.min(w * 0.05, 15).toFixed(1);
+        document.getElementById('valMorphine').textContent = morph + ' mg';
+
+        const midaz = (w * 0.01).toFixed(2);
+        document.getElementById('valMidazolam').textContent = midaz + ' mg';
+
+        document.getElementById('valPropofol').textContent = Math.round(w * 2) + ' - ' + Math.round(w * 3) + ' mg';
+      }
+
+      if (weightInput) {
+        weightInput.addEventListener('input', calculateRSIDoses);
+        calculateRSIDoses(); // init
+      }
     });
   </script>
 </body>

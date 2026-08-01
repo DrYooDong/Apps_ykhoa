@@ -72,18 +72,18 @@
   position: relative;
   overflow-x: auto;
   padding: 1rem 0.5rem;
+  -webkit-overflow-scrolling: touch;
 }
 
 .stepper-bar::before {
   content: '';
   position: absolute;
-  top: 50%;
+  top: 22px;
   left: 2rem;
   right: 2rem;
   height: 3px;
   background: var(--color-border);
   z-index: 1;
-  transform: translateY(-50%);
 }
 
 .step-node {
@@ -96,6 +96,7 @@
   cursor: pointer;
   background: transparent;
   border: none;
+  flex-shrink: 0;
 }
 
 .step-circle {
@@ -133,10 +134,72 @@
   font-weight: 600;
   color: var(--color-text-muted);
   white-space: nowrap;
+  transition: color 0.2s ease;
 }
 
 .step-node.active .step-label {
   color: var(--color-primary);
+}
+
+/* RESPONSIVE MEDIA QUERIES FOR STEPPER BAR */
+@media (max-width: 768px) {
+  .stepper-bar {
+    justify-content: flex-start;
+    gap: 1.25rem;
+    padding: 0.85rem 0.5rem;
+    scrollbar-width: thin;
+  }
+
+  .stepper-bar::before {
+    left: 1rem;
+    right: 1rem;
+    top: 25px;
+  }
+
+  .step-node {
+    min-width: 75px;
+  }
+
+  .step-circle {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+
+  .step-label {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .stepper-bar {
+    justify-content: space-between;
+    gap: 0.25rem;
+    padding: 0.75rem 0.25rem;
+  }
+
+  .stepper-bar::before {
+    top: 18px;
+    left: 1rem;
+    right: 1rem;
+  }
+
+  .step-node {
+    min-width: auto;
+    gap: 0;
+  }
+
+  .step-circle {
+    width: 34px;
+    height: 34px;
+    font-size: 0.9rem;
+    border-width: 2.5px;
+  }
+
+  /* Dấu nhãn chữ ẩn trên điện thoại nhỏ để tránh đè chữ nhau hoàn toàn */
+  .step-label {
+    display: none;
+  }
 }
 
 /* Main Display Split Grid */

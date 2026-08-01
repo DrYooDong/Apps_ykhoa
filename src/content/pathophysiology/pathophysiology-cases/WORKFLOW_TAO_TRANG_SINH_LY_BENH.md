@@ -120,6 +120,9 @@ Sử dụng các component UI chuẩn đã được định nghĩa trong `physio
 | **Chuỗi Diễn Tiến** | `<div class="pathway-chain"><span class="pathway-node red">A</span><span class="pathway-arrow">➔</span>...</div>` | Mô tả các bước chuyển hóa hoặc đường truyền tín hiệu. |
 | **Vòng Luẩn Quẩn** | `<div class="vicious-cycle"><div class="vicious-cycle-title">🔄 Title</div><div class="cycle-steps">...</div></div>` | Mô tả các vòng xoắn bệnh lý mất bù. |
 | **Hộp Công Thức** | `<div class="formula-box"><div class="formula-label">CÔNG THỨC</div><div class="formula-main">...</div></div>` | Hiển thị các phương trình sinh lý/huyết động. |
+| **Card Cấu trúc Vi sinh/Virus** | `<div class="virus-structure-card"><h4>...</h4>...</div>` | Mô tả đặc điểm phân tử, protein vỏ, capsid hoặc độc tính tác nhân vi sinh. |
+| **Pill Dấu ấn Sinh học** | `<span class="biomarker-pill"><i class="fa-solid fa-droplet"></i> ...</span>` | Hiển thị các chỉ thị phân tử, cytokine, interleukin, biomarkers độ nặng. |
+| **Bảng So sánh Cơ chế** | `<table class="mech-compare-table"><thead>...</thead></table>` | Bảng so sánh trực quan các thể bệnh lý hoặc cơ chế sinh lý đối chiếu. |
 | **Card Ngọc Lâm Sàng** | `<div class="clinical-pearl">💎 <strong>Pearl lâm sàng:</strong> ...</div>` | Đúc kết kinh nghiệm lâm sàng áp dụng sinh lý bệnh. |
 | **Hộp Cảnh Báo** | `<div class="warning-box">⚠️ <strong>Cảnh báo:</strong> ...</div>` | Lưu ý biến cấp tính hoặc nguy cơ tử vong. |
 

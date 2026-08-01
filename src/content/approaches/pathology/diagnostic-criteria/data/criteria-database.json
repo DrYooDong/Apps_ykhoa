@@ -4,192 +4,418 @@
     "name": "Tiêu chuẩn Duke hiệu chỉnh 2023",
     "specialty": "Tim mạch",
     "icd": "I33.0",
+    "type": "diagnosis",
     "disease": "Viêm nội tâm mạc nhiễm khuẩn (IE)",
     "description": "Tiêu chuẩn Duke hiệu chỉnh được ESC/AHA công nhận để xác định hoặc bác bỏ chẩn đoán Viêm nội tâm mạc nhiễm khuẩn trên lâm sàng.",
+    "featured": true,
     "references": [
       "Khuyến cáo ESC 2023 về Quản lý Viêm nội tâm mạc nhiễm khuẩn.",
       "Fowler VG, et al. The 2023 Duke-ISCVID Criteria for Infective Endocarditis. Clin Infect Dis. 2023."
     ],
     "criteria": {
       "major": [
-        {
-          "id": "m1",
-          "text": "Cấy máu dương tính với vi khuẩn điển hình gây IE từ ≥ 2 mẫu máu riêng biệt (Streptococcus viridans, S. bovis, HACEK, Staphylococcus aureus...)."
-        },
-        {
-          "id": "m2",
-          "text": "Bằng chứng tổn thương nội tâm mạc trên hình ảnh học: Siêu âm tim (sùi, áp xe, hở van mới) hoặc PET/CT 18F-FDG dương tính."
-        },
-        {
-          "id": "m3",
-          "text": "Xét nghiệm huyết thanh học hoặc PCR dương tính với Coxiella burnetii (hoặc kháng thể IgG pha I > 1:800)."
-        }
+        { "id": "m1", "text": "Cấy máu dương tính với vi khuẩn điển hình gây IE từ ≥ 2 mẫu máu riêng biệt (Streptococcus viridans, S. bovis, HACEK, Staphylococcus aureus...)." },
+        { "id": "m2", "text": "Bằng chứng tổn thương nội tâm mạc trên hình ảnh học: Siêu âm tim (sùi, áp xe, hở van mới) hoặc PET/CT 18F-FDG dương tính." },
+        { "id": "m3", "text": "Xét nghiệm huyết thanh học hoặc PCR dương tính với Coxiella burnetii (hoặc kháng thể IgG pha I > 1:800)." }
       ],
       "minor": [
-        {
-          "id": "n1",
-          "text": "Yếu tố cơ địa: Có bệnh tim dễ mắc (van nhân tạo, bệnh van tim nguyên thủy) hoặc nghiện ma túy đường tĩnh mạch (IVDU)."
-        },
-        {
-          "id": "n2",
-          "text": "Sốt kéo dài: Nhiệt độ cơ thể ≥ 38.0°C."
-        },
-        {
-          "id": "n3",
-          "text": "Tổn thương mạch máu: Tắc mạch động mạch lớn, nhồi máu phổi nhiễm trùng, phình mạch hình nấm, xuất huyết nội sọ, xuất huyết kết mạc, tổn thương Janeway."
-        },
-        {
-          "id": "n4",
-          "text": "Hiện tượng miễn dịch: Viêm cầu thận, nốt Osler, chấm Roth trên võng mạc, yếu tố dạng thấp (RF) dương tính."
-        },
-        {
-          "id": "n5",
-          "text": "Bằng chứng vi sinh học: Cấy máu dương tính nhưng không thỏa mãn tiêu chuẩn chính."
-        }
+        { "id": "n1", "text": "Yếu tố cơ địa: Có bệnh tim dễ mắc (van nhân tạo, bệnh van tim nguyên thủy) hoặc nghiện ma túy đường tĩnh mạch (IVDU)." },
+        { "id": "n2", "text": "Sốt kéo dài: Nhiệt độ cơ thể ≥ 38.0°C." },
+        { "id": "n3", "text": "Tổn thương mạch máu: Tắc mạch động mạch lớn, nhồi máu phổi nhiễm trùng, phình mạch hình nấm, xuất huyết nội sọ, xuất huyết kết mạc, tổn thương Janeway." },
+        { "id": "n4", "text": "Hiện tượng miễn dịch: Viêm cầu thận, nốt Osler, chấm Roth trên võng mạc, yếu tố dạng thấp (RF) dương tính." },
+        { "id": "n5", "text": "Bằng chứng vi sinh học: Cấy máu dương tính nhưng không thỏa mãn tiêu chuẩn chính." }
       ]
     },
     "logic_type": "duke_logic",
     "disclaimer": "Lưu ý: Công cụ hỗ trợ ra quyết định lâm sàng. Quyết định điều trị kháng sinh/phẫu thuật cuối cùng thuộc về bác sĩ chuyên khoa."
   },
+
   "jones": {
     "id": "jones",
     "name": "Tiêu chuẩn Jones hiệu chỉnh 2015",
     "specialty": "Tim mạch",
     "icd": "I00-I02",
+    "type": "diagnosis",
     "disease": "Sốt thấp khớp cấp (Acute Rheumatic Fever)",
     "description": "Tiêu chuẩn AHA/Jones giúp chẩn đoán đợt sốt thấp khớp cấp lần đầu hoặc tái phát ở quần thể nguy cơ thấp và trung bình/cao.",
+    "featured": false,
     "references": [
       "Gewitz MH, et al. Revision of the Jones Criteria for the Diagnosis of Acute Rheumatic Fever: A Scientific Statement From the AHA. Circulation. 2015."
     ],
     "criteria": {
       "major": [
-        {
-          "id": "j_m1",
-          "text": "Viêm tim (Lâm sàng hoặc phát hiện qua Siêu âm Doppler tim - Viêm toàn bộ tim, hở van hai lá/van động mạch chủ)."
-        },
-        {
-          "id": "j_m2",
-          "text": "Viêm đa khớp (Hoặc viêm một khớp / đau đa khớp ở quần thể nguy cơ cao)."
-        },
-        {
-          "id": "j_m3",
-          "text": "Múa vờn Sydenham (Biểu hiện thần kinh trung ương)."
-        },
-        {
-          "id": "j_m4",
-          "text": "Hồng ban vòng (Erythema marginatum trên da)."
-        },
-        {
-          "id": "j_m5",
-          "text": "Hạt dưới da (Subcutaneous nodules)."
-        }
+        { "id": "j_m1", "text": "Viêm tim (Lâm sàng hoặc phát hiện qua Siêu âm Doppler tim - Viêm toàn bộ tim, hở van hai lá/van động mạch chủ)." },
+        { "id": "j_m2", "text": "Viêm đa khớp (Hoặc viêm một khớp / đau đa khớp ở quần thể nguy cơ cao)." },
+        { "id": "j_m3", "text": "Múa vờn Sydenham (Biểu hiện thần kinh trung ương)." },
+        { "id": "j_m4", "text": "Hồng ban vòng (Erythema marginatum trên da)." },
+        { "id": "j_m5", "text": "Hạt dưới da (Subcutaneous nodules)." }
       ],
       "minor": [
-        {
-          "id": "j_n1",
-          "text": "Đau đa khớp (Polyarthralgia) - nếu không dùng viêm khớp làm tiêu chuẩn chính."
-        },
-        {
-          "id": "j_n2",
-          "text": "Sốt: Nhiệt độ ≥ 38.5°C (hoặc ≥ 38.0°C ở quần thể nguy cơ cao)."
-        },
-        {
-          "id": "j_n3",
-          "text": "Tăng phản ứng pha cấp: Tốc độ máu lắng (ESR) ≥ 60 mm/h hoặc CRP ≥ 3.0 mg/dL."
-        },
-        {
-          "id": "j_n4",
-          "text": "Khoảng PR kéo dài trên Điện tâm đồ (ECG) (trừ khi viêm tim đã là tiêu chuẩn chính)."
-        }
+        { "id": "j_n1", "text": "Đau đa khớp (Polyarthralgia) - nếu không dùng viêm khớp làm tiêu chuẩn chính." },
+        { "id": "j_n2", "text": "Sốt: Nhiệt độ ≥ 38.5°C (hoặc ≥ 38.0°C ở quần thể nguy cơ cao)." },
+        { "id": "j_n3", "text": "Tăng phản ứng pha cấp: Tốc độ máu lắng (ESR) ≥ 60 mm/h hoặc CRP ≥ 3.0 mg/dL." },
+        { "id": "j_n4", "text": "Khoảng PR kéo dài trên Điện tâm đồ (ECG) (trừ khi viêm tim đã là tiêu chuẩn chính)." }
       ]
     },
     "logic_type": "jones_logic",
     "disclaimer": "Chẩn đoán xác định bắt buộc phải kèm theo bằng chứng nhiễm Liên cầu khuẩn nhóm A (GAS) trước đó (ASO dương tính hoặc cấy họng)."
   },
+
   "ra_acr": {
     "id": "ra_acr",
     "name": "Tiêu chuẩn ACR/EULAR 2010",
     "specialty": "Cơ xương khớp",
     "icd": "M05-M06",
+    "type": "classification",
     "disease": "Viêm khớp dạng thấp (Rheumatoid Arthritis)",
     "description": "Hệ thống tính điểm chẩn đoán sớm Viêm khớp dạng thấp dựa trên vị trí khớp tổn thương, huyết thanh học, phản ứng pha cấp và thời gian triệu chứng.",
+    "featured": true,
     "references": [
       "Aletaha D, et al. 2010 Rheumatoid arthritis classification criteria: an American College of Rheumatology/EULAR collaborative initiative. Arthritis Rheum. 2010."
     ],
     "criteria": {
       "major": [
-        {
-          "id": "ra_m1",
-          "text": "Tổn thương khớp nhỏ (khớp bàn ngón, khớp liên đốt gần, khớp cổ tay): 1-3 khớp nhỏ (2 điểm), 4-10 khớp nhỏ (3 điểm), > 10 khớp (ít nhất 1 khớp nhỏ) (5 điểm)."
-        },
-        {
-          "id": "ra_m2",
-          "text": "Huyết thanh học: RF hoặc Anti-CCP dương tính mạnh (> 3 lần giới hạn trên bình thường) (3 điểm)."
-        },
-        {
-          "id": "ra_m3",
-          "text": "Thời gian kéo dài triệu chứng: ≥ 6 tuần (1 điểm)."
-        }
+        { "id": "ra_m1", "text": "Tổn thương khớp nhỏ (khớp bàn ngón, khớp liên đốt gần, khớp cổ tay): 1-3 khớp nhỏ (2 điểm), 4-10 khớp nhỏ (3 điểm), > 10 khớp (ít nhất 1 khớp nhỏ) (5 điểm)." },
+        { "id": "ra_m2", "text": "Huyết thanh học: RF hoặc Anti-CCP dương tính mạnh (> 3 lần giới hạn trên bình thường) (3 điểm)." },
+        { "id": "ra_m3", "text": "Thời gian kéo dài triệu chứng: ≥ 6 tuần (1 điểm)." }
       ],
       "minor": [
-        {
-          "id": "ra_n1",
-          "text": "Tổn thương 2-10 khớp lớn (khớp vai, khuỷu, háng, gối, cổ chân) (1 điểm)."
-        },
-        {
-          "id": "ra_n2",
-          "text": "Huyết thanh học: RF hoặc Anti-CCP dương tính nhẹ (1-3 lần giới hạn trên) (2 điểm)."
-        },
-        {
-          "id": "ra_n3",
-          "text": "Tăng chỉ số viêm: CRP tăng hoặc ESR tăng (1 điểm)."
-        }
+        { "id": "ra_n1", "text": "Tổn thương 2-10 khớp lớn (khớp vai, khuỷu, háng, gối, cổ chân) (1 điểm)." },
+        { "id": "ra_n2", "text": "Huyết thanh học: RF hoặc Anti-CCP dương tính nhẹ (1-3 lần giới hạn trên) (2 điểm)." },
+        { "id": "ra_n3", "text": "Tăng chỉ số viêm: CRP tăng hoặc ESR tăng (1 điểm)." }
       ]
     },
     "logic_type": "ra_logic",
     "disclaimer": "Áp dụng cho bệnh nhân có ít nhất 1 khớp bị viêm màng tủy/sưng đau lâm sàng không giải thích được bởi bệnh lý khác. Điểm ≥ 6/10 được phân loại Viêm khớp dạng thấp."
   },
+
   "kawasaki": {
     "id": "kawasaki",
     "name": "Tiêu chuẩn Chẩn đoán Bệnh Kawasaki 2017",
     "specialty": "Nhi khoa",
     "icd": "M30.3",
+    "type": "diagnosis",
     "disease": "Bệnh Kawasaki (Hội chứng hạch niêm mạc da)",
     "description": "Tiêu chuẩn AHA 2017 chẩn đoán Viêm mạch máu cấp tính ở trẻ em, nhằm phòng ngừa biến chứng phồng động mạch vành.",
+    "featured": false,
     "references": [
       "McCrindle BW, et al. Diagnosis, Treatment, and Long-Term Management of Kawasaki Disease: A Scientific Statement From the AHA. Circulation. 2017."
     ],
     "criteria": {
       "major": [
-        {
-          "id": "k_m1",
-          "text": "Sốt kéo dài ít nhất 5 ngày (hoặc sốt đến khi dùng IVIG nếu chẩn đoán sớm)."
-        }
+        { "id": "k_m1", "text": "Sốt kéo dài ít nhất 5 ngày (hoặc sốt đến khi dùng IVIG nếu chẩn đoán sớm)." }
       ],
       "minor": [
-        {
-          "id": "k_n1",
-          "text": "Biến đổi ở mắt: Viêm kết mạc sung huyết hai bên, không tiết mủ."
-        },
-        {
-          "id": "k_n2",
-          "text": "Biến đổi ở môi và khoang miệng: Môi đỏ khô nứt, lưỡi dâu tây, niêm mạc hầu họng sung huyết lan tỏa."
-        },
-        {
-          "id": "k_n3",
-          "text": "Biến đổi ở đầu chi: Phù cứng bàn tay/bàn chân ở giai đoạn cấp, tróc da đầu ngón tay/chân ở giai đoạn hồi phục."
-        },
-        {
-          "id": "k_n4",
-          "text": "Ban đỏ đa dạng trên da: Ban dạng sởi, hồng ban dính, không có mụn nước."
-        },
-        {
-          "id": "k_n5",
-          "text": "Hạch cổ cấp tính: Thường 1 bên, đường kính ≥ 1.5 cm, không mủ."
-        }
+        { "id": "k_n1", "text": "Biến đổi ở mắt: Viêm kết mạc sung huyết hai bên, không tiết mủ." },
+        { "id": "k_n2", "text": "Biến đổi ở môi và khoang miệng: Môi đỏ khô nứt, lưỡi dâu tây, niêm mạc hầu họng sung huyết lan tỏa." },
+        { "id": "k_n3", "text": "Biến đổi ở đầu chi: Phù cứng bàn tay/bàn chân ở giai đoạn cấp, tróc da đầu ngón tay/chân ở giai đoạn hồi phục." },
+        { "id": "k_n4", "text": "Ban đỏ đa dạng trên da: Ban dạng sởi, hồng ban dính, không có mụn nước." },
+        { "id": "k_n5", "text": "Hạch cổ cấp tính: Thường 1 bên, đường kính ≥ 1.5 cm, không mủ." }
       ]
     },
     "logic_type": "kawasaki_logic",
     "disclaimer": "Kawasaki điển hình khi có Sốt ≥ 5 ngày + ít nhất 4/5 tiêu chuẩn phụ. Nếu sốt ≥ 5 ngày + 2-3 tiêu chuẩn phụ cần đánh giá Kawasaki không điển hình (Incomplete Kawasaki)."
+  },
+
+  "wells_dvt": {
+    "id": "wells_dvt",
+    "name": "Wells Score DVT (Phiên bản 2 mức)",
+    "specialty": "Tim mạch",
+    "icd": "I80.2",
+    "type": "scoring",
+    "disease": "Huyết khối tĩnh mạch sâu chi dưới (DVT)",
+    "description": "Thang điểm Wells 2 mức đánh giá xác suất lâm sàng DVT chi dưới, phân tầng bệnh nhân trước khi chỉ định D-dimer và siêu âm Doppler tĩnh mạch.",
+    "featured": true,
+    "references": [
+      "Wells PS, et al. Evaluation of D-dimer in the diagnosis of suspected deep-vein thrombosis. N Engl J Med. 2003;349(13):1227-35.",
+      "NICE Guideline NG158: Venous thromboembolic diseases (2020, updated 2023)."
+    ],
+    "criteria": {
+      "major": [
+        { "id": "dvt_1", "points": 1, "text": "Ung thư đang hoạt động (điều trị trong vòng 6 tháng hoặc đang chăm sóc giảm nhẹ). (+1 điểm)" },
+        { "id": "dvt_2", "points": 1, "text": "Liệt, paresis, hoặc bất động gần đây do bó bột chi dưới. (+1 điểm)" },
+        { "id": "dvt_3", "points": 1, "text": "Nằm liệt giường > 3 ngày hoặc phẫu thuật lớn trong 12 tuần gần đây (yêu cầu gây mê toàn thân hoặc vùng). (+1 điểm)" },
+        { "id": "dvt_4", "points": 1, "text": "Đau/ấn đau dọc theo phân bố tĩnh mạch sâu chi dưới. (+1 điểm)" },
+        { "id": "dvt_5", "points": 1, "text": "Sưng toàn bộ một chân. (+1 điểm)" },
+        { "id": "dvt_6", "points": 1, "text": "Chu vi bắp chân > 3 cm so với bên đối diện (đo cách lồi củ chày 10 cm). (+1 điểm)" },
+        { "id": "dvt_7", "points": 1, "text": "Phù lõm (Pitting edema) bên chân có triệu chứng. (+1 điểm)" },
+        { "id": "dvt_8", "points": 1, "text": "Các tĩnh mạch nông không giãn ở chi có triệu chứng (không phải giãn tĩnh mạch). (+1 điểm)" }
+      ],
+      "minor": [
+        { "id": "dvt_9", "points": -2, "text": "Chẩn đoán thay thế khác ít nhất cũng hoặc có nhiều khả năng hơn DVT. (-2 điểm — TRỪ ĐIỂM)" }
+      ]
+    },
+    "logic_type": "wells_dvt_logic",
+    "disclaimer": "Wells ≥ 2: Xác suất DVT cao — Chỉ định siêu âm ngay. Wells < 2: Xác suất thấp — Làm D-dimer trước. Nếu D-dimer âm tính: Loại trừ DVT."
+  },
+
+  "wells_pe": {
+    "id": "wells_pe",
+    "name": "Wells Score PE (Thuyên tắc phổi)",
+    "specialty": "Tim mạch",
+    "icd": "I26",
+    "type": "scoring",
+    "disease": "Thuyên tắc phổi (Pulmonary Embolism)",
+    "description": "Thang điểm Wells đánh giá xác suất lâm sàng thuyên tắc phổi cấp, phân tầng bệnh nhân trước khi chỉ định CT Pulmonary Angiography (CTPA) hoặc D-dimer.",
+    "featured": true,
+    "references": [
+      "Wells PS, et al. Excluding pulmonary embolism at the bedside without diagnostic imaging. Ann Intern Med. 2001;135(2):98-107.",
+      "ESC Guidelines on Pulmonary Embolism 2019."
+    ],
+    "criteria": {
+      "major": [
+        { "id": "pe_1", "points": 3, "text": "DVT lâm sàng (ít nhất đau chân và phù tay). (+3 điểm)" },
+        { "id": "pe_2", "points": 3, "text": "Không có chẩn đoán nào khác có khả năng hơn PE. (+3 điểm)" },
+        { "id": "pe_3", "points": 1.5, "text": "Nhịp tim > 100 lần/phút. (+1.5 điểm)" },
+        { "id": "pe_4", "points": 1.5, "text": "Bất động hoặc phẫu thuật trong vòng 4 tuần gần đây. (+1.5 điểm)" },
+        { "id": "pe_5", "points": 1.5, "text": "DVT hoặc PE đã được chẩn đoán trước đây. (+1.5 điểm)" },
+        { "id": "pe_6", "points": 1, "text": "Ho ra máu (Hemoptysis). (+1 điểm)" }
+      ],
+      "minor": [
+        { "id": "pe_7", "points": 1, "text": "Ung thư (đang điều trị hoặc điều trị trong 6 tháng qua hoặc đang giai đoạn giảm nhẹ). (+1 điểm)" }
+      ]
+    },
+    "logic_type": "wells_pe_logic",
+    "disclaimer": "Score > 4: Xác suất PE cao → CTPA ngay. Score ≤ 4: Xác suất thấp → D-dimer trước. Nếu D-dimer âm tính: Loại trừ PE."
+  },
+
+  "sepsis3": {
+    "id": "sepsis3",
+    "name": "Tiêu chuẩn Sepsis-3 (2016)",
+    "specialty": "Cấp cứu",
+    "icd": "A41",
+    "type": "diagnosis",
+    "disease": "Nhiễm trùng huyết (Sepsis) & Sốc nhiễm trùng",
+    "description": "Định nghĩa Sepsis-3 theo đồng thuận SCCM/ESICM 2016: Sepsis là rối loạn chức năng cơ quan đe dọa tính mạng do đáp ứng mất điều hòa của cơ thể với nhiễm trùng (qSOFA ≥ 2 + nghi nhiễm trùng).",
+    "featured": true,
+    "references": [
+      "Singer M, et al. The Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). JAMA. 2016;315(8):801-810.",
+      "Bộ Y tế VN. Hướng dẫn chẩn đoán và điều trị nhiễm khuẩn huyết. 2023."
+    ],
+    "criteria": {
+      "major": [
+        { "id": "sep_m1", "text": "Nghi nhiễm trùng (Suspected/confirmed infection): Có ổ nhiễm trùng hoặc cấy (+) hoặc tình huống lâm sàng nghi cao." },
+        { "id": "sep_m2", "text": "qSOFA ≥ 2 điểm: Thở nhanh ≥ 22 lần/phút (+1), Thay đổi tri giác GCS < 15 (+1), Huyết áp tâm thu ≤ 100 mmHg (+1)." }
+      ],
+      "minor": [
+        { "id": "sep_n1", "text": "SOFA tăng ≥ 2 điểm so với nền (rối loạn chức năng cơ quan)." },
+        { "id": "sep_n2", "text": "Lactate > 2 mmol/L mặc dù đã hồi sức dịch đầy đủ." },
+        { "id": "sep_n3", "text": "Cần thuốc vận mạch duy trì MAP ≥ 65 mmHg (tiêu chuẩn Sốc nhiễm trùng)." }
+      ]
+    },
+    "logic_type": "sepsis3_logic",
+    "disclaimer": "Sepsis: Nghi nhiễm trùng + SOFA tăng ≥ 2. Septic Shock: Sepsis + cần vận mạch + Lactate > 2 mmol/L. qSOFA chỉ là công cụ sàng lọc ngoài ICU."
+  },
+
+  "sle_slicc": {
+    "id": "sle_slicc",
+    "name": "Tiêu chuẩn SLICC 2012 / EULAR/ACR 2019",
+    "specialty": "Cơ xương khớp",
+    "icd": "M32",
+    "type": "classification",
+    "disease": "Lupus ban đỏ hệ thống (SLE)",
+    "description": "Tiêu chuẩn phân loại SLE theo SLICC 2012 (≥ 4 tiêu chuẩn trong đó có ≥ 1 lâm sàng và ≥ 1 miễn dịch, hoặc viêm thận lupus sinh thiết xác nhận + ANA/Anti-dsDNA (+)).",
+    "featured": true,
+    "references": [
+      "Petri M, et al. Derivation and validation of the Systemic Lupus International Collaborating Clinics (SLICC) classification criteria for systemic lupus erythematosus. Arthritis Rheum. 2012.",
+      "Aringer M, et al. 2019 European League Against Rheumatism/American College of Rheumatology Classification Criteria for Systemic Lupus Erythematosus. Arthritis Rheumatol. 2019."
+    ],
+    "criteria": {
+      "major": [
+        { "id": "sle_m1", "text": "Lupus ban đỏ cánh bướm (Malar rash): Ban phẳng hoặc gồ trên má và sống mũi." },
+        { "id": "sle_m2", "text": "Lupus dạng đĩa (Discoid rash): Dát đỏ gồ lên trên da, sẹo và tắc nghẽn nang lông." },
+        { "id": "sle_m3", "text": "Loét miệng/mũi (Oral/nasal ulcers): Không đau, xác nhận bởi bác sĩ." },
+        { "id": "sle_m4", "text": "Rụng tóc không sẹo (Non-scarring alopecia): Quan sát bởi bác sĩ." },
+        { "id": "sle_m5", "text": "Viêm đa khớp (Synovitis): ≥ 2 khớp có đau, sưng, hoặc tràn dịch khớp." },
+        { "id": "sle_m6", "text": "Viêm thanh mạc: Viêm màng phổi hoặc viêm màng ngoài tim điển hình > 1 ngày." },
+        { "id": "sle_m7", "text": "Tổn thương thận: Tỷ lệ protein/creatinine niệu ≥ 500 mg/g hoặc RBC casts trong nước tiểu." },
+        { "id": "sle_m8", "text": "Tổn thương thần kinh: Động kinh, Loạn thần, Đơn/đa dây thần kinh, Mononeuritis multiplex, Trạng thái lú lẫn cấp." }
+      ],
+      "minor": [
+        { "id": "sle_n1", "text": "Thiếu máu tan huyết (Hemolytic anemia)." },
+        { "id": "sle_n2", "text": "Giảm bạch cầu < 4000/mm³ hoặc Giảm lympho < 1000/mm³ (ít nhất 1 lần)." },
+        { "id": "sle_n3", "text": "Giảm tiểu cầu < 100.000/mm³ (ít nhất 1 lần, không do thuốc)." },
+        { "id": "sle_n4", "text": "ANA dương tính (titer > ngưỡng bình thường của phòng xét nghiệm)." },
+        { "id": "sle_n5", "text": "Anti-dsDNA dương tính hoặc Anti-Sm dương tính." },
+        { "id": "sle_n6", "text": "Kháng thể kháng phospholipid: Anticoagulant lupus, RPR giả dương, Anti-cardiolipin IgA/IgG/IgM, Anti-β2 glycoprotein I dương tính." },
+        { "id": "sle_n7", "text": "Bổ thể thấp: C3, C4, hoặc CH50 thấp hơn ngưỡng bình thường." },
+        { "id": "sle_n8", "text": "Coombs trực tiếp dương tính (không có thiếu máu tan huyết)." }
+      ]
+    },
+    "logic_type": "slicc_logic",
+    "disclaimer": "Phân loại SLE khi đạt ≥ 4/17 tiêu chuẩn (ít nhất 1 lâm sàng + 1 miễn dịch), HOẶC sinh thiết thận viêm thận Lupus xác nhận + ANA hoặc Anti-dsDNA dương tính."
+  },
+
+  "aki_kdigo": {
+    "id": "aki_kdigo",
+    "name": "Tiêu chuẩn KDIGO 2012 — AKI",
+    "specialty": "Nội khoa",
+    "icd": "N17",
+    "type": "diagnosis",
+    "disease": "Tổn thương thận cấp (Acute Kidney Injury — AKI)",
+    "description": "Định nghĩa và phân giai đoạn Tổn thương Thận Cấp theo Hội Bệnh Thận Học Quốc Tế (KDIGO 2012), được sử dụng toàn cầu và khuyến cáo áp dụng tại Việt Nam.",
+    "featured": false,
+    "references": [
+      "KDIGO Clinical Practice Guideline for Acute Kidney Injury. Kidney Int Suppl. 2012;2(1):1-138."
+    ],
+    "criteria": {
+      "major": [
+        { "id": "aki_m1", "text": "Tăng creatinine huyết thanh ≥ 0.3 mg/dL (≥ 26.5 µmol/L) trong 48 giờ." },
+        { "id": "aki_m2", "text": "Tăng creatinine huyết thanh ≥ 1.5 lần so với nền trong vòng 7 ngày trước." },
+        { "id": "aki_m3", "text": "Lượng nước tiểu < 0.5 mL/kg/h liên tục ≥ 6 giờ." }
+      ],
+      "minor": [
+        { "id": "aki_n1", "text": "Giai đoạn 1: Creatinine tăng 1.5-1.9× nền HOẶC nước tiểu < 0.5 mL/kg/h trong 6-12 giờ." },
+        { "id": "aki_n2", "text": "Giai đoạn 2: Creatinine tăng 2.0-2.9× nền HOẶC nước tiểu < 0.5 mL/kg/h trong ≥ 12 giờ." },
+        { "id": "aki_n3", "text": "Giai đoạn 3: Creatinine tăng ≥ 3× nền HOẶC ≥ 4.0 mg/dL HOẶC bắt đầu RRT HOẶC nước tiểu < 0.3 mL/kg/h trong ≥ 24h." }
+      ]
+    },
+    "logic_type": "aki_logic",
+    "disclaimer": "Chẩn đoán AKI khi thỏa mãn BẤT KỲ 1 trong 3 tiêu chuẩn chính. Phân giai đoạn theo tiêu chuẩn phụ phụ để hướng dẫn xử trí và theo dõi."
+  },
+
+  "ranson": {
+    "id": "ranson",
+    "name": "Tiêu chuẩn Ranson — Viêm tụy cấp",
+    "specialty": "Tiêu hóa",
+    "icd": "K85",
+    "type": "scoring",
+    "disease": "Viêm tụy cấp (Acute Pancreatitis)",
+    "description": "Thang điểm Ranson đánh giá mức độ nặng Viêm tụy cấp, phân tầng nguy cơ tử vong. Thường dùng tại nhập viện (5 tiêu chuẩn đầu) và sau 48 giờ (6 tiêu chuẩn sau).",
+    "featured": false,
+    "references": [
+      "Ranson JH, et al. Prognostic signs and the role of operative management in acute pancreatitis. Surg Gynecol Obstet. 1974;139(1):69-81.",
+      "ACG Clinical Guideline: Management of Acute Pancreatitis. Am J Gastroenterol. 2013."
+    ],
+    "criteria": {
+      "major": [
+        { "id": "ran_m1", "text": "Lúc nhập viện: Tuổi > 55 tuổi. (+1 điểm)" },
+        { "id": "ran_m2", "text": "Lúc nhập viện: Bạch cầu > 16.000/mm³. (+1 điểm)" },
+        { "id": "ran_m3", "text": "Lúc nhập viện: Glucose máu > 200 mg/dL (> 11.1 mmol/L). (+1 điểm)" },
+        { "id": "ran_m4", "text": "Lúc nhập viện: LDH huyết thanh > 350 IU/L. (+1 điểm)" },
+        { "id": "ran_m5", "text": "Lúc nhập viện: AST (SGOT) > 250 IU/L. (+1 điểm)" }
+      ],
+      "minor": [
+        { "id": "ran_n1", "text": "Sau 48 giờ: Hematocrit giảm > 10%. (+1 điểm)" },
+        { "id": "ran_n2", "text": "Sau 48 giờ: BUN tăng > 5 mg/dL sau bù dịch. (+1 điểm)" },
+        { "id": "ran_n3", "text": "Sau 48 giờ: Ca²⁺ huyết thanh < 8 mg/dL (< 2 mmol/L). (+1 điểm)" },
+        { "id": "ran_n4", "text": "Sau 48 giờ: PaO₂ < 60 mmHg (Giảm oxy máu). (+1 điểm)" },
+        { "id": "ran_n5", "text": "Sau 48 giờ: Base deficit > 4 mEq/L. (+1 điểm)" },
+        { "id": "ran_n6", "text": "Sau 48 giờ: Sequestration dịch ước tính > 6 lít. (+1 điểm)" }
+      ]
+    },
+    "logic_type": "ranson_logic",
+    "disclaimer": "0-2 điểm: Tử vong < 1% (viêm tụy nhẹ). 3-4 điểm: Tử vong ~15%. 5-6 điểm: Tử vong ~40%. ≥ 7 điểm: Tử vong > 99% (rất nặng, cần ICU)."
+  },
+
+  "child_pugh": {
+    "id": "child_pugh",
+    "name": "Thang điểm Child-Pugh — Xơ gan",
+    "specialty": "Tiêu hóa",
+    "icd": "K74",
+    "type": "scoring",
+    "disease": "Xơ gan — Phân độ mức độ suy chức năng gan",
+    "description": "Thang điểm Child-Pugh phân loại mức độ nặng bệnh xơ gan (Child-Pugh A/B/C), ảnh hưởng đến quyết định điều trị, theo dõi ghép gan và tiên lượng tử vong.",
+    "featured": false,
+    "references": [
+      "Child CG, Turcotte JG. Surgery and portal hypertension. Major Probl Clin Surg. 1964.",
+      "Pugh RN, et al. Transection of the oesophagus for bleeding oesophageal varices. Br J Surg. 1973."
+    ],
+    "criteria": {
+      "major": [
+        { "id": "cp_m1", "text": "Bilirubin huyết thanh: < 2 mg/dL (1 điểm) / 2-3 mg/dL (2 điểm) / > 3 mg/dL (3 điểm)." },
+        { "id": "cp_m2", "text": "Albumin huyết thanh: > 3.5 g/dL (1 điểm) / 2.8-3.5 g/dL (2 điểm) / < 2.8 g/dL (3 điểm)." },
+        { "id": "cp_m3", "text": "PT (Prothrombin time) kéo dài: < 4 giây (1 điểm) / 4-6 giây (2 điểm) / > 6 giây (3 điểm)." }
+      ],
+      "minor": [
+        { "id": "cp_n1", "text": "Báng bụng (Ascites): Không có (1 điểm) / Kiểm soát được bằng thuốc (2 điểm) / Kháng trị (3 điểm)." },
+        { "id": "cp_n2", "text": "Bệnh não gan (Hepatic encephalopathy): Không có (1 điểm) / Độ I-II (2 điểm) / Độ III-IV (3 điểm)." }
+      ]
+    },
+    "logic_type": "child_pugh_logic",
+    "disclaimer": "Child-Pugh A (5-6 điểm): Suy gan bù, tiên lượng tốt. Child-Pugh B (7-9 điểm): Suy gan trung bình. Child-Pugh C (10-15 điểm): Suy gan mất bù nặng, cân nhắc ghép gan."
+  },
+
+  "met_syndrome": {
+    "id": "met_syndrome",
+    "name": "Hội chứng Chuyển hóa — IDF/AHA/NHLBI 2009",
+    "specialty": "Nội tiết",
+    "icd": "E88.81",
+    "type": "classification",
+    "disease": "Hội chứng chuyển hóa (Metabolic Syndrome)",
+    "description": "Tiêu chuẩn đồng thuận quốc tế 2009 chẩn đoán Hội chứng chuyển hóa — cần ≥ 3/5 yếu tố. Tăng nguy cơ ĐTĐ type 2 và bệnh tim mạch.",
+    "featured": false,
+    "references": [
+      "Alberti KG, et al. Harmonizing the metabolic syndrome: a joint interim statement of the IDF Task Force on Epidemiology and Prevention; NHLBI; AHA; WHF; IAS; and IASO. Circulation. 2009."
+    ],
+    "criteria": {
+      "major": [
+        { "id": "met_m1", "text": "Vòng bụng tăng: Theo tiêu chuẩn dân số cụ thể — Châu Á: Nam ≥ 90 cm, Nữ ≥ 80 cm. (Tây phương: Nam ≥ 102 cm, Nữ ≥ 88 cm)." },
+        { "id": "met_m2", "text": "Triglycerides ≥ 150 mg/dL (≥ 1.7 mmol/L) — hoặc đang điều trị tăng Triglycerides." },
+        { "id": "met_m3", "text": "HDL-C giảm: Nam < 40 mg/dL (< 1.0 mmol/L), Nữ < 50 mg/dL (< 1.3 mmol/L) — hoặc đang điều trị." }
+      ],
+      "minor": [
+        { "id": "met_n1", "text": "Huyết áp ≥ 130/85 mmHg — hoặc đang điều trị tăng huyết áp." },
+        { "id": "met_n2", "text": "Đường huyết đói ≥ 100 mg/dL (≥ 5.6 mmol/L) — hoặc đã được chẩn đoán ĐTĐ type 2." }
+      ]
+    },
+    "logic_type": "metsyn_logic",
+    "disclaimer": "Chẩn đoán Hội chứng chuyển hóa khi có ≥ 3 trong 5 tiêu chuẩn (bất kể tiêu chuẩn chính hay phụ). Điều trị lối sống là ưu tiên hàng đầu."
+  },
+
+  "ards_berlin": {
+    "id": "ards_berlin",
+    "name": "Định nghĩa Berlin — ARDS 2012",
+    "specialty": "Hô hấp",
+    "icd": "J80",
+    "type": "diagnosis",
+    "disease": "Hội chứng suy hô hấp cấp tiến triển (ARDS)",
+    "description": "Định nghĩa Berlin 2012 phân loại ARDS dựa trên tỷ số P/F (PaO₂/FiO₂), thay thế định nghĩa AECC cũ. Áp dụng trong ICU, hướng dẫn chiến lược thông khí cơ học bảo vệ phổi.",
+    "featured": true,
+    "references": [
+      "ARDS Definition Task Force, Ranieri VM, et al. Acute respiratory distress syndrome: the Berlin Definition. JAMA. 2012;307(23):2526-33."
+    ],
+    "criteria": {
+      "major": [
+        { "id": "ards_m1", "text": "Khởi phát trong vòng 1 tuần sau: Yếu tố thúc đẩy lâm sàng đã biết HOẶC triệu chứng hô hấp mới xuất hiện/xấu đi." },
+        { "id": "ards_m2", "text": "Hình ảnh học (X-quang hoặc CT ngực): Đục mờ hai phổi không giải thích hoàn toàn bởi tràn dịch, xẹp thùy/phổi, hoặc nốt mờ." },
+        { "id": "ards_m3", "text": "Nguyên nhân phù phổi: Không giải thích hoàn toàn bởi suy tim hoặc quá tải dịch (cần siêu âm tim nếu không có yếu tố nguy cơ rõ ràng)." }
+      ],
+      "minor": [
+        { "id": "ards_n1", "text": "ARDS Nhẹ (Mild): P/F = 201-300 mmHg với PEEP hoặc CPAP ≥ 5 cmH₂O." },
+        { "id": "ards_n2", "text": "ARDS Trung bình (Moderate): P/F = 101-200 mmHg với PEEP ≥ 5 cmH₂O." },
+        { "id": "ards_n3", "text": "ARDS Nặng (Severe): P/F ≤ 100 mmHg với PEEP ≥ 5 cmH₂O." }
+      ]
+    },
+    "logic_type": "ards_logic",
+    "disclaimer": "ARDS Berlin yêu cầu cả 3 tiêu chuẩn chính (thời gian, hình ảnh học, nguyên nhân). Mức độ nặng xác định theo P/F ratio (tiêu chuẩn phụ) để hướng dẫn chiến lược PEEP và thông khí."
+  },
+
+  "curb65": {
+    "id": "curb65",
+    "name": "CURB-65 — Phân tầng Viêm phổi",
+    "specialty": "Hô hấp",
+    "icd": "J18",
+    "type": "scoring",
+    "disease": "Viêm phổi cộng đồng (Community-acquired Pneumonia — CAP)",
+    "description": "Thang điểm CURB-65 phân tầng mức độ nặng viêm phổi cộng đồng, giúp quyết định điều trị ngoại trú, nhập viện thường hay nhập ICU. Ưu tiên sử dụng ở người lớn.",
+    "featured": true,
+    "references": [
+      "Lim WS, et al. Defining community acquired pneumonia severity on presentation to hospital: an international derivation and validation study. Thorax. 2003;58(5):377-82.",
+      "BTS Guidelines for Management of CAP. Thorax. 2009."
+    ],
+    "criteria": {
+      "major": [
+        { "id": "curb_1", "text": "C — Confusion (Lú lẫn): Điểm AMT (Abbreviated Mental Test) ≤ 8 điểm hoặc tri giác mới thay đổi. (+1 điểm)" },
+        { "id": "curb_2", "text": "U — Urea > 7 mmol/L (BUN > 19 mg/dL). (+1 điểm)" },
+        { "id": "curb_3", "text": "R — Respiratory rate ≥ 30 lần/phút (Tần số thở nhanh). (+1 điểm)" },
+        { "id": "curb_4", "text": "B — Blood pressure: HA tâm thu < 90 mmHg HOẶC HA tâm trương ≤ 60 mmHg. (+1 điểm)" }
+      ],
+      "minor": [
+        { "id": "curb_5", "text": "65 — Age ≥ 65 tuổi. (+1 điểm)" }
+      ]
+    },
+    "logic_type": "curb65_logic",
+    "disclaimer": "CURB-65: 0-1 điểm → Tử vong thấp, điều trị ngoại trú. 2 điểm → Xem xét nhập viện. ≥ 3 điểm → Nhập viện, ≥ 4-5 điểm → Cân nhắc ICU."
   }
 }

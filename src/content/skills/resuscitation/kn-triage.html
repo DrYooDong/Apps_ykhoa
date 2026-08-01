@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Hướng dẫn phân loại bệnh nhân cấp cứu (Triage) theo ESI v4, đánh giá ABCDE và phân loại thảm họa START/JumpSTART.">
-  <title>Đánh Giá & Phân Loại (Triage) - CliniPortal</title>
+  <meta name="description" content="Hướng dẫn phân loại bệnh nhân cấp cứu (Triage) theo Bộ Y tế Việt Nam, thuật toán ESI v4, đánh giá ABCDE và công cụ tính toán phân loại thảm họa START/JumpSTART.">
+  <title>Đánh Giá &amp; Phân Loại Cấp Cứu (Triage) – CliniPortal</title>
 
   <!-- Google Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,6 +32,24 @@
       --b: #dc2626;
       --c: #f87171;
     }
+
+    /* Sticky Tab Bar */
+    .tabs {
+      position: sticky;
+      top: var(--header-height, 60px);
+      z-index: 100;
+      background: var(--color-surface);
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      margin: 0 0 20px;
+      padding: 8px 12px 4px;
+      border-bottom: 2px solid var(--color-divider);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      scrollbar-width: thin;
+    }
     
     .esi-grid {
       display: grid;
@@ -48,11 +66,11 @@
       color: white;
       font-size: var(--text-sm);
     }
-    .esi-1 { background-color: #881337; } /<em> Deep rose / burgundy </em>/
-    .esi-2 { background-color: #b91c1c; } /<em> Red </em>/
-    .esi-3 { background-color: #d97706; } /<em> Orange </em>/
-    .esi-4 { background-color: #eab308; color: #1e293b; } /<em> Yellow </em>/
-    .esi-5 { background-color: #16a34a; } /<em> Green </em>/
+    .esi-1 { background-color: #881337; }
+    .esi-2 { background-color: #b91c1c; }
+    .esi-3 { background-color: #d97706; }
+    .esi-4 { background-color: #eab308; color: #1e293b; }
+    .esi-5 { background-color: #16a34a; }
 
     .triage-card {
       border-left: 5px solid var(--card-accent);
@@ -66,6 +84,77 @@
     .triage-yellow { --card-accent: #eab308; }
     .triage-green { --card-accent: #16a34a; }
     .triage-black { --card-accent: #1e293b; }
+
+    /* START CALCULATOR WIDGET */
+    .start-calc-box {
+      background: linear-gradient(135deg, rgba(220, 38, 38, 0.06) 0%, rgba(185, 28, 28, 0.06) 100%);
+      border: 2px solid var(--color-danger, #dc2626);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .calc-q-row {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .calc-q-title {
+      font-weight: 700;
+      font-size: var(--text-sm);
+      color: var(--color-text);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .calc-opt-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .calc-opt-lbl {
+      font-size: var(--text-xs);
+      color: var(--color-text);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-weight: 600;
+    }
+
+    .triage-res-display {
+      background: var(--color-surface);
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .triage-color-pill {
+      padding: 0.85rem 1.5rem;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: var(--text-md);
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .triage-pill-red { background: #dc2626; }
+    .triage-pill-yellow { background: #eab308; color: #1e293b; }
+    .triage-pill-green { background: #16a34a; }
+    .triage-pill-black { background: #1e293b; }
   </style>
 </head>
 
@@ -75,7 +164,7 @@
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
   <div class="app-container">
-        <!-- SIDEBAR -->
+    <!-- SIDEBAR -->
     <aside class="app-sidebar" id="appSidebar">
       <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
         <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
@@ -87,7 +176,7 @@
       <nav class="sidebar-nav" aria-label="Điều hướng chính">
         <ul class="nav-list" role="list">
           <li>
-            <a href="../../ebm/guidelines/kho-guidelines/index.html" class="nav-item" title="Trang chủ">
+            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
               <span class="nav-icon">🏠</span>
               <span class="nav-text">Trang chủ</span>
             </a>
@@ -98,6 +187,18 @@
               <span class="nav-text">Kỹ năng</span>
             </a>
           </li>
+          <li>
+            <a href="../../approaches/tiep-can.html" class="nav-item" title="Tiếp cận">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../pharmacology/duoc-ly.html" class="nav-item" title="Dược lý">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý</span>
+            </a>
+          </li>
         </ul>
       </nav>
     </aside>
@@ -105,47 +206,61 @@
     <!-- MAIN WRAPPER -->
     <main class="main-wrapper" id="mainContent">
       <!-- BREADCRUMB -->
-      <clini-breadcrumb items='[{"label": "🏠 Home", "url": "../../../index.html"}, {"label": "Kỹ năng lâm sàng", "url": "../ky-nang.html"}, {"label": "Đánh giá & Phân loại (Triage)"}]'></clini-breadcrumb>
+      <clini-breadcrumb items='[{"label": "🏠 Home", "url": "../../../../index.html"}, {"label": "Kỹ năng lâm sàng", "url": "../ky-nang.html"}, {"label": "Đánh giá & Phân loại (Triage)"}]'></clini-breadcrumb>
 
       <!-- HERO SECTION -->
       <section class="hero">
-        <h1>Đánh Giá & Phân Loại Cấp Cứu (Triage)</h1>
-        <p>Quy trình phân loại lâm sàng có hệ thống nhằm tối ưu hóa thời gian vàng điều trị và phân bổ nguồn lực y tế hợp lý. Dựa trên thuật toán <span class="term-hl">ESI</span> v4 và quy tắc cấp cứu thảm họa.</p>
+        <h1>Đánh Giá &amp; Phân Loại Cấp Cứu Nạn Nhân (Triage)</h1>
+        <p>Quy trình đánh giá lâm sàng phân loại nguy cơ theo quy định <strong>Bộ Y tế Việt Nam</strong> và thuật toán <span class="term-hl">START / ESI v4</span> nhằm tối ưu hóa thời gian vàng cứu chữa tại hiện trường và phòng cấp cứu.</p>
         <div class="quick">
           <div class="qi">
-            <b>Mục Tiêu</b>
-            Xác định đúng độ nặng, đúng thời điểm can thiệp, tránh quá tải cấp cứu.
+            <b>Thời Gian Đánh Giá (BYT)</b>
+            Thông thường: <strong>2 - 5 phút</strong>/người. Thảm họa (MCI): <strong>30 - 60 giây</strong>/người.
           </div>
           <div class="qi">
             <b>Hệ Thống Phân Loại</b>
-            ESI v4 (5 mức độ) & START / JumpSTART trong thảm họa.
+            Thuật toán START (4 màu BYT) &amp; ESI v4 (5 mức độ).
           </div>
           <div class="qi">
             <b>Nguyên Tắc Cốt Lõi</b>
-            Đánh giá mối đe dọa sinh tồn (ABCDE) trong 5 phút đầu tiên.
+            Sơ cứu tối đa số nạn nhân, đánh giá mối đe dọa sinh tồn (ABCDE) &amp; CRT.
           </div>
         </div>
       </section>
 
       <!-- TABS SWITCHER -->
       <div class="tabs">
-        <button class="tab-btn active" data-tab="core">Nguyên lý Triage</button>
-        <button class="tab-btn" data-tab="abcde">Tiếp cận ABCDE</button>
-        <button class="tab-btn" data-tab="esi">Phân loại ESI v4</button>
-        <button class="tab-btn" data-tab="special">Đối tượng Đặc thù</button>
-        <button class="tab-btn" data-tab="mci">Thảm họa (MCI)</button>
-        <button class="tab-btn" data-tab="code-red">Báo động đỏ</button>
+        <button class="tab-btn active" data-tab="core">1. Quy Chuẩn Bộ Y Tế</button>
+        <button class="tab-btn" data-tab="abcde">2. Đánh Giá ABCDE &amp; CRT</button>
+        <button class="tab-btn" data-tab="esi">3. Phân loại ESI v4</button>
+        <button class="tab-btn" data-tab="special">4. Đối tượng Đặc thù</button>
+        <button class="tab-btn" data-tab="mci">5. Thảm họa (START Calculator)</button>
+        <button class="tab-btn" data-tab="code-red">6. Báo động đỏ nội viện</button>
       </div>
 
-      <!-- TAB 1: CORE -->
+      <!-- TAB 1: CORE BYT -->
       <section class="tab active" id="core">
         <div class="card">
-          <h2>1. Bản chất & Nguyên lý Sinh lý bệnh của Triage</h2>
+          <h2>1. Khái Niệm &amp; Quy Định Phân Loại Nạn Nhân (Bộ Y Tế)</h2>
           <ul>
-            <li><strong>Không phải chẩn đoán xác định:</strong> Triage là quá trình đánh giá chủ động, liên tục và có hệ thống nhằm xác định mức độ khẩn cấp, từ đó đưa ra thứ tự ưu tiên điều trị.</li>
-            <li><strong>Nguyên lý cốt lõi:</strong> Đảm bảo <em>"đúng bệnh nhân, đúng thời điểm, đúng nơi chốn và đúng nguồn lực"</em>.</li>
-            <li><strong>Sinh lý bệnh mất bù:</strong> Các cơ chế bù trừ cơ thể (nhịp tim nhanh, nhịp thở nhanh, co mạch ngoại vi) thường che lấp suy sụp huyết động ở giai đoạn sớm. Người làm Triage phải phát hiện các dấu hiệu cạn kiệt <span class="term-hl">khoảng dự trữ sinh lý</span> trước khi bệnh nhân rơi vào trạng thái mất bù và ngưng tim.</li>
+            <li><strong>Khái niệm Triage:</strong> Phân loại nạn nhân tại hiện trường là đánh giá mức độ tổn thương và độ nặng để ưu tiên xử trí khi có nhiều nạn nhân đến cùng lúc. Mụch đích nhằm sơ cứu và cứu sống càng nhiều nạn nhân càng tốt.</li>
+            <li><strong>Quy định thời gian đánh giá chuẩn (BYT):</strong>
+              <ul>
+                <li><em>Cấp cứu thông thường:</em> Đánh giá từ <strong>2 đến 5 phút</strong> cho mỗi nạn nhân.</li>
+                <li><em>Cấp cứu thảm họa hàng loạt (MCI):</em> Mỗi nạn nhân chỉ đánh giá nhanh trong <strong>30 đến 60 giây</strong> tối đa.</li>
+              </ul>
+            </li>
+            <li><strong>Quy tắc đánh dấu màu BYT:</strong> Sử dụng 4 màu cơ bản: <strong>ĐỎ - VÀNG - XANH LÁ - ĐEN</strong>. Thẻ màu làm bằng chất liệu cứng/nhựa kích thước <code>10x13 cm</code> (cán cắm tại hiện trường dài 15 cm) hoặc dây buộc màu gài vào tay/ngực nạn nhân.</li>
           </ul>
+        </div>
+
+        <div class="card" style="margin-top: 1rem;">
+          <h2>Quy Trình 3 Bước Đánh Giá Hiện Trường (BYT)</h2>
+          <ol style="margin: 0; padding-left: 1.2rem; font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.7;">
+            <li><strong>Bước 1: Đánh giá an toàn hiện trường &amp; Nguy cơ:</strong> Loại bỏ các nguy cơ cháy nổ, sập nhà, chất độc, khói, xăng dầu, điện trước khi tiếp cận nạn nhân.</li>
+            <li><strong>Bước 2: Phân loại nhanh tình trạng sinh tồn:</strong> Đánh giá nhanh Tri giác (tỉnh/mê), Tuần hoàn (chảy máu), Hô hấp (khó thở/ngừng thở) và nghi ngờ Chấn thương cột sống cổ.</li>
+            <li><strong>Bước 3: Gán thẻ màu &amp; Đưa về khu vực ưu tiên:</strong> Gắn thẻ màu và phân về các khu vực riêng biệt. Đánh giá kiểm tra lại liên tục theo diễn biến sau đó.</li>
+          </ol>
         </div>
       </section>
 
@@ -157,11 +272,24 @@
             <p>Thực hiện sơ bộ trong <strong>5 phút đầu tiên</strong> ở mọi bệnh nhân cấp cứu trước khi áp dụng thang phân loại chi tiết:</p>
             <ul>
               <li><strong>A (Airway - Đường thở):</strong> Kiểm tra sự thông thoáng, tìm dị vật, phù nề, hoặc tiếng thở rít (stridor). Bảo vệ cột sống cổ nếu nghi chấn thương.</li>
-              <li><strong>B (Breathing - Hô hấp):</strong> Tần số, biên độ, công thở (co kéo cơ hô hấp phụ, phập phồng cánh mũi) và đo <span class="term-hl-secondary">SpO2</span>.</li>
-              <li><strong>C (Circulation - Tuần hoàn):</strong> Nhịp tim, huyết áp, thời gian đổ đầy mao mạch (<span class="term-hl-secondary">CRT</span>), màu sắc/nhiệt độ da. Cầm máu ngoài ngay nếu có chảy máu ồ ạt.</li>
-              <li><strong>D (Disability - Thần kinh):</strong> Ý thức qua <span class="term-hl">AVPU</span> hoặc <span class="term-hl-secondary">GCS</span>, phản xạ đồng tử, và đo đường huyết mao mạch.</li>
+              <li><strong>B (Breathing - Hô hấp):</strong> Tần số thở (bình thường 10 - 30 l/p; &lt; 10 hoặc &gt; 30 l/p là nguy kịch), công thở (co kéo cơ hô hấp phụ) và <span class="term-hl-secondary">SpO2</span>.</li>
+              <li><strong>C (Circulation - Tuần hoàn):</strong> Kiểm tra nhịp tim, mạch quay, huyết áp và <strong>Kỹ thuật CRT</strong>. Cầm máu ngoài ngay nếu có chảy máu ồ ạt.</li>
+              <li><strong>D (Disability - Thần kinh):</strong> Tri giác qua <span class="term-hl">AVPU</span> / <span class="term-hl-secondary">GCS</span>, phản xạ đồng tử, và kiểm tra chấn thương cột sống cổ.</li>
               <li><strong>E (Exposure - Bộc lộ):</strong> Bộc lộ toàn thân tìm tổn thương ẩn, giữ ấm tránh hạ thân nhiệt.</li>
             </ul>
+
+            <!-- CRT Technique Callout BYT -->
+            <div class="skill-note note-info" style="margin-top: 1rem;">
+              <i class="fas fa-hand-holding-medical"></i>
+              <strong>KỸ THUẬT THỬ THỜI GIAN ĐỔ ĐẦY MAO MẠCH (CRT) THEO BỘ Y TẾ:</strong>
+              <p style="margin: 0.3rem 0 0; font-size: var(--text-xs); color: var(--color-text-muted);">
+                Lấy ngón tay cái ấn chặt lên đầu móng tay nạn nhân trong một vài giây rồi buông ra:
+              </p>
+              <ul style="margin: 0.2rem 0 0; padding-left: 1.2rem; font-size: var(--text-xs);">
+                <li><strong>Bình thường (&lt; 2 giây):</strong> Móng tay hửng hồng trở lại nhanh chóng.</li>
+                <li><strong>Bất thường (&gt; 2 giây):</strong> Nạp lại tưới máu chậm &gt; 2 giây (dấu hiệu giảm tưới máu/sốc -> Phân loại <strong>THẺ ĐỎ</strong>).</li>
+              </ul>
+            </div>
           </div>
 
           <div class="card">
@@ -187,7 +315,7 @@
           <div class="esi-grid">
             <div class="esi-badge esi-1">Mức 1: Hồi sức khẩn cấp</div>
             <div class="esi-badge esi-2">Mức 2: Cấp cứu trì hoãn ngắn</div>
-            <div class="esi-badge esi-3">Mức 3: Khẩn cấp (>= 2 nguồn lực)</div>
+            <div class="esi-badge esi-3">Mức 3: Khẩn cấp (&ge; 2 nguồn lực)</div>
             <div class="esi-badge esi-4">Mức 4: Ít khẩn cấp (1 nguồn lực)</div>
             <div class="esi-badge esi-5">Mức 5: Không khẩn cấp (0 nguồn lực)</div>
           </div>
@@ -278,53 +406,84 @@
         </div>
       </section>
 
-      <!-- TAB 5: MCI -->
+      <!-- TAB 5: MCI & START CALCULATOR WIDGET -->
       <section class="tab" id="mci">
         <div class="card">
-          <h2>5. Triage trong Thảm họa và Tai nạn hàng loạt (MCI)</h2>
-          <p>Mục tiêu: Cứu sống số đông nạn nhân nhất có thể khi nguồn lực y tế bị quá tải cực độ.</p>
-        </div>
+          <h2>5. Phân Loại Nạn Nhân Trong Thảm Họa (MCI) &amp; Thuật Toán START</h2>
+          <p>Áp dụng quy định Bộ Y tế Việt Nam và ATLS: Mỗi nạn nhân chỉ đánh giá nhanh trong <strong>30 - 60 giây</strong> để xử trí cứu tối đa số nạn nhân.</p>
 
-        <div class="grid2">
-          <div class="card">
-            <h2>START (Simple Triage and Rapid Treatment) - Người lớn</h2>
-            <p>Đánh giá &lt; 60 giây mỗi nạn nhân theo trình tự <strong>RPM (Respiration - Perfusion - Mental status)</strong>:</p>
-            
-            <div class="triage-card triage-green">
-              <strong>Thẻ XANH (Trì hoãn được):</strong> Nạn nhân đi lại được, tổn thương nhẹ tự di chuyển theo hướng dẫn.
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; margin-top: 1rem;">
+            <div class="triage-card triage-red" style="margin:0;">
+              <strong style="color:#dc2626;">🔴 THẺ ĐỎ (Cấp cứu Ưu tiên 1):</strong>
+              <p style="margin:0.2rem 0 0; font-size:var(--text-xs);">Thở &lt; 10 hoặc &gt; 30 l/p, CRT &gt; 2s / mất mạch quay, không làm theo lệnh, nghi chấn thương cổ. Xử trí ngay!</p>
             </div>
-            
-            <div class="triage-card triage-black">
-              <strong>Thẻ ĐEN (Tử vong / Tiên lượng tử vong):</strong> Không thở dù đã được ngửa đầu khai thông đường thở.
+            <div class="triage-card triage-yellow" style="margin:0;">
+              <strong style="color:#b45309;">🟡 THẺ VÀNG (Cấp cứu Ưu tiên 2):</strong>
+              <p style="margin:0.2rem 0 0; font-size:var(--text-xs);">Thở 10-30 l/p, CRT &lt; 2s, bắt được mạch quay, vâng lệnh nhưng không đi lại được. Cấp cứu trì hoãn ngắn.</p>
             </div>
-
-            <div class="triage-card triage-red">
-              <strong>Thẻ ĐỎ (Nguy kịch / Khẩn cấp):</strong>
-              <ul>
-                <li>Không thở &rarr; ngửa đầu &rarr; bắt đầu thở lại.</li>
-                <li>Thở nhanh &gt; 30 lần/phút.</li>
-                <li>Mạch quay yếu/mất hoặc thời gian đổ đầy mao mạch CRT &gt; 2 giây.</li>
-                <li>Không thực hiện được các lệnh đơn giản (rối loạn ý thức).</li>
-              </ul>
+            <div class="triage-card triage-green" style="margin:0;">
+              <strong style="color:#15803d;">🟢 THẺ XANH LÁ (Cấp cứu Ưu tiên 3):</strong>
+              <p style="margin:0.2rem 0 0; font-size:var(--text-xs);">Tự đi lại được, tổn thương nhẹ. Tập trung khu vực riêng để sơ cứu &amp; động viên tinh thần.</p>
             </div>
-
-            <div class="triage-card triage-yellow">
-              <strong>Thẻ VÀNG (Cần theo dõi):</strong> Thở &lt; 30 l/p, CRT &lt; 2s, làm theo lệnh đơn giản nhưng không thể tự đi lại (chấn thương xương đùi, chấn thương cột sống ổn định).
+            <div class="triage-card triage-black" style="margin:0;">
+              <strong style="color:#1e293b;">⚫ THẺ ĐEN (Tử vong / Hấp hồi):</strong>
+              <p style="margin:0.2rem 0 0; font-size:var(--text-xs);">Đã tử vong (không thở sau khai thông đường thở), hoặc tổn thương não quá nặng không khả năng cứu.</p>
             </div>
           </div>
 
-          <div class="card">
-            <h2>JumpSTART - Dành cho Trẻ em (1 - 8 tuổi)</h2>
-            <div class="clinical-warning">
-              <h4>⚠️ Đặc trưng sinh lý trẻ em</h4>
-              <p>Trẻ em thường ngưng thở trước khi ngưng tim (do thiếu oxy). Việc đánh giá ngưng thở cần kết hợp bắt mạch trước khi kết luận tử vong.</p>
+          <!-- INTERACTIVE START TRIAGE CALCULATOR WIDGET -->
+          <div class="start-calc-box">
+            <h3 style="margin:0 0 1rem; color:var(--color-danger, #dc2626); font-size:var(--text-md); font-weight:800; display:flex; align-items:center; gap:0.5rem;">
+              <i class="fas fa-calculator"></i> Công Cụ Thực Hành Mô Phỏng Thuật Toán Phân Loại START (BYT)
+            </h3>
+            <p style="font-size:var(--text-xs); color:var(--color-text-muted); margin-bottom:1rem;">
+              Chọn nhanh các thông số đánh giá nạn nhân tại hiện trường để máy tính xuất ngay phân loại thẻ màu chuẩn Bộ Y tế:
+            </p>
+
+            <div class="calc-q-row">
+              <div class="calc-q-title"><i class="fas fa-person-walking"></i> 1. Nạn nhân có thể tự đi lại được không?</div>
+              <div class="calc-opt-group">
+                <label class="calc-opt-lbl"><input type="radio" name="sq1" value="yes"> Có (Đi lại được)</label>
+                <label class="calc-opt-lbl"><input type="radio" name="sq1" value="no" checked> Không đi lại được</label>
+              </div>
             </div>
-            <ul>
-              <li><strong>Khai thông đường thở:</strong> Nếu trẻ không thở &rarr; tiến hành bắt mạch mạch lớn (mạch đùi/mạch cảnh).</li>
-              <li><strong>Nếu có mạch:</strong> Tiến hành thổi ngạt cứu mạng 5 lần. Nếu trẻ thở lại &rarr; <strong>Thẻ ĐỎ</strong>. Nếu vẫn không thở &rarr; <strong>Thẻ ĐEN</strong>.</li>
-              <li><strong>Nếu không mạch:</strong> Đóng thẻ <strong>ĐEN</strong> ngay lập tức.</li>
-              <li><strong>Tần số thở:</strong> Mức giới hạn nhịp thở ở trẻ em trong JumpSTART là 15 - 45 lần/phút. Thở &lt; 15 hoặc &gt; 45 lần/phút &rarr; <strong>Thẻ ĐỎ</strong>.</li>
-            </ul>
+
+            <div class="calc-q-row">
+              <div class="calc-q-title"><i class="fas fa-wind"></i> 2. Tự thở &amp; Tần số hô hấp (Lần/phút):</div>
+              <div class="calc-opt-group">
+                <label class="calc-opt-lbl"><input type="radio" name="sq2" value="no-breathe"> Không thở (Khai thông đường thở vẫn ngưng)</label>
+                <label class="calc-opt-lbl"><input type="radio" name="sq2" value="breathe-after-open"> Ban đầu ngưng &rarr; Khai thông đường thở mới thở lại</label>
+                <label class="calc-opt-lbl"><input type="radio" name="sq2" value="abnormal" checked> Tự thở nhưng &lt; 10 hoặc &gt; 30 lần/phút</label>
+                <label class="calc-opt-lbl"><input type="radio" name="sq2" value="normal"> Tự thở bình thường (10 - 30 lần/phút)</label>
+              </div>
+            </div>
+
+            <div class="calc-q-row">
+              <div class="calc-q-title"><i class="fas fa-heart-pulse"></i> 3. Tuần hoàn (Mạch quay &amp; Thời gian CRT):</div>
+              <div class="calc-opt-group">
+                <label class="calc-opt-lbl"><input type="radio" name="sq3" value="weak" checked> Mạch quay rất yếu / Mất mạch HOẶC CRT &gt; 2 giây</label>
+                <label class="calc-opt-lbl"><input type="radio" name="sq3" value="good"> Bắt rõ mạch quay &amp; CRT &le; 2 giây</label>
+              </div>
+            </div>
+
+            <div class="calc-q-row">
+              <div class="calc-q-title"><i class="fas fa-brain"></i> 4. Ý thức &amp; Nghi chấn thương cột sống cổ:</div>
+              <div class="calc-opt-group">
+                <label class="calc-opt-lbl"><input type="radio" name="sq4" value="altered" checked> Không làm theo lệnh / Rối loạn tri giác / Nghi chấn thương cổ</label>
+                <label class="calc-opt-lbl"><input type="radio" name="sq4" value="normal"> Tỉnh táo, vâng theo lệnh đơn giản</label>
+              </div>
+            </div>
+
+            <!-- RESULT DISPLAY -->
+            <div class="triage-res-display" id="startResDisplay">
+              <div class="triage-color-pill triage-pill-red" id="startPill">🔴 THẺ ĐỎ</div>
+              <div>
+                <h4 style="margin:0 0 0.2rem; font-weight:800; font-size:var(--text-md); color:var(--color-text);" id="startResTitle">CẤP CỨU ƯU TIÊN SỐ 1 (NGUY KỊCH)</h4>
+                <p style="margin:0; font-size:var(--text-xs); color:var(--color-text-muted);" id="startResDesc">
+                  Cần can thiệp y tế ngay lập tức tại hiện trường (khai thông đường thở, cầm máu). Vận chuyển cấp cứu ưu tiên số 1.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -348,15 +507,90 @@
           </div>
         </div>
       </section>
+
+      <!-- REFERENCES FOOTER -->
+      <section class="card" style="margin-top: 2rem;">
+        <h2><i class="fas fa-book-bookmark"></i> Tài Liệu Tham Khảo Chuẩn AMA</h2>
+        <ol style="margin: 0; padding-left: 1.2rem; font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.7;">
+          <li>Bộ Y tế Việt Nam. <em>Phân loại nạn nhân trong sơ cứu, cấp cứu tại nơi làm việc</em>. Bộ Y tế; 2022.</li>
+          <li>Bộ Y tế Việt Nam. <em>Hướng dẫn xử trí cấp cứu phục vụ Đại hội Thể thao Đông Nam Á lần thứ 31 (SEA Games 31)</em>. Quyết định Bộ Y tế; 2022.</li>
+          <li>American College of Surgeons. <em>Advanced Trauma Life Support (ATLS®)</em>. 10th ed. ACS; 2019.</li>
+          <li>Douglas N, Leverett J, Paul J, et al. Performance of First Aid Trained Staff using a Modified START Triage Tool at Achieving Appropriate Triage Compared to a Physiology-Based Triage Strategy at Australian Mass Gatherings. <em>Prehosp Disaster Med</em>. 2020;35(2):184-188.</li>
+        </ol>
+      </section>
+
     </main>
   </div>
 
   <!-- FOOTER PLACEHOLDER -->
   <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
 
-  <!-- Script Sidebar -->
-  <!-- Legacy sidebar.js replaced by main.js -->
+  <!-- Script Logic -->
   <script src="../../../../js/main.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // START Triage Calculator Logic
+      const q1Inputs = document.querySelectorAll('input[name="sq1"]');
+      const q2Inputs = document.querySelectorAll('input[name="sq2"]');
+      const q3Inputs = document.querySelectorAll('input[name="sq3"]');
+      const q4Inputs = document.querySelectorAll('input[name="sq4"]');
+
+      const startPill = document.getElementById('startPill');
+      const startResTitle = document.getElementById('startResTitle');
+      const startResDesc = document.getElementById('startResDesc');
+
+      function calculateSTART() {
+        const q1 = document.querySelector('input[name="sq1"]:checked')?.value;
+        const q2 = document.querySelector('input[name="sq2"]:checked')?.value;
+        const q3 = document.querySelector('input[name="sq3"]:checked')?.value;
+        const q4 = document.querySelector('input[name="sq4"]:checked')?.value;
+
+        // 1. Can walk?
+        if (q1 === 'yes') {
+          setTriageResult('green', '🟢 THẺ XANH LÁ', 'CẤP CỨU ƯU TIÊN SỐ 3 (NHẸ / ĐI LẠI ĐƯỢC)', 'Nạn nhân đi lại được, tổn thương nhẹ. Hướng dẫn tập trung về khu vực Cấp cứu Xanh Lá để sơ cứu và trấn an tinh thần.');
+          return;
+        }
+
+        // 2. Breathing?
+        if (q2 === 'no-breathe') {
+          setTriageResult('black', '⚫ THẺ ĐEN', 'TỬ VONG / HẤP HỐI (KHÔNG CÓ KHẢ NĂNG CỨU)', 'Nạn nhân ngưng thở hoàn toàn sau khi đã ngửa đầu khai thông đường thở. Đánh dấu thẻ Đen để tập trung nguồn lực cứu người khác.');
+          return;
+        }
+
+        if (q2 === 'breathe-after-open' || q2 === 'abnormal') {
+          setTriageResult('red', '🔴 THẺ ĐỎ', 'CẤP CỨU ƯU TIÊN SỐ 1 (NGUY KỊCH)', 'Nạn nhân thở bất thường (< 10 hoặc > 30 l/p) hoặc chỉ thở lại sau khai thông. Cần cấp cứu khẩn cấp tại chỗ & vận chuyển ưu tiên số 1.');
+          return;
+        }
+
+        // 3. Perfusion (CRT / Pulse)
+        if (q3 === 'weak') {
+          setTriageResult('red', '🔴 THẺ ĐỎ', 'CẤP CỨU ƯU TIÊN SỐ 1 (NGUY KỊCH)', 'Thấy mất mạch quay hoặc thời gian đổ đầy mao mạch CRT > 2 giây (sốc mất máu nặng). Cầm máu khẩn cấp & vận chuyển ưu tiên 1.');
+          return;
+        }
+
+        // 4. Mental Status / Neck Injury
+        if (q4 === 'altered') {
+          setTriageResult('red', '🔴 THẺ ĐỎ', 'CẤP CỨU ƯU TIÊN SỐ 1 (NGUY KỊCH)', 'Nạn nhân rối loạn ý thức, không vâng theo lệnh đơn giản hoặc nghi ngờ chấn thương cột sống cổ. Cố định cổ & vận chuyển ưu tiên 1.');
+          return;
+        }
+
+        // Default: Yellow
+        setTriageResult('yellow', '🟡 THẺ VÀNG', 'CẤP CỨU ƯU TIÊN SỐ 2 (CẦN THEO DÕI)', 'Nạn nhân tự thở 10-30 l/p, CRT < 2s, vâng theo lệnh nhưng không thể tự đi lại (gãy xương chi, chấn thương). Cấp cứu trì hoãn ngắn.');
+      }
+
+      function setTriageResult(type, pillText, titleText, descText) {
+        if (!startPill) return;
+        startPill.className = `triage-color-pill triage-pill-${type}`;
+        startPill.textContent = pillText;
+        startResTitle.textContent = titleText;
+        startResDesc.textContent = descText;
+      }
+
+      const allRadios = document.querySelectorAll('.start-calc-box input[type="radio"]');
+      allRadios.forEach(r => r.addEventListener('change', calculateSTART));
+      calculateSTART(); // initial
+    });
+  </script>
 </body>
 
 </html>

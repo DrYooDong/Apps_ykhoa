@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Hướng dẫn Kê toa thuốc ngoại trú và Tham vấn sử dụng thuốc cho người chăm sóc trẻ em chuẩn Bộ Y tế (Thông tư 52/2017 & 18/2018) và Nhi khoa YDS – CliniPortal.">
+  <title>Kê Toa & Tham Vấn Sử Dụng Thuốc Ở Trẻ Em – CliniPortal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../css/components/clinical-skill.css">
+  <script src="../../../../js/main.js" defer></script>
+  <script src="../../../../components/header.js" defer></script>
+  <script src="../../../../components/footer.js" defer></script>
+
+  <style>
+    /* === DESIGN SYSTEM CUSTOM OVERRIDES & STYLES === */
+    .hero-pediatric-rx {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 50%, #0f766e 100%);
+      color: #ffffff;
+      padding: 2.25rem 2rem;
+      border-radius: var(--radius-lg);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-pediatric-rx::after {
+      content: '👶💊';
+      position: absolute;
+      right: 1.5rem;
+      bottom: -0.5rem;
+      font-size: 5.5rem;
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+    .hero-pediatric-rx h1 {
+      margin: 0 0 0.6rem;
+      font-size: var(--text-2xl, 1.75rem);
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-pediatric-rx p {
+      margin: 0 0 1.25rem;
+      opacity: 0.92;
+      font-size: var(--text-sm);
+      max-width: 850px;
+      line-height: 1.6;
+    }
+
+    .hero-badge-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .hero-badge {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 0.45rem 0.85rem;
+      border-radius: var(--radius-md);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #ffffff;
+    }
+
+    /* === TABS STYLING STICKY === */
+    .tab-navigation {
+      position: sticky;
+      top: var(--header-height, 60px);
+      z-index: 100;
+      background: var(--color-surface);
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 2px solid var(--color-border);
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+      padding: 0.5rem 0.5rem 4px 0.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      border-radius: 0 0 var(--radius-md) var(--radius-md);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      padding: 0.75rem 1.25rem;
+      font-family: inherit;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+    }
+
+    .tab-btn:hover {
+      color: var(--color-primary);
+      background: rgba(2, 132, 199, 0.05);
+    }
+
+    .tab-btn.active {
+      color: var(--color-primary);
+      border-bottom-color: var(--color-primary);
+      background: rgba(2, 132, 199, 0.08);
+    }
+
+    .tab-pane {
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .tab-pane.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* === CONTENT CARDS & SECTIONS === */
+    .section-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.05));
+    }
+
+    .section-card h2 {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--color-text);
+      margin: 0 0 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .section-card h2 i {
+      color: var(--color-primary);
+    }
+
+    /* Rule Grid */
+    .rule-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    .rule-card {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-left: 4px solid var(--color-primary);
+      border-radius: var(--radius-md);
+      padding: 1.15rem;
+    }
+
+    .rule-card.danger-border {
+      border-left-color: var(--color-danger, #ef4444);
+    }
+
+    .rule-card.warning-border {
+      border-left-color: var(--color-warning, #f59e0b);
+    }
+
+    .rule-card.success-border {
+      border-left-color: var(--color-success, #22c55e);
+    }
+
+    .rule-card h3 {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      margin: 0 0 0.5rem;
+      color: var(--color-text);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .rule-card ul {
+      margin: 0;
+      padding-left: 1.2rem;
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    .rule-card ul li {
+      margin-bottom: 0.35rem;
+    }
+
+    /* === INTERACTIVE SYRUP CONVERTER WIDGET === */
+    .converter-widget {
+      background: linear-gradient(135deg, rgba(2, 132, 199, 0.06) 0%, rgba(15, 118, 110, 0.06) 100%);
+      border: 2px solid var(--color-primary);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .converter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .converter-header h3 {
+      margin: 0;
+      font-size: var(--text-md);
+      font-weight: 700;
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .volume-selector-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 0.65rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .vol-btn {
+      background: var(--color-surface);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 0.5rem;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: var(--text-sm);
+      color: var(--color-text);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .vol-btn:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    .vol-btn.active {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      color: #ffffff;
+      box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3);
+    }
+
+    .converter-display-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .spoon-visual {
+      width: 90px;
+      height: 90px;
+      min-width: 90px;
+      border-radius: 50%;
+      background: rgba(2, 132, 199, 0.1);
+      border: 2px dashed var(--color-primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-primary);
+      font-size: 1.75rem;
+    }
+
+    .spoon-visual span {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      margin-top: 0.2rem;
+    }
+
+    .spoon-details {
+      flex: 1;
+    }
+
+    .spoon-details h4 {
+      margin: 0 0 0.3rem;
+      font-size: var(--text-lg);
+      font-weight: 800;
+      color: var(--color-primary);
+    }
+
+    .spoon-details p {
+      margin: 0;
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+
+    /* === AUDIT SIMULATION WIDGET === */
+    .audit-container {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+    }
+
+    .rx-paper {
+      background: #fffef8;
+      border: 2px solid #e2e8f0;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      border-radius: 8px;
+      padding: 2rem;
+      font-family: 'Times New Roman', Times, serif;
+      color: #1e293b;
+      position: relative;
+      margin-top: 1rem;
+    }
+
+    [data-theme="dark"] .rx-paper {
+      background: #1e293b;
+      border-color: #334155;
+      color: #f8fafc;
+    }
+
+    .rx-header {
+      text-align: center;
+      border-bottom: 2px solid #0284c7;
+      padding-bottom: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .rx-header h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 0 0 0.25rem;
+      color: #0284c7;
+      font-size: 1.3rem;
+      font-weight: 800;
+    }
+
+    .rx-patient-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px dashed #cbd5e1;
+    }
+
+    .audit-spot {
+      cursor: pointer;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px dashed #ef4444;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .audit-spot:hover {
+      background: rgba(239, 68, 68, 0.2);
+      border-style: solid;
+    }
+
+    .audit-spot.found {
+      background: #dcfce7;
+      border: 1.5px solid #22c55e;
+      color: #15803d;
+      font-weight: bold;
+    }
+
+    [data-theme="dark"] .audit-spot.found {
+      background: #14532d;
+      border-color: #22c55e;
+      color: #86efac;
+    }
+
+    .audit-feedback-box {
+      margin-top: 1.25rem;
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-md);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      min-height: 70px;
+    }
+
+    .audit-score-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    /* === ASK-BACK COUNSELING CARDS === */
+    .askback-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .askback-card {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1.2rem;
+    }
+
+    .askback-card h4 {
+      margin: 0 0 0.5rem;
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--color-primary);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .askback-card p {
+      margin: 0 0 0.75rem;
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+
+    .askback-card .answer-box {
+      background: var(--color-surface);
+      border-left: 3px solid var(--color-success, #22c55e);
+      padding: 0.65rem 0.85rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: var(--text-xs);
+      color: var(--color-text);
+    }
+
+    /* === STEPS TIMELINE === */
+    .stepper-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    .stepper-item {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+
+    .stepper-num {
+      width: 42px;
+      height: 42px;
+      min-width: 42px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 10px rgba(2, 132, 199, 0.25);
+    }
+
+    .stepper-body {
+      flex: 1;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1.2rem;
+    }
+
+    .stepper-body h3 {
+      margin: 0 0 0.5rem;
+      font-size: var(--text-md);
+      font-weight: 700;
+      color: var(--color-text);
+    }
+
+    .stepper-body p {
+      margin: 0 0 0.5rem;
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    .stepper-body ul {
+      margin: 0;
+      padding-left: 1.2rem;
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    .stepper-body ul li {
+      margin-bottom: 0.3rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- App Container -->
+  <div class="app-container">
+
+    <!-- Sidebar Navigation -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../index.html" class="nav-item">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../ky-nang.html" class="nav-item active">
+              <span class="nav-icon">🩺</span>
+              <span class="nav-text">Kỹ năng lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../approaches/tiep-can.html" class="nav-item">
+              <span class="nav-icon">🤒</span>
+              <span class="nav-text">Tiếp cận lâm sàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../pharmacology/duoc-ly.html" class="nav-item">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý lâm sàng</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <main class="main-wrapper" id="mainContent">
+
+      <!-- Breadcrumb -->
+      <clini-breadcrumb
+        items='[{"label": "🏠 Home", "url": "../../../../index.html"}, {"label": "Kỹ năng lâm sàng", "url": "../ky-nang.html"}, {"label": "Kê toa & Tham vấn thuốc ở trẻ"}]'></clini-breadcrumb>
+
+      <!-- HERO SECTION -->
+      <section class="hero-pediatric-rx">
+        <h1>KÊ TOA & THAM VẤN SỬ DỤNG THUỐC Ở TRẺ EM</h1>
+        <p>Quy trình kê đơn thuốc ngoại trú chuẩn Thông tư 52/2017 & 18/2018 Bộ Y tế và hướng dẫn tham vấn sử dụng thuốc an toàn, hợp lý, hiệu quả cho thân nhân bệnh nhi.</p>
+        <div class="hero-badge-strip">
+          <div class="hero-badge"><i class="fas fa-baby"></i> Trẻ &lt; 72 tháng: Tháng tuổi + Cân nặng + Tên Bố/Mẹ</div>
+          <div class="hero-badge"><i class="fas fa-pills"></i> Ưu tiên Thuốc Generic (INN) &amp; Đơn chất</div>
+          <div class="hero-badge"><i class="fas fa-folder-open"></i> Lưu đơn thuốc 01 năm</div>
+          <div class="hero-badge"><i class="fas fa-arrows-rotate"></i> Nôn &lt; 30 phút: Uống lại 1 liều</div>
+        </div>
+      </section>
+
+      <!-- TAB NAVIGATION -->
+      <nav class="tab-navigation" aria-label="Các phần nội dung">
+        <button class="tab-btn active" data-tab="tab-quy-trinh">
+          <i class="fas fa-file-prescription"></i> 1. Quy Trình Kê Toa Chuẩn
+        </button>
+        <button class="tab-btn" data-tab="tab-tham-van">
+          <i class="fas fa-comments"></i> 2. Kỹ Thuật Tham Vấn Tại Nhà
+        </button>
+        <button class="tab-btn" data-tab="tab-soi-loi">
+          <i class="fas fa-magnifying-glass-chart"></i> 3. Mô Phỏng Soi Lỗi Đơn Thuốc
+        </button>
+
+      </nav>
+
+      <!-- ==================== TAB 1: QUY TRÌNH KÊ TOA CHUẨN ==================== -->
+      <div class="tab-pane active" id="tab-quy-trinh">
+
+        <!-- 1.1 Đại cương & Mục tiêu -->
+        <div class="section-card">
+          <h2><i class="fas fa-shield-halved"></i> 1. Nguyên Tắc Cốt Lõi Khi Kê Toa Thuốc Ngoại Trú</h2>
+          <p style="color: var(--color-text-muted); font-size: var(--text-sm); line-height: 1.6;">
+            Kê toa thuốc và tham vấn sử dụng đóng vai trò quyết định đến thành công điều trị bệnh nhi. Bác sĩ cần tuân thủ nghiêm ngặt quy định Bộ Y tế để đảm bảo <strong>An toàn – Hợp lý – Hiệu quả</strong>.
+          </p>
+
+          <div class="rule-grid">
+            <div class="rule-card success-border">
+              <h3><i class="fas fa-circle-check" style="color: #22c55e;"></i> Điều Kiện Bắt Buộc</h3>
+              <ul>
+                <li>Chỉ kê toa sau khi đã <strong>khám bệnh và có chẩn đoán</strong> rõ ràng.</li>
+                <li>Toa thuốc phải phù hợp với chẩn đoán và mức độ nặng của bệnh.</li>
+                <li>Ưu tiên thuốc dạng <strong>đơn chất</strong> hoặc <strong>thuốc generic</strong>.</li>
+              </ul>
+            </div>
+
+            <div class="rule-card warning-border">
+              <h3><i class="fas fa-book-medical" style="color: #f59e0b;"></i> Căn Cứ Pháp Lý &amp; Chuyên Môn</h3>
+              <ul>
+                <li>Hướng dẫn chẩn đoán &amp; điều trị của Bộ Y tế / Cơ sở khám chữa bệnh.</li>
+                <li>Tờ hướng dẫn sử dụng đi kèm thuốc được cấp phép lưu hành.</li>
+                <li>Dược thư Quốc gia Việt Nam.</li>
+              </ul>
+            </div>
+
+            <div class="rule-card danger-border">
+              <h3><i class="fas fa-ban" style="color: #ef4444;"></i> Danh Mục KHÔNG Được Kê</h3>
+              <ul>
+                <li>Các thuốc không nhằm mục đích phòng bệnh, chữa bệnh.</li>
+                <li>Thuốc chưa được phép lưu hành hợp pháp tại Việt Nam.</li>
+                <li><strong>Thực phẩm chức năng</strong> (tuyệt đối không kê trong đơn).</li>
+                <li><strong>Mỹ phẩm</strong>.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1.2 Yêu cầu đối với trẻ dưới 72 tháng & Quy tắc ghi đơn -->
+        <div class="section-card">
+          <h2><i class="fas fa-clipboard-list"></i> 2. Quy Tắc Ghi Nội Dung Đơn Thuốc Nhi Khoa</h2>
+
+          <div class="skill-note note-warning" style="margin-bottom: 1.25rem;">
+            <i class="fas fa-exclamation-triangle"></i>
+            <strong>QUY ĐỊNH BẮT BUỘC TRẺ DƯỚI 72 THÁNG (DƯỚI 6 TUỔI):</strong> Toa thuốc bắt buộc phải ghi rõ <strong>SỐ THÁNG TUỔI, CÂN NẶNG (kg)</strong> và <strong>HỌ TÊN CỦA BỐ HOẶC MẸ</strong> (hoặc người đưa trẻ đến khám).
+          </div>
+
+          <div class="rule-grid">
+            <div class="rule-card">
+              <h3><i class="fas fa-pen-nib"></i> Ghi Tên Thuốc Standard</h3>
+              <ul>
+                <li><strong>Thuốc 1 hoạt chất:</strong> Ghi theo <em>tên chung quốc tế (INN / generic)</em>. VD: <code>Paracetamol 250 mg</code>. Hoặc <em>tên generic + (tên thương mại)</em>. VD: <code>Paracetamol (Haphacol) 250 mg</code>.</li>
+                <li><strong>Thuốc nhiều hoạt chất / Sinh phẩm:</strong> Ghi theo <em>tên thương mại</em>.</li>
+              </ul>
+            </div>
+
+            <div class="rule-card">
+              <h3><i class="fas fa-arrow-down-1-9"></i> Quy Tắc Ghi Số Lượng</h3>
+              <ul>
+                <li><strong>Số lượng &lt; 10 (1 chữ số):</strong> Phải <strong>viết số 0 phía trước</strong> (VD: <code>05</code> gói, <code>08</code> viên).</li>
+                <li><strong>Thuốc gây nghiện:</strong> Số lượng bắt buộc phải <strong>viết bằng chữ</strong>, chữ cái đầu viết hoa (VD: <em>Mười viên</em>).</li>
+                <li><strong>Trật tự ưu tiên:</strong> Nếu toa có <strong>thuốc độc</strong>, phải ghi thuốc độc <strong>trước</strong> các thuốc khác.</li>
+              </ul>
+            </div>
+
+            <div class="rule-card">
+              <h3><i class="fas fa-signature"></i> Sửa Chữa &amp; Phần Trống</h3>
+              <ul>
+                <li><strong>Trường hợp sửa chữa:</strong> Bác sĩ kê toa phải <strong>ký tên ngay bên cạnh</strong> nội dung sửa.</li>
+                <li><strong>Gạch chéo phần giấy còn trống:</strong> Từ phía dưới nội dung kê toa đến phía trên chữ ký theo hướng từ trên xuống dưới, từ trái sang phải.</li>
+                <li>Ký tên và ghi rõ (hoặc đóng dấu) họ tên người kê toa.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div style="margin-top: 1.25rem; background: var(--color-bg); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+            <h4 style="margin: 0 0 0.5rem; font-size: var(--text-sm); color: var(--color-text);"><i class="fas fa-clock-rotate-left"></i> Quy định Lưu trữ Toa thuốc Ngoại trú:</h4>
+            <ul style="margin: 0; padding-left: 1.2rem; font-size: var(--text-sm); color: var(--color-text-muted);">
+              <li><strong>Thuốc Kháng sinh, Kháng virus:</strong> Cơ sở lưu toa (hoặc thông tin phần mềm) trong thời gian <strong>01 (một) năm</strong> kể từ ngày kê toa.</li>
+              <li><strong>Thuốc Gây nghiện, Hướng thần, Tiền chất:</strong> Lưu toa <strong>01 (một) năm kể từ khi THUỐC HẾT HẠN SỬ DỤNG</strong>. Bản giấy phải in giao người bệnh và lưu bản giấy tại cơ sở y tế.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ==================== TAB 2: THAM VẤN SỬ DỤNG THUỐC ==================== -->
+      <div class="tab-pane" id="tab-tham-van">
+
+        <div class="section-card">
+          <h2><i class="fas fa-hand-holding-medical"></i> 4 Bước Tham Vấn Sử Dụng Thuốc Tại Nhà Cho Thân Nhân</h2>
+
+          <div class="stepper-wrap">
+
+            <!-- Bước 1 -->
+            <div class="stepper-item">
+              <div class="stepper-num">1</div>
+              <div class="stepper-body">
+                <h3>Bước 1: Chuẩn Bị &amp; Làm Mẫu Cách Lường Liều</h3>
+                <p>Xác định loại thuốc và liều lượng theo cân nặng/lứa tuổi. Giải thích lý do dùng thuốc và hướng dẫn kiểm tra hạn sử dụng.</p>
+                <ul>
+                  <li><strong>Thuốc viên:</strong> Hướng dẫn chia/bẻ viên. Nếu cần tán nhỏ: Cho <strong>vài giọt nước sạch</strong> chờ vài phút cho viên thuốc mềm ra rồi mới nghiền.</li>
+                  <li><strong>Thuốc Sirô:</strong> Hướng dẫn lường bằng dụng cụ chuẩn (nắp chia vạch / muỗng lường).</li>
+                  <li><strong>Thuốc viên nang:</strong> Nếu trẻ không nuốt được, hướng dẫn bóp mở vỏ nang lấy lượng bột cần thiết.</li>
+                </ul>
+
+                <!-- CONVERTER WIDGET INTEGRATED -->
+                <div class="converter-widget">
+                  <div class="converter-header">
+                    <h3><i class="fas fa-calculator"></i> Công Cụ Quy Đổi Liều Sirô (mL ↔ Thìa/Muỗng Lường Chuẩn)</h3>
+                    <span style="font-size: var(--text-xs); color: var(--color-text-muted);">(Trích Nhi khoa YDS Tập 1, Trang 91)</span>
+                  </div>
+
+                  <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin-bottom: 0.75rem;">
+                    Chọn thể tích Mililit (mL) được chỉ định trong đơn thuốc để xem số thìa/muỗng tương đương tư vấn cho gia đình:
+                  </p>
+
+                  <div class="volume-selector-grid">
+                    <button class="vol-btn" data-ml="1.25">1,25 mL</button>
+                    <button class="vol-btn" data-ml="2.5">2,5 mL</button>
+                    <button class="vol-btn active" data-ml="5">5,0 mL (Chuẩn)</button>
+                    <button class="vol-btn" data-ml="7.5">7,5 mL</button>
+                    <button class="vol-btn" data-ml="10">10 mL</button>
+                    <button class="vol-btn" data-ml="15">15 mL</button>
+                  </div>
+
+                  <div class="converter-display-card" id="converterDisplay">
+                    <div class="spoon-visual">
+                      <i class="fas fa-spoon"></i>
+                      <span>1 Thìa</span>
+                    </div>
+                    <div class="spoon-details">
+                      <h4>Tương ứng: 1 thìa (muỗng) chuẩn (5 mL)</h4>
+                      <p>Cán bộ y tế dặn người nhà điều chỉnh linh hoạt cho phù hợp với loại thìa/muỗng thực tế đang sử dụng tại gia đình.</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Bước 2 -->
+            <div class="stepper-item">
+              <div class="stepper-num">2</div>
+              <div class="stepper-body">
+                <h3>Bước 2: Thực Hành Lường Liều &amp; Kỹ Thuật Uống Liều Đầu</h3>
+                <p>Quan sát người chăm sóc tự tập thao tác lường/nghiền thuốc tại phòng khám để kịp thời điều chỉnh lỗi sai.</p>
+
+                <div class="skill-note note-danger" style="margin-top: 0.75rem;">
+                  <i class="fas fa-triangle-exclamation"></i>
+                  <strong>XỬ TRÍ KHI TRẺ NÔN ÓI SAU UỐNG THUỐC:</strong>
+                  <ul style="margin: 0.4rem 0 0; padding-left: 1.2rem;">
+                    <li>Nếu trẻ bị nôn trong vòng <strong>30 phút</strong> sau khi uống (trong chất nôn có thấy viên thuốc hoặc sirô): <strong>Cho trẻ uống lại một liều khác.</strong></li>
+                    <li><em>Lưu ý quan trọng:</em> Nếu trẻ đang bị <strong>mất nước và nôn ói nhiều</strong>, phải <strong>ưu tiên bù đủ nước trước</strong> rồi mới cho uống thuốc.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bước 3 -->
+            <div class="stepper-item">
+              <div class="stepper-num">3</div>
+              <div class="stepper-body">
+                <h3>Bước 3: Ghi Nhãn, Đóng Gói Riêng &amp; Bảo Quản</h3>
+                <ul>
+                  <li>Viết đầy đủ tên thuốc, tổng số lượng thuốc cho cả đợt điều trị.</li>
+                  <li>Nếu trẻ dùng <strong>nhiều loại thuốc cùng lúc</strong>: Đóng gói và dán nhãn <strong>RIÊNG BIỆT từng loại</strong>. Giải thích lý do phải dùng kết hợp nhiều thuốc.</li>
+                  <li>Dặn dò người nhà phải cho trẻ uống <strong>trọn vẹn cả đợt điều trị</strong> (ngay cả khi triệu chứng đã giảm) để tiêu diệt sạch vi khuẩn/ký sinh trùng, tránh kháng thuốc hoặc tái phát.</li>
+                  <li>Bảo quản thuốc <strong>ngoài tầm tay trẻ em</strong>, nơi khô ráo, tránh ánh sáng trực tiếp và gặm nhấm.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Bước 4 -->
+            <div class="stepper-item">
+              <div class="stepper-num">4</div>
+              <div class="stepper-body">
+                <h3>Bước 4: Kiểm Tra Sự Hiểu Biết (Kỹ Thuật Ask-Back)</h3>
+                <p>Sử dụng <strong>câu hỏi mở</strong> (không hỏi câu hỏi Có/Không) để xác định người nhà đã nắm vững hướng dẫn trước khi ra về.</p>
+
+                <div class="askback-grid">
+                  <div class="askback-card">
+                    <h4><i class="fas fa-circle-question"></i> Câu hỏi liều lượng</h4>
+                    <p><em>"Chị sẽ cho con uống bao nhiêu thuốc mỗi lần?"</em></p>
+                    <div class="answer-box">
+                      <strong>Mục tiêu:</strong> Đảm bảo người nhà nhớ chính xác số viên / số mL / số muỗng cần lường.
+                    </div>
+                  </div>
+
+                  <div class="askback-card">
+                    <h4><i class="fas fa-circle-question"></i> Câu hỏi thời điểm &amp; đợt điều trị</h4>
+                    <p><em>"Khi nào chị cho cháu uống thuốc? Cho uống trong bao nhiêu ngày?"</em></p>
+                    <div class="answer-box">
+                      <strong>Mục tiêu:</strong> Xác nhận thời điểm (sáng/trưa/tối) và tính tuân thủ trọn vẹn đợt thuốc.
+                    </div>
+                  </div>
+
+                  <div class="askback-card">
+                    <h4><i class="fas fa-circle-question"></i> Câu hỏi kỹ thuật chuẩn bị</h4>
+                    <p><em>"Chị chuẩn bị cho cháu uống loại thuốc viên này như thế nào?"</em></p>
+                    <div class="answer-box">
+                      <strong>Mục tiêu:</strong> Kiểm tra xem người nhà có biết hòa vài giọt nước làm mềm viên trước khi tán không.
+                    </div>
+                  </div>
+
+                  <div class="askback-card">
+                    <h4><i class="fas fa-circle-question"></i> Câu hỏi phân biệt nhiều loại thuốc</h4>
+                    <p><em>"Chị cho cháu uống loại thuốc nào 3 lần một ngày?"</em></p>
+                    <div class="answer-box">
+                      <strong>Mục tiêu:</strong> Đảm bảo không nhầm lẫn giữa thuốc kháng sinh, hạ sốt và thuốc hỗ trợ.
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ==================== TAB 3: MÔ PHỎNG SOI LỖI ĐƠN THUỐC ==================== -->
+      <div class="tab-pane" id="tab-soi-loi">
+
+        <div class="audit-container">
+          <h2><i class="fas fa-vial-circle-check"></i> Trò Chơi Thử Thách: Soi Lỗi Đơn Thuốc Nhi Khoa Thực Tế</h2>
+          <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: 1rem;">
+            Dưới đây là một mẫu đơn thuốc ngoại trú dành cho bệnh nhi bị <strong>gài bẫy 5 điểm lỗi sai</strong> pháp lý và chuyên môn theo quy định Bộ Y tế. Nhấp trực tiếp vào các vùng nghi ngờ sai trên tờ đơn để kiểm tra kỹ năng soi lỗi của bạn!
+          </p>
+
+          <div class="audit-score-bar">
+            <span>Tiến độ phát hiện: <span id="auditFoundCount" style="color: var(--color-primary); font-size: 1.2rem;">0</span> / 5 lỗi</span>
+            <button id="resetAuditBtn" class="tab-btn" style="padding: 0.35rem 0.75rem; font-size: var(--text-xs); border: 1px solid var(--color-border); border-radius: 4px;">
+              <i class="fas fa-rotate"></i> Làm lại thử thách
+            </button>
+          </div>
+
+          <!-- RX PAPER INTERACTIVE -->
+          <div class="rx-paper">
+            <div class="rx-header">
+              <h3>BỆNH VIỆN NGUYỄN TRÃI - KHOA KHÁM BỆNH</h3>
+              <div style="font-size: 1.1rem; font-weight: bold; margin-top: 0.2rem;">ĐƠN THUỐC NGOẠI TRÚ</div>
+            </div>
+
+            <div class="rx-patient-info">
+              <div><strong>Họ tên trẻ:</strong> Nguyễn Văn An</div>
+              <div><strong>Tuổi:</strong> <span class="audit-spot" data-error-id="1">36 tháng tuổi</span></div>
+              <div><strong>Cân nặng:</strong> <span class="audit-spot" data-error-id="1" style="color: #ef4444; font-style: italic;">[Đã trống - Không ghi]</span></div>
+              <div><strong>Người đưa trẻ đến khám:</strong> <span class="audit-spot" data-error-id="1" style="color: #ef4444; font-style: italic;">[Để trống]</span></div>
+              <div style="grid-column: 1 / -1;"><strong>Chẩn đoán:</strong> Viêm phế quản cấp</div>
+            </div>
+
+            <div class="rx-body" style="line-height: 1.8; font-size: 1.05rem;">
+              <div style="font-weight: bold; margin-bottom: 0.5rem;">CHỈ ĐỊNH THUỐC:</div>
+
+              <div style="margin-bottom: 0.75rem;">
+                1. <span class="audit-spot" data-error-id="2">Cefuroxim (Zinnat) 250mg</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Số lượng: <span class="audit-spot" data-error-id="3">5 gói</span> <span style="font-size: 0.85rem; color: #64748b;">(Ghi năm gói)</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Uống: Ngày 2 lần, lần 1 gói sau ăn.
+              </div>
+
+              <div style="margin-bottom: 0.75rem;">
+                2. <span class="audit-spot" data-error-id="4">Thực phẩm bảo vệ sức khỏe Siro Ăn Ngon Pedia</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Số lượng: 01 chai<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Uống: Ngày 10ml buổi sáng.
+              </div>
+
+              <div style="margin-bottom: 1.5rem;">
+                <span class="audit-spot" data-error-id="5" style="display: block; padding: 1rem; border: 1px dashed #cbd5e1; text-align: center; color: #94a3b8;">
+                  [Khu vực giấy trắng còn trống phía dưới nội dung kê đơn - Không gạch chéo]
+                </span>
+              </div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e2e8f0;">
+              <div style="font-size: 0.85rem; color: #64748b;">
+                Ngày 01 tháng 08 năm 2026
+              </div>
+              <div style="text-align: center;">
+                <strong>BÁC SĨ KÊ ĐƠN</strong><br>
+                <span style="font-style: italic; font-size: 0.85rem;">(Ký và ghi rõ họ tên)</span><br><br>
+                <strong style="color: #0284c7;">BS. Nguyễn Văn B</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- FEEDBACK BOX -->
+          <div class="audit-feedback-box" id="auditFeedback">
+            <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.3rem;">
+              <i class="fas fa-lightbulb"></i> Hướng dẫn:
+            </div>
+            <div style="font-size: var(--text-sm); color: var(--color-text-muted);">
+              Hãy nhấp chuột vào các vị trí bạn nghi ngờ sai phạm quy định Thông tư 52/2017 & 18/2018 trên đơn thuốc ở trên!
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- REFERENCES FOOTER -->
+      <section class="section-card" style="margin-top: 2rem;">
+        <h2><i class="fas fa-book-bookmark"></i> Tài Liệu Tham Khảo Chuẩn AMA</h2>
+        <ol style="margin: 0; padding-left: 1.2rem; font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.7;">
+          <li>Bùi Thanh Liêm, Phùng Nguyễn Thế Nguyên. Bài 5: Kê toa và tham vấn sử dụng thuốc. Trong: <em>Nhi khoa - Tập 1</em>. Bộ môn Nhi - Đại học Y Dược TP. Hồ Chí Minh. NXB Y học; 2020:87-96.</li>
+          <li>Bùi Thanh Liêm, Phùng Nguyễn Thế Nguyên. Bài 5: Kê toa và tham vấn sử dụng thuốc. Trong: <em>Nhi khoa - Tập 1</em>. Bộ môn Nhi - Đại học Y Dược TP. Hồ Chí Minh. NXB Đại học Quốc gia TP.HCM; 2025:87-96.</li>
+          <li>Bộ Y tế. <em>Thông tư 52/2017/TT-BYT Quy định về đơn thuốc và việc kê đơn thuốc hóa dược, sinh phẩm trong điều trị ngoại trú</em>. Ngày 29 tháng 12 năm 2017.</li>
+          <li>Bộ Y tế. <em>Thông tư 18/2018/TT-BYT Sửa đổi, bổ sung một số điều của Thông tư 52/2017/TT-BYT</em>. Ngày 22 tháng 8 năm 2018.</li>
+        </ol>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // 1. Tab Switching Logic
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabPanes = document.querySelectorAll('.tab-pane');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+          const target = this.getAttribute('data-tab');
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabPanes.forEach(p => p.classList.remove('active'));
+
+          this.classList.add('active');
+          const targetPane = document.getElementById(target);
+          if (targetPane) targetPane.classList.add('active');
+        });
+      });
+
+      // 2. Interactive Syrup Dosage Converter
+      const volBtns = document.querySelectorAll('.vol-btn');
+      const converterDisplay = document.getElementById('converterDisplay');
+
+      const spoonData = {
+        '1.25': {
+          spoonText: '1/4 Thìa',
+          title: 'Tương ứng: 1/4 thìa (muỗng) chuẩn',
+          desc: 'Phù hợp khi dùng muỗng lường 5mL. Cần hướng dẫn thân nhân nhìn vạch chính xác.'
+        },
+        '2.5': {
+          spoonText: '1/2 Thìa',
+          title: 'Tương ứng: 1/2 thìa (muỗng) chuẩn',
+          desc: 'Bằng nửa thìa cà phê chuẩn (2,5 mL). Dặn người nhà không đong ước lượng bằng thìa ăn cơm lớn.'
+        },
+        '5': {
+          spoonText: '1 Thìa',
+          title: 'Tương ứng: 1 thìa (muỗng) chuẩn (5 mL)',
+          desc: 'Thể tích chuẩn phổ biến nhất trong lường sirô nhi khoa.'
+        },
+        '7.5': {
+          spoonText: '1,5 Thìa',
+          title: 'Tương ứng: 1,5 thìa (1 thìa rưỡi) chuẩn',
+          desc: 'Tương đương 1 thìa 5mL + 1/2 thìa 2,5mL.'
+        },
+        '10': {
+          spoonText: '2 Thìa',
+          title: 'Tương ứng: 2 thìa (muỗng) chuẩn (10 mL)',
+          desc: 'Đong đủ 2 lần thìa 5mL chuẩn.'
+        },
+        '15': {
+          spoonText: '3 Thìa',
+          title: 'Tương ứng: 3 thìa (muỗng) chuẩn (15 mL)',
+          desc: 'Tương đương 1 muỗng canh chuẩn (15 mL).'
+        }
+      };
+
+      volBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+          volBtns.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+
+          const ml = this.getAttribute('data-ml');
+          const data = spoonData[ml];
+          if (data && converterDisplay) {
+            converterDisplay.innerHTML = `
+              <div class="spoon-visual">
+                <i class="fas fa-spoon"></i>
+                <span>${data.spoonText}</span>
+              </div>
+              <div class="spoon-details">
+                <h4>${data.title}</h4>
+                <p>${data.desc}</p>
+              </div>
+            `;
+          }
+        });
+      });
+
+      // 3. Interactive Prescription Audit Simulation
+      const auditSpots = document.querySelectorAll('.audit-spot');
+      const auditFoundCount = document.getElementById('auditFoundCount');
+      const auditFeedback = document.getElementById('auditFeedback');
+      const resetAuditBtn = document.getElementById('resetAuditBtn');
+
+      const errorExplanations = {
+        '1': {
+          title: '❌ LỖI 1: Trẻ dưới 72 tháng tuổi THIẾU CÂN NẶNG & THIẾU HỌ TÊN BỐ/MẸ',
+          desc: 'Theo Thông tư 52/2017 & 18/2018/TT-BYT, đối với trẻ dưới 72 tháng tuổi (dưới 6 tuổi), đơn thuốc BẮT BUỘC phải ghi rõ số tháng tuổi, CÂN NẶNG (kg) và HỌ TÊN BỐ HOẶC MẸ (hoặc người đưa trẻ đến khám).'
+        },
+        '2': {
+          title: '💡 Ghi chú tên thuốc:',
+          desc: 'Cách ghi Cefuroxim (Zinnat) 250mg đúng theo quy tắc: Tên chung quốc tế + (Tên thương mại).'
+        },
+        '3': {
+          title: '❌ LỖI 2: Thiếu số 0 phía trước số lượng có 1 chữ số (< 10)',
+          desc: 'Theo quy định, số lượng thuốc chỉ có 1 chữ số (nhỏ hơn 10) phải BẮT BUỘC viết số 0 phía trước (ví dụ ghi "05 gói" thay vì "5 gói") để tránh việc bị viết thêm số làm giả đơn thuốc.'
+        },
+        '4': {
+          title: '❌ LỖI 3: Kê Thực phẩm chức năng trong đơn thuốc',
+          desc: 'Bộ Y tế quy định nghiêm cấm kê Thực phẩm chức năng / Thực phẩm bảo vệ sức khỏe và Mỹ phẩm vào trong Đơn thuốc y khoa.'
+        },
+        '5': {
+          title: '❌ LỖI 4: Không gạch chéo phần giấy còn trống phía dưới đơn thuốc',
+          desc: 'Người kê đơn phải gạch chéo phần giấy còn trống từ phía dưới nội dung kê đơn đến phía trên chữ ký theo hướng từ trên xuống dưới, từ trái sang phải để tránh kê thêm thuốc bất hợp pháp.'
+        }
+      };
+
+      const foundErrors = new Set();
+
+      auditSpots.forEach(spot => {
+        spot.addEventListener('click', function () {
+          const errId = this.getAttribute('data-error-id');
+          if (errId && errorExplanations[errId]) {
+            this.classList.add('found');
+            if (errId !== '2') { // '2' is not a bug, just info
+              foundErrors.add(errId);
+            }
+            if (auditFoundCount) {
+              auditFoundCount.textContent = foundErrors.size;
+            }
+            if (auditFeedback) {
+              const exp = errorExplanations[errId];
+              auditFeedback.innerHTML = `
+                <div style="font-weight: 700; color: ${errId === '2' ? 'var(--color-primary)' : 'var(--color-danger, #ef4444)'}; margin-bottom: 0.3rem;">
+                  ${exp.title}
+                </div>
+                <div style="font-size: var(--text-sm); color: var(--color-text); line-height: 1.5;">
+                  ${exp.desc}
+                </div>
+              `;
+            }
+          }
+        });
+      });
+
+      if (resetAuditBtn) {
+        resetAuditBtn.addEventListener('click', function () {
+          foundErrors.clear();
+          auditSpots.forEach(s => s.classList.remove('found'));
+          if (auditFoundCount) auditFoundCount.textContent = '0';
+          if (auditFeedback) {
+            auditFeedback.innerHTML = `
+              <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.3rem;">
+                <i class="fas fa-lightbulb"></i> Hướng dẫn:
+              </div>
+              <div style="font-size: var(--text-sm); color: var(--color-text-muted);">
+                Hãy nhấp chuột vào các vị trí bạn nghi ngờ sai phạm quy định Thông tư 52/2017 & 18/2018 trên đơn thuốc ở trên!
+              </div>
+            `;
+          }
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

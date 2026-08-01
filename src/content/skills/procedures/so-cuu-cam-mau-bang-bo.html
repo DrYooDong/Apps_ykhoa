@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Hướng dẫn Kỹ thuật Sơ cứu Cầm máu Tạm thời, 5 Kỹ thuật Băng bó vết thương cơ bản và Xử trí vết thương đặc biệt chuẩn Y tế & Cấp cứu Hiện trường – CliniPortal.">
+  <title>Sơ Cứu Cầm Máu & Kỹ Thuật Băng Bó Vết Thương – CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../css/components/clinical-skill.css">
+
+  <script src="../../../../js/main.js" defer></script>
+  <script src="../../../../components/header.js" defer></script>
+  <script src="../../../../components/footer.js" defer></script>
+
+  <style>
+    /* === DESIGN SYSTEM CUSTOM OVERRIDES & STYLES === */
+    .hero-bandage {
+      background: linear-gradient(135deg, #dc2626 0%, #b91c1c 45%, #991b1b 100%);
+      color: #ffffff;
+      padding: 2.25rem 2rem;
+      border-radius: var(--radius-lg);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bandage::after {
+      content: '🩹🩸';
+      position: absolute;
+      right: 1.5rem;
+      bottom: -0.5rem;
+      font-size: 5.5rem;
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+    .hero-bandage h1 {
+      margin: 0 0 0.5rem;
+      font-size: var(--text-2xl, 1.75rem);
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-bandage p {
+      margin: 0 0 1.25rem;
+      opacity: 0.92;
+      font-size: var(--text-sm);
+      max-width: 880px;
+      line-height: 1.6;
+    }
+
+    .hero-badge-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .hero-badge {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 0.45rem 0.85rem;
+      border-radius: var(--radius-md);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #ffffff;
+    }
+
+    /* Sticky Tab Navigation */
+    .tab-navigation {
+      position: sticky;
+      top: var(--header-height, 60px);
+      z-index: 100;
+      background: var(--color-surface);
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 2px solid var(--color-border);
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+      padding: 0.5rem 0.5rem 4px 0.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      border-radius: 0 0 var(--radius-md) var(--radius-md);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      padding: 0.75rem 1.25rem;
+      font-family: inherit;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+    }
+
+    .tab-btn:hover {
+      color: var(--color-danger, #dc2626);
+      background: rgba(220, 38, 38, 0.05);
+    }
+
+    .tab-btn.active {
+      color: var(--color-danger, #dc2626);
+      border-bottom-color: var(--color-danger, #dc2626);
+      background: rgba(220, 38, 38, 0.08);
+    }
+
+    .tab-pane {
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .tab-pane.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Section & Cards */
+    .section-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.05));
+    }
+
+    .section-card h2 {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--color-text);
+      margin: 0 0 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .section-card h2 i {
+      color: var(--color-danger, #dc2626);
+    }
+
+    /* Bleeding Type Cards */
+    .bleed-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .bleed-card {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1.15rem;
+      border-top: 4px solid var(--color-primary);
+    }
+
+    .bleed-card.artery { border-top-color: #dc2626; }
+    .bleed-card.vein { border-top-color: #0284c7; }
+    .bleed-card.capillary { border-top-color: #16a34a; }
+
+    .bleed-card h3 {
+      font-size: var(--text-md);
+      font-weight: 700;
+      margin: 0 0 0.5rem;
+      color: var(--color-text);
+    }
+
+    /* Bandage Sub-selector Buttons */
+    .tech-selector-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 0.6rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .tech-btn {
+      background: var(--color-bg);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 0.5rem;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: var(--text-xs);
+      color: var(--color-text);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .tech-btn:hover {
+      border-color: var(--color-danger, #dc2626);
+      color: var(--color-danger, #dc2626);
+    }
+
+    .tech-btn.active {
+      background: var(--color-danger, #dc2626);
+      border-color: var(--color-danger, #dc2626);
+      color: #ffffff;
+      box-shadow: 0 4px 10px rgba(220, 38, 38, 0.3);
+    }
+
+    /* Quiz Box */
+    .quiz-card {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .quiz-q {
+      font-weight: 700;
+      font-size: var(--text-sm);
+      color: var(--color-text);
+      margin-bottom: 0.75rem;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .quiz-opt {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 0.65rem 0.85rem;
+      font-size: var(--text-xs);
+      color: var(--color-text);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+    }
+
+    .quiz-opt:hover {
+      border-color: var(--color-primary);
+      background: rgba(2, 132, 199, 0.05);
+    }
+
+    .quiz-opt.correct {
+      background: #dcfce7 !important;
+      border-color: #22c55e !important;
+      color: #15803d !important;
+      font-weight: bold;
+    }
+
+    .quiz-opt.incorrect {
+      background: #fee2e2 !important;
+      border-color: #ef4444 !important;
+      color: #b91c1c !important;
+    }
+
+    .quiz-explanation {
+      margin-top: 0.65rem;
+      padding: 0.65rem 0.85rem;
+      border-radius: var(--radius-sm);
+      background: var(--color-surface);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      display: none;
+    }
+
+    @media (max-width: 576px) {
+      .hero-bandage { padding: 1.5rem 1.15rem; }
+      .hero-bandage h1 { font-size: 1.35rem; }
+      .hero-bandage::after { display: none; }
+      .section-card { padding: 1.15rem; }
+      .tab-btn { padding: 0.65rem 0.85rem; font-size: 0.82rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- App Container -->
+  <div class="app-container">
+
+    <!-- Sidebar Navigation -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li><a href="../../../../index.html" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+          <li><a href="../ky-nang.html" class="nav-item active"><span class="nav-icon">🩺</span><span class="nav-text">Kỹ năng</span></a></li>
+          <li><a href="../../approaches/tiep-can.html" class="nav-item"><span class="nav-icon">🤒</span><span class="nav-text">Tiếp cận</span></a></li>
+          <li><a href="../../calculators/general/calculators-hub.html" class="nav-item"><span class="nav-icon">⚙️</span><span class="nav-text">Công cụ</span></a></li>
+          <li><a href="../../pharmacology/duoc-ly.html" class="nav-item"><span class="nav-icon">💊</span><span class="nav-text">Dược lý</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="app-main">
+
+      <!-- Breadcrumb -->
+      <clini-breadcrumb
+        items='[{"label": "🏠 Home", "url": "../../../../index.html"}, {"label": "Kỹ năng thủ thuật", "url": "../ky-nang.html"}, {"label": "Sơ Cứu Cầm Máu & Băng Bó Vết Thương"}]'></clini-breadcrumb>
+
+      <!-- HERO SECTION -->
+      <section class="hero-bandage">
+        <h1>SƠ CỨU CẦM MÁU &amp; KỸ THUẬT BĂNG BÓ VẾT THƯƠNG</h1>
+        <p>Quy trình sơ cấp cứu hiện trường, phân loại chảy máu, 7 kỹ thuật cầm máu tạm thời (gấp chi, ấn mạch, băng ép, garô, băng nhồi) và 5 kỹ thuật băng bó vết thương cơ bản &amp; xử trí vết thương đặc biệt.</p>
+
+        <div class="hero-badge-strip">
+          <div class="hero-badge"><i class="fas fa-droplet"></i> Động mạch: Phun thành vòi, đỏ tươi</div>
+          <div class="hero-badge"><i class="fas fa-clock"></i> Garô: Nguy cơ hoại tử &gt; 60-90 min | Phiếu ĐỎ</div>
+          <div class="hero-badge"><i class="fas fa-hand-dots"></i> Dị vật xuyên thấu: TUYỆT ĐỐI KHÔNG rút</div>
+          <div class="hero-badge"><i class="fas fa-shield-virus"></i> Lòi tạng: TUYỆT ĐỐI KHÔNG ấn vào | Úp bát sạch</div>
+        </div>
+      </section>
+
+      <!-- STICKY TAB NAVIGATION -->
+      <nav class="tab-navigation" aria-label="Các phần nội dung">
+        <button class="tab-btn active" data-tab="tab-cam-mau">
+          <i class="fas fa-droplet"></i> 1. Phân Loại &amp; 7 Kỹ Thuật Cầm Máu
+        </button>
+        <button class="tab-btn" data-tab="tab-ky-thuat-bang">
+          <i class="fas fa-bandage"></i> 2. 5 Kỹ Thuật Băng Bó Cơ Bản
+        </button>
+        <button class="tab-btn" data-tab="tab-dac-biet">
+          <i class="fas fa-kit-medical"></i> 3. Vết Thương Đặc Biệt
+        </button>
+        <button class="tab-btn" data-tab="tab-mcq">
+          <i class="fas fa-circle-question"></i> 4. Lượng Giá &amp; Tình Huống
+        </button>
+      </nav>
+
+      <!-- ==================== TAB 1: CẦM MÁU TẠM THỜI ==================== -->
+      <div class="tab-pane active" id="tab-cam-mau">
+
+        <!-- Phân loại chảy máu -->
+        <div class="section-card">
+          <h2><i class="fas fa-heart-pulse"></i> 1. Phân Loại Chảy Máu Qua Vết Thương</h2>
+
+          <div class="bleed-grid">
+            <div class="bleed-card artery">
+              <h3 style="color: #dc2626;"><i class="fas fa-volcano"></i> Chảy Máu Động Mạch</h3>
+              <ul style="margin: 0; padding-left: 1.2rem; font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.6;">
+                <li><strong>Đặc điểm:</strong> Máu chảy nhiều, <strong>phun thành vòi/tia</strong>, đập theo nhịp đập của tim.</li>
+                <li><strong>Màu sắc:</strong> Màu <strong>đỏ tươi</strong>.</li>
+                <li><strong>Mức độ:</strong> Rất nguy hiểm, mất máu nhanh gây sốc tử vong nếu không cấp cứu khẩn.</li>
+              </ul>
+            </div>
+
+            <div class="bleed-card vein">
+              <h3 style="color: #0284c7;"><i class="fas fa-water"></i> Chảy Máu Tĩnh Mạch</h3>
+              <ul style="margin: 0; padding-left: 1.2rem; font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.6;">
+                <li><strong>Đặc điểm:</strong> Máu chảy chậm hơn động mạch, <strong>trào tràn đều</strong> bề mặt vết thương.</li>
+                <li><strong>Màu sắc:</strong> Màu <strong>đỏ thẫm (sẫm)</strong>.</li>
+                <li><strong>Mức độ:</strong> Nguy hiểm nếu đứt tĩnh mạch lớn (tĩnh mạch cổ, đùi).</li>
+              </ul>
+            </div>
+
+            <div class="bleed-card capillary">
+              <h3 style="color: #16a34a;"><i class="fas fa-droplet"></i> Chảy Máu Mao Mạch</h3>
+              <ul style="margin: 0; padding-left: 1.2rem; font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.6;">
+                <li><strong>Đặc điểm:</strong> Máu chảy số lượng ít, chảy <strong>rịn rỉ</strong> ra từ vết thương.</li>
+                <li><strong>Màu sắc:</strong> Màu <strong>đỏ tươi</strong>.</li>
+                <li><strong>Mức độ:</strong> Vết xây xát nhẹ, dễ tự cầm máu hoặc băng ép nhẹ.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="skill-note note-info">
+            <i class="fas fa-circle-info"></i>
+            <strong>Dấu hiệu Nghi ngờ Chảy Máu Trong:</strong> Nạn nhân bị va đập/xây xát vùng ngực, bụng kèm đau nhiều, da nhợt nhạt, lạnh, vã mồ hôi, lịm đi, mạch nhanh nhỏ khó bắt. <em>Xử trí:</em> Nhanh chóng gọi 115, đặt nằm ngửa đầu thấp chân cao, ủ ấm, tuyệt đối KHÔNG cho ăn uống.
+          </div>
+        </div>
+
+        <!-- 7 Kỹ thuật cầm máu -->
+        <div class="section-card">
+          <h2><i class="fas fa-hand-holding-medical"></i> 2. Các Kỹ Thuật Cầm Máu Tạm Thời Tại Hiện Trường</h2>
+
+          <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+
+            <!-- 1. Gấp chi -->
+            <div style="background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.15rem;">
+              <h3 style="margin: 0 0 0.5rem; font-size: var(--text-sm); font-weight: 700; color: var(--color-text);">4.1. Gấp Chi Tối Đa</h3>
+              <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0 0 0.5rem;">Biện pháp đơn giản tự thực hiện ngay lập tức để đè ép các khối cơ quanh động mạch.</p>
+              <ul style="margin: 0; padding-left: 1.2rem; font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.6;">
+                <li><strong>Cẳng tay/bàn tay:</strong> Gấp cẳng tay tối đa vào cánh tay (có thể buộc cố định bằng thắt lưng).</li>
+                <li><strong>Cánh tay:</strong> Đặt con chẹn (đường kính ~10cm) vào nách rồi buộc chặt cánh tay vào thân người.</li>
+                <li><strong>Cẳng chân/bàn chân:</strong> Kéo mạnh cẳng chân ép vào đùi (có thể đệm cuộn băng vào khoeo).</li>
+                <li><strong>Đùi:</strong> Ép chặt đùi vào thân người (dùng thắt lưng ghì chặt).</li>
+              </ul>
+              <div class="skill-note note-danger" style="margin-top: 0.5rem; padding: 0.5rem 0.75rem;">
+                <i class="fas fa-ban"></i> <strong>CHỐNG CHỈ ĐỊNH:</strong> TUYỆT ĐỐI KHÔNG thực hiện gấp chi nếu có tổn thương gãy xương đi kèm!
+              </div>
+            </div>
+
+            <!-- 2. Ấn mạch -->
+            <div style="background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.15rem;">
+              <h3 style="margin: 0 0 0.5rem; font-size: var(--text-sm); font-weight: 700; color: var(--color-text);">4.2. Ấn Mạch Máu (Chẹn Mạch)</h3>
+              <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0 0 0.5rem;">Dùng ngón tay ấn đè chặt vào vị trí mạch máu đi sát xương ở phía trên vết thương (VD: ấn điểm 1/3 dưới trong cánh tay).</p>
+            </div>
+
+            <!-- 3. Băng ép & 4. Băng chèn -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
+              <div style="background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.15rem;">
+                <h3 style="margin: 0 0 0.5rem; font-size: var(--text-sm); font-weight: 700; color: var(--color-text);">4.3. Băng Ép</h3>
+                <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0;">Đặt gạc vô trùng phủ kín vết thương, quấn băng ép chặt theo kiểu vòng tròn hoặc chữ nhân. Áp dụng cho chảy máu mao mạch, tĩnh mạch, động mạch nhỏ.</p>
+              </div>
+
+              <div style="background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.15rem;">
+                <h3 style="margin: 0 0 0.5rem; font-size: var(--text-sm); font-weight: 700; color: var(--color-text);">4.4. Băng Chèn</h3>
+                <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0;">Đặt con chẹn (cuộn băng/vải tròn) trên đường đi động mạch sát phía trên vết thương hoặc đặt trực tiếp lên vết thương rồi quấn băng xiết chặt cố định.</p>
+              </div>
+            </div>
+
+            <!-- 5. Băng nhồi -->
+            <div style="background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.15rem;">
+              <h3 style="margin: 0 0 0.5rem; font-size: var(--text-sm); font-weight: 700; color: var(--color-text);">4.5. Phương Pháp Băng Nhồi (Wound Packing)</h3>
+              <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0 0 0.5rem;">
+                <strong>Áp dụng:</strong> Vết thương miệng rộng, đứt động mạch ở sâu giữa kẽ xương, vùng cổ, vùng chậu.
+              </p>
+              <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0;">
+                <strong>Cách làm:</strong> Nhét gạc vô trùng / vải sạch vào sâu trong lòng vết thương cho đến khi chặt kín, sau đó quấn băng ép bên ngoài. <em>Lưu ý:</em> Kiểm tra kỹ KHÔNG CÓ dị vật sắc nhọn (mảnh kim loại, thủy tinh) trước khi nhồi!
+              </p>
+            </div>
+
+            <!-- 6. Garô -->
+            <div style="background: var(--color-bg); border: 2px solid var(--color-danger, #ef4444); border-radius: var(--radius-md); padding: 1.25rem;">
+              <h3 style="margin: 0 0 0.5rem; font-size: var(--text-md); font-weight: 800; color: #dc2626;">
+                <i class="fas fa-triangle-exclamation"></i> 4.6. Phương Pháp Đặt Ga-rô (Tourniquet Protocol)
+              </h3>
+              <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0 0 0.75rem;">
+                Chỉ định cho vết thương đứt động mạch lớn máu chảy ồ ạt, chi bị dập nát/cắt cụt hoặc các biện pháp cầm máu khác không hiệu quả.
+              </p>
+
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; font-size: var(--text-xs);">
+                <div style="background: var(--color-surface); padding: 0.85rem; border-radius: var(--radius-sm);">
+                  <strong style="color: var(--color-text);">📍 Vị trí đặt chuẩn:</strong>
+                  <ul style="margin: 0.3rem 0 0; padding-left: 1.2rem; color: var(--color-text-muted);">
+                    <li>Đặt sát ngay phía trên vết thương (Vết thương lớn cách 5cm, vết thương nhỏ cách 2cm).</li>
+                    <li><strong>BẮT BUỘC ĐỂ LỘ GA-RÔ RA NGOÀI:</strong> Tuyệt đối không để quần áo che lấp garô.</li>
+                  </ul>
+                </div>
+
+                <div style="background: var(--color-surface); padding: 0.85rem; border-radius: var(--radius-sm);">
+                  <strong style="color: #dc2626;">⏱️ Mốc thời gian nguy hiểm:</strong>
+                  <ul style="margin: 0.3rem 0 0; padding-left: 1.2rem; color: var(--color-text-muted);">
+                    <li>Đoạn chi dưới garô sẽ <strong>chết hoàn toàn nếu thiếu máu nuôi quá 60 - 90 phút</strong>.</li>
+                    <li>Việc nới garô BẮT BUỘC do nhân viên y tế thực hiện.</li>
+                  </ul>
+                </div>
+
+                <div style="background: var(--color-surface); padding: 0.85rem; border-radius: var(--radius-sm); grid-column: 1 / -1;">
+                  <strong style="color: var(--color-text);">📝 Phiếu Garô &amp; Thẻ Ưu Tiên Màu Đỏ:</strong>
+                  <p style="margin: 0.3rem 0 0; color: var(--color-text-muted);">
+                    Đặt garô xong phải ghi phiếu gài trước ngực nạn nhân (ghi rõ giờ đặt garô, họ tên). Cài dải vải đỏ ở túi áo bên trái để được <strong>Phân loại Ưu tiên số 1 (MÀU ĐỎ)</strong> khi vận chuyển cấp cứu 115.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 7. Băng mạch cổ -->
+            <div style="background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.15rem;">
+              <h3 style="margin: 0 0 0.5rem; font-size: var(--text-sm); font-weight: 700; color: var(--color-text);">4.7. Băng Cầm Máu Vết Thương Mạch Cổ</h3>
+              <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0;">
+                Đặt con chẹn lên vị trí tổn thương động mạch cảnh. Quấn băng chéo từ <strong>nách bên đối diện</strong> HOẶC dùng <strong>cánh tay bên đối diện giơ cao làm điểm tỳ</strong> để quấn băng, tuyệt đối không chẹn vào đường thở hay mạch máu bên lành.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ==================== TAB 2: 5 KỸ THUẬT BĂNG BÓ CƠ BẢN ==================== -->
+      <div class="tab-pane" id="tab-ky-thuat-bang">
+
+        <div class="section-card">
+          <h2><i class="fas fa-bandage"></i> Quy Trình 5 Kỹ Thuật Băng Bó Vết Thương Cơ Bản</h2>
+          <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: 1rem;">
+            Chọn một trong 5 kỹ thuật băng bó dưới đây để xem hướng dẫn thao tác từng bước chuẩn y tế hiện trường:
+          </p>
+
+          <!-- BANDAGE TECH SELECTOR -->
+          <div class="tech-selector-grid">
+            <button class="tech-btn active" data-tech="xoan">1. Băng Vòng Xoắn</button>
+            <button class="tech-btn" data-tech="so8">2. Băng Số 8</button>
+            <button class="tech-btn" data-tech="nhan">3. Băng Chữ Nhân</button>
+            <button class="tech-btn" data-tech="hoiquy">4. Băng Hồi Quy</button>
+            <button class="tech-btn" data-tech="xoanoc">5. Băng Xoắn Ốc</button>
+          </div>
+
+          <!-- TECH DISPLAY CONTAINER -->
+          <div id="techDisplayCard" style="background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.5rem;">
+            <h3 id="techTitle" style="margin: 0 0 0.5rem; font-size: var(--text-md); font-weight: 800; color: var(--color-danger, #dc2626);">
+              3.1. Băng Vòng Tròn (Băng Vòng Xoắn)
+            </h3>
+            <div style="display: inline-block; background: rgba(220, 38, 38, 0.1); color: #dc2626; padding: 0.25rem 0.65rem; border-radius: 999px; font-size: var(--text-xs); font-weight: 700; margin-bottom: 1rem;" id="techApp">
+              Áp dụng: Băng vết thương ở chi (tay, chân), vùng ngực, bụng.
+            </div>
+
+            <div style="font-size: var(--text-sm); color: var(--color-text); line-height: 1.7;" id="techSteps">
+              <strong style="display: block; margin-bottom: 0.4rem;">Các bước thực hiện:</strong>
+              <ol style="margin: 0; padding-left: 1.2rem;">
+                <li>Phủ gạc vô trùng che kín miệng vết thương.</li>
+                <li>Đặt đầu cuộn băng ở phía dưới vết thương, tay phải cầm ngửa cuộn băng lên trên.</li>
+                <li>Lăn 2 - 3 vòng băng đầu tiên đè lên nhau để giữ chặt đầu băng.</li>
+                <li>Lăn cuộn băng hướng từ dưới lên trên, vòng băng sau đè lên <strong>2/3 chiều ngang vòng băng trước</strong> cho đến khi phủ kín vết thương.</li>
+                <li>Cố định đầu cuối của băng thật chặt bằng ghim hoặc buộc chặt ở phía trên vết thương.</li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- Rules banner -->
+          <div style="margin-top: 1.25rem; background: var(--color-surface); border-left: 4px solid var(--color-primary); padding: 1rem; border-radius: var(--radius-sm);">
+            <h4 style="margin: 0 0 0.4rem; font-size: var(--text-sm); color: var(--color-text);"><i class="fas fa-shield-halved"></i> Nguyên Tắc Băng Bó Bắt Buộc:</h4>
+            <ul style="margin: 0; padding-left: 1.2rem; font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.6;">
+              <li><strong>Đủ chặt &amp; Băng kín:</strong> Quấn quá lỏng sẽ tuột băng/không cầm được máu, quấn quá chặt gây chẹn mạch máu nuôi chi.</li>
+              <li><strong>Vệ sinh rửa vết thương:</strong> Dùng nước muối sinh lý Natri Clorid 0.9% hoặc nước sạch lọc. <em>KHÔNG dùng cồn 70° hoặc dung dịch sát trùng bôi trực tiếp vào lòng vết thương tại hiện trường.</em></li>
+              <li><strong>Nút buộc:</strong> Tránh buộc đè lên vết thương, đầu xương, mặt trong chi hoặc chỗ tỳ đè.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ==================== TAB 3: VẾT THƯƠNG ĐẶC BIỆT ==================== -->
+      <div class="tab-pane" id="tab-dac-biet">
+
+        <div class="section-card">
+          <h2><i class="fas fa-kit-medical"></i> Sơ Cứu 4 Loại Vết Thương Cấp Cứu Đặc Biệt</h2>
+
+          <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+
+            <!-- 1. Vết thương bụng -->
+            <div style="background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.25rem;">
+              <h3 style="margin: 0 0 0.5rem; font-size: var(--text-md); font-weight: 700; color: var(--color-text);">
+                1. Vết Thương Bụng (Thường lòi ruột / mạc nối)
+              </h3>
+
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; font-size: var(--text-xs);">
+                <div style="background: var(--color-surface); padding: 1rem; border-radius: var(--radius-sm);">
+                  <strong style="color: var(--color-primary);">a/ Trường hợp TẠNG CHƯA LÒI RA NGOÀI:</strong>
+                  <ul style="margin: 0.4rem 0 0; padding-left: 1.2rem; color: var(--color-text-muted); line-height: 1.6;">
+                    <li>Đặt nạn nhân ở <strong>tư thế nửa nằm nửa ngồi gập 2 chân</strong> (để chùng cơ bụng, giảm áp lực).</li>
+                    <li>Khép khép các mép vết thương, phủ gạc lớn &amp; băng nhẹ.</li>
+                    <li>Nếu nạn nhân ho/nôn: Dặn lấy tay áp nhẹ lên vùng vết thương để tránh lòi tạng.</li>
+                  </ul>
+                </div>
+
+                <div style="background: var(--color-surface); padding: 1rem; border-radius: var(--radius-sm); border: 1.5px solid #ef4444;">
+                  <strong style="color: #dc2626;">b/ Trường hợp TẠNG ĐÃ LÒI RA NGOÀI:</strong>
+                  <ul style="margin: 0.4rem 0 0; padding-left: 1.2rem; color: var(--color-text-muted); line-height: 1.6;">
+                    <li><strong>TUYỆT ĐỐI KHÔNG ẤN TẠNG VÀO TRONG BỤNG</strong> (tránh mang vi khuẩn nhiễm trùng ổ bụng).</li>
+                    <li>Dùng gạc vô trùng <strong>tẩm nước muối sinh lý 0.9%</strong> phủ trùm lên tạng.</li>
+                    <li>Úp một chiếc <strong>BÁT SẠCH</strong> lên trên bảo vệ tạng lòi ra ngoài rồi quấn băng cố định. HOẶC tạo <strong>Vành khăn (Doughnut Ring)</strong> bao quanh rồi băng số 8.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Vết thương ngực hở -->
+            <div style="background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.25rem;">
+              <h3 style="margin: 0 0 0.5rem; font-size: var(--text-md); font-weight: 700; color: var(--color-text);">
+                2. Vết Thương Ngực Hở &amp; Dị Vật Xuyên Thấu
+              </h3>
+
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; font-size: var(--text-xs);">
+                <div style="background: var(--color-surface); padding: 1rem; border-radius: var(--radius-sm);">
+                  <strong style="color: var(--color-primary);">Kỹ thuật Băng Dính 3 Chiều (3-Sided Occlusive Dressing):</strong>
+                  <p style="margin: 0.4rem 0 0; color: var(--color-text-muted); line-height: 1.6;">
+                    Áp dụng cho vết thương ngực hở vừa - nhỏ. Dán băng dính 3 cạnh của gạc/nilon kín, <strong>để hở 1 cạnh dưới</strong> tạo thành <em>van 1 chiều</em> (One-way valve): Khí thoát ra ngoài khi thở ra nhưng không bị hút ngược vào khi hít vào, tránh tràn khí màng phổi áp lực.
+                  </p>
+                </div>
+
+                <div style="background: var(--color-surface); padding: 1rem; border-radius: var(--radius-sm); border: 1.5px solid #ef4444;">
+                  <strong style="color: #dc2626;">Dị vật cắm vào ngực / cơ thể:</strong>
+                  <p style="margin: 0.4rem 0 0; color: var(--color-text-muted); line-height: 1.6;">
+                    <strong>TUYỆT ĐỐI KHÔNG RÚT DỊ VẬT RA</strong> (do nguy cơ gây chảy máu ồ ạt tử vong cấp tính). Chèn gạc xung quanh chân dị vật để giữ nguyên vị trí, quấn băng cố định chân dị vật và chuyển cấp cứu ngay.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Vỡ sọ lòi não -->
+            <div style="background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.25rem;">
+              <h3 style="margin: 0 0 0.5rem; font-size: var(--text-md); font-weight: 700; color: var(--color-text);">
+                3. Vết Thương Vỡ Xương Sọ Lòi Tổ Chức Nảo
+              </h3>
+              <ul style="margin: 0; padding-left: 1.2rem; font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.6;">
+                <li><strong>Không bôi bất kỳ loại thuốc nào</strong> lên mô não. KHÔNG gạt bỏ hoặc ấn tổ chức toàn não vào trong sọ.</li>
+                <li>Dùng gạc vô trùng <strong>tẩm nước muối sinh lý 0.9%</strong> phủ lên tổ chức não.</li>
+                <li>Đặt vành khăn hoặc úp một chiếc <strong>bát sạch</strong> lên trên tổ chức não rồi quấn băng cuộn cố định nhẹ nhàng.</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ==================== TAB 4: LƯỢNG GIÁ MCQ ==================== -->
+      <div class="tab-pane" id="tab-mcq">
+
+        <div class="section-card">
+          <h2><i class="fas fa-list-check"></i> Bộ Câu Hỏi Lượng Giá Sơ Cứu Cầm Máu &amp; Băng Bó</h2>
+          <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: 1.25rem;">
+            Thử thách kiến thức qua các câu hỏi trắc nghiệm thực tế chuẩn Y tế:
+          </p>
+
+          <div id="quizContainer">
+            <!-- Questions rendered via JS -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- REFERENCES FOOTER -->
+      <section class="section-card" style="margin-top: 2rem;">
+        <h2><i class="fas fa-book-bookmark"></i> Tài Liệu Tham Khảo Chuẩn AMA</h2>
+        <ol style="margin: 0; padding-left: 1.2rem; font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.7;">
+          <li>Lương Ngọc Khuê, Trần Thị Ngọc Lan. <em>Hướng dẫn thực hành cơ bản chăm sóc chấn thương trước bệnh viện</em>. NXB Y học; 2011.</li>
+          <li>Nguyễn Hữu Tú. Bài giảng Cấp cứu tai nạn thương tích. NXB Y học; 2013.</li>
+          <li>Đặng Hanh Đệ, Nguyễn Đức Phúc. <em>Cấp cứu ngoại khoa chấn thương</em>. NXB Y học; 2013.</li>
+          <li>Bộ Y tế. <em>Quyết định số 2019/QĐ-BYT ngày 06/08/2014 Ban hành tài liệu chuyên môn hướng dẫn khám, chữa bệnh tại trạm y tế xã, phường</em>. 2014.</li>
+          <li>American College of Surgeons. <em>Advanced Trauma Life Support (ATLS®)</em>. 10th ed. 2019.</li>
+        </ol>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // 1. Tab Switching
+      const tabBtns = document.querySelectorAll('.tab-navigation .tab-btn');
+      const tabPanes = document.querySelectorAll('.tab-pane');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+          const target = this.getAttribute('data-tab');
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabPanes.forEach(p => p.classList.remove('active'));
+
+          this.classList.add('active');
+          const targetPane = document.getElementById(target);
+          if (targetPane) targetPane.classList.add('active');
+        });
+      });
+
+      // 2. Bandage Tech Selector (Tab 2)
+      const techBtns = document.querySelectorAll('.tech-btn');
+      const techTitle = document.getElementById('techTitle');
+      const techApp = document.getElementById('techApp');
+      const techSteps = document.getElementById('techSteps');
+
+      const techData = {
+        'xoan': {
+          title: '3.1. Băng Vòng Tròn (Băng Vòng Xoắn)',
+          app: 'Áp dụng: Vết thương ở chi (tay, chân), vùng ngực, bụng.',
+          steps: `
+            <strong style="display: block; margin-bottom: 0.4rem;">Các bước thực hiện:</strong>
+            <ol style="margin: 0; padding-left: 1.2rem;">
+              <li>Phủ gạc vô trùng che kín miệng vết thương.</li>
+              <li>Đặt đầu cuộn băng ở phía dưới vết thương, tay phải cầm ngửa cuộn băng lên trên.</li>
+              <li>Lăn 2 - 3 vòng băng đầu tiên đè lên nhau để giữ chặt đầu băng.</li>
+              <li>Lăn cuộn băng hướng từ dưới lên trên, vòng băng sau đè lên <strong>2/3 chiều ngang vòng băng trước</strong> cho đến khi phủ kín vết thương.</li>
+              <li>Cố định đầu cuối của băng thật chặt bằng ghim hoặc buộc chặt ở phía trên vết thương.</li>
+            </ol>
+          `
+        },
+        'so8': {
+          title: '3.2. Băng Số 8',
+          app: 'Áp dụng: Vùng khớp vai, cẳng tay, gót chân, đùi, cẳng chân (giúp vận chuyển cử động dễ dàng).',
+          steps: `
+            <strong style="display: block; margin-bottom: 0.4rem;">Các bước thực hiện:</strong>
+            <ol style="margin: 0; padding-left: 1.2rem;">
+              <li>Phủ gạc kín miệng vết thương.</li>
+              <li>Quấn 2 - 3 vòng đè lên nhau để cố định đầu băng.</li>
+              <li>Băng nhiều vòng giao nhau theo hình <strong>số 8</strong>, vòng băng sau đè lên vòng băng trước 2/3 chiều ngang.</li>
+              <li>Băng kín toàn bộ vết thương rồi buộc cố định đầu cuộn băng.</li>
+            </ol>
+          `
+        },
+        'nhan': {
+          title: '3.3. Băng Chữ Nhân (Băng Gấp Nếp)',
+          app: 'Áp dụng: Vết thương ở vùng gập, bộ phận độ lớn không đều nhau (khuỷu tay, khuỷu chân).',
+          steps: `
+            <strong style="display: block; margin-bottom: 0.4rem;">Các bước thực hiện:</strong>
+            <ol style="margin: 0; padding-left: 1.2rem;">
+              <li>Phủ gạc kín miệng vết thương. Cố định gạc bằng 1 vòng quấn xoáy.</li>
+              <li>Ngón cái tay trái đè lên chỗ định gấp giữ chặt vòng băng.</li>
+              <li>Nới dài cuộn băng khoảng 15cm, tay phải lật cuộn băng kéo xuống dưới và gấp lại.</li>
+              <li>Quấn chặt chỗ băng, kết thúc bằng 2 vòng tròn và buộc cố định.</li>
+            </ol>
+          `
+        },
+        'hoiquy': {
+          title: '3.4. Băng Hồi Quy (Băng Vòng Gấp Lại)',
+          app: 'Áp dụng: Vết thương ở vùng đầu, đầu ngón tay/chân, mỏm cụt chi.',
+          steps: `
+            <strong style="display: block; margin-bottom: 0.4rem;">Các bước thực hiện:</strong>
+            <ol style="margin: 0; padding-left: 1.2rem;">
+              <li>Phủ gạc kín miệng vết thương. Băng 2 vòng tròn cố định chân.</li>
+              <li>Lật băng từ trước ra sau, rồi lật từ sau ra trước (mỗi vòng trở về điểm bắt đầu).</li>
+              <li>Đường băng thứ nhất ở giữa, các đường sau tỏa ra 2 bên theo kiểu <strong>rẻ quạt</strong> cho đến khi kín vết thương.</li>
+              <li>Kết thúc bằng vòng tròn ở chân rẻ quạt và buộc cố định.</li>
+            </ol>
+          `
+        },
+        'xoanoc': {
+          title: '3.5. Băng Xoắn Ốc',
+          app: 'Áp dụng: Những bộ phận bắp thịt đều nhau (cánh tay, ngón tay).',
+          steps: `
+            <strong style="display: block; margin-bottom: 0.4rem;">Các bước thực hiện:</strong>
+            <ol style="margin: 0; padding-left: 1.2rem;">
+              <li>Quấn 2 - 3 vòng đè lên nhau ở phía dưới vết thương để cố định đầu băng.</li>
+              <li>Cho đường băng quấn vòng theo hướng đi lên xoắn ốc, vòng sau đè lên 1/2 đến 2/3 chiều ngang vòng trước.</li>
+              <li>Che kín vết thương và buộc cố định đầu băng còn lại.</li>
+            </ol>
+          `
+        }
+      };
+
+      techBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+          techBtns.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+
+          const key = this.getAttribute('data-tech');
+          const item = techData[key];
+          if (item) {
+            techTitle.textContent = item.title;
+            techApp.textContent = item.app;
+            techSteps.innerHTML = item.steps;
+          }
+        });
+      });
+
+      // 3. MCQ Quiz Data & Generator (Tab 4)
+      const quizQuestions = [
+        {
+          q: "1. Dấu hiệu đặc trưng nào dưới đây nghi ngờ vết thương chảy máu từ ĐỘNG MẠCH?",
+          opts: [
+            "A. Máu chảy chậm, tràn ra đều bề mặt vết thương, màu đỏ thẫm.",
+            "B. Máu chảy phun thành vòi/tia, đập theo nhịp tim, màu đỏ tươi.",
+            "C. Máu chảy rịn rỉ số lượng ít, màu đỏ tươi.",
+            "D. Máu không chảy ra ngoài nhưng bệnh nhân tỉnh táo bình thường."
+          ],
+          ans: 1,
+          exp: "Giải thích: Chảy máu động mạch có áp lực cao nên máu phun thành vòi/tia, nảy theo nhịp đập của tim và máu có màu đỏ tươi (giàu O2)."
+        },
+        {
+          q: "2. Khi phát hiện vết thương ngực hở có dị vật (dao/vật nhọn) cắm sâu vào ngực, xử trí nào đúng?",
+          opts: [
+            "A. Rút ngay dị vật ra ngoài để nhanh chóng khâu miệng vết thương.",
+            "B. TUYỆT ĐỐI KHÔNG rút dị vật ra, chèn gạc xung quanh chân dị vật và quấn băng cố định.",
+            "C. Bôi cồn 70 độ trực tiếp vào chân dị vật rồi rút ra.",
+            "D. Ấn mạnh dị vật sâu hơn để bịt kín lỗ thủng ngực."
+          ],
+          ans: 1,
+          exp: "Giải thích: Tuyệt đối không rút dị vật đang cắm sâu vì dị vật đang đè ép cầm máu. Rút ra sẽ gây chảy máu ồ ạt tử vong cấp tính."
+        },
+        {
+          q: "3. Kỹ thuật dán băng dính 3 chiều (3-Sided Dressing) áp dụng cho loại vết thương nào?",
+          opts: [
+            "A. Vết thương vỡ sọ lòi tổ chức brain.",
+            "B. Vết thương ngực hở vừa và nhỏ để tạo van 1 chiều cho khí thoát ra ngoài khi thở ra.",
+            "C. Vết thương đứt mỏm cụt ngón tay.",
+            "D. Vết thương chảy máu tĩnh mạch ở bắp chân."
+          ],
+          ans: 1,
+          exp: "Giải thích: Băng 3 chiều chừa 1 cạnh dưới tạo van 1 chiều giúp khí thoát ra khỏi khoang màng phổi khi thở ra nhưng không bị hút ngược vào khi hít vào."
+        },
+        {
+          q: "4. Đối với nạn nhân bị đặt Ga-rô (Tourniquet), mốc thời gian nguy hiểm gây hoại tử chi là:",
+          opts: [
+            "A. Quá 15 - 30 phút.",
+            "B. Quá 60 - 90 phút nếu thiếu máu nuôi hoàn toàn.",
+            "C. Quá 120 - 180 phút.",
+            "D. Không giới hạn thời gian."
+          ],
+          ans: 1,
+          exp: "Giải thích: Chi bị buộc ga-rô sẽ bị thiếu máu nuôi hoàn toàn và hoại tử tử vong tế bào sau 60 - 90 phút."
+        },
+        {
+          q: "5. Xử trí đúng đối với vết thương bụng bị lòi ruột (mạc nối) ra ngoài hiện trường?",
+          opts: [
+            "A. Dùng tay đẩy toàn bộ ruột lòi ra trở lại vào trong ổ bụng.",
+            "B. Rửa ruột bằng cồn 70 độ rồi băng ép thật chặt.",
+            "C. TUYỆT ĐỐI KHÔNG đẩy tạng vào trong, phủ gạc vô trùng tẩm nước muối 0.9%, úp bát sạch lên bảo vệ rồi băng cố định.",
+            "D. Cho nạn nhân uống nhiều nước ấm để tránh mất nước."
+          ],
+          ans: 2,
+          exp: "Giải thích: Tuyệt đối không đẩy tạng vào trong tránh vi khuẩn gây viêm phúc mạc. Úp bát sạch hoặc vành khăn che chở tạng."
+        }
+      ];
+
+      const quizContainer = document.getElementById('quizContainer');
+      if (quizContainer) {
+        quizQuestions.forEach((item, index) => {
+          const card = document.createElement('div');
+          card.className = 'quiz-card';
+          card.innerHTML = `
+            <div class="quiz-q">${item.q}</div>
+            <div class="quiz-options">
+              ${item.opts.map((opt, i) => `<button class="quiz-opt" data-q="${index}" data-opt="${i}">${opt}</button>`).join('')}
+            </div>
+            <div class="quiz-explanation" id="exp-${index}"></div>
+          `;
+          quizContainer.appendChild(card);
+        });
+
+        document.querySelectorAll('.quiz-opt').forEach(btn => {
+          btn.addEventListener('click', function () {
+            const qIdx = parseInt(this.getAttribute('data-q'));
+            const optIdx = parseInt(this.getAttribute('data-opt'));
+            const qObj = quizQuestions[qIdx];
+            const expEl = document.getElementById(`exp-${qIdx}`);
+
+            const siblings = this.parentElement.querySelectorAll('.quiz-opt');
+            siblings.forEach(s => s.disabled = true);
+
+            if (optIdx === qObj.ans) {
+              this.classList.add('correct');
+            } else {
+              this.classList.add('incorrect');
+              siblings[qObj.ans].classList.add('correct');
+            }
+
+            if (expEl) {
+              expEl.style.display = 'block';
+              expEl.innerHTML = `<strong>Phản hồi:</strong> ${qObj.exp}`;
+            }
+          });
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

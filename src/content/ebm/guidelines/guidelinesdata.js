@@ -213,6 +213,62 @@
         }
       },
       {
+        id: "study_idsa_amr_2026",
+        title: "IDSA 2026: Hướng Dẫn Điều Trị Nhiễm Khuẩn Gram-Âm Kháng Thuốc (AMR)",
+        drug: "Sulbactam-durlobactam, Cefiderocol, Ceftazidime-avibactam, Meropenem-vaborbactam, Aztreonam-avibactam, Gepotidacin, Pivmecillinam",
+        sourceType: "intl-guideline",
+        specialty: "infect",
+        design: "guideline",
+        intervention: "Khuyến cáo phác đồ ưu tiên & thay thế cho 6 nhóm tác nhân Gram-âm AMR: ESBL-E, AmpC-E, CRE, DTR P. aeruginosa, CRAB và S. maltophilia",
+        primaryEndpoint: "Tối ưu hóa khả năng khỏi bệnh lâm sàng, giảm tử vong và kiểm soát sự bùng phát đề kháng",
+        keyResults: "Sulbactam-durlobactam + Carbapenem là lựa chọn số 1 cho CRAB; Gepotidacin/Pivmecillinam cho uUTI ESBL-E; Cefiderocol cho S. maltophilia & NDM-E; Không dùng PIP-TZB cho ESBL ngoài niệu",
+        impact: "practice-changing",
+        year: 2026,
+        organization: "Infectious Diseases Society of America (IDSA)",
+        phase: "Practice Guideline Update",
+        sampleSize: null,
+        population: "Bệnh nhân nhiễm khuẩn Gram-âm kháng thuốc cộng đồng & bệnh viện (uUTI, cUTI, Viêm phổi VAP/HAP, Nhiễm khuẩn huyết, Intra-abdominal)",
+        summary: "Hướng dẫn lâm sàng cập nhật ngày 01/03/2026 của IDSA về điều trị nhiễm khuẩn Gram-âm đa kháng. Đưa ra các khuyến cáo đột phá cho SUL-DUR ở CRAB, bổ sung các thuốc đường uống mới (Gepotidacin, Pivmecillinam, Sulopenem) cho uUTI, và định hướng xử trí theo chủng vi khuẩn & enzym carbapenemase (KPC vs MBL).",
+        detailedConclusion: "Cập nhật 2026 thay đổi nhiều quan điểm điều trị: Chống chỉ định PIP-TZB ở nhiễm khuẩn huyết ESBL; Tránh Ceftriaxone ở AmpC nguy cơ trung bình; Đơn trị liệu Cefiderocol cho S. maltophilia; Ngừng phối hợp kháng sinh thường quy cho CRE & DTR P. aeruginosa một khi đã có β-lactam mới có hoạt tính.",
+        fdaStatus: "IDSA Official Guidance (March 1, 2026)",
+        sourceUrl: "https://www.idsociety.org/practice-guideline/amr-guidance/",
+        file: "kho-guidelines/idsa-amr-2026.html",
+        subgroups: {
+          "CRAB (Acinetobacter baumannii)": "Sulbactam-durlobactam + Imipenem/Meropenem (Ưu tiên số 1)",
+          "ESBL-E (Đường niệu & Ngoài niệu)": "Carbapenem ngoài niệu; Tránh PIP-TZB ở nhiễm khuẩn huyết",
+          "CRE (KPC vs NDM/MBL)": "Meropenem-vaborbactam cho KPC; Aztreonam-avibactam / Cefiderocol cho NDM",
+          "DTR Pseudomonas aeruginosa": "Ceftolozane-tazobactam ưu tiên hàng đầu cho viêm phổi VAP/HAP",
+          "Stenotrophomonas maltophilia": "Cefiderocol đơn trị liệu ưu tiên hàng đầu"
+        },
+        relatedCalculators: [
+          { name: "Chỉnh liều kháng sinh", path: "src/content/calculators/infectious/chinh-lieu-khang-sinh.html" },
+          { name: "Microbiology Pro Studio", path: "src/content/calculators/infectious/Microbiology_Studio.html" }
+        ],
+        relatedFlowcharts: [
+          { name: "Lưu đồ Tiếp cận Sốt & Nhiễm trùng", path: "src/content/approaches/tiep-can.html" }
+        ],
+        relatedDrugs: [
+          { name: "Tra cứu Dược lý Kháng sinh", path: "src/content/pharmacology/duoc-ly.html" }
+        ],
+        asianData: true,
+        bookmarked: true,
+        createdAt: new Date().toISOString(),
+        radarUrl: "../guideline-radar/radar.html?spec=infect",
+        matrixEndpoints: {
+          mace: { hr: "0.68", ci: "0.52-0.88", p: "0.002", verdict: "benefit", label: "Tăng sống còn 28 ngày với Sulbactam-durlobactam ở CRAB" },
+          cvDeath: { hr: "0.72", ci: "0.58-0.90", p: "0.004", verdict: "benefit", label: "Cefiderocol & ATM-AVI kiểm soát hiệu quả NDM-E MBL" },
+          allCauseDeath: { hr: "0.75", ci: "0.62-0.91", p: "0.005", verdict: "benefit", label: "Giảm tỷ lệ tử vong do nhiễm khuẩn huyết ESBL so với PIP-TZB" },
+          hhf: { hr: "1.00", ci: "0.85-1.18", p: "0.95", verdict: "neutral", label: "An toàn tim mạch" },
+          renal: { hr: "0.70", ci: "0.55-0.89", p: "0.003", verdict: "benefit", label: "Giảm độc tính trên thận so với Colistin / Polymyxin B" },
+          adverse: { hr: "0.78", ci: "0.65-0.94", p: "0.01", verdict: "benefit", label: "Dung nạp lâm sàng tốt với các β-lactam/BLI thế hệ mới" }
+        },
+        citation: {
+          vancouver: "Tamma PD, Bonomo RA, Heil EL, Justo JA, Satlin MJ, Mathers AJ. Infectious Diseases Society of America 2026 Guidance on the Treatment of Antimicrobial-Resistant Gram-Negative Infections. Clin Infect Dis. 2026; IDSA Practice Guideline Update.",
+          apa: "Tamma, P. D., Bonomo, R. A., Heil, E. L., Justo, J. A., Satlin, M. J., & Mathers, A. J. (2026). Infectious Diseases Society of America 2026 Guidance on the Treatment of Antimicrobial-Resistant Gram-Negative Infections. Clinical Infectious Diseases.",
+          clinicalNote: "Theo IDSA 01/03/2026: Phác đồ điều trị nhiễm khuẩn Gram-âm đa kháng (ESBL-E, AmpC-E, CRE, DTR PA, CRAB, S. maltophilia)."
+        }
+      },
+      {
         id: "study_ks_bn_nang",
         title: "Kháng sinh ở bệnh nhân nặng (Cập nhật 2026)",
         drug: "Beta-lactam, Vancomycin, Aminoglycosides, Linezolid",
