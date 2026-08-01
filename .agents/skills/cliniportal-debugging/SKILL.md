@@ -84,6 +84,7 @@ Mỗi khi khắc phục sự cố, cập nhật ngay thông tin vào bảng sau:
 | 26/07/2026 | `js/main.js` | `SyntaxError: Unexpected end of input` ngưng toàn bộ JS. | Thiếu dấu đóng `});` của click handler `.sample-case-btn`. | Thêm dấu `});` vào vị trí tương ứng. |
 | 26/07/2026 | `js/clinical-reasoning.js` | `SyntaxError: Unexpected identifier 'Text'`. | Khoảng trắng trong tên hàm `generateSNAPPS Text()`. | Đổi tên hàm thành `generateSNAPPSText()`. |
 | 27/07/2026 | Nâng cấp Hệ thống Skills | Khởi tạo công cụ truy vết Graphify & Quét HTML. | Cần tăng tốc chẩn đoán lỗi và phòng ngừa rủi ro side-effects. | Tích hợp `query_graph.js` và `check_tags.js` vào quy trình chẩn đoán. |
+| 01/08/2026 | `css/components/homepage-bento.css` | Trang chủ bị co xẹp thành dải hẹp bên trái trên di động (width ≤ 768px), khoảng trắng lớn bên phải. | Widget `.bento-shift-checklist` bị thiếu trong danh sách override media query `@media (max-width: 768px)`, khiến CSS Grid giữ vị trí `grid-column: 10 / 13` và tự động sinh ra 12 cột ngầm. | Thay danh sách selector thủ công bằng selector tổng quát `.bento-homepage > * { grid-column: 1 / -1 !important; grid-row: auto !important; }` để đảm bảo 100% bento cards xếp 1 cột chuẩn. |
 
 ---
 

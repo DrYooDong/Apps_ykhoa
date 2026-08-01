@@ -787,16 +787,18 @@ body {
   .bento-mod-tcm      { grid-column: 5 / 7; grid-row: 3; }
   .bento-mod-docspace { grid-column: 7 / 9; grid-row: 3; }
 
-  .bento-quick-access { grid-column: 1 / 5; grid-row: 4; }
-  .bento-pearl        { grid-column: 5 / 9; grid-row: 4; }
-  .bento-flashcard    { grid-column: 1 / 5; grid-row: 5; }
-  .bento-pulse-actions { grid-column: 5 / 9; grid-row: 5; }
+  .bento-shift-checklist { grid-column: 1 / 9; grid-row: 4; }
 
-  .bento-pinned        { grid-column: 1 / 5; grid-row: 6; }
-  .bento-sidebar-stack { grid-column: 5 / 9; grid-row: 6; }
+  .bento-quick-access { grid-column: 1 / 5; grid-row: 5; }
+  .bento-pearl        { grid-column: 5 / 9; grid-row: 5; }
+  .bento-flashcard    { grid-column: 1 / 5; grid-row: 6; }
+  .bento-pulse-actions { grid-column: 5 / 9; grid-row: 6; }
 
-  .bento-converter    { grid-column: 1 / 4; grid-row: 7; }
-  .bento-scratchpad   { grid-column: 4 / 9; grid-row: 7; }
+  .bento-pinned        { grid-column: 1 / 5; grid-row: 7; }
+  .bento-sidebar-stack { grid-column: 5 / 9; grid-row: 7; }
+
+  .bento-converter    { grid-column: 1 / 4; grid-row: 8; }
+  .bento-scratchpad   { grid-column: 4 / 9; grid-row: 8; }
 }
 
 /* ── Mobile (≤ 768px): Single column ── */
@@ -807,14 +809,8 @@ body {
     padding: 0.75rem;
   }
 
-  .bento-hero,
-  .bento-emergency,
-  .bento-mod-skills, .bento-mod-approach, .bento-mod-tools, .bento-mod-pharma,
-  .bento-mod-physio, .bento-mod-ebm, .bento-mod-tcm, .bento-mod-docspace,
-  .bento-quick-access, .bento-pearl, .bento-flashcard,
-  .bento-pulse-actions, .bento-pinned, .bento-sidebar-stack,
-  .bento-converter, .bento-scratchpad {
-    grid-column: 1 / -1;
-    grid-row: auto;
+  .bento-homepage > * {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
   }
 }

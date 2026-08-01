@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ngân hàng Tiêu chuẩn Chẩn đoán – CliniPortal: Tra cứu nhanh và tương tác tính điểm các tiêu chuẩn chẩn đoán y khoa.">
+  <title>Ngân hàng Tiêu chuẩn Chẩn đoán – CliniPortal</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Base CliniPortal CSS -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <!-- Module CSS -->
+  <link rel="stylesheet" href="css/criteria.css">
+
+  <script src="../../../../../js/main.js" defer></script>
+</head>
+
+<body class="dc-workspace-body">
+
+  <!-- TOPBAR -->
+  <header class="dc-topbar">
+    <div class="dc-topbar-left">
+      <a href="../benh-ly.html" class="dc-back-btn" title="Trở về Pathology Matrix">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Bệnh lý</span>
+      </a>
+      <div class="dc-brand">
+        <span class="dc-brand-icon">📋</span>
+        <span class="dc-brand-name">Tiêu chuẩn Chẩn đoán</span>
+        <span class="dc-brand-badge">v2.0</span>
+      </div>
+    </div>
+
+    <div class="dc-topbar-center">
+      <div class="dc-search-wrap">
+        <i class="fa-solid fa-magnifying-glass dc-search-icon"></i>
+        <input type="text" id="criteria-search" class="dc-search-input"
+          placeholder="Tìm tiêu chuẩn, bệnh lý, mã ICD-10... (Gõ '/' để tìm)"
+          oninput="handleCriteriaSearch()">
+        <span class="dc-search-count" id="criteria-display-count">0</span>
+      </div>
+    </div>
+
+    <div class="dc-topbar-right">
+      <button class="pm-btn-icon" id="themeToggleBtn" onclick="toggleTheme()" title="Đổi chế độ Sáng / Tối" style="width:36px;height:36px;border-radius:9px;border:1px solid var(--color-border);background:var(--color-surface);color:var(--color-text);cursor:pointer;">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN APP BODY -->
+  <div class="dc-app-body">
+    <div class="dc-container">
+
+      <!-- STATS HERO STRIP -->
+      <div class="dc-stats-strip">
+        <div class="dc-stat-item">
+          <div class="dc-stat-icon blue"><i class="fa-solid fa-clipboard-list"></i></div>
+          <div class="dc-stat-body">
+            <span class="dc-stat-value" id="stat-total-count">0</span>
+            <span class="dc-stat-label">Bộ tiêu chuẩn</span>
+          </div>
+        </div>
+        <div class="dc-stat-sep"></div>
+        <div class="dc-stat-item">
+          <div class="dc-stat-icon rose"><i class="fa-solid fa-heart-pulse"></i></div>
+          <div class="dc-stat-body">
+            <span class="dc-stat-value" id="stat-spec-count">0</span>
+            <span class="dc-stat-label">Chuyên khoa</span>
+          </div>
+        </div>
+        <div class="dc-stat-sep"></div>
+        <div class="dc-stat-item">
+          <div class="dc-stat-icon amber"><i class="fa-solid fa-bolt"></i></div>
+          <div class="dc-stat-body">
+            <span class="dc-stat-value">Tương tác</span>
+            <span class="dc-stat-label">Tính điểm tức thì</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPECIALTY FILTER PILLS -->
+      <div class="dc-filter-bar" id="criteria-filter-pills">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- CARDS GRID -->
+      <section class="dc-hub-grid" id="criteria-hub-container">
+        <!-- Rendered by JS -->
+      </section>
+
+    </div>
+  </div>
+
+  <script src="js/criteria-engine.js" defer></script>
+
+</body>
+</html>

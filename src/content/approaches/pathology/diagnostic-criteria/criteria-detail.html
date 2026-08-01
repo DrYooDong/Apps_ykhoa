@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chi tiết Tiêu chuẩn Chẩn đoán – CliniPortal">
+  <title>Chi tiết Tiêu chuẩn – CliniPortal</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Base CliniPortal CSS -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <!-- Module CSS -->
+  <link rel="stylesheet" href="css/criteria.css">
+
+  <script src="../../../../../js/main.js" defer></script>
+</head>
+
+<body class="dc-workspace-body">
+
+  <!-- TOPBAR -->
+  <header class="dc-topbar">
+    <div class="dc-topbar-left">
+      <a href="index.html" class="dc-back-btn" title="Trở về Ngân hàng Tiêu chuẩn">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Ngân hàng</span>
+      </a>
+      <div class="dc-brand">
+        <span class="dc-brand-icon">📋</span>
+        <span class="dc-brand-name" id="topbar-title-display">Tiêu chuẩn Chẩn đoán</span>
+      </div>
+    </div>
+
+    <div class="dc-topbar-right">
+      <button class="pm-btn-icon" id="themeToggleBtn" onclick="toggleTheme()" title="Đổi chế độ Sáng / Tối" style="width:36px;height:36px;border-radius:9px;border:1px solid var(--color-border);background:var(--color-surface);color:var(--color-text);cursor:pointer;">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN APP BODY -->
+  <div class="dc-app-body">
+    <div class="dc-container">
+      <div class="dc-detail-wrapper" id="criteria-detail-container">
+        <!-- Rendered by JS -->
+        <div class="loading-state">
+          <i class="fa-solid fa-spinner fa-spin fa-2x" style="color: var(--color-primary);"></i>
+          <p>Đang tải dữ liệu tiêu chuẩn chẩn đoán...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/criteria-engine.js" defer></script>
+
+</body>
+</html>

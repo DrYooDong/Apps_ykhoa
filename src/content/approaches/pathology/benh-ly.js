@@ -20,6 +20,8 @@ let currentTab = 'all'; // 'all', 'saved', 'has-flow'
 let currentCategory = 'all'; // 'all', 'chan-doan', 'dieu-tri'
 let currentSpecialty = 'all';
 let searchQuery = '';
+let sortMode = 'newest'; // 'newest', 'name-az', 'specialty'
+let viewMode = 'grid'; // 'grid', 'list'
 let engine = null;
 let currentEditingDiseaseId = null;
 
@@ -39,8 +41,100 @@ document.addEventListener('DOMContentLoaded', () => {
             const searchInput = document.getElementById('search-input');
             if (searchInput) searchInput.focus();
         }
+        if (e.key === 'Escape') {
+            closeMoreMenu();
+            closeSortMenu();
+        }
+    });
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', (e) => {
+        const moreWrap = document.getElementById('moreMenuWrap');
+        if (moreWrap && !moreWrap.contains(e.target)) closeMoreMenu();
+        const sortWrap = document.querySelector('.pm-sort-wrap');
+        if (sortWrap && !sortWrap.contains(e.target)) closeSortMenu();
     });
 });
+
+// ════════════════════════════
+// UI CONTROL FUNCTIONS
+// ════════════════════════════
+
+/**
+ * Unified filter function — replaces filterCategory + switchMainTab
+ * type: 'all', 'cat', 'saved', 'has-flow'
+ * value: 'all', 'chan-doan', 'dieu-tri', '' (for saved/has-flow)
+ */
+function applyFilter(type, value) {
+    // Reset all seg buttons
+    document.querySelectorAll('.pm-seg-btn').forEach(btn => btn.classList.remove('active'));
+
+    if (type === 'all') {
+        currentTab = 'all';
+        currentCategory = 'all';
+        document.getElementById('filter-all')?.classList.add('active');
+    } else if (type === 'cat') {
+        currentTab = 'all';
+        currentCategory = value;
+        document.getElementById(`filter-${value}`)?.classList.add('active');
+    } else if (type === 'saved') {
+        currentTab = 'saved';
+        currentCategory = 'all';
+        document.getElementById('filter-saved')?.classList.add('active');
+    } else if (type === 'has-flow') {
+        currentTab = 'has-flow';
+        currentCategory = 'all';
+        document.getElementById('filter-has-flow')?.classList.add('active');
+    }
+    renderCards();
+}
+
+function toggleMoreMenu() {
+    const menu = document.getElementById('moreMenuDropdown');
+    if (menu) menu.classList.toggle('open');
+}
+
+function closeMoreMenu() {
+    const menu = document.getElementById('moreMenuDropdown');
+    if (menu) menu.classList.remove('open');
+}
+
+function toggleSortMenu() {
+    const menu = document.getElementById('sortMenu');
+    if (menu) menu.classList.toggle('open');
+}
+
+function closeSortMenu() {
+    const menu = document.getElementById('sortMenu');
+    if (menu) menu.classList.remove('open');
+}
+
+const SORT_LABELS = {
+    'newest': 'Mới nhất',
+    'name-az': 'Tên A-Z',
+    'specialty': 'Theo chuyên khoa'
+};
+
+function handleSort(mode) {
+    sortMode = mode;
+    // Update button active states
+    document.querySelectorAll('.pm-sort-item').forEach(btn => btn.classList.remove('active'));
+    document.getElementById(`sort-${mode}`)?.classList.add('active');
+    const labelEl = document.getElementById('sort-label');
+    if (labelEl) labelEl.textContent = SORT_LABELS[mode] || mode;
+    closeSortMenu();
+    renderCards();
+}
+
+function setViewMode(mode) {
+    viewMode = mode;
+    document.querySelectorAll('.pm-view-btn').forEach(btn => btn.classList.remove('active'));
+    document.getElementById(`view-${mode}`)?.classList.add('active');
+    const grid = document.getElementById('disease-cards');
+    if (grid) {
+        grid.classList.toggle('list-view', mode === 'list');
+    }
+}
 
 // ════════════════════════════
 // SUPABASE CONFIG & SYNC
@@ -353,7 +447,7 @@ function renderSpecialtyPills() {
 
     let html = `
         <button class="spec-pill-btn ${currentSpecialty === 'all' ? 'active' : ''}" onclick="filterSpecialty('all')">
-            <span class="spec-pill-dot" style="background: var(--color-primary);"></span> Tất cả chuyên khoa
+            <span class="spec-pill-dot" style="background: var(--color-primary);"></span> Tất cả
         </button>
     `;
 
@@ -463,6 +557,16 @@ function renderCards() {
         );
     }
 
+    // Apply Sort
+    if (sortMode === 'name-az') {
+        filtered.sort((a, b) => a.name.localeCompare(b.name, 'vi'));
+    } else if (sortMode === 'specialty') {
+        filtered.sort((a, b) => (a.specialty || '').localeCompare(b.specialty || '', 'vi'));
+    } else {
+        // newest (default)
+        filtered.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    }
+
     // Update Stats Strip & Badges
     document.getElementById('totalDiseasesCount').textContent = diseases.length;
     document.getElementById('flowchartsCount').textContent = diseases.filter(d => d.flowchart && d.flowchart.nodes && d.flowchart.nodes.length > 0).length;
@@ -488,51 +592,53 @@ function renderCards() {
         const catVal = d.category || 'ca-hai';
         let catBadgeHtml = '';
         if (catVal === 'chan-doan') {
-            catBadgeHtml = `<span class="cat-tag chan-doan"><i class="fa-solid fa-stethoscope"></i> Chẩn đoán</span>`;
+            catBadgeHtml = `<span class="pm-cat-badge chan-doan"><i class="fa-solid fa-stethoscope"></i> Chẩn đoán</span>`;
         } else if (catVal === 'dieu-tri') {
-            catBadgeHtml = `<span class="cat-tag dieu-tri"><i class="fa-solid fa-pills"></i> Điều trị</span>`;
+            catBadgeHtml = `<span class="pm-cat-badge dieu-tri"><i class="fa-solid fa-pills"></i> Điều trị</span>`;
         } else {
-            catBadgeHtml = `<span class="cat-tag ca-hai"><i class="fa-solid fa-notes-medical"></i> Chẩn đoán & Điều trị</span>`;
+            catBadgeHtml = `<span class="pm-cat-badge ca-hai"><i class="fa-solid fa-notes-medical"></i> Chẩn đoán & Điều trị</span>`;
         }
 
         const flowPillHtml = nodeCount > 0 
-            ? `<span class="flow-step-pill has-flow"><i class="fa-solid fa-bolt"></i> ${nodeCount} bước lưu đồ</span>`
-            : `<span class="flow-step-pill no-flow"><i class="fa-solid fa-pen-to-square"></i> Chưa tạo sơ đồ</span>`;
+            ? `<span class="pm-flow-pill has-flow"><i class="fa-solid fa-bolt"></i> ${nodeCount} bước lưu đồ</span>`
+            : `<span class="pm-flow-pill no-flow"><i class="fa-solid fa-pen-to-square"></i> Chưa tạo sơ đồ</span>`;
 
         html += `
-            <div class="path-card" onclick="openStudio('${d.id}')">
-                <div class="path-card-top">
-                    <div class="path-card-tags">
-                        ${d.icd ? `<span class="icd-tag">${d.icd}</span>` : ''}
-                        <span class="spec-tag" style="color:${spec.color}; background:${spec.bg};">${spec.name}</span>
-                        ${catBadgeHtml}
+            <div class="pm-card" onclick="openStudio('${d.id}')" style="--card-accent-color: ${spec.color};">
+                <div class="pm-card-inner">
+                    <div class="pm-card-top">
+                        <div class="pm-card-badges">
+                            ${d.icd ? `<span class="pm-icd-tag">${d.icd}</span>` : ''}
+                            <span class="pm-spec-badge" style="color:${spec.color}; background:${spec.bg};">${spec.name}</span>
+                            ${catBadgeHtml}
+                        </div>
+                        <button class="pm-bookmark-btn ${d.bookmarked ? 'active' : ''}" onclick="toggleBookmark('${d.id}', event)" title="Lưu trữ">
+                            <i class="fa-${d.bookmarked ? 'solid' : 'regular'} fa-star"></i>
+                        </button>
                     </div>
-                    <button class="star-bookmark-btn ${d.bookmarked ? 'active' : ''}" onclick="toggleBookmark('${d.id}', event)" title="Lưu trữ">
-                        <i class="fa-solid fa-star"></i>
-                    </button>
-                </div>
 
-                <h3 class="path-card-title">${d.name}</h3>
-                <div class="path-card-desc">${d.description || 'Chưa có mô tả chi tiết cho bệnh lý này.'}</div>
+                    <h3 class="pm-card-title">${d.name}</h3>
+                    <div class="pm-card-desc">${d.description || 'Chưa có mô tả chi tiết cho bệnh lý này.'}</div>
 
-                <div class="path-card-flow-info">
                     ${flowPillHtml}
-                </div>
 
-                <div class="path-card-footer">
-                    <button class="btn-open-studio" onclick="event.stopPropagation(); openStudio('${d.id}')">
-                        <i class="fa-solid fa-diagram-project"></i> Studio
-                    </button>
-                    <button class="btn-open-studio secondary-poster-btn" onclick="event.stopPropagation(); openPosterOverlay('${d.id}')" style="background: rgba(2, 132, 199, 0.1); color: var(--color-primary); border: 1px solid var(--color-primary);">
-                        <i class="fa-solid fa-eye"></i> Xem Poster
-                    </button>
-                    <div class="path-card-mgmt-btns">
-                        <button class="icon-mgmt-btn" onclick="event.stopPropagation(); openDiseaseModal('${d.id}')" title="Sửa thông tin">
-                            <i class="fa-solid fa-pen"></i>
-                        </button>
-                        <button class="icon-mgmt-btn danger" onclick="deleteDisease('${d.id}', event)" title="Xóa">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
+                    <div class="pm-card-footer">
+                        <div class="pm-card-cta-group">
+                            <button class="pm-btn-studio" onclick="event.stopPropagation(); openStudio('${d.id}')">
+                                <i class="fa-solid fa-diagram-project"></i> Studio
+                            </button>
+                            <button class="pm-btn-poster" onclick="event.stopPropagation(); openPosterOverlay('${d.id}')">
+                                <i class="fa-solid fa-eye"></i> Poster
+                            </button>
+                        </div>
+                        <div class="pm-card-mgmt">
+                            <button class="pm-icon-btn" onclick="event.stopPropagation(); openDiseaseModal('${d.id}')" title="Chỉnh sửa">
+                                <i class="fa-solid fa-pen"></i>
+                            </button>
+                            <button class="pm-icon-btn danger" onclick="deleteDisease('${d.id}', event)" title="Xóa">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -541,6 +647,7 @@ function renderCards() {
 
     container.innerHTML = html;
 }
+
 
 // ════════════════════════════
 // DISEASE META MODAL
