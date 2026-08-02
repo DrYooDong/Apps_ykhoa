@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "deploy": "npm run build && git subtree push --prefix dist origin gh-pages",
     "preview": "vite preview",
     "start": "electron desktop/main-electron.js",
     "desktop": "electron desktop/main-electron.js",
