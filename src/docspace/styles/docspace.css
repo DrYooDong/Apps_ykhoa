@@ -192,6 +192,17 @@ body:has(#app .dsp-layout) .dsp-layout {
   background: rgba(2, 132, 199, 0.1);
   color: var(--color-primary);
   font-weight: 600;
+  position: relative;
+}
+.dsp-nav-item--active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 15%;
+  height: 70%;
+  width: 4px;
+  background: var(--color-primary);
+  border-radius: 0 4px 4px 0;
 }
 
 .dsp-nav-item--soon { opacity: 0.55; cursor: default; }
@@ -251,7 +262,7 @@ body:has(#app .dsp-layout) .dsp-layout {
 
 .dsp-profile-selector {
   min-height: 100vh;
-  background: var(--color-bg);
+  background: linear-gradient(135deg, var(--color-bg), var(--color-surface));
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -261,6 +272,13 @@ body:has(#app .dsp-layout) .dsp-layout {
 .dsp-profile-selector-inner {
   width: 100%;
   max-width: 560px;
+  padding: 2.5rem;
+  background: var(--color-surface);
+  border-radius: 1.5rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--color-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .dsp-selector-header {
@@ -311,19 +329,20 @@ body:has(#app .dsp-layout) .dsp-layout {
   align-items: center;
   gap: 1rem;
   width: 100%;
-  padding: 1rem;
-  background: var(--color-surface);
+  padding: 1.25rem 1rem;
+  background: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md, 0.75rem);
   cursor: pointer;
-  transition: all var(--dsp-transition);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   margin-bottom: 0.75rem;
   text-align: left;
 }
 
 .dsp-profile-card:hover {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(2,132,199,0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(2, 132, 199, 0.12);
 }
 
 .dsp-profile-info { flex: 1; }
@@ -364,11 +383,16 @@ body:has(#app .dsp-layout) .dsp-layout {
 
 .dsp-greeting {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
   flex-wrap: wrap;
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.08), rgba(2, 132, 199, 0.02));
+  padding: 1.75rem 2rem;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(2, 132, 199, 0.15);
+  box-shadow: inset 0 0 30px rgba(2, 132, 199, 0.04);
 }
 
 .dsp-page-title {
@@ -416,31 +440,36 @@ body:has(#app .dsp-layout) .dsp-layout {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.75rem 0.875rem;
+  padding: 1rem 0.875rem;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-md, 0.5rem);
+  border-radius: var(--radius-md, 0.75rem);
   text-decoration: none;
   color: inherit;
-  transition: all var(--dsp-transition);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.02);
 }
 
 .dsp-stat-card:hover {
   border-color: var(--color-primary);
-  transform: translateY(-1px);
-  box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
 .dsp-stat-icon {
-  width: 2rem;
-  height: 2rem;
-  border-radius: var(--radius-md, 0.375rem);
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.95rem;
+  font-size: 1rem;
   flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.dsp-stat-card:hover .dsp-stat-icon {
+  transform: scale(1.1);
 }
 
 .dsp-stat-sbar .dsp-stat-icon     { background: rgba(2,132,199,0.12); color: var(--color-primary); }
@@ -476,7 +505,7 @@ body:has(#app .dsp-layout) .dsp-layout {
   align-items: center;
   justify-content: flex-start;
   gap: 0.5rem;
-  padding: 0.6rem 0.75rem;
+  padding: 0.75rem;
   background: var(--color-surface);
   border: 1px dashed var(--color-border);
   border-radius: var(--radius-md, 0.5rem);
@@ -485,11 +514,19 @@ body:has(#app .dsp-layout) .dsp-layout {
   font-size: 0.8rem;
   font-weight: 600;
   text-align: left;
-  transition: all var(--dsp-transition);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.dsp-action-card i { font-size: 1rem; color: var(--color-primary); flex-shrink: 0; }
-.dsp-action-card:hover { border-color: var(--color-primary); color: var(--color-primary); background: rgba(2,132,199,0.04); }
+.dsp-action-card i { font-size: 1rem; color: var(--color-primary); flex-shrink: 0; transition: transform 0.2s ease; }
+.dsp-action-card:hover { 
+  border-color: var(--color-primary); 
+  border-style: solid;
+  color: var(--color-primary); 
+  background: rgba(2,132,199,0.04); 
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.dsp-action-card:hover i { transform: scale(1.1); }
 
 /* Quick Links Grid */
 .dsp-quick-links-grid {
@@ -615,13 +652,14 @@ body:has(#app .dsp-layout) .dsp-layout {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   flex-wrap: wrap;
   gap: 1rem;
-  background: linear-gradient(135deg, rgba(2,132,199,0.08), rgba(2,132,199,0.01));
-  padding: 1.5rem 2rem;
-  border-radius: var(--radius-lg, 1rem);
+  background: linear-gradient(135deg, rgba(2,132,199,0.1), rgba(14,165,233,0.05));
+  padding: 2rem 2.5rem;
+  border-radius: var(--radius-xl, 1.25rem);
   border: 1px solid rgba(2,132,199,0.15);
+  box-shadow: inset 0 0 40px rgba(2,132,199,0.05);
 }
 
 .dsp-hero-title {
@@ -648,27 +686,127 @@ body:has(#app .dsp-layout) .dsp-layout {
 }
 
 /* ═══════════════════════════════════════════════
-   SOAP ROW COLLAPSE
+   SOAP CARDS
 ═══════════════════════════════════════════════ */
 
-.dsp-soap-row.is-collapsed .dsp-soap-col-content {
+.dsp-soap-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-bottom: 2rem;
+}
+
+.dsp-soap-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.dsp-soap-card:hover {
+  box-shadow: 0 10px 25px rgba(2, 132, 199, 0.08);
+  border-color: rgba(2, 132, 199, 0.3);
+}
+
+.dsp-soap-card-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.05), rgba(2, 132, 199, 0.01));
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.dsp-soap-patient-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.dsp-soap-patient-name {
+  font-weight: 800;
+  font-size: 1.125rem;
+  color: var(--color-primary);
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.dsp-soap-patient-meta {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.dsp-soap-header-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+.dsp-soap-badges-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.dsp-soap-card-body {
+  padding: 1.25rem 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.dsp-soap-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.dsp-soap-col-title {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid rgba(2, 132, 199, 0.2);
+  margin-bottom: 0.25rem;
+}
+
+.dsp-soap-col-content {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.dsp-soap-row.is-collapsed .dsp-soap-card-body {
   display: none;
 }
-
 .js-toggle-row-collapse i {
-  transition: transform var(--dsp-transition);
+  transition: transform 0.3s ease;
 }
-
 .dsp-soap-row.is-collapsed .js-toggle-row-collapse i {
   transform: rotate(180deg);
 }
 
-.dsp-soap-row {
-  transition: background-color var(--dsp-transition);
+/* Responsive Grid for SOAP */
+@media (max-width: 1024px) {
+  .dsp-soap-card-body { grid-template-columns: repeat(2, 1fr); }
 }
-.dsp-soap-row.is-collapsed {
-  background-color: var(--color-surface-offset, rgba(0,0,0,0.02));
+
+@media (max-width: 768px) {
+  .dsp-soap-card-body { grid-template-columns: 1fr; gap: 1rem; padding: 1rem; }
+  .dsp-soap-card-header { padding: 1rem; flex-direction: column; align-items: flex-start; }
+  .dsp-soap-header-actions { align-items: flex-start; width: 100%; flex-direction: row-reverse; justify-content: space-between; }
+  .dsp-soap-badges-row { justify-content: flex-start; }
 }
+
 
 /* ═══════════════════════════════════════════════
    LIST
@@ -799,32 +937,42 @@ body:has(#app .dsp-layout) .dsp-layout {
 .dsp-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.55rem 1rem;
-  border-radius: var(--radius-md, 0.5rem);
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  border-radius: 2rem;
   font-size: var(--text-sm);
   font-weight: 600;
   cursor: pointer;
   border: none;
   text-decoration: none;
-  transition: all var(--dsp-transition);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
 }
 
 .dsp-btn-primary {
-  background: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-primary), #0369a1);
   color: #fff;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
 }
-.dsp-btn-primary:hover { background: var(--color-primary-dark, #0369a1); }
+.dsp-btn-primary:hover { 
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.35); 
+}
 
 .dsp-btn-ghost {
   background: var(--color-surface);
   color: var(--color-text);
   border: 1px solid var(--color-border);
 }
-.dsp-btn-ghost:hover { border-color: var(--color-primary); color: var(--color-primary); }
+.dsp-btn-ghost:hover { 
+  border-color: var(--color-primary); 
+  color: var(--color-primary); 
+  background: rgba(2, 132, 199, 0.04);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
 
-.dsp-btn-sm { padding: 0.375rem 0.75rem; font-size: var(--text-xs); }
+.dsp-btn-sm { padding: 0.4rem 1rem; font-size: var(--text-xs); }
 .dsp-btn-full { width: 100%; justify-content: center; }
 .dsp-btn-danger { color: var(--color-danger, #ef4444) !important; }
 
@@ -1418,6 +1566,8 @@ body:has(#app .dsp-layout) .dsp-layout {
     align-items: center;
     overflow: hidden;
     overflow-x: auto;
+    background: var(--color-surface);
+    z-index: 10;
   }
 
   .dsp-sidebar-header,
@@ -1435,16 +1585,24 @@ body:has(#app .dsp-layout) .dsp-layout {
 
   .dsp-nav-item {
     flex-direction: column;
-    gap: 0.2rem;
-    padding: 0.5rem 0.625rem;
+    gap: 0.3rem;
+    padding: 0.5rem 0.75rem;
     font-size: 0.65rem;
     border-radius: var(--radius-sm, 0.25rem);
-    min-width: 3.5rem;
+    min-width: 4.5rem;
     text-align: center;
   }
 
-  .dsp-nav-item i { font-size: 1rem; width: auto; }
+  .dsp-nav-item i { font-size: 1.1rem; width: auto; }
   .dsp-soon-badge { display: none; }
+
+  /* Mobile Active Indicator Fix */
+  .dsp-nav-item--active::before { display: none; }
+  .dsp-nav-item--active {
+    background: rgba(2, 132, 199, 0.08);
+    border-bottom: 2px solid var(--color-primary);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  }
 
   .dsp-two-col, .dsp-two-col--reverse {
     grid-template-columns: 1fr;
@@ -1466,7 +1624,34 @@ body:has(#app .dsp-layout) .dsp-layout {
 
   .dsp-modal-box { margin: 0.5rem; max-height: 95vh; }
 
-  .dsp-greeting { flex-direction: column; }
+  /* Hero & Greeting Mobile Fixes */
+  .dsp-greeting { 
+    flex-direction: column; 
+    align-items: flex-start;
+    padding: 1.25rem;
+    gap: 1rem;
+    border-radius: 1rem;
+  }
+  .dsp-hero-header {
+    padding: 1.25rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .dsp-greeting-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  
+  /* Quick Actions Mobile */
+  .dsp-quick-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Profile Selector Mobile Fixes */
+  .dsp-profile-selector-inner {
+    padding: 1.5rem;
+    border-radius: 1rem;
+  }
 
   .dsp-sbar-form { padding: 1rem; }
 

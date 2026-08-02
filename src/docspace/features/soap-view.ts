@@ -99,119 +99,120 @@ export async function renderSoapView(profileId: string, activePatientId?: string
     }).join('');
 
     return `
-      <tr class="dsp-soap-row" style="border-bottom: 1px solid var(--color-border);" data-patient-id="${p.id}">
-        <!-- Cột 1: Bệnh nhân -->
-        <td style="padding:10px; vertical-align:top; width:22%;">
-          <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-            <div>
-              <div style="font-weight:700; font-size:15px; color:var(--color-primary);">
-                ${p.patientCode} - ${p.fullName}
-              </div>
-              <div style="font-size:12px; color:var(--color-text-muted); margin-top:4px;">
-                (${p.age}t · ${p.gender === 'nam' ? 'Nam' : p.gender === 'nu' ? 'Nữ' : 'Khác'}) · Giường: <strong>${p.bedNumber}</strong>
-              </div>
-              <div style="font-size:12px; margin-top:6px;">
-                <strong>Chẩn đoán:</strong> ${p.admissionDiagnosis}
-              </div>
+      <div class="dsp-soap-card dsp-soap-row" data-patient-id="${p.id}">
+        <!-- Card Header -->
+        <div class="dsp-soap-card-header">
+          <div class="dsp-soap-patient-info">
+            <div class="dsp-soap-patient-name">
+              ${p.patientCode} - ${p.fullName}
+              <span style="font-size:10px; padding:2px 8px; border-radius:12px; font-weight:600; background:var(--color-bg); color:var(--color-text); border:1px solid var(--color-border);">
+                Giường: ${p.bedNumber}
+              </span>
             </div>
-            <button class="dsp-btn dsp-btn-ghost js-toggle-row-collapse" data-id="${p.id}" title="Thu gọn/Mở rộng" style="padding:4px 8px; font-size:12px; border:none; background:rgba(0,0,0,0.03);">
-              <i class="fa-solid fa-chevron-up"></i>
-            </button>
+            <div class="dsp-soap-patient-meta">
+              ${p.age}t · ${p.gender === 'nam' ? 'Nam' : p.gender === 'nu' ? 'Nữ' : 'Khác'}
+              &nbsp;&nbsp;|&nbsp;&nbsp; <strong>CĐ:</strong> ${p.admissionDiagnosis}
+            </div>
           </div>
 
-          <div class="dsp-soap-col-content">
-            <!-- Lịch sử Ngày & Ngày bệnh -->
-            <div style="margin-top:10px; border-top:1px dashed var(--color-border); padding-top:8px;">
-              <div style="font-size:10px; font-weight:700; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:4px; display:flex; justify-content:space-between; align-items:center;">
-                <span><i class="fa-solid fa-calendar-days"></i> Ngày Diễn Tiến:</span>
-                <button class="js-add-date" data-id="${p.id}" title="Thêm ngày mới" style="background:none; border:none; color:var(--color-primary); font-weight:700; cursor:pointer; font-size:11px;">
-                  <i class="fa-solid fa-plus-circle"></i> + Ngày
-                </button>
+          <div class="dsp-soap-header-actions">
+            <div class="dsp-soap-badges-row">
+              <div style="font-size:10px; font-weight:700; color:var(--color-text-muted); text-transform:uppercase; display:flex; align-items:center; margin-right:4px;">
+                <i class="fa-solid fa-calendar-days"></i> Ngày:
               </div>
-              <div style="display:flex; flex-wrap:wrap; gap:4px;">
-                ${dateBadgesHtml}
-              </div>
+              ${dateBadgesHtml}
+              <button class="js-add-date dsp-btn dsp-btn-sm dsp-btn-ghost" data-id="${p.id}" title="Thêm ngày mới" style="padding: 2px 6px; font-size: 11px;">
+                <i class="fa-solid fa-plus"></i> Thêm
+              </button>
             </div>
-
-            <div style="margin-top:10px; display:flex; flex-wrap:wrap; gap:4px;">
+            
+            <div class="dsp-soap-badges-row">
               <span style="font-size:10px; padding:2px 8px; border-radius:12px; font-weight:600; ${p.isEmrEntered ? 'background:#dcfce7; color:#15803d;' : 'background:#fef3c7; color:#b45309;'}">
-                ${p.isEmrEntered ? '✓ Đã nhập EMR' : '⏳ Chưa nhập EMR'}
+                ${p.isEmrEntered ? '✓ EMR' : '⏳ EMR'}
               </span>
               <span style="font-size:10px; padding:2px 8px; border-radius:12px; font-weight:600; ${p.soapStatus === 'da_lam' ? 'background:#e0f2fe; color:#0369a1;' : 'background:#f3f4f6; color:#4b5563;'}">
-                ${p.soapStatus === 'da_lam' ? '✓ Đã làm SOAP' : '○ Chưa làm SOAP'}
+                ${p.soapStatus === 'da_lam' ? '✓ SOAP' : '○ SOAP'}
               </span>
-            </div>
-            <div style="margin-top:12px; display:flex; gap:6px; flex-wrap:wrap;">
-              <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-edit-soap" data-id="${p.id}" title="Chỉnh sửa SOAP">
-                <i class="fa-solid fa-pen"></i> Chỉnh sửa
+              <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-toggle-row-collapse" data-id="${p.id}" title="Thu gọn/Mở rộng" style="padding:2px 8px;">
+                <i class="fa-solid fa-chevron-up"></i>
               </button>
-              <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-toggle-emr" data-id="${p.id}" title="Đổi trạng thái EMR">
-                <i class="fa-solid fa-rotate"></i> EMR
+              <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-edit-soap" data-id="${p.id}" title="Chỉnh sửa SOAP" style="padding:2px 8px;">
+                <i class="fa-solid fa-pen"></i>
               </button>
-              <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-delete-patient" data-id="${p.id}" title="Xóa hồ sơ bệnh nhân" style="color:var(--color-danger);">
-                <i class="fa-solid fa-trash"></i> Xóa
+              <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-toggle-emr" data-id="${p.id}" title="Đổi trạng thái EMR" style="padding:2px 8px;">
+                <i class="fa-solid fa-rotate"></i>
+              </button>
+              <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-delete-patient" data-id="${p.id}" title="Xóa hồ sơ bệnh nhân" style="color:var(--color-danger); padding:2px 8px;">
+                <i class="fa-solid fa-trash"></i>
               </button>
             </div>
           </div>
-        </td>
+        </div>
 
-        <!-- Cột 2: S & O (Triệu chứng) -->
-        <td style="padding:10px; vertical-align:top; width:20%; line-height:1.5; font-size:13px;">
-          <div class="dsp-soap-col-content">
-            <div style="margin-bottom:6px;">
-              <strong style="color:var(--color-primary);">S:</strong><br>
-              ${highlightAlerts(p.sNotes)}
-            </div>
-            <div>
-              <strong style="color:var(--color-primary);">O:</strong><br>
-              ${highlightAlerts(p.oNotes)}
-            </div>
-          </div>
-        </td>
-
-        <!-- Cột 3: CLS Cần Làm & KQ CLS -->
-        <td style="padding:10px; vertical-align:top; width:22%; font-size:13px;">
-          <div class="dsp-soap-col-content">
-            <div style="margin-bottom:10px;">
-              <div style="font-size:11px; font-weight:700; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:4px;">CLS Cần Làm:</div>
-              <div style="display:flex; flex-direction:column; gap:4px;">
-                ${(p.clsOrders || []).map(o => `
-                  <label style="display:flex; align-items:center; gap:6px; font-size:12px; cursor:pointer;">
-                    <input type="checkbox" class="js-cls-order-toggle" data-patient="${p.id}" data-order="${o.id}" ${o.isDone ? 'checked' : ''} />
-                    <span style="${o.isDone ? 'text-decoration:line-through; opacity:0.6;' : ''}">${o.name}</span>
-                  </label>
-                `).join('') || '<span style="font-size:12px; color:var(--color-text-muted); italic;">Chưa có chỉ định</span>'}
+        <!-- Card Body -->
+        <div class="dsp-soap-card-body">
+          <!-- S&O -->
+          <div class="dsp-soap-col">
+            <div class="dsp-soap-col-title">Diễn biến (S & O)</div>
+            <div class="dsp-soap-col-content">
+              <div style="margin-bottom:8px;">
+                <strong style="color:var(--color-primary);">S:</strong><br>
+                ${highlightAlerts(p.sNotes)}
               </div>
-            </div>
-
-            <div style="margin-top:12px; border-top:1px dashed var(--color-border); padding-top:8px;">
-              <div style="font-size:11px; font-weight:700; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:4px;">KQ CLS:</div>
-              <div style="display:flex; flex-direction:column; gap:4px;">
-                ${(p.clsResults || []).map(r => `
-                  <div style="font-size:12px; padding:4px 6px; border-radius:4px; ${r.alertLevel !== 'normal' ? 'background:rgba(239,68,68,0.1); color:var(--color-danger); font-weight:600;' : 'background:var(--color-bg);'}">
-                    • ${r.text}
-                  </div>
-                `).join('') || '<span style="font-size:12px; color:var(--color-text-muted); italic;">Chưa có KQ</span>'}
+              <div>
+                <strong style="color:var(--color-primary);">O:</strong><br>
+                ${highlightAlerts(p.oNotes)}
               </div>
             </div>
           </div>
-        </td>
 
-        <!-- Cột 4: A (Đánh Giá & Biện Luận) -->
-        <td style="padding:10px; vertical-align:top; width:18%; line-height:1.5; font-size:13px;">
-          <div class="dsp-soap-col-content">
-            <div style="font-size:11px; font-weight:700; color:var(--color-primary); margin-bottom:4px;">Ngày bệnh: N${p.dayOfIllness} (${p.activeDate || 'Hôm nay'})</div>
-            ${highlightAlerts(p.aAssessment)}
-          </div>
-        </td>
+          <!-- CLS -->
+          <div class="dsp-soap-col">
+            <div class="dsp-soap-col-title">CLS Cần làm & Kết quả</div>
+            <div class="dsp-soap-col-content">
+              <div style="margin-bottom:12px;">
+                <div style="font-size:11px; font-weight:700; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:4px;">Chỉ định:</div>
+                <div style="display:flex; flex-direction:column; gap:6px;">
+                  ${(p.clsOrders || []).map(o => `
+                    <label style="display:flex; align-items:center; gap:6px; font-size:12px; cursor:pointer;">
+                      <input type="checkbox" class="js-cls-order-toggle" data-patient="${p.id}" data-order="${o.id}" ${o.isDone ? 'checked' : ''} />
+                      <span style="${o.isDone ? 'text-decoration:line-through; opacity:0.6;' : ''}">${o.name}</span>
+                    </label>
+                  `).join('') || '<span style="font-size:12px; color:var(--color-text-muted); font-style:italic;">Chưa có chỉ định</span>'}
+                </div>
+              </div>
 
-        <!-- Cột 5: P (Y Lệnh) -->
-        <td style="padding:10px; vertical-align:top; width:18%; line-height:1.5; font-size:13px;">
-          <div class="dsp-soap-col-content">
-            ${highlightAlerts(p.pPlan)}
+              <div>
+                <div style="font-size:11px; font-weight:700; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:4px;">Kết quả:</div>
+                <div style="display:flex; flex-direction:column; gap:6px;">
+                  ${(p.clsResults || []).map(r => `
+                    <div style="font-size:12px; padding:6px 8px; border-radius:6px; line-height:1.4; ${r.alertLevel !== 'normal' ? 'background:rgba(239,68,68,0.1); color:var(--color-danger); font-weight:600;' : 'background:var(--color-bg); border:1px solid var(--color-border);'}">
+                      • ${r.text}
+                    </div>
+                  `).join('') || '<span style="font-size:12px; color:var(--color-text-muted); font-style:italic;">Chưa có KQ</span>'}
+                </div>
+              </div>
+            </div>
           </div>
-        </td>
-      </tr>
+
+          <!-- A (Đánh giá) -->
+          <div class="dsp-soap-col">
+            <div class="dsp-soap-col-title">A (Đánh giá)</div>
+            <div class="dsp-soap-col-content">
+              <div style="font-size:11px; font-weight:700; color:var(--color-primary); margin-bottom:6px;">Ngày bệnh: N${p.dayOfIllness} (${p.activeDate || 'Hôm nay'})</div>
+              ${highlightAlerts(p.aAssessment)}
+            </div>
+          </div>
+
+          <!-- P (Y lệnh) -->
+          <div class="dsp-soap-col">
+            <div class="dsp-soap-col-title">P (Y lệnh)</div>
+            <div class="dsp-soap-col-content">
+              ${highlightAlerts(p.pPlan)}
+            </div>
+          </div>
+        </div>
+      </div>
     `;
   }).join('');
 
@@ -265,30 +266,15 @@ export async function renderSoapView(profileId: string, activePatientId?: string
             </div>
           </div>
 
-          <!-- Bảng Matrix Table -->
-          <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; overflow:hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
-            <div style="overflow-x:auto;">
-              <table style="width:100%; border-collapse:collapse; text-align:left;">
-                <thead>
-                  <tr style="background:var(--color-bg); border-bottom:1px solid var(--color-border); font-size:12px; color:var(--color-text-muted); text-transform:uppercase;">
-                    <th style="padding:12px 14px;">Bệnh Nhân & Ngày</th>
-                    <th style="padding:12px 14px;">Diễn Biến (S & O)</th>
-                    <th style="padding:12px 14px;">CLS Cần Làm & KQ CLS</th>
-                    <th style="padding:12px 14px;">A (Đánh Giá)</th>
-                    <th style="padding:12px 14px;">P (Y Lệnh)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  ${rowsHtml.length > 0 ? rowsHtml : `
-                    <tr>
-                      <td colSpan="5" style="text-align:center; padding:40px; color:var(--color-text-muted);">
-                        Chưa có bệnh nhân nào trong sổ tay. Bấm <strong>"Nhận Bệnh Mới"</strong> hoặc <strong>"Bệnh Nội Trú"</strong> để bắt đầu.
-                      </td>
-                    </tr>
-                  `}
-                </tbody>
-              </table>
-            </div>
+          <!-- Danh sách Bệnh nhân SOAP (Card Layout) -->
+          <div class="dsp-soap-list">
+            ${rowsHtml.length > 0 ? rowsHtml : `
+              <div class="dsp-empty-state dsp-empty-state--lg" style="background:var(--color-surface); border:1px dashed var(--color-border); border-radius:12px;">
+                <i class="fa-solid fa-notes-medical" style="color:var(--color-border);"></i>
+                <h3>Chưa có bệnh nhân nào trong sổ tay</h3>
+                <p>Bấm <strong>"Nhận Bệnh Mới"</strong> hoặc <strong>"Bệnh Nội Trú"</strong> ở góc trên để bắt đầu lập hồ sơ SOAP.</p>
+              </div>
+            `}
           </div>
 
         </div>
