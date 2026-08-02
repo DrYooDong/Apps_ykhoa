@@ -8,8 +8,9 @@ import { DoctorProfile, DocSpaceNavItem } from './types';
 
 export const DSP_NAV_ITEMS: DocSpaceNavItem[] = [
   { id: 'dashboard', label: 'Tổng quan',      href: '#/docspace',          icon: 'fa-solid fa-house-medical',    phase: 1 },
+  { id: 'soap',      label: 'Sổ Tay SOAP',    href: '#/docspace/soap',     icon: 'fa-solid fa-notes-medical',   phase: 1 },
   { id: 'sbar',      label: 'SBAR',           href: '#/docspace/sbar',     icon: 'fa-solid fa-file-waveform',    phase: 1 },
-  { id: 'oncall',    label: 'Ca Trực',        href: '#/docspace/oncall',   icon: 'fa-solid fa-moon',             phase: 1 },
+  { id: 'oncall',    label: 'Checklist công việc', href: '#/docspace/oncall', icon: 'fa-solid fa-list-check',      phase: 1 },
   { id: 'cases',     label: 'Ca Bệnh',        href: '#/docspace/cases',    icon: 'fa-solid fa-stethoscope',      phase: 1 },
   { id: 'notes',     label: 'Ghi chú',        href: '#/docspace/notes',    icon: 'fa-solid fa-note-sticky',      phase: 1 },
   { id: 'drugs',     label: 'Nhật ký Thuốc',  href: '#/docspace/drugs',    icon: 'fa-solid fa-pills',            phase: 1 },
@@ -205,8 +206,8 @@ export async function renderDashboard(profile: DoctorProfile): Promise<string> {
                 <span>Tạo SBAR</span>
               </a>
               <a href="#/docspace/oncall" class="dsp-action-card" id="qa-new-shift">
-                <i class="fa-solid fa-moon"></i>
-                <span>Vào Ca trực</span>
+                <i class="fa-solid fa-list-check"></i>
+                <span>Checklist công việc</span>
               </a>
               <a href="#/docspace/cases" class="dsp-action-card" id="qa-new-case">
                 <i class="fa-solid fa-stethoscope"></i>

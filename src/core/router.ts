@@ -64,7 +64,8 @@ export class CliniRouter {
    * Xử lý khi URL Hash thay đổi
    */
   private async handleHashChange(): Promise<void> {
-    const hashPath = this.getHashPath();
+    const fullHashPath = this.getHashPath();
+    const hashPath = fullHashPath.split('?')[0]; // Strip query parameters for matching
     this.currentHash = hashPath;
 
     // Highlight active link trong Sidebar / Header
@@ -78,7 +79,7 @@ export class CliniRouter {
         try {
           await route.handler(params);
         } catch (err) {
-          console.error(`[CliniRouter] Error executing handler for ${hashPath}:`, err);
+          console.error(`[CliniRouter] Error executing handler for ${fullHashPath}:`, err);
         }
         return;
       }
@@ -86,7 +87,7 @@ export class CliniRouter {
 
     // Nếu không khớp route đã đăng ký, chuyển cho Fallback Handler
     if (this.fallbackHandler) {
-      await this.fallbackHandler(hashPath);
+      await this.fallbackHandler(fullHashPath);
     } else {
       console.warn(`[CliniRouter] No matching route found for hash: ${hashPath}`);
     }

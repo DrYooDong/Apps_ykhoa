@@ -247,6 +247,56 @@ export interface SimulationResult {
 }
 
 // ─────────────────────────────────────────────
+// SOAP DIGITAL WARD NOTEBOOK
+// ─────────────────────────────────────────────
+
+export interface SoapDailyLog {
+  id: string;
+  date: string;            // YYYY-MM-DD
+  dayOfIllness: number;    // N1, N2, N3...
+  sNotes: string;
+  oNotes: string;
+  aAssessment: string;
+  pPlan: string;
+  clsOrders: { id: string; name: string; isDone: boolean }[];
+  clsResults: { id: string; text: string; alertLevel: 'normal' | 'low' | 'high' | 'critical' }[];
+  isEmrEntered: boolean;
+  soapStatus: 'chua_lam' | 'da_lam';
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface SoapPatientRecord {
+  id: string;
+  patientCode: string;      // G01, G02...
+  fullName: string;
+  age: number;
+  gender: 'nam' | 'nu' | 'khac';
+  bedNumber: string;
+  medicalRecordNo: string;
+  admissionDiagnosis: string;
+  currentDiagnosis?: string;
+  
+  // Daily logs history (Diễn tiến theo ngày)
+  activeDate?: string;      // YYYY-MM-DD đang xem
+  dailyLogs?: SoapDailyLog[];
+
+  // Current active date SOAP fields
+  isEmrEntered: boolean;
+  soapStatus: 'chua_lam' | 'da_lam';
+  dayOfIllness: number;
+  sNotes: string;
+  oNotes: string;
+  aAssessment: string;
+  pPlan: string;
+  clsOrders: { id: string; name: string; isDone: boolean }[];
+  clsResults: { id: string; text: string; alertLevel: 'normal' | 'low' | 'high' | 'critical' }[];
+  createdAt: string;
+  updatedAt: string;
+  deletedAt?: string;
+}
+
+// ─────────────────────────────────────────────
 // DOCSPACE STORAGE SNAPSHOT (Export/Import)
 // ─────────────────────────────────────────────
 

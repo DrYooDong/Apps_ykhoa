@@ -13,6 +13,7 @@ import {
   DSP_NAV_ITEMS, renderFeatureUnavailable
 } from './docspace-view';
 import { renderSBARView, mountSBARController } from './features/sbar-view';
+import { renderSoapView, mountSoapController } from './features/soap-view';
 import { renderOnCallView, mountOnCallController } from './features/oncall-view';
 import { renderCaseLoggerView, mountCaseLoggerController } from './features/case-logger-view';
 import { renderQuickLinksView, mountQuickLinksController } from './features/quick-links-view';
@@ -149,6 +150,16 @@ export function initDocSpaceRoutes(): void {
     });
   });
 
+  // SOAP Ward Notebook
+  router.register('/docspace/soap', 'DocSpace — Sổ Tay Bệnh Phòng SOAP Digital', () => {
+    requireProfile(async (pid) => {
+      const editId = new URLSearchParams(window.location.hash.split('?')[1] || '').get('edit') || undefined;
+      mountDocSpace(await renderSoapView(pid, editId));
+      mountSoapController(pid);
+      mountSidebarFooterControls(pid);
+    });
+  });
+
   // SBAR
   router.register('/docspace/sbar', 'DocSpace — SBAR', () => {
     requireProfile(async (pid) => {
@@ -160,12 +171,11 @@ export function initDocSpaceRoutes(): void {
     });
   });
 
-  // On-Call
-  router.register('/docspace/oncall', 'DocSpace — Ca Trực', () => {
+  // On-Call (Checklist công việc)
+  router.register('/docspace/oncall', 'DocSpace — Checklist công việc', () => {
     requireProfile(async (pid) => {
-      const shiftId = new URLSearchParams(window.location.hash.split('?')[1] || '').get('shift') || undefined;
-      mountDocSpace(await renderOnCallView(pid, shiftId));
-      mountOnCallController(pid, shiftId);
+      mountDocSpace(await renderOnCallView(pid));
+      mountOnCallController(pid);
       mountSidebarFooterControls(pid);
     });
   });

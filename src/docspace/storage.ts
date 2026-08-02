@@ -493,6 +493,373 @@ export function deleteProtocol(profileId: string, id: string): void {
 }
 
 // ─────────────────────────────────────────────
+// SOAP DIGITAL WARD NOTEBOOK
+// ─────────────────────────────────────────────
+
+export function getAllSoapPatients(profileId: string, includeDeleted = false): SoapPatientRecord[] {
+  const patients = load<SoapPatientRecord>(profileId, 'soaps')
+    .filter(r => includeDeleted || !r.deletedAt)
+    .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
+
+  if (patients.length === 0 && !includeDeleted) {
+    const today = new Date().toISOString().split('T')[0];
+    // Seed initial mock patient if empty
+    const mock: SoapPatientRecord = {
+      id: 'mock-1',
+      patientCode: 'G01',
+      fullName: 'Nguyễn Văn A',
+      age: 65,
+      gender: 'nam',
+      bedNumber: '12',
+      medicalRecordNo: 'HS-10293',
+      admissionDiagnosis: 'Viêm phổi thùy',
+      currentDiagnosis: 'Viêm phổi thùy N4',
+      isEmrEntered: true,
+      soapStatus: 'da_lam',
+      dayOfIllness: 4,
+      sNotes: 'Hết sốt, còn ho húng hắng.',
+      oNotes: 'Phổi giảm rấy ẩm 2 đáy. SpO2 97% (Khí trời).',
+      aAssessment: 'Viêm phổi thùy N4 (Đáp ứng ĐT tốt).\nBiện luận: Hạ Kali máu mức độ trung bình.',
+      pPlan: '1. Ceftriaxone 2g (IV) N4\n2. Bù Kaliclorua 0.5g x 2 viên (Uống)\n3. Tìm nguyên nhân hạ K+',
+      clsOrders: [
+        { id: '1', name: 'Công thức máu', isDone: true },
+        { id: '2', name: 'Điện giải đồ', isDone: true }
+      ],
+      clsResults: [
+        { id: 'r1', text: 'WBC 8.5, Neu 65%', alertLevel: 'normal' },
+        { id: 'r2', text: 'K+ 2.8 mEq/L (Tụt)', alertLevel: 'high' }
+      ],
+      activeDate: today,
+      dailyLogs: [
+        {
+          id: 'log-1',
+          date: today,
+          dayOfIllness: 4,
+          sNotes: 'Hết sốt, còn ho húng hắng.',
+          oNotes: 'Phổi giảm rấy ẩm 2 đáy. SpO2 97% (Khí trời).',
+          aAssessment: 'Viêm phổi thùy N4 (Đáp ứng ĐT tốt).\nBiện luận: Hạ Kali máu mức độ trung bình.',
+          pPlan: '1. Ceftriaxone 2g (IV) N4\n2. Bù Kaliclorua 0.5g x 2 viên (Uống)\n3. Tìm nguyên nhân hạ K+',
+          clsOrders: [
+            { id: '1', name: 'Công thức máu', isDone: true },
+            { id: '2', name: 'Điện giải đồ', isDone: true }
+          ],
+          clsResults: [
+            { id: 'r1', text: 'WBC 8.5, Neu 65%', alertLevel: 'normal' },
+            { id: 'r2', text: 'K+ 2.8 mEq/L (Tụt)', alertLevel: 'high' }
+          ],
+          isEmrEntered: true,
+          soapStatus: 'da_lam',
+          createdAt: now(),
+          updatedAt: now()
+        }
+      ],
+      createdAt: now(),
+      updatedAt: now(),
+    };
+    save(profileId, 'soaps', [mock]);
+    return [mock];
+  }
+
+  // Auto ensure dailyLogs array exists
+  patients.forEach(p => {
+    if (!p.dailyLogs || p.dailyLogs.length === 0) {
+      const pDate = p.createdAt ? p.createdAt.split('T')[0] : new Date().toISOString().split('T')[0];
+      p.dailyLogs = [{
+        id: `log-${p.id}`,
+        date: pDate,
+        dayOfIllness: p.dayOfIllness || 1,
+        sNotes: p.sNotes || '',
+        oNotes: p.oNotes || '',
+        aAssessment: p.aAssessment || '',
+        pPlan: p.pPlan || '',
+        clsOrders: p.clsOrders || [],
+        clsResults: p.clsResults || [],
+        isEmrEntered: p.isEmrEntered || false,
+        soapStatus: p.soapStatus || 'chua_lam',
+        createdAt: p.createdAt || now(),
+        updatedAt: p.updatedAt || now(),
+      }];
+      p.activeDate = pDate;
+    }
+  });
+
+  return patients;
+}
+
+export function getSoapPatientById(profileId: string, id: string): SoapPatientRecord | null {
+  return getAllSoapPatients(profileId).find(p => p.id === id) || null;
+}
+
+export function saveSoapPatient(profileId: string, data: Omit<SoapPatientRecord, 'id' | 'createdAt' | 'updatedAt' | 'deletedAt'>): SoapPatientRecord {
+  const records = load<SoapPatientRecord>(profileId, 'soaps');
+  const today = new Date().toISOString().split('T')[0];
+  
+  const initialLog = {
+    id: uuid(),
+    date: today,
+    dayOfIllness: data.dayOfIllness || 1,
+    sNotes: data.sNotes || '',
+    oNotes: data.oNotes || '',
+    aAssessment: data.aAssessment || '',
+    pPlan: data.pPlan || '',
+    clsOrders: data.clsOrders || [],
+    clsResults: data.clsResults || [],
+    isEmrEntered: data.isEmrEntered || false,
+    soapStatus: data.soapStatus || 'chua_lam',
+    createdAt: now(),
+    updatedAt: now()
+  };
+
+  const record: SoapPatientRecord = {
+    ...data,
+    id: uuid(),
+    activeDate: today,
+    dailyLogs: [initialLog],
+    createdAt: now(),
+    updatedAt: now(),
+  };
+  records.unshift(record);
+  save(profileId, 'soaps', records);
+  
+  // Async Sync to Supabase if configured
+  syncSoapToSupabase(record);
+  return record;
+}
+
+export function updateSoapPatient(profileId: string, id: string, data: Partial<SoapPatientRecord>): void {
+  const records = load<SoapPatientRecord>(profileId, 'soaps');
+  const idx = records.findIndex(p => p.id === id);
+  if (idx >= 0) {
+    const existing = records[idx];
+    const updated = { ...existing, ...data, updatedAt: now() };
+    
+    // Sync current active date log
+    if (updated.dailyLogs && updated.activeDate) {
+      const logIdx = updated.dailyLogs.findIndex(l => l.date === updated.activeDate);
+      if (logIdx >= 0) {
+        updated.dailyLogs[logIdx] = {
+          ...updated.dailyLogs[logIdx],
+          dayOfIllness: updated.dayOfIllness,
+          sNotes: updated.sNotes,
+          oNotes: updated.oNotes,
+          aAssessment: updated.aAssessment,
+          pPlan: updated.pPlan,
+          clsOrders: updated.clsOrders,
+          clsResults: updated.clsResults,
+          isEmrEntered: updated.isEmrEntered,
+          soapStatus: updated.soapStatus,
+          updatedAt: now()
+        };
+      }
+    }
+
+    records[idx] = updated;
+    save(profileId, 'soaps', records);
+    
+    // Async Sync to Supabase if configured
+    syncSoapToSupabase(updated);
+  }
+}
+
+export function addSoapDailyLog(profileId: string, id: string, newDate: string): SoapPatientRecord | null {
+  const records = load<SoapPatientRecord>(profileId, 'soaps');
+  const idx = records.findIndex(p => p.id === id);
+  if (idx < 0) return null;
+
+  const patient = records[idx];
+  patient.dailyLogs = patient.dailyLogs || [];
+
+  // Check if date already exists
+  const existingLog = patient.dailyLogs.find(l => l.date === newDate);
+  if (existingLog) {
+    patient.activeDate = newDate;
+    patient.dayOfIllness = existingLog.dayOfIllness;
+    patient.sNotes = existingLog.sNotes;
+    patient.oNotes = existingLog.oNotes;
+    patient.aAssessment = existingLog.aAssessment;
+    patient.pPlan = existingLog.pPlan;
+    patient.clsOrders = existingLog.clsOrders;
+    patient.clsResults = existingLog.clsResults;
+    patient.isEmrEntered = existingLog.isEmrEntered;
+    patient.soapStatus = existingLog.soapStatus;
+  } else {
+    // Create new log for this new date
+    const lastLog = patient.dailyLogs[patient.dailyLogs.length - 1];
+    const newDayN = lastLog ? lastLog.dayOfIllness + 1 : (patient.dayOfIllness + 1);
+    
+    const newLog = {
+      id: uuid(),
+      date: newDate,
+      dayOfIllness: newDayN,
+      sNotes: '',
+      oNotes: '',
+      aAssessment: lastLog ? lastLog.aAssessment : patient.aAssessment,
+      pPlan: lastLog ? lastLog.pPlan : patient.pPlan,
+      clsOrders: [],
+      clsResults: [],
+      isEmrEntered: false,
+      soapStatus: 'chua_lam' as const,
+      createdAt: now(),
+      updatedAt: now()
+    };
+
+    patient.dailyLogs.push(newLog);
+    patient.activeDate = newDate;
+    patient.dayOfIllness = newDayN;
+    patient.sNotes = '';
+    patient.oNotes = '';
+    patient.aAssessment = newLog.aAssessment;
+    patient.pPlan = newLog.pPlan;
+    patient.clsOrders = [];
+    patient.clsResults = [];
+    patient.isEmrEntered = false;
+    patient.soapStatus = 'chua_lam';
+  }
+
+  patient.updatedAt = now();
+  records[idx] = patient;
+  save(profileId, 'soaps', records);
+  syncSoapToSupabase(patient);
+  return patient;
+}
+
+export function switchSoapPatientDate(profileId: string, id: string, targetDate: string): SoapPatientRecord | null {
+  const records = load<SoapPatientRecord>(profileId, 'soaps');
+  const idx = records.findIndex(p => p.id === id);
+  if (idx < 0) return null;
+
+  const patient = records[idx];
+  const targetLog = (patient.dailyLogs || []).find(l => l.date === targetDate);
+
+  if (targetLog) {
+    patient.activeDate = targetDate;
+    patient.dayOfIllness = targetLog.dayOfIllness;
+    patient.sNotes = targetLog.sNotes;
+    patient.oNotes = targetLog.oNotes;
+    patient.aAssessment = targetLog.aAssessment;
+    patient.pPlan = targetLog.pPlan;
+    patient.clsOrders = targetLog.clsOrders;
+    patient.clsResults = targetLog.clsResults;
+    patient.isEmrEntered = targetLog.isEmrEntered;
+    patient.soapStatus = targetLog.soapStatus;
+
+    records[idx] = patient;
+    save(profileId, 'soaps', records);
+  }
+  return patient;
+}
+
+export function deleteSoapPatient(profileId: string, id: string): void {
+  const records = load<SoapPatientRecord>(profileId, 'soaps');
+  const idx = records.findIndex(r => r.id === id);
+  if (idx >= 0) {
+    records[idx].deletedAt = now();
+    save(profileId, 'soaps', records);
+  }
+}
+
+// ─────────────────────────────────────────────
+// SUPABASE SYNC FOR SOAP DIGITAL
+// ─────────────────────────────────────────────
+
+export interface SupabaseConfig {
+  url: string;
+  key: string;
+}
+
+export function getSoapSupabaseConfig(): SupabaseConfig {
+  return {
+    url: localStorage.getItem('dsp_supabase_url') || '',
+    key: localStorage.getItem('dsp_supabase_key') || ''
+  };
+}
+
+export function saveSoapSupabaseConfig(url: string, key: string): void {
+  localStorage.setItem('dsp_supabase_url', url.trim());
+  localStorage.setItem('dsp_supabase_key', key.trim());
+}
+
+export async function syncSoapToSupabase(patient: SoapPatientRecord): Promise<{ success: boolean; error?: string }> {
+  const config = getSoapSupabaseConfig();
+  if (!config.url || !config.key) return { success: false, error: 'Chưa cấu hình Supabase' };
+
+  try {
+    const endpoint = `${config.url.replace(/\/$/, '')}/rest/v1/soap_patients`;
+    const body = [{
+      id: patient.id,
+      doctor_id: getActiveProfileId() || 'default',
+      patient_code: patient.patientCode,
+      full_name: patient.fullName,
+      data: patient,
+      updated_at: new Date().toISOString()
+    }];
+
+    const res = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': config.key,
+        'Authorization': `Bearer ${config.key}`,
+        'Prefer': 'resolution=merge-duplicates'
+      },
+      body: JSON.stringify(body)
+    });
+
+    if (!res.ok) {
+      const errText = await res.text();
+      throw new Error(`HTTP ${res.status}: ${errText}`);
+    }
+    return { success: true };
+  } catch (err: any) {
+    console.warn('[Supabase Sync Error]', err);
+    return { success: false, error: err.message };
+  }
+}
+
+export async function fetchAllSoapFromSupabase(profileId: string): Promise<{ success: boolean; count?: number; error?: string }> {
+  const config = getSoapSupabaseConfig();
+  if (!config.url || !config.key) return { success: false, error: 'Chưa kết nối Supabase' };
+
+  try {
+    const endpoint = `${config.url.replace(/\/$/, '')}/rest/v1/soap_patients?select=*&order=updated_at.desc`;
+    const res = await fetch(endpoint, {
+      method: 'GET',
+      headers: {
+        'apikey': config.key,
+        'Authorization': `Bearer ${config.key}`
+      }
+    });
+
+    if (!res.ok) {
+      const errText = await res.text();
+      throw new Error(`HTTP ${res.status}: ${errText}`);
+    }
+    const rows = await res.json();
+    const remotePatients: SoapPatientRecord[] = rows.map((r: any) => r.data).filter(Boolean);
+
+    if (remotePatients.length > 0) {
+      const localPatients = load<SoapPatientRecord>(profileId, 'soaps');
+      const mergedMap = new Map<string, SoapPatientRecord>();
+      
+      localPatients.forEach(p => mergedMap.set(p.id, p));
+      remotePatients.forEach(p => {
+        const local = mergedMap.get(p.id);
+        if (!local || new Date(p.updatedAt).getTime() > new Date(local.updatedAt).getTime()) {
+          mergedMap.set(p.id, p);
+        }
+      });
+
+      const mergedList = Array.from(mergedMap.values());
+      save(profileId, 'soaps', mergedList);
+      return { success: true, count: remotePatients.length };
+    }
+    return { success: true, count: 0 };
+  } catch (err: any) {
+    return { success: false, error: err.message };
+  }
+}
+
+// ─────────────────────────────────────────────
 // EXPORT / IMPORT
 // ─────────────────────────────────────────────
 

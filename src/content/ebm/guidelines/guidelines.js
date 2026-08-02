@@ -1761,6 +1761,10 @@
         const staleBadge = getStaleAlertBadge(study);
         const forestData = parseForestData(study.keyResults);
 
+        const sgCount = (study.subgroups && typeof study.subgroups === 'object') ? Object.keys(study.subgroups).length : 0;
+        const sgInlineBadge = sgCount > 0 ? `<button type="button" class="badge-subgroup-inline" onclick="event.stopPropagation(); openSubgroupModal('${study.id}', event)" title="Xem phân tích ${sgCount} phân nhóm" style="margin-left:4px; font-size:0.7rem; padding: 2px 6px;">🧬 Subgroup</button>` : '';
+        const summaryBadge = study.file ? `<a href="${resolveStudyFile(study.file)}" class="badge-summary-inline" onclick="event.stopPropagation()" title="Mở bài viết tóm tắt chi tiết" style="margin-left: auto; font-size:0.7rem; padding: 2px 6px;">📝 Tóm tắt</a>` : '';
+
         return `
           <div class="mobile-card ${isExpanded ? 'expanded' : ''}" id="mc-${study.id}">
             <!-- Card Header -->
@@ -1793,18 +1797,20 @@
               </span>
               ${study.sampleSize ? `<span class="mc-sample">n=${formatNumber(study.sampleSize)}</span>` : ''}
               ${study.asianData ? `<span class="mc-asia-badge">🌏 Châu Á</span>` : ''}
+              ${summaryBadge}
+              ${sgInlineBadge}
             </div>
 
             <!-- Key Results + Forest Plot -->
             ${study.keyResults ? `
-            <div class="mc-results">
+            <div class="mc-results" onclick="toggleExpandRow('${study.id}', event)">
               <span class="mc-results-label">Kết quả chính:</span>
               <span class="mc-results-val">${escapeHtml(study.keyResults)}</span>
               ${forestData ? `<div class="mc-forest-wrap">${renderForestPlotSVG(forestData)}</div>` : ''}
             </div>` : ''}
 
             <!-- Summary (always visible) -->
-            <p class="mc-summary ${isExpanded ? '' : 'clamped'}">${escapeHtml(study.summary)}</p>
+            <p class="mc-summary ${isExpanded ? '' : 'clamped'}" onclick="toggleExpandRow('${study.id}', event)">${escapeHtml(study.summary)}</p>
 
             <!-- Expanded Detail -->
             ${isExpanded ? `
@@ -1815,9 +1821,11 @@
               ${study.fdaStatus ? `<div class="mc-detail-row"><span class="mc-detail-label">FDA/Khuyến cáo:</span> <span>${escapeHtml(study.fdaStatus)}</span></div>` : ''}
               ${study.detailedConclusion ? `<div class="mc-detail-row"><span class="mc-detail-label">Chi tiết:</span> <span style="font-size:0.78rem; color:var(--text-muted);">${escapeHtml(study.detailedConclusion)}</span></div>` : ''}
               <div class="mc-actions">
+                ${study.file ? `<a href="${resolveStudyFile(study.file)}" class="btn btn-small" style="background:var(--blue); color:white; border:none;">📝 Tóm tắt</a>` : ''}
+                ${sgCount > 0 ? `<button type="button" class="btn btn-small" onclick="openSubgroupModal('${study.id}', event)" style="color:var(--purple); border-color:var(--purple-light); background:var(--purple-bg);">🧬 Subgroup</button>` : ''}
                 ${study.sourceUrl ? `<a href="${study.sourceUrl}" target="_blank" class="btn btn-small">📄 Nguồn</a>` : ''}
                 <button class="btn btn-small" onclick="openEditModal('${study.id}', event)">✏️ Sửa</button>
-                <button class="btn btn-small" style="color:var(--color-practice-changing);border-color:rgba(220,38,38,0.3);" onclick="deleteStudy('${study.id}', event)">🗑️ Xóa</button>
+                <button class="btn btn-small" style="color:var(--red);border-color:rgba(220,38,38,0.3);" onclick="deleteStudy('${study.id}', event)">🗑️ Xóa</button>
               </div>
             </div>` : ''}
 

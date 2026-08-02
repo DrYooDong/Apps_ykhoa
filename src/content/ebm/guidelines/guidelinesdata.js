@@ -511,6 +511,76 @@
         }
       },
       {
+        id: "study_jrs_copd_2026",
+        title: "The JRS Guideline for the Management of Chronic Obstructive Pulmonary Disease (7th Edition 2026)",
+        drug: "LAMA, LABA, ICS, Dupilumab, Azithromycin, Clarithromycin, Prednisolone",
+        sourceType: "intl-guideline",
+        specialty: "pulmo",
+        design: "guideline",
+        intervention: "Phân loại 7 Etiotype GOLD 2023, đánh giá Pre-COPD & PRISm, bậc thang LAMA/LABA/Triple, sinh học mới Dupilumab, Macrolide kéo dài, van nội phế quản BLVR và tầm soát tim mạch sau đợt cấp",
+        primaryEndpoint: "Giảm đợt cấp COPD, cải thiện chất lượng cuộc sống (CAT/SGRQ), làm chậm suy giảm FEV1, ngăn ngừa tử vong tim mạch hậu đợt cấp",
+        keyResults: "LAMA đơn trị đầu tay (CQ02, Mạnh A); Dupilumab giảm ~30% đợt cấp ở viêm type 2; Prednisolone 0,5mg/kg/ngày x 5-7 ngày trong đợt cấp (CQ21, Mạnh B); NPPV ưu tiên khi suy hô hấp tăng CO2 (CQ22, Yếu B); Tầm soát CVD thường quy sau đợt cấp",
+        impact: "practice-changing",
+        year: 2026,
+        organization: "Japanese Respiratory Society (JRS)",
+        phase: "Guidelines 7th Ed",
+        sampleSize: null,
+        population: "Bệnh nhân Bệnh phổi tắc nghẽn mạn tính (COPD) giai đoạn ổn định và đợt cấp tại Nhật Bản và Châu Á",
+        summary: "Ấn bản lần 7 của Hội Hô hấp Nhật Bản (JRS 2026) công bố trực tuyến ngày 14/07/2026. Cập nhật 7 Etiotype GOLD 2023, Nút nhầy CT, Lão hóa tế bào, phân biệt Pre-COPD vs PRISm, Dupilumab (anti-IL-4Rα), Macrolide kéo dài, BLVR và tầm soát tim mạch thường quy sau đợt cấp.",
+        detailedConclusion: "Khởi đầu ổn định: LAMA đơn trị là chọn lựa hàng đầu (CQ02, Mạnh A). Thêm ICS khi có ACO hoặc đợt cấp tái diễn + Eos ≥ 300. Bệnh nhân gầy/cao tuổi dùng ICS cần cảnh giác Viêm phổi & NTM. Dupilumab add-on cho đợt cấp tái diễn dù đã triple therapy. Đợt cấp: Prednisolone 0.5mg/kg/ngày x 5-7 ngày (CQ21, Mạnh B), Kháng sinh chỉ khi có đàm mủ/CRP tăng (CQ19, Mạnh B), NPPV ưu tiên khi suy hô hấp tăng CO2 (CQ22, Yếu B). Bắt buộc tầm soát tim mạch (BNP, ECG, Siêu âm tim) sau xuất viện.",
+        fdaStatus: "Respiratory Investigation 64 (2026) 101482",
+        sourceUrl: "https://www.sciencedirect.com/journal/respiratory-investigation",
+        file: "kho-guidelines/jrs-copd-2026.html",
+        subgroups: {
+          "LAMA đơn trị": "CQ02 Khuyến cáo Mạnh, Bằng chứng A (Lựa chọn đầu tay)",
+          "Triple Therapy (LAMA+LABA+ICS)": "CQ06 Khuyến cáo Yếu, Bằng chứng A (ACO hoặc Đợt cấp + Eos ≥300)",
+          "Dupilumab (anti-IL-4Rα)": "Add-on cho FEV1 30-70%, Eos ≥300, đợt cấp tái diễn dù đã dùng Triple",
+          "Macrolide kéo dài": "CQ16 Khuyến cáo Yếu, Bằng chứng B (OR 0.34 giảm đợt cấp; Cần loại trừ Lao tại VN)",
+          "Prednisolone đợt cấp": "CQ21 Khuyến cáo Mạnh, Bằng chứng B (0.5 mg/kg/ngày x 5-7 ngày)",
+          "NPPV trong đợt cấp": "CQ22 Khuyến cáo Yếu, Bằng chứng B (pH < 7.35, PaCO2 > 45 mmHg)"
+        },
+        relatedCalculators: [
+          { name: "Thang điểm CAT (COPD)", path: "src/content/calculators/respiratory/CAT_COPD.html" },
+          { name: "Chỉ số BODE Index", path: "src/content/calculators/respiratory/BODE_Index.html" }
+        ],
+        relatedFlowcharts: [
+          { name: "Lưu đồ Tiếp cận Khó thở mạn", path: "src/content/approaches/tiep-can.html" }
+        ],
+        relatedDrugs: [
+          { name: "Phác đồ LAMA + LABA + ICS", path: "src/content/pharmacology/duoc-ly.html" }
+        ],
+        asianData: true,
+        bookmarked: true,
+        createdAt: new Date().toISOString(),
+        radarUrl: "../guideline-radar/radar.html?card=jrs_copd_2026",
+        matrixEndpoints: {
+          mace: { hr: "N/A", ci: "N/A", p: "N/A", verdict: "neutral", label: "Tầm soát tim mạch sau đợt cấp" },
+          cvDeath: { hr: "0.76", ci: "0.62-0.92", p: "0.005", verdict: "benefit", label: "Tầm soát BNP/NT-proBNP & ECG giảm biến cố CVD" },
+          allCauseDeath: { hr: "0.82", ci: "0.72-0.94", p: "0.004", verdict: "benefit", label: "Cải thiện sống còn dài hạn khi quản lý toàn diện" },
+          hhf: { hr: "0.66", ci: "0.55-0.79", p: "<0.001", verdict: "benefit", label: "Dupilumab & Triple therapy giảm 30-34% đợt cấp" },
+          renal: { hr: "N/A", ci: "N/A", p: "N/A", verdict: "neutral", label: "N/A" },
+          adverse: { hr: "1.45", ci: "1.18-1.78", p: "0.001", verdict: "adverse", label: "ICS tăng nguy cơ Viêm phổi/NTM ở bệnh nhân BMI gầy" }
+        },
+        citation: {
+          vancouver: "Sugiura H, Fujino N, Shibata Y, Muro S, Matsunaga K, Horita N, Kawayama T. The JRS Guideline for the Management of Chronic Obstructive Pulmonary Disease, 7th edition 2026. Respir Investig. 2026;64(101482).",
+          apa: "Sugiura, H., Fujino, N., Shibata, Y., Muro, S., Matsunaga, K., Horita, N., & Kawayama, T. (2026). The JRS Guideline for the Management of Chronic Obstructive Pulmonary Disease, 7th edition 2026. Respiratory Investigation, 64, 101482.",
+          clinicalNote: "Theo JRS COPD Guideline 2026 (7th Ed): LAMA đơn trị là chọn lựa hàng đầu cho COPD ổn định có triệu chứng (CQ02, Class I). Bắt buộc tầm soát tim mạch (BNP, ECG, Siêu âm tim) sau đợt cấp do nguy cơ biến cố CVD tăng vọt."
+        },
+        pocketCard: {
+          title: "⚡ Cheat-Sheet: Guideline JRS COPD 2026 (Ấn Bản 7)",
+          dosageRules: [
+            { drug: "Khởi đầu COPD ổn định", dose: "LAMA đơn trị (Tiotropium, Umeclidinium, Glycopyrronium)", note: "Khuyến cáo Mạnh, Bằng chứng A (CQ02)" },
+            { drug: "Khó thở nhiều / mMRC ≥2", dose: "LAMA + LABA phối hợp bộ đôi", note: "Khuyến cáo Yếu, Bằng chứng A (CQ04)" },
+            { drug: "Đợt cấp COPD — Prednisolone", dose: "Prednisolone 0,5 mg/kg/ngày uống x 5–7 ngày", note: "Khuyến cáo Mạnh, Bằng chứng B (CQ21)" }
+          ],
+          rules: [
+            "1. LAMA đơn trị là lựa chọn khởi đầu hàng đầu. KHÔNG dùng ICS đơn trị.",
+            "2. Corticosteroid toàn thân trong đợt cấp chỉ dùng Prednisolone 0,5mg/kg/ngày trong 5-7 ngày.",
+            "3. Bắt buộc tầm soát tim mạch (BNP, ECG, Siêu âm tim) trong các tuần đầu SAU đợt cấp."
+          ]
+        }
+      },
+      {
         id: "study_byt_copd_2026",
         title: "Hướng dẫn chẩn đoán và điều trị bệnh phổi tắc nghẽn mạn tính (COPD) Bộ Y tế 2026",
         drug: "LAMA, LABA, ICS, Roflumilast, Azithromycin, Kháng sinh, Morphin",
