@@ -16,6 +16,50 @@
     let allResults = [];
     let caseItems = []; // {code, nameVi, role: 'primary'|'secondary'}
     let currentSearchQuery = '';
+    let currentUiLang = 'vi'; // 'vi' | 'en'
+
+    const I18N_DICT = {
+        vi: {
+            'i18n-hero-title': 'Tra cứu mã ICD-10 & Thẩm định BHYT',
+            'i18n-hero-desc': 'Tra cứu mã bệnh, kiểm tra điều kiện xuất toán BHYT, sao chép định dạng phần mềm HIS và quản lý quy tắc chỉ định lâm sàng.',
+            'i18n-btn-add-rule': 'Thêm Quy tắc BHYT Custom',
+            'i18n-tab-icd': 'Tra cứu mã ICD-10',
+            'i18n-tab-bhyt': 'Tra cứu Lọc Chỉ định BHYT (CLS & Thuốc)',
+            'i18n-filter-all': 'Tất cả',
+            'i18n-filter-primary': 'Dùng được bệnh chính',
+            'i18n-filter-not-primary': 'Không dùng BC',
+            'i18n-filter-gender': 'Theo giới tính',
+            'i18n-chapter-browser': 'Duyệt theo phân loại',
+            'i18n-search-results': 'Kết quả tìm kiếm',
+            'i18n-case-title': 'Ca bệnh',
+            'i18n-btn-clear': 'Xóa',
+            'langToggleText': 'English UI',
+            'placeholder-icd': 'Nhập tên bệnh, triệu chứng hoặc mã: đái tháo đường, tăng huyết áp, E11.9…',
+            'placeholder-bhyt': 'Nhập tên Cận lâm sàng, Thuốc hoặc mã ICD: HbA1c, PET/CT, CT 64 dãy, Insulin, Stent, E11, C34…',
+            'hint-icd': 'Gõ từ khóa hoặc chọn chương bên dưới để tra cứu. Nhấn <kbd style="background:var(--color-surface-offset);border:1px solid var(--color-divider);padding:0.1rem 0.3rem;border-radius:3px;font-size:11px;font-family:var(--font-body)">/</kbd> để focus ô tìm kiếm.',
+            'hint-bhyt': 'Tra cứu điều kiện thanh toán BHYT theo tên xét nghiệm/thuốc hoặc mã ICD-10 tương ứng.'
+        },
+        en: {
+            'i18n-hero-title': 'ICD-10 Search & Insurance Validation',
+            'i18n-hero-desc': 'Search disease codes, check health insurance rules, copy HIS software formats, and manage clinical indication rules.',
+            'i18n-btn-add-rule': 'Add Custom Rule',
+            'i18n-tab-icd': 'ICD-10 Code Lookup',
+            'i18n-tab-bhyt': 'Insurance Rules (Labs & Drugs)',
+            'i18n-filter-all': 'All',
+            'i18n-filter-primary': 'Primary Code OK',
+            'i18n-filter-not-primary': 'Not Primary',
+            'i18n-filter-gender': 'Gender Specific',
+            'i18n-chapter-browser': 'Browse by Chapter',
+            'i18n-search-results': 'Search Results',
+            'i18n-case-title': 'Patient Case',
+            'i18n-btn-clear': 'Clear',
+            'langToggleText': 'Tiếng Việt',
+            'placeholder-icd': 'Enter disease name, symptom, or code: diabetes, hypertension, E11.9...',
+            'placeholder-bhyt': 'Enter lab test, drug, or ICD code: HbA1c, PET/CT, Insulin, Stent, E11, C34...',
+            'hint-icd': 'Type keywords or select a chapter below to search. Press <kbd style="background:var(--color-surface-offset);border:1px solid var(--color-divider);padding:0.1rem 0.3rem;border-radius:3px;font-size:11px;font-family:var(--font-body)">/</kbd> to focus the search box.',
+            'hint-bhyt': 'Search insurance payment conditions by test/drug name or corresponding ICD-10 code.'
+        }
+    };
 
     // --- ICD-10 Chapters Data ---
     const ICD_CHAPTERS = [
@@ -77,13 +121,13 @@
 
                 if (currentMode === 'bhyt') {
                     if (filterChipsEl) filterChipsEl.style.display = 'none';
-                    if (searchInput) searchInput.placeholder = 'Nhập tên Cận lâm sàng, Thuốc hoặc mã ICD: HbA1c, PET/CT, CT 64 dãy, Insulin, Stent, E11, C34…';
-                    if (searchHintEl) searchHintEl.innerHTML = 'Tra cứu điều kiện thanh toán BHYT theo tên xét nghiệm/thuốc hoặc mã ICD-10 tương ứng.';
+                    if (searchInput) searchInput.placeholder = I18N_DICT[currentUiLang]['placeholder-bhyt'];
+                    if (searchHintEl) searchHintEl.innerHTML = I18N_DICT[currentUiLang]['hint-bhyt'];
                     performSearchBHYT(searchInput ? searchInput.value.trim() : '');
                 } else {
                     if (filterChipsEl) filterChipsEl.style.display = '';
-                    if (searchInput) searchInput.placeholder = 'Nhập tên bệnh, triệu chứng hoặc mã: đái tháo đường, tăng huyết áp, E11.9…';
-                    if (searchHintEl) searchHintEl.innerHTML = 'Gõ từ khóa hoặc chọn chương bên dưới để tra cứu. Nhấn <kbd style="background:var(--color-surface-offset);border:1px solid var(--color-divider);padding:0.1rem 0.3rem;border-radius:3px;font-size:11px;font-family:var(--font-body)">/</kbd> để focus ô tìm kiếm.';
+                    if (searchInput) searchInput.placeholder = I18N_DICT[currentUiLang]['placeholder-icd'];
+                    if (searchHintEl) searchHintEl.innerHTML = I18N_DICT[currentUiLang]['hint-icd'];
                     const q = searchInput ? searchInput.value.trim() : '';
                     if (q) performSearch(q); else showChapterBrowser();
                 }
@@ -226,7 +270,7 @@
             allResults = matches.map(item => ({
                 code: item.code,
                 nameVi: item.name,
-                nameEn: '',
+                nameEn: item.nameEn || '',
                 chapterNo: item.chapter || '',
                 chapterVi: '',
                 group3Code: item.block || '',
@@ -266,7 +310,7 @@
             allResults = matches.map(item => ({
                 code: item.code,
                 nameVi: item.name,
-                nameEn: '',
+                nameEn: item.nameEn || '',
                 chapterNo: item.chapter || chapterNo,
                 chapterVi: '',
                 group3Code: item.block || '',
@@ -320,17 +364,18 @@
 
         resultsList.innerHTML = filtered.map((doc, idx) => {
             const badges = getBadges(doc);
+            const displayName = currentUiLang === 'en' && doc.nameEn ? doc.nameEn : doc.nameVi;
             return `
         <div class="icd-result-item" id="result-${idx}" onclick="window._icd.toggleDetail(${idx})">
             <div class="result-main">
                 <span class="result-code">${escHtml(doc.code)}</span>
                 <div class="result-info">
-                    <p class="result-name-vi">${escHtml(doc.nameVi)}</p>
+                    <p class="result-name-vi">${escHtml(displayName)}</p>
                     <div class="result-badges">${badges}</div>
                 </div>
             </div>
             <div class="result-detail-panel">
-                ${renderDetailPanel(doc)}
+                ${renderDetailPanel(doc, displayName)}
             </div>
         </div>
         `;
@@ -353,7 +398,7 @@
         return html;
     }
 
-    function renderDetailPanel(doc) {
+    function renderDetailPanel(doc, displayName) {
         const codeBase = (doc.code || '').split('.')[0];
         const mappings = (window.BHYT_MAPPINGS || []).filter(m => 
             m.icdCodes.includes(doc.code) || m.icdCodes.includes(codeBase)
@@ -364,7 +409,7 @@
             bhytHtml = `
                 <div style="margin-top:0.75rem;padding-top:0.75rem;border-top:1px dashed var(--color-divider)">
                     <div style="font-size:var(--text-xs);font-weight:700;color:var(--color-primary);margin-bottom:0.4rem;display:flex;align-items:center;gap:0.35rem">
-                        <i class="fa-solid fa-shield-halved"></i> Chỉ định BHYT liên quan (${mappings.length})
+                        <i class="fa-solid fa-shield-halved"></i> ${currentUiLang === 'en' ? 'Related BHYT Indications' : 'Chỉ định BHYT liên quan'} (${mappings.length})
                     </div>
                     <div style="display:flex;flex-direction:column;gap:0.4rem">
                         ${mappings.map(m => `
@@ -384,24 +429,24 @@
         return `
         <div class="detail-grid">
             <div class="detail-field">
-                <span class="detail-label">Chương</span>
+                <span class="detail-label">${currentUiLang === 'en' ? 'Chapter' : 'Chương'}</span>
                 <span class="detail-value">${escHtml(doc.chapterNo || '')} — ${escHtml(doc.chapterVi || '')}</span>
             </div>
             <div class="detail-field">
-                <span class="detail-label">Nhóm</span>
+                <span class="detail-label">${currentUiLang === 'en' ? 'Block' : 'Nhóm'}</span>
                 <span class="detail-value">${escHtml(doc.group3Code || '')}</span>
             </div>
         </div>
         ${bhytHtml}
         <div class="detail-actions">
             <button class="btn-copy" onclick="event.stopPropagation(); window._icd.copyCode('${escAttr(doc.code)}')">
-                <i class="fa-regular fa-copy"></i> Sao chép mã
+                <i class="fa-regular fa-copy"></i> ${currentUiLang === 'en' ? 'Copy Code' : 'Sao chép mã'}
             </button>
-            <button class="btn-add-case" onclick="event.stopPropagation(); window._icd.addToCase('${escAttr(doc.code)}', '${escAttr(doc.nameVi)}', 'primary')">
-                ＋ Bệnh chính
+            <button class="btn-add-case" onclick="event.stopPropagation(); window._icd.addToCase('${escAttr(doc.code)}', '${escAttr(displayName)}', 'primary')">
+                ＋ ${currentUiLang === 'en' ? 'Primary' : 'Bệnh chính'}
             </button>
-            <button class="btn-add-case" onclick="event.stopPropagation(); window._icd.addToCase('${escAttr(doc.code)}', '${escAttr(doc.nameVi)}', 'secondary')">
-                ＋ Bệnh kèm
+            <button class="btn-add-case" onclick="event.stopPropagation(); window._icd.addToCase('${escAttr(doc.code)}', '${escAttr(displayName)}', 'secondary')">
+                ＋ ${currentUiLang === 'en' ? 'Secondary' : 'Bệnh kèm'}
             </button>
         </div>
     `;
@@ -830,6 +875,35 @@
         setTimeout(() => toast.classList.remove('show'), 2500);
     }
 
+    // --- Localization ---
+    function toggleLanguage() {
+        currentUiLang = currentUiLang === 'vi' ? 'en' : 'vi';
+        
+        // Update static text elements
+        const dict = I18N_DICT[currentUiLang];
+        for (const [id, text] of Object.entries(dict)) {
+            const el = document.getElementById(id);
+            if (el) {
+                if (id === 'hint-icd' || id === 'hint-bhyt') continue; // Handled separately
+                el.textContent = text;
+            }
+        }
+        
+        // Update placeholders and hints based on current mode
+        if (currentMode === 'bhyt') {
+            if (searchInput) searchInput.placeholder = dict['placeholder-bhyt'];
+            if (searchHintEl) searchHintEl.innerHTML = dict['hint-bhyt'];
+        } else {
+            if (searchInput) searchInput.placeholder = dict['placeholder-icd'];
+            if (searchHintEl) searchHintEl.innerHTML = dict['hint-icd'];
+        }
+
+        // Re-render results if any
+        if (allResults && allResults.length > 0) {
+            renderResults(allResults);
+        }
+    }
+
     // --- Helpers ---
     function escHtml(str) {
         if (!str) return '';
@@ -862,7 +936,8 @@
         saveCustomRule,
         loadPreset,
         copyHISFormat,
-        copyFullTextDiagnosis
+        copyFullTextDiagnosis,
+        toggleLanguage
     };
 
 })();

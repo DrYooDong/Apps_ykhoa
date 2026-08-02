@@ -138,6 +138,10 @@
               <input type="text" id="search-input" placeholder="Tìm kiếm nghiên cứu, thuốc, chuyên khoa, đối tượng..." aria-label="Tìm kiếm">
             </div>
             
+            <button class="btn" id="filter-icd-btn" onclick="openIcdFilterModal()" title="Lọc theo mã bệnh ICD-10" style="margin-right: auto;">
+              🔍 Lọc ICD-10
+            </button>
+
             <div class="segmented-control">
               <button class="segment-btn" id="view-mode-full" onclick="setViewMode('full')">Full View</button>
               <button class="segment-btn active" id="view-mode-compact" onclick="setViewMode('compact')">Compact</button>
@@ -160,6 +164,7 @@
                 <label class="dropdown-item"><input type="checkbox" checked data-column="conclusion" onchange="toggleColumnVisibility('conclusion', this.checked)"> Kết luận</label>
                 <label class="dropdown-item"><input type="checkbox" checked data-column="sampleSize" onchange="toggleColumnVisibility('sampleSize', this.checked)"> Cỡ mẫu</label>
                 <label class="dropdown-item"><input type="checkbox" checked data-column="population" onchange="toggleColumnVisibility('population', this.checked)"> Đối tượng</label>
+                <label class="dropdown-item"><input type="checkbox" checked data-column="icd10" onchange="toggleColumnVisibility('icd10', this.checked)"> Bệnh (ICD-10)</label>
               </div>
             </div>
 
@@ -248,6 +253,7 @@
                 <th class="sortable" data-sort="conclusion" data-col="conclusion">Kết luận</th>
                 <th class="sortable" data-sort="sampleSize" data-col="sampleSize">Cỡ mẫu</th>
                 <th class="sortable" data-sort="population" data-col="population">Đối tượng</th>
+                <th class="sortable" data-sort="icd10" data-col="icd10">Bệnh (ICD-10)</th>
               </tr>
             </thead>
             <tbody id="table-body">
@@ -328,6 +334,11 @@
             <div class="form-group">
               <label for="study-author">Tên tác giả (nếu có)</label>
               <input type="text" id="study-author" placeholder="Ví dụ: Braunwald, McMurray...">
+            </div>
+            <div class="form-group">
+              <label for="study-icd10">Mã ICD-10 (Cách nhau bởi dấu phẩy)</label>
+              <input type="text" id="study-icd10" placeholder="Ví dụ: I50, I50.9, E11">
+              <small style="color: var(--text-muted); font-size: 0.75rem;">Nhập mã ICD-10 để phân loại bệnh lý</small>
             </div>
           </div>
           
@@ -684,8 +695,28 @@ create table clinical_guidelines (
     </div>
   </div>
 
+  <!-- ICD-10 PICKER MODAL -->
+  <div class="modal-overlay" id="icd10-modal">
+    <div class="modal" style="max-width: 600px; display: flex; flex-direction: column; max-height: 85vh;">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-list-ul"></i> Tra cứu mã bệnh ICD-10</h3>
+        <button class="modal-close" onclick="closeIcdFilterModal()">&times;</button>
+      </div>
+      <div class="modal-body" style="padding: 1rem; flex: 1; display: flex; flex-direction: column; overflow: hidden;">
+        <div style="position: relative; margin-bottom: 1rem;">
+          <input type="text" id="icd-search-input" placeholder="Gõ tên bệnh hoặc mã bệnh (VD: Suy tim, I50)..." style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-light); border-radius: 8px; font-size: 0.95rem;">
+        </div>
+        <div id="icd-results-container" style="flex: 1; overflow-y: auto; background: var(--surface-2); border-radius: 8px; border: 1px solid var(--border-light);">
+          <div style="text-align: center; padding: 2rem; color: var(--text-muted);">Nhập từ khóa để tìm mã ICD-10</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="../../../../js/cliniportal-sync.js"></script>
   <script src="../js/ebm-format-loader.js"></script>
+  <!-- Load ICD-10 Data -->
+  <script src="../../../../js/data/icd10-data.js"></script>
   <script src="guidelinesdata.js"></script>
   <script src="js/drug-linker.js"></script>
   <script src="guidelines.js"></script>

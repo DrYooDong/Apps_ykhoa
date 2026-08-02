@@ -10,6 +10,11 @@ import {
 } from '../storage';
 import { SoapPatientRecord } from '../types';
 import { renderSidebar } from '../docspace-view';
+import { icdPicker } from './icd-picker';
+import { ebmBridge } from './ebm-bridge-view';
+import { drugPicker } from './drug-picker';
+import { calculatorPicker } from './calculator-picker';
+import { resourcePicker } from './resource-picker';
 
 const ALERT_KEYWORDS = [
   'hạ kali', 'tụt kali', 'tăng kali',
@@ -94,100 +99,117 @@ export async function renderSoapView(profileId: string, activePatientId?: string
     }).join('');
 
     return `
-      <tr style="border-bottom: 1px solid var(--color-border);" data-patient-id="${p.id}">
+      <tr class="dsp-soap-row" style="border-bottom: 1px solid var(--color-border);" data-patient-id="${p.id}">
         <!-- Cột 1: Bệnh nhân -->
-        <td style="padding:14px; vertical-align:top; width:22%;">
-          <div style="font-weight:700; font-size:15px; color:var(--color-primary);">
-            ${p.patientCode} - ${p.fullName}
-          </div>
-          <div style="font-size:12px; color:var(--color-text-muted); margin-top:4px;">
-            (${p.age}t · ${p.gender === 'nam' ? 'Nam' : p.gender === 'nu' ? 'Nữ' : 'Khác'}) · Giường: <strong>${p.bedNumber}</strong>
-          </div>
-          <div style="font-size:12px; margin-top:6px;">
-            <strong>Chẩn đoán:</strong> ${p.admissionDiagnosis}
+        <td style="padding:10px; vertical-align:top; width:22%;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+            <div>
+              <div style="font-weight:700; font-size:15px; color:var(--color-primary);">
+                ${p.patientCode} - ${p.fullName}
+              </div>
+              <div style="font-size:12px; color:var(--color-text-muted); margin-top:4px;">
+                (${p.age}t · ${p.gender === 'nam' ? 'Nam' : p.gender === 'nu' ? 'Nữ' : 'Khác'}) · Giường: <strong>${p.bedNumber}</strong>
+              </div>
+              <div style="font-size:12px; margin-top:6px;">
+                <strong>Chẩn đoán:</strong> ${p.admissionDiagnosis}
+              </div>
+            </div>
+            <button class="dsp-btn dsp-btn-ghost js-toggle-row-collapse" data-id="${p.id}" title="Thu gọn/Mở rộng" style="padding:4px 8px; font-size:12px; border:none; background:rgba(0,0,0,0.03);">
+              <i class="fa-solid fa-chevron-up"></i>
+            </button>
           </div>
 
-          <!-- Lịch sử Ngày & Ngày bệnh -->
-          <div style="margin-top:10px; border-top:1px dashed var(--color-border); padding-top:8px;">
-            <div style="font-size:10px; font-weight:700; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:4px; display:flex; justify-content:space-between; align-items:center;">
-              <span><i class="fa-solid fa-calendar-days"></i> Ngày Diễn Tiến:</span>
-              <button class="js-add-date" data-id="${p.id}" title="Thêm ngày mới" style="background:none; border:none; color:var(--color-primary); font-weight:700; cursor:pointer; font-size:11px;">
-                <i class="fa-solid fa-plus-circle"></i> + Ngày
+          <div class="dsp-soap-col-content">
+            <!-- Lịch sử Ngày & Ngày bệnh -->
+            <div style="margin-top:10px; border-top:1px dashed var(--color-border); padding-top:8px;">
+              <div style="font-size:10px; font-weight:700; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:4px; display:flex; justify-content:space-between; align-items:center;">
+                <span><i class="fa-solid fa-calendar-days"></i> Ngày Diễn Tiến:</span>
+                <button class="js-add-date" data-id="${p.id}" title="Thêm ngày mới" style="background:none; border:none; color:var(--color-primary); font-weight:700; cursor:pointer; font-size:11px;">
+                  <i class="fa-solid fa-plus-circle"></i> + Ngày
+                </button>
+              </div>
+              <div style="display:flex; flex-wrap:wrap; gap:4px;">
+                ${dateBadgesHtml}
+              </div>
+            </div>
+
+            <div style="margin-top:10px; display:flex; flex-wrap:wrap; gap:4px;">
+              <span style="font-size:10px; padding:2px 8px; border-radius:12px; font-weight:600; ${p.isEmrEntered ? 'background:#dcfce7; color:#15803d;' : 'background:#fef3c7; color:#b45309;'}">
+                ${p.isEmrEntered ? '✓ Đã nhập EMR' : '⏳ Chưa nhập EMR'}
+              </span>
+              <span style="font-size:10px; padding:2px 8px; border-radius:12px; font-weight:600; ${p.soapStatus === 'da_lam' ? 'background:#e0f2fe; color:#0369a1;' : 'background:#f3f4f6; color:#4b5563;'}">
+                ${p.soapStatus === 'da_lam' ? '✓ Đã làm SOAP' : '○ Chưa làm SOAP'}
+              </span>
+            </div>
+            <div style="margin-top:12px; display:flex; gap:6px; flex-wrap:wrap;">
+              <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-edit-soap" data-id="${p.id}" title="Chỉnh sửa SOAP">
+                <i class="fa-solid fa-pen"></i> Chỉnh sửa
+              </button>
+              <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-toggle-emr" data-id="${p.id}" title="Đổi trạng thái EMR">
+                <i class="fa-solid fa-rotate"></i> EMR
+              </button>
+              <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-delete-patient" data-id="${p.id}" title="Xóa hồ sơ bệnh nhân" style="color:var(--color-danger);">
+                <i class="fa-solid fa-trash"></i> Xóa
               </button>
             </div>
-            <div style="display:flex; flex-wrap:wrap; gap:4px;">
-              ${dateBadgesHtml}
-            </div>
-          </div>
-
-          <div style="margin-top:10px; display:flex; flex-wrap:wrap; gap:4px;">
-            <span style="font-size:10px; padding:2px 8px; border-radius:12px; font-weight:600; ${p.isEmrEntered ? 'background:#dcfce7; color:#15803d;' : 'background:#fef3c7; color:#b45309;'}">
-              ${p.isEmrEntered ? '✓ Đã nhập EMR' : '⏳ Chưa nhập EMR'}
-            </span>
-            <span style="font-size:10px; padding:2px 8px; border-radius:12px; font-weight:600; ${p.soapStatus === 'da_lam' ? 'background:#e0f2fe; color:#0369a1;' : 'background:#f3f4f6; color:#4b5563;'}">
-              ${p.soapStatus === 'da_lam' ? '✓ Đã làm SOAP' : '○ Chưa làm SOAP'}
-            </span>
-          </div>
-          <div style="margin-top:12px; display:flex; gap:6px; flex-wrap:wrap;">
-            <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-edit-soap" data-id="${p.id}" title="Chỉnh sửa SOAP">
-              <i class="fa-solid fa-pen"></i> Chỉnh sửa
-            </button>
-            <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-toggle-emr" data-id="${p.id}" title="Đổi trạng thái EMR">
-              <i class="fa-solid fa-rotate"></i> EMR
-            </button>
-            <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-delete-patient" data-id="${p.id}" title="Xóa hồ sơ bệnh nhân" style="color:var(--color-danger);">
-              <i class="fa-solid fa-trash"></i> Xóa
-            </button>
           </div>
         </td>
 
         <!-- Cột 2: S & O (Triệu chứng) -->
-        <td style="padding:14px; vertical-align:top; width:20%; line-height:1.5; font-size:13px;">
-          <div style="margin-bottom:6px;">
-            <strong style="color:var(--color-primary);">S:</strong><br>
-            ${highlightAlerts(p.sNotes)}
-          </div>
-          <div>
-            <strong style="color:var(--color-primary);">O:</strong><br>
-            ${highlightAlerts(p.oNotes)}
+        <td style="padding:10px; vertical-align:top; width:20%; line-height:1.5; font-size:13px;">
+          <div class="dsp-soap-col-content">
+            <div style="margin-bottom:6px;">
+              <strong style="color:var(--color-primary);">S:</strong><br>
+              ${highlightAlerts(p.sNotes)}
+            </div>
+            <div>
+              <strong style="color:var(--color-primary);">O:</strong><br>
+              ${highlightAlerts(p.oNotes)}
+            </div>
           </div>
         </td>
 
         <!-- Cột 3: CLS Cần Làm & KQ CLS -->
-        <td style="padding:14px; vertical-align:top; width:22%; font-size:13px;">
-          <div style="margin-bottom:10px;">
-            <div style="font-size:11px; font-weight:700; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:4px;">CLS Cần Làm:</div>
-            <div style="display:flex; flex-direction:column; gap:4px;">
-              ${(p.clsOrders || []).map(o => `
-                <label style="display:flex; align-items:center; gap:6px; font-size:12px; cursor:pointer;">
-                  <input type="checkbox" class="js-cls-order-toggle" data-patient="${p.id}" data-order="${o.id}" ${o.isDone ? 'checked' : ''} />
-                  <span style="${o.isDone ? 'text-decoration:line-through; opacity:0.6;' : ''}">${o.name}</span>
-                </label>
-              `).join('') || '<span style="font-size:12px; color:var(--color-text-muted); italic;">Chưa có chỉ định</span>'}
+        <td style="padding:10px; vertical-align:top; width:22%; font-size:13px;">
+          <div class="dsp-soap-col-content">
+            <div style="margin-bottom:10px;">
+              <div style="font-size:11px; font-weight:700; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:4px;">CLS Cần Làm:</div>
+              <div style="display:flex; flex-direction:column; gap:4px;">
+                ${(p.clsOrders || []).map(o => `
+                  <label style="display:flex; align-items:center; gap:6px; font-size:12px; cursor:pointer;">
+                    <input type="checkbox" class="js-cls-order-toggle" data-patient="${p.id}" data-order="${o.id}" ${o.isDone ? 'checked' : ''} />
+                    <span style="${o.isDone ? 'text-decoration:line-through; opacity:0.6;' : ''}">${o.name}</span>
+                  </label>
+                `).join('') || '<span style="font-size:12px; color:var(--color-text-muted); italic;">Chưa có chỉ định</span>'}
+              </div>
             </div>
-          </div>
 
-          <div style="margin-top:12px; border-top:1px dashed var(--color-border); padding-top:8px;">
-            <div style="font-size:11px; font-weight:700; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:4px;">KQ CLS:</div>
-            <div style="display:flex; flex-direction:column; gap:4px;">
-              ${(p.clsResults || []).map(r => `
-                <div style="font-size:12px; padding:4px 6px; border-radius:4px; ${r.alertLevel !== 'normal' ? 'background:rgba(239,68,68,0.1); color:var(--color-danger); font-weight:600;' : 'background:var(--color-bg);'}">
-                  • ${r.text}
-                </div>
-              `).join('') || '<span style="font-size:12px; color:var(--color-text-muted); italic;">Chưa có KQ</span>'}
+            <div style="margin-top:12px; border-top:1px dashed var(--color-border); padding-top:8px;">
+              <div style="font-size:11px; font-weight:700; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:4px;">KQ CLS:</div>
+              <div style="display:flex; flex-direction:column; gap:4px;">
+                ${(p.clsResults || []).map(r => `
+                  <div style="font-size:12px; padding:4px 6px; border-radius:4px; ${r.alertLevel !== 'normal' ? 'background:rgba(239,68,68,0.1); color:var(--color-danger); font-weight:600;' : 'background:var(--color-bg);'}">
+                    • ${r.text}
+                  </div>
+                `).join('') || '<span style="font-size:12px; color:var(--color-text-muted); italic;">Chưa có KQ</span>'}
+              </div>
             </div>
           </div>
         </td>
 
         <!-- Cột 4: A (Đánh Giá & Biện Luận) -->
-        <td style="padding:14px; vertical-align:top; width:18%; line-height:1.5; font-size:13px;">
-          <div style="font-size:11px; font-weight:700; color:var(--color-primary); margin-bottom:4px;">Ngày bệnh: N${p.dayOfIllness} (${p.activeDate || 'Hôm nay'})</div>
-          ${highlightAlerts(p.aAssessment)}
+        <td style="padding:10px; vertical-align:top; width:18%; line-height:1.5; font-size:13px;">
+          <div class="dsp-soap-col-content">
+            <div style="font-size:11px; font-weight:700; color:var(--color-primary); margin-bottom:4px;">Ngày bệnh: N${p.dayOfIllness} (${p.activeDate || 'Hôm nay'})</div>
+            ${highlightAlerts(p.aAssessment)}
+          </div>
         </td>
 
         <!-- Cột 5: P (Y Lệnh) -->
-        <td style="padding:14px; vertical-align:top; width:18%; line-height:1.5; font-size:13px;">
-          ${highlightAlerts(p.pPlan)}
+        <td style="padding:10px; vertical-align:top; width:18%; line-height:1.5; font-size:13px;">
+          <div class="dsp-soap-col-content">
+            ${highlightAlerts(p.pPlan)}
+          </div>
         </td>
       </tr>
     `;
@@ -209,16 +231,15 @@ export async function renderSoapView(profileId: string, activePatientId?: string
         <div class="dsp-page-content" style="max-width:100%;">
           
           <!-- Header Bar -->
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
-            <div>
-              <h1 class="dsp-page-title" style="margin:0; font-size:24px;">
-                <i class="fa-solid fa-notes-medical" style="color:var(--color-primary);"></i>
-                Sổ Tay Bệnh Phòng SOAP Digital
+          <div class="dsp-hero-header">
+            <div class="dsp-hero-content">
+              <h1 class="dsp-hero-title">
+                <i class="fa-solid fa-notes-medical"></i> Sổ Tay Bệnh Phòng SOAP
               </h1>
-              <p class="dsp-page-subtitle" style="margin-top:4px;">Theo dõi diễn tiến lâm sàng, In Phiếu Theo Dõi Bệnh Nhân & đồng bộ Cloud Supabase</p>
+              <p class="dsp-hero-subtitle">Theo dõi diễn tiến lâm sàng, In Phiếu Theo Dõi Bệnh Nhân & đồng bộ Cloud Supabase</p>
             </div>
             
-            <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+            <div class="dsp-hero-actions">
               <!-- CHỌN NGÀY CHÍNH (MASTER DATE SELECTOR) -->
               <div style="display:flex; align-items:center; background:var(--color-surface); border:1px solid var(--color-border); border-radius:8px; padding:6px 12px; gap:8px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
                 <i class="fa-solid fa-calendar-day" style="color:var(--color-primary); font-size:14px;"></i>
@@ -227,11 +248,11 @@ export async function renderSoapView(profileId: string, activePatientId?: string
               </div>
 
               <!-- NÚT IN PHIẾU THEO DÕI -->
-              <button class="dsp-btn dsp-btn-ghost" id="btnPrintAllSoap" title="In Phiếu Theo Dõi Toàn Khoa" style="border:1px solid var(--color-border);">
+              <button class="dsp-btn dsp-btn-ghost" id="btnPrintAllSoap" title="In Phiếu Theo Dõi Toàn Khoa" style="border:1px solid rgba(0,0,0,0.1);">
                 <i class="fa-solid fa-print"></i> In Phiếu Theo Dõi
               </button>
 
-              <button class="dsp-btn dsp-btn-ghost" id="btnSupabaseModal" title="Cấu hình Supabase Cloud Sync" style="border:1px solid var(--color-border);">
+              <button class="dsp-btn dsp-btn-ghost" id="btnSupabaseModal" title="Cấu hình Supabase Cloud Sync" style="border:1px solid rgba(0,0,0,0.1);">
                 <i class="fa-solid fa-cloud" style="color:${isSbConnected ? '#10b981' : '#94a3b8'};"></i>
                 <span>${isSbConnected ? 'Supabase: Đã kết nối' : 'Supabase: Cấu hình Sync'}</span>
               </button>
@@ -324,8 +345,8 @@ export async function renderSoapView(profileId: string, activePatientId?: string
             </div>
           </div>
           <div style="margin-bottom:16px;">
-            <label style="font-size:12px; font-weight:600; display:block; margin-bottom:4px;">Chẩn Đoán Vào Khoa *</label>
-            <input type="text" id="npDiagnosis" required placeholder="VD: Viêm phổi thùy" class="dsp-input" style="width:100%;" />
+            <label style="font-size:12px; font-weight:700; display:block; margin-bottom:4px;">Mã ICD-10 & Chẩn Đoán Vào Khoa *</label>
+            <input type="text" id="npDiagnosis" required placeholder="Gõ tìm mã bệnh (VD: Suy tim, I50...)" class="dsp-input" style="width:100%;" />
           </div>
           <div style="display:flex; justify-content:flex-end; gap:8px;">
             <button type="button" id="btnCancelNewPatient" class="dsp-btn dsp-btn-ghost">Hủy</button>
@@ -469,6 +490,53 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
         <form id="formEditSoap">
           <input type="hidden" id="esPatientId" value="${p.id}" />
 
+          <!-- Thông tin hành chính bệnh nhân -->
+          <details style="margin-bottom:16px; background:var(--color-bg); border:1px solid var(--color-border); border-radius:8px; padding:10px;">
+            <summary style="font-size:13px; font-weight:700; color:var(--color-primary); cursor:pointer; user-select:none; display:flex; align-items:center; justify-content:space-between;">
+              <span><i class="fa-solid fa-id-card"></i> Sửa thông tin hành chính (Mã BN, Tên, Tuổi, Giường, Chẩn đoán...)</span>
+              <span style="font-size:11px; color:var(--color-text-muted); font-weight:normal;">(Bấm để mở rộng/thu gọn)</span>
+            </summary>
+            
+            <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-top:12px;">
+              <div>
+                <label style="font-size:11px; font-weight:600; display:block; margin-bottom:4px;">Mã BN / Ký hiệu *</label>
+                <input type="text" id="esPatientCode" value="${p.patientCode || ''}" required class="dsp-input" style="width:100%; font-size:12px;" />
+              </div>
+              <div>
+                <label style="font-size:11px; font-weight:600; display:block; margin-bottom:4px;">Số Giường *</label>
+                <input type="text" id="esBedNumber" value="${p.bedNumber || ''}" required class="dsp-input" style="width:100%; font-size:12px;" />
+              </div>
+              <div>
+                <label style="font-size:11px; font-weight:600; display:block; margin-bottom:4px;">Họ và Tên *</label>
+                <input type="text" id="esFullName" value="${p.fullName || ''}" required class="dsp-input" style="width:100%; font-size:12px;" />
+              </div>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-top:10px;">
+              <div>
+                <label style="font-size:11px; font-weight:600; display:block; margin-bottom:4px;">Tuổi *</label>
+                <input type="number" id="esAge" value="${p.age || 0}" required class="dsp-input" style="width:100%; font-size:12px;" />
+              </div>
+              <div>
+                <label style="font-size:11px; font-weight:600; display:block; margin-bottom:4px;">Giới tính</label>
+                <select id="esGender" class="dsp-input" style="width:100%; font-size:12px;">
+                  <option value="nam" ${p.gender === 'nam' ? 'selected' : ''}>Nam</option>
+                  <option value="nu" ${p.gender === 'nu' ? 'selected' : ''}>Nữ</option>
+                  <option value="khac" ${p.gender === 'khac' ? 'selected' : ''}>Khác</option>
+                </select>
+              </div>
+              <div>
+                <label style="font-size:11px; font-weight:600; display:block; margin-bottom:4px;">Số Bệnh Án</label>
+                <input type="text" id="esMedicalRecordNo" value="${p.medicalRecordNo || ''}" class="dsp-input" style="width:100%; font-size:12px;" />
+              </div>
+            </div>
+
+            <div style="margin-top:10px;">
+              <label style="font-size:11px; font-weight:600; display:block; margin-bottom:4px;">Chẩn đoán vào khoa *</label>
+              <input type="text" id="esAdmissionDiagnosis" value="${p.admissionDiagnosis || ''}" required class="dsp-input" style="width:100%; font-size:12px;" />
+            </div>
+          </details>
+
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
             <div>
               <label style="font-size:12px; font-weight:700; display:block; margin-bottom:4px;">S</label>
@@ -481,12 +549,35 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
           </div>
           
           <div style="margin-bottom:16px;">
-            <label style="font-size:12px; font-weight:700; display:block; margin-bottom:4px;">(A) Đánh giá & Biện luận</label>
-            <textarea id="esAAssessment" rows="3" class="dsp-input" style="width:100%; font-size:13px; line-height:1.4;">${p.aAssessment || ''}</textarea>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+              <label style="font-size:12px; font-weight:700; display:block; margin:0;">(A) Đánh giá & Chẩn đoán</label>
+              <div style="display:flex; gap:4px;">
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnIcdSoap" style="color:var(--color-primary); padding:2px 8px; font-size:11px; height:auto; min-height:0;">
+                  <i class="fa-solid fa-list-ul"></i> + ICD-10
+                </button>
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnScoreSoap" style="color:var(--color-primary); padding:2px 8px; font-size:11px; height:auto; min-height:0;">
+                  <i class="fa-solid fa-calculator"></i> + Thang điểm
+                </button>
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-primary" id="btnSearchEBM" style="padding:2px 8px; font-size:11px; height:auto; min-height:0;">
+                  <i class="fa-solid fa-book-medical"></i> Tra cứu EBM
+                </button>
+              </div>
+            </div>
+            <textarea id="esAAssessment" rows="4" class="dsp-input" style="width:100%; font-size:13px; line-height:1.4;" placeholder="Ghi nhận đánh giá lâm sàng hoặc chẩn đoán (Ví dụ: Suy tim (I50.0), Đái tháo đường (E11.9))...">${p.aAssessment || ''}</textarea>
           </div>
 
           <div style="margin-bottom:16px;">
-            <label style="font-size:12px; font-weight:700; display:block; margin-bottom:4px;">Y lệnh (P)</label>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+              <label style="font-size:12px; font-weight:700; display:block; margin:0;">Y lệnh (P)</label>
+              <div style="display:flex; gap:4px;">
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnPrescribeSoap" style="color:var(--color-primary); padding:2px 8px; font-size:11px; height:auto; min-height:0;">
+                  <i class="fa-solid fa-capsules"></i> + Kê đơn
+                </button>
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnSkillSoap" style="color:var(--color-primary); padding:2px 8px; font-size:11px; height:auto; min-height:0;">
+                  <i class="fa-solid fa-hand-holding-medical"></i> + Kỹ năng
+                </button>
+              </div>
+            </div>
             <textarea id="esPPlan" rows="4" class="dsp-input" style="width:100%; font-size:13px; line-height:1.4;">${p.pPlan || ''}</textarea>
           </div>
 
@@ -760,6 +851,16 @@ export function mountSoapController(profileId: string): void {
     }
   });
 
+  // Toggle Row Collapse
+  document.querySelectorAll('.js-toggle-row-collapse').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const row = (e.currentTarget as HTMLElement).closest('.dsp-soap-row');
+      if (row) {
+        row.classList.toggle('is-collapsed');
+      }
+    });
+  });
+
   // Switch Date Buttons
   document.querySelectorAll('.js-switch-date, .js-modal-switch-date').forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -804,7 +905,14 @@ export function mountSoapController(profileId: string): void {
     const age = parseInt((document.getElementById('npAge') as HTMLInputElement).value, 10) || 0;
     const gender = (document.getElementById('npGender') as HTMLSelectElement).value as any;
     const medicalNo = (document.getElementById('npMedicalNo') as HTMLInputElement).value.trim();
-    const diagnosis = (document.getElementById('npDiagnosis') as HTMLInputElement).value.trim();
+    const diagnosisVal = (document.getElementById('npDiagnosis') as HTMLInputElement).value.trim();
+    let icdCode = '';
+    let icdLabel = diagnosisVal;
+    if (diagnosisVal.includes(' - ')) {
+      const parts = diagnosisVal.split(' - ');
+      icdCode = parts[0].trim();
+      icdLabel = parts.slice(1).join(' - ').trim();
+    }
     const dayOfIllness = parseInt((document.getElementById('npDayOfIllness') as HTMLInputElement).value, 10) || 1;
 
     saveSoapPatient(profileId, {
@@ -814,14 +922,16 @@ export function mountSoapController(profileId: string): void {
       age,
       gender,
       medicalRecordNo: medicalNo,
-      admissionDiagnosis: diagnosis,
-      currentDiagnosis: diagnosis,
+      admissionDiagnosis: diagnosisVal,
+      currentDiagnosis: diagnosisVal,
       isEmrEntered: false,
       soapStatus: 'chua_lam',
       dayOfIllness: dayOfIllness,
       sNotes: '',
       oNotes: '',
-      aAssessment: diagnosis,
+      aAssessment: diagnosisVal,
+      icd10Code: icdCode,
+      icd10Label: icdLabel,
       pPlan: '',
       clsOrders: [],
       clsResults: [],
@@ -862,10 +972,18 @@ export function mountSoapController(profileId: string): void {
   document.getElementById('formEditSoap')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const id = (document.getElementById('esPatientId') as HTMLInputElement).value;
-    const sNotes = (document.getElementById('esSNotes') as HTMLTextAreaElement).value;
-    const oNotes = (document.getElementById('esONotes') as HTMLTextAreaElement).value;
-    const aAssessment = (document.getElementById('esAAssessment') as HTMLTextAreaElement).value;
-    const pPlan = (document.getElementById('esPPlan') as HTMLTextAreaElement).value;
+    const patientCode = (document.getElementById('esPatientCode') as HTMLInputElement)?.value.trim();
+    const bedNumber = (document.getElementById('esBedNumber') as HTMLInputElement)?.value.trim();
+    const fullName = (document.getElementById('esFullName') as HTMLInputElement)?.value.trim();
+    const age = parseInt((document.getElementById('esAge') as HTMLInputElement)?.value, 10) || 0;
+    const gender = ((document.getElementById('esGender') as HTMLSelectElement)?.value || 'nam') as any;
+    const medicalRecordNo = (document.getElementById('esMedicalRecordNo') as HTMLInputElement)?.value.trim();
+    const admissionDiagnosis = (document.getElementById('esAdmissionDiagnosis') as HTMLInputElement)?.value.trim();
+
+    const sNotes = (document.getElementById('esSNotes') as HTMLTextAreaElement).value.trim();
+    const oNotes = (document.getElementById('esONotes') as HTMLTextAreaElement).value.trim();
+    const aAssessment = (document.getElementById('esAAssessment') as HTMLTextAreaElement).value.trim();
+    const pPlan = (document.getElementById('esPPlan') as HTMLTextAreaElement).value.trim();
     const quickPaste = (document.getElementById('esClsQuickPaste') as HTMLTextAreaElement).value.trim();
 
     const p = getSoapPatientById(profileId, id);
@@ -881,6 +999,13 @@ export function mountSoapController(profileId: string): void {
     }
 
     updateSoapPatient(profileId, id, {
+      ...(patientCode ? { patientCode } : {}),
+      ...(bedNumber ? { bedNumber } : {}),
+      ...(fullName ? { fullName } : {}),
+      ...(age !== undefined ? { age } : {}),
+      ...(gender ? { gender } : {}),
+      ...(medicalRecordNo !== undefined ? { medicalRecordNo } : {}),
+      ...(admissionDiagnosis ? { admissionDiagnosis, currentDiagnosis: admissionDiagnosis } : {}),
       sNotes,
       oNotes,
       aAssessment,
@@ -992,6 +1117,43 @@ export function mountSoapController(profileId: string): void {
       alert('✅ Đã sao chép định dạng tờ điều trị vào bộ nhớ tạm!\n(Các hệ cơ quan bình thường đã được tự động bổ sung vào O)');
       updateSoapPatient(profileId, id, { isEmrEntered: true });
       window.location.hash = '#/docspace/soap';
+    });
+  });
+
+  // Tra cứu EBM (đã nâng cấp để nhận nhiều mã ICD)
+  document.getElementById('btnSearchEBM')?.addEventListener('click', () => {
+    const text = (document.getElementById('esAAssessment') as HTMLTextAreaElement).value;
+    if (!text.trim()) {
+      alert('Vui lòng nhập chẩn đoán trước khi tra cứu.');
+      return;
+    }
+    ebmBridge.openSearch(text);
+  });
+
+  // Kê đơn
+  document.getElementById('btnPrescribeSoap')?.addEventListener('click', () => {
+    drugPicker.open('esPPlan');
+  });
+
+  // ICD-10 Picker
+  document.getElementById('btnIcdSoap')?.addEventListener('click', () => {
+    icdPicker.open('esAAssessment');
+  });
+
+  // Thang điểm
+  document.getElementById('btnScoreSoap')?.addEventListener('click', () => {
+    calculatorPicker.open('esAAssessment');
+  });
+
+  // Kỹ năng
+  document.getElementById('btnSkillSoap')?.addEventListener('click', () => {
+    resourcePicker.open({
+      title: 'Kho Kỹ năng & Thủ thuật',
+      icon: 'fa-solid fa-hand-holding-medical',
+      jsonUrl: 'content/skills/index.json',
+      mode: 'insertText',
+      targetInputId: 'esPPlan',
+      prefixText: '- Chỉ định thực hiện: '
     });
   });
 }

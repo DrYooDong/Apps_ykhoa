@@ -21,6 +21,8 @@ import {
   AISettings,
 } from './types';
 import { signRecord, verifyRecordIntegrity } from './features/audit-shield';
+import { FhirAdapter } from './data/fhir-adapter';
+import { redactSoapRecord } from './ai/phi-redactor';
 
 // ─────────────────────────────────────────────
 // HELPERS
@@ -691,12 +693,12 @@ export function addSoapDailyLog(profileId: string, id: string, newDate: string):
       id: uuid(),
       date: newDate,
       dayOfIllness: newDayN,
-      sNotes: '',
-      oNotes: '',
+      sNotes: lastLog ? lastLog.sNotes : patient.sNotes,
+      oNotes: lastLog ? lastLog.oNotes : patient.oNotes,
       aAssessment: lastLog ? lastLog.aAssessment : patient.aAssessment,
       pPlan: lastLog ? lastLog.pPlan : patient.pPlan,
-      clsOrders: [],
-      clsResults: [],
+      clsOrders: lastLog ? [...lastLog.clsOrders] : [...(patient.clsOrders || [])],
+      clsResults: lastLog ? [...lastLog.clsResults] : [...(patient.clsResults || [])],
       isEmrEntered: false,
       soapStatus: 'chua_lam' as const,
       createdAt: now(),
@@ -706,12 +708,12 @@ export function addSoapDailyLog(profileId: string, id: string, newDate: string):
     patient.dailyLogs.push(newLog);
     patient.activeDate = newDate;
     patient.dayOfIllness = newDayN;
-    patient.sNotes = '';
-    patient.oNotes = '';
+    patient.sNotes = newLog.sNotes;
+    patient.oNotes = newLog.oNotes;
     patient.aAssessment = newLog.aAssessment;
     patient.pPlan = newLog.pPlan;
-    patient.clsOrders = [];
-    patient.clsResults = [];
+    patient.clsOrders = [...newLog.clsOrders];
+    patient.clsResults = [...newLog.clsResults];
     patient.isEmrEntered = false;
     patient.soapStatus = 'chua_lam';
   }
@@ -784,13 +786,16 @@ export async function syncSoapToSupabase(patient: SoapPatientRecord): Promise<{ 
   if (!config.url || !config.key) return { success: false, error: 'Chưa cấu hình Supabase' };
 
   try {
+    // Tự động ẩn danh PHI trước khi gửi ra ngoài
+    const redactedPatient = redactSoapRecord(patient);
+
     const endpoint = `${config.url.replace(/\/$/, '')}/rest/v1/soap_patients`;
     const body = [{
-      id: patient.id,
+      id: redactedPatient.id,
       doctor_id: getActiveProfileId() || 'default',
-      patient_code: patient.patientCode,
-      full_name: patient.fullName,
-      data: patient,
+      patient_code: redactedPatient.patientCode,
+      full_name: redactedPatient.fullName,
+      data: redactedPatient,
       updated_at: new Date().toISOString()
     }];
 
@@ -863,6 +868,37 @@ export async function fetchAllSoapFromSupabase(profileId: string): Promise<{ suc
 // EXPORT / IMPORT
 // ─────────────────────────────────────────────
 
+export async function getProfileSnapshot(profileId: string): Promise<DocSpaceSnapshot | null> {
+  const profile = getProfile(profileId);
+  if (!profile) return null;
+  
+  // Create a safe copy of profile to exclude apiKey
+  const safeProfile = { ...profile };
+  if (safeProfile.aiSettings) {
+    safeProfile.aiSettings = { ...safeProfile.aiSettings, apiKey: '' };
+  }
+
+  const snapshot: DocSpaceSnapshot = {
+    version: DOCSPACE_VERSION,
+    exportedAt: now(),
+    profile: safeProfile,
+    sbars: await getAllSBARs(profileId, true),
+    shifts: getAllShifts(profileId),
+    cases: await getAllCases(profileId, true),
+    notes: getAllNotes(profileId, true),
+    drugJournal: getAllDrugEntries(profileId, true),
+    protocols: getAllProtocols(profileId, true),
+  };
+  
+  // Lấy thêm Soaps vì Export chưa có
+  const soaps = getAllSoapPatients(profileId, true);
+  if (soaps.length > 0) {
+    (snapshot as any).soaps = soaps;
+  }
+
+  return snapshot;
+}
+
 export async function exportProfile(profileId: string): Promise<void> {
   const profile = getProfile(profileId);
   if (!profile) return;
@@ -931,6 +967,78 @@ export function importProfile(file: File): Promise<DoctorProfile> {
         resolve(snapshot.profile);
       } catch (err) {
         reject(new Error('File không hợp lệ hoặc bị hỏng.'));
+      }
+    };
+    reader.onerror = () => reject(new Error('Không thể đọc file.'));
+    reader.readAsText(file);
+  });
+}
+
+export async function exportProfileToFHIR(profileId: string): Promise<void> {
+  const profile = getProfile(profileId);
+  if (!profile) return;
+  
+  const safeProfile = { ...profile };
+  if (safeProfile.aiSettings) {
+    safeProfile.aiSettings = { ...safeProfile.aiSettings, apiKey: '' };
+  }
+
+  const snapshot: DocSpaceSnapshot = {
+    version: DOCSPACE_VERSION,
+    exportedAt: now(),
+    profile: safeProfile,
+    sbars: await getAllSBARs(profileId, true),
+    shifts: getAllShifts(profileId),
+    cases: await getAllCases(profileId, true),
+    notes: getAllNotes(profileId, true),
+    drugJournal: getAllDrugEntries(profileId, true),
+    protocols: getAllProtocols(profileId, true),
+  };
+
+  const fhirBundle = FhirAdapter.exportToFHIR(snapshot);
+
+  const blob = new Blob([JSON.stringify(fhirBundle, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `docspace_${profileId}_fhir_${new Date().toISOString().split('T')[0]}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+export function importProfileFromFHIR(file: File): Promise<DoctorProfile> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const fhirData = JSON.parse(e.target?.result as string);
+        const importedData = FhirAdapter.importFromFHIR(fhirData);
+        
+        const activeProfile = getActiveProfile();
+        if (!activeProfile) {
+          reject(new Error('Vui lòng tạo hoặc chọn một hồ sơ trước khi Import dữ liệu FHIR.'));
+          return;
+        }
+        
+        const pid = activeProfile.id;
+        
+        // Merge SBARs
+        if (importedData.sbars && importedData.sbars.length > 0) {
+          const currentSbars = load<SBARRecord>(pid, 'sbars');
+          importedData.sbars.forEach(s => { s.doctorId = pid; currentSbars.push(s as SBARRecord); });
+          save(pid, 'sbars', currentSbars);
+        }
+        
+        // Merge Cases
+        if (importedData.cases && importedData.cases.length > 0) {
+          const currentCases = load<CaseRecord>(pid, 'cases');
+          importedData.cases.forEach(c => { c.doctorId = pid; currentCases.push(c as CaseRecord); });
+          save(pid, 'cases', currentCases);
+        }
+
+        resolve(activeProfile);
+      } catch (err) {
+        reject(new Error('File FHIR không hợp lệ hoặc bị hỏng.'));
       }
     };
     reader.onerror = () => reject(new Error('Không thể đọc file.'));

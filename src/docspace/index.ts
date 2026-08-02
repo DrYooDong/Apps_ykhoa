@@ -6,7 +6,8 @@
 import { router } from '../core/router';
 import {
   getActiveProfile, getAllProfiles, createProfile, setActiveProfile,
-  exportProfile, importProfile
+  exportProfile, importProfile, exportProfileToFHIR, importProfileFromFHIR,
+  getProfileSnapshot
 } from './storage';
 import {
   renderProfileSelector, renderDashboard, renderSidebar,
@@ -23,6 +24,7 @@ import { renderDrugJournalView, mountDrugJournalController } from './features/dr
 import { renderProtocolView, mountProtocolController } from './features/protocol-view';
 import { renderLivingProtocolView, mountLivingProtocolController } from './features/living-protocol-view';
 import { renderSimulationView, mountSimulationController } from './features/simulation-view';
+import { renderSyncModal, mountSyncController } from './features/p2p-sync-view';
 import { initGlobalQuickSaveHook } from './features/quick-save';
 import { renderAISettings } from './features/ai-settings-view';
 import { loadRAGIndex } from './ai/rag-engine';
@@ -95,12 +97,26 @@ function mountProfileSelectorController(): void {
       alert(`❌ Lỗi: ${err.message}`);
     }
   });
+
+  // Import from FHIR file
+  document.getElementById('dspImportFhirFile')?.addEventListener('change', async (e) => {
+    const file = (e.target as HTMLInputElement).files?.[0];
+    if (!file) return;
+    try {
+      await importProfileFromFHIR(file);
+      alert(`✅ Đã nạp dữ liệu từ file FHIR thành công!`);
+      window.location.hash = '#/docspace';
+    } catch (err: any) {
+      alert(`❌ Lỗi nhập FHIR: ${err.message}`);
+    }
+  });
 }
 
 // ─── Dashboard Controller ─────────────────────────────────────────
 
 function mountDashboardController(profileId: string): void {
   document.getElementById('dspExportBtn')?.addEventListener('click', () => exportProfile(profileId));
+  document.getElementById('dspExportFhirBtn')?.addEventListener('click', () => exportProfileToFHIR(profileId));
   document.getElementById('dspSwitchProfileBtn')?.addEventListener('click', () => {
     localStorage.removeItem('dsp_active_profile');
     window.location.hash = '#/docspace';
@@ -112,9 +128,19 @@ function mountDashboardController(profileId: string): void {
 
 function mountSidebarFooterControls(profileId: string): void {
   document.getElementById('dspSidebarExport')?.addEventListener('click', () => exportProfile(profileId));
+  document.getElementById('dspSidebarExportFhir')?.addEventListener('click', () => exportProfileToFHIR(profileId));
   document.getElementById('dspSidebarSwitch')?.addEventListener('click', () => {
     localStorage.removeItem('dsp_active_profile');
     window.location.hash = '#/docspace';
+  });
+  
+  document.getElementById('dspSidebarSync')?.addEventListener('click', () => {
+    if (!document.getElementById('dspSyncModal')) {
+      document.body.insertAdjacentHTML('beforeend', renderSyncModal());
+      mountSyncController(async () => await getProfileSnapshot(profileId) as any);
+    } else {
+      (document.getElementById('dspSyncModal') as HTMLElement).style.display = 'flex';
+    }
   });
   document.getElementById('dspSidebarToggle')?.addEventListener('click', () => {
     document.getElementById('dspSidebar')?.classList.toggle('dsp-sidebar--collapsed');

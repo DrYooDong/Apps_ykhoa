@@ -95,6 +95,11 @@ export function renderProfileSelector(): string {
             <i class="fa-solid fa-file-import"></i> Nhập hồ sơ từ file JSON
           </label>
           <input type="file" id="dspImportFile" accept=".json" style="display:none" />
+          
+          <label class="dsp-btn dsp-btn-ghost" id="dspImportFhirLabel" for="dspImportFhirFile">
+            <i class="fa-solid fa-file-medical"></i> Nhập từ HL7 FHIR
+          </label>
+          <input type="file" id="dspImportFhirFile" accept=".json" style="display:none" />
         </div>
       </div>
     </div>
@@ -144,6 +149,9 @@ export async function renderDashboard(profile: DoctorProfile): Promise<string> {
             <div class="dsp-greeting-actions">
               <button class="dsp-btn dsp-btn-ghost dsp-btn-sm" id="dspExportBtn" title="Xuất dữ liệu">
                 <i class="fa-solid fa-file-export"></i> Xuất dữ liệu
+              </button>
+              <button class="dsp-btn dsp-btn-ghost dsp-btn-sm" id="dspExportFhirBtn" title="Xuất chuẩn HL7 FHIR">
+                <i class="fa-solid fa-file-medical"></i> Xuất FHIR
               </button>
               <button class="dsp-btn dsp-btn-ghost dsp-btn-sm" id="dspSwitchProfileBtn">
                 <i class="fa-solid fa-repeat"></i> Đổi hồ sơ
@@ -274,9 +282,14 @@ export function renderSidebar(profile: DoctorProfile, activeId: string): string 
   return `
     <aside class="dsp-sidebar" id="dspSidebar">
       <div class="dsp-sidebar-header">
-        <div class="dsp-sidebar-brand">
-          <i class="fa-solid fa-id-badge"></i>
-          <span>DocSpace</span>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <a href="#/" class="dsp-sidebar-back" title="Về trang chủ CliniPortal">
+            <i class="fa-solid fa-arrow-left"></i>
+          </a>
+          <div class="dsp-sidebar-brand">
+            <i class="fa-solid fa-id-badge"></i>
+            <span>DocSpace</span>
+          </div>
         </div>
         <button class="dsp-sidebar-toggle" id="dspSidebarToggle" aria-label="Thu gọn sidebar">
           <i class="fa-solid fa-bars"></i>
@@ -303,6 +316,14 @@ export function renderSidebar(profile: DoctorProfile, activeId: string): string 
         <button class="dsp-nav-item dsp-nav-item--footer" id="dspSidebarExport">
           <i class="fa-solid fa-file-export"></i>
           <span>Xuất dữ liệu</span>
+        </button>
+        <button class="dsp-nav-item dsp-nav-item--footer" id="dspSidebarExportFhir">
+          <i class="fa-solid fa-file-medical"></i>
+          <span>Xuất chuẩn FHIR</span>
+        </button>
+        <button class="dsp-nav-item dsp-nav-item--footer" id="dspSidebarSync">
+          <i class="fa-solid fa-rotate"></i>
+          <span>Đồng bộ Thiết bị</span>
         </button>
         <button class="dsp-nav-item dsp-nav-item--footer" id="dspSidebarSwitch">
           <i class="fa-solid fa-repeat"></i>

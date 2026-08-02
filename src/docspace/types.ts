@@ -107,6 +107,7 @@ export interface CaseRecord {
   chiefComplaint: string;
   icd10Code?: string;
   icd10Label?: string;
+  diagnosisText?: string; // Phase 6: Chuỗi chẩn đoán tự do
   management: string;    // Xử trí đã làm
   outcome?: string;      // Kết quả
   lesson?: string;       // Bài học rút ra
@@ -257,6 +258,8 @@ export interface SoapDailyLog {
   sNotes: string;
   oNotes: string;
   aAssessment: string;
+  icd10Code?: string;
+  icd10Label?: string;
   pPlan: string;
   clsOrders: { id: string; name: string; isDone: boolean }[];
   clsResults: { id: string; text: string; alertLevel: 'normal' | 'low' | 'high' | 'critical' }[];
@@ -288,6 +291,8 @@ export interface SoapPatientRecord {
   sNotes: string;
   oNotes: string;
   aAssessment: string;
+  icd10Code?: string;
+  icd10Label?: string;
   pPlan: string;
   clsOrders: { id: string; name: string; isDone: boolean }[];
   clsResults: { id: string; text: string; alertLevel: 'normal' | 'low' | 'high' | 'critical' }[];

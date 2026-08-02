@@ -21,6 +21,24 @@
 }
 
 /* ═══════════════════════════════════════════════
+   LAYOUT OVERRIDES
+═══════════════════════════════════════════════ */
+
+body:has(#app .dsp-layout) .global-header {
+  display: none !important;
+}
+
+body:has(#app .dsp-layout) .dsp-layout {
+  min-height: 100vh !important;
+}
+
+#app:has(.dsp-layout) {
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ═══════════════════════════════════════════════
    LAYOUT
 ═══════════════════════════════════════════════ */
 
@@ -68,9 +86,14 @@
 .dsp-sidebar--collapsed .dsp-nav-item span,
 .dsp-sidebar--collapsed .dsp-sidebar-name,
 .dsp-sidebar--collapsed .dsp-sidebar-spec,
-.dsp-sidebar--collapsed .dsp-sidebar-brand span,
+.dsp-sidebar--collapsed .dsp-sidebar-brand,
+.dsp-sidebar--collapsed .dsp-sidebar-back,
 .dsp-sidebar--collapsed .dsp-soon-badge {
   display: none;
+}
+
+.dsp-sidebar--collapsed .dsp-sidebar-header {
+  justify-content: center;
 }
 
 .dsp-sidebar-header {
@@ -91,6 +114,22 @@
 }
 
 .dsp-sidebar-brand i { font-size: 1.2rem; }
+
+.dsp-sidebar-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.25rem 0.4rem;
+  border-radius: var(--radius-sm);
+  transition: all var(--dsp-transition);
+}
+.dsp-sidebar-back:hover {
+  background: var(--color-bg);
+  color: var(--color-primary);
+}
 
 .dsp-sidebar-toggle {
   background: none;
@@ -567,6 +606,69 @@
 }
 
 .dsp-page-header { margin-bottom: 1.5rem; }
+
+/* ═══════════════════════════════════════════════
+   HERO HEADER
+═══════════════════════════════════════════════ */
+
+.dsp-hero-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background: linear-gradient(135deg, rgba(2,132,199,0.08), rgba(2,132,199,0.01));
+  padding: 1.5rem 2rem;
+  border-radius: var(--radius-lg, 1rem);
+  border: 1px solid rgba(2,132,199,0.15);
+}
+
+.dsp-hero-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.dsp-hero-subtitle {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.dsp-hero-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* ═══════════════════════════════════════════════
+   SOAP ROW COLLAPSE
+═══════════════════════════════════════════════ */
+
+.dsp-soap-row.is-collapsed .dsp-soap-col-content {
+  display: none;
+}
+
+.js-toggle-row-collapse i {
+  transition: transform var(--dsp-transition);
+}
+
+.dsp-soap-row.is-collapsed .js-toggle-row-collapse i {
+  transform: rotate(180deg);
+}
+
+.dsp-soap-row {
+  transition: background-color var(--dsp-transition);
+}
+.dsp-soap-row.is-collapsed {
+  background-color: var(--color-surface-offset, rgba(0,0,0,0.02));
+}
 
 /* ═══════════════════════════════════════════════
    LIST

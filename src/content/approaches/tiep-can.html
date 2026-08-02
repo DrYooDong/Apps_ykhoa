@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi" data-theme="light">
 
 <head>
@@ -27,9 +27,34 @@
 
   <link rel="stylesheet" href="../../../css/components/module-dashboard.css">
   <style>
+    /* ================================================================
+       TIẾP CẬN LÂM SÀNG — Section Color System
+       Dùng CSS custom properties cascade để đồng bộ màu sắc theo section
+       ================================================================ */
 
+    /* Color tokens mới */
+    :root {
+      --color-indigo: #6366f1;
+      --color-indigo-hl: #eef2ff;
+    }
+    [data-theme="dark"] {
+      --color-indigo: #818cf8;
+      --color-indigo-hl: #1e1b4b;
+    }
 
-    /* Modern List-Item Mode Styles (Upgraded) */
+    /* Mỗi section khai báo --part-color để toàn bộ child tự inherit */
+    #part1-section       { --part-color: var(--color-danger);  --part-color-rgb: var(--color-danger-rgb);  --part-color-hl: var(--color-danger-hl);  }
+    #part2-section       { --part-color: var(--color-primary); --part-color-rgb: var(--color-primary-rgb); --part-color-hl: var(--color-primary-hl); }
+    #part-criteria-section { --part-color: var(--color-indigo); --part-color-rgb: 99, 102, 241;            --part-color-hl: var(--color-indigo-hl);  }
+    #part3-section       { --part-color: var(--color-teal);    --part-color-rgb: var(--color-teal-rgb);    --part-color-hl: var(--color-teal-hl);    }
+    #part4-section       { --part-color: var(--color-purple);  --part-color-rgb: var(--color-purple-rgb);  --part-color-hl: var(--color-purple-hl);  }
+    #part5-section       { --part-color: var(--color-warning); --part-color-rgb: var(--color-warning-rgb); --part-color-hl: var(--color-warning-hl); }
+    #part6-section       { --part-color: var(--color-pink);    --part-color-rgb: 219, 39, 119;             --part-color-hl: var(--color-pink-hl);    }
+    [data-theme="dark"] #part6-section { --part-color-rgb: 244, 114, 182; }
+
+    /* ================================================================
+       COMPACT LIST-ITEM CARD (.info-card) — Đồng bộ toàn section
+       ================================================================ */
     .infographic-grid {
       grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
       gap: 14px !important;
@@ -41,7 +66,8 @@
       border-radius: 12px !important;
       background: var(--color-surface) !important;
       border: 1px solid var(--color-border) !important;
-      border-left: 4px solid var(--color-primary) !important;
+      /* Tự inherit màu từ --part-color của section cha */
+      border-left: 4px solid var(--part-color, var(--color-primary)) !important;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03) !important;
       min-height: auto !important;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
@@ -50,39 +76,23 @@
       display: block;
     }
 
-    /* Subtle hover background effect */
     .info-card::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      top: 0; left: 0; right: 0; bottom: 0;
       opacity: 0;
       transition: opacity 0.3s ease;
       z-index: 0;
+      background: linear-gradient(90deg, rgba(var(--part-color-rgb, 2, 132, 199), 0.07) 0%, transparent 100%);
     }
 
-    html[data-theme="light"] .info-card::before {
-      background: linear-gradient(90deg, rgba(2, 132, 199, 0.05) 0%, transparent 100%);
-    }
-
-    html[data-theme="light"] .info-card:hover::before {
-      opacity: 1;
-    }
-
-    html[data-theme="dark"] .info-card::before {
-      background: linear-gradient(90deg, rgba(2, 132, 199, 0.15) 0%, transparent 100%);
-    }
-
-    html[data-theme="dark"] .info-card:hover::before {
-      opacity: 1;
-    }
+    .info-card:hover::before { opacity: 1; }
 
     .info-card:hover {
       transform: translateY(-3px) !important;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08) !important;
-      border-color: var(--color-primary) !important;
+      box-shadow: 0 8px 20px rgba(var(--part-color-rgb, 2, 132, 199), 0.1) !important;
+      border-color: rgba(var(--part-color-rgb, 2, 132, 199), 0.4) !important;
+      border-left-color: var(--part-color, var(--color-primary)) !important;
     }
 
     .info-card .specialty-card-top {
@@ -111,13 +121,11 @@
     }
 
     .info-card:hover .specialty-info h3 {
-      color: var(--color-primary) !important;
+      color: var(--part-color, var(--color-primary)) !important;
     }
 
-    /* Add an arrow icon using pseudo-element */
     .info-card .specialty-info::after {
       content: '\f105';
-      /* FontAwesome angle-right */
       font-family: 'Font Awesome 6 Free';
       font-weight: 900;
       font-size: 14px;
@@ -127,18 +135,19 @@
     }
 
     .info-card:hover .specialty-info::after {
-      color: var(--color-primary);
+      color: var(--part-color, var(--color-primary));
       transform: translateX(4px);
     }
 
-    .info-card .specialty-card-action {
-      display: none !important;
-    }
+    .info-card .specialty-card-action { display: none !important; }
 
+    /* ================================================================
+       SECTION TITLE HELPERS
+       ================================================================ */
     .sub-specialty-title {
       font-size: 15px;
       font-weight: 600;
-      color: var(--color-primary);
+      color: var(--part-color, var(--color-primary));
       margin: 24px 0 12px 0;
       padding-bottom: 6px;
       border-bottom: 2px solid var(--color-border);
@@ -152,7 +161,7 @@
       display: block;
       width: 6px;
       height: 16px;
-      background: var(--color-primary);
+      background: var(--part-color, var(--color-primary));
       border-radius: 4px;
     }
 
@@ -165,6 +174,82 @@
       border-radius: 8px;
       border: 1px dashed var(--color-border);
       display: inline-block;
+    }
+
+    /* ================================================================
+       SIDEBAR NAV — Tiêu chuẩn chẩn đoán item (Indigo)
+       ================================================================ */
+    .part-nav-item.p-criteria:hover  { background: rgba(99, 102, 241, 0.07); color: var(--color-indigo); }
+    .part-nav-item.p-criteria.active { background: var(--color-indigo-hl); color: var(--color-indigo); font-weight: 600; }
+
+    /* ================================================================
+       SECTION CTA BANNER — Tái sử dụng cho Part5 & Part-criteria
+       ================================================================ */
+    .section-cta-banner {
+      background: linear-gradient(135deg,
+        rgba(var(--part-color-rgb, 2, 132, 199), 0.07) 0%,
+        rgba(var(--part-color-rgb, 2, 132, 199), 0.03) 100%);
+      border: 1px solid rgba(var(--part-color-rgb, 2, 132, 199), 0.2);
+      border-radius: 16px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+      margin-bottom: 16px;
+    }
+
+    .section-cta-banner .cta-info { flex: 1; min-width: 260px; }
+
+    .section-cta-banner .cta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      background: rgba(var(--part-color-rgb, 2, 132, 199), 0.12);
+      color: var(--part-color, var(--color-primary));
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .section-cta-banner h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 6px;
+    }
+
+    .section-cta-banner p {
+      font-size: 0.88rem;
+      color: var(--color-text-muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .section-cta-banner .cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      white-space: nowrap;
+      background: var(--part-color, var(--color-primary));
+      box-shadow: 0 4px 14px rgba(var(--part-color-rgb, 2, 132, 199), 0.3);
+      transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .section-cta-banner .cta-link:hover {
+      opacity: 0.92;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(var(--part-color-rgb, 2, 132, 199), 0.4);
     }
   </style>
 </head>
@@ -253,6 +338,10 @@
             <p>Hệ thống sơ đồ tiếp cận chẩn đoán phân biệt theo triệu chứng, hội chứng, bệnh lý và bất thường cận lâm
               sàng dựa trên y học chứng cứ.</p>
             <div class="hero-quick-tools" style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; align-items: center;">
+              <a href="pathology/diagnostic-criteria/index.html" class="hero-tool-btn"
+                title="Mở Ngân hàng Tiêu chuẩn Chẩn đoán">
+                <i class="fa-solid fa-clipboard-check" style="color: #818cf8;"></i> Tiêu Chuẩn Chẩn Đoán
+              </a>
               <a href="interactive-tools/body-map.html" class="hero-tool-btn"
                 title="Mở Bản Đồ Giải Phẫu Tương Tác">
                 <i class="fa-solid fa-child-reaching" style="color: #c4b5fd;"></i> Bản Đồ Giải Phẫu
@@ -352,6 +441,12 @@
                 <a href="#part2-section" class="part-nav-item p2" data-target="part2-section">
                   <span class="part-icon"><i class="fa-solid fa-stethoscope"></i></span>
                   <span class="part-text">Triệu chứng - Hội chứng</span>
+                </a>
+              </li>
+              <li>
+                <a href="#part-criteria-section" class="part-nav-item p-criteria" data-target="part-criteria-section">
+                  <span class="part-icon"><i class="fa-solid fa-clipboard-check"></i></span>
+                  <span class="part-text">Tiêu chuẩn chẩn đoán</span>
                 </a>
               </li>
               <li>
@@ -521,6 +616,91 @@
           </section>
 
 
+          <!-- PHẦN: TIÊU CHUẨN CHẨN ĐOÁN -->
+          <section id="part-criteria-section" aria-labelledby="part-criteria-heading">
+            <div class="physio-group-container">
+              <div class="physio-group-header">
+                <span class="physio-group-icon"><i class="fa-solid fa-clipboard-check"></i></span>
+                <h3 id="part-criteria-heading">Tiêu chuẩn Chẩn đoán</h3>
+              </div>
+
+              <!-- Banner Ngân hàng Tiêu chuẩn -->
+              <div class="section-cta-banner">
+                <div class="cta-info">
+                  <div class="cta-badge">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> 14+ Bộ Tiêu Chuẩn · Tính Điểm Tự Động Tức Thì
+                  </div>
+                  <h4>Ngân hàng Tiêu chuẩn Chẩn đoán Lâm sàng v3.0</h4>
+                  <p>Tra cứu tương tác và tính điểm tức thì các bộ tiêu chuẩn chẩn đoán y khoa tiêu chuẩn quốc tế (Sepsis-3, Wells PE/DVT, Duke IE, SLICC Lupus, ARDS Berlin, KDIGO AKI, Rome IV, CURB-65...).</p>
+                </div>
+                <a href="pathology/diagnostic-criteria/index.html" class="cta-link">
+                  Mở Ngân Hàng Tiêu Chuẩn <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+
+              <!-- Quick Criteria Cards Grid -->
+              <div class="specialty-grid infographic-grid">
+                <a href="pathology/diagnostic-criteria/criteria-detail.html?id=sepsis3" class="specialty-card info-card" data-tags="cap-cuu" style="border-left-color: #e11d48 !important;">
+                  <div class="specialty-card-top">
+                    <div class="specialty-info">
+                      <h3><i class="fa-solid fa-bug" style="margin-right: 6px; color: #e11d48;"></i> Sepsis-3 (SOFA / qSOFA)</h3>
+                    </div>
+                  </div>
+                </a>
+                <a href="pathology/diagnostic-criteria/criteria-detail.html?id=wells_pe" class="specialty-card info-card" data-tags="tim-mach" style="border-left-color: #6366f1 !important;">
+                  <div class="specialty-card-top">
+                    <div class="specialty-info">
+                      <h3><i class="fa-solid fa-heart-pulse" style="margin-right: 6px; color: #6366f1;"></i> Thang điểm Wells (PE / DVT)</h3>
+                    </div>
+                  </div>
+                </a>
+                <a href="pathology/diagnostic-criteria/criteria-detail.html?id=duke" class="specialty-card info-card" data-tags="tim-mach" style="border-left-color: #6366f1 !important;">
+                  <div class="specialty-card-top">
+                    <div class="specialty-info">
+                      <h3><i class="fa-solid fa-stretcher" style="margin-right: 6px; color: #6366f1;"></i> Tiêu chuẩn Duke (Viêm nội tâm mạc)</h3>
+                    </div>
+                  </div>
+                </a>
+                <a href="pathology/diagnostic-criteria/criteria-detail.html?id=ards_berlin" class="specialty-card info-card" data-tags="ho-hap" style="border-left-color: #0284c7 !important;">
+                  <div class="specialty-card-top">
+                    <div class="specialty-info">
+                      <h3><i class="fa-solid fa-lungs" style="margin-right: 6px; color: #0284c7;"></i> Độnh nghĩa Berlin (ARDS)</h3>
+                    </div>
+                  </div>
+                </a>
+                <a href="pathology/diagnostic-criteria/criteria-detail.html?id=aki_kdigo" class="specialty-card info-card" data-tags="than" style="border-left-color: #d97706 !important;">
+                  <div class="specialty-card-top">
+                    <div class="specialty-info">
+                      <h3><i class="fa-solid fa-filter" style="margin-right: 6px; color: #d97706;"></i> Tiêu chuẩn KDIGO (AKI)</h3>
+                    </div>
+                  </div>
+                </a>
+                <a href="pathology/diagnostic-criteria/criteria-detail.html?id=sle_slicc" class="specialty-card info-card" data-tags="co-xuong-khop" style="border-left-color: #8b5cf6 !important;">
+                  <div class="specialty-card-top">
+                    <div class="specialty-info">
+                      <h3><i class="fa-solid fa-dna" style="margin-right: 6px; color: #8b5cf6;"></i> Tiêu chuẩn SLICC / ACR (Lupus)</h3>
+                    </div>
+                  </div>
+                </a>
+                <a href="pathology/diagnostic-criteria/criteria-detail.html?id=curb65" class="specialty-card info-card" data-tags="ho-hap" style="border-left-color: #0284c7 !important;">
+                  <div class="specialty-card-top">
+                    <div class="specialty-info">
+                      <h3><i class="fa-solid fa-notes-medical" style="margin-right: 6px; color: #0284c7;"></i> Thang điểm CURB-65 (Viêm phổi)</h3>
+                    </div>
+                  </div>
+                </a>
+                <a href="pathology/diagnostic-criteria/criteria-detail.html?id=ra_acr" class="specialty-card info-card" data-tags="co-xuong-khop" style="border-left-color: #8b5cf6 !important;">
+                  <div class="specialty-card-top">
+                    <div class="specialty-info">
+                      <h3><i class="fa-solid fa-bone" style="margin-right: 6px; color: #8b5cf6;"></i> Tiêu chuẩn ACR/EULAR (RA)</h3>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </section>
+
+
           <!-- PHẦN 3: CẬN LÂM SÀNG -->
           <section id="part3-section" aria-labelledby="part3-heading">
             <div class="physio-group-container">
@@ -570,34 +750,34 @@
 
           <!-- PHẦN 4: CHUYÊN KHOA -->
           <section id="part4-section" aria-labelledby="part4-heading">
-            <div class="physio-group-container" style="border-left-color: #8b5cf6;">
-              <div class="physio-group-header" style="background: linear-gradient(90deg, rgba(139, 92, 246, 0.1) 0%, transparent 100%);">
-                <span class="physio-group-icon" style="color: #8b5cf6; border-color: rgba(139, 92, 246, 0.2);"><i class="fa-solid fa-user-doctor"></i></span>
+            <div class="physio-group-container">
+              <div class="physio-group-header">
+                <span class="physio-group-icon"><i class="fa-solid fa-user-doctor"></i></span>
                 <h3 id="part4-heading">Chuyên khoa</h3>
               </div>
               <div class="specialty-grid infographic-grid">
-                <a href="specialties/pediatrics/nhi-khoa.html" class="specialty-card info-card" data-tags="nhi-khoa" style="border-left-color: #8b5cf6 !important;">
+                <a href="specialties/pediatrics/nhi-khoa.html" class="specialty-card info-card" data-tags="nhi-khoa">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3><i class="fa-solid fa-child" style="margin-right: 6px;"></i> Nhi khoa</h3>
                     </div>
                   </div>
                 </a>
-                <a href="#" class="specialty-card info-card" data-tags="lao-khoa" style="border-left-color: #8b5cf6 !important;">
+                <a href="#" class="specialty-card info-card" data-tags="lao-khoa">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3><i class="fa-solid fa-person-cane" style="margin-right: 6px;"></i> Lão khoa</h3>
                     </div>
                   </div>
                 </a>
-                <a href="#" class="specialty-card info-card" data-tags="san-phu-khoa" style="border-left-color: #8b5cf6 !important;">
+                <a href="#" class="specialty-card info-card" data-tags="san-phu-khoa">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3><i class="fa-solid fa-person-pregnant" style="margin-right: 6px;"></i> Sản phụ khoa</h3>
                     </div>
                   </div>
                 </a>
-                <a href="#" class="specialty-card info-card" data-tags="tam-than" style="border-left-color: #8b5cf6 !important;">
+                <a href="#" class="specialty-card info-card" data-tags="tam-than">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3><i class="fa-solid fa-brain" style="margin-right: 6px;"></i> Tâm thần</h3>
@@ -616,18 +796,15 @@
                 <h3 id="part5-heading">Bệnh lý</h3>
               </div>
 
-              <div
-                style="background: linear-gradient(135deg, rgba(2, 132, 199, 0.05) 0%, rgba(14, 165, 233, 0.05) 100%); border: 1px solid var(--border-light); border-radius: 16px; padding: 24px; text-align: center; margin-top: 16px;">
-                <div style="font-size: 3rem; margin-bottom: 16px;">🗂️</div>
-                <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--text-base); margin-bottom: 8px;">Dashboard
-                  Tiếp Cận Bệnh Lý</h4>
-                <p
-                  style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto;">
-                  Hệ thống quản lý, tra cứu và tự xây dựng các lưu đồ tiếp cận chẩn đoán, điều trị bệnh lý y khoa. Dữ
-                  liệu được đồng bộ hóa và hỗ trợ thiết kế flowchart trực quan.
-                </p>
-                <a href="pathology/benh-ly.html" class="btn btn-primary"
-                  style="display: inline-flex; align-items: center; gap: 8px; font-size: 1rem; padding: 12px 24px; border-radius: 12px;">
+              <div class="section-cta-banner">
+                <div class="cta-info">
+                  <div class="cta-badge">
+                    <i class="fa-solid fa-diagram-project"></i> Flowchart · Infographic · Phác đồ điều trị
+                  </div>
+                  <h4>Dashboard Tiếp Cận Bệnh Lý</h4>
+                  <p>Hệ thống quản lý, tra cứu và tự xây dựng các lưu đồ tiếp cận chẩn đoán, điều trị bệnh lý y khoa. Dữ liệu đồng bộ, hỗ trợ thiết kế flowchart trực quan.</p>
+                </div>
+                <a href="pathology/benh-ly.html" class="cta-link">
                   Mở Dashboard Bệnh Lý <i class="fa-solid fa-arrow-right"></i>
                 </a>
               </div>
@@ -637,64 +814,55 @@
 
           <!-- PHẦN 6: DƯỢC LÝ LÂM SÀNG -->
           <section id="part6-section" aria-labelledby="part6-heading">
-            <div class="physio-group-container" style="border-left-color: #ec4899;">
-              <div class="physio-group-header"
-                style="background: linear-gradient(90deg, rgba(236, 72, 153, 0.1) 0%, transparent 100%);">
-                <span class="physio-group-icon" style="color: #ec4899; border-color: rgba(236, 72, 153, 0.2);"><i
-                    class="fa-solid fa-pills"></i></span>
+            <div class="physio-group-container">
+              <div class="physio-group-header">
+                <span class="physio-group-icon"><i class="fa-solid fa-pills"></i></span>
                 <h3 id="part6-heading">Dược lý lâm sàng (Định hướng lý thuyết)</h3>
               </div>
               <div class="specialty-grid infographic-grid">
-                <a href="pharmacology/tc-dl-timmach.html" class="specialty-card info-card"
-                  style="border-left-color: #ec4899 !important;">
+                <a href="pharmacology/tc-dl-timmach.html" class="specialty-card info-card">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Dược lý Tim mạch</h3>
                     </div>
                   </div>
                 </a>
-                <a href="pharmacology/tc-dl-hohap.html" class="specialty-card info-card"
-                  style="border-left-color: #ec4899 !important;">
+                <a href="pharmacology/tc-dl-hohap.html" class="specialty-card info-card">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Dược lý Hô hấp</h3>
                     </div>
                   </div>
                 </a>
-                <a href="pharmacology/tc-dl-tieuhoa.html" class="specialty-card info-card"
-                  style="border-left-color: #ec4899 !important;">
+                <a href="pharmacology/tc-dl-tieuhoa.html" class="specialty-card info-card">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Dược lý Tiêu hóa</h3>
                     </div>
                   </div>
                 </a>
-                <a href="pharmacology/tc-dl-vanmach.html" class="specialty-card info-card"
-                  style="border-left-color: #ec4899 !important;">
+                <a href="pharmacology/tc-dl-vanmach.html" class="specialty-card info-card">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Dược lý Vận mạch & Trợ tim</h3>
                     </div>
                   </div>
                 </a>
-                <a href="pharmacology/tc-dl-khangsinh.html" class="specialty-card info-card"
-                  style="border-left-color: #ec4899 !important;">
+                <a href="pharmacology/tc-dl-khangsinh.html" class="specialty-card info-card">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Dược lý Kháng sinh</h3>
                     </div>
                   </div>
                 </a>
-                <a href="pharmacology/tc-dl-ttoan-than.html" class="specialty-card info-card"
-                  style="border-left-color: #ec4899 !important;">
+                <a href="pharmacology/tc-dl-ttoan-than.html" class="specialty-card info-card">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Dược lý Toan thận</h3>
                     </div>
                   </div>
                 </a>
-                <a href="pharmacology/tc-dl-noitiet.html" class="specialty-card info-card"
-                  style="border-left-color: #ec4899 !important;">
+                <a href="pharmacology/tc-dl-noitiet.html" class="specialty-card info-card">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
                       <h3>Dược lý Nội tiết & ĐTĐ</h3>

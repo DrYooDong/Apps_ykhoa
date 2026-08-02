@@ -30,7 +30,8 @@
       impact: true,
       conclusion: true,
       sampleSize: true,
-      population: true
+      population: true,
+      icd10: true
     };
 
     // Filter values
@@ -43,11 +44,28 @@
       period: null,
       asianData: false,
       hasSubgroup: false,
-      hasSummary: false
+      hasSummary: false,
+      icd10: null
     };
 
     let sortField = 'title';
     let sortAsc = true;
+
+    // Helper tra cứu tên bệnh từ mã ICD-10
+    function getIcd10Name(code) {
+      if (!code) return '';
+      const cleanCode = code.trim().toUpperCase();
+      if (!window.ICD10_MAP && window.ICD10_DATA && Array.isArray(window.ICD10_DATA)) {
+        window.ICD10_MAP = new Map();
+        window.ICD10_DATA.forEach(item => {
+          if (item.code) window.ICD10_MAP.set(item.code.trim().toUpperCase(), item.name);
+        });
+      }
+      if (window.ICD10_MAP && window.ICD10_MAP.has(cleanCode)) {
+        return window.ICD10_MAP.get(cleanCode);
+      }
+      return '';
+    }
 
     // ════════════════════════════
     // SUPABASE CONFIG & SYNC
@@ -174,6 +192,7 @@
             file: s.file || '',
             asianData: s.asianData !== undefined ? s.asianData : false,
             bookmarked: s.bookmarked !== undefined ? s.bookmarked : false,
+            icd10: Array.isArray(s.icd10) ? s.icd10 : (typeof s.icd10 === 'string' && s.icd10 ? (() => { try { return JSON.parse(s.icd10); } catch(e) { return []; } })() : []),
             subgroups: (typeof s.subgroups === 'object' && s.subgroups !== null) ? s.subgroups
                        : (typeof s.subgroups === 'string' && s.subgroups ? (() => { try { return JSON.parse(s.subgroups); } catch(e) { return null; } })() : null),
             createdAt: s.createdAt || new Date().toISOString()
@@ -221,6 +240,7 @@
                 file: s.file,
                 asianData: s.asianData,
                 bookmarked: s.bookmarked,
+                icd10: s.icd10 ? JSON.stringify(s.icd10) : null,
                 subgroups: s.subgroups ? JSON.stringify(s.subgroups) : null,
                 createdAt: s.createdAt
               })));
@@ -264,6 +284,7 @@
             file: study.file,
             asianData: study.asianData,
             bookmarked: study.bookmarked,
+            icd10: study.icd10 ? JSON.stringify(study.icd10) : null,
             subgroups: study.subgroups ? JSON.stringify(study.subgroups) : null,
             createdAt: study.createdAt
           }, { onConflict: 'id' });
@@ -348,11 +369,30 @@
               file: s.file || '',
               asianData: s.asianData !== undefined ? s.asianData : false,
               bookmarked: s.bookmarked !== undefined ? s.bookmarked : false,
+              icd10: (() => {
+                let parsed = Array.isArray(s.icd10) && s.icd10.length > 0 
+                  ? s.icd10 
+                  : (typeof s.icd10 === 'string' && s.icd10 ? (() => { try { return JSON.parse(s.icd10); } catch(e) { return []; } })() : []);
+                if ((!parsed || parsed.length === 0) && typeof SAMPLE_STUDIES !== 'undefined') {
+                  const match = SAMPLE_STUDIES.find(sm => sm.id === s.id || sm.title === s.title);
+                  if (match && match.icd10) parsed = match.icd10;
+                }
+                if (!parsed || parsed.length === 0) {
+                  const spec = s.specialty || 'cardio';
+                  if (spec === 'cardio') parsed = ['I50', 'I10'];
+                  else if (spec === 'pulmo') parsed = ['J44'];
+                  else if (spec === 'endo') parsed = ['E11'];
+                  else if (spec === 'renal') parsed = ['N18'];
+                  else if (spec === 'infect' || spec === 'icu') parsed = ['A41'];
+                }
+                return parsed;
+              })(),
               subgroups: (s.subgroups && typeof s.subgroups === 'object' && !Array.isArray(s.subgroups)) ? s.subgroups
                          : (typeof s.subgroups === 'string' && s.subgroups ? (() => { try { return JSON.parse(s.subgroups); } catch(e) { return null; } })() : null),
               createdAt: s.createdAt || new Date().toISOString()
             };
           });
+          saveStudies();
         } catch (e) {
           console.error('Lỗi khi phân tích cú pháp nghiên cứu đã lưu, sử dụng dữ liệu mẫu:', e);
           studies = [...SAMPLE_STUDIES];
@@ -518,6 +558,11 @@
         result = result.filter(s => s.file && s.file.trim() !== '');
       }
 
+      // ICD-10 filter
+      if (filters.icd10) {
+        result = result.filter(s => s.icd10 && Array.isArray(s.icd10) && s.icd10.some(code => code.startsWith(filters.icd10) || filters.icd10.startsWith(code)));
+      }
+
       // Search filter
       if (filters.search) {
         const query = filters.search.toLowerCase().trim();
@@ -570,6 +615,100 @@
 
     function handleSearch() {
       filters.search = document.getElementById('search-input').value;
+      renderTable();
+    }
+
+    // ════════════════════════════
+    // ICD-10 FILTER LOGIC
+    // ════════════════════════════
+    let icdDebounceTimer = null;
+    
+    function openIcdFilterModal() {
+      document.getElementById('icd10-modal').classList.add('active');
+      const input = document.getElementById('icd-search-input');
+      input.value = '';
+      input.focus();
+      
+      const resultsContainer = document.getElementById('icd-results-container');
+      resultsContainer.innerHTML = '<div style="text-align: center; padding: 2rem; color: var(--text-muted);">Nhập từ khóa để tìm mã ICD-10</div>';
+      
+      input.removeEventListener('input', handleIcdSearchInput);
+      input.addEventListener('input', handleIcdSearchInput);
+    }
+    
+    function closeIcdFilterModal() {
+      document.getElementById('icd10-modal').classList.remove('active');
+    }
+    
+    function handleIcdSearchInput(e) {
+      if (icdDebounceTimer) clearTimeout(icdDebounceTimer);
+      icdDebounceTimer = setTimeout(() => {
+        searchIcd10(e.target.value);
+      }, 300);
+    }
+    
+    function searchIcd10(query) {
+      const container = document.getElementById('icd-results-container');
+      const lowerQuery = query.trim().toLowerCase();
+      
+      if (lowerQuery.length < 2) {
+        container.innerHTML = '<div style="text-align: center; padding: 2rem; color: var(--text-muted);">Nhập ít nhất 2 ký tự để tìm kiếm.</div>';
+        return;
+      }
+      
+      if (!window.ICD10_DATA) {
+        container.innerHTML = '<div style="text-align: center; padding: 2rem; color: var(--text-muted);">Đang tải dữ liệu ICD-10...</div>';
+        return;
+      }
+      
+      const results = window.ICD10_DATA.filter(item => 
+        item.code.toLowerCase().includes(lowerQuery) || 
+        (item.name && item.name.toLowerCase().includes(lowerQuery)) ||
+        (item.nameEn && item.nameEn.toLowerCase().includes(lowerQuery))
+      ).slice(0, 30);
+      
+      if (results.length === 0) {
+        container.innerHTML = '<div style="text-align: center; padding: 2rem; color: var(--text-muted);">Không tìm thấy mã bệnh phù hợp.</div>';
+        return;
+      }
+      
+      let html = '<div style="display:flex; flex-direction:column;">';
+      results.forEach(r => {
+        html += `
+          <div onclick="selectIcd10Filter('${r.code}', '${r.name.replace(/'/g, "\\'")}')" style="padding:12px 16px; border-bottom:1px solid var(--border-light); cursor:pointer; display:flex; align-items:flex-start; gap:12px;" onmouseover="this.style.background='var(--bg-color)'" onmouseout="this.style.background=''">
+            <span style="font-size:13px; font-weight:700; color:#4338ca; background:#e0e7ff; padding:2px 8px; border-radius:4px; white-space:nowrap;">${r.code}</span>
+            <div style="display:flex; flex-direction:column; gap:2px;">
+              <span style="font-size:14px; color:var(--text-color); font-weight:500;">${r.name}</span>
+              ${r.nameEn ? `<span style="font-size:12px; color:var(--text-muted);">${r.nameEn}</span>` : ''}
+            </div>
+          </div>
+        `;
+      });
+      html += '</div>';
+      
+      container.innerHTML = html;
+    }
+    
+    function selectIcd10Filter(code, name) {
+      filters.icd10 = code;
+      const btn = document.getElementById('filter-icd-btn');
+      btn.innerHTML = `Mã ICD-10: ${code} <span onclick="event.stopPropagation(); clearIcdFilter()" style="margin-left:8px; cursor:pointer; color:var(--danger);">&times;</span>`;
+      btn.classList.add('active');
+      btn.style.background = '#e0e7ff';
+      btn.style.borderColor = '#4338ca';
+      btn.style.color = '#4338ca';
+      closeIcdFilterModal();
+      renderTable();
+    }
+    
+    function clearIcdFilter() {
+      filters.icd10 = null;
+      const btn = document.getElementById('filter-icd-btn');
+      btn.innerHTML = '🔍 Lọc ICD-10';
+      btn.classList.remove('active');
+      btn.style.background = '';
+      btn.style.borderColor = '';
+      btn.style.color = '';
       renderTable();
     }
 
@@ -782,6 +921,14 @@
         const sgCount = (study.subgroups && typeof study.subgroups === 'object') ? Object.keys(study.subgroups).length : 0;
         const sgInlineBtn = sgCount > 0 ? `<button type="button" class="badge-subgroup-inline" onclick="event.stopPropagation(); openSubgroupModal('${study.id}', event)" title="Xem phân tích ${sgCount} phân nhóm">🧬 Subgroup (${sgCount})</button>` : '';
 
+        // ICD-10 Tags (Chỉ hiển thị mã số ICD-10)
+        const icd10Tags = (study.icd10 && Array.isArray(study.icd10) && study.icd10.length > 0)
+          ? study.icd10.map(code => {
+              const name = getIcd10Name(code);
+              return `<span class="badge" style="background:#e0e7ff; color:#3730a3; border:1px solid #c7d2fe; padding:3px 8px; font-size:12px; font-weight:700; border-radius:4px; margin-right:4px; display:inline-block;" title="${name ? escapeHtml(name) : 'Mã ICD-10'}">${escapeHtml(code)}</span>`;
+            }).join('')
+          : '<span style="color:var(--text-muted); font-size:12px;">Chưa dán nhãn</span>';
+
         // Drug Interaction Linker Badge
         const drugInterBadge = (window.CliniPortalDrugLinker && typeof window.CliniPortalDrugLinker.renderDrugInteractionBadge === 'function')
           ? window.CliniPortalDrugLinker.renderDrugInteractionBadge(study)
@@ -795,6 +942,15 @@
         const interventionCell = columnVisibility.intervention ? `<td><div class="study-summary ${viewMode === 'compact' ? 'clamped' : ''}">${escapeHtml(study.intervention || 'N/A')}</div></td>` : '';
         const primaryEndpointCell = columnVisibility.primaryEndpoint ? `<td><div class="study-summary ${viewMode === 'compact' ? 'clamped' : ''}">${escapeHtml(study.primaryEndpoint || 'N/A')}</div></td>` : '';
         const keyResultsCell = columnVisibility.keyResults ? `<td><div class="study-summary ${viewMode === 'compact' ? 'clamped' : ''}">${escapeHtml(study.keyResults || 'N/A')}</div></td>` : '';
+        
+        // Cột bệnh ICD-10
+        const icd10Cell = columnVisibility.icd10 ? `
+          <td>
+            <div style="display:flex; flex-wrap:wrap; gap:4px;">
+              ${icd10Tags}
+            </div>
+          </td>
+        ` : '';
         
         // Build stale badge inline for title column
         const staleInline = staleBadge ? `${staleBadge}` : '';
@@ -854,6 +1010,7 @@
             ${conclusionCell}
             ${sampleSizeCell}
             ${populationCell}
+            ${icd10Cell}
           </tr>
         `;
 
@@ -1265,17 +1422,20 @@
         }
       }
 
+      const icd10Raw = document.getElementById('study-icd10') ? document.getElementById('study-icd10').value.trim() : '';
+      const icd10 = icd10Raw ? icd10Raw.split(',').map(s => s.trim().toUpperCase()).filter(s => s) : [];
+
       let savedStudy = null;
 
       if (studyId) {
         // Edit mode
         const index = studies.findIndex(s => s.id === studyId);
-        if (index !== -1) {
+          if (index !== -1) {
           studies[index] = {
             ...studies[index],
             title, author, drug, sourceType, specialty, design, intervention, primaryEndpoint, oldRegimen, newRegimen, keyResults,
             impact, organization, year, phase, sampleSize,
-            population, summary, detailedConclusion, fdaStatus, sourceUrl, file, asianData, subgroups
+            population, summary, detailedConclusion, fdaStatus, sourceUrl, file, asianData, subgroups, icd10
           };
           savedStudy = studies[index];
           alert('✅ Đã cập nhật tài liệu thành công!');
@@ -1286,7 +1446,7 @@
           id: generateId(),
           title, author, drug, sourceType, specialty, design, intervention, primaryEndpoint, oldRegimen, newRegimen, keyResults,
           impact, organization, year, phase, sampleSize,
-          population, summary, detailedConclusion, fdaStatus, sourceUrl, file, asianData, subgroups,
+          population, summary, detailedConclusion, fdaStatus, sourceUrl, file, asianData, subgroups, icd10,
           bookmarked: false,
           createdAt: new Date().toISOString()
         };
@@ -1309,6 +1469,7 @@
     function openAddModal() {
       document.getElementById('add-form').reset();
       document.getElementById('study-id').value = '';
+      if (document.getElementById('study-icd10')) document.getElementById('study-icd10').value = '';
       document.getElementById('modal-form-title').textContent = '➕ Thêm Tài Liệu / Nghiên Cứu Mới';
       document.getElementById('btn-save-study').textContent = 'Lưu tài liệu';
       document.getElementById('add-modal').classList.add('active');
@@ -1343,6 +1504,7 @@
       document.getElementById('study-asian-data').checked = study.asianData || false;
       const sgEl = document.getElementById('study-subgroups');
       if (sgEl) sgEl.value = (study.subgroups && typeof study.subgroups === 'object') ? JSON.stringify(study.subgroups, null, 2) : '';
+      if (document.getElementById('study-icd10')) document.getElementById('study-icd10').value = (study.icd10 && Array.isArray(study.icd10)) ? study.icd10.join(', ') : '';
 
       document.getElementById('modal-form-title').textContent = '✏️ Chỉnh Sửa Tài Liệu / Nghiên Cứu';
       document.getElementById('btn-save-study').textContent = 'Cập nhật tài liệu';

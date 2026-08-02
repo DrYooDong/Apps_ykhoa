@@ -43,6 +43,39 @@
 
     const SAMPLE_STUDIES = [
       {
+        id: "study_byt_vpcd_2026",
+        title: "Bộ Y tế 2026: Hướng dẫn Chẩn đoán & Điều trị Viêm phổi Mắc phải Cộng đồng (QĐ 2147/QĐ-BYT)",
+        drug: "Ceftriaxone, Levofloxacin, Amoxicillin/Clavulanate, Piperacillin/tazobactam, Vancomycin, Meropenem, Ceftazidime, Hydrocortisone",
+        sourceType: "vn-moh",
+        specialty: "pulmo",
+        design: "guideline",
+        intervention: "Phân tầng nguy cơ vi khuẩn đa kháng (thang điểm PES), phác đồ kháng sinh kinh nghiệm & hướng đích, TDM vancomycin/aminoglycoside, Corticosteroid ICU và tiêu chí de-escalation theo Procalcitonin",
+        primaryEndpoint: "Tỷ lệ khỏi bệnh lâm sàng, giảm thời gian nằm viện, phòng ngừa đề kháng kháng sinh và giảm tử vong ở VPCĐ nặng",
+        keyResults: "Thay thế QĐ 4815/2020: Bổ sung PES Score (PES >= 4 chỉ định KS phổ rộng), Melioidosis (B. pseudomallei), Corticosteroid ICU (Hydrocortisone 200mg/ngày), PCT-guided de-escalation và 3 phụ lục hiệu chỉnh liều suy thận/tương tác thuốc",
+        impact: "practice-changing",
+        year: 2026,
+        organization: "Bộ Y tế Việt Nam (QĐ 2147/QĐ-BYT)",
+        phase: "National Guideline",
+        sampleSize: null,
+        population: "Bệnh nhân trưởng thành mắc Viêm phổi cộng đồng ngoại trú, nội trú khoa thường và hồi sức tích cực (ICU)",
+        summary: "Hướng dẫn chẩn đoán và điều trị Viêm phổi mắc phải cộng đồng (VPCĐ) 2026 của Bộ Y tế Việt Nam. Cập nhật thang điểm PES phân tầng MDR, phác đồ điều trị Melioidosis, Corticosteroid ICU theo SPILF-SPLF 2025, TDM vancomycin/aminoglycoside và 3 phụ lục tra cứu lâm sàng.",
+        detailedConclusion: "Phối hợp β-lactam + macrolid giúp điều hòa miễn dịch giảm tử vong. Bệnh nhân có PES >= 4 bắt buộc dùng kháng sinh chống P. aeruginosa. Melioidosis dùng Ceftazidime/Meropenem IV >= 14 ngày rồi TMP-SMX uống 3 tháng. De-escalate kháng sinh khi PCT < 0.25 ng/mL hoặc giảm >= 80% baseline.",
+        fdaStatus: "QĐ 2147/QĐ-BYT (15/07/2026)",
+        sourceUrl: "",
+        file: "kho-guidelines/byt-vpcd-2026.html",
+        subgroups: {
+          "PES >= 4 (Nguy cơ MDR)": "Chỉ định KS phổ rộng bao phủ Pseudomonas",
+          "VPCĐ ICU + Sốc nhiễm khuẩn": "Hydrocortisone 200 mg/ngày IV liên tục",
+          "Melioidosis (B. pseudomallei)": "Ceftazidime/Meropenem IV >= 14d -> TMP-SMX 3 tháng",
+          "PCT de-escalation": "PCT < 0.25 ng/mL hoặc giảm >= 80% baseline"
+        },
+        icd10: ["J18", "J18.9", "J15", "A24.1"],
+        asianData: true,
+        bookmarked: true,
+        createdAt: new Date().toISOString(),
+        radarUrl: "../guideline-radar/radar.html?spec=pulmo"
+      },
+      {
         id: "study_bb_ccb_interaction_2026",
         title: "Khuyến cáo Cảnh báo Phối hợp Chẹn Beta & Chẹn Canxi Non-Dihydropyridine",
         drug: "Metoprolol, Verapamil",
@@ -67,6 +100,7 @@
           "Bệnh nhân EF < 40%": "HR 3.12 (95% CI 2.10-4.63, p<0.001)",
           "Tuổi >= 75": "HR 2.85 (95% CI 1.95-4.16, p<0.001)"
         },
+        icd10: ["I50", "I50.9", "I10"],
         asianData: true,
         bookmarked: true,
         createdAt: new Date().toISOString(),
@@ -97,6 +131,7 @@
           "Bệnh nhân Châu Á": "HR 0.60 (95% CI 0.46-0.78, p<0.001)",
           "eGFR 20-30 mL/min": "HR 0.65 (95% CI 0.48-0.88, p=0.005)"
         },
+        icd10: ["N18", "N18.9", "I12"],
         asianData: true,
         bookmarked: true,
         createdAt: new Date().toISOString(),
@@ -141,6 +176,7 @@
         ],
         asianData: true,
         bookmarked: true,
+        icd10: ["A41", "J15", "G00"],
         createdAt: new Date().toISOString(),
         radarUrl: "../guideline-radar/radar.html?spec=infect",
         matrixEndpoints: {
@@ -196,6 +232,7 @@
         ],
         asianData: true,
         bookmarked: true,
+        icd10: ["A41.9", "R57.2"],
         createdAt: new Date().toISOString(),
         radarUrl: "../guideline-radar/radar.html?spec=infect",
         matrixEndpoints: {
@@ -252,6 +289,7 @@
         ],
         asianData: true,
         bookmarked: true,
+        icd10: ["A41", "J15", "N39.0"],
         createdAt: new Date().toISOString(),
         radarUrl: "../guideline-radar/radar.html?spec=infect",
         matrixEndpoints: {
@@ -307,6 +345,7 @@
         ],
         asianData: true,
         bookmarked: true,
+        icd10: ["A41.9", "R57.2"],
         createdAt: new Date().toISOString(),
         radarUrl: "../guideline-radar/radar.html?spec=infect",
         matrixEndpoints: {
@@ -438,6 +477,7 @@
         ],
         asianData: true,
         bookmarked: true,
+        icd10: ["E11", "I50", "I10"],
         createdAt: new Date().toISOString(),
         radarUrl: "../guideline-radar/radar.html?spec=cardio",
         matrixEndpoints: {
@@ -551,6 +591,7 @@
         ],
         asianData: true,
         bookmarked: true,
+        icd10: ["J44", "J44.1", "J44.9"],
         createdAt: new Date().toISOString(),
         radarUrl: "../guideline-radar/radar.html?card=jrs_copd_2026",
         matrixEndpoints: {
@@ -619,6 +660,7 @@
         ],
         asianData: true,
         bookmarked: true,
+        icd10: ["J44", "J44.1", "J44.0"],
         createdAt: new Date().toISOString(),
         radarUrl: "../guideline-radar/radar.html?card=copd_abe_2026",
         matrixEndpoints: {
@@ -735,6 +777,7 @@
         ],
         asianData: true,
         bookmarked: false,
+        icd10: ["I50", "I50.9"],
         createdAt: new Date().toISOString(),
         radarUrl: "../guideline-radar/radar.html?spec=cardio",
         matrixEndpoints: {
@@ -824,6 +867,7 @@
         ],
         asianData: true,
         bookmarked: false,
+        icd10: ["E11", "E11.9"],
         createdAt: new Date().toISOString(),
         radarUrl: "../guideline-radar/radar.html?spec=endo",
         matrixEndpoints: {

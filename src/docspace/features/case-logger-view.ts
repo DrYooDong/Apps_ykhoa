@@ -9,6 +9,12 @@ import { renderSidebar, formatDate } from '../docspace-view';
 import { getActiveProfile } from '../storage';
 import { analyzeCase } from '../ai/llm-client';
 import { searchContext } from '../ai/rag-engine';
+import { IcdPicker } from './icd-picker';
+import { ebmBridge } from './ebm-bridge-view';
+import { drugPicker } from './drug-picker';
+import { resourcePicker } from './resource-picker';
+import { icdPicker } from './icd-picker';
+import { calculatorPicker } from './calculator-picker';
 
 const CONTEXT_OPTIONS: { value: CaseContext; label: string; icon: string }[] = [
   { value: 'duty',    label: 'Ca trực',      icon: 'fa-solid fa-moon' },
@@ -34,17 +40,33 @@ export async function renderCaseLoggerView(profileId: string): Promise<string> {
                 <span class="dsp-badge dsp-badge--context">
                   <i class="${ctxCfg?.icon || 'fa-solid fa-stethoscope'}"></i> ${ctxCfg?.label || c.context}
                 </span>
-                <span class="dsp-case-date">${formatDate(c.date)}</span>
+        <div class="dsp-list-item dsp-case-card" style="align-items: flex-start;">
+          <div class="dsp-list-item-icon" style="background: var(--color-bg); color: var(--color-primary); margin-top: 4px;">
+            <i class="${ctx?.icon || 'fa-solid fa-file-medical'}"></i>
+          </div>
+          <div class="dsp-list-item-body">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 0.5rem;">
+              <div>
+                <span class="dsp-badge" style="background: var(--color-bg); color: var(--color-text-muted); margin-right: 0.5rem;">${c.date}</span>
+                <span class="dsp-badge dsp-badge--primary">${ctx?.label || c.context}</span>
               </div>
-              <div class="dsp-list-item-title">${escapeHtml(c.chiefComplaint)}</div>
-              ${c.icd10Code ? `<div class="dsp-case-icd"><code>${escapeHtml(c.icd10Code)}</code> ${escapeHtml(c.icd10Label || '')}</div>` : ''}
-              ${c.lesson ? `<div class="dsp-case-lesson"><i class="fa-solid fa-lightbulb"></i> ${escapeHtml(truncate(c.lesson, 80))}</div>` : ''}
-            </div>
-            <div class="dsp-list-item-actions">
-              <button class="dsp-icon-btn dsp-icon-btn--danger" data-action="delete-case" data-id="${c.id}" title="Xóa">
+              <button type="button" class="dsp-icon-btn dsp-icon-btn--danger" data-action="delete-case" data-id="${c.id}" title="Xóa ca này">
                 <i class="fa-solid fa-trash"></i>
               </button>
             </div>
+            
+            <div class="dsp-list-item-title" style="margin-bottom: 0.5rem; font-size: 1.05rem;">${escapeHtml(c.chiefComplaint)}</div>
+            
+            ${(c.diagnosisText || c.icd10Label) ? `
+              <div style="margin-bottom: 0.5rem; background: #f8fafc; padding: 0.5rem 0.75rem; border-left: 3px solid var(--color-primary); border-radius: 4px; font-size: 0.9rem;">
+                <div style="font-weight: 600; color: var(--color-text); margin-bottom: 2px;">Chẩn đoán xác định:</div>
+                <div style="color: #334155;">${escapeHtml(c.diagnosisText || (c.icd10Label + (c.icd10Code ? ` (${c.icd10Code})` : '')))}</div>
+              </div>
+            ` : ''}
+
+            <div class="dsp-text-sm" style="margin-bottom: 0.25rem;">
+              <strong>Xử trí:</strong> ${escapeHtml(c.management)}
+            </div>      </div>
           </div>
         `;
       }).join('')
@@ -99,21 +121,32 @@ export async function renderCaseLoggerView(profileId: string): Promise<string> {
                       placeholder="VD: Ho khạc đờm 5 ngày, sốt, khó thở tăng dần" maxlength="200" required />
                   </div>
 
-                  <div class="dsp-form-row dsp-form-row--2">
-                    <div class="dsp-form-group">
-                      <label class="dsp-label" for="dspCaseICD10">Mã ICD-10</label>
-                      <input class="dsp-input" type="text" id="dspCaseICD10"
-                        placeholder="VD: J18.9" maxlength="10" />
+                  <div class="dsp-form-group">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                      <label class="dsp-label" for="dspCaseDiagnosis" style="margin:0;">Chẩn đoán xác định</label>
+                      <div style="display:flex; gap:4px;">
+                        <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnIcdCase" style="color:var(--color-primary); padding:2px 8px; font-size:11px; height:auto; min-height:0;">
+                          <i class="fa-solid fa-list-ul"></i> + ICD-10
+                        </button>
+                        <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnScoreCase" style="color:var(--color-primary); padding:2px 8px; font-size:11px; height:auto; min-height:0;">
+                          <i class="fa-solid fa-calculator"></i> + Thang điểm
+                        </button>
+                        <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-primary" id="btnSearchEBMCase" style="padding:2px 8px; font-size:11px; height:auto; min-height:0;">
+                          <i class="fa-solid fa-book-medical"></i> Tra cứu EBM
+                        </button>
+                      </div>
                     </div>
-                    <div class="dsp-form-group">
-                      <label class="dsp-label" for="dspCaseICD10Label">Chẩn đoán</label>
-                      <input class="dsp-input" type="text" id="dspCaseICD10Label"
-                        placeholder="VD: Viêm phổi không đặc hiệu" maxlength="120" />
-                    </div>
+                    <textarea class="dsp-textarea" id="dspCaseDiagnosis"
+                      placeholder="Ghi nhận đánh giá lâm sàng hoặc chẩn đoán (Ví dụ: Suy tim (I50.0), Đái tháo đường (E11.9))..." rows="3"></textarea>
                   </div>
 
                   <div class="dsp-form-group">
-                    <label class="dsp-label" for="dspCaseMgmt">Xử trí đã làm <span class="dsp-required">*</span></label>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                      <label class="dsp-label" for="dspCaseMgmt" style="margin:0;">Xử trí đã làm <span class="dsp-required">*</span></label>
+                      <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnPrescribeCase" style="color:var(--color-primary); padding:2px 8px; font-size:11px; height:auto; min-height:0;">
+                        <i class="fa-solid fa-capsules"></i> + Kê đơn
+                      </button>
+                    </div>
                     <textarea class="dsp-textarea" id="dspCaseMgmt"
                       placeholder="Kháng sinh, hồi sức, thủ thuật, y lệnh..." rows="3" required></textarea>
                   </div>
@@ -134,7 +167,12 @@ export async function renderCaseLoggerView(profileId: string): Promise<string> {
                   </div>
 
                   <div class="dsp-form-group">
-                    <label class="dsp-label" for="dspCaseLink">Link tham khảo (tùy chọn)</label>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                      <label class="dsp-label" for="dspCaseLink" style="margin:0;">Link tham khảo (tùy chọn)</label>
+                      <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnLinkApproachCase" style="color:var(--color-primary); padding:2px 8px; font-size:11px; height:auto; min-height:0;">
+                        <i class="fa-solid fa-diagram-project"></i> + Gắn Lưu đồ
+                      </button>
+                    </div>
                     <input class="dsp-input" type="text" id="dspCaseLink"
                       placeholder="VD: #/ebm/guidelines/cap hoặc URL bên ngoài" maxlength="300" />
                   </div>
@@ -204,8 +242,7 @@ export function mountCaseLoggerController(profileId: string): void {
     const date = (document.getElementById('dspCaseDate') as HTMLInputElement).value;
     const context = (document.getElementById('dspCaseContext') as HTMLSelectElement).value as CaseContext;
     const chiefComplaint = (document.getElementById('dspCaseComplaint') as HTMLInputElement).value.trim();
-    const icd10Code = (document.getElementById('dspCaseICD10') as HTMLInputElement).value.trim();
-    const icd10Label = (document.getElementById('dspCaseICD10Label') as HTMLInputElement).value.trim();
+    const diagnosisText = (document.getElementById('dspCaseDiagnosis') as HTMLTextAreaElement).value.trim();
     const management = (document.getElementById('dspCaseMgmt') as HTMLTextAreaElement).value.trim();
     const outcome = (document.getElementById('dspCaseOutcome') as HTMLInputElement).value.trim();
     const lesson = (document.getElementById('dspCaseLesson') as HTMLTextAreaElement).value.trim();
@@ -217,7 +254,7 @@ export function mountCaseLoggerController(profileId: string): void {
     }
 
     await saveCase(profileId, {
-      date, context, chiefComplaint, icd10Code, icd10Label,
+      date, context, chiefComplaint, diagnosisText,
       management, outcome, lesson, relatedUrl,
     });
 
@@ -227,6 +264,31 @@ export function mountCaseLoggerController(profileId: string): void {
 
     // Refresh list
     window.location.hash = '#/docspace/cases';
+  });
+
+  // Picker Tools
+  document.getElementById('btnIcdCase')?.addEventListener('click', () => {
+    icdPicker.open('dspCaseDiagnosis');
+  });
+
+  document.getElementById('btnScoreCase')?.addEventListener('click', () => {
+    calculatorPicker.open('dspCaseDiagnosis');
+  });
+
+  // Kê đơn
+  document.getElementById('btnPrescribeCase')?.addEventListener('click', () => {
+    drugPicker.open('dspCaseMgmt');
+  });
+
+  // Gắn Lưu đồ
+  document.getElementById('btnLinkApproachCase')?.addEventListener('click', () => {
+    resourcePicker.open({
+      title: 'Kho Lưu đồ Tiếp cận',
+      icon: 'fa-solid fa-diagram-project',
+      jsonUrl: 'content/approaches/index.json',
+      mode: 'setValue',
+      targetInputId: 'dspCaseLink'
+    });
   });
 
   // Hide AI output
@@ -258,8 +320,8 @@ export function mountCaseLoggerController(profileId: string): void {
 
     try {
       // 1. Tìm kiếm trong RAG Index (chọn top 3 chunks)
-      const icdInput = (document.getElementById('dspCaseICD10') as HTMLInputElement).value.trim();
-      const chunks = searchContext(chiefComplaint + " " + management, [icdInput], 3);
+      const diagnosisText = (document.getElementById('dspCaseDiagnosis') as HTMLTextAreaElement).value.trim();
+      const chunks = searchContext(chiefComplaint + " " + management, [diagnosisText], 3);
       
       // 2. Gửi request cho LLM
       const result = await analyzeCase(caseData, profile.aiSettings, chunks);
@@ -282,16 +344,19 @@ export function mountCaseLoggerController(profileId: string): void {
   // AI EBM Auto-search (Debounce 500ms)
   let ebmTimeout: any = null;
   const triggerEbmSearch = () => {
+    const complaint = (document.getElementById('dspCaseComplaint') as HTMLInputElement).value.trim().toLowerCase();
+    const diagnosis = (document.getElementById('dspCaseDiagnosis') as HTMLTextAreaElement).value.trim().toLowerCase();
+    
+    const combinedText = complaint + ' ' + diagnosis;
+    if (combinedText.length < 3) return;
+
     if (ebmTimeout) clearTimeout(ebmTimeout);
     ebmTimeout = setTimeout(() => {
-      const query = (document.getElementById('dspCaseComplaint') as HTMLInputElement).value.trim();
-      const icdCode = (document.getElementById('dspCaseICD10') as HTMLInputElement).value.trim();
-      
       const ebmPanel = document.getElementById('dspEbmPanel');
       const ebmContent = document.getElementById('dspEbmContent');
       if (!ebmPanel || !ebmContent) return;
 
-      if (!query && !icdCode) {
+      if (!combinedText.trim()) {
         ebmPanel.style.display = 'none';
         return;
       }
@@ -300,7 +365,8 @@ export function mountCaseLoggerController(profileId: string): void {
       ebmContent.innerHTML = '<div class="dsp-text-center dsp-text-muted dsp-text-sm dsp-py-4"><i class="fa-solid fa-spinner fa-spin"></i> Đang tra cứu EBM...</div>';
 
       // Tra cứu với Boost từ ICD-10
-      const results = searchContext(query || icdCode, [icdCode].filter(Boolean), 3);
+      // Auto search context (cũ)
+      const results = searchContext(combinedText, [], 3);
       
       if (results.length === 0) {
         ebmContent.innerHTML = '<div class="dsp-text-center dsp-text-muted dsp-text-sm dsp-py-4">Không tìm thấy tài liệu phù hợp.</div>';
@@ -319,7 +385,17 @@ export function mountCaseLoggerController(profileId: string): void {
   };
 
   document.getElementById('dspCaseComplaint')?.addEventListener('input', triggerEbmSearch);
-  document.getElementById('dspCaseICD10')?.addEventListener('input', triggerEbmSearch);
+  document.getElementById('dspCaseDiagnosis')?.addEventListener('input', triggerEbmSearch);
+
+  // Nút Tra cứu EBM
+  document.getElementById('btnSearchEBMCase')?.addEventListener('click', () => {
+    const text = (document.getElementById('dspCaseDiagnosis') as HTMLTextAreaElement).value;
+    if (!text.trim()) {
+      alert('Vui lòng nhập chẩn đoán trước khi tra cứu.');
+      return;
+    }
+    ebmBridge.openSearch(text);
+  });
 
   // Delete case
   document.getElementById('dspCaseList')?.addEventListener('click', (e) => {
