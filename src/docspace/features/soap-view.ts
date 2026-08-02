@@ -567,9 +567,16 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
             <textarea id="esPPlan" rows="4" class="dsp-input" style="width:100%; font-size:13px; line-height:1.4;">${p.pPlan || ''}</textarea>
           </div>
 
-          <div style="background:var(--color-bg); padding:12px; border-radius:8px; border:1px solid var(--color-border); margin-bottom:16px;">
-            <div style="font-size:12px; font-weight:700; margin-bottom:8px;">KẾT QUẢ CLS DÁN NHANH:</div>
-            <textarea id="esClsQuickPaste" rows="2" placeholder="Dán kết quả CLS mới vào đây..." class="dsp-input" style="width:100%; font-size:12px;"></textarea>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+            <div style="background:var(--color-bg); padding:12px; border-radius:8px; border:1px solid var(--color-border);">
+              <div style="font-size:12px; font-weight:700; margin-bottom:8px;">CHỈ ĐỊNH CLS (Mỗi dòng 1 chỉ định):</div>
+              <textarea id="esClsOrders" rows="3" placeholder="VD: CTM, Sinh hóa máu, XQ Ngực..." class="dsp-input" style="width:100%; font-size:12px; line-height:1.4;">${(p.clsOrders || []).map(o => o.name).join('\n')}</textarea>
+            </div>
+            
+            <div style="background:var(--color-bg); padding:12px; border-radius:8px; border:1px solid var(--color-border);">
+              <div style="font-size:12px; font-weight:700; margin-bottom:8px;">KẾT QUẢ CLS DÁN NHANH:</div>
+              <textarea id="esClsQuickPaste" rows="3" placeholder="Dán kết quả CLS mới vào đây..." class="dsp-input" style="width:100%; font-size:12px; line-height:1.4;"></textarea>
+            </div>
           </div>
 
           <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--color-border); padding-top:16px;">
@@ -970,10 +977,21 @@ export function mountSoapController(profileId: string): void {
     const oNotes = (document.getElementById('esONotes') as HTMLTextAreaElement).value.trim();
     const aAssessment = (document.getElementById('esAAssessment') as HTMLTextAreaElement).value.trim();
     const pPlan = (document.getElementById('esPPlan') as HTMLTextAreaElement).value.trim();
-    const quickPaste = (document.getElementById('esClsQuickPaste') as HTMLTextAreaElement).value.trim();
+    const quickPaste = (document.getElementById('esClsQuickPaste') as HTMLTextAreaElement)?.value.trim();
+    const clsOrdersText = (document.getElementById('esClsOrders') as HTMLTextAreaElement)?.value.trim();
 
     const p = getSoapPatientById(profileId, id);
     if (!p) return;
+
+    let newOrders = [...(p.clsOrders || [])];
+    if (clsOrdersText !== undefined) {
+      const lines = clsOrdersText.split('\n').map(l => l.trim()).filter(Boolean);
+      newOrders = lines.map(line => {
+        const existing = p.clsOrders?.find(o => o.name === line);
+        if (existing) return existing;
+        return { id: Date.now().toString() + Math.random().toString(36).substring(7), name: line, isDone: false };
+      });
+    }
 
     const newResults = [...p.clsResults];
     if (quickPaste) {
@@ -997,6 +1015,7 @@ export function mountSoapController(profileId: string): void {
       aAssessment,
       pPlan,
       soapStatus: 'da_lam',
+      clsOrders: newOrders,
       clsResults: newResults
     });
 
