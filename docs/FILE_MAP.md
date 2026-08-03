@@ -105,6 +105,7 @@
 | `data/icd10-data.js` | Cơ sở dữ liệu 15.844+ mã ICD-10 theo Thông tư 06/2026/TT-BYT | `Tracuu_maICD10.html` |
 | `data/bhyt-mapping.js` | Cơ sở dữ liệu Ánh xạ Dịch vụ kỹ thuật (CLS, Thuốc, PTTT) BHYT với ICD-10 | `Tracuu_maICD10.html` |
 | `cliniportal-sync.js` | Engine đồng bộ thời gian thực 4 module y khoa & kho Guidelines EBM | Xuyên phân hệ |
+| `cdss-bayesian-engine.js` | Bộ máy tính toán xác suất Bayes và suy diễn quyết định lâm sàng (CDSS Core Engine) | Xuyên phân hệ |
 | `flowchart.js` | switchPane, toggleNode, R-Ratio calculator | `pages/Tiếp cận/**` |
 | `approach-symptom.js` | Tự động tạo mục lục & ScrollSpy triệu chứng | `pages/Tiếp cận/2. Triệu chứng/**` |
 | `approach-hub.js` | Search + filter lưu đồ | `tiep-can.html` |
@@ -118,6 +119,7 @@
 | `ecg-studio/ecg-leads.js` | Tổng hợp 12 chuyển đạo theo tam giác Einthoven | `ECG_Interactive.html` |
 | `ecg-studio/ecg-engine.js` | Động cơ Canvas sinh sóng ECG toán học Gaussian & Spline | `ECG_Interactive.html` |
 | `ecg-studio/ecg-studio.js` | UI Controller tổng hợp Studio, Calipers & Quiz | `ECG_Interactive.html` |
+| `ecg-studio/ecg-cdss-engine.js` | Bộ engine Bayes AI-CDSS chẩn đoán phân biệt đau ngực cấp & định vị động mạch vành thủ phạm | `ECG_Studio.html` |
 | `abg-studio/abg-criteria.js` | Dữ liệu tiêu chuẩn chẩn đoán, P/F ratio, A-a DO2, Urine Cl- & Cảnh báo an toàn | `DG_ABG.html` |
 | `abg-studio/abg-scenarios.js` | Ngân hàng ca bệnh mẫu & bệnh nhân ảo ABG | `DG_ABG.html` |
 | `abg-studio/abg-davenport.js` | Động cơ Canvas vẽ biểu đồ Davenport Nomogram tương tác | `DG_ABG.html` |
@@ -133,6 +135,7 @@
 | `cxr-studio/cxr-scenarios.js` | Ca bệnh lâm sàng & hình ảnh phim X-quang ngực cấp cứu | `CXR_Studio.html` |
 | `cxr-studio/cxr-svg-engine.js` | Động cơ SVG Vector dựng giải phẫu lồng ngực & các lớp tổn thương | `CXR_Studio.html` |
 | `cxr-studio/cxr-engine.js` | Động cơ phân tích phim X-quang 5 bước ABCDE tự động | `CXR_Studio.html` |
+| `cxr-studio/cxr-cdss-engine.js` | Động cơ suy diễn Bayes chẩn đoán phân biệt X-quang & dung hợp sinh tồn | `CXR_Studio.html` |
 | `cxr-studio/cxr-studio.js` | UI Controller tổng hợp Chest X-Ray Pro Studio, Ruler CTR, Invert & Quiz | `CXR_Studio.html` |
 | `micro-studio/micro-criteria.js` | Cây nhận diện vi khuẩn 5 bước, phản ứng sinh hóa & Antibiogram S/I/R | `Microbiology_Studio.html` |
 | `micro-studio/micro-scenarios.js` | Ca bệnh lâm sàng vi sinh & nhiễm khuẩn cấp cứu | `Microbiology_Studio.html` |

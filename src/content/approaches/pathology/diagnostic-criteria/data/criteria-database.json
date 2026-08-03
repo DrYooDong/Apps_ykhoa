@@ -417,5 +417,179 @@
     },
     "logic_type": "curb65_logic",
     "disclaimer": "CURB-65: 0-1 điểm → Tử vong thấp, điều trị ngoại trú. 2 điểm → Xem xét nhập viện. ≥ 3 điểm → Nhập viện, ≥ 4-5 điểm → Cân nhắc ICU."
+  },
+
+  "dengue_who2023": {
+    "id": "dengue_who2023",
+    "name": "Phân độ Sốt xuất huyết Dengue — WHO/BYT 2023",
+    "specialty": "Truyền nhiễm",
+    "icd": "A97",
+    "type": "classification",
+    "disease": "Sốt xuất huyết Dengue (SXHD)",
+    "description": "Phân loại SXHD theo 3 mức độ của WHO 2009 (cập nhật 2025) và Quyết định 2760/QĐ-BYT năm 2023 của Bộ Y tế Việt Nam. Giúp quyết định xử trí ngoại trú, nhập viện thường, hay ICU.",
+    "featured": true,
+    "references": [
+      "Bộ Y tế Việt Nam. Hướng dẫn chẩn đoán, điều trị Sốt xuất huyết Dengue (QĐ 2760/QĐ-BYT năm 2023).",
+      "WHO. Guidelines for the Clinical Diagnosis and Treatment of Dengue. PAHO/WHO, 2025.",
+      "WHO. Dengue: Guidelines for Diagnosis, Treatment, Prevention and Control. WHO Press, 2009."
+    ],
+    "criteria": {
+      "major": [
+        { "id": "dg_m1", "text": "🟡 MỨC ĐỘ 1 — SXHD không có dấu hiệu cảnh báo: Sốt ≤ 7 ngày KÈM ≥ 2 trong các dấu hiệu sau: Buồn nôn/nôn; Phát ban; Đau cơ/khớp; Nhức hố mắt; Xuất huyết da hoặc Lacet dương tính; Hematocrit bình thường/tăng; Bạch cầu bình thường/giảm; Tiểu cầu bình thường/giảm. → Chủ yếu điều trị NGOẠI TRÚ." },
+        { "id": "dg_m2", "text": "🟠 MỨC ĐỘ 2 — SXHD có dấu hiệu cảnh báo (DHCB): ≥ 1 dấu hiệu sau khi bệnh nhân bắt đầu giảm sốt: Vật vã/lừ đừ; Đau bụng nhiều; Nôn ói ≥ 3 lần/giờ hoặc ≥ 4 lần/6 giờ; Xuất huyết niêm mạc (chân răng, mũi, nôn máu, tiêu phân đen, xuất huyết âm đạo); Gan to > 2cm; Tiểu ít; Hematocrit tăng kèm tiểu cầu giảm nhanh; AST/ALT ≥ 400 U/L; Tràn dịch màng phổi/màng bụng. → Chỉ định NHẬP VIỆN." },
+        { "id": "dg_m3", "text": "🔴 MỨC ĐỘ 3 — SXHD nặng: ≥ 1 trong 3 tình trạng: (1) Thoát huyết tương nặng gây Sốc SXHD (mạch nhanh, huyết áp kẹt/tụt) hoặc ứ dịch gây suy hô hấp; (2) Xuất huyết nặng (theo đánh giá lâm sàng); (3) Suy tạng: AST hoặc ALT ≥ 1000 U/L, rối loạn ý thức (Glasgow giảm), tổn thương cơ tim. → NHẬP VIỆN ICU/HỒI SỨC CẤP CỨU." }
+      ],
+      "minor": [
+        { "id": "dg_n1", "text": "⚡ CĂN NGUYÊN học: Chẩn đoán xác định bằng NS1 antigen (3-5 ngày đầu), RT-PCR, IgM/IgG (từ ngày 5-6). IgM dương tính đơn độc = Ca bệnh có thể; NS1 hoặc PCR (+) = Ca bệnh xác định." },
+        { "id": "dg_n2", "text": "📊 DỊCH TỄ: WHO (2025) phân loại giám sát: Ca nghi ngờ (lâm sàng) → Ca có thể (nghi ngờ + IgM hoặc dịch tễ) → Ca xác định (nghi ngờ + PCR/NS1/phân lập virus)." }
+      ]
+    },
+    "logic_type": "diagnosis",
+    "disclaimer": "⚠️ Lưu ý: Thời điểm nguy hiểm nhất là khi BN bắt đầu GIẢM SỐT (ngày 3-6). Phải theo dõi sát dấu hiệu cảnh báo trong giai đoạn này. Không dùng Aspirin/NSAID/Corticoid cho bệnh nhân SXHD."
+  },
+
+  "malaria_dx": {
+    "id": "malaria_dx",
+    "name": "Chẩn đoán Sốt rét — Thường và Ác tính",
+    "specialty": "Truyền nhiễm",
+    "icd": "B50-B54",
+    "type": "diagnosis",
+    "disease": "Bệnh Sốt rét (Malaria)",
+    "description": "Tiêu chuẩn chẩn đoán bệnh sốt rét theo QĐ 3377/QĐ-BYT 2023 (Bộ Y tế VN) và WHO Guidelines for Malaria 2025: bao gồm chẩn đoán nghi ngờ, xác định, phân loại thể thường và thể ác tính (biến chứng).",
+    "featured": true,
+    "references": [
+      "Bộ Y tế Việt Nam. Hướng dẫn chẩn đoán và điều trị bệnh Sốt rét (QĐ 3377/QĐ-BYT ngày 30/8/2023).",
+      "World Health Organization. WHO Guidelines for Malaria. Geneva: WHO; August 13, 2025.",
+      "Bộ Y tế Việt Nam. Hướng dẫn giám sát và phòng chống bệnh Sốt rét (QĐ 4922/QĐ-BYT ngày 25/10/2021)."
+    ],
+    "criteria": {
+      "major": [
+        { "id": "mal_m1", "text": "🔍 NGHI NGỜ — Đáp ứng CẢ HAI tiêu chí: (1) Lâm sàng: Đang sốt HOẶC tiền sử sốt trong 3 ngày gần đây (có thể là cơn sốt điển hình rét run → sốt cao → vã mồ hôi, có chu kỳ; hoặc sốt không điển hình liên tục/dao động). (2) Dịch tễ: Đang ở/mới đến/trở về từ vùng sốt rét lưu hành ≤ 7 ngày trước khi sốt, HOẶC có tiền sử mắc sốt rét. → BẮT BUỘC xét nghiệm tìm KST; nếu âm tính, làm lại sau 8–24 giờ khi đang sốt." },
+        { "id": "mal_m2", "text": "✅ XÁC ĐỊNH — Phát hiện ký sinh trùng Plasmodium trong máu bằng ≥ 1 phương pháp: (1) Soi lam máu nhuộm Giemsa (tiêu chuẩn vàng): định loại 5 loài (P. falciparum, P. vivax, P. malariae, P. ovale, P. knowlesi), định mật độ KST/µL. (2) Test nhanh RDT (HRP2, pLDH, Aldolase): kết quả trong 30 phút, dùng tại cơ sở tuyến dưới. (3) PCR/NAAT: độ nhạy-đặc hiệu cao nhất, phát hiện nhiễm mật độ thấp và đồng nhiễm nhiều loài." },
+        { "id": "mal_m3", "text": "🔴 SỐT RÉT ÁC TÍNH — Sốt rét xác định + ≥ 1 trong 12 biểu hiện: (1) Suy kiệt toàn thân (không tự đứng/đi); (2) Rối loạn tri giác/Hôn mê: Glasgow <11 (người lớn/>5 tuổi) hoặc Blantyre <3 (trẻ <5 tuổi); (3) Co giật >2 cơn/24 giờ; (4) Suy hô hấp/ARDS: SpO₂ <92%, nhịp thở >30 lần/phút; (5) Sốc: HATT <70 mmHg (trẻ em) hoặc <80 mmHg (người lớn) + giảm tưới máu ngoại vi (CRT ≥ 3 giây); (6) Thiếu máu nặng: Hb ≤ 5 g/dL (trẻ <12 tuổi) hoặc Hb < 7 g/dL (người lớn) + KST >10.000/µL; (7) Vàng da: Bilirubin TP > 50 µmol/L (>3 mg/dL); (8) Suy thận cấp: Creatinine >265 µmol/L (>3 mg/dL) hoặc Ure >20 mmol/L; (9) Rối loạn đông máu/Chảy máu tự phát; (10) Toan chuyển hóa: Bicarbonate <15 mmol/L hoặc Lactate ≥ 5 mmol/L; (11) Hạ đường huyết: Glucose <2,2 mmol/L (<40 mg/dL); (12) Mật độ KST cao: >10% hồng cầu bị nhiễm." }
+      ],
+      "minor": [
+        { "id": "mal_n1", "text": "⚠️ DẤU HIỆU CẢNH BÁO ÁC TÍNH (nguy cơ cao tiến triển nặng): Rối loạn ý thức nhẹ/thoáng qua; sốt cao liên tục; nôn/tiêu chảy nhiều lần; đau đầu dữ dội; P. falciparum ++++ hoặc ≥ 100.000 KST/µL; thiếu máu tiến triển nhanh." },
+        { "id": "mal_n2", "text": "📋 THANG ĐIỂM: Glasgow (người lớn và trẻ >5 tuổi, hôn mê khi <11 điểm): Mắt (1-4) + Vận động (1-6) + Lời nói (1-5). Blantyre (trẻ <5 tuổi, hôn mê khi <3 điểm): Mắt (0-1) + Vận động (0-2) + Lời nói (0-2)." }
+      ]
+    },
+    "logic_type": "diagnosis",
+    "disclaimer": "⚠️ Tất cả ca nghi ngờ BẮT BUỘC xét nghiệm KST. Sốt rét ác tính là cấp cứu nội khoa — phải điều trị Artesunate IV ngay, chờ kết quả xét nghiệm. Không trì hoãn điều trị ở bệnh nhân nặng."
+  },
+
+  "influenza_dx": {
+    "id": "influenza_dx",
+    "name": "Chẩn đoán Cúm mùa — BYT 2025",
+    "specialty": "Truyền nhiễm",
+    "icd": "J10-J11",
+    "type": "diagnosis",
+    "disease": "Cúm mùa (Seasonal Influenza)",
+    "description": "Tiêu chuẩn chẩn đoán bệnh cúm mùa theo Hướng dẫn chẩn đoán và điều trị cúm mùa cập nhật năm 2025 của Bộ Y tế Việt Nam: kết hợp lâm sàng, dịch tễ và vi sinh học để xác định ca bệnh và phân tầng nguy cơ.",
+    "featured": false,
+    "references": [
+      "Bộ Y tế Việt Nam. Hướng dẫn chẩn đoán và điều trị cúm mùa (Cập nhật 2025).",
+      "WHO. Influenza (Seasonal) Clinical Management. WHO Technical Guidance, 2024."
+    ],
+    "criteria": {
+      "major": [
+        { "id": "flu_m1", "text": "🔍 CA BỆNH NGHI NGỜ (Suspected case) — ĐỦ CẢ HAI: (1) Biểu hiện lâm sàng: Viêm đường hô hấp cấp tính (sốt cao đột ngột, ớn lạnh, đau đầu, đau cơ bắp, ho khan, mệt mỏi nặng) HOẶC có biểu hiện suy hô hấp tiến triển nhanh. (2) Yếu tố dịch tễ: Tiếp xúc gần với người bệnh xác định mắc cúm, HOẶC đang sinh sống/làm việc trong khu vực có dịch cúm mùa lưu hành." },
+        { "id": "flu_m2", "text": "✅ XÁC ĐỊNH CĂNGUYÊN — ≥ 1 xét nghiệm dương tính: (1) RT-PCR hoặc Multiplex-PCR (Tiêu chuẩn vàng): Định tuýp/phân tuýp virus (A/H1N1, A/H3N2, Cúm B); thu thập bệnh phẩm dịch tỵ hầu trong 4 ngày đầu; độ nhạy-đặc hiệu cao nhất; có thể phát hiện đồng thời SARS-CoV-2, RSV, Cúm trong 1 xét nghiệm. (2) Test nhanh kháng nguyên (RADT): Sàng lọc tại phòng khám/cấp cứu; độ đặc hiệu cao nhưng độ nhạy biến thiên — kết quả âm tính KHÔNG loại trừ cúm khi lâm sàng nghi cao. (3) Nuôi cấy/Giải trình tự gen (NGS): Chỉ định khi nghi biến chủng mới hoặc kháng thuốc (đột biến H275Y kháng Oseltamivir, I38T kháng Baloxavir)." }
+      ],
+      "minor": [
+        { "id": "flu_n1", "text": "📊 BIOMARKER PHÂN TẦNG NẶNG (trẻ em): Procalcitonin (PCT) tăng → gợi ý bội nhiễm vi khuẩn. NPAR (Neutrophil-to-Albumin Ratio): NPAR >1.26 (trẻ 1-3 tuổi) hoặc >1.57 (trẻ 4-6 tuổi) → nguy cơ viêm phổi nặng. CAR (CRP-to-Albumin Ratio): CAR >0.48 (trẻ 7-12 tuổi) → nguy cơ viêm phổi nặng." },
+        { "id": "flu_n2", "text": "🫁 HÌNH ẢNH HỌC: X-quang/CT ngực chỉ định khi có triệu chứng hô hấp nặng. Viêm phổi virus: thâm nhiễm kẽ lan tỏa/kính mờ (ARDS). Bội nhiễm vi khuẩn: đông đặc khu trú theo thùy/phân thùy. Siêu âm phổi (POCUS) được BYT 2025 cập nhật như công cụ theo dõi tại giường cho BN nặng." }
+      ]
+    },
+    "logic_type": "diagnosis",
+    "disclaimer": "⚠️ Không lạm dụng kháng sinh trong cúm đơn thuần do virus. Khởi trị Oseltamivir (Tamiflu) sớm nhất có thể (<48 giờ từ khi khởi phát) cho bệnh nhân nặng hoặc nhóm nguy cơ cao. PCR nên ưu tiên hơn test nhanh khi cần quyết định điều trị chính xác."
+  },
+
+  "meningitis_csf": {
+    "id": "meningitis_csf",
+    "name": "Phân tích DNT — Viêm màng não (4 căn nguyên)",
+    "specialty": "Truyền nhiễm",
+    "icd": "G01-G03",
+    "type": "diagnosis",
+    "disease": "Viêm màng não (Meningitis) — Phân tích Dịch não tủy",
+    "description": "Tiêu chuẩn chẩn đoán và phân biệt 4 căn nguyên viêm màng não dựa trên phân tích dịch não tủy (DNT) và cận lâm sàng hệ thống, theo BYT QĐ 5642/QĐ-BYT và NICE NG240 2024.",
+    "featured": true,
+    "references": [
+      "Bộ Y tế Việt Nam. Hướng dẫn Chẩn đoán và Điều trị một số bệnh Truyền nhiễm (QĐ 5642/QĐ-BYT).",
+      "NICE Guideline NG240: Meningitis (bacterial) and meningococcal disease — Recognition, diagnosis and management. 2024.",
+      "Tunkel AR, et al. Practice Guidelines for the Management of Bacterial Meningitis. Clin Infect Dis. 2004;39(9):1267-84."
+    ],
+    "criteria": {
+      "major": [
+        { "id": "vmn_m1", "text": "⚠️ LÂM SÀNG: Tam chứng nghi ngờ (chỉ gặp ở 44-46% BN VMN vi khuẩn): Sốt cao + Cứng gáy (dấu Kernig/Brudzinski) + Rối loạn ý thức. Dấu hiệu chỉ điểm căn nguyên: Ban xuất huyết hoại tử không biến mất khi ấn kính (→ Não mô cầu); Liệt dây sọ/liệt nửa người (→ Lao màng não, biến chứng viêm mạch)." },
+        { "id": "vmn_m2", "text": "🧪 DNT — VMN VI KHUẨN (MỦ): Màu đục/ám khói/vo gạo; Áp lực mở >25 cmH₂O; Bạch cầu 1.000–5.000/µL, ưu thế Đa nhân trung tính (>80%); Glucose <40 mg/dL (hoặc tỷ số DNT/máu <0.4); Protein >100–500 mg/dL; Lactate DNT >4 mmol/L; Nhuộm Gram (+), Cấy (+), PCT huyết thanh tăng mạnh." },
+        { "id": "vmn_m3", "text": "🧪 DNT — VMN VIRUS: Màu trong suốt; Áp lực bình thường/tăng nhẹ; Bạch cầu 10–500/µL, ưu thế Lympho; Glucose bình thường; Protein bình thường/tăng nhẹ (<100 mg/dL); Lactate bình thường; PCR Virus (+) (Enterovirus, HSV, VZV)." },
+        { "id": "vmn_m4", "text": "🧪 DNT — LAO MÀNG NÃO: Màu trong, ánh vàng, có màng nhện; Áp lực tăng; Bạch cầu 100–500/µL, ưu thế Lympho; Glucose giảm (<50 mg/dL); Protein tăng cao (100–500 mg/dL); GeneXpert MTB/RIF Ultra (+); ADA tăng; Nhuộm Ziehl-Neelsen/Cấy MGIT." },
+        { "id": "vmn_m5", "text": "🧪 DNT — VMN NẤM (Cryptococcus): Màu trong/hơi mờ; Áp lực tăng rất cao; Bạch cầu 10–200/µL (rất thấp ở BN HIV); Lympho ưu thế; Glucose giảm; Nhuộm mực tàu (India Ink) (+); Test ngưng kết Latex CrAg (+). Chú ý: BN HIV/AIDS thường ít triệu chứng rõ ràng." }
+      ],
+      "minor": [
+        { "id": "vmn_n1", "text": "🖥️ CT SỌ NÃO TRƯỚC KHI CHỌC DNT khi có ≥ 1: Suy giảm miễn dịch (HIV, ghép tạng, thuốc ức chế miễn dịch); Tiền sử bệnh TK trung ương; Co giật mới (<1 tuần); Phù gai thị; Rối loạn tri giác (GCS giảm) hoặc dấu TK khu trú. ⚡ Không được trì hoãn kháng sinh: Cấy máu → Kháng sinh + Dexamethasone → CT → LP." },
+        { "id": "vmn_n2", "text": "🔬 CẤU TRÚC XÉT NGHIỆM KHẲNG ĐỊNH: Cấy máu (2 mẫu, dương tính 50-75% VMN mủ); Nhuộm Gram DNT (đặc hiệu >97%); PCR đa tác nhân (độ nhạy-đặc hiệu >95%); PCT huyết thanh (phân biệt VK vs Virus)." }
+      ]
+    },
+    "logic_type": "diagnosis",
+    "disclaimer": "⚡ KHẨN CẤP: Viêm màng não vi khuẩn là cấp cứu nội khoa — nguy cơ tử vong và di chứng thần kinh vĩnh viễn tỷ lệ thuận với thời gian trì hoãn kháng sinh. Không chờ kết quả xét nghiệm để bắt đầu điều trị khi lâm sàng nghi cao. Luôn phối hợp Dexamethasone với kháng sinh trong VMN vi khuẩn."
+  },
+
+  "leptospirosis_faine": {
+    "id": "leptospirosis_faine",
+    "name": "Chẩn đoán Leptospirosis — Modified Faine Criteria",
+    "specialty": "Truyền nhiễm",
+    "icd": "A27",
+    "type": "diagnosis",
+    "disease": "Bệnh Leptospirosis (Xoắn khuẩn vàng da)",
+    "description": "Chiến lược chẩn đoán Leptospirosis dựa trên Modified Faine Criteria và chiến lược kết hợp xét nghiệm theo từng giai đoạn bệnh. MAT là tiêu chuẩn vàng huyết thanh học; PCR là ưu tiên trong tuần đầu.",
+    "featured": false,
+    "references": [
+      "WHO/PAHO. Human Leptospirosis: Guidance for Diagnosis, Surveillance and Control. WHO, 2003.",
+      "Levett PN. Leptospirosis. Clin Microbiol Rev. 2001;14(2):296-326.",
+      "Picardeau M, et al. Burden and diagnosis of leptospirosis. Curr Opin Infect Dis. 2020."
+    ],
+    "criteria": {
+      "major": [
+        { "id": "lep_m1", "text": "🔍 LÂM SÀNG ĐẶC TRƯNG — Giai đoạn cấp (ngày 1-7, pha nhiễm khuẩn huyết): Khởi phát đột ngột với sốt cao, ớn lạnh, đau đầu dữ dội, đau cơ bắp (bắp chân và thắt lưng nặng nhất), buồn nôn/nôn. Dấu hiệu đặc trưng nhất: Sung huyết kết mạc (conjunctival suffusion) KHÔNG có dịch tiết. Thể nặng nhất — Hội chứng Weil: Vàng da sậm + Suy thận cấp + Rối loạn nhịp tim hoặc Viêm phổi xuất huyết phế nang (SPHS), tỷ lệ tử vong 5-40%." },
+        { "id": "lep_m2", "text": "🌍 DỊCH TỄ (ĐIỂM QUAN TRỌNG): Tiếp xúc nước bùn/lũ có nước tiểu động vật mang trùng (đặc biệt chuột); Nghề nghiệp nguy cơ cao: nông dân, bác sĩ thú y, công nhân vệ sinh rãnh; Hoạt động giải trí: bơi lội, du lịch sinh thái vùng nhiệt đới; Điều kiện vệ sinh kém." },
+        { "id": "lep_m3", "text": "🧪 TUẦN ĐẦU (Ngày 1-7) — Ưu tiên xét nghiệm trực tiếp: PCR (máu, DNT): Độ nhạy 87-100%, đặc hiệu 98-100%; phát hiện trong 'khoảng trống miễn dịch' khi KT chưa hình thành. Cấy máu/DNT: Đặc hiệu 100% nhưng nhạy chỉ 5-50%, mọc rất chậm (vài tuần) — ít giá trị cấp cứu. Soi kính hiển vi nền đen: KHÔNG khuyến cáo đơn độc (nhạy thấp 40%, hay dương tính giả)." },
+        { "id": "lep_m4", "text": "🧪 TỪ TUẦN 2 (Ngày 7+) — Ưu tiên huyết thanh học: MAT (Microscopic Agglutination Test) — Tiêu chuẩn vàng: Tăng hiệu giá ≥ 4 lần giữa 2 mẫu huyết thanh (cấp tính và hồi phục) = XÁC ĐỊNH. Chỉ 1 mẫu: hiệu giá ≥ 1:800 + lâm sàng tương thích = Bằng chứng mạnh; ≥ 1:200 = Nghi ngờ. IgM-ELISA: Nhạy 84%, đặc hiệu 91%; kháng thể bắt đầu từ ngày 5. Test nhanh Dipstick: Nhạy 79%, đặc hiệu 92%; phù hợp sàng lọc tuyến dưới. PCR nước tiểu + Cấy nước tiểu: Dương tính từ tuần 2." }
+      ],
+      "minor": [
+        { "id": "lep_n1", "text": "⚠️ CHẨN ĐOÁN PHÂN BIỆT: Phân biệt với Dengue, Sốt mò, Bệnh do Rickettsia, Viêm gan virus cấp, Viêm thận cấp, Nhiễm khuẩn huyết khác. Leptospirosis hay bị bỏ sót vì biểu hiện ban đầu rất không đặc hiệu." },
+        { "id": "lep_n2", "text": "💊 ĐIỀU TRỊ SỚM: Doxycycline (thể nhẹ-trung bình) hoặc Penicillin G/Ceftriaxone IV (thể nặng, Hội chứng Weil). Khởi trị kháng sinh sớm trong pha cấp giúp cải thiện tiên lượng đáng kể và ngăn chuyển dạng sang thể nặng." }
+      ]
+    },
+    "logic_type": "diagnosis",
+    "disclaimer": "⚠️ Leptospirosis cần mức độ nghi ngờ cao — biểu hiện không đặc hiệu, dễ bỏ sót. Luôn khai thác kỹ dịch tễ phơi nhiễm. MAT chỉ có ở phòng xét nghiệm tham chiếu; IgM-ELISA/Test nhanh dùng sàng lọc. PCR máu là xét nghiệm tốt nhất trong 7 ngày đầu."
+  },
+
+  "scrub_typhus_dx": {
+    "id": "scrub_typhus_dx",
+    "name": "Chẩn đoán Sốt mò (Scrub Typhus)",
+    "specialty": "Truyền nhiễm",
+    "icd": "A75.3",
+    "type": "diagnosis",
+    "disease": "Sốt mò — Orientia tsutsugamushi (Scrub Typhus)",
+    "description": "Tiêu chuẩn chẩn đoán Sốt mò dựa trên tam chứng lâm sàng (Sốt + Eschar + Phát ban) kết hợp huyết thanh học IFA (tiêu chuẩn vàng) và PCR eschar swab. Bệnh lây qua ấu trùng mò Leptotrombidium spp.",
+    "featured": false,
+    "references": [
+      "Taylor AJ, Paris DH, Newton PN. A systematic review of mortality from untreated scrub typhus. PLoS Negl Trop Dis. 2015;9:e0003971.",
+      "Blacksell SD, et al. Scrub typhus serologic testing with the indirect immunofluorescence method as a diagnostic gold standard. Clin Infect Dis. 2007;44:391-401.",
+      "Paris DH, et al. Unresolved problems related to scrub typhus: a seriously neglected life-threatening disease. Am J Trop Med Hyg. 2013;89:301-307."
+    ],
+    "criteria": {
+      "major": [
+        { "id": "st_m1", "text": "🔍 TAM CHỨNG LÂM SÀNG (đặc trưng nhất): (1) Sốt: Khởi phát với sốt, ớn lạnh, đau đầu dữ dội, đau cơ (hội chứng giả cúm). (2) Vết loét hoại tử Eschar (Tâche noire): Vết đốt của ấu trùng mò không đau, hình thành 2-3 ngày trước khi sốt, tồn tại ~14 ngày. Tỷ lệ phát hiện chỉ ~50% (thấp hơn ở vùng lưu hành cao do miễn dịch sẵn có). (3) Phát ban: Xuất hiện ngày 3-8 sau sốt; ban dát đỏ ở thân mình → dát sẩn lan ra ngoại vi (ly tâm); kèm xung huyết kết mạc, hạch khu vực. Dấu hiệu đặc thù: Mất thính lực (~30% BN) — giá trị gợi ý chẩn đoán cao." },
+        { "id": "st_m2", "text": "🧪 XÉT NGHIỆM — CHIẾN LƯỢC KẾT HỢP PCR + HUYẾT THANH HỌC (thực hiện đồng thời): (1) PCR (DNA Orientia tsutsugamushi): Phát hiện từ máu hoặc mô. ĐẶC BIỆT: Dịch phết vết loét (eschar swab) hoặc mảng vảy (crust) = bệnh phẩm không xâm lấn cho độ nhạy PCR rất cao. Nuôi cấy tế bào và Hóa mô miễn dịch: Ít ứng dụng thực tế. (2) IFA (Indirect Immunofluorescence Assay) — Tiêu chuẩn vàng huyết thanh học: Kháng thể IgM/IgG xuất hiện từ ngày 3-5, nhưng IFA chỉ đáng tin cậy sau 7 ngày sốt. (3) Test nhanh RDT/Dipstick (protein 56-kDa): Sàng lọc ban đầu. BN sốt 5-7 ngày → thường dương tính đồng thời PCR + RDT + IFA." }
+      ],
+      "minor": [
+        { "id": "st_n1", "text": "🔄 CHẨN ĐOÁN PHÂN BIỆT: Tăng bạch cầu đơn nhân nhiễm khuẩn (EBV); Leptospirosis; Tularemia; Bệnh than (Anthrax); Rickettsia nhóm sốt đốm (Spotted Fever). Phân biệt với Rickettsialpox (R. akari): Ban của Rickettsialpox tạo bọng nước trung tâm; ban sốt mò là dát sẩn lan ly tâm, không có bọng nước." },
+        { "id": "st_n2", "text": "🌍 DỊCH TỄ VÀ CƠ CHẾ: Phân bố địa lý vùng châu Á-Thái Bình Dương (Tam giác tsutsugamushi). Ấu trùng mò Leptotrombidium spp. đốt tại da → Orientia tsutsugamushi xâm nhập → Du khuẩn huyết (~10 ngày đầu) → Viêm mạch máu toàn thân (cơ chế chính gây đa tạng nặng). Tỷ lệ tử vong nếu không điều trị: 0-30% tùy chủng, tử vong khi điều trị đúng: <0.5%." }
+      ]
+    },
+    "logic_type": "diagnosis",
+    "disclaimer": "⚠️ Sốt mò đáp ứng rất nhanh với Doxycycline (thường hết sốt trong 24-48 giờ sau dùng thuốc) — dùng đáp ứng điều trị như một 'xét nghiệm chẩn đoán' khi nghi ngờ cao. Azithromycin là lựa chọn thay thế cho phụ nữ có thai và trẻ em. Nếu không điều trị, bệnh có thể tiến triển suy đa tạng và tử vong."
   }
 }

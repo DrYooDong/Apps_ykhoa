@@ -28,6 +28,17 @@
       this.caliper2Pos = 360; // px
       this.isDraggingCaliper = null;
 
+      // AI-CDSS State
+      this.ecgVitalsState = {
+        age: 58,
+        gender: 'male',
+        sbp: 120,
+        hr: 78,
+        chestPainType: 'crushing',
+        heartRiskScore: 3
+      };
+      this.showCulpritArtery = false;
+
       this.init();
     }
 
@@ -308,6 +319,7 @@
       this.updateCaliperStats(combined);
       this.updateSystematicChecklist(combined);
       this.updateDiagnosticCriteria();
+      this.updateCdss();
     }
 
     bindEvents() {
@@ -476,6 +488,44 @@
 
       // Start Quiz button
       document.getElementById('btnStartStudioQuiz')?.addEventListener('click', () => this.startQuizMode());
+
+      // AI-CDSS Vitals Sliders/Selects
+      ['ecgAge', 'ecgGender', 'ecgSBP', 'ecgHR', 'ecgChestPain', 'ecgRiskScore'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.addEventListener('input', () => {
+            const valEl = document.getElementById(`val${id.charAt(0).toUpperCase() + id.slice(1)}`);
+            if (valEl) valEl.textContent = el.value;
+            this.ecgVitalsState = {
+              age: parseInt(document.getElementById('ecgAge')?.value || 58, 10),
+              gender: document.getElementById('ecgGender')?.value || 'male',
+              sbp: parseInt(document.getElementById('ecgSBP')?.value || 120, 10),
+              hr: parseInt(document.getElementById('ecgHR')?.value || 78, 10),
+              chestPainType: document.getElementById('ecgChestPain')?.value || 'crushing',
+              heartRiskScore: parseInt(document.getElementById('ecgRiskScore')?.value || 3, 10)
+            };
+            this.updateCdss();
+          });
+        }
+      });
+
+      // CDSS Emergency Presets
+      document.querySelectorAll('.btn-cdss-preset').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const preset = btn.getAttribute('data-preset');
+          this.applyCdssPreset(preset);
+        });
+      });
+
+      // Toggle Culprit Artery
+      const btnCulprit = document.getElementById('btnToggleCulpritArtery');
+      if (btnCulprit) {
+        btnCulprit.addEventListener('click', () => {
+          this.showCulpritArtery = !this.showCulpritArtery;
+          btnCulprit.classList.toggle('active', this.showCulpritArtery);
+          this.updateCulpritArteryHighlight();
+        });
+      }
     }
 
     openLeadZoomModal(lead) {
@@ -719,6 +769,183 @@
           }
         });
         optionsContainer.appendChild(btn);
+      });
+    }
+
+    applyCdssPreset(preset) {
+      if (preset === 'stemi-lad') {
+        this.selectedModifiers = new Set(['stemi_anterior']);
+        this.ecgVitalsState = { age: 62, gender: 'male', sbp: 95, hr: 105, chestPainType: 'crushing', heartRiskScore: 7 };
+      } else if (preset === 'stemi-rca') {
+        this.selectedModifiers = new Set(['stemi_inferior']);
+        this.ecgVitalsState = { age: 68, gender: 'male', sbp: 85, hr: 52, chestPainType: 'crushing', heartRiskScore: 8 };
+      } else if (preset === 'pericarditis') {
+        this.selectedModifiers = new Set(['pericarditis']);
+        this.ecgVitalsState = { age: 28, gender: 'male', sbp: 125, hr: 92, chestPainType: 'pleuritic', heartRiskScore: 1 };
+      }
+
+      // Sync form controls
+      const ageEl = document.getElementById('ecgAge');
+      const valAge = document.getElementById('valEcgAge');
+      if (ageEl) ageEl.value = this.ecgVitalsState.age;
+      if (valAge) valAge.textContent = this.ecgVitalsState.age;
+
+      const genderEl = document.getElementById('ecgGender');
+      if (genderEl) genderEl.value = this.ecgVitalsState.gender;
+
+      const sbpEl = document.getElementById('ecgSBP');
+      const valSbp = document.getElementById('valEcgSBP');
+      if (sbpEl) sbpEl.value = this.ecgVitalsState.sbp;
+      if (valSbp) valSbp.textContent = this.ecgVitalsState.sbp;
+
+      const hrEl = document.getElementById('ecgHR');
+      const valHr = document.getElementById('valEcgHR');
+      if (hrEl) hrEl.value = this.ecgVitalsState.hr;
+      if (valHr) valHr.textContent = this.ecgVitalsState.hr;
+
+      const painEl = document.getElementById('ecgChestPain');
+      if (painEl) painEl.value = this.ecgVitalsState.chestPainType;
+
+      const riskEl = document.getElementById('ecgRiskScore');
+      const valRisk = document.getElementById('valEcgRiskScore');
+      if (riskEl) riskEl.value = this.ecgVitalsState.heartRiskScore;
+      if (valRisk) valRisk.textContent = this.ecgVitalsState.heartRiskScore;
+
+      // Update checkboxes in mixer
+      this.renderAbnormalityMixer();
+      this.updateStudio();
+    }
+
+    updateCdss() {
+      if (!window.ECGCDSSEngine) return;
+
+      const probs = window.ECGCDSSEngine.calculateBayesianDifferential(this.ecgVitalsState, this.selectedModifiers);
+      const evalData = window.ECGCDSSEngine.evaluateSeverityAndTreatment(this.ecgVitalsState, this.selectedModifiers, probs);
+
+      // 1. Render Probability Progress Bars
+      const container = document.getElementById('ecgProbabilityMeters');
+      if (container) {
+        const labels = {
+          stemi: 'STEMI — Nhồi Máu Cơ Tim Cấp ST Chênh Lên',
+          nstemi: 'NSTEMI / Đau Thắt Ngực Không Ổn Định',
+          pericarditis: 'Viêm Màng Ngoài Tim Cấp / Viêm Cơ Tim',
+          benign: 'Bất Thường Lành Tính / Tái Cực Sớm / Nhịp Xoang'
+        };
+
+        const html = ['stemi', 'nstemi', 'pericarditis', 'benign'].map(key => {
+          const val = (probs[key] * 100).toFixed(1);
+          let colorClass = 'low';
+          if (probs[key] >= 0.50) colorClass = 'high';
+          else if (probs[key] >= 0.25) colorClass = 'mod';
+
+          return `
+            <div class="cdss-prob-row">
+              <div class="cdss-prob-header">
+                <span>${labels[key]}</span>
+                <span style="color: var(--color-primary); font-weight: 800;">${val}%</span>
+              </div>
+              <div class="cdss-prob-bar">
+                <div class="cdss-prob-fill ${colorClass}" style="width: ${val}%;"></div>
+              </div>
+            </div>
+          `;
+        }).join('');
+        container.innerHTML = html;
+      }
+
+      // 2. Render Severity Badge & Summary
+      const badgeEl = document.getElementById('badgeEcgSeverity');
+      if (badgeEl) {
+        badgeEl.className = evalData.badgeClass || 'badge-severity-low';
+        badgeEl.textContent = evalData.severityLabel || 'Nhẹ / Ngoại trú';
+      }
+
+      const sumEl = document.getElementById('ecgSummaryText');
+      if (sumEl) {
+        sumEl.textContent = evalData.summaryText || '--';
+      }
+
+      // 3. Render Hour-1 Treatments Bundle
+      const treatBox = document.getElementById('ecgTreatmentsBox');
+      if (treatBox) {
+        const tList = (evalData.treatments || []).map(t => `
+          <div style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.4rem; font-size: 0.82rem; color: var(--color-text);">
+            <input type="checkbox" style="margin-top: 0.2rem; accent-color: var(--color-primary);">
+            <span>${t}</span>
+          </div>
+        `).join('');
+        treatBox.innerHTML = `
+          <div style="font-size: 0.78rem; font-weight: 700; color: var(--color-primary); margin-bottom: 0.5rem; text-transform: uppercase;">
+            <i class="fa-solid fa-pills"></i> Phác Đồ Điều Trị Giờ Đầu (Hour-1 Action Bundle):
+          </div>
+          <div style="background: var(--color-surface); padding: 0.6rem; border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
+            ${tList}
+          </div>
+        `;
+      }
+
+      // 4. Render Labs
+      const labBox = document.getElementById('ecgLabsBox');
+      if (labBox) {
+        const lList = (evalData.labs || []).map(l => `
+          <div style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.35rem; font-size: 0.82rem; color: var(--color-text-muted);">
+            <i class="fa-solid fa-vial-circle-check" style="color: var(--color-primary); margin-top: 0.2rem;"></i>
+            <span>${l}</span>
+          </div>
+        `).join('');
+        labBox.innerHTML = `
+          <div style="font-size: 0.78rem; font-weight: 700; color: var(--color-primary); margin-bottom: 0.5rem; text-transform: uppercase;">
+            <i class="fa-solid fa-microscope"></i> Chỉ Định Xét Nghiệm & Động Học:
+          </div>
+          <div style="background: var(--color-surface); padding: 0.6rem; border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
+            ${lList}
+          </div>
+        `;
+      }
+
+      // 5. Render EBM Links
+      const ebmBox = document.getElementById('ecgEbmLinksBox');
+      if (ebmBox) {
+        const linksHtml = (evalData.ebmLinks || []).map(link => `
+          <a href="${link.url}" class="cdss-ebm-chip">
+            <span style="opacity:0.8;">[${link.badge}]</span> ${link.title}
+          </a>
+        `).join('');
+        ebmBox.innerHTML = `
+          <div style="font-size: 0.78rem; font-weight: 700; color: var(--color-text-muted); margin-bottom: 0.4rem; text-transform: uppercase;">
+            <i class="fa-solid fa-book-medical"></i> Liên Kết Y Học Chứng Cứ:
+          </div>
+          <div>${linksHtml}</div>
+        `;
+      }
+
+      this.updateCulpritArteryHighlight();
+    }
+
+    updateCulpritArteryHighlight() {
+      // 1. Reset highlights
+      document.querySelectorAll('.lead-canvas-box').forEach(box => {
+        box.classList.remove('culprit-highlight');
+      });
+
+      if (!this.showCulpritArtery || !window.ECGCDSSEngine) return;
+
+      const culprit = window.ECGCDSSEngine.getCulpritArteryInfo(this.selectedModifiers);
+      if (!culprit || !culprit.leads) return;
+
+      const normalizeLead = (leadStr) => {
+        if (leadStr === 'DI') return 'I';
+        if (leadStr === 'DII') return 'II';
+        if (leadStr === 'DIII') return 'III';
+        return leadStr;
+      };
+
+      culprit.leads.forEach(leadName => {
+        const norm = normalizeLead(leadName);
+        const canvasEl = document.getElementById('canvas_' + norm);
+        if (canvasEl && canvasEl.parentElement) {
+          canvasEl.parentElement.classList.add('culprit-highlight');
+        }
       });
     }
   }

@@ -482,11 +482,35 @@
   color: var(--color-primary);
 }
 
-/* Right Sidebar: ABCDE 5-Step Checklist */
+/* ABCDE 5-Step Checklist */
 .checklist-container {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+}
+
+.checklist-container.horizontal-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.85rem;
+}
+
+@media (max-width: 1200px) {
+  .checklist-container.horizontal-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .checklist-container.horizontal-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .checklist-container.horizontal-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .chk-item {
@@ -499,19 +523,19 @@
 }
 
 .chk-item.status-normal {
-  border-left-color: #22c55e;
+  border-left-color: var(--color-success);
 }
 
 .chk-item.status-abnormal {
-  border-left-color: #ef4444;
+  border-left-color: var(--color-danger);
 }
 
 .chk-item.status-warning {
-  border-left-color: #f59e0b;
+  border-left-color: var(--color-warning);
 }
 
 .chk-item.status-info {
-  border-left-color: #0ea5e9;
+  border-left-color: var(--color-info);
 }
 
 .chk-header {
@@ -578,3 +602,279 @@
   border-color: #ef4444 !important;
   color: #b91c1c !important;
 }
+
+/* ==========================================================================
+   AI-CDSS CLINICAL DECISION SUPPORT STYLES — BAYESIAN & VITALS FUSION
+   ========================================================================== */
+
+/* Bayesian Probability Progress Bar */
+.cdss-prob-row {
+  margin-bottom: 0.85rem;
+}
+
+.cdss-prob-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.3rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.cdss-prob-bar {
+  width: 100%;
+  height: 10px;
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+}
+
+.cdss-prob-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cdss-prob-fill.high {
+  background: var(--color-danger);
+}
+
+.cdss-prob-fill.mod {
+  background: var(--color-warning);
+}
+
+.cdss-prob-fill.low {
+  background: var(--color-primary);
+}
+
+/* Severity Badges */
+.badge-severity-critical {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 800;
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--color-danger);
+  border: 1px solid var(--color-danger);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-severity-high {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 800;
+  background: rgba(249, 115, 22, 0.15);
+  color: var(--color-warning);
+  border: 1px solid var(--color-warning);
+}
+
+.badge-severity-mod {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 800;
+  background: rgba(2, 132, 199, 0.15);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.badge-severity-low {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 800;
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--color-success);
+  border: 1px solid var(--color-success);
+}
+
+/* Vitals Form Controls */
+.vital-input-box label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.vital-input-box input[type=range] {
+  width: 100%;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.btn-cdss-preset {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-cdss-preset:hover {
+  background: rgba(2, 132, 199, 0.08);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* EBM Links Cross-link Chips */
+.cdss-ebm-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.65rem;
+  background: rgba(2, 132, 199, 0.1);
+  border: 1px solid rgba(2, 132, 199, 0.3);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  margin-right: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.cdss-ebm-chip:hover {
+  background: var(--color-primary);
+  color: var(--color-surface);
+}
+
+/* AI Heatmap ROI SVG Overlay Glowing Boxes */
+.svg-roi-heatmap-box {
+  stroke-dasharray: 4;
+  animation: roi-pulse 1.8s infinite ease-in-out;
+  fill-opacity: 0.25;
+  stroke-width: 2.5;
+}
+
+@keyframes roi-pulse {
+  0%, 100% {
+    fill-opacity: 0.2;
+    stroke-opacity: 0.8;
+  }
+  50% {
+    fill-opacity: 0.4;
+    stroke-opacity: 1.0;
+  }
+}
+
+.svg-roi-label-bg {
+  fill: var(--color-surface);
+  fill-opacity: 0.9;
+  rx: 4px;
+}
+
+.svg-roi-label-text {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  fill: var(--color-text);
+}
+
+/* ==========================================================================
+   Right Panel Sub-Tabs Navigation & Collapsible Card Accordion (v2.0 UI Nâng Cấp)
+   ========================================================================== */
+.right-panel-tabs-header {
+  display: flex;
+  gap: 0.35rem;
+  margin-bottom: 0.25rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 0.35rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.right-tab-btn {
+  flex: 1;
+  padding: 0.5rem 0.35rem;
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+}
+
+.right-tab-btn:hover {
+  color: var(--color-text);
+  background: rgba(2, 132, 199, 0.08);
+}
+
+.right-tab-btn.active {
+  background: var(--color-primary);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.25);
+}
+
+/* Collapsible Studio Cards */
+.card-header-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.btn-card-collapse {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  transition: transform 0.25s ease, color 0.2s ease, background 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.5rem;
+}
+
+.btn-card-collapse:hover {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  background: rgba(2, 132, 199, 0.1);
+}
+
+.studio-card.collapsed .btn-card-collapse {
+  transform: rotate(180deg);
+}
+
+.studio-card.collapsed .card-collapsible-body {
+  display: none !important;
+}
+
+.studio-card.collapsed {
+  padding-bottom: 0.85rem;
+}
+
+

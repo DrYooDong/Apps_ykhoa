@@ -30,6 +30,8 @@
   <script src="../../../../js/ecg-studio/ecg-scenarios.js" defer></script>
   <script src="../../../../js/ecg-studio/ecg-leads.js" defer></script>
   <script src="../../../../js/ecg-studio/ecg-engine.js" defer></script>
+  <script src="../../../../js/cdss-bayesian-engine.js" defer></script>
+  <script src="../../../../js/ecg-studio/ecg-cdss-engine.js" defer></script>
   <script src="../../../../js/ecg-studio/ecg-studio.js" defer></script>
 </head>
 
@@ -95,6 +97,9 @@
                 </button>
                 <button class="sidebar-tab-btn" data-tab="tab_mixer">
                   <i class="fa-solid fa-sliders"></i> Abnormality Mixer
+                </button>
+                <button class="sidebar-tab-btn" data-tab="tab_cdss">
+                  <i class="fa-solid fa-heart-pulse"></i> AI-CDSS Đau Ngực
                 </button>
               </div>
 
@@ -182,6 +187,66 @@
                 <div class="mixer-scroll-container" id="abnormalityMixerGrid"></div>
               </div>
 
+              <!-- TAB 3: AI-CDSS Cardiovascular Emergency Triage -->
+              <div class="sidebar-tab-content" id="tab_cdss" style="display: none;">
+                <div style="margin-bottom: 1rem;">
+                  <span class="element-badge" style="background: var(--color-danger); margin-bottom: 0.4rem;">AI-CDSS Bayes</span>
+                  <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--color-text);">
+                    <i class="fa-solid fa-user-injured"></i> CA BỆNH TIM MẠCH KHẨN CẤP:
+                  </h4>
+                  <div style="display: flex; flex-direction: column; gap: 0.45rem; margin-top: 0.5rem;">
+                    <button class="btn-cdss-preset" data-preset="stemi-lad">
+                      <i class="fa-solid fa-heart-crack"></i> STEMI Trước Rộng LAD (HA 95/60, Đau thắt bóp)
+                    </button>
+                    <button class="btn-cdss-preset" data-preset="stemi-rca">
+                      <i class="fa-solid fa-triangle-exclamation"></i> STEMI Thành Dưới RCA (HA 85/50) — CC Nitroglycerin
+                    </button>
+                    <button class="btn-cdss-preset" data-preset="pericarditis">
+                      <i class="fa-solid fa-lungs"></i> Viêm Màng Ngoài Tim Cấp (Đau nhói kiểu màng phổi)
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Vitals & Clinical History Grid -->
+                <div class="cdss-vitals-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin-bottom: 1rem;">
+                  <div class="vital-input-box">
+                    <label for="ecgAge">Tuổi: <span id="valEcgAge" style="font-weight:700;">58</span></label>
+                    <input type="range" id="ecgAge" min="18" max="95" value="58">
+                  </div>
+                  <div class="vital-input-box">
+                    <label for="ecgGender">Giới tính:</label>
+                    <select id="ecgGender" style="width:100%; padding:0.35rem; border-radius:0.35rem; border:1px solid var(--color-border); background:var(--color-surface); color:var(--color-text);">
+                      <option value="male">Nam</option>
+                      <option value="female">Nữ</option>
+                    </select>
+                  </div>
+                  <div class="vital-input-box">
+                    <label for="ecgSBP">HA Tâm thu: <span id="valEcgSBP" style="font-weight:700;">120</span> mmHg</label>
+                    <input type="range" id="ecgSBP" min="60" max="220" value="120">
+                  </div>
+                  <div class="vital-input-box">
+                    <label for="ecgHR">Nhịp tim: <span id="valEcgHR" style="font-weight:700;">78</span> bpm</label>
+                    <input type="range" id="ecgHR" min="40" max="180" value="78">
+                  </div>
+                  <div class="vital-input-box" style="grid-column: span 2;">
+                    <label for="ecgChestPain">Kiểu đau ngực cấp:</label>
+                    <select id="ecgChestPain" style="width:100%; padding:0.35rem; border-radius:0.35rem; border:1px solid var(--color-border); background:var(--color-surface); color:var(--color-text);">
+                      <option value="crushing">Đau thắt bóp đè nặng đằng sau xương ức (Đặc trưng mạch vành)</option>
+                      <option value="pleuritic">Đau nhói tăng khi hít sâu / giảm khi cúi ra trước (Màng tim)</option>
+                      <option value="atypical">Đau không điển hình / thầm lặng (Atypical / Silent)</option>
+                    </select>
+                  </div>
+                  <div class="vital-input-box" style="grid-column: span 2;">
+                    <label for="ecgRiskScore">Điểm nguy cơ HEART / TIMI Score: <span id="valEcgRiskScore" style="font-weight:700;">3</span></label>
+                    <input type="range" id="ecgRiskScore" min="0" max="10" value="3">
+                  </div>
+                </div>
+
+                <div style="font-size: 0.78rem; color: var(--color-text-muted); line-height: 1.4; padding: 0.5rem; background: var(--color-bg); border-radius: var(--radius-sm);">
+                  <i class="fa-solid fa-circle-info"></i> Hệ thống tự động cập nhật xác suất chẩn đoán Bayes và phác đồ Hour-1 theo mọi thay đổi sóng ECG và thông số sinh tồn.
+                </div>
+              </div>
+
             </div>
 
             <!-- Left Card 2: Tiêu Chuẩn Chẩn Đoán ECG -->
@@ -229,6 +294,10 @@
                     <option value="20">20 mm/mV (2N Phóng to 2x)</option>
                   </select>
                 </div>
+
+                <button class="btn-proc-toggle" id="btnToggleCulpritArtery" title="Bật/Tắt định vị Động mạch vành thủ phạm">
+                  <i class="fa-solid fa-fire"></i> 🔥 AI Culprit Artery
+                </button>
               </div>
 
               <!-- Khổ hiển thị / Layout -->
@@ -323,17 +392,53 @@
 
           </div>
 
-          <!-- Right Column: 10-Step Systematic Checklist -->
-          <div class="studio-card" style="margin-bottom: 0;">
-            <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.75rem;">
-              🔬 Quy Trình Đọc ECG 10 Bước
-            </h3>
-            <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 1rem; line-height: 1.4;">
-              Phân tích điện tâm đồ hệ thống theo giáo trình "Đọc điện tâm đồ dễ hơn" - BS Nguyễn Tôn Kinh Thi.
-            </p>
-            <div class="checklist-container" id="systematicChecklist"></div>
+          <!-- Right Column: AI-CDSS Cards & 10-Step Systematic Checklist -->
+          <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+            <!-- AI-CDSS Bayesian Probability Console Card -->
+            <div class="studio-card" id="ecgCdssProbabilityCard" style="margin-bottom: 0;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--color-primary); margin: 0;">
+                  🧠 BẢNG ĐO XÁC SUẤT CHẨN ĐOÁN BAYES (CDSS)
+                </h3>
+                <span class="element-badge" style="background: var(--color-primary); font-size: 0.7rem;">Real-time Bayes</span>
+              </div>
+              <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 1rem;">
+                Tính toán xác suất theo định lý Bayes từ biểu hiện ECG 12 chuyển đạo và dấu hiệu lâm sàng.
+              </p>
+              <div id="ecgProbabilityMeters"></div>
+            </div>
+
+            <!-- Actionable Care Bundle & Triage Card -->
+            <div class="studio-card" id="ecgCdssActionCard" style="margin-bottom: 0;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--color-text); margin: 0;">
+                  🚨 PHÂN TẦNG NGUY CƠ & PHÁC ĐỒ HOUR-1 BUNDLE
+                </h3>
+                <span id="badgeEcgSeverity" class="badge-severity-low">Nhẹ / Ngoại trú</span>
+              </div>
+              <div id="ecgSummaryText" style="font-size: 0.85rem; font-weight: 600; color: var(--color-text); background: var(--color-bg); padding: 0.75rem; border-radius: var(--radius-sm); border-left: 4px solid var(--color-primary); margin-bottom: 1rem;">
+                --
+              </div>
+              <div id="ecgTreatmentsBox" style="margin-bottom: 1rem;"></div>
+              <div id="ecgLabsBox" style="margin-bottom: 1rem;"></div>
+              <div id="ecgEbmLinksBox"></div>
+            </div>
           </div>
 
+        </div>
+
+        <!-- Wide Horizontal 10-Step Systematic ECG Analysis Checklist -->
+        <div class="studio-card" style="margin-top: 1.5rem; margin-bottom: 0;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+            <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--color-text); margin: 0;">
+              🔬 Quy Trình Đọc ECG 10 Bước Hệ Thống
+            </h3>
+            <span class="element-badge" style="background: var(--color-primary); font-size: 0.72rem;">Giáo Trình BS Nguyễn Tôn Kinh Thi</span>
+          </div>
+          <p style="font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 1.25rem; line-height: 1.4;">
+            Phân tích điện tâm đồ hệ thống tự động cập nhật thời gian thực theo mọi thay đổi sóng ECG và thao tác thước đo Caliper.
+          </p>
+          <div class="checklist-container horizontal-grid" id="systematicChecklist"></div>
         </div>
 
         <!-- Lead Zoom Modal Pop-up -->
