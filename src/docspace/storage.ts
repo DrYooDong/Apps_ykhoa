@@ -19,10 +19,15 @@ import {
   DEFAULT_QUICK_LINKS,
   DOCSPACE_VERSION,
   AISettings,
+  SyncSettings,
+  PatientDemographic,
+  VitalsRecord,
+  SoapPatientRecord,
 } from './types';
 import { signRecord, verifyRecordIntegrity } from './features/audit-shield';
 import { FhirAdapter } from './data/fhir-adapter';
 import { redactSoapRecord } from './ai/phi-redactor';
+import { PouchSyncAdapter } from './storage/pouch-adapter';
 
 // ─────────────────────────────────────────────
 // HELPERS
@@ -164,6 +169,49 @@ export function updateQuickLinks(profileId: string, links: QuickLink[]): void {
   saveProfile(profile);
 }
 
+const syncAdaptersMap = new Map<string, PouchSyncAdapter>();
+
+export function getSyncAdapter(profileId: string): PouchSyncAdapter {
+  if (!syncAdaptersMap.has(profileId)) {
+    const adapter = new PouchSyncAdapter(profileId);
+    syncAdaptersMap.set(profileId, adapter);
+
+    // Bật auto sync nếu profile có cấu hình sync
+    const profile = getProfile(profileId);
+    if (profile?.syncSettings?.enabled) {
+      adapter.startAutoSync(profile.syncSettings);
+    }
+  }
+  return syncAdaptersMap.get(profileId)!;
+}
+
+export function updateSyncSettings(profileId: string, settings: SyncSettings): void {
+  const profile = getProfile(profileId);
+  if (!profile) return;
+  profile.syncSettings = settings;
+  saveProfile(profile);
+
+  const adapter = getSyncAdapter(profileId);
+  if (settings.enabled && settings.autoSync) {
+    adapter.startAutoSync(settings);
+  } else {
+    adapter.stopAutoSync();
+  }
+}
+
+export async function migrateLocalStorageToPouchDB(profileId: string): Promise<void> {
+  const adapter = getSyncAdapter(profileId);
+  const stores = ['sbars', 'oncall_shifts', 'cases', 'notes', 'drugs', 'protocols'];
+  for (const storeKey of stores) {
+    const records = load<any>(profileId, storeKey);
+    for (const item of records) {
+      if (item.id) {
+        await adapter.putRecord(storeKey, item.id, item);
+      }
+    }
+  }
+}
+
 export function updateAISettings(profileId: string, settings: AISettings): void {
   const profile = getProfile(profileId);
   if (!profile) return;
@@ -284,7 +332,7 @@ export function addPatientToShift(
   return patient;
 }
 
-export function updatePatient(
+export function updateOnCallPatient(
   profileId: string,
   shiftId: string,
   patientId: string,
@@ -646,6 +694,7 @@ export function updateSoapPatient(profileId: string, id: string, data: Partial<S
           oNotes: updated.oNotes,
           aAssessment: updated.aAssessment,
           pPlan: updated.pPlan,
+          prescriptions: updated.prescriptions,
           clsOrders: updated.clsOrders,
           clsResults: updated.clsResults,
           isEmrEntered: updated.isEmrEntered,
@@ -697,6 +746,7 @@ export function addSoapDailyLog(profileId: string, id: string, newDate: string):
       oNotes: lastLog ? lastLog.oNotes : patient.oNotes,
       aAssessment: lastLog ? lastLog.aAssessment : patient.aAssessment,
       pPlan: lastLog ? lastLog.pPlan : patient.pPlan,
+      prescriptions: lastLog ? [...(lastLog.prescriptions || [])] : [...(patient.prescriptions || [])],
       clsOrders: lastLog ? [...lastLog.clsOrders] : [...(patient.clsOrders || [])],
       clsResults: lastLog ? [...lastLog.clsResults] : [...(patient.clsResults || [])],
       isEmrEntered: false,
@@ -712,6 +762,7 @@ export function addSoapDailyLog(profileId: string, id: string, newDate: string):
     patient.oNotes = newLog.oNotes;
     patient.aAssessment = newLog.aAssessment;
     patient.pPlan = newLog.pPlan;
+    patient.prescriptions = [...newLog.prescriptions];
     patient.clsOrders = [...newLog.clsOrders];
     patient.clsResults = [...newLog.clsResults];
     patient.isEmrEntered = false;
@@ -740,6 +791,7 @@ export function switchSoapPatientDate(profileId: string, id: string, targetDate:
     patient.oNotes = targetLog.oNotes;
     patient.aAssessment = targetLog.aAssessment;
     patient.pPlan = targetLog.pPlan;
+    patient.prescriptions = targetLog.prescriptions || [];
     patient.clsOrders = targetLog.clsOrders;
     patient.clsResults = targetLog.clsResults;
     patient.isEmrEntered = targetLog.isEmrEntered;
@@ -1044,6 +1096,80 @@ export function importProfileFromFHIR(file: File): Promise<DoctorProfile> {
     reader.onerror = () => reject(new Error('Không thể đọc file.'));
     reader.readAsText(file);
   });
+}
+
+// ─────────────────────────────────────────────
+// PATIENT DEMOGRAPHICS (OpenEMR Feature)
+// ─────────────────────────────────────────────
+
+export function getAllPatients(profileId: string, includeDeleted = false): PatientDemographic[] {
+  return load<PatientDemographic>(profileId, 'patients')
+    .filter(r => includeDeleted || !r.deletedAt)
+    .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
+}
+
+export function getPatientById(profileId: string, id: string): PatientDemographic | null {
+  return load<PatientDemographic>(profileId, 'patients').find(p => p.id === id && !p.deletedAt) || null;
+}
+
+export function savePatient(profileId: string, data: Omit<PatientDemographic, 'id' | 'doctorId' | 'createdAt' | 'updatedAt' | 'deletedAt'>): PatientDemographic {
+  const records = load<PatientDemographic>(profileId, 'patients');
+  const record: PatientDemographic = {
+    ...data,
+    id: uuid(),
+    doctorId: profileId,
+    createdAt: now(),
+    updatedAt: now(),
+  };
+  records.unshift(record);
+  save(profileId, 'patients', records);
+  return record;
+}
+
+export function updatePatient(profileId: string, id: string, data: Partial<PatientDemographic>): void {
+  const records = load<PatientDemographic>(profileId, 'patients');
+  const idx = records.findIndex(p => p.id === id);
+  if (idx >= 0) {
+    records[idx] = { ...records[idx], ...data, updatedAt: now() };
+    save(profileId, 'patients', records);
+  }
+}
+
+export function deletePatient(profileId: string, id: string): void {
+  const records = load<PatientDemographic>(profileId, 'patients');
+  const idx = records.findIndex(r => r.id === id);
+  if (idx >= 0) {
+    records[idx].deletedAt = now();
+    save(profileId, 'patients', records);
+  }
+}
+
+// ─────────────────────────────────────────────
+// VITALS (OpenEMR Feature)
+// ─────────────────────────────────────────────
+
+export function getVitalsForPatient(profileId: string, patientId: string): VitalsRecord[] {
+  return load<VitalsRecord>(profileId, 'vitals')
+    .filter(v => v.patientId === patientId)
+    .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+}
+
+export function saveVital(profileId: string, data: Omit<VitalsRecord, 'id' | 'doctorId' | 'timestamp'>): VitalsRecord {
+  const records = load<VitalsRecord>(profileId, 'vitals');
+  const record: VitalsRecord = {
+    ...data,
+    id: uuid(),
+    doctorId: profileId,
+    timestamp: now(),
+  };
+  records.unshift(record);
+  save(profileId, 'vitals', records);
+  return record;
+}
+
+export function deleteVital(profileId: string, id: string): void {
+  const records = load<VitalsRecord>(profileId, 'vitals').filter(v => v.id !== id);
+  save(profileId, 'vitals', records);
 }
 
 // ─────────────────────────────────────────────

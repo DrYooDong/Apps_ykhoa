@@ -6,10 +6,10 @@
 import { 
   getAllSoapPatients, getSoapPatientById, saveSoapPatient, updateSoapPatient, deleteSoapPatient,
   getSoapSupabaseConfig, saveSoapSupabaseConfig, fetchAllSoapFromSupabase,
-  addSoapDailyLog, switchSoapPatientDate, getProfile, saveSBAR, saveCase
+  addSoapDailyLog, switchSoapPatientDate, getProfile, saveSBAR, saveCase, getAllPatients
 } from '../storage';
-import { SoapPatientRecord } from '../types';
-import { renderSidebar } from '../docspace-view';
+import { SoapPatientRecord, SoapPrescriptionItem } from '../types';
+import { renderSidebar, escapeHtml } from '../docspace-view';
 import { icdPicker } from './icd-picker';
 import { ebmBridge } from './ebm-bridge-view';
 import { drugPicker } from './drug-picker';
@@ -20,6 +20,57 @@ const ALERT_KEYWORDS = [
   'hạ kali', 'tụt kali', 'tăng kali',
   'creatinine tăng', 'troponin', 'spO2 giảm', 'sốt cao', 'huyết áp tụt',
   'nguy kịch', 'chống chỉ định', 'dương tính'
+];
+
+interface CdssToolOption {
+  name: string;
+  path: string;
+  icon?: string;
+}
+
+interface CdssKeywordMapping {
+  keywords: string[];
+  tools: CdssToolOption[];
+}
+
+const CDSS_KEYWORD_MAP: CdssKeywordMapping[] = [
+  {
+    keywords: ['rung nhĩ', 'af', 'afib', 'cuồng nhĩ'],
+    tools: [
+      { name: 'CHA₂DS₂-VASc', path: 'content/calculators/cardiology/cha2ds2-vasc.html', icon: 'fa-heart-pulse' },
+      { name: 'HAS-BLED', path: 'content/calculators/cardiology/has-bled.html', icon: 'fa-shield-heart' }
+    ]
+  },
+  {
+    keywords: ['suy tim', 'nyha', 'khó thở khi nằm', 'phù phổi'],
+    tools: [
+      { name: 'Phân loại NYHA', path: 'content/calculators/cardiology/nyha.html', icon: 'fa-heart-crack' }
+    ]
+  },
+  {
+    keywords: ['viêm phổi', 'ho sốt', 'đờm đục', 'cap'],
+    tools: [
+      { name: 'Thang điểm CURB-65', path: 'content/calculators/respiratory/curb65.html', icon: 'fa-lungs' }
+    ]
+  },
+  {
+    keywords: ['tri giác', 'hôn mê', 'gcs', 'glasgow'],
+    tools: [
+      { name: 'Hôn mê Glasgow (GCS)', path: 'content/calculators/neurology/gcs.html', icon: 'fa-brain' }
+    ]
+  },
+  {
+    keywords: ['suy thận', 'egfr', 'ckd', 'creatinine'],
+    tools: [
+      { name: 'Máy tính eGFR (CKD-EPI)', path: 'content/calculators/nephrology/egfr.html', icon: 'fa-kidneys' }
+    ]
+  },
+  {
+    keywords: ['béo phì', 'bmi', 'cân nặng', 'thừa cân'],
+    tools: [
+      { name: 'Máy tính BMI & BSA', path: 'content/calculators/general/bmi.html', icon: 'fa-weight-scale' }
+    ]
+  }
 ];
 
 function highlightAlerts(text: string): string {
@@ -52,12 +103,120 @@ function getDayOfWeekName(dateStr: string): string {
   }
 }
 
+function renderRxItemsList(items: SoapPrescriptionItem[]): string {
+  if (!items || items.length === 0) {
+    return `<div class="rx-empty-msg" style="font-size:12px; color:var(--color-text-muted); font-style:italic; padding:6px 0;">Chưa có đơn thuốc có cấu trúc. Bấm <strong>"+ Kê thuốc từ Từ điển"</strong> ở trên để kê đơn.</div>`;
+  }
+  return items.map((item, idx) => `
+    <div class="rx-item-row" data-id="${item.id || idx}" style="display:grid; grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr 30px; gap:6px; align-items:center; background:var(--color-surface); padding:6px 8px; border-radius:6px; border:1px solid var(--color-border); font-size:12px;">
+      <div>
+        <input type="text" class="js-rx-name dsp-input" value="${escapeHtml(item.name)}" style="font-size:11px; padding:2px 4px; font-weight:bold; width:100%;" />
+        <input type="text" class="js-rx-dosage dsp-input" value="${escapeHtml(item.dosage || '')}" placeholder="Hàm lượng" style="font-size:10px; padding:2px 4px; color:var(--color-text-muted); width:100%; margin-top:2px;" />
+      </div>
+      <input type="text" class="js-rx-route dsp-input" value="${escapeHtml(item.route || 'Uống')}" placeholder="Đường dùng" style="font-size:11px; padding:2px 4px;" />
+      <input type="text" class="js-rx-freq dsp-input" value="${escapeHtml(item.frequency || '')}" placeholder="Tần suất (VD: 1v x 2/ngày)" style="font-size:11px; padding:2px 4px;" />
+      <input type="text" class="js-rx-qty dsp-input" value="${escapeHtml(item.quantity || '')}" placeholder="SL (VD: 10 viên)" style="font-size:11px; padding:2px 4px;" />
+      <input type="text" class="js-rx-instr dsp-input" value="${escapeHtml(item.instructions || '')}" placeholder="Lời dặn (VD: Uống sau ăn)" style="font-size:11px; padding:2px 4px;" />
+      <button type="button" class="js-remove-rx dsp-icon-btn dsp-icon-btn--danger" style="padding:2px;" title="Xóa thuốc">&times;</button>
+    </div>
+  `).join('');
+}
+
+function printSinglePrescription(p: SoapPatientRecord): void {
+  const printArea = document.getElementById('soapPrintArea');
+  if (!printArea) return;
+
+  const todayStr = p.activeDate || new Date().toISOString().split('T')[0];
+  const parts = todayStr.split('-');
+  const dateStr = parts.length === 3 ? `Ngày ${parts[2]} tháng ${parts[1]} năm ${parts[0]}` : todayStr;
+
+  const rxItems = p.prescriptions || [];
+  let rxHtml = '';
+
+  if (rxItems.length > 0) {
+    rxHtml = rxItems.map((item, idx) => `
+      <div style="margin-bottom:14px; font-size:13px; line-height:1.5;">
+        <div style="font-weight:bold; display:flex; justify-content:space-between;">
+          <span>${idx + 1}. ${escapeHtml(item.name)} ${item.dosage ? `(${escapeHtml(item.dosage)})` : ''}</span>
+          <span style="font-weight:bold; margin-left:auto;">Số lượng: ${escapeHtml(item.quantity || '1')}</span>
+        </div>
+        <div style="padding-left:18px; color:#334155; font-style:italic; margin-top:2px;">
+          • Cách dùng: ${item.route ? `${escapeHtml(item.route)}, ` : ''}${item.frequency ? `${escapeHtml(item.frequency)}. ` : ''}${item.instructions ? escapeHtml(item.instructions) : ''}
+        </div>
+      </div>
+    `).join('');
+  } else {
+    rxHtml = `<div style="font-style:italic; color:#64748b; margin-bottom:20px; font-size:13px;">Không có đơn thuốc dạng danh sách có cấu trúc. Y lệnh chăm sóc: ${escapeHtml(p.pPlan || 'Chưa có')}</div>`;
+  }
+
+  printArea.innerHTML = `
+    <div style="padding:40px; font-family: 'Times New Roman', Times, serif; color:#000; background:#fff; width:100%; max-width:800px; margin:0 auto; box-sizing:border-box;">
+      <!-- Clinic Header -->
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; border-bottom:2px solid #000; padding-bottom:12px; margin-bottom:20px;">
+        <div>
+          <div style="font-size:15px; font-weight:bold; text-transform:uppercase;">CLINICPORTAL — HỆ THỐNG Y KHOA</div>
+          <div style="font-size:12px; color:#475569; margin-top:2px;">Sổ tay Bệnh phòng SOAP Digital</div>
+        </div>
+        <div style="text-align:right; font-size:12px; color:#475569;">
+          <div>Mã BN: <strong>${escapeHtml(p.medicalRecordNo || p.patientCode)}</strong></div>
+          <div>Số Giường: <strong>${escapeHtml(p.bedNumber)}</strong></div>
+        </div>
+      </div>
+
+      <!-- Title -->
+      <div style="text-align:center; margin-bottom:24px;">
+        <h2 style="margin:0; font-size:22px; font-weight:bold; font-family:Arial, sans-serif; text-transform:uppercase; letter-spacing:1px;">ĐƠN THUỐC</h2>
+        <div style="font-size:12px; font-style:italic; color:#64748b; margin-top:2px;">(Kê đơn điện tử eRx)</div>
+      </div>
+
+      <!-- Patient Information -->
+      <div style="font-size:13px; line-height:1.8; margin-bottom:20px; border:1px solid #cbd5e1; padding:12px 16px; border-radius:6px; background:#f8fafc;">
+        <div style="display:flex; justify-content:space-between;">
+          <span>Họ và tên bệnh nhân: <strong style="font-size:14px; text-transform:uppercase;">${escapeHtml(p.fullName)}</strong></span>
+          <span>Tuổi: <strong>${p.age}</strong> &nbsp;|&nbsp; Giới tính: <strong>${p.gender === 'nam' ? 'Nam' : p.gender === 'nu' ? 'Nữ' : 'Khác'}</strong></span>
+        </div>
+        <div>Chẩn đoán: <strong>${escapeHtml(p.currentDiagnosis || p.admissionDiagnosis)}</strong></div>
+      </div>
+
+      <!-- Prescribed Drugs -->
+      <div style="margin-bottom:30px; min-height:220px;">
+        <div style="font-size:14px; font-weight:bold; font-style:italic; margin-bottom:12px; border-bottom:1px solid #e2e8f0; padding-bottom:4px;">
+          Rx (Chỉ định dùng thuốc):
+        </div>
+        ${rxHtml}
+      </div>
+
+      <!-- Instructions & Signatures -->
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; font-size:13px; margin-top:40px; page-break-inside:avoid;">
+        <div style="max-width:50%;">
+          <div style="font-weight:bold; margin-bottom:4px;">Lời dặn của bác sĩ:</div>
+          <div style="font-style:italic; color:#334155; line-height:1.5;">
+            - Tái khám khi hết thuốc hoặc có dấu hiệu bất thường.<br>
+            - Đóng gói và bảo quản thuốc ở nhiệt độ phòng.
+          </div>
+        </div>
+        <div style="text-align:center; min-width:200px;">
+          <div style="font-style:italic; margin-bottom:4px;">${dateStr}</div>
+          <div style="font-weight:bold; text-transform:uppercase;">Bác sĩ kê đơn</div>
+          <div style="height:60px;"></div>
+          <div style="font-weight:bold; font-style:italic;">(Ký & ghi rõ họ tên)</div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  printArea.style.display = 'block';
+  window.print();
+  printArea.style.display = 'none';
+}
+
 export async function renderSoapView(profileId: string, activePatientId?: string): Promise<string> {
   const profile = getProfile(profileId);
   if (!profile) return '<div>Hồ sơ không tồn tại</div>';
 
   const masterDate = getMasterDate();
   const patients = getAllSoapPatients(profileId);
+  const demographics = getAllPatients(profileId); // Lấy danh sách bệnh nhân OpenEMR
 
   // Sync activeDate for all patients to masterDate if available
   patients.forEach(p => {
@@ -70,6 +229,7 @@ export async function renderSoapView(profileId: string, activePatientId?: string
         p.oNotes = match.oNotes;
         p.aAssessment = match.aAssessment;
         p.pPlan = match.pPlan;
+        p.prescriptions = match.prescriptions;
         p.clsOrders = match.clsOrders;
         p.clsResults = match.clsResults;
         p.isEmrEntered = match.isEmrEntered;
@@ -113,6 +273,11 @@ export async function renderSoapView(profileId: string, activePatientId?: string
               ${p.age}t · ${p.gender === 'nam' ? 'Nam' : p.gender === 'nu' ? 'Nữ' : 'Khác'}
               &nbsp;&nbsp;|&nbsp;&nbsp; <strong>CĐ:</strong> ${p.admissionDiagnosis}
             </div>
+            ${p.demographicId && demographics.find(d => d.id === p.demographicId)?.allergies?.length ? `
+              <div style="margin-top: 4px; font-size: 11px; display: flex; gap: 4px; flex-wrap: wrap;">
+                ${demographics.find(d => d.id === p.demographicId)?.allergies?.map(a => `<span style="background: #fee2e2; color: #b91c1c; padding: 2px 6px; border-radius: 4px; font-weight: 600;"><i class="fa-solid fa-triangle-exclamation"></i> Dị ứng: ${a.allergen}</span>`).join('')}
+              </div>
+            ` : ''}
           </div>
 
           <div class="dsp-soap-header-actions">
@@ -138,6 +303,9 @@ export async function renderSoapView(profileId: string, activePatientId?: string
               </button>
               <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-edit-soap" data-id="${p.id}" title="Chỉnh sửa SOAP" style="padding:2px 8px;">
                 <i class="fa-solid fa-pen"></i>
+              </button>
+              <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-print-rx" data-id="${p.id}" title="In Đơn Thuốc eRx" style="padding:2px 8px; color:var(--color-primary);">
+                <i class="fa-solid fa-file-prescription"></i> In Đơn
               </button>
               <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-toggle-emr" data-id="${p.id}" title="Đổi trạng thái EMR" style="padding:2px 8px;">
                 <i class="fa-solid fa-rotate"></i>
@@ -206,8 +374,24 @@ export async function renderSoapView(profileId: string, activePatientId?: string
 
           <!-- P (Y lệnh) -->
           <div class="dsp-soap-col">
-            <div class="dsp-soap-col-title">P (Y lệnh)</div>
+            <div class="dsp-soap-col-title">P (Y lệnh & Đơn thuốc)</div>
             <div class="dsp-soap-col-content">
+              ${p.prescriptions && p.prescriptions.length > 0 ? `
+                <div style="margin-bottom:8px; background:var(--color-bg); padding:8px; border-radius:6px; border:1px solid var(--color-border);">
+                  <div style="font-size:10px; font-weight:700; color:var(--color-primary); text-transform:uppercase; margin-bottom:4px; display:flex; justify-content:space-between; align-items:center;">
+                    <span><i class="fa-solid fa-capsules"></i> Đơn thuốc (eRx):</span>
+                    <button class="js-print-rx dsp-btn dsp-btn-sm dsp-btn-ghost" data-id="${p.id}" style="padding:0 4px; font-size:10px; color:var(--color-primary); min-height:0; height:auto;">
+                      <i class="fa-solid fa-print"></i> In đơn
+                    </button>
+                  </div>
+                  ${p.prescriptions.map(rx => `
+                    <div style="font-size:11px; margin-bottom:4px; line-height:1.3; border-bottom:1px dashed var(--color-border); padding-bottom:3px;">
+                      <strong>${escapeHtml(rx.name)}</strong> ${rx.dosage ? `(${escapeHtml(rx.dosage)})` : ''} — <span style="font-weight:600;">SL: ${escapeHtml(rx.quantity || '1')}</span>
+                      <div style="color:var(--color-text-muted); font-size:10px;">${rx.route ? rx.route + ' · ' : ''}${rx.frequency || ''} ${rx.instructions ? '(' + rx.instructions + ')' : ''}</div>
+                    </div>
+                  `).join('')}
+                </div>
+              ` : ''}
               ${highlightAlerts(p.pPlan)}
             </div>
           </div>
@@ -292,6 +476,13 @@ export async function renderSoapView(profileId: string, activePatientId?: string
           <button id="btnCloseNewPatientModal" style="background:none; border:none; font-size:20px; cursor:pointer; color:var(--color-text-muted);">&times;</button>
         </div>
         <form id="formNewPatient">
+          <div style="margin-bottom:12px;">
+            <label style="font-size:12px; font-weight:600; display:block; margin-bottom:4px;">Chọn từ Hồ sơ Bệnh nhân (OpenEMR)</label>
+            <select id="npDemographicId" class="dsp-input" style="width:100%; border-color:var(--color-primary);">
+              <option value="">-- Nhập mới hoàn toàn --</option>
+              ${demographics.map(d => `<option value="${d.id}" data-code="${d.medicalRecordNo}" data-name="${d.fullName}" data-gender="${d.gender}" data-dob="${d.dob || ''}">${d.medicalRecordNo} - ${d.fullName}</option>`).join('')}
+            </select>
+          </div>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px;">
             <div>
               <label style="font-size:12px; font-weight:600; display:block; margin-bottom:4px;">Mã BN / Ký hiệu *</label>
@@ -449,7 +640,7 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
   }).join('');
 
   return `
-    <div style="background:var(--color-surface); border-radius:12px; max-width:850px; width:100%; max-height:90vh; display:flex; flex-direction:column; box-shadow:0 10px 25px rgba(0,0,0,0.2); overflow:hidden;">
+    <div style="background:var(--color-surface); border-radius:12px; max-width:850px; width:100%; max-height:90vh; display:flex; flex-direction:column; box-shadow:0 10px 25px rgba(0,0,0,0.2); overflow:hidden; position:relative;">
       <div style="padding:16px 20px; border-bottom:1px solid var(--color-border); display:flex; justify-content:space-between; align-items:center; background:var(--color-bg);">
         <div>
           <h3 style="margin:0; font-size:18px; color:var(--color-primary);">${p.patientCode} - ${p.fullName}</h3>
@@ -523,14 +714,42 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
             </div>
           </details>
 
+          <!-- Thư viện Thẻ Cận lâm sàng (Drag and Drop) -->
+          <div style="background:var(--color-bg); padding:10px 14px; border-radius:8px; border:1px solid var(--color-border); margin-bottom:14px;">
+            <div style="font-size:11px; font-weight:700; color:var(--color-primary); text-transform:uppercase; margin-bottom:6px; display:flex; align-items:center; justify-content:space-between;">
+              <span><i class="fa-solid fa-hand-pointer"></i> Thư viện Cận lâm sàng (Kéo thả thẻ vào ô S, O hoặc Kết quả CLS)</span>
+              <span style="font-weight:normal; text-transform:none; font-size:11px; color:var(--color-text-muted);">Kéo thẻ và thả vào ô text</span>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; gap:8px;">
+              <div class="js-lab-card" draggable="true" data-lab-type="abg" style="cursor:grab; background:var(--color-surface); border:1px solid var(--color-primary); color:var(--color-primary); font-size:12px; font-weight:600; padding:4px 10px; border-radius:16px; display:flex; align-items:center; gap:6px; user-select:none; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                <i class="fa-solid fa-vial"></i> Khí máu động mạch (ABG)
+              </div>
+              <div class="js-lab-card" draggable="true" data-lab-type="cbc" style="cursor:grab; background:var(--color-surface); border:1px solid var(--color-primary); color:var(--color-primary); font-size:12px; font-weight:600; padding:4px 10px; border-radius:16px; display:flex; align-items:center; gap:6px; user-select:none; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                <i class="fa-solid fa-droplet"></i> Công thức máu (CBC)
+              </div>
+              <div class="js-lab-card" draggable="true" data-lab-type="biochem" style="cursor:grab; background:var(--color-surface); border:1px solid var(--color-primary); color:var(--color-primary); font-size:12px; font-weight:600; padding:4px 10px; border-radius:16px; display:flex; align-items:center; gap:6px; user-select:none; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                <i class="fa-solid fa-flask"></i> Sinh hóa máu (Gan/Thận)
+              </div>
+              <div class="js-lab-card" draggable="true" data-lab-type="ion" style="cursor:grab; background:var(--color-surface); border:1px solid var(--color-primary); color:var(--color-primary); font-size:12px; font-weight:600; padding:4px 10px; border-radius:16px; display:flex; align-items:center; gap:6px; user-select:none; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                <i class="fa-solid fa-bolt"></i> Điện giải đồ (Na, K, Cl)
+              </div>
+              <div class="js-lab-card" draggable="true" data-lab-type="cxr" style="cursor:grab; background:var(--color-surface); border:1px solid var(--color-primary); color:var(--color-primary); font-size:12px; font-weight:600; padding:4px 10px; border-radius:16px; display:flex; align-items:center; gap:6px; user-select:none; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                <i class="fa-solid fa-x-ray"></i> X-quang ngực (CXR)
+              </div>
+              <div class="js-lab-card" draggable="true" data-lab-type="ecg" style="cursor:grab; background:var(--color-surface); border:1px solid var(--color-primary); color:var(--color-primary); font-size:12px; font-weight:600; padding:4px 10px; border-radius:16px; display:flex; align-items:center; gap:6px; user-select:none; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                <i class="fa-solid fa-heart-pulse"></i> Điện tâm đồ (ECG)
+              </div>
+            </div>
+          </div>
+
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
             <div>
               <label style="font-size:12px; font-weight:700; display:block; margin-bottom:4px;">S</label>
               <textarea id="esSNotes" rows="3" class="dsp-input" style="width:100%; font-size:13px; line-height:1.4;" placeholder="Triệu chứng chủ quan...">${p.sNotes || ''}</textarea>
             </div>
             <div>
-              <label style="font-size:12px; font-weight:700; display:block; margin-bottom:4px;">O</label>
-              <textarea id="esONotes" rows="3" class="dsp-input" style="width:100%; font-size:13px; line-height:1.4;" placeholder="Khám thực thể...">${p.oNotes || ''}</textarea>
+              <label style="font-size:12px; font-weight:700; display:block; margin-bottom:4px;">O (Kéo thả thẻ CLS vào đây)</label>
+              <textarea id="esONotes" rows="3" class="dsp-input" style="width:100%; font-size:13px; line-height:1.4;" placeholder="Khám thực thể hoặc thả thẻ CLS...">${p.oNotes || ''}</textarea>
             </div>
           </div>
           
@@ -549,22 +768,46 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
                 </button>
               </div>
             </div>
-            <textarea id="esAAssessment" rows="4" class="dsp-input" style="width:100%; font-size:13px; line-height:1.4;" placeholder="Ghi nhận đánh giá lâm sàng hoặc chẩn đoán (Ví dụ: Suy tim (I50.0), Đái tháo đường (E11.9))...">${p.aAssessment || ''}</textarea>
+
+            <!-- Gợi ý CDSS động (Contextual CDSS Pills) -->
+            <div id="cdssSuggestions" style="display:none; align-items:center; flex-wrap:wrap; gap:6px; margin-bottom:6px; padding:6px 10px; background:rgba(2,132,199,0.06); border:1px solid rgba(2,132,199,0.2); border-radius:6px;">
+              <span style="font-size:11px; font-weight:700; color:var(--color-primary); display:flex; align-items:center; gap:4px;">
+                <i class="fa-solid fa-lightbulb" style="color:#eab308;"></i> Gợi ý CDSS:
+              </span>
+              <div id="cdssPillsList" style="display:flex; flex-wrap:wrap; gap:6px;"></div>
+            </div>
+
+            <textarea id="esAAssessment" rows="4" class="dsp-input" style="width:100%; font-size:13px; line-height:1.4;" placeholder="Ghi nhận đánh giá lâm sàng hoặc chẩn đoán (Ví dụ: Suy tim (I50.0), Rung nhĩ (I48), Viêm phổi)...">${p.aAssessment || ''}</textarea>
           </div>
 
           <div style="margin-bottom:16px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-              <label style="font-size:12px; font-weight:700; display:block; margin:0;">Y lệnh (P)</label>
+              <label style="font-size:12px; font-weight:700; display:block; margin:0;">Y lệnh khác (Chăm sóc, Dinh dưỡng...)</label>
               <div style="display:flex; gap:4px;">
                 <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnPrescribeSoap" style="color:var(--color-primary); padding:2px 8px; font-size:11px; height:auto; min-height:0;">
-                  <i class="fa-solid fa-capsules"></i> + Kê đơn
+                  <i class="fa-solid fa-capsules"></i> + Chèn text thuốc
                 </button>
                 <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnSkillSoap" style="color:var(--color-primary); padding:2px 8px; font-size:11px; height:auto; min-height:0;">
                   <i class="fa-solid fa-hand-holding-medical"></i> + Kỹ năng
                 </button>
               </div>
             </div>
-            <textarea id="esPPlan" rows="4" class="dsp-input" style="width:100%; font-size:13px; line-height:1.4;">${p.pPlan || ''}</textarea>
+            <textarea id="esPPlan" rows="3" class="dsp-input" style="width:100%; font-size:13px; line-height:1.4;">${p.pPlan || ''}</textarea>
+          </div>
+
+          <!-- Kê đơn thuốc điện tử (eRx) -->
+          <div style="background:var(--color-bg); padding:12px; border-radius:8px; border:1px solid var(--color-border); margin-bottom:16px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <span style="font-size:12px; font-weight:700; color:var(--color-primary); display:flex; align-items:center; gap:6px;">
+                <i class="fa-solid fa-prescription-bottle-medical"></i> Đơn thuốc điện tử (e-Prescribing / eRx)
+              </span>
+              <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-primary" id="btnOpenRxPicker" style="font-size:11px; padding:3px 10px;">
+                <i class="fa-solid fa-plus"></i> + Kê thuốc từ Từ điển
+              </button>
+            </div>
+            <div id="rxListContainer" style="display:flex; flex-direction:column; gap:6px;">
+              ${renderRxItemsList(p.prescriptions || [])}
+            </div>
           </div>
 
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
@@ -602,6 +845,24 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
             </div>
           </div>
         </form>
+      </div>
+
+      <!-- CDSS Side Panel Drawer -->
+      <div id="cdssSidePanel" style="position:absolute; top:0; right:0; bottom:0; width:100%; max-width:550px; background:var(--color-surface); box-shadow:-5px 0 20px rgba(0,0,0,0.15); z-index:50; display:flex; flex-direction:column; transform:translateX(105%); transition:transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); border-left:1px solid var(--color-border);">
+        <div style="padding:12px 16px; border-bottom:1px solid var(--color-border); display:flex; justify-content:space-between; align-items:center; background:var(--color-bg);">
+          <h4 id="cdssSidePanelTitle" style="margin:0; font-size:15px; color:var(--color-primary); display:flex; align-items:center; gap:8px;">
+            <i class="fa-solid fa-calculator"></i> <span>Công cụ CDSS</span>
+          </h4>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <button type="button" id="btnInsertCdssResult" class="dsp-btn dsp-btn-sm dsp-btn-primary" style="font-size:12px; padding:4px 10px;">
+              <i class="fa-solid fa-download"></i> Chèn kết quả
+            </button>
+            <button type="button" id="btnCloseCdssSidePanel" style="background:none; border:none; font-size:22px; cursor:pointer; color:var(--color-text-muted);">&times;</button>
+          </div>
+        </div>
+        <div style="flex:1; overflow:hidden; position:relative; background:#fff;">
+          <iframe id="cdssIframe" style="width:100%; height:100%; border:none;"></iframe>
+        </div>
       </div>
     </div>
   `;
@@ -800,6 +1061,27 @@ export function mountSoapController(profileId: string): void {
     });
   });
 
+  // Handle demographic selection auto-fill
+  document.getElementById('npDemographicId')?.addEventListener('change', (e) => {
+    const select = e.target as HTMLSelectElement;
+    const option = select.options[select.selectedIndex];
+    if (option && option.value) {
+      (document.getElementById('npCode') as HTMLInputElement).value = option.dataset.code || '';
+      (document.getElementById('npName') as HTMLInputElement).value = option.dataset.name || '';
+      (document.getElementById('npGender') as HTMLSelectElement).value = option.dataset.gender || 'nam';
+      if (option.dataset.dob) {
+        const dob = new Date(option.dataset.dob);
+        const diffMs = Date.now() - dob.getTime();
+        const ageDt = new Date(diffMs); 
+        (document.getElementById('npAge') as HTMLInputElement).value = Math.abs(ageDt.getUTCFullYear() - 1970).toString();
+      }
+    } else {
+      (document.getElementById('npCode') as HTMLInputElement).value = '';
+      (document.getElementById('npName') as HTMLInputElement).value = '';
+      (document.getElementById('npAge') as HTMLInputElement).value = '';
+    }
+  });
+
   // Modal Supabase Config
   const btnSupabaseModal = document.getElementById('btnSupabaseModal');
   const modalSupabase = document.getElementById('modalSupabase');
@@ -907,8 +1189,10 @@ export function mountSoapController(profileId: string): void {
       icdLabel = parts.slice(1).join(' - ').trim();
     }
     const dayOfIllness = parseInt((document.getElementById('npDayOfIllness') as HTMLInputElement).value, 10) || 1;
+    const demographicId = (document.getElementById('npDemographicId') as HTMLSelectElement)?.value || undefined;
 
     saveSoapPatient(profileId, {
+      demographicId,
       patientCode: code,
       bedNumber: bed,
       fullName: name,
@@ -952,6 +1236,20 @@ export function mountSoapController(profileId: string): void {
       const id = (e.currentTarget as HTMLElement).getAttribute('data-id');
       if (id) {
         window.location.hash = `#/docspace/soap?edit=${id}`;
+      }
+    });
+  });
+
+  // Print Single Prescription eRx Button
+  document.querySelectorAll('.js-print-rx').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const id = (e.currentTarget as HTMLElement).getAttribute('data-id');
+      if (id) {
+        const p = getSoapPatientById(profileId, id);
+        if (p) {
+          printSinglePrescription(p);
+        }
       }
     });
   });
@@ -1002,6 +1300,26 @@ export function mountSoapController(profileId: string): void {
       });
     }
 
+    // Collect Prescriptions from rxListContainer
+    const rxRows = Array.from(document.querySelectorAll<HTMLElement>('#rxListContainer .rx-item-row'));
+    const prescriptions: SoapPrescriptionItem[] = rxRows.map(row => {
+      const name = row.querySelector<HTMLInputElement>('.js-rx-name')?.value.trim() || '';
+      const dosage = row.querySelector<HTMLInputElement>('.js-rx-dosage')?.value.trim() || '';
+      const route = row.querySelector<HTMLInputElement>('.js-rx-route')?.value.trim() || '';
+      const frequency = row.querySelector<HTMLInputElement>('.js-rx-freq')?.value.trim() || '';
+      const quantity = row.querySelector<HTMLInputElement>('.js-rx-qty')?.value.trim() || '';
+      const instructions = row.querySelector<HTMLInputElement>('.js-rx-instr')?.value.trim() || '';
+      return {
+        id: row.dataset.id || Date.now().toString() + Math.random().toString(36).substring(7),
+        name,
+        dosage,
+        route,
+        frequency,
+        quantity,
+        instructions
+      };
+    }).filter(item => item.name);
+
     updateSoapPatient(profileId, id, {
       ...(patientCode ? { patientCode } : {}),
       ...(bedNumber ? { bedNumber } : {}),
@@ -1014,12 +1332,64 @@ export function mountSoapController(profileId: string): void {
       oNotes,
       aAssessment,
       pPlan,
+      prescriptions,
       soapStatus: 'da_lam',
       clsOrders: newOrders,
       clsResults: newResults
     });
 
     window.location.hash = '#/docspace/soap';
+  });
+
+  // Handle Remove Rx Item Button Event Delegation
+  document.getElementById('rxListContainer')?.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (target.classList.contains('js-remove-rx')) {
+      const row = target.closest('.rx-item-row');
+      if (row) row.remove();
+    }
+  });
+
+  // Handle Open Rx Picker Button
+  document.getElementById('btnOpenRxPicker')?.addEventListener('click', () => {
+    drugPicker.open(undefined, (drug) => {
+      const container = document.getElementById('rxListContainer');
+      if (container) {
+        const brand = drug.brandNames && drug.brandNames.length > 0 ? ` (${drug.brandNames[0]})` : '';
+        const name = drug.name + brand;
+        const dosage = drug.dosage?.standardAdult || '';
+        const newItem: SoapPrescriptionItem = {
+          id: Date.now().toString() + Math.random().toString(36).substring(7),
+          name,
+          dosage,
+          route: 'Uống',
+          frequency: '1v x 2/ngày',
+          quantity: '10 viên',
+          instructions: 'Uống sau ăn'
+        };
+
+        const div = document.createElement('div');
+        div.className = 'rx-item-row';
+        div.dataset.id = newItem.id;
+        div.style.cssText = 'display:grid; grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr 30px; gap:6px; align-items:center; background:var(--color-surface); padding:6px 8px; border-radius:6px; border:1px solid var(--color-border); font-size:12px;';
+        div.innerHTML = `
+          <div>
+            <input type="text" class="js-rx-name dsp-input" value="${escapeHtml(newItem.name)}" style="font-size:11px; padding:2px 4px; font-weight:bold; width:100%;" />
+            <input type="text" class="js-rx-dosage dsp-input" value="${escapeHtml(newItem.dosage)}" placeholder="Hàm lượng" style="font-size:10px; padding:2px 4px; color:var(--color-text-muted); width:100%; margin-top:2px;" />
+          </div>
+          <input type="text" class="js-rx-route dsp-input" value="${escapeHtml(newItem.route)}" placeholder="Đường dùng" style="font-size:11px; padding:2px 4px;" />
+          <input type="text" class="js-rx-freq dsp-input" value="${escapeHtml(newItem.frequency)}" placeholder="Tần suất" style="font-size:11px; padding:2px 4px;" />
+          <input type="text" class="js-rx-qty dsp-input" value="${escapeHtml(newItem.quantity)}" placeholder="Số lượng" style="font-size:11px; padding:2px 4px;" />
+          <input type="text" class="js-rx-instr dsp-input" value="${escapeHtml(newItem.instructions)}" placeholder="Lời dặn" style="font-size:11px; padding:2px 4px;" />
+          <button type="button" class="js-remove-rx dsp-icon-btn dsp-icon-btn--danger" style="padding:2px;" title="Xóa thuốc">&times;</button>
+        `;
+
+        if (container.querySelector('.rx-empty-msg')) {
+          container.innerHTML = '';
+        }
+        container.appendChild(div);
+      }
+    });
   });
 
   // Create SBAR from SOAP
@@ -1161,4 +1531,167 @@ export function mountSoapController(profileId: string): void {
       prefixText: '- Chỉ định thực hiện: '
     });
   });
+
+  // Drag and Drop Engine cho Thẻ Cận Lâm Sàng
+  const LAB_TEMPLATES: Record<string, string> = {
+    abg: `[Khí máu động mạch (ABG)]\n- pH: 7.38 (7.35 - 7.45)\n- pCO2: 40 mmHg (35 - 45)\n- pO2: 85 mmHg (80 - 100)\n- HCO3-: 24 mmol/L (22 - 26)\n- SaO2: 96%`,
+    cbc: `[Công thức máu (CBC)]\n- WBC: 8.5 x10^9/L (Neu: 65%)\n- RBC: 4.5 x10^12/L | Hgb: 13.5 g/dL | Hct: 40%\n- PLT: 250 x10^9/L`,
+    biochem: `[Sinh hóa máu]\n- Glucose: 5.6 mmol/L\n- Urea: 5.2 mmol/L | Creatinine: 85 umol/L\n- AST (SGOT): 25 U/L | ALT (SGPT): 28 U/L`,
+    ion: `[Điện giải đồ]\n- Na+: 138 mmol/L (135 - 145)\n- K+: 4.0 mmol/L (3.5 - 5.0)\n- Cl-: 102 mmol/L (98 - 106)`,
+    cxr: `[X-quang ngực (CXR)]\n- Phế trường 2 bên sáng đều, không tổn thương thâm nhiễm.\n- Bóng tim không to, góc màng phổi 2 bên nhọn.`,
+    ecg: `[Điện tâm đồ (ECG)]\n- Nhịp xoang đều, tần số: 75 l/p.\n- Trục trung tính, không ST-T thay đổi bệnh lý.`
+  };
+
+  document.querySelectorAll<HTMLElement>('.js-lab-card').forEach(card => {
+    card.addEventListener('dragstart', (e) => {
+      const labType = card.getAttribute('data-lab-type') || '';
+      e.dataTransfer?.setData('text/plain', LAB_TEMPLATES[labType] || '');
+      card.style.opacity = '0.5';
+    });
+    card.addEventListener('dragend', () => {
+      card.style.opacity = '1';
+    });
+  });
+
+  const dropTargets = ['esSNotes', 'esONotes', 'esClsQuickPaste'];
+  dropTargets.forEach(id => {
+    const targetEl = document.getElementById(id) as HTMLTextAreaElement;
+    if (!targetEl) return;
+
+    targetEl.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      targetEl.style.borderColor = 'var(--color-primary)';
+      targetEl.style.backgroundColor = 'rgba(2, 132, 199, 0.05)';
+    });
+
+    targetEl.addEventListener('dragleave', () => {
+      targetEl.style.borderColor = 'var(--color-border)';
+      targetEl.style.backgroundColor = '';
+    });
+
+    targetEl.addEventListener('drop', (e) => {
+      e.preventDefault();
+      targetEl.style.borderColor = 'var(--color-border)';
+      targetEl.style.backgroundColor = '';
+      const textData = e.dataTransfer?.getData('text/plain');
+      if (textData) {
+        const startPos = targetEl.selectionStart || targetEl.value.length;
+        const endPos = targetEl.selectionEnd || targetEl.value.length;
+        const currentVal = targetEl.value;
+        const prefix = currentVal.length > 0 && !currentVal.endsWith('\n') ? '\n' : '';
+        targetEl.value = currentVal.substring(0, startPos) + prefix + textData + currentVal.substring(endPos);
+      }
+    });
+  });
+
+  // Contextual CDSS Linking & Side-Panel Engine
+  const esAAssessmentEl = document.getElementById('esAAssessment') as HTMLTextAreaElement;
+  const cdssSuggestionsEl = document.getElementById('cdssSuggestions');
+  const cdssPillsListEl = document.getElementById('cdssPillsList');
+  const cdssSidePanelEl = document.getElementById('cdssSidePanel');
+  const cdssIframeEl = document.getElementById('cdssIframe') as HTMLIFrameElement;
+  const cdssTitleEl = document.getElementById('cdssSidePanelTitle');
+  const btnCloseCdssSidePanelEl = document.getElementById('btnCloseCdssSidePanel');
+  const btnInsertCdssResultEl = document.getElementById('btnInsertCdssResult');
+
+  let cdssDebounceTimeout: any = null;
+
+  const updateCdssSuggestions = () => {
+    if (!esAAssessmentEl || !cdssSuggestionsEl || !cdssPillsListEl) return;
+    const text = esAAssessmentEl.value.toLowerCase();
+    
+    if (!text.trim()) {
+      cdssSuggestionsEl.style.display = 'none';
+      cdssPillsListEl.innerHTML = '';
+      return;
+    }
+
+    const matchedTools: CdssToolOption[] = [];
+    CDSS_KEYWORD_MAP.forEach(item => {
+      if (item.keywords.some(kw => text.includes(kw))) {
+        item.tools.forEach(t => {
+          if (!matchedTools.some(mt => mt.path === t.path)) {
+            matchedTools.push(t);
+          }
+        });
+      }
+    });
+
+    if (matchedTools.length > 0) {
+      cdssSuggestionsEl.style.display = 'flex';
+      cdssPillsListEl.innerHTML = matchedTools.map(tool => `
+        <button type="button" class="js-cdss-pill-btn dsp-btn dsp-btn-sm dsp-btn-ghost" data-path="${tool.path}" data-name="${tool.name}"
+          style="background:var(--color-surface); border:1px solid var(--color-primary); color:var(--color-primary); font-size:11px; font-weight:700; padding:2px 8px; border-radius:12px; height:auto;">
+          <i class="fa-solid ${tool.icon || 'fa-calculator'}"></i> ${tool.name}
+        </button>
+      `).join('');
+
+      cdssPillsListEl.querySelectorAll<HTMLButtonElement>('.js-cdss-pill-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const path = btn.getAttribute('data-path') || '';
+          const name = btn.getAttribute('data-name') || '';
+          openCdssSidePanel(path, name);
+        });
+      });
+    } else {
+      cdssSuggestionsEl.style.display = 'none';
+      cdssPillsListEl.innerHTML = '';
+    }
+  };
+
+  const openCdssSidePanel = (path: string, name: string) => {
+    if (!cdssSidePanelEl || !cdssIframeEl) return;
+    if (cdssTitleEl) {
+      cdssTitleEl.innerHTML = `<i class="fa-solid fa-calculator"></i> <span>${name}</span>`;
+    }
+    cdssIframeEl.src = path;
+    cdssSidePanelEl.style.transform = 'translateX(0)';
+  };
+
+  const closeCdssSidePanel = () => {
+    if (!cdssSidePanelEl) return;
+    cdssSidePanelEl.style.transform = 'translateX(105%)';
+    if (cdssIframeEl) cdssIframeEl.src = 'about:blank';
+  };
+
+  btnCloseCdssSidePanelEl?.addEventListener('click', closeCdssSidePanel);
+
+  btnInsertCdssResultEl?.addEventListener('click', () => {
+    if (!cdssIframeEl || !cdssIframeEl.contentWindow) return;
+    try {
+      const idoc = cdssIframeEl.contentWindow.document;
+      const resultBox = idoc.querySelector('#result-box, .result-box, #result, .alert-success, .alert-danger, .alert-warning, .result') as HTMLElement;
+      let text = '';
+      if (resultBox) {
+        text = resultBox.innerText.trim().replace(/\n+/g, ' ');
+      } else {
+        text = idoc.body.innerText.substring(0, 300).trim().replace(/\n+/g, ' ');
+      }
+
+      if (text && esAAssessmentEl) {
+        const startPos = esAAssessmentEl.selectionStart || esAAssessmentEl.value.length;
+        const endPos = esAAssessmentEl.selectionEnd || esAAssessmentEl.value.length;
+        const currentVal = esAAssessmentEl.value;
+        const prefix = currentVal.length > 0 && !currentVal.endsWith('\n') ? '\n' : '';
+        esAAssessmentEl.value = currentVal.substring(0, startPos) + prefix + `[KQ CDSS]: ${text}` + currentVal.substring(endPos);
+        alert('✅ Đã chèn kết quả CDSS vào ô Đánh giá!');
+        closeCdssSidePanel();
+      } else {
+        alert('Vui lòng thực hiện tính toán trên công cụ trước khi chèn kết quả.');
+      }
+    } catch (e) {
+      console.error('Lỗi lấy kết quả từ Iframe CDSS:', e);
+      alert('Không thể trích xuất tự động. Bạn có thể copy thủ công từ giao diện công cụ.');
+    }
+  });
+
+  if (esAAssessmentEl) {
+    // Initial check on modal load
+    updateCdssSuggestions();
+
+    esAAssessmentEl.addEventListener('input', () => {
+      clearTimeout(cdssDebounceTimeout);
+      cdssDebounceTimeout = setTimeout(updateCdssSuggestions, 300);
+    });
+  }
 }

@@ -79,14 +79,41 @@ export class IcdPicker {
   }
 
   private async loadIcdData() {
-    if (typeof (window as any).ICD10_DATA === 'undefined') {
-      return new Promise<void>((resolve, reject) => {
-        const script = document.createElement('script');
-        script.src = 'js/data/icd10-data.js';
-        script.onload = () => resolve();
-        script.onerror = () => reject(new Error('Lỗi tải dữ liệu ICD-10'));
-        document.head.appendChild(script);
-      });
+    if (typeof (window as any).ICD10_DATA !== 'undefined' && Array.isArray((window as any).ICD10_DATA) && (window as any).ICD10_DATA.length > 0) {
+      return;
+    }
+
+    const candidatePaths = [
+      'js/data/icd10-data.js',
+      '/js/data/icd10-data.js',
+      './js/data/icd10-data.js',
+      '../js/data/icd10-data.js',
+      '../../js/data/icd10-data.js'
+    ];
+
+    for (const path of candidatePaths) {
+      try {
+        await new Promise<void>((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = path;
+          script.onload = () => {
+            if (typeof (window as any).ICD10_DATA !== 'undefined' && Array.isArray((window as any).ICD10_DATA) && (window as any).ICD10_DATA.length > 0) {
+              resolve();
+            } else {
+              script.remove();
+              reject(new Error('Loaded script but ICD10_DATA empty'));
+            }
+          };
+          script.onerror = () => {
+            script.remove();
+            reject(new Error(`Failed to load ${path}`));
+          };
+          document.head.appendChild(script);
+        });
+        return;
+      } catch {
+        // Try next path candidate
+      }
     }
   }
 

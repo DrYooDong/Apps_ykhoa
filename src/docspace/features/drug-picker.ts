@@ -6,6 +6,7 @@
 export class DrugPicker {
   private modalEl: HTMLElement;
   private targetInputId: string = '';
+  private onSelectCallback?: (drug: any) => void;
   private searchInput: HTMLInputElement | null = null;
   private resultsContainer: HTMLElement | null = null;
   
@@ -27,8 +28,9 @@ export class DrugPicker {
     });
   }
 
-  public async open(targetInputId: string) {
-    this.targetInputId = targetInputId;
+  public async open(targetInputId?: string, onSelectCallback?: (drug: any) => void) {
+    this.targetInputId = targetInputId || '';
+    this.onSelectCallback = onSelectCallback;
     
     this.modalEl.innerHTML = `
       <div style="background:var(--color-surface, #fff); width:100%; max-width:700px; max-height:85vh; border-radius:12px; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 10px 25px rgba(0,0,0,0.2);">
@@ -74,14 +76,43 @@ export class DrugPicker {
   }
 
   private async loadDrugsData() {
-    if (typeof (window as any).DRUGS_DB === 'undefined') {
-      return new Promise<void>((resolve, reject) => {
-        const script = document.createElement('script');
-        script.src = 'content/pharmacology/data/drugs-db.js'; // Relative path
-        script.onload = () => resolve();
-        script.onerror = () => reject(new Error('Lỗi tải dữ liệu Drugs'));
-        document.head.appendChild(script);
-      });
+    if (typeof (window as any).DRUGS_DB !== 'undefined' && Array.isArray((window as any).DRUGS_DB) && (window as any).DRUGS_DB.length > 0) {
+      return;
+    }
+
+    const candidatePaths = [
+      'src/content/pharmacology/data/drugs-db.js',
+      '/src/content/pharmacology/data/drugs-db.js',
+      './src/content/pharmacology/data/drugs-db.js',
+      '../src/content/pharmacology/data/drugs-db.js',
+      '../../src/content/pharmacology/data/drugs-db.js',
+      'content/pharmacology/data/drugs-db.js',
+      '/content/pharmacology/data/drugs-db.js'
+    ];
+
+    for (const path of candidatePaths) {
+      try {
+        await new Promise<void>((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = path;
+          script.onload = () => {
+            if (typeof (window as any).DRUGS_DB !== 'undefined' && Array.isArray((window as any).DRUGS_DB) && (window as any).DRUGS_DB.length > 0) {
+              resolve();
+            } else {
+              script.remove();
+              reject(new Error('Loaded script but DRUGS_DB empty'));
+            }
+          };
+          script.onerror = () => {
+            script.remove();
+            reject(new Error(`Failed to load ${path}`));
+          };
+          document.head.appendChild(script);
+        });
+        return;
+      } catch {
+        // Try next path candidate
+      }
     }
   }
 
@@ -156,22 +187,30 @@ export class DrugPicker {
   }
 
   private selectDrug(d: any) {
-    const textarea = document.getElementById(this.targetInputId) as HTMLTextAreaElement;
-    if (textarea) {
-      const dosage = d.dosage?.standardAdult || '...';
-      const mainBrand = d.brandNames && d.brandNames.length > 0 ? ` (${d.brandNames[0]})` : '';
-      const textToInsert = `- ${d.name}${mainBrand}: ${dosage}\n`;
-      
-      const startPos = textarea.selectionStart;
-      const endPos = textarea.selectionEnd;
-      
-      textarea.value = textarea.value.substring(0, startPos)
-        + textToInsert
-        + textarea.value.substring(endPos, textarea.value.length);
+    if (this.onSelectCallback) {
+      this.onSelectCallback(d);
+      this.close();
+      return;
+    }
+
+    if (this.targetInputId) {
+      const textarea = document.getElementById(this.targetInputId) as HTMLTextAreaElement;
+      if (textarea) {
+        const dosage = d.dosage?.standardAdult || '...';
+        const mainBrand = d.brandNames && d.brandNames.length > 0 ? ` (${d.brandNames[0]})` : '';
+        const textToInsert = `- ${d.name}${mainBrand}: ${dosage}\n`;
         
-      textarea.selectionStart = startPos + textToInsert.length;
-      textarea.selectionEnd = startPos + textToInsert.length;
-      textarea.focus();
+        const startPos = textarea.selectionStart;
+        const endPos = textarea.selectionEnd;
+        
+        textarea.value = textarea.value.substring(0, startPos)
+          + textToInsert
+          + textarea.value.substring(endPos, textarea.value.length);
+          
+        textarea.selectionStart = startPos + textToInsert.length;
+        textarea.selectionEnd = startPos + textToInsert.length;
+        textarea.focus();
+      }
     }
     
     this.close();

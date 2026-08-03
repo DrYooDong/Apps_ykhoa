@@ -14,7 +14,7 @@
     'use strict';
 
     const DB_NAME = 'CliniPortalDB';
-    const DB_VERSION = 1;
+    const DB_VERSION = 2;
 
     class StorageService {
         constructor() {
@@ -79,6 +79,19 @@
                         // 4. Cấu hình người dùng (user_preferences)
                         if (!db.objectStoreNames.contains('user_preferences')) {
                             db.createObjectStore('user_preferences', { keyPath: 'key' });
+                        }
+
+                        // 5. Bản nháp (drafts)
+                        if (!db.objectStoreNames.contains('drafts')) {
+                            const draftStore = db.createObjectStore('drafts', { keyPath: 'id' });
+                            draftStore.createIndex('updatedAt', 'updatedAt', { unique: false });
+                        }
+
+                        // 6. Bệnh nhân (patients)
+                        if (!db.objectStoreNames.contains('patients')) {
+                            const patientStore = db.createObjectStore('patients', { keyPath: 'patientId' });
+                            patientStore.createIndex('name', 'name', { unique: false });
+                            patientStore.createIndex('updatedAt', 'updatedAt', { unique: false });
                         }
                     };
                 } catch (e) {
@@ -381,7 +394,130 @@
         }
 
         // ============================================================================
-        // 4. CẤU HÌNH & HELPER LOCALSTORAGE FALLBACK
+        // 4. BẢN NHÁP (Drafts)
+        // ============================================================================
+
+        /**
+         * Lưu một bản nháp vào IndexedDB
+         * @param {string} key - Mã định danh bản nháp
+         * @param {Object} data - Dữ liệu bản nháp
+         */
+        async saveDraft(key, data) {
+            await this.init();
+            const record = {
+                id: key,
+                data: data,
+                updatedAt: new Date().toISOString()
+            };
+
+            if (this.db) {
+                return new Promise((resolve, reject) => {
+                    const tx = this.db.transaction(['drafts'], 'readwrite');
+                    const store = tx.objectStore('drafts');
+                    const req = store.put(record);
+                    req.onsuccess = () => resolve(true);
+                    req.onerror = () => reject(req.error);
+                });
+            } else {
+                this._setLS(`cliniportal_draft_${key}`, record);
+                return true;
+            }
+        }
+
+        /**
+         * Lấy bản nháp theo key
+         * @param {string} key 
+         */
+        async getDraft(key) {
+            await this.init();
+            if (this.db) {
+                return new Promise((resolve) => {
+                    const tx = this.db.transaction(['drafts'], 'readonly');
+                    const store = tx.objectStore('drafts');
+                    const req = store.get(key);
+                    req.onsuccess = () => resolve(req.result ? req.result.data : null);
+                    req.onerror = () => resolve(null);
+                });
+            } else {
+                const record = this._getLS(`cliniportal_draft_${key}`, null);
+                return record ? record.data : null;
+            }
+        }
+
+        /**
+         * Xóa bản nháp theo key
+         * @param {string} key 
+         */
+        async deleteDraft(key) {
+            await this.init();
+            if (this.db) {
+                return new Promise((resolve, reject) => {
+                    const tx = this.db.transaction(['drafts'], 'readwrite');
+                    const store = tx.objectStore('drafts');
+                    const req = store.delete(key);
+                    req.onsuccess = () => resolve(true);
+                    req.onerror = () => reject(req.error);
+                });
+            } else {
+                try {
+                    localStorage.removeItem(`cliniportal_draft_${key}`);
+                } catch (e) {}
+                return true;
+            }
+        }
+
+        // ============================================================================
+        // 5. BỆNH NHÂN CỤC BỘ (Local Patients)
+        // ============================================================================
+
+        /**
+         * Lưu thông tin bệnh nhân
+         * @param {Object} patient 
+         */
+        async savePatient(patient) {
+            await this.init();
+            if (!patient.patientId) {
+                patient.patientId = 'pat_' + Date.now();
+            }
+            patient.updatedAt = new Date().toISOString();
+
+            if (this.db) {
+                return new Promise((resolve, reject) => {
+                    const tx = this.db.transaction(['patients'], 'readwrite');
+                    const store = tx.objectStore('patients');
+                    const req = store.put(patient);
+                    req.onsuccess = () => resolve(patient.patientId);
+                    req.onerror = () => reject(req.error);
+                });
+            } else {
+                let list = this._getLS('cliniportal_local_patients', []);
+                list = list.filter(p => p.patientId !== patient.patientId);
+                list.unshift(patient);
+                this._setLS('cliniportal_local_patients', list);
+                return patient.patientId;
+            }
+        }
+
+        /**
+         * Lấy danh sách bệnh nhân
+         */
+        async getPatients() {
+            await this.init();
+            if (this.db) {
+                return new Promise((resolve, reject) => {
+                    const tx = this.db.transaction(['patients'], 'readonly');
+                    const store = tx.objectStore('patients');
+                    const req = store.getAll();
+                    req.onsuccess = () => resolve(req.result || []);
+                    req.onerror = () => reject(req.error);
+                });
+            } else {
+                return this._getLS('cliniportal_local_patients', []);
+            }
+        }
+
+        // ============================================================================
+        // 6. CẤU HÌNH & HELPER LOCALSTORAGE FALLBACK
         // ============================================================================
 
         _getLS(key, defaultValue) {

@@ -21,27 +21,42 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnPrintModal = document.getElementById('btnPrintModal');
 
     // ==========================================
-    // 1. AUTO-SAVE LOCALSTORAGE
+    // 1. AUTO-SAVE (INDEXEDDB ENGINE)
     // ==========================================
-    const STORAGE_KEY = 'cliniportal_benhan_v2_draft';
+    const STORAGE_KEY = 'benhan_noi_khoa';
     let saveTimeout;
 
-    function saveDraft() {
+    async function saveDraft() {
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-        
+
+        if (window.CliniStorage) {
+            await window.CliniStorage.saveDraft(STORAGE_KEY, data);
+        } else {
+            localStorage.setItem(`cliniportal_${STORAGE_KEY}`, JSON.stringify(data));
+        }
+
         // Hiển thị trạng thái đã lưu
-        autoSaveStatus.innerHTML = '<i class="fa-solid fa-check-circle"></i> Đã tự động lưu nháp';
-        autoSaveStatus.style.backgroundColor = 'var(--color-success-hl)';
-        autoSaveStatus.style.color = 'var(--color-success)';
+        if (autoSaveStatus) {
+            autoSaveStatus.innerHTML = '<i class="fa-solid fa-check-circle"></i> Đã tự động lưu nháp (IndexedDB)';
+            autoSaveStatus.style.backgroundColor = 'var(--color-success-hl)';
+            autoSaveStatus.style.color = 'var(--color-success)';
+        }
     }
 
-    function loadDraft() {
-        const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved) {
+    async function loadDraft() {
+        let data = null;
+        if (window.CliniStorage) {
+            data = await window.CliniStorage.getDraft(STORAGE_KEY);
+        } else {
+            const saved = localStorage.getItem(`cliniportal_${STORAGE_KEY}`);
+            if (saved) {
+                try { data = JSON.parse(saved); } catch (e) {}
+            }
+        }
+
+        if (data) {
             try {
-                const data = JSON.parse(saved);
                 Object.keys(data).forEach(key => {
                     const input = form.elements[key];
                     if (input) {
@@ -56,21 +71,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Trigger save on input (debounce)
     form.addEventListener('input', () => {
-        autoSaveStatus.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Đang lưu...';
-        autoSaveStatus.style.backgroundColor = 'var(--color-warning-hl)';
-        autoSaveStatus.style.color = 'var(--color-warning)';
+        if (autoSaveStatus) {
+            autoSaveStatus.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Đang lưu...';
+            autoSaveStatus.style.backgroundColor = 'var(--color-warning-hl)';
+            autoSaveStatus.style.color = 'var(--color-warning)';
+        }
         
         clearTimeout(saveTimeout);
         saveTimeout = setTimeout(saveDraft, 1000);
     });
 
-    btnClearData.addEventListener('click', () => {
+    btnClearData.addEventListener('click', async () => {
         if(confirm("Bạn có chắc chắn muốn xóa toàn bộ dữ liệu đang nhập? Không thể hoàn tác!")) {
             form.reset();
-            localStorage.removeItem(STORAGE_KEY);
+            if (window.CliniStorage) {
+                await window.CliniStorage.deleteDraft(STORAGE_KEY);
+            } else {
+                localStorage.removeItem(`cliniportal_${STORAGE_KEY}`);
+            }
             // Bỏ chọn tất cả checkbox
             document.querySelectorAll('.q-checkbox input').forEach(chk => chk.checked = false);
-            autoSaveStatus.innerHTML = '<i class="fa-solid fa-trash"></i> Đã xóa dữ liệu';
+            if (autoSaveStatus) {
+                autoSaveStatus.innerHTML = '<i class="fa-solid fa-trash"></i> Đã xóa dữ liệu';
+            }
         }
     });
 

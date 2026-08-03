@@ -18,6 +18,7 @@ import { renderSoapView, mountSoapController } from './features/soap-view';
 import { renderOnCallView, mountOnCallController } from './features/oncall-view';
 import { renderCaseLoggerView, mountCaseLoggerController } from './features/case-logger-view';
 import { renderQuickLinksView, mountQuickLinksController } from './features/quick-links-view';
+import { renderPatientDemographicsView, bindPatientDemographicsEvents } from './features/patient-demographics-view';
 
 import { renderNotepadView, mountNotepadController } from './features/notepad-view';
 import { renderDrugJournalView, mountDrugJournalController } from './features/drug-journal-view';
@@ -27,6 +28,7 @@ import { renderSimulationView, mountSimulationController } from './features/simu
 import { renderSyncModal, mountSyncController } from './features/p2p-sync-view';
 import { initGlobalQuickSaveHook } from './features/quick-save';
 import { renderAISettings } from './features/ai-settings-view';
+import { renderSyncSettings } from './features/sync-settings-view';
 import { loadRAGIndex } from './ai/rag-engine';
 
 // ─── Mount helper ─────────────────────────────────────────────────
@@ -176,6 +178,15 @@ export function initDocSpaceRoutes(): void {
     });
   });
 
+  // Patient Demographics (OpenEMR Integration)
+  router.register('/docspace/patients', 'DocSpace — Quản lý Bệnh nhân', () => {
+    requireProfile(async (pid) => {
+      mountDocSpace(await renderPatientDemographicsView(pid));
+      bindPatientDemographicsEvents();
+      mountSidebarFooterControls(pid);
+    });
+  });
+
   // SOAP Ward Notebook
   router.register('/docspace/soap', 'DocSpace — Sổ Tay Bệnh Phòng SOAP Digital', () => {
     requireProfile(async (pid) => {
@@ -288,6 +299,14 @@ export function initDocSpaceRoutes(): void {
     requireProfile(() => {
       mountDocSpace('<div id="ai-settings-placeholder"></div>'); // Placeholder will be replaced by renderAISettings
       renderAISettings();
+    });
+  });
+
+  // Sync Settings (Đồng bộ Đa thiết bị)
+  router.register('/docspace/sync-settings', 'DocSpace — Cấu hình Đồng bộ Đa thiết bị', () => {
+    requireProfile(() => {
+      mountDocSpace('<div id="sync-settings-placeholder"></div>');
+      renderSyncSettings();
     });
   });
 }

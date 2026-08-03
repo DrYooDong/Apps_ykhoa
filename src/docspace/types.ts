@@ -15,6 +15,30 @@ export interface DoctorProfile {
   lastActiveAt: string; // ISO string
   quickLinks: QuickLink[];
   aiSettings?: AISettings;
+  syncSettings?: SyncSettings;
+}
+
+export type SyncProvider = 'couchdb' | 'webdav' | 'none';
+export type SyncState = 'disabled' | 'idle' | 'syncing' | 'synced' | 'error' | 'offline';
+
+export interface SyncSettings {
+  enabled: boolean;
+  provider: SyncProvider;
+  remoteUrl: string;        // VD: "https://my-couchdb.example.com/docspace_db"
+  dbName: string;           // VD: "docspace_doctor_db"
+  username?: string;
+  password?: string;
+  passphrase?: string;      // Dùng cho E2EE Mã hóa AES-GCM 256-bit
+  isE2eeEnabled: boolean;
+  autoSync: boolean;        // Tự động sync định kỳ
+  autoSyncIntervalSec: number; // Ví dụ: 30s
+}
+
+export interface SyncStatusInfo {
+  state: SyncState;
+  lastSyncedAt?: string;
+  docsSyncedCount: number;
+  errorMessage?: string;
 }
 
 export interface AISettings {
@@ -251,6 +275,16 @@ export interface SimulationResult {
 // SOAP DIGITAL WARD NOTEBOOK
 // ─────────────────────────────────────────────
 
+export interface SoapPrescriptionItem {
+  id: string;
+  name: string;        // Tên thuốc (từ drug-picker)
+  dosage: string;      // Hàm lượng / Liều 1 lần (VD: 500mg)
+  route: string;       // Đường dùng (Uống, Tiêm...)
+  frequency: string;   // Tần suất (VD: Sáng 1 - Chiều 1)
+  quantity: string;    // Số lượng (VD: 10 viên)
+  instructions: string;// Lời dặn (VD: Uống sau ăn)
+}
+
 export interface SoapDailyLog {
   id: string;
   date: string;            // YYYY-MM-DD
@@ -261,6 +295,7 @@ export interface SoapDailyLog {
   icd10Code?: string;
   icd10Label?: string;
   pPlan: string;
+  prescriptions?: SoapPrescriptionItem[];
   clsOrders: { id: string; name: string; isDone: boolean }[];
   clsResults: { id: string; text: string; alertLevel: 'normal' | 'low' | 'high' | 'critical' }[];
   isEmrEntered: boolean;
@@ -271,6 +306,7 @@ export interface SoapDailyLog {
 
 export interface SoapPatientRecord {
   id: string;
+  demographicId?: string;   // Liên kết với PatientDemographics (OpenEMR Feature)
   patientCode: string;      // G01, G02...
   fullName: string;
   age: number;
@@ -294,11 +330,81 @@ export interface SoapPatientRecord {
   icd10Code?: string;
   icd10Label?: string;
   pPlan: string;
+  prescriptions?: SoapPrescriptionItem[];
   clsOrders: { id: string; name: string; isDone: boolean }[];
   clsResults: { id: string; text: string; alertLevel: 'normal' | 'low' | 'high' | 'critical' }[];
   createdAt: string;
   updatedAt: string;
   deletedAt?: string;
+}
+
+// ─────────────────────────────────────────────
+// PATIENT DEMOGRAPHICS (OpenEMR Feature)
+// ─────────────────────────────────────────────
+
+export interface AllergyEntry {
+  id: string;
+  allergen: string;       // Tác nhân dị ứng (Thuốc, Thức ăn...)
+  severity: 'low' | 'mod' | 'high' | 'critical';
+  reaction: string;       // Biểu hiện (Nổi mề đay, Sốc phản vệ...)
+  notedDate: string;
+}
+
+export interface MedicationEntry {
+  id: string;
+  name: string;
+  dosage: string;
+  route: string;
+  frequency: string;
+  startDate: string;
+  endDate?: string;
+  status: 'active' | 'discontinued';
+}
+
+export interface PatientDemographic {
+  id: string;             // UUID
+  doctorId: string;       // Owner
+  medicalRecordNo: string; // Mã hồ sơ / Mã BN
+  fullName: string;
+  dob?: string;           // YYYY-MM-DD
+  gender: 'nam' | 'nu' | 'khac';
+  phone?: string;
+  address?: string;
+  
+  // Medical History (OpenEMR Issues/History)
+  history: {
+    medical: string[];
+    surgical: string[];
+    family: string[];
+    social: string[];     // Thói quen: Rượu, Thuốc lá...
+  };
+  
+  // Allergies (OpenEMR Allergies)
+  allergies: AllergyEntry[];
+
+  // Medications (e-Prescribing)
+  medications?: MedicationEntry[];
+  
+  createdAt: string;
+  updatedAt: string;
+  deletedAt?: string;
+}
+
+export interface VitalsRecord {
+  id: string;
+  patientId: string;
+  doctorId: string;
+  timestamp: string;      // ISO Date
+  hr?: number;            // Mạch (Heart Rate)
+  bpSys?: number;         // Huyết áp tâm thu
+  bpDia?: number;         // Huyết áp tâm trương
+  rr?: number;            // Nhịp thở
+  temp?: number;          // Nhiệt độ
+  spo2?: number;          // SpO2
+  weight?: number;        // Cân nặng (kg)
+  height?: number;        // Chiều cao (cm)
+  bmi?: number;
+  notes?: string;
 }
 
 // ─────────────────────────────────────────────
@@ -309,6 +415,8 @@ export interface DocSpaceSnapshot {
   version: string;       // VD: "1.0"
   exportedAt: string;
   profile: DoctorProfile;
+  patients?: PatientDemographic[]; // OpenEMR Integration
+  vitals?: VitalsRecord[];         // OpenEMR Integration
   sbars: SBARRecord[];
   shifts: OnCallShift[];
   cases: CaseRecord[];

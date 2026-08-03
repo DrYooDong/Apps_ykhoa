@@ -8,6 +8,7 @@ import { DoctorProfile, DocSpaceNavItem } from './types';
 
 export const DSP_NAV_ITEMS: DocSpaceNavItem[] = [
   { id: 'dashboard', label: 'Tổng quan',      href: '#/docspace',          icon: 'fa-solid fa-house-medical',    phase: 1 },
+  { id: 'patients',  label: 'Bệnh nhân',      href: '#/docspace/patients', icon: 'fa-solid fa-users',            phase: 1 },
   { id: 'soap',      label: 'Sổ Tay SOAP',    href: '#/docspace/soap',     icon: 'fa-solid fa-notes-medical',   phase: 1 },
   { id: 'sbar',      label: 'SBAR',           href: '#/docspace/sbar',     icon: 'fa-solid fa-file-waveform',    phase: 1 },
   { id: 'oncall',    label: 'Checklist công việc', href: '#/docspace/oncall', icon: 'fa-solid fa-list-check',      phase: 1 },
@@ -18,6 +19,7 @@ export const DSP_NAV_ITEMS: DocSpaceNavItem[] = [
   { id: 'living-protocols', label: 'Phác đồ Động', href: '#/docspace/living-protocols', icon: 'fa-solid fa-network-wired', phase: 3 },
   { id: 'sandbox',   label: 'Sandbox Mô phỏng', href: '#/docspace/sandbox', icon: 'fa-solid fa-flask',            phase: 3 },
   { id: 'links',     label: 'Liên kết nhanh', href: '#/docspace/links',    icon: 'fa-solid fa-link',             phase: 1 },
+  { id: 'sync-settings', label: 'Đồng bộ Đa thiết bị', href: '#/docspace/sync-settings', icon: 'fa-solid fa-cloud-arrow-up', phase: 1 },
 ];
 
 // ─── Profile Selector Screen ─────────────────────────────────────
@@ -321,10 +323,10 @@ export function renderSidebar(profile: DoctorProfile, activeId: string): string 
           <i class="fa-solid fa-file-medical"></i>
           <span>Xuất chuẩn FHIR</span>
         </button>
-        <button class="dsp-nav-item dsp-nav-item--footer" id="dspSidebarSync">
+        <a href="#/docspace/sync-settings" class="dsp-nav-item dsp-nav-item--footer" id="dspSidebarSync">
           <i class="fa-solid fa-rotate"></i>
-          <span>Đồng bộ Thiết bị</span>
-        </button>
+          <span>Cấu hình Đồng bộ</span>
+        </a>
         <button class="dsp-nav-item dsp-nav-item--footer" id="dspSidebarSwitch">
           <i class="fa-solid fa-repeat"></i>
           <span>Đổi hồ sơ</span>
@@ -378,3 +380,18 @@ export function renderFeatureUnavailable(title: string, type: 'lab' | 'wip'): st
     </div>
   `;
 }
+
+export function escapeHtml(str: string): string {
+  if (!str) return '';
+  return str.replace(/[&<>"']/g, match => {
+    const map: Record<string, string> = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;',
+    };
+    return map[match] || match;
+  });
+}
+

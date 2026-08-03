@@ -34,21 +34,15 @@ export async function renderCaseLoggerView(profileId: string): Promise<string> {
     ? cases.map(c => {
         const ctxCfg = CONTEXT_OPTIONS.find(o => o.value === c.context);
         return `
-          <div class="dsp-list-item" data-case-id="${c.id}">
-            <div class="dsp-list-item-body">
-              <div class="dsp-case-meta-row">
-                <span class="dsp-badge dsp-badge--context">
-                  <i class="${ctxCfg?.icon || 'fa-solid fa-stethoscope'}"></i> ${ctxCfg?.label || c.context}
-                </span>
-        <div class="dsp-list-item dsp-case-card" style="align-items: flex-start;">
+        <div class="dsp-list-item dsp-case-card" data-case-id="${c.id}" style="align-items: flex-start;">
           <div class="dsp-list-item-icon" style="background: var(--color-bg); color: var(--color-primary); margin-top: 4px;">
-            <i class="${ctx?.icon || 'fa-solid fa-file-medical'}"></i>
+            <i class="${ctxCfg?.icon || 'fa-solid fa-file-medical'}"></i>
           </div>
           <div class="dsp-list-item-body">
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 0.5rem;">
               <div>
                 <span class="dsp-badge" style="background: var(--color-bg); color: var(--color-text-muted); margin-right: 0.5rem;">${c.date}</span>
-                <span class="dsp-badge dsp-badge--primary">${ctx?.label || c.context}</span>
+                <span class="dsp-badge dsp-badge--primary">${ctxCfg?.label || c.context}</span>
               </div>
               <button type="button" class="dsp-icon-btn dsp-icon-btn--danger" data-action="delete-case" data-id="${c.id}" title="Xóa ca này">
                 <i class="fa-solid fa-trash"></i>
@@ -66,8 +60,9 @@ export async function renderCaseLoggerView(profileId: string): Promise<string> {
 
             <div class="dsp-text-sm" style="margin-bottom: 0.25rem;">
               <strong>Xử trí:</strong> ${escapeHtml(c.management)}
-            </div>      </div>
+            </div>
           </div>
+        </div>
         `;
       }).join('')
     : `<div class="dsp-empty-state">

@@ -50,14 +50,42 @@ export class EbmBridge {
   }
 
   private async loadEbmData() {
-    if (typeof (window as any).SAMPLE_STUDIES === 'undefined') {
-      return new Promise<void>((resolve, reject) => {
-        const script = document.createElement('script');
-        script.src = 'content/ebm/guidelines/guidelinesdata.js'; // Relative path from index.html
-        script.onload = () => resolve();
-        script.onerror = () => reject(new Error('Lỗi tải dữ liệu EBM'));
-        document.head.appendChild(script);
-      });
+    if (typeof (window as any).SAMPLE_STUDIES !== 'undefined' && Array.isArray((window as any).SAMPLE_STUDIES) && (window as any).SAMPLE_STUDIES.length > 0) {
+      return;
+    }
+
+    const candidatePaths = [
+      'src/content/ebm/guidelines/guidelinesdata.js',
+      '/src/content/ebm/guidelines/guidelinesdata.js',
+      './src/content/ebm/guidelines/guidelinesdata.js',
+      '../src/content/ebm/guidelines/guidelinesdata.js',
+      'content/ebm/guidelines/guidelinesdata.js',
+      '/content/ebm/guidelines/guidelinesdata.js'
+    ];
+
+    for (const path of candidatePaths) {
+      try {
+        await new Promise<void>((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = path;
+          script.onload = () => {
+            if (typeof (window as any).SAMPLE_STUDIES !== 'undefined' && Array.isArray((window as any).SAMPLE_STUDIES) && (window as any).SAMPLE_STUDIES.length > 0) {
+              resolve();
+            } else {
+              script.remove();
+              reject(new Error('Loaded script but SAMPLE_STUDIES empty'));
+            }
+          };
+          script.onerror = () => {
+            script.remove();
+            reject(new Error(`Failed to load ${path}`));
+          };
+          document.head.appendChild(script);
+        });
+        return;
+      } catch {
+        // Try next path candidate
+      }
     }
   }
 

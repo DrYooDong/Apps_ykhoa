@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bộ Giả lập Ca bệnh Cấp cứu & ICU Tương tác Đa Phân hệ với Monitor Sinh tồn Thời gian thực, ECG Canvas, Âm thanh Beeper và Kiểm tra Tương tác Thuốc – CliniPortal">
+  <title>Virtual Patient Emergency & ICU Simulator – CliniPortal</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+  <style>
+    .sim-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* MONITOR DISPLAY SECTION */
+    .icu-monitor-card {
+      background: #020617;
+      border: 3px solid #1e293b;
+      border-radius: 20px;
+      padding: 20px;
+      color: #38bdf8;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      margin-bottom: 24px;
+      font-family: 'Share Tech Mono', monospace;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .icu-monitor-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #1e293b;
+      margin-bottom: 16px;
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+
+    .icu-monitor-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 868px) {
+      .icu-monitor-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .waveforms-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: #000000;
+      border-radius: 12px;
+      padding: 12px;
+      border: 1px solid #0f172a;
+    }
+
+    .waveform-box {
+      position: relative;
+    }
+
+    .waveform-label {
+      position: absolute;
+      top: 6px;
+      left: 10px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      z-index: 2;
+    }
+
+    canvas.monitor-canvas {
+      width: 100%;
+      height: 90px;
+      display: block;
+      background: #000;
+    }
+
+    /* Vitals Numeric Panel */
+    .vitals-numeric-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .vital-tile {
+      background: #090d16;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .vital-tile-label {
+      font-size: 0.75rem;
+      color: #64748b;
+      text-transform: uppercase;
+    }
+
+    .vital-tile-val {
+      font-size: 2.2rem;
+      font-weight: bold;
+      line-height: 1;
+      margin: 6px 0;
+    }
+
+    .vital-tile-unit {
+      font-size: 0.75rem;
+      color: #64748b;
+      text-align: right;
+    }
+
+    .vital-ecg { color: #22c55e; border-color: rgba(34, 197, 94, 0.3); }
+    .vital-bp  { color: #ef4444; border-color: rgba(239, 68, 68, 0.3); }
+    .vital-spo2{ color: #38bdf8; border-color: rgba(56, 189, 248, 0.3); }
+    .vital-rr  { color: #eab308; border-color: rgba(234, 179, 8, 0.3); }
+
+    /* CLINICAL DASHBOARD LAYOUT */
+    .sim-body-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 992px) {
+      .sim-body-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .panel-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      margin-bottom: 20px;
+    }
+
+    .panel-header {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .panel-header i {
+      color: var(--color-primary);
+    }
+
+    .scenario-selector {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--color-border);
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .patient-info-box {
+      background: rgba(2, 132, 199, 0.06);
+      border-left: 4px solid var(--color-primary);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    /* ACTION BUTTONS & DRUG PICKER */
+    .action-group-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin: 14px 0 8px 0;
+    }
+
+    .action-buttons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+    }
+
+    .btn-action {
+      background: var(--color-bg);
+      border: 1.5px solid var(--color-border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      text-align: left;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-text);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-action:hover {
+      border-color: var(--color-primary);
+      background: rgba(2, 132, 199, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .btn-action-danger {
+      border-color: rgba(239, 68, 68, 0.4);
+    }
+    .btn-action-danger:hover {
+      background: rgba(239, 68, 68, 0.1);
+      border-color: #ef4444;
+    }
+
+    /* LOG TIMELINE */
+    .log-list {
+      max-height: 320px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .log-item {
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      background: var(--color-bg);
+      border-left: 3px solid var(--color-border);
+      line-height: 1.4;
+    }
+
+    .log-success { border-left-color: #22c55e; background: rgba(34, 197, 94, 0.08); }
+    .log-warning { border-left-color: #eab308; background: rgba(234, 179, 8, 0.08); }
+    .log-danger  { border-left-color: #ef4444; background: rgba(239, 68, 68, 0.08); }
+
+    /* ALERT BANNER */
+    .pharmacology-warning-modal {
+      display: none;
+      background: rgba(239, 68, 68, 0.15);
+      border: 2px solid #ef4444;
+      color: #dc2626;
+      padding: 14px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+
+  <main class="sim-container">
+
+    <!-- TOP HEADER -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;">
+      <div>
+        <h1 style="font-size: 1.8rem; font-weight: 800; color: var(--color-text); margin-bottom: 4px;">
+          <i class="fa-solid fa-heart-pulse" style="color: #ef4444;"></i> Virtual Patient ICU & Emergency Simulator
+        </h1>
+        <p style="font-size: 0.9rem; color: var(--color-text-muted);">
+          Mô phỏng ca bệnh cấp cứu tương tác đa phân hệ với Monitor ECG thời gian thực, Âm thanh Beeper & Thuật toán Cảnh báo Dược lý.
+        </p>
+      </div>
+
+      <div style="display: flex; gap: 10px; align-items: center;">
+        <button id="btnSoundToggle" class="dsp-btn-outline" style="padding: 8px 16px; border-radius: 20px; cursor: pointer;">
+          <i class="fa-solid fa-volume-high"></i> Bật Âm Monitor Beeper
+        </button>
+        <button id="btnResetSim" class="dsp-btn-outline" style="padding: 8px 16px; border-radius: 20px; cursor: pointer;">
+          <i class="fa-solid fa-rotate-right"></i> Reset Ca Bệnh
+        </button>
+      </div>
+    </div>
+
+    <!-- REALTIME ICU MONITOR DISPLAY -->
+    <div class="icu-monitor-card">
+      <div class="icu-monitor-header">
+        <div><i class="fa-solid fa-bed-pulse"></i> PATIENT MONITOR — BED 04 (ICU EMERGENCY)</div>
+        <div id="simTimer">Thời gian cấp cứu: 00:00</div>
+      </div>
+
+      <div class="icu-monitor-grid">
+        <!-- WAVEFORMS -->
+        <div class="waveforms-container">
+          <div class="waveform-box">
+            <div class="waveform-label" style="color: #22c55e;">LEAD II (ECG) — <span id="rhythmText">Sinus Tachycardia</span></div>
+            <canvas id="ecgCanvas" class="monitor-canvas"></canvas>
+          </div>
+          <div class="waveform-box">
+            <div class="waveform-label" style="color: #38bdf8;">SpO2 PLETH</div>
+            <canvas id="spo2Canvas" class="monitor-canvas"></canvas>
+          </div>
+        </div>
+
+        <!-- NUMERIC VITALS -->
+        <div class="vitals-numeric-panel">
+          <div class="vital-tile vital-ecg">
+            <div class="vital-tile-label">HR / Pulse</div>
+            <div class="vital-tile-val" id="valHR">135</div>
+            <div class="vital-tile-unit">BPM</div>
+          </div>
+
+          <div class="vital-tile vital-bp">
+            <div class="vital-tile-label">NIBP (Sys/Dia)</div>
+            <div class="vital-tile-val" id="valBP">75/45</div>
+            <div class="vital-tile-unit">mmHg</div>
+          </div>
+
+          <div class="vital-tile vital-spo2">
+            <div class="vital-tile-label">SpO2</div>
+            <div class="vital-tile-val" id="valSpO2">86%</div>
+            <div class="vital-tile-unit">Room Air</div>
+          </div>
+
+          <div class="vital-tile vital-rr">
+            <div class="vital-tile-label">Resp Rate</div>
+            <div class="vital-tile-val" id="valRR">32</div>
+            <div class="vital-tile-unit">rpm</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHARMACOLOGY / INTERACTION WARNING BANNER -->
+    <div id="pharmacologyWarning" class="pharmacology-warning-modal">
+      <i class="fa-solid fa-triangle-exclamation"></i> <span id="warningMessage"></span>
+    </div>
+
+    <!-- CLINICAL SIMULATOR MAIN GRID -->
+    <div class="sim-body-grid">
+
+      <!-- LEFT: SCENARIO & CLINICAL ACTIONS -->
+      <div>
+        <div class="panel-card">
+          <div class="panel-header">
+            <i class="fa-solid fa-user-doctor"></i> Chọn Ca Bệnh Giả Lập
+          </div>
+
+          <select id="scenarioSelect" class="scenario-selector">
+            <option value="anaphylaxis">Ca 1: Sốc Phản Vệ Độ III do Thuốc Kháng Sinh (Anaphylaxis)</option>
+            <option value="vtach">Ca 2: Cơn Nhịp Nhanh Thất Có Mạch (VTach with Pulse)</option>
+            <option value="septic">Ca 3: Sốc Nhiễm Khuẩn Nặng (Septic Shock)</option>
+          </select>
+
+          <div id="patientInfoBox" class="patient-info-box">
+            <!-- Rendered by JS -->
+          </div>
+
+          <div class="panel-header" style="margin-top: 20px;">
+            <i class="fa-solid fa-hand-holding-medical"></i> Bảng Ra Y Lệnh Cấp Cứu Tương Tác
+          </div>
+
+          <!-- AIRWAY & OXYGEN -->
+          <div class="action-group-title"><i class="fa-solid fa-wind"></i> Đường thở & Hô hấp</div>
+          <div class="action-buttons-grid">
+            <button class="btn-action" onclick="applyAction('oxygen_mask')"><i class="fa-solid fa-mask-ventilator"></i> Thở Oxy Mask 10L/p</button>
+            <button class="btn-action" onclick="applyAction('intubate')"><i class="fa-solid fa-pipe-collar"></i> Đặt Nội Khí Quản</button>
+            <button class="btn-action" onclick="applyAction('salbutamol')"><i class="fa-solid fa-spray-can"></i> Phun mù Salbutamol</button>
+          </div>
+
+          <!-- CIRCULATION & FLUIDS -->
+          <div class="action-group-title"><i class="fa-solid fa-droplet"></i> Tuần hoàn & Dịch truyền</div>
+          <div class="action-buttons-grid">
+            <button class="btn-action" onclick="applyAction('iv_bolus')"><div style="color:#0284c7;"><i class="fa-solid fa-bottle-droplet"></i> Xả NaCl 0.9% 500ml</div></button>
+            <button class="btn-action btn-action-danger" onclick="applyAction('cardioversion')"><i class="fa-solid fa-bolt"></i> Sốc Điện Đồng Bộ 100J</button>
+          </div>
+
+          <!-- EMERGENCY DRUGS WITH PHARMACOLOGY SAFETY -->
+          <div class="action-group-title"><i class="fa-solid fa-pills"></i> Thuốc Cấp cứu (Safety Engine)</div>
+          <div class="action-buttons-grid">
+            <button class="btn-action" onclick="applyAction('adrenaline_im')"><strong style="color:#dc2626;"><i class="fa-solid fa-syringe"></i> Adrenaline 0.5mg IM</strong></button>
+            <button class="btn-action" onclick="applyAction('noradrenaline_iv')"><i class="fa-solid fa-pump-medical"></i> Truyền Noradrenaline</button>
+            <button class="btn-action" onclick="applyAction('amiodarone')"><i class="fa-solid fa-capsules"></i> Amiodarone 150mg IV</button>
+            <button class="btn-action" onclick="applyAction('solumedrol')"><i class="fa-solid fa-vial"></i> Solu-Medrol 40mg IV</button>
+            <button class="btn-action btn-action-danger" onclick="applyAction('propranolol')"><i class="fa-solid fa-ban"></i> Propranolol (Thử chống chỉ định)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: CLINICAL LOG & CASE EVALUATION -->
+      <div>
+        <div class="panel-card">
+          <div class="panel-header">
+            <i class="fa-solid fa-list-check"></i> Nhật Ký Diễn Tiến & Đánh Giá Lâm Sàng
+          </div>
+
+          <div id="simLogList" class="log-list">
+            <!-- Logs rendered here -->
+          </div>
+
+          <hr style="margin: 20px 0; border: none; border-top: 1px dashed var(--color-border);" />
+
+          <div style="background: rgba(34, 197, 94, 0.06); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 12px; padding: 16px;">
+            <h4 style="margin: 0 0 8px 0; color: #16a34a; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;">
+              <i class="fa-solid fa-graduation-cap"></i> Mục tiêu Cấp cứu (Clinical Pearl)
+            </h4>
+            <div id="clinicalPearlsText" style="font-size: 0.875rem; color: var(--color-text); line-height: 1.5;">
+              <!-- Pearls rendered here -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+  <!-- SCRIPTS -->
+  <script src="../../../../js/main.js" defer></script>
+  <script src="../../../../components/header.js" defer></script>
+  <script src="../../../../components/footer.js" defer></script>
+
+  <script>
+    // ─────────────────────────────────────────────
+    // SIMULATOR STATE & SCENARIOS
+    // ─────────────────────────────────────────────
+    const SCENARIOS = {
+      anaphylaxis: {
+        title: 'Ca 1: Sốc Phản Vệ Độ III do Thuốc Kháng Sinh',
+        patient: 'Bệnh nhân nam, 35 tuổi, đang tiêm Cefuroxime tại phòng cấp cứu. Sau 3 phút xuất hiện mẩn đỏ toàn thân, khó thở rít thanh quản, vã mồ hôi, huyết áp tụt nhanh.',
+        vitals: { hr: 140, sbp: 70, dbp: 40, spo2: 84, rr: 34, rhythm: 'Sinus Tachycardia' },
+        pearls: '<strong>Adrenaline tiêm bắp (IM)</strong> mặt ngoài đùi là THUỐC THIẾT YẾU HÀNG ĐẦU. Không được hoãn Adrenaline để dùng Corticoid hay Histamin!',
+        correctActions: ['adrenaline_im', 'oxygen_mask', 'iv_bolus'],
+        contraindicated: ['propranolol']
+      },
+      vtach: {
+        title: 'Ca 2: Cơn Nhịp Nhanh Thất Có Mạch (VTach with Pulse)',
+        patient: 'Bệnh nhân nam, 58 tuổi, tiền sử Nhồi máu cơ tim cũ. Vào viện vì đau ngực dữ dội, hồi hộp đánh trống ngực, vã mồ hôi lạnh, choáng váng.',
+        vitals: { hr: 185, sbp: 85, dbp: 50, spo2: 91, rr: 28, rhythm: 'Ventricular Tachycardia (VT)' },
+        pearls: 'Nếu nhịp nhanh thất có mạch nhưng huyết áp không ổn định (tụt HA, đau ngực): Chỉ định <strong>Sốc điện đồng bộ (Synchronized Cardioversion)</strong> ngay lập tức!',
+        correctActions: ['cardioversion', 'amiodarone', 'oxygen_mask'],
+        contraindicated: []
+      },
+      septic: {
+        title: 'Ca 3: Sốc Nhiễm Khuẩn Nặng (Septic Shock)',
+        patient: 'Bệnh nhân nữ, 68 tuổi, sốt cao 39.5°C kèm ho đờm đục 3 ngày. Hiện lơ mơ, da nổi bông, huyết áp tụt, Lactate máu 5.2 mmol/L.',
+        vitals: { hr: 128, sbp: 75, dbp: 45, spo2: 88, rr: 30, rhythm: 'Sinus Tachycardia' },
+        pearls: 'Gói hồi sức Sốc nhiễm khuẩn trong Giờ đầu (Hour-1 Bundle): Hồi sức dịch 30ml/kg Ringer Lactate/NaCl 0.9%, dùng <strong>Noradrenaline</strong> nếu HA không lên.',
+        correctActions: ['iv_bolus', 'noradrenaline_iv', 'oxygen_mask'],
+        contraindicated: []
+      }
+    };
+
+    let currentScenarioKey = 'anaphylaxis';
+    let currentVitals = { ...SCENARIOS.anaphylaxis.vitals };
+    let simStartTime = Date.now();
+    let isSoundOn = false;
+    let audioCtx = null;
+
+    // ─────────────────────────────────────────────
+    // WEB AUDIO API BEEP ENGINE
+    // ─────────────────────────────────────────────
+    function playBeep() {
+      if (!isSoundOn) return;
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(880, audioCtx.currentTime); // A5 note
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.1);
+      } catch (e) {}
+    }
+
+    // ─────────────────────────────────────────────
+    // CANVAS MONITOR WAVEFORM RENDERER
+    // ─────────────────────────────────────────────
+    let ecgX = 0;
+    let spo2X = 0;
+
+    function drawECG() {
+      const canvas = document.getElementById('ecgCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const width = canvas.width = canvas.parentElement.clientWidth;
+      const height = canvas.height = 90;
+
+      // Clear trail effect
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(ecgX, 0, 8, height);
+
+      ctx.strokeStyle = '#22c55e';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      
+      const midY = height / 2;
+      const speed = currentVitals.hr / 60 * 3;
+      const step = ecgX % 60;
+
+      let y = midY;
+      if (currentVitals.rhythm.includes('Ventricular Tachycardia')) {
+        // Sine wave sine simulation for VTach
+        y = midY + Math.sin(ecgX * 0.2) * 30;
+      } else {
+        // PQRST simulation
+        if (step > 10 && step < 14) y = midY - 6;          // P wave
+        else if (step > 20 && step < 23) y = midY + 10;     // Q wave
+        else if (step >= 23 && step <= 27) {                // R wave Spike
+          y = midY - 35;
+          if (step === 25) playBeep();
+        }
+        else if (step > 27 && step < 30) y = midY + 18;     // S wave
+        else if (step > 40 && step < 48) y = midY - 12;     // T wave
+      }
+
+      ctx.moveTo(ecgX, midY);
+      ctx.lineTo(ecgX + speed, y);
+      ctx.stroke();
+
+      ecgX = (ecgX + speed) % width;
+    }
+
+    function drawSpO2() {
+      const canvas = document.getElementById('spo2Canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const width = canvas.width = canvas.parentElement.clientWidth;
+      const height = canvas.height = 90;
+
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(spo2X, 0, 8, height);
+
+      ctx.strokeStyle = '#38bdf8';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+
+      const midY = height / 2;
+      const speed = currentVitals.hr / 60 * 3;
+      const step = spo2X % 60;
+      let y = midY + Math.sin(step * 0.1) * 20;
+
+      ctx.moveTo(spo2X, midY);
+      ctx.lineTo(spo2X + speed, y);
+      ctx.stroke();
+
+      spo2X = (spo2X + speed) % width;
+    }
+
+    function monitorLoop() {
+      drawECG();
+      drawSpO2();
+      requestAnimationFrame(monitorLoop);
+    }
+
+    // ─────────────────────────────────────────────
+    // UI UPDATERS & ACTION LOGIC
+    // ─────────────────────────────────────────────
+    function updateVitalsUI() {
+      document.getElementById('valHR').textContent = currentVitals.hr;
+      document.getElementById('valBP').textContent = `${currentVitals.sbp}/${currentVitals.dbp}`;
+      document.getElementById('valSpO2').textContent = `${currentVitals.spo2}%`;
+      document.getElementById('valRR').textContent = currentVitals.rr;
+      document.getElementById('rhythmText').textContent = currentVitals.rhythm;
+    }
+
+    function loadScenario(key) {
+      currentScenarioKey = key;
+      const sc = SCENARIOS[key];
+      currentVitals = { ...sc.vitals };
+      simStartTime = Date.now();
+
+      document.getElementById('patientInfoBox').innerHTML = `
+        <strong style="color: var(--color-primary);">${sc.title}</strong><br/>
+        ${sc.patient}
+      `;
+      document.getElementById('clinicalPearlsText').innerHTML = sc.pearls;
+      document.getElementById('pharmacologyWarning').style.display = 'none';
+
+      document.getElementById('simLogList').innerHTML = '';
+      addLog(`Bắt đầu tiếp nhận ca bệnh: ${sc.title}`, 'info');
+      updateVitalsUI();
+    }
+
+    function addLog(message, type = 'info') {
+      const list = document.getElementById('simLogList');
+      const timeStr = new Date().toLocaleTimeString('vi-VN');
+      const item = document.createElement('div');
+      item.className = `log-item log-${type === 'success' ? 'success' : type === 'danger' ? 'danger' : type === 'warning' ? 'warning' : ''}`;
+      item.innerHTML = `<strong>[${timeStr}]</strong> ${message}`;
+      list.prepend(item);
+    }
+
+    function applyAction(actionKey) {
+      const sc = SCENARIOS[currentScenarioKey];
+      const warningBox = document.getElementById('pharmacologyWarning');
+      warningBox.style.display = 'none';
+
+      // Check Contraindications (Pharmacology Engine)
+      if (sc.contraindicated.includes(actionKey)) {
+        warningBox.style.display = 'block';
+        document.getElementById('warningMessage').textContent = 
+          '❌ NGUY HIỂM CHỐNG CHỈ ĐỊNH: Dùng Propranolol (Beta-blocker) khi bệnh nhân đang sốc/co thắt phế quản cấp tính làm tụt huyết áp tử vong!';
+        addLog('Y LỆNH NGUY HIỂM: Propranolol làm bệnh nhân ngưng tim!', 'danger');
+        currentVitals.hr = 35;
+        currentVitals.sbp = 40;
+        currentVitals.rhythm = 'Severe Bradycardia / PEA';
+        updateVitalsUI();
+        return;
+      }
+
+      // Apply Actions
+      switch (actionKey) {
+        case 'adrenaline_im':
+          addLog('Đã tiêm Adrenaline 0.5mg tiêm bắp (IM) đùi ngoài.', 'success');
+          if (currentScenarioKey === 'anaphylaxis') {
+            currentVitals.sbp = 105;
+            currentVitals.dbp = 65;
+            currentVitals.hr = 98;
+            currentVitals.spo2 = 94;
+            currentVitals.rr = 20;
+            currentVitals.rhythm = 'Sinus Rhythm';
+            addLog('✅ Huyết áp hồi phục ngay 105/65 mmHg! Phế quản giãn, khó thở giảm rõ.', 'success');
+          }
+          break;
+
+        case 'oxygen_mask':
+          addLog('Đã cho thở Oxy Mask kính 10L/phút.', 'success');
+          currentVitals.spo2 = Math.min(100, currentVitals.spo2 + 10);
+          break;
+
+        case 'iv_bolus':
+          addLog('Đã xả nhanh NaCl 0.9% 500ml IV.', 'success');
+          currentVitals.sbp += 15;
+          currentVitals.dbp += 10;
+          break;
+
+        case 'cardioversion':
+          addLog('Đã thực hiện Sốc điện đồng bộ 100J (Synchronized Cardioversion).', 'success');
+          if (currentScenarioKey === 'vtach') {
+            currentVitals.rhythm = 'Sinus Rhythm';
+            currentVitals.hr = 92;
+            currentVitals.sbp = 115;
+            currentVitals.dbp = 75;
+            addLog('✅ Cắt cơn VTach thành công! Nhịp về xoang 92 BPM, huyết áp ổn định.', 'success');
+          }
+          break;
+
+        case 'noradrenaline_iv':
+          addLog('Đã duy trì truyền tĩnh mạch Noradrenaline.', 'success');
+          currentVitals.sbp = 110;
+          currentVitals.dbp = 70;
+          currentVitals.hr = 95;
+          break;
+
+        default:
+          addLog(`Đã thực hiện y lệnh cấp cứu.`, 'info');
+      }
+
+      updateVitalsUI();
+    }
+
+    // ─────────────────────────────────────────────
+    // EVENT LISTENERS
+    // ─────────────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+      loadScenario('anaphylaxis');
+      monitorLoop();
+
+      document.getElementById('scenarioSelect').addEventListener('change', (e) => {
+        loadScenario(e.target.value);
+      });
+
+      document.getElementById('btnResetSim').addEventListener('click', () => {
+        loadScenario(currentScenarioKey);
+      });
+
+      document.getElementById('btnSoundToggle').addEventListener('click', () => {
+        isSoundOn = !isSoundOn;
+        const btn = document.getElementById('btnSoundToggle');
+        btn.innerHTML = isSoundOn 
+          ? '<i class="fa-solid fa-volume-high" style="color:#22c55e;"></i> Âm Monitor Beeper: BẬT' 
+          : '<i class="fa-solid fa-volume-xmark"></i> Bật Âm Monitor Beeper';
+      });
+
+      // Timer counter
+      setInterval(() => {
+        const sec = Math.floor((Date.now() - simStartTime) / 1000);
+        const m = String(Math.floor(sec / 60)).padStart(2, '0');
+        const s = String(sec % 60).padStart(2, '0');
+        document.getElementById('simTimer').textContent = `Thời gian cấp cứu: ${m}:${s}`;
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
