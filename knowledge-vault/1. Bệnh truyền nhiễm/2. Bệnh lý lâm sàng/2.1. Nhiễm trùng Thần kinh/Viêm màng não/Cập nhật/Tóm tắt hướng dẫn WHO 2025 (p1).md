@@ -1,8 +1,12 @@
 ---
-title: "WHO 2026"
-specialty: "Bệnh truyền nhiễm"
-tags: ["Bệnh truyền nhiễm", "Bệnh lý cụ thể", "Viêm màng não", "Cập nhật"]
-last_updated: "2026-07-28"
+title: WHO 2025
+specialty: Bệnh truyền nhiễm
+tags:
+  - Bệnh truyền nhiễm
+  - Bệnh lý cụ thể
+  - Viêm màng não
+  - Cập nhật
+last_updated: 2026-07-28
 ---
 ### 1. Nội Dung Hướng Dẫn Chi Tiết: Khuyến Cáo Mới Nhất Từ WHO (Phần 1 - Giới Thiệu & Chẩn Đoán)
 

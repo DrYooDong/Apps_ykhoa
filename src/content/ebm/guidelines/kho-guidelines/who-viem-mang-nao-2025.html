@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tóm tắt Hướng dẫn Chẩn đoán, Điều trị và Chăm sóc Viêm màng não 2025 của Tổ chức Y tế Thế giới (WHO). Tiêu chuẩn DNT, CT sọ não, Khung giờ vàng 1h kháng sinh, Dexamethasone và sàng lọc thính lực.">
+  <title>Hướng Dẫn Chẩn Đoán & Điều Trị Viêm Màng Não WHO 2025 – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --accent: #6366f1;
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --green: #10b981; --green-bg: #064e3b; --green-light: #047857;
+      --orange: #f59e0b; --orange-bg: #78350f; --orange-light: #b45309;
+      --red: #ef4444; --red-bg: #7f1d1d; --red-light: #b91c1c;
+      --blue: #3b82f6; --blue-bg: #1e3a8a; --blue-light: #1d4ed8;
+      --teal: #14b8a6; --teal-bg: #115e59; --teal-light: #0f766e;
+      --purple: #8b5cf6; --purple-bg: #4c1d95; --purple-light: #6d28d9;
+      --accent: #818cf8;
+      --bg: #0f172a; --surface: #1e293b; --surface-2: #0f172a;
+      --border: #334155; --border-light: #1e293b;
+      --text: #f8fafc; --text-muted: #cbd5e1; --text-faint: #64748b;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; transition: background var(--tr), color var(--tr); }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; transition: background var(--tr), border-color var(--tr); }
+    [data-theme="dark"] .topnav { background: rgba(30, 41, 59, 0.9); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--purple-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-theme-toggle { margin-left: auto; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.1rem; padding: 0.5rem; border-radius: 50%; transition: background var(--tr); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; }
+    .topnav-theme-toggle:hover { background: var(--surface-2); color: var(--accent); }
+
+    /* QUICK NAV BAR */
+    .quicknav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); display: flex; gap: 0.5rem; padding: 0.6rem 1.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .quicknav::-webkit-scrollbar { height: 3px; }
+    .quicknav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .quicknav-link { display: inline-flex; align-items: center; white-space: nowrap; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); text-decoration: none; padding: 0.35rem 0.85rem; border-radius: 20px; background: var(--surface-2); border: 1px solid var(--border-light); transition: all var(--tr); }
+    .quicknav-link:hover, .quicknav-link.active { background: var(--purple-bg); color: var(--accent); border-color: var(--purple-light); }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #311b92 0%, #6366f1 45%, #b91c1c 100%); color: #fff; padding: 3.5rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(199, 210, 254, 0.25) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(239, 68, 68, 0.2) 0%, transparent 55%); }
+    .hero-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.24); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; color: #c7d2fe; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.85rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #c7d2fe, #fca5a5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.65em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.2rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.88; max-width: 780px; margin-bottom: 2rem; line-height: 1.65; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; font-size: 0.8rem; opacity: 0.8; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
+
+    /* PILLARS STRIP */
+    .pillars { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.75rem 1.5rem; }
+    .pillars-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .pillar { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.1rem 1.2rem; display: flex; align-items: flex-start; gap: 0.85rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .pillar::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 4px 0 0 4px; }
+    .pillar.p1::before { background: var(--purple); }
+    .pillar.p2::before { background: var(--blue); }
+    .pillar.p3::before { background: var(--red); }
+    .pillar.p4::before { background: var(--teal); }
+    .pillar:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .pillar-icon { font-size: 1.6rem; flex-shrink: 0; line-height: 1; }
+    .pillar-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); margin-bottom: 0.25rem; }
+    .pillar-desc { font-size: 0.76rem; color: var(--text-muted); line-height: 1.45; }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 1000px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    /* SECTION CARDS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+    .sec-hdr { padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; gap: 0.75rem; }
+    .sec-hdr-icon { font-size: 1.2rem; color: var(--accent); }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--text); }
+    .sec-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .sec-subtitle::after { content: ''; flex: 1; height: 1px; background: var(--border-light); }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; font-size: 0.85rem; line-height: 1.6; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); color: var(--text); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); color: var(--text); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); color: var(--text); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); color: var(--text); }
+    .infobox.teal { background: var(--teal-bg); border: 1px solid var(--teal-light); border-left: 4px solid var(--teal); color: var(--text); }
+    .infobox.purple { background: var(--purple-bg); border: 1px solid var(--purple-light); border-left: 4px solid var(--purple); color: var(--text); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--text); }
+
+    /* TABLES */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; border: 1px solid var(--border-light); }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; min-width: 650px; text-align: left; }
+    .data-table thead th { padding: 0.75rem 1rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; background: var(--surface-2); color: var(--text-muted); border-bottom: 1px solid var(--border-light); }
+    .data-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .data-table tbody tr:last-child td { border-bottom: none; }
+    .data-table tbody tr:hover td { background: rgba(0,0,0,0.015); }
+    [data-theme="dark"] .data-table tbody tr:hover td { background: rgba(255,255,255,0.02); }
+
+    /* BADGES & TAGS */
+    .badge { display: inline-flex; align-items: center; gap: 4px; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.72rem; font-weight: 700; white-space: nowrap; }
+    .badge-green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-light); }
+    .badge-orange { background: var(--orange-bg); color: var(--orange); border: 1px solid var(--orange-light); }
+    .badge-red { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-light); }
+    .badge-blue { background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-light); }
+    .badge-purple { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-light); }
+
+    .rx-tag { display: inline-block; background: var(--surface-2); color: var(--text-muted); font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; padding: 0.15rem 0.5rem; border-radius: 6px; border: 1px solid var(--border-light); margin: 0.15rem 0.1rem; }
+    .rx-tag.highlight { background: var(--purple-bg); color: var(--purple); border-color: var(--purple-light); font-weight: 600; }
+    .rx-tag.alert { background: var(--red-bg); color: var(--red); border-color: var(--red-light); font-weight: 600; }
+
+    /* FLOWCHART & ALGORITHM STEPS */
+    .algo-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; }
+    .algo-step { display: flex; align-items: flex-start; gap: 0.85rem; }
+    .algo-num { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.8rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .algo-content { flex: 1; font-size: 0.84rem; line-height: 1.6; }
+    .algo-content strong { color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; }
+
+    /* MCQ QUIZ */
+    .mcq-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; margin-bottom: 1rem; }
+    .mcq-card:last-child { margin-bottom: 0; }
+    .mcq-q { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--text); margin-bottom: 0.85rem; display: flex; gap: 0.5rem; }
+    .mcq-opts { display: flex; flex-direction: column; gap: 0.5rem; }
+    .mcq-opt { padding: 0.65rem 0.9rem; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); font-size: 0.83rem; cursor: pointer; transition: all var(--tr); display: flex; align-items: center; gap: 0.5rem; }
+    .mcq-opt:hover { border-color: var(--accent); background: var(--purple-bg); }
+    .mcq-opt.selected-correct { border-color: var(--green); background: var(--green-bg); color: #065f46; font-weight: 600; }
+    .mcq-opt.selected-wrong { border-color: var(--red); background: var(--red-bg); color: #991b1b; }
+    .mcq-exp { margin-top: 0.85rem; padding: 0.85rem 1rem; border-radius: 10px; background: var(--purple-bg); border-left: 4px solid var(--purple); font-size: 0.82rem; color: var(--text); display: none; line-height: 1.6; }
+    .mcq-exp.show { display: block; }
+
+    /* CITATION & FOOTER */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; font-style: italic; }
+    .page-footer { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem 4rem; text-align: center; font-size: 0.8rem; color: var(--text-faint); border-top: 1px solid var(--border-light); }
+
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1.1rem 1rem; }
+      .pillars-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <i class="fa-solid fa-chevron-left"></i>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">WHO 2025 – Hướng dẫn Chẩn đoán, Điều trị & Chăm sóc Viêm Màng Não</div>
+    <button class="topnav-theme-toggle" id="themeToggleBtn" aria-label="Đổi giao diện">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </nav>
+
+  <!-- QUICK NAV BAR -->
+  <div class="quicknav">
+    <a href="#sec-ganhnang" class="quicknav-link active">1. Gánh Nặng & 3 Mục Tiêu 2030</a>
+    <a href="#sec-tacnhan" class="quicknav-link">2. Tác Nhân Theo Tuổi & Miễn Dịch</a>
+    <a href="#sec-chandoan" class="quicknav-link">3. Quy Trình DNT & CT Sọ Não</a>
+    <a href="#sec-khangsinh" class="quicknav-link">4. "Khung Giờ Vàng 1h" Kháng Sinh</a>
+    <a href="#sec-duphong" class="quicknav-link">5. Steroid & Dự Phòng Tiếp Xúc</a>
+    <a href="#sec-capcuu" class="quicknav-link">6. Tăng ALNS, Dịch & Co Giật</a>
+    <a href="#sec-dichung" class="quicknav-link">7. Phục Hồi & Thính Lực</a>
+    <a href="#sec-mcq" class="quicknav-link">8. Cheat-Sheet & MCQ Quiz</a>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge"><i class="fa-solid fa-globe"></i> TỔ CHỨC Y TẾ THẾ GIỚI (WHO) · GUIDELINES 2025</div>
+      <h1 class="hero-title">
+        <span>GLOBAL MENINGITIS GUIDELINES 2025 · NHIỄM TRÙNG THẦN KINH</span>
+        HƯỚNG DẪN CHẨN ĐOÁN, ĐIỀU TRỊ & QUẢN LÝ DI CHỨNG VIÊM MÀNG NÃO
+      </h1>
+      <p class="hero-subtitle">
+        Khuyến cáo toàn cầu chính thức từ WHO (2025): Lộ trình "Defeating meningitis by 2030" (WHA73.9), tiêu chuẩn chẩn đoán DNT/PCR, 6 chỉ định bắt buộc CT trước chọc dò tủy sống (LP), "Khung giờ vàng 1 giờ" kháng sinh tĩnh mạch theo kinh nghiệm, phác đồ Dexamethasone hỗ trợ và sàng lọc thính lực khẩn cấp.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><i class="fa-solid fa-calendar-check"></i> Ban hành: 2025</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-building-columns"></i> Tổ chức: World Health Organization (WHO)</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-bullseye"></i> Lộ trình: Defeating Meningitis by 2030</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-file-medical"></i> ISBN: 9789240108042</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLARS STRIP -->
+  <div class="pillars">
+    <div class="pillars-inner">
+      <div class="pillar p1">
+        <div class="pillar-icon">🎯</div>
+        <div>
+          <div class="pillar-title">Lộ Trình 2030 (WHA73.9)</div>
+          <div class="pillar-desc">Loại bỏ dịch bệnh vi khuẩn, giảm 50% ca mắc & 70% tử vong do vi khuẩn có vắc-xin.</div>
+        </div>
+      </div>
+      <div class="pillar p2">
+        <div class="pillar-icon">🧪</div>
+        <div>
+          <div class="pillar-title">Tiêu Chuẩn Chẩn Đoán</div>
+          <div class="pillar-desc">Chọc dò tủy sống (LP) sớm trước kháng sinh; 6 dấu hiệu nguy cơ bắt buộc chụp CT trước LP.</div>
+        </div>
+      </div>
+      <div class="pillar p3">
+        <div class="pillar-icon">⏱️</div>
+        <div>
+          <div class="pillar-title">"Khung Giờ Vàng 1 Giờ"</div>
+          <div class="pillar-desc">Kháng sinh tĩnh mạch trong 1h ngay khi nghi ngờ. Ceftriaxone/Cefotaxime &plus; Dexamethasone.</div>
+        </div>
+      </div>
+      <div class="pillar p4">
+        <div class="pillar-icon">🎧</div>
+        <div>
+          <div class="pillar-title">Sàng Lọc Thính Lực & ADL</div>
+          <div class="pillar-desc">Sàng lọc thính lực trước xuất viện/trong 4 tuần; Cấy ốc tai điện tử khẩn cấp tránh cốt hóa ốc tai.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE CONTENT -->
+  <div class="page-content">
+
+    <!-- SEC 1: GÁNH NẶNG & 3 MỤC TIÊU 2030 -->
+    <div class="sec-card" id="sec-ganhnang">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-earth-americas sec-hdr-icon"></i>
+        <h2 class="sec-title">1. Gánh Nặng Bệnh Tật Toàn Cầu & Lộ Trình Chiến Lược WHO 2030</h2>
+      </div>
+      <div class="sec-body">
+        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.65;">
+          Viêm màng não là mối đe dọa sức khỏe cộng đồng nghiêm trọng. Năm 2019, ước tính toàn cầu có <strong>2,51 triệu ca mắc</strong> và <strong>236.000 ca tử vong</strong>. Trẻ em dưới 5 tuổi gánh chịu nặng nề nhất (1,28 triệu ca mắc, 112.000 ca tử vong). <strong>1 trong 5 người sống sót</strong> phải chịu di chứng tàn tật lâu dài về thể chất và tâm thần.
+        </p>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-flag-checkered"></i> 3 Mục tiêu Chiến lược Lộ trình "Defeating Meningitis by 2030" (Nghị quyết WHA73.9)</div>
+        <div class="algo-box">
+          <div class="algo-step">
+            <div class="algo-num">1</div>
+            <div class="algo-content">
+              <strong>Loại bỏ hoàn toàn các vụ dịch:</strong> Loại bỏ triệt để các vụ dịch viêm màng não do vi khuẩn trên phạm vi toàn cầu.
+            </div>
+          </div>
+          <div class="algo-step">
+            <div class="algo-num">2</div>
+            <div class="algo-content">
+              <strong>Giảm tỷ lệ ca mắc &amp; tử vong:</strong> Giảm <strong>50% số ca mắc</strong> và <strong>70% số ca tử vong</strong> do các tác nhân vi khuẩn có thể phòng ngừa bằng vắc-xin (Phế cầu, Não mô cầu, <em>H. influenzae</em> typ b).
+            </div>
+          </div>
+          <div class="algo-step">
+            <div class="algo-num">3</div>
+            <div class="algo-content">
+              <strong>Cải thiện chất lượng cuộc sống:</strong> Giảm thiểu di chứng tàn tật và nâng cao phục hồi chức năng sau viêm màng não do bất kỳ nguyên nhân nào.
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-stethoscope"></i> Biểu Hiện Lâm Sàng &amp; Biến Chứng Cấp Tính</div>
+        <div class="infobox warning">
+          <div class="infobox-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div>
+            <strong>Đặc điểm lâm sàng quan trọng:</strong>
+            <br>• <strong>Tam chứng cổ điển (Sốt + Cứng cổ + Rối loạn tri giác / Đau đầu):</strong> Chỉ xuất hiện ở khoảng 50% người bệnh. Tuy nhiên, nếu <em>thiếu vắng cả 4 biểu hiện này</em>, khả năng mắc viêm màng não vi khuẩn là rất thấp.
+            <br>• <strong>Dấu hiệu Brudzinski &amp; Kernig:</strong> Cần thăm khám thường quy nhưng độ nhạy hạn chế (không thể dùng sự vắng mặt để loại trừ).
+            <br>• <strong>Trẻ nhũ nhi &amp; trẻ nhỏ:</strong> Triệu chứng rất mơ hồ: sốt hoặc hạ thân nhiệt, thóp phồng, lơ mơ, dễ kích thích, bú kém, khóc thét giọng cao, thở rên, co giật.
+            <br>• <strong>Biến chứng đe dọa tính mạng:</strong> Tăng áp lực nội sọ (ICP) ➔ Tụt não; Nhiễm trùng huyết / Sốc nhiễm trùng, DIC. Ở bệnh nhân nhiễm não mô cầu (<em>meningococcemia</em>), xuất hiện <strong>ban xuất huyết hoại tử không mất khi ấn kính</strong> (<em>petechial/purpuric rash</em>).
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SEC 2: TÁC NHÂN THEO TUỔI & MIỄN DỊCH -->
+    <div class="sec-card" id="sec-tacnhan">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-bacteriophage sec-hdr-icon"></i>
+        <h2 class="sec-title">2. Tác Nhân Gây Bệnh Theo Độ Tuổi & Tình Trạng Miễn Dịch (Bảng WHO 1.1)</h2>
+      </div>
+      <div class="sec-body">
+        <p style="font-size: 0.88rem; color: var(--text-muted);">
+          Sự phân bố tác nhân vi khuẩn tùy thuộc chặt chẽ vào độ tuổi và tình trạng miễn dịch, định hướng quan trọng cho phác đồ kháng sinh kinh nghiệm ban đầu.
+        </p>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Trẻ em (&gt; 1 tháng) &amp; Trẻ vị thành niên</th>
+                <th>Người lớn không suy giảm miễn dịch</th>
+                <th>Người lớn suy giảm miễn dịch hoặc &gt; 60 tuổi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  1. <em>Neisseria meningitidis</em> (Phổ biến nhất)<br>
+                  2. <em>Streptococcus pneumoniae</em><br>
+                  3. <em>Haemophilus influenzae</em><br>
+                  4. <em>Non-typhoidal Salmonella</em>
+                </td>
+                <td>
+                  1. <em>Streptococcus pneumoniae</em> (Phổ biến nhất)<br>
+                  2. <em>Neisseria meningitidis</em>
+                </td>
+                <td>
+                  1. <em>Streptococcus pneumoniae</em><br>
+                  2. <em>Neisseria meningitidis</em><br>
+                  3. <strong><em>Listeria monocytogenes</em></strong> <span class="badge badge-red">Nguy cơ cao</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="infobox info">
+          <div class="infobox-icon"><i class="fa-solid fa-circle-info"></i></div>
+          <div>
+            <strong>Yếu tố nguy cơ nhiễm <em>Listeria monocytogenes</em>:</strong> Tuổi trên 60, phụ nữ mang thai, hoặc suy giảm miễn dịch (dùng corticoid kéo dài, thuốc ức chế miễn dịch, ghép tạng, ung thư, HIV tiến triển, đái tháo đường, suy thận mạn giai đoạn cuối, xơ gan, lạm dụng rượu). Bắt buộc phải bổ sung <strong>Ampicillin hoặc Amoxicillin</strong> vào phác đồ kinh nghiệm.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SEC 3: QUY TRÌNH DNT & CT SỌ NÃO -->
+    <div class="sec-card" id="sec-chandoan">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-vial-virus sec-hdr-icon"></i>
+        <h2 class="sec-title">3. Quy Trình Chẩn Đoán Dịch Não Tủy & Tiêu Chuẩn Chụp CT Sọ Não</h2>
+      </div>
+      <div class="sec-body">
+
+        <div class="sec-subtitle"><i class="fa-solid fa-syringe"></i> Chọc Dò Tủy Sống (Lumbar Puncture - LP)</div>
+        <div class="infobox success">
+          <div class="infobox-icon"><i class="fa-solid fa-check"></i></div>
+          <div>
+            <strong>Khuyến cáo Thực hành tốt (Good practice):</strong> Ở tất cả bệnh nhân nghi ngờ viêm màng não cấp tính, chọc dò tủy sống phải được thực hiện càng sớm càng tốt, <strong>tốt nhất là trước khi dùng liều kháng sinh đầu tiên</strong>, trừ khi có chống chỉ định.
+            <br><em>Chống chỉ định/Trì hoãn LP:</em> Rối loạn đông máu/xuất huyết nặng; Nhiễm trùng da mô mềm vùng chọc; Suy tuần hoàn/hô hấp chưa ổn định; Dấu hiệu tăng áp lực nội sọ nặng nguy cơ tụt não.
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-table-list"></i> Bảng So Sánh Bất Thường Dịch Não Tủy (Bảng WHO 3.1)</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 200px;">Chỉ Số Đánh Giá DNT</th>
+                <th style="width: 320px;">Viêm Màng Não Do Vi Khuẩn</th>
+                <th>Viêm Màng Não Do Virus</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Áp lực mở (Opening pressure)</strong></td>
+                <td><span class="badge badge-red">Tăng rõ rệt</span> (&gt; 200 mmH₂O)</td>
+                <td>Bình thường hoặc tăng nhẹ</td>
+              </tr>
+              <tr>
+                <td><strong>Vẻ ngoài DNT (Appearance)</strong></td>
+                <td><span class="rx-tag alert">Đục hoặc mờ như nước vo gạo</span></td>
+                <td>Trong suốt</td>
+              </tr>
+              <tr>
+                <td><strong>Số lượng Tế bào (Pleocytosis)</strong></td>
+                <td><span class="badge badge-red">Tăng rất cao</span> (100 - &gt;10.000 /mm³)</td>
+                <td>Tăng vừa phải (&lt; 1.000 /mm³)</td>
+              </tr>
+              <tr>
+                <td><strong>Tế bào chiếm ưu thế</strong></td>
+                <td><strong>Bạch cầu đa nhân trung tính (Neutrophils)</strong> &gt;80%</td>
+                <td>Bạch cầu Lympho (Lymphocytes)</td>
+              </tr>
+              <tr>
+                <td><strong>Tỷ lệ Glucose DNT / Máu</strong></td>
+                <td><span class="badge badge-red">Thấp</span> (&lt; 0,4 hoặc &lt; 40%)</td>
+                <td>Bình thường (&gt; 0,6)</td>
+              </tr>
+              <tr>
+                <td><strong>Nồng độ Protein DNT</strong></td>
+                <td><span class="badge badge-red">Tăng rất cao</span> (&gt; 1,0 - 5,0 g/L)</td>
+                <td>Bình thường hoặc tăng nhẹ (&lt; 1,0 g/L)</td>
+              </tr>
+              <tr>
+                <td><strong>Lactate DNT</strong></td>
+                <td><span class="badge badge-orange">Tăng</span> (&gt; 3,5 mmol/L trước dùng ABX)</td>
+                <td>Bình thường (&lt; 3,0 mmol/L)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-brain"></i> Tiêu Chuẩn Chụp CT Sọ Não Trước Khi LP (WHO 2025)</div>
+        <div class="infobox danger">
+          <div class="infobox-icon"><i class="fa-solid fa-xmark"></i></div>
+          <div>
+            <strong>KHÔNG CHỤP CT THƯỜNG QUY CHO TẤT CẢ BỆNH NHÂN:</strong>
+            <br>Khuyến cáo mạnh mẽ KHÔNG thực hiện chụp sọ脑 (CT scan) thường quy nhằm tránh làm trì hoãn điều trị kháng sinh cấp cứu.
+          </div>
+        </div>
+
+        <div class="algo-box">
+          <div class="algo-step">
+            <div class="algo-num" style="background: var(--purple);">!</div>
+            <div class="algo-content">
+              <strong>6 Dấu hiệu Bắt buộc Chụp CT Sọ Nao Trước LP (để loại trừ tổn thương choán chỗ di lệch đường giữa):</strong>
+              <br>1. Điểm Glasgow (GCS) <strong>dưới 10 điểm</strong>.
+              <br>2. Dấu hiệu thần kinh khu trú (yếu liệt chi, thất ngôn).
+              <br>3. Liệt dây thần kinh sọ.
+              <br>4. Phù gai thị (Papilledema).
+              <br>5. Co giật mới khởi phát (ở người lớn).
+              <br>6. Tình trạng suy giảm miễn dịch nghiêm trọng.
+            </div>
+          </div>
+          <div class="algo-step">
+            <div class="algo-num" style="background: var(--red);">★</div>
+            <div class="algo-content">
+              <strong>NGUYÊN TẮC VÀNG VỀ NỔI BẬT:</strong>
+              <br><strong>TUYỆT ĐỐI KHÔNG TRÌ HOÃN KHÁNG SINH ĐỂ CHỜ CHỤP CT HOẶC KHI LP BỊ TRÌ HOÃN!</strong> Nếu phải hoãn LP để đi chụp CT, phải cấy máu ngay và tiêm Kháng sinh &plus; Dexamethasone theo kinh nghiệm trước khi đưa bệnh nhân đi chụp CT.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SEC 4: KHUNG GIỜ VÀNG 1H KHÁNG SINH -->
+    <div class="sec-card" id="sec-khangsinh">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-clock-rotate-left sec-hdr-icon"></i>
+        <h2 class="sec-title">4. Phác Đồ Kháng Sinh Theo Kinh Nghiệm & Đặc Hiệu (WHO 2025)</h2>
+      </div>
+      <div class="sec-body">
+
+        <div class="infobox danger">
+          <div class="infobox-icon"><i class="fa-solid fa-hourglass-start"></i></div>
+          <div>
+            <strong>"KHUNG GIỜ VÀNG 1 GIỜ" (1-Hour Window):</strong>
+            <br>Kháng sinh tĩnh mạch theo kinh nghiệm <strong>phải được tiêm càng sớm càng tốt trong vòng 1 giờ đầu tiên</strong> ngay khi nghi ngờ viêm màng não nhiễm khuẩn tại bệnh viện. Nếu ở tuyến trước/khi chuyển tuyến có hoãn vận chuyển kéo dài, khuyến cáo tiêm kháng sinh đường tĩnh mạch (hoặc tiêm bắp) ngay trước khi chuyển tuyến.
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-capsules"></i> 1. Phác đồ Kháng sinh Kinh nghiệm Ban đầu</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 220px;">Tình Trạng Lâm Sàng</th>
+                <th>Phác Đồ Kháng Sinh Tĩnh Mạch Lựa Chọn (WHO 2025)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong>Hàng đầu (Trẻ em &amp; Người lớn)</strong><br>
+                  <span class="badge badge-purple">Lựa chọn ưu tiên</span>
+                </td>
+                <td>
+                  <span class="rx-tag highlight">Ceftriaxone IV</span> (2g q12h ở người lớn; 100 mg/kg/ngày chia 2 lần ở trẻ em)<br>
+                  HOẶC <span class="rx-tag highlight">Cefotaxime IV</span> (2g q4-6h ở người lớn; 200 mg/kg/ngày chia 3-4 lần ở trẻ em).<br>
+                  <em>Ceftriaxone được ưu tiên hơn trong các vụ dịch do chu kỳ bán rã dài (dùng 2 lần/ngày).</em>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Có nguy cơ <em>Listeria monocytogenes</em></strong><br>
+                  <span class="badge badge-orange">&gt; 60t, Thai phụ, Suy giảm miễn dịch</span>
+                </td>
+                <td>
+                  Phối hợp thêm <strong>Ceftriaxone / Cefotaxime</strong> &plus; <span class="rx-tag highlight">Ampicillin IV (2g q4h)</span> HOẶC <span class="rx-tag highlight">Amoxicillin IV</span>.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Nguy cơ Phế cầu kháng Penicillin/Cepha 3</strong><br>
+                  <span class="badge badge-red">Vùng dịch tễ kháng thuốc</span>
+                </td>
+                <td>
+                  Bổ sung thêm <span class="rx-tag alert">Vancomycin IV (15-20 mg/kg q8-12h)</span> vào phác đồ Ceftriaxone. Có thể thay Vancomycin bằng Rifampicin ở nơi có gánh nặng bệnh lao thấp.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Khi thiếu Cephalosporin thế hệ 3</strong><br>
+                  <span class="badge badge-blue">Phác đồ thay thế</span>
+                </td>
+                <td>
+                  Phối hợp <span class="rx-tag">Chloramphenicol IV</span> &plus; <span class="rx-tag">Benzylpenicillin / Ampicillin / Amoxicillin</span>.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-microscope"></i> 2. Bảng Liệu Pháp Kháng Sinh Đặc Hiệu &amp; Thời Gian Điều Trị (Bảng WHO 3.2)</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Tác Nhân Xác Định qua Cấy / PCR</th>
+                <th>Mức Độ Nhạy Thuốc</th>
+                <th>Liệu Pháp Kháng Sinh Đích Lựa Chọn</th>
+                <th style="width: 140px;">Thời Gian</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan="3"><em><strong>Streptococcus pneumoniae</strong></em><br>(Phế cầu)</td>
+                <td>Nhạy Penicillin</td>
+                <td>Penicillin G hoặc Ampicillin hoặc Amoxicillin</td>
+                <td rowspan="3"><span class="badge badge-red">10 - 14 ngày</span></td>
+              </tr>
+              <tr>
+                <td>Kháng Penicillin</td>
+                <td>Ceftriaxone hoặc Cefotaxime</td>
+              </tr>
+              <tr>
+                <td>Kháng Cephalosporin 3</td>
+                <td>Vancomycin &plus; Rifampicin (hoặc Ceftriaxone)</td>
+              </tr>
+              <tr>
+                <td rowspan="2"><em><strong>Neisseria meningitidis</strong></em><br>(Não mô cầu)</td>
+                <td>Nhạy Penicillin</td>
+                <td>Penicillin G hoặc Ampicillin hoặc Amoxicillin</td>
+                <td rowspan="2"><span class="badge badge-green">5 - 7 ngày</span></td>
+              </tr>
+              <tr>
+                <td>Kháng Penicillin</td>
+                <td>Ceftriaxone hoặc Cefotaxime</td>
+              </tr>
+              <tr>
+                <td rowspan="2"><em><strong>Haemophilus influenzae</strong></em></td>
+                <td>Beta-lactamase (-)</td>
+                <td>Ampicillin hoặc Amoxicillin</td>
+                <td rowspan="2"><span class="badge badge-blue">7 - 10 ngày</span></td>
+              </tr>
+              <tr>
+                <td>Beta-lactamase (+)</td>
+                <td>Ceftriaxone hoặc Cefotaxime</td>
+              </tr>
+              <tr>
+                <td><em><strong>Streptococcus agalactiae (GBS)</strong></em></td>
+                <td>Bình thường</td>
+                <td>Penicillin G hoặc Ampicillin hoặc Amoxicillin</td>
+                <td><span class="badge badge-orange">14 - 21 ngày</span></td>
+              </tr>
+              <tr>
+                <td><em><strong>Listeria monocytogenes</strong></em></td>
+                <td>Bình thường</td>
+                <td>Ampicillin hoặc Amoxicillin (phối hợp Gentamicin)</td>
+                <td><span class="badge badge-red">21 ngày</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SEC 5: STEROID & DỰ PHÒNG TIẾP XÚC -->
+    <div class="sec-card" id="sec-duphong">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-syringe sec-hdr-icon"></i>
+        <h2 class="sec-title">5. Liệu Pháp Corticosteroid Hỗ Trợ & Dự Phòng Tiếp Xúc</h2>
+      </div>
+      <div class="sec-body">
+
+        <div class="sec-subtitle"><i class="fa-solid fa-shield-virus"></i> 1. Liệu pháp Dexamethasone Hỗ Trợ</div>
+        <div class="algo-box">
+          <div class="algo-step">
+            <div class="algo-num">1</div>
+            <div class="algo-content">
+              <strong>Thời điểm dùng chuẩn xác:</strong> Bắt đầu tiêm tĩnh mạch <strong>Dexamethasone (0,15 mg/kg q6h)</strong> <strong>đồng thời hoặc ngay trước liều kháng sinh đầu tiên 15 - 20 phút</strong> ở trẻ em và người lớn nghi ngờ viêm màng não vi khuẩn.
+            </div>
+          </div>
+          <div class="algo-step">
+            <div class="algo-num">2</div>
+            <div class="algo-content">
+              <strong>Thời gian duy trì:</strong> Tiếp tục Dexamethasone tĩnh mạch trong <strong>tổng cộng 4 ngày</strong> nếu kết quả DNT hoặc PCR xác nhận do <em>S. pneumoniae</em> hoặc <em>H. influenzae</em> typ b.
+            </div>
+          </div>
+          <div class="algo-step">
+            <div class="algo-num" style="background: var(--red);">3</div>
+            <div class="algo-content">
+              <strong>CHỐNG CHỈ ĐỊNH &amp; KHI NÀO NGỪNG:</strong>
+              <br>• Ngừng ngay Dexamethasone nếu kết quả DNT <em>không phù hợp</em> viêm màng não vi khuẩn.
+              <br>• KHÔNG dùng Steroids thường quy trong đại dịch do Não mô cầu (<em>N. meningitidis</em>).
+              <br>• <strong>Tuyệt đối KHÔNG dùng Steroid hỗ trợ cho bệnh nhân Sốt rét thể não</strong> (gây kéo dài thời gian hôn mê) và không có lợi ích ở bệnh nhân HIV tiến triển.
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-people-arrows"></i> 2. Dự Phòng Kháng Sinh Cho Người Tiếp Xúc Gần (Post-Exposure Prophylaxis)</div>
+        <div class="infobox teal">
+          <div class="infobox-icon"><i class="fa-solid fa-user-shield"></i></div>
+          <div>
+            <strong>Dự phòng diệt mang trùng tỵ hầu (Não mô cầu):</strong>
+            <br>• Chỉ định cho đối tượng tiếp xúc gần (&lt; 1 mét kéo dài, cùng hộ gia đình, hoặc tiếp xúc trực tiếp dịch hầu họng khi hôn, hô hấp nhân tạo, đặt nội khí quản) trong vòng 7 ngày trước khi bệnh nhân phát bệnh đến 24h sau khi bệnh nhân dùng kháng sinh.
+            <br>• <strong>Phác đồ liều đơn lựa chọn:</strong>
+            <br>&nbsp;&nbsp;1. <span class="rx-tag highlight">Ciprofloxacin 500 mg Uống (Liều đơn duy nhất)</span> (Cho người lớn).
+            <br>&nbsp;&nbsp;2. <span class="rx-tag highlight">Ceftriaxone 250 mg Tiêm bắp (Liều đơn duy nhất)</span> (Cho trẻ em và thai phụ).
+            <br>&nbsp;&nbsp;3. Thay thế: <strong>Rifampicin</strong> 600 mg uống q12h x 2 ngày (nếu không dùng được 2 thuốc trên).
+            <br>• <em>Lưu ý:</em> Dự phòng không còn tác dụng nếu dùng muộn quá 14 ngày.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SEC 6: TĂNG ALNS, DỊCH & CO GIẬT -->
+    <div class="sec-card" id="sec-capcuu">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-brain-circuit sec-hdr-icon"></i>
+        <h2 class="sec-title">6. Quản Lý Tăng Áp Lực Nội Sọ, Liệu Pháp Dịch Truyền & Co Giật</h2>
+      </div>
+      <div class="sec-body">
+
+        <div class="sec-subtitle"><i class="fa-solid fa-weight-scale"></i> 1. Kiểm soát Tăng Áp lực Nội sọ (ICP)</div>
+        <div class="infobox danger">
+          <div class="infobox-icon"><i class="fa-solid fa-ban"></i></div>
+          <div>
+            <strong>KHUYẾN CÁO CHỐNG LẠI DÙNG GLYCEROL THƯỜNG QUY:</strong>
+            <br>WHO khuyến cáo <strong>KHÔNG sử dụng Glycerol đường uống thường quy</strong> do làm tăng tỷ lệ tử vong ở bệnh nhân nghi ngờ viêm màng não tại các khu vực có tỷ lệ nhiễm HIV cao.
+          </div>
+        </div>
+
+        <div class="infobox purple">
+          <div class="infobox-icon"><i class="fa-solid fa-vial"></i></div>
+          <div>
+            <strong>Xử trí Cấp cứu Tụt não đe dọa:</strong> Sử dụng tác nhân thẩm thấu đường tĩnh mạch làm biện pháp tạm thời cấp cứu tăng áp lực nội sọ cấp tính:
+            <br>• <span class="rx-tag highlight">Mannitol 20% liều 0,5 - 1 g/kg IV</span> truyền nhanh trong 30 phút.
+            <br>• HOẶC <span class="rx-tag highlight">Nước muối ưu trương NaCl 3% liều 3 - 5 ml/kg IV</span>.
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-bottle-water"></i> 2. Liệu pháp Dịch truyền</div>
+        <div class="infobox info">
+          <div class="infobox-icon"><i class="fa-solid fa-droplet"></i></div>
+          <div>
+            <strong>KHÔNG HẠN CHẾ DỊCH TRUYỀN THƯỜNG QUY:</strong>
+            <br>Chống lại việc hạn chế dịch truyền thường quy ở người bệnh viêm màng não. Sử dụng dung dịch đẳng trương (Ringer's lactate hoặc NaCl 0,9%). Chỉ hạn chế dịch nhẹ khi có dấu hiệu Hội chứng tiết hormone bài niệu không thích hợp (SIADH) mà KHÔNG có sốc hay giảm thể tích.
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-bolt"></i> 3. Quản lý Co giật Cấp tính</div>
+        <div class="infobox warning">
+          <div class="infobox-icon"><i class="fa-solid fa-stopwatch"></i></div>
+          <div>
+            <strong>Thời gian dùng thuốc chống co giật (ASM):</strong> Ở bệnh nhân có cơn co giật triệu chứng cấp tính, thuốc chống co giật (Diazepam, Phenytoin, Levetiracetam) <strong>chỉ nên tiếp tục sử dụng KHÔNG QUÁ 3 THÁNG</strong> nếu bệnh nhân không bị tái phát cơn co giật khác. Việc kéo dài không cần thiết gây nhiều tác dụng phụ thần kinh.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SEC 7: PHỤC HỒI & THÍNH LỰC -->
+    <div class="sec-card" id="sec-dichung">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-ear-deaf sec-hdr-icon"></i>
+        <h2 class="sec-title">7. Đánh Giá Di Chứng, Phục Hồi Chức Năng & Sàng Lọc Thính Lực</h2>
+      </div>
+      <div class="sec-body">
+
+        <div class="sec-subtitle"><i class="fa-solid fa-clipboard-user"></i> 1. Đánh giá Di chứng &amp; Phục hồi Chức năng Đa ngành (Bảng WHO 3.3)</div>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">
+          Tất cả bệnh nhân sau viêm màng não phải được đánh giá lâm sàng di chứng <strong>trước khi xuất viện</strong> và tái khám ít nhất 1 lần <strong>trong vòng 4 tuần sau xuất viện</strong>.
+        </p>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 200px;">Lĩnh Vực Chức Năng</th>
+                <th style="width: 260px;">Danh Mục Can Thiệp</th>
+                <th>Ví Dụ Can Thiệp Cụ Thể (Khung WHO PIR)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Thần kinh Nhận thức &amp; Tâm thần</strong></td>
+                <td>Liệu pháp nhận thức, kiểm soát hành vi &amp; căng thẳng</td>
+                <td>Trị liệu nhận thức hành vi (CBT), kích thích nhận thức, trị liệu tâm lý lo âu.</td>
+              </tr>
+              <tr>
+                <td><strong>Vận động &amp; Di chuyển</strong></td>
+                <td>Bài tập mạnh cơ, tầm vận động, dáng đi &amp; thăng bằng</td>
+                <td>Tập định thế chức năng (tránh co cứng), trị liệu nuốt, nẹp chỉnh hình / chân tay giả.</td>
+              </tr>
+              <tr>
+                <td><strong>Hoạt động hàng ngày (ADL)</strong></td>
+                <td>Huấn luyện kỹ năng sinh hoạt, cải tạo môi trường</td>
+                <td>Tập tự chăm sóc bản thân, lắp đường dốc (ramps) tại nhà, điều chỉnh ánh sáng.</td>
+              </tr>
+              <tr>
+                <td><strong>Gia đình &amp; Người chăm sóc</strong></td>
+                <td>Tự quản lý &amp; đào tạo người chăm sóc</td>
+                <td>Giáo dục y tế, tư vấn tâm lý và hỗ trợ tinh thần cho gia đình người bệnh.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-headphones"></i> 2. Sàng Lọc Thính Lực Bắt Buộc &amp; Cấy Ốc Tai Điện Tử Khẩn Cấp (Bảng WHO 3.4)</div>
+        <div class="infobox danger">
+          <div class="infobox-icon"><i class="fa-solid fa-ear-listen"></i></div>
+          <div>
+            <strong>SÀNG LỌC THÍNH LỰC CHÍNH QUY BẮT BUỘC:</strong>
+            <br>• Tất cả bệnh nhân sau viêm màng não phải được <strong>sàng lọc thính lực chính quy trước khi xuất viện</strong> (hoặc chậm nhất trong 4 tuần sau xuất viện).
+            <br>• <strong>CẤY ỐC TAI ĐIỆN TỬ KHẨN CẤP (Cochlear Implants):</strong> Nếu có chỉ định cấy ốc tai điện tử, phẫu thuật can thiệp sớm là tối khẩn cấp nhằm <strong>ngăn ngừa hiện tượng cốt hóa ốc tai (cochlear ossification)</strong> gây xơ hóa biến dạng đường vào ốc tai vĩnh viễn.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SEC 8: CHEAT-SHEET & MCQ QUIZ -->
+    <div class="sec-card" id="sec-mcq">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-graduation-cap sec-hdr-icon"></i>
+        <h2 class="sec-title">8. Cheat-Sheet Liều Dùng Cấp Cứu & Trắc Nghiệm Tự Lượng Giá (MCQ)</h2>
+      </div>
+      <div class="sec-body">
+
+        <div class="sec-subtitle"><i class="fa-solid fa-bolt-lightning"></i> Cheat-Sheet Liều Thuốc Cấp Cứu Viêm Màng Não WHO 2025</div>
+        <div class="infobox purple">
+          <div class="infobox-icon"><i class="fa-solid fa-notes-medical"></i></div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; line-height: 1.75;">
+            • <strong>Ceftriaxone IV:</strong> Người lớn: 2g q12h; Trẻ em: 100 mg/kg/ngày chia 2 lần.<br>
+            • <strong>Cefotaxime IV:</strong> Người lớn: 2g q4-6h; Trẻ em: 200 mg/kg/ngày chia 3-4 lần.<br>
+            • <strong>Ampicillin IV (Listeria):</strong> Người lớn: 2g q4h; Trẻ em: 200 mg/kg/ngày chia 4 lần.<br>
+            • <strong>Vancomycin IV (Phế cầu kháng):</strong> 15-20 mg/kg q8-12h (Target Trough 15-20 mcg/mL).<br>
+            • <strong>Dexamethasone IV:</strong> 0,15 mg/kg q6h trong 4 ngày (Tiêm đồng thời hoặc trước kháng sinh 15-20 phút).<br>
+            • <strong>Dự phòng Ciprofloxacin:</strong> 500 mg Uống (Liều đơn duy nhất cho người lớn).<br>
+            • <strong>Dự phòng Ceftriaxone:</strong> 250 mg Tiêm bắp (Liều đơn duy nhất cho trẻ em/thai phụ).<br>
+            • <strong>Mannitol 20%:</strong> 0.5 - 1 g/kg IV truyền nhanh 30 min (khi tăng áp lực nội sọ cấp).
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-clipboard-question"></i> Trắc Nghiệm Tự Lượng Giá Lâm Sàng (5 Câu MCQ)</div>
+
+        <!-- MCQ 1 -->
+        <div class="mcq-card" data-correct="1">
+          <div class="mcq-q"><span>Câu 1:</span> Theo hướng dẫn WHO 2025, "Khung giờ vàng" (Golden window) chuẩn mực để khởi đầu điều trị kháng sinh tĩnh mạch theo kinh nghiệm ngay khi nghi ngờ viêm màng não vi khuẩn là bao lâu?</div>
+          <div class="mcq-opts">
+            <div class="mcq-opt" data-idx="0">A. Trong vòng 30 phút</div>
+            <div class="mcq-opt" data-idx="1">B. Trong vòng 1 giờ (1-hour window)</div>
+            <div class="mcq-opt" data-idx="2">C. Trong vòng 3 giờ</div>
+            <div class="mcq-opt" data-idx="3">D. Trong vòng 6 giờ sau khi có kết quả cấy DNT</div>
+          </div>
+          <div class="mcq-exp">
+            <strong>Giải thích:</strong> Tiêu chuẩn vàng của WHO 2025 là "Khung giờ 1 giờ" (1-hour window) để tiêm kháng sinh tĩnh mạch theo kinh nghiệm ngay khi nghi ngờ lâm sàng. Mọi sự chậm trễ trong xét nghiệm không được phép làm hoãn việc dùng kháng sinh.
+          </div>
+        </div>
+
+        <!-- MCQ 2 -->
+        <div class="mcq-card" data-correct="2">
+          <div class="mcq-q"><span>Câu 2:</span> Trường hợp nào sau đây BẮT BUỘC phải bổ sung Ampicillin hoặc Amoxicillin tĩnh mạch vào phác đồ Ceftriaxone ban đầu?</div>
+          <div class="mcq-opts">
+            <div class="mcq-opt" data-idx="0">A. Trẻ em 5 tuổi không có bệnh nền</div>
+            <div class="mcq-opt" data-idx="1">B. Nam thanh niên 25 tuổi khỏe mạnh</div>
+            <div class="mcq-opt" data-idx="2">C. Bệnh nhân 65 tuổi hoặc người suy giảm miễn dịch (nguy cơ Listeria monocytogenes)</div>
+            <div class="mcq-opt" data-idx="3">D. Tất cả bệnh nhân bị viêm màng não do virus</div>
+          </div>
+          <div class="mcq-exp">
+            <strong>Giải thích:</strong> <em>Listeria monocytogenes</em> đề kháng tự nhiên với Cephalosporin thế hệ 3. Do đó ở bệnh nhân &gt;60 tuổi, thai phụ hoặc người suy giảm miễn dịch, bắt buộc phải phối hợp Ampicillin/Amoxicillin để diệt <em>Listeria</em>.
+          </div>
+        </div>
+
+        <!-- MCQ 3 -->
+        <div class="mcq-card" data-correct="0">
+          <div class="mcq-q"><span>Câu 3:</span> Thời điểm tiêm Dexamethasone tĩnh mạch hỗ trợ chuẩn xác nhất theo khuyến cáo WHO 2025 là khi nào?</div>
+          <div class="mcq-opts">
+            <div class="mcq-opt" data-idx="0">A. Tiêm đồng thời hoặc ngay trước liều kháng sinh đầu tiên 15-20 phút</div>
+            <div class="mcq-opt" data-idx="1">B. Tiêm sau liều kháng sinh đầu tiên 24 giờ</div>
+            <div class="mcq-opt" data-idx="2">C. Tiêm sau khi hoàn thành 7 ngày kháng sinh</div>
+            <div class="mcq-opt" data-idx="3">D. Tiêm 1 giờ sau khi chọc dò tủy sống</div>
+          </div>
+          <div class="mcq-exp">
+            <strong>Giải thích:</strong> Dexamethasone đạt hiệu quả giảm phản ứng viêm và biến chứng điếc tốt nhất khi được tiêm tĩnh mạch đồng thời hoặc ngay trước liều kháng sinh đầu tiên (nhằm ngăn chặn đáp ứng viêm ồ ạt do vi khuẩn ly giải giải phóng nội độc tố).
+          </div>
+        </div>
+
+        <!-- MCQ 4 -->
+        <div class="mcq-card" data-correct="3">
+          <div class="mcq-q"><span>Câu 4:</span> Trong các dấu hiệu sau, dấu hiệu nào BẮT BUỘC phải chụp CT sọ não loại trừ tổn thương choán chỗ di lệch đường giữa trước khi tiến hành chọc dò tủy sống (LP)?</div>
+          <div class="mcq-opts">
+            <div class="mcq-opt" data-idx="0">A. Sốt cao 39°C</div>
+            <div class="mcq-opt" data-idx="1">B. Cứng cổ nhẹ</div>
+            <div class="mcq-opt" data-idx="2">C. Đau đầu nhẹ</div>
+            <div class="mcq-opt" data-idx="3">D. Thang điểm Glasgow (GCS) dưới 10 điểm hoặc có dấu hiệu thần kinh khu trú / phù gai thị</div>
+          </div>
+          <div class="mcq-exp">
+            <strong>Giải thích:</strong> WHO khuyến cáo KHÔNG chụp CT thường quy. Chỉ chụp CT trước LP khi có 1 trong 6 dấu hiệu nguy cơ cao: GCS &lt; 10, dấu thần kinh khu trú, liệt dây thần kinh sọ, phù gai thị, co giật mới ở người lớn, suy giảm miễn dịch nặng.
+          </div>
+        </div>
+
+        <!-- MCQ 5 -->
+        <div class="mcq-card" data-correct="1">
+          <div class="mcq-q"><span>Câu 5:</span> Lý do tại sao WHO khuyến cáo phải thực hiện sàng lọc thính lực sớm và phẫu thuật cấy ốc tai điện tử khẩn cấp cho bệnh nhân có di chứng điếc sau viêm màng não?</div>
+          <div class="mcq-opts">
+            <div class="mcq-opt" data-idx="0">A. Để điều trị nhiễm trùng tai giữa</div>
+            <div class="mcq-opt" data-idx="1">B. Để ngăn ngừa hiện tượng cốt hóa ốc tai (cochlear ossification) làm mất cơ hội cấy ốc tai</div>
+            <div class="mcq-opt" data-idx="2">C. Để giảm liều kháng sinh tĩnh mạch</div>
+            <div class="mcq-opt" data-idx="3">D. Để tránh dùng Dexamethasone</div>
+          </div>
+          <div class="mcq-exp">
+            <strong>Giải thích:</strong> Sau viêm màng não vi khuẩn, phản ứng viêm tại mê đạo tai có thể dẫn đến hiện tượng cốt hóa ốc tai (cochlear ossification) rất nhanh. Nếu không phát hiện và cấy ốc tai điện tử kịp thời, đường vào ốc tai sẽ bị xơ hóa xương lấp kín hoàn toàn, làm mất vĩnh viễn cơ hội phục hồi thính giác.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CITATION & SOURCE -->
+    <div class="sec-card">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-bookmark sec-hdr-icon"></i>
+        <h2 class="sec-title">Tài Liệu Tham Khảo Chuẩn AMA</h2>
+      </div>
+      <div class="sec-body">
+        <div class="citation-box">
+          1. World Health Organization. <em>WHO guidelines on meningitis diagnosis, treatment and care</em>. Geneva: World Health Organization; 2025.<br>
+          2. World Health Organization. <em>WHO guidelines on meningitis diagnosis, treatment and care: executive summary</em>. Geneva: World Health Organization; 2025.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PAGE FOOTER -->
+  <footer class="page-footer">
+    <p>© 2026 CliniPortal — Phân hệ Y học Chứng cứ (EBM). Bản quyền tóm tắt Hướng dẫn WHO 2025.</p>
+  </footer>
+
+  <script>
+    // Theme Toggle
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const htmlEl = document.documentElement;
+
+    themeToggleBtn.addEventListener('click', () => {
+      const currentTheme = htmlEl.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      htmlEl.setAttribute('data-theme', newTheme);
+      themeToggleBtn.innerHTML = newTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+    });
+
+    // Quicknav Active Scroll Highlight
+    const sections = document.querySelectorAll('.sec-card[id]');
+    const navLinks = document.querySelectorAll('.quicknav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Interactive MCQ Quiz Script
+    document.querySelectorAll('.mcq-card').forEach(card => {
+      const correctIdx = parseInt(card.getAttribute('data-correct'), 10);
+      const opts = card.querySelectorAll('.mcq-opt');
+      const exp = card.querySelector('.mcq-exp');
+
+      opts.forEach(opt => {
+        opt.addEventListener('click', () => {
+          const selectedIdx = parseInt(opt.getAttribute('data-idx'), 10);
+          
+          // Clear previous state
+          opts.forEach(o => {
+            o.classList.remove('selected-correct', 'selected-wrong');
+          });
+
+          if (selectedIdx === correctIdx) {
+            opt.classList.add('selected-correct');
+          } else {
+            opt.classList.add('selected-wrong');
+            opts[correctIdx].classList.add('selected-correct');
+          }
+
+          exp.classList.add('show');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
